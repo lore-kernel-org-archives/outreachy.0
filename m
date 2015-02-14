@@ -1,109 +1,183 @@
-X-GM-THRID: 6527683536897441792
-X-Received: by 10.202.9.15 with SMTP id 15mr9192287oij.54.1519844759177;
-        Wed, 28 Feb 2018 11:05:59 -0800 (PST)
+X-GM-THRID: 9871294464
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.236.42.228 with SMTP id j64mr14303176yhb.36.1423943051671;
+        Sat, 14 Feb 2015 11:44:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.35.54 with SMTP id j51ls2000899otb.7.gmail; Wed, 28 Feb
- 2018 11:05:58 -0800 (PST)
-X-Google-Smtp-Source: AG47ELt2HvKwxSNGRoYcTYoR264U0dSlLqcvcm5lfviecVnqr6ICvQIAhbbDVzaWEyjVMwQcZ3L5
-X-Received: by 10.157.4.36 with SMTP id 33mr1784229otc.56.1519844758320;
-        Wed, 28 Feb 2018 11:05:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519844758; cv=none;
-        d=google.com; s=arc-20160816;
-        b=eFvCWvdEgUC8S8ITg3F3n4OzK4TVbiy4TJIeBdsN+dHDKnWDURW7oMWadTiXas6bHh
-         YmZQBLEEMAHod0SFuAbAeZmk0nQrlhYYMItW7Ndm/wX4VvTfmqLCXGz/7VQWaIThP2xa
-         DJvhE2e09Onl4FWIn3rJdamTTHFrV1tLbaTk0QSG3d2VzQ2dlzC3B+xQ8iKYKuCH9wAF
-         EJ4ikP02pw2eAarkYiapzr1kPFsFusNrBMj5LC43jh9gLICWslthgj12Nl5w1U6uwH4w
-         fn66uG3f3wNFUomKVpNyYlMa3W14J/kkGrftSOyvMFxCbMyvUMLcEqQ98QwTpoJeujeE
-         0zYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=MH5nCiX0y+J4n8inR4EByuDs+MKtf0QmZp3DsSjYifs=;
-        b=wsQ92/V+Dsj2S3UFvsouSLP8UhG2gfV2SswRGTF4bjN0vjdLhhSpSgwlwvJBteRnfR
-         1Zv8lt6nwHm0PYTpiNNyH6wRmdgtJz0qPWaoWSCmA3+aLEC5nA8+kgrsINxG164yRGdn
-         4IMc9hj0bY/0oSNZlQ2X52/IGBtfPzahuEr9xCPHtpZHfcNTy4q/oBA/oUq0slGTiPIb
-         1WYH2rBUYPsLvKwkyCcCzHiIsNvPHj1OvBueF0HgJ/MZ0PXXFLklYAr8l05tzLXMqT3+
-         shDPy2U21AKX8L/lesYD8wb2SB0162a2ZL2oZ9nKUmcLBC4kYLNXX85cvXPqUbQCy2NG
-         mZGg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=axcVAe2X;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id d67si134388otb.3.2018.02.28.11.05.58
+Received: by 10.50.44.4 with SMTP id a4ls812396igm.36.canary; Sat, 14 Feb 2015
+ 11:44:11 -0800 (PST)
+X-Received: by 10.66.119.174 with SMTP id kv14mr14647789pab.21.1423943051464;
+        Sat, 14 Feb 2015 11:44:11 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from mail-ob0-f175.google.com (mail-ob0-f175.google.com. [209.85.214.175])
+        by gmr-mx.google.com with ESMTPS id mg3si710676igb.0.2015.02.14.11.44.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Feb 2018 11:05:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 14 Feb 2015 11:44:11 -0800 (PST)
+Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.214.175;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=axcVAe2X;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id h11so988043pfn.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 11:05:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=MH5nCiX0y+J4n8inR4EByuDs+MKtf0QmZp3DsSjYifs=;
-        b=axcVAe2XoQejy8bZTuFOsZvRW40ZP5oKf3hMfgjmgiYcgBwaqT8qju/VfWp8L5CNqc
-         078VfAXbAG5ZJ/jX/13rZEaQwf0sY5GOwoZQ7MZwFVY/4Xn05TO7+JE64LZuWTquIZte
-         fDxa/Up78niHAbpaz64N+pHCPrqC6dBal6vXJIJpF9juagE8ZWZ87rr3qk0Ffl+cvDyK
-         iweFhkkwpZP7hyteYkDVMXYvYpAaav6nWlehN2OFM2Add6Ae8okiwR79BWqOcdZuiipK
-         pkoABouTkCX1Au+eLKpfnQUxY2pDZg/9OAbMhdOTsUd0YXUQjt6TeWnwM+3rBLl5hIDJ
-         ykXQ==
+       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
+Received: by mail-ob0-f175.google.com with SMTP id va2so30915597obc.6
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Feb 2015 11:44:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=MH5nCiX0y+J4n8inR4EByuDs+MKtf0QmZp3DsSjYifs=;
-        b=YLth/YoXQo/u2ABUUOTmnXOBYc7C763RegE3GRYm0+lm/la2n7IgIQJWDQdbTov8HE
-         1JPe/B3qG3+BpD2snKwrPlgJoxN2EjR8r9gRhW5pSvwvRiBJrUz84ZykIvugdUiZrjb0
-         V0/fD0ygUDs3DSm25i08ud10Pv7ZcpCaMESv24xT9RLBYXQv+PRMjR9QkU4SeesyXjO8
-         Om25vdA5wTdrclj47U4JrEK5d0qB9TCoVlVx8eJ75JdAzuvuhNMh3+72PP0d/Nrf0lBc
-         +xUUh0eDRWF4cwySEVBRlpIEOVLdC6MI4eytw0RZ8yMRl2//LB/5kCtuLk9HUJyjbDFA
-         6sKg==
-X-Gm-Message-State: APf1xPDR8KAWab2vWa+/NtrKi1vuuHqmiPy4tc/ZUD6CoA0kc2rJAHvz
-	uYwRIGb6gFHiuCd4ggCU03ZTfQ==
-X-Received: by 10.98.166.85 with SMTP id t82mr18617397pfe.237.1519844757969;
-        Wed, 28 Feb 2018 11:05:57 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-249.resnet.ucsb.edu. [169.231.23.249])
-        by smtp.gmail.com with ESMTPSA id p6sm3745087pfg.183.2018.02.28.11.05.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Feb 2018 11:05:56 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: rtl8192e: move logical continuation to previous line
-Date: Wed, 28 Feb 2018 11:05:28 -0800
-Message-Id: <1519844728-18917-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=z3xDHQ6Abblg/TLK4ewrYKHu0VgeUjZjU/MQrWbzklM=;
+        b=MbpFgSgd27+HO5aMuyUOvzwdI+fivKCWfmP22+u1TP/r/A/WDJbZeKAwnG8iUhu6T4
+         oz8p4vsg49SGXr6oGtwSbUGBRO7h74iVsHeqOng40Fd5xbL9xYHOdIgwC+aAph8xfEZ9
+         B1om6fith3OR0HgmjdByOzLgqbLNtAUz6zZNAj8y3WeG171hFVkjr2AooqP8x8tQtz9P
+         K4havKJI3rZ/NuKy6E2AWrLE8M5K1fcnz1u7aKWU8/l3Ps0Lq6g1uxCOFNG5t1xAavyh
+         Kwe8OzvZJQLLjNtUc+TG50yTaZq5sv7y0gbJP5lIvhPTh7p/GoGUfPBziDOXCcPl0bq4
+         b+kA==
+X-Gm-Message-State: ALoCoQmbSk2lWaN8fB6e7UY4jZcaOYLhWa0R7LKxac6yebR7f0arpBfWFWlu6nQ4WsZtpF0bz3mX
+MIME-Version: 1.0
+X-Received: by 10.182.20.110 with SMTP id m14mr10540141obe.25.1423943051254;
+ Sat, 14 Feb 2015 11:44:11 -0800 (PST)
+Received: by 10.202.104.163 with HTTP; Sat, 14 Feb 2015 11:44:11 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1502141951510.6185@hadrien>
+References: <43ec1f66-51aa-434c-9193-74e91c6d21c9@googlegroups.com>
+	<alpine.DEB.2.10.1502131808180.2995@hadrien>
+	<54DE3CA5.80602@gmail.com>
+	<CA+Cr939ZXBcs=7pe4TTQ3XJu3iLfVd0DzCXsMmGftHv=H0pRog@mail.gmail.com>
+	<54DECFFA.7020103@gmail.com>
+	<54DED232.8070101@gmail.com>
+	<CA+Cr939uK+af-cb01Y29-TVwL3ztWv=8AvH++H1BCP+Rz9jbOA@mail.gmail.com>
+	<alpine.DEB.2.10.1502141951510.6185@hadrien>
+Date: Sat, 14 Feb 2015 11:44:11 -0800
+Message-ID: <CA+Cr938UDXn8roG2UQ2LLPTN56cfwEZ3in1Ogk_aC2Uv=5arEQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Re: Tutorial Help - Can't detect wifi after reboot
+From: Katherine Dunne <kdunne@mail.ccsf.edu>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Jes Sorensen <jes.sorensen@gmail.com>, outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=001a113306bec032aa050f119327
 
-Move logical continuation '&&' to the previous line to conform to the
-Linux kernel coding style. Issue found using checkpatch.
+--001a113306bec032aa050f119327
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_rx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+No, it wasn't. I followed your suggestion and was able to get it to work,
+thanks!
 
-diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
-index 30f72d2..22f7e7fd 100644
---- a/drivers/staging/rtl8192e/rtllib_rx.c
-+++ b/drivers/staging/rtl8192e/rtllib_rx.c
-@@ -2644,8 +2644,8 @@ static inline void rtllib_process_probe_response(
- 	   (network->ssid_len ? 1 : 0))) {
- 		update_network(ieee, &ieee->current_network, network);
- 		if ((ieee->current_network.mode == IEEE_N_24G ||
--		     ieee->current_network.mode == IEEE_G)
--		     && ieee->current_network.berp_info_valid) {
-+		     ieee->current_network.mode == IEEE_G) &&
-+		     ieee->current_network.berp_info_valid) {
- 			if (ieee->current_network.erp_value & ERP_UseProtection)
- 				ieee->current_network.buseprotection = true;
- 			else
--- 
-2.7.4
+On Sat, Feb 14, 2015 at 10:53 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 
+>
+>
+> On Sat, 14 Feb 2015, Katherine Dunne wrote:
+>
+> > Thanks for the help, Julia and Jes, it pointed me in the direction to
+> find
+> > lots of information.
+> >
+> > I fixed the wifi problem by finding this:
+> > https://bugs.launchpad.net/ubuntu/+source/bcmwl/+bug/1358966
+> > and downloading the package
+> > bcmwl-kernel-source_6.30.223.248+bdcom-0ubuntu2_amd64.deb
+> >
+> > I am still not able to find the changes that I made in a driver through
+> > dmesg | less after rebooting.
+> > The most recent steps I took were
+> >
+> > cd git/kernels/staging
+> > lsmod
+> > git grep wl -- "*Makefile'
+> >
+> > //This gave me a bunch of files that I didn't recognize. I wasn't sure
+> what
+> > to do with this information so instead I went into the driver folder and
+> > tried to find a .c file that seemed similar to the example 'e1000_main.c'
+> > cd drivers/net/wireless
+> >
+> > vim atmel_pci.c
+> >
+> > //I found the function static int atmel_pci_probe(struct pci_dev *pdev,
+> >                                      const struct pci_device_id *pent)
+> > and inserted printk(KERN_DEBUG "I can modify the Linux kernel!\n");
+> >
+> > :wq
+> > make
+> > sudo make modules_install install
+> > sudo reboot now
+> > dmesg | less
+> >
+> > when I try /I can the pattern is not found.
+>
+> Is the C file that you have modified being compiled?  Go to the directory
+> where it is located and see if you have a .o file for it.  If not, find
+> some .c file for which you have a .o file and try modifying that one
+> instead.
+>
+> julia
+>
+
+--001a113306bec032aa050f119327
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">No, it wasn&#39;t. I followed your suggestion and was able=
+ to get it to work, thanks!<br></div><div class=3D"gmail_extra"><br><div cl=
+ass=3D"gmail_quote">On Sat, Feb 14, 2015 at 10:53 AM, Julia Lawall <span di=
+r=3D"ltr">&lt;<a href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">jul=
+ia.lawall@lip6.fr</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote=
+" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><=
+div class=3D"HOEnZb"><div class=3D"h5"><br>
+<br>
+On Sat, 14 Feb 2015, Katherine Dunne wrote:<br>
+<br>
+&gt; Thanks for the help, Julia and Jes, it pointed me in the direction to =
+find<br>
+&gt; lots of information.<br>
+&gt;<br>
+&gt; I fixed the wifi problem by finding this:<br>
+&gt; <a href=3D"https://bugs.launchpad.net/ubuntu/+source/bcmwl/+bug/135896=
+6" target=3D"_blank">https://bugs.launchpad.net/ubuntu/+source/bcmwl/+bug/1=
+358966</a><br>
+&gt; and downloading the package<br>
+&gt; bcmwl-kernel-source_6.30.223.248+bdcom-0ubuntu2_amd64.deb<br>
+&gt;<br>
+&gt; I am still not able to find the changes that I made in a driver throug=
+h<br>
+&gt; dmesg | less after rebooting.<br>
+&gt; The most recent steps I took were<br>
+&gt;<br>
+&gt; cd git/kernels/staging<br>
+&gt; lsmod<br>
+&gt; git grep wl -- &quot;*Makefile&#39;<br>
+&gt;<br>
+&gt; //This gave me a bunch of files that I didn&#39;t recognize. I wasn&#3=
+9;t sure what<br>
+&gt; to do with this information so instead I went into the driver folder a=
+nd<br>
+&gt; tried to find a .c file that seemed similar to the example &#39;e1000_=
+main.c&#39;<br>
+&gt; cd drivers/net/wireless<br>
+&gt;<br>
+&gt; vim atmel_pci.c<br>
+&gt;<br>
+&gt; //I found the function static int atmel_pci_probe(struct pci_dev *pdev=
+,<br>
+&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 co=
+nst struct pci_device_id *pent)<br>
+&gt; and inserted printk(KERN_DEBUG &quot;I can modify the Linux kernel!\n&=
+quot;);<br>
+&gt;<br>
+&gt; :wq<br>
+&gt; make<br>
+&gt; sudo make modules_install install<br>
+&gt; sudo reboot now<br>
+&gt; dmesg | less<br>
+&gt;<br>
+&gt; when I try /I can the pattern is not found.<br>
+<br>
+</div></div>Is the C file that you have modified being compiled?=C2=A0 Go t=
+o the directory<br>
+where it is located and see if you have a .o file for it.=C2=A0 If not, fin=
+d<br>
+some .c file for which you have a .o file and try modifying that one<br>
+instead.<br>
+<span class=3D"HOEnZb"><font color=3D"#888888"><br>
+julia<br>
+</font></span></blockquote></div><br></div>
+
+--001a113306bec032aa050f119327--
 
