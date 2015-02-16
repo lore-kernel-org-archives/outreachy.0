@@ -1,113 +1,131 @@
-X-GM-THRID: 6466287284613283840
-X-Received: by 10.55.79.65 with SMTP id d62mr14435252qkb.12.1505549830286;
-        Sat, 16 Sep 2017 01:17:10 -0700 (PDT)
+X-GM-THRID: 66295169024
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,43fd668db975e554,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.64.171 with SMTP id p11mr3174760lbs.12.1424124099326;
+        Mon, 16 Feb 2015 14:01:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.147.195 with SMTP id v186ls7735677iod.2.gmail; Sat, 16 Sep
- 2017 01:17:09 -0700 (PDT)
-X-Received: by 10.31.156.78 with SMTP id f75mr4394741vke.49.1505549829628;
-        Sat, 16 Sep 2017 01:17:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505549829; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CsBx4O40ZdsHjKb7xWlENqsWN2BZYz09HCHc5XU3eaLBfGkex5+H6rPzaNztgCBi5w
-         uRYWvT5aw4nqeBDIppUJEI2ZWt+pE2EEWKDxv3yZ7VK/BI2N2zwSPqkaJ8ZDpsj6YxSh
-         6x87cc5AgSvkauJKhweFQZ0Rjfy5FezXU1arsWVixZRTIJfKg2Jl/UFrchhCfnwVwk+2
-         WebPrEpAk+tXxc2kcO4FuOLUE6VBDHKA5/Y5mHJUYSDY3ZkHJt/EsUAWrjiE6N2Mlevd
-         DFXa6ubqPuaFOyZoiJanA999Ff4rgJYUle/KpHjLiOD7qxn5yRyVMHowBcpaOnw7ROoB
-         uZdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=jm0VgDf7MsLjQqnSh7Wpy2uyetD67cIhnHYI/BlxWoA=;
-        b=OX2vvNMh6y3XE00/L61PDdgU6WUlKtN377Ju3zsLZ3w8QTxFV/I7hxlWjVyifU+hh2
-         E4F8olWIeV2Fj80+CipIvIg+ygvaBvxWprbl/g5vXXPEv3VEKnEQtuDsOc/oYIus9E2f
-         u3oMAelN4cz5Zf2mzokIEr0is5amPJjHpl4snwTU6wXtJbGG5ExWSzVbGUTwJouW3h+m
-         mETVz0m6Vcsebdt+UhR7WtTmeXulZHJ0j3W7KuH9Qb4d2OxcLJAZBGnmqKOkb9U2Dqa4
-         QZMl4oVXqzhBaIrUHGZ4VuyhQzrx0YEdJFYonYJgBDalVHtxyl9BHW8iATMiFcB5sS3n
-         67Rg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OkPfXCzh;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id y18si290110pfj.18.2017.09.16.01.17.09
+Received: by 10.180.221.41 with SMTP id qb9ls864444wic.16.canary; Mon, 16 Feb
+ 2015 14:01:39 -0800 (PST)
+X-Received: by 10.194.142.174 with SMTP id rx14mr3199752wjb.4.1424124098965;
+        Mon, 16 Feb 2015 14:01:38 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id cl5si8345921wib.3.2015.02.16.14.01.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 01:17:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 16 Feb 2015 14:01:38 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OkPfXCzh;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id v5so2475836pgn.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 01:17:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=jm0VgDf7MsLjQqnSh7Wpy2uyetD67cIhnHYI/BlxWoA=;
-        b=OkPfXCzhHnDxFe+VWFki9BoZdfXBCZuAKsUHPo9XDXkhnv3DPJRoPxOvTxhMsg+A8g
-         42VD8BYuE1xnT8d4J3qViJtwnF4ZzCB/nOOasu4pr+wU0uVvJjDaLCX0xVvVlMXG8ETD
-         P+aGrU7qGwrBvA5MwmZvLVnkyXEF8aw/J1WZe5RM4/9zUi416jx13dMV9SssZ4ug8Lho
-         Am64ww2bVAwMWII68nUDp58TWg05jTjkUA2/TTG7BftJHpPESJw021ZSEauS2R/u1o36
-         bs5vAOUnuu5CQf2xpki+MruvZpSl83ahK7yGpIDE29DUPqWiJRSXOcNxHyY4AHjCS3Kg
-         ithw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jm0VgDf7MsLjQqnSh7Wpy2uyetD67cIhnHYI/BlxWoA=;
-        b=YAMsCxgfcBUAdRsVqTQYRE0P6OKm1HL+Vm+/FrH/Q60GxfeFY/fkY8f5yO5MVI9xSJ
-         2oYJXLGn2+KyYmOitcSCS4L9GNpcJOUFkPjEMjZdp/uFIkVlNNpIgOs72pGL3OPn72iB
-         DWAxpC8Q9xzrI8n1hlFeyR2bGZDyFYWWQFCgWX4QZSWQ/EPOMbPWBbZEK/cUvWYWPnar
-         uTYdARQrR5Blv3PIqLpualRr2/xMd4wAkopZcf2kDMZhAax2aNr6AauwVJ6Yn7YGf5Jg
-         6HTA7Vw0Kzm7wmahQNFvY/CrSGrtYA1M0uKwCb8xLDm8A8jQak1xDG/JUsWrrKXspNbg
-         mg5Q==
-X-Gm-Message-State: AHPjjUhhVotFudpy8QWGlC0Ze9g9a4DpDfD3CJn9NDjg7OXNvXvF7Zpy
-	HyDdtRx2anEMRA==
-X-Google-Smtp-Source: AOwi7QDO1DjUt7azK5DPnyWT54QZUwqYwc0LIDo9mfMVvsfEE/+xrtbHIW5zqYnzh80jVxjXo7AHnw==
-X-Received: by 10.159.218.1 with SMTP id v1mr2130737plp.299.1505549829305;
-        Sat, 16 Sep 2017 01:17:09 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
-        by smtp.gmail.com with ESMTPSA id l85sm5903757pfb.176.2017.09.16.01.17.08
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 16 Sep 2017 01:17:08 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] staging: rtl8188eu: fix misspellings in rtl8188e_spec
-Date: Sat, 16 Sep 2017 13:47:02 +0530
-Message-Id: <1505549822-20498-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,590,1418079600"; 
+   d="scan'208";a="122018999"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Feb 2015 23:01:26 +0100
+Date: Mon, 16 Feb 2015 23:01:25 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: outreachy-kernel@googlegroups.com
+Subject: Welcome
+Message-ID: <alpine.DEB.2.02.1502162301000.2062@localhost6.localdomain6>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
- drivers/staging/rtl8188eu/include/rtl8188e_spec.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Greetings potential Linux kernel Outreachy interns!  Please read this
+*entire* email, even if you have applied in the past, as some things have
+changed for this application round.
 
-diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_spec.h b/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
-index a09a4db..71e2b81 100644
---- a/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
-+++ b/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
-@@ -15,7 +15,7 @@
- #ifndef __RTL8188E_SPEC_H__
- #define __RTL8188E_SPEC_H__
- 
--/*        8192C Regsiter offset definition */
-+/*        8192C Register offset definition */
- 
- #define		HAL_PS_TIMER_INT_DELAY	50	/*   50 microseconds */
- #define		HAL_92C_NAV_UPPER_UNIT	128	/*  micro-second */
-@@ -712,7 +712,7 @@ So the following defines for 92C is not entire!!!!!!
- 
- #define REG_USB_HRPWM			0xFE58
- #define REG_USB_HCPWM			0xFE57
--/*        8192C Regsiter Bit and Content definition */
-+/*        8192C Register Bit and Content definition */
- /*	0x0000h ~ 0x00FFh	System Configuration */
- 
- /* 2 SYS_ISO_CTRL */
--- 
-2.7.4
 
+What is Outreachy?
+------------
+
+The next application round for Outreachy internships starts tomorrow,
+February 17.  Outreachy interns are paid $5,500 to work on a full-time
+internship with an open source mentor from May 25, 2015 to August 25, 2015.
+Interns are also granted a $500 travel stipend to go to any conference
+approved by their mentor that relates to their project.
+
+
+Who can apply?
+--------------
+
+To qualify to apply for Outreachy, you must meet the following requirements:
+
+ * You must be over 18,
+ * You must be able to work full-time (40 hours per week) from May 25, 2015
+ * to August 25, 2015,
+ * You must be a woman (cis or trans), or a gender queer, gender free, or
+   gender fluid individual, or an alumni of the Ascend Project, and
+ * You cannot have participated in Outreachy or Google Summer of Code before.
+
+
+What Outreachy projects can you apply to?
+-----------------------------------
+
+There will be several different open source projects participating in
+this round of Outreachy, and the full list will be officially announced
+tomorrow.
+
+https://wiki.gnome.org/Outreachy/2015/MayAugust#Participating_Organizations
+
+It's no secret that the Linux kernel project is participating again,
+since we already have five projects listed on our wiki.
+
+http://kernelnewbies.org/OutreachyIntro
+
+
+How do I apply to the Linux kernel project?
+-------------------------------------------
+
+The application process for the Linux kernel project is outlined here:
+
+http://kernelnewbies.org/OutreachyApply
+
+Basically, applicants will need to walk through our tutorial for
+creating their first Linux kernel patch:
+
+http://kernelnewbies.org/Outreachyfirstpatch
+
+Applicants should also join the #opw IRC channel on irc.gnome.org, and
+the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble with
+IRC, please ask for help on this mailing list.
+
+As in the last Outreachy round, we are encouraging applicants (once they
+have completed a number of Staging driver cleanup patches) to complete some
+small tasks outlined by the mentors.  The task lists for each mentor are
+linked from the OutreachyIntro page.
+
+*Before* you start on a task, please claim that task through this page:
+
+http://kernelnewbies.org/OutreachyTasks
+
+There is a tips section at the end of the tutorial to outline what
+behaviors we look for in potential Outreachy interns.  I hope this will
+give more insight into our selection process.
+
+http://kernelnewbies.org/Outreachyfirstpatch#tips
+
+We've also noticed that applicants (and even accepted interns!) aren't
+consistently using the email communication style preferred by the Linux
+kernel community.  This style can be as important as coding style to
+many community members, so please review the email style guidelines and
+attempt to follow them:
+
+http://kernelnewbies.org/Outreachyfirstpatch#head-9799d3ebaa1221875dfdb0a05c4063dc4eb474a1
+
+
+When can I apply?
+-----------------
+
+The application period for the Linux kernel project during Outreachy Round 10
+is February 17 to March 24.
+
+Good luck with your application!  If you have any questions, mentors
+will be available via IRC or this mailing list.  Do not hesitate to ask
+questions if you get stuck in the tutorial.
+
+Julia Lawall
+Linux Kernel Outreachy Coordinator
 
