@@ -1,77 +1,79 @@
-X-GM-THRID: 1653519417344
-X-Received: by 10.66.155.232 with SMTP id vz8mr248442pab.41.1424475843844;
-        Fri, 20 Feb 2015 15:44:03 -0800 (PST)
+X-GM-THRID: 213884338176
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,db22422998b7f0e5,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.79.168 with SMTP id k8mr29254569obx.49.1424209055790;
+        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.159 with SMTP id 31ls496925iop.32.gmail; Fri, 20 Feb
- 2015 15:44:03 -0800 (PST)
-X-Received: by 10.68.197.137 with SMTP id iu9mr318777pbc.5.1424475843599;
-        Fri, 20 Feb 2015 15:44:03 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pd0-f175.google.com (mail-pd0-f175.google.com. [209.85.192.175])
-        by gmr-mx.google.com with ESMTPS id ki8si3446581pdb.1.2015.02.20.15.44.03
+Received: by 10.140.93.165 with SMTP id d34ls3023916qge.61.gmail; Tue, 17 Feb
+ 2015 13:37:35 -0800 (PST)
+X-Received: by 10.236.24.228 with SMTP id x64mr27331156yhx.26.1424209055634;
+        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pd0-f181.google.com (mail-pd0-f181.google.com. [209.85.192.181])
+        by gmr-mx.google.com with ESMTPS id bo1si2292512pbc.0.2015.02.17.13.37.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 15:44:03 -0800 (PST)
-Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.192.175;
+        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.192.181 as permitted sender) client-ip=209.85.192.181;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
-Received: by mail-pd0-f175.google.com with SMTP id fl12so10994198pdb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 15:44:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=38DOflHeD9rQGDhADU+/DbX8WgBAi6SZxeX7yUUtV2s=;
-        b=jdhdcsfvhsPvUq1m7RbNSQnBUu4SFYB9kf/9d5HJ00ZR9bWNo1g/Pxd8qPk1VYHcOH
-         kIk8z5GQnLZ3+kyWKoPPJnWqvVE5sQrsGLUyjRkxLSXFGo95izBj2XujyajlZ9tFu2ex
-         PaTHSMcNE2JAryWm65ePhhpvgYWto8o55j3nCb0h+JTXaCyhsnsNLWkVS/qtwdD7LwHs
-         7cf6FlSZoTkSDP7QbFhECRtqrKYDesWFZAZibTHLe3S+KEIHwS+RQGvoZYjhrjFrajnp
-         30wB3z7FYIhtdWWhz68o3kOjuGXjkJN7ICHNvaW8j2OxKatWR9VDbpssxSl1QAfEPiMH
-         kYcA==
-X-Gm-Message-State: ALoCoQnqa79NWVDC6wueTbtWV15YllcqND/wNREeDKj+0J5lwgHWb9Ej+oLFv3QIvUU9DDiJr1Rg
-X-Received: by 10.68.102.194 with SMTP id fq2mr128345pbb.99.1424475843463;
-        Fri, 20 Feb 2015 15:44:03 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 ([2601:9:8340:b6:b929:33ec:23a3:1811])
-        by mx.google.com with ESMTPSA id n10sm28132098pdp.18.2015.02.20.15.44.02
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.192.181 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-f181.google.com with SMTP id z10so46445045pdj.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Feb 2015 13:37:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=t8RT78uBKH5F7Blg0YZ+4IFycfCspnflU0ow9EiR+cM=;
+        b=jL/gFgDmQ4N/7FLV2vTeA3YyzQ4BDCgCJ3V8pOjX4bKCAkNJ6K9ZK4OE3cHMNr2X5p
+         vy1O4NNMstMZZxxtqTAgJ6F8zXotWSZ+tH2vPGtDXgSNJxNM6wy6febfadY/xN0lLxJg
+         M0RqNe6fh4iNJXMkWgBwtJYfGBb399um67zf2r9sgmmhehTu59E/K7hVNX8EYyLyNPh+
+         BJLa0mqjfsEurFgF8OjoG3rzG/6YNRjoHcs8B+SQorc6sdhJXSoWr6ZbKOhC4sEXtECZ
+         qOstPf4KjbmLXjl1m5j+KM8LBb3AyDEMzJwwe28OwtxychH2bbLHqqLnkM7r3puuFKGd
+         paOw==
+X-Received: by 10.68.252.198 with SMTP id zu6mr51947748pbc.102.1424209055439;
+        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id ex1sm18446376pbc.80.2015.02.17.13.37.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 15:44:02 -0800 (PST)
-Date: Fri, 20 Feb 2015 15:44:01 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
+        Tue, 17 Feb 2015 13:37:34 -0800 (PST)
+Date: Wed, 18 Feb 2015 03:07:20 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: replace __constant_cpu_to_le16
-Message-ID: <20150220234401.GA9928@katie-Inspiron-5748>
+Subject: [PATCH] Staging: i2o: Use preferred library linux/uaccess.h over
+ asm/uaccess.h
+Message-ID: <20150217213720.GA9267@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Addresses checkpatch.pl warning:
-WARNING: __constant_cpu_to_le16 should be cpu_to_le16
-by making the suggested replacement
+This patch fixes checkpatch.pl warning "Use #include
+<linux/uaccess.h> instead of <asm/uaccess.h>" in i2o/config-osm.c .
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/rtl8712/wifi.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/i2o/config-osm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/wifi.h b/drivers/staging/rtl8712/wifi.h
-index 73d7cd2..5ba7e71 100644
---- a/drivers/staging/rtl8712/wifi.h
-+++ b/drivers/staging/rtl8712/wifi.h
-@@ -248,9 +248,9 @@ enum WIFI_REG_DOMAIN {
+diff --git a/drivers/staging/i2o/config-osm.c b/drivers/staging/i2o/config-osm.c
+index 519f52f..45091ac 100644
+--- a/drivers/staging/i2o/config-osm.c
++++ b/drivers/staging/i2o/config-osm.c
+@@ -19,7 +19,7 @@
+ #include <linux/namei.h>
+ #include <linux/fs.h>
  
- #define SetFrameType(pbuf, type)	\
- 	do {	\
--		*(unsigned short *)(pbuf) &= __constant_cpu_to_le16(~(BIT(3) | \
-+		*(unsigned short *)(pbuf) &= cpu_to_le16(~(BIT(3) | \
- 		BIT(2))); \
--		*(unsigned short *)(pbuf) |= __constant_cpu_to_le16(type); \
-+		*(unsigned short *)(pbuf) |= cpu_to_le16(type); \
- 	} while (0)
+-#include <asm/uaccess.h>
++#include <linux/uaccess.h>
  
- #define GetFrameSubType(pbuf)	(cpu_to_le16(*(unsigned short *)(pbuf)) & \
+ #define OSM_NAME	"config-osm"
+ #define OSM_VERSION	"1.323"
 -- 
 1.9.1
 
