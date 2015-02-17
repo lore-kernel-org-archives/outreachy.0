@@ -1,65 +1,92 @@
 X-GM-THRID: 80310435840
-X-Received: by 10.112.138.202 with SMTP id qs10mr894499lbb.24.1424163455972;
-        Tue, 17 Feb 2015 00:57:35 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,532940753aaf6731,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.42.240.11 with SMTP id ky11mr27416749icb.31.1424148714517;
+        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.97 with SMTP id p1ls658495laj.4.gmail; Tue, 17 Feb 2015
- 00:57:35 -0800 (PST)
-X-Received: by 10.112.199.69 with SMTP id ji5mr2015968lbc.0.1424163455445;
-        Tue, 17 Feb 2015 00:57:35 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id l8si5807012wia.0.2015.02.17.00.57.35
+Received: by 10.107.133.209 with SMTP id p78ls1609079ioi.71.gmail; Mon, 16 Feb
+ 2015 20:51:54 -0800 (PST)
+X-Received: by 10.66.252.138 with SMTP id zs10mr24544153pac.3.1424148714359;
+        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pd0-f171.google.com (mail-pd0-f171.google.com. [209.85.192.171])
+        by gmr-mx.google.com with ESMTPS id ks4si2007317pbc.1.2015.02.16.20.51.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Feb 2015 00:57:35 -0800 (PST)
-Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.17.13;
+        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.192.171 as permitted sender) client-ip=209.85.192.171;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0M5fdw-1Xdg9O1x84-00xarM; Tue, 17 Feb
- 2015 09:57:34 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.192.171 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pdev10 with SMTP id v10so41059015pde.7
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Feb 2015 20:51:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=2rPttYaYf7F2bVWsMLV34Q3s9U0Ty8HwuRePy5BlX2Y=;
+        b=qUr/PfFpsPmCvgBqBl3xTnhp4YE7BKvYQj4sXFp4LA8dPOORekQq6/VpjKKiZA/rFf
+         4HquqbsGfXUQdVLK5uCbcLGkpe87v7nPVu1WTmiafnGNXP3oUQ+WAtvubHqAngn1deTI
+         BtV8t3aduMdhmu0B0rx6nn5aE0HAYO7HCrvF8FGJCs3M0gCAhLndz8qQFS1yZxMU5O2t
+         1AfgYFg9jnJ7Yu5kLMIMEV1kuO14dTg6N1v9qzDHLQILfh0IgUtfTlIvprWPEi621i6I
+         WBn7LClIc0DSs7YIQ5pnRn3YGSOXfnCAdJ/G8oKLZ6SR8fNExKYAlw60e4XYgyC9uXZd
+         ZOfw==
+X-Received: by 10.68.245.196 with SMTP id xq4mr1238165pbc.124.1424148714248;
+        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([103.241.45.81])
+        by mx.google.com with ESMTPSA id f12sm16455271pat.43.2015.02.16.20.51.52
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 16 Feb 2015 20:51:53 -0800 (PST)
+Date: Tue, 17 Feb 2015 10:21:49 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Vaishali Thakkar <vthakkar1994@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: media: lirc: Use setup_timer
-Date: Tue, 17 Feb 2015 09:57:33 +0100
-Message-ID: <3457005.LTXKFus5ps@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20150217045149.GA3532@vaishali-Ideapad-Z570>
-References: <20150217045149.GA3532@vaishali-Ideapad-Z570>
+Subject: [PATCH] Staging: media: lirc: Use setup_timer
+Message-ID: <20150217045149.GA3532@vaishali-Ideapad-Z570>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID:  V03:K0:msUrtXqdGoKjwA+izeitgw+pewDhUbeXzqYRzYqFTZJCUriVps7
- QL1ZWRVONWwWmJjCCvRRTfYs0s0texxtfgu9SRyKpbEDwd8rIF24hez4ZzK31xt+EldsDew
- n3F3rH7VIa25BVsOtyjUWsngm5sfdpNMlBXjer31PZLdfIe/A4hRTbp5/f4fI7L19fTA4K6
- 59/jGrB3vrubG0QLf9JeA==
-X-UI-Out-Filterresults: notjunk:1;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tuesday 17 February 2015 10:21:49 Vaishali Thakkar wrote:
-> This patch introduces the use of function setup_timer.
-> 
-> This is done using Coccinelle and semantic patch used is
-> as follows:
-> 
-> @@
-> expression x,y,z;
-> @@
-> 
-> - init_timer (&x);
-> + setup_timer (&x, y, z);
-> - x.function = y;
-> - x.data = z;
-> 
-> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+This patch introduces the use of function setup_timer.
 
-The patch looks great to me, but try to be more explicit about
-why this change is done in the description. Rather than just
-repeating the subject in the patch description here, explain
-why this is useful. In particular, is the only benefit to shorten
-the function by two lines and make it more readable, or is there
-also a functional change where the new code avoid a potential
-problem?
+This is done using Coccinelle and semantic patch used is
+as follows:
 
-	Arnd
+@@
+expression x,y,z;
+@@
+
+- init_timer (&x);
++ setup_timer (&x, y, z);
+- x.function = y;
+- x.data = z;
+
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+---
+ drivers/staging/media/lirc/lirc_sir.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/staging/media/lirc/lirc_sir.c b/drivers/staging/media/lirc/lirc_sir.c
+index 39f4733..d1ada8c 100644
+--- a/drivers/staging/media/lirc/lirc_sir.c
++++ b/drivers/staging/media/lirc/lirc_sir.c
+@@ -683,9 +683,7 @@ static int init_port(void)
+ 	}
+ 	pr_info("I/O port 0x%.4x, IRQ %d.\n", io, irq);
+ 
+-	init_timer(&timerlist);
+-	timerlist.function = sir_timeout;
+-	timerlist.data = 0xabadcafe;
++	setup_timer(&timerlist, sir_timeout, 0xabadcafe);
+ 
+ 	return 0;
+ }
+-- 
+1.9.1
+
 
