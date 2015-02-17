@@ -1,81 +1,74 @@
-X-GM-THRID: 50771001344
-X-Received: by 10.112.146.65 with SMTP id ta1mr115105lbb.19.1424099627243;
-        Mon, 16 Feb 2015 07:13:47 -0800 (PST)
+X-GM-THRID: 168866873344
+X-Received: by 10.112.144.130 with SMTP id sm2mr3603727lbb.9.1424198065203;
+        Tue, 17 Feb 2015 10:34:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.87.14 with SMTP id t14ls78151laz.61.gmail; Mon, 16 Feb
- 2015 07:13:46 -0800 (PST)
-X-Received: by 10.112.99.37 with SMTP id en5mr2964019lbb.17.1424099626795;
-        Mon, 16 Feb 2015 07:13:46 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l8si5630931wia.0.2015.02.16.07.13.46
+Received: by 10.180.23.40 with SMTP id j8ls397900wif.44.gmail; Tue, 17 Feb
+ 2015 10:34:24 -0800 (PST)
+X-Received: by 10.194.178.234 with SMTP id db10mr3801894wjc.2.1424198064925;
+        Tue, 17 Feb 2015 10:34:24 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-we0-f169.google.com (mail-we0-f169.google.com. [74.125.82.169])
+        by gmr-mx.google.com with ESMTPS id l8si5997069wia.0.2015.02.17.10.34.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Mon, 16 Feb 2015 07:13:46 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Feb 2015 10:34:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.169 as permitted sender) client-ip=74.125.82.169;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,588,1418079600"; 
-   d="scan'208";a="121972263"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Feb 2015 16:13:46 +0100
-Date: Mon, 16 Feb 2015 16:13:43 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Vatika Harlalka <vatikaharlalka@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [OPW kernel] [PATCH] Staging: dgnc: Fix warning of code style
-In-Reply-To: <20150216145502.GA18024@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502161601440.2375@hadrien>
-References: <20150216145502.GA18024@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.169 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-f169.google.com with SMTP id q59so160733wes.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Feb 2015 10:34:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=2S12M5rCm1hyOrl/XmfuUWOPcz5p0I5+pC1PurRG6W4=;
+        b=rP0ZHsUwBMcdiS+7AvgV/kMSsHE6pSC1LBHyNkT+PaHJY4OoOGL6nh8F9J8qOV0BG0
+         450dNc/rlKPkwfyzEVmueADW6CPTJXDIrMwnlJxdPnvKiqM7IsjOO6e8ck0Z60NORsUs
+         d2x51eddmW+A95UPNvRo++LIqaXBaE9FrJ75knP5fsPpuXskekQcTqj7ect9e6JFKP1d
+         vhxJ3QSLNLbRMx0GX4kJdwQeN4H9hc6CISlNtRiqUJT51g+nxBVNtnrHSAgkDZrFLAj0
+         g1lFddkGBriZ5NhyHfCRR7e2ihyShjze6ivhFWUItzsFbCEXOnKm0StPuKg49SPTc4hn
+         5l6A==
+X-Received: by 10.180.87.165 with SMTP id az5mr3974647wib.29.1424198064850;
+        Tue, 17 Feb 2015 10:34:24 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([82.201.178.20])
+        by mx.google.com with ESMTPSA id ax10sm28558197wjc.26.2015.02.17.10.34.23
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 17 Feb 2015 10:34:24 -0800 (PST)
+Date: Tue, 17 Feb 2015 20:34:18 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: lustre: ldlm: remove commented call to LBUG
+Message-ID: <20150217183418.GA7795@localhost.localdomain>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Mon, 16 Feb 2015, Vatika Harlalka wrote:
+This patch removes a commented call to LBUG since lustre should be
+cleaned out of debugging macros before moving out of staging.
 
-> This patch fixes checkpatch.pl WARNING:
-> Line longer than 80 chars.
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+---
+ drivers/staging/lustre/lustre/ldlm/ldlm_request.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-In this case, maybe it is ok, because the issue is very simple, but in
-general try to make subject lines and commit logs that describe the
-problema dn what you did to fix it, rather than just saying fix X.  For
-example, you could say "Shorten long line to improve readability".
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+index 287da32..53226b8 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+@@ -1779,7 +1779,6 @@ int ldlm_cancel_resource_local(struct ldlm_resource *res,
+ 		if (opaque != NULL && lock->l_ast_data != opaque) {
+ 			LDLM_ERROR(lock, "data %p doesn't match opaque %p",
+ 				   lock->l_ast_data, opaque);
+-			//LBUG();
+ 			continue;
+ 		}
+ 
+-- 
+1.9.3
 
-> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
-> ---
->  drivers/staging/dgnc/dgnc_driver.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/dgnc/dgnc_driver.c b/drivers/staging/dgnc/dgnc_driver.c
-> index f177d3a..ace2af6 100644
-> --- a/drivers/staging/dgnc/dgnc_driver.c
-> +++ b/drivers/staging/dgnc/dgnc_driver.c
-> @@ -606,7 +606,9 @@ static int dgnc_found_board(struct pci_dev *pdev, int id)
->  	dgnc_create_ports_sysfiles(brd);
->
->  	/* init our poll helper tasklet */
-> -	tasklet_init(&brd->helper_tasklet, brd->bd_ops->tasklet, (unsigned long) brd);
-> +	tasklet_init(&brd->helper_tasklet,
-> +		     brd->bd_ops->tasklet,
-> +		     (unsigned long) brd);
-
-Actually, if you look at other calls to tasklet_init (and other functions)
-in the kernel, it seems to be more common to put as much on a line as
-possible.
-
-Everything else about the format looks good.
-
-julia
-
->  	spin_lock_irqsave(&dgnc_global_lock, flags);
->  	brd->msgbuf = NULL;
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "opw-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to opw-kernel+unsubscribe@googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
