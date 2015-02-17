@@ -1,113 +1,88 @@
-X-GM-THRID: 75436654592
-X-Received: by 10.182.98.133 with SMTP id ei5mr11938243obb.0.1424148183276;
-        Mon, 16 Feb 2015 20:43:03 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.231.225 with SMTP id tj1ls956426obc.7.gmail; Mon, 16 Feb
- 2015 20:43:03 -0800 (PST)
-X-Received: by 10.182.126.196 with SMTP id na4mr24863320obb.18.1424148183106;
-        Mon, 16 Feb 2015 20:43:03 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pd0-f174.google.com (mail-pd0-f174.google.com. [209.85.192.174])
-        by gmr-mx.google.com with ESMTPS id ki8si2004948pdb.1.2015.02.16.20.43.03
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Feb 2015 20:43:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.192.174 as permitted sender) client-ip=209.85.192.174;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.192.174 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdjz10 with SMTP id z10so41058406pdj.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Feb 2015 20:43:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Bt5oONT0GoXkbtqD5fD8KRCoaMrYY66gnceNWR9/bb4=;
-        b=zoD2Tc10t/yv131zHYJiztNs38CHNY6wZhQ46SlE9W9CI/o3kPbNV6M6+1rRzAXSZX
-         T34Ay6ksesynCiqbSRO126BjH6KAPPTzQJnARpYBlJ8zuAT0eyZgtMNjb0N7E7nrfiBN
-         NZCuFHOndFagAnogZs/AS4bOK7tGO9NKXiTkVFo22c+whyuvVnaRsIWlkXpNonewFlQa
-         QnObFhT8Ucybi45s58PTuSvGEEcUfqMBFgCqen1mMdaJ0AsSY42j5J9U1kRbpGfHG/cg
-         vjIgS0ATfwUdJIdh7leTtg8BF4bbz2brM1pJryBLrnyCQ/N0/n2yw2UBhhYIAJGgm5vX
-         caqA==
-X-Received: by 10.68.131.194 with SMTP id oo2mr46260667pbb.29.1424148182948;
-        Mon, 16 Feb 2015 20:43:02 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([103.241.45.81])
-        by mx.google.com with ESMTPSA id v2sm16242445pdo.69.2015.02.16.20.43.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 16 Feb 2015 20:43:02 -0800 (PST)
-Date: Tue, 17 Feb 2015 10:12:57 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
+X-GM-THRID: 126410031104
+Date: Tue, 17 Feb 2015 07:15:36 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Use put_unaligned_le16
-Message-ID: <20150217044257.GA3424@vaishali-Ideapad-Z570>
+Cc: ksenija.stanojevic@gmail.com
+Message-Id: <b4f798fb-a741-498c-969d-338ee14e7aff@googlegroups.com>
+In-Reply-To: <1424183244-4997-1-git-send-email-ksenija.stanojevic@gmail.com>
+References: <1424183244-4997-1-git-send-email-ksenija.stanojevic@gmail.com>
+Subject: Re: [PATCH] Staging: media: vino: Replace C99 with C89 style
+ comment.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1625_1803864214.1424186136368"
+X-Google-Token: EJi2jacF1yRgXd_VD8o0
+X-Google-IP: 77.46.215.254
 
-This patch introduces the use of function put_unaligned_le16.
+------=_Part_1625_1803864214.1424186136368
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1626_1519199999.1424186136368"
 
-This is done using Coccinelle and semantic patch used is as follows:
+------=_Part_1626_1519199999.1424186136368
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-@a@
-typedef u16, __le16, uint16_t;
-{u16,__le16,uint16_t} e16;
-identifier tmp;
-expression ptr;
-expression y,e;
-type T;
-type T;
-@@
+Ok thanks ;)
 
-- tmp = cpu_to_le16(y);
+On Tuesday, February 17, 2015 at 3:30:08 PM UTC+1, Ksenija Stanojevic wrote:
+>
+> This patch fixes checkpatch.pl error in saa7191.c file 
+> ERROR: "do not use C99 // comments" 
+>
+> Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com> 
+> --- 
+>  drivers/staging/media/vino/saa7191.c | 2 +- 
+>  1 file changed, 1 insertion(+), 1 deletion(-) 
+>
+> diff --git a/drivers/staging/media/vino/saa7191.c 
+> b/drivers/staging/media/vino/saa7191.c 
+> index 8e96992..087acab 100644 
+> --- a/drivers/staging/media/vino/saa7191.c 
+> +++ b/drivers/staging/media/vino/saa7191.c 
+> @@ -33,7 +33,7 @@ MODULE_AUTHOR("Mikael Nousiainen <tmnousia@cc.hut.fi>"); 
+>
+>  MODULE_LICENSE("GPL"); 
+>   
+>   
+> -// #define SAA7191_DEBUG 
+> +/* #define SAA7191_DEBUG */ 
+>   
+>  #ifdef SAA7191_DEBUG 
+>  #define dprintk(x...) printk("SAA7191: " x); 
+> -- 
+> 1.9.1 
+>
+>
+------=_Part_1626_1519199999.1424186136368
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-<+... when != tmp
-(
-- memcpy(ptr, (T)&tmp, \(2\|sizeof(u16)\|sizeof(__le16)\|sizeof(uint16_t)\|sizeof(e16)\));
-+ put_unaligned_le16(y,ptr);
-|
-- memcpy(ptr, (T)&tmp, ...);
-+ put_unaligned_le16(y,ptr);
-)
-...+>
-? tmp = e
+<div dir="ltr">Ok thanks ;)<br><br>On Tuesday, February 17, 2015 at 3:30:08 PM UTC+1, Ksenija Stanojevic wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">This patch fixes <a href="http://checkpatch.pl" target="_blank">checkpatch.pl</a> error in saa7191.c file
+<br>ERROR: "do not use C99 // comments"
+<br>
+<br>Signed-off-by: Ksenija Stanojevic&lt;<a href="mailto:ksenija.stanojevic@gmail.com" target="_blank">ksenija.stanojevic@<wbr>gmail.com</a>&gt;
+<br>---
+<br>&nbsp;drivers/staging/media/vino/<wbr>saa7191.c | 2 +-
+<br>&nbsp;1 file changed, 1 insertion(+), 1 deletion(-)
+<br>
+<br>diff --git a/drivers/staging/media/vino/<wbr>saa7191.c b/drivers/staging/media/vino/<wbr>saa7191.c
+<br>index 8e96992..087acab 100644
+<br>--- a/drivers/staging/media/vino/<wbr>saa7191.c
+<br>+++ b/drivers/staging/media/vino/<wbr>saa7191.c
+<br>@@ -33,7 +33,7 @@ MODULE_AUTHOR("Mikael Nousiainen &lt;<a href="mailto:tmnousia@cc.hut.fi" target="_blank">tmnousia@cc.hut.fi</a>&gt;");
+<br>&nbsp;MODULE_LICENSE("GPL");
+<br>&nbsp;
+<br>&nbsp;
+<br>-// #define SAA7191_DEBUG
+<br>+/* #define SAA7191_DEBUG */
+<br>&nbsp;
+<br>&nbsp;#ifdef SAA7191_DEBUG
+<br>&nbsp;#define dprintk(x...) printk("SAA7191: " x);
+<br>-- 
+<br>1.9.1
+<br>
+<br></blockquote></div>
+------=_Part_1626_1519199999.1424186136368--
 
-@@ type T; identifier a.tmp; @@
-
-- T tmp;
-...when != tmp
-
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ap.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index da19145..0b7b156 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ap.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -81,8 +81,6 @@ static void update_BCNTIM(struct adapter *padapter)
- 		__le16 tim_bitmap_le;
- 		uint offset, tmp_len, tim_ielen, tim_ie_offset, remainder_ielen;
- 
--		tim_bitmap_le = cpu_to_le16(pstapriv->tim_bitmap);
--
- 		p = rtw_get_ie(pie + _FIXED_IE_LENGTH_, _TIM_IE_, &tim_ielen, pnetwork_mlmeext->IELength - _FIXED_IE_LENGTH_);
- 		if (p != NULL && tim_ielen > 0) {
- 			tim_ielen += 2;
-@@ -139,7 +137,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 		if (tim_ielen == 4) {
- 			*dst_ie++ = *(u8 *)&tim_bitmap_le;
- 		} else if (tim_ielen == 5) {
--			memcpy(dst_ie, &tim_bitmap_le, 2);
-+			put_unaligned_le16(pstapriv->tim_bitmap, dst_ie);
- 			dst_ie += 2;
- 		}
- 
--- 
-1.9.1
-
+------=_Part_1625_1803864214.1424186136368--
 
