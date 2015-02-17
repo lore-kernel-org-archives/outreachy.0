@@ -1,60 +1,63 @@
 X-GM-THRID: 432606806016
-X-Received: by 10.112.161.201 with SMTP id xu9mr189524lbb.11.1424297745778;
-        Wed, 18 Feb 2015 14:15:45 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,4a6d4a554d90bddd
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.239.41 with SMTP id vp9mr178374wjc.5.1424295804113;
+        Wed, 18 Feb 2015 13:43:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.108.3 with SMTP id hg3ls159445wib.37.gmail; Wed, 18 Feb
- 2015 14:15:45 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr319412wib.4.1424297745405;
-        Wed, 18 Feb 2015 14:15:45 -0800 (PST)
+Received: by 10.152.27.193 with SMTP id v1ls73609lag.102.gmail; Wed, 18 Feb
+ 2015 13:43:22 -0800 (PST)
+X-Received: by 10.152.43.166 with SMTP id x6mr179392lal.3.1424295802117;
+        Wed, 18 Feb 2015 13:43:22 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from mail-wg0-x244.google.com (mail-wg0-x244.google.com. [2a00:1450:400c:c00::244])
-        by gmr-mx.google.com with ESMTPS id ev8si6274383wib.3.2015.02.18.14.15.45
+        by gmr-mx.google.com with ESMTPS id l8si6261365wia.0.2015.02.18.13.43.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 14:15:45 -0800 (PST)
+        Wed, 18 Feb 2015 13:43:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) client-ip=2a00:1450:400c:c00::244;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x244.google.com with SMTP id y19so1044415wgg.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 14:15:45 -0800 (PST)
+Received: by mail-wg0-x244.google.com with SMTP id y19so1007496wgg.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 13:43:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=wJ/iPF1SYJZXOXa2tUGhXo8X2QduyPlLGXxYClF/DfY=;
-        b=EMOi6HIGCZfU6Nxekw4GFVHsjL3J7RMCfsblXtOdJMGZEwSLvqqRTUnXZliZ61FKmt
-         WnA0Q5pPyYilQaPeTv8n0DYtN+vtAF99ClRLw62lksWMG3+BOVzhO9B1QzLtSY8ZUzzv
-         dIebLc2pG9Srfx5U/aD1K/C3lHcwxaT0sibf2sLF1WCBNlZkA83fYncVFgo1r70VyW54
-         yVMZKEcuQXf2dfrnxPjSjh+ZpYmQeVxofq7p3loom6nEO9sg8QISqj30hNEK6xfCmpNf
-         iRFdgKjs6vGfO4SJabXT/oT2z2/nfeZheAlZnL+EAYLhYcfEuwrKppAXzZpBAaifGspq
-         41HA==
-X-Received: by 10.194.95.66 with SMTP id di2mr2849333wjb.57.1424297745284;
-        Wed, 18 Feb 2015 14:15:45 -0800 (PST)
+        bh=cb6LaYZUT49+YP9eN1IZSZy2mywfG92ti2EzpvBDHlM=;
+        b=vzBntSlSh7FVxJjvR8aCR4IrnCJjTV+BT3QPwPX5J3zCrapFkaoL5jwjdspckkI8ey
+         SGZOiM1/v0D8H1ACeSuCPVpfA6uKY1nO2AXXcN52ORonfbSptDogtZBCXKpYN1c3y7ft
+         haWBnavch1CsECRU4xO7OA/y3+eG8vB3UqG8xq7ucDWR8YojGi2/fwDYGoeVAzIGXw7F
+         6DspRI3qAN/bgN2apWsLDtANHB+dgAmFL1nh7XldFv58onS4dbe2lwMNQgslC5keMGaH
+         dl2PcQdm0DChVYSyh91bp4Y8Q5XSELTvrqPJ72twFgk49SoIXdFFjstted6u0q2p4BgE
+         y7iQ==
+X-Received: by 10.180.21.210 with SMTP id x18mr8797839wie.78.1424295802006;
+        Wed, 18 Feb 2015 13:43:22 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.54.252])
-        by mx.google.com with ESMTPSA id k1sm34569228wjn.9.2015.02.18.14.15.44
+        by mx.google.com with ESMTPSA id lx10sm2707684wjb.17.2015.02.18.13.43.20
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 14:15:44 -0800 (PST)
+        Wed, 18 Feb 2015 13:43:21 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 9F73363327; Wed, 18 Feb 2015 00:10:44 +0300 (AST)
+	id 0F66A63327; Tue, 17 Feb 2015 23:38:21 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
 Subject: [PATCH] Staging: rts5208: Remove braces around single if-statement
-Date: Wed, 18 Feb 2015 00:10:34 +0300
-Message-Id: <1424207434-24078-1-git-send-email-hamohammed.sa@gmail.com>
+Date: Tue, 17 Feb 2015 23:38:19 +0300
+Message-Id: <1424205499-23826-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1424205499-23826-1-git-send-email-hamohammed.sa@gmail.com>
-References: <1424205499-23826-1-git-send-email-hamohammed.sa@gmail.com>
+In-Reply-To: <alpine.DEB.2.02.1502182135090.2248@localhost6.localdomain6>
+References: <alpine.DEB.2.02.1502182135090.2248@localhost6.localdomain6>
 
-This patch removes unneeded braces around a single if-statement.
-This problem was found using checkpatch.pl.
+This patch fixes the following checkpatch.pl warning:
+"WARNING: suspect code indent for conditional statements (8, 8)"
+By removing unneeded braces around a single if-statement.
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
-v2: changed commit message
-
  drivers/staging/rts5208/rtsx_scsi.c | 2 --
  1 file changed, 2 deletions(-)
 
