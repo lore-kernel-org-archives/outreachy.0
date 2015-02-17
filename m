@@ -1,83 +1,78 @@
 X-GM-THRID: 108667076608
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,24a44102f4e077fa
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.2.67 with SMTP id 3mr3601353las.8.1424179343206;
-        Tue, 17 Feb 2015 05:22:23 -0800 (PST)
+X-Received: by 10.236.70.100 with SMTP id o64mr16138265yhd.9.1424178663275;
+        Tue, 17 Feb 2015 05:11:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.87.231 with SMTP id bb7ls398564lab.50.gmail; Tue, 17 Feb
- 2015 05:22:22 -0800 (PST)
-X-Received: by 10.112.119.141 with SMTP id ku13mr3633980lbb.7.1424179342726;
-        Tue, 17 Feb 2015 05:22:22 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id o3si3689481wib.2.2015.02.17.05.22.22
+Received: by 10.140.16.173 with SMTP id 42ls2634915qgb.55.gmail; Tue, 17 Feb
+ 2015 05:11:03 -0800 (PST)
+X-Received: by 10.236.70.100 with SMTP id o64mr16138254yhd.9.1424178663091;
+        Tue, 17 Feb 2015 05:11:03 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-f46.google.com (mail-pa0-f46.google.com. [209.85.220.46])
+        by gmr-mx.google.com with ESMTPS id bo1si2138274pbc.0.2015.02.17.05.11.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 17 Feb 2015 05:22:22 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Feb 2015 05:11:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.220.46 as permitted sender) client-ip=209.85.220.46;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,594,1418079600"; 
-   d="scan'208";a="100348981"
-Received: from technetium.rsr.lip6.fr ([132.227.76.37])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Feb 2015 14:22:22 +0100
-Date: Tue, 17 Feb 2015 14:24:02 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Vatika Harlalka <vatikaharlalka@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [Patch] Staging: emxx_udc: Convert from
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.220.46 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-f46.google.com with SMTP id eu11so6238884pac.10
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Feb 2015 05:11:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=XWbK8zf7AtbIvH3HcbroxYkVSMLJEjkGsyT5CwF9m6k=;
+        b=cexGMYSwIwrlgJAAaO7V8U4nLvSE2ODxxEkiXv61gNgXk1XhR+J9Z26+5EJd+7p8cK
+         +DHSNZMCbq71b52WjfmbElxJhD5+r9egAAYBX6ifNxq2BNSUQdICmnMXiS2qJAIwcuKV
+         hsey2VAlr/w30tRmt4ScJMfypPtRvBdZHWL5EuwQV26n4QwLxsSUDx2O6uvkfYaOxPrr
+         MeQkTyUWAUVvjSbWDBP3Bbs3EtnLC+1qe/FGMLBZOLpi7fajcckm/VcDY08agk8oclJm
+         2DJI8D1O3VG7A9YTqL48m82WQMVnzLzO9cdg/FbLXLlzliVobkP7oq24/MY68/e895oM
+         vPSA==
+X-Received: by 10.70.140.162 with SMTP id rh2mr34277808pdb.131.1424178662953;
+        Tue, 17 Feb 2015 05:11:02 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id sf7sm17601048pbc.29.2015.02.17.05.11.00
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 17 Feb 2015 05:11:01 -0800 (PST)
+Date: Tue, 17 Feb 2015 18:40:48 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [Patch] Staging: emxx_udc: Convert from
  __attribute__((aligned(size))) to __aligned(size).
-In-Reply-To: <20150217131048.GA5235@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502171422400.2171@hadrien>
-References: <20150217131048.GA5235@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Message-ID: <20150217131048.GA5235@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tue, 17 Feb 2015, Vatika Harlalka wrote:
+This patch addresses the checkpatch.pl warning
 
-> This patch addresses the checkpatch.pl warning
->
-> WARNING: __aligned(size) is preferred over __attribute__((aligned(size)))
+WARNING: __aligned(size) is preferred over __attribute__((aligned(size)))
 
-You could try to find out why it is preferred and explain that.  I don't
-know if there is an interesting reason, but you might find some comments
-in git logs.
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+---
+ drivers/staging/emxx_udc/emxx_udc.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
-> ---
->  drivers/staging/emxx_udc/emxx_udc.h | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
-> index ee1b80d..90c5d1d 100644
-> --- a/drivers/staging/emxx_udc/emxx_udc.h
-> +++ b/drivers/staging/emxx_udc/emxx_udc.h
-> @@ -535,8 +535,7 @@ typedef struct _T_FC_REGS {
->
->  	u8 Reserved1200[0x1000-0x200];	/* Reserved */
->
-> -} __attribute__ ((aligned(32))) T_FC_REGS, *PT_FC_REGS;
-> -
-> +} __aligned(32) T_FC_REGS, *PT_FC_REGS;
+diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+index ee1b80d..90c5d1d 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.h
++++ b/drivers/staging/emxx_udc/emxx_udc.h
+@@ -535,8 +535,7 @@ typedef struct _T_FC_REGS {
+ 
+ 	u8 Reserved1200[0x1000-0x200];	/* Reserved */
+ 
+-} __attribute__ ((aligned(32))) T_FC_REGS, *PT_FC_REGS;
+-
++} __aligned(32) T_FC_REGS, *PT_FC_REGS;
+ 
+ 
+ 
+-- 
+1.9.1
 
-It looks like an extra line has disappeared?  Was that intentional?
-
-julia
-
->
->
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150217131048.GA5235%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
