@@ -3,101 +3,195 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,bead06cd7830e23e
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.181.13.236 with SMTP id fb12mr214061wid.1.1424282925575;
-        Wed, 18 Feb 2015 10:08:45 -0800 (PST)
+X-Received: by 10.182.22.138 with SMTP id d10mr87738obf.37.1424279956591;
+        Wed, 18 Feb 2015 09:19:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.100 with SMTP id i4ls43911laa.106.gmail; Wed, 18 Feb
- 2015 10:08:45 -0800 (PST)
-X-Received: by 10.112.99.37 with SMTP id en5mr85171lbb.17.1424282925109;
-        Wed, 18 Feb 2015 10:08:45 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-wg0-x232.google.com (mail-wg0-x232.google.com. [2a00:1450:400c:c00::232])
-        by gmr-mx.google.com with ESMTPS id l8si6223902wia.0.2015.02.18.10.08.45
+Received: by 10.140.19.228 with SMTP id 91ls186906qgh.14.gmail; Wed, 18 Feb
+ 2015 09:19:16 -0800 (PST)
+X-Received: by 10.236.29.133 with SMTP id i5mr324378yha.3.1424279956326;
+        Wed, 18 Feb 2015 09:19:16 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qa0-x233.google.com (mail-qa0-x233.google.com. [2607:f8b0:400d:c00::233])
+        by gmr-mx.google.com with ESMTPS id kt5si4672262qcb.3.2015.02.18.09.19.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 10:08:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) client-ip=2a00:1450:400c:c00::232;
+        Wed, 18 Feb 2015 09:19:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::233 as permitted sender) client-ip=2607:f8b0:400d:c00::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::233 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x232.google.com with SMTP id l2so2688560wgh.9
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 10:08:45 -0800 (PST)
+Received: by mail-qa0-f51.google.com with SMTP id i13so1739244qae.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 09:19:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=hOhiDcR7QYlc1Kc24Gc4hRO8ZG+MvDCCOCAHX+bTxYs=;
-        b=XoatwESjVjKhF5USlyeIV/7ErTWAxwbG0LjlUqqbrvo3b9EZJxwqjsxRgkUwv/Ne3z
-         z9yzO1/Q3jd4JvxJBBXr7r4KIzXsIb0OD1chzIIyGrU1cJ/h2c0QGTOHLU9KXyD5EhOA
-         /5UM4ud7bK2URH76TyaXJDs/WrbbPR0pOKWl5ANv+4Cm6mIlDCPaigfEKq/1RXTtlf9t
-         MSkbLkwxw5dbdViQXmLRcfcm5UGj46ebD5m2f12Dvt3tDz4TmTN8IacOJ5U2jbmG5mme
-         nWCn0ZD+VcPIkhmqUHfTNfsSi4YDnwt2KQIZpgORDUoWMs0bNndzcDSlHXUGgKjjNcF3
-         BDng==
+        h=from:message-id:date:user-agent:mime-version:to:cc:subject
+         :references:in-reply-to:content-type:content-transfer-encoding;
+        bh=446QYf/v8cHDhj7LONWMHuXqn6kOHVlvFM0E0ZaA/yo=;
+        b=y6ljE10zSrDGl4eb4BkT+VWxs/eKqOMs/m6iRKEy1OiUraTtlK2WEs7K0Gv/N1Mht/
+         S3fn5521vTPukRVoELH6jthKakFvANqYYbs8nIAv/maIfdYo+OaByyf5707QjD7ESV8M
+         soF+TD2qWZHNTs/GquMDyfyiY8B4SRHfZCvWAD5vGgvGE5aP7Pc/SZCzuq2M1wSey46F
+         ztNcyv9TQXA3pTVuRChq+SNIaeHMgK5e/Sf2o5kP1xcYAmFNUKvVmVySNpvKykVO+7Cm
+         06r0LB7yKOYZ2ARuLRUCV30orFE0nQ7q76WrnqzP4pTNreZ94Bd3Hh8fhVJjKBZ8NvpL
+         WTTg==
+X-Received: by 10.141.23.1 with SMTP id z1mr2203294qhd.27.1424279956143;
+        Wed, 18 Feb 2015 09:19:16 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [192.168.99.32] (pool-71-190-187-138.nycmny.fios.verizon.net. [71.190.187.138])
+        by mx.google.com with ESMTPSA id u20sm16337809qah.12.2015.02.18.09.19.15
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Feb 2015 09:19:15 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54E4C992.7060404@gmail.com>
+Date: Wed, 18 Feb 2015 12:19:14 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-X-Received: by 10.194.77.99 with SMTP id r3mr617138wjw.149.1424282925010; Wed,
- 18 Feb 2015 10:08:45 -0800 (PST)
-Received: by 10.194.13.168 with HTTP; Wed, 18 Feb 2015 10:08:44 -0800 (PST)
-In-Reply-To: <54E4C770.8090301@gmail.com>
-References: <20150217044257.GA3424@vaishali-Ideapad-Z570>
-	<54E392AB.2020405@gmail.com>
-	<CAK-LDbLbpQ0d7eyGbYfJPLWGASC9CJLfebpY+QwYeVFrdFssMg@mail.gmail.com>
-	<57794805.aPSQI7lfOj@wuerfel>
-	<54E4C770.8090301@gmail.com>
-Date: Wed, 18 Feb 2015 23:38:44 +0530
-Message-ID: <CAK-LDbJAJGtD=4tw7D8v0AT-RBiX-Hdn0drK01UqfnhNdgbt8A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Use put_unaligned_le16
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: Jes Sorensen <jes.sorensen@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+To: Vaishali Thakkar <vthakkar1994@gmail.com>, 
+ Preeti U Murthy <preeti@linux.vnet.ibm.com>
+CC: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8188eu: Use put_unaligned_le16
+References: <20150218114728.GA2888@vaishali-Ideapad-Z570>	<54E486A8.1060902@linux.vnet.ibm.com> <CAK-LDb+0xifccLr4kEK-TO3=Bzr6EazcJyU6mP-v=ohpYTqXYA@mail.gmail.com>
+In-Reply-To: <CAK-LDb+0xifccLr4kEK-TO3=Bzr6EazcJyU6mP-v=ohpYTqXYA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-On Wed, Feb 18, 2015 at 10:40 PM, Jes Sorensen <jes.sorensen@gmail.com> wrote:
-> On 02/18/15 05:50, Arnd Bergmann wrote:
->> On Wednesday 18 February 2015 07:02:34 Vaishali Thakkar wrote:
->>> On Wed, Feb 18, 2015 at 12:42 AM, Jes Sorensen <jes.sorensen@gmail.com> wrote:
->>>> On 02/17/15 05:11, Vaishali Thakkar wrote:
->>>> Your use of put_unaligned_le16() if good, the main issue is the above
->>>> assignment as you mention. Since you got rid of the tim_bitmap_le =
->>>> portion, the *dst_ie++ = is going to assigning random garbage since
->>>> tim_bitmap_le is not set.
->>>>
->>>> One way to solve the problem would be to make that line say
->>>>
->>>>                 if (tim_ielen == 4) {
->>>> -                       *dst_ie++ = *(u8 *)&tim_bitmap_le;
->>>> +                       *dst_ie++ = pstapriv->tim_bitmap & 0xff;
->>>>                 } else if (tim_ielen == 5) {
->>>> -                       memcpy(dst_ie, &tim_bitmap_le, 2);
->>>> +                       put_unaligned_le16(pstapriv->tim_bitmap, dst_ie);
->>>>
->>>> and hopefully eliminate the tim_bitmap_le variable completely.
->>>
->>> Yes. This makes sense. And as there is only one use of tim_bitmap_le
->>> variable this will eliminate it completely. Should I go for v2 now, with this
->>> change?? I have one more such case in rtl8723au driver also. I think now
->>> I can go for it also.
+On 02/18/15 08:21, Vaishali Thakkar wrote:
+> On Wed, Feb 18, 2015 at 6:03 PM, Preeti U Murthy
+> <preeti@linux.vnet.ibm.com> wrote:
+>> Hi Vaishali,
+> 
+> Hello Preeti,
+> 
+>> On 02/18/2015 05:17 PM, Vaishali Thakkar wrote:
+>>> This patch introduces the use of function put_unaligned_le16.
 >>
->> Yes, please submit the change for both drivers as separate patches.
->
-> As Arnd says, please use two patches. The reason is that the two drivers
-> are completely independent and also have separate maintainers (me owning
-> rtl8723au fwiw).
+>> Why is the use of put_unaligned_le16 better than memcpy here ?
+>> Can this be figured out?
+> 
+> As per the definition of put_unaligned_* functions (Here:
+> http://lxr.free-electrons.com/source/arch/c6x/include/asm/unaligned.h#L34)
+> , we can use
+> put_unaligned_* functions in following kind of cases:
+> 
+> Whenever we have two lines like these:
+> 
+> __le16 tmp = cpu_to_le16(y);
+>     memcpy(ptr, &tmp, sizeof(tmp));
+> 
+> We can go for using put_unaligned_* functions instead:
+> 
+>     put_unaligned_le16(y, ptr);
+> 
+> This change can be applied for all put_unaligned-* functions
+> [ little endian and big endian] listed in this header file.
+> 
+> This is my understanding about these functions. Bob suggested me these
+> functions at first place. I worked on solving such bugs using
+> Coccinelle considering
+> many different cases and wrote semantic patch for solving all those
+> bugs. Though I
+> had some endianness issue for some cases, and I am working on it. It
+> may be possible
+> that I am missing something. If it is such a case, then it would be
+> good if you can correct
+> me. If you want me to be more specific in change log then also I can go for v3.
 
-Sorry I didn't get you.
+Just a comment on this - playing with byte ordering macros and then
+memcpy() is always risky, and prone to hide errors which are hard to
+track down. The use of put_unaligned_le16() makes it very clear what is
+happening in the code, so it is a good solution to apply here.
 
-Yes, I know both drivers are independent. So, I will send 2 different patches.
-Here, I sent only one patch for rtl8188eu. I didn't send any patch for
-rtl8723au.
-I am working on it and supposed to send it now.
+Cheers,
+Jes
 
-> Cheers,
-> Jes
->
->
+> Thank You
+> 
+>> Regards
+>> Preeti U Murthy
+>>>
+>>> This is done using Coccinelle and semantic patch used is as follows:
+>>>
+>>> @a@
+>>> typedef u16, __le16, uint16_t;
+>>> {u16,__le16,uint16_t} e16;
+>>> identifier tmp;
+>>> expression ptr;
+>>> expression y,e;
+>>> type T;
+>>> @@
+>>>
+>>> - tmp = cpu_to_le16(y);
+>>>
+>>> <+... when != tmp
+>>> (
+>>> - memcpy(ptr, (T)&tmp, \(2\|sizeof(u16)\|sizeof(__le16)\|sizeof(uint16_t)\|sizeof(e16)\));
+>>> + put_unaligned_le16(y,ptr);
+>>> |
+>>> - memcpy(ptr, (T)&tmp, ...);
+>>> + put_unaligned_le16(y,ptr);
+>>> )
+>>> ...+>
+>>> ? tmp = e
+>>>
+>>> @@ type T; identifier a.tmp; @@
+>>>
+>>> - T tmp;
+>>> ...when != tmp
+>>>
+>>> Here, use of variable tim_bitmap_le and variable itself is removed. To be compatible
+>>> with changes header file is added too.
+>>>
+>>> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+>>> ---
+>>> Changes since v1:
+>>>       -Use of variable tim_bitmap_le is removed
+>>>       -Variable tim_bitmap_le is removed
+>>>       -To be compatible with changes header file is added
+>>>       -Commit log is edited
+>>>
+>>>  drivers/staging/rtl8188eu/core/rtw_ap.c | 8 +++-----
+>>>  1 file changed, 3 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+>>> index da19145..e65ee6e 100644
+>>> --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
+>>> +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+>>> @@ -23,6 +23,7 @@
+>>>  #include <drv_types.h>
+>>>  #include <wifi.h>
+>>>  #include <ieee80211.h>
+>>> +#include <asm/unaligned.h>
+>>>
+>>>  #ifdef CONFIG_88EU_AP_MODE
+>>>
+>>> @@ -78,11 +79,8 @@ static void update_BCNTIM(struct adapter *padapter)
+>>>       if (true) {
+>>>               u8 *p, *dst_ie, *premainder_ie = NULL;
+>>>               u8 *pbackup_remainder_ie = NULL;
+>>> -             __le16 tim_bitmap_le;
+>>>               uint offset, tmp_len, tim_ielen, tim_ie_offset, remainder_ielen;
+>>>
+>>> -             tim_bitmap_le = cpu_to_le16(pstapriv->tim_bitmap);
+>>> -
+>>>               p = rtw_get_ie(pie + _FIXED_IE_LENGTH_, _TIM_IE_, &tim_ielen, pnetwork_mlmeext->IELength - _FIXED_IE_LENGTH_);
+>>>               if (p != NULL && tim_ielen > 0) {
+>>>                       tim_ielen += 2;
+>>> @@ -137,9 +135,9 @@ static void update_BCNTIM(struct adapter *padapter)
+>>>                       *dst_ie++ = 0;
+>>>
+>>>               if (tim_ielen == 4) {
+>>> -                     *dst_ie++ = *(u8 *)&tim_bitmap_le;
+>>> +                     *dst_ie++ = pstapriv->tim_bitmap & 0xff;
+>>>               } else if (tim_ielen == 5) {
+>>> -                     memcpy(dst_ie, &tim_bitmap_le, 2);
+>>> +                     put_unaligned_le16(pstapriv->tim_bitmap, dst_ie);
+>>>                       dst_ie += 2;
+>>>               }
+>>>
+>>
+> 
+> 
+> 
 
-
-
--- 
-Vaishali
 
