@@ -1,72 +1,93 @@
-X-GM-THRID: 1818210861056
-X-Received: by 10.112.181.198 with SMTP id dy6mr321526lbc.22.1424527581677;
-        Sat, 21 Feb 2015 06:06:21 -0800 (PST)
+X-GM-THRID: 393156231168
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ee2a0a90b6d6dc54,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.47.228 with SMTP id g4mr753812obn.5.1424285559682;
+        Wed, 18 Feb 2015 10:52:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.84.72 with SMTP id w8ls274287wiy.4.canary; Sat, 21 Feb
- 2015 06:06:21 -0800 (PST)
-X-Received: by 10.180.87.166 with SMTP id az6mr322315wib.1.1424527581361;
-        Sat, 21 Feb 2015 06:06:21 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x22c.google.com (mail-wg0-x22c.google.com. [2a00:1450:400c:c00::22c])
-        by gmr-mx.google.com with ESMTPS id ta1si311692wic.1.2015.02.21.06.06.21
+Received: by 10.107.132.193 with SMTP id o62ls153768ioi.94.gmail; Wed, 18 Feb
+ 2015 10:52:39 -0800 (PST)
+X-Received: by 10.66.252.138 with SMTP id zs10mr743072pac.3.1424285559521;
+        Wed, 18 Feb 2015 10:52:39 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-f44.google.com (mail-pa0-f44.google.com. [209.85.220.44])
+        by gmr-mx.google.com with ESMTPS id ki8si2616888pdb.1.2015.02.18.10.52.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 06:06:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) client-ip=2a00:1450:400c:c00::22c;
+        Wed, 18 Feb 2015 10:52:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.220.44 as permitted sender) client-ip=209.85.220.44;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.220.44 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22c.google.com with SMTP id k14so17985212wgh.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 06:06:21 -0800 (PST)
+Received: by mail-pa0-f44.google.com with SMTP id fa1so3263348pad.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 10:52:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=7qv6APy88lnXBw/rbDye1xvxrAMFWzti+4eZe4HHWCY=;
-        b=PzD6wX+//iO2NtJF9/XBoErHqSi2D425cSCg6rZvVV/W01gXbMgZ6JuIHC6piWJxXn
-         +LVjH5sEfTQ9Uy11yXJs6SV/VG5M3pdCk2ZGW6r1szoakxN7sf2O1MxT/6nXoXNVa0Ri
-         AWNYBB6sigREG2DUNX16RCMh/EZRqpx42P749FJnQUJDS26CQdnokVcmNO62xxCEBG9h
-         OYjrW7TvblLaHPkdRAcriOuGwTVtb53oy+Z87g/YbiBl+GYjLnj39ACFSShfH17ZHnM8
-         zjixvJOD03WalfyNs7pI81a4XHRmoO2Sk8VMseX3fEBW5kCe5332mKatdXCC44lrxu0z
-         fAEA==
-X-Received: by 10.180.212.113 with SMTP id nj17mr4390481wic.54.1424527581277;
-        Sat, 21 Feb 2015 06:06:21 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id l6sm46774875wjx.33.2015.02.21.06.06.20
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 06:06:20 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=HMZ7B62Mos864Gd2jdhbRglqrD7X13rh1AIq75BzSq0=;
+        b=bYZtlHCP/NdP8WspwVseavWPlajTZt/NStcjQ3h3Izj3dIsYgapnStB5BOBBc0g4Kr
+         CfpHt54LC9tin0sDk/JSIe6tLYIi2JicNx5smsnNM33h5c44SA8uDvxDlG8hqZLbLisP
+         Mr+x2RfzgbPp023BHeuQgbAnATFDZTsGyfovGo28ozzKYlzKUw7RZAb6snQce9ERfWxF
+         lsq0m1/x98uqRJsdKUDyx6uwubejRTKcu3+13NVwD/+LcEeNPWL4e+VCLzUsq2vOGqXa
+         k6XgQKmIcRFodxz52p4ACdYooEJ3foKn87Kn51cPxnnW/YeONP1Xp8AYPASzmJTeoX33
+         TeoA==
+X-Received: by 10.68.237.2 with SMTP id uy2mr1249518pbc.72.1424285559399;
+        Wed, 18 Feb 2015 10:52:39 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id gi6sm21260585pbd.93.2015.02.18.10.52.37
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 18 Feb 2015 10:52:38 -0800 (PST)
+Date: Thu, 19 Feb 2015 00:22:24 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 1/3] Staging: rtl8192u: Remove space before ','
-Date: Sat, 21 Feb 2015 15:06:14 +0100
-Message-Id: <376efd2304214b6bbdd97ea0bf0b55bb7567ea33.1424527515.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1424527515.git.ksenija.stanojevic@gmail.com>
-References: <cover.1424527515.git.ksenija.stanojevic@gmail.com>
+Subject: [PATCH v4] Staging: i2o: Remove space after the * in a pointer type
+ variable
+Message-ID: <20150218185224.GA17355@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch removes space before ','.
-Issue found by checkpatch.pl.
+This patch is to remove space after the * in pointer type function parameters
+in function prototype and definition to follow kernel coding conventions.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/rtl8192u/r8190_rtl8256.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Changes in v4: Corrected function definition and clubbed changes.
+ Changes in v3: Moved changelog below to "---" line.
+ Changes in v2: Changed subject line to make it more descriptive.
 
-diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.h b/drivers/staging/rtl8192u/r8190_rtl8256.h
-index fa6dd37..ddddd70 100644
---- a/drivers/staging/rtl8192u/r8190_rtl8256.h
-+++ b/drivers/staging/rtl8192u/r8190_rtl8256.h
-@@ -14,7 +14,7 @@
- #define RTL8225H
+ drivers/staging/i2o/debug.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+	
+diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
+index 7a16114..3e959a4 100644
+--- a/drivers/staging/i2o/debug.c
++++ b/drivers/staging/i2o/debug.c
+@@ -5,7 +5,7 @@
  
- #define RTL819X_TOTAL_RF_PATH 2 //for 8192U
--extern void PHY_SetRF8256Bandwidth(struct net_device *dev , HT_CHANNEL_WIDTH Bandwidth);
-+extern void PHY_SetRF8256Bandwidth(struct net_device *dev, HT_CHANNEL_WIDTH Bandwidth);
- extern void PHY_RF8256_Config(struct net_device *dev);
- extern void phy_RF8256_Config_ParaFile(struct net_device *dev);
- extern void PHY_SetRF8256CCKTxPower(struct net_device *dev, u8	powerlevel);
+ static void i2o_report_util_cmd(u8 cmd);
+ static void i2o_report_exec_cmd(u8 cmd);
+-static void i2o_report_fail_status(u8 req_status, u32 * msg);
++static void i2o_report_fail_status(u8 req_status, u32 *msg);
+ static void i2o_report_common_status(u8 req_status);
+ static void i2o_report_common_dsc(u16 detailed_status);
+ 
+@@ -66,7 +66,7 @@ void i2o_dump_message(struct i2o_message *m)
+  * Following fail status are common to all classes.
+  * The preserved message must be handled in the reply handler.
+  */
+-static void i2o_report_fail_status(u8 req_status, u32 * msg)
++static void i2o_report_fail_status(u8 req_status, u32 *msg)
+ {
+ 	static char *FAIL_STATUS[] = {
+ 		"0x80",		/* not used */
 -- 
 1.9.1
 
