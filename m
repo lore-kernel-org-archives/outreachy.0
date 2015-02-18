@@ -1,86 +1,90 @@
 X-GM-THRID: 405220098048
-X-Received: by 10.180.39.164 with SMTP id q4mr268327wik.5.1424290284801;
-        Wed, 18 Feb 2015 12:11:24 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,66b80ad46f7caeb7,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.140.147.82 with SMTP id 79mr1571514qht.8.1424288975303;
+        Wed, 18 Feb 2015 11:49:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.74.49 with SMTP id q17ls1194360wiv.3.canary; Wed, 18 Feb
- 2015 12:11:23 -0800 (PST)
-X-Received: by 10.180.101.101 with SMTP id ff5mr596010wib.5.1424290283953;
-        Wed, 18 Feb 2015 12:11:23 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id i7si6264918wif.0.2015.02.18.12.11.23
+Received: by 10.182.119.199 with SMTP id kw7ls98288obb.30.gmail; Wed, 18 Feb
+ 2015 11:49:35 -0800 (PST)
+X-Received: by 10.182.34.133 with SMTP id z5mr1021250obi.3.1424288975131;
+        Wed, 18 Feb 2015 11:49:35 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pd0-f173.google.com (mail-pd0-f173.google.com. [209.85.192.173])
+        by gmr-mx.google.com with ESMTPS id pc4si2639368pac.0.2015.02.18.11.49.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 18 Feb 2015 12:11:23 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Feb 2015 11:49:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.192.173 as permitted sender) client-ip=209.85.192.173;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,603,1418079600"; 
-   d="scan'208";a="122348316"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Feb 2015 21:11:22 +0100
-Date: Wed, 18 Feb 2015 21:11:22 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Vatika Harlalka <vatikaharlalka@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: i2o: Join quoted string
- split across lines
-In-Reply-To: <20150218194915.GA28794@gmail.com>
-Message-ID: <alpine.DEB.2.02.1502182110040.2248@localhost6.localdomain6>
-References: <20150218194915.GA28794@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.192.173 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pdjy10 with SMTP id y10so3305064pdj.13
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 11:49:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=Bq3tdRH4bj8rP4n4umDaTDIy2CbH+26K3RSHslg5FL8=;
+        b=r/Oefe63DkGIbEF3kW2rSbRT87FkhZfotfP/08JBAM/YUat6XOELIc+MmWPByq6uut
+         sU9bBAewm9El7j3/YKa2p0a14GOsIPozbUyA3CK+zVQDVXq+Fyviy5z8KvdehR9wrvA9
+         3ou4bsJRjtLB6rJ64PchlMNCmYAVP6Vggg8oy/7bYC7bGD43fLx+9purkYiQxhDN279E
+         SsxuegiKFUuW4I4+Wp5hOSqfLAydgUYsgAs2UW9ZPGaD3pi3Zc8sHbBYxh17BLIOaMdv
+         gJmvtIBTgpiH7ZQTBeWodGcfmN2e+q0CC6N61HZkE1PSMQhAYst9/6XwbLFp2aDHgKFh
+         ta5w==
+X-Received: by 10.68.204.73 with SMTP id kw9mr1714094pbc.48.1424288974885;
+        Wed, 18 Feb 2015 11:49:34 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id v5sm21580769pdh.9.2015.02.18.11.49.31
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 18 Feb 2015 11:49:33 -0800 (PST)
+Date: Thu, 19 Feb 2015 01:19:16 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: i2o: Join quoted string split across lines
+Message-ID: <20150218194915.GA28794@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, 19 Feb 2015, Vatika Harlalka wrote:
+This patch removes the checkpatch.pl warnings "quoted string split accross lines" 
 
-> This patch removes the checkpatch.pl warnings "quoted string split accross lines" 
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+---
+ drivers/staging/i2o/driver.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-drivers/staging/i2o seems to be code that is on the way out of the Linux 
-kernel rather than on the way in.  See commit 2cbf7fe2d5.  Perhaps try to 
-avoid working on these files.
+diff --git a/drivers/staging/i2o/driver.c b/drivers/staging/i2o/driver.c
+index 111c3ed..06119bb 100644
+--- a/drivers/staging/i2o/driver.c
++++ b/drivers/staging/i2o/driver.c
+@@ -102,8 +102,7 @@ int i2o_driver_register(struct i2o_driver *drv)
+ 
+ 	for (i = 0; i2o_drivers[i]; i++)
+ 		if (i >= i2o_max_drivers) {
+-			osm_err("too many drivers registered, increase "
+-				"max_drivers\n");
++			osm_err("too many drivers registered, increase max_drivers\n");
+ 			spin_unlock_irqrestore(&i2o_drivers_lock, flags);
+ 			rc = -EFAULT;
+ 			goto out;
+@@ -244,8 +243,8 @@ int i2o_driver_dispatch(struct i2o_controller *c, u32 m)
+ 	}
+ 
+ 	if (unlikely(!drv->reply)) {
+-		osm_debug("%s: Reply to driver %s, but no reply function"
+-			  " defined!\n", c->name, drv->name);
++		osm_debug("%s: Reply to driver %s, but no reply function defined!\n",
++			c->name, drv->name);
+ 		return -EIO;
+ 	}
+ 
+-- 
+1.9.1
 
-julia
-
-> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
-> ---
->  drivers/staging/i2o/driver.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/i2o/driver.c b/drivers/staging/i2o/driver.c
-> index 111c3ed..06119bb 100644
-> --- a/drivers/staging/i2o/driver.c
-> +++ b/drivers/staging/i2o/driver.c
-> @@ -102,8 +102,7 @@ int i2o_driver_register(struct i2o_driver *drv)
->  
->  	for (i = 0; i2o_drivers[i]; i++)
->  		if (i >= i2o_max_drivers) {
-> -			osm_err("too many drivers registered, increase "
-> -				"max_drivers\n");
-> +			osm_err("too many drivers registered, increase max_drivers\n");
->  			spin_unlock_irqrestore(&i2o_drivers_lock, flags);
->  			rc = -EFAULT;
->  			goto out;
-> @@ -244,8 +243,8 @@ int i2o_driver_dispatch(struct i2o_controller *c, u32 m)
->  	}
->  
->  	if (unlikely(!drv->reply)) {
-> -		osm_debug("%s: Reply to driver %s, but no reply function"
-> -			  " defined!\n", c->name, drv->name);
-> +		osm_debug("%s: Reply to driver %s, but no reply function defined!\n",
-> +			c->name, drv->name);
->  		return -EIO;
->  	}
->  
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150218194915.GA28794%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
