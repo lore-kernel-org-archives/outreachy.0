@@ -1,97 +1,110 @@
-X-GM-THRID: 6256670345142468608
-X-Received: by 10.112.189.104 with SMTP id gh8mr1479138lbc.12.1456744583886;
-        Mon, 29 Feb 2016 03:16:23 -0800 (PST)
+X-GM-THRID: 231908311040
+X-Received: by 10.180.91.76 with SMTP id cc12mr265353wib.7.1424289991856;
+        Wed, 18 Feb 2015 12:06:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.182.66 with SMTP id g63ls337923wmf.29.canary; Mon, 29 Feb
- 2016 03:16:23 -0800 (PST)
-X-Received: by 10.194.19.195 with SMTP id h3mr1516775wje.1.1456744583355;
-        Mon, 29 Feb 2016 03:16:23 -0800 (PST)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x229.google.com (mail-wm0-x229.google.com. [2a00:1450:400c:c09::229])
-        by gmr-mx.google.com with ESMTPS id h126si401512wme.0.2016.02.29.03.16.23
+Received: by 10.152.5.38 with SMTP id p6ls43584lap.17.gmail; Wed, 18 Feb 2015
+ 12:06:31 -0800 (PST)
+X-Received: by 10.112.162.135 with SMTP id ya7mr149068lbb.14.1424289991556;
+        Wed, 18 Feb 2015 12:06:31 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id cl5si8880840wib.3.2015.02.18.12.06.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Feb 2016 03:16:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) client-ip=2a00:1450:400c:c09::229;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 18 Feb 2015 12:06:31 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x229.google.com with SMTP id l68so31241049wml.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 29 Feb 2016 03:16:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MdE/sz3cx6zdjvvRId4aipqGYEFAGLEwC30XxU7J2Ro=;
-        b=FPZLaIcCipMThvNDv3ElS5Jbxtzne/yVtto1gykb85fO219IDWFrjy9UhHF+D+dXFk
-         h4NchiJ5T3jcX/m3886G1l1mcxnyh7O8eNb2/UhVd9nhh/TNU1XW14aYkYBbHlrFWnIc
-         8rp8NoPdawfOgdTvTeLglpleYfbfSpk8DCdvrjGgwyqZ+qNyaJKL21eijMNPMBzcjn9h
-         aHeHdkpN8vqd+DdcE/rtcg0OTYl1uaoYAvaPi5Baq6ULh3GykWoVtEh2ZD4mRNq3Hakg
-         rnMh62SdxTFXPfcsUj58IIsCbLxYtDHBL6f8jJ8kBguGqS9fssMUDq9B8CWf4+F0BmBm
-         5dtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MdE/sz3cx6zdjvvRId4aipqGYEFAGLEwC30XxU7J2Ro=;
-        b=dvRq5sTkxsgloqItSlYLXo2silJJ31nXp1AeTiGQKZ+y1T56J+St02d4SqrTSW9MHk
-         /CLjcWd7bkrsj3e8MyaHjMt0y9WECj2ZFXq7CCsuBgSt/QyyXe3+sjrd/sSlkX464tTP
-         dJHKY56iCmcZ7vl7s5i7NaEhs7M/qWP4ISsuFAQZdM/jz3tR3Jmc++sTW7U0NTH5/T5P
-         kdegTx8XP6A9UUPqGNlT4r0ir3Ha3Iln+Xk7Y/z45dJpjuJYOCkyUTQdmWnlVCd7GQyC
-         Ga80ayytkoGJn4odcO4ah6eboIM+91JciwHkvtjkePjMbX2P6elZBDRnaB4o4T93VX23
-         bxJg==
-X-Gm-Message-State: AD7BkJJ8qVi5qKSvOl0K+Dvl/+0UXeyF1fhXv/jg/i+es2pcsN/7MupE/bKo1YSc7TmfMg==
-X-Received: by 10.28.23.75 with SMTP id 72mr620469wmx.50.1456744583148;
-        Mon, 29 Feb 2016 03:16:23 -0800 (PST)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([141.85.227.229])
-        by smtp.gmail.com with ESMTPSA id k124sm15794992wmb.11.2016.02.29.03.16.22
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 29 Feb 2016 03:16:22 -0800 (PST)
-Date: Mon, 29 Feb 2016 13:16:20 +0200
-From: Muraru Mihaela <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging:wilc1000:coreconfigurator.h Remove an unnecessary
- typedef keyword
-Message-ID: <20160229111620.GA9474@domino-MS-16Y1>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,603,1418079600"; 
+   d="scan'208";a="100529441"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Feb 2015 21:06:30 +0100
+Date: Wed, 18 Feb 2015 21:06:28 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: i2o: Convert comment from
+ C99 style to C89 style
+In-Reply-To: <20150218192100.GA18100@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502182105150.2248@localhost6.localdomain6>
+References: <20150218192100.GA18100@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes these warning messages found by checkpatch.pl:
-WARNING: do not add new typedefs
+On Thu, 19 Feb 2015, Vatika Harlalka wrote:
 
-Signed-off-by: Muraru Mihaela <mihaela.muraru21@gmail.com>
----
- drivers/staging/wilc1000/coreconfigurator.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> C99 style comment // should not be used as per coding guidelines.
+> Usage of C99 style comment // was resulting in checkpatch.pl error.
+> Hence replaced it with block comment /* */ 
 
-diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
-index 63eca24..1e1892f 100644
---- a/drivers/staging/wilc1000/coreconfigurator.h
-+++ b/drivers/staging/wilc1000/coreconfigurator.h
-@@ -50,7 +50,7 @@
- #define MAKE_WORD16(lsb, msb) ((((u16)(msb) << 8) & 0xFF00) | (lsb))
- #define MAKE_WORD32(lsw, msw) ((((u32)(msw) << 16) & 0xFFFF0000) | (lsw))
- 
--typedef enum {
-+enum {
- 	SUCCESSFUL_STATUSCODE    = 0,
- 	UNSPEC_FAIL              = 1,
- 	UNSUP_CAP                = 10,
-@@ -70,7 +70,7 @@ typedef enum {
- 	CONNECT_STS_FORCE_16_BIT = 0xFFFF
- } tenuConnectSts;
- 
--typedef struct {
-+struct {
- 	u8 u8Full;
- 	u8 u8Index;
- 	s8 as8RSSI[NUM_RSSI];
--- 
-1.9.1
+The commit message is a bit too verbose, as compared to the information it 
+provides.  In this case, probably just the first line is good enough.
 
+In general, try to avoid mentioning checkpatch in your commit message.  
+Explain what you are doing and why.
+
+julia
+
+
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/i2o/debug.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
+> index 3e959a4..c8d690c 100644
+> --- a/drivers/staging/i2o/debug.c
+> +++ b/drivers/staging/i2o/debug.c
+> @@ -22,17 +22,17 @@ void i2o_report_status(const char *severity, const char *str,
+>  	u16 detailed_status = msg[4] & 0xFFFF;
+>  
+>  	if (cmd == I2O_CMD_UTIL_EVT_REGISTER)
+> -		return;		// No status in this reply
+> +		return;		/* No status in this reply */
+>  
+>  	printk("%s%s: ", severity, str);
+>  
+> -	if (cmd < 0x1F)		// Utility cmd
+> +	if (cmd < 0x1F)		/* Utility cmd */
+>  		i2o_report_util_cmd(cmd);
+>  
+> -	else if (cmd >= 0xA0 && cmd <= 0xEF)	// Executive cmd
+> +	else if (cmd >= 0xA0 && cmd <= 0xEF)	/* Executive cmd */
+>  		i2o_report_exec_cmd(cmd);
+>  	else
+> -		printk("Cmd = %0#2x, ", cmd);	// Other cmds
+> +		printk("Cmd = %0#2x, ", cmd);	/* Other cmds */
+>  
+>  	if (msg[0] & MSG_FAIL) {
+>  		i2o_report_fail_status(req_status, msg);
+> @@ -156,14 +156,14 @@ static void i2o_report_common_dsc(u16 detailed_status)
+>  {
+>  	static char *COMMON_DSC[] = {
+>  		"SUCCESS",
+> -		"0x01",		// not used
+> +		"0x01",		/* not used */
+>  		"BAD_KEY",
+>  		"TCL_ERROR",
+>  		"REPLY_BUFFER_FULL",
+>  		"NO_SUCH_PAGE",
+>  		"INSUFFICIENT_RESOURCE_SOFT",
+>  		"INSUFFICIENT_RESOURCE_HARD",
+> -		"0x08",		// not used
+> +		"0x08",		/* not used */
+>  		"CHAIN_BUFFER_TOO_LARGE",
+>  		"UNSUPPORTED_FUNCTION",
+>  		"DEVICE_LOCKED",
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150218192100.GA18100%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
