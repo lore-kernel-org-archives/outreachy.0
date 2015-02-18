@@ -1,106 +1,97 @@
-X-GM-THRID: 6255532991219499008
-X-Received: by 10.98.68.194 with SMTP id m63mr374091pfi.7.1456479772288;
-        Fri, 26 Feb 2016 01:42:52 -0800 (PST)
+X-GM-THRID: 289717354496
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,5627416f6de18613
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.102.73 with SMTP id fm9mr3573020obb.38.1424259348202;
+        Wed, 18 Feb 2015 03:35:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.95.43 with SMTP id h40ls920813qge.39.gmail; Fri, 26 Feb
- 2016 01:42:51 -0800 (PST)
-X-Received: by 10.129.27.3 with SMTP id b3mr408055ywb.0.1456479771671;
-        Fri, 26 Feb 2016 01:42:51 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id r75si266271pfr.0.2016.02.26.01.42.51
+Received: by 10.182.22.68 with SMTP id b4ls4771obf.49.gmail; Wed, 18 Feb 2015
+ 03:35:48 -0800 (PST)
+X-Received: by 10.182.186.74 with SMTP id fi10mr14234271obc.1.1424259348065;
+        Wed, 18 Feb 2015 03:35:48 -0800 (PST)
+Return-Path: <preeti@linux.vnet.ibm.com>
+Received: from e39.co.us.ibm.com (e39.co.us.ibm.com. [32.97.110.160])
+        by gmr-mx.google.com with ESMTPS id e3si1582808igq.1.2015.02.18.03.35.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 01:42:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 18 Feb 2015 03:35:47 -0800 (PST)
+Received-SPF: none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) client-ip=32.97.110.160;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id e127so4422032pfe.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 01:42:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=kAqEY8jeVWmmyTgaD4PpFipXL0lH3ObLtHEBSr7Shqs=;
-        b=XVREKbi+yNBca14HH8JCE4hqx9V5p2QbC8d77mzaEZNUcMDNJKmCn3V6AlfoBHzJSR
-         OpmcuQVM9nPLENxRsatz/sxGP1QYXbQrCeeeGd5HJhSf3Wm1OW7uP4FE3Y28dlCZAU91
-         uvW1gwnNxj95yYNYYX7leC9+RJIbpIfU6E/PsTXWuhQlsbFHM+y0IL7OvhjI4Lm/cDIk
-         9khDGTx4OZ4MUVu357ya2fn11BdLDuWP12mVb8Fkd8sP+1nx4iECwkhyFoIM6vYOH+1I
-         bJU4VpZKjyDzTwP23FqSLUOpCiQe6NF+W0nhIwQ6VPDxULZ+p/AB5cUF5G7eNs08DoIR
-         H7xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=kAqEY8jeVWmmyTgaD4PpFipXL0lH3ObLtHEBSr7Shqs=;
-        b=d+vQ9Liish8H8yZUMtbJr0Y23+9H/G9MmMv4E453O5DcrV7FZKoUM4/yTaNwIe55At
-         3QpsV30jF5qaD+cWDLmxPtS/7btUtKds4T0mNbrBPYqbcBXnZtDvd5naLXrfDVb9MKxm
-         X3PmZvRFZYl4jhKo5RlFbsnRUXxYQPT9H3owOMbmRLXVpiFg5n5Ywnl6h8qGIrG/Si1F
-         TgWFWfgh8lohEDUw6AR2bYQvhrimsVSmRjZvRHq7ono/hKh56rGSuWJEERLn+jX3LUzz
-         tKIQd/mtFUVDDuHDqftl2AFQRfNwhb94XCRiApRDQUxoo6Rwi5PMaUYCk1YpqN1HL+dr
-         WBSg==
-X-Gm-Message-State: AD7BkJLJS1YUxg2Ix+jb1ZfH/K1kxW83Q4JzHezyhF3YFr26jexi1VyG+t5n7DV9qi29mQ==
-X-Received: by 10.98.79.214 with SMTP id f83mr772040pfj.56.1456479771486;
-        Fri, 26 Feb 2016 01:42:51 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 81sm1157527pfa.12.2016.02.26.01.42.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 01:42:51 -0800 (PST)
-Date: Fri, 26 Feb 2016 15:13:28 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 5/5] staging: lustre: ptlrpc: Remove useless return
- variables
-Message-ID: <20160226094328.GA10635@Karyakshetra>
+       spf=none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) smtp.mail=preeti@linux.vnet.ibm.com
+Received: from /spool/local
+	by e39.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted
+	for <outreachy-kernel@googlegroups.com> from <preeti@linux.vnet.ibm.com>;
+	Wed, 18 Feb 2015 04:35:47 -0700
+Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
+	by e39.co.us.ibm.com (192.168.1.139) with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted;
+	Wed, 18 Feb 2015 04:35:45 -0700
+Received: from b03cxnp08027.gho.boulder.ibm.com (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id 2E823C40006
+	for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 04:26:57 -0700 (MST)
+Received: from d03av03.boulder.ibm.com (d03av03.boulder.ibm.com [9.17.195.169])
+	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id t1IBZbf934209874
+	for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 04:35:45 -0700
+Received: from d03av03.boulder.ibm.com (localhost [127.0.0.1])
+	by d03av03.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id t1IBZCKL024639
+	for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 04:35:12 -0700
+Received: from preeti.in.ibm.com ([9.77.120.193])
+	by d03av03.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id t1IBZ6Si023553;
+	Wed, 18 Feb 2015 04:35:09 -0700
+Message-ID: <54E478D9.7070303@linux.vnet.ibm.com>
+Date: Wed, 18 Feb 2015 17:04:49 +0530
+From: Preeti U Murthy <preeti@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Thunderbird/24.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+To: Vatika Harlalka <vatikaharlalka@gmail.com>,
+        outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: i2o: Remove space after
+ the * in a pointer type variable.
+References: <20150218111524.GA11738@gmail.com>
+In-Reply-To: <20150218111524.GA11738@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15021811-0033-0000-0000-000003B2DB75
 
-This patch removes unnecessary return variables and compresses the
-return logic.
-The coccinelle script that finds and fixes this issue is:
-@@ type T; identifier i,f; constant C; @@
-- T i;
-...when != i
-when strict
-( return -C;
-|
-- i =
-+ return
-f(...);
-- return i;
-)
+Hi Vatika,
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- Changes in v4:
-	-Corrected typo lusture in the subject. Made it to lustre
+On 02/18/2015 04:45 PM, Vatika Harlalka wrote:
+> This patch is to remove space after the * in a pointer type variable declaration to follow kernel coding conventions.
 
- drivers/staging/lustre/lustre/ptlrpc/client.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+You may have noticed that a limit of 80 characters is imposed in the
+kernel coding style. It would be good to follow the same in the
+changelog as well. So the patch looks is uniformly aligned throughout.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+> 
+>  Changes in v3: Moved changelog below to "---" line.
+>  Changes in v2: Changed subject line to make it more descriptive.
+> 
+>  drivers/staging/i2o/debug.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
+> index 7a16114..4f23e3f 100644
+> --- a/drivers/staging/i2o/debug.c
+> +++ b/drivers/staging/i2o/debug.c
+> @@ -5,7 +5,7 @@
+> 
+>  static void i2o_report_util_cmd(u8 cmd);
+>  static void i2o_report_exec_cmd(u8 cmd);
+> -static void i2o_report_fail_status(u8 req_status, u32 * msg);
+> +static void i2o_report_fail_status(u8 req_status, u32 *msg);
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/client.c b/drivers/staging/lustre/lustre/ptlrpc/client.c
-index 9b89068..031502e 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/client.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/client.c
-@@ -421,10 +421,7 @@ void ptlrpc_request_cache_fini(void)
+I see that the definition of this function suffers from the same issue
+down below in the file. You may want to correct that as well and club
+both the changes in one patch.
 
- struct ptlrpc_request *ptlrpc_request_cache_alloc(gfp_t flags)
- {
--	struct ptlrpc_request *req;
--
--	req = kmem_cache_alloc(request_cache, flags | __GFP_ZERO);
--	return req;
-+	return kmem_cache_alloc(request_cache, flags | __GFP_ZERO);
- }
-
- void ptlrpc_request_cache_free(struct ptlrpc_request *req)
---
-2.1.4
+>  static void i2o_report_common_status(u8 req_status);
+>  static void i2o_report_common_dsc(u16 detailed_status);
+> 
+Regards
+Preeti U Murthy
 
 
