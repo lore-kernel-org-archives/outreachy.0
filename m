@@ -1,75 +1,86 @@
-X-GM-THRID: 797133766656
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,1e65c122f72614c8,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.94.134 with SMTP id dc6mr1238375wib.2.1424371273818;
-        Thu, 19 Feb 2015 10:41:13 -0800 (PST)
+X-GM-THRID: 405220098048
+X-Received: by 10.180.39.164 with SMTP id q4mr268327wik.5.1424290284801;
+        Wed, 18 Feb 2015 12:11:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.9 with SMTP id o9ls195020lao.83.gmail; Thu, 19 Feb 2015
- 10:41:13 -0800 (PST)
-X-Received: by 10.112.146.65 with SMTP id ta1mr776358lbb.19.1424371273303;
-        Thu, 19 Feb 2015 10:41:13 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
-        by gmr-mx.google.com with ESMTPS id ev8si6460277wib.3.2015.02.19.10.41.13
+Received: by 10.180.74.49 with SMTP id q17ls1194360wiv.3.canary; Wed, 18 Feb
+ 2015 12:11:23 -0800 (PST)
+X-Received: by 10.180.101.101 with SMTP id ff5mr596010wib.5.1424290283953;
+        Wed, 18 Feb 2015 12:11:23 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i7si6264918wif.0.2015.02.18.12.11.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 10:41:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 18 Feb 2015 12:11:23 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f45.google.com with SMTP id k14so9023905wgh.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 10:41:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=CFojyNe4wKGUa1zmjb9zx58fsUtBXdGSrVcTPEaTVVo=;
-        b=CTk0yhqpKDMEw5gqAoe5Ur5VlKeAoM2ixE4iO0ykxWVsq+xcNL5rM6ZhmMl3W/36pp
-         NUH5/2g+P1R91V9WZCj4meUSVrkCvIhOlkEp4VUpHDtzywnD6Y3w7O5A5IKq+yVm7Wpx
-         XL4JtJ3nP5k99kRyQFBnOZUZ3Fdro2VZD4nfrqjXMyaqKPmOwXGENyeClFnr8K58Tj/8
-         OBIhLK3hNfbvtvuv8Hr9OFND5oC+Qi/tLZN+p2raQuk/r+2Z9VRMDrTIMy45Ss+34z8F
-         SvrUFfo1R8r3eHx2OZ9K8d7YADqloRzkB1EhgwIu6RPeBbDwC5okhx8dY5SL2Z4vNGtw
-         ASaw==
-X-Received: by 10.194.186.200 with SMTP id fm8mr11860488wjc.138.1424371273168;
-        Thu, 19 Feb 2015 10:41:13 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id k1sm38568936wjn.9.2015.02.19.10.41.12
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 10:41:12 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: media: parport: Replace header file
-Date: Thu, 19 Feb 2015 19:41:03 +0100
-Message-Id: <1424371263-16991-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,603,1418079600"; 
+   d="scan'208";a="122348316"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Feb 2015 21:11:22 +0100
+Date: Wed, 18 Feb 2015 21:11:22 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: i2o: Join quoted string
+ split across lines
+In-Reply-To: <20150218194915.GA28794@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502182110040.2248@localhost6.localdomain6>
+References: <20150218194915.GA28794@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Use #include <linux/uaccess.h> instead of <asm/uaccess.h>"
+On Thu, 19 Feb 2015, Vatika Harlalka wrote:
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- drivers/staging/media/parport/bw-qcam.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch removes the checkpatch.pl warnings "quoted string split accross lines" 
 
-diff --git a/drivers/staging/media/parport/bw-qcam.c b/drivers/staging/media/parport/bw-qcam.c
-index 67b9da1..27f9e4a 100644
---- a/drivers/staging/media/parport/bw-qcam.c
-+++ b/drivers/staging/media/parport/bw-qcam.c
-@@ -73,7 +73,7 @@ OTHER DEALINGS IN THE SOFTWARE.
- #include <linux/sched.h>
- #include <linux/videodev2.h>
- #include <linux/mutex.h>
--#include <asm/uaccess.h>
-+#include <linux/uaccess.h>
- #include <media/v4l2-common.h>
- #include <media/v4l2-ioctl.h>
- #include <media/v4l2-device.h>
--- 
-1.9.1
+drivers/staging/i2o seems to be code that is on the way out of the Linux 
+kernel rather than on the way in.  See commit 2cbf7fe2d5.  Perhaps try to 
+avoid working on these files.
 
+julia
+
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/i2o/driver.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/i2o/driver.c b/drivers/staging/i2o/driver.c
+> index 111c3ed..06119bb 100644
+> --- a/drivers/staging/i2o/driver.c
+> +++ b/drivers/staging/i2o/driver.c
+> @@ -102,8 +102,7 @@ int i2o_driver_register(struct i2o_driver *drv)
+>  
+>  	for (i = 0; i2o_drivers[i]; i++)
+>  		if (i >= i2o_max_drivers) {
+> -			osm_err("too many drivers registered, increase "
+> -				"max_drivers\n");
+> +			osm_err("too many drivers registered, increase max_drivers\n");
+>  			spin_unlock_irqrestore(&i2o_drivers_lock, flags);
+>  			rc = -EFAULT;
+>  			goto out;
+> @@ -244,8 +243,8 @@ int i2o_driver_dispatch(struct i2o_controller *c, u32 m)
+>  	}
+>  
+>  	if (unlikely(!drv->reply)) {
+> -		osm_debug("%s: Reply to driver %s, but no reply function"
+> -			  " defined!\n", c->name, drv->name);
+> +		osm_debug("%s: Reply to driver %s, but no reply function defined!\n",
+> +			c->name, drv->name);
+>  		return -EIO;
+>  	}
+>  
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150218194915.GA28794%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
