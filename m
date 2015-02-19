@@ -1,96 +1,70 @@
-X-GM-THRID: 260132831232
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,a7312e608237771f,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.45.7 with SMTP id i7mr2972089lam.9.1424233835724;
-        Tue, 17 Feb 2015 20:30:35 -0800 (PST)
+X-GM-THRID: 411471708160
+X-Received: by 10.152.88.40 with SMTP id bd8mr409887lab.0.1424335533059;
+        Thu, 19 Feb 2015 00:45:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.84.98 with SMTP id x2ls1106355wiy.51.canary; Tue, 17 Feb
- 2015 20:30:35 -0800 (PST)
-X-Received: by 10.180.39.164 with SMTP id q4mr49578wik.5.1424233835417;
-        Tue, 17 Feb 2015 20:30:35 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id o3si3841251wib.2.2015.02.17.20.30.35
+Received: by 10.152.198.231 with SMTP id jf7ls125660lac.92.gmail; Thu, 19 Feb
+ 2015 00:45:32 -0800 (PST)
+X-Received: by 10.112.64.171 with SMTP id p11mr404378lbs.12.1424335532687;
+        Thu, 19 Feb 2015 00:45:32 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id by11si53322wib.1.2015.02.19.00.45.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Feb 2015 20:30:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Thu, 19 Feb 2015 00:45:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id l15so38242811wiw.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Feb 2015 20:30:35 -0800 (PST)
+Received: by mail-wi0-f174.google.com with SMTP id em10so46438368wid.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 00:45:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=NC3tr7abZ2S27OC3G8nFGFcNqd/Fwd2D3StsHmHE3Dg=;
-        b=wf7aX8TwLr7fSsBkjPgHIAqPZkeblOKvuNSoQiJ1etRmTdB02G2DUBt15syMD4uLL+
-         FofwIWUKM2YFWoJ+NhJ4b5r1BEPuP6otuLKH3+sDtnJ6spqLqlszaubIEozB3aqiaYpI
-         vofl1dpQmYIUS1v+xqwO4nKhhQYa+Lma5q7cX4g2J63ZHS2D/lneZXX5GoDoXOndL0SJ
-         ljUv2+9wvErUvLZADW2cz6hAZoD9a81ik8zdC9szcZz8oinpkf9IbyJfS62JSfkM8nvu
-         HJnS3vUnkvEIYa3Cd6+X6SL9tYTk1Y+9kQlZzxbC7VLvS2KGqJb8stEC4WjeK6io3+y2
-         UvLg==
-X-Received: by 10.180.76.133 with SMTP id k5mr1071299wiw.30.1424233835363;
-        Tue, 17 Feb 2015 20:30:35 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([196.205.191.150])
-        by mx.google.com with ESMTPSA id qb8sm24332184wjc.4.2015.02.17.20.30.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 17 Feb 2015 20:30:34 -0800 (PST)
-Date: Wed, 18 Feb 2015 06:30:30 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: line6: replace init_timer by setup_timer
-Message-ID: <20150218043030.GA21690@localhost.localdomain>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=sjnptua7qn2UwfeqoAPfGBTg/kfxwb5mL0055e3QGrg=;
+        b=IwAIwsdsLRG7uDDGqjQYKy5ahq/WMQhl2gGBeCGmSom2ina/vSGA5jRlx82rg0hloM
+         qaFUOwLtV3N4zILlx+UfdQXBDJWEdoQ/8oP6Ui/uUSDLJFYikFyTLmLvdLDLnQ6Kr15h
+         LXBWCCUWzIezJ8rJ42MLgPF8x+BmLNdb1588fN69MSe84XXk003UCgvTOKyTO4Fd5bfW
+         8zUYjk0dp3vQ4yEC/oT3wWW9LxAoq0ZKGqWUfW41bLcpMjB1/2s7Hc2gm6hAzWWD5h2H
+         EbByr4N7dCDSQg2Ut6wzw2CUIEePLFTVB8H1xjHC/vaXofgz9oj/ourLg2/Ys+hPiqj0
+         pnQA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.180.85.70 with SMTP id f6mr8149346wiz.22.1424335532577; Thu,
+ 19 Feb 2015 00:45:32 -0800 (PST)
+Received: by 10.194.13.168 with HTTP; Thu, 19 Feb 2015 00:45:32 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.02.1502190822560.2009@localhost6.localdomain6>
+References: <20150218195639.GA3189@vaishali-Ideapad-Z570>
+	<alpine.DEB.2.02.1502182111570.2248@localhost6.localdomain6>
+	<54E503C2.2030009@gmail.com>
+	<CAK-LDbKDENPCBRB9Na9xGifkjy0nm9OV1dLJO4Hw1Op+vSvHtA@mail.gmail.com>
+	<alpine.DEB.2.02.1502190822560.2009@localhost6.localdomain6>
+Date: Thu, 19 Feb 2015 14:15:32 +0530
+Message-ID: <CAK-LDbKSHReRPomPARxzp0Ya+-B3AJdO_W8goZ0TDEB5n0T7jw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723au: Use put_unaligned_le16
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Jes Sorensen <jes.sorensen@gmail.com>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch replaces init_timer and 2 step initialization of
-function and data by setup_timer using the following coccinelle
-script:
+On Thu, Feb 19, 2015 at 12:54 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> Ok. I will split this patch in 2 patches also. And will make the commit log
+>> short and more clear.
+>
+> Actually, my comment was ambiguous.  I was commenting on the fact that you
+> went way over 80 characters.  I think Jes's comment was more that he
+> wanted all the English text part of the commit message up at the top,
+> where he would see it immediately, not buried after the semantic patch.
 
-@@
-expression ds, e1, e2;
-@@
-
--init_timer (&ds);
-+setup_timer (&ds, e1, e2);
-...
--ds.function = e1;
-...
--ds.data = e2;
+Yes. I agree. My line went over 80 characters. Ok. I will keep english part
+first in a commit log explaining the change and then semantic patch.
 
 
-Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
----
- drivers/staging/line6/toneport.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+> julia
 
-diff --git a/drivers/staging/line6/toneport.c b/drivers/staging/line6/toneport.c
-index 6943715..f6035ce 100644
---- a/drivers/staging/line6/toneport.c
-+++ b/drivers/staging/line6/toneport.c
-@@ -396,10 +396,9 @@ static int toneport_try_init(struct usb_interface *interface,
- 
- 	toneport_setup(toneport);
- 
--	init_timer(&toneport->timer);
-+	setup_timer(&toneport->timer, toneport_start_pcm,
-+		    (unsigned long)toneport);
- 	toneport->timer.expires = jiffies + TONEPORT_PCM_DELAY * HZ;
--	toneport->timer.function = toneport_start_pcm;
--	toneport->timer.data = (unsigned long)toneport;
- 	add_timer(&toneport->timer);
- 
- 	return 0;
+
+
 -- 
-1.9.3
-
+Vaishali
 
