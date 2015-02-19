@@ -1,51 +1,51 @@
 X-GM-THRID: 847410888704
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,585d716e84a6542a
+X-Google-Thread: 9ca63f596c,585d716e84a6542a,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.181.13.236 with SMTP id fb12mr955127wid.1.1424376353288;
-        Thu, 19 Feb 2015 12:05:53 -0800 (PST)
+X-Received: by 10.112.199.69 with SMTP id ji5mr818606lbc.0.1424374422249;
+        Thu, 19 Feb 2015 11:33:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.87.140 with SMTP id ay12ls228241lab.2.gmail; Thu, 19 Feb
- 2015 12:05:52 -0800 (PST)
-X-Received: by 10.112.146.65 with SMTP id ta1mr815277lbb.19.1424376352740;
-        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+Received: by 10.152.204.134 with SMTP id ky6ls24428lac.76.gmail; Thu, 19 Feb
+ 2015 11:33:41 -0800 (PST)
+X-Received: by 10.112.171.37 with SMTP id ar5mr819606lbc.16.1424374421868;
+        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wg0-x244.google.com (mail-wg0-x244.google.com. [2a00:1450:400c:c00::244])
-        by gmr-mx.google.com with ESMTPS id ev8si6470540wib.3.2015.02.19.12.05.52
+Received: from mail-wi0-x243.google.com (mail-wi0-x243.google.com. [2a00:1450:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id i7si6473797wif.0.2015.02.19.11.33.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) client-ip=2a00:1450:400c:c00::244;
+        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) client-ip=2a00:1450:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x244.google.com with SMTP id y19so2703127wgg.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+Received: by mail-wi0-x243.google.com with SMTP id bs8so4122916wib.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 11:33:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
         bh=2MbLweq096/IpNueuJCYTiPje5CuDKjw97KT+E5DetU=;
-        b=LLA7Wd0NFwR44saHR+6HAaw5F1VSuohuUk6dYGwE5nOgP7stxEljXod9a6pO/Muvj5
-         d1RCRYj/H+98LSXgMFrqR2DeZ/SAx4qds1MW0ZHOcut+WmyOgES9PifXeDFWF5PnC+S5
-         koKaNblI3awZ9NEMFsSOPwF8Vf0+LM+ILEv/mCPJFyHSVTQNfDGOLfqzGYp7nAO4IGV4
-         paEWoEjHJBq07dGU0yi64lLwZTsaNBwF75xvTy/cuJmwABitNjhL92CcOi0q8JRb3h95
-         DshRuqPvxbqaMb1N0BVtqnBhfwDQ86oWp/4IswJGXndpx0aAu8IPUY/2zTgXbe+ICFvp
-         p1XQ==
-X-Received: by 10.180.35.42 with SMTP id e10mr13547741wij.11.1424376352655;
-        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+        b=WG09jHlX2Lkrark/ruGzzmQLBScABBRjfh/wlOoSukR2xWpBLxFoLICIBBrJ0t8RBW
+         sPT2S9GJAmLhjRkyFzhO7JV3iiMmC+js8kWMWa6Ya4gxSXaRiag6ib/zTjJVAquytXfQ
+         oAQpBAC6OvGvvjd5vGM0AMyOqsGXIaXCGfFS7tO8ku7tBzG6iKSuW35SUkMc0HJ/4sh9
+         +U0moKZf6oUoQzUIC4mh+sL043du8hfqkzHBz15M81p2N6wQyk/37LR6Sz50e4kadu2f
+         fpBbkpaGSPiB5E0kerms8JbGoobHRzjQkl9kvj/Ws3wv6PS+16piMpksGSzRMaoFSgSA
+         2jfA==
+X-Received: by 10.194.156.133 with SMTP id we5mr12321320wjb.37.1424374421762;
+        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
 Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id hg7sm38826757wjb.44.2015.02.19.12.05.51
+        by mx.google.com with ESMTPSA id m4sm5570585wik.20.2015.02.19.11.33.39
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
 From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: drivers: dma: ste_dma40: fix blank line warning
-Date: Thu, 19 Feb 2015 22:05:41 +0200
-Message-Id: <1424376341-29435-1-git-send-email-haticeerturk27@gmail.com>
+Subject: [PATCH 8/8] Staging: drivers: dma: ste_dma40: fix blank line warning
+Date: Thu, 19 Feb 2015 21:33:30 +0200
+Message-Id: <1424374410-28940-1-git-send-email-haticeerturk27@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 WARNING: Missing a blank line after declarations
