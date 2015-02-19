@@ -1,48 +1,52 @@
 X-GM-THRID: 566645227520
-X-Received: by 10.112.181.198 with SMTP id dy6mr334109lbc.22.1424325518026;
-        Wed, 18 Feb 2015 21:58:38 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,aff877e338498959
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.178.234 with SMTP id db10mr332633wjc.2.1424325455382;
+        Wed, 18 Feb 2015 21:57:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.6.42 with SMTP id cr10ls121526lad.91.gmail; Wed, 18 Feb
- 2015 21:58:37 -0800 (PST)
-X-Received: by 10.152.45.7 with SMTP id i7mr319113lam.9.1424325517547;
-        Wed, 18 Feb 2015 21:58:37 -0800 (PST)
+Received: by 10.180.78.101 with SMTP id a5ls996812wix.6.canary; Wed, 18 Feb
+ 2015 21:57:35 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr452593wiv.0.1424325455137;
+        Wed, 18 Feb 2015 21:57:35 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
-        by gmr-mx.google.com with ESMTPS id ev8si6323512wib.3.2015.02.18.21.58.37
+Received: from mail-we0-f181.google.com (mail-we0-f181.google.com. [74.125.82.181])
+        by gmr-mx.google.com with ESMTPS id ew5si8957323wid.1.2015.02.18.21.57.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 21:58:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
+        Wed, 18 Feb 2015 21:57:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.181 as permitted sender) client-ip=74.125.82.181;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.181 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x230.google.com with SMTP id h11so45630815wiw.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 21:58:37 -0800 (PST)
+Received: by wesp10 with SMTP id p10so5293264wes.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 21:57:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=Lim+zfNBR6U39FUV6pkj81mBPJZdaWrCJt2Ur6sht1M=;
-        b=CgjnnL5ACTx2ZvfQwZ2oyniCE4BQ53DIp1l9yQ2WR2FzDRxFtF4AuP5YIuZWb7uvoD
-         AcJ9XBUoNrYOIw4Z8ymdn74dYjWpxyJkoDozbOEZdK8yk5LJ7y45zW2QdQJzddrcQMRh
-         a7myvI9OdhlEs6asXCY4OZXtKR3zH5apm+91GF/SR+60gG5MPSARKwgv6o0vmvEcFTyh
-         pckSI8Os2DyiuG8b09XXim0c1vz53XSjfwQuAyNVzmVZhC0FyvOozOu4cI4Ogcb6fXD0
-         uhheIIYaLe5yNdetPc8fQI21lR+d9Tx0bUHuq3aTj3tzodKT5fLRVJApwGMgPJBSadIr
-         nlOQ==
-X-Received: by 10.194.134.68 with SMTP id pi4mr5507076wjb.101.1424325517471;
-        Wed, 18 Feb 2015 21:58:37 -0800 (PST)
+        bh=wh4IYR8rXupnmpCK++8DY0RoRSBN/R4GEAhDOMUbtog=;
+        b=YQK59RCjtCmJYXp/Iw+WfXlDXItG6OFObEtU4AAnWgbSZRHM92eX2xn7kfAyCW7cOm
+         0INTb08eeyEm61Nz6rMbZzb8nJjr2dLqF476uzHS6VAm2O4Y36bDBkfj1zzfkDTeD5VE
+         hfTC1uihSgKhkeo1zfhExyJKcHaDS4nB6KoL7L+NKremN4FoNbFldEAji2MWAZU+C3VX
+         MyS/+qUKIbWhX6h6C1ORNZh2HkvL4OjZeoaEkjGK9loJCjFZiTHX4ipsMyxJE9SXLu5f
+         Y+hha4VMSnRYN8ajuAPUUM5hHsn6HwxfCLqIF/sk6I/4P+qSYFx1HL9J/tW/iI0nT1MC
+         FRvg==
+X-Received: by 10.180.73.205 with SMTP id n13mr3230951wiv.64.1424325455075;
+        Wed, 18 Feb 2015 21:57:35 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.198])
-        by mx.google.com with ESMTPSA id hg7sm35794340wjb.44.2015.02.18.21.58.34
+        by mx.google.com with ESMTPSA id ax10sm35801033wjc.26.2015.02.18.21.57.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Feb 2015 21:58:36 -0800 (PST)
-Date: Thu, 19 Feb 2015 07:58:29 +0200
+        Wed, 18 Feb 2015 21:57:34 -0800 (PST)
+Date: Thu, 19 Feb 2015 07:57:25 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/5] staging: panel: replace init_timer by setup_timer
-Message-ID: <c1c43af168146242ba09e8a2444c7b4c4796ef1a.1424324574.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 2/5] staging: dgnc: replace init_timer by setup_timer
+Message-ID: <6363f9b9ec4ffdc70c46ba07ac835295e65172bf.1424324574.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1424324574.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -72,26 +76,37 @@ expression ds, e1, e2;
 -ds.function = e1; 
 )
 
+
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/panel/panel.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/staging/dgnc/dgnc_driver.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/panel/panel.c b/drivers/staging/panel/panel.c
-index 6ed35b6..4da854c 100644
---- a/drivers/staging/panel/panel.c
-+++ b/drivers/staging/panel/panel.c
-@@ -2010,10 +2010,8 @@ static void init_scan_timer(void)
- 	if (scan_timer.function != NULL)
- 		return;		/* already started */
+diff --git a/drivers/staging/dgnc/dgnc_driver.c b/drivers/staging/dgnc/dgnc_driver.c
+index f177d3a..5d47c61 100644
+--- a/drivers/staging/dgnc/dgnc_driver.c
++++ b/drivers/staging/dgnc/dgnc_driver.c
+@@ -285,9 +285,7 @@ static int dgnc_start(void)
  
--	init_timer(&scan_timer);
-+	setup_timer(&scan_timer, (void *)&panel_scan_timer, 0);
- 	scan_timer.expires = jiffies + INPUT_POLL_TIME;
--	scan_timer.data = 0;
--	scan_timer.function = (void *)&panel_scan_timer;
- 	add_timer(&scan_timer);
- }
+ 	/* Start the poller */
+ 	spin_lock_irqsave(&dgnc_poll_lock, flags);
+-	init_timer(&dgnc_poll_timer);
+-	dgnc_poll_timer.function = dgnc_poll_handler;
+-	dgnc_poll_timer.data = 0;
++	setup_timer(&dgnc_poll_timer, dgnc_poll_handler, 0);
+ 	dgnc_poll_time = jiffies + dgnc_jiffies_from_ms(dgnc_poll_tick);
+ 	dgnc_poll_timer.expires = dgnc_poll_time;
+ 	spin_unlock_irqrestore(&dgnc_poll_lock, flags);
+@@ -731,9 +729,7 @@ static void dgnc_poll_handler(ulong dummy)
+ 	if ((ulong) new_time >= 2 * dgnc_poll_tick)
+ 		dgnc_poll_time = jiffies +  dgnc_jiffies_from_ms(dgnc_poll_tick);
+ 
+-	init_timer(&dgnc_poll_timer);
+-	dgnc_poll_timer.function = dgnc_poll_handler;
+-	dgnc_poll_timer.data = 0;
++	setup_timer(&dgnc_poll_timer, dgnc_poll_handler, 0);
+ 	dgnc_poll_timer.expires = dgnc_poll_time;
+ 	spin_unlock_irqrestore(&dgnc_poll_lock, flags);
  
 -- 
 1.9.3
