@@ -1,50 +1,96 @@
 X-GM-THRID: 560417734656
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,aaed3dbebb789d37
+X-Google-Thread: 9ca63f596c,aaed3dbebb789d37,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.44.161 with SMTP id f1mr16755032obm.33.1424763847223;
-        Mon, 23 Feb 2015 23:44:07 -0800 (PST)
+X-Received: by 10.66.65.109 with SMTP id w13mr2919889pas.28.1424323271019;
+        Wed, 18 Feb 2015 21:21:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.164 with SMTP id c33ls2700244qgf.66.gmail; Mon, 23 Feb
- 2015 23:44:07 -0800 (PST)
-X-Received: by 10.236.63.8 with SMTP id z8mr15812628yhc.15.1424763847082;
-        Mon, 23 Feb 2015 23:44:07 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id xj4si4085889pbc.2.2015.02.23.23.44.07
+Received: by 10.107.163.208 with SMTP id m199ls143099ioe.59.gmail; Wed, 18 Feb
+ 2015 21:21:10 -0800 (PST)
+X-Received: by 10.50.29.6 with SMTP id f6mr5388750igh.2.1424323270683;
+        Wed, 18 Feb 2015 21:21:10 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from mail-pd0-f177.google.com (mail-pd0-f177.google.com. [209.85.192.177])
+        by gmr-mx.google.com with ESMTPS id bx1si1688812pdb.2.2015.02.18.21.21.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 23:44:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Wed, 18 Feb 2015 21:21:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 209.85.192.177 as permitted sender) client-ip=209.85.192.177;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C4B7F13;
-	Tue, 24 Feb 2015 07:44:06 +0000 (UTC)
-Date: Mon, 23 Feb 2015 23:44:06 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: line6: Removed the space
- before ','.
-Message-ID: <20150224074406.GF11701@kroah.com>
-References: <20150219052205.GA24936@localhost>
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 209.85.192.177 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pdbfp1 with SMTP id fp1so6365567pdb.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 21:21:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=pbdhohtRmBAAjjeiGwpGEyxQfUfvTDKdjcmezKzJsBM=;
+        b=BzKgPptDxk91A0csjWoYWgWaww7YS+RaUuwij7Dw04Ul9V60oZsR8DY+ip9h0n0eHT
+         fpXeE4Himcom5SZ6q/U7f9s9KcND0nmEMc5B4zGkVTC00mxHHnZNVbr+Jkk+Tu/iQ+Kj
+         Rvi6GamaFU/uqBQzcoJ0/taQVzV7NvIq+IbhxvGODnVGz3y1pIJvD0F5pRexKneI8zCe
+         OclOrW3iy+imaatCzUPv6JFPQoSRKmYi/KxNv2IcGfDhqNEC9SvqhVuTAM0WnUg/ZKez
+         sgcqhUtfgVbLcOX8r18xwZtCoEMsDTffXmsWSMQdLKl0WpugX+awlRoRZAImVIII3sE/
+         1GUA==
+X-Received: by 10.68.240.5 with SMTP id vw5mr4292806pbc.165.1424323270559;
+        Wed, 18 Feb 2015 21:21:10 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from nizamkari ([61.16.142.166])
+        by mx.google.com with ESMTPSA id ep2sm22216999pbc.78.2015.02.18.21.21.09
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 18 Feb 2015 21:21:10 -0800 (PST)
+Date: Thu, 19 Feb 2015 10:52:05 +0530
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: line6: Removed the space before ','.
+Message-ID: <20150219052205.GA24936@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20150219052205.GA24936@localhost>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, Feb 19, 2015 at 10:52:05AM +0530, Navya Sri Nizamkari wrote:
-> This fixes the following checkpatch.pl error:
-> 
-> ERROR: space prohibited before that ','
-> 
-> Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-> ---
->  drivers/staging/line6/pcm.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+This fixes the following checkpatch.pl error:
 
-This file is no longer in the tree, so I can't accept patches for it :(
+ERROR: space prohibited before that ','
+
+Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+---
+ drivers/staging/line6/pcm.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/line6/pcm.h b/drivers/staging/line6/pcm.h
+index 6aa0d46..5d87934 100644
+--- a/drivers/staging/line6/pcm.h
++++ b/drivers/staging/line6/pcm.h
+@@ -145,21 +145,21 @@ enum {
+ 	    LINE6_BIT_PCM_IMPULSE_PLAYBACK_BUFFER |
+ #endif
+ 	    LINE6_BIT_PCM_ALSA_PLAYBACK_BUFFER |
+-	    LINE6_BIT_PCM_MONITOR_PLAYBACK_BUFFER ,
++	    LINE6_BIT_PCM_MONITOR_PLAYBACK_BUFFER,
+ 
+ 	LINE6_BITS_PLAYBACK_STREAM =
+ #ifdef CONFIG_LINE6_USB_IMPULSE_RESPONSE
+ 	    LINE6_BIT_PCM_IMPULSE_PLAYBACK_STREAM |
+ #endif
+ 	    LINE6_BIT_PCM_ALSA_PLAYBACK_STREAM |
+-	    LINE6_BIT_PCM_MONITOR_PLAYBACK_STREAM ,
++	    LINE6_BIT_PCM_MONITOR_PLAYBACK_STREAM,
+ 
+ 	LINE6_BITS_CAPTURE_BUFFER =
+ #ifdef CONFIG_LINE6_USB_IMPULSE_RESPONSE
+ 	    LINE6_BIT_PCM_IMPULSE_CAPTURE_BUFFER |
+ #endif
+ 	    LINE6_BIT_PCM_ALSA_CAPTURE_BUFFER |
+-	    LINE6_BIT_PCM_MONITOR_CAPTURE_BUFFER ,
++	    LINE6_BIT_PCM_MONITOR_CAPTURE_BUFFER,
+ 
+ 	LINE6_BITS_CAPTURE_STREAM =
+ #ifdef CONFIG_LINE6_USB_IMPULSE_RESPONSE
+-- 
+1.9.1
+
 
