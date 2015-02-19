@@ -1,100 +1,82 @@
 X-GM-THRID: 1055341412352
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,fa81c02fcb664df
+X-Google-Thread: 9ca63f596c,fa81c02fcb664df,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.33.97 with SMTP id q1mr9281348obi.42.1424432244478;
-        Fri, 20 Feb 2015 03:37:24 -0800 (PST)
+X-Received: by 10.112.130.70 with SMTP id oc6mr898371lbb.13.1424385509780;
+        Thu, 19 Feb 2015 14:38:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.95.227 with SMTP id i90ls924589qge.59.gmail; Fri, 20 Feb
- 2015 03:37:24 -0800 (PST)
-X-Received: by 10.236.36.39 with SMTP id v27mr9103704yha.24.1424432244328;
-        Fri, 20 Feb 2015 03:37:24 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qc0-x22c.google.com (mail-qc0-x22c.google.com. [2607:f8b0:400d:c01::22c])
-        by gmr-mx.google.com with ESMTPS id ba9si5167552qcb.0.2015.02.20.03.37.24
+Received: by 10.180.240.202 with SMTP id wc10ls1396141wic.10.canary; Thu, 19
+ Feb 2015 14:38:29 -0800 (PST)
+X-Received: by 10.180.105.129 with SMTP id gm1mr1004747wib.3.1424385509505;
+        Thu, 19 Feb 2015 14:38:29 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
+        by gmr-mx.google.com with ESMTPS id cl5si9121098wib.3.2015.02.19.14.38.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 03:37:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22c as permitted sender) client-ip=2607:f8b0:400d:c01::22c;
+        Thu, 19 Feb 2015 14:38:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22c as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qc0-x22c.google.com with SMTP id m20so122309qcx.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 03:37:24 -0800 (PST)
+Received: by wesx3 with SMTP id x3so2506894wes.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 14:38:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:message-id:date:user-agent:mime-version:to:subject:references
-         :in-reply-to:content-type:content-transfer-encoding;
-        bh=JyLpUfxROm0nDiH5Z7/k+Zup9mGRV3rChsstpLWyn8g=;
-        b=Gyw6Bo2XIA2jWZ8E153sYUwHw6eYToXMe1tOM3QfHUGE54oW5u87Cxy0DeFOqLBDPO
-         O/KAK3v+EDM+ZEIdbwgkM6e1DCYqMMlPqXVlUX3NYl5D8f5blCeK4EBpEzlto5RR2nlw
-         GH5fBoOYViNKfB847Sosk4ARrhFaSWrSBcmHwMYPlBeOXaEFwqRuSQ9zDiSIhbJauOF9
-         uLX4hATZ2SR8afKIgQKv2Hcu0q2VZ4ORrOrWrULE2iLSRHZGrC9fbKqlGdtFU+AgrXxR
-         NiLOKlOB7QyLWGj+jDSUCmnrfBGDnnbw0SOGEsT33xuyH0ws0PxC5IWHwnpt5O3KB5nf
-         a+sQ==
-X-Received: by 10.229.216.71 with SMTP id hh7mr6384525qcb.0.1424432244215;
-        Fri, 20 Feb 2015 03:37:24 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [192.168.99.32] (pool-72-68-159-94.nycmny.fios.verizon.net. [72.68.159.94])
-        by mx.google.com with ESMTPSA id k3sm21767705qao.0.2015.02.20.03.37.23
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 03:37:23 -0800 (PST)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <54E71C73.7090007@gmail.com>
-Date: Fri, 20 Feb 2015 06:37:23 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
-MIME-Version: 1.0
-To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, 
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Reposition of return
- statements
-References: <1424385500-22022-1-git-send-email-ksenija.stanojevic@gmail.com>
-In-Reply-To: <1424385500-22022-1-git-send-email-ksenija.stanojevic@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+        h=from:to:cc:subject:date:message-id;
+        bh=w8jwhbiCewOtBOB26+20EzDhwNQ/lK5i/ydZ8JnaMv8=;
+        b=HoAW/5y5+GUQoqJBeoiZukL8SooOr4HdANH8FTQWj1lwJ4WU07yq758ESLH/rfU5Sd
+         5gQBUmhoarBnyBf7cvS4hebuFx+cUlUhKW24poUf5pK2RLJ5h4S/cSsplMiVvm3JxURN
+         JUInu7Rtw4BagwG4G3OUba5VmCch90P95LuHJ5SO0XX7m4bH/g/scGmtILfeZYHrVLKU
+         E2gWwQjeDZFlCAPVlYyPNtoiHhlmxIZci7ePF+184WnJJNb+7JLyc8EvoDGGxmGkWBcj
+         XLIjEM6HMX7qEbGpIklcmOaWK62EI0kUMDE1HUD5VksemYVcqfaIGvAz6FrX+hNVLrkz
+         SYYA==
+X-Received: by 10.180.171.35 with SMTP id ar3mr14734341wic.24.1424385509430;
+        Thu, 19 Feb 2015 14:38:29 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id dx11sm36421414wjb.23.2015.02.19.14.38.28
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 19 Feb 2015 14:38:28 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: rtl8192u: Reposition of return statements
+Date: Thu, 19 Feb 2015 23:38:20 +0100
+Message-Id: <1424385500-22022-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On 02/19/15 17:38, Ksenija Stanojevic wrote:
-> This patch fixes the checkpatch.pl warning:
-> WARNING: "else is not generally useful after a break or return"
-> by placing return reg after if-else branch.
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r819xU_phy.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
-> index d006602..f343735 100644
-> --- a/drivers/staging/rtl8192u/r819xU_phy.c
-> +++ b/drivers/staging/rtl8192u/r819xU_phy.c
-> @@ -355,13 +355,12 @@ u32 rtl8192_phy_QueryRFReg(struct net_device *dev, RF90_RADIO_PATH_E eRFPath,
->  		bitshift =  rtl8192_CalculateBitShift(bitmask);
->  		reg = (reg & bitmask) >> bitshift;
->  		udelay(200);
-> -		return reg;
->  	} else {
->  		reg = rtl8192_phy_RFSerialRead(dev, eRFPath, reg_addr);
->  		bitshift =  rtl8192_CalculateBitShift(bitmask);
->  		reg = (reg & bitmask) >> bitshift;
-> -		return reg;
->  	}
-> +	return reg;
->  }
->  
->  /******************************************************************************
-> 
+This patch fixes the checkpatch.pl warning:
+WARNING: "else is not generally useful after a break or return"
+by placing return reg after if-else branch.
 
-In this case the automated commit message is actually a little unclear,
-at least to me. Explaining that you are simplifying the code by not
-having two identical paths would be better.
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/rtl8192u/r819xU_phy.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-You could take this patch further as most of the code is identical
-except for the udelay() in the first case.
-
-Cheers,
-Jes
+diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
+index d006602..f343735 100644
+--- a/drivers/staging/rtl8192u/r819xU_phy.c
++++ b/drivers/staging/rtl8192u/r819xU_phy.c
+@@ -355,13 +355,12 @@ u32 rtl8192_phy_QueryRFReg(struct net_device *dev, RF90_RADIO_PATH_E eRFPath,
+ 		bitshift =  rtl8192_CalculateBitShift(bitmask);
+ 		reg = (reg & bitmask) >> bitshift;
+ 		udelay(200);
+-		return reg;
+ 	} else {
+ 		reg = rtl8192_phy_RFSerialRead(dev, eRFPath, reg_addr);
+ 		bitshift =  rtl8192_CalculateBitShift(bitmask);
+ 		reg = (reg & bitmask) >> bitshift;
+-		return reg;
+ 	}
++	return reg;
+ }
+ 
+ /******************************************************************************
+-- 
+1.9.1
 
 
