@@ -1,115 +1,158 @@
-X-GM-THRID: 8956373106688
-X-Received: by 10.66.161.36 with SMTP id xp4mr74517466pab.36.1426682085840;
-        Wed, 18 Mar 2015 05:34:45 -0700 (PDT)
+X-GM-THRID: 761102598144
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,efa55286ffba0bae
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.19.100 with SMTP id d4mr853421lae.7.1424380817407;
+        Thu, 19 Feb 2015 13:20:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.108.134 with SMTP id j6ls586977qgf.74.gmail; Wed, 18 Mar
- 2015 05:34:45 -0700 (PDT)
-X-Received: by 10.236.53.10 with SMTP id f10mr74128355yhc.17.1426682085644;
-        Wed, 18 Mar 2015 05:34:45 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pd0-x22d.google.com (mail-pd0-x22d.google.com. [2607:f8b0:400e:c02::22d])
-        by gmr-mx.google.com with ESMTPS id l3si3100897pdo.0.2015.03.18.05.34.45
+Received: by 10.152.26.74 with SMTP id j10ls217473lag.7.gmail; Thu, 19 Feb
+ 2015 13:20:16 -0800 (PST)
+X-Received: by 10.112.146.65 with SMTP id ta1mr844775lbb.19.1424380816914;
+        Thu, 19 Feb 2015 13:20:16 -0800 (PST)
+Return-Path: <aybuke.147@gmail.com>
+Received: from mail-lb0-x22b.google.com (mail-lb0-x22b.google.com. [2a00:1450:4010:c04::22b])
+        by gmr-mx.google.com with ESMTPS id mv2si2749951lbc.0.2015.02.19.13.20.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 05:34:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) client-ip=2607:f8b0:400e:c02::22d;
+        Thu, 19 Feb 2015 13:20:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:4010:c04::22b as permitted sender) client-ip=2a00:1450:4010:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:4010:c04::22b as permitted sender) smtp.mail=aybuke.147@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbni2 with SMTP id ni2so42110499pdb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 05:34:45 -0700 (PDT)
+Received: by mail-lb0-x22b.google.com with SMTP id b6so2570649lbj.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 13:20:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references:content-type:content-transfer-encoding;
-        bh=QyFBkl2Z7dAxGTqAkv7uj+vlSCcwEqaKiHq2ffzp+go=;
-        b=mMgdLdsP403t4gkTjrEAG93tmeYvGw5mprXqMjMTIcGJTW4i38H9GJqHLJ/z86oPo1
-         uf640KYDCa/IOAPU3Z4ZtWfPGZgmX2c7kNfoteR8v0er6hzc4YYdvC2qxUxmx8/QE81w
-         yyLH9C+Agk8XbH/oq88GegBrjJ27Ur9rxP+eFTLouCNAyM0zfxGs6k39GraxOZNIBdCd
-         TOA4edVeoXsFQUsMOm9Cl4jsE1aDSDET3EL2gFfYFxN3lSUJYNN+mxMDxtTRayJw27K8
-         VWvsN2RaCl37Vdq0rJBi/yzDDf8ILxksEIT9wzfLkpODna8XG6c2ruNTl12B6ACq2FfD
-         AbyQ==
-X-Received: by 10.66.136.48 with SMTP id px16mr126155212pab.89.1426682085453;
-        Wed, 18 Mar 2015 05:34:45 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from localhost ([182.19.48.18])
-        by mx.google.com with ESMTPSA id c9sm27433663pdo.13.2015.03.18.05.34.43
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 18 Mar 2015 05:34:44 -0700 (PDT)
-From: Darshana Padmadas <darshanapadmadas@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH v2 1/5] Staging: rtl8192e: Replace memcpy with ether_addr_copy
-Date: Wed, 18 Mar 2015 18:04:39 +0530
-Message-Id: <9eab4a1c89f930dac0710fda702a6de414172237.1426681038.git.darshanapadmadas@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <07d5dca03ac0a1d777e133546e2f914e36efeb3f.1426533157.git.darshanapadmadas@gmail.com>
-References: <07d5dca03ac0a1d777e133546e2f914e36efeb3f.1426533157.git.darshanapadmadas@gmail.com>
-In-Reply-To: <cover.1426681038.git.darshanapadmadas@gmail.com>
-References: <cover.1426681038.git.darshanapadmadas@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=T5iBqCiRPmmIp5wy9Cg819KGlP9cPRc3Xynqzl6mm50=;
+        b=ClNGxR7mTBgW7pR/LdoxB5kSPWdjk4Ccq6sIGwvYXFycaS7UY1aRUuuYqTDh34sFP+
+         Uc+uiPcT8AcQxSe2hzygHh3hY1sT8+vu82nRos1dB6IM+GN2vWZI4lG5sL40ZJiWWzX8
+         SWqdn1KGWikJwt7AanP1eeiVxIfHknoKAX7cf7cOQwenHRJ80WUH7nmJsW/6/15gesuy
+         s7bgPaUoEaYXtBGowIa7wQ5N67d2qZcy7vlSC1IeHIgX3n70fF663iXvRFcvnE10czCA
+         utupZtnsiiPbj8Sl13gG/ltuH88jRZ+HISoNaSVYJroBSnlbSvDvYO2fAepy428hN/1I
+         SloA==
+MIME-Version: 1.0
+X-Received: by 10.112.220.36 with SMTP id pt4mr5741137lbc.15.1424380816805;
+ Thu, 19 Feb 2015 13:20:16 -0800 (PST)
+Received: by 10.112.147.162 with HTTP; Thu, 19 Feb 2015 13:20:16 -0800 (PST)
+In-Reply-To: <1721378.1oPpAp4PUY@avalon>
+References: <1424371364-7277-1-git-send-email-aybuke.147@gmail.com>
+	<1673936.xFr6aDYKYJ@avalon>
+	<CAEAX3Joj5CRsUdNmXWmmHXiAKTXiRxyywwT0jnqsdS3QcAe=6Q@mail.gmail.com>
+	<1721378.1oPpAp4PUY@avalon>
+Date: Thu, 19 Feb 2015 23:20:16 +0200
+Message-ID: <CAEAX3JpKgA3rd-mz94zXfvUG-du5yBnoekYUkXS8y3rXgvmSvw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: fbtft: Fix struct
+ backlight_ops should normally be const
+From: =?UTF-8?B?YXliw7xrZSDDtnpkZW1pcg==?= <aybuke.147@gmail.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=001a1134b7049c54d5050f778083
 
-This patch fixes the following warning found by checkpatch.pl:
-Prefer ether_addr_copy() over memcpy() if the Ethernet addresses are __aligned(2
+--001a1134b7049c54d5050f778083
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Also included the header file linux/etherdevice.h where ether_addr_copy has 
-been defined.
-Pahole showed that the structure for BAReq and Delba is aligned:
-struct rtllib_hdr_3addr {
-        __le16                     frame_ctl;            /*     0     2 */
-        __le16                     duration_id;          /*     2     2 */
-        u8                         addr1[6];             /*     4     6 */
-        u8                         addr2[6];             /*    10     6 */
-        u8                         addr3[6];             /*    16     6 */
-        __le16                     seq_ctl;              /*    22     2 */
-        u8                         payload[0];           /*    24     0 */
+Many thanks for clarifying, When I compile , I will consider your
+description :)
 
-        /* size: 24, cachelines: 1, members: 7 */
-        /* last cacheline: 24 bytes */
-};
+2015-02-19 22:13 GMT+02:00 Laurent Pinchart <
+laurent.pinchart@ideasonboard.com>:
 
-Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
----
-Changes in v2:
-    - Included header file where ether_addr_copy is defined.
-    - Made the commit message more clear.
+> Hi Ayb=C3=BCke,
+>
+> On Thursday 19 February 2015 21:43:22 ayb=C3=BCke =C3=B6zdemir wrote:
+> > Hi Laurent,
+> >
+> > I will pay much more attention to the commit messages and subject line.=
+ I
+> > use this command while compiling this file: make M=3Ddrivers/staging/fb=
+tft
+> I
+> > didn't encounter a problem. I guess, I'm using the wrong the "make"
+> > command.
+>
+> The command is correct, but you also need to make sure that the driver is
+> selected in the kernel configuration, otherwise it won't get compiled.
+>
+> A good way to find out whether a .c source file has been compiled is to
+> check
+> that a .o file with the same base name has been created in the same
+> directory.
+> The kernel build system should also print
+>
+>   CC      drivers/staging/fbtft/fb_ssd1351.o
+>
+> during compilation.
+>
+> --
+> Regards,
+>
+> Laurent Pinchart
+>
+>
 
- drivers/staging/rtl8192e/rtl819x_BAProc.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-index 0415e02..4031462 100644
---- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-@@ -18,6 +18,7 @@
- ******************************************************************************/
- #include <asm/byteorder.h>
- #include <asm/unaligned.h>
-+#include <linux/etherdevice.h>
- #include "rtllib.h"
- #include "rtl819x_BA.h"
- 
-@@ -103,7 +104,7 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
- 	BAReq = (struct rtllib_hdr_3addr *)skb_put(skb,
- 		 sizeof(struct rtllib_hdr_3addr));
- 
--	memcpy(BAReq->addr1, Dst, ETH_ALEN);
-+	ether_addr_copy(BAReq->addr1, Dst);
- 	memcpy(BAReq->addr2, ieee->dev->dev_addr, ETH_ALEN);
- 
- 	memcpy(BAReq->addr3, ieee->current_network.bssid, ETH_ALEN);
-@@ -168,7 +169,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
- 	Delba = (struct rtllib_hdr_3addr *) skb_put(skb,
- 		 sizeof(struct rtllib_hdr_3addr));
- 
--	memcpy(Delba->addr1, dst, ETH_ALEN);
-+	ether_addr_copy(Delba->addr1, dst);
- 	memcpy(Delba->addr2, ieee->dev->dev_addr, ETH_ALEN);
- 	memcpy(Delba->addr3, ieee->current_network.bssid, ETH_ALEN);
- 	Delba->frame_ctl = cpu_to_le16(RTLLIB_STYPE_MANAGE_ACT);
--- 
-1.9.1
+--=20
+Ayb=C3=BCke =C3=96zdemir
+http://www.aybukeozdemir.com
 
+--001a1134b7049c54d5050f778083
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><span lang=3D"en"><span><span id=3D"result_box" class=3D""=
+ lang=3D"en"><span class=3D"">Many thanks for</span> <span class=3D"">clari=
+fying</span></span></span>, <span></span></span><span id=3D"result_box" cla=
+ss=3D"" lang=3D"en"><span class=3D""> When</span> <span class=3D"">I</span>=
+ <span class=3D"">compile </span><span class=3D"">, </span></span><span id=
+=3D"result_box" class=3D"" lang=3D"en"><span class=3D"">I</span> <span clas=
+s=3D"">will consider </span></span>your description :)<br></div><div class=
+=3D"gmail_extra"><br><div class=3D"gmail_quote">2015-02-19 22:13 GMT+02:00 =
+Laurent Pinchart <span dir=3D"ltr">&lt;<a href=3D"mailto:laurent.pinchart@i=
+deasonboard.com" target=3D"_blank">laurent.pinchart@ideasonboard.com</a>&gt=
+;</span>:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;b=
+order-left:1px #ccc solid;padding-left:1ex">Hi Ayb=C3=BCke,<br>
+<span class=3D""><br>
+On Thursday 19 February 2015 21:43:22 ayb=C3=BCke =C3=B6zdemir wrote:<br>
+&gt; Hi Laurent,<br>
+&gt;<br>
+&gt; I will pay much more attention to the commit messages and subject line=
+. I<br>
+&gt; use this command while compiling this file: make M=3Ddrivers/staging/f=
+btft I<br>
+&gt; didn&#39;t encounter a problem. I guess, I&#39;m using the wrong the &=
+quot;make&quot;<br>
+&gt; command.<br>
+<br>
+</span>The command is correct, but you also need to make sure that the driv=
+er is<br>
+selected in the kernel configuration, otherwise it won&#39;t get compiled.<=
+br>
+<br>
+A good way to find out whether a .c source file has been compiled is to che=
+ck<br>
+that a .o file with the same base name has been created in the same directo=
+ry.<br>
+The kernel build system should also print<br>
+<br>
+=C2=A0 CC=C2=A0 =C2=A0 =C2=A0 drivers/staging/fbtft/fb_ssd1351.o<br>
+<br>
+during compilation.<br>
+<span class=3D"HOEnZb"><font color=3D"#888888"><br>
+--<br>
+Regards,<br>
+<br>
+Laurent Pinchart<br>
+<br>
+</font></span></blockquote></div><br><br clear=3D"all"><br>-- <br><div clas=
+s=3D"gmail_signature"><div dir=3D"ltr"><div>Ayb=C3=BCke =C3=96zdemir<br></d=
+iv><a href=3D"http://www.aybukeozdemir.com" target=3D"_blank">http://www.ay=
+bukeozdemir.com</a><br></div></div>
+</div>
+
+--001a1134b7049c54d5050f778083--
 
