@@ -3,50 +3,50 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,370d94720141cc10
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.152.6.232 with SMTP id e8mr276285laa.2.1424314947736;
-        Wed, 18 Feb 2015 19:02:27 -0800 (PST)
+X-Received: by 10.112.46.106 with SMTP id u10mr259078lbm.3.1424314613751;
+        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.23.72 with SMTP id k8ls1320953wif.35.canary; Wed, 18 Feb
- 2015 19:02:27 -0800 (PST)
-X-Received: by 10.181.13.236 with SMTP id fb12mr391257wid.1.1424314947427;
-        Wed, 18 Feb 2015 19:02:27 -0800 (PST)
+Received: by 10.180.104.226 with SMTP id gh2ls195235wib.31.gmail; Wed, 18 Feb
+ 2015 18:56:53 -0800 (PST)
+X-Received: by 10.194.86.1 with SMTP id l1mr274987wjz.0.1424314613432;
+        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id l8si10730wia.0.2015.02.18.19.02.27
+Received: from mail-we0-f177.google.com (mail-we0-f177.google.com. [74.125.82.177])
+        by gmr-mx.google.com with ESMTPS id cl5si8928955wib.3.2015.02.18.18.56.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 19:02:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.177 as permitted sender) client-ip=74.125.82.177;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.177 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-f169.google.com with SMTP id em10so252523wid.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 19:02:27 -0800 (PST)
+Received: by wesw62 with SMTP id w62so4707703wes.12
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 18:56:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=aJKCb9BBa/HXE/cAizbPe54VS3mN3kUYNden+mNcNic=;
-        b=l+LX+aY/VEMnG7HHHbycS4iVynl8SNVnTICTHCekV8FEQkNCjpcEOP7ME3kt+Sbqpr
-         VwyBHArDmFfUVOrUPi65/TQNrJNAL3v56TpcXJ2fMZm3FXAUkFQBeYIfgPbj1sbIVX6V
-         iJRzx1bf5kjauNOP9/z/phYLgDIUXShaPjn3/DzBnHMW4X20LP+FMxWzzLrRefiT5/s/
-         LMhpEJpUAt3SXa1N5xLznqPbnKGnZuijT0Rlzs7z2r9SCcqPxk44+Z9/imuB6uz6h049
-         /Dxubn9eGD8PNHL1C4oWDUCLwoLixakiQYGvxeT/Gl6gR0kUZ6TiMZ+YIINUrj2Z5vOJ
-         pfVg==
-X-Received: by 10.180.211.101 with SMTP id nb5mr2434302wic.37.1424314947322;
-        Wed, 18 Feb 2015 19:02:27 -0800 (PST)
+        bh=qQw/0K/gMSIXj9Bz+titPIhLuk0QFLGOraeIWZuelbQ=;
+        b=qq3XPLRsVZLI7S7PPkNueVXaB2CBPYs6Fzeiyjs5/1uw+j2DosbfksG3PiOsNCidLA
+         kOfAKvV07aXUSHjPRlvYq/MDJ6jHuxKa5QarrIGaV86FobiAEeriLEAAJt3znfH7bIXD
+         PI/W+LMmZ89iS1yipyMMnq5DOeTPPEVuhAjuU+YcdXTcp8Fv1LuGIW2TmZu7FKnMZA3i
+         vapNTy5zIondrMJEDzsDFKYNWHvbn1BzKkSVslrP3s61Ideh63kPnMcmFiTVqxy4pzQp
+         Jy/BYT/RVKXe0gVTVmWNrIwNqJ80SrkjmWUkQWcht4+3kgLraWl6kpUuPX5uoxtLymbt
+         96jA==
+X-Received: by 10.194.80.193 with SMTP id t1mr5032845wjx.8.1424314613370;
+        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([82.201.174.108])
-        by mx.google.com with ESMTPSA id q10sm35352152wjr.41.2015.02.18.19.02.25
+        by mx.google.com with ESMTPSA id dj4sm35358330wjc.13.2015.02.18.18.56.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Feb 2015 19:02:26 -0800 (PST)
-Date: Thu, 19 Feb 2015 05:02:24 +0200
+        Wed, 18 Feb 2015 18:56:52 -0800 (PST)
+Date: Thu, 19 Feb 2015 04:56:50 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 8/8] staging: fbtft: fix spacing errors
-Message-ID: <078c747db2456a3dc394364bca66f74276a809a5.1424313311.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 7/8] staging: fbtft: fix space prohibited before that ','
+Message-ID: <1c10c47e2a44bbc7f171cb58c308419b03210831.1424313311.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1424313310.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -54,140 +54,27 @@ Content-Disposition: inline
 In-Reply-To: <cover.1424313310.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the following checkpatch.pl errors:
-space prohibited before that ','
-space required after that ','
-spaces required around that '='
-
-Given that the addition of spaces triggered the line over 80 characters
-warning, some lines were divided into two.
+This patch fixes the following checkpatch.pl error:
+fix space prohibited before that ','
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/fbtft/fbtft_device.c | 88 +++++++++++++++++++++++-------------
- 1 file changed, 57 insertions(+), 31 deletions(-)
+ drivers/staging/fbtft/fbtft-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/fbtft/fbtft_device.c b/drivers/staging/fbtft/fbtft_device.c
-index b9f4c30..7cc1699 100644
---- a/drivers/staging/fbtft/fbtft_device.c
-+++ b/drivers/staging/fbtft/fbtft_device.c
-@@ -109,7 +109,7 @@ module_param_array(init, int, &init_num, 0);
- MODULE_PARM_DESC(init, "Init sequence, used with the custom argument");
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 37dcf7e..ac4287f 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -49,7 +49,7 @@ extern int fbtft_gamma_parse_str(struct fbtft_par *par, unsigned long *curves,
+ 						const char *str, int size);
  
  static unsigned long debug;
 -module_param(debug, ulong , 0);
 +module_param(debug, ulong, 0);
- MODULE_PARM_DESC(debug,
- "level: 0-7 (the remaining 29 bits is for advanced usage)");
+ MODULE_PARM_DESC(debug, "override device debug level");
  
-@@ -136,43 +136,69 @@ static void adafruit18_green_tab_set_addr_win(struct fbtft_par *par,
- 		"03 1d 07 06 2E 2C 29 2D 2E 2E 37 3F 00 00 02 10"
- 
- static int hy28b_init_sequence[] = {
--	-1,0x00e7,0x0010,-1,0x0000,0x0001,-1,0x0001,0x0100,-1,0x0002,0x0700,
--	-1,0x0003,0x1030,-1,0x0004,0x0000,-1,0x0008,0x0207,-1,0x0009,0x0000,
--	-1,0x000a,0x0000,-1,0x000c,0x0001,-1,0x000d,0x0000,-1,0x000f,0x0000,
--	-1,0x0010,0x0000,-1,0x0011,0x0007,-1,0x0012,0x0000,-1,0x0013,0x0000,
--	-2,50,-1,0x0010,0x1590,-1,0x0011,0x0227,-2,50,-1,0x0012,0x009c,-2,50,
--	-1,0x0013,0x1900,-1,0x0029,0x0023,-1,0x002b,0x000e,-2,50,
--	-1,0x0020,0x0000,-1,0x0021,0x0000,-2,50,-1,0x0050,0x0000,
--	-1,0x0051,0x00ef,-1,0x0052,0x0000,-1,0x0053,0x013f,-1,0x0060,0xa700,
--	-1,0x0061,0x0001,-1,0x006a,0x0000,-1,0x0080,0x0000,-1,0x0081,0x0000,
--	-1,0x0082,0x0000,-1,0x0083,0x0000,-1,0x0084,0x0000,-1,0x0085,0x0000,
--	-1,0x0090,0x0010,-1,0x0092,0x0000,-1,0x0093,0x0003,-1,0x0095,0x0110,
--	-1,0x0097,0x0000,-1,0x0098,0x0000,-1,0x0007,0x0133,-1,0x0020,0x0000,
--	-1,0x0021,0x0000,-2,100,-3 };
-+	-1, 0x00e7, 0x0010, -1, 0x0000, 0x0001,
-+	-1, 0x0001, 0x0100, -1, 0x0002, 0x0700,
-+	-1, 0x0003, 0x1030, -1, 0x0004, 0x0000,
-+	-1, 0x0008, 0x0207, -1, 0x0009, 0x0000,
-+	-1, 0x000a, 0x0000, -1, 0x000c, 0x0001,
-+	-1, 0x000d, 0x0000, -1, 0x000f, 0x0000,
-+	-1, 0x0010, 0x0000, -1, 0x0011, 0x0007,
-+	-1, 0x0012, 0x0000, -1, 0x0013, 0x0000,
-+	-2, 50, -1, 0x0010, 0x1590, -1, 0x0011,
-+	0x0227, -2, 50, -1, 0x0012, 0x009c, -2, 50,
-+	-1, 0x0013, 0x1900, -1, 0x0029, 0x0023,
-+	-1, 0x002b, 0x000e, -2, 50,
-+	-1, 0x0020, 0x0000, -1, 0x0021, 0x0000,
-+	-2, 50, -1, 0x0050, 0x0000,
-+	-1, 0x0051, 0x00ef, -1, 0x0052, 0x0000,
-+	-1, 0x0053, 0x013f, -1, 0x0060, 0xa700,
-+	-1, 0x0061, 0x0001, -1, 0x006a, 0x0000,
-+	-1, 0x0080, 0x0000, -1, 0x0081, 0x0000,
-+	-1, 0x0082, 0x0000, -1, 0x0083, 0x0000,
-+	-1, 0x0084, 0x0000, -1, 0x0085, 0x0000,
-+	-1, 0x0090, 0x0010, -1, 0x0092, 0x0000,
-+	-1, 0x0093, 0x0003, -1, 0x0095, 0x0110,
-+	-1, 0x0097, 0x0000, -1, 0x0098, 0x0000,
-+	-1, 0x0007, 0x0133, -1, 0x0020, 0x0000,
-+	-1, 0x0021, 0x0000, -2, 100, -3 };
- 
- #define HY28B_GAMMA \
- 	"04 1F 4 7 7 0 7 7 6 0\n" \
- 	"0F 00 1 7 4 0 0 0 6 7"
- 
- static int pitft_init_sequence[] = {
--	-1,0x01,-2,5,-1,0x28,-1,0xEF,0x03,0x80,0x02,-1,0xCF,0x00,0xC1,0x30,
--	-1,0xED,0x64,0x03,0x12,0x81,-1,0xE8,0x85,0x00,0x78,
--	-1,0xCB,0x39,0x2C,0x00,0x34,0x02,-1,0xF7,0x20,-1,0xEA,0x00,0x00,
--	-1,0xC0,0x23,-1,0xC1,0x10,-1,0xC5,0x3e,0x28,-1,0xC7,0x86,-1,0x3A,0x55,
--	-1,0xB1,0x00,0x18,-1,0xB6,0x08,0x82,0x27,-1,0xF2,0x00,-1,0x26,0x01,
--	-1,0xE0,0x0F,0x31,0x2B,0x0C,0x0E,0x08,0x4E,0xF1,0x37,0x07,0x10,0x03,
--	0x0E,0x09,0x00,-1,0xE1,0x00,0x0E,0x14,0x03,0x11,0x07,0x31,0xC1,0x48,
--	0x08,0x0F,0x0C,0x31,0x36,0x0F,-1,0x11,-2,100,-1,0x29,-2,20,-3 };
-+	-1, 0x01, -2, 5, -1, 0x28, -1, 0xEF,
-+	0x03, 0x80, 0x02, -1, 0xCF, 0x00, 0xC1, 0x30,
-+	-1, 0xED, 0x64, 0x03, 0x12, 0x81,
-+	-1, 0xE8, 0x85, 0x00, 0x78,
-+	-1, 0xCB, 0x39, 0x2C, 0x00, 0x34, 0x02,
-+	-1, 0xF7, 0x20, -1, 0xEA, 0x00, 0x00,
-+	-1, 0xC0, 0x23, -1, 0xC1, 0x10, -1, 0xC5,
-+	0x3e, 0x28, -1, 0xC7, 0x86, -1, 0x3A, 0x55,
-+	-1, 0xB1, 0x00, 0x18, -1, 0xB6, 0x08, 0x82,
-+	0x27, -1, 0xF2, 0x00, -1, 0x26, 0x01,
-+	-1, 0xE0, 0x0F, 0x31, 0x2B, 0x0C, 0x0E, 0x08,
-+	0x4E, 0xF1, 0x37, 0x07, 0x10, 0x03,
-+	0x0E, 0x09, 0x00, -1, 0xE1, 0x00, 0x0E, 0x14,
-+	0x03, 0x11, 0x07, 0x31, 0xC1, 0x48,
-+	0x08, 0x0F, 0x0C, 0x31, 0x36, 0x0F, -1,
-+	0x11, -2, 100, -1, 0x29, -2, 20, -3 };
- 
- static int waveshare32b_init_sequence[] = {
--	-1,0xCB,0x39,0x2C,0x00,0x34,0x02,-1,0xCF,0x00,0xC1,0x30,
--	-1,0xE8,0x85,0x00,0x78,-1,0xEA,0x00,0x00,-1,0xED,0x64,0x03,0x12,0x81,
--	-1,0xF7,0x20,-1,0xC0,0x23,-1,0xC1,0x10,-1,0xC5,0x3e,0x28,-1,0xC7,0x86,
--	-1,0x36,0x28,-1,0x3A,0x55,-1,0xB1,0x00,0x18,-1,0xB6,0x08,0x82,0x27,
--	-1,0xF2,0x00,-1,0x26,0x01,
--	-1,0xE0,0x0F,0x31,0x2B,0x0C,0x0E,0x08,0x4E,0xF1,0x37,0x07,0x10,0x03,0x0E,0x09,0x00,
--	-1,0xE1,0x00,0x0E,0x14,0x03,0x11,0x07,0x31,0xC1,0x48,0x08,0x0F,0x0C,0x31,0x36,0x0F,
--	-1,0x11,-2,120,-1,0x29,-1,0x2c,-3 };
-+	-1, 0xCB, 0x39, 0x2C, 0x00, 0x34, 0x02,
-+	-1, 0xCF, 0x00, 0xC1, 0x30,
-+	-1, 0xE8, 0x85, 0x00, 0x78, -1, 0xEA, 0x00,
-+	0x00, -1, 0xED, 0x64, 0x03, 0x12, 0x81,
-+	-1, 0xF7, 0x20, -1, 0xC0, 0x23, -1, 0xC1,
-+	0x10, -1, 0xC5, 0x3e, 0x28, -1, 0xC7, 0x86,
-+	-1, 0x36, 0x28, -1, 0x3A, 0x55, -1, 0xB1, 0x00,
-+	0x18, -1, 0xB6, 0x08, 0x82, 0x27,
-+	-1, 0xF2, 0x00, -1, 0x26, 0x01,
-+	-1, 0xE0, 0x0F, 0x31, 0x2B, 0x0C, 0x0E, 0x08, 0x4E,
-+	0xF1, 0x37, 0x07, 0x10, 0x03, 0x0E, 0x09, 0x00,
-+	-1, 0xE1, 0x00, 0x0E, 0x14, 0x03, 0x11, 0x07, 0x31,
-+	0xC1, 0x48, 0x08, 0x0F, 0x0C, 0x31, 0x36, 0x0F,
-+	-1, 0x11, -2, 120, -1, 0x29, -1, 0x2c, -3 };
- 
- /* Supported displays in alphabetical order */
- static struct fbtft_device_display displays[] = {
-@@ -486,7 +512,7 @@ static struct fbtft_device_display displays[] = {
- 				},
- 				.startbyte = 0b01110000,
- 				.bgr = true,
--				.fps= 50,
-+				.fps = 50,
- 				.gpios = (const struct fbtft_gpio []) {
- 					{ "reset", 25 },
- 					{ "led", 18 },
+ static bool dma = true;
 -- 
 1.9.3
 
