@@ -1,119 +1,104 @@
 X-GM-THRID: 964710891520
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,999bcbbbad3f3b00
+X-Google-Thread: 9ca63f596c,999bcbbbad3f3b00,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.160.3 with SMTP id xg3mr846657lbb.5.1424379617520;
-        Thu, 19 Feb 2015 13:00:17 -0800 (PST)
+X-Received: by 10.112.77.101 with SMTP id r5mr877178lbw.4.1424379314101;
+        Thu, 19 Feb 2015 12:55:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.88.98 with SMTP id bf2ls357772wib.30.gmail; Thu, 19 Feb
- 2015 13:00:16 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr976360wib.4.1424379616447;
-        Thu, 19 Feb 2015 13:00:16 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id ew5si9116368wid.1.2015.02.19.13.00.16
+Received: by 10.152.43.98 with SMTP id v2ls184685lal.104.gmail; Thu, 19 Feb
+ 2015 12:55:13 -0800 (PST)
+X-Received: by 10.152.5.3 with SMTP id o3mr853994lao.6.1424379313588;
+        Thu, 19 Feb 2015 12:55:13 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wi0-x244.google.com (mail-wi0-x244.google.com. [2a00:1450:400c:c05::244])
+        by gmr-mx.google.com with ESMTPS id i7si6489961wif.0.2015.02.19.12.55.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 19 Feb 2015 13:00:16 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Feb 2015 12:55:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::244 as permitted sender) client-ip=2a00:1450:400c:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,610,1418079600"; 
-   d="scan'208";a="100665196"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Feb 2015 22:00:02 +0100
-Date: Thu, 19 Feb 2015 22:00:02 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: emxx_udc: Fix do not add
- new typedefs
-In-Reply-To: <1424379303-4408-1-git-send-email-hamohammed.sa@gmail.com>
-Message-ID: <alpine.DEB.2.02.1502192157140.2192@localhost6.localdomain6>
-References: <1424379303-4408-1-git-send-email-hamohammed.sa@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::244 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x244.google.com with SMTP id em10so4312698wid.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 12:55:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=Pv0MKC324kPbFzuI+zjbvq0TSij1tKCU7WjwSwIKAbc=;
+        b=aVg29dvh0Y42h6HM+QPQuo4YRErxdQ4Xs66NHAYwa3oI+mArlgUcfWYaQ7UGz2WCjc
+         aXOUiORiuiOoW5nFWZgRGRJ/NP3XbfeVmDSLaT9nvSL5meeyyuO08jTVxjoNMxKiaYaw
+         PkemXiQcHPOFQ8OQatBkQRkNuFLJedvdI4hsrAvVzu4wpxmt+9YWI32PPFs31eQ47fso
+         KJ8aXcvwZO4LN7fLSFxItnOswhvOVdVWYeUpDbVqW7WfTbYUkOhbXNAk33C+7YevN0FK
+         5jjLIoobkDQWfBbYIk5bOJMSo3SxVeSls1EMq5X+Iw0XGoFKT7oD9n6S/U4ba7uGuRdP
+         c+Lw==
+X-Received: by 10.194.80.193 with SMTP id t1mr13320938wjx.8.1424379313472;
+        Thu, 19 Feb 2015 12:55:13 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneensa-VirtualBox ([79.170.54.83])
+        by mx.google.com with ESMTPSA id m9sm22093182wiz.24.2015.02.19.12.55.11
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Feb 2015 12:55:12 -0800 (PST)
+Received: by haneensa-VirtualBox (Postfix, from userid 1000)
+	id E3EB863336; Thu, 19 Feb 2015 23:55:09 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH] Staging: emxx_udc: Fix do not add new typedefs
+Date: Thu, 19 Feb 2015 23:55:03 +0300
+Message-Id: <1424379303-4408-1-git-send-email-hamohammed.sa@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Thu, 19 Feb 2015, Haneen Mohammed wrote:
+This patch fixes "do not add new typedefs" warning generated by
+checkpatch.pl.
 
-> This patch fixes "do not add new typedefs" warning generated by
-> checkpatch.pl.
-> 
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
-> ---
->  drivers/staging/emxx_udc/emxx_udc.h | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
-> index ee1b80d..debad46 100644
-> --- a/drivers/staging/emxx_udc/emxx_udc.h
-> +++ b/drivers/staging/emxx_udc/emxx_udc.h
-> @@ -475,7 +475,7 @@
->  /*===========================================================================*/
->  /* Struct */
->  /*------- T_EP_REGS */
-> -typedef struct _T_EP_REGS {
-> +struct _T_EP_REGS {
->  	u32 EP_CONTROL;			/* EP Control */
->  	u32 EP_STATUS;			/* EP Status */
->  	u32 EP_INT_ENA;			/* EP Interrupt Enable */
-> @@ -487,7 +487,7 @@ typedef struct _T_EP_REGS {
->  } T_EP_REGS, *PT_EP_REGS;
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+ drivers/staging/emxx_udc/emxx_udc.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-This is not correct.  There are two syntaxes:
+diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+index ee1b80d..debad46 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.h
++++ b/drivers/staging/emxx_udc/emxx_udc.h
+@@ -475,7 +475,7 @@
+ /*===========================================================================*/
+ /* Struct */
+ /*------- T_EP_REGS */
+-typedef struct _T_EP_REGS {
++struct _T_EP_REGS {
+ 	u32 EP_CONTROL;			/* EP Control */
+ 	u32 EP_STATUS;			/* EP Status */
+ 	u32 EP_INT_ENA;			/* EP Interrupt Enable */
+@@ -487,7 +487,7 @@ typedef struct _T_EP_REGS {
+ } T_EP_REGS, *PT_EP_REGS;
+ 
+ /*------- T_EP_DCR */
+-typedef struct _T_EP_DCR {
++struct _T_EP_DCR {
+ 	u32 EP_DCR1;			/* EP_DCR1 */
+ 	u32 EP_DCR2;			/* EP_DCR2 */
+ 	u32 EP_TADR;			/* EP_TADR */
+@@ -495,7 +495,7 @@ typedef struct _T_EP_DCR {
+ } T_EP_DCR, *PT_EP_DCR;
+ 
+ /*------- Function Registers */
+-typedef struct _T_FC_REGS {
++struct _T_FC_REGS {
+ 	u32 USB_CONTROL;		/* (0x0000) USB Control */
+ 	u32 USB_STATUS;			/* (0x0004) USB Status */
+ 	u32 USB_ADDRESS;		/* (0x0008) USB Address */
+@@ -636,7 +636,7 @@ struct nbu2ss_udc {
+ };
+ 
+ /* USB register access structure */
+-typedef volatile union {
++volatile union {
+ 	struct {
+ 		unsigned char	DATA[4];
+ 	} byte;
+-- 
+1.9.1
 
-typedef type new_type_name;
-type variable;
-
-You have shifted the code from the first to the second.  That is, in the 
-old code, T_EP_REGS, is the name of a type, and one might write
-
-T_EP_REGS x;
-
-to declare a new variable x, and in the new code T_EP_REGS is the name of 
-a variable of type struct _T_EP_REGS.
-
-The compiler should catch this problem.  You can't compile a .h file, but 
-try compiling a .c file that uses the types.
-
-julia
-
->  
->  /*------- T_EP_DCR */
-> -typedef struct _T_EP_DCR {
-> +struct _T_EP_DCR {
->  	u32 EP_DCR1;			/* EP_DCR1 */
->  	u32 EP_DCR2;			/* EP_DCR2 */
->  	u32 EP_TADR;			/* EP_TADR */
-> @@ -495,7 +495,7 @@ typedef struct _T_EP_DCR {
->  } T_EP_DCR, *PT_EP_DCR;
->  
->  /*------- Function Registers */
-> -typedef struct _T_FC_REGS {
-> +struct _T_FC_REGS {
->  	u32 USB_CONTROL;		/* (0x0000) USB Control */
->  	u32 USB_STATUS;			/* (0x0004) USB Status */
->  	u32 USB_ADDRESS;		/* (0x0008) USB Address */
-> @@ -636,7 +636,7 @@ struct nbu2ss_udc {
->  };
->  
->  /* USB register access structure */
-> -typedef volatile union {
-> +volatile union {
->  	struct {
->  		unsigned char	DATA[4];
->  	} byte;
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424379303-4408-1-git-send-email-hamohammed.sa%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
