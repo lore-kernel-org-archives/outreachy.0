@@ -3,154 +3,119 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,ba918805c55279ee
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.50.30.106 with SMTP id r10mr6725295igh.0.1424352762091;
-        Thu, 19 Feb 2015 05:32:42 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.51.17.6 with SMTP id ga6ls1655741igd.7.canary; Thu, 19 Feb
- 2015 05:32:41 -0800 (PST)
-X-Received: by 10.66.150.161 with SMTP id uj1mr4211592pab.36.1424352761842;
-        Thu, 19 Feb 2015 05:32:41 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pd0-f182.google.com (mail-pd0-f182.google.com. [209.85.192.182])
-        by gmr-mx.google.com with ESMTPS id re6si2906268pab.1.2015.02.19.05.32.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 05:32:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 209.85.192.182 as permitted sender) client-ip=209.85.192.182;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 209.85.192.182 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbfl12 with SMTP id fl12so8920449pdb.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 05:32:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=vynEmdSkohiljM6y/7bXPsAKU9TUZrWXv1bb8x2Lg0w=;
-        b=b+Vsm5kUopLQGdERufxK9JJrAckIW6Q6x8TftoL3pIWc5t/0n5G/06xAw1tZKj/87A
-         aXX6wU4nxkhDwL38mWNhPkJ1XJ17JPleRxDf7/ynQIc+ZzEFsiMh+FLxjMPNlXgOOgZ4
-         /7n6Ch50NpUN3kmsxRdS0pBayz/y5/GaSb7oPaoQC7N2UOv0s+V6lpzhZVyrgeTwaNRs
-         X/mCA+WKpMOrqXnK+STPgf9+KA6fCaE31hvr29kE/9q1D7VvNnxZ9Rv0XaxtYLBamfux
-         3STJyVcsdOT4FfEkdAfJrz6yoMganElG51JBZtCdvUGFP46N2jpnqiAp1wTMGP9sNhci
-         QN6g==
-X-Received: by 10.70.128.15 with SMTP id nk15mr7380105pdb.121.1424352761714;
-        Thu, 19 Feb 2015 05:32:41 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from localhost.localdomain ([111.93.6.70])
-        by mx.google.com with ESMTPSA id ju5sm23786770pbb.27.2015.02.19.05.32.39
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 05:32:41 -0800 (PST)
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+Date: Wed, 18 Feb 2015 23:22:15 -0800 (PST)
+From: navya sri nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-Subject: [PATCH v2] staging: fbtft: removed space before ')' and after '(' parenthesis.
-Date: Thu, 19 Feb 2015 19:02:52 +0530
-Message-Id: <1424352772-6038-1-git-send-email-navyasri.tech@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: navyasri.tech@gmail.com, Julia Lawall <julia.lawall@lip6.fr>
+Message-Id: <ab9e0e5f-4c84-4121-b1a9-17c357dbd1b7@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.02.1502190728450.2009@localhost6.localdomain6>
+References: <20150218221315.GA14737@localhost> <6ffbe89f-e71b-4eec-93b4-b881d5aab211@googlegroups.com>
+ <alpine.DEB.2.02.1502190728450.2009@localhost6.localdomain6>
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: fbtft: removed space
+ before ')' and after '(' parenthesis.
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_3691_736275971.1424330535994"
+X-Google-Token: EKeelqcFexGosA_4i0A0
+X-Google-IP: 61.16.142.166
 
-This patch fixes the following checkpatch.pl errors:
+------=_Part_3691_736275971.1424330535994
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3692_789470583.1424330535994"
 
-ERROR: space prohibited after that open parenthesis '('
-ERROR: space prohibited before that close parenthesis ')'
+------=_Part_3692_789470583.1424330535994
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
-Changes in v2:
-   - This patch only contains the changes made to remove the space before and
-    after parenthesis.
-   - Doesn't contain other changes not mentioned the in the commit message.
 
- drivers/staging/fbtft/fb_bd663474.c | 74 ++++++++++++++++++-------------------
- 1 file changed, 37 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_bd663474.c b/drivers/staging/fbtft/fb_bd663474.c
-index 7e00c60..b1fef17 100644
---- a/drivers/staging/fbtft/fb_bd663474.c
-+++ b/drivers/staging/fbtft/fb_bd663474.c
-@@ -51,45 +51,45 @@ static int init_display(struct fbtft_par *par)
- 	mdelay(10);
- 
- 	/* Power settings */
--	write_reg(par, 0x100, 0x0000 ); /* power supply setup */
--	write_reg(par, 0x101, 0x0000 );
--	write_reg(par, 0x102, 0x3110 );
--	write_reg(par, 0x103, 0xe200 );
--	write_reg(par, 0x110, 0x009d );
--	write_reg(par, 0x111, 0x0022 );
--	write_reg(par, 0x100, 0x0120 );
--	mdelay( 20 );
--
--	write_reg(par, 0x100, 0x3120 );
--	mdelay( 80 );
-+	write_reg(par, 0x100, 0x0000); /* power supply setup */
-+	write_reg(par, 0x101, 0x0000);
-+	write_reg(par, 0x102, 0x3110);
-+	write_reg(par, 0x103, 0xe200);
-+	write_reg(par, 0x110, 0x009d);
-+	write_reg(par, 0x111, 0x0022);
-+	write_reg(par, 0x100, 0x0120);
-+	mdelay(20);
-+
-+	write_reg(par, 0x100, 0x3120);
-+	mdelay(80);
- 	/* Display control */
--	write_reg(par, 0x001, 0x0100 );
--	write_reg(par, 0x002, 0x0000 );
--	write_reg(par, 0x003, 0x1230 );
--	write_reg(par, 0x006, 0x0000 );
--	write_reg(par, 0x007, 0x0101 );
--	write_reg(par, 0x008, 0x0808 );
--	write_reg(par, 0x009, 0x0000 );
--	write_reg(par, 0x00b, 0x0000 );
--	write_reg(par, 0x00c, 0x0000 );
--	write_reg(par, 0x00d, 0x0018 );
-+	write_reg(par, 0x001, 0x0100);
-+	write_reg(par, 0x002, 0x0000);
-+	write_reg(par, 0x003, 0x1230);
-+	write_reg(par, 0x006, 0x0000);
-+	write_reg(par, 0x007, 0x0101);
-+	write_reg(par, 0x008, 0x0808);
-+	write_reg(par, 0x009, 0x0000);
-+	write_reg(par, 0x00b, 0x0000);
-+	write_reg(par, 0x00c, 0x0000);
-+	write_reg(par, 0x00d, 0x0018);
- 	/* LTPS control settings */
--	write_reg(par, 0x012, 0x0000 );
--	write_reg(par, 0x013, 0x0000 );
--	write_reg(par, 0x018, 0x0000 );
--	write_reg(par, 0x019, 0x0000 );
--
--	write_reg(par, 0x203, 0x0000 );
--	write_reg(par, 0x204, 0x0000 );
--
--	write_reg(par, 0x210, 0x0000 );
--	write_reg(par, 0x211, 0x00ef );
--	write_reg(par, 0x212, 0x0000 );
--	write_reg(par, 0x213, 0x013f );
--	write_reg(par, 0x214, 0x0000 );
--	write_reg(par, 0x215, 0x0000 );
--	write_reg(par, 0x216, 0x0000 );
--	write_reg(par, 0x217, 0x0000 );
-+	write_reg(par, 0x012, 0x0000);
-+	write_reg(par, 0x013, 0x0000);
-+	write_reg(par, 0x018, 0x0000);
-+	write_reg(par, 0x019, 0x0000);
-+
-+	write_reg(par, 0x203, 0x0000);
-+	write_reg(par, 0x204, 0x0000);
-+
-+	write_reg(par, 0x210, 0x0000);
-+	write_reg(par, 0x211, 0x00ef);
-+	write_reg(par, 0x212, 0x0000);
-+	write_reg(par, 0x213, 0x013f);
-+	write_reg(par, 0x214, 0x0000);
-+	write_reg(par, 0x215, 0x0000);
-+	write_reg(par, 0x216, 0x0000);
-+	write_reg(par, 0x217, 0x0000);
- 
- 	/* Gray scale settings */
- 	write_reg(par, 0x300, 0x5343);
--- 
-1.9.1
+Hi,
+I'll make sure to reply inline from now.I'll send a new version of the 
+patch for the ')' and space patch and an other patch for the ',' and space 
+one.
+Navya
 
+On Thursday, February 19, 2015 at 12:04:38 PM UTC+5:30, Julia Lawall wrote:
+>
+> On Wed, 18 Feb 2015, navya sri nizamkari wrote: 
+>
+> > The open parenthesis error is with respect to the mdelay() function.  
+>
+> Hi, 
+>
+> I think this is in response to my mail.  When you respond, you should keep 
+> a bit of text from the other person, and your patch if it is appropriate, 
+> so that one can get the context. 
+>
+> I think that you need to redo your patch (send a v2) so that it only 
+> includes the space and parenthesis change, and not the space and comma 
+> change that you submitted previously.  Probably you did not commit your 
+> file after the first change?  You can use git add -p to add just part of a 
+> change, and then commit that.  More information is available here, at the 
+> bottom of the page: 
+>
+> http://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging 
+>
+> julia 
+>
+>
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups 
+> > "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an 
+> > email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/6ffbe89f-e71b-4eec-93b4- 
+> > b881d5aab211%40googlegroups.com. 
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+> > 
+
+
+------=_Part_3692_789470583.1424330535994
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<div dir="ltr"><br><br>Hi,<br>I'll make sure to reply inline from now.I'll send a new version of the patch for the ')' and space patch and an other patch for the ',' and space one.<br>Navya<br><br>On Thursday, February 19, 2015 at 12:04:38 PM UTC+5:30, Julia Lawall wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Wed, 18 Feb 2015, navya sri nizamkari wrote:
+<br>
+<br>&gt; The open parenthesis error is with respect to the mdelay() function.&nbsp;
+<br>
+<br>Hi,
+<br>
+<br>I think this is in response to my mail. &nbsp;When you respond, you should keep 
+<br>a bit of text from the other person, and your patch if it is appropriate, 
+<br>so that one can get the context.
+<br>
+<br>I think that you need to redo your patch (send a v2) so that it only 
+<br>includes the space and parenthesis change, and not the space and comma 
+<br>change that you submitted previously. &nbsp;Probably you did not commit your 
+<br>file after the first change? &nbsp;You can use git add -p to add just part of a 
+<br>change, and then commit that. &nbsp;More information is available here, at the 
+<br>bottom of the page:
+<br>
+<br><a href="http://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging" target="_blank" rel="nofollow">http://git-scm.com/book/en/v2/<wbr>Git-Tools-Interactive-Staging</a>
+<br>
+<br>julia
+<br>
+<br>
+<br>&gt; 
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google Groups
+<br>&gt; "outreachy-kernel" group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, send an
+<br>&gt; email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="rJft_c7qKlsJ" rel="nofollow">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="rJft_c7qKlsJ" rel="nofollow">outreach...@googlegroups.<wbr>com</a>.
+<br>&gt; To view this discussion on the web visithttps://<a href="http://groups.google.com/d/msgid/outreachy-kernel/6ffbe89f-e71b-4eec-93b4-" target="_blank" rel="nofollow">groups.google.<wbr>com/d/msgid/outreachy-kernel/<wbr>6ffbe89f-e71b-4eec-93b4-</a>
+<br>&gt; b881d5aab211%<a href="http://40googlegroups.com" target="_blank" rel="nofollow">40googlegroups.<wbr>com</a>.
+<br>&gt; For more options, visit <a href="https://groups.google.com/d/optout" target="_blank" rel="nofollow">https://groups.google.com/d/<wbr>optout</a>.
+<br>&gt; 
+<br>&gt; </blockquote></div>
+------=_Part_3692_789470583.1424330535994--
+
+------=_Part_3691_736275971.1424330535994--
 
