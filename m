@@ -1,47 +1,51 @@
 X-GM-THRID: 791728357376
-X-Received: by 10.112.64.171 with SMTP id p11mr827137lbs.12.1424376418737;
-        Thu, 19 Feb 2015 12:06:58 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,437c450923213588,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.13.98 with SMTP id g2mr1237856wic.3.1424371038923;
+        Thu, 19 Feb 2015 10:37:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.42.136 with SMTP id o8ls201500lal.74.gmail; Thu, 19 Feb
- 2015 12:06:57 -0800 (PST)
-X-Received: by 10.152.45.7 with SMTP id i7mr823963lam.9.1424376417383;
-        Thu, 19 Feb 2015 12:06:57 -0800 (PST)
+Received: by 10.152.30.38 with SMTP id p6ls194368lah.52.gmail; Thu, 19 Feb
+ 2015 10:37:18 -0800 (PST)
+X-Received: by 10.112.45.197 with SMTP id p5mr807742lbm.18.1424371038487;
+        Thu, 19 Feb 2015 10:37:18 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x241.google.com (mail-wi0-x241.google.com. [2a00:1450:400c:c05::241])
-        by gmr-mx.google.com with ESMTPS id by11si176931wib.1.2015.02.19.12.06.57
+Received: from mail-we0-x243.google.com (mail-we0-x243.google.com. [2a00:1450:400c:c03::243])
+        by gmr-mx.google.com with ESMTPS id by11si158016wib.1.2015.02.19.10.37.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 12:06:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) client-ip=2a00:1450:400c:c05::241;
+        Thu, 19 Feb 2015 10:37:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::243 as permitted sender) client-ip=2a00:1450:400c:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::243 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x241.google.com with SMTP id r20so4200669wiv.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 12:06:57 -0800 (PST)
+Received: by mail-we0-x243.google.com with SMTP id k11so335825wes.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 10:37:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
         bh=yUrsR0iEzBB6HRuwPswbXRGepXWHWqGUQAqxwf/NURU=;
-        b=Z0k8LUUfS0Jsq10CCj++W970B5/lvEaMLEAgshZhlocluSRZWKE5VPRJc10qmRO4tw
-         u3I+S4M6BGGJr8Gtg3ddzED06j9UiVLWx8KmeVKhNgrL3/Y0ayZtugmdJDk8WOzd6+3t
-         ASi73bogn7GO20SAKlpMs+t1IeC2f7LVpXCGnLmfG/nf+fuT1YtRLJMjicIIpTEx5z1z
-         IQ1JtvXOkZdOacVClOsZE6yjzbCLJQvPi1NKrAPJcdeveTbrbtaIEhm4Z2BlqmrGT+Le
-         MLsLik3eoxqdr90LNBiZ5khBSHKfFL6C85I3qAmZfhYrqpz+vaAj/qF+MH2uEjfYmoU5
-         CspQ==
-X-Received: by 10.194.192.167 with SMTP id hh7mr12275994wjc.151.1424376417262;
-        Thu, 19 Feb 2015 12:06:57 -0800 (PST)
+        b=cdFr3D13C5lABy2zmctHudTaWZb886XovMFgX6e0lzABrkYqP525ATowlZOGeQ/ZUS
+         BBfXRem6AlCUwgPkB+uvt5nXfbQ14WRusGg5Fh1v920VH4FvtVb73Y2hnwTZfnadjReK
+         cW7LdXI5W3N0tO1bjTMMWeMAfs7pgWstiV4kiA+etN0PVAQ74+A/vyGHqPXvbl8h3Ykp
+         5hY71l/lO+Tmu8BNDfsdT2NqJI4174EC6xhFkx7Q+FK0JVcakRJIwPbdImeyr2l4qbge
+         mPFY2y3jvjTzf8vROxivCsFLccST2aGPqKuRhgYD+2ToZ6caAB9o6LbX3ks8nazYTMDj
+         aFhA==
+X-Received: by 10.194.223.5 with SMTP id qq5mr11974472wjc.152.1424371038393;
+        Thu, 19 Feb 2015 10:37:18 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
 Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id gm2sm25576194wib.5.2015.02.19.12.06.54
+        by mx.google.com with ESMTPSA id hj10sm25914539wjc.48.2015.02.19.10.37.15
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 12:06:55 -0800 (PST)
+        Thu, 19 Feb 2015 10:37:16 -0800 (PST)
 From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: drivers: dma: ste_dma: Prefer kcalloc over kzalloc
-Date: Thu, 19 Feb 2015 22:06:48 +0200
-Message-Id: <1424376408-29567-1-git-send-email-haticeerturk27@gmail.com>
+Subject: [PATCH 6/6] Staging: drivers: dma: ste_dma: Prefer kcalloc over kzalloc
+Date: Thu, 19 Feb 2015 20:37:07 +0200
+Message-Id: <1424371027-27481-1-git-send-email-haticeerturk27@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 WARNING: Prefer kcalloc over kzalloc with multiply
