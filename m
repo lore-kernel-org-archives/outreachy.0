@@ -1,73 +1,69 @@
 X-GM-THRID: 761102598144
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,efa55286ffba0bae
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.12.146 with SMTP id y18mr918761wib.6.1424371377217;
-        Thu, 19 Feb 2015 10:42:57 -0800 (PST)
+X-Received: by 10.181.13.236 with SMTP id fb12mr890692wid.1.1424368262181;
+        Thu, 19 Feb 2015 09:51:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.30.38 with SMTP id p6ls194884lah.52.gmail; Thu, 19 Feb
- 2015 10:42:56 -0800 (PST)
-X-Received: by 10.112.131.106 with SMTP id ol10mr796164lbb.20.1424371376925;
-        Thu, 19 Feb 2015 10:42:56 -0800 (PST)
+Received: by 10.180.24.165 with SMTP id v5ls347902wif.25.gmail; Thu, 19 Feb
+ 2015 09:51:01 -0800 (PST)
+X-Received: by 10.180.105.129 with SMTP id gm1mr884310wib.3.1424368261780;
+        Thu, 19 Feb 2015 09:51:01 -0800 (PST)
 Return-Path: <aybuke.147@gmail.com>
-Received: from mail-we0-x230.google.com (mail-we0-x230.google.com. [2a00:1450:400c:c03::230])
-        by gmr-mx.google.com with ESMTPS id cl5si9086897wib.3.2015.02.19.10.42.56
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id r6si4559509wix.0.2015.02.19.09.51.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 10:42:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) client-ip=2a00:1450:400c:c03::230;
+        Thu, 19 Feb 2015 09:51:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) smtp.mail=aybuke.147@gmail.com;
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=aybuke.147@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x230.google.com with SMTP id p10so1525314wes.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 10:42:56 -0800 (PST)
+Received: by mail-wi0-x22e.google.com with SMTP id em10so49909651wid.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 09:51:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=/8uqDm7P/dr5T/4njpqrnydzLIUFUloItm14WdQNYvA=;
-        b=pOAmTntO6oFZC9Mez4JJwl4EmD4/jiZZ+moFjqzPGUqWzYDgzCuedZl1VBuG7eFc2H
-         KvAEg8jAZ6AYdU27halAQjTQIaP74h2jWT9Auhe7dA+m3fUQISLuacSOyqJ0T0Y0vPNs
-         O43c/xy0ix0nmOarWe4AGab1EAmduyenGAIYUpMubkOIW5tASVbgsLOVXWE81Jlf/HV4
-         I5K+I9P8GzvBPWdKeDcaKxgLOT/G+czHxPE2N89RKxEEDd6Ve8SZLWzSbujulSF6SZcV
-         8Aem2Lyy3qNrhivBN1fk37Qnt3bpfB0Q7UsctChCrhCCAN/O8q4qgdml7ULwjoemo/1j
-         SRxg==
-X-Received: by 10.180.10.131 with SMTP id i3mr13062522wib.54.1424371376833;
-        Thu, 19 Feb 2015 10:42:56 -0800 (PST)
+        bh=0jwR6UpsjxB5WHBAM2wwWfdEfwdNevJ+C7Saf4lwOm0=;
+        b=0TWIKviNf/4k9EB3Vz45vdY6852ZHvaNltAu3Z7ZeK+H2xRhbHQZGanIzNkqGjSPSW
+         aCdf9vKu2UUVikwzYnFWI2GkKlSNEu0Zh1oC8J3/+K2R50+C99b41cso3TQQLnAGVdgQ
+         fezr+jZl3L8jHkfhgrr1uIqcjJInFQoLyBPgW1jzyPde9Xi1+iq8YpNXxljVVF0eIj7X
+         IhtDFRnZQXFqI6uk4u/S7vltUDj4FPUE2tA3aZz7qPUbd+agauFddihAprcLkKYcV0RZ
+         GguZWc4napvUo9PWxNbiSNSAnPIcK3S7X+NTTusNYQg7frm0R8XOig2Ai1ZAoFi+t2lO
+         C8gQ==
+X-Received: by 10.194.243.1 with SMTP id wu1mr11427802wjc.69.1424368261674;
+        Thu, 19 Feb 2015 09:51:01 -0800 (PST)
 Return-Path: <aybuke.147@gmail.com>
 Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id fo17sm38568993wjc.19.2015.02.19.10.42.55
+        by mx.google.com with ESMTPSA id eb10sm35204737wib.13.2015.02.19.09.51.00
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 10:42:56 -0800 (PST)
+        Thu, 19 Feb 2015 09:51:00 -0800 (PST)
 From: aybuke ozdemir <aybuke.147@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH 1/2] Staging: fbtft: Added blank line after declaration
-Date: Thu, 19 Feb 2015 20:42:43 +0200
-Message-Id: <1424371364-7277-1-git-send-email-aybuke.147@gmail.com>
+Subject: [PATCH] Staging: fbtft: Added blank line after declaration
+Date: Thu, 19 Feb 2015 19:50:50 +0200
+Message-Id: <1424368250-5322-1-git-send-email-aybuke.147@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 WARNING: Missing a blank line after declaration
-chackpatch.pl warning in fb_ssd1351.c
+chackpatch.pl warning in fb_ili9320.c
 
 Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
 ---
- drivers/staging/fbtft/fb_ssd1351.c | 1 +
+ drivers/staging/fbtft/fb_ili9320.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/fbtft/fb_ssd1351.c b/drivers/staging/fbtft/fb_ssd1351.c
-index 062d986..b59120c 100644
---- a/drivers/staging/fbtft/fb_ssd1351.c
-+++ b/drivers/staging/fbtft/fb_ssd1351.c
-@@ -72,6 +72,7 @@ static void set_addr_win(struct fbtft_par *par, int xs, int ys, int xe, int ye)
- static int set_var(struct fbtft_par *par)
+diff --git a/drivers/staging/fbtft/fb_ili9320.c b/drivers/staging/fbtft/fb_ili9320.c
+index b26d893..880f548 100644
+--- a/drivers/staging/fbtft/fb_ili9320.c
++++ b/drivers/staging/fbtft/fb_ili9320.c
+@@ -47,6 +47,7 @@ static unsigned read_devicecode(struct fbtft_par *par)
+ static int init_display(struct fbtft_par *par)
  {
- 	unsigned remap;
+ 	unsigned devcode;
 +
  	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "%s()\n", __func__);
  
- 	if (par->fbtftops.init_display != init_display) {
+ 	par->fbtftops.reset(par);
 -- 
 1.9.1
 
