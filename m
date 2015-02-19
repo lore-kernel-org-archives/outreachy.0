@@ -1,50 +1,85 @@
-X-GM-THRID: 9871294464
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,64a1fb55b3e53cb0,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-Date: Fri, 13 Feb 2015 09:04:19 -0800 (PST)
-From: Katherine Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Message-Id: <43ec1f66-51aa-434c-9193-74e91c6d21c9@googlegroups.com>
-Subject: Tutorial Help - Can't detect wifi after reboot
+X-GM-THRID: 904211202048
+X-Received: by 10.112.46.106 with SMTP id u10mr821724lbm.3.1424376869016;
+        Thu, 19 Feb 2015 12:14:29 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.152.36.3 with SMTP id m3ls167984laj.57.gmail; Thu, 19 Feb 2015
+ 12:14:28 -0800 (PST)
+X-Received: by 10.112.138.202 with SMTP id qs10mr815451lbb.24.1424376868585;
+        Thu, 19 Feb 2015 12:14:28 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i7si6483760wif.0.2015.02.19.12.14.28
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 19 Feb 2015 12:14:28 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,610,1418079600"; 
+   d="scan'208";a="100662862"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Feb 2015 21:14:27 +0100
+Date: Thu, 19 Feb 2015 21:14:27 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: drivers: dma: ste_dma40.c:
+ fixed space before the open parenthesis '('
+In-Reply-To: <1424376652-29726-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502192113370.2192@localhost6.localdomain6>
+References: <1424376652-29726-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_4_942559620.1423847059564"
-X-Google-Token: EJPd-KYFypwNZPTY2jo0
-X-Google-IP: 2601:9:8340:b6:71bb:bbc:b3e9:bf9a
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-1577488280-1424376868=:2192"
 
-------=_Part_4_942559620.1423847059564
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_5_1760153068.1423847059564"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-------=_Part_5_1760153068.1423847059564
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+--8323328-1577488280-1424376868=:2192
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-I have been going through the tutorial, using Ubuntu 14.04.1
-I am at the point under Test Your Changes under Modifying a Driver on 
-Native Linux.
-Since rebooting, my computer can't detect wifi.
-I noticed on rebooting a new message appeared "Bluetooth TX [hex address] 
-timeout," but after disabling bluetooth per another tutorial's suggestion, 
-the message does not appear, and there is still no wifi detected.
+On Thu, 19 Feb 2015, Hatice ERTÜRK wrote:
 
-The last time I succesfully rebooted and had a wifi connection was right 
-before cloning the staging repository in the Tool Set Up section.
-Would it be helpful to list the commands that I've run between my two 
-reboot times?
-The driver I modified was /drivers/net/hamradio/baycom_epp.c
+> Fixed space before the open parenthesis '('.
 
-Thanks for your help!
-Katie
+Try to write commit messages that do not use the word "fix".  Explain 
+instead what the fix is.  Here one could think that you have modified a 
+space that already appeared in the code.  When actually you are adding a 
+new one.
 
-------=_Part_5_1760153068.1423847059564
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
+julia
 
-<div dir="ltr">I have been going through the tutorial, using Ubuntu 14.04.1<br>I am at the point under Test Your Changes under Modifying a Driver on Native Linux.<br>Since rebooting, my computer can't detect wifi.<br>I noticed on rebooting a new message appeared "Bluetooth TX [hex address] timeout," but after disabling bluetooth per another tutorial's suggestion, the message does not appear, and there is still no wifi detected.<br><br>The last time I succesfully rebooted and had a wifi connection was right before cloning the staging repository in the Tool Set Up section.<br>Would it be helpful to list the commands that I've run between my two reboot times?<br>The driver I modified was /drivers/net/hamradio/baycom_epp.c<br><br>Thanks for your help!<br>Katie<br></div>
-------=_Part_5_1760153068.1423847059564--
 
-------=_Part_4_942559620.1423847059564--
+> 
+> Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
+> ---
+>  drivers/dma/ste_dma40.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
+> index f410b5e..08b63f2 100644
+> --- a/drivers/dma/ste_dma40.c
+> +++ b/drivers/dma/ste_dma40.c
+> @@ -3551,7 +3551,7 @@ static int __init d40_probe(struct platform_device *pdev)
+>  
+>  	if (!plat_data) {
+>  		if (np) {
+> -			if(d40_of_probe(pdev, np)) {
+> +			if (d40_of_probe(pdev, np)) {
+>  				ret = -ENOMEM;
+>  				goto failure;
+>  			}
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424376652-29726-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+--8323328-1577488280-1424376868=:2192--
 
