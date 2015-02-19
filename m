@@ -1,84 +1,143 @@
-X-GM-THRID: 2154080239616
-X-Received: by 10.112.130.70 with SMTP id oc6mr460790lbb.13.1424552001684;
-        Sat, 21 Feb 2015 12:53:21 -0800 (PST)
+X-GM-THRID: 929564721152
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,e63c190f0f3ec0ee
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.131.106 with SMTP id ol10mr845987lbb.20.1424378165453;
+        Thu, 19 Feb 2015 12:36:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.29.137 with SMTP id jw9ls277499wid.44.canary; Sat, 21 Feb
- 2015 12:53:21 -0800 (PST)
-X-Received: by 10.180.81.34 with SMTP id w2mr407028wix.2.1424552001393;
-        Sat, 21 Feb 2015 12:53:21 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
-        by gmr-mx.google.com with ESMTPS id l8si567734wia.0.2015.02.21.12.53.21
+Received: by 10.152.204.134 with SMTP id ky6ls29783lac.76.gmail; Thu, 19 Feb
+ 2015 12:36:05 -0800 (PST)
+X-Received: by 10.152.45.7 with SMTP id i7mr835635lam.9.1424378165180;
+        Thu, 19 Feb 2015 12:36:05 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id o3si4238476wib.2.2015.02.19.12.36.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 12:53:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 19 Feb 2015 12:36:05 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f43.google.com with SMTP id z12so19098807wgg.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 12:53:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Ermxsh6OpJDunpEQIRGt8oEjjEqiytcpzZbUAtSxsf8=;
-        b=inVyNapMq3/sugvb6/aFVq1KlbqA90MCdU/XvtJcYZqx0onsGoCMSJrbv/Xx1xd2BO
-         0aouzLWZavASK1xAjHq4ePA6amdiqQ42JAglP6v/rU7c5aEmWOqUSzsM0Ly6vCjxwv0A
-         xn1clMa5grq5EvJhAiJwNxnRtVjswTqQ6f8azJirFnW9CnssaCpwBGhofYv5WU0mtHrB
-         JbwqKx0krkAszLKtMhFHgi/KxJ2VLVE3dq6dNXG5XNcnDgtyX5JnYlymWJ02doRzFhPw
-         kBOy1yUm60jK8vYOWH2Kyt3KDi1x1+zaueXGvX/j1yOlQ31J45vYm1cKHuWF8xKxyA5a
-         O5xA==
-X-Received: by 10.181.13.174 with SMTP id ez14mr6896680wid.72.1424552001328;
-        Sat, 21 Feb 2015 12:53:21 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.58.202])
-        by mx.google.com with ESMTPSA id hm6sm48113608wjb.32.2015.02.21.12.53.20
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 12:53:20 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: removed trailing whitespace in dgnc
-Date: Sat, 21 Feb 2015 22:53:17 +0200
-Message-Id: <1424551997-5909-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,610,1418079600"; 
+   d="scan'208";a="122576465"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Feb 2015 21:36:04 +0100
+Date: Thu, 19 Feb 2015 21:36:03 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: =?ISO-8859-2?Q?Ksenija_Stanojevi=E6?= <ksenija.stanojevic@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: vino: Convert comments
+ from C99 to C89 style
+In-Reply-To: <CAL7P5jK0AKAH1uZTO+2dyESqB9rD-Ystu0wfVE+gbayQO5u5wA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1502192135470.2192@localhost6.localdomain6>
+References: <1424377421-20388-1-git-send-email-ksenija.stanojevic@gmail.com> <alpine.DEB.2.02.1502192130240.2192@localhost6.localdomain6> <CAL7P5jK0AKAH1uZTO+2dyESqB9rD-Ystu0wfVE+gbayQO5u5wA@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-1576946617-1424378164=:2192"
 
-Removed all trailing whitespace in
-"drivers/staging/dgnc/dgnc_sysfs.c"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/dgnc/dgnc_sysfs.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+--8323328-1576946617-1424378164=:2192
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
-index 0d425ad..6c3b387 100644
---- a/drivers/staging/dgnc/dgnc_sysfs.c
-+++ b/drivers/staging/dgnc/dgnc_sysfs.c
-@@ -125,9 +125,8 @@ void dgnc_create_driver_sysfiles(struct pci_driver *dgnc_driver)
- 	rc |= driver_create_file(driverfs, &driver_attr_debug);
- 	rc |= driver_create_file(driverfs, &driver_attr_rawreadok);
- 	rc |= driver_create_file(driverfs, &driver_attr_pollrate);
--	if (rc) {
-+	if (rc)
- 		printk(KERN_ERR "DGNC: sysfs driver_create_file failed!\n");
--	}
- }
- 
- 
-@@ -397,9 +396,8 @@ void dgnc_create_ports_sysfiles(struct dgnc_board *bd)
- 	rc |= device_create_file(&(bd->pdev->dev), &dev_attr_ports_txcount);
- 	rc |= device_create_file(&(bd->pdev->dev), &dev_attr_vpd);
- 	rc |= device_create_file(&(bd->pdev->dev), &dev_attr_serial_number);
--	if (rc) {
-+	if (rc)
- 		printk(KERN_ERR "DGNC: sysfs device_create_file failed!\n");
--	}
- }
- 
- 
--- 
-1.8.3.2
+On Thu, 19 Feb 2015, Ksenija Stanojević wrote:
 
+> Yes I know, the problem is similar to my previous patch, but two other
+> comments
+> are not related to this issue and thus require separate patch
+
+OK, it's a good point.  A subsequent patch would be fine.
+
+julia
+
+> On Thu, Feb 19, 2015 at 9:31 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>       On Thu, 19 Feb 2015, Ksenija Stanojevic wrote:
+> 
+>       > This patch fixes the checkpatch.pl error:
+>       > ERROR: "Do not use C99 // comments"
+>       >
+>       > Signed-off-by: Ksenija Stanojevic
+>       <ksenija.stanojevic@gmail.com>
+>       > ---
+>       >  drivers/staging/media/vino/indycam.c | 6 +++---
+>       >  1 file changed, 3 insertions(+), 3 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/media/vino/indycam.c
+>       b/drivers/staging/media/vino/indycam.c
+>       > index f1d192b..8e223bd 100644
+>       > --- a/drivers/staging/media/vino/indycam.c
+>       > +++ b/drivers/staging/media/vino/indycam.c
+>       > @@ -34,7 +34,7 @@ MODULE_AUTHOR("Mikael Nousiainen
+>       <tmnousia@cc.hut.fi>");
+>       >  MODULE_LICENSE("GPL");
+>       >
+>       >
+>       > -// #define INDYCAM_DEBUG
+>       > +/* #define INDYCAM_DEBUG */
+>       >
+>       >  #ifdef INDYCAM_DEBUG
+>       >  #define dprintk(x...) printk("IndyCam: " x);
+> 
+>       You could consider whether you could get rid of dprintk, and
+>       replace it by
+>       the use of standard Linux debug logging functions, such as
+>       dev_dbg.
+> 
+>       julia
+> 
+>       > @@ -324,7 +324,7 @@ static int indycam_probe(struct i2c_client
+>       *client,
+>       >
+>       >       indycam_regdump(sd);
+>       >
+>       > -     // initialize
+>       > +     /* initialize */
+>       >       err = indycam_write_block(sd, 0, sizeof(initseq), (u8
+>       *)&initseq);
+>       >       if (err) {
+>       >               printk(KERN_ERR "IndyCam initialization
+>       failed\n");
+>       > @@ -334,7 +334,7 @@ static int indycam_probe(struct i2c_client
+>       *client,
+>       >
+>       >       indycam_regdump(sd);
+>       >
+>       > -     // white balance
+>       > +     /* white balance */
+>       >       err = indycam_write_reg(sd, INDYCAM_REG_CONTROL,
+>       >                         INDYCAM_CONTROL_AGCENA |
+>       INDYCAM_CONTROL_AWBCTL);
+>       >       if (err) {
+>       > --
+>       > 1.9.1
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1424377421-20388-1-git-s
+> end-email-ksenija.stanojevic%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+> 
+> 
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAL7P5jK0AKAH1uZTO%2B2dy
+> ESqB9rD-Ystu0wfVE%2BgbayQO5u5wA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+> 
+--8323328-1576946617-1424378164=:2192--
 
