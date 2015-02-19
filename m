@@ -1,76 +1,97 @@
-X-GM-THRID: 289717354496
-X-Received: by 10.50.153.2 with SMTP id vc2mr1026957igb.1.1424245609830;
-        Tue, 17 Feb 2015 23:46:49 -0800 (PST)
+X-GM-THRID: 847410888704
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,585d716e84a6542a
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.181.13.236 with SMTP id fb12mr955127wid.1.1424376353288;
+        Thu, 19 Feb 2015 12:05:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.102.138 with SMTP id w10ls3173830qge.45.gmail; Tue, 17 Feb
- 2015 23:46:49 -0800 (PST)
-X-Received: by 10.236.70.234 with SMTP id p70mr8420135yhd.56.1424245609698;
-        Tue, 17 Feb 2015 23:46:49 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-f45.google.com (mail-pa0-f45.google.com. [209.85.220.45])
-        by gmr-mx.google.com with ESMTPS id ki8si2427858pdb.1.2015.02.17.23.46.49
+Received: by 10.152.87.140 with SMTP id ay12ls228241lab.2.gmail; Thu, 19 Feb
+ 2015 12:05:52 -0800 (PST)
+X-Received: by 10.112.146.65 with SMTP id ta1mr815277lbb.19.1424376352740;
+        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wg0-x244.google.com (mail-wg0-x244.google.com. [2a00:1450:400c:c00::244])
+        by gmr-mx.google.com with ESMTPS id ev8si6470540wib.3.2015.02.19.12.05.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Feb 2015 23:46:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.220.45 as permitted sender) client-ip=209.85.220.45;
+        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) client-ip=2a00:1450:400c:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.220.45 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padet14 with SMTP id et14so12715105pad.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Feb 2015 23:46:49 -0800 (PST)
+Received: by mail-wg0-x244.google.com with SMTP id y19so2703127wgg.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 12:05:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=3bK5rzn7wzAtsOKXDiK4YAd7EzRBcsSPBqFyYekr7AQ=;
-        b=uWV3RKiPt1ZGoJxNj65h/3KAVEPAhzSCjxfZmc5TRyjGBK1XVBpoRj8I3IHg0VN38d
-         DVibgVg88bAGH+53TgKDEZ/zPIFqsGstJflaSjkDPg012FLDAEa1rDcBDrK5YG8jbzJz
-         qFID5P4/taCnmXCEkKaqJ/mvqdC0nQculEtGnUfbAF7Ub7y5XI4LEYdGVBvafcETk0F4
-         bJzXiv3/Rsoz02D6xBu/oVhkhP1G7pd+MmLflwh6LdgPH7/b/wO05kwhBh5w4JlAoviM
-         v5qP/l8Zk8sFDTZoZ/RONhNI9ctJybDW7boef/YqNbMgHmklPN9krrLF2pJ4hR8yzVTQ
-         qguQ==
-X-Received: by 10.66.186.166 with SMTP id fl6mr56006896pac.95.1424245609579;
-        Tue, 17 Feb 2015 23:46:49 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id rd10sm19753645pdb.76.2015.02.17.23.46.47
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 17 Feb 2015 23:46:48 -0800 (PST)
-Date: Wed, 18 Feb 2015 13:16:34 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=2MbLweq096/IpNueuJCYTiPje5CuDKjw97KT+E5DetU=;
+        b=LLA7Wd0NFwR44saHR+6HAaw5F1VSuohuUk6dYGwE5nOgP7stxEljXod9a6pO/Muvj5
+         d1RCRYj/H+98LSXgMFrqR2DeZ/SAx4qds1MW0ZHOcut+WmyOgES9PifXeDFWF5PnC+S5
+         koKaNblI3awZ9NEMFsSOPwF8Vf0+LM+ILEv/mCPJFyHSVTQNfDGOLfqzGYp7nAO4IGV4
+         paEWoEjHJBq07dGU0yi64lLwZTsaNBwF75xvTy/cuJmwABitNjhL92CcOi0q8JRb3h95
+         DshRuqPvxbqaMb1N0BVtqnBhfwDQ86oWp/4IswJGXndpx0aAu8IPUY/2zTgXbe+ICFvp
+         p1XQ==
+X-Received: by 10.180.35.42 with SMTP id e10mr13547741wij.11.1424376352655;
+        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id hg7sm38826757wjb.44.2015.02.19.12.05.51
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 19 Feb 2015 12:05:52 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: i2o: Remove space after the * in a pointer type
- variable.
-Message-ID: <20150218074634.GA9707@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: drivers: dma: ste_dma40: fix blank line warning
+Date: Thu, 19 Feb 2015 22:05:41 +0200
+Message-Id: <1424376341-29435-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patch is to remove space after the * in a pointer type variable declaration to follow kernel coding conventions.
+WARNING: Missing a blank line after declarations
+checkpatch.pl warning in ste_dm40.c
 
-Changes from v1: Changed subject line to make it more descriptive.
-
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/i2o/debug.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/dma/ste_dma40.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
-index 7a16114..4f23e3f 100644
---- a/drivers/staging/i2o/debug.c
-+++ b/drivers/staging/i2o/debug.c
-@@ -5,7 +5,7 @@
+diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
+index 57dfe05..e4b823d 100644
+--- a/drivers/dma/ste_dma40.c
++++ b/drivers/dma/ste_dma40.c
+@@ -1410,6 +1410,7 @@ static u32 d40_residue(struct d40_chan *d40c)
+ 			>> D40_MEM_LCSP2_ECNT_POS;
+ 	else {
+ 		u32 val = readl(chan_base(d40c) + D40_CHAN_REG_SDELT);
++
+ 		num_elt = (val & D40_SREG_ELEM_PHY_ECNT_MASK)
+ 			  >> D40_SREG_ELEM_PHY_ECNT_POS;
+ 	}
+@@ -1758,6 +1759,7 @@ static bool d40_alloc_mask_set(struct d40_phy_res *phy,
+ 			       bool *first_user)
+ {
+ 	unsigned long flags;
++
+ 	spin_lock_irqsave(&phy->lock, flags);
  
- static void i2o_report_util_cmd(u8 cmd);
- static void i2o_report_exec_cmd(u8 cmd);
--static void i2o_report_fail_status(u8 req_status, u32 * msg);
-+static void i2o_report_fail_status(u8 req_status, u32 *msg);
- static void i2o_report_common_status(u8 req_status);
- static void i2o_report_common_dsc(u16 detailed_status);
+ 	*first_user = ((phy->allocated_src | phy->allocated_dst)
+@@ -1893,6 +1895,7 @@ static int d40_allocate_channel(struct d40_chan *d40c, bool *first_phy_user)
+ 		} else
+ 			for (j = 0; j < d40c->base->num_phy_chans; j += 8) {
+ 				int phy_num = j  + event_group * 2;
++
+ 				for (i = phy_num; i < phy_num + 2; i++) {
+ 					if (d40_alloc_mask_set(&phys[i],
+ 							       is_src,
+@@ -2411,6 +2414,7 @@ static int d40_alloc_chan_resources(struct dma_chan *chan)
+ 	struct d40_chan *d40c =
+ 		container_of(chan, struct d40_chan, chan);
+ 	bool is_free_phy;
++
+ 	spin_lock_irqsave(&d40c->lock, flags);
  
+ 	dma_cookie_init(chan);
 -- 
 1.9.1
 
