@@ -1,88 +1,101 @@
-X-GM-THRID: 6199997314749169664
-X-Received: by 10.140.144.215 with SMTP id 206mr24362183qhq.6.1443549365671;
-        Tue, 29 Sep 2015 10:56:05 -0700 (PDT)
+X-GM-THRID: 262267731968
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,658add94603fb134
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.189.227 with SMTP id gl3mr813868lbc.2.1424373286332;
+        Thu, 19 Feb 2015 11:14:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.110.200 with SMTP id ic8ls1290583obb.88.gmail; Tue, 29 Sep
- 2015 10:56:05 -0700 (PDT)
-X-Received: by 10.182.142.4 with SMTP id rs4mr1449017obb.2.1443549365148;
-        Tue, 29 Sep 2015 10:56:05 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id el2si3563780pbb.0.2015.09.29.10.56.05
+Received: by 10.180.160.230 with SMTP id xn6ls1488198wib.18.canary; Thu, 19
+ Feb 2015 11:14:45 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr933150wiv.0.1424373285967;
+        Thu, 19 Feb 2015 11:14:45 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id ta1si6470480wic.1.2015.02.19.11.14.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 10:56:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Thu, 19 Feb 2015 11:14:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id lk4so12163508pab.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 10:56:05 -0700 (PDT)
+Received: by mail-wi0-x22b.google.com with SMTP id hi2so50299476wib.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 11:14:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=JCXde3IAQRGHdH2rC1Z8XGuGyFSIu0zAp78UvtTxje4=;
-        b=pOSqvME5jOxIQfn8xSPNF4EHEbYpTY73dBu6WCSOB/x3bLzJuybLx5bmNjLiCe1uNb
-         Sv3M3eDoKlhK9tZpuHAuHJ3O69a2DTb6z5ai90TnjEYkaBGZyk5WIljihR0ePzhKb0sR
-         nWXNZ+GEUTEITBh26aCTz1Has5iIUjz/OlidZpJEcbB1FidQdb28AGCbXDViWj2qNpvz
-         7KRqplY2InC6vyzW/Yo/JAosA9KNFYOdOdjeiTNUN7RFXvFsbQuRBtcvjXnLlawGTtZp
-         Kmx+sqpRdXdLpKHc5uiKyWKV2owoB0v8qSZQ7tzkS9JhltqwGCt1aiWquvtOqiZxeQJD
-         wFNw==
-X-Received: by 10.68.135.136 with SMTP id ps8mr34358662pbb.123.1443549364979;
-        Tue, 29 Sep 2015 10:56:04 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id pk2sm26767624pbb.21.2015.09.29.10.56.01
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 29 Sep 2015 10:56:04 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Cc: Shraddha Barke <shraddha.6596@gmail.com>
-Subject: [PATCH] Staging: media: lirc: Use USB API functions rather than constants
-Date: Tue, 29 Sep 2015 23:25:47 +0530
-Message-Id: <1443549347-15879-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150206.560AD0B3.006A,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=cSus5TLtv7rI3p3NPy0apj3cqsWuiUbSghaW5DF7BXE=;
+        b=PraZYhRJK+WKpXGlxsupomTf3BbnQL96GBMMrk9Irwf9tm89c2KL41BXQDaM4AZ7fV
+         h/wx9G/s4Q1R0KLR0vg0HITTIzVYupODvJKJcLcaVpcaJgFFxWIW+mMXGMZLJqn0pKhG
+         Qy65uf200rwq2SPAjCIt9cktb/KanU1tIQFY/tGA8e50y0xoz+GXxKUFbEIDqanDEMsN
+         H1Ool1Dv6PNQB4cc3JCo8ReZhyDf4y/P85Xi0e0i5+lfZbsjLFL4qKiTHkHR/jCn6Dem
+         FwEl/T1zRGFN4Z/J5TJg38DLTuhUOZJbkuNUCXHz4DomMQiWCsTvsWVPHA4qMjoFzseA
+         t58Q==
+X-Received: by 10.180.96.168 with SMTP id dt8mr9440129wib.82.1424373285844;
+        Thu, 19 Feb 2015 11:14:45 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.232.173])
+        by mx.google.com with ESMTPSA id hv5sm38675521wjb.16.2015.02.19.11.14.44
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 19 Feb 2015 11:14:45 -0800 (PST)
+Date: Thu, 19 Feb 2015 21:14:41 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v4] staging: comedi: drivers: replace init_timer by
+ setup_timer
+Message-ID: <20150219191441.GA26077@localhost.localdomain>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Introduce the use of the function usb_endpoint_type.
+This patch replaces init_timer and 2 step initialization of function and
+data by setup_timer to make the code  more concise.
 
-The Coccinelle semantic patch that makes these changes is as follows:
+The issue was discovered using the following coccinelle script:
 
-@@ struct usb_endpoint_descriptor *epd; @@
+@@
+expression ds, e1, e2;
+@@
 
-- (epd->bmAttributes & \(USB_ENDPOINT_XFERTYPE_MASK\|3\))
-+ usb_endpoint_type(epd)
+-init_timer (&ds);
++setup_timer (&ds, e1, e2);
+...
+-ds.function = e1;
+...
+-ds.data = e2;
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_sasem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2: changed commit message and picked Julia'a ack.
+v3: changed commit message again but forgot to update the changelog.
+v4: placed the changelog missed in v3.
 
-diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
-index b247649a..4230c00 100644
---- a/drivers/staging/media/lirc/lirc_sasem.c
-+++ b/drivers/staging/media/lirc/lirc_sasem.c
-@@ -702,7 +702,7 @@ static int sasem_probe(struct usb_interface *interface,
+ drivers/staging/comedi/drivers/comedi_test.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/comedi/drivers/comedi_test.c b/drivers/staging/comedi/drivers/comedi_test.c
+index e56525a..fbc4342 100644
+--- a/drivers/staging/comedi/drivers/comedi_test.c
++++ b/drivers/staging/comedi/drivers/comedi_test.c
+@@ -420,9 +420,8 @@ static int waveform_attach(struct comedi_device *dev,
+ 	for (i = 0; i < s->n_chan; i++)
+ 		devpriv->ao_loopbacks[i] = s->maxdata / 2;
  
- 		ep = &iface_desc->endpoint [i].desc;
- 		ep_dir = ep->bEndpointAddress & USB_ENDPOINT_DIR_MASK;
--		ep_type = ep->bmAttributes & USB_ENDPOINT_XFERTYPE_MASK;
-+		ep_type = usb_endpoint_type(ep);
+-	init_timer(&devpriv->timer);
+-	devpriv->timer.function = waveform_ai_interrupt;
+-	devpriv->timer.data = (unsigned long)dev;
++	setup_timer(&devpriv->timer, waveform_ai_interrupt,
++		    (unsigned long)dev);
  
- 		if (!ir_ep_found &&
- 			ep_dir == USB_DIR_IN &&
+ 	dev_info(dev->class_dev,
+ 		 "%s: %i microvolt, %li microsecond waveform attached\n",
 -- 
-2.1.4
+1.9.3
 
 
