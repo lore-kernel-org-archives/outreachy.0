@@ -1,51 +1,51 @@
 X-GM-THRID: 1022972919808
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,af8b4c5ca6ab5cb3
+X-Google-Thread: 9ca63f596c,af8b4c5ca6ab5cb3,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.160.3 with SMTP id xg3mr1273799lbb.5.1424439374373;
-        Fri, 20 Feb 2015 05:36:14 -0800 (PST)
+X-Received: by 10.194.178.234 with SMTP id db10mr883820wjc.2.1424383708718;
+        Thu, 19 Feb 2015 14:08:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.90.43 with SMTP id bt11ls98377wib.37.canary; Fri, 20 Feb
- 2015 05:36:14 -0800 (PST)
-X-Received: by 10.194.201.10 with SMTP id jw10mr1276575wjc.3.1424439373956;
-        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+Received: by 10.152.44.232 with SMTP id h8ls215409lam.30.gmail; Thu, 19 Feb
+ 2015 14:08:28 -0800 (PST)
+X-Received: by 10.112.174.36 with SMTP id bp4mr857253lbc.15.1424383708318;
+        Thu, 19 Feb 2015 14:08:28 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id o3si101231wib.2.2015.02.20.05.36.13
+Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id r6si4598734wix.0.2015.02.19.14.08.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Thu, 19 Feb 2015 14:08:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id a1so13193837wgh.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+Received: by mail-wi0-x234.google.com with SMTP id h11so12319469wiw.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 14:08:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
         bh=O+KLn9coucWc0OgubR+OIrl4x8uRywH70x346L6zwTA=;
-        b=DWpVn2r6FrxB8GDVn8+VaO72weOmSfi2JCxbTnpLtYismXqUwY+CV1nghVSh9+cw8z
-         gE2go209s/rbDTTN5DzaR2sQ4uKF/3vuReJkTu4+ioa/WFeACAtpP4awGqHWKchwnc+a
-         VqhiNud3BctiEQO6yL4HIaH9iAmul51wQUcxXhPfnR+vNjpuXXTQF85/eS2qxmwSTCU2
-         aiOKPCNJJH7EjvmQHSUbRl6AWfFwOjHYN7tA9V/xUsQW5qIy9RZio2q67X54pQKQU7Gq
-         MrRzndey3brI6oMSBy0N05cxAcoiiIlTIR6TN6UxuxdbK4JB3G3Rcg3xooBUVinC4V8u
-         pfGQ==
-X-Received: by 10.194.2.43 with SMTP id 11mr19256478wjr.104.1424439373856;
-        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+        b=CKCCwy/1cops9z01OB1o5wiy6AE+eDMhmbhB6g9oLEfRLlWZPj5BXCAma/LCRd+vg+
+         +hEhOlnsvI+uJ4sgFScw38koxaPH2d9hmrMdnZFgvmlEEUwwNDX0MF5IQ00VdtQWO/Ut
+         Qg/jCMlZmMSEFkcfjIjzKzOPVgEQmWUUVMi9CvQvBUJObl/pvkTdw+vvxc7x4uZsOYdT
+         +WWJQ79sw1DrsUmXju7G6h5ABCvz25XdXMRv1CX8F0H60qDjPhJoD0nKKlsDJlo+25WJ
+         m/LCjYl2vdOKfVowLMceoptbI4w3aHlCwyFuaPXnaIJLHdI9YM+9t4EW7kR95HtbLMif
+         dzXw==
+X-Received: by 10.180.208.35 with SMTP id mb3mr286216wic.14.1424383708243;
+        Thu, 19 Feb 2015 14:08:28 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
 Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id qb8sm36014117wjc.4.2015.02.20.05.36.11
+        by mx.google.com with ESMTPSA id fo9sm32025187wib.16.2015.02.19.14.08.25
         (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+        Thu, 19 Feb 2015 14:08:27 -0800 (PST)
 From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH v2 2/2] Staging: lustre: lnet: klnds: o2iblnd: Deleted space prohibited between function name and open parenthesis
-Date: Fri, 20 Feb 2015 15:35:30 +0200
-Message-Id: <1424439330-7371-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH 2/2] Staging: lustre: lnet: klnds: o2iblnd: Deleted space prohibited between function name and open parenthesis
+Date: Fri, 20 Feb 2015 00:07:46 +0200
+Message-Id: <1424383666-27817-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
 
 WARNING: space prohibited between function name and open parenthesis '('
