@@ -1,144 +1,76 @@
-X-GM-THRID: 6259686876654862336
-X-Received: by 10.140.93.199 with SMTP id d65mr20805610qge.30.1457446924109;
-        Tue, 08 Mar 2016 06:22:04 -0800 (PST)
+X-GM-THRID: 694052454400
+X-Received: by 10.112.168.104 with SMTP id zv8mr614612lbb.10.1424355912956;
+        Thu, 19 Feb 2015 06:25:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.97.73 with SMTP id dy9ls167931obb.35.gmail; Tue, 08 Mar
- 2016 06:22:03 -0800 (PST)
-X-Received: by 10.182.246.73 with SMTP id xu9mr12757223obc.4.1457446923790;
-        Tue, 08 Mar 2016 06:22:03 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id r75si507131pfr.0.2016.03.08.06.22.03
+Received: by 10.180.14.137 with SMTP id p9ls300232wic.42.gmail; Thu, 19 Feb
+ 2015 06:25:12 -0800 (PST)
+X-Received: by 10.194.201.10 with SMTP id jw10mr618180wjc.3.1424355912653;
+        Thu, 19 Feb 2015 06:25:12 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id i7si6420114wif.0.2015.02.19.06.25.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 06:22:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Feb 2015 06:25:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id x188so1337809pfb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 06:22:03 -0800 (PST)
+Received: by mail-wi0-x235.google.com with SMTP id r20so9548548wiv.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 06:25:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=aiLW9LapeNkaKlQvrVltC64jbRWDG2Lev8zXWW8q2/w=;
-        b=gLi6sYWKxKIt1Rq7Gazhx/RVaxQ4c/ffnqj0cvkEsgHHkur6Ide95cTgLF9upllHBk
-         a1K+g828LkaAU/Kw4QsEnd4uSG9F0xQlCuLBc+dGrTIety71GdCddPICO0FfmireCBYH
-         lV6Hm20BSDmwGgDLT7qqEHCGIFmhLjuxfhllGH4KynhzFLOPXatNsvtWMdGm7oNe8TNk
-         F3rvuHQ93jF6tWTvC/OjmYoLjihxiyXxmVTXJ6L3v//z2rv9w3xTLOqCBzmzc9xAj4kG
-         LG5nDEcQSkwQQJqa1cuQof9gZy34/fdyEqr14AKyro6GjNfF4qnVXr9dsILZdB/d4k/8
-         j4gw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=aiLW9LapeNkaKlQvrVltC64jbRWDG2Lev8zXWW8q2/w=;
-        b=Yu32y5qibHRk8L0DuG2cXxL8o8oV8JIZSAmSAf7V0pJezIl4Whby+e1h8yA7sa26SL
-         7W/PA47PKgTv1FG2nTYfT28iVMefgnpJUcOGLlQeGi2hgwrD5lm5RbTNlX4hRBAjqk62
-         NLYbs+7ru43Wk+gE7pd72FpxRO+5KzdAZT3SZqBbMo9/NWz+tWNvTj3Ap1ozlJjsR5ww
-         X4NdNkVNnfqwq8mxKBG/hF8EQNy5KRHYpTami6fVVFuHJjG2JVSW/0TuLGjuDnq2U8vo
-         aFrudJIxi0If2Hq4zhsRQQMjAun4HyHiwiOJPYreEdVPQwTfkB+votlpKrtIpOsQASpW
-         lN/Q==
-X-Gm-Message-State: AD7BkJKBxp+j460rncL/szwO0VPy2xqj4jLT3ujBK4OF3vVbKoogEEBw6M+d7Y9Gh8z1Rw==
-X-Received: by 10.98.10.69 with SMTP id s66mr4374961pfi.85.1457446923636;
-        Tue, 08 Mar 2016 06:22:03 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id o7sm5479825pfa.37.2016.03.08.06.22.02
+        h=from:to:subject:date:message-id:mime-version:content-type
+         :content-transfer-encoding;
+        bh=BYNmyg/aOWLUnFzvXzOkPa9n5odsgzbYYDTrUOfe8gc=;
+        b=LetQkFTel0ywyAfXrvmY7rx+WhojzBOWtXbt0zhOBo8E4CAWe7SgxmrSv0+aeF8bc2
+         QsjxykKbS8Adwz5VjNvx0jwgTr9uYjT3aGubbgIUVlzyfyOSIL/dwGPbatxBvoGnJisU
+         bMLTZAKtvQhdM8s8UGTNDK9XU/Z/n7rpUZHNlxdEJGSbk7J8AEMWmJQu8qmFxoTJzBuO
+         gRRyr5+hYnddjcP4TDqpfypxpKInxKyFNUOPBbXppgCwtd1x809INxxILHcEP8hZoDVq
+         qUuMcucKp2WRDkc8+qCv1MJFvTM7rNrpTMjLsDDHLnpn7kl9brJKSJYpAGYnv0OznbTn
+         6JxA==
+X-Received: by 10.180.198.37 with SMTP id iz5mr10183646wic.95.1424355912533;
+        Thu, 19 Feb 2015 06:25:12 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id dj4sm37619767wjc.13.2015.02.19.06.25.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 06:22:03 -0800 (PST)
-Date: Tue, 8 Mar 2016 19:39:50 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 19 Feb 2015 06:25:11 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: lustre: lnet: lib-move: Use
- list_for_each_entry_safe
-Message-ID: <20160308140950.GA30168@Karyakshetra>
+Subject: [PATCH 2/2] Staging: drivers: dma: ste_dma40.c: fix checkpatch.pl error
+Date: Thu, 19 Feb 2015 16:25:02 +0200
+Message-Id: <1424355902-23419-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+Fixed the codes indent style using tabs character.
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
-
-This was done with Coccinelle.
-
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
-
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
 ---
- Changes in v3:
-	-Fixed typo in the subject ("taging" to "staging")
+ drivers/dma/ste_dma40.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/lustre/lnet/lnet/lib-move.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/lustre/lnet/lnet/lib-move.c b/drivers/staging/lustre/lnet/lnet/lib-move.c
-index b821704..0009a8d 100644
---- a/drivers/staging/lustre/lnet/lnet/lib-move.c
-+++ b/drivers/staging/lustre/lnet/lnet/lib-move.c
-@@ -50,6 +50,7 @@ int
- lnet_fail_nid(lnet_nid_t nid, unsigned int threshold)
- {
- 	lnet_test_peer_t *tp;
-+	lnet_test_peer_t *temp;
- 	struct list_head *el;
- 	struct list_head *next;
- 	struct list_head cull;
-@@ -88,9 +89,7 @@ lnet_fail_nid(lnet_nid_t nid, unsigned int threshold)
-
- 	lnet_net_unlock(0);
-
--	while (!list_empty(&cull)) {
--		tp = list_entry(cull.next, lnet_test_peer_t, tp_list);
--
-+	list_for_each_entry_safe(tp, temp, &cull, tp_list) {
- 		list_del(&tp->tp_list);
- 		LIBCFS_FREE(tp, sizeof(*tp));
- 	}
-@@ -101,6 +100,7 @@ static int
- fail_peer(lnet_nid_t nid, int outgoing)
- {
- 	lnet_test_peer_t *tp;
-+	lnet_test_peer_t *temp;
- 	struct list_head *el;
- 	struct list_head *next;
- 	struct list_head cull;
-@@ -147,8 +147,7 @@ fail_peer(lnet_nid_t nid, int outgoing)
-
- 	lnet_net_unlock(0);
-
--	while (!list_empty(&cull)) {
--		tp = list_entry(cull.next, lnet_test_peer_t, tp_list);
-+	list_for_each_entry_safe(tp, temp, &cull, tp_list) {
- 		list_del(&tp->tp_list);
-
- 		LIBCFS_FREE(tp, sizeof(*tp));
---
-2.1.4
+diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
+index 15d4946..f410b5e 100644
+--- a/drivers/dma/ste_dma40.c
++++ b/drivers/dma/ste_dma40.c
+@@ -3744,8 +3744,8 @@ failure:
+ }
+ 
+ static const struct of_device_id d40_match[] = {
+-        { .compatible = "stericsson,dma40", },
+-        {}
++	{ .compatible = "stericsson,dma40", },
++	{}
+ };
+ 
+ static struct platform_driver d40_driver = {
+-- 
+1.9.1
 
 
