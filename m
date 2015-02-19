@@ -1,93 +1,128 @@
-X-GM-THRID: 2447474950144
+X-GM-THRID: 135506427904
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,4ffe5f02a3a5022d,start
+X-Google-Thread: 9ca63f596c,2402c1ea35d84fcd
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.167.98 with SMTP id zn2mr735469lbb.6.1424616789791;
-        Sun, 22 Feb 2015 06:53:09 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.14.105 with SMTP id o9ls398431wic.38.gmail; Sun, 22 Feb
- 2015 06:53:09 -0800 (PST)
-X-Received: by 10.180.182.44 with SMTP id eb12mr706160wic.4.1424616789500;
-        Sun, 22 Feb 2015 06:53:09 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-we0-x232.google.com (mail-we0-x232.google.com. [2a00:1450:400c:c03::232])
-        by gmr-mx.google.com with ESMTPS id ta1si492966wic.1.2015.02.22.06.53.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 06:53:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) client-ip=2a00:1450:400c:c03::232;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x232.google.com with SMTP id m14so13613876wev.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 06:53:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=vfVMU6R0BRdgTfM+tOhj7VdZPxxndUJSpia1Z7QxmiM=;
-        b=z4PNRb53bCdk8QVDjG1VFD5e4ckM2AuSgOwuyhcKfXOVAdeJNTr+2Yat3kdMO5vc6Q
-         UADcgbONinv1td8qQ8SbwvawGTxNZYxbkrUWnlk0/VAhaF7K2zj7MaFyvDzZY8H8JNzX
-         EvtnNWb3UAaraUwsF534T0sj1KiZbLNyMPmBHtHW4EJXoKjjE4O1X37qg6bls3qeu0XV
-         t+gaJIYLipQ+YuQFdikVHECgvTPo/ljUr3qnziexeTnQMt8BkfdiTTDCb5uvmHR/SuqC
-         3rQpeWsw+iZAkvoV4sdLYvDDuX8jcmB02JDPq9YHrV2rtv5jLnLQkRAYzh+fCflH4RuN
-         GYeA==
-X-Received: by 10.194.187.236 with SMTP id fv12mr13586720wjc.131.1424616789414;
-        Sun, 22 Feb 2015 06:53:09 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.192.151])
-        by mx.google.com with ESMTPSA id gi3sm11734940wic.15.2015.02.22.06.53.08
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 06:53:08 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Date: Thu, 19 Feb 2015 09:10:46 -0800 (PST)
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: iio: accel: Fixed else after return or break warning
-Date: Sun, 22 Feb 2015 16:53:12 +0200
-Message-Id: <1424616792-4902-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Cc: aybuke.147@gmail.com
+Message-Id: <955b6bf4-ddf9-4adf-b981-ac9857ac8169@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.10.1502191751180.3284@hadrien>
+References: <1424364343-3944-1-git-send-email-aybuke.147@gmail.com>
+ <alpine.DEB.2.10.1502191751180.3284@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: emxx_udc: Convert from
+ __attribute__((aligned(size))) to __aligned(size)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_402_1992736010.1424365846924"
+X-Google-Token: EJaymKcFnMgB_PaP-xE0
+X-Google-IP: 111.93.6.70
 
-The following patch fixes the checkpatch.pl warning:
-drivers/staging/iio/accel/adis16220_core.c warning: else is not generally useful
-after a break or return
+------=_Part_402_1992736010.1424365846924
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_403_1906645105.1424365846924"
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/iio/accel/adis16220_core.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+------=_Part_403_1906645105.1424365846924
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/iio/accel/adis16220_core.c b/drivers/staging/iio/accel/adis16220_core.c
-index d9a1a14..5673edb 100644
---- a/drivers/staging/iio/accel/adis16220_core.c
-+++ b/drivers/staging/iio/accel/adis16220_core.c
-@@ -323,17 +323,17 @@ static int adis16220_read_raw(struct iio_dev *indio_dev,
- 		sval = (s16)(sval << (16 - bits)) >> (16 - bits);
- 		*val = sval;
- 		return IIO_VAL_INT;
--	} else {
--		ret = adis_read_reg_16(&st->adis, addr->addr, &uval);
--		if (ret)
--			return ret;
--		bits = addr->bits;
--		uval &= (1 << bits) - 1;
--		*val = uval;
--		return IIO_VAL_INT;
- 	}
-+	ret = adis_read_reg_16(&st->adis, addr->addr, &uval);
-+	if (ret)
-+		return ret;
-+	bits = addr->bits;
-+	uval &= (1 << bits) - 1;
-+	*val = uval;
-+	return IIO_VAL_INT;
- }
- 
-+
- static const struct iio_chan_spec adis16220_channels[] = {
- 	{
- 		.type = IIO_VOLTAGE,
--- 
-1.8.3.2
+I too submitted a patch for it in the older mailing list last month.
+Navya
 
+On Thursday, February 19, 2015 at 10:20:23 PM UTC+5:30, Julia Lawall wrote:
+>
+> On Thu, 19 Feb 2015, aybuke ozdemir wrote: 
+>
+> > This fixes the following checkpatch.pl warnings in emxx_udc.h file: 
+> > WARNING: __aligned(size) is preferred over 
+> __attribute__((aligned(size))) 
+>
+> This was done already by Vatika Harlalka.  You can see what has been done 
+> in the mailing list archives. 
+>
+> julia 
+>
+> > Signed-off-by: aybuke ozdemir <aybuk...@gmail.com <javascript:>> 
+> > --- 
+> >  drivers/staging/emxx_udc/emxx_udc.h | 2 +- 
+> >  1 file changed, 1 insertion(+), 1 deletion(-) 
+> > 
+> > diff --git a/drivers/staging/emxx_udc/emxx_udc.h 
+> b/drivers/staging/emxx_udc/emxx_udc.h 
+> > index ee1b80d..2ac216f 100644 
+> > --- a/drivers/staging/emxx_udc/emxx_udc.h 
+> > +++ b/drivers/staging/emxx_udc/emxx_udc.h 
+> > @@ -535,7 +535,7 @@ typedef struct _T_FC_REGS { 
+> > 
+> >          u8 Reserved1200[0x1000-0x200];        /* Reserved */ 
+> > 
+> > -} __attribute__ ((aligned(32))) T_FC_REGS, *PT_FC_REGS; 
+> > +} __aligned(32) T_FC_REGS, *PT_FC_REGS; 
+> > 
+> > 
+> > 
+> > -- 
+> > 1.9.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/1424364343-3944-1-git-send-email-aybuke.147%40gmail.com. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_403_1906645105.1424365846924
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<div dir="ltr">I too submitted a patch for it in the older mailing list last month.<br>Navya<br><br>On Thursday, February 19, 2015 at 10:20:23 PM UTC+5:30, Julia Lawall wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Thu, 19 Feb 2015, aybuke ozdemir wrote:
+<br>
+<br>&gt; This fixes the following <a href="http://checkpatch.pl" target="_blank" rel="nofollow">checkpatch.pl</a> warnings in emxx_udc.h file:
+<br>&gt; WARNING: __aligned(size) is preferred over __attribute__((aligned(size)))
+<br>
+<br>This was done already by Vatika Harlalka. &nbsp;You can see what has been done
+<br>in the mailing list archives.
+<br>
+<br>julia
+<br>
+<br>&gt; Signed-off-by: aybuke ozdemir &lt;<a href="javascript:" target="_blank" gdf-obfuscated-mailto="gZyR7_-5TJwJ" rel="nofollow">aybuk...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; &nbsp;drivers/staging/emxx_udc/<wbr>emxx_udc.h | 2 +-
+<br>&gt; &nbsp;1 file changed, 1 insertion(+), 1 deletion(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/emxx_udc/<wbr>emxx_udc.h b/drivers/staging/emxx_udc/<wbr>emxx_udc.h
+<br>&gt; index ee1b80d..2ac216f 100644
+<br>&gt; --- a/drivers/staging/emxx_udc/<wbr>emxx_udc.h
+<br>&gt; +++ b/drivers/staging/emxx_udc/<wbr>emxx_udc.h
+<br>&gt; @@ -535,7 +535,7 @@ typedef struct _T_FC_REGS {
+<br>&gt;
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8 Reserved1200[0x1000-0x200];&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Reserved */
+<br>&gt;
+<br>&gt; -} __attribute__ ((aligned(32))) T_FC_REGS, *PT_FC_REGS;
+<br>&gt; +} __aligned(32) T_FC_REGS, *PT_FC_REGS;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt; --
+<br>&gt; 1.9.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, send an email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="gZyR7_-5TJwJ" rel="nofollow">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="gZyR7_-5TJwJ" rel="nofollow">outreach...@googlegroups.<wbr>com</a>.
+<br>&gt; To view this discussion on the web visit <a href="https://groups.google.com/d/msgid/outreachy-kernel/1424364343-3944-1-git-send-email-aybuke.147%40gmail.com" target="_blank" rel="nofollow">https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>1424364343-3944-1-git-send-<wbr>email-aybuke.147%40gmail.com</a>.
+<br>&gt; For more options, visit <a href="https://groups.google.com/d/optout" target="_blank" rel="nofollow">https://groups.google.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_403_1906645105.1424365846924--
+
+------=_Part_402_1992736010.1424365846924--
 
