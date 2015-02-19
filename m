@@ -3,50 +3,50 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,370d94720141cc10
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.46.106 with SMTP id u10mr259078lbm.3.1424314613751;
-        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
+X-Received: by 10.112.50.106 with SMTP id b10mr270390lbo.8.1424314549670;
+        Wed, 18 Feb 2015 18:55:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.104.226 with SMTP id gh2ls195235wib.31.gmail; Wed, 18 Feb
- 2015 18:56:53 -0800 (PST)
-X-Received: by 10.194.86.1 with SMTP id l1mr274987wjz.0.1424314613432;
-        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
+Received: by 10.153.5.33 with SMTP id cj1ls114323lad.53.gmail; Wed, 18 Feb
+ 2015 18:55:49 -0800 (PST)
+X-Received: by 10.112.160.3 with SMTP id xg3mr267000lbb.5.1424314549099;
+        Wed, 18 Feb 2015 18:55:49 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-f177.google.com (mail-we0-f177.google.com. [74.125.82.177])
-        by gmr-mx.google.com with ESMTPS id cl5si8928955wib.3.2015.02.18.18.56.53
+Received: from mail-we0-f180.google.com (mail-we0-f180.google.com. [74.125.82.180])
+        by gmr-mx.google.com with ESMTPS id el6si775042wib.2.2015.02.18.18.55.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.177 as permitted sender) client-ip=74.125.82.177;
+        Wed, 18 Feb 2015 18:55:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.180 as permitted sender) client-ip=74.125.82.180;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.177 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 74.125.82.180 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesw62 with SMTP id w62so4707703wes.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 18:56:53 -0800 (PST)
+Received: by mail-we0-f180.google.com with SMTP id u56so4723346wes.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 18:55:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=qQw/0K/gMSIXj9Bz+titPIhLuk0QFLGOraeIWZuelbQ=;
-        b=qq3XPLRsVZLI7S7PPkNueVXaB2CBPYs6Fzeiyjs5/1uw+j2DosbfksG3PiOsNCidLA
-         kOfAKvV07aXUSHjPRlvYq/MDJ6jHuxKa5QarrIGaV86FobiAEeriLEAAJt3znfH7bIXD
-         PI/W+LMmZ89iS1yipyMMnq5DOeTPPEVuhAjuU+YcdXTcp8Fv1LuGIW2TmZu7FKnMZA3i
-         vapNTy5zIondrMJEDzsDFKYNWHvbn1BzKkSVslrP3s61Ideh63kPnMcmFiTVqxy4pzQp
-         Jy/BYT/RVKXe0gVTVmWNrIwNqJ80SrkjmWUkQWcht4+3kgLraWl6kpUuPX5uoxtLymbt
-         96jA==
-X-Received: by 10.194.80.193 with SMTP id t1mr5032845wjx.8.1424314613370;
-        Wed, 18 Feb 2015 18:56:53 -0800 (PST)
+        bh=h/njd2MTYYFww4zK6fCkhwqCDxlR50ndEv6hZNpzIeg=;
+        b=CZTJDE+zsiNYMlY8Efude820qqCgBK9hh+l9/1PTQp2PLardRuXkMJZBipLgC8EprR
+         PubZ7OJAJlvpqKwlZ/FoqL7QxNUiw9UrdWzvznxnI77/j1xHy4JeaqZRGDQ6XwxTaNcm
+         FinDH7B+Q3Yhatuj7VppI8wX483pBztpPVEXs61T7RodDdIeyORktBUU+GDSC/ZRN0kG
+         wtX6VfS6QYRG++uCISU27klECdZIvrdQjJoRFnHevNRXkti5/Y4xZJnewIfaj0nLP6y2
+         7EKmq7HjjYaLotLBVNu8gf9/IFMpQpnhsKi3ScQAxoX6pDLTGD8fRi14piV658Z2bWzo
+         6nqw==
+X-Received: by 10.180.98.105 with SMTP id eh9mr2988980wib.51.1424314549023;
+        Wed, 18 Feb 2015 18:55:49 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([82.201.174.108])
-        by mx.google.com with ESMTPSA id dj4sm35358330wjc.13.2015.02.18.18.56.52
+        by mx.google.com with ESMTPSA id d10sm35335348wjn.45.2015.02.18.18.55.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Feb 2015 18:56:52 -0800 (PST)
-Date: Thu, 19 Feb 2015 04:56:50 +0200
+        Wed, 18 Feb 2015 18:55:48 -0800 (PST)
+Date: Thu, 19 Feb 2015 04:55:45 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 7/8] staging: fbtft: fix space prohibited before that ','
-Message-ID: <1c10c47e2a44bbc7f171cb58c308419b03210831.1424313311.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 6/8] staging: fbtft: fix space required after that ','
+Message-ID: <806dbc5b7fc71f1b1047a36782238ae1171e18f8.1424313311.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1424313310.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -55,26 +55,51 @@ In-Reply-To: <cover.1424313310.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
 This patch fixes the following checkpatch.pl error:
-fix space prohibited before that ','
+space required after that ','
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/fbtft/fbtft-core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/fbtft/fb_st7735r.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-index 37dcf7e..ac4287f 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -49,7 +49,7 @@ extern int fbtft_gamma_parse_str(struct fbtft_par *par, unsigned long *curves,
- 						const char *str, int size);
+diff --git a/drivers/staging/fbtft/fb_st7735r.c b/drivers/staging/fbtft/fb_st7735r.c
+index b63aa38..078f502 100644
+--- a/drivers/staging/fbtft/fb_st7735r.c
++++ b/drivers/staging/fbtft/fb_st7735r.c
+@@ -68,7 +68,7 @@ static int default_init_sequence[] = {
  
- static unsigned long debug;
--module_param(debug, ulong , 0);
-+module_param(debug, ulong, 0);
- MODULE_PARM_DESC(debug, "override device debug level");
+ 	/* PWCTR4 - Power Control
+ 	     BCLK/2, Opamp current small & Medium low */
+-	-1, 0xC3,0x8A,0x2A,
++	-1, 0xC3, 0x8A, 0x2A,
  
- static bool dma = true;
+ 	/* PWCTR5 - Power Control */
+ 	-1, 0xC4, 0x8A, 0xEE,
+@@ -148,21 +148,21 @@ static int set_var(struct fbtft_par *par)
+ #define CURVE(num, idx)  curves[num*par->gamma.num_values + idx]
+ static int set_gamma(struct fbtft_par *par, unsigned long *curves)
+ {
+-	int i,j;
++	int i, j;
+ 
+ 	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "%s()\n", __func__);
+ 
+ 	/* apply mask */
+ 	for (i = 0; i < par->gamma.num_curves; i++)
+ 		for (j = 0; j < par->gamma.num_values; j++)
+-			CURVE(i,j) &= 0b111111;
++			CURVE(i, j) &= 0b111111;
+ 
+ 	for (i = 0; i < par->gamma.num_curves; i++)
+ 		write_reg(par, 0xE0 + i,
+ 			CURVE(i, 0), CURVE(i, 1), CURVE(i, 2), CURVE(i, 3),
+ 			CURVE(i, 4), CURVE(i, 5), CURVE(i, 6), CURVE(i, 7),
+ 			CURVE(i, 8), CURVE(i, 9), CURVE(i, 10), CURVE(i, 11),
+-			CURVE(i, 12), CURVE(i, 13), CURVE(i, 14), CURVE(i,15));
++			CURVE(i, 12), CURVE(i, 13), CURVE(i, 14), CURVE(i, 15));
+ 
+ 	return 0;
+ }
 -- 
 1.9.3
 
