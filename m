@@ -1,173 +1,149 @@
-X-GM-THRID: 6339736406394404864
-X-Received: by 10.67.6.73 with SMTP id cs9mr2812348pad.144.1476084908176;
-        Mon, 10 Oct 2016 00:35:08 -0700 (PDT)
+X-GM-THRID: 1346431352832
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,1fdd4451ee4a6ec5
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.91.76 with SMTP id cc12mr14187wib.7.1424461597246;
+        Fri, 20 Feb 2015 11:46:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.201 with SMTP id g67ls4702337otg.30.gmail; Mon, 10 Oct
- 2016 00:35:07 -0700 (PDT)
-X-Received: by 10.13.197.65 with SMTP id h62mr8301858ywd.4.1476084907787;
-        Mon, 10 Oct 2016 00:35:07 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
-        by gmr-mx.google.com with ESMTPS id h127si223199vkf.2.2016.10.10.00.35.07
+Received: by 10.152.9.168 with SMTP id a8ls294221lab.14.gmail; Fri, 20 Feb
+ 2015 11:46:36 -0800 (PST)
+X-Received: by 10.152.28.137 with SMTP id b9mr1517796lah.8.1424461596682;
+        Fri, 20 Feb 2015 11:46:36 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i7si177667wif.0.2015.02.20.11.46.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Oct 2016 00:35:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 11:46:36 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x243.google.com with SMTP id p80so8502300lfp.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 10 Oct 2016 00:35:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=DniTx82DSPbbmJm3GJ66GAXZ4FrTDRzhy/gcHa8PmFU=;
-        b=h8ko/VirMAba1EO/F9vqPD/bt1nJHt4QoBzNZqkbCA9cF3+39CPRImkBKMpqvimpqx
-         q2+11bu8dz7fjvebYKQDDQFRCl9h5eC5aR++alVyoCXq/2cYrgCfbRoOPLe3CqHnvuYD
-         TxLlAiHg6Za7JKM/g5Zj/JZq9v0qWU4VxVFWuMhukoBUZGv2Hes6IXVQETrXFA1Tdsqs
-         z1ul4lP90fXo7iis5VI9gkNFYO+MCbdczKJ/Me1Y2SdEUueXkJkaRzFLIbqnSGBqjlc4
-         DlZz/+CqmmoNrShS9r+n70Nni3FfIq3PUP32M0U7/KIW65EMYp02HRHuEAnLuM9Yal1y
-         sNpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=DniTx82DSPbbmJm3GJ66GAXZ4FrTDRzhy/gcHa8PmFU=;
-        b=f7vXtqniVkWT7TzHUssgTII25XShB4+Pov+WqS0Mo3A+BAoj0At8Q9/aTwdjpLkmBc
-         IMeExfyJSek/VU0L2705E7GdIi+KZ8EnGh/JvMJSzWZFy6nKi0L73QLlMzdB4L40jfPG
-         nASGxEHoScYz5ZFYrW8l6hn+m/DQoknbsLHSi8+dPePnEC4IjsCD7eWhmRVNEYM2Da6b
-         tXQRreqvS9JxyQ2ERK3gbrY/8xmL9wSUiV2quTdJnpSNdBiqcc9rwi3kLz3JHBEs5q27
-         Pi7PdcoXs3t+PbV/mDALPqmgPG0utjfMwfLbrvTdJyJAPPCmDGzePaYT/2dtzS1GyVl/
-         Y+8w==
-X-Gm-Message-State: AA6/9RmqD9+/n5DpvJI/dALwZYBtdaePnOUegbZBmDk5xWt/EZ5PHCX3lBuKsvLTflmjeQ==
-X-Received: by 10.194.42.69 with SMTP id m5mr2526930wjl.101.1476084907361;
-        Mon, 10 Oct 2016 00:35:07 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id y2sm37845674wji.42.2016.10.10.00.35.06
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 10 Oct 2016 00:35:06 -0700 (PDT)
-Date: Mon, 10 Oct 2016 10:35:05 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Aditya Shankar <aditya.shankar@microchip.com>,
-	Ganesh Krishna <ganesh.krishna@microchip.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Stagin: wilc1000: Use ether_addr_copy() rather memcpy()
-Message-ID: <20161010073505.GA7227@domino-MS-16Y1>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,616,1418079600"; 
+   d="scan'208";a="122735872"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2015 20:46:35 +0100
+Date: Fri, 20 Feb 2015 20:46:35 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: i2o : Replace printk with
+ dev_warn
+In-Reply-To: <1f022876-2a76-49a1-916c-e00b9f24ee79@googlegroups.com>
+Message-ID: <alpine.DEB.2.02.1502202046040.2054@localhost6.localdomain6>
+References: <1424446833-22298-1-git-send-email-navyasri.tech@gmail.com> <alpine.DEB.2.10.1502201714490.2375@hadrien> <fc705749-6e36-41a8-864e-5b0a3d1234b7@googlegroups.com> <1f022876-2a76-49a1-916c-e00b9f24ee79@googlegroups.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-1021064930-1424461595=:2054"
 
-This patch fixs up a issue found it by  checkpatch.pl tool.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
-addresses are __aligned(2).
+--8323328-1021064930-1424461595=:2054
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Check if the addresses are aligned with pahole.
+On Fri, 20 Feb 2015, Navya Sri Nizamkari wrote:
 
-struct sta_inactive_t {
-	u8                         mac[6];               /*     0     6
-*/
+> As i2o is going to be taken out, is it okay if I send in a patch to remove
+> the c-name or should I not?
 
-	/* size: 6, cachelines: 1, members: 1 */
-	/* last cacheline: 6 bytes */
-};
+It seems more useful to move on to do something else.
 
-Aligne this structure :
+Maybe you can find the same issue in some other code.
 
-struct del_all_sta {
-	u8                         assoc_sta;            /*     0     1
-*/
-	u8                         del_all_sta[9][6];    /*     1    54
-*/
+julia
 
-	/* size: 55, cachelines: 1, members: 2 */
-	/* last cacheline: 55 bytes */
-};
-
-struct del_sta {
-	u8                         mac_addr[6];          /*     0     6
-*/
-
-	/* size: 6, cachelines: 1, members: 1 */
-	/* last cacheline: 6 bytes */
-};
-
-Replace the memcpy() function with ether_addr_copy().
-
-Fix coding style WARNING: line over 80 characters.
-
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/wilc1000/host_interface.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 78f5613..1eedaa3 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -140,8 +140,8 @@ struct set_multicast {
- };
- 
- struct del_all_sta {
--	u8 del_all_sta[MAX_NUM_STA][ETH_ALEN];
- 	u8 assoc_sta;
-+	u8 del_all_sta[MAX_NUM_STA][ETH_ALEN];
- };
- 
- struct del_sta {
-@@ -1932,7 +1932,7 @@ static s32 Handle_Get_InActiveTime(struct wilc_vif *vif,
- 	wid.val = kmalloc(wid.size, GFP_KERNEL);
- 
- 	stamac = wid.val;
--	memcpy(stamac, strHostIfStaInactiveT->mac, ETH_ALEN);
-+	ether_addr_copy(stamac, strHostIfStaInactiveT->mac);
- 
- 	result = wilc_send_config_pkt(vif, SET_CFG, &wid, 1,
- 				      wilc_get_vif_idx(vif));
-@@ -2133,7 +2133,8 @@ static void Handle_DelAllSta(struct wilc_vif *vif,
- 
- 	for (i = 0; i < MAX_NUM_STA; i++) {
- 		if (memcmp(pstrDelAllStaParam->del_all_sta[i], au8Zero_Buff, ETH_ALEN))
--			memcpy(pu8CurrByte, pstrDelAllStaParam->del_all_sta[i], ETH_ALEN);
-+			ether_addr_copy(pu8CurrByte,
-+					pstrDelAllStaParam->del_all_sta[i]);
- 		else
- 			continue;
- 
-@@ -2168,7 +2169,7 @@ static void Handle_DelStation(struct wilc_vif *vif,
- 
- 	pu8CurrByte = wid.val;
- 
--	memcpy(pu8CurrByte, pstrDelStaParam->mac_addr, ETH_ALEN);
-+	ether_addr_copy(pu8CurrByte, pstrDelStaParam->mac_addr);
- 
- 	result = wilc_send_config_pkt(vif, SET_CFG, &wid, 1,
- 				      wilc_get_vif_idx(vif));
-@@ -3743,7 +3744,7 @@ int wilc_del_station(struct wilc_vif *vif, const u8 *mac_addr)
- 	if (!mac_addr)
- 		eth_broadcast_addr(del_sta_info->mac_addr);
- 	else
--		memcpy(del_sta_info->mac_addr, mac_addr, ETH_ALEN);
-+		ether_addr_copy(del_sta_info->mac_addr, mac_addr);
- 
- 	result = wilc_enqueue_cmd(&msg);
- 	if (result)
-@@ -3767,7 +3768,8 @@ int wilc_del_allstation(struct wilc_vif *vif, u8 mac_addr[][ETH_ALEN])
- 
- 	for (i = 0; i < MAX_NUM_STA; i++) {
- 		if (memcmp(mac_addr[i], zero_addr, ETH_ALEN)) {
--			memcpy(del_all_sta_info->del_all_sta[i], mac_addr[i], ETH_ALEN);
-+			ether_addr_copy(del_all_sta_info->del_all_sta[i],
-+					mac_addr[i]);
- 			assoc_sta++;
- 		}
- 	}
--- 
-2.7.4
-
+> Navya
+> 
+> On Friday, February 20, 2015 at 10:01:15 PM UTC+5:30, Navya Sri Nizamkari
+> wrote:
+>       It did give a breaking up strings error. But I thought it would
+>       be better if I made another patch to address that. Indeed, it
+>       prints out the driver name. I'll change it in the patch.
+>       Navya
+> 
+>       On Friday, February 20, 2015 at 9:46:31 PM UTC+5:30, Julia
+>       Lawall wrote:
+>             On Fri, 20 Feb 2015, Navya Sri Nizamkari wrote:
+> 
+>             > This patch fixes the checkpatch.pl warning:
+>             > WARNING: Prefer netdev_info(netdev, ... then
+>             dev_info
+>             > (dev, ... then pr_info(...  to printk(KERN_INFO
+>             ...
+>             >
+>             > i2o being a device driver, printk(KERN_WARNING can
+>             be
+>             > replaced with the dev_warn function which is
+>             preferable.
+>             >
+>             > Signed-off-by: Navya Sri Nizamkari
+>             <navyas...@gmail.com>
+>             > ---
+>             >  drivers/staging/i2o/exec-osm.c | 2 +-
+>             >  1 file changed, 1 insertion(+), 1 deletion(-)
+>             >
+>             > diff --git a/drivers/staging/i2o/exec-osm.c
+>             b/drivers/staging/i2o/exec-osm.c
+>             > index 16d857d..89e464d 100644
+>             > --- a/drivers/staging/i2o/exec-osm.c
+>             > +++ b/drivers/staging/i2o/exec-osm.c
+>             > @@ -507,7 +507,7 @@ static int
+>             i2o_exec_reply(struct i2o_controller *c, u32 m,
+>             >           * to aid in debugging.
+>             >           *
+>             >           */
+>             > -        printk(KERN_WARNING "%s: Unsolicited
+>             message reply sent to core!"
+>             > +        dev_warn(c->pdev->dev, "%s: Unsolicited
+>             message reply sent to core!"
+>             >                 "Message dumped to syslog\n",
+>             c->name);
+> 
+>             I wonder if c->name is necessary if you are using
+>             dev_warn?  Look at the
+>             definition of dev_warn and see if it already prints
+>             out something that
+>             looks like the name of the driver.
+> 
+>             Another checkpatch warning would be about not
+>             breaking up strings.  I'm
+>             surprised that it didn't complain about it.
+> 
+>             julia
+> 
+>             >          i2o_dump_message(msg);
+>             >
+>             > --
+>             > 1.9.1
+>             >
+>             > --
+>             > You received this message because you are
+>             subscribed to the Google Groups "outreachy-kernel"
+>             group.
+>             > To unsubscribe from this group and stop receiving
+>             emails from it, send an email to
+>             outreachy-kern...@googlegroups.com.
+>             > To post to this group, send email to
+>             outreach...@googlegroups.com.
+>             > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1424446833-22298-1-git-s
+>             end-email-navyasri.tech%40gmail.com.
+>             > For more options, visit
+>             https://groups.google.com/d/optout.
+>             >
+> 
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1f022876-2a76-49a1-916c-
+> e00b9f24ee79%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+> 
+--8323328-1021064930-1424461595=:2054--
 
