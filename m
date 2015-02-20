@@ -1,190 +1,86 @@
 X-GM-THRID: 1328454565888
-X-Received: by 10.140.149.78 with SMTP id 75mr10876687qhv.9.1424453112476;
-        Fri, 20 Feb 2015 09:25:12 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,6f1dd75346e94f50
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.36.132 with SMTP id q4mr230633laj.6.1424452933758;
+        Fri, 20 Feb 2015 09:22:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.142.98 with SMTP id rv2ls221595igb.34.gmail; Fri, 20 Feb
- 2015 09:25:11 -0800 (PST)
-X-Received: by 10.68.194.97 with SMTP id hv1mr10242476pbc.0.1424453111875;
-        Fri, 20 Feb 2015 09:25:11 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-ie0-x235.google.com (mail-ie0-x235.google.com. [2607:f8b0:4001:c03::235])
-        by gmr-mx.google.com with ESMTPS id g3si188770igr.2.2015.02.20.09.25.11
+Received: by 10.152.9.6 with SMTP id v6ls311947laa.13.gmail; Fri, 20 Feb 2015
+ 09:22:13 -0800 (PST)
+X-Received: by 10.112.131.106 with SMTP id ol10mr1449990lbb.20.1424452933290;
+        Fri, 20 Feb 2015 09:22:13 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id o3si144145wib.2.2015.02.20.09.22.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 09:25:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2607:f8b0:4001:c03::235 as permitted sender) client-ip=2607:f8b0:4001:c03::235;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 09:22:13 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2607:f8b0:4001:c03::235 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ie0-x235.google.com with SMTP id ar1so9409704iec.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 09:25:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=b5gPb931LBeXOm7R4rqWVZrE7y+Q6nENVVYdrhgLqb4=;
-        b=Bm6bI1nZ50cH4cvYQe2XQgPhPxprFBXyO+Qrhh9YWita8BdbDhHWSeoMOrPEzy+HGR
-         1Sqvh7RqIIPGoektG1GusFP84ASPXmN94dDPS3GUv4t9Qj9CzoWUDfxI7i1pAWjuAhAY
-         4ISkmbzFP9dYPmX/uaOjeb96m3fgblEsa6MuW+raxr2JfTBjgPJ0jOV8i+kPIv28bYYE
-         OWpoeoOGOx1ssDabw4L8sFYLzeng/M1RD6qxwCeye4DAj2+B+xqahTnYta7YqxfEtvbJ
-         +JL6iOaVaOYsZGP5AgpRAnrRV5lqUWJp0cJJeNtMWUtzYNwZRZLdHw4ml9gIdW5lAy+w
-         mzkQ==
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,615,1418079600"; 
+   d="scan'208";a="122722605"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2015 18:22:12 +0100
+Date: Fri, 20 Feb 2015 18:22:07 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 4/4] Staging: lustre: lnet: klnds:
+ socklnd: Add blank line after declarations
+In-Reply-To: <1424446070-14232-4-git-send-email-aysemelikeyurtoglu@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502201821110.2375@hadrien>
+References: <1424446070-14232-1-git-send-email-aysemelikeyurtoglu@gmail.com> <1424446070-14232-4-git-send-email-aysemelikeyurtoglu@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-X-Received: by 10.107.47.90 with SMTP id j87mr932731ioo.33.1424453111723; Fri,
- 20 Feb 2015 09:25:11 -0800 (PST)
-Received: by 10.64.142.49 with HTTP; Fri, 20 Feb 2015 09:25:11 -0800 (PST)
-In-Reply-To: <54E76892.207@gmail.com>
-References: <1424446070-14232-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-	<54E76892.207@gmail.com>
-Date: Fri, 20 Feb 2015 19:25:11 +0200
-Message-ID: <CAPYvaxN_FfH_GvmfHAA0ZohHZuHhXX-0GiwxSmL7R3KEXz-V6A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/4] Staging: lustre: lnet: klnds:
- socklnd: Deleted space prohibited between function name and open parenthesis
-From: =?UTF-8?Q?Ay=C5=9Fe_Melike_Yurto=C4=9Flu?= <aysemelikeyurtoglu@gmail.com>
-To: Jes Sorensen <jes.sorensen@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=001a11c158a8b93f05050f8855c6
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
---001a11c158a8b93f05050f8855c6
-Content-Type: text/plain; charset=UTF-8
+In the subject line, Staging: lustre: should be enough.  You can look at
+other patches on this file using git log --oneline file to see what
+subject lines other people have used.
 
-I will pay much more attention to the commit messages and subject line.I am
-using the following command while the patch series.I'm doing it wrong, I
-wonder.
-"git format-patch -n --subject-prefix="PATCH vY" --cover-letter"
+julia
 
-Thanks
+On Fri, 20 Feb 2015, Melike Yurtoglu wrote:
 
-2015-02-20 19:02 GMT+02:00 Jes Sorensen <jes.sorensen@gmail.com>:
-
-> On 02/20/15 10:27, Melike Yurtoglu wrote:
-> > WARNING: space prohibited between function name and open parenthesis '('
-> > checkpatch.pl warning in socklnd.c
-> >
-> > Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-> > ---
-> >  .../staging/lustre/lnet/klnds/socklnd/socklnd.c    | 448
-> ++++++++++-----------
-> >  1 file changed, 224 insertions(+), 224 deletions(-)
+> WARNING: "Missing a blank line after declarations"
+> checkpatch.pl warning in o2iblnd_modparams.c
 >
-> When posting multi patch series, you need to use a cover letter to
-> describe the reason for the patch set. Argument '--cover-letter' for
-> 'git format-patch'
+> Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+> ---
+>  drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 2 ++
+>  1 file changed, 2 insertions(+)
 >
-> In addition, please try to write a human patch description for each
-> commit rather than just paste in the automated checkpatch output.
-> Something like:
+> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+> index 4e66f2b..49b1b51 100644
+> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+> @@ -2445,6 +2445,7 @@ ksocknal_base_startup(void)
 >
-> "Remove unnecessary space between function name and opening parenthesis.
-> That was found by running checkpatch.
+>  	for (i = 0; i < *ksocknal_tunables.ksnd_nconnds; i++) {
+>  		char name[16];
+> +
+>  		spin_lock_bh(&ksocknal_data.ksnd_connd_lock);
+>  		ksocknal_data.ksnd_connd_starting++;
+>  		spin_unlock_bh(&ksocknal_data.ksnd_connd_lock);
+> @@ -2709,6 +2710,7 @@ ksocknal_start_schedulers(struct ksock_sched_info *info)
+>  		long		id;
+>  		char		name[20];
+>  		ksock_sched_t	*sched;
+> +
+>  		id = KSOCK_THREAD_ID(info->ksi_cpt, info->ksi_nthreads + i);
+>  		sched = &info->ksi_scheds[KSOCK_THREAD_SID(id)];
+>  		snprintf(name, sizeof(name), "socknal_sd%02d_%02d",
+> --
+> 1.8.3.2
 >
-> Cheers,
-> Jes
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424446070-14232-4-git-send-email-aysemelikeyurtoglu%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 >
->
-> > diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> > index 5956dba..aac3a7d 100644
-> > --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> > +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> > @@ -65,15 +65,15 @@ ksocknal_ip2iface(lnet_ni_t *ni, __u32 ip)
-> >  }
-> >
-> >  static ksock_route_t *
-> > -ksocknal_create_route (__u32 ipaddr, int port)
-> > +ksocknal_create_route(__u32 ipaddr, int port)
-> >  {
-> >       ksock_route_t *route;
-> >
-> > -     LIBCFS_ALLOC (route, sizeof (*route));
-> > +     LIBCFS_ALLOC(route, sizeof(*route));
-> >       if (route == NULL)
-> >               return NULL;
-> >
-> > -     atomic_set (&route->ksnr_refcount, 1);
-> > +     atomic_set(&route->ksnr_refcount, 1);
-> >       route->ksnr_peer = NULL;
-> >       route->ksnr_retry_interval = 0;  /* OK to connect at any time */
-> >       route->ksnr_ipaddr = ipaddr;
-> > @@ -89,43 +89,43 @@ ksocknal_create_route (__u32 ipaddr, int port)
-> >  }
->
->
-
---001a11c158a8b93f05050f8855c6
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>I will pay much more attention to the commit messages=
- and subject line.I am using the following command while the patch series.I=
-&#39;m doing it wrong, I wonder.<br>&quot;git format-patch -n --subject-pre=
-fix=3D&quot;PATCH vY&quot; --cover-letter&quot;<br><br></div>Thanks <br></d=
-iv><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">2015-02-20 19:=
-02 GMT+02:00 Jes Sorensen <span dir=3D"ltr">&lt;<a href=3D"mailto:jes.soren=
-sen@gmail.com" target=3D"_blank">jes.sorensen@gmail.com</a>&gt;</span>:<br>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><span class=3D"">On 02/20/15 10:27, Melike Y=
-urtoglu wrote:<br>
-&gt; WARNING: space prohibited between function name and open parenthesis &=
-#39;(&#39;<br>
-&gt; <a href=3D"http://checkpatch.pl" target=3D"_blank">checkpatch.pl</a> w=
-arning in socklnd.c<br>
-&gt;<br>
-&gt; Signed-off-by: Melike Yurtoglu &lt;<a href=3D"mailto:aysemelikeyurtogl=
-u@gmail.com">aysemelikeyurtoglu@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 .../staging/lustre/lnet/klnds/socklnd/socklnd.c=C2=A0 =C2=A0 | 4=
-48 ++++++++++-----------<br>
-&gt;=C2=A0 1 file changed, 224 insertions(+), 224 deletions(-)<br>
-<br>
-</span>When posting multi patch series, you need to use a cover letter to<b=
-r>
-describe the reason for the patch set. Argument &#39;--cover-letter&#39; fo=
-r<br>
-&#39;git format-patch&#39;<br>
-<br>
-In addition, please try to write a human patch description for each<br>
-commit rather than just paste in the automated checkpatch output.<br>
-Something like:<br>
-<br>
-&quot;Remove unnecessary space between function name and opening parenthesi=
-s.<br>
-That was found by running checkpatch.<br>
-<br>
-Cheers,<br>
-Jes<br>
-<div class=3D"HOEnZb"><div class=3D"h5"><br>
-<br>
-&gt; diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/dri=
-vers/staging/lustre/lnet/klnds/socklnd/socklnd.c<br>
-&gt; index 5956dba..aac3a7d 100644<br>
-&gt; --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c<br>
-&gt; +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c<br>
-&gt; @@ -65,15 +65,15 @@ ksocknal_ip2iface(lnet_ni_t *ni, __u32 ip)<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt;=C2=A0 static ksock_route_t *<br>
-&gt; -ksocknal_create_route (__u32 ipaddr, int port)<br>
-&gt; +ksocknal_create_route(__u32 ipaddr, int port)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0ksock_route_t *route;<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0LIBCFS_ALLOC (route, sizeof (*route));<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0LIBCFS_ALLOC(route, sizeof(*route));<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (route =3D=3D NULL)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return NULL;<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0atomic_set (&amp;route-&gt;ksnr_refcount, 1);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0atomic_set(&amp;route-&gt;ksnr_refcount, 1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0route-&gt;ksnr_peer =3D NULL;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0route-&gt;ksnr_retry_interval =3D 0;=C2=A0 /=
-* OK to connect at any time */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0route-&gt;ksnr_ipaddr =3D ipaddr;<br>
-&gt; @@ -89,43 +89,43 @@ ksocknal_create_route (__u32 ipaddr, int port)<br>
-&gt;=C2=A0 }<br>
-<br>
-</div></div></blockquote></div><br></div>
-
---001a11c158a8b93f05050f8855c6--
 
