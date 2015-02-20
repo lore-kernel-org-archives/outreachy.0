@@ -1,71 +1,89 @@
-X-GM-THRID: 3183052062720
-X-Received: by 10.180.13.98 with SMTP id g2mr2077211wic.3.1424783675571;
-        Tue, 24 Feb 2015 05:14:35 -0800 (PST)
+X-GM-THRID: 1463092772864
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,3539e97c4c1c7bcc
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.239.41 with SMTP id vp9mr1510649wjc.5.1424461713989;
+        Fri, 20 Feb 2015 11:48:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.208 with SMTP id l16ls609447laa.66.gmail; Tue, 24 Feb
- 2015 05:14:35 -0800 (PST)
-X-Received: by 10.152.1.5 with SMTP id 5mr2128806lai.4.1424783675062;
-        Tue, 24 Feb 2015 05:14:35 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id o3si904835wib.2.2015.02.24.05.14.35
+Received: by 10.180.8.230 with SMTP id u6ls167879wia.0.gmail; Fri, 20 Feb 2015
+ 11:48:33 -0800 (PST)
+X-Received: by 10.194.221.65 with SMTP id qc1mr1506005wjc.7.1424461713486;
+        Fri, 20 Feb 2015 11:48:33 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i7si177976wif.0.2015.02.20.11.48.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Feb 2015 05:14:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 11:48:33 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id bs8so25383209wib.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Feb 2015 05:14:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=0APWtjvvj0gdcbeJrlKpqqHgassC7klvlyU3Yc1tRJo=;
-        b=gYS5KB1GLIOzNnug0V7Qrd+SNy/s6lMF3XghsukgtfMTBeCobE8FaTnPwXPEdMNtiI
-         mTx9tBfCOHVjuGlcrtyWFHYZaN1kbIUwJJK/WsWrRxieDi2EXxppzCFE24Z/s7QeFPlh
-         lKaY/WPC3pNj7+AOmql4CXkoy2X8J8HCfo98a9UGOXNr3spneTc75NsYkaqHmptfvhky
-         94qQGA6IUaxVijytgiTNQQzv+zW6Vs/PyT1uQY/v71MvxyuL1ywz3a7X3kjMh2ywru7s
-         /HFjjU3RhrfboCdkdq02sL+QBOsYlqKpkcKf+S0/qCKzkZJp/hvds4zo8WdCSOhEzcOK
-         /BQg==
-X-Received: by 10.194.61.51 with SMTP id m19mr32688395wjr.39.1424783674851;
-        Tue, 24 Feb 2015 05:14:34 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id q10sm60200222wjr.41.2015.02.24.05.14.33
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 24 Feb 2015 05:14:34 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: Add blank line after declarations
-Date: Tue, 24 Feb 2015 15:14:26 +0200
-Message-Id: <1424783666-4960-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,616,1418079600"; 
+   d="scan'208";a="100797106"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2015 20:48:32 +0100
+Date: Fri, 20 Feb 2015 20:48:32 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: mac: Deleted space
+In-Reply-To: <1424459389-5989-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502202047260.2054@localhost6.localdomain6>
+References: <1424459389-5989-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-1113413578-1424461712=:2054"
 
-The following patch fixes the checkpatch.pl warning:
-drivers/staging/rtl8723au/core/rtw_ap.c WARNING: Missing a blank
-line after declarations
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/rtl8723au/core/rtw_ap.c | 1 +
- 1 file changed, 1 insertion(+)
+--8323328-1113413578-1424461712=:2054
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
-index 13ac513..853f99e 100644
---- a/drivers/staging/rtl8723au/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723au/core/rtw_ap.c
-@@ -785,6 +785,7 @@ int rtw_check_beacon_data23a(struct rtw_adapter *padapter,
- 	struct wlan_bssid_ex *pbss_network = &pmlmepriv->cur_network.network;
- 	u8 *ie = pbss_network->IEs;
- 	u8 *pbuf = mgmt->u.beacon.variable;
-+
- 	len -= offsetof(struct ieee80211_mgmt, u.beacon.variable);
- 	/* SSID */
- 	/* Supported rates */
--- 
-1.9.1
+In the subject line, you should have only: Staging: vt6655:.  You can see 
+the most common subject lines for this file using:
+git log --oneline drivers/staging/vt6655/mac.c
 
+On Fri, 20 Feb 2015, Hatice ERTÜRK wrote:
+
+> Deleted spaces before ','.Because it is prohibited.
+
+Because it is pohibited by the kernel coding style.
+
+julia
+
+> Error found with checkpatch.pl
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/vt6655/mac.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
+> index dd241bb..f3c492f 100644
+> --- a/drivers/staging/vt6655/mac.c
+> +++ b/drivers/staging/vt6655/mac.c
+> @@ -808,7 +808,7 @@ bool MACbPSWakeup(void __iomem *dwIoBase)
+>  
+>  	/* Check if SyncFlushOK */
+>  	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+> -		VNSvInPortB(dwIoBase + MAC_REG_PSCTL , &byOrgValue);
+> +		VNSvInPortB(dwIoBase + MAC_REG_PSCTL, &byOrgValue);
+>  		if (byOrgValue & PSCTL_WAKEDONE)
+>  			break;
+>  	}
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424459389-5989-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+--8323328-1113413578-1424461712=:2054--
 
