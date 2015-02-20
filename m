@@ -1,95 +1,92 @@
-X-GM-THRID: 2367647907840
-X-Received: by 10.140.147.82 with SMTP id 79mr6655047qht.8.1424600929851;
-        Sun, 22 Feb 2015 02:28:49 -0800 (PST)
+X-GM-THRID: 1517610336256
+X-Received: by 10.236.207.230 with SMTP id n66mr11203758yho.30.1424467015448;
+        Fri, 20 Feb 2015 13:16:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.35.83 with SMTP id m77ls1944731qgm.80.gmail; Sun, 22 Feb
- 2015 02:28:49 -0800 (PST)
-X-Received: by 10.236.111.4 with SMTP id v4mr1869135yhg.55.1424600929630;
-        Sun, 22 Feb 2015 02:28:49 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
-        by gmr-mx.google.com with ESMTPS id bx1si2767243pdb.2.2015.02.22.02.28.49
+Received: by 10.182.126.133 with SMTP id my5ls398855obb.13.gmail; Fri, 20 Feb
+ 2015 13:16:55 -0800 (PST)
+X-Received: by 10.182.226.234 with SMTP id rv10mr12157031obc.44.1424467015224;
+        Fri, 20 Feb 2015 13:16:55 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qa0-x234.google.com (mail-qa0-x234.google.com. [2607:f8b0:400d:c00::234])
+        by gmr-mx.google.com with ESMTPS id kt5si5707730qcb.3.2015.02.20.13.16.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 02:28:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
+        Fri, 20 Feb 2015 13:16:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::234 as permitted sender) client-ip=2607:f8b0:400d:c00::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::234 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22f.google.com with SMTP id y10so18376942pdj.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 02:28:49 -0800 (PST)
+Received: by mail-qa0-f52.google.com with SMTP id v10so14309118qac.11
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 13:16:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=w6eB0xmN7Jj0Q/npEgQFq55Zqm3qB85KaOi3h22VG2g=;
-        b=zlLBvfYtOF1K2eqA9tiNhsobmFQZVyIyR/bG+nvgzy53VP6JoBN/QbfMIGq5vVNlj2
-         NX27nAVzStSXJoK7DEDmPUbWdAC5hWw8NGqylGTBtv5HBkxuIRBszYyCxaOwRmKmEzAL
-         4moxKy4SATEnm3/7/WB3NNAJqIoosezkuVJ1Wdixbd15EHeHj8iNS4lS/+TiZO7P/UXg
-         1tEOcTDs0ghhSRotKSEKnnoWD5Ub+s9ggIMP22KxakEarbWgOt3Pn1n5JAQoGb9ApDf8
-         Bxi1CwpEOG6koXbzNmQvYx3pYHkZqN+/y0FHm7PVtAZ6skRDeFhKDagj4l75/+1IsR6R
-         Arfg==
-X-Received: by 10.70.123.70 with SMTP id ly6mr10649603pdb.154.1424600929515;
-        Sun, 22 Feb 2015 02:28:49 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id pa6sm22563772pac.45.2015.02.22.02.28.47
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 02:28:48 -0800 (PST)
-Date: Sun, 22 Feb 2015 15:58:30 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Removed unnecessary {} from conditional statements
-Message-ID: <20150222102830.GA1072@gmail.com>
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=qyNSrpMdmwcZZ1p9ucn8GS9Ckq3QwYVLp1B0Vux2wPs=;
+        b=YHnifduiJlwMbmEaFxKq+AxdOoDb5XvCaL8kftxBZ5EwD0xJqGdL41ZcI4zs0LxoT+
+         gZPAtSPPmB+k3cd+LeEm+xvmDVlqhBkUsJpq7QTNkvbMOy9JgCHdZ4+XPp5g7kwYWIk+
+         jiz7NI2qGnoTULNty0M0MYMhaIDimoVz2GdSQJsIaMDuFMd9dMy4CwK/gL2ePkA5CtKS
+         H16C89x4UWz6OdknnPxyqoxA5zYvOkfQQ54x2ARhUVeKzYPad/F82iFVhAy8KQZ2gai5
+         Cg23Fs2xTaUDobZnAMfEr0FlunPRzpXX84xi6lGg3BoSKhke+PVUl0xWFFooBMpST8Dr
+         B0rA==
+X-Received: by 10.140.92.161 with SMTP id b30mr10384558qge.59.1424467015110;
+        Fri, 20 Feb 2015 13:16:55 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id z75sm12593107qhd.9.2015.02.20.13.16.54
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 13:16:54 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54E7A445.609@gmail.com>
+Date: Fri, 20 Feb 2015 16:16:53 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: aybuke ozdemir <aybuke.147@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Remove unnecessary
+ else after return
+References: <1424466318-9550-1-git-send-email-aybuke.147@gmail.com>
+In-Reply-To: <1424466318-9550-1-git-send-email-aybuke.147@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patch is to remove unnecessary braces from single line
-conditional statements to follow kernel coding conventions.
+On 02/20/15 16:05, aybuke ozdemir wrote:
+> This patch fixes "else is not generally useful after
+> a break or return" checkpatch.pl warning using goto statement in lcommon_cl.c
+> 
+> Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/lclient/lcommon_cl.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/bb_cfg.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+Looks good to me.
 
-diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-index 1e963bf..76d3db1 100644
---- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
-+++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-@@ -554,21 +554,20 @@ static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitm
- 
- static void rtl_addr_delay(struct adapter *adapt, u32 addr, u32 bit_mask, u32 data)
- {
--	if (addr == 0xfe) {
-+	if (addr == 0xfe)
- 		msleep(50);
--	} else if (addr == 0xfd) {
-+	else if (addr == 0xfd)
- 		mdelay(5);
--	} else if (addr == 0xfc) {
-+	else if (addr == 0xfc)
- 		mdelay(1);
--	} else if (addr == 0xfb) {
-+	else if (addr == 0xfb)
- 		udelay(50);
--	} else if (addr == 0xfa) {
-+	else if (addr == 0xfa)
- 		udelay(5);
--	} else if (addr == 0xf9) {
-+	else if (addr == 0xf9)
- 		udelay(1);
--	} else{
-+	else
- 		store_pwrindex_offset(adapt, addr, bit_mask, data);
--	}
- }
- 
- static bool config_bb_with_pgheader(struct adapter *adapt)
--- 
-1.9.1
+Jes
+
+
+> diff --git a/drivers/staging/lustre/lustre/lclient/lcommon_cl.c b/drivers/staging/lustre/lustre/lclient/lcommon_cl.c
+> index 23095bb..b8311c6 100644
+> --- a/drivers/staging/lustre/lustre/lclient/lcommon_cl.c
+> +++ b/drivers/staging/lustre/lustre/lclient/lcommon_cl.c
+> @@ -834,7 +834,7 @@ int ccc_prep_size(const struct lu_env *env, struct cl_object *obj,
+>  				    size_index < cur_index)
+>  					*exceed = 1;
+>  			}
+> -			return result;
+> +			goto out;
+>  		} else {
+>  			/*
+>  			 * region is within kms and, hence, within real file
+> @@ -857,6 +857,7 @@ int ccc_prep_size(const struct lu_env *env, struct cl_object *obj,
+>  		}
+>  	}
+>  	ccc_object_size_unlock(obj);
+> +out:
+>  	return result;
+>  }
+>  
+> 
 
 
