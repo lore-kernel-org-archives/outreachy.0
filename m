@@ -1,47 +1,51 @@
 X-GM-THRID: 1297817272320
-X-Received: by 10.112.199.69 with SMTP id ji5mr1282351lbc.0.1424439495975;
-        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,31250cd5bee3b823,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.25.7 with SMTP id y7mr1250546lbf.21.1424438798010;
+        Fri, 20 Feb 2015 05:26:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.234.102 with SMTP id ud6ls249078lac.26.gmail; Fri, 20 Feb
- 2015 05:38:15 -0800 (PST)
-X-Received: by 10.112.119.141 with SMTP id ku13mr1291310lbb.7.1424439495532;
-        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+Received: by 10.153.6.42 with SMTP id cr10ls298274lad.91.gmail; Fri, 20 Feb
+ 2015 05:26:37 -0800 (PST)
+X-Received: by 10.152.1.5 with SMTP id 5mr1278656lai.4.1424438797628;
+        Fri, 20 Feb 2015 05:26:37 -0800 (PST)
 Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id r6si115556wix.0.2015.02.20.05.38.15
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id ta1si105827wic.1.2015.02.20.05.26.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        Fri, 20 Feb 2015 05:26:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-f181.google.com with SMTP id r20so2962868wiv.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+Received: by mail-wi0-x22e.google.com with SMTP id em10so2949819wid.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:26:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=8DqKz4HvpFL7Mun9mbfaw9gtuv/YGjp9zYsV04Peub8=;
-        b=JgLfP13uqvHBOImoxzY83gsk2ns1l2uPTPt+aLPjnh3abp801cWndjwW1PYdsdqXaM
-         UDWrkABhKbl7vsenS8AMWk3NDJNYIdZnbdoeFpkKLs9mEoJSa2PU6TG/2YkxVWCrhQmL
-         b7seeScunwzRSSmElvae3eiEi1A3tw40Zk93lHtR5tPYmnlUa5z8PoNeNMraVdUyjwNy
-         G8t4fIf+RBszrOckGaE+FMaIMBBlVz89h4kKf56LWi7HDPIUF30J+cDh7DmpmTjT4nTt
-         gnPJAZuEcNzd6GVrkjuim4Z6wKGvosan+7BYBH8jZ8XiHEJ24wUwg+VyVVieckzoNGH1
-         Rgpw==
-X-Received: by 10.180.85.103 with SMTP id g7mr23990867wiz.19.1424439495371;
-        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+        bh=NDOq9j6LUN8cHpYQYbCqVIQgaGE4CjLKbnDwUv3oRKs=;
+        b=QnUgAbfAo5MtnBvsMebbwROyva2/OzfUut2czOZFBtJy7oVCZ8EJfqi2wFEdMiiOnD
+         Fl0+GyrmludjoJbgBDtJSPf6MRCYV79e4SPPK/P9inBjNTp+oqAtHzp/NObfzAZCUSeY
+         ueliWa/d/btt4aYsMldTfFt2dfjFtRGZAQMFjgHz8C+OW+E6XQ7T2yXn2NEJzrEpYBFr
+         Hu78m6g+BTGoPk0if7quYVm/e/aZJPdvJj6BzycQfXIQKE8vDlgBDQ0yNrwbmhtVtn9j
+         n1DbaleLrFiEihmE8QJQKNbXyUqelZ+BlbjeRu3LJNvGt2J3GzGvJb2SiS4Cj1tNkzeB
+         C/Ig==
+X-Received: by 10.194.175.39 with SMTP id bx7mr19642794wjc.22.1424438797529;
+        Fri, 20 Feb 2015 05:26:37 -0800 (PST)
 Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.192.151])
-        by mx.google.com with ESMTPSA id gz3sm2467124wib.1.2015.02.20.05.38.13
+Received: from localhost.localdomain ([78.187.58.202])
+        by mx.google.com with ESMTPSA id di11sm2410699wid.8.2015.02.20.05.26.36
         (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 05:38:14 -0800 (PST)
+        Fri, 20 Feb 2015 05:26:36 -0800 (PST)
 From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 Subject: [PATCH] Staging: octeon: Add blank line
-Date: Fri, 20 Feb 2015 15:38:15 +0200
-Message-Id: <1424439495-15824-1-git-send-email-yeliztaneroglu@gmail.com>
+Date: Fri, 20 Feb 2015 15:26:40 +0200
+Message-Id: <1424438800-13843-1-git-send-email-yeliztaneroglu@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
 
 This patch fixes the checkpatch.pl warning:
@@ -49,37 +53,53 @@ WARNING: "Missing a blank line after declarations"
 
 Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 ---
- drivers/staging/octeon/ethernet-rx.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/staging/octeon/ethernet-rgmii.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
-index a0f4868..0a16832 100644
---- a/drivers/staging/octeon/ethernet-rx.c
-+++ b/drivers/staging/octeon/ethernet-rx.c
-@@ -169,6 +169,7 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
- 		int interface = cvmx_helper_get_interface_num(work->ipprt);
- 		int index = cvmx_helper_get_interface_index_num(work->ipprt);
- 		union cvmx_gmxx_rxx_frm_ctl gmxx_rxx_frm_ctl;
+diff --git a/drivers/staging/octeon/ethernet-rgmii.c b/drivers/staging/octeon/ethernet-rgmii.c
+index 651be7e..7eea5f0 100644
+--- a/drivers/staging/octeon/ethernet-rgmii.c
++++ b/drivers/staging/octeon/ethernet-rgmii.c
+@@ -83,6 +83,7 @@ static void cvm_oct_rgmii_poll(struct net_device *dev)
+ 			int interface = INTERFACE(priv->port);
+ 			int index = INDEX(priv->port);
+ 			union cvmx_gmxx_rxx_int_reg gmxx_rxx_int_reg;
 +
- 		gmxx_rxx_frm_ctl.u64 =
- 		    cvmx_read_csr(CVMX_GMXX_RXX_FRM_CTL(index, interface));
- 		if (gmxx_rxx_frm_ctl.s.pre_chk == 0) {
-@@ -273,6 +274,7 @@ static int cvm_oct_napi_poll(struct napi_struct *napi, int budget)
- 		did_work_request = 0;
- 		if (work == NULL) {
- 			union cvmx_pow_wq_int wq_int;
+ 			gmxx_rxx_int_reg.u64 =
+ 			    cvmx_read_csr(CVMX_GMXX_RXX_INT_REG
+ 					  (index, interface));
+@@ -217,6 +218,7 @@ static irqreturn_t cvm_oct_rgmii_rml_interrupt(int cpl, void *dev_id)
+ 
+ 			/* Read the GMX interrupt status bits */
+ 			union cvmx_gmxx_rxx_int_reg gmx_rx_int_reg;
 +
- 			wq_int.u64 = 0;
- 			wq_int.s.iq_dis = 1 << pow_receive_group;
- 			wq_int.s.wq_int = 1 << pow_receive_group;
-@@ -296,6 +298,7 @@ static int cvm_oct_napi_poll(struct napi_struct *napi, int budget)
- 			union cvmx_pow_wq_int_cntx counts;
- 			int backlog;
- 			int cores_in_use = core_state.baseline_cores - atomic_read(&core_state.available_cores);
+ 			gmx_rx_int_reg.u64 =
+ 			    cvmx_read_csr(CVMX_GMXX_RXX_INT_REG
+ 					  (index, interface));
+@@ -261,6 +263,7 @@ static irqreturn_t cvm_oct_rgmii_rml_interrupt(int cpl, void *dev_id)
+ 
+ 			/* Read the GMX interrupt status bits */
+ 			union cvmx_gmxx_rxx_int_reg gmx_rx_int_reg;
 +
- 			counts.u64 = cvmx_read_csr(CVMX_POW_WQ_INT_CNTX(pow_receive_group));
- 			backlog = counts.s.iq_cnt + counts.s.ds_cnt;
- 			if (backlog > budget * cores_in_use && napi != NULL)
+ 			gmx_rx_int_reg.u64 =
+ 			    cvmx_read_csr(CVMX_GMXX_RXX_INT_REG
+ 					  (index, interface));
+@@ -316,6 +319,7 @@ int cvm_oct_rgmii_open(struct net_device *dev)
+ 	if (!octeon_is_simulation()) {
+ 		if (priv->phydev) {
+ 			int r = phy_read_status(priv->phydev);
++
+ 			if (r == 0 && priv->phydev->link == 0)
+ 				netif_carrier_off(dev);
+ 			cvm_oct_adjust_link(dev);
+@@ -407,6 +411,7 @@ int cvm_oct_rgmii_init(struct net_device *dev)
+ void cvm_oct_rgmii_uninit(struct net_device *dev)
+ {
+ 	struct octeon_ethernet *priv = netdev_priv(dev);
++
+ 	cvm_oct_common_uninit(dev);
+ 
+ 	/*
 -- 
 1.8.3.2
 
