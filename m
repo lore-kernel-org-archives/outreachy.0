@@ -1,159 +1,98 @@
-X-GM-THRID: 6394872359829897216
-X-Received: by 10.46.87.27 with SMTP id l27mr516230ljb.28.1488922247665;
-        Tue, 07 Mar 2017 13:30:47 -0800 (PST)
+X-GM-THRID: 612983898112
+X-Received: by 10.182.142.102 with SMTP id rv6mr9200090obb.47.1424430076272;
+        Fri, 20 Feb 2015 03:01:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.158.134 with SMTP id h128ls23935lfe.8.gmail; Tue, 07 Mar
- 2017 13:30:47 -0800 (PST)
-X-Received: by 10.46.87.27 with SMTP id l27mr516214ljb.28.1488922247089;
-        Tue, 07 Mar 2017 13:30:47 -0800 (PST)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id n128si477940wmf.2.2017.03.07.13.30.47
+Received: by 10.182.20.107 with SMTP id m11ls334734obe.15.gmail; Fri, 20 Feb
+ 2015 03:01:16 -0800 (PST)
+X-Received: by 10.183.10.164 with SMTP id eb4mr8573380obd.48.1424430076104;
+        Fri, 20 Feb 2015 03:01:16 -0800 (PST)
+Return-Path: <preeti@linux.vnet.ibm.com>
+Received: from e8.ny.us.ibm.com (e8.ny.us.ibm.com. [32.97.182.138])
+        by gmr-mx.google.com with ESMTPS id q2si5376898qcn.2.2015.02.20.03.01.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 13:30:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 03:01:16 -0800 (PST)
+Received-SPF: none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) client-ip=32.97.182.138;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id u48so1848421wrc.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 13:30:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=F34HMfqE6QzpzZI/itu4yK6PGM3zDg2hoOyP7wiiU40=;
-        b=qhEqfibV0LGuGez5w5CUTVMY2tIY2+OgUzf+pQZWRGOoxtApAYl7Tj/y8lbuZAtrYW
-         iTExyXJfR25vphKKSQnQs6675FlU2FCUxyp6tN4RHTLUz05sm7XZUujEenKxxv2WH1cT
-         A59+1L2tf2gRrH5tiWgEPW7q0rg5WEUXTETatb/YqQ9RSna1dG05xz34AxK0djN1omzf
-         lp+wk07u1IUlkbUwo75+lDFoRXaPbQyg26v7YNhmMtpPIRP1LbzbXMkchF3kFLa5RDBw
-         10kjwOWnwGCEHbjbHlLndHzxROrttvEgKVmk4VRoU6z1J9DRNbl2Q2Ava3I1pHNlr+qo
-         AW0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=F34HMfqE6QzpzZI/itu4yK6PGM3zDg2hoOyP7wiiU40=;
-        b=BXiTiGjGx5/FlnxJ+K3IyJZh6Jhm5QhAQ9Qx+uwJ0QWvydZWZfoV3WyXeYChbfyrEO
-         x5LVFQmQzCu8jIR95goGPn0T2ijwUSfcdLgf+18IKKONz4+8oZnn3DrCNskELfRTmCGs
-         FmgLR/cMcI+LHdx1Zd6mAC4rvh8xhGQB5nIWCZ6yJm1M5zuF7c0IPusLJVCyGEO21Qd7
-         dmP9Z23hVDAc/l1NkBsqp4fnbyoSkfaB6ldN4A7lwDBRn37MQOz7AsZeAWKyVtB2Dev9
-         mb2IRFrGBrjOdAETQm/B1RNkRJ9+N2Dejdnz9ILAx9og51/l2528YuBEL5Ec2TUevL+q
-         SsQQ==
-X-Gm-Message-State: AMke39kAG20GsNeCjrmn+LLu/qvezFZbkCESKAmg0KjkazSROvzosE/r1I9XhbZ0kJCfkw==
-X-Received: by 10.223.175.81 with SMTP id z75mr2099482wrc.3.1488922246868;
-        Tue, 07 Mar 2017 13:30:46 -0800 (PST)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id 63sm1464992wrh.68.2017.03.07.13.30.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 13:30:45 -0800 (PST)
-Date: Tue, 7 Mar 2017 23:30:44 +0200
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] media:atomisp:pci: Use error codes instead of bool variables
-Message-ID: <20170307213044.GA11835@fireworks>
+       spf=none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) smtp.mail=preeti@linux.vnet.ibm.com
+Received: from /spool/local
+	by e8.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted
+	for <outreachy-kernel@googlegroups.com> from <preeti@linux.vnet.ibm.com>;
+	Fri, 20 Feb 2015 06:01:15 -0500
+Received: from d01dlp03.pok.ibm.com (9.56.250.168)
+	by e8.ny.us.ibm.com (192.168.1.108) with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted;
+	Fri, 20 Feb 2015 06:01:13 -0500
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com [9.57.198.24])
+	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id E2C65C90043
+	for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:52:23 -0500 (EST)
+Received: from d01av03.pok.ibm.com (d01av03.pok.ibm.com [9.56.224.217])
+	by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id t1KB1CCX23396558
+	for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 11:01:12 GMT
+Received: from d01av03.pok.ibm.com (localhost [127.0.0.1])
+	by d01av03.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id t1KB1C7j006930
+	for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 06:01:12 -0500
+Received: from preeti.in.ibm.com ([9.79.205.34])
+	by d01av03.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id t1KB108j005286;
+	Fri, 20 Feb 2015 06:01:11 -0500
+Message-ID: <54E713EC.7050003@linux.vnet.ibm.com>
+Date: Fri, 20 Feb 2015 16:31:00 +0530
+From: Preeti U Murthy <preeti@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Thunderbird/24.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>,
+        outreachy-kernel@googlegroups.com
+CC: gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: media: vino: Replace printk()
+ and dprintk() with dev_dbg()
+References: <1424369068-6070-1-git-send-email-ksenija.stanojevic@gmail.com> <6147170.92TzAG2Bsj@wuerfel> <CAL7P5jKjQPYvyJD2RDSV8rTFxMCaM0zjMNCXy_oEtqYEpWm2GA@mail.gmail.com> <7991599.GNC6NCM7mQ@wuerfel> <96fe9c8a-4cb6-4058-a4be-3740e3e3cf58@googlegroups.com>
+In-Reply-To: <96fe9c8a-4cb6-4058-a4be-3740e3e3cf58@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15022011-0029-0000-0000-0000020D8E3E
 
-Show the reason of failure by using the corresponding error code.
-It helps to better understand why something failed.
+Hi Ksenija
 
----
- .../css2400/runtime/isys/src/virtual_isys.c        | 26 ++++++++++------------
- 1 file changed, 12 insertions(+), 14 deletions(-)
+On 02/20/2015 03:09 PM, Ksenija Stanojevic wrote:
+> Hm, so I should not send this patch at all? 
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/virtual_isys.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/virtual_isys.c
-index f1fc3b5..cf97a9e 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/virtual_isys.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/virtual_isys.c
-@@ -48,7 +48,7 @@ more details.
- #ifndef ISP2401
- 
- #endif
--static bool create_input_system_channel(
-+static input_system_err_t create_input_system_channel(
- 	input_system_cfg_t	*cfg,
- 	bool			metadata,
- 	input_system_channel_t	*channel);
-@@ -198,7 +198,7 @@ ia_css_isys_error_t ia_css_isys_stream_create(
- 		return false;
- 
- 	rc = create_input_system_channel(isys_stream_descr, false, &(isys_stream->channel));
--	if (rc == false) {
-+	if (!rc) {
- 		destroy_input_system_input_port(&isys_stream->input_port);
- 		return false;
- 	}
-@@ -217,7 +217,7 @@ ia_css_isys_error_t ia_css_isys_stream_create(
- 	/* create metadata channel */
- 	if (isys_stream_descr->metadata.enable) {
- 		rc = create_input_system_channel(isys_stream_descr, true, &isys_stream->md_channel);
--		if (rc == false) {
-+		if (!rc) {
- 			destroy_input_system_input_port(&isys_stream->input_port);
- 			destroy_input_system_channel(&isys_stream->channel);
- 			return false;
-@@ -299,12 +299,11 @@ ia_css_isys_error_t ia_css_isys_stream_calculate_cfg(
-  * Private Methods
-  *
-  **************************************************/
--static bool create_input_system_channel(
-+static input_system_err_t create_input_system_channel(
- 	input_system_cfg_t	*cfg,
- 	bool			metadata,
- 	input_system_channel_t	*me)
- {
--	bool rc = true;
- 
- 	me->dma_id = ISYS2401_DMA0_ID;
- 
-@@ -327,15 +326,11 @@ static bool create_input_system_channel(
- 		me->ibuf_ctrl_id = IBUF_CTRL2_ID;
- 		break;
- 	default:
--		rc = false;
--		break;
-+		goto exit;
- 	}
- 
--	if (!rc)
--		return false;
--
- 	if (!acquire_sid(me->stream2mmio_id, &(me->stream2mmio_sid_id))) {
--		return false;
-+		goto exit;
- 	}
- 
- 	if (!acquire_ib_buffer(
-@@ -346,16 +341,19 @@ static bool create_input_system_channel(
- 			cfg->online,
- 			&(me->ib_buffer))) {
- 		release_sid(me->stream2mmio_id, &(me->stream2mmio_sid_id));
--		return false;
-+		goto exit;
- 	}
- 
- 	if (!acquire_dma_channel(me->dma_id, &(me->dma_channel))) {
- 		release_sid(me->stream2mmio_id, &(me->stream2mmio_sid_id));
- 		release_ib_buffer(&(me->ib_buffer));
--		return false;
-+		goto exit;
- 	}
- 
--	return true;
-+	return INPUT_SYSTEM_ERR_NO_ERROR;
-+
-+exit:
-+	return INPUT_SYSTEM_ERR_CREATE_CHANNEL_FAIL;
- }
- 
- static void destroy_input_system_channel(
--- 
-2.7.4
+Yes, please avoid it as it will not make it to mainline.
+
+Regards
+Preeti U Murthy
+> 
+> On Friday, February 20, 2015 at 10:34:55 AM UTC+1, Arnd Bergmann wrote:
+> 
+>     On Friday 20 February 2015 10:21:48 Ksenija Stanojević wrote:
+>     > I based it on staging-next, like in a tutorial
+> 
+>     Ok, I've investigated a bit further now and found that four
+>     staging drivers have been removed in mainline that are still
+>     present in staging-next:
+> 
+>     drivers/staging/line6/ (moved to sound/usb)
+>     drivers/staging/media/parport/
+>     drivers/staging/media/tlg2300/
+>     drivers/staging/media/vino/
+> 
+>     Any patches against these could in theory still make it into
+>     Greg's tree but they would be completely pointless because they
+>     get removed with the next mainline synchronization.
+> 
+>             Arnd
+> 
+> -- 
+> You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com
+> <mailto:outreachy-kernel+unsubscribe@googlegroups.com>.
+> To post to this group, send email to outreachy-kernel@googlegroups.com
+> <mailto:outreachy-kernel@googlegroups.com>.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/96fe9c8a-4cb6-4058-a4be-3740e3e3cf58%40googlegroups.com
+> <https://groups.google.com/d/msgid/outreachy-kernel/96fe9c8a-4cb6-4058-a4be-3740e3e3cf58%40googlegroups.com?utm_medium=email&utm_source=footer>.
+> For more options, visit https://groups.google.com/d/optout.
 
 
