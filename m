@@ -1,184 +1,92 @@
-X-GM-THRID: 6339598163243958272
-X-Received: by 10.157.6.197 with SMTP id 63mr8076865otx.85.1476052720665;
-        Sun, 09 Oct 2016 15:38:40 -0700 (PDT)
+X-GM-THRID: 1391989882880
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,f2463521e8be7771,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.35.135 with SMTP id h7mr1420837lbj.23.1424452481458;
+        Fri, 20 Feb 2015 09:14:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.85 with SMTP id p79ls8566888ota.25.gmail; Sun, 09 Oct
- 2016 15:38:40 -0700 (PDT)
-X-Received: by 10.157.33.7 with SMTP id i7mr6869986otb.96.1476052720219;
-        Sun, 09 Oct 2016 15:38:40 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id 7si7759717par.0.2016.10.09.15.38.40
+Received: by 10.152.191.168 with SMTP id gz8ls281834lac.16.gmail; Fri, 20 Feb
+ 2015 09:14:41 -0800 (PST)
+X-Received: by 10.152.28.137 with SMTP id b9mr1439594lah.8.1424452481012;
+        Fri, 20 Feb 2015 09:14:41 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
+        by gmr-mx.google.com with ESMTPS id i7si152340wif.0.2015.02.20.09.14.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 09 Oct 2016 15:38:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 09:14:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id hh10so5900283pac.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 09 Oct 2016 15:38:40 -0700 (PDT)
+Received: by mail-we0-x235.google.com with SMTP id u56so6765534wes.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 09:14:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=QpNkh+Fqx0+TpgIw+3SwtPul3E820XMdfG0xEn9jx34=;
-        b=ZcOCCv/+8C3l7pGYB+VhO4qKZPgnyGvs1jO57edOvFFPCQIxwiISwtPsC/Uv6y4Gcm
-         Zi3RHfdKCrLYCinQd/mfaB0/+mjBGQNUvANxjNLNJal6SGjXxTM2KczOvgXXWk9DxR73
-         rsXKY79o7fQ0Lw9Uv+A04nU6wxC9ij582PzdVH/D41zD3MfMkzggZUpMTBvIFlMkCJvM
-         Gmn/pYLA31xT9N6HeFddYPiYmqaD5owX4qGwqwevYCpFXvCuohDY8l4agU1F5A2nAYHa
-         jVeWZ0pJ1A7asYIInUTtOzd0cFl9r1KIAdXeIjW6UnDN5IeHjbUXOzBHyArrgEMW4mtE
-         6CoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=QpNkh+Fqx0+TpgIw+3SwtPul3E820XMdfG0xEn9jx34=;
-        b=B/MhU1Za/qrTwCdopXNoEkJfqGkSnOM1+NTn+cpZL7cQvm0Yul2EFk6Ckmro95TKUm
-         2xVEohvEyxgx8Ii28RME3M9tiaMxYfNVl8tygApAiMz3E/0kq7fQBPIq0V1yAQIkmXVL
-         d3ufHeZLh9G8z5n1/T7zzohTCHvY7Rz3F2IXMZU7vucJ67p0uTCVjUyOmFJblNsNG5fJ
-         C4jF2aMzQCzITORZ61P/tm1M/Jsjd/wce1viDhgy0LihKQmmdxdMt9jA0ZozTYdz+aGd
-         COLEXuiC4wW2HwRnzXBWTD+n1FXQiukz3TaRUKsZ6J9rEs0jRVP4T2ieCkrithNoTgCc
-         Kykw==
-X-Gm-Message-State: AA6/9Rlkh5iQ6VgG6pjv8r4uCt1ZZOjNsZr7lm1i9vRSF8Yu7vvAfC5LsaT2neEd7WUL3w==
-X-Received: by 10.66.246.13 with SMTP id xs13mr48826101pac.57.1476052719959;
-        Sun, 09 Oct 2016 15:38:39 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.170.13])
-        by smtp.gmail.com with ESMTPSA id xo5sm39991346pab.13.2016.10.09.15.38.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 09 Oct 2016 15:38:39 -0700 (PDT)
-Date: Mon, 10 Oct 2016 04:08:21 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=ncHu1MzwSsOVqDGFpDjlrGIVh/E5GJ8p8yr1UW+mWf0=;
+        b=YV1sfLN2YzHN0G53iUzNi4joATstPhZa4Y3GMlv2p6M06wBVbjKhYuwh7MAikRJRlR
+         r1Jvq3KJ78HmGEZVVyPaIv4hfTHK5hUTm/vqov3iVuuM1hgNCu748P9y9mRrjNp2FFxD
+         WnX+9gB3hRbUWV/6JEJmYhSRubaOkCjkpOio1NBE1ZgS4o4Sbmgz7c/d0qmUOV/A4Rvd
+         SZG72kWugH/9/GoJepi/RxX8ArFqWc8aCTw7dQnFR2oorPgbfN2Y4k1Y1W7EGr/VzQY7
+         Yn+UnKVnpXLuflgAA+QMUM/nWvKh4I+uFxM/RSfbPoIlB0EuKKpwSSCd1Plgu4ATKbZQ
+         0bnA==
+X-Received: by 10.194.24.103 with SMTP id t7mr20409256wjf.15.1424452480867;
+        Fri, 20 Feb 2015 09:14:40 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id uo6sm42881391wjc.49.2015.02.20.09.14.40
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Feb 2015 09:14:40 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Barry Song <21cnbao@gmail.com>
-Subject: [PATCH] staging: iio: cdc: ad7152: Replace mlock with a local mutex
- lock
-Message-ID: <20161009223821.GA10318@sayli-HP-15-Notebook-PC>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH v2] Staging: rtl8192: Simplifying if-else statement
+Date: Fri, 20 Feb 2015 18:14:30 +0100
+Message-Id: <1424452470-4013-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-mlock is intended to protect only switches between modes.
-Given this driver doesn't support more than one mode (sysfs polled reads
-only), replace mlock with a local mutex lock.
+This patch simplifies the code by not having two identical paths and
+fixes the warning given by checkpatch.pl: "else is not useful after
+a break or return".
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
- drivers/staging/iio/cdc/ad7152.c | 24 +++++++++++++-----------
- 1 file changed, 13 insertions(+), 11 deletions(-)
+v2: - Change commit message and subject.
+    - Furthemore simpify the code by placing identical statements
+      (and not just return) after if-else branch.
 
-diff --git a/drivers/staging/iio/cdc/ad7152.c b/drivers/staging/iio/cdc/ad7152.c
-index 485d0a5..9f5f1ca 100644
---- a/drivers/staging/iio/cdc/ad7152.c
-+++ b/drivers/staging/iio/cdc/ad7152.c
-@@ -89,6 +89,7 @@ struct ad7152_chip_info {
- 	 */
- 	u8	filter_rate_setup;
- 	u8	setup[2];
-+	struct mutex state_lock;	/* protect hardware state */
- };
- 
- static inline ssize_t ad7152_start_calib(struct device *dev,
-@@ -115,10 +116,10 @@ static inline ssize_t ad7152_start_calib(struct device *dev,
- 	else
- 		regval |= AD7152_CONF_CH2EN;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&chip->state_lock);
- 	ret = i2c_smbus_write_byte_data(chip->client, AD7152_REG_CFG, regval);
- 	if (ret < 0) {
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&chip->state_lock);
- 		return ret;
+ drivers/staging/rtl8192u/r819xU_phy.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
+index 0589602..e210664 100644
+--- a/drivers/staging/rtl8192u/r819xU_phy.c
++++ b/drivers/staging/rtl8192u/r819xU_phy.c
+@@ -352,16 +352,14 @@ u32 rtl8192_phy_QueryRFReg(struct net_device *dev, RF90_RADIO_PATH_E eRFPath,
+ 		return 0;
+ 	if (priv->Rf_Mode == RF_OP_By_FW) {
+ 		reg = phy_FwRFSerialRead(dev, eRFPath, reg_addr);
+-		bitshift =  rtl8192_CalculateBitShift(bitmask);
+-		reg = (reg & bitmask) >> bitshift;
+ 		udelay(200);
+-		return reg;
+ 	} else {
+ 		reg = rtl8192_phy_RFSerialRead(dev, eRFPath, reg_addr);
+-		bitshift =  rtl8192_CalculateBitShift(bitmask);
+-		reg = (reg & bitmask) >> bitshift;
+-		return reg;
  	}
- 
-@@ -126,12 +127,12 @@ static inline ssize_t ad7152_start_calib(struct device *dev,
- 		mdelay(20);
- 		ret = i2c_smbus_read_byte_data(chip->client, AD7152_REG_CFG);
- 		if (ret < 0) {
--			mutex_unlock(&indio_dev->mlock);
-+			mutex_unlock(&chip->state_lock);
- 			return ret;
- 		}
- 	} while ((ret == regval) && timeout--);
- 
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&chip->state_lock);
- 	return len;
- }
- static ssize_t ad7152_start_offset_calib(struct device *dev,
-@@ -197,16 +198,16 @@ static ssize_t ad7152_store_filter_rate_setup(struct device *dev,
- 	if (i >= ARRAY_SIZE(ad7152_filter_rate_table))
- 		i = ARRAY_SIZE(ad7152_filter_rate_table) - 1;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&chip->state_lock);
- 	ret = i2c_smbus_write_byte_data(chip->client,
- 			AD7152_REG_CFG2, AD7152_CFG2_OSR(i));
- 	if (ret < 0) {
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&chip->state_lock);
- 		return ret;
- 	}
- 
- 	chip->filter_rate_setup = i;
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&chip->state_lock);
- 
- 	return len;
- }
-@@ -256,7 +257,7 @@ static int ad7152_write_raw(struct iio_dev *indio_dev,
- 	struct ad7152_chip_info *chip = iio_priv(indio_dev);
- 	int ret, i;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&chip->state_lock);
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_CALIBSCALE:
-@@ -314,7 +315,7 @@ static int ad7152_write_raw(struct iio_dev *indio_dev,
- 	}
- 
- out:
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&chip->state_lock);
- 	return ret;
- }
- static int ad7152_read_raw(struct iio_dev *indio_dev,
-@@ -326,7 +327,7 @@ static int ad7152_read_raw(struct iio_dev *indio_dev,
- 	int ret;
- 	u8 regval = 0;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&chip->state_lock);
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_RAW:
-@@ -407,7 +408,7 @@ static int ad7152_read_raw(struct iio_dev *indio_dev,
- 		ret = -EINVAL;
- 	}
- out:
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&chip->state_lock);
- 	return ret;
++	bitshift =  rtl8192_CalculateBitShift(bitmask);
++	reg = (reg & bitmask) >> bitshift;
++	return reg;
++
  }
  
-@@ -489,6 +490,7 @@ static int ad7152_probe(struct i2c_client *client,
- 	i2c_set_clientdata(client, indio_dev);
- 
- 	chip->client = client;
-+	mutex_init(&chip->state_lock);
- 
- 	/* Establish that the iio_dev is a child of the i2c device */
- 	indio_dev->name = id->name;
+ /******************************************************************************
 -- 
-2.7.4
+1.9.1
 
 
