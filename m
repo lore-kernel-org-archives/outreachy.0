@@ -1,165 +1,75 @@
-X-GM-THRID: 6950352611043180544
-X-Received: by 2002:ac8:4e36:: with SMTP id d22mr13983000qtw.102.1618255072141;
-        Mon, 12 Apr 2021 12:17:52 -0700 (PDT)
+X-GM-THRID: 1022972919808
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,af8b4c5ca6ab5cb3
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.160.3 with SMTP id xg3mr1273799lbb.5.1424439374373;
+        Fri, 20 Feb 2015 05:36:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5a88:: with SMTP id c8ls7373477qtc.1.gmail; Mon, 12 Apr
- 2021 12:17:51 -0700 (PDT)
-X-Received: by 2002:ac8:6f59:: with SMTP id n25mr27508056qtv.307.1618255071407;
-        Mon, 12 Apr 2021 12:17:51 -0700 (PDT)
-Received: by 2002:a05:620a:1394:b029:2de:7443:c762 with SMTP id k20-20020a05620a1394b02902de7443c762msqki;
-        Mon, 12 Apr 2021 04:11:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJySVaCMWvRDNwD7FbWCbG8ErhmBRVbW6+q80lhNzBceI+3bQ3kZWQsQu0zPfs6cnPyANimd
-X-Received: by 2002:a05:651c:489:: with SMTP id s9mr14753618ljc.62.1618225883986;
-        Mon, 12 Apr 2021 04:11:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618225883; cv=none;
-        d=google.com; s=arc-20160816;
-        b=reoZ2WpiaFPKzEHyetSH2/KOA7geiW/M/nxUQ2LQexp23RWGKFjuC+9XF5ivXqEXY4
-         6DmBsKeHFQDjhetwD/kuenIkw3c1/zMSpzvzB2Drviey3FDqmTQ37U1Zp3WMrDvkkUHa
-         DK3AQI4c481wJUXN4zNOBAJt+HEpUPzpBpDP42UDcPUrYioHwgI4+w/JwibwoNytE5QC
-         8GRTwcDPNxJ7MKI/5xMb7zjZcLFHHb77mHOnp/ZnM3mByyOz1mcqp/4YSjkNB41YMkrP
-         tv/990KUXDjLwia9kNULW8ZnRxYOnI+5KIXumwMfcYMGDdlsuOJQBxCLLgXiCnOg/HNK
-         1GDA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=94/f7OaCtrXkWvxoas2TmSy+SJbkBjSaL/fiP+8FEsk=;
-        b=ATrPchTDyb0Eld8xhm2AR2C4Us/depbNXQCaoexyCREjdUZ0RuaPlmIxtEJYQPdwes
-         T+tj4NIK/Xli0aSDjZNfNwrpjUvdISJq8Og7PVhsebCRPb310ZcOUkN/S9fjIvbdQKy5
-         nmb2ZncLd9oa3FuN6GWlXRfAz/l+5OYG9SiK9JnM03FnYU4uG6wOGaZjmZMuZoYobfI8
-         g+Ba5rPb7n4VjZ3JTj8Cpmv7hZznnvXV0kNPt9BvX1bbpbeF/M8IoN4phmYXdC83rpCO
-         d0dGdsXPRKSoT0tKHHEY5sbQhc/ESNV/eDGKGFffir/J3gAaBI8eaBsorvNDFtFi54Oi
-         mcRg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 2a01:4f9:c010:4572::81:2 is neither permitted nor denied by best guess record for domain of sakari.ailus@linux.intel.com) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <sakari.ailus@linux.intel.com>
-Received: from hillosipuli.retiisi.eu (hillosipuli.retiisi.eu. [2a01:4f9:c010:4572::81:2])
-        by gmr-mx.google.com with ESMTPS id f7si484260lfa.0.2021.04.12.04.11.23
+Received: by 10.180.90.43 with SMTP id bt11ls98377wib.37.canary; Fri, 20 Feb
+ 2015 05:36:14 -0800 (PST)
+X-Received: by 10.194.201.10 with SMTP id jw10mr1276575wjc.3.1424439373956;
+        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
+        by gmr-mx.google.com with ESMTPS id o3si101231wib.2.2015.02.20.05.36.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 04:11:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a01:4f9:c010:4572::81:2 is neither permitted nor denied by best guess record for domain of sakari.ailus@linux.intel.com) client-ip=2a01:4f9:c010:4572::81:2;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 2a01:4f9:c010:4572::81:2 is neither permitted nor denied by best guess record for domain of sakari.ailus@linux.intel.com) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from lanttu.localdomain (unknown [192.168.2.193])
-	by hillosipuli.retiisi.eu (Postfix) with ESMTP id 05F57634C87;
-	Mon, 12 Apr 2021 14:10:35 +0300 (EEST)
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: linux-media@vger.kernel.org
-Cc: Greg KH <gregkh@linuxfoundation.org>,
-	Mitali Borkar <mitaliborkar810@gmail.com>,
-	bingbu.cao@intel.com,
-	tian.shu.qiu@intel.com,
-	mchehab@kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in,
-	laurent.pinchart@ideasonboard.com
-Subject: [PATCH 1/1] staging: ipu3-imgu: Move the UAPI header from include under include/uapi
-Date: Mon, 12 Apr 2021 14:11:20 +0300
-Message-Id: <20210412111120.31625-1-sakari.ailus@linux.intel.com>
-X-Mailer: git-send-email 2.29.2
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wg0-x22e.google.com with SMTP id a1so13193837wgh.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=O+KLn9coucWc0OgubR+OIrl4x8uRywH70x346L6zwTA=;
+        b=DWpVn2r6FrxB8GDVn8+VaO72weOmSfi2JCxbTnpLtYismXqUwY+CV1nghVSh9+cw8z
+         gE2go209s/rbDTTN5DzaR2sQ4uKF/3vuReJkTu4+ioa/WFeACAtpP4awGqHWKchwnc+a
+         VqhiNud3BctiEQO6yL4HIaH9iAmul51wQUcxXhPfnR+vNjpuXXTQF85/eS2qxmwSTCU2
+         aiOKPCNJJH7EjvmQHSUbRl6AWfFwOjHYN7tA9V/xUsQW5qIy9RZio2q67X54pQKQU7Gq
+         MrRzndey3brI6oMSBy0N05cxAcoiiIlTIR6TN6UxuxdbK4JB3G3Rcg3xooBUVinC4V8u
+         pfGQ==
+X-Received: by 10.194.2.43 with SMTP id 11mr19256478wjr.104.1424439373856;
+        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from localhost.localdomain ([81.214.238.226])
+        by mx.google.com with ESMTPSA id qb8sm36014117wjc.4.2015.02.20.05.36.11
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 05:36:13 -0800 (PST)
+From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH v2 2/2] Staging: lustre: lnet: klnds: o2iblnd: Deleted space prohibited between function name and open parenthesis
+Date: Fri, 20 Feb 2015 15:35:30 +0200
+Message-Id: <1424439330-7371-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-The header defines the user space interface but may be mistaken as
-kernel-only header due to its location. Add "uapi" directory under
-driver's include directory and move the header there.
+WARNING: space prohibited between function name and open parenthesis '('
+checkpatch.pl warning in o2iblnd_modparams.c
 
-Suggested-by: Greg KH <gregkh@linuxfoundation.org>
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 ---
- Documentation/admin-guide/media/ipu3.rst      | 35 ++++++++++---------
- .../media/v4l/pixfmt-meta-intel-ipu3.rst      |  2 +-
- .../ipu3/include/{ => uapi}/intel-ipu3.h      |  0
- drivers/staging/media/ipu3/ipu3-abi.h         |  2 +-
- 4 files changed, 20 insertions(+), 19 deletions(-)
- rename drivers/staging/media/ipu3/include/{ => uapi}/intel-ipu3.h (100%)
+ drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/admin-guide/media/ipu3.rst b/Documentation/admin-guide/media/ipu3.rst
-index f59697c7b374..d6454f637ff4 100644
---- a/Documentation/admin-guide/media/ipu3.rst
-+++ b/Documentation/admin-guide/media/ipu3.rst
-@@ -234,22 +234,23 @@ The IPU3 ImgU pipelines can be configured using the Media Controller, defined at
- Running mode and firmware binary selection
- ------------------------------------------
+diff --git a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c
+index 8036d8b..eedf01a 100644
+--- a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c
++++ b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c
+@@ -177,7 +177,7 @@ kib_tunables_t kiblnd_tunables = {
+ };
  
--ImgU works based on firmware, currently the ImgU firmware support run 2 pipes in
--time-sharing with single input frame data. Each pipe can run at certain mode -
--"VIDEO" or "STILL", "VIDEO" mode is commonly used for video frames capture, and
--"STILL" is used for still frame capture. However, you can also select "VIDEO" to
--capture still frames if you want to capture images with less system load and
--power. For "STILL" mode, ImgU will try to use smaller BDS factor and output
--larger bayer frame for further YUV processing than "VIDEO" mode to get high
--quality images. Besides, "STILL" mode need XNR3 to do noise reduction, hence
--"STILL" mode will need more power and memory bandwidth than "VIDEO" mode. TNR
--will be enabled in "VIDEO" mode and bypassed by "STILL" mode. ImgU is running at
--“VIDEO” mode by default, the user can use v4l2 control V4L2_CID_INTEL_IPU3_MODE
--(currently defined in drivers/staging/media/ipu3/include/intel-ipu3.h) to query
--and set the running mode. For user, there is no difference for buffer queueing
--between the "VIDEO" and "STILL" mode, mandatory input and main output node
--should be enabled and buffers need be queued, the statistics and the view-finder
--queues are optional.
-+ImgU works based on firmware, currently the ImgU firmware support run 2 pipes
-+in time-sharing with single input frame data. Each pipe can run at certain mode
-+- "VIDEO" or "STILL", "VIDEO" mode is commonly used for video frames capture,
-+and "STILL" is used for still frame capture. However, you can also select
-+"VIDEO" to capture still frames if you want to capture images with less system
-+load and power. For "STILL" mode, ImgU will try to use smaller BDS factor and
-+output larger bayer frame for further YUV processing than "VIDEO" mode to get
-+high quality images. Besides, "STILL" mode need XNR3 to do noise reduction,
-+hence "STILL" mode will need more power and memory bandwidth than "VIDEO" mode.
-+TNR will be enabled in "VIDEO" mode and bypassed by "STILL" mode. ImgU is
-+running at “VIDEO” mode by default, the user can use v4l2 control
-+V4L2_CID_INTEL_IPU3_MODE (currently defined in
-+drivers/staging/media/ipu3/include/uapi/intel-ipu3.h) to query and set the
-+running mode. For user, there is no difference for buffer queueing between the
-+"VIDEO" and "STILL" mode, mandatory input and main output node should be
-+enabled and buffers need be queued, the statistics and the view-finder queues
-+are optional.
- 
- The firmware binary will be selected according to current running mode, such log
- "using binary if_to_osys_striped " or "using binary if_to_osys_primary_striped"
-@@ -586,7 +587,7 @@ preserved.
- References
- ==========
- 
--.. [#f5] drivers/staging/media/ipu3/include/intel-ipu3.h
-+.. [#f5] drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
- 
- .. [#f1] https://github.com/intel/nvt
- 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-meta-intel-ipu3.rst b/Documentation/userspace-api/media/v4l/pixfmt-meta-intel-ipu3.rst
-index 5f33d35532ef..84d81dd7a7b5 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-meta-intel-ipu3.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-meta-intel-ipu3.rst
-@@ -78,4 +78,4 @@ hardware and algorithm details.
- Intel IPU3 ImgU uAPI data types
- ===============================
- 
--.. kernel-doc:: drivers/staging/media/ipu3/include/intel-ipu3.h
-+.. kernel-doc:: drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
-diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
-similarity index 100%
-rename from drivers/staging/media/ipu3/include/intel-ipu3.h
-rename to drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
-diff --git a/drivers/staging/media/ipu3/ipu3-abi.h b/drivers/staging/media/ipu3/ipu3-abi.h
-index e1185602c7fd..c76935b436d7 100644
---- a/drivers/staging/media/ipu3/ipu3-abi.h
-+++ b/drivers/staging/media/ipu3/ipu3-abi.h
-@@ -4,7 +4,7 @@
- #ifndef __IPU3_ABI_H
- #define __IPU3_ABI_H
- 
--#include "include/intel-ipu3.h"
-+#include "include/uapi/intel-ipu3.h"
- 
- /******************* IMGU Hardware information *******************/
- 
+ int
+-kiblnd_tunables_init (void)
++kiblnd_tunables_init(void)
+ {
+ 	if (kiblnd_translate_mtu(*kiblnd_tunables.kib_ib_mtu) < 0) {
+ 		CERROR("Invalid ib_mtu %d, expected 256/512/1024/2048/4096\n",
 -- 
-2.29.2
+1.8.3.2
 
 
