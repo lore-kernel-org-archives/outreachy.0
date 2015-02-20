@@ -1,87 +1,75 @@
 X-GM-THRID: 1485909786624
-X-Received: by 10.50.30.134 with SMTP id s6mr163521igh.2.1424461161039;
-        Fri, 20 Feb 2015 11:39:21 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,c1b86a222015cee5,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.174.36 with SMTP id bp4mr1483248lbc.15.1424461080699;
+        Fri, 20 Feb 2015 11:38:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.178 with SMTP id g18ls243925igt.41.gmail; Fri, 20 Feb
- 2015 11:39:20 -0800 (PST)
-X-Received: by 10.43.51.198 with SMTP id vj6mr119992icb.34.1424461160845;
-        Fri, 20 Feb 2015 11:39:20 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qc0-x231.google.com (mail-qc0-x231.google.com. [2607:f8b0:400d:c01::231])
-        by gmr-mx.google.com with ESMTPS id ba9si5319314qcb.0.2015.02.20.11.39.20
+Received: by 10.152.234.232 with SMTP id uh8ls317822lac.82.gmail; Fri, 20 Feb
+ 2015 11:38:00 -0800 (PST)
+X-Received: by 10.112.50.106 with SMTP id b10mr1505194lbo.8.1424461080187;
+        Fri, 20 Feb 2015 11:38:00 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id r6si179713wix.0.2015.02.20.11.38.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 11:39:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::231 as permitted sender) client-ip=2607:f8b0:400d:c01::231;
+        Fri, 20 Feb 2015 11:38:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::231 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qc0-x231.google.com with SMTP id s11so2460194qcv.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 11:39:20 -0800 (PST)
+Received: by mail-wi0-x232.google.com with SMTP id em10so5140562wid.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 11:38:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:message-id:date:user-agent:mime-version:to:subject:references
-         :in-reply-to:content-type:content-transfer-encoding;
-        bh=9RoiruxV3QNsBaDol/svtdiEiyJxmxulEEC4aWF92p0=;
-        b=WgDVNLqHCQHPi1ITkkFObDsgyZBDM36EzZtxcDQzR0aNeb5hdwi4KAihzCRT5AB21v
-         v+/YRgm7XGd4/RwoRXTb7O1imGDAqhr/KlT+KOfrnIIsWOopxw4/B7+JYaRZh/EjYADf
-         nzsS8zoLZiSKXu7/d3HYV3idOyKvQ48BhuYwo+FN+pUtEHDJnydRqaImQdxq99B9MNXW
-         ewQ2ix4uB46hvtQQUxaKo9TDIRwKV+jOx7TS2tQnKM2n844yaj0SHoOl0WqEwpMqOvga
-         s2Q2dViDLXaM50g0BgsxuB3u0Qhk6KeTsfhaEBd+pecJ3ZEoFUVNjoO6ibyJwls2qdES
-         I4sQ==
-X-Received: by 10.140.32.5 with SMTP id g5mr9778876qgg.83.1424461160754;
-        Fri, 20 Feb 2015 11:39:20 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
-        by mx.google.com with ESMTPSA id 7sm12443329qhv.44.2015.02.20.11.39.18
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 11:39:19 -0800 (PST)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <54E78D64.9030201@gmail.com>
-Date: Fri, 20 Feb 2015 14:39:16 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
-MIME-Version: 1.0
-To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, 
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: ieee80211: Replace
- <asm/errno.h> with <linux/errno.h>
-References: <1424461072-6219-1-git-send-email-ksenija.stanojevic@gmail.com>
-In-Reply-To: <1424461072-6219-1-git-send-email-ksenija.stanojevic@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+        h=from:to:cc:subject:date:message-id;
+        bh=m5Hy0LQdRnYeSnK5y1BQCjhgqNb9aPLGS8ezwuwKQMw=;
+        b=SLu8qsxLpeqlrXKub+6bogi/tOSh6zmGXNfhJHJgra1m14zxMkiZJCX7kSWts/Z4Yn
+         z/IKyT9BKXHzfxqGp8S1PIUoX6fUwg8C5ZOqzXZGiYSWflJY9DrLq85UDS78P/xTmid+
+         eIz2jb9Rurixjo47Ys/n6t3v815UB60ainmklGyYczuuGeTzWQQROOq781BgCaBT1+2v
+         aD0m8KrFEUQv2qIWeX/lYyQ/a8w91RajNxw+U8xVz45kXHLBy1f2rAbE0MEV6pfIKn73
+         hG6rJVAw8blJslX2VwA+LyvokAuo4uZ6AWt/qpt6WDHRpjPgGirQuLhcnR2Jt25OjKJm
+         RWhg==
+X-Received: by 10.180.82.40 with SMTP id f8mr136936wiy.60.1424461080098;
+        Fri, 20 Feb 2015 11:38:00 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id kj8sm43411665wjc.29.2015.02.20.11.37.59
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Feb 2015 11:37:59 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: rtl8192u: ieee80211: Replace <asm/errno.h> with <linux/errno.h>
+Date: Fri, 20 Feb 2015 20:37:52 +0100
+Message-Id: <1424461072-6219-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On 02/20/15 14:37, Ksenija Stanojevic wrote:
-> This patch fixes the following checkpatch.pl warning:
-> Use #include <linux/errno.h> instead of <asm/errno.h>
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-> ---
->  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-> index 80dfa07..1fb6d85 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-> @@ -16,7 +16,7 @@
->  #include <linux/init.h>
->  #include <linux/slab.h>
->  #include <linux/string.h>
-> -#include <asm/errno.h>
-> +#include <linux/errno.h>
->  
->  #include "ieee80211.h"
->  
-> 
+This patch fixes the following checkpatch.pl warning:
+Use #include <linux/errno.h> instead of <asm/errno.h>
 
-Patch is correct, but you should write a commit message instead of just
-pasting in the checkpatch message.
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Simply saying - "asm/errno.h should not be included directly" would suffice.
-
-Cheers,
-Jes
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+index 80dfa07..1fb6d85 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+@@ -16,7 +16,7 @@
+ #include <linux/init.h>
+ #include <linux/slab.h>
+ #include <linux/string.h>
+-#include <asm/errno.h>
++#include <linux/errno.h>
+ 
+ #include "ieee80211.h"
+ 
+-- 
+1.9.1
 
 
