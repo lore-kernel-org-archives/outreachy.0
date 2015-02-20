@@ -1,137 +1,98 @@
 X-GM-THRID: 1543619215360
-X-Received: by 10.194.178.234 with SMTP id db10mr441211wjc.2.1424551045259;
-        Sat, 21 Feb 2015 12:37:25 -0800 (PST)
+X-Received: by 10.152.26.74 with SMTP id j10mr9972lag.10.1424472322652;
+        Fri, 20 Feb 2015 14:45:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.103.166 with SMTP id fx6ls305035wib.20.canary; Sat, 21 Feb
- 2015 12:37:24 -0800 (PST)
-X-Received: by 10.194.178.234 with SMTP id db10mr441210wjc.2.1424551044992;
-        Sat, 21 Feb 2015 12:37:24 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x242.google.com (mail-wi0-x242.google.com. [2a00:1450:400c:c05::242])
-        by gmr-mx.google.com with ESMTPS id ta1si366219wic.1.2015.02.21.12.37.24
+Received: by 10.180.74.229 with SMTP id x5ls184397wiv.8.gmail; Fri, 20 Feb
+ 2015 14:45:21 -0800 (PST)
+X-Received: by 10.180.91.76 with SMTP id cc12mr39152wib.7.1424472321370;
+        Fri, 20 Feb 2015 14:45:21 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i7si203856wif.0.2015.02.20.14.45.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 12:37:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::242 as permitted sender) client-ip=2a00:1450:400c:c05::242;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 14:45:21 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::242 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x242.google.com with SMTP id hi2so4130829wib.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 12:37:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZICo0UKC6XkOLI5SzMfanlG1jh1MJl/Puepl/dizyWQ=;
-        b=gHVTorYs31ztBw1enQRH4YSOSgGIgR6zrkW6xVVRP1P1YpASJXOq6Zrl3ZcQ82AYo1
-         3HLdWvdPfoCtuDKAGobnXEOuSYvF/Kpwx42GfPw8fidCpf6xLCMPhLF1pcQQtkZaXfb/
-         7D8MmBhlIoXsz83iwrQro5NEd2AM37zT1W3CFg6o8GaoXP60JfvGdySV7Th6z+eTd5sP
-         Zjza7htEHv81qWDILghkA115HY+XLGQWCICc6Wp+HuK59UTMwO1b0onrx99JgRpTa6Wg
-         pdwJhzsBXz1R0dfEBfB6KIl47EFxuHUFqxKRI3PsIW2TOmJPeKP5/I5qRbCCr2sjh7E7
-         5ugw==
-X-Received: by 10.194.173.138 with SMTP id bk10mr7431672wjc.112.1424551044913;
-        Sat, 21 Feb 2015 12:37:24 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id a1sm48062274wjs.40.2015.02.21.12.37.23
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 12:37:24 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: vt6655: changed C99 // comments
-Date: Sat, 21 Feb 2015 22:37:16 +0200
-Message-Id: <1424551036-22449-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,617,1418079600"; 
+   d="scan'208";a="100807096"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2015 23:45:20 +0100
+Date: Fri, 20 Feb 2015 23:45:19 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: vt6655: changed C99 //
+ comments
+In-Reply-To: <1424472008-9544-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502202344060.2054@localhost6.localdomain6>
+References: <1424472008-9544-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-901455144-1424472320=:2054"
 
-// erased and replace it with /* */ used.
-Error found with checkpatch.pl
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/staging/vt6655/mib.c | 46 ++++++++++++++++++++++----------------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
+--8323328-901455144-1424472320=:2054
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/vt6655/mib.c b/drivers/staging/vt6655/mib.c
-index d2f351d..d55c762 100644
---- a/drivers/staging/vt6655/mib.c
-+++ b/drivers/staging/vt6655/mib.c
-@@ -63,51 +63,51 @@ void STAvUpdateIsrStatCounter(PSStatCounter pStatistic, unsigned long dwIsr)
- 	/**********************/
- 	/* ABNORMAL interrupt */
- 	/**********************/
--	// not any IMR bit invoke irq
-+	/* not any IMR bit invoke irq */
- 
- 	if (dwIsr == 0) {
- 		pStatistic->ISRStat.dwIsrUnknown++;
- 		return;
- 	}
- 
--//Added by Kyle
--	if (dwIsr & ISR_TXDMA0)               // ISR, bit0
--		pStatistic->ISRStat.dwIsrTx0OK++;             // TXDMA0 successful
-+/* Added by Kyle */
-+	if (dwIsr & ISR_TXDMA0)               /* ISR, bit0 */
-+		pStatistic->ISRStat.dwIsrTx0OK++;             /* TXDMA0 successful */
- 
--	if (dwIsr & ISR_AC0DMA)               // ISR, bit1
--		pStatistic->ISRStat.dwIsrAC0TxOK++;           // AC0DMA successful
-+	if (dwIsr & ISR_AC0DMA)               /* ISR, bit1 */
-+		pStatistic->ISRStat.dwIsrAC0TxOK++;           /* AC0DMA successful */
- 
--	if (dwIsr & ISR_BNTX)                 // ISR, bit2
--		pStatistic->ISRStat.dwIsrBeaconTxOK++;        // BeaconTx successful
-+	if (dwIsr & ISR_BNTX)                 /* ISR, bit2 */
-+		pStatistic->ISRStat.dwIsrBeaconTxOK++;        /* BeaconTx successful */
- 
--	if (dwIsr & ISR_RXDMA0)               // ISR, bit3
--		pStatistic->ISRStat.dwIsrRx0OK++;             // Rx0 successful
-+	if (dwIsr & ISR_RXDMA0)               /* ISR, bit3 */
-+		pStatistic->ISRStat.dwIsrRx0OK++;             /* Rx0 successful */
- 
--	if (dwIsr & ISR_TBTT)                 // ISR, bit4
--		pStatistic->ISRStat.dwIsrTBTTInt++;           // TBTT successful
-+	if (dwIsr & ISR_TBTT)                 /* ISR, bit4 */
-+		pStatistic->ISRStat.dwIsrTBTTInt++;           /* TBTT successful */
- 
--	if (dwIsr & ISR_SOFTTIMER)            // ISR, bit6
-+	if (dwIsr & ISR_SOFTTIMER)            /* ISR, bit6 */
- 		pStatistic->ISRStat.dwIsrSTIMERInt++;
- 
--	if (dwIsr & ISR_WATCHDOG)             // ISR, bit7
-+	if (dwIsr & ISR_WATCHDOG)             /* ISR, bit7 */
- 		pStatistic->ISRStat.dwIsrWatchDog++;
- 
--	if (dwIsr & ISR_FETALERR)             // ISR, bit8
-+	if (dwIsr & ISR_FETALERR)             /* ISR, bit8 */
- 		pStatistic->ISRStat.dwIsrUnrecoverableError++;
- 
--	if (dwIsr & ISR_SOFTINT)              // ISR, bit9
--		pStatistic->ISRStat.dwIsrSoftInterrupt++;     // software interrupt
-+	if (dwIsr & ISR_SOFTINT)              /* ISR, bit9 */
-+		pStatistic->ISRStat.dwIsrSoftInterrupt++;     /* software interrupt */
- 
--	if (dwIsr & ISR_MIBNEARFULL)          // ISR, bit10
-+	if (dwIsr & ISR_MIBNEARFULL)          /* ISR, bit10 */
- 		pStatistic->ISRStat.dwIsrMIBNearfull++;
- 
--	if (dwIsr & ISR_RXNOBUF)              // ISR, bit11
--		pStatistic->ISRStat.dwIsrRxNoBuf++;           // Rx No Buff
-+	if (dwIsr & ISR_RXNOBUF)              /* ISR, bit11 */
-+		pStatistic->ISRStat.dwIsrRxNoBuf++;           /* Rx No Buff */
- 
--	if (dwIsr & ISR_RXDMA1)               // ISR, bit12
--		pStatistic->ISRStat.dwIsrRx1OK++;             // Rx1 successful
-+	if (dwIsr & ISR_RXDMA1)               /* ISR, bit12 */
-+		pStatistic->ISRStat.dwIsrRx1OK++;             /* Rx1 successful */
- 
--	if (dwIsr & ISR_SOFTTIMER1)           // ISR, bit21
-+	if (dwIsr & ISR_SOFTTIMER1)           /* ISR, bit21 */
- 		pStatistic->ISRStat.dwIsrSTIMER1Int++;
- }
- 
--- 
-1.9.1
+On Sat, 21 Feb 2015, Hatice ERTÜRK wrote:
 
+> // erased and replace it with /**/ used.
+> Error found with checkpatch.pl
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+> v2:
+> *Some /**/ deleted.A row in a single comment line was made.Added a space between the ; and the /*.
+
+Looks better.  The * at the beginning of the line does not seem necessary.  
+When you put punctuation (comma, period, etc) put at least one space after 
+it.
+
+You don't have to send a new version for these issues, because the text is 
+below the line.  Just remember for next time.
+
+julia
+
+> ---
+>  drivers/staging/vt6655/rf.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+> index 0b58927..d5fae3e 100644
+> --- a/drivers/staging/vt6655/rf.c
+> +++ b/drivers/staging/vt6655/rf.c
+> @@ -438,13 +438,13 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+>  	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
+>  
+>  	/* Calibration */
+> -	MACvTimer0MicroSDelay(dwIoBase, 150);/* 150us */
+> +	MACvTimer0MicroSDelay(dwIoBase, 150); /* 150us */
+>  	/* TXDCOC:active, RCK:disable */
+>  	bResult &= IFRFbWriteEmbedded(priv, (0x9ABA8F00+(BY_AL7230_REG_LEN<<3)+IFREGCTL_REGW));
+> -	MACvTimer0MicroSDelay(dwIoBase, 30);/* 30us */
+> +	MACvTimer0MicroSDelay(dwIoBase, 30); /* 30us */
+>  	/* TXDCOC:disable, RCK:active */
+>  	bResult &= IFRFbWriteEmbedded(priv, (0x3ABA8F00+(BY_AL7230_REG_LEN<<3)+IFREGCTL_REGW));
+> -	MACvTimer0MicroSDelay(dwIoBase, 30);/* 30us */
+> +	MACvTimer0MicroSDelay(dwIoBase, 30); /* 30us */
+>  	/* TXDCOC:disable, RCK:disable */
+>  	bResult &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[CB_AL7230_INIT_SEQ-1]);
+>  
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424472008-9544-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+--8323328-901455144-1424472320=:2054--
 
