@@ -1,69 +1,81 @@
-X-GM-THRID: 6203507432884273152
-X-Received: by 10.67.3.137 with SMTP id bw9mr9533318pad.4.1444366628140;
-        Thu, 08 Oct 2015 21:57:08 -0700 (PDT)
+X-GM-THRID: 1080518770688
+X-Received: by 10.112.160.3 with SMTP id xg3mr1118071lbb.5.1424425035700;
+        Fri, 20 Feb 2015 01:37:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.75.166 with SMTP id d6ls689839obw.85.gmail; Thu, 08 Oct
- 2015 21:57:07 -0700 (PDT)
-X-Received: by 10.182.153.169 with SMTP id vh9mr9635854obb.18.1444366627647;
-        Thu, 08 Oct 2015 21:57:07 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id uv4si6352790pac.0.2015.10.08.21.57.07
+Received: by 10.180.240.202 with SMTP id wc10ls57792wic.10.canary; Fri, 20 Feb
+ 2015 01:37:15 -0800 (PST)
+X-Received: by 10.194.201.10 with SMTP id jw10mr1119211wjc.3.1424425035408;
+        Fri, 20 Feb 2015 01:37:15 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id ew5si69664wid.1.2015.02.20.01.37.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 21:57:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 01:37:15 -0800 (PST)
+Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id lk4so75177896pab.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 21:57:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ybH7sPlRCrLtQZ7CN4GeVOhVZNY9KkS+KkwNAfN3L3Y=;
-        b=rIwJqnyDFldLfMpyqcFtB7rvILlSL9Ina68WF9KVzyJMkccpvXNfpm9/uzBVU5QGmW
-         kqRS1hLPAyCAKUKG/4y6KqnUn0c1oGezVEPNaDwJwiZD8yZv98HmKhTCaDmKXjWk6gll
-         A+R/iZnLIeF54ahReVrMqmR0F3AJpHez1v/ugODL8dKQTbaL1uGKJR3oDu/80yIJ90GT
-         IhATXJVzREnMnxgmfVn8dQE7fsWTeVI1i+3ShJcZ5YqXh9RPgYFM4ltMVyIAG0MDXzHY
-         DwDHDSusCSOSznfe46j/Qf+PAafWd6+Kn7CodePp0vZe05kYUl0tyFJ/GjeBprNP/46N
-         2gWw==
-X-Received: by 10.67.7.137 with SMTP id dc9mr12746616pad.116.1444366627522;
-        Thu, 08 Oct 2015 21:57:07 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from deepa-ubuntu ([2601:647:4700:de30:8067:188f:6c60:7880])
-        by smtp.gmail.com with ESMTPSA id d13sm48683727pbu.17.2015.10.08.21.57.06
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Thu, 08 Oct 2015 21:57:07 -0700 (PDT)
-Date: Thu, 8 Oct 2015 21:57:05 -0700
-From: Deepa Dinamani <deepa.kernel@gmail.com>
+       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue003) with ESMTPSA (Nemesis) id 0Mcixh-1Y6w9b3Ymn-00HytN; Fri, 20 Feb
+ 2015 10:37:14 +0100
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/2] staging: skein: fix checkpatch warnings
-Message-ID: <cover.1444366020.git.deepa.kernel@gmail.com>
+Cc: Vaishali Thakkar <vthakkar1994@gmail.com>
+Subject: Re: [Outreachy kernel] [RESEND PATCH v3 1/2] Staging: rtl8188eu: Use put_unaligned_le16
+Date: Fri, 20 Feb 2015 10:37:14 +0100
+Message-ID: <7195822.xgoSRFZ0fm@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <a4e97da77ddf7fbcf2908d9ec7f18c9b32d7ad4e.1424421580.git.vthakkar1994@gmail.com>
+References: <cover.1424421580.git.vthakkar1994@gmail.com> <a4e97da77ddf7fbcf2908d9ec7f18c9b32d7ad4e.1424421580.git.vthakkar1994@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID:  V03:K0:sAFVI4K6xO7mqAzXWJRPwhmrXwbZzymcDJODwjD533o1HLn1H8y
+ dV8Wn6Ka2vvi46MDaz/wOUP2V1Xs8t7HonJCTV+T+nlR7DiproG4IVdc0pXpcmJl0W1yHRf
+ ODGwvx4kxVsDK+ZqsozHE9vWo8Qz94MFjRoSGyp0m6gVukCfiq2ViirHQkiFeKcvJLH7wap
+ 2mw0iJU2wdDqxcgj64ZEQ==
+X-UI-Out-Filterresults: notjunk:1;
 
-This patch series fixes several checkpatch warnings and errors.
+On Friday 20 February 2015 14:18:37 Vaishali Thakkar wrote:
+> Using byte ordering functions and then memcpy() is risky and
+> prone to hide errors which are hard to track down. So, this
+> patch introduces the use of function put_unaligned_le16 which
+> makes the code clear. Here, use of variable tim_bitmap_le
+> and variable itself is removed. Also, to be compatible with the
+> changes header file is added too.
+> 
+> Coccinelle is used to do this change and semantic patch used for
+> this is as follows:
+> 
+> @a@
+> typedef __le16;
+> __le16 e16;
+> identifier tmp;
+> expression ptr;
+> expression y,e;
+> type T;
+> @@
+> 
+> - tmp = cpu_to_le16(y);
+> 
+> <+... when != tmp
+> (
+> - memcpy(ptr, (T)&tmp, \(2\|sizeof(__le16)\|sizeof(e16)\));
+> + put_unaligned_le16(y,ptr);
+> |
+> - memcpy(ptr, (T)&tmp, ...);
+> + put_unaligned_le16(y,ptr);
+> )
+> ...+>
+> ? tmp = e
+> 
+> @@ type T; identifier a.tmp; @@
+> 
+> - T tmp;
+> ...when != tmp
+> 
+> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+> 
 
-Since the previous series, the macro indent style of skein_block
-is made uniform.
-
-Deepa Dinamani (2):
-  staging: skein: fix block comment style
-  staging: skein: remove extra indentation
-
- drivers/staging/skein/skein_api.c   |  47 +++--
- drivers/staging/skein/skein_base.c  |  18 +-
- drivers/staging/skein/skein_block.c | 378 ++++++++++++++++++------------------
- 3 files changed, 224 insertions(+), 219 deletions(-)
-
--- 
-1.9.1
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
