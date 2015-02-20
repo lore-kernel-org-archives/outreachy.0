@@ -1,103 +1,98 @@
-X-GM-THRID: 6670855650542616576
-X-Received: by 2002:ac8:2e75:: with SMTP id s50mr3371076qta.375.1553179614244;
-        Thu, 21 Mar 2019 07:46:54 -0700 (PDT)
+X-GM-THRID: 1450652467200
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,162f25e773223d22
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.68.237.8 with SMTP id uy8mr10779447pbc.7.1424461025811;
+        Fri, 20 Feb 2015 11:37:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:58c4:: with SMTP id m187ls2554963qkb.7.gmail; Thu, 21
- Mar 2019 07:46:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVrRe2+3SQWxZXvcVqo0Xyt+HPqzV0wESdojcLyiX3HyfsbfbyZSXFolq75oH2jv0xHzgf
-X-Received: by 2002:a05:620a:9:: with SMTP id j9mr2726830qki.45.1553179613608;
-        Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553179613; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ymbqe3yt3I4jgZ2ccMsEXKIOH9HXSevH8eVMra2uIaItChjNgF8lRxjkXDlnWDlpqO
-         DeV7A8IreTpa+ZL9xzHt+VI5rcfJdwbkgiwfTR4OMYD9hMLvx3eq6tuWO+tk5UJiTChz
-         dER7EMRWGD0hK7TWWmJoLwAiNfxrA6CB+NAZ1a5SDmaqYwNDF2ncg0OPz+K7gIc98+rK
-         GKN+NSVn7Ds3z3pcwjB1J1vmdzGpdCWXiTVUniT+r5SNVJ2V7oHDuwnzByF9+ok82ZeN
-         Q3Dp8KOUgqFwPEV7w7yFrNh9MtGtOVLKElNf9CU5XfNCm9UGxp8fsJrr4/rcMgR40U1O
-         rQIw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/hTUQrIi1jucBYFDVpMDNyl0WP2rCy4RLAd9fdCHwjc=;
-        b=nvGjaeb/blM58jl9ZI50v8sRjAVRFXxYshP1gPW4OVs1NddYXCsznyZygRMockHLWJ
-         6zS5HcM8yxkWJjg1rOeeUAjL2E6I7ORlO+CrPyMmHxjH7aaOqN2zNJVXy6OVaRPIgGg2
-         /RLg45J6U/Q4KA+wy7dNILyCm5i11sPQPNcjhztBrq0h0lmjyVkoDpQUvv5UJNsid3jw
-         ef6LgXa9nj++O28TntPPdPRrav/NTKl2yWwKsxdLudIxB3IMQYC6JeE7arNFjVl40hoJ
-         QLXs1LoR2tsPHvDjzvTMy/Lmu+vWqQ3mWO74A81lIUeajquen+RtUjy1LL9mcTLtQuV4
-         c9MA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Me7MLlZB;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id t17si508976qtq.0.2019.03.21.07.46.53
+Received: by 10.140.82.83 with SMTP id g77ls1381534qgd.99.gmail; Fri, 20 Feb
+ 2015 11:37:05 -0800 (PST)
+X-Received: by 10.236.203.161 with SMTP id f21mr11071264yho.49.1424461025651;
+        Fri, 20 Feb 2015 11:37:05 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
+        by gmr-mx.google.com with ESMTPS id kt5si5675282qcb.3.2015.02.20.11.37.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 11:37:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Me7MLlZB;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42d.google.com with SMTP id 9so4191710pfj.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qg0-x22b.google.com with SMTP id i50so15810796qgf.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 11:37:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=/hTUQrIi1jucBYFDVpMDNyl0WP2rCy4RLAd9fdCHwjc=;
-        b=Me7MLlZBjDFI/Su0t3jtQV5hCwtBpq51fziFXh2IlPUBtrY8DmxyY6aXfRt8rYN2Si
-         TkYzSlNMQ8U6MDtzv5t2FSFqmxGCtvmIHSIZ7ltIS3IrneJ/6IcCmNgBJLQPZql77U4A
-         3OtSsxlfRPOW33/5P3xkDfMZ4rer9p/NAbd5H+oUUXS4EwpbJVcDhgcPJAJkg0L36S/H
-         TonFZ/dSuE/qB6ebZL4GD2tEnbD1e7fSukeGfMbm42PqcgSoO49VhQfAiff96BTGqtP0
-         gSMdo66T8i+iWG9OO4O6EH+Xl00H+5kcUQReWtJ/y7dfFAN5Js6gL/OVkMMJHX1vaM/g
-         1r5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/hTUQrIi1jucBYFDVpMDNyl0WP2rCy4RLAd9fdCHwjc=;
-        b=Xear8EwNMXyhff/PpvTdxjQXj8IZE5ZObM0qFiADbthKRxt4Yz46P9Tzgh72lAyrca
-         aZieuYQ/wA5/h4jZ1v30tG39Rp/F3AtnTDndks+VhJcV/x2hqc2ogC3kCenXzltb0dT4
-         WS2PHAZe5g7oTqDtRdJ9ekOsOXYtv11nxGhYxm39w1aTQOr8UyaUfifuQ5DxcGJy9Iv4
-         HqGGms905cJuahwsPD9lRsJWmQ0CrYOaIs+upa2Gc1IWPgXFXEmczHSm+aGNc/pxBhy9
-         u7q++9t5LakdyKoHZvZsFiniul9qmYUY9u8cfQsbxD7cxWecjQ1lDMsNEf5TpL0fpCbS
-         D9Ww==
-X-Gm-Message-State: APjAAAVEW86ncIkw/lBil7PfvWiohhuuXDMULkUuybZv3LKPVw1J/RtF
-	IhlQ5+hP2GwwJbUZvX0hX0VwtJaS
-X-Received: by 2002:a17:902:10d:: with SMTP id 13mr4045884plb.230.1553179613008;
-        Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.235.30])
-        by smtp.gmail.com with ESMTPSA id k83sm15820782pfj.178.2019.03.21.07.46.50
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 07:46:51 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH 1/2] [Outreachy kernel] staging: rtl8712: rtl8712_efuse.h: remove blank line
-Date: Thu, 21 Mar 2019 20:16:38 +0530
-Message-Id: <1553179598-6366-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=grEWI+ZtLLvfK6YHQGQLXyTiluVaCRwChcgasnbU/ck=;
+        b=MZ5a5QqXZ71MJLpbaDhc6rP88kuhSLs7YYY+r1s56WkkzNgpoQSShOkgFsRblsylf1
+         KT/PS3xAWxRCbgC1He0TzOr5CMaGKVaegcv8TPMqbBTmfHzzNQJGwb5ePRXDOx4kHkDO
+         viNQBbe8xWkMrRJxFqkpTkaqKrK5o2cDhgAXBkLiUEPudUeNhxGAUVBV5q5XHdl9PCrs
+         gGPlpNhpMWjBtpQ6Io+2B/VFyhmSsTYQicF3LntEJ8OlByCLXSudKEyMw4Th4sXQzLF5
+         Lb8k+xWNo5fQt5R5DQNuH8sH/sB5Zhh2ekd9wS11XfnTvUCKUDdIHyiFfAmPgLacaZ4A
+         iuKA==
+X-Received: by 10.140.218.202 with SMTP id o193mr27699966qhb.13.1424461025573;
+        Fri, 20 Feb 2015 11:37:05 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 10sm12282136qhc.12.2015.02.20.11.37.04
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 11:37:04 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54E78CDF.7000601@gmail.com>
+Date: Fri, 20 Feb 2015 14:37:03 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Gamze POLAT <gamzepolat94@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Add blank line
+References: <1424458703-6100-1-git-send-email-gamzepolat94@gmail.com>
+In-Reply-To: <1424458703-6100-1-git-send-email-gamzepolat94@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-To avoid style issues, remove multiple blank lines.
+On 02/20/15 13:58, Gamze POLAT wrote:
+> WARNING: "Missing a blank line after declarations"
+> That was found by running checkpatch.
+> 
+> Signed-off-by: Gamze POLAT <gamzepolat94@gmail.com>
+> ---
+>  drivers/staging/rtl8712/drv_types.h | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
+> index e62543d..a775f8d 100644
+> --- a/drivers/staging/rtl8712/drv_types.h
+> +++ b/drivers/staging/rtl8712/drv_types.h
+> @@ -129,6 +129,7 @@ struct dvobj_priv {
+>  	struct _adapter *padapter;
+>  	u32 nr_endpoint;
+>  	u8   ishighspeed;
+> +
+>  	uint (*inirp_init)(struct _adapter *adapter);
+>  	uint (*inirp_deinit)(struct _adapter *adapter);
+>  	struct usb_device *pusbdev;
+> @@ -166,6 +167,7 @@ struct _adapter {
+>  	 pid_t evtThread;
+>  	struct task_struct *xmitThread;
+>  	pid_t recvThread;
+> +
+>  	uint (*dvobj_init)(struct _adapter *adapter);
+>  	void (*dvobj_deinit)(struct _adapter *adapter);
+>  	struct net_device *pnetdev;
+> 
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_efuse.h | 1 -
- 1 file changed, 1 deletion(-)
+This patch is actually wrong - I think checkpatch is confused here by
+the declaration of function pointers, treating them like functions.
 
-diff --git a/drivers/staging/rtl8712/rtl8712_efuse.h b/drivers/staging/rtl8712/rtl8712_efuse.h
-index dbba51cd..41de101 100644
---- a/drivers/staging/rtl8712/rtl8712_efuse.h
-+++ b/drivers/staging/rtl8712/rtl8712_efuse.h
-@@ -4,7 +4,6 @@
- 
- #include "osdep_service.h"
- 
--
- #define _REPEAT_THRESHOLD_	3
- 
- #define EFUSE_MAX_SIZE		512
--- 
-2.7.4
+I do spot a whitespace issue that needs fixing in your patch, but the
+blank lines added shouldn't be added.
+
+Cheers,
+Jes
 
 
