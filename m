@@ -1,75 +1,86 @@
-X-GM-THRID: 1957029740544
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b1158ab4e74b4086,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.19.100 with SMTP id d4mr343996lae.7.1424533747568;
-        Sat, 21 Feb 2015 07:49:07 -0800 (PST)
+X-GM-THRID: 1297817272320
+X-Received: by 10.112.199.69 with SMTP id ji5mr1282351lbc.0.1424439495975;
+        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.95.199 with SMTP id dm7ls281001wib.49.gmail; Sat, 21 Feb
- 2015 07:49:07 -0800 (PST)
-X-Received: by 10.180.81.34 with SMTP id w2mr308805wix.2.1424533747347;
-        Sat, 21 Feb 2015 07:49:07 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
-        by gmr-mx.google.com with ESMTPS id r6si335560wix.0.2015.02.21.07.49.07
+Received: by 10.152.234.102 with SMTP id ud6ls249078lac.26.gmail; Fri, 20 Feb
+ 2015 05:38:15 -0800 (PST)
+X-Received: by 10.112.119.141 with SMTP id ku13mr1291310lbb.7.1424439495532;
+        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id r6si115556wix.0.2015.02.20.05.38.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 07:49:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
+        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-f177.google.com with SMTP id bs8so8546236wib.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 07:49:07 -0800 (PST)
+Received: by mail-wi0-f181.google.com with SMTP id r20so2962868wiv.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:38:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=vqFXYrpPNPTgQQmGtrae5OXPdhpWrP6YMaX8p5HvL7Q=;
-        b=lI8X8SmxUjzXM6W9Xxpve10JBPF2vWEWstoaKAGA5okcVxttVzSPmdZbXvH5bpHWpb
-         GccwX6cFdjEbcS2gPhSNzqd0tte36xazsJujUe7aSgRjmGizkwdrZ+gqHBPMjio8UiGb
-         +cudOsXvz3b00o0/6hfqxScddl+i+oBrDMXCHMtWWw2Mgp8Wz9mC8GAFlwJ54+p/nMAA
-         7fK0OtxA0zL8UhTyXd0b6vqlMG0e1hTz/zoq2ei7d+kYLGgjOcN6kx34If65ca2IfS8R
-         CrJ9qupl7MmuQookI3cdp4Ze8im1f7+jngj2O4GHOED0pclovy/d+5ogVaJ60vomYIco
-         D49A==
-X-Received: by 10.194.59.112 with SMTP id y16mr5987052wjq.36.1424533747279;
-        Sat, 21 Feb 2015 07:49:07 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id ev7sm47116544wjb.47.2015.02.21.07.49.05
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 07:49:06 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        bh=8DqKz4HvpFL7Mun9mbfaw9gtuv/YGjp9zYsV04Peub8=;
+        b=JgLfP13uqvHBOImoxzY83gsk2ns1l2uPTPt+aLPjnh3abp801cWndjwW1PYdsdqXaM
+         UDWrkABhKbl7vsenS8AMWk3NDJNYIdZnbdoeFpkKLs9mEoJSa2PU6TG/2YkxVWCrhQmL
+         b7seeScunwzRSSmElvae3eiEi1A3tw40Zk93lHtR5tPYmnlUa5z8PoNeNMraVdUyjwNy
+         G8t4fIf+RBszrOckGaE+FMaIMBBlVz89h4kKf56LWi7HDPIUF30J+cDh7DmpmTjT4nTt
+         gnPJAZuEcNzd6GVrkjuim4Z6wKGvosan+7BYBH8jZ8XiHEJ24wUwg+VyVVieckzoNGH1
+         Rgpw==
+X-Received: by 10.180.85.103 with SMTP id g7mr23990867wiz.19.1424439495371;
+        Fri, 20 Feb 2015 05:38:15 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from localhost.localdomain ([78.187.192.151])
+        by mx.google.com with ESMTPSA id gz3sm2467124wib.1.2015.02.20.05.38.13
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 05:38:14 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: drivers: dma: Add require space before that '('
-Date: Sat, 21 Feb 2015 17:48:59 +0200
-Message-Id: <1424533739-1562-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Subject: [PATCH] Staging: octeon: Add blank line
+Date: Fri, 20 Feb 2015 15:38:15 +0200
+Message-Id: <1424439495-15824-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-This patch fixes checkpatch.pl error in file ste_dma40.c
-ERROR: space required before the open parenthesis '('
+This patch fixes the checkpatch.pl warning:
+WARNING: "Missing a blank line after declarations"
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 ---
- drivers/dma/ste_dma40.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/octeon/ethernet-rx.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
-index 15d4946..9c6d2a2 100644
---- a/drivers/dma/ste_dma40.c
-+++ b/drivers/dma/ste_dma40.c
-@@ -3551,7 +3551,7 @@ static int __init d40_probe(struct platform_device *pdev)
- 
- 	if (!plat_data) {
- 		if (np) {
--			if(d40_of_probe(pdev, np)) {
-+			if (d40_of_probe(pdev, np)) {
- 				ret = -ENOMEM;
- 				goto failure;
- 			}
+diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
+index a0f4868..0a16832 100644
+--- a/drivers/staging/octeon/ethernet-rx.c
++++ b/drivers/staging/octeon/ethernet-rx.c
+@@ -169,6 +169,7 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
+ 		int interface = cvmx_helper_get_interface_num(work->ipprt);
+ 		int index = cvmx_helper_get_interface_index_num(work->ipprt);
+ 		union cvmx_gmxx_rxx_frm_ctl gmxx_rxx_frm_ctl;
++
+ 		gmxx_rxx_frm_ctl.u64 =
+ 		    cvmx_read_csr(CVMX_GMXX_RXX_FRM_CTL(index, interface));
+ 		if (gmxx_rxx_frm_ctl.s.pre_chk == 0) {
+@@ -273,6 +274,7 @@ static int cvm_oct_napi_poll(struct napi_struct *napi, int budget)
+ 		did_work_request = 0;
+ 		if (work == NULL) {
+ 			union cvmx_pow_wq_int wq_int;
++
+ 			wq_int.u64 = 0;
+ 			wq_int.s.iq_dis = 1 << pow_receive_group;
+ 			wq_int.s.wq_int = 1 << pow_receive_group;
+@@ -296,6 +298,7 @@ static int cvm_oct_napi_poll(struct napi_struct *napi, int budget)
+ 			union cvmx_pow_wq_int_cntx counts;
+ 			int backlog;
+ 			int cores_in_use = core_state.baseline_cores - atomic_read(&core_state.available_cores);
++
+ 			counts.u64 = cvmx_read_csr(CVMX_POW_WQ_INT_CNTX(pow_receive_group));
+ 			backlog = counts.s.iq_cnt + counts.s.ds_cnt;
+ 			if (backlog > budget * cores_in_use && napi != NULL)
 -- 
-1.9.1
+1.8.3.2
 
 
