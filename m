@@ -1,66 +1,71 @@
 X-GM-THRID: 1524698710016
-X-Received: by 10.182.231.199 with SMTP id ti7mr7807905obc.7.1424975250300;
-        Thu, 26 Feb 2015 10:27:30 -0800 (PST)
+X-Received: by 10.152.43.166 with SMTP id x6mr1518315lal.3.1424462465726;
+        Fri, 20 Feb 2015 12:01:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.46 with SMTP id k43ls221119qgk.27.gmail; Thu, 26 Feb
- 2015 10:27:30 -0800 (PST)
-X-Received: by 10.236.140.199 with SMTP id e47mr8716131yhj.50.1424975250107;
-        Thu, 26 Feb 2015 10:27:30 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id ri9si215623pdb.1.2015.02.26.10.27.30
+Received: by 10.152.25.201 with SMTP id e9ls270075lag.67.gmail; Fri, 20 Feb
+ 2015 12:01:05 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr399560lbc.3.1424462465225;
+        Fri, 20 Feb 2015 12:01:05 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-we0-x244.google.com (mail-we0-x244.google.com. [2a00:1450:400c:c03::244])
+        by gmr-mx.google.com with ESMTPS id ev8si165633wib.3.2015.02.20.12.01.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 10:27:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Fri, 20 Feb 2015 12:01:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::244 as permitted sender) client-ip=2a00:1450:400c:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C8721B88;
-	Thu, 26 Feb 2015 18:27:29 +0000 (UTC)
-Date: Thu, 26 Feb 2015 10:27:29 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Deleted space
-Message-ID: <20150226182729.GA29217@kroah.com>
-References: <1424462457-6784-1-git-send-email-haticeerturk27@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1424462457-6784-1-git-send-email-haticeerturk27@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-x244.google.com with SMTP id w62so2198975wes.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 12:01:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=ChuNrxeUSCEL8Lj8uo2iLUZAPk//apsPOGyglB17RUE=;
+        b=wwG+zXi/vjFc7R5F9n9o+zOtzjROside0YDUG8m6A+eHV5WHbeXiZPwg39zMo0H2Zn
+         buDocE6EDwPJ8pBP3TSOBTEe55gialrxybZhYXHF53IHtRSvhzSt8cB99QuZMR7+Jo64
+         98uAbjQiuSpTKBY/HGbxEsTj/u3m31yt2v0ejxEuwhxTZp5MLFQBByplp+W/dgyTqM35
+         FhmzWvEuKrPp3ewfQj6SJCG4W4ePpvZ9gTIRkFof90B4AZWS2yn4nRVfSykbkKUKakbA
+         OGVZdZw64BxCyd5O3F4ATxcTNAxfkSKPh/Nx2gpJBPZuWJzyEf8+qVD4Kv2E46cERuc4
+         T/fg==
+X-Received: by 10.180.221.73 with SMTP id qc9mr1002658wic.8.1424462465101;
+        Fri, 20 Feb 2015 12:01:05 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id k6sm3819321wia.6.2015.02.20.12.01.04
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Feb 2015 12:01:04 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: vt6655: Deleted space
+Date: Fri, 20 Feb 2015 22:00:57 +0200
+Message-Id: <1424462457-6784-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Fri, Feb 20, 2015 at 10:00:57PM +0200, Hatice ERT�RK wrote:
-> Deleted spaces before ','.Because it is prohibited by the kernel coding style.
-> Error found with checkpatch.pl
-> 
-> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
-> ---
->  drivers/staging/vt6655/mac.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
-> index dd241bb..f3c492f 100644
-> --- a/drivers/staging/vt6655/mac.c
-> +++ b/drivers/staging/vt6655/mac.c
-> @@ -808,7 +808,7 @@ bool MACbPSWakeup(void __iomem *dwIoBase)
->  
->  	/* Check if SyncFlushOK */
->  	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
-> -		VNSvInPortB(dwIoBase + MAC_REG_PSCTL , &byOrgValue);
-> +		VNSvInPortB(dwIoBase + MAC_REG_PSCTL, &byOrgValue);
->  		if (byOrgValue & PSCTL_WAKEDONE)
->  			break;
->  	}
-> -- 
-> 1.9.1
+Deleted spaces before ','.Because it is prohibited by the kernel coding style.
+Error found with checkpatch.pl
 
-This fix is already in my tree, are you sure you are working against the
-latest kernel release?
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+---
+ drivers/staging/vt6655/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
+index dd241bb..f3c492f 100644
+--- a/drivers/staging/vt6655/mac.c
++++ b/drivers/staging/vt6655/mac.c
+@@ -808,7 +808,7 @@ bool MACbPSWakeup(void __iomem *dwIoBase)
+ 
+ 	/* Check if SyncFlushOK */
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+-		VNSvInPortB(dwIoBase + MAC_REG_PSCTL , &byOrgValue);
++		VNSvInPortB(dwIoBase + MAC_REG_PSCTL, &byOrgValue);
+ 		if (byOrgValue & PSCTL_WAKEDONE)
+ 			break;
+ 	}
+-- 
+1.9.1
 
-greg k-h
 
