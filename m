@@ -1,95 +1,189 @@
 X-GM-THRID: 1080518770688
-X-Received: by 10.236.227.162 with SMTP id d32mr9296444yhq.7.1424419346532;
-        Fri, 20 Feb 2015 00:02:26 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,86373d2d23fa4d80
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.77.101 with SMTP id r5mr1093160lbw.4.1424418656328;
+        Thu, 19 Feb 2015 23:50:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.131.80 with SMTP id f77ls771205iod.39.gmail; Fri, 20 Feb
- 2015 00:02:26 -0800 (PST)
-X-Received: by 10.70.126.138 with SMTP id my10mr8301336pdb.1.1424419346323;
-        Fri, 20 Feb 2015 00:02:26 -0800 (PST)
-Return-Path: <preeti@linux.vnet.ibm.com>
-Received: from e8.ny.us.ibm.com (e8.ny.us.ibm.com. [32.97.182.138])
-        by gmr-mx.google.com with ESMTPS id ba9si5124276qcb.0.2015.02.20.00.02.26
+Received: by 10.152.191.168 with SMTP id gz8ls229377lac.16.gmail; Thu, 19 Feb
+ 2015 23:50:54 -0800 (PST)
+X-Received: by 10.112.46.106 with SMTP id u10mr1046247lbm.3.1424418654766;
+        Thu, 19 Feb 2015 23:50:54 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id i7si50376wif.0.2015.02.19.23.50.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 00:02:26 -0800 (PST)
-Received-SPF: none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) client-ip=32.97.182.138;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Feb 2015 23:50:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) smtp.mail=preeti@linux.vnet.ibm.com
-Received: from /spool/local
-	by e8.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted
-	for <outreachy-kernel@googlegroups.com> from <preeti@linux.vnet.ibm.com>;
-	Fri, 20 Feb 2015 03:02:25 -0500
-Received: from d01dlp01.pok.ibm.com (9.56.250.166)
-	by e8.ny.us.ibm.com (192.168.1.108) with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted;
-	Fri, 20 Feb 2015 03:02:24 -0500
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com [9.57.198.23])
-	by d01dlp01.pok.ibm.com (Postfix) with ESMTP id 0011438C8039
-	for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 03:01:06 -0500 (EST)
-Received: from d01av03.pok.ibm.com (d01av03.pok.ibm.com [9.56.224.217])
-	by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id t1K82Npw23986262
-	for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 08:02:23 GMT
-Received: from d01av03.pok.ibm.com (localhost [127.0.0.1])
-	by d01av03.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id t1K82Ncx009952
-	for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 03:02:23 -0500
-Received: from preeti.in.ibm.com ([9.77.198.76])
-	by d01av03.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id t1K82GY6009401;
-	Fri, 20 Feb 2015 03:02:19 -0500
-Message-ID: <54E6EA07.2020603@linux.vnet.ibm.com>
-Date: Fri, 20 Feb 2015 13:32:15 +0530
-From: Preeti U Murthy <preeti@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x230.google.com with SMTP id h11so1067938wiw.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 23:50:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=qIVYlFZticg9BdK07LcMf1oReBDVJeU3Apt2VDuIhj8=;
+        b=M/d5JS/3OyF5Cqs3+TwE95n2cUC4KZL5Cf6YKmQtgpgq24CsWbcqsoE9d4hMKpMb1v
+         Cx9nMJ3Q/yKsoXrL8vXV/J28kKFws3A6typ6HyR4uIT7dsmFpQC3VOqTfthB5JFIEp00
+         qbx4rvk5NG1UusPvdLMDxbAOG7OXQtbPbZDN1lgGIvxTRyN/+t5Xx+k38GpgG7QMvrDm
+         9F4Fg3mOIU1qXeUYvJpKjJKhp6Fc77yWT7L9Gcplc5LD90OQ3cuDUzseaHj7TNGod08U
+         1IcGpLlOqvCAkVRl4mOs3+02PDMnyxXEnNBibugn1fC5UkDlnuJmhDwjxezqDuclONse
+         XI6Q==
 MIME-Version: 1.0
-To: Vaishali Thakkar <vthakkar1994@gmail.com>
-CC: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+X-Received: by 10.180.83.69 with SMTP id o5mr12092390wiy.48.1424418654661;
+ Thu, 19 Feb 2015 23:50:54 -0800 (PST)
+Received: by 10.194.13.168 with HTTP; Thu, 19 Feb 2015 23:50:54 -0800 (PST)
+In-Reply-To: <54E6E471.8090107@linux.vnet.ibm.com>
+References: <cover.1424402536.git.vthakkar1994@gmail.com>
+	<9defe79e0f212c883f260e27a67bff9f9ba013ba.1424402536.git.vthakkar1994@gmail.com>
+	<alpine.DEB.2.02.1502200816570.2045@localhost6.localdomain6>
+	<CAK-LDbKo2E2gua_=z+5ibpnY-Qf3qnzaJZLW6AdG_KekBH9BZQ@mail.gmail.com>
+	<54E6E471.8090107@linux.vnet.ibm.com>
+Date: Fri, 20 Feb 2015 13:20:54 +0530
+Message-ID: <CAK-LDbL70HbEiDNmE3A499dAvxP7JteJB9nvmEs_tMRePggT_g@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH v3 2/2] Staging: rtl8723au: Use put_unaligned_le16
-References: <cover.1424402536.git.vthakkar1994@gmail.com> <9defe79e0f212c883f260e27a67bff9f9ba013ba.1424402536.git.vthakkar1994@gmail.com> <alpine.DEB.2.02.1502200816570.2045@localhost6.localdomain6> <CAK-LDbKo2E2gua_=z+5ibpnY-Qf3qnzaJZLW6AdG_KekBH9BZQ@mail.gmail.com> <54E6E471.8090107@linux.vnet.ibm.com> <CAK-LDbL70HbEiDNmE3A499dAvxP7JteJB9nvmEs_tMRePggT_g@mail.gmail.com>
-In-Reply-To: <CAK-LDbL70HbEiDNmE3A499dAvxP7JteJB9nvmEs_tMRePggT_g@mail.gmail.com>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Preeti U Murthy <preeti@linux.vnet.ibm.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15022008-0029-0000-0000-0000020D69A9
 
-On 02/20/2015 01:20 PM, Vaishali Thakkar wrote:
+On Fri, Feb 20, 2015 at 1:08 PM, Preeti U Murthy
+<preeti@linux.vnet.ibm.com> wrote:
+>
+> On 02/20/2015 12:54 PM, Vaishali Thakkar wrote:
+>> On Fri, Feb 20, 2015 at 12:47 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>>> On Fri, 20 Feb 2015, Vaishali Thakkar wrote:
+>>>
+>>>> Using byte ordering functions and then memcpy() is risky and
+>>>> prone to hide errors which are hard to track down. So, this
+>>>> patch introduces the use of function put_unaligned_le16 which
+>>>> makes the code clear. Here, use of variable tim_bitmap_le
+>>>> and variable itself is removed. Also, to be compatible with the
+>>>> changes header file is added too.
+>>>>
+>>>> Coccinelle is used to do this change and semantic patch used for
+>>>> this is as follows:
+>>>>
+>>>> @a@
+>>>> typedef __le16;
+>>>> __le16 e16;
+>>>> identifier tmp;
+>>>> expression ptr;
+>>>> expression y,e;
+>>>> type T;
+>>>> @@
+>>>>
+>>>> - tmp = cpu_to_le16(y);
+>>>>
+>>>> <+... when != tmp
+>>>> (
+>>>> - memcpy(ptr, (T)&tmp, \(2\|sizeof(__le16)\|sizeof(e16)\));
+>>>> + put_unaligned_le16(y,ptr);
+>>>> |
+>>>> - memcpy(ptr, (T)&tmp, ...);
+>>>> + put_unaligned_le16(y,ptr);
+>>>> )
+>>>> ...+>
+>>>> ? tmp = e
+>>>>
+>>>> @@ type T; identifier a.tmp; @@
+>>>>
+>>>> - T tmp;
+>>>> ...when != tmp
+>>>>
+>>>> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+>>>> ---
+>>>> Changes since v1:
+>>>>       -Edit commit log
+>>>>       -Merge this patch in a patch series
+>>>
+>>> So in this case there is no change since v2?  Maybe it would be better to
+>>> make that explicit.
 >>
->> Yes I would suggest that. I missed this. Additionally I would recommend
->> in this case to not prefix any version number to the cover letter.
->> Instead prefix the appropriate version numbers to the individual patches
->> mentioning the changes from the previous versions.
-> 
-> Ok. So, in next patch-series cover letter will not have any version number and
-> both of these patches will have v4 as I already prefixed them as v3.
-> And for this
-> particular patch I should write that there is no v2 under signed off
-> by line. Right??
+>> Actually there is no v2 of this patch but as this patch is merged in a
+>> series with
+>> v3 of patch Staging: rtl8188eu: Use put_unaligned_le16 it comes as a v3.
+>>
+>> Should I clear this in a cover letter and then resend the patch series?
+>
+> Yes I would suggest that. I missed this. Additionally I would recommend
+> in this case to not prefix any version number to the cover letter.
+> Instead prefix the appropriate version numbers to the individual patches
+> mentioning the changes from the previous versions.
 
-1. No version number for the cover letter.
-2. Retain [PATCH v3 1/2] Staging: rtl8188eu: Use put_unaligned_le16 as
-v3 itself.
-3. Change [PATCH v3 2/2] Staging: rtl8723au: Use put_unaligned_le16: to
-v2. So it would be:
-[PATCH v2 2/2] Staging: rtl8723au: Use put_unaligned_le16, since it has
-undergone just one revision.
+Ok. So, in next patch-series cover letter will not have any version number and
+both of these patches will have v4 as I already prefixed them as v3.
+And for this
+particular patch I should write that there is no v2 under signed off
+by line. Right??
 
-The reason I ask not to change the version numbers again is because
-there is nothing that has significantly changed from the previous
-versions. There will be a change only in the manner of sending patches.
+> Regards
+> Preeti U Murthy
+>>
+>>> julia
+>>>
+>>>
+>>>>  drivers/staging/rtl8723au/core/rtw_ap.c | 8 +++-----
+>>>>  1 file changed, 3 insertions(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
+>>>> index c6327c0..7fa4352 100644
+>>>> --- a/drivers/staging/rtl8723au/core/rtw_ap.c
+>>>> +++ b/drivers/staging/rtl8723au/core/rtw_ap.c
+>>>> @@ -20,6 +20,7 @@
+>>>>  #include <wifi.h>
+>>>>  #include <rtl8723a_cmd.h>
+>>>>  #include <rtl8723a_hal.h>
+>>>> +#include <asm/unaligned.h>
+>>>>
+>>>>  extern unsigned char WMM_OUI23A[];
+>>>>  extern unsigned char WPS_OUI23A[];
+>>>> @@ -72,11 +73,8 @@ static void update_BCNTIM(struct rtw_adapter *padapter)
+>>>>       struct wlan_bssid_ex *pnetwork_mlmeext = &pmlmeinfo->network;
+>>>>       unsigned char *pie = pnetwork_mlmeext->IEs;
+>>>>       u8 *p, *dst_ie, *premainder_ie = NULL, *pbackup_remainder_ie = NULL;
+>>>> -     __le16 tim_bitmap_le;
+>>>>       uint offset, tmp_len, tim_ielen, tim_ie_offset, remainder_ielen;
+>>>>
+>>>> -     tim_bitmap_le = cpu_to_le16(pstapriv->tim_bitmap);
+>>>> -
+>>>>       p = rtw_get_ie23a(pie, WLAN_EID_TIM, &tim_ielen,
+>>>>                         pnetwork_mlmeext->IELength);
+>>>>       if (p != NULL && tim_ielen > 0) {
+>>>> @@ -143,9 +141,9 @@ static void update_BCNTIM(struct rtw_adapter *padapter)
+>>>>               *dst_ie++ = 0;
+>>>>
+>>>>       if (tim_ielen == 4) {
+>>>> -             *dst_ie++ = *(u8 *)&tim_bitmap_le;
+>>>> +             *dst_ie++ = pstapriv->tim_bitmap & 0xff;
+>>>>       } else if (tim_ielen == 5) {
+>>>> -             memcpy(dst_ie, &tim_bitmap_le, 2);
+>>>> +             put_unaligned_le16(pstapriv->tim_bitmap, dst_ie);
+>>>>               dst_ie += 2;
+>>>>       }
+>>>>
+>>>> --
+>>>> 1.9.1
+>>>>
+>>>> --
+>>>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>>>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>>>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>>>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/9defe79e0f212c883f260e27a67bff9f9ba013ba.1424402536.git.vthakkar1994%40gmail.com.
+>>>> For more options, visit https://groups.google.com/d/optout.
+>>>>
+>>
+>>
+>>
+>
 
-So now the question is about how you indicate to the maintainer that the
-fresh series that you will post now is the one to be picked up. Usually
-under such circumstances we append RESEND to the patches.
-So now you can resend the next version as mentioned in the points above
-but with a RESEND tag to the cover letter and patches.
-
-Something like: [RESEND PATCH 0/2] Staging: Use put_unaligned_le16.
-The maintainer will thus know that this is the one to be picked up.
-
-Regards
-Preeti U Murthy
 
 
-> 
->> Regards
->> Preeti U Murthy
-
+-- 
+Vaishali
 
