@@ -1,147 +1,86 @@
-X-GM-THRID: 6729723019264
+X-GM-THRID: 1123382460416
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,2163b9d8124f404e,start
+X-Google-Thread: 9ca63f596c,f5f770e6dd3ab2f2
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.70.53.137 with SMTP id b9mr10220530pdp.4.1425566814179;
-        Thu, 05 Mar 2015 06:46:54 -0800 (PST)
+X-Received: by 10.112.174.36 with SMTP id bp4mr1065848lbc.15.1424421501766;
+        Fri, 20 Feb 2015 00:38:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.19.77 with SMTP id b74ls240241ioj.35.gmail; Thu, 05 Mar
- 2015 06:46:53 -0800 (PST)
-X-Received: by 10.50.61.132 with SMTP id p4mr32951496igr.7.1425566813906;
-        Thu, 05 Mar 2015 06:46:53 -0800 (PST)
-Return-Path: <somyaanand214@gmail.com>
-Received: from mail-vc0-x22d.google.com (mail-vc0-x22d.google.com. [2607:f8b0:400c:c03::22d])
-        by gmr-mx.google.com with ESMTPS id yn1si160813vdc.0.2015.03.05.06.46.53
+Received: by 10.152.234.232 with SMTP id uh8ls249267lac.82.gmail; Fri, 20 Feb
+ 2015 00:38:21 -0800 (PST)
+X-Received: by 10.112.99.37 with SMTP id en5mr1071038lbb.17.1424421501282;
+        Fri, 20 Feb 2015 00:38:21 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id ew5si59277wid.1.2015.02.20.00.38.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 06:46:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400c:c03::22d as permitted sender) client-ip=2607:f8b0:400c:c03::22d;
+        Fri, 20 Feb 2015 00:38:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400c:c03::22d as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vc0-x22d.google.com with SMTP id hy10so8122578vcb.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 06:46:53 -0800 (PST)
+Received: by mail-wi0-x22d.google.com with SMTP id bs8so1313784wib.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 00:38:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=QENUYBEKjb0jCbF2QxjNh7aSV/6uxo5kbHd7iXjyFiA=;
-        b=scvYw4xXP7T62a/KDSYmiZ5TQ/B2MtrU6pZh4n6SEUlzwCACVnVhyHqj1M0xDF+FfY
-         U/y5mqwrg5qODeJ1UzZOoJLWFG7SvL75ODYwv3VRlshj7Idnd1FqSE7C2C3p5VtzEjTb
-         lsTJKqgSXoFYUxYRyseBAcnDMoROXZl500SCHYGa6yNH1+pMegkWLc1vzUccMTd+KP+3
-         ckvnMkSWgL2XbYAOU7+p51iUNOHLv8QH/r1QqUWyxb4Io8kvXA9p9wiZyWf6D68jH93D
-         Czum4J9D0KcORUtNTCyBiikDV9I41feJwcZQQeFJRGXBKmBpWu40cji/NYr0/qEUbktx
-         88FA==
+        bh=erUDRZMg8a8FTa4t8y5Y1rKTowxvv6nSKj0c1c2hgY0=;
+        b=LQM2Wm9jWmQQHPYOMh0yUY03NhGWsqSBrqzL6Vic0Q3yMAoKevOJ2KAULRYs4L/vM6
+         d4OjNdnqlTtuDeqipPsSS1Fd8vTakpwYfmwQQkmbVkSjKbMa99Gvs1EzG/lE2ayMVSSI
+         YrJYHJcOObGV+DBuozHbu6B7n5nmJiFDFdS8AYOqV1e28Rxq1aVpkQlrawMsHqtMiNkf
+         ZjkWNTsSoF7+b91PzOnLGrZuz+3aC4xrDhUqaq10dHMx7nphRTFHdAtIRhic/p3+sLSe
+         zWgj+shyAVqKPCk6ng8Ff5x+A3tsZIkMEYTDDqSo4lYS5JgZM2hCUiW6QWU9pHBqlZK+
+         jbOw==
 MIME-Version: 1.0
-X-Received: by 10.52.73.166 with SMTP id m6mr12898820vdv.13.1425566813771;
- Thu, 05 Mar 2015 06:46:53 -0800 (PST)
-Received: by 10.52.102.232 with HTTP; Thu, 5 Mar 2015 06:46:53 -0800 (PST)
-In-Reply-To: <CAOGyfZFPMd-2WePqGEZxo-Z2Z06rvZZxQKcaf6q_QoqbR_hFUg@mail.gmail.com>
-References: <CAOGyfZFPMd-2WePqGEZxo-Z2Z06rvZZxQKcaf6q_QoqbR_hFUg@mail.gmail.com>
-Date: Thu, 5 Mar 2015 20:16:53 +0530
-Message-ID: <CANPzvBCpu7aL4xSscdp7vhUqdx32v6ndr1xX9CFmMOf-h=a=jw@mail.gmail.com>
-Subject: Re: Regarding patches for Linux Kernel
-From: Somya Anand <somyaanand214@gmail.com>
-To: khushboo surana <khushboo9293@gmail.com>
+X-Received: by 10.180.85.70 with SMTP id f6mr17280793wiz.22.1424421501179;
+ Fri, 20 Feb 2015 00:38:21 -0800 (PST)
+Received: by 10.194.13.168 with HTTP; Fri, 20 Feb 2015 00:38:21 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.02.1502200904550.2159@localhost6.localdomain6>
+References: <20150220072850.GA8648@vaishali-Ideapad-Z570>
+	<alpine.DEB.2.02.1502200851350.2045@localhost6.localdomain6>
+	<CAK-LDbLHqULUx--_fs8oxkTkH1xcFnsApzKVyWiUkD794w5-aQ@mail.gmail.com>
+	<alpine.DEB.2.02.1502200904550.2159@localhost6.localdomain6>
+Date: Fri, 20 Feb 2015 14:08:21 +0530
+Message-ID: <CAK-LDbKdmuTca82bZh7NMtSWGykFFatK8161eLjW5fE=pb6J1g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove unused
+ struct ndis_802_11_key
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=bcaec5015fa589df6605108ba3bd
-
---bcaec5015fa589df6605108ba3bd
 Content-Type: text/plain; charset=UTF-8
 
-Hello Khushboo,
-
-Welcome to Linux kernel development. I guess you are new to this, so I
-encourage you to try out sending some of the cleanup patches first so that
-you get the idea of the code an how this whole procedure works. You must
-have read the instruction for submitting your first patch on outreachy
-page. For further help, you can see this :
-www.youtube.com/watch?v=LLBrBBImJt4
-And for coccinelle script, this link might help you:
-www.youtube.com/watch?v=buZrNd6XkEw
-
-Further, For full dynamic ticks project, I am still reading, For the better
-feel of this project you might see:
-www.youtube.com/watch?v=G3jHP9kNjwc
-
-For general reading, I suggest you to read the book "Linux kernel
-development by Robert Love".
-
-I have CCed this mail to outreachy mailing list as well, so that you can
-get more technical advice from the mentors. If any doubt, I am happy to
-help you.
-
---
-Cheers,
-Somya
-
-On Thu, Mar 5, 2015 at 7:38 PM, khushboo surana <khushboo9293@gmail.com>
-wrote:
-
-> Hello Somya,
+On Fri, Feb 20, 2015 at 1:36 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Fri, 20 Feb 2015, Vaishali Thakkar wrote:
 >
-> I am Khushboo, an aspiring OPW applicant. I recently subscribed to the
-> Linux Kernel mailing list and saw a few patches submitted by you. I am
-> interested in one of the Linux Kernel projects: Full Dynamic Ticks and want
-> to start contributing, but I am a little lost about where to start from.
-> Can you please tell me, where do you pick up the tasks to work on. If the
-> patches that u have worked on are from the task list given on the project
-> pages or has your mentor given you a list of bugs or if there is a bug page
-> for newbies. I would really appreciate if you can help me here.
+>> On Fri, Feb 20, 2015 at 1:21 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> > On Fri, 20 Feb 2015, Vaishali Thakkar wrote:
+>> >
+>> >> This patch removes struct ndis_802_11_key as it is defined
+>> >> in a header file but never used.
+>> >
+>> > How did you find it?
+>>
+>> While looking at struct definitions in file wlan_bssdef.h, I accidentally
+>> came across this structure and when I used git grep to see the use of
+>> it, I didn't find any files using it. That's why I just sent the patch.
 >
-> Thanks
-> Khushboo
->
->
->
+> OK, it seems at least possible that there are more.  Coccinelle could
+> probably be used for this, or maybe just a script with grep would suffice.
+> We could discuss later, if you want to look for more of them.
 
---bcaec5015fa589df6605108ba3bd
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Yes. There is possibility of finding such cases. I have also seen some patches
+in network drivers where there are some write-only or write-once
+structs/variables
+which are removed by developers. May be we can handle some of such cases using
+Coccinelle too. I would definitely like to  discuss such things.
 
-<div dir=3D"ltr"><div class=3D"gmail_extra">Hello Khushboo,</div><div class=
-=3D"gmail_extra"><br></div><div class=3D"gmail_extra">Welcome to Linux kern=
-el development. I guess you are new to this, so I encourage you to try out =
-sending some of the cleanup patches first so that you get the idea of the c=
-ode an how this whole procedure works. You must have read the instruction f=
-or submitting your first patch on outreachy page. For further help, you can=
- see this :</div><div class=3D"gmail_extra"><a href=3D"http://www.youtube.c=
-om/watch?v=3DLLBrBBImJt4">www.youtube.com/watch?v=3DLLBrBBImJt4</a><br></di=
-v><div class=3D"gmail_extra">And for coccinelle script, this link might hel=
-p you:</div><div class=3D"gmail_extra"><a href=3D"http://www.youtube.com/wa=
-tch?v=3DbuZrNd6XkEw">www.youtube.com/watch?v=3DbuZrNd6XkEw</a><br></div><di=
-v class=3D"gmail_extra"><br></div><div class=3D"gmail_extra">Further, For f=
-ull dynamic ticks project, I am still reading, For the better feel of this =
-project you might see:</div><div class=3D"gmail_extra"><a href=3D"http://ww=
-w.youtube.com/watch?v=3DG3jHP9kNjwc">www.youtube.com/watch?v=3DG3jHP9kNjwc<=
-/a><br></div><div class=3D"gmail_extra"><br></div><div class=3D"gmail_extra=
-">For general reading, I suggest you to read the book &quot;Linux kernel de=
-velopment by Robert Love&quot;.</div><div class=3D"gmail_extra"><br></div><=
-div class=3D"gmail_extra">I have CCed this mail to outreachy mailing list a=
-s well, so that you can get more technical advice from the mentors. If any =
-doubt, I am happy to help you.</div><div class=3D"gmail_extra"><br></div><d=
-iv class=3D"gmail_extra">--</div><div class=3D"gmail_extra">Cheers,</div><d=
-iv class=3D"gmail_extra">Somya</div><div class=3D"gmail_extra"><br></div><d=
-iv class=3D"gmail_extra"><div class=3D"gmail_quote">On Thu, Mar 5, 2015 at =
-7:38 PM, khushboo surana <span dir=3D"ltr">&lt;<a href=3D"mailto:khushboo92=
-93@gmail.com" target=3D"_blank">khushboo9293@gmail.com</a>&gt;</span> wrote=
-:<br><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
-rder-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:so=
-lid;padding-left:1ex"><div dir=3D"ltr"><div><div><div>Hello Somya,<br><br><=
-/div>I am Khushboo, an aspiring OPW applicant. I recently subscribed to the=
- Linux Kernel mailing list and saw a few patches submitted by you. I am int=
-erested in one of the Linux Kernel projects: Full Dynamic Ticks and want to=
- start contributing, but I am a little lost about where to start from. Can =
-you please tell me, where do you pick up the tasks to work on. If the patch=
-es that u have worked on are from the task list given on the project pages =
-or has your mentor given you a list of bugs or if there is a bug page for n=
-ewbies. I would really appreciate if you can help me here.<br><br></div>Tha=
-nks<span class=3D""><font color=3D"#888888"><br></font></span></div><span c=
-lass=3D""><font color=3D"#888888">Khushboo<br><div><div><br>=C2=A0<br></div=
-></div></font></span></div>
-</blockquote></div><br></div></div>
+> julia
 
---bcaec5015fa589df6605108ba3bd--
+
+
+-- 
+Vaishali
 
