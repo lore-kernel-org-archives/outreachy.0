@@ -1,76 +1,70 @@
 X-GM-THRID: 1627576598528
-X-Received: by 10.112.161.9 with SMTP id xo9mr6078lbb.7.1424471838908;
-        Fri, 20 Feb 2015 14:37:18 -0800 (PST)
+X-Received: by 10.112.25.7 with SMTP id y7mr2458lbf.21.1424471610698;
+        Fri, 20 Feb 2015 14:33:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.104.226 with SMTP id gh2ls190081wib.31.gmail; Fri, 20 Feb
- 2015 14:37:18 -0800 (PST)
-X-Received: by 10.180.94.134 with SMTP id dc6mr134894wib.2.1424471838699;
-        Fri, 20 Feb 2015 14:37:18 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id el6si201148wib.2.2015.02.20.14.37.18
+Received: by 10.180.10.227 with SMTP id l3ls189501wib.46.canary; Fri, 20 Feb
+ 2015 14:33:30 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr41244wiv.0.1424471610422;
+        Fri, 20 Feb 2015 14:33:30 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id i7si202409wif.0.2015.02.20.14.33.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 14:37:18 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 14:33:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,617,1418079600"; 
-   d="scan'208";a="122747351"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2015 23:37:17 +0100
-Date: Fri, 20 Feb 2015 23:37:17 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Dilek Uzulmez <dilekuzulmez@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: speakup: Remove unnecessary
- else after return
-In-Reply-To: <1424471596-15670-1-git-send-email-dilekuzulmez@gmail.com>
-Message-ID: <alpine.DEB.2.02.1502202335450.2054@localhost6.localdomain6>
-References: <1424471596-15670-1-git-send-email-dilekuzulmez@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-f181.google.com with SMTP id r20so5903695wiv.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 14:33:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=F2ekD/+UWA5WtbN2LZan/TvSfSY0REJ9i1VOrY2tjRM=;
+        b=Zq+QqVDJrcRZU1Akt1cEbAxrSFP+zwSQk61CwODwGBSPL5WUDKRPxn4Tko4a1kUHDq
+         rdP+JvBNOaQJy3ABwjqEW6wsgz8B/lqt+nGKs07nPd8HqOXIumzYECuYsLGNuxoCpJu2
+         gH/NRAwpDmIZ3Sp0ME/wbGrm6TidiM2R9YJPjcjhhYk5htPABQBuPYeak/4SGNDUh2ZI
+         Se5Oql3C+aPNO+JtKBVbDpySGZEOQeh/F8OVIcUO6p/lJRZu3QV0339L6FGhJ6yzwfMJ
+         cM8MXv69RBUC2Z0OHEGLvMQB+gKclkTC3QF8BmSmpHjj+2VRmE0ZrJamxL63xi5TQixo
+         2jTA==
+X-Received: by 10.194.92.243 with SMTP id cp19mr88780wjb.32.1424471610324;
+        Fri, 20 Feb 2015 14:33:30 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.245.176])
+        by mx.google.com with ESMTPSA id dx11sm41077381wjb.23.2015.02.20.14.33.28
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Feb 2015 14:33:29 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: speakup: Remove unnecessary else after return
+Date: Sat, 21 Feb 2015 00:33:16 +0200
+Message-Id: <1424471596-15670-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Sat, 21 Feb 2015, Dilek Uzulmez wrote:
+This patch fixes checkpatch.pl warning in files of speakup
+WARNING: else is not generally useful after a break or return
 
-> This patch fixes checkpatch.pl warning in files of speakup
-> WARNING: else is not generally useful after a break or return
-> 
-> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
-> ---
->  drivers/staging/speakup/keyhelp.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
-> index 9475674..832cf00 100644
-> --- a/drivers/staging/speakup/keyhelp.c
-> +++ b/drivers/staging/speakup/keyhelp.c
-> @@ -182,7 +182,6 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
->  		synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));
->  		build_key_data(); /* rebuild each time in case new mapping */
->  		return 1;
-> -	} else {
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+---
+ drivers/staging/speakup/keyhelp.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-This does not look correct.  You have deleted the } ending the previous 
-then branch as well as the else and its open brace.  But you have not 
-deleted its close brace.  Also the code in the else branch should be moved 
-to the left to reflectthe fact that it is not under an if any more.
+diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
+index 9475674..832cf00 100644
+--- a/drivers/staging/speakup/keyhelp.c
++++ b/drivers/staging/speakup/keyhelp.c
+@@ -182,7 +182,6 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
+ 		synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));
+ 		build_key_data(); /* rebuild each time in case new mapping */
+ 		return 1;
+-	} else {
+ 		name = NULL;
+ 		if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
+ 			synth_printf("%s\n",
+-- 
+1.9.1
 
-julia
-
->  		name = NULL;
->  		if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
->  			synth_printf("%s\n",
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424471596-15670-1-git-send-email-dilekuzulmez%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
