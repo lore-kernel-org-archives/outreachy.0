@@ -1,42 +1,42 @@
 X-GM-THRID: 1080518770688
-X-Received: by 10.112.160.3 with SMTP id xg3mr1118071lbb.5.1424425035700;
-        Fri, 20 Feb 2015 01:37:15 -0800 (PST)
+X-Received: by 10.181.29.66 with SMTP id ju2mr1569917wid.1.1424425017708;
+        Fri, 20 Feb 2015 01:36:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.240.202 with SMTP id wc10ls57792wic.10.canary; Fri, 20 Feb
- 2015 01:37:15 -0800 (PST)
-X-Received: by 10.194.201.10 with SMTP id jw10mr1119211wjc.3.1424425035408;
-        Fri, 20 Feb 2015 01:37:15 -0800 (PST)
+Received: by 10.180.94.163 with SMTP id dd3ls59716wib.18.gmail; Fri, 20 Feb
+ 2015 01:36:57 -0800 (PST)
+X-Received: by 10.180.105.129 with SMTP id gm1mr1241030wib.3.1424425017424;
+        Fri, 20 Feb 2015 01:36:57 -0800 (PST)
 Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id ew5si69664wid.1.2015.02.20.01.37.15
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
+        by gmr-mx.google.com with ESMTPS id i7si67801wif.0.2015.02.20.01.36.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 01:37:15 -0800 (PST)
-Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.126.130;
+        Fri, 20 Feb 2015 01:36:57 -0800 (PST)
+Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.17.13;
 Authentication-Results: gmr-mx.google.com;
        spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
 Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue003) with ESMTPSA (Nemesis) id 0Mcixh-1Y6w9b3Ymn-00HytN; Fri, 20 Feb
- 2015 10:37:14 +0100
+ (mreue101) with ESMTPSA (Nemesis) id 0Lto9d-1XO16g2e1N-0119T1; Fri, 20 Feb
+ 2015 10:36:55 +0100
 From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
 Cc: Vaishali Thakkar <vthakkar1994@gmail.com>
-Subject: Re: [Outreachy kernel] [RESEND PATCH v3 1/2] Staging: rtl8188eu: Use put_unaligned_le16
-Date: Fri, 20 Feb 2015 10:37:14 +0100
-Message-ID: <7195822.xgoSRFZ0fm@wuerfel>
+Subject: Re: [Outreachy kernel] [RESEND PATCH v2 2/2] Staging: rtl8723au: Use put_unaligned_le16
+Date: Fri, 20 Feb 2015 10:36:55 +0100
+Message-ID: <6043845.WWkL2rCT3V@wuerfel>
 User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <a4e97da77ddf7fbcf2908d9ec7f18c9b32d7ad4e.1424421580.git.vthakkar1994@gmail.com>
-References: <cover.1424421580.git.vthakkar1994@gmail.com> <a4e97da77ddf7fbcf2908d9ec7f18c9b32d7ad4e.1424421580.git.vthakkar1994@gmail.com>
+In-Reply-To: <9defe79e0f212c883f260e27a67bff9f9ba013ba.1424421580.git.vthakkar1994@gmail.com>
+References: <cover.1424421580.git.vthakkar1994@gmail.com> <9defe79e0f212c883f260e27a67bff9f9ba013ba.1424421580.git.vthakkar1994@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID:  V03:K0:sAFVI4K6xO7mqAzXWJRPwhmrXwbZzymcDJODwjD533o1HLn1H8y
- dV8Wn6Ka2vvi46MDaz/wOUP2V1Xs8t7HonJCTV+T+nlR7DiproG4IVdc0pXpcmJl0W1yHRf
- ODGwvx4kxVsDK+ZqsozHE9vWo8Qz94MFjRoSGyp0m6gVukCfiq2ViirHQkiFeKcvJLH7wap
- 2mw0iJU2wdDqxcgj64ZEQ==
+X-Provags-ID:  V03:K0:k7Vt5OiZ+qq10Z4C7aeM1KSQX7xiGsOT0ybM9dRycHBn31DBe4r
+ PiqP//ylbuTNIB+pllGGnAWLqhNzo75vM/eKW9l9CygVCF+P2DmFBQcZtSa+s6c321eyUBc
+ kEHQ6CpUdtbnJw0Qn0TaynUeSQBmwP2AN+1iizu3r8mWQWcvnGBiipRiDEETOV9JDjoysHs
+ JjlBoBPzM+QAHmEKSmt2w==
 X-UI-Out-Filterresults: notjunk:1;
 
-On Friday 20 February 2015 14:18:37 Vaishali Thakkar wrote:
+On Friday 20 February 2015 14:18:45 Vaishali Thakkar wrote:
 > Using byte ordering functions and then memcpy() is risky and
 > prone to hide errors which are hard to track down. So, this
 > patch introduces the use of function put_unaligned_le16 which
