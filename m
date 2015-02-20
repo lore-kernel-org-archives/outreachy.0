@@ -1,265 +1,316 @@
-X-GM-THRID: 3862924623872
-X-Received: by 10.152.88.40 with SMTP id bd8mr1537801lab.0.1424976758645;
-        Thu, 26 Feb 2015 10:52:38 -0800 (PST)
+X-GM-THRID: 1437501227008
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,58373dc54f5b2d8c,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.105.129 with SMTP id gm1mr33903wib.3.1424457985006;
+        Fri, 20 Feb 2015 10:46:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.4.71 with SMTP id i7ls73790lai.44.gmail; Thu, 26 Feb 2015
- 10:52:38 -0800 (PST)
-X-Received: by 10.112.50.106 with SMTP id b10mr1514569lbo.8.1424976758138;
-        Thu, 26 Feb 2015 10:52:38 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id ev8si1409512wib.3.2015.02.26.10.52.38
+Received: by 10.153.6.7 with SMTP id cq7ls332861lad.8.gmail; Fri, 20 Feb 2015
+ 10:46:24 -0800 (PST)
+X-Received: by 10.112.45.197 with SMTP id p5mr1527654lbm.18.1424457984424;
+        Fri, 20 Feb 2015 10:46:24 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-we0-x244.google.com (mail-we0-x244.google.com. [2a00:1450:400c:c03::244])
+        by gmr-mx.google.com with ESMTPS id ew5si165272wid.1.2015.02.20.10.46.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 10:52:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Fri, 20 Feb 2015 10:46:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::244 as permitted sender) client-ip=2a00:1450:400c:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id l18so13735106wgh.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 10:52:38 -0800 (PST)
+Received: by mail-we0-x244.google.com with SMTP id q59so2064443wes.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 10:46:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=ORVYEOm1CjJ1rxB2NPDGKsfqdt1VHsi0hWao+D21jgo=;
-        b=ThGjVx9UBiBqia6bvvjtPqWHx2YHC6N//taDVER7uItnGLk2xmJogx1IBdfKx91LJx
-         OAzqbpjaguH4WOyAQafkMNuqmj5NPdUAGnqzOhVnh8pE850pFkbBTQiD5n8oU3ZLa3hP
-         dA7lxSEAmgaBJLmrIcEsCQjis3WVpuKx8rB0ugKyRQ9/Z6wrM2rGK7CntMtdP4PUSMO3
-         8qq5SWeCUIyGO2jz9l+lH+sTeaDGvSceXs6rQiTEh3mkjIchrNjxMoEqz3NBj0oRn+XD
-         6ry7zQp5oPl6BF57hPTUXoXtRtFRoo1VlDUsvO2o89urGUV8lIXadn5ssHlytxrmNbid
-         TL5A==
-X-Received: by 10.181.8.225 with SMTP id dn1mr54172419wid.55.1424976758023;
-        Thu, 26 Feb 2015 10:52:38 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from yeliz-N56DP.comu.edu.tr ([193.255.97.48])
-        by mx.google.com with ESMTPSA id lb6sm1717987wjb.22.2015.02.26.10.52.37
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 10:52:37 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        bh=2W3rIVvR9/vcePqLCatN8xRNey7O1ccIJaaAn08Eihk=;
+        b=QbcL/BI8ZsCtlMV7S8wUxbzX3h3TbL4zcGE8egGMz3hnPzAahDvj6+A5lzM4vma8sy
+         liMYQ3oApThZJyUsTxknIsA/AClQuDqzzkC6a97wrU8OT730z2sA9va39htyfrQf9jrv
+         WSLi16ghXLHrhJ5ZCPl7hirg9VfXZ/Zao1KgNrS7SlU7MpquUFGDdbcDcczd/xTVCVrY
+         bJ9Q4/JsrOVBElQXyTqHExjS12+JO4EotqTwIyqHpaCyZONmKPan8ZTDdK2Wbqz4FaVi
+         7uJQuX//h8CiOjg/kMYzpTmJFeH/H+J6O/+kg/D2xpBG4Vex0OdhMlKdTZ27cHU+yJ70
+         Jxig==
+X-Received: by 10.180.7.131 with SMTP id j3mr267785wia.55.1424457984234;
+        Fri, 20 Feb 2015 10:46:24 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id jg3sm3577169wid.0.2015.02.20.10.46.22
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Feb 2015 10:46:23 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: speakup: Fix simple_strtoul is obsolete, use kstrtoul instead
-Date: Thu, 26 Feb 2015 20:52:47 +0200
-Message-Id: <1424976767-7344-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Drivers: staging: vt6655: mac: changed C99 // comments
+Date: Fri, 20 Feb 2015 20:46:16 +0200
+Message-Id: <1424457976-5427-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patch fixes "simple_strtoul is obsolete, use kstrtoul instead"
-warning in kobjects.c
+// erased and replace it with /**/ used.
+Error found with checkpatch.pl
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/fbtft/fb_tls8204.c | 177 -------------------------------------
- drivers/staging/speakup/kobjects.c |   4 +-
- 2 files changed, 2 insertions(+), 179 deletions(-)
- delete mode 100644 drivers/staging/fbtft/fb_tls8204.c
+ drivers/staging/vt6655/mac.c | 82 ++++++++++++++++++++++----------------------
+ 1 file changed, 41 insertions(+), 41 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_tls8204.c b/drivers/staging/fbtft/fb_tls8204.c
-deleted file mode 100644
-index e8a3e2f..0000000
---- a/drivers/staging/fbtft/fb_tls8204.c
-+++ /dev/null
-@@ -1,177 +0,0 @@
--/*
-- * FB driver for the TLS8204 LCD Controller
-- *
-- * The display is monochrome and the video memory is RGB565.
-- * Any pixel value except 0 turns the pixel on.
-- *
-- * Copyright (C) 2013 Noralf Tronnes
-- * Copyright (C) 2014 Michael Hope (adapted for the TLS8204)
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation; either version 2 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program; if not, write to the Free Software
-- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-- */
--
--#include <linux/module.h>
--#include <linux/kernel.h>
--#include <linux/init.h>
--#include <linux/gpio.h>
--#include <linux/spi/spi.h>
--#include <linux/delay.h>
--
--#include "fbtft.h"
--
--#define DRVNAME		"fb_tls8204"
--#define WIDTH		84
--#define HEIGHT		48
--#define TXBUFLEN	WIDTH
--#define DEFAULT_GAMMA	"40" /* gamma is used to control contrast in this driver */
--
--static unsigned bs = 4;
--module_param(bs, uint, 0);
--MODULE_PARM_DESC(bs, "BS[2:0] Bias voltage level: 0-7 (default: 4)");
--
--static int init_display(struct fbtft_par *par)
--{
--	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "%s()\n", __func__);
--
--	par->fbtftops.reset(par);
--
--	/* Enter extended command mode */
--	write_reg(par, 0x21); /* 5:1  1
--				 2:0  PD - Powerdown control: chip is active
--				 1:0  V  - Entry mode: horizontal addressing
--				 0:1  H  - Extended instruction set control: extended
--			      */
--
--	/* H=1 Bias system */
--	write_reg(par, 0x10 | (bs & 0x7)); /*
--				 4:1  1
--				 3:0  0
--				 2:x  BS2 - Bias System
--				 1:x  BS1
--				 0:x  BS0
--			      */
--
--	/* Set the address of the first display line. */
--	write_reg(par, 0x04 | (64 >> 6));
--	write_reg(par, 0x40 | (64 & 0x3F));
--
--	/* Enter H=0 standard command mode */
--	write_reg(par, 0x20);
--
--	/* H=0 Display control */
--	write_reg(par, 0x08 | 4); /*
--				 3:1  1
--				 2:1  D  - DE: 10=normal mode
--				 1:0  0
--				 0:0  E
--			      */
--
--	return 0;
--}
--
--static void set_addr_win(struct fbtft_par *par, int xs, int ys, int xe, int ye)
--{
--	fbtft_par_dbg(DEBUG_SET_ADDR_WIN, par, "%s(xs=%d, ys=%d, xe=%d, ye=%d)\n", __func__, xs, ys, xe, ye);
--
--	/* H=0 Set X address of RAM */
--	write_reg(par, 0x80); /* 7:1  1
--				 6-0: X[6:0] - 0x00
--			      */
--
--	/* H=0 Set Y address of RAM */
--	write_reg(par, 0x40); /* 7:0  0
--				 6:1  1
--				 2-0: Y[2:0] - 0x0
--			      */
--}
--
--static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
--{
--	u16 *vmem16 = (u16 *)par->info->screen_base;
--	int x, y, i;
--	int ret = 0;
--
--	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
--
--	for (y = 0; y < HEIGHT/8; y++) {
--		u8 *buf = par->txbuf.buf;
--		/* The display is 102x68 but the LCD is 84x48.  Set
--		   the write pointer at the start of each row. */
--		gpio_set_value(par->gpio.dc, 0);
--		write_reg(par, 0x80 | 0);
--		write_reg(par, 0x40 | y);
--
--		for (x = 0; x < WIDTH; x++) {
--			u8 ch = 0;
--
--			for (i = 0; i < 8*WIDTH; i += WIDTH) {
--				ch >>= 1;
--				if (vmem16[(y*8*WIDTH)+i+x])
--					ch |= 0x80;
--			}
--			*buf++ = ch;
--		}
--		/* Write the row */
--		gpio_set_value(par->gpio.dc, 1);
--		ret = par->fbtftops.write(par, par->txbuf.buf, WIDTH);
--		if (ret < 0) {
--			dev_err(par->info->device,
--				"%s: write failed and returned: %d\n", __func__, ret);
--			break;
--		}
--	}
--
--	return ret;
--}
--
--static int set_gamma(struct fbtft_par *par, unsigned long *curves)
--{
--	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "%s()\n", __func__);
--
--	/* apply mask */
--	curves[0] &= 0x7F;
--
--	write_reg(par, 0x21); /* turn on extended instruction set */
--	write_reg(par, 0x80 | curves[0]);
--	write_reg(par, 0x20); /* turn off extended instruction set */
--
--	return 0;
--}
--
--
--static struct fbtft_display display = {
--	.regwidth = 8,
--	.width = WIDTH,
--	.height = HEIGHT,
--	.txbuflen = TXBUFLEN,
--	.gamma_num = 1,
--	.gamma_len = 1,
--	.gamma = DEFAULT_GAMMA,
--	.fbtftops = {
--		.init_display = init_display,
--		.set_addr_win = set_addr_win,
--		.write_vmem = write_vmem,
--		.set_gamma = set_gamma,
--	},
--	.backlight = 1,
--};
--FBTFT_REGISTER_DRIVER(DRVNAME, "teralane,tls8204", &display);
--
--MODULE_ALIAS("spi:" DRVNAME);
--MODULE_ALIAS("spi:tls8204");
--
--MODULE_DESCRIPTION("FB driver for the TLS8204 LCD Controller");
--MODULE_AUTHOR("Michael Hope");
--MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 3708bc1..a52573e 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -153,7 +153,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 			continue;
- 		}
+diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
+index 8f0d652..dd241bb 100644
+--- a/drivers/staging/vt6655/mac.c
++++ b/drivers/staging/vt6655/mac.c
+@@ -142,7 +142,7 @@ bool MACbIsIntDisable(void __iomem *dwIoBase)
+  */
+ void MACvSetShortRetryLimit(void __iomem *dwIoBase, unsigned char byRetryLimit)
+ {
+-	// set SRT
++	/* set SRT */
+ 	VNSvOutPortB(dwIoBase + MAC_REG_SRT, byRetryLimit);
+ }
  
--		index = simple_strtoul(cp, &temp, 10);
-+		index = kstrtoul(cp, &temp, 10);
- 		if (index > 255) {
- 			rejected++;
- 			cp = linefeed + 1;
-@@ -782,7 +782,7 @@ static ssize_t message_store_helper(const char *buf, size_t count,
- 			continue;
- 		}
+@@ -161,7 +161,7 @@ void MACvSetShortRetryLimit(void __iomem *dwIoBase, unsigned char byRetryLimit)
+  */
+ void MACvGetShortRetryLimit(void __iomem *dwIoBase, unsigned char *pbyRetryLimit)
+ {
+-	// get SRT
++	/* get SRT */
+ 	VNSvInPortB(dwIoBase + MAC_REG_SRT, pbyRetryLimit);
+ }
  
--		index = simple_strtoul(cp, &temp, 10);
-+		index = kstrtoul(cp, &temp, 10);
+@@ -181,7 +181,7 @@ void MACvGetShortRetryLimit(void __iomem *dwIoBase, unsigned char *pbyRetryLimit
+  */
+ void MACvSetLongRetryLimit(void __iomem *dwIoBase, unsigned char byRetryLimit)
+ {
+-	// set LRT
++	/* set LRT */
+ 	VNSvOutPortB(dwIoBase + MAC_REG_LRT, byRetryLimit);
+ }
  
- 		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
- 			temp++;
+@@ -205,7 +205,7 @@ void MACvSetLoopbackMode(void __iomem *dwIoBase, unsigned char byLoopbackMode)
+ 
+ 	ASSERT(byLoopbackMode < 3);
+ 	byLoopbackMode <<= 6;
+-	// set TCR
++	/* set TCR */
+ 	VNSvInPortB(dwIoBase + MAC_REG_TEST, &byOrgValue);
+ 	byOrgValue = byOrgValue & 0x3F;
+ 	byOrgValue = byOrgValue | byLoopbackMode;
+@@ -229,13 +229,13 @@ void MACvSaveContext(void __iomem *dwIoBase, unsigned char *pbyCxtBuf)
+ {
+ 	int         ii;
+ 
+-	// read page0 register
++	/* read page0 register */
+ 	for (ii = 0; ii < MAC_MAX_CONTEXT_SIZE_PAGE0; ii++)
+ 		VNSvInPortB((dwIoBase + ii), (pbyCxtBuf + ii));
+ 
+ 	MACvSelectPage1(dwIoBase);
+ 
+-	// read page1 register
++	/* read page1 register */
+ 	for (ii = 0; ii < MAC_MAX_CONTEXT_SIZE_PAGE1; ii++)
+ 		VNSvInPortB((dwIoBase + ii), (pbyCxtBuf + MAC_MAX_CONTEXT_SIZE_PAGE0 + ii));
+ 
+@@ -261,27 +261,27 @@ void MACvRestoreContext(void __iomem *dwIoBase, unsigned char *pbyCxtBuf)
+ 	int         ii;
+ 
+ 	MACvSelectPage1(dwIoBase);
+-	// restore page1
++	/* restore page1 */
+ 	for (ii = 0; ii < MAC_MAX_CONTEXT_SIZE_PAGE1; ii++)
+ 		VNSvOutPortB((dwIoBase + ii), *(pbyCxtBuf + MAC_MAX_CONTEXT_SIZE_PAGE0 + ii));
+ 
+ 	MACvSelectPage0(dwIoBase);
+ 
+-	// restore RCR,TCR,IMR...
++	/* restore RCR,TCR,IMR... */
+ 	for (ii = MAC_REG_RCR; ii < MAC_REG_ISR; ii++)
+ 		VNSvOutPortB(dwIoBase + ii, *(pbyCxtBuf + ii));
+ 
+-	// restore MAC Config.
++	/* restore MAC Config. */
+ 	for (ii = MAC_REG_LRT; ii < MAC_REG_PAGE1SEL; ii++)
+ 		VNSvOutPortB(dwIoBase + ii, *(pbyCxtBuf + ii));
+ 
+ 	VNSvOutPortB(dwIoBase + MAC_REG_CFG, *(pbyCxtBuf + MAC_REG_CFG));
+ 
+-	// restore PS Config.
++	/* restore PS Config. */
+ 	for (ii = MAC_REG_PSCFG; ii < MAC_REG_BBREGCTL; ii++)
+ 		VNSvOutPortB(dwIoBase + ii, *(pbyCxtBuf + ii));
+ 
+-	// restore CURR_RX_DESC_ADDR, CURR_TX_DESC_ADDR
++	/* restore CURR_RX_DESC_ADDR, CURR_TX_DESC_ADDR */
+ 	VNSvOutPortD(dwIoBase + MAC_REG_TXDMAPTR0, *(unsigned long *)(pbyCxtBuf + MAC_REG_TXDMAPTR0));
+ 	VNSvOutPortD(dwIoBase + MAC_REG_AC0DMAPTR, *(unsigned long *)(pbyCxtBuf + MAC_REG_AC0DMAPTR));
+ 	VNSvOutPortD(dwIoBase + MAC_REG_BCNDMAPTR, *(unsigned long *)(pbyCxtBuf + MAC_REG_BCNDMAPTR));
+@@ -309,7 +309,7 @@ bool MACbSoftwareReset(void __iomem *dwIoBase)
+ 	unsigned char byData;
+ 	unsigned short ww;
+ 
+-	// turn on HOSTCR_SOFTRST, just write 0x01 to reset
++	/* turn on HOSTCR_SOFTRST, just write 0x01 to reset */
+ 	VNSvOutPortB(dwIoBase + MAC_REG_HOSTCR, 0x01);
+ 
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+@@ -340,15 +340,15 @@ bool MACbSafeSoftwareReset(void __iomem *dwIoBase)
+ 	unsigned char abyTmpRegData[MAC_MAX_CONTEXT_SIZE_PAGE0+MAC_MAX_CONTEXT_SIZE_PAGE1];
+ 	bool bRetVal;
+ 
+-	// PATCH....
+-	// save some important register's value, then do
+-	// reset, then restore register's value
++	/* PATCH.... */
++	/* save some important register's value, then do */
++	/* reset, then restore register's value */
+ 
+-	// save MAC context
++	/* save MAC context */
+ 	MACvSaveContext(dwIoBase, abyTmpRegData);
+-	// do reset
++	/* do reset */
+ 	bRetVal = MACbSoftwareReset(dwIoBase);
+-	// restore MAC context, except CR0
++	/* restore MAC context, except CR0 */
+ 	MACvRestoreContext(dwIoBase, abyTmpRegData);
+ 
+ 	return bRetVal;
+@@ -373,9 +373,9 @@ bool MACbSafeRxOff(void __iomem *dwIoBase)
+ 	unsigned long dwData;
+ 	unsigned char byData;
+ 
+-	// turn off wow temp for turn off Rx safely
++	/* turn off wow temp for turn off Rx safely */
+ 
+-	// Clear RX DMA0,1
++	/* Clear RX DMA0,1 */
+ 	VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL0, DMACTL_CLRRUN);
+ 	VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL1, DMACTL_CLRRUN);
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+@@ -399,9 +399,9 @@ bool MACbSafeRxOff(void __iomem *dwIoBase)
+ 		return false;
+ 	}
+ 
+-	// try to safe shutdown RX
++	/* try to safe shutdown RX */
+ 	MACvRegBitsOff(dwIoBase, MAC_REG_HOSTCR, HOSTCR_RXON);
+-	// W_MAX_TIMEOUT is the timeout period
++	/* W_MAX_TIMEOUT is the timeout period */
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+ 		VNSvInPortB(dwIoBase + MAC_REG_HOSTCR, &byData);
+ 		if (!(byData & HOSTCR_RXONST))
+@@ -434,10 +434,10 @@ bool MACbSafeTxOff(void __iomem *dwIoBase)
+ 	unsigned long dwData;
+ 	unsigned char byData;
+ 
+-	// Clear TX DMA
+-	//Tx0
++	/* Clear TX DMA */
++	/* Tx0 */
+ 	VNSvOutPortD(dwIoBase + MAC_REG_TXDMACTL0, DMACTL_CLRRUN);
+-	//AC0
++	/* AC0 */
+ 	VNSvOutPortD(dwIoBase + MAC_REG_AC0DMACTL, DMACTL_CLRRUN);
+ 
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+@@ -461,10 +461,10 @@ bool MACbSafeTxOff(void __iomem *dwIoBase)
+ 		return false;
+ 	}
+ 
+-	// try to safe shutdown TX
++	/* try to safe shutdown TX */
+ 	MACvRegBitsOff(dwIoBase, MAC_REG_HOSTCR, HOSTCR_TXON);
+ 
+-	// W_MAX_TIMEOUT is the timeout period
++	/* W_MAX_TIMEOUT is the timeout period */
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+ 		VNSvInPortB(dwIoBase + MAC_REG_HOSTCR, &byData);
+ 		if (!(byData & HOSTCR_TXONST))
+@@ -528,10 +528,10 @@ bool MACbSafeStop(void __iomem *dwIoBase)
+  */
+ bool MACbShutdown(void __iomem *dwIoBase)
+ {
+-	// disable MAC IMR
++	/* disable MAC IMR */
+ 	MACvIntDisable(dwIoBase);
+ 	MACvSetLoopbackMode(dwIoBase, MAC_LB_INTERNAL);
+-	// stop the adapter
++	/* stop the adapter */
+ 	if (!MACbSafeStop(dwIoBase)) {
+ 		MACvSetLoopbackMode(dwIoBase, MAC_LB_NONE);
+ 		return false;
+@@ -555,18 +555,18 @@ bool MACbShutdown(void __iomem *dwIoBase)
+  */
+ void MACvInitialize(void __iomem *dwIoBase)
+ {
+-	// clear sticky bits
++	/* clear sticky bits */
+ 	MACvClearStckDS(dwIoBase);
+-	// disable force PME-enable
++	/* disable force PME-enable */
+ 	VNSvOutPortB(dwIoBase + MAC_REG_PMC1, PME_OVR);
+-	// only 3253 A
++	/* only 3253 A */
+ 
+-	// do reset
++	/* do reset */
+ 	MACbSoftwareReset(dwIoBase);
+ 
+-	// reset TSF counter
++	/* reset TSF counter */
+ 	VNSvOutPortB(dwIoBase + MAC_REG_TFTCTL, TFTCTL_TSFCNTRST);
+-	// enable TSF counter
++	/* enable TSF counter */
+ 	VNSvOutPortB(dwIoBase + MAC_REG_TFTCTL, TFTCTL_TSFCNTREN);
+ }
+ 
+@@ -697,7 +697,7 @@ void MACvSetCurrTx0DescAddrEx(void __iomem *dwIoBase, unsigned long dwCurrDescAd
+  * Return Value: none
+  *
+  */
+-//TxDMA1 = AC0DMA
++/* TxDMA1 = AC0DMA */
+ void MACvSetCurrAC0DescAddrEx(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
+ {
+ 	unsigned short ww;
+@@ -752,7 +752,7 @@ void MACvTimer0MicroSDelay(void __iomem *dwIoBase, unsigned int uDelay)
+ 	VNSvOutPortB(dwIoBase + MAC_REG_TMCTL0, 0);
+ 	VNSvOutPortD(dwIoBase + MAC_REG_TMDATA0, uDelay);
+ 	VNSvOutPortB(dwIoBase + MAC_REG_TMCTL0, (TMCTL_TMD | TMCTL_TE));
+-	for (ii = 0; ii < 66; ii++) {  // assume max PCI clock is 66Mhz
++	for (ii = 0; ii < 66; ii++) {  /* assume max PCI clock is 66Mhz */
+ 		for (uu = 0; uu < uDelay; uu++) {
+ 			VNSvInPortB(dwIoBase + MAC_REG_TMCTL0, &byValue);
+ 			if ((byValue == 0) ||
+@@ -799,14 +799,14 @@ bool MACbPSWakeup(void __iomem *dwIoBase)
+ {
+ 	unsigned char byOrgValue;
+ 	unsigned int ww;
+-	// Read PSCTL
++	/* Read PSCTL */
+ 	if (MACbIsRegBitsOff(dwIoBase, MAC_REG_PSCTL, PSCTL_PS))
+ 		return true;
+ 
+-	// Disable PS
++	/* Disable PS */
+ 	MACvRegBitsOff(dwIoBase, MAC_REG_PSCTL, PSCTL_PSEN);
+ 
+-	// Check if SyncFlushOK
++	/* Check if SyncFlushOK */
+ 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+ 		VNSvInPortB(dwIoBase + MAC_REG_PSCTL , &byOrgValue);
+ 		if (byOrgValue & PSCTL_WAKEDONE)
+@@ -878,7 +878,7 @@ void MACvSetKeyEntry(void __iomem *dwIoBase, unsigned short wKeyCtl, unsigned in
+ 
+ 	wOffset += (uKeyIdx * 4);
+ 	for (ii = 0; ii < 4; ii++) {
+-		// always push 128 bits
++		/* always push 128 bits */
+ 		pr_debug("3.(%d) wOffset: %d, Data: %X\n",
+ 			 ii, wOffset+ii, *pdwKey);
+ 		VNSvOutPortW(dwIoBase + MAC_REG_MISCFFNDEX, wOffset+ii);
 -- 
-1.8.3.2
+1.9.1
 
 
