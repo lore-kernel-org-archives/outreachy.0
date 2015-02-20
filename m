@@ -1,80 +1,106 @@
-X-GM-THRID: 1427250348032
+X-GM-THRID: 1469972480000
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,5782da9d37db3af6,start
+X-Google-Thread: 9ca63f596c,d9de63814c425282
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.87.166 with SMTP id az6mr549939wib.1.1424456855506;
-        Fri, 20 Feb 2015 10:27:35 -0800 (PST)
+X-Received: by 10.236.3.106 with SMTP id 70mr11418601yhg.20.1424466765766;
+        Fri, 20 Feb 2015 13:12:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.208 with SMTP id l16ls289974laa.66.gmail; Fri, 20 Feb
- 2015 10:27:34 -0800 (PST)
-X-Received: by 10.112.77.101 with SMTP id r5mr1525642lbw.4.1424456854809;
-        Fri, 20 Feb 2015 10:27:34 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
-        by gmr-mx.google.com with ESMTPS id by11si375812wib.1.2015.02.20.10.27.34
+Received: by 10.50.79.168 with SMTP id k8ls325940igx.16.canary; Fri, 20 Feb
+ 2015 13:12:45 -0800 (PST)
+X-Received: by 10.66.224.238 with SMTP id rf14mr11671467pac.11.1424466765527;
+        Fri, 20 Feb 2015 13:12:45 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qg0-x22d.google.com (mail-qg0-x22d.google.com. [2607:f8b0:400d:c04::22d])
+        by gmr-mx.google.com with ESMTPS id kt5si5706518qcb.3.2015.02.20.13.12.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 10:27:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
+        Fri, 20 Feb 2015 13:12:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) client-ip=2607:f8b0:400d:c04::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=aybuke.147@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesw62 with SMTP id w62so7101472wes.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 10:27:34 -0800 (PST)
+Received: by mail-qg0-f45.google.com with SMTP id h3so16241244qgf.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 13:12:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=t8Rk4/7gY0frnG57J75W4FoFUY7gLmEKqyevZ+Xh0jw=;
-        b=yGkNZ5R0CnIKHbdaT9Ac1XCfjc4f5Mc/Z/pVpUMUsKD/i+oWWrIKWqGx8ln5RivND/
-         KEXPHFEJpz+yk1Zqb8j3hbJDwkII6huZg0DHx6W2cp/M0TrsMFOzM14dcTZ7fqtVuLUL
-         ol+Th8hzeENIf9KHw8vyu6tuAqIOVwL0hkk/VLrp0f18MAVtLMlX35zMJv7T/DOWDxxX
-         yIDK183tqDWYq6ocQHXmZm4Ki64dJZngYWAbEP2WuF3QDbEc6K0xCSCDM1mqmDILkkdm
-         TmIsByWqpMsOpS/ovsP0DewbYp8Ylz1PqZQyTBLWYhFpif9PU03acon02Vxk3bSLFM7O
-         xNOg==
-X-Received: by 10.194.220.7 with SMTP id ps7mr22112173wjc.84.1424456854680;
-        Fri, 20 Feb 2015 10:27:34 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id d10sm43158713wjn.45.2015.02.20.10.27.33
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Feb 2015 10:27:33 -0800 (PST)
-From: aybuke ozdemir <aybuke.147@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH] Staging: lustre: lustre: fid: Remove unnecessary else after return
-Date: Fri, 20 Feb 2015 20:27:18 +0200
-Message-Id: <1424456838-6096-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=from:message-id:date:user-agent:mime-version:to:cc:subject
+         :references:in-reply-to:content-type:content-transfer-encoding;
+        bh=j3RL5mXql6uZs6bkG+NTqqS7aMuRCHQkixBw8hixGGQ=;
+        b=ORRUuFpXoQmEsbB8/Vtmg8uDmoHsiWlWGqMAVvaV2IAhnaFfVVZCHkPHX+9JttvGB/
+         0ltGWVEOmWGWHxdm5Na2NsUEHA6p7/qNtu1QtUJL38cqub3K8QyL46WEp8C9xDeGaWl7
+         XFErFMAmKRIKUc2DS7ETk5l3umgAN29cMNFcmSzYrkn+Q8DxTo1R7BIlRpXv4UJvki80
+         RG6vicdk36TTxPcVaFwZyZ12+6S7yM8L11wtWMJUksTVpajKUaS2i5IbCmy+jkWft4Ul
+         A3n6XW8FQFPAx9w46a8VGwHJU9GFD0VzKgWGCuHdIaUWhjnJwBbciY8SfvVTfCNCitL7
+         E+rw==
+X-Received: by 10.140.164.8 with SMTP id k8mr28752265qhk.23.1424466765387;
+        Fri, 20 Feb 2015 13:12:45 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 81sm12606338qhh.46.2015.02.20.13.12.43
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Feb 2015 13:12:44 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54E7A34A.60404@gmail.com>
+Date: Fri, 20 Feb 2015 16:12:42 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: =?UTF-8?B?S3NlbmlqYSBTdGFub2pldmnEhw==?=
+ <ksenija.stanojevic@gmail.com>
+CC: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: ieee80211: Replace
+ <asm/string.h> with <linux/string.h>
+References: <1424460720-6136-1-git-send-email-ksenija.stanojevic@gmail.com>	<54E78F3E.7010704@gmail.com> <CAL7P5j+ucoNiBEbRfkwZFObjPxH8=i0yMQTNxsoCj8fubdbSHw@mail.gmail.com>
+In-Reply-To: <CAL7P5j+ucoNiBEbRfkwZFObjPxH8=i0yMQTNxsoCj8fubdbSHw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 
-This patch fixes the following checkpatch warning:
-WARNING : else is not generally useful after a break or return
-204: FILE: drivers/staging/lustre/lustre/fid/fid_request.c
+On 02/20/15 15:45, Ksenija Stanojević wrote:
+> Ok. Should i make a separate patch or v2 of one of them?
 
-Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
----
- drivers/staging/lustre/lustre/fid/fid_request.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Yes please merge and repost - and as Julia said, please don't top-post
+it's bad email etiquette. Community people generally frown upon it.
 
-diff --git a/drivers/staging/lustre/lustre/fid/fid_request.c b/drivers/staging/lustre/lustre/fid/fid_request.c
-index 063441a..54dcfa3 100644
---- a/drivers/staging/lustre/lustre/fid/fid_request.c
-+++ b/drivers/staging/lustre/lustre/fid/fid_request.c
-@@ -201,10 +201,9 @@ static int seq_client_alloc_seq(const struct lu_env *env,
- 			CERROR("%s: Can't allocate new meta-sequence, rc %d\n",
- 			       seq->lcs_name, rc);
- 			return rc;
--		} else {
--			CDEBUG(D_INFO, "%s: New range - "DRANGE"\n",
--			       seq->lcs_name, PRANGE(&seq->lcs_space));
- 		}
-+		CDEBUG(D_INFO, "%s: New range - "DRANGE"\n",
-+			seq->lcs_name, PRANGE(&seq->lcs_space));
- 	} else {
- 		rc = 0;
- 	}
--- 
-1.9.1
+Jes
+
+> On Fri, Feb 20, 2015 at 8:47 PM, Jes Sorensen <jes.sorensen@gmail.com>
+> wrote:
+> 
+>> On 02/20/15 14:32, Ksenija Stanojevic wrote:
+>>> This patch fixes the following checkpatch.pl warning:
+>>> Use #include <linux/string.h> instead of <asm/string.h>
+>>>
+>>> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+>>> ---
+>>>  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+>> b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+>>> index 5533221..80dfa07 100644
+>>> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+>>> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+>>> @@ -15,7 +15,7 @@
+>>>  #include <linux/module.h>
+>>>  #include <linux/init.h>
+>>>  #include <linux/slab.h>
+>>> -#include <asm/string.h>
+>>> +#include <linux/string.h>
+>>>  #include <asm/errno.h>
+>>>
+>>>  #include "ieee80211.h"
+>>>
+>>
+>> I just noticed you were generating two patches for very similar changes
+>> errno.h and string.h. Since these changes are to the same file and
+>> basically identical changes, doing them both in one patch is preferred.
+>>
+>> Cheers,
+>> Jes
+>>
+>>
+> 
 
 
