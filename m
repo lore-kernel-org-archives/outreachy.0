@@ -1,81 +1,87 @@
 X-GM-THRID: 1123382460416
-X-Received: by 10.180.13.98 with SMTP id g2mr198030wic.3.1424418707630;
-        Thu, 19 Feb 2015 23:51:47 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,f5f770e6dd3ab2f2,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.68.57.130 with SMTP id i2mr8171677pbq.1.1424417336471;
+        Thu, 19 Feb 2015 23:28:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.93.228 with SMTP id cx4ls42215wib.29.gmail; Thu, 19 Feb
- 2015 23:51:47 -0800 (PST)
-X-Received: by 10.180.12.146 with SMTP id y18mr1185591wib.6.1424418707315;
-        Thu, 19 Feb 2015 23:51:47 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id el6si48349wib.2.2015.02.19.23.51.47
+Received: by 10.140.39.49 with SMTP id u46ls1108521qgu.3.gmail; Thu, 19 Feb
+ 2015 23:28:56 -0800 (PST)
+X-Received: by 10.236.222.161 with SMTP id t31mr7913120yhp.1.1424417336308;
+        Thu, 19 Feb 2015 23:28:56 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id ki8si3188780pdb.1.2015.02.19.23.28.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 19 Feb 2015 23:51:47 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Feb 2015 23:28:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,613,1418079600"; 
-   d="scan'208";a="100703367"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2015 08:51:46 +0100
-Date: Fri, 20 Feb 2015 08:51:45 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Vaishali Thakkar <vthakkar1994@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove unused
- struct ndis_802_11_key
-In-Reply-To: <20150220072850.GA8648@vaishali-Ideapad-Z570>
-Message-ID: <alpine.DEB.2.02.1502200851350.2045@localhost6.localdomain6>
-References: <20150220072850.GA8648@vaishali-Ideapad-Z570>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pabkx10 with SMTP id kx10so5988463pab.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 23:28:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=QiTf5v1Mzhi7L+bKQB6qp0kvlN8/L4N9ZRzTCFjaLkU=;
+        b=esQY0G2OuuPPnTsG04yqNm/FSvDpt/AVkRmhzsS4BX4pGjxikfFuVOqu0hD5dVQdBf
+         L5lB6Rdb0/kchuFyd2EXuRU5V6vDBQwiomHCm6f5Jlt8YQTqhb4Ueg2hvSQbEzmFg5de
+         YaYg/mMjmENH2Rrf4WktVVm1G/0cQs0WWtHXdoqhlFjcm7WBmqUxI9uS3jerPqh7ik29
+         3gjRptTcLTNu+P1Rlb6iTtSuGJRHrEUeBsKkFiDBNHd/hor9QGoQmrUu96Zyt7NGINBr
+         P1JZX4hOZeMeeOgeRXVyzysjDxeaDsSC/dNKs/WfPzq6yX0wVmy9Kh7/fnYeA4LqSgIR
+         m4Dw==
+X-Received: by 10.70.38.163 with SMTP id h3mr14207811pdk.95.1424417336156;
+        Thu, 19 Feb 2015 23:28:56 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([150.107.241.68])
+        by mx.google.com with ESMTPSA id bw3sm25867665pbb.9.2015.02.19.23.28.54
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 19 Feb 2015 23:28:55 -0800 (PST)
+Date: Fri, 20 Feb 2015 12:58:50 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8188eu: Remove unused struct ndis_802_11_key
+Message-ID: <20150220072850.GA8648@vaishali-Ideapad-Z570>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, 20 Feb 2015, Vaishali Thakkar wrote:
+This patch removes struct ndis_802_11_key as it is defined
+in a header file but never used.
 
-> This patch removes struct ndis_802_11_key as it is defined
-> in a header file but never used.
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+---
+ drivers/staging/rtl8188eu/include/wlan_bssdef.h | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-How did you find it?
+diff --git a/drivers/staging/rtl8188eu/include/wlan_bssdef.h b/drivers/staging/rtl8188eu/include/wlan_bssdef.h
+index 53b1bd8..85b99da 100644
+--- a/drivers/staging/rtl8188eu/include/wlan_bssdef.h
++++ b/drivers/staging/rtl8188eu/include/wlan_bssdef.h
+@@ -156,16 +156,6 @@ enum ndis_802_11_reload_def {
+ 	Ndis802_11ReloadWEPKeys
+ };
+ 
+-/*  Key mapping keys require a BSSID */
+-struct ndis_802_11_key {
+-	u32           Length;             /*  Length of this structure */
+-	u32           KeyIndex;
+-	u32           KeyLength;          /*  length of key in bytes */
+-	unsigned char BSSID[ETH_ALEN];
+-	unsigned long long KeyRSC;
+-	u8           KeyMaterial[32];  /* var len depending on above field */
+-};
+-
+ struct ndis_802_11_remove_key {
+ 	u32                   Length;        /*  Length */
+ 	u32                   KeyIndex;
+-- 
+1.9.1
 
-julia
-
-> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/include/wlan_bssdef.h | 10 ----------
->  1 file changed, 10 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8188eu/include/wlan_bssdef.h b/drivers/staging/rtl8188eu/include/wlan_bssdef.h
-> index 53b1bd8..85b99da 100644
-> --- a/drivers/staging/rtl8188eu/include/wlan_bssdef.h
-> +++ b/drivers/staging/rtl8188eu/include/wlan_bssdef.h
-> @@ -156,16 +156,6 @@ enum ndis_802_11_reload_def {
->  	Ndis802_11ReloadWEPKeys
->  };
->  
-> -/*  Key mapping keys require a BSSID */
-> -struct ndis_802_11_key {
-> -	u32           Length;             /*  Length of this structure */
-> -	u32           KeyIndex;
-> -	u32           KeyLength;          /*  length of key in bytes */
-> -	unsigned char BSSID[ETH_ALEN];
-> -	unsigned long long KeyRSC;
-> -	u8           KeyMaterial[32];  /* var len depending on above field */
-> -};
-> -
->  struct ndis_802_11_remove_key {
->  	u32                   Length;        /*  Length */
->  	u32                   KeyIndex;
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150220072850.GA8648%40vaishali-Ideapad-Z570.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
