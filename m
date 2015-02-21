@@ -1,76 +1,95 @@
-X-GM-THRID: 2891853070336
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b1bf655331298113,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.83.168 with SMTP id r8mr1007124wiy.6.1424712762751;
-        Mon, 23 Feb 2015 09:32:42 -0800 (PST)
+X-GM-THRID: 1068226314240
+X-Received: by 10.181.29.66 with SMTP id ju2mr78626wid.1.1424493040103;
+        Fri, 20 Feb 2015 20:30:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.81.167 with SMTP id b7ls610369wiy.41.canary; Mon, 23 Feb
- 2015 09:32:42 -0800 (PST)
-X-Received: by 10.181.13.236 with SMTP id fb12mr1480616wid.1.1424712762396;
-        Mon, 23 Feb 2015 09:32:42 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
-        by gmr-mx.google.com with ESMTPS id el6si739677wib.2.2015.02.23.09.32.42
+Received: by 10.152.242.164 with SMTP id wr4ls385974lac.79.gmail; Fri, 20 Feb
+ 2015 20:30:39 -0800 (PST)
+X-Received: by 10.152.26.74 with SMTP id j10mr118323lag.10.1424493039504;
+        Fri, 20 Feb 2015 20:30:39 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
+        by gmr-mx.google.com with ESMTPS id ew5si237301wid.1.2015.02.20.20.30.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 09:32:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
+        Fri, 20 Feb 2015 20:30:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22a.google.com with SMTP id w55so20165126wes.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 09:32:42 -0800 (PST)
+Received: by mail-wg0-f45.google.com with SMTP id k14so16529078wgh.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 20:30:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=2exVNxm43KY/Fbt85qym2XfmXv686dwnTH/s0IhYmC0=;
-        b=XusfVCFFXNccbCKQy0NF5+uXN5R9ccmwPxaHjYjzzQwAYb8PLCE4XLkijhrxM9ntB4
-         KaRSrFTAWNDcuQuAIwK/MO4B9vW2+5lVXoaerQ/I4ekbJmgTL75XC3DTXb+130/+IpK3
-         VpSSkNRDLmOa7a+uyJxjNH0urPQoMQ4tMBwFFVNwCblywHdaG50b8aqMTLECbXg9GqyD
-         kNJa92WX2MZFhDGjK0vFK/iqhpTWZmFDCwgtD2xTuDm3TP7rbm+eUtQcmCGie+qKthEK
-         d6UeeZB9qunUTm7SxJ81+e/0LDihV0GtaqnVGMTGYP6gwezklnqGncwVGdvnYTPw+7Hc
-         IW5w==
-X-Received: by 10.180.102.73 with SMTP id fm9mr23257503wib.12.1424712762292;
-        Mon, 23 Feb 2015 09:32:42 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id s5sm21231284wia.1.2015.02.23.09.32.40
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Feb 2015 09:32:41 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v2] Staging: octeon-usb: Remove unnecessary braces
-Date: Mon, 23 Feb 2015 18:32:32 +0100
-Message-Id: <1424712752-3728-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=pAldOz6SIOM9HbMqP3nZqjXuHmyQR5kwF1mUiL5afgc=;
+        b=bN1K+Tw/6LzVnvDPMAR3mRFq93cosmGRnwnI15OGZjbUhnd/ufqjHjYgvxiTEZukfx
+         fP1CA3HovFN7KrdII2beUOAcNYqn9rQPqkGfsQE9wVkVr9vwNjn3fWp1uqDPt7OPiZHe
+         oJSIIDDSFCrwuq8TJiso4rVVWryu23R1dBOz9LPGrN+9heErlbcffJqt9VFgi+fTyMFF
+         Lj7xQvIO4gQZwnJzjMxwNPKu9nPLl0Hrbjh+yYR+ZZgIaEWRk9aWuo4FCkBjMku9Htdz
+         uuZ1/wsgZjXQIH5YX2QcXkZpHTyjPwGki074gzfYs+Q1ljKXgczZSSRt4ozZxszVdunN
+         dLOA==
+X-Received: by 10.180.85.39 with SMTP id e7mr981130wiz.90.1424493039384;
+        Fri, 20 Feb 2015 20:30:39 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.214.14])
+        by mx.google.com with ESMTPSA id p1sm5270658wib.23.2015.02.20.20.30.37
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 20:30:38 -0800 (PST)
+Date: Sat, 21 Feb 2015 06:30:35 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: Preeti U Murthy <preeti@linux.vnet.ibm.com>, julia.lawall@lip6.fr
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/2] Use #include <linux/uaccess.h>
+ instead of <asm/uaccess.h>
+Message-ID: <20150221043035.GA12042@localhost.localdomain>
+References: <cover.1424395309.git.mahfouz.saif.elyazal@gmail.com>
+ <54E6E6C0.1090605@linux.vnet.ibm.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <54E6E6C0.1090605@linux.vnet.ibm.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes unnecessary braces. Issue found by checkpatch.pl
+On Fri, Feb 20, 2015 at 01:18:16PM +0530, Preeti U Murthy wrote:
+> Hi Aya,
+> 
+> On 02/20/2015 07:13 AM, Aya Mahfouz wrote:
+> > This patchset replaces <asm/uaccess.h> by <linux/uaccess.h>. The
+> > replacements is safe since the header file <linux/uaccess.h> includes
+> > <asm/uaccess.h>
+> 
+> Like Julia mentioned its a thoughtful comment. Such explanations are
+> encouraged. However, it will be more valuable to include the above
+> explanation in the changelogs of the patches also since those go into
+> the git log of the kernel. The cover letter contains an overview of the
+> patchset to help the reviewers. They do not get documented in the
+> history of changes to the kernel. Would you therefore be able to resend
+> this as a fresh version including the above lines in the changelog of
+> the individual patches?
+> 
+> Regards
+> Preeti U Murthy
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-v2: remove braces instead of space.
+Thank you Julia and Preeti for your comments. I will not send a new
+version of this patch since the driver will be out of staging as Julia
+stated in another thread. However, I will keep your advice in mind for
+future patches.
 
- drivers/staging/octeon-usb/octeon-hcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
-diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
-index 1daeb31..400a630 100644
---- a/drivers/staging/octeon-usb/octeon-hcd.c
-+++ b/drivers/staging/octeon-usb/octeon-hcd.c
-@@ -412,7 +412,7 @@ struct octeon_hcd {
- 		type c;							    \
- 		while (1) {						    \
- 			c.u32 = __cvmx_usb_read_csr32(usb, address);	    \
--			if (c.s.field op (value)) {			    \
-+			if (c.s.field op value) {			    \
- 				result = 0;				    \
- 				break;					    \
- 			} else if (cvmx_get_cycle() > done) {		    \
--- 
-1.9.1
-
+> > 
+> > Aya Mahfouz (2):
+> >   staging: i2o: Use #include <linux/uaccess.h> instead of
+> >     <asm/uaccess.h>
+> >   staging: i2o: Use #include <linux/uaccess.h> instead of
+> >     <asm/uaccess.h>
+> > 
+> >  drivers/staging/i2o/i2o_config.c | 3 +--
+> >  drivers/staging/i2o/i2o_proc.c   | 2 +-
+> >  2 files changed, 2 insertions(+), 3 deletions(-)
+> > 
+> 
 
