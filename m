@@ -1,66 +1,78 @@
 X-GM-THRID: 2004918206464
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b8f4bc22680c0184
+X-Google-Thread: 9ca63f596c,b8f4bc22680c0184,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.182.44 with SMTP id eb12mr418874wic.4.1424554474282;
-        Sat, 21 Feb 2015 13:34:34 -0800 (PST)
+X-Received: by 10.180.39.164 with SMTP id q4mr358667wik.5.1424542622694;
+        Sat, 21 Feb 2015 10:17:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.4.131 with SMTP id k3ls406793lak.21.gmail; Sat, 21 Feb
- 2015 13:34:33 -0800 (PST)
-X-Received: by 10.112.144.130 with SMTP id sm2mr470836lbb.9.1424554473700;
-        Sat, 21 Feb 2015 13:34:33 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id cl5si374558wib.3.2015.02.21.13.34.33
+Received: by 10.180.91.46 with SMTP id cb14ls296019wib.52.gmail; Sat, 21 Feb
+ 2015 10:17:02 -0800 (PST)
+X-Received: by 10.194.201.10 with SMTP id jw10mr395259wjc.3.1424542622395;
+        Sat, 21 Feb 2015 10:17:02 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-we0-x244.google.com (mail-we0-x244.google.com. [2a00:1450:400c:c03::244])
+        by gmr-mx.google.com with ESMTPS id ev8si339051wib.3.2015.02.21.10.17.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 13:34:33 -0800 (PST)
-Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.17.10;
+        Sat, 21 Feb 2015 10:17:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::244 as permitted sender) client-ip=2a00:1450:400c:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue101) with ESMTPSA (Nemesis) id 0MTgfY-1Xyma01wIa-00QRiT; Sat, 21 Feb
- 2015 22:34:32 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-x244.google.com with SMTP id k11so3640422wes.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 10:17:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=1ceRbeTiIVuFMO355TPNHKiNhlQi2DHXf3ibap6ng8c=;
+        b=iAnT33tA6FJkcozRSNJ3zkAGtf08XM/3Y0R9bGCS5/wV9sGVaHOyE+Ihs570M0gWgj
+         KZQNoyRagayBf6SC9PPxrNH5DtnD6jP5D3TGi4eNN2VhY8oPCgpRUP+N6+cK6ilzRCKz
+         Vxzrjngzsg6FxMKNT98vSuHlVt8J51YwHxsYrMnFC7pggzcdTe3a83X6BztBsw07Ecbr
+         DcPetq/fYg8D1azUzU4m9eN0oarVdK80wYGSAojJhXcOEO9BpAMQOMV8GVBxBylOZyri
+         j2zCkblEQZ1RBji/5VvazWZM3vJZDjsxZjzeawUYwTFyR0EJzTV2A6uNizkV0mS7RZDK
+         zfhg==
+X-Received: by 10.181.13.42 with SMTP id ev10mr5858678wid.69.1424542622313;
+        Sat, 21 Feb 2015 10:17:02 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id bf8sm38666463wjb.37.2015.02.21.10.17.01
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 21 Feb 2015 10:17:01 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice =?ISO-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: core: else is not generally useful after a break or return
-Date: Sat, 21 Feb 2015 22:34:31 +0100
-Message-ID: <13586314.AW5Wp0HSbj@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1424542612-19551-1-git-send-email-haticeerturk27@gmail.com>
-References: <1424542612-19551-1-git-send-email-haticeerturk27@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
-X-Provags-ID:  V03:K0:UO9S7aXdstv1sMkXG9dF6UgXZcvK955PsD9UbLWqROiGkzi5mXn
- mDFexwRPei42Licdoo/jp3vsYmM6Q5+nkpVP2DY0MSUKXsPXEl5LOVc7EJUN3E5P52DQD36
- hwY6Ejtm64FH6qNvJMTGzSu2Ve/XtixNyZ68YWrHskM2gepI0my4cl3EGgK9lbghN1gOAuT
- qMWwMWxfJ7PbNG4LVDaeA==
-X-UI-Out-Filterresults: notjunk:1;
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: rtl8188eu: core: else is not generally useful after a break or return
+Date: Sat, 21 Feb 2015 20:16:52 +0200
+Message-Id: <1424542612-19551-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Saturday 21 February 2015 20:16:52 Hatice ERT=DCRK wrote:
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/stag=
-ing/rtl8188eu/core/rtw_recv.c
-> index bd79e9e..2b022be 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-> @@ -1779,8 +1779,8 @@ static int enqueue_reorder_recvframe(struct rec=
-v_reorder_ctrl *preorder_ctrl,
->                         plist =3D plist->next;
->                 else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_=
-num))
->                         return false;
-> -               else
-> -                       break;
-> +
-> +               break;
->         }
-> =20
+Fixes checkpatch warnings:
 
-This is not a correct change, you add a 'break' in the case that
-the first condition was true, which did not exist earlier.
+WARNING: else is not generally useful after a break or return
 
-=09Arnd
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index bd79e9e..2b022be 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -1779,8 +1779,8 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
+ 			plist = plist->next;
+ 		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+ 			return false;
+-		else
+-			break;
++
++		break;
+ 	}
+ 
+ 	list_del_init(&(prframe->list));
+-- 
+1.9.1
+
 
