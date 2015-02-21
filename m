@@ -1,75 +1,73 @@
 X-GM-THRID: 1726977409024
-X-Received: by 10.112.167.98 with SMTP id zn2mr320588lbb.6.1424530628187;
-        Sat, 21 Feb 2015 06:57:08 -0800 (PST)
+X-Received: by 10.152.19.100 with SMTP id d4mr261566lae.7.1424519098859;
+        Sat, 21 Feb 2015 03:44:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.234.165 with SMTP id uf5ls389021lac.60.gmail; Sat, 21 Feb
- 2015 06:57:06 -0800 (PST)
-X-Received: by 10.152.1.5 with SMTP id 5mr329003lai.4.1424530626687;
-        Sat, 21 Feb 2015 06:57:06 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id el6si321005wib.2.2015.02.21.06.57.06
+Received: by 10.152.26.74 with SMTP id j10ls386433lag.7.gmail; Sat, 21 Feb
+ 2015 03:44:57 -0800 (PST)
+X-Received: by 10.112.146.65 with SMTP id ta1mr256750lbb.19.1424519097271;
+        Sat, 21 Feb 2015 03:44:57 -0800 (PST)
+Return-Path: <aybuke.147@gmail.com>
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id i7si292274wif.0.2015.02.21.03.44.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 06:57:06 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 21 Feb 2015 03:44:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,620,1418079600"; 
-   d="scan'208";a="122804754"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 15:57:06 +0100
-Date: Sat, 21 Feb 2015 15:57:00 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: aybuke ozdemir <aybuke.147@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/5] Staging: lustre: Corrected code
- indentation
-In-Reply-To: <1424519075-4378-3-git-send-email-aybuke.147@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502211556230.2480@hadrien>
-References: <1424519075-4378-1-git-send-email-aybuke.147@gmail.com> <1424519075-4378-3-git-send-email-aybuke.147@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=aybuke.147@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x235.google.com with SMTP id r20so7815887wiv.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 03:44:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=fZJK9QdpBguIYwS45JwxK7GsSu8tfVB+qP1lHpvrlf4=;
+        b=TzykOB+cPdqP2hssAQwU6VYap6td6YHAW0g2bq7xWqisu1e8jMVJrXcRABDTvJPZ2i
+         atEq+dezUn3D6h52g9P899ovMqJ+L9ikzjBoRcSY0KOvd2+aaFHVvB1RAdYv92LmhQZ1
+         yhsqmAuX5IufHuLqd4TSuMHTlgpltNybVztm/8joaWZC/euWx+uX/98U+eyv2WVzIYIO
+         OCGtX2z78pK8mtfbWLGc055ce44F4yLUazjiHURjy150S7F5tzhKsmYXKXDrJUtUrjXL
+         2Y0LGFaXPTVLIGxbnHO7Z2GC9LMUg7MiOwZX4u3Ad0UiYN+vr07HlNtDBfdTnN+EnkZM
+         u7pg==
+X-Received: by 10.180.86.201 with SMTP id r9mr3423410wiz.56.1424519097187;
+        Sat, 21 Feb 2015 03:44:57 -0800 (PST)
+Return-Path: <aybuke.147@gmail.com>
+Received: from localhost.localdomain ([81.214.238.226])
+        by mx.google.com with ESMTPSA id ee10sm11061487wib.0.2015.02.21.03.44.55
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 21 Feb 2015 03:44:56 -0800 (PST)
+From: aybuke ozdemir <aybuke.147@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: aybuke ozdemir <aybuke.147@gmail.com>
+Subject: [PATCH 5/5] Staging: lustre: Remove space after the name of that function
+Date: Sat, 21 Feb 2015 13:44:35 +0200
+Message-Id: <1424519075-4378-5-git-send-email-aybuke.147@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1424519075-4378-1-git-send-email-aybuke.147@gmail.com>
+References: <1424519075-4378-1-git-send-email-aybuke.147@gmail.com>
 
-On Sat, 21 Feb 2015, aybuke ozdemir wrote:
+Fix checkpatch.pl issues with "space prohibited between function name and
+open parenthesis" in file.c
 
-> This patch fixes these warning messages found by checkpatch.pl:
-> WARNING: suspect code indent for conditional statements(8,15)
+Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
+---
+ drivers/staging/lustre/lustre/llite/file.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-It would be good to say what you have done, rather than just that you have
-fixed something.  In this case I suspect that you converted spaces to
-tabs?
+diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
+index 2dd6a8d..16e3045 100644
+--- a/drivers/staging/lustre/lustre/llite/file.c
++++ b/drivers/staging/lustre/lustre/llite/file.c
+@@ -693,7 +693,7 @@ restart:
+ out_och_free:
+ 	if (rc) {
+ 		if (och_p && *och_p) {
+-			OBD_FREE(*och_p, sizeof (struct obd_client_handle));
++			OBD_FREE(*och_p, sizeof(struct obd_client_handle));
+ 			*och_p = NULL; /* OBD_FREE writes some magic there */
+ 			(*och_usecount)--;
+ 		}
+-- 
+1.9.1
 
-julia
-
-> Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
-> ---
->  drivers/staging/lustre/lustre/llite/file.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
-> index 845589f..9a7ab65 100644
-> --- a/drivers/staging/lustre/lustre/llite/file.c
-> +++ b/drivers/staging/lustre/lustre/llite/file.c
-> @@ -2822,7 +2822,7 @@ int ll_have_md_lock(struct inode *inode, __u64 *bits,  ldlm_mode_t l_req_mode)
->  	int i;
->
->  	if (!inode)
-> -	       return 0;
-> +		return 0;
->
->  	fid = &ll_i2info(inode)->lli_fid;
->  	CDEBUG(D_INFO, "trying to match res "DFID" mode %s\n", PFID(fid),
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424519075-4378-3-git-send-email-aybuke.147%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
