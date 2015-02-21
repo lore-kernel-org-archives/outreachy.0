@@ -1,70 +1,73 @@
-X-GM-THRID: 761102598144
-X-Received: by 10.181.13.236 with SMTP id fb12mr890692wid.1.1424368262181;
-        Thu, 19 Feb 2015 09:51:02 -0800 (PST)
+X-GM-THRID: 2189232701440
+X-Received: by 10.152.43.166 with SMTP id x6mr444854lal.3.1424553042048;
+        Sat, 21 Feb 2015 13:10:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.24.165 with SMTP id v5ls347902wif.25.gmail; Thu, 19 Feb
- 2015 09:51:01 -0800 (PST)
-X-Received: by 10.180.105.129 with SMTP id gm1mr884310wib.3.1424368261780;
-        Thu, 19 Feb 2015 09:51:01 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id r6si4559509wix.0.2015.02.19.09.51.01
+Received: by 10.181.27.131 with SMTP id jg3ls310638wid.12.gmail; Sat, 21 Feb
+ 2015 13:10:41 -0800 (PST)
+X-Received: by 10.180.80.35 with SMTP id o3mr459818wix.0.1424553041785;
+        Sat, 21 Feb 2015 13:10:41 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
+        by gmr-mx.google.com with ESMTPS id i7si377952wif.0.2015.02.21.13.10.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 09:51:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        Sat, 21 Feb 2015 13:10:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=aybuke.147@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id em10so49909651wid.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 09:51:01 -0800 (PST)
+Received: by mail-we0-x229.google.com with SMTP id x3so11416452wes.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 13:10:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=0jwR6UpsjxB5WHBAM2wwWfdEfwdNevJ+C7Saf4lwOm0=;
-        b=0TWIKviNf/4k9EB3Vz45vdY6852ZHvaNltAu3Z7ZeK+H2xRhbHQZGanIzNkqGjSPSW
-         aCdf9vKu2UUVikwzYnFWI2GkKlSNEu0Zh1oC8J3/+K2R50+C99b41cso3TQQLnAGVdgQ
-         fezr+jZl3L8jHkfhgrr1uIqcjJInFQoLyBPgW1jzyPde9Xi1+iq8YpNXxljVVF0eIj7X
-         IhtDFRnZQXFqI6uk4u/S7vltUDj4FPUE2tA3aZz7qPUbd+agauFddihAprcLkKYcV0RZ
-         GguZWc4napvUo9PWxNbiSNSAnPIcK3S7X+NTTusNYQg7frm0R8XOig2Ai1ZAoFi+t2lO
-         C8gQ==
-X-Received: by 10.194.243.1 with SMTP id wu1mr11427802wjc.69.1424368261674;
-        Thu, 19 Feb 2015 09:51:01 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id eb10sm35204737wib.13.2015.02.19.09.51.00
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 09:51:00 -0800 (PST)
-From: aybuke ozdemir <aybuke.147@gmail.com>
+        bh=Jl+2yywo1N9MjrN3+Wz0Uv94FI77vji+/1D13iEfZz4=;
+        b=bN9iy0TlBCMUWHlJtiLhFF8H+UKLf/4yAhyhfr+hWobBXKZzMGMR7U47NgF1SCwMUR
+         cPhtSgVnJKdfnMgEE8Ur91Ee5Q2udgzWecIFf60x/RJshLDs5CJU8uO90ewpS18HRSgW
+         k+dN4isagvT5oltHxVRNrLq/p9wV8w6qbu322diQ9lmzMk5Q1KZ26TH5kWpXGn5kDLUE
+         uJNsUwsZmengULvhBTeuaPswjZ00NkXIpfw4eDeXv4QibJ5NYFUlvt6ynvZprqqtY8nn
+         z0we0DV15+62lowR+1XpSwHfOUOYdCdPghObyCucSMhGyZa4KEPQ65e68HVymRa2BlmP
+         03VQ==
+X-Received: by 10.194.80.193 with SMTP id t1mr8150388wjx.8.1424553041734;
+        Sat, 21 Feb 2015 13:10:41 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from localhost.localdomain ([78.187.58.202])
+        by mx.google.com with ESMTPSA id md8sm8470206wic.13.2015.02.21.13.10.40
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 21 Feb 2015 13:10:41 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH] Staging: fbtft: Added blank line after declaration
-Date: Thu, 19 Feb 2015 19:50:50 +0200
-Message-Id: <1424368250-5322-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Subject: [PATCH] Staging: gdm724x: Fixed else after return or break warning
+Date: Sat, 21 Feb 2015 23:10:44 +0200
+Message-Id: <1424553044-7032-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-WARNING: Missing a blank line after declaration
-chackpatch.pl warning in fb_ili9320.c
+The following patch fixes the checkpatch.pl warning:
+drivers/staging/gdm724x/gdm_usb.c warning: else is not generally useful after a break or return
 
-Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 ---
- drivers/staging/fbtft/fb_ili9320.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/gdm724x/gdm_usb.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_ili9320.c b/drivers/staging/fbtft/fb_ili9320.c
-index b26d893..880f548 100644
---- a/drivers/staging/fbtft/fb_ili9320.c
-+++ b/drivers/staging/fbtft/fb_ili9320.c
-@@ -47,6 +47,7 @@ static unsigned read_devicecode(struct fbtft_par *par)
- static int init_display(struct fbtft_par *par)
- {
- 	unsigned devcode;
-+
- 	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "%s()\n", __func__);
+diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
+index 5d44490..d2a3b35 100644
+--- a/drivers/staging/gdm724x/gdm_usb.c
++++ b/drivers/staging/gdm724x/gdm_usb.c
+@@ -664,9 +664,8 @@ static void do_tx(struct work_struct *work)
+ 	if (!udev->send_complete) {
+ 		spin_unlock_irqrestore(&tx->lock, flags);
+ 		return;
+-	} else {
+-		udev->send_complete = 0;
+ 	}
++	udev->send_complete = 0;
  
- 	par->fbtftops.reset(par);
+ 	if (!list_empty(&tx->hci_list)) {
+ 		t = list_entry(tx->hci_list.next, struct usb_tx, list);
 -- 
-1.9.1
+1.8.3.2
 
 
