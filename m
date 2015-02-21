@@ -1,73 +1,152 @@
-X-GM-THRID: 960100302848
-X-Received: by 10.112.168.104 with SMTP id zv8mr831297lbb.10.1424378433676;
-        Thu, 19 Feb 2015 12:40:33 -0800 (PST)
+X-GM-THRID: 1627576598528
+X-Received: by 10.112.124.142 with SMTP id mi14mr152103lbb.1.1424500468911;
+        Fri, 20 Feb 2015 22:34:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.205.72 with SMTP id le8ls88003lac.41.gmail; Thu, 19 Feb
- 2015 12:40:33 -0800 (PST)
-X-Received: by 10.112.181.198 with SMTP id dy6mr860411lbc.22.1424378433303;
-        Thu, 19 Feb 2015 12:40:33 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
-        by gmr-mx.google.com with ESMTPS id ew5si9113074wid.1.2015.02.19.12.40.33
+Received: by 10.181.11.198 with SMTP id ek6ls222912wid.27.gmail; Fri, 20 Feb
+ 2015 22:34:28 -0800 (PST)
+X-Received: by 10.194.11.70 with SMTP id o6mr160582wjb.6.1424500468622;
+        Fri, 20 Feb 2015 22:34:28 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ta1si246231wic.1.2015.02.20.22.34.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 12:40:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 20 Feb 2015 22:34:28 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x234.google.com with SMTP id h11so11894041wiw.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 12:40:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=l0FzFBPoQhwrtp5yuYHb0sKuUgCp9526T0+4FxCoCSU=;
-        b=mmWdu8De1cm1PiG2pWZ8DQecLp7rQ1QAl9qucKPt9+LCCiXidl9Q1+EmDuaFOzx3hw
-         b5gPOD0svJpQViuezqHffF8kfCjseKFEJX/29Uv9IHuhHMnNle72gRQwOOWtmBHEoUQf
-         QPgH0mg3Y7VuVM7fkJfKxMJR3U2Clh7ZKfgwbZ32SLSPBpp2wUAMbDeHFJNTNwhssbdc
-         2wRVOf+j8airy30VZthE447z/NrqeQ0+E35i+lRcFGGvZM/JI63wisBdlHC//ulY+89p
-         0yKs+uQ7IX3+s07mb4h9qsByYbs4+/aHI7xIh7bhjES3PRKZABjnTB9YQb+qQACdPpLY
-         DsHA==
-X-Received: by 10.180.208.20 with SMTP id ma20mr9763830wic.22.1424378433189;
-        Thu, 19 Feb 2015 12:40:33 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id vq9sm38957511wjc.6.2015.02.19.12.40.31
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Feb 2015 12:40:32 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: lustre: include: linux: libcfs: Remove unnecessary semicolon
-Date: Thu, 19 Feb 2015 22:39:55 +0200
-Message-Id: <1424378395-23667-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,619,1418079600"; 
+   d="scan'208";a="100826163"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 07:34:27 +0100
+Date: Sat, 21 Feb 2015 07:34:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: speakup: Remove unnecessary
+ else after return
+In-Reply-To: <1424474060-16367-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502210732331.2020@localhost6.localdomain6>
+References: <1424474060-16367-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This fixes the checkpatch.pl warning:
-WARNING: macros should not use a trailing semicolon.
+On Sat, 21 Feb 2015, Dilek Uzulmez wrote:
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> This patch fixes checkpatch.pl warning in files of speakup
+> WARNING: else is not generally useful after a break or return
+> 
+> Changes since v2:
+> * "}" was added and was shifted to the left.
 
-diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h
-index 2e5a9e5..4461024 100644
---- a/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h
-+++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h
-@@ -195,8 +195,8 @@ do {								\
- 	       .msg_file   = __FILE__,				\
- 	       .msg_fn     = __func__,				\
- 	       .msg_line   = __LINE__,				\
--	       .msg_cdls   = (cdls)	 };			\
--	dataname.msg_mask   = (mask);
-+	       .msg_cdls   = (cdls)	 }			\
-+	dataname.msg_mask   = (mask)
- 
- /**
-  * Filters out logging messages based on mask and subsystem.
--- 
-1.8.3.2
+This information should be below the ---.  This information is not 
+meaningful to anyone who reads the patch in the future, because the 
+previous version will not be preserved.  The text that you put below the 
+--- and above thepatch is also thrown away.
 
+The change is also not since v2, it is in v2.
+
+Finally, your patch seems to be against your previous patch, not against 
+the original code.  It should be against the original code.
+
+julia
+
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/speakup/keyhelp.c | 67 ++++++++++++++++++++-------------------
+>  1 file changed, 34 insertions(+), 33 deletions(-)
+> 
+> diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
+> index 832cf00..99e16ed 100644
+> --- a/drivers/staging/speakup/keyhelp.c
+> +++ b/drivers/staging/speakup/keyhelp.c
+> @@ -182,42 +182,43 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
+>  		synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));
+>  		build_key_data(); /* rebuild each time in case new mapping */
+>  		return 1;
+> -		name = NULL;
+> -		if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
+> -			synth_printf("%s\n",
+> -				spk_msg_get(MSG_KEYNAMES_START + key-1));
+> -			return 1;
+> -		}
+> -		for (i = 0; funcvals[i] != 0 && !name; i++) {
+> -			if (ch == funcvals[i])
+> -				name = spk_msg_get(MSG_FUNCNAMES_START + i);
+> -		}
+> -		if (!name)
+> -			return -1;
+> -		kp = spk_our_keys[key]+1;
+> -		for (i = 0; i < nstates; i++) {
+> -			if (ch == kp[i])
+> -				break;
+> -		}
+> -		key += (state_tbl[i] << 8);
+> -		say_key(key);
+> -		synth_printf(spk_msg_get(MSG_KEYDESC), name);
+> -		synth_printf("\n");
+> -		return 1;
+>  	}
+> -	name = spk_msg_get(MSG_FUNCNAMES_START + cur_item);
+> -	func = funcvals[cur_item];
+> -	synth_printf("%s", name);
+> -	if (key_offsets[func] == 0) {
+> -		synth_printf(" %s\n", spk_msg_get(MSG_IS_UNASSIGNED));
+> +	name = NULL;
+> +	if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
+> +		synth_printf("%s\n",
+> +			spk_msg_get(MSG_KEYNAMES_START + key-1));
+>  		return 1;
+>  	}
+> -	p_keys = key_data + key_offsets[func];
+> -	for (n = 0; p_keys[n]; n++) {
+> -		val = p_keys[n];
+> -		if (n > 0)
+> -			synth_printf("%s ", spk_msg_get(MSG_DISJUNCTION));
+> -		say_key(val);
+> +	for (i = 0; funcvals[i] != 0 && !name; i++) {
+> +		if (ch == funcvals[i])
+> +			name = spk_msg_get(MSG_FUNCNAMES_START + i);
+>  	}
+> +	if (!name)
+> +		return -1;
+> +	kp = spk_our_keys[key]+1;
+> +	for (i = 0; i < nstates; i++) {
+> +		if (ch == kp[i])
+> +			break;
+> +	}
+> +	key += (state_tbl[i] << 8);
+> +	say_key(key);
+> +	synth_printf(spk_msg_get(MSG_KEYDESC), name);
+> +	synth_printf("\n");
+> +	return 1;
+> +}
+> +name = spk_msg_get(MSG_FUNCNAMES_START + cur_item);
+> +func = funcvals[cur_item];
+> +synth_printf("%s", name);
+> +if (key_offsets[func] == 0) {
+> +	synth_printf(" %s\n", spk_msg_get(MSG_IS_UNASSIGNED));
+>  	return 1;
+>  }
+> +p_keys = key_data + key_offsets[func];
+> +for (n = 0; p_keys[n]; n++) {
+> +	val = p_keys[n];
+> +	if (n > 0)
+> +		synth_printf("%s ", spk_msg_get(MSG_DISJUNCTION));
+> +	say_key(val);
+> +}
+> +return 1;
+> +}
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424474060-16367-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
