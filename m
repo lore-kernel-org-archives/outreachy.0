@@ -1,83 +1,72 @@
-X-GM-THRID: 2580051656704
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,347731e80f991d7d,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.25.7 with SMTP id y7mr826327lbf.21.1424632629254;
-        Sun, 22 Feb 2015 11:17:09 -0800 (PST)
+X-GM-THRID: 2249557278720
+X-Received: by 10.180.87.166 with SMTP id az6mr475248wib.1.1424556767271;
+        Sat, 21 Feb 2015 14:12:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.198.231 with SMTP id jf7ls470702lac.92.gmail; Sun, 22 Feb
- 2015 11:17:08 -0800 (PST)
-X-Received: by 10.152.37.200 with SMTP id a8mr836104lak.5.1424632628820;
-        Sun, 22 Feb 2015 11:17:08 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x244.google.com (mail-wi0-x244.google.com. [2a00:1450:400c:c05::244])
-        by gmr-mx.google.com with ESMTPS id by11si758683wib.1.2015.02.22.11.17.08
+Received: by 10.180.78.167 with SMTP id c7ls316468wix.33.canary; Sat, 21 Feb
+ 2015 14:12:45 -0800 (PST)
+X-Received: by 10.180.80.35 with SMTP id o3mr475986wix.0.1424556765967;
+        Sat, 21 Feb 2015 14:12:45 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id by11si599297wib.1.2015.02.21.14.12.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 11:17:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::244 as permitted sender) client-ip=2a00:1450:400c:c05::244;
+        Sat, 21 Feb 2015 14:12:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x244.google.com with SMTP id em10so5821730wid.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 11:17:08 -0800 (PST)
+Received: by mail-wi0-f178.google.com with SMTP id em10so9569073wid.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 14:12:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=fdAdxE5o5nnTOQRPRNzhzBnxMa1CL8wuTXNxaSmKonc=;
-        b=TuQpEnFwfB80NQPPDA7y8uPXk9D++ZHXkQTFNuIeGhEVXLYsSBuBvvUwgp3V0Siy8C
-         lF1UqVINrlx20aeimhHnJUgFSyib5c+cCtorEsI2Swoix3mLop2fvrXJlbE9b0JwB/Xf
-         K8OfIlgeC62dtDawXSFvGDdngCKRruR/IpQRiA3AX/SyhYziHpQXh5L0akIFKUMYiLyc
-         ZwvWaxJ60S8cg8zeZzFcwucQBzKHKUvO+BzOt91CStXt/mE0oYDDeN2gdOL3ehiVhn53
-         EpkyVX1ZTwMsP2ngZA1BaduUpooJWMcCpgtXdNqxzLZa1QCpDhO671fvp4VgdWl7XAC6
-         wPUQ==
-X-Received: by 10.180.149.242 with SMTP id ud18mr14024214wib.94.1424632628730;
-        Sun, 22 Feb 2015 11:17:08 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id d10sm52310218wjn.45.2015.02.22.11.17.07
+        bh=GUFLe5rOsCzbXeR6pYbh31ejIqVmFmtpPUwzizYcu8A=;
+        b=NskKOjURajOyiZHmZTzO9n652WeEiARPANUh6J/PYqzqwrtJx0jM6hCN6c6b2wXBTx
+         kqCB/yhuCEZdgf7dPLuR8gHtC/2XinMLXJ8Jgic2fZ6tUzRTFweuzgpMarvqG8Icsb5f
+         EnoAHraLHmS5Otxi+orTLcX65VDz098RVduju+RttTvp34e+XqhAIQXlvhOmsnJgXcfm
+         3GlWAISLLKt7Jc9y79GXpYHmwf1OA4FvyV6TrUKdgn1G6WrfdbuSUgi2/u367hu8Gbdo
+         9uDxkClWSM6++EFgoPew5W+XhIVyOzaWYIwLneoqe6FHu6IotYnR+IFrGiww+1geWF01
+         otvA==
+X-Received: by 10.180.77.40 with SMTP id p8mr7302522wiw.53.1424556765878;
+        Sat, 21 Feb 2015 14:12:45 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.245.176])
+        by mx.google.com with ESMTPSA id gi3sm8656039wic.15.2015.02.21.14.12.44
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 22 Feb 2015 11:17:08 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+        Sat, 21 Feb 2015 14:12:45 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: core: Add space before '('
-Date: Sun, 22 Feb 2015 21:17:00 +0200
-Message-Id: <1424632620-17424-1-git-send-email-haticeerturk27@gmail.com>
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: rtl8723au: core: Fix quoted string split across lines
+Date: Sun, 22 Feb 2015 00:12:35 +0200
+Message-Id: <1424556755-5983-1-git-send-email-dilekuzulmez@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-ERROR: space required before the open parenthesis '('
-This Error found with checkpatch.pl
+This patch fixes "quoted string split across lines warning" warning in
+rtw_ap.c
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
 ---
- drivers/staging/rtl8723au/core/rtw_efuse.c | 4 ++--
+ drivers/staging/rtl8723au/core/rtw_ap.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_efuse.c b/drivers/staging/rtl8723au/core/rtw_efuse.c
-index 108e67d..d1940a0 100644
---- a/drivers/staging/rtl8723au/core/rtw_efuse.c
-+++ b/drivers/staging/rtl8723au/core/rtw_efuse.c
-@@ -392,7 +392,7 @@ efuse_OneByteRead23a(struct rtw_adapter *pAdapter, u16 addr, u8 *data)
+diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
+index c6327c0..13ac513 100644
+--- a/drivers/staging/rtl8723au/core/rtw_ap.c
++++ b/drivers/staging/rtl8723au/core/rtw_ap.c
+@@ -1477,8 +1477,8 @@ void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter, struct sta_info
+ 	if (psta->flags & WLAN_STA_HT) {
+ 		u16 ht_capab = le16_to_cpu(psta->htpriv.ht_cap.cap_info);
  
- 	rtl8723au_write8(pAdapter, EFUSE_CTRL+3,  0x72);/* read cmd */
+-		DBG_8723A("HT: STA " MAC_FMT " HT Capabilities "
+-			   "Info: 0x%04x\n", MAC_ARG(psta->hwaddr), ht_capab);
++		DBG_8723A("HT: STA " MAC_FMT " HT Capabilities Info: 0x%04x\n",
++				MAC_ARG(psta->hwaddr), ht_capab);
  
--	while(!(0x80 & rtl8723au_read8(pAdapter, EFUSE_CTRL+3)) && (tmpidx<100))
-+	while (!(0x80 & rtl8723au_read8(pAdapter, EFUSE_CTRL+3)) && (tmpidx<100))
- 		tmpidx++;
- 	if (tmpidx < 100) {
- 		*data = rtl8723au_read8(pAdapter, EFUSE_CTRL);
-@@ -424,7 +424,7 @@ efuse_OneByteWrite23a(struct rtw_adapter *pAdapter, u16 addr, u8 data)
- 
- 	rtl8723au_write8(pAdapter, EFUSE_CTRL+3, 0xF2);/* write cmd */
- 
--	while((0x80 & rtl8723au_read8(pAdapter, EFUSE_CTRL+3)) &&
-+	while ((0x80 & rtl8723au_read8(pAdapter, EFUSE_CTRL+3)) &&
- 	      (tmpidx<100)) {
- 		tmpidx++;
- 	}
+ 		if (psta->no_ht_set) {
+ 			psta->no_ht_set = 0;
 -- 
 1.9.1
 
