@@ -1,77 +1,130 @@
 X-GM-THRID: 2073319964672
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,4c2123e42de5bfb2
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.77.101 with SMTP id r5mr465507lbw.4.1424552191487;
-        Sat, 21 Feb 2015 12:56:31 -0800 (PST)
+X-Received: by 10.194.11.70 with SMTP id o6mr426300wjb.6.1424548771851;
+        Sat, 21 Feb 2015 11:59:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.23.98 with SMTP id l2ls398365laf.73.gmail; Sat, 21 Feb
- 2015 12:56:31 -0800 (PST)
-X-Received: by 10.112.162.135 with SMTP id ya7mr440001lbb.14.1424552191215;
-        Sat, 21 Feb 2015 12:56:31 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id el6si374912wib.2.2015.02.21.12.56.31
+Received: by 10.180.23.72 with SMTP id k8ls307952wif.35.canary; Sat, 21 Feb
+ 2015 11:59:31 -0800 (PST)
+X-Received: by 10.180.105.129 with SMTP id gm1mr388132wib.3.1424548771624;
+        Sat, 21 Feb 2015 11:59:31 -0800 (PST)
+Return-Path: <gulsah.1004@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id ew5si370597wid.1.2015.02.21.11.59.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 12:56:31 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 21 Feb 2015 11:59:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,621,1418079600"; 
-   d="scan'208";a="122824244"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 21:56:30 +0100
-Date: Sat, 21 Feb 2015 21:56:30 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Gulsah Kose <gulsah.1004@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/2] Corrected two type checkpatch.pl
- space errors.
+       spf=pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=gulsah.1004@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-f177.google.com with SMTP id bs8so9272031wib.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 11:59:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references:mime-version:content-type
+         :content-transfer-encoding;
+        bh=Lw7rgHLqKwtJgSPugat+TrWde5OFSHlER8LOU3wSlFU=;
+        b=X2R/ImR0mwyIvmak03Ri+CscPTAlpyUbY14UepaMeOUj65D4m7gpr9b93UXfVFu614
+         KgBr/9+TgkXm+Ssk1/MB1VJ76iXAFtTAISiCOeWd3URqNQTvF3VlecCcIMR6gvequWba
+         M90z5WCUOt9R248KQSbj6kCDwMv2MyT1c99GJLjUGJFsDyTts50O6Rb4uU+LeuWFi1ap
+         pwTJR03dickc1rUd53eei1m5BLdU6WM/TYrExhb9CuEkXUWnVnbSDdV8iiMXFoRttGkY
+         k9Xvgqtc5s0Jp1RkeZ1BTaS2pklBFr6xftL0+bqIlIweDWgc+jCYfnFN7JPfFwA558gw
+         xoKg==
+X-Received: by 10.194.62.167 with SMTP id z7mr7514150wjr.106.1424548771557;
+        Sat, 21 Feb 2015 11:59:31 -0800 (PST)
+Return-Path: <gulsah.1004@gmail.com>
+Received: from diyorki.kykwifi.com ([81.213.40.143])
+        by mx.google.com with ESMTPSA id fm10sm8283015wib.7.2015.02.21.11.59.30
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 21 Feb 2015 11:59:30 -0800 (PST)
+From: Gulsah Kose <gulsah.1004@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Gulsah Kose <gulsah.1004@gmail.com>
+Subject: [PATCH 2/2] staging: arch: alpha: boot: tools: Added missing spaces after brackets.
+Date: Sat, 21 Feb 2015 21:59:11 +0200
+Message-Id: <2aaef73425fb27846d4eb42bf449bc84cc61d97e.1424548101.git.gulsah.1004@gmail.com>
+X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1424548101.git.gulsah.1004@gmail.com>
-Message-ID: <alpine.DEB.2.02.1502212156040.2296@localhost6.localdomain6>
 References: <cover.1424548101.git.gulsah.1004@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+In-Reply-To: <cover.1424548101.git.gulsah.1004@gmail.com>
+References: <cover.1424548101.git.gulsah.1004@gmail.com>
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-929471410-1424552190=:2296"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+This patch fixes "space required before the open parenthesis '('" checkpatch.pl errors in mkbb.c
 
---8323328-929471410-1424552190=:2296
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Gülşah Köse <gulsah.1004@gmail.com>
+---
+ arch/alpha/boot/tools/mkbb.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-On Sat, 21 Feb 2015, Gulsah Kose wrote:
+diff --git a/arch/alpha/boot/tools/mkbb.c b/arch/alpha/boot/tools/mkbb.c
+index 05a9d24..44ba020 100644
+--- a/arch/alpha/boot/tools/mkbb.c
++++ b/arch/alpha/boot/tools/mkbb.c
+@@ -91,21 +91,21 @@ int main(int argc, char **argv)
+     int			nread;
+ 
+     /* Make sure of the arg count */
+-    if(argc != 3) {
++    if (argc != 3) {
+ 	fprintf(stderr, "Usage: %s device lxboot\n", argv[0]);
+ 	exit(0);
+     }
+ 
+     /* First, open the device and make sure it's accessible */
+     dev = open(argv[1], O_RDWR);
+-    if(dev < 0) {
++    if (dev < 0) {
+ 	perror(argv[1]);
+ 	exit(0);
+     }
+ 
+     /* Now open the lxboot and make sure it's reasonable */
+     fd = open(argv[2], O_RDONLY);
+-    if(fd < 0) {
++    if (fd < 0) {
+ 	perror(argv[2]);
+ 	close(dev);
+ 	exit(0);
+@@ -113,7 +113,7 @@ int main(int argc, char **argv)
+ 
+     /* Read in the lxboot */
+     nread = read(fd, &bootloader_image, sizeof(bootblock));
+-    if(nread != sizeof(bootblock)) {
++    if (nread != sizeof(bootblock)) {
+ 	perror("lxboot read");
+ 	fprintf(stderr, "expected %zd, got %d\n", sizeof(bootblock), nread);
+ 	exit(0);
+@@ -121,7 +121,7 @@ int main(int argc, char **argv)
+ 
+     /* Read in the bootblock from disk. */
+     nread = read(dev, &bootblock_from_disk, sizeof(bootblock));
+-    if(nread != sizeof(bootblock)) {
++    if (nread != sizeof(bootblock)) {
+ 	perror("bootblock read");
+ 	fprintf(stderr, "expected %zd, got %d\n", sizeof(bootblock), nread);
+ 	exit(0);
+@@ -132,14 +132,14 @@ int main(int argc, char **argv)
+ 
+     /* Calculate the bootblock checksum */
+     bootloader_image.bootblock_checksum = 0;
+-    for(i = 0; i < 63; i++) {
++    for (i = 0; i < 63; i++) {
+ 	bootloader_image.bootblock_checksum += 
+ 			bootloader_image.bootblock_quadwords[i];
+     }
+ 
+     /* Write the whole thing out! */
+     lseek(dev, 0L, SEEK_SET);
+-    if(write(dev, &bootloader_image, sizeof(bootblock)) != sizeof(bootblock)) {
++    if (write(dev, &bootloader_image, sizeof(bootblock)) != sizeof(bootblock)) {
+ 	perror("bootblock write");
+ 	exit(0);
+     }
+-- 
+1.9.1
 
-> This patch fixes following checkpatch.pl errors in mkbb.c
-> ERROR: space required before the open parenthesis '('
-> ERROR: foo ** bar" should be "foo **bar
-> 
-> Gülşah Köse (2):
->   staging: arch: alpha: boot: tools: Deleted unnecessary space.
->   staging: arch: alpha: boot: tools: Added missing spaces after brackets.
-> 
->  arch/alpha/boot/tools/mkbb.c | 16 ++++++++--------
-
-As for the other series of patches, you should not be working on files in 
-this directory.
-
-julia
-
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1424548101.git.gulsah.1004%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
---8323328-929471410-1424552190=:2296--
 
