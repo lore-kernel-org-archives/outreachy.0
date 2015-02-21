@@ -1,123 +1,87 @@
-X-GM-THRID: 1021192437760
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e6439309dff147de,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.45.7 with SMTP id i7mr869585lam.9.1424383660982;
-        Thu, 19 Feb 2015 14:07:40 -0800 (PST)
+X-GM-THRID: 1800831762432
+X-Received: by 10.194.142.174 with SMTP id rx14mr347218wjb.4.1424533831670;
+        Sat, 21 Feb 2015 07:50:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.199 with SMTP id u7ls221548lau.63.gmail; Thu, 19 Feb
- 2015 14:07:40 -0800 (PST)
-X-Received: by 10.152.6.232 with SMTP id e8mr879491laa.2.1424383660554;
-        Thu, 19 Feb 2015 14:07:40 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wg0-x233.google.com (mail-wg0-x233.google.com. [2a00:1450:400c:c00::233])
-        by gmr-mx.google.com with ESMTPS id o3si4251054wib.2.2015.02.19.14.07.40
+Received: by 10.152.206.104 with SMTP id ln8ls361109lac.94.gmail; Sat, 21 Feb
+ 2015 07:50:31 -0800 (PST)
+X-Received: by 10.112.64.171 with SMTP id p11mr342992lbs.12.1424533831217;
+        Sat, 21 Feb 2015 07:50:31 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id cl5si326348wib.3.2015.02.21.07.50.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 14:07:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) client-ip=2a00:1450:400c:c00::233;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 21 Feb 2015 07:50:31 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x233.google.com with SMTP id y19so9852023wgg.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 14:07:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=tFpxaw8MejSQ8rIZnyAdujdlM6vfd/cOSe/TlsQ5xT8=;
-        b=pr0PoyB+a5u0YcN5q1RARBRYsM3qri7+AvstDLX21+O7YdGyYLDFTTU5y3q4k0Mc1C
-         mwS+CQE4LZbReQpdUvl2bKdfXzBagl8t0QGM3/OW9WYI+ZknIvI1pAjV9fsxGwOaqcfL
-         eIC0jNzg+nRFMVhC9ZtPPuYvn3mS+6WsZHixhBOzTwsyoxQZlMPyapng0npd/JUKlzJz
-         EdSScd+CsZFY45/unVNOD9NECSJW5ZnsI3ojGeFQvfEq/qRETfGi5BOoT3tZ0ue9sm6A
-         DmVtWwr2GbEwduwUYTfbeNV1XziQEog0551Wmycg0sosix4iuY94kaFG/LrQ+beg930s
-         /LlA==
-X-Received: by 10.180.93.226 with SMTP id cx2mr126692wib.63.1424383660438;
-        Thu, 19 Feb 2015 14:07:40 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id y14sm26106071wjr.39.2015.02.19.14.07.37
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Feb 2015 14:07:39 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH 1/2] Staging: lustre: lnet: klnds: o2iblnd: Remove intialization of static to 0
-Date: Fri, 20 Feb 2015 00:06:51 +0200
-Message-Id: <1424383611-27755-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,620,1418079600"; 
+   d="scan'208";a="122808370"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 16:50:30 +0100
+Date: Sat, 21 Feb 2015 16:50:24 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: core: Fix line
+ over 80 characters
+In-Reply-To: <1424532440-17988-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502211649070.2480@hadrien>
+References: <1424532440-17988-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-124342132-1424533825=:2480"
 
-ERROR: do not initialise statics to 0 or NULL
-checkpatch.pl error in o2iblnd_modparams.c
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- .../lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c        | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+--8323329-124342132-1424533825=:2480
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c
-index 8b4a8e9..8036d8b 100644
---- a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c
-+++ b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_modparams.c
-@@ -44,7 +44,7 @@ static int service = 987;
- module_param(service, int, 0444);
- MODULE_PARM_DESC(service, "service number (within RDMA_PS_TCP)");
- 
--static int cksum = 0;
-+static int cksum;
- module_param(cksum, int, 0644);
- MODULE_PARM_DESC(cksum, "set non-zero to enable message (not RDMA) checksums");
- 
-@@ -72,11 +72,11 @@ static int peer_credits = 8;
- module_param(peer_credits, int, 0444);
- MODULE_PARM_DESC(peer_credits, "# concurrent sends to 1 peer");
- 
--static int peer_credits_hiw = 0;
-+static int peer_credits_hiw;
- module_param(peer_credits_hiw, int, 0444);
- MODULE_PARM_DESC(peer_credits_hiw, "when eagerly to return credits");
- 
--static int peer_buffer_credits = 0;
-+static int peer_buffer_credits;
- module_param(peer_buffer_credits, int, 0444);
- MODULE_PARM_DESC(peer_buffer_credits, "# per-peer router buffer credits");
- 
-@@ -100,15 +100,15 @@ static int keepalive = 100;
- module_param(keepalive, int, 0644);
- MODULE_PARM_DESC(keepalive, "Idle time in seconds before sending a keepalive");
- 
--static int ib_mtu = 0;
-+static int ib_mtu;
- module_param(ib_mtu, int, 0444);
- MODULE_PARM_DESC(ib_mtu, "IB MTU 256/512/1024/2048/4096");
- 
--static int concurrent_sends = 0;
-+static int concurrent_sends;
- module_param(concurrent_sends, int, 0444);
- MODULE_PARM_DESC(concurrent_sends, "send work-queue sizing");
- 
--static int map_on_demand = 0;
-+static int map_on_demand;
- module_param(map_on_demand, int, 0444);
- MODULE_PARM_DESC(map_on_demand, "map on demand");
- 
-@@ -136,12 +136,12 @@ MODULE_PARM_DESC(pmr_pool_size, "size of MR cache pmr pool on each CPT");
-  * 1: enable failover if necessary
-  * 2: force to failover (for debug)
-  */
--static int dev_failover = 0;
-+static int dev_failover;
- module_param(dev_failover, int, 0444);
- MODULE_PARM_DESC(dev_failover, "HCA failover for bonding (0 off, 1 on, other values reserved)");
- 
- 
--static int require_privileged_port = 0;
-+static int require_privileged_port;
- module_param(require_privileged_port, int, 0644);
- MODULE_PARM_DESC(require_privileged_port, "require privileged port when accepting connection");
- 
--- 
-1.8.3.2
+On Sat, 21 Feb 2015, Hatice ERTÜRK wrote:
 
+> Fix checkpatch.pl issues with line over
+> 80 characters in rtw_iol.c
+>
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_iol.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_iol.c b/drivers/staging/rtl8188eu/core/rtw_iol.c
+> index 0d1a246..0d0980b 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_iol.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_iol.c
+> @@ -26,7 +26,7 @@ bool rtw_IOL_applied(struct adapter  *adapter)
+>  		return true;
+>
+>  	if ((2 == adapter->registrypriv.fw_iol) &&
+> -			 (!adapter_to_dvobj(adapter)->ishighspeed))
+> +	(!adapter_to_dvobj(adapter)->ishighspeed))
+
+It should be lined up with the other condition, not with the if.
+
+Is this v2 of a previously submitted patch?  You patch should be based on
+the original code, not the cange you proposed previously.  And the subject
+line should say v2, and there should be a description of the v2 change
+below the ---.
+
+julia
+
+>  		return true;
+>  	return false;
+>  }
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424532440-17988-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-124342132-1424533825=:2480--
 
