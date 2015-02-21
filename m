@@ -1,71 +1,58 @@
-X-GM-THRID: 6252226232544395264
-X-Received: by 10.66.148.69 with SMTP id tq5mr955663pab.28.1455709857643;
-        Wed, 17 Feb 2016 03:50:57 -0800 (PST)
+X-GM-THRID: 1969702830080
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,4dff6f9f1e12e8c3
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.13.98 with SMTP id g2mr428849wic.3.1424557779924;
+        Sat, 21 Feb 2015 14:29:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.165.130 with SMTP id o124ls2159096ioe.1.gmail; Wed, 17 Feb
- 2016 03:50:57 -0800 (PST)
-X-Received: by 10.107.11.222 with SMTP id 91mr2388919iol.7.1455709857066;
-        Wed, 17 Feb 2016 03:50:57 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-vk0-x229.google.com (mail-vk0-x229.google.com. [2607:f8b0:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id c66si28681vkf.0.2016.02.17.03.50.57
+Received: by 10.152.43.98 with SMTP id v2ls378694lal.104.gmail; Sat, 21 Feb
+ 2015 14:29:39 -0800 (PST)
+X-Received: by 10.112.77.101 with SMTP id r5mr491214lbw.4.1424557779593;
+        Sat, 21 Feb 2015 14:29:39 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id el6si384333wib.2.2015.02.21.14.29.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 03:50:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400c:c05::229 as permitted sender) client-ip=2607:f8b0:400c:c05::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 21 Feb 2015 14:29:39 -0800 (PST)
+Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400c:c05::229 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x229.google.com with SMTP id e185so11772398vkb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 03:50:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=R7BRVMpcLgLWHyk1Hedn+w/UsiXu8PbMYQZTNON6OCA=;
-        b=XllKp7HRacjw0DjHhyoTtvU7xNDQq59Kfh0XWUCBElUuQ3Td0q3pc/7ZrGib0WszTn
-         Sd7g4qdDiiSt3ITvQSKVc7Ett7f9voxNSP3KMHxujF+1CaD4pQaYNCaGzoNTqRTAYP1z
-         Qp0NUKa6jFeI4yPjGf1KPuEEP/R4yUg+23tgoyjTrNs4XazdL+OjM2Odpmq+m20sm8d9
-         5340eZ8SDxZTT+OzTW+g3fHEyTGhPh+3vuBd5uAO22YhEQx6tM+vpxc+VhafwqYdq4xD
-         5IunaWPERlBgt9UhEVQnklCkf35zVQtXE2FL78++lucNYFZsOe77GZeGi1Wc5zY1uFYJ
-         EFAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:date:message-id:subject:from:to
-         :content-type;
-        bh=R7BRVMpcLgLWHyk1Hedn+w/UsiXu8PbMYQZTNON6OCA=;
-        b=P1upy0tGdaC4ROhktiyOK6rFUyB2b9GlYPRSa2NZgDV126JwePFIIfn82jaHo7oFid
-         dCD82vFF1Q46yj4vwrhtOB4rTDpGjGAyZqn8nxI7g1uGd3/Yadg60ZwaqqwyMit4QlNR
-         om6Ka2r7u+HxEupUc/82w2y9WGmszIrR6YQKus/oOdSR0j5z+5hACpTQPzppLbEL/cji
-         6bjnogePlA3oVI/8Ui/9bVvT9BVhyFQ9xgce29x44RA7PejlobnmkXT1vcIYfuZcNIxF
-         jxCAkCwYMLUiunLbe9Y1xdzPX6lc2G8Y9W5AOBa4cJuQs9qC9NvN3UJbyouijQm0DjSt
-         ycAA==
-X-Gm-Message-State: AG10YOTxCYyGVeEUFvwMBKKbOQ/fleQVPkDz9EuZpMZfBFLRnoT4OGN0KrKN+TlIGH5bQmUWyhz4rxzWMvYDOw==
+       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue005) with ESMTPSA (Nemesis) id 0M7Wjr-1XeUek1QAB-00xNcz; Sat, 21 Feb
+ 2015 23:29:37 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/4] staging: rtl8192u: Clean-up comment line style
+Date: Sat, 21 Feb 2015 23:29:36 +0100
+Message-ID: <10483546.ckjazqFqg3@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <8d7b9590155fbd1298fb2433e15d5bc40dd26475.1424538520.git.navyasri.tech@gmail.com>
+References: <cover.1424538520.git.navyasri.tech@gmail.com> <8d7b9590155fbd1298fb2433e15d5bc40dd26475.1424538520.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.31.180.133 with SMTP id d127mr909587vkf.86.1455709856839;
- Wed, 17 Feb 2016 03:50:56 -0800 (PST)
-Received: by 10.31.142.129 with HTTP; Wed, 17 Feb 2016 03:50:56 -0800 (PST)
-Date: Wed, 17 Feb 2016 17:20:56 +0530
-Message-ID: <CAK-LDbLg72-jAbGvBtLwAj3H4KOvTxtSUXEXrXFVvnUZdtaaTg@mail.gmail.com>
-Subject: Red hat women in open source
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID:  V03:K0:wVuimTFR9BWhjspM7jYEgdlpZL6bpvPbAVu4YAw2P0HNrL6U+eF
+ uklg1ijyqAYELfxUf1R/Y22JGhgWPtWdv0jjmDDSy5jnaTrHZrUNykt431YG3t8tVCpO8WD
+ bpRJx9v8hSKzM3gshzf7GIHbgZGAYIzoc5+aRMaFkrjY6E8ortP7sZXXZnGMzeKCP0vEj4Y
+ 8x2BH+ZpupH/cuu5AyEQg==
+X-UI-Out-Filterresults: notjunk:1;
 
-Dear all,
+On Saturday 21 February 2015 23:17:41 Navya Sri Nizamkari wrote:
+>   *
+>   */
+>  
+> -//#include <linux/config.h>
+> +/* #include <linux/config.h> */
+>  #include <linux/module.h>
+>  #include <linux/init.h>
+>  #include <linux/slab.h>
 
-I have a great news to share with you all. Our very own Julia Lawall
-is chosen as a finalist for the Women in Open Source Community Award!
-Red hat women in open source award recognizes the important
-contributions that women make to and in open source.
+Just remove that line: the linux/config.h file is not used in modern linux
+versions, and the comment is just a leftover from someone trying to
+work around that.
 
-Final selection is based on public voting round. And online voting is
-open now[0]. So, please vote for her and lets make her win. :)
-
-Thank you.
-
-[0] https://www.redhat.com/en/about/women-in-open-source
-
--- 
-Vaishali
+	Arnd
 
