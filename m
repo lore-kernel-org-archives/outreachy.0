@@ -1,44 +1,112 @@
 X-GM-THRID: 1969702830080
-X-Received: by 10.180.39.164 with SMTP id q4mr414069wik.5.1424553894066;
-        Sat, 21 Feb 2015 13:24:54 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.186.71 with SMTP id fi7ls318213wic.28.canary; Sat, 21 Feb
- 2015 13:24:53 -0800 (PST)
-X-Received: by 10.180.13.98 with SMTP id g2mr412255wic.3.1424553893822;
-        Sat, 21 Feb 2015 13:24:53 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id el6si378345wib.2.2015.02.21.13.24.53
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 13:24:53 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,621,1418079600"; 
-   d="scan'208";a="100873198"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 22:24:53 +0100
-Date: Sat, 21 Feb 2015 22:24:52 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-cc: outreachy-kernel@googlegroups.com
+Date: Sat, 21 Feb 2015 11:01:47 -0800 (PST)
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: navyasri.tech@gmail.com
+Message-Id: <8199fe66-21a5-4002-a04b-07bf4068a3d5@googlegroups.com>
+In-Reply-To: <1352209e-7cb8-4d3f-b819-666fa1c45fa4@googlegroups.com>
+References: <cover.1424538520.git.navyasri.tech@gmail.com> <4025a37966c3b0a3a3e210fad8740f0673ab5a92.1424538520.git.navyasri.tech@gmail.com> <alpine.DEB.2.10.1502211850160.2480@hadrien> <d408a19a-e57f-46b9-9a81-cc78e6c7de1e@googlegroups.com>
+ <alpine.DEB.2.10.1502211934400.2480@hadrien>
+ <1352209e-7cb8-4d3f-b819-666fa1c45fa4@googlegroups.com>
 Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: rtl8192u: Convert from
  printk into netdev_dbg or pr_dbg
-In-Reply-To: <8199fe66-21a5-4002-a04b-07bf4068a3d5@googlegroups.com>
-Message-ID: <alpine.DEB.2.02.1502212224200.2296@localhost6.localdomain6>
-References: <cover.1424538520.git.navyasri.tech@gmail.com> <4025a37966c3b0a3a3e210fad8740f0673ab5a92.1424538520.git.navyasri.tech@gmail.com> <alpine.DEB.2.10.1502211850160.2480@hadrien> <d408a19a-e57f-46b9-9a81-cc78e6c7de1e@googlegroups.com>
- <alpine.DEB.2.10.1502211934400.2480@hadrien> <1352209e-7cb8-4d3f-b819-666fa1c45fa4@googlegroups.com> <8199fe66-21a5-4002-a04b-07bf4068a3d5@googlegroups.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1389_1810643608.1424545307499"
+X-Google-Token: EJuso6cFfkTZPYT-hD00
+X-Google-IP: 111.93.6.70
 
-> I added a space after ' : ' in the cover letter of v2 by mistake, I haven't
-> sent rest of the patches yet? Do I send a newer version?
+------=_Part_1389_1810643608.1424545307499
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1390_1643841666.1424545307499"
 
-No, don't bother.  The cover letter is just to be read by someone 
-receiving the patches. It is not preserved.
+------=_Part_1390_1643841666.1424545307499
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-julia
+
+
+On Sunday, February 22, 2015 at 12:11:36 AM UTC+5:30, Navya Sri Nizamkari 
+wrote:
+>
+>
+>
+> On Sunday, February 22, 2015 at 12:05:13 AM UTC+5:30, Julia Lawall wrote:
+>>
+>> On Sat, 21 Feb 2015, Navya Sri Nizamkari wrote: 
+>>
+>> > 
+>> > 
+>> > On Saturday, February 21, 2015 at 11:21:21 PM UTC+5:30, Julia Lawall 
+>> wrote: 
+>> >       On Sat, 21 Feb 2015, Navya Sri Nizamkari wrote: 
+>> > 
+>> >       > Convert printk(KERN_DEBUG.. ) to netdev_dbg if its a network 
+>> >       driver 
+>> >       > and pr_dbg if its not a driver, to fix the checkpatch.pl 
+>> >       warning: 
+>> > 
+>> >       This message is rather confusing.  The patch affects only one 
+>> >       file, so it 
+>> >       either is a network driver or it is not.  The issue is that some 
+>> >       functions 
+>> >       don't have the right set of arguments that allow you to call the 
+>> >       netdev 
+>> >       functions. 
+>> > 
+>> >       julia 
+>> > 
+>> > I made the change and sent in v2 of that patch.Should I send the whole 
+>> > patchset again ? 
+>>
+>> Yes.  (Remember to put a space after punctuation) 
+>>
+>> julia
+>
+>
+> Sorry about missing the space after punctuation. Thanks for the feedback.
+>
+> Navya 
+>
+
+I added a space after ' : ' in the cover letter of v2 by mistake, I haven't 
+sent rest of the patches yet? Do I send a newer version?
+
+Navya   
+
+------=_Part_1390_1643841666.1424545307499
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<div dir="ltr"><br><br>On Sunday, February 22, 2015 at 12:11:36 AM UTC+5:30, Navya Sri Nizamkari wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir="ltr"><br><br>On Sunday, February 22, 2015 at 12:05:13 AM UTC+5:30, Julia Lawall wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">On Sat, 21 Feb 2015, Navya Sri Nizamkari wrote:
+<br>
+<br>&gt;
+<br>&gt;
+<br>&gt; On Saturday, February 21, 2015 at 11:21:21 PM UTC+5:30, Julia Lawall wrote:
+<br>&gt; &nbsp; &nbsp; &nbsp; On Sat, 21 Feb 2015, Navya Sri Nizamkari wrote:
+<br>&gt;
+<br>&gt; &nbsp; &nbsp; &nbsp; &gt; Convert printk(KERN_DEBUG.. ) to netdev_dbg if its a network
+<br>&gt; &nbsp; &nbsp; &nbsp; driver
+<br>&gt; &nbsp; &nbsp; &nbsp; &gt; and pr_dbg if its not a driver, to fix the <a href="http://checkpatch.pl" rel="nofollow" target="_blank">checkpatch.pl</a>
+<br>&gt; &nbsp; &nbsp; &nbsp; warning:
+<br>&gt;
+<br>&gt; &nbsp; &nbsp; &nbsp; This message is rather confusing. &nbsp;The patch affects only one
+<br>&gt; &nbsp; &nbsp; &nbsp; file, so it
+<br>&gt; &nbsp; &nbsp; &nbsp; either is a network driver or it is not. &nbsp;The issue is that some
+<br>&gt; &nbsp; &nbsp; &nbsp; functions
+<br>&gt; &nbsp; &nbsp; &nbsp; don't have the right set of arguments that allow you to call the
+<br>&gt; &nbsp; &nbsp; &nbsp; netdev
+<br>&gt; &nbsp; &nbsp; &nbsp; functions.
+<br>&gt;
+<br>&gt; &nbsp; &nbsp; &nbsp; julia
+<br>&gt;
+<br>&gt; I made the change and sent in v2 of that patch.Should I send the whole
+<br>&gt; patchset again ?
+<br>
+<br>Yes. &nbsp;(Remember to put a space after punctuation)
+<br>
+<br>julia</blockquote><div><br>Sorry about missing the space after punctuation. Thanks for the feedback.<br><br>Navya <br></div></div></blockquote><div><br>I added a space after ' : ' in the cover letter of v2 by mistake, I haven't sent rest of the patches yet? Do I send a newer version?<br><br>Navya &nbsp; <br></div></div>
+------=_Part_1390_1643841666.1424545307499--
+
+------=_Part_1389_1810643608.1424545307499--
 
