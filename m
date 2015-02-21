@@ -1,56 +1,76 @@
 X-GM-THRID: 2050684354560
-X-Received: by 10.194.86.1 with SMTP id l1mr471791wjz.0.1424557710532;
-        Sat, 21 Feb 2015 14:28:30 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,5ceba8a0d878a238
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.94.134 with SMTP id dc6mr391663wib.2.1424548497622;
+        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.94.161 with SMTP id dd1ls321339wib.49.canary; Sat, 21 Feb
- 2015 14:28:30 -0800 (PST)
-X-Received: by 10.180.94.134 with SMTP id dc6mr434246wib.2.1424557710305;
-        Sat, 21 Feb 2015 14:28:30 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id ta1si381930wic.1.2015.02.21.14.28.30
+Received: by 10.153.7.172 with SMTP id dd12ls294112lad.20.gmail; Sat, 21 Feb
+ 2015 11:54:57 -0800 (PST)
+X-Received: by 10.152.26.74 with SMTP id j10mr422928lag.10.1424548497220;
+        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id cl5si361648wib.3.2015.02.21.11.54.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 14:28:30 -0800 (PST)
-Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.17.13;
+        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue103) with ESMTPSA (Nemesis) id 0M03PY-1XXbyz3h9A-00uMFn; Sat, 21 Feb
- 2015 23:28:29 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x22c.google.com with SMTP id l15so9363284wiw.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 11:54:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=UP6yAZbTpeJhUsoTDFwIXEa0qEVqCsbnNQ0I9Dc8Nw8=;
+        b=onmUMs5TIslb85ZBfkeDAq3JV21ibVDb4SydFyx+ioZttKzUZXbmMKmWb6oIR2B7kG
+         wgon9L4MMgl/HOpCcr3Qf0LIz2MEa3CI7RkvgXh79EFwNCA7eQj79eirsjzDcnbNAhRi
+         18koXCbqcWHQUWYXcu5AXvj0eQsSkmXrfKJ9A8GsN4FV40BuAMluVAo0tbUbnp6sU2Ce
+         PTIf+VCmWIbInv+so9QbqaA1v9ICLlMe8yHhZZzaCldbCusCLLx4n5Ee7bLLZjPl3/un
+         R4lV9pyEn2fmxDZkXiuB7HEOv8cnuP4vtFZBC9f86aQ61Wj4Qb9hmOwvBpxHWcXsG3Yy
+         APhQ==
+X-Received: by 10.180.78.3 with SMTP id x3mr6605519wiw.86.1424548497094;
+        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from localhost.localdomain ([78.187.61.145])
+        by mx.google.com with ESMTPSA id u18sm47934659wjq.42.2015.02.21.11.54.56
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 21 Feb 2015 11:54:56 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: bcm: Remove space before tab
-Date: Sat, 21 Feb 2015 23:28:29 +0100
-Message-ID: <6169966.dlznF0JYIW@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1424547956-3686-1-git-send-email-yeliztaneroglu@gmail.com>
-References: <1424547956-3686-1-git-send-email-yeliztaneroglu@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID:  V03:K0:b+SlWJd9b81iQOiY5bNFC2GASWkce1k1ZUgDpG62T6nQ9IzLFGS
- Tv55xdfeq9KU5nXrMQuap0AJWXXBTmxThTmHrXwhHpSPuiWKlVmvbCgr53ypIWrE2Y/xym6
- EpGqm0/nQIYoCkHv5cRpaBvmRjez5pYp7dC33uYYosIgm8rV0zBAekk1Eub2N8TcLT0xp/1
- WWJA0UNTXk+QsRXMSOH8g==
-X-UI-Out-Filterresults: notjunk:1;
+Subject: [PATCH] Staging: bcm: Remove space before tab
+Date: Sat, 21 Feb 2015 21:54:57 +0200
+Message-Id: <1424548497-4413-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-On Saturday 21 February 2015 21:45:56 Yeliz Taneroglu wrote:
-> --- a/drivers/staging/bcm/headers.h
-> +++ b/drivers/staging/bcm/headers.h
-> @@ -1,6 +1,6 @@
->  
->  /*******************************************************************
-> -*              Headers.h
-> +*              Headers.h
->  *******************************************************************/
->  #ifndef __HEADERS_H__
->  #define __HEADERS_H__
+This patch fixes the checkpatch.pl warning:
+WARNING: "please, no space before tabs"
 
-It may be better to drop the comment entirely. We normally don't put the
-file name into comments, because files tend to get renamed a lot, making
-the comment incorrect, and because it's entirely redundant.
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+---
+ drivers/staging/bcm/InterfaceMacros.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-	Arnd
+diff --git a/drivers/staging/bcm/InterfaceMacros.h b/drivers/staging/bcm/InterfaceMacros.h
+index 7001caf..10599b7 100644
+--- a/drivers/staging/bcm/InterfaceMacros.h
++++ b/drivers/staging/bcm/InterfaceMacros.h
+@@ -4,8 +4,7 @@
+ #define BCM_USB_MAX_READ_LENGTH 2048
+ 
+ #define MAXIMUM_USB_TCB      128
+-#define MAXIMUM_USB_RCB 	 128
+-
++#define MAXIMUM_USB_RCB    128
+ #define MAX_BUFFERS_PER_QUEUE   256
+ 
+ #define MAX_DATA_BUFFER_SIZE    2048
+-- 
+1.8.3.2
+
 
