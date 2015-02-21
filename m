@@ -1,69 +1,74 @@
-X-GM-THRID: 5536407879680
-X-Received: by 10.112.126.194 with SMTP id na2mr3364947lbb.18.1425240278287;
-        Sun, 01 Mar 2015 12:04:38 -0800 (PST)
+X-GM-THRID: 1850792214528
+X-Received: by 10.112.181.198 with SMTP id dy6mr328061lbc.22.1424528837340;
+        Sat, 21 Feb 2015 06:27:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.231.38 with SMTP id td6ls389385wic.24.gmail; Sun, 01 Mar
- 2015 12:04:37 -0800 (PST)
-X-Received: by 10.180.13.195 with SMTP id j3mr1699983wic.2.1425240277978;
-        Sun, 01 Mar 2015 12:04:37 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x232.google.com (mail-we0-x232.google.com. [2a00:1450:400c:c03::232])
-        by gmr-mx.google.com with ESMTPS id el6si537960wib.2.2015.03.01.12.04.37
+Received: by 10.152.27.9 with SMTP id p9ls359397lag.86.gmail; Sat, 21 Feb 2015
+ 06:27:16 -0800 (PST)
+X-Received: by 10.152.4.229 with SMTP id n5mr313722lan.1.1424528836895;
+        Sat, 21 Feb 2015 06:27:16 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wg0-x241.google.com (mail-wg0-x241.google.com. [2a00:1450:400c:c00::241])
+        by gmr-mx.google.com with ESMTPS id o3si308377wib.2.2015.02.21.06.27.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 12:04:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) client-ip=2a00:1450:400c:c03::232;
+        Sat, 21 Feb 2015 06:27:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::241 as permitted sender) client-ip=2a00:1450:400c:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::241 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesx3 with SMTP id x3so29603437wes.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 12:04:37 -0800 (PST)
+Received: by mail-wg0-x241.google.com with SMTP id k14so5628598wgh.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 06:27:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=/Vu/Oe7AW31V0B6eWKM51Ac1+n1c+GBzt6OdWsPmMJo=;
-        b=Wpz5qZCSpzeOsnW5avJmEzHVszImvEhJ7YEoShszXXB8VXY2TyYoTuhthrc8Js7tH0
-         fWWV8J51AfH775uLJu3xZws0SzhftP5FN/lttCXk8IP5DYFs1taRjmKWI/e7z7SR2vHZ
-         O3w7rophSfKPJ2w2RqDKv6mexDQQ2X6PJU0+ji0WdYEV0IgWP9SkmWMH0+pnKtsTLYVb
-         4NmzcOOc6RNZfBIgkzbBALYldTKf9xgKnxLKGJ2Cy6qZqCSJaJNdwcNE7USylGLr1eyX
-         Ofett6LLMGx2qqoLj5zEQQlOsJaVsCJqSv9gN6Oe8GHBJb34Keb9bqTSCZ4UeUbYKZtE
-         VkTg==
-X-Received: by 10.180.198.211 with SMTP id je19mr20832441wic.37.1425240277890;
-        Sun, 01 Mar 2015 12:04:37 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id lu13sm12933907wic.10.2015.03.01.12.04.36
+        bh=+KaxLWHlBMcMZPseW2uOJoKPkOk/328bKxg4N0xxdHU=;
+        b=NfrvtSyO9lvXVrut9+pfAY0FmSP7P9Xm9aNZfKLv4ezjKcOIsO3rrPj4zFvMBoZKCr
+         dJgT8KajRP+05vw+g5ZrYTdVdqkhM62neDi65+F1Hpkr9gFKgQCtLSOwnvMm4/e4pOXx
+         IAD05XKp6AvSkzBqZFMNeWM0twpA8xYcUjiVTZY7Dcp/oHiiuEwsXuDhVqbEivm8DPM+
+         8PFKnAzYkIFpUtSzTCDd4L4yfAVfcHUbuKkB9c2UOx79OhXryol7OaYDoTm218dAxFmp
+         Rljdizbf5mAs7ZWO31/GN6OPfxslnQybpQsmguVsaskBTi5GezXE5W1poVv08wz46zZ1
+         Kytg==
+X-Received: by 10.194.176.33 with SMTP id cf1mr4873465wjc.19.1424528836807;
+        Sat, 21 Feb 2015 06:27:16 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id a13sm46842379wjx.30.2015.02.21.06.27.15
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 12:04:37 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        Sat, 21 Feb 2015 06:27:16 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: lustre: Fix __packed is preferred over __attribute__((packed)) in libcfs_kernelcomm.h
-Date: Sun,  1 Mar 2015 22:04:30 +0200
-Message-Id: <1425240270-9001-1-git-send-email-dilekuzulmez@gmail.com>
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: rtl8188eu: core: Deleted {}
+Date: Sat, 21 Feb 2015 16:27:09 +0200
+Message-Id: <1424528829-16295-1-git-send-email-haticeerturk27@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-Fix checkpatch.pl issues with  __packed is preferred over __attribute__((packed)) in libcfs_kernelcomm.h
+Deleted {}.Because braces {} are not necessary for single statement
+blocks
+This warning found with checkpatch.pl
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/core/rtw_pwrctrl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
-index 4688770..a989d26 100644
---- a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
-+++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
-@@ -107,7 +107,7 @@ typedef struct lustre_kernelcomm {
- 	__u32 lk_group;
- 	__u32 lk_data;
- 	__u32 lk_flags;
--} __attribute__((packed)) lustre_kernelcomm;
-+} __packed lustre_kernelcomm;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
+index df463a2..076d38c 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
++++ b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
+@@ -185,9 +185,9 @@ int ips_leave(struct adapter *padapter)
+ 		DBG_88E("==>ips_leave cnts:%d\n", pwrpriv->ips_leave_cnts);
  
- /* Userspace methods */
- int libcfs_ukuc_start(lustre_kernelcomm *l, int groups);
+ 		result = rtw_ips_pwr_up(padapter);
+-		if (result == _SUCCESS) {
++		if (result == _SUCCESS)
+ 			pwrpriv->rf_pwrstate = rf_on;
+-		}
++
+ 		DBG_88E_LEVEL(_drv_info_, "nolinked power save leave\n");
+ 
+ 		if ((_WEP40_ == psecuritypriv->dot11PrivacyAlgrthm) || (_WEP104_ == psecuritypriv->dot11PrivacyAlgrthm)) {
 -- 
 1.9.1
 
