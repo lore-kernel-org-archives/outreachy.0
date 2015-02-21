@@ -1,61 +1,94 @@
 X-GM-THRID: 2110375591936
-X-Received: by 10.42.30.9 with SMTP id t9mr8996984icc.8.1424975480159;
-        Thu, 26 Feb 2015 10:31:20 -0800 (PST)
+X-Received: by 10.194.86.1 with SMTP id l1mr459535wjz.0.1424554794524;
+        Sat, 21 Feb 2015 13:39:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.128.234 with SMTP id nr10ls110270obb.66.gmail; Thu, 26 Feb
- 2015 10:31:19 -0800 (PST)
-X-Received: by 10.182.66.40 with SMTP id c8mr7370103obt.36.1424975479976;
-        Thu, 26 Feb 2015 10:31:19 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id xj4si192420pbc.2.2015.02.26.10.31.19
+Received: by 10.181.27.131 with SMTP id jg3ls312897wid.12.gmail; Sat, 21 Feb
+ 2015 13:39:54 -0800 (PST)
+X-Received: by 10.180.91.76 with SMTP id cc12mr417936wib.7.1424554794348;
+        Sat, 21 Feb 2015 13:39:54 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id by11si596173wib.1.2015.02.21.13.39.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 10:31:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 21 Feb 2015 13:39:54 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id AA1DABB2;
-	Thu, 26 Feb 2015 18:31:19 +0000 (UTC)
-Date: Thu, 26 Feb 2015 10:31:19 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: { retrieved upper row
-Message-ID: <20150226183119.GA12697@kroah.com>
-References: <1424550280-22040-1-git-send-email-haticeerturk27@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,621,1418079600"; 
+   d="scan'208";a="122826306"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 22:39:35 +0100
+Date: Sat, 21 Feb 2015 22:39:34 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: vt6655: { retrieved upper
+ row
+In-Reply-To: <1424554182-23841-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502212237440.2296@localhost6.localdomain6>
+References: <1424554182-23841-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1424550280-22040-1-git-send-email-haticeerturk27@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-473612035-1424554775=:2296"
 
-On Sat, Feb 21, 2015 at 10:24:40PM +0200, Hatice ERT�RK wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323328-473612035-1424554775=:2296
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+On Sat, 21 Feb 2015, Hatice ERTÜRK wrote:
+
 > That open brace { should be on the previous line.
 > This Error found with checkpatch.pl
 > 
 > Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 > ---
->  drivers/staging/vt6655/card.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> v2:
+>  Retrieved all rows above.
+
+No, this is not going in the right direction.  Now the line is too long.  
+I think the code was OK as it is.  If the kernel coding conventions 
+require the { to be on the line before, then the first patch was OK.
+
+On the other hand "retrieved" is not the right word.  I think you mean 
+"Moved"?
+
+Remember to write subject lines in the imperative, so "Move ...".
+
+julia
+
+
+> ---
+>  drivers/staging/vt6655/card.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
 > diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-> index a079640..e77a5f6 100644
+> index e77a5f6..ddfa4f5 100644
 > --- a/drivers/staging/vt6655/card.c
 > +++ b/drivers/staging/vt6655/card.c
-> @@ -68,8 +68,8 @@
+> @@ -68,8 +68,7 @@
 >  
 >  /*---------------------  Static Variables  --------------------------*/
 >  
-> -static const unsigned short cwRXBCNTSFOff[MAX_RATE] =
-> -{17, 17, 17, 17, 34, 23, 17, 11, 8, 5, 4, 3};
-> +static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
-> +17, 17, 17, 17, 34, 23, 17, 11, 8, 5, 4, 3};
+> -static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
+> -17, 17, 17, 17, 34, 23, 17, 11, 8, 5, 4, 3};
+> +static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {17, 17, 17, 17, 34, 23, 17, 11, 8, 5, 4, 3};
 >  
 >  /*---------------------  Static Functions  --------------------------*/
 >  
-
-This too doesn't apply :(
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424554182-23841-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+--8323328-473612035-1424554775=:2296--
 
