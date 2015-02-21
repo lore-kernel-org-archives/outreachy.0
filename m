@@ -1,72 +1,81 @@
 X-GM-THRID: 1786498777088
-X-Received: by 10.112.162.135 with SMTP id ya7mr291123lbb.14.1424524572201;
-        Sat, 21 Feb 2015 05:16:12 -0800 (PST)
+X-Received: by 10.152.36.132 with SMTP id q4mr295906laj.6.1424524567368;
+        Sat, 21 Feb 2015 05:16:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.22.65 with SMTP id b1ls385243laf.99.gmail; Sat, 21 Feb
- 2015 05:16:10 -0800 (PST)
-X-Received: by 10.152.1.5 with SMTP id 5mr295890lai.4.1424524570667;
-        Sat, 21 Feb 2015 05:16:10 -0800 (PST)
+Received: by 10.180.218.163 with SMTP id ph3ls268125wic.32.canary; Sat, 21 Feb
+ 2015 05:16:07 -0800 (PST)
+X-Received: by 10.180.104.101 with SMTP id gd5mr254993wib.6.1424524567082;
+        Sat, 21 Feb 2015 05:16:07 -0800 (PST)
 Return-Path: <aybuke.147@gmail.com>
-Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
-        by gmr-mx.google.com with ESMTPS id ev8si294143wib.3.2015.02.21.05.16.10
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id cl5si301035wib.3.2015.02.21.05.16.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 05:16:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
+        Sat, 21 Feb 2015 05:16:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=aybuke.147@gmail.com;
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=aybuke.147@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesw62 with SMTP id w62so10121014wes.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 05:16:10 -0800 (PST)
+Received: by mail-wi0-x22e.google.com with SMTP id em10so8201201wid.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 05:16:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=lsgf0DAaF0vmTflfffCo14tA/CzzF9tXawVvFDGY9kk=;
-        b=P8COLE/AX7JBFXv5ZXxYcAvTSD55XTZEneFQ0H5bGat5s1EE75Q2mNsfNQSIxZgf5E
-         ysnse5JxK9z/cBrrWFSfNR2HzTEZ0dtvWe+tZ7zcPxJQsqjwtsplaIbLyI21C+2SBnJ5
-         +uCQkSHTkieibq06zxCN6DodgPpWSwQugyzMKv6/f3udm/h3Hbv+heq2uhwYB6r6itIr
-         LSGFsHK5f0x2iIleRc1FktO9ewRwcZ/HVeydMs//WwGod+Pq2GeSzbeBfG+5pzt8hnwV
-         HjkkHe7K4QTJ/2HhJlYDr47+TsIUCft2NQEeUc4zrod6qT1ZwoV4f2QafaOm1NmPB1GL
-         EUaw==
-X-Received: by 10.194.93.134 with SMTP id cu6mr4432538wjb.79.1424524570567;
-        Sat, 21 Feb 2015 05:16:10 -0800 (PST)
+        bh=j/b5kiJvAeLUeENle120iwfxG5JpLa+myYqjHn0oNcU=;
+        b=uc/b30h2a6bTEVzh1czJrfxDzhKDQkMIaE8EtMPYLP0Kb1oOMGTY/lPKU6C32MyS30
+         rNy52e6qtI+k70cDGTDUaOmuh3ThcOJUoaNhn6iZvcco0mVWGh++fi2o9XMsxJstF2Zp
+         TPb2HQJEBEfyQGX/JiPYCHtm01VyY4zYO7dl1bfca8q4Ns41cpABDR0dWXEcutvTZB9N
+         b1Rlu4zkaGTWwYLEFwPUjpZAXclzZhSHJPWK1UKsP/dnb2VU0idrhf3NQ6GKewdv6tVQ
+         alSxFMyfysw0E28hw8Rt34I5om6eq9+GxUjDP+r8LEVSLF/j6gilxB2orsG5uuZHD105
+         +ZkQ==
+X-Received: by 10.180.19.193 with SMTP id h1mr4013684wie.2.1424524567017;
+        Sat, 21 Feb 2015 05:16:07 -0800 (PST)
 Return-Path: <aybuke.147@gmail.com>
 Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id lu13sm6935922wic.10.2015.02.21.05.16.07
+        by mx.google.com with ESMTPSA id lu13sm6935922wic.10.2015.02.21.05.16.05
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 05:16:09 -0800 (PST)
+        Sat, 21 Feb 2015 05:16:05 -0800 (PST)
 From: aybuke ozdemir <aybuke.147@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH 3/3] Staging: lustre: Removed unnecessary spaces
-Date: Sat, 21 Feb 2015 15:15:53 +0200
-Message-Id: <1424524553-9035-3-git-send-email-aybuke.147@gmail.com>
+Subject: [PATCH 2/3] Staging: lustre: use kstrtoul() instead of sscanf()
+Date: Sat, 21 Feb 2015 15:15:52 +0200
+Message-Id: <1424524553-9035-2-git-send-email-aybuke.147@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1424524553-9035-1-git-send-email-aybuke.147@gmail.com>
 References: <1424524553-9035-1-git-send-email-aybuke.147@gmail.com>
 
-Fix checkpatch.pl issues with "unnecessary whitespace before a quoted
-newline" in llite_lib.c
+This patch makes checkpatch.pl by fixing the following warning:
+WARNING: Prefer kstrto<type> to single variable sscanf
 
 Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/llite_lib.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/lustre/lustre/llite/llite_lib.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index 62f923c..163bec0 100644
+index 9646e1a..62f923c 100644
 --- a/drivers/staging/lustre/lustre/llite/llite_lib.c
 +++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -620,7 +620,7 @@ int ll_get_max_mdsize(struct ll_sb_info *sbi, int *lmmsize)
- 	rc = obd_get_info(NULL, sbi->ll_md_exp, sizeof(KEY_MAX_EASIZE),
- 			  KEY_MAX_EASIZE, &size, lmmsize, NULL);
- 	if (rc)
--		CERROR("Get max mdsize error rc %d \n", rc);
-+		CERROR("Get max mdsize error rc %d\n", rc);
+@@ -2190,6 +2190,7 @@ int ll_process_config(struct lustre_cfg *lcfg)
+ 	struct lprocfs_static_vars lvars;
+ 	unsigned long x;
+ 	int rc = 0;
++	int rc1;
  
- 	return rc;
- }
+ 	lprocfs_llite_init_vars(&lvars);
+ 
+@@ -2197,7 +2198,8 @@ int ll_process_config(struct lustre_cfg *lcfg)
+ 	ptr = strrchr(lustre_cfg_string(lcfg, 0), '-');
+ 	if (!ptr || !*(++ptr))
+ 		return -EINVAL;
+-	if (sscanf(ptr, "%lx", &x) != 1)
++	rc1 = kstrtoul(ptr, 16, &x);
++	if (rc1 != 1)
+ 		return -EINVAL;
+ 	sb = (void *)x;
+ 	/* This better be a real Lustre superblock! */
 -- 
 1.9.1
 
