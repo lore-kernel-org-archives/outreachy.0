@@ -3,51 +3,50 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,25a6457a67aef068
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.66.157.129 with SMTP id wm1mr7806259pab.15.1424623284375;
-        Sun, 22 Feb 2015 08:41:24 -0800 (PST)
+X-Received: by 10.236.61.197 with SMTP id w45mr7665725yhc.54.1424623219808;
+        Sun, 22 Feb 2015 08:40:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.30.180 with SMTP id d49ls2092727qgd.97.gmail; Sun, 22 Feb
- 2015 08:41:24 -0800 (PST)
-X-Received: by 10.236.63.230 with SMTP id a66mr8166842yhd.51.1424623284190;
-        Sun, 22 Feb 2015 08:41:24 -0800 (PST)
+Received: by 10.182.254.3 with SMTP id ae3ls136730obd.56.gmail; Sun, 22 Feb
+ 2015 08:40:19 -0800 (PST)
+X-Received: by 10.182.126.168 with SMTP id mz8mr8310381obb.9.1424623219569;
+        Sun, 22 Feb 2015 08:40:19 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pd0-x232.google.com (mail-pd0-x232.google.com. [2607:f8b0:400e:c02::232])
-        by gmr-mx.google.com with ESMTPS id bo1si3930304pbc.0.2015.02.22.08.41.24
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id f2si3925074pdg.0.2015.02.22.08.40.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 08:41:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::232 as permitted sender) client-ip=2607:f8b0:400e:c02::232;
+        Sun, 22 Feb 2015 08:40:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::232 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x232.google.com with SMTP id fp1so19697994pdb.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 08:41:24 -0800 (PST)
+Received: by mail-pd0-x236.google.com with SMTP id p10so19747046pdj.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 08:40:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=9FCg8RW22ehfWp/8naSk968Pv9j0r3elFbMuZK8KNfQ=;
-        b=orNk91dw5TXGzdywNeoshleDGU0tmiJa4XBoGHtvQZXXvrCbpoIyJsuH4n9cvH3H8v
-         XU57RZ8tpvy6Rpbn85/aPhj4hLcKvB/PGGJLftWosixlLjs2lPpf/zFygMnprUVsrfS6
-         Kq0CfNJ5ykokS+ABQXKz2h8iLlDYQMLkFgssqDW5/JWa7KtOzCnJfEfI45qH0Sw6IFZU
-         uWRMVVktD6SEhsvHdvj//nGG3q8CEWHyUpNhCLRd/DqIrDcLxkcCtXhVGnc/uh6gYrhb
-         ivfeTAmTTRP6QU0WMQCdzmQ0FeKGX6QfM+YMv3zvj2i64410Uc19iD2BfD5OsDCnkkBN
-         CrxA==
-X-Received: by 10.68.138.194 with SMTP id qs2mr12796186pbb.8.1424623284085;
-        Sun, 22 Feb 2015 08:41:24 -0800 (PST)
+        bh=JetcawYkq1nXldPq0P71WSzVcFxOfsUQRAgtxqVU5KE=;
+        b=pRDjWQBZVF7tTtokAJvbauVwZ7btcSW2ITLMAbcljIf8K7Wl3j34tC5QShIRdZ+AHI
+         jVJt3jrmu8rqd4UxkbdklmxE2m+iFA3dmsKreC7Nx62oguIUfr662jMlhZFoc6uz4G0T
+         VQg6ijl3yLgBa7S1tNQy6TH6zncI5zGBzdJNO5bkzaHcu7w4rgNkPP9i4haheXOye6Fm
+         REa10TYLbx8RZ4Vg90E41qQf3SVltbRgQnBdt+Yh7T/8/QkmMoF12E047U5sEOvJK64p
+         l4ED88EsecK9ePKXpxKd1Gu80huSD4AEngIRPKWZ9gVk0WYDfmSwGSENLZTQfgpOi5Ik
+         Hwgw==
+X-Received: by 10.70.128.49 with SMTP id nl17mr8111156pdb.67.1424623219476;
+        Sun, 22 Feb 2015 08:40:19 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id jd10sm32959005pbd.23.2015.02.22.08.41.22
+        by mx.google.com with ESMTPSA id uy8sm32945611pbc.31.2015.02.22.08.40.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 08:41:23 -0800 (PST)
-Date: Sun, 22 Feb 2015 22:12:25 +0530
+        Sun, 22 Feb 2015 08:40:19 -0800 (PST)
+Date: Sun, 22 Feb 2015 22:11:20 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 3/4] staging: rtl8192u: Replace asm header files with
- linux ones.
-Message-ID: <71ee952c978879101ab9ef3d18e5eb5a3d8e9a95.1424622240.git.navyasri.tech@gmail.com>
+Subject: [PATCH v2 2/4] staging: rtl8192u: Remove unnecessary comment
+Message-ID: <cdd2f8779115dababd5ea08b04f0930d5380a464.1424622240.git.navyasri.tech@gmail.com>
 References: <cover.1424622240.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -55,33 +54,31 @@ Content-Disposition: inline
 In-Reply-To: <cover.1424622240.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-As asm header files are included in linux header files, this patch
-uses <linux/string.h> instead of <asm/string.h> and <linux/errno.h>
-instead of <asm/errno.h> to fix checkpatch.pl errors:
-
-ERROR: Use #include <linux/string.h> instead of <asm/string.h>
-ERROR: Use #include <linux/errno.h> instead of <asm/errno.h>
+The <linux/config.h> header file is not used anymore,
+so it is commented out in this file.This patch deletes
+that unnecessary comment.
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v2:
+     - The style of a comment was changed to C99 in the last
+       version, this version removes that comment.
+
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-index cd31598..bd1555d 100644
+index e517e81..cd31598 100644
 --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
 +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-@@ -14,8 +14,8 @@
+@@ -11,7 +11,6 @@
+  *
+  */
+ 
+-//#include <linux/config.h>
  #include <linux/module.h>
  #include <linux/init.h>
  #include <linux/slab.h>
--#include <asm/string.h>
--#include <asm/errno.h>
-+#include <linux/string.h>
-+#include <linux/errno.h>
- 
- #include "ieee80211.h"
- 
 -- 
 1.9.1
 
