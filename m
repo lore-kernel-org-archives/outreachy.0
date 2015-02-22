@@ -1,72 +1,105 @@
-X-GM-THRID: 6200282727557627904
-X-Received: by 10.194.6.170 with SMTP id c10mr495403wja.7.1443615818890;
-        Wed, 30 Sep 2015 05:23:38 -0700 (PDT)
+X-GM-THRID: 1433009127424
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,2f516636de888aad
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.37.200 with SMTP id a8mr815831lak.5.1424628690510;
+        Sun, 22 Feb 2015 10:11:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.13.13 with SMTP id eu13ls153200wid.43.gmail; Wed, 30 Sep
- 2015 05:23:38 -0700 (PDT)
-X-Received: by 10.194.59.166 with SMTP id a6mr497884wjr.6.1443615818480;
-        Wed, 30 Sep 2015 05:23:38 -0700 (PDT)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id o5si232188wib.0.2015.09.30.05.23.38
+Received: by 10.152.6.38 with SMTP id x6ls146413lax.63.gmail; Sun, 22 Feb 2015
+ 10:11:29 -0800 (PST)
+X-Received: by 10.112.189.227 with SMTP id gl3mr831263lbc.2.1424628689875;
+        Sun, 22 Feb 2015 10:11:29 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-lb0-x22b.google.com (mail-lb0-x22b.google.com. [2a00:1450:4010:c04::22b])
+        by gmr-mx.google.com with ESMTPS id mv2si3475225lbc.0.2015.02.22.10.11.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 05:23:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Sun, 22 Feb 2015 10:11:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:4010:c04::22b as permitted sender) client-ip=2a00:1450:4010:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:4010:c04::22b as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id ge5so194174060wic.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 05:23:38 -0700 (PDT)
+Received: by lbiw7 with SMTP id w7so14615417lbi.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 10:11:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=oqe4ZuwLcfB5EGxmKbPhigYBZfzD02pln2ijse71F/s=;
-        b=LJKigDzj9s/oEcgbWaBmIJRuhf3t+cHibmiDc/755wN9hOhCjOlNak8Cpa0ineji8e
-         umv6BEEx+P3LyXvoo3O1UsJFbEcgP2/tWKoSGbEeRtnnRNAeZjf2WK6a6nSx5UawG1tg
-         zDYlsBFDl8lm7vHdpaAcJ8Vp27xA1v6mDUhz5fg9QhVEcIsHBWlKrgwCrt+oBjgdSQxG
-         2nRAo5XiAXakBtnw/fahiBORpDlz1pbXXnTFq7K7YIwmr+crVzYrIUJMRJzi8/4qLgiw
-         aaRNN1HewPTsJf5VKYgShhwBYjI1DH4E/HoMeeveXk4KtVOCJzj+dizkgPzDqjrMvXhF
-         rVNw==
-X-Received: by 10.194.184.166 with SMTP id ev6mr4224721wjc.125.1443615818378;
-        Wed, 30 Sep 2015 05:23:38 -0700 (PDT)
-Return-Path: <aybuke.147@gmail.com>
-Received: from kripton.comu.edu.tr ([193.255.97.43])
-        by smtp.gmail.com with ESMTPSA id b5sm389290wjf.16.2015.09.30.05.23.36
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 30 Sep 2015 05:23:37 -0700 (PDT)
-From: aybuke <aybuke.147@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: aybuke <aybuke.147@gmail.com>
-Subject: [PATCH] Staging: octeon: Use preferred kernel type
-Date: Wed, 30 Sep 2015 15:23:28 +0300
-Message-Id: <1443615808-6064-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 2.1.4
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=m1NxkoOQToR+v/GyA7NI/V85uxPo9CEbOHBN00tvkio=;
+        b=eTG1YVCw06JL41kD8ltCm6PC1LL7XbaoWS1sw35DH/AoqZzCslVUCEo7m1XUHOwhwc
+         cjjGT7+0oQV9J4jAgsHlrOcO+gQ1b0ZfrU3y1ESLpp8X2mpWewF9R+0w8MkRe1Sy3zH2
+         AptME/BlbbQvG42YZujk7PRkpfJEKLXenYiUVYwrLHDWIm3EqzO0EFMPcewDF9aKx1vV
+         9sGrAH5N/D+IVYeXLtIsl1XCtUj/KZ/n0PUuiXetU8+D5ZfczCUJHdmEPcYPF30uRjQr
+         LYDEuXuyNFpM0DsX75KRUZdAfc47Rs8C95ZxphHmnnQ5OjOD7JW/WXIxNLQGo+YS3tu2
+         ivHw==
+MIME-Version: 1.0
+X-Received: by 10.152.18.133 with SMTP id w5mr6492835lad.51.1424628689781;
+ Sun, 22 Feb 2015 10:11:29 -0800 (PST)
+Received: by 10.114.182.9 with HTTP; Sun, 22 Feb 2015 10:11:29 -0800 (PST)
+In-Reply-To: <54E78525.9090308@gmail.com>
+References: <1424457078-5570-1-git-send-email-ksenija.stanojevic@gmail.com>
+	<54E78525.9090308@gmail.com>
+Date: Sun, 22 Feb 2015 19:11:29 +0100
+Message-ID: <CAL7P5jL-6E=QaKjaCV+YzWoPGmv9L2+ScGWSkEg6RCRBLRp1Lg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Remove else after return
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: Jes Sorensen <jes.sorensen@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch fixes "CHECK: Prefer kernel type 'u8' over 'uint8_t'"
-checkpatch.pl issue in ethernet.c file.
+On Fri, Feb 20, 2015 at 8:04 PM, Jes Sorensen <jes.sorensen@gmail.com> wrote:
+> On 02/20/15 13:31, Ksenija Stanojevic wrote:
+>> This patch simplifies the code by removing else and fixes
+>> the following checkpatch.pl warning: "else is not useful after
+>> break or return".
+>>
+>> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+>> ---
+>>  drivers/staging/rtl8192u/r819xU_phy.c | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
+>> index e210664..00be1fd 100644
+>> --- a/drivers/staging/rtl8192u/r819xU_phy.c
+>> +++ b/drivers/staging/rtl8192u/r819xU_phy.c
+>> @@ -1363,11 +1363,11 @@ static u8 rtl8192_phy_SwChnlStepByStep(struct net_device *dev, u8 channel,
+>>                       if ((*stage) == 2) {
+>>                               (*delay) = CurrentCmd->msDelay;
+>>                               return true;
+>> -                     } else {
+>> -                             (*stage)++;
+>> -                             (*step) = 0;
+>> -                             continue;
+>>                       }
+>> +                     (*stage)++;
+>> +                     (*step) = 0;
+>> +                     continue;
+>> +
+>>               }
+>>
+>>               switch (CurrentCmd->CmdID) {
+>>
+>
+> There is one issue with your patch, you add a blank line after continue,
+> that one needs to be removed.
+>
+> rtl8192_phy_SwChnlStepByStep() is an utter mess, and given that the
+> function is huge and have a lot of return points, one either has to take
+> the approach you have chosen or fix them all up. I just told Aybuke
+> Ozdemir to use a goto to fix a similar case, so I wanted to point out
+> that here I think your solution makes sense.
+>
+> There is another bad case with this function in that they return
+> true/false in a u8 variable, ie. the variable and the values assigned to
+> it do not match. This would call for a separate patch though.
+>
+> Cheers,
+> Jes
+>
+Hi,
 
-Signed-off-by: aybuke <aybuke.147@gmail.com>
----
- drivers/staging/octeon/ethernet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 7274fda..7f9518d 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -382,7 +382,7 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
- 	    && (cvmx_helper_interface_get_mode(interface) !=
- 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
- 		int i;
--		uint8_t *ptr = dev->dev_addr;
-+		u8 *ptr = dev->dev_addr;
- 		uint64_t mac = 0;
- 
- 		for (i = 0; i < 6; i++)
--- 
-2.1.4
-
+I can not find any variable that  uses true/false in this function.
+Can you please explain in more detail?
 
