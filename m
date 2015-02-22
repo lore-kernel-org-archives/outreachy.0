@@ -1,76 +1,297 @@
-X-GM-THRID: 1823794528256
+X-GM-THRID: 2453394161664
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,d1e136728869a0ba,start
+X-Google-Thread: 9ca63f596c,e95dbbcdacaa1bd2,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.181.198 with SMTP id dy6mr321886lbc.22.1424527651247;
-        Sat, 21 Feb 2015 06:07:31 -0800 (PST)
+X-Received: by 10.180.182.44 with SMTP id eb12mr707969wic.4.1424617131154;
+        Sun, 22 Feb 2015 06:58:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.198.231 with SMTP id jf7ls387817lac.92.gmail; Sat, 21 Feb
- 2015 06:07:30 -0800 (PST)
-X-Received: by 10.112.77.101 with SMTP id r5mr325475lbw.4.1424527650627;
-        Sat, 21 Feb 2015 06:07:30 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
-        by gmr-mx.google.com with ESMTPS id cl5si309743wib.3.2015.02.21.06.07.30
+Received: by 10.152.87.210 with SMTP id ba18ls402520lab.78.gmail; Sun, 22 Feb
+ 2015 06:58:50 -0800 (PST)
+X-Received: by 10.112.131.106 with SMTP id ol10mr755321lbb.20.1424617130729;
+        Sun, 22 Feb 2015 06:58:50 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
+        by gmr-mx.google.com with ESMTPS id i7si497891wif.0.2015.02.22.06.58.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 06:07:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
+        Sun, 22 Feb 2015 06:58:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevl61 with SMTP id l61so6173592wev.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 06:07:30 -0800 (PST)
+Received: by mail-wg0-x22e.google.com with SMTP id a1so21296658wgh.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 06:58:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=9n+ARIxIi9gJFkOGPSK8ETJBPjDSwHiwD8BAzNyOqBs=;
-        b=yr0oYDjQ7oYUkZHueD+d1MsDttp16wGXVIVRylmDsAyUyPwSWYbuA906bReQPhm1mU
-         kSIvEB+4STYCrKLbam+LL/iiFziPzk1On5T36fqRZuVH0orfu0KWHq+Oa8RjvE2b26Ow
-         0Frx+REbsmpuTklP3/KW20JB3nhz5fgZBgJJCVIMO9VZS9M/KlT648DUERs+2ENQpgNT
-         0s+15WT6FUP8fb1pKx/mnSX0STCMgajxRuV+7lcSSl9LldfCMfMzZDv2axTjUAEJCz5U
-         jc7wNhfLjmrxO/ktYCC37GYF/s8UvuoRhWv82/qDcoxib4qy/bZI7Pk6cjTJkg6AMp9k
-         yfmQ==
-X-Received: by 10.194.134.105 with SMTP id pj9mr4701111wjb.143.1424527650538;
-        Sat, 21 Feb 2015 06:07:30 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id dj4sm46785238wjc.13.2015.02.21.06.07.29
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 06:07:29 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=XxyMK0XN3yhx4UG9wVbXuLzdMxL390DIFKfj8Ww01fg=;
+        b=fqDDbHKoGd5V+MkbaarJFhZs1jRO3fVzQzFsRLOl8KViz5Cxzfmyx0yBdw6hgA4a0I
+         DS2Yx+++HYz7pk0R3dNwCXIhDmcNBvs4oIHaHh9LmIBDlWvbidCy+APkewcAAsXXxnqj
+         thXYZSpjYsbsII3O5Lt/Jef8UFYFvtKRy2EjJDcF4LCNLy5dPN4DSKTb74mBXAQ1vCp+
+         qLqz4FlUJfe9F8NdNFkYLAziFI8LaJ78yHsbtdCkCCYL9Z1beDDoAgOGBIH3/RAOzOOn
+         9e318Ac2At/cSIALJmScW08ghYJ13DWjJXi+RiNateQTZyXCEbGytQnO2Ux0PifLNdlt
+         4N3A==
+X-Received: by 10.180.74.111 with SMTP id s15mr12162200wiv.61.1424617130618;
+        Sun, 22 Feb 2015 06:58:50 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from localhost.localdomain ([95.15.157.229])
+        by mx.google.com with ESMTPSA id f1sm11769660wij.2.2015.02.22.06.58.48
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 22 Feb 2015 06:58:49 -0800 (PST)
+From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 2/3] Staging: rtl8192u: Convert comment from C99 to C89 style
-Date: Sat, 21 Feb 2015 15:07:23 +0100
-Message-Id: <0a8f9874305de440b504d0d66c9682eb2cc8b702.1424527587.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1424527587.git.ksenija.stanojevic@gmail.com>
-References: <cover.1424527587.git.ksenija.stanojevic@gmail.com>
+Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH] Staging: rtl8192e: replace memcpy() by ether_addr_copy() using coccinelle and pack variable
+Date: Sun, 22 Feb 2015 16:58:08 +0200
+Message-Id: <1424617088-2826-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-Kernel style for comments is C89 style. Issue found by checkpatch.pl.
+This patch focuses on fixing the following warning generated
+by checkpatch.pl for the file rxtx.c
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Prefer ether_addr_copy() over memcpy() if the Ethernet addresses
+are __aligned(2)
+
+@@ expression e1, e2; @@
+
+- memcpy(e1, e2, ETH_ALEN);
++ ether_addr_copy(e1, e2);
+
+struct net_device {
+        char                       name[16];             /*     0    16*/
+        struct hlist_node          name_hlist;           /*    16    16*/
+        char *                     ifalias;              /*    32     8*/
+        long unsigned int          mem_end;              /*    40     8*/
+        long unsigned int          mem_start;            /*    48     8*/
+        long unsigned int          base_addr;            /*    56     8*/
+        /* --- cacheline 1 boundary (64 bytes) --- */
+        int                        irq;                  /*    64     4*/
+
+        /* XXX 4 bytes hole, try to pack */
+
+        long unsigned int          state;                /*    72     8*/
+        struct list_head           dev_list;             /*    80    16*/
+        struct list_head           napi_list;            /*    96    16*/
+        struct list_head           unreg_list;           /*   112    16*/
+        /* --- cacheline 2 boundary (128 bytes) --- */
+        struct list_head           close_list;           /*   128    16*/
+        struct {
+                struct list_head   upper;                /*   144    16*/
+                struct list_head   lower;                /*   160    16*/
+        } adj_list;                                      /*   144    32*/
+        struct {
+                struct list_head   upper;                /*   176    16*/
+                struct list_head   lower;                /*   192    16*/
+        } all_adj_list;                                  /*   176    32*/
+        /* --- cacheline 3 boundary (192 bytes) was 16 bytes ago --- */
+        netdev_features_t          features;             /*   208     8*/
+        netdev_features_t          hw_features;          /*   216     8*/
+        netdev_features_t          wanted_features;      /*   224     8*/
+        netdev_features_t          vlan_features;        /*   232     8*/
+        netdev_features_t          hw_enc_features;      /*   240     8*/
+        netdev_features_t          mpls_features;        /*   248     8*/
+        /* --- cacheline 4 boundary (256 bytes) --- */
+	int                        ifindex;              /*   256     4*/
+        int                        iflink;               /*   260     4*/
+        struct net_device_stats    stats;                /*   264   184*/
+        /* --- cacheline 7 boundary (448 bytes) --- */
+        atomic_long_t              rx_dropped;           /*   448     8*/
+        atomic_long_t              tx_dropped;           /*   456     8*/
+        atomic_t                   carrier_changes;      /*   464     4*/
+
+        /* XXX 4 bytes hole, try to pack */
+
+        const struct iw_handler_def  * wireless_handlers; /*   472     8*/
+        struct iw_public_data *    wireless_data;        /*   480     8*/
+        const struct net_device_ops  * netdev_ops;       /*   488     8*/
+        const struct ethtool_ops  * ethtool_ops;         /*   496     8*/
+        const struct forwarding_accel_ops  * fwd_ops;    /*   504     8*/
+        /* --- cacheline 8 boundary (512 bytes) --- */
+        const struct header_ops  * header_ops;           /*   512     8*/
+        unsigned int               flags;                /*   520     4*/
+        unsigned int               priv_flags;           /*   524     4*/
+        short unsigned int         gflags;               /*   528     2*/
+        short unsigned int         padded;               /*   530     2*/
+        unsigned char              operstate;            /*   532     1*/
+        unsigned char              link_mode;            /*   533     1*/
+        unsigned char              if_port;              /*   534     1*/
+        unsigned char              dma;                  /*   535     1*/
+        unsigned int               mtu;                  /*   536     4*/
+        short unsigned int         type;                 /*   540     2*/
+        short unsigned int         hard_header_len;      /*   542     2*/
+        short unsigned int         needed_headroom;      /*   544     2*/
+        short unsigned int         needed_tailroom;      /*   546     2*/
+        unsigned char              perm_addr[32];        /*   548    32*/
+        /* --- cacheline 9 boundary (576 bytes) was 4 bytes ago --- */
+        unsigned char              addr_assign_type;     /*   580     1*/
+        unsigned char              addr_len;             /*   581     1*/
+        short unsigned int         neigh_priv_len;       /*   582     2*/
+        short unsigned int         dev_id;               /*   584     2*/
+        short unsigned int         dev_port;             /*   586     2*/
+        spinlock_t                 addr_list_lock;       /*   588     4*/
+	struct netdev_hw_addr_list uc;                   /*   592    24*/
+        struct netdev_hw_addr_list mc;                   /*   616    24*/
+        /* --- cacheline 10 boundary (640 bytes) --- */
+        struct netdev_hw_addr_list dev_addrs;            /*   640    24*/
+        struct kset *              queues_kset;          /*   664     8*/
+        unsigned char              name_assign_type;     /*   672     1*/
+        bool                       uc_promisc;           /*   673     1*/
+
+        /* XXX 2 bytes hole, try to pack */
+
+        unsigned int               promiscuity;          /*   676     4*/
+        unsigned int               allmulti;             /*   680     4*/
+
+        /* XXX 4 bytes hole, try to pack */
+
+        struct vlan_info *         vlan_info;            /*   688     8*/
+        struct dsa_switch_tree *   dsa_ptr;              /*   696     8*/
+        /* --- cacheline 11 boundary (704 bytes) --- */
+        struct tipc_bearer *       tipc_ptr;             /*   704     8*/
+        void *                     atalk_ptr;            /*   712     8*/
+        struct in_device *         ip_ptr;               /*   720     8*/
+        struct dn_dev *            dn_ptr;               /*   728     8*/
+        struct inet6_dev *         ip6_ptr;              /*   736     8*/
+        void *                     ax25_ptr;             /*   744     8*/
+        struct wireless_dev *      ieee80211_ptr;        /*   752     8*/
+        struct wpan_dev *          ieee802154_ptr;       /*   760     8*/
+        /* --- cacheline 12 boundary (768 bytes) --- */
+        long unsigned int          last_rx;              /*   768     8*/
+        unsigned char *            dev_addr;             /*   776     8*/
+        struct netdev_rx_queue *   _rx;                  /*   784     8*/
+        unsigned int               num_rx_queues;        /*   792     4*/
+        unsigned int               real_num_rx_queues;   /*   796     4*/
+        long unsigned int          gro_flush_timeout;    /*   800     8*/
+        rx_handler_func_t *        rx_handler;           /*   808     8*/
+        void *                     rx_handler_data;      /*   816     8*/
+        struct netdev_queue *      ingress_queue;        /*   824     8*/
+        /* --- cacheline 13 boundary (832 bytes) --- */
+	unsigned char              broadcast[32];        /*   832    32*/
+
+        /* XXX 32 bytes hole, try to pack */
+
+        /* --- cacheline 14 boundary (896 bytes) --- */
+        struct netdev_queue *      _tx;                  /*   896     8*/
+        unsigned int               num_tx_queues;        /*   904     4*/
+        unsigned int               real_num_tx_queues;   /*   908     4*/
+        struct Qdisc *             qdisc;                /*   912     8*/
+        long unsigned int          tx_queue_len;         /*   920     8*/
+        spinlock_t                 tx_global_lock;       /*   928     4*/
+
+        /* XXX 4 bytes hole, try to pack */
+
+        struct xps_dev_maps *      xps_maps;             /*   936     8*/
+        struct cpu_rmap *          rx_cpu_rmap;          /*   944     8*/
+        long unsigned int          trans_start;          /*   952     8*/
+        /* --- cacheline 15 boundary (960 bytes) --- */
+        int                        watchdog_timeo;       /*   960     4*/
+
+        /* XXX 4 bytes hole, try to pack */
+
+        struct timer_list          watchdog_timer;       /*   968    80*/
+        /* --- cacheline 16 boundary (1024 bytes) was 24 bytes ago ---* */
+        int *                      pcpu_refcnt;          /*  1048     8*/
+        struct list_head           todo_list;            /*  1056    16*/
+        struct hlist_node          index_hlist;          /*  1072    16*/
+        /* --- cacheline 17 boundary (1088 bytes) --- */
+        struct list_head           link_watch_list;      /*  1088    16*/
+        enum {
+                NETREG_UNINITIALIZED = 0,
+                NETREG_REGISTERED = 1,
+                NETREG_UNREGISTERING = 2,
+                NETREG_UNREGISTERED = 3,
+                NETREG_RELEASED = 4,
+                NETREG_DUMMY = 5,
+        } reg_state:8;                                     /*  1104 4 */
+	/* Bitfield combined with next fields */
+
+        bool                       dismantle;            /*  1105     1*/
+
+        /* Bitfield combined with previous fields */
+
+        enum {
+                RTNL_LINK_INITIALIZED = 0,
+                RTNL_LINK_INITIALIZING = 1,
+        } rtnl_link_state:16;                               /*  1104 4 */
+
+        /* XXX 4 bytes hole, try to pack */
+
+        void                       (*destructor)(struct net_device *);/*  1112     8 */
+        struct netpoll_info *      npinfo;               /*  1120     8*/
+        struct net *               nd_net;               /*  1128     8*/
+        union {
+                void *             ml_priv;              /*           8*/
+                struct pcpu_lstats * lstats;             /*           8*/
+                struct pcpu_sw_netstats * tstats;        /*           8*/
+                struct pcpu_dstats * dstats;             /*           8*/
+                struct pcpu_vstats * vstats;             /*           8*/
+        };                                               /*  1136     8*/
+        struct garp_port *         garp_port;            /*  1144     8*/
+        /* --- cacheline 18 boundary (1152 bytes) was 4 bytes ago --- */
+        struct mrp_port *          mrp_port;             /*  1152     8*/
+        struct device              dev;                  /*  1160   696*/
+
+        /* XXX last struct has 7 bytes of padding */
+
+        /* --- cacheline 29 boundary (1856 bytes) was 4 bytes ago --- */
+        const struct attribute_group  * sysfs_groups[4]; /*  1856    32*/
+        const struct attribute_group  * sysfs_rx_queue_group; /*  18888 */
+        const struct rtnl_link_ops  * rtnl_link_ops;     /*  1896     8*/
+        unsigned int               gso_max_size;         /*  1904     4*/
+        u16                        gso_max_segs;         /*  1908     2*/
+        u16                        gso_min_segs;         /*  1910     2*/
+	const struct dcbnl_rtnl_ops  * dcbnl_ops;        /*  1912     8*/
+        /* --- cacheline 30 boundary (1920 bytes) was 4 bytes ago --- */
+        u8                         num_tc;               /*  1920     1*/
+
+        /* XXX 1 byte hole, try to pack */
+
+        struct netdev_tc_txq       tc_to_txq[16];        /*  1922    64*/
+        /* --- cacheline 31 boundary (1984 bytes) was 6 bytes ago --- */
+        u8                         prio_tc_map[16];      /*  1986    16*/
+
+        /* XXX 2 bytes hole, try to pack */
+
+        unsigned int               fcoe_ddp_xid;         /*  2004     4*/
+        struct phy_device *        phydev;               /*  2008     8*/
+        struct lock_class_key *    qdisc_tx_busylock;    /*  2016     8*/
+        int                        group;                /*  2024     4*/
+
+        /* XXX 4 bytes hole, try to pack */
+
+        struct pm_qos_request      pm_qos_req;           /*  2032   176*/
+        /* --- cacheline 34 boundary (2176 bytes) was 36 bytes ago --- * */
+
+        /* size: 2240, cachelines: 35, members: 120 */
+        /* sum members: 2147, holes: 11, sum holes: 65 */
+        /* padding: 32 */
+        /* paddings: 1, sum paddings: 7 */
+
+        /* BRAIN FART ALERT! 2240 != 2147 + 65(holes), diff = 28 */
+
+};
+
+Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 ---
- drivers/staging/rtl8192u/r8190_rtl8256.h | 2 +-
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.h b/drivers/staging/rtl8192u/r8190_rtl8256.h
-index ddddd70..7a5a388 100644
---- a/drivers/staging/rtl8192u/r8190_rtl8256.h
-+++ b/drivers/staging/rtl8192u/r8190_rtl8256.h
-@@ -13,7 +13,7 @@
- #ifndef RTL8225H
- #define RTL8225H
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+index 5615c80..2fbb964 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+@@ -2567,7 +2567,7 @@ static int r8192_set_mac_adr(struct net_device *dev, void *mac)
  
--#define RTL819X_TOTAL_RF_PATH 2 //for 8192U
-+#define RTL819X_TOTAL_RF_PATH 2 /* for 8192U */
- extern void PHY_SetRF8256Bandwidth(struct net_device *dev, HT_CHANNEL_WIDTH Bandwidth);
- extern void PHY_RF8256_Config(struct net_device *dev);
- extern void phy_RF8256_Config_ParaFile(struct net_device *dev);
+ 	down(&priv->wx_sem);
+ 
+-	memcpy(dev->dev_addr, addr->sa_data, ETH_ALEN);
++	ether_addr_copy(dev->dev_addr, addr->sa_data);
+ 
+ 	schedule_work(&priv->reset_wq);
+ 	up(&priv->wx_sem);
 -- 
-1.9.1
+1.8.3.2
 
 
