@@ -3,67 +3,76 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,1bc0e2b2eb529af1
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.194.161.194 with SMTP id xu2mr528442wjb.1.1424574498265;
-        Sat, 21 Feb 2015 19:08:18 -0800 (PST)
+X-Received: by 10.180.87.166 with SMTP id az6mr524502wib.1.1424569945649;
+        Sat, 21 Feb 2015 17:52:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.73.103 with SMTP id k7ls336516wiv.5.gmail; Sat, 21 Feb
- 2015 19:08:17 -0800 (PST)
-X-Received: by 10.194.11.70 with SMTP id o6mr529517wjb.6.1424574497942;
-        Sat, 21 Feb 2015 19:08:17 -0800 (PST)
+Received: by 10.152.28.42 with SMTP id y10ls417727lag.71.gmail; Sat, 21 Feb
+ 2015 17:52:25 -0800 (PST)
+X-Received: by 10.112.64.171 with SMTP id p11mr511128lbs.12.1424569945115;
+        Sat, 21 Feb 2015 17:52:25 -0800 (PST)
 Return-Path: <gulsah.1004@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id el6si409404wib.2.2015.02.21.19.08.17
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id o3si394313wib.2.2015.02.21.17.52.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 19:08:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Sat, 21 Feb 2015 17:52:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=gulsah.1004@gmail.com;
+       spf=pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=gulsah.1004@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-f169.google.com with SMTP id em10so13211636wid.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 19:08:17 -0800 (PST)
+Received: by mail-wi0-f171.google.com with SMTP id hi2so10118306wib.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 17:52:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=T+L4AI95ZoFdscZHtKZYuyNAxBV6XJxB1FXbw6/Wd1c=;
-        b=Ijw11rBpk9Gaz+U324HK6Bdu/ACbRNMaRb9HswUoLHZILNQcgG3vlKl2V4k9z2MW5a
-         P5YE+TnKupTc/Mz6Wu5AXQ5iaqB16JYu/TnyYjYuvtCY2cf9QaljBdV2q0MiQ4LH74Ts
-         pKsxINmh9dG7nbouRIT3kctsReMmP8yWjH3S6qdGbRv9Sxgl9vX0ErLFeiFE+m6qpV3n
-         V3F6p+i5kcYI85pam+4mdS5WWsPZsUNEU4iN7S6VdZQMgjEDkbQ7sKp7Hr7EDFI6z4hH
-         D3amy69DR4dJINqsNNbr7fMlUd9r3AI3LM3J8KeQN7QQyFfodUp77z6TsEPs6BUaiujS
-         IreA==
-X-Received: by 10.194.237.34 with SMTP id uz2mr9149138wjc.157.1424574497838;
-        Sat, 21 Feb 2015 19:08:17 -0800 (PST)
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=rL7AknGdMkTthB3Ayriz5y43xF4K0MqM8HOdPBU3P0E=;
+        b=Rvdb9kCgAvEEZM1VD0t68shvbJ0FQbH+D0eaZvgAb1rqfS51ECib6r6hoF1RpHGJoX
+         eHQchiVJezK8R9oWGmvKdQSkMZus1sPvAFK2KDM0SvaFyf4lAnVwugn7gMYNyZnP47Zb
+         wEj0Kfz5GYGTLER5woQRAnBlbV6J9SjE3akal9vYLDvQPoDVeFb5Iml46vBTEBswq1d8
+         QJ6kb0TcCl2KTdopaAKeEQstd+P/vVFg5ZfiZZycNpeHLnhfZ1jhE/JIQi5+RUaLuqTM
+         DYNz6Xo9Lp2HPnuWa8x04JvTj8LMcJYxPZCsP6sftrFnbDY6Qs8SiwHfjbGfGOxvLJ9x
+         IQpQ==
+X-Received: by 10.180.80.9 with SMTP id n9mr8259401wix.34.1424569945027;
+        Sat, 21 Feb 2015 17:52:25 -0800 (PST)
 Return-Path: <gulsah.1004@gmail.com>
 Received: from diyorki.kykwifi.com ([81.213.40.143])
-        by mx.google.com with ESMTPSA id gm2sm9446449wib.5.2015.02.21.19.08.16
+        by mx.google.com with ESMTPSA id dm6sm9227136wib.22.2015.02.21.17.52.23
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 19:08:16 -0800 (PST)
+        Sat, 21 Feb 2015 17:52:24 -0800 (PST)
 From: Gulsah Kose <gulsah.1004@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Gulsah Kose <gulsah.1004@gmail.com>
-Subject: [PATCH 0/4] Removed some checkpatch.pl warnings.
-Date: Sun, 22 Feb 2015 05:08:03 +0200
-Message-Id: <cover.1424574336.git.gulsah.1004@gmail.com>
+Subject: [PATCH 7/7] staging: ft1000: ft1000-pcmcia: Added missing blank line.
+Date: Sun, 22 Feb 2015 03:52:03 +0200
+Message-Id: <590a1f46635b2a6145cc3b4bfb01a41915c34ad9.1424569663.git.gulsah.1004@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1424569663.git.gulsah.1004@gmail.com>
+References: <cover.1424569663.git.gulsah.1004@gmail.com>
+In-Reply-To: <cover.1424569663.git.gulsah.1004@gmail.com>
+References: <cover.1424569663.git.gulsah.1004@gmail.com>
 
-This patch set removes following checkpatch.pl warnings from o2iblnd.c
-WARNING: space prohibited between function name and open parenthesis '('
-WARNING: void function return statements are not generally useful
-WARNING: braces {} are not necessary for single statement blocks
+Added missing blank line after declaration. Removed following checkpatch.pl warning:
 WARNING: Missing a blank line after declarations
 
-Gulsah Kose (4):
-  staging: lustre: lnet: klnds: o2iblnd: Removed unnecessary spaces.
-  staging: lustre: lnet: klnds: o2iblnd: Removed useless return
-    keywords.
-  staging: lustre: lnet: klnds: o2iblnd: Deleted unnecessary brackets.
-  staging: lustre: lnet: klnds: o2iblnd: Added missing blank line.
+Signed-off-by: Gulsah Kose <gulsah.1004@gmail.com>
+---
+ drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- .../staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c    | 217 ++++++++++-----------
- 1 file changed, 107 insertions(+), 110 deletions(-)
-
+diff --git a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
+index 1d0d46f..21b6c9e 100644
+--- a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
++++ b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
+@@ -2004,6 +2004,7 @@ static void ft1000_get_drvinfo(struct net_device *dev,
+ 			       struct ethtool_drvinfo *info)
+ {
+ 	struct ft1000_info *ft_info;
++
+ 	ft_info = netdev_priv(dev);
+ 
+ 	strlcpy(info->driver, "ft1000", sizeof(info->driver));
 -- 
 1.9.1
 
