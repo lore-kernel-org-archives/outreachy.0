@@ -1,92 +1,77 @@
-X-GM-THRID: 80310435840
+X-GM-THRID: 2443269111808
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,532940753aaf6731,start
+X-Google-Thread: 9ca63f596c,7951813c0c2f2922
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.42.240.11 with SMTP id ky11mr27416749icb.31.1424148714517;
-        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
+X-Received: by 10.112.131.106 with SMTP id ol10mr755163lbb.20.1424617095961;
+        Sun, 22 Feb 2015 06:58:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.133.209 with SMTP id p78ls1609079ioi.71.gmail; Mon, 16 Feb
- 2015 20:51:54 -0800 (PST)
-X-Received: by 10.66.252.138 with SMTP id zs10mr24544153pac.3.1424148714359;
-        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pd0-f171.google.com (mail-pd0-f171.google.com. [209.85.192.171])
-        by gmr-mx.google.com with ESMTPS id ks4si2007317pbc.1.2015.02.16.20.51.54
+Received: by 10.152.21.199 with SMTP id x7ls468046lae.0.gmail; Sun, 22 Feb
+ 2015 06:58:15 -0800 (PST)
+X-Received: by 10.152.43.166 with SMTP id x6mr740430lal.3.1424617095543;
+        Sun, 22 Feb 2015 06:58:15 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id cl5si491607wib.3.2015.02.22.06.58.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.192.171 as permitted sender) client-ip=209.85.192.171;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 22 Feb 2015 06:58:15 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.192.171 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdev10 with SMTP id v10so41059015pde.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Feb 2015 20:51:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=2rPttYaYf7F2bVWsMLV34Q3s9U0Ty8HwuRePy5BlX2Y=;
-        b=qUr/PfFpsPmCvgBqBl3xTnhp4YE7BKvYQj4sXFp4LA8dPOORekQq6/VpjKKiZA/rFf
-         4HquqbsGfXUQdVLK5uCbcLGkpe87v7nPVu1WTmiafnGNXP3oUQ+WAtvubHqAngn1deTI
-         BtV8t3aduMdhmu0B0rx6nn5aE0HAYO7HCrvF8FGJCs3M0gCAhLndz8qQFS1yZxMU5O2t
-         1AfgYFg9jnJ7Yu5kLMIMEV1kuO14dTg6N1v9qzDHLQILfh0IgUtfTlIvprWPEi621i6I
-         WBn7LClIc0DSs7YIQ5pnRn3YGSOXfnCAdJ/G8oKLZ6SR8fNExKYAlw60e4XYgyC9uXZd
-         ZOfw==
-X-Received: by 10.68.245.196 with SMTP id xq4mr1238165pbc.124.1424148714248;
-        Mon, 16 Feb 2015 20:51:54 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([103.241.45.81])
-        by mx.google.com with ESMTPSA id f12sm16455271pat.43.2015.02.16.20.51.52
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 16 Feb 2015 20:51:53 -0800 (PST)
-Date: Tue, 17 Feb 2015 10:21:49 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: media: lirc: Use setup_timer
-Message-ID: <20150217045149.GA3532@vaishali-Ideapad-Z570>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,625,1418079600"; 
+   d="scan'208";a="122875489"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2015 15:58:15 +0100
+Date: Sun, 22 Feb 2015 15:58:09 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: rtl8192u: Fix grammar
+ in a sentence.
+In-Reply-To: <5dad611e0dedf5372436692626ef440fe777f072.1424616108.git.ksenija.stanojevic@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502221557280.2612@hadrien>
+References: <cover.1424616108.git.ksenija.stanojevic@gmail.com> <5dad611e0dedf5372436692626ef440fe777f072.1424616108.git.ksenija.stanojevic@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch introduces the use of function setup_timer.
+On Sun, 22 Feb 2015, Ksenija Stanojevic wrote:
 
-This is done using Coccinelle and semantic patch used is
-as follows:
+> Write always instead of awalys.
+>
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_module.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+> index f25ff0e..38b6fba 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+> @@ -239,7 +239,7 @@ static int debug = \
+>  			 /* IEEE80211_DL_REORDER| */
+>  			 /* IEEE80211_DL_TRACE  | */
+>  			 /* IEEE80211_DL_DATA	| */
+> -			    IEEE80211_DL_ERR /* awayls open this
+> +			    IEEE80211_DL_ERR /* always open this
+>  					       * flags to show error out */
 
-@@
-expression x,y,z;
-@@
+The stars should be lined up in a multiline patch.
 
-- init_timer (&x);
-+ setup_timer (&x, y, z);
-- x.function = y;
-- x.data = z;
+julia
 
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
----
- drivers/staging/media/lirc/lirc_sir.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/media/lirc/lirc_sir.c b/drivers/staging/media/lirc/lirc_sir.c
-index 39f4733..d1ada8c 100644
---- a/drivers/staging/media/lirc/lirc_sir.c
-+++ b/drivers/staging/media/lirc/lirc_sir.c
-@@ -683,9 +683,7 @@ static int init_port(void)
- 	}
- 	pr_info("I/O port 0x%.4x, IRQ %d.\n", io, irq);
- 
--	init_timer(&timerlist);
--	timerlist.function = sir_timeout;
--	timerlist.data = 0xabadcafe;
-+	setup_timer(&timerlist, sir_timeout, 0xabadcafe);
- 
- 	return 0;
- }
--- 
-1.9.1
-
+>  			    ;
+>  static struct proc_dir_entry *ieee80211_proc;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/5dad611e0dedf5372436692626ef440fe777f072.1424616108.git.ksenija.stanojevic%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
