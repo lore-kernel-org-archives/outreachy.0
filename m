@@ -1,86 +1,84 @@
-X-GM-THRID: 6254738037181251584
-X-Received: by 10.66.160.9 with SMTP id xg9mr35185864pab.38.1456294683639;
-        Tue, 23 Feb 2016 22:18:03 -0800 (PST)
+X-GM-THRID: 2510415724544
+X-Received: by 10.152.37.200 with SMTP id a8mr786158lak.5.1424623613615;
+        Sun, 22 Feb 2015 08:46:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.157.103 with SMTP id wl7ls1147725igb.18.canary; Tue, 23 Feb
- 2016 22:18:03 -0800 (PST)
-X-Received: by 10.50.47.40 with SMTP id a8mr1663244ign.6.1456294683305;
-        Tue, 23 Feb 2016 22:18:03 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id ff2si183640pad.2.2016.02.23.22.18.03
+Received: by 10.181.13.74 with SMTP id ew10ls395925wid.20.gmail; Sun, 22 Feb
+ 2015 08:46:53 -0800 (PST)
+X-Received: by 10.194.142.174 with SMTP id rx14mr787893wjb.4.1424623613315;
+        Sun, 22 Feb 2015 08:46:53 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ta1si512598wic.1.2015.02.22.08.46.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 22:18:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 22 Feb 2015 08:46:53 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id e127so6975125pfe.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 22:18:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=EOecCGhU8THPsLxvUvEe1wZbTMWxJ4euAlAgP3Yub+g=;
-        b=DcV2zezP0chrU7OrMiFi9MvBDLt8HYGH/PgbtLYrKfPhKppf8wgNW6/8WyUYLfkpVX
-         pmiUkvLRQUufw45pF50d7n0lbXN5lvoujOAU+kDKHizTuwO46snxMnxNpKDbduKp6pov
-         dWuhyUMkJjkIFBfVaS/9XFSoOF5hHtezqMDbOoUeO3nMlQprqRQGFAhaZy3+3+JwS7Wo
-         icJB9yynbr0jC/8gzSRkGJjqEi+CE+FFSHW88bAhDRxQPu7TrG8GAKsFEaHo8TW7YB9z
-         Qvp/LGT9ZJ1eGNdaMQfpElj4As5RmzqDNdXna4pVhbk6rZiS5ZvkBbRXBHZywgdvZo+L
-         1bxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=EOecCGhU8THPsLxvUvEe1wZbTMWxJ4euAlAgP3Yub+g=;
-        b=HpjcnIjMAAOo6FERQygWSQ678GK7zkd1KSXW2xbEONid4n+9ZzGVm/LzI3Po0ZLzeh
-         jCHDg1feJS3plcNI7F9UAw4Tq+5IZbHwPGdXIgS7JJTARYf9ENynwIfi0kRPJxCEROzO
-         RtzD4NRD4EYwP0Ky+2wSbIyH+7/npeip6faFgvUhhB0aNHjHfuthngIcNz7cvr+SqrCD
-         vC6GfR8UM/YN3sSyfOeBWLqaM9taMdshDmJAxu8nxXC0PywzYDcEqzf2aDcF1HASvr++
-         G/GB+7Kz+4Xw1kVy7ua8+39M83uTs1IM2bPrn/MMB80cC6igV4EWPm69JcFD+7HiFb+l
-         XXyQ==
-X-Gm-Message-State: AG10YOSwpa8N0x/okhY7dZPzNSNj7EcB8L7y+IBoDBj5IpwB57OfvApgSFYRmijSll+EVw==
-X-Received: by 10.98.74.17 with SMTP id x17mr52523046pfa.14.1456294683134;
-        Tue, 23 Feb 2016 22:18:03 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
-        by smtp.gmail.com with ESMTPSA id ac1sm1839373pad.41.2016.02.23.22.18.02
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 22:18:02 -0800 (PST)
-Date: Tue, 23 Feb 2016 22:18:01 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: light: tsl2x7x: remove useless initialization
-Message-ID: <20160224061753.GA12323@d830.WORKGROUP>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,625,1418079600"; 
+   d="scan'208";a="100919606"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2015 17:46:52 +0100
+Date: Sun, 22 Feb 2015 17:46:46 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: Remove unnecessary
+ else after return
+In-Reply-To: <1424622517-7849-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502221745530.2612@hadrien>
+References: <1424622517-7849-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove the initialization of a variable that is immediately
-reassigned.
+On Sun, 22 Feb 2015, Dilek Uzulmez wrote:
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
- drivers/staging/iio/light/tsl2x7x_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch fixes checkpatch.pl warning in files of media
+> WARNING: else is not generally useful after a break or return
+>
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/media/vino/saa7191.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/media/vino/saa7191.c b/drivers/staging/media/vino/saa7191.c
+> index 8e96992..f411e1f 100644
+> --- a/drivers/staging/media/vino/saa7191.c
+> +++ b/drivers/staging/media/vino/saa7191.c
+> @@ -393,11 +393,10 @@ static int saa7191_autodetect_norm(struct v4l2_subdev *sd)
+>  		/* 60hz signal -> NTSC */
+>  		dprintk("NTSC\n");
+>  		return saa7191_s_std(sd, V4L2_STD_NTSC);
+> -	} else {
+> -		/* 50hz signal -> PAL */
+> -		dprintk("PAL\n");
+> -		return saa7191_s_std(sd, V4L2_STD_PAL);
+>  	}
+> +	/* 50hz signal -> PAL */
+> +	dprintk("PAL\n");
+> +	return saa7191_s_std(sd, V4L2_STD_PAL);
 
-diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
-index 2a62718..5f308ba 100644
---- a/drivers/staging/iio/light/tsl2x7x_core.c
-+++ b/drivers/staging/iio/light/tsl2x7x_core.c
-@@ -296,7 +296,7 @@ static const u8 device_channel_config[] = {
- static int
- tsl2x7x_i2c_read(struct i2c_client *client, u8 reg, u8 *val)
- {
--	int ret = 0;
-+	int ret;
- 
- 	/* select register to write */
- 	ret = i2c_smbus_write_byte(client, (TSL2X7X_CMD_REG | reg));
--- 
-2.1.4
+It looks like the existing code is more parallel and easier to
+understand.
 
+The checkpatch comment applies more to the case where one branch
+represents a failure.  But that is not the case here.
+
+julia
+
+>  }
+>
+>  static int saa7191_g_ctrl(struct v4l2_subdev *sd, struct v4l2_control *ctrl)
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424622517-7849-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
