@@ -1,92 +1,125 @@
-X-GM-THRID: 6201831238329696256
-X-Received: by 10.112.151.9 with SMTP id um9mr4406694lbb.19.1443976359549;
-        Sun, 04 Oct 2015 09:32:39 -0700 (PDT)
+X-GM-THRID: 2401796882432
+X-Received: by 10.112.138.202 with SMTP id qs10mr691956lbb.24.1424609380658;
+        Sun, 22 Feb 2015 04:49:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.105.202 with SMTP id go10ls631536wib.44.gmail; Sun, 04 Oct
- 2015 09:32:39 -0700 (PDT)
-X-Received: by 10.195.12.234 with SMTP id et10mr4443270wjd.2.1443976359048;
-        Sun, 04 Oct 2015 09:32:39 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
-        by gmr-mx.google.com with ESMTPS id bn1si238394wib.0.2015.10.04.09.32.39
+Received: by 10.180.95.199 with SMTP id dm7ls384446wib.49.gmail; Sun, 22 Feb
+ 2015 04:49:40 -0800 (PST)
+X-Received: by 10.180.80.7 with SMTP id n7mr665914wix.0.1424609380358;
+        Sun, 22 Feb 2015 04:49:40 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id el6si478538wib.2.2015.02.22.04.49.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 09:32:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 22 Feb 2015 04:49:40 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x234.google.com with SMTP id lk2so90044179wic.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 09:32:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=FB0lmK4I8FXtzHkqGMxEU+eMMb+Bbmo+lT6G56AWyLI=;
-        b=O4w3yN9i5cXAi0vU1Y4kkCeSb/dsPJqKXMzLrq2MIyivzdxD+SNXshSxEuNQPUb5kp
-         6i978fiCcGDNYwkhFAeMHATePONjNzMIjd9BOE7XkculOIVC+IRfANFB5Lc1aqfj3PxR
-         I2hizswGfrC8GpQfgitZs5bxdMNs4piX9YdlcLgM35DMPCw/WD586Vqqw+8ABOpVSYp8
-         C05mz5suUVs/GLJvkAdhjgl0+E9ud6h7eMin+di7O6pMwNuklCjpTuMhSPXcIw5vU43h
-         DErP6sIDu7BRIyHKzPnSzBMJYqsgFNJ+s2sYzwyXz9afNxaNVA4ZbQDtp2u9Ewicna5T
-         XJzg==
-X-Received: by 10.180.106.97 with SMTP id gt1mr7437500wib.4.1443976358941;
-        Sun, 04 Oct 2015 09:32:38 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([141.85.225.214])
-        by smtp.gmail.com with ESMTPSA id o3sm10008019wif.22.2015.10.04.09.32.38
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Oct 2015 09:32:38 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH] staging: octeon: Move comment to correct location
-Date: Sun,  4 Oct 2015 19:32:20 +0300
-Message-Id: <1443976340-86703-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,625,1418079600"; 
+   d="scan'208";a="122869521"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2015 13:49:39 +0100
+Date: Sun, 22 Feb 2015 13:49:33 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Fix line over 80
+ characters
+In-Reply-To: <20150222123733.GA24239@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502221349160.2612@hadrien>
+References: <20150222123733.GA24239@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove 'Excess function parameter 'addr' description in
-'cvm_oct_set_mac_filter'' kernel-doc warning by moving
-the desciption to the correct function: cvm_oct_common_set_mac_address
+On Sun, 22 Feb 2015, Vatika Harlalka wrote:
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
----
- drivers/staging/octeon/ethernet.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+> Added a variable to reduce line size and enhance code readability.
 
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 7274fda..798aa6c 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -364,13 +364,6 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
- 	}
- }
- 
--/**
-- * cvm_oct_common_set_mac_address - set the hardware MAC address for a device
-- * @dev:    The device in question.
-- * @addr:   Address structure to change it too.
--
-- * Returns Zero on success
-- */
- static int cvm_oct_set_mac_filter(struct net_device *dev)
- {
- 	struct octeon_ethernet *priv = netdev_priv(dev);
-@@ -413,6 +406,13 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
- 	return 0;
- }
- 
-+/**
-+ * cvm_oct_common_set_mac_address - set the hardware MAC address for a device
-+ * @dev:    The device in question.
-+ * @addr:   Address structure to change it too.
-+ *
-+ * Returns Zero on success
-+ */
- static int cvm_oct_common_set_mac_address(struct net_device *dev, void *addr)
- {
- 	int r = eth_mac_addr(dev, addr);
--- 
-1.9.1
+Nice idea :)
 
+julia
+
+
+>
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/bb_cfg.c | 33 +++++++++++++++++----------------
+>  1 file changed, 17 insertions(+), 16 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
+> index 1e963bf..262da88 100644
+> --- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
+> +++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
+> @@ -511,42 +511,43 @@ static u32 array_phy_reg_pg_8188e[] = {
+>  static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitmask, u32 data)
+>  {
+>  	struct hal_data_8188e *hal_data = GET_HAL_DATA(Adapter);
+> +	 u8 pwrGrpCnt = hal_data->pwrGroupCnt;
+>
+>  	if (regaddr == rTxAGC_A_Rate18_06)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][0] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][0] = data;
+>  	if (regaddr == rTxAGC_A_Rate54_24)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][1] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][1] = data;
+>  	if (regaddr == rTxAGC_A_CCK1_Mcs32)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][6] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][6] = data;
+>  	if (regaddr == rTxAGC_B_CCK11_A_CCK2_11 && bitmask == 0xffffff00)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][7] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][7] = data;
+>  	if (regaddr == rTxAGC_A_Mcs03_Mcs00)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][2] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][2] = data;
+>  	if (regaddr == rTxAGC_A_Mcs07_Mcs04)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][3] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][3] = data;
+>  	if (regaddr == rTxAGC_A_Mcs11_Mcs08)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][4] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][4] = data;
+>  	if (regaddr == rTxAGC_A_Mcs15_Mcs12) {
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][5] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][5] = data;
+>  		if (hal_data->rf_type == RF_1T1R)
+>  			hal_data->pwrGroupCnt++;
+>  	}
+>  	if (regaddr == rTxAGC_B_Rate18_06)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][8] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][8] = data;
+>  	if (regaddr == rTxAGC_B_Rate54_24)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][9] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][9] = data;
+>  	if (regaddr == rTxAGC_B_CCK1_55_Mcs32)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][14] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][14] = data;
+>  	if (regaddr == rTxAGC_B_CCK11_A_CCK2_11 && bitmask == 0x000000ff)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][15] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][15] = data;
+>  	if (regaddr == rTxAGC_B_Mcs03_Mcs00)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][10] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][10] = data;
+>  	if (regaddr == rTxAGC_B_Mcs07_Mcs04)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][11] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][11] = data;
+>  	if (regaddr == rTxAGC_B_Mcs11_Mcs08)
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][12] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][12] = data;
+>  	if (regaddr == rTxAGC_B_Mcs15_Mcs12) {
+> -		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][13] = data;
+> +		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][13] = data;
+>  		if (hal_data->rf_type != RF_1T1R)
+>  			hal_data->pwrGroupCnt++;
+>  	}
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150222123733.GA24239%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
