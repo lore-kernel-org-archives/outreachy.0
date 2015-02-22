@@ -1,82 +1,77 @@
 X-GM-THRID: 2532715790336
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,1fe12539ed2f9d18
+X-Google-Thread: 9ca63f596c,1fe12539ed2f9d18,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.168.104 with SMTP id zv8mr845984lbb.10.1424636564321;
-        Sun, 22 Feb 2015 12:22:44 -0800 (PST)
+X-Received: by 10.152.37.200 with SMTP id a8mr783691lak.5.1424623229408;
+        Sun, 22 Feb 2015 08:40:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.88.98 with SMTP id bf2ls348003lab.70.gmail; Sun, 22 Feb
- 2015 12:22:44 -0800 (PST)
-X-Received: by 10.112.50.106 with SMTP id b10mr851032lbo.8.1424636563996;
-        Sun, 22 Feb 2015 12:22:43 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id o3si539661wib.2.2015.02.22.12.22.43
+Received: by 10.152.243.37 with SMTP id wv5ls120020lac.59.gmail; Sun, 22 Feb
+ 2015 08:40:28 -0800 (PST)
+X-Received: by 10.152.26.74 with SMTP id j10mr782124lag.10.1424623228421;
+        Sun, 22 Feb 2015 08:40:28 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id r6si519059wix.0.2015.02.22.08.40.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 12:22:43 -0800 (PST)
-Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.17.10;
+        Sun, 22 Feb 2015 08:40:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue101) with ESMTPSA (Nemesis) id 0Letvr-1XkjjJ2cc3-00qmgL; Sun, 22 Feb
- 2015 21:22:42 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x229.google.com with SMTP id em10so15025778wid.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 08:40:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=gGewvv/QsP3KraxjwzuCI49YtS2nTWvnnK30AzD5B4w=;
+        b=bT/0EUE6EdSaL3WNChDwrAytGLW4NN3ZZ0cKtYNccmyNFC2/4VPDe7lmUBufYEil2n
+         bLyPRrnZpMYbK2w07Uy2zPdmVj8YHhQeirrKOZdvj4LvRRnxx/2dUVibeFe67avHQlym
+         w/4d9DyJk1yMlF+eOj3g9NUQ6t4OI7rZb/RQEMmn/dIF5CcS/gitEfGxoLoqEV7gBLgU
+         zhoOtDOoZ0wfZ6BmuY/Nn8mXaj1W210M8UjMZSTi+4fmiTX9taAsRbFd/oCNFHO3RHbr
+         JD/k3FpVqvJICOipG53fQVQknwpJy8YxVZNe+zWb0udD+NjgBrOV3ed/R+xEcz2VCv1B
+         VRRQ==
+X-Received: by 10.180.72.211 with SMTP id f19mr13405003wiv.9.1424623228335;
+        Sun, 22 Feb 2015 08:40:28 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.245.176])
+        by mx.google.com with ESMTPSA id dx11sm48873449wjb.23.2015.02.22.08.40.26
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 22 Feb 2015 08:40:27 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Remove unnecessary else after return or break
-Date: Sun, 22 Feb 2015 21:22:42 +0100
-Message-ID: <8023474.7DBYLVBYK5@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1424623218-9487-1-git-send-email-dilekuzulmez@gmail.com>
-References: <1424623218-9487-1-git-send-email-dilekuzulmez@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID:  V03:K0:qrQdFTusD1etTwc9V6yyTDQBS0A0ynrviWQw2fTpf24uudMVXOH
- WwGmQEHGw+tLxL5wjvu7piqW2UQVj2r7a0SV8AOIlelYzS3BxVL7GA7cqZ4dRssKYUNoF7P
- QP59bZeGHaOHpEs5R9GXVZYvr3MSePDv84+u0TdhsqqHVMwaowHKkJno7E4rvbQQl4yT/tb
- SXiVXo0JY2N9JIf9/FuTg==
-X-UI-Out-Filterresults: notjunk:1;
+Subject: [PATCH] Staging: rtl8712: Remove unnecessary else after return or break
+Date: Sun, 22 Feb 2015 18:40:18 +0200
+Message-Id: <1424623218-9487-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Sunday 22 February 2015 18:40:18 Dilek Uzulmez wrote:
-> diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> index 9bb364f..3a1b8b2 100644
-> --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> @@ -612,8 +612,8 @@ static int r871x_set_wpa_ie(struct _adapter *padapter, char *pie,
->                                         netdev_info(padapter->pnetdev, "r8712u: SET WPS_IE, wps_phase==true\n");
->                                         cnt += buf[cnt+1]+2;
->                                         break;
-> -                               } else
-> -                                       cnt += buf[cnt + 1] + 2;
-> +                               }
-> +                               cnt += buf[cnt + 1] + 2;
->                         }
->                 }
->         }
+This patch fixes checkpatch.pl warning in files of rtl8712
+WARNING: else is not generally useful after a break or return
 
-The 'else' clause here seems to be much smaller than the 'if'
-clause.
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+---
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-How about negating the condition to have the shorter path
-indented and then reformat the other one?
+diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+index 9bb364f..3a1b8b2 100644
+--- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
++++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+@@ -612,8 +612,8 @@ static int r871x_set_wpa_ie(struct _adapter *padapter, char *pie,
+ 					netdev_info(padapter->pnetdev, "r8712u: SET WPS_IE, wps_phase==true\n");
+ 					cnt += buf[cnt+1]+2;
+ 					break;
+-				} else
+-					cnt += buf[cnt + 1] + 2;
++				}
++				cnt += buf[cnt + 1] + 2;
+ 			}
+ 		}
+ 	}
+-- 
+1.9.1
 
-Similarly, you could do the same change to the outer 'if'
-condition and just return early from the function if 'ielen'
-is zero to remove one more level of indentation, and you can
-move the variable declarations to the top of the function
-to gain yet another level.
-
-Finally, you can add a temporary variable to cache a pointer
-to padapter->securitypriv that will allow you to avoid most
-of the line breaks.
-
-After that, the function should become much easier to read,
-which is what the warning you got is all about. Changing the
-one line here doesn't seem to be all that helpful if you don't
-change the other parts at the same time.
-
-	Arnd
 
