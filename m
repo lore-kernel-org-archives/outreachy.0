@@ -1,72 +1,100 @@
-X-GM-THRID: 3366202638336
-X-Received: by 10.112.25.7 with SMTP id y7mr48886lbf.21.1424821058859;
-        Tue, 24 Feb 2015 15:37:38 -0800 (PST)
+X-GM-THRID: 2331486715904
+X-Received: by 10.112.199.69 with SMTP id ji5mr584440lbc.0.1424587315121;
+        Sat, 21 Feb 2015 22:41:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.10.132 with SMTP id i4ls689989lab.25.gmail; Tue, 24 Feb
- 2015 15:37:37 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr57630lab.0.1424821057283;
-        Tue, 24 Feb 2015 15:37:37 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id r6si1023205wix.0.2015.02.24.15.37.37
+Received: by 10.152.88.84 with SMTP id be20ls219984lab.89.gmail; Sat, 21 Feb
+ 2015 22:41:54 -0800 (PST)
+X-Received: by 10.112.146.65 with SMTP id ta1mr582088lbb.19.1424587314673;
+        Sat, 21 Feb 2015 22:41:54 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id el6si429034wib.2.2015.02.21.22.41.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Feb 2015 15:37:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 21 Feb 2015 22:41:54 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=aybuke.147@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x229.google.com with SMTP id b13so314875wgh.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Feb 2015 15:37:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=dNQWJBGc4rebvNfnstV6i3nOJXi5JI4HaOkXs0MR/0w=;
-        b=tV2VyaSisYGZAGd5JsqfYX9/MXKIbKRy/To4OFpE7GCP3zl8EKfirl11XgnFRMJ1z0
-         CwRf+iM6maKE1piLqaGMLeFPlBSSDLJVxN45im/917iCmwed4fqLsdZ/jsy6l9JKCguB
-         NoTiiu8YUnBt56yfDa/FjUGP5fli3nUG2N/NZ5yotnpUcGpPZVRQ38J/CvwPy9FB/MtQ
-         pu9t0p9J+iKAMt95vSLgV0eJUCwgw8JDcGOgQR1/ZAVGzCSk8XBIUYJluPmLH0bfNe9k
-         Pe153fbeLki3lfGl0/P8tfLR4YI+Uc7AhnEe+R/6FSWL2sgpioMbnxZdogPJGqApifl2
-         mdsA==
-X-Received: by 10.180.91.112 with SMTP id cd16mr1302345wib.14.1424821057190;
-        Tue, 24 Feb 2015 15:37:37 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id hv5sm62269861wjb.16.2015.02.24.15.37.35
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 24 Feb 2015 15:37:36 -0800 (PST)
-From: aybuke ozdemir <aybuke.147@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH] Staging: media: replace printk(KERN_DEBUG ..) with pr_debug
-Date: Wed, 25 Feb 2015 01:36:54 +0200
-Message-Id: <1424821014-12100-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,623,1418079600"; 
+   d="scan'208";a="122848536"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2015 07:41:42 +0100
+Date: Sun, 22 Feb 2015 07:41:41 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/1] scripts: checkpatch.pl: add 2
+ new checks on memset calls
+In-Reply-To: <052f177392bde0338901921fcbb0ef70f1d85882.1424580894.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502220741060.2047@localhost6.localdomain6>
+References: <cover.1424580894.git.mahfouz.saif.elyazal@gmail.com> <052f177392bde0338901921fcbb0ef70f1d85882.1424580894.git.mahfouz.saif.elyazal@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes "Prefer [subsystem eg: netdev]_dbg([subsystem]dev,
-... then dev_dbg(dev, ... then pr_debug(...  to printk(KERN_DEBUG"
-checkpatch.pl warning in c-qcam.c
+On Sun, 22 Feb 2015, Aya Mahfouz wrote:
 
-Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
----
- drivers/staging/media/parport/c-qcam.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch adds 2 new checks on memset calls in the file
+> checkpatch.pl as follows:
+> 
+> replace memset by eth_zero_addr if the second argument is
+> an address of zeros (0x00). eth_zero_addr is a wrapper function
+> for memset that takes an address array to set as zero. The size
+> address has to be ETH_ALEN.
+> 
+> replace memset by eth_broadcast_addr if the second argument is
+> the broadcast address (0xff). eth_broadcast_addr is a wrapper
+> function for memset that sets the passed array the broadcast
+> address. The size of the address has to be ETH_ALEN.
 
-diff --git a/drivers/staging/media/parport/c-qcam.c b/drivers/staging/media/parport/c-qcam.c
-index b9010bd..96a511e 100644
---- a/drivers/staging/media/parport/c-qcam.c
-+++ b/drivers/staging/media/parport/c-qcam.c
-@@ -220,7 +220,7 @@ static int qc_detect(struct qcam *qcam)
- 	    && qcam->pport->probe_info[0].model
- 	    && !strcmp(qcam->pdev->port->probe_info[0].model,
- 		       "Color QuickCam 2.0")) {
--		printk(KERN_DEBUG "QuickCam: Found by IEEE1284 probe.\n");
-+		pr_debug("QuickCam: Found by IEEE1284 probe.\n");
- 		return 1;
- 	}
- 
--- 
-1.9.1
+It's a nice idea, but Greg doesn't accept patches on checkpatch.
 
+julia
+
+> Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+> ---
+>  scripts/checkpatch.pl | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
+> 
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index d124359..9619882 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -4918,6 +4918,25 @@ sub process {
+>  			}
+>  		}
+>  
+> +# Check for memset(foo, 0x00|0xff, ETH_ALEN) that could be eth_zero_addr(foo)|eth_broadcast_addr(foo)
+> +		if ($^V && $^V ge 5.10.0 &&
+> +		    $line =~ /^\+(?:.*?)\bmemset\s*\(\s*$FuncArg\s*,\s*$FuncArg\s*\,\s*ETH_ALEN\s*\)/s) {
+> +			my $num = $7;
+> +			if ($num =~ "0x00" && WARN("PREFER_ETH_ZERO_ADDR",
+> +				 "Prefer eth_zero_addr() over memset() if the second address is 0x00\n" . $herecurr) &&
+> +			    $fix) {
+> +
+> +				$fixed[$fixlinenr] =~ s/\bmemset\s*\(\s*$FuncArg\s*,\s*$FuncArg\s*\,\s*ETH_ALEN\s*\)/eth_zero_addr($2)/;
+> +			}
+> +			elsif ($num =~ "0xff" && WARN("PREFER_ETH_BROADCAST_ADDR",
+> +				 "Prefer eth_broadcast_addr() over memset() if the second address is 0xff\n" . $herecurr) &&
+> +			    $fix) {
+> +
+> +				$fixed[$fixlinenr] =~ s/\bmemset\s*\(\s*$FuncArg\s*,\s*$FuncArg\s*\,\s*ETH_ALEN\s*\)/eth_broadcast_addr($2)/;
+> +			}
+> +		}
+> +
+> +
+>  # typecasts on min/max could be min_t/max_t
+>  		if ($^V && $^V ge 5.10.0 &&
+>  		    defined $stat &&
+> -- 
+> 1.9.3
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/052f177392bde0338901921fcbb0ef70f1d85882.1424580894.git.mahfouz.saif.elyazal%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
