@@ -3,56 +3,76 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,8f560d6fb9b203e1
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.214.234 with SMTP id od10mr1644456lbc.3.1424727946390;
-        Mon, 23 Feb 2015 13:45:46 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr667718lbc.3.1424603319913;
+        Sun, 22 Feb 2015 03:08:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.71 with SMTP id r7ls512556lag.42.gmail; Mon, 23 Feb
- 2015 13:45:46 -0800 (PST)
-X-Received: by 10.112.214.234 with SMTP id od10mr1644452lbc.3.1424727946049;
-        Mon, 23 Feb 2015 13:45:46 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id ta1si785947wic.1.2015.02.23.13.45.45
+Received: by 10.181.27.131 with SMTP id jg3ls377786wid.12.gmail; Sun, 22 Feb
+ 2015 03:08:39 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr636519wiv.0.1424603319451;
+        Sun, 22 Feb 2015 03:08:39 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
+        by gmr-mx.google.com with ESMTPS id el6si464937wib.2.2015.02.22.03.08.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 13:45:46 -0800 (PST)
-Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.126.130;
+        Sun, 22 Feb 2015 03:08:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0MLC0j-1YPjho25CL-000MRB; Mon, 23 Feb
- 2015 22:45:45 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wesw55 with SMTP id w55so13036606wes.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 03:08:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=SqIBzPoRXexo9FB/+PRMs/gqV2BgMSC5lElYy0LKOnA=;
+        b=mDAou2Ja8TuKDXypItwKMhL4VjZDmxKtQF+9euCnR4KIXm7yIG3nPPop8/Hk412uBI
+         Dl5LFVrXoYdRxTl4JDYw9FAxWwUsggAdtHkazO5TOsXF/esjIHDxWYLNuCTVi1n6ft07
+         2GNEfOXkFhugKYiS/84k7eiSXM6oZgNzKSdOveFerPvpVcITO04usy/VM8e2CbgihdO8
+         n+IyFKI6i4WQX0IV8CHg1mvvvqqF6EZ3jALSc2K90wJPNtd3lpJyiXwUJ0XimZsHmYKW
+         k8ErWQ0mOrNr2DfiMsGKIGE44S1cb6Pp3f1r2YAC33u27ro3X9ZuMNBXl6rLvDd7ps+N
+         fGww==
+X-Received: by 10.194.120.40 with SMTP id kz8mr12277517wjb.21.1424603319366;
+        Sun, 22 Feb 2015 03:08:39 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from localhost.localdomain ([95.15.157.229])
+        by mx.google.com with ESMTPSA id g10sm10957668wic.7.2015.02.22.03.08.37
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 22 Feb 2015 03:08:38 -0800 (PST)
+From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Remove typedefs
-Date: Mon, 23 Feb 2015 22:45:45 +0100
-Message-ID: <6929426.tL312YngjT@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1424603276-26391-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-References: <1424603276-26391-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID:  V03:K0:nvEEn5tGUbnIcDBWMtJUyFojNRQ3Yp/96XqyaTP+eQxhSOKV+no
- ntjAiI05xFj1FSURGoODYiMjk8VonDvHN/0REXsr3uCCk6BGTMFjRVDwBaNG+gCim0cTviG
- F3T6+fVQfkooLVyDsChWaVPgfQnxB76qkjibuVVXcGyixowqWEW/P1Lu2R1GQvGFtJH8J3I
- +upko0cUvBl4aoKOicrOQ==
-X-UI-Out-Filterresults: notjunk:1;
+Subject: [PATCH] Staging: lustre: Remove typedefs
+Date: Sun, 22 Feb 2015 13:07:56 +0200
+Message-Id: <1424603276-26391-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-On Sunday 22 February 2015 13:07:56 Melike Yurtoglu wrote:
-> 
->  /* long integer with size equal to pointer */
-> -typedef unsigned long ulong_ptr_t;
-> -typedef long long_ptr_t;
-> +unsigned long ulong_ptr_t;
-> +long long_ptr_t;
->  
-> 
+WARNING:do not add new typedefs.Remove typedefs,the names of the renamed
+types changed.
+That was found by running checkpatch.
 
-Sorry, but this makes no sense. You have replaced the typedefs with
-unused global variables, and you have not noticed that the types
-are still actually being used.
+Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+---
+ drivers/staging/lustre/include/linux/libcfs/linux/libcfs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-	Arnd
+diff --git a/drivers/staging/lustre/include/linux/libcfs/linux/libcfs.h b/drivers/staging/lustre/include/linux/libcfs/linux/libcfs.h
+index 4fe50841..83cddaa 100644
+--- a/drivers/staging/lustre/include/linux/libcfs/linux/libcfs.h
++++ b/drivers/staging/lustre/include/linux/libcfs/linux/libcfs.h
+@@ -136,8 +136,8 @@ do {								    \
+ #include <linux/capability.h>
+ 
+ /* long integer with size equal to pointer */
+-typedef unsigned long ulong_ptr_t;
+-typedef long long_ptr_t;
++unsigned long ulong_ptr_t;
++long long_ptr_t;
+ 
+ #ifndef WITH_WATCHDOG
+ #define WITH_WATCHDOG
+-- 
+1.8.3.2
+
 
