@@ -1,105 +1,195 @@
 X-GM-THRID: 2063631122432
-X-Received: by 10.112.167.98 with SMTP id zn2mr1559723lbb.6.1424718957067;
-        Mon, 23 Feb 2015 11:15:57 -0800 (PST)
+X-Received: by 10.194.86.1 with SMTP id l1mr763771wjz.0.1424619661453;
+        Sun, 22 Feb 2015 07:41:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.207.101 with SMTP id lv5ls589916lac.22.gmail; Mon, 23 Feb
- 2015 11:15:56 -0800 (PST)
-X-Received: by 10.152.1.5 with SMTP id 5mr1584677lai.4.1424718956303;
-        Mon, 23 Feb 2015 11:15:56 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x236.google.com (mail-we0-x236.google.com. [2a00:1450:400c:c03::236])
-        by gmr-mx.google.com with ESMTPS id by11si983588wib.1.2015.02.23.11.15.56
+Received: by 10.152.26.165 with SMTP id m5ls480720lag.31.gmail; Sun, 22 Feb
+ 2015 07:41:01 -0800 (PST)
+X-Received: by 10.112.35.135 with SMTP id h7mr741963lbj.23.1424619661011;
+        Sun, 22 Feb 2015 07:41:01 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id el6si504088wib.2.2015.02.22.07.41.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 11:15:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::236 as permitted sender) client-ip=2a00:1450:400c:c03::236;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 22 Feb 2015 07:41:00 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::236 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x236.google.com with SMTP id m14so20753072wev.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 11:15:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=atwTGz1SsRfiLWWHI8dECyCuAtPaae6bg/2C5oBgTbs=;
-        b=NwMGA2zzgTZmT5VjOTMKb+Y4Qt3MX3iAjL43UsZx22D79AfgtJ6PzWypBtmPbwJDD/
-         fEJoGn3XYm6YQfiyycAX9EF6eRBwfkpI1jcckkk2U0inifIoeA3SIwrCXrVcEMUx02Ri
-         fkJnvMNQn9YQ65YZDViOgdni6WkKOfb7pXz3aFGFuu+WsyN594ptfRrtsCqbUsvnTn/B
-         g+/DS6+r/ZpMvWNPQiRN23xSTVixa2rVjHqy4QphbNF/wrTGjyske/OUsghvxN4jEqRO
-         Vz5SNYLgu+J9BviNx+NOVVIHX3XryOQf5YtUlhwOOadaVmKWzFFjvBef3fku6Y0buoCU
-         xJuA==
-X-Received: by 10.194.5.168 with SMTP id t8mr22475696wjt.150.1424718956126;
-        Mon, 23 Feb 2015 11:15:56 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id k6sm17166000wia.6.2015.02.23.11.15.55
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Feb 2015 11:15:55 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: rtl8192u: Convert comments from C99 to C89 style
-Date: Mon, 23 Feb 2015 20:15:48 +0100
-Message-Id: <1424718948-7299-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,625,1418079600"; 
+   d="scan'208";a="100916834"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2015 16:40:45 +0100
+Date: Sun, 22 Feb 2015 16:40:39 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-2?Q?Ksenija_Stanojevi=E6?= <ksenija.stanojevic@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 1/2] Staging: rtl8192u: Convert
+ comments from C99 to C89 style
+In-Reply-To: <CAL7P5jKWZFpOKGj9YCnPiX3dsS3akkGiRcCPmBrq6y+YvtsN9g@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1502221640200.2612@hadrien>
+References: <cover.1424618906.git.ksenija.stanojevic@gmail.com> <b62ce2160ca51b14093fb75772bef5b27cb14993.1424618906.git.ksenija.stanojevic@gmail.com> <alpine.DEB.2.10.1502221633300.2612@hadrien>
+ <CAL7P5jKWZFpOKGj9YCnPiX3dsS3akkGiRcCPmBrq6y+YvtsN9g@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1071488479-1424619639=:2612"
 
-Kernel style for comments is C89 style. Issue found by checkpatch.pl.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+--8323329-1071488479-1424619639=:2612
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h b/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
-index 7ed7243..873969c 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
-@@ -1,14 +1,14 @@
- #ifndef _TSTYPE_H_
- #define _TSTYPE_H_
- #include "rtl819x_Qos.h"
--#define TS_SETUP_TIMEOUT	60  // In millisecond
-+#define TS_SETUP_TIMEOUT	60  /*  In millisecond */
- #define TS_INACT_TIMEOUT	60
- #define TS_ADDBA_DELAY		60
- 
- #define TOTAL_TS_NUM		16
- #define TCLAS_NUM		4
- 
--// This define the Tx/Rx directions
-+/*  This define the Tx/Rx directions */
- typedef enum _TR_SELECT {
- 	TX_DIR = 0,
- 	RX_DIR = 1,
-@@ -28,9 +28,9 @@ typedef struct _TS_COMMON_INFO{
- typedef struct _TX_TS_RECORD{
- 	TS_COMMON_INFO		TsCommonInfo;
- 	u16				TxCurSeq;
--	BA_RECORD			TxPendingBARecord;	// For BA Originator
--	BA_RECORD			TxAdmittedBARecord;	// For BA Originator
--//	QOS_DL_RECORD		DLRecord;
-+	BA_RECORD			TxPendingBARecord;	/*  For BA Originator */
-+	BA_RECORD			TxAdmittedBARecord;	/*  For BA Originator */
-+/* 	QOS_DL_RECORD		DLRecord; */
- 	u8				bAddBaReqInProgress;
- 	u8				bAddBaReqDelayed;
- 	u8				bUsingBa;
-@@ -44,11 +44,11 @@ typedef struct _RX_TS_RECORD {
- 	u16				RxTimeoutIndicateSeq;
- 	struct list_head		RxPendingPktList;
- 	struct timer_list		RxPktPendingTimer;
--	BA_RECORD			RxAdmittedBARecord;	 // For BA Recipient
-+	BA_RECORD			RxAdmittedBARecord;	 /*  For BA Recipient */
- 	u16				RxLastSeqNum;
- 	u8				RxLastFragNum;
- 	u8				num;
--//	QOS_DL_RECORD		DLRecord;
-+/* 	QOS_DL_RECORD		DLRecord; */
- } RX_TS_RECORD, *PRX_TS_RECORD;
- 
- 
--- 
-1.9.1
+On Sun, 22 Feb 2015, Ksenija Stanojević wrote:
 
+> Should I make version 3?
+
+I think it would be best, thanks.
+
+julia
+
+
+>
+> On Sun, Feb 22, 2015 at 4:34 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> > On Sun, 22 Feb 2015, Ksenija Stanojevic wrote:
+> >
+> >> Kernel style for comments is C89 style. Issue found by checkpatch.pl.
+> >>
+> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> >> ---
+> >> v2: Remove linux/config.h because it is not used in modern linux versions.
+> >
+> > Actually, the choice about what to do with linux/config.h should be above
+> > the ---
+> >
+> > julia
+> >
+> >>  .../staging/rtl8192u/ieee80211/ieee80211_module.c  | 52 +++++++++++-----------
+> >>  1 file changed, 26 insertions(+), 26 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+> >> index afbd09d..4d6bd2e 100644
+> >> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+> >> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+> >> @@ -31,7 +31,6 @@
+> >>  *******************************************************************************/
+> >>
+> >>  #include <linux/compiler.h>
+> >> -//#include <linux/config.h>
+> >>  #include <linux/errno.h>
+> >>  #include <linux/if_arp.h>
+> >>  #include <linux/in6.h>
+> >> @@ -141,7 +140,7 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
+> >>       spin_lock_init(&ieee->wpax_suitlist_lock);
+> >>       spin_lock_init(&ieee->bw_spinlock);
+> >>       spin_lock_init(&ieee->reorder_spinlock);
+> >> -     //added by WB
+> >> +     /* added by WB */
+> >>       atomic_set(&(ieee->atm_chnlop), 0);
+> >>       atomic_set(&(ieee->atm_swbw), 0);
+> >>
+> >> @@ -152,8 +151,8 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
+> >>       ieee->privacy_invoked = 0;
+> >>       ieee->ieee802_1x = 1;
+> >>       ieee->raw_tx = 0;
+> >> -     //ieee->hwsec_support = 1; //defalt support hw security. //use module_param instead.
+> >> -     ieee->hwsec_active = 0; //disable hwsec, switch it on when necessary.
+> >> +     /* ieee->hwsec_support = 1; //defalt support hw security. //use module_param instead. */
+> >> +     ieee->hwsec_active = 0; /* disable hwsec, switch it on when necessary. */
+> >>
+> >>       ieee80211_softmac_init(ieee);
+> >>
+> >> @@ -164,7 +163,7 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
+> >>               goto failed;
+> >>       }
+> >>       HTUpdateDefaultSetting(ieee);
+> >> -     HTInitializeHTInfo(ieee); //may move to other place.
+> >> +     HTInitializeHTInfo(ieee); /* may move to other place. */
+> >>       TSInitialize(ieee);
+> >>
+> >>       for (i = 0; i < IEEE_IBSS_MAC_HASH_SIZE; i++)
+> >> @@ -176,7 +175,7 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
+> >>         ieee->last_packet_time[i] = 0;
+> >>       }
+> >>
+> >> -//These function were added to load crypte module autoly
+> >> +/* These function were added to load crypte module autoly */
+> >>       ieee80211_tkip_null();
+> >>       ieee80211_wep_null();
+> >>       ieee80211_ccmp_null();
+> >> @@ -195,8 +194,8 @@ void free_ieee80211(struct net_device *dev)
+> >>  {
+> >>       struct ieee80211_device *ieee = netdev_priv(dev);
+> >>       int i;
+> >> -     //struct list_head *p, *q;
+> >> -//   del_timer_sync(&ieee->SwBwTimer);
+> >> +     /* struct list_head *p, *q; */
+> >> +     /* del_timer_sync(&ieee->SwBwTimer); */
+> >>       kfree(ieee->pHTInfo);
+> >>       ieee->pHTInfo = NULL;
+> >>       RemoveAllTS(ieee);
+> >> @@ -222,24 +221,25 @@ void free_ieee80211(struct net_device *dev)
+> >>
+> >>  u32 ieee80211_debug_level;
+> >>  static int debug = \
+> >> -     //                  IEEE80211_DL_INFO   |
+> >> -     //                  IEEE80211_DL_WX     |
+> >> -     //                  IEEE80211_DL_SCAN   |
+> >> -     //                  IEEE80211_DL_STATE  |
+> >> -     //                  IEEE80211_DL_MGMT   |
+> >> -     //                  IEEE80211_DL_FRAG   |
+> >> -     //                  IEEE80211_DL_EAP    |
+> >> -     //                  IEEE80211_DL_DROP   |
+> >> -     //                  IEEE80211_DL_TX     |
+> >> -     //                  IEEE80211_DL_RX     |
+> >> -                         //IEEE80211_DL_QOS    |
+> >> -     //                  IEEE80211_DL_HT     |
+> >> -     //                  IEEE80211_DL_TS     |
+> >> -//                       IEEE80211_DL_BA     |
+> >> -     //                  IEEE80211_DL_REORDER|
+> >> -//                       IEEE80211_DL_TRACE  |
+> >> -                         //IEEE80211_DL_DATA |
+> >> -                         IEEE80211_DL_ERR      //awayls open this flags to show error out
+> >> +                      /* IEEE80211_DL_INFO   | */
+> >> +                      /* IEEE80211_DL_WX     | */
+> >> +                      /* IEEE80211_DL_SCAN   | */
+> >> +                      /* IEEE80211_DL_STATE  | */
+> >> +                      /* IEEE80211_DL_MGMT   | */
+> >> +                      /* IEEE80211_DL_FRAG   | */
+> >> +                      /* IEEE80211_DL_EAP    | */
+> >> +                      /* IEEE80211_DL_DROP   | */
+> >> +                      /* IEEE80211_DL_TX     | */
+> >> +                      /* IEEE80211_DL_RX     | */
+> >> +                      /* IEEE80211_DL_QOS    | */
+> >> +                      /* IEEE80211_DL_HT     | */
+> >> +                      /* IEEE80211_DL_TS     | */
+> >> +                      /* IEEE80211_DL_BA     | */
+> >> +                      /* IEEE80211_DL_REORDER| */
+> >> +                      /* IEEE80211_DL_TRACE  | */
+> >> +                      /* IEEE80211_DL_DATA   | */
+> >> +                         IEEE80211_DL_ERR      /* awayls open this flags
+> >> +                                                * to show error out */
+> >>                           ;
+> >>  static struct proc_dir_entry *ieee80211_proc;
+> >>
+> >> --
+> >> 1.9.1
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/b62ce2160ca51b14093fb75772bef5b27cb14993.1424618906.git.ksenija.stanojevic%40gmail.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAL7P5jKWZFpOKGj9YCnPiX3dsS3akkGiRcCPmBrq6y%2BYvtsN9g%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-1071488479-1424619639=:2612--
 
