@@ -1,76 +1,70 @@
 X-GM-THRID: 2273030701056
-X-Received: by 10.194.239.41 with SMTP id vp9mr513945wjc.5.1424569938586;
-        Sat, 21 Feb 2015 17:52:18 -0800 (PST)
+X-Received: by 10.112.35.135 with SMTP id h7mr501704lbj.23.1424569936219;
+        Sat, 21 Feb 2015 17:52:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.232 with SMTP id t8ls412267laj.100.gmail; Sat, 21 Feb
- 2015 17:52:17 -0800 (PST)
-X-Received: by 10.112.64.171 with SMTP id p11mr511098lbs.12.1424569937127;
-        Sat, 21 Feb 2015 17:52:17 -0800 (PST)
+Received: by 10.152.30.38 with SMTP id p6ls425867lah.52.gmail; Sat, 21 Feb
+ 2015 17:52:15 -0800 (PST)
+X-Received: by 10.112.126.194 with SMTP id na2mr192959lbb.18.1424569935687;
+        Sat, 21 Feb 2015 17:52:15 -0800 (PST)
 Return-Path: <gulsah.1004@gmail.com>
-Received: from mail-wg0-x22f.google.com (mail-wg0-x22f.google.com. [2a00:1450:400c:c00::22f])
-        by gmr-mx.google.com with ESMTPS id ew5si406276wid.1.2015.02.21.17.52.17
+Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
+        by gmr-mx.google.com with ESMTPS id ta1si400323wic.1.2015.02.21.17.52.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 17:52:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) client-ip=2a00:1450:400c:c00::22f;
+        Sat, 21 Feb 2015 17:52:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) smtp.mail=gulsah.1004@gmail.com;
+       spf=pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=gulsah.1004@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f47.google.com with SMTP id x12so19586594wgg.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 17:52:17 -0800 (PST)
+Received: by mail-we0-x235.google.com with SMTP id k11so11929358wes.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 17:52:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=yB2fDrywyZeIFh50up3s7VY5p15LWQO/K107wVp9GT8=;
-        b=iF7kpcvZhsU02xOXkkUzlxrjimOy4VXTTgDNO7WGifzpflhEOsMfSdPbpvIFhgvUNC
-         i36zfKnS/nXCge2x8EQqOdVskS59gX0vbt/rIyEM34KMIohrmqigrl87k6wN9zn+0ptM
-         B4thy7kxfngBL3nE/RHl6BSsK9iAbXs89FC+X90xYRXTD0jdMU6wiTTJRQIHLGxHJKZ6
-         UN200zC1eHNxD73gk58aQ0ZYua2uRH6VOlE3hXj1q1pWerRgVKJX9aJ1Otw3vW0VD7qZ
-         TWEMKih8RL+cNqEMsSnQrDs2V6Lr+S+q3av8vy3GUtlbwBPtaJidv+lw1qfRC+4mHr72
-         SJpw==
-X-Received: by 10.180.84.166 with SMTP id a6mr8151064wiz.4.1424569937047;
-        Sat, 21 Feb 2015 17:52:17 -0800 (PST)
+        h=from:to:cc:subject:date:message-id;
+        bh=kcVs1oyT6Ticuz3iSdH6zAj5HO0z1USpGLITkoj85ZQ=;
+        b=Fwo0iMfb9Mz24DSlx4Vij8X+raH3fXLjHJW7RblgPFIikbZKBARiwieVhfi3QFNTWr
+         ZnhV2PhFpMKLZwU5U+ldRqbuH2oLjY1E63Nenn3pv8Si0RPQaF8ARDsJ2I6Hl9Qqd3rT
+         IqGYmKwGg0cifZVL0827IMfrYOSHVoOh1w/wd5Jm+Roh4B5gKr3/VbIVsPHsC+gEYbWN
+         ilUaJyTW8oTOFXbtJ/3iWhSi6FWxVuHGo99amiGft8VZZGpcTCCZQMHuZgwyABkm/gqX
+         xfcTfUnFW+i4oDrTHspZjb4Z/bDPElCzTxwqtVZkBuhC/COeHzqRR1zoWktcPeYL5S4e
+         Vg8w==
+X-Received: by 10.180.80.34 with SMTP id o2mr8146081wix.75.1424569935594;
+        Sat, 21 Feb 2015 17:52:15 -0800 (PST)
 Return-Path: <gulsah.1004@gmail.com>
 Received: from diyorki.kykwifi.com ([81.213.40.143])
-        by mx.google.com with ESMTPSA id dm6sm9227136wib.22.2015.02.21.17.52.15
+        by mx.google.com with ESMTPSA id dm6sm9227136wib.22.2015.02.21.17.52.14
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 17:52:16 -0800 (PST)
+        Sat, 21 Feb 2015 17:52:14 -0800 (PST)
 From: Gulsah Kose <gulsah.1004@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Gulsah Kose <gulsah.1004@gmail.com>
-Subject: [PATCH 1/7] staging: arch: alpha: boot: Combined seperated strings.
-Date: Sun, 22 Feb 2015 03:51:57 +0200
-Message-Id: <4d23e942ec6501b30262bbdeff3ff2b753f9e6f6.1424569663.git.gulsah.1004@gmail.com>
+Subject: [PATCH 0/7] Removed some checkpatch.pl warnings.
+Date: Sun, 22 Feb 2015 03:51:56 +0200
+Message-Id: <cover.1424569663.git.gulsah.1004@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1424569663.git.gulsah.1004@gmail.com>
-References: <cover.1424569663.git.gulsah.1004@gmail.com>
-In-Reply-To: <cover.1424569663.git.gulsah.1004@gmail.com>
-References: <cover.1424569663.git.gulsah.1004@gmail.com>
 
-This patch fixes "quoted string split across lines" checkpatch.pl
-warning in bootpz.c
+This patch set removes following checkpatch.pl warnings from ft1000_hw.c.
+WARNING: Use #include <linux/io.h> instead of <asm/io.h>
+WARNING: Use #include <linux/bitops.h> instead of <asm/bitops.h>
+WARNING: else is not generally useful after a break or return
+WARNING: braces {} are not necessary for any arm of this statement
+WARNING: Unnecessary parentheses
+WARNING: Missing a blank line after declarations
 
-Signed-off-by: Gulsah Kose <gulsah.1004@gmail.com>
----
- arch/alpha/boot/bootpz.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Gulsah Kose (7):
+  staging: arch: alpha: boot: Combined seperated strings.
+  staging: ft1000: ft1000-pcmcia: Used "linux" instead of "asm".
+  staging: ft1000: ft1000-pcmcia: Used "linux" instead of "asm"
+  staging: ft1000: ft1000-pcmcia: Removed all useless "else"
+  staging: ft1000: ft1000-pcmcia: Deleted unnecessary braces.
+  staging: ft1000: ft1000-pcmcia: Removed unnecessary parentheses.
+  staging: ft1000: ft1000-pcmcia: Added missing blank line.
 
-diff --git a/arch/alpha/boot/bootpz.c b/arch/alpha/boot/bootpz.c
-index 9a5b15f..0d141bb 100644
---- a/arch/alpha/boot/bootpz.c
-+++ b/arch/alpha/boot/bootpz.c
-@@ -87,8 +87,7 @@ check_range(unsigned long vstart, unsigned long vend,
- 		kaddr = (find_pa(vaddr) | PAGE_OFFSET);
- 		if (kaddr >= kstart && kaddr <= kend) {
- #ifdef DEBUG_CHECK_RANGE
--			srm_printk("OVERLAP: vaddr 0x%lx kaddr 0x%lx"
--				   " [0x%lx:0x%lx]\n",
-+			srm_printk("OVERLAP: vaddr 0x%lx kaddr 0x%lx [0x%lx:0x%lx]\n",
- 				   vaddr, kaddr, kstart, kend);
- #endif
- 			return 1;
+ arch/alpha/boot/bootpz.c                         |   3 +-
+ drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c | 295 +++++++++++------------
+ 2 files changed, 147 insertions(+), 151 deletions(-)
+
 -- 
 1.9.1
 
