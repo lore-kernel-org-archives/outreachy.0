@@ -3,49 +3,49 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,9eec88c8272265f5
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.152.43.166 with SMTP id x6mr634402lal.3.1424596670885;
-        Sun, 22 Feb 2015 01:17:50 -0800 (PST)
+X-Received: by 10.112.25.7 with SMTP id y7mr621491lbf.21.1424595562227;
+        Sun, 22 Feb 2015 00:59:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.67 with SMTP id l3ls439079lae.93.gmail; Sun, 22 Feb
- 2015 01:17:50 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr638623lab.0.1424596670434;
-        Sun, 22 Feb 2015 01:17:50 -0800 (PST)
+Received: by 10.180.10.229 with SMTP id l5ls370638wib.32.gmail; Sun, 22 Feb
+ 2015 00:59:21 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr595313wiv.0.1424595561854;
+        Sun, 22 Feb 2015 00:59:21 -0800 (PST)
 Return-Path: <gamzepolat94@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id ta1si449172wic.1.2015.02.22.01.17.50
+Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
+        by gmr-mx.google.com with ESMTPS id cl5si443595wib.3.2015.02.22.00.59.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 01:17:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of gamzepolat94@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Sun, 22 Feb 2015 00:59:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of gamzepolat94@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gamzepolat94@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=gamzepolat94@gmail.com;
+       spf=pass (google.com: domain of gamzepolat94@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=gamzepolat94@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id l15so10963140wiw.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 01:17:50 -0800 (PST)
+Received: by mail-we0-x22a.google.com with SMTP id x3so12736355wes.7
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 00:59:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
         bh=cz7hUi1GTgat3Qm53MEwd0N7SNFF0z4ucuTaCXOKwNM=;
-        b=cwbXwqwwsb2hShXNy+7Lq50BaSyhIkuc003yqH8FUiPj25SbIszpByl9vgkPCyfZ6E
-         Pz9PS9la+bq6gZ1EhfnEM0m3GbYAXSWjqe0p0+2JuuosmmISvljQ/dUAGlDnMbxlKL6W
-         wq9XOuJd3zkEddVzxxYNaRWgeiDdFlAtyolUwnHhzhfnZPJ8zR5LAnltN8wIpUe5rzQe
-         NoZ6YfxJxWTgDai9NxdLWH+AJOpzRATZr8GBFXPnxjAZHH8xLHFfmNbq4VFniG/JhyEl
-         t7yxzLhJtLVczKQfq9DGgVNq48+DBEzxy3D7TZexraU8fKfYgG+vO9pHioAwYFj2DTSl
-         khGA==
-X-Received: by 10.194.6.70 with SMTP id y6mr11096998wjy.97.1424596670316;
-        Sun, 22 Feb 2015 01:17:50 -0800 (PST)
+        b=uy+di9mdXea6ehQsDS9j7iY/I34K1r2CIR9QFm3hHTPw8lSny2nSYuEEEwHIKzIJcz
+         7wQvBV2Bflt4fQX7IIMsq7rWG0uE5wrz9xkkxRIkYH+OzfY9atAB+/zQlLGRfjbMmce9
+         z4yvkbvejP/lOYUS9bveCc5SnnMa2ZTVmxM6iST2liIlFK/78emGF4/WJ4ZqCWMa8Rxb
+         YJxtHIcV+tB2LtcromnJCLByIazvwSRKHyTJd0TyLS5B9dqUS+vApS8K9xWMIUDc2G6A
+         Pos5fPY4U/a2T5/Zm95oWfuMDeDwVYVXt44DhpYtQqr7ULSc8hpU9UHRaHCAKtn2XWO7
+         9d0Q==
+X-Received: by 10.195.12.71 with SMTP id eo7mr11481035wjd.3.1424595561760;
+        Sun, 22 Feb 2015 00:59:21 -0800 (PST)
 Return-Path: <gamzepolat94@gmail.com>
 Received: from gamze-Lenovo-IdeaPad-Z510 ([94.122.20.155])
-        by mx.google.com with ESMTPSA id s5sm14964250wia.1.2015.02.22.01.17.48
+        by mx.google.com with ESMTPSA id fo9sm10446522wib.16.2015.02.22.00.59.20
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 01:17:49 -0800 (PST)
+        Sun, 22 Feb 2015 00:59:20 -0800 (PST)
 From: Gamze POLAT <gamzepolat94@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Gamze POLAT <gamzepolat94@gmail.com>
-Subject: [PATCH V2] staging: rtl8712: warning of prefer ether_addr_copy
-Date: Sun, 22 Feb 2015 11:17:45 +0200
-Message-Id: <1424596665-3251-1-git-send-email-gamzepolat94@gmail.com>
+Subject: [PATCH] staging: rtl8712: warning of prefer ether_addr_copy
+Date: Sun, 22 Feb 2015 10:59:16 +0200
+Message-Id: <1424595556-4544-1-git-send-email-gamzepolat94@gmail.com>
 X-Mailer: git-send-email 2.1.0
 
 This patch fixes the following checkpatch.pl warnings:
