@@ -1,165 +1,116 @@
-X-GM-THRID: 2436714463232
-X-Received: by 10.180.94.134 with SMTP id dc6mr704468wib.2.1424616099921;
-        Sun, 22 Feb 2015 06:41:39 -0800 (PST)
+X-GM-THRID: 2558431068160
+X-Received: by 10.182.199.66 with SMTP id ji2mr8422686obc.14.1424629842688;
+        Sun, 22 Feb 2015 10:30:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.126.68 with SMTP id mw4ls399893wib.12.canary; Sun, 22 Feb
- 2015 06:41:38 -0800 (PST)
-X-Received: by 10.194.178.234 with SMTP id db10mr738147wjc.2.1424616098586;
-        Sun, 22 Feb 2015 06:41:38 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id ew5si497633wid.1.2015.02.22.06.41.38
+Received: by 10.107.38.74 with SMTP id m71ls1358700iom.109.gmail; Sun, 22 Feb
+ 2015 10:30:42 -0800 (PST)
+X-Received: by 10.66.66.108 with SMTP id e12mr8319893pat.30.1424629842460;
+        Sun, 22 Feb 2015 10:30:42 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qg0-x22f.google.com (mail-qg0-x22f.google.com. [2607:f8b0:400d:c04::22f])
+        by gmr-mx.google.com with ESMTPS id kt5si6232034qcb.3.2015.02.22.10.30.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 06:41:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Sun, 22 Feb 2015 10:30:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) client-ip=2607:f8b0:400d:c04::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-f169.google.com with SMTP id em10so14705484wid.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 06:41:38 -0800 (PST)
+Received: by mail-qg0-x22f.google.com with SMTP id q107so21507362qgd.6
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 10:30:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=FxExm7Wz8kSITjK+v5UZbY5ssD5WneiNuTUHctmualM=;
-        b=SM6qyZP/i2hOtdcFuVf3PSJuOP/kBXge2c0FKuLsL7zBwxSsdm2EjHejDkHtaNeVX0
-         C1+t95UG1817hOqUpOQLyqTtZfCNfpqVcFrAkfIR9f/p83KafZvBSbRNthURn4I5MXCw
-         aQm1uHBKfkwFSq3npVGRSwdnYfwOx45PbYpW5RbUKNCx5LcLVIaV81YuHysjUGYtnY+i
-         PhAPrsLzm8zXUKRpHNt34gU/3bmX+jWR3kd1y2HKUJCVWHWNSqmA0svEhLw4260yjJ6I
-         z5T7bgPQSGG+dav3tkgU5uGcGuumip7kE01dhRJW6ULxD5bOF3RNK2XkAcBCCHH+E2Yg
-         K92A==
-X-Received: by 10.195.12.167 with SMTP id er7mr13854723wjd.54.1424616098516;
-        Sun, 22 Feb 2015 06:41:38 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id dm6sm11684323wib.22.2015.02.22.06.41.37
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 22 Feb 2015 06:41:37 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 1/2] Staging: rtl8192u: Convert comments from C99 to C89 style.
-Date: Sun, 22 Feb 2015 15:41:31 +0100
-Message-Id: <f035e5f9fc45c858813c09f5c2806a7c6be5a190.1424616034.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1424616034.git.ksenija.stanojevic@gmail.com>
-References: <cover.1424616034.git.ksenija.stanojevic@gmail.com>
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=o8FI2tivUWxabu4i5ptBX3dHOCpYLN8KeLXicfHlEaw=;
+        b=q+/YMXf27KwgjWDiWZ6jansDe2rcKPg/b+QfOD6GsjVFT3ak0E7Ja4+gv7MTZDshbe
+         2qpc52KxtWKDrlamI0x9oGboLjEwVLAQTTHg4NmV4ZIeiZl+lmCeypgVtyQ78ddtWZhO
+         IIDjOY5NAab3kLmnq6DnQEK2I+Ac8UBLGMnHFVeSFXrloEzwI7348kHDAoWWEfIzgPq+
+         /ujZ/SStZfG/6+SDCGGvPtSNe3yb7COhZQHLIUs2Gp6hZ54Ewz+aNC/ZvykSl5CsWc8I
+         JJYCvDU3ijUQ3PW5laylSdgYTudFZsPdkh5jxsHYL8bhTEAFgErZIEP9D8yWHZMfEvq2
+         8OIw==
+X-Received: by 10.140.202.213 with SMTP id x204mr17256085qha.95.1424629842335;
+        Sun, 22 Feb 2015 10:30:42 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [192.168.99.32] (pool-72-68-159-94.nycmny.fios.verizon.net. [72.68.159.94])
+        by mx.google.com with ESMTPSA id f8sm4954039qaa.10.2015.02.22.10.30.41
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 22 Feb 2015 10:30:41 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EA2051.707@gmail.com>
+Date: Sun, 22 Feb 2015 13:30:41 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: =?UTF-8?B?SGF0aWNlIEVSVMOcUks=?= <haticeerturk27@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723au: core: Deleted
+ space prohibited between function name and open parenthesis
+References: <1424629071-15794-1-git-send-email-haticeerturk27@gmail.com>
+In-Reply-To: <1424629071-15794-1-git-send-email-haticeerturk27@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 
-Kernel style for comments is C89 style. Issue found by checkpatch.pl.
+On 02/22/15 13:17, Hatice ERTÜRK wrote:
+> WARNING: space prohibited between function name and open parenthesis '('
+> 
+> Remove unnecessary space between function name and opening parenthesis.
+> 
+> That was found by running checkpatch
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/rtl8723au/core/rtw_ap.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- .../staging/rtl8192u/ieee80211/ieee80211_module.c  | 53 +++++++++++-----------
- 1 file changed, 27 insertions(+), 26 deletions(-)
+Patch looks good - next time Put your own message first in the commit,
+and the 'WARNING....' portion after where you write 'This was found by
+running checkpatch'.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
-index afbd09d..f25ff0e 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
-@@ -31,7 +31,7 @@
- *******************************************************************************/
- 
- #include <linux/compiler.h>
--//#include <linux/config.h>
-+/* #include <linux/config.h> */
- #include <linux/errno.h>
- #include <linux/if_arp.h>
- #include <linux/in6.h>
-@@ -141,7 +141,7 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
- 	spin_lock_init(&ieee->wpax_suitlist_lock);
- 	spin_lock_init(&ieee->bw_spinlock);
- 	spin_lock_init(&ieee->reorder_spinlock);
--	//added by WB
-+	/* added by WB */
- 	atomic_set(&(ieee->atm_chnlop), 0);
- 	atomic_set(&(ieee->atm_swbw), 0);
- 
-@@ -152,8 +152,8 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
- 	ieee->privacy_invoked = 0;
- 	ieee->ieee802_1x = 1;
- 	ieee->raw_tx = 0;
--	//ieee->hwsec_support = 1; //defalt support hw security. //use module_param instead.
--	ieee->hwsec_active = 0; //disable hwsec, switch it on when necessary.
-+	/* ieee->hwsec_support = 1; //defalt support hw security. //use module_param instead. */
-+	ieee->hwsec_active = 0; /* disable hwsec, switch it on when necessary. */
- 
- 	ieee80211_softmac_init(ieee);
- 
-@@ -164,7 +164,7 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
- 		goto failed;
- 	}
- 	HTUpdateDefaultSetting(ieee);
--	HTInitializeHTInfo(ieee); //may move to other place.
-+	HTInitializeHTInfo(ieee); /* may move to other place. */
- 	TSInitialize(ieee);
- 
- 	for (i = 0; i < IEEE_IBSS_MAC_HASH_SIZE; i++)
-@@ -176,7 +176,7 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
- 	  ieee->last_packet_time[i] = 0;
- 	}
- 
--//These function were added to load crypte module autoly
-+/* These function were added to load crypte module autoly */
- 	ieee80211_tkip_null();
- 	ieee80211_wep_null();
- 	ieee80211_ccmp_null();
-@@ -195,8 +195,8 @@ void free_ieee80211(struct net_device *dev)
- {
- 	struct ieee80211_device *ieee = netdev_priv(dev);
- 	int i;
--	//struct list_head *p, *q;
--//	del_timer_sync(&ieee->SwBwTimer);
-+	/* struct list_head *p, *q; */
-+     /* del_timer_sync(&ieee->SwBwTimer); */
- 	kfree(ieee->pHTInfo);
- 	ieee->pHTInfo = NULL;
- 	RemoveAllTS(ieee);
-@@ -222,24 +222,25 @@ void free_ieee80211(struct net_device *dev)
- 
- u32 ieee80211_debug_level;
- static int debug = \
--	//		    IEEE80211_DL_INFO	|
--	//		    IEEE80211_DL_WX	|
--	//		    IEEE80211_DL_SCAN	|
--	//		    IEEE80211_DL_STATE	|
--	//		    IEEE80211_DL_MGMT	|
--	//		    IEEE80211_DL_FRAG	|
--	//		    IEEE80211_DL_EAP	|
--	//		    IEEE80211_DL_DROP	|
--	//		    IEEE80211_DL_TX	|
--	//		    IEEE80211_DL_RX	|
--			    //IEEE80211_DL_QOS    |
--	//		    IEEE80211_DL_HT	|
--	//		    IEEE80211_DL_TS	|
--//			    IEEE80211_DL_BA	|
--	//		    IEEE80211_DL_REORDER|
--//			    IEEE80211_DL_TRACE  |
--			    //IEEE80211_DL_DATA	|
--			    IEEE80211_DL_ERR	  //awayls open this flags to show error out
-+			 /* IEEE80211_DL_INFO	| */
-+			 /* IEEE80211_DL_WX	| */
-+			 /* IEEE80211_DL_SCAN	| */
-+			 /* IEEE80211_DL_STATE	| */
-+			 /* IEEE80211_DL_MGMT	| */
-+			 /* IEEE80211_DL_FRAG	| */
-+			 /* IEEE80211_DL_EAP	| */
-+			 /* IEEE80211_DL_DROP	| */
-+			 /* IEEE80211_DL_TX	| */
-+			 /* IEEE80211_DL_RX	| */
-+			 /* IEEE80211_DL_QOS    | */
-+			 /* IEEE80211_DL_HT	| */
-+			 /* IEEE80211_DL_TS	| */
-+			 /* IEEE80211_DL_BA	| */
-+			 /* IEEE80211_DL_REORDER| */
-+			 /* IEEE80211_DL_TRACE  | */
-+			 /* IEEE80211_DL_DATA	| */
-+			    IEEE80211_DL_ERR /* awayls open this
-+					       * flags to show error out */
- 			    ;
- static struct proc_dir_entry *ieee80211_proc;
- 
--- 
-1.9.1
+You don't need to resubmit this one.
+
+Cheers,
+Jes
+
+
+> diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
+> index 04717dc..87728b9 100644
+> --- a/drivers/staging/rtl8723au/core/rtw_ap.c
+> +++ b/drivers/staging/rtl8723au/core/rtw_ap.c
+> @@ -1642,7 +1642,7 @@ u8 ap_free_sta23a(struct rtw_adapter *padapter, struct sta_info *psta, bool acti
+>  	return beacon_updated;
+>  }
+>  
+> -int rtw_ap_inform_ch_switch23a (struct rtw_adapter *padapter, u8 new_ch, u8 ch_offset)
+> +int rtw_ap_inform_ch_switch23a(struct rtw_adapter *padapter, u8 new_ch, u8 ch_offset)
+>  {
+>  	struct list_head *phead, *plist;
+>  	struct sta_info *psta = NULL;
+> @@ -1663,12 +1663,12 @@ int rtw_ap_inform_ch_switch23a (struct rtw_adapter *padapter, u8 new_ch, u8 ch_o
+>  	list_for_each(plist, phead) {
+>  		psta = container_of(plist, struct sta_info, asoc_list);
+>  
+> -		issue_action_spct_ch_switch23a (padapter, psta->hwaddr, new_ch, ch_offset);
+> +		issue_action_spct_ch_switch23a(padapter, psta->hwaddr, new_ch, ch_offset);
+>  		psta->expire_to = ((pstapriv->expire_to * 2) > 5) ? 5 : (pstapriv->expire_to * 2);
+>  	}
+>  	spin_unlock_bh(&pstapriv->asoc_list_lock);
+>  
+> -	issue_action_spct_ch_switch23a (padapter, bc_addr, new_ch, ch_offset);
+> +	issue_action_spct_ch_switch23a(padapter, bc_addr, new_ch, ch_offset);
+>  
+>  	return 0;
+>  }
+> @@ -1871,7 +1871,7 @@ void stop_ap_mode23a(struct rtw_adapter *padapter)
+>  	pmlmeext->bstart_bss = false;
+>  
+>  	/* reset and init security priv , this can refine with rtw_reset_securitypriv23a */
+> -	memset((unsigned char *)&padapter->securitypriv, 0, sizeof (struct security_priv));
+> +	memset((unsigned char *)&padapter->securitypriv, 0, sizeof(struct security_priv));
+>  	padapter->securitypriv.ndisauthtype = Ndis802_11AuthModeOpen;
+>  	padapter->securitypriv.ndisencryptstatus = Ndis802_11WEPDisabled;
+>  
+> 
 
 
