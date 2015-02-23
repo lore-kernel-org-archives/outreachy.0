@@ -3,92 +3,108 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,25a6457a67aef068
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.236.24.228 with SMTP id x64mr13488346yhx.26.1424720818952;
-        Mon, 23 Feb 2015 11:46:58 -0800 (PST)
+X-Received: by 10.182.191.65 with SMTP id gw1mr11423048obc.40.1424685208841;
+        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.253.2 with SMTP id zw2ls811957igc.41.canary; Mon, 23 Feb
- 2015 11:46:58 -0800 (PST)
-X-Received: by 10.66.171.9 with SMTP id aq9mr13809514pac.20.1424720818585;
-        Mon, 23 Feb 2015 11:46:58 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qg0-x234.google.com (mail-qg0-x234.google.com. [2607:f8b0:400d:c04::234])
-        by gmr-mx.google.com with ESMTPS id ba9si6221866qcb.0.2015.02.23.11.46.58
+Received: by 10.107.9.210 with SMTP id 79ls1498800ioj.41.gmail; Mon, 23 Feb
+ 2015 01:53:28 -0800 (PST)
+X-Received: by 10.66.140.66 with SMTP id re2mr10999281pab.29.1424685208648;
+        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id xj4si3781589pbc.2.2015.02.23.01.53.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 11:46:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::234 as permitted sender) client-ip=2607:f8b0:400d:c04::234;
+        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::234 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x234.google.com with SMTP id h3so26189875qgf.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 11:46:58 -0800 (PST)
+Received: by pdjg10 with SMTP id g10so24339144pdj.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 01:53:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:message-id:date:user-agent:mime-version:to:subject:references
-         :in-reply-to:content-type:content-transfer-encoding;
-        bh=moeBCB37HsV8D3Q66qc4Z1Z5WfmYS+Pm1Vy0jggLPMA=;
-        b=pR12SK7LqroqbfhEPz5MlOqQWjQLeKhJnyNp8/vXGReUixRRw9S1uf4XJafpH6tr1w
-         MgpfTy+xkzdNOn0zJ8VVrcHSJmotNxrFj6fEFkK/378KQIiaLU5ws6FnAkS0R7QC0GN1
-         LwAcP0J+WL6Sk7MyG59ok0zK6N3zgAKNXtZPeYlEr6bBtO/v6U1PjbMXiir9qeDJ4jWu
-         WS12ztr0Rd0u5bXauH7uTyS6Y0xFllb//Uo16/ia3iLhM0MAPxy3vrp4Cn9UjugkVlh9
-         gEFAD9O2Y1x76WSw9lUUu4Yhuwp5TmrJgklQVtiPPTgzl2Latxh7nZXHAYctYS4KO44A
-         Pd5g==
-X-Received: by 10.140.92.33 with SMTP id a30mr26996492qge.30.1424720818467;
-        Mon, 23 Feb 2015 11:46:58 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
-        by mx.google.com with ESMTPSA id b204sm18059981qhc.27.2015.02.23.11.46.57
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 11:46:57 -0800 (PST)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <54EB83B0.3090505@gmail.com>
-Date: Mon, 23 Feb 2015 14:46:56 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=dS1sJiVBgLSZQj+UO/64sXTG/a0I106wHoCYquhW2o8=;
+        b=QGRrOL24G6YgXCEj+RwI7X66XIdQPtntJhbdKo3rHMQt+qxdry1jmHbLUuJ4Y+90LG
+         zmMPo/X0wVjcltbGJHg3a5bBUOR6w81XJmwNl85zKaYdzxOSaQ0Q2uRkIV+bsP8e1Obd
+         FrQFEbU2ftf5JJsmv0SXuxqe7t39CyBbVqbxmhvJkByoJLavK9QBkGgdTn4giPZK1qVX
+         dVaWyyGwqwpKbPgC+LLhu0Hz20y967okBUgb8OAJsitMqIXmmO8049t4erloBGxpBsIn
+         0p57TjLDwupialdn28u2b98Z0cx/mcdCHMn4vTT15tefRpQbKuwIRgnStO7EO2TvOnJL
+         rBZQ==
+X-Received: by 10.70.26.100 with SMTP id k4mr17770176pdg.125.1424685208518;
+        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from nizamkari ([111.93.6.70])
+        by mx.google.com with ESMTPSA id lq2sm35386666pab.34.2015.02.23.01.53.27
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+Date: Mon, 23 Feb 2015 15:24:30 +0530
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 4/4] staging: rtl8192u: Fix quoted string split across
+ lines.
+Message-ID: <6583fe4c851d1364e66448ecf733b693200f56d0.1424683660.git.navyasri.tech@gmail.com>
+References: <cover.1424683659.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
-To: Navya Sri Nizamkari <navyasri.tech@gmail.com>, 
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v3 2/4] staging: rtl8192u: Clean-up
- comment line style
-References: <cover.1424683659.git.navyasri.tech@gmail.com> <0103912c5f48fa319b9503c985a2fd28952e2b90.1424683660.git.navyasri.tech@gmail.com>
-In-Reply-To: <0103912c5f48fa319b9503c985a2fd28952e2b90.1424683660.git.navyasri.tech@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1424683659.git.navyasri.tech@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On 02/23/15 04:51, Navya Sri Nizamkari wrote:
-> Convert style of comment from C99 to C89 to fix the
-> following checkpatch.pl error:
-> 
-> ERROR: "Do not use C99 // comments"
-> 
-> Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-> ---
-> Changes in v3:
->     -None in this file of the patchset
-> 
->  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-> index eb89321..bcb2479 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-> @@ -11,7 +11,7 @@
->   *
->   */
->  
-> -//#include <linux/config.h>
-> +/* #include <linux/config.h> */
->  #include <linux/module.h>
->  #include <linux/init.h>
->  #include <linux/slab.h>
-> 
+This patch fixes the checkpatch.pl warning:
 
-This is dead code, rather than changing the comment style, you should
-remove the line completely.
+WARNING: quoted string split across lines
 
-Cheers,
-Jes
+Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+---
+Changes in v3:
+    -None in this patch.
+    
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+index 0aed175..c81193b 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+@@ -66,8 +66,8 @@ void ieee80211_crypt_deinit_handler(unsigned long data)
+ 	spin_lock_irqsave(&ieee->lock, flags);
+ 	ieee80211_crypt_deinit_entries(ieee, 0);
+ 	if (!list_empty(&ieee->crypt_deinit_list)) {
+-		netdev_dbg(ieee->dev, "entries remaining in delayed crypt "
+-		       "deletion list\n");
++		netdev_dbg(ieee->dev,
++		   "entries remaining in delayed crypt deletion list\n");
+ 		ieee->crypt_deinit_timer.expires = jiffies + HZ;
+ 		add_timer(&ieee->crypt_deinit_timer);
+ 	}
+@@ -146,8 +146,8 @@ int ieee80211_unregister_crypto_ops(struct ieee80211_crypto_ops *ops)
+ 	spin_unlock_irqrestore(&hcrypt->lock, flags);
+ 
+ 	if (del_alg) {
+-		pr_debug("ieee80211_crypt: unregistered algorithm "
+-		       "'%s'\n", ops->name);
++		pr_debug("ieee80211_crypt: unregistered algorithm '%s'\n",
++		     ops->name);
+ 		kfree(del_alg);
+ 	}
+ 
+@@ -232,8 +232,8 @@ void __exit ieee80211_crypto_deinit(void)
+ 		struct ieee80211_crypto_alg *alg =
+ 			(struct ieee80211_crypto_alg *) ptr;
+ 		list_del(ptr);
+-		pr_debug("ieee80211_crypt: unregistered algorithm "
+-		       "'%s' (deinit)\n", alg->ops->name);
++		pr_debug("ieee80211_crypt: unregistered algorithm '%s' (deinit)\n",
++		     alg->ops->name);
+ 		kfree(alg);
+ 	}
+ 
+-- 
+1.9.1
 
 
