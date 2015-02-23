@@ -1,57 +1,63 @@
 X-GM-THRID: 2853156421632
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,cc0966737ed87256
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.42.163.196 with SMTP id d4mr3501427icy.28.1424984092073;
-        Thu, 26 Feb 2015 12:54:52 -0800 (PST)
+X-Received: by 10.112.168.104 with SMTP id zv8mr1488825lbb.10.1424711541716;
+        Mon, 23 Feb 2015 09:12:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.131 with SMTP id l3ls342899qgl.5.gmail; Thu, 26 Feb
- 2015 12:54:51 -0800 (PST)
-X-Received: by 10.236.11.196 with SMTP id 44mr9712412yhx.31.1424984091783;
-        Thu, 26 Feb 2015 12:54:51 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id bo1si270379pbc.0.2015.02.26.12.54.51
+Received: by 10.180.108.197 with SMTP id hm5ls601475wib.51.canary; Mon, 23 Feb
+ 2015 09:12:21 -0800 (PST)
+X-Received: by 10.194.178.234 with SMTP id db10mr1501618wjc.2.1424711541344;
+        Mon, 23 Feb 2015 09:12:21 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id o3si727073wib.2.2015.02.23.09.12.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 12:54:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 23 Feb 2015 09:12:21 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 7A543B3D;
-	Thu, 26 Feb 2015 20:54:51 +0000 (UTC)
-Date: Thu, 26 Feb 2015 12:54:51 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,631,1418079600"; 
+   d="scan'208";a="101043935"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Feb 2015 18:12:20 +0100
+Date: Mon, 23 Feb 2015 18:12:13 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Vatika Harlalka <vatikaharlalka@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Replace ternary
  operator with predefined macro
-Message-ID: <20150226205451.GA2571@kroah.com>
-References: <20150223162709.GA16766@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20150223162709.GA16766@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Message-ID: <alpine.DEB.2.10.1502231811520.2479@hadrien>
+References: <20150223162709.GA16766@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Mon, Feb 23, 2015 at 09:57:09PM +0530, Vatika Harlalka wrote:
+
+
+On Mon, 23 Feb 2015, Vatika Harlalka wrote:
+
 > Replace use of ternary operator with abs() macro to increase
 > code readability.
-> 
+
+This is nice.  You could see if you can use Coccinelle to find other
+occurrences.
+
+julia
+
+
 > Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 > ---
 >  drivers/staging/rtl8188eu/hal/phy.c | 4 +---
 >  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
 > index e7ede44..115d611 100644
 > --- a/drivers/staging/rtl8188eu/hal/phy.c
 > +++ b/drivers/staging/rtl8188eu/hal/phy.c
 > @@ -554,9 +554,7 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
 >  			thermal_val = (u8)(thermal_avg / thermal_avg_count);
->  
+>
 >  		if (dm_odm->RFCalibrateInfo.bReloadtxpowerindex) {
 > -			delta = thermal_val > hal_data->EEPROMThermalMeter ?
 > -				(thermal_val - hal_data->EEPROMThermalMeter) :
@@ -60,14 +66,14 @@ On Mon, Feb 23, 2015 at 09:57:09PM +0530, Vatika Harlalka wrote:
 >  			dm_odm->RFCalibrateInfo.bReloadtxpowerindex = false;
 >  			dm_odm->RFCalibrateInfo.bDoneTxpower = false;
 >  		} else if (dm_odm->RFCalibrateInfo.bDoneTxpower) {
-
-With the other changes you have made in this file, this patch no longer
-applies :(
-
-Can you please refresh your tree against my staging-testing branch and
-respin this patch and resend it?
-
-thanks,
-
-greg k-h
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150223162709.GA16766%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
