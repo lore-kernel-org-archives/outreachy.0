@@ -1,50 +1,46 @@
 X-GM-THRID: 2732794576896
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9a4efa979c10540c
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.183.3.43 with SMTP id bt11mr14166211obd.7.1424722234070;
-        Mon, 23 Feb 2015 12:10:34 -0800 (PST)
+X-Received: by 10.182.246.37 with SMTP id xt5mr13621622obc.25.1424722028638;
+        Mon, 23 Feb 2015 12:07:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.61.234 with SMTP id t10ls992140igr.15.gmail; Mon, 23 Feb
- 2015 12:10:33 -0800 (PST)
-X-Received: by 10.42.62.19 with SMTP id w19mr14187791ich.30.1424722233900;
-        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+Received: by 10.140.97.10 with SMTP id l10ls1545015qge.73.gmail; Mon, 23 Feb
+ 2015 12:07:08 -0800 (PST)
+X-Received: by 10.140.201.202 with SMTP id w193mr13461952qha.7.1424722028478;
+        Mon, 23 Feb 2015 12:07:08 -0800 (PST)
 Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qa0-x22c.google.com (mail-qa0-x22c.google.com. [2607:f8b0:400d:c00::22c])
-        by gmr-mx.google.com with ESMTPS id q2si6449165qcn.2.2015.02.23.12.10.33
+Received: from mail-qc0-x236.google.com (mail-qc0-x236.google.com. [2607:f8b0:400d:c01::236])
+        by gmr-mx.google.com with ESMTPS id q2si6447335qcn.2.2015.02.23.12.07.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::22c as permitted sender) client-ip=2607:f8b0:400d:c00::22c;
+        Mon, 23 Feb 2015 12:07:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::236 as permitted sender) client-ip=2607:f8b0:400d:c01::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::22c as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::236 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qa0-f44.google.com with SMTP id n8so23879975qaq.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+Received: by mail-qc0-x236.google.com with SMTP id r5so13040003qcx.10
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:07:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:message-id:date:user-agent:mime-version:to:subject:references
          :in-reply-to:content-type:content-transfer-encoding;
-        bh=Nm1FE7H0Dimsk5UEHM1IRswizProIg9IvZ1uMuCIAtw=;
-        b=zVZcA8Ilu1gDXXn7LBOJhFI9/o840t0xjdkjX2Dgh7A1DAs9XCJ8EVO2y1dpOrwv3D
-         84NsN2wWmLqcPkfjAbT0y+iBZMOyyvkCtcP3sfQV3zq7WA4Wt9aGwIMXRvwhA8Eu5+Mm
-         xe3I+ovUia9LC0nG9H3PsJeJDCwNtbf3/mgWBbZ5uU/aiJu1eED80KWC0jHJsHovpWfA
-         L9tCbtSuMzgMkKoUJhkGhNYifybnjeToeNiGLnVOO7wTgLxqle6ii9VMmk5rN3hmAXtC
-         6/ZV0tosaZtqRULInPjJ25kbMRdrgITrZNlz6gJUkXtQDWZnXe/Rbn9ixElTUYDs4I11
-         ISgg==
-X-Received: by 10.140.38.102 with SMTP id s93mr8491027qgs.106.1424722233796;
-        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+        bh=1BLgXrta9+uUsqDrydPSO3PFU/LDUGI8JDSbcZqebLQ=;
+        b=oR9Gvg4Z4KiLBoQw95z5X+hkAFRZYbj7Kr5pcE4oJoqCb5unca+55HYvUP5sbOfXzr
+         M0EKtEcp7Od4KM/k7e6fYmTy/frpnxEk8hE4STZ+N8kBMg9kt8kfNvcTmhaeVc9UnTxT
+         FuaL7iwGwJXr0MFXIVcW9A08dJUkQ+OvG9yNFSbi5BncOLB6Ohfw4OUZ914CYmXag+pZ
+         xRnhsEjcGb6K3X2nofSQZYfTCVhbWnHEA78kmD/UrbvTe6QSCGl8+9uofqOo4WoYv7IJ
+         bop1s3MS3Y2YxaqSi81PpBVcKumsEnOpNepjouNs3jApFU/ngK7UNAJU7U1/xpc0gzod
+         b9eQ==
+X-Received: by 10.140.22.234 with SMTP id 97mr27278299qgn.52.1424722028347;
+        Mon, 23 Feb 2015 12:07:08 -0800 (PST)
 Return-Path: <jes.sorensen@gmail.com>
 Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
-        by mx.google.com with ESMTPSA id l78sm15768334qhl.34.2015.02.23.12.10.32
+        by mx.google.com with ESMTPSA id 9sm20663029qgo.38.2015.02.23.12.07.07
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+        Mon, 23 Feb 2015 12:07:07 -0800 (PST)
 From: Jes Sorensen <jes.sorensen@gmail.com>
 X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <54EB8938.1030000@gmail.com>
-Date: Mon, 23 Feb 2015 15:10:32 -0500
+Message-ID: <54EB886A.2000606@gmail.com>
+Date: Mon, 23 Feb 2015 15:07:06 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
 To: Vatika Harlalka <vatikaharlalka@gmail.com>, 
@@ -78,27 +74,21 @@ On 02/23/15 04:44, Vatika Harlalka wrote:
 > -static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitmask, u32 data)
 > +static void store_pwrindex_offset(struct adapter *Adapter,
 > +				u32 regaddr, u32 bitmask, u32 data)
+
+You need to get the alignment right of you break up lines - the second
+line function arguments need to line up with the opening bracket of the
+function. This goes for both functions.
+
+Once broken up, the above should look like this:
+static void store_pwrindex_offset(struct adapter *Adapter,
+				  u32 regaddr, u32 bitmask, u32 data)
+
+Jes
+
+
 >  {
 >  	struct hal_data_8188e *hal_data = GET_HAL_DATA(Adapter);
 >  	 u8 pwrGrpCnt = hal_data->pwrGroupCnt;
-
-It looks like you already started addressing the follow-on issue that I
-wanted to raise, but you didn't specify that this patch should go on top
-of another patch.
-
-You shouldn't really use u8 for an index, it is better to use int, and
-if you pick a shorter name it will help breaking down the lines in the
-follow-on code. I would recommend doing something like this:
-
-	int idx = hal_data->pwrGroupCnt;
-
-	if (regaddr == rTxAGC_A_Rate18_06)
-		hal_data->MCSTxPowerLevelOriginalOffset[idx][0] = data;
-..... do this for all users of hal_data->pwrGroupCnt in this function.
-
-Cheers,
-Jes
-
 > @@ -553,7 +554,8 @@ static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitm
 >  	}
 >  }
