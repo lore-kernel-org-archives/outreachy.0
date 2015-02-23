@@ -1,94 +1,92 @@
 X-GM-THRID: 2788406853632
-X-Received: by 10.42.14.145 with SMTP id h17mr11690423ica.19.1424690733444;
-        Mon, 23 Feb 2015 03:25:33 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,792ed37fed7a3e12
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.142.174 with SMTP id rx14mr1215750wjb.4.1424688725462;
+        Mon, 23 Feb 2015 02:52:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.40.199 with SMTP id z7ls659525obk.0.gmail; Mon, 23 Feb
- 2015 03:25:33 -0800 (PST)
-X-Received: by 10.182.142.102 with SMTP id rv6mr11966226obb.47.1424690733253;
-        Mon, 23 Feb 2015 03:25:33 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22a.google.com (mail-pd0-x22a.google.com. [2607:f8b0:400e:c02::22a])
-        by gmr-mx.google.com with ESMTPS id nt14si2421545pab.2.2015.02.23.03.25.33
+Received: by 10.152.36.65 with SMTP id o1ls85681laj.67.gmail; Mon, 23 Feb 2015
+ 02:52:02 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr1207897lbc.3.1424688722787;
+        Mon, 23 Feb 2015 02:52:02 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ta1si651638wic.1.2015.02.23.02.52.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 03:25:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22a as permitted sender) client-ip=2607:f8b0:400e:c02::22a;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 23 Feb 2015 02:52:02 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22a as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdno5 with SMTP id o5so24761767pdn.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 03:25:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=bKk1PCNWk3SjeKrGlWCNOQr9gfsUaDIzi246VW02jnk=;
-        b=w7p9pPVDX8l9w2pB+0kfk95Od0Fw4hGQ/9lf9xa6pg3P3EViku829nOCK4d04+CuAO
-         7OMdvVz+PvhWDW+oOeGwytxf8YH4qVUNRQMGBqyOeC4tn2M4p/ki2MGYW8eHWeuV3mes
-         1ufp4AQba2JEkuyj1B3++L1IZIOeiRp7o8p1wIt1ydtdgPUvkMIILPtd0kYKwCR8dfWy
-         sHK1tl5k/idMvsIHVIAutpaA87PYHTZ1fMcN2VgPtfhqHyYRoXcduJbxGWHCScCqKgDW
-         lxPQWJDZ7TbWT6sjCPCGihjcxrQ0ZcCZXnPUMpJoldI9Q5dXaIQc5PGlIO5Owr3BcF5u
-         Y+KA==
-X-Received: by 10.70.20.164 with SMTP id o4mr18395728pde.106.1424690733135;
-        Mon, 23 Feb 2015 03:25:33 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id rj7sm35213258pbc.58.2015.02.23.03.25.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 03:25:32 -0800 (PST)
-Date: Mon, 23 Feb 2015 16:55:13 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: rtl8188eu: Remove redundant if condition
-Message-ID: <20150223112513.GA6967@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,630,1418079600"; 
+   d="scan'208";a="100986953"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Feb 2015 11:52:02 +0100
+Date: Mon, 23 Feb 2015 11:51:55 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove redundant
+ if condition
+In-Reply-To: <20150223104259.GA6583@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502231149570.2479@hadrien>
+References: <20150223104259.GA6583@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove redundant if condition as !result is always false.
+On Mon, 23 Feb 2015, Vatika Harlalka wrote:
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- Changes in v2: Removed {} around the outer if condition as 
-		it has single statement.
+> Remove redundant if condition as !result is always false.
+>
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/phy.c | 4 ----
+>  1 file changed, 4 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+> index 341f0db..192d764 100644
+> --- a/drivers/staging/rtl8188eu/hal/phy.c
+> +++ b/drivers/staging/rtl8188eu/hal/phy.c
+> @@ -345,7 +345,6 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
+>  {
+>  	struct hal_data_8188e *hal_data = GET_HAL_DATA(adapt);
+>  	u8 tmpchannel = hal_data->CurrentChannel;
+> -	bool  result = true;
+>
+>  	if (hal_data->rf_chip == RF_PSEUDO_11N)
+>  		return;
+> @@ -358,9 +357,6 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
+>  	if ((!adapt->bDriverStopped) && (!adapt->bSurpriseRemoved)) {
+>  		phy_sw_chnl_callback(adapt, channel);
+>
+> -		if (!result)
+> -			hal_data->CurrentChannel = tmpchannel;
+> -
 
- drivers/staging/rtl8188eu/hal/phy.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+Good observation.  How did you find it?  One could suspect that someone at
+some point expected phy_sw_chnl_callback to return a value, but that is a
+void function.
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 341f0db..2806e86 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -345,7 +345,6 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
- {
- 	struct hal_data_8188e *hal_data = GET_HAL_DATA(adapt);
- 	u8 tmpchannel = hal_data->CurrentChannel;
--	bool  result = true;
- 
- 	if (hal_data->rf_chip == RF_PSEUDO_11N)
- 		return;
-@@ -355,15 +354,11 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
- 
- 	hal_data->CurrentChannel = channel;
- 
--	if ((!adapt->bDriverStopped) && (!adapt->bSurpriseRemoved)) {
-+	if ((!adapt->bDriverStopped) && (!adapt->bSurpriseRemoved))
- 		phy_sw_chnl_callback(adapt, channel);
- 
--		if (!result)
--			hal_data->CurrentChannel = tmpchannel;
--
--	} else {
-+	else
- 		hal_data->CurrentChannel = tmpchannel;
--	}
- }
- 
- #define ODM_TXPWRTRACK_MAX_IDX_88E  6
--- 
-1.9.1
+Since you have gottten rid of this inner if, you have surely introduced a
+checkpatch error about {} around single statement branches.  You could
+clean up that too.
 
+julia
+
+>  	} else {
+>  		hal_data->CurrentChannel = tmpchannel;
+>  	}
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150223104259.GA6583%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
