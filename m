@@ -1,71 +1,84 @@
-X-GM-THRID: 2273030701056
-X-Received: by 10.112.35.135 with SMTP id h7mr501704lbj.23.1424569936219;
-        Sat, 21 Feb 2015 17:52:16 -0800 (PST)
+X-GM-THRID: 2829093699584
+X-Received: by 10.140.196.209 with SMTP id r200mr14366592qha.0.1424733806434;
+        Mon, 23 Feb 2015 15:23:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.30.38 with SMTP id p6ls425867lah.52.gmail; Sat, 21 Feb
- 2015 17:52:15 -0800 (PST)
-X-Received: by 10.112.126.194 with SMTP id na2mr192959lbb.18.1424569935687;
-        Sat, 21 Feb 2015 17:52:15 -0800 (PST)
-Return-Path: <gulsah.1004@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id ta1si400323wic.1.2015.02.21.17.52.15
+Received: by 10.107.38.74 with SMTP id m71ls1751692iom.109.gmail; Mon, 23 Feb
+ 2015 15:23:26 -0800 (PST)
+X-Received: by 10.42.81.68 with SMTP id y4mr11160203ick.17.1424733806150;
+        Mon, 23 Feb 2015 15:23:26 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qa0-x231.google.com (mail-qa0-x231.google.com. [2607:f8b0:400d:c00::231])
+        by gmr-mx.google.com with ESMTPS id ba9si6297069qcb.0.2015.02.23.15.23.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 17:52:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        Mon, 23 Feb 2015 15:23:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::231 as permitted sender) client-ip=2607:f8b0:400d:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gulsah.1004@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=gulsah.1004@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::231 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x235.google.com with SMTP id k11so11929358wes.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 17:52:15 -0800 (PST)
+Received: by mail-qa0-f49.google.com with SMTP id w8so24510893qac.8
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 15:23:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=kcVs1oyT6Ticuz3iSdH6zAj5HO0z1USpGLITkoj85ZQ=;
-        b=Fwo0iMfb9Mz24DSlx4Vij8X+raH3fXLjHJW7RblgPFIikbZKBARiwieVhfi3QFNTWr
-         ZnhV2PhFpMKLZwU5U+ldRqbuH2oLjY1E63Nenn3pv8Si0RPQaF8ARDsJ2I6Hl9Qqd3rT
-         IqGYmKwGg0cifZVL0827IMfrYOSHVoOh1w/wd5Jm+Roh4B5gKr3/VbIVsPHsC+gEYbWN
-         ilUaJyTW8oTOFXbtJ/3iWhSi6FWxVuHGo99amiGft8VZZGpcTCCZQMHuZgwyABkm/gqX
-         xfcTfUnFW+i4oDrTHspZjb4Z/bDPElCzTxwqtVZkBuhC/COeHzqRR1zoWktcPeYL5S4e
-         Vg8w==
-X-Received: by 10.180.80.34 with SMTP id o2mr8146081wix.75.1424569935594;
-        Sat, 21 Feb 2015 17:52:15 -0800 (PST)
-Return-Path: <gulsah.1004@gmail.com>
-Received: from diyorki.kykwifi.com ([81.213.40.143])
-        by mx.google.com with ESMTPSA id dm6sm9227136wib.22.2015.02.21.17.52.14
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 17:52:14 -0800 (PST)
-From: Gulsah Kose <gulsah.1004@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Gulsah Kose <gulsah.1004@gmail.com>
-Subject: [PATCH 0/7] Removed some checkpatch.pl warnings.
-Date: Sun, 22 Feb 2015 03:51:56 +0200
-Message-Id: <cover.1424569663.git.gulsah.1004@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=Cn0U9dYhdkCtoUCVcgi3VaqzbtIDXcGs/BUI3PR0hjM=;
+        b=EKTTMy2nta76iZ/QnQE1Dwp4/v0Y9lT6/pJzbDOx7QWdY4eTHSVNFHxn76PCxc+KoO
+         hu2mXJrLfXGg8FkRBYOPluWzXjYJLebbpFZZL832JnrT0FQCgPrzuBpvMXxNSAQc5ExC
+         1jk6snZUkbp/4rv89hTz4dni1tE0YGJmxxC2wcH0r15h9QX/KHXOlO88W4pjbu1SkDQB
+         Ir1i87XDv0wz+A8cUGKTw1EM7g0i0NdPElb9a3RKHGYJ0NB8RA5YjFkt/N3eVE57Q/+Z
+         7TGxsV6xBfw22vTsSiuYCIyn2RjalRbcwdjPj5TpkUVKf8Ov8hb34aarIw2fJy/2WCXL
+         +uaQ==
+X-Received: by 10.140.85.137 with SMTP id n9mr28509845qgd.17.1424733806053;
+        Mon, 23 Feb 2015 15:23:26 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id n20sm5343648qgd.48.2015.02.23.15.23.25
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 15:23:25 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EBB66C.3020104@gmail.com>
+Date: Mon, 23 Feb 2015 18:23:24 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Add blank line
+ after declarations
+References: <1424730764-21137-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+In-Reply-To: <1424730764-21137-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patch set removes following checkpatch.pl warnings from ft1000_hw.c.
-WARNING: Use #include <linux/io.h> instead of <asm/io.h>
-WARNING: Use #include <linux/bitops.h> instead of <asm/bitops.h>
-WARNING: else is not generally useful after a break or return
-WARNING: braces {} are not necessary for any arm of this statement
-WARNING: Unnecessary parentheses
-WARNING: Missing a blank line after declarations
+On 02/23/15 17:32, Melike Yurtoglu wrote:
+> WARNING: "Missing a blank line after declarations"
+> That was found by running checkpatch
+> 
+> Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+> index 3c651d5..2c23aa9 100644
+> --- a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+> +++ b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+> @@ -538,6 +538,7 @@ int ODM_RAInfo_Init(struct odm_dm_struct *dm_odm, u8 macid)
+>  	struct odm_ra_info *pRaInfo = &dm_odm->RAInfo[macid];
+>  	u8 WirelessMode = 0xFF; /* invalid value */
+>  	u8 max_rate_idx = 0x13; /* MCS7 */
+> +
+>  	if (dm_odm->pWirelessMode != NULL)
+>  		WirelessMode = *(dm_odm->pWirelessMode);
+>  
+> 
 
-Gulsah Kose (7):
-  staging: arch: alpha: boot: Combined seperated strings.
-  staging: ft1000: ft1000-pcmcia: Used "linux" instead of "asm".
-  staging: ft1000: ft1000-pcmcia: Used "linux" instead of "asm"
-  staging: ft1000: ft1000-pcmcia: Removed all useless "else"
-  staging: ft1000: ft1000-pcmcia: Deleted unnecessary braces.
-  staging: ft1000: ft1000-pcmcia: Removed unnecessary parentheses.
-  staging: ft1000: ft1000-pcmcia: Added missing blank line.
+Patch looks fine - I as always prefer focusing on a slightly more
+personal commit message, and less so on the checkpatch warning, but I
+think this one is fine. I don't think you need to re-post this patch.
 
- arch/alpha/boot/bootpz.c                         |   3 +-
- drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c | 295 +++++++++++------------
- 2 files changed, 147 insertions(+), 151 deletions(-)
-
--- 
-1.9.1
+Jes
 
 
