@@ -1,53 +1,49 @@
 X-GM-THRID: 2517133950976
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,25a6457a67aef068
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.191.65 with SMTP id gw1mr11423048obc.40.1424685208841;
-        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+X-Received: by 10.43.65.211 with SMTP id xn19mr11862151icb.0.1424685118294;
+        Mon, 23 Feb 2015 01:51:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.9.210 with SMTP id 79ls1498800ioj.41.gmail; Mon, 23 Feb
- 2015 01:53:28 -0800 (PST)
-X-Received: by 10.66.140.66 with SMTP id re2mr10999281pab.29.1424685208648;
-        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+Received: by 10.140.84.116 with SMTP id k107ls2100962qgd.91.gmail; Mon, 23 Feb
+ 2015 01:51:58 -0800 (PST)
+X-Received: by 10.236.42.228 with SMTP id j64mr11121038yhb.36.1424685118132;
+        Mon, 23 Feb 2015 01:51:58 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id xj4si3781589pbc.2.2015.02.23.01.53.28
+Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
+        by gmr-mx.google.com with ESMTPS id ks4si4141982pbc.1.2015.02.23.01.51.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        Mon, 23 Feb 2015 01:51:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdjg10 with SMTP id g10so24339144pdj.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+Received: by pdbfl12 with SMTP id fl12so24261746pdb.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 01:51:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=dS1sJiVBgLSZQj+UO/64sXTG/a0I106wHoCYquhW2o8=;
-        b=QGRrOL24G6YgXCEj+RwI7X66XIdQPtntJhbdKo3rHMQt+qxdry1jmHbLUuJ4Y+90LG
-         zmMPo/X0wVjcltbGJHg3a5bBUOR6w81XJmwNl85zKaYdzxOSaQ0Q2uRkIV+bsP8e1Obd
-         FrQFEbU2ftf5JJsmv0SXuxqe7t39CyBbVqbxmhvJkByoJLavK9QBkGgdTn4giPZK1qVX
-         dVaWyyGwqwpKbPgC+LLhu0Hz20y967okBUgb8OAJsitMqIXmmO8049t4erloBGxpBsIn
-         0p57TjLDwupialdn28u2b98Z0cx/mcdCHMn4vTT15tefRpQbKuwIRgnStO7EO2TvOnJL
-         rBZQ==
-X-Received: by 10.70.26.100 with SMTP id k4mr17770176pdg.125.1424685208518;
-        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
+        bh=H4hYaro3n54pdG73v4dm0sAg+fCvH/Z3Dsv0vpSr3RI=;
+        b=tWgwIne4/p4hxnNg32nQ4LqhKrD/qhpeBJX0ptGr+QzMYMWxbtWRvGCGsZhPbY+YrX
+         4ILDVbE2bMquyQe54TwCq86sLwlF/Qu0CH1IEcA6ScMNxsl0fOzPk1fQQhprcnfcpUn7
+         lsQQFm0rm3BoKsPzaBD8G/UZyOB+Ohuln/Qaltmnx7El81PSRb/dSj+uwQP9UQRmba+2
+         dX8OtFTU8JNw1SDiEbkq9mN7vrDU0cnvFl6cPjV25oPCdi98X0xykN4WhaYZ5QhpRGZc
+         yfi5+r8aqjJ8SMnVf/42OX1k0s0hGWSEx+OZ7vFgSGePUkN/dF6hG4t0sXSmCPQWC8rM
+         /OIA==
+X-Received: by 10.70.91.49 with SMTP id cb17mr17872560pdb.35.1424685118016;
+        Mon, 23 Feb 2015 01:51:58 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id lq2sm35386666pab.34.2015.02.23.01.53.27
+        by mx.google.com with ESMTPSA id or4sm35060958pdb.66.2015.02.23.01.51.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 01:53:28 -0800 (PST)
-Date: Mon, 23 Feb 2015 15:24:30 +0530
+        Mon, 23 Feb 2015 01:51:57 -0800 (PST)
+Date: Mon, 23 Feb 2015 15:23:00 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 4/4] staging: rtl8192u: Fix quoted string split across
- lines.
-Message-ID: <6583fe4c851d1364e66448ecf733b693200f56d0.1424683660.git.navyasri.tech@gmail.com>
+Subject: [PATCH v3 3/4] staging: rtl8192u: Replace asm header files with
+ linux ones.
+Message-ID: <f0126198da2ce88e02d6b5243aedc58c42df456b.1424683660.git.navyasri.tech@gmail.com>
 References: <cover.1424683659.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -55,54 +51,35 @@ Content-Disposition: inline
 In-Reply-To: <cover.1424683659.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch.pl warning:
+As asm header files are included in linux header files, this patch
+uses <linux/string.h> instead of <asm/string.h> and <linux/errno.h>
+instead of <asm/errno.h> to fix checkpatch.pl errors:
 
-WARNING: quoted string split across lines
+ERROR: Use #include <linux/string.h> instead of <asm/string.h>
+ERROR: Use #include <linux/errno.h> instead of <asm/errno.h>
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
 Changes in v3:
-    -None in this patch.
-    
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+   -None.
+   
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-index 0aed175..c81193b 100644
+index bcb2479..0aed175 100644
 --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
 +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-@@ -66,8 +66,8 @@ void ieee80211_crypt_deinit_handler(unsigned long data)
- 	spin_lock_irqsave(&ieee->lock, flags);
- 	ieee80211_crypt_deinit_entries(ieee, 0);
- 	if (!list_empty(&ieee->crypt_deinit_list)) {
--		netdev_dbg(ieee->dev, "entries remaining in delayed crypt "
--		       "deletion list\n");
-+		netdev_dbg(ieee->dev,
-+		   "entries remaining in delayed crypt deletion list\n");
- 		ieee->crypt_deinit_timer.expires = jiffies + HZ;
- 		add_timer(&ieee->crypt_deinit_timer);
- 	}
-@@ -146,8 +146,8 @@ int ieee80211_unregister_crypto_ops(struct ieee80211_crypto_ops *ops)
- 	spin_unlock_irqrestore(&hcrypt->lock, flags);
+@@ -15,8 +15,8 @@
+ #include <linux/module.h>
+ #include <linux/init.h>
+ #include <linux/slab.h>
+-#include <asm/string.h>
+-#include <asm/errno.h>
++#include <linux/string.h>
++#include <linux/errno.h>
  
- 	if (del_alg) {
--		pr_debug("ieee80211_crypt: unregistered algorithm "
--		       "'%s'\n", ops->name);
-+		pr_debug("ieee80211_crypt: unregistered algorithm '%s'\n",
-+		     ops->name);
- 		kfree(del_alg);
- 	}
- 
-@@ -232,8 +232,8 @@ void __exit ieee80211_crypto_deinit(void)
- 		struct ieee80211_crypto_alg *alg =
- 			(struct ieee80211_crypto_alg *) ptr;
- 		list_del(ptr);
--		pr_debug("ieee80211_crypt: unregistered algorithm "
--		       "'%s' (deinit)\n", alg->ops->name);
-+		pr_debug("ieee80211_crypt: unregistered algorithm '%s' (deinit)\n",
-+		     alg->ops->name);
- 		kfree(alg);
- 	}
+ #include "ieee80211.h"
  
 -- 
 1.9.1
