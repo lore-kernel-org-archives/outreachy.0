@@ -1,106 +1,103 @@
-X-GM-THRID: 1297817272320
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,31250cd5bee3b823,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.25.7 with SMTP id y7mr1250546lbf.21.1424438798010;
-        Fri, 20 Feb 2015 05:26:38 -0800 (PST)
+X-GM-THRID: 2788406853632
+X-Received: by 10.50.85.18 with SMTP id d18mr13018117igz.3.1424721069634;
+        Mon, 23 Feb 2015 11:51:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.6.42 with SMTP id cr10ls298274lad.91.gmail; Fri, 20 Feb
- 2015 05:26:37 -0800 (PST)
-X-Received: by 10.152.1.5 with SMTP id 5mr1278656lai.4.1424438797628;
-        Fri, 20 Feb 2015 05:26:37 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id ta1si105827wic.1.2015.02.20.05.26.37
+Received: by 10.140.83.116 with SMTP id i107ls1597380qgd.41.gmail; Mon, 23 Feb
+ 2015 11:51:09 -0800 (PST)
+X-Received: by 10.52.88.67 with SMTP id be3mr13466426vdb.3.1424721069427;
+        Mon, 23 Feb 2015 11:51:09 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qa0-x230.google.com (mail-qa0-x230.google.com. [2607:f8b0:400d:c00::230])
+        by gmr-mx.google.com with ESMTPS id ba9si6223002qcb.0.2015.02.23.11.51.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 05:26:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        Mon, 23 Feb 2015 11:51:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::230 as permitted sender) client-ip=2607:f8b0:400d:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::230 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id em10so2949819wid.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 05:26:37 -0800 (PST)
+Received: by mail-qa0-x230.google.com with SMTP id dc16so23717759qab.7
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 11:51:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=NDOq9j6LUN8cHpYQYbCqVIQgaGE4CjLKbnDwUv3oRKs=;
-        b=QnUgAbfAo5MtnBvsMebbwROyva2/OzfUut2czOZFBtJy7oVCZ8EJfqi2wFEdMiiOnD
-         Fl0+GyrmludjoJbgBDtJSPf6MRCYV79e4SPPK/P9inBjNTp+oqAtHzp/NObfzAZCUSeY
-         ueliWa/d/btt4aYsMldTfFt2dfjFtRGZAQMFjgHz8C+OW+E6XQ7T2yXn2NEJzrEpYBFr
-         Hu78m6g+BTGoPk0if7quYVm/e/aZJPdvJj6BzycQfXIQKE8vDlgBDQ0yNrwbmhtVtn9j
-         n1DbaleLrFiEihmE8QJQKNbXyUqelZ+BlbjeRu3LJNvGt2J3GzGvJb2SiS4Cj1tNkzeB
-         C/Ig==
-X-Received: by 10.194.175.39 with SMTP id bx7mr19642794wjc.22.1424438797529;
-        Fri, 20 Feb 2015 05:26:37 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.58.202])
-        by mx.google.com with ESMTPSA id di11sm2410699wid.8.2015.02.20.05.26.36
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 05:26:36 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: octeon: Add blank line
-Date: Fri, 20 Feb 2015 15:26:40 +0200
-Message-Id: <1424438800-13843-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=4NjS2Db9BMN135L25N5MEseO9lpiQIUyCZOBuOTKFH8=;
+        b=0bP6GW654AAP4Zfs2v7Cm/FhbNfCzz7y0uMRgPc3QUfBZed2hg1T1G+HhS/K3Ko/mD
+         zoc2479HfdGV+x9H+3Drjnvbib6OGbYQ9i1SUswO/YG+K5YrCGDeNsVGzstFj+J0qMXM
+         1Yxqgiv8HUekr1EZ6Drar0F8hhAvjD2UhuMZBN57SzCE3B9FxILkZWTGGP5aa3uaGfns
+         qYf0KllvBCothRONhF14nE0N8YCgi7oaziHRCh915XblWDZID/EZurELTgYHerIVj3Le
+         FzYekB9LFFyg2LwfxkX9iKdrEBDcYJeOSVpNVraB7uvvXsju8keLaLEVfv1UVh//Efax
+         oUOA==
+X-Received: by 10.140.134.198 with SMTP id 189mr1345973qhg.7.1424721069349;
+        Mon, 23 Feb 2015 11:51:09 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id k13sm8691673qae.32.2015.02.23.11.51.08
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 11:51:08 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EB84AB.3040408@gmail.com>
+Date: Mon, 23 Feb 2015 14:51:07 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Vatika Harlalka <vatikaharlalka@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: rtl8188eu: Remove redundant
+ if condition
+References: <20150223194642.GA28233@gmail.com>
+In-Reply-To: <20150223194642.GA28233@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Missing a blank line after declarations"
+On 02/23/15 14:46, Vatika Harlalka wrote:
+> Remove redundant if condition as !result is always false.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+> Changes in v4: Added "Staging: rtl8188eu" to commit message.
+> Changes in v3: Removed unneeded newline after if condition to
+>                 follow kernel coding conventions.
+> Changes in v2: Removed {} around the outer if condition as
+>                 it has single statement.
+> 
+>  drivers/staging/rtl8188eu/hal/phy.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/octeon/ethernet-rgmii.c | 5 +++++
- 1 file changed, 5 insertions(+)
+The patch description here does not match the code.
 
-diff --git a/drivers/staging/octeon/ethernet-rgmii.c b/drivers/staging/octeon/ethernet-rgmii.c
-index 651be7e..7eea5f0 100644
---- a/drivers/staging/octeon/ethernet-rgmii.c
-+++ b/drivers/staging/octeon/ethernet-rgmii.c
-@@ -83,6 +83,7 @@ static void cvm_oct_rgmii_poll(struct net_device *dev)
- 			int interface = INTERFACE(priv->port);
- 			int index = INDEX(priv->port);
- 			union cvmx_gmxx_rxx_int_reg gmxx_rxx_int_reg;
-+
- 			gmxx_rxx_int_reg.u64 =
- 			    cvmx_read_csr(CVMX_GMXX_RXX_INT_REG
- 					  (index, interface));
-@@ -217,6 +218,7 @@ static irqreturn_t cvm_oct_rgmii_rml_interrupt(int cpl, void *dev_id)
- 
- 			/* Read the GMX interrupt status bits */
- 			union cvmx_gmxx_rxx_int_reg gmx_rx_int_reg;
-+
- 			gmx_rx_int_reg.u64 =
- 			    cvmx_read_csr(CVMX_GMXX_RXX_INT_REG
- 					  (index, interface));
-@@ -261,6 +263,7 @@ static irqreturn_t cvm_oct_rgmii_rml_interrupt(int cpl, void *dev_id)
- 
- 			/* Read the GMX interrupt status bits */
- 			union cvmx_gmxx_rxx_int_reg gmx_rx_int_reg;
-+
- 			gmx_rx_int_reg.u64 =
- 			    cvmx_read_csr(CVMX_GMXX_RXX_INT_REG
- 					  (index, interface));
-@@ -316,6 +319,7 @@ int cvm_oct_rgmii_open(struct net_device *dev)
- 	if (!octeon_is_simulation()) {
- 		if (priv->phydev) {
- 			int r = phy_read_status(priv->phydev);
-+
- 			if (r == 0 && priv->phydev->link == 0)
- 				netif_carrier_off(dev);
- 			cvm_oct_adjust_link(dev);
-@@ -407,6 +411,7 @@ int cvm_oct_rgmii_init(struct net_device *dev)
- void cvm_oct_rgmii_uninit(struct net_device *dev)
- {
- 	struct octeon_ethernet *priv = netdev_priv(dev);
-+
- 	cvm_oct_common_uninit(dev);
- 
- 	/*
--- 
-1.8.3.2
+Jes
+
+
+> diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+> index 3f663fe..e005150 100644
+> --- a/drivers/staging/rtl8188eu/hal/phy.c
+> +++ b/drivers/staging/rtl8188eu/hal/phy.c
+> @@ -386,19 +386,18 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
+>  
+>  static u8 get_right_chnl_for_iqk(u8 chnl)
+>  {
+> +	u8 place;
+>  	u8 channel_all[ODM_TARGET_CHNL_NUM_2G_5G] = {
+> -		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+>  		36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64,
+>  		100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122,
+>  		124, 126, 128, 130, 132, 134, 136, 138, 140, 149, 151, 153,
+>  		155, 157, 159, 161, 163, 165
+>  	};
+> -	u8 place = chnl;
+>  
+>  	if (chnl > 14) {
+> -		for (place = 14; place < sizeof(channel_all); place++) {
+> +		for (place = 0; place < sizeof(channel_all); place++) {
+>  			if (channel_all[place] == chnl)
+> -				return place-13;
+> +				return ++place;
+>  		}
+>  	}
+>  	return 0;
+> 
 
 
