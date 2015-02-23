@@ -1,83 +1,87 @@
 X-GM-THRID: 2698279649280
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,a6cf1b5024c222ad
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.191.65 with SMTP id gw1mr11318813obc.40.1424682993435;
-        Mon, 23 Feb 2015 01:16:33 -0800 (PST)
+X-Received: by 10.194.161.194 with SMTP id xu2mr1130912wjb.1.1424682398844;
+        Mon, 23 Feb 2015 01:06:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.51.16.129 with SMTP id fw1ls689279igd.2.gmail; Mon, 23 Feb
- 2015 01:16:33 -0800 (PST)
-X-Received: by 10.66.196.11 with SMTP id ii11mr11197101pac.37.1424682993252;
-        Mon, 23 Feb 2015 01:16:33 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id ri9si134249pdb.1.2015.02.23.01.16.33
+Received: by 10.180.14.9 with SMTP id l9ls503490wic.11.canary; Mon, 23 Feb
+ 2015 01:06:38 -0800 (PST)
+X-Received: by 10.194.178.234 with SMTP id db10mr1131849wjc.2.1424682398486;
+        Mon, 23 Feb 2015 01:06:38 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id by11si852957wib.1.2015.02.23.01.06.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 01:16:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 23 Feb 2015 01:06:38 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id lf10so25986367pab.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 01:16:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=FUi3zS6IcOOkjLXc0Z1J/r6/zNtwew5UcrJDtEDZMqQ=;
-        b=ZGrwZVlLAl1LFk08fIvITDoiAxBK5W+UuvMGcQO/+WCW/nEVO+cpXIl5/VTaIqyfWK
-         fHoC8sL9R51GLjlgwkOUr6+6Mfkigygo+fXchR1JRgVGmCXwAIwWHDkLEW8x2nDXV4j2
-         crGZMRty+QoP1UPsVaDJ8wFORn4xdbgO50oYVINN4S6UW8lDvvJkV4uu6Ac4LC8vN7cd
-         I0uGcvB+67iECVdVMo8VAB57qoXEDIQcROlNXNWyU6matINLvxW/HUHVZ4fCNKRwqAKB
-         q/clbTYnyPw74pXzVezOPYVpfI9vbHjlA4KSovxOfg2s4yB75Ab+Ue5CNj+ylvlR89bm
-         b3Yw==
-X-Received: by 10.68.177.229 with SMTP id ct5mr5128099pbc.83.1424682993184;
-        Mon, 23 Feb 2015 01:16:33 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id ck11sm35258680pac.5.2015.02.23.01.16.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 01:16:31 -0800 (PST)
-Date: Mon, 23 Feb 2015 14:46:13 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Remove unnecessary variable
-Message-ID: <20150223091613.GA4359@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,629,1418079600"; 
+   d="scan'208";a="100969845"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Feb 2015 10:06:38 +0100
+Date: Mon, 23 Feb 2015 10:06:31 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove unnecessary
+ variable
+In-Reply-To: <20150223085030.GA1602@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502231006020.2479@hadrien>
+References: <20150223085030.GA1602@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove unnecessary variable and replace its uses with previously
-defined variable.
+On Mon, 23 Feb 2015, Vatika Harlalka wrote:
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+> Remove unneccessary variable and replace its uses with another
+> variable which is previously defined.
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 623fb4f..341f0db 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -117,10 +117,9 @@ static void rf_serial_write(struct adapter *adapt,
- 	u32 data_and_addr = 0;
- 	struct hal_data_8188e *hal_data = GET_HAL_DATA(adapt);
- 	struct bb_reg_def *phyreg = &hal_data->PHYRegDef[rfpath];
--	u32 newoffset;
- 
--	newoffset = offset & 0xff;
--	data_and_addr = ((newoffset<<20) | (data&0x000fffff)) & 0x0fffffff;
-+	offset &= 0xff;
-+	data_and_addr = ((offset<<20) | (data&0x000fffff)) & 0x0fffffff;
- 	phy_set_bb_reg(adapt, phyreg->rf3wireOffset, bMaskDWord, data_and_addr);
- }
- 
--- 
-1.9.1
+The code is a bit strange.  You could consider making the same change in
+the write function.
 
+julia
+
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/phy.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+> index 3f663fe..3950cb3 100644
+> --- a/drivers/staging/rtl8188eu/hal/phy.c
+> +++ b/drivers/staging/rtl8188eu/hal/phy.c
+> @@ -72,12 +72,10 @@ static u32 rf_serial_read(struct adapter *adapt,
+>  	u32 ret = 0;
+>  	struct hal_data_8188e *hal_data = GET_HAL_DATA(adapt);
+>  	struct bb_reg_def *phyreg = &hal_data->PHYRegDef[rfpath];
+> -	u32 newoffset;
+>  	u32 tmplong, tmplong2;
+>  	u8 rfpi_enable = 0;
+>
+>  	offset &= 0xff;
+> -	newoffset = offset;
+>
+>  	tmplong = phy_query_bb_reg(adapt, rFPGA0_XA_HSSIParameter2, bMaskDWord);
+>  	if (rfpath == RF_PATH_A)
+> @@ -87,7 +85,7 @@ static u32 rf_serial_read(struct adapter *adapt,
+>  					    bMaskDWord);
+>
+>  	tmplong2 = (tmplong2 & (~bLSSIReadAddress)) |
+> -		   (newoffset<<23) | bLSSIReadEdge;
+> +		   (offset<<23) | bLSSIReadEdge;
+>
+>  	phy_set_bb_reg(adapt, rFPGA0_XA_HSSIParameter2, bMaskDWord,
+>  		       tmplong&(~bLSSIReadEdge));
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150223085030.GA1602%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
