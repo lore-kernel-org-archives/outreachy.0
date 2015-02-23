@@ -1,294 +1,119 @@
-X-GM-THRID: 6393359357061365760
-X-Received: by 10.107.191.68 with SMTP id p65mr1724625iof.102.1488569974135;
-        Fri, 03 Mar 2017 11:39:34 -0800 (PST)
+X-GM-THRID: 3055769616384
+X-Received: by 10.182.104.37 with SMTP id gb5mr13807807obb.45.1424723238446;
+        Mon, 23 Feb 2015 12:27:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.166.19 with SMTP id p19ls2981461ioe.47.gmail; Fri, 03 Mar
- 2017 11:39:33 -0800 (PST)
-X-Received: by 10.107.197.194 with SMTP id v185mr1628974iof.48.1488569973325;
-        Fri, 03 Mar 2017 11:39:33 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id h79si231276pfh.2.2017.03.03.11.39.33
+Received: by 10.50.20.101 with SMTP id m5ls1014609ige.28.canary; Mon, 23 Feb
+ 2015 12:27:18 -0800 (PST)
+X-Received: by 10.43.9.135 with SMTP id ow7mr14353517icb.29.1424723238283;
+        Mon, 23 Feb 2015 12:27:18 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x231.google.com (mail-qc0-x231.google.com. [2607:f8b0:400d:c01::231])
+        by gmr-mx.google.com with ESMTPS id ba9si6235808qcb.0.2015.02.23.12.27.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 11:39:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 12:27:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::231 as permitted sender) client-ip=2607:f8b0:400d:c01::231;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::231 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id s67so13523195pgb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 11:39:33 -0800 (PST)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-x231.google.com with SMTP id r5so13159830qcx.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:27:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=AsQVPzj855J4IbadmInG6WVfwDRi/4/FOTQN80gcyU0=;
-        b=GCMdd8D2pnLrKmp1iwXDtFVSpuu/c1S8MJuGsRCyPnzjaUQI0pwwra/ZL70hWPuvC6
-         pMz6i2h58ghFy0vTCnxLJ/QCNFBR8f9KR1gmnNNAZ1WvjsGZzws+O3I5EmaKKua4dYvC
-         MYi2larvDjotlCHcUqVNmxWOa0H7nwgA+PeZyG9EKe7QHjmSrRfnBpv1TJOyP8DK5shN
-         FCE959AyOZw9f1wYYFI2j3C1iLeTcr46QxO1UA61Wi3kyjc3vXocUYmyCNi0y6Ep5rz1
-         gE7XxffnYNwt7bDaRFuAxbuKKphW7Ya2seU3YCfvQ/WL4Xf8LC+ejX7GLi4u/pXFAqLg
-         5T5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=AsQVPzj855J4IbadmInG6WVfwDRi/4/FOTQN80gcyU0=;
-        b=n/sc7ty7Evdf7jFwOnj78G0MKWTJKpnuW70truoTMFlEcUWHaqVtwme6Ws5RBOdAvh
-         OGvjhmMYWPZyu4box2eOt0qBrWldDR/QQdkXxFjVynK/Rv+hYtaaWflX6Wvxf/hzJqiz
-         LRVyO/0OYMtLwhSvLm87p7BdpY7zVtCYkk/bOLr7IWGzEUz/8x5A3r2YuPeN4vr4wgdi
-         DbDZDPJLuYfzJ1X2HHUaA4n8eA3gCx9rjtcPXqackkIM3grdmYiytym0dFEEkOGeIAfT
-         gWgM46U9AdA8thOWtW42rhIZpEuZ3vzMqGxUuu9vrXwYOmDsPVDWHqNSjiYTQSsZmcvL
-         U9yw==
-X-Gm-Message-State: AMke39kjjHLkecIXTPowUN/Zc996XLYh+h/NS+PUF6umgbqVtxQQgg4SbAYe7oIzmH/byw==
-X-Received: by 10.99.102.135 with SMTP id a129mr5445473pgc.220.1488569972927;
-        Fri, 03 Mar 2017 11:39:32 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:5508:2b2:841b:c6f4:fb42:37b7])
-        by smtp.gmail.com with ESMTPSA id b8sm25102836pgn.6.2017.03.03.11.39.31
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 03 Mar 2017 11:39:32 -0800 (PST)
-Message-ID: <58b9c674.4871630a.40830.349c@mx.google.com>
-X-Google-Original-Message-ID: <20170303193928.GA20122@<rvarsha016@gmail.com>>
-Date: Sat, 4 Mar 2017 01:09:28 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 9/9] staging: media: atomisp: Replace NULL comparison.
-References: <cover.1488567772.git.varshar186@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=HHnpcQmMCIQJGQd+E/W1icXhkw7l5puiPvuKE/+z8W4=;
+        b=SFfhCUB0a93ltIh2Ph8nZ9uEeYHoBdNHt3qmqj1/EbPxNMheqVFHOH3bWPMUbz9y94
+         vjiWunCoQLVmrX6DrBSMLpIZiwW8jyDO2PqZ7ZTXZ7cL3JUTGb/vQtfM9556psFqjVYu
+         LMBHSsMI6mkSkwUKW54aEPziBniJPQXnHSugoAuL4xAy6Wy1RpeddKQyBx1/kAkUqf5Q
+         3qybzZ3NEPXvHVuM632ppsba0tZYp6TMln1upSnxjAUgvNGdiGxRksENgFvGse6z2riA
+         TXRz1LnIjrm0926KES6FexR0lpiGNUvPlphfPXB+q1Sim4m/wZOOvOauhxHf3PLB7xEU
+         VSIg==
+X-Received: by 10.140.201.84 with SMTP id w81mr29627889qha.19.1424723238156;
+        Mon, 23 Feb 2015 12:27:18 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 201sm18126152qhr.24.2015.02.23.12.27.17
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 12:27:17 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EB8D24.6080408@gmail.com>
+Date: Mon, 23 Feb 2015 15:27:16 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1488567772.git.varshar186@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8192u: Fix comments
+ in the file
+References: <1424722837-8732-1-git-send-email-ksenija.stanojevic@gmail.com>
+In-Reply-To: <1424722837-8732-1-git-send-email-ksenija.stanojevic@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Replaced x == NULL with !x, by using the following coccinelle script:
+On 02/23/15 15:20, Ksenija Stanojevic wrote:
+> Remove commented code, no longer in use and convert comments from
+> C99 to C89 style. Issue found by checkpatch.pl.
+> 
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> ---
+> v3: remove unused code, format comments.
+> v2: remove space before tab.
+>  drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
 
-@disable is_null@
-expression e;
-@@
+This one looks great!
 
--e==NULL
-+!e
+Jes
 
-This patch fixes the checkpatch issue.
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/media/atomisp/i2c/gc0310.c | 10 +++++-----
- drivers/staging/media/atomisp/i2c/gc2235.c | 10 +++++-----
- drivers/staging/media/atomisp/i2c/ov2680.c | 10 +++++-----
- drivers/staging/media/atomisp/i2c/ov2722.c | 12 ++++++------
- 4 files changed, 21 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/staging/media/atomisp/i2c/gc0310.c b/drivers/staging/media/atomisp/i2c/gc0310.c
-index 376aa34..c019d16 100644
---- a/drivers/staging/media/atomisp/i2c/gc0310.c
-+++ b/drivers/staging/media/atomisp/i2c/gc0310.c
-@@ -294,7 +294,7 @@ static int gc0310_get_intg_factor(struct i2c_client *client,
- 	unsigned int vert_blanking;
- 	unsigned int sh_delay;
- 
--	if (info == NULL)
-+	if (!info)
- 		return -EINVAL;
- 
- 	/* pixel clock calculattion */
-@@ -803,7 +803,7 @@ static int power_up(struct v4l2_subdev *sd)
- 	int ret;
- 
- 	pr_info("%s S\n", __func__);
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -848,7 +848,7 @@ static int power_down(struct v4l2_subdev *sd)
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -996,7 +996,7 @@ static int gc0310_set_fmt(struct v4l2_subdev *sd,
- 		return -EINVAL;
- 
- 	gc0310_info = v4l2_get_subdev_hostdata(sd);
--	if (gc0310_info == NULL)
-+	if (!gc0310_info)
- 		return -EINVAL;
- 
- 	mutex_lock(&dev->input_lock);
-@@ -1159,7 +1159,7 @@ static int gc0310_s_config(struct v4l2_subdev *sd,
- 	int ret = 0;
- 
- 	pr_info("%s S\n", __func__);
--	if (platform_data == NULL)
-+	if (!platform_data)
- 		return -ENODEV;
- 
- 	dev->platform_data =
-diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
-index f71a5bd..a989654 100644
---- a/drivers/staging/media/atomisp/i2c/gc2235.c
-+++ b/drivers/staging/media/atomisp/i2c/gc2235.c
-@@ -250,7 +250,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 	u16 reg_val, reg_val_h, dummy;
- 	int ret;
- 
--	if (info == NULL)
-+	if (!info)
- 		return -EINVAL;
- 
- 	/* pixel clock calculattion */
-@@ -596,7 +596,7 @@ static int power_up(struct v4l2_subdev *sd)
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret;
- 
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -640,7 +640,7 @@ static int power_down(struct v4l2_subdev *sd)
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -789,7 +789,7 @@ static int gc2235_set_fmt(struct v4l2_subdev *sd,
- 	int idx;
- 
- 	gc2235_info = v4l2_get_subdev_hostdata(sd);
--	if (gc2235_info == NULL)
-+	if (!gc2235_info)
- 		return -EINVAL;
- 	if (format->pad)
- 		return -EINVAL;
-@@ -908,7 +908,7 @@ static int gc2235_s_config(struct v4l2_subdev *sd,
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (platform_data == NULL)
-+	if (!platform_data)
- 		return -ENODEV;
- 
- 	dev->platform_data =
-diff --git a/drivers/staging/media/atomisp/i2c/ov2680.c b/drivers/staging/media/atomisp/i2c/ov2680.c
-index e9a159f..99ae746 100644
---- a/drivers/staging/media/atomisp/i2c/ov2680.c
-+++ b/drivers/staging/media/atomisp/i2c/ov2680.c
-@@ -323,7 +323,7 @@ static int ov2680_get_intg_factor(struct i2c_client *client,
- 	u16 reg_val;
- 	int ret;
- 	ov2680_debug(dev,  "++++ov2680_get_intg_factor\n");
--	if (info == NULL)
-+	if (!info)
- 		return -EINVAL;
- 
- 	/* pixel clock */
-@@ -899,7 +899,7 @@ static int power_up(struct v4l2_subdev *sd)
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret;
- 
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -948,7 +948,7 @@ static int power_down(struct v4l2_subdev *sd)
- 
- 	h_flag = 0;
- 	v_flag = 0;
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -1077,7 +1077,7 @@ static int ov2680_set_fmt(struct v4l2_subdev *sd,
- 		return -EINVAL;
- 
- 	ov2680_info = v4l2_get_subdev_hostdata(sd);
--	if (ov2680_info == NULL)
-+	if (!ov2680_info)
- 		return -EINVAL;
- 
- 	mutex_lock(&dev->input_lock);
-@@ -1233,7 +1233,7 @@ static int ov2680_s_config(struct v4l2_subdev *sd,
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (platform_data == NULL)
-+	if (!platform_data)
- 		return -ENODEV;
- 
- 	dev->platform_data =
-diff --git a/drivers/staging/media/atomisp/i2c/ov2722.c b/drivers/staging/media/atomisp/i2c/ov2722.c
-index 208e4d7e..68dbafb 100644
---- a/drivers/staging/media/atomisp/i2c/ov2722.c
-+++ b/drivers/staging/media/atomisp/i2c/ov2722.c
-@@ -295,7 +295,7 @@ static int ov2722_get_intg_factor(struct i2c_client *client,
- 	u16 reg_val;
- 	int ret;
- 
--	if (info == NULL)
-+	if (!info)
- 		return -EINVAL;
- 
- 	dev = to_ov2722_sensor(sd);
-@@ -699,7 +699,7 @@ static int power_up(struct v4l2_subdev *sd)
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret;
- 
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -746,7 +746,7 @@ static int power_down(struct v4l2_subdev *sd)
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (NULL == dev->platform_data) {
-+	if (!dev->platform_data) {
- 		dev_err(&client->dev,
- 			"no camera_sensor_platform_data");
- 		return -ENODEV;
-@@ -893,7 +893,7 @@ static int ov2722_set_fmt(struct v4l2_subdev *sd,
- 	if (!fmt)
- 		return -EINVAL;
- 	ov2722_info = v4l2_get_subdev_hostdata(sd);
--	if (ov2722_info == NULL)
-+	if (!ov2722_info)
- 		return -EINVAL;
- 
- 	mutex_lock(&dev->input_lock);
-@@ -1037,7 +1037,7 @@ static int ov2722_s_config(struct v4l2_subdev *sd,
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (platform_data == NULL)
-+	if (!platform_data)
- 		return -ENODEV;
- 
- 	dev->platform_data =
-@@ -1268,7 +1268,7 @@ static int __ov2722_init_ctrl_handler(struct ov2722_device *dev)
- 
- 	dev->link_freq = v4l2_ctrl_find(&dev->ctrl_handler, V4L2_CID_LINK_FREQ);
- 
--	if (dev->ctrl_handler.error || dev->link_freq == NULL)
-+	if (dev->ctrl_handler.error || !dev->link_freq)
- 		return dev->ctrl_handler.error;
- 
- 	dev->sd.ctrl_handler = hdl;
--- 
-2.9.3
+> diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h b/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
+> index 7ed7243..e283f5e 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
+> +++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
+> @@ -1,14 +1,14 @@
+>  #ifndef _TSTYPE_H_
+>  #define _TSTYPE_H_
+>  #include "rtl819x_Qos.h"
+> -#define TS_SETUP_TIMEOUT	60  // In millisecond
+> +#define TS_SETUP_TIMEOUT	60  /* In millisecond */
+>  #define TS_INACT_TIMEOUT	60
+>  #define TS_ADDBA_DELAY		60
+>  
+>  #define TOTAL_TS_NUM		16
+>  #define TCLAS_NUM		4
+>  
+> -// This define the Tx/Rx directions
+> +/* This define the Tx/Rx directions */
+>  typedef enum _TR_SELECT {
+>  	TX_DIR = 0,
+>  	RX_DIR = 1,
+> @@ -28,9 +28,8 @@ typedef struct _TS_COMMON_INFO{
+>  typedef struct _TX_TS_RECORD{
+>  	TS_COMMON_INFO		TsCommonInfo;
+>  	u16				TxCurSeq;
+> -	BA_RECORD			TxPendingBARecord;	// For BA Originator
+> -	BA_RECORD			TxAdmittedBARecord;	// For BA Originator
+> -//	QOS_DL_RECORD		DLRecord;
+> +	BA_RECORD			TxPendingBARecord;	/* For BA Originator */
+> +	BA_RECORD			TxAdmittedBARecord;	/* For BA Originator */
+>  	u8				bAddBaReqInProgress;
+>  	u8				bAddBaReqDelayed;
+>  	u8				bUsingBa;
+> @@ -44,11 +43,10 @@ typedef struct _RX_TS_RECORD {
+>  	u16				RxTimeoutIndicateSeq;
+>  	struct list_head		RxPendingPktList;
+>  	struct timer_list		RxPktPendingTimer;
+> -	BA_RECORD			RxAdmittedBARecord;	 // For BA Recipient
+> +	BA_RECORD			RxAdmittedBARecord;	 /* For BA Recipient */
+>  	u16				RxLastSeqNum;
+>  	u8				RxLastFragNum;
+>  	u8				num;
+> -//	QOS_DL_RECORD		DLRecord;
+>  } RX_TS_RECORD, *PRX_TS_RECORD;
+>  
+>  
+> 
 
 
