@@ -1,212 +1,98 @@
-X-GM-THRID: 6619343178555195392
-X-Received: by 2002:a1c:e583:: with SMTP id c125-v6mr20680wmh.21.1541185932274;
-        Fri, 02 Nov 2018 12:12:12 -0700 (PDT)
+X-GM-THRID: 2850147008512
+X-Received: by 10.52.125.180 with SMTP id mr20mr8661752vdb.1.1424719360021;
+        Mon, 23 Feb 2015 11:22:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:9552:: with SMTP id x79-v6ls486640wmd.10.gmail; Fri, 02
- Nov 2018 12:12:10 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eF3fpN7hilCUZDFl1e0kxPAkmj37PH4cwPZs0J/OhWgU0wn6DfPUDxJYzRWjEjOB6DBTli
-X-Received: by 2002:a1c:9012:: with SMTP id s18-v6mr24178wmd.10.1541185930705;
-        Fri, 02 Nov 2018 12:12:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541185930; cv=none;
-        d=google.com; s=arc-20160816;
-        b=EwA9ikikZtYqF60pfpZ3mcWE7s9CZZNuU3cXu0/JkPkab/zTLT74YrWVaDB8hTg3fX
-         +edJUINf30AyoMRS/XQvtbB6dGfD/AwTiapfy4xcq1Xf4OvN3FWjSuWerMcJjFVZx1gr
-         znvyUv2xoJ7jyBffeQXCUA50hDc8hFglCHvONB2L/FGI6k++eDu+9x+2hM5T9ThFW67j
-         pTGSc3Qx+82enOdazqTcXfFe0B5LURYhcHPr1M/8ah8iLxWX0TGE3BDkMYW+N9eNcAOn
-         R2tDLCT3c7/Vq+YSHX3EIZTVnn6rTB8Q/FObz/1d/SOyfAai3p0yHUd4Q4eYSWwX7L0Y
-         6nwA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=nBuzoHLDUgeAAa2Dmh512cplfqgk2hzP/MG02QGWOfM=;
-        b=hN1YKyHQvbRF5o4CVr44+kDrpXjQe5jrL4IXJYqld6BtedXRKCiZm9luktBs69KYXE
-         2+seWw8S7yh4UpgB/B+ESj79nUe/gd2Y2mlT1CH4YzvQ7I8iogQOvO8PKXxWqqeBviyj
-         oAtn9M8Atv1mdeJInMJAkr6OjMSEX0ub7O9MhypU2yqbFnPtQCHWiyOfArVCOyxPhqx1
-         5202fxeaBNd3Tlkh4Oli4JAKS6zOO8M+PsWfWx4q66ORvPB9ZnhGq64l84YnBHFJFFSO
-         NIHZ3NF4p9X2YRjuQQ627bxS8qlIxl1rNgWtM5bToC+xEVWteZVya0GgrXc2Vyy14jxP
-         rz1Q==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CfR4wWXQ;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::32d as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com. [2a00:1450:4864:20::32d])
-        by gmr-mx.google.com with ESMTPS id 204-v6si76589wmw.3.2018.11.02.12.12.10
+Received: by 10.50.171.230 with SMTP id ax6ls942476igc.19.gmail; Mon, 23 Feb
+ 2015 11:22:39 -0800 (PST)
+X-Received: by 10.43.99.67 with SMTP id cr3mr5672960icc.32.1424719359811;
+        Mon, 23 Feb 2015 11:22:39 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x230.google.com (mail-qc0-x230.google.com. [2607:f8b0:400d:c01::230])
+        by gmr-mx.google.com with ESMTPS id kt5si6571215qcb.3.2015.02.23.11.22.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Nov 2018 12:12:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::32d as permitted sender) client-ip=2a00:1450:4864:20::32d;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 11:22:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::230 as permitted sender) client-ip=2607:f8b0:400d:c01::230;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CfR4wWXQ;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::32d as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x32d.google.com with SMTP id q19-v6so2892636wmc.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Nov 2018 12:12:10 -0700 (PDT)
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::230 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-x230.google.com with SMTP id p6so12791945qcv.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 11:22:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=nBuzoHLDUgeAAa2Dmh512cplfqgk2hzP/MG02QGWOfM=;
-        b=CfR4wWXQx2j7ikIJogXCZwQ9rhig1zZKEZ+BF0fB4VmfJyVovKEUs4ZRe/j1BAn1+w
-         Y3j8MHQ6DGCas+STA/6ORCVYwhFDlil+dRR0/XYdP8Xhu32ubljkmI+pcywanSixjR5O
-         ECJb2D1v+GXxgKCBy4ZIVI4I8ojOvhf80M5pdl71yTyw94sYgHK65I9wMCxz6SV5iyvo
-         aOs0XrT1MlFqOP/JC1CEZ9v86QWu8gozlyoNFV9csOaKwvDUbkBbUpxJ6a0XeeXQoJIw
-         IeUC1ePd38vRtV3rAh1EhQbxmK91XZOJm3+461BP/1GBVdcEuuoi2xCvpCCjd6QYF7ZN
-         IFVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=nBuzoHLDUgeAAa2Dmh512cplfqgk2hzP/MG02QGWOfM=;
-        b=YpmTaZocis2gNsoNkplAbnMJXyWMyZo4pPq7o0FDry2sC1XBbbKjOAXWNe8UP/M/9I
-         3k0QlFopQKD7cpyUgno3JJl6RW+hPQfV0Q73r48omF/twWEy2SgGHDLjo9T6W+dMZYsS
-         zkoiepdKG/J6IJItCqS1ZGXouz95M4o59ZxWgmtxX0gyONiYOsfcalf7PUykyF8WlPAk
-         kseDGShQcYQdw3zbif3vBwUE30hscfHevubrSoVXsM01tsnTliEcSAcUMRvm4cFLH7Md
-         p5GPyiFwDd6RBDeYY6r3BS7rJuxK78OCLIHdZfIvkD0QyWUOMHQv128stQpZ7LjrQCtf
-         ZQzA==
-X-Gm-Message-State: AGRZ1gLwzG/Cnn/VQcDpNjI4W9luH8kilTYOXJJjCb+yHVJqrtnglzEH
-	5QZW6ucTdtY29idX4m9mig==
-X-Received: by 2002:a1c:8dcd:: with SMTP id p196-v6mr173801wmd.49.1541185929951;
-        Fri, 02 Nov 2018 12:12:09 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain (cpc114784-brad22-2-0-cust310.17-1.cable.virginm.net. [92.239.7.55])
-        by smtp.googlemail.com with ESMTPSA id y141-v6sm36671526wme.10.2018.11.02.12.12.08
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Nov 2018 12:12:09 -0700 (PDT)
-From: Irenge Jules Bashizi <jbi.octave@gmail.com>
-To: mchehab@kernel.org,
-	jules.octave@outlook.com
-Cc: Irenge Jules Bashizi <jbi.octave@gmail.com>,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging:media:Add paragraph about the config symbol
-Date: Fri,  2 Nov 2018 19:11:58 +0000
-Message-Id: <20181102191158.8286-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.17.2
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=vs14OmfKpYnJo5dnuT8o9xWv61VSR5AAtyl6K79Dpmg=;
+        b=I7qMnO2G/136pltt0kENkOauaRm+QOIc3uezFnieeTpLu1nKPN3LJdsh7LiyjszIaD
+         GN4movuTKG74CBtkU9ecEkCuuGQImhfZWUfnlYQ6CkqFoiKrpPkxuMirkyYeh1hcrZvV
+         na7KQO0091NfX+gOR3UOJLttDqg9jkFILPnKVZhSY8eADp5IHlVOT6QT+STSeGH33I27
+         s4fGiMbmugYHG1FvDUFFFBJZUchZgReiLWh7iNCNchquqjs0k/tS3J3kLzhwgWyxTUNr
+         x3Ud8rzvLyK+fIL+ahQTvJJV9y01Q5xHrRoVGicUN1/Fq86aZVOa32Z6Zp7TE2occcr/
+         pG0g==
+X-Received: by 10.140.232.206 with SMTP id d197mr27999416qhc.79.1424719359707;
+        Mon, 23 Feb 2015 11:22:39 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id x124sm18000195qha.2.2015.02.23.11.22.38
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 11:22:39 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EB7DFD.7030108@gmail.com>
+Date: Mon, 23 Feb 2015 14:22:37 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+To: =?UTF-8?B?SGF0aWNlIEVSVMOcUks=?= <haticeerturk27@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723au: core: Add spaces
+ around that '='
+References: <1424707733-23115-1-git-send-email-haticeerturk27@gmail.com>
+In-Reply-To: <1424707733-23115-1-git-send-email-haticeerturk27@gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 
-Add more information about config symbol
-to fix multiple checkpatch warnings.
+On 02/23/15 11:08, Hatice ERTÜRK wrote:
+> This Error found with checkpatch.pl
+> 
+> ERROR: spaces required around that '='
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/rtl8723au/core/rtw_xmit.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723au/core/rtw_xmit.c b/drivers/staging/rtl8723au/core/rtw_xmit.c
+> index 2c9fe07..bece9b3 100644
+> --- a/drivers/staging/rtl8723au/core/rtw_xmit.c
+> +++ b/drivers/staging/rtl8723au/core/rtw_xmit.c
+> @@ -645,7 +645,7 @@ static int xmitframe_addmic(struct rtw_adapter *padapter,
+>  	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+>  	int curfragnum, length;
+>  	u8 *pframe, *payload, mic[8];
+> -	u8 priority[4]= {0x0, 0x0, 0x0, 0x0};
+> +	u8 priority[4] = {0x0, 0x0, 0x0, 0x0};
+>  	u8 hw_hdr_offset = 0;
+>  	int bmcst = is_multicast_ether_addr(pattrib->ra);
+>  
+> @@ -672,7 +672,7 @@ static int xmitframe_addmic(struct rtw_adapter *padapter,
+>  	if (pattrib->encrypt == WLAN_CIPHER_SUITE_TKIP) {
+>  		/* encode mic code */
+>  		if (stainfo) {
+> -			u8 null_key[16]={0x0, 0x0, 0x0, 0x0,
+> +			u8 null_key[16] = {0x0, 0x0, 0x0, 0x0,
+>  					 0x0, 0x0, 0x0, 0x0,
+>  					 0x0, 0x0, 0x0, 0x0,
+>  					 0x0, 0x0, 0x0, 0x0};
+> 
 
-Signed-off-by: Irenge Jules Bashizi <jbi.octave@gmail.com>
----
- drivers/staging/media/zoran/Kconfig | 54 ++++++++++++++++++++++++++---
- 1 file changed, 50 insertions(+), 4 deletions(-)
+In the second portion, you should look at aligning the follow-on lines,
+however an even better solution would be to memset() null_key.
 
-diff --git a/drivers/staging/media/zoran/Kconfig b/drivers/staging/media/zoran/Kconfig
-index 34a18135ede0..129d1d21b7c9 100644
---- a/drivers/staging/media/zoran/Kconfig
-+++ b/drivers/staging/media/zoran/Kconfig
-@@ -6,8 +6,9 @@ config VIDEO_ZORAN
- 	  Say Y for support for MJPEG capture cards based on the Zoran
- 	  36057/36067 PCI controller chipset. This includes the Iomega
- 	  Buz, Pinnacle DC10+ and the Linux Media Labs LML33. There is
--	  a driver homepage at <http://mjpeg.sf.net/driver-zoran/>. For
--	  more information, check <file:Documentation/media/v4l-drivers/zoran.rst>.
-+	  a driver homepage at <http://mjpeg.sf.net/driver-zoran/>. 
-+          For more information,
-+          check <file:Documentation/media/v4l-drivers/zoran.rst>.
- 
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called zr36067.
-@@ -20,7 +21,19 @@ config VIDEO_ZORAN_DC30
- 	help
- 	  Support for the Pinnacle/Miro DC30(+) MJPEG capture/playback
- 	  card. This also supports really old DC10 cards based on the
--	  zr36050 MJPEG codec and zr36016 VFE.
-+	  zr36050 MJPEG codec and zr36016 VFE. In newer Linux kernels
-+          the following modules are built :adv7175,vpx3220,zr36016,
-+          zr36016,zr36016,zr36016,zr36050,zr36050,zr36050,zr36050.
-+          Pinnacle/Miro DC30: Zoran zr36057 PCI controller, Zoran
-+          zr36050 MJPEG codec, Zoran zr36016 Video Front End,
-+          Micronas vpx3225d/vpx3220a/vpx3216b TV decoder  Analog
-+          Devices adv7176 TV encoder
-+          Drivers to use: videodev, i2c-core, i2c-algo-bit,videocodec,
-+          vpx3220/vpx3224, adv7175, zr36050, zr36016, zr36067
-+          Inputs/outputs: Composite, S-video and Internal
-+          Norms: PAL, SECAM (768x576 @ 25 fps), NTSC (640x480 @ 29.97 fps)
-+          Card number: 3
-+
- 
- config VIDEO_ZORAN_ZR36060
- 	tristate "Zoran ZR36060"
-@@ -29,6 +42,8 @@ config VIDEO_ZORAN_ZR36060
- 	  Say Y to support Zoran boards based on 36060 chips.
- 	  This includes Iomega Buz, Pinnacle DC10, Linux media Labs 33
- 	  and 33 R10 and AverMedia 6 boards.
-+          Modules built: zr36060, zr36060, zr36060, zr36060
-+
- 
- config VIDEO_ZORAN_BUZ
- 	tristate "Iomega Buz support"
-@@ -37,6 +52,15 @@ config VIDEO_ZORAN_BUZ
- 	select VIDEO_SAA7185 if MEDIA_SUBDRV_AUTOSELECT
- 	help
- 	  Support for the Iomega Buz MJPEG capture/playback card.
-+          Modules built(in newer kernels):saa7111, saa7185 and zr36060.
-+          Iomega Buz: Zoran zr36067 PCI controller, Zoran zr36060 MJPEG codec
-+          Philips saa7111 TV decoder, Philips saa7185 TV encoder
-+          Drivers to use: videodev, i2c-core, i2c-algo-bit,
-+          videocodec, saa7111, saa7185, zr36060, zr36067
-+          Inputs/outputs: Composite and S-video
-+          Norms: PAL, SECAM (720x576 @ 25 fps), NTSC (720x480 @ 29.97 fps)
-+          Card number: 7
-+
- 
- config VIDEO_ZORAN_DC10
- 	tristate "Pinnacle/Miro DC10(+) support"
-@@ -46,6 +70,9 @@ config VIDEO_ZORAN_DC10
- 	help
- 	  Support for the Pinnacle/Miro DC10(+) MJPEG capture/playback
- 	  card.
-+          Found in Linux kernels: 2.6.28–2.6.39, 3.0–3.6
-+          Modules built: adv7175, saa7110, zr36060
-+
- 
- config VIDEO_ZORAN_LML33
- 	tristate "Linux Media Labs LML33 support"
-@@ -55,6 +82,8 @@ config VIDEO_ZORAN_LML33
- 	help
- 	  Support for the Linux Media Labs LML33 MJPEG capture/playback
- 	  card.
-+          Found in Linux kernels: 3.7–3.19, 4.0–4.17, 4.17+HEAD
-+          Modules built: bt819, bt856, zr36060
- 
- config VIDEO_ZORAN_LML33R10
- 	tristate "Linux Media Labs LML33R10 support"
-@@ -63,7 +92,15 @@ config VIDEO_ZORAN_LML33R10
- 	select VIDEO_ADV7170 if MEDIA_SUBDRV_AUTOSELECT
- 	help
- 	  support for the Linux Media Labs LML33R10 MJPEG capture/playback
--	  card.
-+	  card. Found in Linux kernels: 3.7–3.19, 4.0–4.17, 4.17+HEAD
-+          Modules built: adv7170, saa7114, zr36060
-+          Zoran zr36067 PCI controller Zoran zr36060 MJPEG codec
-+          Philips saa7114 TV decoder Analog Devices adv7170 TV encoder
-+          Drivers to use: videodev, i2c-core, i2c-algo-bit,videocodec,
-+          saa7114, adv7170, zr36060, zr36067 Inputs/outputs: Composite
-+          and S-video. Norms: PAL (720x576 @ 25 fps),
-+          NTSC (720x480 @ 29.97 fps). Card number: 6
-+
- 
- config VIDEO_ZORAN_AVS6EYES
- 	tristate "AverMedia 6 Eyes support"
-@@ -73,3 +110,12 @@ config VIDEO_ZORAN_AVS6EYES
- 	select VIDEO_KS0127 if MEDIA_SUBDRV_AUTOSELECT
- 	help
- 	  Support for the AverMedia 6 Eyes video surveillance card.
-+          AverMedia 6 Eyes AVS6EYES:zoran zr36067 PCI controller,
-+          Zoran zr36060 MJPEG codec, Samsung ks0127 TV decoder,
-+          Conexant bt866  TV encoder. Drivers to use: videodev, i2c-core,
-+          i2c-algo-bit,videocodec, ks0127, bt866, zr36060, zr36067
-+          Inputs/outputs: Six physical inputs.
-+          1-6 are composite,1-2, 3-4, 5-6 doubles as S-video,
-+          1-3 triples as component. One composite output.
-+          Norms:PAL,SECAM(720x576 @ 25 fps),NTSC(720x480 @ 29.97 fps)
-+          Card number: 8. If not autodetected, card=8 is necessary.
--- 
-2.17.2
+Please also try and put a personalized commit message rather than just
+the checkpatch words.
+
+Cheers,
+Jes
 
 
