@@ -3,69 +3,112 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,9a4efa979c10540c
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.159.227 with SMTP id xf3mr1289617lbb.11.1424955221833;
-        Thu, 26 Feb 2015 04:53:41 -0800 (PST)
+X-Received: by 10.183.3.43 with SMTP id bt11mr14166211obd.7.1424722234070;
+        Mon, 23 Feb 2015 12:10:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.10.5 with SMTP id e5ls28362lab.37.gmail; Thu, 26 Feb 2015
- 04:53:41 -0800 (PST)
-X-Received: by 10.112.224.12 with SMTP id qy12mr241122lbc.10.1424955221386;
-        Thu, 26 Feb 2015 04:53:41 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-lb0-x22e.google.com (mail-lb0-x22e.google.com. [2a00:1450:4010:c04::22e])
-        by gmr-mx.google.com with ESMTPS id xl7si61750lbb.1.2015.02.26.04.53.41
+Received: by 10.50.61.234 with SMTP id t10ls992140igr.15.gmail; Mon, 23 Feb
+ 2015 12:10:33 -0800 (PST)
+X-Received: by 10.42.62.19 with SMTP id w19mr14187791ich.30.1424722233900;
+        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qa0-x22c.google.com (mail-qa0-x22c.google.com. [2607:f8b0:400d:c00::22c])
+        by gmr-mx.google.com with ESMTPS id q2si6449165qcn.2.2015.02.23.12.10.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 04:53:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::22e as permitted sender) client-ip=2a00:1450:4010:c04::22e;
+        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::22c as permitted sender) client-ip=2607:f8b0:400d:c00::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::22e as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::22c as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lb0-x22e.google.com with SMTP id z11so10570857lbi.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 04:53:41 -0800 (PST)
+Received: by mail-qa0-f44.google.com with SMTP id n8so23879975qaq.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:10:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=KTHGONbvmU27ta6gd7bOBzZOktT9rwQVs7qYnH6Qjhc=;
-        b=CCCx3kidGwWix16PoRu7auyzR9Ie+GYCozy65NU50eJOLhOTRva2lGnVW6MjoTa74T
-         4MoimbSuFYVmwQUErr7/vhPVZZdFKnJ5LYXzS0/+kWVFQMUOXPSYXFij4DjzAXTiF9TB
-         lOK9cZOTp80g/fSPX9YSZnaJ03Sv//cyHfaziOn/qVhv0OMXiKrttvqzD3IdMjIpYmrz
-         5wx+vCro3zZPl4r0dautbINYvcpALYmcyaBNvwC6dLbOo/QrDn/zCsGMMR9KKwYUJ44w
-         W9AqYLRcUnV/AGIkZ4N9VmTnMbzFJJDIPRwmWNznYIKXzwl4czcDuqQTDEuFY5JBy3hN
-         nxtg==
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=Nm1FE7H0Dimsk5UEHM1IRswizProIg9IvZ1uMuCIAtw=;
+        b=zVZcA8Ilu1gDXXn7LBOJhFI9/o840t0xjdkjX2Dgh7A1DAs9XCJ8EVO2y1dpOrwv3D
+         84NsN2wWmLqcPkfjAbT0y+iBZMOyyvkCtcP3sfQV3zq7WA4Wt9aGwIMXRvwhA8Eu5+Mm
+         xe3I+ovUia9LC0nG9H3PsJeJDCwNtbf3/mgWBbZ5uU/aiJu1eED80KWC0jHJsHovpWfA
+         L9tCbtSuMzgMkKoUJhkGhNYifybnjeToeNiGLnVOO7wTgLxqle6ii9VMmk5rN3hmAXtC
+         6/ZV0tosaZtqRULInPjJ25kbMRdrgITrZNlz6gJUkXtQDWZnXe/Rbn9ixElTUYDs4I11
+         ISgg==
+X-Received: by 10.140.38.102 with SMTP id s93mr8491027qgs.106.1424722233796;
+        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id l78sm15768334qhl.34.2015.02.23.12.10.32
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 12:10:33 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EB8938.1030000@gmail.com>
+Date: Mon, 23 Feb 2015 15:10:32 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-X-Received: by 10.112.235.10 with SMTP id ui10mr7439933lbc.77.1424955221287;
- Thu, 26 Feb 2015 04:53:41 -0800 (PST)
-Received: by 10.112.59.9 with HTTP; Thu, 26 Feb 2015 04:53:41 -0800 (PST)
-In-Reply-To: <54EB8938.1030000@gmail.com>
-References: <20150223094426.GA4689@gmail.com>
-	<54EB8938.1030000@gmail.com>
-Date: Thu, 26 Feb 2015 18:23:41 +0530
-Message-ID: <CAHjTdYe8Jg5m3qDcPAL_yerftG=BZkhRASdZoatE9HZSjSxTQA@mail.gmail.com>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>, 
+ outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8188eu: Reindent code
  to reduce line size
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: Jes Sorensen <jes.sorensen@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=001a11c3d8cac9284c050ffd3d14
+References: <20150223094426.GA4689@gmail.com>
+In-Reply-To: <20150223094426.GA4689@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
---001a11c3d8cac9284c050ffd3d14
-Content-Type: text/plain; charset=UTF-8
+On 02/23/15 04:44, Vatika Harlalka wrote:
+> Reindent code to reduce line size and increase readability.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+> Changes in v3: Fixed spelling error in commit message.
+> Changes in v2: Changed subject line to imperative form ( "Reindented" to "Reindent" ).
+> 
+>  drivers/staging/rtl8188eu/hal/bb_cfg.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
+> index e1b5437..5ad080a 100644
+> --- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
+> +++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
+> @@ -508,7 +508,8 @@ static u32 array_phy_reg_pg_8188e[] = {
+>  
+>  };
+>  
+> -static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitmask, u32 data)
+> +static void store_pwrindex_offset(struct adapter *Adapter,
+> +				u32 regaddr, u32 bitmask, u32 data)
+>  {
+>  	struct hal_data_8188e *hal_data = GET_HAL_DATA(Adapter);
+>  	 u8 pwrGrpCnt = hal_data->pwrGroupCnt;
 
-Hey, thanks for your response :)
-I checked the definition for struct hal_data_8188e, where
-pwrGrpCnt is defined as u8.
-will u8 to int casting not create any problems?
+It looks like you already started addressing the follow-on issue that I
+wanted to raise, but you didn't specify that this patch should go on top
+of another patch.
 
---001a11c3d8cac9284c050ffd3d14
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+You shouldn't really use u8 for an index, it is better to use int, and
+if you pick a shorter name it will help breaking down the lines in the
+follow-on code. I would recommend doing something like this:
 
-<div dir=3D"ltr"><div><div>Hey, thanks for your response :)<br></div>I chec=
-ked the definition for <span class=3D"im">struct hal_data_8188e, where<br><=
-/span><span class=3D"im">pwrGrpCnt</span> is defined as u8. <br></div>will =
-u8 to int casting not create any problems?<br></div>
+	int idx = hal_data->pwrGroupCnt;
 
---001a11c3d8cac9284c050ffd3d14--
+	if (regaddr == rTxAGC_A_Rate18_06)
+		hal_data->MCSTxPowerLevelOriginalOffset[idx][0] = data;
+..... do this for all users of hal_data->pwrGroupCnt in this function.
+
+Cheers,
+Jes
+
+> @@ -553,7 +554,8 @@ static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitm
+>  	}
+>  }
+>  
+> -static void rtl_addr_delay(struct adapter *adapt, u32 addr, u32 bit_mask, u32 data)
+> +static void rtl_addr_delay(struct adapter *adapt,
+> +			u32 addr, u32 bit_mask, u32 data)
+>  {
+>  	if (addr == 0xfe)
+>  		msleep(50);
+> 
+
 
