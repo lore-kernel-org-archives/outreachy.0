@@ -3,49 +3,49 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,97c0bb283bbf8747
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.131.106 with SMTP id ol10mr1075759lbb.20.1424676058065;
-        Sun, 22 Feb 2015 23:20:58 -0800 (PST)
+X-Received: by 10.194.239.41 with SMTP id vp9mr1058195wjc.5.1424675559494;
+        Sun, 22 Feb 2015 23:12:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.99.71 with SMTP id eo7ls488316wib.21.canary; Sun, 22 Feb
- 2015 23:20:57 -0800 (PST)
-X-Received: by 10.194.86.1 with SMTP id l1mr1068841wjz.0.1424676057781;
-        Sun, 22 Feb 2015 23:20:57 -0800 (PST)
+Received: by 10.153.5.33 with SMTP id cj1ls554135lad.53.gmail; Sun, 22 Feb
+ 2015 23:12:38 -0800 (PST)
+X-Received: by 10.152.1.5 with SMTP id 5mr1062538lai.4.1424675558966;
+        Sun, 22 Feb 2015 23:12:38 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-we0-x22b.google.com (mail-we0-x22b.google.com. [2a00:1450:400c:c03::22b])
-        by gmr-mx.google.com with ESMTPS id el6si611685wib.2.2015.02.22.23.20.57
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id ta1si607932wic.1.2015.02.22.23.12.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 23:20:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) client-ip=2a00:1450:400c:c03::22b;
+        Sun, 22 Feb 2015 23:12:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevk48 with SMTP id k48so16196529wev.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 23:20:57 -0800 (PST)
+Received: by mail-wi0-x233.google.com with SMTP id hi2so14416049wib.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 23:12:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=2MiBRP+pcr/PAwWLB+ngPhZSTOQLyJk62D/5CkrPJGk=;
-        b=ioMY5JpFt87zq4/k/9XCMlj06Dv/N14eyZWfM5BdDE1UIAu21s7jOqJGvNysBRwLu+
-         PnsGXJQI8W4kxRAjQthvg0HVG75I0BW+JX+xz8lnmva4ZHd/9Kx4SZFOnUB4dGkUBgxk
-         ABIE2F+8U1/CC9Lgif21vUgcFe/M5sJUMz7SgZqCpKkXFFoq9iMaX6u5YNijycRryCdp
-         DYBKWsRTQEqpHi94m2vWT6g9iis7F6sAWGLSxjK+1YkF4BjXmGSjVuM/qCChQ9Oqpaqz
-         /FSOMw8qJK9SZM1OZ6ip2JeCZITr0AJ3UBGGFWmyAC5JwKEGYhZvv+RYr84xdoF0mSKm
-         k/Hg==
-X-Received: by 10.194.234.40 with SMTP id ub8mr19681129wjc.100.1424676057670;
-        Sun, 22 Feb 2015 23:20:57 -0800 (PST)
+        bh=JZKCIjQRuMSxO0w4KmmygK3NCF2zVBSMxhTxpEHSCxM=;
+        b=0oMMwONOSfSJTcbXHS1E1gGxMh/7E5D0zN/6d3ZLu7PsO9AxCh6Xau2QrfQKuENz7c
+         r5oE3UQAICdwWwolHYqJq7FRfPrO3d2GbZ3biJcgBDeWzrpJtq7mK0L2q6u/o/NyAJN0
+         VeqYivQODPopT5EiU2vvJxC7ijfTWkIrjYZGUGRgk6w4iIgG6ZxNmXjsWdPHx6XKXDrd
+         V9YdM1xFeLXV3/s+pOrPYdoqMjxBNTw4tYpiuG6iqrFH0zCQ1AbgjhGC1VgGkbk4foeU
+         USurOn6IVRBY7FMSfgH0n6gxNjSm6URXXDuYEwKloT+CY/nqTGQktYDbi+H98DR/RJ+a
+         SjjA==
+X-Received: by 10.180.206.14 with SMTP id lk14mr17794799wic.71.1424675558855;
+        Sun, 22 Feb 2015 23:12:38 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
 Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id bf8sm45287793wjb.37.2015.02.22.23.20.55
+        by mx.google.com with ESMTPSA id n3sm54225989wja.36.2015.02.22.23.12.37
         (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 23:20:56 -0800 (PST)
+        Sun, 22 Feb 2015 23:12:38 -0800 (PST)
 From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH v2 1/2] Staging: rtl8712: replace memcpy() by ether_addr_copy() using coccinelle and pack variable
-Date: Mon, 23 Feb 2015 09:20:16 +0200
-Message-Id: <1424676017-12368-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH] Staging: rtl8712: replace memcpy() by ether_addr_copy() using coccinelle and pack variable
+Date: Mon, 23 Feb 2015 09:11:57 +0200
+Message-Id: <1424675517-11863-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
 
 This patch focuses on fixing the following warning generated
@@ -152,9 +152,6 @@ struct _adapter {
 
 Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 ---
-
-v2: patchsets made
-
  drivers/staging/rtl8712/rtl871x_cmd.c | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
