@@ -1,89 +1,87 @@
-X-GM-THRID: 5217547452416
-X-Received: by 10.194.53.225 with SMTP id e1mr377356wjp.4.1425157931360;
-        Sat, 28 Feb 2015 13:12:11 -0800 (PST)
+X-GM-THRID: 2568138784768
+X-Received: by 10.70.132.138 with SMTP id ou10mr13458186pdb.2.1424722647834;
+        Mon, 23 Feb 2015 12:17:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.98 with SMTP id m2ls302904lae.5.gmail; Sat, 28 Feb 2015
- 13:12:10 -0800 (PST)
-X-Received: by 10.112.35.135 with SMTP id h7mr2845265lbj.23.1425157930919;
-        Sat, 28 Feb 2015 13:12:10 -0800 (PST)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id cl5si363440wib.3.2015.02.28.13.12.10
+Received: by 10.140.17.230 with SMTP id 93ls2623621qgd.79.gmail; Mon, 23 Feb
+ 2015 12:17:27 -0800 (PST)
+X-Received: by 10.236.223.41 with SMTP id u39mr13163639yhp.49.1424722647638;
+        Mon, 23 Feb 2015 12:17:27 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qa0-x22f.google.com (mail-qa0-x22f.google.com. [2607:f8b0:400d:c00::22f])
+        by gmr-mx.google.com with ESMTPS id e5si3617275qcg.1.2015.02.23.12.17.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 13:12:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Mon, 23 Feb 2015 12:17:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::22f as permitted sender) client-ip=2607:f8b0:400d:c00::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c00::22f as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id b13so26531775wgh.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 13:12:10 -0800 (PST)
+Received: by mail-qa0-x22f.google.com with SMTP id v10so23868844qac.6
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:17:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=qaV72YrYiRloov9bjFp2qVQZ79lmAXtY/wYV48ZH28Y=;
-        b=TOlq9Ry5N5IWKcZgxlmNJeTgMDlzDd1YG89E4ry7j/t/IBnqFMeh2+T3cxM5vdr8EV
-         RHCjxax8nEmCF8Qc2igQy52Opw7blS64S5qJyjw854XiTjxsiPn4J1VrRAO7LbSX3pLz
-         XNijiH6jY1E/U545eVm26T67l0QhuH5yX3J4qQEEVQ2YufkTRARFmnPjQUt3tlReOkax
-         lXBHopc6rg+YiIGcXCZfLEKzghV5DgCghY2yKY7AC7doYHyrOYMWz/Xe+vF19EKcWqu5
-         3YLdiQZ+UmyLENo17Rsu4/654I0ShUYHSs93tlAs32ZzYrTwumTDB/LWdcQ7EmwbvEKO
-         kupA==
-X-Received: by 10.194.249.37 with SMTP id yr5mr9449518wjc.66.1425157930830;
-        Sat, 28 Feb 2015 13:12:10 -0800 (PST)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id dz6sm8588683wib.0.2015.02.28.13.12.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 28 Feb 2015 13:12:10 -0800 (PST)
-Date: Sat, 28 Feb 2015 23:11:47 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: dgnc: Replace printk() with dev_dbg()
-Message-ID: <20150228211147.GA2496@Inspiron>
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=ZMb+kQBt0aMf2GJt97iLZXBqx5K+29FkR/vaDLXgbl8=;
+        b=JkDIa74mrv6VMaUQDlN39kGEF6TgngDc6b2dvP2IwKHfQM79lALbLufP6uTHOQ6GI7
+         JLE8DDZ+kVcZjQJ9EP09HUpnU4PRMGHBGgmC9/6qhFBM5OZ3sJv/K1Bxb6VmbZiJLIlg
+         ZluLAaptQdFGfhHL2X+m9Plx+Khsny9NEcM7cMoxWoaGod27yXIxPOWhwn6NXHZqkbWk
+         uc5lwjs2wM83YT7XDDIiNe/W9HEbOjYJhQAoBFBPDR9nqZuYc2kyLHoorkYxuRrgye5y
+         iX9kFXrgwlwYKxC/tmzBs7nTdqA9G2sLTsYPbATzQXlUBVK02Sy3452lA0sv39bDG7cC
+         a/vg==
+X-Received: by 10.140.145.3 with SMTP id 3mr29320234qhr.42.1424722647535;
+        Mon, 23 Feb 2015 12:17:27 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id i46sm28104307qgd.35.2015.02.23.12.17.26
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 12:17:26 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EB8AD5.4030104@gmail.com>
+Date: Mon, 23 Feb 2015 15:17:25 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: =?UTF-8?B?SGF0aWNlIEVSVMOcUks=?= <haticeerturk27@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723au: core: Delete space
+References: <1424712486-23905-1-git-send-email-haticeerturk27@gmail.com>
+In-Reply-To: <1424712486-23905-1-git-send-email-haticeerturk27@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 
-This patch replaces printk() with dev_dbg() in order to avoid the
-suggestion of using a more specific function while printing debug
-information. Warning found by checkpatch.pl.
+On 02/23/15 12:28, Hatice ERTÜRK wrote:
+> This Error found with checkpatch.pl
+> 
+> ERROR: else should follow close brace '}'
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/rtl8723au/core/rtw_xmit.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
----
-Changes in v2:
- - Use dev_dbg() instead of dev_info()
- - Make the commit message more clear
+Patch is good, but the commit message isn't correct. You are not
+deleting space, but placing else on the same line as the closing bracket.
 
- drivers/staging/dgnc/dgnc_driver.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Cheers,
+Jes
 
-diff --git a/drivers/staging/dgnc/dgnc_driver.c b/drivers/staging/dgnc/dgnc_driver.c
-index a2543cf..c1d1a97 100644
---- a/drivers/staging/dgnc/dgnc_driver.c
-+++ b/drivers/staging/dgnc/dgnc_driver.c
-@@ -362,7 +362,7 @@ static void dgnc_cleanup_board(struct dgnc_board *brd)
- 
- 		spin_lock_irqsave(&dgnc_global_lock, flags);
- 		brd->msgbuf = NULL;
--		printk("%s", brd->msgbuf_head);
-+		dev_dbg(&brd->pdev->dev, "%s\n", brd->msgbuf_head);
- 		kfree(brd->msgbuf_head);
- 		brd->msgbuf_head = NULL;
- 		spin_unlock_irqrestore(&dgnc_global_lock, flags);
-@@ -610,7 +610,7 @@ static int dgnc_found_board(struct pci_dev *pdev, int id)
- 
- 	spin_lock_irqsave(&dgnc_global_lock, flags);
- 	brd->msgbuf = NULL;
--	printk("%s", brd->msgbuf_head);
-+	dev_dbg(&brd->pdev->dev, "%s\n", brd->msgbuf_head);
- 	kfree(brd->msgbuf_head);
- 	brd->msgbuf_head = NULL;
- 	spin_unlock_irqrestore(&dgnc_global_lock, flags);
--- 
-1.9.1
+
+> diff --git a/drivers/staging/rtl8723au/core/rtw_xmit.c b/drivers/staging/rtl8723au/core/rtw_xmit.c
+> index bece9b3..8124d9e 100644
+> --- a/drivers/staging/rtl8723au/core/rtw_xmit.c
+> +++ b/drivers/staging/rtl8723au/core/rtw_xmit.c
+> @@ -914,8 +914,7 @@ static int rtw_make_wlanhdr(struct rtw_adapter *padapter, u8 *hdr,
+>  
+>  			if (psta->qos_option)
+>  				qos_option = true;
+> -		}
+> -		else {
+> +		} else {
+>  			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("fw_state:%x is not allowed to xmit frame\n", get_fwstate(pmlmepriv)));
+>  			res = _FAIL;
+>  			goto exit;
+> 
 
 
