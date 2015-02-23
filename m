@@ -1,136 +1,83 @@
-X-GM-THRID: 6667588004037525504
-X-Received: by 2002:a1c:7c09:: with SMTP id x9mr371005wmc.19.1552418806683;
-        Tue, 12 Mar 2019 12:26:46 -0700 (PDT)
+X-GM-THRID: 2698279649280
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,a6cf1b5024c222ad
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.160.3 with SMTP id xg3mr1144932lbb.5.1424684645678;
+        Mon, 23 Feb 2015 01:44:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:e005:: with SMTP id x5ls497416wmg.2.canary-gmail; Tue,
- 12 Mar 2019 12:26:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwmlpCuK6nVatW8NUEP3/5UKEYeAtnInDW8P13eyx5K2Cblk5una0EQRpEfaDtsN0Hx6mkl
-X-Received: by 2002:a1c:7a06:: with SMTP id v6mr360050wmc.17.1552418805766;
-        Tue, 12 Mar 2019 12:26:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552418805; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Hm7B8rNMeQeVzSOtO1MR45JKrDpnrO3RoYBiB69nNMLZ6zEzJARSEgD3I30wZXq+N/
-         aw3jmtxmm4ONM1x/7LMHiE6+2sinENw2oohzjyfl/4o83yJBUqAdghMlCOjpQHO2SFZO
-         Glckdo+OwohYMTxH+GA0sjkavvmv3PrmRHFST/oGA7TRbR1deT50vGRQ8Ji9Tg/7w72d
-         wsznjjVAI9jYEl1Rz8kNXM3LsdTEIUqnOsPB+DsfNbNjQxXzA1WWJpaskXW0EXqFIG86
-         Fvotq2wUp/06QfDU35Lb0bbIzXiGRoJCGQpyVUoes9VDuZ2Z2WcftVkHIjpAi4MYTRqm
-         0LWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=MsJVOTb3pdBnDNmizIfaxGwrXG7R/ljbh6beYVVFEXI=;
-        b=oamCxZ8BH/j7nE0wmsm1aBxe1U/YiP05QULqAtGrdXTiAn/85dxAmRgf/ph01ZlRml
-         oqYOkgTx6DhcE5C+jrzSpjI6vnAA+UCzIcs71+EuB4EFScebWqQYWxnVoRTTvw/wHnVa
-         Tn7vCOenvghVhHSaOf2QtuAgbxFx/fq/swtu3XLAKBTTDMeQteBPxgoT3ALzMqswLjCG
-         PQz/2Z4KS51jkW11gqARLCQJp0n7mYGK9CduVhtLDcfFy4aQtIv8hA8/TrNPYyGAvBVa
-         iPPIbMjGgTze98biTWaIAi31CfdzfPBFXXq1laPhYGpgWg8UCbAt/DHrUpCZAOFDlRd8
-         3fqQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hc4VZ3N4;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::52d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com. [2a00:1450:4864:20::52d])
-        by gmr-mx.google.com with ESMTPS id m1si501558wrj.4.2019.03.12.12.26.45
+Received: by 10.181.29.164 with SMTP id jx4ls510090wid.5.canary; Mon, 23 Feb
+ 2015 01:44:05 -0800 (PST)
+X-Received: by 10.194.86.1 with SMTP id l1mr1163273wjz.0.1424684645379;
+        Mon, 23 Feb 2015 01:44:05 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
+        by gmr-mx.google.com with ESMTPS id l8si820423wia.0.2015.02.23.01.44.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 12:26:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::52d as permitted sender) client-ip=2a00:1450:4864:20::52d;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 01:44:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hc4VZ3N4;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::52d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52d.google.com with SMTP id j89so3300581edb.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 12 Mar 2019 12:26:45 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by wevk48 with SMTP id k48so16825737wev.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 01:44:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:cc;
-        bh=MsJVOTb3pdBnDNmizIfaxGwrXG7R/ljbh6beYVVFEXI=;
-        b=hc4VZ3N4KhjGSahAZ2ZLiBCdS1JCBi3uE9pHDrUO4CJ9RKlUvWKOzNKvGuRiMjya5p
-         14TsxpNodAN+NqcR3LKOTp2mwQGVhaVHLH4UrjhMmsxXOHUyfW9ydc5DFyVhn3F2FUVE
-         ZuLdgu2ffiIWC27NYfvAvT2C4Ia5Nvo3tnCAkEZzPI8dUusiVJa1U1At/ga7yNbwfkbG
-         Et3nbnu4UcG2QzzGyTqxLsJIDNpT+mMePsbuq2N7ui1Xe404Y2HuS8b2jiqn60iYxDSP
-         89zQVSzGaJrdvQhOFgxhXoq7Y/tU4BFhjYRETdukebzL2u9cZqFaN0WVPjNU1a9B7mbQ
-         HaLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
-        bh=MsJVOTb3pdBnDNmizIfaxGwrXG7R/ljbh6beYVVFEXI=;
-        b=GVTNceiqrspHArCYQsA4BzQedNpKqdh/utHHTj9buX1aRmoPk1QpGwP0yu/YFDKegZ
-         Cjhwl6wiXJQW5uphj72U+mX2vwpag5qfp6QmhHHDGXKL9X7XEEIzkVSmX5OLs7/OdfFD
-         JLaUwVFqRxZcA8qneqwLsAmyBM0CLtwohRx6cth1CTNlFixNaCiUtOybBuSfrBBLPx/w
-         Y94RPlVUSObFVQlOVh9UPA1OpTQ4q7TvBUWqFWN+TE/WVk0yAqNb+niAwukbKpeiWUVY
-         mCfnN5/ou2/qYWKimrcEhC+qXO65n6FfgKVephVlYuwBF+TM7JfJJ1HHpoTuAv7rPSdc
-         xdLQ==
-X-Gm-Message-State: APjAAAWiU3x7y5N8amWm+57HTyo45S8NSA9TNGJT9/uxkgBwoxpERzLi
-	R7fB11hxXAzoihH+A+ZfGoU6IQzBrGEAHMtTiW+SXXWTQPQ=
-X-Received: by 2002:aa7:da0f:: with SMTP id r15mr4731746eds.34.1552418805208;
- Tue, 12 Mar 2019 12:26:45 -0700 (PDT)
+        d=gmail.com; s=20120113;
+        h=mime-version:sender:in-reply-to:references:date:message-id:subject
+         :from:to:cc:content-type;
+        bh=C/eqENmPjwYfIWQmn6Ltnyr7ZoNsuMZuqmem6Nz1q9E=;
+        b=cmutYvNhq4vtmRRO5r653LkxKt7sZ7oCvbeJSsavCWvOmEvuvMGLeqA1u787NBlC8s
+         +usuybxMpCSa312UBED2AQKGxeHpEzd91jQYQikEu99X2mXWLPJNavxeOq7S+y70L3lQ
+         Zqo+3Fe6do2Tdq87cf6NdHe+xQ1HeWMr7bYifDA8lF7GjHw972RvLJK+JMJn+lEuilE+
+         8KCip1VJQLzBH/BalhqiDMCrmVLPAhrLSzUdXoKt9JK7/2Rq9TIj7iJZVXEc83cyKigV
+         Z+0hAdZDw//OeJX5ib9SiM3cbnRKfy7jSHh6hfrkLaviJvI0hC6HB1jY4pnlliYek15G
+         ycOA==
 MIME-Version: 1.0
-From: Sanjana Reddy <sanjana99reddy99@gmail.com>
-Date: Wed, 13 Mar 2019 00:56:34 +0530
-Message-ID: <CAO-bXGAEHi=_uf7jD+1_+iNhx594rRAak_OBfTVpGenhVUJ2Xg@mail.gmail.com>
-Subject: [PATCH] Staging: rtl8188eu: rtw_recv.c: fixed a space indentation issue
-To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>, 
-	gregkh@linuxfoundation.org
-Cc: sanjana99reddy99@gmail.con
-Content-Type: multipart/alternative; boundary="0000000000006d5cd70583eaab1c"
+X-Received: by 10.195.12.167 with SMTP id er7mr20905392wjd.54.1424684645212;
+ Mon, 23 Feb 2015 01:44:05 -0800 (PST)
+Sender: daniel.baluta@gmail.com
+Received: by 10.216.178.66 with HTTP; Mon, 23 Feb 2015 01:44:05 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1502231040130.2479@hadrien>
+References: <20150223091613.GA4359@gmail.com>
+	<CAEnQRZBevBPsNHoewcJfkx9SUjG=9otF7QOz1A-Rtt=EfErPxQ@mail.gmail.com>
+	<alpine.DEB.2.10.1502231040130.2479@hadrien>
+Date: Mon, 23 Feb 2015 11:44:05 +0200
+X-Google-Sender-Auth: nMCIVH57bMigLkdmY6wOHEhzQ_o
+Message-ID: <CAEnQRZAP3J=WoKWN53jnheJbhroeq1_JmrpWy7ux7e5BcoonGg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove unnecessary variable
+From: Daniel Baluta <daniel.baluta@intel.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Daniel Baluta <daniel.baluta@intel.com>, Vatika Harlalka <vatikaharlalka@gmail.com>, 
+	outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
---0000000000006d5cd70583eaab1c
-Content-Type: text/plain; charset="UTF-8"
+On Mon, Feb 23, 2015 at 11:41 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Mon, 23 Feb 2015, Daniel Baluta wrote:
+>
+>> On Mon, Feb 23, 2015 at 11:16 AM, Vatika Harlalka
+>> <vatikaharlalka@gmail.com> wrote:
+>> > Remove unnecessary variable and replace its uses with previously
+>> > defined variable.
+>>
+>> Hi Vatika,
+>>
+>> A good commit message should always try to explain why the change is needed.
+>> In this case you could say:
+>>
+>> We only need the last 8 bits from offset, so we can directly operate
+>> on offset variable
+>> instead of introducing unneeded newoffset.
+>
+> How is the number of bits used relevant?  They are both u32 variables.
 
-Fixed a space in 2 lines which removed warnings.
-Signed-off-by: Sanjana <sanjana99reddy99@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Used as in useful.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c
-b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 1d83affc08ce..cc6f1a23da01 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -24,11 +24,11 @@ static u8 SNAP_ETH_TYPE_APPLETALK_AARP[2] = {0x80,
-0xf3};
+Doing:
 
- /* Bridge-Tunnel header (for EtherTypes ETH_P_AARP and ETH_P_IPX) */
- static u8 rtw_bridge_tunnel_header[] = {
--       0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
-+        0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
- };
+newoffset = offset & 0xff;
 
- static u8 rtw_rfc1042_header[] = {
--       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
-+       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
- };
+we only care about last 8 bits of offset.
 
- static void rtw_signal_stat_timer_hdl(struct timer_list *t);
--- 
-2.17.1
-
---0000000000006d5cd70583eaab1c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div><br></div><div>Fixed a space in 2 li=
-nes which removed warnings.</div><div>Signed-off-by: Sanjana &lt;<a href=3D=
-"mailto:sanjana99reddy99@gmail.com">sanjana99reddy99@gmail.com</a>&gt;</div=
-><div>---</div><div>=C2=A0drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++-=
--</div><div>=C2=A01 file changed, 2 insertions(+), 2 deletions(-)</div><div=
-><br></div><div>diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/dr=
-ivers/staging/rtl8188eu/core/rtw_recv.c</div><div>index 1d83affc08ce..cc6f1=
-a23da01 100644</div><div>--- a/drivers/staging/rtl8188eu/core/rtw_recv.c</d=
-iv><div>+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c</div><div>@@ -24,11=
- +24,11 @@ static u8 SNAP_ETH_TYPE_APPLETALK_AARP[2] =3D {0x80, 0xf3};</div=
-><div><br></div><div>=C2=A0/* Bridge-Tunnel header (for EtherTypes ETH_P_AA=
-RP and ETH_P_IPX) */</div><div>=C2=A0static u8 rtw_bridge_tunnel_header[] =
-=3D {</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A00xaa, 0xaa, 0x03, 0x00, 0x00, 0=
-xf8</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0 0xaa, 0xaa, 0x03, 0x00, 0x00, 0x=
-f8</div><div>=C2=A0};</div><div><br></div><div>=C2=A0static u8 rtw_rfc1042_=
-header[] =3D {</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A00xaa, 0xaa, 0x03, 0x00=
-, 0x00, 0x00</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A00xaa, 0xaa, 0x03, 0x00, =
-0x00, 0x00</div><div>=C2=A0};</div><div><br></div><div>=C2=A0static void rt=
-w_signal_stat_timer_hdl(struct timer_list *t);</div><div>--=C2=A0</div><div=
->2.17.1</div><div><br></div></div></div>
-
---0000000000006d5cd70583eaab1c--
+Daniel.
 
