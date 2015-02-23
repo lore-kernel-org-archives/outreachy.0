@@ -1,131 +1,119 @@
-X-GM-THRID: 6258243445600550912
-X-Received: by 10.140.27.180 with SMTP id 49mr6585839qgx.19.1457110849719;
-        Fri, 04 Mar 2016 09:00:49 -0800 (PST)
+X-GM-THRID: 2824268152832
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ebc4acd0e82739d0
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.207.230 with SMTP id n66mr13307807yho.30.1424719980812;
+        Mon, 23 Feb 2015 11:33:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.130.229 with SMTP id oh5ls218569obb.74.gmail; Fri, 04 Mar
- 2016 09:00:49 -0800 (PST)
-X-Received: by 10.182.220.132 with SMTP id pw4mr6556733obc.4.1457110849023;
-        Fri, 04 Mar 2016 09:00:49 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id ui7si1542127pab.0.2016.03.04.09.00.48
+Received: by 10.140.102.7 with SMTP id v7ls2549713qge.9.gmail; Mon, 23 Feb
+ 2015 11:33:00 -0800 (PST)
+X-Received: by 10.236.53.10 with SMTP id f10mr13039732yhc.17.1424719980658;
+        Mon, 23 Feb 2015 11:33:00 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x22c.google.com (mail-qc0-x22c.google.com. [2607:f8b0:400d:c01::22c])
+        by gmr-mx.google.com with ESMTPS id ba9si6217427qcb.0.2015.02.23.11.33.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 Mar 2016 09:00:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 11:33:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22c as permitted sender) client-ip=2607:f8b0:400d:c01::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22c as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id x188so14556392pfb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 09:00:48 -0800 (PST)
+Received: by mail-qc0-x22c.google.com with SMTP id r5so12868721qcx.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 11:33:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=TZsU+BpzLwW9na6L8q4Mff5T64Se7jRjSbdQiLiLiyc=;
-        b=UhECXcuUuQFSDbEiatVDUQWFBYXPwuFbt2bXZ4GRCzb+PP5V+gJhUIV6UTG8tJfMnD
-         pF+5YqLtZ5Byt57FdldpJhq7ALrKZuzDQDatvClSYrWAsAZUyHyNSyLpHwO2FyQNpEEU
-         zWKIsNekUmwxDve5VmwSn0l2p1qoTlA65mILBBEiYd28x66Eg7+tDJqhNGn1UaE2A7UD
-         H1WbXWh8o99AVuTC+9Ajh3V4Q8sEOZrH2dpVzZSzzn5sVJsumL7ZeT1aVRCyahYUrwJe
-         0Ayno6QLJStpuLhqVgA7u8neIALhxpqGjETODx50vokW06SscsDveJdbBmWT32Q7WjgJ
-         rJeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=TZsU+BpzLwW9na6L8q4Mff5T64Se7jRjSbdQiLiLiyc=;
-        b=VVx5CjxgphG2a0AbKbzLY4Ocj50IjQLWgHnFrdFupEHAeuX8QXQUKG8CIBBPZXemjC
-         8rZupRYsjyZOkXF69xvQlTGn30Lt0hQhvdMzkZcB3qPkWL35rhL+JcepyCBGpSIucOcx
-         DTuuAcLwCNZFAZCzEbqHuPuthiEaRNeEGdhVzPzjMXVyTqAqNh+E6fSeGxDMEn/+hqeb
-         c24H0DU+q4y0dq77yUxxvIhzaohYA5L+Q/Nn0xp9t+ry/JjE3xdnDYHmQZVrv8NOrs4e
-         eq2+I2xxP01PkpEvRFyK8NEifF+uSluDeuM3Tg3srjDHZd51C1hyBkyamWkiOItF/Yrs
-         dILQ==
-X-Gm-Message-State: AD7BkJJ0FQAsWNHGyjW4d2eJTl9oDbTRBQSriUrbIYD2ySXLfZlyuzw9Y8kqAjDB+/2isw==
-X-Received: by 10.98.75.138 with SMTP id d10mr13762868pfj.108.1457110848798;
-        Fri, 04 Mar 2016 09:00:48 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.77.50.199])
-        by smtp.gmail.com with ESMTPSA id g85sm6776875pfj.13.2016.03.04.09.00.46
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 09:00:47 -0800 (PST)
-Date: Fri, 4 Mar 2016 22:30:43 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: Replace ALIGN with PAGE_ALIGN
-Message-ID: <20160304170043.GA24655@amitoj-Inspiron-3542>
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=givIG1p2Itwo0k/lMUc4Ko8I760/G5xNxveAQaBQbDI=;
+        b=FAKelOU3/MMXbyJ32he0v7VamiC19J3VdN9ME0tfsktxSu9uSb7t8CRwgzdY2l01BY
+         E+Twn7ObuE2WgZ1CXY64RZXtXdeLQwXAzoq3ipJP0X5eQy2y4twInk0zIhB646BE2/4H
+         FD1qa3GK0cIedjP7WR6gnW6pZ9GV45AwB3Q3hidx3uokzgFzzEmGoqvuzTUtYpG/U8EO
+         vs8Z9Ut6X/wQW5X7F72Ib2BK2m4njGMk+KoQJ/+BG/64+ERN0oa87yJkAbGBvcU9TKm3
+         WL9FGR9hHVK6VsGDlaTS5OiJ9Xc/zo8qRMCTr6m6j1kBrC4Lu3csqi7iN6l+wAkrPQb6
+         Gpmw==
+X-Received: by 10.140.233.84 with SMTP id e81mr1312951qhc.94.1424719980561;
+        Mon, 23 Feb 2015 11:33:00 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id b8sm15816559qai.21.2015.02.23.11.32.59
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 11:32:59 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54EB806A.2060002@gmail.com>
+Date: Mon, 23 Feb 2015 14:32:58 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: Vatika Harlalka <vatikaharlalka@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Changed array
+ and loop construct
+References: <20150223140238.GA11856@gmail.com>
+In-Reply-To: <20150223140238.GA11856@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-mm.h contains a helper function PAGE_ALIGN which aligns the pointer
-to the page boundary instead of using ALIGN(expression, PAGE_SIZE)
+On 02/23/15 09:02, Vatika Harlalka wrote:
+> This function only required the array from the 14th element
+> onwards. Therefore, the array size is reduced and the loop
+> counter is modified so as to start from 0.
+> Also, the assignment of variable place is redundant as it is
+> initialized again in the loop.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/phy.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+> index 3f663fe..e005150 100644
+> --- a/drivers/staging/rtl8188eu/hal/phy.c
+> +++ b/drivers/staging/rtl8188eu/hal/phy.c
+> @@ -386,19 +386,18 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
+>  
+>  static u8 get_right_chnl_for_iqk(u8 chnl)
+>  {
+> +	u8 place;
+>  	u8 channel_all[ODM_TARGET_CHNL_NUM_2G_5G] = {
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This change was made with the help of the following Coccinelle
-semantic patch:
-//<smpl>
-@@
-expression e;
-symbol PAGE_SIZE;
-@@
-(
-- ALIGN(e, PAGE_SIZE)
-+ PAGE_ALIGN(e)
-|
-- IS_ALIGNED(e, PAGE_SIZE)
-+ PAGE_ALIGNED(e)
-)
-//</smpl>
+> -		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+>  		36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64,
+>  		100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122,
+>  		124, 126, 128, 130, 132, 134, 136, 138, 140, 149, 151, 153,
+>  		155, 157, 159, 161, 163, 165
+>  	};
+> -	u8 place = chnl;
+>  
+>  	if (chnl > 14) {
+> -		for (place = 14; place < sizeof(channel_all); place++) {
+> +		for (place = 0; place < sizeof(channel_all); place++) {
+>  			if (channel_all[place] == chnl)
+> -				return place-13;
+> +				return ++place;
+>  		}
+>  	}
+>  	return 0;
+> 
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rdma/hfi1/init.c      | 8 ++++----
- drivers/staging/rdma/hfi1/user_sdma.c | 3 +--
- 2 files changed, 5 insertions(+), 6 deletions(-)
+This is a good catch!
 
-diff --git a/drivers/staging/rdma/hfi1/init.c b/drivers/staging/rdma/hfi1/init.c
-index 3107103..02df291 100644
---- a/drivers/staging/rdma/hfi1/init.c
-+++ b/drivers/staging/rdma/hfi1/init.c
-@@ -735,8 +735,8 @@ int hfi1_init(struct hfi1_devdata *dd, int reinit)
- 		ret = lastfail;
- 
- 	/* Allocate enough memory for user event notification. */
--	len = ALIGN(dd->chip_rcv_contexts * HFI1_MAX_SHARED_CTXTS *
--		    sizeof(*dd->events), PAGE_SIZE);
-+	len = PAGE_ALIGN(dd->chip_rcv_contexts * HFI1_MAX_SHARED_CTXTS *
-+			 sizeof(*dd->events));
- 	dd->events = vmalloc_user(len);
- 	if (!dd->events)
- 		dd_dev_err(dd, "Failed to allocate user events page\n");
-@@ -1505,8 +1505,8 @@ int hfi1_create_rcvhdrq(struct hfi1_devdata *dd, struct hfi1_ctxtdata *rcd)
- 		 * rcvhdrqentsize is in DWs, so we have to convert to bytes
- 		 * (* sizeof(u32)).
- 		 */
--		amt = ALIGN(rcd->rcvhdrq_cnt * rcd->rcvhdrqentsize *
--			    sizeof(u32), PAGE_SIZE);
-+		amt = PAGE_ALIGN(rcd->rcvhdrq_cnt * rcd->rcvhdrqentsize *
-+				 sizeof(u32));
- 
- 		gfp_flags = (rcd->ctxt >= dd->first_user_ctxt) ?
- 			GFP_USER : GFP_KERNEL;
-diff --git a/drivers/staging/rdma/hfi1/user_sdma.c b/drivers/staging/rdma/hfi1/user_sdma.c
-index 2f48419..8699b22 100644
---- a/drivers/staging/rdma/hfi1/user_sdma.c
-+++ b/drivers/staging/rdma/hfi1/user_sdma.c
-@@ -413,8 +413,7 @@ int hfi1_user_sdma_alloc_queues(struct hfi1_ctxtdata *uctxt, struct file *fp)
- 	if (!cq)
- 		goto cq_nomem;
- 
--	memsize = ALIGN(sizeof(*cq->comps) * hfi1_sdma_comp_ring_size,
--			PAGE_SIZE);
-+	memsize = PAGE_ALIGN(sizeof(*cq->comps) * hfi1_sdma_comp_ring_size);
- 	cq->comps = vmalloc_user(memsize);
- 	if (!cq->comps)
- 		goto cq_comps_nomem;
--- 
-1.9.1
+You should reduce the size of the array accordingly as you now only need
+space for the 5G channels, since you removed all the 2G channels.
+
+To put it into context, for WiFi, there are 14 traditional 2GHz
+channels, which are channels 1 through 14, and all the remaining
+channels here are in the 5GHz spectrum.
+
+It would also make sense to change the name of the array from
+channel_all to channel_5g to reflect the situation. You can introduce a
+#define ODM_TARGET_CHNL_NUM_5G next to the existing definition of
+ODM_TARGET_CHNL_NUM_2G_5G.
+
+Cheers,
+Jes
 
 
