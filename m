@@ -1,98 +1,79 @@
 X-GM-THRID: 3128292278272
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,98d68c53f8667ebf
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.7.37 with SMTP id 25mr15580864yho.18.1424753502335;
-        Mon, 23 Feb 2015 20:51:42 -0800 (PST)
+X-Received: by 10.112.138.202 with SMTP id qs10mr1665721lbb.24.1424733571343;
+        Mon, 23 Feb 2015 15:19:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.138.69 with SMTP id qo5ls1112020igb.31.canary; Mon, 23 Feb
- 2015 20:51:42 -0800 (PST)
-X-Received: by 10.66.252.138 with SMTP id zs10mr15609208pac.3.1424753501969;
-        Mon, 23 Feb 2015 20:51:41 -0800 (PST)
-Return-Path: <preeti@linux.vnet.ibm.com>
-Received: from e9.ny.us.ibm.com (e9.ny.us.ibm.com. [32.97.182.139])
-        by gmr-mx.google.com with ESMTPS id e5si3762554qcg.1.2015.02.23.20.51.41
+Received: by 10.152.179.139 with SMTP id dg11ls542105lac.62.gmail; Mon, 23 Feb
+ 2015 15:19:29 -0800 (PST)
+X-Received: by 10.152.19.100 with SMTP id d4mr1691337lae.7.1424733569901;
+        Mon, 23 Feb 2015 15:19:29 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
+        by gmr-mx.google.com with ESMTPS id cl5si797553wib.3.2015.02.23.15.19.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 20:51:41 -0800 (PST)
-Received-SPF: none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) client-ip=32.97.182.139;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 15:19:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: preeti@linux.vnet.ibm.com does not designate permitted sender hosts) smtp.mail=preeti@linux.vnet.ibm.com
-Received: from /spool/local
-	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted
-	for <outreachy-kernel@googlegroups.com> from <preeti@linux.vnet.ibm.com>;
-	Mon, 23 Feb 2015 23:51:41 -0500
-Received: from d01dlp02.pok.ibm.com (9.56.250.167)
-	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted;
-	Mon, 23 Feb 2015 23:51:40 -0500
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com [9.57.198.29])
-	by d01dlp02.pok.ibm.com (Postfix) with ESMTP id DA0EE6E803C
-	for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 23:43:30 -0500 (EST)
-Received: from d01av01.pok.ibm.com (d01av01.pok.ibm.com [9.56.224.215])
-	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id t1O4pdqv30015630
-	for <outreachy-kernel@googlegroups.com>; Tue, 24 Feb 2015 04:51:39 GMT
-Received: from d01av01.pok.ibm.com (localhost [127.0.0.1])
-	by d01av01.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id t1O4pc00017988
-	for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 23:51:39 -0500
-Received: from preeti.in.ibm.com (preeti.in.ibm.com [9.124.35.61] (may be forged))
-	by d01av01.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id t1O4pWsC017730;
-	Mon, 23 Feb 2015 23:51:38 -0500
-Message-ID: <54EC0354.8020307@linux.vnet.ibm.com>
-Date: Tue, 24 Feb 2015 10:21:32 +0530
-From: Preeti U Murthy <preeti@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Thunderbird/24.6.0
-MIME-Version: 1.0
-To: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>,
-        outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: Move export_symbol below
- its function
-References: <1424733512-22585-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-In-Reply-To: <1424733512-22585-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15022404-0033-0000-0000-000001EF4FB8
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wg0-x229.google.com with SMTP id b13so1889874wgh.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 15:19:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=o0yO7BLeWwc8DlxtuGGObWgJd8d8bo9Vx2vh0+1+iJQ=;
+        b=e7TH/0Y+LtW6iPG4+XlB3L1t6brHN0fe6m/DFnjUyTjLtwSGgi9D8/021KeF/RrvyL
+         uzx1MZyFRtKqdayYhFFaUo85Qimr5xpeDoRDagTqtAOJjnillOM6ztpIHrIuEYMSqhUO
+         h8xNUM6WMI33KboJsOwP8CKkEqSbOH7WZfgIU4/R4ZPd/7StLawdjApLS7e6D10kYpEJ
+         5GIyIWaeRbnJXZYQypuC3xti66FE/CYaHWU6b93xmwnHRZFsI36LKMkcyHI0gEIFrhKw
+         JcA6FDtmeH9Bw3KGZYrF0UCkzhVE60FzGSwHxXDucw+YO+3p5ehlisVknyOjuOXwdtzN
+         etQg==
+X-Received: by 10.180.97.106 with SMTP id dz10mr24879557wib.33.1424733569828;
+        Mon, 23 Feb 2015 15:19:29 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from localhost.localdomain ([95.15.157.229])
+        by mx.google.com with ESMTPSA id hg7sm57603249wjb.44.2015.02.23.15.19.23
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 23 Feb 2015 15:19:28 -0800 (PST)
+From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH] Staging: iio: Move export_symbol below its function
+Date: Tue, 24 Feb 2015 01:18:32 +0200
+Message-Id: <1424733512-22585-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-Hi Melike,
+WARNING: "EXPORT_SYMBOL(foo); should immediately follow its
+function/variable"
+That was found by running checkpatch.
 
-On 02/24/2015 04:48 AM, Melike Yurtoglu wrote:
-> WARNING: "EXPORT_SYMBOL(foo); should immediately follow its
-> function/variable"
-> That was found by running checkpatch.
-> 
-> Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-> ---
->  drivers/staging/iio/addac/adt7316.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
-> index 5b11b42..18bfbf0 100644
-> --- a/drivers/staging/iio/addac/adt7316.c
-> +++ b/drivers/staging/iio/addac/adt7316.c
-> @@ -2069,6 +2069,7 @@ static struct attribute_group adt7516_event_attribute_group = {
->  };
-> 
->  #ifdef CONFIG_PM_SLEEP
-> +EXPORT_SYMBOL_GPL(adt7316_pm_ops);
->  static int adt7316_disable(struct device *dev)
->  {
->  	struct iio_dev *dev_info = dev_get_drvdata(dev);
-> @@ -2086,7 +2087,6 @@ static int adt7316_enable(struct device *dev)
->  }
-> 
->  SIMPLE_DEV_PM_OPS(adt7316_pm_ops, adt7316_disable, adt7316_enable);
-> -EXPORT_SYMBOL_GPL(adt7316_pm_ops);
+Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+---
+ drivers/staging/iio/addac/adt7316.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The EXPORT_SYMBOL() is rightly under the variable definition -
-adt7316_pm_ops. So why this cleanup?
-
-Regards
-Preeti U Murthy
->  #endif
-> 
->  static const struct iio_info adt7316_info = {
-> 
+diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
+index 5b11b42..18bfbf0 100644
+--- a/drivers/staging/iio/addac/adt7316.c
++++ b/drivers/staging/iio/addac/adt7316.c
+@@ -2069,6 +2069,7 @@ static struct attribute_group adt7516_event_attribute_group = {
+ };
+ 
+ #ifdef CONFIG_PM_SLEEP
++EXPORT_SYMBOL_GPL(adt7316_pm_ops);
+ static int adt7316_disable(struct device *dev)
+ {
+ 	struct iio_dev *dev_info = dev_get_drvdata(dev);
+@@ -2086,7 +2087,6 @@ static int adt7316_enable(struct device *dev)
+ }
+ 
+ SIMPLE_DEV_PM_OPS(adt7316_pm_ops, adt7316_disable, adt7316_enable);
+-EXPORT_SYMBOL_GPL(adt7316_pm_ops);
+ #endif
+ 
+ static const struct iio_info adt7316_info = {
+-- 
+1.8.3.2
 
 
