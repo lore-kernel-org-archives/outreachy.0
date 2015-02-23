@@ -1,80 +1,58 @@
-X-GM-THRID: 6206985870127398912
-X-Received: by 10.182.65.134 with SMTP id x6mr21766893obs.14.1445176515311;
-        Sun, 18 Oct 2015 06:55:15 -0700 (PDT)
+X-GM-THRID: 1441778368512
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,8f560d6fb9b203e1
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.214.234 with SMTP id od10mr1644456lbc.3.1424727946390;
+        Mon, 23 Feb 2015 13:45:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.27.14 with SMTP id b14ls1209818iob.5.gmail; Sun, 18 Oct
- 2015 06:55:14 -0700 (PDT)
-X-Received: by 10.68.138.132 with SMTP id qq4mr21518838pbb.11.1445176514720;
-        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id el2si2885842pbb.0.2015.10.18.06.55.14
+Received: by 10.152.27.71 with SMTP id r7ls512556lag.42.gmail; Mon, 23 Feb
+ 2015 13:45:46 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr1644452lbc.3.1424727946049;
+        Mon, 23 Feb 2015 13:45:46 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id ta1si785947wic.1.2015.02.23.13.45.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Feb 2015 13:45:46 -0800 (PST)
+Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by padhk11 with SMTP id hk11so3009474pad.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+YHubHS+f+Zfmy+nANCzetOm0UpB9W/4btxBV+YH3Tk=;
-        b=MswSjLzVzHejyHDQ+4QSBRy7eBxAa39W/SFitnNIlPt9QTeEQRig6p30k1Fai8oHdf
-         YZQmv+r+rQIoegmJkC29ypI98x+ICcVKHO45uVxDZBHBnyByetA/7/S9YUTqAvjzbG5t
-         xskG8veJC2KrjpKAUzJ9DYRqafYcwLVg6CwNep4TxtMHZtC0DOVLwF98wJNEv5ydglvL
-         Ty0TGmzz3SLChY2FinZdvuoelT+lKCqoa3Rf4hH1S/8wBGBUOGdAf+er7qUwGPSiHBt8
-         MmHb5GmysSWln0exo5WpNKpFLiVEMBvzirzS4SLCVgP5duCCq/14urX/UsyyS/tAN0cm
-         +F9A==
-X-Received: by 10.68.90.195 with SMTP id by3mr28827606pbb.148.1445176514567;
-        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.167.66])
-        by smtp.gmail.com with ESMTPSA id dd4sm31163242pbb.52.2015.10.18.06.55.13
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
-Date: Sun, 18 Oct 2015 19:25:10 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0MLC0j-1YPjho25CL-000MRB; Mon, 23 Feb
+ 2015 22:45:45 +0100
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Replace include <asm/*.h> with include
- <linux/*.h>
-Message-ID: <20151018135509.GA24240@amitoj-Inspiron-3542>
+Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Remove typedefs
+Date: Mon, 23 Feb 2015 22:45:45 +0100
+Message-ID: <6929426.tL312YngjT@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1424603276-26391-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+References: <1424603276-26391-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID:  V03:K0:nvEEn5tGUbnIcDBWMtJUyFojNRQ3Yp/96XqyaTP+eQxhSOKV+no
+ ntjAiI05xFj1FSURGoODYiMjk8VonDvHN/0REXsr3uCCk6BGTMFjRVDwBaNG+gCim0cTviG
+ F3T6+fVQfkooLVyDsChWaVPgfQnxB76qkjibuVVXcGyixowqWEW/P1Lu2R1GQvGFtJH8J3I
+ +upko0cUvBl4aoKOicrOQ==
+X-UI-Out-Filterresults: notjunk:1;
 
-Problem found using checkpatch.pl
-WARNING: Use #include <linux/io.h> instead of <asm/io.h>
-WARNING: Use #include <linux/uaccess.h> instead of <asm/uaccess.h>
+On Sunday 22 February 2015 13:07:56 Melike Yurtoglu wrote:
+> 
+>  /* long integer with size equal to pointer */
+> -typedef unsigned long ulong_ptr_t;
+> -typedef long long_ptr_t;
+> +unsigned long ulong_ptr_t;
+> +long long_ptr_t;
+>  
+> 
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_help.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Sorry, but this makes no sense. You have replaced the typedefs with
+unused global variables, and you have not noticed that the types
+are still actually being used.
 
-diff --git a/drivers/staging/sm750fb/ddk750_help.h b/drivers/staging/sm750fb/ddk750_help.h
-index 9b2d2d2..5be814e 100644
---- a/drivers/staging/sm750fb/ddk750_help.h
-+++ b/drivers/staging/sm750fb/ddk750_help.h
-@@ -4,8 +4,8 @@
- #ifndef USE_INTERNAL_REGISTER_ACCESS
- 
- #include <linux/ioport.h>
--#include <asm/io.h>
--#include <asm/uaccess.h>
-+#include <linux/io.h>
-+#include <linux/uaccess.h>
- #include "sm750_help.h"
- 
- /* software control endianness */
--- 
-1.9.1
-
+	Arnd
 
