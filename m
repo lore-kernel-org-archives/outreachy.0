@@ -1,70 +1,81 @@
-X-GM-THRID: 2050684354560
-X-Received: by 10.152.19.100 with SMTP id d4mr423113lae.7.1424547954474;
-        Sat, 21 Feb 2015 11:45:54 -0800 (PST)
+X-GM-THRID: 2891853070336
+X-Received: by 10.180.160.176 with SMTP id xl16mr937492wib.6.1424760790025;
+        Mon, 23 Feb 2015 22:53:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.126.68 with SMTP id mw4ls307039wib.12.canary; Sat, 21 Feb
- 2015 11:45:54 -0800 (PST)
-X-Received: by 10.180.8.67 with SMTP id p3mr382349wia.7.1424547954134;
-        Sat, 21 Feb 2015 11:45:54 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
-        by gmr-mx.google.com with ESMTPS id i7si366733wif.0.2015.02.21.11.45.54
+Received: by 10.152.36.65 with SMTP id o1ls171859laj.67.gmail; Mon, 23 Feb
+ 2015 22:53:09 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr1871322lbb.11.1424760789493;
+        Mon, 23 Feb 2015 22:53:09 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id by11si1072938wib.1.2015.02.23.22.53.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 11:45:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 23 Feb 2015 22:53:09 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x236.google.com with SMTP id l15so9217071wiw.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 11:45:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=AlWNlxmmsI9XububQcJZhkwdrJG4luZriz8BMA35SUo=;
-        b=olHOWedr4PAdlAp5f5jRJblCA7z68SOOltnfvA6+vMZ6OZLgu3yblXn3/ypKId00c9
-         pXUdsKW+UsvE4188petwkY2+vbjEe8Iw+w5+ZK3xJ55ahwrkn2o19qeDPCFWHp+udWv5
-         4VKVUeRBAoAkpZv26dHp25Q3a6y0G9yj1uI4DZIx+RVPJfwDqMdzcWjYK51hiBuDLy0b
-         CvYYGbst6HcJWHGHMmlM43So2fyisdMEHoIhD/U9QZfpMfVbwB+UlGn/Y4pmQq2oXLt9
-         NMGPsQF8TSKGsPXiPg287hIsyClhAZzp96JY22twznLGJvuOEFgH8Iet1VD7GPFvi0cZ
-         rlVA==
-X-Received: by 10.180.73.1 with SMTP id h1mr6677333wiv.10.1424547954072;
-        Sat, 21 Feb 2015 11:45:54 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.58.202])
-        by mx.google.com with ESMTPSA id cj12sm47909818wjb.35.2015.02.21.11.45.53
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 11:45:53 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: bcm: Remove space before tab
-Date: Sat, 21 Feb 2015 21:45:56 +0200
-Message-Id: <1424547956-3686-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,637,1418079600"; 
+   d="scan'208";a="101090610"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2015 07:53:08 +0100
+Date: Tue, 24 Feb 2015 07:53:08 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: octeon-usb: Remove
+ unnecessary braces
+In-Reply-To: <1424712752-3728-1-git-send-email-ksenija.stanojevic@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502240750270.2032@localhost6.localdomain6>
+References: <1424712752-3728-1-git-send-email-ksenija.stanojevic@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "please, no space before tabs"
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/bcm/headers.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/bcm/headers.h b/drivers/staging/bcm/headers.h
-index 6f3270c..a7d4af5 100644
---- a/drivers/staging/bcm/headers.h
-+++ b/drivers/staging/bcm/headers.h
-@@ -1,6 +1,6 @@
- 
- /*******************************************************************
--* 		Headers.h
-+*		Headers.h
- *******************************************************************/
- #ifndef __HEADERS_H__
- #define __HEADERS_H__
--- 
-1.8.3.2
+On Mon, 23 Feb 2015, Ksenija Stanojevic wrote:
 
+> This patch removes unnecessary braces. Issue found by checkpatch.pl
+> 
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> ---
+> v2: remove braces instead of space.
+> 
+>  drivers/staging/octeon-usb/octeon-hcd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+> index 1daeb31..400a630 100644
+> --- a/drivers/staging/octeon-usb/octeon-hcd.c
+> +++ b/drivers/staging/octeon-usb/octeon-hcd.c
+> @@ -412,7 +412,7 @@ struct octeon_hcd {
+>  		type c;							    \
+>  		while (1) {						    \
+>  			c.u32 = __cvmx_usb_read_csr32(usb, address);	    \
+> -			if (c.s.field op (value)) {			    \
+> +			if (c.s.field op value) {			    \
+
+These are parentheses.  Braces are {}.
+
+But the change is not a good idea.  I assume that value is a parameter of 
+the macro.  There are some expressions that when inlined here will have 
+the wrong precedence if you don't use the parentheses.
+
+julia
+
+>  				result = 0;				    \
+>  				break;					    \
+>  			} else if (cvmx_get_cycle() > done) {		    \
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424712752-3728-1-git-send-email-ksenija.stanojevic%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
