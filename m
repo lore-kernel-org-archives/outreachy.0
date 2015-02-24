@@ -1,237 +1,62 @@
 X-GM-THRID: 3247770173440
-X-Received: by 10.112.219.102 with SMTP id pn6mr1754705lbc.12.1424806533328;
-        Tue, 24 Feb 2015 11:35:33 -0800 (PST)
+X-Received: by 10.180.81.34 with SMTP id w2mr2352389wix.2.1424806433704;
+        Tue, 24 Feb 2015 11:33:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.97.105 with SMTP id dz9ls848272wib.4.gmail; Tue, 24 Feb
- 2015 11:35:32 -0800 (PST)
-X-Received: by 10.181.13.236 with SMTP id fb12mr2353163wid.1.1424806532809;
-        Tue, 24 Feb 2015 11:35:32 -0800 (PST)
+Received: by 10.152.179.4 with SMTP id dc4ls86607lac.73.gmail; Tue, 24 Feb
+ 2015 11:33:53 -0800 (PST)
+X-Received: by 10.112.189.227 with SMTP id gl3mr2427558lbc.2.1424806433218;
+        Tue, 24 Feb 2015 11:33:53 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id cl5si965004wib.3.2015.02.24.11.35.32
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ta1si967011wic.1.2015.02.24.11.33.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 24 Feb 2015 11:35:32 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 24 Feb 2015 11:33:53 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.09,640,1418079600"; 
-   d="scan'208";a="123231503"
+   d="scan'208";a="101194736"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2015 20:35:27 +0100
-Date: Tue, 24 Feb 2015 20:35:27 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2015 20:33:52 +0100
+Date: Tue, 24 Feb 2015 20:33:51 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@localhost6.localdomain6
 To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/6] Staging: rtl8192u: Replace TRUE
- and FALSE macros
-In-Reply-To: <0c2eddc15c4c507fdc132a98763175a6da316aa7.1424798953.git.ksenija.stanojevic@gmail.com>
-Message-ID: <alpine.DEB.2.02.1502242034560.2049@localhost6.localdomain6>
-References: <cover.1424798953.git.ksenija.stanojevic@gmail.com> <0c2eddc15c4c507fdc132a98763175a6da316aa7.1424798953.git.ksenija.stanojevic@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/6] Staging: rtl8192u: Replace TRUE
+ with true
+In-Reply-To: <4ceaa6f20532b3112484ecaa074106d1c130c6c6.1424798953.git.ksenija.stanojevic@gmail.com>
+Message-ID: <alpine.DEB.2.02.1502242032591.2049@localhost6.localdomain6>
+References: <cover.1424798953.git.ksenija.stanojevic@gmail.com> <4ceaa6f20532b3112484ecaa074106d1c130c6c6.1424798953.git.ksenija.stanojevic@gmail.com>
 User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
 
+> -	if (priv->bDynamicTxLowPower == TRUE) {
+> +	if (priv->bDynamicTxLowPower == true) {
 
+One could wonder if this could just be:
 
-On Tue, 24 Feb 2015, Ksenija Stanojevic wrote:
+if (priv->bDynamicTxLowPower) { ...
 
-> Replace all occurrences of TRUE and FALSE by true and false
-> respectively.
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_dm.c | 48 ++++++++++++++++++------------------
->  1 file changed, 24 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-> index ee6b936..2657b57 100644
-> --- a/drivers/staging/rtl8192u/r8192U_dm.c
-> +++ b/drivers/staging/rtl8192u/r8192U_dm.c
-> @@ -502,7 +502,7 @@ static u8	CCKSwingTable_Ch14[CCK_Table_length][8] = {
->  static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
->  {
->  	struct r8192_priv *priv = ieee80211_priv(dev);
-> -	bool						bHighpowerstate, viviflag = FALSE;
-> +	bool						bHighpowerstate, viviflag = false;
->  	DCMD_TXCMD_T			tx_cmd;
->  	u8						powerlevelOFDM24G;
->  	int						i = 0, j = 0, k = 0;
-
-It's another issue, but you could send anoter patch to delete the 
-excessive indentation of these variables.
+To check this, you have to go find all of the initializations of this 
+field and check that 0 and 1 are the only possible values.
 
 julia
 
-> @@ -558,13 +558,13 @@ static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
->  			/* check if the report value is right */
->  			for (k = 0; k < 5; k++) {
->  				if (tmp_report[k] <= 20) {
-> -					viviflag = TRUE;
-> +					viviflag = true;
->  					break;
->  				}
->  			}
-> -			if (viviflag == TRUE) {
-> +			if (viviflag == true) {
->  				write_nic_byte(dev, 0x1ba, 0);
-> -				viviflag = FALSE;
-> +				viviflag = false;
->  				RT_TRACE(COMP_POWER_TRACKING, "we filtered the data\n");
->  				for (k = 0; k < 5; k++)
->  					tmp_report[k] = 0;
-> @@ -587,7 +587,7 @@ static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
->  				delta = TSSI_13dBm - Avg_TSSI_Meas_from_driver;
->  
->  			if (delta <= E_FOR_TX_POWER_TRACK) {
-> -				priv->ieee80211->bdynamic_txpower_enable = TRUE;
-> +				priv->ieee80211->bdynamic_txpower_enable = true;
->  				write_nic_byte(dev, 0x1ba, 0);
->  				RT_TRACE(COMP_POWER_TRACKING, "tx power track is done\n");
->  				RT_TRACE(COMP_POWER_TRACKING, "priv->rfa_txpowertrackingindex = %d\n", priv->rfa_txpowertrackingindex);
-> @@ -624,10 +624,10 @@ static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
->  
->  			if (priv->cck_present_attentuation > -1 && priv->cck_present_attentuation < 23) {
->  				if (priv->ieee80211->current_network.channel == 14 && !priv->bcck_in_ch14) {
-> -					priv->bcck_in_ch14 = TRUE;
-> +					priv->bcck_in_ch14 = true;
->  					dm_cck_txpower_adjust(dev, priv->bcck_in_ch14);
->  				} else if (priv->ieee80211->current_network.channel != 14 && priv->bcck_in_ch14) {
-> -					priv->bcck_in_ch14 = FALSE;
-> +					priv->bcck_in_ch14 = false;
->  					dm_cck_txpower_adjust(dev, priv->bcck_in_ch14);
->  				} else
->  					dm_cck_txpower_adjust(dev, priv->bcck_in_ch14);
-> @@ -638,7 +638,7 @@ static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
->  			RT_TRACE(COMP_POWER_TRACKING, "priv->cck_present_attentuation = %d\n", priv->cck_present_attentuation);
->  
->  			if (priv->cck_present_attentuation_difference <= -12 || priv->cck_present_attentuation_difference >= 24) {
-> -				priv->ieee80211->bdynamic_txpower_enable = TRUE;
-> +				priv->ieee80211->bdynamic_txpower_enable = true;
->  				write_nic_byte(dev, 0x1ba, 0);
->  				RT_TRACE(COMP_POWER_TRACKING, "tx power track--->limited\n");
->  				return;
-> @@ -651,7 +651,7 @@ static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
->  			break;
+>  		if (priv->CustomerID == RT_CID_819x_Netcore)
+>  			TxAGC = 0x22;
+>  		else
+> @@ -275,7 +275,7 @@ void PHY_SetRF8256OFDMTxPower(struct net_device *dev, u8 powerlevel)
+>  			priv->Pwr_Track = writeVal_tmp;
 >  		}
->  	}
-> -	priv->ieee80211->bdynamic_txpower_enable = TRUE;
-> +	priv->ieee80211->bdynamic_txpower_enable = true;
->  	write_nic_byte(dev, 0x1ba, 0);
->  }
 >  
-> @@ -684,7 +684,7 @@ static void dm_TXPowerTrackingCallback_ThermalMeter(struct net_device *dev)
->  				break;
->  			}
->  		}
-> -		priv->btxpower_trackingInit = TRUE;
-> +		priv->btxpower_trackingInit = true;
->  		/*pHalData->TXPowercount = 0;*/
->  		return;
->  	}
-> @@ -734,10 +734,10 @@ static void dm_TXPowerTrackingCallback_ThermalMeter(struct net_device *dev)
->  		tmpCCKindex = tmpCCK20Mindex;
->  
->  	if (priv->ieee80211->current_network.channel == 14 && !priv->bcck_in_ch14) {
-> -		priv->bcck_in_ch14 = TRUE;
-> +		priv->bcck_in_ch14 = true;
->  		CCKSwingNeedUpdate = 1;
->  	} else if (priv->ieee80211->current_network.channel != 14 && priv->bcck_in_ch14) {
-> -		priv->bcck_in_ch14 = FALSE;
-> +		priv->bcck_in_ch14 = false;
->  		CCKSwingNeedUpdate = 1;
->  	}
->  
-> @@ -765,7 +765,7 @@ void dm_txpower_trackingcallback(struct work_struct *work)
->  	struct r8192_priv *priv = container_of(dwork, struct r8192_priv, txpower_tracking_wq);
->  	struct net_device *dev = priv->ieee80211->dev;
->  
-> -	if (priv->bDcut == TRUE)
-> +	if (priv->bDcut == true)
->  		dm_TXPowerTrackingCallback_TSSI(dev);
->  	else
->  		dm_TXPowerTrackingCallback_ThermalMeter(dev);
-> @@ -1273,9 +1273,9 @@ static void dm_InitializeTXPowerTracking_TSSI(struct net_device *dev)
->  	priv->cck_txbbgain_ch14_table[22].ccktxbb_valuearray[6] = 0x00;
->  	priv->cck_txbbgain_ch14_table[22].ccktxbb_valuearray[7] = 0x00;
->  
-> -	priv->btxpower_tracking = TRUE;
-> +	priv->btxpower_tracking = true;
->  	priv->txpower_count       = 0;
-> -	priv->btxpower_trackingInit = FALSE;
-> +	priv->btxpower_trackingInit = false;
->  
->  }
->  
-> @@ -1289,18 +1289,18 @@ static void dm_InitializeTXPowerTracking_ThermalMeter(struct net_device *dev)
->  	 * 3-wire by driver causes RF to go into a wrong state.
->  	 */
->  	if (priv->ieee80211->FwRWRF)
-> -		priv->btxpower_tracking = TRUE;
-> +		priv->btxpower_tracking = true;
->  	else
-> -		priv->btxpower_tracking = FALSE;
-> +		priv->btxpower_tracking = false;
->  	priv->txpower_count       = 0;
-> -	priv->btxpower_trackingInit = FALSE;
-> +	priv->btxpower_trackingInit = false;
->  }
->  
->  void dm_initialize_txpower_tracking(struct net_device *dev)
->  {
->  	struct r8192_priv *priv = ieee80211_priv(dev);
->  
-> -	if (priv->bDcut == TRUE)
-> +	if (priv->bDcut == true)
->  		dm_InitializeTXPowerTracking_TSSI(dev);
->  	else
->  		dm_InitializeTXPowerTracking_ThermalMeter(dev);
-> @@ -1356,7 +1356,7 @@ static void dm_check_txpower_tracking(struct net_device *dev)
->  #ifdef RTL8190P
->  	dm_CheckTXPowerTracking_TSSI(dev);
->  #else
-> -	if (priv->bDcut == TRUE)
-> +	if (priv->bDcut == true)
->  		dm_CheckTXPowerTracking_TSSI(dev);
->  	else
->  		dm_CheckTXPowerTracking_ThermalMeter(dev);
-> @@ -1466,7 +1466,7 @@ void dm_cck_txpower_adjust(struct net_device *dev, bool binch14)
->  {	/*  dm_CCKTxPowerAdjust */
->  	struct r8192_priv *priv = ieee80211_priv(dev);
->  
-> -	if (priv->bDcut == TRUE)
-> +	if (priv->bDcut == true)
->  		dm_CCKTxPowerAdjust_TSSI(dev, binch14);
->  	else
->  		dm_CCKTxPowerAdjust_ThermalMeter(dev, binch14);
-> @@ -2314,7 +2314,7 @@ static void dm_init_ctstoself(struct net_device *dev)
->  {
->  	struct r8192_priv *priv = ieee80211_priv((struct net_device *)dev);
->  
-> -	priv->ieee80211->bCTSToSelfEnable = TRUE;
-> +	priv->ieee80211->bCTSToSelfEnable = true;
->  	priv->ieee80211->CTSToSelfTH = CTSToSelfTHVal;
->  }
->  
-> @@ -2327,7 +2327,7 @@ static void dm_ctstoself(struct net_device *dev)
->  	unsigned long						curTxOkCnt = 0;
->  	unsigned long						curRxOkCnt = 0;
->  
-> -	if (priv->ieee80211->bCTSToSelfEnable != TRUE) {
-> +	if (priv->ieee80211->bCTSToSelfEnable != true) {
->  		pHTInfo->IOTAction &= ~HT_IOT_ACT_FORCED_CTS2SELF;
->  		return;
->  	}
-> @@ -3087,7 +3087,7 @@ static void dm_dynamic_txpower(struct net_device *dev)
->  #endif
->  
->  		rtl8192_phy_setTxPower(dev, priv->ieee80211->current_network.channel);
-> -		/*pHalData->bStartTxCtrlByTPCNFR = FALSE;    Clear th flag of Set TX Power from Sitesurvey*/
-> +		/*pHalData->bStartTxCtrlByTPCNFR = false;    Clear th flag of Set TX Power from Sitesurvey*/
->  	}
->  	priv->bLastDTPFlag_High = priv->bDynamicTxHighPower;
->  	priv->bLastDTPFlag_Low = priv->bDynamicTxLowPower;
+> -		if (priv->bDynamicTxHighPower == TRUE) {
+> +		if (priv->bDynamicTxHighPower == true) {
+>  			/*Add by Jacken 2008/03/06
+>  			 *Emily, 20080613. Set low tx power for both MCS and legacy OFDM
+>  			 */
 > -- 
 > 1.9.1
 > 
@@ -239,7 +64,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/0c2eddc15c4c507fdc132a98763175a6da316aa7.1424798953.git.ksenija.stanojevic%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/4ceaa6f20532b3112484ecaa074106d1c130c6c6.1424798953.git.ksenija.stanojevic%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 > 
 
