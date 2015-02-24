@@ -3,87 +3,82 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,bcdbd9470f1685b9
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.194.239.41 with SMTP id vp9mr202569wjc.5.1424846100926;
-        Tue, 24 Feb 2015 22:35:00 -0800 (PST)
+X-Received: by 10.112.40.81 with SMTP id v17mr874lbk.5.1424813735990;
+        Tue, 24 Feb 2015 13:35:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.93.228 with SMTP id cx4ls935991wib.29.gmail; Tue, 24 Feb
- 2015 22:34:58 -0800 (PST)
-X-Received: by 10.180.160.176 with SMTP id xl16mr1734298wib.6.1424846098926;
-        Tue, 24 Feb 2015 22:34:58 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id el6si1063256wib.2.2015.02.24.22.34.58
+Received: by 10.152.45.6 with SMTP id i6ls728889lam.10.gmail; Tue, 24 Feb 2015
+ 13:35:35 -0800 (PST)
+X-Received: by 10.152.6.232 with SMTP id e8mr5395laa.2.1424813735440;
+        Tue, 24 Feb 2015 13:35:35 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
+        by gmr-mx.google.com with ESMTPS id ev8si982348wib.3.2015.02.24.13.35.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 24 Feb 2015 22:34:58 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 24 Feb 2015 13:35:35 -0800 (PST)
+Received-SPF: none (google.com: arnd@arndb.de does not designate permitted sender hosts) client-ip=212.227.17.10;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,643,1418079600"; 
-   d="scan'208";a="101226985"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 25 Feb 2015 07:34:58 +0100
-Date: Wed, 25 Feb 2015 07:34:57 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Arnd Bergmann <arnd@arndb.de>
-cc: outreachy-kernel@googlegroups.com, 
-    Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, 
-    quentin.lambert@inria.fr
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Simplify if
- condition.
-In-Reply-To: <6220123.OEaHGpHvmv@wuerfel>
-Message-ID: <alpine.DEB.2.02.1502250733460.2063@localhost6.localdomain6>
-References: <1424811248-8150-1-git-send-email-ksenija.stanojevic@gmail.com> <alpine.DEB.2.02.1502242219480.2081@localhost6.localdomain6> <6220123.OEaHGpHvmv@wuerfel>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=none (google.com: arnd@arndb.de does not designate permitted sender hosts) smtp.mail=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue101) with ESMTPSA (Nemesis) id 0MCIPR-1YHoYB3Or3-009BsL; Tue, 24 Feb
+ 2015 22:35:34 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Julia Lawall <julia.lawall@lip6.fr>, Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Simplify if condition.
+Date: Tue, 24 Feb 2015 22:35:34 +0100
+Message-ID: <6220123.OEaHGpHvmv@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <alpine.DEB.2.02.1502242219480.2081@localhost6.localdomain6>
+References: <1424811248-8150-1-git-send-email-ksenija.stanojevic@gmail.com> <alpine.DEB.2.02.1502242219480.2081@localhost6.localdomain6>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID:  V03:K0:/h5BhVNnzzPyEY+18Q0xSo5AZfv0FkPXiAr/C1WcmDYU4Iy21Hn
+ C1rgOzTMfZb02AnFeQh7sg/LsPqv4ektfdYHlwe+TUnsfhf4QTrg89HAOYhUmGLOQ8m+Bmx
+ sW6kwMW34zY5XzEMRkzAE0VY5kpYFrfOelIW+BI9cu9943scgnUmesoHngDk4gBw7425TNo
+ UHOURjBdwxZ7Gfo8AFkQw==
+X-UI-Out-Filterresults: notjunk:1;
 
-
-
-On Tue, 24 Feb 2015, Arnd Bergmann wrote:
-
-> On Tuesday 24 February 2015 22:24:23 Julia Lawall wrote:
-> > On Tue, 24 Feb 2015, Ksenija Stanojevic wrote:
-> > 
-> > > Remove unnecessary TRUE statement. Fields bDynamicTxLowPower and
-> > > bDynamicTxHighPower are of bool type so such change is correct.
-> > 
-> > I'm not sure that the compiler actually enforces that a bool variable is 
-> > only ever assigned to 0 or 1.  The kernel contains the following in 
-> > types.h:
-> > 
-> > typedef _Bool                   bool;
-> > 
-> > The following (non-kernel) C program compiles with gcc with no errors:
-> > 
-> > _Bool x;
-> > 
-> > int main () {
-> >   x = 12;
-> > }
-> > 
-> > To be on the safe side, you should look at each place where the field is 
-> > initialized and check that the value is true or false.  If that is what 
-> > you have already done, then you should expand on the commit message to 
-> > make that more apparent.
+On Tuesday 24 February 2015 22:24:23 Julia Lawall wrote:
+> On Tue, 24 Feb 2015, Ksenija Stanojevic wrote:
 > 
-> Actually C enforces this:
+> > Remove unnecessary TRUE statement. Fields bDynamicTxLowPower and
+> > bDynamicTxHighPower are of bool type so such change is correct.
+> 
+> I'm not sure that the compiler actually enforces that a bool variable is 
+> only ever assigned to 0 or 1.  The kernel contains the following in 
+> types.h:
+> 
+> typedef _Bool                   bool;
+> 
+> The following (non-kernel) C program compiles with gcc with no errors:
 > 
 > _Bool x;
-> int main()
-> { 
->         x = 12;
->  
->         if (x == 1)
->                 return 1;
->         else
->                 return 2;
+> 
+> int main () {
+>   x = 12;
 > }
 > 
-> The compiler ensures that this program returns 1, not 2.
+> To be on the safe side, you should look at each place where the field is 
+> initialized and check that the value is true or false.  If that is what 
+> you have already done, then you should expand on the commit message to 
+> make that more apparent.
 
-Amazing.  Thanks.
+Actually C enforces this:
 
-julia
+_Bool x;
+int main()
+{ 
+        x = 12;
+ 
+        if (x == 1)
+                return 1;
+        else
+                return 2;
+}
+
+The compiler ensures that this program returns 1, not 2.
+
+	Arnd
 
