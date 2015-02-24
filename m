@@ -1,67 +1,55 @@
 X-GM-THRID: 3148599001088
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,1471a1a57b962ba4
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.178.234 with SMTP id db10mr1255566wjc.2.1424953591405;
-        Thu, 26 Feb 2015 04:26:31 -0800 (PST)
+X-Received: by 10.66.224.42 with SMTP id qz10mr17236983pac.0.1424787526924;
+        Tue, 24 Feb 2015 06:18:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.67 with SMTP id l3ls25479lae.93.gmail; Thu, 26 Feb 2015
- 04:26:30 -0800 (PST)
-X-Received: by 10.112.25.7 with SMTP id y7mr1235958lbf.21.1424953590780;
-        Thu, 26 Feb 2015 04:26:30 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-la0-x234.google.com (mail-la0-x234.google.com. [2a00:1450:4010:c03::234])
-        by gmr-mx.google.com with ESMTPS id xl7si56385lbb.1.2015.02.26.04.26.30
+Received: by 10.107.166.8 with SMTP id p8ls1033177ioe.77.gmail; Tue, 24 Feb
+ 2015 06:18:46 -0800 (PST)
+X-Received: by 10.66.153.16 with SMTP id vc16mr10127578pab.42.1424787526460;
+        Tue, 24 Feb 2015 06:18:46 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si4190237pbc.2.2015.02.24.06.18.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 04:26:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::234 as permitted sender) client-ip=2a00:1450:4010:c03::234;
+        Tue, 24 Feb 2015 06:18:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::234 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-la0-x234.google.com with SMTP id gf13so10520602lab.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 04:26:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=CfLaFk+8dq4+uLpMrnIIMtYe6CiCQXfI6wl5JIrKc8o=;
-        b=TJUM1kPH8B1F2iE9BulZSJoZf++IimOLnTTmEqD0fWP/B2MSJ1NjvTndsTgTGxkLTK
-         5ji8rAdpSDO1QwtxSyHGcF+GJMhC8iBQkN45vWGUfSW8XRGyU6bXeizHeZFdfLuB6YAE
-         XREvsO7XGhDUc4HXV9oV4mErzdlo6bCjAUO+wVQJmQhHAmg9/Crz5vYln+kZZ1eqyUoC
-         I1YHPjxtB/R4CjNXhSPUGmrnU+OcbdjoOm3BSElRsnU1R/dgLtSZxusDHB4G0Z9Q8nXr
-         cf9UWA0GlZe4cMy8QYQzOYWvjUSjefdXkRPSRdSPAbrik+Ct4LgPftszXekvbzVzZB0R
-         +8OA==
-MIME-Version: 1.0
-X-Received: by 10.112.188.165 with SMTP id gb5mr7332234lbc.35.1424953590682;
- Thu, 26 Feb 2015 04:26:30 -0800 (PST)
-Received: by 10.112.59.9 with HTTP; Thu, 26 Feb 2015 04:26:30 -0800 (PST)
-In-Reply-To: <20150224141845.GA16196@kroah.com>
-References: <cover.1424761857.git.vatikaharlalka@gmail.com>
-	<a504aa6ef851fcf381d8dbf9a1804bb43fbbd343.1424761857.git.vatikaharlalka@gmail.com>
-	<20150224074018.GB11701@kroah.com>
-	<CAHjTdYeJwoC26O-c1oWWaTtdxRfBegggu1fS0qXj+LwLoii5Wg@mail.gmail.com>
-	<20150224141845.GA16196@kroah.com>
-Date: Thu, 26 Feb 2015 17:56:30 +0530
-Message-ID: <CAHjTdYfokxt2wBZaEy-6UVDRN3_60Nac1t4XkEZD6yJ=Z4bMYA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/2 v2] Introduce new macro
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2B33BB09;
+	Tue, 24 Feb 2015 14:18:46 +0000 (UTC)
+Date: Tue, 24 Feb 2015 06:18:45 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=001a11c36da29816e0050ffcdc66
+Subject: Re: [Outreachy kernel] [PATCH 1/2 v2] Introduce new macro
+Message-ID: <20150224141845.GA16196@kroah.com>
+References: <cover.1424761857.git.vatikaharlalka@gmail.com>
+ <a504aa6ef851fcf381d8dbf9a1804bb43fbbd343.1424761857.git.vatikaharlalka@gmail.com>
+ <20150224074018.GB11701@kroah.com>
+ <CAHjTdYeJwoC26O-c1oWWaTtdxRfBegggu1fS0qXj+LwLoii5Wg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAHjTdYeJwoC26O-c1oWWaTtdxRfBegggu1fS0qXj+LwLoii5Wg@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---001a11c36da29816e0050ffcdc66
-Content-Type: text/plain; charset=UTF-8
+On Tue, Feb 24, 2015 at 01:27:46PM +0530, Vatika Harlalka wrote:
+> Hi, thanks for your response!
+> 
+> I'm using this macro in� /rtl8188eu/hal/phy.c ( in patch 2/2 ).
+> > u8 channel_5g[ODM_TARGET_CHNL_NUM_5G]
+> However, based on your response, I will make this array static const int,
+> so I won't explicitly declare the size.
+> Should I resend a patch for this with just that fix?
 
-Oh sorry, if the array is declared as static const u8, the additional macro
-will not be required as we do not need the size in advance.
+Why 'int'?
 
---001a11c36da29816e0050ffcdc66
-Content-Type: text/html; charset=UTF-8
+And watch out for your email client settings, you are sending html email
+which the linux-kernel mailing lists will reject.
 
-<div dir="ltr"><div>Oh sorry, if the array is declared as static const u8, the additional macro will not be required as we do not need the size in advance.<br></div></div>
+thanks,
 
---001a11c36da29816e0050ffcdc66--
+greg k-h
 
