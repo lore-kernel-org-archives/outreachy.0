@@ -1,49 +1,52 @@
 X-GM-THRID: 3148599001088
-X-Received: by 10.140.231.139 with SMTP id b133mr15781571qhc.1.1424762804921;
-        Mon, 23 Feb 2015 23:26:44 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,1471a1a57b962ba4
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.67.29.231 with SMTP id jz7mr639590pad.9.1424762726991;
+        Mon, 23 Feb 2015 23:25:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.65.33 with SMTP id u1ls1224082igs.30.canary; Mon, 23 Feb
- 2015 23:26:44 -0800 (PST)
-X-Received: by 10.70.88.234 with SMTP id bj10mr15692247pdb.0.1424762804100;
-        Mon, 23 Feb 2015 23:26:44 -0800 (PST)
+Received: by 10.50.111.41 with SMTP id if9ls1155596igb.17.gmail; Mon, 23 Feb
+ 2015 23:25:26 -0800 (PST)
+X-Received: by 10.66.224.42 with SMTP id qz10mr16053555pac.0.1424762726383;
+        Mon, 23 Feb 2015 23:25:26 -0800 (PST)
 Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
-        by gmr-mx.google.com with ESMTPS id pc4si4553724pac.0.2015.02.23.23.26.44
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id bo1si4428874pbc.0.2015.02.23.23.25.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 23:26:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
+        Mon, 23 Feb 2015 23:25:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22f.google.com with SMTP id o5so31467670pdn.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 23:26:44 -0800 (PST)
+Received: by mail-pa0-x236.google.com with SMTP id rd3so34033795pab.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 23:25:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=ohhwx/jlx5X4HGRuMRL3+9pcIDZXmCIP7snMrPMzK08=;
-        b=XFf5YnvEthh0wsgtpPcJmUre43UN2qOxRUKNfZyMDCUyhm9oyCkjbPishUg60UHBXA
-         SgcM1+2cnI0YfUf+FDG+OwiKkdEJqGdk0dKUZvM0+cgJVFmmms57p5LkshkxYV8etB5A
-         SdNlharYOo2Lsnr9CuBonFkR5fPI8qg9ICEcO1YndjEzekFqUw3nfi6DCrcqOweMGx7Q
-         dK2sYwrxWsJFFzfcgabXtm/fJlBd2yzgrYiXwTtSO+2ZDZUBcj0qYz3OQ83pG6n5ikpU
-         b/05XWGgNfLFuQSs3oL+u4qjoNdIjEUZ+0VKatkG7UGdw0V2gy9j7yMbbZ7eCrVCFHPX
-         Iw7g==
-X-Received: by 10.66.121.2 with SMTP id lg2mr14900898pab.69.1424762803971;
-        Mon, 23 Feb 2015 23:26:43 -0800 (PST)
+        bh=euHoIQDmrdmlBTWjTif3BFr5j/WTUJQBJJZhb85bvoM=;
+        b=aXGAAt4zbxKwP4TKyyOOlLxW0SkWwA+eFUcfvduVWGeIT8eSPY55GqUhq8KZnd48cr
+         DL7RnIw4xNOlmDCil1Y4ykPTA3xp9ux7G5xMasd7wfbdBmhmlHSI5ev9NOYbTnnnU3O/
+         MD6z0/QO874J+U1lRAnTddYezEgYQgwrK+YBb9uU05iJCTr3e/lrGy95F/BLDTx/Ex/u
+         J8XyHOADLVpsrrW+3KC1A3o5rcsKXf5cSAqQ6iIZElJ2ffixMXr+Dt6AmemoYgMReCFr
+         4Dqx7GUf9A4VvnvGZ09G01iOR5WRPYIS6XZuRxtHvJd5Eo8gZiXSaizmePxbrJnrg/WA
+         N/Dg==
+X-Received: by 10.68.132.67 with SMTP id os3mr1515771pbb.1.1424762725373;
+        Mon, 23 Feb 2015 23:25:25 -0800 (PST)
 Return-Path: <vatikaharlalka@gmail.com>
 Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id qv9sm38299059pab.27.2015.02.23.23.26.41
+        by mx.google.com with ESMTPSA id o6sm11022037pdm.47.2015.02.23.23.25.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 23:26:42 -0800 (PST)
-Date: Tue, 24 Feb 2015 12:56:24 +0530
+        Mon, 23 Feb 2015 23:25:24 -0800 (PST)
+Date: Tue, 24 Feb 2015 12:55:05 +0530
 From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2 v2] Staging: rtl8188eu: Refactor code to increase
- readability
-Message-ID: <538a6b526dd178a0d39903c236c27d1726c1b3fc.1424761857.git.vatikaharlalka@gmail.com>
+Subject: [PATCH 1/2 v2] Introduce new macro
+Message-ID: <a504aa6ef851fcf381d8dbf9a1804bb43fbbd343.1424761857.git.vatikaharlalka@gmail.com>
 References: <cover.1424761857.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,46 +54,26 @@ Content-Disposition: inline
 In-Reply-To: <cover.1424761857.git.vatikaharlalka@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Reduce the array size and modify the loop
-counter so as to start from 0.
-Also, the assignment of variable place is redundant as it is
-initialized again in the loop.
-
+New macro is introduced for the number of channels in the
+5GHz spectrum.
 
 Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/phy.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8188eu/include/phy.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index a1a9ebf..a91bc6d 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -386,19 +386,18 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
+diff --git a/drivers/staging/rtl8188eu/include/phy.h b/drivers/staging/rtl8188eu/include/phy.h
+index 9a9ab82..1312189 100644
+--- a/drivers/staging/rtl8188eu/include/phy.h
++++ b/drivers/staging/rtl8188eu/include/phy.h
+@@ -4,6 +4,7 @@
+ #define index_mapping_NUM_88E	    15
+ #define AVG_THERMAL_NUM_88E	    4
+ #define ODM_TARGET_CHNL_NUM_2G_5G   59
++#define ODM_TARGET_CHNL_NUM_5G	    45
  
- static u8 get_right_chnl_for_iqk(u8 chnl)
- {
--	u8 channel_all[ODM_TARGET_CHNL_NUM_2G_5G] = {
--		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-+	u8 place;
-+	u8 channel_5g[ODM_TARGET_CHNL_NUM_5G] = {
- 		36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64,
- 		100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122,
- 		124, 126, 128, 130, 132, 134, 136, 138, 140, 149, 151, 153,
- 		155, 157, 159, 161, 163, 165
- 	};
--	u8 place = chnl;
- 
- 	if (chnl > 14) {
--		for (place = 14; place < sizeof(channel_all); place++) {
--			if (channel_all[place] == chnl)
--				return place-13;
-+		for (place = 0; place < sizeof(channel_5g); place++) {
-+			if (channel_5g[place] == chnl)
-+				return ++place;
- 		}
- 	}
- 	return 0;
+ bool rtl88eu_phy_mac_config(struct adapter *adapt);
+ bool rtl88eu_phy_rf_config(struct adapter *adapt);
 -- 
 1.9.1
 
