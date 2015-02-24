@@ -1,233 +1,50 @@
-X-GM-THRID: 6688903004160
-X-Received: by 10.112.159.227 with SMTP id xf3mr1078752lbb.11.1425510505195;
-        Wed, 04 Mar 2015 15:08:25 -0800 (PST)
+X-GM-THRID: 560417734656
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,aaed3dbebb789d37
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.44.161 with SMTP id f1mr16755032obm.33.1424763847223;
+        Mon, 23 Feb 2015 23:44:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.87.72 with SMTP id v8ls230881wiz.15.gmail; Wed, 04 Mar
- 2015 15:08:24 -0800 (PST)
-X-Received: by 10.180.182.201 with SMTP id eg9mr1515405wic.3.1425510504874;
-        Wed, 04 Mar 2015 15:08:24 -0800 (PST)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x234.google.com (mail-wg0-x234.google.com. [2a00:1450:400c:c00::234])
-        by gmr-mx.google.com with ESMTPS id gj20si166580wic.1.2015.03.04.15.08.24
+Received: by 10.140.105.164 with SMTP id c33ls2700244qgf.66.gmail; Mon, 23 Feb
+ 2015 23:44:07 -0800 (PST)
+X-Received: by 10.236.63.8 with SMTP id z8mr15812628yhc.15.1424763847082;
+        Mon, 23 Feb 2015 23:44:07 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si4085889pbc.2.2015.02.23.23.44.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Mar 2015 15:08:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) client-ip=2a00:1450:400c:c00::234;
+        Mon, 23 Feb 2015 23:44:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x234.google.com with SMTP id l18so2594932wgh.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 15:08:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=uGLr2vcnEK+AbYthE/QnKomJXJhRA6h8sP1508QwdBo=;
-        b=hrszQIIuiVwabxOgD6cvIPSEhAH4tYxmZ7ari6mFsZobi+Al/hkP2eskoZ5H+wQrvc
-         E6pLOBqs4g9p8F/wxTb3CuEQbOCgtw+heYdxNxa7y6W/Tcq9NDRTf7h05GvYADU2Z0vT
-         /iuvBSbbWlU6eIAu6eXzxuprKk3BKpAHp0BPDDm9QPz9nYciH54A4pkXX0S9encb5mUn
-         dPav5PqOlWQQHkCt+pirXqqE9ijYFzZR1Pimz4P7qt3fGccXPLFq8olUad+xDfmukp5m
-         dyL0ZbG3qj7uH74+VJWlb+QIngDv05XCZq0iE+xi3ZAO/3GoCvOQ+USh0C3YYQ8CvIYL
-         ryOw==
-X-Received: by 10.194.223.5 with SMTP id qq5mr12906374wjc.152.1425510504801;
-        Wed, 04 Mar 2015 15:08:24 -0800 (PST)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id v5sm5839721wiw.24.2015.03.04.15.08.23
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 04 Mar 2015 15:08:24 -0800 (PST)
-Date: Thu, 5 Mar 2015 01:07:53 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8192u: Bool tests don't need comparisons
-Message-ID: <20150304230752.GA22499@Inspiron>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C4B7F13;
+	Tue, 24 Feb 2015 07:44:06 +0000 (UTC)
+Date: Mon, 23 Feb 2015 23:44:06 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: line6: Removed the space
+ before ','.
+Message-ID: <20150224074406.GF11701@kroah.com>
+References: <20150219052205.GA24936@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20150219052205.GA24936@localhost>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes the following coccinelle warning:
-WARNING: Comparison to bool.
-It also adds small fixes for some coding style warnings.
+On Thu, Feb 19, 2015 at 10:52:05AM +0530, Navya Sri Nizamkari wrote:
+> This fixes the following checkpatch.pl error:
+> 
+> ERROR: space prohibited before that ','
+> 
+> Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+> ---
+>  drivers/staging/line6/pcm.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c |  8 +++-----
- drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c    |  4 ++--
- drivers/staging/rtl8192u/r8192U_core.c                 |  2 +-
- drivers/staging/rtl8192u/r8192U_dm.c                   | 12 ++++++------
- drivers/staging/rtl8192u/r819xU_firmware.c             |  6 +++---
- drivers/staging/rtl8192u/r819xU_phy.c                  |  2 +-
- 6 files changed, 16 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index 1cc66a1..92e6e7f 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -1364,12 +1364,10 @@ static void ieee80211_associate_complete_wq(struct work_struct *work)
- 		ieee->LinkDetectInfo.NumRecvDataInPeriod= 1;
- 	}
- 	ieee->link_change(ieee->dev);
--	if(ieee->is_silent_reset == 0){
-+	if (!ieee->is_silent_reset) {
- 		printk("============>normal associate\n");
- 	notify_wx_assoc_event(ieee);
--	}
--	else if(ieee->is_silent_reset == 1)
--	{
-+	} else if (ieee->is_silent_reset) {
- 		printk("==================>silent reset associate\n");
- 		ieee->is_silent_reset = false;
- 	}
-@@ -2053,7 +2051,7 @@ ieee80211_rx_frame_softmac(struct ieee80211_device *ieee, struct sk_buff *skb,
- 								ieee->SetWirelessMode(ieee->dev, IEEE_G);
- 							}
- 
--							if (ieee->current_network.mode == IEEE_N_24G && bHalfSupportNmode == true)
-+							if (ieee->current_network.mode == IEEE_N_24G && bHalfSupportNmode)
- 							{
- 								printk("===============>entern half N mode\n");
- 								ieee->bHalfWirelessN24GMode = true;
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-index acaa723..8e77c6f 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-@@ -288,7 +288,7 @@ static PTS_COMMON_INFO SearchAdmitTRStream(struct ieee80211_device *ieee,
- 	//for(dir = DIR_UP; dir <= DIR_BI_DIR; dir++)
- 	for(dir = 0; dir <= DIR_BI_DIR; dir++)
- 	{
--		if(search_dir[dir] ==false )
-+		if (!search_dir[dir])
- 			continue;
- 		list_for_each_entry(pRet, psearch_list, List){
- 	//		IEEE80211_DEBUG(IEEE80211_DL_TS, "ADD:%pM, TID:%d, dir:%d\n", pRet->Addr, pRet->TSpec.f.TSInfo.field.ucTSID, pRet->TSpec.f.TSInfo.field.ucDirection);
-@@ -400,7 +400,7 @@ bool GetTs(
- 	}
- 	else
- 	{
--		if(bAddNewTs == false)
-+		if (!bAddNewTs)
- 		{
- 			IEEE80211_DEBUG(IEEE80211_DL_TS, "add new TS failed(tid:%d)\n", UP);
- 			return false;
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index 7f0ace1..f84569b 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -2822,7 +2822,7 @@ static bool rtl8192_adapter_start(struct net_device *dev)
- 		}
- 		dm_initialize_txpower_tracking(dev);
- 
--		if (priv->bDcut == true) {
-+		if (priv->bDcut) {
- 			u32 i, TempCCk;
- 			u32 tmpRegA = rtl8192_QueryBBReg(dev, rOFDM0_XATxIQImbalance, bMaskDWord);
- 			for (i = 0; i < TxBBGainTableLength; i++) {
-diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-index 167d3b1..307e1d0 100644
---- a/drivers/staging/rtl8192u/r8192U_dm.c
-+++ b/drivers/staging/rtl8192u/r8192U_dm.c
-@@ -562,7 +562,7 @@ static void dm_TXPowerTrackingCallback_TSSI(struct net_device *dev)
- 					break;
- 				}
- 			}
--			if (viviflag == true) {
-+			if (viviflag) {
- 				write_nic_byte(dev, 0x1ba, 0);
- 				viviflag = false;
- 				RT_TRACE(COMP_POWER_TRACKING, "we filtered the data\n");
-@@ -765,7 +765,7 @@ void dm_txpower_trackingcallback(struct work_struct *work)
- 	struct r8192_priv *priv = container_of(dwork, struct r8192_priv, txpower_tracking_wq);
- 	struct net_device *dev = priv->ieee80211->dev;
- 
--	if (priv->bDcut == true)
-+	if (priv->bDcut)
- 		dm_TXPowerTrackingCallback_TSSI(dev);
- 	else
- 		dm_TXPowerTrackingCallback_ThermalMeter(dev);
-@@ -1300,7 +1300,7 @@ void dm_initialize_txpower_tracking(struct net_device *dev)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
--	if (priv->bDcut == true)
-+	if (priv->bDcut)
- 		dm_InitializeTXPowerTracking_TSSI(dev);
- 	else
- 		dm_InitializeTXPowerTracking_ThermalMeter(dev);
-@@ -1356,7 +1356,7 @@ static void dm_check_txpower_tracking(struct net_device *dev)
- #ifdef RTL8190P
- 	dm_CheckTXPowerTracking_TSSI(dev);
- #else
--	if (priv->bDcut == true)
-+	if (priv->bDcut)
- 		dm_CheckTXPowerTracking_TSSI(dev);
- 	else
- 		dm_CheckTXPowerTracking_ThermalMeter(dev);
-@@ -1466,7 +1466,7 @@ void dm_cck_txpower_adjust(struct net_device *dev, bool binch14)
- {	/*  dm_CCKTxPowerAdjust */
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
--	if (priv->bDcut == true)
-+	if (priv->bDcut)
- 		dm_CCKTxPowerAdjust_TSSI(dev, binch14);
- 	else
- 		dm_CCKTxPowerAdjust_ThermalMeter(dev, binch14);
-@@ -3063,7 +3063,7 @@ static void dm_dynamic_txpower(struct net_device *dev)
- 			priv->bDynamicTxLowPower = false;
- 		} else {
- 			/* high power state check */
--			if (priv->undecorated_smoothed_pwdb < txlowpower_threshold && priv->bDynamicTxHighPower == true)
-+			if (priv->undecorated_smoothed_pwdb < txlowpower_threshold && priv->bDynamicTxHighPower)
- 				priv->bDynamicTxHighPower = false;
- 
- 			/* low power state check */
-diff --git a/drivers/staging/rtl8192u/r819xU_firmware.c b/drivers/staging/rtl8192u/r819xU_firmware.c
-index 1a3a09f..aae30fc 100644
---- a/drivers/staging/rtl8192u/r819xU_firmware.c
-+++ b/drivers/staging/rtl8192u/r819xU_firmware.c
-@@ -281,7 +281,7 @@ bool init_firmware(struct net_device *dev)
- 		if (rst_opt == OPT_SYSTEM_RESET)
- 			release_firmware(fw_entry);
- 
--		if (rt_status != true)
-+		if (!rt_status)
- 			goto download_firmware_fail;
- 
- 		switch (init_step) {
-@@ -304,7 +304,7 @@ bool init_firmware(struct net_device *dev)
- 
- 			/* Check Put Code OK and Turn On CPU */
- 			rt_status = CPUcheck_maincodeok_turnonCPU(dev);
--			if (rt_status != true) {
-+			if (!rt_status) {
- 				RT_TRACE(COMP_ERR, "CPUcheck_maincodeok_turnonCPU fail!\n");
- 				goto download_firmware_fail;
- 			}
-@@ -318,7 +318,7 @@ bool init_firmware(struct net_device *dev)
- 			mdelay(1);
- 
- 			rt_status = CPUcheck_firmware_ready(dev);
--			if (rt_status != true) {
-+			if (!rt_status) {
- 				RT_TRACE(COMP_ERR, "CPUcheck_firmware_ready fail(%d)!\n",rt_status);
- 				goto download_firmware_fail;
- 			}
-diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
-index 084e04f..3451ec7 100644
---- a/drivers/staging/rtl8192u/r819xU_phy.c
-+++ b/drivers/staging/rtl8192u/r819xU_phy.c
-@@ -1099,7 +1099,7 @@ bool rtl8192_SetRFPowerState(struct net_device *dev,
- 	if (eRFPowerState == priv->ieee80211->eRFPowerState)
- 		return false;
- 
--	if (priv->SetRFPowerStateInProgress == true)
-+	if (priv->SetRFPowerStateInProgress)
- 		return false;
- 
- 	priv->SetRFPowerStateInProgress = true;
--- 
-1.9.1
-
+This file is no longer in the tree, so I can't accept patches for it :(
 
