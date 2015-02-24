@@ -1,86 +1,106 @@
-X-GM-THRID: 6249320187876605952
-X-Received: by 10.112.151.240 with SMTP id ut16mr3799258lbb.16.1455033241693;
-        Tue, 09 Feb 2016 07:54:01 -0800 (PST)
+X-GM-THRID: 2843857649664
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,837e11d1bf93e34c
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.181.29.66 with SMTP id ju2mr2223454wid.1.1424794285054;
+        Tue, 24 Feb 2015 08:11:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.38.67 with SMTP id m64ls935665lfm.49.gmail; Tue, 09 Feb
- 2016 07:54:01 -0800 (PST)
-X-Received: by 10.112.130.42 with SMTP id ob10mr4179765lbb.2.1455033241195;
-        Tue, 09 Feb 2016 07:54:01 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id w197si552647wmw.3.2016.02.09.07.54.01
+Received: by 10.180.94.34 with SMTP id cz2ls68719wib.46.canary; Tue, 24 Feb
+ 2015 08:11:23 -0800 (PST)
+X-Received: by 10.180.91.76 with SMTP id cc12mr2226671wib.7.1424794283243;
+        Tue, 24 Feb 2015 08:11:23 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ev8si928551wib.3.2015.02.24.08.11.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 07:54:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 24 Feb 2015 08:11:23 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id g62so4229092wme.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 07:54:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=yyg23Mrf4YyAkUdeV6VoeBBdHI/xeIa1QuX/d257++o=;
-        b=M2utsndEd5R0Gb8/FSaoTddsB1/A2Bll0H5wU7iqasL7eGHaU3ADk6aoihQed3Y7oE
-         B1gLKbdICiUTqNASChyYoyGVKVTYrBgC6bvgeRR5gCQ4j/8I8f3IXZvCEgNoWv54175k
-         yLp95v2TBd0BYmNagP8wT1ERnCnBcHKyy/r//C8nXgTJsJIcsKjchH+V7upPRDOOZF81
-         vkiggYvinohJ34/rO4k85Vs4ozB9RxsF/jpRv8QMCDJ5xpqm/zp81TVSCBOVzoBWBAp/
-         iFxS1OsjwJIF0ueszL4nfo5VulADMiTfhN1JRh/i32qNyAR3RR4fbq38ZCQCMDREVyrP
-         Rhrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yyg23Mrf4YyAkUdeV6VoeBBdHI/xeIa1QuX/d257++o=;
-        b=Iu271aGAQdJxtztj2KgJm5iIPMnGbvSrD9UYgH1dCTJfbWsvRgSpyWGMyw/mQ6COX7
-         hySuT9X6myQI27a2ixIy8ou4jJIOCg7E2T3I1CeM0KS0UeegEcgGbeYzBx6m5zxBY0LX
-         a6WhVXZRmdoAL5HDjiq6Ol5wWo3KIzGIQspJf7XPuCGr67/z5moscvyzwopY0a8JOOrt
-         EC3bvwt4rreFQJ0CZOdZJWVaDJNhbVE8nu97NjKM+MEQ0vFBiRQaf9ruRYOgKTnD3XK9
-         +rSXwldIkznrhLoZ7uv8wGZ3TalGkyx3m1o1FmfV7T+qhSFCrC5dhBuFM367Bhyd6SeM
-         oSiQ==
-X-Gm-Message-State: AG10YOQF1c8iOBKFXec32NBa9jLZ3HKTey+2MtB6Zu3saspzb9gf98gryWHYg0PYcMrbwg==
-X-Received: by 10.28.179.84 with SMTP id c81mr5795681wmf.30.1455033241031;
-        Tue, 09 Feb 2016 07:54:01 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id ka4sm35357130wjc.47.2016.02.09.07.53.50
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 07:54:00 -0800 (PST)
-From: Rakhi Sharma <rakhish1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Julia.Lawall@lip6.fr,
-	gregkh@linuxfoundation.org,
-	Rakhi Sharma <rakhish1994@gmail.com>
-Subject: [PATCH] drivers: staging: lustre: lustre: lov: lov_request: Fixed a coding style warning.
-Date: Tue,  9 Feb 2016 21:23:32 +0530
-Message-Id: <1455033212-16140-1-git-send-email-rakhish1994@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,639,1418079600"; 
+   d="scan'208";a="101175589"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2015 17:11:22 +0100
+Date: Tue, 24 Feb 2015 17:11:13 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Katie Dunne <kdunne@mail.ccsf.edu>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [RFC v2] Staging: speakup: Replace simple_strtoul
+ with kstrtoul
+In-Reply-To: <20150224155911.GA31347@katie-Inspiron-5748>
+Message-ID: <alpine.DEB.2.10.1502241703060.18704@hadrien>
+References: <20150224155911.GA31347@katie-Inspiron-5748>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fixed a coding style warning.
-WARNING: braces {} are not necessary for single statement blocks
+On Tue, 24 Feb 2015, Katie Dunne wrote:
 
-Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
----
- drivers/staging/lustre/lustre/lov/lov_request.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+> When compiling the following patch I get two warnings:
+>
+> WARNING: return makes pointer from integer without a cast
+> return -EINVAL;
+> ^
 
-diff --git a/drivers/staging/lustre/lustre/lov/lov_request.c b/drivers/staging/lustre/lustre/lov/lov_request.c
-index 42deda7..c77b987 100644
---- a/drivers/staging/lustre/lustre/lov/lov_request.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_request.c
-@@ -340,9 +340,8 @@ int lov_fini_destroy_set(struct lov_request_set *set)
- 	if (set == NULL)
- 		return 0;
- 	LASSERT(set->set_exp);
--	if (atomic_read(&set->set_completes)) {
-+	if (atomic_read(&set->set_completes))
- 		/* FIXME update qos data here */
--	}
- 
- 	lov_put_reqset(set);
- 
--- 
-1.9.1
+You have two return statements.  One says return -EINVAL and one says
+return start.  Start is a pointer.  -EINVAL is an integer.  If a function
+wants to return an integer from a pointer-typed function, it can use
+ERR_PTR(-EINVAL).
 
+On the other hand, that would just make the types work out.  It seems that
+you are significantly changing the semantics of the function.  For
+example, the caller does not currently expect an error value.  Removing
+simple_strtoul is often very complicated.  You need to consider several
+cases:
+
+What does it do on a string that contains only an unsigned long?
+What does it do on a string that contains an unsigned long followed by
+something else?
+What does it do on a string that contains something else entirely?
+
+You will see that kstrtoul does not have exactly the same behavior on
+these three cases.  So then you have to adjust this function so that the
+effect is the same.
+
+> WARNING: Cast from pointer to integer of different size
+> *dest = (u_char)res;
+>          ^
+
+Res is a pointer to unsigned long, thus probably 32 or 64 bits.  u_char is
+only 8 bits, and not a pointer.  Perhaps throwing away all the bits is
+not what is intended.
+
+>
+> -	val = kstroul(skip_spaces(start), &start, 10);
+> +	val = kstrtoul(skip_spaces(start), 10, res);
+
+Note that this is a patch against your previous change rather than against
+the original code.  Even when you just want feedback, it would be good to
+provide the original code so that one could understand the change in the
+proper context.
+
+julia
+
+
+> +		if (val)
+> +			return -EINVAL;
+>  	if (*start == ',')
+>  		start++;
+> -	*dest = (u_char)val;
+> +	*dest = (u_char)res;
+>  	return start;
+>  }
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150224155911.GA31347%40katie-Inspiron-5748.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
