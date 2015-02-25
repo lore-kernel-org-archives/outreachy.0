@@ -1,118 +1,75 @@
-X-GM-THRID: 9057687568384
+X-GM-THRID: 3506502107136
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,6c8feab96d31799a,start
+X-Google-Thread: 9ca63f596c,5659a1a3b16d7a5e,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.199.66 with SMTP id ji2mr78513826obc.14.1426715171400;
-        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
+X-Received: by 10.112.147.35 with SMTP id th3mr626312lbb.15.1424905482716;
+        Wed, 25 Feb 2015 15:04:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.81.85 with SMTP id e79ls957782qgd.4.gmail; Wed, 18 Mar
- 2015 14:46:11 -0700 (PDT)
-X-Received: by 10.236.202.233 with SMTP id d69mr16665412yho.13.1426715171201;
-        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id gb13si3339153pac.2.2015.03.18.14.46.11
+Received: by 10.152.164.193 with SMTP id ys1ls896104lab.39.gmail; Wed, 25 Feb
+ 2015 15:04:42 -0800 (PST)
+X-Received: by 10.112.222.131 with SMTP id qm3mr827498lbc.1.1424905482307;
+        Wed, 25 Feb 2015 15:04:42 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id by11si1468737wib.1.2015.02.25.15.04.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        Wed, 25 Feb 2015 15:04:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x236.google.com with SMTP id ni2so54956580pdb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
+Received: by mail-wi0-x231.google.com with SMTP id bs8so8635107wib.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 15:04:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=fnG/Cr1qHjiJOrLmUlEy/oeQ3+nvvevQj/nr1vDofi8=;
-        b=ZCE1eqPlbn4kEbjAgsk5xpkcwXcF0tjXRpVRYWhFdGMDQjUYUsKCt9J7FT7qejd65b
-         sAox4E7dWL5PYgo7BnbRwMiY19kChZyI2wQ45NZULU8F6mALcgv/PxHKly6E9HQfwfJg
-         MYryuQ48tdPLAtw+uOxDoBZl6jPJRNSDg6OgF2Ssn2tFF4EfRzsWWnNqHTC4TWJ0fhWI
-         UDstfRp/tuwVoITZ4ufoTc5I1Kr3eBRmrEzrnPd1u+j1l5brRisn5WYSc6dt3y4dy+sS
-         BiChFSnEjK+XmlhY2WYJTOuT1D9srzavT9Ygm/PRc+Edgh9IrNPINSPdoERwNImg98LL
-         c7nA==
-X-Received: by 10.70.31.66 with SMTP id y2mr104829304pdh.118.1426715171038;
-        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id um16sm29214495pab.7.2015.03.18.14.46.08
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Mar 2015 14:46:09 -0700 (PDT)
-Date: Thu, 19 Mar 2015 03:14:15 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=eBsEaQ7KDqWBaXQ0GV2QNHatxhCCDEgAkUdHHsgER6c=;
+        b=xJDZkl7f+6uJtjazDZpg7Xb5ljJ6aCMKB5TsJVl/ov3MuEhYYVtKDBZkRpJoYzJTDy
+         HBq+dZQx8ykPdxi9+gd8tIIL4j3d2p83GIR8PXuYCBnTdUin2Ju7rclVaNrXXFZ5Fwvf
+         QF9AWsdhQsn2x6eg7OOsE9+Ah7YXbbZqt3ZfcP0jlgruXlRsbgpM/9fvbWgWmVXVDSOA
+         oK850XumOWZR3chNH+oLLBYHzmgeP9C2k5SrGyER3kBZJmpZLOmhazgO8JjdugkeRflP
+         RXxPjG2PGVpQdq1XbLoOa4bBG9DfrVKUx7oOQB/zBLNn+LfmxIDY5FECiyWHaobtkV3R
+         CfyA==
+X-Received: by 10.194.90.210 with SMTP id by18mr10561353wjb.80.1424905482183;
+        Wed, 25 Feb 2015 15:04:42 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from localhost.localdomain ([78.187.192.150])
+        by mx.google.com with ESMTPSA id q6sm101864wix.13.2015.02.25.15.04.41
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 25 Feb 2015 15:04:41 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rts5208: Add new variable idx to shorten line
- length and increase readability
-Message-ID: <20150318214415.GA12733@akanksha>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Subject: [PATCH] Staging: fbtft: removed trailing whitespace
+Date: Thu, 26 Feb 2015 01:04:47 +0200
+Message-Id: <1424905487-7343-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-Add new variable idx to shorten line length of other statements
-and increase readability.
+The following patch fixes the checkpatch.pl warning:
+Removed all trailing whitespace in fb_s6d1121.c
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 ---
- drivers/staging/rts5208/ms.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/staging/fbtft/fb_s6d1121.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
-index 5a9321b..4c38ff9 100644
---- a/drivers/staging/rts5208/ms.c
-+++ b/drivers/staging/rts5208/ms.c
-@@ -2194,7 +2194,7 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
- 	struct zone_entry *segment;
- 	bool defect_flag;
- 	int retval, table_size, disable_cnt, i;
--	u16 start, end, phy_blk, log_blk, tmp_blk;
-+	u16 start, end, phy_blk, log_blk, tmp_blk, idx;
- 	u8 extra[MS_EXTRA_SIZE], us1, us2;
- 
- 	dev_dbg(rtsx_dev(chip), "ms_build_l2p_tbl: %d\n", seg_no);
-@@ -2305,13 +2305,15 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
- 			continue;
- 		}
- 
--		if (segment->l2p_table[log_blk - ms_start_idx[seg_no]] == 0xFFFF) {
--			segment->l2p_table[log_blk - ms_start_idx[seg_no]] = phy_blk;
-+		idx = log_blk - ms_start_idx[seg_no];
-+
-+		if (segment->l2p_table[idx] == 0xFFFF) {
-+			segment->l2p_table[idx] = phy_blk;
- 			continue;
- 		}
- 
- 		us1 = extra[0] & 0x10;
--		tmp_blk = segment->l2p_table[log_blk - ms_start_idx[seg_no]];
-+		tmp_blk = segment->l2p_table[idx];
- 		retval = ms_read_extra_data(chip, tmp_blk, 0,
- 					extra, MS_EXTRA_SIZE);
- 		if (retval != STATUS_SUCCESS)
-@@ -2342,7 +2344,8 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
- 
- 	for (log_blk = ms_start_idx[seg_no];
- 	     log_blk < ms_start_idx[seg_no + 1]; log_blk++) {
--		if (segment->l2p_table[log_blk-ms_start_idx[seg_no]] == 0xFFFF) {
-+		idx = log_blk - ms_start_idx[seg_no];
-+		if (segment->l2p_table[idx] == 0xFFFF) {
- 			phy_blk = ms_get_unused_block(chip, seg_no);
- 			if (phy_blk == 0xFFFF) {
- 				chip->card_wp |= MS_CARD;
-@@ -2352,7 +2355,7 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
- 			if (retval != STATUS_SUCCESS)
- 				TRACE_GOTO(chip, BUILD_FAIL);
- 
--			segment->l2p_table[log_blk-ms_start_idx[seg_no]] = phy_blk;
-+			segment->l2p_table[idx] = phy_blk;
- 			if (seg_no == ms_card->segment_cnt - 1) {
- 				if (segment->unused_blk_cnt < 2) {
- 					chip->card_wp |= MS_CARD;
+diff --git a/drivers/staging/fbtft/fb_s6d1121.c b/drivers/staging/fbtft/fb_s6d1121.c
+index 1ef8c1a..7bbb21b 100644
+--- a/drivers/staging/fbtft/fb_s6d1121.c
++++ b/drivers/staging/fbtft/fb_s6d1121.c
+@@ -143,7 +143,7 @@ static int set_var(struct fbtft_par *par)
+ static int set_gamma(struct fbtft_par *par, unsigned long *curves)
+ {
+ 	unsigned long mask[] = {
+-		0b111111, 0b111111, 0b111111, 0b111111, 0b111111, 0b111111, 
++		0b111111, 0b111111, 0b111111, 0b111111, 0b111111, 0b111111,
+ 		0b111111, 0b111111, 0b111111, 0b111111, 0b111111, 0b111111,
+ 		0b11111, 0b11111,
+ 		0b111111, 0b111111, 0b111111, 0b111111, 0b111111, 0b111111,
 -- 
-1.9.1
+1.8.3.2
 
 
