@@ -1,121 +1,82 @@
 X-GM-THRID: 2067485687808
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e2f8e6cdb7b38af
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.50.87.97 with SMTP id w1mr819248igz.1.1424992856228;
-        Thu, 26 Feb 2015 15:20:56 -0800 (PST)
+X-Received: by 10.43.117.72 with SMTP id fl8mr4097581icc.23.1424883275174;
+        Wed, 25 Feb 2015 08:54:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.191.36 with SMTP id gv4ls156519obc.96.gmail; Thu, 26 Feb
- 2015 15:20:56 -0800 (PST)
-X-Received: by 10.182.251.231 with SMTP id zn7mr10821080obc.24.1424992856060;
-        Thu, 26 Feb 2015 15:20:56 -0800 (PST)
+Received: by 10.107.151.208 with SMTP id z199ls1544223iod.12.gmail; Wed, 25
+ Feb 2015 08:54:34 -0800 (PST)
+X-Received: by 10.70.45.49 with SMTP id j17mr3748035pdm.4.1424883274658;
+        Wed, 25 Feb 2015 08:54:34 -0800 (PST)
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id ri9si295668pdb.1.2015.02.26.15.20.55
+        by gmr-mx.google.com with ESMTPS id hs7si73233pad.1.2015.02.25.08.54.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 15:20:56 -0800 (PST)
+        Wed, 25 Feb 2015 08:54:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
 Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C07A4B4C;
-	Thu, 26 Feb 2015 23:20:55 +0000 (UTC)
-Date: Thu, 26 Feb 2015 15:20:55 -0800
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 5DC01B30;
+	Wed, 25 Feb 2015 16:54:34 +0000 (UTC)
+Date: Wed, 25 Feb 2015 08:54:34 -0800
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Haneen Mohammed <hamohammed.sa@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v5 1/6] Staging: emxx_udc: Fix do not
- add new typedefs
-Message-ID: <20150226232055.GA16476@kroah.com>
-References: <cover.1424786861.git.hamohammed.sa@gmail.com>
- <114675998581f4b01d0d6c1556193010f35da12e.1424786861.git.hamohammed.sa@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: emxx_udc: Replace printk
+ with pr_err
+Message-ID: <20150225165434.GA30720@kroah.com>
+References: <cover.1424473862.git.hamohammed.sa@gmail.com>
+ <aa0c6571b79f806ec4edba60e2d13d2edcf0cd8f.1424473862.git.hamohammed.sa@gmail.com>
+ <alpine.DEB.2.02.1502212158560.2296@localhost6.localdomain6>
+ <20150224232529.GB24927@kroah.com>
+ <20150225162028.GA2253@example.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <114675998581f4b01d0d6c1556193010f35da12e.1424786861.git.hamohammed.sa@gmail.com>
+In-Reply-To: <20150225162028.GA2253@example.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tue, Feb 24, 2015 at 05:23:30PM +0300, Haneen Mohammed wrote:
-> This patch fixes the following checkpatch.pl warning:"do not add new
-> typedefs".
-> Remove typedefs keyword and rename identifiers appropriately.
-> Update related  files.
+On Wed, Feb 25, 2015 at 07:20:28PM +0300, Haneen Mohammed wrote:
+> On Tue, Feb 24, 2015 at 03:25:29PM -0800, Greg KH wrote:
+> > On Sat, Feb 21, 2015 at 09:59:55PM +0100, Julia Lawall wrote:
+> > > On Sat, 21 Feb 2015, Haneen Mohammed wrote:
+> > > 
+> > > > This patch replaces printk(KERN_ERR .. with pr_err, to fix the following
+> > > > checkpatch.pl warning:
+> > > > WARNING: Prefer [subsystem eg: netdev]_err([subsystem]dev,  ... then
+> > > > dev_err(dev,  ... then pr_err(...  to printk(KERN_ERR ...
+> > > > 
+> > > > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > > > ---
+> > > >  drivers/staging/emxx_udc/emxx_udc.h | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+> > > > index c1f98b3..c3fd7f6 100644
+> > > > --- a/drivers/staging/emxx_udc/emxx_udc.h
+> > > > +++ b/drivers/staging/emxx_udc/emxx_udc.h
+> > > > @@ -644,6 +644,6 @@ volatile union usb_reg_access {
+> > > >  };
+> > > >  
+> > > >  /*-------------------------------------------------------------------------*/
+> > > > -#define ERR(stuff...)		printk(KERN_ERR "udc: " stuff)
+> > > > +#define ERR(stuff...)		pr_err("udc: " stuff)
+> > > 
+> > > A better approach would be to remove ERR completely, and see which 
+> > > standard kernel debugging function (pr_err?, dev_err?) could be used at 
+> > > each point.
+> > 
+> > Ideally dev_err() should be used, just drop ERR() entirely please.
+> > 
+> > thanks,
+> > 
+> > greg k-h
 > 
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
-> ---
-> v5: Nothing
-> v4: Replace struct with volatile union for usb_reg_access.
-> v3: Remove all typedefs and create patchset from emxx_udc.
-> v2: Remove typedefs appropriately and change related file.
-> 
->  drivers/staging/emxx_udc/emxx_udc.c | 60 ++++++++++++++++++-------------------
->  drivers/staging/emxx_udc/emxx_udc.h | 26 ++++++++--------
->  2 files changed, 43 insertions(+), 43 deletions(-)
-> 
-> diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-> index 82c492f..e33ccc4 100644
-> --- a/drivers/staging/emxx_udc/emxx_udc.c
-> +++ b/drivers/staging/emxx_udc/emxx_udc.c
-> @@ -201,7 +201,7 @@ static u32 _nbu2ss_get_begin_ram_address(struct nbu2ss_udc *udc)
->  	u32		num, buf_type;
->  	u32		data, last_ram_adr, use_ram_size;
->  
-> -	PT_EP_REGS	p_ep_regs;
-> +	struct ep_regs *p_ep_regs;
->  
->  	last_ram_adr = (D_RAM_SIZE_CTRL / sizeof(u32)) * 2;
->  	use_ram_size = 0;
-> @@ -394,7 +394,7 @@ static void _nbu2ss_ep_dma_exit(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
->  {
->  	u32		num;
->  	u32		data;
-> -	PT_FC_REGS	preg = udc->p_regs;
-> +	struct fc_regs	*preg = udc->p_regs;
->  
->  	if (udc->vbus_active == 0)
->  		return;		/* VBUS OFF */
-> @@ -425,7 +425,7 @@ static void _nbu2ss_ep_dma_exit(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
->  /* Abort DMA */
->  static void _nbu2ss_ep_dma_abort(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
->  {
-> -	PT_FC_REGS	preg = udc->p_regs;
-> +	struct fc_regs	*preg = udc->p_regs;
->  
->  	_nbu2ss_bitclr(&preg->EP_DCR[ep->epnum-1].EP_DCR1, DCR1_EPn_REQEN);
->  	mdelay(DMA_DISABLE_TIME);	/* DCR1_EPn_REQEN Clear */
-> @@ -443,7 +443,7 @@ static void _nbu2ss_ep_in_end(
->  {
->  	u32		data;
->  	u32		num;
-> -	PT_FC_REGS	preg = udc->p_regs;
-> +	struct fc_regs	*preg = udc->p_regs;
->  
->  	if (length >= sizeof(u32))
->  		return;
-> @@ -567,7 +567,7 @@ static int EP0_out_PIO(struct nbu2ss_udc *udc, u8 *pBuf, u32 length)
->  	u32		i;
->  	int		nret   = 0;
->  	u32		iWordLength = 0;
-> -	USB_REG_ACCESS *pBuf32 = (USB_REG_ACCESS *)pBuf;
-> +	volatile union usb_reg_access *pBuf32 = (volatile union usb_reg_access *)pBuf;
->  
->  	/*------------------------------------------------------------*/
->  	/* Read Length */
-> @@ -592,8 +592,8 @@ static int EP0_out_OverBytes(struct nbu2ss_udc *udc, u8 *pBuf, u32 length)
->  {
->  	u32		i;
->  	u32		iReadSize = 0;
-> -	USB_REG_ACCESS  Temp32;
-> -	USB_REG_ACCESS *pBuf32 = (USB_REG_ACCESS *)pBuf;
-> +	volatile union usb_reg_access  Temp32;
-> +	volatile union usb_reg_access  *pBuf32 = (volatile union usb_reg_access *)pBuf;
+> I did drop ERR() macro and sent it as new patchset. the last revision
+> was "[PATCH v5 0/6] Staging: emxx_udc: Fix checkpatch.pl warnings"
 
-volatile is almost never needed in the kernel, and in these places it's
-wrong, so please don't add it here, or in any of these cases.
-
-thanks,
+Great, thanks for this, still sifting through the submissions, in order,
+so I hadn't gotten to these yet.
 
 greg k-h
 
