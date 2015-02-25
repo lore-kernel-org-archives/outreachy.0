@@ -1,124 +1,127 @@
-X-GM-THRID: 2401796882432
-X-Received: by 10.66.66.1 with SMTP id b1mr6805947pat.8.1424608673367;
-        Sun, 22 Feb 2015 04:37:53 -0800 (PST)
+X-GM-THRID: 3410730418176
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,680287379d66a607
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.42.157.134 with SMTP id d6mr3472596icx.27.1424878876468;
+        Wed, 25 Feb 2015 07:41:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.56.227 with SMTP id d3ls528430obq.35.gmail; Sun, 22 Feb
- 2015 04:37:53 -0800 (PST)
-X-Received: by 10.182.205.232 with SMTP id lj8mr6913828obc.39.1424608673080;
-        Sun, 22 Feb 2015 04:37:53 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22e.google.com (mail-pd0-x22e.google.com. [2607:f8b0:400e:c02::22e])
-        by gmr-mx.google.com with ESMTPS id re6si3883097pab.1.2015.02.22.04.37.53
+Received: by 10.182.43.202 with SMTP id y10ls1066986obl.61.gmail; Wed, 25 Feb
+ 2015 07:41:16 -0800 (PST)
+X-Received: by 10.182.205.232 with SMTP id lj8mr3324113obc.39.1424878876298;
+        Wed, 25 Feb 2015 07:41:16 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from mail-pa0-f52.google.com (mail-pa0-f52.google.com. [209.85.220.52])
+        by gmr-mx.google.com with ESMTPS id nt14si3342678pab.2.2015.02.25.07.41.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 04:37:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) client-ip=2607:f8b0:400e:c02::22e;
+        Wed, 25 Feb 2015 07:41:16 -0800 (PST)
+Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.220.52;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdev10 with SMTP id v10so18888001pde.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 04:37:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=oLJHqg0SQ4QwC9RF2ZrTZXGv/MrW9fncZ+wKZyTvkgE=;
-        b=ITdiXi0TI47g1Jj2AIw7aBBtxDgRIVYo267ih+Yjr8Mbz4CURumTrKpKeFM3CROAQs
-         HYbSgrZ5Gb7361pMSet9mWQViQ+RrU2169d2cMnbMdTM+gSo6C5BQpdRSFr30TkTEELS
-         j/Q70r3cUYGAnfNahdFqNAbBimFSCMW/2OgWFCtyeBSUdrzBuv+JLVwYPrRt1kMWtgmd
-         8mPDDr5OqNNxU6V/0mvKJuuKSmH5R7q7agsVOv8XSzClrg3oexXEtvNgAwtNOu1tq4y1
-         /WwvYvf9bF1ukdEvzaCQx0sNPEUAmBFcfRR3DRf2rvWs1TySFYv55JY+nM97Hc4trf8O
-         B28w==
-X-Received: by 10.67.5.130 with SMTP id cm2mr11195791pad.110.1424608672964;
-        Sun, 22 Feb 2015 04:37:52 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id cf12sm7489297pdb.43.2015.02.22.04.37.49
+       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
+Received: by paceu11 with SMTP id eu11so6025613pac.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 07:41:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=PzHUBrqPc6wR8UOBS8vqvD09cd/QErrCP8BiaHIxUVc=;
+        b=IHD1H49wGpwLB612p7GtWb0AAIZP0sXgUsiJivPuQkL9U7N4PPn0d7dwTgYOL9hoci
+         nDAuDgixAvxIsWzbB/awBHF+BDZy29pF3JGPV8cjyS9px8idKl3+iJSdZTcRebmXFJKg
+         FE3XVtjRFczo7D2UUJ2Ani2naqiStVeyOA2VTRsnRAa59JxM8a6Ry6qivKOtmCPTqxQl
+         ARHtn6XL1XuYf73DZ3I3TodT/X0vJMhcKZz0gaE7iUkc98dd4k0e6K5XCWsg8rHFYV+f
+         lSO0wW8bcE7FaVgi0hHJkpq5Q3t7S5hCuJHhu7dTgGFfPW5aJ+W9dDZMn+JF8nCRSDST
+         nXew==
+X-Gm-Message-State: ALoCoQnRyLSiRXQ6nMvHlJP/6lQBFNDMiS3EUIG6NOepWYpwjLT0dB/778IhoFKj2Ym8FfHzx0lp
+X-Received: by 10.70.124.202 with SMTP id mk10mr6302196pdb.159.1424878876071;
+        Wed, 25 Feb 2015 07:41:16 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from katie-Inspiron-5748 ([2601:9:8340:b6:a8:9b9c:e61:d61c])
+        by mx.google.com with ESMTPSA id r8sm26127716pdp.10.2015.02.25.07.41.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 04:37:51 -0800 (PST)
-Date: Sun, 22 Feb 2015 18:07:33 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        Wed, 25 Feb 2015 07:41:15 -0800 (PST)
+Date: Wed, 25 Feb 2015 07:41:14 -0800
+From: Katie Dunne <kdunne@mail.ccsf.edu>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Fix line over 80 characters
-Message-ID: <20150222123733.GA24239@gmail.com>
+Subject: [PATCH 2/2] Staging: rtl8188eu: Remove unused macros
+Message-ID: <67572468ef7c61261373481b50b54305c8ead4ce.1424878698.git.kdunne@mail.ccsf.edu>
+References: <e068eac448bfced44fb79e2cd0b2d3848e152086.1424878698.git.kdunne@mail.ccsf.edu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <e068eac448bfced44fb79e2cd0b2d3848e152086.1424878698.git.kdunne@mail.ccsf.edu>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Added a variable to reduce line size and enhance code readability.
+Removes macro definitions that are unused elsewhere
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
 ---
- drivers/staging/rtl8188eu/hal/bb_cfg.c | 33 +++++++++++++++++----------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+ drivers/staging/rtl8188eu/include/wifi.h | 28 ----------------------------
+ 1 file changed, 28 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-index 1e963bf..262da88 100644
---- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
-+++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-@@ -511,42 +511,43 @@ static u32 array_phy_reg_pg_8188e[] = {
- static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitmask, u32 data)
- {
- 	struct hal_data_8188e *hal_data = GET_HAL_DATA(Adapter);
-+	 u8 pwrGrpCnt = hal_data->pwrGroupCnt;
+diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl8188eu/include/wifi.h
+index 8dbdfaf..a68b522 100644
+--- a/drivers/staging/rtl8188eu/include/wifi.h
++++ b/drivers/staging/rtl8188eu/include/wifi.h
+@@ -301,22 +301,12 @@ enum WIFI_REG_DOMAIN {
+ #define GetPrivacy(pbuf)					\
+ 	(((*(__le16 *)(pbuf)) & cpu_to_le16(_PRIVACY_)) != 0)
  
- 	if (regaddr == rTxAGC_A_Rate18_06)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][0] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][0] = data;
- 	if (regaddr == rTxAGC_A_Rate54_24)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][1] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][1] = data;
- 	if (regaddr == rTxAGC_A_CCK1_Mcs32)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][6] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][6] = data;
- 	if (regaddr == rTxAGC_B_CCK11_A_CCK2_11 && bitmask == 0xffffff00)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][7] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][7] = data;
- 	if (regaddr == rTxAGC_A_Mcs03_Mcs00)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][2] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][2] = data;
- 	if (regaddr == rTxAGC_A_Mcs07_Mcs04)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][3] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][3] = data;
- 	if (regaddr == rTxAGC_A_Mcs11_Mcs08)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][4] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][4] = data;
- 	if (regaddr == rTxAGC_A_Mcs15_Mcs12) {
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][5] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][5] = data;
- 		if (hal_data->rf_type == RF_1T1R)
- 			hal_data->pwrGroupCnt++;
- 	}
- 	if (regaddr == rTxAGC_B_Rate18_06)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][8] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][8] = data;
- 	if (regaddr == rTxAGC_B_Rate54_24)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][9] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][9] = data;
- 	if (regaddr == rTxAGC_B_CCK1_55_Mcs32)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][14] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][14] = data;
- 	if (regaddr == rTxAGC_B_CCK11_A_CCK2_11 && bitmask == 0x000000ff)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][15] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][15] = data;
- 	if (regaddr == rTxAGC_B_Mcs03_Mcs00)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][10] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][10] = data;
- 	if (regaddr == rTxAGC_B_Mcs07_Mcs04)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][11] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][11] = data;
- 	if (regaddr == rTxAGC_B_Mcs11_Mcs08)
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][12] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][12] = data;
- 	if (regaddr == rTxAGC_B_Mcs15_Mcs12) {
--		hal_data->MCSTxPowerLevelOriginalOffset[hal_data->pwrGroupCnt][13] = data;
-+		hal_data->MCSTxPowerLevelOriginalOffset[pwrGrpCnt][13] = data;
- 		if (hal_data->rf_type != RF_1T1R)
- 			hal_data->pwrGroupCnt++;
- 	}
+-#define ClearPrivacy(pbuf)	\
+-	*(__le16 *)(pbuf) &= (~cpu_to_le16(_PRIVACY_))
+-
+-
+ #define GetOrder(pbuf)					\
+ 	(((*(__le16 *)(pbuf)) & cpu_to_le16(_ORDER_)) != 0)
+ 
+ #define GetFrameType(pbuf)				\
+ 	(le16_to_cpu(*(__le16 *)(pbuf)) & (BIT(3) | BIT(2)))
+ 
+-#define SetFrameType(pbuf, type)	\
+-	do {	\
+-		*(unsigned short *)(pbuf) &= __constant_cpu_to_le16(~(BIT(3) | BIT(2))); \
+-		*(unsigned short *)(pbuf) |= __constant_cpu_to_le16(type); \
+-	} while (0)
+-
+ #define GetFrameSubType(pbuf)	(le16_to_cpu(*(__le16 *)(pbuf)) & (BIT(7) |\
+ 	 BIT(6) | BIT(5) | BIT(4) | BIT(3) | BIT(2)))
+ 
+@@ -333,17 +323,6 @@ enum WIFI_REG_DOMAIN {
+ #define GetFragNum(pbuf)			\
+ 	(le16_to_cpu(*(__le16 *)((size_t)(pbuf) + 22)) & 0x0f)
+ 
+-#define GetTupleCache(pbuf)			\
+-	(cpu_to_le16(*(unsigned short *)((size_t)(pbuf) + 22)))
+-
+-#define SetFragNum(pbuf, num) \
+-	do {    \
+-		*(unsigned short *)((size_t)(pbuf) + 22) = \
+-			((*(unsigned short *)((size_t)(pbuf) + 22)) &	\
+-			le16_to_cpu(~(0x000f))) | \
+-			cpu_to_le16(0x0f & (num));     \
+-	} while (0)
+-
+ #define SetSeqNum(pbuf, num) \
+ 	do {    \
+ 		*(__le16 *)((size_t)(pbuf) + 22) = \
+@@ -370,15 +349,8 @@ enum WIFI_REG_DOMAIN {
+ 
+ #define GetAMsdu(pbuf) (((le16_to_cpu(*(__le16 *)pbuf)) >> 7) & 0x1)
+ 
+-#define SetAMsdu(pbuf, amsdu)	\
+-	*(__le16 *)(pbuf) |= cpu_to_le16((amsdu & 1) << 7)
+-
+ #define GetAid(pbuf)	(le16_to_cpu(*(__le16 *)((size_t)(pbuf) + 2)) & 0x3fff)
+ 
+-#define GetTid(pbuf)	(le16_to_cpu(*(__le16 *)((size_t)(pbuf) +	\
+-			(((GetToDs(pbuf)<<1) | GetFrDs(pbuf)) == 3 ?	\
+-			30 : 24))) & 0x000f)
+-
+ #define GetAddr1Ptr(pbuf)	((unsigned char *)((size_t)(pbuf) + 4))
+ 
+ #define GetAddr2Ptr(pbuf)	((unsigned char *)((size_t)(pbuf) + 10))
 -- 
 1.9.1
 
