@@ -1,54 +1,65 @@
 X-GM-THRID: 3468768051200
-X-Received: by 10.112.40.81 with SMTP id v17mr851714lbk.5.1424905428557;
-        Wed, 25 Feb 2015 15:03:48 -0800 (PST)
+X-Received: by 10.182.91.79 with SMTP id cc15mr5614922obb.20.1424905224540;
+        Wed, 25 Feb 2015 15:00:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.74 with SMTP id q10ls876688laq.43.gmail; Wed, 25 Feb
- 2015 15:03:48 -0800 (PST)
-X-Received: by 10.112.144.130 with SMTP id sm2mr856942lbb.9.1424905428061;
-        Wed, 25 Feb 2015 15:03:48 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id ta1si1232712wic.1.2015.02.25.15.03.47
+Received: by 10.182.236.7 with SMTP id uq7ls116066obc.68.gmail; Wed, 25 Feb
+ 2015 15:00:24 -0800 (PST)
+X-Received: by 10.182.231.199 with SMTP id ti7mr3813123obc.7.1424905224259;
+        Wed, 25 Feb 2015 15:00:24 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id nt14si3472783pab.2.2015.02.25.15.00.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 15:03:48 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Feb 2015 15:00:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,648,1418079600"; 
-   d="scan'208";a="123415556"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 26 Feb 2015 00:03:47 +0100
-Date: Thu, 26 Feb 2015 00:03:46 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Greg KH <gregkh@linuxfoundation.org>
-cc: aybuke ozdemir <aybuke.147@gmail.com>, outreachy-kernel@googlegroups.com
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id BFC52B14;
+	Wed, 25 Feb 2015 23:00:23 +0000 (UTC)
+Date: Wed, 25 Feb 2015 15:00:23 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: aybuke ozdemir <aybuke.147@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH 1/3] Staging: i2o: Remove unnecessary
  'out of memory' message
-In-Reply-To: <20150225230023.GB14612@kroah.com>
-Message-ID: <alpine.DEB.2.02.1502260002420.2029@localhost6.localdomain6>
-References: <1424902222-10105-1-git-send-email-aybuke.147@gmail.com> <20150225230023.GB14612@kroah.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+Message-ID: <20150225230023.GB14612@kroah.com>
+References: <1424902222-10105-1-git-send-email-aybuke.147@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1424902222-10105-1-git-send-email-aybuke.147@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-> I'll take these, but please stay away from the i2o drivers, they are
-> going to be removed from the kernel soon and are not worth the cleanup.
+On Thu, Feb 26, 2015 at 12:10:20AM +0200, aybuke ozdemir wrote:
+> This patch removes unnecessay out of memory message fixing the following
+> checkpach.pl warning in device.c
+> 
+> Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
+> ---
+>  drivers/staging/i2o/device.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/i2o/device.c b/drivers/staging/i2o/device.c
+> index 2af2255..162a887 100644
+> --- a/drivers/staging/i2o/device.c
+> +++ b/drivers/staging/i2o/device.c
+> @@ -566,7 +566,6 @@ int i2o_parm_table_get(struct i2o_device *dev, int oper, int group,
+>  
+>  	opblk = kmalloc(size, GFP_KERNEL);
+>  	if (opblk == NULL) {
+> -		printk(KERN_ERR "i2o: no memory for query buffer.\n");
+>  		return -ENOMEM;
+>  	}
+>  
+> -- 
+> 1.9.1
 
-Aybuke,
+I'll take these, but please stay away from the i2o drivers, they are
+going to be removed from the kernel soon and are not worth the cleanup.
 
-There is a list of directories to avoid in:
+thanks,
 
-http://kernelnewbies.org/Outreachyfirstpatch
-
-In the section Find a driver to clean up.  Concretely,
-
-i2o
-line6
-media/parport
-media/tlg2300
-media/vino
-
-julia
+greg k-h
 
