@@ -1,97 +1,74 @@
-X-GM-THRID: 5445984976896
+X-GM-THRID: 3532128256000
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,1a6a5916f306b309,start
+X-Google-Thread: 9ca63f596c,2cd963ab497c3ca7,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.68.132.99 with SMTP id ot3mr22168191pbb.6.1425223073936;
-        Sun, 01 Mar 2015 07:17:53 -0800 (PST)
+X-Received: by 10.180.101.101 with SMTP id ff5mr3265807wib.5.1424906789572;
+        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.27.106 with SMTP id s10ls494435obg.73.gmail; Sun, 01 Mar
- 2015 07:17:53 -0800 (PST)
-X-Received: by 10.182.111.132 with SMTP id ii4mr21964162obb.2.1425223073724;
-        Sun, 01 Mar 2015 07:17:53 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id nt14si1167658pab.2.2015.03.01.07.17.53
+Received: by 10.180.211.114 with SMTP id nb18ls1087721wic.26.canary; Wed, 25
+ Feb 2015 15:26:29 -0800 (PST)
+X-Received: by 10.181.29.66 with SMTP id ju2mr3265588wid.1.1424906789308;
+        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
+        by gmr-mx.google.com with ESMTPS id ta1si1236833wic.1.2015.02.25.15.26.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 07:17:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id lj1so833182pab.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 07:17:53 -0800 (PST)
+Received: by mail-we0-x233.google.com with SMTP id k48so6765403wev.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 15:26:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=YsRXbcBfmsl5caH7fXYkijuzcmNR60nBnzsa40icxOU=;
-        b=gYvIhpn8s+78onOFrlBcvZ9oipZyydlzVSoNRsinTNg6tidScykwIILdWzKRtyzqq1
-         0qjzHpWX7vT2UrG7NqRgUIv8gRyFAfLJbzAUIqkB1UteMaUqZyLM5HqRbrbebn2Bgnnu
-         /Y9l5zEt+cEg35vvO4iRAX3RVNumwX3dB/vq/LF51aqm4N4SI19AT6r74ta+yVftK6IC
-         ATLraK/APGMR1RmrSvDYRxZDuIbXcRlurt1zlPpNzz209Q0rNn0Fu6vYym3O1Dtat5+y
-         DXR/SLR6pGCaPmNZhkiDBSLoNCMrwIgnSz0ANksAc+igkc6B6Teo15sxbbn+vA387SLp
-         eamw==
-X-Received: by 10.70.45.199 with SMTP id p7mr40044512pdm.32.1425223073573;
-        Sun, 01 Mar 2015 07:17:53 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id k14sm9357860pbq.53.2015.03.01.07.17.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 07:17:52 -0800 (PST)
-Date: Sun, 1 Mar 2015 20:46:25 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=1TuzGOeg1DR30qACEBxI00AWSCuiR3sqBHYx/HY7dVA=;
+        b=uOxXC0OrsVvFgWqBywHBf/J/6DgDi8C5X3EfQSOBcnII3LG7jL5w0rqFYKt/kX2Zoz
+         kX6HIHLCziAGlAhVue5vSi/QA55N0LUecnsvx5GagewNrL2k4xWdNawQGDm2SfgFxr1D
+         2KPieOFvinSDFl5LT3ADkkFYzgEQIx3ktmjZdtote/aU4mnmdnpJNuWrI2N+fnHxN+yy
+         vqNWMH4pksS8izefzUObqClgY4oClsIczkFxq6BpjYvXebi8YUXB7ERfmlzTh3zlichu
+         zxSixuGYHyM2hfdSPC3qUHgIwxC65tLfP52bKHiYaYk5tm8MigsjFnPdKprKBScSnUJC
+         l4tg==
+X-Received: by 10.194.173.138 with SMTP id bk10mr10639120wjc.112.1424906789237;
+        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from localhost.localdomain ([78.187.61.145])
+        by mx.google.com with ESMTPSA id ev7sm66928629wjb.47.2015.02.25.15.26.28
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 25 Feb 2015 15:26:28 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Remove unused variable.
-Message-ID: <20150301151625.GA3232@akanksha>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Subject: [PATCH] Staging: i2o: Add blank line
+Date: Thu, 26 Feb 2015 01:26:36 +0200
+Message-Id: <1424906796-8124-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-The patch was recognized by this Coccinelle script.
-The return value of the function need not be assigned
-to a variable.
+This patch fixes the checkpatch.pl warning:
+WARNING: "Missing a blank line after declarations"
 
-@@
-identifier f, ret;
-type T;
-@@
-(
-- ret =
-+ return
-  f(...);
-  - return ret;
-  
-  |
-  
-  - T ret =
-  + return
-    f(...);
-    - return ret;
-)
-    Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/fw.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/staging/i2o/debug.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/rtl8188eu/hal/fw.c b/drivers/staging/rtl8188eu/hal/fw.c
-index 3b28754..8f1fdf1 100644
---- a/drivers/staging/rtl8188eu/hal/fw.c
-+++ b/drivers/staging/rtl8188eu/hal/fw.c
-@@ -230,7 +230,5 @@ int rtl88eu_download_fw(struct adapter *adapt)
- 	_rtl88e_write_fw(adapt, pfwdata, fwsize);
- 	_rtl88e_enable_fw_download(adapt, false);
- 
--	err = _rtl88e_fw_free_to_go(adapt);
--
--	return err;
-+	return _rtl88e_fw_free_to_go(adapt);
- }
+diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
+index 7a16114..fa6fa87 100644
+--- a/drivers/staging/i2o/debug.c
++++ b/drivers/staging/i2o/debug.c
+@@ -54,6 +54,7 @@ void i2o_dump_message(struct i2o_message *m)
+ #ifdef DEBUG
+ 	u32 *msg = (u32 *) m;
+ 	int i;
++
+ 	printk(KERN_INFO "Dumping I2O message size %d @ %p\n",
+ 	       msg[0] >> 16 & 0xffff, msg);
+ 	for (i = 0; i < ((msg[0] >> 16) & 0xffff); i++)
 -- 
-1.9.1
+1.8.3.2
 
 
