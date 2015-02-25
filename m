@@ -1,78 +1,54 @@
 X-GM-THRID: 3468768051200
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,26dddd85f4bffbd9
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.6.41 with SMTP id x9mr851280lax.10.1424905949110;
-        Wed, 25 Feb 2015 15:12:29 -0800 (PST)
+X-Received: by 10.112.40.81 with SMTP id v17mr851714lbk.5.1424905428557;
+        Wed, 25 Feb 2015 15:03:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.188.172 with SMTP id gb12ls4656wic.21.gmail; Wed, 25 Feb
- 2015 15:12:28 -0800 (PST)
-X-Received: by 10.194.239.41 with SMTP id vp9mr851202wjc.5.1424905948791;
-        Wed, 25 Feb 2015 15:12:28 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
-        by gmr-mx.google.com with ESMTPS id r6si5746wix.0.2015.02.25.15.12.28
+Received: by 10.152.5.74 with SMTP id q10ls876688laq.43.gmail; Wed, 25 Feb
+ 2015 15:03:48 -0800 (PST)
+X-Received: by 10.112.144.130 with SMTP id sm2mr856942lbb.9.1424905428061;
+        Wed, 25 Feb 2015 15:03:48 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ta1si1232712wic.1.2015.02.25.15.03.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 15:12:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 25 Feb 2015 15:03:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=aybuke.147@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesp10 with SMTP id p10so4506912wes.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 15:12:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=tbq2T+iqqM4SFmYDrPnddGG+9r6LsQmkQEUqWfh30R4=;
-        b=0H0Ptg/rGAihvFDxVgAa8YGdSll7DFlDQM58hYJT/dBRc4m6CV9Zs4q9b5hOlDTkx3
-         FqbW7dCalzLrwDDwjkFUv8yTBhabnoT/S0UMoo8WBSvDM/gMpUekBh0Lj53vY1epYoky
-         ELfMbl8JH10jT7RhnJPrgGzKWy9yJlmxzwVQTSHBfM4y0/kr8UWwr8FR/+IkxL0Tm+FB
-         /KvFBOaO0NyYJ+zGlkj2lIJQcgNBJhn+PUPG2WmSjDlSK2Ppg4/kPJuqnXybKlJdQ2V6
-         5EhBIQa8mutdT1uYKf0SugGv7Jrmg5eanbFAJSrAAR4ifX2M3LirfleSd2zwUj/DdH4l
-         GMGg==
-X-Received: by 10.180.207.6 with SMTP id ls6mr45296853wic.13.1424905948678;
-        Wed, 25 Feb 2015 15:12:28 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id ul1sm66870277wjc.0.2015.02.25.15.12.27
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 25 Feb 2015 15:12:28 -0800 (PST)
-From: aybuke ozdemir <aybuke.147@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH v2 1/2] Staging: i2o: Remove unnecessary 'out of memory' message
-Date: Thu, 26 Feb 2015 01:12:18 +0200
-Message-Id: <1424905939-11537-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,648,1418079600"; 
+   d="scan'208";a="123415556"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 26 Feb 2015 00:03:47 +0100
+Date: Thu, 26 Feb 2015 00:03:46 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: aybuke ozdemir <aybuke.147@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/3] Staging: i2o: Remove unnecessary
+ 'out of memory' message
+In-Reply-To: <20150225230023.GB14612@kroah.com>
+Message-ID: <alpine.DEB.2.02.1502260002420.2029@localhost6.localdomain6>
+References: <1424902222-10105-1-git-send-email-aybuke.147@gmail.com> <20150225230023.GB14612@kroah.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch removes unnecessay out of memory message fixing the following
-checkpach.pl warning in device.c
+> I'll take these, but please stay away from the i2o drivers, they are
+> going to be removed from the kernel soon and are not worth the cleanup.
 
-Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
----
- drivers/staging/i2o/device.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Aybuke,
 
-diff --git a/drivers/staging/i2o/device.c b/drivers/staging/i2o/device.c
-index 2af2255..e47496c 100644
---- a/drivers/staging/i2o/device.c
-+++ b/drivers/staging/i2o/device.c
-@@ -565,10 +565,8 @@ int i2o_parm_table_get(struct i2o_device *dev, int oper, int group,
- 		size += 4 - size % 4;
- 
- 	opblk = kmalloc(size, GFP_KERNEL);
--	if (opblk == NULL) {
--		printk(KERN_ERR "i2o: no memory for query buffer.\n");
-+	if (opblk == NULL)
- 		return -ENOMEM;
--	}
- 
- 	opblk[0] = 1;		/* operation count */
- 	opblk[1] = 0;		/* pad */
--- 
-1.9.1
+There is a list of directories to avoid in:
 
+http://kernelnewbies.org/Outreachyfirstpatch
+
+In the section Find a driver to clean up.  Concretely,
+
+i2o
+line6
+media/parport
+media/tlg2300
+media/vino
+
+julia
 
