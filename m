@@ -1,49 +1,53 @@
 X-GM-THRID: 3635562938368
-X-Received: by 10.180.160.176 with SMTP id xl16mr2665272wib.6.1424943768328;
-        Thu, 26 Feb 2015 01:42:48 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,b905441b98bf8956
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.126.194 with SMTP id na2mr1160831lbb.18.1424943739400;
+        Thu, 26 Feb 2015 01:42:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.2.136 with SMTP id 8ls14296lau.1.gmail; Thu, 26 Feb 2015
- 01:42:47 -0800 (PST)
-X-Received: by 10.152.19.100 with SMTP id d4mr1135461lae.7.1424943767828;
-        Thu, 26 Feb 2015 01:42:47 -0800 (PST)
+Received: by 10.180.240.202 with SMTP id wc10ls1142004wic.10.canary; Thu, 26
+ Feb 2015 01:42:19 -0800 (PST)
+X-Received: by 10.194.142.174 with SMTP id rx14mr1140331wjb.4.1424943739116;
+        Thu, 26 Feb 2015 01:42:19 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id l8si1469755wia.0.2015.02.26.01.42.47
+Received: from mail-wg0-x231.google.com (mail-wg0-x231.google.com. [2a00:1450:400c:c00::231])
+        by gmr-mx.google.com with ESMTPS id l8si1469722wia.0.2015.02.26.01.42.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 01:42:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Thu, 26 Feb 2015 01:42:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) client-ip=2a00:1450:400c:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id ex7so18957976wid.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:42:47 -0800 (PST)
+Received: by mail-wg0-x231.google.com with SMTP id b13so8917433wgh.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:42:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=W+Alpi6Sweru9KPHhqYpZZvKDm9+4c/k3iwanUsn+TU=;
-        b=gPaCACuIegeJL5V7DyQbgCGI29sxFtVF46vkRCAEgYbRx4VVbPX+7j6MH8gBShGNAK
-         QzVqHkpWGKu0gA//7Iifp0cPmFR3GkxCbjSW6MLQD7z04nkM1ZstFft8JMFx5RSmBfrI
-         UFiFJ69C2ufKlZ7nvx0IvWNeVKzbrUiKSk+TXG0qCn/dUw6DhGHmHbiDPEoXTpJ/VtT4
-         fqa/SgE5axCsHEx96h/gZvoHbUHyvJkTIg6B0GN4XPhtuhgsZuJPEHr9zaFmFnCou5cd
-         OVCuAuwcoCjALwHkFmErYrGAkTOfr2nO3BX7KlYoppfXUGRVYow47VepTIyDRZ7iOsij
-         fGQA==
-X-Received: by 10.180.98.105 with SMTP id eh9mr14014383wib.51.1424943767749;
-        Thu, 26 Feb 2015 01:42:47 -0800 (PST)
+        bh=JpW0aon6c5YCK2rBeEsbEeC05guyHkwLLmIyl3Wnbro=;
+        b=xZ9xnqQ+apEhSjTx8Zow42/h7VF9K7hYJtjTLCwPqvgolEjIB4Llbs0U5ShkTSS0KZ
+         aU9+sufqz92YyqqBiDwuiezEYq+42si5Pha3oeh9zu+ha50WfpsyAwB93SiYNqM3GR1f
+         WMv8owO1Zk6HChQD48Jm1oT0mdMdMNVq4lyzkybqu5Lg/3kQl5Ndwquz2LsUgPcjwT2v
+         zWNwZbrXIbabNSaCc+is0jrefE0vy0jsQ9gZ1+OSKuIRiobBM3lsA1K/J+CLRGIjRMG3
+         zfuq+7wzBLlB7T7GwBc28bejRqYwXR/ca2DSU+II5wwbMOd+oyj6wmpj284BV3UtudK6
+         Z1MQ==
+X-Received: by 10.194.157.38 with SMTP id wj6mr14660991wjb.62.1424943739047;
+        Thu, 26 Feb 2015 01:42:19 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.191.167])
-        by mx.google.com with ESMTPSA id fm10sm1983900wib.7.2015.02.26.01.42.46
+        by mx.google.com with ESMTPSA id fo17sm546982wjc.19.2015.02.26.01.42.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 01:42:47 -0800 (PST)
-Date: Thu, 26 Feb 2015 11:42:42 +0200
+        Thu, 26 Feb 2015 01:42:18 -0800 (PST)
+Date: Thu, 26 Feb 2015 11:42:14 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 16/24] staging: rtl8188eu: rewrite the right hand side of an
+Subject: [PATCH 15/24] staging: rtl8188eu: rewrite the right hand side of an
  assignment
-Message-ID: <8622efaf3749b04d9e79a600496f6158e7ac2523.1424942340.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <5fe041789f9e0a3a04186448d0da6685d34c2b66.1424942340.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1424942337.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -79,22 +83,28 @@ expression e;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/hal/rf_cfg.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
-index 3c651d5..62ac8cbc 100644
---- a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
-+++ b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
-@@ -487,7 +487,7 @@ static void odm_PTDecision_8188E(struct odm_ra_info *pRaInfo)
- 			break;
- 	}
+diff --git a/drivers/staging/rtl8188eu/hal/rf_cfg.c b/drivers/staging/rtl8188eu/hal/rf_cfg.c
+index 5dc11ca..455ecdc 100644
+--- a/drivers/staging/rtl8188eu/hal/rf_cfg.c
++++ b/drivers/staging/rtl8188eu/hal/rf_cfg.c
+@@ -38,12 +38,12 @@ static bool check_condition(struct adapter *adapt, const u32  condition)
+ 		return false;
  
--	j = j >> 1;
-+	j >>= 1;
- 	temp_stage = (pRaInfo->PTStage + 1) >> 1;
- 	if (temp_stage > j)
- 		stage_id = temp_stage-j;
+ 	cond = condition & 0x0000FF00;
+-	cond = cond >> 8;
++	cond >>= 8;
+ 	if ((_interface & cond) == 0 && cond != 0x07)
+ 		return false;
+ 
+ 	cond = condition & 0x00FF0000;
+-	cond = cond >> 16;
++	cond >>= 16;
+ 	if ((_platform & cond) == 0 && cond != 0x0F)
+ 		return false;
+ 	return true;
 -- 
 1.9.3
 
