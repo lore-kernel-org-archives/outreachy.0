@@ -1,95 +1,49 @@
-X-GM-THRID: 6261186317265141760
-X-Received: by 10.112.72.136 with SMTP id d8mr1943618lbv.5.1457796040355;
-        Sat, 12 Mar 2016 07:20:40 -0800 (PST)
+X-GM-THRID: 3745228259328
+X-Received: by 10.112.77.101 with SMTP id r5mr1165621lbw.4.1424944179432;
+        Thu, 26 Feb 2015 01:49:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.22.106 with SMTP id m103ls515118lfi.94.gmail; Sat, 12 Mar
- 2016 07:20:39 -0800 (PST)
-X-Received: by 10.112.45.139 with SMTP id n11mr1920057lbm.17.1457795954175;
-        Sat, 12 Mar 2016 07:19:14 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by gmr-mx.google.com with ESMTPS id c140si325778wmh.1.2016.03.12.07.19.14
+Received: by 10.180.103.166 with SMTP id fx6ls1151090wib.20.canary; Thu, 26
+ Feb 2015 01:49:39 -0800 (PST)
+X-Received: by 10.194.178.234 with SMTP id db10mr1143293wjc.2.1424944179136;
+        Thu, 26 Feb 2015 01:49:39 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-lb0-x231.google.com (mail-lb0-x231.google.com. [2a00:1450:4010:c04::231])
+        by gmr-mx.google.com with ESMTPS id mv2si49596lbc.0.2015.02.26.01.49.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 12 Mar 2016 07:19:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 01:49:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:4010:c04::231 as permitted sender) client-ip=2a00:1450:4010:c04::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=nevola@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:4010:c04::231 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22e.google.com with SMTP id p65so51443969wmp.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 07:19:14 -0800 (PST)
+Received: by mail-lb0-x231.google.com with SMTP id w7so9628195lbi.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:49:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Tz+de4ZmM2uQyQnC7iXlc07lwcAsfu8kJ37SUAwuEKw=;
-        b=jrWrSXkNZrM2uzHJma0jaXiGCJovlnZ7zcQbI0BzGy5cp/rQ2Ph2oYhhAhHMHroa5F
-         6w5/kvk85BNc4OW6XeZZhpfDf2WmBwIC0t4QTs/YE2T3H10/mk/1W0jbXh+L+TpA0ZiP
-         M35T/DvmdXWjaMNK4k/gGYVhajRikUMbhJMwH8BjvsLxYgY5VkZc/0nHLbPmRo0PoYMi
-         6yGZgqQ3jc4huYx0Aic4JBqn5t1VNNSl3iDr1tHjuA5DZjvXuCqWNFsYEBMALRYKiiwD
-         rv3KtckqJRfQD3hqxAuWP4sQedp11eGQqn6wVuTtAJA0OnsNl6/aX94kmeX+lMKJ1qhV
-         pzvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Tz+de4ZmM2uQyQnC7iXlc07lwcAsfu8kJ37SUAwuEKw=;
-        b=mTI6GFBawpQ/lxTT/VmhoSGmo/TCOydTAOLQY7CO4BXBPx0F0CtLH7VU3uRH39FBNu
-         Qvm0ezQwSPHtyludinaSALojgjqO5LpCfo/h+FPHIBU2apUcVZ8Zay4hzSH5yBKKSEhJ
-         0+GtI6iZVnOrfoPuHE71FFoNSeCyOuunAoQClt8UkVF6KfIjuU4BWneBxw1ql+tUgy5R
-         ycOcBubES9XJ3+yPSzvFOgOHnLawc5iqbDe78rIk/DyDkWQ4/7N7pl5qtnF9bjnT8H5W
-         zvJHfMowuUg3SxO5lDCbnxZqtT4IB3Cj6VWwxuz01x4M/RQd3Abx/a+VKiM6WR2u8YR4
-         zP7A==
-X-Gm-Message-State: AD7BkJIlbhuoLFqTHPhiLgzYfX3Kw9M8FiDrlsvLv/Ws0GwfE9cnknTfnv8M2jhRkKUtNw==
-X-Received: by 10.194.205.138 with SMTP id lg10mr15302941wjc.153.1457795954015;
-        Sat, 12 Mar 2016 07:19:14 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
-        by smtp.gmail.com with ESMTPSA id v82sm7401785wmv.6.2016.03.12.07.19.12
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 12 Mar 2016 07:19:13 -0800 (PST)
-Date: Sat, 12 Mar 2016 16:19:11 +0100
-From: Laura Garcia Liebana <nevola@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: nvec: Fix comparison to NULL
-Message-ID: <20160312151908.GA2801@sonyv>
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=+9eLlSaYTcEWCt28FRPPY/B0UP7NBb3pO+8hdvjFdhI=;
+        b=i56HgfEgQKuVTHzdGoFDm7pK0M5Lw1bFILVQvnS0Z4XDc2nxs7hfqUgLVwCx6P3W16
+         5ovMuv6OZ0LeBnKUkf8pTDa2HAjHJ5XYm/8yCth4zyNiubcXDMFmpBqgBl/uY58a2WTI
+         fVFlkisSqQWeYKRMb7Rb30x1N7DCLJGhww7/WpvlntDDCmD6rIeZsfl6BNjPkrtgVIIM
+         5OAyacEnclebfDsIXGDgnKosQkcZWhKwE06Pfj0fpiY1shL1C5dhM3uOvfkREGJzP1S9
+         3gCmjyCvhse//i+IHrCXKAbnotPTr/Wbx7re9t3Py/qkLHB5CXjfb+ui2YIXWg/cL4xI
+         iGYw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.112.242.163 with SMTP id wr3mr6444866lbc.98.1424944179028;
+ Thu, 26 Feb 2015 01:49:39 -0800 (PST)
+Received: by 10.114.12.1 with HTTP; Thu, 26 Feb 2015 01:49:38 -0800 (PST)
+Date: Thu, 26 Feb 2015 10:49:38 +0100
+Message-ID: <CAL7P5jL6JPJPSPNJL1DMeAWHAxv257C_axVRu0HCYEXDuhTsiw@mail.gmail.com>
+Subject: [KERNEL NEWBIES ACCESS]Ksenija Stanojevic
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Replace the use of comparison to NULL, use !<expression> instead. Checkpatch detected these issues.
+Hi,
+Can you please grant me editing privileges to kernel newbies?
 
-Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
----
- drivers/staging/nvec/nvec.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Regards,
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 9fda136..8d589a4 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -264,7 +264,7 @@ int nvec_write_async(struct nvec_chip *nvec, const unsigned char *data,
- 
- 	msg = nvec_msg_alloc(nvec, NVEC_MSG_TX);
- 
--	if (msg == NULL)
-+	if (!msg)
- 		return -ENOMEM;
- 
- 	msg->data[0] = size;
-@@ -620,7 +620,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
- 		} else {
- 			nvec->rx = nvec_msg_alloc(nvec, NVEC_MSG_RX);
- 			/* Should not happen in a normal world */
--			if (unlikely(nvec->rx == NULL)) {
-+			if (unlikely(!nvec->rx)) {
- 				nvec->state = 0;
- 				break;
- 			}
--- 
-2.7.0
-
+Ksenija
 
