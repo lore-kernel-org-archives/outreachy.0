@@ -1,102 +1,95 @@
-X-GM-THRID: 6182590742528
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,c387ba6d11b89b19,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.92.226 with SMTP id cp2mr33181654obb.44.1425382609841;
-        Tue, 03 Mar 2015 03:36:49 -0800 (PST)
+X-GM-THRID: 3789968900096
+X-Received: by 10.112.224.12 with SMTP id qy12mr539592lbc.10.1424982959677;
+        Thu, 26 Feb 2015 12:35:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.88.135 with SMTP id t7ls71210qgd.63.gmail; Tue, 03 Mar
- 2015 03:36:49 -0800 (PST)
-X-Received: by 10.52.236.196 with SMTP id uw4mr30993456vdc.2.1425382609645;
-        Tue, 03 Mar 2015 03:36:49 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id gb13si58112pac.2.2015.03.03.03.36.49
+Received: by 10.180.10.229 with SMTP id l5ls194489wib.32.gmail; Thu, 26 Feb
+ 2015 12:35:59 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr1605703wiv.0.1424982959367;
+        Thu, 26 Feb 2015 12:35:59 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wg0-x231.google.com (mail-wg0-x231.google.com. [2a00:1450:400c:c00::231])
+        by gmr-mx.google.com with ESMTPS id ew5si200553wid.1.2015.02.26.12.35.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 03:36:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        Thu, 26 Feb 2015 12:35:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) client-ip=2a00:1450:400c:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id fa1so23277930pad.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 03:36:49 -0800 (PST)
+Received: by mail-wg0-x231.google.com with SMTP id a1so14620726wgh.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 12:35:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+tC4ZSSXDwF1KYevD49N8iabIAWhgFcVKAxEMKcGxQ8=;
-        b=j8+hGFShf5EHr8WszwIebbWKwc5OH+EGR1KIXk1U9ENv1DuaFva5SDHXlXL0WjQa0s
-         PPVRczQDHF4BHyU5lgWNyljkkgvvKrgT/bzRS6nLTf6yx8RW+AXM29QQNWAI+zYgkIJg
-         EmYtEo1YwslGkId+EXFA+OEgjnUfEyLJ04XjDBg82kTJMNCpCv4LKolrQlS12yIqcrxG
-         qjkzqY4cEx+wgkhsmvPGwm34OWASPbdXQ0N3pfMbc+8ODENarFZHbAmkqvv749pyXmdA
-         VVVUAo7pO2Lv6PBunkizUfbY518sFfpQnDjgtam5F54FuDqq1zp8btnq5+38pfoAUwTw
-         pf2Q==
-X-Received: by 10.66.121.134 with SMTP id lk6mr34719757pab.67.1425382609502;
-        Tue, 03 Mar 2015 03:36:49 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id u1sm801214pbs.7.2015.03.03.03.36.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 03:36:48 -0800 (PST)
-Date: Tue, 3 Mar 2015 17:08:06 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: comedi: Remove if condition.
-Message-ID: <20150303113806.GA8173@localhost>
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=XHvBLRzxgSsXIWVpN/DdG+V62Lf16TJJBovFDe2Fibs=;
+        b=XiFDXLJyZxzsOxRcDE5gO0Us8gGBIJgy+oXlifN7L27gIBu4b5ExOC05ASLSPxdm5R
+         dwOcETDNaduje552TIDtVfaGioibOZJSZZO39ZsMWtdaekUj0mJ/R1RMMzC+YnY21eMU
+         8l5aKAxFfDaIt/hDRBjv5+7xeuVqpJiZMsXQeMfEstmqctwznQRD+7oN15zqs2ph9oZG
+         sGj48oy9cQmmv9XmcmI9hjxUMq5U92h8b0a9YpMWrucLXKnsFHda3p3duve5BFZUMiBO
+         vnoimMg45WLS559HqMaEhCbLPx1Kef8DofRUSjqych7Yh3uJP64lG0yvsXR08AcLr0Z+
+         UmSw==
+X-Received: by 10.194.157.68 with SMTP id wk4mr20605128wjb.123.1424982959258;
+        Thu, 26 Feb 2015 12:35:59 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from localhost ([79.170.55.43])
+        by mx.google.com with ESMTPSA id gi3sm4378436wic.15.2015.02.26.12.35.57
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 26 Feb 2015 12:35:58 -0800 (PST)
+Date: Thu, 26 Feb 2015 23:35:55 +0300
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: iio: Remove space before
+ tabs
+Message-ID: <20150226203555.GA3584@example.com>
+References: <1424965153-8759-1-git-send-email-hamohammed.sa@gmail.com>
+ <alpine.DEB.2.10.1502261714390.2776@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.10.1502261714390.2776@hadrien>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch removes a if condition which has a semicolon
-after it. As the conditional check is redundant, the comment
-before it is also changed. The following
-coccinelle script was used to detect the pattern of a
-semicolon after if.
+On Thu, Feb 26, 2015 at 05:15:00PM +0100, Julia Lawall wrote:
+> On Thu, 26 Feb 2015, Haneen Mohammed wrote:
+> 
+> > This patch removes space before tabs addressing checkpatch.pl warning.
+> >
+> > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > ---
+> >  drivers/iio/accel/mma8452.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/iio/accel/mma8452.c b/drivers/iio/accel/mma8452.c
+> > index 221c9d2..fcfa0a6 100644
+> > --- a/drivers/iio/accel/mma8452.c
+> > +++ b/drivers/iio/accel/mma8452.c
+> > @@ -116,7 +116,7 @@ static const int mma8452_samp_freq[8][2] = {
+> >   * Hardware has fullscale of -2G, -4G, -8G corresponding to raw value -2048
+> >   * The userspace interface uses m/s^2 and we declare micro units
+> >   * So scale factor is given by:
+> > - * 	g * N * 1000000 / 2048 for N = 2, 4, 8 and g=9.80665
+> > + * g * N * 1000000 / 2048 for N = 2, 4, 8 and g=9.80665
+> 
+> It's a comment.  The original text was more readable.
+> 
+> julia
+> 
 
-@r1@
-position p;
-@@
-if (...);@p
-@script:python@
-p0 << r1.p;
-@@
-// Emacs org-mode output
-cocci.print_main("", p0)
-cocci.print_secs("", p0)
+yes, I shouldn't have followed checkpatch script blindly! thanks.
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
-Changes in v2:
-     -Updated the commit subject and message.
-     -Removed the if-condition completely as 
-      it was redundant.
-     -Changed the comment about the statements
-      which follow the if-condition.
-
- drivers/staging/comedi/drivers/das1800.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/comedi/drivers/das1800.c b/drivers/staging/comedi/drivers/das1800.c
-index 0790a28..8ffc9d0b 100644
---- a/drivers/staging/comedi/drivers/das1800.c
-+++ b/drivers/staging/comedi/drivers/das1800.c
-@@ -491,9 +491,7 @@ static void das1800_handle_fifo_not_empty(struct comedi_device *dev,
- 
- 	while (inb(dev->iobase + DAS1800_STATUS) & FNE) {
- 		dpnt = inw(dev->iobase + DAS1800_FIFO);
--		/* convert to unsigned type if we are in a bipolar mode */
--		if (!unipolar)
--			;
-+		/* convert to unsigned type */
- 		dpnt = munge_bipolar_sample(dev, dpnt);
- 		comedi_buf_write_samples(s, &dpnt, 1);
- 
--- 
-1.9.1
-
+> >   */
+> >  static const int mma8452_scales[3][2] = {
+> >  	{0, 9577}, {0, 19154}, {0, 38307}
+> > --
+> > 1.9.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424965153-8759-1-git-send-email-hamohammed.sa%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
