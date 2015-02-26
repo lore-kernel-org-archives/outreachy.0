@@ -1,72 +1,52 @@
 X-GM-THRID: 4040986460160
-Date: Thu, 26 Feb 2015 13:43:12 -0800 (PST)
-From: =?UTF-8?Q?Hatice_ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: haticeerturk27@gmail.com
-Message-Id: <76959b65-d105-4037-8e5d-7bc50f459791@googlegroups.com>
-In-Reply-To: <20150226212509.GA3962@kroah.com>
-References: <1424985352-10899-1-git-send-email-haticeerturk27@gmail.com>
- <20150226212509.GA3962@kroah.com>
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,b66f0a3e76012054
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.7.37 with SMTP id 25mr9937035yho.18.1424985909820;
+        Thu, 26 Feb 2015 13:25:09 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.107.167.20 with SMTP id q20ls290034ioe.98.gmail; Thu, 26 Feb
+ 2015 13:25:09 -0800 (PST)
+X-Received: by 10.66.235.162 with SMTP id un2mr2697100pac.43.1424985909651;
+        Thu, 26 Feb 2015 13:25:09 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id hs7si266582pad.1.2015.02.26.13.25.09
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 13:25:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 57FF4B88;
+	Thu, 26 Feb 2015 21:25:09 +0000 (UTC)
+Date: Thu, 26 Feb 2015 13:25:09 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: wlan-ng: coding style
  ether_addr_copy
+Message-ID: <20150226212509.GA3962@kroah.com>
+References: <1424985352-10899-1-git-send-email-haticeerturk27@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_8396_1285431201.1424986992394"
-X-Google-Token: EPCmvqcFbnEsooJjpaU0
-X-Google-IP: 78.189.63.210
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1424985352-10899-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-------=_Part_8396_1285431201.1424986992394
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_8397_556706387.1424986992394"
+On Thu, Feb 26, 2015 at 11:15:52PM +0200, Hatice ERT�RK wrote:
+> This fixes the following issues detected by checkpatch.pl:
+> 
+> WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
+> addresses are __aligned(2)
 
-------=_Part_8397_556706387.1424986992394
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Are they aligned?  Please show some kind of proof in your commit log
+when you resend this.
 
-How do I show proof?
+thanks,
 
-26 =C5=9Eubat 2015 Per=C5=9Fembe 23:25:09 UTC+2 tarihinde gregkh yazd=C4=B1=
-:
->
-> On Thu, Feb 26, 2015 at 11:15:52PM +0200, Hatice ERT=C3=9CRK wrote:=20
-> > This fixes the following issues detected by checkpatch.pl:=20
-> >=20
-> > WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet=20
-> > addresses are __aligned(2)=20
->
-> Are they aligned?  Please show some kind of proof in your commit log=20
-> when you resend this.=20
->
-> thanks,=20
->
-> greg k-h=20
->
-
-------=_Part_8397_556706387.1424986992394
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><span style=3D"color: rgb(68, 68, 68); font-family: 'Segoe=
- UI'; font-size: 14px; line-height: 20px;">How do I show proof?</span><br><=
-br>26 =C5=9Eubat 2015 Per=C5=9Fembe 23:25:09 UTC+2 tarihinde gregkh yazd=C4=
-=B1:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex=
-;border-left: 1px #ccc solid;padding-left: 1ex;">On Thu, Feb 26, 2015 at 11=
-:15:52PM +0200, Hatice ERT=C3=9CRK wrote:
-<br>&gt; This fixes the following issues detected by <a href=3D"http://chec=
-kpatch.pl" target=3D"_blank" rel=3D"nofollow">checkpatch.pl</a>:
-<br>&gt;=20
-<br>&gt; WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
-<br>&gt; addresses are __aligned(2)
-<br>
-<br>Are they aligned? &nbsp;Please show some kind of proof in your commit l=
-og
-<br>when you resend this.
-<br>
-<br>thanks,
-<br>
-<br>greg k-h
-<br></blockquote></div>
-------=_Part_8397_556706387.1424986992394--
-
-------=_Part_8396_1285431201.1424986992394--
+greg k-h
 
