@@ -1,49 +1,53 @@
 X-GM-THRID: 3635562938368
-X-Received: by 10.180.182.44 with SMTP id eb12mr3549170wic.4.1424943421765;
-        Thu, 26 Feb 2015 01:37:01 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,b905441b98bf8956
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.4.229 with SMTP id n5mr1132802lan.1.1424943350665;
+        Thu, 26 Feb 2015 01:35:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.88.98 with SMTP id bf2ls76192wib.30.gmail; Thu, 26 Feb
- 2015 01:37:01 -0800 (PST)
-X-Received: by 10.180.182.44 with SMTP id eb12mr3549128wic.4.1424943421383;
-        Thu, 26 Feb 2015 01:37:01 -0800 (PST)
+Received: by 10.152.181.137 with SMTP id dw9ls9324lac.85.gmail; Thu, 26 Feb
+ 2015 01:35:50 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr1151643lbb.11.1424943350198;
+        Thu, 26 Feb 2015 01:35:50 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
-        by gmr-mx.google.com with ESMTPS id cl5si77201wib.3.2015.02.26.01.37.01
+Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
+        by gmr-mx.google.com with ESMTPS id by11si1552502wib.1.2015.02.26.01.35.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 01:37:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
+        Thu, 26 Feb 2015 01:35:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x230.google.com with SMTP id h11so39441065wiw.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:37:01 -0800 (PST)
+Received: by mail-we0-x229.google.com with SMTP id k11so8767409wes.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:35:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=smhWdtz/00huab5a7DaEVeJ3WezDacbBmyatn4fbilo=;
-        b=A7K1gaSuzpfmpT4toSEEj4syIB86kP4iGavTSai3s8RrEi8z9ZnBs+/VpuJhc3u28+
-         z/lsXN+FNi9CtD5hHVrzauenHMBmt8NyuF2dGFd5lAx5dJF/h5DSvUX3tR/22JmzMcgE
-         AfoVB7Q3gqQUAuFuE6y0MT+GHbdDk9WKxRUjvmy3Xr5b/ISPYCwgQo2Huez1FEWJli2Y
-         58ZVq6m2aPhq8o5WWctIuBuGcoCb4CI4AlsZd/Ik5kThoB07iX+1x/CCY1RlQOrQcYNZ
-         ufvBxGoQFan2nJQA0uc6zz3AacS2P+uXZMJKXKbOJuf+4nesHEAdjCcFInIOrylszN/V
-         fJ0g==
-X-Received: by 10.194.185.9 with SMTP id ey9mr14769270wjc.135.1424943421306;
-        Thu, 26 Feb 2015 01:37:01 -0800 (PST)
+        bh=4dCTg8CqyLrJt56X3EyYEU9DAr2AnNoAGFBAYYBMQHw=;
+        b=EYBojvAhsNUZkSBJS/8sCko4xfy78ItnUYoTGg68c2Zt+JvuDnah7AvO8m9A3smwAN
+         P0MohrAdjM7+9dgTyPc8bDFh3QSbo0/s+Qm2S8r/K6WfsrFU/0SznFqfR7MFTtwOnVMV
+         m/lb5pvjN4OgGOTD/ZZb2+ZGtO57gyar1KG5nVXyLEBsHimJ3cdfIq54UivvSOsyEUdd
+         2hgz2emqN9pg+FgqJaXSnYbi48DVKgBVPzQFaKeWerRVGy4e+s2fpic2KZwZBMoepbqw
+         kbmPUb4i8+CtWrcAhm27fF7d2MDldWRWQZxDIZm4zVf8rBHIJtKHgPsLSGy/MZ6QmkdK
+         2/rw==
+X-Received: by 10.180.14.66 with SMTP id n2mr47216518wic.50.1424943350113;
+        Thu, 26 Feb 2015 01:35:50 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.191.167])
-        by mx.google.com with ESMTPSA id hd5sm1922319wib.21.2015.02.26.01.36.59
+        by mx.google.com with ESMTPSA id n3sm490434wja.36.2015.02.26.01.35.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 01:37:00 -0800 (PST)
-Date: Thu, 26 Feb 2015 11:36:56 +0200
+        Thu, 26 Feb 2015 01:35:49 -0800 (PST)
+Date: Thu, 26 Feb 2015 11:35:45 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 08/24] staging: rtl8712: rewrite the right hand side of an
+Subject: [PATCH 07/24] staging: rtl8712: rewrite the right hand side of an
  assignment
-Message-ID: <8e05f69e5ea5ba699d4301e955faf125baf4fd1b.1424942339.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <1671b3e1c4d377b61bccdf95866df97a896a7ef3.1424942339.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1424942337.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -79,58 +83,31 @@ expression e;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8712/rtl871x_eeprom.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index cd8b444..e4fc9e0 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -161,7 +161,7 @@ static void update_recvframe_attrib_from_recvstat(struct rx_pkt_attrib *pattrib,
- 	u16 drvinfo_sz = 0;
- 
- 	drvinfo_sz = (le32_to_cpu(prxstat->rxdw0)&0x000f0000)>>16;
--	drvinfo_sz = drvinfo_sz<<3;
-+	drvinfo_sz <<= 3;
- 	/*TODO:
- 	 * Offset 0 */
- 	pattrib->bdecrypted = ((le32_to_cpu(prxstat->rxdw0) & BIT(27)) >> 27)
-@@ -436,7 +436,7 @@ void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf)
- 	voffset = *(uint *)poffset;
- 	prxstat = (struct recv_stat *)prxcmdbuf;
- 	drvinfo_sz = ((le32_to_cpu(prxstat->rxdw0) & 0x000f0000) >> 16);
--	drvinfo_sz = drvinfo_sz << 3;
-+	drvinfo_sz <<= 3;
- 	poffset += RXDESC_SIZE + drvinfo_sz;
- 	do {
- 		voffset  = *(uint *)poffset;
-@@ -749,7 +749,7 @@ static void query_rx_phy_status(struct _adapter *padapter,
- 		 */
- 		if (!cck_highpwr) {
- 			report = pcck_buf->cck_agc_rpt & 0xc0;
--			report = report >> 6;
-+			report >>= 6;
- 			switch (report) {
- 			/* Modify the RF RNA gain value to -40, -20,
- 			 * -2, 14 by Jenyu's suggestion
-@@ -775,7 +775,7 @@ static void query_rx_phy_status(struct _adapter *padapter,
- 		} else {
- 			report = ((u8)(le32_to_cpu(pphy_stat->phydw1) >> 8)) &
- 				 0x60;
--			report = report >> 5;
-+			report >>= 5;
- 			switch (report) {
- 			case 0x3:
- 				rx_pwr_all = -40 - ((pcck_buf->cck_agc_rpt &
-@@ -1039,7 +1039,7 @@ static int recvbuf2recvframe(struct _adapter *padapter, struct sk_buff *pskb)
- 		frag = (le32_to_cpu(prxstat->rxdw2) >> 12) & 0xf;
- 		/* uint 2^3 = 8 bytes */
- 		drvinfo_sz = (le32_to_cpu(prxstat->rxdw0) & 0x000f0000) >> 16;
--		drvinfo_sz = drvinfo_sz<<3;
-+		drvinfo_sz <<= 3;
- 		if (pkt_len <= 0)
- 			goto  _exit_recvbuf2recvframe;
- 		/* Qos data, wireless lan header length is 26 */
+diff --git a/drivers/staging/rtl8712/rtl871x_eeprom.c b/drivers/staging/rtl8712/rtl871x_eeprom.c
+index 2f145d6..50339e6 100644
+--- a/drivers/staging/rtl8712/rtl871x_eeprom.c
++++ b/drivers/staging/rtl8712/rtl871x_eeprom.c
+@@ -64,7 +64,7 @@ static void shift_out_bits(struct _adapter *padapter, u16 data, u16 count)
+ 		udelay(CLOCK_RATE);
+ 		up_clk(padapter, &x);
+ 		down_clk(padapter, &x);
+-		mask = mask >> 1;
++		mask >>= 1;
+ 	} while (mask);
+ 	if (padapter->bSurpriseRemoved == true)
+ 		goto out;
+@@ -83,7 +83,7 @@ static u16 shift_in_bits(struct _adapter *padapter)
+ 	x &= ~(_EEDO | _EEDI);
+ 	d = 0;
+ 	for (i = 0; i < 16; i++) {
+-		d = d << 1;
++		d <<= 1;
+ 		up_clk(padapter, &x);
+ 		if (padapter->bSurpriseRemoved == true)
+ 			goto out;
 -- 
 1.9.3
 
