@@ -1,89 +1,67 @@
-X-GM-THRID: 6255233978034290688
-X-Received: by 10.98.93.217 with SMTP id n86mr41273093pfj.11.1456410153776;
-        Thu, 25 Feb 2016 06:22:33 -0800 (PST)
+X-GM-THRID: 3148599001088
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,1471a1a57b962ba4
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.178.234 with SMTP id db10mr1255566wjc.2.1424953591405;
+        Thu, 26 Feb 2015 04:26:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.142.232 with SMTP id rz8ls224789obb.62.gmail; Thu, 25 Feb
- 2016 06:22:33 -0800 (PST)
-X-Received: by 10.182.47.132 with SMTP id d4mr41856242obn.40.1456410153497;
-        Thu, 25 Feb 2016 06:22:33 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id u66si1308655pfa.2.2016.02.25.06.22.33
+Received: by 10.152.20.67 with SMTP id l3ls25479lae.93.gmail; Thu, 26 Feb 2015
+ 04:26:30 -0800 (PST)
+X-Received: by 10.112.25.7 with SMTP id y7mr1235958lbf.21.1424953590780;
+        Thu, 26 Feb 2015 04:26:30 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-la0-x234.google.com (mail-la0-x234.google.com. [2a00:1450:4010:c03::234])
+        by gmr-mx.google.com with ESMTPS id xl7si56385lbb.1.2015.02.26.04.26.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:22:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 04:26:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::234 as permitted sender) client-ip=2a00:1450:4010:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::234 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id ho8so33867352pac.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:22:33 -0800 (PST)
+Received: by mail-la0-x234.google.com with SMTP id gf13so10520602lab.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 04:26:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=S3S6omqLMzSH52pDoImR2AfbvCJDehnJupGQ6SsS0ac=;
-        b=B8OWwxp9cYZWc9Ve3x6sf031fHIufqURsLq4BKAy4UKToOVNHIDy3phfJndx8b5TZL
-         pKEUhNLWb/tQuU82e6bz9bNmLBb5bU3rC842GPgUmCFT6xZ8pCTt+1JUXRsIB6WyGni9
-         O5/xFx5eChvwke4uLUfR+NH0ze00Ck7Y+1gRZZw5U7N6unv8v6Rs8NyoU3ClNur6wVtt
-         Z7HZYV4nbjHO5ylcxRMkA36VutSqeeAdH6HPBUFeN4NIelWKrs+IM78yKoXKLi2R8cVe
-         1NZuoUFpibR5mWPrFBafEz9nTZk5tzpsQkP33K3T8tMJc75I5wLPfDxEjru4oMbTggtp
-         LXZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=S3S6omqLMzSH52pDoImR2AfbvCJDehnJupGQ6SsS0ac=;
-        b=M3P+YmgJl+mfBGI9EqrOfaiSNUa/Zl0zEnO07nimwVfflF+a8iOnlrMbcI2UtiYdAk
-         dfIqfZ1oGbubJjt9NV7UWOkL80YenLtZMUdRcA3v88fIoDq8hyIzWZaXwI3c8gqJf88u
-         7yB5requN3a8qgyJ5/j7EcWzxSsAUbnoOxmqO89mo/IW3kjqgGTn8TG81LTr6GLo295F
-         qBM3yh3YhCCwNia8AA1kp2/5JwP+2UR/ucNr6NcGYnNPxsQIf/s2MFW+cmtpbltFiLqw
-         wRmeJPzBunPq01l0I8TEZwBYedoMIi4Ty0HDpO4IkiIIG1lb4HcE8rHwO0CboIpezT9A
-         Gbrg==
-X-Gm-Message-State: AG10YOSndUB6ZH+u/7rt4hyljzRdHFgYmZshYJxBHBFEoyPrqdvonpwtoGgns6w1y9s3dQ==
-X-Received: by 10.66.246.234 with SMTP id xz10mr63290713pac.49.1456410153289;
-        Thu, 25 Feb 2016 06:22:33 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.179.114])
-        by smtp.gmail.com with ESMTPSA id n78sm12752013pfb.53.2016.02.25.06.22.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 06:22:32 -0800 (PST)
-Date: Thu, 25 Feb 2016 19:52:27 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: android: ion: tegra: Replace IS_ERR_OR_NULL with
- IS_ERR
-Message-ID: <20160225142227.GA28072@amitoj-Inspiron-3542>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=CfLaFk+8dq4+uLpMrnIIMtYe6CiCQXfI6wl5JIrKc8o=;
+        b=TJUM1kPH8B1F2iE9BulZSJoZf++IimOLnTTmEqD0fWP/B2MSJ1NjvTndsTgTGxkLTK
+         5ji8rAdpSDO1QwtxSyHGcF+GJMhC8iBQkN45vWGUfSW8XRGyU6bXeizHeZFdfLuB6YAE
+         XREvsO7XGhDUc4HXV9oV4mErzdlo6bCjAUO+wVQJmQhHAmg9/Crz5vYln+kZZ1eqyUoC
+         I1YHPjxtB/R4CjNXhSPUGmrnU+OcbdjoOm3BSElRsnU1R/dgLtSZxusDHB4G0Z9Q8nXr
+         cf9UWA0GlZe4cMy8QYQzOYWvjUSjefdXkRPSRdSPAbrik+Ct4LgPftszXekvbzVzZB0R
+         +8OA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.112.188.165 with SMTP id gb5mr7332234lbc.35.1424953590682;
+ Thu, 26 Feb 2015 04:26:30 -0800 (PST)
+Received: by 10.112.59.9 with HTTP; Thu, 26 Feb 2015 04:26:30 -0800 (PST)
+In-Reply-To: <20150224141845.GA16196@kroah.com>
+References: <cover.1424761857.git.vatikaharlalka@gmail.com>
+	<a504aa6ef851fcf381d8dbf9a1804bb43fbbd343.1424761857.git.vatikaharlalka@gmail.com>
+	<20150224074018.GB11701@kroah.com>
+	<CAHjTdYeJwoC26O-c1oWWaTtdxRfBegggu1fS0qXj+LwLoii5Wg@mail.gmail.com>
+	<20150224141845.GA16196@kroah.com>
+Date: Thu, 26 Feb 2015 17:56:30 +0530
+Message-ID: <CAHjTdYfokxt2wBZaEy-6UVDRN3_60Nac1t4XkEZD6yJ=Z4bMYA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/2 v2] Introduce new macro
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=001a11c36da29816e0050ffcdc66
 
-Replace IS_ERR_OR_NULL test with an IS_ERR test since
-ion_device_create() function returns a valid device or a -PTR_ERR
-only as evidenced by the comment on the function prototype. 
+--001a11c36da29816e0050ffcdc66
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/android/ion/tegra/tegra_ion.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Oh sorry, if the array is declared as static const u8, the additional macro
+will not be required as we do not need the size in advance.
 
-diff --git a/drivers/staging/android/ion/tegra/tegra_ion.c b/drivers/staging/android/ion/tegra/tegra_ion.c
-index 8828524..49e55e5 100644
---- a/drivers/staging/android/ion/tegra/tegra_ion.c
-+++ b/drivers/staging/android/ion/tegra/tegra_ion.c
-@@ -37,7 +37,7 @@ static int tegra_ion_probe(struct platform_device *pdev)
- 			     sizeof(struct ion_heap *), GFP_KERNEL);
- 
- 	idev = ion_device_create(NULL);
--	if (IS_ERR_OR_NULL(idev))
-+	if (IS_ERR(idev))
- 		return PTR_ERR(idev);
- 
- 	/* create the heaps as specified in the board file */
--- 
-1.9.1
+--001a11c36da29816e0050ffcdc66
+Content-Type: text/html; charset=UTF-8
 
+<div dir="ltr"><div>Oh sorry, if the array is declared as static const u8, the additional macro will not be required as we do not need the size in advance.<br></div></div>
+
+--001a11c36da29816e0050ffcdc66--
 
