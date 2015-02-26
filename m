@@ -1,47 +1,47 @@
 X-GM-THRID: 4172222038016
-X-Received: by 10.112.189.227 with SMTP id gl3mr1666916lbc.2.1424991790394;
-        Thu, 26 Feb 2015 15:03:10 -0800 (PST)
+X-Received: by 10.112.138.202 with SMTP id qs10mr1599374lbb.24.1424990959489;
+        Thu, 26 Feb 2015 14:49:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.98.233 with SMTP id el9ls8602wib.8.gmail; Thu, 26 Feb 2015
- 15:03:10 -0800 (PST)
-X-Received: by 10.194.201.10 with SMTP id jw10mr1637877wjc.3.1424991790112;
-        Thu, 26 Feb 2015 15:03:10 -0800 (PST)
+Received: by 10.180.23.72 with SMTP id k8ls5186wif.35.canary; Thu, 26 Feb 2015
+ 14:49:19 -0800 (PST)
+X-Received: by 10.181.29.66 with SMTP id ju2mr40576wid.1.1424990959179;
+        Thu, 26 Feb 2015 14:49:19 -0800 (PST)
 Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x22c.google.com (mail-we0-x22c.google.com. [2a00:1450:400c:c03::22c])
-        by gmr-mx.google.com with ESMTPS id r6si16567wix.0.2015.02.26.15.03.10
+Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
+        by gmr-mx.google.com with ESMTPS id i7si13150wif.0.2015.02.26.14.49.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 15:03:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) client-ip=2a00:1450:400c:c03::22c;
+        Thu, 26 Feb 2015 14:49:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22c.google.com with SMTP id w55so15537018wes.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 15:03:10 -0800 (PST)
+Received: by mail-we0-x22f.google.com with SMTP id w62so15463512wes.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 14:49:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=7Zt5FC0w9O33MDNy3dDXfHS7shL6Su3bM0KDRbiOmbc=;
-        b=v3CI3FNhhIdvaCQrCu6xVrMTsG4zd9TTZCTbtPHuLPQ/M8Sc4GLjEusyCPKxoSbS/P
-         mpwfB3JluE/2McD5lTXw3zXaWonf9stAGUNffo45HJyey8k0M9bMfuNB7J5OKzDTGn0v
-         cgwpOFMKM7/fK+nqofhO27A1KqOMf8ODYaov+RWUPO6M92+padw68Cxcvu9h7wg2NYen
-         pe3OQLGPTXSF9u9aJiPEw/cp3VrR6FemtOmWTZ9YMQiaKwccbb8bQW6VuvPim+USbk2t
-         xCCZlgEohz6v7RmIz7qfw7jbq71/lP5/6QpFIijQAPGTHl3/ZGAfqGAAIDOKcAa6/Qja
-         /b5A==
-X-Received: by 10.194.48.74 with SMTP id j10mr22126582wjn.38.1424991790035;
-        Thu, 26 Feb 2015 15:03:10 -0800 (PST)
+        bh=C0GRcftfmb4I9gR7aaKMvPAGZ7M9CEz+9x1XwH3ULyY=;
+        b=w9w27mDreACxRV0LYdXqPO2H30/2er4yQNLqXMuLAWg3/d5FBkir6d9on2EgsghWaH
+         4l/L4PM7S3TYXKDrAYYEexF33M4TXIb2Qxvn2nMCVdE0ueJaTw3N6KCDexch1PRbFhEy
+         lOJvbsHthYybBqN9mwE8M8pX7ifPpVfFD+z9/GXajqqWlPkjw7JZHTJmO/jS3546pf75
+         oO4FVYNLbIhzZ3140irKcE+SuTRRO8IOhnkdMAbbvZloBOwzmzJ3pyQSDtSRv0rWornK
+         SDvsuEvv3gQNXov+FS5gHRc9BF38Jv70rEhkZnxnKSEezS/qct9P2okcyokb6RB05PlL
+         D7hQ==
+X-Received: by 10.194.108.9 with SMTP id hg9mr22074261wjb.68.1424990958961;
+        Thu, 26 Feb 2015 14:49:18 -0800 (PST)
 Return-Path: <ksenija.stanojevic@gmail.com>
 Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id vh8sm3410853wjc.12.2015.02.26.15.03.09
+        by mx.google.com with ESMTPSA id j5sm246786wie.3.2015.02.26.14.49.17
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 26 Feb 2015 15:03:09 -0800 (PST)
+        Thu, 26 Feb 2015 14:49:18 -0800 (PST)
 From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v4] Staging: rtl8192u: Replace printk() with pr_debug()
-Date: Fri, 27 Feb 2015 00:03:02 +0100
-Message-Id: <1424991782-10593-1-git-send-email-ksenija.stanojevic@gmail.com>
+Subject: [PATCH v3] Staging: rtl8192u: Replace printk() with pr_debug()
+Date: Thu, 26 Feb 2015 23:49:10 +0100
+Message-Id: <1424990950-10390-1-git-send-email-ksenija.stanojevic@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 For dynamic debugging netdev_dbg(), dev_dbg() or  pr_debug() macro is
@@ -50,13 +50,9 @@ Network system has it's own printk format, netdev_dbg, but in this case
 function's argument list has no  pointer to a struct netdevice so
 pr_debug is used instead.
 Issue found by checkpatch.pl.
-
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
-v4: add Signed-off-by line at the end of commit message.
 v3: Change commit message.
 v2: Include only changes made to this file.
-
  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
