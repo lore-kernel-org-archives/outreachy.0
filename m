@@ -1,78 +1,68 @@
-X-GM-THRID: 2331486715904
-X-Received: by 10.152.43.166 with SMTP id x6mr566044lal.3.1424581803728;
-        Sat, 21 Feb 2015 21:10:03 -0800 (PST)
+X-GM-THRID: 1427250348032
+X-Received: by 10.66.97.10 with SMTP id dw10mr9101050pab.48.1424975123118;
+        Thu, 26 Feb 2015 10:25:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.3.200 with SMTP id e8ls408168lae.65.gmail; Sat, 21 Feb
- 2015 21:10:03 -0800 (PST)
-X-Received: by 10.152.45.7 with SMTP id i7mr564020lam.9.1424581803193;
-        Sat, 21 Feb 2015 21:10:03 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
-        by gmr-mx.google.com with ESMTPS id ev8si407955wib.3.2015.02.21.21.10.03
+Received: by 10.140.34.46 with SMTP id k43ls220321qgk.27.gmail; Thu, 26 Feb
+ 2015 10:25:22 -0800 (PST)
+X-Received: by 10.236.104.134 with SMTP id i6mr9036294yhg.48.1424975122882;
+        Thu, 26 Feb 2015 10:25:22 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id bo1si227826pbc.0.2015.02.26.10.25.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 21:10:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
+        Thu, 26 Feb 2015 10:25:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x232.google.com with SMTP id em10so10331003wid.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 21:10:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=4SKOJB2Xt+4qfgeP/Jy0VL2W0r4sS40LtBImtci/I9Y=;
-        b=TkvlyccfPRaag110ghF/YXGrrS88Uqr35nt79X6Tj+p2INoRqneBjzaJqPig6KfeiV
-         5Ts5A0x45LzBnwRUXlKb4Roj2FkUcOU+ztnAQnPjrydGqgKk+/hRpuhmXLrSyLAQZh0C
-         JONTE6i/toTPEpEaRKIlPZ2dfggUhvd1LzsfyNJuFLuSnTXpFU+Qa/aAza70jTQdts2V
-         JWqXAfD8y/gsxjMQ5N887K6bfxQHRq5lxi25H0OQ3KEz/SygRIgdX1RGrnHGhVNfSdRm
-         t1pJXUnJaXU/Ang2zRPvVB8vR+ef/CAvVhtj5a7qZE0ZxH6oZYiR53Z0t2pGC2kAv3qH
-         YbIw==
-X-Received: by 10.194.89.163 with SMTP id bp3mr9711887wjb.145.1424581803072;
-        Sat, 21 Feb 2015 21:10:03 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([41.130.237.30])
-        by mx.google.com with ESMTPSA id md8sm9737705wic.13.2015.02.21.21.10.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 21:10:02 -0800 (PST)
-Date: Sun, 22 Feb 2015 07:09:59 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/1] Adding new checks to checkpatch.pl
-Message-ID: <cover.1424580894.git.mahfouz.saif.elyazal@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 93DB3B8A;
+	Thu, 26 Feb 2015 18:25:22 +0000 (UTC)
+Date: Thu, 26 Feb 2015 10:25:22 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: aybuke ozdemir <aybuke.147@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lustre: fid:
+ Remove unnecessary else after return
+Message-ID: <20150226182522.GA23634@kroah.com>
+References: <1424461139-8191-1-git-send-email-aybuke.147@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <1424461139-8191-1-git-send-email-aybuke.147@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This is a proposal to add two new checks to checkpatch.pl.
-There are two wrapper functions for memset that can be used
-under certain conditions. The details are described thoroughly in
-the patch itself. The wrapper functions are:
+On Fri, Feb 20, 2015 at 09:38:59PM +0200, aybuke ozdemir wrote:
+> This patch fixes "else is not generally useful after
+> a break or return" checkpatch.pl warning using goto statement in fid_request.c
+> 
+> Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
+> ---
+> Changes since v1:
+> * removed the "else" block instead of goto statement was used and
+> a commit message has been corrected.
+> ---
+>  drivers/staging/lustre/lustre/fid/fid_request.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/fid/fid_request.c b/drivers/staging/lustre/lustre/fid/fid_request.c
+> index 063441a..a3a300e 100644
+> --- a/drivers/staging/lustre/lustre/fid/fid_request.c
+> +++ b/drivers/staging/lustre/lustre/fid/fid_request.c
+> @@ -200,7 +200,7 @@ static int seq_client_alloc_seq(const struct lu_env *env,
+>  		if (rc) {
+>  			CERROR("%s: Can't allocate new meta-sequence, rc %d\n",
+>  			       seq->lcs_name, rc);
+> -			return rc;
+> +			goto out;
 
-eth_zero_addr()
-eth_broadcast_addr()
+No need for this, just remove the else line below here instead.
 
-I'm sending the patch to the outreachy mailing list first for
-the following reasons:
+>  		} else {
+>  			CDEBUG(D_INFO, "%s: New range - "DRANGE"\n",
+>  			       seq->lcs_name, PRANGE(&seq->lcs_space));
 
-Second eye review,
-the patch was inspired by one of coccinelle's challenge problems
-for outreachy round 10.
+thanks,
 
-I understand that eventually the patch should be sent to the maintainers
-of checkpatch.pl
-
-Aya Mahfouz (1):
-  scripts: checkpatch.pl: add 2 new checks on memset calls
-
- scripts/checkpatch.pl | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
-
--- 
-1.9.3
-
+greg k-h
 
