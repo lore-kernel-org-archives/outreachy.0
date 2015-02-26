@@ -1,78 +1,60 @@
-X-GM-THRID: 3231867469824
-X-Received: by 10.50.112.228 with SMTP id it4mr17080988igb.6.1424795200037;
-        Tue, 24 Feb 2015 08:26:40 -0800 (PST)
+X-GM-THRID: 2102830039040
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,411056084fa6f56
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.43.53.71 with SMTP id vp7mr10172685icb.12.1424986072287;
+        Thu, 26 Feb 2015 13:27:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.94.170 with SMTP id g39ls2823856qge.28.gmail; Tue, 24 Feb
- 2015 08:26:39 -0800 (PST)
-X-Received: by 10.236.29.133 with SMTP id i5mr17052641yha.3.1424795199837;
-        Tue, 24 Feb 2015 08:26:39 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pd0-f181.google.com (mail-pd0-f181.google.com. [209.85.192.181])
-        by gmr-mx.google.com with ESMTPS id ri9si710806pdb.1.2015.02.24.08.26.39
+Received: by 10.182.250.164 with SMTP id zd4ls132185obc.82.gmail; Thu, 26 Feb
+ 2015 13:27:52 -0800 (PST)
+X-Received: by 10.182.96.131 with SMTP id ds3mr9281618obb.35.1424986072140;
+        Thu, 26 Feb 2015 13:27:52 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id hs7si267463pad.1.2015.02.26.13.27.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Feb 2015 08:26:39 -0800 (PST)
-Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.192.181;
+        Thu, 26 Feb 2015 13:27:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
-Received: by pdjy10 with SMTP id y10so34336438pdj.13
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Feb 2015 08:26:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=VV1HyZ0a5t/bxPAde9b87UdntLcwxjqMIaBMRbw+FU0=;
-        b=ICpepD/1qlXhKrMTgE3oJJAjPVkUyxAnt5+c2pjyg38tIkw+FLItGj8anJMsMJ0wOL
-         0dTNDvBSCzG8/0Oca3WToUnbXb/ml5uMnXmIi0l0qWBT08TBlVTiwFVJKiKROPxUAgjj
-         3kyflrPvT3Eq+JuMJUui9xy1/Nx/hB0aMMfBzSI+yolGGX0gaL9SaVVD15VhwfC9wb0o
-         J2eQudGaTVyUJYqKNbXtz7vP4WionJqqVDKAETsbdQZyjc658HRMFJ6w86xGYjXA525+
-         iGzmE/N/nt9T2mcJ51Alp5U05OVLY2yImzJej5iEyuSSlQ9vG6sScFxhzuYwHASeC1qI
-         vAxw==
-X-Gm-Message-State: ALoCoQmdtmUh+tBMi24dkgxdYwoVLrRP0FlskbJRT0J64tjkzYTGcCDmNTAm2ugMb6GSuZp+lYU0
-X-Received: by 10.70.47.131 with SMTP id d3mr30093876pdn.86.1424795199693;
-        Tue, 24 Feb 2015 08:26:39 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 ([2601:9:8340:b6:345b:fa47:4a5f:4d11])
-        by mx.google.com with ESMTPSA id w16sm28086776pbs.35.2015.02.24.08.26.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 24 Feb 2015 08:26:39 -0800 (PST)
-Date: Tue, 24 Feb 2015 08:26:37 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: Remove unused Macro
-Message-ID: <20150224162637.GA9677@katie-Inspiron-5748>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id D3996AF6;
+	Thu, 26 Feb 2015 21:27:51 +0000 (UTC)
+Date: Thu, 26 Feb 2015 13:27:51 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Replace C99
+ comments with C89
+Message-ID: <20150226212751.GC10249@kroah.com>
+References: <1424549422-28933-1-git-send-email-ksenija.stanojevic@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1424549422-28933-1-git-send-email-ksenija.stanojevic@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Removes SetFrameType Macro because its not used elsewhere
+On Sat, Feb 21, 2015 at 09:10:22PM +0100, Ksenija Stanojevic wrote:
+> Kernel style for comments is C89 style. Issue found by checkpatch.pl.
+> 
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 252 +++++++++++-----------
+>  1 file changed, 126 insertions(+), 126 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> index d401dbf..c4676af 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> @@ -22,7 +22,7 @@
+>  
+>  
+>  #include <linux/compiler.h>
+> -//#include <linux/config.h>
+> +/* #include <linux/config.h> */
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
----
- drivers/staging/rtl8712/wifi.h | 7 -------
- 1 file changed, 7 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/wifi.h b/drivers/staging/rtl8712/wifi.h
-index 5ba7e71..356059b 100644
---- a/drivers/staging/rtl8712/wifi.h
-+++ b/drivers/staging/rtl8712/wifi.h
-@@ -246,13 +246,6 @@ enum WIFI_REG_DOMAIN {
- #define GetFrameType(pbuf)	(le16_to_cpu(*(unsigned short *)(pbuf)) & \
- 				(BIT(3) | BIT(2)))
- 
--#define SetFrameType(pbuf, type)	\
--	do {	\
--		*(unsigned short *)(pbuf) &= cpu_to_le16(~(BIT(3) | \
--		BIT(2))); \
--		*(unsigned short *)(pbuf) |= cpu_to_le16(type); \
--	} while (0)
--
- #define GetFrameSubType(pbuf)	(cpu_to_le16(*(unsigned short *)(pbuf)) & \
- 				(BIT(7) | BIT(6) | BIT(5) | BIT(4) | BIT(3) | \
- 				BIT(2)))
--- 
-1.9.1
+Just delete this line.
 
 
