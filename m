@@ -1,78 +1,55 @@
-X-GM-THRID: 9697904033792
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,cb4f1861711cff87,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.91.76 with SMTP id cc12mr2439698wib.7.1427146827294;
-        Mon, 23 Mar 2015 14:40:27 -0700 (PDT)
+X-GM-THRID: 1779965100032
+X-Received: by 10.140.235.83 with SMTP id g80mr9853705qhc.5.1424986018574;
+        Thu, 26 Feb 2015 13:26:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.99.65 with SMTP id eo1ls12783wib.42.gmail; Mon, 23 Mar
- 2015 14:40:26 -0700 (PDT)
-X-Received: by 10.180.75.232 with SMTP id f8mr2449644wiw.0.1427146826955;
-        Mon, 23 Mar 2015 14:40:26 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-la0-x233.google.com (mail-la0-x233.google.com. [2a00:1450:4010:c03::233])
-        by gmr-mx.google.com with ESMTPS id b6si178134lbc.1.2015.03.23.14.40.26
+Received: by 10.107.12.1 with SMTP id w1ls355994ioi.13.gmail; Thu, 26 Feb 2015
+ 13:26:58 -0800 (PST)
+X-Received: by 10.66.235.162 with SMTP id un2mr2703648pac.43.1424986018384;
+        Thu, 26 Feb 2015 13:26:58 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ri9si266729pdb.1.2015.02.26.13.26.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Mar 2015 14:40:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::233 as permitted sender) client-ip=2a00:1450:4010:c03::233;
+        Thu, 26 Feb 2015 13:26:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::233 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-la0-x233.google.com with SMTP id e1so12904801laa.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2015 14:40:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=pNk0HcsSIMAgzAUwxTvkAqJe/7Pv7fR722PS4KjWiJ0=;
-        b=DbekBRyaJGZADVdYGmq3MHZiZF/lTu06Momnl7EdQjR+RlgmwRpq/C0CHtrsl0o0gv
-         BEn6H62R4svUo3DJbu1vwAR/N/v8lBMITa7W9aJsMHAJuRMFm72lAakCasYXDoRtPkD0
-         PBwfcqyE0Xmtrq4ZMIu3OQccqHlFxeUYxJW32ZEROHZXnYh1JsjswZ6pOJp3b0kcXqyQ
-         9FaM77b9GumIa4alJHETK+/AYL6ic8fw/Nc8SIBagveZrXgTHPaoq+ZgDiRVRocZNgom
-         941fpry4TSmxG+GSOhSYOjdHzh5fEpfMFYYqEU8A+23ulNb9Lh6EjzVLyJ8puPj9qZlC
-         /rBQ==
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 23431B88;
+	Thu, 26 Feb 2015 21:26:58 +0000 (UTC)
+Date: Thu, 26 Feb 2015 13:26:57 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Fix do not use //
+ c99 comments.
+Message-ID: <20150226212657.GA10249@kroah.com>
+References: <1424524247-27869-1-git-send-email-dilekuzulmez@gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.152.19.228 with SMTP id i4mr927361lae.77.1427146826838; Mon,
- 23 Mar 2015 14:40:26 -0700 (PDT)
-Received: by 10.112.59.7 with HTTP; Mon, 23 Mar 2015 14:40:26 -0700 (PDT)
-Date: Tue, 24 Mar 2015 03:10:26 +0530
-Message-ID: <CAHjTdYfn+yA3zCzviu9Bqf5VTL8w4EOxqf332Lj-wx0Frs2Jow@mail.gmail.com>
-Subject: Doubt about patches
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=089e01493c22a7f94a0511fb83ab
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1424524247-27869-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---089e01493c22a7f94a0511fb83ab
-Content-Type: text/plain; charset=UTF-8
+On Sat, Feb 21, 2015 at 03:10:47PM +0200, Dilek Uzulmez wrote:
+> This patch fixes "do not use // C99 comments" errors in ieee80211_crypt.c
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+> index 5533221..7435126 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
+> @@ -11,7 +11,7 @@
+>   *
+>   */
+>  
+> -//#include <linux/config.h>
+> +/*#include <linux/config.h> */
 
-Hey, I would like to inquire about patches applied to staging-next.
-I've got email confirmation regarding the patches being applied to the tree
-on
-20th March but I can't find them here:
-
-https://git.kernel.org/cgit/linux/kernel/git/gregkh/staging.git/log/?h=staging-next&qt=author&q=vatika
-
-Could someone please clarify this? Thanks! :)
-
---089e01493c22a7f94a0511fb83ab
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><span class=3D""><span class=3D""></span><span class=3D"">=
-Hey,
- I would like to inquire about patches applied to staging-next.<br>I&#39;ve=
- got
- email confirmation regarding the patches being applied to the tree on<br>2=
-0th March but I
- can&#39;t find them here:<br><br><a href=3D"https://git.kernel.org/cgit/li=
-nux/kernel/git/gregkh/staging.git/log/?h=3Dstaging-next&amp;qt=3Dauthor&amp=
-;q=3Dvatika" class=3D"" rel=3D"noreferrer" target=3D"_blank">https://git.ke=
-rnel.org/cgit/linux/kernel/git/gregkh/staging.git/log/?h=3Dstaging-next&amp=
-;qt=3Dauthor&amp;q=3Dvatika</a><br></span></span><span class=3D""><span cla=
-ss=3D""><br></span><span class=3D"">Could someone please clarify this? Than=
-ks! :)</span></span><br><br><br></div>
-
---089e01493c22a7f94a0511fb83ab--
+Please just delete this line, no need to keep it commented out.
 
