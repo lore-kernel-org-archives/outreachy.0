@@ -1,85 +1,123 @@
 X-GM-THRID: 3565286326272
-X-Received: by 10.66.102.66 with SMTP id fm2mr7096499pab.4.1424935096952;
-        Wed, 25 Feb 2015 23:18:16 -0800 (PST)
+X-Received: by 10.66.140.66 with SMTP id re2mr6864808pab.29.1424934756457;
+        Wed, 25 Feb 2015 23:12:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.41.36 with SMTP id c4ls112202igl.8.gmail; Wed, 25 Feb 2015
- 23:18:11 -0800 (PST)
-X-Received: by 10.43.117.72 with SMTP id fl8mr7289531icc.23.1424935091783;
-        Wed, 25 Feb 2015 23:18:11 -0800 (PST)
+Received: by 10.107.18.18 with SMTP id a18ls95490ioj.87.gmail; Wed, 25 Feb
+ 2015 23:12:36 -0800 (PST)
+X-Received: by 10.43.6.5 with SMTP id oi5mr7242738icb.11.1424934756158;
+        Wed, 25 Feb 2015 23:12:36 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id pc4si4324pac.0.2015.02.25.23.18.11
+Received: from mail-pd0-x229.google.com (mail-pd0-x229.google.com. [2607:f8b0:400e:c02::229])
+        by gmr-mx.google.com with ESMTPS id ri9si1470pdb.1.2015.02.25.23.12.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 23:18:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        Wed, 25 Feb 2015 23:12:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::229 as permitted sender) client-ip=2607:f8b0:400e:c02::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::229 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id fa1so11853748pad.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 23:18:11 -0800 (PST)
+Received: by pdjy10 with SMTP id y10so10972862pdj.6
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 23:12:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=j7uI0Etk28y0Hz1cX7pPZZt/q+N1coUU29xL2ErV1AU=;
-        b=D5LvFkJf22tHtYBd98pkBRzClI+SP4sixos+Mqkelv4Q7OXuy/hGDG6Xb3B6Ghv2Oh
-         hycWvz56PJVXDlvzSoi5+ZZdkruqw7JVuR9RqYi20kag7TbwLqZ2mMvGMr3Yz1tqCSF0
-         lPXRiSU5HkZeN2CpICJO90gGk6Fnv0K7YtO+QOqpARm1joUKmFNiBZN184DUk6gNyj+q
-         ex8AvVY2T8h8DtctctaEPfvgh0i89WYEDM2KDOdqE1ittHrPxD+35Ycpv7qJy2pARnGi
-         5G+CH8+vyoXaGLDqT7kcULX8P1R2Yg+tKLMHQvIvQu7hA3HI7UKB5+fMs/kELaiU/6Q6
-         NY0A==
-X-Received: by 10.70.42.70 with SMTP id m6mr12553382pdl.19.1424935091677;
-        Wed, 25 Feb 2015 23:18:11 -0800 (PST)
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=svuAnJjrFcxrCairAvS02s/9+U30kOigE57JgezmQWI=;
+        b=b4G2C+yqpiBE5l6ol6pXHSTc5C/wBq9FpIDEYCnF9YFcoIpC8Q04Ar/P4wsJ7IPrXG
+         IfC8acDIES0U1NRKy0poLDYD16pQIbDQrLhTrcKWYokcnArCr/kojCBPqqiFoTo1tPL5
+         6+9QuOKPMF1G2zLIzYGg6UeTPghA2JBc3pODA+2/GBt59MRo9jPr5H3amWbiSQpZRL6+
+         +2qtepecGBaZfnf8fQD74g1ErTiG2yHxuQZhuY5sQGxH/5Dpiuk22nMfLw4q0qdrt8bA
+         7Iuf4UbVl2Jpk0h2AOWpQOXMZPkjlgldzisrcsfphgoAA3pB23QhMOrG1hOvD9zLRM88
+         EjxQ==
+X-Received: by 10.68.248.74 with SMTP id yk10mr12679023pbc.26.1424934756002;
+        Wed, 25 Feb 2015 23:12:36 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id jd10sm2328pbd.23.2015.02.25.23.18.10
+        by mx.google.com with ESMTPSA id ot6sm38184245pdb.28.2015.02.25.23.12.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 23:18:11 -0800 (PST)
-Date: Thu, 26 Feb 2015 12:49:19 +0530
+        Wed, 25 Feb 2015 23:12:35 -0800 (PST)
+Date: Thu, 26 Feb 2015 12:43:43 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 2/4] staging: rtl8192u: Remove unnecessary comment.
-Message-ID: <ba2c7eeeb68b9659003a93c7a9c5f18c31db5f60.1424934230.git.navyasri.tech@gmail.com>
+Subject: [PATCH v4 1/4] staging: rtl8192u: Convert from printk into
+ netdev_dbg or pr_debug
+Message-ID: <98deaa0c6c3f0623fa6a0c1479d3d3f69ff4884c.1424934230.git.navyasri.tech@gmail.com>
 References: <cover.1424934230.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 In-Reply-To: <cover.1424934230.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The <linux/config.h> header file is not used anymore,
-so it is commented out in this file.This patch deletes
-that unnecessary comment.
+As this is a network driver file, convert printk(KERN_DEBUG.. ) to
+netdev_dbg if the calling function has arguments to support it else
+to pr_debug , to fix the checkpatch.pl warning:
+
+WARNING: Prefer netdev_dbg(netdev, ... then dev_dbg(dev, ... then
+pr_debug(...  to printk(KERN_DEBUG ...
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
 Changes in v4:
-    -In v3 I sent the wrong patch, so sending the right one in this.
+    - Changed code indentation.
 
 Changes in v3:
-    -Sent wrong patch(version v1 of the patch).
+    - Change pr_dbg to pr_debug as it gives the following warning:
+      implicit declaration of function ‘pr_dbg’and change 
+      subject name to reflect the change.
 
 Changes in v2:
-    -Removed an unnecessary commented header.
+    - Correct the commit message to be clearer.
 
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-index eb89321..971fbe6 100644
+index 5533221..eb89321 100644
 --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
 +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c
-@@ -11,7 +11,6 @@
-  *
-  */
+@@ -66,8 +66,8 @@ void ieee80211_crypt_deinit_handler(unsigned long data)
+ 	spin_lock_irqsave(&ieee->lock, flags);
+ 	ieee80211_crypt_deinit_entries(ieee, 0);
+ 	if (!list_empty(&ieee->crypt_deinit_list)) {
+-		printk(KERN_DEBUG "%s: entries remaining in delayed crypt "
+-		       "deletion list\n", ieee->dev->name);
++		netdev_dbg(ieee->dev, "entries remaining in delayed crypt "
++		       "deletion list\n");
+ 		ieee->crypt_deinit_timer.expires = jiffies + HZ;
+ 		add_timer(&ieee->crypt_deinit_timer);
+ 	}
+@@ -118,7 +118,7 @@ int ieee80211_register_crypto_ops(struct ieee80211_crypto_ops *ops)
+ 	list_add(&alg->list, &hcrypt->algs);
+ 	spin_unlock_irqrestore(&hcrypt->lock, flags);
  
--//#include <linux/config.h>
- #include <linux/module.h>
- #include <linux/init.h>
- #include <linux/slab.h>
+-	printk(KERN_DEBUG "ieee80211_crypt: registered algorithm '%s'\n",
++	pr_debug("ieee80211_crypt: registered algorithm '%s'\n",
+ 	       ops->name);
+ 
+ 	return 0;
+@@ -146,7 +146,7 @@ int ieee80211_unregister_crypto_ops(struct ieee80211_crypto_ops *ops)
+ 	spin_unlock_irqrestore(&hcrypt->lock, flags);
+ 
+ 	if (del_alg) {
+-		printk(KERN_DEBUG "ieee80211_crypt: unregistered algorithm "
++		pr_debug("ieee80211_crypt: unregistered algorithm "
+ 		       "'%s'\n", ops->name);
+ 		kfree(del_alg);
+ 	}
+@@ -232,7 +232,7 @@ void __exit ieee80211_crypto_deinit(void)
+ 		struct ieee80211_crypto_alg *alg =
+ 			(struct ieee80211_crypto_alg *) ptr;
+ 		list_del(ptr);
+-		printk(KERN_DEBUG "ieee80211_crypt: unregistered algorithm "
++		pr_debug("ieee80211_crypt: unregistered algorithm "
+ 		       "'%s' (deinit)\n", alg->ops->name);
+ 		kfree(alg);
+ 	}
 -- 
 1.9.1
 
