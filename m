@@ -3,51 +3,51 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,b905441b98bf8956
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.194.161.194 with SMTP id xu2mr1129014wjb.1.1424943115082;
-        Thu, 26 Feb 2015 01:31:55 -0800 (PST)
+X-Received: by 10.112.219.102 with SMTP id pn6mr1112240lbc.12.1424943058400;
+        Thu, 26 Feb 2015 01:30:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.42.136 with SMTP id o8ls10388lal.74.gmail; Thu, 26 Feb
- 2015 01:31:54 -0800 (PST)
-X-Received: by 10.112.9.65 with SMTP id x1mr1155870lba.16.1424943114637;
-        Thu, 26 Feb 2015 01:31:54 -0800 (PST)
+Received: by 10.152.36.65 with SMTP id o1ls9012laj.67.gmail; Thu, 26 Feb 2015
+ 01:30:57 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr1113890lbc.3.1424943057931;
+        Thu, 26 Feb 2015 01:30:57 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
-        by gmr-mx.google.com with ESMTPS id ew5si81575wid.1.2015.02.26.01.31.54
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id o3si1310578wib.2.2015.02.26.01.30.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 01:31:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
+        Thu, 26 Feb 2015 01:30:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22a.google.com with SMTP id ex7so17297133wid.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:31:54 -0800 (PST)
+Received: by mail-wi0-x229.google.com with SMTP id em10so39891667wid.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:30:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=JF8HdHVUKPIUdprpUqWze0oSR4OkYbWVnUtIorMJGrU=;
-        b=mATb+jqA+8b+E4v0fYc6XFHcBMDVilqeOKcUmrQfgdVw6TZEqpTm2+GNZzLgn5D6vD
-         wUjVEDlnxNK2G/3MW89fIRONQ1toM9X41mo99Ato+jSK9WFDKBLsOoxiLQT33rLfK8eA
-         vHzEANPf0qqfF665SP9kWLq9BApDzv+5k2Gx2xjnErwaiGsQnPNtSOpAnK5L7zCBmT1U
-         0BF4gJdkh1WNrJRLAOoaki/VJMsWgZS0W9p3vW/CdbUcmeh1uAC1I5GMJil9mHiEBVel
-         7PhToGQvYfE+8Ozlxca8h53y1OEI1kj9KoU9hmq8Nsw7YQgOMnruFNQEjY8xcgfztPyw
-         35cA==
-X-Received: by 10.180.19.228 with SMTP id i4mr14771688wie.13.1424943114555;
-        Thu, 26 Feb 2015 01:31:54 -0800 (PST)
+        bh=SWxctwW8YGp8ZJ7wN77mPgbjvond5dBSpr0TLBz1JOk=;
+        b=S3ute2kJYzuAPWDDwMeknvw6EJOy52DtimWeDY2H2oVfI6PtXfleLFy1DcykYw7mOq
+         lDw1RmujlazYKvSxB3o5QMsgIPn0fyPZOG3m/nX4O+2Q51C//CRjqo+Pmw8wZE/Ca04D
+         jAVLwCVYPnDRQecVMytFl3s/yD3n2PsEuxnqQ3wHcAC0hbxLqnjAVXKbGknPLhsq1o6r
+         ggRv0u7xcF72mzUhEfD49zfeOADBUqyMzuH6OuV2qhEC40WO6A843NUfZEHw/DKBgDyZ
+         yOUGEgIGjGMYEgBxKgxEhzxeS6axXGn5IzNNq1TCRCyA3zhyzA9ihDPFvAIuHAXM8jR8
+         qeaw==
+X-Received: by 10.180.14.66 with SMTP id n2mr47178262wic.50.1424943057849;
+        Thu, 26 Feb 2015 01:30:57 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.191.167])
-        by mx.google.com with ESMTPSA id ee10sm33209065wib.0.2015.02.26.01.31.52
+        by mx.google.com with ESMTPSA id vh8sm514645wjc.12.2015.02.26.01.30.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 01:31:53 -0800 (PST)
-Date: Thu, 26 Feb 2015 11:31:42 +0200
+        Thu, 26 Feb 2015 01:30:57 -0800 (PST)
+Date: Thu, 26 Feb 2015 11:30:50 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 05/24] staging: rtl8723au: hal: rewrite the right hand side
+Subject: [PATCH 04/24] staging: rtl8723au: hal: rewrite the right hand side
  of an assignment
-Message-ID: <51641060beca92de31cd97fb7b9b1a4e6b01742c.1424942339.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <dd4fe60523108ed600785bb9073d79ad4f4da82e.1424942339.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1424942337.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -83,13 +83,13 @@ expression e;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/rtl8723au/hal/HalHWImg8723A_BB.c | 4 ++--
+ drivers/staging/rtl8723au/hal/HalHWImg8723A_MAC.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/hal/HalHWImg8723A_BB.c b/drivers/staging/rtl8723au/hal/HalHWImg8723A_BB.c
-index 9d4f6be..67d985c 100644
---- a/drivers/staging/rtl8723au/hal/HalHWImg8723A_BB.c
-+++ b/drivers/staging/rtl8723au/hal/HalHWImg8723A_BB.c
+diff --git a/drivers/staging/rtl8723au/hal/HalHWImg8723A_MAC.c b/drivers/staging/rtl8723au/hal/HalHWImg8723A_MAC.c
+index 1207145..8301830 100644
+--- a/drivers/staging/rtl8723au/hal/HalHWImg8723A_MAC.c
++++ b/drivers/staging/rtl8723au/hal/HalHWImg8723A_MAC.c
 @@ -30,12 +30,12 @@ static bool CheckCondition(const u32  Condition, const u32  Hex)
  		return false;
  
