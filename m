@@ -1,88 +1,49 @@
-X-GM-THRID: 7842685779968
+X-GM-THRID: 1059734945792
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,95c6bc05e947b07,start
+X-Google-Thread: 9ca63f596c,8070df28e35d8d4b
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.246.37 with SMTP id xt5mr42103241obc.25.1426152197852;
-        Thu, 12 Mar 2015 02:23:17 -0700 (PDT)
+X-Received: by 10.140.196.209 with SMTP id r200mr9256694qha.0.1424976858511;
+        Thu, 26 Feb 2015 10:54:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.149.197 with SMTP id uc5ls457223obb.70.gmail; Thu, 12 Mar
- 2015 02:23:17 -0700 (PDT)
-X-Received: by 10.182.5.104 with SMTP id r8mr42488000obr.19.1426152197655;
-        Thu, 12 Mar 2015 02:23:17 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id l3si451681pdo.0.2015.03.12.02.23.17
+Received: by 10.107.153.70 with SMTP id b67ls230127ioe.88.gmail; Thu, 26 Feb
+ 2015 10:54:18 -0800 (PST)
+X-Received: by 10.66.100.198 with SMTP id fa6mr9288826pab.31.1424976858224;
+        Thu, 26 Feb 2015 10:54:18 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si199626pbc.2.2015.02.26.10.54.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 02:23:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Thu, 26 Feb 2015 10:54:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padet14 with SMTP id et14so19124065pad.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 02:23:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=y5LBTOspo3qQw+lKot6TmHtF3qtyhztmafKvNRVrpiM=;
-        b=PvAIxGF3Dp6ymAaGg+iUkWIQsAZXytC4byFwBYMi8wbSWNaSq+XjUwCssngJeSgbdd
-         6ov+73pRRUbvQuQzFd00LwB8AI9ptgsOUfzwVH1QAI0Sl8/Xg3bot78ZGOAPJILQYoaw
-         ik5jsXfzWzcdRLlctfPV0yHeytBxz5kpps0eS8hhIIBdOUD7/mhJ3AIESYazzRpWxOkQ
-         eGMr8WJwgZIcsXS+NSx53z0+EE+v1p5RdOKm6e+rxKOqZhEY1HV/qYGuftoNN5WxNH/x
-         qgrU8Lt0MupQd/+Y+vZpC5OA+kx0YJRIqRDdFNdELPM3Ym8sc0qtgd6gFHPFUQne8ABV
-         q/fQ==
-X-Received: by 10.70.26.129 with SMTP id l1mr86785562pdg.163.1426152197428;
-        Thu, 12 Mar 2015 02:23:17 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id ow2sm10004949pdb.14.2015.03.12.02.23.15
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 12 Mar 2015 02:23:16 -0700 (PDT)
-Date: Thu, 12 Mar 2015 14:51:28 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: fbtbt: Move variable declarations
-Message-ID: <20150312092128.GA7207@akanksha>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id F293DB31;
+	Thu, 26 Feb 2015 18:54:17 +0000 (UTC)
+Date: Thu, 26 Feb 2015 10:54:17 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: Remove spaces before
+ tabs
+Message-ID: <20150226185417.GA17202@kroah.com>
+References: <20150219224214.GA1311@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20150219224214.GA1311@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Move variable declarations so as to follow kernel coding
-conventions.
+On Fri, Feb 20, 2015 at 04:12:14AM +0530, Vatika Harlalka wrote:
+> This patch is to remove unneeded spaces before tabs so as to
+> follow kernel coding conventions.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/media/tlg2300/pd-common.h | 20 ++++++++++----------
+>  1 file changed, 10 insertions(+), 10 deletions(-)
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/fbtft/fb_agm1264k-fl.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-index 2ec607d..acf5acb 100644
---- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-+++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-@@ -410,15 +410,14 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 
- static int write(struct fbtft_par *par, void *buf, size_t len)
- {
-+	u8 i, data;
-+
- 	fbtft_par_dbg_hex(DEBUG_WRITE, par, par->info->device, u8, buf, len,
- 		"%s(len=%d): ", __func__, len);
- 
- 	gpio_set_value(par->RW, 0); /* set write mode */
- 
--
- 	while (len--) {
--		u8 i, data;
--
- 		data = *(u8 *) buf++;
- 
- 		/* set data bus */
--- 
-1.9.1
-
+Also not in the tree :(
 
