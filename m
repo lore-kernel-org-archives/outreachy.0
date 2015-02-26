@@ -1,167 +1,112 @@
-X-GM-THRID: 5035636293632
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,82702b7a806ab81c,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.101.101 with SMTP id ff5mr1022976wib.5.1425116807444;
-        Sat, 28 Feb 2015 01:46:47 -0800 (PST)
+X-GM-THRID: 3977169076224
+X-Received: by 10.236.210.113 with SMTP id t77mr9708300yho.13.1424983352590;
+        Thu, 26 Feb 2015 12:42:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.198.231 with SMTP id jf7ls262835lac.92.gmail; Sat, 28 Feb
- 2015 01:46:46 -0800 (PST)
-X-Received: by 10.112.145.133 with SMTP id su5mr2576215lbb.17.1425116806862;
-        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x230.google.com (mail-wg0-x230.google.com. [2a00:1450:400c:c00::230])
-        by gmr-mx.google.com with ESMTPS id ta1si269546wic.1.2015.02.28.01.46.46
+Received: by 10.140.93.67 with SMTP id c61ls272247qge.52.gmail; Thu, 26 Feb
+ 2015 12:42:32 -0800 (PST)
+X-Received: by 10.236.216.69 with SMTP id f65mr9481102yhp.58.1424983352384;
+        Thu, 26 Feb 2015 12:42:32 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id ri9si254681pdb.1.2015.02.26.12.42.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) client-ip=2a00:1450:400c:c00::230;
+        Thu, 26 Feb 2015 12:42:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghk14 with SMTP id k14so24704343wgh.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 01:46:46 -0800 (PST)
+Received: by pablf10 with SMTP id lf10so16688637pab.12
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 12:42:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Kd8Z8RyLq4nguS4E/FtKzjQlhHMn3FGQsuBnZOcH3w0=;
-        b=xF2m5HrM+wsfN57crhpFIhcGvZ8HNIU4AKLa/DJqe/BKyh+4xXtQ0x2JBY4KrT1NVK
-         n3RiixsXHyWK42pJpz5SNT+z1aQvy+7T7xSnuvwzZFZ0CLiBmoMAQnXUjkaEqh0LSaLI
-         a3ao6XJLS9M1ny/XS2vz4yfzvpQ4juT/YLZSxqX6YsMtC2QakoUIMZSqu/UUw08zBTrT
-         F0QODbYp828591eecZT0u4B5Lgv4IASnJh1Rw3q+Ebmnu5asl1vCcz7BNO+ozd4SIsHa
-         cg0CT19GfJ+nbPJ/dnZWldevDot9sguyGQIrEeZEolBv8RJhIvRX+mgAhRhZlO/jb9l2
-         rblw==
-X-Received: by 10.194.120.40 with SMTP id kz8mr37265474wjb.21.1425116806786;
-        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id fo15sm6340805wic.19.2015.02.28.01.46.45
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=BLrDzcj6V0Lkgylj0vSJE8A24ihNPWrB8ZnNd/BKxR4=;
+        b=eg0MorxqGfJYp3GdBqtQyEI1LsqUeFPXXp2fyxJ9C40Qmkq/F5fNtgJgzEOsqAuI4u
+         tp96epEPtVHEZfBI8KP/VUPnZomhkdU1N6XAdQODBkhMZ7BbnLYeyiQW9jW8N0o0h/91
+         bpnThc3UtCFVG9fcNr9c/YdVaD7YVfc6YwE3MeEg1EANwIKmkM4yBZkA749pM0DNb0P4
+         RMiToavilg/1BgIWCVBR/1CipTkqBIc+Xk0G1Jy+MhnwcY/RGxNmHbrJYKqMwgm0jaGo
+         0Slg/hTrpA+CnM5RCoBCMm7oSIGhgErp7wYA2/cl5WXcXCExMJaPUID79YsY+nNAAphN
+         FyTg==
+X-Received: by 10.68.136.228 with SMTP id qd4mr17968836pbb.122.1424983352234;
+        Thu, 26 Feb 2015 12:42:32 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id ia9sm1877817pbc.26.2015.02.26.12.42.30
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 26 Feb 2015 12:42:31 -0800 (PST)
+Date: Fri, 27 Feb 2015 02:12:10 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 1/3] Staging: rtl8192u: Add space after close brace
-Date: Sat, 28 Feb 2015 10:46:39 +0100
-Message-Id: <f586128af850107c136d94932bd95ca760e2ef43.1425116760.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1425116760.git.ksenija.stanojevic@gmail.com>
-References: <cover.1425116760.git.ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: rtl8188eu: Remove unnecessary code
+Message-ID: <20150226204210.GA3571@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch adds space after close brace. Issue found by checkpatch.pl
+Code removed as variables assigned are not used anywhere.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/staging/rtl8188eu/hal/phy.c | 21 +--------------------
+ 1 file changed, 1 insertion(+), 20 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h b/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h
-index c3aabba..a968215 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h
-@@ -61,7 +61,7 @@ typedef enum _HT_MCS_RATE{
- typedef enum _HT_CHANNEL_WIDTH{
- 	HT_CHANNEL_WIDTH_20 = 0,
- 	HT_CHANNEL_WIDTH_20_40 = 1,
--}HT_CHANNEL_WIDTH, *PHT_CHANNEL_WIDTH;
-+} HT_CHANNEL_WIDTH, *PHT_CHANNEL_WIDTH;
+diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+index 1540e1d..8a85c4a 100644
+--- a/drivers/staging/rtl8188eu/hal/phy.c
++++ b/drivers/staging/rtl8188eu/hal/phy.c
+@@ -458,15 +458,13 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
+ 	u8 thermal_val = 0, delta, delta_lck, delta_iqk, offset;
+ 	u8 thermal_avg_count = 0;
+ 	u32 thermal_avg = 0;
+-	s32 ele_a = 0, ele_d, temp_cck, x;
+-	s32 y, ele_c = 0;
++	s32 ele_d, temp_cck;
+ 	s8 ofdm_index[2], cck_index = 0;
+ 	s8 ofdm_index_old[2] = {0, 0}, cck_index_old = 0;
+ 	u32 i = 0, j = 0;
+ 	bool is2t = false;
  
- //
- // Represent Extension Channel Offset in HT Capabilities
-@@ -72,7 +72,7 @@ typedef enum _HT_EXTCHNL_OFFSET{
- 	HT_EXTCHNL_OFFSET_UPPER = 1,
- 	HT_EXTCHNL_OFFSET_NO_DEF = 2,
- 	HT_EXTCHNL_OFFSET_LOWER = 3,
--}HT_EXTCHNL_OFFSET, *PHT_EXTCHNL_OFFSET;
-+} HT_EXTCHNL_OFFSET, *PHT_EXTCHNL_OFFSET;
+ 	u8 ofdm_min_index = 6, rf; /* OFDM BB Swing should be less than +3.0dB */
+-	u8 indexforchannel = 0;
+ 	s8 ofdm_index_mapping[2][index_mapping_NUM_88E] = {
+ 		/* 2.4G, decrease power */
+ 		{0, 0, 2, 3, 4, 4, 5, 6, 7, 7, 8, 9, 10, 10, 11},
+@@ -623,11 +621,6 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
+ 			if (dm_odm->RFCalibrateInfo.TxPowerTrackControl) {
+ 				dm_odm->RFCalibrateInfo.bDoneTxpower = true;
  
- typedef enum _CHNLOP{
- 	CHNLOP_NONE = 0, // No Action now
-@@ -139,7 +139,7 @@ typedef enum _HT_Bandwidth_40MHZ_Sub_Carrier{
- 	SC_MODE_LOWER = 1,
- 	SC_MODE_UPPER = 2,
- 	SC_MODE_FULL40MHZ = 3,
--}HT_BW40_SC_E;
-+} HT_BW40_SC_E;
+-				/* Adujst OFDM Ant_A according to IQK result */
+-				ele_d = (OFDMSwingTable[(u8)ofdm_index[0]] & 0xFFC00000)>>22;
+-				x = dm_odm->RFCalibrateInfo.IQKMatrixRegSetting[indexforchannel].Value[0][0];
+-				y = dm_odm->RFCalibrateInfo.IQKMatrixRegSetting[indexforchannel].Value[0][1];
+-
+ 				/*  Revse TX power table. */
+ 				dm_odm->BbSwingIdxOfdm = (u8)ofdm_index[0];
+ 				dm_odm->BbSwingIdxCck = (u8)cck_index;
+@@ -641,18 +634,6 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
+ 					dm_odm->BbSwingIdxCckCurrent = dm_odm->BbSwingIdxCck;
+ 					dm_odm->BbSwingFlagCck = true;
+ 				}
+-
+-				if (x != 0) {
+-					if ((x & 0x00000200) != 0)
+-						x = x | 0xFFFFFC00;
+-					ele_a = ((x * ele_d)>>8)&0x000003FF;
+-
+-					/* new element C = element D x Y */
+-					if ((y & 0x00000200) != 0)
+-						y = y | 0xFFFFFC00;
+-					ele_c = ((y * ele_d)>>8)&0x000003FF;
+-
+-				}
+ 			}
+ 		}
  
- typedef	struct _HT_CAPABILITY_ELE{
- 
-@@ -224,13 +224,13 @@ typedef struct _MIMOPS_CTRL{
- typedef enum _HT_SPEC_VER{
- 	HT_SPEC_VER_IEEE = 0,
- 	HT_SPEC_VER_EWC = 1,
--}HT_SPEC_VER, *PHT_SPEC_VER;
-+} HT_SPEC_VER, *PHT_SPEC_VER;
- 
- typedef enum _HT_AGGRE_MODE_E{
- 	HT_AGG_AUTO = 0,
- 	HT_AGG_FORCE_ENABLE = 1,
- 	HT_AGG_FORCE_DISABLE = 2,
--}HT_AGGRE_MODE_E, *PHT_AGGRE_MODE_E;
-+} HT_AGGRE_MODE_E, *PHT_AGGRE_MODE_E;
- 
- //------------------------------------------------------------
- //  The Data structure is used to keep HT related variables when card is
-@@ -366,7 +366,7 @@ typedef struct _RT_HTINFO_STA_ENTRY{
- 	u8			McsRateSet[16];
- 
- 
--}RT_HTINFO_STA_ENTRY, *PRT_HTINFO_STA_ENTRY;
-+} RT_HTINFO_STA_ENTRY, *PRT_HTINFO_STA_ENTRY;
- 
- 
- 
-@@ -402,19 +402,19 @@ typedef struct _MIMO_RSSI{
- 	u32	AntennaC;
- 	u32	AntennaD;
- 	u32	Average;
--}MIMO_RSSI, *PMIMO_RSSI;
-+} MIMO_RSSI, *PMIMO_RSSI;
- 
- typedef struct _MIMO_EVM{
- 	u32	EVM1;
- 	u32    EVM2;
--}MIMO_EVM, *PMIMO_EVM;
-+} MIMO_EVM, *PMIMO_EVM;
- 
- typedef struct _FALSE_ALARM_STATISTICS{
- 	u32	Cnt_Parity_Fail;
- 	u32    Cnt_Rate_Illegal;
- 	u32	Cnt_Crc8_fail;
- 	u32	Cnt_all;
--}FALSE_ALARM_STATISTICS, *PFALSE_ALARM_STATISTICS;
-+} FALSE_ALARM_STATISTICS, *PFALSE_ALARM_STATISTICS;
- 
- 
- extern u8 MCS_FILTER_ALL[16];
-@@ -447,7 +447,7 @@ typedef enum _HT_AGGRE_SIZE{
- 	HT_AGG_SIZE_16K = 1,
- 	HT_AGG_SIZE_32K = 2,
- 	HT_AGG_SIZE_64K = 3,
--}HT_AGGRE_SIZE_E, *PHT_AGGRE_SIZE_E;
-+} HT_AGGRE_SIZE_E, *PHT_AGGRE_SIZE_E;
- 
- /* Indicate different AP vendor for IOT issue */
- typedef enum _HT_IOT_PEER
-@@ -459,7 +459,7 @@ typedef enum _HT_IOT_PEER
- 	HT_IOT_PEER_ATHEROS = 4,
- 	HT_IOT_PEER_CISCO= 5,
- 	HT_IOT_PEER_MAX = 6
--}HT_IOT_PEER_E, *PHTIOT_PEER_E;
-+} HT_IOT_PEER_E, *PHTIOT_PEER_E;
- 
- //
- // IOT Action for different AP
-@@ -475,6 +475,6 @@ typedef enum _HT_IOT_ACTION{
- 	HT_IOT_ACT_CDD_FSYNC = 0x00000080,
- 	HT_IOT_ACT_PURE_N_MODE = 0x00000100,
- 	HT_IOT_ACT_FORCED_CTS2SELF = 0x00000200,
--}HT_IOT_ACTION_E, *PHT_IOT_ACTION_E;
-+} HT_IOT_ACTION_E, *PHT_IOT_ACTION_E;
- 
- #endif //_RTL819XU_HTTYPE_H_
 -- 
 1.9.1
 
