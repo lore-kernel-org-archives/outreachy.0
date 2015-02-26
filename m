@@ -1,91 +1,58 @@
-X-GM-THRID: 6329466938491666432
-X-Received: by 10.98.95.71 with SMTP id t68mr16126300pfb.7.1473693861827;
-        Mon, 12 Sep 2016 08:24:21 -0700 (PDT)
+X-GM-THRID: 1550436007936
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,9eec88c8272265f5
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.50.176.202 with SMTP id ck10mr438955igc.5.1424992055475;
+        Thu, 26 Feb 2015 15:07:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.56.29 with SMTP id i29ls11182928otc.12.gmail; Mon, 12 Sep
- 2016 08:24:21 -0700 (PDT)
-X-Received: by 10.200.37.77 with SMTP id 13mr16484386qtn.10.1473693861433;
-        Mon, 12 Sep 2016 08:24:21 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id h124si2390485pfe.0.2016.09.12.08.24.21
+Received: by 10.140.36.228 with SMTP id p91ls380491qgp.36.gmail; Thu, 26 Feb
+ 2015 15:07:35 -0800 (PST)
+X-Received: by 10.52.88.67 with SMTP id be3mr10254826vdb.3.1424992055171;
+        Thu, 26 Feb 2015 15:07:35 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si268099pbc.2.2015.02.26.15.07.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 08:24:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 15:07:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id g202so8259198pfb.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Sep 2016 08:24:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ylHYTWAFkMoevi+9Z9Y586U2VDwbFbOJ8HmOTgbHXBw=;
-        b=JUaj+yJwFIDQh1CQBfl3jFk2U1D/5Jw1ll3gRwH5nMdd0bqujucEdv1sgDdCuyvWhP
-         vbO9mQYMeppoHw6GY8M7ACEeMqNCt90npRpjgOakqHTvZiNGQB+7NwveaENgrrwBZ0ZF
-         xcpB1lSR51rIs7+iwRNB8Nf/46e8ULpjZQIIZ9axYGfCLXlAFBNq1bJecIu6x1VE2Bc+
-         /F5rtIghsM3F4EPHh3Oox5MzC4w4jsUKg+OS9T9foNzwpoukrvgXLAl2umbiIS8fyRjT
-         QGOYWYQpoJcHWkCEgTxBGKqmWnr4u5cFhmjucQlAEEmIdJBSiy442XwTe7O/XCjCIIaH
-         sg0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ylHYTWAFkMoevi+9Z9Y586U2VDwbFbOJ8HmOTgbHXBw=;
-        b=jBFpxs5a7zc5D1IIuDPHiRl+j8I0Wld7rpMKsuEegQHmhh5hn1t4AJet66ArkXf6hf
-         CDsmSIVfTlb3gMXv6ebz9WqV+sGarCRyh9H6DtNaZc3/ApVrUZAkmN+Vzpsrsr+g/LlS
-         g/VwA+MOzHhTLATsl9tbsxMhVUBtZlOnKe7gTkiVcRtlcQam2LZiWdGuWBswqTcc77N1
-         VUk89dVDis34LWwgxGTLBVRX0CZdP7kWi/vDOXfSdrSmup712JYvPBGzab1SHM9bVoDF
-         k6Sp6TU/Ra2EUAVpRFAs6/VI9q7dBuyRa7rOa/ldsGvTnUM1odKluuI5/3f1/RbEGP27
-         NlMg==
-X-Gm-Message-State: AE9vXwM+Wsq3Hkw4zvQnhl3FsEVF2+ES2PSIT1pYr5LJJ+DxkNQyRqVU+cCX/beA3Yb1DQ==
-X-Received: by 10.98.78.138 with SMTP id c132mr34229287pfb.67.1473693861188;
-        Mon, 12 Sep 2016 08:24:21 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.237.207])
-        by smtp.gmail.com with ESMTPSA id ve9sm25493333pac.12.2016.09.12.08.24.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 08:24:20 -0700 (PDT)
-Date: Mon, 12 Sep 2016 20:54:07 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [Outreachy Kernel] [PATCH] staging: gs_fpga_boot: Remove multiple
- blank lines
-Message-ID: <20160912152407.GA8046@sayli-HP-15-Notebook-PC>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C391FA47;
+	Thu, 26 Feb 2015 23:07:34 +0000 (UTC)
+Date: Thu, 26 Feb 2015 15:07:34 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gamze POLAT <gamzepolat94@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH V2] staging: rtl8712: warning of
+ prefer ether_addr_copy
+Message-ID: <20150226230734.GA11094@kroah.com>
+References: <1424596665-3251-1-git-send-email-gamzepolat94@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <1424596665-3251-1-git-send-email-gamzepolat94@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the following checkpatch warning for the gs_fpgaboot
-driver:
-CHECK: Please don't use multiple blank lines.
+On Sun, Feb 22, 2015 at 11:17:45AM +0200, Gamze POLAT wrote:
+> This patch fixes the following checkpatch.pl warnings:
+> WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
+> addresses are __aligned(2)
+> Pahole shows that the addresses are aligned
+> 
+> Signed-off-by: Gamze POLAT <gamzepolat94@gmail.com>
+> ---
+>  drivers/staging/rtl8712/rtl871x_recv.c | 49 +++++++++++++++++-----------------
+>  1 file changed, 24 insertions(+), 25 deletions(-)
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/gs_fpgaboot/io.h | 2 --
- 1 file changed, 2 deletions(-)
+What changed from the first version?
 
-diff --git a/drivers/staging/gs_fpgaboot/io.h b/drivers/staging/gs_fpgaboot/io.h
-index 7b46ac2..5e839b1 100644
---- a/drivers/staging/gs_fpgaboot/io.h
-+++ b/drivers/staging/gs_fpgaboot/io.h
-@@ -66,10 +66,8 @@ enum wbus {
- 	bus_2byte	= 2,
- };
- 
--
- #define MAX_WAIT_DONE	10000
- 
--
- struct gpiobus {
- 	int	ngpio;
- 	void __iomem *r[4];
--- 
-2.7.4
+And please provide some pahole output in the changelog to show this
+proof.
 
+thanks,
+
+greg k-h
 
