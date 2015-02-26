@@ -1,72 +1,127 @@
-X-GM-THRID: 1810928500736
-X-Received: by 10.180.8.67 with SMTP id p3mr265798wia.7.1424527203639;
-        Sat, 21 Feb 2015 06:00:03 -0800 (PST)
+X-GM-THRID: 700464496640
+X-Received: by 10.236.70.100 with SMTP id o64mr10394609yhd.9.1424976829131;
+        Thu, 26 Feb 2015 10:53:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.86.170 with SMTP id q10ls275316wiz.25.canary; Sat, 21 Feb
- 2015 06:00:03 -0800 (PST)
-X-Received: by 10.194.201.10 with SMTP id jw10mr305820wjc.3.1424527203362;
-        Sat, 21 Feb 2015 06:00:03 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wg0-x244.google.com (mail-wg0-x244.google.com. [2a00:1450:400c:c00::244])
-        by gmr-mx.google.com with ESMTPS id ew5si316147wid.1.2015.02.21.06.00.03
+Received: by 10.107.3.195 with SMTP id e64ls311977ioi.70.gmail; Thu, 26 Feb
+ 2015 10:53:48 -0800 (PST)
+X-Received: by 10.50.92.10 with SMTP id ci10mr15733231igb.8.1424976828904;
+        Thu, 26 Feb 2015 10:53:48 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ks4si223440pbc.1.2015.02.26.10.53.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 06:00:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) client-ip=2a00:1450:400c:c00::244;
+        Thu, 26 Feb 2015 10:53:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x244.google.com with SMTP id y19so5610996wgg.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 06:00:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=C8Ia/wTkCmf57DCqX8XapS2lM5IHfkNKywynaW1WpaA=;
-        b=iX9CAkMtznxUuPjSSv2zfWVTGKSP08NFVYbBWWLDVAUshWFD1yoMojByqdyLRYAT7g
-         V9Un0VGqryLY9Q9qlH93x65nq/GBZ5+wJ2gu7/8vYgS3mJgJ/3a+6r8fDpk3n90rD++F
-         egZ/+r34e1qHms4WOP2hf49r3a+ttObPC2ys6Icl5x2WV5TqYVUmtOT0Ez7qyxzYvZZu
-         f9a6xx0MS2ESuwlxlEyWN/W+iQeuLT4kDwAMSSltXaKBQnFpJG3DaKCjwgLDD6NS3Nn1
-         hJIO10F0JwaP2y2cnzZzd5GIIFX4uMYhWytoCrnZM2LvbDH7LcK1MWiLgrLoqKcDPp9t
-         Kjtg==
-X-Received: by 10.180.7.131 with SMTP id j3mr4260975wia.55.1424527203277;
-        Sat, 21 Feb 2015 06:00:03 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id eb10sm7074693wib.13.2015.02.21.06.00.02
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 06:00:02 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8188eu: core: deleted space
-Date: Sat, 21 Feb 2015 15:59:55 +0200
-Message-Id: <1424527195-15790-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 969EBB31;
+	Thu, 26 Feb 2015 18:53:48 +0000 (UTC)
+Date: Thu, 26 Feb 2015 10:53:48 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Katie Dunne <kdunne@mail.ccsf.edu>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: mn88472: Match
+ alignment with open parenthesis
+Message-ID: <20150226185348.GA17122@kroah.com>
+References: <20150219163250.GA29556@katie-Inspiron-5748>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150219163250.GA29556@katie-Inspiron-5748>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Deleted spaces before ','.Because it is prohibited by the kernel coding
-style.
-Error found with checkpatch.pl
+On Thu, Feb 19, 2015 at 08:32:51AM -0800, Katie Dunne wrote:
+> This patch fixes the checkpatch.pl Check:
+> CHECK: Alignment should match open parenthesis
+> 
+> Used tabs and spaces in 8 instances to align with open parenthesis
+> 
+> Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
+> ---
+>  drivers/staging/media/mn88472/mn88472.c | 20 ++++++++++----------
+>  1 file changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/staging/media/mn88472/mn88472.c b/drivers/staging/media/mn88472/mn88472.c
+> index 52de8f8..b8e43ed 100644
+> --- a/drivers/staging/media/mn88472/mn88472.c
+> +++ b/drivers/staging/media/mn88472/mn88472.c
+> @@ -17,7 +17,7 @@
+>  #include "mn88472_priv.h"
+>  
+>  static int mn88472_get_tune_settings(struct dvb_frontend *fe,
+> -	struct dvb_frontend_tune_settings *s)
+> +				     struct dvb_frontend_tune_settings *s)
+>  {
+>  	s->min_delay_ms = 400;
+>  	return 0;
+> @@ -33,9 +33,9 @@ static int mn88472_set_frontend(struct dvb_frontend *fe)
+>  	u8 delivery_system_val, if_val[3], bw_val[7], bw_val2;
+>  
+>  	dev_dbg(&client->dev,
+> -			"delivery_system=%d modulation=%d frequency=%d symbol_rate=%d inversion=%d\n",
+> -			c->delivery_system, c->modulation,
+> -			c->frequency, c->symbol_rate, c->inversion);
+> +		"delivery_system=%d modulation=%d frequency=%d symbol_rate=%d inversion=%d\n",
+> +		c->delivery_system, c->modulation,
+> +		c->frequency, c->symbol_rate, c->inversion);
+>  
+>  	if (!dev->warm) {
+>  		ret = -EAGAIN;
+> @@ -113,7 +113,7 @@ static int mn88472_set_frontend(struct dvb_frontend *fe)
+>  		break;
+>  	default:
+>  		dev_err(&client->dev, "IF frequency %d not supported\n",
+> -				if_frequency);
+> +			if_frequency);
+>  		ret = -EINVAL;
+>  		goto err;
+>  	}
+> @@ -277,12 +277,12 @@ static int mn88472_init(struct dvb_frontend *fe)
+>  	ret = request_firmware(&fw, fw_file, &client->dev);
+>  	if (ret) {
+>  		dev_err(&client->dev, "firmare file '%s' not found\n",
+> -				fw_file);
+> +			fw_file);
+>  		goto err;
+>  	}
+>  
+>  	dev_info(&client->dev, "downloading firmware from file '%s'\n",
+> -			fw_file);
+> +		 fw_file);
+>  
+>  	ret = regmap_write(dev->regmap[0], 0xf5, 0x03);
+>  	if (ret)
+> @@ -295,10 +295,10 @@ static int mn88472_init(struct dvb_frontend *fe)
+>  			len = (dev->i2c_wr_max - 1);
+>  
+>  		ret = regmap_bulk_write(dev->regmap[0], 0xf6,
+> -				&fw->data[fw->size - remaining], len);
+> +					&fw->data[fw->size - remaining], len);
+>  		if (ret) {
+>  			dev_err(&client->dev,
+> -					"firmware download failed=%d\n", ret);
+> +				"firmware download failed=%d\n", ret);
+>  			goto err;
+>  		}
+>  	}
+> @@ -384,7 +384,7 @@ static struct dvb_frontend_ops mn88472_ops = {
+>  };
+>  
+>  static int mn88472_probe(struct i2c_client *client,
+> -		const struct i2c_device_id *id)
+> +			 const struct i2c_device_id *id)
+>  {
+>  	struct mn88472_config *config = client->dev.platform_data;
+>  	struct mn88472_dev *dev;
+> -- 
+> 1.9.1
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ap.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This patch fails to apply to my tree for some reason.  Can you please
+refresh it and resend?
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index d61842e..da19145 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ap.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -509,7 +509,7 @@ void add_RATid(struct adapter *padapter, struct sta_info *psta, u8 rssi_level)
- 		tx_ra_bitmap |= ((raid<<28)&0xf0000000);
- 
- 		DBG_88E("%s => mac_id:%d , raid:%d , bitmap = 0x%x, arg = 0x%x\n",
--			__func__ , psta->mac_id, raid , tx_ra_bitmap, arg);
-+			__func__, psta->mac_id, raid, tx_ra_bitmap, arg);
- 
- 		/* bitmap[0:27] = tx_rate_bitmap */
- 		/* bitmap[28:31]= Rate Adaptive id */
--- 
-1.9.1
+thanks,
 
+greg k-h
 
