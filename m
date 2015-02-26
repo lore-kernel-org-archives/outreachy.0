@@ -1,132 +1,71 @@
-X-GM-THRID: 6402648458608508928
-X-Received: by 10.237.33.236 with SMTP id m41mr9480103qtc.15.1490732761904;
-        Tue, 28 Mar 2017 13:26:01 -0700 (PDT)
+X-GM-THRID: 2732794576896
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,9a4efa979c10540c
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.159.227 with SMTP id xf3mr1289617lbb.11.1424955221833;
+        Thu, 26 Feb 2015 04:53:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.39.115 with SMTP id r106ls13633078ota.10.gmail; Tue, 28
- Mar 2017 13:26:01 -0700 (PDT)
-X-Received: by 10.129.182.11 with SMTP id u11mr9884705ywh.149.1490732761496;
-        Tue, 28 Mar 2017 13:26:01 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id g82si747290pfb.5.2017.03.28.13.26.01
+Received: by 10.152.10.5 with SMTP id e5ls28362lab.37.gmail; Thu, 26 Feb 2015
+ 04:53:41 -0800 (PST)
+X-Received: by 10.112.224.12 with SMTP id qy12mr241122lbc.10.1424955221386;
+        Thu, 26 Feb 2015 04:53:41 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-lb0-x22e.google.com (mail-lb0-x22e.google.com. [2a00:1450:4010:c04::22e])
+        by gmr-mx.google.com with ESMTPS id xl7si61750lbb.1.2015.02.26.04.53.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 13:26:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 04:53:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::22e as permitted sender) client-ip=2a00:1450:4010:c04::22e;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::22e as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id o123so21054197pga.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 13:26:01 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lb0-x22e.google.com with SMTP id z11so10570857lbi.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 04:53:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=uZSB27M5LAxz48XH5JUroAf6eV+f6MdzV8fLFhgtxuk=;
-        b=VWy0rQlWmUtfKdq2DyEchZLZGpCC2YGVIyk0MpfsvsEm4a5zBlR7/AQ6VhNjXJtL1r
-         bFDxZmf6tJ/omoTFkC/evjsrspiy4JrMkjcSjUxyD6i32lksdMiVONewlE/f+pqgdjXS
-         9cEQjQtFnLdS4Ewc7X6rIwW3wWTOhSZyY2nxvbqxtz9nqn9GsQ8gZfvT83Gsz60ZFm5T
-         0bgfr531VgiBNRjWFDJmrS0HN/HmNmq4djfSRFhjjHp28Ec+eZ61s7C+SoQjDMZnHQkH
-         ZRLYAWSA4R/2H7qNcA0cSUFx5jVvhG7J/J+V0yHG104q4/nQ4yrdI0B7oZbUE9DpUBxR
-         DCvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=uZSB27M5LAxz48XH5JUroAf6eV+f6MdzV8fLFhgtxuk=;
-        b=C/peH1/aEtM2JbCiynQ7bnzm5sssE5vKOqP2fmwKyAL6mVCdE67h8QgHmJJVDyyKeJ
-         J8DIkDIB3eF+Ny8RiqIFKveVaLvbQZ8HAYIf7M0+i4IAgPF7pX5jvvafOFO2nX3ijfNt
-         nsIWSl3p1QE/QqzkABbEzy1pH0xRaV6XIjoOa0DQFcPDgotoochHOATpRPDEf1OM9n3u
-         fZzTgv6VR9amef9qmFiPaEofuYQ3XXr6JW/uGx0YBQ6Z2U7Q6w6JbHEQ08XJx1JGndaf
-         DyqsgwWbKMq0JWKmtqCNg5bv2+8UTyK6mMU5SMkpn52IY24EAAUqUKQgYlDR6ybw34WV
-         JOrw==
-X-Gm-Message-State: AFeK/H3pHo/MvjT80q8Hcy9ENfEMq/KcDBqYNQRwAQv8aZXOu9n2RQzEMpYMcEXBVBRAtQ==
-X-Received: by 10.84.224.131 with SMTP id s3mr38695404plj.162.1490732761248;
-        Tue, 28 Mar 2017 13:26:01 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 9sm9094600pfq.42.2017.03.28.13.26.00
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 13:26:00 -0700 (PDT)
-Date: Wed, 29 Mar 2017 01:55:59 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: jic23@kernel.org
-Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] iio: light: lm3533-als: constify attribute_group structures
-Message-ID: <20170328202559.GA25974@singhal-Inspiron-5558>
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=KTHGONbvmU27ta6gd7bOBzZOktT9rwQVs7qYnH6Qjhc=;
+        b=CCCx3kidGwWix16PoRu7auyzR9Ie+GYCozy65NU50eJOLhOTRva2lGnVW6MjoTa74T
+         4MoimbSuFYVmwQUErr7/vhPVZZdFKnJ5LYXzS0/+kWVFQMUOXPSYXFij4DjzAXTiF9TB
+         lOK9cZOTp80g/fSPX9YSZnaJ03Sv//cyHfaziOn/qVhv0OMXiKrttvqzD3IdMjIpYmrz
+         5wx+vCro3zZPl4r0dautbINYvcpALYmcyaBNvwC6dLbOo/QrDn/zCsGMMR9KKwYUJ44w
+         W9AqYLRcUnV/AGIkZ4N9VmTnMbzFJJDIPRwmWNznYIKXzwl4czcDuqQTDEuFY5JBy3hN
+         nxtg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.112.235.10 with SMTP id ui10mr7439933lbc.77.1424955221287;
+ Thu, 26 Feb 2015 04:53:41 -0800 (PST)
+Received: by 10.112.59.9 with HTTP; Thu, 26 Feb 2015 04:53:41 -0800 (PST)
+In-Reply-To: <54EB8938.1030000@gmail.com>
+References: <20150223094426.GA4689@gmail.com>
+	<54EB8938.1030000@gmail.com>
+Date: Thu, 26 Feb 2015 18:23:41 +0530
+Message-ID: <CAHjTdYe8Jg5m3qDcPAL_yerftG=BZkhRASdZoatE9HZSjSxTQA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8188eu: Reindent code
+ to reduce line size
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: Jes Sorensen <jes.sorensen@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=001a11c3d8cac9284c050ffd3d14
 
-Check for attribute_group structures that are only stored in the
-event_attrs filed of iio_info structure. As the event_attrs field of
-iio_info structures is constant, so these attribute_group structures can
-also be declared constant. Done using coccinelle:
+--001a11c3d8cac9284c050ffd3d14
+Content-Type: text/plain; charset=UTF-8
 
-@r1 disable optional_qualifier @
-identifier i;
-position p;
-@@
-static struct attribute_group i@p = {...};
+Hey, thanks for your response :)
+I checked the definition for struct hal_data_8188e, where
+pwrGrpCnt is defined as u8.
+will u8 to int casting not create any problems?
 
-@ok1@
-identifier r1.i;
-position p;
-struct iio_info x;
-@@
-x.event_attrs=&i@p;
+--001a11c3d8cac9284c050ffd3d14
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-@bad@
-position p!={r1.p,ok1.p};
-identifier r1.i;
-@@
-i@p
+<div dir=3D"ltr"><div><div>Hey, thanks for your response :)<br></div>I chec=
+ked the definition for <span class=3D"im">struct hal_data_8188e, where<br><=
+/span><span class=3D"im">pwrGrpCnt</span> is defined as u8. <br></div>will =
+u8 to int casting not create any problems?<br></div>
 
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-static
-+const
-struct attribute_group i={...};
-
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-+const
-struct attribute_group i;
-
-File size before:
-   text    data     bss     dec     hex filename
-   5798    2376       0    8174    1fee drivers/iio/light/lm3533-als.o
-
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-   5862	   2312	      0	   8174	   1fee	drivers/iio/light/lm3533-als.o
-
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/iio/light/lm3533-als.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/iio/light/lm3533-als.c b/drivers/iio/light/lm3533-als.c
-index f409c20..0bcc843 100644
---- a/drivers/iio/light/lm3533-als.c
-+++ b/drivers/iio/light/lm3533-als.c
-@@ -690,7 +690,7 @@ static struct attribute *lm3533_als_event_attributes[] = {
- 	NULL
- };
- 
--static struct attribute_group lm3533_als_event_attribute_group = {
-+static const struct attribute_group lm3533_als_event_attribute_group = {
- 	.attrs = lm3533_als_event_attributes
- };
- 
--- 
-2.7.4
-
+--001a11c3d8cac9284c050ffd3d14--
 
