@@ -1,78 +1,82 @@
-X-GM-THRID: 8139195809792
-X-Received: by 10.42.191.79 with SMTP id dl15mr1592936icb.1.1426274575975;
-        Fri, 13 Mar 2015 12:22:55 -0700 (PDT)
+X-GM-THRID: 2590517493760
+X-Received: by 10.236.20.234 with SMTP id p70mr10064537yhp.46.1424989585767;
+        Thu, 26 Feb 2015 14:26:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.156.194 with SMTP id f185ls1235974ioe.82.gmail; Fri, 13
- Mar 2015 12:22:55 -0700 (PDT)
-X-Received: by 10.66.157.194 with SMTP id wo2mr49879604pab.17.1426274575665;
-        Fri, 13 Mar 2015 12:22:55 -0700 (PDT)
-Return-Path: <exhora.tat@gmail.com>
-Received: from mail-qc0-x229.google.com (mail-qc0-x229.google.com. [2607:f8b0:400d:c01::229])
-        by gmr-mx.google.com with ESMTPS id z4si406940qcf.0.2015.03.13.12.22.55
+Received: by 10.107.34.208 with SMTP id i199ls316029ioi.47.gmail; Thu, 26 Feb
+ 2015 14:26:25 -0800 (PST)
+X-Received: by 10.42.62.19 with SMTP id w19mr10599472ich.30.1424989585542;
+        Thu, 26 Feb 2015 14:26:25 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id hs7si283407pad.1.2015.02.26.14.26.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 12:22:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of exhora.tat@gmail.com designates 2607:f8b0:400d:c01::229 as permitted sender) client-ip=2607:f8b0:400d:c01::229;
+        Thu, 26 Feb 2015 14:26:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of exhora.tat@gmail.com designates 2607:f8b0:400d:c01::229 as permitted sender) smtp.mail=exhora.tat@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by qcwr17 with SMTP id r17so29039644qcw.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 12:22:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=52Ds9/TSBwEWVyurl8QM4isDCdSi82/MJe2esm54a6o=;
-        b=e8o1j15DDLdOadEp/a+tRPTqHrMagkVwisaiYFA5PV820RfB230MFN7qQGqc7zGnkQ
-         eq21rJdBdSMq5EQ6l1Iq0TfjwPKBNP+jX23cvHX2Y/0Ix9jSvELJ4WUuVO1iR4bw9tKl
-         vRQCZqYZKRdIdSkb8CJqkZzHDfoVdwxI3lL+aOBtQHCYVJxDMu/dfSV2YvWo4JM5mY5C
-         tHuMKrqHTe1ZEUnYKAvFrGg1qj7kwwUsYOrJZeLwJAa+LcyXalBeEqy0tedcgAZrsXi+
-         73JN6W5wj8uPd5FfiO1vMHpvoDnRJhdF47zCNspqI2XrO6Ji5R/ToWRbuorgntkfSMaq
-         oZRQ==
-X-Received: by 10.140.95.43 with SMTP id h40mr60123807qge.68.1426274575526;
-        Fri, 13 Mar 2015 12:22:55 -0700 (PDT)
-Return-Path: <exhora.tat@gmail.com>
-Received: from localhost.localdomain (athena.ime.usp.br. [143.107.45.11])
-        by mx.google.com with ESMTPSA id z78sm1987694qkg.44.2015.03.13.12.22.53
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 13 Mar 2015 12:22:54 -0700 (PDT)
-From: Taiane Coelho Ramos <exhora.tat@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Taiane Coelho Ramos <exhora.tat@gmail.com>
-Subject: [PATCH v2] Staging: iio: ade7758: Remove braces on a single statement if
-Date: Fri, 13 Mar 2015 16:22:44 -0300
-Message-Id: <1426274564-4074-1-git-send-email-exhora.tat@gmail.com>
-X-Mailer: git-send-email 1.9.3
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 240F8B49;
+	Thu, 26 Feb 2015 22:26:25 +0000 (UTC)
+Date: Thu, 26 Feb 2015 14:26:24 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8192u: Replace
+ printk() with pr_debug()
+Message-ID: <20150226222624.GA9490@kroah.com>
+References: <1424721379-8173-1-git-send-email-ksenija.stanojevic@gmail.com>
+ <20150226214543.GA17859@kroah.com>
+ <CAL7P5jLEtranaPTzFej-b61B0FsW8=08cg3E5Cdrto0NvrqjkA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL7P5jLEtranaPTzFej-b61B0FsW8=08cg3E5Cdrto0NvrqjkA@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the checkpatch.pl warning:
+On Thu, Feb 26, 2015 at 10:55:13PM +0100, Ksenija Stanojević wrote:
+> On Thu, Feb 26, 2015 at 10:45 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> > On Mon, Feb 23, 2015 at 08:56:19PM +0100, Ksenija Stanojevic wrote:
+> >> For dynamic debugging pr_debug() macro is preferred over printk(), which
+> >> is the raw way to print something. Issue found by checkpatch.pl.
+> >>
+> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> >> ---
+> >> v2: include only changes made to this file.
+> >>
+> >>  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c | 4 ++--
+> >>  1 file changed, 2 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
+> >> index 8c1bf1f..7fab680 100644
+> >> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
+> >> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
+> >> @@ -49,14 +49,14 @@ static void *prism2_wep_init(int keyidx)
+> >>
+> >>       priv->tx_tfm = crypto_alloc_blkcipher("ecb(arc4)", 0, CRYPTO_ALG_ASYNC);
+> >>       if (IS_ERR(priv->tx_tfm)) {
+> >> -             printk(KERN_DEBUG "ieee80211_crypt_wep: could not allocate "
+> >> +             pr_debug("ieee80211_crypt_wep: could not allocate "
+> >>                      "crypto API arc4\n");
+> >>               priv->tx_tfm = NULL;
+> >>               goto fail;
+> >>       }
+> >>       priv->rx_tfm = crypto_alloc_blkcipher("ecb(arc4)", 0, CRYPTO_ALG_ASYNC);
+> >>       if (IS_ERR(priv->rx_tfm)) {
+> >> -             printk(KERN_DEBUG "ieee80211_crypt_wep: could not allocate "
+> >> +             pr_debug("ieee80211_crypt_wep: could not allocate "
+> >>                      "crypto API arc4\n");
+> >
+> > Please use net_dbg() instead
+> >
+> I already tried netdev_dbg, but there's no pointer to net stucture in
+> function argument list.
 
-WARNING: braces {} are not necessary for single
-statement blocks
+Ok, then please resend the patch, and add that information to the
+changelog section, so that I and everyone else knows this.
 
-Signed-off-by: Taiane Coelho Ramos <exhora.tat@gmail.com>
----
-Changes in v2:
-  - Make the commit message more clear.
+thanks,
 
- drivers/staging/iio/meter/ade7758_ring.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/iio/meter/ade7758_ring.c b/drivers/staging/iio/meter/ade7758_ring.c
-index 9725a04..ead38a5 100644
---- a/drivers/staging/iio/meter/ade7758_ring.c
-+++ b/drivers/staging/iio/meter/ade7758_ring.c
-@@ -119,9 +119,8 @@ int ade7758_configure_ring(struct iio_dev *indio_dev)
- 	int ret = 0;
- 
- 	buffer = iio_kfifo_allocate();
--	if (!buffer) {
-+	if (!buffer)
- 		return -ENOMEM;
--	}
- 
- 	iio_device_attach_buffer(indio_dev, buffer);
- 
--- 
-1.9.3
-
+greg k-h
 
