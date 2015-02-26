@@ -1,122 +1,54 @@
-X-GM-THRID: 6670853778972868608
-X-Received: by 2002:a62:41cc:: with SMTP id g73mr3585264pfd.145.1553179179311;
-        Thu, 21 Mar 2019 07:39:39 -0700 (PDT)
+X-GM-THRID: 2371778248704
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,778d1abd8ead7987
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.229.233 with SMTP id h99mr10103755yhq.42.1424992606151;
+        Thu, 26 Feb 2015 15:16:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:227:: with SMTP id 36ls3103634plc.8.gmail; Thu, 21
- Mar 2019 07:39:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxzsCqRMDljk62almmeFE+IqjNvFhqkOFVnGQLoIC+/6QHSze2clATZtqzmuhFORGf6aJz8
-X-Received: by 2002:a17:902:bccb:: with SMTP id o11mr3948542pls.23.1553179178488;
-        Thu, 21 Mar 2019 07:39:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553179178; cv=none;
-        d=google.com; s=arc-20160816;
-        b=DLkuYl8Hwv6lF5h0a3ttXOmt6/mzw8M9kh69h1TuAjG4vWIpQ2DLFB98EzozVf0Hvj
-         olswMHIZoDbbFNqo65I08Sncx4y0zrBHlQrxSkmnTPCuKum9mKEb7p2FCCnZaM23YFyQ
-         Tf9gkAOIClcY/GbFkUS72S4U3WoxufizMr8ga1fwMi4jspyKSLB8/JoUqyCtSMSX0xnE
-         x0EGfa+3pDY0UFz0ltxODyYxxD+KsYdf/zkdKPqleGb/kGZvlkeO8f9YnO3hutc53i69
-         +3WvRtdRrqFg0GSlPf4vIggPogxhO4Vq/TK78phgpIvThRO76nKKduM+HjBoGV5x1HIg
-         84Qw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fmJWsJwSvaZwrWsMCUuA6LJH4jLSmndPJBwkfxjBnWI=;
-        b=U3zh139DVv5h1xhhC67Fs/cLXPA2hcDKmHI4BRuAeFGsp0vdfdT+vE/rJf8eYcHeBP
-         pfSOchiHqAk3UxjusQo0F8jOWNHrzhpYDLmrq6fCRcHDuFlplD9iQyST81qKeQk7wbKg
-         h4lxD6qwJkfefqLUo+0MYlggs2h4QIi1SM62AMLQb0qz8cHaDX6adAj2F+i9MrXF6DHR
-         42YZ1jCyZsC3CHhzcpzQHQMykzfzrx/gjrayfMeKJJreYiRkvoNAMYaFGfy4y/s51Rue
-         InbCsAHHgWVn0BjC924bj5nIXN0zm7J9MCmdlq/Y62K3yqp7obbNKSmSNnUR7yqs3+ad
-         sxjg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GrBKI40t;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id p15si262276plr.4.2019.03.21.07.39.38
+Received: by 10.182.68.104 with SMTP id v8ls138712obt.77.gmail; Thu, 26 Feb
+ 2015 15:16:45 -0800 (PST)
+X-Received: by 10.182.28.104 with SMTP id a8mr9662521obh.15.1424992605930;
+        Thu, 26 Feb 2015 15:16:45 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id hs7si295408pad.1.2015.02.26.15.16.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 07:39:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 15:16:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GrBKI40t;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id p6so4329304pgh.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 07:39:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=fmJWsJwSvaZwrWsMCUuA6LJH4jLSmndPJBwkfxjBnWI=;
-        b=GrBKI40t6HGUjqUkgLw0ut/HC6wPSER0dhkOJGc+gl6o88Khltc6RRAgmBzP/DNRd5
-         495GiNzm6ONVKKW5+onESwQiAkNFoYMQc+TQoIEd8N6hMhXcd+aU1hzf4eIRMM/V5wKt
-         TmstDFERiX1c78VPvJ+ijiKmFPurTjTbtqi3r+eetLhujvJLewthjruMO1RxE8q44w2+
-         hxkc1tknBaiujKFCQ/re9URltS02NKQa1cscT0og1CIz3/jD7m4WnTozufIP9h7QPSxT
-         tRCO2FSGRXGMxE2yyYCC492Vy3m8ZFAZEKeKO1Rk8JTXMlaxG5THSCVvwUqUWMRLql3b
-         Fk0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=fmJWsJwSvaZwrWsMCUuA6LJH4jLSmndPJBwkfxjBnWI=;
-        b=IHJVrjxluW4phHHIXHDSP+AO8mg3L+BfXPWtDJKgNPQA6BTDN8TieHJUcDVf4ENx62
-         qUyTVl7qKkdCO/cicPtDL8op1FEzUORwiwQnWK0+zkVzsMNCHeu6bsOO7EAyK8yDs6Bb
-         JjOZXhdxcq6YF40tVouHpDNhyP14i2d4nfhSTeeSjzI6bgEP3Dhm6hEsZmUnKnXkZFzG
-         T3Xsmv4HF/6nnhRZa/pjbDJP6ol0OwHCKYkTbw3PRpEHeDpjN1P7VbNnBuIayNMIVFxZ
-         FUzLXNk3w1DuXH1CQhkFrirHgjbXJrB7uM9g+4Gp/SmS89EsB4HZdlamx61IrqElz4Z6
-         10jw==
-X-Gm-Message-State: APjAAAVxZZoL8UPE6ae0774jzF/DeJZvc0b9chCtJP1s57Lc/b9+vA2c
-	88cyJwCXkk4yUxNu91+PCQgaECmn
-X-Received: by 2002:a65:63d9:: with SMTP id n25mr3669596pgv.243.1553179177915;
-        Thu, 21 Mar 2019 07:39:37 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.235.30])
-        by smtp.gmail.com with ESMTPSA id 20sm7064525pgr.80.2019.03.21.07.39.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 07:39:37 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: rtl8712: alignment should match open parenthesis
-Date: Thu, 21 Mar 2019 20:09:08 +0530
-Message-Id: <1553179148-6216-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A30E0B3F;
+	Thu, 26 Feb 2015 23:16:45 +0000 (UTC)
+Date: Thu, 26 Feb 2015 15:16:45 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Remove braces from single statement
+ block
+Message-ID: <20150226231645.GA1562@kroah.com>
+References: <20150222104213.GA1215@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150222104213.GA1215@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Align code to the open parenthesis to fix the alignment issue.
+On Sun, Feb 22, 2015 at 04:12:13PM +0530, Vatika Harlalka wrote:
+> This patch is to remove braces from single statement if condition
+> to follow kernel coding convention.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/fw.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_efuse.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Please resend and change the Subject: to show that you are working in
+the staging directory on the rtl8188eu driver.
 
-diff --git a/drivers/staging/rtl8712/rtl8712_efuse.c b/drivers/staging/rtl8712/rtl8712_efuse.c
-index 39eb743..00babd0 100644
---- a/drivers/staging/rtl8712/rtl8712_efuse.c
-+++ b/drivers/staging/rtl8712/rtl8712_efuse.c
-@@ -353,7 +353,7 @@ static u8 fix_header(struct _adapter *padapter, u8 header, u16 header_addr)
- }
- 
- u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
--			 const u8 word_en, const u8 *data)
-+			       const u8 word_en, const u8 *data)
- {
- 	u8 pg_header = 0;
- 	u16 efuse_addr = 0, curr_size = 0;
-@@ -441,7 +441,7 @@ u8 r8712_efuse_access(struct _adapter *padapter, u8 bRead, u16 start_addr,
- 			break;
- 		}
- 		res = efuse_one_byte_rw(padapter, bRead, start_addr + i,
--		      data + i);
-+					data + i);
- 		if (!bRead && !res)
- 			break;
- 	}
-@@ -554,7 +554,7 @@ u8 r8712_efuse_map_write(struct _adapter *padapter, u16 addr, u16 cnts,
- 		offset++;
- 		if (!empty)
- 			if (!r8712_efuse_pg_packet_read(padapter, offset,
--			    pktdata))
-+							pktdata))
- 				return false;
- 		i = 0;
- 		j = 0;
--- 
-2.7.4
+thanks,
 
+greg k-h
 
