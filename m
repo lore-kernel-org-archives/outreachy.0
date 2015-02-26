@@ -1,81 +1,69 @@
-X-GM-THRID: 6210777532431597568
-X-Received: by 10.13.223.72 with SMTP id i69mr39341728ywe.28.1446059330473;
-        Wed, 28 Oct 2015 12:08:50 -0700 (PDT)
+X-GM-THRID: 3900162703360
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d48b6c3da0aff89e
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.4.134 with SMTP id 6mr9726869yhj.35.1424987278888;
+        Thu, 26 Feb 2015 13:47:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.159.130 with SMTP id i124ls21826ioe.41.gmail; Wed, 28 Oct
- 2015 12:08:49 -0700 (PDT)
-X-Received: by 10.50.79.201 with SMTP id l9mr3600659igx.13.1446059329968;
-        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id vy6si4969933pbc.1.2015.10.28.12.08.49
+Received: by 10.140.17.115 with SMTP id 106ls343117qgc.57.gmail; Thu, 26 Feb
+ 2015 13:47:58 -0800 (PST)
+X-Received: by 10.236.20.234 with SMTP id p70mr9922941yhp.46.1424987278608;
+        Thu, 26 Feb 2015 13:47:58 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id m1si285206pdc.0.2015.02.26.13.47.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 13:47:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pacfv9 with SMTP id fv9so15617507pac.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=tuUVcagFWdcQOVKUSq9oBvGL5dcZvXMwLd8vXAA/POE=;
-        b=zb/NO19WjSiXER9XwmwAYRBMdrMPJncuvmJs/7DTm7pbqlYRa6/WH4fC8x23sGTspq
-         qze7WZAay0cr2idT9SEqamQvfA4ovm0DygL0DS4lpEuysG9Alhe1KJMRaIfa01fn98M3
-         yP6afYiahgykgfnhvyNTu5RV8/iQu3clyAheXlI7LWN+7IVbfEU8NNwXJ7jn1eYuuKlQ
-         J4muVhc2N+2DiyRtek5bgxfM3++eKkMmvx9l6LuzoEq7rzFNKIKTuQgcf4FqbI7MLCFQ
-         rJuggY7bVAtO/TFybUj58PNzpYFMc2oU+ksgtaa5Zz0obB/F4hBQVffo4qTMU0zkXoVJ
-         ry7A==
-X-Received: by 10.66.254.7 with SMTP id ae7mr35369925pad.129.1446059329779;
-        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.198.148])
-        by smtp.gmail.com with ESMTPSA id tn2sm46962286pac.0.2015.10.28.12.08.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
-Date: Thu, 29 Oct 2015 00:38:44 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: rtl871x_io: Remove unused function
-Message-ID: <20151028190844.GA22829@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 52C25B1B;
+	Thu, 26 Feb 2015 21:47:58 +0000 (UTC)
+Date: Thu, 26 Feb 2015 13:47:58 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Simplify if
+ statements
+Message-ID: <20150226214758.GA28945@kroah.com>
+References: <1424977815-7967-1-git-send-email-ksenija.stanojevic@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1424977815-7967-1-git-send-email-ksenija.stanojevic@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Drop function that is declared but not called anywhere.
+On Thu, Feb 26, 2015 at 08:10:15PM +0100, Ksenija Stanojevic wrote:
+> This patch simplifies if conditions that contain bool variable,
+> using Coccinelle script:
+> @@
+> bool x;
+> symbol true;
+> @@
+> - x == true
+> + x
+> 
+> Signed-off-by:Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/r8192U_core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+> index 02707d8..2efcb20 100644
+> --- a/drivers/staging/rtl8192u/r8192U_core.c
+> +++ b/drivers/staging/rtl8192u/r8192U_core.c
+> @@ -2822,7 +2822,7 @@ static bool rtl8192_adapter_start(struct net_device *dev)
+>  		}
+>  		dm_initialize_txpower_tracking(dev);
+>  
+> -		if (priv->bDcut == true) {
+> +		if (priv->bDcut) {
+>  			u32 i, TempCCk;
+>  			u32 tmpRegA = rtl8192_QueryBBReg(dev, rOFDM0_XATxIQImbalance, bMaskDWord);
+>  			for (i = 0; i < TxBBGainTableLength; i++) {
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_io.h | 8 --------
- 1 file changed, 8 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl871x_io.h b/drivers/staging/rtl8712/rtl871x_io.h
-index 070cc03..26dd24c 100644
---- a/drivers/staging/rtl8712/rtl871x_io.h
-+++ b/drivers/staging/rtl8712/rtl871x_io.h
-@@ -232,14 +232,6 @@ struct io_queue {
- 	struct	intf_hdl intf;
- };
- 
--static inline u32 _RND4(u32 sz)
--{
--	u32	val;
--
--	val = ((sz >> 2) + ((sz & 3) ? 1 : 0)) << 2;
--	return val;
--}
--
- u8 r8712_read8(struct _adapter *adapter, u32 addr);
- u16 r8712_read16(struct _adapter *adapter, u32 addr);
- u32 r8712_read32(struct _adapter *adapter, u32 addr);
--- 
-1.9.1
-
+This patch does not apply to my tree :(
 
