@@ -1,69 +1,48 @@
-X-GM-THRID: 6208580285046456320
-X-Received: by 10.180.88.36 with SMTP id bd4mr94139wib.2.1445547743382;
-        Thu, 22 Oct 2015 14:02:23 -0700 (PDT)
+X-GM-THRID: 1771791450112
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,5864b10778fbf19e
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.66.66.196 with SMTP id h4mr9827317pat.5.1424984471706;
+        Thu, 26 Feb 2015 13:01:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.54.209 with SMTP id y78ls706wmh.27.gmail; Thu, 22 Oct 2015
- 14:02:23 -0700 (PDT)
-X-Received: by 10.180.89.41 with SMTP id bl9mr100249wib.3.1445547742990;
-        Thu, 22 Oct 2015 14:02:22 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id hc2si15394wib.3.2015.10.22.14.02.22
+Received: by 10.182.96.33 with SMTP id dp1ls123620obb.69.gmail; Thu, 26 Feb
+ 2015 13:01:11 -0800 (PST)
+X-Received: by 10.182.231.199 with SMTP id ti7mr8493953obc.7.1424984471480;
+        Thu, 26 Feb 2015 13:01:11 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id bx1si236459pdb.2.2015.02.26.13.01.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 14:02:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Feb 2015 13:01:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id ll6so5757346wic.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 14:02:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=IVD3JHGvISs+HLthlUrsri0yGama3/3Kb2qVczPCkFc=;
-        b=rDZho+bXrl81m6TEbKyjrYvyNEcV0xXbvNSiFI4piFT7LXSEjyDCsG7NkLAU+2Yqvp
-         gSKtfwXJl9Tii/tDlw6a4M6XjqBytLRj9nT+fGve2xi9pktwljLqbCO9X1ysvJZo3AaO
-         Fdw6L7xKUg4Mttso3Rg2krzuAHC2YjIbOTVdQhO/XFC796uAFJO2lbqztIgB7P55689J
-         T2dzDfpf5kc3tao7fcSID5Gkdg5XPu3rTZ/Tr2iaA5tQMNdWuqc87s32NUsCw8/Lv5Kw
-         2GS9Ktdc7MPxRRddy0yBMczA/XFg2yRI/NrdCHh93Jg4N2a6986ZwJwCjax7wWaxfzu/
-         Laww==
-X-Received: by 10.180.12.206 with SMTP id a14mr501924wic.25.1445547742894;
-        Thu, 22 Oct 2015 14:02:22 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from localhost.localdomain ([95.13.215.164])
-        by smtp.gmail.com with ESMTPSA id cr5sm17521847wjb.16.2015.10.22.14.02.21
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 22 Oct 2015 14:02:22 -0700 (PDT)
-From: Burcin Akalin <brcnakalin@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Burcin Akalin <brcnakalin@gmail.com>
-Subject: [PATCH] staging: octeon: Do not use multiple blank lines.
-Date: Fri, 23 Oct 2015 00:01:35 +0300
-Message-Id: <1445547695-18060-1-git-send-email-brcnakalin@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 19124B3C;
+	Thu, 26 Feb 2015 21:01:10 +0000 (UTC)
+Date: Thu, 26 Feb 2015 13:01:09 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rts5208: Add blank line
+Message-ID: <20150226210109.GA27557@kroah.com>
+References: <1424523035-8717-1-git-send-email-yeliztaneroglu@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1424523035-8717-1-git-send-email-yeliztaneroglu@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove multiple blank lines. Problem found using checkpatch.pl
-"CHECK: Please don't use multiple blank lines".
+On Sat, Feb 21, 2015 at 02:50:35PM +0200, Yeliz Taneroglu wrote:
+> This patch fixes the checkpatch.pl warning:
+> WARNING: "Missing a blank line after declarations"
+> 
+> Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+> ---
+>  drivers/staging/rts5208/general.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
----
- drivers/staging/octeon/ethernet-defines.h | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/octeon/ethernet-defines.h b/drivers/staging/octeon/ethernet-defines.h
-index f92e0c4..ac5d71d 100644
---- a/drivers/staging/octeon/ethernet-defines.h
-+++ b/drivers/staging/octeon/ethernet-defines.h
-@@ -42,5 +42,4 @@
- 
- #define TOTAL_NUMBER_OF_PORTS       (CVMX_PIP_NUM_INPUT_PORTS+1)
- 
--
- #endif /* __ETHERNET_DEFINES_H__ */
--- 
-1.9.1
-
+This change is already in Linus's tree :(
 
