@@ -1,80 +1,52 @@
-X-GM-THRID: 5586368331776
-X-Received: by 10.152.36.132 with SMTP id q4mr3313671laj.6.1425244065133;
-        Sun, 01 Mar 2015 13:07:45 -0800 (PST)
+X-GM-THRID: 447976833024
+X-Received: by 10.236.230.39 with SMTP id i37mr9540307yhq.47.1424984896238;
+        Thu, 26 Feb 2015 13:08:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.88.9 with SMTP id bc9ls399538lab.101.gmail; Sun, 01 Mar
- 2015 13:07:44 -0800 (PST)
-X-Received: by 10.112.131.106 with SMTP id ol10mr3352961lbb.20.1425244064586;
-        Sun, 01 Mar 2015 13:07:44 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id by11si572783wib.1.2015.03.01.13.07.44
+Received: by 10.140.28.75 with SMTP id 69ls315037qgy.7.gmail; Thu, 26 Feb 2015
+ 13:08:16 -0800 (PST)
+X-Received: by 10.236.3.106 with SMTP id 70mr9792820yhg.20.1424984895870;
+        Thu, 26 Feb 2015 13:08:15 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id pc4si274275pac.0.2015.02.26.13.08.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 13:07:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Thu, 26 Feb 2015 13:08:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wiwl15 with SMTP id l15so10744782wiw.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 13:07:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=nOzeoD3SGLCN3ed9IjLVqFNnheeFMi0zYEOnIhkZL5w=;
-        b=KpgYCPKKiDlt7wMrkcOEylV0nDCujUGvStH/r3RUTp2EaRHf8wrT1AXHZeeEy61CkU
-         7/Tag7c5TQFj1e5l0tqddLgtayqKGv/RESBVJek1kt9fajt0TLvZEdn/0ybJOFBmqoXa
-         Xh0tLRMv+54/Wofhn+YKFb5gPizLoyeUa0+k0L/tepiSyB1JM9PjUEIYSGmG4zQP+rz4
-         +xrkHW2P0rzJYEisXQt8w8ItIWVyNyeIqcs6S2fQUpFNhWKTj2MAg3unKroOFXCy/5mW
-         tgN1s2OAcZoUDZxnsOvZkMMjkYp7zQ22kodPK4/B2XeZ9VhDqqQRA4lP4kQshOG7gLBg
-         LIpA==
-X-Received: by 10.180.211.235 with SMTP id nf11mr29998833wic.52.1425244064484;
-        Sun, 01 Mar 2015 13:07:44 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id b4sm13146977wic.2.2015.03.01.13.07.43
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 13:07:43 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH v2] Staging: lustre: Replace  __printf(string-index, first-to-check) with __attribute__((format(printf, string-index, first-to-check)))
-Date: Sun,  1 Mar 2015 23:07:35 +0200
-Message-Id: <1425244055-11203-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 91B86B84;
+	Thu, 26 Feb 2015 21:08:15 +0000 (UTC)
+Date: Thu, 26 Feb 2015 13:08:15 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: fbtft: removed space
+ before ')' and after '(' parenthesis.
+Message-ID: <20150226210815.GA30995@kroah.com>
+References: <1424352772-6038-1-git-send-email-navyasri.tech@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1424352772-6038-1-git-send-email-navyasri.tech@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix checkpatch.pl issues with __printf(string-index, first-to-check) is preferred over __attribute__((format(printf, string-index, first-to-check))) in libcfs_debug.h
+On Thu, Feb 19, 2015 at 07:02:52PM +0530, Navya Sri Nizamkari wrote:
+> This patch fixes the following checkpatch.pl errors:
+> 
+> ERROR: space prohibited after that open parenthesis '('
+> ERROR: space prohibited before that close parenthesis ')'
+> 
+> Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+> ---
+> Changes in v2:
+>    - This patch only contains the changes made to remove the space before and
+>     after parenthesis.
+>    - Doesn't contain other changes not mentioned the in the commit message.
+> 
+>  drivers/staging/fbtft/fb_bd663474.c | 74 ++++++++++++++++++-------------------
+>  1 file changed, 37 insertions(+), 37 deletions(-)
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
-
-Changes in v2:
-   Changed subject line
- 
- drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h
-index 2e5a9e5..d5b6887 100644
---- a/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h
-+++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_debug.h
-@@ -244,12 +244,12 @@ do {									\
- 
- int libcfs_debug_msg(struct libcfs_debug_msg_data *msgdata,
- 			    const char *format1, ...)
--	__attribute__ ((format (printf, 2, 3)));
-+	__printf(string-index, first-to-check);
- 
- int libcfs_debug_vmsg2(struct libcfs_debug_msg_data *msgdata,
- 			      const char *format1,
- 			      va_list args, const char *format2, ...)
--	__attribute__ ((format (printf, 4, 5)));
-+	__printf(string-index, first-to-check);
- 
- /* other external symbols that tracefile provides: */
- int cfs_trace_copyin_string(char *knl_buffer, int knl_buffer_nob,
--- 
-1.9.1
-
+Someone sent in this same change before you did, sorry :(
 
