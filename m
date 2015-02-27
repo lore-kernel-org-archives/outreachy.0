@@ -1,76 +1,61 @@
 X-GM-THRID: 4799843008512
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,37879575871abf20
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.130.70 with SMTP id oc6mr2402722lbb.13.1425072425067;
-        Fri, 27 Feb 2015 13:27:05 -0800 (PST)
+X-Received: by 10.112.189.227 with SMTP id gl3mr2400582lbc.2.1425072422272;
+        Fri, 27 Feb 2015 13:27:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.8.98 with SMTP id q2ls202773wia.7.canary; Fri, 27 Feb 2015
- 13:27:04 -0800 (PST)
-X-Received: by 10.180.39.164 with SMTP id q4mr769493wik.5.1425072424829;
-        Fri, 27 Feb 2015 13:27:04 -0800 (PST)
+Received: by 10.180.83.9 with SMTP id m9ls200361wiy.16.gmail; Fri, 27 Feb 2015
+ 13:27:01 -0800 (PST)
+X-Received: by 10.180.89.194 with SMTP id bq2mr770069wib.4.1425072421951;
+        Fri, 27 Feb 2015 13:27:01 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id cl5si194274wib.3.2015.02.27.13.27.04
+Received: from mail-wg0-x233.google.com (mail-wg0-x233.google.com. [2a00:1450:400c:c00::233])
+        by gmr-mx.google.com with ESMTPS id i7si200212wif.0.2015.02.27.13.27.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 13:27:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Fri, 27 Feb 2015 13:27:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) client-ip=2a00:1450:400c:c00::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id m14so22795762wev.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 13:27:04 -0800 (PST)
+Received: by mail-wg0-x233.google.com with SMTP id y19so22772916wgg.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 13:27:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=jSK1hDoOCH1f7oHTenKIa+jc29gr4KMCqXxJFje2tE4=;
-        b=YSChU/EVWsnDyjNLmwQMMGBjBY1DZLRbHBm564AU8f5w4UNG8kmgPC2LhsmkFTcuvI
-         78tQdoYXoM8lGxt4ZYpJPo3RY0KSmmAlQYSVyBRwomPyxLP9PGj68tOiY4bOi//r3TFI
-         bQyEZvn/U2L03Oxbf1Dtk/A6eZ2ACwfhzfwoLCKCnAPA3rVG2Q+wO7drYS7jMOBHmDMB
-         gFVQvEDgF8BNiIDpUAx14PnS9jnyxRwlt7y0f3Ip9krPk3OfJD8jgwizuT2L7Be2tdiu
-         9aQnj5F4t4pQJ8gAwkfQHwyMdcy2+nWz2LXa+JA1FjCd8mcuwG5HZSFzx/haBHOtRX/e
-         rCrQ==
-X-Received: by 10.194.91.199 with SMTP id cg7mr30965875wjb.114.1425072424774;
-        Fri, 27 Feb 2015 13:27:04 -0800 (PST)
+        h=from:to:cc:subject:date:message-id;
+        bh=nNmOWFJyYOtkvfPpp10VeZDzycx/zlyJlMQTbkQYLjs=;
+        b=NyPyipB+BLVYjM+zX6s1S2/REtEtx8EN9sgn2bNijT8Ut9I43TYTtMTHbPO4/9uUjh
+         URkC5rhr/I5sEs3RsDFHVRaP9qeDav8QivdWWBTkL6BwnaNqTdTSWJhwuBzlZSQ4b7gH
+         7rstNMTuCb3SK5WlafSH6PnoBfdTUfBWTajTokdRuiM7CQyJbxc2f+VVImQnssKTuE4C
+         ZV9ktLwWNV2azv6J27gRDwk9YcauOoztjMCTpJmbIVc14bPPWNRXm2pPiWPXeIk8YCP4
+         R/IbrYJhhtYOrRO5DMhcuNPR95048SGznLfcFdj0q6hYbjG1EKb478mB9X5wjfFPjZOU
+         SxWQ==
+X-Received: by 10.180.88.41 with SMTP id bd9mr10362650wib.47.1425072421887;
+        Fri, 27 Feb 2015 13:27:01 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
 Received: from localhost.localdomain ([151.250.87.133])
-        by mx.google.com with ESMTPSA id k6sm4484266wia.6.2015.02.27.13.27.03
+        by mx.google.com with ESMTPSA id k6sm4484266wia.6.2015.02.27.13.27.00
         (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 13:27:04 -0800 (PST)
+        Fri, 27 Feb 2015 13:27:01 -0800 (PST)
 From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH 1/3] Staging: lustre: default used instead of break
-Date: Fri, 27 Feb 2015 23:25:54 +0200
-Message-Id: <1425072356-1314-2-git-send-email-aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH 0/3]
+Date: Fri, 27 Feb 2015 23:25:53 +0200
+Message-Id: <1425072356-1314-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
-In-Reply-To: <1425072356-1314-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-References: <1425072356-1314-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 
-WARNING: switch default: should use break.
-That was found by running checkpatch
+This patchset default used instead of break and delete space.
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- drivers/staging/lustre/lustre/ptlrpc/ptlrpc_module.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Melike Yurtoglu (3):
+  Staging: lustre: default used instead of break
+  Staging: lustre: Deleted space prohibited between function name and
+    open parenthesis
+  Staging: lustre: Remove spaces at the start of a line
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/ptlrpc_module.c b/drivers/staging/lustre/lustre/ptlrpc/ptlrpc_module.c
-index 5268887..44f4e27 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/ptlrpc_module.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/ptlrpc_module.c
-@@ -143,7 +143,7 @@ cleanup:
- 		ptlrpc_hr_fini();
- 		req_layout_fini();
- 		/* Fall through */
--	default: ;
-+	break;
- 	}
- 
- 	return rc;
+ drivers/staging/lustre/lustre/ptlrpc/ptlrpc_internal.h | 6 +++---
+ drivers/staging/lustre/lustre/ptlrpc/ptlrpc_module.c   | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
 -- 
 1.8.3.2
 
