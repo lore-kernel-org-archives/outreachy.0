@@ -1,48 +1,52 @@
 X-GM-THRID: 4475579269120
-X-Received: by 10.112.130.70 with SMTP id oc6mr2082928lbb.13.1425042541766;
-        Fri, 27 Feb 2015 05:09:01 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,9816ab370498a2c8
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.181.198 with SMTP id dy6mr2083546lbc.22.1425042488208;
+        Fri, 27 Feb 2015 05:08:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.80.197 with SMTP id t5ls119986wix.18.canary; Fri, 27 Feb
- 2015 05:09:01 -0800 (PST)
-X-Received: by 10.194.239.41 with SMTP id vp9mr2050669wjc.5.1425042541444;
-        Fri, 27 Feb 2015 05:09:01 -0800 (PST)
+Received: by 10.152.181.137 with SMTP id dw9ls148531lac.85.gmail; Fri, 27 Feb
+ 2015 05:08:07 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr2075644lbb.11.1425042487668;
+        Fri, 27 Feb 2015 05:08:07 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id i7si116806wif.0.2015.02.27.05.09.01
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id i7si116224wif.0.2015.02.27.05.08.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 05:09:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        Fri, 27 Feb 2015 05:08:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesx3 with SMTP id x3so20310869wes.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:09:01 -0800 (PST)
+Received: by mail-wi0-x233.google.com with SMTP id ex7so58516wid.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:08:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=ezj6l1RnLw0mT1vYCrbKK5vnC1M1RWh099MVbAeu5Uk=;
-        b=GzsVrzhGgnQr7L/OZpiEydR6cZsijFouzzldyjAu30G33hAxgsQeqzv5+6KRa8wqlc
-         IV5n85a0CCVYRjsjklrapqrfLB5hfM3iyhTRBdoCEb6ioBbsT5Tl9y0sSk3meCYWksVs
-         OVp0nD0YEiw9B4qzNO4LBOnomUVr7kGyLPBHu/aNECOW8DYxzonm51iuDhpQpRl8CQ7i
-         A85/8jptktjCDRHgbQByA78WiyPXUDhIjUQCaS7viB1GsT3YhrAWyX5V+s91qtKgQk0W
-         5hm0tH7ASMvbdE0N6Ta1TXOX0m/+HlH0RUYQF/b/NTa8b0Bpxe8to1rXQWXodSvySfE4
-         qyAA==
-X-Received: by 10.194.47.201 with SMTP id f9mr9432604wjn.17.1425042541374;
-        Fri, 27 Feb 2015 05:09:01 -0800 (PST)
+        bh=vVRO/R+x5w3bSgOWKygpzw6P8ltSf6Gub++NUfCQ4pI=;
+        b=NgSQsR6Lo+vubb/5ihDwjKFwU+W1+BUGhd6I9WxOrLFypd0cIRfw3Z9tS80QQErdd5
+         6SJobDysFtxKQsQ0cWo/u/aClD1PQ/c/BXfzpzZQJP18d0gEc3NRwIpJxZUmfdPG66IO
+         rJEtTJv4DgV0ttrt7V5mQ+twBAMrxEY9mWXLM06gT5c4bZ8ynBrzst6i7P1JdcEXSvm5
+         9M53zJTiv6XK7gqiu3kPqEChbudBv9zvP32WFEqD2BNT+ZGtfVgg/QSaaEVx+o6ywWi9
+         3K6Ww742MR65nc/5s07o0BVnj5zFtaWYi04EQJn/EBagwstWxMdMGp2adiNP0KOoKdxQ
+         /KuA==
+X-Received: by 10.195.12.167 with SMTP id er7mr28261270wjd.54.1425042487599;
+        Fri, 27 Feb 2015 05:08:07 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.192.222])
-        by mx.google.com with ESMTPSA id uc18sm2795784wib.0.2015.02.27.05.08.57
+        by mx.google.com with ESMTPSA id hj10sm5858801wjc.48.2015.02.27.05.08.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 05:09:00 -0800 (PST)
-Date: Fri, 27 Feb 2015 15:08:38 +0200
+        Fri, 27 Feb 2015 05:08:07 -0800 (PST)
+Date: Fri, 27 Feb 2015 15:07:58 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 20/24] staging: iio: meter: remove unused variable
-Message-ID: <26adc67a13ccfefe17025a69f93c29a852dd3dac.1425035012.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 19/24] staging: lustre: llite: remove unused variable
+Message-ID: <d5b7f5b5f48fe0112c4abea678a8233c83f5fc73.1425035012.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -71,33 +75,28 @@ identifier len,f;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/iio/meter/ade7759.c | 5 +----
+ drivers/staging/lustre/lustre/llite/dcache.c | 5 +----
  1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/meter/ade7759.c b/drivers/staging/iio/meter/ade7759.c
-index b0c7dbc..694e0ce 100644
---- a/drivers/staging/iio/meter/ade7759.c
-+++ b/drivers/staging/iio/meter/ade7759.c
-@@ -215,18 +215,15 @@ error_ret:
- 
- static int ade7759_reset(struct device *dev)
+diff --git a/drivers/staging/lustre/lustre/llite/dcache.c b/drivers/staging/lustre/lustre/llite/dcache.c
+index ddf1fa9..3078dd9 100644
+--- a/drivers/staging/lustre/lustre/llite/dcache.c
++++ b/drivers/staging/lustre/lustre/llite/dcache.c
+@@ -339,13 +339,10 @@ static int ll_revalidate_dentry(struct dentry *dentry,
+  */
+ static int ll_revalidate_nd(struct dentry *dentry, unsigned int flags)
  {
--	int ret;
- 	u16 val;
- 
- 	ade7759_spi_read_reg_16(dev,
- 			ADE7759_MODE,
- 			&val);
- 	val |= 1 << 6; /* Software Chip Reset */
--	ret = ade7759_spi_write_reg_16(dev,
-+	return ade7759_spi_write_reg_16(dev,
- 			ADE7759_MODE,
- 			val);
+-	int rc;
 -
--	return ret;
+ 	CDEBUG(D_VFSTRACE, "VFS Op:name=%pd, flags=%u\n",
+ 	       dentry, flags);
+ 
+-	rc = ll_revalidate_dentry(dentry, flags);
+-	return rc;
++	return ll_revalidate_dentry(dentry, flags);
  }
  
- static IIO_DEV_ATTR_AENERGY(ade7759_read_40bit, ADE7759_AENERGY);
+ 
 -- 
 1.9.3
 
