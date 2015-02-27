@@ -1,148 +1,119 @@
-X-GM-THRID: 6200058021520867328
-X-Received: by 10.112.26.212 with SMTP id n20mr37513lbg.2.1443563499200;
-        Tue, 29 Sep 2015 14:51:39 -0700 (PDT)
+X-GM-THRID: 4958820761600
+X-Received: by 10.112.219.102 with SMTP id pn6mr2383781lbc.12.1425079996079;
+        Fri, 27 Feb 2015 15:33:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.209.80 with SMTP id i77ls5602lfg.0.gmail; Tue, 29 Sep 2015
- 14:51:38 -0700 (PDT)
-X-Received: by 10.112.169.34 with SMTP id ab2mr28791lbc.23.1443563498563;
-        Tue, 29 Sep 2015 14:51:38 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
-        by gmr-mx.google.com with ESMTPS id fj10si807649wib.1.2015.09.29.14.51.38
+Received: by 10.180.221.41 with SMTP id qb9ls213487wic.16.canary; Fri, 27 Feb
+ 2015 15:33:14 -0800 (PST)
+X-Received: by 10.194.161.194 with SMTP id xu2mr2410419wjb.1.1425079994790;
+        Fri, 27 Feb 2015 15:33:14 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id cl5si208874wib.3.2015.02.27.15.33.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 14:51:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 15:33:14 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x232.google.com with SMTP id fx3so35185826wic.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 14:51:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZimMm6OKsfV7Pg6G/cAtofkttaFKu1nkA2+ZU168dsM=;
-        b=TmITIwvq++PRP43mNyVYYfhpqqZOBQBiREHbvjT5RYt8kbBshTyD40S/+YJrBKUGgJ
-         cZ1us3So/odkkztxYWQkaAQGbD+SwEcBvOy6zan7nxVXNqRRTQfafowdIQcNJqY6Z2xc
-         7HwfUb9tzi/RD6fvo4mLlrPpLKYjEcSCSm+MBsObXUdxu/UJbGZj6BsMI6/TjejbsG4Y
-         e1dGGYm5eyhWrU6E1g0l/OU7A9Nj7W6ZsiigDMpc7s+XmPn2baQ8U8QA3KFfdJ4tKIKA
-         9uqrZ/ixH20sYk0/kHlzaqQ7JOLQvGfGQDu9yZyhMEjDlIe+itcnLf5syTyBWvHSYAad
-         V24A==
-X-Received: by 10.194.77.4 with SMTP id o4mr347308wjw.4.1443563498448;
-        Tue, 29 Sep 2015 14:51:38 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([213.233.104.234])
-        by smtp.gmail.com with ESMTPSA id ej5sm25987155wjd.22.2015.09.29.14.51.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 29 Sep 2015 14:51:37 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH 2/2] staging:comedi: Fixed multiple file comment style
-Date: Tue, 29 Sep 2015 14:50:18 -0700
-Message-Id: <1443563418-42983-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,663,1418079600"; 
+   d="scan'208";a="101597085"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Feb 2015 00:33:14 +0100
+Date: Sat, 28 Feb 2015 00:33:13 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Adding spaces around
+ '='
+In-Reply-To: <1425078899-3052-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502280032560.2764@hadrien>
+References: <1425078899-3052-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fixed 'Block comments use * on subsequent lines' and 'Block comments use
-a trailing */ on a separate line' Warnings
+On Sat, 28 Feb 2015, Dilek Uzulmez wrote:
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
----
- drivers/staging/comedi/comedidev.h | 33 +++++++++++++++++----------------
- drivers/staging/comedi/comedilib.h | 30 +++++++++++++++---------------
- 2 files changed, 32 insertions(+), 31 deletions(-)
+> Fix checkpatch.pl error:
+> ERROR: spaces required around that ':' (ctx:VxW)
+>
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/lustre/lnet/selftest/console.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/lnet/selftest/console.c b/drivers/staging/lustre/lnet/selftest/console.c
+> index 1e0afc2..44dc237 100644
+> --- a/drivers/staging/lustre/lnet/selftest/console.c
+> +++ b/drivers/staging/lustre/lnet/selftest/console.c
+> @@ -527,7 +527,7 @@ lstcon_group_add(char *name)
+>  	lstcon_group_t *grp;
+>  	int	     rc;
+>
+> -	rc = (lstcon_group_find(name, &grp) == 0)? -EEXIST: 0;
+> +	rc = (lstcon_group_find(name, &grp) == 0)? -EEXIST : 0;
 
-diff --git a/drivers/staging/comedi/comedidev.h b/drivers/staging/comedi/comedidev.h
-index 28a5d3a..c88f6e4 100644
---- a/drivers/staging/comedi/comedidev.h
-+++ b/drivers/staging/comedi/comedidev.h
-@@ -1,19 +1,19 @@
- /*
--    include/linux/comedidev.h
--    header file for kernel-only structures, variables, and constants
--
--    COMEDI - Linux Control and Measurement Device Interface
--    Copyright (C) 1997-2000 David A. Schleef <ds@schleef.org>
--
--    This program is free software; you can redistribute it and/or modify
--    it under the terms of the GNU General Public License as published by
--    the Free Software Foundation; either version 2 of the License, or
--    (at your option) any later version.
--
--    This program is distributed in the hope that it will be useful,
--    but WITHOUT ANY WARRANTY; without even the implied warranty of
--    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--    GNU General Public License for more details.
-+ *    include/linux/comedidev.h
-+ *   header file for kernel-only structures, variables, and constants
-+ *
-+ *   COMEDI - Linux Control and Measurement Device Interface
-+ *   Copyright (C) 1997-2000 David A. Schleef <ds@schleef.org>
-+ *
-+ *   This program is free software; you can redistribute it and/or modify
-+ *   it under the terms of the GNU General Public License as published by
-+ *   the Free Software Foundation; either version 2 of the License, or
-+ *   (at your option) any later version.
-+ *
-+ *   This program is distributed in the hope that it will be useful,
-+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *   GNU General Public License for more details.
- */
- 
- #ifndef _COMEDIDEV_H
-@@ -264,7 +264,8 @@ struct comedi_device {
- 	unsigned int detach_count;
- 	/* hw_dev is passed to dma_alloc_coherent when allocating async buffers
- 	 * for subdevices that have async_dma_dir set to something other than
--	 * DMA_NONE */
-+	 * DMA_NONE
-+	*/
- 	struct device *hw_dev;
- 
- 	const char *board_name;
-diff --git a/drivers/staging/comedi/comedilib.h b/drivers/staging/comedi/comedilib.h
-index 56baf85..013446b 100644
---- a/drivers/staging/comedi/comedilib.h
-+++ b/drivers/staging/comedi/comedilib.h
-@@ -1,19 +1,19 @@
- /*
--    linux/include/comedilib.h
--    header file for kcomedilib
--
--    COMEDI - Linux Control and Measurement Device Interface
--    Copyright (C) 1998-2001 David A. Schleef <ds@schleef.org>
--
--    This program is free software; you can redistribute it and/or modify
--    it under the terms of the GNU General Public License as published by
--    the Free Software Foundation; either version 2 of the License, or
--    (at your option) any later version.
--
--    This program is distributed in the hope that it will be useful,
--    but WITHOUT ANY WARRANTY; without even the implied warranty of
--    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--    GNU General Public License for more details.
-+ *   linux/include/comedilib.h
-+ *   header file for kcomedilib
-+ *
-+ *   COMEDI - Linux Control and Measurement Device Interface
-+ *   Copyright (C) 1998-2001 David A. Schleef <ds@schleef.org>
-+ *
-+ *   This program is free software; you can redistribute it and/or modify
-+ *   it under the terms of the GNU General Public License as published by
-+ *   the Free Software Foundation; either version 2 of the License, or
-+ *   (at your option) any later version.
-+ *
-+ *   This program is distributed in the hope that it will be useful,
-+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *   GNU General Public License for more details.
- */
- 
- #ifndef _LINUX_COMEDILIB_H
--- 
-1.9.1
+There should be a space before ? too.
 
+julia
+
+>  	if (rc != 0) {
+>  		/* find a group with same name */
+>  		lstcon_group_put(grp);
+> @@ -816,7 +816,7 @@ lstcon_group_info(char *name, lstcon_ndlist_ent_t *gents_p,
+>  		LST_NODE_STATE_COUNTER(ndl->ndl_node, gentp);
+>
+>  	rc = copy_to_user(gents_p, gentp,
+> -			      sizeof(lstcon_ndlist_ent_t)) ? -EFAULT: 0;
+> +			      sizeof(lstcon_ndlist_ent_t)) ? -EFAULT : 0;
+>
+>  	LIBCFS_FREE(gentp, sizeof(lstcon_ndlist_ent_t));
+>
+> @@ -847,7 +847,7 @@ lstcon_batch_add(char *name)
+>  	int	       i;
+>  	int	       rc;
+>
+> -	rc = (lstcon_batch_find(name, &bat) == 0)? -EEXIST: 0;
+> +	rc = (lstcon_batch_find(name, &bat) == 0)? -EEXIST : 0;
+>  	if (rc != 0) {
+>  		CDEBUG(D_NET, "Batch %s already exists\n", name);
+>  		return rc;
+> @@ -911,7 +911,7 @@ lstcon_batch_list(int index, int len, char *name_up)
+>  	list_for_each_entry(bat, &console_session.ses_bat_list, bat_link) {
+>  		if (index-- == 0) {
+>  			return copy_to_user(name_up, bat->bat_name, len) ?
+> -			       -EFAULT: 0;
+> +			       -EFAULT : 0;
+>  		}
+>  	}
+>
+> @@ -956,7 +956,7 @@ lstcon_batch_info(char *name, lstcon_test_batch_ent_t *ent_up, int server,
+>  				  &test->tes_dst_grp->grp_ndl_list;
+>
+>  	if (dents_up != NULL) {
+> -		rc = lstcon_nodes_getent((server ? srvlst: clilst),
+> +		rc = lstcon_nodes_getent((server ? srvlst : clilst),
+>  					 index_p, ndent_p, dents_up);
+>  		return rc;
+>  	}
+> @@ -1683,7 +1683,7 @@ int
+>  lstcon_session_match(lst_sid_t sid)
+>  {
+>  	return (console_session.ses_id.ses_nid   == sid.ses_nid &&
+> -		console_session.ses_id.ses_stamp == sid.ses_stamp) ?  1: 0;
+> +		console_session.ses_id.ses_stamp == sid.ses_stamp) ?  1 : 0;
+>  }
+>
+>  static void
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425078899-3052-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
