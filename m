@@ -1,110 +1,70 @@
-X-GM-THRID: 3055769616384
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,2e6a0e877a487b6f,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.219.102 with SMTP id pn6mr976717lbc.12.1424722848886;
-        Mon, 23 Feb 2015 12:20:48 -0800 (PST)
+X-GM-THRID: 4416259227648
+X-Received: by 10.152.29.97 with SMTP id j1mr1957165lah.3.1425034682859;
+        Fri, 27 Feb 2015 02:58:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.42 with SMTP id g10ls576044laa.51.gmail; Mon, 23 Feb
- 2015 12:20:48 -0800 (PST)
-X-Received: by 10.112.50.106 with SMTP id b10mr1603813lbo.8.1424722848235;
-        Mon, 23 Feb 2015 12:20:48 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id r6si778046wix.0.2015.02.23.12.20.48
+Received: by 10.152.28.100 with SMTP id a4ls152315lah.23.gmail; Fri, 27 Feb
+ 2015 02:58:02 -0800 (PST)
+X-Received: by 10.152.4.229 with SMTP id n5mr1960617lan.1.1425034682477;
+        Fri, 27 Feb 2015 02:58:02 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
+        by gmr-mx.google.com with ESMTPS id o3si84992wib.2.2015.02.27.02.58.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 12:20:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        Fri, 27 Feb 2015 02:58:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id r20so20710712wiv.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:20:48 -0800 (PST)
+Received: by mail-we0-x231.google.com with SMTP id w55so19311900wes.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:58:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=tTvjP37dGbwEFf4prnOfTbM/VeKqe30gDxb7TEWdC6I=;
-        b=Y2PCIlxkc0Wx6BSwIIDOqnV9hpndYjlccBXYM4lZ1F8draNIGeY1Ghu7/PdXIZh2ao
-         MdmzmscM3oiNSl5grU5chNnmHcRKq2IBTSppADvoo6IInGfXWFaVHFTSnFWCw0Ax1+1B
-         PzMTR0ER6cAZEojid8Z66RR9+wZvnG+EQ5RlslXNLNAVdUhBLDiEUNncSygViLxc4MV4
-         KejJRBzJmpGNDwMDl+6iTARkJwH3xlG/ZTTQCTOiGk1/zPEfthyLG+JHbel08A8dPiDR
-         63LYDdLi+s0ijKplkFR/Js9JG+isMsKwXdA+l6Uw2mk1yAOxMAp78S1dei1Of2dCDqVa
-         elKg==
-X-Received: by 10.194.178.161 with SMTP id cz1mr26360738wjc.102.1424722848132;
-        Mon, 23 Feb 2015 12:20:48 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id g10sm17376979wic.7.2015.02.23.12.20.46
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Feb 2015 12:20:47 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        bh=LQNkMojyzKzAR0mYh97werxWn63vhJEHFuFnKGt74NI=;
+        b=yYuF5kAvnCwJLwAct5Namc/3zRqV5m5+OUXf7cv0XhUtCHrXZ6ujZDNkZrDF7SQlrV
+         PnNINnJXF348ykDTlJq2VqwBfTbxFDKpJr+CuBb5xsUXa+toyRijbT2WLBzIxet3JbKc
+         WI/8CN4Z4gKwiulnZbZCa3/sd4StynZcB97g1wML+YKpoL0MyUlRbtmBjw0mBuq7sGk6
+         uP/W0MeW1b1F30o9XGNWJnqyz3x98ZQuKsFRNW4faniO9gbUfOBQZupTNGGmFq7MvQ7k
+         b/smDiTLHYIpTvBTcm+qrSrrLCBNnVD8VF3SUSsPkE54cqZFxsvAZc48EDPlJiFsTgEn
+         09TQ==
+X-Received: by 10.180.198.19 with SMTP id iy19mr5324778wic.8.1425034682344;
+        Fri, 27 Feb 2015 02:58:02 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from yeliz-N56DP.comu.edu.tr ([193.255.97.48])
+        by mx.google.com with ESMTPSA id ka1sm5452095wjc.2.2015.02.27.02.58.00
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 02:58:01 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v3] Staging: rtl8192u: Fix comments in the file
-Date: Mon, 23 Feb 2015 21:20:37 +0100
-Message-Id: <1424722837-8732-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Subject: [PATCH] Staging: rtl8723au: Remove white space before semicolon
+Date: Fri, 27 Feb 2015 12:58:09 +0200
+Message-Id: <1425034689-9145-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-Remove commented code, no longer in use and convert comments from
-C99 to C89 style. Issue found by checkpatch.pl.
+drivers/staging/rtl8723au/core/rtw_cmd.c warning: space prohibited before semicolon
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 ---
-v3: remove unused code, format comments.
-v2: remove space before tab.
- drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_cmd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h b/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
-index 7ed7243..e283f5e 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TS.h
-@@ -1,14 +1,14 @@
- #ifndef _TSTYPE_H_
- #define _TSTYPE_H_
- #include "rtl819x_Qos.h"
--#define TS_SETUP_TIMEOUT	60  // In millisecond
-+#define TS_SETUP_TIMEOUT	60  /* In millisecond */
- #define TS_INACT_TIMEOUT	60
- #define TS_ADDBA_DELAY		60
- 
- #define TOTAL_TS_NUM		16
- #define TCLAS_NUM		4
- 
--// This define the Tx/Rx directions
-+/* This define the Tx/Rx directions */
- typedef enum _TR_SELECT {
- 	TX_DIR = 0,
- 	RX_DIR = 1,
-@@ -28,9 +28,8 @@ typedef struct _TS_COMMON_INFO{
- typedef struct _TX_TS_RECORD{
- 	TS_COMMON_INFO		TsCommonInfo;
- 	u16				TxCurSeq;
--	BA_RECORD			TxPendingBARecord;	// For BA Originator
--	BA_RECORD			TxAdmittedBARecord;	// For BA Originator
--//	QOS_DL_RECORD		DLRecord;
-+	BA_RECORD			TxPendingBARecord;	/* For BA Originator */
-+	BA_RECORD			TxAdmittedBARecord;	/* For BA Originator */
- 	u8				bAddBaReqInProgress;
- 	u8				bAddBaReqDelayed;
- 	u8				bUsingBa;
-@@ -44,11 +43,10 @@ typedef struct _RX_TS_RECORD {
- 	u16				RxTimeoutIndicateSeq;
- 	struct list_head		RxPendingPktList;
- 	struct timer_list		RxPktPendingTimer;
--	BA_RECORD			RxAdmittedBARecord;	 // For BA Recipient
-+	BA_RECORD			RxAdmittedBARecord;	 /* For BA Recipient */
- 	u16				RxLastSeqNum;
- 	u8				RxLastFragNum;
- 	u8				num;
--//	QOS_DL_RECORD		DLRecord;
- } RX_TS_RECORD, *PRX_TS_RECORD;
- 
+diff --git a/drivers/staging/rtl8723au/core/rtw_cmd.c b/drivers/staging/rtl8723au/core/rtw_cmd.c
+index 2447a56..f6b99d8 100644
+--- a/drivers/staging/rtl8723au/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723au/core/rtw_cmd.c
+@@ -1368,7 +1368,7 @@ void rtw_createbss_cmd23a_callback(struct rtw_adapter *padapter,
+ 				RT_TRACE(_module_rtl871x_cmd_c_, _drv_err_,
+ 					 ("\nCan't alloc sta_info when "
+ 					  "createbss_cmd_callback\n"));
+-				goto createbss_cmd_fail ;
++				goto createbss_cmd_fail;
+ 			}
+ 		}
  
 -- 
-1.9.1
+1.8.3.2
 
 
