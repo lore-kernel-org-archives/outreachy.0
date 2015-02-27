@@ -1,112 +1,145 @@
-X-GM-THRID: 6671552795749908480
-X-Received: by 2002:a81:9982:: with SMTP id q124mr12433848ywg.390.1553341931248;
-        Sat, 23 Mar 2019 04:52:11 -0700 (PDT)
+X-GM-THRID: 4892850651136
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,c5f6424c8243bdc3,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.83.168 with SMTP id r8mr765549wiy.6.1425071413649;
+        Fri, 27 Feb 2015 13:10:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:50cb:: with SMTP id e194ls3555376ybb.12.gmail; Sat, 23
- Mar 2019 04:52:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwpLvLVUuO2s5O66EvaM0r+LIANUqIyaYenwHeKIC1RnfOGYJ1RWi1FI99iiS2EZiT9dBN/
-X-Received: by 2002:a25:ae52:: with SMTP id g18mr12133708ybe.349.1553341930319;
-        Sat, 23 Mar 2019 04:52:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553341930; cv=none;
-        d=google.com; s=arc-20160816;
-        b=mpI8Vd6dJLp1+28vDhmyh0Uo46ySQ/y2EIw0eMhpI4MArs3LPvbL2uxTuAFlNO1V6e
-         lgmT2Ql/IkcWGhQ/ngp6pDObWwzeoWRGcTIR62LrjeXLQyWy4uAGG/++4NSVHrYko8qr
-         d82s76rlJMF7Vq6yYXwrpCvZgI+Fibc1J5kwAfJawLVT3yuCmnnJZnonWOU0RM8QR64R
-         0QSMXgkOJG9u/69lbBNk+rQ2OuEqp4sCxxKOpXERXDzgUv99q+X1oRsI21x9XleiL/9v
-         uGah+htraafuXiQoYwAKiRdZXRlWgcDR7AGEjHycxAKW2I1+AGZP4Ng4gpEWWvHhLunz
-         WUAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=MltFq4YcfrmsrCdeHVZDvJcwH/VefCp+8XrYa4S8H8w=;
-        b=WgLI0gyVbIsdKkUlNLyez/MtV6KgA1ZNXRcfSeNkqUx3/oQzLZ0uA13xua2y3lzEUp
-         +2YcYp16+5BYRQrQlU1Ic5l6yO7QJgsx3AUrnqi9QfDvpJK4FNzkm19GbjjBvT7xYjht
-         xqYq6/DK1TWswta7cqyaISHSDR25y2xqBl0UJn78ojkHQ467OQ9DPFoHNb105C/tCd2j
-         EFNICWazcQ48wgXIWmen2Hm994hyn2j0r23g7/t7t1ePJiXxpbAcCuWSTTqqABVVxncV
-         WIt2ucn4OFFv0BfElv6A3zF+rv2n8CevtbmazaQ5qMc0XELh5qyApWdmCbSEBcdG57uy
-         Oj4Q==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ruXAlCh2;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <anushkacharu9@gmail.com>
-Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com. [2607:f8b0:4864:20::42c])
-        by gmr-mx.google.com with ESMTPS id l126si663514ywg.5.2019.03.23.04.52.10
+Received: by 10.180.14.105 with SMTP id o9ls202773wic.38.gmail; Fri, 27 Feb
+ 2015 13:10:13 -0800 (PST)
+X-Received: by 10.194.142.174 with SMTP id rx14mr2355552wjb.4.1425071413447;
+        Fri, 27 Feb 2015 13:10:13 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
+        by gmr-mx.google.com with ESMTPS id ta1si194175wic.1.2015.02.27.13.10.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 04:52:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) client-ip=2607:f8b0:4864:20::42c;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Feb 2015 13:10:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ruXAlCh2;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42c.google.com with SMTP id b3so1900242pfd.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 04:52:10 -0700 (PDT)
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wesq59 with SMTP id q59so22783061wes.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 13:10:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=MltFq4YcfrmsrCdeHVZDvJcwH/VefCp+8XrYa4S8H8w=;
-        b=ruXAlCh2fTztLSUGiO/9PvWwmFBPimBkZE0vEbFLR2k3Q7RoXwFKBWJXRh//1dqDvV
-         MghHtPIorSYTsI6jBEer9J87GzthL7cD5aMca/iFzWWORlOQ9BbNqJBljA3hleR/WwZE
-         2Sd4yBUhpc0id84jY6beQCOZs+8QHYniE05cRYUj+TDZh0hzUUpHyyFeOwL0o0gn2C/O
-         scHjpLlwtZNw0mz8PDMzHaTYCdNXC2VmAJSncGkQgnDOeJICuMFVP3uW6b7tlubjiywP
-         v2iA7BmZg9M6U6UHdseCcLAlang4raEuKaOg5Pn9RRZO5/Ayci3/epj71Wn4fFkFLQEc
-         t9bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=MltFq4YcfrmsrCdeHVZDvJcwH/VefCp+8XrYa4S8H8w=;
-        b=btkZBUxo3dmpf8XEcQvghG+bytul9lUUn2Bas8qmW7bEwcjWH6+CqRnDjnyTtaw1JA
-         M1EVssTifgWEuxG/Jk2VRVm0dAFuNxf3ZTej6LDhUZLg+zDxsXss02CYzP90wBKVCqAM
-         X+uNYthMghVmvkPc5QbG+0Xj/0Dm2+PEZ7xkjft5UAA9ERR5Pg0qJOUptqnzYIZ9K/+n
-         Y4x3eqd9kZOGV+ZadTXMZ/OVKQWxvmIjou4u5wtrPAp2fTyV2mUgDnQ4w/+mSO98OJxp
-         SMj8bVBJbDfajXmcQOY24KmxoiCJXv+mXj5u2uz7AwGvsZACNQ4lvbfVCAQtRGxjrqTN
-         8eTA==
-X-Gm-Message-State: APjAAAXoYh9D3Ek9UYfSLbRdxVgJr+PRJvC0lRPcxm4+QNR8+70jXmIU
-	dimV2pv4aYxIE5sNTGtoOlE=
-X-Received: by 2002:a63:5349:: with SMTP id t9mr13822118pgl.262.1553341929900;
-        Sat, 23 Mar 2019 04:52:09 -0700 (PDT)
-Return-Path: <anushkacharu9@gmail.com>
-Received: from localhost.localdomain ([42.110.231.40])
-        by smtp.gmail.com with ESMTPSA id p86sm20220456pfa.104.2019.03.23.04.52.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 04:52:09 -0700 (PDT)
-From: anushkacharu9@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Anushka Shukla <anushkacharu9@gmail.com>
-Subject: [PATCH] Staging: rtlwifi: base.c: fix line over 80 charcters
-Date: Sat, 23 Mar 2019 17:21:59 +0530
-Message-Id: <20190323115159.9331-1-anushkacharu9@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <anushkacharu9@gmail.com>
-References: <anushkacharu9@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=XXLAAFhPwscKlq2ALSaiB57IauMZf04wQzyafNjnVdY=;
+        b=NnHfaU49MhSQcAZlCcTtXSdaXBpnKCW1I3DMALRDl8zSn26E81Jlcd7ncbIKahD+UI
+         TqhcPYJTydlwxqpcJ3HrKS5HmmXseawZSqRaqpMSJZ9hPjY/H0IXcJkcvl5tp91zTI8Z
+         5BsOVDHW4gjiTWYlI2HYbd5CVqHUO4MJdU1iodcibzY89wGQt7Byjo4jx/HutUBrgW1Y
+         NSWkodbVCBAyxU2+AqiHtEi6oMgW2Z3mFgmnha9bsqVXyE6m3HuibwyDCAmmbLujkj7c
+         vXiHd+avGpSd5pjMk6rtgV0A0eS6JjJsZidkl7KZYDOWnoehkTw9k8YUB0LcV7vKYBHS
+         6/Ig==
+X-Received: by 10.180.87.169 with SMTP id az9mr10516079wib.72.1425071413353;
+        Fri, 27 Feb 2015 13:10:13 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id g1sm4613865wjy.24.2015.02.27.13.10.12
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Feb 2015 13:10:12 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: lustre: lnet: selftest: Trailing statements
+Date: Fri, 27 Feb 2015 23:10:06 +0200
+Message-Id: <1425071406-18079-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-From: Anushka Shukla <anushkacharu9@gmail.com>
+Trailing statements should be on next line.
+This Error found with checkpatch.pl
 
-fix line over 80 characters
-
-Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/rtlwifi/base.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/lustre/lnet/selftest/rpc.c | 27 ++++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtlwifi/base.c b/drivers/staging/rtlwifi/base.c
-index 35df2cf60619..5fbd71c01ff3 100644
---- a/drivers/staging/rtlwifi/base.c
-+++ b/drivers/staging/rtlwifi/base.c
-@@ -2130,7 +2130,8 @@ void rtl_watchdog_wq_callback(void *data)
- 			if (rtlpriv->link_info.roam_times >= 5) {
- 				pr_err("AP off, try to reconnect now\n");
- 				rtlpriv->link_info.roam_times = 0;
--				ieee80211_connection_loss(rtlpriv->mac80211.vif);
-+				ieee80211_connection_loss(rtlpriv->
-+                                               		  mac80211.vif);
- 			}
- 		} else {
- 			rtlpriv->link_info.roam_times = 0;
+diff --git a/drivers/staging/lustre/lnet/selftest/rpc.c b/drivers/staging/lustre/lnet/selftest/rpc.c
+index 10a7027..080788a 100644
+--- a/drivers/staging/lustre/lnet/selftest/rpc.c
++++ b/drivers/staging/lustre/lnet/selftest/rpc.c
+@@ -111,7 +111,8 @@ srpc_free_bulk(srpc_bulk_t *bk)
+ 
+ 	for (i = 0; i < bk->bk_niov; i++) {
+ 		pg = bk->bk_iovs[i].kiov_page;
+-		if (pg == NULL) break;
++		if (pg == NULL)
++			break;
+ 
+ 		__free_page(pg);
+ 	}
+@@ -842,7 +843,8 @@ srpc_prepare_bulk(srpc_client_rpc_t *rpc)
+ 
+ 	LASSERT(bk->bk_niov <= LNET_MAX_IOV);
+ 
+-	if (bk->bk_niov == 0) return 0; /* nothing to do */
++	if (bk->bk_niov == 0)
++		return 0; /* nothing to do */
+ 
+ 	opt = bk->bk_sink ? LNET_MD_OP_PUT : LNET_MD_OP_GET;
+ 	opt |= LNET_MD_KIOV;
+@@ -1092,7 +1094,8 @@ srpc_add_client_rpc_timer(srpc_client_rpc_t *rpc)
+ {
+ 	stt_timer_t *timer = &rpc->crpc_timer;
+ 
+-	if (rpc->crpc_timeout == 0) return;
++	if (rpc->crpc_timeout == 0)
++		return;
+ 
+ 	INIT_LIST_HEAD(&timer->stt_list);
+ 	timer->stt_data    = rpc;
+@@ -1207,7 +1210,8 @@ srpc_send_rpc(swi_workitem_t *wi)
+ 		}
+ 
+ 		rc = srpc_prepare_bulk(rpc);
+-		if (rc != 0) break;
++		if (rc != 0)
++			break;
+ 
+ 		wi->swi_state = SWI_STATE_REQUEST_SUBMITTED;
+ 		rc = srpc_send_request(rpc);
+@@ -1217,20 +1221,24 @@ srpc_send_rpc(swi_workitem_t *wi)
+ 		/* CAVEAT EMPTOR: rqtev, rpyev, and bulkev may come in any
+ 		 * order; however, they're processed in a strict order:
+ 		 * rqt, rpy, and bulk. */
+-		if (!rpc->crpc_reqstev.ev_fired) break;
++		if (!rpc->crpc_reqstev.ev_fired)
++			break;
+ 
+ 		rc = rpc->crpc_reqstev.ev_status;
+-		if (rc != 0) break;
++		if (rc != 0)
++			break;
+ 
+ 		wi->swi_state = SWI_STATE_REQUEST_SENT;
+ 		/* perhaps more events, fall thru */
+ 	case SWI_STATE_REQUEST_SENT: {
+ 		srpc_msg_type_t type = srpc_service2reply(rpc->crpc_service);
+ 
+-		if (!rpc->crpc_replyev.ev_fired) break;
++		if (!rpc->crpc_replyev.ev_fired)
++			break;
+ 
+ 		rc = rpc->crpc_replyev.ev_status;
+-		if (rc != 0) break;
++		if (rc != 0)
++			break;
+ 
+ 		srpc_unpack_msg_hdr(reply);
+ 		if (reply->msg_type != type ||
+@@ -1254,7 +1262,8 @@ srpc_send_rpc(swi_workitem_t *wi)
+ 		wi->swi_state = SWI_STATE_REPLY_RECEIVED;
+ 	}
+ 	case SWI_STATE_REPLY_RECEIVED:
+-		if (do_bulk && !rpc->crpc_bulkev.ev_fired) break;
++		if (do_bulk && !rpc->crpc_bulkev.ev_fired)
++			break;
+ 
+ 		rc = do_bulk ? rpc->crpc_bulkev.ev_status : 0;
+ 
 -- 
-2.17.1
+1.9.1
 
 
