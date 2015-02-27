@@ -1,88 +1,79 @@
-X-GM-THRID: 5954426896384
+X-GM-THRID: 4949753724928
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,7e4dc01b7a792541,start
+X-Google-Thread: 9ca63f596c,abf82a3e99bfbfbe
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.156.65 with SMTP id wc1mr1239432lbb.7.1425311387985;
-        Mon, 02 Mar 2015 07:49:47 -0800 (PST)
+X-Received: by 10.180.83.168 with SMTP id r8mr818162wiy.6.1425078966703;
+        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.120.65 with SMTP id la1ls415587lab.77.gmail; Mon, 02 Mar
- 2015 07:49:47 -0800 (PST)
-X-Received: by 10.112.126.194 with SMTP id na2mr3991401lbb.18.1425311387592;
-        Mon, 02 Mar 2015 07:49:47 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id o3si685827wib.2.2015.03.02.07.49.47
+Received: by 10.152.36.36 with SMTP id n4ls196046laj.27.gmail; Fri, 27 Feb
+ 2015 15:16:06 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr2435495lbb.11.1425078966197;
+        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id o3si204016wib.2.2015.02.27.15.16.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 07:49:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id x3so34164478wes.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 07:49:47 -0800 (PST)
+Received: by mail-wi0-x22d.google.com with SMTP id l15so3581223wiw.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 15:16:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=CS9l5WD+n/0QXM0eu6xaTmb1D5To4XiRFjGj/uOmAwQ=;
-        b=TYjKvwNAIgZH85JGms75qll3I/3bMkvArkGCCr8ZLOMC2VEfwxr+BNBYAL/Q1Aescm
-         oGOgYrOmKMjLSo588LX60Nh3OPkBzaMRIkiMZt/CrRkuoRrfTO4rPMTOmoqlSTlnqD4A
-         CGvqgTMXOaqV7mKfONvTcXxbLY5H+BsiorZ0+gycowtsf8TkrBwUB1+4363uqTc0/Y2Q
-         4yy1oz1Fn2rS1VF+1DUv9Jvog/jAFPgGFOMhKNasJFGbNiMjuEVJmifOxAnH/9bLXAFn
-         EGW/zVn27VmDDmofhsTPkdxOwIpqU2aAskIi8W2CNhfttWiG2tEGS6uzDSSdcK6p2a9c
-         apmg==
-X-Received: by 10.194.223.5 with SMTP id qq5mr61198153wjc.152.1425311387402;
-        Mon, 02 Mar 2015 07:49:47 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.61.145])
-        by mx.google.com with ESMTPSA id y3sm19769063wju.14.2015.03.02.07.49.46
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 02 Mar 2015 07:49:46 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=k7b/B1OpvbRK1W2vRHL30ls+KJ18uL3OLJxmNEeW/us=;
+        b=wQw14ef8ZYoLYj4u2W6o7Dr3v4W9S97rK6+1Ak4vCNNZedr8+jKzS7LGR1PHVUw8X5
+         pOSEzuPubScgy8+VGSPV8dyjhdLg/ZaFj1FE52GQPpWl8CmJiT2KoVdLqGw7037xzBOR
+         tD4rIoHjYXOu1LBo3BH0g4mxd1mGeG9ARg+rvzhNCShJFWQp1vdr+wKylGtCIHRjXU7a
+         ESAlK9TF9eYI3UGTZNaszvDKhxvliOQna/4p+of1I1fDh/cIJJBG4LmWlSVI1xxV1Vyw
+         +JuObqG6KuilFh1i45EqwZ1L1t0mp1UMMMS7erDVTnQswbRpF6Wpql7/8V9ZOs6ofHzO
+         2mxA==
+X-Received: by 10.194.83.66 with SMTP id o2mr33273573wjy.55.1425078966117;
+        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id fu1sm4798993wic.2.2015.02.27.15.16.04
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Feb 2015 15:16:05 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH v2] Staging: fbtft-core: remove unnecessary line continuations
-Date: Mon,  2 Mar 2015 17:49:59 +0200
-Message-Id: <1425311399-6585-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH v2 2/2] Staging: rtl8192u: Remove TRUE and FALSE macros
+Date: Sat, 28 Feb 2015 00:15:56 +0100
+Message-Id: <48c1c72e2be3c06d4b22e1ac91cb047fe09e2067.1425078886.git.ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1425078886.git.ksenija.stanojevic@gmail.com>
+References: <cover.1425078886.git.ksenija.stanojevic@gmail.com>
 
-This fixes the checkpatch.pl warning:
-WARNING: Avoid unnecessary line continuations
+Remove TRUE and FALSE boolean macros, since Linux kernel has already a
+boolean type, bool, defined in linux/stddef.h
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
+v2: nothing changed.
 
-Changes in v2:
-   Changed subject line 
+ drivers/staging/rtl8192u/r8192U.h | 2 --
+ 1 file changed, 2 deletions(-)
 
- drivers/staging/fbtft/fbtft-core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-index 37dcf7e..9f03425 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -379,7 +379,7 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
- 	int ret = 0;
+diff --git a/drivers/staging/rtl8192u/r8192U.h b/drivers/staging/rtl8192u/r8192U.h
+index c9d8c10..6c2e438 100644
+--- a/drivers/staging/rtl8192u/r8192U.h
++++ b/drivers/staging/rtl8192u/r8192U.h
+@@ -40,8 +40,6 @@
+ #define RTL8192U
+ #define RTL819xU_MODULE_NAME "rtl819xU"
+ /* HW security */
+-#define FALSE 0
+-#define TRUE 1
+ #define MAX_KEY_LEN     61
+ #define KEY_BUF_SIZE    5
  
- 	if (unlikely(par->debug & (DEBUG_TIME_FIRST_UPDATE | DEBUG_TIME_EACH_UPDATE))) {
--		if ((par->debug & DEBUG_TIME_EACH_UPDATE) || \
-+		if ((par->debug & DEBUG_TIME_EACH_UPDATE) ||
- 				((par->debug & DEBUG_TIME_FIRST_UPDATE) && !par->first_update_done)) {
- 			getnstimeofday(&ts_start);
- 			timeit = true;
-@@ -1278,7 +1278,7 @@ static int fbtft_verify_gpios(struct fbtft_par *par)
- 	fbtft_par_dbg(DEBUG_VERIFY_GPIOS, par, "%s()\n", __func__);
- 
- 	pdata = par->info->device->platform_data;
--	if (pdata->display.buswidth != 9 && par->startbyte == 0 && \
-+	if (pdata->display.buswidth != 9 && par->startbyte == 0 &&
- 							par->gpio.dc < 0) {
- 		dev_err(par->info->device,
- 			"Missing info about 'dc' gpio. Aborting.\n");
 -- 
-1.8.3.2
+1.9.1
 
 
