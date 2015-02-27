@@ -1,76 +1,77 @@
-X-GM-THRID: 6898518589440
+X-GM-THRID: 4890285834240
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,7cd9a85222ff73d3,start
+X-Google-Thread: 9ca63f596c,f68d36dda4a163b2,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.152.4.229 with SMTP id n5mr2348834lan.1.1425651518634;
-        Fri, 06 Mar 2015 06:18:38 -0800 (PST)
+X-Received: by 10.152.28.137 with SMTP id b9mr2350137lah.8.1425070615518;
+        Fri, 27 Feb 2015 12:56:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.20.13 with SMTP id j13ls98937wie.51.canary; Fri, 06 Mar
- 2015 06:18:38 -0800 (PST)
-X-Received: by 10.180.11.34 with SMTP id n2mr2806997wib.2.1425651518087;
-        Fri, 06 Mar 2015 06:18:38 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
-        by gmr-mx.google.com with ESMTPS id i7si154081wif.0.2015.03.06.06.18.38
+Received: by 10.180.149.168 with SMTP id ub8ls101777wib.50.gmail; Fri, 27 Feb
+ 2015 12:56:55 -0800 (PST)
+X-Received: by 10.180.182.201 with SMTP id eg9mr754730wic.3.1425070615231;
+        Fri, 27 Feb 2015 12:56:55 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
+        by gmr-mx.google.com with ESMTPS id by11si212114wib.1.2015.02.27.12.56.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 06:18:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
+        Fri, 27 Feb 2015 12:56:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22a.google.com with SMTP id u56so16248807wes.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 06:18:38 -0800 (PST)
+Received: by mail-wi0-x22a.google.com with SMTP id em10so3009761wid.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 12:56:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=yL29hX8Om208FkkXhUBWdoQ0phGkdp5Y3NaMX630UJA=;
-        b=IoyjsQnC0dKbbuSBc6vV8oMFdMB6dUm3eDqaRHK2sd52UuPSPkOOmYqDFBw7m1hucd
-         h3xVcZBGHSQR7S+F5Yo9qXBMLaB0AGGQKL9NmsKfb7mQaOszrWN7cPbHMROblPqpD1u3
-         CzM5BihLxNKz12cTJfC68G3QfX4HrQcH1vTIzyDO1dV+b+N2rVeRL1UwjJsksn6I/BUc
-         JLVyylSQV6Q+9LfH0+RUhBqCan7NpfmR9ZBRM4/ob6xg89gF9CONeOIJysom7pvR1W1v
-         7FzUZIJu/fDfJqI6itEWwzDnqm4IA4+oPFmkOBZQji6Tmvt44s7Jr8+Il8+scpbpUlde
-         fGMg==
-X-Received: by 10.180.84.9 with SMTP id u9mr32901624wiy.91.1425651517944;
-        Fri, 06 Mar 2015 06:18:37 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id 17sm15126024wjt.45.2015.03.06.06.18.36
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 06 Mar 2015 06:18:37 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        bh=JH438yWdHaw0UAcGsx4LWC3CqT5GQeGJ2t2s4jJtcLo=;
+        b=qFAPO8qOPaahks/kOXA2y3Ex9mdZeVk4xP9TfpXLRc69k/1iAqfBGFMKFdsiWn2+if
+         a9cSkBpnAb5n8yfKo37i4Ddp1jtfQGkMIiB82WXFKoF3dlSxiqhWOUiB94Nea2Wsmr4p
+         BclMhyw/j+gG9knC2wUIzVwxvtpwccYzWNuX4auMComsIRFaPddYnEfUGNydLkxNnKES
+         VWkF/JE+mcP1g8c/9eZIldz9C4IBLYPxjsU5wDQM+XjvMsUwWess/MKHPz+S+Zvw8M32
+         FPdR4eqe7J9JEZQj7EbSmPMsz4INLEDP1/xbYaxEsqkU59tZLPcHoKFUEeGoOAvVW+sI
+         CTTw==
+X-Received: by 10.180.98.131 with SMTP id ei3mr10297038wib.62.1425070615146;
+        Fri, 27 Feb 2015 12:56:55 -0800 (PST)
+Return-Path: <aysemelikeyurtoglu@gmail.com>
+Received: from localhost.localdomain ([151.250.87.133])
+        by mx.google.com with ESMTPSA id fa3sm4362756wib.17.2015.02.27.12.56.53
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 12:56:54 -0800 (PST)
+From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: rtl8192u: Fix do not use // c99 comments.
-Date: Fri,  6 Mar 2015 16:18:31 +0200
-Message-Id: <1425651511-3636-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH] Staging: lustre: Removed necessary braces {}
+Date: Fri, 27 Feb 2015 22:55:50 +0200
+Message-Id: <1425070550-31050-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-This patch fixes checkpatch.pl issues with "do not use // C99 comments" errors in ieee80211_rx.c
+Deleted {}.Because braces {} are not necessary for single statement
+blocks
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/lustre/lustre/ptlrpc/nrs.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 44ae791..175bbb6 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -221,8 +221,8 @@ ieee80211_rx_frame_mgmt(struct ieee80211_device *ieee, struct sk_buff *skb,
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/nrs.c b/drivers/staging/lustre/lustre/ptlrpc/nrs.c
+index d5fd721..a9f4bc6 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/nrs.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/nrs.c
+@@ -155,9 +155,8 @@ static void nrs_policy_stop_primary(struct ptlrpc_nrs *nrs)
+ {
+ 	struct ptlrpc_nrs_policy *tmp = nrs->nrs_policy_primary;
  
- 	rx_stats->len = skb->len;
- 	ieee80211_rx_mgt(ieee,(struct ieee80211_hdr_4addr *)skb->data,rx_stats);
--	//if ((ieee->state == IEEE80211_LINKED) && (memcmp(hdr->addr3, ieee->current_network.bssid, ETH_ALEN)))
--	if ((memcmp(hdr->addr1, ieee->dev->dev_addr, ETH_ALEN)))//use ADDR1 to perform address matching for Management frames
-+	/* if ((ieee->state == IEEE80211_LINKED) && (memcmp(hdr->addr3, ieee->current_network.bssid, ETH_ALEN))) */
-+	if ((memcmp(hdr->addr1, ieee->dev->dev_addr, ETH_ALEN)))/* use ADDR1 to perform address matching for Management frames */
- 	{
- 		dev_kfree_skb_any(skb);
- 		return 0;
+-	if (tmp == NULL) {
++	if (tmp == NULL)
+ 		return;
+-	}
+ 
+ 	nrs->nrs_policy_primary = NULL;
+ 
 -- 
-1.9.1
+1.8.3.2
 
 
