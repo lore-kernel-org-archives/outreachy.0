@@ -1,68 +1,76 @@
-X-GM-THRID: 5348584849408
-X-Received: by 10.70.138.71 with SMTP id qo7mr13113648pdb.9.1425200737145;
-        Sun, 01 Mar 2015 01:05:37 -0800 (PST)
+X-GM-THRID: 4816372760576
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,2d92dbdd813f30a4,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.19.100 with SMTP id d4mr2315546lae.7.1425066871545;
+        Fri, 27 Feb 2015 11:54:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.97.247 with SMTP id m110ls1266451qge.81.gmail; Sun, 01 Mar
- 2015 01:05:36 -0800 (PST)
-X-Received: by 10.236.2.227 with SMTP id 63mr20943632yhf.12.1425200736961;
-        Sun, 01 Mar 2015 01:05:36 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id ks4si1094960pbc.1.2015.03.01.01.05.36
+Received: by 10.180.88.99 with SMTP id bf3ls187571wib.9.canary; Fri, 27 Feb
+ 2015 11:54:31 -0800 (PST)
+X-Received: by 10.180.87.166 with SMTP id az6mr805536wib.1.1425066871278;
+        Fri, 27 Feb 2015 11:54:31 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wg0-x232.google.com (mail-wg0-x232.google.com. [2a00:1450:400c:c00::232])
+        by gmr-mx.google.com with ESMTPS id el6si185097wib.2.2015.02.27.11.54.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 01:05:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        Fri, 27 Feb 2015 11:54:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) client-ip=2a00:1450:400c:c00::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id bj1so34890970pad.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 01:05:36 -0800 (PST)
+Received: by mail-wg0-x232.google.com with SMTP id k14so22497857wgh.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 11:54:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=oIdZLFDFA3a87bIbG4g8T8f+/3S2pCbgFunbeUOH8xo=;
-        b=SVEnicU7T+8DR9DYU+LOToveGKs56k4J7su7WhWCxBD4Jj1kkWwU42sndxQ5zQJDlA
-         iq62lStqPmbTBFSCCfGeK6Gq7MqrQdNa8W3FDzSSzG5Alb+9QpZ8qJBbVTXfCrUKz1+k
-         UV2/8wXua91IW/G/soIIcj6/v28LtPxZZFcsHgGVSJeR45qpcJHtmdX7D4+ALf70xbA9
-         PbU8W74z7iIv9sYTrAD8kS4h88C3BFmMJF8zZ7O034sqJfGBWD8YwhxpB9tPMXnEuPoq
-         SWx4XMQExcqFWzYCfY7SgFnTv6TN6HB40Fjme6XSVAI4+161iwgVE2Vs/UJw06KIAGP2
-         G4XA==
-X-Received: by 10.68.201.168 with SMTP id kb8mr37747884pbc.89.1425200736745;
-        Sun, 01 Mar 2015 01:05:36 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id bc5sm3514136pdb.47.2015.03.01.01.05.35
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 01:05:36 -0800 (PST)
-Date: Sun, 1 Mar 2015 14:36:50 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=HG/s9qjBwFWyC0AcgWHqAWrzxhOluXXKwop/H8kqzFs=;
+        b=VqRRTrqDQuZ86MpTgwqJthJCOSFnXW9rxZPocf0y2ohqxiFa3fHhs5jdhXrD32xg8h
+         JT2dfSt5xIgYpe6MmU1TWuE9wUVSf2QMbjUT1CsDVVtoattSDAQ20DxlUHGykcuEaTKM
+         c/pbQWEJuD68EAYhBFrU/yCsiJ3TfudyZtCZscWqXgsCmKO7ZsbVdP9jzP78502Nt36X
+         py1uBHOOv6nDMZLkmuQSgJtoG5zIMwh8RGxQWkQV+Xm3IZPTQCvPhVYaUQcLzfTaW0c+
+         gGZZ+I9dgxuo1kFj/bTuB88jrLYmzXfKM7N2BvKphpSJqdjXi8Qf32SieJW/elY55G3B
+         3IaQ==
+X-Received: by 10.194.77.99 with SMTP id r3mr31484956wjw.149.1425066871213;
+        Fri, 27 Feb 2015 11:54:31 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id dm6sm4171367wib.22.2015.02.27.11.54.29
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Feb 2015 11:54:30 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] staging: lustre: Fix warnings in llite_lib.c
-Message-ID: <cover.1425200447.git.navyasri.tech@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: lustre: lustre: ptlrpc: Add space
+Date: Fri, 27 Feb 2015 21:54:22 +0200
+Message-Id: <1425066862-16305-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patchset cleans llite_lib.c by fixing checkpatch.pl
-warnings such as:
-prefer kstrtol to sscanf, remove braces in if-else
-with oneline statements, remove space in function call and
-at the end of a line.
+ERROR: "(foo*)" should be "(foo *)".That's why add space together.
+That Error found with checkpatch.pl
 
-Navya Sri Nizamkari (4):
-  staging: lustre: Use kstrtol instead of sscanf.
-  staging: lustre: Remove unnecessary braces.
-  staging: lustre: Remove whitespace.
-  staging: lustre: Remove space in function call.
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+---
+ drivers/staging/lustre/lustre/ptlrpc/layout.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/lustre/lustre/llite/llite_lib.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
-
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/layout.c b/drivers/staging/lustre/lustre/ptlrpc/layout.c
+index bbef666..44ae2f1 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/layout.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/layout.c
+@@ -811,8 +811,8 @@ struct req_capsule;
+ 	.rmf_name    = (name),				  \
+ 	.rmf_flags   = (flags),				 \
+ 	.rmf_size    = (size),				  \
+-	.rmf_swabber = (void (*)(void*))(swabber),	      \
+-	.rmf_dumper  = (void (*)(void*))(dumper)		\
++	.rmf_swabber = (void (*)(void *))(swabber),	      \
++	.rmf_dumper  = (void (*)(void *))(dumper)		\
+ }
+ 
+ struct req_msg_field RMF_GENERIC_DATA =
 -- 
 1.9.1
 
