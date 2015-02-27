@@ -1,287 +1,392 @@
 X-GM-THRID: 4349090594816
-X-Received: by 10.180.101.101 with SMTP id ff5mr355192wib.5.1425033071897;
-        Fri, 27 Feb 2015 02:31:11 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,8f6db519be982188
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.181.198 with SMTP id dy6mr1975089lbc.22.1425032891345;
+        Fri, 27 Feb 2015 02:28:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.170.167 with SMTP id an7ls123339lac.47.gmail; Fri, 27 Feb
- 2015 02:31:11 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr1954103lab.0.1425033071356;
-        Fri, 27 Feb 2015 02:31:11 -0800 (PST)
+Received: by 10.180.98.226 with SMTP id el2ls88952wib.25.canary; Fri, 27 Feb
+ 2015 02:28:11 -0800 (PST)
+X-Received: by 10.194.95.67 with SMTP id di3mr468819wjb.0.1425032890982;
+        Fri, 27 Feb 2015 02:28:10 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x230.google.com (mail-wg0-x230.google.com. [2a00:1450:400c:c00::230])
-        by gmr-mx.google.com with ESMTPS id l8si124961wia.0.2015.02.27.02.31.11
+Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
+        by gmr-mx.google.com with ESMTPS id cl5si83369wib.3.2015.02.27.02.28.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:31:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) client-ip=2a00:1450:400c:c00::230;
+        Fri, 27 Feb 2015 02:28:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x230.google.com with SMTP id x12so19136855wgg.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:31:11 -0800 (PST)
+Received: by wevk48 with SMTP id k48so19133266wev.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:28:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=cHcf9WpyqFpd9G+b8iyXB8CWbgEfbTVYA9dGojJd0bk=;
-        b=IpVhu6Jc9qKORHaEIrAObZ1bAxWKWDsWNeEEHQL9ii5XCfdtsFOllzVZg5n8ajwS00
-         4jc2eeb3c6tjFCYP06wctvbsVuu+nPG9phx07kRcfNB0UH+lm+OLmm13sKnjhIus8dXz
-         0yY2o5Dt4vi50TvVMhxWaHwJDTAHR3dUUd+Z30a4bH+Jyw0d6rzeI1K9TrsyiL/KUL0j
-         PvYDa1msB9aq8+X7u/Y2PiCaDGgajo9sppAAAMlg2kHvmDWWqlpuzIBRMQ2M2Boh2HW3
-         R5fVbqLDnsOf7SOHes3JIo/lLs7zl9dgx5nB8VDkobu9o5k9hGUDacotC3RnONvTZ58+
-         NcWw==
-X-Received: by 10.194.239.129 with SMTP id vs1mr25794830wjc.158.1425033071234;
-        Fri, 27 Feb 2015 02:31:11 -0800 (PST)
+        bh=q8cn6DjTP3qjMacbTRlChzrrsnI5L6+D72DQCuYpHw0=;
+        b=0v84aSGUP/iliB07yk+jUKgWDgxpFzx2YGklJScODKMRoKv5rlFecMtY8sDQ9WNCuL
+         pSXl6JWhoJAc0uKE2lr5SWYBFazae9n43EK5Ctsqhxgpge+FDfyBt4N7Q8tH2IO5vHbW
+         AplcmcUPz8u7mB4FRJdSD2f4DUguGLlH+CqXRwRsXtQ02qMwtCpfVVZzzPh+EAZKT3Re
+         S5XZrHE4BJms9E6afsSPPdbkQs+RPBvmTs/rpH5rp61o+UkA2AHUUE9tw6mBTs35o9cs
+         ZK0dIlYGRwUat8fC6rfKyVYMcOGWvQhhmBZdbAE201GGexu5WfvYGe/vNYWTuw9bFmIY
+         r2ng==
+X-Received: by 10.180.198.78 with SMTP id ja14mr5021126wic.11.1425032890851;
+        Fri, 27 Feb 2015 02:28:10 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id ul1sm5356798wjc.0.2015.02.27.02.31.09
+        by mx.google.com with ESMTPSA id g1sm2349369wjy.24.2015.02.27.02.28.08
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:31:10 -0800 (PST)
+        Fri, 27 Feb 2015 02:28:09 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 774366337C; Fri, 27 Feb 2015 13:31:07 +0300 (AST)
+	id 983126337C; Fri, 27 Feb 2015 13:28:07 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v8 2/5] Staging: emxx_udc: Replace custom printk macro ERR with pr_err
-Date: Fri, 27 Feb 2015 13:31:06 +0300
-Message-Id: <1425033066-20762-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH v8 1/5] Staging: emxx_udc: Fix do not add new typedefs remove and volatile
+Date: Fri, 27 Feb 2015 13:28:06 +0300
+Message-Id: <1425032886-20707-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1425030785.git.hamohammed.sa@gmail.com>
 References: <cover.1425030785.git.hamohammed.sa@gmail.com>
 
-This patch removes half custom printk macros ERR and replace it with
-pr_err, for no appropriate struct device *dev field where found for dev_err.
-Issue addressed by checkpathc.pl.
+This patch fixes the following checkpatch.pl warnings:"do not add new
+typedefs" and "Use of volatile is usually wrong".
+Remove typedefs keyword and rename identifiers appropriately.
+Remove volatile from union usb_regs_access.
+Update related  files.
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
-v6: Justify the use of pr_err instead of dev_err. 
+v8: Edit subject line.
+v7: nothing.
+v6: merge two patches into one. removal of typedefs and of volatile.
+v5: nothing
+v4: Replace struct with volatile union for usb_reg_access.
+v3: Removed all typedefs and created patchset from emxx_udc.
+v2: Removed typedefs appropriately and changed related file.
 
- drivers/staging/emxx_udc/emxx_udc.c | 56 ++++++++++++++++++-------------------
- 1 file changed, 28 insertions(+), 28 deletions(-)
+ drivers/staging/emxx_udc/emxx_udc.c | 60 ++++++++++++++++++-------------------
+ drivers/staging/emxx_udc/emxx_udc.h | 26 ++++++++--------
+ 2 files changed, 43 insertions(+), 43 deletions(-)
 
 diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index f2ddad3..094e018 100644
+index 4be646c..f2ddad3 100644
 --- a/drivers/staging/emxx_udc/emxx_udc.c
 +++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -115,7 +115,7 @@ static void _nbu2ss_dump_register(struct nbu2ss_udc *udc)
- 	pr_info("=== %s()\n", __func__);
+@@ -201,7 +201,7 @@ static u32 _nbu2ss_get_begin_ram_address(struct nbu2ss_udc *udc)
+ 	u32		num, buf_type;
+ 	u32		data, last_ram_adr, use_ram_size;
  
- 	if (udc == NULL) {
--		ERR("%s udc == NULL\n", __func__);
-+		pr_err("udc: %s udc == NULL\n", __func__);
+-	PT_EP_REGS	p_ep_regs;
++	struct ep_regs *p_ep_regs;
+ 
+ 	last_ram_adr = (D_RAM_SIZE_CTRL / sizeof(u32)) * 2;
+ 	use_ram_size = 0;
+@@ -394,7 +394,7 @@ static void _nbu2ss_ep_dma_exit(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
+ {
+ 	u32		num;
+ 	u32		data;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (udc->vbus_active == 0)
+ 		return;		/* VBUS OFF */
+@@ -425,7 +425,7 @@ static void _nbu2ss_ep_dma_exit(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
+ /* Abort DMA */
+ static void _nbu2ss_ep_dma_abort(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
+ {
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	_nbu2ss_bitclr(&preg->EP_DCR[ep->epnum-1].EP_DCR1, DCR1_EPn_REQEN);
+ 	mdelay(DMA_DISABLE_TIME);	/* DCR1_EPn_REQEN Clear */
+@@ -443,7 +443,7 @@ static void _nbu2ss_ep_in_end(
+ {
+ 	u32		data;
+ 	u32		num;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (length >= sizeof(u32))
  		return;
- 	}
+@@ -567,7 +567,7 @@ static int EP0_out_PIO(struct nbu2ss_udc *udc, u8 *pBuf, u32 length)
+ 	u32		i;
+ 	int		nret   = 0;
+ 	u32		iWordLength = 0;
+-	USB_REG_ACCESS *pBuf32 = (USB_REG_ACCESS *)pBuf;
++	union usb_reg_access *pBuf32 = (union usb_reg_access *)pBuf;
  
-@@ -2258,7 +2258,7 @@ static int _nbu2ss_pullup(struct nbu2ss_udc *udc, int is_on)
- 	u32	reg_dt;
+ 	/*------------------------------------------------------------*/
+ 	/* Read Length */
+@@ -592,8 +592,8 @@ static int EP0_out_OverBytes(struct nbu2ss_udc *udc, u8 *pBuf, u32 length)
+ {
+ 	u32		i;
+ 	u32		iReadSize = 0;
+-	USB_REG_ACCESS  Temp32;
+-	USB_REG_ACCESS *pBuf32 = (USB_REG_ACCESS *)pBuf;
++	union usb_reg_access  Temp32;
++	union usb_reg_access  *pBuf32 = (union usb_reg_access *)pBuf;
  
- 	if (!udc) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
+ 	if ((0 < length) && (length < sizeof(u32))) {
+ 		Temp32.dw = _nbu2ss_readl(&udc->p_regs->EP0_READ);
+@@ -613,7 +613,7 @@ static int EP0_in_PIO(struct nbu2ss_udc *udc, u8 *pBuf, u32 length)
+ 	u32		iMaxLength   = EP0_PACKETSIZE;
+ 	u32		iWordLength  = 0;
+ 	u32		iWriteLength = 0;
+-	USB_REG_ACCESS *pBuf32 = (USB_REG_ACCESS *)pBuf;
++	union usb_reg_access  *pBuf32 = (union usb_reg_access *)pBuf;
+ 
+ 	/*------------------------------------------------------------*/
+ 	/* Transfer Length */
+@@ -638,8 +638,8 @@ static int EP0_in_PIO(struct nbu2ss_udc *udc, u8 *pBuf, u32 length)
+ static int EP0_in_OverBytes(struct nbu2ss_udc *udc, u8 *pBuf, u32 iRemainSize)
+ {
+ 	u32		i;
+-	USB_REG_ACCESS Temp32;
+-	USB_REG_ACCESS *pBuf32 = (USB_REG_ACCESS *)pBuf;
++	union usb_reg_access  Temp32;
++	union usb_reg_access  *pBuf32 = (union usb_reg_access *)pBuf;
+ 
+ 	if ((0 < iRemainSize) && (iRemainSize < sizeof(u32))) {
+ 		for (i = 0 ; i < iRemainSize ; i++)
+@@ -840,7 +840,7 @@ static int _nbu2ss_out_dma(
+ 	u32		burst = 1;
+ 	u32		data;
+ 	int		result = -EINVAL;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (req->dma_flag)
+ 		return 1;		/* DMA is forwarded */
+@@ -900,10 +900,10 @@ static int _nbu2ss_epn_out_pio(
+ 	u32		i;
+ 	u32		data;
+ 	u32		iWordLength;
+-	USB_REG_ACCESS	Temp32;
+-	USB_REG_ACCESS	*pBuf32;
++	union usb_reg_access	Temp32;
++	union usb_reg_access	*pBuf32;
+ 	int		result = 0;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (req->dma_flag)
+ 		return 1;		/* DMA is forwarded */
+@@ -912,7 +912,7 @@ static int _nbu2ss_epn_out_pio(
+ 		return 0;
+ 
+ 	pBuffer = (u8 *)req->req.buf;
+-	pBuf32 = (USB_REG_ACCESS *)(pBuffer + req->req.actual);
++	pBuf32 = (union usb_reg_access *)(pBuffer + req->req.actual);
+ 
+ 	iWordLength = length / sizeof(u32);
+ 	if (iWordLength > 0) {
+@@ -988,7 +988,7 @@ static int _nbu2ss_epn_out_transfer(
+ 	u32		num;
+ 	u32		iRecvLength;
+ 	int		result = 1;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (ep->epnum == 0)
  		return -EINVAL;
- 	}
+@@ -1051,7 +1051,7 @@ static int _nbu2ss_in_dma(
+ 	u32		iWriteLength;
+ 	u32		data;
+ 	int		result = -EINVAL;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
  
-@@ -2612,13 +2612,13 @@ static int nbu2ss_ep_enable(
+ 	if (req->dma_flag)
+ 		return 1;		/* DMA is forwarded */
+@@ -1123,17 +1123,17 @@ static int _nbu2ss_epn_in_pio(
+ 	u32		i;
+ 	u32		data;
+ 	u32		iWordLength;
+-	USB_REG_ACCESS	Temp32;
+-	USB_REG_ACCESS	*pBuf32 = NULL;
++	union usb_reg_access	Temp32;
++	union usb_reg_access	*pBuf32 = NULL;
+ 	int		result = 0;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (req->dma_flag)
+ 		return 1;		/* DMA is forwarded */
+ 
+ 	if (length > 0) {
+ 		pBuffer = (u8 *)req->req.buf;
+-		pBuf32 = (USB_REG_ACCESS *)(pBuffer + req->req.actual);
++		pBuf32 = (union usb_reg_access *)(pBuffer + req->req.actual);
+ 
+ 		iWordLength = length / sizeof(u32);
+ 		if (iWordLength > 0) {
+@@ -1347,7 +1347,7 @@ static void _nbu2ss_set_endpoint_stall(
+ 	u8		num, epnum;
+ 	u32		data;
+ 	struct nbu2ss_ep *ep;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if ((ep_adrs == 0) || (ep_adrs == 0x80)) {
+ 		if (bstall) {
+@@ -1471,7 +1471,7 @@ static int _nbu2ss_get_ep_stall(struct nbu2ss_udc *udc, u8 ep_adrs)
+ {
+ 	u8		epnum;
+ 	u32		data = 0, bit_data;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	epnum = ep_adrs & ~USB_ENDPOINT_DIR_MASK;
+ 	if (epnum == 0) {
+@@ -1566,7 +1566,7 @@ static void _nbu2ss_epn_set_stall(
+ 	u32	regdata;
+ 	int	limit_cnt = 0;
+ 
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (ep->direct == USB_DIR_IN) {
+ 		for (limit_cnt = 0
+@@ -1994,7 +1994,7 @@ static inline void _nbu2ss_epn_in_int(
+ 	int	result = 0;
+ 	u32	status;
+ 
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (req->dma_flag)
+ 		return;		/* DMA is forwarded */
+@@ -2090,7 +2090,7 @@ static inline void _nbu2ss_epn_out_dma_int(
+ 	u32		num;
+ 	u32		dmacnt, ep_dmacnt;
+ 	u32		mpkt;
+-	PT_FC_REGS	preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	num = ep->epnum - 1;
+ 
+@@ -2293,7 +2293,7 @@ static int _nbu2ss_pullup(struct nbu2ss_udc *udc, int is_on)
+ /*-------------------------------------------------------------------------*/
+ static void _nbu2ss_fifo_flush(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
+ {
+-	PT_FC_REGS	p = udc->p_regs;
++	struct fc_regs	*p = udc->p_regs;
+ 
+ 	if (udc->vbus_active == 0)
+ 		return;
+@@ -2536,7 +2536,7 @@ static irqreturn_t _nbu2ss_udc_irq(int irq, void *_udc)
+ 	u32	epnum, int_bit;
+ 
+ 	struct nbu2ss_udc	*udc = (struct nbu2ss_udc *)_udc;
+-	PT_FC_REGS		preg = udc->p_regs;
++	struct fc_regs	*preg = udc->p_regs;
+ 
+ 	if (gpio_get_value(VBUS_VALUE) == 0) {
+ 		_nbu2ss_writel(&preg->USB_INT_STA, ~USB_INT_STA_RW);
+@@ -2944,7 +2944,7 @@ static int nbu2ss_ep_fifo_status(struct usb_ep *_ep)
+ 	struct nbu2ss_ep	*ep;
  	struct nbu2ss_udc	*udc;
- 
- 	if ((_ep == NULL) || (desc == NULL)) {
--		ERR(" *** %s, bad param\n", __func__);
-+		pr_err("udc: *** %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
- 
- 	ep = container_of(_ep, struct nbu2ss_ep, ep);
- 	if ((ep == NULL) || (ep->udc == NULL)) {
--		ERR(" *** %s, ep == NULL !!\n", __func__);
-+		pr_err("udc:  *** %s, ep == NULL !!\n", __func__);
- 		return -EINVAL;
- 	}
- 
-@@ -2626,7 +2626,7 @@ static int nbu2ss_ep_enable(
- 	if ((ep_type == USB_ENDPOINT_XFER_CONTROL)
- 		|| (ep_type == USB_ENDPOINT_XFER_ISOC)) {
- 
--		ERR(" *** %s, bat bmAttributes\n", __func__);
-+		pr_err("udc:  *** %s, bat bmAttributes\n", __func__);
- 		return -EINVAL;
- 	}
- 
-@@ -2672,13 +2672,13 @@ static int nbu2ss_ep_disable(struct usb_ep *_ep)
  	unsigned long		flags;
+-	PT_FC_REGS		preg;
++	struct fc_regs		*preg;
  
- 	if (_ep == NULL) {
--		ERR(" *** %s, bad param\n", __func__);
-+		pr_err("udc:  *** %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
- 
- 	ep = container_of(_ep, struct nbu2ss_ep, ep);
- 	if ((ep == NULL) || (ep->udc == NULL)) {
--		ERR(" *** %s, ep == NULL !!\n", __func__);
-+		pr_err("udc:  *** %s, ep == NULL !!\n", __func__);
- 		return -EINVAL;
- 	}
- 
-@@ -2742,10 +2742,10 @@ static int nbu2ss_ep_queue(
- 	/* catch various bogus parameters */
- 	if ((_ep == NULL) || (_req == NULL)) {
- 		if (_ep == NULL)
--			ERR("*** %s --- _ep == NULL\n", __func__);
-+			pr_err("udc: *** %s --- _ep == NULL\n", __func__);
- 
- 		if (_req == NULL)
--			ERR("*** %s --- _req == NULL\n", __func__);
-+			pr_err("udc: *** %s --- _req == NULL\n", __func__);
- 
- 		return -EINVAL;
- 	}
-@@ -2756,13 +2756,13 @@ static int nbu2ss_ep_queue(
- 	     || !list_empty(&req->queue))) {
- 
- 		if (!_req->complete)
--			ERR("*** %s --- !_req->complete\n", __func__);
-+			pr_err("udc: *** %s --- !_req->complete\n", __func__);
- 
- 		if (!_req->buf)
--			ERR("*** %s --- !_req->buf\n", __func__);
-+			pr_err("udc: *** %s --- !_req->buf\n", __func__);
- 
- 		if (!list_empty(&req->queue))
--			ERR("*** %s --- !list_empty(&req->queue)\n", __func__);
-+			pr_err("udc: *** %s --- !list_empty(&req->queue)\n", __func__);
- 
- 		return -EINVAL;
- 	}
-@@ -2849,13 +2849,13 @@ static int nbu2ss_ep_dequeue(
- 
- 	/* catch various bogus parameters */
- 	if ((_ep == NULL) || (_req == NULL)) {
--		/* ERR("%s, bad param(1)\n", __func__); */
-+		/* pr_err("udc: %s, bad param(1)\n", __func__); */
- 		return -EINVAL;
- 	}
- 
- 	ep = container_of(_ep, struct nbu2ss_ep, ep);
- 	if (!ep) {
--		ERR("%s, ep == NULL !!\n", __func__);
-+		pr_err("udc: %s, ep == NULL !!\n", __func__);
- 		return -EINVAL;
- 	}
- 
-@@ -2895,19 +2895,19 @@ static int nbu2ss_ep_set_halt(struct usb_ep *_ep, int value)
  /*	INFO("=== %s()\n", __func__); */
  
- 	if (!_ep) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
+@@ -3341,7 +3341,7 @@ static int nbu2ss_drv_probe(struct platform_device *pdev)
+ 				  0, driver_name, udc);
  
- 	ep = container_of(_ep, struct nbu2ss_ep, ep);
- 	if (!ep) {
--		ERR("%s, bad ep\n", __func__);
-+		pr_err("udc: %s, bad ep\n", __func__);
- 		return -EINVAL;
- 	}
+ 	/* IO Memory */
+-	udc->p_regs = (PT_FC_REGS)mmio_base;
++	udc->p_regs = (struct fc_regs *)mmio_base;
  
- 	udc = ep->udc;
- 	if (!udc) {
--		ERR(" *** %s, bad udc\n", __func__);
-+		pr_err("udc: *** %s, bad udc\n", __func__);
- 		return -EINVAL;
- 	}
+ 	/* USB Function Controller Interrupt */
+ 	if (status != 0) {
+diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+index 202e2dc..c21f211 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.h
++++ b/drivers/staging/emxx_udc/emxx_udc.h
+@@ -474,8 +474,8 @@
  
-@@ -2949,19 +2949,19 @@ static int nbu2ss_ep_fifo_status(struct usb_ep *_ep)
- /*	INFO("=== %s()\n", __func__); */
+ /*===========================================================================*/
+ /* Struct */
+-/*------- T_EP_REGS */
+-typedef struct _T_EP_REGS {
++/*------- ep_regs */
++struct ep_regs {
+ 	u32 EP_CONTROL;			/* EP Control */
+ 	u32 EP_STATUS;			/* EP Status */
+ 	u32 EP_INT_ENA;			/* EP Interrupt Enable */
+@@ -484,18 +484,18 @@ typedef struct _T_EP_REGS {
+ 	u32 EP_LEN_DCNT;		/* EP Length & DMA count */
+ 	u32 EP_READ;			/* EP Read */
+ 	u32 EP_WRITE;			/* EP Write */
+-} T_EP_REGS, *PT_EP_REGS;
++};
  
- 	if (!_ep) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
+-/*------- T_EP_DCR */
+-typedef struct _T_EP_DCR {
++/*------- ep_dcr */
++struct ep_dcr {
+ 	u32 EP_DCR1;			/* EP_DCR1 */
+ 	u32 EP_DCR2;			/* EP_DCR2 */
+ 	u32 EP_TADR;			/* EP_TADR */
+ 	u32 Reserved;			/* Reserved */
+-} T_EP_DCR, *PT_EP_DCR;
++};
  
- 	ep = container_of(_ep, struct nbu2ss_ep, ep);
- 	if (!ep) {
--		ERR("%s, bad ep\n", __func__);
-+		pr_err("udc: %s, bad ep\n", __func__);
- 		return -EINVAL;
- 	}
+ /*------- Function Registers */
+-typedef struct _T_FC_REGS {
++struct fc_regs {
+ 	u32 USB_CONTROL;		/* (0x0000) USB Control */
+ 	u32 USB_STATUS;			/* (0x0004) USB Status */
+ 	u32 USB_ADDRESS;		/* (0x0008) USB Address */
+@@ -513,7 +513,7 @@ typedef struct _T_FC_REGS {
+ 	u32 EP0_READ;			/* (0x0038) EP0 Read */
+ 	u32 EP0_WRITE;			/* (0x003C) EP0 Write */
  
- 	udc = ep->udc;
- 	if (!udc) {
--		ERR("%s, bad udc\n", __func__);
-+		pr_err("udc: %s, bad udc\n", __func__);
- 		return -EINVAL;
- 	}
+-	T_EP_REGS EP_REGS[REG_EP_NUM];	/* Endpoint Register */
++	struct ep_regs EP_REGS[REG_EP_NUM];	/* Endpoint Register */
  
-@@ -2997,19 +2997,19 @@ static void  nbu2ss_ep_fifo_flush(struct usb_ep *_ep)
- /*	INFO("=== %s()\n", __func__); */
+ 	u8 Reserved220[0x1000-0x220];	/* (0x0220:0x0FFF) Reserved */
  
- 	if (!_ep) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return;
- 	}
+@@ -531,11 +531,11 @@ typedef struct _T_FC_REGS {
  
- 	ep = container_of(_ep, struct nbu2ss_ep, ep);
- 	if (!_ep) {
--		ERR("%s, bad ep\n", __func__);
-+		pr_err("udc: %s, bad ep\n", __func__);
- 		return;
- 	}
+ 	u8 Reserved1028[0x110-0x28];	/* (0x1028:0x110F) Reserved */
  
- 	udc = ep->udc;
- 	if (!udc) {
--		ERR("%s, bad udc\n", __func__);
-+		pr_err("udc: %s, bad udc\n", __func__);
- 		return;
- 	}
+-	T_EP_DCR EP_DCR[REG_EP_NUM];	/* */
++	struct ep_dcr EP_DCR[REG_EP_NUM];	/* */
  
-@@ -3053,7 +3053,7 @@ static int nbu2ss_gad_get_frame(struct usb_gadget *pgadget)
- /*	INFO("=== %s()\n", __func__); */
+ 	u8 Reserved1200[0x1000-0x200];	/* Reserved */
  
- 	if (pgadget == NULL) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
+-} __attribute__ ((aligned(32))) T_FC_REGS, *PT_FC_REGS;
++} __attribute__ ((aligned(32)));
  
-@@ -3083,7 +3083,7 @@ static int nbu2ss_gad_wakeup(struct usb_gadget *pgadget)
- /*	INFO("=== %s()\n", __func__); */
  
- 	if (pgadget == NULL) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("%s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
  
-@@ -3123,7 +3123,7 @@ static int nbu2ss_gad_set_selfpowered(struct usb_gadget *pgadget,
- /*	INFO("=== %s()\n", __func__); */
+@@ -631,16 +631,16 @@ struct nbu2ss_udc {
  
- 	if (pgadget == NULL) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
+ 	u32		curr_config;	/* Current Configuration Number */
  
-@@ -3152,7 +3152,7 @@ static int nbu2ss_gad_vbus_draw(struct usb_gadget *pgadget, unsigned mA)
- /*	INFO("=== %s()\n", __func__); */
+-	PT_FC_REGS		p_regs;
++	struct fc_regs		*p_regs;
+ };
  
- 	if (pgadget == NULL) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
+ /* USB register access structure */
+-typedef volatile union {
++union usb_reg_access {
+ 	struct {
+ 		unsigned char	DATA[4];
+ 	} byte;
+ 	unsigned int		dw;
+-} USB_REG_ACCESS;
++};
  
-@@ -3174,7 +3174,7 @@ static int nbu2ss_gad_pullup(struct usb_gadget *pgadget, int is_on)
- /*	INFO("=== %s()\n", __func__); */
- 
- 	if (pgadget == NULL) {
--		ERR("%s, bad param\n", __func__);
-+		pr_err("udc: %s, bad param\n", __func__);
- 		return -EINVAL;
- 	}
- 
+ /*-------------------------------------------------------------------------*/
+ #define ERR(stuff...)		printk(KERN_ERR "udc: " stuff)
 -- 
 1.9.1
 
