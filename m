@@ -1,95 +1,65 @@
-X-GM-THRID: 6264632904116076544
-X-Received: by 10.107.136.210 with SMTP id s79mr9151424ioi.25.1458598511322;
-        Mon, 21 Mar 2016 15:15:11 -0700 (PDT)
+X-GM-THRID: 4608630980608
+X-Received: by 10.182.96.131 with SMTP id ds3mr12418215obb.35.1425049168015;
+        Fri, 27 Feb 2015 06:59:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.34 with SMTP id t31ls4533128qge.98.gmail; Mon, 21 Mar
- 2016 15:15:10 -0700 (PDT)
-X-Received: by 10.140.221.134 with SMTP id r128mr11024485qhb.0.1458598510818;
-        Mon, 21 Mar 2016 15:15:10 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id tu5si3372641pab.2.2016.03.21.15.15.10
+Received: by 10.140.108.101 with SMTP id i92ls616448qgf.93.gmail; Fri, 27 Feb
+ 2015 06:59:27 -0800 (PST)
+X-Received: by 10.236.53.10 with SMTP id f10mr12892469yhc.17.1425049167834;
+        Fri, 27 Feb 2015 06:59:27 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id pc4si532238pac.0.2015.02.27.06.59.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Mar 2016 15:15:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Feb 2015 06:59:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id x3so32330207pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 21 Mar 2016 15:15:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=kBMrmSPAaBLXP6+iCqv+XXjf5jgM93tc7P7+oPk0WK0=;
-        b=oEvUNb6EjVt1Tb1KcfeKIrQOj6erjZmzbEyXqBu8pQ/m/OgLhJ+1PYxOW8It0cqR87
-         g4xDNRyHd4BW6+V/4HnXDy0v6w2qPPou6p/yfx7ThZh/35S29JwRSB37beEYHs+Pd0Vh
-         7+GwjEYzofqtWwyOnvPBZTaqYOmBHGS+pQV3DAyN/SdRDZN4KcXNbfMTQewbOiWB8btn
-         N/Xfrti80RvKYzypwii82vmc9aK6HkpZz/xTooQwc3dh0WtgVlNtAx/hECAMZ2jf89Z7
-         6ztBaorngSfukK7KuYV542GcHORYkRohGptjg5l0Xzbdh+U1a8DkYL5jBU0XhXq0vATv
-         Qxfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=kBMrmSPAaBLXP6+iCqv+XXjf5jgM93tc7P7+oPk0WK0=;
-        b=OMbY1r2djShuyDqQ4pb6aJAt0RBPy+ctpEsARdL4tpIu7hkJgkSU83GVeuuvJHj5lx
-         SOPVEPIbBwDxfRfoNm8ETa+X4bMa1X3ZoFbhhtmIS0+wFxoQCoqiXHvBmYaO+TnRS2hR
-         mAO7osdMp2GYS7YXXz93w8M+b4XKyxk6CFt5ccVyo69F5jYKY15d5CwR2LoUINPqJz7B
-         bV06nwdS6+hcZNB3/Ql+BjYtEXk84Ioj7QdS1CHcWyH/4ADfDN4/VivQULvErn9dOksN
-         7mTXPcRkNPtG/KUMM72oIyKfMaq99fUve9SVIZGLT5hLRTdKa/bUEvyvxAicswlEpP/e
-         HzjA==
-X-Gm-Message-State: AD7BkJI8ip7zZpze39nDd27uggLNeq0rG2HYOaBaLvat5bod4tzGNpwHf8c1Q73yD3bQwA==
-X-Received: by 10.98.73.88 with SMTP id w85mr49586117pfa.82.1458598510625;
-        Mon, 21 Mar 2016 15:15:10 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.53])
-        by smtp.gmail.com with ESMTPSA id g74sm43032307pfj.1.2016.03.21.15.15.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Mar 2016 15:15:10 -0700 (PDT)
-Date: Mon, 21 Mar 2016 20:46:15 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: wlan-ng: Use x instead of x != NULL.
-Message-ID: <20160321151615.GA4551@sandhya>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 7D40C99A;
+	Fri, 27 Feb 2015 14:59:27 +0000 (UTC)
+Date: Fri, 27 Feb 2015 06:59:26 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Cristina Opriceana <cristina.opriceana@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: dgnc: Replace printk() with
+ dev_info()
+Message-ID: <20150227145926.GA19745@kroah.com>
+References: <20150227145322.GA19004@Inspiron>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+In-Reply-To: <20150227145322.GA19004@Inspiron>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use x instead of x != NULL.This issue is detected by checkpatch.pl script.
+On Fri, Feb 27, 2015 at 04:53:22PM +0200, Cristina Opriceana wrote:
+> This patch replaces printk() with dev_info() in order to avoid the
+> suggestion of using a more specific function.
+> Warning found by checkpatch.pl
+> 
+> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+> ---
+>  drivers/staging/dgnc/dgnc_driver.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/dgnc/dgnc_driver.c b/drivers/staging/dgnc/dgnc_driver.c
+> index ace2af6..cd349cd 100644
+> --- a/drivers/staging/dgnc/dgnc_driver.c
+> +++ b/drivers/staging/dgnc/dgnc_driver.c
+> @@ -364,7 +364,7 @@ static void dgnc_cleanup_board(struct dgnc_board *brd)
+>  
+>  		spin_lock_irqsave(&dgnc_global_lock, flags);
+>  		brd->msgbuf = NULL;
+> -		printk("%s", brd->msgbuf_head);
+> +		dev_info(&brd->pdev->dev, "dgnc : %s\n", brd->msgbuf_head);
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/wlan-ng/p80211netdev.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+If you use dev_info, there is no need for the "dgnc : " portion of the
+string, it will show up automatically.
 
-diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
-index 88255ce..fdfc821 100644
---- a/drivers/staging/wlan-ng/p80211netdev.c
-+++ b/drivers/staging/wlan-ng/p80211netdev.c
-@@ -156,7 +156,7 @@ static int p80211knetdev_open(netdevice_t *netdev)
- 		return -ENODEV;
- 
- 	/* Tell the MSD to open */
--	if (wlandev->open != NULL) {
-+	if (wlandev->open) {
- 		result = wlandev->open(wlandev);
- 		if (result == 0) {
- 			netif_start_queue(wlandev->netdev);
-@@ -186,7 +186,7 @@ static int p80211knetdev_stop(netdevice_t *netdev)
- 	int result = 0;
- 	wlandevice_t *wlandev = netdev->ml_priv;
- 
--	if (wlandev->close != NULL)
-+	if (wlandev->close)
- 		result = wlandev->close(wlandev);
- 
- 	netif_stop_queue(wlandev->netdev);
--- 
-1.8.3.4
+And this really looks like debugging information, why not use dev_dbg()
+instead?
 
+thanks,
+
+greg k-h
 
