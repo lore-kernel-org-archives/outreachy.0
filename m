@@ -1,54 +1,53 @@
 X-GM-THRID: 4799843008512
-X-Received: by 10.180.87.166 with SMTP id az6mr827910wib.1.1425069812152;
-        Fri, 27 Feb 2015 12:43:32 -0800 (PST)
+X-Received: by 10.194.239.41 with SMTP id vp9mr2341736wjc.5.1425069805038;
+        Fri, 27 Feb 2015 12:43:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.108.3 with SMTP id hg3ls197060wib.37.gmail; Fri, 27 Feb
- 2015 12:43:30 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr749101wib.4.1425069810896;
-        Fri, 27 Feb 2015 12:43:30 -0800 (PST)
+Received: by 10.180.83.130 with SMTP id q2ls195477wiy.13.canary; Fri, 27 Feb
+ 2015 12:43:23 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr754261wiv.0.1425069803807;
+        Fri, 27 Feb 2015 12:43:23 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-we0-x22b.google.com (mail-we0-x22b.google.com. [2a00:1450:400c:c03::22b])
-        by gmr-mx.google.com with ESMTPS id ev8si182002wib.3.2015.02.27.12.43.30
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id cl5si187837wib.3.2015.02.27.12.43.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 12:43:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) client-ip=2a00:1450:400c:c03::22b;
+        Fri, 27 Feb 2015 12:43:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22b.google.com with SMTP id k48so22643192wev.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 12:43:30 -0800 (PST)
+Received: by mail-wi0-x22c.google.com with SMTP id em10so2919119wid.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 12:43:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=lAw+LonQFp4hDQvFXrbg8GJwOwx5syw4bMUnlM3B6SE=;
-        b=T1Dq81HekcpNkak7rcyATr7J7YmKF3ThxdBCRSqup8J0eiYybcwIQb3bp2juj5Aqed
-         xCVC6vUvzYBR2lK8EoLAkVCiboaS46QlNqBandECBSxxTc/kFz3OfU/o0AKdzze3bqDD
-         e0EzeyvXfgwmBGWWWRjnHIgSMyjfpGKYyKnZLgdxnqh+21c3SWGW/vluLHObQTRVlPba
-         +5W5JUWzVm9sVQH32QI1WYwm407Ho2A/oz0OX1HkNGWr6t1oZqwDVBLs9lKiHLEgfjMh
-         xf4rAxsldYAqOfgcGITO2CdupacCX9rkDDHNhzFlMWAXOn2bqICO/gASLzk1vg+rFysi
-         dGmA==
-X-Received: by 10.180.82.129 with SMTP id i1mr10013404wiy.77.1425069810846;
-        Fri, 27 Feb 2015 12:43:30 -0800 (PST)
+        bh=l7yRYLK4QGWHtUYy/jsPR9j8gO0c3s5gO9j6BE0Ggq4=;
+        b=PoWwMMLnJbnrmb2a/ESKMAdzF0Jh0quPAYlBO3pnOGpJx1kCiBLNwWkVn3JxqnAb1i
+         tChTqVibli44OYiwMlKRPNnN9OVdY/cBcbAZmZISebRgF504WE0FdYPBx1HLNUAXrM+d
+         NtIug5aC8CzXGbzLceR7QDt8Bzwqs65nv1qp4lLsbyx3E3+GOzjIrVz4r8cS78DjzlaF
+         YY8w+SJum6zxBBf0aH5t0d2gyRqF3L0YFeYiLoKY8NMCt2Ufz9ugAj0MQot5fIyg6oFp
+         mXXlzFHbTiZXnwt5OT0ZSG/2fKDjMuaDQ54jHXXEbDRauDC/Ss7kJS2842WW2UDHr5yk
+         IfRg==
+X-Received: by 10.194.57.206 with SMTP id k14mr7821531wjq.1.1425069803751;
+        Fri, 27 Feb 2015 12:43:23 -0800 (PST)
 Return-Path: <aysemelikeyurtoglu@gmail.com>
 Received: from localhost.localdomain ([151.250.87.133])
-        by mx.google.com with ESMTPSA id fo15sm4330473wic.19.2015.02.27.12.43.29
+        by mx.google.com with ESMTPSA id fo15sm4330473wic.19.2015.02.27.12.43.22
         (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 12:43:30 -0800 (PST)
+        Fri, 27 Feb 2015 12:43:23 -0800 (PST)
 From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH 3/3] Staging: lustre: Deleted space prohibited between function name and open parenthesis
-Date: Fri, 27 Feb 2015 22:42:11 +0200
-Message-Id: <1425069731-30165-4-git-send-email-aysemelikeyurtoglu@gmail.com>
+Subject: [PATCH 2/3] Staging: lustre: Removed space prohibited
+Date: Fri, 27 Feb 2015 22:42:10 +0200
+Message-Id: <1425069731-30165-3-git-send-email-aysemelikeyurtoglu@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
 In-Reply-To: <1425069731-30165-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 References: <1425069731-30165-1-git-send-email-aysemelikeyurtoglu@gmail.com>
 
-WARNING: space prohibited between function name and open parenthesis '('
-Remove unnecessary space between function name and opening parenthesis.
-That was found by running checkpatch
+WARNING: space prohibited before that ','
+Removed space prohibited. That was found by running checkpatch.
 
 Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 ---
@@ -56,18 +55,18 @@ Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-index 34372cd..251915f 100644
+index bc0e8e4..34372cd 100644
 --- a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
 +++ b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-@@ -181,7 +181,7 @@ static const char *ll_eopcode2str(__u32 opcode)
- 	return ll_eopcode_table[opcode].opname;
- }
- 
--#if defined (CONFIG_PROC_FS)
-+#if defined(CONFIG_PROC_FS)
- static void ptlrpc_lprocfs_register(struct proc_dir_entry *root, char *dir,
- 				    char *name,
- 				    struct proc_dir_entry **procroot_ret,
+@@ -54,7 +54,7 @@ static struct ll_rpc_opcode {
+ 	{ OST_SETATTR,      "ost_setattr" },
+ 	{ OST_READ,	 "ost_read" },
+ 	{ OST_WRITE,	"ost_write" },
+-	{ OST_CREATE ,      "ost_create" },
++	{ OST_CREATE,      "ost_create" },
+ 	{ OST_DESTROY,      "ost_destroy" },
+ 	{ OST_GET_INFO,     "ost_get_info" },
+ 	{ OST_CONNECT,      "ost_connect" },
 -- 
 1.8.3.2
 
