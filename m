@@ -1,78 +1,69 @@
 X-GM-THRID: 4949753724928
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,abf82a3e99bfbfbe
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.83.168 with SMTP id r8mr818162wiy.6.1425078966703;
-        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+X-Received: by 10.112.181.198 with SMTP id dy6mr2449202lbc.22.1425078759956;
+        Fri, 27 Feb 2015 15:12:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.36 with SMTP id n4ls196046laj.27.gmail; Fri, 27 Feb
- 2015 15:16:06 -0800 (PST)
-X-Received: by 10.112.159.227 with SMTP id xf3mr2435495lbb.11.1425078966197;
-        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+Received: by 10.181.11.229 with SMTP id el5ls209137wid.43.gmail; Fri, 27 Feb
+ 2015 15:12:39 -0800 (PST)
+X-Received: by 10.180.83.168 with SMTP id r8mr816384wiy.6.1425078759664;
+        Fri, 27 Feb 2015 15:12:39 -0800 (PST)
 Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id o3si204016wib.2.2015.02.27.15.16.06
+Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
+        by gmr-mx.google.com with ESMTPS id i7si212616wif.0.2015.02.27.15.12.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Fri, 27 Feb 2015 15:12:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id l15so3581223wiw.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+Received: by widex7 with SMTP id ex7so3347427wid.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 15:12:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=k7b/B1OpvbRK1W2vRHL30ls+KJ18uL3OLJxmNEeW/us=;
-        b=wQw14ef8ZYoLYj4u2W6o7Dr3v4W9S97rK6+1Ak4vCNNZedr8+jKzS7LGR1PHVUw8X5
-         pOSEzuPubScgy8+VGSPV8dyjhdLg/ZaFj1FE52GQPpWl8CmJiT2KoVdLqGw7037xzBOR
-         tD4rIoHjYXOu1LBo3BH0g4mxd1mGeG9ARg+rvzhNCShJFWQp1vdr+wKylGtCIHRjXU7a
-         ESAlK9TF9eYI3UGTZNaszvDKhxvliOQna/4p+of1I1fDh/cIJJBG4LmWlSVI1xxV1Vyw
-         +JuObqG6KuilFh1i45EqwZ1L1t0mp1UMMMS7erDVTnQswbRpF6Wpql7/8V9ZOs6ofHzO
-         2mxA==
-X-Received: by 10.194.83.66 with SMTP id o2mr33273573wjy.55.1425078966117;
-        Fri, 27 Feb 2015 15:16:06 -0800 (PST)
+        h=from:to:cc:subject:date:message-id;
+        bh=4b0EW3fT1qo9SJE0MRyTSmZY0fiAOs7yMxyNFzlN7aY=;
+        b=IadUw1CFuWZcwO4GDXXSlR7uAhg3GcLIZw66lH4jSjy1GumLuZKacF/75eLzNLAqEe
+         OFl6eT2rWKodIwzU2akuUR5dg3WMVyaSLKNL+rIzdRltluAQDcWn4qRDzzvyS/rHif3k
+         38KtRuPRJReO0AKHnjokryh81ndLrcKZ1Yo1QN+R4Sewf5wCLeTpaXBmbjZ768kYvAGV
+         Tz9sATv5NEZTGaUu+IqSCi9+uh70Fs9x9ByhH5cG5ZKJT8ZeDGmeiO19TksdvpOX1GaN
+         0SydLK70Z+DblRHGdFXaCuyuGf8ePNz1IzdY48jAPo0Mlu7RDghyt7JL2rRcG55VKGGv
+         SPEQ==
+X-Received: by 10.180.21.174 with SMTP id w14mr11366101wie.86.1425078759557;
+        Fri, 27 Feb 2015 15:12:39 -0800 (PST)
 Return-Path: <ksenija.stanojevic@gmail.com>
 Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id fu1sm4798993wic.2.2015.02.27.15.16.04
+        by mx.google.com with ESMTPSA id u16sm7938228wjr.5.2015.02.27.15.12.38
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 27 Feb 2015 15:16:05 -0800 (PST)
+        Fri, 27 Feb 2015 15:12:38 -0800 (PST)
 From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v2 2/2] Staging: rtl8192u: Remove TRUE and FALSE macros
-Date: Sat, 28 Feb 2015 00:15:56 +0100
-Message-Id: <48c1c72e2be3c06d4b22e1ac91cb047fe09e2067.1425078886.git.ksenija.stanojevic@gmail.com>
+Subject: [PATCH v2 0/2] Staging: rtl8192u: Remove TRUE and FALSE macros
+Date: Sat, 28 Feb 2015 00:12:30 +0100
+Message-Id: <cover.1425078496.git.ksenija.stanojevic@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1425078886.git.ksenija.stanojevic@gmail.com>
-References: <cover.1425078886.git.ksenija.stanojevic@gmail.com>
 
-Remove TRUE and FALSE boolean macros, since Linux kernel has already a
-boolean type, bool, defined in linux/stddef.h
+Remove TRUE and FALSE boolean macros since Linux kernel has already a
+boolean type, bool, defined in stddef.h.
+Replace all occurrences oof TRUE and FALSE by true and false
+respectively.
 
 Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-v2: nothing changed.
 
- drivers/staging/rtl8192u/r8192U.h | 2 --
- 1 file changed, 2 deletions(-)
+v2: change sequence of patches in patchset
 
-diff --git a/drivers/staging/rtl8192u/r8192U.h b/drivers/staging/rtl8192u/r8192U.h
-index c9d8c10..6c2e438 100644
---- a/drivers/staging/rtl8192u/r8192U.h
-+++ b/drivers/staging/rtl8192u/r8192U.h
-@@ -40,8 +40,6 @@
- #define RTL8192U
- #define RTL819xU_MODULE_NAME "rtl819xU"
- /* HW security */
--#define FALSE 0
--#define TRUE 1
- #define MAX_KEY_LEN     61
- #define KEY_BUF_SIZE    5
- 
+Ksenija Stanojevic (2):
+  Staging: rtl8192u: Replace TRUE and FALSE macros
+  Staging: rtl8192u: Remove TRUE and FALSE macros
+
+ drivers/staging/rtl8192u/r8192U.h          |  2 --
+ drivers/staging/rtl8192u/r8192U_core.c     | 22 +++++++-------
+ drivers/staging/rtl8192u/r8192U_dm.c       | 46 +++++++++++++++---------------
+ drivers/staging/rtl8192u/r819xU_firmware.c | 12 ++++----
+ drivers/staging/rtl8192u/r819xU_phy.c      |  4 +--
+ 5 files changed, 42 insertions(+), 44 deletions(-)
+
 -- 
 1.9.1
 
