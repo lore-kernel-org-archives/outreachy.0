@@ -1,48 +1,52 @@
 X-GM-THRID: 4475579269120
-X-Received: by 10.112.161.9 with SMTP id xo9mr2078917lbb.7.1425042642171;
-        Fri, 27 Feb 2015 05:10:42 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,9816ab370498a2c8
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.6.232 with SMTP id e8mr2054067laa.2.1425042609763;
+        Fri, 27 Feb 2015 05:10:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.8.102 with SMTP id q6ls161711laa.24.gmail; Fri, 27 Feb
- 2015 05:10:41 -0800 (PST)
-X-Received: by 10.112.222.131 with SMTP id qm3mr2018784lbc.1.1425042641631;
-        Fri, 27 Feb 2015 05:10:41 -0800 (PST)
+Received: by 10.180.103.202 with SMTP id fy10ls83943wib.15.canary; Fri, 27 Feb
+ 2015 05:10:09 -0800 (PST)
+X-Received: by 10.194.161.194 with SMTP id xu2mr2047736wjb.1.1425042609130;
+        Fri, 27 Feb 2015 05:10:09 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x22a.google.com (mail-wg0-x22a.google.com. [2a00:1450:400c:c00::22a])
-        by gmr-mx.google.com with ESMTPS id cl5si110358wib.3.2015.02.27.05.10.41
+Received: from mail-wg0-x233.google.com (mail-wg0-x233.google.com. [2a00:1450:400c:c00::233])
+        by gmr-mx.google.com with ESMTPS id o3si107658wib.2.2015.02.27.05.10.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 05:10:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) client-ip=2a00:1450:400c:c00::22a;
+        Fri, 27 Feb 2015 05:10:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) client-ip=2a00:1450:400c:c00::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22a.google.com with SMTP id x12so20305567wgg.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:10:41 -0800 (PST)
+Received: by mail-wg0-x233.google.com with SMTP id k14so20383060wgh.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:10:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=GJbuSfNnuO5MSZszV0QVKnuNfAy+IrL3jGUbFE0kE0o=;
-        b=whkes+yjYRGcIAt0ZConMyCLrK2o85jnGeNspve0KZCx/D4qT7Vrw7uVdg5xgmmfaK
-         HQAX9NK2Vh1VFfMxGVx0cUd/a+3gkJ/s22K5bUfVx1M9vD/sqpNUJ9bLBudh/YSuy2MZ
-         ralC/59bcbPwcqWnJZQoYy2aRZCcMdJQpkDQ2QIfSXGhJHvBWYQ2aDak+7IQETS+UJES
-         2vvvi/7HvLrhjo9edOfaM08pCrw2h+yw6w2DkuF5IizbzE3sU5AKbRpwOFmRN58PSK9f
-         Nnv5WhmfD/WDE6WiIEFLOnuLSwqkN8wWUlOp0a+cKlTgEYIUaOHM82yovgcDzo1OGQzQ
-         7RXg==
-X-Received: by 10.194.103.228 with SMTP id fz4mr27306115wjb.82.1425042641553;
-        Fri, 27 Feb 2015 05:10:41 -0800 (PST)
+        bh=LAk7jKQvwWvKhZdJ9WmHifpn2qKdzK0Rnsh23/E91sY=;
+        b=KEHqWbXK0SgyAP108w53WZpOqDkfjHpdVgwrYVqpKlenzHa6asjSUz2HoL3QjeKaUR
+         5DB/7FDwsUJCe4gaBiTv9h3L2TXJE4ukUABXESkp4x2XCFCwSSOmmz/vVMkkndWUumrW
+         uvganWoO6mV1llfBd1Pa/mW2izxPSyqJeIWbJbMroAlOCuMpnzQ4gNjHAnpgL3e10vCE
+         brP18Jyqp36uLlEF06UVisfjb+7xwsyY1DCQK1t8hgPCFRr5mbPPGIS9+hDaDUVW65wY
+         q9t/yr5Q8B8eSG3E8F12vjuCxZWntEIW+VRw5Qd2NpPM0IQ/F24Okf16zjbFdKd2ajMf
+         1dHg==
+X-Received: by 10.194.61.100 with SMTP id o4mr28008311wjr.28.1425042609063;
+        Fri, 27 Feb 2015 05:10:09 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.192.222])
-        by mx.google.com with ESMTPSA id ha5sm2796262wib.1.2015.02.27.05.10.39
+        by mx.google.com with ESMTPSA id j7sm2791451wix.4.2015.02.27.05.10.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 05:10:40 -0800 (PST)
-Date: Fri, 27 Feb 2015 15:10:30 +0200
+        Fri, 27 Feb 2015 05:10:08 -0800 (PST)
+Date: Fri, 27 Feb 2015 15:09:53 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 23/24] staging: fbtft: remove unused variable
-Message-ID: <2df9d5513b0cad9561ebe355dbed723b987ca4d8.1425035012.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 22/24] staging: iio: light: remove unused variable
+Message-ID: <2708e05145be19e83323dff3614508efb18f4244.1425035012.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -71,31 +75,29 @@ identifier len,f;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/fbtft/fbtft-core.c | 4 +---
+ drivers/staging/iio/light/tsl2583.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-index ac4287f..8ca4511 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -1046,7 +1046,6 @@ int fbtft_unregister_framebuffer(struct fb_info *fb_info)
+diff --git a/drivers/staging/iio/light/tsl2583.c b/drivers/staging/iio/light/tsl2583.c
+index 8afae8e..b5e1b8b 100644
+--- a/drivers/staging/iio/light/tsl2583.c
++++ b/drivers/staging/iio/light/tsl2583.c
+@@ -471,14 +471,12 @@ static int taos_chip_on(struct iio_dev *indio_dev)
+ static int taos_chip_off(struct iio_dev *indio_dev)
  {
- 	struct fbtft_par *par = fb_info->par;
- 	struct spi_device *spi = par->spi;
+ 	struct tsl2583_chip *chip = iio_priv(indio_dev);
 -	int ret;
  
- 	if (spi)
- 		spi_set_drvdata(spi, NULL);
-@@ -1055,8 +1054,7 @@ int fbtft_unregister_framebuffer(struct fb_info *fb_info)
- 	if (par->fbtftops.unregister_backlight)
- 		par->fbtftops.unregister_backlight(par);
- 	fbtft_sysfs_exit(par);
--	ret = unregister_framebuffer(fb_info);
+ 	/* turn device off */
+ 	chip->taos_chip_status = TSL258X_CHIP_SUSPENDED;
+-	ret = i2c_smbus_write_byte_data(chip->client,
++	return i2c_smbus_write_byte_data(chip->client,
+ 					TSL258X_CMD_REG | TSL258X_CNTRL,
+ 					0x00);
 -	return ret;
-+	return unregister_framebuffer(fb_info);
  }
- EXPORT_SYMBOL(fbtft_unregister_framebuffer);
  
+ /* Sysfs Interface Functions */
 -- 
 1.9.3
 
