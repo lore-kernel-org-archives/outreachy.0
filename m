@@ -1,193 +1,186 @@
 X-GM-THRID: 4598862446592
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,7b48250ea3e3ea63
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.95.67 with SMTP id di3mr697103wjb.0.1425052338713;
-        Fri, 27 Feb 2015 07:52:18 -0800 (PST)
+X-Received: by 10.180.72.44 with SMTP id a12mr497662wiv.0.1425045413660;
+        Fri, 27 Feb 2015 05:56:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.90.175 with SMTP id bx15ls145653wib.17.gmail; Fri, 27 Feb
- 2015 07:52:18 -0800 (PST)
-X-Received: by 10.194.11.70 with SMTP id o6mr2178625wjb.6.1425052338342;
-        Fri, 27 Feb 2015 07:52:18 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id r6si145671wix.0.2015.02.27.07.52.18
+Received: by 10.152.7.228 with SMTP id m4ls134651laa.106.gmail; Fri, 27 Feb
+ 2015 05:56:53 -0800 (PST)
+X-Received: by 10.112.181.198 with SMTP id dy6mr2117639lbc.22.1425045413004;
+        Fri, 27 Feb 2015 05:56:53 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id cl5si118789wib.3.2015.02.27.05.56.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 07:52:18 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Feb 2015 05:56:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,660,1418079600"; 
-   d="scan'208";a="101563260"
-Received: from ip209.messe-nbg.customer.bisping.net (HELO hadrien.local) ([62.91.19.209])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:52:17 +0100
-Date: Fri, 27 Feb 2015 16:52:07 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lustre: ldlm: Fix
- do not add new typedefs
-In-Reply-To: <1425045406-25950-1-git-send-email-hamohammed.sa@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502271651190.2663@hadrien>
-References: <1425045406-25950-1-git-send-email-hamohammed.sa@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wivr20 with SMTP id r20so380159wiv.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:56:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=/aujC0UCsH8Esc6JB/oEuBEKHKpS/8TfTSCkgYq0NNw=;
+        b=HWWaHNAWbMdrztghcLscdxtUqqLowf3mxJZdM/kTTiJsvJavGActOG+8VfkpIKZIZk
+         7mcJ5L/9OSEZbZvJv6mIr9JDr1B98RSiJD1Rz/CZc+ZrvNmLvJ592VGJ2M0YysFSgng9
+         X0hHSrnExBwoGJJhVlj8TlzicOAdUW0TfTz5cr0n9JLbwhWmj+7ui5wMEKO2a6xZV+9t
+         w39GGfbWIX3TITT3ADek9wKZ18vy5yfQ9pNSfY1Lr0fnqvA/sOpHUah45KOye8JSUIpo
+         +cbLNOsadmdXLru3ZB1232DHJI+szFN0bW3scQta+JJ/VAGE2uXGR53+nX/XdmHjuJdW
+         nqCQ==
+X-Received: by 10.194.95.200 with SMTP id dm8mr28664869wjb.122.1425045412839;
+        Fri, 27 Feb 2015 05:56:52 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneensa-VirtualBox ([79.170.55.43])
+        by mx.google.com with ESMTPSA id dn7sm2931758wid.12.2015.02.27.05.56.50
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Feb 2015 05:56:52 -0800 (PST)
+Received: by haneensa-VirtualBox (Postfix, from userid 1000)
+	id 742A263370; Fri, 27 Feb 2015 16:56:48 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH] Staging: lustre: lustre: ldlm: Fix do not add new typedefs
+Date: Fri, 27 Feb 2015 16:56:46 +0300
+Message-Id: <1425045406-25950-1-git-send-email-hamohammed.sa@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Fri, 27 Feb 2015, Haneen Mohammed wrote:
+This patch fixes "do not add new typedefs" warning generated by
+checkpatch.pl.
+Update related files.
 
-> This patch fixes "do not add new typedefs" warning generated by
-> checkpatch.pl.
-> Update related files.
->
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
-> ---
->  drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  8 +++-----
->  drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     |  2 +-
->  drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 16 ++++++++--------
->  3 files changed, 12 insertions(+), 14 deletions(-)
->
-> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-> index 20e64cd..fc2d9a6 100644
-> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-> @@ -131,12 +131,12 @@ struct ldlm_cb_set_arg {
->  	union ldlm_gl_desc		*gl_desc; /* glimpse AST descriptor */
->  };
->
-> -typedef enum {
-> +enum ldlm_desc_ast {
->  	LDLM_WORK_BL_AST,
->  	LDLM_WORK_CP_AST,
->  	LDLM_WORK_REVOKE_AST,
->  	LDLM_WORK_GL_AST
-> -} ldlm_desc_ast_t;
-> +};
->
->  void ldlm_grant_lock(struct ldlm_lock *lock, struct list_head *work_list);
->  int ldlm_fill_lvb(struct ldlm_lock *lock, struct req_capsule *pill,
-> @@ -155,7 +155,7 @@ void ldlm_lock_decref_internal_nolock(struct ldlm_lock *, __u32 mode);
->  void ldlm_add_ast_work_item(struct ldlm_lock *lock, struct ldlm_lock *new,
->  			    struct list_head *work_list);
->  int ldlm_run_ast_work(struct ldlm_namespace *ns, struct list_head *rpc_list,
-> -		      ldlm_desc_ast_t ast_type);
-> +		      enum ldlm_desc_ast ast_type);
->  int ldlm_work_gl_ast_lock(struct ptlrpc_request_set *rqset, void *opaq);
->  int ldlm_lock_remove_from_lru(struct ldlm_lock *lock);
->  int ldlm_lock_remove_from_lru_nolock(struct ldlm_lock *lock);
-> @@ -232,8 +232,6 @@ enum ldlm_policy_res {
->  	LDLM_POLICY_SKIP_LOCK
->  };
->
-> -typedef enum ldlm_policy_res ldlm_policy_res_t;
-> -
->  #define LDLM_POOL_PROC_READER_SEQ_SHOW(var, type)			    \
->  	static int lprocfs_##var##_seq_show(struct seq_file *m, void *v) \
->  	{								    \
-> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-> index 8191005..20b7376 100644
-> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-> @@ -1805,7 +1805,7 @@ int ldlm_work_gl_ast_lock(struct ptlrpc_request_set *rqset, void *opaq)
->   * one.
->   */
->  int ldlm_run_ast_work(struct ldlm_namespace *ns, struct list_head *rpc_list,
-> -		      ldlm_desc_ast_t ast_type)
-> +		      enum ldlm_desc_ast ast_type)
->  {
->  	struct ldlm_cb_set_arg *arg;
->  	set_producer_func       work_ast_lock;
-> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
-> index 287da32..dad09ad 100644
-> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
-> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
-> @@ -1405,12 +1405,12 @@ EXPORT_SYMBOL(ldlm_cli_cancel_list_local);
->   * dirty data, to close a file, ...) or waiting for any RPCs in-flight (e.g.
->   * readahead requests, ...)
->   */
-> -static ldlm_policy_res_t ldlm_cancel_no_wait_policy(struct ldlm_namespace *ns,
-> +static enum ldlm_policy_res ldlm_cancel_no_wait_policy(struct ldlm_namespace *ns,
->  						    struct ldlm_lock *lock,
->  						    int unused, int added,
->  						    int count)
->  {
-> -	ldlm_policy_res_t result = LDLM_POLICY_CANCEL_LOCK;
-> +	ldlm_policy_res result = LDLM_POLICY_CANCEL_LOCK;
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+ drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  8 +++-----
+ drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     |  2 +-
+ drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 16 ++++++++--------
+ 3 files changed, 12 insertions(+), 14 deletions(-)
 
-This does not look right.  Please check that you have really compiled the
-file.  Ie that you have a .o file that corresponds to this .c one.
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+index 20e64cd..fc2d9a6 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+@@ -131,12 +131,12 @@ struct ldlm_cb_set_arg {
+ 	union ldlm_gl_desc		*gl_desc; /* glimpse AST descriptor */
+ };
+ 
+-typedef enum {
++enum ldlm_desc_ast {
+ 	LDLM_WORK_BL_AST,
+ 	LDLM_WORK_CP_AST,
+ 	LDLM_WORK_REVOKE_AST,
+ 	LDLM_WORK_GL_AST
+-} ldlm_desc_ast_t;
++};
+ 
+ void ldlm_grant_lock(struct ldlm_lock *lock, struct list_head *work_list);
+ int ldlm_fill_lvb(struct ldlm_lock *lock, struct req_capsule *pill,
+@@ -155,7 +155,7 @@ void ldlm_lock_decref_internal_nolock(struct ldlm_lock *, __u32 mode);
+ void ldlm_add_ast_work_item(struct ldlm_lock *lock, struct ldlm_lock *new,
+ 			    struct list_head *work_list);
+ int ldlm_run_ast_work(struct ldlm_namespace *ns, struct list_head *rpc_list,
+-		      ldlm_desc_ast_t ast_type);
++		      enum ldlm_desc_ast ast_type);
+ int ldlm_work_gl_ast_lock(struct ptlrpc_request_set *rqset, void *opaq);
+ int ldlm_lock_remove_from_lru(struct ldlm_lock *lock);
+ int ldlm_lock_remove_from_lru_nolock(struct ldlm_lock *lock);
+@@ -232,8 +232,6 @@ enum ldlm_policy_res {
+ 	LDLM_POLICY_SKIP_LOCK
+ };
+ 
+-typedef enum ldlm_policy_res ldlm_policy_res_t;
+-
+ #define LDLM_POOL_PROC_READER_SEQ_SHOW(var, type)			    \
+ 	static int lprocfs_##var##_seq_show(struct seq_file *m, void *v) \
+ 	{								    \
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+index 8191005..20b7376 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+@@ -1805,7 +1805,7 @@ int ldlm_work_gl_ast_lock(struct ptlrpc_request_set *rqset, void *opaq)
+  * one.
+  */
+ int ldlm_run_ast_work(struct ldlm_namespace *ns, struct list_head *rpc_list,
+-		      ldlm_desc_ast_t ast_type)
++		      enum ldlm_desc_ast ast_type)
+ {
+ 	struct ldlm_cb_set_arg *arg;
+ 	set_producer_func       work_ast_lock;
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+index 287da32..dad09ad 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+@@ -1405,12 +1405,12 @@ EXPORT_SYMBOL(ldlm_cli_cancel_list_local);
+  * dirty data, to close a file, ...) or waiting for any RPCs in-flight (e.g.
+  * readahead requests, ...)
+  */
+-static ldlm_policy_res_t ldlm_cancel_no_wait_policy(struct ldlm_namespace *ns,
++static enum ldlm_policy_res ldlm_cancel_no_wait_policy(struct ldlm_namespace *ns,
+ 						    struct ldlm_lock *lock,
+ 						    int unused, int added,
+ 						    int count)
+ {
+-	ldlm_policy_res_t result = LDLM_POLICY_CANCEL_LOCK;
++	ldlm_policy_res result = LDLM_POLICY_CANCEL_LOCK;
+ 	ldlm_cancel_for_recovery cb = ns->ns_cancel_for_recovery;
+ 
+ 	lock_res_and_lock(lock);
+@@ -1441,7 +1441,7 @@ static ldlm_policy_res_t ldlm_cancel_no_wait_policy(struct ldlm_namespace *ns,
+  *
+  * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
+  */
+-static ldlm_policy_res_t ldlm_cancel_lrur_policy(struct ldlm_namespace *ns,
++static enum ldlm_policy_res ldlm_cancel_lrur_policy(struct ldlm_namespace *ns,
+ 						 struct ldlm_lock *lock,
+ 						 int unused, int added,
+ 						 int count)
+@@ -1480,7 +1480,7 @@ static ldlm_policy_res_t ldlm_cancel_lrur_policy(struct ldlm_namespace *ns,
+  *
+  * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
+  */
+-static ldlm_policy_res_t ldlm_cancel_passed_policy(struct ldlm_namespace *ns,
++static enum ldlm_policy_res ldlm_cancel_passed_policy(struct ldlm_namespace *ns,
+ 						   struct ldlm_lock *lock,
+ 						   int unused, int added,
+ 						   int count)
+@@ -1500,7 +1500,7 @@ static ldlm_policy_res_t ldlm_cancel_passed_policy(struct ldlm_namespace *ns,
+  *
+  * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
+  */
+-static ldlm_policy_res_t ldlm_cancel_aged_policy(struct ldlm_namespace *ns,
++static enum ldlm_policy_res ldlm_cancel_aged_policy(struct ldlm_namespace *ns,
+ 						 struct ldlm_lock *lock,
+ 						 int unused, int added,
+ 						 int count)
+@@ -1521,7 +1521,7 @@ static ldlm_policy_res_t ldlm_cancel_aged_policy(struct ldlm_namespace *ns,
+  *
+  * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
+  */
+-static ldlm_policy_res_t ldlm_cancel_default_policy(struct ldlm_namespace *ns,
++static enum ldlm_policy_res ldlm_cancel_default_policy(struct ldlm_namespace *ns,
+ 						    struct ldlm_lock *lock,
+ 						    int unused, int added,
+ 						    int count)
+@@ -1532,7 +1532,7 @@ static ldlm_policy_res_t ldlm_cancel_default_policy(struct ldlm_namespace *ns,
+ 		LDLM_POLICY_KEEP_LOCK : LDLM_POLICY_CANCEL_LOCK;
+ }
+ 
+-typedef ldlm_policy_res_t (*ldlm_cancel_lru_policy_t)(struct ldlm_namespace *,
++enum ldlm_policy_res (*ldlm_cancel_lru_policy_t)(struct ldlm_namespace *,
+ 						      struct ldlm_lock *, int,
+ 						      int, int);
+ 
+@@ -1610,7 +1610,7 @@ static int ldlm_prepare_lru_list(struct ldlm_namespace *ns,
+ 	LASSERT(pf != NULL);
+ 
+ 	while (!list_empty(&ns->ns_unused_list)) {
+-		ldlm_policy_res_t result;
++		enum ldlm_policy_res result;
+ 
+ 		/* all unused locks */
+ 		if (remained-- <= 0)
+-- 
+1.9.1
 
-julia
-
-
->  	ldlm_cancel_for_recovery cb = ns->ns_cancel_for_recovery;
->
->  	lock_res_and_lock(lock);
-> @@ -1441,7 +1441,7 @@ static ldlm_policy_res_t ldlm_cancel_no_wait_policy(struct ldlm_namespace *ns,
->   *
->   * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
->   */
-> -static ldlm_policy_res_t ldlm_cancel_lrur_policy(struct ldlm_namespace *ns,
-> +static enum ldlm_policy_res ldlm_cancel_lrur_policy(struct ldlm_namespace *ns,
->  						 struct ldlm_lock *lock,
->  						 int unused, int added,
->  						 int count)
-> @@ -1480,7 +1480,7 @@ static ldlm_policy_res_t ldlm_cancel_lrur_policy(struct ldlm_namespace *ns,
->   *
->   * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
->   */
-> -static ldlm_policy_res_t ldlm_cancel_passed_policy(struct ldlm_namespace *ns,
-> +static enum ldlm_policy_res ldlm_cancel_passed_policy(struct ldlm_namespace *ns,
->  						   struct ldlm_lock *lock,
->  						   int unused, int added,
->  						   int count)
-> @@ -1500,7 +1500,7 @@ static ldlm_policy_res_t ldlm_cancel_passed_policy(struct ldlm_namespace *ns,
->   *
->   * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
->   */
-> -static ldlm_policy_res_t ldlm_cancel_aged_policy(struct ldlm_namespace *ns,
-> +static enum ldlm_policy_res ldlm_cancel_aged_policy(struct ldlm_namespace *ns,
->  						 struct ldlm_lock *lock,
->  						 int unused, int added,
->  						 int count)
-> @@ -1521,7 +1521,7 @@ static ldlm_policy_res_t ldlm_cancel_aged_policy(struct ldlm_namespace *ns,
->   *
->   * \retval LDLM_POLICY_CANCEL_LOCK cancel lock from LRU
->   */
-> -static ldlm_policy_res_t ldlm_cancel_default_policy(struct ldlm_namespace *ns,
-> +static enum ldlm_policy_res ldlm_cancel_default_policy(struct ldlm_namespace *ns,
->  						    struct ldlm_lock *lock,
->  						    int unused, int added,
->  						    int count)
-> @@ -1532,7 +1532,7 @@ static ldlm_policy_res_t ldlm_cancel_default_policy(struct ldlm_namespace *ns,
->  		LDLM_POLICY_KEEP_LOCK : LDLM_POLICY_CANCEL_LOCK;
->  }
->
-> -typedef ldlm_policy_res_t (*ldlm_cancel_lru_policy_t)(struct ldlm_namespace *,
-> +enum ldlm_policy_res (*ldlm_cancel_lru_policy_t)(struct ldlm_namespace *,
->  						      struct ldlm_lock *, int,
->  						      int, int);
->
-> @@ -1610,7 +1610,7 @@ static int ldlm_prepare_lru_list(struct ldlm_namespace *ns,
->  	LASSERT(pf != NULL);
->
->  	while (!list_empty(&ns->ns_unused_list)) {
-> -		ldlm_policy_res_t result;
-> +		enum ldlm_policy_res result;
->
->  		/* all unused locks */
->  		if (remained-- <= 0)
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425045406-25950-1-git-send-email-hamohammed.sa%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
