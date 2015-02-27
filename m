@@ -1,38 +1,34 @@
 X-GM-THRID: 4475579269120
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9816ab370498a2c8
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.182.201 with SMTP id eg9mr581177wic.3.1425052488203;
-        Fri, 27 Feb 2015 07:54:48 -0800 (PST)
+X-Received: by 10.152.1.5 with SMTP id 5mr2178005lai.4.1425052417228;
+        Fri, 27 Feb 2015 07:53:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.98 with SMTP id m2ls190642lae.5.gmail; Fri, 27 Feb 2015
- 07:54:47 -0800 (PST)
-X-Received: by 10.112.146.65 with SMTP id ta1mr2173834lbb.19.1425052487774;
-        Fri, 27 Feb 2015 07:54:47 -0800 (PST)
+Received: by 10.181.11.198 with SMTP id ek6ls143808wid.27.gmail; Fri, 27 Feb
+ 2015 07:53:36 -0800 (PST)
+X-Received: by 10.180.39.164 with SMTP id q4mr579617wik.5.1425052416881;
+        Fri, 27 Feb 2015 07:53:36 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id i7si143188wif.0.2015.02.27.07.54.47
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ta1si138837wic.1.2015.02.27.07.53.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 07:54:47 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 27 Feb 2015 07:53:36 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.09,660,1418079600"; 
-   d="scan'208";a="101563550"
+   d="scan'208";a="123692028"
 Received: from ip209.messe-nbg.customer.bisping.net (HELO hadrien.local) ([62.91.19.209])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:54:47 +0100
-Date: Fri, 27 Feb 2015 16:54:36 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:53:36 +0100
+Date: Fri, 27 Feb 2015 16:53:25 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 18/24] staging: lustre: llite: remove
- unused variable
-In-Reply-To: <0ae8fe1e6a7e12be20f2d16ad8d0a966564d8654.1425035012.git.mahfouz.saif.elyazal@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502271654110.2663@hadrien>
-References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <0ae8fe1e6a7e12be20f2d16ad8d0a966564d8654.1425035012.git.mahfouz.saif.elyazal@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 21/24] staging: iio: meter: remove
+ unused variables
+In-Reply-To: <a3c512e1b92259c27416e0d8d0fd4a4db59fc0a9.1425035012.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502271653000.2663@hadrien>
+References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <a3c512e1b92259c27416e0d8d0fd4a4db59fc0a9.1425035012.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
@@ -41,9 +37,8 @@ Content-Type: TEXT/PLAIN; charset=US-ASCII
 
 On Fri, 27 Feb 2015, Aya Mahfouz wrote:
 
-> This patch removes a variable that was simply used to
-> store the return value of a function call before
-> returning it.
+> This patch removes variables that were simply used to store the
+> return value of a function call before returning it.
 >
 > The issue was detected and resolved using the following
 > coccinelle script:
@@ -62,38 +57,58 @@ On Fri, 27 Feb 2015, Aya Mahfouz wrote:
 >
 > Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 > ---
->  drivers/staging/lustre/lustre/llite/file.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+>  drivers/staging/iio/meter/ade7758_core.c | 10 ++--------
+>  1 file changed, 2 insertions(+), 8 deletions(-)
 >
-> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
-> index 0fd113d..3ae4d85 100644
-> --- a/drivers/staging/lustre/lustre/llite/file.c
-> +++ b/drivers/staging/lustre/lustre/llite/file.c
-> @@ -888,7 +888,6 @@ static int ll_lease_close(struct obd_client_handle *och, struct inode *inode,
+> diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
+> index 70e96b2..3d2fae4 100644
+> --- a/drivers/staging/iio/meter/ade7758_core.c
+> +++ b/drivers/staging/iio/meter/ade7758_core.c
+> @@ -300,18 +300,15 @@ error_ret:
+>
+>  static int ade7758_reset(struct device *dev)
 >  {
->  	struct ldlm_lock *lock;
->  	bool cancelled = true;
-> -	int rc;
+> -	int ret;
+>  	u8 val;
 >
->  	lock = ldlm_handle2lock(&och->och_lease_handle);
->  	if (lock != NULL) {
-> @@ -906,9 +905,8 @@ static int ll_lease_close(struct obd_client_handle *och, struct inode *inode,
->  	if (lease_broken != NULL)
->  		*lease_broken = cancelled;
->
-> -	rc = ll_close_inode_openhandle(ll_i2sbi(inode)->ll_md_exp, inode, och,
-> +	return ll_close_inode_openhandle(ll_i2sbi(inode)->ll_md_exp, inode, och,
->  				       NULL);
+>  	ade7758_spi_read_reg_8(dev,
+>  			ADE7758_OPMODE,
+>  			&val);
+>  	val |= 1 << 6; /* Software Chip Reset */
+> -	ret = ade7758_spi_write_reg_8(dev,
+> +	return ade7758_spi_write_reg_8(dev,
+>  			ADE7758_OPMODE,
+>  			val);
 
-The NULL argument was aligned with the first argument before, but now it
-is not.
+It's a different problem, but this call could really fit on one line.
 
 julia
 
-> -	return rc;
+> -
+> -	return ret;
 >  }
 >
->  /* Fills the obdo with the attributes for the lsm */
+>  static IIO_DEV_ATTR_VPEAK(S_IWUSR | S_IRUGO,
+> @@ -441,18 +438,15 @@ error_ret:
+>  /* Power down the device */
+>  static int ade7758_stop_device(struct device *dev)
+>  {
+> -	int ret;
+>  	u8 val;
+>
+>  	ade7758_spi_read_reg_8(dev,
+>  			ADE7758_OPMODE,
+>  			&val);
+>  	val |= 7 << 3;  /* ADE7758 powered down */
+> -	ret = ade7758_spi_write_reg_8(dev,
+> +	return ade7758_spi_write_reg_8(dev,
+>  			ADE7758_OPMODE,
+>  			val);
+> -
+> -	return ret;
+>  }
+>
+>  static int ade7758_initial_setup(struct iio_dev *indio_dev)
 > --
 > 1.9.3
 >
@@ -106,7 +121,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/0ae8fe1e6a7e12be20f2d16ad8d0a966564d8654.1425035012.git.mahfouz.saif.elyazal%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a3c512e1b92259c27416e0d8d0fd4a4db59fc0a9.1425035012.git.mahfouz.saif.elyazal%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
