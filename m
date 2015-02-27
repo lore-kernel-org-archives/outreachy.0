@@ -1,55 +1,45 @@
 X-GM-THRID: 4475579269120
-X-Received: by 10.112.147.35 with SMTP id th3mr1939160lbb.15.1425052853830;
-        Fri, 27 Feb 2015 08:00:53 -0800 (PST)
+X-Received: by 10.194.221.65 with SMTP id qc1mr2173244wjc.7.1425052777690;
+        Fri, 27 Feb 2015 07:59:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.84.72 with SMTP id w8ls151860wiy.4.canary; Fri, 27 Feb
- 2015 08:00:53 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr588243wib.4.1425052853538;
-        Fri, 27 Feb 2015 08:00:53 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id cl5si137832wib.3.2015.02.27.08.00.53
+Received: by 10.152.8.13 with SMTP id n13ls187234laa.80.gmail; Fri, 27 Feb
+ 2015 07:59:37 -0800 (PST)
+X-Received: by 10.152.28.137 with SMTP id b9mr2181771lah.8.1425052777268;
+        Fri, 27 Feb 2015 07:59:37 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id cl5si137785wib.3.2015.02.27.07.59.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 08:00:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 07:59:37 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id bs8so1221272wib.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 08:00:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=c0WDYnfzvLLocVa2HWjDYLT9RqxCsh2fgBkSwhq2sfA=;
-        b=phge3HgBVeLpuIjWIEaO4kSQYuIvncKcYH9HOz2s+McRUqhy2juh2UddG6TPS1jRPj
-         HkF22RFPttprYsLCIxWEQqVUOupBmBO4I0a7gXAB98x4xHEmBEljpzGCpS10hZgI8dEF
-         IeQGWTFxB5Vwx4O7cjnqxaqRq+Zmk+F5P8pW2wpzbMsQQNfd8RbUn+AuZmb22IHNcSQJ
-         dh77bnFRnH/YVCEL6YhbA+hB0vWscfHuQplKNb202A+GjU/Zx7wNq3VuQvkJFafNrEsa
-         LIIUR/9IUudod6POEsXOtnYrzFsjjRhjMYWWrZ6Gpg+TaSZ4vbKM5Mk4Rlja1Ae+FMlf
-         VsnA==
-MIME-Version: 1.0
-X-Received: by 10.194.94.1 with SMTP id cy1mr28336887wjb.127.1425052853434;
- Fri, 27 Feb 2015 08:00:53 -0800 (PST)
-Received: by 10.28.3.68 with HTTP; Fri, 27 Feb 2015 08:00:53 -0800 (PST)
-In-Reply-To: <a3c512e1b92259c27416e0d8d0fd4a4db59fc0a9.1425035012.git.mahfouz.saif.elyazal@gmail.com>
-References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
-	<a3c512e1b92259c27416e0d8d0fd4a4db59fc0a9.1425035012.git.mahfouz.saif.elyazal@gmail.com>
-Date: Fri, 27 Feb 2015 18:00:53 +0200
-Message-ID: <CAEnQRZBuVvmt5-B6tVxAwL--xHnG7P91WohdByz4=Yx9KiZPJw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 21/24] staging: iio: meter: remove
- unused variables
-From: Daniel Baluta <daniel.baluta@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,660,1418079600"; 
+   d="scan'208";a="101564003"
+Received: from ip209.messe-nbg.customer.bisping.net (HELO hadrien.local) ([62.91.19.209])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:59:19 +0100
+Date: Fri, 27 Feb 2015 16:59:09 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 04/24] staging: rtl8188eu: os_dep:
+ remove unused variable
+In-Reply-To: <b9c765d115a8845bd37120165627f37c29af1b9c.1425035005.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502271658490.2663@hadrien>
+References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <b9c765d115a8845bd37120165627f37c29af1b9c.1425035005.git.mahfouz.saif.elyazal@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Fri, Feb 27, 2015 at 3:09 PM, Aya Mahfouz
-<mahfouz.saif.elyazal@gmail.com> wrote:
-> This patch removes variables that were simply used to store the
-> return value of a function call before returning it.
+
+
+On Fri, 27 Feb 2015, Aya Mahfouz wrote:
+
+> This patch removes variables that were simply used to
+> store the return value of a function call before
+> returning it.
 >
 > The issue was detected and resolved using the following
 > coccinelle script:
@@ -68,55 +58,90 @@ On Fri, Feb 27, 2015 at 3:09 PM, Aya Mahfouz
 >
 > Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 > ---
->  drivers/staging/iio/meter/ade7758_core.c | 10 ++--------
->  1 file changed, 2 insertions(+), 8 deletions(-)
+>  drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c | 16 +++-------------
+>  1 file changed, 3 insertions(+), 13 deletions(-)
 >
-> diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
-> index 70e96b2..3d2fae4 100644
-> --- a/drivers/staging/iio/meter/ade7758_core.c
-> +++ b/drivers/staging/iio/meter/ade7758_core.c
-> @@ -300,18 +300,15 @@ error_ret:
+> diff --git a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+> index 80e7ef9..38e8ba1 100644
+> --- a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+> +++ b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+> @@ -552,7 +552,6 @@ int usb_write8(struct adapter *adapter, u32 addr, u8 val)
+>  	u16 index;
+>  	u16 len;
+>  	u8 data;
+> -	int ret;
 >
->  static int ade7758_reset(struct device *dev)
->  {
-> -       int ret;
->         u8 val;
->
->         ade7758_spi_read_reg_8(dev,
->                         ADE7758_OPMODE,
->                         &val);
->         val |= 1 << 6; /* Software Chip Reset */
-> -       ret = ade7758_spi_write_reg_8(dev,
-> +       return ade7758_spi_write_reg_8(dev,
->                         ADE7758_OPMODE,
->                         val);
-> -
-> -       return ret;
+>  	request = 0x05;
+>  	requesttype = 0x00;/* write_out */
+> @@ -560,8 +559,7 @@ int usb_write8(struct adapter *adapter, u32 addr, u8 val)
+>  	wvalue = (u16)(addr&0x0000ffff);
+>  	len = 1;
+>  	data = val;
+> -	ret = usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
+> -	return ret;
+> +	return usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
+
+You make the 80 character problem worse, so you could fix it at the same
+time.
+
+julia
+
 >  }
 >
->  static IIO_DEV_ATTR_VPEAK(S_IWUSR | S_IRUGO,
-> @@ -441,18 +438,15 @@ error_ret:
->  /* Power down the device */
->  static int ade7758_stop_device(struct device *dev)
->  {
-> -       int ret;
->         u8 val;
+>  int usb_write16(struct adapter *adapter, u32 addr, u16 val)
+> @@ -572,7 +570,6 @@ int usb_write16(struct adapter *adapter, u32 addr, u16 val)
+>  	u16 index;
+>  	u16 len;
+>  	__le32 data;
+> -	int ret;
 >
->         ade7758_spi_read_reg_8(dev,
->                         ADE7758_OPMODE,
->                         &val);
->         val |= 7 << 3;  /* ADE7758 powered down */
-> -       ret = ade7758_spi_write_reg_8(dev,
-> +       return ade7758_spi_write_reg_8(dev,
->                         ADE7758_OPMODE,
->                         val);
+>
+>  	request = 0x05;
+> @@ -584,10 +581,7 @@ int usb_write16(struct adapter *adapter, u32 addr, u16 val)
+>
+>  	data = cpu_to_le32(val & 0x0000ffff);
+>
+> -	ret = usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
 > -
-> -       return ret;
+> -
+> -	return ret;
+> +	return usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
 >  }
 >
-
-I would advise against this change. It would be better to check
-for ret value and add an error message.
-
-Daniel.
+>  int usb_write32(struct adapter *adapter, u32 addr, u32 val)
+> @@ -598,7 +592,6 @@ int usb_write32(struct adapter *adapter, u32 addr, u32 val)
+>  	u16 index;
+>  	u16 len;
+>  	__le32 data;
+> -	int ret;
+>
+>
+>  	request = 0x05;
+> @@ -609,10 +602,7 @@ int usb_write32(struct adapter *adapter, u32 addr, u32 val)
+>  	len = 4;
+>  	data = cpu_to_le32(val);
+>
+> -	ret = usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
+> -
+> -
+> -	return ret;
+> +	return usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
+>  }
+>
+>  static void usb_write_port_complete(struct urb *purb, struct pt_regs *regs)
+> --
+> 1.9.3
+>
+>
+> --
+> Kind Regards,
+> Aya Saif El-yazal Mahfouz
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/b9c765d115a8845bd37120165627f37c29af1b9c.1425035005.git.mahfouz.saif.elyazal%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
