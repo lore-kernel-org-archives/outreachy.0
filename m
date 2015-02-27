@@ -1,60 +1,60 @@
 X-GM-THRID: 4945298325504
-X-Received: by 10.112.219.102 with SMTP id pn6mr2878861lbc.12.1425170365168;
-        Sat, 28 Feb 2015 16:39:25 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,c497780d2890c69d,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.91.76 with SMTP id cc12mr810951wib.7.1425077874742;
+        Fri, 27 Feb 2015 14:57:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.207.101 with SMTP id lv5ls309203lac.22.gmail; Sat, 28 Feb
- 2015 16:39:24 -0800 (PST)
-X-Received: by 10.112.126.194 with SMTP id na2mr2981267lbb.18.1425170364698;
-        Sat, 28 Feb 2015 16:39:24 -0800 (PST)
+Received: by 10.152.204.200 with SMTP id la8ls232509lac.90.gmail; Fri, 27 Feb
+ 2015 14:57:54 -0800 (PST)
+X-Received: by 10.112.138.202 with SMTP id qs10mr2352979lbb.24.1425077874160;
+        Fri, 27 Feb 2015 14:57:54 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22c.google.com (mail-we0-x22c.google.com. [2a00:1450:400c:c03::22c])
-        by gmr-mx.google.com with ESMTPS id r6si394371wix.0.2015.02.28.16.39.24
+Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
+        by gmr-mx.google.com with ESMTPS id ew5si212667wid.1.2015.02.27.14.57.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 16:39:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) client-ip=2a00:1450:400c:c03::22c;
+        Fri, 27 Feb 2015 14:57:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22c.google.com with SMTP id w62so26862911wes.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 16:39:24 -0800 (PST)
+Received: by mail-we0-x231.google.com with SMTP id w55so23091612wes.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 14:57:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=yxjFAXc0f1ykFz4kBVjSmyxWzZfv2DCkRLtTmNwp/so=;
-        b=hKH7HKo9F1Ws5abRBT5zt3a9WnDHftxTmm4lzHBGZeS5/mdDvr9zyxYWz0LY6paVlP
-         5bAda6xKGSMhAg6SXk/r/vpIt/WPZhZi2GXZAx88I2n/7+z5mH3QxFlB9V1aVIswc01q
-         AiwUogPTMk/7vClOB9z+aems+8PsnRRiB8gjXKJOr/nIXG+B0Sfe9dxugv0V2JEu3WfB
-         xxuF+bKhNoFU2TJBmmgXsL2RnpZ5plultnfsNVWy5BNsPyiHc9r8Vhf/Lr/50HRQi9Zc
-         H1qjIJiZi7gEmjH8B3P8lQ5R/KMxD6SjLfIuMa99X4RrmF4oCxv3POAOpmFixVL9ubJc
-         pu9w==
-X-Received: by 10.195.13.104 with SMTP id ex8mr42705938wjd.12.1425170364583;
-        Sat, 28 Feb 2015 16:39:24 -0800 (PST)
+        h=from:to:cc:subject:date:message-id;
+        bh=fojvmvL1LaX4nYmqcW33PWnzPCpsfYjcF298wIy6bHU=;
+        b=zdxzqv6CgNt4IVv0iueMV6aKIu6OpFS+UouhptRCunxbBvSp+CnKtnEmzUYWnvxVhH
+         ej93u/JDJLNgWPUhwtPkP6dzA7zAEd5kcNnp7G69ak4EIBllAxCr/tnN7SGBS5+TvuwN
+         GeBUVjUS3KQf1KoMh+QUKBnVQdU99ZtlDhXIbYA1bO2DgkUViXDsuEnVe3q++rp/X4Do
+         GBshqmRp468xdTqU6VBOebcDaOJ7tEYyMirrJ2xaVcABZIftfN6OiFdHz9zkTs3NjueO
+         G5ZzmNKWuT3ob/khCq33K0lyylUQUD974+kWQK2vCc91AtTzO5klW1F5BPoVMP9tIA9+
+         rFtQ==
+X-Received: by 10.181.12.5 with SMTP id em5mr11298085wid.84.1425077874049;
+        Fri, 27 Feb 2015 14:57:54 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id yy9sm12310703wjc.20.2015.02.28.16.39.23
+        by mx.google.com with ESMTPSA id v6sm4737044wix.8.2015.02.27.14.57.52
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 16:39:23 -0800 (PST)
+        Fri, 27 Feb 2015 14:57:53 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 6ED9163424; Sun,  1 Mar 2015 03:39:22 +0300 (AST)
+	id E2A0460CA0; Sat, 28 Feb 2015 01:57:49 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v2] Staging: lustre: Fix line over 80 characters
-Date: Sun,  1 Mar 2015 03:39:21 +0300
-Message-Id: <1425170361-22321-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH] Staging: lustre: lustre: ldlm: Fix line over 80 characters
+Date: Sat, 28 Feb 2015 01:57:48 +0300
+Message-Id: <1425077868-27905-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1425077868-27905-1-git-send-email-hamohammed.sa@gmail.com>
-References: <1425077868-27905-1-git-send-email-hamohammed.sa@gmail.com>
 
 This patch splits line over 80 characters addressing checkpatch.pl
 warning.
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
-v2: edit subject line
-
  drivers/staging/lustre/lustre/ldlm/ldlm_request.c | 32 +++++++++++++++--------
  1 file changed, 21 insertions(+), 11 deletions(-)
 
