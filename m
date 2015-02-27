@@ -1,63 +1,64 @@
 X-GM-THRID: 4349090594816
-X-Received: by 10.180.83.168 with SMTP id r8mr352832wiy.6.1425032810981;
-        Fri, 27 Feb 2015 02:26:50 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,8f6db519be982188
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.95.67 with SMTP id di3mr451478wjb.0.1425031323137;
+        Fri, 27 Feb 2015 02:02:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.78.101 with SMTP id a5ls92439wix.6.canary; Fri, 27 Feb
- 2015 02:26:50 -0800 (PST)
-X-Received: by 10.194.11.70 with SMTP id o6mr1944487wjb.6.1425032810188;
-        Fri, 27 Feb 2015 02:26:50 -0800 (PST)
+Received: by 10.152.21.233 with SMTP id y9ls142769lae.9.gmail; Fri, 27 Feb
+ 2015 02:02:02 -0800 (PST)
+X-Received: by 10.112.146.65 with SMTP id ta1mr1929394lbb.19.1425031322656;
+        Fri, 27 Feb 2015 02:02:02 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id ev8si76747wib.3.2015.02.27.02.26.50
+Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
+        by gmr-mx.google.com with ESMTPS id o3si75909wib.2.2015.02.27.02.02.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:26:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        Fri, 27 Feb 2015 02:02:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x229.google.com with SMTP id y19so19071925wgg.13
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:26:50 -0800 (PST)
+Received: by mail-we0-x22f.google.com with SMTP id q59so18967402wes.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:02:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=YRkcVu7DUws+zMbI8abfTda5KCo+GWxbztY2lw8eEsc=;
-        b=PvBwqt+Zx+RD57j6DcNi7MRZ6RwkO97bXCpCw7aqGRZy+fRy0rFb9nsxi6VE8axYLW
-         DrSnOmKR1CVPpA40kzl+n3uTXHljitKn7sCZNA9OqW0mPZxZBYLshnTydEFFvez/qzZM
-         bruroH6Rgb1mtrEgbO3NAGjyXdmyjoqdeDySXauckAgl772WdneGmN/vohSeYF3TWaJz
-         Z9g1VhwVXfaYPV2AoFTWcuPGuFCHPR/tg/c6wwiCOeQG6bS6MvpYr/Yki2Q2qCl30955
-         OXdGAK7YvxXcdeoW+LGsbAzLtIlrfN/6bhxpt0bZEc/mGWjNUejrcuaeZALeLEck5Th2
-         VqvQ==
-X-Received: by 10.194.47.201 with SMTP id f9mr8019519wjn.17.1425032810084;
-        Fri, 27 Feb 2015 02:26:50 -0800 (PST)
+        bh=pEIVONhFyfDSJ2EUDcHAP+8M7oXudjNbzlTPgVPQjwI=;
+        b=ME2E/iWfgD0rF37lkqCCbzvzcidgq63fWahgghi6Poqp9N0/8+DpwBzZSaEiXKJLG6
+         rGbd862+gkmKhyAOe0hXOGzFSn5RtRG/b78RLY5AJL+pitEyzY1mV7tWJMfb1qa6C65t
+         hwk8E2r3T6AdotsAaGyNm3iE7iS9Q4RYA6e2gFgeUyz5mXQtmB4AUwkjb10E20qZHb6n
+         uUkWb1uu6y1+hdDzlAbyfcMpeja3/Dygxolqo/yPArTz7S2kDhYcuoJ7eOB71ffw/puA
+         gLJboQZqiMHn9WX0EZuxmcI6jYizdnooZRQ/kG2OIRIhNHffwtYa7zRG6+gz6FC5kagi
+         vp3A==
+X-Received: by 10.194.192.104 with SMTP id hf8mr26263374wjc.44.1425031322538;
+        Fri, 27 Feb 2015 02:02:02 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id w4sm1871508wix.20.2015.02.27.02.26.48
+        by mx.google.com with ESMTPSA id bo1sm5223226wjb.15.2015.02.27.02.01.58
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:26:49 -0800 (PST)
+        Fri, 27 Feb 2015 02:02:01 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id C6ADC6337C; Fri, 27 Feb 2015 13:26:47 +0300 (AST)
+	id D75B36337C; Fri, 27 Feb 2015 13:01:55 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v8 0/5] Staging: emxx_udc: Fix checkpatch.pl warnings
-Date: Fri, 27 Feb 2015 13:26:45 +0300
-Message-Id: <1425032805-20648-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH v7 0/5] Staging: emxx_udc: Fix checkpatch.pl warnings
+Date: Fri, 27 Feb 2015 13:01:54 +0300
+Message-Id: <cover.1425030785.git.hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1425030785.git.hamohammed.sa@gmail.com>
-References: <cover.1425030785.git.hamohammed.sa@gmail.com>
-
+In-Reply-To: <1425030509-19676-1-git-send-email-hamohammed.sa@gmail.com>
+References: <1425030509-19676-1-git-send-email-hamohammed.sa@gmail.com>
 
 This patchset fixes the following coding style issues found by checkpatch.pl:
 Do not add new typedefs.
 Use of volatile is usually wrong.
 printk(KERNEL_ERR not prefered.
 
-Changes in v8:
-- Edit first patch subject line.
 Changes in v7:
-- Add missing first patch in v6: removal of typedefs and volatile. 
+- Add missing first patch in v6 removal of typedefs and volatile.
 Changes in v6:
 - Merged two patches into one: remove typedef and volatile.
 - Justified the use of pr_err instead of dev_err.
@@ -73,7 +74,7 @@ Changes in v2:
 - First patch reversion
 
 Haneen Mohammed (5):
-  Staging: emxx_udc: Fix do not add new typedefs and remove volatile
+  Staging: emxx_udc: Fix do not add new typedefs remove volatile
   Staging: emxx_udc: Replace custom printk macro ERR with pr_err
   Staging: emxx_udc: Replace custom printk macro ERR with dev_err
   Staging: emxx_udc: Remove custom printk macro ERR
