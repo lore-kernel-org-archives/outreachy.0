@@ -1,64 +1,56 @@
 X-GM-THRID: 4349090594816
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,8f6db519be982188
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.95.67 with SMTP id di3mr451478wjb.0.1425031323137;
-        Fri, 27 Feb 2015 02:02:03 -0800 (PST)
+X-Received: by 10.152.36.132 with SMTP id q4mr1917076laj.6.1425030514296;
+        Fri, 27 Feb 2015 01:48:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.21.233 with SMTP id y9ls142769lae.9.gmail; Fri, 27 Feb
- 2015 02:02:02 -0800 (PST)
-X-Received: by 10.112.146.65 with SMTP id ta1mr1929394lbb.19.1425031322656;
-        Fri, 27 Feb 2015 02:02:02 -0800 (PST)
+Received: by 10.180.11.97 with SMTP id p1ls81877wib.51.gmail; Fri, 27 Feb 2015
+ 01:48:33 -0800 (PST)
+X-Received: by 10.181.13.236 with SMTP id fb12mr324267wid.1.1425030513933;
+        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id o3si75909wib.2.2015.02.27.02.02.02
+Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
+        by gmr-mx.google.com with ESMTPS id i7si82935wif.0.2015.02.27.01.48.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:02:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id q59so18967402wes.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:02:02 -0800 (PST)
+Received: by wggy19 with SMTP id y19so18837824wgg.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 01:48:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=pEIVONhFyfDSJ2EUDcHAP+8M7oXudjNbzlTPgVPQjwI=;
-        b=ME2E/iWfgD0rF37lkqCCbzvzcidgq63fWahgghi6Poqp9N0/8+DpwBzZSaEiXKJLG6
-         rGbd862+gkmKhyAOe0hXOGzFSn5RtRG/b78RLY5AJL+pitEyzY1mV7tWJMfb1qa6C65t
-         hwk8E2r3T6AdotsAaGyNm3iE7iS9Q4RYA6e2gFgeUyz5mXQtmB4AUwkjb10E20qZHb6n
-         uUkWb1uu6y1+hdDzlAbyfcMpeja3/Dygxolqo/yPArTz7S2kDhYcuoJ7eOB71ffw/puA
-         gLJboQZqiMHn9WX0EZuxmcI6jYizdnooZRQ/kG2OIRIhNHffwtYa7zRG6+gz6FC5kagi
-         vp3A==
-X-Received: by 10.194.192.104 with SMTP id hf8mr26263374wjc.44.1425031322538;
-        Fri, 27 Feb 2015 02:02:02 -0800 (PST)
+        h=from:to:cc:subject:date:message-id;
+        bh=E4pTxQxBUn2sxH5UgnhqEBnj//OsEOXfe1jf5n7xU3A=;
+        b=Bxv1PZg2IDIuPSqZ41ZDRoDjVHyUBHbyUpXWhll6ihQEFAow2uEb5aVF3yFx4FmG7m
+         ttd+CHayVx1dzIk9b4vIsWrT4pqjZm5ncdAoaWgVHo0nHmR+d6pepfXOp6pAzvKJNhPb
+         4LUH1gRVdcEyvbE3LFkfCkYnPKpdE5J03Qki2SHZvpCOtRzqK9pjMAVW9U+DOdupiz3J
+         N67uWVR8yM6AIIJsB5ECYS4igA0/InmuHWb1xixEx8nABABCazPLwCH5/I4PpnCWhjbj
+         UFZ+G9OXkazOn2L+2gvO9dyUimV0LpkLTRc0S0uDdOsooOSjYqE5UQOQLsyx6HulB1sa
+         GKnQ==
+X-Received: by 10.194.21.137 with SMTP id v9mr25338253wje.140.1425030513845;
+        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id bo1sm5223226wjb.15.2015.02.27.02.01.58
+        by mx.google.com with ESMTPSA id q6sm2024020wix.13.2015.02.27.01.48.32
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:02:01 -0800 (PST)
+        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id D75B36337C; Fri, 27 Feb 2015 13:01:55 +0300 (AST)
+	id 1DA5E6337C; Fri, 27 Feb 2015 12:48:30 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v7 0/5] Staging: emxx_udc: Fix checkpatch.pl warnings
-Date: Fri, 27 Feb 2015 13:01:54 +0300
-Message-Id: <cover.1425030785.git.hamohammed.sa@gmail.com>
+Subject: [PATCH v6 0/4] Staging: emxx_udc: Fix checkpatch.pl warnings
+Date: Fri, 27 Feb 2015 12:48:29 +0300
+Message-Id: <1425030509-19676-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1425030509-19676-1-git-send-email-hamohammed.sa@gmail.com>
-References: <1425030509-19676-1-git-send-email-hamohammed.sa@gmail.com>
 
 This patchset fixes the following coding style issues found by checkpatch.pl:
 Do not add new typedefs.
 Use of volatile is usually wrong.
 printk(KERNEL_ERR not prefered.
 
-Changes in v7:
-- Add missing first patch in v6 removal of typedefs and volatile.
 Changes in v6:
 - Merged two patches into one: remove typedef and volatile.
 - Justified the use of pr_err instead of dev_err.
@@ -73,16 +65,15 @@ Changes in v3:
 Changes in v2:
 - First patch reversion
 
-Haneen Mohammed (5):
-  Staging: emxx_udc: Fix do not add new typedefs remove volatile
+Haneen Mohammed (4):
   Staging: emxx_udc: Replace custom printk macro ERR with pr_err
   Staging: emxx_udc: Replace custom printk macro ERR with dev_err
   Staging: emxx_udc: Remove custom printk macro ERR
   Staging: emxx_udc: Clean dev_err() logging
 
- drivers/staging/emxx_udc/emxx_udc.c | 142 ++++++++++++++++++------------------
- drivers/staging/emxx_udc/emxx_udc.h |  27 ++++---
- 2 files changed, 84 insertions(+), 85 deletions(-)
+ drivers/staging/emxx_udc/emxx_udc.c | 82 ++++++++++++++++++-------------------
+ drivers/staging/emxx_udc/emxx_udc.h |  1 -
+ 2 files changed, 41 insertions(+), 42 deletions(-)
 
 -- 
 1.9.1
