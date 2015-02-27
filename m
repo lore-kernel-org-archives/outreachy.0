@@ -1,74 +1,79 @@
-X-GM-THRID: 4711413448704
-X-Received: by 10.66.161.36 with SMTP id xp4mr10019518pab.36.1425059952541;
-        Fri, 27 Feb 2015 09:59:12 -0800 (PST)
+X-GM-THRID: 4672151617536
+X-Received: by 10.43.101.4 with SMTP id cy4mr14802538icc.31.1425069398692;
+        Fri, 27 Feb 2015 12:36:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.164 with SMTP id c33ls699742qgf.66.gmail; Fri, 27 Feb
- 2015 09:59:12 -0800 (PST)
-X-Received: by 10.236.41.73 with SMTP id g49mr15330432yhb.57.1425059952280;
-        Fri, 27 Feb 2015 09:59:12 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id xj4si553133pbc.2.2015.02.27.09.59.12
+Received: by 10.107.7.89 with SMTP id 86ls91968ioh.102.gmail; Fri, 27 Feb 2015
+ 12:36:38 -0800 (PST)
+X-Received: by 10.50.92.10 with SMTP id ci10mr4828327igb.8.1425069398511;
+        Fri, 27 Feb 2015 12:36:38 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
+        by gmr-mx.google.com with ESMTPS id bx1si599429pdb.2.2015.02.27.12.36.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 09:59:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Fri, 27 Feb 2015 12:36:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padbj1 with SMTP id bj1so24403967pad.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 09:59:12 -0800 (PST)
+Received: by mail-pd0-x235.google.com with SMTP id g10so23593997pdj.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 12:36:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=wH5NVtjUJSnCle3hjqMDW75e1tzXlbZ2ZvuYRQ+lFXo=;
-        b=uSQJlgPAXiQba7MV4Qvfj9P9cDJ0s39gNnO8exaRSsEtqbjAgLyRFWYg/vg88wKeNw
-         CqYeJQjGlijzUYSyTCy7RoHB6NEiMRScHjw32PNRIqeX1TGquFg/OtIkVkqfK/KVQCSX
-         7zpz1HDiRjiIHgTYelxumhSNFfFcyGQAVwlePhxaVfYPj8hfTEzwGhmBYgQLzoecp/op
-         MnJ6OtzUo1FJN1vvlUELMrKNGd9/IvRguw5Zymy/jtYPQJ7RccdmS1iwZgXBhjAD3Y58
-         83jhEL8CWrui7lvkFdR3XLbyilgUc/AmcMEGatKTjdSDyxE2ZUFz+EKL6cZqTgCdGfxn
-         +WgQ==
-X-Received: by 10.66.237.35 with SMTP id uz3mr26326243pac.46.1425059952129;
-        Fri, 27 Feb 2015 09:59:12 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id pr5sm4653145pbb.1.2015.02.27.09.59.09
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=wicqJ+n+JaICR58tFAWjPBUP/CGSmBGlnFgDO7yx+do=;
+        b=h37f/dSM1gvr22ibsaizHRSaRX9YvrtQuuZpJpwZOWITZpCfl5+pS7sbKXT2oiqyIi
+         OeaxqDPvMjjGfZPMteWfjBZqacHasXKBp5eaW4ODLt1b87W/oxTaJkjIQn13xi0Dn6kO
+         AliyDdOnXEDvnHnVSB69H/+LdXZ8ULPzwzO2K+4uXfqYJM8j4H0hU9fkqtZYt7VMmN/c
+         av/w8T0p6NSvjEDo3OFEZzb/3Wrd3udojOlIuM9lgp9DuwbYPXsplc59Kl8xysHiq4mY
+         cN0r5k0jN4BpqozLTStyo4ajDHSEu80vgzChnf2CWaGChrBQlK+gEzeiEVPhJWe7wiQC
+         Llfw==
+X-Received: by 10.66.151.5 with SMTP id um5mr10301346pab.43.1425069398431;
+        Fri, 27 Feb 2015 12:36:38 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from nizamkari ([61.16.142.166])
+        by mx.google.com with ESMTPSA id c2sm4834622pdi.25.2015.02.27.12.36.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 09:59:10 -0800 (PST)
-Date: Fri, 27 Feb 2015 23:28:49 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        Fri, 27 Feb 2015 12:36:37 -0800 (PST)
+Date: Sat, 28 Feb 2015 02:07:50 +0530
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Refine if condition
-Message-ID: <20150227175849.GA20418@gmail.com>
+Subject: [PATCH v2 2/2] staging: rtl8188eu: Add blank line after declarations
+Message-ID: <3e59189e1a13f357e5eef6eaf28628b98b036db6.1425069015.git.navyasri.tech@gmail.com>
+References: <cover.1425069015.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1425069015.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Variable bound takes maximum value 8 so the if condition
-for odd i is made more compact.
+This patch removes the following checkpatch.pl warning:
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+WARNING: Missing a blank line after declarations
+
+Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/phy.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+     -None in this patch of the set.
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 6af72a4..3d0e447 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -1038,7 +1038,7 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
- 		bound = 4;
+drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+index b9e1a61..7e599bc 100644
+--- a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
++++ b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+@@ -530,6 +530,7 @@ void usb_read_port_cancel(struct adapter *padapter)
+ {
+ 	int i;
+ 	struct recv_buf *precvbuf;
++
+ 	precvbuf = (struct recv_buf *)padapter->recvpriv.precv_buf;
  
- 	for (i = 0; i < bound; i++) {
--		if ((i == 1) || (i == 3) || (i == 5) || (i == 7)) {
-+		if (i%2 == 1) {
- 			if ((resulta[c1][i] & 0x00000200) != 0)
- 				tmp1 = resulta[c1][i] | 0xFFFFFC00;
- 			else
+ 	DBG_88E("%s\n", __func__);
 -- 
 1.9.1
 
