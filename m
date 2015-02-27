@@ -1,52 +1,48 @@
 X-GM-THRID: 4475579269120
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9816ab370498a2c8
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.11.34 with SMTP id n2mr455615wib.2.1425042180879;
-        Fri, 27 Feb 2015 05:03:00 -0800 (PST)
+X-Received: by 10.152.6.232 with SMTP id e8mr2049526laa.2.1425042143304;
+        Fri, 27 Feb 2015 05:02:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.99.229 with SMTP id et5ls111695wib.40.canary; Fri, 27 Feb
- 2015 05:03:00 -0800 (PST)
-X-Received: by 10.194.201.10 with SMTP id jw10mr2044092wjc.3.1425042180692;
-        Fri, 27 Feb 2015 05:03:00 -0800 (PST)
+Received: by 10.180.99.71 with SMTP id eo7ls116831wib.21.canary; Fri, 27 Feb
+ 2015 05:02:23 -0800 (PST)
+X-Received: by 10.194.95.67 with SMTP id di3mr570865wjb.0.1425042142999;
+        Fri, 27 Feb 2015 05:02:22 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
-        by gmr-mx.google.com with ESMTPS id cl5si109187wib.3.2015.02.27.05.03.00
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id by11si130447wib.1.2015.02.27.05.02.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 05:03:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
+        Fri, 27 Feb 2015 05:02:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x235.google.com with SMTP id a1so20336420wgh.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:03:00 -0800 (PST)
+Received: by widex7 with SMTP id ex7so35474wid.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:02:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=3oTDHjimjf7bNWrmoMr+SdQXgALvO0xvXNOJ0+ihhGI=;
-        b=o/Sn4Q9TtiuxePJfT/db06TIo8Tua4p/2IPN+LS/gQrxyguxENDwGqyiosluERixke
-         p6Bu2tEmovmQg7ZBIT0Iu6CTzumXKutHrWOaEZwE9J4ZlLNJc1RzkYx7ES6sg+TwZd8R
-         DUZAMVJ0En0RyhFvGmXiZo+1QpVSt9v7TyGnfKzSRLGHEI61ZKq/rcSi3kMsiziQymbe
-         EAEuQD35AHqnM68URCpx1LzDsycMJp7auegi2jFmvpmQtyIdeEPIzXBBYwEZPPaMx79X
-         MwZE1hc+O2jucZCRtl7TXK/CJxxErxgwyk4C5UC9vVG837DPulXqRDo434mB0AhJ04Zv
-         s12A==
-X-Received: by 10.194.158.39 with SMTP id wr7mr28002330wjb.118.1425042180626;
-        Fri, 27 Feb 2015 05:03:00 -0800 (PST)
+        bh=yUt5KHh00WPqdis9malYrxLzINjrwzXL/MsjCs1ZRNI=;
+        b=w3chkEXRBL0y+KaZjTvIApJobs2ZCBh5AvMp5gDnMzP1KEwwXP6JI5QYF87zC6lIMA
+         Nn6W4P1hHLhGUGySl0WrOmuzXXAuSFV7GiI+o3BDI1XNR/vYwocaqNZ6wTRkAqjdVQ+L
+         NROhsA1pRbIiwc5RSN1GDoVXe4l8k5UUN0CykyQHU8WaOlHxh9lBDL0Zz/IDieVWutsi
+         SuMWZ5lNtg4Xv5VnCNW3RNJM2oCfKj90KttjdR/sduAqCW9ervXCKzax3XBDqbaWCxS9
+         2QlHtADjoc8PoObUL6EuFX+vK/T55aFlEDIN6aR3qQgT9xXKU7VgqKZXKbqoOsA1nvpF
+         JEVA==
+X-Received: by 10.194.57.206 with SMTP id k14mr3599997wjq.1.1425042142914;
+        Fri, 27 Feb 2015 05:02:22 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.192.222])
-        by mx.google.com with ESMTPSA id cb9sm2741855wib.10.2015.02.27.05.02.58
+        by mx.google.com with ESMTPSA id lj13sm2752187wic.9.2015.02.27.05.02.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 05:02:59 -0800 (PST)
-Date: Fri, 27 Feb 2015 15:02:54 +0200
+        Fri, 27 Feb 2015 05:02:22 -0800 (PST)
+Date: Fri, 27 Feb 2015 15:02:18 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 14/24] staging: lustre: lov: remove unused variable
-Message-ID: <8f04ef8c0696cbc93f0ec76b4860354d50fd0b88.1425035010.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 13/24] staging: lustre: mdc: remove unused variable
+Message-ID: <6d810f755db18473df909a705c5258025103e33f.1425035010.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -71,34 +67,31 @@ identifier len,f;
 -len =
 +return
         f(...);
--return len;																																		Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
----
- drivers/staging/lustre/lustre/lov/lov_obd.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+-return len;
 
-diff --git a/drivers/staging/lustre/lustre/lov/lov_obd.c b/drivers/staging/lustre/lustre/lov/lov_obd.c
-index 2c6c558..9960b45 100644
---- a/drivers/staging/lustre/lustre/lov/lov_obd.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_obd.c
-@@ -314,7 +314,7 @@ static int lov_disconnect(struct obd_export *exp)
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+---
+ drivers/staging/lustre/lustre/mdc/mdc_locks.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/mdc/mdc_locks.c b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+index d1c224e..b72319b 100644
+--- a/drivers/staging/lustre/lustre/mdc/mdc_locks.c
++++ b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+@@ -176,12 +176,10 @@ int mdc_cancel_unused(struct obd_export *exp,
  {
+ 	struct ldlm_res_id res_id;
  	struct obd_device *obd = class_exp2obd(exp);
- 	struct lov_obd *lov = &obd->u.lov;
--	int i, rc;
-+	int i;
+-	int rc;
  
- 	if (!lov->lov_tgts)
- 		goto out;
-@@ -340,8 +340,7 @@ static int lov_disconnect(struct obd_export *exp)
- 	obd_putref(obd);
- 
- out:
--	rc = class_disconnect(exp); /* bz 9811 */
+ 	fid_build_reg_res_name(fid, &res_id);
+-	rc = ldlm_cli_cancel_unused_resource(obd->obd_namespace, &res_id,
++	return ldlm_cli_cancel_unused_resource(obd->obd_namespace, &res_id,
+ 					     policy, mode, flags, opaque);
 -	return rc;
-+	return class_disconnect(exp);
  }
  
- /* Error codes:
+ int mdc_null_inode(struct obd_export *exp,
 -- 
 1.9.3
 
