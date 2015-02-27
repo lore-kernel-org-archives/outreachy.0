@@ -1,107 +1,77 @@
-X-GM-THRID: 3765738405888
+X-GM-THRID: 4474044153856
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,ffdd31ec36495189,start
+X-Google-Thread: 9ca63f596c,ee7b3fe2dc06ac74,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.135.197 with SMTP id pu5mr7463213obb.32.1424954665560;
-        Thu, 26 Feb 2015 04:44:25 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr2010549lbc.3.1425041149166;
+        Fri, 27 Feb 2015 04:45:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.92.67 with SMTP id ck3ls125461igb.14.gmail; Thu, 26 Feb
- 2015 04:44:25 -0800 (PST)
-X-Received: by 10.42.24.72 with SMTP id v8mr1521669icb.14.1424954665386;
-        Thu, 26 Feb 2015 04:44:25 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
-        by gmr-mx.google.com with ESMTPS id hs7si99206pad.1.2015.02.26.04.44.25
+Received: by 10.180.8.193 with SMTP id t1ls108467wia.30.canary; Fri, 27 Feb
+ 2015 04:45:47 -0800 (PST)
+X-Received: by 10.194.142.174 with SMTP id rx14mr2031921wjb.4.1425041147947;
+        Fri, 27 Feb 2015 04:45:47 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wg0-x243.google.com (mail-wg0-x243.google.com. [2a00:1450:400c:c00::243])
+        by gmr-mx.google.com with ESMTPS id by11si126880wib.1.2015.02.27.04.45.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 04:44:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
+        Fri, 27 Feb 2015 04:45:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::243 as permitted sender) client-ip=2a00:1450:400c:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::243 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x233.google.com with SMTP id fl12so12807639pdb.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 04:44:25 -0800 (PST)
+Received: by mail-wg0-x243.google.com with SMTP id k14so4961540wgh.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 04:45:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+h4jSvHueaOBiFbtIZfv/79CFceMGM8irQ1ESC/oKdk=;
-        b=WAbO6Dp9Wj76BmWk6zI+BeAQfGAqo/mEuf28qLplL/vM9CtHviW9ab5g9TfHniljf+
-         9W7HBKVxv77kI+/63WM8np3ozG0vp37IxrkxMGXpETWtJweE0VtudFZE1xhYEDkkvYSM
-         pLmzgFDghu+L0sPoMVJQfjUHHLiBMY72OLaRMp4rFnOedV1lxlvFTYiJlNjRmUgu8NLT
-         pNXpGuGSO+ZdtxoJsz2zyBNTHrBy4aZOxu7azAKiULzditcHkIbKRQAnCdEZ4Ayracl/
-         hX9YW0rYTlW82W7xAJoBd9uLtRSuqm1saK0UybO3MOO74FPr/u+B+Btcln9FAZnD8+ni
-         G9MA==
-X-Received: by 10.68.245.196 with SMTP id xq4mr14654981pbc.124.1424954665270;
-        Thu, 26 Feb 2015 04:44:25 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id pr5sm1025165pbb.1.2015.02.26.04.44.22
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 04:44:23 -0800 (PST)
-Date: Thu, 26 Feb 2015 18:14:02 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=0OvEPw7IFwMMMwhaY+gGfDxQIFQdChjRLB1BhAjxn5A=;
+        b=zNJ4ICYMFk0u19P673ePZz9Lv7vUEziyNzqDnxJw0241GVYIigRKBeTHeUeWy9rK47
+         2+JuZsPSH2h4ooMc4joWTpfoI8q+MM4u5kaVGvu90Q0Nhf/kisDCvStxa4vPNDnnraDc
+         jMpTY2HmaURQnIvP0mNzsyi/XEVgCxKtCjYw4k2Zzc83InfP0qrDKx7G9avpGdxNr9cl
+         4NESdpMUYghvFgTXWcDs36pazIPuh81EwrX9qXFOAexCdp9KOSISkwgwtVorjsF/dmd7
+         xG7YgaZnCIFhuEjHR5KtZDZ7pDqAplwowy6brNd+u+LU6B1N998I8Zn7pnQaiWFMqyFA
+         mmdw==
+X-Received: by 10.194.85.129 with SMTP id h1mr27661781wjz.147.1425041147827;
+        Fri, 27 Feb 2015 04:45:47 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.178.157.65])
+        by mx.google.com with ESMTPSA id kr5sm5857002wjc.1.2015.02.27.04.45.46
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Feb 2015 04:45:47 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Replace if-else block with switch-case
-Message-ID: <20150226124402.GA21558@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: lustre: lustre: osc: Insert missing space before '|'
+Date: Fri, 27 Feb 2015 14:45:41 +0200
+Message-Id: <1425041141-15311-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Replace if-else block with switch-case to make it more compact
-and increase readability.
+Insert missing space before '|' to improve readability.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+This Error found with checkpatch.pl
+
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/bb_cfg.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ drivers/staging/lustre/lustre/osc/osc_request.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-index 1e963bf..baebe35 100644
---- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
-+++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-@@ -552,21 +552,29 @@ static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitm
- 	}
- }
- 
--static void rtl_addr_delay(struct adapter *adapt, u32 addr, u32 bit_mask, u32 data)
-+static void rtl_addr_delay(struct adapter *adapt,
-+			u32 addr, u32 bit_mask, u32 data)
+diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
+index b9450b9..cce7d9d 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_request.c
++++ b/drivers/staging/lustre/lustre/osc/osc_request.c
+@@ -1165,8 +1165,8 @@ static int check_write_rcs(struct ptlrpc_request *req,
+ static inline int can_merge_pages(struct brw_page *p1, struct brw_page *p2)
  {
--	if (addr == 0xfe) {
-+	switch (addr) {
-+	case 0xfe:
- 		msleep(50);
--	} else if (addr == 0xfd) {
-+		break;
-+	case 0xfd:
- 		mdelay(5);
--	} else if (addr == 0xfc) {
-+		break;
-+	case 0xfc:
- 		mdelay(1);
--	} else if (addr == 0xfb) {
-+		break;
-+	case 0xfb:
- 		udelay(50);
--	} else if (addr == 0xfa) {
-+		break;
-+	case 0xfa:
- 		udelay(5);
--	} else if (addr == 0xf9) {
-+		break;
-+	case 0xf9:
- 		udelay(1);
--	} else{
-+		break;
-+	default:
- 		store_pwrindex_offset(adapt, addr, bit_mask, data);
- 	}
- }
+ 	if (p1->flag != p2->flag) {
+-		unsigned mask = ~(OBD_BRW_FROM_GRANT| OBD_BRW_NOCACHE|
+-				  OBD_BRW_SYNC|OBD_BRW_ASYNC|OBD_BRW_NOQUOTA);
++		unsigned mask = ~(OBD_BRW_FROM_GRANT | OBD_BRW_NOCACHE |
++				  OBD_BRW_SYNC | OBD_BRW_ASYNC|OBD_BRW_NOQUOTA);
+ 
+ 		/* warn if we try to combine flags that we don't know to be
+ 		 * safe to combine */
 -- 
 1.9.1
 
