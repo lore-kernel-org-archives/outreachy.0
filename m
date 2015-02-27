@@ -1,48 +1,48 @@
 X-GM-THRID: 4475579269120
-X-Received: by 10.112.159.227 with SMTP id xf3mr2068257lbb.11.1425041883605;
-        Fri, 27 Feb 2015 04:58:03 -0800 (PST)
+X-Received: by 10.112.131.106 with SMTP id ol10mr2073400lbb.20.1425041838891;
+        Fri, 27 Feb 2015 04:57:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.242.132 with SMTP id wq4ls162775lac.30.gmail; Fri, 27 Feb
- 2015 04:58:03 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr2048889lab.0.1425041883150;
-        Fri, 27 Feb 2015 04:58:03 -0800 (PST)
+Received: by 10.152.8.169 with SMTP id s9ls169898laa.8.gmail; Fri, 27 Feb 2015
+ 04:57:17 -0800 (PST)
+X-Received: by 10.112.144.130 with SMTP id sm2mr2069686lbb.9.1425041837403;
+        Fri, 27 Feb 2015 04:57:17 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
-        by gmr-mx.google.com with ESMTPS id by11si129398wib.1.2015.02.27.04.58.03
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id ew5si115706wid.1.2015.02.27.04.57.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 04:58:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
+        Fri, 27 Feb 2015 04:57:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghl2 with SMTP id l2so20304540wgh.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 04:58:03 -0800 (PST)
+Received: by mail-wi0-x230.google.com with SMTP id em10so3232wid.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 04:57:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=egeKquzAbTZpup3r6qQu5cIbIV1pPohx1D9uOM8Lfsk=;
-        b=ByBAEJpNAnbymPAS9kMghB4TMve2uctRsbBGMOU2h9FcFweHJAn88HyTXUoYfgflhS
-         KALtHiOmA347WKXFGJWybvfpYiTwjm9L9WuWGai1IBlCx+lcoVSJ0SSA+pJpEmBhtDgp
-         tn55ZbInNG1qMrho+I0Cz8j8JQGWiVreN9D4VwUheHmKhGT1xLUVqBKd79WyykYIquXh
-         PfV6TJJUIyn+hbBxMwQjdaM4mJrsnPhJb/0zx9z0Brqb6gQcdq2Mc4XdoB41Q2djbOIG
-         XS9Cpf7oDmqq1O1PvGcjNYpIIBj4stQhVqZOlwxwGgwNDiWys3M4hqS41q3PpIsbzlBD
-         rtoA==
-X-Received: by 10.194.110.69 with SMTP id hy5mr27899145wjb.121.1425041883043;
-        Fri, 27 Feb 2015 04:58:03 -0800 (PST)
+        bh=T0BEAdEIU52N/Y4Kv/SJnw0H8E33QjZjDvbAPfd1EIQ=;
+        b=pLy6S3myx2GI9OEHiNj68oCDG873CAnekve2xg+aavbPCnWLeJdlIhprjNDReSwKm9
+         8xtnkm3X3YXT3T3mIYXFhFSSQp5vy0VtgQ5P/Dvs85q/hkq9PrIGYL3QkhPTPfWWFKdh
+         XyTIXu1MAydD/eSH/m42LX8B3QNHYRfUwKFlAe869xNMcGBOTGhe6g96afiJRzMcKzsG
+         roo1UT+USVVbhhPZgYnyht+YqOOLGHXrxjx4uYWN7j+qbwDymX+G0/Ckh7bV6NO7Oy7a
+         DjeOHacOh3d0Tp3GHTQKsPsA46isNmY0gCpSM3i3lhuOzgf300q/kT96iWjO4X6xfme1
+         8SYA==
+X-Received: by 10.194.184.148 with SMTP id eu20mr13990415wjc.77.1425041837309;
+        Fri, 27 Feb 2015 04:57:17 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.192.222])
-        by mx.google.com with ESMTPSA id s5sm3342050wia.1.2015.02.27.04.58.01
+        by mx.google.com with ESMTPSA id pp10sm5847614wjc.31.2015.02.27.04.57.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 04:58:02 -0800 (PST)
-Date: Fri, 27 Feb 2015 14:57:56 +0200
+        Fri, 27 Feb 2015 04:57:16 -0800 (PST)
+Date: Fri, 27 Feb 2015 14:57:10 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 10/24] staging: lustre: obdclass: remove unused variable
-Message-ID: <c0361b373b44e6a9ae9188bd0c83dcbd11b0d5ee.1425035008.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 09/24] staging: lustre: obdclass: remove unused variable
+Message-ID: <45397c854b9fd232608d939437b8fc2146ed5423.1425035007.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -71,26 +71,33 @@ identifier len,f;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/lustre/lustre/obdclass/dt_object.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/staging/lustre/lustre/obdclass/lu_object.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/obdclass/dt_object.c b/drivers/staging/lustre/lustre/obdclass/dt_object.c
-index e7be26e..b1eee0a 100644
---- a/drivers/staging/lustre/lustre/obdclass/dt_object.c
-+++ b/drivers/staging/lustre/lustre/obdclass/dt_object.c
-@@ -424,11 +424,8 @@ EXPORT_SYMBOL(dt_find_or_create);
- /* dt class init function. */
- int dt_global_init(void)
+diff --git a/drivers/staging/lustre/lustre/obdclass/lu_object.c b/drivers/staging/lustre/lustre/obdclass/lu_object.c
+index 83bf168..e104662 100644
+--- a/drivers/staging/lustre/lustre/obdclass/lu_object.c
++++ b/drivers/staging/lustre/lustre/obdclass/lu_object.c
+@@ -1769,8 +1769,6 @@ EXPORT_SYMBOL(lu_env_refill);
+ int lu_env_refill_by_tags(struct lu_env *env, __u32 ctags,
+ 			  __u32 stags)
  {
--	int result;
+-	int    result;
 -
- 	LU_CONTEXT_KEY_INIT(&dt_key);
--	result = lu_context_key_register(&dt_key);
--	return result;
-+	return lu_context_key_register(&dt_key);
- }
+ 	if ((env->le_ctx.lc_tags & ctags) != ctags) {
+ 		env->le_ctx.lc_version = 0;
+ 		env->le_ctx.lc_tags |= ctags;
+@@ -1781,9 +1779,7 @@ int lu_env_refill_by_tags(struct lu_env *env, __u32 ctags,
+ 		env->le_ses->lc_tags |= stags;
+ 	}
  
- void dt_global_fini(void)
+-	result = lu_env_refill(env);
+-
+-	return result;
++	return lu_env_refill(env);
+ }
+ EXPORT_SYMBOL(lu_env_refill_by_tags);
+ 
 -- 
 1.9.3
 
