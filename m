@@ -1,80 +1,77 @@
-X-GM-THRID: 4349090594816
-X-Received: by 10.152.36.132 with SMTP id q4mr1917076laj.6.1425030514296;
-        Fri, 27 Feb 2015 01:48:34 -0800 (PST)
+X-GM-THRID: 4764572057600
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,b88877f00e047cd1,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.43.146 with SMTP id l18mr13570447yhb.23.1425060725963;
+        Fri, 27 Feb 2015 10:12:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.11.97 with SMTP id p1ls81877wib.51.gmail; Fri, 27 Feb 2015
- 01:48:33 -0800 (PST)
-X-Received: by 10.181.13.236 with SMTP id fb12mr324267wid.1.1425030513933;
-        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
-        by gmr-mx.google.com with ESMTPS id i7si82935wif.0.2015.02.27.01.48.33
+Received: by 10.182.134.162 with SMTP id pl2ls301159obb.41.gmail; Fri, 27 Feb
+ 2015 10:12:05 -0800 (PST)
+X-Received: by 10.182.246.73 with SMTP id xu9mr13052778obc.17.1425060725753;
+        Fri, 27 Feb 2015 10:12:05 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id nt14si557586pab.2.2015.02.27.10.12.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
+        Fri, 27 Feb 2015 10:12:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wggy19 with SMTP id y19so18837824wgg.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 01:48:33 -0800 (PST)
+Received: by mail-pa0-x22b.google.com with SMTP id li10so8448091pab.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 10:12:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=E4pTxQxBUn2sxH5UgnhqEBnj//OsEOXfe1jf5n7xU3A=;
-        b=Bxv1PZg2IDIuPSqZ41ZDRoDjVHyUBHbyUpXWhll6ihQEFAow2uEb5aVF3yFx4FmG7m
-         ttd+CHayVx1dzIk9b4vIsWrT4pqjZm5ncdAoaWgVHo0nHmR+d6pepfXOp6pAzvKJNhPb
-         4LUH1gRVdcEyvbE3LFkfCkYnPKpdE5J03Qki2SHZvpCOtRzqK9pjMAVW9U+DOdupiz3J
-         N67uWVR8yM6AIIJsB5ECYS4igA0/InmuHWb1xixEx8nABABCazPLwCH5/I4PpnCWhjbj
-         UFZ+G9OXkazOn2L+2gvO9dyUimV0LpkLTRc0S0uDdOsooOSjYqE5UQOQLsyx6HulB1sa
-         GKnQ==
-X-Received: by 10.194.21.137 with SMTP id v9mr25338253wje.140.1425030513845;
-        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id q6sm2024020wix.13.2015.02.27.01.48.32
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 01:48:33 -0800 (PST)
-Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 1DA5E6337C; Fri, 27 Feb 2015 12:48:30 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=F+xvqvwyNIKxED2rvG07d+3l1ODRBNVIj9/DAlII3G8=;
+        b=vOPQ+W+nAARTYVzGvUWje/dSaP/a4ETi20UBTOJBgpcC9844Z2iV2yCq466HkEDqbx
+         nmocgpF/hyDhaMDwIae5D313nRIt9nwqeTWMt5NLbpe38VT4waHnx3ykDgDEi3RxG09W
+         Jb0COaw3RCCYznTNFeNOd8qNLRflzRDC3v+jSd35VTdpgugWKBz/6f/sVGoMZKUgqsdO
+         +otftcWCy+PkCzZgpfKCn4Bk1N/vMqsbyh3u3QbfbsH4GIRPsVUdHX5Hb2y0b2NMEaRp
+         RRdGRZNHtVD9SSG3EBcHpUpFDKu6/Ad94v6G/fVfDVENjSdpP90NfQ0drQZ7s4YZpmc4
+         PwdQ==
+X-Received: by 10.68.203.136 with SMTP id kq8mr25857094pbc.103.1425060725641;
+        Fri, 27 Feb 2015 10:12:05 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id jw8sm4555577pbc.73.2015.02.27.10.12.03
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 10:12:04 -0800 (PST)
+Date: Fri, 27 Feb 2015 23:41:43 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v6 0/4] Staging: emxx_udc: Fix checkpatch.pl warnings
-Date: Fri, 27 Feb 2015 12:48:29 +0300
-Message-Id: <1425030509-19676-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] Staging: rtl8188eu: Remove redundant if condition clause
+Message-ID: <20150227181143.GA25321@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patchset fixes the following coding style issues found by checkpatch.pl:
-Do not add new typedefs.
-Use of volatile is usually wrong.
-printk(KERNEL_ERR not prefered.
+Clause removed as !sim_bitmap is always true.
 
-Changes in v6:
-- Merged two patches into one: remove typedef and volatile.
-- Justified the use of pr_err instead of dev_err.
-Changes in v5:
-- Fix spelling mistakes
-- Justify the removal of volatile
-- Replaced pr_err with dev_err when possible
-Changes in v4:
-- Patchset broken into smaller pathces
-Changes in v3:
-- Create patchset from two patches
-Changes in v2:
-- First patch reversion
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+---
+ drivers/staging/rtl8188eu/hal/phy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Haneen Mohammed (4):
-  Staging: emxx_udc: Replace custom printk macro ERR with pr_err
-  Staging: emxx_udc: Replace custom printk macro ERR with dev_err
-  Staging: emxx_udc: Remove custom printk macro ERR
-  Staging: emxx_udc: Clean dev_err() logging
-
- drivers/staging/emxx_udc/emxx_udc.c | 82 ++++++++++++++++++-------------------
- drivers/staging/emxx_udc/emxx_udc.h |  1 -
- 2 files changed, 41 insertions(+), 42 deletions(-)
-
+diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+index 05379be..fa13139 100644
+--- a/drivers/staging/rtl8188eu/hal/phy.c
++++ b/drivers/staging/rtl8188eu/hal/phy.c
+@@ -1050,7 +1050,7 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
+ 		diff = (tmp1 > tmp2) ? (tmp1 - tmp2) : (tmp2 - tmp1);
+ 
+ 		if (diff > MAX_TOLERANCE) {
+-			if ((i == 2 || i == 6) && !sim_bitmap) {
++			if (i == 2 || i == 6) {
+ 				if (resulta[c1][i] + resulta[c1][i+1] == 0)
+ 					final_candidate[(i/4)] = c2;
+ 				else if (resulta[c2][i] + resulta[c2][i+1] == 0)
 -- 
 1.9.1
 
