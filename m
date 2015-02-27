@@ -1,86 +1,75 @@
-X-GM-THRID: 6332135193668747264
-X-Received: by 10.36.225.1 with SMTP id n1mr3995488ith.13.1474315112640;
-        Mon, 19 Sep 2016 12:58:32 -0700 (PDT)
+X-GM-THRID: 4554318938112
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,9993e5f8efad15bc,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.144.130 with SMTP id sm2mr2076109lbb.9.1425042362108;
+        Fri, 27 Feb 2015 05:06:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.29.135 with SMTP id 129ls2716523itj.19.canary; Mon, 19 Sep
- 2016 12:58:31 -0700 (PDT)
-X-Received: by 10.66.124.162 with SMTP id mj2mr14933357pab.25.1474315111658;
-        Mon, 19 Sep 2016 12:58:31 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-yb0-x244.google.com (mail-yb0-x244.google.com. [2607:f8b0:4002:c09::244])
-        by gmr-mx.google.com with ESMTPS id 63si913247ywe.1.2016.09.19.12.58.31
+Received: by 10.152.115.180 with SMTP id jp20ls146962lab.64.gmail; Fri, 27 Feb
+ 2015 05:06:01 -0800 (PST)
+X-Received: by 10.112.9.65 with SMTP id x1mr2079758lba.16.1425042361583;
+        Fri, 27 Feb 2015 05:06:01 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
+        by gmr-mx.google.com with ESMTPS id i7si116152wif.0.2015.02.27.05.06.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 12:58:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c09::244 as permitted sender) client-ip=2607:f8b0:4002:c09::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Feb 2015 05:06:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c09::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yb0-x244.google.com with SMTP id u125so5198769ybg.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 12:58:31 -0700 (PDT)
+Received: by mail-we0-x233.google.com with SMTP id k11so20266370wes.11
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:06:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=KFsTgfQVsevmZhycOuEx2UU1t4qHfT2XydeuEn+vels=;
-        b=P5mB//9IciunEEZFECdkh+/cEG25qy6Og9lkEy2SaPw1/ED+isuJzEaCHC9oeeMCwB
-         RcxVV9lRKpRf4BxuYzV8QAwveyOUHJjtKzSRFAL/tYP4LwnpnNktdMKoRYJi6yxV7i/V
-         R3FpSwpUEF0zfSQrCD1DjAX6ZjzF0Gu3AiYaO7aJ0i9O+JpueTUKdNgvACN5Waevzmxh
-         jj+kSdDHhvQ/tT5LcsiqkUQrY2UkwzCj8ffToD+nKIqfjApcuxILJpWNFTnwA7MGq1Gh
-         ds/E1rKniP3vreaSqikQEsDRI5j7NWrunqpkMnZDhRv72Q2OwE3eTLylZn4NU5AMOINr
-         7lHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=KFsTgfQVsevmZhycOuEx2UU1t4qHfT2XydeuEn+vels=;
-        b=j/Y04bHaHBi6g+qwLYkNuq1SpmCY+FAN/DPoTIF74SsFkgzTwD2y49C5PmDj2VZfsX
-         829UqFxMO0h8IkuuyvaoEHDnmLlBPnkRcPcSqRi/cYohN29qV2FsLcAYYO6aK2l54nL7
-         KsYmaE3aewY8jvZYjkv/LXXakxzkaM6wkyqqq38/6S/rJpt+yebkfYDZWliqILbToObn
-         7MRNx4c+sZGzVHKJeURP/sUsBYzDlz+qIgn5GaQdWjsRxL8alo9T/IRqr/37qRDtiHdo
-         KmZ5C92g+6HD2w8RkAXX5VT6G85rivgvAqbmM7g+3OE1TyYjGZ02tzw39WyCM6maZaZu
-         eN2A==
-X-Gm-Message-State: AE9vXwPwW3VUxAC306hoKXi0USnkKUn9AbDVCMJyc0X9HKowENVoB9befSVWt0cPIAC6wA==
-X-Received: by 10.37.31.214 with SMTP id f205mr18501880ybf.193.1474315111416;
-        Mon, 19 Sep 2016 12:58:31 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([189.61.236.196])
-        by smtp.gmail.com with ESMTPSA id i184sm10031556ywe.42.2016.09.19.12.58.30
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 12:58:30 -0700 (PDT)
-Date: Mon, 19 Sep 2016 16:58:28 -0300
-From: Juliana R <juliana.orod@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: fixed parenthesis alignment
-Message-ID: <20160919195828.GA32755@spock>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.0 (2016-08-17)
+        h=from:to:cc:subject:date:message-id;
+        bh=KWK2kqXIGZPbTXR2TqiNwmEFxom3Gstr3kr8eMnd6v0=;
+        b=FgmQ61mWNDpBKM7EA15aIv9gpBao4jl3+yByXO1nxHUyFIOMENDiSqeJy3wdKfyuGs
+         0dgP4aREK8Oe2vpf+PjAJvstwmdOEV1e2+Gjt9HQ2f7zHbcfPKfcvCmoNyym7V4XwzHr
+         3sqB8YCYejigldsYb+nHXi3MNNT8FEW4AQOZxtdKzovg7rV9hfJiSRHxSOgfsAo3GAtV
+         A3KqF5HOev16LfcOkK5FNPaPT/q3YHK9532SAGdEkowdJyl+lAI5PbIf8Qcp8bzpnOl7
+         hDsjEsZVFUM5Fl/aMjjT7mp6mZZeXurQU3btpk5ZJLdvVMN7sIJGrgKo4KwRwrI7thc6
+         EPgQ==
+X-Received: by 10.194.240.97 with SMTP id vz1mr27913293wjc.155.1425042361430;
+        Fri, 27 Feb 2015 05:06:01 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([78.178.157.65])
+        by mx.google.com with ESMTPSA id bd8sm5897517wjc.21.2015.02.27.05.05.59
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Feb 2015 05:06:00 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: lustre: Added #include <linux/statfs.h> instead of #include <asm/statfs.h>
+Date: Fri, 27 Feb 2015 15:05:45 +0200
+Message-Id: <1425042345-14989-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patch aims to fix a checkpatch warning
-caused by open parenthesis alignment.
+The following patch fixes the checkpatch.pl warning:
+WARNING: Use #include <linux/statfs.h> instead of #include <asm/statfs.h>
 
-Signed-off-by: Juliana R <juliana.orod@gmail.com>
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
 ---
- drivers/staging/wlan-ng/cfg80211.c | 2 +-
+ drivers/staging/lustre/lustre/osc/lproc_osc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index bed4672..f1d93b7 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -661,7 +661,7 @@ void prism2_connect_result(struct wlandevice *wlandev, u8 failed)
- void prism2_disconnected(struct wlandevice *wlandev)
- {
- 	cfg80211_disconnected(wlandev->netdev, 0, NULL,
--		0, false, GFP_KERNEL);
-+			      0, false, GFP_KERNEL);
- }
+diff --git a/drivers/staging/lustre/lustre/osc/lproc_osc.c b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+index 1795d3a..d622c63 100644
+--- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
++++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+@@ -35,7 +35,7 @@
+  */
+ #define DEBUG_SUBSYSTEM S_CLASS
  
- void prism2_roamed(struct wlandevice *wlandev)
+-#include <asm/statfs.h>
++#include <linux/statfs.h>
+ #include "../include/obd_cksum.h"
+ #include "../include/obd_class.h"
+ #include "../include/lprocfs_status.h"
 -- 
-2.9.3
+1.9.1
 
 
