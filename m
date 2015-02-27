@@ -1,37 +1,43 @@
 X-GM-THRID: 4475579269120
-X-Received: by 10.194.11.70 with SMTP id o6mr2182081wjb.6.1425052550842;
-        Fri, 27 Feb 2015 07:55:50 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,9816ab370498a2c8
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.182.201 with SMTP id eg9mr581177wic.3.1425052488203;
+        Fri, 27 Feb 2015 07:54:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.206.104 with SMTP id ln8ls173476lac.94.gmail; Fri, 27 Feb
- 2015 07:55:50 -0800 (PST)
-X-Received: by 10.152.45.7 with SMTP id i7mr2172851lam.9.1425052550351;
-        Fri, 27 Feb 2015 07:55:50 -0800 (PST)
+Received: by 10.152.20.98 with SMTP id m2ls190642lae.5.gmail; Fri, 27 Feb 2015
+ 07:54:47 -0800 (PST)
+X-Received: by 10.112.146.65 with SMTP id ta1mr2173834lbb.19.1425052487774;
+        Fri, 27 Feb 2015 07:54:47 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id by11si158872wib.1.2015.02.27.07.55.50
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i7si143188wif.0.2015.02.27.07.54.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 07:55:50 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 27 Feb 2015 07:54:47 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.09,660,1418079600"; 
-   d="scan'208";a="123692286"
+   d="scan'208";a="101563550"
 Received: from ip209.messe-nbg.customer.bisping.net (HELO hadrien.local) ([62.91.19.209])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:55:37 +0100
-Date: Fri, 27 Feb 2015 16:55:27 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:54:47 +0100
+Date: Fri, 27 Feb 2015 16:54:36 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 16/24] staging: lustre: llite: remove
+Subject: Re: [Outreachy kernel] [PATCH 18/24] staging: lustre: llite: remove
  unused variable
-In-Reply-To: <8046f90779d408bf363802fd0c5298dbc759d3dc.1425035011.git.mahfouz.saif.elyazal@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502271655080.2663@hadrien>
-References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <8046f90779d408bf363802fd0c5298dbc759d3dc.1425035011.git.mahfouz.saif.elyazal@gmail.com>
+In-Reply-To: <0ae8fe1e6a7e12be20f2d16ad8d0a966564d8654.1425035012.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502271654110.2663@hadrien>
+References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <0ae8fe1e6a7e12be20f2d16ad8d0a966564d8654.1425035012.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
+
+
 
 On Fri, 27 Feb 2015, Aya Mahfouz wrote:
 
@@ -56,32 +62,38 @@ On Fri, 27 Feb 2015, Aya Mahfouz wrote:
 >
 > Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 > ---
->  drivers/staging/lustre/lustre/llite/vvp_io.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  drivers/staging/lustre/lustre/llite/file.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 >
-> diff --git a/drivers/staging/lustre/lustre/llite/vvp_io.c b/drivers/staging/lustre/lustre/llite/vvp_io.c
-> index 91bba79..6acf422 100644
-> --- a/drivers/staging/lustre/lustre/llite/vvp_io.c
-> +++ b/drivers/staging/lustre/lustre/llite/vvp_io.c
-> @@ -309,12 +309,9 @@ static int vvp_io_read_lock(const struct lu_env *env,
+> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
+> index 0fd113d..3ae4d85 100644
+> --- a/drivers/staging/lustre/lustre/llite/file.c
+> +++ b/drivers/staging/lustre/lustre/llite/file.c
+> @@ -888,7 +888,6 @@ static int ll_lease_close(struct obd_client_handle *och, struct inode *inode,
 >  {
->  	struct cl_io	 *io = ios->cis_io;
->  	struct cl_io_rw_common *rd = &io->u.ci_rd.rd;
-> -	int result;
+>  	struct ldlm_lock *lock;
+>  	bool cancelled = true;
+> -	int rc;
 >
-> -	result = vvp_io_rw_lock(env, io, CLM_READ, rd->crw_pos,
-> +	return vvp_io_rw_lock(env, io, CLM_READ, rd->crw_pos,
->  				rd->crw_pos + rd->crw_count - 1);
+>  	lock = ldlm_handle2lock(&och->och_lease_handle);
+>  	if (lock != NULL) {
+> @@ -906,9 +905,8 @@ static int ll_lease_close(struct obd_client_handle *och, struct inode *inode,
+>  	if (lease_broken != NULL)
+>  		*lease_broken = cancelled;
+>
+> -	rc = ll_close_inode_openhandle(ll_i2sbi(inode)->ll_md_exp, inode, och,
+> +	return ll_close_inode_openhandle(ll_i2sbi(inode)->ll_md_exp, inode, och,
+>  				       NULL);
 
-Same argument alignment problem here.
+The NULL argument was aligned with the first argument before, but now it
+is not.
 
 julia
 
-> -
-> -	return result;
+> -	return rc;
 >  }
 >
->  static int vvp_io_fault_lock(const struct lu_env *env,
+>  /* Fills the obdo with the attributes for the lsm */
 > --
 > 1.9.3
 >
@@ -94,7 +106,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/8046f90779d408bf363802fd0c5298dbc759d3dc.1425035011.git.mahfouz.saif.elyazal%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/0ae8fe1e6a7e12be20f2d16ad8d0a966564d8654.1425035012.git.mahfouz.saif.elyazal%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
