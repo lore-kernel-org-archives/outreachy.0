@@ -1,80 +1,86 @@
-X-GM-THRID: 2843857649664
+X-GM-THRID: 2067485687808
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,837e11d1bf93e34c,start
+X-Google-Thread: 9ca63f596c,e2f8e6cdb7b38af
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.66.153.16 with SMTP id vc16mr5538916pab.42.1424707674570;
-        Mon, 23 Feb 2015 08:07:54 -0800 (PST)
+X-Received: by 10.236.96.234 with SMTP id r70mr10393444yhf.39.1424998285782;
+        Thu, 26 Feb 2015 16:51:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.231.161 with SMTP id th1ls314233obc.5.gmail; Mon, 23 Feb
- 2015 08:07:54 -0800 (PST)
-X-Received: by 10.182.18.102 with SMTP id v6mr13093594obd.11.1424707674374;
-        Mon, 23 Feb 2015 08:07:54 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pd0-f171.google.com (mail-pd0-f171.google.com. [209.85.192.171])
-        by gmr-mx.google.com with ESMTPS id pc4si4272302pac.0.2015.02.23.08.07.54
+Received: by 10.182.28.40 with SMTP id y8ls160814obg.51.gmail; Thu, 26 Feb
+ 2015 16:51:25 -0800 (PST)
+X-Received: by 10.182.91.79 with SMTP id cc15mr11199941obb.20.1424998285549;
+        Thu, 26 Feb 2015 16:51:25 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si289277pbc.2.2015.02.26.16.51.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 08:07:54 -0800 (PST)
-Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.192.171;
+        Thu, 26 Feb 2015 16:51:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
-Received: by pdjz10 with SMTP id z10so26292251pdj.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 08:07:54 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=+zu/hUjFsomzsv0qH3zKlXmhMHiLoIwqd7+wSU0Eqlk=;
-        b=Z3tPmtpw7IeHwtLappTcTgY+mxVHg1VkmeRPQOn8zj6ta6JrM/tKQeow9yOXp9sKBq
-         7t+pWQD7pghl2zyAW3c7Zi23rguLVkwL2ZvFY2RcsfiTHnctzWnY3fe7RvCrVtTZZKMz
-         +GxYTISct7EC05LjtgS+S2PWC2n4Jn314oJJ8ZLT8siXNYQ/sJoXTfuv4/yW89bCOmtD
-         uqBHyDa+KH9T2H/KyEK6lJbkBy1bDlpYowPHF9m7PPd+ei4b35sdu/JKGl4SrxwGF2Sp
-         bmlqErNQJeyCjh83xvKoPkVCHbDM6hVzWs7NV6gIIE4ff4bPgPwcdB8qpSJregoo+mAN
-         X1Bw==
-X-Gm-Message-State: ALoCoQmnvspivvUWB5Jl4+eMlfKHAK0AnnZi/2X2JUxA8ahQT2jAEy6ZG3rFHniVSRyrShPPaWD2
-X-Received: by 10.70.103.236 with SMTP id fz12mr20175569pdb.167.1424707674174;
-        Mon, 23 Feb 2015 08:07:54 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 ([2601:9:8340:b6:345b:fa47:4a5f:4d11])
-        by mx.google.com with ESMTPSA id kd6sm3988189pbb.40.2015.02.23.08.07.52
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 08:07:53 -0800 (PST)
-Date: Mon, 23 Feb 2015 08:07:51 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: speakup: Replace simple_strtoul with kstroul
-Message-ID: <20150223160750.GA3917@katie-Inspiron-5748>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1281EB09;
+	Fri, 27 Feb 2015 00:51:25 +0000 (UTC)
+Date: Thu, 26 Feb 2015 16:51:24 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v5 3/6] Staging: emxx_udc: Replace
+ custom printk macro ERR with pr_err
+Message-ID: <20150227005124.GA13250@kroah.com>
+References: <cover.1424786861.git.hamohammed.sa@gmail.com>
+ <d2e65fddab2025261f56081beab5b0bac1e53bda.1424786861.git.hamohammed.sa@gmail.com>
+ <20150226232212.GB21368@kroah.com>
+ <20150227002726.GA12491@example.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20150227002726.GA12491@example.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Addresses checkpatch.pl warning:
-WARNING: simple_strtoul is obsolete, use kstroul instead
+On Fri, Feb 27, 2015 at 03:27:26AM +0300, Haneen Mohammed wrote:
+> On Thu, Feb 26, 2015 at 03:22:12PM -0800, Greg KH wrote:
+> > On Tue, Feb 24, 2015 at 05:33:49PM +0300, Haneen Mohammed wrote:
+> > > This patch removes half custom printk macros ERR and replace it with
+> > > pr_err. Issue addressed by checkpathc.pl.
+> > > 
+> > > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > > ---
+> > > v5: Fix spelling mistakes
+> > > 
+> > >  drivers/staging/emxx_udc/emxx_udc.c | 56 ++++++++++++++++++-------------------
+> > >  1 file changed, 28 insertions(+), 28 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+> > > index c9f5e5d..f33980c 100644
+> > > --- a/drivers/staging/emxx_udc/emxx_udc.c
+> > > +++ b/drivers/staging/emxx_udc/emxx_udc.c
+> > > @@ -115,7 +115,7 @@ static void _nbu2ss_dump_register(struct nbu2ss_udc *udc)
+> > >  	pr_info("=== %s()\n", __func__);
+> > >  
+> > >  	if (udc == NULL) {
+> > > -		ERR("%s udc == NULL\n", __func__);
+> > > +		pr_err("udc: %s udc == NULL\n", __func__);
+> > 
+> > As this is a driver, you should be able to use dev_err() for all of
+> > these statements.  Please do that instead.
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> 
+> I did my best to look for a struct device *dev to use it in dev_err()
+> but in these cases I couldn't. It was either not present or
+> uninitialized yet, so I used pr_err instead. Would that be correct or
+> is there another way of doing it?
 
-Makes the indicated replacement
+If you really don't have a way to get to a struct device, then yes,
+pr_err() is fine, but odds are it's somewhere in there.
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
----
- drivers/staging/speakup/varhandlers.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+If not, then document it in the changelog comments.
 
-diff --git a/drivers/staging/speakup/varhandlers.c b/drivers/staging/speakup/varhandlers.c
-index 1b0d1c0..f89306d 100644
---- a/drivers/staging/speakup/varhandlers.c
-+++ b/drivers/staging/speakup/varhandlers.c
-@@ -324,7 +324,7 @@ char *spk_s2uchar(char *start, char *dest)
- {
- 	int val = 0;
- 
--	val = simple_strtoul(skip_spaces(start), &start, 10);
-+	val = kstroul(skip_spaces(start), &start, 10);
- 	if (*start == ',')
- 		start++;
- 	*dest = (u_char)val;
--- 
-1.9.1
+thanks,
 
+greg k-h
 
