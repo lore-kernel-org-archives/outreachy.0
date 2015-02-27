@@ -1,70 +1,125 @@
-X-GM-THRID: 845841170432
-X-Received: by 10.180.91.76 with SMTP id cc12mr933159wib.7.1424374394612;
-        Thu, 19 Feb 2015 11:33:14 -0800 (PST)
+X-GM-THRID: 3944967307264
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,a1a213d6f9d424d4
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.40.112 with SMTP id e76mr15917916yhb.5.1425065438211;
+        Fri, 27 Feb 2015 11:30:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.108.3 with SMTP id hg3ls350822wib.37.gmail; Thu, 19 Feb
- 2015 11:33:14 -0800 (PST)
-X-Received: by 10.180.12.146 with SMTP id y18mr941974wib.6.1424374394352;
-        Thu, 19 Feb 2015 11:33:14 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id l8si172944wia.0.2015.02.19.11.33.14
+Received: by 10.50.111.41 with SMTP id if9ls306407igb.17.gmail; Fri, 27 Feb
+ 2015 11:30:37 -0800 (PST)
+X-Received: by 10.70.91.67 with SMTP id cc3mr2517582pdb.2.1425065437958;
+        Fri, 27 Feb 2015 11:30:37 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id ri9si603462pdb.1.2015.02.27.11.30.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 11:33:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        Fri, 27 Feb 2015 11:30:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f41.google.com with SMTP id b13so9266980wgh.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 11:33:14 -0800 (PST)
+Received: by padet14 with SMTP id et14so24923789pad.11
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 11:30:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=7D1QAv3Z33CRTb100y6QPUsh9GIZAQcjis1b9kNg10U=;
-        b=Dw43n1u31jjR+EZUQCb7ga4cYMgCTgLjL8xdlLNgdIKxDinD5yZe76t2ofoIdxtdxN
-         qBbWZNqzHcQN2piU7gpYgBkTOnzU+m+WHItEnEeLgFhaS4Qq/yarpmLuf4s+W7TFrTk6
-         QT2OM8uqoL6Y9Io2W80j71fAAlvwRlZRvyS6/fVNQO7vF2R2FZa5UbU0Kxmq7k3BiJxv
-         ZbxymDguLmh5STs6oIqPmKiTN67Hrp1/B8SJw/CH8IOA60MD825wfjrrkXQNsdk2tx61
-         dL64yvp7oQ7TV/PwWH1NRMmSn4YPNsIVPFDP7JayvwreHnw/upXD7HNfwEN2cK5gAkjL
-         logQ==
-X-Received: by 10.180.198.37 with SMTP id iz5mr12529871wic.95.1424374394225;
-        Thu, 19 Feb 2015 11:33:14 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id vq9sm38739625wjc.6.2015.02.19.11.33.12
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 11:33:13 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=P7O+mGtG0CQcXmfrVycBHC/8zENIbvN4dkQkvbRlFzA=;
+        b=v7MARAgcs3hM49xbtlrBvlj/QE5sgh1Uv8BeIVyLXWRxZJeviv74ac+Kvfy0G5GS1H
+         kkLTffw9JSC1gC2hUNpxTt1rN2pw+y+kFqwB4odFNU6Pw64UdwkfBsMtZ5m+4fOMJl4j
+         y+yFymtA3o7u5KrZXPVAqhkImCPLOcnv4y2K/EyZFz6MNZFHd2C4lc04bRWdhqqdnpX5
+         IWG7FG2ogMMa6T3na/2t2dlpQ2fDY7xVxcP6RY0bTmeqyFg7c476Nn5kXMO7INSOw5hm
+         In9rGE1JidaRJQ8bDRAJFkhujxLXQa2hP15zkI564LlDJnZC5eAQfgbtXMXXtNqX+Hrp
+         yOeA==
+X-Received: by 10.66.254.68 with SMTP id ag4mr26549798pad.39.1425065437784;
+        Fri, 27 Feb 2015 11:30:37 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from batra ([14.139.82.6])
+        by mx.google.com with ESMTPSA id xx7sm4766746pab.21.2015.02.27.11.30.36
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 11:30:36 -0800 (PST)
+Date: Sat, 28 Feb 2015 01:00:15 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>,
-	Ksenija Stanojevic <ksenij.stanojevic@gmail.com>
-Subject: [PATCH] Staging: media: vino: Added blank line
-Date: Thu, 19 Feb 2015 20:33:02 +0100
-Message-Id: <1424374382-19896-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] Staging: rtl8188eu: Remove unnecessary if condition
+Message-ID: <20150227193015.GA30908@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Missing a blank line after declarations"
+The variable final will never retain its original value of 0xff
+so the else branch can be eliminated.
+The loop is eliminated as the reg values are reassigned.
 
-Signed-off-by: Ksenija Stanojevic <ksenij.stanojevic@gmail.com>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/media/vino/saa7191.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/rtl8188eu/hal/phy.c | 47 +++++++++++--------------------------
+ 1 file changed, 14 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/staging/media/vino/saa7191.c b/drivers/staging/media/vino/saa7191.c
-index 29e3296..f223e47 100644
---- a/drivers/staging/media/vino/saa7191.c
-+++ b/drivers/staging/media/vino/saa7191.c
-@@ -521,6 +521,7 @@ static int saa7191_s_ctrl(struct v4l2_subdev *sd, struct v4l2_control *ctrl)
- 		break;
- 	case SAA7191_CONTROL_LUMA_DELAY: {
- 		s32 value = ctrl->value;
-+
- 		if (value < 0)
- 			value += 8;
- 		reg = saa7191_read_reg(sd, SAA7191_REG_CTL3);
+diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+index d5b5998..b6b6b0b 100644
+--- a/drivers/staging/rtl8188eu/hal/phy.c
++++ b/drivers/staging/rtl8188eu/hal/phy.c
+@@ -1418,40 +1418,21 @@ void rtl88eu_phy_iq_calibrate(struct adapter *adapt, bool recovery)
+ 		}
+ 	}
+ 
+-	for (i = 0; i < 4; i++) {
+-		reg_e94 = result[i][0];
+-		reg_e9c = result[i][1];
+-		reg_ea4 = result[i][2];
+-		reg_eac = result[i][3];
+-		reg_eb4 = result[i][4];
+-		reg_ebc = result[i][5];
+-		reg_ec4 = result[i][6];
+-		reg_ecc = result[i][7];
+-	}
++	reg_e94 = result[final][0];
++	reg_e9c = result[final][1];
++	reg_ea4 = result[final][2];
++	reg_eac = result[final][3];
++	reg_eb4 = result[final][4];
++	reg_ebc = result[final][5];
++	reg_ec4 = result[final][6];
++	reg_ecc = result[final][7];
++	dm_odm->RFCalibrateInfo.RegE94 = reg_e94;
++	dm_odm->RFCalibrateInfo.RegE9C = reg_e9c;
++	dm_odm->RFCalibrateInfo.RegEB4 = reg_eb4;
++	dm_odm->RFCalibrateInfo.RegEBC = reg_ebc;
++	pathaok = true;
++	pathbok = true;
+ 
+-	if (final != 0xff) {
+-		reg_e94 = result[final][0];
+-		reg_e9c = result[final][1];
+-		reg_ea4 = result[final][2];
+-		reg_eac = result[final][3];
+-		reg_eb4 = result[final][4];
+-		reg_ebc = result[final][5];
+-		dm_odm->RFCalibrateInfo.RegE94 = reg_e94;
+-		dm_odm->RFCalibrateInfo.RegE9C = reg_e9c;
+-		dm_odm->RFCalibrateInfo.RegEB4 = reg_eb4;
+-		dm_odm->RFCalibrateInfo.RegEBC = reg_ebc;
+-		reg_ec4 = result[final][6];
+-		reg_ecc = result[final][7];
+-		pathaok = true;
+-		pathbok = true;
+-	} else {
+-		ODM_RT_TRACE(dm_odm, ODM_COMP_CALIBRATION, ODM_DBG_LOUD,
+-			     ("IQK: FAIL use default value\n"));
+-		dm_odm->RFCalibrateInfo.RegE94 = 0x100;
+-		dm_odm->RFCalibrateInfo.RegEB4 = 0x100;
+-		dm_odm->RFCalibrateInfo.RegE9C = 0x0;
+-		dm_odm->RFCalibrateInfo.RegEBC = 0x0;
+-	}
+ 	if (reg_e94 != 0)
+ 		patha_fill_iqk(adapt, pathaok, result, final,
+ 			       (reg_ea4 == 0));
 -- 
 1.9.1
 
