@@ -3,314 +3,159 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,8f6db519be982188
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.152.36.132 with SMTP id q4mr1996309laj.6.1425037336513;
-        Fri, 27 Feb 2015 03:42:16 -0800 (PST)
+X-Received: by 10.194.221.65 with SMTP id qc1mr1974324wjc.7.1425036178296;
+        Fri, 27 Feb 2015 03:22:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.28.100 with SMTP id a4ls156266lah.23.gmail; Fri, 27 Feb
- 2015 03:42:16 -0800 (PST)
-X-Received: by 10.112.159.227 with SMTP id xf3mr2017442lbb.11.1425037336145;
-        Fri, 27 Feb 2015 03:42:16 -0800 (PST)
+Received: by 10.152.29.4 with SMTP id f4ls92806lah.18.gmail; Fri, 27 Feb 2015
+ 03:22:57 -0800 (PST)
+X-Received: by 10.112.147.35 with SMTP id th3mr1744640lbb.15.1425036177800;
+        Fri, 27 Feb 2015 03:22:57 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id r6si104151wix.0.2015.02.27.03.42.16
+Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
+        by gmr-mx.google.com with ESMTPS id o3si89178wib.2.2015.02.27.03.22.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 03:42:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Fri, 27 Feb 2015 03:22:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevk48 with SMTP id k48so19691765wev.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 03:42:16 -0800 (PST)
+Received: by wghl2 with SMTP id l2so19577037wgh.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 03:22:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=mgHC/dwo4Zp1g4W9UJ6axkbUjF8DvF28V44cb1x1Op4=;
-        b=B5Vsbb8D61YViLZNB12hNqpePCCuPQfEgVH1R0TeT/Pi1wSbL9+8V8gx0jsnFZKPCG
-         yChHsAm7alBLSvDXAp7mW1WnK3+BKQvvMxVBNjCWwojuwz5N9hEoeajv+Lfc/5a1elHs
-         gNtxNt/8xJxuEHPtG/qU+CPLR9EY785UUiBad9gy/NaXMgYgcI4R6EqckcjaHWQWAkPq
-         yy2UhEEhMv26mDaFV55VPfF4nvigdiWtfNghUv1al11vb9coJCBqpytPJoPdjChRKa85
-         LunhcrqPRFDH5Ey2xxSKTYnaaErB89h8NDeGjo0sw6u0s0BL/jtRRTHehZKkDpRlEqD3
-         fv4A==
-X-Received: by 10.180.8.10 with SMTP id n10mr5376387wia.79.1425037334522;
-        Fri, 27 Feb 2015 03:42:14 -0800 (PST)
+        bh=Gd65SJ6CLY8r1neUrNTwWPzKUU9BUfRgRXjs7nqUM9g=;
+        b=iHNW3FDlYomz9eAw6hsPONDScN5VIYuywqGXsS9Z3j8ULY/HWMy8ftsrKhGZC9UMlW
+         NQkAE1usqoZeUMna1hr08r2d/iocCMurH+1MCN3ILqS6Qbdu6FebJb+gCvvX/FSpsy/6
+         UTjpzEegct9WbMkGEjbHSqFWT5ab04CHN1RPa3LIUZ3MNCRnq4geSXpgrrVTtnx0pmXJ
+         zyX+XoF7N1TOO2IGRNOut8ul/If2pGKURhWjjV2MY2VJJvuNSrkKBReUkQrsUl4W6VrV
+         yj3J6D5tPMgDttg8h8dYWRRlX/uUtM8TUyUEap2J4gMrqgNh/+rMicSj306Zfe+5Vmkz
+         HUVQ==
+X-Received: by 10.180.86.201 with SMTP id r9mr5501966wiz.56.1425036177656;
+        Fri, 27 Feb 2015 03:22:57 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from localhost ([79.170.55.43])
-        by mx.google.com with ESMTPSA id hm6sm5569792wjb.32.2015.02.27.03.42.09
+        by mx.google.com with ESMTPSA id md8sm2364856wic.13.2015.02.27.03.22.55
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 03:42:13 -0800 (PST)
-Date: Fri, 27 Feb 2015 14:42:05 +0300
+        Fri, 27 Feb 2015 03:22:57 -0800 (PST)
+Date: Fri, 27 Feb 2015 14:22:55 +0300
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v8 2/5] Staging: emxx_udc: Replace
- custom printk macro ERR with pr_err
-Message-ID: <20150227114205.GB28904@example.com>
+Subject: Re: [Outreachy kernel] [PATCH v8 5/5] Staging: emxx_udc: Clean
+ dev_err() logging
+Message-ID: <20150227112255.GA28904@example.com>
 References: <cover.1425030785.git.hamohammed.sa@gmail.com>
- <1425033066-20762-1-git-send-email-hamohammed.sa@gmail.com>
- <alpine.DEB.2.10.1502271158410.2668@hadrien>
+ <1425033356-20933-1-git-send-email-hamohammed.sa@gmail.com>
+ <alpine.DEB.2.10.1502271156510.2668@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.10.1502271158410.2668@hadrien>
+In-Reply-To: <alpine.DEB.2.10.1502271156510.2668@hadrien>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, Feb 27, 2015 at 11:59:57AM +0100, Julia Lawall wrote:
-> On Fri, 27 Feb 2015, Haneen Mohammed wrote:
-> 
-> > This patch removes half custom printk macros ERR and replace it with
-> 
-> Removing the macro would seem like remomving the definition.  Here you are
-> removing the uses.  That could be more clear.
-> 
-> > pr_err, for no appropriate struct device *dev field where found for dev_err.
-> > Issue addressed by checkpathc.pl.
-> >
-> > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
-> > ---
-> > v6: Justify the use of pr_err instead of dev_err.
-> >
-> >  drivers/staging/emxx_udc/emxx_udc.c | 56 ++++++++++++++++++-------------------
-> >  1 file changed, 28 insertions(+), 28 deletions(-)
-> >
-> > diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-> > index f2ddad3..094e018 100644
-> > --- a/drivers/staging/emxx_udc/emxx_udc.c
-> > +++ b/drivers/staging/emxx_udc/emxx_udc.c
-> > @@ -115,7 +115,7 @@ static void _nbu2ss_dump_register(struct nbu2ss_udc *udc)
-> >  	pr_info("=== %s()\n", __func__);
-> >
-> >  	if (udc == NULL) {
-> > -		ERR("%s udc == NULL\n", __func__);
-> > +		pr_err("udc: %s udc == NULL\n", __func__);
-> >  		return;
-> >  	}
-> >
-> > @@ -2258,7 +2258,7 @@ static int _nbu2ss_pullup(struct nbu2ss_udc *udc, int is_on)
-> 
-> Are you sure that there is no appropriate field in the nbu2ss_udc
-> structure?
+Ok, I'll try that out.
+
+On Fri, Feb 27, 2015 at 11:57:15AM +0100, Julia Lawall wrote:
+> Maybe you can try using Coccinelle to find this problem more generally.
 > 
 > julia
 > 
-nbu2ss_udc structure in the following function has a dev field.
- "static void _nbu2ss_dump_register(struct nbu2ss_udc *udc)"
-But I thought I can't use dev_err in the following because if udc is
-null then udc->dev would be null, so I used pr_err instead.
-        if (udc == NULL) {
-		pr_err("udc: %s udc == NULL\n", __func__);
-
-Or that is fine and using dev_err(udc->dev, even if udc is null  wouldn't affect the program?
-
-Thanks,
-Haneen
-> >  	u32	reg_dt;
+> On Fri, 27 Feb 2015, Haneen Mohammed wrote:
+> 
+> > This patch removes  __func__ from dev_err.
+> > dev_err includes the function name in the log printout, so there is no
+> > need to include it manually.
 > >
-> >  	if (!udc) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
+> > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > ---
+> >  drivers/staging/emxx_udc/emxx_udc.c | 18 +++++++++---------
+> >  1 file changed, 9 insertions(+), 9 deletions(-)
 > >
-> > @@ -2612,13 +2612,13 @@ static int nbu2ss_ep_enable(
-> >  	struct nbu2ss_udc	*udc;
-> >
-> >  	if ((_ep == NULL) || (desc == NULL)) {
-> > -		ERR(" *** %s, bad param\n", __func__);
-> > +		pr_err("udc: *** %s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
-> >  	ep = container_of(_ep, struct nbu2ss_ep, ep);
-> >  	if ((ep == NULL) || (ep->udc == NULL)) {
-> > -		ERR(" *** %s, ep == NULL !!\n", __func__);
-> > +		pr_err("udc:  *** %s, ep == NULL !!\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
+> > diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+> > index 77189cc..0bfd268 100644
+> > --- a/drivers/staging/emxx_udc/emxx_udc.c
+> > +++ b/drivers/staging/emxx_udc/emxx_udc.c
 > > @@ -2626,7 +2626,7 @@ static int nbu2ss_ep_enable(
 > >  	if ((ep_type == USB_ENDPOINT_XFER_CONTROL)
 > >  		|| (ep_type == USB_ENDPOINT_XFER_ISOC)) {
 > >
-> > -		ERR(" *** %s, bat bmAttributes\n", __func__);
-> > +		pr_err("udc:  *** %s, bat bmAttributes\n", __func__);
+> > -		dev_err(ep->udc->dev, "udc:  *** %s, bat bmAttributes\n", __func__);
+> > +		dev_err(ep->udc->dev, "bat bmAttributes\n");
 > >  		return -EINVAL;
 > >  	}
 > >
-> > @@ -2672,13 +2672,13 @@ static int nbu2ss_ep_disable(struct usb_ep *_ep)
-> >  	unsigned long		flags;
+> > @@ -2637,7 +2637,7 @@ static int nbu2ss_ep_enable(
+> >  	if ((udc->driver == NULL)
+> >  		|| (udc->gadget.speed == USB_SPEED_UNKNOWN)) {
 > >
-> >  	if (_ep == NULL) {
-> > -		ERR(" *** %s, bad param\n", __func__);
-> > +		pr_err("udc:  *** %s, bad param\n", __func__);
-> >  		return -EINVAL;
+> > -		dev_err(udc->dev, " *** %s, udc !!\n", __func__);
+> > +		dev_err(udc->dev, "udc !!\n");
+> >  		return -ESHUTDOWN;
 > >  	}
 > >
-> >  	ep = container_of(_ep, struct nbu2ss_ep, ep);
-> >  	if ((ep == NULL) || (ep->udc == NULL)) {
-> > -		ERR(" *** %s, ep == NULL !!\n", __func__);
-> > +		pr_err("udc:  *** %s, ep == NULL !!\n", __func__);
-> >  		return -EINVAL;
+> > @@ -2778,7 +2778,7 @@ static int nbu2ss_ep_queue(
 > >  	}
 > >
-> > @@ -2742,10 +2742,10 @@ static int nbu2ss_ep_queue(
-> >  	/* catch various bogus parameters */
-> >  	if ((_ep == NULL) || (_req == NULL)) {
-> >  		if (_ep == NULL)
-> > -			ERR("*** %s --- _ep == NULL\n", __func__);
-> > +			pr_err("udc: *** %s --- _ep == NULL\n", __func__);
-> >
-> >  		if (_req == NULL)
-> > -			ERR("*** %s --- _req == NULL\n", __func__);
-> > +			pr_err("udc: *** %s --- _req == NULL\n", __func__);
-> >
-> >  		return -EINVAL;
-> >  	}
-> > @@ -2756,13 +2756,13 @@ static int nbu2ss_ep_queue(
-> >  	     || !list_empty(&req->queue))) {
-> >
-> >  		if (!_req->complete)
-> > -			ERR("*** %s --- !_req->complete\n", __func__);
-> > +			pr_err("udc: *** %s --- !_req->complete\n", __func__);
-> >
-> >  		if (!_req->buf)
-> > -			ERR("*** %s --- !_req->buf\n", __func__);
-> > +			pr_err("udc: *** %s --- !_req->buf\n", __func__);
-> >
-> >  		if (!list_empty(&req->queue))
-> > -			ERR("*** %s --- !list_empty(&req->queue)\n", __func__);
-> > +			pr_err("udc: *** %s --- !list_empty(&req->queue)\n", __func__);
-> >
-> >  		return -EINVAL;
-> >  	}
-> > @@ -2849,13 +2849,13 @@ static int nbu2ss_ep_dequeue(
-> >
-> >  	/* catch various bogus parameters */
-> >  	if ((_ep == NULL) || (_req == NULL)) {
-> > -		/* ERR("%s, bad param(1)\n", __func__); */
-> > +		/* pr_err("udc: %s, bad param(1)\n", __func__); */
-> >  		return -EINVAL;
+> >  	if (unlikely(!udc->driver)) {
+> > -		dev_err(udc->dev, "%s, bogus device state %p\n", __func__, udc->driver);
+> > +		dev_err(udc->dev, "bogus device state %p\n", udc->driver);
+> >  		return -ESHUTDOWN;
 > >  	}
 > >
-> >  	ep = container_of(_ep, struct nbu2ss_ep, ep);
-> >  	if (!ep) {
-> > -		ERR("%s, ep == NULL !!\n", __func__);
-> > +		pr_err("udc: %s, ep == NULL !!\n", __func__);
-> >  		return -EINVAL;
-> >  	}
+> > @@ -2817,7 +2817,7 @@ static int nbu2ss_ep_queue(
 > >
-> > @@ -2895,19 +2895,19 @@ static int nbu2ss_ep_set_halt(struct usb_ep *_ep, int value)
-> >  /*	INFO("=== %s()\n", __func__); */
-> >
-> >  	if (!_ep) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
-> >  	ep = container_of(_ep, struct nbu2ss_ep, ep);
-> >  	if (!ep) {
-> > -		ERR("%s, bad ep\n", __func__);
-> > +		pr_err("udc: %s, bad ep\n", __func__);
-> >  		return -EINVAL;
-> >  	}
+> >  		result = _nbu2ss_start_transfer(udc, ep, req, FALSE);
+> >  		if (result < 0) {
+> > -			dev_err(udc->dev, " *** %s, result = %d\n", __func__, result);
+> > +			dev_err(udc->dev, "result = %d\n", result);
+> >  			list_del(&req->queue);
+> >  		} else if ((ep->epnum > 0) && (ep->direct == USB_DIR_OUT)) {
+> >  #ifdef USE_DMA
+> > @@ -2907,7 +2907,7 @@ static int nbu2ss_ep_set_halt(struct usb_ep *_ep, int value)
 > >
 > >  	udc = ep->udc;
 > >  	if (!udc) {
-> > -		ERR(" *** %s, bad udc\n", __func__);
-> > +		pr_err("udc: *** %s, bad udc\n", __func__);
+> > -		dev_err(ep->udc->dev, "udc: *** %s, bad udc\n", __func__);
+> > +		dev_err(ep->udc->dev, "bad udc\n");
 > >  		return -EINVAL;
 > >  	}
 > >
-> > @@ -2949,19 +2949,19 @@ static int nbu2ss_ep_fifo_status(struct usb_ep *_ep)
-> >  /*	INFO("=== %s()\n", __func__); */
-> >
-> >  	if (!_ep) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
-> >  	ep = container_of(_ep, struct nbu2ss_ep, ep);
-> >  	if (!ep) {
-> > -		ERR("%s, bad ep\n", __func__);
-> > +		pr_err("udc: %s, bad ep\n", __func__);
-> >  		return -EINVAL;
-> >  	}
+> > @@ -2961,7 +2961,7 @@ static int nbu2ss_ep_fifo_status(struct usb_ep *_ep)
 > >
 > >  	udc = ep->udc;
 > >  	if (!udc) {
-> > -		ERR("%s, bad udc\n", __func__);
-> > +		pr_err("udc: %s, bad udc\n", __func__);
+> > -		dev_err(ep->udc->dev, "udc: %s, bad udc\n", __func__);
+> > +		dev_err(ep->udc->dev, "bad udc\n");
 > >  		return -EINVAL;
 > >  	}
 > >
-> > @@ -2997,19 +2997,19 @@ static void  nbu2ss_ep_fifo_flush(struct usb_ep *_ep)
-> >  /*	INFO("=== %s()\n", __func__); */
-> >
-> >  	if (!_ep) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
-> >  		return;
-> >  	}
-> >
-> >  	ep = container_of(_ep, struct nbu2ss_ep, ep);
-> >  	if (!_ep) {
-> > -		ERR("%s, bad ep\n", __func__);
-> > +		pr_err("udc: %s, bad ep\n", __func__);
-> >  		return;
-> >  	}
+> > @@ -3009,7 +3009,7 @@ static void  nbu2ss_ep_fifo_flush(struct usb_ep *_ep)
 > >
 > >  	udc = ep->udc;
 > >  	if (!udc) {
-> > -		ERR("%s, bad udc\n", __func__);
-> > +		pr_err("udc: %s, bad udc\n", __func__);
+> > -		dev_err(ep->udc->dev, "udc: %s, bad udc\n", __func__);
+> > +		dev_err(ep->udc->dev, "bad udc\n");
 > >  		return;
 > >  	}
 > >
-> > @@ -3053,7 +3053,7 @@ static int nbu2ss_gad_get_frame(struct usb_gadget *pgadget)
-> >  /*	INFO("=== %s()\n", __func__); */
+> > @@ -3059,7 +3059,7 @@ static int nbu2ss_gad_get_frame(struct usb_gadget *pgadget)
 > >
-> >  	if (pgadget == NULL) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
+> >  	udc = container_of(pgadget, struct nbu2ss_udc, gadget);
+> >  	if (udc == NULL) {
+> > -		dev_err(&pgadget->dev, "%s, udc == NULL\n", __func__);
+> > +		dev_err(&pgadget->dev, "udc == NULL\n");
 > >  		return -EINVAL;
 > >  	}
 > >
-> > @@ -3083,7 +3083,7 @@ static int nbu2ss_gad_wakeup(struct usb_gadget *pgadget)
-> >  /*	INFO("=== %s()\n", __func__); */
+> > @@ -3089,7 +3089,7 @@ static int nbu2ss_gad_wakeup(struct usb_gadget *pgadget)
 > >
-> >  	if (pgadget == NULL) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("%s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
-> > @@ -3123,7 +3123,7 @@ static int nbu2ss_gad_set_selfpowered(struct usb_gadget *pgadget,
-> >  /*	INFO("=== %s()\n", __func__); */
-> >
-> >  	if (pgadget == NULL) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
-> > @@ -3152,7 +3152,7 @@ static int nbu2ss_gad_vbus_draw(struct usb_gadget *pgadget, unsigned mA)
-> >  /*	INFO("=== %s()\n", __func__); */
-> >
-> >  	if (pgadget == NULL) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
-> >  		return -EINVAL;
-> >  	}
-> >
-> > @@ -3174,7 +3174,7 @@ static int nbu2ss_gad_pullup(struct usb_gadget *pgadget, int is_on)
-> >  /*	INFO("=== %s()\n", __func__); */
-> >
-> >  	if (pgadget == NULL) {
-> > -		ERR("%s, bad param\n", __func__);
-> > +		pr_err("udc: %s, bad param\n", __func__);
+> >  	udc = container_of(pgadget, struct nbu2ss_udc, gadget);
+> >  	if (udc == NULL) {
+> > -		dev_err(&pgadget->dev, "%s, udc == NULL\n", __func__);
+> > +		dev_err(&pgadget->dev, "udc == NULL\n");
 > >  		return -EINVAL;
 > >  	}
 > >
@@ -321,7 +166,7 @@ Haneen
 > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425033066-20762-1-git-send-email-hamohammed.sa%40gmail.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425033356-20933-1-git-send-email-hamohammed.sa%40gmail.com.
 > > For more options, visit https://groups.google.com/d/optout.
 > >
 
