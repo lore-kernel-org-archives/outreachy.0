@@ -1,54 +1,75 @@
 X-GM-THRID: 4683701682176
-X-Received: by 10.67.29.231 with SMTP id jz7mr24824556pad.9.1425256184696;
-        Sun, 01 Mar 2015 16:29:44 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,3d6eb69409d39a30
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.161.9 with SMTP id xo9mr2306176lbb.7.1425061713552;
+        Fri, 27 Feb 2015 10:28:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.38.197 with SMTP id i5ls589544obk.62.gmail; Sun, 01 Mar
- 2015 16:29:44 -0800 (PST)
-X-Received: by 10.182.78.69 with SMTP id z5mr24374669obw.4.1425256184499;
-        Sun, 01 Mar 2015 16:29:44 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id xj4si1280588pbc.2.2015.03.01.16.29.44
+Received: by 10.180.98.226 with SMTP id el2ls174275wib.25.canary; Fri, 27 Feb
+ 2015 10:28:33 -0800 (PST)
+X-Received: by 10.180.83.168 with SMTP id r8mr687020wiy.6.1425061713301;
+        Fri, 27 Feb 2015 10:28:33 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id ta1si167318wic.1.2015.02.27.10.28.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 16:29:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Fri, 27 Feb 2015 10:28:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 37C04475;
-	Mon,  2 Mar 2015 00:29:44 +0000 (UTC)
-Date: Sun, 1 Mar 2015 16:29:44 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: lustre: lov: Add
- blank line after declarations
-Message-ID: <20150302002944.GA28370@kroah.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1425059607-13367-1-git-send-email-haticeerturk27@gmail.com>
- <1425061227-13966-1-git-send-email-haticeerturk27@gmail.com>
- <1425061706-14179-1-git-send-email-haticeerturk27@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x22d.google.com with SMTP id l15so2187646wiw.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 10:28:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=+uIclZF7TYOVGEGFbei0WLZuCvRH5bzwxdJyQGhew14=;
+        b=oRpOEvnu4vYC7ByeCxnd0VFhTcLmEULYFn+huJtBjGcZFEtWZCAnUUqnsRXzODM6Kw
+         3oR3BasGoNhoHXx/HM8SwidjKGucmoN4klSDzLPceQ9BZtJRGBOecTXKqCRTi8C0YQKK
+         VHr4+ZwqTo7CxKqSHKVQHpB1MBk7iI2G+8DVOTTiVbbr7wTXJcYE5xDhI776ag9b9wpc
+         MHU0SMw21jPb952fXGpeIvBKNuZGvQKE9dHboWwi0Rp5fpZhbdc4GtBrJwGA6jcN7Cj6
+         1svAs0Vg33Gna3RfqpE+choUldKASPEWmLSK3DHdwG3YIks/rGZ1NVpambqz7Tfn1Mq/
+         nmBw==
+X-Received: by 10.194.81.104 with SMTP id z8mr29966783wjx.45.1425061713230;
+        Fri, 27 Feb 2015 10:28:33 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id dj5sm7040778wjb.28.2015.02.27.10.28.31
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Feb 2015 10:28:32 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH 2/2] Staging: lustre: lustre: lov: Add blank line after declarations
+Date: Fri, 27 Feb 2015 20:28:26 +0200
+Message-Id: <1425061706-14179-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Fri, Feb 27, 2015 at 08:28:26PM +0200, Hatice ERT�RK wrote:
-> The following patch fixes the checkpatch.pl warning:
-> drivers/staging/lustre/lustre/lov/lov_object.c WARNING: Missing a blank
-> line after declarations
-> 
-> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
-> ---
->  drivers/staging/lustre/lustre/lov/lov_object.c | 1 +
->  1 file changed, 1 insertion(+)
+The following patch fixes the checkpatch.pl warning:
+drivers/staging/lustre/lustre/lov/lov_object.c WARNING: Missing a blank
+line after declarations
 
-3 patches, all with the same subject: yet they do different things :(
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+---
+ drivers/staging/lustre/lustre/lov/lov_object.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Please fix up and resend.
+diff --git a/drivers/staging/lustre/lustre/lov/lov_object.c b/drivers/staging/lustre/lustre/lov/lov_object.c
+index 4cab730..c52219e 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_object.c
++++ b/drivers/staging/lustre/lustre/lov/lov_object.c
+@@ -973,6 +973,7 @@ int lov_read_and_clear_async_rc(struct cl_object *clob)
+ 			LASSERT(lsm != NULL);
+ 			for (i = 0; i < lsm->lsm_stripe_count; i++) {
+ 				struct lov_oinfo *loi = lsm->lsm_oinfo[i];
++
+ 				if (loi->loi_ar.ar_rc && !rc)
+ 					rc = loi->loi_ar.ar_rc;
+ 				loi->loi_ar.ar_rc = 0;
+-- 
+1.9.1
 
-thanks,
-
-greg k-h
 
