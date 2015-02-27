@@ -1,43 +1,41 @@
 X-GM-THRID: 4475579269120
-X-Received: by 10.194.221.65 with SMTP id qc1mr2173244wjc.7.1425052777690;
-        Fri, 27 Feb 2015 07:59:37 -0800 (PST)
+X-Received: by 10.112.161.9 with SMTP id xo9mr2205014lbb.7.1425052625557;
+        Fri, 27 Feb 2015 07:57:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.8.13 with SMTP id n13ls187234laa.80.gmail; Fri, 27 Feb
- 2015 07:59:37 -0800 (PST)
-X-Received: by 10.152.28.137 with SMTP id b9mr2181771lah.8.1425052777268;
-        Fri, 27 Feb 2015 07:59:37 -0800 (PST)
+Received: by 10.153.5.9 with SMTP id ci9ls195754lad.40.gmail; Fri, 27 Feb 2015
+ 07:57:05 -0800 (PST)
+X-Received: by 10.112.167.98 with SMTP id zn2mr2133058lbb.6.1425052625153;
+        Fri, 27 Feb 2015 07:57:05 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id cl5si137785wib.3.2015.02.27.07.59.36
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ev8si130797wib.3.2015.02.27.07.57.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 07:59:37 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 27 Feb 2015 07:57:05 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.09,660,1418079600"; 
-   d="scan'208";a="101564003"
+   d="scan'208";a="123692515"
 Received: from ip209.messe-nbg.customer.bisping.net (HELO hadrien.local) ([62.91.19.209])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:59:19 +0100
-Date: Fri, 27 Feb 2015 16:59:09 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2015 16:57:04 +0100
+Date: Fri, 27 Feb 2015 16:56:54 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 04/24] staging: rtl8188eu: os_dep:
- remove unused variable
-In-Reply-To: <b9c765d115a8845bd37120165627f37c29af1b9c.1425035005.git.mahfouz.saif.elyazal@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502271658490.2663@hadrien>
-References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <b9c765d115a8845bd37120165627f37c29af1b9c.1425035005.git.mahfouz.saif.elyazal@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 13/24] staging: lustre: mdc: remove
+ unused variable
+In-Reply-To: <6d810f755db18473df909a705c5258025103e33f.1425035010.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502271656420.2663@hadrien>
+References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com> <6d810f755db18473df909a705c5258025103e33f.1425035010.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-
-
 On Fri, 27 Feb 2015, Aya Mahfouz wrote:
 
-> This patch removes variables that were simply used to
+> This patch removes a variable that was simply used to
 > store the return value of a function call before
 > returning it.
 >
@@ -58,77 +56,32 @@ On Fri, 27 Feb 2015, Aya Mahfouz wrote:
 >
 > Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 > ---
->  drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c | 16 +++-------------
->  1 file changed, 3 insertions(+), 13 deletions(-)
+>  drivers/staging/lustre/lustre/mdc/mdc_locks.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 >
-> diff --git a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
-> index 80e7ef9..38e8ba1 100644
-> --- a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
-> +++ b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
-> @@ -552,7 +552,6 @@ int usb_write8(struct adapter *adapter, u32 addr, u8 val)
->  	u16 index;
->  	u16 len;
->  	u8 data;
-> -	int ret;
+> diff --git a/drivers/staging/lustre/lustre/mdc/mdc_locks.c b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+> index d1c224e..b72319b 100644
+> --- a/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+> +++ b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+> @@ -176,12 +176,10 @@ int mdc_cancel_unused(struct obd_export *exp,
+>  {
+>  	struct ldlm_res_id res_id;
+>  	struct obd_device *obd = class_exp2obd(exp);
+> -	int rc;
 >
->  	request = 0x05;
->  	requesttype = 0x00;/* write_out */
-> @@ -560,8 +559,7 @@ int usb_write8(struct adapter *adapter, u32 addr, u8 val)
->  	wvalue = (u16)(addr&0x0000ffff);
->  	len = 1;
->  	data = val;
-> -	ret = usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
-> -	return ret;
-> +	return usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
+>  	fid_build_reg_res_name(fid, &res_id);
+> -	rc = ldlm_cli_cancel_unused_resource(obd->obd_namespace, &res_id,
+> +	return ldlm_cli_cancel_unused_resource(obd->obd_namespace, &res_id,
+>  					     policy, mode, flags, opaque);
 
-You make the 80 character problem worse, so you could fix it at the same
-time.
+Argument alignment.
 
 julia
 
+> -	return rc;
 >  }
 >
->  int usb_write16(struct adapter *adapter, u32 addr, u16 val)
-> @@ -572,7 +570,6 @@ int usb_write16(struct adapter *adapter, u32 addr, u16 val)
->  	u16 index;
->  	u16 len;
->  	__le32 data;
-> -	int ret;
->
->
->  	request = 0x05;
-> @@ -584,10 +581,7 @@ int usb_write16(struct adapter *adapter, u32 addr, u16 val)
->
->  	data = cpu_to_le32(val & 0x0000ffff);
->
-> -	ret = usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
-> -
-> -
-> -	return ret;
-> +	return usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
->  }
->
->  int usb_write32(struct adapter *adapter, u32 addr, u32 val)
-> @@ -598,7 +592,6 @@ int usb_write32(struct adapter *adapter, u32 addr, u32 val)
->  	u16 index;
->  	u16 len;
->  	__le32 data;
-> -	int ret;
->
->
->  	request = 0x05;
-> @@ -609,10 +602,7 @@ int usb_write32(struct adapter *adapter, u32 addr, u32 val)
->  	len = 4;
->  	data = cpu_to_le32(val);
->
-> -	ret = usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
-> -
-> -
-> -	return ret;
-> +	return usbctrl_vendorreq(adapter, request, wvalue, index, &data, len, requesttype);
->  }
->
->  static void usb_write_port_complete(struct urb *purb, struct pt_regs *regs)
+>  int mdc_null_inode(struct obd_export *exp,
 > --
 > 1.9.3
 >
@@ -141,7 +94,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/b9c765d115a8845bd37120165627f37c29af1b9c.1425035005.git.mahfouz.saif.elyazal%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/6d810f755db18473df909a705c5258025103e33f.1425035010.git.mahfouz.saif.elyazal%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
