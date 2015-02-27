@@ -3,49 +3,109 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,7b48250ea3e3ea63
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.140.216.150 with SMTP id m144mr20993238qhb.9.1425251331146;
-        Sun, 01 Mar 2015 15:08:51 -0800 (PST)
+X-Received: by 10.152.4.229 with SMTP id n5mr2286551lan.1.1425063391418;
+        Fri, 27 Feb 2015 10:56:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.142.98 with SMTP id rv2ls735254igb.42.canary; Sun, 01 Mar
- 2015 15:08:50 -0800 (PST)
-X-Received: by 10.66.66.1 with SMTP id b1mr23088827pat.8.1425251330957;
-        Sun, 01 Mar 2015 15:08:50 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id ks4si1285530pbc.1.2015.03.01.15.08.50
+Received: by 10.180.126.35 with SMTP id mv3ls180377wib.7.gmail; Fri, 27 Feb
+ 2015 10:56:31 -0800 (PST)
+X-Received: by 10.194.95.67 with SMTP id di3mr816340wjb.0.1425063391069;
+        Fri, 27 Feb 2015 10:56:31 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
+        by gmr-mx.google.com with ESMTPS id el6si174101wib.2.2015.02.27.10.56.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 15:08:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Fri, 27 Feb 2015 10:56:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A9B582C;
-	Sun,  1 Mar 2015 23:08:50 +0000 (UTC)
-Date: Sun, 1 Mar 2015 15:08:50 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lustre: ldlm: Fix
- do not add new typedefs
-Message-ID: <20150301230850.GB10671@kroah.com>
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-x234.google.com with SMTP id k48so22150185wev.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 10:56:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=gD1FLRafSm5DJLdgyeSql37NycOnUMf9FqXNMpLe+C8=;
+        b=eXIwOgAfxW77WXO5VEKuSTZoCR73OfNnNQjx/3auVk1bJ8EKQ61v5bgCXh9E+liaL1
+         vTxtfJZeFUSeIxPHK08IQA1s7a21a4NK0SX9wEToL8yOzwkJt5RUWNR20hktk7rSFEjl
+         92u3hN9ckmux54tUZE6J2ISRRMSOanDDkP48T+2gAyn1P5GfkeZOEc3XeZ0S06DGDAlj
+         LW4Ehsxv1Q5qiymi05h9V3/JtgRi4OskdG5xCjeR63k0aMPTb9Uz5ph+RdZSZIZNcqXV
+         0l+2xqYr5CBV4UVUpmwj/LA9IKrXfjpeFC3V7oSNoc0L4sC6ziRn3yYZWPMYLqOcL412
+         jNhQ==
+X-Received: by 10.194.158.39 with SMTP id wr7mr31288969wjb.118.1425063390972;
+        Fri, 27 Feb 2015 10:56:30 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneensa-VirtualBox ([79.170.55.43])
+        by mx.google.com with ESMTPSA id j9sm7152843wjy.18.2015.02.27.10.56.28
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Feb 2015 10:56:29 -0800 (PST)
+Received: by haneensa-VirtualBox (Postfix, from userid 1000)
+	id 84F6763377; Fri, 27 Feb 2015 21:56:26 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH v2] Staging: lustre: lustre: ldlm: Fix do not add new typedefs
+Date: Fri, 27 Feb 2015 21:56:24 +0300
+Message-Id: <1425063384-22673-1-git-send-email-hamohammed.sa@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1425045406-25950-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425045406-25950-1-git-send-email-hamohammed.sa@gmail.com>
- <1425063384-22673-1-git-send-email-hamohammed.sa@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1425063384-22673-1-git-send-email-hamohammed.sa@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Fri, Feb 27, 2015 at 09:56:24PM +0300, Haneen Mohammed wrote:
-> This patch fixes "do not add new typedefs" warning generated by
-> checkpatch.pl.
-> Update related files.
-> 
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
-> ---
-> v2: Fix compilation errors. resolved one typedef and left the other. 
+This patch fixes "do not add new typedefs" warning generated by
+checkpatch.pl.
+Update related files.
 
-Can you fix up the other one in a separate patch?
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+v2: Fix compilation errors. resolved one typedef and left the other. 
+
+ drivers/staging/lustre/lustre/ldlm/ldlm_internal.h | 6 +++---
+ drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+index 20e64cd..17271b0 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+@@ -131,12 +131,12 @@ struct ldlm_cb_set_arg {
+ 	union ldlm_gl_desc		*gl_desc; /* glimpse AST descriptor */
+ };
+ 
+-typedef enum {
++enum ldlm_desc_ast_t {
+ 	LDLM_WORK_BL_AST,
+ 	LDLM_WORK_CP_AST,
+ 	LDLM_WORK_REVOKE_AST,
+ 	LDLM_WORK_GL_AST
+-} ldlm_desc_ast_t;
++};
+ 
+ void ldlm_grant_lock(struct ldlm_lock *lock, struct list_head *work_list);
+ int ldlm_fill_lvb(struct ldlm_lock *lock, struct req_capsule *pill,
+@@ -155,7 +155,7 @@ void ldlm_lock_decref_internal_nolock(struct ldlm_lock *, __u32 mode);
+ void ldlm_add_ast_work_item(struct ldlm_lock *lock, struct ldlm_lock *new,
+ 			    struct list_head *work_list);
+ int ldlm_run_ast_work(struct ldlm_namespace *ns, struct list_head *rpc_list,
+-		      ldlm_desc_ast_t ast_type);
++		      enum ldlm_desc_ast_t ast_type);
+ int ldlm_work_gl_ast_lock(struct ptlrpc_request_set *rqset, void *opaq);
+ int ldlm_lock_remove_from_lru(struct ldlm_lock *lock);
+ int ldlm_lock_remove_from_lru_nolock(struct ldlm_lock *lock);
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+index 8191005..d7fa934 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+@@ -1805,7 +1805,7 @@ int ldlm_work_gl_ast_lock(struct ptlrpc_request_set *rqset, void *opaq)
+  * one.
+  */
+ int ldlm_run_ast_work(struct ldlm_namespace *ns, struct list_head *rpc_list,
+-		      ldlm_desc_ast_t ast_type)
++		      enum ldlm_desc_ast_t ast_type)
+ {
+ 	struct ldlm_cb_set_arg *arg;
+ 	set_producer_func       work_ast_lock;
+-- 
+1.9.1
 
 
