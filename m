@@ -1,105 +1,168 @@
-X-GM-THRID: 6803797198848917504
-X-Received: by 2002:ac8:1e8e:: with SMTP id c14mr13633085qtm.330.1584132481084;
-        Fri, 13 Mar 2020 13:48:01 -0700 (PDT)
+X-GM-THRID: 5035636293632
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,82702b7a806ab81c,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.101.101 with SMTP id ff5mr1022976wib.5.1425116807444;
+        Sat, 28 Feb 2015 01:46:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:1971:: with SMTP id g46ls2695669qtk.7.gmail; Fri, 13 Mar
- 2020 13:47:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvquhoLh36DbbbOAq4NZV01lhAhySLoXZJFvDZjOjjf4U0WKOmkZzFlwiisXHmrfOeEmEK3
-X-Received: by 2002:ac8:4e25:: with SMTP id d5mr14324694qtw.361.1584132479525;
-        Fri, 13 Mar 2020 13:47:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584132479; cv=none;
-        d=google.com; s=arc-20160816;
-        b=OWI6WWpRfh52z63RiJ5bedptm42Yl6fcJHdRzAHsWLmvxGW+dV+XaS4kTG5FQA1j46
-         HTHlFaSOYI2JN4oQLxIcSkC5P/RGMiV8Yd/Ry4SUnLFE/XJtJML2t9BgbCTZxLn2xrWl
-         jNwiFIr861OEbqu5j4bFwHGSB9a5TDM2ip10g7rx/1fD5rtqrR8au8rrK9FU7G6pIjX/
-         G4zOn03rY6bapcfUzXtx3Lb0WxMibMMA4icF0qt+JtVhClml5VrN1fbach5JgPcguVwj
-         5d7eOvAJFw0xmLxB/aDbz+0xFh9MV6NNanxuOw3Xrm3/NPGnN337nynIgrZ3Qm8LnUOp
-         pYxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DAmqzViTdKvhO97MYd459bKWGVLAq49GGb/jhmPflBU=;
-        b=0KmJuF0x7XSjKkOjXV9KsBEYJRXs+cEsAgQrjAkRMVEyJIDpBhwRkgnOJHOgo52eRc
-         L70FKpvmFWFv4uiP6TlmffkcczWwyTrFAAz6F0z8aGMlTQsODwFkZku29YHJQBfZlp2Q
-         Y5+/L01BlfqBeEVw5OgiVVZKvX29L69Vs3jmGaO2LNGbsPijsi8CtqTk7cugA2oC80QA
-         efshwubrQ5JtgOjwQK29PxsqGpbEnpc2kh9f6WcWdZboaep2kPycHgEJlt+PGRVYiZUT
-         DcQY1/Qvl6k2NmqBCvHYifOc3iXUBGnzJ0O3unMz44xoXjookzNNhCjpiICi5WuOxk3L
-         bFfA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=KUFpH1aB;
-       spf=neutral (google.com: 2607:f8b0:4864:20::541 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Return-Path: <kgupta@es.iitr.ac.in>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id c194si470355qkb.0.2020.03.13.13.47.58
+Received: by 10.152.198.231 with SMTP id jf7ls262835lac.92.gmail; Sat, 28 Feb
+ 2015 01:46:46 -0800 (PST)
+X-Received: by 10.112.145.133 with SMTP id su5mr2576215lbb.17.1425116806862;
+        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wg0-x230.google.com (mail-wg0-x230.google.com. [2a00:1450:400c:c00::230])
+        by gmr-mx.google.com with ESMTPS id ta1si269546wic.1.2015.02.28.01.46.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 13:47:58 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::541 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::541;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) client-ip=2a00:1450:400c:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=KUFpH1aB;
-       spf=neutral (google.com: 2607:f8b0:4864:20::541 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Received: by mail-pg1-x541.google.com with SMTP id m5so5672002pgg.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 13:47:58 -0700 (PDT)
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wghk14 with SMTP id k14so24704343wgh.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 01:46:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
-        h=from:to:cc:subject:date:message-id;
-        bh=DAmqzViTdKvhO97MYd459bKWGVLAq49GGb/jhmPflBU=;
-        b=KUFpH1aBSbqkXombK5jcaTjyMvM0wgaQ23673GI94vlOcyMB4bM/TRJb8oeAKyImi0
-         NAQOQeD66IH8zprRTEXdvH3tZCcum5wZ0Orf9jEDrwod7TcCF8BFVhbqfqKm72kUPlgj
-         VqKWve86NzUA7wppwfMMq3yS2nhqefimoHUZZAjWTk8eLBV8ZQzcYqlAgRqJ2JB9lkyG
-         zevxi8mDeIr+nPYAD+7QP+/G4WjXEk3VWarChsdG2L0A/kjyReaUMwYt3A/+K6nopu7z
-         q5UzaRUeC/yjjdZ/05yCkUP/8xJDyLDEeZcUt439Q94FbI9WgD2JxUecd6m7Oc53lGOx
-         jdSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=DAmqzViTdKvhO97MYd459bKWGVLAq49GGb/jhmPflBU=;
-        b=gnrPm6iS46+YRPeSZKDr9jp4hpDpfhWwq7xW4fVZrqHQ72QncqSKpTQA14OjjEuakA
-         LpoBqJJwvfsQe+3jSeTqTeEZAg/zLFcNm9mn6JOiGJQ3X1Q7qV3sVW+i1Mf2hbgaRbF0
-         y3Lj57oA96sctIMT6MtAx4HR7anVF/Z8Ya6fxkPs/h8tlHB5Dvzj3hRHDuQ50rnDhn+/
-         KOUsbzs8SkaHfnatiMaFJL2uX2SvM2CvL78ob4p49N0NXMtwq938UZ5bHRXD5D/n2tai
-         qfs6Vv372tuxdWExZsqXW5g5Qakr9WlZ6QGSMeZdNo6vfkB42BlLHu0l/F3fFF5ujP1p
-         7dNQ==
-X-Gm-Message-State: ANhLgQ27ONi2J8G4IedyZYxU3mLbrWb+1Q0ZTNi6/2E1UWwIGX3n1pJE
-	q9yWV35mEziCbskpj3kpJWL7gQ==
-X-Received: by 2002:a63:91c1:: with SMTP id l184mr14333425pge.341.1584132477219;
-        Fri, 13 Mar 2020 13:47:57 -0700 (PDT)
-Return-Path: <kgupta@es.iitr.ac.in>
-Received: from kaaira-HP-Pavilion-Notebook ([103.113.213.153])
-        by smtp.gmail.com with ESMTPSA id c1sm3333417pje.24.2020.03.13.13.47.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 13:47:56 -0700 (PDT)
-From: Kaaira Gupta <kgupta@es.iitr.ac.in>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Cc: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Subject: [PATCH 0/5] patchset for clean-ups in media
-Date: Sat, 14 Mar 2020 02:17:34 +0530
-Message-Id: <20200313204739.32676-1-kgupta@es.iitr.ac.in>
-X-Mailer: git-send-email 2.17.1
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=Kd8Z8RyLq4nguS4E/FtKzjQlhHMn3FGQsuBnZOcH3w0=;
+        b=xF2m5HrM+wsfN57crhpFIhcGvZ8HNIU4AKLa/DJqe/BKyh+4xXtQ0x2JBY4KrT1NVK
+         n3RiixsXHyWK42pJpz5SNT+z1aQvy+7T7xSnuvwzZFZ0CLiBmoMAQnXUjkaEqh0LSaLI
+         a3ao6XJLS9M1ny/XS2vz4yfzvpQ4juT/YLZSxqX6YsMtC2QakoUIMZSqu/UUw08zBTrT
+         F0QODbYp828591eecZT0u4B5Lgv4IASnJh1Rw3q+Ebmnu5asl1vCcz7BNO+ozd4SIsHa
+         cg0CT19GfJ+nbPJ/dnZWldevDot9sguyGQIrEeZEolBv8RJhIvRX+mgAhRhZlO/jb9l2
+         rblw==
+X-Received: by 10.194.120.40 with SMTP id kz8mr37265474wjb.21.1425116806786;
+        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id fo15sm6340805wic.19.2015.02.28.01.46.45
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 28 Feb 2015 01:46:46 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH 1/3] Staging: rtl8192u: Add space after close brace
+Date: Sat, 28 Feb 2015 10:46:39 +0100
+Message-Id: <f586128af850107c136d94932bd95ca760e2ef43.1425116760.git.ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1425116760.git.ksenija.stanojevic@gmail.com>
+References: <cover.1425116760.git.ksenija.stanojevic@gmail.com>
 
-This patchset contains cleanups for staging driver `media`.
-It removes a few unnecessary parentheses and temporary variables. It
-also aligns lines with open parentheses and adds parentheses around and
-argument in a macro to make the macro safe of any precedence issues that
-might come.
+This patch adds space after close brace. Issue found by checkpatch.pl
 
-Kaaira Gupta (5):
-  staging: media: allegro: align with parenthesis
-  staging: media: imx: remove temporary variable
-  staging: media: imx: remove parentheses
-  staging: media: hanto: remove parentheses
-  staging: media: hantro: add parentheses
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
- drivers/staging/media/allegro-dvt/allegro-core.c | 12 ++++++------
- drivers/staging/media/hantro/hantro_postproc.c   |  4 ++--
- drivers/staging/media/imx/imx6-mipi-csi2.c       |  9 +++------
- drivers/staging/media/imx/imx7-mipi-csis.c       |  2 +-
- 4 files changed, 12 insertions(+), 15 deletions(-)
-
+diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h b/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h
+index c3aabba..a968215 100644
+--- a/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h
++++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_HT.h
+@@ -61,7 +61,7 @@ typedef enum _HT_MCS_RATE{
+ typedef enum _HT_CHANNEL_WIDTH{
+ 	HT_CHANNEL_WIDTH_20 = 0,
+ 	HT_CHANNEL_WIDTH_20_40 = 1,
+-}HT_CHANNEL_WIDTH, *PHT_CHANNEL_WIDTH;
++} HT_CHANNEL_WIDTH, *PHT_CHANNEL_WIDTH;
+ 
+ //
+ // Represent Extension Channel Offset in HT Capabilities
+@@ -72,7 +72,7 @@ typedef enum _HT_EXTCHNL_OFFSET{
+ 	HT_EXTCHNL_OFFSET_UPPER = 1,
+ 	HT_EXTCHNL_OFFSET_NO_DEF = 2,
+ 	HT_EXTCHNL_OFFSET_LOWER = 3,
+-}HT_EXTCHNL_OFFSET, *PHT_EXTCHNL_OFFSET;
++} HT_EXTCHNL_OFFSET, *PHT_EXTCHNL_OFFSET;
+ 
+ typedef enum _CHNLOP{
+ 	CHNLOP_NONE = 0, // No Action now
+@@ -139,7 +139,7 @@ typedef enum _HT_Bandwidth_40MHZ_Sub_Carrier{
+ 	SC_MODE_LOWER = 1,
+ 	SC_MODE_UPPER = 2,
+ 	SC_MODE_FULL40MHZ = 3,
+-}HT_BW40_SC_E;
++} HT_BW40_SC_E;
+ 
+ typedef	struct _HT_CAPABILITY_ELE{
+ 
+@@ -224,13 +224,13 @@ typedef struct _MIMOPS_CTRL{
+ typedef enum _HT_SPEC_VER{
+ 	HT_SPEC_VER_IEEE = 0,
+ 	HT_SPEC_VER_EWC = 1,
+-}HT_SPEC_VER, *PHT_SPEC_VER;
++} HT_SPEC_VER, *PHT_SPEC_VER;
+ 
+ typedef enum _HT_AGGRE_MODE_E{
+ 	HT_AGG_AUTO = 0,
+ 	HT_AGG_FORCE_ENABLE = 1,
+ 	HT_AGG_FORCE_DISABLE = 2,
+-}HT_AGGRE_MODE_E, *PHT_AGGRE_MODE_E;
++} HT_AGGRE_MODE_E, *PHT_AGGRE_MODE_E;
+ 
+ //------------------------------------------------------------
+ //  The Data structure is used to keep HT related variables when card is
+@@ -366,7 +366,7 @@ typedef struct _RT_HTINFO_STA_ENTRY{
+ 	u8			McsRateSet[16];
+ 
+ 
+-}RT_HTINFO_STA_ENTRY, *PRT_HTINFO_STA_ENTRY;
++} RT_HTINFO_STA_ENTRY, *PRT_HTINFO_STA_ENTRY;
+ 
+ 
+ 
+@@ -402,19 +402,19 @@ typedef struct _MIMO_RSSI{
+ 	u32	AntennaC;
+ 	u32	AntennaD;
+ 	u32	Average;
+-}MIMO_RSSI, *PMIMO_RSSI;
++} MIMO_RSSI, *PMIMO_RSSI;
+ 
+ typedef struct _MIMO_EVM{
+ 	u32	EVM1;
+ 	u32    EVM2;
+-}MIMO_EVM, *PMIMO_EVM;
++} MIMO_EVM, *PMIMO_EVM;
+ 
+ typedef struct _FALSE_ALARM_STATISTICS{
+ 	u32	Cnt_Parity_Fail;
+ 	u32    Cnt_Rate_Illegal;
+ 	u32	Cnt_Crc8_fail;
+ 	u32	Cnt_all;
+-}FALSE_ALARM_STATISTICS, *PFALSE_ALARM_STATISTICS;
++} FALSE_ALARM_STATISTICS, *PFALSE_ALARM_STATISTICS;
+ 
+ 
+ extern u8 MCS_FILTER_ALL[16];
+@@ -447,7 +447,7 @@ typedef enum _HT_AGGRE_SIZE{
+ 	HT_AGG_SIZE_16K = 1,
+ 	HT_AGG_SIZE_32K = 2,
+ 	HT_AGG_SIZE_64K = 3,
+-}HT_AGGRE_SIZE_E, *PHT_AGGRE_SIZE_E;
++} HT_AGGRE_SIZE_E, *PHT_AGGRE_SIZE_E;
+ 
+ /* Indicate different AP vendor for IOT issue */
+ typedef enum _HT_IOT_PEER
+@@ -459,7 +459,7 @@ typedef enum _HT_IOT_PEER
+ 	HT_IOT_PEER_ATHEROS = 4,
+ 	HT_IOT_PEER_CISCO= 5,
+ 	HT_IOT_PEER_MAX = 6
+-}HT_IOT_PEER_E, *PHTIOT_PEER_E;
++} HT_IOT_PEER_E, *PHTIOT_PEER_E;
+ 
+ //
+ // IOT Action for different AP
+@@ -475,6 +475,6 @@ typedef enum _HT_IOT_ACTION{
+ 	HT_IOT_ACT_CDD_FSYNC = 0x00000080,
+ 	HT_IOT_ACT_PURE_N_MODE = 0x00000100,
+ 	HT_IOT_ACT_FORCED_CTS2SELF = 0x00000200,
+-}HT_IOT_ACTION_E, *PHT_IOT_ACTION_E;
++} HT_IOT_ACTION_E, *PHT_IOT_ACTION_E;
+ 
+ #endif //_RTL819XU_HTTYPE_H_
 -- 
-2.17.1
+1.9.1
 
 
