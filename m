@@ -1,60 +1,98 @@
 X-GM-THRID: 4525053181952
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,253b09dbad964a54
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.160.176 with SMTP id xl16mr1457217wib.6.1425197807751;
-        Sun, 01 Mar 2015 00:16:47 -0800 (PST)
+X-Received: by 10.152.88.40 with SMTP id bd8mr2842718lab.0.1425152803625;
+        Sat, 28 Feb 2015 11:46:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.198.198 with SMTP id je6ls334062wic.54.gmail; Sun, 01 Mar
- 2015 00:16:47 -0800 (PST)
-X-Received: by 10.180.13.195 with SMTP id j3mr1455887wic.2.1425197807473;
-        Sun, 01 Mar 2015 00:16:47 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
-        by gmr-mx.google.com with ESMTPS id i7si433240wif.0.2015.03.01.00.16.47
+Received: by 10.152.203.171 with SMTP id kr11ls273658lac.36.gmail; Sat, 28 Feb
+ 2015 11:46:43 -0800 (PST)
+X-Received: by 10.152.6.232 with SMTP id e8mr2834576laa.2.1425152803201;
+        Sat, 28 Feb 2015 11:46:43 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l8si385930wia.0.2015.02.28.11.46.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 00:16:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 28 Feb 2015 11:46:43 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=daniel.baluta@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by wiwl15 with SMTP id l15so8462451wiw.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 00:16:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:sender:in-reply-to:references:date:message-id:subject
-         :from:to:cc:content-type;
-        bh=Mf66RxdCk53kfvtfnsCV9lbtcM2ezpFmvx9NwBMdB9M=;
-        b=pwnRk+x80etSMes6HM00bY0qdqS2j84LQGGbsabGb2QZcyCuTprbvj7WvDE2vg+OCf
-         qHTooAjATo7CnTEYZR5V13IX8miSBH2PXVZCyZnddTR/pbZajHxTxg2yBQpj2i6DzmBw
-         chPD6pLhoXeX74tn1ciNiEBa5aMB+z9QiFsdDW4BpQkpIF/rhU04KNWEhLYP7qJOF3N1
-         GlEgWLyc6cVo9Sn8xf4fxN5VXoehHQ1A4qdud4fjoNvKAltbpLYeiqijmm9gPWyu6GD5
-         AyKMz5Akgr/2KTz/z2cX6uMBxeYzVek6tr3aWROSGy1ZSawwfesFQW/fnnAvdeaEYSDj
-         Boow==
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,668,1418079600"; 
+   d="scan'208";a="101651510"
+Received: from unknown (HELO hadrien.local) ([207.164.135.98])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Feb 2015 20:46:41 +0100
+Date: Sat, 28 Feb 2015 14:46:39 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 01/10] Staging: lustre: Add blank
+ line after declarations
+In-Reply-To: <1425122715-2938-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.10.1502281446090.2688@hadrien>
+References: <1425122715-2938-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-X-Received: by 10.181.27.199 with SMTP id ji7mr23272658wid.76.1425197807398;
- Sun, 01 Mar 2015 00:16:47 -0800 (PST)
-Sender: daniel.baluta@gmail.com
-Received: by 10.28.3.68 with HTTP; Sun, 1 Mar 2015 00:16:47 -0800 (PST)
-In-Reply-To: <1425065015-22870-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-References: <1425065015-22870-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-Date: Sun, 1 Mar 2015 10:16:47 +0200
-X-Google-Sender-Auth: z4zl3crMB1-fBQWjVgChFQKWcMQ
-Message-ID: <CAEnQRZDeNxfPbAs9U+MzgBBN7UyGLT_MFpxL_tmGBrRdQAcKWA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Add blank line after declarations
-From: Daniel Baluta <daniel.baluta@intel.com>
-To: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Fri, Feb 27, 2015 at 9:23 PM, Melike Yurtoglu
-<aysemelikeyurtoglu@gmail.com> wrote:
-> WARNING: "Missing a blank line after declarations"
-> Add blank line after declarations. That was found by running checkpatch
+On Sat, 28 Feb 2015, Dilek Uzulmez wrote:
+
+> The following patch fixes the checkpatch.pl warning:
+> WARNING: Missing a blank line after declarations
 >
-> Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+> The warning was handled in ten files:
 
-Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
+This information should be specified in a cover letter.  The log message
+for this patch should only mention what is done in this patch.
+
+julia
+
+>           -import.c
+>           -client.c
+>           -llog_client.c
+>           -lproc_ptlrpc.c
+>           -pack_generic.c
+>           -pinger.c
+>           -ptlrpcd.c
+>           -sec.c
+>           -sec_null.c
+>           -service.c
+>
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>
+> Changes in v2:
+>     All put in a patch and changed commit message
+>
+>  drivers/staging/lustre/lustre/ptlrpc/import.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/staging/lustre/lustre/ptlrpc/import.c b/drivers/staging/lustre/lustre/ptlrpc/import.c
+> index 4ceb90d..165aa82 100644
+> --- a/drivers/staging/lustre/lustre/ptlrpc/import.c
+> +++ b/drivers/staging/lustre/lustre/ptlrpc/import.c
+> @@ -448,6 +448,7 @@ int ptlrpc_reconnect_import(struct obd_import *imp)
+>  	if (atomic_read(&imp->imp_inval_count) > 0) {
+>  		int rc;
+>  		struct l_wait_info lwi = LWI_INTR(LWI_ON_SIGNAL_NOOP, NULL);
+> +
+>  		rc = l_wait_event(imp->imp_recovery_waitq,
+>  				  (atomic_read(&imp->imp_inval_count) == 0),
+>  				  &lwi);
+> @@ -529,6 +530,7 @@ static int import_select_connection(struct obd_import *imp)
+>  	   trying to reconnect on it.) */
+>  	if (tried_all && (imp->imp_conn_list.next == &imp_conn->oic_item)) {
+>  		struct adaptive_timeout *at = &imp->imp_at.iat_net_latency;
+> +
+>  		if (at_get(at) < CONNECTION_SWITCH_MAX) {
+>  			at_measured(at, at_get(at) + CONNECTION_SWITCH_INC);
+>  			if (at_get(at) > CONNECTION_SWITCH_MAX)
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425122715-2938-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
