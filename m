@@ -1,85 +1,93 @@
-X-GM-THRID: 6648489836544
-X-Received: by 10.180.87.166 with SMTP id az6mr4109867wib.1.1425494192164;
-        Wed, 04 Mar 2015 10:36:32 -0800 (PST)
+X-GM-THRID: 5015409262592
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,eaeb13245395f719,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.80.7 with SMTP id n7mr15516960obx.10.1425091440219;
+        Fri, 27 Feb 2015 18:44:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.104 with SMTP id r8ls205582lar.48.gmail; Wed, 04 Mar
- 2015 10:36:31 -0800 (PST)
-X-Received: by 10.112.224.12 with SMTP id qy12mr904384lbc.10.1425494191644;
-        Wed, 04 Mar 2015 10:36:31 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
-        by gmr-mx.google.com with ESMTPS id gj20si120477wic.1.2015.03.04.10.36.31
+Received: by 10.107.6.164 with SMTP id f36ls790786ioi.108.gmail; Fri, 27 Feb
+ 2015 18:44:00 -0800 (PST)
+X-Received: by 10.50.61.132 with SMTP id p4mr6106959igr.7.1425091440060;
+        Fri, 27 Feb 2015 18:44:00 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id xj4si680042pbc.2.2015.02.27.18.44.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Mar 2015 10:36:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
+        Fri, 27 Feb 2015 18:44:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wivr20 with SMTP id r20so1214241wiv.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 10:36:31 -0800 (PST)
+Received: by pabrd3 with SMTP id rd3so27289375pab.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 18:44:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=8OA56kXor2n6sWLhcHIWrIzXmHQutYJBhRoKIJcKz78=;
-        b=CiyoK5CVhlE5SrE4iIn2U6qLRk9hGDhhZuMyI4qNQc6D9KaWz30y2Gg3vXxf1cpDFO
-         qbSP1dgTGb1a4Iilhilbqn7n+K/VpgQ/Xpu1ADPYirfIyo+/XgMse1vRhwl7m/WWOguG
-         EVachcuI1+AbFZPgW4dQi7m+v23nqG2w4jXcWb8oL5qLwDgyl2IIsZrXmj0cbTzOuPbU
-         CtAHZRHH53Ny5e7CRjcRZByQyLlchpTOd+K7wFyIvpGjLMewEfL2assZ+izl/hAVPAr+
-         jvxOFqjdaYvMORE2q4NQweWkhhW4iji2y0oOF9bLStcZWUBImfHC6nD34NuXncJfW6vu
-         4aKg==
-X-Received: by 10.180.214.99 with SMTP id nz3mr15643647wic.82.1425494191548;
-        Wed, 04 Mar 2015 10:36:31 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([85.107.63.81])
-        by mx.google.com with ESMTPSA id l4sm26324104wiw.9.2015.03.04.10.36.30
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 04 Mar 2015 10:36:31 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=BBj1RgdxTDmnXNLOdqpEOtgY6DHA+C3oYXr1bhvBexc=;
+        b=cQsfaVZ7LEmUzpEOEWQcb5ZIJd15X4ezVKi28CcOuUnMZC+PAjTWJK0qg6TM9WweA0
+         eA4qSZrhpnFdXeqqAlr4Y//TwSIyCQTyaTVFz3vuwxw7/mQankDSSl2Di/DE+Gf/43O/
+         o7Xo4CPviONAeYHUp1EuByq89Vgddc2AYpqCTUlt8R9QXSUMr8A2z19fRmv946neMWgR
+         LbtIIidrAh5aCA/3qF0n4enIbjgjwwk+9eiKM10D+daX55Zvxy3n5FjUONvg1e5zQmLo
+         qLMV254ZC48LIFc/fnxEFHiFRJcnPrYsn/FHEBB2Sb3td0kxf0E3hGFJZS7DLd2JMLYd
+         A+Wg==
+X-Received: by 10.66.63.106 with SMTP id f10mr29265703pas.0.1425091439892;
+        Fri, 27 Feb 2015 18:43:59 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([150.107.242.202])
+        by mx.google.com with ESMTPSA id d11sm5269599pbu.10.2015.02.27.18.43.57
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 27 Feb 2015 18:43:59 -0800 (PST)
+Date: Sat, 28 Feb 2015 08:13:54 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: vt6656: Fix prefer ether_addr_copy() over memcpy()
-Date: Wed,  4 Mar 2015 20:36:44 +0200
-Message-Id: <1425494204-8831-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH] Staging: rtl8712: Use del_timer
+Message-ID: <20150228024354.GA2767@vaishali-Ideapad-Z570>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Fixed the checkpatch.pl warning in rxtx.c file
-WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
-addresses are __aligned(2)
+Use timer API function del_timer instead of driver
+specific function _cancel_timer_ex as it is a standard
+way for deactivating a timer.
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+This is done using Coccinelle and semantic patch used for
+this is as follows:
+
+@@ expression x; @@
+- _cancel_timer_ex (&x);
++ del_timer (&x);
+
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
 ---
- drivers/staging/vt6656/rxtx.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+v1: Here, I am not sure whether I should use del_timer or
+    del_timer_sync [though function definition is using
+    del_timer]. That's why I am sending a sample patch. I will
+    go for removing all cases of _cancel_timer_ex once I have
+    cleae idea about the use of both functions.
 
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index 33baf26..f6c2cf8 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -755,9 +755,9 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
- 		else
- 			mic_hdr->hlen = cpu_to_be16(22);
- 
--		memcpy(mic_hdr->addr1, hdr->addr1, ETH_ALEN);
--		memcpy(mic_hdr->addr2, hdr->addr2, ETH_ALEN);
--		memcpy(mic_hdr->addr3, hdr->addr3, ETH_ALEN);
-+		ether_addr_copy(mic_hdr->addr1, hdr->addr1);
-+		ether_addr_copy(mic_hdr->addr2, hdr->addr2);
-+		ether_addr_copy(mic_hdr->addr3, hdr->addr3);
- 
- 		mic_hdr->frame_control = cpu_to_le16(
- 			le16_to_cpu(hdr->frame_control) & 0xc78f);
-@@ -765,7 +765,7 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
- 				le16_to_cpu(hdr->seq_ctrl) & 0xf);
- 
- 		if (ieee80211_has_a4(hdr->frame_control))
--			memcpy(mic_hdr->addr4, hdr->addr4, ETH_ALEN);
-+			ether_addr_copy(mic_hdr->addr4, hdr->addr4);
- 
- 
- 		memcpy(key_buffer, tx_key->key, WLAN_KEY_LEN_CCMP);
+ drivers/staging/rtl8712/rtl8712_recv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 546414d..0ec0bda 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -609,7 +609,7 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
+ 		spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
+ 	} else {
+ 		spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
+-		_cancel_timer_ex(&preorder_ctrl->reordering_ctrl_timer);
++		del_timer(&preorder_ctrl->reordering_ctrl_timer);
+ 	}
+ 	return _SUCCESS;
+ _err_exit:
 -- 
-1.8.3.2
+1.9.1
 
 
