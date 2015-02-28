@@ -1,68 +1,69 @@
-X-GM-THRID: 9152848986112
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,56524335c2ab2304,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.95.67 with SMTP id di3mr12390232wjb.0.1426792709983;
-        Thu, 19 Mar 2015 12:18:29 -0700 (PDT)
+X-GM-THRID: 5127900495872
+X-Received: by 10.112.167.98 with SMTP id zn2mr2663622lbb.6.1425133689790;
+        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.104.226 with SMTP id gh2ls207659wib.31.gmail; Thu, 19 Mar
- 2015 12:18:29 -0700 (PDT)
-X-Received: by 10.194.95.67 with SMTP id di3mr12390228wjb.0.1426792709737;
-        Thu, 19 Mar 2015 12:18:29 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x230.google.com (mail-wg0-x230.google.com. [2a00:1450:400c:c00::230])
-        by gmr-mx.google.com with ESMTPS id el6si482020wib.0.2015.03.19.12.18.29
+Received: by 10.152.45.68 with SMTP id k4ls300941lam.53.gmail; Sat, 28 Feb
+ 2015 06:28:09 -0800 (PST)
+X-Received: by 10.112.40.81 with SMTP id v17mr2716417lbk.5.1425133689394;
+        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id ev8si303229wib.3.2015.02.28.06.28.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2015 12:18:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) client-ip=2a00:1450:400c:c00::230;
+        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x230.google.com with SMTP id v3so71062772wgg.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 12:18:29 -0700 (PDT)
+Received: by wiwl15 with SMTP id l15so5940322wiw.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 06:28:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=BkwClzsHi8JnT+qsoATuvmTHhGBlLV4nrh2sx67mUUE=;
-        b=A9iwI7RFQxHn030TmMFjmA4LveQPK9TwfFtUShSMBmfoWGi6Pg+LmRDQR5dVJy6q33
-         NejJEkWq6v7FsViYPQF7RX4kejKwzWf98a1u0g+Q/2M96lPruYqlCyCb2hz0rnVYiBTw
-         5clAyGlPX1f5HiZBYnXESOh1mK5/GEpSvYOse4Xe1/IZ+HlNthUZYxWBfyED5THfoCql
-         NoonXO4nGTP5wILOIo7QsMAWEJYUDOzrXK7yk+E6v9aVL5Ijda4/XXz4LfKhs5pRAyv0
-         9S7uiGjM5BT4c6t1WxLd4bxTTaNZlAIwCzUGyF0b38tgIXAGn/9sfnzz5mvaPkLPsEXV
-         iH/w==
-X-Received: by 10.180.126.38 with SMTP id mv6mr18751495wib.22.1426792709662;
-        Thu, 19 Mar 2015 12:18:29 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id hw7sm3178141wjb.24.2015.03.19.12.18.28
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Mar 2015 12:18:29 -0700 (PDT)
-Date: Thu, 19 Mar 2015 21:17:44 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=iELN7d40XUoQ+ZrMStXdGh/CjMleTMYvY1iPwnucT3M=;
+        b=ttnpfXOnerDDvcHdlJdXAwN4x4ZG7aHi9tpVI6HBP2RlyiZOQK/79maQf/ZKS8/e13
+         AW5i8D0GNVHqvS0drDhxp8+Q6fWQmYWIMGenYlk9jG0jxPioVU+CiT4OE9Ds6rrO2j3d
+         pRQ3OI4gA0vts6/7h0dyPThXktoNHTfrWXj9Rj5yPoBubdqR08Kzl37yGR3uHbp2SEXk
+         JZ5TwsQ32EmZQsfogIYs71HQ6l20XcuJBBqy6Raody0T2jhiaU8K7nkW7Q8i5UIRGdOH
+         Vci/rmNboNi+Froo625j55zLoHpBxCWTJSp9DhnY12T6PoOUOftM6qvQwAfI3ehinkri
+         VYDA==
+X-Received: by 10.180.8.65 with SMTP id p1mr17253309wia.42.1425133689292;
+        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([78.178.131.202])
+        by mx.google.com with ESMTPSA id s5sm7851875wia.1.2015.02.28.06.28.07
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 28 Feb 2015 06:28:08 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] Add small improvements to iio/magnetometer hmc5843 driver
-Message-ID: <cover.1426790651.git.cristina.opriceana@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: lustre: __aligned(size) is preferred over __attribute__((aligned(size)))
+Date: Sat, 28 Feb 2015 16:28:01 +0200
+Message-Id: <1425133681-4841-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patchset reviews the iio/magnetometer hmc5843 driver and fixes incorrect
-file header, hardcoded values and reconfigures some small error checks.
+This patch fixes the checkpatch.pl warning in the drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
 
-Cristina Opriceana (3):
-  Staging: iio: Place driver in sleep mode on error
-  Staging: iio: Replace hardcoded value with number of channels
-  Staging: iio: Fix file header to match standards
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+---
+ drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/iio/magnetometer/hmc5843_core.c | 59 +++++++++++++------------
- 1 file changed, 30 insertions(+), 29 deletions(-)
-
+diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
+index f19a121..4688770 100644
+--- a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
++++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
+@@ -58,7 +58,7 @@ struct kuc_hdr {
+ 	__u8  kuc_flags;
+ 	__u16 kuc_msgtype;    /* Message type or opcode, transport-specific */
+ 	__u16 kuc_msglen;     /* Including header */
+-} __attribute__((aligned(sizeof(__u64))));
++} __aligned(sizeof(__u64));
+ 
+ #define KUC_CHANGELOG_MSG_MAXSIZE (sizeof(struct kuc_hdr)+CR_MAXSIZE)
+ 
 -- 
 1.9.1
 
