@@ -1,114 +1,77 @@
-X-GM-THRID: 5597962436608
-X-Received: by 10.194.161.194 with SMTP id xu2mr3313750wjb.1.1425245290948;
-        Sun, 01 Mar 2015 13:28:10 -0800 (PST)
+X-GM-THRID: 5105028956160
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,e0e50212896d54e6,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.6.41 with SMTP id x9mr2663506lax.10.1425124114448;
+        Sat, 28 Feb 2015 03:48:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.179.139 with SMTP id dg11ls374244lac.62.gmail; Sun, 01 Mar
- 2015 13:28:10 -0800 (PST)
-X-Received: by 10.112.138.202 with SMTP id qs10mr3257388lbb.24.1425245290427;
-        Sun, 01 Mar 2015 13:28:10 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
-        by gmr-mx.google.com with ESMTPS id o3si540384wib.2.2015.03.01.13.28.10
+Received: by 10.152.204.200 with SMTP id la8ls272037lac.90.gmail; Sat, 28 Feb
+ 2015 03:48:33 -0800 (PST)
+X-Received: by 10.112.138.202 with SMTP id qs10mr2610818lbb.24.1425124113909;
+        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id ev8si279845wib.3.2015.02.28.03.48.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 13:28:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
+        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22a.google.com with SMTP id r20so10801671wiv.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 13:28:10 -0800 (PST)
+Received: by widem10 with SMTP id em10so5461230wid.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 03:48:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=+EkEeAbH1PA0Onmfe2xbEq6AoWc5lM5O12Ra8+gQMQg=;
-        b=QeYe+28KiMcby2EcAmEIoxhhTrh2yi7lVPVJ0Ps4PNh9+7jqbxF2NkuZld4yZW0zea
-         o/e/I+veiUIR+har2mGQIsT9v6sTt9hdExgbD+yJBzZA0OLOHD/Em/2YTmjupwh5tAMo
-         Pv0au553NKMjtyFbF4b8NN7Z+2DQhuuJooT3cfioOQugI6Muyv+fVwAiZ/DnF+0P3jzX
-         Pni9xM7o9RKAC4ytNyBqbBtGqXCPY5zU3cISY5CsOrHr39j3wjiAIzvg8nE951td39zb
-         WsrVyN0JjNTZ69vLsbcCgN9mlL2ScKPwMe1jiTlINnpG+5/iSJR8Erujl5+OTB0daNe+
-         jfww==
-X-Received: by 10.180.37.110 with SMTP id x14mr29547652wij.45.1425245290318;
-        Sun, 01 Mar 2015 13:28:10 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id m9sm13149076wiz.24.2015.03.01.13.28.09
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=BZ/t6llK9pcdr+IO1Mh0vI3UpWQRcEwlw0IMchoOnew=;
+        b=qx1sgbN2jTmSyOPMgcIfPKGMqJUebrw7mAH+XGTyhgZDDzC5GS50jLDvoHI8u8FSA6
+         mIQzDSCEOsRIWIXNY4amDXes7ZLIqwsS4bmF8uIIQTpY9DrbuGoWjgmKJ3WQp4U6tLaW
+         VHkdgt6IfWuZWKRIPZ+wFYQtFulKpc+Fw48fw5VjMaxWA6KOApoRkA5sxrVHi+U+RUM8
+         U9ERoDJ2CjC7Kt758S6Ck25Ww99Uz7RraeaNf5eQExgCiwl+CJJx1qQ0fNxrzMCMa6Q+
+         LXQ+Na+ahS9UCEssn3USZGQh4WszrSGd6h+HLyI4kUmUg75V2OVKIXHmFuIE6wQhp481
+         zUQA==
+X-Received: by 10.194.243.1 with SMTP id wu1mr38568584wjc.69.1425124113828;
+        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id m4sm6726468wik.20.2015.02.28.03.48.32
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 13:28:09 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8192u: ieee80211: Fix printk debug style warning
-Date: Sun,  1 Mar 2015 23:28:03 +0200
-Message-Id: <1425245283-10867-1-git-send-email-haticeerturk27@gmail.com>
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH 3/3] Staging: rtl8192u: Replace printk() with netdev_dbg()
+Date: Sat, 28 Feb 2015 12:48:27 +0100
+Message-Id: <8a791746344b01c621f471346f63d8bbd58c82c1.1425124010.git.ksenija.stanojevic@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1425124010.git.ksenija.stanojevic@gmail.com>
+References: <cover.1425124010.git.ksenija.stanojevic@gmail.com>
 
-This fixes the following checkpatch.pl warnings:
-WARNING: Prefer [subsystem eg: netdev]_dbg([subsystem]dev, ... then
-dev_dbg(dev, ... then pr_debug(...  to printk(KERN_DEBUG ...
+For dynamic debugging netdev_dbg (if there is a ponterto a device
+net structure) is preferred over printk(), which is the raw way
+to print something. Issue found by checkpatch.pl.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-index f470cb6..99c5d89 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-@@ -73,7 +73,7 @@ static void *ieee80211_ccmp_init(int key_idx)
+diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
+index 361d2d0..b5a26f3 100644
+--- a/drivers/staging/rtl8192u/r8192U_wx.c
++++ b/drivers/staging/rtl8192u/r8192U_wx.c
+@@ -139,7 +139,7 @@ static int r8192_wx_force_reset(struct net_device *dev,
  
-        priv->tfm = (void *)crypto_alloc_cipher("aes", 0, CRYPTO_ALG_ASYNC);
- 	if (IS_ERR(priv->tfm)) {
--		printk(KERN_DEBUG "ieee80211_crypt_ccmp: could not allocate "
-+		pr_debug("ieee80211_crypt_ccmp: could not allocate "
- 		       "crypto API aes\n");
- 		priv->tfm = NULL;
- 		goto fail;
-@@ -284,7 +284,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	keyidx = pos[3];
- 	if (!(keyidx & (1 << 5))) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "CCMP: received packet without ExtIV"
-+			pr_debug("CCMP: received packet without ExtIV"
- 			       " flag from %pM\n", hdr->addr2);
- 		}
- 		key->dot11RSNAStatsCCMPFormatErrors++;
-@@ -292,13 +292,13 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	}
- 	keyidx >>= 6;
- 	if (key->key_idx != keyidx) {
--		printk(KERN_DEBUG "CCMP: RX tkey->key_idx=%d frame "
-+		pr_debug("CCMP: RX tkey->key_idx=%d frame "
- 		       "keyidx=%d priv=%p\n", key->key_idx, keyidx, priv);
- 		return -6;
- 	}
- 	if (!key->key_set) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "CCMP: received packet from %pM"
-+			pr_debug("CCMP: received packet from %pM"
- 			       " with keyid=%d that does not have a configured"
- 			       " key\n", hdr->addr2, keyidx);
- 		}
-@@ -315,7 +315,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 	down(&priv->wx_sem);
  
- 	if (memcmp(pn, key->rx_pn, CCMP_PN_LEN) <= 0) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "CCMP: replay detected: STA=%pM"
-+			pr_debug("CCMP: replay detected: STA=%pM"
- 			       " previous PN %pm received PN %pm\n",
- 			       hdr->addr2, key->rx_pn, pn);
- 		}
-@@ -353,7 +353,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 
- 		if (memcmp(mic, a, CCMP_MIC_LEN) != 0) {
- 			if (net_ratelimit()) {
--				printk(KERN_DEBUG "CCMP: decrypt failed: STA="
-+				pr_debug("CCMP: decrypt failed: STA="
- 				"%pM\n", hdr->addr2);
- 			}
- 			key->dot11RSNAStatsCCMPDecryptErrors++;
+-	printk("%s(): force reset ! extra is %d\n", __func__, *extra);
++	netdev_dbg(dev, "%s(): force reset ! extra is %d\n", __func__, *extra);
+ 	priv->force_reset = *extra;
+ 	up(&priv->wx_sem);
+ 	return 0;
 -- 
 1.9.1
 
