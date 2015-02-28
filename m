@@ -1,58 +1,75 @@
 X-GM-THRID: 4118330474496
-X-Received: by 10.194.239.41 with SMTP id vp9mr3050803wjc.5.1425198060761;
-        Sun, 01 Mar 2015 00:21:00 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,cfc00415a2b2e159
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.36.132 with SMTP id q4mr2715059laj.6.1425132841040;
+        Sat, 28 Feb 2015 06:14:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.246.11 with SMTP id xs11ls337935lac.54.gmail; Sun, 01 Mar
- 2015 00:21:00 -0800 (PST)
-X-Received: by 10.112.199.69 with SMTP id ji5mr3050663lbc.0.1425198060260;
-        Sun, 01 Mar 2015 00:21:00 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
-        by gmr-mx.google.com with ESMTPS id el6si431784wib.2.2015.03.01.00.21.00
+Received: by 10.152.28.100 with SMTP id a4ls278604lah.23.gmail; Sat, 28 Feb
+ 2015 06:13:59 -0800 (PST)
+X-Received: by 10.152.36.132 with SMTP id q4mr2715052laj.6.1425132839494;
+        Sat, 28 Feb 2015 06:13:59 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id i7si313552wif.0.2015.02.28.06.13.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 00:21:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
+        Sat, 28 Feb 2015 06:13:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by wiwh11 with SMTP id h11so8462680wiw.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 00:21:00 -0800 (PST)
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by widem10 with SMTP id em10so5905989wid.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 06:13:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:sender:in-reply-to:references:date:message-id:subject
-         :from:to:cc:content-type;
-        bh=b3shhvnIsoZTtPFyEXSQ5oHk6dN0jHBjKYzS8XsoL5E=;
-        b=eZQUjRFXpVwBD7kPaFy2jl0HFVyMAe5xEtAMMCEEqHUvDx5BS+PAiVAz+2S38Got/V
-         K3ZIyXo73J4MV3Ua72aVGCx6IadxN0v4S9LTZjlzkb5AFVWSYrw/oOpprQeZe98OCpd9
-         YqTUquPMQMhSqaxnWIWYVu8wJNxU+ToTQ7RAiDjWny5+fH9ER9R9E5nHklavd04vUWk+
-         2Fs2DJ6srLSTbzjRLGXQo7c6/54dTPrPm2RhJXUwLxbycxuw2hf6JsCSQUFQmhGBtCUf
-         +jd2niyUfluUlDp5xLgoyl9Oj1LnHRsbNwYnkXWxDyrzul2DlAKqa/BWJM9DnACfsvx5
-         BBVw==
-MIME-Version: 1.0
-X-Received: by 10.194.94.1 with SMTP id cy1mr44895205wjb.127.1425198060160;
- Sun, 01 Mar 2015 00:21:00 -0800 (PST)
-Sender: daniel.baluta@gmail.com
-Received: by 10.28.3.68 with HTTP; Sun, 1 Mar 2015 00:21:00 -0800 (PST)
-In-Reply-To: <1425132832-4664-1-git-send-email-dilekuzulmez@gmail.com>
-References: <1425132832-4664-1-git-send-email-dilekuzulmez@gmail.com>
-Date: Sun, 1 Mar 2015 10:21:00 +0200
-X-Google-Sender-Auth: rJVbmxQ4_0iQMgM6iK9jE87BNjg
-Message-ID: <CAEnQRZBq9EThbps6Ef2wGVbDbKmfn4=oA4nR4MR9AU=VPXbeHw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Remove space after
- the name of that function
-From: Daniel Baluta <daniel.baluta@intel.com>
-To: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+        h=from:to:cc:subject:date:message-id;
+        bh=81Rhb2yKw3MVSwT+0/vZvmvt8X8WQ+yhvEMYEKj2mvE=;
+        b=cxR3UDe5m3nn+OcVJhavZYI+L+HoUr2zGztpw4i85JylY2EuTk1ema80qfBEW7dOVw
+         6iUZDFwqJf6DJ4Uvm+NPETwR82j5sOau/3hwuo/3Z520u6UzHgtyUmCyFGjmNnj0jgkA
+         jDZLK7S8DW05TQABAFiAoP8+JWWOr/HCN0yu4SRUWa4WqF88Cori8XOJ93Vs1d6hyfGF
+         9ok7LieYwrtsTqJSQCaDYdbxfQH2t2NR41oiCGgEw6imWaEVB2NgcR34QNzCFszKYAyQ
+         KNM0mfeDjKvILEiQQmpX6axVmn7DJWuwsw1pEOozpx2IbyqDVlMBOs1keANOzxVFF3Cs
+         JdeQ==
+X-Received: by 10.180.96.37 with SMTP id dp5mr16766536wib.64.1425132839373;
+        Sat, 28 Feb 2015 06:13:59 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([78.178.131.202])
+        by mx.google.com with ESMTPSA id s5sm7803985wia.1.2015.02.28.06.13.57
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 28 Feb 2015 06:13:58 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: lustre: Remove space after the name of that function
+Date: Sat, 28 Feb 2015 16:13:52 +0200
+Message-Id: <1425132832-4664-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Sat, Feb 28, 2015 at 4:13 PM, Dilek Uzulmez <dilekuzulmez@gmail.com> wrote:
-> Fix checkpatch.pl issues with "space prohibited between function name
-> and open parenthesis" in lporc_echo.c
+Fix checkpatch.pl issues with "space prohibited between function name
+and open parenthesis" in lporc_echo.c
 
-Better say:
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+---
+ drivers/staging/lustre/lustre/obdecho/lproc_echo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Staging: lustre: Remove space after function name.
+diff --git a/drivers/staging/lustre/lustre/obdecho/lproc_echo.c b/drivers/staging/lustre/lustre/obdecho/lproc_echo.c
+index 1d3bf6c..0beb97d 100644
+--- a/drivers/staging/lustre/lustre/obdecho/lproc_echo.c
++++ b/drivers/staging/lustre/lustre/obdecho/lproc_echo.c
+@@ -36,7 +36,7 @@
+ #include "../include/lprocfs_status.h"
+ #include "../include/obd_class.h"
+ 
+-#if defined (CONFIG_PROC_FS)
++#if defined(CONFIG_PROC_FS)
+ LPROC_SEQ_FOPS_RO_TYPE(echo, uuid);
+ static struct lprocfs_vars lprocfs_echo_obd_vars[] = {
+ 	{ "uuid",	 &echo_uuid_fops,	NULL, 0 },
+-- 
+1.9.1
 
-Daniel.
 
