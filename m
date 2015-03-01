@@ -1,52 +1,48 @@
 X-GM-THRID: 5368833900544
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,df23be8587a10da9
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.227.162 with SMTP id d32mr24363269yhq.7.1425211688891;
-        Sun, 01 Mar 2015 04:08:08 -0800 (PST)
+X-Received: by 10.43.99.67 with SMTP id cr3mr21804731icc.32.1425211651091;
+        Sun, 01 Mar 2015 04:07:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.8.94 with SMTP id 91ls1082924ioi.72.gmail; Sun, 01 Mar
- 2015 04:08:08 -0800 (PST)
-X-Received: by 10.68.57.130 with SMTP id i2mr21602127pbq.1.1425211688618;
-        Sun, 01 Mar 2015 04:08:08 -0800 (PST)
+Received: by 10.50.43.197 with SMTP id y5ls715651igl.32.gmail; Sun, 01 Mar
+ 2015 04:07:30 -0800 (PST)
+X-Received: by 10.66.90.200 with SMTP id by8mr21986527pab.38.1425211650884;
+        Sun, 01 Mar 2015 04:07:30 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pd0-x22d.google.com (mail-pd0-x22d.google.com. [2607:f8b0:400e:c02::22d])
-        by gmr-mx.google.com with ESMTPS id m1si1163027pdc.0.2015.03.01.04.08.08
+Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
+        by gmr-mx.google.com with ESMTPS id m1si1162430pdc.0.2015.03.01.04.07.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 04:08:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) client-ip=2607:f8b0:400e:c02::22d;
+        Sun, 01 Mar 2015 04:07:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbnh10 with SMTP id nh10so8825889pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:08:08 -0800 (PST)
+Received: by mail-pd0-x22f.google.com with SMTP id nh10so8820625pdb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:07:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=1ZR//klIeFMzIZzxMlocPZ3dft3YQfD0Nmfa1S5FEQw=;
-        b=MjnBJl7WP5uiUaeKQ1ur7i1smuWMys2nifPaE5Ud1zWP1oKk7qQaL7/KLtoMjdWrmp
-         lMeYjgNsgMBPBYuEY26ktRZuE8idGuPujA/EmjQHbQIEUZ7n0uaeyK6Nc5mND7dpbn4r
-         hZjhyAR8w6zrwVTG6d2efnPHYqfE3Plqr/4LkCZe5+9f9ZmJbYiotBr6/9mCnorgTiRs
-         3ds+waCtb+CBw2anCd/H3vmSY3dBRYwD/Q0vT74GQn4E6n4IypLMYUe3GDACms2zkL38
-         7K3+p0IfWM74d717L7ej1o1NNJyk7uH20Q1gwYYhOcxGzlw2YW9kS4Xq1G/i96rbktSy
-         vEsA==
-X-Received: by 10.66.218.10 with SMTP id pc10mr39021925pac.116.1425211688521;
-        Sun, 01 Mar 2015 04:08:08 -0800 (PST)
+        bh=u/fKYV5p4VAfo2kuSHBauRoXfTx9jagheP6vvQHxhFA=;
+        b=f26FXPh3LuC0Ki10WNz3ciBqkgma4Z2TQOMeq8601qpuSN06clJuii9c7l1B95bVLC
+         gsmJkSHzGKBpJjefn7jaAjrBM64NJTv0RXknGg4A8aGFFahrk0Db2WPQkkJdM+LQT/xH
+         JG7f9hGW/NIkij+dpy1BuGQiJla0GvuTjBKOGaWwfpUfvudcV8O8ejJ9c2luYRxCr455
+         e5EN0rv5PcyISthN2uXiZZL5XHvdkIeDfEi+TLjuHKM1SsDrRO4VUdSQF9EFS0M2jd9f
+         BzFOwoGZE/07PPOwCpu03eJXjPddyGFK7vih9enGUXBJbH4CLbn4+9vld0a1jPuiQHgq
+         +9Hw==
+X-Received: by 10.68.107.197 with SMTP id he5mr38939827pbb.93.1425211650819;
+        Sun, 01 Mar 2015 04:07:30 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id fl4sm9134709pab.8.2015.03.01.04.08.07
+        by mx.google.com with ESMTPSA id rs4sm9022629pbc.42.2015.03.01.04.07.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 04:08:08 -0800 (PST)
-Date: Sun, 1 Mar 2015 17:39:22 +0530
+        Sun, 01 Mar 2015 04:07:30 -0800 (PST)
+Date: Sun, 1 Mar 2015 17:38:45 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 04/12] staging: dgnc: Use kcalloc instead of kzalloc.
-Message-ID: <8bc80b4dce885311957caae443c01202e1ab5f64.1425211236.git.navyasri.tech@gmail.com>
+Subject: [PATCH 03/12] staging: rtl8188eu: Use kcalloc instead of kzalloc.
+Message-ID: <95b539148914b175ddfe7479bb5573fde9f5538f.1425211236.git.navyasri.tech@gmail.com>
 References: <cover.1425211235.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -54,7 +50,7 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425211235.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The semantic patch used for this change is:
+The semantic patch used to make the change is:
 
 @@
 type T, T2;
@@ -363,22 +359,22 @@ expression E2,E3;
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_driver.c | 2 +-
+ drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_driver.c b/drivers/staging/dgnc/dgnc_driver.c
-index a2543cf..5990b1e 100644
---- a/drivers/staging/dgnc/dgnc_driver.c
-+++ b/drivers/staging/dgnc/dgnc_driver.c
-@@ -408,7 +408,7 @@ static int dgnc_found_board(struct pci_dev *pdev, int id)
- 		return -ENOMEM;
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c b/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c
+index bc275b2..06d1e65 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c
+@@ -42,7 +42,7 @@ int	rtl8188eu_init_recv_priv(struct adapter *padapter)
+ 	_rtw_init_queue(&precvpriv->free_recv_buf_queue);
  
- 	/* make a temporary message buffer for the boot messages */
--	brd->msgbuf_head = kzalloc(sizeof(u8) * 8192, GFP_KERNEL);
-+	brd->msgbuf_head = kcalloc(8192, sizeof(u8), GFP_KERNEL);
- 	brd->msgbuf = brd->msgbuf_head;
- 
- 	if (!brd->msgbuf) {
+ 	precvpriv->pallocated_recv_buf =
+-		kzalloc(NR_RECVBUFF * sizeof(struct recv_buf), GFP_KERNEL);
++		kcalloc(NR_RECVBUFF, sizeof(struct recv_buf), GFP_KERNEL);
+ 	if (precvpriv->pallocated_recv_buf == NULL) {
+ 		res = _FAIL;
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_,
 -- 
 1.9.1
 
