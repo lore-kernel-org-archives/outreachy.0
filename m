@@ -1,94 +1,79 @@
-X-GM-THRID: 6205566056947253248
-X-Received: by 10.129.83.10 with SMTP id h10mr3831900ywb.6.1444845939115;
-        Wed, 14 Oct 2015 11:05:39 -0700 (PDT)
+X-GM-THRID: 5549458456576
+X-Received: by 10.112.224.12 with SMTP id qy12mr2280182lbc.10.1425252284596;
+        Sun, 01 Mar 2015 15:24:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.106.165 with SMTP id gv5ls174110obb.4.gmail; Wed, 14 Oct
- 2015 11:05:38 -0700 (PDT)
-X-Received: by 10.182.44.130 with SMTP id e2mr3774201obm.32.1444845938687;
-        Wed, 14 Oct 2015 11:05:38 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id pe1si957574pac.2.2015.10.14.11.05.38
+Received: by 10.152.45.98 with SMTP id l2ls14711lam.28.gmail; Sun, 01 Mar 2015
+ 15:24:43 -0800 (PST)
+X-Received: by 10.112.130.70 with SMTP id oc6mr3423225lbb.13.1425252283085;
+        Sun, 01 Mar 2015 15:24:43 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id o3si552848wib.2.2015.03.01.15.24.42
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 11:05:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 01 Mar 2015 15:24:43 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id p3so12798121pay.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:05:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=kMDPvitQGsYgB19hg97zx/RaDcCjJflQKrMm3JhyKBs=;
-        b=GABzZ4zeBNUhG0yLDfuG2LPAJMPsl7p0QHr6u1oiD1ZOsKT10BWsRKlu14ZBNoXQW7
-         CSqaXmRiixWxSmcCp2iGE6QJienyKfXAHz5KaqK+aqi2um6S2KlMFFhW54tI5d5zaldd
-         xf4E5ijW0HCCWwoI7bwBZG0Z3Sq218t6vjq/21mFYJPspdI7ofkXrkVas6+zaSJshX1S
-         esiZKth3VnRlNMOhzDH2ozey/VrbHKRSAy8L63u0lrpNHaQ5wo6ybNOKZ/GNNfE5wLW6
-         F2fpVlmtKXFJkxcEJcGAB1E7JDymlEPVJKxAz99zlLcSqTU/CCKItmyoBbIftbehH9It
-         Ct8w==
-X-Received: by 10.67.3.167 with SMTP id bx7mr4979312pad.47.1444845938503;
-        Wed, 14 Oct 2015 11:05:38 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.206.151])
-        by smtp.gmail.com with ESMTPSA id so4sm10855597pbc.72.2015.10.14.11.05.37
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 14 Oct 2015 11:05:37 -0700 (PDT)
-Date: Wed, 14 Oct 2015 23:35:33 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/6] staging: lustre: Remove useless cast on void pointer
-Message-ID: <cover.1444845733.git.amitoj1606@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,672,1418079600"; 
+   d="scan'208";a="101721020"
+Received: from wnpgmb0903w-ds01-92-71.dynamic.mtsallstream.net (HELO unknownE0F847206056) ([142.161.92.71])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 02 Mar 2015 00:24:41 +0100
+Date: Sun, 1 Mar 2015 17:24:38 -0600 (CST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Fix assignment in
+ if condition checkpatch error
+In-Reply-To: <1425242387-10440-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503011724030.2545@hadrien>
+References: <1425242387-10440-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patchset fixes multiple useless casts on void pointers.
+On Sun, 1 Mar 2015, Dilek Uzulmez wrote:
 
-The semantic patch used to find this is:
+> Fix checkpatch.pl error assignment in if condition and assign variable
+> before if condition.
+>
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h
+> index eea55d9..ae6901b 100644
+> --- a/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h
+> +++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h
+> @@ -77,10 +77,9 @@ enum {
+>  static inline int cfs_fail_check_set(__u32 id, __u32 value,
+>  				     int set, int quiet)
+>  {
+> -	int ret = 0;
+> +	int ret = __cfs_fail_check_set(id, value, set);
+>
+> -	if (unlikely(CFS_FAIL_PRECHECK(id) &&
+> -		     (ret = __cfs_fail_check_set(id, value, set)))) {
+> +	if (unlikely(CFS_FAIL_PRECHECK(id) && ret)) {
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
+This inverses the order of __cfs_fail_check_set and CFS_FAIL_PRECHECK.
+You need to argue that this is safe to do, if that is indeed the case.
 
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T *)x)->f
-|
-- (T *)
-  e
-)
+julia
 
-
-Amitoj Kaur Chawla (6):
-  staging: lustre: ptlrpc: Remove useless cast on void pointer
-  staging: lustre: ptlrpc: Remove useless cast on void pointer
-  staging: lustre: ptlrpc: Remove useless cast on void pointer
-  staging: lustre: ptlrpc: Remove useless cast on void pointer
-  staging: lustre: mgc: Remove useless cast on void pointer
-  staging: lustre: osc: Remove useless cast on void pointer
-
- drivers/staging/lustre/lustre/mgc/mgc_request.c | 6 +++---
- drivers/staging/lustre/lustre/osc/osc_request.c | 7 +++----
- drivers/staging/lustre/lustre/ptlrpc/pinger.c   | 2 +-
- drivers/staging/lustre/lustre/ptlrpc/sec_bulk.c | 3 +--
- drivers/staging/lustre/lustre/ptlrpc/sec_gc.c   | 2 +-
- drivers/staging/lustre/lustre/ptlrpc/service.c  | 6 +++---
- 6 files changed, 12 insertions(+), 14 deletions(-)
-
--- 
-1.9.1
-
+>  		if (quiet) {
+>  			CDEBUG(D_INFO, "*** cfs_fail_loc=%x, val=%u***\n",
+>  			       id, value);
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425242387-10440-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
