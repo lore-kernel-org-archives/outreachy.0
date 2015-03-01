@@ -1,81 +1,127 @@
-X-GM-THRID: 6395635092352401408
-X-Received: by 10.129.93.195 with SMTP id r186mr6384937ywb.168.1489099835119;
-        Thu, 09 Mar 2017 14:50:35 -0800 (PST)
+X-GM-THRID: 5597962436608
+X-Received: by 10.194.239.41 with SMTP id vp9mr3332267wjc.5.1425247924170;
+        Sun, 01 Mar 2015 14:12:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.111.205 with SMTP id x196ls77552itb.8.gmail; Thu, 09 Mar
- 2017 14:50:34 -0800 (PST)
-X-Received: by 10.107.201.131 with SMTP id z125mr4999380iof.94.1489099834296;
-        Thu, 09 Mar 2017 14:50:34 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id y203si1115884pfb.0.2017.03.09.14.50.34
+Received: by 10.180.102.100 with SMTP id fn4ls400038wib.24.canary; Sun, 01 Mar
+ 2015 14:12:03 -0800 (PST)
+X-Received: by 10.180.182.44 with SMTP id eb12mr1742891wic.4.1425247923910;
+        Sun, 01 Mar 2015 14:12:03 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ew5si555911wid.1.2015.03.01.14.12.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 14:50:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 01 Mar 2015 14:12:03 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id w189so33992642pfb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 14:50:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=c8SMWHG4iPNSFXzyoYmB9o2mJRWojhiMvKj9G/k5kI0=;
-        b=cXvneQgOKZ7X11PdkWUn7BjSqaBd3x4HdeILd5nfthppJv3rJZdS0woATqwN6c93/d
-         pFlAj91/wOZED3N+lw5cqjR+dL41uSBs4xd+bBbxTJqfbnPvK5Vf79/G81hiwxLcYapx
-         Gz2arOZNxjRar8KPJqzoT8zug0465G03G1A+LzZhxgpV2oSWhW55UavtrDf8FFR/CoYa
-         yk6Y6PS07SKTJIRU0oU4XVxZDHAxMK/s8MU/kD+s+Xf4dyqdRl8jX4nZc72NKMWcTAN2
-         B/7iCB3/VouaNLWha3+a8ItisYqHblwXhiwx7d/N1eusG44fki4TsmTEqP663ZLQAAxn
-         bG1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=c8SMWHG4iPNSFXzyoYmB9o2mJRWojhiMvKj9G/k5kI0=;
-        b=GOyV3aOMwdEvtWFBLe8+Tn8cPMSeluQwiqXbEIMkgQkXRGNmNSWMxFjkDZhIc/oBgx
-         9jAeNLdMtDP6d7602WnJ3tAOZGyjLH68AxAQpbjbJFEJJLuR173DVP7UGaoMkvsiUUIE
-         blkwcGQeLrjPYU62vicbaeo9mnhC4IBECCNokItmSeWN6UBSFejwGeFxOx8UU7xM17+o
-         TRQuzzJjpoPAfeDLpvJpAB+8NUR6KNIJKHS+RMjecMdp4ubxsLL1jMLAWXhCXta1jY/p
-         dO270vPhFvsW72apT7rC3NVNy2lidjKBrNl0K4tPcQ6MPtWpJiAkxka4hc9027YCTFjt
-         vrKg==
-X-Gm-Message-State: AMke39m64PjdN14ucHKKmZPRGL3sFeE9RM6jo68sIcvQRdzRqSlv5k/wb6vHXsXecF+5AQ==
-X-Received: by 10.84.233.197 with SMTP id m5mr20793110pln.169.1489099833798;
-        Thu, 09 Mar 2017 14:50:33 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id y67sm14359172pfa.96.2017.03.09.14.50.31
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 14:50:32 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: mchehab@kernel.org
-Cc: gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v1 0/7] staging: gc2235: Multiple checkpatch issues
-Date: Fri, 10 Mar 2017 04:20:22 +0530
-Message-Id: <1489099829-1264-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,672,1418079600"; 
+   d="scan'208";a="101718167"
+Received: from wnpgmb0903w-ds01-92-71.dynamic.mtsallstream.net (HELO unknownE0F847206056) ([142.161.92.71])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Mar 2015 23:12:02 +0100
+Date: Sun, 1 Mar 2015 16:11:59 -0600 (CST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: ieee80211: Fix
+ printk debug style warning
+In-Reply-To: <1425245283-10867-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503011611271.2545@hadrien>
+References: <1425245283-10867-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-754175761-1425247922=:2545"
 
-v1:
-  -change the subject of all the patches of the patch-series
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
+--8323329-754175761-1425247922=:2545
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-simran singhal (7):
-  staging: gc2235: Remove unnecessary typecast of c90 int constant
-  staging: gc2235: Add blank line after a declaration
-  staging: gc2235: Replace NULL with "!"
-  staging: gc2235: Remove blank line before '}' and after '{' braces
-  staging: gc2235: Remove multiple assignments
-  staging: gc2235: Use x instead of x != NULL
-  staging: gc2235: Do not use multiple blank lines
+On Sun, 1 Mar 2015, Hatice ERTÜRK wrote:
 
- drivers/staging/media/atomisp/i2c/gc2235.c | 32 ++++++++++++++++--------------
- 1 file changed, 17 insertions(+), 15 deletions(-)
+> This fixes the following checkpatch.pl warnings:
+> WARNING: Prefer [subsystem eg: netdev]_dbg([subsystem]dev, ... then
+> dev_dbg(dev, ... then pr_debug(...  to printk(KERN_DEBUG ...
+>
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+> index f470cb6..99c5d89 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+> @@ -73,7 +73,7 @@ static void *ieee80211_ccmp_init(int key_idx)
+>
+>         priv->tfm = (void *)crypto_alloc_cipher("aes", 0, CRYPTO_ALG_ASYNC);
+>  	if (IS_ERR(priv->tfm)) {
+> -		printk(KERN_DEBUG "ieee80211_crypt_ccmp: could not allocate "
+> +		pr_debug("ieee80211_crypt_ccmp: could not allocate "
+>  		       "crypto API aes\n");
 
--- 
-2.7.4
+In each case, the second line of arguments could be aligned with the left
+side of the first argument, as was done before.
 
+julia
+
+>  		priv->tfm = NULL;
+>  		goto fail;
+> @@ -284,7 +284,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+>  	keyidx = pos[3];
+>  	if (!(keyidx & (1 << 5))) {
+>  		if (net_ratelimit()) {
+> -			printk(KERN_DEBUG "CCMP: received packet without ExtIV"
+> +			pr_debug("CCMP: received packet without ExtIV"
+>  			       " flag from %pM\n", hdr->addr2);
+>  		}
+>  		key->dot11RSNAStatsCCMPFormatErrors++;
+> @@ -292,13 +292,13 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+>  	}
+>  	keyidx >>= 6;
+>  	if (key->key_idx != keyidx) {
+> -		printk(KERN_DEBUG "CCMP: RX tkey->key_idx=%d frame "
+> +		pr_debug("CCMP: RX tkey->key_idx=%d frame "
+>  		       "keyidx=%d priv=%p\n", key->key_idx, keyidx, priv);
+>  		return -6;
+>  	}
+>  	if (!key->key_set) {
+>  		if (net_ratelimit()) {
+> -			printk(KERN_DEBUG "CCMP: received packet from %pM"
+> +			pr_debug("CCMP: received packet from %pM"
+>  			       " with keyid=%d that does not have a configured"
+>  			       " key\n", hdr->addr2, keyidx);
+>  		}
+> @@ -315,7 +315,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+>
+>  	if (memcmp(pn, key->rx_pn, CCMP_PN_LEN) <= 0) {
+>  		if (net_ratelimit()) {
+> -			printk(KERN_DEBUG "CCMP: replay detected: STA=%pM"
+> +			pr_debug("CCMP: replay detected: STA=%pM"
+>  			       " previous PN %pm received PN %pm\n",
+>  			       hdr->addr2, key->rx_pn, pn);
+>  		}
+> @@ -353,7 +353,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+>
+>  		if (memcmp(mic, a, CCMP_MIC_LEN) != 0) {
+>  			if (net_ratelimit()) {
+> -				printk(KERN_DEBUG "CCMP: decrypt failed: STA="
+> +				pr_debug("CCMP: decrypt failed: STA="
+>  				"%pM\n", hdr->addr2);
+>  			}
+>  			key->dot11RSNAStatsCCMPDecryptErrors++;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425245283-10867-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-754175761-1425247922=:2545--
 
