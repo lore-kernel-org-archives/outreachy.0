@@ -1,60 +1,59 @@
 X-GM-THRID: 5368833900544
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,df23be8587a10da9
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.140.66 with SMTP id re2mr21751592pab.29.1425211558541;
-        Sun, 01 Mar 2015 04:05:58 -0800 (PST)
+X-Received: by 10.66.102.100 with SMTP id fn4mr21708026pab.19.1425211482956;
+        Sun, 01 Mar 2015 04:04:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.86.230 with SMTP id p93ls1193942qgd.35.gmail; Sun, 01 Mar
- 2015 04:05:58 -0800 (PST)
-X-Received: by 10.236.230.39 with SMTP id i37mr21106764yhq.47.1425211558308;
-        Sun, 01 Mar 2015 04:05:58 -0800 (PST)
+Received: by 10.107.4.204 with SMTP id 195ls1056016ioe.24.gmail; Sun, 01 Mar
+ 2015 04:04:42 -0800 (PST)
+X-Received: by 10.50.176.202 with SMTP id ck10mr11958721igc.5.1425211482759;
+        Sun, 01 Mar 2015 04:04:42 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id ri9si1151407pdb.1.2015.03.01.04.05.58
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id xj4si1115770pbc.2.2015.03.01.04.04.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 04:05:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Sun, 01 Mar 2015 04:04:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padfa1 with SMTP id fa1so6173523pad.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:05:58 -0800 (PST)
+Received: by mail-pd0-x236.google.com with SMTP id y10so32430440pdj.6
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:04:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=diTOLsmS1CSvyrGbrylZqfET3cyT/8KwNVq4GSeJfFg=;
-        b=XIX7X90TRFYJJz1127TeT13RWJBJnFaBIlapDPMlbGUh9pyCMSCYwWGVnWb6NupzU1
-         QlQuqX0WHzPnUkpyt7t5YA3lneX8p1dDFHGbpI9qn/dmf9mMJFbcyEUSaZGYGk+Z40h/
-         Ri592PPu6/ii0ym1+cFLiF2Sz2m1l7BTrIjltPvh0Vnmsi2O4zq287uBlBBO0StksBQg
-         hmosU0uk5gs/iIZyWgBJ6TehaIVq3IrSIR1s2mFcoDYi1fhsBijQzWcJxytFYrXO1XTP
-         paMgFyfFdWyTKTyVFOyll3BZiR9+cW/OZhM4oOOo9x8M8uLhsPmxRlnaFowldj1ES9/y
-         vfIg==
-X-Received: by 10.66.246.107 with SMTP id xv11mr38352933pac.79.1425211558151;
-        Sun, 01 Mar 2015 04:05:58 -0800 (PST)
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=DyT5XtA6v+R1gBw3g6dv2JwAg4i84xiR9F7e4k2gscQ=;
+        b=gm9sWB/3y1FLFIjUEI3YON/jA7aj8sGJNp4+ctCkAODlj+Pm5/dicGTlpWH1Nm37u4
+         fFjW6XNjhlKcjhueVFooa8qqWvdKMfQEPTP6Lpl0XecD3ryfqBXODWMB+LKPtZSjL1jg
+         kyYzBxYSsNs+Ls6YsAcQN/J/ap1OI2JTXGFomkLsHJfJsMJ926bY4QQNxYWihvX8JgEH
+         Qa/EwtgQfzMwIUnX8wk1IDvZh/D1Eky18jubcolhbOxq46ICEtI717b+X20x5VkAt2RF
+         IJhmhgGr+xl0GniZ6AvfNtYZHpD6I8lc2o2NrJJYnbsn/Sz0zBQHqtinha4xrSKidTTd
+         14tQ==
+X-Received: by 10.66.121.134 with SMTP id lk6mr17970341pab.67.1425211482623;
+        Sun, 01 Mar 2015 04:04:42 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id bw3sm9073452pbb.9.2015.03.01.04.05.57
+        by mx.google.com with ESMTPSA id zs9sm9016916pbc.43.2015.03.01.04.04.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 04:05:57 -0800 (PST)
-Date: Sun, 1 Mar 2015 17:37:11 +0530
+        Sun, 01 Mar 2015 04:04:42 -0800 (PST)
+Date: Sun, 1 Mar 2015 17:35:56 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 01/12] staging: rtl8192u: Use kzalloc instead of kmalloc.
-Message-ID: <bfb235e174e0349f28f583ba325ade98acfd9a63.1425211236.git.navyasri.tech@gmail.com>
-References: <cover.1425211235.git.navyasri.tech@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 00/12] staging: Transform kzalloc calls to kcalloc and
+ kmalloc to kzalloc.
+Message-ID: <cover.1425211235.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1425211235.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The following coccinelle patch was used to detect it:
+This patchset changes some kzalloc calls to kcalloc and
+ kmalloc to kzalloc.
+
+The semantic patch used to make this change is:
 
 @@
 type T, T2;
@@ -361,29 +360,34 @@ expression E2,E3;
 - kzalloc(E1*E2,E3)
 + kcalloc(E1,E2,E3)
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Navya Sri Nizamkari (12):
+  staging: rtl8192u: Use kzalloc instead of kmalloc.
+  staging: rtl8188eu: Use kcalloc instead of kzalloc.
+  staging: rtl8188eu: Use kcalloc instead of kzalloc.
+  staging: dgnc: Use kcalloc instead of kzalloc.
+  staging: iio: Use kcalloc instead of kzalloc.
+  staging: iio: Use kcalloc instead of kzalloc.
+  staging: wlan-ng: Use kzalloc instead of kmalloc.
+  staging: media: Use kcalloc instead of kzalloc.
+  staging: media: Use kcalloc instead of kzalloc.
+  staging: unisys: Use kcalloc instead of kzalloc.
+  staging: rtl8192e: Use kzalloc instead of kcalloc.
+  staging: rtl8192e: Use kzalloc instead of kmalloc.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index 3a54071..aa53ec2 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -3025,12 +3025,11 @@ static int ieee80211_wpa_set_encryption(struct ieee80211_device *ieee,
- 
- 		ieee80211_crypt_delayed_deinit(ieee, crypt);
- 
--		new_crypt = kmalloc(sizeof(*new_crypt), GFP_KERNEL);
-+		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
- 		if (new_crypt == NULL) {
- 			ret = -ENOMEM;
- 			goto done;
- 		}
--		memset(new_crypt, 0, sizeof(struct ieee80211_crypt_data));
- 		new_crypt->ops = ops;
- 		if (new_crypt->ops && try_module_get(new_crypt->ops->owner))
- 			new_crypt->priv =
+ drivers/staging/dgnc/dgnc_driver.c                     | 2 +-
+ drivers/staging/iio/accel/lis3l02dq_ring.c             | 2 +-
+ drivers/staging/iio/adc/ad7280a.c                      | 5 +++--
+ drivers/staging/media/bcm2048/radio-bcm2048.c          | 2 +-
+ drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c   | 7 ++++---
+ drivers/staging/rtl8188eu/core/rtw_xmit.c              | 3 ++-
+ drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c         | 2 +-
+ drivers/staging/rtl8192e/rtllib_module.c               | 5 ++---
+ drivers/staging/rtl8192e/rtllib_softmac.c              | 3 +--
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 3 +--
+ drivers/staging/unisys/visorutil/procobjecttree.c      | 6 +++---
+ drivers/staging/wlan-ng/hfa384x_usb.c                  | 7 +++----
+ 12 files changed, 23 insertions(+), 24 deletions(-)
+
 -- 
 1.9.1
 
