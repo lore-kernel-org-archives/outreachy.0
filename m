@@ -1,112 +1,194 @@
-X-GM-THRID: 6950040940090228736
-X-Received: by 2002:a62:6202:0:b029:208:f11c:2143 with SMTP id w2-20020a6262020000b0290208f11c2143mr22511292pfb.32.1618182505907;
-        Sun, 11 Apr 2021 16:08:25 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90b:4d81:: with SMTP id oj1ls7903565pjb.2.canary-gmail;
- Sun, 11 Apr 2021 16:08:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjVgxP0k5U7lmVZOobaE7Ak5mB8cDIrrzpCTTmgH4eRIiO0QLe0mGdv4KU7nAKOHJG/tKd
-X-Received: by 2002:a17:90b:228a:: with SMTP id kx10mr5654442pjb.105.1618182504542;
-        Sun, 11 Apr 2021 16:08:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618182504; cv=none;
-        d=google.com; s=arc-20160816;
-        b=WpNj8FNw9CRcnj/K2kSoS+76WAenFbbAZ4Swy4A65WYq5gKKOfNUnELUMz0TMMBf65
-         /Ff5ExPAwuKgOpIU2c0wVFDUtLPnRfK1bJMbLMHpFx70y+YK+QQ9XZ8mtnIu4BSb8Y6r
-         dgSbrHBNSkQSr+C2X8CxFMDQGCHs6ETNqBPGOsBHe8siHFvgdg5DNp51dgM/TKq4Eb/H
-         1ZfNqA8408dhByx9o5D4wVt2jiUlKuk5EAN/sM2Ji3KqdQsIpyezpa1F+ZEv3+BdleM4
-         qtjBTkB+BPuNMr3DXe8K8jXZFxHhqYcBG4VJn95ZtgazvyunC3yFrVCM+u7yAzixQ+bj
-         +lig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=y3OO3ieVmLEwl+ife04UOYUCAMow1hzkBN//gQUlMpA=;
-        b=d81eJ9xxP5BsAjibFkCVWibdGNWQDFNpbEc0bF4T83M5fLGs/jPAlV4z6gdZjiH7BB
-         5Tm+RArwgRRl1VbHrJEJSFbSAI3Ux02o5gSKxzLUg/DJiv7jj2rolRt0aeUt+4bCrSaK
-         J+9kvuPM2SC2e9T3tmE/7+JknqRdoOg6ldL3NZEB2ycZ6H1vtlc70K/JApusbPPChWK3
-         tQRuchftmb8+FMckcwZOcKZNr23edW91tSOUbBGp3dnKnRr869yFgvV6kFPrEca0+RT+
-         hJndwd8AqG0j3f6Q7zILsIyol9lKPGgSecoc4l9GvnL5KwPmtV2cBqvJSEobpA4ZHkiE
-         atNA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gZa1XQqO;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pg1-x52d.google.com (mail-pg1-x52d.google.com. [2607:f8b0:4864:20::52d])
-        by gmr-mx.google.com with ESMTPS id j184si701661pfb.1.2021.04.11.16.08.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 16:08:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) client-ip=2607:f8b0:4864:20::52d;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gZa1XQqO;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52d.google.com with SMTP id z16so7944820pga.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 16:08:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=y3OO3ieVmLEwl+ife04UOYUCAMow1hzkBN//gQUlMpA=;
-        b=gZa1XQqOhnFshkh4twv2e6nHTxXyn50PCEHsmnHWoWb39ijE2/XeX619XzzQNi7wEU
-         nnLei4oEl36w7mpVVVdvD4Cs5Iczg7ESkuWAsWpq1J6+0HoBrUjbsbmLsDZjPw7Z7waY
-         2uJ79UX0oY8T32BCFUmRxsiTY7mY/+KsipeBnQHURXo2PVV2bUOOcHjBdM2mZ4VOEBOZ
-         Wr6wFxtm1+xdcNC7P8hiG3HF+KLyk7NcSIfe+Am5FWYugGNtVmGwu/7OkLg3u2rZ9eKh
-         xsmvg3a5ZhFato6XANJFOvF+snksG0vMWuy8mYpUr6UwTRdazoaMxhY27w/39lXCvKOs
-         w90Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=y3OO3ieVmLEwl+ife04UOYUCAMow1hzkBN//gQUlMpA=;
-        b=MxdAeo4CAfbT+yPiQNWidAMhleCmKeJyVSP1AoLToTaoxg9rUBY90bXaOdlzMZqH2A
-         ATz9eU1pb5BT/f3q3aantbASQU9221PlcDikENdYtp6SDT/G9IPhf82KqqTgAPLvpw/2
-         fBryjCWbBdATrIEbbzhVTLwmO0AwAPoOULEAnvrltmQ5W3p5OwDiVGz3WNnQ/5CANde4
-         sp2gtGy8aJrDURXMcRA0YZzhayesMFZjT7XuqYYdH5V9chYvBRbp32mfuZ75+ZiBU7cz
-         U+oWngxbTq2NNdDT1ypijAUU3WKg/Iko90+Ip/IEhGAgfaBu/1/+5QDIrkG1PuAhX43l
-         gKtw==
-X-Gm-Message-State: AOAM533H+gkcYvw/MH2eiLgvKvB+eRhAVdaWbyp1N41gfB+f9Wum+jBn
-	VQXfP2iBF+SMM/80q1RXhoU=
-X-Received: by 2002:a63:f91e:: with SMTP id h30mr24117266pgi.117.1618182504181;
-        Sun, 11 Apr 2021 16:08:24 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id m14sm7492873pfh.89.2021.04.11.16.08.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Apr 2021 16:08:23 -0700 (PDT)
-Date: Mon, 12 Apr 2021 04:38:15 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
-	tian.shu.qiu@intel.com, mchehab@kernel.org,
-	gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
-Subject: [PATCH 0/6] staging: media: intel-ipu3: cleanup patchset for style
- issues
-Message-ID: <YHOBXzA0Dk/yLfJY@kali>
+X-GM-THRID: 5271474667520
+Date: Sun, 1 Mar 2015 08:17:29 -0800 (PST)
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: navyasri.tech@gmail.com
+Message-Id: <82bf01ed-af76-405b-a7e2-a3d61d7ab537@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.10.1503010649150.2545@hadrien>
+References: <20150301073759.GA21185@localhost>
+ <alpine.DEB.2.10.1503010649150.2545@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: Use kasprintf.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1960_1038154782.1425226649199"
+X-Google-Token: EJn3zKcF9zav6Glp4WE0
+X-Google-IP: 61.16.142.166
 
-tian.shu.qiu@intel.com, mchehab@kernel.org, gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH 0/6] cleanup patchset for style issues
-Message-ID: <cover.1618180659.git.mitaliborkar810@gmail.com>
+------=_Part_1960_1038154782.1425226649199
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1961_2110272846.1425226649199"
 
-This pacthset fixes the style issues reported by checkpatch.pl
+------=_Part_1961_2110272846.1425226649199
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Mitali Borkar (6):
-  staging: media: intel-ipu3: replace bit shifts with BIT() macro
-  staging: media: intel-ipu3: preferred __aligned(size) over
-    __attribute__aligned(size)
-  staging: media: intel-ipu3: remove unnecessary blank line
-  staging: media: intel-ipu3: reduce length of line
-  staging: media: intel-ipu3: line should not end with '['
-  staging: media: intel-ipu3: remove space before tabs
 
- .../staging/media/ipu3/include/intel-ipu3.h   | 91 ++++++++++---------
- 1 file changed, 46 insertions(+), 45 deletions(-)
 
--- 
-2.30.2
+On Sunday, March 1, 2015 at 6:20:16 PM UTC+5:30, Julia Lawall wrote:
+>
+> On Sun, 1 Mar 2015, Navya Sri Nizamkari wrote: 
+>
+> > This patch uses kasprintf as it combines kmalloc and 
+> > sprintf, and takes care of the size calculation itself. 
+> > 
+> > The semantic patch that makes this change is as follows: 
+> > 
+> > // <smpl> 
+> > @@ 
+> > expression a,flag; 
+> > expression list args; 
+> > statement S; 
+> > @@ 
+> > 
+> >   a = 
+> > -  \(kmalloc\|kzalloc\)(...,flag) 
+> > +  kasprintf(flag,args) 
+> >   <... when != a 
+> >   if (a == NULL || ...) S 
+> >   ...> 
+> > - sprintf(a,args); 
+>
+> Nice :) 
+>
+> Acked-by: Julia Lawall <julia....@lip6.fr <javascript:>> 
+>
+> Thank You :)
+ 
 
+> > 
+> > Signed-off-by: Navya Sri Nizamkari <navyas...@gmail.com <javascript:>> 
+> > --- 
+> > Changes in v2: 
+> >      -Change arguments of kasprintf to the right ones. 
+> > 
+> >  drivers/staging/lustre/lustre/llite/llite_lib.c | 6 ++---- 
+> >  1 file changed, 2 insertions(+), 4 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c 
+> b/drivers/staging/lustre/lustre/llite/llite_lib.c 
+> > index 0c1b583..26e8626 100644 
+> > --- a/drivers/staging/lustre/lustre/llite/llite_lib.c 
+> > +++ b/drivers/staging/lustre/lustre/llite/llite_lib.c 
+> > @@ -978,19 +978,17 @@ int ll_fill_super(struct super_block *sb, struct 
+> vfsmount *mnt) 
+> >          CDEBUG(D_CONFIG, "Found profile %s: mdc=%s osc=%s\n", 
+> profilenm, 
+> >                 lprof->lp_md, lprof->lp_dt); 
+> > 
+> > -        dt = kzalloc(strlen(lprof->lp_dt) + instlen + 2, GFP_NOFS); 
+> > +        dt = kasprintf(GFP_NOFS, "%s-%p", lprof->lp_dt, 
+> cfg->cfg_instance); 
+> >          if (!dt) { 
+> >                  err = -ENOMEM; 
+> >                  goto out_free; 
+> >          } 
+> > -        sprintf(dt, "%s-%p", lprof->lp_dt, cfg->cfg_instance); 
+> > 
+> > -        md = kzalloc(strlen(lprof->lp_md) + instlen + 2, GFP_NOFS); 
+> > +        md = kasprintf(GFP_NOFS, "%s-%p", lprof->lp_dt, 
+> cfg->cfg_instance); 
+> >          if (!md) { 
+> >                  err = -ENOMEM; 
+> >                  goto out_free; 
+> >          } 
+> > -        sprintf(md, "%s-%p", lprof->lp_md, cfg->cfg_instance); 
+> > 
+> >          /* connections, registrations, sb setup */ 
+> >          err = client_common_fill_super(sb, md, dt, mnt); 
+> > -- 
+> > 1.9.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20150301073759.GA21185%40localhost. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_1961_2110272846.1425226649199
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<div dir="ltr"><br><br>On Sunday, March 1, 2015 at 6:20:16 PM UTC+5:30, Julia Lawall wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Sun, 1 Mar 2015, Navya Sri Nizamkari wrote:
+<br>
+<br>&gt; This patch uses kasprintf as it combines kmalloc and
+<br>&gt; sprintf, and takes care of the size calculation itself.
+<br>&gt;
+<br>&gt; The semantic patch that makes this change is as follows:
+<br>&gt;
+<br>&gt; // &lt;smpl&gt;
+<br>&gt; @@
+<br>&gt; expression a,flag;
+<br>&gt; expression list args;
+<br>&gt; statement S;
+<br>&gt; @@
+<br>&gt;
+<br>&gt; &nbsp; a =
+<br>&gt; - &nbsp;\(kmalloc\|kzalloc\)(...,<wbr>flag)
+<br>&gt; + &nbsp;kasprintf(flag,args)
+<br>&gt; &nbsp; &lt;... when != a
+<br>&gt; &nbsp; if (a == NULL || ...) S
+<br>&gt; &nbsp; ...&gt;
+<br>&gt; - sprintf(a,args);
+<br>
+<br>Nice :)
+<br>
+<br>Acked-by: Julia Lawall &lt;<a href="javascript:" target="_blank" gdf-obfuscated-mailto="XwWud1GNUjYJ" rel="nofollow">julia....@lip6.fr</a>&gt;
+<br>
+<br></blockquote><div>Thank You :)<br>&nbsp;</div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&gt;
+<br>&gt; Signed-off-by: Navya Sri Nizamkari &lt;<a href="javascript:" target="_blank" gdf-obfuscated-mailto="XwWud1GNUjYJ" rel="nofollow">navyas...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; Changes in v2:
+<br>&gt; &nbsp; &nbsp; &nbsp;-Change arguments of kasprintf to the right ones.
+<br>&gt;
+<br>&gt; &nbsp;drivers/staging/lustre/<wbr>lustre/llite/llite_lib.c | 6 ++----
+<br>&gt; &nbsp;1 file changed, 2 insertions(+), 4 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/lustre/<wbr>lustre/llite/llite_lib.c b/drivers/staging/lustre/<wbr>lustre/llite/llite_lib.c
+<br>&gt; index 0c1b583..26e8626 100644
+<br>&gt; --- a/drivers/staging/lustre/<wbr>lustre/llite/llite_lib.c
+<br>&gt; +++ b/drivers/staging/lustre/<wbr>lustre/llite/llite_lib.c
+<br>&gt; @@ -978,19 +978,17 @@ int ll_fill_super(struct super_block *sb, struct vfsmount *mnt)
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDEBUG(D_CONFIG, "Found profile %s: mdc=%s osc=%s\n", profilenm,
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; lprof-&gt;lp_md, lprof-&gt;lp_dt);
+<br>&gt;
+<br>&gt; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dt = kzalloc(strlen(lprof-&gt;lp_dt) + instlen + 2, GFP_NOFS);
+<br>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dt = kasprintf(GFP_NOFS, "%s-%p", lprof-&gt;lp_dt, cfg-&gt;cfg_instance);
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!dt) {
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;err = -ENOMEM;
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto out_free;
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br>&gt; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sprintf(dt, "%s-%p", lprof-&gt;lp_dt, cfg-&gt;cfg_instance);
+<br>&gt;
+<br>&gt; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;md = kzalloc(strlen(lprof-&gt;lp_md) + instlen + 2, GFP_NOFS);
+<br>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;md = kasprintf(GFP_NOFS, "%s-%p", lprof-&gt;lp_dt, cfg-&gt;cfg_instance);
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!md) {
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;err = -ENOMEM;
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto out_free;
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br>&gt; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sprintf(md, "%s-%p", lprof-&gt;lp_md, cfg-&gt;cfg_instance);
+<br>&gt;
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* connections, registrations, sb setup */
+<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;err = client_common_fill_super(sb, md, dt, mnt);
+<br>&gt; --
+<br>&gt; 1.9.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, send an email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="XwWud1GNUjYJ" rel="nofollow">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="XwWud1GNUjYJ" rel="nofollow">outreach...@googlegroups.<wbr>com</a>.
+<br>&gt; To view this discussion on the web visit <a href="https://groups.google.com/d/msgid/outreachy-kernel/20150301073759.GA21185%40localhost" target="_blank" rel="nofollow">https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>20150301073759.GA21185%<wbr>40localhost</a>.
+<br>&gt; For more options, visit <a href="https://groups.google.com/d/optout" target="_blank" rel="nofollow">https://groups.google.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_1961_2110272846.1425226649199--
+
+------=_Part_1960_1038154782.1425226649199--
 
