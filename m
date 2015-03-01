@@ -1,78 +1,58 @@
-X-GM-THRID: 4762894336000
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9e03f8a17d47b745,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.68.241.163 with SMTP id wj3mr14150463pbc.8.1425063471162;
-        Fri, 27 Feb 2015 10:57:51 -0800 (PST)
+X-GM-THRID: 4118330474496
+X-Received: by 10.194.239.41 with SMTP id vp9mr3050803wjc.5.1425198060761;
+        Sun, 01 Mar 2015 00:21:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.161.209 with SMTP id k200ls486722ioe.20.gmail; Fri, 27 Feb
- 2015 10:57:50 -0800 (PST)
-X-Received: by 10.50.33.9 with SMTP id n9mr4360859igi.5.1425063470949;
-        Fri, 27 Feb 2015 10:57:50 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id pc4si605914pac.0.2015.02.27.10.57.50
+Received: by 10.152.246.11 with SMTP id xs11ls337935lac.54.gmail; Sun, 01 Mar
+ 2015 00:21:00 -0800 (PST)
+X-Received: by 10.112.199.69 with SMTP id ji5mr3050663lbc.0.1425198060260;
+        Sun, 01 Mar 2015 00:21:00 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id el6si431784wib.2.2015.03.01.00.21.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 10:57:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Sun, 01 Mar 2015 00:21:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padbj1 with SMTP id bj1so24775329pad.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 10:57:50 -0800 (PST)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by wiwh11 with SMTP id h11so8462680wiw.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 00:21:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=q4KWm/Z5N67SLmc8ytwjfjfCIVZSlaXrpgV8dJ9zMik=;
-        b=GEYXlpkRBlRI89lrMdd3Ja9pwberaMgPLaTo6DSuCq+0KnD7Cld75LrTtUceHh2L2k
-         qv7lwuMlA+VWJSutBFG5r/I3Kt19SoGb1o2JYrTerVnaE3PWat2vz7xlkjoLLusMbzJu
-         zMJq0zFPkh+uuxsRiS4Yv1P+1Q7GFkYpBNb1NUl/0SD4oBKYbgVLKBccw3TehsNl4M9L
-         /iWMvZgChk2wYlJHrpvaNFTK1A6SxgKepGcSV1zjiIqYQWRWRJSpa4Z5ljlDENL6Xvzl
-         m1d3HHAyqWR/SQq4hZrMiKZLlvgKB52QwKcA1WBGQ0LksOOUj55YSAB79+jSkHAxdKBO
-         qQZg==
-X-Received: by 10.68.208.9 with SMTP id ma9mr9129016pbc.111.1425063470816;
-        Fri, 27 Feb 2015 10:57:50 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id of14sm4668763pdb.50.2015.02.27.10.57.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 10:57:50 -0800 (PST)
-Date: Sat, 28 Feb 2015 00:27:28 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Shorten if condition
-Message-ID: <20150227185728.GA27639@gmail.com>
+        h=mime-version:sender:in-reply-to:references:date:message-id:subject
+         :from:to:cc:content-type;
+        bh=b3shhvnIsoZTtPFyEXSQ5oHk6dN0jHBjKYzS8XsoL5E=;
+        b=eZQUjRFXpVwBD7kPaFy2jl0HFVyMAe5xEtAMMCEEqHUvDx5BS+PAiVAz+2S38Got/V
+         K3ZIyXo73J4MV3Ua72aVGCx6IadxN0v4S9LTZjlzkb5AFVWSYrw/oOpprQeZe98OCpd9
+         YqTUquPMQMhSqaxnWIWYVu8wJNxU+ToTQ7RAiDjWny5+fH9ER9R9E5nHklavd04vUWk+
+         2Fs2DJ6srLSTbzjRLGXQo7c6/54dTPrPm2RhJXUwLxbycxuw2hf6JsCSQUFQmhGBtCUf
+         +jd2niyUfluUlDp5xLgoyl9Oj1LnHRsbNwYnkXWxDyrzul2DlAKqa/BWJM9DnACfsvx5
+         BBVw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.194.94.1 with SMTP id cy1mr44895205wjb.127.1425198060160;
+ Sun, 01 Mar 2015 00:21:00 -0800 (PST)
+Sender: daniel.baluta@gmail.com
+Received: by 10.28.3.68 with HTTP; Sun, 1 Mar 2015 00:21:00 -0800 (PST)
+In-Reply-To: <1425132832-4664-1-git-send-email-dilekuzulmez@gmail.com>
+References: <1425132832-4664-1-git-send-email-dilekuzulmez@gmail.com>
+Date: Sun, 1 Mar 2015 10:21:00 +0200
+X-Google-Sender-Auth: rJVbmxQ4_0iQMgM6iK9jE87BNjg
+Message-ID: <CAEnQRZBq9EThbps6Ef2wGVbDbKmfn4=oA4nR4MR9AU=VPXbeHw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Remove space after
+ the name of that function
+From: Daniel Baluta <daniel.baluta@intel.com>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Shorten if condition to make it more compact.
+On Sat, Feb 28, 2015 at 4:13 PM, Dilek Uzulmez <dilekuzulmez@gmail.com> wrote:
+> Fix checkpatch.pl issues with "space prohibited between function name
+> and open parenthesis" in lporc_echo.c
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Better say:
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index fa13139..d5b5998 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -1381,7 +1381,7 @@ void rtl88eu_phy_iq_calibrate(struct adapter *adapt, bool recovery)
- 		result[0][i] = 0;
- 		result[1][i] = 0;
- 		result[2][i] = 0;
--		if ((i == 0) || (i == 2) || (i == 4)  || (i == 6))
-+		if (i%2 == 0)
- 			result[3][i] = 0x100;
- 		else
- 			result[3][i] = 0;
--- 
-1.9.1
+Staging: lustre: Remove space after function name.
 
+Daniel.
 
