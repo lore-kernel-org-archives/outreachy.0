@@ -1,71 +1,174 @@
-X-GM-THRID: 3575464853504
-X-Received: by 10.194.239.41 with SMTP id vp9mr1040917wjc.5.1424935021990;
-        Wed, 25 Feb 2015 23:17:01 -0800 (PST)
+X-GM-THRID: 5531311800320
+X-Received: by 10.66.229.36 with SMTP id sn4mr23897703pac.32.1425236945642;
+        Sun, 01 Mar 2015 11:09:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.8.193 with SMTP id t1ls1105272wia.30.canary; Wed, 25 Feb
- 2015 23:17:01 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr1077665wib.4.1424935021742;
-        Wed, 25 Feb 2015 23:17:01 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id cl5si52820wib.3.2015.02.25.23.17.01
+Received: by 10.182.246.8 with SMTP id xs8ls576012obc.8.gmail; Sun, 01 Mar
+ 2015 11:09:05 -0800 (PST)
+X-Received: by 10.182.126.168 with SMTP id mz8mr24369339obb.9.1425236945331;
+        Sun, 01 Mar 2015 11:09:05 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from mail-pd0-x234.google.com (mail-pd0-x234.google.com. [2607:f8b0:400e:c02::234])
+        by gmr-mx.google.com with ESMTPS id m1si1261717pdc.0.2015.03.01.11.09.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 23:17:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        Sun, 01 Mar 2015 11:09:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) client-ip=2607:f8b0:400e:c02::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id r20so10332468wiv.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 23:17:01 -0800 (PST)
+Received: by mail-pd0-x234.google.com with SMTP id ft15so8092778pdb.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 11:09:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=HzZKiHfP7A8LNMuJtx0CHEk3gUFXALiyapvPmx+8Iaw=;
-        b=knrjgRiHtwLtC2h2JmwnCbqDq4bdN7H6DQ4uN1sgfxMYK/HNJBKEKy1TZ0cW8+0yoZ
-         0VHQnKMMqiipe56DbxyYpmsRMsuL3sYe8OFFqIv5lyEZ6r8d4h/qTkRhsu/oAnTQtE4o
-         HEKUYRLM1YY+RCddEUTuOnwwhITRQmw96CA8xvTErq5mO50mqNkUb8ZhqhcPboaaubBb
-         iHnPVL1GqVbMRvl/3+MSmlWBNnEmcsHeueinfNkcG9lasNesNUuJocjnRjMyuoa6OuL3
-         enyCflWn5FslxdwTHmA7gy/QW93exjdtoR6aTH7EuPaYOmu13xL1B+qLlr3XHzjw9WvU
-         LQNg==
-X-Received: by 10.194.109.9 with SMTP id ho9mr13353720wjb.29.1424935021685;
-        Wed, 25 Feb 2015 23:17:01 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id d10sm68194163wjn.45.2015.02.25.23.17.00
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 23:17:00 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=SnIyirjNcsg8K2vOmXiPcF3rZAtjWUqafM+xJuP4Nvo=;
+        b=BeSjtOelqXj9eYzozOyuFNoDLfcksu38ZTQ7rXTUskIdpqRapaIuasRxaob4rD/qmC
+         8dFOK5Pdb3PphGga4pD1stlnULXsSAd4Fp8ZkSoaIY8H2r4Cdppx1vdzZBkBzlrsfsN2
+         6zz41vkPgO4iwZByTxLY8j1pFtwP2LliMlsAsCGqczH1iOGCgR3dmnNjImJJKlgND7+g
+         BhWmbm5WQbZR4aEgtHA7C5YIjrHEPmA/NUBe+3AoC9y7v2bj7oeWWYSatji3z4aj9S1O
+         aEtxjan3fY/mKDyASS7FTVXdw/N9cGqYyqXKxYPaRNu9G01mVaUPrJt3o/xVygfBnlZz
+         lqWQ==
+X-Received: by 10.68.221.34 with SMTP id qb2mr40683126pbc.47.1425236945176;
+        Sun, 01 Mar 2015 11:09:05 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from nizamkari ([111.93.6.70])
+        by mx.google.com with ESMTPSA id zt11sm9821210pab.36.2015.03.01.11.09.04
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 01 Mar 2015 11:09:04 -0800 (PST)
+Date: Mon, 2 Mar 2015 00:40:18 +0530
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: rtl872au: merged  consecutive string fragments.
-Date: Thu, 26 Feb 2015 09:16:19 +0200
-Message-Id: <1424934979-14299-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH] staging: Remove <linux/moduleparam.h> header.
+Message-ID: <20150301191018.GA11439@localhost>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-WARNING: Consecutive strings are generally better as a single string
-That was found by running checkpatch.
+This patch drops #include <linux/moduleparam.h> in all the staging
+driver files that also include #include <linux/module.h> as
+module.h includes moduleparam.h already.
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+The following semantic patch is used to make these changes:
+
+@ includesmodule @
+@@
+@ depends on includesmodule @
+@@
+- #include <linux/moduleparam.h>
+
+Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/gs_fpgaboot/gs_fpgaboot.c             | 1 -
+ drivers/staging/iio/iio_simple_dummy.c                | 1 -
+ drivers/staging/media/cxd2099/cxd2099.c               | 1 -
+ drivers/staging/rtl8192u/ieee80211/ieee80211_module.c | 1 -
+ drivers/staging/slicoss/slicoss.c                     | 1 -
+ drivers/staging/vme/devices/vme_pio2_core.c           | 1 -
+ drivers/staging/vme/devices/vme_pio2_gpio.c           | 1 -
+ drivers/staging/wlan-ng/prism2sta.c                   | 1 -
+ 8 files changed, 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-index 9e1304f..dda9c6e 100644
---- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-@@ -1966,7 +1966,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
- 	struct rtw_queue *queue = &pmlmepriv->scanned_queue;
+diff --git a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
+index 6da7285..a3a10f9 100644
+--- a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
++++ b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
+@@ -17,7 +17,6 @@
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
+ #include <linux/types.h>
+ #include <linux/device.h>
+ #include <linux/string.h>
+diff --git a/drivers/staging/iio/iio_simple_dummy.c b/drivers/staging/iio/iio_simple_dummy.c
+index e452021..8341dce 100644
+--- a/drivers/staging/iio/iio_simple_dummy.c
++++ b/drivers/staging/iio/iio_simple_dummy.c
+@@ -17,7 +17,6 @@
+ #include <linux/kernel.h>
+ #include <linux/slab.h>
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
  
--	DBG_8723A("=>" "%s(%s)\n", __func__, ndev->name);
-+	DBG_8723A("=> %s(%s)\n", __func__, ndev->name);
- 	DBG_8723A("privacy =%d, key =%p, key_len =%d, key_idx =%d\n",
- 		  sme->privacy, sme->key, sme->key_len, sme->key_idx);
+ #include <linux/iio/iio.h>
+ #include <linux/iio/sysfs.h>
+diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
+index 657ea48..692ba3e 100644
+--- a/drivers/staging/media/cxd2099/cxd2099.c
++++ b/drivers/staging/media/cxd2099/cxd2099.c
+@@ -25,7 +25,6 @@
+ #include <linux/slab.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
+ #include <linux/i2c.h>
+ #include <linux/wait.h>
+ #include <linux/delay.h>
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+index a35ba01..0149225 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+@@ -303,7 +303,6 @@ void __exit ieee80211_debug_exit(void)
+ 	}
+ }
  
+-#include <linux/moduleparam.h>
+ module_param(debug, int, 0444);
+ MODULE_PARM_DESC(debug, "debug output mask");
+ #endif
+diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
+index 5bf5300..45f6a5f 100644
+--- a/drivers/staging/slicoss/slicoss.c
++++ b/drivers/staging/slicoss/slicoss.c
+@@ -84,7 +84,6 @@
+ #include <linux/seq_file.h>
+ #include <linux/kthread.h>
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
+ 
+ #include <linux/firmware.h>
+ #include <linux/types.h>
+diff --git a/drivers/staging/vme/devices/vme_pio2_core.c b/drivers/staging/vme/devices/vme_pio2_core.c
+index 84c5a07..eabbcc7 100644
+--- a/drivers/staging/vme/devices/vme_pio2_core.c
++++ b/drivers/staging/vme/devices/vme_pio2_core.c
+@@ -13,7 +13,6 @@
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
+ #include <linux/types.h>
+ #include <linux/kernel.h>
+ #include <linux/errno.h>
+diff --git a/drivers/staging/vme/devices/vme_pio2_gpio.c b/drivers/staging/vme/devices/vme_pio2_gpio.c
+index da34d55..77901b3 100644
+--- a/drivers/staging/vme/devices/vme_pio2_gpio.c
++++ b/drivers/staging/vme/devices/vme_pio2_gpio.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
+ #include <linux/types.h>
+ #include <linux/kernel.h>
+ #include <linux/errno.h>
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index 10ad24a..afb8263 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -51,7 +51,6 @@
+ */
+ 
+ #include <linux/module.h>
+-#include <linux/moduleparam.h>
+ #include <linux/kernel.h>
+ #include <linux/sched.h>
+ #include <linux/types.h>
 -- 
-1.8.3.2
+1.9.1
 
 
