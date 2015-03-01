@@ -1,74 +1,61 @@
-X-GM-THRID: 6250764782783168512
-X-Received: by 10.66.148.4 with SMTP id to4mr6321780pab.8.1455369587043;
-        Sat, 13 Feb 2016 05:19:47 -0800 (PST)
+X-GM-THRID: 5217547452416
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,8faf6c21ae90d99b
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.167.98 with SMTP id zn2mr2993581lbb.6.1425198429588;
+        Sun, 01 Mar 2015 00:27:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.78.198 with SMTP id d6ls368600igx.22.gmail; Sat, 13 Feb
- 2016 05:19:46 -0800 (PST)
-X-Received: by 10.107.133.10 with SMTP id h10mr7422365iod.8.1455369586656;
-        Sat, 13 Feb 2016 05:19:46 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id tn7si2015683pac.1.2016.02.13.05.19.46
+Received: by 10.180.103.166 with SMTP id fx6ls376660wib.20.canary; Sun, 01 Mar
+ 2015 00:27:09 -0800 (PST)
+X-Received: by 10.194.63.208 with SMTP id i16mr435431wjs.2.1425198429278;
+        Sun, 01 Mar 2015 00:27:09 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wg0-x230.google.com (mail-wg0-x230.google.com. [2a00:1450:400c:c00::230])
+        by gmr-mx.google.com with ESMTPS id i7si434203wif.0.2015.03.01.00.27.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 05:19:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Mar 2015 00:27:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) client-ip=2a00:1450:400c:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id zv9so735908pab.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 05:19:46 -0800 (PST)
+Received: by wghk14 with SMTP id k14so27878801wgh.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 00:27:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=/HRAOOptuhBo9MJJ+9P8FCbq7xonLtkQ8bu0eTUN9Ww=;
-        b=BNoWY20LFKc8Ypjxsd/MP/rSCriFa3KQE5c+jUFE6AmvK6eIukg6yy8sryAzyNr63n
-         bFMEL+Er8pv38NClrcbdIWaST8dNaqBvZLRKueu8BWp76m4IIcojJWxsuEaQk+6fwwjv
-         BEO28xHnYvD8trvS5rIGN+ToEg/YgajQKGwuNO/D/h3DmZrMFufqdfoj5OQ8br4ebDj8
-         RPjama2YjOgSIFimHdpR7jEV3l5V7+1NtOJ2kl7oIJIQ+lZz7+QnXJH+1agAg7THH5pu
-         H98T1lRuKFJQ86oTEOkHDF66EILeFbC9l6YGEULrlTbNZNIs2AW0oWtfD4HPqMWiDO68
-         orpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/HRAOOptuhBo9MJJ+9P8FCbq7xonLtkQ8bu0eTUN9Ww=;
-        b=O6+HJiMEnvvJDIckE1Dw68tKNtnIrje+sDs9pidDS0tYd5W/D6QDhnkJWZ/KVuu3Do
-         Jl2dwjWSBP+6IWrXFKJaBFyrmb9likO+10VIDnNnkACzzWpCguwLD8ydwNn7AXL6hg/1
-         Ic8U/sGHxFGsBFnTEhuPxVgc4syt+VXEPN/7SR3dkoZa4sfjbm9omIPh8MRrFXN8pOSk
-         LMC6N6uNG3RB/OIypi4DTUZ/Rnfv/CpQUI3TNtBzJNX4vpJGObqLKgEHUGDkmcQLChLk
-         lLlR2eWrAr/wFa5bc1pe9U+vXrRpPmX7m8ofYsgypHEmIINIyoA5X2ZCk8ta8OJiZinf
-         wvkw==
-X-Gm-Message-State: AG10YORljjUVvow0ri51KLPfMB2dK8cWoWrJlo+RqvkKlczCyckltyoMg0lvu9xwpeDDpQ==
-X-Received: by 10.66.121.110 with SMTP id lj14mr9709398pab.152.1455369586506;
-        Sat, 13 Feb 2016 05:19:46 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.191.38])
-        by smtp.gmail.com with ESMTPSA id n84sm26320036pfa.45.2016.02.13.05.19.43
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Feb 2016 05:19:45 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sat, 13 Feb 2016 18:49:37 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 0/2] Staging: wlan-ng: Drop wrapper function
-Date: Sat, 13 Feb 2016 18:49:33 +0530
-Message-Id: <cover.1455368638.git.bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=LbmLWOrsyWjMbFP/ISB2DOv8OizbVyKSaOphncSSQq0=;
+        b=sfVMxBFFA0ZIEZZDH7SyiHtN6yLwe/IOt5jxEZBnAhDsTuG28R6CMp/ww0DtRmbkhs
+         IoT/ZTWDnFl4eGMCKFJI9ySdaqoCOn+OcB9bqMYQADV1cZsZ6kBqpusYFkUNi1HWY4qY
+         5hZd3/KzPHumQZDhmKYBRG0pCNVXM7z59FkYgr3FXZ8ZuPfbEVqk46PtIlmtuIaG3NRN
+         lzfy3gwy5rVQrDsEudr1YlzMOZCpWHzfqQ/VpK+6rqk4UY5qk05MePMXWhTvr4uZd+l1
+         JzHw1Y2+ZbHaZppo4FTWtX4Hd/LhjO3aTgKoWUvx6fxQlI+W1FrmxnJarVWZpMPBaf+p
+         Yihg==
+MIME-Version: 1.0
+X-Received: by 10.194.6.228 with SMTP id e4mr45429258wja.63.1425198428802;
+ Sun, 01 Mar 2015 00:27:08 -0800 (PST)
+Received: by 10.28.3.68 with HTTP; Sun, 1 Mar 2015 00:27:08 -0800 (PST)
+In-Reply-To: <20150228211147.GA2496@Inspiron>
+References: <20150228211147.GA2496@Inspiron>
+Date: Sun, 1 Mar 2015 10:27:08 +0200
+Message-ID: <CAEnQRZDTE97T0yXbq2FNRcr5PZti+be-JWh-GhYecipnfw8FpQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: dgnc: Replace printk()
+ with dev_dbg()
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Cristina Opriceana <cristina.opriceana@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patchset drops the wrapper function prism2mgmt_pstr2bytearea and 
-replace its call by the function it wrapped. Also remove its function 
-prototype from the header file as it is no longer needed.
+On Sat, Feb 28, 2015 at 11:11 PM, Cristina Opriceana
+<cristina.opriceana@gmail.com> wrote:
+> This patch replaces printk() with dev_dbg() in order to avoid the
+> suggestion of using a more specific function while printing debug
+> information. Warning found by checkpatch.pl.
+>
+> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 
-Bhumika Goyal (2):
-  Staging: wlan-ng: Drop wrapper function
-  Staging: wlan-ng: Remove function prototype
-
- drivers/staging/wlan-ng/prism2mgmt.h |  1 -
- drivers/staging/wlan-ng/prism2mib.c  | 24 ++----------------------
- 2 files changed, 2 insertions(+), 23 deletions(-)
-
--- 
-1.9.1
-
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
