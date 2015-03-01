@@ -1,110 +1,92 @@
-X-GM-THRID: 6203334269363814400
-X-Received: by 10.180.210.212 with SMTP id mw20mr1007857wic.3.1444326310431;
-        Thu, 08 Oct 2015 10:45:10 -0700 (PDT)
+X-GM-THRID: 5483873173504
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,4028323104cfe580,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.126.194 with SMTP id na2mr3303500lbb.18.1425229339986;
+        Sun, 01 Mar 2015 09:02:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.161.20 with SMTP id k20ls208103lfe.88.gmail; Thu, 08 Oct
- 2015 10:45:09 -0700 (PDT)
-X-Received: by 10.112.151.9 with SMTP id um9mr1678030lbb.19.1444326309543;
-        Thu, 08 Oct 2015 10:45:09 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id bj4si366018wib.1.2015.10.08.10.45.09
+Received: by 10.152.170.167 with SMTP id an7ls294499lac.47.gmail; Sun, 01 Mar
+ 2015 09:02:19 -0800 (PST)
+X-Received: by 10.112.199.69 with SMTP id ji5mr3232873lbc.0.1425229339468;
+        Sun, 01 Mar 2015 09:02:19 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id o3si504050wib.2.2015.03.01.09.02.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 10:45:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        Sun, 01 Mar 2015 09:02:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id lk2so35921668wic.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 10:45:09 -0700 (PDT)
+Received: by wiwh11 with SMTP id h11so9948751wiw.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 09:02:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=TCFOkYv1sWvPNdKxdwwTQgC7KRiaHqPZfVwzem+MQ1s=;
-        b=SX4a9Z++JZBpKfpy6bHK1bikUN0aA/fxOkbr89ei66G5CgjCrc4Z60kREVJyrvBjLi
-         gZg565uNohJ8hBjUkedPEEuaxvWSKCwlx4wNsGaOvVRDHCgtR92AI+NFY80UiunnfAmn
-         4CmmzCBhvTCJfiA7dpyMA+4hkFO9ozgikkQBEfByNr246mnyAFQzsQMc+HvLkVKYLO/+
-         2H+0vjK3+X738mQK/OLniRS59UPMFfLez5XEyApz3WmLusgP/nJjLlpHJnOlVaDD4y9m
-         mbDvH+NIzr44I+n8/KJ4MICnogXeI76UpwKpXeLqJuQ31USH+dUM5xPRi0Y3vTnCh2Ep
-         fCvw==
-X-Received: by 10.180.188.33 with SMTP id fx1mr5617885wic.31.1444326309418;
-        Thu, 08 Oct 2015 10:45:09 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by smtp.gmail.com with ESMTPSA id wj4sm47498977wjb.10.2015.10.08.10.45.08
+        bh=MomrBTiOeYWQLZ2qC2DEU8YzZQnSckO7NYOUGnPmD4k=;
+        b=sR1XRBTecdCJhcvJmnlED5hKx2OgYKjQF/dSt3p/vjNhpIXYpmCkh3COzsRMiEOCEx
+         Vip494Gma4vQOMiNoQp3HcS8J7gJNgyPpEyC2xVXL0AWw3qahzc4NWtMLkF/OgXzsqEo
+         KZnYjr1OgV+ouDTrrfcqMb/ORrl73sEytq7qK8mmzeB/jUfDK/8MgQcFmzHkf1QQL6Sa
+         79D9a38RGLJsM4yVlOqzPaGZlMiMAKOtEFrkD2w1sICWkqsB4ALnul0n0v3aZS9XikuM
+         RQt5xm+F/3TiA3hhkx/yFw74i7NSuBZ0Mn7OowfSVU6jJCFpjkoqaSvVzLDbaHKSJWx+
+         cBkA==
+X-Received: by 10.194.62.198 with SMTP id a6mr50727783wjs.90.1425229339259;
+        Sun, 01 Mar 2015 09:02:19 -0800 (PST)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id g1sm12493879wjy.24.2015.03.01.09.02.18
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 08 Oct 2015 10:45:08 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        Sun, 01 Mar 2015 09:02:18 -0800 (PST)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: vt6655: Replace switch by if-else statement
-Date: Thu,  8 Oct 2015 19:44:58 +0200
-Message-Id: <1444326298-12640-1-git-send-email-ksenija.stanojevic@gmail.com>
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: rtl8192e: rtl8192e: fix space prohibited before that ','
+Date: Sun,  1 Mar 2015 19:02:11 +0200
+Message-Id: <1425229331-4775-1-git-send-email-haticeerturk27@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-Use of switch statement is wrong here, better use if-else statement
-instead.
+This patch fixes the following checkpatch.pl error:
+space prohibited before that ','
 
-Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com>
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/vt6655/channel.c | 33 +++++++++++++--------------------
- 1 file changed, 13 insertions(+), 20 deletions(-)
+ drivers/staging/rtl8192e/rtl8192e/rtl_cam.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/vt6655/channel.c b/drivers/staging/vt6655/channel.c
-index 7a71782..3d12da6 100644
---- a/drivers/staging/vt6655/channel.c
-+++ b/drivers/staging/vt6655/channel.c
-@@ -132,26 +132,10 @@ void vnt_init_bands(struct vnt_private *priv)
- 	struct ieee80211_channel *ch;
- 	int i;
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_cam.c b/drivers/staging/rtl8192e/rtl8192e/rtl_cam.c
+index 89ea70b..0569642 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_cam.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_cam.c
+@@ -192,7 +192,7 @@ void CamRestoreAllEntry(struct net_device *dev)
+ 		for (EntryId = 0; EntryId < 4; EntryId++) {
+ 			MacAddr = CAM_CONST_ADDR[EntryId];
+ 			if (priv->rtllib->swcamtable[EntryId].bused) {
+-				setKey(dev, EntryId , EntryId,
++				setKey(dev, EntryId, EntryId,
+ 				       priv->rtllib->pairwise_key_type, MacAddr,
+ 				       0, (u32 *)(&priv->rtllib->swcamtable
+ 				      [EntryId].key_buf[0]));
+@@ -254,7 +254,7 @@ void CamRestoreAllEntry(struct net_device *dev)
+ 		MacAddr = CAM_CONST_BROAD;
+ 		for (EntryId = 1; EntryId < 4; EntryId++) {
+ 			if (priv->rtllib->swcamtable[EntryId].bused) {
+-				setKey(dev, EntryId , EntryId,
++				setKey(dev, EntryId, EntryId,
+ 				       priv->rtllib->group_key_type,
+ 				       MacAddr, 0,
+ 				       (u32 *)(&priv->rtllib->swcamtable[EntryId].key_buf[0]));
+@@ -263,7 +263,7 @@ void CamRestoreAllEntry(struct net_device *dev)
  
--	switch (priv->byRFType) {
--	case RF_AIROHA7230:
--	case RF_UW2452:
--	case RF_NOTHING:
--	default:
--		ch = vnt_channels_5ghz;
-+	if (priv->byRFType == RF_RFMD2959 || priv->byRFType == RF_AIROHA ||
-+	    priv->byRFType == RF_AL2230S || priv->byRFType == RF_UW2451 ||
-+	    priv->byRFType == RF_VT3226) {
- 
--		for (i = 0; i < ARRAY_SIZE(vnt_channels_5ghz); i++) {
--			ch[i].max_power = 0x3f;
--			ch[i].flags = IEEE80211_CHAN_NO_HT40;
--		}
--
--		priv->hw->wiphy->bands[IEEE80211_BAND_5GHZ] =
--						&vnt_supported_5ghz_band;
--	/* fallthrough */
--	case RF_RFMD2959:
--	case RF_AIROHA:
--	case RF_AL2230S:
--	case RF_UW2451:
--	case RF_VT3226:
- 		ch = vnt_channels_2ghz;
- 
- 		for (i = 0; i < ARRAY_SIZE(vnt_channels_2ghz); i++) {
-@@ -161,7 +145,16 @@ void vnt_init_bands(struct vnt_private *priv)
- 
- 		priv->hw->wiphy->bands[IEEE80211_BAND_2GHZ] =
- 						&vnt_supported_2ghz_band;
--		break;
-+	} else {
-+		ch = vnt_channels_5ghz;
-+
-+		for (i = 0; i < ARRAY_SIZE(vnt_channels_5ghz); i++) {
-+			ch[i].max_power = 0x3f;
-+			ch[i].flags = IEEE80211_CHAN_NO_HT40;
-+		}
-+
-+		priv->hw->wiphy->bands[IEEE80211_BAND_5GHZ] =
-+						&vnt_supported_5ghz_band;
- 	}
- }
- 
+ 		if (priv->rtllib->iw_mode == IW_MODE_ADHOC) {
+ 			if (priv->rtllib->swcamtable[0].bused) {
+-				setKey(dev, 0 , 0,
++				setKey(dev, 0, 0,
+ 					priv->rtllib->group_key_type,
+ 					CAM_CONST_ADDR[0], 0,
+ 					(u32 *)(&priv->rtllib->swcamtable[0].key_buf[0]));
 -- 
 1.9.1
 
