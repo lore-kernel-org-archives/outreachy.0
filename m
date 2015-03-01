@@ -1,78 +1,148 @@
-X-GM-THRID: 2017960394752
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,5c9ede0babb9c0ec,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.6.232 with SMTP id e8mr407151laa.2.1424544492918;
-        Sat, 21 Feb 2015 10:48:12 -0800 (PST)
+X-GM-THRID: 5465006145536
+X-Received: by 10.112.214.234 with SMTP id od10mr3183533lbc.3.1425227509322;
+        Sun, 01 Mar 2015 08:31:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.71 with SMTP id r7ls317019lag.42.gmail; Sat, 21 Feb
- 2015 10:48:12 -0800 (PST)
-X-Received: by 10.112.9.65 with SMTP id x1mr176590lba.16.1424544492423;
-        Sat, 21 Feb 2015 10:48:12 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
-        by gmr-mx.google.com with ESMTPS id ev8si344182wib.3.2015.02.21.10.48.12
+Received: by 10.152.28.100 with SMTP id a4ls357026lah.23.gmail; Sun, 01 Mar
+ 2015 08:31:48 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr3252267lbb.11.1425227508883;
+        Sun, 01 Mar 2015 08:31:48 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ew5si508473wid.1.2015.03.01.08.31.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 10:48:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 01 Mar 2015 08:31:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22d.google.com with SMTP id k14so18735607wgh.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 10:48:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=xdIZ01wPUxaKPBtZc1pGdQ/RffHnLInHl3X13xh1U7o=;
-        b=rEoTX5m6vNxU2arz6IuyzEnin0KQrCiaECv0bOORnyKkndD+jWtzohv3FPu4L+FqP/
-         4Eh8ohhiera2n2u5SZaYzYfcNL2m7fMcFVAIc8Irpppnxthvb3fFtxrof0uecwO4FOq6
-         L29MaI2aORlMfZzq8j0N68eaqSXZAqDV+Kiu5M+jPry3phkkc8KWhFAyQMDBf0x4PqQv
-         OLcdsOPm+OW6iABlorgE/8heRcjg+LRVa76pNiosmFbrhoYqfN4I9Xlhv9r/Qwug46QX
-         YCikP5rG4zCJskwMibAqX4A8lj5HBqVsYk5/ItzA+zjlvJGqWLeGVpwodZgKpY9w9LKi
-         Ce0Q==
-X-Received: by 10.194.190.10 with SMTP id gm10mr6853865wjc.91.1424544492344;
-        Sat, 21 Feb 2015 10:48:12 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id qb8sm41628776wjc.4.2015.02.21.10.48.10
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 10:48:11 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH v2] Staging: drivers: dma: Add space before (
-Date: Sat, 21 Feb 2015 20:48:02 +0200
-Message-Id: <1424544482-4882-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,671,1418079600"; 
+   d="scan'208";a="101703666"
+Received: from wnpgmb0903w-ds01-92-71.dynamic.mtsallstream.net (HELO unknownE0F847206056) ([142.161.92.71])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Mar 2015 17:31:47 +0100
+Date: Sun, 1 Mar 2015 10:31:44 -0600 (CST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192e: Remove unneeded
+ brackets.
+In-Reply-To: <20150301155819.GA6255@akanksha>
+Message-ID: <alpine.DEB.2.10.1503011028360.2545@hadrien>
+References: <20150301155819.GA6255@akanksha>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes checkpatch.pl error in file ste_dma40.c
-ERROR: space required before the open parenthesis '('
+On Sun, 1 Mar 2015, Vatika Harlalka wrote:
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
+> These were detected with this Coccinelle script:
+> @@
+> identifier f1, f2, f3;
+> constant c;
+> @@
+>
+> f1 =
+> (
+> - (f2 << f3)
+> + f2 << f3
+> |
+> - (f2 >> f3)
+> + f2 >> f3
+> |
+> - (f2 << c)
+> + f2 << c
+> |
+> - (f2 >> c)
+> + f2 >> c
+> )
 
-v2:changed the subject
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
- drivers/dma/ste_dma40.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+There is actually no need to limit anything to identifiers.  They can all
+be arbitrary expressions.
 
-diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
-index 15d4946..9c6d2a2 100644
---- a/drivers/dma/ste_dma40.c
-+++ b/drivers/dma/ste_dma40.c
-@@ -3551,7 +3551,7 @@ static int __init d40_probe(struct platform_device *pdev)
- 
- 	if (!plat_data) {
- 		if (np) {
--			if(d40_of_probe(pdev, np)) {
-+			if (d40_of_probe(pdev, np)) {
- 				ret = -ENOMEM;
- 				goto failure;
- 			}
--- 
-1.9.1
+In your case, if eg f1 and f2 are the same, and if it is a statement
+rather than a declaration, you can create eg f1 <<= f3.  However, Aya sent
+a lot of patches like that, and I don't think they have been picked up
+yet, so you might want to avoid sending patches for that, or at least
+don't send patches that include both that change and other things.
 
+Also, the change is valid for other kinds of expressions than f2 << f3 and
+f2 >> f3.  You can do other kinds of expressions as well.
+
+julia
+
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+> index 2fbb964..7dda904 100644
+> --- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+> +++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+> @@ -131,7 +131,7 @@ static bool PlatformIOCheckPageLegalAndGetRegMask(u32 u4bPage, u8 *pu1bPageMask)
+>
+>  void write_nic_io_byte(struct net_device *dev, int x, u8 y)
+>  {
+> -	u32 u4bPage = (x >> 8);
+> +	u32 u4bPage = x >> 8;
+>  	u8 u1PageMask = 0;
+>  	bool	bIsLegalPage = false;
+>
+> @@ -154,7 +154,7 @@ void write_nic_io_byte(struct net_device *dev, int x, u8 y)
+>
+>  void write_nic_io_word(struct net_device *dev, int x, u16 y)
+>  {
+> -	u32 u4bPage = (x >> 8);
+> +	u32 u4bPage = x >> 8;
+>  	u8 u1PageMask = 0;
+>  	bool	bIsLegalPage = false;
+>
+> @@ -177,7 +177,7 @@ void write_nic_io_word(struct net_device *dev, int x, u16 y)
+>
+>  void write_nic_io_dword(struct net_device *dev, int x, u32 y)
+>  {
+> -	u32 u4bPage = (x >> 8);
+> +	u32 u4bPage = x >> 8;
+>  	u8 u1PageMask = 0;
+>  	bool	bIsLegalPage = false;
+>
+> @@ -199,7 +199,7 @@ void write_nic_io_dword(struct net_device *dev, int x, u32 y)
+>
+>  u8 read_nic_io_byte(struct net_device *dev, int x)
+>  {
+> -	u32 u4bPage = (x >> 8);
+> +	u32 u4bPage = x >> 8;
+>  	u8 u1PageMask = 0;
+>  	bool	bIsLegalPage = false;
+>  	u8	Data = 0;
+> @@ -224,7 +224,7 @@ u8 read_nic_io_byte(struct net_device *dev, int x)
+>
+>  u16 read_nic_io_word(struct net_device *dev, int x)
+>  {
+> -	u32 u4bPage = (x >> 8);
+> +	u32 u4bPage = x >> 8;
+>  	u8 u1PageMask = 0;
+>  	bool	bIsLegalPage = false;
+>  	u16	Data = 0;
+> @@ -250,7 +250,7 @@ u16 read_nic_io_word(struct net_device *dev, int x)
+>
+>  u32 read_nic_io_dword(struct net_device *dev, int x)
+>  {
+> -	u32 u4bPage = (x >> 8);
+> +	u32 u4bPage = x >> 8;
+>  	u8 u1PageMask = 0;
+>  	bool	bIsLegalPage = false;
+>  	u32	Data = 0;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150301155819.GA6255%40akanksha.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
