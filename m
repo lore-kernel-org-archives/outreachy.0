@@ -3,50 +3,50 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,3803f49973626918
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.113.228 with SMTP id jb4mr23313653obb.31.1425224173353;
-        Sun, 01 Mar 2015 07:36:13 -0800 (PST)
+X-Received: by 10.68.104.5 with SMTP id ga5mr22252424pbb.2.1425224159835;
+        Sun, 01 Mar 2015 07:35:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.164.93 with SMTP id n90ls1050689ioe.7.gmail; Sun, 01 Mar
- 2015 07:36:13 -0800 (PST)
-X-Received: by 10.68.241.163 with SMTP id wj3mr22226420pbc.8.1425224173225;
-        Sun, 01 Mar 2015 07:36:13 -0800 (PST)
+Received: by 10.140.95.68 with SMTP id h62ls1348590qge.92.gmail; Sun, 01 Mar
+ 2015 07:35:59 -0800 (PST)
+X-Received: by 10.236.26.17 with SMTP id b17mr22157815yha.15.1425224159620;
+        Sun, 01 Mar 2015 07:35:59 -0800 (PST)
 Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id ks4si1190482pbc.1.2015.03.01.07.36.13
+Received: from mail-pd0-x22d.google.com (mail-pd0-x22d.google.com. [2607:f8b0:400e:c02::22d])
+        by gmr-mx.google.com with ESMTPS id bo1si1201776pbc.0.2015.03.01.07.35.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 07:36:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Sun, 01 Mar 2015 07:35:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) client-ip=2607:f8b0:400e:c02::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padfa1 with SMTP id fa1so7023197pad.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 07:36:13 -0800 (PST)
+Received: by pdbnh10 with SMTP id nh10so9550128pdb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 07:35:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=iLl2aoGKnYOa1foZmdVPrc/rQD41XL6K10nS4r1c3bE=;
-        b=stj3WoBcZNslXEUBB9e9jcq1Z9hzQhOYkkF1h0O0VDmS5YNg55ENh5gtdFbC9EBt8j
-         uTudulqqW+f5TEbNVXu8yQ3ENB5uLoyrfxSI9lF9cziTzbGdxFhaW070TZ9ko/TH6tAc
-         XqqraCjiJuJX+J1SXvYYAXLXmSJwjtXV8K2CHB0x46XTIv8S1+Y4sEs8jgD0IS8wl19I
-         +W+8HgBwVGD7ydZRHbIIsvxmLx2KoAGqnwT2khvfH+dk3kd77+6xK8H9h2VElsORTl+4
-         3la1kClUxvmpyiz5/huvb/jcL+mmjPRhcWQbpIEEaUFQMjSFHiun8CmRslcWITMzapsZ
-         hURA==
-X-Received: by 10.70.18.36 with SMTP id t4mr40216918pdd.66.1425224173152;
-        Sun, 01 Mar 2015 07:36:13 -0800 (PST)
+        bh=EjY9caKEFRHmBUpRMGHacOF97TESXMyjCRSFVlvskwU=;
+        b=RJU5Xidki6vRVW1TCQLLcS8qmLaVAl9dr/m1nTSM7Z/1C92BQ9ucCyqmjGhNyzlEAD
+         4ot1PgqPzFp74QARb93hrRqHRWAe0J4oDsE4uNxvEktssrxdr7BZj9pRUXQktAlwTwfF
+         V3C3Tkn2Rpfd9BZ9d3BXRiZE5OTK03fsIVNS9FcES10FHeOfluIf9UXG3sTADx6l02LN
+         91arYWvS2z5vBiwUS23LOqGSOnSijTIfQluFDSwulKVUBq2cIH7KJkUoYz5heD4Gw8mI
+         CWDoPXEWidDQQaXUQpuRMJPkScExPEa/8ykai5/GmraQX+K90NlfgNkjMzeYx67ArPO4
+         tnIQ==
+X-Received: by 10.66.199.2 with SMTP id jg2mr39080496pac.55.1425224159492;
+        Sun, 01 Mar 2015 07:35:59 -0800 (PST)
 Return-Path: <vatikaharlalka@gmail.com>
 Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id z2sm9346957pde.94.2015.03.01.07.36.11
+        by mx.google.com with ESMTPSA id hx2sm9366737pbc.68.2015.03.01.07.35.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 07:36:12 -0800 (PST)
-Date: Sun, 1 Mar 2015 21:04:47 +0530
+        Sun, 01 Mar 2015 07:35:58 -0800 (PST)
+Date: Sun, 1 Mar 2015 21:04:33 +0530
 From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/3] Staging: wlan-ng: Remove unused variable
-Message-ID: <c015862f8ccc967cf9b1856af9c337df98969837.1425223729.git.vatikaharlalka@gmail.com>
+Subject: [PATCH 1/3] Staging: wlan-ng: Remove unused variable
+Message-ID: <9fdbd7148c5a2bc0cd514136697f1700dfb76291.1425223729.git.vatikaharlalka@gmail.com>
 References: <cover.1425223729.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -54,48 +54,56 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425223729.git.vatikaharlalka@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The return value of the function need not be
-assigned to a variable.
-
 Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/wlan-ng/prism2mib.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/prism2mib.c b/drivers/staging/wlan-ng/prism2mib.c
-index 0163e06..e5b0ecd 100644
---- a/drivers/staging/wlan-ng/prism2mib.c
-+++ b/drivers/staging/wlan-ng/prism2mib.c
-@@ -591,9 +591,7 @@ static int prism2mib_privacyinvoked(struct mibrec *mib,
- 			mib->parm2 |= HFA384x_WEPFLAGS_DISABLE_TXCRYPT;
- 	}
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index c85b1b5..dd05e5f 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -1025,9 +1025,7 @@ int hfa384x_cmd_disable(hfa384x_t *hw, u16 macport)
+ 	cmd.parm1 = 0;
+ 	cmd.parm2 = 0;
  
--	result = prism2mib_flag(mib, isget, wlandev, hw, msg, data);
+-	result = hfa384x_docmd_wait(hw, &cmd);
 -
 -	return result;
-+	return prism2mib_flag(mib, isget, wlandev, hw, msg, data);
++	return hfa384x_docmd_wait(hw, &cmd);
  }
  
  /*----------------------------------------------------------------
-@@ -630,9 +628,7 @@ static int prism2mib_excludeunencrypted(struct mibrec *mib,
- {
- 	int result;
+@@ -1061,9 +1059,7 @@ int hfa384x_cmd_enable(hfa384x_t *hw, u16 macport)
+ 	cmd.parm1 = 0;
+ 	cmd.parm2 = 0;
  
--	result = prism2mib_flag(mib, isget, wlandev, hw, msg, data);
+-	result = hfa384x_docmd_wait(hw, &cmd);
 -
 -	return result;
-+	return prism2mib_flag(mib, isget, wlandev, hw, msg, data);
++	return hfa384x_docmd_wait(hw, &cmd);
  }
  
  /*----------------------------------------------------------------
-@@ -679,9 +675,7 @@ static int prism2mib_fragmentationthreshold(struct mibrec *mib,
- 			return 0;
- 		}
+@@ -1106,9 +1102,7 @@ int hfa384x_cmd_monitor(hfa384x_t *hw, u16 enable)
+ 	cmd.parm1 = 0;
+ 	cmd.parm2 = 0;
  
--	result = prism2mib_uint32(mib, isget, wlandev, hw, msg, data);
+-	result = hfa384x_docmd_wait(hw, &cmd);
 -
 -	return result;
-+	return prism2mib_uint32(mib, isget, wlandev, hw, msg, data);
++	return hfa384x_docmd_wait(hw, &cmd);
+ }
+ 
+ /*----------------------------------------------------------------
+@@ -1165,9 +1159,7 @@ int hfa384x_cmd_download(hfa384x_t *hw, u16 mode, u16 lowaddr,
+ 	cmd.parm1 = highaddr;
+ 	cmd.parm2 = codelen;
+ 
+-	result = hfa384x_docmd_wait(hw, &cmd);
+-
+-	return result;
++	return hfa384x_docmd_wait(hw, &cmd);
  }
  
  /*----------------------------------------------------------------
