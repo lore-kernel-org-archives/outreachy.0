@@ -1,79 +1,70 @@
-X-GM-THRID: 4464264085504
+X-GM-THRID: 5447739244544
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,d0d072a2f3d65b23,start
+X-Google-Thread: 9ca63f596c,3803f49973626918
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.80.35 with SMTP id o3mr500972wix.0.1425039064515;
-        Fri, 27 Feb 2015 04:11:04 -0800 (PST)
+X-Received: by 10.182.246.198 with SMTP id xy6mr22861043obc.26.1425251982919;
+        Sun, 01 Mar 2015 15:19:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.198.6 with SMTP id iy6ls145413lac.38.gmail; Fri, 27 Feb
- 2015 04:11:04 -0800 (PST)
-X-Received: by 10.112.224.12 with SMTP id qy12mr965859lbc.10.1425039063992;
-        Fri, 27 Feb 2015 04:11:03 -0800 (PST)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
-        by gmr-mx.google.com with ESMTPS id i7si106158wif.0.2015.02.27.04.11.03
+Received: by 10.182.130.200 with SMTP id og8ls546391obb.15.gmail; Sun, 01 Mar
+ 2015 15:19:42 -0800 (PST)
+X-Received: by 10.182.199.66 with SMTP id ji2mr24343398obc.14.1425251982737;
+        Sun, 01 Mar 2015 15:19:42 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id bo1si1299245pbc.0.2015.03.01.15.19.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 04:11:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
+        Sun, 01 Mar 2015 15:19:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghn12 with SMTP id n12so19988034wgh.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 04:11:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=jv3VZOBLO/m0nlUBJmIO3S9Iq66Ig/9cCpzNhjIVZ+0=;
-        b=afHDIH6xIDhj3zb1PpnqXx1N4bqwKA4oYHBfdJqWh11AqJ5RClf2aXY2PGTWIY/4NN
-         HmCLVFMbnRBAVhzcbJsnMW1QqnfYwk2tnJIhI9KNNNdiY00yr9zfP50l4kNOROpRPS+D
-         hN9j9KWanwFw2IonaVWxxZHQm5YPmVikgshI/L01wqe5FVPaNf25XH/Fcn7RA4xN0tIT
-         qUXNkOP9FtcNBs9FXQLENMzywC60EQ1ij+ObLlWOV168pwv49xhQRlSTUFo/aPnPh3IR
-         NYtc7EMO+KPEcext0y7EFEE3NHrbME5w75IY/66ObKA/tPHI674V61uU1Yw0SYtAXRwV
-         Y12A==
-X-Received: by 10.180.126.69 with SMTP id mw5mr6119631wib.12.1425039063848;
-        Fri, 27 Feb 2015 04:11:03 -0800 (PST)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id y3sm5707510wju.14.2015.02.27.04.11.02
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 04:11:03 -0800 (PST)
-Date: Fri, 27 Feb 2015 14:10:36 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: dgnc: Replace printk with dev_err
-Message-ID: <20150227121036.GA7834@Inspiron>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 6DC062C;
+	Sun,  1 Mar 2015 23:19:42 +0000 (UTC)
+Date: Sun, 1 Mar 2015 15:19:42 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/3] Staging: wlan-ng: Remove unused
+ variables.
+Message-ID: <20150301231942.GA9171@kroah.com>
+References: <cover.1425223729.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <cover.1425223729.git.vatikaharlalka@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the following checkpatch.pl warning:
-WARNING: Prefer [subsystem eg: netdev]_err over printk(KERN_ERR, ...).
+On Sun, Mar 01, 2015 at 09:04:31PM +0530, Vatika Harlalka wrote:
+> These patches were detected by the following
+> Coccinelle script :
+> @@
+> identifier f, ret;
+> type T;
+> @@
+> (
+> - ret =
+> + return
+>   f(...);
+>   - return ret;
+> 
+>   |
+> 
+>   - T ret =
+>   + return
+>     f(...);
+>     - return ret;
+> )
+> 
+> Vatika Harlalka (3):
+>   Staging: wlan-ng: Remove unused variable
+>   Staging: wlan-ng: Remove unused variable
+>   Staging: wlan-ng: Remove unused variable
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
----
- drivers/staging/dgnc/dgnc_sysfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+3 patches all with the same name, please fix up and resend.
 
-diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
-index 2fd34ca..a72e353 100644
---- a/drivers/staging/dgnc/dgnc_sysfs.c
-+++ b/drivers/staging/dgnc/dgnc_sysfs.c
-@@ -360,7 +360,7 @@ void dgnc_create_ports_sysfiles(struct dgnc_board *bd)
- 	rc |= device_create_file(&(bd->pdev->dev), &dev_attr_vpd);
- 	rc |= device_create_file(&(bd->pdev->dev), &dev_attr_serial_number);
- 	if (rc)
--		printk(KERN_ERR "DGNC: sysfs device_create_file failed!\n");
-+		dev_err(&bd->pdev->dev, "dgnc: sysfs device_create_file failed!\n");
- }
- 
- 
--- 
-1.9.1
+thanks,
 
+greg k-h
 
