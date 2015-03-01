@@ -3,68 +3,78 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,3803f49973626918
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.182.246.198 with SMTP id xy6mr22861043obc.26.1425251982919;
-        Sun, 01 Mar 2015 15:19:42 -0800 (PST)
+X-Received: by 10.112.156.65 with SMTP id wc1mr557464lbb.7.1425227627865;
+        Sun, 01 Mar 2015 08:33:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.130.200 with SMTP id og8ls546391obb.15.gmail; Sun, 01 Mar
- 2015 15:19:42 -0800 (PST)
-X-Received: by 10.182.199.66 with SMTP id ji2mr24343398obc.14.1425251982737;
-        Sun, 01 Mar 2015 15:19:42 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id bo1si1299245pbc.0.2015.03.01.15.19.42
+Received: by 10.152.19.36 with SMTP id b4ls255647lae.46.gmail; Sun, 01 Mar
+ 2015 08:33:47 -0800 (PST)
+X-Received: by 10.112.77.101 with SMTP id r5mr3292072lbw.4.1425227627360;
+        Sun, 01 Mar 2015 08:33:47 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ew5si508860wid.1.2015.03.01.08.33.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 15:19:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 01 Mar 2015 08:33:47 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 6DC062C;
-	Sun,  1 Mar 2015 23:19:42 +0000 (UTC)
-Date: Sun, 1 Mar 2015 15:19:42 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,671,1418079600"; 
+   d="scan'208";a="101703917"
+Received: from wnpgmb0903w-ds01-92-71.dynamic.mtsallstream.net (HELO unknownE0F847206056) ([142.161.92.71])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Mar 2015 17:33:46 +0100
+Date: Sun, 1 Mar 2015 10:33:43 -0600 (CST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Vatika Harlalka <vatikaharlalka@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/3] Staging: wlan-ng: Remove unused
- variables.
-Message-ID: <20150301231942.GA9171@kroah.com>
-References: <cover.1425223729.git.vatikaharlalka@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/3] Staging: wlan-ng: Remove unused
+ variable
+In-Reply-To: <922d52e4f30f851b2c893faa720b87b57dc82812.1425223729.git.vatikaharlalka@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503011033230.2545@hadrien>
+References: <cover.1425223729.git.vatikaharlalka@gmail.com> <922d52e4f30f851b2c893faa720b87b57dc82812.1425223729.git.vatikaharlalka@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1425223729.git.vatikaharlalka@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Sun, Mar 01, 2015 at 09:04:31PM +0530, Vatika Harlalka wrote:
-> These patches were detected by the following
-> Coccinelle script :
-> @@
-> identifier f, ret;
-> type T;
-> @@
-> (
-> - ret =
-> + return
->   f(...);
->   - return ret;
-> 
->   |
-> 
->   - T ret =
->   + return
->     f(...);
->     - return ret;
-> )
-> 
-> Vatika Harlalka (3):
->   Staging: wlan-ng: Remove unused variable
->   Staging: wlan-ng: Remove unused variable
->   Staging: wlan-ng: Remove unused variable
+On Sun, 1 Mar 2015, Vatika Harlalka wrote:
 
-3 patches all with the same name, please fix up and resend.
+> The return value of the function need not be
+> assigned to a variable.
+>
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/wlan-ng/prism2sta.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+> index 10ad24a..2ebca7d 100644
+> --- a/drivers/staging/wlan-ng/prism2sta.c
+> +++ b/drivers/staging/wlan-ng/prism2sta.c
+> @@ -251,9 +251,7 @@ static int prism2sta_txframe(wlandevice_t *wlandev, struct sk_buff *skb,
+>  		p80211_hdr->a3.fc |= cpu_to_le16(WLAN_SET_FC_ISWEP(1));
+>  	}
+>
+> -	result = hfa384x_drvr_txframe(hw, skb, p80211_hdr, p80211_wep);
+> -
+> -	return result;
+> +	return hfa384x_drvr_txframe(hw, skb, p80211_hdr, p80211_wep);
 
-thanks,
+Now you can get rid of the result variable.
 
-greg k-h
+julia
+
+>  }
+>
+>  /*----------------------------------------------------------------
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/922d52e4f30f851b2c893faa720b87b57dc82812.1425223729.git.vatikaharlalka%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
