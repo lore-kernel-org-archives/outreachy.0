@@ -1,48 +1,52 @@
 X-GM-THRID: 5368833900544
-X-Received: by 10.50.72.98 with SMTP id c2mr12048616igv.0.1425212299355;
-        Sun, 01 Mar 2015 04:18:19 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,df23be8587a10da9
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.42.24.72 with SMTP id v8mr14706889icb.14.1425212261454;
+        Sun, 01 Mar 2015 04:17:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.68.76 with SMTP id u12ls459680obt.31.gmail; Sun, 01 Mar
- 2015 04:18:19 -0800 (PST)
-X-Received: by 10.182.47.228 with SMTP id g4mr22789227obn.5.1425212299173;
-        Sun, 01 Mar 2015 04:18:19 -0800 (PST)
+Received: by 10.50.66.132 with SMTP id f4ls606870igt.43.canary; Sun, 01 Mar
+ 2015 04:17:41 -0800 (PST)
+X-Received: by 10.70.92.103 with SMTP id cl7mr3960759pdb.0.1425212261237;
+        Sun, 01 Mar 2015 04:17:41 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id pc4si1156462pac.0.2015.03.01.04.18.19
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id ri9si1155183pdb.1.2015.03.01.04.17.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 04:18:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Sun, 01 Mar 2015 04:17:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pabli10 with SMTP id li10so6367640pab.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:18:19 -0800 (PST)
+Received: by pablj1 with SMTP id lj1so104002pab.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:17:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=Lgf2pvMbZiH7gQFl2d1JTFICF6Gl9zIxYjvvdd4yBqs=;
-        b=Jh92jreDH8klbRzXxD+tBfW+X/oGE/EZI4DzS1Bpuk6n/LPlfC9yj2nBTC8mIb0/+g
-         rNAOWN7S/NtKtP6KMF+9T8X4gNWnW4cg1u0MoTF+pI3sfMNdLG4X0aKtwMfR7N6qh6Uf
-         Y3jhN7KqLMOJUllRPRvOQggC6SzHrS97CeFE5qx1+KUSWthcfFYv9IBd4CoPlXV8ip/y
-         3+6WMcPTYxgnOsn3u9EkLa0JE6jOGTSuKBKn6Ja/cE3pVFfGLz31K5pnU+mBEDTSsVKi
-         u3FIv/35kT/HJlBlx2EOaPWdfJ5nPFS1XP2la/UcOlQdf+IPwhuaRjlYEykSFZHAlQkv
-         ACKg==
-X-Received: by 10.66.158.66 with SMTP id ws2mr38045930pab.37.1425212299039;
-        Sun, 01 Mar 2015 04:18:19 -0800 (PST)
+        bh=jZJ9cJ1Q9laraPsZ6rPs2KJbjm2rtGuS0YZZ7XDzejg=;
+        b=zH0dR2sf+RA9+rTyK/B1qTG3zfXJiFWiB4bOrfHjX18RD7X+b1z3uLccZSIwzZvurk
+         YuDltIik9TeyWUPXinVZubauo7dAJS8IsgP+q3hn7eBuQSlhg4Yk1GyFUl/MSsAxJMVr
+         nxebmOXDbhJLNC6/HAPMqQzwVses8Tov1Oq2sHrM29fCiBzwEkPJmWcE8o2X40ThYejM
+         F+rYd/Ats6JFdeHltuNV/4FE7dBaait0tVVitSo8tfnedl0LUlh2NkyD9izthIfpHmMt
+         ruGvuQk4QTjfauJ8VhzIJBxVc8RQPI+i/Eo+JpfMTK6G3jsG5S57zk7zOvzz7L8+8HKW
+         uHjA==
+X-Received: by 10.68.195.10 with SMTP id ia10mr38046134pbc.113.1425212261151;
+        Sun, 01 Mar 2015 04:17:41 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id qp4sm9008634pbc.63.2015.03.01.04.18.17
+        by mx.google.com with ESMTPSA id g11sm9126199pat.24.2015.03.01.04.17.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 04:18:18 -0800 (PST)
-Date: Sun, 1 Mar 2015 17:49:33 +0530
+        Sun, 01 Mar 2015 04:17:40 -0800 (PST)
+Date: Sun, 1 Mar 2015 17:48:55 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 12/12] staging: rtl8192e: Use kzalloc instead of kmalloc.
-Message-ID: <d3f39de51c42b3f455c15c792f8fcf9c120a5b70.1425211236.git.navyasri.tech@gmail.com>
+Subject: [PATCH 11/12] staging: rtl8192e: Use kzalloc instead of kcalloc.
+Message-ID: <21caef9d058674e16d88a67ed62b4de6a16cafbb.1425211236.git.navyasri.tech@gmail.com>
 References: <cover.1425211235.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -50,7 +54,7 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425211235.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The semantic patch used for this change is:
+The following semantic patch was used to make this change:
 
 @@
 type T, T2;
@@ -359,27 +363,25 @@ expression E2,E3;
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_softmac.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/rtl8192e/rtllib_module.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
-index d992a75..82deb4d79 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac.c
-@@ -3421,12 +3421,11 @@ static int rtllib_wpa_set_encryption(struct rtllib_device *ieee,
+diff --git a/drivers/staging/rtl8192e/rtllib_module.c b/drivers/staging/rtl8192e/rtllib_module.c
+index 0cf3809..7282c15 100644
+--- a/drivers/staging/rtl8192e/rtllib_module.c
++++ b/drivers/staging/rtl8192e/rtllib_module.c
+@@ -69,9 +69,8 @@ static inline int rtllib_networks_allocate(struct rtllib_device *ieee)
+ 	if (ieee->networks)
+ 		return 0;
  
- 		lib80211_crypt_delayed_deinit(&ieee->crypt_info, crypt);
- 
--		new_crypt = kmalloc(sizeof(*new_crypt), GFP_KERNEL);
-+		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
- 		if (new_crypt == NULL) {
- 			ret = -ENOMEM;
- 			goto done;
- 		}
--		memset(new_crypt, 0, sizeof(struct lib80211_crypt_data));
- 		new_crypt->ops = ops;
- 		if (new_crypt->ops)
- 			new_crypt->priv =
+-	ieee->networks = kzalloc(
+-		MAX_NETWORK_COUNT * sizeof(struct rtllib_network),
+-		GFP_KERNEL);
++	ieee->networks = kcalloc(MAX_NETWORK_COUNT,
++				 sizeof(struct rtllib_network), GFP_KERNEL);
+ 	if (!ieee->networks) {
+ 		printk(KERN_WARNING "%s: Out of memory allocating beacons\n",
+ 		       ieee->dev->name);
 -- 
 1.9.1
 
