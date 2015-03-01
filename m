@@ -1,48 +1,48 @@
 X-GM-THRID: 5368833900544
-X-Received: by 10.66.249.35 with SMTP id yr3mr19430273pac.13.1425211819968;
-        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
+X-Received: by 10.66.97.10 with SMTP id dw10mr21632414pab.48.1425211791387;
+        Sun, 01 Mar 2015 04:09:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.129.83 with SMTP id c80ls1001517iod.44.gmail; Sun, 01 Mar
- 2015 04:10:19 -0800 (PST)
-X-Received: by 10.66.153.16 with SMTP id vc16mr22036264pab.42.1425211819717;
-        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
+Received: by 10.107.169.87 with SMTP id s84ls953665ioe.76.gmail; Sun, 01 Mar
+ 2015 04:09:51 -0800 (PST)
+X-Received: by 10.42.163.8 with SMTP id a8mr22527440icy.2.1425211791232;
+        Sun, 01 Mar 2015 04:09:51 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id q9si282663pds.2.2015.03.01.04.10.19
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id pc4si1154035pac.0.2015.03.01.04.09.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Sun, 01 Mar 2015 04:09:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pabli10 with SMTP id li10so6201017pab.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:10:19 -0800 (PST)
+Received: by pabli10 with SMTP id li10so6333239pab.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:09:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=oQmfFkDoB9PZJQ4dfvKzN2NrHr9uzurgnw70n7o766Q=;
-        b=NuKyZKC9nfsRq0UJU0McYSYMFv1fYqvfqUX46dcZiVHUSQxYcWlDUaST7QNfigAwub
-         58x4PH8OfEd4s0UkP11UgihXpY7KeNrD9MBkapfpooQ0/aI9PsiPqr5ae94BTBmSAWxv
-         UBMZmk2jg2EW/4oMQslQ92iK0FJHXF8+EKBT+KaNVRXDEbBt/wjbw+g6vFgfH2gZK3HP
-         Amo4CFJMqaoyQwn517tiZrx5oP9oMNxHLVaB7AKROltf61Hf7VTUpqvqFc+KpwsCbX6L
-         JScSegI9zwIN3sqIeKtkDZoyUnDBv1h6/5YHTm8TSnL/rNmLksp69P+wv5uqKqNDtbg9
-         wefA==
-X-Received: by 10.70.39.33 with SMTP id m1mr38612345pdk.2.1425211819636;
-        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
+        bh=xj286Hkb/fX5l9gtL2UommBJhI2Mk5UoOEhkIOvUnNA=;
+        b=V8QgHhOlb+9So2tte3WKR8Mvw3m8Mw8x3MRMSm6EzqiNDq3t/gr5fublLQ+DofU9BM
+         7/wv726MIV2BDlgS8C4OxUGGWs6k6fkKv8qJ1N7NtC9SR/FgCkCuo8Rg54xnmcyYQihr
+         IxfTYasIiqRH/qyphSZFx5M37QXfHE3fuO8fkBvKsdtrS/sh8NS5TF9TEgAFT6y12srG
+         hZLVsp8cjpn4RH+tq8Y9l8/El0O0AlxKw36i9rjddyB/ZGTsgRoFR+ZNtb5omruwIKRd
+         FpQ+C2pXbYcIP136AewJTjJtYfqM+ho8lrRJ4agEzbHdOvwG9mkQdI3aKzRuatnhUTw3
+         V38w==
+X-Received: by 10.68.102.194 with SMTP id fq2mr38062482pbb.99.1425211791122;
+        Sun, 01 Mar 2015 04:09:51 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id z10sm9121969pas.18.2015.03.01.04.10.18
+        by mx.google.com with ESMTPSA id ng17sm8968299pdb.91.2015.03.01.04.09.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
-Date: Sun, 1 Mar 2015 17:41:32 +0530
+        Sun, 01 Mar 2015 04:09:50 -0800 (PST)
+Date: Sun, 1 Mar 2015 17:41:04 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 08/12] staging: media: Use kcalloc instead of kzalloc.
-Message-ID: <23a348a58a3da37d21a4bcce22e3fccf3c4edac5.1425211236.git.navyasri.tech@gmail.com>
+Subject: [PATCH 07/12] staging: wlan-ng: Use kzalloc instead of kmalloc.
+Message-ID: <d61510fa00686c559b8f2e509748f601a63ce61c.1425211236.git.navyasri.tech@gmail.com>
 References: <cover.1425211235.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -50,7 +50,7 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425211235.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The coccinelle script used for this change is:
+The semantic patch used for this change is:
 
 @@
 type T, T2;
@@ -359,34 +359,28 @@ expression E2,E3;
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
-index a350a20..5742619 100644
---- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
-+++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
-@@ -226,8 +226,8 @@ static int vpfe_enable_clock(struct vpfe_device *vpfe_dev)
- 	if (!vpfe_cfg->num_clocks)
- 		return 0;
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index c85b1b5..e109a7f 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -619,11 +619,10 @@ static hfa384x_usbctlx_t *usbctlx_alloc(void)
+ {
+ 	hfa384x_usbctlx_t *ctlx;
  
--	vpfe_dev->clks = kzalloc(vpfe_cfg->num_clocks *
--				   sizeof(struct clock *), GFP_KERNEL);
-+	vpfe_dev->clks = kcalloc(vpfe_cfg->num_clocks,
-+				 sizeof(struct clock *), GFP_KERNEL);
- 	if (vpfe_dev->clks == NULL)
- 		return -ENOMEM;
+-	ctlx = kmalloc(sizeof(*ctlx), in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+-	if (ctlx != NULL) {
+-		memset(ctlx, 0, sizeof(*ctlx));
++	ctlx = kzalloc(sizeof(*ctlx),
++		       in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
++	if (ctlx != NULL)
+ 		init_completion(&ctlx->done);
+-	}
  
-@@ -346,7 +346,8 @@ static int register_i2c_devices(struct vpfe_device *vpfe_dev)
- 	i2c_adap = i2c_get_adapter(1);
- 	num_subdevs = vpfe_cfg->num_subdevs;
- 	vpfe_dev->sd =
--		  kzalloc(sizeof(struct v4l2_subdev *)*num_subdevs, GFP_KERNEL);
-+		  kcalloc(num_subdevs, sizeof(struct v4l2_subdev *),
-+			  GFP_KERNEL);
- 	if (vpfe_dev->sd == NULL)
- 		return -ENOMEM;
- 
+ 	return ctlx;
+ }
 -- 
 1.9.1
 
