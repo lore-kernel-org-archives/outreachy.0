@@ -1,324 +1,60 @@
-X-GM-THRID: 7021079829858484224
-X-Received: by 2002:a05:620a:4485:: with SMTP id x5mr4398132qkp.109.1634722535169;
-        Wed, 20 Oct 2021 02:35:35 -0700 (PDT)
+X-GM-THRID: 4525053181952
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,253b09dbad964a54
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.160.176 with SMTP id xl16mr1457217wib.6.1425197807751;
+        Sun, 01 Mar 2015 00:16:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:622a:15d5:: with SMTP id d21ls871238qty.11.gmail; Wed,
- 20 Oct 2021 02:35:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzHzSspB/H6fejHgAxMRpktIjgtwXmvIbzrAhT64QdQ0xvEQ5vKv51o7f52kx+TTRIS8CBG
-X-Received: by 2002:a05:622a:54c:: with SMTP id m12mr5579793qtx.184.1634722534334;
-        Wed, 20 Oct 2021 02:35:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634722534; cv=none;
-        d=google.com; s=arc-20160816;
-        b=LOET3gBJS6YP1SEkudIykgeZv7heKNk3NpCjszLMY3xpOXpUa8L/qqidrbwRybmwFC
-         VtOi5a6Ivh7oT7Oz5PvbiMaq/0dwnoc16XrFTTz6cwfo1udoZWwwMfHWX3TiiaHs3rZ7
-         6kBx6CuAwojkzWAbyEM5AxyN9H71OFRR4oFoYxoGiNA0JrkjntAM60TLLXt1MOXlZs2T
-         h84HsT39GwU9cjuxjNNl6pit0XkSLcl/NjhDJBKXVxBhff14xkDQv+A4D/FjQyyi0qlA
-         n7TdqPtXutG7H+MeCBCOwDQrJb5s+dAAZs9pZ03Kv8y2nWhe55FIMqYse/KcMHhCBSSR
-         smFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=JSR3FCxP6mtd/shvWqD+Jo2mdPoMUIc6F+u25uwnGmI=;
-        b=tQ9SpUxus1q2roXK15Wb9a58JRMjEQ0tZ5fFC1GA5JF1VPlMLLzehlZfhwdAeGL6bp
-         3xuUCrKYF3AEkvHSQNNECNVY+xps1LILPp8XujNOY8S25pjGqcXm2HFNBoPDQaDDvQop
-         QoRW/wHYuR+qkF45XFEGdwbuYaHlkV3NDcwhm65qvHwrsxWFfJaQrL3Bw0J7yGrU3ZC+
-         wZyHg2K9bNj4uQzlXgydRZzUP9x76Et+ZE7bwpBnXRM7AVobOA/8Qsrixz3JkqL8vvpv
-         VDEpCwYHvEBIXH8zxfLgak+H9nz1/Fud8MySNVP1U8kHFACkKnCnIbkE12cmg+LbftEG
-         S8Ew==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kcUebhFS;
-       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kushalkothari285@gmail.com>
-Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com. [2607:f8b0:4864:20::432])
-        by gmr-mx.google.com with ESMTPS id z18si15134qtj.2.2021.10.20.02.35.34
+Received: by 10.180.198.198 with SMTP id je6ls334062wic.54.gmail; Sun, 01 Mar
+ 2015 00:16:47 -0800 (PST)
+X-Received: by 10.180.13.195 with SMTP id j3mr1455887wic.2.1425197807473;
+        Sun, 01 Mar 2015 00:16:47 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
+        by gmr-mx.google.com with ESMTPS id i7si433240wif.0.2015.03.01.00.16.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Oct 2021 02:35:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) client-ip=2607:f8b0:4864:20::432;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Mar 2015 00:16:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=kcUebhFS;
-       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x432.google.com with SMTP id m14so2425227pfc.9
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 02:35:34 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by wiwl15 with SMTP id l15so8462451wiw.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 00:16:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=JSR3FCxP6mtd/shvWqD+Jo2mdPoMUIc6F+u25uwnGmI=;
-        b=kcUebhFSTK4A0nWU+rYB59roWTTUqTSLIOQ87hxL/dI4zEud87Eie4Jw/g8DTDqfjL
-         OGuG6/s5teeLu91OC7v1i66EmuQ1/ag85l3w61Q+bQxo+kKErIfVI8SZR0YZyO6pzJ2v
-         6G5Au4kb8WRr0aRcbfLEkf3FZWm13ALkbhHO60z/YG9Mb4tl/JsjHEGktVXYkcs2PlOa
-         EpjG17bCesEVLIzSSDAY8evbMrFM25/nnu39pP1Cr+cZmGd1/1/wLMp0MzpGT8fXasJh
-         PeMi9wmPQviHxUDx5Ni4LpgfLd0QSU+k0lhVmQALgWtMZl03/vOCqzTQW1xSGg9vA99+
-         mxsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=JSR3FCxP6mtd/shvWqD+Jo2mdPoMUIc6F+u25uwnGmI=;
-        b=sdlozr8hz+9a17m5JC7LcKbgP+iW+D1BGgNUE/F28j2D2bqqsYTdxkP30evmFZkd5k
-         /7M1qh3nUCTBLwOT06rrXn9OaJYrCW7zEy8imPR2tJnK20dpJ1B0xbcjBVc/ID7KtRL+
-         EzYljBnSctOVw6NArSHsXkMRPixI7vQ3qifwVBk/Rv6AS0rbDoLQiviSwb3z0g2RnrI5
-         i3fmLP9bb+K2e1hdqdRW79vZp7F0OCUyekI6b1YPHd1VgTjGIpIUwc45BhwsI9C/cPQc
-         jwOA+lK6CR9jd0Xo74r4OAOYaRosJtRTPSTu15VDEtiouNFdgsQSbrrT3wtCilOWWqtK
-         jVIQ==
-X-Gm-Message-State: AOAM531WaxNbWBIr5bls5jJWMpiyN6hJL58l9hMguAF9tz1Iydfv5kfk
-	H5Inl91GQupqhLtX9X5Wgys=
-X-Received: by 2002:a63:7e45:: with SMTP id o5mr4976084pgn.47.1634722533316;
-        Wed, 20 Oct 2021 02:35:33 -0700 (PDT)
-Return-Path: <kushalkothari285@gmail.com>
-Received: from localhost.localdomain ([115.96.219.100])
-        by smtp.googlemail.com with ESMTPSA id oa1sm5836512pjb.6.2021.10.20.02.35.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Oct 2021 02:35:32 -0700 (PDT)
-From: Kushal Kothari <kushalkothari285@gmail.com>
-To: gregkh@linuxfoundation.org,
-	fabioaiuto83@gmail.com,
-	marcocesati@gmail.com,
-	dan.carpenter@oracle.com,
-	ross.schm.dev@gmail.com,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	mike.rapoport@gmail.com,
-	staging@lists.linux.dev
-Cc: Kushal Kothari <kushalkothari285@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: core: Remove true and false comparison and unnecessary parentheses
-Date: Wed, 20 Oct 2021 15:04:58 +0530
-Message-Id: <20211020093458.129672-1-kushalkothari285@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        d=gmail.com; s=20120113;
+        h=mime-version:sender:in-reply-to:references:date:message-id:subject
+         :from:to:cc:content-type;
+        bh=Mf66RxdCk53kfvtfnsCV9lbtcM2ezpFmvx9NwBMdB9M=;
+        b=pwnRk+x80etSMes6HM00bY0qdqS2j84LQGGbsabGb2QZcyCuTprbvj7WvDE2vg+OCf
+         qHTooAjATo7CnTEYZR5V13IX8miSBH2PXVZCyZnddTR/pbZajHxTxg2yBQpj2i6DzmBw
+         chPD6pLhoXeX74tn1ciNiEBa5aMB+z9QiFsdDW4BpQkpIF/rhU04KNWEhLYP7qJOF3N1
+         GlEgWLyc6cVo9Sn8xf4fxN5VXoehHQ1A4qdud4fjoNvKAltbpLYeiqijmm9gPWyu6GD5
+         AyKMz5Akgr/2KTz/z2cX6uMBxeYzVek6tr3aWROSGy1ZSawwfesFQW/fnnAvdeaEYSDj
+         Boow==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Received: by 10.181.27.199 with SMTP id ji7mr23272658wid.76.1425197807398;
+ Sun, 01 Mar 2015 00:16:47 -0800 (PST)
+Sender: daniel.baluta@gmail.com
+Received: by 10.28.3.68 with HTTP; Sun, 1 Mar 2015 00:16:47 -0800 (PST)
+In-Reply-To: <1425065015-22870-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+References: <1425065015-22870-1-git-send-email-aysemelikeyurtoglu@gmail.com>
+Date: Sun, 1 Mar 2015 10:16:47 +0200
+X-Google-Sender-Auth: z4zl3crMB1-fBQWjVgChFQKWcMQ
+Message-ID: <CAEnQRZDeNxfPbAs9U+MzgBBN7UyGLT_MFpxL_tmGBrRdQAcKWA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Add blank line after declarations
+From: Daniel Baluta <daniel.baluta@intel.com>
+To: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Remove comparison to true and false in if statement.
-Issue found with checkpatch.pl.
-CHECK: Using comparison to true is error prone
-CHECK: Using comparison to false is error prone
-CHECK: Unnecessary parentheses
+On Fri, Feb 27, 2015 at 9:23 PM, Melike Yurtoglu
+<aysemelikeyurtoglu@gmail.com> wrote:
+> WARNING: "Missing a blank line after declarations"
+> Add blank line after declarations. That was found by running checkpatch
+>
+> Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
 
-Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 50 ++++++++++++------------
- 1 file changed, 25 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index efc9b1974e38..3e0b910114da 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -309,8 +309,8 @@ int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
- 	if (cmd_obj->cmdcode == GEN_CMD_CODE(_SetChannelPlan))
- 		bAllow = true;
- 
--	if ((pcmdpriv->padapter->hw_init_completed == false && bAllow == false)
--		|| atomic_read(&(pcmdpriv->cmdthd_running)) == false	/* com_thread not running */
-+	if ((!pcmdpriv->padapter->hw_init_completed && !bAllow) ||
-+		!atomic_read(&pcmdpriv->cmdthd_running) 	/* com_thread not running */
- 	)
- 		return _FAIL;
- 
-@@ -372,7 +372,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
- void rtw_stop_cmd_thread(struct adapter *adapter)
- {
- 	if (adapter->cmdThread &&
--		atomic_read(&(adapter->cmdpriv.cmdthd_running)) == true &&
-+		atomic_read(&adapter->cmdpriv.cmdthd_running) &&
- 		adapter->cmdpriv.stop_req == 0) {
- 		adapter->cmdpriv.stop_req = 1;
- 		complete(&adapter->cmdpriv.cmd_queue_comp);
-@@ -388,7 +388,7 @@ int rtw_cmd_thread(void *context)
- 	u8 (*cmd_hdl)(struct adapter *padapter, u8 *pbuf);
- 	void (*pcmd_callback)(struct adapter *dev, struct cmd_obj *pcmd);
- 	struct adapter *padapter = context;
--	struct cmd_priv *pcmdpriv = &(padapter->cmdpriv);
-+	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
- 	struct drvextra_cmd_parm *extra_parm = NULL;
- 
- 	thread_enter("RTW_CMD_THREAD");
-@@ -396,7 +396,7 @@ int rtw_cmd_thread(void *context)
- 	pcmdbuf = pcmdpriv->cmd_buf;
- 
- 	pcmdpriv->stop_req = 0;
--	atomic_set(&(pcmdpriv->cmdthd_running), true);
-+	atomic_set(&pcmdpriv->cmdthd_running, true);
- 	complete(&pcmdpriv->terminate_cmdthread_comp);
- 
- 	while (1) {
-@@ -407,7 +407,7 @@ int rtw_cmd_thread(void *context)
- 			break;
- 		}
- 
--		if ((padapter->bDriverStopped == true) || (padapter->bSurpriseRemoved == true)) {
-+		if (padapter->bDriverStopped || padapter->bSurpriseRemoved) {
- 			netdev_dbg(padapter->pnetdev,
- 				   "%s: DriverStopped(%d) SurpriseRemoved(%d) break at line %d\n",
- 				   __func__, padapter->bDriverStopped,
-@@ -430,7 +430,7 @@ int rtw_cmd_thread(void *context)
- 			continue;
- 
- _next:
--		if ((padapter->bDriverStopped == true) || (padapter->bSurpriseRemoved == true)) {
-+		if (padapter->bDriverStopped || padapter->bSurpriseRemoved) {
- 			netdev_dbg(padapter->pnetdev,
- 				   "%s: DriverStopped(%d) SurpriseRemoved(%d) break at line %d\n",
- 				   __func__, padapter->bDriverStopped,
-@@ -472,7 +472,7 @@ int rtw_cmd_thread(void *context)
- 
- post_process:
- 
--		if (mutex_lock_interruptible(&(pcmd->padapter->cmdpriv.sctx_mutex)) == 0) {
-+		if (mutex_lock_interruptible(&pcmd->padapter->cmdpriv.sctx_mutex) == 0) {
- 			if (pcmd->sctx) {
- 				netdev_dbg(padapter->pnetdev,
- 					   FUNC_ADPT_FMT " pcmd->sctx\n",
-@@ -483,7 +483,7 @@ int rtw_cmd_thread(void *context)
- 				else
- 					rtw_sctx_done_err(&pcmd->sctx, RTW_SCTX_DONE_CMD_ERROR);
- 			}
--			mutex_unlock(&(pcmd->padapter->cmdpriv.sctx_mutex));
-+			mutex_unlock(&pcmd->padapter->cmdpriv.sctx_mutex);
- 		}
- 
- 		/* call callback function for post-processed */
-@@ -523,7 +523,7 @@ int rtw_cmd_thread(void *context)
- 	} while (1);
- 
- 	complete(&pcmdpriv->terminate_cmdthread_comp);
--	atomic_set(&(pcmdpriv->cmdthd_running), false);
-+	atomic_set(&pcmdpriv->cmdthd_running, false);
- 
- 	thread_exit();
- }
-@@ -543,7 +543,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
- 	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 
--	if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
-+	if (check_fwstate(pmlmepriv, _FW_LINKED))
- 		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SCAN, 1);
- 
- 	ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
-@@ -725,7 +725,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	struct ht_priv 		*phtpriv = &pmlmepriv->htpriv;
- 	enum ndis_802_11_network_infrastructure ndis_network_mode = pnetwork->network.infrastructure_mode;
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
--	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
-+	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
- 	u32 tmp_len;
- 	u8 *ptmp = NULL;
- 
-@@ -776,7 +776,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	/*  If not,  we have to copy the connecting AP's MAC address to it so that */
- 	/*  the driver just has the bssid information for PMKIDList searching. */
- 
--	if (pmlmepriv->assoc_by_bssid == false)
-+	if (!pmlmepriv->assoc_by_bssid)
- 		memcpy(&pmlmepriv->assoc_bssid[0], &pnetwork->network.mac_address[0], ETH_ALEN);
- 
- 	psecnetwork->ie_length = rtw_restruct_sec_ie(padapter, &pnetwork->network.ies[0], &psecnetwork->ies[0], pnetwork->network.ie_length);
-@@ -927,7 +927,7 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
- 	else
- 		GET_ENCRY_ALGO(psecuritypriv, sta, psetstakey_para->algorithm, false);
- 
--	if (unicast_key == true)
-+	if (unicast_key)
- 		memcpy(&psetstakey_para->key, &sta->dot118021x_UncstKey, 16);
- 	else
- 		memcpy(&psetstakey_para->key, &psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey, 16);
-@@ -1165,7 +1165,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
- 	u8 res = _SUCCESS;
- 
- 	/*  check if allow software config */
--	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter) == true) {
-+	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter)) {
- 		res = _FAIL;
- 		goto exit;
- 	}
-@@ -1251,7 +1251,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
- 	/*  */
- 	/*  Determine if our traffic is busy now */
- 	/*  */
--	if ((check_fwstate(pmlmepriv, _FW_LINKED) == true)
-+	if (check_fwstate(pmlmepriv, _FW_LINKED)
- 		/*&& !MgntInitAdapterInProgress(pMgntInfo)*/) {
- 		/*  if we raise bBusyTraffic in last watchdog, using lower threshold. */
- 		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
-@@ -1283,7 +1283,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
- 			(pmlmepriv->LinkDetectInfo.NumRxUnicastOkInPeriod > 2)) {
- 			bEnterPS = false;
- 
--			if (bBusyTraffic == true) {
-+			if (bBusyTraffic) {
- 				if (pmlmepriv->LinkDetectInfo.TrafficTransitionCount <= 4)
- 					pmlmepriv->LinkDetectInfo.TrafficTransitionCount = 4;
- 
-@@ -1343,7 +1343,7 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter)
- 
- 	pmlmepriv = &(padapter->mlmepriv);
- 
--	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
-+	if (check_fwstate(pmlmepriv, WIFI_AP_STATE))
- 		expire_timeout_chk(padapter);
- 
- 	/* for debug purpose */
-@@ -1378,8 +1378,8 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
- 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
- 	u8 mstatus;
- 
--	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true)
--		|| (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true)) {
-+	if (check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) ||
-+		check_fwstate(pmlmepriv, WIFI_ADHOC_STATE)) {
- 		return;
- 	}
- 
-@@ -1387,7 +1387,7 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
- 	case LPS_CTRL_SCAN:
- 		hal_btcoex_ScanNotify(padapter, true);
- 
--		if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
-+		if (check_fwstate(pmlmepriv, _FW_LINKED)) {
- 			/*  connect */
- 			LPS_Leave(padapter, "LPS_CTRL_SCAN");
- 		}
-@@ -1513,7 +1513,7 @@ static void rtw_lps_change_dtim_hdl(struct adapter *padapter, u8 dtim)
- 	if (dtim <= 0 || dtim > 16)
- 		return;
- 
--	if (hal_btcoex_IsBtControlLps(padapter) == true)
-+	if (hal_btcoex_IsBtControlLps(padapter))
- 		return;
- 
- 	mutex_lock(&pwrpriv->lock);
-@@ -1619,7 +1619,7 @@ static void rtw_chk_hi_queue_hdl(struct adapter *padapter)
- 
- 	rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
- 
--	while (false == empty && jiffies_to_msecs(jiffies - start) < g_wait_hiq_empty) {
-+	while (!empty && jiffies_to_msecs(jiffies - start) < g_wait_hiq_empty) {
- 		msleep(100);
- 		rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
- 	}
-@@ -1841,7 +1841,7 @@ static void c2h_wk_callback(struct work_struct *work)
- 			continue;
- 		}
- 
--		if (ccx_id_filter(c2h_evt) == true) {
-+		if (ccx_id_filter(c2h_evt)) {
- 			/* Handle CCX report here */
- 			rtw_hal_c2h_handler(adapter, c2h_evt);
- 			kfree(c2h_evt);
-@@ -2054,7 +2054,7 @@ void rtw_setassocsta_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *
- 
- 	spin_lock_bh(&pmlmepriv->lock);
- 
--	if ((check_fwstate(pmlmepriv, WIFI_MP_STATE) == true) && (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true))
-+	if (check_fwstate(pmlmepriv, WIFI_MP_STATE) && check_fwstate(pmlmepriv, _FW_UNDER_LINKING))
- 		_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
- 
- 	set_fwstate(pmlmepriv, _FW_LINKED);
--- 
-2.25.1
-
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
