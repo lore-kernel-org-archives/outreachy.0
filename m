@@ -1,109 +1,75 @@
 X-GM-THRID: 5221884362752
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b3fa01965e3a4916
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.161.194 with SMTP id xu2mr2910909wjb.1.1425170054936;
-        Sat, 28 Feb 2015 16:34:14 -0800 (PST)
+X-Received: by 10.112.214.234 with SMTP id od10mr2877624lbc.3.1425169596559;
+        Sat, 28 Feb 2015 16:26:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.102.170 with SMTP id fp10ls282328wib.13.gmail; Sat, 28 Feb
- 2015 16:34:14 -0800 (PST)
-X-Received: by 10.180.182.44 with SMTP id eb12mr1326301wic.4.1425170054680;
-        Sat, 28 Feb 2015 16:34:14 -0800 (PST)
+Received: by 10.152.87.140 with SMTP id ay12ls344912lab.2.gmail; Sat, 28 Feb
+ 2015 16:26:36 -0800 (PST)
+X-Received: by 10.112.224.12 with SMTP id qy12mr1854278lbc.10.1425169596079;
+        Sat, 28 Feb 2015 16:26:36 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id o3si382423wib.2.2015.02.28.16.34.14
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id ev8si378232wib.3.2015.02.28.16.26.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 16:34:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Sat, 28 Feb 2015 16:26:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wivr20 with SMTP id r20so7586802wiv.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 16:34:14 -0800 (PST)
+Received: by wiwl15 with SMTP id l15so7551143wiw.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 16:26:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=5W2gxm8sE6r+DfTPUKC5XDT/SejeqNJEvl/4Dz553EQ=;
-        b=NFbQ7RMLg/AHGJt2w7wI84Ww5bTfm28U2rmbnlUKHTOc11j631GFY5xHirxo8sjr7m
-         pH5hf1wnFqj96dTuPMG5RJnvYUsbsEtJpqwDku13/U+vHywvyvE/DV24VVyt2/Q+Da1I
-         0aOOxgRybL16EMQRbq1eY0LQyVbazC7EifcygzSdzpGk2MNIm5bjakqtVuow9ATo7cj2
-         BkDbaRbGdQZBd/QZRfJsADk3flOnZO2+lyfvF4/v02dZIJsBtUSQMJe0CeMyX24S4UaA
-         uMXu/KHs7nLJSabWdzjkUxetsIs9p9YiKyrsIsOobfz/VjMIDzApYztuOmXPHsNczX7D
-         h3bw==
-X-Received: by 10.194.48.74 with SMTP id j10mr44289843wjn.38.1425170054590;
-        Sat, 28 Feb 2015 16:34:14 -0800 (PST)
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=pQizMmE7lFyir4PMTXACdcWdeMgvvt8Z/XM92BDhmvg=;
+        b=G2HefbHBnrayK5uvudZsvp0Rj5rTWRH6kCv3MLa8U1+iG+5Ok7PXXKmwYhAM6NSq3M
+         1JFut3QAFLUX6INU42TFGf7kRWeu1El4alSO1iCzgbImpnZcQSHcdfVDgVHMytzGR6vY
+         fFe3V6n1sYYIFr9QxBrr8wOqwedkv1SlvIiHv91VyxY/Ct7BsJTlekI7/17EDkmJOriu
+         +iubM3J5CsVf9mT1yuXvQVjyRmFfO3pVnFP3iF+rtyapVQHuF1yFX3JgBoaKmB15NoOz
+         sjWBq9WbtWfT6R0Vi3pPVQsILVEnU7jYExfKyrw0YXavVCNypCvO0hqNq3753Nb+0Zu6
+         El/w==
+X-Received: by 10.180.219.102 with SMTP id pn6mr20769042wic.50.1425169595959;
+        Sat, 28 Feb 2015 16:26:35 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id j5sm9154984wie.3.2015.02.28.16.34.13
+        by mx.google.com with ESMTPSA id p1sm9094641wib.23.2015.02.28.16.26.34
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 16:34:13 -0800 (PST)
+        Sat, 28 Feb 2015 16:26:35 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 46CDB63424; Sun,  1 Mar 2015 03:34:12 +0300 (AST)
+	id 009D963424; Sun,  1 Mar 2015 03:26:33 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v3] Staging: lustre: Fix externs should be avoided in .c
-Date: Sun,  1 Mar 2015 03:34:11 +0300
-Message-Id: <1425170051-22180-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH v3 5/5] Staging: lustre: Concatenate strings into single string
+Date: Sun,  1 Mar 2015 03:26:33 +0300
+Message-Id: <1425169593-20287-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1425161054-19092-1-git-send-email-hamohammed.sa@gmail.com>
+References: <1425161054-19092-1-git-send-email-hamohammed.sa@gmail.com>
 
-This patch moves extern declaration to ldlm_internal.h.
-Remove prototype from ldlm_lockd.c and ldlm_lock.c.
-Issue addressed by checkpatch.pl.
+This patch concatenate two consecutive strings into one, addressing checkpatch.pl warning:
+ "Consecutive strings are generally better as a single string"
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
-v3: Edit subject line.
-v2: Remove same extern frm ldlm_lock.c
+ drivers/staging/lustre/lustre/ldlm/ldlm_pool.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/lustre/lustre/ldlm/ldlm_internal.h | 4 ++++
- drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 2 --
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    | 2 --
- 3 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-index 17271b0..5bf9488 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-@@ -177,6 +177,10 @@ int ldlm_bl_to_thread_list(struct ldlm_namespace *ns,
- void ldlm_handle_bl_callback(struct ldlm_namespace *ns,
- 			     struct ldlm_lock_desc *ld, struct ldlm_lock *lock);
- 
-+extern struct kmem_cache *ldlm_resource_slab;
-+
-+/* ldlm_lockd.c & ldlm_lock.c */
-+extern struct kmem_cache *ldlm_lock_slab;
- 
- /* ldlm_extent.c */
- void ldlm_extent_add_lock(struct ldlm_resource *res, struct ldlm_lock *lock);
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-index d7fa934..84b111e 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-@@ -151,8 +151,6 @@ char *ldlm_it2str(int it)
- }
- EXPORT_SYMBOL(ldlm_it2str);
- 
--extern struct kmem_cache *ldlm_lock_slab;
--
- 
- void ldlm_register_intent(struct ldlm_namespace *ns, ldlm_res_policy arg)
- {
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-index 98fbd3f..e0a8157 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-@@ -55,8 +55,6 @@ static char *ldlm_cpts;
- module_param(ldlm_cpts, charp, 0444);
- MODULE_PARM_DESC(ldlm_cpts, "CPU partitions ldlm threads should run on");
- 
--extern struct kmem_cache *ldlm_resource_slab;
--extern struct kmem_cache *ldlm_lock_slab;
- static struct mutex	ldlm_ref_mutex;
- static int ldlm_refcount;
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
+index bfdb2b3..0d65d80 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
+@@ -688,8 +688,8 @@ static int lprocfs_pool_state_seq_show(struct seq_file *m, void *unused)
+ 			      "  GP:  %d\n",
+ 			      grant_step, grant_plan);
+ 	}
+-	seq_printf(m, "  GR:  %d\n" "  CR:  %d\n" "  GS:  %d\n"
+-		      "  G:   %d\n" "  L:   %d\n",
++	seq_printf(m, "  GR:  %d\n  CR:  %d\n  GS:  %d\n"
++		      "  G:   %d\n  L:   %d\n",
+ 		      grant_rate, cancel_rate, grant_speed,
+ 		      granted, limit);
  
 -- 
 1.9.1
