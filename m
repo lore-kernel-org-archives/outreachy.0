@@ -1,51 +1,47 @@
 X-GM-THRID: 5486072037376
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,85b3c38447febc3c
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.239.41 with SMTP id vp9mr3324561wjc.5.1425246417343;
-        Sun, 01 Mar 2015 13:46:57 -0800 (PST)
+X-Received: by 10.112.156.65 with SMTP id wc1mr575107lbb.7.1425230381076;
+        Sun, 01 Mar 2015 09:19:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.197.2 with SMTP id iq2ls367137lac.100.gmail; Sun, 01 Mar
- 2015 13:46:56 -0800 (PST)
-X-Received: by 10.152.6.232 with SMTP id e8mr3323970laa.2.1425246416908;
-        Sun, 01 Mar 2015 13:46:56 -0800 (PST)
+Received: by 10.152.22.168 with SMTP id e8ls359444laf.72.gmail; Sun, 01 Mar
+ 2015 09:19:40 -0800 (PST)
+X-Received: by 10.152.4.229 with SMTP id n5mr3231568lan.1.1425230380659;
+        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wg0-x22a.google.com (mail-wg0-x22a.google.com. [2a00:1450:400c:c00::22a])
-        by gmr-mx.google.com with ESMTPS id l8si568793wia.0.2015.03.01.13.46.56
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id r6si519103wix.0.2015.03.01.09.19.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 13:46:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) client-ip=2a00:1450:400c:c00::22a;
+        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghl18 with SMTP id l18so29959853wgh.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 13:46:56 -0800 (PST)
+Received: by mail-wi0-x233.google.com with SMTP id l15so10024009wiw.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 09:19:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=IG2pCF9pdZU/tFG+zfyWV9s25m5gMV4XZiZXK2UFsOM=;
-        b=RJVZWdQNH4oDtVBcjn/UExlruoDaK57ofDBBfjYSEctuOxS8gyBKuxfoAd4BNW0jy5
-         61HaaWg5Mqilj1r4dbWZqz7OXIp6sYCx8oaZ81Y/WIbdzQ+/G/RDoa8Dzj3EkOi3L1pG
-         WOBnXh/JSbKemYbf3jPRlFHu7cTSAqJyq/UhHVOG1crTvObmhLrvlLRUo3bbqL0jXEsi
-         mezZxq10pIGQ5UnDRR8XP+Twe8IjaqnxIg7sDPEAjQMWL55CnUiVOjsiyS8fJdwz+PvQ
-         tglMIR25I4xPYMo7IuoAWHCXdqQ8qswUFEAUBbbKmbAuVwRKetxofLenXP+V1UjmH80O
-         zO1Q==
-X-Received: by 10.180.75.4 with SMTP id y4mr29412024wiv.35.1425246416830;
-        Sun, 01 Mar 2015 13:46:56 -0800 (PST)
+        bh=UbOAlmbTmSAXqrgHL7xfYtZSudcxsjUQdD/91CWHzQw=;
+        b=CtW+0Ow9gwYobWEYJFdMARtkVMM6/Nad0t63s+i65NwlST85Huld2tznl9hZ+hq2nr
+         k//x5sldNR4xtrl7ywH3EzEHQFitoFR6FNSmMAA82EV8as8ho3o+Vwl1+gHvNrvfaMF9
+         r69UGz4bas1+g4Fi/pauehpggbq6Gu5PykckHlEeyffAoTcAffTbZSnmZw2/eGcYKC6E
+         f72wUgbsgUkow8UN/m+t7RYnBRqnJ4zfqZkgvjARqza+psxZ/fd+gbng+/UBKYRPfcqE
+         CUxTHSDNIkePCXpFCMgqDO58FzDDFqhB6NP/jUrjeTD4Hrumzkg2PNj4rdjoZq/e3Slh
+         oPYA==
+X-Received: by 10.180.92.71 with SMTP id ck7mr15717217wib.48.1425230380571;
+        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
 Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id m4sm16420788wjb.25.2015.03.01.13.46.55
+        by mx.google.com with ESMTPSA id gf11sm12337415wic.18.2015.03.01.09.19.39
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 13:46:56 -0800 (PST)
+        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
 From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Hatice ERTURK <haticeerturk27@gmail.com>
 Subject: [PATCH] Staging: rtl8192u: ieee80211: Convert comment from C99 style to C89 style
-Date: Sun,  1 Mar 2015 23:46:51 +0200
-Message-Id: <1425246411-12077-1-git-send-email-haticeerturk27@gmail.com>
+Date: Sun,  1 Mar 2015 19:19:23 +0200
+Message-Id: <1425230363-5590-1-git-send-email-haticeerturk27@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 This patch fixes the checkpatch.pl error:
@@ -53,21 +49,49 @@ ERROR: "Do not use C99 // comments"
 
 Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-index 4cf566f..ea6efd2 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-@@ -287,6 +287,6 @@ void __exit ieee80211_crypto_wep_exit(void)
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+index 95f5fc7..f470cb6 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+@@ -129,7 +129,7 @@ static void ccmp_init_blocks(struct crypto_tfm *tfm,
+ 	qc_included = ((WLAN_FC_GET_TYPE(fc) == IEEE80211_FTYPE_DATA) &&
+ 		       (WLAN_FC_GET_STYPE(fc) & 0x08));
+ 	*/
+-	// fixed by David :2006.9.6
++	/* fixed by David :2006.9.6 */
+ 	qc_included = ((WLAN_FC_GET_TYPE(fc) == IEEE80211_FTYPE_DATA) &&
+ 		       (WLAN_FC_GET_STYPE(fc) & 0x80));
+ 	aad_len = 22;
+@@ -208,7 +208,7 @@ static int ieee80211_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 	pos = skb_push(skb, CCMP_HDR_LEN);
+ 	memmove(pos, pos + CCMP_HDR_LEN, hdr_len);
+ 	pos += hdr_len;
+-//	mic = skb_put(skb, CCMP_MIC_LEN);
++	/* mic = skb_put(skb, CCMP_MIC_LEN); */
  
- void ieee80211_wep_null(void)
+ 	i = CCMP_PN_LEN - 1;
+ 	while (i >= 0) {
+@@ -238,7 +238,7 @@ static int ieee80211_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 		u8 *e = key->tx_e;
+ 		u8 *s0 = key->tx_s0;
+ 
+-		//mic is moved to here by john
++		/* mic is moved to here by john */
+ 		mic = skb_put(skb, CCMP_MIC_LEN);
+ 
+ 		ccmp_init_blocks(key->tfm, hdr, key->tx_pn, data_len, b0, b, s0);
+@@ -443,7 +443,7 @@ static char *ieee80211_ccmp_print_stats(char *p, void *priv)
+ 
+ void ieee80211_ccmp_null(void)
  {
--//	printk("============>%s()\n", __func__);
+-//    printk("============>%s()\n", __func__);
 +	/* printk("============>%s()\n", __func__); */
  	return;
  }
+ 
 -- 
 1.9.1
 
