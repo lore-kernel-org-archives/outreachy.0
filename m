@@ -1,52 +1,48 @@
 X-GM-THRID: 5368833900544
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,df23be8587a10da9
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.157.129 with SMTP id wm1mr21767440pab.15.1425212184715;
-        Sun, 01 Mar 2015 04:16:24 -0800 (PST)
+X-Received: by 10.66.249.35 with SMTP id yr3mr19430273pac.13.1425211819968;
+        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.97.73 with SMTP id dy9ls593023obb.2.gmail; Sun, 01 Mar
- 2015 04:16:24 -0800 (PST)
-X-Received: by 10.182.148.164 with SMTP id tt4mr20471842obb.30.1425212184458;
-        Sun, 01 Mar 2015 04:16:24 -0800 (PST)
+Received: by 10.107.129.83 with SMTP id c80ls1001517iod.44.gmail; Sun, 01 Mar
+ 2015 04:10:19 -0800 (PST)
+X-Received: by 10.66.153.16 with SMTP id vc16mr22036264pab.42.1425211819717;
+        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id ks4si1141707pbc.1.2015.03.01.04.16.24
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id q9si282663pds.2.2015.03.01.04.10.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 04:16:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pablj1 with SMTP id lj1so98827pab.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:16:24 -0800 (PST)
+Received: by pabli10 with SMTP id li10so6201017pab.13
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 04:10:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=BMx3gLCjg0FK24rXxOCfGd3cSpS+C1UQZ1Zy8hs4heU=;
-        b=jub69MykUcuB/BVcjQitPayxWY9c9IR2j3DspmCIziSVxfGj+fY8ZhHrNVfsr28VgE
-         oZccR5mIA7EzYi0+88wGIO0NtQuuyP3ocBSkzPuO+EfvQGNDeiOhTamMiM3pefDYrO1q
-         G/0nGPBLtSLbaqsUUnrhDDUfEKBEl1ORc0ZV/Fumxe+CW/P0CUI5+bxg/2hSWLdcIZHi
-         VeHl700QnPnoUlitt+eTTFK8hJtDEvGwwRcMTNrM14+Klz2fg7DUFDwWM6Y4Ns7gAUsr
-         Eh/HPRwEPRJfHx7l/dJJht6W5MxlyN9RHDj8hveFqr3+jgHRwtqBVy4YwOWRbZDEO5q5
-         UHxA==
-X-Received: by 10.68.102.101 with SMTP id fn5mr20575154pbb.144.1425212184331;
-        Sun, 01 Mar 2015 04:16:24 -0800 (PST)
+        bh=oQmfFkDoB9PZJQ4dfvKzN2NrHr9uzurgnw70n7o766Q=;
+        b=NuKyZKC9nfsRq0UJU0McYSYMFv1fYqvfqUX46dcZiVHUSQxYcWlDUaST7QNfigAwub
+         58x4PH8OfEd4s0UkP11UgihXpY7KeNrD9MBkapfpooQ0/aI9PsiPqr5ae94BTBmSAWxv
+         UBMZmk2jg2EW/4oMQslQ92iK0FJHXF8+EKBT+KaNVRXDEbBt/wjbw+g6vFgfH2gZK3HP
+         Amo4CFJMqaoyQwn517tiZrx5oP9oMNxHLVaB7AKROltf61Hf7VTUpqvqFc+KpwsCbX6L
+         JScSegI9zwIN3sqIeKtkDZoyUnDBv1h6/5YHTm8TSnL/rNmLksp69P+wv5uqKqNDtbg9
+         wefA==
+X-Received: by 10.70.39.33 with SMTP id m1mr38612345pdk.2.1425211819636;
+        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id di10sm9099524pad.41.2015.03.01.04.16.23
+Received: from nizamkari ([111.93.6.70])
+        by mx.google.com with ESMTPSA id z10sm9121969pas.18.2015.03.01.04.10.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 04:16:23 -0800 (PST)
-Date: Sun, 1 Mar 2015 17:47:38 +0530
+        Sun, 01 Mar 2015 04:10:19 -0800 (PST)
+Date: Sun, 1 Mar 2015 17:41:32 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 09/12] staging: media: Use kcalloc, instead of  kzalloc.
-Message-ID: <556953cddf889e94753d5fd09201cc94dbe201f6.1425211236.git.navyasri.tech@gmail.com>
+Subject: [PATCH 08/12] staging: media: Use kcalloc instead of kzalloc.
+Message-ID: <23a348a58a3da37d21a4bcce22e3fccf3c4edac5.1425211236.git.navyasri.tech@gmail.com>
 References: <cover.1425211235.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -54,7 +50,7 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425211235.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The semantic patch used for this change is:
+The coccinelle script used for this change is:
 
 @@
 type T, T2;
@@ -363,22 +359,34 @@ expression E2,E3;
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/media/bcm2048/radio-bcm2048.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
-index 5382506..c68fa4a 100644
---- a/drivers/staging/media/bcm2048/radio-bcm2048.c
-+++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
-@@ -1792,7 +1792,7 @@ static int bcm2048_get_rds_data(struct bcm2048_device *bdev, char *data)
- 		goto unlock;
- 	}
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+index a350a20..5742619 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
++++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+@@ -226,8 +226,8 @@ static int vpfe_enable_clock(struct vpfe_device *vpfe_dev)
+ 	if (!vpfe_cfg->num_clocks)
+ 		return 0;
  
--	data_buffer = kzalloc(BCM2048_MAX_RDS_RADIO_TEXT*5, GFP_KERNEL);
-+	data_buffer = kcalloc(BCM2048_MAX_RDS_RADIO_TEXT, 5, GFP_KERNEL);
- 	if (!data_buffer) {
- 		err = -ENOMEM;
- 		goto unlock;
+-	vpfe_dev->clks = kzalloc(vpfe_cfg->num_clocks *
+-				   sizeof(struct clock *), GFP_KERNEL);
++	vpfe_dev->clks = kcalloc(vpfe_cfg->num_clocks,
++				 sizeof(struct clock *), GFP_KERNEL);
+ 	if (vpfe_dev->clks == NULL)
+ 		return -ENOMEM;
+ 
+@@ -346,7 +346,8 @@ static int register_i2c_devices(struct vpfe_device *vpfe_dev)
+ 	i2c_adap = i2c_get_adapter(1);
+ 	num_subdevs = vpfe_cfg->num_subdevs;
+ 	vpfe_dev->sd =
+-		  kzalloc(sizeof(struct v4l2_subdev *)*num_subdevs, GFP_KERNEL);
++		  kcalloc(num_subdevs, sizeof(struct v4l2_subdev *),
++			  GFP_KERNEL);
+ 	if (vpfe_dev->sd == NULL)
+ 		return -ENOMEM;
+ 
 -- 
 1.9.1
 
