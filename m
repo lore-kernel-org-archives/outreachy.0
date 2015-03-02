@@ -1,120 +1,76 @@
-X-GM-THRID: 6201866686183768064
-X-Received: by 10.180.105.98 with SMTP id gl2mr1689337wib.0.1443984612350;
-        Sun, 04 Oct 2015 11:50:12 -0700 (PDT)
+X-GM-THRID: 4475579269120
+X-Received: by 10.140.151.75 with SMTP id 72mr24127268qhx.3.1425256078842;
+        Sun, 01 Mar 2015 16:27:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.105.132 with SMTP id gm4ls694417wib.17.canary; Sun, 04 Oct
- 2015 11:50:11 -0700 (PDT)
-X-Received: by 10.180.188.211 with SMTP id gc19mr1681558wic.6.1443984611980;
-        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id c7si232685wiy.3.2015.10.04.11.50.11
+Received: by 10.182.149.197 with SMTP id uc5ls419098obb.70.gmail; Sun, 01 Mar
+ 2015 16:27:58 -0800 (PST)
+X-Received: by 10.182.91.79 with SMTP id cc15mr25381053obb.20.1425256078502;
+        Sun, 01 Mar 2015 16:27:58 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gb13si19930pac.2.2015.03.01.16.27.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        Sun, 01 Mar 2015 16:27:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mailfrom=haticeerturk27@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by wiclk2 with SMTP id lk2so92656056wic.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id:mime-version:content-type
-         :content-transfer-encoding;
-        bh=nmi9Z07JGxNEZdNLYvGojAbfUdD3tCFRh1NejFddgcE=;
-        b=Kga4/ksMqefrrMi8VORxVBMtXk5vxQqlCpJfP71onw46WRSWPOyIp+hjJ7G5ENTiDq
-         Aqe9gu8qll7wCEVbqhm5GxtI1zUtBqeEgU8QBHniuJPqN85Eb7gQupBGr145tgOjHfEk
-         kmDT/jgwPsA9Qq0Lcu/iB4jMsjfS5cpoCw4mo2kaNrMxSv1EfGwhrS9TsZrGylFEzOxN
-         Dss5eRMuBFtftD44FqsLhUeoUG8AXs/QvNT0W+Ju7oatWIDBPHcktAfz/mHR9K2CgzcI
-         ux2AqY5jxif4lEKfMQYLvNWWLGUt6lZXgABM26AE/UlVpashptsHUcVzVW7trBY0DEya
-         MwEw==
-X-Received: by 10.180.109.35 with SMTP id hp3mr6959743wib.51.1443984611885;
-        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([88.242.105.163])
-        by smtp.googlemail.com with ESMTPSA id qc4sm22848639wjc.33.2015.10.04.11.50.06
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] drivers: mtd: ftl.c: Remove intialization of static to 0
-Date: Sun,  4 Oct 2015 21:49:53 +0300
-Message-Id: <1443984593-12445-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2426D475;
+	Mon,  2 Mar 2015 00:27:58 +0000 (UTC)
+Date: Sun, 1 Mar 2015 16:27:57 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 15/24] staging: lustre: lmv: remove
+ unused variables
+Message-ID: <20150302002757.GA19407@kroah.com>
+References: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
+ <dc7ed4ce9baf69fbd456ef88162cb77b37074a04.1425035010.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <dc7ed4ce9baf69fbd456ef88162cb77b37074a04.1425035010.git.mahfouz.saif.elyazal@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-initial value unassigned static variables are automatically set to zero. So it is unnecessary to assign the initial value to zero
+On Fri, Feb 27, 2015 at 03:03:30PM +0200, Aya Mahfouz wrote:
+> This patch removes variables that were simply used to
+> store the return value of a function call before
+> returning it.
+> 
+> The issue was detected and resolved using the following
+> coccinelle script:
+> 
+> @@
+> identifier len,f;
+> @@
+> 
+> -int len;
+>  ... when != len
+>      when strict
+> -len =
+> +return
+>         f(...);
+> -return len;
+> 
+> Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/lmv/lmv_obd.c | 8 ++------
+>  1 file changed, 2 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+> index 6e446ac..d0dcbf9 100644
+> --- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+> +++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+> @@ -2555,10 +2555,8 @@ static int lmv_set_lock_data(struct obd_export *exp, __u64 *lockh, void *data,
+>  			     __u64 *bits)
+>  {
+>  	struct lmv_obd	  *lmv = &exp->exp_obd->u.lmv;
+> -	int		      rc;
+>  
+> -	rc =  md_set_lock_data(lmv->tgts[0]->ltd_exp, lockh, data, bits);
+> -	return rc;
+> +	return  md_set_lock_data(lmv->tgts[0]->ltd_exp, lockh, data, bits);
 
-Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
----
- drivers/mtd/ftl.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/mtd/ftl.c b/drivers/mtd/ftl.c
-index dabf084..afec65f 100644
---- a/drivers/mtd/ftl.c
-+++ b/drivers/mtd/ftl.c
-@@ -651,7 +651,7 @@ static int reclaim_block(partition_t *part)
- 		      "unit to be prepared...\n");
- 		mtd_sync(part->mbd.mtd);
- 	    } else {
--		static int ne = 0;
-+		static int ne;
- 		if (++ne < 5)
- 		    printk(KERN_NOTICE "ftl_cs: reclaim failed: no "
- 			   "suitable transfer units!\n");
-@@ -681,7 +681,7 @@ static int reclaim_block(partition_t *part)
- 		eun = i;
- 	    }
- 	if (best == 0) {
--	    static int ne = 0;
-+	    static int ne;
- 	    if (++ne < 5)
- 		printk(KERN_NOTICE "ftl_cs: reclaim failed: "
- 		       "no free blocks!\n");
-@@ -765,7 +765,7 @@ static uint32_t find_free(partition_t *part)
- 	if (BLOCK_FREE(le32_to_cpu(part->bam_cache[blk]))) break;
-     if (blk == part->BlocksPerUnit) {
- #ifdef PSYCHO_DEBUG
--	static int ne = 0;
-+	static int ne;
- 	if (++ne == 1)
- 	    dump_lists(part);
- #endif
-@@ -861,7 +861,7 @@ static int set_bam_entry(partition_t *part, uint32_t log_addr,
-     if (((virt_addr == 0xfffffffe) && !BLOCK_FREE(old_addr)) ||
- 	((virt_addr == 0) && (BLOCK_TYPE(old_addr) != BLOCK_DATA)) ||
- 	(!BLOCK_DELETED(virt_addr) && (old_addr != 0xfffffffe))) {
--	static int ne = 0;
-+	static int ne;
- 	if (++ne < 5) {
- 	    printk(KERN_NOTICE "ftl_cs: set_bam_entry() inconsistency!\n");
- 	    printk(KERN_NOTICE "ftl_cs:   log_addr = 0x%x, old = 0x%x"
-@@ -874,7 +874,7 @@ static int set_bam_entry(partition_t *part, uint32_t log_addr,
-     if (part->bam_index == eun) {
- #ifdef PSYCHO_DEBUG
- 	if (le32_to_cpu(part->bam_cache[blk]) != old_addr) {
--	    static int ne = 0;
-+	    static int ne;
- 	    if (++ne < 5) {
- 		printk(KERN_NOTICE "ftl_cs: set_bam_entry() "
- 		       "inconsistency!\n");
-@@ -931,7 +931,7 @@ static int ftl_write(partition_t *part, caddr_t buffer,
- 	/* Grab a free block */
- 	blk = find_free(part);
- 	if (blk == 0) {
--	    static int ne = 0;
-+	    static int ne;
- 	    if (++ne < 5)
- 		printk(KERN_NOTICE "ftl_cs: internal error: "
- 		       "no free blocks!\n");
--- 
-1.9.1
-
+Extra space here :(
 
