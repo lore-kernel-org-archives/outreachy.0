@@ -1,47 +1,51 @@
 X-GM-THRID: 5958272024576
-X-Received: by 10.43.9.135 with SMTP id ow7mr28617416icb.29.1425319979073;
-        Mon, 02 Mar 2015 10:12:59 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,2b16960f09c11e68
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.67.23.71 with SMTP id hy7mr27512664pad.45.1425319970969;
+        Mon, 02 Mar 2015 10:12:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.30.135 with SMTP id e129ls1388430ioe.3.gmail; Mon, 02 Mar
- 2015 10:12:58 -0800 (PST)
-X-Received: by 10.50.176.202 with SMTP id ck10mr17800447igc.5.1425319978926;
-        Mon, 02 Mar 2015 10:12:58 -0800 (PST)
+Received: by 10.140.90.239 with SMTP id x102ls1748729qgd.69.gmail; Mon, 02 Mar
+ 2015 10:12:50 -0800 (PST)
+X-Received: by 10.52.236.196 with SMTP id uw4mr27456709vdc.2.1425319970685;
+        Mon, 02 Mar 2015 10:12:50 -0800 (PST)
 Return-Path: <tinajohnson.1234@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id q9si770495pds.2.2015.03.02.10.12.58
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id pc4si1654388pac.0.2015.03.02.10.12.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 10:12:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        Mon, 02 Mar 2015 10:12:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=tinajohnson.1234@gmail.com;
+       spf=pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mail=tinajohnson.1234@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padfa1 with SMTP id fa1so16195885pad.9
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 10:12:58 -0800 (PST)
+Received: by mail-pa0-x22f.google.com with SMTP id eu11so2327245pac.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 10:12:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=QIZO78rXjhC2hu7EjNR8UY5JEI7GlVUxB6zTK16SGJI=;
-        b=X2lUCcr/WHZ9tbOZdeqlRMcVdOoydUA3l2vEgZE99hPGxL7XrLnYc5DZ3WKOiSEgGF
-         JqcGOG4vtQOP2BKIMuiu/9xf61Htst/4iKKN7RjeKrgjvYcfk05QmFy4SO1uuJRR2FLn
-         yLqt8r6F8pj0r2hrrj+7mXQj4T07U3MFmU10ZtRWixD4TxgiNiHTQiLLWI09roHSZepJ
-         YWptXQo740doUXsSm2NDjrbAFCIn+uY4us9KbJKiHncVDBtILb/YtAt+1GniJPIgf687
-         22w0Q4HP+tzdRsrlgB0rlSvLQnxNK7mU+AUpUWgouKE/Cxk8HCUL1UhMm1ku6xLAlZAP
-         6eXg==
-X-Received: by 10.70.45.15 with SMTP id i15mr48966001pdm.51.1425319978825;
-        Mon, 02 Mar 2015 10:12:58 -0800 (PST)
+        bh=+fN6nlrzV2dxpBJsx1+IF4jjIkbVYCeyT/ZYu1qj3kE=;
+        b=Mp/fsTsN+oa4b8DbBaGTmKBYO9z5dUNh6GsqeWyrrZ2KIaBVl3zOcLu+jV3o86oUey
+         5mFTSnqKWhlZWHttRTZz3yaV9GcjVwlwcej1uQvqhKj/2YmIGcLeq4Vak0YwOwAeS93d
+         oHu+sUEPdTt9OMhL9H+GkBw6NIVHPJMgk216M1VIbEASNkZBtmDltO9yiWkXSHdJgw+Q
+         AjlRT/1lW9VLcnZ73TyKzqD6oF51A9f5fuo6h9cIJkx51XEhNGYxch5dJnKLw2PZnBeD
+         EE8SEJmU8gaiZk8mjmtCTPakwzKqmTD5t0Wfv0UtTxoKMwG6Pb3hwnC6k/1GZaQhM0Dk
+         FqEQ==
+X-Received: by 10.68.204.73 with SMTP id kw9mr49471627pbc.48.1425319970563;
+        Mon, 02 Mar 2015 10:12:50 -0800 (PST)
 Return-Path: <tinajohnson.1234@gmail.com>
 Received: from localhost ([117.252.20.251])
-        by mx.google.com with ESMTPSA id fz7sm12563776pbd.60.2015.03.02.10.12.56
+        by mx.google.com with ESMTPSA id pa6sm12724475pac.45.2015.03.02.10.12.48
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 02 Mar 2015 10:12:57 -0800 (PST)
+        Mon, 02 Mar 2015 10:12:49 -0800 (PST)
 From: Tina Johnson <tinajohnson.1234@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Tina Johnson <tinajohnson.1234@gmail.com>
-Subject: [PATCH v3 2/2] staging: lustre: lustre: libcfs: Replaced printk() with pr_err() and pr_cont()
-Date: Mon,  2 Mar 2015 23:40:26 +0530
-Message-Id: <1425319826-14232-3-git-send-email-tinajohnson.1234@gmail.com>
+Subject: [PATCH v3 1/2] staging: lustre: lustre: libcfs: Replaced printk() with pr_err()
+Date: Mon,  2 Mar 2015 23:40:25 +0530
+Message-Id: <1425319826-14232-2-git-send-email-tinajohnson.1234@gmail.com>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1425319826-14232-1-git-send-email-tinajohnson.1234@gmail.com>
 References: <1425319826-14232-1-git-send-email-tinajohnson.1234@gmail.com>
@@ -50,9 +54,7 @@ The following checkpatch warning was fixed:
 
 Prefer [subsystem eg: netdev]_err([subsystem]dev
 
-with the help of Coccinelle. pr_cont() was used to replace those printk
-statements which followed a printk that did not end with a '\n'. The following
-semantic patch was used to replace printk() with pr_err():
+with the help of Coccinelle. The following semantic patch was used:
 
 @a@
 expression e;
@@ -85,74 +87,36 @@ identifier b.y;
 
 Signed-off-by: Tina Johnson <tinajohnson.1234@gmail.com>
 ---
- drivers/staging/lustre/lustre/libcfs/tracefile.c |   26 ++++++++++------------
- 1 file changed, 12 insertions(+), 14 deletions(-)
+Changes in v3:
+    -v2 failed to show the actual diff
+    -Corrected erroneous v2 patch
 
-diff --git a/drivers/staging/lustre/lustre/libcfs/tracefile.c b/drivers/staging/lustre/lustre/libcfs/tracefile.c
-index eb65b50..f8d8a2f 100644
---- a/drivers/staging/lustre/lustre/libcfs/tracefile.c
-+++ b/drivers/staging/lustre/lustre/libcfs/tracefile.c
-@@ -224,8 +224,7 @@ static struct cfs_trace_page *cfs_trace_get_tage(struct cfs_trace_cpu_data *tcd,
- 	 */
+ drivers/staging/lustre/lustre/libcfs/module.c |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/libcfs/module.c b/drivers/staging/lustre/lustre/libcfs/module.c
+index 7dc77dd..e35f598 100644
+--- a/drivers/staging/lustre/lustre/libcfs/module.c
++++ b/drivers/staging/lustre/lustre/libcfs/module.c
+@@ -347,7 +347,7 @@ static int init_libcfs_module(void)
  
- 	if (len > PAGE_CACHE_SIZE) {
--		printk(KERN_ERR
--		       "cowardly refusing to write %lu bytes in a page\n", len);
-+		pr_err("cowardly refusing to write %lu bytes in a page\n", len);
- 		return NULL;
+ 	rc = libcfs_debug_init(5 * 1024 * 1024);
+ 	if (rc < 0) {
+-		printk(KERN_ERR "LustreError: libcfs_debug_init: %d\n", rc);
++		pr_err("LustreError: libcfs_debug_init: %d\n", rc);
+ 		return rc;
  	}
  
-@@ -688,8 +687,8 @@ int cfs_tracefile_dump_all_pages(char *filename)
- 	if (IS_ERR(filp)) {
- 		rc = PTR_ERR(filp);
- 		filp = NULL;
--		printk(KERN_ERR "LustreError: can't open %s for dump: rc %d\n",
--		      filename, rc);
-+		pr_err("LustreError: can't open %s for dump: rc %d\n",
-+			filename, rc);
- 		goto out;
- 	}
+@@ -433,8 +433,7 @@ static void exit_libcfs_module(void)
  
-@@ -726,7 +725,7 @@ int cfs_tracefile_dump_all_pages(char *filename)
- 	MMSPACE_CLOSE;
- 	rc = vfs_fsync(filp, 1);
+ 	rc = libcfs_debug_cleanup();
  	if (rc)
--		printk(KERN_ERR "sync returns %d\n", rc);
-+		pr_err("sync returns %d\n", rc);
- close:
- 	filp_close(filp, NULL);
- out:
-@@ -1048,22 +1047,21 @@ static int tracefiled(void *arg)
- 			int i;
+-		printk(KERN_ERR "LustreError: libcfs_debug_cleanup: %d\n",
+-		       rc);
++		pr_err("LustreError: libcfs_debug_cleanup: %d\n", rc);
  
- 			printk(KERN_ALERT "Lustre: trace pages aren't empty\n");
--			printk(KERN_ERR "total cpus(%d): ",
--			       num_possible_cpus());
-+			pr_err("total cpus(%d): ",
-+				num_possible_cpus());
- 			for (i = 0; i < num_possible_cpus(); i++)
- 				if (cpu_online(i))
--					printk(KERN_ERR "%d(on) ", i);
-+					pr_cont("%d(on) ", i);
- 				else
--					printk(KERN_ERR "%d(off) ", i);
--			printk(KERN_ERR "\n");
-+					pr_cont("%d(off) ", i);
-+			pr_cont("\n");
- 
- 			i = 0;
- 			list_for_each_entry_safe(tage, tmp, &pc.pc_pages,
- 						     linkage)
--				printk(KERN_ERR "page %d belongs to cpu %d\n",
--				       ++i, tage->cpu);
--			printk(KERN_ERR "There are %d pages unwritten\n",
--			       i);
-+				pr_err("page %d belongs to cpu %d\n",
-+					++i, tage->cpu);
-+			pr_err("There are %d pages unwritten\n", i);
- 		}
- 		__LASSERT(list_empty(&pc.pc_pages));
- end_loop:
+ 	libcfs_arch_cleanup();
+ }
 -- 
 1.7.10.4
 
