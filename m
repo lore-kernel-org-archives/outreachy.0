@@ -1,76 +1,49 @@
-X-GM-THRID: 6202765946513260544
-X-Received: by 10.50.36.104 with SMTP id p8mr15150213igj.0.1444193987803;
-        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
+X-GM-THRID: 5586368331776
+X-Received: by 10.50.92.10 with SMTP id ci10mr14537396igb.8.1425257816203;
+        Sun, 01 Mar 2015 16:56:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.199.73 with SMTP id ji9ls42391obc.45.gmail; Tue, 06 Oct
- 2015 21:59:47 -0700 (PDT)
-X-Received: by 10.182.126.228 with SMTP id nb4mr34195114obb.19.1444193987429;
-        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id zg1si4910189pbb.2.2015.10.06.21.59.47
+Received: by 10.50.124.193 with SMTP id mk1ls799397igb.1.canary; Sun, 01 Mar
+ 2015 16:56:56 -0800 (PST)
+X-Received: by 10.42.62.67 with SMTP id x3mr25107076ich.4.1425257816058;
+        Sun, 01 Mar 2015 16:56:56 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gb13si24855pac.2.2015.03.01.16.56.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Mar 2015 16:56:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id hy16so8979782pad.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=EVMk8uzRJzNN7w86Dkkk1vbKKG/Akyi8+shmNn2gQ60=;
-        b=fT4LY8TW6Pv5d1Dq4lnI3CQySJyYEXFQpuGEKiIlRQSg+G1623rudpvch5+uBbX8g4
-         Do7rIyZT04tVMubkmEVRYXvilzkDtHx0P2CRfYmxbGa4liBGkWvfita31SCQoj6qsKtR
-         eI6SpYB05h8pNmpS/Aa8WyDsdR5cDn7r/gOhohfTl2jEFHv7zHvZ/fDTnhKKCeIlgIX+
-         aNvYFb+F/8etEjRF9Il6q97BSi8FA4yJBjqpgnlvksZX6JOJwZRXS2/UdU/JJ1RaSnYR
-         DDCkrli0JphlDd83ToGRc7DPVATBtCXpvZw3P0cs3YNAcswaz0Z7Ov7v5QsS79I4I0TU
-         vfTg==
-X-Received: by 10.68.129.198 with SMTP id ny6mr51459965pbb.42.1444193987238;
-        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.52.112])
-        by smtp.gmail.com with ESMTPSA id qn5sm36603121pbc.74.2015.10.06.21.59.46
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 06 Oct 2015 21:59:46 -0700 (PDT)
-Date: Wed, 7 Oct 2015 10:29:43 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6656: Remove space before closing brace
-Message-ID: <20151007045942.GA32659@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C24A34D3;
+	Mon,  2 Mar 2015 00:56:55 +0000 (UTC)
+Date: Sun, 1 Mar 2015 16:56:55 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: Replace
+ __printf(string-index, first-to-check) with __attribute__((format(printf,
+ string-index, first-to-check)))
+Message-ID: <20150302005655.GA7846@kroah.com>
+References: <1425244055-11203-1-git-send-email-dilekuzulmez@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1425244055-11203-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove space before closing brace '}'. Problem found using
-checkpatch.pl
-CHECK: Blank lines aren't necessary before a close brace '}'
+On Sun, Mar 01, 2015 at 11:07:35PM +0200, Dilek Uzulmez wrote:
+> Fix checkpatch.pl issues with __printf(string-index, first-to-check) is preferred over __attribute__((format(printf, string-index, first-to-check))) in libcfs_debug.h
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+> 
+> Changes in v2:
+>    Changed subject line
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/vt6656/baseband.c | 1 -
- 1 file changed, 1 deletion(-)
+You obviously did not even compile this patch, why not?  It's a bit rude
+to break the build :(
 
-diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-index 3bdbae8..e5be261 100644
---- a/drivers/staging/vt6656/baseband.c
-+++ b/drivers/staging/vt6656/baseband.c
-@@ -810,7 +810,6 @@ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
- 			cr_206 = 0x38;
- 		}
- 		break;
--
- 	}
- 
- 	if (ed_inx == priv->bb_pre_ed_index && !scanning)
--- 
-1.9.1
-
+Please be more careful.
 
