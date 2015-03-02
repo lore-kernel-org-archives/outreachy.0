@@ -1,119 +1,67 @@
-X-GM-THRID: 9656944558080
-X-Received: by 10.66.233.37 with SMTP id tt5mr86070637pac.3.1427078238947;
-        Sun, 22 Mar 2015 19:37:18 -0700 (PDT)
+X-GM-THRID: 4857609060352
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,a8a47a8315808225
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.43.146 with SMTP id l18mr23521978yhb.23.1425257950093;
+        Sun, 01 Mar 2015 16:59:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.178 with SMTP id g18ls1166385igt.41.gmail; Sun, 22 Mar
- 2015 19:37:18 -0700 (PDT)
-X-Received: by 10.50.26.40 with SMTP id i8mr10912588igg.8.1427078238617;
-        Sun, 22 Mar 2015 19:37:18 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id iw3si594786pbd.1.2015.03.22.19.37.18
+Received: by 10.182.42.202 with SMTP id q10ls539341obl.21.gmail; Sun, 01 Mar
+ 2015 16:59:09 -0800 (PST)
+X-Received: by 10.182.28.104 with SMTP id a8mr22915354obh.15.1425257949876;
+        Sun, 01 Mar 2015 16:59:09 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ri9si1321962pdb.1.2015.03.01.16.59.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 19:37:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        Sun, 01 Mar 2015 16:59:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id we9so176317901pac.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 19:37:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=gnNREYgk9UQyJUj7HdVEC897dxAYD94qmpO2hAina04=;
-        b=W7fYUQYu8JnEaeCV3njcP16sQxKU50XH5BzV94Vi3c+SRT77IMNiZr8Z64Bctybv6r
-         fR0odWCJ1gV1201szEZOD9yoX6xFPEyhj/fDeikbZpo8ONuOW+WYCc0kz2Ck48DCNbLS
-         +h4pMGIFk7vSXcQJuu/54CUC5+vGDn441zE/3DtykNT1jJt1K/77zbj+BzrWG8V38PgV
-         oZdwN58XkUH+iDaotEFf5jTeq2aBFfOqkeI/s3JuZgoR7Y3Lgu0Um7zJoTIFKvIdgi00
-         +VOxwLmDsQeWpriYKnBJ+tol2/HfM/hm5SkL4YmBOegCfooJ/Bk365Tj9FCWyb4JKm74
-         2FMQ==
-X-Received: by 10.66.185.230 with SMTP id ff6mr210959205pac.102.1427078238475;
-        Sun, 22 Mar 2015 19:37:18 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.143.110])
-        by mx.google.com with ESMTPSA id dh3sm8559833pdb.69.2015.03.22.19.37.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 22 Mar 2015 19:37:17 -0700 (PDT)
-Date: Mon, 23 Mar 2015 08:07:14 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sm750fb: Fix switch-case indent
-Message-ID: <20150323023713.GA3775@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 910AE475;
+	Mon,  2 Mar 2015 00:59:09 +0000 (UTC)
+Date: Sun, 1 Mar 2015 16:59:09 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging rtl8192u: Remove typedefs.
+Message-ID: <20150302005909.GA21527@kroah.com>
+References: <cover.1425069407.git.ksenija.stanojevic@gmail.com>
+ <4f46244ec99ca7d088e094221b36c2be29bd4a27.1425069407.git.ksenija.stanojevic@gmail.com>
+ <alpine.DEB.2.10.1502281642570.2719@hadrien>
+ <CAL7P5j+A3PdERuhdPqcpdrknwUwfjOzRO=nZ9Us4Nudm_tgRQQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL7P5j+A3PdERuhdPqcpdrknwUwfjOzRO=nZ9Us4Nudm_tgRQQ@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix indentation in switch-case by using tabs. Problem found using
-checkpatch.pl
-ERROR: switch and case should be at the same indent
+On Sat, Feb 28, 2015 at 10:54:01PM +0100, Ksenija Stanojević wrote:
+> On Sat, Feb 28, 2015 at 10:43 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> > On Fri, 27 Feb 2015, Ksenija Stanojevic wrote:
+> >
+> >> This patch removes typedefs from structures and renames them per
+> >> kernel coding standards.
+> >> Issue found by checkpatch.pl
+> >
+> > There are other things in this patch.
+> >
+> > julia
+> 
+> Yes, where ever I put struct or enum, I have to make sure that thing are
+> aligned well and that the line doesn't exceed 80 character mark.
+> And I also removed macro cmpk_query_cfg_t, because it's the
+> same as the struct above, and I removed also it's comment.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 43 +++++++++++++++++------------------
- 1 file changed, 21 insertions(+), 22 deletions(-)
+Then please put this in the changelog comment so we know you are doing
+this.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 3ac6478..717ca18 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -196,30 +196,29 @@ void setMasterClock(unsigned int frequency)
- 		if (frequency > MHz(190))
- 			frequency = MHz(190);
- 
--	/* Calculate the divisor */
--	divisor = (unsigned int) roundedDiv(getChipClock(), frequency);
--
--	/* Set the corresponding divisor in the register. */
--	ulReg = PEEK32(CURRENT_GATE);
--	switch(divisor)
--        {
--            default:
--            case 3:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_3);
--                break;
--            case 4:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_4);
--                break;
--            case 6:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_6);
--                break;
--            case 8:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_8);
--                break;
--        }
-+		/* Calculate the divisor */
-+		divisor = (unsigned int) roundedDiv(getChipClock(), frequency);
-+
-+		/* Set the corresponding divisor in the register. */
-+		ulReg = PEEK32(CURRENT_GATE);
-+		switch (divisor) {
-+		default:
-+		case 3:
-+			ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_3);
-+			break;
-+		case 4:
-+			ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_4);
-+			break;
-+		case 6:
-+			ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_6);
-+			break;
-+		case 8:
-+			ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_8);
-+			break;
-+		}
- 
- 	setCurrentGate(ulReg);
--    }
-+	}
- }
- 
- 
--- 
-1.9.1
+Please resend with this information.
 
+thanks,
+
+greg k-h
 
