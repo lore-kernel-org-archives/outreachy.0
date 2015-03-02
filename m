@@ -1,86 +1,79 @@
 X-GM-THRID: 5931983175680
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,bd66ad1392ef0d48
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.43.117.72 with SMTP id fl8mr27629295icc.23.1425310740680;
-        Mon, 02 Mar 2015 07:39:00 -0800 (PST)
+X-Received: by 10.236.63.230 with SMTP id a66mr28040673yhd.51.1425310729601;
+        Mon, 02 Mar 2015 07:38:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.28.183 with SMTP id 52ls651870qgz.49.gmail; Mon, 02 Mar
- 2015 07:39:00 -0800 (PST)
-X-Received: by 10.236.96.234 with SMTP id r70mr26254742yhf.39.1425310740536;
-        Mon, 02 Mar 2015 07:39:00 -0800 (PST)
+Received: by 10.50.39.99 with SMTP id o3ls994019igk.12.gmail; Mon, 02 Mar 2015
+ 07:38:49 -0800 (PST)
+X-Received: by 10.66.151.101 with SMTP id up5mr26735566pab.10.1425310729403;
+        Mon, 02 Mar 2015 07:38:49 -0800 (PST)
 Return-Path: <somyaanand214@gmail.com>
-Received: from mail-pd0-x22c.google.com (mail-pd0-x22c.google.com. [2607:f8b0:400e:c02::22c])
-        by gmr-mx.google.com with ESMTPS id gb13si280995pac.2.2015.03.02.07.39.00
+Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
+        by gmr-mx.google.com with ESMTPS id q9si713653pds.2.2015.03.02.07.38.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 07:39:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) client-ip=2607:f8b0:400e:c02::22c;
+        Mon, 02 Mar 2015 07:38:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=somyaanand214@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdjg10 with SMTP id g10so40476747pdj.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 07:39:00 -0800 (PST)
+Received: by mail-pd0-x22f.google.com with SMTP id fp1so3209196pdb.7
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 07:38:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=N+KlGYrbABtkDFcMZ1k2yd09ArXsng/Z7u5t3ybTF9k=;
-        b=Tc3yFpbFCRCA7MiTjLIsOX66yLc0pDdMpaC3W4oIjQt7X30CUPhXukHDRT+5SKleii
-         AXedfx9p7sTX4XrDBN3uQo+mIwqlZVQrRsIjSAIvYa5EBUSwet5Aerfg9ZRALMqGvCzM
-         S4wb9A4E8LHS8DS2Kv9mK8Z682spS09VfqKJRqwSsCA+bSj+17leGBJl7n7xpj0uGjGZ
-         IM/gLCDmnUoCCYy1feCiG1MAW3wA2SOEjphEawZCTJH9lKRFdZa9/dfBie3g9rfsVm2w
-         cdDuAx+GmByNpSqGlccx+QcTlhk9eT3AaprRzD5aD7yrXhtx94+kTdswKargkGqElJeb
-         Pddw==
-X-Received: by 10.69.12.234 with SMTP id et10mr47856834pbd.65.1425310740291;
-        Mon, 02 Mar 2015 07:39:00 -0800 (PST)
+        h=from:to:cc:subject:date:message-id;
+        bh=z6xCce2sS12tNSsrRFdYz2IRk2hsRIz21Xe7us4uffE=;
+        b=yFhfwyyBnw59HaxY0JzDdYt+gBoBJhi1uy8ZC1zxl0ZpVhOGQvDxAat71n8fHdiKsG
+         B57sc40S6iJicUJM7yPCqcpyvwYdiMjhXsCziesFGX52S36GIzyoFlk0ONNyjZfrXtlH
+         pcwrTsY9L3qHCvLDcukj2MUSRGo3patWULxylGf4NBUDFoEmC8r97qfI4jW4yffEY0AN
+         bgT68Npj/hPhhW2kBJrDn1VAZWjeOGGNhtCk8dnN6OdGJPxvnzC9VdSSfNH8oAMRXU68
+         ZReYl8f5smwc2H/cxB6uJxoPwV7bf2BJEzblJCYpmRCfRyx9oG3nra/dckIRMFEZlRkR
+         QwZg==
+X-Received: by 10.70.130.208 with SMTP id og16mr9296859pdb.9.1425310729246;
+        Mon, 02 Mar 2015 07:38:49 -0800 (PST)
 Return-Path: <somyaanand214@gmail.com>
 Received: from localhost.localdomain ([223.176.33.155])
-        by mx.google.com with ESMTPSA id xh3sm12440077pab.25.2015.03.02.07.38.53
+        by mx.google.com with ESMTPSA id xh3sm12440077pab.25.2015.03.02.07.38.45
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 02 Mar 2015 07:38:59 -0800 (PST)
+        Mon, 02 Mar 2015 07:38:48 -0800 (PST)
 From: Somya Anand <somyaanand214@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Somya Anand <somyaanand214@gmail.com>
-Subject: [PATCH 2/2] Staging: media: omap24xx: Merge quoted string across lines
-Date: Mon,  2 Mar 2015 21:08:32 +0530
-Message-Id: <1425310712-16755-2-git-send-email-somyaanand214@gmail.com>
+Subject: [PATCH 1/2] Staging: media: Add a blank line after declaration
+Date: Mon,  2 Mar 2015 21:08:31 +0530
+Message-Id: <1425310712-16755-1-git-send-email-somyaanand214@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1425310712-16755-1-git-send-email-somyaanand214@gmail.com>
-References: <1425310712-16755-1-git-send-email-somyaanand214@gmail.com>
 
-This patch fixes a coding style issue by merging a splitted
-quoted string across lines for better readability.
+This patch fixes checkpatch.pl warning by adding a blank line after
+declaration for better readability.
 
 Signed-off-by: Somya Anand <somyaanand214@gmail.com>
 ---
- drivers/staging/media/omap24xx/omap24xxcam.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/media/davinci_vpfe/dm365_isif.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/staging/media/omap24xx/omap24xxcam.c b/drivers/staging/media/omap24xx/omap24xxcam.c
-index d590b3e..ef920dc 100644
---- a/drivers/staging/media/omap24xx/omap24xxcam.c
-+++ b/drivers/staging/media/omap24xx/omap24xxcam.c
-@@ -889,8 +889,8 @@ static int omap24xxcam_sensor_init(struct omap24xxcam_device *cam)
- 	omap24xxcam_clock_on(cam);
- 	err = omap24xxcam_sensor_if_enable(cam);
- 	if (err) {
--		dev_err(cam->dev, "sensor interface could not be enabled at "
--			"initialisation, %d\n", err);
-+		dev_err(cam->dev, "sensor interface could not be enabled at initialisation, %d\n",
-+			err);
- 		cam->sdev = NULL;
- 		goto out;
- 	}
-@@ -1878,5 +1878,5 @@ module_param(video_nr, int, 0);
- MODULE_PARM_DESC(video_nr,
- 		 "Minor number for video device (-1 ==> auto assign)");
- module_param(capture_mem, int, 0);
--MODULE_PARM_DESC(capture_mem, "Maximum amount of memory for capture "
--		 "buffers (default 4800kiB)");
-+MODULE_PARM_DESC(capture_mem,
-+	"Maximum amount of memory for capture buffers (default 4800kiB)");
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+index 0d535b0..b3b4405 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+@@ -1602,6 +1602,7 @@ isif_pad_get_crop(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh,
+ 
+ 	if (crop->which == V4L2_SUBDEV_FORMAT_TRY) {
+ 		struct v4l2_rect *rect;
++
+ 		rect = v4l2_subdev_get_try_crop(fh, ISIF_PAD_SINK);
+ 		memcpy(&crop->rect, rect, sizeof(*rect));
+ 	} else {
+@@ -1991,7 +1992,9 @@ int vpfe_isif_init(struct vpfe_isif_device *isif, struct platform_device *pdev)
+ 	struct media_entity *me = &sd->entity;
+ 	static resource_size_t res_len;
+ 	struct resource *res;
++
+ 	void *__iomem addr;
++
+ 	int status;
+ 	int i = 0;
+ 
 -- 
 1.9.1
 
