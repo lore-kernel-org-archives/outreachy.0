@@ -1,77 +1,59 @@
-X-GM-THRID: 2510415724544
-X-Received: by 10.152.26.74 with SMTP id j10mr777691lag.10.1424622525748;
-        Sun, 22 Feb 2015 08:28:45 -0800 (PST)
+X-GM-THRID: 5536407879680
+X-Received: by 10.66.100.198 with SMTP id fa6mr24369884pab.31.1425257596049;
+        Sun, 01 Mar 2015 16:53:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.88.98 with SMTP id bf2ls335852lab.70.gmail; Sun, 22 Feb
- 2015 08:28:45 -0800 (PST)
-X-Received: by 10.112.50.106 with SMTP id b10mr773708lbo.8.1424622525227;
-        Sun, 22 Feb 2015 08:28:45 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
-        by gmr-mx.google.com with ESMTPS id ta1si509839wic.1.2015.02.22.08.28.45
+Received: by 10.107.46.163 with SMTP id u35ls1281193iou.14.gmail; Sun, 01 Mar
+ 2015 16:53:15 -0800 (PST)
+X-Received: by 10.50.55.102 with SMTP id r6mr14529080igp.1.1425257595868;
+        Sun, 01 Mar 2015 16:53:15 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si1285384pbc.2.2015.03.01.16.53.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 08:28:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
+        Sun, 01 Mar 2015 16:53:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x229.google.com with SMTP id w62so13839771wes.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 08:28:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=EnNVWjmPHdO4Jo30MLBnyQRxfSrokKgfne/qqggAit4=;
-        b=dNHX0pLgugMgdAyerNhiAF1RWzfJ9DnGEjJlhzuC7rZHwPHVAoFA1ikvVtRcsL3rOU
-         TBsOp50JjW1WG3ASa6bwHWsFgbbwOvgebpTRBlu52mkEOeSKyCpeSTA9K9l9W37sKvAT
-         JNzDwzmvZW415zZGnd7A3RV+rZZgyE/OpX/DGY2YwQB984ODgIgg8hNfgGOL1SDpR5V7
-         trg4/8i2rvWj8dYlTwhqStpRyf3TJiAvl5ODrVXqlt7r1lnvetFXdMrNYGZTInUTS9rG
-         /ROROTuTN6rnNiiT06YIy7j1rCukq/xLmLHOjWGXD0nW4VrT8KfH277rktrvpXkDaKmA
-         obcg==
-X-Received: by 10.180.19.193 with SMTP id h1mr13015665wie.2.1424622525122;
-        Sun, 22 Feb 2015 08:28:45 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id hi6sm51739637wjc.34.2015.02.22.08.28.43
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 22 Feb 2015 08:28:44 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: media: Remove unnecessary else after return
-Date: Sun, 22 Feb 2015 18:28:37 +0200
-Message-Id: <1424622517-7849-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9177C475;
+	Mon,  2 Mar 2015 00:53:15 +0000 (UTC)
+Date: Sun, 1 Mar 2015 16:53:15 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Fix __packed is
+ preferred over __attribute__((packed)) in libcfs_kernelcomm.h
+Message-ID: <20150302005315.GA29313@kroah.com>
+References: <1425240270-9001-1-git-send-email-dilekuzulmez@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1425240270-9001-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes checkpatch.pl warning in files of media
-WARNING: else is not generally useful after a break or return
+On Sun, Mar 01, 2015 at 10:04:30PM +0200, Dilek Uzulmez wrote:
+> Fix checkpatch.pl issues with  __packed is preferred over __attribute__((packed)) in libcfs_kernelcomm.h
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
+> index 4688770..a989d26 100644
+> --- a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
+> +++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
+> @@ -107,7 +107,7 @@ typedef struct lustre_kernelcomm {
+>  	__u32 lk_group;
+>  	__u32 lk_data;
+>  	__u32 lk_flags;
+> -} __attribute__((packed)) lustre_kernelcomm;
+> +} __packed lustre_kernelcomm;
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/media/vino/saa7191.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+Can you also work to get rid of this typedef?
 
-diff --git a/drivers/staging/media/vino/saa7191.c b/drivers/staging/media/vino/saa7191.c
-index 8e96992..f411e1f 100644
---- a/drivers/staging/media/vino/saa7191.c
-+++ b/drivers/staging/media/vino/saa7191.c
-@@ -393,11 +393,10 @@ static int saa7191_autodetect_norm(struct v4l2_subdev *sd)
- 		/* 60hz signal -> NTSC */
- 		dprintk("NTSC\n");
- 		return saa7191_s_std(sd, V4L2_STD_NTSC);
--	} else {
--		/* 50hz signal -> PAL */
--		dprintk("PAL\n");
--		return saa7191_s_std(sd, V4L2_STD_PAL);
- 	}
-+	/* 50hz signal -> PAL */
-+	dprintk("PAL\n");
-+	return saa7191_s_std(sd, V4L2_STD_PAL);
- }
- 
- static int saa7191_g_ctrl(struct v4l2_subdev *sd, struct v4l2_control *ctrl)
--- 
-1.9.1
+thanks,
 
+greg k-h-
 
