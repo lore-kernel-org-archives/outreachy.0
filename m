@@ -1,98 +1,87 @@
-X-GM-THRID: 5486072037376
-X-Received: by 10.112.156.65 with SMTP id wc1mr575107lbb.7.1425230381076;
-        Sun, 01 Mar 2015 09:19:41 -0800 (PST)
+X-GM-THRID: 4711413448704
+X-Received: by 10.43.65.211 with SMTP id xn19mr28621491icb.0.1425317415560;
+        Mon, 02 Mar 2015 09:30:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.22.168 with SMTP id e8ls359444laf.72.gmail; Sun, 01 Mar
- 2015 09:19:40 -0800 (PST)
-X-Received: by 10.152.4.229 with SMTP id n5mr3231568lan.1.1425230380659;
-        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
-        by gmr-mx.google.com with ESMTPS id r6si519103wix.0.2015.03.01.09.19.40
+Received: by 10.182.129.48 with SMTP id nt16ls719948obb.9.gmail; Mon, 02 Mar
+ 2015 09:30:15 -0800 (PST)
+X-Received: by 10.182.66.40 with SMTP id c8mr26634354obt.36.1425317415342;
+        Mon, 02 Mar 2015 09:30:15 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qg0-x236.google.com (mail-qg0-x236.google.com. [2607:f8b0:400d:c04::236])
+        by gmr-mx.google.com with ESMTPS id ba9si1836753qcb.0.2015.03.02.09.30.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
+        Mon, 02 Mar 2015 09:30:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) client-ip=2607:f8b0:400d:c04::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x233.google.com with SMTP id l15so10024009wiw.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 09:19:40 -0800 (PST)
+Received: by mail-qg0-x236.google.com with SMTP id h3so12118936qgf.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 09:30:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=UbOAlmbTmSAXqrgHL7xfYtZSudcxsjUQdD/91CWHzQw=;
-        b=CtW+0Ow9gwYobWEYJFdMARtkVMM6/Nad0t63s+i65NwlST85Huld2tznl9hZ+hq2nr
-         k//x5sldNR4xtrl7ywH3EzEHQFitoFR6FNSmMAA82EV8as8ho3o+Vwl1+gHvNrvfaMF9
-         r69UGz4bas1+g4Fi/pauehpggbq6Gu5PykckHlEeyffAoTcAffTbZSnmZw2/eGcYKC6E
-         f72wUgbsgUkow8UN/m+t7RYnBRqnJ4zfqZkgvjARqza+psxZ/fd+gbng+/UBKYRPfcqE
-         CUxTHSDNIkePCXpFCMgqDO58FzDDFqhB6NP/jUrjeTD4Hrumzkg2PNj4rdjoZq/e3Slh
-         oPYA==
-X-Received: by 10.180.92.71 with SMTP id ck7mr15717217wib.48.1425230380571;
-        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id gf11sm12337415wic.18.2015.03.01.09.19.39
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 09:19:40 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8192u: ieee80211: Convert comment from C99 style to C89 style
-Date: Sun,  1 Mar 2015 19:19:23 +0200
-Message-Id: <1425230363-5590-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=from:message-id:date:user-agent:mime-version:to:cc:subject
+         :references:in-reply-to:content-type:content-transfer-encoding;
+        bh=An0oQitazP0V5Dr9CBogwx3c62AW68kyO7XhvlVD8aY=;
+        b=Q7fai0SgxQ16I7hEYiglzXviMtQ361nPJeCzPQBWe1I0JrwZEYWYXOM/V0APF3Eu+8
+         MAjmxJUJQXwhdh/IsnsxHC9/JKVz1S9b3vrkeyUE9rPHBeflUYzntPXpDilQnb50phtn
+         z6cKXB360RKU7zmvazcsiu/mzHoX5HdFpx1qcg39YvQJ//xOmyCIq2w/pIK8RXA3qllP
+         39qydmka3DK9loc/klL5bgwDiEwF+FYUgy+7qPDGueL7POZrO6YJizW3i/z+g+JscXTO
+         Qvn0dLxjT+bk5SWC2TSdwyuv7av+g22vfO6qdyirI6mJWKhCAMQ3uWezVNJvzEvTHrYf
+         YyRQ==
+X-Received: by 10.140.129.65 with SMTP id 62mr53480762qhb.11.1425317415190;
+        Mon, 02 Mar 2015 09:30:15 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 184sm8748616qhc.39.2015.03.02.09.30.14
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Mar 2015 09:30:14 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54F49E25.8040205@gmail.com>
+Date: Mon, 02 Mar 2015 12:30:13 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Greg KH <gregkh@linuxfoundation.org>, 
+ Vatika Harlalka <vatikaharlalka@gmail.com>
+CC: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Refine if condition
+References: <20150227175849.GA20418@gmail.com> <20150302002103.GA17196@kroah.com>
+In-Reply-To: <20150302002103.GA17196@kroah.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patch fixes the checkpatch.pl error:
-ERROR: "Do not use C99 // comments"
+On 03/01/15 19:21, Greg KH wrote:
+> On Fri, Feb 27, 2015 at 11:28:49PM +0530, Vatika Harlalka wrote:
+>> Variable bound takes maximum value 8 so the if condition
+>> for odd i is made more compact.
+>>
+>> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+>> ---
+>>  drivers/staging/rtl8188eu/hal/phy.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+>> index 6af72a4..3d0e447 100644
+>> --- a/drivers/staging/rtl8188eu/hal/phy.c
+>> +++ b/drivers/staging/rtl8188eu/hal/phy.c
+>> @@ -1038,7 +1038,7 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
+>>  		bound = 4;
+>>  
+>>  	for (i = 0; i < bound; i++) {
+>> -		if ((i == 1) || (i == 3) || (i == 5) || (i == 7)) {
+>> +		if (i%2 == 1) {
+> 
+> I find this harder to read now, sorry, '%' is not used often in C code
+> for a reason :)
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+In this case, it is probably more common in the kernel to use
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-index 95f5fc7..f470cb6 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-@@ -129,7 +129,7 @@ static void ccmp_init_blocks(struct crypto_tfm *tfm,
- 	qc_included = ((WLAN_FC_GET_TYPE(fc) == IEEE80211_FTYPE_DATA) &&
- 		       (WLAN_FC_GET_STYPE(fc) & 0x08));
- 	*/
--	// fixed by David :2006.9.6
-+	/* fixed by David :2006.9.6 */
- 	qc_included = ((WLAN_FC_GET_TYPE(fc) == IEEE80211_FTYPE_DATA) &&
- 		       (WLAN_FC_GET_STYPE(fc) & 0x80));
- 	aad_len = 22;
-@@ -208,7 +208,7 @@ static int ieee80211_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	pos = skb_push(skb, CCMP_HDR_LEN);
- 	memmove(pos, pos + CCMP_HDR_LEN, hdr_len);
- 	pos += hdr_len;
--//	mic = skb_put(skb, CCMP_MIC_LEN);
-+	/* mic = skb_put(skb, CCMP_MIC_LEN); */
- 
- 	i = CCMP_PN_LEN - 1;
- 	while (i >= 0) {
-@@ -238,7 +238,7 @@ static int ieee80211_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		u8 *e = key->tx_e;
- 		u8 *s0 = key->tx_s0;
- 
--		//mic is moved to here by john
-+		/* mic is moved to here by john */
- 		mic = skb_put(skb, CCMP_MIC_LEN);
- 
- 		ccmp_init_blocks(key->tfm, hdr, key->tx_pn, data_len, b0, b, s0);
-@@ -443,7 +443,7 @@ static char *ieee80211_ccmp_print_stats(char *p, void *priv)
- 
- void ieee80211_ccmp_null(void)
- {
--//    printk("============>%s()\n", __func__);
-+	/* printk("============>%s()\n", __func__); */
- 	return;
- }
- 
--- 
-1.9.1
+	if ((i & 1) == 1)
+
+in this case.
+
+Jes
 
 
