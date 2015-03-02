@@ -1,75 +1,66 @@
 X-GM-THRID: 5841740627968
-X-Received: by 10.182.29.3 with SMTP id f3mr26387907obh.16.1425277464547;
-        Sun, 01 Mar 2015 22:24:24 -0800 (PST)
+X-Received: by 10.66.216.195 with SMTP id os3mr1365230pac.11.1425277463430;
+        Sun, 01 Mar 2015 22:24:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.143.34 with SMTP id sb2ls862177igb.10.gmail; Sun, 01 Mar
- 2015 22:24:24 -0800 (PST)
-X-Received: by 10.50.26.40 with SMTP id i8mr15471393igg.8.1425277464289;
-        Sun, 01 Mar 2015 22:24:24 -0800 (PST)
+Received: by 10.140.80.134 with SMTP id c6ls1588622qgd.21.gmail; Sun, 01 Mar
+ 2015 22:24:23 -0800 (PST)
+X-Received: by 10.236.19.8 with SMTP id m8mr25789794yhm.53.1425277463246;
+        Sun, 01 Mar 2015 22:24:23 -0800 (PST)
 Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22e.google.com (mail-pd0-x22e.google.com. [2607:f8b0:400e:c02::22e])
-        by gmr-mx.google.com with ESMTPS id gb13si106278pac.2.2015.03.01.22.24.24
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id pc4si1422449pac.0.2015.03.01.22.24.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 22:24:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) client-ip=2607:f8b0:400e:c02::22e;
+        Sun, 01 Mar 2015 22:24:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22e.google.com with SMTP id fl12so5952137pdb.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 22:24:24 -0800 (PST)
+Received: by mail-pa0-x22d.google.com with SMTP id rd3so40910295pab.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 22:24:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=WgkAJUtz3SZIRr1tc2xbbCI/dNtr8RW9gcO9YtxNvsw=;
-        b=ykTVxnHU5eFroN0/g9jnKeduKfVoL009C5EPNv5IczoV5KqTcxvSAsAyLxExFnhA7e
-         VCIqmZDsFXNPnCoJBEs4ugWZh172BKYRI1O5Z3gNWS05LsCtScMczLybw3lNy7e6morD
-         VfQGj7XIS2/VRQxW+QR2KAZXNg+/RUIL4ohFlPBD5wLwl7kuY1bVhdfwjUD87Zpk95AK
-         MKLFNZ//8yf2WQ7IrVbcRLa4/MtvE6Pe3ed6O1WGC+Z7qhHaudeN8c8R3ZqO110Crm2w
-         FiXK42PWPKzYk4EI+92aVh7OgNo8O6gnvXxvy/GBUu8jgO8xjrYwvZo9emqVj+3Z0a5i
-         tcMw==
-X-Received: by 10.70.46.230 with SMTP id y6mr7666720pdm.96.1425277464175;
-        Sun, 01 Mar 2015 22:24:24 -0800 (PST)
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=pF8qa6od0Rh9GfrV7bTUUF3+MKthokHvBVqD9cTfKsU=;
+        b=AHDl40uTtdTYp68jjXJM/UgNnF8KModIjqWD/9UZy/1bMS4/BSErM/mGOO56mZfd/u
+         0wde97iQD9RA3vrXvjPONRuvBMRFjck+iRrSJN0angZllgoC11gKUeXzzixaVtDkoBMH
+         elm32FyA/jYY0wwyeMZjQHy694v89bHrPaKKiJ31KqSEf0PRc4fGxQcjuIpQV+VLbFfY
+         Tp4IcPRXd0VYhn2NQLGkemSRTk4oYYO/Ltk48WFkH+9pUnqp7BOqNS2CH+q76RRiRD1U
+         qmQsyCBeaIO5GI/+E+aqoWIwoniotx4QbqY95s/ia7/qjCeLvswxU7Sly4CctA+Gyo9Z
+         nAvA==
+X-Received: by 10.68.138.135 with SMTP id qq7mr44308439pbb.139.1425277463127;
+        Sun, 01 Mar 2015 22:24:23 -0800 (PST)
 Return-Path: <vatikaharlalka@gmail.com>
 Received: from akanksha ([183.82.106.99])
-        by mx.google.com with ESMTPSA id zs8sm10879427pac.9.2015.03.01.22.24.21
+        by mx.google.com with ESMTPSA id bh15sm10819185pdb.21.2015.03.01.22.24.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 01 Mar 2015 22:24:23 -0800 (PST)
-Date: Mon, 2 Mar 2015 11:52:54 +0530
+        Sun, 01 Mar 2015 22:24:21 -0800 (PST)
+Date: Mon, 2 Mar 2015 11:52:53 +0530
 From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/4] Staging: rtl8188eu: Remove redundant if condition clause
-Message-ID: <78424de094126cf4c12d3fbc98ccbc6de07f52a3.1425276736.git.vatikaharlalka@gmail.com>
-References: <cover.1425276736.git.vatikaharlalka@gmail.com>
+Subject: [PATCH 0/4] Staging: rtl8188eu: Cleanup code to increase compactness
+Message-ID: <cover.1425276736.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1425276736.git.vatikaharlalka@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Clause removed as !sim_bitmap is always true.
+Remove unnecessary code to increase readability and
+compactness.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Vatika Harlalka (4):
+  Staging: rtl8188eu: Remove redundant if condition clause
+  Staging: rtl8188eu: Remove unnecessary if condition
+  Staging: rtl8188eu: Remove dead code.
+  Staging: rtl8188eu: Change return type of function to void.
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 2af3013..2bbdcca 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -1025,7 +1025,7 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
- 		diff = (tmp1 > tmp2) ? (tmp1 - tmp2) : (tmp2 - tmp1);
- 
- 		if (diff > MAX_TOLERANCE) {
--			if ((i == 2 || i == 6) && !sim_bitmap) {
-+			if (i == 2 || i == 6) {
- 				if (resulta[c1][i] + resulta[c1][i+1] == 0)
- 					final_candidate[(i/4)] = c2;
- 				else if (resulta[c2][i] + resulta[c2][i+1] == 0)
+ drivers/staging/rtl8188eu/hal/bb_cfg.c |  3 +-
+ drivers/staging/rtl8188eu/hal/phy.c    | 53 ++++++++++------------------------
+ 2 files changed, 16 insertions(+), 40 deletions(-)
+
 -- 
 1.9.1
 
