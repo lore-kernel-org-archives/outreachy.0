@@ -1,119 +1,78 @@
-X-GM-THRID: 6250414407945289728
-X-Received: by 10.129.155.201 with SMTP id s192mr1741529ywg.4.1455288009266;
-        Fri, 12 Feb 2016 06:40:09 -0800 (PST)
+X-GM-THRID: 5870259798016
+X-Received: by 10.52.88.67 with SMTP id be3mr27229101vdb.3.1425317177821;
+        Mon, 02 Mar 2015 09:26:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.82.71 with SMTP id g7ls178484igy.8.canary; Fri, 12 Feb 2016
- 06:40:08 -0800 (PST)
-X-Received: by 10.107.152.10 with SMTP id a10mr2763481ioe.28.1455288008869;
-        Fri, 12 Feb 2016 06:40:08 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id ff2si1465997pad.2.2016.02.12.06.40.08
+Received: by 10.140.29.74 with SMTP id a68ls1755879qga.76.gmail; Mon, 02 Mar
+ 2015 09:26:17 -0800 (PST)
+X-Received: by 10.236.42.228 with SMTP id j64mr27175348yhb.36.1425317177650;
+        Mon, 02 Mar 2015 09:26:17 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x232.google.com (mail-qc0-x232.google.com. [2607:f8b0:400d:c01::232])
+        by gmr-mx.google.com with ESMTPS id kt5si1830852qcb.3.2015.03.02.09.26.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 06:40:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Mar 2015 09:26:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::232 as permitted sender) client-ip=2607:f8b0:400d:c01::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::232 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id w128so3479570pfb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 06:40:08 -0800 (PST)
+Received: by mail-qc0-x232.google.com with SMTP id m20so25735857qcx.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 09:26:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=vnCaaN/Vz2EqPNF+1j/QGmQ0JYcxiK/4oQ42pdts6uI=;
-        b=LAPDoCknB5LLi2cwmDndXTmpDlglrDTUtezxa4wVzZqjHZ8ejOB8LGsg44hu3LCOnK
-         yJEKunyCGB0PMsYleV2odsYSghrLnnVsh6u9V3SzazhAs/Ej5+vMmkjk4r/1WyTV8fRO
-         93rjVYUF+J32fiA68HxVCVEYMpYv9In6WXo7SLy9Mj15Hzua+vgV6ctTw+aIXbGa4kX0
-         PabDBifzC2WTEZ6vhjtA3Pzyn4Kz0GkLKjUmYxFp+NF0ObL9Q34FhWvYS7BixFJQ+5V9
-         6Kjw/cTZW9L1guJLrro4KznjLMEbSsoV9F5cVMpKgupH/OdfEsCA50cFeeDbfJLob3jm
-         kDTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=vnCaaN/Vz2EqPNF+1j/QGmQ0JYcxiK/4oQ42pdts6uI=;
-        b=KUvohs/DuA2g+0y6ZKwCYoNUnUWraljxuJfM96HtHBzS034UMFQJuE7VmnIlsi6fbY
-         WDBRIS+Y6/xjP6zilZquzMGpoJvk2FojnSpRuzOkh1WjKATT9QYUNyrPTSuwT6mT6uLx
-         nslEQTCQxoWu2SvjFNMj631AGctxH6WCgtPeDLCgcWUdMGpYdbj+t0KBOWiTXM2RVeyU
-         3+ibNc8cBFzlugxbFN4Qhr+XQXRX7nOU6ppbKjjZiHltqhg3DbddIXbwPazV7r/muUJw
-         QxeSYE7ers/NT8AWNAz3m/YDaoTN/vEQOaDnhV5u7GtJy5iKjNv+cWEYsuZ0KNSPVEhB
-         uQJA==
-X-Gm-Message-State: AG10YOT4IeZPsFABvN9vFmOxE3RUuwLhha/YmvL6H9DpnYx7FM+oGBL5qOWz04ZSJmkISg==
-X-Received: by 10.98.32.218 with SMTP id m87mr2675803pfj.48.1455288008651;
-        Fri, 12 Feb 2016 06:40:08 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id z3sm20042915par.17.2016.02.12.06.40.07
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 06:40:08 -0800 (PST)
-Date: Fri, 12 Feb 2016 20:10:04 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/6] staging: rtl8192u: ieee80211: rtl819x_TSProc: Replace
- MSECS with msecs_to_jiffies
-Message-ID: <20160212144004.GA1259@amitoj-Inspiron-3542>
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=ys/CxWeRRmXTjIzRkMkccRqMrgJ8Cx86xZ6tW4vvWss=;
+        b=dOvhEIO+ebFf8hxKR1SBXQk7H09r/Hr5JZXu5VDSVfxAKwEBgst0Evcn3Kk5xxB4Mg
+         9x4vuzaRTKbIwQohCBQDD7qQsOKnQpeZCDGZpF4pHejuHx2M6GRrGaBqP4XCtuPiWAP9
+         f/e2RKSSz8Oags0vi/I+4RNwBbP/DAgx1CBWqL1IWRWIFV6uKxTpKMhinRJimNzht1yH
+         iM2ptyj5LMWz6aMpgAHu5gZDOq0gaVMfCQnt+jo/jF+mCk3VyNTTgs8Jbem6ZFuVXyyG
+         Y9pdeoP7Wur4FKuue2KzbbZMuO8sm2OE74v18WwQsTbhLqKjEBZg2o8SipmCzNKNqEko
+         3IOA==
+X-Received: by 10.55.26.208 with SMTP id l77mr7186413qkh.62.1425317177563;
+        Mon, 02 Mar 2015 09:26:17 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id d186sm8767688qhc.3.2015.03.02.09.26.16
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Mar 2015 09:26:16 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54F49D38.5080606@gmail.com>
+Date: Mon, 02 Mar 2015 12:26:16 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: Sarah Khan <sarahjmi07@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Problem in updating Kernel
+References: <CALx5q7d_uzDS0e5-cYWBaBN-v5fddg2w35RxAbX46eUUVfBQPw@mail.gmail.com>
+In-Reply-To: <CALx5q7d_uzDS0e5-cYWBaBN-v5fddg2w35RxAbX46eUUVfBQPw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Replace driver specific macro MSECS with msecs_to_jiffies().
+On 03/02/15 02:21, Sarah Khan wrote:
+> Hi
+> Whenever I am trying to update my repository using: git fetch origin
+> I am getting following error
+> fatal: unable to connect to git.kernel.org:
+> git.kernel.org[0: 198.145.20.140]: errno=Connection refused
+> git.kernel.org[1: 149.20.4.72]: errno=Connection refused
+> git.kernel.org[2: 199.204.44.194]: errno=Connection refused
+> git.kernel.org[3: 2620:3:c000:a:0:1991:8:25]: errno=Network is unreachable
+> git.kernel.org[4: 2001:4f8:1:10:0:1991:8:25]: errno=Network is unreachable
+> 
+> And also when I am using chatzilla to connect to IRC channel I am getting
+> refused again and again.
+> 
+> 
+> Thanks
+> Sarah
+> 
 
-This was found using the following Coccinelle semantic patch:
+Try again - it looks like a network connection problem at your end. Is
+your Internet provider blocking certain ports?
 
-//<smpl>
-@@
-expression e;
-@@
-
-- MSECS(e)
-+ msecs_to_jiffies(e)
-//</smpl>
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-index f33c743..36a165e 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-@@ -87,7 +87,8 @@ static void RxPktPendingTimeout(unsigned long data)
- 	if(bPktInBuf && (pRxTs->RxTimeoutIndicateSeq==0xffff))
- 	{
- 		pRxTs->RxTimeoutIndicateSeq = pRxTs->RxIndicateSeq;
--		mod_timer(&pRxTs->RxPktPendingTimer,  jiffies + MSECS(ieee->pHTInfo->RxReorderPendingTime));
-+		mod_timer(&pRxTs->RxPktPendingTimer,
-+			  jiffies + msecs_to_jiffies(ieee->pHTInfo->RxReorderPendingTime));
- 	}
- 	spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
- 	//PlatformReleaseSpinLock(Adapter, RT_RX_SPINLOCK);
-@@ -212,7 +213,8 @@ static void AdmitTS(struct ieee80211_device *ieee,
- 	del_timer_sync(&pTsCommonInfo->InactTimer);
- 
- 	if(InactTime!=0)
--		mod_timer(&pTsCommonInfo->InactTimer, jiffies + MSECS(InactTime));
-+		mod_timer(&pTsCommonInfo->InactTimer,
-+			  jiffies + msecs_to_jiffies(InactTime));
- }
- 
- 
-@@ -590,7 +592,8 @@ void TsStartAddBaProcess(struct ieee80211_device *ieee, PTX_TS_RECORD	pTxTS)
- 		if(pTxTS->bAddBaReqDelayed)
- 		{
- 			IEEE80211_DEBUG(IEEE80211_DL_BA, "TsStartAddBaProcess(): Delayed Start ADDBA after 60 sec!!\n");
--			mod_timer(&pTxTS->TsAddBaTimer, jiffies + MSECS(TS_ADDBA_DELAY));
-+			mod_timer(&pTxTS->TsAddBaTimer,
-+				  jiffies + msecs_to_jiffies(TS_ADDBA_DELAY));
- 		}
- 		else
- 		{
--- 
-1.9.1
+Cheers,
+Jes
 
 
