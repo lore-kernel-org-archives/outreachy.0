@@ -1,106 +1,63 @@
-X-GM-THRID: 6660410187282644992
-X-Received: by 2002:a67:ca8e:: with SMTP id a14mr16162505vsl.44.1550747590793;
-        Thu, 21 Feb 2019 03:13:10 -0800 (PST)
+X-GM-THRID: 5595816001536
+X-Received: by 10.236.207.230 with SMTP id n66mr23922404yho.30.1425258070376;
+        Sun, 01 Mar 2015 17:01:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:810a:: with SMTP id c10ls465369vsd.4.gmail; Thu, 21 Feb
- 2019 03:13:09 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbDYU0QFt95warB79qkB5y6ExZ0ITTpUBzJa1DAtGAp3HIFAwBMDhXkDsF4VXORb+q4Yfjn
-X-Received: by 2002:a05:6102:3cd:: with SMTP id n13mr4156984vsq.19.1550747589841;
-        Thu, 21 Feb 2019 03:13:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550747589; cv=none;
-        d=google.com; s=arc-20160816;
-        b=OMyHoSOIhnY4gQwJzcNtg+XYIaLZh9AiU8yxw7Ksm0HMWqQqF0oBzCChnGQcp+Dmsd
-         qk8UOxLdF48UyUds1rfvAOd2xu/NVqSmM5mRpImtuwsHt5uJLOMxtoIk1cq3KWswTyg6
-         EdAQhGBQ8Y5UXjKt1FDhOSmSdyD+pInkCmA9BNOQS9L1kDcOS3NMUr7q1BjPelwBn4a1
-         7AjHqeWj/5YZePIsJDFTloV4uTlI7Y2zj1fO23KEGGBCtem0pji2q8W5KaDi54XrYy/A
-         7eA/60I/iQxR3JxSzhMvb8oeHn4mLa9UNay4RWpp0J0yrTkcoQdXHDDD2yry466dtvqg
-         pCrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=G2u/uED3mttMBrQvMnapkRxoSiRcHkcOohb32bkzLuU=;
-        b=vL08ZzUCBZ7UyAIf1Jt8hdZ5qvTtalUff/xeCIx5YlPI5dBpzgcwG8CKOzcNCQqxYM
-         iqa8XXNVX03j6zybg5uxorPfXQJgGb2+mc44dhs+SNKgob25rTdgb6YN3CSsS6viR3SV
-         Qztranb7p1LKSQ6GhDbm9K8/crSECRZkhe7cdo5LWasOWhb9ufsVZWISuVO+1w9oWZT0
-         ntwWQsk3Z2bwPEPZgg0QPoyji5MtzvBAxiPt8NyAXOevtGIpYQTeKJJoMOzX3IN2vxLf
-         1OuI1jl5+8MWqPj4RNZbDwr+e1Zj0UeE9e981xhO81ZLfvvX83dVqkOqgss2s8IGXbps
-         HSBA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L0P2prmn;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id s73si392205vkd.1.2019.02.21.03.13.09
+Received: by 10.182.80.229 with SMTP id u5ls533529obx.23.gmail; Sun, 01 Mar
+ 2015 17:01:10 -0800 (PST)
+X-Received: by 10.182.246.198 with SMTP id xy6mr23154084obc.26.1425258070185;
+        Sun, 01 Mar 2015 17:01:10 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ri9si1322622pdb.1.2015.03.01.17.01.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Feb 2019 03:13:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Mar 2015 17:01:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L0P2prmn;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id y1so13627527pgk.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Feb 2019 03:13:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=G2u/uED3mttMBrQvMnapkRxoSiRcHkcOohb32bkzLuU=;
-        b=L0P2prmndrTO8Ni3SgmztK/2HwPxwxX64zuikmhQhYkiPjBHAJ3kbE6TuwshKtOWAN
-         iPK/kUE0dQKlIt3wQs4MkJeNpLoGGJbTfAVI07RoUbqgPGTGR39N3TtZScOIaNftOOJu
-         83KAEi+HuElrWSqSi+PuaYfIi2dEBXSDxlSwg8N22w8wUkrI0jhpxYoi5akE+tbGhRsV
-         4yNmy6KcsjyNLxSmuFwr7I7GDKLmcOwgq4MWsEtf0//W8omhDJfg7XQT9BoKsmDsWEfF
-         CEE918e3Mr+jEtSOQVeEKIUX+E124FJ4Cof+IxNuhljAJimhQpc8shM9S177Lp7K1byu
-         bS5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=G2u/uED3mttMBrQvMnapkRxoSiRcHkcOohb32bkzLuU=;
-        b=YTPxtooZ5YC1iHi+O/45/qr9uyaMzrAEJ7cSh0WufndAOMx0FZE28BnGCizZ84+S8/
-         gm+zXoGaU+YYwwWGbbtf8vQkGvs62oDjGGxbgQ+iMSbNsk09GFhAwRMa0x9BjCHKDYpt
-         p2sR/Sx+jSrvGKTPvDbCFuocPLLbNukoMEcs010VwFyxyCK6JbuhHnMEzJ+Z5+PB3+xr
-         UOmhoKe3aGvkBDwLy6dkqiWhVivuZqbB3kV9sq4rkyVd3ygUQ/PYHu2W71qc0gx5I7Fu
-         U6RFRONJrge2Slh8ApAORGVPo4R4YQWo3mH8yJzJ0nVUVSEFyBVTl35Hlbx4nvdO1xHm
-         Xtmw==
-X-Gm-Message-State: AHQUAuYqZuy9sCiXUnEOpKg9c5HJwkwxLEWqQYd3HXs3UBh5iOtZ0YT6
-	SdxwlKVKMMrh//XL+ripShv14NjSOp4=
-X-Received: by 2002:aa7:8042:: with SMTP id y2mr39799876pfm.39.1550747588330;
-        Thu, 21 Feb 2019 03:13:08 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanusree-MacBookAir ([183.83.84.116])
-        by smtp.gmail.com with ESMTPSA id x1sm25213603pge.73.2019.02.21.03.13.06
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Feb 2019 03:13:07 -0800 (PST)
-Date: Thu, 21 Feb 2019 16:43:04 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/4] Add SPDX License Identifiers
-Message-ID: <20190221111304.GA29010@bhanusree-MacBookAir>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id CF6C64D3;
+	Mon,  2 Mar 2015 01:01:09 +0000 (UTC)
+Date: Sun, 1 Mar 2015 17:01:09 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: emxx_udc: Remove argument
+ test from function
+Message-ID: <20150302010109.GA21644@kroah.com>
+References: <1425244693-8713-1-git-send-email-hamohammed.sa@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <1425244693-8713-1-git-send-email-hamohammed.sa@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This series cleans the following checkpatch.pl issues in various files:
+On Mon, Mar 02, 2015 at 12:18:13AM +0300, Haneen Mohammed wrote:
+> This patch removes the test statement for an argument to  _nbu2ss_pullup function,
+> for it can't be null due to previous derefrences when its called.
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> ---
+>  drivers/staging/emxx_udc/emxx_udc.c | 5 -----
+>  1 file changed, 5 deletions(-)
+> 
+> diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+> index 0bfd268..b2a89a6 100644
+> --- a/drivers/staging/emxx_udc/emxx_udc.c
+> +++ b/drivers/staging/emxx_udc/emxx_udc.c
+> @@ -2257,11 +2257,6 @@ static int _nbu2ss_pullup(struct nbu2ss_udc *udc, int is_on)
+>  {
+>  	u32	reg_dt;
+>  
+> -	if (!udc) {
+> -		pr_err("udc: %s, bad param\n", __func__);
+> -		return -EINVAL;
+> -	}
+> -
+>  	if (udc->vbus_active == 0)
+>  		return -ESHUTDOWN;
+>  
 
-"WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
-
-Bhanusree Pola (4):
-  staging: netlogic: Add SPDX license Identifier
-  Staging: netlogic: Add SPDX License Identifier
-  Staging: netlogic: Add SPDX License Identifier
-  Staging: netlogic: Add SPDX License Identifier
-
- drivers/staging/netlogic/platform_net.c | 1 +
- drivers/staging/netlogic/platform_net.h | 1 +
- drivers/staging/netlogic/xlr_net.c      | 1 +
- drivers/staging/netlogic/xlr_net.h      | 1 +
- 4 files changed, 4 insertions(+)
-
--- 
-2.17.1
-
+Does not apply :(
 
