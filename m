@@ -1,146 +1,74 @@
 X-GM-THRID: 6035575144448
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,44622202b52d33bf
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.19.100 with SMTP id d4mr4015050lae.7.1425321922955;
-        Mon, 02 Mar 2015 10:45:22 -0800 (PST)
+X-Received: by 10.194.11.70 with SMTP id o6mr4021466wjb.6.1425321869096;
+        Mon, 02 Mar 2015 10:44:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.197.2 with SMTP id iq2ls472987lac.100.gmail; Mon, 02 Mar
- 2015 10:45:22 -0800 (PST)
-X-Received: by 10.152.36.132 with SMTP id q4mr4016062laj.6.1425321922462;
-        Mon, 02 Mar 2015 10:45:22 -0800 (PST)
+Received: by 10.180.187.106 with SMTP id fr10ls615114wic.8.canary; Mon, 02 Mar
+ 2015 10:44:28 -0800 (PST)
+X-Received: by 10.180.89.194 with SMTP id bq2mr2419556wib.4.1425321868739;
+        Mon, 02 Mar 2015 10:44:28 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id i7si724329wif.0.2015.03.02.10.45.22
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id ta1si720319wic.1.2015.03.02.10.44.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 10:45:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Mon, 02 Mar 2015 10:44:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id x12so35308224wgg.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 10:45:22 -0800 (PST)
+Received: by mail-wi0-x232.google.com with SMTP id bs8so17225637wib.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 10:44:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=5T94nqxrgZ6+kSPoOUVs0Z2ZG93R5o6EsNrFSjd11AY=;
-        b=KWe4zPvtKa0F2M86Dn9ffbUh6HktTPTv854v1JUauFTflo8PvHFH98GEXFQZhyjBTs
-         qTy/ESEZr+d3nuEIy+bDVQ/lhpdgRnFcCfYoJl5Wvu0b2kDfmtTNvhPEvoTw/JzQgnFI
-         gL77ZSDRbuqPHyKSA20Wli3mIqj/Ql7PKdwsLx3D+NdZb9mecmYfY5+1cdzmMel6kxIS
-         zd7gNkBYbB5dr5SmzDerq18x0dmyu5pnEidYVDotiOZPdZTDXFGM6AMLqIVcOZb8MPTX
-         yyUBy+UfWb1Wdg/HDXdlQPL7xABzP2qXsvVpyIR4OyRWJUroig9mQ8cuwbmxeG5N+3EJ
-         HTrw==
-X-Received: by 10.180.90.176 with SMTP id bx16mr38457375wib.14.1425321922250;
-        Mon, 02 Mar 2015 10:45:22 -0800 (PST)
+        bh=tLMKuHoARfIBpWhR0RT95kgKifFNmSQYCUSdz71FXZc=;
+        b=zaqcw0ol8M3icARBlQ+zHiYMJb/Mnd97IjSKxYyvpscagKoPYaR7qUi5D60ou2bJsw
+         xobzSDXvhsU0nYcQ2LtE2EgA20XN4t/ZGHqI42MYi9VCSukPraG/pt4lIoPcet93rO+q
+         DbDGeCyZROgmXAqNzWY35eC4l1jiY1F51CFXTxMBOXl67Yt6zFdz2fNK3Mw3zMh205wA
+         iQjdHFZUf47wHbzPuohkUYVE83LUg/Kuhqjwqwu5Yo5H/OqW6iTnYPfQ1V7xR/9t26pj
+         MPyU4R3YsnJ61nk5vZgMLtS136APOMKOArhykIwT4REQb+hRK5b42NO8SQiVKZudddco
+         d2fw==
+X-Received: by 10.180.85.103 with SMTP id g7mr37608328wiz.19.1425321868637;
+        Mon, 02 Mar 2015 10:44:28 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id s19sm17190240wik.18.2015.03.02.10.45.21
+        by mx.google.com with ESMTPSA id l6sm2070302wjx.33.2015.03.02.10.44.27
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 10:45:21 -0800 (PST)
+        Mon, 02 Mar 2015 10:44:27 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 95532621FB; Mon,  2 Mar 2015 21:45:24 +0300 (AST)
+	id C6CC9621FB; Mon,  2 Mar 2015 21:44:24 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v10 4/4] Staging: emxx_udc: Clean dev_err() logging
-Date: Mon,  2 Mar 2015 21:45:23 +0300
-Message-Id: <1425321923-4125-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH v10 3/4] Staging: emxx_udc: Remove custom printk macro ERR
+Date: Mon,  2 Mar 2015 21:38:22 +0300
+Message-Id: <1425321502-29424-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1425320718-28979-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425320718-28979-1-git-send-email-hamohammed.sa@gmail.com>
 
-This patch removes  __func__ from dev_err.
-dev_err includes the function name in the log printout, so there is no
-need to include it manually.
+This patch removes custom printk macro ERR.
+All the calls to this macro were replaced by de_err and pr_err.
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
-v10: nothing. 
+v9 and 10: nothing
 
- drivers/staging/emxx_udc/emxx_udc.c | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+ drivers/staging/emxx_udc/emxx_udc.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index 35dc1c4..cfe55dc 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -2632,7 +2632,7 @@ static int nbu2ss_ep_enable(
- 	if ((udc->driver == NULL)
- 		|| (udc->gadget.speed == USB_SPEED_UNKNOWN)) {
+diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+index 57727c6..c19168f 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.h
++++ b/drivers/staging/emxx_udc/emxx_udc.h
+@@ -642,6 +642,5 @@ union usb_reg_access {
+ };
  
--		dev_err(ep->udc->dev, " *** %s, udc !!\n", __func__);
-+		dev_err(ep->udc->dev, "  udc !!\n");
- 		return -ESHUTDOWN;
- 	}
+ /*-------------------------------------------------------------------------*/
+-#define ERR(stuff...)		printk(KERN_ERR "udc: " stuff)
  
-@@ -2773,8 +2773,7 @@ static int nbu2ss_ep_queue(
- 	}
- 
- 	if (unlikely(!udc->driver)) {
--		dev_err(udc->dev, "%s, bogus device state %p\n", __func__,
--				udc->driver);
-+		dev_err(udc->dev, "bogus device state %p\n", udc->driver);
- 		return -ESHUTDOWN;
- 	}
- 
-@@ -2813,8 +2812,7 @@ static int nbu2ss_ep_queue(
- 
- 		result = _nbu2ss_start_transfer(udc, ep, req, FALSE);
- 		if (result < 0) {
--			dev_err(udc->dev, " *** %s, result = %d\n", __func__,
--					result);
-+			dev_err(udc->dev, " ** result = %d\n", result);
- 			list_del(&req->queue);
- 		} else if ((ep->epnum > 0) && (ep->direct == USB_DIR_OUT)) {
- #ifdef USE_DMA
-@@ -2904,7 +2902,7 @@ static int nbu2ss_ep_set_halt(struct usb_ep *_ep, int value)
- 
- 	udc = ep->udc;
- 	if (!udc) {
--		dev_err(ep->udc->dev, " *** %s, bad udc\n", __func__);
-+		dev_err(ep->udc->dev, " *** bad udc\n");
- 		return -EINVAL;
- 	}
- 
-@@ -2958,7 +2956,7 @@ static int nbu2ss_ep_fifo_status(struct usb_ep *_ep)
- 
- 	udc = ep->udc;
- 	if (!udc) {
--		dev_err(ep->udc->dev, "%s, bad udc\n", __func__);
-+		dev_err(ep->udc->dev, "bad udc\n");
- 		return -EINVAL;
- 	}
- 
-@@ -3006,7 +3004,7 @@ static void  nbu2ss_ep_fifo_flush(struct usb_ep *_ep)
- 
- 	udc = ep->udc;
- 	if (!udc) {
--		dev_err(ep->udc->dev, "%s, bad udc\n", __func__);
-+		dev_err(ep->udc->dev, "bad udc\n");
- 		return;
- 	}
- 
-@@ -3056,7 +3054,7 @@ static int nbu2ss_gad_get_frame(struct usb_gadget *pgadget)
- 
- 	udc = container_of(pgadget, struct nbu2ss_udc, gadget);
- 	if (udc == NULL) {
--		dev_err(&pgadget->dev, "%s, udc == NULL\n", __func__);
-+		dev_err(&pgadget->dev, "udc == NULL\n");
- 		return -EINVAL;
- 	}
- 
-@@ -3086,7 +3084,7 @@ static int nbu2ss_gad_wakeup(struct usb_gadget *pgadget)
- 
- 	udc = container_of(pgadget, struct nbu2ss_udc, gadget);
- 	if (udc == NULL) {
--		dev_err(&pgadget->dev, "%s, udc == NULL\n", __func__);
-+		dev_err(&pgadget->dev, "udc == NULL\n");
- 		return -EINVAL;
- 	}
- 
+ #endif  /* _LINUX_EMXX_H */
 -- 
 1.9.1
 
