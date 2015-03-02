@@ -1,70 +1,54 @@
-X-GM-THRID: 5127900495872
-X-Received: by 10.112.167.98 with SMTP id zn2mr2663622lbb.6.1425133689790;
-        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
+X-GM-THRID: 4683701682176
+X-Received: by 10.67.29.231 with SMTP id jz7mr24824556pad.9.1425256184696;
+        Sun, 01 Mar 2015 16:29:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.45.68 with SMTP id k4ls300941lam.53.gmail; Sat, 28 Feb
- 2015 06:28:09 -0800 (PST)
-X-Received: by 10.112.40.81 with SMTP id v17mr2716417lbk.5.1425133689394;
-        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
-        by gmr-mx.google.com with ESMTPS id ev8si303229wib.3.2015.02.28.06.28.09
+Received: by 10.182.38.197 with SMTP id i5ls589544obk.62.gmail; Sun, 01 Mar
+ 2015 16:29:44 -0800 (PST)
+X-Received: by 10.182.78.69 with SMTP id z5mr24374669obw.4.1425256184499;
+        Sun, 01 Mar 2015 16:29:44 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id xj4si1280588pbc.2.2015.03.01.16.29.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
+        Sun, 01 Mar 2015 16:29:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wiwl15 with SMTP id l15so5940322wiw.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 06:28:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=iELN7d40XUoQ+ZrMStXdGh/CjMleTMYvY1iPwnucT3M=;
-        b=ttnpfXOnerDDvcHdlJdXAwN4x4ZG7aHi9tpVI6HBP2RlyiZOQK/79maQf/ZKS8/e13
-         AW5i8D0GNVHqvS0drDhxp8+Q6fWQmYWIMGenYlk9jG0jxPioVU+CiT4OE9Ds6rrO2j3d
-         pRQ3OI4gA0vts6/7h0dyPThXktoNHTfrWXj9Rj5yPoBubdqR08Kzl37yGR3uHbp2SEXk
-         JZ5TwsQ32EmZQsfogIYs71HQ6l20XcuJBBqy6Raody0T2jhiaU8K7nkW7Q8i5UIRGdOH
-         Vci/rmNboNi+Froo625j55zLoHpBxCWTJSp9DhnY12T6PoOUOftM6qvQwAfI3ehinkri
-         VYDA==
-X-Received: by 10.180.8.65 with SMTP id p1mr17253309wia.42.1425133689292;
-        Sat, 28 Feb 2015 06:28:09 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id s5sm7851875wia.1.2015.02.28.06.28.07
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Feb 2015 06:28:08 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: lustre: __aligned(size) is preferred over __attribute__((aligned(size)))
-Date: Sat, 28 Feb 2015 16:28:01 +0200
-Message-Id: <1425133681-4841-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (c-24-22-230-10.hsd1.wa.comcast.net [24.22.230.10])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 37C04475;
+	Mon,  2 Mar 2015 00:29:44 +0000 (UTC)
+Date: Sun, 1 Mar 2015 16:29:44 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: lustre: lov: Add
+ blank line after declarations
+Message-ID: <20150302002944.GA28370@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1425059607-13367-1-git-send-email-haticeerturk27@gmail.com>
+ <1425061227-13966-1-git-send-email-haticeerturk27@gmail.com>
+ <1425061706-14179-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the checkpatch.pl warning in the drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
+On Fri, Feb 27, 2015 at 08:28:26PM +0200, Hatice ERT�RK wrote:
+> The following patch fixes the checkpatch.pl warning:
+> drivers/staging/lustre/lustre/lov/lov_object.c WARNING: Missing a blank
+> line after declarations
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/lov/lov_object.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+3 patches, all with the same subject: yet they do different things :(
 
-diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
-index f19a121..4688770 100644
---- a/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
-+++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_kernelcomm.h
-@@ -58,7 +58,7 @@ struct kuc_hdr {
- 	__u8  kuc_flags;
- 	__u16 kuc_msgtype;    /* Message type or opcode, transport-specific */
- 	__u16 kuc_msglen;     /* Including header */
--} __attribute__((aligned(sizeof(__u64))));
-+} __aligned(sizeof(__u64));
- 
- #define KUC_CHANGELOG_MSG_MAXSIZE (sizeof(struct kuc_hdr)+CR_MAXSIZE)
- 
--- 
-1.9.1
+Please fix up and resend.
 
+thanks,
+
+greg k-h
 
