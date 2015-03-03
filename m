@@ -1,75 +1,83 @@
 X-GM-THRID: 6155043602432
-X-Received: by 10.112.189.227 with SMTP id gl3mr4560278lbc.2.1425385372608;
-        Tue, 03 Mar 2015 04:22:52 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,30cbcfb1097dadf6
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.96.234 with SMTP id r70mr29705862yhf.39.1425368369153;
+        Mon, 02 Mar 2015 23:39:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.73.103 with SMTP id k7ls103759wiv.5.gmail; Tue, 03 Mar
- 2015 04:22:51 -0800 (PST)
-X-Received: by 10.180.160.176 with SMTP id xl16mr2925618wib.6.1425385371363;
-        Tue, 03 Mar 2015 04:22:51 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id by11si906015wib.1.2015.03.03.04.22.51
+Received: by 10.50.7.72 with SMTP id h8ls1280030iga.24.canary; Mon, 02 Mar
+ 2015 23:39:29 -0800 (PST)
+X-Received: by 10.70.123.200 with SMTP id mc8mr19331399pdb.1.1425368368975;
+        Mon, 02 Mar 2015 23:39:28 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
+        by gmr-mx.google.com with ESMTPS id m1si12889pdc.0.2015.03.02.23.39.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 04:22:51 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Mar 2015 23:39:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,681,1418079600"; 
-   d="scan'208";a="101934262"
-Received: from unknown (HELO hadrien.local) ([207.96.227.9])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 03 Mar 2015 13:22:50 +0100
-Date: Tue, 3 Mar 2015 07:22:49 -0500 (EST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Vaishali Thakkar <vthakkar1994@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Fix duplicate
- conditional branch
-In-Reply-To: <1bdb9ff234b262793c0537cc9e11cf087202e61a.1425367678.git.vthakkar1994@gmail.com>
-Message-ID: <alpine.DEB.2.10.1503030722380.2723@hadrien>
-References: <cover.1425367678.git.vthakkar1994@gmail.com> <1bdb9ff234b262793c0537cc9e11cf087202e61a.1425367678.git.vthakkar1994@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pdjp10 with SMTP id p10so9154261pdj.10
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 23:39:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=aOZWywbc9PVoN+aJX10i4SDiFp06deJmxfykuTF2t7E=;
+        b=KxMRvtwiY/FZgx24bpNfF28WksD6gUBCD/YsNsoEPfthOvgfK6yD8G3L/O2O4mDaAG
+         N5sYrOOS0YsKl444guAAS7XmhGTgvm+HsplPabArx9y1u2DEpvUpCi7tI+IWPs7S5o4+
+         TAVvdeeDhungurJfONmZfRKVH3aMkBAxw2neQsBPzrX3BwASGblCIyVR3PvAVT7JtuQY
+         0dPHUiGeL1+NtkTno2Nj25FQ2SjATXSvNq5KTS+BVMbtxGppOFSmMj9Oort0ROcrK0hO
+         XpWnNfaLyZawCC6yyy+MfvAruN36ishJIo5ZJ4x1eBZTl7zl+jzpwdbQKWpasLk37w3O
+         7oWw==
+X-Received: by 10.66.154.162 with SMTP id vp2mr52869555pab.73.1425368368886;
+        Mon, 02 Mar 2015 23:39:28 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([43.249.235.152])
+        by mx.google.com with ESMTPSA id ca4sm47901pbb.24.2015.03.02.23.39.26
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 02 Mar 2015 23:39:27 -0800 (PST)
+Date: Tue, 3 Mar 2015 13:09:23 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8192u: Fix duplicate conditional branch
+Message-ID: <1bdb9ff234b262793c0537cc9e11cf087202e61a.1425367678.git.vthakkar1994@gmail.com>
+References: <cover.1425367678.git.vthakkar1994@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1425367678.git.vthakkar1994@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tue, 3 Mar 2015, Vaishali Thakkar wrote:
+Replace duplicate branch with correct value. This branch
+is supposed to work for low thresh value.
 
-> Replace duplicate branch with correct value. This branch
-> is supposed to work for low thresh value.
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_dm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-How did you find the problem?
+diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
+index 7199616..5a01b7d 100644
+--- a/drivers/staging/rtl8192u/r8192U_dm.c
++++ b/drivers/staging/rtl8192u/r8192U_dm.c
+@@ -1628,8 +1628,8 @@ void dm_change_dynamic_initgain_thresh(struct net_device *dev, u32 dm_type,
+ 		dm_digtable.rssi_low_thresh = dm_value;
+ 	} else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_HIGH) {
+ 		dm_digtable.rssi_high_power_highthresh = dm_value;
+-	} else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_HIGH) {
+-		dm_digtable.rssi_high_power_highthresh = dm_value;
++	} else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_LOW) {
++		dm_digtable.rssi_high_power_lowthresh = dm_value;
+ 	} else if (dm_type == DIG_TYPE_ENABLE) {
+ 		dm_digtable.dig_state		= DM_STA_DIG_MAX;
+ 		dm_digtable.dig_enable_flag	= true;
+-- 
+1.9.1
 
-julia
-
-> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_dm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-> index 7199616..5a01b7d 100644
-> --- a/drivers/staging/rtl8192u/r8192U_dm.c
-> +++ b/drivers/staging/rtl8192u/r8192U_dm.c
-> @@ -1628,8 +1628,8 @@ void dm_change_dynamic_initgain_thresh(struct net_device *dev, u32 dm_type,
->  		dm_digtable.rssi_low_thresh = dm_value;
->  	} else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_HIGH) {
->  		dm_digtable.rssi_high_power_highthresh = dm_value;
-> -	} else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_HIGH) {
-> -		dm_digtable.rssi_high_power_highthresh = dm_value;
-> +	} else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_LOW) {
-> +		dm_digtable.rssi_high_power_lowthresh = dm_value;
->  	} else if (dm_type == DIG_TYPE_ENABLE) {
->  		dm_digtable.dig_state		= DM_STA_DIG_MAX;
->  		dm_digtable.dig_enable_flag	= true;
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1bdb9ff234b262793c0537cc9e11cf087202e61a.1425367678.git.vthakkar1994%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
