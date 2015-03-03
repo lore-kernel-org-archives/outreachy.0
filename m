@@ -1,81 +1,62 @@
-X-GM-THRID: 6467884154880
-X-Received: by 10.112.126.194 with SMTP id na2mr375584lbb.18.1425449877549;
-        Tue, 03 Mar 2015 22:17:57 -0800 (PST)
+X-GM-THRID: 6337667792896
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d1e72ee22ef5686c
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.63.208 with SMTP id i16mr161449wjs.2.1425419604930;
+        Tue, 03 Mar 2015 13:53:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.18.225 with SMTP id z1ls128698lad.109.gmail; Tue, 03 Mar
- 2015 22:17:57 -0800 (PST)
-X-Received: by 10.112.35.135 with SMTP id h7mr346578lbj.23.1425449877002;
-        Tue, 03 Mar 2015 22:17:57 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x22c.google.com (mail-we0-x22c.google.com. [2a00:1450:400c:c03::22c])
-        by gmr-mx.google.com with ESMTPS id o3si1021718wib.2.2015.03.03.22.17.56
+Received: by 10.152.4.131 with SMTP id k3ls103404lak.21.gmail; Tue, 03 Mar
+ 2015 13:53:24 -0800 (PST)
+X-Received: by 10.112.219.102 with SMTP id pn6mr150919lbc.12.1425419604526;
+        Tue, 03 Mar 2015 13:53:24 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r6si197716wix.0.2015.03.03.13.53.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 22:17:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) client-ip=2a00:1450:400c:c03::22c;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 03 Mar 2015 13:53:24 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22c.google.com with SMTP id k11so44163016wes.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 22:17:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=1smNQLriKWQzFFeRrWOJX2jsq6phsm7PZoTGo+0p3BA=;
-        b=rT2JlQm2bz8qOykO0TLT3EIEgbdokKB4fZVtByCCx50E8+y2OkhCVt3PNJugpynu00
-         qtm3n5OOQxam9eN7vzONXZzcjghkz2VudsrylRhqouJftkk1mCY4+xHsot10Z/282cHk
-         y6W8wdhmd9+h5VqtW93Ru2Wc/BHaW1ZRwGWouVSNUCm4sii20o4DNgUX4McN0utcUDHE
-         Cz/Tny8jSp+vYWmOjx2timJj9dgUccHmKck5bz2Po9PWEEHXEQME+VcU7l8CEZLz+uJy
-         8u3hOPuXzooyKTxeWgCSK7aipQT1ZRiWhzj+TrNslxued3jtmghTZL6eL6Lbr2iwxiRG
-         QD9w==
-X-Received: by 10.194.122.232 with SMTP id lv8mr4330191wjb.146.1425449876909;
-        Tue, 03 Mar 2015 22:17:56 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id dm6sm5510167wib.22.2015.03.03.22.17.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 22:17:56 -0800 (PST)
-Date: Wed, 4 Mar 2015 08:17:50 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/5] remove extra parentheses around left bit shift operations
-Message-ID: <cover.1425449681.git.mahfouz.saif.elyazal@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,683,1418079600"; 
+   d="scan'208";a="102002405"
+Received: from unknown (HELO [132.207.219.164]) ([132.207.219.164])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 03 Mar 2015 22:53:23 +0100
+Date: Tue, 3 Mar 2015 16:53:21 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Change from // to
+ /* */
+In-Reply-To: <1425416792-8138-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503031651450.2677@hadrien>
+References: <1425416792-8138-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Removes extra parentheses around bitwise right shift operations using
-coccinelle. The cases handled here are when resultant values are
-assigned to variables.
+> +/* -----------------------------------------------------------------------------
+> + Procedure:    Check whether main code is download OK. If OK, turn on CPU
+> +
+> + Description:   CPU register locates in different page against general register.
+> +			    Switch to CPU register in the begin and switch back before return
+> +
+> +
+> + Arguments:   The pointer of the adapter
+> +
+> + Returns:
+> +        NDIS_STATUS_FAILURE - the following initialization process should be terminated
+> +        NDIS_STATUS_SUCCESS - if firmware initialization process success
+> +----------------------------------------------------------------------------- */
 
-Aya Mahfouz (5):
-  staging: lustre: remove extra parentheses around left bit shift
-    operations
-  staging: ozwpan: remove extra parentheses around left bit shift
-    operations
-  staging: rts5208: remove extra parentheses around left bit shift
-    operation
-  staging: slicoss: remove extra parentheses around left bit shift
-    operations
-  staging: unisys: virthba: remove extra parentheses around left bit
-    shift operations
+This is not the standard way ofmaking a multi-line comment.  It should have
+* down the left side.  You should be able to find an example at the top of
+any file.
 
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c | 6 +++---
- drivers/staging/ozwpan/ozproto.c                              | 2 +-
- drivers/staging/rts5208/rtsx_transport.c                      | 2 +-
- drivers/staging/slicoss/slicoss.c                             | 2 +-
- drivers/staging/unisys/virthba/virthba.c                      | 2 +-
- 5 files changed, 7 insertions(+), 7 deletions(-)
+In some of the other changes there are comments on code.  It has been
+stated that such code should just be discarded.
 
--- 
-1.9.3
-
-
--- 
-Kind Regards,
-Aya Saif El-yazal Mahfouz
+julia
 
