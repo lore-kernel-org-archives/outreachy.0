@@ -3,98 +3,86 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,db883bf8dd7e9dae
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.147.35 with SMTP id th3mr4108879lbb.15.1425373810339;
-        Tue, 03 Mar 2015 01:10:10 -0800 (PST)
+X-Received: by 10.112.219.102 with SMTP id pn6mr4193759lbc.12.1425358060544;
+        Mon, 02 Mar 2015 20:47:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.45.98 with SMTP id l2ls11643lam.28.gmail; Tue, 03 Mar 2015
- 01:10:09 -0800 (PST)
-X-Received: by 10.112.145.133 with SMTP id su5mr4320024lbb.17.1425373809816;
-        Tue, 03 Mar 2015 01:10:09 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id i8si60099wif.1.2015.03.03.01.10.09
+Received: by 10.152.207.101 with SMTP id lv5ls524699lac.22.gmail; Mon, 02 Mar
+ 2015 20:47:40 -0800 (PST)
+X-Received: by 10.112.167.98 with SMTP id zn2mr4167312lbb.6.1425358060085;
+        Mon, 02 Mar 2015 20:47:40 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wg0-x22f.google.com (mail-wg0-x22f.google.com. [2a00:1450:400c:c00::22f])
+        by gmr-mx.google.com with ESMTPS id i8si25056wif.1.2015.03.02.20.47.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 01:10:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        Mon, 02 Mar 2015 20:47:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) client-ip=2a00:1450:400c:c00::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id l15so20972951wiw.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 01:10:09 -0800 (PST)
+Received: by wghl18 with SMTP id l18so37570212wgh.8
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 20:47:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=T84x8sQZFQA+ydu4+Px0CgUDlQIgw+J0WIuS86o46W4=;
-        b=Uks+2/SKaYaRXH8d0wJ/ysFMtBC+bpy3GK7qr6OQUqCwdQwh5fZbX863BRq30F3qdf
-         WrKp2u1CcjS602WpDLq+ZrYKFr+/9GU7WHY/cX2EM25khDbEtfSP0XNNsEwG4PwFRqE3
-         vVrB4YnScVLTPEiFM3eLlSy3/cmLHKgml3RfzEeT45bEidNy4CyxjKSqtmjG5FHJPWyK
-         DpmrTWJlh3mqRcdZ10nZGZ2IAU9abZpEpN3DD/gJSh1StkXiEAak0e0ZpoGZMNqgIHAh
-         a6qVJRNFGnEf2rmke/Rmpd3syDuxRFWDHxcxeW+txy3aO2EqEr9/wEInfQdL5qhP6Is7
-         ohKA==
-MIME-Version: 1.0
-X-Received: by 10.180.87.106 with SMTP id w10mr43408940wiz.62.1425373809698;
- Tue, 03 Mar 2015 01:10:09 -0800 (PST)
-Received: by 10.28.3.68 with HTTP; Tue, 3 Mar 2015 01:10:09 -0800 (PST)
-In-Reply-To: <1c668dc263a5d3390ae8d53e10493c40c79a314e.1425356586.git.mahfouz.saif.elyazal@gmail.com>
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=7mlf5pvExxsWyADimR0QkMYhRHW9bvVMzegReon2ps0=;
+        b=IWQDDoX1gbrIanHBs8kqnjWo+h0kKwQCl4ZQKe7fKUlyeckr56VKziiA9Pvvf79Jyi
+         8wt13y6vWdM9s3QGqFjgCwKcrw0jvnojdkfy5ur6zjoUCWGOTTkY+A7CUCLIr4nApoiw
+         cN1YHTPsvOcjFRqE92131ZpmFbgPxMWnYBdbtMeCbc6uqgIdIBNco7YMTEFynv9O4gvd
+         pV6RCAIF1rr1u7wrkJ6qCPmB181nafkL9sodOnuLabEg7ae7mz/BfuB86oEryycFeNlO
+         IHEYWzLVbktNzAor3NhhYitQtWLhKvEmR7G9HF0WYBojz4ILK+IBJ9lKVRtjZMK04aOb
+         Vzqw==
+X-Received: by 10.180.85.70 with SMTP id f6mr41396436wiz.22.1425358060001;
+        Mon, 02 Mar 2015 20:47:40 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.214.4])
+        by mx.google.com with ESMTPSA id lj13sm675566wic.9.2015.03.02.20.47.38
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 02 Mar 2015 20:47:39 -0800 (PST)
+Date: Tue, 3 Mar 2015 06:47:37 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] staging: iio: meter: adjust function call to be in one
+ line
+Message-ID: <55796744480c8b6f72e12a50105b5db43b5bfa7b.1425356586.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425356586.git.mahfouz.saif.elyazal@gmail.com>
-	<1c668dc263a5d3390ae8d53e10493c40c79a314e.1425356586.git.mahfouz.saif.elyazal@gmail.com>
-Date: Tue, 3 Mar 2015 11:10:09 +0200
-Message-ID: <CAEnQRZAHhM+MT2pOeS_4KTFRN3NtNvrmn_enPU4QQaZ4+BtBUQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: iio: meter: add check on
- return variables
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1425356586.git.mahfouz.saif.elyazal@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tue, Mar 3, 2015 at 6:47 AM, Aya Mahfouz
-<mahfouz.saif.elyazal@gmail.com> wrote:
-> Adds checks on variables that are used to return values. If
-> the value is less than zero, this indicates that an error
-> occured and hence a message is printed through dev_err.
->
-> Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-> ---
->  drivers/staging/iio/meter/ade7758_core.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
-> index 70e96b2..029d223 100644
-> --- a/drivers/staging/iio/meter/ade7758_core.c
-> +++ b/drivers/staging/iio/meter/ade7758_core.c
-> @@ -307,10 +307,9 @@ static int ade7758_reset(struct device *dev)
->                         ADE7758_OPMODE,
->                         &val);
->         val |= 1 << 6; /* Software Chip Reset */
-> -       ret = ade7758_spi_write_reg_8(dev,
-> -                       ADE7758_OPMODE,
-> -                       val);
-> -
-> +       ret = ade7758_spi_write_reg_8(dev, ADE7758_OPMODE, val);
-> +       if (ret < 0)
-> +               dev_err(dev, "failed to reset the device");
->         return ret;
->  }
+Adjusted a function call to be in one line since it did not
+exceed the 80 characters limit.
 
-While at it, you could also check the return value for ade7758_spi_read_reg_8
-call early in this function.
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+---
+ drivers/staging/iio/meter/ade7758_core.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
->
-> @@ -451,7 +450,8 @@ static int ade7758_stop_device(struct device *dev)
->         ret = ade7758_spi_write_reg_8(dev,
->                         ADE7758_OPMODE,
->                         val);
-> -
-> +       if (ret < 0)
-> +               dev_err(dev, "failed to stop device");
->         return ret;
->  }
+diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
+index 029d223..950bc50 100644
+--- a/drivers/staging/iio/meter/ade7758_core.c
++++ b/drivers/staging/iio/meter/ade7758_core.c
+@@ -447,9 +447,7 @@ static int ade7758_stop_device(struct device *dev)
+ 			ADE7758_OPMODE,
+ 			&val);
+ 	val |= 7 << 3;  /* ADE7758 powered down */
+-	ret = ade7758_spi_write_reg_8(dev,
+-			ADE7758_OPMODE,
+-			val);
++	ret = ade7758_spi_write_reg_8(dev, ADE7758_OPMODE, val);
+ 	if (ret < 0)
+ 		dev_err(dev, "failed to stop device");
+ 	return ret;
+-- 
+1.9.3
 
-Ditto.
 
-thanks,
-Daniel.
+-- 
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
