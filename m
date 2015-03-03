@@ -1,53 +1,49 @@
 X-GM-THRID: 6210099085312
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,bc960043b44123ba
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.181.13.236 with SMTP id fb12mr239918wid.1.1425387631728;
-        Tue, 03 Mar 2015 05:00:31 -0800 (PST)
+X-Received: by 10.152.19.100 with SMTP id d4mr4537313lae.7.1425387593052;
+        Tue, 03 Mar 2015 04:59:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.106.101 with SMTP id gt5ls111753wib.28.gmail; Tue, 03 Mar
- 2015 05:00:29 -0800 (PST)
-X-Received: by 10.180.182.44 with SMTP id eb12mr2959636wic.4.1425387629872;
-        Tue, 03 Mar 2015 05:00:29 -0800 (PST)
+Received: by 10.152.43.169 with SMTP id x9ls32520lal.108.gmail; Tue, 03 Mar
+ 2015 04:59:52 -0800 (PST)
+X-Received: by 10.152.19.100 with SMTP id d4mr4537299lae.7.1425387592455;
+        Tue, 03 Mar 2015 04:59:52 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id l8si882694wia.0.2015.03.03.05.00.29
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id o3si878217wib.2.2015.03.03.04.59.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 05:00:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Tue, 03 Mar 2015 04:59:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id r20so22576688wiv.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 05:00:29 -0800 (PST)
+Received: by mail-wi0-x22b.google.com with SMTP id z2so3153762wiv.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 04:59:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=w94dCcmTM86xfzel5cw1UEVEL6V+zuncrV2mMIWb5bA=;
-        b=SYNc2PCu0LY6iK/IPghuQUr3X9rhhYnPtuXylte57vKKwM4yiA2tR16LFt0m8c82CU
-         VIOM3kod+nbgJo7pK4iSbWAdHWOg03DZfh3l9ZQ0Sv6Ze/zRjJjVrY+TvFq8N39OAI9P
-         EJUoz2R3SOniZSJ88+zRobHcXyH4nf+WtnUgAywW84V41y5gEVaU509zM6HufoIGpubH
-         C0iYnzyVp2Lg4UjZZWLzKKP6NbIlR6LwIsB0/oMSZf8mKNg1cDLBvPPQqTsCd5EzR21E
-         Hesu19wMtRFtAV2hHOkxLCebJ43B7Ls+3FVb2TF6YCHLsZr4wyManW3JA0EuPXD0G7B3
-         fZzQ==
-X-Received: by 10.194.86.135 with SMTP id p7mr70089084wjz.89.1425387629290;
-        Tue, 03 Mar 2015 05:00:29 -0800 (PST)
+        bh=yB6VRbuS3rzchOPSxl1dMlDb9975Cc0hqSZqYbjEjfw=;
+        b=v0s90baVyLn3cDHMYDHkqYPSRVtNVKTLSNSJsCGt28RKZT/F7lrzE0+w3O9OU5miP9
+         pY1+uER7SOrO0Ty9DEOQ5wJ6W2j9oML5k6jJKvJ6x5wrPHZ+oCamzXOmOzkhvTpOIth8
+         d718ao4gEppsbavy4ILt+NDQiH2uP5veLoE7cPbITVGYO3ToJByZzllG82J4/Ov/rpry
+         u5orzeMq5lMb0e6yIRJRJPLKSoDYOR2CJ3E6Oc/hnK5YmKM8IoLA1181KzzDE34uFCSe
+         4JRKS7l+vAqJLlWl0FZbpTIAhPUAkVkw4zGiL63LZz2d58UpJ8zh5LvIz2p3/Wx8hMUh
+         8S+A==
+X-Received: by 10.194.23.39 with SMTP id j7mr70667513wjf.9.1425387592353;
+        Tue, 03 Mar 2015 04:59:52 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([196.205.191.99])
-        by mx.google.com with ESMTPSA id u18sm1199778wjq.42.2015.03.03.05.00.27
+        by mx.google.com with ESMTPSA id j5sm20503606wie.3.2015.03.03.04.59.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 05:00:28 -0800 (PST)
-Date: Tue, 3 Mar 2015 15:00:24 +0200
+        Tue, 03 Mar 2015 04:59:51 -0800 (PST)
+Date: Tue, 3 Mar 2015 14:59:47 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: rtl8192e: replace memset(x,0,ETH_ALEN) by
+Subject: [PATCH 1/4] staging: rtl8192e: replace memset(x,0,ETH_ALEN) by
  eth_zero_addr(x)
-Message-ID: <80a99e5ed8e65c684ae2c29aa9920f88b7c83c36.1425384513.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <35f4d08242cd7706c4aafb8f7f093bfc75fc1272.1425384513.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425384513.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -97,22 +93,22 @@ identifier e;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_softmac_wx.c | 2 +-
+ drivers/staging/rtl8192e/rtllib_softmac.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac_wx.c b/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-index 835f3d7..283ba8b 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-@@ -120,7 +120,7 @@ int rtllib_wx_get_wap(struct rtllib_device *ieee,
- 		ieee->state != RTLLIB_LINKED_SCANNING &&
- 		ieee->wap_set == 0)
+diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
+index d992a75..16aef7c 100644
+--- a/drivers/staging/rtl8192e/rtllib_softmac.c
++++ b/drivers/staging/rtl8192e/rtllib_softmac.c
+@@ -3751,7 +3751,7 @@ void notify_wx_assoc_event(struct rtllib_device *ieee)
  
--		memset(wrqu->ap_addr.sa_data, 0, ETH_ALEN);
-+		eth_zero_addr(wrqu->ap_addr.sa_data);
- 	else
- 		memcpy(wrqu->ap_addr.sa_data,
- 		       ieee->current_network.bssid, ETH_ALEN);
+ 		printk(KERN_INFO "%s(): Tell user space disconnected\n",
+ 		       __func__);
+-		memset(wrqu.ap_addr.sa_data, 0, ETH_ALEN);
++		eth_zero_addr(wrqu.ap_addr.sa_data);
+ 	}
+ 	wireless_send_event(ieee->dev, SIOCGIWAP, &wrqu, NULL);
+ }
 -- 
 1.9.3
 
