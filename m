@@ -1,59 +1,76 @@
 X-GM-THRID: 6153646899200
-X-Received: by 10.236.227.162 with SMTP id d32mr16772705yhq.7.1425665437251;
-        Fri, 06 Mar 2015 10:10:37 -0800 (PST)
+X-Received: by 10.182.97.2 with SMTP id dw2mr31158161obb.0.1425362873249;
+        Mon, 02 Mar 2015 22:07:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.68.47 with SMTP id s15ls174947obt.35.gmail; Fri, 06 Mar
- 2015 10:10:36 -0800 (PST)
-X-Received: by 10.182.78.69 with SMTP id z5mr15314913obw.4.1425665436189;
-        Fri, 06 Mar 2015 10:10:36 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id pc4si1445644pac.0.2015.03.06.10.10.36
+Received: by 10.140.38.39 with SMTP id s36ls2011330qgs.19.gmail; Mon, 02 Mar
+ 2015 22:07:53 -0800 (PST)
+X-Received: by 10.52.246.135 with SMTP id xw7mr30063923vdc.8.1425362873106;
+        Mon, 02 Mar 2015 22:07:53 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id ri9si1843245pdb.1.2015.03.02.22.07.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 10:10:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Mon, 02 Mar 2015 22:07:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (75-104-69-130.mobility.exede.net [75.104.69.130])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id E9538AE7;
-	Fri,  6 Mar 2015 18:10:34 +0000 (UTC)
-Date: Fri, 6 Mar 2015 10:10:26 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Vatika Harlalka <vatikaharlalka@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Remove unnecessary
- type cast.
-Message-ID: <20150306181026.GA7323@kroah.com>
-References: <20150303060621.GA5148@akanksha>
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pdjz10 with SMTP id z10so45698281pdj.12
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 22:07:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=obS5F0dEMVn7PCmDpt4xk7LDSGTaL3p1cLzQKwV4xyc=;
+        b=0vK9qLI4nr/NkrNo9cjLjnMK05xbvXuwZ+Wg239LQkgfyUc3jxuxXyf8Q9wDyC+7XK
+         xUlaQNKHLUXRXOCecMbXbsBHysWp32RukZlNX3hIH365VZJd4T1FzggVZCXXcuFyOe0/
+         W1AaSzaoNHMyV8adBx2iEyCt9U9Ctdz7ZC1cptln/T1WJH5tbpRwA5CqB3xAga8YOALD
+         6kaTs2PRfXtMH7UYj60aCzvMVzcn8eS1ZZBUifJEqLJ85Px5wEcfuR7+YvddeCyTEqn1
+         6Suuh1rzUAqNk6iueRf0bEGsK/ickUfWCwLlrtsopnr2XTYkAEK4yIFVcZeBojZpVjwD
+         skwA==
+X-Received: by 10.70.52.8 with SMTP id p8mr52662894pdo.27.1425362872846;
+        Mon, 02 Mar 2015 22:07:52 -0800 (PST)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from akanksha ([14.139.82.6])
+        by mx.google.com with ESMTPSA id ep2sm13636626pbc.78.2015.03.02.22.07.50
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 02 Mar 2015 22:07:51 -0800 (PST)
+Date: Tue, 3 Mar 2015 11:36:21 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8712: Remove unnecessary type cast.
+Message-ID: <20150303060621.GA5148@akanksha>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20150303060621.GA5148@akanksha>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tue, Mar 03, 2015 at 11:36:21AM +0530, Vatika Harlalka wrote:
-> Using addressof and then casting to the original type is unneeded.
-> So these casts can be removed.
-> Issue detected via Coccinelle script.
-> 
-> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
-> ---
->  drivers/staging/rtl8712/hal_init.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
-> index 324da34..0a1c631 100644
-> --- a/drivers/staging/rtl8712/hal_init.c
-> +++ b/drivers/staging/rtl8711/hal_init.c
+Using addressof and then casting to the original type is unneeded.
+So these casts can be removed.
+Issue detected via Coccinelle script.
 
-This patch is malformed, with the directory name different.  This
-"breaks" git, but not patch, and I've now notified the git developers
-about it.  How did you create a patch like this?
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+---
+ drivers/staging/rtl8712/hal_init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Can you fix it up and resend it?
+diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
+index 324da34..0a1c631 100644
+--- a/drivers/staging/rtl8712/hal_init.c
++++ b/drivers/staging/rtl8711/hal_init.c
+@@ -92,7 +92,7 @@ static u32 rtl871x_open_fw(struct _adapter *padapter, const u8 **ppmappedfw)
+ 
+ static void fill_fwpriv(struct _adapter *padapter, struct fw_priv *pfwpriv)
+ {
+-	struct dvobj_priv *pdvobj = (struct dvobj_priv *)&padapter->dvobjpriv;
++	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
+ 	struct registry_priv *pregpriv = &padapter->registrypriv;
+ 
+ 	memset(pfwpriv, 0, sizeof(struct fw_priv));
+-- 
+1.9.1
 
-thanks,
-
-greg k-h
 
