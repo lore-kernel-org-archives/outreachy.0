@@ -1,48 +1,48 @@
 X-GM-THRID: 6138556841984
-X-Received: by 10.152.6.232 with SMTP id e8mr4471755laa.2.1425382068050;
-        Tue, 03 Mar 2015 03:27:48 -0800 (PST)
+X-Received: by 10.194.201.10 with SMTP id jw10mr4467382wjc.3.1425381906978;
+        Tue, 03 Mar 2015 03:25:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.6.38 with SMTP id x6ls25827lax.63.gmail; Tue, 03 Mar 2015
- 03:27:46 -0800 (PST)
-X-Received: by 10.112.189.227 with SMTP id gl3mr4520975lbc.2.1425382066530;
-        Tue, 03 Mar 2015 03:27:46 -0800 (PST)
+Received: by 10.152.246.38 with SMTP id xt6ls20677lac.102.gmail; Tue, 03 Mar
+ 2015 03:25:06 -0800 (PST)
+X-Received: by 10.152.28.137 with SMTP id b9mr4473555lah.8.1425381906304;
+        Tue, 03 Mar 2015 03:25:06 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id i7si869129wif.0.2015.03.03.03.27.46
+Received: from mail-we0-x22b.google.com (mail-we0-x22b.google.com. [2a00:1450:400c:c03::22b])
+        by gmr-mx.google.com with ESMTPS id i8si83419wif.1.2015.03.03.03.25.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 03:27:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Tue, 03 Mar 2015 03:25:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) client-ip=2a00:1450:400c:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id n12so39411573wgh.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 03:27:46 -0800 (PST)
+Received: by mail-we0-x22b.google.com with SMTP id m14so39155591wev.8
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 03:25:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=wTUP0L0EfuOo/qpPbw8p3rlSuWfDBtoVYXwNQHTgmCQ=;
-        b=JM1ZraAzcW+EvI/HYPqBPaYv6jMjlzwEzPrg3fjboUyBZDRG6rPkZ+xfktI4in9HJq
-         zkBCX/a3y+cpb//p78pjCFdDTCEBIQfZrcjIh7Z4YQGeeGedb09ZjPG4qeNq6CDpSRpM
-         e3vltDDTqO+VYhJhRVoiQ3G2+mifTDkMUwrSmhHpPaUlqUXZCgmJX6ia764ZN8Z0S7Ae
-         UOs3Au85ZHHCQVQI3pNxLvFyNCaQuxjjeAzP4cbgKBqsbVNGK4UCOoYSnvB9cbYhF20/
-         GDdtP5Gu+/2UooL+eWwpI26Ca3AuOBcRy/cejB5OgIMRqa6z9/yGaJO+uR75XMuyHwzM
-         45Hg==
-X-Received: by 10.194.61.65 with SMTP id n1mr69133928wjr.53.1425382066434;
-        Tue, 03 Mar 2015 03:27:46 -0800 (PST)
+        bh=LwOYkhGvMsYAUPbzYF+zrNdnR4HX88U/gcGol8v8+u8=;
+        b=wpwc63otHlMBGQt7iorYjde3xjB7JX4+Lw5dEi5ZHg5hkPS5ERXLSFbclSebmcvxsJ
+         8WpfIQZ6nNF+wBO2WvBFY8V30sfYHn0bypCdWePytE2O1cK3r4XFJejobvz1y9vTblgY
+         A0oi1t58HExwlTZYPI4/20pIZY7hRvilrCjn9M9CAc7/sv4AUJu26cA4KPvOgXdY4bjX
+         d0T1JJfIbueTd8dgBVBLUl+iD3C3//RdVP8q18g49m7WNN7ee6j8qLsLyQKXhnX7LFYk
+         /926PhEfquId5iRU9MsDEZ+bdzpnHWufVwVDSSeKXdFg+AP1TyTRyeWLyVDgHMxmrkfA
+         U8OA==
+X-Received: by 10.194.133.101 with SMTP id pb5mr69685352wjb.40.1425381906215;
+        Tue, 03 Mar 2015 03:25:06 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.244])
-        by mx.google.com with ESMTPSA id e18sm879064wjz.27.2015.03.03.03.27.41
+        by mx.google.com with ESMTPSA id s19sm20118008wik.18.2015.03.03.03.24.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 03:27:45 -0800 (PST)
-Date: Tue, 3 Mar 2015 13:27:05 +0200
+        Tue, 03 Mar 2015 03:25:05 -0800 (PST)
+Date: Tue, 3 Mar 2015 13:24:29 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: iio: meter: add check on return variables
-Message-ID: <20150303112705.GA11879@waves>
+Subject: [PATCH v2] staging: iio: meter: add check on return variables
+Message-ID: <20150303112429.GA11861@waves>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -55,10 +55,6 @@ have been added too, since the check is done more than once.
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
-v1: added checks on last calls only.
-v2: added checks on all calls that return values along with labels.
-v3: added changelog that was missed in v2.
-
  drivers/staging/iio/meter/ade7758_core.c | 35 ++++++++++++++++++++------------
  1 file changed, 22 insertions(+), 13 deletions(-)
 
