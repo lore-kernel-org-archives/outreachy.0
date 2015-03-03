@@ -1,208 +1,127 @@
-X-GM-THRID: 2658103459840
-X-Received: by 10.112.174.36 with SMTP id bp4mr1026220lbc.15.1424673818973;
-        Sun, 22 Feb 2015 22:43:38 -0800 (PST)
+X-GM-THRID: 6210099085312
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,bc960043b44123ba
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.35.135 with SMTP id h7mr4567175lbj.23.1425391723935;
+        Tue, 03 Mar 2015 06:08:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.228.136 with SMTP id si8ls506430lac.11.gmail; Sun, 22 Feb
- 2015 22:43:38 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr1046520lab.0.1424673818467;
-        Sun, 22 Feb 2015 22:43:38 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wg0-x22f.google.com (mail-wg0-x22f.google.com. [2a00:1450:400c:c00::22f])
-        by gmr-mx.google.com with ESMTPS id ew5si609057wid.1.2015.02.22.22.43.38
+Received: by 10.180.91.44 with SMTP id cb12ls780601wib.27.canary; Tue, 03 Mar
+ 2015 06:08:43 -0800 (PST)
+X-Received: by 10.180.160.176 with SMTP id xl16mr3002425wib.6.1425391723371;
+        Tue, 03 Mar 2015 06:08:43 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
+        by gmr-mx.google.com with ESMTPS id i7si901938wif.0.2015.03.03.06.08.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 22:43:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) client-ip=2a00:1450:400c:c00::22f;
+        Tue, 03 Mar 2015 06:08:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f47.google.com with SMTP id x12so23673282wgg.6
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 22:43:38 -0800 (PST)
+Received: by mail-we0-x231.google.com with SMTP id w55so40027322wes.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 06:08:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Ad8yuSOkDArWcaoQBGqIWJ8wAhx9Fog5rkbtv4JA250=;
-        b=fxln2NpB9Z2knhrHBgP4sNL3W4VRIHwJ1gmZcJ17BCOsQ9Dh4PM7I56SdlXy2vKlSg
-         hTY3PX7Dcnq76hjKR5V6W5Mr4SGiNtQF2irSpdJeSW+UjQZpUqWRtY91qRq+PnKLVZF8
-         b2MIejU4AT8Q/o94Dy/8z+hmo+mzNEgTHyMd9/th7CPCZl7eX+c7BB6vs2EGruCECQ8L
-         k9Sybv5Bad1ej3ngUAc5HhrW6oc3bNWTh6IAgeAFvl73nO6dNt0EjKAW6MUaopQbzB/T
-         f0uYb5ha3MI9yF3u6DWpPN9ttQWey2NcLN06ebnCx9l1oSC1L6B8WHKYsq9Jq054L/U6
-         HluA==
-X-Received: by 10.194.79.226 with SMTP id m2mr18921784wjx.60.1424673818363;
-        Sun, 22 Feb 2015 22:43:38 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id n1sm14444199wib.11.2015.02.22.22.43.36
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 22:43:37 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=qSVW4+kp8dCL0lQbppByyE2fz0IvfWG1Vqw99gPmR/4=;
+        b=IDsapQqH2jPwVprpbTxLYuc3W4G6/qeVIqJW+9OY2nOYdpiPyGxJtb3iFmgXAieLTN
+         CZTqeqFO7QupablcNFT6M2vV/k9kavWd+p3t/xVp0lQHtogKzGZL5Rit/l92iZdy4gZF
+         +1ajnKZfwDBdE1HHd5itc6zwG3XrKdE9F7VEUwV5W5aKV9VlwM04qAdk+irwRsVyEPOA
+         7ilzR+ZKPnS9GjYsTflkowdUfSdRjsoZUW7/OnlyNbUrXUa2ra8AeWr6ecUSq9gOTPKk
+         6C1MVbsmfD0UgEEEvkfUFMoAI50dNfDB6cCrDMtJ0s6obDlNc4JxmnjFhDZFmijM0QdT
+         guuA==
+X-Received: by 10.194.133.196 with SMTP id pe4mr46284380wjb.76.1425391723275;
+        Tue, 03 Mar 2015 06:08:43 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([196.205.191.99])
+        by mx.google.com with ESMTPSA id ul1sm1513128wjc.0.2015.03.03.06.08.41
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 03 Mar 2015 06:08:42 -0800 (PST)
+Date: Tue, 3 Mar 2015 16:08:38 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: rtl8712: replace memcpy() by ether_addr_copy() using coccinelle and pack variable
-Date: Mon, 23 Feb 2015 08:42:56 +0200
-Message-Id: <1424673776-8404-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH 4/4 v2] staging: rtl8192u: ieee80211: replace
+ memset(x,0,ETH_ALEN) by eth_zero_addr(x)
+Message-ID: <80ea577b3ed9b4a22f54028c8baff9448eb6b55a.1425390962.git.mahfouz.saif.elyazal@gmail.com>
+References: <cover.1425390962.git.mahfouz.saif.elyazal@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1425390962.git.mahfouz.saif.elyazal@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch focuses on fixing the following warning generated
-by checkpatch.pl for the file rxtx.c
+eth_zero_addr() is a wrapper function for memset if 0 is going to
+be assigned to a mac address. The replacement was done by the
+following coccinelle script:
 
-Prefer ether_addr_copy() over memcpy() if the Ethernet addresses
-are __aligned(2)
+@header@
+@@
 
-@@ expression e1, e2; @@
+#include <linux/etherdevice.h>
 
-- memcpy(e1, e2, ETH_ALEN);
-+ ether_addr_copy(e1, e2);
+@eth_zero_addr@
+expression e;
+@@
 
-struct _adapter {
-        struct dvobj_priv          dvobjpriv;            /*     0    40*/
-        struct mlme_priv           mlmepriv;             /*    40  1560*/
-        /* --- cacheline 25 boundary (1600 bytes) --- */
-        struct cmd_priv            cmdpriv;              /*  1600   136*/
-        /* --- cacheline 27 boundary (1728 bytes) was 8 bytes ago --- */
-        struct evt_priv            evtpriv;              /*  1736    96*/
-        /* --- cacheline 28 boundary (1792 bytes) was 40 bytes ago --- * */
-        struct io_queue *          pio_queue;            /*  1832     8*/
-        struct xmit_priv           xmitpriv;             /*  1840   912*/
-        /* --- cacheline 43 boundary (2752 bytes) --- */
-        struct recv_priv           recvpriv;             /*  2752  1088*/
-        /* --- cacheline 60 boundary (3840 bytes) --- */
-        struct sta_priv            stapriv;              /*  3840   672*/
-        /* --- cacheline 70 boundary (4480 bytes) was 32 bytes ago --- * */
-        struct security_priv       securitypriv;         /*  4512  4816*/
-        /* --- cacheline 145 boundary (9280 bytes) was 48 bytes ago --- * */
-        struct registry_priv       registrypriv;         /*  9328   968*/
-        /* --- cacheline 160 boundary (10240 bytes) was 56 bytes ago --- * */
-        struct wlan_acl_pool       acl_list;             /* 10296  1536*/
-        /* --- cacheline 184 boundary (11776 bytes) was 56 bytes ago --- * */
-        struct pwrctrl_priv        pwrctrlpriv;          /* 11832   224*/
-        /* --- cacheline 188 boundary (12032 bytes) was 24 bytes ago --- * */
-        struct eeprom_priv         eeprompriv;           /* 12056   508*/
+-memset(e,0,ETH_ALEN);
++eth_zero_addr(e);
 
-        /* XXX 4 bytes hole, try to pack */
+@eth_broadcast_addr@
+identifier e;
+@@
 
-        /* --- cacheline 196 boundary (12544 bytes) was 24 bytes ago --- * */
-        struct hal_priv            halpriv;              /* 12568    88*/
-        /* --- cacheline 197 boundary (12608 bytes) was 48 bytes ago --- * */
-        struct led_priv            ledpriv;              /* 12656   304*/
-        /* --- cacheline 202 boundary (12928 bytes) was 32 bytes ago --- * */
-        struct mp_priv             mppriv;               /* 12960  1080*/
-        /* --- cacheline 219 boundary (14016 bytes) was 24 bytes ago --- * */
-        s32                        bDriverStopped;       /* 14040     4*/
-        s32                        bSurpriseRemoved;     /* 14044     4*/
-        u32                        IsrContent;           /* 14048     4*/
-        u32                        ImrContent;           /* 14052     4*/
-	 u8                         EepromAddressSize;    /* 14056     1*/
-        u8                         hw_init_completed;    /* 14057     1*/
+-memset(e,\(0xff\|0xFF\|255\),ETH_ALEN);
++eth_broadcast_addr(e);
 
-        /* XXX 6 bytes hole, try to pack */
+@linux_header depends on !header && (eth_zero_addr || eth_broadcast_addr) @
+@@
 
-        struct task_struct *       cmdThread;            /* 14064     8*/
-        pid_t                      evtThread;            /* 14072     4*/
++ #include <linux/etherdevice.h>
++
 
-        /* XXX 4 bytes hole, try to pack */
+@special_header depends on !header && !linux_header && (eth_zero_addr || eth_broadcast_addr) @
+@@
 
-        /* --- cacheline 220 boundary (14080 bytes) --- */
-        struct task_struct *       xmitThread;           /* 14080     8*/
-        pid_t                      recvThread;           /* 14088     4*/
++
++ #include <linux/etherdevice.h>
++
 
-        /* XXX 4 bytes hole, try to pack */
+@custom_header depends on !header && !linux_header && !special_header && (eth_zero_addr || eth_broadcast_addr) @
+@@
 
-        uint                       (*dvobj_init)(struct _adapter *); /*14096     8 */
-        void                       (*dvobj_deinit)(struct _adapter *);/* 14104     8 */
-        struct net_device *        pnetdev;              /* 14112     8*/
-        int                        bup;                  /* 14120     4*/
++
++ #include <linux/etherdevice.h>
 
-        /* XXX 4 bytes hole, try to pack */
-
-        struct net_device_stats    stats;                /* 14128   184*/
-        /* --- cacheline 223 boundary (14272 bytes) was 40 bytes ago --- * */
-        struct iw_statistics       iwstats;              /* 14312    32*/
-        /* --- cacheline 224 boundary (14336 bytes) was 8 bytes ago --- * */
-        int                        pid;                  /* 14344     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct work_struct         wkFilterRxFF0;        /* 14352    32*/
-        u8                         blnEnableRxFF0Filter; /* 14384     1*/
-
-        /* XXX 3 bytes hole, try to pack */
-
-        spinlock_t                 lockRxFF0Filter;      /* 14388     4*/
-        const struct firmware  *   fw;                   /* 14392     8*/
-	 u8                         EepromAddressSize;    /* 14056     1*/
-        u8                         hw_init_completed;    /* 14057     1*/
-
-        /* XXX 6 bytes hole, try to pack */
-
-        struct task_struct *       cmdThread;            /* 14064     8*/
-        pid_t                      evtThread;            /* 14072     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        /* --- cacheline 220 boundary (14080 bytes) --- */
-        struct task_struct *       xmitThread;           /* 14080     8*/
-        pid_t                      recvThread;           /* 14088     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        uint                       (*dvobj_init)(struct _adapter *); /*14096     8 */
-        void                       (*dvobj_deinit)(struct _adapter *);/* 14104     8 */
-        struct net_device *        pnetdev;              /* 14112     8*/
-        int                        bup;                  /* 14120     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct net_device_stats    stats;                /* 14128   184*/
-        /* --- cacheline 223 boundary (14272 bytes) was 40 bytes ago --- * */
-        struct iw_statistics       iwstats;              /* 14312    32*/
-        /* --- cacheline 224 boundary (14336 bytes) was 8 bytes ago --- * */
-        int                        pid;                  /* 14344     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct work_struct         wkFilterRxFF0;        /* 14352    32*/
-        u8                         blnEnableRxFF0Filter; /* 14384     1*/
-
-        /* XXX 3 bytes hole, try to pack */
-
-        spinlock_t                 lockRxFF0Filter;      /* 14388     4*/
-        const struct firmware  *   fw;                   /* 14392     8*/
-	/* --- cacheline 225 boundary (14400 bytes) --- */
-        struct usb_interface *     pusb_intf;            /* 14400     8*/
-        struct mutex               mutex_start;          /* 14408    40*/
-
-        /* XXX last struct has 4 bytes of padding */
-
-        struct completion          rtl8712_fw_ready;     /* 14448    32*/
-        /* --- cacheline 226 boundary (14464 bytes) was 16 bytes ago --- * */
-
-        /* size: 14480, cachelines: 227, members: 40 */
-        /* sum members: 14451, holes: 7, sum holes: 29 */
-        /* paddings: 1, sum paddings: 4 */
-        /* last cacheline: 16 bytes */
-};
-
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/rtl8712/recv_linux.c | 2 +-
+v2: made sure that the first rule in the script remains intact.
+
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
-index 409c8c8..3640dd4 100644
---- a/drivers/staging/rtl8712/recv_linux.c
-+++ b/drivers/staging/rtl8712/recv_linux.c
-@@ -96,7 +96,7 @@ void r8712_handle_tkip_mic_err(struct _adapter *padapter, u8 bgroup)
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
+index 644368d..dcfa5ab 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
+@@ -121,7 +121,7 @@ int ieee80211_wx_get_wap(struct ieee80211_device *ieee,
+ 		ieee->state != IEEE80211_LINKED_SCANNING &&
+ 		ieee->wap_set == 0)
+ 
+-		memset(wrqu->ap_addr.sa_data, 0, ETH_ALEN);
++		eth_zero_addr(wrqu->ap_addr.sa_data);
  	else
- 		ev.flags |= IW_MICFAILURE_PAIRWISE;
- 	ev.src_addr.sa_family = ARPHRD_ETHER;
--	memcpy(ev.src_addr.sa_data, &pmlmepriv->assoc_bssid[0], ETH_ALEN);
-+	ether_addr_copy(ev.src_addr.sa_data, &pmlmepriv->assoc_bssid[0]);
- 	memset(&wrqu, 0x00, sizeof(wrqu));
- 	wrqu.data.length = sizeof(ev);
- 	wireless_send_event(padapter->pnetdev, IWEVMICHAELMICFAILURE, &wrqu,
+ 		memcpy(wrqu->ap_addr.sa_data,
+ 		       ieee->current_network.bssid, ETH_ALEN);
 -- 
-1.8.3.2
+1.9.3
 
+
+-- 
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
