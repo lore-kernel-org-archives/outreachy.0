@@ -1,79 +1,127 @@
-X-GM-THRID: 739037413376
-X-Received: by 10.182.39.169 with SMTP id q9mr5485937obk.33.1424367263825;
-        Thu, 19 Feb 2015 09:34:23 -0800 (PST)
+X-GM-THRID: 6155043602432
+X-Received: by 10.152.1.5 with SMTP id 5mr263998lai.4.1425435956050;
+        Tue, 03 Mar 2015 18:25:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.154.85 with SMTP id c82ls226318ioe.42.gmail; Thu, 19 Feb
- 2015 09:34:23 -0800 (PST)
-X-Received: by 10.66.164.164 with SMTP id yr4mr5196556pab.42.1424367263606;
-        Thu, 19 Feb 2015 09:34:23 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id f2si2978477pdg.0.2015.02.19.09.34.23
+Received: by 10.180.103.202 with SMTP id fy10ls24792wib.15.canary; Tue, 03 Mar
+ 2015 18:25:55 -0800 (PST)
+X-Received: by 10.180.182.201 with SMTP id eg9mr711975wic.3.1425435955500;
+        Tue, 03 Mar 2015 18:25:55 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
+        by gmr-mx.google.com with ESMTPS id v5si511053wif.3.2015.03.03.18.25.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 09:34:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Tue, 03 Mar 2015 18:25:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id fa1so1281929pad.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 09:34:23 -0800 (PST)
+Received: by mail-we0-x229.google.com with SMTP id k11so43482977wes.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 18:25:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZbUAOOwn+MMfZiTlTy9gVS54X7D3CxLWap4GUdkJ75o=;
-        b=jPrHwx7bMSo4N6lgmst2C8+Gv9LjbTA+UAAbBqQErQ8B26Hr7WQcMGVmIDHtLgwJA1
-         G1FXXILwqmVmiPEzIjZZYHn9teBqA057Y+3hdeSfeWZva7uEKk3XdeDQA5L27cRDHkck
-         xMFieE8f+7X5FCqDL+tbXsAbiUKBTiMGd3XkY5FwOYr6LYaMEezE1syC4WbNgiCHsUB4
-         cXq86iarPsaX4kLitJd4lN4Bup4KDul//2wydWFtBHrmFNacSZCjEowX4rz5Vggi6Sfy
-         MHPWb6PcGuzxrHu6f+ubcURsh755joO5k34+YZhBfJnebVbfGC+c+1bLddKlKBEHM7JW
-         jNuw==
-X-Received: by 10.66.62.201 with SMTP id a9mr9366782pas.101.1424367263461;
-        Thu, 19 Feb 2015 09:34:23 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from localhost.localdomain ([61.16.142.166])
-        by mx.google.com with ESMTPSA id in1sm24334460pbc.19.2015.02.19.09.34.21
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 09:34:22 -0800 (PST)
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-Subject: [PATCH v2] Convert simple_strtoul to kstrtoul
-Date: Thu, 19 Feb 2015 23:04:59 +0530
-Message-Id: <1424367299-11953-1-git-send-email-navyasri.tech@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=APIsd3NfHQHY39Y6IQugFavUujJStC6dCocpr/hHllA=;
+        b=Wy58RN8f9wNrSaVN5Z/2c5pE20zMv3QuuRwQb3tMiMdOGIXymu+KuQX38XQV5x3dFO
+         Ie3nK+jy/GOyIYTshakaNnnGZwJj2Naky4RcOh+rjGsgJfyCj3pZlBOCZGUSOJPz7jZn
+         ETk9bWA3E3FrmihkUkYiEFxO3Mpuf9UIReMIos96o1YGkH7ela6VXmF8KilqCQuI7+yn
+         Pm4xWrR22cXAgzkRg6GT/nDntD+DFJ/TJrFTuwkiVVq7trTfuvfIZ5JxyBtXt0RcG/sr
+         eGHL8enbK+a28MeP8Nok/Yd59FttfrwJqVxO1XeWRifQArCRO9k3UEwQHdkk/c/Ft8n9
+         G2Sg==
+MIME-Version: 1.0
+X-Received: by 10.180.221.232 with SMTP id qh8mr7949248wic.19.1425435955422;
+ Tue, 03 Mar 2015 18:25:55 -0800 (PST)
+Received: by 10.194.13.168 with HTTP; Tue, 3 Mar 2015 18:25:55 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1503031734190.2677@hadrien>
+References: <cover.1425367678.git.vthakkar1994@gmail.com>
+	<1bdb9ff234b262793c0537cc9e11cf087202e61a.1425367678.git.vthakkar1994@gmail.com>
+	<alpine.DEB.2.10.1503030722380.2723@hadrien>
+	<CAK-LDbKcVLuoedmX-HJxaeR9ZkY9ZNXdx+j7xzu1kx3+pmuyXA@mail.gmail.com>
+	<alpine.DEB.2.10.1503031734190.2677@hadrien>
+Date: Wed, 4 Mar 2015 07:55:55 +0530
+Message-ID: <CAK-LDbJaC_fv6J+gfd75Yvwf+t+GmmKvdc3jw8L_YNT=5-sBxA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Fix duplicate
+ conditional branch
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch fixes the checkpatch.pl warning:
-simple_strtoul is obsolete, use kstrtoul instead.
+On Wed, Mar 4, 2015 at 4:04 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Tue, 3 Mar 2015, Vaishali Thakkar wrote:
+>
+>> On Tue, Mar 3, 2015 at 5:52 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> > On Tue, 3 Mar 2015, Vaishali Thakkar wrote:
+>> >
+>> >> Replace duplicate branch with correct value. This branch
+>> >> is supposed to work for low thresh value.
+>> >
+>> > How did you find the problem?
+>>
+>> From git log. I was looking for git log of driver rtl8192e for that setup_timer
+>> problem and saw that someone sent a patch for this. And as rtl8192u and
+>> rtl8192e follows the same structure, I just looked at file of this driver. And
+>> this problem for rtl8192u was still there. So, I just sent a patch.
+>>
+>> Also, while changing this code I found that rtl8192u is not using any macro and
+>> rtl8192e was using one useless macro. So, I sent a patch for it also.
+>
+> Good work :)
 
-When the string is not converted(parsing error),the strings pointed to by ep and parport[n] are the same.This parsing error results in kstrtoul returning a non-zero value.
+Thank You. :)
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
-Changes in v2:
-    -Added a descriptive commit message.
+> julia
+>
+>> > julia
+>> >
+>> >> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+>> >> ---
+>> >>  drivers/staging/rtl8192u/r8192U_dm.c | 4 ++--
+>> >>  1 file changed, 2 insertions(+), 2 deletions(-)
+>> >>
+>> >> diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
+>> >> index 7199616..5a01b7d 100644
+>> >> --- a/drivers/staging/rtl8192u/r8192U_dm.c
+>> >> +++ b/drivers/staging/rtl8192u/r8192U_dm.c
+>> >> @@ -1628,8 +1628,8 @@ void dm_change_dynamic_initgain_thresh(struct net_device *dev, u32 dm_type,
+>> >>               dm_digtable.rssi_low_thresh = dm_value;
+>> >>       } else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_HIGH) {
+>> >>               dm_digtable.rssi_high_power_highthresh = dm_value;
+>> >> -     } else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_HIGH) {
+>> >> -             dm_digtable.rssi_high_power_highthresh = dm_value;
+>> >> +     } else if (dm_type == DIG_TYPE_THRESH_HIGHPWR_LOW) {
+>> >> +             dm_digtable.rssi_high_power_lowthresh = dm_value;
+>> >>       } else if (dm_type == DIG_TYPE_ENABLE) {
+>> >>               dm_digtable.dig_state           = DM_STA_DIG_MAX;
+>> >>               dm_digtable.dig_enable_flag     = true;
+>> >> --
+>> >> 1.9.1
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1bdb9ff234b262793c0537cc9e11cf087202e61a.1425367678.git.vthakkar1994%40gmail.com.
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >>
+>>
+>>
+>>
+>> --
+>> Vaishali
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAK-LDbKcVLuoedmX-HJxaeR9ZkY9ZNXdx%2Bj7xzu1kx3%2BpmuyXA%40mail.gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
- drivers/staging/media/parport/bw-qcam.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/parport/bw-qcam.c b/drivers/staging/media/parport/bw-qcam.c
-index 67b9da1..1b81244 100644
---- a/drivers/staging/media/parport/bw-qcam.c
-+++ b/drivers/staging/media/parport/bw-qcam.c
-@@ -1106,10 +1106,8 @@ static int accept_bwqcam(struct parport *port)
- 	if (parport[0] && strncmp(parport[0], "auto", 4) != 0) {
- 		/* user gave parport parameters */
- 		for (n = 0; n < MAX_CAMS && parport[n]; n++) {
--			char *ep;
- 			unsigned long r;
--			r = simple_strtoul(parport[n], &ep, 0);
--			if (ep == parport[n]) {
-+			if (kstrtoul(parport[n],0,&r)) {
- 				printk(KERN_ERR
- 					"bw-qcam: bad port specifier \"%s\"\n",
- 					parport[n]);
+
 -- 
-1.9.1
-
+Vaishali
 
