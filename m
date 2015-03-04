@@ -1,49 +1,49 @@
 X-GM-THRID: 6467884154880
-X-Received: by 10.152.29.97 with SMTP id j1mr357432lah.3.1425449996577;
-        Tue, 03 Mar 2015 22:19:56 -0800 (PST)
+X-Received: by 10.112.138.202 with SMTP id qs10mr349833lbb.24.1425449970486;
+        Tue, 03 Mar 2015 22:19:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.8.98 with SMTP id q2ls48233wia.7.canary; Tue, 03 Mar 2015
- 22:19:56 -0800 (PST)
-X-Received: by 10.194.95.67 with SMTP id di3mr370310wjb.0.1425449996317;
-        Tue, 03 Mar 2015 22:19:56 -0800 (PST)
+Received: by 10.152.29.225 with SMTP id n1ls134289lah.52.gmail; Tue, 03 Mar
+ 2015 22:19:30 -0800 (PST)
+X-Received: by 10.112.41.131 with SMTP id f3mr373490lbl.20.1425449970051;
+        Tue, 03 Mar 2015 22:19:30 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x233.google.com (mail-wg0-x233.google.com. [2a00:1450:400c:c00::233])
-        by gmr-mx.google.com with ESMTPS id cl5si236497wib.3.2015.03.03.22.19.56
+Received: from mail-wg0-x234.google.com (mail-wg0-x234.google.com. [2a00:1450:400c:c00::234])
+        by gmr-mx.google.com with ESMTPS id v5si533985wif.3.2015.03.03.22.19.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 22:19:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) client-ip=2a00:1450:400c:c00::233;
+        Tue, 03 Mar 2015 22:19:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) client-ip=2a00:1450:400c:c00::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wgha1 with SMTP id a1so44436914wgh.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 22:19:56 -0800 (PST)
+Received: by mail-wg0-x234.google.com with SMTP id n12so44512371wgh.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 22:19:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=SzsR4q85/dBHvCHX6cInLx7yqJKoo96KQOxNbS91684=;
-        b=c1pZ6xozze+GGT1ReUaHO5KutqOOaBEukS2DUDdgxCh7A/4Eh2omQSDHqThFp/nScE
-         WFI+9B+SwcRzEeASpf7yDGn1IZCAKTMBbYCJoBs7j2iF5QxXeICChzBw6OlaRQN281Bc
-         vOB6IxZR+bFD1D9KfQ7FUgWaeXgYrHRzxAeNwExQ0pIgo0QTMF7HPHbrwGGlxxQWAh/j
-         Tq9ZE3DAT1Om0VLb120Rl2ibNZJTA42MEnkVVa8UgExY4ZmI8a2S3Lnb+/kpnRz75Meh
-         /QMZEqnVU3kC658Sir5dI26pvMQFhKzn3LmngcerrMVdUXAMSFZKijIzeOhrrs+44VZN
-         xeLA==
-X-Received: by 10.180.79.227 with SMTP id m3mr9552788wix.3.1425449996253;
-        Tue, 03 Mar 2015 22:19:56 -0800 (PST)
+        bh=W+kquLm8YNdcbYSAs5ylAgfc+r3l7sm24tlkbEnM9v8=;
+        b=GXtERG4kG7Y4qPd96A3NaK5OLQcJf5KUnyv9ckZvcbDF2aURKpBWAaX2hDs8G2cuAt
+         wOFK99OIPbNVvZO9/c1y6kfBzcFU6i/tgNYEp+PtT9v8wLRDaLQdnJKLMFYKl5H9DG96
+         3YdZR/pqJHTMmDlgtsEGyXDN9x6zmSxt8Ycq9Foj0XTDCRZH86YJ+cqpo6QhywYLiY/Q
+         ZfUNQhY3BKIyVzarDENsCrTLpDsWeUDTCmLRsN+MRxgyTbH6XshSRyMKLD5yo809tXn0
+         WuhFtjI2yWrJJrK+mO1XE9vLXjFWnnGIWbxFVXoqKaVrMYhYs8s0bnY2GhCIe32S/Iw6
+         PL3w==
+X-Received: by 10.180.207.227 with SMTP id lz3mr51942276wic.47.1425449969974;
+        Tue, 03 Mar 2015 22:19:29 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id gt4sm5521737wib.21.2015.03.03.22.19.54
+        by mx.google.com with ESMTPSA id u6sm5539052wix.12.2015.03.03.22.19.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 22:19:55 -0800 (PST)
-Date: Wed, 4 Mar 2015 08:19:50 +0200
+        Tue, 03 Mar 2015 22:19:29 -0800 (PST)
+Date: Wed, 4 Mar 2015 08:19:24 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/5] staging: slicoss: remove extra parentheses around left
- bit shift operations
-Message-ID: <08acdc7e43e36f5c9d28852c38bb79cbe2df4635.1425449681.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 3/5] staging: rts5208: remove extra parentheses around left
+ bit shift operation
+Message-ID: <25e504b6c8c21e5c4cb49a8c9b36deffdd2149e3.1425449681.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425449681.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -98,22 +98,22 @@ e1 = f(...,
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/slicoss/slicoss.c | 2 +-
+ drivers/staging/rts5208/rtsx_transport.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
-index c84dd60..a3afb3e 100644
---- a/drivers/staging/slicoss/slicoss.c
-+++ b/drivers/staging/slicoss/slicoss.c
-@@ -1850,7 +1850,7 @@ static void slic_xmit_build_request(struct adapter *adapter,
+diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+index dab1995..03caa9b 100644
+--- a/drivers/staging/rts5208/rtsx_transport.c
++++ b/drivers/staging/rts5208/rtsx_transport.c
+@@ -642,7 +642,7 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
+ 	dma_addr_t addr;
+ 	u8 dir;
+ 	int err = 0;
+-	u32 val = (1 << 31);
++	u32 val = 1 << 31;
+ 	long timeleft;
  
- 	ihcmd = &hcmd->cmd64;
- 
--	ihcmd->flags = (adapter->port << IHFLG_IFSHFT);
-+	ihcmd->flags = adapter->port << IHFLG_IFSHFT;
- 	ihcmd->command = IHCMD_XMT_REQ;
- 	ihcmd->u.slic_buffers.totlen = skb->len;
- 	phys_addr = pci_map_single(adapter->pcidev, skb->data, skb->len,
+ 	if ((buf == NULL) || (len <= 0))
 -- 
 1.9.3
 
