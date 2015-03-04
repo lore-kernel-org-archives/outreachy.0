@@ -1,49 +1,49 @@
 X-GM-THRID: 6406607470592
-X-Received: by 10.152.29.97 with SMTP id j1mr334696lah.3.1425446974564;
-        Tue, 03 Mar 2015 21:29:34 -0800 (PST)
+X-Received: by 10.180.39.164 with SMTP id q4mr788116wik.5.1425446936475;
+        Tue, 03 Mar 2015 21:28:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.18.163 with SMTP id x3ls46521lad.56.gmail; Tue, 03 Mar
- 2015 21:29:34 -0800 (PST)
-X-Received: by 10.112.145.133 with SMTP id su5mr322527lbb.17.1425446973975;
-        Tue, 03 Mar 2015 21:29:33 -0800 (PST)
+Received: by 10.152.21.130 with SMTP id v2ls106160lae.98.gmail; Tue, 03 Mar
+ 2015 21:28:54 -0800 (PST)
+X-Received: by 10.112.131.7 with SMTP id oi7mr346733lbb.9.1425446934842;
+        Tue, 03 Mar 2015 21:28:54 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x234.google.com (mail-wg0-x234.google.com. [2a00:1450:400c:c00::234])
-        by gmr-mx.google.com with ESMTPS id el6si239052wib.2.2015.03.03.21.29.33
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id o3si1015839wib.2.2015.03.03.21.28.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 21:29:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) client-ip=2a00:1450:400c:c00::234;
+        Tue, 03 Mar 2015 21:28:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wggz12 with SMTP id z12so44359444wgg.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:29:33 -0800 (PST)
+Received: by wiwl15 with SMTP id l15so27939494wiw.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:28:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=RgA/g1IEMWQGgx0kAGw73i0JC+HRRN+ECkGSk57kMPs=;
-        b=GTiMJ9nXZgsZsWMwGteflaQ/Rlfn92v2Qezt5MJkoKGmCqpwGP6+mw04J9Hgtg99PP
-         9n7YghyZse1+QbeZYdGPzZGPyyKGJKhb0iTbFQbWzW7pPjVjer0D+OegoVpKotpkYL83
-         llMa9AMUIVkRa5UAGzUccFPN3qZ18uKtEucix4PYLXNUjnvqTj9FrSp3YVt+ylWADf7f
-         ywet5/eQuKy1HD3g0LKowOQxGpbEBJPlU+07WCTQ+8IKmLH1xNDaZDPJM1lHzXRNZIWg
-         JCTY9KwyuZ8S1rEvJS31x54Sq0Uz/ZWTivGVWt/99oNr8wma9Pv6lY/zKjpvEj2mvcOW
-         +DHg==
-X-Received: by 10.194.192.167 with SMTP id hh7mr3882928wjc.151.1425446973870;
-        Tue, 03 Mar 2015 21:29:33 -0800 (PST)
+        bh=1ZWIFFERHwkIdjiOkH8wbXinWYPXWnyE1z5TQvfsmio=;
+        b=mGI5c3sqEv9goRaja4zohJpMEq2v+9fwr2xuRqesOrNx61kxsXJQNu8pInR43p9JVq
+         pljINoIT+OcnoGBmV8PjwmauKdEvkU+8c9WxAm4qSfMr0UC75sarijIo7hB37fW1Ydw/
+         /K1QX7DAN0BTifezzE5uMbXuiCowJgM4zfSP5D7RqRePugnuRTGX7MfzQc8OFT3srSlP
+         OjcoXsugwgjT30ISFcBZ9/PLfVW9O/4Q/2LWr+iKH3uX7xpba2wOl8dKIuM29W6/T7rt
+         YT1+OIGH2anQo2se4ceTvh+/R4oQqhkPVfM3gbUl8IKssvoimJCjsL/++7/9eiydl8Ey
+         fQsw==
+X-Received: by 10.194.200.196 with SMTP id ju4mr4006213wjc.47.1425446934750;
+        Tue, 03 Mar 2015 21:28:54 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id bx3sm4253300wjc.21.2015.03.03.21.29.32
+        by mx.google.com with ESMTPSA id dn7sm8370333wid.12.2015.03.03.21.28.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 21:29:33 -0800 (PST)
-Date: Wed, 4 Mar 2015 07:29:28 +0200
+        Tue, 03 Mar 2015 21:28:54 -0800 (PST)
+Date: Wed, 4 Mar 2015 07:28:48 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 02/13] staging: lustre: lclient: remove extra parentheses
+Subject: [PATCH 01/13] staging: comedi: drivers: remove extra parentheses
  around right bit shift operation
-Message-ID: <460f21c5bb77254b7efcc586bd07dd0dc60fd090.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <17cd9ad3173c5098bbae0d10540c7a27d6402168.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,10 +51,9 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Removes extra parentheses around bitwise right shift operations.
-The cases handled here are when the resultant value is assigned
-to a variable. The issue was detected and resolved using the
-following coccinelle script:
+Removes extra parentheses around bitwise right shift operation.
+The issue was detected and resolved using the following coccinelle
+script:
 
 @@
 expression e, e1;
@@ -98,31 +97,21 @@ e1 = f(...,
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/lustre/lustre/lclient/lcommon_cl.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/staging/comedi/drivers/dt2801.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/lclient/lcommon_cl.c b/drivers/staging/lustre/lustre/lclient/lcommon_cl.c
-index 23095bb..ab6cb41 100644
---- a/drivers/staging/lustre/lustre/lclient/lcommon_cl.c
-+++ b/drivers/staging/lustre/lustre/lclient/lcommon_cl.c
-@@ -828,7 +828,8 @@ int ccc_prep_size(const struct lu_env *env, struct cl_object *obj,
- 				 * --bug 17336 */
- 				loff_t size = cl_isize_read(inode);
- 				loff_t cur_index = start >> PAGE_CACHE_SHIFT;
--				loff_t size_index = ((size - 1) >> PAGE_CACHE_SHIFT);
-+				loff_t size_index = (size - 1) >>
-+						    PAGE_CACHE_SHIFT;
- 
- 				if ((size == 0 && cur_index != 0) ||
- 				    size_index < cur_index)
-@@ -1263,7 +1264,7 @@ __u32 cl_fid_build_gen(const struct lu_fid *fid)
- 		return gen;
- 	}
- 
--	gen = (fid_flatten(fid) >> 32);
-+	gen = fid_flatten(fid) >> 32;
- 	return gen;
- }
+diff --git a/drivers/staging/comedi/drivers/dt2801.c b/drivers/staging/comedi/drivers/dt2801.c
+index b96e60f..7e565fc 100644
+--- a/drivers/staging/comedi/drivers/dt2801.c
++++ b/drivers/staging/comedi/drivers/dt2801.c
+@@ -280,7 +280,7 @@ static int dt2801_writedata2(struct comedi_device *dev, unsigned int data)
+ 	ret = dt2801_writedata(dev, data & 0xff);
+ 	if (ret < 0)
+ 		return ret;
+-	ret = dt2801_writedata(dev, (data >> 8));
++	ret = dt2801_writedata(dev, data >> 8);
+ 	if (ret < 0)
+ 		return ret;
  
 -- 
 1.9.3
