@@ -1,49 +1,49 @@
 X-GM-THRID: 6467884154880
-X-Received: by 10.112.9.65 with SMTP id x1mr374060lba.16.1425449933432;
-        Tue, 03 Mar 2015 22:18:53 -0800 (PST)
+X-Received: by 10.194.95.67 with SMTP id di3mr369718wjb.0.1425449906465;
+        Tue, 03 Mar 2015 22:18:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.207.101 with SMTP id lv5ls141548lac.22.gmail; Tue, 03 Mar
- 2015 22:18:52 -0800 (PST)
-X-Received: by 10.152.1.5 with SMTP id 5mr362969lai.4.1425449932882;
-        Tue, 03 Mar 2015 22:18:52 -0800 (PST)
+Received: by 10.152.205.99 with SMTP id lf3ls142142lac.4.gmail; Tue, 03 Mar
+ 2015 22:18:25 -0800 (PST)
+X-Received: by 10.112.145.133 with SMTP id su5mr344467lbb.17.1425449905874;
+        Tue, 03 Mar 2015 22:18:25 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x232.google.com (mail-wg0-x232.google.com. [2a00:1450:400c:c00::232])
-        by gmr-mx.google.com with ESMTPS id l8si1021543wia.0.2015.03.03.22.18.52
+Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
+        by gmr-mx.google.com with ESMTPS id i7si1031218wif.0.2015.03.03.22.18.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 22:18:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) client-ip=2a00:1450:400c:c00::232;
+        Tue, 03 Mar 2015 22:18:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wgha1 with SMTP id a1so44433217wgh.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 22:18:52 -0800 (PST)
+Received: by mail-wg0-x22d.google.com with SMTP id k14so579689wgh.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 22:18:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=EG6eCzc/J7h5iVYII7DChRMApoBIsvMvIxB/Kv7J1PE=;
-        b=j7YurvdllWm2mW/wyJQS/LPPSspKeSOTjFCN6PqNAIvXsRIifR/5WbeH9s0kCFfpDk
-         zAaXPGhNSceFSFJIzJi6ciJPjse6VuQdfqGhG+JYNzOjF749mdLfHreHXZ6Sxm1LYJfF
-         a1W3VBgb7q2nvJzY9pTDa+DK7qV40cCp6Usogjk+YWLKZjso+m++Ikp23vCwfBOQe+Cq
-         0HrlspaPQKqmh1DvvB2Cl+nkOxR0Tvp91peRj39OCwd2x+EOscoqiQVtLZlHCsxKwCJh
-         OAMzREKf1V0Wqxv1Tf3kUANK+HZOSA0wzLEh+KF7GiskFWunJ1e5nuquqp4w9a1FeJND
-         wegA==
-X-Received: by 10.181.5.43 with SMTP id cj11mr51471962wid.61.1425449932802;
-        Tue, 03 Mar 2015 22:18:52 -0800 (PST)
+        bh=Mg1c0vVL1l1Pee5sPVNZ7aJBZFv13Z51wnajyBtYgLE=;
+        b=z8XXo3LZgDeEBPXXItDC6UYQFx5yK1AWWNU6bDW1bSGp/q+1n+yNwwvjbJ6O4hpQJU
+         MDSPw4Ux5WI2QF3SdKos95CpwBO1MNib9JzmphQuQHQ0Nn6wKj1YACOIU4y1T5VB47+Y
+         EECdaLT0AAfU5FmQ8nLq8vSOTBRk4bG7ifk8CjEHcQpTI/PrKitkQVc5gUe5HPBWm4Eg
+         0FpWsiylnFFlyRTS01A7oMAFtxJNeI0zDD34mduN8Ucge/+3fEb5/wogfYz1B6CGfioe
+         hv7W8f1r6ahcrchixaxl+qs/fIHiZxOL3rWFcorqC3V+S4adPHQmv9yeyF2fSisICJr6
+         HWFQ==
+X-Received: by 10.194.110.38 with SMTP id hx6mr4477027wjb.128.1425449905703;
+        Tue, 03 Mar 2015 22:18:25 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id w8sm4425460wja.4.2015.03.03.22.18.50
+        by mx.google.com with ESMTPSA id vh8sm4412447wjc.12.2015.03.03.22.18.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 22:18:52 -0800 (PST)
-Date: Wed, 4 Mar 2015 08:18:47 +0200
+        Tue, 03 Mar 2015 22:18:25 -0800 (PST)
+Date: Wed, 4 Mar 2015 08:18:19 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/5] staging: ozwpan: remove extra parentheses around left
+Subject: [PATCH 1/5] staging: lustre: remove extra parentheses around left
  bit shift operations
-Message-ID: <af1c13ba19740d98809b3e3b23ac756ade41e355.1425449681.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <f019fdd8c94a26566253c7dd79e9993c0216f31b.1425449681.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425449681.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -52,8 +52,8 @@ In-Reply-To: <cover.1425449681.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
 Removes extra parentheses around bitwise left shift operations.
-The case handled is when resultant value is assigned to a variable.
-The issue was detected and resolved using the following
+The cases handled here are when resultant values are assigned to
+variables. The issue was detected and resolved using the following
 coccinelle script:
 
 @@
@@ -82,24 +82,56 @@ t i =
 -c);
 +c;
 
+@@
+expression e, e1;
+identifier f;
+constant c;
+@@
+
+e1 = f(...,
+-(e
++e
+<<
+-c)
++c
+,...);
+
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/ozwpan/ozproto.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/ozwpan/ozproto.c b/drivers/staging/ozwpan/ozproto.c
-index 3d3a3a8..1ba24a2 100644
---- a/drivers/staging/ozwpan/ozproto.c
-+++ b/drivers/staging/ozwpan/ozproto.c
-@@ -98,7 +98,7 @@ static void oz_send_conn_rsp(struct oz_pd *pd, u8 status)
- 		kfree_skb(skb);
- 		return;
- 	}
--	oz_hdr->control = (OZ_PROTOCOL_VERSION<<OZ_VERSION_SHIFT);
-+	oz_hdr->control = OZ_PROTOCOL_VERSION<<OZ_VERSION_SHIFT;
- 	oz_hdr->last_pkt_num = 0;
- 	put_unaligned(0, &oz_hdr->pkt_num);
- 	elt->type = OZ_ELT_CONNECT_RSP;
+diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c
+index 66d78c9..86b88db 100644
+--- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c
++++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c
+@@ -72,7 +72,7 @@ static int typed_conns = 1;
+ module_param(typed_conns, int, 0444);
+ MODULE_PARM_DESC(typed_conns, "use different sockets for bulk");
+ 
+-static int min_bulk = (1<<10);
++static int min_bulk = 1<<10;
+ module_param(min_bulk, int, 0644);
+ MODULE_PARM_DESC(min_bulk, "smallest 'large' message");
+ 
+@@ -122,7 +122,7 @@ static int nonblk_zcack = 1;
+ module_param(nonblk_zcack, int, 0644);
+ MODULE_PARM_DESC(nonblk_zcack, "always send ZC-ACK on non-blocking connection");
+ 
+-static unsigned int zc_min_payload = (16 << 10);
++static unsigned int zc_min_payload = 16 << 10;
+ module_param(zc_min_payload, int, 0644);
+ MODULE_PARM_DESC(zc_min_payload, "minimum payload size to zero copy");
+ 
+@@ -182,7 +182,7 @@ int ksocknal_tunables_init(void)
+ #endif
+ 
+ 	if (*ksocknal_tunables.ksnd_zc_min_payload < (2 << 10))
+-		*ksocknal_tunables.ksnd_zc_min_payload = (2 << 10);
++		*ksocknal_tunables.ksnd_zc_min_payload = 2 << 10;
+ 
+ 	return 0;
+ };
 -- 
 1.9.3
 
