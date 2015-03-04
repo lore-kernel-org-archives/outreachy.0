@@ -1,137 +1,145 @@
 X-GM-THRID: 6557663232000
-X-Received: by 10.112.131.7 with SMTP id oi7mr632486lbb.9.1425470858979;
-        Wed, 04 Mar 2015 04:07:38 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,7a08b91082310616
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.68.243.104 with SMTP id wx8mr4124064pbc.3.1425469571779;
+        Wed, 04 Mar 2015 03:46:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.231.38 with SMTP id td6ls98422wic.24.gmail; Wed, 04 Mar
- 2015 04:07:38 -0800 (PST)
-X-Received: by 10.194.53.225 with SMTP id e1mr620374wjp.4.1425470858677;
-        Wed, 04 Mar 2015 04:07:38 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id r6si312061wix.0.2015.03.04.04.07.38
+Received: by 10.107.38.74 with SMTP id m71ls550130iom.109.gmail; Wed, 04 Mar
+ 2015 03:46:11 -0800 (PST)
+X-Received: by 10.66.218.163 with SMTP id ph3mr3858085pac.46.1425469571549;
+        Wed, 04 Mar 2015 03:46:11 -0800 (PST)
+Return-Path: <somyaanand214@gmail.com>
+Received: from mail-pd0-x231.google.com (mail-pd0-x231.google.com. [2607:f8b0:400e:c02::231])
+        by gmr-mx.google.com with ESMTPS id ks4si481984pbc.1.2015.03.04.03.46.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 04 Mar 2015 04:07:38 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Mar 2015 03:46:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) client-ip=2607:f8b0:400e:c02::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,687,1418079600"; 
-   d="scan'208";a="124338343"
-Received: from unknown (HELO hadrien.local) ([207.96.227.9])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Mar 2015 13:07:37 +0100
-Date: Wed, 4 Mar 2015 07:07:36 -0500 (EST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Somya Anand <somyaanand214@gmail.com>
-cc: julia.lawall@lip6.fr, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 5/6] Staging: rtl8188eu: Remove redundant local
- variable
-In-Reply-To: <1425469442-32412-6-git-send-email-somyaanand214@gmail.com>
-Message-ID: <alpine.DEB.2.10.1503040706130.3976@hadrien>
-References: <1425469442-32412-1-git-send-email-somyaanand214@gmail.com> <1425469442-32412-6-git-send-email-somyaanand214@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-x231.google.com with SMTP id fl12so25644943pdb.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 03:46:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=jJYcXENKRzBGxq+vExAPRknuZ89+By4sZQobn8JDQow=;
+        b=MSZF/yozECTfBdgyN7ZP14EnAwi4Y1rqaUXCEKTzLr3S+KHng0s0gWEk+zwuIaZrX6
+         8bDXQrt27wK6Kvv2uIE+Wi+MlRkRpA8seFGIDs9mVoQW1TRxAMxKvX3MzwIPKl5DYzwx
+         dh2mRlQoa+FgoJLy7qi9ApuaOx2SYKPFW7Xb/lQXc5C5K82Ik/AXoqRWkgme0+rR0WyD
+         XjQn9oJpUmGQnrNCf4qatIwgQQv0uFv8Oqmj00ja7pKpAu+m2sfN7vMGeZV4DoNa3D6C
+         Rv7JTFc/TcSkZ/XYSytl2+lHT3BKTFNBXGgGslbf6YoYKxB0Z2Ppb7uR4M2md8GcDSx+
+         3kXw==
+X-Received: by 10.66.182.166 with SMTP id ef6mr5987490pac.77.1425469571467;
+        Wed, 04 Mar 2015 03:46:11 -0800 (PST)
+Return-Path: <somyaanand214@gmail.com>
+Received: from localhost.localdomain ([182.66.41.48])
+        by mx.google.com with ESMTPSA id fy2sm3826164pbb.30.2015.03.04.03.46.06
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 04 Mar 2015 03:46:11 -0800 (PST)
+From: Somya Anand <somyaanand214@gmail.com>
+To: julia.lawall@lip6.fr
+Cc: outreachy-kernel@googlegroups.com,
+	Somya Anand <somyaanand214@gmail.com>
+Subject: [PATCH 6/6] Staging: rtl8188eu: Remove redundant local variable
+Date: Wed,  4 Mar 2015 17:14:02 +0530
+Message-Id: <1425469442-32412-7-git-send-email-somyaanand214@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1425469442-32412-1-git-send-email-somyaanand214@gmail.com>
+References: <1425469442-32412-1-git-send-email-somyaanand214@gmail.com>
 
-This patch and 6/6 have as afar as I can see the same subject line.  Every
-patch must have a different subject line.  One solution could be to merge
-two patches on the same driver.  Another could be to find another way to
-refer to the code.  You may use git log --oneline {path} to find what
-others have done.
+This patch removes a redundant variable "inx" and adds inline
+return statements. It also adds a default case in switch statement
+which returns 0 to keep the logic intact.
 
-julia
+This issue is identified by the following coccinelle script.
+@@
+expression ret;
+identifier f;
+@@
 
-On Wed, 4 Mar 2015, Somya Anand wrote:
+-ret =
++return
+     f(...);
+-return ret;
 
-> This patch removes a redundant variable "val" and adds
-> inline return statements. It also adds a default case
-> to the switch statement which returns 0 to keep the logic
-> intact.
->
-> This issue is identified by the following coccinelle script.
-> @@
-> expression ret;
-> identifier f;
-> @@
->
-> -ret =
-> +return
->      f(...);
-> -return ret;
->
-> Signed-off-by: Somya Anand <somyaanand214@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/core/rtw_wlan_util.c | 41 +++++++++-----------------
->  1 file changed, 14 insertions(+), 27 deletions(-)
->
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-> index d5ebd52..9939448 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-> @@ -136,47 +136,34 @@ u8 judge_network_type(struct adapter *padapter, unsigned char *rate, int ratelen
->
->  static unsigned char ratetbl_val_2wifirate(unsigned char rate)
->  {
-> -	unsigned char val = 0;
-> -
->  	switch (rate & 0x7f) {
->  	case 0:
-> -		val = IEEE80211_CCK_RATE_1MB;
-> -		break;
-> +		return IEEE80211_CCK_RATE_1MB;
->  	case 1:
-> -		val = IEEE80211_CCK_RATE_2MB;
-> -		break;
-> +		return IEEE80211_CCK_RATE_2MB;
->  	case 2:
-> -		val = IEEE80211_CCK_RATE_5MB;
-> -		break;
-> +		return IEEE80211_CCK_RATE_5MB;
->  	case 3:
-> -		val = IEEE80211_CCK_RATE_11MB;
-> -		break;
-> +		return IEEE80211_CCK_RATE_11MB;
->  	case 4:
-> -		val = IEEE80211_OFDM_RATE_6MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_6MB;
->  	case 5:
-> -		val = IEEE80211_OFDM_RATE_9MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_9MB;
->  	case 6:
-> -		val = IEEE80211_OFDM_RATE_12MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_12MB;
->  	case 7:
-> -		val = IEEE80211_OFDM_RATE_18MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_18MB;
->  	case 8:
-> -		val = IEEE80211_OFDM_RATE_24MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_24MB;
->  	case 9:
-> -		val = IEEE80211_OFDM_RATE_36MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_36MB;
->  	case 10:
-> -		val = IEEE80211_OFDM_RATE_48MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_48MB;
->  	case 11:
-> -		val = IEEE80211_OFDM_RATE_54MB;
-> -		break;
-> +		return IEEE80211_OFDM_RATE_54MB;
-> +	default:
-> +		return 0;
->  	}
-> -	return val;
->  }
->
->  static int is_basicrate(struct adapter *padapter, unsigned char rate)
-> --
-> 1.9.1
->
->
+Signed-off-by: Somya Anand <somyaanand214@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_wlan_util.c | 41 +++++++++-----------------
+ 1 file changed, 14 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
+index 9939448..0bb9181 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
+@@ -1195,49 +1195,36 @@ unsigned int is_ap_in_wep(struct adapter *padapter)
+ 
+ static int wifirate2_ratetbl_inx(unsigned char rate)
+ {
+-	int	inx = 0;
+-
+ 	rate = rate & 0x7f;
+ 
+ 	switch (rate) {
+ 	case 54*2:
+-		inx = 11;
+-		break;
++		return 11;
+ 	case 48*2:
+-		inx = 10;
+-		break;
++		return 10;
+ 	case 36*2:
+-		inx = 9;
+-		break;
++		return 9;
+ 	case 24*2:
+-		inx = 8;
+-		break;
++		return 8;
+ 	case 18*2:
+-		inx = 7;
+-		break;
++		return 7;
+ 	case 12*2:
+-		inx = 6;
+-		break;
++		return 6;
+ 	case 9*2:
+-		inx = 5;
+-		break;
++		return 5;
+ 	case 6*2:
+-		inx = 4;
+-		break;
++		return 4;
+ 	case 11*2:
+-		inx = 3;
+-		break;
++		return 3;
+ 	case 11:
+-		inx = 2;
+-		break;
++		return 2;
+ 	case 2*2:
+-		inx = 1;
+-		break;
++		return 1;
+ 	case 1*2:
+-		inx = 0;
+-		break;
++		return 0;
++	default:
++		return 0;
+ 	}
+-	return inx;
+ }
+ 
+ unsigned int update_basic_rate(unsigned char *ptn, unsigned int ptn_sz)
+-- 
+1.9.1
+
 
