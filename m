@@ -1,53 +1,49 @@
 X-GM-THRID: 6406607470592
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,f04d7bc1ed043b39
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.41.131 with SMTP id f3mr353419lbl.20.1425447304424;
-        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
+X-Received: by 10.112.147.35 with SMTP id th3mr321266lbb.15.1425447255042;
+        Tue, 03 Mar 2015 21:34:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.14.9 with SMTP id l9ls42800wic.11.canary; Tue, 03 Mar 2015
- 21:35:04 -0800 (PST)
-X-Received: by 10.180.39.164 with SMTP id q4mr791162wik.5.1425447304114;
-        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
+Received: by 10.152.115.207 with SMTP id jq15ls131326lab.107.gmail; Tue, 03
+ Mar 2015 21:34:13 -0800 (PST)
+X-Received: by 10.152.28.137 with SMTP id b9mr342043lah.8.1425447253593;
+        Tue, 03 Mar 2015 21:34:13 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
-        by gmr-mx.google.com with ESMTPS id r6si243728wix.0.2015.03.03.21.35.04
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id r6si243622wix.0.2015.03.03.21.34.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
+        Tue, 03 Mar 2015 21:34:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x231.google.com with SMTP id z2so8399183wiv.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:35:04 -0800 (PST)
+Received: by mail-wi0-x233.google.com with SMTP id l15so27956140wiw.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:34:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=TkF2NS6av/8Nmb/FZaBH4GUIZnHRWyQtPly4a8mZUcg=;
-        b=cwi3p4/bo2jfmrXFKnWWYIyj0JMZG+LKAzcJ48MjlvvB38s32HuR+B1WFIhHCK5F41
-         m/IOKF1b7MYkCG23LisFN8qDDFfBmlKBoWO+kkeBkFc8TlWbjHSzsIL7mZnqf0TcW6I6
-         Nl7X5Qj82A8d9gU2IIttC3jwLb0FmH9DbEg54uReBH5Vn7JWrZ5I5WyDhzLNa0Nwg+1x
-         QALWumI1K88kUMMw96laEzhMkLfETrmu4VWey5wYO57chg+7HwyVoz6r0Ad8fBfph5zX
-         4c/tSBwrzXK10wXb+DIZTs1JLeB5nPOcJ+VH4p37cH4u48TML8u0MR3aZl8yycOeK8vH
-         LM6w==
-X-Received: by 10.180.9.111 with SMTP id y15mr9239666wia.86.1425447304051;
-        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
+        bh=1iwktRFwZb5RYDYvpmI0h02HnHqV4gNYmGQ0Y+/QDmA=;
+        b=AITX577MB3E32bDBixvwqd92pKUEYgUsYSpfydMuWR7IICWiw7uOhcv90FpXHpwJB0
+         m96gBbdSlhdnzLWsz0JqQZdv/z5eIY9e4mPg6IaFUaZgq0iU27Pp+wv7HCyXM52TFssA
+         UkL7/bHoyz456p32vkk5CokXQHmIfpPWPBph1FLDEEs4xKPyPwIuE+mwnmyaG1K1HNCD
+         6qPcKf9nRPKt18UiZxyn3VORTQoNv4xJgpoISCQzO6eSKBP9Fxd/ZlvNqXbmYdnih4iv
+         0tqgQjpsTf7WyWQaoiE4HfJGS9KGpC4EXpA/3L/sWosOj3VUTCcHpueBCQHVx1Nb7+4g
+         QxfQ==
+X-Received: by 10.194.11.9 with SMTP id m9mr4327060wjb.82.1425447253499;
+        Tue, 03 Mar 2015 21:34:13 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id q10sm2715592wjr.41.2015.03.03.21.35.02
+        by mx.google.com with ESMTPSA id hi6sm4247234wjc.34.2015.03.03.21.34.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 21:35:03 -0800 (PST)
-Date: Wed, 4 Mar 2015 07:34:52 +0200
+        Tue, 03 Mar 2015 21:34:12 -0800 (PST)
+Date: Wed, 4 Mar 2015 07:34:07 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 11/13] staging: slicoss: remove extra parentheses around
+Subject: [PATCH 10/13] staging: rtl8723au: remove extra parentheses around
  right bit shift operations
-Message-ID: <7e40d76391ac2e565f024b04b374102b4d4638d2.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <d7817c024bd2e553250826c7127e1be8e3aaa06c.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -100,38 +96,59 @@ e1 = f(...,
 +c
 ,...);
 
-Some coding style issues were handled manually to avoid
-checkpatch warnings and errors.
-
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/slicoss/slicoss.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8723au/hal/odm.c               | 6 +++---
+ drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
-index 45f6a5f..c84dd60 100644
---- a/drivers/staging/slicoss/slicoss.c
-+++ b/drivers/staging/slicoss/slicoss.c
-@@ -164,7 +164,7 @@ static void slic_mcast_set_bit(struct adapter *adapter, char *address)
- 	/* Get the CRC polynomial for the mac address */
- 	/* we use bits 1-8 (lsb), bitwise reversed,
- 	 * msb (= lsb bit 0 before bitrev) is automatically discarded */
--	crcpoly = (ether_crc(ETH_ALEN, address)>>23);
-+	crcpoly = ether_crc(ETH_ALEN, address)>>23;
+diff --git a/drivers/staging/rtl8723au/hal/odm.c b/drivers/staging/rtl8723au/hal/odm.c
+index 375f85d..e52a8e3 100644
+--- a/drivers/staging/rtl8723au/hal/odm.c
++++ b/drivers/staging/rtl8723au/hal/odm.c
+@@ -778,15 +778,15 @@ void odm_FalseAlarmCounterStatistics23a(struct dm_odm_t *pDM_Odm)
+ 	ret_value =
+ 		ODM_GetBBReg(pDM_Odm, ODM_REG_OFDM_FA_TYPE1_11N, bMaskDWord);
+ 	FalseAlmCnt->Cnt_Fast_Fsync = (ret_value&0xffff);
+-	FalseAlmCnt->Cnt_SB_Search_fail = ((ret_value&0xffff0000)>>16);
++	FalseAlmCnt->Cnt_SB_Search_fail = (ret_value & 0xffff0000)>>16;
+ 	ret_value =
+ 		ODM_GetBBReg(pDM_Odm, ODM_REG_OFDM_FA_TYPE2_11N, bMaskDWord);
+ 	FalseAlmCnt->Cnt_OFDM_CCA = (ret_value&0xffff);
+-	FalseAlmCnt->Cnt_Parity_Fail = ((ret_value&0xffff0000)>>16);
++	FalseAlmCnt->Cnt_Parity_Fail = (ret_value & 0xffff0000)>>16;
+ 	ret_value =
+ 		ODM_GetBBReg(pDM_Odm, ODM_REG_OFDM_FA_TYPE3_11N, bMaskDWord);
+ 	FalseAlmCnt->Cnt_Rate_Illegal = (ret_value&0xffff);
+-	FalseAlmCnt->Cnt_Crc8_fail = ((ret_value&0xffff0000)>>16);
++	FalseAlmCnt->Cnt_Crc8_fail = (ret_value & 0xffff0000)>>16;
+ 	ret_value =
+ 		ODM_GetBBReg(pDM_Odm, ODM_REG_OFDM_FA_TYPE4_11N, bMaskDWord);
+ 	FalseAlmCnt->Cnt_Mcs_fail = (ret_value&0xffff);
+diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c b/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+index a5eadd4..3bf2f7b 100644
+--- a/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
++++ b/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+@@ -755,7 +755,7 @@ void rtl8723a_read_chip_version(struct rtw_adapter *padapter)
  
- 	/* We only have space on the SLIC for 64 entries.  Lop
- 	 * off the top two bits. (2^6 = 64)
-@@ -1862,8 +1862,8 @@ static void slic_xmit_build_request(struct adapter *adapter,
- 	hcmd->cmdsize = (u32) ((((u64)&ihcmd->u.slic_buffers.bufs[1] -
- 				     (u64) hcmd) + 31) >> 5);
- #else
--	hcmd->cmdsize = ((((u32) &ihcmd->u.slic_buffers.bufs[1] -
--			   (u32) hcmd) + 31) >> 5);
-+	hcmd->cmdsize = (((u32)&ihcmd->u.slic_buffers.bufs[1] -
-+				       (u32)hcmd) + 31) >> 5;
- #endif
- }
+ 	value32 = rtl8723au_read32(padapter, REG_GPIO_OUTSTS);
+ 	/*  ROM code version. */
+-	ChipVersion.ROMVer = ((value32 & RF_RL_ID) >> 20);
++	ChipVersion.ROMVer = (value32 & RF_RL_ID) >> 20;
  
+ 	/*  For multi-function consideration. Added by Roger, 2010.10.06. */
+ 	pHalData->MultiFunc = RT_MULTI_FUNC_NONE;
+@@ -1747,8 +1747,8 @@ Hal_EfuseParseBTCoexistInfo_8723A(struct rtw_adapter *padapter,
+ 		/*  eeprom spec */
+ 		tempval = hwinfo[RF_OPTION4_8723A];
+ 		pHalData->EEPROMBluetoothAntNum = (tempval & 0x1);
+-		pHalData->EEPROMBluetoothAntIsolation = ((tempval & 0x10) >> 4);
+-		pHalData->EEPROMBluetoothRadioShared = ((tempval & 0x20) >> 5);
++		pHalData->EEPROMBluetoothAntIsolation = (tempval & 0x10) >> 4;
++		pHalData->EEPROMBluetoothRadioShared = (tempval & 0x20) >> 5;
+ 	} else {
+ 		pHalData->EEPROMBluetoothCoexist = 0;
+ 		pHalData->EEPROMBluetoothType = BT_RTL8723A;
 -- 
 1.9.3
 
