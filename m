@@ -1,49 +1,53 @@
 X-GM-THRID: 6406607470592
-X-Received: by 10.180.80.35 with SMTP id o3mr3546311wix.0.1425447334309;
-        Tue, 03 Mar 2015 21:35:34 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,f04d7bc1ed043b39
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.41.131 with SMTP id f3mr353419lbl.20.1425447304424;
+        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.149.168 with SMTP id ub8ls39215wib.50.gmail; Tue, 03 Mar
- 2015 21:35:33 -0800 (PST)
-X-Received: by 10.180.101.101 with SMTP id ff5mr3508757wib.5.1425447333932;
-        Tue, 03 Mar 2015 21:35:33 -0800 (PST)
+Received: by 10.180.14.9 with SMTP id l9ls42800wic.11.canary; Tue, 03 Mar 2015
+ 21:35:04 -0800 (PST)
+X-Received: by 10.180.39.164 with SMTP id q4mr791162wik.5.1425447304114;
+        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id by11si1054963wib.1.2015.03.03.21.35.33
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id r6si243728wix.0.2015.03.03.21.35.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 21:35:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x235.google.com with SMTP id w55so44017046wes.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:35:33 -0800 (PST)
+Received: by mail-wi0-x231.google.com with SMTP id z2so8399183wiv.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:35:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=tVcbtWPX4lA9KoKOetGc2HOegebtptgH+E4wzyvjZW8=;
-        b=0NHN8PF0GsklBwaxm7UkV7s4F21ATv/KNLHKrOSNp/oUM9r57QnKIkBswo7H9uuTyn
-         r01oUFfXOAV/EN1kRwE/OyuRRWkGbStoDqERK1vi5TBBpvsRw4sppFuUZMsnj59oO1nB
-         Sg0Rck4XTspBusSvF8vCUdFEmZgkxRmZU3rR1127dtlcYVvCh1YWkq1IyyZXVskryM06
-         T7zDyvRrpLTO4mVz4eOIAg9pAPhiOTihpSP7ghnMshPkmJvFXQDPzQZtC3vtoEKRLqYQ
-         jmsX1cWjCnMBCPpK/KwuJeKZ2jpW2k67jQBd68MRU4NYBCFcXWY7cWVDD8Q2dQU7VEpU
-         oDJg==
-X-Received: by 10.180.87.165 with SMTP id az5mr52230498wib.29.1425447333873;
-        Tue, 03 Mar 2015 21:35:33 -0800 (PST)
+        bh=TkF2NS6av/8Nmb/FZaBH4GUIZnHRWyQtPly4a8mZUcg=;
+        b=cwi3p4/bo2jfmrXFKnWWYIyj0JMZG+LKAzcJ48MjlvvB38s32HuR+B1WFIhHCK5F41
+         m/IOKF1b7MYkCG23LisFN8qDDFfBmlKBoWO+kkeBkFc8TlWbjHSzsIL7mZnqf0TcW6I6
+         Nl7X5Qj82A8d9gU2IIttC3jwLb0FmH9DbEg54uReBH5Vn7JWrZ5I5WyDhzLNa0Nwg+1x
+         QALWumI1K88kUMMw96laEzhMkLfETrmu4VWey5wYO57chg+7HwyVoz6r0Ad8fBfph5zX
+         4c/tSBwrzXK10wXb+DIZTs1JLeB5nPOcJ+VH4p37cH4u48TML8u0MR3aZl8yycOeK8vH
+         LM6w==
+X-Received: by 10.180.9.111 with SMTP id y15mr9239666wia.86.1425447304051;
+        Tue, 03 Mar 2015 21:35:04 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id cf12sm4286700wjb.10.2015.03.03.21.35.31
+        by mx.google.com with ESMTPSA id q10sm2715592wjr.41.2015.03.03.21.35.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 21:35:33 -0800 (PST)
-Date: Wed, 4 Mar 2015 07:35:28 +0200
+        Tue, 03 Mar 2015 21:35:03 -0800 (PST)
+Date: Wed, 4 Mar 2015 07:34:52 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 12/13] staging: speakup: remove extra parentheses around
- right bit shift operation
-Message-ID: <c19382d04086f1c8be1c5615b07a923dbbce68d5.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 11/13] staging: slicoss: remove extra parentheses around
+ right bit shift operations
+Message-ID: <7e40d76391ac2e565f024b04b374102b4d4638d2.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,9 +55,9 @@ Content-Disposition: inline
 In-Reply-To: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Removes extra parentheses around bitwise right shift operation.
-The case handled is  when the resultant value is assigned to
-a variable. The issue was detected and resolved using the following
+Removes extra parentheses around bitwise right shift operations.
+The cases handled here are when resultant values are assigned to
+variables. The issue was detected and resolved using the following
 coccinelle script:
 
 @@
@@ -96,24 +100,38 @@ e1 = f(...,
 +c
 ,...);
 
+Some coding style issues were handled manually to avoid
+checkpatch warnings and errors.
+
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/speakup/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/slicoss/slicoss.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index e9f0c15..1249f91 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -1527,7 +1527,7 @@ static void update_color_buffer(struct vc_data *vc, const char *ic, int len)
- 	int i, bi, hi;
- 	int vc_num = vc->vc_num;
+diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
+index 45f6a5f..c84dd60 100644
+--- a/drivers/staging/slicoss/slicoss.c
++++ b/drivers/staging/slicoss/slicoss.c
+@@ -164,7 +164,7 @@ static void slic_mcast_set_bit(struct adapter *adapter, char *address)
+ 	/* Get the CRC polynomial for the mac address */
+ 	/* we use bits 1-8 (lsb), bitwise reversed,
+ 	 * msb (= lsb bit 0 before bitrev) is automatically discarded */
+-	crcpoly = (ether_crc(ETH_ALEN, address)>>23);
++	crcpoly = ether_crc(ETH_ALEN, address)>>23;
  
--	bi = ((vc->vc_attr & 0x70) >> 4);
-+	bi = (vc->vc_attr & 0x70) >> 4;
- 	hi = speakup_console[vc_num]->ht.highsize[bi];
+ 	/* We only have space on the SLIC for 64 entries.  Lop
+ 	 * off the top two bits. (2^6 = 64)
+@@ -1862,8 +1862,8 @@ static void slic_xmit_build_request(struct adapter *adapter,
+ 	hcmd->cmdsize = (u32) ((((u64)&ihcmd->u.slic_buffers.bufs[1] -
+ 				     (u64) hcmd) + 31) >> 5);
+ #else
+-	hcmd->cmdsize = ((((u32) &ihcmd->u.slic_buffers.bufs[1] -
+-			   (u32) hcmd) + 31) >> 5);
++	hcmd->cmdsize = (((u32)&ihcmd->u.slic_buffers.bufs[1] -
++				       (u32)hcmd) + 31) >> 5;
+ #endif
+ }
  
- 	i = 0;
 -- 
 1.9.3
 
