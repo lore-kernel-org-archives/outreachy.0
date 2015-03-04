@@ -1,49 +1,53 @@
 X-GM-THRID: 6406607470592
-X-Received: by 10.194.161.194 with SMTP id xu2mr342109wjb.1.1425447086719;
-        Tue, 03 Mar 2015 21:31:26 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,f04d7bc1ed043b39
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.8.67 with SMTP id p3mr3502924wia.7.1425447056184;
+        Tue, 03 Mar 2015 21:30:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.37.194 with SMTP id a2ls119386lak.88.gmail; Tue, 03 Mar
- 2015 21:31:25 -0800 (PST)
-X-Received: by 10.112.41.131 with SMTP id f3mr351765lbl.20.1425447085099;
-        Tue, 03 Mar 2015 21:31:25 -0800 (PST)
+Received: by 10.152.36.36 with SMTP id n4ls109572laj.27.gmail; Tue, 03 Mar
+ 2015 21:30:54 -0800 (PST)
+X-Received: by 10.112.189.227 with SMTP id gl3mr357658lbc.2.1425447054598;
+        Tue, 03 Mar 2015 21:30:54 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
-        by gmr-mx.google.com with ESMTPS id i7si1025470wif.0.2015.03.03.21.31.25
+Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
+        by gmr-mx.google.com with ESMTPS id i7si1025395wif.0.2015.03.03.21.30.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 21:31:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
+        Tue, 03 Mar 2015 21:30:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghl2 with SMTP id l2so424732wgh.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:31:25 -0800 (PST)
+Received: by mail-we0-x229.google.com with SMTP id q59so7089054wes.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:30:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=QfVhzhsveurmWVJ8h7tw9mUWa3DtTpdQndW0Ebpvm5o=;
-        b=U87gsbfTwoKktm67hScggSOih3aCvG4hVs3EiG/npA4PnzD/vqeH/cF1egUM36aJSJ
-         II9Z8QkH15mGkQpsK6cI/KmH3rOsFyick3mhO0YKXjjG+nn2ap6jMrQmR7fo9BwIEB9X
-         v9URfiC+Muu1py01Y3MXtxmrxvIgdMzc11Vf3dXBcrWZNRYWQclOrkvTQO43NBrNCmvh
-         V1fx1o7oYvrY4zuV+ZNV8pS4QI0wtM8DzbGe4LyeGnVu6G+o8aozo5VD9F5kYtd4QZx2
-         bcjLn9oluwzrE8za1ujdOzL1pTUu4vgh4yfW0HAGyT+hiXlXUARbIMnfDW78s6uhfDsM
-         6Txg==
-X-Received: by 10.180.9.111 with SMTP id y15mr9217277wia.86.1425447085016;
-        Tue, 03 Mar 2015 21:31:25 -0800 (PST)
+        bh=8ix6etzmxCOKAfLeuksxQuhEdXZSLUHTKH+bfb/OLjc=;
+        b=c4kAtzYOx02isCNwprqjTZBu8Jz/8CtZJKlhKnLYwVwJNsSa0aYzScB0p5Bt3Ka9zE
+         k9RmoBUHCmGj31OGfonI7AtAbF2S8KZxOF2i46EYnd5Q+4VIAyQwRGrMXT+mA+84e49C
+         hZug9M299VVDJKkhKJehtESpvO3pys0TPS3yZvaYdm4Qpriaw4WyJZkYcHl9oH8FqLTG
+         6KFxO8x9oXogfR0Zz0NEWV+RDg4/fRE/DT586Avc1mXFqi0qNLSsFapVpNB1JgrHnGbc
+         U4QM35ayvd+REH3JhTnSouc5JGVgRO2m3H1ZmuG1n/htWF8YeqLUlggd04DzwPMoeps/
+         XlAg==
+X-Received: by 10.195.12.167 with SMTP id er7mr4553259wjd.54.1425447054535;
+        Tue, 03 Mar 2015 21:30:54 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id e2sm4221062wjy.46.2015.03.03.21.31.23
+        by mx.google.com with ESMTPSA id pp10sm2705964wjc.31.2015.03.03.21.30.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 21:31:24 -0800 (PST)
-Date: Wed, 4 Mar 2015 07:31:19 +0200
+        Tue, 03 Mar 2015 21:30:53 -0800 (PST)
+Date: Wed, 4 Mar 2015 07:30:49 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 05/13] staging: media: lirc: remove extra parentheses around
- right bit shift operation
-Message-ID: <e182e8750eb04a664e0362405f18921170529135.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 04/13] staging: media: bcm2048: remove extra parentheses
+ around right bit shift operation
+Message-ID: <57256f9cfccb8ed20912588df7c5f68687aecfad.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -98,22 +102,23 @@ e1 = f(...,
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_serial.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/bcm2048/radio-bcm2048.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/lirc/lirc_serial.c b/drivers/staging/media/lirc/lirc_serial.c
-index 19628d0..9f55a83 100644
---- a/drivers/staging/media/lirc/lirc_serial.c
-+++ b/drivers/staging/media/lirc/lirc_serial.c
-@@ -344,7 +344,7 @@ static int init_timing_params(unsigned int new_duty_cycle,
- 	/* How many clocks in a microsecond?, avoiding long long divide */
- 	work = loops_per_sec;
- 	work *= 4295;  /* 4295 = 2^32 / 1e6 */
--	conv_us_to_clocks = (work >> 32);
-+	conv_us_to_clocks = work >> 32;
+diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
+index 5382506..116251b 100644
+--- a/drivers/staging/media/bcm2048/radio-bcm2048.c
++++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
+@@ -2245,8 +2245,7 @@ static ssize_t bcm2048_fops_read(struct file *file, char __user *buf,
  
- 	/*
- 	 * Carrier period in clocks, approach good up to 32GHz clock,
+ 		tmpbuf[i] = bdev->rds_info.radio_text[bdev->rd_index+i+2];
+ 		tmpbuf[i+1] = bdev->rds_info.radio_text[bdev->rd_index+i+1];
+-		tmpbuf[i+2] = ((bdev->rds_info.radio_text[bdev->rd_index+i]
+-				& 0xf0) >> 4);
++		tmpbuf[i+2] = (bdev->rds_info.radio_text[bdev->rd_index + i] & 0xf0) >> 4;
+ 		if ((bdev->rds_info.radio_text[bdev->rd_index+i] &
+ 			BCM2048_RDS_CRC_MASK) == BCM2048_RDS_CRC_UNRECOVARABLE)
+ 			tmpbuf[i+2] |= 0x80;
 -- 
 1.9.3
 
