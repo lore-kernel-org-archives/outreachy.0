@@ -1,48 +1,52 @@
 X-GM-THRID: 6510934491136
-X-Received: by 10.112.214.234 with SMTP id od10mr370806lbc.3.1425452435446;
-        Tue, 03 Mar 2015 23:00:35 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,3142a4e3bee2f234
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.161.194 with SMTP id xu2mr383459wjb.1.1425452220849;
+        Tue, 03 Mar 2015 22:57:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.198.6 with SMTP id iy6ls125150lac.38.gmail; Tue, 03 Mar
- 2015 23:00:33 -0800 (PST)
-X-Received: by 10.152.6.41 with SMTP id x9mr384298lax.10.1425452433958;
-        Tue, 03 Mar 2015 23:00:33 -0800 (PST)
+Received: by 10.180.103.130 with SMTP id fw2ls51205wib.20.gmail; Tue, 03 Mar
+ 2015 22:56:59 -0800 (PST)
+X-Received: by 10.180.11.34 with SMTP id n2mr835476wib.2.1425452219603;
+        Tue, 03 Mar 2015 22:56:59 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
-        by gmr-mx.google.com with ESMTPS id r6si254235wix.0.2015.03.03.23.00.33
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id by11si1065092wib.1.2015.03.03.22.56.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 23:00:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
+        Tue, 03 Mar 2015 22:56:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevm14 with SMTP id m14so44331522wev.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 23:00:33 -0800 (PST)
+Received: by mail-wi0-x22c.google.com with SMTP id z2so8711827wiv.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 22:56:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=MC5p26XXlvKl5CyZreGM2NtsU9vP52O7UnhlTToehmA=;
-        b=SsOOgoO8O620lJVlzyL0gqWVYC7P26NeF7P9psoSfRjLGaSwWX1MpxyB5Pbhp3gmPK
-         MhHVJgSguq+dlqZu+it2IHfegqb6lv4UpO442G16K2tjCCxY4UdpFrNNhMVPIiKh1BeU
-         +0L4IgtvGzovyVnLv8qjcldlna2OIQbUIfCP5NtmPsNbqehyPgp4nqUe7RrD55N5Aaen
-         fYGNBWIRPWxzCoMZJFmHGKHT30qDC56f/SPjDqG/6casvfeG0Soh59dKhFfvttAefOUW
-         NEqpQ248JgUv5Y4fMH8Yh0sfVDoMFidk0tY0mh+z8XljIYZW2bcLBZhB9x8hGwdEe44U
-         EjKg==
-X-Received: by 10.181.8.225 with SMTP id dn1mr54081919wid.55.1425452433819;
-        Tue, 03 Mar 2015 23:00:33 -0800 (PST)
+        bh=OATGQvGdrVdsOLDY3DkBgzKF6uEs33EttO4KYNqYPcM=;
+        b=fg/3aAlkj39P49MwoKTE0YPu5vZftSPkZ1ROeBPU4dmJuKZr7CMkY1vBp7KN5kjJ25
+         DT4Yhi57WlDyVeBy6fY8wmve4kWpFYpW+Yc3K89h66Amqe3ZnNI76PBjlBxa33nsKIws
+         5wXaHezGCFu7KO4EdbDkmhZo8IqMi+uFE94VPcTIWzdx+SmYuCJo12611wgIoc1Ocwnq
+         DBlXDLXajeEbuewB9e3OTsyQD4hTUBWnLrAgjG1+VnqYm9ZvkMPEzeWUAFMGp/9Ghr71
+         bB6VQv5AsrYqvVAHmBdwZMKqeYIyLdXmlNcCLGLoqUaBksyai5zzxbbTV0rxBS876X8y
+         Ss+w==
+X-Received: by 10.180.189.37 with SMTP id gf5mr53122692wic.86.1425452219538;
+        Tue, 03 Mar 2015 22:56:59 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id r3sm4561596wjw.7.2015.03.03.23.00.31
+        by mx.google.com with ESMTPSA id b4sm23787177wic.2.2015.03.03.22.56.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 23:00:33 -0800 (PST)
-Date: Wed, 4 Mar 2015 09:00:02 +0200
+        Tue, 03 Mar 2015 22:56:58 -0800 (PST)
+Date: Wed, 4 Mar 2015 08:56:45 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rtl8712: replace memset(x,0,ETH_ALEN)
-Message-ID: <e25d42aa9b7e92de8243b6a961a5019e1ea65fdd.1425451828.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8188eu: replace memset(x,0,ETH_ALEN)
+Message-ID: <4e12f106c60e86a30bde897b445d21785252b282.1425451828.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425451828.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -53,7 +57,7 @@ User-Agent: Mutt/1.5.23 (2014-03-12)
 eth_zero_addr() is a wrapper function for memset if 0 is going to
 be assigned to a mac address. The aforementioned function replaces
 memset. In addition, linux/etherdevice.h was included as a header
-since it is the file that defines the inline function eth_zero_addr().
+since it is the file that define the inline function eth_zero_addr().
 The changes were carried out using the following coccinelle script:
 
 @header@
@@ -96,46 +100,51 @@ identifier e;
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
-v1: There is a line that issues an 80 character limit warning but is
-better left as is since whitespaces are not welcome after (, -> and .
+ drivers/staging/rtl8188eu/os_dep/ioctl_linux.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index 5d4470a..eacba8c 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -46,6 +46,8 @@
- #include <linux/semaphore.h>
- #include <net/iw_handler.h>
- #include <linux/if_arp.h>
+diff --git a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
+index 58998f2..96c1c2d 100644
+--- a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
+@@ -32,6 +32,8 @@
+ 
+ #include <rtw_iol.h>
+ #include <linux/vmalloc.h>
 +#include <linux/etherdevice.h>
 +
+ #include "osdep_intf.h"
  
- #define RTL_IOCTL_WPA_SUPPLICANT	(SIOCIWFIRSTPRIV + 0x1E)
- 
-@@ -112,7 +114,7 @@ void r8712_indicate_wx_disassoc_event(struct _adapter *padapter)
- 	union iwreq_data wrqu;
+ #define RTL_IOCTL_WPA_SUPPLICANT	(SIOCIWFIRSTPRIV + 30)
+@@ -92,7 +94,7 @@ void rtw_indicate_wx_disassoc_event(struct adapter *padapter)
+ 	memset(&wrqu, 0, sizeof(union iwreq_data));
  
  	wrqu.ap_addr.sa_family = ARPHRD_ETHER;
 -	memset(wrqu.ap_addr.sa_data, 0, ETH_ALEN);
 +	eth_zero_addr(wrqu.ap_addr.sa_data);
- 	wireless_send_event(padapter->pnetdev, SIOCGIWAP, &wrqu, NULL);
- }
  
-@@ -852,8 +854,7 @@ static int r871x_wx_set_pmkid(struct net_device *dev,
- 			    strIssueBssid, ETH_ALEN)) {
- 				/* BSSID is matched, the same AP => Remove
- 				 * this PMKID information and reset it. */
--				memset(psecuritypriv->PMKIDList[j].Bssid,
--					0x00, ETH_ALEN);
+ 	DBG_88E_LEVEL(_drv_always_, "indicate disassoc\n");
+ 	wireless_send_event(padapter->pnetdev, SIOCGIWAP, &wrqu, NULL);
+@@ -827,7 +829,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
+ 		for (j = 0; j < NUM_PMKID_CACHE; j++) {
+ 			if (!memcmp(psecuritypriv->PMKIDList[j].Bssid, strIssueBssid, ETH_ALEN)) {
+ 				/*  BSSID is matched, the same AP => Remove this PMKID information and reset it. */
+-				memset(psecuritypriv->PMKIDList[j].Bssid, 0x00, ETH_ALEN);
 +				eth_zero_addr(psecuritypriv->PMKIDList[j].Bssid);
  				psecuritypriv->PMKIDList[j].bUsed = false;
  				break;
  			}
-@@ -1118,7 +1119,7 @@ static int r8711_wx_get_wap(struct net_device *dev,
- 				     WIFI_AP_STATE))
+@@ -1028,7 +1030,7 @@ static int rtw_wx_get_wap(struct net_device *dev,
+ 
+ 	wrqu->ap_addr.sa_family = ARPHRD_ETHER;
+ 
+-	memset(wrqu->ap_addr.sa_data, 0, ETH_ALEN);
++	eth_zero_addr(wrqu->ap_addr.sa_data);
+ 
+ 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_wx_get_wap\n"));
+ 
+@@ -1037,7 +1039,7 @@ static int rtw_wx_get_wap(struct net_device *dev,
+ 	    ((check_fwstate(pmlmepriv, WIFI_AP_STATE)) == true))
  		memcpy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress, ETH_ALEN);
  	else
 -		memset(wrqu->ap_addr.sa_data, 0, ETH_ALEN);
