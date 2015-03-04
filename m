@@ -1,117 +1,129 @@
-X-GM-THRID: 3944967307264
-X-Received: by 10.42.16.141 with SMTP id p13mr9839741ica.6.1424981392829;
-        Thu, 26 Feb 2015 12:09:52 -0800 (PST)
+X-GM-THRID: 5240177819648
+X-Received: by 10.180.87.166 with SMTP id az6mr4230940wib.1.1425508355154;
+        Wed, 04 Mar 2015 14:32:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.142.98 with SMTP id rv2ls306855igb.34.gmail; Thu, 26 Feb
- 2015 12:09:52 -0800 (PST)
-X-Received: by 10.42.235.15 with SMTP id ke15mr71757icb.8.1424981392643;
-        Thu, 26 Feb 2015 12:09:52 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id hs7si246662pad.1.2015.02.26.12.09.52
+Received: by 10.180.88.98 with SMTP id bf2ls214063wib.30.gmail; Wed, 04 Mar
+ 2015 14:32:33 -0800 (PST)
+X-Received: by 10.180.11.34 with SMTP id n2mr1498302wib.2.1425508353850;
+        Wed, 04 Mar 2015 14:32:33 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id o3si1202889wib.2.2015.03.04.14.32.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 12:09:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 04 Mar 2015 14:32:33 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pablf10 with SMTP id lf10so16519497pab.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 12:09:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=8Mr0d6tO5V2Iwjqqflr52X7upkNv0M/xISBVQKDedE0=;
-        b=1G5IGM34013EUzkUpwbEbwsBSSYDOgRwcssCPmT0F7g8DRBRo14dMH5+etQGNAcMyu
-         9APzTrfK9Gw6xRtPVzRUJF0cf3AuS00f8gUbBkEBQSXt1GDbNGULikyLWK4EGeImlrDC
-         mhavSy5UdUGPY+JtuqJBK00U3w1BVTz4e3me1A4ZQLX2KTaYOkrluq7swg0i+kUZPuFM
-         PUlVDxYri8/2qSSH5toSa6pEYUuseQg0EhmjK/Dk22BF5N280fo6liw75KYaSkmp/wEf
-         wK2RDRUu09z0Bh4jHdIYd3xHjFHagm6AXwuL2kjD4w9NDhpr9CqOgGsdOlvo9hW1heqL
-         Di2g==
-X-Received: by 10.66.221.70 with SMTP id qc6mr17843707pac.92.1424981392494;
-        Thu, 26 Feb 2015 12:09:52 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id mi9sm1888374pab.3.2015.02.26.12.09.51
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 12:09:51 -0800 (PST)
-Date: Fri, 27 Feb 2015 01:39:32 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Remove unnecessary if condition
-Message-ID: <20150226200932.GA32544@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,343,1422918000"; 
+   d="scan'208";a="124422453"
+Received: from unknown (HELO [132.207.219.27]) ([132.207.219.27])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Mar 2015 23:32:32 +0100
+Date: Wed, 4 Mar 2015 17:32:31 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192e: Remove if
+ conditions.
+In-Reply-To: <8f8344f2-dc88-4816-b7bc-62536fc20f2d@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1503041732130.2734@hadrien>
+References: <20150228215501.GA5201@localhost> <alpine.DEB.2.10.1503011640130.2545@hadrien> <8f8344f2-dc88-4816-b7bc-62536fc20f2d@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-2066488226-1425508352=:2734"
 
-Remove this branch as is2t is defined false and is not
-modified. The variable value32 is then unused.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 37 +------------------------------------
- 1 file changed, 1 insertion(+), 36 deletions(-)
+--8323329-2066488226-1425508352=:2734
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 5822ca6..1540e1d 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -458,7 +458,7 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
- 	u8 thermal_val = 0, delta, delta_lck, delta_iqk, offset;
- 	u8 thermal_avg_count = 0;
- 	u32 thermal_avg = 0;
--	s32 ele_a = 0, ele_d, temp_cck, x, value32;
-+	s32 ele_a = 0, ele_d, temp_cck, x;
- 	s32 y, ele_c = 0;
- 	s8 ofdm_index[2], cck_index = 0;
- 	s8 ofdm_index_old[2] = {0, 0}, cck_index_old = 0;
-@@ -653,41 +653,6 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
- 					ele_c = ((y * ele_d)>>8)&0x000003FF;
- 
- 				}
--
--				if (is2t) {
--					ele_d = (OFDMSwingTable[(u8)ofdm_index[1]] & 0xFFC00000)>>22;
--
--					/* new element A = element D x X */
--					x = dm_odm->RFCalibrateInfo.IQKMatrixRegSetting[indexforchannel].Value[0][4];
--					y = dm_odm->RFCalibrateInfo.IQKMatrixRegSetting[indexforchannel].Value[0][5];
--
--					if ((x != 0) && (*(dm_odm->pBandType) == ODM_BAND_2_4G)) {
--						if ((x & 0x00000200) != 0)	/* consider minus */
--							x = x | 0xFFFFFC00;
--						ele_a = ((x * ele_d)>>8)&0x000003FF;
--
--						/* new element C = element D x Y */
--						if ((y & 0x00000200) != 0)
--							y = y | 0xFFFFFC00;
--						ele_c = ((y * ele_d)>>8)&0x00003FF;
--
--						/* wtite new elements A, C, D to regC88 and regC9C, element B is always 0 */
--						value32 = (ele_d<<22) | ((ele_c&0x3F)<<16) | ele_a;
--						phy_set_bb_reg(adapt, rOFDM0_XBTxIQImbalance, bMaskDWord, value32);
--
--						value32 = (ele_c&0x000003C0)>>6;
--						phy_set_bb_reg(adapt, rOFDM0_XDTxAFE, bMaskH4Bits, value32);
--
--						value32 = ((x * ele_d)>>7)&0x01;
--						phy_set_bb_reg(adapt, rOFDM0_ECCAThreshold, BIT28, value32);
--					} else {
--						phy_set_bb_reg(adapt, rOFDM0_XBTxIQImbalance, bMaskDWord, OFDMSwingTable[(u8)ofdm_index[1]]);
--						phy_set_bb_reg(adapt, rOFDM0_XDTxAFE, bMaskH4Bits, 0x00);
--						phy_set_bb_reg(adapt, rOFDM0_ECCAThreshold, BIT28, 0x00);
--					}
--
--				}
--
- 			}
- 		}
- 
--- 
-1.9.1
+> No, the call to rtllib_act_scanning has no side effects.
+>
+> The function definition :
+>
+>  bool rtllib_act_scanning(struct rtllib_device *ieee, bool sync_scan)
+>  {
+>          if (ieee->softmac_features & IEEE_SOFTMAC_SCAN) {
+>                  if (sync_scan)
+>                          return ieee->be_scan_inprogress;
+>                  else
+>                          return ieee->actscanning || ieee->be_scan_inprogres
+> s;
+>          } else {
+>                  return test_bit(STATUS_SCANNING, &ieee->status);
+>          }
+>  }
+>
+> It doesn't make any other changes.
 
+OK, looks good.
+
+julia
+
+>
+> Thanks,
+> Navya
+>  
+>
+>       >          if (priv->bHwRadioOff == true) {
+>       >                  printk(KERN_INFO "=========>%s():hw radio
+>       off,or Rf state is "
+>       >                         "eRfOff, return\n", __func__);
+>       > @@ -708,11 +704,6 @@ static int r8192_wx_set_wap(struct
+>       net_device *dev,
+>       >          int ret;
+>       >          struct r8192_priv *priv = rtllib_priv(dev);
+>       >
+>       > -        if ((rtllib_act_scanning(priv->rtllib, false)) &&
+>       > -            !(priv->rtllib->softmac_features &
+>       IEEE_SOFTMAC_SCAN)) {
+>       > -                ;        /* TODO - get rid of if */
+>       > -        }
+>       > -
+>       >          if (priv->bHwRadioOff == true)
+>       >                  return 0;
+>       >
+>       > @@ -763,9 +754,6 @@ static int r8192_wx_set_enc(struct
+>       net_device *dev,
+>       >                               {0x00, 0x00, 0x00, 0x00, 0x00,
+>       0x03} };
+>       >          int i;
+>       >
+>       > -        if ((rtllib_act_scanning(priv->rtllib, false)) &&
+>       > -           !(priv->rtllib->softmac_features &
+>       IEEE_SOFTMAC_SCAN))
+>       > -                ;        /* TODO - get rid of if */
+>       >          if (priv->bHwRadioOff == true)
+>       >                  return 0;
+>       >
+>       > --
+>       > 1.9.1
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an email to outreachy-kern...@googlegroups.com.
+>       > To post to this group, send email to
+>       outreach...@googlegroups.com.
+>       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20150228215501.GA5201%40
+>       localhost.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/8f8344f2-dc88-4816-b7bc-
+> 62536fc20f2d%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-2066488226-1425508352=:2734--
 
