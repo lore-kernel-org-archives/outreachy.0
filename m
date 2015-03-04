@@ -3,51 +3,51 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,f04d7bc1ed043b39
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.8.67 with SMTP id p3mr3502924wia.7.1425447056184;
-        Tue, 03 Mar 2015 21:30:56 -0800 (PST)
+X-Received: by 10.152.45.7 with SMTP id i7mr332799lam.9.1425447024919;
+        Tue, 03 Mar 2015 21:30:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.36 with SMTP id n4ls109572laj.27.gmail; Tue, 03 Mar
- 2015 21:30:54 -0800 (PST)
-X-Received: by 10.112.189.227 with SMTP id gl3mr357658lbc.2.1425447054598;
-        Tue, 03 Mar 2015 21:30:54 -0800 (PST)
+Received: by 10.180.74.203 with SMTP id w11ls40224wiv.50.canary; Tue, 03 Mar
+ 2015 21:30:24 -0800 (PST)
+X-Received: by 10.180.101.101 with SMTP id ff5mr3506631wib.5.1425447024621;
+        Tue, 03 Mar 2015 21:30:24 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x229.google.com (mail-we0-x229.google.com. [2a00:1450:400c:c03::229])
-        by gmr-mx.google.com with ESMTPS id i7si1025395wif.0.2015.03.03.21.30.54
+Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
+        by gmr-mx.google.com with ESMTPS id i8si241594wif.1.2015.03.03.21.30.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Mar 2015 21:30:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) client-ip=2a00:1450:400c:c03::229;
+        Tue, 03 Mar 2015 21:30:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x229.google.com with SMTP id q59so7089054wes.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:30:54 -0800 (PST)
+Received: by wghn12 with SMTP id n12so4088063wgh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:30:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=8ix6etzmxCOKAfLeuksxQuhEdXZSLUHTKH+bfb/OLjc=;
-        b=c4kAtzYOx02isCNwprqjTZBu8Jz/8CtZJKlhKnLYwVwJNsSa0aYzScB0p5Bt3Ka9zE
-         k9RmoBUHCmGj31OGfonI7AtAbF2S8KZxOF2i46EYnd5Q+4VIAyQwRGrMXT+mA+84e49C
-         hZug9M299VVDJKkhKJehtESpvO3pys0TPS3yZvaYdm4Qpriaw4WyJZkYcHl9oH8FqLTG
-         6KFxO8x9oXogfR0Zz0NEWV+RDg4/fRE/DT586Avc1mXFqi0qNLSsFapVpNB1JgrHnGbc
-         U4QM35ayvd+REH3JhTnSouc5JGVgRO2m3H1ZmuG1n/htWF8YeqLUlggd04DzwPMoeps/
-         XlAg==
-X-Received: by 10.195.12.167 with SMTP id er7mr4553259wjd.54.1425447054535;
-        Tue, 03 Mar 2015 21:30:54 -0800 (PST)
+        bh=m5SnBZc/LZrV/i8Hc+YsoecELG6NM+5g21ElzXhjv+I=;
+        b=ruanOui75eFzHYcGMZsbXpMP6IkYqSNvQ9iA6af7meE5rGtBOqo+K4deO7+A3F31Ch
+         +S0tiOxCrMqLiFjHX6jbM/fOTEhJCOu5z7Ut4wtXH3iGoxU2ofSyXcvWU67g7f0Xj0R7
+         R3G9GC4iSZjpWbPPtPEG4E4qgAsGObQOX0gbAQbOyKqUXV7MHhp49csZdJOWTuS3VPjx
+         JxL3cQArbgDbEIyi1TCv/u1t4kIL1hUtxRslduFHz4qdTnTzyEg7MpO3WHhMevdp9eq0
+         L4ce9wiZgER2TL+mFJWZajY0ZHBdKRnvFVwC6Xvxxz+Vi0Ii78/8m3FqUhPiilCiaoVA
+         6/mA==
+X-Received: by 10.194.77.230 with SMTP id v6mr4219455wjw.25.1425447024184;
+        Tue, 03 Mar 2015 21:30:24 -0800 (PST)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.219])
-        by mx.google.com with ESMTPSA id pp10sm2705964wjc.31.2015.03.03.21.30.52
+        by mx.google.com with ESMTPSA id k1sm4266884wjn.9.2015.03.03.21.30.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 03 Mar 2015 21:30:53 -0800 (PST)
-Date: Wed, 4 Mar 2015 07:30:49 +0200
+        Tue, 03 Mar 2015 21:30:23 -0800 (PST)
+Date: Wed, 4 Mar 2015 07:30:18 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 04/13] staging: media: bcm2048: remove extra parentheses
+Subject: [PATCH 03/13] staging: lustre: llite: remove extra parentheses
  around right bit shift operation
-Message-ID: <57256f9cfccb8ed20912588df7c5f68687aecfad.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <f2d86185f51683e11bffcdbe34cc776236b1dd60.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -65,14 +65,14 @@ expression e, e1;
 constant c;
 @@
 
-e =
+e = 
 -(e1
 +e1
 >>
 -c);
 +c;
 
-@@
+@@ 
 identifier i;
 constant c;
 type t;
@@ -86,7 +86,8 @@ t i =
 -c);
 +c;
 
-@@
+
+@@ 
 expression e, e1;
 identifier f;
 constant c;
@@ -102,23 +103,22 @@ e1 = f(...,
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/media/bcm2048/radio-bcm2048.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/lustre/lustre/llite/vvp_dev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
-index 5382506..116251b 100644
---- a/drivers/staging/media/bcm2048/radio-bcm2048.c
-+++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
-@@ -2245,8 +2245,7 @@ static ssize_t bcm2048_fops_read(struct file *file, char __user *buf,
+diff --git a/drivers/staging/lustre/lustre/llite/vvp_dev.c b/drivers/staging/lustre/lustre/llite/vvp_dev.c
+index 5a1078a..97d94fc 100644
+--- a/drivers/staging/lustre/lustre/llite/vvp_dev.c
++++ b/drivers/staging/lustre/lustre/llite/vvp_dev.c
+@@ -286,7 +286,7 @@ static void vvp_pgcache_id_unpack(loff_t pos, struct vvp_pgcache_id *id)
  
- 		tmpbuf[i] = bdev->rds_info.radio_text[bdev->rd_index+i+2];
- 		tmpbuf[i+1] = bdev->rds_info.radio_text[bdev->rd_index+i+1];
--		tmpbuf[i+2] = ((bdev->rds_info.radio_text[bdev->rd_index+i]
--				& 0xf0) >> 4);
-+		tmpbuf[i+2] = (bdev->rds_info.radio_text[bdev->rd_index + i] & 0xf0) >> 4;
- 		if ((bdev->rds_info.radio_text[bdev->rd_index+i] &
- 			BCM2048_RDS_CRC_MASK) == BCM2048_RDS_CRC_UNRECOVARABLE)
- 			tmpbuf[i+2] |= 0x80;
+ 	id->vpi_index  = pos & 0xffffffff;
+ 	id->vpi_depth  = (pos >> PGC_DEPTH_SHIFT) & 0xf;
+-	id->vpi_bucket = ((unsigned long long)pos >> PGC_OBJ_SHIFT);
++	id->vpi_bucket = (unsigned long long)pos >> PGC_OBJ_SHIFT;
+ }
+ 
+ static loff_t vvp_pgcache_id_pack(struct vvp_pgcache_id *id)
 -- 
 1.9.3
 
