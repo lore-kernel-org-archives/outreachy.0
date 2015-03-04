@@ -1,112 +1,95 @@
-X-GM-THRID: 6201460938447519744
-X-Received: by 10.182.79.35 with SMTP id g3mr18650280obx.22.1443890141688;
-        Sat, 03 Oct 2015 09:35:41 -0700 (PDT)
+X-GM-THRID: 6665770369024
+X-Received: by 10.112.40.81 with SMTP id v17mr1021384lbk.5.1425507115270;
+        Wed, 04 Mar 2015 14:11:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.36.148 with SMTP id p20ls2230264qgp.46.gmail; Sat, 03 Oct
- 2015 09:35:41 -0700 (PDT)
-X-Received: by 10.31.174.146 with SMTP id x140mr17951134vke.1.1443890141026;
-        Sat, 03 Oct 2015 09:35:41 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id pe1si2296417pac.2.2015.10.03.09.35.40
+Received: by 10.180.87.233 with SMTP id bb9ls221509wib.29.gmail; Wed, 04 Mar
+ 2015 14:11:54 -0800 (PST)
+X-Received: by 10.181.13.236 with SMTP id fb12mr1491930wid.1.1425507114925;
+        Wed, 04 Mar 2015 14:11:54 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id by11si1241069wib.1.2015.03.04.14.11.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Oct 2015 09:35:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 04 Mar 2015 14:11:54 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pacex6 with SMTP id ex6so134648242pac.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Oct 2015 09:35:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=5IAqhGR/WZdNT3/6tKKkYLdm2jA53aC37Z7yJWj0jC0=;
-        b=kjmnN3pT6drDiPhqkZHiORE0300r6Y4aS5U8ZsUT1U31kGqIiW7dIUiwuo2UbdybWf
-         H4aHGwm3nmTG2KA0SCeHyQ0WRRsZn0STQm16mg99HX9l2Pzlcmu9/NEpk2sHJhbkxBvj
-         8bMrD6Cmuc/IFRB86oyahyMMOdtbBZAcp3GhXBSg4CfPfD8W7gMzcqBbqz5uCgRJNYhz
-         Wdt5hC1sJ1joPr8VjyaDFLvpMV3QxryCMatcV+F71wACsWHifRtlIfMIqzxYil1Z9Th9
-         wTzQPcjxjRWY1YIIvHPtYmkk0rJFmIjpnT1pDMtIw1Dy3K3ktKyBUQgoQV1E3Ckw4SBK
-         05fA==
-X-Received: by 10.68.234.167 with SMTP id uf7mr27384295pbc.51.1443890140859;
-        Sat, 03 Oct 2015 09:35:40 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id tb9sm18378333pab.13.2015.10.03.09.35.36
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Oct 2015 09:35:40 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: iio: meter: Use devm_iio_trigger_alloc
-Date: Sat,  3 Oct 2015 22:05:25 +0530
-Message-Id: <1443890125-2419-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150209.561003DA.00F1,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,343,1422918000"; 
+   d="scan'208";a="124421069"
+Received: from unknown (HELO [132.207.219.27]) ([132.207.219.27])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Mar 2015 23:11:53 +0100
+Date: Wed, 4 Mar 2015 17:11:52 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: comedi: remove redundant
+ bitwise OR assignment
+In-Reply-To: <1425497904-13815-1-git-send-email-hamohammed.sa@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503041711150.2734@hadrien>
+References: <1425497904-13815-1-git-send-email-hamohammed.sa@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Introduce use of managed resource function devm_iio_trigger_alloc
-instead of iio_trigger_alloc and remove corresponding calls
-to iio_trigger_free in the probe and remove functions.
-Also unnecessary label error_free_trig is dropped.
+On Wed, 4 Mar 2015, Haneen Mohammed wrote:
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/iio/meter/ade7758_trigger.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+> No need to combine variable with value of 0 with other expressions using "|", for "0 | x = x".
+> eg. if (x == 0)  x |= e;
+> same as: if (x == 0) x = e;
+> Issue found using coccinelle.
+>
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers/amplc_pci230.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/comedi/drivers/amplc_pci230.c b/drivers/staging/comedi/drivers/amplc_pci230.c
+> index a977156..7930438 100644
+> --- a/drivers/staging/comedi/drivers/amplc_pci230.c
+> +++ b/drivers/staging/comedi/drivers/amplc_pci230.c
+> @@ -1108,7 +1108,7 @@ static bool pci230_handle_ao_fifo(struct comedi_device *dev,
+>  		/* Check for FIFO underrun. */
+>  		if (dacstat & PCI230P2_DAC_FIFO_UNDERRUN_LATCHED) {
+>  			dev_err(dev->class_dev, "AO FIFO underrun\n");
+> -			events |= COMEDI_CB_OVERFLOW | COMEDI_CB_ERROR;
+> +			events = COMEDI_CB_OVERFLOW | COMEDI_CB_ERROR;
+>  		}
+>  		/*
+>  		 * Check for buffer underrun if FIFO less than half full
+> @@ -1118,7 +1118,7 @@ static bool pci230_handle_ao_fifo(struct comedi_device *dev,
+>  		if (num_scans == 0 &&
+>  		    (dacstat & PCI230P2_DAC_FIFO_HALF) == 0) {
+>  			dev_err(dev->class_dev, "AO buffer underrun\n");
+> -			events |= COMEDI_CB_OVERFLOW | COMEDI_CB_ERROR;
+> +			events = COMEDI_CB_OVERFLOW | COMEDI_CB_ERROR;
 
-diff --git a/drivers/staging/iio/meter/ade7758_trigger.c b/drivers/staging/iio/meter/ade7758_trigger.c
-index 5b35a7f..a5d52bb 100644
---- a/drivers/staging/iio/meter/ade7758_trigger.c
-+++ b/drivers/staging/iio/meter/ade7758_trigger.c
-@@ -63,9 +63,9 @@ int ade7758_probe_trigger(struct iio_dev *indio_dev)
- 	struct ade7758_state *st = iio_priv(indio_dev);
- 	int ret;
- 
--	st->trig = iio_trigger_alloc("%s-dev%d",
--					spi_get_device_id(st->us)->name,
--					indio_dev->id);
-+	st->trig = devm_iio_trigger_alloc("%s-dev%d",
-+					     spi_get_device_id(st->us)->name,
-+					     indio_dev->id);
- 	if (!st->trig) {
- 		ret = -ENOMEM;
- 		goto error_ret;
-@@ -77,7 +77,7 @@ int ade7758_probe_trigger(struct iio_dev *indio_dev)
- 			  spi_get_device_id(st->us)->name,
- 			  st->trig);
- 	if (ret)
--		goto error_free_trig;
-+		goto error_ret;
- 
- 	st->trig->dev.parent = &st->us->dev;
- 	st->trig->ops = &ade7758_trigger_ops;
-@@ -93,8 +93,6 @@ int ade7758_probe_trigger(struct iio_dev *indio_dev)
- 
- error_free_irq:
- 	free_irq(st->us->irq, st->trig);
--error_free_trig:
--	iio_trigger_free(st->trig);
- error_ret:
- 	return ret;
- }
-@@ -105,5 +103,4 @@ void ade7758_remove_trigger(struct iio_dev *indio_dev)
- 
- 	iio_trigger_unregister(st->trig);
- 	free_irq(st->us->irq, st->trig);
--	iio_trigger_free(st->trig);
- }
--- 
-2.1.4
+I think that this is not correct.  If the then branch of the above if is
+taken, then events will not be 0 any more.
 
+julia
+
+>  		}
+>  	}
+>  	if (events == 0) {
+> @@ -1163,7 +1163,7 @@ static bool pci230_handle_ao_fifo(struct comedi_device *dev,
+>  		dacstat = inw(devpriv->daqio + PCI230_DACCON);
+>  		if (dacstat & PCI230P2_DAC_FIFO_UNDERRUN_LATCHED) {
+>  			dev_err(dev->class_dev, "AO FIFO underrun\n");
+> -			events |= COMEDI_CB_OVERFLOW | COMEDI_CB_ERROR;
+> +			events = COMEDI_CB_OVERFLOW | COMEDI_CB_ERROR;
+>  		}
+>  	}
+>  	async->events |= events;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425497904-13815-1-git-send-email-hamohammed.sa%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
