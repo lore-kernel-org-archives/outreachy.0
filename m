@@ -1,105 +1,135 @@
 X-GM-THRID: 6406607470592
-X-Received: by 10.112.130.70 with SMTP id oc6mr888171lbb.13.1425488984572;
-        Wed, 04 Mar 2015 09:09:44 -0800 (PST)
+X-Received: by 10.194.53.225 with SMTP id e1mr348216wjp.4.1425447353994;
+        Tue, 03 Mar 2015 21:35:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.42 with SMTP id g10ls205830laa.51.gmail; Wed, 04 Mar
- 2015 09:09:43 -0800 (PST)
-X-Received: by 10.152.6.232 with SMTP id e8mr869461laa.2.1425488983904;
-        Wed, 04 Mar 2015 09:09:43 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id r6si371987wix.0.2015.03.04.09.09.43
+Received: by 10.152.29.4 with SMTP id f4ls114382lah.18.gmail; Tue, 03 Mar 2015
+ 21:35:53 -0800 (PST)
+X-Received: by 10.112.40.81 with SMTP id v17mr337017lbk.5.1425447353558;
+        Tue, 03 Mar 2015 21:35:53 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
+        by gmr-mx.google.com with ESMTPS id l8si1016558wia.0.2015.03.03.21.35.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 04 Mar 2015 09:09:43 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 03 Mar 2015 21:35:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,688,1418079600"; 
-   d="scan'208";a="102117083"
-Received: from unknown (HELO [132.207.219.164]) ([132.207.219.164])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Mar 2015 18:09:42 +0100
-Date: Wed, 4 Mar 2015 12:09:40 -0500 (EST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 08/13] staging: rtl8192u: remove extra
- parentheses around right bit shift operation
-In-Reply-To: <076f797b7a1c3417bb6fe5d027a4a21d5e33b072.1425446659.git.mahfouz.saif.elyazal@gmail.com>
-Message-ID: <alpine.DEB.2.10.1503041208500.2777@hadrien>
-References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com> <076f797b7a1c3417bb6fe5d027a4a21d5e33b072.1425446659.git.mahfouz.saif.elyazal@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wivz2 with SMTP id z2so8528082wiv.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Mar 2015 21:35:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=7agjeRZsRv03A6SGD67AXNP3xt+nBm7TygrwGWK9tWA=;
+        b=mANY7KZwzed2HN7W8gdqJZhantFSA6khS98EAqgDKN5vkvsAFOYAAGSt2fGGDtoLja
+         YkTP6vFDBWiTjZSgV7NxICOe0fZDjtVma3HKc4RrpTXEAxNrt6sQZBCQwov4rOgfve8o
+         xN2ZihS1/B94Of3/M6pf41xYqaWKjaKTBdqdQGLCC8ffMrB0MNbXueAuN/WdwhZsRXiz
+         s0wg/WCrpolvBne63Rc/vJA8lWdXhGsNJZLyNmb3SnyfpLyT4nA8jqEg3tuXRjjdaaNZ
+         6/kEEtpFbStcj6RTteTlixbjBh8mL3W8vl74LuVdEIsS4ldRWMaXEw8/uvU4/jmu/9ET
+         YttA==
+X-Received: by 10.180.8.165 with SMTP id s5mr9221061wia.16.1425447353450;
+        Tue, 03 Mar 2015 21:35:53 -0800 (PST)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([62.135.96.219])
+        by mx.google.com with ESMTPSA id w8sm4295566wja.4.2015.03.03.21.35.51
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 03 Mar 2015 21:35:52 -0800 (PST)
+Date: Wed, 4 Mar 2015 07:35:48 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 13/13] staging: xgifb: remove extra parentheses around right
+ bit shift operations
+Message-ID: <35612df98b6a89b349018f0331578d881f719ea6.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+References: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1425446659.git.mahfouz.saif.elyazal@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-> index 9de4412..bab7751 100644
-> --- a/drivers/staging/rtl8192u/r8192U_core.c
-> +++ b/drivers/staging/rtl8192u/r8192U_core.c
-> @@ -2310,11 +2310,11 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
->  	}
->
->  	if (bLoad_From_EEPOM) {
-> -		tmpValue = eprom_read(dev, (EEPROM_VID>>1));
-> +		tmpValue = eprom_read(dev, EEPROM_VID>>1);
+Removes extra parentheses around bitwise right shift operations.
+The cases handled here are when resultant values are assigned to
+variables. The issue was detected and resolved using the following
+coccinelle script:
 
-Perhaps you could add some spaces around >> at the same time.
+@@
+expression e, e1;
+constant c;
+@@
 
-julia
+e =
+-(e1
++e1
+>>
+-c);
++c;
 
->  		priv->eeprom_vid = endian_swap(&tmpValue);
-> -		priv->eeprom_pid = eprom_read(dev, (EEPROM_PID>>1));
-> -		tmpValue = eprom_read(dev, (EEPROM_ChannelPlan>>1));
-> -		priv->eeprom_ChannelPlan = ((tmpValue&0xff00)>>8);
-> +		priv->eeprom_pid = eprom_read(dev, EEPROM_PID>>1);
-> +		tmpValue = eprom_read(dev, EEPROM_ChannelPlan>>1);
-> +		priv->eeprom_ChannelPlan = (tmpValue & 0xff00)>>8;
->  		priv->btxpowerdata_readfromEEPORM = true;
->  		priv->eeprom_CustomerID = eprom_read(dev, (EEPROM_Customer_ID>>1)) >>8;
->  	} else {
-> @@ -2397,7 +2397,8 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
->  			}
->  		} else if (priv->EEPROM_Def_Ver == 1) {
->  			if (bLoad_From_EEPOM) {
-> -				tmpValue = eprom_read(dev, (EEPROM_TxPwIndex_CCK_V1>>1));
-> +				tmpValue = eprom_read(dev,
-> +						EEPROM_TxPwIndex_CCK_V1 >> 1);
->  				tmpValue = (tmpValue & 0xff00) >> 8;
->  			} else {
->  				tmpValue = 0x10;
-> @@ -2410,7 +2411,8 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
->  				tmpValue = 0x1010;
->  			*((u16 *)(&priv->EEPROMTxPowerLevelCCK_V1[1])) = tmpValue;
->  			if (bLoad_From_EEPOM)
-> -				tmpValue = eprom_read(dev, (EEPROM_TxPwIndex_OFDM_24G_V1>>1));
-> +				tmpValue = eprom_read(dev,
-> +					EEPROM_TxPwIndex_OFDM_24G_V1 >> 1);
->  			else
->  				tmpValue = 0x1010;
->  			*((u16 *)(&priv->EEPROMTxPowerLevelOFDM24G[0])) = tmpValue;
-> @@ -2453,7 +2455,7 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
->  		// Antenna B gain offset to antenna A, bit0~3
->  		priv->AntennaTxPwDiff[0] = (priv->EEPROMTxPowerDiff & 0xf);
->  		// Antenna C gain offset to antenna A, bit4~7
-> -		priv->AntennaTxPwDiff[1] = ((priv->EEPROMTxPowerDiff & 0xf0)>>4);
-> +		priv->AntennaTxPwDiff[1] = (priv->EEPROMTxPowerDiff & 0xf0)>>4;
->  		// CrystalCap, bit12~15
->  		priv->CrystalCap = priv->EEPROMCrystalCap;
->  		// ThermalMeter, bit0~3 for RFIC1, bit4~7 for RFIC2
-> --
-> 1.9.3
->
->
-> --
-> Kind Regards,
-> Aya Saif El-yazal Mahfouz
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/076f797b7a1c3417bb6fe5d027a4a21d5e33b072.1425446659.git.mahfouz.saif.elyazal%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+@@
+identifier i;
+constant c;
+type t;
+expression e;
+@@
+
+t i =
+-(e
++e
+>>
+-c);
++c;
+
+@@
+expression e, e1;
+identifier f;
+constant c;
+@@
+
+e1 = f(...,
+-(e
++e
+>>
+-c)
++c
+,...);
+
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+---
+ drivers/staging/xgifb/XGI_main_26.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
+index 935c714..74e8820 100644
+--- a/drivers/staging/xgifb/XGI_main_26.c
++++ b/drivers/staging/xgifb/XGI_main_26.c
+@@ -106,7 +106,7 @@ static int XGIfb_mode_rate_to_ddata(struct vb_device_info *XGI_Pr,
+ 
+ 	sr_data = XGI_CRT1Table[index].CR[5];
+ 
+-	HDE = (XGI330_RefIndex[RefreshRateTableIndex].XRes >> 3);
++	HDE = XGI330_RefIndex[RefreshRateTableIndex].XRes >> 3;
+ 
+ 	cr_data = XGI_CRT1Table[index].CR[3];
+ 
+@@ -1011,8 +1011,8 @@ static int XGIfb_do_set_var(struct fb_var_screeninfo *var, int isactive,
+ 			       XGIbios_mode[xgifb_info->mode_idx].mode_no);
+ 			return -EINVAL;
+ 		}
+-		info->fix.line_length = ((info->var.xres_virtual
+-				* info->var.bits_per_pixel) >> 6);
++		info->fix.line_length = (info->var.xres_virtual
++				* info->var.bits_per_pixel) >> 6;
+ 
+ 		xgifb_reg_set(XGISR, IND_SIS_PASSWORD, SIS_PASSWORD);
+ 
+-- 
+1.9.3
+
+
+-- 
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
