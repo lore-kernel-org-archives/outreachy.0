@@ -1,88 +1,92 @@
-X-GM-THRID: 3830218489856
-X-Received: by 10.66.190.104 with SMTP id gp8mr9423689pac.26.1424974681104;
-        Thu, 26 Feb 2015 10:18:01 -0800 (PST)
+X-GM-THRID: 6648489836544
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,79ba7d9a9b59f96e
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.160.176 with SMTP id xl16mr4093291wib.6.1425494956230;
+        Wed, 04 Mar 2015 10:49:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.219.129 with SMTP id po1ls85583obc.18.gmail; Thu, 26 Feb
- 2015 10:18:00 -0800 (PST)
-X-Received: by 10.183.10.164 with SMTP id eb4mr8642491obd.48.1424974680899;
-        Thu, 26 Feb 2015 10:18:00 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x230.google.com (mail-pd0-x230.google.com. [2607:f8b0:400e:c02::230])
-        by gmr-mx.google.com with ESMTPS id ks4si212733pbc.1.2015.02.26.10.18.00
+Received: by 10.180.221.41 with SMTP id qb9ls186263wic.16.canary; Wed, 04 Mar
+ 2015 10:49:15 -0800 (PST)
+X-Received: by 10.180.8.67 with SMTP id p3mr4087510wia.7.1425494955895;
+        Wed, 04 Mar 2015 10:49:15 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r6si391368wix.0.2015.03.04.10.49.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 10:18:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) client-ip=2607:f8b0:400e:c02::230;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 04 Mar 2015 10:49:15 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x230.google.com with SMTP id y10so14652924pdj.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 10:18:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=nXyo8Aq/kLPPqC1iYA4Nzi5DG+DPUzC/r2mPKhQc4R8=;
-        b=nRELrO5CoKm5JAUB0kNZqFuSNXrGYHNvaO2v2Yvq+j1bOh2t1DURPIwPr1F89Qcgek
-         je5dl44gpILhZj6VbgiZR5M0vSWEYuMkPZ8k7OQWJ4bRFpQvgLQykIY9SOXMdgwKs+Ah
-         FrAZU+/lISi7JJiWeFd82J8RWqWbyoHuGujC55TJsDoLTQ5zMMLs8VagKcnA6vcv5EQ7
-         CVqDy5AzWBase6djxHyEwDNe/MNx2HJWLTO8VkN4GQTR+dXZplUicsRTYoA7cveSXxiI
-         kA6XSH2d2Iv88N8EZeLb6eRLNh+4UJ1iLPf8j8a9PcDJyePBP8H+Q7AHpG0HbF5pw6Zy
-         PA9Q==
-X-Received: by 10.70.26.100 with SMTP id k4mr16919595pdg.125.1424974680768;
-        Thu, 26 Feb 2015 10:18:00 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id q3sm1708223pdo.16.2015.02.26.10.17.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 10:17:59 -0800 (PST)
-Date: Thu, 26 Feb 2015 23:47:39 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Combine two loops to increase readability
-Message-ID: <20150226181739.GA30297@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.09,689,1418079600"; 
+   d="scan'208";a="102126329"
+Received: from unknown (HELO [132.207.219.129]) ([132.207.219.129])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Mar 2015 19:49:05 +0100
+Date: Wed, 4 Mar 2015 13:49:02 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6656: Fix prefer
+ ether_addr_copy() over memcpy()
+In-Reply-To: <1425494204-8831-1-git-send-email-yeliztaneroglu@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503041348470.2811@hadrien>
+References: <1425494204-8831-1-git-send-email-yeliztaneroglu@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The first loop assigns values to ofdm_index array and the
-second checks for boundary conditions. They are combined and 
-a comment is added to increase clarity.
+On Wed, 4 Mar 2015, Yeliz Taneroglu wrote:
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> Fixed the checkpatch.pl warning in rxtx.c file
+> WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
+> addresses are __aligned(2)
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 1d9c662..5822ca6 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -602,17 +602,17 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
- 			}
- 			if (offset >= index_mapping_NUM_88E)
- 				offset = index_mapping_NUM_88E-1;
--			for (i = 0; i < rf; i++)
--				ofdm_index[i] = dm_odm->RFCalibrateInfo.OFDM_index[i] + ofdm_index_mapping[j][offset];
--			cck_index = dm_odm->RFCalibrateInfo.CCK_index + ofdm_index_mapping[j][offset];
- 
-+			/* Updating ofdm_index values with new OFDM / CCK offset */
- 			for (i = 0; i < rf; i++) {
-+				ofdm_index[i] = dm_odm->RFCalibrateInfo.OFDM_index[i] + ofdm_index_mapping[j][offset];
- 				if (ofdm_index[i] > OFDM_TABLE_SIZE_92D-1)
- 					ofdm_index[i] = OFDM_TABLE_SIZE_92D-1;
- 				else if (ofdm_index[i] < ofdm_min_index)
- 					ofdm_index[i] = ofdm_min_index;
- 			}
- 
-+			cck_index = dm_odm->RFCalibrateInfo.CCK_index + ofdm_index_mapping[j][offset];
- 			if (cck_index > CCK_TABLE_SIZE-1)
- 				cck_index = CCK_TABLE_SIZE-1;
- 			else if (cck_index < 0)
--- 
-1.9.1
+You need to provide evidence that it is aligned.
 
+julia
+
+>
+> Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+> ---
+>  drivers/staging/vt6656/rxtx.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+> index 33baf26..f6c2cf8 100644
+> --- a/drivers/staging/vt6656/rxtx.c
+> +++ b/drivers/staging/vt6656/rxtx.c
+> @@ -755,9 +755,9 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
+>  		else
+>  			mic_hdr->hlen = cpu_to_be16(22);
+>
+> -		memcpy(mic_hdr->addr1, hdr->addr1, ETH_ALEN);
+> -		memcpy(mic_hdr->addr2, hdr->addr2, ETH_ALEN);
+> -		memcpy(mic_hdr->addr3, hdr->addr3, ETH_ALEN);
+> +		ether_addr_copy(mic_hdr->addr1, hdr->addr1);
+> +		ether_addr_copy(mic_hdr->addr2, hdr->addr2);
+> +		ether_addr_copy(mic_hdr->addr3, hdr->addr3);
+>
+>  		mic_hdr->frame_control = cpu_to_le16(
+>  			le16_to_cpu(hdr->frame_control) & 0xc78f);
+> @@ -765,7 +765,7 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
+>  				le16_to_cpu(hdr->seq_ctrl) & 0xf);
+>
+>  		if (ieee80211_has_a4(hdr->frame_control))
+> -			memcpy(mic_hdr->addr4, hdr->addr4, ETH_ALEN);
+> +			ether_addr_copy(mic_hdr->addr4, hdr->addr4);
+>
+>
+>  		memcpy(key_buffer, tx_key->key, WLAN_KEY_LEN_CCMP);
+> --
+> 1.8.3.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425494204-8831-1-git-send-email-yeliztaneroglu%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
