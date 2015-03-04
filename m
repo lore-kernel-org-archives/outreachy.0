@@ -1,104 +1,63 @@
-X-GM-THRID: 7566836891648
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b6b3faf53755f62b,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.182.201 with SMTP id eg9mr1208111wic.3.1426031994367;
-        Tue, 10 Mar 2015 16:59:54 -0700 (PDT)
+X-GM-THRID: 6115060350976
+X-Received: by 10.70.135.8 with SMTP id po8mr3129352pdb.7.1425450525755;
+        Tue, 03 Mar 2015 22:28:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.116.9 with SMTP id js9ls92793lab.69.gmail; Tue, 10 Mar
- 2015 16:59:53 -0700 (PDT)
-X-Received: by 10.152.164.171 with SMTP id yr11mr2149984lab.4.1426031993937;
-        Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id c8si653684wiw.1.2015.03.10.16.59.53
+Received: by 10.140.33.1 with SMTP id i1ls527173qgi.34.gmail; Tue, 03 Mar 2015
+ 22:28:45 -0800 (PST)
+X-Received: by 10.236.11.196 with SMTP id 44mr3107611yhx.31.1425450525523;
+        Tue, 03 Mar 2015 22:28:45 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gb13si373567pac.2.2015.03.03.22.28.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Tue, 03 Mar 2015 22:28:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id l15so34530596wiw.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=JFmGZWMRGRO7M5BsSrhB55bTlXUtZcylKwtwnFK7lco=;
-        b=jxuWFLn2vh5T5rFb9RQVwSxV4e22w2hmMMOpJNMQhXzt0gBqCef3YspSQKi46Rljr7
-         MqLo2KZINuJFv1fif69Wk+OsF1LqUI/aH8VGYQ3KT2tXU/dBVIx6JMbL/Aj0hMItUSw4
-         TAUtQ5PsdXiobCp6L1L2OOZUy061Xn12RJR/ddp4pFEB9X35Xn3+cE+IK/zbxOIKClzD
-         0Emf7KhggdZd90lxinELUK+HVd43GVxQLe0UzYqcD3kZtDAUa49lKRBz8ogKJkG6W5vP
-         mhRoA29Yf4ui1kvA6U4tqsdDOeR7W1Dsj3tHnGw4UHBajSL0eBmQ6IEu2Ya4/g0T50Mw
-         QtTQ==
-X-Received: by 10.180.187.19 with SMTP id fo19mr39556281wic.2.1426031993855;
-        Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id w4sm3678324wib.19.2015.03.10.16.59.52
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 16:59:52 -0700 (PDT)
-Date: Wed, 11 Mar 2015 01:59:14 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: cristina.opriceana@gmail.com
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (unknown [166.170.43.162])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 144BC92F;
+	Wed,  4 Mar 2015 06:28:45 +0000 (UTC)
+Date: Tue, 3 Mar 2015 22:28:38 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: rtl8192u: Review phrase and fix spelling errors
-Message-ID: <49964f76185334882a4e5e2e9d1e500279b95d3e.1426031886.git.cristina.opriceana@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: rtl8192u: Fix quoted
+ string split across lines
+Message-ID: <20150304062838.GA11114@kroah.com>
+References: <1425333415-5205-1-git-send-email-dilekuzulmez@gmail.com>
+ <1425333415-5205-2-git-send-email-dilekuzulmez@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1425333415-5205-2-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes some serious spelling errors and adds small
-improvements to the phrases in order to make them easier to understand.
+On Mon, Mar 02, 2015 at 11:56:55PM +0200, Dilek Uzulmez wrote:
+> This patch fixes checkpatch.pl warning in file ieee80211_crypt_ccmp.c
+> WARNING: "quoted string split across lines warning"
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  .../staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c    | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+> index 95f5fc7..344de83 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+> @@ -73,8 +73,8 @@ static void *ieee80211_ccmp_init(int key_idx)
+>  
+>         priv->tfm = (void *)crypto_alloc_cipher("aes", 0, CRYPTO_ALG_ASYNC);
+>  	if (IS_ERR(priv->tfm)) {
+> -		printk(KERN_DEBUG "ieee80211_crypt_ccmp: could not allocate "
+> -		       "crypto API aes\n");
+> +		printk(KERN_DEBUG "ieee80211_crypt_ccmp: could not allocate
+> +				crypto API aes\n");
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
----
- .../staging/rtl8192u/ieee80211/ieee80211_softmac.c | 26 +++++++++++-----------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+Um, I don't think you did the correct thing here :(
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index d1cbddd..2f0029c 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -2122,20 +2122,20 @@ ieee80211_rx_frame_softmac(struct ieee80211_device *ieee, struct sk_buff *skb,
- 	return 0;
- }
- 
--/* following are for a simpler TX queue management.
-- * Instead of using netif_[stop/wake]_queue the driver
-- * will uses these two function (plus a reset one), that
-- * will internally uses the kernel netif_* and takes
-- * care of the ieee802.11 fragmentation.
-- * So the driver receives a fragment per time and might
-- * call the stop function when it want without take care
-- * to have enought room to TX an entire packet.
-- * This might be useful if each fragment need it's own
-- * descriptor, thus just keep a total free memory > than
-- * the max fragmentation treshold is not enought.. If the
-- * ieee802.11 stack passed a TXB struct then you needed
-+/* The following are for a simpler TX queue management.
-+ * Instead of using netif_[stop/wake]_queue, the driver
-+ * will use these two functions (plus a reset one) that
-+ * will internally call the kernel netif_* and take care
-+ * of the ieee802.11 fragmentation.
-+ * So, the driver receives a fragment at a time and might
-+ * call the stop function when it wants, without taking
-+ * care to have enough room to TX an entire packet.
-+ * This might be useful if each fragment needs its own
-+ * descriptor. Thus, just keeping a total free memory > than
-+ * the max fragmentation threshold is not enough. If the
-+ * ieee802.11 stack passed a TXB struct, then you would need
-  * to keep N free descriptors where
-- * N = MAX_PACKET_SIZE / MIN_FRAG_TRESHOLD
-+ * N = MAX_PACKET_SIZE / MIN_FRAG_THRESHOLD.
-  * In this way you need just one and the 802.11 stack
-  * will take care of buffering fragments and pass them to
-  * to the driver later, when it wakes the queue.
--- 
-1.9.1
+And this patch breaks the build, proving you didn't even test build it
+:(
 
 
