@@ -1,67 +1,75 @@
-X-GM-THRID: 6208177008118071296
-X-Received: by 10.66.240.138 with SMTP id wa10mr8693140pac.43.1445453848028;
-        Wed, 21 Oct 2015 11:57:28 -0700 (PDT)
+X-GM-THRID: 6657648099328
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,dd8bf9c874d9a6fc,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.6.41 with SMTP id x9mr949856lax.10.1425497556185;
+        Wed, 04 Mar 2015 11:32:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.135 with SMTP id j7ls640309igx.17.gmail; Wed, 21 Oct
- 2015 11:57:27 -0700 (PDT)
-X-Received: by 10.66.252.6 with SMTP id zo6mr8950473pac.29.1445453847298;
-        Wed, 21 Oct 2015 11:57:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id ce6si1280552pad.0.2015.10.21.11.57.27
+Received: by 10.152.164.193 with SMTP id ys1ls234716lab.39.gmail; Wed, 04 Mar
+ 2015 11:32:35 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr970845lbb.11.1425497555670;
+        Wed, 04 Mar 2015 11:32:35 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from mail-we0-x232.google.com (mail-we0-x232.google.com. [2a00:1450:400c:c03::232])
+        by gmr-mx.google.com with ESMTPS id i8si397128wif.1.2015.03.04.11.32.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 11:57:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Mar 2015 11:32:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) client-ip=2a00:1450:400c:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id hk11so62343035pad.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 11:57:27 -0700 (PDT)
+Received: by mail-we0-x232.google.com with SMTP id q59so48537863wes.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 11:32:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+I9f/oaQNH0xbjLecd2d6lHu7j8Ww9wuqw9TpRvfdGU=;
-        b=IJ29pbQukF1Bkw9dUJvDoNSjT1OCzOhZGo9HR+2smzPrnK+7Kvf2SvVEV+00aS4iZH
-         96RLIsE7wZuj7b4EKP6DL8EsSELznHy0jWf6brfoY/fBI8nj2XagSjiTV39BL2RrCBBy
-         2Px5H3ChPRAULR9SN3eWrhfbxu420Vh1CfHamLoDV3k/saOr9bGYcRuGPpDsaYuQg0yL
-         szWKnqTxBunMXaj8tPnaK2dYPr59mo3eh2z3ANbCU6nqgX6dw+tC1yYWAjPEVvBKmP9e
-         Jv4RwHPoYDIKloVDh0YJZ+PSkrIeXSxFxjtKFD0dzpYO/q+yTlHKWi19Fas5XF528hHi
-         5oQg==
-X-Received: by 10.68.254.137 with SMTP id ai9mr12077117pbd.68.1445453847143;
-        Wed, 21 Oct 2015 11:57:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.194.209])
-        by smtp.gmail.com with ESMTPSA id a17sm10423427pbu.55.2015.10.21.11.57.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 21 Oct 2015 11:57:26 -0700 (PDT)
-Date: Thu, 22 Oct 2015 00:27:22 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=nlvsD8q7t3vSh0ye89T7nKCXHGBAM3OJEG9G2rFlWcg=;
+        b=J7GQ478KuNhSze4f5r5GwLxXjunSBwatUNfboYPEAbXCcx7ftQ6/9ACRpZqzbK9ZtJ
+         ozaiV/NXknPShkWrA5uQUuZnQmgJySu47w9lzzmbcRbcn+FfBPJVPLC2yBbXKIf3bTme
+         +aC7KsaMJM9SnyZwPyv8dr/k5zCrDTdiqTzYOSJIUsYWXLSHVoJGR08yfeNM88Ufo6eD
+         aldJf2bP5O5596mJ9rbNLGejInAEWmHB5kLpAasHpbVOJmKK/mGG/zbTdyKgTE1/zFgb
+         VBb9Ght6pimcUL8J12DOjOsnqzL9PF7IjNeIDbbu6KctLYKapEGX1zZUhNhPkCRZcKU5
+         rn/A==
+X-Received: by 10.180.77.48 with SMTP id p16mr57684901wiw.89.1425497555568;
+        Wed, 04 Mar 2015 11:32:35 -0800 (PST)
+Return-Path: <yeliztaneroglu@gmail.com>
+Received: from localhost.localdomain ([78.187.192.151])
+        by mx.google.com with ESMTPSA id m4sm7269536wjb.25.2015.03.04.11.32.33
+        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 04 Mar 2015 11:32:35 -0800 (PST)
+From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] staging: Fix endian sparse warnings
-Message-ID: <cover.1445453573.git.amitoj1606@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Subject: [PATCH] Staging: unisys: Remove unnecessary semicolon
+Date: Wed,  4 Mar 2015 21:32:49 +0200
+Message-Id: <1425497569-11072-1-git-send-email-yeliztaneroglu@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 
-This patchset fixes multiple sparse warnings for endianness.
+This fixes the checkpatch.pl warning:
+WARNING: macros should not use a trailing semicolon.
 
-Amitoj Kaur Chawla(3):
-  staging: rts5208: Fix endian sparse warnings
-  staging: lustre: lmv: Fix endian sparse warnings
-  staging: lustre: lnet: Fix endian sparse warnings
+Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+---
+ drivers/staging/unisys/common-spar/include/channels/iochannel.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/lustre/lnet/lnet/lib-msg.c  | 24 ++++++++++++------------
- drivers/staging/lustre/lustre/lmv/lmv_obd.c | 12 ++++++------
- drivers/staging/rts5208/rtsx_transport.c    |  4 ++--
- 3 files changed, 20 insertions(+), 20 deletions(-)
-
+diff --git a/drivers/staging/unisys/common-spar/include/channels/iochannel.h b/drivers/staging/unisys/common-spar/include/channels/iochannel.h
+index eb7efe4..3bd7579 100644
+--- a/drivers/staging/unisys/common-spar/include/channels/iochannel.h
++++ b/drivers/staging/unisys/common-spar/include/channels/iochannel.h
+@@ -337,7 +337,7 @@ struct uiscmdrsp_scsi {
+     /* peripheral type of 3 - processor */
+     /* specifies device capable, but not present */
+ 
+-#define DEV_HISUPPORT 0x10;	/* HiSup = 1; shows support for report luns */
++#define DEV_HISUPPORT 0x10	/* HiSup = 1; shows support for report luns */
+     /* must be returned for lun 0. */
+ 
+ /* NOTE: Linux code assumes inquiry contains 36 bytes. Without checking length
 -- 
-1.9.1
+1.8.3.2
 
 
