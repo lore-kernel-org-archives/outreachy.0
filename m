@@ -1,55 +1,59 @@
 X-GM-THRID: 6758181371904
-X-Received: by 10.152.6.232 with SMTP id e8mr1784471laa.2.1425584599081;
-        Thu, 05 Mar 2015 11:43:19 -0800 (PST)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,f603dc428f6faf02
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.182.201 with SMTP id eg9mr2238742wic.3.1425584551962;
+        Thu, 05 Mar 2015 11:42:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.242.132 with SMTP id wq4ls380968lac.30.gmail; Thu, 05 Mar
- 2015 11:43:18 -0800 (PST)
-X-Received: by 10.152.21.9 with SMTP id r9mr1791037lae.0.1425584598675;
-        Thu, 05 Mar 2015 11:43:18 -0800 (PST)
+Received: by 10.152.204.69 with SMTP id kw5ls124715lac.86.gmail; Thu, 05 Mar
+ 2015 11:42:31 -0800 (PST)
+X-Received: by 10.112.222.131 with SMTP id qm3mr1734274lbc.1.1425584551506;
+        Thu, 05 Mar 2015 11:42:31 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id gj20si380859wic.1.2015.03.05.11.43.18
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id l8si1404602wia.0.2015.03.05.11.42.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 11:43:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Thu, 05 Mar 2015 11:42:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevk48 with SMTP id k48so11681259wev.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 11:43:18 -0800 (PST)
+Received: by wiwl15 with SMTP id l15so5424131wiw.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 11:42:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=j0mAWVgAuK5fKjwJhZK11/vjOypSZ1Qg2lVokxBSHEI=;
-        b=zNqRzVV/GxZJOIA/opjoKKVl/d1BB0zChuJyCUDOEd+cZ563QrzahlGu0Do7hdmZ74
-         +NrBu6tO9LqpY+tQzm//2Y8T9LDGWidtmteCfW/htP0Ha7eOrlWcn34tX6TI1e8EkGuz
-         FRAXZFzddInnYby+H3YSFQIWZ22m/4ixVfdMf6ZVDb5N+DHBFmJq/lDmXtPbpljPoc/N
-         Gb11r1Erwf+DbGOVI5WI72rjMCtaAjWiM+k8+wxJfKL5YwFGAqF8yEbn5u6+kssobe+o
-         DRua8u5eMnlmxnLzNH4PmzeMrgNDRYBAcDiBvzs7k7TJFabKGl677YCP0LiMdCMfzpwH
-         OODg==
-X-Received: by 10.180.187.200 with SMTP id fu8mr2541773wic.2.1425584598547;
-        Thu, 05 Mar 2015 11:43:18 -0800 (PST)
+        bh=r4kaGIBNbr1XcBOQ3BtEicxFp+yDkl8AOzX2drQ5850=;
+        b=aly2nJkAAgJAOYE/MDhbbfwqAvsHQZ1HRppARggaVYw3cYoKGDauLroKMURsrifWoN
+         tLVD0Dd3SucvtMGN5O/gezpQD29379pIzmD4b62lAdPodMZE8DerJ1bTBqW5aznpXSUm
+         ejzfnu/19i15Z16qo/xCZ4FUE6ZgLeOQOFCOujPIQ6qThn2CJrnRik3xfUeaZkEICZ0E
+         GDbUCYWzlyUFwalyQbgIS5COpHfKR24ZX5KSztBL53xl/QBBgEcajYrQvAo/1KcT+L/k
+         Y7tF1NzOll0YqoTUdeoztFg+3Guc46mpOI1oalfsDvAgCdEflt1qXpCqgsGqKrVs2zLB
+         uT2Q==
+X-Received: by 10.180.206.83 with SMTP id lm19mr26105937wic.41.1425584551380;
+        Thu, 05 Mar 2015 11:42:31 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id hs7sm31072699wib.4.2015.03.05.11.43.16
+        by mx.google.com with ESMTPSA id bf8sm10207336wjb.37.2015.03.05.11.42.29
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 11:43:17 -0800 (PST)
+        Thu, 05 Mar 2015 11:42:29 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 6C6BF62672; Thu,  5 Mar 2015 22:43:26 +0300 (AST)
+	id 619C462672; Thu,  5 Mar 2015 22:42:39 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 7/7] Staging: ste_rmi4: Clean dev_err() logging
-Date: Thu,  5 Mar 2015 22:43:25 +0300
-Message-Id: <1425584605-28448-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 6/7] Staging: gdm72xx: Clean dev_err() logging
+Date: Thu,  5 Mar 2015 22:42:38 +0300
+Message-Id: <1425584558-28392-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1425583768-27996-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425583768-27996-1-git-send-email-hamohammed.sa@gmail.com>
 
 This patch removes  __func__ from dev_err. dev_err includes information about:
- (devcice, driver, specific instance of device, etc) in the log printout, so there is no need for  __func__.
+ (devcice, driver, specific instance of device, etc) in the log printout.
 This was done using Coccinelle, with the following semantic patch:
 
 @a@
@@ -59,7 +63,7 @@ expression  msg;
 
 dev_err(E, msg, __func__);
 
-@script:python b@
+@script:python b@git rebae -i
 e << a.msg;
 y;
 @@
@@ -87,136 +91,29 @@ identifier  b.y;
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c | 37 ++++++++++-----------------
- 1 file changed, 13 insertions(+), 24 deletions(-)
+ drivers/staging/gdm72xx/gdm_usb.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c b/drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c
-index f92ae1d..508f8e1 100644
---- a/drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c
-+++ b/drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c
-@@ -339,8 +339,7 @@ static int synpatics_rmi4_touchpad_report(struct synaptics_rmi4_data *pdata,
- 	retval = synaptics_rmi4_i2c_block_read(pdata, data_base_addr, values,
- 							finger_registers);
- 	if (retval != finger_registers) {
--		dev_err(&client->dev, "%s:read status registers failed\n",
--								__func__);
-+		dev_err(&client->dev, "read status registers failed\n");
- 		return 0;
- 	}
- 	/*
-@@ -371,8 +370,7 @@ static int synpatics_rmi4_touchpad_report(struct synaptics_rmi4_data *pdata,
- 						data_offset, data,
- 						data_reg_blk_size);
- 			if (retval != data_reg_blk_size) {
--				dev_err(&client->dev, "%s:read data failed\n",
--								__func__);
-+				dev_err(&client->dev, "read data failed\n");
- 				return 0;
- 			}
- 			x = (data[0] << 4) | (data[2] & MASK_4BIT);
-@@ -419,8 +417,7 @@ static int synaptics_rmi4_report_device(struct synaptics_rmi4_data *pdata,
- 	if (rfi->fn_number != SYNAPTICS_RMI4_TOUCHPAD_FUNC_NUM) {
- 		num_error_reports++;
- 		if (num_error_reports < MAX_ERROR_REPORT)
--			dev_err(&client->dev, "%s:report not supported\n",
--								__func__);
-+			dev_err(&client->dev, "report not supported\n");
- 	} else
- 		touch = synpatics_rmi4_touchpad_report(pdata, rfi);
- 	return touch;
-@@ -545,8 +542,7 @@ static int synpatics_rmi4_touchpad_detect(struct synaptics_rmi4_data *pdata,
- 							queries,
- 							sizeof(queries));
- 	if (retval != sizeof(queries)) {
--		dev_err(&client->dev, "%s:read function query registers\n",
--							__func__);
-+		dev_err(&client->dev, "read function query registers\n");
- 		return retval;
- 	}
- 	/*
-@@ -670,16 +666,14 @@ static int synaptics_rmi4_touchpad_config(struct synaptics_rmi4_data *pdata,
- 						rfi->fn_desc.query_base_addr,
- 						data, QUERY_LEN);
- 	if (retval != QUERY_LEN)
--		dev_err(&client->dev, "%s:read query registers failed\n",
--								__func__);
-+		dev_err(&client->dev, "read query registers failed\n");
- 	else {
- 		retval = synaptics_rmi4_i2c_block_read(pdata,
- 						rfi->fn_desc.ctrl_base_addr,
- 						data, DATA_BUF_LEN);
- 		if (retval != DATA_BUF_LEN) {
- 			dev_err(&client->dev,
--				"%s:read control registers failed\n",
--								__func__);
-+				"read control registers failed\n");
- 			return retval;
- 		}
- 		/* Store these for use later*/
-@@ -727,7 +721,7 @@ static int synaptics_rmi4_i2c_query_device(struct synaptics_rmi4_data *pdata)
- 						sizeof(rmi_fd));
- 		if (retval != sizeof(rmi_fd)) {
- 			/* failed to read next PDT entry */
--			dev_err(&client->dev, "%s: read error\n", __func__);
-+			dev_err(&client->dev, "read error\n");
- 			return -EIO;
- 		}
- 		rfi = NULL;
-@@ -799,8 +793,7 @@ static int synaptics_rmi4_i2c_query_device(struct synaptics_rmi4_data *pdata)
- 					std_queries,
- 					sizeof(std_queries));
- 	if (retval != sizeof(std_queries)) {
--		dev_err(&client->dev, "%s:Failed reading queries\n",
--							__func__);
-+		dev_err(&client->dev, "Failed reading queries\n");
- 		 return -EIO;
+diff --git a/drivers/staging/gdm72xx/gdm_usb.c b/drivers/staging/gdm72xx/gdm_usb.c
+index eac2f34..5ca5f81 100644
+--- a/drivers/staging/gdm72xx/gdm_usb.c
++++ b/drivers/staging/gdm72xx/gdm_usb.c
+@@ -301,7 +301,7 @@ static int gdm_usb_send(void *priv_dev, void *data, int len,
+ #endif /* CONFIG_WIMAX_GDM72XX_K_MODE */
+ 
+ 	if (!udev->usbdev) {
+-		dev_err(&usbdev->dev, "%s: No such device\n", __func__);
++		dev_err(&usbdev->dev, "No such device\n");
+ 		return -ENODEV;
  	}
  
-@@ -847,8 +840,7 @@ static int synaptics_rmi4_i2c_query_device(struct synaptics_rmi4_data *pdata)
- 						return retval;
- 				} else
- 					dev_err(&client->dev,
--						"%s:fn_number not supported\n",
--								__func__);
-+						"fn_number not supported\n");
- 				/*
- 				 * Turn on interrupts for this
- 				 * function's data sources.
-@@ -919,15 +911,13 @@ static int synaptics_rmi4_probe
+@@ -470,7 +470,7 @@ static int gdm_usb_receive(void *priv_dev,
+ 	unsigned long flags;
  
- 	rmi4_data->regulator = regulator_get(&client->dev, "vdd");
- 	if (IS_ERR(rmi4_data->regulator)) {
--		dev_err(&client->dev, "%s:get regulator failed\n",
--							__func__);
-+		dev_err(&client->dev, "get regulator failed\n");
- 		retval = PTR_ERR(rmi4_data->regulator);
- 		goto err_get_regulator;
- 	}
- 	retval = regulator_enable(rmi4_data->regulator);
- 	if (retval < 0) {
--		dev_err(&client->dev, "%s:regulator enable failed\n",
--							__func__);
-+		dev_err(&client->dev, "regulator enable failed\n");
- 		goto err_regulator_enable;
- 	}
- 	init_waitqueue_head(&rmi4_data->wait);
-@@ -952,8 +942,7 @@ static int synaptics_rmi4_probe
- 	 */
- 	retval = synaptics_rmi4_i2c_query_device(rmi4_data);
- 	if (retval) {
--		dev_err(&client->dev, "%s: rmi4 query device failed\n",
--							__func__);
-+		dev_err(&client->dev, "rmi4 query device failed\n");
- 		goto err_query_dev;
- 	}
- 
-@@ -997,7 +986,7 @@ static int synaptics_rmi4_probe
- 
- 	retval = input_register_device(rmi4_data->input_dev);
- 	if (retval) {
--		dev_err(&client->dev, "%s:input register failed\n", __func__);
-+		dev_err(&client->dev, "input register failed\n");
- 		goto err_free_irq;
+ 	if (!udev->usbdev) {
+-		dev_err(&usbdev->dev, "%s: No such device\n", __func__);
++		dev_err(&usbdev->dev, "No such device\n");
+ 		return -ENODEV;
  	}
  
 -- 
