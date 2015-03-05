@@ -1,75 +1,90 @@
-X-GM-THRID: 934491979776
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,f49f0748e2ff6394,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.64.171 with SMTP id p11mr834043lbs.12.1424377578558;
-        Thu, 19 Feb 2015 12:26:18 -0800 (PST)
+X-GM-THRID: 6670387249152
+X-Received: by 10.42.80.133 with SMTP id v5mr687091ick.8.1425519608947;
+        Wed, 04 Mar 2015 17:40:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.21.199 with SMTP id x7ls214288lae.0.gmail; Thu, 19 Feb
- 2015 12:26:18 -0800 (PST)
-X-Received: by 10.112.159.227 with SMTP id xf3mr477540lbb.11.1424377578161;
-        Thu, 19 Feb 2015 12:26:18 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id cl5si9103202wib.3.2015.02.19.12.26.18
+Received: by 10.140.105.164 with SMTP id c33ls984866qgf.66.gmail; Wed, 04 Mar
+ 2015 17:40:08 -0800 (PST)
+X-Received: by 10.52.166.77 with SMTP id ze13mr7789221vdb.9.1425519608792;
+        Wed, 04 Mar 2015 17:40:08 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x229.google.com (mail-qc0-x229.google.com. [2607:f8b0:400d:c01::229])
+        by gmr-mx.google.com with ESMTPS id ba9si959938qcb.0.2015.03.04.17.40.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 12:26:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Wed, 04 Mar 2015 17:40:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::229 as permitted sender) client-ip=2607:f8b0:400d:c01::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::229 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id hi2so50706845wib.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 12:26:18 -0800 (PST)
+Received: by qcxn11 with SMTP id n11so12672901qcx.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 17:40:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=SS6vzVK5CsLhDo2tL4zIMXkf9VDeYoe/nEwm4PUAOLA=;
-        b=i0djjof1PNdRkklwBNCh0QB7iH2DVAp7zr1iFSUs2ni7aYMYsIQOG7xcja/k6Fv5Bd
-         CtKkujIWgPtCqPLeSQihNfeVNzkjh58ST2JcDXNcu9m2Ry5pUZTJ1akjy2G5BIk+x0WK
-         apYPtf8MlELo/6puPVv3y4rRsbRRNoxiQIqDO8TQAG3KBrKVaAc07halL46VOq8q5brV
-         jqhOAHA2dGoDUSLUV1GtEi9F6VaOeAdfn1b9Fycdvzgg/oIIWR191aBmqNmPDk7p1KXe
-         sY4o0TIhBV9eZWLZEgwuAsvk03sJVAaJY1ySO73qBA55rCdVZ0yi2R/g+0BFPEZa5Kvl
-         7lXw==
-X-Received: by 10.194.200.233 with SMTP id jv9mr12661341wjc.51.1424377578052;
-        Thu, 19 Feb 2015 12:26:18 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([81.214.238.226])
-        by mx.google.com with ESMTPSA id lj13sm35722809wic.9.2015.02.19.12.26.16
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Feb 2015 12:26:17 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: lustre: include: linux: libcfs: Remove spaces at the start of a line
-Date: Thu, 19 Feb 2015 22:25:40 +0200
-Message-Id: <1424377540-18850-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=p39bI7ApUMMqkM/euI5PLTLA6imyb/e4Q4a4CghgGuo=;
+        b=vBhlfFw8/xRz+uucxtes0O9mSSNANo+C9JNBlvCgzhULoAi3wzLfGFPKZQPvW2azFi
+         Xv/XxgCxrZho2anzT3OQAFh014WT6OGetyDXbjiAUvj5q2SFw7KiOUH3xfRJWmv9NV4E
+         pVXqNodLZS93fvODhrejdqPyAhqvirCdffkm1a8T+ZZqVEx2vFDw/xpOkXunXiyBETeF
+         lafErpq24qftQjOuJnBSEGkPovEUIfPC7HA9ViI5ZF7623Co4kNFR3d+sqZEjdydz5Yk
+         6wfjTu4AZPXCkHg76jHywxtrl5QJXs3ojdufBttNOyZwgxiua0WaiMixiQVb7j+05FVO
+         569Q==
+X-Received: by 10.140.39.179 with SMTP id v48mr9176362qgv.77.1425519608701;
+        Wed, 04 Mar 2015 17:40:08 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [192.168.99.32] (pool-72-68-159-94.nycmny.fios.verizon.net. [72.68.159.94])
+        by mx.google.com with ESMTPSA id x204sm737965qha.2.2015.03.04.17.40.07
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Mar 2015 17:40:08 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <54F7B3F6.7070803@gmail.com>
+Date: Wed, 04 Mar 2015 20:40:06 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+MIME-Version: 1.0
+To: Yeliz Taneroglu <yeliztaneroglu@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723au: Fixed error 'else
+ should follow close brace '}".
+References: <1425503716-13317-1-git-send-email-yeliztaneroglu@gmail.com>
+In-Reply-To: <1425503716-13317-1-git-send-email-yeliztaneroglu@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patch fixes checpatch.pl warning
-WARNING: please, no spaces at the start of a line
+On 03/04/15 16:15, Yeliz Taneroglu wrote:
+> This patch fixes error 'else should follow close brace '}"
+> found by checkpatch in driver rtl8723au.
+> 
+> Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+> ---
+>  drivers/staging/rtl8723au/core/rtw_efuse.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi Yeliz,
 
-diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
-index 808e494..4dcae61 100644
---- a/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
-+++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
-@@ -469,7 +469,7 @@ cfs_hash_key(struct cfs_hash *hs, struct hlist_node *hnode)
- static inline void
- cfs_hash_keycpy(struct cfs_hash *hs, struct hlist_node *hnode, void *key)
- {
--        if (hs->hs_ops->hs_keycpy)
-+	if (hs->hs_ops->hs_keycpy)
- 		hs->hs_ops->hs_keycpy(hnode, key);
- }
- 
--- 
-1.8.3.2
+Your patch is fine, calling it an error is maybe a little much, but I
+think this is fine for this case.
+
+Cheers
+Jes
+
+
+
+> diff --git a/drivers/staging/rtl8723au/core/rtw_efuse.c b/drivers/staging/rtl8723au/core/rtw_efuse.c
+> index a6deddc..29fc25b 100644
+> --- a/drivers/staging/rtl8723au/core/rtw_efuse.c
+> +++ b/drivers/staging/rtl8723au/core/rtw_efuse.c
+> @@ -304,8 +304,7 @@ EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
+>  		}
+>  		data = rtl8723au_read8(Adapter, EFUSE_CTRL);
+>  		return data;
+> -	}
+> -	else
+> +	} else
+>  		return 0xFF;
+>  }/* EFUSE_Read1Byte23a */
+>  
+> 
 
 
