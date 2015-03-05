@@ -1,49 +1,49 @@
 X-GM-THRID: 6758181371904
-X-Received: by 10.180.8.67 with SMTP id p3mr4999350wia.7.1425591944424;
-        Thu, 05 Mar 2015 13:45:44 -0800 (PST)
+X-Received: by 10.112.147.35 with SMTP id th3mr1784892lbb.15.1425591809346;
+        Thu, 05 Mar 2015 13:43:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.208 with SMTP id l16ls2562laa.66.gmail; Thu, 05 Mar 2015
- 13:45:43 -0800 (PST)
-X-Received: by 10.152.28.137 with SMTP id b9mr1834872lah.8.1425591943953;
-        Thu, 05 Mar 2015 13:45:43 -0800 (PST)
+Received: by 10.152.22.168 with SMTP id e8ls2467laf.72.gmail; Thu, 05 Mar 2015
+ 13:43:28 -0800 (PST)
+X-Received: by 10.152.19.67 with SMTP id c3mr553517lae.7.1425591808874;
+        Thu, 05 Mar 2015 13:43:28 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x22f.google.com (mail-wg0-x22f.google.com. [2a00:1450:400c:c00::22f])
-        by gmr-mx.google.com with ESMTPS id r6si674515wix.0.2015.03.05.13.45.43
+Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
+        by gmr-mx.google.com with ESMTPS id l8si1429237wia.0.2015.03.05.13.43.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 13:45:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) client-ip=2a00:1450:400c:c00::22f;
+        Thu, 05 Mar 2015 13:43:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22f.google.com with SMTP id z12so56406234wgg.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 13:45:43 -0800 (PST)
+Received: by mail-we0-x235.google.com with SMTP id k11so55663212wes.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 13:43:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=RcODM/r0L9wOLw0AB8wBHbAJsWdoD3Lj5Wm7CRMYUtQ=;
-        b=OdsOraZT2q/N9jHmKUcCl4IoQwW9j+vSF3KOwTTlwtHD4R0AzUE9ioPtisRgnYNy5E
-         f6xEAh7o/JLW4agVznETiedKFMA0QkdJhcrdTisRfjKfIaGc9RMcC+03rU6HMuw6yWMO
-         TBYIpqV2//CvDhQgsW7aGkMlFu47K5H/FhUEBJjozGjjXOyt0YCzRd7kP/Myc4NGYrye
-         Z/UGKTbUQ4y8lYmyaRohfyQwD7T5Vfifdxtg7sfdS3StAcaTeNZr3/rELWdE3x6cpwgJ
-         2yx0OJeM1r3N2z+QNUtOgMJLo1uDZuTtTSUHBE+0yVF7NdiZtsKCavLdQ+VVjY35xxCv
-         YnNw==
-X-Received: by 10.180.78.136 with SMTP id b8mr27467238wix.6.1425591943846;
-        Thu, 05 Mar 2015 13:45:43 -0800 (PST)
+        bh=w8dZracLqmrbVeAvMMgQ1N/49v0oyJBlb/2GZtSCAwE=;
+        b=HYxrSzFpZmtx3arDxOk2DxHHvYi4RaxXyBcTX+n8q7SAyS6yhLMxJJxwQqJhUYfZcB
+         zpNCIzTFYuYgTWIPB6s1OQel/wAbMT/hGd7EJYJTW6xCOLQwi2CgKtRUvks1njK1qDoO
+         qOy/wG/8krxJb5H/kgVLT8LGgIK/3OsZvnagfqVjANZOKRVDYwTou7gqB/TFaKxkEDCR
+         1WvqUu6qTKLXQWrzfScEHKOB2mmt/xaDeCsISAg0dncty3Ipk7SoOBnbQ0P8UIAYt1Xk
+         o1WLUiwcVAQURMyQGQwTjBobfoPRLtoa6pY+od11ijxPQzZ0ogPOlyoI9cvG1cP1LeJc
+         i0CA==
+X-Received: by 10.180.87.106 with SMTP id w10mr68994810wiz.62.1425591808757;
+        Thu, 05 Mar 2015 13:43:28 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id fu1sm10673660wic.2.2015.03.05.13.45.42
+        by mx.google.com with ESMTPSA id p1sm13337271wib.23.2015.03.05.13.43.27
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 13:45:43 -0800 (PST)
+        Thu, 05 Mar 2015 13:43:27 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id BC35162672; Fri,  6 Mar 2015 00:45:40 +0300 (AST)
+	id 2D10662672; Fri,  6 Mar 2015 00:43:25 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH v3 2/7] Staging: fbtft: Clean dev_err() logging
-Date: Fri,  6 Mar 2015 00:44:19 +0300
-Message-Id: <1425591859-29622-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH v3 1/7] Staging: media: Clean dev_err() logging
+Date: Fri,  6 Mar 2015 00:42:36 +0300
+Message-Id: <1425591756-29568-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1425583768-27996-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425583768-27996-1-git-send-email-hamohammed.sa@gmail.com>
@@ -87,174 +87,219 @@ identifier  b.y;
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/fbtft/fb_ra8875.c    |  3 +--
- drivers/staging/fbtft/fb_ssd1351.c   |  3 +--
- drivers/staging/fbtft/fb_watterott.c |  3 +--
- drivers/staging/fbtft/fbtft-bus.c    |  4 ++--
- drivers/staging/fbtft/fbtft-core.c   | 14 +++++---------
- drivers/staging/fbtft/fbtft-io.c     | 11 ++++-------
- 6 files changed, 14 insertions(+), 24 deletions(-)
+ drivers/staging/media/lirc/lirc_imon.c  | 32 ++++++++++++--------------------
+ drivers/staging/media/lirc/lirc_sasem.c | 25 +++++++++----------------
+ drivers/staging/media/lirc/lirc_zilog.c |  3 +--
+ 3 files changed, 22 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
-index 8df9737..a186458 100644
---- a/drivers/staging/fbtft/fb_ra8875.c
-+++ b/drivers/staging/fbtft/fb_ra8875.c
-@@ -52,8 +52,7 @@ static int write_spi(struct fbtft_par *par, void *buf, size_t len)
- 		"%s(len=%d): ", __func__, len);
+diff --git a/drivers/staging/media/lirc/lirc_imon.c b/drivers/staging/media/lirc/lirc_imon.c
+index 9ce7d99..d490607 100644
+--- a/drivers/staging/media/lirc/lirc_imon.c
++++ b/drivers/staging/media/lirc/lirc_imon.c
+@@ -251,12 +251,10 @@ static int display_open(struct inode *inode, struct file *file)
+ 	mutex_lock(&context->ctx_lock);
  
- 	if (!par->spi) {
--		dev_err(par->info->device,
--			"%s: par->spi is unexpectedly NULL\n", __func__);
-+		dev_err(par->info->device, "par->spi is unexpectedly NULL\n");
- 		return -1;
+ 	if (!context->display) {
+-		dev_err(&interface->dev,
+-			"%s: display not supported by device\n", __func__);
++		dev_err(&interface->dev, "display not supported by device\n");
+ 		retval = -ENODEV;
+ 	} else if (context->display_isopen) {
+-		dev_err(&interface->dev,
+-			"%s: display port is already open\n", __func__);
++		dev_err(&interface->dev, "display port is already open\n");
+ 		retval = -EBUSY;
+ 	} else {
+ 		context->display_isopen = 1;
+@@ -291,11 +289,10 @@ static int display_close(struct inode *inode, struct file *file)
+ 
+ 	if (!context->display) {
+ 		dev_err(&context->usbdev->dev,
+-			"%s: display not supported by device\n", __func__);
++			"display not supported by device\n");
+ 		retval = -ENODEV;
+ 	} else if (!context->display_isopen) {
+-		dev_err(&context->usbdev->dev,
+-			"%s: display is not open\n", __func__);
++		dev_err(&context->usbdev->dev, "display is not open\n");
+ 		retval = -EIO;
+ 	} else {
+ 		context->display_isopen = 0;
+@@ -352,8 +349,7 @@ static int send_packet(struct imon_context *context)
+ 		retval = wait_for_completion_interruptible(
+ 				&context->tx.finished);
+ 		if (retval)
+-			dev_err(&context->usbdev->dev,
+-				"%s: task interrupted\n", __func__);
++			dev_err(&context->usbdev->dev, "task interrupted\n");
+ 		mutex_lock(&context->ctx_lock);
+ 
+ 		retval = context->tx.status;
+@@ -398,15 +394,13 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
+ 	mutex_lock(&context->ctx_lock);
+ 
+ 	if (!context->dev_present) {
+-		dev_err(&context->usbdev->dev,
+-			"%s: no iMON device present\n", __func__);
++		dev_err(&context->usbdev->dev, "no iMON device present\n");
+ 		retval = -ENODEV;
+ 		goto exit;
  	}
  
-diff --git a/drivers/staging/fbtft/fb_ssd1351.c b/drivers/staging/fbtft/fb_ssd1351.c
-index b59120c..b925dd5 100644
---- a/drivers/staging/fbtft/fb_ssd1351.c
-+++ b/drivers/staging/fbtft/fb_ssd1351.c
-@@ -220,8 +220,7 @@ static void register_onboard_backlight(struct fbtft_par *par)
- 				GFP_KERNEL);
- 	if (!bl_ops) {
- 		dev_err(par->info->device,
--			"%s: could not allocate memory for backlight operations.\n",
+ 	if (n_bytes <= 0 || n_bytes > IMON_DATA_BUF_SZ - 3) {
+-		dev_err(&context->usbdev->dev,
+-			"%s: invalid payload size\n", __func__);
++		dev_err(&context->usbdev->dev, "invalid payload size\n");
+ 		retval = -EINVAL;
+ 		goto exit;
+ 	}
+@@ -775,8 +769,7 @@ static int imon_probe(struct usb_interface *interface,
+ 
+ 	/* Input endpoint is mandatory */
+ 	if (!ir_ep_found) {
+-		dev_err(dev, "%s: no valid input (IR) endpoint found.\n",
 -			__func__);
-+			"could not allocate memory for backlight operations.\n");
- 		return;
++		dev_err(dev, "no valid input (IR) endpoint found.\n");
+ 		retval = -ENODEV;
+ 		alloc_status = 2;
+ 		goto alloc_status_switch;
+@@ -802,20 +795,19 @@ static int imon_probe(struct usb_interface *interface,
+ 		goto alloc_status_switch;
+ 	}
+ 	if (lirc_buffer_init(rbuf, BUF_CHUNK_SIZE, BUF_SIZE)) {
+-		dev_err(dev, "%s: lirc_buffer_init failed\n", __func__);
++		dev_err(dev, "lirc_buffer_init failed\n");
+ 		alloc_status = 4;
+ 		goto alloc_status_switch;
+ 	}
+ 	rx_urb = usb_alloc_urb(0, GFP_KERNEL);
+ 	if (!rx_urb) {
+-		dev_err(dev, "%s: usb_alloc_urb failed for IR urb\n", __func__);
++		dev_err(dev, "usb_alloc_urb failed for IR urb\n");
+ 		alloc_status = 5;
+ 		goto alloc_status_switch;
+ 	}
+ 	tx_urb = usb_alloc_urb(0, GFP_KERNEL);
+ 	if (!tx_urb) {
+-		dev_err(dev, "%s: usb_alloc_urb failed for display urb\n",
+-		    __func__);
++		dev_err(dev, "usb_alloc_urb failed for display urb\n");
+ 		alloc_status = 6;
+ 		goto alloc_status_switch;
+ 	}
+@@ -842,7 +834,7 @@ static int imon_probe(struct usb_interface *interface,
+ 
+ 	lirc_minor = lirc_register_driver(driver);
+ 	if (lirc_minor < 0) {
+-		dev_err(dev, "%s: lirc_register_driver failed\n", __func__);
++		dev_err(dev, "lirc_register_driver failed\n");
+ 		alloc_status = 7;
+ 		goto unlock;
+ 	} else
+diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
+index 4a26820..b7261b3 100644
+--- a/drivers/staging/media/lirc/lirc_sasem.c
++++ b/drivers/staging/media/lirc/lirc_sasem.c
+@@ -224,8 +224,7 @@ static int vfd_open(struct inode *inode, struct file *file)
+ 	mutex_lock(&context->ctx_lock);
+ 
+ 	if (context->vfd_isopen) {
+-		dev_err(&interface->dev,
+-			"%s: VFD port is already open", __func__);
++		dev_err(&interface->dev, "VFD port is already open");
+ 		retval = -EBUSY;
+ 	} else {
+ 		context->vfd_isopen = 1;
+@@ -292,7 +291,7 @@ static int vfd_close(struct inode *inode, struct file *file)
+ 	mutex_lock(&context->ctx_lock);
+ 
+ 	if (!context->vfd_isopen) {
+-		dev_err(&context->dev->dev, "%s: VFD is not open\n", __func__);
++		dev_err(&context->dev->dev, "VFD is not open\n");
+ 		retval = -EIO;
+ 	} else {
+ 		context->vfd_isopen = 0;
+@@ -383,8 +382,7 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
  	}
  
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 975b579..5e6595f 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -269,8 +269,7 @@ static void register_chip_backlight(struct fbtft_par *par)
- 				GFP_KERNEL);
- 	if (!bl_ops) {
- 		dev_err(par->info->device,
--			"%s: could not allocate memory for backlight operations.\n",
+ 	if (n_bytes <= 0 || n_bytes > SASEM_DATA_BUF_SZ) {
+-		dev_err(&context->dev->dev, "%s: invalid payload size\n",
 -			__func__);
-+			"could not allocate memory for backlight operations.\n");
- 		return;
++		dev_err(&context->dev->dev, "invalid payload size\n");
+ 		retval = -EINVAL;
+ 		goto exit;
  	}
+@@ -493,8 +491,7 @@ static int ir_open(void *data)
+ 	mutex_lock(&context->ctx_lock);
  
-diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fbtft-bus.c
-index b3cddb0..4b9a481 100644
---- a/drivers/staging/fbtft/fbtft-bus.c
-+++ b/drivers/staging/fbtft/fbtft-bus.c
-@@ -196,7 +196,7 @@ int fbtft_write_vmem16_bus9(struct fbtft_par *par, size_t offset, size_t len)
- 		__func__, offset, len);
- 
- 	if (!par->txbuf.buf) {
--		dev_err(par->info->device, "%s: txbuf.buf is NULL\n", __func__);
-+		dev_err(par->info->device, "txbuf.buf is NULL\n");
- 		return -1;
- 	}
- 
-@@ -232,7 +232,7 @@ EXPORT_SYMBOL(fbtft_write_vmem16_bus9);
- 
- int fbtft_write_vmem8_bus8(struct fbtft_par *par, size_t offset, size_t len)
- {
--	dev_err(par->info->device, "%s: function not implemented\n", __func__);
-+	dev_err(par->info->device, "function not implemented\n");
- 	return -1;
- }
- EXPORT_SYMBOL(fbtft_write_vmem8_bus8);
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-index e8d8d07..f0164218 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -304,8 +304,7 @@ void fbtft_register_backlight(struct fbtft_par *par)
- 				GFP_KERNEL);
- 	if (!bl_ops) {
- 		dev_err(par->info->device,
--			"%s: could not allocate memeory for backlight operations.\n",
+ 	if (context->ir_isopen) {
+-		dev_err(&context->dev->dev, "%s: IR port is already open\n",
 -			__func__);
-+			"could not allocate memeory for backlight operations.\n");
- 		return;
++		dev_err(&context->dev->dev, "IR port is already open\n");
+ 		retval = -EBUSY;
+ 		goto exit;
  	}
- 
-@@ -414,8 +413,7 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
- 	ret = par->fbtftops.write_vmem(par, offset, len);
- 	if (ret < 0)
- 		dev_err(par->info->device,
--			"%s: write_vmem failed to update display buffer\n",
--			__func__);
-+			"write_vmem failed to update display buffer\n");
- 
- 	if (unlikely(timeit)) {
- 		getnstimeofday(&ts_end);
-@@ -1091,8 +1089,7 @@ static int fbtft_init_display_dt(struct fbtft_par *par)
- 			while (p && !(val & 0xFFFF0000)) {
- 				if (i > 63) {
- 					dev_err(par->info->device,
--					"%s: Maximum register values exceeded\n",
--					__func__);
-+						"Maximum register values exceeded\n");
- 					return -EINVAL;
- 				}
- 				buf[i++] = val;
-@@ -1216,8 +1213,7 @@ int fbtft_init_display(struct fbtft_par *par)
- 			while (par->init_sequence[i] >= 0) {
- 				if (j > 63) {
- 					dev_err(par->info->device,
--					"%s: Maximum register values exceeded\n",
--					__func__);
-+						"Maximum register values exceeded\n");
- 					return -EINVAL;
- 				}
- 				buf[j++] = par->init_sequence[i++];
-@@ -1255,7 +1251,7 @@ int fbtft_init_display(struct fbtft_par *par)
+@@ -734,7 +731,7 @@ static int sasem_probe(struct usb_interface *interface,
+ 	/* Input endpoint is mandatory */
+ 	if (!ir_ep_found) {
+ 		dev_err(&interface->dev,
+-			"%s: no valid input (IR) endpoint found.\n", __func__);
++			"no valid input (IR) endpoint found.\n");
+ 		retval = -ENODEV;
+ 		goto exit;
  	}
- 
- 	dev_err(par->info->device,
--		"%s: something is wrong. Shouldn't get here.\n", __func__);
-+		"something is wrong. Shouldn't get here.\n");
- 	return -EINVAL;
- }
- EXPORT_SYMBOL(fbtft_init_display);
-diff --git a/drivers/staging/fbtft/fbtft-io.c b/drivers/staging/fbtft/fbtft-io.c
-index 9b2f8cf..17ab078 100644
---- a/drivers/staging/fbtft/fbtft-io.c
-+++ b/drivers/staging/fbtft/fbtft-io.c
-@@ -16,8 +16,7 @@ int fbtft_write_spi(struct fbtft_par *par, void *buf, size_t len)
- 		"%s(len=%d): ", __func__, len);
- 
- 	if (!par->spi) {
--		dev_err(par->info->device,
--			"%s: par->spi is unexpectedly NULL\n", __func__);
-+		dev_err(par->info->device, "par->spi is unexpectedly NULL\n");
- 		return -1;
+@@ -764,15 +761,13 @@ static int sasem_probe(struct usb_interface *interface,
+ 		goto alloc_status_switch;
  	}
- 
-@@ -53,8 +52,7 @@ int fbtft_write_spi_emulate_9(struct fbtft_par *par, void *buf, size_t len)
- 		"%s(len=%d): ", __func__, len);
- 
- 	if (!par->extra) {
--		dev_err(par->info->device, "%s: error: par->extra is NULL\n",
--			__func__);
-+		dev_err(par->info->device, "error: par->extra is NULL\n");
- 		return -EINVAL;
+ 	if (lirc_buffer_init(rbuf, BUF_CHUNK_SIZE, BUF_SIZE)) {
+-		dev_err(&interface->dev,
+-			"%s: lirc_buffer_init failed\n", __func__);
++		dev_err(&interface->dev, "lirc_buffer_init failed\n");
+ 		alloc_status = 4;
+ 		goto alloc_status_switch;
  	}
- 	if ((len % 8) != 0) {
-@@ -98,8 +96,7 @@ int fbtft_read_spi(struct fbtft_par *par, void *buf, size_t len)
- 	struct spi_message	m;
- 
- 	if (!par->spi) {
--		dev_err(par->info->device,
--			"%s: par->spi is unexpectedly NULL\n", __func__);
-+		dev_err(par->info->device, "par->spi is unexpectedly NULL\n");
- 		return -ENODEV;
+ 	rx_urb = usb_alloc_urb(0, GFP_KERNEL);
+ 	if (!rx_urb) {
+-		dev_err(&interface->dev,
+-			"%s: usb_alloc_urb failed for IR urb\n", __func__);
++		dev_err(&interface->dev, "usb_alloc_urb failed for IR urb\n");
+ 		alloc_status = 5;
+ 		goto alloc_status_switch;
  	}
+@@ -780,8 +775,7 @@ static int sasem_probe(struct usb_interface *interface,
+ 		tx_urb = usb_alloc_urb(0, GFP_KERNEL);
+ 		if (!tx_urb) {
+ 			dev_err(&interface->dev,
+-				"%s: usb_alloc_urb failed for VFD urb",
+-				__func__);
++				"usb_alloc_urb failed for VFD urb");
+ 			alloc_status = 6;
+ 			goto alloc_status_switch;
+ 		}
+@@ -805,8 +799,7 @@ static int sasem_probe(struct usb_interface *interface,
  
-@@ -233,7 +230,7 @@ EXPORT_SYMBOL(fbtft_write_gpio16_wr);
- 
- int fbtft_write_gpio16_wr_latched(struct fbtft_par *par, void *buf, size_t len)
- {
--	dev_err(par->info->device, "%s: function not implemented\n", __func__);
-+	dev_err(par->info->device, "function not implemented\n");
- 	return -1;
- }
- EXPORT_SYMBOL(fbtft_write_gpio16_wr_latched);
+ 	lirc_minor = lirc_register_driver(driver);
+ 	if (lirc_minor < 0) {
+-		dev_err(&interface->dev,
+-			"%s: lirc_register_driver failed\n", __func__);
++		dev_err(&interface->dev, "lirc_register_driver failed\n");
+ 		alloc_status = 7;
+ 		retval = lirc_minor;
+ 		goto unlock;
+diff --git a/drivers/staging/media/lirc/lirc_zilog.c b/drivers/staging/media/lirc/lirc_zilog.c
+index e16627c..abcc9e4 100644
+--- a/drivers/staging/media/lirc/lirc_zilog.c
++++ b/drivers/staging/media/lirc/lirc_zilog.c
+@@ -1590,8 +1590,7 @@ static int ir_probe(struct i2c_client *client, const struct i2c_device_id *id)
+ 		if (IS_ERR(rx->task)) {
+ 			ret = PTR_ERR(rx->task);
+ 			dev_err(tx->ir->l.dev,
+-				"%s: could not start IR Rx polling thread\n",
+-				__func__);
++				"could not start IR Rx polling thread\n");
+ 			/* Failed kthread, so put back the ir ref */
+ 			put_ir_device(ir, true);
+ 			/* Failure exit, so put back rx ref from i2c_client */
 -- 
 1.9.1
 
