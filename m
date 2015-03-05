@@ -1,118 +1,250 @@
-X-GM-THRID: 6661087571721846784
-X-Received: by 2002:a62:121d:: with SMTP id a29mr2927908pfj.103.1550905306729;
-        Fri, 22 Feb 2019 23:01:46 -0800 (PST)
+X-GM-THRID: 6722745794560
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,aa68bef9b95d0771,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.159.227 with SMTP id xf3mr1392953lbb.11.1425549715413;
+        Thu, 05 Mar 2015 02:01:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:4393:: with SMTP id l19ls3601290pfi.6.gmail; Fri, 22 Feb
- 2019 23:01:46 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZTMKBqtGE0KUXckIAU6kNbHpSsOjy8nPunxGEPzT+Htr7htQfYb59wVlyFP85GG7S2pyer
-X-Received: by 2002:a63:b70d:: with SMTP id t13mr2944379pgf.49.1550905306056;
-        Fri, 22 Feb 2019 23:01:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550905306; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wxuExEpnx8s/zxVHo+5GPg3CYtM2Hi3QXYKpp9SQLpP8Fdg2wExoD43wt7cueXZwn5
-         a/pd+vRnQQxoa9UaigGtD0TIO32H4ZTQVemh/Bi5vsaRZ2dTKNtbfWA7aM/imsouNHiL
-         +4znltEEALzxGPdMUpS049lGMhpxyU1xqhI7GyeOOnbluIbn3UdvCCVlN4EOwiZrx56U
-         hmcA7IfVl4i1V0vP55cegrWSX5vUl14ymxOLvEsagkT7bq2yyA7JJRBki3r8oJCrWhm7
-         mZ4NNUEwMc0xiTfPQmCXv+FX4UaZvKAuXuYoG5IAwMeK3xKM5BVDZlJPZoxkdibJCZiK
-         YPKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=VWFbYQ9EaLsCseA+WX6M88cK8KmhbCwZ3kgTJD9QDcQ=;
-        b=zQZz/Vu5sjrnXaBDB7VBYYkukeHsxtOckqSgEtcNkPZm2diZ33EAplhaiPRPFO+1Qx
-         3HE31P0+eGx64fJeHXpWqHnwD/hXKqdY86tQ/txuCZIlKa+7eeVWIJcHG8JWL/rlDEnO
-         wY775sLEbWu/+nZ7QyqeN+SkZ2bUcgH0BBFv99iSsWfZ5VVlnfgmzdm6rqg3zekU2gwe
-         kDYPZk2EL3RAZY4qxQlj4gfMehER7d+kN+S/Te5epFDOqkPRDxIIBRUSfedN0mpSBhnS
-         GeIM3yPpHkNHgNWM2uoy5iEadURsO1b98KitPEy7UelVHWvG2U4fxMaE4G2Eqy79ngZP
-         V6jw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pJdPX2Ja;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id f79si205888pff.4.2019.02.22.23.01.46
+Received: by 10.180.12.167 with SMTP id z7ls309979wib.23.canary; Thu, 05 Mar
+ 2015 02:01:53 -0800 (PST)
+X-Received: by 10.180.83.168 with SMTP id r8mr1814966wiy.6.1425549713673;
+        Thu, 05 Mar 2015 02:01:53 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id i7si1297769wif.0.2015.03.05.02.01.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 23:01:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 Mar 2015 02:01:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pJdPX2Ja;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id h1so2107442pfo.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 23:01:46 -0800 (PST)
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x236.google.com with SMTP id em10so37033420wid.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 02:01:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=VWFbYQ9EaLsCseA+WX6M88cK8KmhbCwZ3kgTJD9QDcQ=;
-        b=pJdPX2JalHtplpPxjKVT0TkLeVdtNjV/0Vf5kH23IqIQbLgAZd2ovSNZ7LU2GtObDx
-         /hpAM6l+mcqaohB9APwkko4u1yyqGyidXB61tUnKZFLA1TOlgefckDHcqMLv2CFoFOA/
-         hm1A2gsXwvWsgvVJK9hU2avm8aYD4bcnZP5Sk2T/oueylp9JfqxfmD0qj/4XID2egd6F
-         tkWConhN+0rocVb9YbZVbPg85qEOF+Z4RwdUa+vgEMzZJZaseHNcSTkGc4CqJ7cbObtR
-         ecLEPUIV/XAx2rSOeqNUSgRygp7vaT17YxsVj1XJhfPujjK8NgCL+7YrNKAyqgk0Hn5w
-         0e6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=VWFbYQ9EaLsCseA+WX6M88cK8KmhbCwZ3kgTJD9QDcQ=;
-        b=QGa6/BKIiryKziznG4p4xUAvX3MDW4uYVgH7OpmaRAaSG+OX+mQsCP91A723iJQyeO
-         XjLMxma/wz2G6wvd3FpW6jRjrDBM+6EiFd4XpRcjSqJlxe/EmfJFGeoHRTLBjWqainqM
-         /f2UrHs/ex6pwK7M4spuMhjL8oF/BpXHA7BbDbDplNRv5kd7L7Vi04+zP6AdRIPZu0FI
-         Vp2M0azvZHFsnqdMmWF/Eac+d/+rd2gUz1zRy5zSpifZJp619GgZoLGsjh8PrU79sV9h
-         vXqT+C7EkoyBGfoePgVqHmJ4OvCb0aCWUKlDbIiNMuRm+FS3Sw/ADhZf5cV1HXAanasb
-         1V2A==
-X-Gm-Message-State: AHQUAub+4b2qdQWcmWouuGt+wp7/DObndYQuFMvHGIrQ/ZH2alLP7Pkh
-	5Xzke6mCwm1aF803sAZ7/1bHUov29BA=
-X-Received: by 2002:a63:c503:: with SMTP id f3mr7489883pgd.431.1550905305488;
-        Fri, 22 Feb 2019 23:01:45 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([49.35.247.83])
-        by smtp.gmail.com with ESMTPSA id g185sm5324093pfc.174.2019.02.22.23.01.43
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 23:01:44 -0800 (PST)
-Date: Sat, 23 Feb 2019 12:31:39 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: netlogic: Add SPDX-License-Identifier in
- platform_net.h
-Message-ID: <20190223070139.GA13015@bhagyashri-Lenovo-G570>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=k1aJAU3kKRZRy1SrFawhsI9OhHNW8Cpbmbt/WFCdAB4=;
+        b=BiM6371UyMMmmUA7BBOSZIGW3nxkiHHU5qS5gKE9Fq2AFwDKP8KzTza2KnDphr7NV/
+         qW1gHhDIG9iuBe0QNaq6mdtnMXTK2BOc5LU4dwhqRzRl7DhV78E7Xi25xfd8Gk0cv8jL
+         WKk1aonUbg0tkS37usYpa8t3ugKUI4hLCEm6z6Yvz7qex03dLI29vYY1FgAaC+TllnX5
+         BeAssHWMGzBbX6MvIgpvjDmJh367PCxnAwV3MjAoqXydZiWbR8kaHPOYoa7jPT0Ejqe9
+         8HymI3MkLQSM4IGUe8Cn1Oe1iqdDTBeeXP8DGWo66kQwUX05rp+hf6tmwg24DvAyUZy5
+         N0dQ==
+X-Received: by 10.194.110.38 with SMTP id hx6mr16537288wjb.128.1425549713574;
+        Thu, 05 Mar 2015 02:01:53 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneensa-VirtualBox ([95.185.221.132])
+        by mx.google.com with ESMTPSA id k1sm9763000wjn.9.2015.03.05.02.01.51
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 Mar 2015 02:01:52 -0800 (PST)
+Received: by haneensa-VirtualBox (Postfix, from userid 1000)
+	id 371A862672; Thu,  5 Mar 2015 13:01:50 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH] Staging: comedi: Clean dev_err() logging
+Date: Thu,  5 Mar 2015 13:01:49 +0300
+Message-Id: <1425549709-21481-1-git-send-email-hamohammed.sa@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Adds the SPDX GPL-2.0 or BSD-2-CLAUSE license identifier, which solves
-the checkpatch.pl warning:
-"WARNING: Missing or malformed SPDX-License-Identifier tag in line 1".
-Adds GNU term: "Redistributions of source code must retain the above
-copyright".
+This patch removes  __func__ from dev_err. dev_err includes information about:
+ (devcice, driver, specific instance of device, etc) in the log printout, so there is no need for  __func__.
+This was done using Coccinelle, with the following semantic patch:
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+@a@
+expression E;
+expression  msg;
+@@
+
+dev_err(E, msg, __func__);
+
+@script:python b@
+e << a.msg;
+y;
+@@
+
+if(e.find("%s: ") == True):
+	m = e.replace("%s: ", "");
+	coccinelle.y = m;
+elif(e.find("%s ") == True):
+	m = e.replace("%s ", "");
+	coccinelle.y = m;
+else:
+	m = e.replace("%s", "");
+
+@c@
+expression a.E, a.msg;
+identifier  b.y;
+@@
+
+- dev_err(E, msg, __func__);
++ dev_err(E, y);
+
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/netlogic/platform_net.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/comedi/drivers/cb_pcidas64.c   |  6 ++---
+ drivers/staging/comedi/drivers/ni_mio_common.c | 36 ++++++++++----------------
+ 2 files changed, 15 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/netlogic/platform_net.h b/drivers/staging/netlogic/platform_net.h
-index e1b27f6..2265927 100644
---- a/drivers/staging/netlogic/platform_net.h
-+++ b/drivers/staging/netlogic/platform_net.h
-@@ -1,9 +1,10 @@
--/*
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-2-CLAUSE)
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
-  *
-  * This software is available to you under a choice of one of two
-  * licenses.  You may choose to be licensed under the terms of the GNU
-+ * 1. Redistributions of source code must retain the above copyright
-  * General Public License (GPL) Version 2, available from the file
-  * COPYING in the main directory of this source tree, or the Broadcom
-  * license below:
+diff --git a/drivers/staging/comedi/drivers/cb_pcidas64.c b/drivers/staging/comedi/drivers/cb_pcidas64.c
+index 551e9d9..bd24059 100644
+--- a/drivers/staging/comedi/drivers/cb_pcidas64.c
++++ b/drivers/staging/comedi/drivers/cb_pcidas64.c
+@@ -1703,8 +1703,7 @@ static void i2c_write(struct comedi_device *dev, unsigned int address,
+ 
+ 	/*  get acknowledge */
+ 	if (i2c_read_ack(dev) != 0) {
+-		dev_err(dev->class_dev, "%s failed: no acknowledge\n",
+-			__func__);
++		dev_err(dev->class_dev, "failed: no acknowledge\n");
+ 		i2c_stop(dev);
+ 		return;
+ 	}
+@@ -1712,8 +1711,7 @@ static void i2c_write(struct comedi_device *dev, unsigned int address,
+ 	for (i = 0; i < length; i++) {
+ 		i2c_write_byte(dev, data[i]);
+ 		if (i2c_read_ack(dev) != 0) {
+-			dev_err(dev->class_dev, "%s failed: no acknowledge\n",
+-				__func__);
++			dev_err(dev->class_dev, "failed: no acknowledge\n");
+ 			i2c_stop(dev);
+ 			return;
+ 		}
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index b6ddc01..176b64a 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -1068,7 +1068,7 @@ static int ni_ai_drain_dma(struct comedi_device *dev)
+ 			udelay(5);
+ 		}
+ 		if (i == timeout) {
+-			dev_err(dev->class_dev, "%s timed out\n", __func__);
++			dev_err(dev->class_dev, "timed out\n");
+ 			dev_err(dev->class_dev,
+ 				"mite_bytes_in_transit=%i, AI_Status1_Register=0x%x\n",
+ 				mite_bytes_in_transit(devpriv->ai_mite_chan),
+@@ -2116,8 +2116,7 @@ static int ni_ai_insn_read(struct comedi_device *dev,
+ 				}
+ 			}
+ 			if (i == NI_TIMEOUT) {
+-				dev_err(dev->class_dev, "%s timeout\n",
+-					__func__);
++				dev_err(dev->class_dev, "timeout\n");
+ 				return -ETIME;
+ 			}
+ 			d += signbits;
+@@ -2140,8 +2139,7 @@ static int ni_ai_insn_read(struct comedi_device *dev,
+ 				}
+ 			}
+ 			if (i == NI_TIMEOUT) {
+-				dev_err(dev->class_dev, "%s timeout\n",
+-					__func__);
++				dev_err(dev->class_dev, "timeout\n");
+ 				return -ETIME;
+ 			}
+ 			data[n] = (((dl >> 16) & 0xFFFF) + signbits) & 0xFFFF;
+@@ -2156,8 +2154,7 @@ static int ni_ai_insn_read(struct comedi_device *dev,
+ 					break;
+ 			}
+ 			if (i == NI_TIMEOUT) {
+-				dev_err(dev->class_dev, "%s timeout\n",
+-					__func__);
++				dev_err(dev->class_dev, "timeout\n");
+ 				return -ETIME;
+ 			}
+ 			if (devpriv->is_m_series) {
+@@ -2808,8 +2805,7 @@ static int ni_m_series_ao_config_chanlist(struct comedi_device *dev,
+ 			break;
+ 		default:
+ 			dev_err(dev->class_dev,
+-				"%s: bug! unhandled ao reference voltage\n",
+-				__func__);
++				"bug! unhandled ao reference voltage\n");
+ 			break;
+ 		}
+ 		switch (krange->max + krange->min) {
+@@ -2821,8 +2817,7 @@ static int ni_m_series_ao_config_chanlist(struct comedi_device *dev,
+ 			break;
+ 		default:
+ 			dev_err(dev->class_dev,
+-				"%s: bug! unhandled ao offset voltage\n",
+-				__func__);
++				"bug! unhandled ao offset voltage\n");
+ 			break;
+ 		}
+ 		if (timed)
+@@ -3694,8 +3689,7 @@ static int ni_serial_hw_readwrite8(struct comedi_device *dev,
+ 		udelay((devpriv->serial_interval_ns + 999) / 1000);
+ 		if (--count < 0) {
+ 			dev_err(dev->class_dev,
+-				"%s: SPI serial I/O didn't finish in time!\n",
+-				__func__);
++				"SPI serial I/O didn't finish in time!\n");
+ 			err = -ETIME;
+ 			goto Error;
+ 		}
+@@ -3833,8 +3827,7 @@ static int ni_serial_insn_config(struct comedi_device *dev,
+ 			err = ni_serial_sw_readwrite8(dev, s, byte_out,
+ 						      &byte_in);
+ 		} else {
+-			dev_err(dev->class_dev, "%s: serial disabled!\n",
+-				__func__);
++			dev_err(dev->class_dev, "serial disabled!\n");
+ 			return -EINVAL;
+ 		}
+ 		if (err < 0)
+@@ -4520,8 +4513,7 @@ static unsigned ni_old_get_pfi_routing(struct comedi_device *dev,
+ 	case 9:
+ 		return NI_PFI_OUTPUT_G_GATE0;
+ 	default:
+-		dev_err(dev->class_dev,
+-			"%s: bug, unhandled case in switch.\n", __func__);
++		dev_err(dev->class_dev, "bug, unhandled case in switch.\n");
+ 		break;
+ 	}
+ 	return 0;
+@@ -4673,7 +4665,7 @@ static int cs5529_wait_for_idle(struct comedi_device *dev)
+ 			return -EIO;
+ 	}
+ 	if (i == timeout) {
+-		dev_err(dev->class_dev, "%s timeout\n", __func__);
++		dev_err(dev->class_dev, "timeout\n");
+ 		return -ETIME;
+ 	}
+ 	return 0;
+@@ -4908,7 +4900,7 @@ static int ni_mseries_set_pll_master_clock(struct comedi_device *dev,
+ 					       &devpriv->clock_ns);
+ 	if (retval < 0) {
+ 		dev_err(dev->class_dev,
+-			"%s: bug, failed to find pll parameters\n", __func__);
++			"bug, failed to find pll parameters\n");
+ 		return retval;
+ 	}
+ 
+@@ -4966,8 +4958,7 @@ static int ni_set_master_clock(struct comedi_device *dev,
+ 					      RTSI_Trig_Direction_Register);
+ 				if (period_ns == 0) {
+ 					dev_err(dev->class_dev,
+-						"%s: we don't handle an unspecified clock period correctly yet, returning error\n",
+-						__func__);
++						"we don't handle an unspecified clock period correctly yet, returning error\n");
+ 					return -EINVAL;
+ 				}
+ 				devpriv->clock_ns = period_ns;
+@@ -5057,8 +5048,7 @@ static unsigned ni_get_rtsi_routing(struct comedi_device *dev, unsigned chan)
+ 	} else {
+ 		if (chan == old_RTSI_clock_channel)
+ 			return NI_RTSI_OUTPUT_RTSI_OSC;
+-		dev_err(dev->class_dev, "%s: bug! should never get here?\n",
+-			__func__);
++		dev_err(dev->class_dev, "bug! should never get here?\n");
+ 		return 0;
+ 	}
+ }
 -- 
-2.7.4
+1.9.1
 
 
