@@ -1,49 +1,49 @@
 X-GM-THRID: 6950918029312
-X-Received: by 10.112.35.135 with SMTP id h7mr2510254lbj.23.1425668590205;
-        Fri, 06 Mar 2015 11:03:10 -0800 (PST)
+X-Received: by 10.112.199.69 with SMTP id ji5mr2522322lbc.0.1425668557095;
+        Fri, 06 Mar 2015 11:02:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.226 with SMTP id t2ls110443laj.42.gmail; Fri, 06 Mar
- 2015 11:03:09 -0800 (PST)
-X-Received: by 10.152.29.97 with SMTP id j1mr2539984lah.3.1425668589718;
-        Fri, 06 Mar 2015 11:03:09 -0800 (PST)
+Received: by 10.180.186.71 with SMTP id fi7ls162915wic.28.canary; Fri, 06 Mar
+ 2015 11:02:36 -0800 (PST)
+X-Received: by 10.180.13.98 with SMTP id g2mr5714165wic.3.1425668556761;
+        Fri, 06 Mar 2015 11:02:36 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
-        by gmr-mx.google.com with ESMTPS id l8si241046wia.0.2015.03.06.11.03.09
+Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
+        by gmr-mx.google.com with ESMTPS id l8si240924wia.0.2015.03.06.11.02.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 11:03:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
+        Fri, 06 Mar 2015 11:02:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesw55 with SMTP id w55so7969464wes.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 11:03:09 -0800 (PST)
+Received: by wggx12 with SMTP id x12so4334992wgg.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 11:02:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=NLra6KrIsGsZ0jcMefjE1OR9fat8pyn+eGjqOZjXEYw=;
-        b=cHzEPiPaWkZaG40wWXhWkaEHAM1yCKzAkvja4iPvi6NLggxztwCWUuQKXBW6S+HLfw
-         UPHHLcnfOTjS0MDx1K7zvpnanS5z+jcd0G0l14KLpDn8uCA4y+7YNVme+iSfRvafGY9z
-         sWaBGPHgZivYFZAz29Ys/VaWcPmnpN2XO0FC3rOIgOWHUx26xVhxGs7cbJdt5RlwoRNx
-         V79OY4/N4ZTlfW8W0gwNrPtrCT7MZTv78Dqv3atz1yfcGk5hLZ+9XQekWskph/+MFKq+
-         dDe1Q8/gCT46i+WzJnQZn+1xfl1TJOIx5H0/9fIwzuHThYx8bHP0sjCIxx4aUVJOnzob
-         3QKQ==
-X-Received: by 10.194.177.195 with SMTP id cs3mr31306338wjc.141.1425668589594;
-        Fri, 06 Mar 2015 11:03:09 -0800 (PST)
+        bh=CRyT8GbF4uUIjeJJxLi3faY1TP2h0xVLFRAlqBCpsmU=;
+        b=MrXRSHkm6pZeUpggZaYiByLjnJMgLlLv1kTkjcu9Eupw2obdtN9D8vcXW28EjtS9Kg
+         U8k9ZcjMDIfB37LcwbQYGyM80zGdQfCnnba955m0w6wrh2t8AcGW247Jj6JPzUvfi85Z
+         jxsgRtZYLZYBqq6gjte8h+b3C1lxannpdXn8CicNE3QTmD+YqBan8CGVL2CIkLszHhVi
+         6OaAhbZ3h0m1DWA91KMRLEcY6P5hvj8f0RI1ev5nWyifc+6FVZGgg0QtM+40OmZtBygt
+         Yq2kjEEcCcQ1GnujgCr98194lDCSE7JMOSHGMHk5pjJguTMZXf54ItoiSbxJ3Qn37Vhu
+         JiNg==
+X-Received: by 10.180.77.233 with SMTP id v9mr80024331wiw.28.1425668556613;
+        Fri, 06 Mar 2015 11:02:36 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id pa4sm16152989wjb.11.2015.03.06.11.03.08
+        by mx.google.com with ESMTPSA id ch6sm16154972wjc.3.2015.03.06.11.02.34
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 11:03:08 -0800 (PST)
+        Fri, 06 Mar 2015 11:02:34 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 08CAB62672; Fri,  6 Mar 2015 22:03:06 +0300 (AST)
+	id 1404362672; Fri,  6 Mar 2015 22:02:33 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 5/8] Staging: rts5208: clean dev_err logging
-Date: Fri,  6 Mar 2015 22:03:05 +0300
-Message-Id: <1425668585-27475-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 4/8] Staging: comedi: clean dev_err logging
+Date: Fri,  6 Mar 2015 22:01:38 +0300
+Message-Id: <1425668498-27423-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
@@ -87,24 +87,97 @@ identifier  b.y;
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/rts5208/rtsx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/comedi/drivers/ni_mio_common.c |  4 ++--
+ drivers/staging/comedi/drivers/usbduxsigma.c   | 26 +++++++++++---------------
+ 2 files changed, 13 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
-index c74f1b8..7f2c0c3 100644
---- a/drivers/staging/rts5208/rtsx.c
-+++ b/drivers/staging/rts5208/rtsx.c
-@@ -137,8 +137,8 @@ static int queuecommand_lck(struct scsi_cmnd *srb,
- 
- 	/* check for state-transition errors */
- 	if (chip->srb != NULL) {
--		dev_err(&dev->pci->dev, "Error in %s: chip->srb = %p\n",
--			__func__, chip->srb);
-+		dev_err(&dev->pci->dev, "Error: chip->srb = %p\n",
-+			chip->srb);
- 		return SCSI_MLQUEUE_HOST_BUSY;
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index 176b64a..97728d2 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -670,8 +670,8 @@ static inline void ni_set_bitfield(struct comedi_device *dev, int reg,
+ 		ni_writeb(dev, devpriv->g0_g1_select_reg, G0_G1_Select);
+ 		break;
+ 	default:
+-		dev_err(dev->class_dev,
+-			"%s called with invalid register %d\n", __func__, reg);
++		dev_err(dev->class_dev, "called with invalid register %d\n",
++			reg);
+ 		break;
  	}
+ 	mmiowb();
+diff --git a/drivers/staging/comedi/drivers/usbduxsigma.c b/drivers/staging/comedi/drivers/usbduxsigma.c
+index 394969b..f50cf8a 100644
+--- a/drivers/staging/comedi/drivers/usbduxsigma.c
++++ b/drivers/staging/comedi/drivers/usbduxsigma.c
+@@ -243,9 +243,8 @@ static void usbduxsigma_ai_handle_urb(struct comedi_device *dev,
+ 		urb->dev = comedi_to_usb_dev(dev);
+ 		ret = usb_submit_urb(urb, GFP_ATOMIC);
+ 		if (ret < 0) {
+-			dev_err(dev->class_dev,
+-				"%s: urb resubmit failed (%d)\n",
+-				__func__, ret);
++			dev_err(dev->class_dev, "urb resubmit failed (%d)\n",
++				ret);
+ 			if (ret == -EL2NSYNC)
+ 				dev_err(dev->class_dev,
+ 					"buggy USB host controller or bug in IRQ handler\n");
+@@ -292,8 +291,8 @@ static void usbduxsigma_ai_urb_complete(struct urb *urb)
  
+ 	default:
+ 		/* a real error */
+-		dev_err(dev->class_dev, "%s: non-zero urb status (%d)\n",
+-			__func__, urb->status);
++		dev_err(dev->class_dev, "non-zero urb status (%d)\n",
++			urb->status);
+ 		async->events |= COMEDI_CB_ERROR;
+ 		break;
+ 	}
+@@ -386,9 +385,8 @@ static void usbduxsigma_ao_handle_urb(struct comedi_device *dev,
+ 		urb->iso_frame_desc[0].status = 0;
+ 		ret = usb_submit_urb(urb, GFP_ATOMIC);
+ 		if (ret < 0) {
+-			dev_err(dev->class_dev,
+-				"%s: urb resubmit failed (%d)\n",
+-				__func__, ret);
++			dev_err(dev->class_dev, "urb resubmit failed (%d)\n",
++				ret);
+ 			if (ret == -EL2NSYNC)
+ 				dev_err(dev->class_dev,
+ 					"buggy USB host controller or bug in IRQ handler\n");
+@@ -423,8 +421,8 @@ static void usbduxsigma_ao_urb_complete(struct urb *urb)
+ 
+ 	default:
+ 		/* a real error */
+-		dev_err(dev->class_dev, "%s: non-zero urb status (%d)\n",
+-			__func__, urb->status);
++		dev_err(dev->class_dev, "non-zero urb status (%d)\n",
++			urb->status);
+ 		async->events |= COMEDI_CB_ERROR;
+ 		break;
+ 	}
+@@ -1071,9 +1069,8 @@ static void usbduxsigma_pwm_urb_complete(struct urb *urb)
+ 	default:
+ 		/* a real error */
+ 		if (devpriv->pwm_cmd_running) {
+-			dev_err(dev->class_dev,
+-				"%s: non-zero urb status (%d)\n",
+-				__func__, urb->status);
++			dev_err(dev->class_dev, "non-zero urb status (%d)\n",
++				urb->status);
+ 			usbduxsigma_pwm_stop(dev, 0);	/* w/o unlink */
+ 		}
+ 		return;
+@@ -1087,8 +1084,7 @@ static void usbduxsigma_pwm_urb_complete(struct urb *urb)
+ 	urb->status = 0;
+ 	ret = usb_submit_urb(urb, GFP_ATOMIC);
+ 	if (ret < 0) {
+-		dev_err(dev->class_dev, "%s: urb resubmit failed (%d)\n",
+-			__func__, ret);
++		dev_err(dev->class_dev, "urb resubmit failed (%d)\n", ret);
+ 		if (ret == -EL2NSYNC)
+ 			dev_err(dev->class_dev,
+ 				"buggy USB host controller or bug in IRQ handler\n");
 -- 
 1.9.1
 
