@@ -1,69 +1,141 @@
 X-GM-THRID: 6740862042112
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,bed5f46716a629a3
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.52.24.108 with SMTP id t12mr4303963vdf.6.1425725808480;
-        Sat, 07 Mar 2015 02:56:48 -0800 (PST)
+X-Received: by 10.180.109.34 with SMTP id hp2mr1163607wib.4.1425656446051;
+        Fri, 06 Mar 2015 07:40:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.39.169 with SMTP id v38ls760774qgv.22.gmail; Sat, 07 Mar
- 2015 02:56:48 -0800 (PST)
-X-Received: by 10.52.62.68 with SMTP id w4mr17786954vdr.1.1425725808307;
-        Sat, 07 Mar 2015 02:56:48 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id pc4si1714016pac.0.2015.03.07.02.56.48
+Received: by 10.152.37.194 with SMTP id a2ls79391lak.88.gmail; Fri, 06 Mar
+ 2015 07:40:45 -0800 (PST)
+X-Received: by 10.112.142.1 with SMTP id rs1mr497014lbb.19.1425656445553;
+        Fri, 06 Mar 2015 07:40:45 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id gj20si166178wic.1.2015.03.06.07.40.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Mar 2015 02:56:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 06 Mar 2015 07:40:45 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 34D5B990;
-	Sat,  7 Mar 2015 10:56:46 +0000 (UTC)
-Date: Fri, 6 Mar 2015 15:51:05 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: ieee80211: pr_warn
- instead printk
-Message-ID: <20150306235105.GA26968@kroah.com>
-References: <1425578480-7151-1-git-send-email-haticeerturk27@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,353,1422918000"; 
+   d="scan'208";a="124752016"
+Received: from unknown (HELO [132.207.219.65]) ([132.207.219.65])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 06 Mar 2015 16:40:44 +0100
+Date: Fri, 6 Mar 2015 10:40:43 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: rtl8192u: ieee80211:
+ pr_warn instead printk
+In-Reply-To: <1425651496-14666-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503061040320.2715@hadrien>
+References: <1425651496-14666-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1425578480-7151-1-git-send-email-haticeerturk27@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1095122327-1425656444=:2715"
 
-On Thu, Mar 05, 2015 at 08:01:20PM +0200, Hatice ERT�RK wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-1095122327-1425656444=:2715
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Fri, 6 Mar 2015, Hatice ERTÜRK wrote:
+
 > This patch fixes the following warning using checkpatch.pl
 > WARNING: Prefer [subsystem eg: netdev]_warn([subsystem]dev, ... then
 > dev_warn(dev, ... then pr_warn(...  to printk(KERN_WARNING ...
-> 
+>
 > Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+> v4:
+>  Changed patch number.
 > ---
 >  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 14 +++++++-------
 >  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> index ff6b212..ecd8542 100644
+> index ecd8542..8d4ade4 100644
 > --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
 > +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
 > @@ -197,7 +197,7 @@ int ieee80211_encrypt_fragment(
 >  			struct ieee80211_hdr_3addrqos *header;
->  
+>
 >  			header = (struct ieee80211_hdr_3addrqos *)frag->data;
-> -			pr_debug(KERN_DEBUG "%s: TKIP countermeasures: dropped "
-> +			dev_debug(KERN_DEBUG "%s: TKIP countermeasures: dropped "
+> -			dev_debug(KERN_DEBUG "%s: TKIP countermeasures: dropped "
+> +			dev_debug("%s: TKIP countermeasures: dropped "
 
-This obviously will not even build.
+This code will not compile.
 
-Please test all of your patches, to not do so can cause a lot of time
-being wasted by others.
+julia
 
-thanks,
-
-greg k-h
+>  			       "TX packet to %pM\n",
+>  			       ieee->dev->name, header->addr1);
+>  		}
+> @@ -219,7 +219,7 @@ int ieee80211_encrypt_fragment(
+>
+>  	atomic_dec(&crypt->refcnt);
+>  	if (res < 0) {
+> -		dev_info(KERN_INFO "%s: Encryption failed: len=%d.\n",
+> +		dev_info("%s: Encryption failed: len=%d.\n",
+>  		       ieee->dev->name, frag->len);
+>  		ieee->ieee_stats.tx_discards++;
+>  		return -1;
+> @@ -623,7 +623,7 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
+>  	 * creating it... */
+>  	if ((!ieee->hard_start_xmit && !(ieee->softmac_features & IEEE_SOFTMAC_TX_QUEUE))||
+>  	   ((!ieee->softmac_data_hard_start_xmit && (ieee->softmac_features & IEEE_SOFTMAC_TX_QUEUE)))) {
+> -		dev_warn(KERN_WARNING "%s: No xmit handler.\n",
+> +		dev_warn("%s: No xmit handler.\n",
+>  		       ieee->dev->name);
+>  		goto success;
+>  	}
+> @@ -631,7 +631,7 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
+>
+>  	if(likely(ieee->raw_tx == 0)){
+>  		if (unlikely(skb->len < SNAP_SIZE + sizeof(u16))) {
+> -			dev_warn(KERN_WARNING "%s: skb too small (%d).\n",
+> +			dev_warn("%s: skb too small (%d).\n",
+>  			ieee->dev->name, skb->len);
+>  			goto success;
+>  		}
+> @@ -747,7 +747,7 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
+>  		* postfix, header, FCS, etc.) */
+>  		txb = ieee80211_alloc_txb(nr_frags, frag_size + ieee->tx_headroom, GFP_ATOMIC);
+>  		if (unlikely(!txb)) {
+> -			dev_warn(KERN_WARNING "%s: Could not allocate TXB\n",
+> +			dev_warn("%s: Could not allocate TXB\n",
+>  			ieee->dev->name);
+>  			goto failed;
+>  		}
+> @@ -846,14 +846,14 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
+>  		}
+>  	}else{
+>  		if (unlikely(skb->len < sizeof(struct ieee80211_hdr_3addr))) {
+> -			dev_warn(KERN_WARNING "%s: skb too small (%d).\n",
+> +			dev_warn("%s: skb too small (%d).\n",
+>  			ieee->dev->name, skb->len);
+>  			goto success;
+>  		}
+>
+>  		txb = ieee80211_alloc_txb(1, skb->len, GFP_ATOMIC);
+>  		if(!txb){
+> -			dev_warn(KERN_WARNING "%s: Could not allocate TXB\n",
+> +			dev_warn("%s: Could not allocate TXB\n",
+>  			ieee->dev->name);
+>  			goto failed;
+>  		}
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425651496-14666-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-1095122327-1425656444=:2715--
 
