@@ -1,93 +1,386 @@
-X-GM-THRID: 6255948564490354688
-X-Received: by 10.66.160.9 with SMTP id xg9mr5015667pab.38.1456576530694;
-        Sat, 27 Feb 2016 04:35:30 -0800 (PST)
+X-GM-THRID: 6908398272512
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,b685cdfa4bc5c8fb,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.66.221.165 with SMTP id qf5mr14495400pac.30.1425651811128;
+        Fri, 06 Mar 2015 06:23:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.109.135 with SMTP id l7ls1810954qgf.87.gmail; Sat, 27 Feb
- 2016 04:35:29 -0800 (PST)
-X-Received: by 10.140.87.55 with SMTP id q52mr22257406qgd.11.1456576529809;
-        Sat, 27 Feb 2016 04:35:29 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id yd9si2496436pab.1.2016.02.27.04.35.29
+Received: by 10.50.114.4 with SMTP id jc4ls162487igb.23.canary; Fri, 06 Mar
+ 2015 06:23:30 -0800 (PST)
+X-Received: by 10.42.142.69 with SMTP id r5mr7469023icu.3.1425651810764;
+        Fri, 06 Mar 2015 06:23:30 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id hs7si1355777pad.1.2015.03.06.06.23.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Feb 2016 04:35:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 06 Mar 2015 06:23:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id fl4so65593188pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 27 Feb 2016 04:35:29 -0800 (PST)
+Received: by pdbnh10 with SMTP id nh10so49573354pdb.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 06:23:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=59VEGWZxTU7rZDqp+vhtaVRXk5qWQWVIUOldxN3n+64=;
-        b=lrM25K9MdsL02l52OBxkcsSs1NVYimE/GWljVRMUI6l8/MlWuXuDbO+VBGoob5PWWL
-         FMJ2QPWq7qYr5rHiLz96m4q9EY6SmlMJcwZosAoFTc4SJN7SJH1hMF1ccN0IaYb25WxF
-         DTTQb7vhQ5kXexUzwzzadw1IKXxGy3Fjgpw0rNjijorotMYtu31yGP4dMC/FXmeEDNhk
-         TW+TqZ/YYTd6z/twHYs3+2ZwX4CXqD2LPpVg4QvWLrMBMeAb1Znebge5JbpaGREXLjDG
-         JqHe6xx2mDYxhTQBIfQYYdUVO/YnHyr5kJ0F2Z546MnfDlJyTo1zc7uZnAGCybo1Lwo3
-         c8AA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=59VEGWZxTU7rZDqp+vhtaVRXk5qWQWVIUOldxN3n+64=;
-        b=lCBtrEvGHGR+1TAn1hWPgHnEr//N74n0ycnkoEaJoQDH1SJFViVe2aB2BvoCWzEsDD
-         DUTA3Sk9TiGcBVKLDEIjJGsGeR9vhSwXxVNoU6CpYvSLtavIlz1juoXE0dN9HIaxpQB6
-         MP0cQwQcK98YlPMC7//LFkcR9h2c/5XErCGPoMWtWBKppB6bvxZYIe9O17VhlKgmZSs+
-         6K8dqyw3UbkZz6XJq6wG94/l58qMClMzNd4dJuG/crMe3lN+YkiGEJwynHY+H6aHmwyz
-         zTmhStVZCya/yNkPhN176I2PdrV8KCH7782ppL7G4L+n1+63HfXj/8Ds8yfmn3r/POLG
-         HC3g==
-X-Gm-Message-State: AD7BkJJfRcV2EDa1EilNbQPTXaVQ/S7AKY9RJ+nvzhZTDLAZ1S9Aj9yDh5aItFGnefPBoQ==
-X-Received: by 10.66.219.71 with SMTP id pm7mr9042206pac.137.1456576529655;
-        Sat, 27 Feb 2016 04:35:29 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id vy6sm25991090pac.38.2016.02.27.04.35.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 27 Feb 2016 04:35:29 -0800 (PST)
-From: Rakhi Sharma <rakhish1994@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=sG9EJLfI9KwVAYVr8X+Fob6wm5NzZM2XVyRdc3vHefk=;
+        b=r6z3K2u1yM7n6sM6WSusQ6UE45ahxt467jiSErd/29gB8UCdR+C8xvOBsDCwI7aqMH
+         lpwb2qOEnOjlTl+Ca2/JanfvxlK6f5P4d+1bdslS3r7Iai2zyS+SCislpx/r+fhRenRq
+         4JiQx/gYHJ82TXnMuK2tQVVGA+GUjMH6MXWOX31mPJhUtWj/r7jk5TvUarAseaZ0PV8A
+         +7dC5iwVffD70UyS8y7NWkux4HTJhTqShHeF6dtyHYI+A1dM1ActmoMBMV1yVhU2XgDi
+         mMnJgVhwEeac9J/RH39rtlajk9M/Omlq+Tb0L6m0Av1fUbAcCneV+3KYpk0a8a0NpAsE
+         qenQ==
+X-Received: by 10.70.23.165 with SMTP id n5mr26022406pdf.60.1425651810618;
+        Fri, 06 Mar 2015 06:23:30 -0800 (PST)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from nizamkari ([61.16.142.166])
+        by mx.google.com with ESMTPSA id om9sm9704505pbb.34.2015.03.06.06.23.29
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 06 Mar 2015 06:23:30 -0800 (PST)
+Date: Fri, 6 Mar 2015 19:54:53 +0530
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Rakhi Sharma <rakhish1994@gmail.com>
-Subject: [PATCH] staging: android: Remove unused variable ret for immediate return result.
-Date: Sat, 27 Feb 2016 18:05:05 +0530
-Message-Id: <1456576505-22229-1-git-send-email-rakhish1994@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH 0/8] Transform kzalloc calls to kcalloc
+Message-ID: <cover.1425651608.git.navyasri.tech@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch remove unused ret variable and merge two line for immediate
-result.
-This is done using Coccinelle.Semantic patch used is:
+This patchset changes some kzalloc calls to kcalloc.
+
+The semantic patch used to make this change is:
 
 @@
-expression ret;
+type T, T2;
+expression x;
+identifier f,f1;
+expression E1,E2,E3,E4;
+statement S,S1,S2;
+@@
+- x = (T)kmalloc(E1,E2)
++ x = kzalloc(E1,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+if ((x!=NULL)&&...) {
+... when != \(f1(...,x,...)\|<+...x...+>=E4\)
+when != \(while(...) S1\|for(...;...;...) S1\)
+- memset((T2)x,0,E1);
+...
+} else S2
+|
+- memset((T2)x,0,E1);
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f,f1;
+expression E2,E3,E4;
+statement S,S1,S2;
+@@
+- x = (T)kmalloc(sizeof(T1),E2)
++ x = kzalloc(sizeof(T1),E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+if ((x!=NULL)&&...) {
+... when != \(f1(...,x,...)\|<+...x...+>=E4\)
+when != \(while(...) S1\|for(...;...;...) S1\)
+- memset((T2)x,0,sizeof(*y));
+...
+} else S2
+|
+- memset((T2)x,0,sizeof(*y));
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f,f1;
+expression E,E2,E3,E4;
+statement S,S1,S2;
+@@
+- x = (T)kmalloc(sizeof(T1)*E,E2)
++ x = kzalloc(sizeof(T1)*E,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+if ((x!=NULL)&&...) {
+... when != \(f1(...,x,...)\|<+...x...+>=E4\)
+when != \(while(...) S1\|for(...;...;...) S1\)
+- memset((T2)x,0,sizeof(*y)*E);
+...
+} else S2
+|
+- memset((T2)x,0,sizeof(*y)*E);
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f,f1;
+expression E2,E3,E4;
+statement S,S1,S2;
+@@
+- x = (T)kmalloc(sizeof(*y),E2)
++ x = kzalloc(sizeof(*y),E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+if ((x!=NULL)&&...) {
+... when != \(f1(...,x,...)\|<+...x...+>=E4\)
+when != \(while(...) S1\|for(...;...;...) S1\)
+- memset((T2)x,0,sizeof(T1));
+...
+} else S2
+|
+- memset((T2)x,0,sizeof(T1));
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f,f1;
+expression E,E2,E3,E4;
+statement S,S1,S2;
+@@
+- x = (T)kmalloc(sizeof(*y)*E,E2)
++ x = kzalloc(sizeof(*y)*E,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+if ((x!=NULL)&&...) {
+... when != \(f1(...,x,...)\|<+...x...+>=E4\)
+when != \(while(...) S1\|for(...;...;...) S1\)
+- memset((T2)x,0,sizeof(T1)*E);
+...
+} else S2
+|
+- memset((T2)x,0,sizeof(T1)*E);
+)
+@ disable neg_if, mult_comm @
+type T, T2;
+expression x;
+identifier f,f1;
+expression E0,E1,E2,E3,E4;
+statement S,S1,S2;
+@@
+- x = (T)kmalloc(E0 * E1,E2)
++ x = kzalloc(E0 * E1,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+if ((x!=NULL)&&...) {
+... when != \(f1(...,x,...)\|<+...x...+>=E4\)
+when != \(while(...) S1\|for(...;...;...) S1\)
+- memset((T2)x,0,E1 * E0);
+...
+} else S2
+|
+- memset((T2)x,0,E1 * E0);
+)
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+// have to duplicate everything again to make a version with no braces
+//\(x->fld\|f(...,x,...)\|x=E\)
+@@
+type T, T2;
+expression x;
 identifier f;
+expression E1,E2,E3;
+statement S,S2;
 @@
+- x = (T)kmalloc(E1,E2)
++ x = kzalloc(E1,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+- if ((x!=NULL)&&...) memset((T2)x,0,E1);
+|
++ if (!x)
+- if ((x!=NULL)&&...) memset((T2)x,0,E1); else
+S2
+)
+@ @
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f;
+expression E2,E3;
+statement S,S2;
+@@
+- x = (T)kmalloc(sizeof(T1),E2)
++ x = kzalloc(sizeof(T1),E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(*y));
+|
++ if (!x)
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(*y)); else
+S2
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f;
+expression E,E2,E3;
+statement S,S2;
+@@
+- x = (T)kmalloc(sizeof(T1)*E,E2)
++ x = kzalloc(sizeof(T1)*E,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(*y)*E);
+|
++ if (!x)
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(*y)*E); else
+S2
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f;
+expression E2,E3;
+statement S,S2;
+@@
+- x = (T)kmalloc(sizeof(*y),E2)
++ x = kzalloc(sizeof(*y),E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(T1));
+|
++ if (!x)
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(T1)); else
+S2
+)
+@@
+type T, T2;
+type T1;
+T1 *x;
+T1 *y;
+identifier f;
+expression E,E2,E3;
+statement S,S2;
+@@
+- x = (T)kmalloc(sizeof(*y)*E,E2)
++ x = kzalloc(sizeof(*y)*E,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(T1)*E);
+|
++ if (!x)
+- if ((x!=NULL)&&...) memset((T2)x,0,sizeof(T1)*E); else
+S2
+)
+@ disable neg_if, mult_comm @
+type T, T2;
+expression x;
+identifier f;
+expression E0,E1,E2,E3;
+statement S,S2;
+@@
+- x = (T)kmalloc(E0 * E1,E2)
++ x = kzalloc(E0 * E1,E2)
+... when != \(f(...,x,...)\|<+...x...+>=E3\)
+when != \(while(...) S\|for(...;...;...) S\)
+(
+- if ((x!=NULL)&&...) memset((T2)x,0,E1 * E0);
+|
++ if (!x)
+- if ((x!=NULL)&&...) memset((T2)x,0,E1 * E0); else
+S2
+)
+// ---------------------------------------------------------------------
+@@
+expression E;
+statement S;
+@@
+kzalloc(...)
+...
+if (E) S
+- else { }
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+@@
+expression E1,E2,E3;
+@@
+- kzalloc(E1*sizeof(E2),E3)
++ kcalloc(E1,sizeof(E2),E3)
+@@
+expression E1,E3;
+type T;
+@@
+- kzalloc(E1*sizeof(T),E3)
++ kcalloc(E1,sizeof(T),E3)
+@@
+expression E1,E2,E3,E4;
+@@
+- kzalloc(E1*E2*sizeof(E3),E4)
++ kcalloc(E1*E2,sizeof(E3),E4)
+@@
+expression E1,E2,E3;
+type T;
+@@
+- kzalloc(E1*E2*sizeof(T),E3)
++ kcalloc(E1*E2,sizeof(T),E3)
+@@
+expression E1,E2,E3,E4;
+@@
+- kzalloc(sizeof(E3)*E1*E2,E4)
++ kcalloc(E1*E2,sizeof(E3),E4)
+@@
+expression E1,E2,E3;
+type T;
+@@
+- kzalloc(sizeof(T)*E1*E2,E3)
++ kcalloc(E1*E2,sizeof(T),E3)
+@@
+constant E1;
+expression E2,E3;
+@@
+- kzalloc(E1*E2,E3)
++ kcalloc(E1,E2,E3)
 
--ret =
-+return
-     f(...);
--return ret;
+Navya Sri Nizamkari (8):
+  staging: rtl8188eu: Use kcalloc instead of kzalloc.
+  staging: rtl8188eu: Use kcalloc instead of kzalloc
+  staging: dgnc: Use kcalloc instead of kzalloc.
+  staging: iio: Use kcalloc instead of kzalloc.
+  staging: iio: Use kcalloc instead of kzalloc
+  staging: media: Use kcalloc instead of kzalloc.
+  staging: media: Use kcalloc instead of kzalloc
+  staging: unisys: Use kcalloc instead of kzalloc.
 
-Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
----
- drivers/staging/android/ion/hisilicon/hi6220_ion.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/dgnc/dgnc_driver.c                   | 2 +-
+ drivers/staging/iio/accel/lis3l02dq_ring.c           | 2 +-
+ drivers/staging/iio/adc/ad7280a.c                    | 5 +++--
+ drivers/staging/media/bcm2048/radio-bcm2048.c        | 2 +-
+ drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c | 7 ++++---
+ drivers/staging/rtl8188eu/core/rtw_xmit.c            | 3 ++-
+ drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c       | 2 +-
+ drivers/staging/unisys/visorutil/procobjecttree.c    | 6 +++---
+ 8 files changed, 16 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/android/ion/hisilicon/hi6220_ion.c b/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-index e3c07b2..9922710 100644
---- a/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-+++ b/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-@@ -216,8 +216,7 @@ static int __init hi6220_ion_init(void)
- {
- 	int ret;
- 
--	ret = platform_driver_register(&hi6220_ion_driver);
--	return ret;
-+	return platform_driver_register(&hi6220_ion_driver);
- }
- 
- subsys_initcall(hi6220_ion_init);
 -- 
 1.9.1
 
