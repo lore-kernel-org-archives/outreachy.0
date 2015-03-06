@@ -1,128 +1,83 @@
-X-GM-THRID: 6254162596522360832
-X-Received: by 10.50.23.113 with SMTP id l17mr8159404igf.13.1456160702853;
-        Mon, 22 Feb 2016 09:05:02 -0800 (PST)
+X-GM-THRID: 6296089657344
+X-Received: by 10.70.96.237 with SMTP id dv13mr8255205pdb.2.1425725812578;
+        Sat, 07 Mar 2015 02:56:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.162 with SMTP id x2ls448445igl.34.gmail; Mon, 22 Feb
- 2016 09:05:01 -0800 (PST)
-X-Received: by 10.50.124.73 with SMTP id mg9mr12486917igb.4.1456160701733;
-        Mon, 22 Feb 2016 09:05:01 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id yd9si3212656pab.1.2016.02.22.09.05.01
+Received: by 10.50.164.137 with SMTP id yq9ls402165igb.32.canary; Sat, 07 Mar
+ 2015 02:56:52 -0800 (PST)
+X-Received: by 10.42.206.193 with SMTP id fv1mr11085543icb.29.1425725812315;
+        Sat, 07 Mar 2015 02:56:52 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ks4si1703788pbc.1.2015.03.07.02.56.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 09:05:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Mar 2015 02:56:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id fy10so93841065pac.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 09:05:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ZpN4Si1lHWG110gIeQ4LV/Cil4K+vV1vgbKRgvrPtKY=;
-        b=EJsIvsfA3bPWpSaSROLPNG+l6UTc63VhDfdrIlDKiUbToEX+tnEcimohO/zybrIsj0
-         /YC2B1Zy2Idk5HehfYI1yRsE5Kys8pT5pazRDo9tqkUGzf4z53YooEqbybVswNHZ7mHR
-         p+a+iZg/DoGdMR/7x7iaKZNsj2ApOa8GA0xlGC4+RUfp/cxw9hJZrEvX2O5kkjOVJjD3
-         ZelrXGTyPoXKynIXqRFtfI9CQY+mW/ifiU+/paA8iDm0c+g/ij7oBS5ZK3xLeZmizjmo
-         BK1kIKK/crMoF28H67wy4IPWzTMZxRZabENnA069EGuTGLZPRcmZMnza1uXzkssSY4ld
-         yW3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=ZpN4Si1lHWG110gIeQ4LV/Cil4K+vV1vgbKRgvrPtKY=;
-        b=Fx6my9RHbrxVKSkqmQbyqs8sPxDMkY/dRdkyGRAGl0YVNjrP28z36PD/qFa4bKowHb
-         huDOT/u9HOAfSZkDiYvJqWOZW7eo3ILD4nAngqT4us91EYoPOjxnKI7rrkBmELg6TyXL
-         lhsyAXQb0miXKCdpIKRg8VZGof+L6jC0YYWK/5nhjWCaVjolWXP/Y3/X7sY3FRg2MBrN
-         a2M6iRmnkPZRnK2ywbrf+5DdxgNLRyywQZx7KyclfRcImRVio87HRIhqPTP7a65Fw/1A
-         dSeerH54KgSrh7XEU8jTjwTFgwOgfFGmBU2vmLZl8fj524R91rvtGKZPpZviO6D2CXOc
-         n57A==
-X-Gm-Message-State: AG10YOTcgKIIrLruckVYQQMVaZfRLOs+Bqus+QLid7+P/75SQu8DSryxbpqE9V0jNWHzUg==
-X-Received: by 10.66.222.199 with SMTP id qo7mr39580515pac.38.1456160701601;
-        Mon, 22 Feb 2016 09:05:01 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x13sm38102317pfa.72.2016.02.22.09.05.00
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 09:05:01 -0800 (PST)
-Date: Mon, 22 Feb 2016 22:35:34 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lusture: lnet: Replace typedef with struct
-Message-ID: <20160222170534.GA26061@Karyakshetra>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2F101990;
+	Sat,  7 Mar 2015 10:56:50 +0000 (UTC)
+Date: Fri, 6 Mar 2015 15:51:50 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Hatice =?iso-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: ieee80211: Change
+ from // to /* */
+Message-ID: <20150306235150.GA26994@kroah.com>
+References: <1425652249-15016-1-git-send-email-haticeerturk27@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1425652249-15016-1-git-send-email-haticeerturk27@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-As per the Linux kernel coding style guidelines, using typedef for a structure
-type is not recommended. Hence, occurences of typedefs have been
-removed.
+On Fri, Mar 06, 2015 at 04:30:49PM +0200, Hatice ERT�RK wrote:
+> Remove the all '//' and instead of '/* */' put.
+> This Error found with checkpatch.pl
+> 
+> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 104 +++++++++++-----------
+>  1 file changed, 52 insertions(+), 52 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> index 8d4ade4..c0d1468 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> @@ -207,8 +207,8 @@ int ieee80211_encrypt_fragment(
+>  	/* To encrypt, frame format is:
+>  	 * IV (4 bytes), clear payload (including SNAP), ICV (4 bytes) */
+>  
+> -	// PR: FIXME: Copied from hostap. Check fragmentation/MSDU/MPDU encryption.
+> -	/* Host-based IEEE 802.11 fragmentation for TX is not yet supported, so
+> +	/* PR: FIXME: Copied from hostap. Check fragmentation/MSDU/MPDU encryption.
+> +	 * Host-based IEEE 802.11 fragmentation for TX is not yet supported, so
+>  	 * call both MSDU and MPDU encryption functions from here. */
+>  	atomic_inc(&crypt->refcnt);
+>  	res = 0;
+> @@ -230,7 +230,7 @@ int ieee80211_encrypt_fragment(
+>  
+>  
+>  void ieee80211_txb_free(struct ieee80211_txb *txb) {
+> -	//int i;
+> +	/* int i; */
 
-This was done with Coccinelle.
+Just remove lines that are not needed anymore.
 
-@r1@
-type T;
-@@
+>  	if (unlikely(!txb))
+>  		return;
+>  	kfree(txb);
+> @@ -269,8 +269,8 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
+>  	return txb;
+>  }
+>  
+> -// Classify the to-be send data packet
+> -// Need to acquire the sent queue index.
+> +/* Classify the to-be send data packet
+> + Need to acquire the sent queue index. */
 
-typedef struct { ... } T;
-
-@script:python c1@
-T2;
-T << r1.T;
-@@
-coccinelle.T2 = T;
-
-@@
-type r1.T;
-identifier c1.T2;
-@@
--typedef
- struct
- + T2
- { ... }
- -T
- ;
- @@ type r1.T;
- identifier c1.T2;
- @@
- -T
- + struct T2
-
-The '_t' suffix has not been removed since there is a variable with the
-same name.
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/lustre/lnet/selftest/ping_test.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/lustre/lnet/selftest/ping_test.c b/drivers/staging/lustre/lnet/selftest/ping_test.c
-index 9d27e39..617a641 100644
---- a/drivers/staging/lustre/lnet/selftest/ping_test.c
-+++ b/drivers/staging/lustre/lnet/selftest/ping_test.c
-@@ -48,12 +48,12 @@ static int ping_srv_workitems = SFW_TEST_WI_MAX;
- module_param(ping_srv_workitems, int, 0644);
- MODULE_PARM_DESC(ping_srv_workitems, "# PING server workitems");
-
--typedef struct {
-+struct lst_ping_data_t {
- 	spinlock_t	pnd_lock;	/* serialize */
- 	int		pnd_counter;	/* sequence counter */
--} lst_ping_data_t;
-+};
-
--static lst_ping_data_t  lst_ping_data;
-+static struct lst_ping_data_t  lst_ping_data;
-
- static int
- ping_client_init(sfw_test_instance_t *tsi)
---
-2.1.4
+This is not the correct way to do multi-line comment blocks :(
 
 
