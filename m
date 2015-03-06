@@ -1,51 +1,47 @@
 X-GM-THRID: 6740862042112
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,bed5f46716a629a3
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.19.67 with SMTP id c3mr1065954lae.7.1425651503808;
-        Fri, 06 Mar 2015 06:18:23 -0800 (PST)
+X-Received: by 10.112.198.34 with SMTP id iz2mr2080130lbc.22.1425651337119;
+        Fri, 06 Mar 2015 06:15:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.29.164 with SMTP id jx4ls113377wid.5.canary; Fri, 06 Mar
- 2015 06:18:23 -0800 (PST)
-X-Received: by 10.180.80.35 with SMTP id o3mr5533648wix.0.1425651503158;
-        Fri, 06 Mar 2015 06:18:23 -0800 (PST)
+Received: by 10.181.29.6 with SMTP id js6ls164585wid.46.gmail; Fri, 06 Mar
+ 2015 06:15:36 -0800 (PST)
+X-Received: by 10.194.239.41 with SMTP id vp9mr2357943wjc.5.1425651336688;
+        Fri, 06 Mar 2015 06:15:36 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id r6si158799wix.0.2015.03.06.06.18.23
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id i7si153494wif.0.2015.03.06.06.15.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 06:18:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        Fri, 06 Mar 2015 06:15:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x235.google.com with SMTP id m14so59697717wev.13
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 06:18:23 -0800 (PST)
+Received: by mail-wi0-x229.google.com with SMTP id em10so3849473wid.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 06:15:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=RhzmvRbvzzcRSauWaQ7f6dT6lHXtUxYRatxtRRwntOM=;
-        b=k5KksuYO1ZRtDW+sF2e42U5zpxu0pjSWh8Y6DGUOt1mqn78ue9jDdT9PA/+eQZWRWU
-         mb3igh0tOXxnaoDWANkzdil4ItOQsfDvVz3zo1maL/DZ0jDVx/0WDi26eg3jJYiNiIF2
-         prn9vttGqzwH6K17HLeUoMuwtqOsZecPjseF9mlDZATC/wiW586IYOfmnc4td1XIEJwQ
-         aPLWsrRx5+HKccMw8F94Bqj3nUq4YKzNmB68Hkw7xd2m5S/SjYn0u8eJfZNoWmINwrhm
-         RiBMYX89yvDJKTkFV9c5CWgTNRB2l5S+f9H1pPbM+R/7DUWYxaOSVzRNAfNXq09CbUE8
-         TjIw==
-X-Received: by 10.181.25.232 with SMTP id it8mr33160127wid.63.1425651502719;
-        Fri, 06 Mar 2015 06:18:22 -0800 (PST)
+        bh=nn0K6AdDMfK27LtwMi4O9Zr5UET+X3iM4KdZHKD+c1w=;
+        b=ZE+YKMomjFvBt/J6eUTJfcvoM7RMHnFAstPJdx6vImWwSeVb3ybFRlfzIqX3ilCEiD
+         ltE8jXDed39qAyfUlWbIkpsblIN9c2fefFkdcR+Ah0HafERu0tgjei8Rm+xHYK54rOt3
+         TCnSqpzkvuJMK1Q0WP8XFbOOKFEk3w5/AudEIx6IWXhf5wdLXQdGpkpNVaLHdwHsaeV4
+         U8noMKmqchaaq3RGSX03xYkQo0kMl2xXFyXtIvTvGPzTfG3uKG26KwJpvwzgb/SDi9jQ
+         aDIegyTdSfnxmB6tKVwHiS3qsqXrMExM/J20dvtmV7+HePVSqUBEYV3EWulMXir0VYxD
+         36ig==
+X-Received: by 10.194.239.65 with SMTP id vq1mr29061364wjc.98.1425651336592;
+        Fri, 06 Mar 2015 06:15:36 -0800 (PST)
 Return-Path: <haticeerturk27@gmail.com>
 Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id v9sm2612702wib.0.2015.03.06.06.18.21
+        by mx.google.com with ESMTPSA id 17sm15114499wjt.45.2015.03.06.06.15.35
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 06 Mar 2015 06:18:22 -0800 (PST)
+        Fri, 06 Mar 2015 06:15:35 -0800 (PST)
 From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH v4] Staging: rtl8192u: ieee80211: pr_warn instead printk
-Date: Fri,  6 Mar 2015 16:18:16 +0200
-Message-Id: <1425651496-14666-1-git-send-email-haticeerturk27@gmail.com>
+Subject: [PATCH 32/32] Staging: rtl8192u: ieee80211: pr_warn instead printk
+Date: Fri,  6 Mar 2015 16:15:29 +0200
+Message-Id: <1425651329-14574-1-git-send-email-haticeerturk27@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 This patch fixes the following warning using checkpatch.pl
@@ -54,8 +50,8 @@ dev_warn(dev, ... then pr_warn(...  to printk(KERN_WARNING ...
 
 Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 ---
-v4:
- Changed patch number.
+v3:
+ Changed usage dev_functions.
 ---
  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
