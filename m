@@ -1,49 +1,49 @@
 X-GM-THRID: 6950918029312
-X-Received: by 10.180.39.164 with SMTP id q4mr3003060wik.5.1425668415665;
-        Fri, 06 Mar 2015 11:00:15 -0800 (PST)
+X-Received: by 10.112.156.65 with SMTP id wc1mr2595801lbb.7.1425668348352;
+        Fri, 06 Mar 2015 10:59:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.29.193 with SMTP id jy1ls213485wid.52.gmail; Fri, 06 Mar
- 2015 11:00:15 -0800 (PST)
-X-Received: by 10.194.95.67 with SMTP id di3mr2553638wjb.0.1425668415369;
-        Fri, 06 Mar 2015 11:00:15 -0800 (PST)
+Received: by 10.180.100.39 with SMTP id ev7ls159922wib.18.gmail; Fri, 06 Mar
+ 2015 10:59:08 -0800 (PST)
+X-Received: by 10.180.13.98 with SMTP id g2mr5711787wic.3.1425668348026;
+        Fri, 06 Mar 2015 10:59:08 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id el6si219339wib.2.2015.03.06.11.00.15
+Received: from mail-wg0-x22b.google.com (mail-wg0-x22b.google.com. [2a00:1450:400c:c00::22b])
+        by gmr-mx.google.com with ESMTPS id el6si218734wib.2.2015.03.06.10.59.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 11:00:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        Fri, 06 Mar 2015 10:59:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) client-ip=2a00:1450:400c:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22b as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id ex7so5070660wid.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 11:00:15 -0800 (PST)
+Received: by mail-wg0-x22b.google.com with SMTP id z12so62121101wgg.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 10:59:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=wi2JEx0TGRUfWIW2zKzBGmm9/TNzIxPYfiBXyeXbZjU=;
-        b=kM/xz0oo562r0AMwCzq7E7G+rgTRcqEd3qcXHQBuwR8/L7KPOxbPEtNhcEXT3k8pDy
-         xTCs6oPApx1+fzh5hPIHiVpd4GKWPKfCHv+XA9Ieo8xZEid2DNjD+vgm55btByxLMN/O
-         slnQvjlUCz6W6lI6ElRJXGoyoBv3L/gDgh3tiowzhKa3QikA9NuUcUYbdz0rM5jl1fuk
-         AW5gnOlIIa/artnIfIe2kfA94XL3ozgWWIHMzdlBghPPdGeDlFg/PYD25qzjp+cD7uGa
-         rO4DLpH3/TmDIQp0u+U4KNSyAkpx6RXNFV2Zuz/91y6lP9DkFe6vSIj5iq9LrtWiozMq
-         Ck/g==
-X-Received: by 10.180.82.201 with SMTP id k9mr8598716wiy.58.1425668414325;
-        Fri, 06 Mar 2015 11:00:14 -0800 (PST)
+        bh=n1V0yH9x6qHUF92OsfbbiHoOE+85EMNPiFXUsMKaJkg=;
+        b=TuBABZ4UHm8Ofmw8S3NIL2t9V97YgxyfpGNfAlLrjJe8OSd+O5wRqEZ9WZXFs8K+yL
+         cOh/QbWL6Kbh7PoPHFZz51oonQ7DbXodG2ANoTPqZiS1pq0owWwl37qRRvVawrNh8FOH
+         uPoWU/yPoSsO3y4b2SnS2MKDGo0yDb62ksnwebeUF/UjSbNWxbpNL22lD3/snI7MKm4o
+         mv8OOwr4RGEF847nBcVCq3QXdRqdUKCMvPHwVJ1BZykS4xS+zHvUy2CKg72G4nxABYKO
+         irH0jtulDwryQ5CCHWfxPFdwKGmbMSxAK9J8M0chhd/Cf1NVdkvcoI1Grb8g3KHkOCWL
+         tFXw==
+X-Received: by 10.180.82.103 with SMTP id h7mr60480796wiy.30.1425668347925;
+        Fri, 06 Mar 2015 10:59:07 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id dc9sm3208540wib.9.2015.03.06.11.00.12
+        by mx.google.com with ESMTPSA id lx10sm16136440wjb.17.2015.03.06.10.59.06
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 11:00:13 -0800 (PST)
+        Fri, 06 Mar 2015 10:59:07 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 8D92662672; Fri,  6 Mar 2015 22:00:11 +0300 (AST)
+	id 43E4962672; Fri,  6 Mar 2015 21:59:05 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 2/8] Staging: media: clean dev_err logging
-Date: Fri,  6 Mar 2015 22:00:10 +0300
-Message-Id: <1425668410-27324-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 1/8] Staging: fbtft: clean dev_err() logging
+Date: Fri,  6 Mar 2015 21:59:04 +0300
+Message-Id: <1425668344-27269-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
@@ -87,209 +87,240 @@ identifier  b.y;
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_imon.c     | 26 +++++++++++---------------
- drivers/staging/media/lirc/lirc_sasem.c    | 18 +++++++-----------
- drivers/staging/media/omap4iss/iss.c       | 16 ++++++++--------
- drivers/staging/media/omap4iss/iss_video.c |  3 +--
- 4 files changed, 27 insertions(+), 36 deletions(-)
+ drivers/staging/fbtft/fb_agm1264k-fl.c | 16 ++++++++--------
+ drivers/staging/fbtft/fb_pcd8544.c     |  3 ++-
+ drivers/staging/fbtft/fb_ra8875.c      |  8 ++++----
+ drivers/staging/fbtft/fb_ssd1306.c     |  4 ++--
+ drivers/staging/fbtft/fb_ssd1331.c     |  6 ++++--
+ drivers/staging/fbtft/fb_tls8204.c     |  2 +-
+ drivers/staging/fbtft/fb_uc1701.c      |  3 ++-
+ drivers/staging/fbtft/fb_watterott.c   |  2 +-
+ drivers/staging/fbtft/fbtft-bus.c      |  2 +-
+ drivers/staging/fbtft/fbtft-core.c     |  5 ++---
+ drivers/staging/fbtft/fbtft-io.c       |  7 +++----
+ 11 files changed, 30 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/staging/media/lirc/lirc_imon.c b/drivers/staging/media/lirc/lirc_imon.c
-index d490607..cb16e8d 100644
---- a/drivers/staging/media/lirc/lirc_imon.c
-+++ b/drivers/staging/media/lirc/lirc_imon.c
-@@ -208,8 +208,7 @@ static void deregister_from_lirc(struct imon_context *context)
- 	retval = lirc_unregister_driver(minor);
- 	if (retval)
- 		dev_err(&context->usbdev->dev,
--			": %s: unable to deregister from lirc(%d)",
--			__func__, retval);
-+			"unable to deregister from lirc(%d)", retval);
- 	else
- 		dev_info(&context->usbdev->dev,
- 			 "Deregistered iMON driver (minor:%d)\n", minor);
-@@ -241,9 +240,8 @@ static int display_open(struct inode *inode, struct file *file)
- 	context = usb_get_intfdata(interface);
+diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
+index 9cc7d25..7aa9e8c 100644
+--- a/drivers/staging/fbtft/fb_agm1264k-fl.c
++++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+@@ -198,8 +198,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
  
- 	if (!context) {
--		dev_err(&interface->dev,
--			"%s: no context found for minor %d\n",
--			__func__, subminor);
-+		dev_err(&interface->dev, "no context found for minor %d\n",
-+			subminor);
- 		retval = -ENODEV;
- 		goto exit;
- 	}
-@@ -341,8 +339,8 @@ static int send_packet(struct imon_context *context)
- 	retval = usb_submit_urb(context->tx_urb, GFP_KERNEL);
- 	if (retval) {
- 		atomic_set(&(context->tx.busy), 0);
--		dev_err(&context->usbdev->dev,
--			"%s: error submitting urb(%d)\n", __func__, retval);
-+		dev_err(&context->usbdev->dev, "error submitting urb(%d)\n",
-+			retval);
- 	} else {
- 		/* Wait for transmission to complete (or abort) */
- 		mutex_unlock(&context->ctx_lock);
-@@ -355,8 +353,7 @@ static int send_packet(struct imon_context *context)
- 		retval = context->tx.status;
- 		if (retval)
- 			dev_err(&context->usbdev->dev,
--				"%s: packet tx failed (%d)\n",
--				__func__, retval);
-+				"packet tx failed (%d)\n", retval);
+ 	if (*buf > 1) {
+ 		va_end(args);
+-		dev_err(par->info->device, "%s: Incorrect chip sellect request (%d)\n",
+-			__func__, *buf);
++		dev_err(par->info->device,
++			"Incorrect chip sellect request (%d)\n", *buf);
+ 		return;
  	}
  
- 	return retval;
-@@ -431,8 +428,8 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
- 		retval = send_packet(context);
- 		if (retval) {
- 			dev_err(&context->usbdev->dev,
--				"%s: send packet failed for packet #%d\n",
--				__func__, seq/2);
-+				"send packet failed for packet #%d\n",
-+				seq / 2);
- 			goto exit;
- 		} else {
- 			seq += 2;
-@@ -448,8 +445,8 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
- 		retval = send_packet(context);
- 		if (retval)
- 			dev_err(&context->usbdev->dev,
--				"%s: send packet failed for packet #%d\n",
--					__func__, seq/2);
-+				"send packet failed for packet #%d\n",
-+				seq / 2);
- 	}
- 
- exit:
-@@ -869,8 +866,7 @@ static int imon_probe(struct usb_interface *interface,
- 	retval = usb_submit_urb(context->rx_urb, GFP_KERNEL);
- 
- 	if (retval) {
--		dev_err(dev, "%s: usb_submit_urb failed for intf0 (%d)\n",
--			__func__, retval);
-+		dev_err(dev, "usb_submit_urb failed for intf0 (%d)\n", retval);
- 		alloc_status = 8;
- 		goto unlock;
- 	}
-diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
-index b7261b3..9986bc1 100644
---- a/drivers/staging/media/lirc/lirc_sasem.c
-+++ b/drivers/staging/media/lirc/lirc_sasem.c
-@@ -214,9 +214,8 @@ static int vfd_open(struct inode *inode, struct file *file)
- 	context = usb_get_intfdata(interface);
- 
- 	if (!context) {
--		dev_err(&interface->dev,
--			"%s: no context found for minor %d\n",
--			__func__, subminor);
-+		dev_err(&interface->dev, "no context found for minor %d\n",
-+			subminor);
- 		retval = -ENODEV;
- 		goto exit;
- 	}
-@@ -336,8 +335,8 @@ static int send_packet(struct sasem_context *context)
- 	retval =  usb_submit_urb(context->tx_urb, GFP_KERNEL);
- 	if (retval) {
- 		atomic_set(&(context->tx.busy), 0);
--		dev_err(&context->dev->dev, "%s: error submitting urb (%d)\n",
--			__func__, retval);
-+		dev_err(&context->dev->dev, "error submitting urb (%d)\n",
-+			retval);
- 	} else {
- 		/* Wait for transmission to complete (or abort) */
- 		mutex_unlock(&context->ctx_lock);
-@@ -347,8 +346,7 @@ static int send_packet(struct sasem_context *context)
- 		retval = context->tx.status;
- 		if (retval)
- 			dev_err(&context->dev->dev,
--				"%s: packet tx failed (%d)\n",
--				__func__, retval);
-+				"packet tx failed (%d)\n", retval);
- 	}
- 
- 	return retval;
-@@ -442,8 +440,7 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
- 		retval = send_packet(context);
- 		if (retval) {
- 			dev_err(&context->dev->dev,
--				"%s: send packet failed for packet #%d\n",
--				__func__, i);
-+				"send packet failed for packet #%d\n", i);
- 			goto exit;
+@@ -224,8 +224,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ 		ret = par->fbtftops.write(par, par->buf, len * (sizeof(u8)));
+ 		if (ret < 0) {
+ 			va_end(args);
+-			dev_err(par->info->device, "%s: write() failed and returned %d\n",
+-				__func__, ret);
++			dev_err(par->info->device,
++				"write() failed and returned %d\n", ret);
+ 			return;
  		}
  	}
-@@ -506,8 +503,7 @@ static int ir_open(void *data)
- 
- 	if (retval)
- 		dev_err(&context->dev->dev,
--			"%s: usb_submit_urb failed for ir_open (%d)\n",
--			__func__, retval);
-+			"usb_submit_urb failed for ir_open (%d)\n", retval);
- 	else {
- 		context->ir_isopen = 1;
- 		dev_info(&context->dev->dev, "IR port opened\n");
-diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-index 44b81a2..e0ad5e5 100644
---- a/drivers/staging/media/omap4iss/iss.c
-+++ b/drivers/staging/media/omap4iss/iss.c
-@@ -1160,8 +1160,8 @@ iss_register_subdev_group(struct iss_device *iss,
- 		subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev, adapter,
- 				board_info->board_info, NULL);
- 		if (subdev == NULL) {
--			dev_err(iss->dev, "%s: Unable to register subdev %s\n",
--				__func__, board_info->board_info->type);
-+			dev_err(iss->dev, "Unable to register subdev %s\n",
-+				board_info->board_info->type);
- 			continue;
+@@ -376,8 +376,8 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 			ret = par->fbtftops.write(par, buf, len);
+ 			if (ret < 0)
+ 				dev_err(par->info->device,
+-					"%s: write failed and returned: %d\n",
+-					__func__, ret);
++					"write failed and returned: %d\n",
++					ret);
  		}
- 
-@@ -1185,16 +1185,16 @@ static int iss_register_entities(struct iss_device *iss)
- 	iss->media_dev.link_notify = iss_pipeline_link_notify;
- 	ret = media_device_register(&iss->media_dev);
- 	if (ret < 0) {
--		dev_err(iss->dev, "%s: Media device registration failed (%d)\n",
--			__func__, ret);
-+		dev_err(iss->dev, "Media device registration failed (%d)\n",
-+			ret);
- 		return ret;
- 	}
- 
- 	iss->v4l2_dev.mdev = &iss->media_dev;
- 	ret = v4l2_device_register(iss->dev, &iss->v4l2_dev);
- 	if (ret < 0) {
--		dev_err(iss->dev, "%s: V4L2 device registration failed (%d)\n",
--			__func__, ret);
-+		dev_err(iss->dev, "V4L2 device registration failed (%d)\n",
-+			ret);
- 		goto done;
- 	}
- 
-@@ -1252,8 +1252,8 @@ static int iss_register_entities(struct iss_device *iss)
- 			break;
- 
- 		default:
--			dev_err(iss->dev, "%s: invalid interface type %u\n",
--				__func__, subdevs->interface);
-+			dev_err(iss->dev, "invalid interface type %u\n",
-+				subdevs->interface);
- 			ret = -EINVAL;
- 			goto done;
+ 		/* right half of display */
+ 		if (addr_win.xe >= par->info->var.xres / 2) {
+@@ -398,8 +398,8 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 			par->fbtftops.write(par, buf, len);
+ 			if (ret < 0)
+ 				dev_err(par->info->device,
+-					"%s: write failed and returned: %d\n",
+-					__func__, ret);
++					"write failed and returned: %d\n",
++					ret);
  		}
-diff --git a/drivers/staging/media/omap4iss/iss_video.c b/drivers/staging/media/omap4iss/iss_video.c
-index 6955044..55938cc 100644
---- a/drivers/staging/media/omap4iss/iss_video.c
-+++ b/drivers/staging/media/omap4iss/iss_video.c
-@@ -1221,8 +1221,7 @@ int omap4iss_video_register(struct iss_video *video, struct v4l2_device *vdev)
- 	ret = video_register_device(&video->video, VFL_TYPE_GRABBER, -1);
+ 	}
+ 	kfree(convert_buf);
+diff --git a/drivers/staging/fbtft/fb_pcd8544.c b/drivers/staging/fbtft/fb_pcd8544.c
+index 5e08a70..b13162c 100644
+--- a/drivers/staging/fbtft/fb_pcd8544.c
++++ b/drivers/staging/fbtft/fb_pcd8544.c
+@@ -130,7 +130,8 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 	gpio_set_value(par->gpio.dc, 1);
+ 	ret = par->fbtftops.write(par, par->txbuf.buf, 6*84);
  	if (ret < 0)
- 		dev_err(video->iss->dev,
--			"%s: could not register video device (%d)\n",
--			__func__, ret);
-+			"could not register video device (%d)\n", ret);
+-		dev_err(par->info->device, "%s: write failed and returned: %d\n", __func__, ret);
++		dev_err(par->info->device, "write failed and returned: %d\n",
++			ret);
  
  	return ret;
  }
+diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
+index a186458..8876a18 100644
+--- a/drivers/staging/fbtft/fb_ra8875.c
++++ b/drivers/staging/fbtft/fb_ra8875.c
+@@ -237,8 +237,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ 	ret = par->fbtftops.write(par, par->buf, 2);
+ 	if (ret < 0) {
+ 		va_end(args);
+-		dev_err(par->info->device, "%s: write() failed and returned %dn",
+-			__func__, ret);
++		dev_err(par->info->device, "write() failed and returned %dn",
++			ret);
+ 		return;
+ 	}
+ 	len--;
+@@ -255,8 +255,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ 		ret = par->fbtftops.write(par, par->buf, len + 1);
+ 		if (ret < 0) {
+ 			va_end(args);
+-			dev_err(par->info->device, "%s: write() failed and returned %dn",
+-				__func__, ret);
++			dev_err(par->info->device,
++				"write() failed and returned %dn", ret);
+ 			return;
+ 		}
+ 	}
+diff --git a/drivers/staging/fbtft/fb_ssd1306.c b/drivers/staging/fbtft/fb_ssd1306.c
+index 5ea195b..15ee44d 100644
+--- a/drivers/staging/fbtft/fb_ssd1306.c
++++ b/drivers/staging/fbtft/fb_ssd1306.c
+@@ -193,8 +193,8 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 	ret = par->fbtftops.write(par, par->txbuf.buf,
+ 				par->info->var.xres*par->info->var.yres/8);
+ 	if (ret < 0)
+-		dev_err(par->info->device,
+-			"%s: write failed and returned: %d\n", __func__, ret);
++		dev_err(par->info->device, "write failed and returned: %d\n",
++			ret);
+ 
+ 	return ret;
+ }
+diff --git a/drivers/staging/fbtft/fb_ssd1331.c b/drivers/staging/fbtft/fb_ssd1331.c
+index ba17f0c..5bb7410 100644
+--- a/drivers/staging/fbtft/fb_ssd1331.c
++++ b/drivers/staging/fbtft/fb_ssd1331.c
+@@ -83,7 +83,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ 	ret = par->fbtftops.write(par, par->buf, sizeof(u8));
+ 	if (ret < 0) {
+ 		va_end(args);
+-		dev_err(par->info->device, "%s: write() failed and returned %d\n", __func__, ret);
++		dev_err(par->info->device,
++			"write() failed and returned %d\n", ret);
+ 		return;
+ 	}
+ 	len--;
+@@ -95,7 +96,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ 		ret = par->fbtftops.write(par, par->buf, len * (sizeof(u8)));
+ 		if (ret < 0) {
+ 			va_end(args);
+-			dev_err(par->info->device, "%s: write() failed and returned %d\n", __func__, ret);
++			dev_err(par->info->device,
++				"write() failed and returned %d\n", ret);
+ 			return;
+ 		}
+ 	}
+diff --git a/drivers/staging/fbtft/fb_tls8204.c b/drivers/staging/fbtft/fb_tls8204.c
+index 8738c7a..fcd38bf 100644
+--- a/drivers/staging/fbtft/fb_tls8204.c
++++ b/drivers/staging/fbtft/fb_tls8204.c
+@@ -127,7 +127,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 		ret = par->fbtftops.write(par, par->txbuf.buf, WIDTH);
+ 		if (ret < 0) {
+ 			dev_err(par->info->device,
+-				"%s: write failed and returned: %d\n", __func__, ret);
++				"write failed and returned: %d\n", ret);
+ 			break;
+ 		}
+ 	}
+diff --git a/drivers/staging/fbtft/fb_uc1701.c b/drivers/staging/fbtft/fb_uc1701.c
+index d70ac52..26d669b 100644
+--- a/drivers/staging/fbtft/fb_uc1701.c
++++ b/drivers/staging/fbtft/fb_uc1701.c
+@@ -183,7 +183,8 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 	}
+ 
+ 	if (ret < 0)
+-		dev_err(par->info->device, "%s: write failed and returned: %d\n", __func__, ret);
++		dev_err(par->info->device, "write failed and returned: %d\n",
++			ret);
+ 
+ 	return ret;
+ }
+diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+index 5e6595f..0b60d4c 100644
+--- a/drivers/staging/fbtft/fb_watterott.c
++++ b/drivers/staging/fbtft/fb_watterott.c
+@@ -65,7 +65,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ 	ret = par->fbtftops.write(par, par->buf, len);
+ 	if (ret < 0) {
+ 		dev_err(par->info->device,
+-			"%s: write() failed and returned %d\n", __func__, ret);
++			"write() failed and returned %d\n", ret);
+ 		return;
+ 	}
+ }
+diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fbtft-bus.c
+index 4b9a481..50ceb1a 100644
+--- a/drivers/staging/fbtft/fbtft-bus.c
++++ b/drivers/staging/fbtft/fbtft-bus.c
+@@ -111,7 +111,7 @@ void fbtft_write_reg8_bus9(struct fbtft_par *par, int len, ...)
+ 	ret = par->fbtftops.write(par, par->buf, (len + pad) * sizeof(u16));
+ 	if (ret < 0) {
+ 		dev_err(par->info->device,
+-			"%s: write() failed and returned %d\n", __func__, ret);
++			"write() failed and returned %d\n", ret);
+ 		return;
+ 	}
+ }
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index f0164218..06d7963 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -705,9 +705,8 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
+ 
+ 	/* sanity check */
+ 	if (display->gamma_num * display->gamma_len > FBTFT_GAMMA_MAX_VALUES_TOTAL) {
+-		dev_err(dev,
+-			"%s: FBTFT_GAMMA_MAX_VALUES_TOTAL=%d is exceeded\n",
+-			__func__, FBTFT_GAMMA_MAX_VALUES_TOTAL);
++		dev_err(dev, "FBTFT_GAMMA_MAX_VALUES_TOTAL=%d is exceeded\n",
++			FBTFT_GAMMA_MAX_VALUES_TOTAL);
+ 		return NULL;
+ 	}
+ 
+diff --git a/drivers/staging/fbtft/fbtft-io.c b/drivers/staging/fbtft/fbtft-io.c
+index 17ab078..18b799a 100644
+--- a/drivers/staging/fbtft/fbtft-io.c
++++ b/drivers/staging/fbtft/fbtft-io.c
+@@ -57,8 +57,7 @@ int fbtft_write_spi_emulate_9(struct fbtft_par *par, void *buf, size_t len)
+ 	}
+ 	if ((len % 8) != 0) {
+ 		dev_err(par->info->device,
+-			"%s: error: len=%zu must be divisible by 8\n",
+-			__func__, len);
++			"error: len=%zu must be divisible by 8\n", len);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -103,8 +102,8 @@ int fbtft_read_spi(struct fbtft_par *par, void *buf, size_t len)
+ 	if (par->startbyte) {
+ 		if (len > 32) {
+ 			dev_err(par->info->device,
+-				"%s: len=%zu can't be larger than 32 when using 'startbyte'\n",
+-				__func__, len);
++				"len=%zu can't be larger than 32 when using 'startbyte'\n",
++				len);
+ 			return -EINVAL;
+ 		}
+ 		txbuf[0] = par->startbyte | 0x3;
 -- 
 1.9.1
 
