@@ -1,211 +1,115 @@
-X-GM-THRID: 7938697592832
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,d3e814254128ab3e,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.87.166 with SMTP id az6mr1500618wib.1.1426181818058;
-        Thu, 12 Mar 2015 10:36:58 -0700 (PDT)
+X-GM-THRID: 6919445020672
+X-Received: by 10.112.142.1 with SMTP id rs1mr484413lbb.19.1425655466167;
+        Fri, 06 Mar 2015 07:24:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.24.162 with SMTP id v2ls550768wif.17.gmail; Thu, 12 Mar
- 2015 10:36:57 -0700 (PDT)
-X-Received: by 10.180.11.34 with SMTP id n2mr7041505wib.2.1426181817759;
-        Thu, 12 Mar 2015 10:36:57 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
-        by gmr-mx.google.com with ESMTPS id o3si1588390wib.2.2015.03.12.10.36.57
+Received: by 10.152.7.3 with SMTP id f3ls87716laa.31.gmail; Fri, 06 Mar 2015
+ 07:24:25 -0800 (PST)
+X-Received: by 10.112.77.101 with SMTP id r5mr2469061lbw.4.1425655465541;
+        Fri, 06 Mar 2015 07:24:25 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id cl5si165506wib.3.2015.03.06.07.24.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 10:36:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 06 Mar 2015 07:24:25 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghk14 with SMTP id k14so17969093wgh.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 10:36:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Q9GQGailGYTi3i4dF/CKBz2rm3DBDQoD1BAKhErIgu4=;
-        b=zA3c23hde0bndgmPWb2WlZlyLg2dHDXgU4PxfIp4kcYuIWb/xQNkeKTlPUe+0BY4U6
-         yOYOoVR1SsHrAgLrJ3iEBjAasKtliWlDwCMhrvD+IKhq6ZgOJrk9HZH79e22ABBjORn3
-         smy2OUbZ5mL9im8QtK55F8Sg0oh0xCYT3jW26x+vdJJC4gXBtZ1c3zz6KQUW+K/GtCry
-         iRInGpQZGv6DytccGcFHRfDCOLq9+nddIQtSiZA3Hi+bfOa7DFh/2Gu40tgNwJ3SOXQh
-         hGN8IT0taIXa6lSn6gwILYwtE0QtRcMLp5Xu2faJu0JR2RXpF9dwU73tmSIb4lIz5u9G
-         A/8g==
-X-Received: by 10.180.9.134 with SMTP id z6mr11784696wia.81.1426181817676;
-        Thu, 12 Mar 2015 10:36:57 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id vh8sm11020035wjc.12.2015.03.12.10.36.55
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 12 Mar 2015 10:36:56 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>,
-	ksenija.stanojevic@gmail.co
-Subject: [PATCH v2 2/2] Staging: rtl8192u: Replace types
-Date: Thu, 12 Mar 2015 18:36:49 +0100
-Message-Id: <30a710d6afe0be094babd21a9d69df3a939655d8.1426181718.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1426181718.git.ksenija.stanojevic@gmail.com>
-References: <cover.1426181718.git.ksenija.stanojevic@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,353,1422918000"; 
+   d="scan'208";a="102383754"
+Received: from unknown (HELO [132.207.219.65]) ([132.207.219.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 06 Mar 2015 16:24:24 +0100
+Date: Fri, 6 Mar 2015 10:24:23 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Add blank line
+ after declarations
+In-Reply-To: <1425652870-3874-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503061024070.2715@hadrien>
+References: <1425652870-3874-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch replaces types made by typedefs in r8192U_cmdpkt.h by struct
-definitions. Also where ever struct was added line was aligned and
-doesn't exceed 80 character mark and unnecessary tabs were removed.
+On Fri, 6 Mar 2015, Dilek Uzulmez wrote:
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-v2: change commit message.
+> The following patch fixes the checkpatch.pl warning:
+> drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c WARNING: Missing a blank line after declarations
+>
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> index 175bbb6..0d8d06a 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> @@ -393,6 +393,7 @@ ieee80211_rx_frame_decrypt_msdu(struct ieee80211_device *ieee, struct sk_buff *s
+>  	if (ieee->hwsec_active)
+>  	{
+>  		cb_desc *tcb_desc = (cb_desc *)(skb->cb+ MAX_DEV_ADDR_SIZE);
+> +
+>  		tcb_desc->bHwSec = 1;
+>  	}
+>
+> @@ -518,7 +519,9 @@ drop:
+>  static bool AddReorderEntry(PRX_TS_RECORD pTS, PRX_REORDER_ENTRY pReorderEntry)
+>  {
+>  	struct list_head *pList = &pTS->RxPendingPktList;
+> +
+>  	while(pList->next != &pTS->RxPendingPktList)
+> +
 
- drivers/staging/rtl8192u/r819xU_cmdpkt.c | 35 ++++++++++++++++----------------
- 1 file changed, 18 insertions(+), 17 deletions(-)
+There is no declaration here.
 
-diff --git a/drivers/staging/rtl8192u/r819xU_cmdpkt.c b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-index 545f49e..d75f671 100644
---- a/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-+++ b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-@@ -26,7 +26,7 @@
- #include "r8192U.h"
- #include "r819xU_cmdpkt.h"
- 
--rt_status SendTxCommandPacket(struct net_device *dev, void *pData, u32 DataLen)
-+enum rt_status SendTxCommandPacket(struct net_device *dev, void *pData, u32 DataLen)
- {
- 	struct r8192_priv   *priv = ieee80211_priv(dev);
- 	struct sk_buff	    *skb;
-@@ -77,7 +77,8 @@ rt_status SendTxCommandPacket(struct net_device *dev, void *pData, u32 DataLen)
-  *  05/12/2008		amy	Create Version 0 porting from windows code.
-  *
-  *---------------------------------------------------------------------------*/
--static void cmpk_count_txstatistic(struct net_device *dev, cmpk_txfb_t *pstx_fb)
-+static void cmpk_count_txstatistic(struct net_device *dev,
-+				   struct cmpk_txfb *pstx_fb)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- #ifdef ENABLE_PS
-@@ -162,7 +163,7 @@ static void cmpk_count_txstatistic(struct net_device *dev, cmpk_txfb_t *pstx_fb)
- static void cmpk_handle_tx_feedback(struct net_device *dev, u8 *pmsg)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
--	cmpk_txfb_t		rx_tx_fb;
-+	struct cmpk_txfb rx_tx_fb;
- 
- 	priv->stats.txfeedback++;
- 
-@@ -171,7 +172,7 @@ static void cmpk_handle_tx_feedback(struct net_device *dev, u8 *pmsg)
- 	   windows OS. So we have to read the content byte by byte or transfer
- 	   endian type before copy the message copy. */
- 	/* Use pointer to transfer structure memory. */
--	memcpy((u8 *)&rx_tx_fb, pmsg, sizeof(cmpk_txfb_t));
-+	memcpy((u8 *)&rx_tx_fb, pmsg, sizeof(struct cmpk_txfb));
- 	/* 2. Use tx feedback info to count TX statistics. */
- 	cmpk_count_txstatistic(dev, &rx_tx_fb);
- 	/* Comment previous method for TX statistic function. */
-@@ -227,7 +228,7 @@ static void cmdpkt_beacontimerinterrupt_819xusb(struct net_device *dev)
-  *---------------------------------------------------------------------------*/
- static void cmpk_handle_interrupt_status(struct net_device *dev, u8 *pmsg)
- {
--	cmpk_intr_sta_t		rx_intr_status;	/* */
-+	struct cmpk_intr_sta rx_intr_status;	/* */
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
- 	DMESG("---> cmpk_Handle_Interrupt_Status()\n");
-@@ -237,7 +238,7 @@ static void cmpk_handle_interrupt_status(struct net_device *dev, u8 *pmsg)
- 	   windows OS. So we have to read the content byte by byte or transfer
- 	   endian type before copy the message copy. */
- 	rx_intr_status.length = pmsg[1];
--	if (rx_intr_status.length != (sizeof(cmpk_intr_sta_t) - 2)) {
-+	if (rx_intr_status.length != (sizeof(struct cmpk_intr_sta) - 2)) {
- 		DMESG("cmpk_Handle_Interrupt_Status: wrong length!\n");
- 		return;
- 	}
-@@ -293,7 +294,7 @@ static void cmpk_handle_interrupt_status(struct net_device *dev, u8 *pmsg)
-  *---------------------------------------------------------------------------*/
- static void cmpk_handle_query_config_rx(struct net_device *dev, u8 *pmsg)
- {
--	cmpk_query_cfg_t	rx_query_cfg;
-+	struct cmpk_set_cfg rx_query_cfg;
- 
- 
- 	/* 1. Extract TX feedback info from RFD to temp structure buffer. */
-@@ -331,7 +332,7 @@ static void cmpk_handle_query_config_rx(struct net_device *dev, u8 *pmsg)
-  *
-  *---------------------------------------------------------------------------*/
- static void cmpk_count_tx_status(struct net_device *dev,
--				 cmpk_tx_status_t *pstx_status)
-+				 struct cmpk_tx_status *pstx_status)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
-@@ -395,9 +396,9 @@ static void cmpk_count_tx_status(struct net_device *dev,
-  *---------------------------------------------------------------------------*/
- static void cmpk_handle_tx_status(struct net_device *dev, u8 *pmsg)
- {
--	cmpk_tx_status_t	rx_tx_sts;
-+	struct cmpk_tx_status rx_tx_sts;
- 
--	memcpy((void *)&rx_tx_sts, (void *)pmsg, sizeof(cmpk_tx_status_t));
-+	memcpy((void *)&rx_tx_sts, (void *)pmsg, sizeof(struct cmpk_tx_status));
- 	/* 2. Use tx feedback info to count TX statistics. */
- 	cmpk_count_tx_status(dev, &rx_tx_sts);
- 
-@@ -422,9 +423,9 @@ static void cmpk_handle_tx_status(struct net_device *dev, u8 *pmsg)
-  *---------------------------------------------------------------------------*/
- static void cmpk_handle_tx_rate_history(struct net_device *dev, u8 *pmsg)
- {
--	cmpk_tx_rahis_t	*ptxrate;
-+	struct cmpk_tx_rahis *ptxrate;
- 	u8		i, j;
--	u16		length = sizeof(cmpk_tx_rahis_t);
-+	u16		length = sizeof(struct cmpk_tx_rahis);
- 	u32		*ptemp;
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
-@@ -452,7 +453,7 @@ static void cmpk_handle_tx_rate_history(struct net_device *dev, u8 *pmsg)
- 		ptemp[i] = (temp1 << 16) | temp2;
- 	}
- 
--	ptxrate = (cmpk_tx_rahis_t *)pmsg;
-+	ptxrate = (struct cmpk_tx_rahis *)pmsg;
- 
- 	if (ptxrate == NULL)
- 		return;
-@@ -504,7 +505,7 @@ u32 cmpk_message_handle_rx(struct net_device *dev,
- 	/* 0. Check inpt arguments. If is is a command queue message or
- 	   pointer is null. */
- 	if (pstats == NULL)
--		return 0;	/* This is not a command packet. */
-+		return U32_FALSE;	/* This is not a command packet. */
- 
- 	/* 1. Read received command packet message length from RFD. */
- 	total_length = pstats->Length;
-@@ -532,7 +533,7 @@ u32 cmpk_message_handle_rx(struct net_device *dev,
- 
- 		case RX_INTERRUPT_STATUS:
- 			cmpk_handle_interrupt_status(dev, pcmd_buff);
--			cmd_length = sizeof(cmpk_intr_sta_t);
-+			cmd_length = sizeof(struct cmpk_intr_sta);
- 			break;
- 
- 		case BOTH_QUERY_CONFIG:
-@@ -560,12 +561,12 @@ u32 cmpk_message_handle_rx(struct net_device *dev,
- 
- 			RT_TRACE(COMP_ERR, "---->%s():unknown CMD Element\n",
- 				 __func__);
--			return 1;	/* This is a command packet. */
-+			return U32_TRUE;	/* This is a command packet. */
- 		}
- 
- 		total_length -= cmd_length;
- 		pcmd_buff    += cmd_length;
- 	}
--	return	1;	/* This is a command packet. */
-+	return	U32_TRUE;	/* This is a command packet. */
- 
- }
--- 
-1.9.1
+julia
 
+>  	{
+>  		if( SN_LESS(pReorderEntry->SeqNum, ((PRX_REORDER_ENTRY)list_entry(pList->next,RX_REORDER_ENTRY,List))->SeqNum) )
+>  		{
+> @@ -551,6 +554,7 @@ void ieee80211_indicate_packets(struct ieee80211_device *ieee, struct ieee80211_
+>  	{
+>  //added by amy for reorder
+>  		struct ieee80211_rxb *prxb = prxbIndicateArray[j];
+> +
+>  		for(i = 0; i<prxb->nr_subframes; i++) {
+>  			struct sk_buff *sub_skb = prxb->subframes[i];
+>
+> @@ -606,6 +610,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+>  	u16			WinEnd = (pTS->RxIndicateSeq + WinSize -1)%4096;
+>  	u8			index = 0;
+>  	bool			bMatchWinStart = false, bPktInBuf = false;
+> +
+>  	IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): Seq is %d,pTS->RxIndicateSeq is %d, WinSize is %d\n",__func__,SeqNum,pTS->RxIndicateSeq,WinSize);
+>  	/* Rx Reorder initialize condition.*/
+>  	if(pTS->RxIndicateSeq == 0xffff) {
+> @@ -619,6 +624,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+>  		pHTInfo->RxReorderDropCounter++;
+>  		{
+>  			int i;
+> +
+>  			for(i =0; i < prxb->nr_subframes; i++) {
+>  				dev_kfree_skb(prxb->subframes[i]);
+>  			}
+> @@ -1164,6 +1170,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+>  	if ((frag != 0 || (fc & IEEE80211_FCTL_MOREFRAGS))) {
+>  		int flen;
+>  		struct sk_buff *frag_skb = ieee80211_frag_cache_get(ieee, hdr);
+> +
+>  		IEEE80211_DEBUG_FRAG("Rx Fragment received (%u)\n", frag);
+>
+>  		if (!frag_skb) {
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425652870-3874-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
