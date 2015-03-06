@@ -1,46 +1,44 @@
 X-GM-THRID: 6740862042112
-X-Received: by 10.180.109.34 with SMTP id hp2mr1163607wib.4.1425656446051;
-        Fri, 06 Mar 2015 07:40:46 -0800 (PST)
+X-Received: by 10.152.36.132 with SMTP id q4mr2356415laj.6.1425651566620;
+        Fri, 06 Mar 2015 06:19:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.37.194 with SMTP id a2ls79391lak.88.gmail; Fri, 06 Mar
- 2015 07:40:45 -0800 (PST)
-X-Received: by 10.112.142.1 with SMTP id rs1mr497014lbb.19.1425656445553;
-        Fri, 06 Mar 2015 07:40:45 -0800 (PST)
+Received: by 10.180.11.97 with SMTP id p1ls167207wib.51.gmail; Fri, 06 Mar
+ 2015 06:19:26 -0800 (PST)
+X-Received: by 10.181.29.66 with SMTP id ju2mr5516027wid.1.1425651566323;
+        Fri, 06 Mar 2015 06:19:26 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id gj20si166178wic.1.2015.03.06.07.40.45
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id by11si138580wib.1.2015.03.06.06.19.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 06 Mar 2015 07:40:45 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 06 Mar 2015 06:19:26 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.11,353,1422918000"; 
-   d="scan'208";a="124752016"
+   d="scan'208";a="102374230"
 Received: from unknown (HELO [132.207.219.65]) ([132.207.219.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 06 Mar 2015 16:40:44 +0100
-Date: Fri, 6 Mar 2015 10:40:43 -0500 (EST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 06 Mar 2015 15:19:25 +0100
+Date: Fri, 6 Mar 2015 09:19:23 -0500 (EST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v4] Staging: rtl8192u: ieee80211:
+Subject: Re: [Outreachy kernel] [PATCH 32/32] Staging: rtl8192u: ieee80211:
  pr_warn instead printk
-In-Reply-To: <1425651496-14666-1-git-send-email-haticeerturk27@gmail.com>
-Message-ID: <alpine.DEB.2.10.1503061040320.2715@hadrien>
-References: <1425651496-14666-1-git-send-email-haticeerturk27@gmail.com>
+In-Reply-To: <1425651329-14574-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503060918090.2715@hadrien>
+References: <1425651329-14574-1-git-send-email-haticeerturk27@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1095122327-1425656444=:2715"
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1492100295-1425651566=:2715"
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---8323329-1095122327-1425656444=:2715
+--8323329-1492100295-1425651566=:2715
 Content-Type: TEXT/PLAIN; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
-
-
 
 On Fri, 6 Mar 2015, Hatice ERTÜRK wrote:
 
@@ -50,8 +48,8 @@ On Fri, 6 Mar 2015, Hatice ERTÜRK wrote:
 >
 > Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
 > ---
-> v4:
->  Changed patch number.
+> v3:
+>  Changed usage dev_functions.
 > ---
 >  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 14 +++++++-------
 >  1 file changed, 7 insertions(+), 7 deletions(-)
@@ -67,7 +65,13 @@ On Fri, 6 Mar 2015, Hatice ERTÜRK wrote:
 > -			dev_debug(KERN_DEBUG "%s: TKIP countermeasures: dropped "
 > +			dev_debug("%s: TKIP countermeasures: dropped "
 
-This code will not compile.
+Please ensure that your code compiles.  This call is not correct,
+
+Also, I have the impression that this patch is against your previous
+patch.  It should be against the original state of the code.
+
+Finally, please explain why a netdev function cannot be used.  This is a
+network driver.
 
 julia
 
@@ -134,8 +138,8 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425651496-14666-1-git-send-email-haticeerturk27%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425651329-14574-1-git-send-email-haticeerturk27%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
---8323329-1095122327-1425656444=:2715--
+--8323329-1492100295-1425651566=:2715--
 
