@@ -1,53 +1,49 @@
 X-GM-THRID: 6950918029312
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,4f1aeb5db514fe54
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.45.7 with SMTP id i7mr2540342lam.9.1425668681473;
-        Fri, 06 Mar 2015 11:04:41 -0800 (PST)
+X-Received: by 10.112.35.135 with SMTP id h7mr2510254lbj.23.1425668590205;
+        Fri, 06 Mar 2015 11:03:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.135 with SMTP id t7ls102149lag.45.gmail; Fri, 06 Mar
- 2015 11:04:41 -0800 (PST)
-X-Received: by 10.112.130.70 with SMTP id oc6mr2611013lbb.13.1425668680988;
-        Fri, 06 Mar 2015 11:04:40 -0800 (PST)
+Received: by 10.152.36.226 with SMTP id t2ls110443laj.42.gmail; Fri, 06 Mar
+ 2015 11:03:09 -0800 (PST)
+X-Received: by 10.152.29.97 with SMTP id j1mr2539984lah.3.1425668589718;
+        Fri, 06 Mar 2015 11:03:09 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
-        by gmr-mx.google.com with ESMTPS id bg8si204446wib.3.2015.03.06.11.04.40
+Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
+        by gmr-mx.google.com with ESMTPS id l8si241046wia.0.2015.03.06.11.03.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 11:04:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
+        Fri, 06 Mar 2015 11:03:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22a.google.com with SMTP id w55so7975595wes.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 11:04:40 -0800 (PST)
+Received: by wesw55 with SMTP id w55so7969464wes.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 11:03:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=3nWI9VG4xUlY4UW2iixrVMHDQk4sawHWccNK6kK09/4=;
-        b=i1PJkVdUgG1qsOcdbJ7hFIufr6+S8cG/F7Xh+fZxHmQPKpsW7HutE99az+bTS770oB
-         7pHz70YXhXDxNrfO1LFZVSi/QE1LVv9Oeg2H5Tb5uHDLqx+1FMaWov6sEZvm75PghBE+
-         wNc8b2uJMumjnPnc1E5OKmPVO+b+UIoKZw2mjp2c1bDYaa6YRugVJOYI40hXRVvWiQGJ
-         RML75rCzxz7FiP4RNTRIFEAu8X7mC8oIM/4EulgKkJUbU7IFSaTNuqDqZr9jszO4Pyal
-         8ZNYwvKa18LPmHCoZHgUbyiiY3CIhE8gTRX/wOIoQh8RWg3qAriXz4K/4br4wPvyui/J
-         LJ7A==
-X-Received: by 10.194.223.5 with SMTP id qq5mr33046119wjc.152.1425668680883;
-        Fri, 06 Mar 2015 11:04:40 -0800 (PST)
+        bh=NLra6KrIsGsZ0jcMefjE1OR9fat8pyn+eGjqOZjXEYw=;
+        b=cHzEPiPaWkZaG40wWXhWkaEHAM1yCKzAkvja4iPvi6NLggxztwCWUuQKXBW6S+HLfw
+         UPHHLcnfOTjS0MDx1K7zvpnanS5z+jcd0G0l14KLpDn8uCA4y+7YNVme+iSfRvafGY9z
+         sWaBGPHgZivYFZAz29Ys/VaWcPmnpN2XO0FC3rOIgOWHUx26xVhxGs7cbJdt5RlwoRNx
+         V79OY4/N4ZTlfW8W0gwNrPtrCT7MZTv78Dqv3atz1yfcGk5hLZ+9XQekWskph/+MFKq+
+         dDe1Q8/gCT46i+WzJnQZn+1xfl1TJOIx5H0/9fIwzuHThYx8bHP0sjCIxx4aUVJOnzob
+         3QKQ==
+X-Received: by 10.194.177.195 with SMTP id cs3mr31306338wjc.141.1425668589594;
+        Fri, 06 Mar 2015 11:03:09 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id s19sm35355761wik.18.2015.03.06.11.04.39
+        by mx.google.com with ESMTPSA id pa4sm16152989wjb.11.2015.03.06.11.03.08
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 11:04:40 -0800 (PST)
+        Fri, 06 Mar 2015 11:03:08 -0800 (PST)
 Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 056F362672; Fri,  6 Mar 2015 22:04:37 +0300 (AST)
+	id 08CAB62672; Fri,  6 Mar 2015 22:03:06 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 6/8] Staging: iio: clean dev_err logging
-Date: Fri,  6 Mar 2015 22:03:53 +0300
-Message-Id: <1425668633-27524-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 5/8] Staging: rts5208: clean dev_err logging
+Date: Fri,  6 Mar 2015 22:03:05 +0300
+Message-Id: <1425668585-27475-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
@@ -91,147 +87,22 @@ identifier  b.y;
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/iio/light/isl29028.c     |  8 ++++----
- drivers/staging/iio/light/tsl2x7x_core.c | 34 +++++++++++++-------------------
- 2 files changed, 18 insertions(+), 24 deletions(-)
+ drivers/staging/rts5208/rtsx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/iio/light/isl29028.c b/drivers/staging/iio/light/isl29028.c
-index 6440e3b..e5b2fdc 100644
---- a/drivers/staging/iio/light/isl29028.c
-+++ b/drivers/staging/iio/light/isl29028.c
-@@ -441,15 +441,15 @@ static int isl29028_chip_init(struct isl29028_chip *chip)
+diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
+index c74f1b8..7f2c0c3 100644
+--- a/drivers/staging/rts5208/rtsx.c
++++ b/drivers/staging/rts5208/rtsx.c
+@@ -137,8 +137,8 @@ static int queuecommand_lck(struct scsi_cmnd *srb,
  
- 	ret = isl29028_set_proxim_sampling(chip, chip->prox_sampling);
- 	if (ret < 0) {
--		dev_err(chip->dev, "%s(): setting the proximity, err = %d\n",
--			__func__, ret);
-+		dev_err(chip->dev, "setting the proximity, err = %d\n",
-+			ret);
- 		return ret;
- 	}
- 
- 	ret = isl29028_set_als_scale(chip, chip->lux_scale);
- 	if (ret < 0)
--		dev_err(chip->dev, "%s(): setting als scale failed, err = %d\n",
--			__func__, ret);
-+		dev_err(chip->dev,
-+			"setting als scale failed, err = %d\n", ret);
- 	return ret;
- }
- 
-diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
-index 1222a57..2063c71 100644
---- a/drivers/staging/iio/light/tsl2x7x_core.c
-+++ b/drivers/staging/iio/light/tsl2x7x_core.c
-@@ -301,8 +301,7 @@ tsl2x7x_i2c_read(struct i2c_client *client, u8 reg, u8 *val)
- 	/* select register to write */
- 	ret = i2c_smbus_write_byte(client, (TSL2X7X_CMD_REG | reg));
- 	if (ret < 0) {
--		dev_err(&client->dev, "%s: failed to write register %x\n"
--				, __func__, reg);
-+		dev_err(&client->dev, "failed to write register %x\n", reg);
- 		return ret;
- 	}
- 
-@@ -311,8 +310,7 @@ tsl2x7x_i2c_read(struct i2c_client *client, u8 reg, u8 *val)
- 	if (ret >= 0)
- 		*val = (u8)ret;
- 	else
--		dev_err(&client->dev, "%s: failed to read register %x\n"
--						, __func__, reg);
-+		dev_err(&client->dev, "failed to read register %x\n", reg);
- 
- 	return ret;
- }
-@@ -374,7 +372,7 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
- 			&buf[i]);
- 		if (ret < 0) {
- 			dev_err(&chip->client->dev,
--				"%s: failed to read. err=%x\n", __func__, ret);
-+				"failed to read. err=%x\n", ret);
- 			goto out_unlock;
- 		}
- 	}
-@@ -386,8 +384,7 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
- 				TSL2X7X_CMD_ALS_INT_CLR));
- 	if (ret < 0) {
- 		dev_err(&chip->client->dev,
--		"%s: i2c_write_command failed - err = %d\n",
--			__func__, ret);
-+			"i2c_write_command failed - err = %d\n", ret);
- 		goto out_unlock; /* have no data, so return failure */
- 	}
- 
-@@ -489,8 +486,7 @@ static int tsl2x7x_get_prox(struct iio_dev *indio_dev)
- 	ret = tsl2x7x_i2c_read(chip->client,
- 		(TSL2X7X_CMD_REG | TSL2X7X_STATUS), &status);
- 	if (ret < 0) {
--		dev_err(&chip->client->dev,
--		"%s: i2c err=%d\n", __func__, ret);
-+		dev_err(&chip->client->dev, "i2c err=%d\n", ret);
- 		goto prox_poll_err;
- 	}
- 
-@@ -579,8 +575,7 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
- 			(TSL2X7X_CMD_REG | TSL2X7X_CNTRL));
- 	if (ret < 0) {
- 		dev_err(&chip->client->dev,
--		"%s: failed to write CNTRL register, ret=%d\n",
--		__func__, ret);
-+			"failed to write CNTRL register, ret=%d\n", ret);
- 		return ret;
- 	}
- 
-@@ -595,8 +590,7 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
- 			(TSL2X7X_CMD_REG | TSL2X7X_CNTRL));
- 	if (ret < 0) {
- 		dev_err(&chip->client->dev,
--			"%s: failed to write ctrl reg: ret=%d\n",
--			__func__, ret);
-+			"failed to write ctrl reg: ret=%d\n", ret);
- 		return ret;
- 	}
- 
-@@ -713,7 +707,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
- 				TSL2X7X_CMD_REG + i, *dev_reg++);
- 		if (ret < 0) {
- 			dev_err(&chip->client->dev,
--			"%s: failed on write to reg %d.\n", __func__, i);
-+				"failed on write to reg %d.\n", i);
- 			return ret;
- 		}
- 	}
-@@ -861,8 +855,8 @@ static void tsl2x7x_prox_cal(struct iio_dev *indio_dev)
- 
- 	if (chip->tsl2x7x_settings.prox_max_samples_cal > MAX_SAMPLES_CAL) {
- 		dev_err(&chip->client->dev,
--			"%s: max prox samples cal is too big: %d\n",
--			__func__, chip->tsl2x7x_settings.prox_max_samples_cal);
-+			"max prox samples cal is too big: %d\n",
-+			chip->tsl2x7x_settings.prox_max_samples_cal);
- 		chip->tsl2x7x_settings.prox_max_samples_cal = MAX_SAMPLES_CAL;
- 	}
- 
-@@ -1553,8 +1547,8 @@ static irqreturn_t tsl2x7x_event_handler(int irq, void *private)
- 		TSL2X7X_CMD_PROXALS_INT_CLR);
- 	if (ret < 0)
- 		dev_err(&chip->client->dev,
--			"%s: Failed to clear irq from event handler. err = %d\n",
--			__func__, ret);
-+			"Failed to clear irq from event handler. err = %d\n",
-+			ret);
- 
- 	return IRQ_HANDLED;
- }
-@@ -1883,8 +1877,8 @@ static int tsl2x7x_probe(struct i2c_client *clientp,
- 
- 	ret = i2c_smbus_write_byte(clientp, (TSL2X7X_CMD_REG | TSL2X7X_CNTRL));
- 	if (ret < 0) {
--		dev_err(&clientp->dev, "%s: write to cmd reg failed. err = %d\n",
--				__func__, ret);
-+		dev_err(&clientp->dev, "write to cmd reg failed. err = %d\n",
-+			ret);
- 		return ret;
+ 	/* check for state-transition errors */
+ 	if (chip->srb != NULL) {
+-		dev_err(&dev->pci->dev, "Error in %s: chip->srb = %p\n",
+-			__func__, chip->srb);
++		dev_err(&dev->pci->dev, "Error: chip->srb = %p\n",
++			chip->srb);
+ 		return SCSI_MLQUEUE_HOST_BUSY;
  	}
  
 -- 
