@@ -1,105 +1,156 @@
-X-GM-THRID: 4279059349504
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,83014de4c5b83dfe,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.83.168 with SMTP id r8mr87320wiy.6.1424999221447;
-        Thu, 26 Feb 2015 17:07:01 -0800 (PST)
+X-GM-THRID: 4945298325504
+X-Received: by 10.140.235.83 with SMTP id g80mr17822805qhc.5.1425725783824;
+        Sat, 07 Mar 2015 02:56:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.8 with SMTP id j8ls113396lae.7.gmail; Thu, 26 Feb 2015
- 17:07:01 -0800 (PST)
-X-Received: by 10.112.131.106 with SMTP id ol10mr1701945lbb.20.1424999220998;
-        Thu, 26 Feb 2015 17:07:00 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x230.google.com (mail-we0-x230.google.com. [2a00:1450:400c:c03::230])
-        by gmr-mx.google.com with ESMTPS id i7si25380wif.0.2015.02.26.17.07.00
+Received: by 10.50.73.230 with SMTP id o6ls442260igv.30.gmail; Sat, 07 Mar
+ 2015 02:56:23 -0800 (PST)
+X-Received: by 10.66.157.129 with SMTP id wm1mr17890868pab.15.1425725783601;
+        Sat, 07 Mar 2015 02:56:23 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gb13si1691295pac.2.2015.03.07.02.56.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 17:07:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) client-ip=2a00:1450:400c:c03::230;
+        Sat, 07 Mar 2015 02:56:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x230.google.com with SMTP id w55so16167218wes.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 17:07:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=8J2tiEqZr/x0m8MgxXFriN7Vjv9dELNYWjB6/lzG480=;
-        b=gP4GCxeePwY9AgjwZrgETYD/TfxgUmXXGgTBFd/MN1dJmo8SPZkkS05E9ncQGWNmhH
-         9j4u4DHwdSef91RLcF/eUDXxQxXduF8SZXd4tei4tAX+XQ49JxCLFDGwsu8r8C0o3kaf
-         2Y7LsXItivkED1NwwsncFTwwDys4NcZNP0DyzuneCNpyVQ70pa2/KsQ7GsXMPp/dAZA5
-         KvwNXtnAKiy7WRtcb++1sAx7Nt8oJ3VxiLOIRnl1Az3XEoo4xHFSjpkW/yXHRJBmwdta
-         /IOnXcWyEImv1bIxhWaAPBz2TM5b2U+2+aAiCo4AosJt3D7LBVLp7pbZUWLGQlMGgQJw
-         pZaA==
-X-Received: by 10.180.208.4 with SMTP id ma4mr1461212wic.36.1424999220916;
-        Thu, 26 Feb 2015 17:07:00 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([41.130.214.5])
-        by mx.google.com with ESMTPSA id b4sm596578wic.2.2015.02.26.17.06.59
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 17:07:00 -0800 (PST)
-Date: Fri, 27 Feb 2015 03:06:53 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: vt6656: replace memcpy by ether_addr_copy
-Message-ID: <20150227010653.GA11049@waves>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A9B59990;
+	Sat,  7 Mar 2015 10:56:22 +0000 (UTC)
+Date: Fri, 6 Mar 2015 15:41:54 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v5] Staging: lustre: line over 80
+ characters
+Message-ID: <20150306234154.GA20001@kroah.com>
+References: <1425077868-27905-1-git-send-email-hamohammed.sa@gmail.com>
+ <1425468890-10873-1-git-send-email-hamohammed.sa@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <1425468890-10873-1-git-send-email-hamohammed.sa@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the following checkpatch.pl warning:
+On Wed, Mar 04, 2015 at 02:34:50PM +0300, Haneen Mohammed wrote:
+> This patch splits line over 80 characters addressing checkpatch.pl warning.
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> ---
+>  v5: address identation problem
+>  v4: solve problems with identation
+> 
+>  drivers/staging/lustre/lustre/ldlm/ldlm_request.c | 33 +++++++++++++++--------
+>  1 file changed, 22 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+> index 53226b8..ddfae44 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+> @@ -102,10 +102,13 @@ int ldlm_expired_completion_wait(void *data)
+>  			      lock->l_last_activity,
+>  			      cfs_time_sub(get_seconds(),
+>  					   lock->l_last_activity));
+> -		LDLM_DEBUG(lock, "lock timed out (enqueued at " CFS_TIME_T ", " CFS_DURATION_T "s ago); not entering recovery in server code, just going back to sleep",
+> +		LDLM_DEBUG(lock,
+> +			   "lock timed out (enqueued at "
+> +			   CFS_TIME_T ", " CFS_DURATION_T
+> +			   "s ago); not entering recovery in server code, just going back to sleep",
+>  			   lock->l_last_activity,
+>  			   cfs_time_sub(get_seconds(),
+> -					lock->l_last_activity));
+> +			   lock->l_last_activity));
+>  		if (cfs_time_after(cfs_time_current(), next_dump)) {
+>  			last_dump = next_dump;
+>  			next_dump = cfs_time_shift(300);
+> @@ -190,7 +193,8 @@ int ldlm_completion_ast_async(struct ldlm_lock *lock, __u64 flags, void *data)
+>  		return ldlm_completion_tail(lock);
+>  	}
+>  
+> -	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, going forward");
+> +	LDLM_DEBUG(lock,
+> +		   "client-side enqueue returned a blocked lock, going forward");
+>  	ldlm_reprocess_all(lock->l_resource);
+>  	return 0;
+>  }
+> @@ -238,7 +242,8 @@ int ldlm_completion_ast(struct ldlm_lock *lock, __u64 flags, void *data)
+>  		return 0;
+>  	}
+>  
+> -	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, sleeping");
+> +	LDLM_DEBUG(lock,
+> +		   "client-side enqueue returned a blocked lock, sleeping");
+>  
+>  noreproc:
+>  
+> @@ -320,7 +325,8 @@ int ldlm_blocking_ast_nocheck(struct ldlm_lock *lock)
+>  		if (rc < 0)
+>  			CERROR("ldlm_cli_cancel: %d\n", rc);
+>  	} else {
+> -		LDLM_DEBUG(lock, "Lock still has references, will be cancelled later");
+> +		LDLM_DEBUG(lock,
+> +			   "Lock still has references, will be cancelled later");
+>  	}
+>  	return 0;
+>  }
+> @@ -551,7 +557,8 @@ int ldlm_cli_enqueue_fini(struct obd_export *exp, struct ptlrpc_request *req,
+>  			rc = size;
+>  			goto cleanup;
+>  		} else if (unlikely(size > lvb_len)) {
+> -			LDLM_ERROR(lock, "Replied LVB is larger than expectation, expected = %d, replied = %d",
+> +			LDLM_ERROR(lock,
+> +				   "Replied LVB is larger than expectation, expected = %d, replied = %d",
+>  				   lvb_len, size);
+>  			rc = -EINVAL;
+>  			goto cleanup;
+> @@ -1104,7 +1111,8 @@ static __u64 ldlm_cli_cancel_local(struct ldlm_lock *lock)
+>  		unlock_res_and_lock(lock);
+>  
+>  		if (local_only) {
+> -			CDEBUG(D_DLMTRACE, "not sending request (at caller's instruction)\n");
+> +			CDEBUG(D_DLMTRACE,
+> +			       "not sending request (at caller's instruction)\n");
+>  			rc = LDLM_FL_LOCAL_ONLY;
+>  		}
+>  		ldlm_lock_cancel(lock);
+> @@ -1219,7 +1227,8 @@ int ldlm_cli_cancel_req(struct obd_export *exp, struct list_head *cancels,
+>  			rc = ptlrpc_queue_wait(req);
+>  		}
+>  		if (rc == LUSTRE_ESTALE) {
+> -			CDEBUG(D_DLMTRACE, "client/server (nid %s) out of sync -- not fatal\n",
+> +			CDEBUG(D_DLMTRACE,
+> +			       "client/server (nid %s) out of sync -- not fatal\n",
+>  			       libcfs_nid2str(req->rq_import->
+>  					      imp_connection->c_peer.nid));
+>  			rc = 0;
+> @@ -2243,7 +2252,8 @@ static void ldlm_cancel_unused_locks_for_replay(struct ldlm_namespace *ns)
+>  	int canceled;
+>  	LIST_HEAD(cancels);
+>  
+> -	CDEBUG(D_DLMTRACE, "Dropping as many unused locks as possible before replay for namespace %s (%d)\n",
+> +	CDEBUG(D_DLMTRACE,
+> +	       "Dropping as many unused locks as possible before replay for namespace %s (%d)\n",
+>  	       ldlm_ns_name(ns), ns->ns_nr_unused);
+>  
+>  	/* We don't need to care whether or not LRU resize is enabled
+> @@ -2252,8 +2262,9 @@ static void ldlm_cancel_unused_locks_for_replay(struct ldlm_namespace *ns)
+>  	canceled = ldlm_cancel_lru_local(ns, &cancels, ns->ns_nr_unused, 0,
+>  					 LCF_LOCAL, LDLM_CANCEL_NO_WAIT);
+>  
+> -	CDEBUG(D_DLMTRACE, "Canceled %d unused locks from namespace %s\n",
+> -			   canceled, ldlm_ns_name(ns));
+> +	CDEBUG(D_DLMTRACE,
+> +	       "Canceled %d unused locks from namespace %s\n",
+> +	       canceled, ldlm_ns_name(ns));
 
-Prefer ether_addr_copy() over memcpy() if the Ethernet addresses are
-__aligned(2)
+This last one didn't need to be changed, why modify it?
 
-The changes were applied using the following coccinelle
-rule:
-@@ expression e1, e2; @@
-- memcpy(e1, e2, ETH_ALEN);
-+ ether_addr_copy(e1, e2);
+Also, the long-term goal here is to get rid of these custom debug/log
+macros, please move toward using the correct dev_* or pr_* functions
+instead of these macros.
 
-All variables defined in vnt_mac_set_key start at even offsets
-making the variables aligned to the u16 datatype.
+thanks,
 
-Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
----
-v2: adding a missing header
-
- drivers/staging/vt6656/mac.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/vt6656/mac.c b/drivers/staging/vt6656/mac.c
-index bb37e33..5dfac05 100644
---- a/drivers/staging/vt6656/mac.c
-+++ b/drivers/staging/vt6656/mac.c
-@@ -30,6 +30,8 @@
-  * Revision History:
-  */
- 
-+#include <linux/etherdevice.h>
-+
- #include "desc.h"
- #include "mac.h"
- #include "usbpipe.h"
-@@ -126,7 +128,7 @@ void vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
- 	offset += (entry_idx * MISCFIFO_KEYENTRYSIZE);
- 
- 	set_key.u.write.key_ctl = cpu_to_le16(key_ctl);
--	memcpy(set_key.u.write.addr, addr, ETH_ALEN);
-+	ether_addr_copy(set_key.u.write.addr, addr);
- 
- 	/* swap over swap[0] and swap[1] to get correct write order */
- 	swap(set_key.u.swap[0], set_key.u.swap[1]);
--- 
-1.9.3
-
-
--- 
-Kind Regards,
-Aya Saif El-yazal Mahfouz
+greg k-h
 
