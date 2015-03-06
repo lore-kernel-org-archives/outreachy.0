@@ -3,140 +3,176 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,1f5d1c1fbc348787
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.152.87.141 with SMTP id ay13mr895803lab.3.1426018473920;
-        Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
+X-Received: by 10.42.206.193 with SMTP id fv1mr6908180icb.29.1425639238434;
+        Fri, 06 Mar 2015 02:53:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.102.100 with SMTP id fn4ls735850wib.24.canary; Tue, 10 Mar
- 2015 13:14:33 -0700 (PDT)
-X-Received: by 10.180.80.132 with SMTP id r4mr1636972wix.4.1426018473598;
-        Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
+Received: by 10.182.40.199 with SMTP id z7ls108942obk.0.gmail; Fri, 06 Mar
+ 2015 02:53:58 -0800 (PST)
+X-Received: by 10.182.96.131 with SMTP id ds3mr13218852obb.35.1425639238153;
+        Fri, 06 Mar 2015 02:53:58 -0800 (PST)
 Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id bz6si512951wib.3.2015.03.10.13.14.33
+Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
+        by gmr-mx.google.com with ESMTPS id ks4si1286365pbc.1.2015.03.06.02.53.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        Fri, 06 Mar 2015 02:53:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x229.google.com with SMTP id x13so4423260wgg.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
+Received: by pdbnh10 with SMTP id nh10so48396664pdb.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 02:53:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :content-type;
-        bh=A5SmA9C/B4VyrUHyVkqHl1yigFIUc6baemyPOfGGtW0=;
-        b=tXmlbuc1BSVH/LbqRHwFvLyrNlp+igzXgVKFDkJK/GFsAvBySWzlRcAss1caTTyKU0
-         ipix3KQ1UfpBWEwTD8vxNgiFqcK44K9B+QYPwbPTBO0VtNFqZ8mFE6QRKqdgWf8Pi4LS
-         P8baY+KYFRjcKFhOq4k/q6QHY/BeqzWPTr06uva89PnHIV6wJ+Zqg68gvsV0DlyQX/08
-         /10suYttmbog6K73aira8vuuY6jhZkj72xUOrJcMOpagAX+gxHonSsqMRift8Wo3TFsE
-         JWIzVlXh1s2Aws6HUO5h6p149ycXFKW4zIlzrg2VolFra4h8KPT+lVoGlgQhWfPnMxoR
-         tCQw==
-MIME-Version: 1.0
-X-Received: by 10.194.110.38 with SMTP id hx6mr70246204wjb.128.1426018473525;
- Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
-Received: by 10.194.13.168 with HTTP; Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
-Received: by 10.194.13.168 with HTTP; Tue, 10 Mar 2015 13:14:33 -0700 (PDT)
-In-Reply-To: <cover.1425638418.git.vthakkar1994@gmail.com>
-References: <cover.1425638418.git.vthakkar1994@gmail.com>
-Date: Wed, 11 Mar 2015 01:44:33 +0530
-Message-ID: <CAK-LDbLLXT5aQbWTq7QMCk6HS3Sp8TFOJJ=e0ZLb6+saWik=Ew@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Staging: rtl8712: Use del_timer_sync
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=hal9eq0WxmRlsoQj01Eip9/qDmy8ZBpbPDictj9Bybo=;
+        b=y9HrkKAmA0eSRkYhRtzPHDlHzYMEDAbOX72VJutXR2uTbyDMzSrXzsT0f7PFrp18Do
+         z9G3gi4BfyklqEIiLwcl0GFL6OkR27uhiAtmtoAcTDmmm3DpklXbZCRqVk9L2KKpXsnr
+         90GlJaqmrHc0x8xHUKz2XEdpuzZrqDs/VFtNcPF7e27tK1wgEEm6KBUUkIyIgeQ3sRQd
+         e+sGS0l6XB5sq5SSWiLR4kuWDQEQ1paxLdFKLn8+Z32ztCbVOKbVzt9LH4LFh+fyFN1f
+         RBoghXjWBGR16FXYs9MH12SWfYHvW637x5Xo31TbOgWBHWjbPocAnTqhQGR0jB58otz6
+         72KA==
+X-Received: by 10.68.101.130 with SMTP id fg2mr24673295pbb.118.1425639238032;
+        Fri, 06 Mar 2015 02:53:58 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([150.107.241.177])
+        by mx.google.com with ESMTPSA id pl8sm9222557pdb.72.2015.03.06.02.53.55
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 06 Mar 2015 02:53:56 -0800 (PST)
+Date: Fri, 6 Mar 2015 16:23:51 +0530
 From: Vaishali Thakkar <vthakkar1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=089e010d89f28ec8c10510f4cc6e
+Subject: [PATCH 2/2] Staging: rtl8712: Eliminate use of _cancel_timer
+Message-ID: <aae0b13e15fe7ec1677a6854c63daceaf425ee14.1425638418.git.vthakkar1994@gmail.com>
+References: <cover.1425638418.git.vthakkar1994@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1425638418.git.vthakkar1994@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
---089e010d89f28ec8c10510f4cc6e
-Content-Type: text/plain; charset=UTF-8
+Use timer API function del_timer_sync instead of driver
+specific function _cancel_timer as besides deactivating
+a timer, it also ensures that the timer is stopped on all
+CPUs before the driver exists. Also, variables
+timer_cancelled and bool are removed as they are no longer
+needed.
 
-On Mar 6, 2015 4:23 PM, "Vaishali Thakkar" <vthakkar1994@gmail.com> wrote:
->
-> This patch-set introduces the use of timer API function
-> del_timer_sync instead of driver specific functions
-> _cancel_timer_ex and _cancel_timer. Though definition
-> of these functions were returning del_timer, here
-> del_timer_sync is a preferred solution as besides
-> deactivating a timer, it also ensures that the timer is
-> stopped on all CPUs before the driver exists.
->
-> All of these changes are done using Coccinelle.
->
-> Vaishali Thakkar (2):
->   Staging: rtl8712: Eliminate use of _cancel_timer_ex
->   Staging: rtl8712: Eliminate use of _cancel_timer
->
->  drivers/staging/rtl8712/os_intfs.c        |  13 ++-
->  drivers/staging/rtl8712/osdep_service.h   |  11 ---
->  drivers/staging/rtl8712/rtl8712_led.c     | 146
-+++++++++++++++---------------
->  drivers/staging/rtl8712/rtl871x_cmd.c     |   3 +-
->  drivers/staging/rtl8712/rtl871x_mlme.c    |  10 +-
->  drivers/staging/rtl8712/rtl871x_pwrctrl.c |   2 +-
->  drivers/staging/rtl8712/rtl871x_sta_mgt.c |   2 +-
->  drivers/staging/rtl8712/rtl871x_xmit.c    |   3 +-
->  8 files changed, 86 insertions(+), 104 deletions(-)
+@a@
+expression x;
+identifier y;
+@@
 
-Hello
+- _cancel_timer (&x, &y);
++ del_timer_sync (&x);
 
-Do I need to resend this patch-series as they are not picked by Greg
-yesterday[when he caught up the patches]??
+@@type T; identifier a.y;@@
 
-I am assuming that this patchset is may be missed by him.
+- T y;
+...when != y
 
-Thank You.
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+---
+ drivers/staging/rtl8712/osdep_service.h | 6 ------
+ drivers/staging/rtl8712/rtl871x_cmd.c   | 3 +--
+ drivers/staging/rtl8712/rtl871x_mlme.c  | 8 ++------
+ drivers/staging/rtl8712/rtl871x_xmit.c  | 3 +--
+ 4 files changed, 4 insertions(+), 16 deletions(-)
 
-> --
-> 1.9.1
->
+diff --git a/drivers/staging/rtl8712/osdep_service.h b/drivers/staging/rtl8712/osdep_service.h
+index 33be778..0a7f58c 100644
+--- a/drivers/staging/rtl8712/osdep_service.h
++++ b/drivers/staging/rtl8712/osdep_service.h
+@@ -60,12 +60,6 @@ struct	__queue	{
+ #define LIST_CONTAINOR(ptr, type, member) \
+ 	((type *)((char *)(ptr)-(SIZE_T)(&((type *)0)->member)))
+ 
+-static inline void _cancel_timer(struct timer_list *ptimer, u8 *bcancelled)
+-{
+-	del_timer(ptimer);
+-	*bcancelled = true; /*true ==1; false==0*/
+-}
+-
+ #ifndef BIT
+ 	#define BIT(x)	(1 << (x))
+ #endif
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
+index d105ade..1a1c38f 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.c
++++ b/drivers/staging/rtl8712/rtl871x_cmd.c
+@@ -900,7 +900,6 @@ void r8712_createbss_cmd_callback(struct _adapter *padapter,
+ 				  struct cmd_obj *pcmd)
+ {
+ 	unsigned long irqL;
+-	u8 timer_cancelled;
+ 	struct sta_info *psta = NULL;
+ 	struct wlan_network *pwlan = NULL;
+ 	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
+@@ -911,7 +910,7 @@ void r8712_createbss_cmd_callback(struct _adapter *padapter,
+ 	if (pcmd->res != H2C_SUCCESS)
+ 		mod_timer(&pmlmepriv->assoc_timer,
+ 			  jiffies + msecs_to_jiffies(1));
+-	_cancel_timer(&pmlmepriv->assoc_timer, &timer_cancelled);
++	del_timer_sync(&pmlmepriv->assoc_timer);
+ #ifdef __BIG_ENDIAN
+ 	/* endian_convert */
+ 	pnetwork->Length = le32_to_cpu(pnetwork->Length);
+diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+index 8faa461..ef8a10e 100644
+--- a/drivers/staging/rtl8712/rtl871x_mlme.c
++++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+@@ -582,9 +582,7 @@ void r8712_surveydone_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 	spin_lock_irqsave(&pmlmepriv->lock, irqL);
+ 
+ 	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
+-		u8 timer_cancelled;
+-
+-		_cancel_timer(&pmlmepriv->scan_to_timer, &timer_cancelled);
++		del_timer_sync(&pmlmepriv->scan_to_timer);
+ 
+ 		_clr_fwstate_(pmlmepriv, _FW_UNDER_SURVEY);
+ 	}
+@@ -717,7 +715,6 @@ void r8712_ind_disconnect(struct _adapter *padapter)
+ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ {
+ 	unsigned long irqL = 0, irqL2;
+-	u8 timer_cancelled;
+ 	struct sta_info	*ptarget_sta = NULL, *pcur_sta = NULL;
+ 	struct sta_priv	*pstapriv = &adapter->stapriv;
+ 	struct mlme_priv	*pmlmepriv = &adapter->mlmepriv;
+@@ -911,8 +908,7 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 			if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)
+ 				== true)
+ 				r8712_indicate_connect(adapter);
+-			_cancel_timer(&pmlmepriv->assoc_timer,
+-				      &timer_cancelled);
++			del_timer_sync(&pmlmepriv->assoc_timer);
+ 		} else
+ 			goto ignore_joinbss_callback;
+ 	} else {
+diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+index a28af03..2e4fa88 100644
+--- a/drivers/staging/rtl8712/rtl871x_xmit.c
++++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+@@ -203,13 +203,12 @@ sint r8712_update_attrib(struct _adapter *padapter, _pkt *pkt,
+ 	pattrib->ether_type = ntohs(etherhdr.h_proto);
+ 
+ {
+-	u8 bool;
+ 	/*If driver xmit ARP packet, driver can set ps mode to initial
+ 	 * setting. It stands for getting DHCP or fix IP.*/
+ 	if (pattrib->ether_type == 0x0806) {
+ 		if (padapter->pwrctrlpriv.pwr_mode !=
+ 		    padapter->registrypriv.power_mgnt) {
+-			_cancel_timer(&(pmlmepriv->dhcp_timer), &bool);
++			del_timer_sync(&pmlmepriv->dhcp_timer);
+ 			r8712_set_ps_mode(padapter, padapter->registrypriv.
+ 				power_mgnt, padapter->registrypriv.smart_ps);
+ 		}
+-- 
+1.9.1
 
---089e010d89f28ec8c10510f4cc6e
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<p><br>
-On Mar 6, 2015 4:23 PM, &quot;Vaishali Thakkar&quot; &lt;<a href=3D"mailto:=
-vthakkar1994@gmail.com">vthakkar1994@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; This patch-set introduces the use of timer API function<br>
-&gt; del_timer_sync instead of driver specific functions<br>
-&gt; _cancel_timer_ex and _cancel_timer. Though definition<br>
-&gt; of these functions were returning del_timer, here<br>
-&gt; del_timer_sync is a preferred solution as besides<br>
-&gt; deactivating a timer, it also ensures that the timer is<br>
-&gt; stopped on all CPUs before the driver exists.<br>
-&gt;<br>
-&gt; All of these changes are done using Coccinelle.<br>
-&gt;<br>
-&gt; Vaishali Thakkar (2):<br>
-&gt; =C2=A0 Staging: rtl8712: Eliminate use of _cancel_timer_ex<br>
-&gt; =C2=A0 Staging: rtl8712: Eliminate use of _cancel_timer<br>
-&gt;<br>
-&gt; =C2=A0drivers/staging/rtl8712/os_intfs.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
-=C2=A0 13 ++-<br>
-&gt; =C2=A0drivers/staging/rtl8712/osdep_service.h=C2=A0 =C2=A0|=C2=A0 11 -=
---<br>
-&gt; =C2=A0drivers/staging/rtl8712/rtl8712_led.c=C2=A0 =C2=A0 =C2=A0| 146 +=
-++++++++++++++---------------<br>
-&gt; =C2=A0drivers/staging/rtl8712/rtl871x_cmd.c=C2=A0 =C2=A0 =C2=A0|=C2=A0=
- =C2=A03 +-<br>
-&gt; =C2=A0drivers/staging/rtl8712/rtl871x_mlme.c=C2=A0 =C2=A0 |=C2=A0 10 +=
--<br>
-&gt; =C2=A0drivers/staging/rtl8712/rtl871x_pwrctrl.c |=C2=A0 =C2=A02 +-<br>
-&gt; =C2=A0drivers/staging/rtl8712/rtl871x_sta_mgt.c |=C2=A0 =C2=A02 +-<br>
-&gt; =C2=A0drivers/staging/rtl8712/rtl871x_xmit.c=C2=A0 =C2=A0 |=C2=A0 =C2=
-=A03 +-<br>
-&gt; =C2=A08 files changed, 86 insertions(+), 104 deletions(-)</p>
-<p>Hello</p>
-<p>Do I need to resend this patch-series as they are not picked by Greg yes=
-terday[when he caught up the patches]??</p>
-<p>I am assuming that this patchset is may be missed by him.</p>
-<p>Thank You.</p>
-<p>&gt; --<br>
-&gt; 1.9.1<br>
-&gt;<br>
-</p>
-
---089e010d89f28ec8c10510f4cc6e--
 
