@@ -1,100 +1,77 @@
-X-GM-THRID: 6608897994052861952
-X-Received: by 2002:a37:330c:: with SMTP id z12-v6mr8578544qkz.29.1538753973199;
-        Fri, 05 Oct 2018 08:39:33 -0700 (PDT)
+X-GM-THRID: 6876686188544
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ff204b327ade74ec,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.156.65 with SMTP id wc1mr2310240lbb.7.1425644108697;
+        Fri, 06 Mar 2015 04:15:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:2a41:: with SMTP id k1-v6ls3213163qtf.12.gmail; Fri, 05
- Oct 2018 08:39:32 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV622vJunwm8fOSe9BL8u+Y01pHNAKFigH+N0dqz0xiW75d+lu9aQe3VzJBZDFeEeRBxXsYmn
-X-Received: by 2002:ac8:1a38:: with SMTP id v53-v6mr8689872qtj.33.1538753972588;
-        Fri, 05 Oct 2018 08:39:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538753972; cv=none;
-        d=google.com; s=arc-20160816;
-        b=O40mmgN2DKy79uV6+bpRLXEU+jPs12URdNiE9mgC9BgKiSB7Iw1T0PYpgKIbhKXe/o
-         jXa9OxOaJ7Oz26c+d+7JFXMZeFZZd3fCYyFw8NZRyrJrjt2XkEVxnQVLg0dhoIBCVCYW
-         82IVmXZkeLyTS8TWi8rCUO2Vp3y3Quvj1NQP7mBGVKI01iL/ynBebPKNbRqiZ88S7RSK
-         DsMLYAXr9YTpWf2yBDgJwcFOiUEzmErKZNC/oB6vFb+LS4QS8c4WEQW+BzRDBTIdiqw0
-         MWxTaqfUtcxFiCs1lIb8JJt+aDNEOASitoEHGieUFTqLJRksBA18y2yimh/FPT19JYD+
-         5KIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=0z5CYHKZ1aJQ+FeySB/WHRMYiKtYU1H2w2DF5FNFvpo=;
-        b=flVFhgvfErRup3Kvto2Ytq43Uxp6D0B+ZeWvvOmDAXho0sX6/TStKc3ZcMiOd9IPT3
-         WFdqh7z7CcR3RCccP/cgYm/z9B23Ghlk1sozwN6JYuV6JvkQiLC+vVvWEBILWSba0PNb
-         Qkr6/V2xgz+opknMuMG+I9QRcKAY3DqsFwQOK87SzPoNBPfAKSavZ7zbhqc55KC11YLA
-         8BJcr6rkY1fEXKPVAS3XDz3RrD3PWeXAVgs9P8SGCdj6ufVqYBx5U3IkqA1qs8HGFlLk
-         t8J5VxditDvENnwF6X+Uj7t/KxswY0+faOh5dJsOCsNobvBOiOh5GrXUefcEFZrOI0Fr
-         mU4g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p3VzbSMY;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id p9-v6si393953qte.4.2018.10.05.08.39.32
+Received: by 10.152.21.33 with SMTP id s1ls66745lae.40.gmail; Fri, 06 Mar 2015
+ 04:15:07 -0800 (PST)
+X-Received: by 10.112.147.35 with SMTP id th3mr2205557lbb.15.1425644107388;
+        Fri, 06 Mar 2015 04:15:07 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
+        by gmr-mx.google.com with ESMTPS id l8si144864wia.0.2015.03.06.04.15.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Oct 2018 08:39:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 06 Mar 2015 04:15:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p3VzbSMY;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id v133-v6so4922567pgb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 05 Oct 2018 08:39:32 -0700 (PDT)
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-x235.google.com with SMTP id k11so59004168wes.11
+        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 04:15:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0z5CYHKZ1aJQ+FeySB/WHRMYiKtYU1H2w2DF5FNFvpo=;
-        b=p3VzbSMYDZfCsLHhtLNaJb7wDtuB4/DJDQd9pJbHxzKXXW4yudGy749IseD6ZWf2XR
-         P2DAvznWgemnXH9d7OIZ3PKKKmfc19DtIqCW0V1ejI0i3I/Z0oNKnsT1xJmrObgEnIMF
-         wtWLr3YxsKBHCe3Rcckmfk/n5L0fpQ+QV9bD/SeldfuWXY7AGkUW0t9uHtvMia697hY8
-         0K2jGM1oHemIaelZz4xI8PCp0Bc17ChKczU00jU0iklFd4ihu9KnZcgugByUpjkGZHcZ
-         O0JWptestY73AyklP8Bg6ExNPiS32qxsjY442ZbNyC+9AZUf/GQ3y9QPHf9UIGMtg0/J
-         UxKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0z5CYHKZ1aJQ+FeySB/WHRMYiKtYU1H2w2DF5FNFvpo=;
-        b=j088mUYEmikwgydigYlQtljIDNIC0mpJsrqFJ4jVjQ38ELcomykOAdcTL5OHSeFTRq
-         iknM/Uzq3aSiNjAGjybr41f/KGk31Eus1ZgqkITEcGEN4reMa9pmacuRDr1UGIWH0LsS
-         eqwTrwI1qqS3d6uYtEVjFGqt4Caq+HQwAToKzp5Tn9FfESlYaZsFfmMWyR5tpt+/lUUq
-         9HJtdH1USwTZ2kGPAaqv2KnWGpXJi1v8Yb7ijpkYEnmhqijC2h4yn+gPyFSW13llEUAp
-         pUZpWTRlq78gAqKDt+S6nQvX75wKV8b/30KSIJvCwbxJvT5o5ipxHJAtntMsVhb1p8om
-         XnXg==
-X-Gm-Message-State: ABuFfohg2Fq7lJUuNJkLx8lp7iunAcAHHfdrXhMTuQek2vp5njuPoltC
-	1MIWMLDUn4Cz9sPfAmtedC2XeW9yOnc=
-X-Received: by 2002:a63:4a64:: with SMTP id j36-v6mr10757833pgl.168.1538753971590;
-        Fri, 05 Oct 2018 08:39:31 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([59.88.105.99])
-        by smtp.gmail.com with ESMTPSA id v38-v6sm9487621pgl.82.2018.10.05.08.39.30
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 05 Oct 2018 08:39:30 -0700 (PDT)
-Date: Fri, 5 Oct 2018 21:09:26 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=mCfVW2TVV+9puZfRJXLAVeVGrndn+tV2iJE0tKg3HTU=;
+        b=b2d4ahQWmL5q1IoRI7RkZLKy51wmR437lZWKK7SIROd155pm9sibJzZQ2SdEKAmpmv
+         CbrRGxXSOSgqIArBYZmv+wEoRXedw/CoVLCfDCz+BT/4Sr/Yz3mp+RiRSgux3nADVQZ3
+         eatf95DxER+CRzkDT1Qz+xdiV8QiHDKqpdZMluQDzuF0wqCGx3PuWQAViBTHEUxPcv49
+         VepoP4tUowCuP8aMbNcxlEH1hqsbrezc/hM/zAOj6VFqY/Njs1Qs7Z/FhxZFa1ZF/pvl
+         9xsmoaTvGxJmqkfYg0RINERXsvu62bfxibsoROA4zmnHe9qpPd1JzAXyVMVJDhVqvVCq
+         eg6Q==
+X-Received: by 10.180.149.205 with SMTP id uc13mr33145979wib.0.1425644107249;
+        Fri, 06 Mar 2015 04:15:07 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([78.178.131.202])
+        by mx.google.com with ESMTPSA id cb9sm1977634wib.10.2015.03.06.04.15.05
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 06 Mar 2015 04:15:06 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org
-Subject: [PATCH 0/4] staging: vt6655: Fix coding style issues
-Message-ID: <cover.1538752705.git.mamtashukla555@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: rtl8712: Replace __constant_cpu_to_le16
+Date: Fri,  6 Mar 2015 14:14:58 +0200
+Message-Id: <1425644098-6640-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Fix issues found using checkpatch.pl for vt6655 staging driver.
+This fixes the following checkpatch.pl warning:
+WARNING: __constant_cpu_to_le16 should be cpu_to_le16
 
-Mamta Shukla (4):
-  staging: vt6655: Add blank line after function/struct/union/enum declarations
-  staging: vt6655: Add spaces around '*'
-  staging: vt6655: Add spaces around '-'
-  staging: vt6655: Remove space after cast
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+---
+ drivers/staging/rtl8712/wifi.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/vt6655/rxtx.c | 29 +++++++++++++++--------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
-
+diff --git a/drivers/staging/rtl8712/wifi.h b/drivers/staging/rtl8712/wifi.h
+index 6b1e1fa..17f5131 100644
+--- a/drivers/staging/rtl8712/wifi.h
++++ b/drivers/staging/rtl8712/wifi.h
+@@ -243,9 +243,9 @@ enum WIFI_REG_DOMAIN {
+ 
+ #define SetFrameType(pbuf, type)	\
+ 	do {	\
+-		*(unsigned short *)(pbuf) &= __constant_cpu_to_le16(~(BIT(3) | \
++		*(unsigned short *)(pbuf) &= cpu_to_le16(~(BIT(3) | \
+ 		BIT(2))); \
+-		*(unsigned short *)(pbuf) |= __constant_cpu_to_le16(type); \
++		*(unsigned short *)(pbuf) |= cpu_to_le16(type); \
+ 	} while (0)
+ 
+ #define GetFrameSubType(pbuf)	(cpu_to_le16(*(unsigned short *)(pbuf)) & \
 -- 
 1.9.1
 
