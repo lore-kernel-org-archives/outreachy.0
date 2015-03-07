@@ -1,109 +1,84 @@
-X-GM-THRID: 6249370730393239552
-X-Received: by 10.107.18.216 with SMTP id 85mr36455146ios.16.1455045009575;
-        Tue, 09 Feb 2016 11:10:09 -0800 (PST)
+X-GM-THRID: 6035575144448
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,44622202b52d33bf
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.66.65.165 with SMTP id y5mr18618719pas.43.1425748262083;
+        Sat, 07 Mar 2015 09:11:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.64.179 with SMTP id p19ls2683igs.0.gmail; Tue, 09 Feb 2016
- 11:10:09 -0800 (PST)
-X-Received: by 10.66.121.110 with SMTP id lj14mr33364984pab.22.1455045009264;
-        Tue, 09 Feb 2016 11:10:09 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id 12si4812121pfb.1.2016.02.09.11.10.09
+Received: by 10.140.86.230 with SMTP id p93ls725092qgd.35.gmail; Sat, 07 Mar
+ 2015 09:11:01 -0800 (PST)
+X-Received: by 10.236.70.100 with SMTP id o64mr21408957yhd.9.1425748261845;
+        Sat, 07 Mar 2015 09:11:01 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ks4si1798002pbc.1.2015.03.07.09.11.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 11:10:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Mar 2015 09:11:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id c10so65333286pfc.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 11:10:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=/86vfE6ZnNOQNHO6ZTnz8+rcSA47tJn0wmncqRu14VA=;
-        b=iXbJbGPt4nslH+Y2OpoHbJzfL/nsDxycc7NNkZsKCcAgusLvY3Fk3QjHpHuBqXCAwo
-         F4JAiBrubNHCq/lgF+eVXFw98VH1v+/QTil1tn6GvNn732je6G63qTB77e4bKh+NhCpp
-         wZaX3iiEl25x2PSRkR+tcQm7+WVG7AWhuaLSFNCdb3sxhy7MkCX4+jMXcUiDrUgMFMCk
-         DDtxwPPOd7LZFdOtESRS+Wj7iibt3Lxiu3b7NF0hi4LIb73W7YZJPtG6RckntHg5H38g
-         ZsKcXArICwlePP6SE5RiT0nw0ern334kZodUSN51N8/QUxgOs8RhsOGqASOWkxCrDdZh
-         swqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/86vfE6ZnNOQNHO6ZTnz8+rcSA47tJn0wmncqRu14VA=;
-        b=ZCXdEWhtnOnoau0z2ytIeA8JjLgt7AlgJCQnOGfM1EgrZQnl4XjYcVPRQIsf//k5oG
-         rKqjpQP2L4TNsiU138zgvQaxyeswgxwnh5GpuN5fM1d0F1Rk2JBg5AJziepiYFAf2bfd
-         4fTjrAfc1/x19Qn8s5SDe3+o2lavhEC+JVkY0oXAM0SAgINgdQdcHrhP64ZvjidpOWvw
-         seqFqUB8bhBxag7jqqTnCVCvYuGgCjnJfEymLNkn2v4m6QwtFzc21OvZoePjJs9niNgi
-         4gttY0z9cSUL8ROn58EGf0s+pfg5lLkXNDLHIEvg6xV3UbyJMs1ENcJZyUAMsfO/hKEe
-         tzdw==
-X-Gm-Message-State: AG10YOQ8WRb3YGmMjb1ZAqpLq4xBaq56YCfDXDQI5BYS0MuQdGO/7BVK8t92y6A1xDYAmQ==
-X-Received: by 10.98.72.24 with SMTP id v24mr52082998pfa.15.1455045009148;
-        Tue, 09 Feb 2016 11:10:09 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.157.195])
-        by smtp.gmail.com with ESMTPSA id e79sm52288434pfb.76.2016.02.09.11.10.05
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 11:10:08 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 10 Feb 2016 00:39:59 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: Remove unnecessary variable
-Date: Wed, 10 Feb 2016 00:39:08 +0530
-Message-Id: <1455044948-1425-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B3077A58;
+	Sat,  7 Mar 2015 17:11:00 +0000 (UTC)
+Date: Sat, 7 Mar 2015 18:10:57 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: emxx_udc: Clean dev_err()
+ logging
+Message-ID: <20150307171057.GA13119@kroah.com>
+References: <1425320718-28979-1-git-send-email-hamohammed.sa@gmail.com>
+ <1425460224-8110-1-git-send-email-hamohammed.sa@gmail.com>
+ <20150306232951.GB6279@kroah.com>
+ <20150307170806.GA2813@example.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150307170806.GA2813@example.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Variable ret is initially made 0 and it's value remains unchanged in
-function. It is used only as return value.So remove ret and replace
-return ret with return 0.
+On Sat, Mar 07, 2015 at 08:08:07PM +0300, Haneen Mohammed wrote:
+> On Fri, Mar 06, 2015 at 03:29:51PM -0800, Greg KH wrote:
+> > On Wed, Mar 04, 2015 at 12:10:24PM +0300, Haneen Mohammed wrote:
+> > > This patch removes  __func__ from dev_err. dev_err includes information about:
+> > >  (devcice, driver, specific instance of device, etc) in the log printout, so there is no need for  __func__.
+> > > 
+> > > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > > ---
+> > > note: this patch separated from "Staging: emxx_udc: Fix checkpatch.pl warnings" patchset.
+> > > 
+> > >  drivers/staging/emxx_udc/emxx_udc.c | 18 ++++++++----------
+> > >  1 file changed, 8 insertions(+), 10 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+> > > index 35dc1c4..cfe55dc 100644
+> > > --- a/drivers/staging/emxx_udc/emxx_udc.c
+> > > +++ b/drivers/staging/emxx_udc/emxx_udc.c
+> > > @@ -2632,7 +2632,7 @@ static int nbu2ss_ep_enable(
+> > >  	if ((udc->driver == NULL)
+> > >  		|| (udc->gadget.speed == USB_SPEED_UNKNOWN)) {
+> > >  
+> > > -		dev_err(ep->udc->dev, " *** %s, udc !!\n", __func__);
+> > > +		dev_err(ep->udc->dev, "  udc !!\n");
+> > 
+> > Why keep the leading spaces?
+> > 
+> > And dev_err() does not have __func__ in it, so maybe this should just be
+> > left alone, as these messages are not unique enough to determine the
+> > exact place the error happened.
+> > 
+> > sorry for missing that last time.
+> > 
+> > greg k-h
+> 
+> what about the other patches? You have told me to refresh my tree and resubmit the other
+> patchset, should I do that? or just leave it as it is?
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+I'd say leave it as-is and start working on more "real" patches.
 
-diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-index 0ae2180..b10fdce 100644
---- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-@@ -242,7 +242,6 @@ rtw_cfg80211_default_mgmt_stypes[NUM_NL80211_IFTYPES] = {
- static int rtw_cfg80211_inform_bss(struct rtw_adapter *padapter,
- 				   struct wlan_network *pnetwork)
- {
--	int ret = 0;
- 	struct ieee80211_channel *notify_channel;
- 	struct cfg80211_bss *bss;
- 	u16 channel;
-@@ -295,7 +294,7 @@ static int rtw_cfg80211_inform_bss(struct rtw_adapter *padapter,
- 
- 	cfg80211_put_bss(wiphy, bss);
- 
--	return ret;
-+	return 0;
- }
- 
- void rtw_cfg80211_indicate_connect(struct rtw_adapter *padapter)
-@@ -1300,7 +1299,6 @@ void rtw_cfg80211_surveydone_event_callback(struct rtw_adapter *padapter)
- static int rtw_cfg80211_set_probe_req_wpsp2pie(struct rtw_adapter *padapter,
- 					       char *buf, int len)
- {
--	int ret = 0;
- 	const u8 *wps_ie;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 
-@@ -1330,7 +1328,7 @@ static int rtw_cfg80211_set_probe_req_wpsp2pie(struct rtw_adapter *padapter,
- 		}
- 	}
- 
--	return ret;
-+	return 0;
- }
- 
- static int cfg80211_rtw_scan(struct wiphy *wiphy,
--- 
-1.9.1
+thanks,
 
+greg k-h
 
