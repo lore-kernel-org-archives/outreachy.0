@@ -1,98 +1,72 @@
-X-GM-THRID: 6388545925534449664
-X-Received: by 10.13.240.193 with SMTP id z184mr4994531ywe.129.1487449259947;
-        Sat, 18 Feb 2017 12:20:59 -0800 (PST)
+X-GM-THRID: 6950918029312
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,4f1aeb5db514fe54
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.142.1 with SMTP id rs1mr1169025lbb.19.1425762543028;
+        Sat, 07 Mar 2015 13:09:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.61.70 with SMTP id a64ls2698388otc.35.gmail; Sat, 18 Feb
- 2017 12:20:59 -0800 (PST)
-X-Received: by 10.157.13.2 with SMTP id 2mr5078976oti.81.1487449259617;
-        Sat, 18 Feb 2017 12:20:59 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id s64si795430pfk.0.2017.02.18.12.20.59
+Received: by 10.152.21.130 with SMTP id v2ls153226lae.98.gmail; Sat, 07 Mar
+ 2015 13:09:01 -0800 (PST)
+X-Received: by 10.112.159.227 with SMTP id xf3mr3141704lbb.11.1425762541268;
+        Sat, 07 Mar 2015 13:09:01 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id l8si484175wia.0.2015.03.07.13.09.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 12:20:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Mar 2015 13:09:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 5so7942230pgj.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Feb 2017 12:20:59 -0800 (PST)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by wiwl15 with SMTP id l15so10564337wiw.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 07 Mar 2015 13:09:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=n+aQ4W/yxt350/lEY9CmEULsz8id++S9alsa9gzOYmI=;
-        b=m2PGU1OwHsvXCXxPQH2aIQycSCS8lPpdwid/ZtKtCOI/qwOmHw6IdKrTMVXHw8E3S3
-         we2ME6Zn/n91iRcO2xnA4rr3NYvhY6tVhZHYhrg6M1zXKhnVDcwVmxR9Q/qZjpozA+wa
-         kbnKNa5B7OOA7RI5xXKwbNE73Kdm0BgCjwjCSSWfFa7eFVIg5LH+sysMZ/X2LbdSHF6E
-         DwblxvYWxPzMu+cJ/RgLvq3L8oNYNYjdq5EHhGnsC0XIadFQFeqh5fi6YqQTZHgwTHT6
-         cffzxv05cw2tvzhVUIWZxVhmmDu3kMDpkIpyht2Rcs2sZ0E6wxgyO4wy2L9tY4Dc+3tt
-         UjUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=n+aQ4W/yxt350/lEY9CmEULsz8id++S9alsa9gzOYmI=;
-        b=gY7UQMmQ0mQnSuvtEDuMm3Lmbn94Ao+19MFeGvYbEn6FkhWA2cU32SVjlW4UwcD4Mj
-         FKCecXTsuRVkZgrrlWVyPj0oFnCtgHSCjrJf2XJHSULJtqI/Ht9Vi9IXp0gH/Kg/OcLm
-         M8yE4hd3c7g3Itve8FVs0yBWCEQHlxA/ALhvnIxaHfkiNl8rS9IsbP9qoioln32qCV1x
-         KYU3r64EErSXup5M4Ou02wSMBaqlDDw8TJySKQeZuWTXVEC0N7ZNNj78H832Uh4lu2XT
-         6GQpxx87dRzD750iQAmtdSOCIkJ1QfYpzuEkAoDpVaqYvKFcKVBDUF3aaVf03b16IG+i
-         yf1Q==
-X-Gm-Message-State: AMke39ng7hP9ZexPO1pIYCrTatQCPNphb263GfGuF9TtAhwaVrHP/sE5CvhAojrT+8gBRw==
-X-Received: by 10.99.174.71 with SMTP id e7mr18284623pgp.3.1487449259406;
-        Sat, 18 Feb 2017 12:20:59 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id a76sm26617832pfe.131.2017.02.18.12.20.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 18 Feb 2017 12:20:57 -0800 (PST)
-Date: Sun, 19 Feb 2017 01:50:56 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: forest@alittletooquiet.net
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/6] staging: vt6655: Compress return logic
-Message-ID: <20170218202056.GA3995@singhal-Inspiron-5558>
+        d=gmail.com; s=20120113;
+        h=mime-version:sender:in-reply-to:references:date:message-id:subject
+         :from:to:cc:content-type;
+        bh=whBXmov5h6cFF0Xk9cj7nl1vCf9nfGBuWGwoFrykuIw=;
+        b=Asve0PhxJHfShQY61e5HO0txLP2LPLjh+nCdk6+RVR0s3CSUNtwuHjJzr2TiDpMELZ
+         oTN1jGamYY5iXZIx8FbV9zek7rz0J4HVjbk/T4RfWcgbruPfl8POWK9wugrUTtdo4kqE
+         25ACetsJrq3fQGtVMzjVQPK+qKqR5iEKsQZoXM9G2vZbr7bdlj2JpJd/0ekG2gaMctK8
+         2c1dhQMCPddjwXZ7iAqaSB9yJxyxYLr535Vnyp0eD2/lX+uWH3axxiul9Z61ABqoB6FK
+         NeVJFqmsLseMLtiP68mQX/baZR5t+V+H1ZAZ3GnHNV9SRfyz8vAnDCxpzuAVBoZXt/8h
+         T0PA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.180.87.106 with SMTP id w10mr87717450wiz.62.1425762541165;
+ Sat, 07 Mar 2015 13:09:01 -0800 (PST)
+Sender: daniel.baluta@gmail.com
+Received: by 10.28.3.68 with HTTP; Sat, 7 Mar 2015 13:09:01 -0800 (PST)
+In-Reply-To: <1425762154-1898-1-git-send-email-hamohammed.sa@gmail.com>
+References: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
+	<1425762154-1898-1-git-send-email-hamohammed.sa@gmail.com>
+Date: Sat, 7 Mar 2015 23:09:01 +0200
+X-Google-Sender-Auth: wAxO7wCkhqwUiveUn5HY5BEIx4Q
+Message-ID: <CAEnQRZCY6JmYWj-5qHk=-GCLiRCxSUKBXKxsnzyRbXNp7T4t6w@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: dgap: Remove unused variable
+From: Daniel Baluta <daniel.baluta@intel.com>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Simplify function returns by merging assignment and return into
-one command line.
-Found with Coccinelle
-@@
-local idexpression ret;
-expression e;
-@@
+On Sat, Mar 7, 2015 at 11:02 PM, Haneen Mohammed
+<hamohammed.sa@gmail.com> wrote:
+> This patch removes variable that was used to store only the return value of a function call.
+>
+> The issue was detected and resolved using the following coccinelle script:
+>
+> @@
+> expression ret;
+> identifier f;
+> @@
+>
+> -ret =
+> +return
+>         f(...);
+> -return ret;
+>
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 
--ret =
-+return
-     e;
--return ret;
-
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/vt6655/card.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index e0c9281..b513846 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -920,7 +920,7 @@ u64 CARDqGetTSFOffset(unsigned char byRxRate, u64 qwTSF1, u64 qwTSF2)
- 
- 	qwTSFOffset = qwTSF1 - qwTSF2;
- 
--	return qwTSFOffset;
-+	return qwTSF1 - qwTSF2;
- }
- 
- /*
--- 
-2.7.4
-
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
