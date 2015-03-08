@@ -1,65 +1,44 @@
-X-GM-THRID: 7583885688832
-X-Received: by 10.112.167.131 with SMTP id zo3mr463367lbb.7.1426041319966;
-        Tue, 10 Mar 2015 19:35:19 -0700 (PDT)
+X-GM-THRID: 7117598621696
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ef22753edcdff6cd,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.90.175 with SMTP id bx15mr97286wib.3.1425831093569;
+        Sun, 08 Mar 2015 09:11:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.19.36 with SMTP id b4ls96616lae.46.gmail; Tue, 10 Mar 2015
- 19:35:19 -0700 (PDT)
-X-Received: by 10.112.40.81 with SMTP id v17mr1212835lbk.5.1426041319350;
-        Tue, 10 Mar 2015 19:35:19 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id cl5si195995wib.3.2015.03.10.19.35.19
+Received: by 10.152.203.133 with SMTP id kq5ls258131lac.32.gmail; Sun, 08 Mar
+ 2015 09:11:32 -0700 (PDT)
+X-Received: by 10.152.6.41 with SMTP id x9mr3400371lax.10.1425831092061;
+        Sun, 08 Mar 2015 09:11:32 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id el6si165449wib.0.2015.03.08.09.11.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 19:35:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 08 Mar 2015 09:11:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=ciorneiioana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id l15so33231955wiw.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 19:35:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Rb7529luIxbotAGDC6zzPShptaizdha0hebVw61zW9w=;
-        b=1CV7xdKYb/ojamebcOVT25dvMlGomEzoqPC1Xposb3Ar/LI49b8NiOy5hAMBNeq3Er
-         Fggzl0NAGTwU3mNVlobXZ2HysTnLKu/RQgbVMCSeH/VvN43FkuIWMZr5CAE6Z5+6m2SA
-         4v6NK0F05ot1RbgQggB2gUK5k9E4+gc6pi3oj9IsYwYANnB3aLZe9rMDLN8PUieM5Wfr
-         VaJ22J16a47xr2yuVrov33N2hBpHPddtjepGaUjCW0PM7Co/m/VzuaY7kjVhiQyXwlXA
-         4GbHtrXhdf0cg6YtE7QPFuEM93CHWBP9GOi3hXd+PB/ZSLvowDhnikv43RSPg21fIZgC
-         Fr9g==
-X-Received: by 10.194.216.34 with SMTP id on2mr75780735wjc.24.1426041319276;
-        Tue, 10 Mar 2015 19:35:19 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id ge8sm3334305wjc.32.2015.03.10.19.35.17
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 10 Mar 2015 19:35:17 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,363,1422918000"; 
+   d="scan'208";a="102520342"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 08 Mar 2015 17:11:31 +0100
+Date: Sun, 8 Mar 2015 17:11:30 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: outreachy-kernel@googlegroups.com
-Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH 0/7] staging: sm750: Fix style errors
-Date: Wed, 11 Mar 2015 04:35:03 +0200
-Message-Id: <cover.1426039205.git.ciorneiioana@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: partial extension
+Message-ID: <alpine.DEB.2.10.1503081705440.2780@hadrien>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patchset cleans up multiple style errors in order to follow the Linux 
-coding style.
+The Linux kernel was not listed on the Outreachy web page until quite
+late, and thus soe applicants have only heard about it quite recently.
 
-Ioana Ciornei (7):
-  staging: sm750: Fix switch-case indentation
-  staging: sm750: Place blank line after declarations
-  staging: sm750: Remove braces surrounding single statement blocks
-  staging: sm750: Remove trailing whitespaces
-  staging: sm750: Indent code using tabs
-  staging: sm750: Indent conditional statement
-  staging: sm750: Add space after comma
+Accordingly, while you must submit an application by the deadline of March
+24 2015, 07:00 pm UTC (please note the time!), you may continue to work on
+your application until April 1, again at 07:00 pm UTC.
 
- drivers/staging/sm750fb/sm750.c | 1172 +++++++++++++++++++--------------------
- 1 file changed, 584 insertions(+), 588 deletions(-)
-
--- 
-1.9.1
-
+julia
 
