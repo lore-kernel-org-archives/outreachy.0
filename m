@@ -1,109 +1,143 @@
-X-GM-THRID: 6661088091510407168
-X-Received: by 2002:a17:902:b191:: with SMTP id s17mr2476380plr.14.1550905427081;
-        Fri, 22 Feb 2019 23:03:47 -0800 (PST)
+X-GM-THRID: 7122168315904
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,99b69ea22516648c
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.50.25.137 with SMTP id c9mr36971755igg.0.1425837859469;
+        Sun, 08 Mar 2015 11:04:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:d241:: with SMTP id t1ls3220818pgi.11.gmail; Fri, 22 Feb
- 2019 23:03:46 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbwJYtUQK/7MSed1f0cZ/MruZCxSxIw/LfKc0a5souRwi0H7V+/TxZtSUCa/hdGhS8BFbg4
-X-Received: by 2002:a63:dd43:: with SMTP id g3mr3034954pgj.111.1550905426398;
-        Fri, 22 Feb 2019 23:03:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550905426; cv=none;
-        d=google.com; s=arc-20160816;
-        b=lEXUAr/rOjWkc7wwopVJjAkJHftY+p9lBuE0uMdh7IIqy7bwai/LvP1p0Tkri+YC+6
-         ubYutrZ+9rQfO+4EaucI/50zzn03mqpVfHhdamZ9gdPtEwYjzuZ9Ua86PWyRii6z8+sC
-         hg72+BpgDZmnUbe68gPGBozY9fYrTtU/ldO5FEVwBdxqMLXBtkprfip1ACTPBKOV/H2Y
-         PkkValWIylg1DU2NHEvCW7eUuI86y8e4Lq+2cywb0eY7ABpr7oPLYYVaFH5hy0iFiTnY
-         7bZdc+3CVnz8+cAMDzvMoGZtYJtrDq0ysbMHPMvW9EwOJI0mn2YnPihm+gScCkl6k45g
-         DxmQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=4gx3L9PDqGUvm84fzjHOqAe98izuDBb8TD9qxa6NHSk=;
-        b=UqFe2jblNXvYwkJlXiyag2I8XPT0/9PesocGzjxIQhPA1CMUs9Gf7zqINcRx8hxDS/
-         80jpay13ayy/2HkkRSM1IXBz4wZhq3sQNKP777XdfZi5gsx9gYXXwCZHG3weymd4B3wR
-         //Kw4DjlaobT89UJNc1xd7mnTeCbZEcIRSE8q0LOYm/W5YXO/t66oQUd8TdXJpWw6qu3
-         FvJEStCqZ3dCYBv8j8/2MAojKSwUEM87/EAy0FUn1Szm8bnKjfxdOS+wb7n/7xzi7Bk+
-         lrP4ls1Ko0gUFPRJMdIAefOnSOgpWWpfxQKanHAWDf4omsJVIEnh6FgD0jsQXq8PJQ/w
-         oPug==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ey5RErYb;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com. [2607:f8b0:4864:20::430])
-        by gmr-mx.google.com with ESMTPS id z184si212602pgd.0.2019.02.22.23.03.46
+Received: by 10.107.162.12 with SMTP id l12ls745276ioe.48.gmail; Sun, 08 Mar
+ 2015 11:04:19 -0700 (PDT)
+X-Received: by 10.42.37.202 with SMTP id z10mr16363671icd.31.1425837859334;
+        Sun, 08 Mar 2015 11:04:19 -0700 (PDT)
+Return-Path: <darshanapadmadas@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id ri9si2160286pdb.1.2015.03.08.11.04.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 23:03:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) client-ip=2607:f8b0:4864:20::430;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 08 Mar 2015 11:04:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ey5RErYb;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x430.google.com with SMTP id h1so2108985pfo.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 23:03:46 -0800 (PST)
+       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pabli10 with SMTP id li10so66798126pab.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2015 11:04:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=4gx3L9PDqGUvm84fzjHOqAe98izuDBb8TD9qxa6NHSk=;
-        b=ey5RErYbL6JrSEVMvkiGhniwkrx5cHrReWdM3dJ0m11yGdyrOg4K6ehkL88xgnBzOS
-         eau1+xOwjVRMrZP6fyrdwB9dcUqYlmhheHyy7pqP9Vg3wT27VpIeCmEP9ne/qIglrtae
-         bqWrbn+RDgM45ArIpxlS0BWcjnOyH6mclTCY35LodbblwuP2GfbFdP6AjswFKg7EeoS+
-         iCHTAI2okXc9OAbGYr7KM78ypkbgfCBXmpIxbAxLzHK4z5tkaT4susJbR66jhglo19sM
-         meuDPWJMdHc9NK/m+xOQR6mzE9da/0nt3NfJx3DIHqC0YZ3jdDNInciwcWW/TU1x8Bai
-         2K0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=4gx3L9PDqGUvm84fzjHOqAe98izuDBb8TD9qxa6NHSk=;
-        b=qTeU0/MjrSRBZurmDZ9E4G0JILmw6KZu0GNkWaG5yunj8MUlFwEErHDp35sBP8IN62
-         sEir5zUcYfFqB8idQX/Gf2ZNwlGUrWi9ae7jSiEJWpeGuAJv52wuVmc7v1wVqkJBmP/+
-         n5Wg2YjAL0GJgiFY9uhUyUuEUXePoDvTPsO+70sWLejVKWZvz9KUDjEpt/AGw57vni4T
-         AcFN+YKXKtWSOLFdvgE0X12AcVUmZ3cgzQjqZHU1g69fNHx05HDyZKqMZwg0WhSRv+jH
-         2R0c0SBLDN+jwPfn+l63edUwReSoBCNpKhp5UijDSOCcAaJTdunsKykAJu04/z/evxCu
-         eQRw==
-X-Gm-Message-State: AHQUAuaW3lD8veJxMUg1jfQP5ipRgUtItlC1do8X9B9MKSUmxXEpJ6r4
-	A3VZlY9Q8y0oqzErMKRceboMMpMaCtw=
-X-Received: by 2002:a62:574d:: with SMTP id l74mr8367761pfb.9.1550905425784;
-        Fri, 22 Feb 2019 23:03:45 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([2401:4900:16b2:4a74:49f0:95a6:ee9:3324])
-        by smtp.googlemail.com with ESMTPSA id p34sm6252336pgb.18.2019.02.22.23.03.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 23:03:45 -0800 (PST)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references:content-type:content-transfer-encoding;
+        bh=zjSU/T9KsPxOjfKd97C0btVOmUVFAQBcIDMOLvQFns0=;
+        b=jD/q1EMZxx6P01RmsQ5J7oM4dZVaxkOiG75Ta6X4qXh7cikqVWdJazI/5RsUIue0AK
+         pnpASNc9wOKtIYFxZtH4ZPGtGVvsQqL3enp4yljjR5+4zpu0Cg0pJ6d2Zqm0zhFHRKOt
+         IDqSSn1LetOdMTG0/vTD9GxNR8hRhJ7jQ2RXhHrFx5Cqi2WC4BMRgGi6muoQ/oCWtK4u
+         sf93YTnsd+dSp+y8g5ulWkrkNz3RD1rFIflniafuEKu0ouhMmWYBAoSdnlhFYkfVXASy
+         OTWgpBSh4QxD6g1WlzD9/ksbmF8Toh2rXOsCBRkNcu3q0TIlq7J/YYe53o8y/byatadG
+         Q+Eg==
+X-Received: by 10.66.164.163 with SMTP id yr3mr11108783pab.154.1425837858825;
+        Sun, 08 Mar 2015 11:04:18 -0700 (PDT)
+Return-Path: <darshanapadmadas@gmail.com>
+Received: from localhost ([122.174.223.151])
+        by mx.google.com with ESMTPSA id ba12sm15399647pac.23.2015.03.08.11.04.14
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sun, 08 Mar 2015 11:04:17 -0700 (PDT)
+From: Darshana Padmadas <darshanapadmadas@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Mark Greer <mgreer@animalcreek.com>,
-	Johan Hovold <johan@kernel.org>,
-	Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/4] Staging: greybus: Fix various checkpatch.pl issues
-Date: Sat, 23 Feb 2019 12:33:21 +0530
-Message-Id: <20190223070325.6750-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
+Subject: [PATCH v2 2/2] staging: rtl8192e: Replace min with min_t
+Date: Sun,  8 Mar 2015 23:33:40 +0530
+Message-Id: <b7b9a94aef025cd486bb79319b5a0e6fe88d758f.1425837526.git.darshanapadmadas@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1425837526.git.darshanapadmadas@gmail.com>
+References: <cover.1425837526.git.darshanapadmadas@gmail.com>
+In-Reply-To: <cover.1425837526.git.darshanapadmadas@gmail.com>
+References: <cover.1425837526.git.darshanapadmadas@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 
-This patch series cleans various checkpatch.pl issues
-CHECK: Alignment should match open parenthesis
-CHECK: Blank lines aren't necessary before a close brace '}'
-CHECK: Please use a blank line after function/struct/union/enum declarations
-CHECK: Please don't use multiple blank lines
+This patch replaces min with min_t and eliminates the
+following warnings found by checkpatch.pl:
 
-Bhanusree Pola (4):
-  Staging: greybus: Alignment should match open paranthesis
-  Staging: greybus: Blank lines not required before '}'
-  Staging: greybus: Use a blank line after declarations
-  Staging: greybus: Do not use multiple blank lines
+WARNING: min() should probably be min_t
 
- drivers/staging/greybus/audio_topology.c | 1 -
- drivers/staging/greybus/bundle.c         | 2 +-
- drivers/staging/greybus/bundle.h         | 1 +
- drivers/staging/greybus/connection.h     | 2 +-
- drivers/staging/greybus/control.c        | 1 -
- drivers/staging/greybus/control.h        | 1 +
- drivers/staging/greybus/core.c           | 2 +-
- 7 files changed, 5 insertions(+), 5 deletions(-)
+Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
+---
+ drivers/staging/rtl8192e/rtllib_rx.c | 10 +++++-----
+ drivers/staging/rtl8192e/rtllib_wx.c |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
+index 1664040..0386568 100644
+--- a/drivers/staging/rtl8192e/rtllib_rx.c
++++ b/drivers/staging/rtl8192e/rtllib_rx.c
+@@ -1908,7 +1908,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 				   info_element->data[2] == 0x4c &&
+ 				   info_element->data[3] == 0x033) {
+ 
+-						tmp_htcap_len = min(info_element->len, (u8)MAX_IE_LEN);
++						tmp_htcap_len = min_t(u8, info_element->len, MAX_IE_LEN);
+ 						if (tmp_htcap_len != 0) {
+ 							network->bssht.bdHTSpecVer = HT_SPEC_VER_EWC;
+ 							network->bssht.bdHTCapLen = tmp_htcap_len > sizeof(network->bssht.bdHTCapBuf) ?
+@@ -1932,7 +1932,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 				    info_element->data[1] == 0x90 &&
+ 				    info_element->data[2] == 0x4c &&
+ 				    info_element->data[3] == 0x034) {
+-					tmp_htinfo_len = min(info_element->len, (u8)MAX_IE_LEN);
++					tmp_htinfo_len = min_t(u8, info_element->len, MAX_IE_LEN);
+ 					if (tmp_htinfo_len != 0) {
+ 						network->bssht.bdHTSpecVer = HT_SPEC_VER_EWC;
+ 						if (tmp_htinfo_len) {
+@@ -1953,7 +1953,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 					    info_element->data[1] == 0xe0 &&
+ 					    info_element->data[2] == 0x4c &&
+ 					    info_element->data[3] == 0x02) {
+-						ht_realtek_agg_len = min(info_element->len, (u8)MAX_IE_LEN);
++						ht_realtek_agg_len = min_t(u8, info_element->len, MAX_IE_LEN);
+ 						memcpy(ht_realtek_agg_buf, info_element->data, info_element->len);
+ 					}
+ 					if (ht_realtek_agg_len >= 5) {
+@@ -2083,7 +2083,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 		case MFIE_TYPE_HT_CAP:
+ 			RTLLIB_DEBUG_SCAN("MFIE_TYPE_HT_CAP: %d bytes\n",
+ 					     info_element->len);
+-			tmp_htcap_len = min(info_element->len, (u8)MAX_IE_LEN);
++			tmp_htcap_len = min_t(u8, info_element->len, MAX_IE_LEN);
+ 			if (tmp_htcap_len != 0) {
+ 				network->bssht.bdHTSpecVer = HT_SPEC_VER_EWC;
+ 				network->bssht.bdHTCapLen = tmp_htcap_len > sizeof(network->bssht.bdHTCapBuf) ?
+@@ -2110,7 +2110,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 		case MFIE_TYPE_HT_INFO:
+ 			RTLLIB_DEBUG_SCAN("MFIE_TYPE_HT_INFO: %d bytes\n",
+ 					     info_element->len);
+-			tmp_htinfo_len = min(info_element->len, (u8)MAX_IE_LEN);
++			tmp_htinfo_len = min_t(u8, info_element->len, MAX_IE_LEN);
+ 			if (tmp_htinfo_len) {
+ 				network->bssht.bdHTSpecVer = HT_SPEC_VER_IEEE;
+ 				network->bssht.bdHTInfoLen = tmp_htinfo_len >
+diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
+index 309cda0..2e665ed 100644
+--- a/drivers/staging/rtl8192e/rtllib_wx.c
++++ b/drivers/staging/rtl8192e/rtllib_wx.c
+@@ -74,7 +74,7 @@ static inline char *rtl819x_translate_scan(struct rtllib_device *ieee,
+ 	iwe.cmd = SIOCGIWESSID;
+ 	iwe.u.data.flags = 1;
+ 	if (network->ssid_len > 0) {
+-		iwe.u.data.length = min(network->ssid_len, (u8)32);
++		iwe.u.data.length = min_t(u8, network->ssid_len, 32);
+ 		start = iwe_stream_add_point_rsl(info, start, stop, &iwe,
+ 						 network->ssid);
+ 	} else if (network->hidden_ssid_len == 0) {
+@@ -82,7 +82,7 @@ static inline char *rtl819x_translate_scan(struct rtllib_device *ieee,
+ 		start = iwe_stream_add_point_rsl(info, start, stop,
+ 						 &iwe, "<hidden>");
+ 	} else {
+-		iwe.u.data.length = min(network->hidden_ssid_len, (u8)32);
++		iwe.u.data.length = min_t(u8, network->hidden_ssid_len, 32);
+ 		start = iwe_stream_add_point_rsl(info, start, stop, &iwe,
+ 						 network->hidden_ssid);
+ 	}
 -- 
-2.17.1
+1.9.1
 
 
