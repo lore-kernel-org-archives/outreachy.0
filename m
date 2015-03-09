@@ -1,84 +1,325 @@
-X-GM-THRID: 6805853994191159296
-X-Received: by 2002:a05:651c:228:: with SMTP id z8mr1670736ljn.71.1584611366286;
-        Thu, 19 Mar 2020 02:49:26 -0700 (PDT)
+X-GM-THRID: 7350068969472
+X-Received: by 10.112.98.38 with SMTP id ef6mr3477485lbb.3.1425935317588;
+        Mon, 09 Mar 2015 14:08:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:9a8a:: with SMTP id p10ls383338lji.9.gmail; Thu, 19 Mar
- 2020 02:49:24 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvSbfE7wUQi6+g52SfZRMIIkWP2nYvimASZ9pWetGhHkDSebnf41yZ1Ab1I23k4ljxsVI3x
-X-Received: by 2002:a2e:9949:: with SMTP id r9mr1696640ljj.135.1584611364787;
-        Thu, 19 Mar 2020 02:49:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584611364; cv=none;
-        d=google.com; s=arc-20160816;
-        b=BvAknBT0GfOV9QiV4j2RzZAVSEklVP8I/pxm1FM3PYaav3WSN/mykXO1IJm1ySzDiy
-         xndTrYbgkHVpHX53kBVMxegtBonwb+NWB6ixtCBu2RW+49nUD0tzxZ2wlt8rtEePugmA
-         tmgzVV0tZfEEDFX2aHEOg200eWv28UeQmZxxjOMtCnkdwV/FxkPXDp6Tot3u9S9Zl3TS
-         mJy3E/Kag0aHxk6ikaOEylqhGOTdsfjeEWNBHQS3Dr/uh/07XtYmsv0l9TQuQsHmeB08
-         cZfRwxFtihIpzLX+5R94vdqxWe1yGS1WVWB+ltvDyrtwmGXZQ536qaJMoqqwz8PyDdPI
-         p3fA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=dCMu+irp/6SK8Pub8Fj+tSA18LgAKo6hHSVayh7n9SA=;
-        b=wvwFaSBt5xHt9du6UoUaJnfOuFIQrczJBVhXcpCv+RIzuA+n8hOLuridkiUqU0xNVZ
-         nPMW+AeOKPCLGijp49ho+knKxf7J+UwrckPRS+t+BtCKxPn+RMHd3nv42duuyTCNCcKs
-         3SLz+mknAqsJcrkKSgg90BMg8FV8Xntg075zn/hGiGTnPF1WuthrSX73K3Hv3m7ky797
-         uN6TpGvVF6i1kLOp9XJlMM3brtGkof1Ke+a+XD0jwDtJyQ6eVVzo47GXkMt6lz844aVz
-         RknKkFL72YCjZsLGjqaeBI98zDHdql9NCxssmTcEatqGqgF/Jp922EbwHIIkxY7ud1uA
-         6O/Q==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id d12si78391lfi.2.2020.03.19.02.49.24
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 02:49:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+Received: by 10.180.85.229 with SMTP id k5ls114924wiz.0.canary; Mon, 09 Mar
+ 2015 14:08:37 -0700 (PDT)
+X-Received: by 10.180.91.76 with SMTP id cc12mr4699122wib.7.1425935317251;
+        Mon, 09 Mar 2015 14:08:37 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id l8si918299wia.0.2015.03.09.14.08.37
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Mar 2015 14:08:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 26651 invoked from network); 19 Mar 2020 09:49:21 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 09:49:21 -0000
-Date: Thu, 19 Mar 2020 15:19:03 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Micky Ching <micky_ching@realsil.com.cn>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [RESEND PATCH v2] staging: rts5208: shorten long line in func call
-Message-ID: <20200319094835.GA2878@tulip.local>
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x22d.google.com with SMTP id l15so25003494wiw.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 14:08:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=rNagJKypn44UDARPt7SDhqbptgSxu2+xhKsq2FR1UVk=;
+        b=tL4XZYiX5GwYYGyvNVZYdwsyczD6deToACA3qweUht7CR6ds1WQjrnL53npsS7xDqW
+         7iW7YoAvaP7rqo6ZXtKYLXL/mXH2LbDh/GYcs3oTLPHMawxrRZqcO4+tGckcuSh+n/0N
+         +89fX24bmFjBIgP3W65yhtM0faJo7aBxkSy58/quyBb8Qiczmf6HPAM2xBIeLwRODTrT
+         8DeDuB0hyv58wFCWK0O5rycUf69tzas6vrUEw/wg6cA0zJrXG4mCRo+fOqGgIVsmofnN
+         +Bmn/WcA2QsRdv78rc9/lev7Q1Gi5PBLkt0E2GpsxAGQzOiZ6KGleKKPGy/IBNUykL6U
+         eXLw==
+X-Received: by 10.180.89.163 with SMTP id bp3mr7245439wib.88.1425935317172;
+        Mon, 09 Mar 2015 14:08:37 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id p1sm796573wib.23.2015.03.09.14.08.35
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 09 Mar 2015 14:08:36 -0700 (PDT)
+Date: Mon, 9 Mar 2015 23:08:00 +0200
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8192u: Use __packed instead of
+ __attribute__((packed))
+Message-ID: <20150309210800.GA27033@Inspiron>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Add a newline after the first argument.
-To respect the 80 character line limit.
-Found using checkpatch.pl.
+This patch fixed the following checkpatch.pl warning:
+"WARNING: __packed is preferred over __attribute__((packed))".
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
-Changes in v2:
- - Make the subject line more concise
- - Give a precise description
----
- drivers/staging/rts5208/rtsx_chip.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h | 60 +++++++++++++-------------
+ 1 file changed, 30 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
-index 17c4131f5f62..c6f9375468eb 100644
---- a/drivers/staging/rts5208/rtsx_chip.c
-+++ b/drivers/staging/rts5208/rtsx_chip.c
-@@ -940,7 +940,8 @@ static void rtsx_monitor_aspm_config(struct rtsx_chip *chip)
- 		if (maybe_support_aspm)
- 			chip->aspm_l0s_l1_en = 0x03;
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 7e81ae1..b6b862a 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -634,7 +634,7 @@ struct ieee80211_snap_hdr {
+ 	u8    ctrl;   /* always 0x03 */
+ 	u8    oui[P80211_OUI_LEN];    /* organizational universal id */
  
--		dev_dbg(rtsx_dev(chip), "aspm_level[0] = 0x%02x, aspm_level[1] = 0x%02x\n",
-+		dev_dbg(rtsx_dev(chip),
-+			"aspm_level[0] = 0x%02x, aspm_level[1] = 0x%02x\n",
- 			chip->aspm_level[0], chip->aspm_level[1]);
+-} __attribute__ ((packed));
++} __packed;
  
- 		if (chip->aspm_l0s_l1_en) {
+ #define SNAP_SIZE sizeof(struct ieee80211_snap_hdr)
+ 
+@@ -969,7 +969,7 @@ struct ieee80211_security {
+ 	u8 keys[WEP_KEYS][SCM_KEY_LEN];
+ 	u8 level;
+ 	u16 flags;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ 
+ /*
+@@ -1024,14 +1024,14 @@ struct ieee80211_hdr {
+ 	__le16 frame_ctl;
+ 	__le16 duration_id;
+ 	u8 payload[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_hdr_1addr {
+ 	__le16 frame_ctl;
+ 	__le16 duration_id;
+ 	u8 addr1[ETH_ALEN];
+ 	u8 payload[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_hdr_2addr {
+ 	__le16 frame_ctl;
+@@ -1039,7 +1039,7 @@ struct ieee80211_hdr_2addr {
+ 	u8 addr1[ETH_ALEN];
+ 	u8 addr2[ETH_ALEN];
+ 	u8 payload[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_hdr_3addr {
+ 	__le16 frame_ctl;
+@@ -1049,7 +1049,7 @@ struct ieee80211_hdr_3addr {
+ 	u8 addr3[ETH_ALEN];
+ 	__le16 seq_ctl;
+ 	u8 payload[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_hdr_4addr {
+ 	__le16 frame_ctl;
+@@ -1060,7 +1060,7 @@ struct ieee80211_hdr_4addr {
+ 	__le16 seq_ctl;
+ 	u8 addr4[ETH_ALEN];
+ 	u8 payload[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_hdr_3addrqos {
+ 	__le16 frame_ctl;
+@@ -1071,7 +1071,7 @@ struct ieee80211_hdr_3addrqos {
+ 	__le16 seq_ctl;
+ 	u8 payload[0];
+ 	__le16 qos_ctl;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_hdr_4addrqos {
+ 	__le16 frame_ctl;
+@@ -1083,13 +1083,13 @@ struct ieee80211_hdr_4addrqos {
+ 	u8 addr4[ETH_ALEN];
+ 	u8 payload[0];
+ 	__le16 qos_ctl;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_info_element {
+ 	u8 id;
+ 	u8 len;
+ 	u8 data[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_authentication {
+ 	struct ieee80211_hdr_3addr header;
+@@ -1098,18 +1098,18 @@ struct ieee80211_authentication {
+ 	__le16 status;
+ 	/*challenge*/
+ 	struct ieee80211_info_element info_element[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_disassoc {
+ 	struct ieee80211_hdr_3addr header;
+ 	__le16 reason;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_probe_request {
+ 	struct ieee80211_hdr_3addr header;
+ 	/* SSID, supported rates */
+ 	struct ieee80211_info_element info_element[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_probe_response {
+ 	struct ieee80211_hdr_3addr header;
+@@ -1119,7 +1119,7 @@ struct ieee80211_probe_response {
+ 	/* SSID, supported rates, FH params, DS params,
+ 	 * CF params, IBSS params, TIM (if beacon), RSN */
+ 	struct ieee80211_info_element info_element[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ /* Alias beacon for probe_response */
+ #define ieee80211_beacon ieee80211_probe_response
+@@ -1130,7 +1130,7 @@ struct ieee80211_assoc_request_frame {
+ 	__le16 listen_interval;
+ 	/* SSID, supported rates, RSN */
+ 	struct ieee80211_info_element info_element[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_reassoc_request_frame {
+ 	struct ieee80211_hdr_3addr header;
+@@ -1139,7 +1139,7 @@ struct ieee80211_reassoc_request_frame {
+ 	u8 current_ap[ETH_ALEN];
+ 	/* SSID, supported rates, RSN */
+ 	struct ieee80211_info_element info_element[0];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_assoc_response_frame {
+ 	struct ieee80211_hdr_3addr header;
+@@ -1147,7 +1147,7 @@ struct ieee80211_assoc_response_frame {
+ 	__le16 status;
+ 	__le16 aid;
+ 	struct ieee80211_info_element info_element[0]; /* supported rates */
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_txb {
+ 	u8 nr_frags;
+@@ -1164,7 +1164,7 @@ struct ieee80211_txb {
+ struct ieee80211_drv_agg_txb {
+ 	u8 nr_drv_agg_frames;
+ 	struct sk_buff *tx_agg_frames[MAX_TX_AGG_COUNT];
+-}__attribute__((packed));
++} __packed;
+ 
+ #define MAX_SUBFRAME_COUNT		  64
+ struct ieee80211_rxb {
+@@ -1172,7 +1172,7 @@ struct ieee80211_rxb {
+ 	struct sk_buff *subframes[MAX_SUBFRAME_COUNT];
+ 	u8 dst[ETH_ALEN];
+ 	u8 src[ETH_ALEN];
+-}__attribute__((packed));
++} __packed;
+ 
+ typedef union _frameqos {
+ 	u16 shortdata;
+@@ -1240,19 +1240,19 @@ struct ieee80211_qos_information_element {
+ 	u8 qui_subtype;
+ 	u8 version;
+ 	u8 ac_info;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_qos_ac_parameter {
+ 	u8 aci_aifsn;
+ 	u8 ecw_min_max;
+ 	__le16 tx_op_limit;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_qos_parameter_info {
+ 	struct ieee80211_qos_information_element info_element;
+ 	u8 reserved;
+ 	struct ieee80211_qos_ac_parameter ac_params_record[QOS_QUEUE_NUM];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_qos_parameters {
+ 	__le16 cw_min[QOS_QUEUE_NUM];
+@@ -1260,7 +1260,7 @@ struct ieee80211_qos_parameters {
+ 	u8 aifs[QOS_QUEUE_NUM];
+ 	u8 flag[QOS_QUEUE_NUM];
+ 	__le16 tx_op_limit[QOS_QUEUE_NUM];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_qos_data {
+ 	struct ieee80211_qos_parameters parameters;
+@@ -1273,7 +1273,7 @@ struct ieee80211_qos_data {
+ struct ieee80211_tim_parameters {
+ 	u8 tim_count;
+ 	u8 tim_period;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ //#else
+ struct ieee80211_wmm_ac_param {
+@@ -1286,7 +1286,7 @@ struct ieee80211_wmm_ts_info {
+ 	u8 ac_dir_tid;
+ 	u8 ac_up_psb;
+ 	u8 reserved;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_wmm_tspec_elem {
+ 	struct ieee80211_wmm_ts_info ts_info;
+@@ -1305,7 +1305,7 @@ struct ieee80211_wmm_tspec_elem {
+ 	u32 min_phy_rate;
+ 	u16 surp_band_allow;
+ 	u16 medium_time;
+-}__attribute__((packed));
++} __packed;
+ enum eap_type {
+ 	EAP_PACKET = 0,
+ 	EAPOL_START,
+@@ -1344,7 +1344,7 @@ struct eapol {
+ 	u8 version;
+ 	u8 type;
+ 	u16 length;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct ieee80211_softmac_stats{
+ 	unsigned int rx_ass_ok;
+@@ -1374,7 +1374,7 @@ struct ieee80211_softmac_stats{
+ struct ieee80211_info_element_hdr {
+ 	u8 id;
+ 	u8 len;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ /*
+  * These are the data types that can make up management packets
+@@ -1387,7 +1387,7 @@ struct ieee80211_info_element_hdr {
+ 	u16 listen_interval;
+ 	struct {
+ 		u16 association_id:14, reserved:2;
+-	} __attribute__ ((packed));
++	} __packed;
+ 	u32 time_stamp[2];
+ 	u16 reason;
+ 	u16 status;
+@@ -1448,7 +1448,7 @@ struct	ether_header {
+ 	u8 ether_dhost[ETHER_ADDR_LEN];
+ 	u8 ether_shost[ETHER_ADDR_LEN];
+ 	u16 ether_type;
+-} __attribute__((packed));
++} __packed;
+ 
+ #ifndef ETHERTYPE_PAE
+ #define	ETHERTYPE_PAE	0x888e		/* EAPOL PAE/802.1x */
 -- 
-2.20.1
+1.9.1
 
 
