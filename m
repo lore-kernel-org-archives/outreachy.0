@@ -1,70 +1,93 @@
 X-GM-THRID: 7339802361856
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e586cd80286c5b75
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.208.12 with SMTP id ma12mr2006629wic.6.1425943723432;
-        Mon, 09 Mar 2015 16:28:43 -0700 (PDT)
+X-Received: by 10.112.162.135 with SMTP id ya7mr4191105lbb.14.1425936022623;
+        Mon, 09 Mar 2015 14:20:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.137 with SMTP id s9ls68514las.72.gmail; Mon, 09 Mar 2015
- 16:28:42 -0700 (PDT)
-X-Received: by 10.112.25.7 with SMTP id y7mr4198256lbf.21.1425943722767;
-        Mon, 09 Mar 2015 16:28:42 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x231.google.com (mail-wg0-x231.google.com. [2a00:1450:400c:c00::231])
-        by gmr-mx.google.com with ESMTPS id l8si942475wia.0.2015.03.09.16.28.42
+Received: by 10.152.25.193 with SMTP id e1ls263845lag.80.gmail; Mon, 09 Mar
+ 2015 14:20:22 -0700 (PDT)
+X-Received: by 10.152.164.171 with SMTP id yr11mr1322898lab.4.1425936022077;
+        Mon, 09 Mar 2015 14:20:22 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id sf8si44650wic.2.2015.03.09.14.20.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2015 16:28:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) client-ip=2a00:1450:400c:c00::231;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 09 Mar 2015 14:20:22 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghl18 with SMTP id l18so21632193wgh.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 16:28:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :content-type:mime-version:content-transfer-encoding;
-        bh=vdTJXnowA4THap/1+hn63EK8pCuoJXNXBS/QEeT97p8=;
-        b=PaB7kJwMZHzrY5kEJlwtv8iRtXzDT0grPJqwpf21Brl8wN9mfx51ish4myOSaZS92e
-         uXrheTNJWIaw7V3N6NXZ+rwau3fQ0HPePg5FHlN4ffeo0xGVHzjnnoOl9j5J9kisp2XA
-         +YgN7NOwXHO4NQM0mFBUPMdLmPTBtlAuEvk4ILMNVvjtjOKclnH2TwyFWzH0geJMMbax
-         5coXXzGMTtWc4CQfWdaHE/Y+KgnTWgP8bJU+OXNtKCCoD8B2IS7lI1TWNVz311d6DEI7
-         x6XmZbds8eSw4NYJllS5Dn6ryp9SPJFCDnc/KiNFRENE/J6MMhBzNPNJcaEvqkZZuIcI
-         5w/g==
-X-Received: by 10.180.79.232 with SMTP id m8mr109993056wix.81.1425943722673;
-        Mon, 09 Mar 2015 16:28:42 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from [192.168.0.103] (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id g5sm30311998wjr.19.2015.03.09.16.28.41
-        (version=SSLv3 cipher=RC4-SHA bits=128/128);
-        Mon, 09 Mar 2015 16:28:42 -0700 (PDT)
-Message-ID: <1425943685.4907.4.camel@Inspiron>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192e: Remove
- unnecessary macro
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
-Date: Tue, 10 Mar 2015 01:28:05 +0200
-In-Reply-To: <alpine.DEB.2.02.1503092219440.2057@localhost6.localdomain6>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,370,1422918000"; 
+   d="scan'208";a="125109000"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 09 Mar 2015 22:20:21 +0100
+Date: Mon, 9 Mar 2015 22:20:20 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Cristina Opriceana <cristina.opriceana@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192e: Remove unnecessary
+ macro
+In-Reply-To: <20150309204828.GA25299@Inspiron>
+Message-ID: <alpine.DEB.2.02.1503092219440.2057@localhost6.localdomain6>
 References: <20150309204828.GA25299@Inspiron>
-	 <alpine.DEB.2.02.1503092219440.2057@localhost6.localdomain6>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
+On Mon, 9 Mar 2015, Cristina Opriceana wrote:
 
+> This patch removes the RTLLIB_PRINT_STR macro definition because it is
+> olny defined in the header and it is never referenced.
 
-> Small spelling mistake.  Also, the patch also removes several other 
-> macros, so you may want to mention all of them.
+Small spelling mistake.  Also, the patch also removes several other 
+macros, so you may want to mention all of them.
 
-Oh, I swapped some letters.
-Thanks for reviewing.
+julia
 
-Cristina
-
-
+> 
+> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/rtllib.h | 20 --------------------
+>  1 file changed, 20 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
+> index cef2dc2..96e9246 100644
+> --- a/drivers/staging/rtl8192e/rtllib.h
+> +++ b/drivers/staging/rtl8192e/rtllib.h
+> @@ -784,26 +784,6 @@ do {								\
+>  #define RTLLIB_DEBUG_RX(f, a...)  RTLLIB_DEBUG(RTLLIB_DL_RX, f, ## a)
+>  #define RTLLIB_DEBUG_QOS(f, a...)  RTLLIB_DEBUG(RTLLIB_DL_QOS, f, ## a)
+>  
+> -/* Added by Annie, 2005-11-22. */
+> -#define MAX_STR_LEN     64
+> -/* I want to see ASCII 33 to 126 only. Otherwise, I print '?'. */
+> -#define PRINTABLE(_ch)  (_ch > '!' && _ch < '~')
+> -#define RTLLIB_PRINT_STR(_Comp, _TitleString, _Ptr, _Len)		\
+> -	if ((_Comp) & level) {					       \
+> -		int	     __i;				    \
+> -		u8  struct buffer[MAX_STR_LEN];				\
+> -		int length = (_Len < MAX_STR_LEN) ? _Len : (MAX_STR_LEN-1) ;\
+> -		memset(struct buffer, 0, MAX_STR_LEN);		\
+> -		memcpy(struct buffer, (u8 *)_Ptr, length);		\
+> -		for (__i = 0; __i < MAX_STR_LEN; __i++) {		\
+> -			if (!PRINTABLE(struct buffer[__i]))		\
+> -				struct buffer[__i] = '?';		\
+> -		}							\
+> -		struct buffer[length] = '\0';				\
+> -		printk(KERN_INFO "Rtl819x: ");				\
+> -		printk(_TitleString);					\
+> -		printk(": %d, <%s>\n", _Len, struct buffer);		\
+> -	}
+>  #ifndef ETH_P_PAE
+>  #define ETH_P_PAE 0x888E /* Port Access Entity (IEEE 802.1X) */
+>  #define ETH_P_IP	0x0800		/* Internet Protocol packet	*/
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150309204828.GA25299%40Inspiron.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
