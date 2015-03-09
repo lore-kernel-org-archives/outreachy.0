@@ -1,73 +1,140 @@
-X-GM-THRID: 9903208923136
-X-Received: by 10.182.158.37 with SMTP id wr5mr12353565obb.1.1427328610940;
-        Wed, 25 Mar 2015 17:10:10 -0700 (PDT)
+X-GM-THRID: 7280184524800
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ed889752b903c73f
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.52.62.68 with SMTP id w4mr28661693vdr.1.1425931810202;
+        Mon, 09 Mar 2015 13:10:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.129.33 with SMTP id c33ls502732iod.44.gmail; Wed, 25 Mar
- 2015 17:10:10 -0700 (PDT)
-X-Received: by 10.42.153.135 with SMTP id m7mr33991415icw.4.1427328610789;
-        Wed, 25 Mar 2015 17:10:10 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-qg0-x231.google.com (mail-qg0-x231.google.com. [2607:f8b0:400d:c04::231])
-        by gmr-mx.google.com with ESMTPS id kt5si512711qcb.3.2015.03.25.17.10.10
+Received: by 10.107.135.221 with SMTP id r90ls304633ioi.73.gmail; Mon, 09 Mar
+ 2015 13:10:09 -0700 (PDT)
+X-Received: by 10.50.26.40 with SMTP id i8mr31073186igg.8.1425931809979;
+        Mon, 09 Mar 2015 13:10:09 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id gb13si2849408pac.2.2015.03.09.13.10.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2015 17:10:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::231 as permitted sender) client-ip=2607:f8b0:400d:c04::231;
+        Mon, 09 Mar 2015 13:10:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::231 as permitted sender) smtp.mail=helen.fornazier@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=ciorneiioana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x231.google.com with SMTP id 60so55739237qgf.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 17:10:10 -0700 (PDT)
+Received: by padfa1 with SMTP id fa1so75092608pad.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 13:10:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=RW8vsnLR+puXdr2gixFXEpa/ay1YtHdIQHhOzKpt2cs=;
-        b=DXYVsKKapmqy6Pr8NTGa8bNz8LL7d+Prx5LgjlTwDCLkOCyfeFqyy38BSXiJDXlqlq
-         ggiK+L5/nRSm02bkvXpmPfkGeoBS/Kinp0by21di+hn2dpLV9lpo1kLljVgOLSnLhf0b
-         G3HTr9FdvvhczURNHYweHoNu4H89pwll4551Oxmcl//GlM7MiJUQy4ZE7oAtVPrGMA/Q
-         dHm9ZVIfi9V/90I/KYHpQrhkr2Xxfkx/0H/fZC6DdiRKbY1XVhnXWlafWCJM4eiYy8mA
-         hd3VjIUDJIPCPZ3K4OxJX5SoVihYcmonMqT5U6tt57uoeiWd1X8eptK5SEsAWLoXfAc4
-         HwZw==
-X-Received: by 10.55.18.8 with SMTP id c8mr24405025qkh.25.1427328610697;
-        Wed, 25 Mar 2015 17:10:10 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from Cracker.linksys.com ([179.159.91.9])
-        by mx.google.com with ESMTPSA id w68sm1273609qha.32.2015.03.25.17.10.09
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 25 Mar 2015 17:10:10 -0700 (PDT)
-From: Helen Fornazier <helen.fornazier@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Helen Fornazier <helen.fornazier@gmail.com>
-Subject: [PATCH] Staging: dgnc: Replace printk with pr_err
-Date: Wed, 25 Mar 2015 21:09:53 -0300
-Message-Id: <1427328593-6576-1-git-send-email-helen.fornazier@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ALYowieASQGsJKFCcNJADTQ9QeHE+MrwIMR2aqc5/i4=;
+        b=ECG2YzSeRCjkUxOxpxRKQSQA06hFuRTbhqf6NTbNQ6Vd67QYPWqfhWixq6atTVpz3h
+         GqquKndBvhBqn6DORTplwm5lPNDY9SCn1eXi76lISY/q8rpM7taCjiIiRziwqvUQzi7S
+         AAvKzgV1DPZhofri/osZnP62TKo8UJbICAuwZFo0ARthRt/c9WqHbyL5LCTSJ8mzfGXD
+         jJZclpGAZ95nNBp6CO7MoKp9guYuxNOJDdb7jJSt1Rbvnp+Wi/8FdZuW5UXzkUKN0RI3
+         +VtEUQ1ImYMOZfzzyI9yBQ7+l8afkPrj/hQwvy7xyZAeUT8QCaExeng6m1Y939t6s8p+
+         5MXQ==
+MIME-Version: 1.0
+X-Received: by 10.66.164.200 with SMTP id ys8mr57547726pab.130.1425931809717;
+ Mon, 09 Mar 2015 13:10:09 -0700 (PDT)
+Received: by 10.70.140.13 with HTTP; Mon, 9 Mar 2015 13:10:09 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1503091636360.3136@hadrien>
+References: <1425908752-7321-1-git-send-email-ciorneiioana@gmail.com>
+	<alpine.DEB.2.10.1503091636360.3136@hadrien>
+Date: Mon, 9 Mar 2015 22:10:09 +0200
+Message-ID: <CAHWJYFnAs8OJDv36Gm=muWHm-kWKcP7PQiL7WZ9F7y_p26=83Q@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] drivers: staging: rtl8188eu: core:
+ rtw_xmt: Delete spaces before tabs
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch fixes the following checkpatch.pl warning:
+Thank you for the advice, Julia.
+And sorry for my clumsiness.
 
-WARNING: Prefer [subsystem eg: netdev]_err([subsystem]dev, ... then dev_err(dev, ... then pr_err(...  to printk(KERN_ERR ...
-+               printk(KERN_ERR "DGNC: sysfs driver_create_file failed!\n");
+Ioana
 
-Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
----
- drivers/staging/dgnc/dgnc_sysfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
-index 2df889e..65551d1 100644
---- a/drivers/staging/dgnc/dgnc_sysfs.c
-+++ b/drivers/staging/dgnc/dgnc_sysfs.c
-@@ -75,7 +75,7 @@ void dgnc_create_driver_sysfiles(struct pci_driver *dgnc_driver)
- 	rc |= driver_create_file(driverfs, &driver_attr_maxboards);
- 	rc |= driver_create_file(driverfs, &driver_attr_pollrate);
- 	if (rc)
--		printk(KERN_ERR "DGNC: sysfs driver_create_file failed!\n");
-+		pr_err("DGNC: sysfs driver_create_file failed!\n");
- }
- 
- 
--- 
-1.9.1
-
+On Mon, Mar 9, 2015 at 5:37 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> For the subject, you should be able to put just staging: rtl8188eu:.  You
+> can do git log --oneline drivers/staging/rtl8188eu/core/rtw_xmit.cto see
+> what subjects others have used for this file.
+>
+> Also, you can just send the patch to the outreachy mailing list.  Greg is
+> subscribed.
+>
+> julia
+>
+> On Mon, 9 Mar 2015, Ioana Ciornei wrote:
+>
+>> This patch fixes the checkpatch.pl warning:
+>>
+>> WARNING: please, no space before tabs
+>>
+>> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+>> ---
+>>  drivers/staging/rtl8188eu/core/rtw_xmit.c | 12 ++++++------
+>>  1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+>> index 7a71df1..7a35c47 100644
+>> --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+>> +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+>> @@ -94,7 +94,7 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+>>       }
+>>       pxmitpriv->pxmit_frame_buf = (u8 *)N_BYTE_ALIGMENT((size_t)(pxmitpriv->pallocated_frame_buf), 4);
+>>       /* pxmitpriv->pxmit_frame_buf = pxmitpriv->pallocated_frame_buf + 4 - */
+>> -     /*                                              ((size_t) (pxmitpriv->pallocated_frame_buf) &3); */
+>> +     /*                                              ((size_t) (pxmitpriv->pallocated_frame_buf) &3); */
+>>
+>>       pxframe = (struct xmit_frame *)pxmitpriv->pxmit_frame_buf;
+>>
+>> @@ -132,7 +132,7 @@ s32       _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+>>
+>>       pxmitpriv->pxmitbuf = (u8 *)N_BYTE_ALIGMENT((size_t)(pxmitpriv->pallocated_xmitbuf), 4);
+>>       /* pxmitpriv->pxmitbuf = pxmitpriv->pallocated_xmitbuf + 4 - */
+>> -     /*                                              ((size_t) (pxmitpriv->pallocated_xmitbuf) &3); */
+>> +     /*                                              ((size_t) (pxmitpriv->pallocated_xmitbuf) &3); */
+>>
+>>       pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
+>>
+>> @@ -283,8 +283,8 @@ static void update_attrib_vcs_info(struct adapter *padapter, struct xmit_frame *
+>>
+>>       /*  (1) RTS_Threshold is compared to the MPDU, not MSDU. */
+>>       /*  (2) If there are more than one frag in  this MSDU, only the first frag uses protection frame. */
+>> -     /*              Other fragments are protected by previous fragment. */
+>> -     /*              So we only need to check the length of first fragment. */
+>> +     /*              Other fragments are protected by previous fragment. */
+>> +     /*              So we only need to check the length of first fragment. */
+>>       if (pmlmeext->cur_wireless_mode < WIRELESS_11_24N  || padapter->registrypriv.wifi_spec) {
+>>               if (sz > padapter->registrypriv.rts_thresh) {
+>>                       pattrib->vcs_mode = RTS_CTS;
+>> @@ -413,7 +413,7 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
+>>       /*  get user_prio from IP hdr */
+>>       if (pattrib->ether_type == 0x0800) {
+>>               _rtw_pktfile_read(ppktfile, (u8 *)&ip_hdr, sizeof(ip_hdr));
+>> -/*           user_prio = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
+>> +/*           user_prio = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
+>>               user_prio = ip_hdr.tos >> 5;
+>>       } else if (pattrib->ether_type == 0x888e) {
+>>               /*  "When priority processing of data frames is supported, */
+>> @@ -1469,7 +1469,7 @@ s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitfram
+>>       if (rtw_xmit_classifier(padapter, pxmitframe) == _FAIL) {
+>>               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+>>                        ("rtw_xmitframe_enqueue: drop xmit pkt for classifier fail\n"));
+>> -/*           pxmitframe->pkt = NULL; */
+>> +/*           pxmitframe->pkt = NULL; */
+>>               return _FAIL;
+>>       }
+>>
+>> --
+>> 1.9.1
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1425908752-7321-1-git-send-email-ciorneiioana%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
