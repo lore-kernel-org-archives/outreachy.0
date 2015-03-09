@@ -1,90 +1,97 @@
-X-GM-THRID: 7892013940736
-X-Received: by 10.112.189.227 with SMTP id gl3mr6546596lbc.2.1426172154921;
-        Thu, 12 Mar 2015 07:55:54 -0700 (PDT)
+X-GM-THRID: 7320828379136
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,686cb5824f4090a4
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.27.134 with SMTP id t6mr4168854lag.5.1425926405764;
+        Mon, 09 Mar 2015 11:40:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.4.38 with SMTP id cb6ls252276lad.97.gmail; Thu, 12 Mar
- 2015 07:55:54 -0700 (PDT)
-X-Received: by 10.112.41.131 with SMTP id f3mr6547256lbl.20.1426172154344;
-        Thu, 12 Mar 2015 07:55:54 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
-        by gmr-mx.google.com with ESMTPS id ew13si564305wid.0.2015.03.12.07.55.54
+Received: by 10.180.94.34 with SMTP id cz2ls16487wib.46.canary; Mon, 09 Mar
+ 2015 11:40:05 -0700 (PDT)
+X-Received: by 10.180.211.199 with SMTP id ne7mr873553wic.5.1425926405421;
+        Mon, 09 Mar 2015 11:40:05 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
+        by gmr-mx.google.com with ESMTPS id o3si877887wib.2.2015.03.09.11.40.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 07:55:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
+        Mon, 09 Mar 2015 11:40:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x236.google.com with SMTP id h11so20972444wiw.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 07:55:54 -0700 (PDT)
+Received: by mail-we0-x234.google.com with SMTP id x3so30935478wes.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 11:40:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=5VMC0MaCtJ9ANrFNeLh/ST5iVvDMfcEo6DDD/fsIbm4=;
-        b=nOzewxVt+IJr/mhtKXUgC3fuBdO1xFQEk+EbgFPfg0yLNkryseV97dtqTF4osMgVQq
-         +1BnEezo6M+5fKlgm+qFwGrj8MoPvPaSQWZFo+NbCLPwrDbj1nbPMfsmdXG4ZI0GwfCR
-         SsWNOLJi90I4Hz5QmgSPJeUqajaJjGeaKm24dXK5QURtla5eyswQavPN+14+KrLDh7h2
-         95wNscx2QsxwkQ7rkX4QhCclFPkZs2bvmRnasPgNFkfPoyAg21F6EAWAwqPFD/xHJgxo
-         nbypbrk0OSjfHiR3YYcqYBjXSZoVk1GRHWjVRL9niZJdHTiAm3mVhIWGYdWFaehi6wGW
-         e9sg==
-X-Received: by 10.180.206.101 with SMTP id ln5mr22452643wic.55.1426172154237;
-        Thu, 12 Mar 2015 07:55:54 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([95.187.130.112])
-        by mx.google.com with ESMTPSA id k1sm10420770wjn.9.2015.03.12.07.55.52
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=+wbPuBmdF9isvo4fwaIXwm71GLQAzUHoosPC2+ZHFiY=;
+        b=lEqmWum6DgHGxOM7M8FNUBYulgoDef2XezbiepV99c/u92oKV4612jgcpTPNzAiucl
+         SpijvE1slxtg6QrFO/9a6YKPZQfTVBFzlHD+MnEjPOLrO0ywDtiqSv+i46KU/G+a+u7s
+         E9VVzhVzW2TdKOxak1yHL2aMWEz0ZhL8DuyaaXQFTiuoI8k8WCb7WqsbOm0DRQHG1Pv4
+         gdzvfJ/gpxw38iDKaRAYmAHwQHfTpAW1ra+dzfbkrlWNLGubLPMUP08fe2qALBCpYP/U
+         X1p9eNrkjDPTQ2fptzI3bmVmfrg0aMi11oeDYi5ZJ4+1bieHqkkW08IYPIuPfZt4XlO2
+         BeXg==
+X-Received: by 10.180.98.131 with SMTP id ei3mr62076992wib.62.1425926405254;
+        Mon, 09 Mar 2015 11:40:05 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id s5sm16757913wia.1.2015.03.09.11.40.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 12 Mar 2015 07:55:53 -0700 (PDT)
-Date: Thu, 12 Mar 2015 17:55:36 +0300
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        Mon, 09 Mar 2015 11:40:04 -0700 (PDT)
+Date: Mon, 9 Mar 2015 20:39:24 +0200
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] iio: Add ABI documentation for proximity scan_emlements
-Message-ID: <20150312145536.GA20026@haneen-vb>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] Staging: rtl8192u: Replace printk() with netdev_dbg()
+Message-ID: <4b160a922a2c11663054a3dab81c235d16f44a23.1425925942.git.cristina.opriceana@gmail.com>
+References: <cover.1425925942.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1425925942.git.cristina.opriceana@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch adds ABI documentation entries for in_proximity_en,
-in_proximity_type, and in_proximity_index in the scan_elements.
-At lease one user for these is present, the AS3935 Franklin lightning sensor.
+This patch replaces the printk() function with netdev_dbg() in order to
+fix the following: "WARNING: printk() should include KERN_ facility level"
+and "WARNING: line over 80 characters".
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+Issue found by checkpatch.pl
+
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
- Documentation/ABI/testing/sysfs-bus-iio | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
-index 9a1a5fc..fd026d9 100644
---- a/Documentation/ABI/testing/sysfs-bus-iio
-+++ b/Documentation/ABI/testing/sysfs-bus-iio
-@@ -999,6 +999,7 @@ What:		/sys/.../iio:deviceX/scan_elements/in_incli_y_en
- What:		/sys/.../iio:deviceX/scan_elements/in_pressureY_en
- What:		/sys/.../iio:deviceX/scan_elements/in_pressure_en
- What:		/sys/.../iio:deviceX/scan_elements/in_rot_quaternion_en
-+What:		/sys/.../iio:deviceX/scan_elements/in_proximity_en
- KernelVersion:	2.6.37
- Contact:	linux-iio@vger.kernel.org
- Description:
-@@ -1015,6 +1016,7 @@ What:		/sys/.../iio:deviceX/scan_elements/in_timestamp_type
- What:		/sys/.../iio:deviceX/scan_elements/in_pressureY_type
- What:		/sys/.../iio:deviceX/scan_elements/in_pressure_type
- What:		/sys/.../iio:deviceX/scan_elements/in_rot_quaternion_type
-+What:		/sys/.../iio:deviceX/scan_elements/in_proximity_type
- KernelVersion:	2.6.37
- Contact:	linux-iio@vger.kernel.org
- Description:
-@@ -1066,6 +1068,7 @@ What:		/sys/.../iio:deviceX/scan_elements/in_timestamp_index
- What:		/sys/.../iio:deviceX/scan_elements/in_pressureY_index
- What:		/sys/.../iio:deviceX/scan_elements/in_pressure_index
- What:		/sys/.../iio:deviceX/scan_elements/in_rot_quaternion_index
-+What:		/sys/.../iio:deviceX/scan_elements/in_proximity_index
- KernelVersion:	2.6.37
- Contact:	linux-iio@vger.kernel.org
- Description:
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index f7aa9df..d1cbddd 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -1947,9 +1947,9 @@ void ieee80211_check_auth_response(struct ieee80211_device *ieee,
+ 						bSupportNmode = false;
+ 						bHalfSupportNmode = false;
+ 					}
+-					printk("==========>to link with AP using SEC(%d, %d)",
+-						bSupportNmode,
+-						bHalfSupportNmode);
++					netdev_dbg(ieee->dev, "SEC(%d, %d)\n",
++							bSupportNmode,
++							bHalfSupportNmode);
+ 				}
+ 			}
+ 			/* Dummy wirless mode setting- avoid encryption issue */
+@@ -1964,7 +1964,7 @@ void ieee80211_check_auth_response(struct ieee80211_device *ieee,
+ 
+ 			if (ieee->current_network.mode == IEEE_N_24G &&
+ 					bHalfSupportNmode == true) {
+-				printk("===============>entern half N mode\n");
++				netdev_dbg(ieee->dev, "enter half N mode\n");
+ 				ieee->bHalfWirelessN24GMode = true;
+ 			} else
+ 				ieee->bHalfWirelessN24GMode = false;
 -- 
 1.9.1
 
