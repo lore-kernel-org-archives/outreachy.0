@@ -1,78 +1,68 @@
-X-GM-THRID: 6138556841984
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,db883bf8dd7e9dae,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.80.35 with SMTP id o3mr2697354wix.0.1425357993054;
-        Mon, 02 Mar 2015 20:46:33 -0800 (PST)
+X-GM-THRID: 6598140362752
+X-Received: by 10.236.11.196 with SMTP id 44mr26916061yhx.31.1425903606291;
+        Mon, 09 Mar 2015 05:20:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.29.34 with SMTP id jt2ls683803wid.17.canary; Mon, 02 Mar
- 2015 20:46:32 -0800 (PST)
-X-Received: by 10.180.39.164 with SMTP id q4mr2646843wik.5.1425357992770;
-        Mon, 02 Mar 2015 20:46:32 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x22c.google.com (mail-we0-x22c.google.com. [2a00:1450:400c:c03::22c])
-        by gmr-mx.google.com with ESMTPS id i8si24955wif.1.2015.03.02.20.46.32
+Received: by 10.140.96.137 with SMTP id k9ls1295866qge.6.gmail; Mon, 09 Mar
+ 2015 05:20:06 -0700 (PDT)
+X-Received: by 10.53.9.103 with SMTP id dr7mr1837291vdd.5.1425903606134;
+        Mon, 09 Mar 2015 05:20:06 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id m1si2619955pdc.0.2015.03.09.05.20.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 20:46:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) client-ip=2a00:1450:400c:c03::22c;
+        Mon, 09 Mar 2015 05:20:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22c as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22c.google.com with SMTP id u56so37435586wes.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 20:46:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+G5ZUqrPXPV5xt9FVmwCKye/8I/fLDbKgXOyj6I6yAg=;
-        b=qRhSN25lL+dXJHR+Pg4yMNNdskrbwQJ9zWcjSTpFsSpaKwUMydwDTwI6hV2sONfz85
-         MunTggW02zNxY/QLMGAISm/uaIilKTP5M03iCrWjrUHl2v9Wb2Eu8wwRTJWyaCtNm3DR
-         jkUXJYzbML2KRbaR/yVyHj4Opal09mZwqAHm1F5oZgcxOUt7xLsEOKwtYmtHiu5zJRWg
-         h/Xw0I4Pu6HKMEBuxoZZBNZnlXqHhUvIiVORLsRyykjCvgHMkD19RXwUjgYAZKqHfBIa
-         LlHJsb3oUsI+hnGRKX/0StslucXwqjtVMIuPU2bBSYUvET6Y5Ml4EVM/qwQtUfL3nSMo
-         mh7g==
-X-Received: by 10.194.220.7 with SMTP id ps7mr66677997wjc.84.1425357992675;
-        Mon, 02 Mar 2015 20:46:32 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([41.130.214.4])
-        by mx.google.com with ESMTPSA id h11sm18770576wic.14.2015.03.02.20.46.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 02 Mar 2015 20:46:32 -0800 (PST)
-Date: Tue, 3 Mar 2015 06:46:29 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Adjust code in iio driver
-Message-ID: <cover.1425356586.git.mahfouz.saif.elyazal@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (li684-192.members.linode.com [23.239.3.192])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 25747944;
+	Mon,  9 Mar 2015 12:20:05 +0000 (UTC)
+Date: Mon, 9 Mar 2015 13:20:02 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Somya Anand <somyaanand214@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3 3/3] Staging: rtl8188eu: Remove
+ redundant local variable
+Message-ID: <20150309122002.GA20677@kroah.com>
+References: <1425751228-9804-1-git-send-email-somyaanand214@gmail.com>
+ <1425751228-9804-3-git-send-email-somyaanand214@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <1425751228-9804-3-git-send-email-somyaanand214@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Adds a check in two functions on the variable used to return values.
-No labels were added, since this was the last thing to be done
-before returning values. The check was made on values less than 
-zero since sp_write returns negative error codes on failure.
+On Sat, Mar 07, 2015 at 11:30:28PM +0530, Somya Anand wrote:
+> This patch removes a redundant variable "val" and adds
+> inline return statements. It also adds a default case
+> to the switch statement which returns 0 to keep the logic
+> intact.
+> 
+> It also removes a redundant variable "inx" and adds inline
+> return statements.
+> 
+> This issue is identified by the following coccinelle script.
+> @@
+> expression ret;
+> identifier f;
+> @@
+> 
+> -ret =
+> +return
+>      f(...);
+> -return ret;
+> 
+> Signed-off-by: Somya Anand <somyaanand214@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_wlan_util.c | 82 +++++++++-----------------
 
-There was a function call that did not pass the 80 characters limit but
-the arguments were divided over three limit. The lines were compressed
-into one line.
+This patch also does not apply :(
 
-Aya Mahfouz (2):
-  staging: iio: meter: add check on return variables
-  staging: iio: meter: adjust function call to be in one line
+Please refresh your patches against my latest staging-testing branch of
+staging.git on git.kernel.org and resend them.
 
- drivers/staging/iio/meter/ade7758_core.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+thanks,
 
--- 
-1.9.3
-
-
--- 
-Kind Regards,
-Aya Saif El-yazal Mahfouz
+greg k-h
 
