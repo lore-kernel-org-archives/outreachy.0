@@ -1,47 +1,51 @@
 X-GM-THRID: 7207946027008
-X-Received: by 10.66.149.102 with SMTP id tz6mr26960858pab.26.1425897826689;
-        Mon, 09 Mar 2015 03:43:46 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,fcd780a8690cb6db
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.34.133 with SMTP id z5mr28259602obi.3.1425897818034;
+        Mon, 09 Mar 2015 03:43:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.73.230 with SMTP id o6ls863554igv.30.gmail; Mon, 09 Mar
- 2015 03:43:46 -0700 (PDT)
-X-Received: by 10.66.97.10 with SMTP id dw10mr26287819pab.48.1425897826472;
-        Mon, 09 Mar 2015 03:43:46 -0700 (PDT)
+Received: by 10.182.71.76 with SMTP id s12ls485109obu.17.gmail; Mon, 09 Mar
+ 2015 03:43:37 -0700 (PDT)
+X-Received: by 10.182.135.230 with SMTP id pv6mr24977365obb.17.1425897817858;
+        Mon, 09 Mar 2015 03:43:37 -0700 (PDT)
 Return-Path: <tinajohnson.1234@gmail.com>
-Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
-        by gmr-mx.google.com with ESMTPS id ri9si2558458pdb.1.2015.03.09.03.43.46
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id gb13si2538191pac.2.2015.03.09.03.43.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2015 03:43:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
+        Mon, 09 Mar 2015 03:43:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=tinajohnson.1234@gmail.com;
+       spf=pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=tinajohnson.1234@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdno5 with SMTP id o5so19970484pdn.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 03:43:46 -0700 (PDT)
+Received: by mail-pa0-x229.google.com with SMTP id li10so71869060pab.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 03:43:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=i+Un5iAXOXs2prJbQ8uBya3qe6HC8y5i6mUNfrIm3JE=;
-        b=HPyHazDkYl//bmtLd7Aw4BKxqKc93rXakZo6jR9QIVO5FDP2P9lIIKQP3jKyf3tB4C
-         ih+WZcfPaJltIJasFokK8s15qW/JHvnUCi4wd9vx/ki+z95mN2qifxibqtyCmKOkByLF
-         XlwNek70EJre29xuHZu6CrSmV9zveYdZYSPGsrdpIzufnEG6e5H254GceJa/eT8Rb0Mg
-         lxNXiLIAO7Ugy8gErMwhogN98Vvr9dkNaWQaXw36/ZTuL/+wt6axbpd9gJ57Ueh1XoqW
-         uOmiqlpCdE42adydpKFHjRp3F34acWHo+8F/w3qBW+aymjJ7rqWGn5zzLfPWCKyLM56F
-         zQzw==
-X-Received: by 10.66.182.199 with SMTP id eg7mr51313472pac.57.1425897826367;
-        Mon, 09 Mar 2015 03:43:46 -0700 (PDT)
+        bh=nDddGF0AT1plNo5QI/JEfqcwLg5HAxiOW4kBbaqFnNo=;
+        b=0ob5JoOhGSiv0IDoAOPwRRzHY+QDg1Iq8nFXoKHi0UhG1Vz0b9lMtFxUuNHZWT2Lla
+         BdRWE1bat+LWWlcWL8NzxC/Y93GzyA2lYbRF4w2OqRurtG9zZ07vQxkqOOeKi6QoMuy1
+         x9LAQK5jF+EOD4J2EJbANxf6y+buDXNqblnZSjZOrK8mTnA/defYWNNDlP+NplYJSSh8
+         65AvaWmlOMajUO1dozzNYHdl2qr/GLjCT0UT+to5JNMdacoCrWblr7v0oky1Qy40kMix
+         uzaKcay4fAzvpobPJ7pfzkxkOlY4+PozzHQ+TUJLwlFEQuAHmMKaqAnY7zvm0fyjfD3g
+         +1lg==
+X-Received: by 10.67.3.105 with SMTP id bv9mr51339407pad.149.1425897817711;
+        Mon, 09 Mar 2015 03:43:37 -0700 (PDT)
 Return-Path: <tinajohnson.1234@gmail.com>
 Received: from localhost ([117.252.18.210])
-        by mx.google.com with ESMTPSA id ux7sm18676800pab.19.2015.03.09.03.43.43
+        by mx.google.com with ESMTPSA id d12sm18633802pdj.2.2015.03.09.03.43.33
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 09 Mar 2015 03:43:45 -0700 (PDT)
+        Mon, 09 Mar 2015 03:43:35 -0700 (PDT)
 From: Tina Johnson <tinajohnson.1234@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Tina Johnson <tinajohnson.1234@gmail.com>
-Subject: [PATCH 2/5] drivers: staging: iio: meter: Removed unnecessary variable
-Date: Mon,  9 Mar 2015 16:11:17 +0530
-Message-Id: <1425897680-6179-3-git-send-email-tinajohnson.1234@gmail.com>
+Subject: [PATCH 1/5] drivers: staging: iio: accel: Removed unnecessary variable
+Date: Mon,  9 Mar 2015 16:11:16 +0530
+Message-Id: <1425897680-6179-2-git-send-email-tinajohnson.1234@gmail.com>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1425897680-6179-1-git-send-email-tinajohnson.1234@gmail.com>
 References: <1425897680-6179-1-git-send-email-tinajohnson.1234@gmail.com>
@@ -62,32 +66,33 @@ expression e;
 
 Signed-off-by: Tina Johnson <tinajohnson.1234@gmail.com>
 ---
- drivers/staging/iio/meter/ade7758_core.c |    5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/staging/iio/accel/sca3000_core.c |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
-index 7e287da..652aa10 100644
---- a/drivers/staging/iio/meter/ade7758_core.c
-+++ b/drivers/staging/iio/meter/ade7758_core.c
-@@ -485,7 +485,7 @@ static ssize_t ade7758_read_frequency(struct device *dev,
- 		struct device_attribute *attr,
- 		char *buf)
+diff --git a/drivers/staging/iio/accel/sca3000_core.c b/drivers/staging/iio/accel/sca3000_core.c
+index 31fb218..b614f27 100644
+--- a/drivers/staging/iio/accel/sca3000_core.c
++++ b/drivers/staging/iio/accel/sca3000_core.c
+@@ -870,7 +870,7 @@ static ssize_t sca3000_query_free_fall_mode(struct device *dev,
+ 					    struct device_attribute *attr,
+ 					    char *buf)
  {
--	int ret, len = 0;
+-	int ret, len;
 +	int ret;
- 	u8 t;
- 	int sps;
- 
-@@ -498,8 +498,7 @@ static ssize_t ade7758_read_frequency(struct device *dev,
- 	t = (t >> 5) & 0x3;
- 	sps = 26040 / (1 << t);
- 
--	len = sprintf(buf, "%d SPS\n", sps);
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct sca3000_state *st = iio_priv(indio_dev);
+ 	int val;
+@@ -881,9 +881,7 @@ static ssize_t sca3000_query_free_fall_mode(struct device *dev,
+ 	mutex_unlock(&st->lock);
+ 	if (ret < 0)
+ 		return ret;
+-	len = sprintf(buf, "%d\n",
+-		      !!(val & SCA3000_FREE_FALL_DETECT));
 -	return len;
-+	return sprintf(buf, "%d SPS\n", sps);
++	return sprintf(buf, "%d\n", !!(val & SCA3000_FREE_FALL_DETECT));
  }
  
- static ssize_t ade7758_write_frequency(struct device *dev,
+ /**
 -- 
 1.7.10.4
 
