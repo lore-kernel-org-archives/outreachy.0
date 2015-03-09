@@ -1,49 +1,62 @@
-X-GM-THRID: 9047781670912
-X-Received: by 10.66.97.10 with SMTP id dw10mr36808869pab.48.1426700964729;
-        Wed, 18 Mar 2015 10:49:24 -0700 (PDT)
+X-GM-THRID: 6939320778752
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,51726dff31130f74
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.248.227 with SMTP id yp3mr28347360obc.22.1425904581833;
+        Mon, 09 Mar 2015 05:36:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.19.33 with SMTP id 30ls811231qgg.45.gmail; Wed, 18 Mar
- 2015 10:49:24 -0700 (PDT)
-X-Received: by 10.140.148.68 with SMTP id 65mr48965458qhu.6.1426700964550;
-        Wed, 18 Mar 2015 10:49:24 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id pc4si3257792pac.0.2015.03.18.10.49.24
+Received: by 10.107.150.74 with SMTP id y71ls944146iod.78.gmail; Mon, 09 Mar
+ 2015 05:36:21 -0700 (PDT)
+X-Received: by 10.66.100.198 with SMTP id fa6mr26986346pab.31.1425904581659;
+        Mon, 09 Mar 2015 05:36:21 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gb13si2600843pac.2.2015.03.09.05.36.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 10:49:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Mon, 09 Mar 2015 05:36:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mail=ciorneiioana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id yw6so48991496pab.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 10:49:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=tC9PxxwbMy6PfX4XT2KevIa16c9h+RjbyA8SJu411Nc=;
-        b=t5eh6mzCDnZB7o9ODUnoRWJ0/GPt/3am9pz9jHG7PEcxdcQrSLTCjBUqi/XUF3g17F
-         RSktSqyAgZWfjFLNbSjj5bPnNuWGLrvAXyxC4KE09gEo1H5Te/+Izu/VinfR1xFu45gw
-         vMte0uUrVbSSQtuPTPAfVuJ084gUsR5TqPbumoK/1BiIu2ZCu+1wAkMO2pHjuUD0ZfnP
-         WOm+C9Zl5PI0ww+yQu1mGyt+fhKH4ZVxT1GSHS/8UV4eV/qFEplgZ7yxRpwanJYFUSR5
-         ywpTS50Q7pmfH58yyntzKQg/7D22Dbc3Q/D/tzRiMSnWchdgDBU3zt/JvYZH3Qnq3wy8
-         /9WA==
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (li684-192.members.linode.com [23.239.3.192])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1F19B982;
+	Mon,  9 Mar 2015 12:36:21 +0000 (UTC)
+Date: Mon, 9 Mar 2015 13:36:16 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Fixed trailing
+ whitespace in ieee80211_rx.c
+Message-ID: <20150309123616.GA32067@kroah.com>
+References: <1425762223-2663-1-git-send-email-dilekuzulmez@gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.66.224.164 with SMTP id rd4mr163137775pac.12.1426700964434;
- Wed, 18 Mar 2015 10:49:24 -0700 (PDT)
-Received: by 10.70.124.101 with HTTP; Wed, 18 Mar 2015 10:49:24 -0700 (PDT)
-Date: Wed, 18 Mar 2015 19:49:24 +0200
-Message-ID: <CAHWJYF=CmsNnMyHXAJhL+TJw_n=EHisTKt1cCF3oM5F4rkJGLQ@mail.gmail.com>
-Subject: [KERNEL NEWBIES ACCESS] IoanaCiornei
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1425762223-2663-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-I want to apply for one of the Outreachy internships.
-Could someone give me edit privileges?
+On Sat, Mar 07, 2015 at 11:03:43PM +0200, Dilek Uzulmez wrote:
+> This patch fixes trailing whitespace error found in ieee80211_rx.c
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> index f3e32ce..d2c5451 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> @@ -610,7 +610,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+>  	u16			WinEnd = (pTS->RxIndicateSeq + WinSize -1)%4096;
+>  	u8			index = 0;
+>  	bool			bMatchWinStart = false, bPktInBuf = false;
+> -	
+> +
+>  	IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): Seq is %d,pTS->RxIndicateSeq is %d, WinSize is %d\n",__func__,SeqNum,pTS->RxIndicateSeq,WinSize);
+>  	/* Rx Reorder initialize condition.*/
+>  	if(pTS->RxIndicateSeq == 0xffff) {
 
-Thank you,
-
-Ioana
+Does not apply to my tree :(
 
