@@ -1,133 +1,100 @@
-X-GM-THRID: 6255207810462646272
-X-Received: by 10.50.43.234 with SMTP id z10mr2212023igl.4.1456404060904;
-        Thu, 25 Feb 2016 04:41:00 -0800 (PST)
+X-GM-THRID: 7382846406656
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ae38b1b49eac9065
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.5.104 with SMTP id r8mr32411324obr.19.1425989251099;
+        Tue, 10 Mar 2015 05:07:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.83.36 with SMTP id n4ls180637igy.17.gmail; Thu, 25 Feb 2016
- 04:41:00 -0800 (PST)
-X-Received: by 10.66.236.199 with SMTP id uw7mr41217742pac.47.1456404060365;
-        Thu, 25 Feb 2016 04:41:00 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id 79si1202218pft.0.2016.02.25.04.41.00
+Received: by 10.107.19.221 with SMTP id 90ls67497iot.55.gmail; Tue, 10 Mar
+ 2015 05:07:30 -0700 (PDT)
+X-Received: by 10.42.254.202 with SMTP id nf10mr25271807icb.23.1425989250940;
+        Tue, 10 Mar 2015 05:07:30 -0700 (PDT)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from mail-pd0-x234.google.com (mail-pd0-x234.google.com. [2607:f8b0:400e:c02::234])
+        by gmr-mx.google.com with ESMTPS id ri9si70584pdb.1.2015.03.10.05.07.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 04:41:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2015 05:07:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) client-ip=2607:f8b0:400e:c02::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id e127so32373541pfe.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 04:41:00 -0800 (PST)
+Received: by mail-pd0-x234.google.com with SMTP id fp1so1262475pdb.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 05:07:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ZOSJJqyNs0AdeUEzX8pBz5NclJEyg2ZWmHX+l0HyGtQ=;
-        b=uwAAm93KFOWJyHpcekY4tQb5RC4dK7d0Kna+qRWCCNu14dyjLzdcLpFJ7OAqbedNiD
-         Iom2c456Uy1537wgIshRBaAkCxWzKJ8DtEkOXyv9TitIKuhj+Q9ZuEIUuxesT7PH+tlP
-         dJ/xJXNi3wudp9eOABpeqoRN+rbbZYofjRnte9yKpOFweqN0h5XWR6qz6o/8DjAmCkVf
-         G7xADq+6ItC/A5B6Z1m+02K6rcOcFJamflzb4Rv5/hSLftAQrmuA2/Fo0HVnMI5tFGMM
-         4EY8drf3EUwIOtokrly92LnS0vkZwNw0mr3R1HcrZGXBz69C7gMX2dxY/DFpsqRtW9qG
-         mytg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=ZOSJJqyNs0AdeUEzX8pBz5NclJEyg2ZWmHX+l0HyGtQ=;
-        b=Aoj4hzfhySCE2X4kV30BqOyWLm6hzwkzLk4jTYUiw1wl6KuH2bk1JGzevApSgl3j2B
-         /ZD8MDlrybG9O+NE3ZfYJLOCmzJ+1MKEioTV2shSmE/FQN64Kyu0R43ZOFOSCtlK7Eur
-         LXWd7ZmiMybS6ZcWuXufnRiu84JufH9rdGllpVqrNFYg3uTEC2qXsKG+PWokmlNlPDPe
-         cu7A+NwANXjdBQdi2dqim104CZSTPxgC/ssGv1LSNeI76cVHSrQXiOZ/VZPkr1UgKtua
-         All+XNf46WC2CZeWW3QB6OW3PrMpFfeuJdH5P2HxM9dzRybfpQw1rAaGpGcYXzwWIQ3r
-         5wPg==
-X-Gm-Message-State: AG10YOSzQTvQkkH7OK3s9waovLggE/YiixTNUuwaryhRYk5AKP56g5dJfqYfo6K56phcTw==
-X-Received: by 10.98.15.19 with SMTP id x19mr62805050pfi.60.1456404060210;
-        Thu, 25 Feb 2016 04:41:00 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id d8sm12202544pas.14.2016.02.25.04.40.58
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=RoakDa/tQteb4cmfDnCuG4n11m0vah4XjuBBIp0F68s=;
+        b=m928RQpNRnAQNVesGxF9AyuhzFgBTPHTeOMLXk0PzZkV21MdfyErc91nVejMqnfobb
+         Ls4C7BEQNoJP8uFQdIFxsymhXD44NszxAR1CF+tgPEQA8NV+Fhb7JVtCaGSQC/tMypC0
+         +xiL353zuadhF38clzsysV5Pib4fYqVE4/F5xxcNoH1rFI6hKjh83HM54yOAyPpeORR6
+         CmgqXA5L4BqKx4/LS4Q6uB8WvmBWVYRO0LgAf+VIEvB4C+2wnZjUpCon4FkjNcdYvzXU
+         9cA7Y7S+6/ZyhxXEPpLk7OOX6R+RRzuAbXu2kkkdQFofmNhlQWU6ubFZszhpt/MdPi7e
+         dNEw==
+X-Received: by 10.66.66.105 with SMTP id e9mr65523321pat.17.1425989250796;
+        Tue, 10 Mar 2015 05:07:30 -0700 (PDT)
+Return-Path: <navyasri.tech@gmail.com>
+Received: from nizamkari ([61.16.142.166])
+        by mx.google.com with ESMTPSA id c9sm827722pdo.13.2015.03.10.05.07.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 04:40:59 -0800 (PST)
-Date: Thu, 25 Feb 2016 18:11:35 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 10 Mar 2015 05:07:30 -0700 (PDT)
+Date: Tue, 10 Mar 2015 17:38:52 +0530
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8188eu: core: Remove casts of pointer to same
- type
-Message-ID: <20160225124135.GA7636@Karyakshetra>
+Subject: [PATCH v2 8/8] staging: unisys: Use kcalloc instead of kzalloc.
+Message-ID: <66200c85794c17b2a3113075f5d699b4803f4fbd.1425987911.git.navyasri.tech@gmail.com>
+References: <cover.1425987909.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1425987909.git.navyasri.tech@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Casting a pointer to a pointer of the same type is unnecessary, so remove
-these unnecessary casts.
+This patch uses kcalloc instead of kzalloc function.
+A coccinelle script was used to make this change.
 
-This was done with Coccinelle:
-
-@@
-type T;
-T *ptr;
-@@
-- (T *)ptr
-+ ptr
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_recv.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Changes in v2:
+     - Make commit message shorter by removing the
+       coccinelle script.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 40b7a30..d3c9ded 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -141,7 +141,7 @@ struct recv_frame *_rtw_alloc_recvframe(struct __queue *pfree_recv_queue)
- 		}
+ drivers/staging/unisys/visorutil/procobjecttree.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/unisys/visorutil/procobjecttree.c b/drivers/staging/unisys/visorutil/procobjecttree.c
+index 0672e8c..dfd9e50 100644
+--- a/drivers/staging/unisys/visorutil/procobjecttree.c
++++ b/drivers/staging/unisys/visorutil/procobjecttree.c
+@@ -159,7 +159,7 @@ MYPROCTYPE *visor_proc_CreateType(struct proc_dir_entry *procDirRoot,
+ 			type->nProperties++;
+ 	while (type->name[type->nNames] != NULL)
+ 		type->nNames++;
+-	type->procDirs = kzalloc((type->nNames + 1) *
++	type->procDirs = kcalloc((type->nNames + 1),
+ 				 sizeof(struct proc_dir_entry *),
+ 				 GFP_KERNEL | __GFP_NORETRY);
+ 	if (type->procDirs == NULL)
+@@ -247,12 +247,12 @@ MYPROCOBJECT *visor_proc_CreateObject(MYPROCTYPE *type,
+ 			goto Away;
  	}
-
--	return (struct recv_frame *)hdr;
-+	return hdr;
- }
-
- struct recv_frame *rtw_alloc_recvframe(struct __queue *pfree_recv_queue)
-@@ -240,7 +240,7 @@ void rtw_free_recvframe_queue(struct __queue *pframequeue,  struct __queue *pfre
-
- 		plist = plist->next;
-
--		rtw_free_recvframe((struct recv_frame *)hdr, pfree_recv_queue);
-+		rtw_free_recvframe(hdr, pfree_recv_queue);
- 	}
-
- 	spin_unlock(&pframequeue->lock);
-@@ -1417,7 +1417,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
- 	phead = get_list_head(defrag_q);
- 	plist = phead->next;
- 	pfhdr = container_of(plist, struct recv_frame, list);
--	prframe = (struct recv_frame *)pfhdr;
-+	prframe = pfhdr;
- 	list_del_init(&(prframe->list));
-
- 	if (curfragnum != pfhdr->attrib.frag_num) {
-@@ -1437,7 +1437,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
-
- 	while (phead != plist) {
- 		pnfhdr = container_of(plist, struct recv_frame, list);
--		pnextrframe = (struct recv_frame *)pnfhdr;
-+		pnextrframe = pnfhdr;
-
- 		/* check the fragment sequence  (2nd ~n fragment frame) */
-
-@@ -1780,7 +1780,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
- 	/*  Check if there is any packet need indicate. */
- 	while (!list_empty(phead)) {
- 		prhdr = container_of(plist, struct recv_frame, list);
--		prframe = (struct recv_frame *)prhdr;
-+		prframe = prhdr;
- 		pattrib = &prframe->attrib;
-
- 		if (!SN_LESS(preorder_ctrl->indicate_seq, pattrib->seq_num)) {
---
-2.1.4
+ 	obj->procDirPropertyContexts =
+-		kzalloc((type->nProperties + 1) *
++		kcalloc((type->nProperties + 1),
+ 			sizeof(struct proc_dir_entry_context),
+ 			GFP_KERNEL | __GFP_NORETRY);
+ 	if (obj->procDirPropertyContexts == NULL)
+ 		goto Away;
+-	obj->procDirProperties = kzalloc((type->nProperties + 1) *
++	obj->procDirProperties = kcalloc((type->nProperties + 1),
+ 					 sizeof(struct proc_dir_entry *),
+ 					 GFP_KERNEL | __GFP_NORETRY);
+ 	if (obj->procDirProperties == NULL)
+-- 
+1.9.1
 
 
