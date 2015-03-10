@@ -1,53 +1,52 @@
 X-GM-THRID: 7566836891648
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b6b3faf53755f62b
+X-Google-Thread: 9ca63f596c,b6b3faf53755f62b,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.194.161.194 with SMTP id xu2mr5087739wjb.1.1426035134357;
-        Tue, 10 Mar 2015 17:52:14 -0700 (PDT)
+X-Received: by 10.180.182.201 with SMTP id eg9mr1208111wic.3.1426031994367;
+        Tue, 10 Mar 2015 16:59:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.179.36 with SMTP id dd4ls95718lac.43.gmail; Tue, 10 Mar
- 2015 17:52:13 -0700 (PDT)
-X-Received: by 10.112.159.227 with SMTP id xf3mr5167874lbb.11.1426035133658;
-        Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
+Received: by 10.152.116.9 with SMTP id js9ls92793lab.69.gmail; Tue, 10 Mar
+ 2015 16:59:53 -0700 (PDT)
+X-Received: by 10.152.164.171 with SMTP id yr11mr2149984lab.4.1426031993937;
+        Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x22c.google.com (mail-wg0-x22c.google.com. [2a00:1450:400c:c00::22c])
-        by gmr-mx.google.com with ESMTPS id gj20si1190731wic.1.2015.03.10.17.52.13
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id c8si653684wiw.1.2015.03.10.16.59.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) client-ip=2a00:1450:400c:c00::22c;
+        Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghk14 with SMTP id k14so5669707wgh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
+Received: by mail-wi0-x229.google.com with SMTP id l15so34530596wiw.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=/ZraRLHM+9iBZ1cCI6okaNU1aV9pqQCso9yDXJkcmJE=;
-        b=lm87yNQ0UZcfLSVLc1AqACgZXTpt98rKbMjbUOFAnIIsz99NzZAnmjL4NzXFLBya9m
-         +omzt6E7CFcUpSFYMfAoV3uFd1vdIjq4Szd6JglOf3v1kleslMfLJJ4/mWGtftCopdOp
-         HULyXrGmEElCF7JHkVAK8xqkYGhuSxQGkX+7kupyqZ04nGRJrTV7e/xLlrExcXwW5had
-         KQRvfxbnWl2hIdbjfWbARCv4QTYqOZCaK23ko3NSteDbobJDZ7FdO29DAbCEUK9d5UVx
-         ap64z/T4h5Zfk4QAJJrCTdZRq0dTcUjB1n1kHx+4Q9oir4ba5wgZrVe3Eo+1LtARXNiZ
-         Vagg==
-X-Received: by 10.180.207.84 with SMTP id lu20mr115387508wic.17.1426035133501;
-        Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
+        bh=JFmGZWMRGRO7M5BsSrhB55bTlXUtZcylKwtwnFK7lco=;
+        b=jxuWFLn2vh5T5rFb9RQVwSxV4e22w2hmMMOpJNMQhXzt0gBqCef3YspSQKi46Rljr7
+         MqLo2KZINuJFv1fif69Wk+OsF1LqUI/aH8VGYQ3KT2tXU/dBVIx6JMbL/Aj0hMItUSw4
+         TAUtQ5PsdXiobCp6L1L2OOZUy061Xn12RJR/ddp4pFEB9X35Xn3+cE+IK/zbxOIKClzD
+         0Emf7KhggdZd90lxinELUK+HVd43GVxQLe0UzYqcD3kZtDAUa49lKRBz8ogKJkG6W5vP
+         mhRoA29Yf4ui1kvA6U4tqsdDOeR7W1Dsj3tHnGw4UHBajSL0eBmQ6IEu2Ya4/g0T50Mw
+         QtTQ==
+X-Received: by 10.180.187.19 with SMTP id fo19mr39556281wic.2.1426031993855;
+        Tue, 10 Mar 2015 16:59:53 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
 Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id gz3sm3854384wib.1.2015.03.10.17.52.12
-        for <outreachy-kernel@googlegroups.com>
+        by mx.google.com with ESMTPSA id w4sm3678324wib.19.2015.03.10.16.59.52
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 17:52:12 -0700 (PDT)
-Date: Wed, 11 Mar 2015 02:51:35 +0200
+        Tue, 10 Mar 2015 16:59:52 -0700 (PDT)
+Date: Wed, 11 Mar 2015 01:59:14 +0200
 From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
+To: cristina.opriceana@gmail.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] Staging: rtl8192u: Review phrase and fix spelling errors
-Message-ID: <6c93bde2194f90e26882b54caad83535584930d0.1426034297.git.cristina.opriceana@gmail.com>
+Subject: [PATCH v2] Staging: rtl8192u: Review phrase and fix spelling errors
+Message-ID: <49964f76185334882a4e5e2e9d1e500279b95d3e.1426031886.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -58,11 +57,6 @@ improvements to the phrases in order to make them easier to understand.
 
 Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
-Changes in v3:
-	- replace the subject with a more specific one
-	- replace it's with its, enought with enough
-	- review phrase
-
  .../staging/rtl8192u/ieee80211/ieee80211_softmac.c | 26 +++++++++++-----------
  1 file changed, 13 insertions(+), 13 deletions(-)
 
