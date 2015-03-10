@@ -1,53 +1,49 @@
 X-GM-THRID: 7460820615168
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,95d5e58ffe370867
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.40.81 with SMTP id v17mr977946lbk.5.1426007053789;
-        Tue, 10 Mar 2015 10:04:13 -0700 (PDT)
+X-Received: by 10.112.77.101 with SMTP id r5mr5018733lbw.4.1426007003188;
+        Tue, 10 Mar 2015 10:03:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.42 with SMTP id g10ls54528laa.51.gmail; Tue, 10 Mar 2015
- 10:04:13 -0700 (PDT)
-X-Received: by 10.112.189.227 with SMTP id gl3mr4963264lbc.2.1426007053264;
-        Tue, 10 Mar 2015 10:04:13 -0700 (PDT)
+Received: by 10.180.83.130 with SMTP id q2ls278788wiy.13.canary; Tue, 10 Mar
+ 2015 10:03:22 -0700 (PDT)
+X-Received: by 10.180.80.35 with SMTP id o3mr8064782wix.0.1426007002469;
+        Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id i8si118199wif.1.2015.03.10.10.04.13
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id gj20si1118660wic.1.2015.03.10.10.03.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 10:04:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevk48 with SMTP id k48so3260499wev.7
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:04:13 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id l15so4797277wiw.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=X2+TRSg85JvMQVpXZ8ZdQKEQtgEgJ7xm/6tVQNW23LM=;
-        b=zslIl48CbtjqyufoxwS7TsbDTVc37zkzLySlWi4xCIlpf+eHt8ryIiHXxznPZACKmf
-         qN16UujkVXNL5Ws/Jy+HC2C3zNsjwjh9MON6tDFFM06BrwerfvLLLCIBuujs4HBFGleh
-         VDiSbbIKuoObBe6EXhy/5yh3tuXpfGWbAidX9NHcm8j/Fr8TsiG1FMtSu9MwsoGz8wQ1
-         xN/+sYNRPV3XLguSDVylAC6Jx1FUxZe+Tcp/bcXWHpCjLr9fRYr4AVoaSTXTavGaFTUD
-         h+7MyYEoWaZwLA4ChRnmkqWLYZRQLpVle3qaqStXT+XLMkVVzc45xApdUUgmco6js4Dc
-         eYJA==
-X-Received: by 10.180.13.146 with SMTP id h18mr40881667wic.73.1426007053155;
-        Tue, 10 Mar 2015 10:04:13 -0700 (PDT)
+        bh=lNOZ/s6CUAd69sSU3B4cLghcGcSEVNXj0t6Eflw14P8=;
+        b=du+mNcV8+G0WeMZM5s0WyGkTROCGBAL1u6N5AC20tQbEq3mP5HJw/aWvVgG7E07qG2
+         8puiHyv4dGbe6Ogr8DVD/gUYpH0lp6djC/XOPBwtXpDhAGoXIKkyksu87HIn8SukvpYm
+         TAxp31wmtV60BIcxPmNnZyqSpIyoSMLFWDjHnuqWdoropzacKTWT4fk2zCiqxNVNWrjm
+         reKyf9LANAtITHKIn/SrbYCd/bTjNvXurRqvqeO7gKcIebNoOmwH6zz+aJiJBQAqf6iy
+         07u/96BUjK4UgYYzMebvdXniWZ2Z99P5JJgY/z9qH6cHHk5zDE1mbXdPMBsKPA7B5Em2
+         i5RQ==
+X-Received: by 10.180.206.13 with SMTP id lk13mr28212268wic.95.1426007002361;
+        Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.194])
-        by mx.google.com with ESMTPSA id hi6sm1682603wjc.34.2015.03.10.10.04.11
+        by mx.google.com with ESMTPSA id j7sm2432863wix.4.2015.03.10.10.03.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 10:04:12 -0700 (PDT)
-Date: Tue, 10 Mar 2015 19:04:09 +0200
+        Tue, 10 Mar 2015 10:03:21 -0700 (PDT)
+Date: Tue, 10 Mar 2015 19:03:18 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 11/20] staging: ft1000: ft1000-usb: ft1000_hw.c: adjust
+Subject: [PATCH 10/20] staging: ft1000: ft1000-usb: ft1000_download.c: adjust
  function arguments
-Message-ID: <9db04635522507680cb49d151e541e2a4d2f36bc.1426004643.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <67a6a2ea0c6b42272a8d95cf43da39fece8d4983.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -58,7 +54,7 @@ User-Agent: Mutt/1.5.23 (2014-03-12)
 Handles the following issues:
 
 Removing extra parentheses around function arguments,
-Removing unnecessary pointer to pointer casts.
+Removing unnecessary pointer to pointer cast.
 
 Issues were detected using the following coccinelle script:
 
@@ -96,93 +92,76 @@ e
 -)
 ,...)
 
-Parentheses removal were left to the script. However, there were some
-cases that were handled manually. In addition, handling pointer casts
-were done manually too because not all replacements generated by the
-script were suitable. When pointer casts on function arguments were
-in the form:
+Parentheses removal were left to the script. However, handling pointer
+casts were done manually because not all replacements generated by the
+script were suitable. In general, the following cases were discarded:
+
+pointer casts in macros,
+pointer casts on function arguments in the form of:
     <func>(...,(<type> *)&<expression>,...)
 
-the replacements were discarded due to compilation warnings.
+since both cases generated compilation warnings.
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/ft1000/ft1000-usb/ft1000_hw.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/ft1000/ft1000-usb/ft1000_download.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c b/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c
-index f0ac438..2620778 100644
---- a/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c
-+++ b/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c
-@@ -339,7 +339,7 @@ int card_send_command(struct ft1000_usb *ft1000dev, void *ptempbuffer,
- 	commandbuf = kmalloc(size + 2, GFP_KERNEL);
- 	if (!commandbuf)
- 		return -ENOMEM;
--	memcpy((void *)commandbuf + 2, (void *)ptempbuffer, size);
-+	memcpy((void *)commandbuf + 2, ptempbuffer, size);
+diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_download.c b/drivers/staging/ft1000/ft1000-usb/ft1000_download.c
+index e8126325..800450f 100644
+--- a/drivers/staging/ft1000/ft1000-usb/ft1000_download.c
++++ b/drivers/staging/ft1000/ft1000-usb/ft1000_download.c
+@@ -230,7 +230,7 @@ static u16 get_handshake_usb(struct ft1000_usb *ft1000dev, u16 expected_value)
+ 	while (loopcnt < 100) {
+ 		if (ft1000dev->usbboot == 2) {
+ 			status = ft1000_read_dpram32(ft1000dev, 0,
+-						     (u8 *)&(ft1000dev->tempbuf[0]), 64);
++						     (u8 *)&ft1000dev->tempbuf[0], 64);
+ 			for (temp = 0; temp < 16; temp++) {
+ 				pr_debug("tempbuf %d = 0x%x\n",
+ 					 temp, ft1000dev->tempbuf[temp]);
+@@ -538,7 +538,7 @@ static int write_blk_fifo(struct ft1000_usb *ft1000dev, u16 **pUsFile,
+ 			  usb_sndbulkpipe(ft1000dev->dev,
+ 					  ft1000dev->bulk_out_endpointAddr),
+ 			  ft1000dev->tx_buf, byte_length, usb_dnld_complete,
+-			  (void *)ft1000dev);
++			  ft1000dev);
  
- 	if (temp & 0x0100)
- 		usleep_range(900, 1100);
-@@ -429,7 +429,7 @@ static void ft1000_reset_asic(struct net_device *dev)
- 	/* Let's use the register provided by the Magnemite ASIC to reset the
- 	 * ASIC and DSP.
- 	 */
--	ft1000_write_register(ft1000dev, (DSP_RESET_BIT | ASIC_RESET_BIT),
-+	ft1000_write_register(ft1000dev, DSP_RESET_BIT | ASIC_RESET_BIT,
- 			      FT1000_REG_RESET);
+ 	usb_submit_urb(ft1000dev->tx_urb, GFP_ATOMIC);
  
- 	mdelay(1);
-@@ -542,7 +542,7 @@ static int ft1000_copy_down_pkt(struct net_device *netdev, u8 *packet, u16 len)
- 		hdr.portdest ^ hdr.portsrc ^ hdr.sh_str_id ^ hdr.control;
+@@ -704,7 +704,7 @@ int scram_dnldr(struct ft1000_usb *ft1000dev, void *pFileStart,
+ 				case REQUEST_CODE_SEGMENT:
+ 					status = request_code_segment(ft1000dev,
+ 								      &s_file, &c_file,
+-								      (const u8 *)boot_end,
++								      boot_end,
+ 								      true);
+ 					break;
+ 				default:
+@@ -799,7 +799,7 @@ int scram_dnldr(struct ft1000_usb *ft1000dev, void *pFileStart,
  
- 	memcpy(&pFt1000Dev->tx_buf[0], &hdr, sizeof(hdr));
--	memcpy(&(pFt1000Dev->tx_buf[sizeof(struct pseudo_hdr)]), packet, len);
-+	memcpy(&pFt1000Dev->tx_buf[sizeof(struct pseudo_hdr)], packet, len);
+ 					status = request_code_segment(ft1000dev,
+ 								      &s_file, &c_file,
+-								      (const u8 *)code_end,
++								      code_end,
+ 								      false);
  
- 	netif_stop_queue(netdev);
+ 					break;
+@@ -971,11 +971,11 @@ int scram_dnldr(struct ft1000_usb *ft1000dev, void *pFileStart,
  
-@@ -551,7 +551,7 @@ static int ft1000_copy_down_pkt(struct net_device *netdev, u8 *packet, u16 len)
- 			  usb_sndbulkpipe(pFt1000Dev->dev,
- 					  pFt1000Dev->bulk_out_endpointAddr),
- 			  pFt1000Dev->tx_buf, count,
--			  ft1000_usb_transmit_complete, (void *)pFt1000Dev);
-+			  ft1000_usb_transmit_complete, pFt1000Dev);
- 
- 	t = (u8 *)pFt1000Dev->tx_urb->transfer_buffer;
- 
-@@ -606,7 +606,7 @@ static int ft1000_start_xmit(struct sk_buff *skb, struct net_device *dev)
- 		goto err;
- 	}
- 
--	ft1000_copy_down_pkt(dev, (pdata + ENET_HEADER_SIZE - 2),
-+	ft1000_copy_down_pkt(dev, pdata + ENET_HEADER_SIZE - 2,
- 			     skb->len - ENET_HEADER_SIZE + 2);
- 
- err:
-@@ -1558,19 +1558,19 @@ int ft1000_poll(void *dev_id)
- 				/* Reset ASIC and DSP */
- 				status = ft1000_read_dpram16(dev,
- 							     FT1000_MAG_DSP_TIMER0,
--							     (u8 *)&(info->DSP_TIME[0]),
-+							     (u8 *)&info->DSP_TIME[0],
- 							     FT1000_MAG_DSP_TIMER0_INDX);
- 				status = ft1000_read_dpram16(dev,
- 							     FT1000_MAG_DSP_TIMER1,
--							     (u8 *)&(info->DSP_TIME[1]),
-+							     (u8 *)&info->DSP_TIME[1],
- 							     FT1000_MAG_DSP_TIMER1_INDX);
- 				status = ft1000_read_dpram16(dev,
- 							     FT1000_MAG_DSP_TIMER2,
--							     (u8 *)&(info->DSP_TIME[2]),
-+							     (u8 *)&info->DSP_TIME[2],
- 							     FT1000_MAG_DSP_TIMER2_INDX);
- 				status = ft1000_read_dpram16(dev,
- 							     FT1000_MAG_DSP_TIMER3,
--							     (u8 *)&(info->DSP_TIME[3]),
-+							     (u8 *)&info->DSP_TIME[3],
- 							     FT1000_MAG_DSP_TIMER3_INDX);
- 				info->CardReady = 0;
- 				info->DrvErrNum = DSP_CONDRESET_INFO;
+ 				/* Get buffer for provisioning data */
+ 				pbuffer =
+-					kmalloc((pseudo_header_len +
+-						 sizeof(struct pseudo_hdr)),
++					kmalloc(pseudo_header_len +
++						 sizeof(struct pseudo_hdr),
+ 						GFP_ATOMIC);
+ 				if (pbuffer) {
+-					memcpy(pbuffer, (void *)c_file,
++					memcpy(pbuffer, c_file,
+ 					       (u32) (pseudo_header_len +
+ 						      sizeof(struct
+ 							     pseudo_hdr)));
 -- 
 1.9.3
 
