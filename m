@@ -1,48 +1,52 @@
 X-GM-THRID: 7382846406656
-X-Received: by 10.182.47.228 with SMTP id g4mr33232128obn.5.1425988987681;
-        Tue, 10 Mar 2015 05:03:07 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,ae38b1b49eac9065
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.231.199 with SMTP id ti7mr33147570obc.7.1425988889664;
+        Tue, 10 Mar 2015 05:01:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.136.226 with SMTP id qd2ls1231679igb.17.canary; Tue, 10 Mar
- 2015 05:03:07 -0700 (PDT)
-X-Received: by 10.70.94.102 with SMTP id db6mr18156183pdb.0.1425988987486;
-        Tue, 10 Mar 2015 05:03:07 -0700 (PDT)
+Received: by 10.107.162.138 with SMTP id l132ls69550ioe.19.gmail; Tue, 10 Mar
+ 2015 05:01:29 -0700 (PDT)
+X-Received: by 10.42.243.68 with SMTP id ll4mr24829936icb.19.1425988889387;
+        Tue, 10 Mar 2015 05:01:29 -0700 (PDT)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id m1si79169pdc.0.2015.03.10.05.03.07
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id m1si78360pdc.0.2015.03.10.05.01.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 05:03:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Tue, 10 Mar 2015 05:01:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padbj1 with SMTP id bj1so1209669pad.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 05:03:07 -0700 (PDT)
+Received: by pabli10 with SMTP id li10so1312615pab.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 05:01:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=7Ojy3XPQedq7vazWomtvd9xgadu5WKF/UBEuLq8T1EA=;
-        b=jIUYvj8t52gLH0oLHO6gQmoJanVr+FcAYUNkD8FSVk8Fkvm1+JHTIYq6goLE87vjmS
-         Slil82gYYI0RcqklwEVO2OPc6kl9EOUi0LKyOiw66ZcELq7JysXQAeZKGMDvs11fvUgW
-         GCQmloZ22NN3ZX8UGhN5QKjumk91YtdPA91ZDvkCkBnkiCmzptuxAaQVrRHuxPHktEar
-         2iLfryDj2Xc4SilxoC+tvMTodUQIz3GVgH6FtrTBn6vEfwPJxjThA02GA16jOrzC6KRB
-         uiUNAZK2kWr5L6QiLuEmsKCfKnVg8Vq7RLz8e2TXzcqCe0Sj0LNPFbaFAFfoO+oyPalL
-         n8nQ==
-X-Received: by 10.66.97.106 with SMTP id dz10mr66342951pab.66.1425988987204;
-        Tue, 10 Mar 2015 05:03:07 -0700 (PDT)
+        bh=ywW3n8c7+ZvFjCN17b0X5GPnxXzV1WMOSEF8ySiFz+E=;
+        b=WXlMwJYZn0xkVAlWWH7bpBBAlhifV4HvMV40Swd76QHZfKxFThzQ6d4J5XPr4GXB04
+         m+RhEhJR8WHM23/9bBMKvQJMMJsSO4Cz1HtoYWj1c6SVNyWHQpKNJHOHro+NTN3Z53Yf
+         CpOkxTGIYG6LUZdNnI6twVRs0u4dTt+2PtrRuoEYaJmTZEGbZwhEUbKXUPVC/qeStszA
+         UTyLP9P+5dTvAP70JzCf87mBc/kiO6l7pb1fcJt++yhT4R7GPkDqa5BzpMihYZU5oS1i
+         UQ2zJv67ldchvOy2jlN/tmMC/xI7Wj574Vs9A46o8m5zZFQWBv6OI5Vhr5istahRUP+Z
+         Pn0w==
+X-Received: by 10.66.248.200 with SMTP id yo8mr64163213pac.96.1425988889209;
+        Tue, 10 Mar 2015 05:01:29 -0700 (PDT)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id ey10sm666524pab.47.2015.03.10.05.03.06
+        by mx.google.com with ESMTPSA id kn5sm720450pdb.42.2015.03.10.05.01.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 05:03:06 -0700 (PDT)
-Date: Tue, 10 Mar 2015 17:34:29 +0530
+        Tue, 10 Mar 2015 05:01:28 -0700 (PDT)
+Date: Tue, 10 Mar 2015 17:32:50 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 5/8] staging: iio: Use kcalloc instead of kzalloc
-Message-ID: <6225245c1e3f49131bf8b76239452294779c29aa.1425987911.git.navyasri.tech@gmail.com>
+Subject: [PATCH v2 4/8] staging: iio: Use kcalloc instead of kzalloc.
+Message-ID: <b4c6d2f27ac98146129d3f1394d22ecdeaec6e67.1425987910.git.navyasri.tech@gmail.com>
 References: <cover.1425987909.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -56,25 +60,27 @@ A coccinelle script was used to make this change.
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
 Changes in v2:
-     - Make commit message shorter by removing the
-       coccinelle script.
+     - Make commit message shorter by removing the coccinelle
+       script.
+ drivers/staging/iio/adc/ad7280a.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
- drivers/staging/iio/accel/lis3l02dq_ring.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/iio/accel/lis3l02dq_ring.c b/drivers/staging/iio/accel/lis3l02dq_ring.c
-index 1fd9009..e6101bb 100644
---- a/drivers/staging/iio/accel/lis3l02dq_ring.c
-+++ b/drivers/staging/iio/accel/lis3l02dq_ring.c
-@@ -118,7 +118,7 @@ static int lis3l02dq_get_buffer_element(struct iio_dev *indio_dev,
- 	int scan_count = bitmap_weight(indio_dev->active_scan_mask,
- 				       indio_dev->masklength);
+diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+index 4d48707..e7d45ee 100644
+--- a/drivers/staging/iio/adc/ad7280a.c
++++ b/drivers/staging/iio/adc/ad7280a.c
+@@ -547,8 +547,9 @@ static int ad7280_attr_init(struct ad7280_state *st)
+ {
+ 	int dev, ch, cnt;
  
--	rx_array = kzalloc(4 * scan_count, GFP_KERNEL);
-+	rx_array = kcalloc(4, scan_count, GFP_KERNEL);
- 	if (rx_array == NULL)
+-	st->iio_attr = kzalloc(sizeof(*st->iio_attr) * (st->slave_num + 1) *
+-				AD7280A_CELLS_PER_DEV * 2, GFP_KERNEL);
++	st->iio_attr = kcalloc(2, sizeof(*st->iio_attr) *
++			       (st->slave_num + 1) * AD7280A_CELLS_PER_DEV,
++			       GFP_KERNEL);
+ 	if (st->iio_attr == NULL)
  		return -ENOMEM;
- 	ret = lis3l02dq_read_all(indio_dev, rx_array);
+ 
 -- 
 1.9.1
 
