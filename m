@@ -3,50 +3,51 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,95d5e58ffe370867
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.152.8.73 with SMTP id p9mr500197laa.6.1426006954697;
-        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
+X-Received: by 10.181.29.66 with SMTP id ju2mr8041189wid.1.1426006905127;
+        Tue, 10 Mar 2015 10:01:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.87.72 with SMTP id v8ls127784wiz.15.gmail; Tue, 10 Mar
- 2015 10:02:34 -0700 (PDT)
-X-Received: by 10.194.221.65 with SMTP id qc1mr4875281wjc.7.1426006954399;
-        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
+Received: by 10.152.115.135 with SMTP id jo7ls56925lab.101.gmail; Tue, 10 Mar
+ 2015 10:01:44 -0700 (PDT)
+X-Received: by 10.152.6.41 with SMTP id x9mr4864642lax.10.1426006904599;
+        Tue, 10 Mar 2015 10:01:44 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
-        by gmr-mx.google.com with ESMTPS id ew13si119919wid.0.2015.03.10.10.02.34
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id o3si1114234wib.2.2015.03.10.10.01.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
+        Tue, 10 Mar 2015 10:01:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x231.google.com with SMTP id x3so3309310wes.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
+Received: by wiwh11 with SMTP id h11so4704223wiw.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:01:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=OCCYJEQt0WaEQXopVdEBDhgdLU35ScCld4I7Q15F/9s=;
-        b=0/nt5RLPqgWd5c/ED++YGkXsjLfRZzCW07p2+rMef82buKdCHxStObUIMRL9WCJYal
-         vLvn0v6pV27CVMMLdGStb6Lx+V73lNd6A3CKyVQmyG6x0IoX6Rxc0KWYfHoHSmGg3p9J
-         NZVe+O7NnuYZM1BnrYKz83Pfm1yM7IobWMJPea8tdDzzpoEYnAm2nEEwbyMukk/feQpo
-         K8rVj3oGM3AfXXiljQM1O58zPBuQrD+XWldAbr/i7R2J/fWBEGnWRRLvfVmYgkHyiOvS
-         8hsZo2kGljVYO8cBEYwwJ7xT+kfEcPGWCWphPUd1SdpRBlusEobfUw/TSic3FBlsctMC
-         3vOA==
-X-Received: by 10.194.75.193 with SMTP id e1mr68163884wjw.126.1426006954306;
-        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
+        bh=ieOjokG9X4gCiFcdqP9cj0JUDa7JyvPRMadJC0CQUV8=;
+        b=DKcso0K4VtsfHJVKj+z69wan2LYtaKE0X1wIiZ6SiQdTyDmJHqMNij0mI9fRtMyiak
+         NZSb06vnd9YOI/ez9nzSgQJJikJrMgDmqkXIfB+687iG5j30hZH7qlGLhooCaCWiuCzK
+         +uKc2xJa/PB9JfSKMRK/yg0KkZEQzJEW2T8D3O8VEK+gVPkEgXWj7bTnj3Ltty6qgtD2
+         sdCLcJAtLMWjmypKyZBH6sWqdv9J3bThP0TOvBiS+EeHV44RY8bfw85brbCToI1bj/hd
+         LAj4xBoyxnuZRUDsOQarVYHUYr9NfQ3sPbzWHcAjYtDbx/Cg7jkb7hgxzFW/CAol1jnh
+         Pkyg==
+X-Received: by 10.181.25.232 with SMTP id it8mr70949977wid.63.1426006904467;
+        Tue, 10 Mar 2015 10:01:44 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.194])
-        by mx.google.com with ESMTPSA id gt4sm2377312wib.21.2015.03.10.10.02.31
+        by mx.google.com with ESMTPSA id hn8sm2383745wib.18.2015.03.10.10.01.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 10:02:33 -0700 (PDT)
-Date: Tue, 10 Mar 2015 19:02:29 +0200
+        Tue, 10 Mar 2015 10:01:43 -0700 (PDT)
+Date: Tue, 10 Mar 2015 19:01:41 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 09/20] staging: ft1000: ft1000-usb: adjust function arguments
-Message-ID: <d8875f68aaa8cb9aa91d74fefc36c04fb82e5355.1426004643.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 08/20] staging: ft1000: ft1000-pcmcia: adjust function
+ arguments
+Message-ID: <d636fe08c236540d0a2848f85820d4dc8b791d8e.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -57,9 +58,10 @@ User-Agent: Mutt/1.5.23 (2014-03-12)
 Handles the following issues:
 
 Removing extra parentheses around function arguments,
-Removing unnecessary pointer to pointer cast.
+Removing unnecessary pointer to potinter cast.
 
-Issues were detected using the following coccinelle script:
+Issues were detected using the following coccinelle
+script:
 
 @@
 expression e;
@@ -101,54 +103,48 @@ script were suitable. In general, the following cases were discarded:
 
 pointer casts in macros,
 pointer casts on function arguments in the form of:
-    <func>(...,(<type> *)&<expression>,...)
+<func>(...,(<type> *)&<expression>,...)
 
 since both cases generated compilation warnings.
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/ft1000/ft1000-usb/ft1000_debug.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-index 0f776d0..7138523 100644
---- a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-+++ b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-@@ -190,7 +190,7 @@ int ft1000_create_dev(struct ft1000_usb *dev)
- 	tmp->dent = dir;
- 	tmp->file = file;
- 	tmp->int_number = dev->CardNumber;
--	list_add(&(tmp->list), &(dev->nodes.list));
-+	list_add(&tmp->list, &dev->nodes.list);
+diff --git a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
+index bc959ff..e4559ca 100644
+--- a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
++++ b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
+@@ -327,7 +327,7 @@ static void ft1000_reset_asic(struct net_device *dev)
+ 	 */
+ 	if (info->AsicID == MAGNEMITE_ID) {
+ 		ft1000_write_reg(dev, FT1000_REG_RESET,
+-				 (DSP_RESET_BIT | ASIC_RESET_BIT));
++				 DSP_RESET_BIT | ASIC_RESET_BIT);
+ 	}
+ 	mdelay(1);
+ 	if (info->AsicID == ELECTRABUZZ_ID) {
+@@ -387,7 +387,7 @@ static int ft1000_reset_card(struct net_device *dev)
+ 	} else {
+ 		pr_debug("resetting ASIC and DSP\n");
+ 		ft1000_write_reg(dev, FT1000_REG_RESET,
+-				 (DSP_RESET_BIT | ASIC_RESET_BIT));
++				 DSP_RESET_BIT | ASIC_RESET_BIT);
+ 	}
  
- 	pr_debug("registered debugfs directory \"%s\"\n", dev->DeviceName);
+ 	/* Copy DSP session record into info block if this is not a coldstart */
+@@ -1127,7 +1127,9 @@ static void ft1000_proc_drvmsg(struct net_device *dev)
+ 				info->DSPInfoBlk[8] = 0x7200;
+ 				info->DSPInfoBlk[9] =
+ 					htons(info->DSPInfoBlklen);
+-				ft1000_send_cmd(dev, (u16 *)info->DSPInfoBlk, (u16)(info->DSPInfoBlklen+4), 0);
++				ft1000_send_cmd(dev, info->DSPInfoBlk,
++						(u16)(info->DSPInfoBlklen+4),
++						0);
+ 			}
  
-@@ -477,14 +477,14 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
- 		/* Connect Message */
- 		pr_debug("IOCTL_FT1000_CONNECT\n");
- 		ConnectionMsg[79] = 0xfc;
--		result = card_send_command(ft1000dev, (unsigned short *)ConnectionMsg, 0x4c);
-+		result = card_send_command(ft1000dev, ConnectionMsg, 0x4c);
- 
- 		break;
- 	case IOCTL_DISCONNECT:
- 		/* Disconnect Message */
- 		pr_debug("IOCTL_FT1000_DISCONNECT\n");
- 		ConnectionMsg[79] = 0xfd;
--		result = card_send_command(ft1000dev, (unsigned short *)ConnectionMsg, 0x4c);
-+		result = card_send_command(ft1000dev, ConnectionMsg, 0x4c);
- 		break;
- 	case IOCTL_GET_DSP_STAT_CMD:
- 		/* pr_debug("IOCTL_FT1000_GET_DSP_STAT\n"); */
-@@ -642,7 +642,7 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
- 						}
- 						pmsg++;
- 						ppseudo_hdr = (struct pseudo_hdr *)pmsg;
--						result = card_send_command(ft1000dev, (unsigned short *)dpram_data, total_len+2);
-+						result = card_send_command(ft1000dev, dpram_data, total_len+2);
- 
- 
- 						ft1000dev->app_info[app_index].nTxMsg++;
+ 			break;
 -- 
 1.9.3
 
