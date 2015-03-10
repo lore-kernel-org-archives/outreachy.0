@@ -3,50 +3,50 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,66aeee52302e9056
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.70.53.137 with SMTP id b9mr31786926pdp.4.1425990336684;
-        Tue, 10 Mar 2015 05:25:36 -0700 (PDT)
+X-Received: by 10.236.43.146 with SMTP id l18mr31113434yhb.23.1425990259567;
+        Tue, 10 Mar 2015 05:24:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.81.163 with SMTP id f32ls49011qgd.84.gmail; Tue, 10 Mar
- 2015 05:25:36 -0700 (PDT)
-X-Received: by 10.236.20.234 with SMTP id p70mr31877174yhp.46.1425990336517;
-        Tue, 10 Mar 2015 05:25:36 -0700 (PDT)
+Received: by 10.51.15.129 with SMTP id fo1ls1187431igd.21.canary; Tue, 10 Mar
+ 2015 05:24:19 -0700 (PDT)
+X-Received: by 10.66.157.194 with SMTP id wo2mr31871566pab.17.1425990259359;
+        Tue, 10 Mar 2015 05:24:19 -0700 (PDT)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pd0-x229.google.com (mail-pd0-x229.google.com. [2607:f8b0:400e:c02::229])
-        by gmr-mx.google.com with ESMTPS id pc4si88988pac.0.2015.03.10.05.25.36
+Received: from mail-pd0-x22a.google.com (mail-pd0-x22a.google.com. [2607:f8b0:400e:c02::22a])
+        by gmr-mx.google.com with ESMTPS id pc4si88161pac.0.2015.03.10.05.24.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 05:25:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::229 as permitted sender) client-ip=2607:f8b0:400e:c02::229;
+        Tue, 10 Mar 2015 05:24:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::22a as permitted sender) client-ip=2607:f8b0:400e:c02::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::229 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::22a as permitted sender) smtp.mail=navyasri.tech@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbfp1 with SMTP id fp1so1366155pdb.7
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 05:25:36 -0700 (PDT)
+Received: by mail-pd0-x22a.google.com with SMTP id fl12so1382581pdb.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 05:24:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=dfocjl7jsQIxOvJJoQZKa27rUnxefW7CyuBRQcp2vY4=;
-        b=nSohNQlnyWX/h6Jr3WpJJY6WNhjcQ/PIQ3fhlXWrdqQCu1Y2YcXxLwQjxMi4iaDb1H
-         1oFBYniT/ddHgdd5GVkYaSntGZM3pzuIKE93pw5AU/wO7xhAxkZ2w715njR1lLayztL9
-         KoFe5XU42fUvHhkdcaBCvj8nvK2a8LyVSZGwJGKqlVNa+LfDAxxQ2++FnyvDckGj9qrE
-         s9r6trPzVIOS70MBDsKLAV5/a3bKEiYWPK6wra16rvWMb6DgeDQfiYpX7HYnG7wrvNp/
-         o/UmBfOvL7uAyJeGvKULgSBUVWvH6wayAZVFUozhw1iCy2zQr9crD7LaPFfNzxJeE5PE
-         PC1Q==
-X-Received: by 10.70.54.198 with SMTP id l6mr66292271pdp.74.1425990336353;
-        Tue, 10 Mar 2015 05:25:36 -0700 (PDT)
+        bh=nVodZDyiEWaPIqheWuonxZXQ9kqfRwNfe5zowCDSPnI=;
+        b=JCO7mT+y7FinuMr6HUcNeq+evjOn5vU+AyOcYyHmdPOVkdR4nskZ/0Z2VKO2UYuWmO
+         VQ1/lLg0Zc7KzmKmQwTfWgbbzM0SfC6Xb/4GdtHU8tT/0V9hcmFVr07bSQLutvXFKCUt
+         ZPqWinuTeoEK8x6UY+R+P0UrNwAyxy+2bA/hr9Za/dZED8xnrNZAK7M9plD+/65zzmcG
+         VZ4miUkUtx5Ku9wKDeyGOXLfZyFH5m3yzwhN7eGL/p0BUV9olTjerKQ8JQ2ppKd9u27a
+         7jjsv0GI3v2IxvwFm2OX5DaFke/4Ln+YfquABw2fVbC8m0/6vgvTVuiZhtOIwCdYhPGB
+         APfQ==
+X-Received: by 10.66.136.48 with SMTP id px16mr28623492pab.89.1425990258971;
+        Tue, 10 Mar 2015 05:24:18 -0700 (PDT)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id qj3sm831858pac.31.2015.03.10.05.25.35
+        by mx.google.com with ESMTPSA id j5sm779673pdo.60.2015.03.10.05.24.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 05:25:35 -0700 (PDT)
-Date: Tue, 10 Mar 2015 17:56:58 +0530
+        Tue, 10 Mar 2015 05:24:18 -0700 (PDT)
+Date: Tue, 10 Mar 2015 17:55:40 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/3] staging: rtl8192u: Use kzalloc instead of kmalloc.
-Message-ID: <c051d4570556c6da9fc60bb44ba33a51503ea0c9.1425989875.git.navyasri.tech@gmail.com>
+Subject: [PATCH v2 1/3] staging: wlan-ng: Use kzalloc instead of kmalloc.
+Message-ID: <626c182cb4c093f493547b6f5aa62820bb62c617.1425989875.git.navyasri.tech@gmail.com>
 References: <cover.1425989875.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,27 +63,28 @@ Changes in v2:
      - Make commit message shorter by removing the
        coccinelle script.
 
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index 3a54071..aa53ec2 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -3025,12 +3025,11 @@ static int ieee80211_wpa_set_encryption(struct ieee80211_device *ieee,
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index c85b1b5..e109a7f 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -619,11 +619,10 @@ static hfa384x_usbctlx_t *usbctlx_alloc(void)
+ {
+ 	hfa384x_usbctlx_t *ctlx;
  
- 		ieee80211_crypt_delayed_deinit(ieee, crypt);
+-	ctlx = kmalloc(sizeof(*ctlx), in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+-	if (ctlx != NULL) {
+-		memset(ctlx, 0, sizeof(*ctlx));
++	ctlx = kzalloc(sizeof(*ctlx),
++		       in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
++	if (ctlx != NULL)
+ 		init_completion(&ctlx->done);
+-	}
  
--		new_crypt = kmalloc(sizeof(*new_crypt), GFP_KERNEL);
-+		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
- 		if (new_crypt == NULL) {
- 			ret = -ENOMEM;
- 			goto done;
- 		}
--		memset(new_crypt, 0, sizeof(struct ieee80211_crypt_data));
- 		new_crypt->ops = ops;
- 		if (new_crypt->ops && try_module_get(new_crypt->ops->owner))
- 			new_crypt->priv =
+ 	return ctlx;
+ }
 -- 
 1.9.1
 
