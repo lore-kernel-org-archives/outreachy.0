@@ -1,49 +1,49 @@
 X-GM-THRID: 7460820615168
-X-Received: by 10.180.11.34 with SMTP id n2mr5345539wib.2.1426007132093;
-        Tue, 10 Mar 2015 10:05:32 -0700 (PDT)
+X-Received: by 10.180.80.132 with SMTP id r4mr1531179wix.4.1426007079910;
+        Tue, 10 Mar 2015 10:04:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.8.129 with SMTP id r1ls216944wia.43.canary; Tue, 10 Mar
- 2015 10:05:31 -0700 (PDT)
-X-Received: by 10.194.161.194 with SMTP id xu2mr4880496wjb.1.1426007131596;
-        Tue, 10 Mar 2015 10:05:31 -0700 (PDT)
+Received: by 10.180.106.133 with SMTP id gu5ls128263wib.33.gmail; Tue, 10 Mar
+ 2015 10:04:39 -0700 (PDT)
+X-Received: by 10.180.80.132 with SMTP id r4mr1531172wix.4.1426007079455;
+        Tue, 10 Mar 2015 10:04:39 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id o3si1115013wib.2.2015.03.10.10.05.31
+Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
+        by gmr-mx.google.com with ESMTPS id sf8si115877wic.2.2015.03.10.10.04.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 10:05:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Tue, 10 Mar 2015 10:04:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by widem10 with SMTP id em10so4770765wid.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:05:31 -0700 (PDT)
+Received: by mail-we0-x234.google.com with SMTP id k48so3281740wev.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:04:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=CBY+HZHI1qEcrQ06Pjc4qFsNmQd3yCnF6DVXsCHCPXY=;
-        b=S/dU8cDj7dbkBzpmEbBBqFr1X5nArxR6/8Um5CPtf5aRXwnrV4ih5yHy77gLEX9Zyh
-         S3KcA6jzlfDFDrGCaU+o9JXuR2uciO7wuvnMLOQZK0QUali0OX48/eANcSk4++Ej9X8D
-         2vdg6Hfnbw6NqLcwXJ+6rZJX6Vm0JQ+WDaSv2KRqzKSWLmmlTf1x71IDZBOK3U+ekAMY
-         3gifSSbR146SrhFDwzRI31NQFLluf2t55U1SbfqmUzWiKHabtEcN/mF7fAVcXIwyOEuD
-         4khdN/FZFBtip5jXxIp5gCoJrcAIyq64KPR7DsEjMV6VY6nvIXleG5t7g2JERIpMpB4i
-         UTsw==
-X-Received: by 10.195.12.167 with SMTP id er7mr71559726wjd.54.1426007131479;
-        Tue, 10 Mar 2015 10:05:31 -0700 (PDT)
+        bh=Zmleh/JqYX8VgosLDvTsKV04sq3gdTuqjG9TfxMjIu0=;
+        b=Toeo6jUPJvBvXHfKFBfwvFAESbJLsOl7cjLUfE9pMmeam25VSE1acDNiDIcqymE49e
+         1xQ3V38cFzigceorJuNeRFpAQBlox+TvWKlaPctJdET3cBnhGks8zoVUGBcq6amBH171
+         4UmYaovHFjIggPdzgD/PkmJd4k/eJS2Q3Pxy/+hBEXr6T4KqU7+qWVcsTzfNwWZbwHzE
+         v7NF9fhcj+QD6lDKSs1k57ds0EqARbzJYj3hXzjIgVqGsntsH+peN0roZ7ul/dGgfMjX
+         kzI8TmeWnhD5j/NfR9fgULx+bE81zLFfQHZ94FswLKYx3RLvsTVjuWohtXnbzE+SBs+T
+         oWGw==
+X-Received: by 10.180.171.35 with SMTP id ar3mr73137579wic.24.1426007079378;
+        Tue, 10 Mar 2015 10:04:39 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.194])
-        by mx.google.com with ESMTPSA id hn8sm2397135wib.18.2015.03.10.10.05.29
+        by mx.google.com with ESMTPSA id dj4sm1726206wjc.13.2015.03.10.10.04.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 10:05:30 -0700 (PDT)
-Date: Tue, 10 Mar 2015 19:05:27 +0200
+        Tue, 10 Mar 2015 10:04:38 -0700 (PDT)
+Date: Tue, 10 Mar 2015 19:04:35 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 13/20] staging: fbtft: fb_hx8340bn.c: remove extra
+Subject: [PATCH 12/20] staging: fbtft: fb_agm1264k-fl.c: remove extra
  parentheses around function arguments
-Message-ID: <8b2002339d1c47e9fa76417b95dfde21e5be9629.1426004643.git.mahfouz.saif.elyazal@gmail.com>
+Message-ID: <865a36482a77c44e8cb39c8da02a1bef3d8bdba9.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -67,22 +67,22 @@ e
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/fbtft/fb_hx8340bn.c | 2 +-
+ drivers/staging/fbtft/fb_agm1264k-fl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/fbtft/fb_hx8340bn.c b/drivers/staging/fbtft/fb_hx8340bn.c
-index 26a987a..072b755 100644
---- a/drivers/staging/fbtft/fb_hx8340bn.c
-+++ b/drivers/staging/fbtft/fb_hx8340bn.c
-@@ -129,7 +129,7 @@ static int set_var(struct fbtft_par *par)
- #define MV (1 << 5)
- 	switch (par->info->var.rotate) {
- 	case 0:
--		write_reg(par, 0x36, (par->bgr << 3));
-+		write_reg(par, 0x36, par->bgr << 3);
- 		break;
- 	case 270:
- 		write_reg(par, 0x36, MX | MV | (par->bgr << 3));
+diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
+index 7aa9e8c..578fdbe 100644
+--- a/drivers/staging/fbtft/fb_agm1264k-fl.c
++++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+@@ -390,7 +390,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 			/* select right side (sc1)
+ 			 * set addr
+ 			 */
+-			write_reg(par, 0x01, (1 << 6));
++			write_reg(par, 0x01, 1 << 6);
+ 			write_reg(par, 0x01, (0x17 << 3) | (u8)y);
+ 
+ 			/* write bitmap */
 -- 
 1.9.3
 
