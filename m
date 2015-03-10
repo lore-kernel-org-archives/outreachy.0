@@ -1,49 +1,52 @@
 X-GM-THRID: 7460820615168
-X-Received: by 10.112.77.101 with SMTP id r5mr5018733lbw.4.1426007003188;
-        Tue, 10 Mar 2015 10:03:23 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,95d5e58ffe370867
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.8.73 with SMTP id p9mr500197laa.6.1426006954697;
+        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.83.130 with SMTP id q2ls278788wiy.13.canary; Tue, 10 Mar
- 2015 10:03:22 -0700 (PDT)
-X-Received: by 10.180.80.35 with SMTP id o3mr8064782wix.0.1426007002469;
-        Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
+Received: by 10.180.87.72 with SMTP id v8ls127784wiz.15.gmail; Tue, 10 Mar
+ 2015 10:02:34 -0700 (PDT)
+X-Received: by 10.194.221.65 with SMTP id qc1mr4875281wjc.7.1426006954399;
+        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id gj20si1118660wic.1.2015.03.10.10.03.22
+Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
+        by gmr-mx.google.com with ESMTPS id ew13si119919wid.0.2015.03.10.10.02.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id l15so4797277wiw.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
+Received: by mail-we0-x231.google.com with SMTP id x3so3309310wes.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=lNOZ/s6CUAd69sSU3B4cLghcGcSEVNXj0t6Eflw14P8=;
-        b=du+mNcV8+G0WeMZM5s0WyGkTROCGBAL1u6N5AC20tQbEq3mP5HJw/aWvVgG7E07qG2
-         8puiHyv4dGbe6Ogr8DVD/gUYpH0lp6djC/XOPBwtXpDhAGoXIKkyksu87HIn8SukvpYm
-         TAxp31wmtV60BIcxPmNnZyqSpIyoSMLFWDjHnuqWdoropzacKTWT4fk2zCiqxNVNWrjm
-         reKyf9LANAtITHKIn/SrbYCd/bTjNvXurRqvqeO7gKcIebNoOmwH6zz+aJiJBQAqf6iy
-         07u/96BUjK4UgYYzMebvdXniWZ2Z99P5JJgY/z9qH6cHHk5zDE1mbXdPMBsKPA7B5Em2
-         i5RQ==
-X-Received: by 10.180.206.13 with SMTP id lk13mr28212268wic.95.1426007002361;
-        Tue, 10 Mar 2015 10:03:22 -0700 (PDT)
+        bh=OCCYJEQt0WaEQXopVdEBDhgdLU35ScCld4I7Q15F/9s=;
+        b=0/nt5RLPqgWd5c/ED++YGkXsjLfRZzCW07p2+rMef82buKdCHxStObUIMRL9WCJYal
+         vLvn0v6pV27CVMMLdGStb6Lx+V73lNd6A3CKyVQmyG6x0IoX6Rxc0KWYfHoHSmGg3p9J
+         NZVe+O7NnuYZM1BnrYKz83Pfm1yM7IobWMJPea8tdDzzpoEYnAm2nEEwbyMukk/feQpo
+         K8rVj3oGM3AfXXiljQM1O58zPBuQrD+XWldAbr/i7R2J/fWBEGnWRRLvfVmYgkHyiOvS
+         8hsZo2kGljVYO8cBEYwwJ7xT+kfEcPGWCWphPUd1SdpRBlusEobfUw/TSic3FBlsctMC
+         3vOA==
+X-Received: by 10.194.75.193 with SMTP id e1mr68163884wjw.126.1426006954306;
+        Tue, 10 Mar 2015 10:02:34 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.194])
-        by mx.google.com with ESMTPSA id j7sm2432863wix.4.2015.03.10.10.03.20
+        by mx.google.com with ESMTPSA id gt4sm2377312wib.21.2015.03.10.10.02.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 10:03:21 -0700 (PDT)
-Date: Tue, 10 Mar 2015 19:03:18 +0200
+        Tue, 10 Mar 2015 10:02:33 -0700 (PDT)
+Date: Tue, 10 Mar 2015 19:02:29 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 10/20] staging: ft1000: ft1000-usb: ft1000_download.c: adjust
- function arguments
-Message-ID: <67a6a2ea0c6b42272a8d95cf43da39fece8d4983.1426004643.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 09/20] staging: ft1000: ft1000-usb: adjust function arguments
+Message-ID: <d8875f68aaa8cb9aa91d74fefc36c04fb82e5355.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -104,64 +107,48 @@ since both cases generated compilation warnings.
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/ft1000/ft1000-usb/ft1000_download.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/ft1000/ft1000-usb/ft1000_debug.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_download.c b/drivers/staging/ft1000/ft1000-usb/ft1000_download.c
-index e8126325..800450f 100644
---- a/drivers/staging/ft1000/ft1000-usb/ft1000_download.c
-+++ b/drivers/staging/ft1000/ft1000-usb/ft1000_download.c
-@@ -230,7 +230,7 @@ static u16 get_handshake_usb(struct ft1000_usb *ft1000dev, u16 expected_value)
- 	while (loopcnt < 100) {
- 		if (ft1000dev->usbboot == 2) {
- 			status = ft1000_read_dpram32(ft1000dev, 0,
--						     (u8 *)&(ft1000dev->tempbuf[0]), 64);
-+						     (u8 *)&ft1000dev->tempbuf[0], 64);
- 			for (temp = 0; temp < 16; temp++) {
- 				pr_debug("tempbuf %d = 0x%x\n",
- 					 temp, ft1000dev->tempbuf[temp]);
-@@ -538,7 +538,7 @@ static int write_blk_fifo(struct ft1000_usb *ft1000dev, u16 **pUsFile,
- 			  usb_sndbulkpipe(ft1000dev->dev,
- 					  ft1000dev->bulk_out_endpointAddr),
- 			  ft1000dev->tx_buf, byte_length, usb_dnld_complete,
--			  (void *)ft1000dev);
-+			  ft1000dev);
+diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
+index 0f776d0..7138523 100644
+--- a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
++++ b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
+@@ -190,7 +190,7 @@ int ft1000_create_dev(struct ft1000_usb *dev)
+ 	tmp->dent = dir;
+ 	tmp->file = file;
+ 	tmp->int_number = dev->CardNumber;
+-	list_add(&(tmp->list), &(dev->nodes.list));
++	list_add(&tmp->list, &dev->nodes.list);
  
- 	usb_submit_urb(ft1000dev->tx_urb, GFP_ATOMIC);
+ 	pr_debug("registered debugfs directory \"%s\"\n", dev->DeviceName);
  
-@@ -704,7 +704,7 @@ int scram_dnldr(struct ft1000_usb *ft1000dev, void *pFileStart,
- 				case REQUEST_CODE_SEGMENT:
- 					status = request_code_segment(ft1000dev,
- 								      &s_file, &c_file,
--								      (const u8 *)boot_end,
-+								      boot_end,
- 								      true);
- 					break;
- 				default:
-@@ -799,7 +799,7 @@ int scram_dnldr(struct ft1000_usb *ft1000dev, void *pFileStart,
+@@ -477,14 +477,14 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
+ 		/* Connect Message */
+ 		pr_debug("IOCTL_FT1000_CONNECT\n");
+ 		ConnectionMsg[79] = 0xfc;
+-		result = card_send_command(ft1000dev, (unsigned short *)ConnectionMsg, 0x4c);
++		result = card_send_command(ft1000dev, ConnectionMsg, 0x4c);
  
- 					status = request_code_segment(ft1000dev,
- 								      &s_file, &c_file,
--								      (const u8 *)code_end,
-+								      code_end,
- 								      false);
+ 		break;
+ 	case IOCTL_DISCONNECT:
+ 		/* Disconnect Message */
+ 		pr_debug("IOCTL_FT1000_DISCONNECT\n");
+ 		ConnectionMsg[79] = 0xfd;
+-		result = card_send_command(ft1000dev, (unsigned short *)ConnectionMsg, 0x4c);
++		result = card_send_command(ft1000dev, ConnectionMsg, 0x4c);
+ 		break;
+ 	case IOCTL_GET_DSP_STAT_CMD:
+ 		/* pr_debug("IOCTL_FT1000_GET_DSP_STAT\n"); */
+@@ -642,7 +642,7 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
+ 						}
+ 						pmsg++;
+ 						ppseudo_hdr = (struct pseudo_hdr *)pmsg;
+-						result = card_send_command(ft1000dev, (unsigned short *)dpram_data, total_len+2);
++						result = card_send_command(ft1000dev, dpram_data, total_len+2);
  
- 					break;
-@@ -971,11 +971,11 @@ int scram_dnldr(struct ft1000_usb *ft1000dev, void *pFileStart,
  
- 				/* Get buffer for provisioning data */
- 				pbuffer =
--					kmalloc((pseudo_header_len +
--						 sizeof(struct pseudo_hdr)),
-+					kmalloc(pseudo_header_len +
-+						 sizeof(struct pseudo_hdr),
- 						GFP_ATOMIC);
- 				if (pbuffer) {
--					memcpy(pbuffer, (void *)c_file,
-+					memcpy(pbuffer, c_file,
- 					       (u32) (pseudo_header_len +
- 						      sizeof(struct
- 							     pseudo_hdr)));
+ 						ft1000dev->app_info[app_index].nTxMsg++;
 -- 
 1.9.3
 
