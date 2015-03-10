@@ -1,49 +1,53 @@
 X-GM-THRID: 7460820615168
-X-Received: by 10.181.29.66 with SMTP id ju2mr8036978wid.1.1426006601900;
-        Tue, 10 Mar 2015 09:56:41 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,95d5e58ffe370867
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.87.166 with SMTP id az6mr7995720wib.1.1426006532074;
+        Tue, 10 Mar 2015 09:55:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.93.193 with SMTP id cw1ls109186wib.44.gmail; Tue, 10 Mar
- 2015 09:56:41 -0700 (PDT)
-X-Received: by 10.194.236.196 with SMTP id uw4mr1748633wjc.5.1426006601563;
-        Tue, 10 Mar 2015 09:56:41 -0700 (PDT)
+Received: by 10.152.21.33 with SMTP id s1ls83636lae.40.gmail; Tue, 10 Mar 2015
+ 09:55:31 -0700 (PDT)
+X-Received: by 10.152.21.9 with SMTP id r9mr4878281lae.0.1426006531624;
+        Tue, 10 Mar 2015 09:55:31 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
-        by gmr-mx.google.com with ESMTPS id l8si1110603wia.0.2015.03.10.09.56.41
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id ew13si118501wid.0.2015.03.10.09.55.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 09:56:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
+        Tue, 10 Mar 2015 09:55:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22d.google.com with SMTP id l61so3228525wev.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 09:56:41 -0700 (PDT)
+Received: by mail-wi0-x229.google.com with SMTP id ex7so31164479wid.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 09:55:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=NCQJ7ghdaMV0TymmDMSyxOEq2PvBhkyRCLtoxlykMqQ=;
-        b=cumPAOK0tQTRZD6J5HF/d7+OPsSOtXg/sF1vr1/W8Un54LOUF0QsHSs0su9+ZN7Wci
-         GScocCMlGJLAuZYvRgh1rFGIWgwir08MZFSpZvF3hhwYM0HATRqJpMdyXASplmQqiHqg
-         SptwiE4z9APEav+bHtQDXuChHu2eyBXBg0hVEFlHpv//m8kldfz3x2DSA981XkYFHmT4
-         vTD2S4QtxoHzzvnH2ayI3O6sDVInJ/9FcvBxPSsuNmo5CQOcvf3GIj4GbxFTiUXqWoxl
-         8wQJ/BxU2JN1IMmGJHWV1wo5L92cl8Bemlfp2XyAsVwZud3h2xcoOBdlHCpFh5JhbGVq
-         0koQ==
-X-Received: by 10.180.103.40 with SMTP id ft8mr117664869wib.68.1426006601425;
-        Tue, 10 Mar 2015 09:56:41 -0700 (PDT)
+        bh=MZPx1IUD35nOg6xWmjn0URwjQHBwu6hbOGXZ6pDSFwc=;
+        b=NJtBr1gJ2ksjRJW5pupOU149SgXopYSAyp9iwobnS90ERIlT1vnVGGoaMsNWXv4CCO
+         CQrumyaZc1SZJZfWFwgnOFkju1bazExrUotI5yxh5iVMIDvn8srC4ToywNT1uh34TUCB
+         Sy9A0UVWVw+CVFS4XS35aOttSt2ReBvZDuLFxjXZ+Jf+s+lq16SfjdPof76XgQ8tHi94
+         x+mIS4UbyBZMsbRk6COJkE4sYMm74DP165G9vqE8nlRSgpbiuRttVgE6D6grgKAOOnof
+         nUHUpqqPOmVbo+kLT32BVvjfu4/M3sipZ129560l2rbPPGW7R0MywfJt2rTMPi8/XKLt
+         m5QA==
+X-Received: by 10.194.110.38 with SMTP id hx6mr68780682wjb.128.1426006531507;
+        Tue, 10 Mar 2015 09:55:31 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.194])
-        by mx.google.com with ESMTPSA id dj5sm1670443wjb.28.2015.03.10.09.56.40
+        by mx.google.com with ESMTPSA id ev7sm1628549wjb.47.2015.03.10.09.55.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 09:56:40 -0700 (PDT)
-Date: Tue, 10 Mar 2015 18:56:37 +0200
+        Tue, 10 Mar 2015 09:55:30 -0700 (PDT)
+Date: Tue, 10 Mar 2015 18:55:27 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 04/20] staging: media: lirc: fix multiple issues with
- function arguments
-Message-ID: <452e9c291c3ddb3eb0f750b66ba7a627d24b1234.1426004643.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 03/20] staging: media: lirc: remove unnecessary cast on
+ function argument
+Message-ID: <22bc16e169dd94cbda630b5234c4b71f3651e8b9.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,13 +55,8 @@ Content-Disposition: inline
 In-Reply-To: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Handles the following issues:
-
-Removing extra parentheses around function arguments,
-Removing unnecessary pointer to pointer casts.
-
-Issues detected and resolved using the following coccinelle
-script:
+Removes pointer to pointer cast on a function argument. Issue
+detected and resolved using the following coccinelle script:
 
 @@
 expression e;
@@ -70,61 +69,24 @@ f(...,
 e
 ,...)
 
-@@
-expression e;
-identifier f;
-@@
-
-f(...,
-&
--(
-e
--)
-,...)
-
-@@
-expression e;
-identifier f;
-@@
-
-f(...,
--(
-e
--)
-,...)
-
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_sasem.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/media/lirc/lirc_parallel.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
-index 9944af1..b9c53e2 100644
---- a/drivers/staging/media/lirc/lirc_sasem.c
-+++ b/drivers/staging/media/lirc/lirc_sasem.c
-@@ -331,11 +331,11 @@ static int send_packet(struct sasem_context *context)
- 	context->tx_urb->actual_length = 0;
- 
- 	init_completion(&context->tx.finished);
--	atomic_set(&(context->tx.busy), 1);
-+	atomic_set(&context->tx.busy, 1);
- 
- 	retval =  usb_submit_urb(context->tx_urb, GFP_KERNEL);
- 	if (retval) {
--		atomic_set(&(context->tx.busy), 0);
-+		atomic_set(&context->tx.busy, 0);
- 		dev_err(&context->dev->dev, "error submitting urb (%d)\n",
- 			retval);
- 	} else {
-@@ -387,7 +387,7 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
- 		goto exit;
- 	}
- 
--	data_buf = memdup_user((void const __user *)buf, n_bytes);
-+	data_buf = memdup_user(buf, n_bytes);
- 	if (IS_ERR(data_buf)) {
- 		retval = PTR_ERR(data_buf);
- 		data_buf = NULL;
+diff --git a/drivers/staging/media/lirc/lirc_parallel.c b/drivers/staging/media/lirc/lirc_parallel.c
+index 19c5c21..df55644 100644
+--- a/drivers/staging/media/lirc/lirc_parallel.c
++++ b/drivers/staging/media/lirc/lirc_parallel.c
+@@ -336,7 +336,7 @@ static ssize_t lirc_read(struct file *filep, char __user *buf, size_t n,
+ 	set_current_state(TASK_INTERRUPTIBLE);
+ 	while (count < n) {
+ 		if (rptr != wptr) {
+-			if (copy_to_user(buf+count, (char *) &rbuf[rptr],
++			if (copy_to_user(buf+count, &rbuf[rptr],
+ 					 sizeof(int))) {
+ 				result = -EFAULT;
+ 				break;
 -- 
 1.9.3
 
