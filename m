@@ -3,51 +3,51 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,95d5e58ffe370867
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.90.169 with SMTP id bx9mr2084948wib.6.1426007299587;
-        Tue, 10 Mar 2015 10:08:19 -0700 (PDT)
+X-Received: by 10.152.8.73 with SMTP id p9mr503438laa.6.1426007269603;
+        Tue, 10 Mar 2015 10:07:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.73.103 with SMTP id k7ls125874wiv.5.gmail; Tue, 10 Mar
- 2015 10:08:19 -0700 (PDT)
-X-Received: by 10.180.75.232 with SMTP id f8mr8056016wiw.0.1426007299259;
-        Tue, 10 Mar 2015 10:08:19 -0700 (PDT)
+Received: by 10.180.11.97 with SMTP id p1ls127929wib.51.gmail; Tue, 10 Mar
+ 2015 10:07:49 -0700 (PDT)
+X-Received: by 10.180.101.101 with SMTP id ff5mr8049281wib.5.1426007269175;
+        Tue, 10 Mar 2015 10:07:49 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id el6si668680wib.0.2015.03.10.10.08.19
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id gj20si1119539wic.1.2015.03.10.10.07.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 10:08:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Tue, 10 Mar 2015 10:07:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id l15so30308143wiw.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:08:19 -0700 (PDT)
+Received: by mail-wi0-x229.google.com with SMTP id r20so4779534wiv.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 10:07:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=dua5meRy1j8v1om55s3mZ6qbaQ9xGLw3pzcNxBUnhMc=;
-        b=tH9NSloIZg4/MfTxSq1n0IgWu6ojJRvMqtbjwyFM5ZPcHashsWEOAGLss/ityetwKM
-         XRROMoPPpzdM7yTTSSeG57+ZBzBKJSgPl65txkWdnB68nv8YU8a88bmDWSd4iHt1pCOG
-         Etsy7hHpHJ0QJ3rOh3Y0ixApDp14nvbY9Ldp35dCXKe+qIHiWOSXGiBfQDWqRP9+/KcR
-         T5sXgDaxUwKfIiLHVGif7yazZ+DABdkBozlE+apwHg9BD0wWNhe5fcKIima+/+KWFR2S
-         uk7gZMBUvk+iDK95ndE2EFkfBbIhndtxNGKabv4oz4ZnUk/vMAUr2tvNz9SwTwRmRS31
-         zr/Q==
-X-Received: by 10.194.157.39 with SMTP id wj7mr32237365wjb.57.1426007299174;
-        Tue, 10 Mar 2015 10:08:19 -0700 (PDT)
+        bh=R3TVU26eIT2fOJU3xYFcv33+Z/7BjN1rP/t+r+8lUFE=;
+        b=SFGldQtbUQuhn3R9b1Zt154/m3g0x7hBEQzuWeSPKreNkMXG4/E0JHAXt5Ej4fcCvL
+         3oWhqAH50hZ3c6U6SMVomRBAsEqXBc0vkJuRvLBkQDbVZ5cP5Zm4ICbP3UglCcrRNpV/
+         oq+oRvbV+GUEJRyCYMKksaGyQdL3rJ25JwUASZg5R77B0FACgyn7v4y/On1MsRWbxQ9y
+         gClDAt1zDfPjl4GVWA1/dFy0wPaKq1i4e4KHQG0un+2BFjnmLR09HnlwegFY0T4QFaaP
+         viDtobsZ0P+6gTIDhymCTG0PdwTzbq1ZwYhZwVC20AQziCoYdhDqQkULjuQA412kgFzI
+         YCkw==
+X-Received: by 10.180.76.178 with SMTP id l18mr70042457wiw.36.1426007269092;
+        Tue, 10 Mar 2015 10:07:49 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([41.130.233.194])
-        by mx.google.com with ESMTPSA id dq1sm4833135wib.20.2015.03.10.10.08.17
+        by mx.google.com with ESMTPSA id hw7sm1718550wjb.24.2015.03.10.10.07.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 10:08:18 -0700 (PDT)
-Date: Tue, 10 Mar 2015 19:08:15 +0200
+        Tue, 10 Mar 2015 10:07:48 -0700 (PDT)
+Date: Tue, 10 Mar 2015 19:07:44 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 18/20] staging: fbtft: fbtft-io.c: remove extra parentheses
- around function arguments
-Message-ID: <63ef7a3e400049f3e93493e8fa0d7ff7c3bddac4.1426004643.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH 17/20] staging: fbtft: remove unnecessary pointer to pointer
+ cast
+Message-ID: <b602b9ecff3d141e982f687cdd9fba290ce01931.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -55,63 +55,40 @@ Content-Disposition: inline
 In-Reply-To: <cover.1426004643.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Removes extra parentheses around function arguments. Issue
-detected and resolved using the following coccinelle script:
+Removes unnecessary pointer to pointer cast since the
+address is already of type char** and will be implicitly
+treated as a constant. Issue detected and resolved using
+the following coccinelle script:
 
 @@
 expression e;
+type t;
 identifier f;
 @@
 
 f(...,
--(
+-(t *)
 e
--)
 ,...)
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
- drivers/staging/fbtft/fbtft-io.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/fbtft/fbtft-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/fbtft/fbtft-io.c b/drivers/staging/fbtft/fbtft-io.c
-index e19b814..a6f091f 100644
---- a/drivers/staging/fbtft/fbtft-io.c
-+++ b/drivers/staging/fbtft/fbtft-io.c
-@@ -154,14 +154,14 @@ int fbtft_write_gpio8_wr(struct fbtft_par *par, void *buf, size_t len)
- 			for (i = 0; i < 8; i++) {
- 				if ((data & 1) != (prev_data & 1))
- 					gpio_set_value(par->gpio.db[i],
--								(data & 1));
-+								data & 1);
- 				data >>= 1;
- 				prev_data >>= 1;
- 			}
- 		}
- #else
- 		for (i = 0; i < 8; i++) {
--			gpio_set_value(par->gpio.db[i], (data & 1));
-+			gpio_set_value(par->gpio.db[i], data & 1);
- 			data >>= 1;
- 		}
- #endif
-@@ -204,14 +204,14 @@ int fbtft_write_gpio16_wr(struct fbtft_par *par, void *buf, size_t len)
- 			for (i = 0; i < 16; i++) {
- 				if ((data & 1) != (prev_data & 1))
- 					gpio_set_value(par->gpio.db[i],
--								(data & 1));
-+								data & 1);
- 				data >>= 1;
- 				prev_data >>= 1;
- 			}
- 		}
- #else
- 		for (i = 0; i < 16; i++) {
--			gpio_set_value(par->gpio.db[i], (data & 1));
-+			gpio_set_value(par->gpio.db[i], data & 1);
- 			data >>= 1;
- 		}
- #endif
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 16c7260..1f8d73e 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -1331,7 +1331,7 @@ static struct fbtft_platform_data *fbtft_probe_dt(struct device *dev)
+ 	pdata->fps = fbtft_of_value(node, "fps");
+ 	pdata->txbuflen = fbtft_of_value(node, "txbuflen");
+ 	pdata->startbyte = fbtft_of_value(node, "startbyte");
+-	of_property_read_string(node, "gamma", (const char **)&pdata->gamma);
++	of_property_read_string(node, "gamma", &pdata->gamma);
+ 
+ 	if (of_find_property(node, "led-gpios", NULL))
+ 		pdata->display.backlight = 1;
 -- 
 1.9.3
 
