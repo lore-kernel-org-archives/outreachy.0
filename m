@@ -1,113 +1,93 @@
-X-GM-THRID: 8297812852736
-X-Received: by 10.236.19.8 with SMTP id m8mr55402229yhm.53.1426337723332;
-        Sat, 14 Mar 2015 05:55:23 -0700 (PDT)
+X-GM-THRID: 7712472563712
+X-Received: by 10.112.40.81 with SMTP id v17mr1922202lbk.5.1426111723339;
+        Wed, 11 Mar 2015 15:08:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.111.133 with SMTP id ii5ls504914igb.6.gmail; Sat, 14 Mar
- 2015 05:55:23 -0700 (PDT)
-X-Received: by 10.66.233.37 with SMTP id tt5mr38534618pac.3.1426337723113;
-        Sat, 14 Mar 2015 05:55:23 -0700 (PDT)
-Return-Path: <iskaranth@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id l3si895178pdo.0.2015.03.14.05.55.23
+Received: by 10.180.90.43 with SMTP id bt11ls473695wib.37.canary; Wed, 11 Mar
+ 2015 15:08:42 -0700 (PDT)
+X-Received: by 10.180.80.132 with SMTP id r4mr2487917wix.4.1426111722920;
+        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
+        by gmr-mx.google.com with ESMTPS id o3si1396714wib.2.2015.03.11.15.08.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Mar 2015 05:55:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=iskaranth@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id yw6so15751182pab.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2015 05:55:23 -0700 (PDT)
+Received: by wevk48 with SMTP id k48so12334694wev.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=IQDqeamwz2aF1pPenTYcfWiIA/a4PqRZBZ/xwR9YLaM=;
-        b=A8LQWc4f8U6nCsRx80oarprQveQtRc+ZpVawuDVKN1Rm5yyiDZKUiU/tGXtuMEkFW+
-         vzFLfh5UwxczgOua9vAmuZqjPOpKxxwSNC4E30EDlIF9ehwZpIXHSDsKBwQd0cHVzxYm
-         NX9cfZDBi/n7uUJDkjA2miyJx4+jpldRUdBg8RWZdC6Ypz1hy5MPocb7kVeNM5iT1sDI
-         TDjqLtXrniyi5/mYo7/dbBJbxVX4CzGeJtdy7cwQHD4KtLwSsiLUg4jEpqwm9wDy+rcC
-         qU2lC0C7nYKvUn3WElo5EJoWggb91EvHsnBMgBDKa54G6ZjM59i90QAWCdgo0LyBldDh
-         wR0g==
-X-Received: by 10.70.35.193 with SMTP id k1mr102315110pdj.46.1426337722998;
-        Sat, 14 Mar 2015 05:55:22 -0700 (PDT)
-Return-Path: <iskaranth@gmail.com>
-Received: from localhost.localdomain ([222.117.133.143])
-        by mx.google.com with ESMTPSA id os6sm8220909pac.28.2015.03.14.05.55.20
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 14 Mar 2015 05:55:22 -0700 (PDT)
-From: Supriya Karanth <iskaranth@gmail.com>
-To: iskaranth@gmail.com,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: remove parantheses from return statements
-Date: Sat, 14 Mar 2015 21:55:11 +0900
-Message-Id: <1426337711-32548-1-git-send-email-iskaranth@gmail.com>
-X-Mailer: git-send-email 2.1.0
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=gQ/MAvNMZHoaO4BcBbdKen9PoCz6NMRZoOhL/KDwrZk=;
+        b=yd1MKuGTU0T6lI2aGvNuiqyOEgk0kq2I28BXND+oxpu/+hZGhy4iKBsSa+DAGVJ1Bn
+         wBSVM4UkKYCFqOjAa4vzJD4FHCEg1QIE1aIR6rbcfPDyKcgvwEH3D7Vo+5hyeEPPtbmH
+         i3i0jxOSTEEKClZbEkIO8gmmOY/9rQZ/nlmTY9X6p2+7oiIQ8P1DbzYDhc6g97Ow3Qo8
+         qrVBZtqTSgOF0hQ8AwSBQC9nOmNicv8nXfvZ7UJ1s+SIHGui6YQoY+Xz8SI/vLPQjqdA
+         CSRIyTI8UbT2A1JX4MfA3sGWmJhfjdfXtor5glG717TJiDxKRR2Z9Y94hBdhuuwLfLz8
+         W/Vg==
+X-Received: by 10.181.9.107 with SMTP id dr11mr37571640wid.40.1426111722826;
+        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneen-vb ([79.170.55.143])
+        by mx.google.com with ESMTPSA id pa4sm7255571wjb.11.2015.03.11.15.08.41
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
+Date: Thu, 12 Mar 2015 01:08:32 +0300
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8712: remove else after return statement
+Message-ID: <20150311220832.GA7170@haneen-vb>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-found by checkpatch.pl :ERROR: return is not a function,
-parentheses are not required
+else after return generally is not useful. This patch removes else after return
+statement. Issue addressed by checkpatch.pl.
 
-changes made using coccinelle script:
-
-@@
-expression e,e1;
-@@
-(
-return (e / e1);
-|
-return
--(
-e
--)
-;
-)
-
-Signed-off-by: Supriya Karanth <iskaranth@gmail.com>
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c  | 2 +-
- drivers/staging/sm750fb/ddk750_swi2c.c | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8712/rtl871x_mlme.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 3c77207..33add64 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -633,7 +633,7 @@ unsigned int formatPllReg(pll_value_t *pPLL)
-       | FIELD_VALUE(0, PANEL_PLL_CTRL, N,      pPLL->N)
-       | FIELD_VALUE(0, PANEL_PLL_CTRL, M,      pPLL->M);
- 
--    return(ulPllReg);
-+    return ulPllReg;
+diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+index bb78484..1f3707a 100644
+--- a/drivers/staging/rtl8712/rtl871x_mlme.c
++++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+@@ -1601,17 +1601,15 @@ sint r8712_restruct_sec_ie(struct _adapter *adapter, u8 *in_ie,
+ 	iEntry = SecIsInPMKIDList(adapter, pmlmepriv->assoc_bssid);
+ 	if (iEntry < 0)
+ 		return ielength;
+-	else {
+-		if (authmode == _WPA2_IE_ID_) {
+-			out_ie[ielength] = 1;
+-			ielength++;
+-			out_ie[ielength] = 0;	/*PMKID count = 0x0100*/
+-			ielength++;
+-			memcpy(&out_ie[ielength],
+-				&psecuritypriv->PMKIDList[iEntry].PMKID, 16);
+-			ielength += 16;
+-			out_ie[13] += 18;/*PMKID length = 2+16*/
+-		}
++	if (authmode == _WPA2_IE_ID_) {
++		out_ie[ielength] = 1;
++		ielength++;
++		out_ie[ielength] = 0;	/*PMKID count = 0x0100*/
++		ielength++;
++		memcpy(&out_ie[ielength],
++			&psecuritypriv->PMKIDList[iEntry].PMKID, 16);
++		ielength += 16;
++		out_ie[13] += 18;/*PMKID length = 2+16*/
+ 	}
+ 	return ielength;
  }
- 
- 
-diff --git a/drivers/staging/sm750fb/ddk750_swi2c.c b/drivers/staging/sm750fb/ddk750_swi2c.c
-index 1249759..8557cce 100644
---- a/drivers/staging/sm750fb/ddk750_swi2c.c
-+++ b/drivers/staging/sm750fb/ddk750_swi2c.c
-@@ -304,7 +304,7 @@ long swI2CWriteByte(unsigned char data)
-     if (i<0xff)
-         return 0;
-     else
--        return (-1);
-+        return -1;
- }
- 
- /*
-@@ -408,10 +408,10 @@ long swI2CInit(
- 
-     /* Return 0 if the GPIO pins to be used is out of range. The range is only from [0..63] */
-     if ((i2cClkGPIO > 31) || (i2cDataGPIO > 31))
--        return (-1);
-+        return -1;
- 
-     if (getChipType() == SM750LE)
--        return( swI2CInit_SM750LE(i2cClkGPIO, i2cDataGPIO) );
-+        return swI2CInit_SM750LE(i2cClkGPIO, i2cDataGPIO);
- 
-     /* Initialize the GPIO pin for the i2c Clock Register */
-     g_i2cClkGPIOMuxReg = GPIO_MUX;
 -- 
-2.1.0
+1.9.1
 
 
