@@ -1,166 +1,103 @@
 X-GM-THRID: 7650196586496
-X-Received: by 10.42.89.73 with SMTP id f9mr10971712icm.31.1426073640302;
-        Wed, 11 Mar 2015 04:34:00 -0700 (PDT)
+X-Received: by 10.112.44.167 with SMTP id f7mr2873259lbm.9.1426071738804;
+        Wed, 11 Mar 2015 04:02:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.137.39 with SMTP id l39ls366107iod.57.gmail; Wed, 11 Mar
- 2015 04:33:59 -0700 (PDT)
-X-Received: by 10.42.76.145 with SMTP id e17mr31162571ick.34.1426073639937;
-        Wed, 11 Mar 2015 04:33:59 -0700 (PDT)
-Return-Path: <somyaanand214@gmail.com>
-Received: from mail-pd0-x22a.google.com (mail-pd0-x22a.google.com. [2607:f8b0:400e:c02::22a])
-        by gmr-mx.google.com with ESMTPS id pc4si672560pac.0.2015.03.11.04.33.59
+Received: by 10.152.21.199 with SMTP id x7ls146768lae.0.gmail; Wed, 11 Mar
+ 2015 04:02:18 -0700 (PDT)
+X-Received: by 10.112.98.38 with SMTP id ef6mr4603492lbb.3.1426071738352;
+        Wed, 11 Mar 2015 04:02:18 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id gj20si1280852wic.1.2015.03.11.04.02.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2015 04:33:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::22a as permitted sender) client-ip=2607:f8b0:400e:c02::22a;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 11 Mar 2015 04:02:18 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::22a as permitted sender) smtp.mail=somyaanand214@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbfp1 with SMTP id fp1so10558592pdb.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 04:33:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=KBj3/sUAJFTvPwq6CXapjk+BJc2SQ8u4pE1Pl7HsLbk=;
-        b=Upw8HTGNeLEterfPLX4EClGNIBYEH05f1k5FlKTsxxhOqhgZfDdRW5IGt5tMkaqfmR
-         MGhDBUKm0NM76PbVfdEHhRNRkyZtZoCSDzyp8FcfxyduKogdXsvRCFeg6Td2d68z/sN6
-         jwMH+u+Z3gajHzzzHHh+sP2r3KesLOiUEcpqmLUsKbHfV19dpwm1stRDojTmQLWufCrV
-         OLBiE7KbYLZ6a8hVinSDixqOh0EzOjvvVXwhUR9dqx0fVsjJnU/BJm0RBMQhHDGFNcVO
-         uHdtxCP4L/zOCh+CSVsn8WnTctB1WMB71yjdpaBm1zQppOPtNUGc6mKCzXuNeK5UlZBW
-         FNSw==
-X-Received: by 10.66.161.161 with SMTP id xt1mr77238621pab.35.1426073639001;
-        Wed, 11 Mar 2015 04:33:59 -0700 (PDT)
-Return-Path: <somyaanand214@gmail.com>
-Received: from localhost.localdomain ([182.66.43.101])
-        by mx.google.com with ESMTPSA id kd9sm5815097pab.0.2015.03.11.04.33.19
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 11 Mar 2015 04:33:58 -0700 (PDT)
-From: Somya Anand <somyaanand214@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Somya Anand <somyaanand214@gmail.com>
-Subject: [PATCH v2 1/5] Staging: dgnc: Remove redundant parentheses
-Date: Wed, 11 Mar 2015 17:02:12 +0530
-Message-Id: <1426073536-22122-1-git-send-email-somyaanand214@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,381,1422918000"; 
+   d="scan'208";a="102897183"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Mar 2015 12:02:17 +0100
+Date: Wed, 11 Mar 2015 12:02:15 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Somya Anand <somyaanand214@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/5] Staging: dgap: Use setup_timer
+ to combine initialization
+In-Reply-To: <1426068292-20348-3-git-send-email-somyaanand214@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503111200400.2639@hadrien>
+References: <1426068292-20348-1-git-send-email-somyaanand214@gmail.com> <1426068292-20348-3-git-send-email-somyaanand214@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch removes the redundant parentheses inorder to make code
-simplified. While doing this, the precedence order of the operation
-is taken into consideration to keep the logic of the code intact.
 
-Signed-off-by: Somya Anand <somyaanand214@gmail.com>
----
- drivers/staging/dgnc/dgnc_neo.c | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
-index c9a8a98..99cc025 100644
---- a/drivers/staging/dgnc/dgnc_neo.c
-+++ b/drivers/staging/dgnc/dgnc_neo.c
-@@ -119,7 +119,7 @@ static inline void neo_set_cts_flow_control(struct channel_t *ch)
- 
- 	/* Turn on auto CTS flow control */
- #if 1
--	ier |= (UART_17158_IER_CTSDSR);
-+	ier |= UART_17158_IER_CTSDSR;
- #else
- 	ier &= ~(UART_17158_IER_CTSDSR);
- #endif
-@@ -127,7 +127,7 @@ static inline void neo_set_cts_flow_control(struct channel_t *ch)
- 	efr |= (UART_17158_EFR_ECB | UART_17158_EFR_CTSDSR);
- 
- 	/* Turn off auto Xon flow control */
--	efr &= ~(UART_17158_EFR_IXON);
-+	efr &= ~UART_17158_EFR_IXON;
- 
- 	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
- 	writeb(0, &ch->ch_neo_uart->efr);
-@@ -155,15 +155,15 @@ static inline void neo_set_rts_flow_control(struct channel_t *ch)
- 
- 	/* Turn on auto RTS flow control */
- #if 1
--	ier |= (UART_17158_IER_RTSDTR);
-+	ier |= UART_17158_IER_RTSDTR;
- #else
- 	ier &= ~(UART_17158_IER_RTSDTR);
- #endif
- 	efr |= (UART_17158_EFR_ECB | UART_17158_EFR_RTSDTR);
- 
- 	/* Turn off auto Xoff flow control */
--	ier &= ~(UART_17158_IER_XOFF);
--	efr &= ~(UART_17158_EFR_IXOFF);
-+	ier &= ~UART_17158_IER_XOFF;
-+	efr &= ~UART_17158_EFR_IXOFF;
- 
- 	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
- 	writeb(0, &ch->ch_neo_uart->efr);
-@@ -185,7 +185,7 @@ static inline void neo_set_rts_flow_control(struct channel_t *ch)
- 	 * RTS/DTR# output pin (MCR bit-0 or 1 to logic 1 after
- 	 * it is enabled.
- 	 */
--	ch->ch_mostat |= (UART_MCR_RTS);
-+	ch->ch_mostat |= UART_MCR_RTS;
- 
- 	neo_pci_posting_flush(ch->ch_bd);
- }
-@@ -197,8 +197,8 @@ static inline void neo_set_ixon_flow_control(struct channel_t *ch)
- 	unsigned char efr = readb(&ch->ch_neo_uart->efr);
- 
- 	/* Turn off auto CTS flow control */
--	ier &= ~(UART_17158_IER_CTSDSR);
--	efr &= ~(UART_17158_EFR_CTSDSR);
-+	ier &= ~UART_17158_IER_CTSDSR;
-+	efr &= ~UART_17158_EFR_CTSDSR;
- 
- 	/* Turn on auto Xon flow control */
- 	efr |= (UART_17158_EFR_ECB | UART_17158_EFR_IXON);
-@@ -234,11 +234,11 @@ static inline void neo_set_ixoff_flow_control(struct channel_t *ch)
- 	unsigned char efr = readb(&ch->ch_neo_uart->efr);
- 
- 	/* Turn off auto RTS flow control */
--	ier &= ~(UART_17158_IER_RTSDTR);
--	efr &= ~(UART_17158_EFR_RTSDTR);
-+	ier &= ~UART_17158_IER_RTSDTR;
-+	efr &= ~UART_17158_EFR_RTSDTR;
- 
- 	/* Turn on auto Xoff flow control */
--	ier |= (UART_17158_IER_XOFF);
-+	ier |= UART_17158_IER_XOFF;
- 	efr |= (UART_17158_EFR_ECB | UART_17158_EFR_IXOFF);
- 
- 	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-@@ -272,11 +272,11 @@ static inline void neo_set_no_input_flow_control(struct channel_t *ch)
- 	unsigned char efr = readb(&ch->ch_neo_uart->efr);
- 
- 	/* Turn off auto RTS flow control */
--	ier &= ~(UART_17158_IER_RTSDTR);
--	efr &= ~(UART_17158_EFR_RTSDTR);
-+	ier &= ~UART_17158_IER_RTSDTR;
-+	efr &= ~UART_17158_EFR_RTSDTR;
- 
- 	/* Turn off auto Xoff flow control */
--	ier &= ~(UART_17158_IER_XOFF);
-+	ier &= ~UART_17158_IER_XOFF;
- 	if (ch->ch_c_iflag & IXON)
- 		efr &= ~(UART_17158_EFR_IXOFF);
- 	else
-@@ -312,12 +312,12 @@ static inline void neo_set_no_output_flow_control(struct channel_t *ch)
- 	unsigned char efr = readb(&ch->ch_neo_uart->efr);
- 
- 	/* Turn off auto CTS flow control */
--	ier &= ~(UART_17158_IER_CTSDSR);
--	efr &= ~(UART_17158_EFR_CTSDSR);
-+	ier &= ~UART_17158_IER_CTSDSR;
-+	efr &= ~UART_17158_EFR_CTSDSR;
- 
- 	/* Turn off auto Xon flow control */
- 	if (ch->ch_c_iflag & IXOFF)
--		efr &= ~(UART_17158_EFR_IXON);
-+		efr &= ~UART_17158_EFR_IXON;
- 	else
- 		efr &= ~(UART_17158_EFR_ECB | UART_17158_EFR_IXON);
- 
--- 
-1.9.1
+On Wed, 11 Mar 2015, Somya Anand wrote:
 
+> The function setup_timer combines the initialization of a timer with the
+> initialization of the timer's function and data fields.
+>
+> So, this patch combines the multiline code for timer initialization using the function
+> setup_timer. This issue is identified via coccinelle script.
+>
+> @@
+> expression E1, E2, E3;
+> type T;
+> @@
+> - init_timer(&E1);
+> ...
+> (
+> - E1.function = E2;
+> ...
+> - E1.data = (T)E3;
+> + setup_timer(&E1, E2, (T)E3);
+> |
+> - E1.data = (T)E3;
+> ...
+> - E1.function = E2;
+> + setup_timer(&E1, E2, (T)E3);
+> |
+> - E1.function = E2;
+> + setup_timer(&E1, E2, NULL);
+> )
+>
+> Signed-off-by: Somya Anand <somyaanand214@gmail.com>
+> ---
+>  drivers/staging/dgap/dgap.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/dgap/dgap.c b/drivers/staging/dgap/dgap.c
+> index d4d98a7..43163a0 100644
+> --- a/drivers/staging/dgap/dgap.c
+> +++ b/drivers/staging/dgap/dgap.c
+> @@ -7041,8 +7041,7 @@ static int dgap_start(void)
+>
+>  	/* Start the poller */
+>  	spin_lock_irqsave(&dgap_poll_lock, flags);
+> -	init_timer(&dgap_poll_timer);
+> -	dgap_poll_timer.function = dgap_poll_handler;
+> +	setup_timer(&dgap_poll_timer, dgap_poll_handler, NULL);
+
+As shown by the other patches, the last argument of setup_timer is an
+unsigned long, not a pointer.  So it would be better to put 0 or 0UL than
+NULL.
+
+julia
+
+>  	dgap_poll_timer.data = 0;
+>  	dgap_poll_time = jiffies + dgap_jiffies_from_ms(dgap_poll_tick);
+>  	dgap_poll_timer.expires = dgap_poll_time;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1426068292-20348-3-git-send-email-somyaanand214%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
