@@ -1,158 +1,324 @@
-X-GM-THRID: 6949621312143753216
-X-Received: by 2002:a9d:4f05:: with SMTP id d5mr17585315otl.88.1618084803585;
-        Sat, 10 Apr 2021 13:00:03 -0700 (PDT)
+X-GM-THRID: 7649300054016
+X-Received: by 10.70.94.102 with SMTP id db6mr22627158pdb.0.1426062109256;
+        Wed, 11 Mar 2015 01:21:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:480d:: with SMTP id v13ls997797oia.5.gmail; Sat, 10 Apr
- 2021 13:00:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwoqnImkEnJ9rSNOOsp9GRfTDL1jmW5K9vSPQsLdhg06US/oH8En4MnCniDqXeNlo3OGb2/
-X-Received: by 2002:a05:6808:91:: with SMTP id s17mr9600429oic.178.1618084802614;
-        Sat, 10 Apr 2021 13:00:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618084802; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qWGdYTjJFWlo20nE/Pfme8pkF5kBJgywN4/b/+yi2cWN4XDyUJKy3epGlENm9lyC90
-         JM7cKFaKhszaNw8lMD9DREvLjaPTR49vA2xHDPUif8EmY/48Dw7FhjGEQL9ieIJupeqd
-         wxgTtuRp/r+F/5NhPVGyx8LzKAHYeDKDzo9va0WzcaaR0kZReI+ySz4lgHo6sMOykltG
-         VGcTkbtC1JvaX18+mGO5mtvnQIJx4fP3XRXMMU9K64hSOxT8NEIzlJOKoPlpn7VoZ3uU
-         aHFld+2igz71FuL2KNvsxx6zGiridU3NXKdmgXmTr1jMHid9vqxj6+XbDBUpRwBhDwrM
-         jUzQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=8qqSBlwS3BjvcFhE+2QmiRSvqs5dG4808gdiJ8MHloc=;
-        b=OfOrO9El6OQbwkbs/F8fAOa4aKwcpDvu5vjV5nLWfbCt/s4gQXs8n20+lu+mpc9Dix
-         Tpqjs/O76loAT+7/n5H5GNL955NDRS+rZr8AZ1CAKQyJ0mSh+a+Z2VIesWwcyYoVhReI
-         w2j3hv7QhdXM22tobkiSGZve3INdWijzMAkM5y7W48KwVMsRd+2kPIbzT0bpl6DG8mrG
-         72jc1iYszRz7zOnKZwWAweTyrF53o+XTt1aZ0z6/XpyEif0SgVkYJNwhR2WztI5iU3Hj
-         LqsM0huVH36Ar9BntUjJVQ7u5HSVYqKv0RcXNwwfTi31QsKlmEKUiPd6osu0RcWpfvWI
-         Yy2g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R9E0t8jb;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com. [2607:f8b0:4864:20::433])
-        by gmr-mx.google.com with ESMTPS id x38si518843otr.3.2021.04.10.13.00.02
+Received: by 10.50.44.4 with SMTP id a4ls548281igm.36.canary; Wed, 11 Mar 2015
+ 01:21:49 -0700 (PDT)
+X-Received: by 10.66.224.42 with SMTP id qz10mr36818645pac.0.1426062109028;
+        Wed, 11 Mar 2015 01:21:49 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id ni4si563066pdb.2.2015.03.11.01.21.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 10 Apr 2021 13:00:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) client-ip=2607:f8b0:4864:20::433;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Mar 2015 01:21:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R9E0t8jb;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x433.google.com with SMTP id p67so1585255pfp.10
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Apr 2021 13:00:02 -0700 (PDT)
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x236.google.com with SMTP id lj1so9462267pab.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 01:21:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=8qqSBlwS3BjvcFhE+2QmiRSvqs5dG4808gdiJ8MHloc=;
-        b=R9E0t8jbEk8pEznmH16EJC3SE9XWeFJKEto+B3bLUgFg/KNcTYMpQmo5lVhdsvQ85B
-         tYNRDvqslfA/C8KzTBPg5ppe2T100rPX/fzVtEKTTDmbluutulvnr+kYmsSM/KVg2Dqz
-         WT6997QdO0bElsR1Z4dCJoDOdV/sBmL2vWy81JUG5PfaOTSETIrrNPpQxpSLB8UVe0K0
-         BoXFgK2YWsYC5TwHTeo1/IW7OKbza3zuFXSXYAtRUYbgsF2fmVaLFrzb+4mUfjXWG6fx
-         m5R/v+TiDuw8t7Z8HazpEI26y5iwqnXYW3gYbDOfLVljMJiPWzvSup+4cn9EVLwMSUgn
-         +xlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=8qqSBlwS3BjvcFhE+2QmiRSvqs5dG4808gdiJ8MHloc=;
-        b=C4VHDsgBjrq6aJC49j9HP6yLXDJNGzESkRhytYqhiEZYAuMJEkzU4zqZQivF1ifgUG
-         FJr/6FyVt6I+NtjrwPZRdKaVSIgfKEU9hQ4wFB0qxceuDQ+BD0NiLYS67aNvC5w2Ax1H
-         ohYVY5/0Ba4Cb1LAG3KQxjzwBV8VFDum5vaieLRRuKmMd0JAEsbsbwF6M5Nzh+IHmp7T
-         Yy9qtQJEG7u102NxeNWtoBi76cNv32zppI6b4CbwZYSoZjsujB5Uu3/y7m5hCYrFSAEG
-         tAlXfonDjTHxPlvyOBN5QP7kb0cR3vyzbiLqGWq98Y4/YJ9pNOSV+osERUykt6hyqbbH
-         atdA==
-X-Gm-Message-State: AOAM532DFoCfYuDxZ57C/3FdvLlr67teXph7hiqYknsWibbD5dEi4lTO
-	+guXoRNXBthBxj2oIwqE8kI=
-X-Received: by 2002:a63:c111:: with SMTP id w17mr1829524pgf.127.1618084801801;
-        Sat, 10 Apr 2021 13:00:01 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id k69sm6554464pga.45.2021.04.10.12.59.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 Apr 2021 13:00:01 -0700 (PDT)
-Date: Sun, 11 Apr 2021 01:29:53 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: narmstrong@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
-	khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in, linux-amlogic@lists.infradead.org
-Subject: [PATCH v2] staging: media: meson: vdec: declare u32 as const and
- static const
-Message-ID: <YHIDufKhTEeuxyl5@kali>
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=0qXo7URMzwmi5cxPBRjWsWjR35OqMq98b+tPzi+t77w=;
+        b=uY0rvd3WNeq/YtvUHUnCunhetLuWsnjpJPtUhgWo597mVjZoIY/dZ/H2kok7JYftEO
+         yEeoN6eJthQ/HB2UkUVwv8eUYRkbXR2TIT3pnBaWa71lKZdzRuMP2fDi4TIUpyyXkUeR
+         kqz91IPup5U57IF9JDSIJJ8gnLBprdNBWXjhA7iWSLkYl1hkP/c8WN8mhZZIMambIlmH
+         TF1HfPuU6YsVmdFXSq2Y+ZyouUYu/EkEkbeLWIaXXkTufejtGUf7kb6Ot1yhBKD1bh47
+         1sPnnS2k2KAUazjkfQMv8XHynhzSK4UiQXSjovjZ0WEK70liJDY3MZZyne9JHgVO3mKB
+         3Kng==
+X-Received: by 10.67.1.164 with SMTP id bh4mr73938186pad.129.1426062108903;
+        Wed, 11 Mar 2015 01:21:48 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([106.66.2.180])
+        by mx.google.com with ESMTPSA id kd9sm4844684pab.0.2015.03.11.01.21.44
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 11 Mar 2015 01:21:48 -0700 (PDT)
+Date: Wed, 11 Mar 2015 13:51:36 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8192e: Eliminate use of MSECS macro
+Message-ID: <20150311082136.GA14071@vaishali-Ideapad-Z570>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Declared 32 bit unsigned int as static constant inside a function and
-replaced u32[] {x,y} as canvas1, canvas2 in codec_mpeg12.c
-This indicates the value of canvas indexes will remain constant throughout execution.
-Replaced u32 reg_base and u32 reg_name with const u32 reg_base and const
-u32 reg_name as it will contain data/registry bases to write static
-const indexes declared above and will keep track of of contiguos
-registers after each reg_base.
-This makes code look better, neater. It improves readability.
+Use msecs_to_jiffies instead of driver specific macro
+MSECS. This is done using Coccinelle and semantic
+patch used for this is as follows:
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+@@expression t;@@
+
+- MSECS(t)
++ msecs_to_jiffies(t)
+
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
 ---
- drivers/staging/media/meson/vdec/codec_mpeg12.c | 5 +++--
- drivers/staging/media/meson/vdec/vdec_helpers.c | 2 +-
- drivers/staging/media/meson/vdec/vdec_helpers.h | 2 +-
- 3 files changed, 5 insertions(+), 4 deletions(-)
+v1: This patch has some line over 80 characters as limiting
+    them to 80 characters does not make code look good.
 
-diff --git a/drivers/staging/media/meson/vdec/codec_mpeg12.c b/drivers/staging/media/meson/vdec/codec_mpeg12.c
-index 21e93a13356c..861d8584f22f 100644
---- a/drivers/staging/media/meson/vdec/codec_mpeg12.c
-+++ b/drivers/staging/media/meson/vdec/codec_mpeg12.c
-@@ -65,6 +65,8 @@ static int codec_mpeg12_start(struct amvdec_session *sess)
- 	struct amvdec_core *core = sess->core;
- 	struct codec_mpeg12 *mpeg12;
- 	int ret;
-+	static const u32 canvas1[] = { AV_SCRATCH_0, 0 };
-+	static const u32 canvas2[] = { 8, 0 }
+ drivers/staging/rtl8192e/rtl8192e/r8192E_firmware.c |  6 +++---
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c        |  4 ++--
+ drivers/staging/rtl8192e/rtl8192e/rtl_dm.c          |  6 +++---
+ drivers/staging/rtl8192e/rtl8192e/rtl_ps.c          | 13 +++++++------
+ drivers/staging/rtl8192e/rtl819x_BAProc.c           |  2 +-
+ drivers/staging/rtl8192e/rtl819x_TSProc.c           |  6 +++---
+ drivers/staging/rtl8192e/rtllib.h                   |  1 -
+ drivers/staging/rtl8192e/rtllib_rx.c                |  2 +-
+ drivers/staging/rtl8192e/rtllib_softmac.c           | 15 +++++++++------
+ 9 files changed, 29 insertions(+), 26 deletions(-)
+
+diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_firmware.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_firmware.c
+index 2e28744..6cb0326 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/r8192E_firmware.c
++++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_firmware.c
+@@ -108,7 +108,7 @@ static bool CPUcheck_maincodeok_turnonCPU(struct net_device *dev)
+ 	u32		CPU_status = 0;
+ 	unsigned long   timeout;
  
- 	mpeg12 = kzalloc(sizeof(*mpeg12), GFP_KERNEL);
- 	if (!mpeg12)
-@@ -80,8 +82,7 @@ static int codec_mpeg12_start(struct amvdec_session *sess)
- 		goto free_mpeg12;
- 	}
+-	timeout = jiffies + MSECS(200);
++	timeout = jiffies + msecs_to_jiffies(200);
+ 	while (time_before(jiffies, timeout)) {
+ 		CPU_status = read_nic_dword(dev, CPU_GEN);
+ 		if (CPU_status & CPU_GEN_PUT_CODE_OK)
+@@ -128,7 +128,7 @@ static bool CPUcheck_maincodeok_turnonCPU(struct net_device *dev)
+ 		       (u8)((CPU_status|CPU_GEN_PWR_STB_CPU)&0xff));
+ 	mdelay(1);
  
--	ret = amvdec_set_canvases(sess, (u32[]){ AV_SCRATCH_0, 0 },
--				  (u32[]){ 8, 0 });
-+	ret = amvdec_set_canvases(sess, canvas1, canvas2);
- 	if (ret)
- 		goto free_workspace;
+-	timeout = jiffies + MSECS(200);
++	timeout = jiffies + msecs_to_jiffies(200);
+ 	while (time_before(jiffies, timeout)) {
+ 		CPU_status = read_nic_dword(dev, CPU_GEN);
+ 		if (CPU_status&CPU_GEN_BOOT_RDY)
+@@ -156,7 +156,7 @@ static bool CPUcheck_firmware_ready(struct net_device *dev)
+ 	u32	CPU_status = 0;
+ 	unsigned long timeout;
  
-diff --git a/drivers/staging/media/meson/vdec/vdec_helpers.c b/drivers/staging/media/meson/vdec/vdec_helpers.c
-index 7f07a9175815..df5c27266c44 100644
---- a/drivers/staging/media/meson/vdec/vdec_helpers.c
-+++ b/drivers/staging/media/meson/vdec/vdec_helpers.c
-@@ -177,7 +177,7 @@ static int set_canvas_nv12m(struct amvdec_session *sess,
+-	timeout = jiffies + MSECS(20);
++	timeout = jiffies + msecs_to_jiffies(20);
+ 	while (time_before(jiffies, timeout)) {
+ 		CPU_status = read_nic_dword(dev, CPU_GEN);
+ 		if (CPU_status&CPU_GEN_FIRM_RDY)
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+index a603acc..90ed03a 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+@@ -1793,7 +1793,7 @@ void watch_dog_timer_callback(unsigned long data)
+ 
+ 	queue_delayed_work_rsl(priv->priv_wq, &priv->watch_dog_wq, 0);
+ 	mod_timer(&priv->watch_dog_timer, jiffies +
+-		  MSECS(RTLLIB_WATCH_DOG_TIME));
++		  msecs_to_jiffies(RTLLIB_WATCH_DOG_TIME));
  }
  
- int amvdec_set_canvases(struct amvdec_session *sess,
--			u32 reg_base[], u32 reg_num[])
-+			const u32 reg_base[], const u32 reg_num[])
- {
- 	struct v4l2_m2m_buffer *buf;
- 	u32 pixfmt = sess->pixfmt_cap;
-diff --git a/drivers/staging/media/meson/vdec/vdec_helpers.h b/drivers/staging/media/meson/vdec/vdec_helpers.h
-index cfaed52ab526..ace8897c34fe 100644
---- a/drivers/staging/media/meson/vdec/vdec_helpers.h
-+++ b/drivers/staging/media/meson/vdec/vdec_helpers.h
-@@ -17,7 +17,7 @@
-  * @reg_num: number of contiguous registers after each reg_base (including it)
-  */
- int amvdec_set_canvases(struct amvdec_session *sess,
--			u32 reg_base[], u32 reg_num[]);
-+			const u32 reg_base[], const u32 reg_num[]);
+ /****************************************************************************
+@@ -3106,7 +3106,7 @@ void check_rfctrl_gpio_timer(unsigned long data)
+ 	queue_delayed_work_rsl(priv->priv_wq, &priv->gpio_change_rf_wq, 0);
  
- /* Helpers to read/write to the various IPs (DOS, PARSER) */
- u32 amvdec_read_dos(struct amvdec_core *core, u32 reg);
+ 	mod_timer(&priv->gpio_polling_timer, jiffies +
+-		  MSECS(RTLLIB_WATCH_DOG_TIME));
++		  msecs_to_jiffies(RTLLIB_WATCH_DOG_TIME));
+ }
+ 
+ /***************************************************************************
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
+index bdb9274..91794ae 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
+@@ -2665,14 +2665,14 @@ void dm_fsync_timer_callback(unsigned long data)
+ 			if (timer_pending(&priv->fsync_timer))
+ 				del_timer_sync(&priv->fsync_timer);
+ 			priv->fsync_timer.expires = jiffies +
+-				 MSECS(priv->rtllib->fsync_time_interval *
++				 msecs_to_jiffies(priv->rtllib->fsync_time_interval *
+ 				 priv->rtllib->fsync_multiple_timeinterval);
+ 			add_timer(&priv->fsync_timer);
+ 		} else {
+ 			if (timer_pending(&priv->fsync_timer))
+ 				del_timer_sync(&priv->fsync_timer);
+ 			priv->fsync_timer.expires = jiffies +
+-				 MSECS(priv->rtllib->fsync_time_interval);
++				 msecs_to_jiffies(priv->rtllib->fsync_time_interval);
+ 			add_timer(&priv->fsync_timer);
+ 		}
+ 	} else {
+@@ -2762,7 +2762,7 @@ static void dm_StartSWFsync(struct net_device *dev)
+ 	if (timer_pending(&priv->fsync_timer))
+ 		del_timer_sync(&priv->fsync_timer);
+ 	priv->fsync_timer.expires = jiffies +
+-				    MSECS(priv->rtllib->fsync_time_interval);
++				    msecs_to_jiffies(priv->rtllib->fsync_time_interval);
+ 	add_timer(&priv->fsync_timer);
+ 
+ 	write_nic_dword(dev, rOFDM0_RxDetector2, 0x465c12cd);
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_ps.c b/drivers/staging/rtl8192e/rtl8192e/rtl_ps.c
+index 4856b76..cbd2405 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_ps.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_ps.c
+@@ -67,7 +67,8 @@ void rtl8192_hw_wakeup(struct net_device *dev)
+ 		RT_TRACE(COMP_DBG, "rtl8192_hw_wakeup(): RF Change in "
+ 			 "progress!\n");
+ 		queue_delayed_work_rsl(priv->rtllib->wq,
+-				       &priv->rtllib->hw_wakeup_wq, MSECS(10));
++				       &priv->rtllib->hw_wakeup_wq,
++				       msecs_to_jiffies(10));
+ 		return;
+ 	}
+ 	spin_unlock_irqrestore(&priv->rf_ps_lock, flags);
+@@ -95,18 +96,18 @@ void rtl8192_hw_to_sleep(struct net_device *dev, u64 time)
+ 
+ 	spin_lock_irqsave(&priv->ps_lock, flags);
+ 
+-	time -= MSECS(8+16+7);
++	time -= msecs_to_jiffies(8 + 16 + 7);
+ 
+-	if ((time - jiffies) <= MSECS(MIN_SLEEP_TIME)) {
++	if ((time - jiffies) <= msecs_to_jiffies(MIN_SLEEP_TIME)) {
+ 		spin_unlock_irqrestore(&priv->ps_lock, flags);
+ 		printk(KERN_INFO "too short to sleep::%lld < %ld\n",
+-		       time - jiffies, MSECS(MIN_SLEEP_TIME));
++		       time - jiffies, msecs_to_jiffies(MIN_SLEEP_TIME));
+ 		return;
+ 	}
+ 
+-	if ((time - jiffies) > MSECS(MAX_SLEEP_TIME)) {
++	if ((time - jiffies) > msecs_to_jiffies(MAX_SLEEP_TIME)) {
+ 		printk(KERN_INFO "========>too long to sleep:%lld > %ld\n",
+-		       time - jiffies,  MSECS(MAX_SLEEP_TIME));
++		       time - jiffies,  msecs_to_jiffies(MAX_SLEEP_TIME));
+ 		spin_unlock_irqrestore(&priv->ps_lock, flags);
+ 		return;
+ 	}
+diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+index 0415e02..03e2a82 100644
+--- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+@@ -26,7 +26,7 @@ static void ActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA,
+ {
+ 	pBA->bValid = true;
+ 	if (Time != 0)
+-		mod_timer(&pBA->Timer, jiffies + MSECS(Time));
++		mod_timer(&pBA->Timer, jiffies + msecs_to_jiffies(Time));
+ }
+ 
+ static void DeActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA)
+diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
+index 294847d..c51f7e0 100644
+--- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
+@@ -91,7 +91,7 @@ static void RxPktPendingTimeout(unsigned long data)
+ 	if (bPktInBuf && (pRxTs->RxTimeoutIndicateSeq == 0xffff)) {
+ 		pRxTs->RxTimeoutIndicateSeq = pRxTs->RxIndicateSeq;
+ 		mod_timer(&pRxTs->RxPktPendingTimer,  jiffies +
+-			  MSECS(ieee->pHTInfo->RxReorderPendingTime));
++			  msecs_to_jiffies(ieee->pHTInfo->RxReorderPendingTime));
+ 	}
+ 	spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
+ }
+@@ -223,7 +223,7 @@ static void AdmitTS(struct rtllib_device *ieee,
+ 
+ 	if (InactTime != 0)
+ 		mod_timer(&pTsCommonInfo->InactTimer, jiffies +
+-			  MSECS(InactTime));
++			  msecs_to_jiffies(InactTime));
+ }
+ 
+ static struct ts_common_info *SearchAdmitTRStream(struct rtllib_device *ieee,
+@@ -542,7 +542,7 @@ void TsStartAddBaProcess(struct rtllib_device *ieee, struct tx_ts_record *pTxTS)
+ 			RTLLIB_DEBUG(RTLLIB_DL_BA, "TsStartAddBaProcess(): "
+ 				     "Delayed Start ADDBA after 60 sec!!\n");
+ 			mod_timer(&pTxTS->TsAddBaTimer, jiffies +
+-				  MSECS(TS_ADDBA_DELAY));
++				  msecs_to_jiffies(TS_ADDBA_DELAY));
+ 		} else {
+ 			RTLLIB_DEBUG(RTLLIB_DL_BA, "TsStartAddBaProcess(): "
+ 				     "Immediately Start ADDBA now!!\n");
+diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
+index cef2dc2..b2c28e9 100644
+--- a/drivers/staging/rtl8192e/rtllib.h
++++ b/drivers/staging/rtl8192e/rtllib.h
+@@ -525,7 +525,6 @@ struct ieee_param {
+ #define IW_QUAL_NOISE_UPDATED  0x4
+ #endif
+ 
+-#define MSECS(t) msecs_to_jiffies(t)
+ #define msleep_interruptible_rsl  msleep_interruptible
+ 
+ #define RTLLIB_DATA_LEN		2304
+diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
+index e8261ae..c1085a5 100644
+--- a/drivers/staging/rtl8192e/rtllib_rx.c
++++ b/drivers/staging/rtl8192e/rtllib_rx.c
+@@ -717,7 +717,7 @@ static void RxReorderIndicatePacket(struct rtllib_device *ieee,
+ 			     __func__);
+ 		pTS->RxTimeoutIndicateSeq = pTS->RxIndicateSeq;
+ 		mod_timer(&pTS->RxPktPendingTimer, jiffies +
+-			  MSECS(pHTInfo->RxReorderPendingTime));
++			  msecs_to_jiffies(pHTInfo->RxReorderPendingTime));
+ 	}
+ 	spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
+ }
+diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
+index 16aef7c..1b171b2 100644
+--- a/drivers/staging/rtl8192e/rtllib_softmac.c
++++ b/drivers/staging/rtl8192e/rtllib_softmac.c
+@@ -401,7 +401,7 @@ static void rtllib_send_beacon(struct rtllib_device *ieee)
+ 
+ 	if (ieee->beacon_txing && ieee->ieee_up)
+ 		mod_timer(&ieee->beacon_timer, jiffies +
+-			  (MSECS(ieee->current_network.beacon_interval - 5)));
++			  (msecs_to_jiffies(ieee->current_network.beacon_interval - 5)));
+ }
+ 
+ 
+@@ -639,7 +639,7 @@ static void rtllib_softmac_scan_wq(void *data)
+ 		rtllib_send_probe_requests(ieee, 0);
+ 
+ 	queue_delayed_work_rsl(ieee->wq, &ieee->softmac_scan_wq,
+-			       MSECS(RTLLIB_SOFTMAC_SCAN_TIME));
++			       msecs_to_jiffies(RTLLIB_SOFTMAC_SCAN_TIME));
+ 
+ 	up(&ieee->scan_sem);
+ 	return;
+@@ -2008,9 +2008,11 @@ static short rtllib_sta_ps_sleep(struct rtllib_device *ieee, u64 *time)
+ 	if (dtim & (RTLLIB_DTIM_UCAST & ieee->ps))
+ 		return 2;
+ 
+-	if (!time_after(jiffies, ieee->dev->trans_start + MSECS(timeout)))
++	if (!time_after(jiffies,
++			ieee->dev->trans_start + msecs_to_jiffies(timeout)))
+ 		return 0;
+-	if (!time_after(jiffies, ieee->last_rx_ps_time + MSECS(timeout)))
++	if (!time_after(jiffies,
++			ieee->last_rx_ps_time + msecs_to_jiffies(timeout)))
+ 		return 0;
+ 	if ((ieee->softmac_features & IEEE_SOFTMAC_SINGLE_QUEUE) &&
+ 	    (ieee->mgmt_queue_tail != ieee->mgmt_queue_head))
+@@ -2060,7 +2062,7 @@ static short rtllib_sta_ps_sleep(struct rtllib_device *ieee, u64 *time)
+ 			}
+ 
+ 		*time = ieee->current_network.last_dtim_sta_time
+-			+ MSECS(ieee->current_network.beacon_interval *
++			+ msecs_to_jiffies(ieee->current_network.beacon_interval *
+ 			LPSAwakeIntvl_tmp);
+ 	}
+ 	}
+@@ -2808,7 +2810,8 @@ static void rtllib_start_ibss_wq(void *data)
+ 
+ inline void rtllib_start_ibss(struct rtllib_device *ieee)
+ {
+-	queue_delayed_work_rsl(ieee->wq, &ieee->start_ibss_wq, MSECS(150));
++	queue_delayed_work_rsl(ieee->wq, &ieee->start_ibss_wq,
++			       msecs_to_jiffies(150));
+ }
+ 
+ /* this is called only in user context, with wx_sem held */
 -- 
-2.30.2
+1.9.1
 
 
