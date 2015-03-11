@@ -1,80 +1,105 @@
-X-GM-THRID: 6201801686594355200
-X-Received: by 10.182.117.225 with SMTP id kh1mr21397763obb.12.1443969478108;
-        Sun, 04 Oct 2015 07:37:58 -0700 (PDT)
+X-GM-THRID: 7339802361856
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,e586cd80286c5b75
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.28.137 with SMTP id b9mr5080163lah.8.1426036029022;
+        Tue, 10 Mar 2015 18:07:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.1.52 with SMTP id 20ls982840igj.1.gmail; Sun, 04 Oct 2015
- 07:37:57 -0700 (PDT)
-X-Received: by 10.67.24.39 with SMTP id if7mr795127pad.24.1443969477699;
-        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id uv4si3282792pac.0.2015.10.04.07.37.57
+Received: by 10.152.242.132 with SMTP id wq4ls98511lac.30.gmail; Tue, 10 Mar
+ 2015 18:07:08 -0700 (PDT)
+X-Received: by 10.112.199.69 with SMTP id ji5mr5028408lbc.0.1426036028530;
+        Tue, 10 Mar 2015 18:07:08 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-we0-x230.google.com (mail-we0-x230.google.com. [2a00:1450:400c:c03::230])
+        by gmr-mx.google.com with ESMTPS id sf8si190125wic.2.2015.03.10.18.07.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2015 18:07:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) client-ip=2a00:1450:400c:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id ex6so150894132pac.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
+Received: by mail-we0-x230.google.com with SMTP id k48so5661324wev.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 18:07:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=5ZLSvYcKXm1CjPDCkJcEHjv+jySC8YTDdIDc8/nI7f0=;
-        b=Gka/VI5q5XgafWTfNJbO5yGjbI/Qc+a3fUWK73gjzZ4qnpt67XsDJn7l2+bzEtunEE
-         B4TdjVrjANtDas3tOPCP3LdDXWwjNA/+BXSqVKzWOm/Rbd5FHgjqftvVR9432Z2CmZfT
-         P4jZwPVsAMjp5j7Iqd7fc8+yRABOkR7CUVyRnziMKuFgOeT8TiZcftSPLU5E3CLRwmds
-         P4+aiBrCHwMQhVGFfA0Dd9zJp0Lg88xkmZlj6E2GihrcEEhcTdHJsEfO+fS7vrdzuei5
-         HyP8naoKKJPlVcBkPlL6n8hsuAGfuoDG9YH+lwHnuRKOU5sR8C5SXF2oNOd8YTFaoM+e
-         XOaw==
-X-Received: by 10.68.219.4 with SMTP id pk4mr33850276pbc.138.1443969477537;
-        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.217.58])
-        by smtp.gmail.com with ESMTPSA id fx4sm22338867pbb.92.2015.10.04.07.37.56
+        bh=cYFNxi0EP7N8NOY+xC0IOvkDFxNPbLaKnENmkEG6dKg=;
+        b=botfhk7wTnlo5WFrSH3JW5d3kfOc/X13AT8IEhIYBZznFjX23NF1YwqgJqYDz5TDEr
+         s5+9swQ/ZrJX5/rVZeJCynx7I+MJjuDStjQr8dsasbZo1egYanGj90Wwhu8GfIpVmU2K
+         v5p2In7TCckXshhGpNvLCIeHp5DobrM7VznFPQW/kSGdgjgg0lQ8sYaKGiPYcysC61c3
+         Iu/MR/wJTUivvu3AKKgo9SMisRHASTNSqMqPs5y6XCzeNoH7LcXg+P0gj7VgaYY54lys
+         YizoOP+T01QEIbyUN1vlkpMOrgidTaZdIpeEzmK9kZl1WdRg7SdAJCxpRgNIRZy5SSEX
+         zPHg==
+X-Received: by 10.180.211.73 with SMTP id na9mr66110844wic.60.1426036028453;
+        Tue, 10 Mar 2015 18:07:08 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id bd1sm22527736wib.13.2015.03.10.18.07.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
-Date: Sun, 4 Oct 2015 20:07:53 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 10 Mar 2015 18:07:07 -0700 (PDT)
+Date: Wed, 11 Mar 2015 03:06:30 +0200
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/4] staging: sm750fb: Add space around '/'
-Message-ID: <20151004143753.GA9625@amitoj-Inspiron-3542>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] Staging: rtl8192e: Remove unnecessary macro
+Message-ID: <c127ca8054c37fadb519e8d9caf968325ad9c1ed.1426035351.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Add space around operator '/'. Problem found using
-checkpatch.pl
-CHECK: spaces preferred around that '/' (ctx:VxV)
+This patch removes the RTLLIB_PRINT_STR macro definition because it's
+only defined in the header and it's never referenced. It also removes
+PRINTABLE and MAX_STR_LEN, which were defined as helpers for the first
+one.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v3:
+	- Fix another spelling error
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index e987971..8d167fc 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -391,10 +391,10 @@ unsigned int calcPllValue(unsigned int request_orig, pll_value_t *pll)
+Changes in v2:
+        - Fix commit message spelling error
+	- Make the commit message more clear
+ drivers/staging/rtl8192e/rtllib.h | 20 --------------------
+ 1 file changed, 20 deletions(-)
+
+diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
+index cef2dc2..96e9246 100644
+--- a/drivers/staging/rtl8192e/rtllib.h
++++ b/drivers/staging/rtl8192e/rtllib.h
+@@ -784,26 +784,6 @@ do {								\
+ #define RTLLIB_DEBUG_RX(f, a...)  RTLLIB_DEBUG(RTLLIB_DL_RX, f, ## a)
+ #define RTLLIB_DEBUG_QOS(f, a...)  RTLLIB_DEBUG(RTLLIB_DL_QOS, f, ## a)
  
- 	if (pll->clockType != MXCLK_PLL) {
- 		xparm = &xparm_PIXEL[0];
--		xcnt = sizeof(xparm_PIXEL)/sizeof(xparm_PIXEL[0]);
-+		xcnt = sizeof(xparm_PIXEL) / sizeof(xparm_PIXEL[0]);
- 	} else {
- 		xparm = &xparm_MXCLK[0];
--		xcnt = sizeof(xparm_MXCLK)/sizeof(xparm_MXCLK[0]);
-+		xcnt = sizeof(xparm_MXCLK) / sizeof(xparm_MXCLK[0]);
- 	}
- 
- 
+-/* Added by Annie, 2005-11-22. */
+-#define MAX_STR_LEN     64
+-/* I want to see ASCII 33 to 126 only. Otherwise, I print '?'. */
+-#define PRINTABLE(_ch)  (_ch > '!' && _ch < '~')
+-#define RTLLIB_PRINT_STR(_Comp, _TitleString, _Ptr, _Len)		\
+-	if ((_Comp) & level) {					       \
+-		int	     __i;				    \
+-		u8  struct buffer[MAX_STR_LEN];				\
+-		int length = (_Len < MAX_STR_LEN) ? _Len : (MAX_STR_LEN-1) ;\
+-		memset(struct buffer, 0, MAX_STR_LEN);		\
+-		memcpy(struct buffer, (u8 *)_Ptr, length);		\
+-		for (__i = 0; __i < MAX_STR_LEN; __i++) {		\
+-			if (!PRINTABLE(struct buffer[__i]))		\
+-				struct buffer[__i] = '?';		\
+-		}							\
+-		struct buffer[length] = '\0';				\
+-		printk(KERN_INFO "Rtl819x: ");				\
+-		printk(_TitleString);					\
+-		printk(": %d, <%s>\n", _Len, struct buffer);		\
+-	}
+ #ifndef ETH_P_PAE
+ #define ETH_P_PAE 0x888E /* Port Access Entity (IEEE 802.1X) */
+ #define ETH_P_IP	0x0800		/* Internet Protocol packet	*/
 -- 
 1.9.1
 
