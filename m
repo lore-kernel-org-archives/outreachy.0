@@ -1,112 +1,110 @@
-X-GM-THRID: 6664584616836333568
-X-Received: by 2002:a1c:6c15:: with SMTP id h21mr13413wmc.10.1551719526693;
-        Mon, 04 Mar 2019 09:12:06 -0800 (PST)
+X-GM-THRID: 7566836891648
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,b6b3faf53755f62b
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.194.161.194 with SMTP id xu2mr5087739wjb.1.1426035134357;
+        Tue, 10 Mar 2015 17:52:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:3d6:: with SMTP id 205ls1352wmd.1.gmail; Mon, 04 Mar
- 2019 09:12:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwOHH57okILFMYw57Qno71yqgH2En3ghLGKa5QGszC1sgw1/2kHv+aNgqlGr0m/cICeSYq/
-X-Received: by 2002:a1c:9651:: with SMTP id y78mr11860wmd.1.1551719525638;
-        Mon, 04 Mar 2019 09:12:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551719525; cv=none;
-        d=google.com; s=arc-20160816;
-        b=mnRX35QbiPotdEdOK7dODwf1jpkIash22RDCvoMSCVwJVMK7Za3HMwlmJZo12VtkxL
-         gV0fVbYPnjyZl5Xa6fcChacLvWeYGJB6B9mUaIlkCpJEegSf3EAitvsI/ataxzZv4HJE
-         Bn3GPn0hr9dXrWLBQnWK7OKPClKk1jzFBDTLDot3W8jtxjbLDs8e/BN+dpDd1Gz5ap/c
-         rLD8/EA5ohCpkvkR6UJwdviY4ZeSRO1PB3jQaTwZ3Z872YEG+OT1LmiVfIyZfjJt6Jsr
-         jRZOEIUJGqyH9uhag5TDYWKsHtN7Rk395xgv2slpiuff+ChVLLXdkkBW4BL2TiZRyIfN
-         AoDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=KaVP2GnVcdBKEaiRiq76ikiiq8wgj1RmVhXRwFV0bLY=;
-        b=fHRO1A5M93Qva1TSP0ewFJhB5hng11G2nkF052mNSB3dU5LUCW4BPU5MLRaBxA8f5w
-         iKmr9a2KXY6ItpUplZZMYCwSvVFcjBU+LXtjH4FMo7/wCchCobuDXvURfOvpGKdjqYeO
-         OK4YUd7kgE1BAMXX1lNB06A3XYvaMXI+/PQyQ73PUAM9IX5LKpgQATIrAVMgYNVm4eN0
-         tU50J4DpA5gdu2fO4xhTokFfx/oIv0o47+jSuEO8KaH+VKed6TBY64oTFeB8ULjo7mlc
-         Ja3s/fp+FWLnECCjul1a5M2ZIXbg3uGJ/Q7tvGaqTBIgW/WhRq6VhlkFuGgz9olwgnsG
-         pBaQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jY2O0IV1;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id f2si336736wrq.5.2019.03.04.09.12.05
+Received: by 10.152.179.36 with SMTP id dd4ls95718lac.43.gmail; Tue, 10 Mar
+ 2015 17:52:13 -0700 (PDT)
+X-Received: by 10.112.159.227 with SMTP id xf3mr5167874lbb.11.1426035133658;
+        Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-wg0-x22c.google.com (mail-wg0-x22c.google.com. [2a00:1450:400c:c00::22c])
+        by gmr-mx.google.com with ESMTPS id gj20si1190731wic.1.2015.03.10.17.52.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 09:12:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) client-ip=2a00:1450:400c:c00::22c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jY2O0IV1;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id r5so6397465wrg.9
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 09:12:05 -0800 (PST)
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wghk14 with SMTP id k14so5669707wgh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=KaVP2GnVcdBKEaiRiq76ikiiq8wgj1RmVhXRwFV0bLY=;
-        b=jY2O0IV17ebdej1S0Xj+JrmucuufMiBObS6jfc/Yxc9nH5Uqkc2Yf60a3lNIIkoSUG
-         zlf0CRZgs52GsdxYPqXKm4GwyFf826tjtF7hW9rA/A48KF8kCYKZtwaIqTbvRHdHl0u5
-         S/Dzu35K6zf49wKNs7J/MPVlSjgdZjE47ULjyQDGPKGhNb+x99Jg2XH49TfUL35L+8sg
-         FY258XDUVu7tT8z/ogt9SaGu8nPwvYR4oIXYfgs3Rk+4BoqFG3kqYvKJpuMsQMY+x3R+
-         QycvekExkqN4tNiDmfmc1YU2uO44QUtqiZgtZFOCUnAaEgvg3M5OD9zZWvcI1JgZljDF
-         3M3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=KaVP2GnVcdBKEaiRiq76ikiiq8wgj1RmVhXRwFV0bLY=;
-        b=aWY/ycUMLP1Zj3pc6Ok3gOJ3FQA4kwMPP3ICxH3nfDezS4Z9sjSXyiRF/xYz+MkFM7
-         InAg8A4AWaeEyGgY9uRTmZsoH/ZacGCJfYBDPS+lAIAmy5etODlXa8Slc2dbwG0heARc
-         pnLDMFwvqxcQagGliUjQ8C//81jf8SD0rECVTsmEeKfan1938Q0YULOLRJlsTtPSY//m
-         ZmgFFNGS8lBhMWlsmLDVWjeENAHH/2onn2hPvWA5uTeIqCmVoFBxvCgn/8Zabv/ChDFG
-         GGiskbafFBuWFdlGNpJQKHv5D6oA3jotbt5feQsGtYKYH4N5Pg4KS90HGrSK2sphVS/m
-         MPxA==
-X-Gm-Message-State: APjAAAU7EBCG28Xq/i7T0ftbS6Z/JJe36YdIqMW5FvU+Z5i1B7wPvB/F
-	gliC1vU5mxNYUX2OmUy4K0cBzAg2
-X-Received: by 2002:adf:ef8a:: with SMTP id d10mr13956911wro.321.1551719524999;
-        Mon, 04 Mar 2019 09:12:04 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([82.137.15.95])
-        by smtp.gmail.com with ESMTPSA id z15sm6276164wmi.46.2019.03.04.09.12.04
+        bh=/ZraRLHM+9iBZ1cCI6okaNU1aV9pqQCso9yDXJkcmJE=;
+        b=lm87yNQ0UZcfLSVLc1AqACgZXTpt98rKbMjbUOFAnIIsz99NzZAnmjL4NzXFLBya9m
+         +omzt6E7CFcUpSFYMfAoV3uFd1vdIjq4Szd6JglOf3v1kleslMfLJJ4/mWGtftCopdOp
+         HULyXrGmEElCF7JHkVAK8xqkYGhuSxQGkX+7kupyqZ04nGRJrTV7e/xLlrExcXwW5had
+         KQRvfxbnWl2hIdbjfWbARCv4QTYqOZCaK23ko3NSteDbobJDZ7FdO29DAbCEUK9d5UVx
+         ap64z/T4h5Zfk4QAJJrCTdZRq0dTcUjB1n1kHx+4Q9oir4ba5wgZrVe3Eo+1LtARXNiZ
+         Vagg==
+X-Received: by 10.180.207.84 with SMTP id lu20mr115387508wic.17.1426035133501;
+        Tue, 10 Mar 2015 17:52:13 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id gz3sm3854384wib.1.2015.03.10.17.52.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 09:12:04 -0800 (PST)
-Date: Mon, 4 Mar 2019 19:12:02 +0200
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 10 Mar 2015 17:52:12 -0700 (PDT)
+Date: Wed, 11 Mar 2015 02:51:35 +0200
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: emxx_udc: Fix equal sign alignment
-Message-ID: <20190304171202.GA31639@pthm>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] Staging: rtl8192u: Review phrase and fix spelling errors
+Message-ID: <6c93bde2194f90e26882b54caad83535584930d0.1426034297.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Warning detected by checkpatch
+This patch removes some serious spelling errors and adds small
+improvements to the phrases in order to make them easier to understand.
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
- drivers/staging/emxx_udc/emxx_udc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v3:
+	- replace the subject with a more specific one
+	- replace it's with its, enought with enough
+	- review phrase
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index a913d40..8b1a9ad 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -940,8 +940,8 @@ static int _nbu2ss_epn_out_transfer(struct nbu2ss_udc *udc,
+ .../staging/rtl8192u/ieee80211/ieee80211_softmac.c | 26 +++++++++++-----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index d1cbddd..2f0029c 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -2122,20 +2122,20 @@ ieee80211_rx_frame_softmac(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 	return 0;
+ }
  
- 	/*-------------------------------------------------------------*/
- 	/* Receive Length */
--	i_recv_length
--		= _nbu2ss_readl(&preg->EP_REGS[num].EP_LEN_DCNT) & EPN_LDATA;
-+	i_recv_length =
-+		_nbu2ss_readl(&preg->EP_REGS[num].EP_LEN_DCNT) & EPN_LDATA;
- 
- 	if (i_recv_length != 0) {
- 		result = _nbu2ss_epn_out_data(udc, ep, req, i_recv_length);
+-/* following are for a simpler TX queue management.
+- * Instead of using netif_[stop/wake]_queue the driver
+- * will uses these two function (plus a reset one), that
+- * will internally uses the kernel netif_* and takes
+- * care of the ieee802.11 fragmentation.
+- * So the driver receives a fragment per time and might
+- * call the stop function when it want without take care
+- * to have enought room to TX an entire packet.
+- * This might be useful if each fragment need it's own
+- * descriptor, thus just keep a total free memory > than
+- * the max fragmentation treshold is not enought.. If the
+- * ieee802.11 stack passed a TXB struct then you needed
++/* The following are for a simpler TX queue management.
++ * Instead of using netif_[stop/wake]_queue, the driver
++ * will use these two functions (plus a reset one) that
++ * will internally call the kernel netif_* and take care
++ * of the ieee802.11 fragmentation.
++ * So, the driver receives a fragment at a time and might
++ * call the stop function when it wants, without taking
++ * care to have enough room to TX an entire packet.
++ * This might be useful if each fragment needs its own
++ * descriptor. Thus, just keeping a total free memory > than
++ * the max fragmentation threshold is not enough. If the
++ * ieee802.11 stack passed a TXB struct, then you would need
+  * to keep N free descriptors where
+- * N = MAX_PACKET_SIZE / MIN_FRAG_TRESHOLD
++ * N = MAX_PACKET_SIZE / MIN_FRAG_THRESHOLD.
+  * In this way you need just one and the 802.11 stack
+  * will take care of buffering fragments and pass them to
+  * to the driver later, when it wakes the queue.
 -- 
-2.7.4
+1.9.1
 
 
