@@ -1,121 +1,76 @@
 X-GM-THRID: 7850599383040
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,f25214db02e3b292
+X-Google-Thread: 9ca63f596c,f25214db02e3b292,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.43.16.70 with SMTP id px6mr40808338icb.28.1426219057775;
-        Thu, 12 Mar 2015 20:57:37 -0700 (PDT)
+X-Received: by 10.50.30.106 with SMTP id r10mr65370907igh.0.1426158641556;
+        Thu, 12 Mar 2015 04:10:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.168 with SMTP id 37ls1549984qgp.18.gmail; Thu, 12 Mar
- 2015 20:57:37 -0700 (PDT)
-X-Received: by 10.236.216.69 with SMTP id f65mr45461360yhp.58.1426219057574;
-        Thu, 12 Mar 2015 20:57:37 -0700 (PDT)
+Received: by 10.50.18.37 with SMTP id t5ls801594igd.44.gmail; Thu, 12 Mar 2015
+ 04:10:41 -0700 (PDT)
+X-Received: by 10.50.112.228 with SMTP id it4mr65348705igb.6.1426158641025;
+        Thu, 12 Mar 2015 04:10:41 -0700 (PDT)
 Return-Path: <iskaranth@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id ri9si153836pdb.1.2015.03.12.20.57.37
+Received: from mail-pd0-x22e.google.com (mail-pd0-x22e.google.com. [2607:f8b0:400e:c02::22e])
+        by gmr-mx.google.com with ESMTPS id ni4si1255977pdb.2.2015.03.12.04.10.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 20:57:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        Thu, 12 Mar 2015 04:10:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) client-ip=2607:f8b0:400e:c02::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=iskaranth@gmail.com;
+       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) smtp.mail=iskaranth@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x236.google.com with SMTP id fl12so25491643pdb.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 20:57:37 -0700 (PDT)
+Received: by pdbfl12 with SMTP id fl12so19302507pdb.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 04:10:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=1HI2zMHuIFF5Q2IFfrKDqwBBDIY1qXLLcmewWX5AWxc=;
-        b=mCJE6Os4ql8lqk5IeLiEOXnlrKnyXtz6UuV+0muV1GosXtnRFraYgsVZPOL5ZWNLcG
-         nXLjG3iuQVM9sQhxiHzjWO6s72A+iv4syBmjhy9CyG6qLZns/gwCclXI5QU+CdE/Hnhw
-         XX4l7V68ezEhqVI/9OdExeqcg0BqM7bc2h5lAzTGYctVVjejYgBAGIAdxgLw7gQ5vDKi
-         BZR87iIDFAHK9cOVrAC1+iJLqhOgiRhfd7DkBko9+ymflr8wBdjlpOAsFQA/hRE8g/2E
-         J3qM+ICuUz2OtdeGeaShrknshwNsAUBb0f8JP5sUKDD1N9NKRYwXUJqSzIuiR3npsqxF
-         ueVg==
-X-Received: by 10.66.124.129 with SMTP id mi1mr96880519pab.21.1426219057450;
-        Thu, 12 Mar 2015 20:57:37 -0700 (PDT)
+        h=from:to:cc:subject:date:message-id;
+        bh=wDdaGuGZ1h/Z2gwjRp5nZr+p1ApT5GZ55wWqyCvMTH0=;
+        b=RFwBwWwFPfPCi6tLGVA2I9cdMEsAgVRaxFv3XuD64vwHLKZGWfsWmtbYTZuuPgbqNj
+         M5yQf82wBqldK5XlfkTUEiNZytu1nvNr9QFLGLifRKPNm+2vx1BTd1fxmVWsQ6yhPdIT
+         xpFzR3jL8tp45TjzXV4+qa5tyx8nY89ObiWPPeTBDOaWQqxJGvT6JHD8QGgMzA9B2Neb
+         TalhLgrWQSSP9irm6XkIiIFSuQqu+PRaxWhfkCqkLFGuhweaVhKQCbTl2kch+vPFznp6
+         lQB09ULEcTQpo1ev4EqRPvj4gViHagZeBRkur/Yrn5MG2i12uMU+yY+cwQw9PwwbON0z
+         XQJg==
+X-Received: by 10.66.129.198 with SMTP id ny6mr55128199pab.67.1426158640893;
+        Thu, 12 Mar 2015 04:10:40 -0700 (PDT)
 Return-Path: <iskaranth@gmail.com>
-Received: from gmail.com ([222.117.133.143])
-        by mx.google.com with ESMTPSA id ul8sm872503pab.36.2015.03.12.20.57.34
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 20:57:36 -0700 (PDT)
-Date: Fri, 13 Mar 2015 12:57:30 +0900
+Received: from localhost.localdomain ([222.117.133.143])
+        by mx.google.com with ESMTPSA id w1sm10521901pdp.25.2015.03.12.04.10.38
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 12 Mar 2015 04:10:40 -0700 (PDT)
 From: Supriya Karanth <iskaranth@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>, julia.lawall@lip6.fr
-Cc: outreachy-kernel@googlegroups.com, Jes.Sorensen@redhat.com
-Subject: Re: [PATCH] staging: rtl8723au: Remove dead code
-Message-ID: <20150313035724.GA6885@gmail.com>
-References: <1426158600-30895-1-git-send-email-iskaranth@gmail.com>
- <5501C474.4010905@lwfinger.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5501C474.4010905@lwfinger.net>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+To: outreachy-kernel@googlegroups.com,
+	Larry.Finger@lwfinger.net,
+	Jes.Sorensen@redhat.com
+Cc: Supriya Karanth <iskaranth@gmail.com>
+Subject: [PATCH] staging: rtl8723au: Remove dead code
+Date: Thu, 12 Mar 2015 20:10:00 +0900
+Message-Id: <1426158600-30895-1-git-send-email-iskaranth@gmail.com>
+X-Mailer: git-send-email 2.1.0
 
-On Thu, Mar 12, 2015 at 11:53:08AM -0500, Larry Finger wrote:
-> On 03/12/2015 06:10 AM, Supriya Karanth wrote:
-> >This dead code was detected by coccinelle while using --debug
-> >option
-> >diff --git a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-> >index 0e0f73c..db4f235 100644
-> >--- a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-> >+++ b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-> >@@ -1619,7 +1619,6 @@ OnAssocReq23a(struct rtw_adapter *padapter, struct recv_frame *precv_frame)
-> >  			} else {
-> >  				break;
-> >  			}
-> >-			p = p + p[1] + 2;
-> >  		}
-> >  	}
-> >
-> 
-> Like most of this driver, the code is ugly, but I think this is a coccinelle
-> bug, not dead code.
+This dead code was detected by coccinelle while using --debug
+option
 
-I checked it myself and thought coccinelle was right
-> 
-> The statement that you are removing is at the end of a for loop. On the next
-> pass through the loop, and there will be a next pass, the first statement is
-> "left = end - p;"; therefore, the incrementation of p is not useless code.
-> 
+Signed-off-by: Supriya Karanth <iskaranth@gmail.com>
+---
+ drivers/staging/rtl8723au/core/rtw_mlme_ext.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-I was under the impression that the line "p = p + p[1] + 2;" will never
-execute.
+diff --git a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+index 0e0f73c..db4f235 100644
+--- a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+@@ -1619,7 +1619,6 @@ OnAssocReq23a(struct rtw_adapter *padapter, struct recv_frame *precv_frame)
+ 			} else {
+ 				break;
+ 			}
+-			p = p + p[1] + 2;
+ 		}
+ 	}
+ 
+-- 
+2.1.0
 
-The for loop is in this form:
-for (;;) {
-	if (p) {
-		if (...) {
-		...
-
-		}
-		break;
-	} else {
-		break;
-	}
-	p = p ....
-}
-
-There is a "break" in both the if and else condition which will break out
-of the for loop. I think the line "p = p + p[1] + 2;" is important but,
-I think it never gets executed. Perhaps I am wrong and I am missing something.
-
-> Have you tested your change? I would guess not. I think it would lead to an
-> infinite loop.
-I am sorry but no I haven't tested it as I do not have the Hardware. I have
-tested the code format though and the line doesn't get executed.
-> 
-> The recent spate of untested patches generated by uncritical usage of
-> various tools is quite tiresome!!
-
-I understand. I am very sorry to have wasted your time.
-> 
-> NACK
-> 
-> Larry
-> 
-> 
 
