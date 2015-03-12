@@ -1,83 +1,76 @@
-X-GM-THRID: 9366486908928
-X-Received: by 10.42.99.140 with SMTP id w12mr8337989icn.12.1426926632074;
-        Sat, 21 Mar 2015 01:30:32 -0700 (PDT)
+X-GM-THRID: 7892013940736
+X-Received: by 10.112.148.10 with SMTP id to10mr1357178lbb.18.1426172956805;
+        Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.104.15 with SMTP id z15ls2002518qge.24.gmail; Sat, 21 Mar
- 2015 01:30:31 -0700 (PDT)
-X-Received: by 10.52.164.66 with SMTP id yo2mr26218825vdb.2.1426926631861;
-        Sat, 21 Mar 2015 01:30:31 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
-        by gmr-mx.google.com with ESMTPS id gu4si1141750pac.1.2015.03.21.01.30.31
+Received: by 10.180.90.43 with SMTP id bt11ls617914wib.37.canary; Thu, 12 Mar
+ 2015 08:09:16 -0700 (PDT)
+X-Received: by 10.180.109.34 with SMTP id hp2mr5200285wib.4.1426172956489;
+        Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
+        by gmr-mx.google.com with ESMTPS id ew13si567529wid.0.2015.03.12.08.09.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 01:30:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
+        Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x235.google.com with SMTP id cz9so131297187pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 01:30:31 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by wesx3 with SMTP id x3so17084821wes.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=v1DjN05X+gRAHmcowqQaRSgnRiM/kZtPhAeL8asusGU=;
-        b=G5/AVWiNW+VU7MhGAogBfe32Qli8xDrJ43jj2ghJro4K0fpQOBnr2G5cm35+D9iJ8T
-         fqREGFo2KgT6KAFIThmZp+IkqSAi1/MHcX/BVCQ27WLV6eNpcplb8D1Yfhp/9dqZqczP
-         UOjRidmkfnexbf1K5pVyk64b2pt8h0bjdlDUhLlneVBXttSoEPw/ZkQtq8Us5SfoUFG0
-         mg+N1CVI0nIO3qexDaTSfU4vxu1hSnJmIuc51WuYEDTv2DWZat2Umo4Z/soyvIfc5wdY
-         rsqmszZUewA33+PLkrYiVbt6lT6no7dSx1rX7geocWOJsgquYR62he9dzDGz2HxO4xqt
-         sZqg==
-X-Received: by 10.70.130.69 with SMTP id oc5mr86212550pdb.89.1426926631723;
-        Sat, 21 Mar 2015 01:30:31 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id d4sm10853677pdm.50.2015.03.21.01.30.29
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 01:30:30 -0700 (PDT)
-Date: Sat, 21 Mar 2015 13:58:30 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rts5208: Fix incorrect type in assignment
-Message-ID: <20150321082830.GA20169@akanksha>
+        h=mime-version:sender:in-reply-to:references:date:message-id:subject
+         :from:to:cc:content-type;
+        bh=3Vq/NNSOvfvFUMfdo1JmiZwPy8p/gD2W0qD9RVPOrFo=;
+        b=nXvjd48lxii3h/agz7seVOLWimcwkOJs/aXdJrw62qJP0Simnun0QuVv/Guc+xbs/R
+         M0qUnOMuYzonvDf9RaXs+HialsO2cuOLANsQDLXcxqAbB5rvERipvmu3XiNWcNtgTheu
+         +c+cOe1rtakHQYFsCKrVtLrmgb7PxRsl+QOo+8qsoAEfm/TVCWOUbQOszhek0YJh2o97
+         FL1z2BBjvvJB3mvAaFkxL5SzrPS64daOzykZ5BpCuUN+YQpS5Vf8yqXt193Y7gz2z8Vk
+         +2M9lAqzJynirfRynerE8fqruBJ75tNLPpbBS9TyG+7Bke3Nd59u/VNM3SWZbzeRn9RY
+         E5Rw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.181.13.148 with SMTP id ey20mr87942116wid.18.1426172955802;
+ Thu, 12 Mar 2015 08:09:15 -0700 (PDT)
+Sender: daniel.baluta@gmail.com
+Received: by 10.28.139.211 with HTTP; Thu, 12 Mar 2015 08:09:15 -0700 (PDT)
+In-Reply-To: <CAEnQRZAK-aLWvcgMrJy0+xiHFAX+2kGgy4nek+q_OtqCmkrwPQ@mail.gmail.com>
+References: <20150312145536.GA20026@haneen-vb>
+	<CAEnQRZAK-aLWvcgMrJy0+xiHFAX+2kGgy4nek+q_OtqCmkrwPQ@mail.gmail.com>
+Date: Thu, 12 Mar 2015 17:09:15 +0200
+X-Google-Sender-Auth: z_Chrbox8FXvqGqhqleZWRi_rTs
+Message-ID: <CAEnQRZA=4DfNUNPL3YH0C70PUe9OYdymoy2wB76=qygjwmjLgw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] iio: Add ABI documentation for
+ proximity scan_emlements
+From: Daniel Baluta <daniel.baluta@intel.com>
+To: Daniel Baluta <daniel.baluta@intel.com>, Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	outreachy-kernel@googlegroups.com, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8
 
-Fix incorrect type in assignment.
+On Thu, Mar 12, 2015 at 5:06 PM, Daniel Baluta <daniel.baluta@intel.com> wrote:
+> On Thu, Mar 12, 2015 at 4:55 PM, Haneen Mohammed
+> <hamohammed.sa@gmail.com> wrote:
+>> This patch adds ABI documentation entries for in_proximity_en,
+>> in_proximity_type, and in_proximity_index in the scan_elements.
+>> At lease one user for these is present, the AS3935 Franklin lightning sensor.
+>>
+>> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+>
+> Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
+>
+> I know that Greg won't accept patches outside of drivers/staging/. I
+> think this should go via linux-iio tree.
+>
+> Thanks Haneen!
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rts5208/rtsx_transport.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+One thing. There is a typo in the commit subject:
 
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 03caa9b..2cd03d7 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -218,7 +218,7 @@ void rtsx_add_cmd(struct rtsx_chip *chip,
- 
- 	spin_lock_irq(&chip->rtsx->reg_lock);
- 	if (chip->ci < (HOST_CMDS_BUF_LEN / 4))
--		cb[(chip->ci)++] = cpu_to_le32(val);
-+		cb[(chip->ci)++] = val;
- 
- 	spin_unlock_irq(&chip->rtsx->reg_lock);
- }
-@@ -316,7 +316,7 @@ static inline void rtsx_add_sg_tbl(
- 		val = ((u64)addr << 32) | ((u64)temp_len << 12) | temp_opt;
- 
- 		if (chip->sgi < (HOST_SG_TBL_BUF_LEN / 8))
--			sgb[(chip->sgi)++] = cpu_to_le64(val);
-+			sgb[(chip->sgi)++] = val;
- 
- 		len -= temp_len;
- 		addr += temp_len;
--- 
-1.9.1
+s/scan_emlements/scan_elements.
 
+Could you resend? Please keep Jonathan, Greg and linux-iio mailing list in Cc.
+
+thanks,
+Daniel.
 
