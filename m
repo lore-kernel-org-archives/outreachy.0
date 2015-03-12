@@ -1,79 +1,66 @@
-X-GM-THRID: 6210004102102908928
-X-Received: by 10.107.138.221 with SMTP id c90mr12979455ioj.9.1445879252205;
-        Mon, 26 Oct 2015 10:07:32 -0700 (PDT)
+X-GM-THRID: 7930535477248
+X-Received: by 10.112.199.69 with SMTP id ji5mr6486070lbc.0.1426181563555;
+        Thu, 12 Mar 2015 10:32:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.225 with SMTP id z1ls947103igl.18.gmail; Mon, 26 Oct
- 2015 10:07:31 -0700 (PDT)
-X-Received: by 10.66.169.104 with SMTP id ad8mr16446009pac.47.1445879251362;
-        Mon, 26 Oct 2015 10:07:31 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id pe1si3632868pac.2.2015.10.26.10.07.31
+Received: by 10.152.197.97 with SMTP id it1ls325692lac.1.gmail; Thu, 12 Mar
+ 2015 10:32:43 -0700 (PDT)
+X-Received: by 10.152.4.229 with SMTP id n5mr6556605lan.1.1426181563039;
+        Thu, 12 Mar 2015 10:32:43 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-we0-x22b.google.com (mail-we0-x22b.google.com. [2a00:1450:400c:c03::22b])
+        by gmr-mx.google.com with ESMTPS id i8si592374wif.1.2015.03.12.10.32.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Oct 2015 10:07:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2015 10:32:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) client-ip=2a00:1450:400c:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22b as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id hk11so193854425pad.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 10:07:31 -0700 (PDT)
+Received: by wesw55 with SMTP id w55so17994071wes.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 10:32:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=qBNLTFY8X60/Hk8j3YW2SsXHbkPLv4BLNTX1k2HwMtI=;
-        b=KgBYpko8N2vuXCZmiccQTZ9zD5n0jNVHwGvWEkTrEyFwvm334rrn934hMxQjoIGllK
-         gtTWpPQ8GLzDThVLcqUrFV3INwgnrPaSPdpo4pDp5llvN4+4+yCXoMECwFdWs9UNQHHN
-         YLMwC9AtFHA48qPhKOMes+9aqihzwOo3nZPfttgtIzscWrBYuh/FbLdCpZYG+imU8KDN
-         KEPjM6E1eHXJEWhjHXD+kgOlcs+Z9ojffsSlg/NhTqR7LiR13HK3m+c/BLzyZ9/SAVtq
-         JIAKravVdmlMTZUkcaYKSkhvvDC5RlpMqeaDdZXt9RNYB2u4rpEYJ+8hKuEEkg1pSjyc
-         pllg==
-X-Received: by 10.66.63.37 with SMTP id d5mr22618693pas.99.1445879251201;
-        Mon, 26 Oct 2015 10:07:31 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.252.119])
-        by smtp.gmail.com with ESMTPSA id qd2sm34927985pbb.68.2015.10.26.10.07.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 26 Oct 2015 10:07:30 -0700 (PDT)
-Date: Mon, 26 Oct 2015 22:37:26 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=FNa4VdkvwtPLaiKuJr+SXRJeuB0EvhEOQR18iqVyBM4=;
+        b=Flvj9m8W5yJPKaOx24dbi4GvGLBp92BO1ENXeFajVcfisTSrXoFtGh17ll+LkXcT71
+         /Zaj9lWXLEXMR21/v9JhluGWsbdW0OCCS5E0eT6rad3txmer7O+s71LRdtbFe0ExcTj5
+         0gIjorZMy+zDXh6cCVj4+V27Q1ldLzZS7Ut2cfGNLZeBFTCpVoeYdAsy/8WeuOZS3rUy
+         O5aYssZsfWvzoaL7Dh+CAA31hj/08s5pNRY22YG61E8zMWQ8t1Cm3w8p8F3adwDY0fjE
+         uO11k2kS5bC9cOGQO1+KKt4+GxoDc5K701ceJuU1WhX3huOVthUquPgjCJedhaK5faRj
+         iEag==
+X-Received: by 10.194.63.206 with SMTP id i14mr90952570wjs.107.1426181562928;
+        Thu, 12 Mar 2015 10:32:42 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by mx.google.com with ESMTPSA id nb4sm11000517wjc.20.2015.03.12.10.32.41
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 12 Mar 2015 10:32:42 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: lustre: ptlrpc: Replace seq_printf() with
- seq_putc()
-Message-ID: <20151026170726.GA26239@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>,
+	ksenija.stanojevic@gmail.co
+Subject: [PATCH v2 0/2] Staging: rtl8192u: Remove typdefs
+Date: Thu, 12 Mar 2015 18:32:35 +0100
+Message-Id: <cover.1426181256.git.ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Replace seq_printf() with seq_putc() since it is more expensive than
-seq_putc(). 
+This patchset removes typedefs in drivers/staging/rtl8192u/r819xU_cmdpkt.h and
+replaces their corresponding types with struct definitions in
+drivers/staging/rtl8192u/r819xU_cmdpkt.c.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
-Changes in v2:
-        -Replaced seq_puts() with seq_putc()
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 
- drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2: change commit message.
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-index 6cf9b92..183fc8b 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-@@ -923,7 +923,7 @@ static int ptlrpc_lprocfs_svc_req_history_show(struct seq_file *s, void *iter)
- 			   (long)(req->rq_sent - req->rq_arrival_time.tv_sec),
- 			   (long)(req->rq_sent - req->rq_deadline));
- 		if (svc->srv_ops.so_req_printer == NULL)
--			seq_printf(s, "\n");
-+			seq_putc(s, '\n');
- 		else
- 			svc->srv_ops.so_req_printer(s, srhi->srhi_req);
- 	}
+Ksenija Stanojevic (2):
+  Staging: rtl8192u: Remove typedefs
+  Staging: rtl8192u: Replace types
+
+ drivers/staging/rtl8192u/r819xU_cmdpkt.c | 35 +++++++++++----------
+ drivers/staging/rtl8192u/r819xU_cmdpkt.h | 53 +++++++++++++++-----------------
+ 2 files changed, 43 insertions(+), 45 deletions(-)
+
 -- 
 1.9.1
 
