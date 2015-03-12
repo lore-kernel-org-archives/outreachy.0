@@ -1,92 +1,137 @@
 X-GM-THRID: 7714883239936
-X-Received: by 10.152.164.171 with SMTP id yr11mr2981183lab.4.1426123417513;
-        Wed, 11 Mar 2015 18:23:37 -0700 (PDT)
+X-Received: by 10.112.198.34 with SMTP id iz2mr5738249lbc.22.1426123413737;
+        Wed, 11 Mar 2015 18:23:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.4.131 with SMTP id k3ls231183lak.21.gmail; Wed, 11 Mar
- 2015 18:23:36 -0700 (PDT)
-X-Received: by 10.112.44.167 with SMTP id f7mr3407804lbm.9.1426123416882;
-        Wed, 11 Mar 2015 18:23:36 -0700 (PDT)
+Received: by 10.180.8.193 with SMTP id t1ls1049771wia.30.canary; Wed, 11 Mar
+ 2015 18:23:33 -0700 (PDT)
+X-Received: by 10.180.80.132 with SMTP id r4mr2560983wix.4.1426123413435;
+        Wed, 11 Mar 2015 18:23:33 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id sf8si421648wic.2.2015.03.11.18.23.36
+Received: from mail-wg0-x236.google.com (mail-wg0-x236.google.com. [2a00:1450:400c:c00::236])
+        by gmr-mx.google.com with ESMTPS id gj20si1423328wic.1.2015.03.11.18.23.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2015 18:23:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Wed, 11 Mar 2015 18:23:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) client-ip=2a00:1450:400c:c00::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) smtp.mail=ciorneiioana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id p10so13010737wes.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 18:23:36 -0700 (PDT)
+Received: by wggx13 with SMTP id x13so12998342wgg.12
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 18:23:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=/CWC7ZJPIWGCWOvwAB+kbOGopxoRCK8N6R09vhRuSAk=;
-        b=xsEG7IUytktIxdYyV40083IE/9XgN6OLiqE8gWIFEHSb9e/6r+IMz8/lTn4OEuv07x
-         2eAru/i1xQ4g7m6bWtyziuclZALWxufL5IR890mxMsAgTr+qIO91JOzQlifqXO9Eo9HZ
-         +wPkeX8p6Dzpj9fY8ltMQOZMLllQmDbefJlvZ2eSq8Hw274Wn6TV3y8O5ktg1zx0EK1x
-         eaQi/UylTqGf5tk9zm5SjOlWLtGS8hR96Xat3u95hzXjgs2VbpBEEcwE7d18uLKH2hEb
-         oIhC9G3i7tdNdRui+KNZyMxBF3WDTnjeCeG83BVg8BzikCtLXfc5ZNThkE+7AiBXJGQ+
-         HXbA==
-X-Received: by 10.194.61.100 with SMTP id o4mr83170950wjr.28.1426123416806;
-        Wed, 11 Mar 2015 18:23:36 -0700 (PDT)
+        bh=853qbFpOs/8HtR97EYsorgomZK0w5r9mH1LH4cgeCQI=;
+        b=CTOQTAxxgyyOeuFPxbqWbq2ubAW+RBKkSx+QKsTN3LdgFMIHCnb9Gbw0AAvIOKN+/W
+         T7iVU4WILDNAFhwo0lsvjAbstBY2VIpCtGMtZrmgQT7nWmquncZSca8L1CqNqNIhqCQ0
+         YM1Dbm2knZC/6Lh+vW8nlstRWffBfmszYifgYEvRQS57gzaw8eAyIM7EJTqBdmtOFVLC
+         gG96J8IJNQdIbw5aNzki0Ks9BUGsl4lH/hA93sj0jfPQODTuKIG0mGJ3t4pOiKV811Jp
+         MLtN3RZVuOQTbajEEeJV+dXUbd9lgZJKJ08Urw7gAOhRwkMrID4TRozOFDNdNTbyZFOO
+         ReDQ==
+X-Received: by 10.194.85.233 with SMTP id k9mr17662088wjz.31.1426123413325;
+        Wed, 11 Mar 2015 18:23:33 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id a13sm7732911wjx.30.2015.03.11.18.23.34
+        by mx.google.com with ESMTPSA id a13sm7732911wjx.30.2015.03.11.18.23.31
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 11 Mar 2015 18:23:35 -0700 (PDT)
+        Wed, 11 Mar 2015 18:23:32 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH 4/9] staging: sm750: Remove space before semicolon
-Date: Thu, 12 Mar 2015 03:23:09 +0200
-Message-Id: <905ae4f9fdf9625205635b745ecc3d6a63179de5.1426121972.git.ciorneiioana@gmail.com>
+Subject: [PATCH 3/9] staging: sm750: Place space before and after curly brackets
+Date: Thu, 12 Mar 2015 03:23:08 +0200
+Message-Id: <73d66c8733d8304659700c653b81ee954ef59bc3.1426121972.git.ciorneiioana@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1426121972.git.ciorneiioana@gmail.com>
 References: <cover.1426121972.git.ciorneiioana@gmail.com>
 In-Reply-To: <cover.1426121972.git.ciorneiioana@gmail.com>
 References: <cover.1426121972.git.ciorneiioana@gmail.com>
 
-Remove space before semicolon as it is prohibited by tghe Linux coding style.
+Add space before and after curly brackets when is needed in order to
+follow Linux coding style.
 
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
- drivers/staging/sm750fb/sm750.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/sm750fb/sm750.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 2eab4de..6ac572c 100644
+index 67c3751..2eab4de 100644
 --- a/drivers/staging/sm750fb/sm750.c
 +++ b/drivers/staging/sm750fb/sm750.c
-@@ -419,7 +419,7 @@ static int lynxfb_ops_set_par(struct fb_info *info)
- 		var->red.length = 8;
- 		var->green.offset = 8;
- 		var->green.length = 8;
--		var->blue.offset = 0 ;
-+		var->blue.offset = 0;
- 		var->blue.length = 8;
- 		fix->visual = FB_VISUAL_TRUECOLOR;
- 		break;
-@@ -640,7 +640,7 @@ static int lynxfb_ops_check_var(struct fb_var_screeninfo *var, struct fb_info *i
- 		var->red.length = 8;
- 		var->green.offset = 8;
- 		var->green.length = 8;
--		var->blue.offset = 0 ;
-+		var->blue.offset = 0;
- 		var->blue.length = 8;
- 		info->fix.visual = FB_VISUAL_TRUECOLOR;
- 		break;
-@@ -1408,7 +1408,7 @@ static struct pci_driver lynxfb_driver = {
+@@ -793,7 +793,7 @@ static int sm750fb_set_drv(struct lynxfb_par *par)
+ 			crtc->channel = sm750_primary;
+ 			crtc->oScreen = 0;
+ 			crtc->vScreen = share->pvMem;
+-		}else{
++		} else {
+ 			output->paths = sm750_crt;
+ 			crtc->channel = sm750_secondary;
+ 			/* not consider of padding stuffs for oScreen, need fix*/
+@@ -807,7 +807,7 @@ static int sm750fb_set_drv(struct lynxfb_par *par)
+ 			crtc->channel = sm750_secondary;
+ 			crtc->oScreen = 0;
+ 			crtc->vScreen = share->pvMem;
+-		}else{
++		} else {
+ 			output->paths = sm750_crt;
+ 			crtc->channel = sm750_primary;
+ 			/* not consider of padding stuffs for oScreen, need fix*/
+@@ -932,17 +932,17 @@ static int lynxfb_set_fbinfo(struct fb_info *info, int index)
+ 					g_fbmode[index],
+ 					mdb_desc[i]);
+ 			break;
+-		}else if (ret == 2) {
++		} else if (ret == 2) {
+ 			pr_warn("use specified mode:%s in %s, with an ignored refresh rate\n",
+ 					g_fbmode[index],
+ 					mdb_desc[i]);
+ 			break;
+-		}else if (ret == 3) {
++		} else if (ret == 3) {
+ 			pr_warn("wanna use default mode\n");
+ //			break;
+-		}else if (ret == 4) {
++		} else if (ret == 4) {
+ 			pr_warn("fall back to any valid mode\n");
+-		}else{
++		} else {
+ 			pr_warn("ret = %d, fb_find_mode failed, with %s\n", ret, mdb_desc[i]);
+ 		}
+ 	}
+@@ -1097,10 +1097,10 @@ static void sm750fb_setup(struct lynx_share *share, char *src)
+ 			if (!g_fbmode[0]) {
+ 				g_fbmode[0] = opt;
+ 				pr_info("find fbmode0 : %s\n", g_fbmode[0]);
+-			}else if (!g_fbmode[1]) {
++			} else if (!g_fbmode[1]) {
+ 				g_fbmode[1] = opt;
+ 				pr_info("find fbmode1 : %s\n", g_fbmode[1]);
+-			}else{
++			} else {
+ 				pr_warn("How many view you wann set?\n");
+ 			}
+ 		}
+@@ -1187,7 +1187,7 @@ static int lynxfb_pci_probe(struct pci_dev *pdev,
+ 		share->accel.de_copyarea = hw_copyarea;
+ 		share->accel.de_imageblit = hw_imageblit;
+ 		pr_info("enable 2d acceleration\n");
+-	}else{
++	} else {
+ 		pr_info("disable 2d acceleration\n");
+ 	}
  
- static int __init lynxfb_init(void)
- {
--	char *option ;
-+	char *option;
- 	int ret;
- 
- #ifdef MODULE
+@@ -1210,7 +1210,7 @@ static int lynxfb_pci_probe(struct pci_dev *pdev,
+ 		if (share->mtrr.vram < 0) {
+ 			/* don't block driver with the failure of MTRR */
+ 			pr_err("Unable to setup MTRR.\n");
+-		}else{
++		} else {
+ 			share->mtrr.vram_added = 1;
+ 			pr_info("MTRR added succesfully\n");
+ 		}
 -- 
 1.9.1
 
