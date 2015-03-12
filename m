@@ -1,113 +1,105 @@
 X-GM-THRID: 7174525812736
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,81deab53fa1b567f
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.159.227 with SMTP id xf3mr6139184lbb.11.1426142425505;
-        Wed, 11 Mar 2015 23:40:25 -0700 (PDT)
+X-Received: by 10.182.91.79 with SMTP id cc15mr42531430obb.20.1426130110875;
+        Wed, 11 Mar 2015 20:15:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.28.132 with SMTP id b4ls252445lah.33.gmail; Wed, 11 Mar
- 2015 23:40:25 -0700 (PDT)
-X-Received: by 10.112.199.69 with SMTP id ji5mr5962224lbc.0.1426142425058;
-        Wed, 11 Mar 2015 23:40:25 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id gj20si1455051wic.1.2015.03.11.23.40.24
+Received: by 10.140.109.119 with SMTP id k110ls1009601qgf.56.gmail; Wed, 11
+ Mar 2015 20:15:10 -0700 (PDT)
+X-Received: by 10.236.70.100 with SMTP id o64mr45804539yhd.9.1426130110618;
+        Wed, 11 Mar 2015 20:15:10 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
+        by gmr-mx.google.com with ESMTPS id l3si307798pdo.0.2015.03.11.20.15.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 11 Mar 2015 23:40:25 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Mar 2015 20:15:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,387,1422918000"; 
-   d="scan'208";a="102999418"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Mar 2015 07:40:24 +0100
-Date: Thu, 12 Mar 2015 07:40:23 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Vaishali Thakkar <vthakkar1994@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rts5208: Use
- module_pci_driver
-In-Reply-To: <20150312031505.GA4500@vaishali-Ideapad-Z570>
-Message-ID: <alpine.DEB.2.02.1503120738220.2072@localhost6.localdomain6>
-References: <20150312031505.GA4500@vaishali-Ideapad-Z570>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-x235.google.com with SMTP id fl12so16351907pdb.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 20:15:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=vEp7fPia5fL+Hc37GdtJRqMg2VPCwEd7UVosKxqwyFI=;
+        b=WT0+xHaYxxf2Yhc90vLBWBspHhC6qQ+d7EyQjLiK59JVbFdLGR3xKK9p4Pti4ngSeU
+         vKZZc8QlRaDK/tJM+6Hv6jULVQJPowNVaWkgdiaMf5bBRE5MesVjBmx2Z33Rh1AEC3Xl
+         oeo0UUGr4fvA3pJlo21L55MpMHunzfqEJoR7oYV5/I82yWc3e/g/TNFjHJnseyQurWFJ
+         6HKJtxLXdYYX029WTlcT13/F5SsdX/KY4MsoP38IX3TrZdLwabWSLZJw7lJewlS/ngKz
+         BfDGPHt8wgIAZINFr63VDYmCrRbjAaTQiGSyoiVEKLUQCVo0OJhAhOZV2c8JTqFNIdyA
+         IkhA==
+X-Received: by 10.66.233.35 with SMTP id tt3mr12201044pac.36.1426130110502;
+        Wed, 11 Mar 2015 20:15:10 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([150.107.242.18])
+        by mx.google.com with ESMTPSA id g3sm8238036pdg.39.2015.03.11.20.15.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 11 Mar 2015 20:15:09 -0700 (PDT)
+Date: Thu, 12 Mar 2015 08:45:05 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] Staging: rts5208: Use module_pci_driver
+Message-ID: <20150312031505.GA4500@vaishali-Ideapad-Z570>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, 12 Mar 2015, Vaishali Thakkar wrote:
+Macro module_pci_driver is used for drivers whose init
+and exit paths does only register and unregister to pci
+API. So, here remove some boilerplate code by using
+module_pci_driver. Also, change driver->rtsx_driver to
+fix the build warnings.
 
-> Macro module_pci_driver is used for drivers whose init
-> and exit paths does only register and unregister to pci
-> API. So, here remove some boilerplate code by using
-> module_pci_driver. Also, change driver->rtsx_driver to
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+---
+Changes since v1:
+	- Change commit log
+	- Fix build warnings
 
-driver->rtsx_driver is confusing.  It looks like a field reference.  You 
-could say "change driver to rtsx_driver, to fix...".  The comma would help 
-avoid "to ... to".
+ drivers/staging/rts5208/rtsx.c | 21 ++-------------------
+ 1 file changed, 2 insertions(+), 19 deletions(-)
 
-> fix the build warnings.
+diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
+index 7f2c0c3..3fbc4ab 100644
+--- a/drivers/staging/rts5208/rtsx.c
++++ b/drivers/staging/rts5208/rtsx.c
+@@ -1036,7 +1036,7 @@ static const struct pci_device_id rtsx_ids[] = {
+ MODULE_DEVICE_TABLE(pci, rtsx_ids);
+ 
+ /* pci_driver definition */
+-static struct pci_driver driver = {
++static struct pci_driver rtsx_driver = {
+ 	.name = CR_DRIVER_NAME,
+ 	.id_table = rtsx_ids,
+ 	.probe = rtsx_probe,
+@@ -1048,21 +1048,4 @@ static struct pci_driver driver = {
+ 	.shutdown = rtsx_shutdown,
+ };
+ 
+-static int __init rtsx_init(void)
+-{
+-	pr_info("Initializing Realtek PCIE storage driver...\n");
+-
+-	return pci_register_driver(&driver);
+-}
+-
+-static void __exit rtsx_exit(void)
+-{
+-	pr_info("rtsx_exit() called\n");
+-
+-	pci_unregister_driver(&driver);
+-
+-	pr_info("%s module exit\n", CR_DRIVER_NAME);
+-}
+-
+-module_init(rtsx_init)
+-module_exit(rtsx_exit)
++module_pci_driver(rtsx_driver)
+-- 
+1.9.1
 
-This part could be more clear.  "to avoid implicitly redefining 
-driver_init."
-
-julia
-
-> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
-> ---
-> Changes since v1:
-> 	- Change commit log
-> 	- Fix build warnings
-> 
->  drivers/staging/rts5208/rtsx.c | 21 ++-------------------
->  1 file changed, 2 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
-> index 7f2c0c3..3fbc4ab 100644
-> --- a/drivers/staging/rts5208/rtsx.c
-> +++ b/drivers/staging/rts5208/rtsx.c
-> @@ -1036,7 +1036,7 @@ static const struct pci_device_id rtsx_ids[] = {
->  MODULE_DEVICE_TABLE(pci, rtsx_ids);
->  
->  /* pci_driver definition */
-> -static struct pci_driver driver = {
-> +static struct pci_driver rtsx_driver = {
->  	.name = CR_DRIVER_NAME,
->  	.id_table = rtsx_ids,
->  	.probe = rtsx_probe,
-> @@ -1048,21 +1048,4 @@ static struct pci_driver driver = {
->  	.shutdown = rtsx_shutdown,
->  };
->  
-> -static int __init rtsx_init(void)
-> -{
-> -	pr_info("Initializing Realtek PCIE storage driver...\n");
-> -
-> -	return pci_register_driver(&driver);
-> -}
-> -
-> -static void __exit rtsx_exit(void)
-> -{
-> -	pr_info("rtsx_exit() called\n");
-> -
-> -	pci_unregister_driver(&driver);
-> -
-> -	pr_info("%s module exit\n", CR_DRIVER_NAME);
-> -}
-> -
-> -module_init(rtsx_init)
-> -module_exit(rtsx_exit)
-> +module_pci_driver(rtsx_driver)
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150312031505.GA4500%40vaishali-Ideapad-Z570.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
