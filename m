@@ -1,105 +1,76 @@
-X-GM-THRID: 6259745724451258368
-X-Received: by 10.129.78.78 with SMTP id c75mr583056ywb.30.1457460626320;
-        Tue, 08 Mar 2016 10:10:26 -0800 (PST)
+X-GM-THRID: 7760961863680
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,6ca8df34d2a1a044
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.6.41 with SMTP id x9mr6129596lax.10.1426151552611;
+        Thu, 12 Mar 2015 02:12:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.139 with SMTP id 11ls249449iom.103.gmail; Tue, 08 Mar
- 2016 10:10:25 -0800 (PST)
-X-Received: by 10.50.50.137 with SMTP id c9mr4738105igo.3.1457460625830;
-        Tue, 08 Mar 2016 10:10:25 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id r75si687991pfr.0.2016.03.08.10.10.25
+Received: by 10.180.211.101 with SMTP id nb5ls1107397wic.17.canary; Thu, 12
+ Mar 2015 02:12:32 -0700 (PDT)
+X-Received: by 10.180.90.169 with SMTP id bx9mr3353420wib.6.1426151552251;
+        Thu, 12 Mar 2015 02:12:32 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
+        by gmr-mx.google.com with ESMTPS id cl5si476385wib.3.2015.03.12.02.12.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 10:10:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2015 02:12:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id hj7so1627701pac.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 10:10:25 -0800 (PST)
+Received: by mail-we0-x234.google.com with SMTP id w55so14868190wes.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 02:12:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=mEwzHi+sOjV3pGeqwKLuKi4qNzcMYx6Y7pLb/Xv7pnw=;
-        b=oiyO9Dr6eDxiA40pbegcJ6l47eQKxvIVVOYVv4UaJl6AOYS8xw+zSGIQKyX+zB/OKI
-         dZM/YXOyaUGY+qMXIfWQWb6Wq/iZaAm14kFqrAq3QNk8eguzsw0OF0gZCJsZSUMzy8Ao
-         ap85onTPe8GoWFRPAqqVoGga7ymUjsriArOMdkUR+42HRCR+i8vgWrKOyU1HgJzpjKfv
-         sMa3KHM2LyCOgHZj5VjVZ7Zsjz/w1kL2iXBRbyMsiPkgTHM7e/RY090CzsA6L3nRoxXk
-         +nXB3a6gYo0qie7MH32y1ypmIcDzINZ2ryWtb3rEbi2wEx0bt/xNKrlo6sSHxMZfXy8t
-         JgcQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=mEwzHi+sOjV3pGeqwKLuKi4qNzcMYx6Y7pLb/Xv7pnw=;
-        b=ax/PL6eC15RIjIdRdekdPJCkyuRL7fJwGra2bqcVGnp4K2dYaSfPCbYIctPoO97Q+b
-         /29QPR6BFj4+t/dVz0HJrrNuI7DfzWsbvPZfbHqzhRGAiJr8CNT0FNGFQ5ck+e8tspfg
-         zaezfVEZCLaPD+MWBlRznMImcYj13of97JQ99yiDGWb2Qmsw20aweQp8pnSB7oRgXvVf
-         DbZ/0F44lUKX0aFOp7J1fgku9zQkxq7kI71i5pRdUQoVvVd+eOTCwSM9IIw4biAcCPZK
-         ga7GfVDBDj146pw0rf2Y7SwxwW91GQp2Qs2zKcDy0uIei5AUyRbSYtx/3ww5s+a8dz8/
-         duhA==
-X-Gm-Message-State: AD7BkJJszAwu3+s5wgAm8SIph6fMBMoMlCWergInW5vaTC5OIwBh47Q42Me1qvloYTwsCw==
-X-Received: by 10.67.3.67 with SMTP id bu3mr43296173pad.39.1457460625683;
-        Tue, 08 Mar 2016 10:10:25 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id yx4sm6558133pac.5.2016.03.08.10.10.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 10:10:25 -0800 (PST)
-Date: Tue, 8 Mar 2016 23:28:13 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 1/2] staging: rtl8723au: hal: Use macro DIV_ROUND_UP
-Message-ID: <20160308175813.GA30276@Karyakshetra>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :content-type:mime-version:content-transfer-encoding;
+        bh=MEDPjtrrtC/j9NbDnw49se+0FqS9pSrAAegLJUgrpPs=;
+        b=R2yLs7Ua2LMlwzHri3EzSVRnjYNVe6JSEFkr1gCvKxEKKFu6oRBqHsg5etyKLNKXzp
+         mWuBJjwjtZGvWWzhDXbSZ507dSGOHjg1URAo8XEMhBiI/iCzn7/XhYt9oPtyf7FZhlqN
+         A79/ZIonEO+TVF88UI2Q9caoLJgNOrYJ06G/ZttK12Zg6ivSQ4tAYhiV/dOUnpIQ8acc
+         xRzYnB1rERRNKiA/7eGI7BQBcYT3FlhCGnHHd0GxzcLF5mwnMNLSTfd1zKfuuwtewiLg
+         hTumnRwPhy5RU16gMdLg7V+GrSuUojZ/5UFbzfqrNJX5O3pBoFAX0dhIiJEKKLKZx+PI
+         4VIQ==
+X-Received: by 10.194.223.103 with SMTP id qt7mr81629029wjc.35.1426151552177;
+        Thu, 12 Mar 2015 02:12:32 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from [192.168.0.103] (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id v13sm23380966wij.10.2015.03.12.02.12.30
+        (version=SSLv3 cipher=RC4-SHA bits=128/128);
+        Thu, 12 Mar 2015 02:12:31 -0700 (PDT)
+Message-ID: <1426151512.6120.2.camel@Inspiron>
+Subject: Re: [Outreachy kernel] [PATCH 3/3] Staging: rtl8712: Remove
+ unnecessary variables
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com
+Date: Thu, 12 Mar 2015 11:11:52 +0200
+In-Reply-To: <2934799.MUPJAeKi6D@wuerfel>
+References: <cover.1426126379.git.cristina.opriceana@gmail.com>
+	 <61eb27f3cd4bb009cbbd1c6d4bfd9b89a109fd36.1426126379.git.cristina.opriceana@gmail.com>
+	 <2934799.MUPJAeKi6D@wuerfel>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
-@@
-expression e1;
-expression e2;
-@@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- Changes in v3:
-	-No change in this patch
-	-Dropped the other two patches from the earlier patch-set(in staging/most/hdm-dim2 and
-	 staging/most/hdm-usb) that were breaking the build.
+> When a local function unconditionally returns success, it's often a good
+> idea to change the prototype so it returns void.
+> 
+> That would also improve it a bit by avoiding the non-standard _SUCCESS
+> return code. The kernel convention normally is to return '0' for success
+> and a negative error numer (e.g. -ENXIO) in case of an error, with a
+> type of 'int'. Changing all the return codes in this driver would
+> of course be a separate patch.
 
- drivers/staging/rtl8723au/hal/usb_halinit.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Indeed, _SUCCESS doesn't look well there. I'll check this out.
 
-diff --git a/drivers/staging/rtl8723au/hal/usb_halinit.c b/drivers/staging/rtl8723au/hal/usb_halinit.c
-index 3c2d03e..fa47aeb 100644
---- a/drivers/staging/rtl8723au/hal/usb_halinit.c
-+++ b/drivers/staging/rtl8723au/hal/usb_halinit.c
-@@ -736,8 +736,7 @@ int rtl8723au_hal_init(struct rtw_adapter *Adapter)
 
- 	rtl8723a_InitHalDm(Adapter);
-
--	val8 = (WiFiNavUpperUs + HAL_8723A_NAV_UPPER_UNIT - 1) /
--		HAL_8723A_NAV_UPPER_UNIT;
-+	val8 = DIV_ROUND_UP(WiFiNavUpperUs, HAL_8723A_NAV_UPPER_UNIT);
- 	rtl8723au_write8(Adapter, REG_NAV_UPPER, val8);
-
- 	/*  2011/03/09 MH debug only, UMC-B cut pass 2500 S5 test, but we need to fin root cause. */
---
-2.1.4
+Thanks, 
+Cristina
 
 
