@@ -1,76 +1,108 @@
 X-GM-THRID: 7892013940736
-X-Received: by 10.112.148.10 with SMTP id to10mr1357178lbb.18.1426172956805;
-        Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,19fb074a8e44fa1b
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.109.34 with SMTP id hp2mr5197646wib.4.1426172762675;
+        Thu, 12 Mar 2015 08:06:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.90.43 with SMTP id bt11ls617914wib.37.canary; Thu, 12 Mar
- 2015 08:09:16 -0700 (PDT)
-X-Received: by 10.180.109.34 with SMTP id hp2mr5200285wib.4.1426172956489;
-        Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
+Received: by 10.180.13.148 with SMTP id h20ls533631wic.3.gmail; Thu, 12 Mar
+ 2015 08:06:02 -0700 (PDT)
+X-Received: by 10.194.236.196 with SMTP id uw4mr3316759wjc.5.1426172762340;
+        Thu, 12 Mar 2015 08:06:02 -0700 (PDT)
 Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
-        by gmr-mx.google.com with ESMTPS id ew13si567529wid.0.2015.03.12.08.09.16
+Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
+        by gmr-mx.google.com with ESMTPS id l8si1542308wia.0.2015.03.12.08.06.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
+        Thu, 12 Mar 2015 08:06:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
        dkim=pass header.i=@gmail.com
-Received: by wesx3 with SMTP id x3so17084821wes.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 08:09:16 -0700 (PDT)
+Received: by mail-we0-x231.google.com with SMTP id w55so17042771wes.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 08:06:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:sender:in-reply-to:references:date:message-id:subject
          :from:to:cc:content-type;
-        bh=3Vq/NNSOvfvFUMfdo1JmiZwPy8p/gD2W0qD9RVPOrFo=;
-        b=nXvjd48lxii3h/agz7seVOLWimcwkOJs/aXdJrw62qJP0Simnun0QuVv/Guc+xbs/R
-         M0qUnOMuYzonvDf9RaXs+HialsO2cuOLANsQDLXcxqAbB5rvERipvmu3XiNWcNtgTheu
-         +c+cOe1rtakHQYFsCKrVtLrmgb7PxRsl+QOo+8qsoAEfm/TVCWOUbQOszhek0YJh2o97
-         FL1z2BBjvvJB3mvAaFkxL5SzrPS64daOzykZ5BpCuUN+YQpS5Vf8yqXt193Y7gz2z8Vk
-         +2M9lAqzJynirfRynerE8fqruBJ75tNLPpbBS9TyG+7Bke3Nd59u/VNM3SWZbzeRn9RY
-         E5Rw==
+        bh=k+oMpsh+CdlRYvMwM7eFciHUymhJOQN9Ype2P0bW9SY=;
+        b=RvNHlEM3Yp6CkK9bxBsh+F4NAqwyRuOROm0qBYCkS4O/f1RZYIgATjimdo02kBoQ6O
+         VS9bigE06g6QvMt1h/nIANRq54MfM/i6EtKWEjsquTcoJxzWbyVUicn1MAc0NC/QwONY
+         EY8JpaZPE2QytB2gNsfgx2jVqNhkbffkdKK0IbM3sTBgH6nzyKrK2K1mdtcfxImsYn2L
+         5Gn+o+97U8NWkWl9+IujHWPMP7yJE0FsEUMUQDK3TkeUXI89RAv6GpqMtxq6Fa3epSZm
+         nlrNMqcuLeEwO1z3GJ9Vow4ALb5O+jEKKbnoHAmrI9flIyOxFBJsT7Szs5RNLi4AdD79
+         FATw==
 MIME-Version: 1.0
-X-Received: by 10.181.13.148 with SMTP id ey20mr87942116wid.18.1426172955802;
- Thu, 12 Mar 2015 08:09:15 -0700 (PDT)
+X-Received: by 10.194.86.135 with SMTP id p7mr89485344wjz.89.1426172762005;
+ Thu, 12 Mar 2015 08:06:02 -0700 (PDT)
 Sender: daniel.baluta@gmail.com
-Received: by 10.28.139.211 with HTTP; Thu, 12 Mar 2015 08:09:15 -0700 (PDT)
-In-Reply-To: <CAEnQRZAK-aLWvcgMrJy0+xiHFAX+2kGgy4nek+q_OtqCmkrwPQ@mail.gmail.com>
+Received: by 10.28.139.211 with HTTP; Thu, 12 Mar 2015 08:06:01 -0700 (PDT)
+In-Reply-To: <20150312145536.GA20026@haneen-vb>
 References: <20150312145536.GA20026@haneen-vb>
-	<CAEnQRZAK-aLWvcgMrJy0+xiHFAX+2kGgy4nek+q_OtqCmkrwPQ@mail.gmail.com>
-Date: Thu, 12 Mar 2015 17:09:15 +0200
-X-Google-Sender-Auth: z_Chrbox8FXvqGqhqleZWRi_rTs
-Message-ID: <CAEnQRZA=4DfNUNPL3YH0C70PUe9OYdymoy2wB76=qygjwmjLgw@mail.gmail.com>
+Date: Thu, 12 Mar 2015 17:06:01 +0200
+X-Google-Sender-Auth: aA9V6FJBaIAE3ELYvTpgtRsriWI
+Message-ID: <CAEnQRZAK-aLWvcgMrJy0+xiHFAX+2kGgy4nek+q_OtqCmkrwPQ@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] iio: Add ABI documentation for
  proximity scan_emlements
 From: Daniel Baluta <daniel.baluta@intel.com>
-To: Daniel Baluta <daniel.baluta@intel.com>, Haneen Mohammed <hamohammed.sa@gmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	outreachy-kernel@googlegroups.com, 
+To: Haneen Mohammed <hamohammed.sa@gmail.com>, Jonathan Cameron <jic23@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, 
 	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>
 Content-Type: text/plain; charset=UTF-8
 
-On Thu, Mar 12, 2015 at 5:06 PM, Daniel Baluta <daniel.baluta@intel.com> wrote:
-> On Thu, Mar 12, 2015 at 4:55 PM, Haneen Mohammed
-> <hamohammed.sa@gmail.com> wrote:
->> This patch adds ABI documentation entries for in_proximity_en,
->> in_proximity_type, and in_proximity_index in the scan_elements.
->> At lease one user for these is present, the AS3935 Franklin lightning sensor.
->>
->> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+On Thu, Mar 12, 2015 at 4:55 PM, Haneen Mohammed
+<hamohammed.sa@gmail.com> wrote:
+> This patch adds ABI documentation entries for in_proximity_en,
+> in_proximity_type, and in_proximity_index in the scan_elements.
+> At lease one user for these is present, the AS3935 Franklin lightning sensor.
 >
-> Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
->
-> I know that Greg won't accept patches outside of drivers/staging/. I
-> think this should go via linux-iio tree.
->
-> Thanks Haneen!
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 
-One thing. There is a typo in the commit subject:
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
-s/scan_emlements/scan_elements.
+I know that Greg won't accept patches outside of drivers/staging/. I
+think this should go via linux-iio tree.
 
-Could you resend? Please keep Jonathan, Greg and linux-iio mailing list in Cc.
+Thanks Haneen!
 
-thanks,
 Daniel.
+
+> ---
+>  Documentation/ABI/testing/sysfs-bus-iio | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
+> index 9a1a5fc..fd026d9 100644
+> --- a/Documentation/ABI/testing/sysfs-bus-iio
+> +++ b/Documentation/ABI/testing/sysfs-bus-iio
+> @@ -999,6 +999,7 @@ What:               /sys/.../iio:deviceX/scan_elements/in_incli_y_en
+>  What:          /sys/.../iio:deviceX/scan_elements/in_pressureY_en
+>  What:          /sys/.../iio:deviceX/scan_elements/in_pressure_en
+>  What:          /sys/.../iio:deviceX/scan_elements/in_rot_quaternion_en
+> +What:          /sys/.../iio:deviceX/scan_elements/in_proximity_en
+>  KernelVersion: 2.6.37
+>  Contact:       linux-iio@vger.kernel.org
+>  Description:
+> @@ -1015,6 +1016,7 @@ What:             /sys/.../iio:deviceX/scan_elements/in_timestamp_type
+>  What:          /sys/.../iio:deviceX/scan_elements/in_pressureY_type
+>  What:          /sys/.../iio:deviceX/scan_elements/in_pressure_type
+>  What:          /sys/.../iio:deviceX/scan_elements/in_rot_quaternion_type
+> +What:          /sys/.../iio:deviceX/scan_elements/in_proximity_type
+>  KernelVersion: 2.6.37
+>  Contact:       linux-iio@vger.kernel.org
+>  Description:
+> @@ -1066,6 +1068,7 @@ What:             /sys/.../iio:deviceX/scan_elements/in_timestamp_index
+>  What:          /sys/.../iio:deviceX/scan_elements/in_pressureY_index
+>  What:          /sys/.../iio:deviceX/scan_elements/in_pressure_index
+>  What:          /sys/.../iio:deviceX/scan_elements/in_rot_quaternion_index
+> +What:          /sys/.../iio:deviceX/scan_elements/in_proximity_index
+>  KernelVersion: 2.6.37
+>  Contact:       linux-iio@vger.kernel.org
+>  Description:
+> --
+> 1.9.1
+>
+> --
 
