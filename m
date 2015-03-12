@@ -1,56 +1,77 @@
 X-GM-THRID: 7888814735360
-X-Received: by 10.194.161.194 with SMTP id xu2mr6734935wjb.1.1426197635770;
-        Thu, 12 Mar 2015 15:00:35 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,58f6d087f39084
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.181.166 with SMTP id dx6mr4358950lbc.17.1426197064297;
+        Thu, 12 Mar 2015 14:51:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.6.33 with SMTP id cr1ls288602lad.47.gmail; Thu, 12 Mar
- 2015 15:00:35 -0700 (PDT)
-X-Received: by 10.112.159.227 with SMTP id xf3mr6839568lbb.11.1426197635166;
-        Thu, 12 Mar 2015 15:00:35 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id c8si2677wiw.1.2015.03.12.15.00.35
+Received: by 10.152.164.193 with SMTP id ys1ls354208lab.39.gmail; Thu, 12 Mar
+ 2015 14:51:03 -0700 (PDT)
+X-Received: by 10.152.4.229 with SMTP id n5mr6710900lan.1.1426197063748;
+        Thu, 12 Mar 2015 14:51:03 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-la0-x22f.google.com (mail-la0-x22f.google.com. [2a00:1450:4010:c03::22f])
+        by gmr-mx.google.com with ESMTPS id b6si4188lbc.1.2015.03.12.14.51.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 12 Mar 2015 15:00:35 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2015 14:51:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::22f as permitted sender) client-ip=2a00:1450:4010:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,391,1422918000"; 
-   d="scan'208";a="125673600"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Mar 2015 23:00:34 +0100
-Date: Thu, 12 Mar 2015 23:00:33 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Vatika Harlalka <vatikaharlalka@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: fbtbt: Fix code style
- issues
-In-Reply-To: <CAHjTdYdEZ4x6kksbvbevMeYFBRJc8vUwYToObUeWJA-zJPsKhQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.02.1503122257510.2064@localhost6.localdomain6>
-References: <20150312143226.GA26267@akanksha> <alpine.DEB.2.02.1503122113420.2064@localhost6.localdomain6> <CAHjTdYdEZ4x6kksbvbevMeYFBRJc8vUwYToObUeWJA-zJPsKhQ@mail.gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by lams18 with SMTP id s18so18832514lam.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 14:51:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=D9Am6Pq+T63QpoGDueV2BROHUZ5Nw1uWgemAt5DsX5c=;
+        b=AFzTMG1yOMNYMTYzD9KZXjKCmDYSpxL+hoYdcT6jwJJbdN/Igj2A7uO8E2lSXeDnEC
+         aghbC4xiYnLhiH0OZR79cQT/seK6Fvy7XQRKcIpoTSE7osLBTe4qIwRMc8OKsC4UU4Mm
+         cS1oMXqSphzl8Z7XQ/XfBmvRH3aMHOvF+cLW9QmQOUzcP2SRPxpx7B4WJMRxG8/fwNR+
+         z6LaOE3p1VxfqYHeX9Kk3ezXIxd/4ieaCoO6bUYXOCygrNMdQzRuC77Hsv3QsOV3SN5o
+         NIxZ/1+UEPK/pB+aKOq8VT5MDKZG6QELe5N27FHhNyMMc/E1bO2JEM+3fdRa7PkkSzLn
+         q2ZQ==
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-Received: by 10.152.21.168 with SMTP id w8mr37899400lae.46.1426197063630;
+ Thu, 12 Mar 2015 14:51:03 -0700 (PDT)
+Received: by 10.112.59.7 with HTTP; Thu, 12 Mar 2015 14:51:03 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.02.1503122113420.2064@localhost6.localdomain6>
+References: <20150312143226.GA26267@akanksha>
+	<alpine.DEB.2.02.1503122113420.2064@localhost6.localdomain6>
+Date: Fri, 13 Mar 2015 03:21:03 +0530
+Message-ID: <CAHjTdYdEZ4x6kksbvbevMeYFBRJc8vUwYToObUeWJA-zJPsKhQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: fbtbt: Fix code style issues
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=089e0158ad545b833105111e616b
 
+--089e0158ad545b833105111e616b
+Content-Type: text/plain; charset=UTF-8
 
+The definition of fbtft_par_dbg uses a call to dev_info after
+rearranging the parameters appropriately. This is done after
+checking:
+if (unlikely(par->debug & level))
+ie the expected value of par->debug &level is 0.
+Could you please provide some guidance on what other function
+I should use?
 
-On Fri, 13 Mar 2015, Vatika Harlalka wrote:
+Thanks!
 
-> The definition of fbtft_par_dbg uses a call to dev_info after
-> rearranging the parameters appropriately. This is done after
-> checking:
-> if (unlikely(par->debug & level))
-> ie the expected value of par->debug &level is 0.
-> Could you please provide some guidance on what other function
-> I should use?
+--089e0158ad545b833105111e616b
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-I'm not sure any more what file your patch was in, but I looked at some 
-other files in this directory, and it seems that many uses of this 
-function are at the beginning of a function.  That is, they just indicate 
-what the driver is doing, but not any abnormal condition.  Perhaps they 
-could just be dropped.  For the ones that seem very useful, you could 
-use dev_info.
+<div dir=3D"ltr"><div><div><div><div><div><div>The definition of fbtft_par_=
+dbg uses a call to dev_info after <br></div>rearranging the parameters appr=
+opriately. This is done after<br></div>checking:<br>if (unlikely(par-&gt;de=
+bug &amp; level)) <br></div>ie the expected value of par-&gt;debug &amp;lev=
+el is 0.<br></div>Could you please provide some guidance on what other func=
+tion<br></div>I should use?<br><br></div>Thanks!<br></div>
 
-julia
+--089e0158ad545b833105111e616b--
 
