@@ -1,97 +1,88 @@
-X-GM-THRID: 6254163477603024896
-X-Received: by 10.129.73.215 with SMTP id w206mr17095569ywa.6.1456160908470;
-        Mon, 22 Feb 2016 09:08:28 -0800 (PST)
+X-GM-THRID: 7858872647680
+X-Received: by 10.52.122.75 with SMTP id lq11mr42427937vdb.4.1426161541575;
+        Thu, 12 Mar 2015 04:59:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.28.34 with SMTP id 31ls332683qgy.28.gmail; Mon, 22 Feb
- 2016 09:08:27 -0800 (PST)
-X-Received: by 10.129.117.11 with SMTP id q11mr11159473ywc.3.1456160907895;
-        Mon, 22 Feb 2016 09:08:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id yd9si3214481pab.1.2016.02.22.09.08.27
+Received: by 10.182.246.73 with SMTP id xu9ls447737obc.42.gmail; Thu, 12 Mar
+ 2015 04:59:01 -0700 (PDT)
+X-Received: by 10.182.181.105 with SMTP id dv9mr30025936obc.16.1426161541349;
+        Thu, 12 Mar 2015 04:59:01 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pd0-x231.google.com (mail-pd0-x231.google.com. [2607:f8b0:400e:c02::231])
+        by gmr-mx.google.com with ESMTPS id gb13si1264609pac.2.2015.03.12.04.59.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 09:08:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2015 04:59:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) client-ip=2607:f8b0:400e:c02::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id q63so95577493pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 09:08:27 -0800 (PST)
+Received: by mail-pd0-x231.google.com with SMTP id ft15so19618682pdb.6
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 04:59:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=b7AKKuE8q7BP0K4S9GzVra62VjpPPvdG41sk+/o9mg8=;
-        b=VsPHM3D+HGgCl13JUaza/q95QFJxwaoKH2ZtG7a1Gl0fvFf6mQ5jgQXw9dj3/vpjfR
-         Xd5ANo9MO53aOLYrVPiL9UOQBLixoYLYr3jSqlFfFI/5eghQmH0ZK+0pPtuTILSlv5Uv
-         mn+0d8RSuEVEdsCLQrNVc0l7GvT4c6aVkI2HQT/WvLuPAfaU9C1MYPrzFpdUzJTEEC8G
-         73vtRtJGNJecWVsBEoIRXtybvBsrcbn8IQHA6SZF2e7NtLyQuqBnL5doke+nd5tNIrRM
-         9BZXbsZAxIIwZSXLrUwXwIp0PR296VUM9TEVFk0lappf19x5QvMiGAA2KrFriqApa56U
-         2HgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=b7AKKuE8q7BP0K4S9GzVra62VjpPPvdG41sk+/o9mg8=;
-        b=i7qKXYQB8547Q7u/hV7j/Ql502d8Ha9QKA44POoXjzz9DPOfVyKRL/o2EadmxNPyHm
-         +bCRaPknJpufmtGHL41IURoBb69UgfCjuA0w5VqhgaDTvxPoLgSGrBIT1pQqaVjS/hYk
-         LzKI5ELgZFkmhpKXxqAz/X8qtJpkljmC8OacdTgq4GzE0DI1NtiJtEOAtlXr2Lp//zUo
-         v94LvDF4JqG8jjtiQh48fX2S7566dqrXsWDZEFBATn8sVMf+d1kY/xFW6eU90V0WEsW5
-         eGz0nbGedxuZ3TtF1HrvRZTIM92CmANaE0XupFpY4HP4XooEzmb6rC4GiyCq7WzBUYbP
-         TZBg==
-X-Gm-Message-State: AG10YOQ/bXxa+ynZc3KYyZ1l+COkyt2hIfiemlhqXyuCzZVtVJdhfNIy0BkKMB9umU7Asw==
-X-Received: by 10.98.10.149 with SMTP id 21mr39840739pfk.75.1456160907549;
-        Mon, 22 Feb 2016 09:08:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 87sm38108446pfq.93.2016.02.22.09.08.26
+        bh=nSRwvGVI5x0uNa2STuvnpVYfZXLaYYsgebXNt4vOojQ=;
+        b=vx2MElJLRj33P2uLCSkPJgu8ntObcNtDOBwVFvgScZQWM7WPLJjglkiVQLu9H3Lk64
+         15oF8sCfrf/Gvbmkzt+psQnNwxFLIBJHKd3vZKLvTrSH2yf6mJfHmbTuCTWRUh3vrPTW
+         RSlyN/E21Y7QEm8qqBv71FeTc14nV1GhAQwRO83szcacKDYPxg2d0BlR66i0Q/L0xtP5
+         FKpPE656GM5dqixE4XneXCjxMhH0eCzYXMB3/QhPC0Tv5CNNoZxCIpGWeZcNssrF6lvd
+         bNlPUT1FiHT5+eNaSdMk3OJkmBL1WkzeQjUQw3Mgs2SKrOVLrlKlKQ8pPuZs6SL07/VM
+         OpLw==
+X-Received: by 10.66.101.35 with SMTP id fd3mr91050475pab.50.1426161541160;
+        Thu, 12 Mar 2015 04:59:01 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([43.249.235.243])
+        by mx.google.com with ESMTPSA id qa3sm10786105pab.16.2015.03.12.04.58.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 09:08:27 -0800 (PST)
-Date: Mon, 22 Feb 2016 22:39:00 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 12 Mar 2015 04:59:00 -0700 (PDT)
+Date: Thu, 12 Mar 2015 17:28:54 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Remove unnecessary parantheses
-Message-ID: <20160222170900.GA26149@Karyakshetra>
+Subject: [PATCH v2] Staging: ft1000: Use module_pcmcia_driver
+Message-ID: <20150312115854.GA6099@vaishali-Ideapad-Z570>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Removed parantheses on the right hand side of assignments as they are
-not needed.
+Macro module_pcmcia_driver is used for drivers whose init
+and exit paths does only register and unregister to pcmcia
+API. So, here remove some boilerplate code by using
+module_pcmcia_driver.
 
-This was done with Coccinelle:
-
-@@ expression a, b; @@
-
-a =
-- (
-b
-- )
-;
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
 ---
- drivers/staging/rtl8712/ieee80211.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v1:
+	- Put semicolon after module_pcmcia_driver
 
-diff --git a/drivers/staging/rtl8712/ieee80211.c b/drivers/staging/rtl8712/ieee80211.c
-index 974ca02..d13b4d5 100644
---- a/drivers/staging/rtl8712/ieee80211.c
-+++ b/drivers/staging/rtl8712/ieee80211.c
-@@ -376,7 +376,7 @@ int r8712_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len,
- 	uint cnt;
+ drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
- 	/*Search required WPA or WPA2 IE and copy to sec_ie[ ]*/
--	cnt = (_TIMESTAMP_ + _BEACON_ITERVAL_ + _CAPABILITY_);
-+	cnt = _TIMESTAMP_ + _BEACON_ITERVAL_ + _CAPABILITY_;
- 	while (cnt < in_len) {
- 		authmode = in_ie[cnt];
- 		if ((authmode == _WPA_IE_ID_) &&
---
-2.1.4
+diff --git a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c
+index 922478e..e5cc5be 100644
+--- a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c
++++ b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c
+@@ -155,15 +155,4 @@ static struct pcmcia_driver ft1000_cs_driver = {
+ 	.resume		= ft1000_resume,
+ };
+ 
+-static int __init init_ft1000_cs(void)
+-{
+-	return pcmcia_register_driver(&ft1000_cs_driver);
+-}
+-
+-static void __exit exit_ft1000_cs(void)
+-{
+-	pcmcia_unregister_driver(&ft1000_cs_driver);
+-}
+-
+-module_init(init_ft1000_cs);
+-module_exit(exit_ft1000_cs);
++module_pcmcia_driver(ft1000_cs_driver);
+-- 
+1.9.1
 
 
