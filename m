@@ -1,86 +1,76 @@
-X-GM-THRID: 9888705019904
-X-Received: by 10.140.147.130 with SMTP id 124mr13296418qht.8.1427328339402;
-        Wed, 25 Mar 2015 17:05:39 -0700 (PDT)
+X-GM-THRID: 7943588151296
+X-Received: by 10.152.45.7 with SMTP id i7mr6586861lam.9.1426184767016;
+        Thu, 12 Mar 2015 11:26:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.135.221 with SMTP id r90ls473510ioi.73.gmail; Wed, 25 Mar
- 2015 17:05:39 -0700 (PDT)
-X-Received: by 10.68.209.164 with SMTP id mn4mr13144754pbc.8.1427328339148;
-        Wed, 25 Mar 2015 17:05:39 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-qg0-x22a.google.com (mail-qg0-x22a.google.com. [2607:f8b0:400d:c04::22a])
-        by gmr-mx.google.com with ESMTPS id e5si515854qcg.1.2015.03.25.17.05.39
+Received: by 10.180.77.75 with SMTP id q11ls3594wiw.10.gmail; Thu, 12 Mar 2015
+ 11:26:05 -0700 (PDT)
+X-Received: by 10.180.80.132 with SMTP id r4mr3261145wix.4.1426184765121;
+        Thu, 12 Mar 2015 11:26:05 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id sf8si599968wic.2.2015.03.12.11.26.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2015 17:05:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) client-ip=2607:f8b0:400d:c04::22a;
+        Thu, 12 Mar 2015 11:26:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) smtp.mail=helen.fornazier@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22a.google.com with SMTP id 60so55538503qgf.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 17:05:39 -0700 (PDT)
+Received: by mail-wi0-x22c.google.com with SMTP id fb4so6284027wid.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 11:26:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=fI7XtCjSX2nkzX/mTvpKiFBOxSpWLYTu+b3i3a/S0qg=;
-        b=F91YD1gpo5FWK5N1KR1d22Jb2tdqKc9/ymQCA/TubKeuCz8zUAD/79W2/cnUbQsmnb
-         KEC04rSvHwa8l3SKChjdAESTFB1tbg43jNWJ8t/hZzoZPFFFao0Get2zFzsEZSRKzHiI
-         ICfWpop1Z8XVp6xMFYLcvNLwo19AY/uc1p8p/Z6i287iExqZnu56eTO9Nl38M3OXXam8
-         b13gFs4qPvWNKVUd4vfnxFTQT7SD5jMQH5is64TBLOdDzopk6LwrVL7pTNzXjY6RPGh6
-         HEStCKnXmQZmRcrhdpY56gyxWWQ7E1pmRHnqgVhVzOWwfIWH24zdLDSLRpm5zbte6Uz6
-         HYVw==
-X-Received: by 10.55.55.8 with SMTP id e8mr24499184qka.9.1427328339009;
-        Wed, 25 Mar 2015 17:05:39 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from Cracker.linksys.com ([179.159.91.9])
-        by mx.google.com with ESMTPSA id n52sm2494593qge.39.2015.03.25.17.05.37
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 25 Mar 2015 17:05:38 -0700 (PDT)
-From: Helen Fornazier <helen.fornazier@gmail.com>
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=cI0tCMkKLqPgRGGNcR4+AXSECmyC9fVhprFjvwqGD2Q=;
+        b=yUdx9sEUrlcMtGhbDg59kzWJCMjk73bFglethWwRXx1TRlgD1IrubB2Wmoq1k/GOur
+         MYOfMkayV28OmRWnXj1JTAaphMPLBZYYPZUFNjlW/oJCCoPyINUjB1p3ymKQMDLsZFoD
+         ipfOmSYMDCppQy2UnER8BysB7IizmUga7KgiJyFwzW5/wh+9ZEwLyztzi7medOh1cdTy
+         hrC/vbcxWC+sMF7628bQUM3WNA8PqPG+c7ZmTkEc1ptN38Eh1ZqibIskXu3mQ1o6DQRO
+         sPxHxiUXB+ctJOsl4yDzv23+aNnJmpSbMI3Jhb8JOSCdYS6l4w7t3+khbZH5YUehpszr
+         qI3g==
+X-Received: by 10.181.5.43 with SMTP id cj11mr131141582wid.61.1426184765034;
+        Thu, 12 Mar 2015 11:26:05 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneen-vb ([79.170.55.25])
+        by mx.google.com with ESMTPSA id ge8sm11166450wjc.32.2015.03.12.11.26.02
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 12 Mar 2015 11:26:03 -0700 (PDT)
+Date: Thu, 12 Mar 2015 21:26:00 +0300
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Helen Fornazier <helen.fornazier@gmail.com>
-Subject: [PATCH] block: Add blank line after variable declarations
-Date: Wed, 25 Mar 2015 21:05:29 -0300
-Message-Id: <1427328329-6437-1-git-send-email-helen.fornazier@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: linux-iio@vger.kernel.org, jic23@kernel.org, daniel.baluta@intel.com
+Subject: [PATCH] iio : Add ABI documentation for thresh falling/rising value
+ in accel
+Message-ID: <20150312182600.GA23579@haneen-vb>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch.pl warning:
+This patch adds ABI documentation entries for
+in_accel_thresh_falling_value, and in_accel_thresh_rising_value in /events.
+There is at least one user for these, lis3l02dq in accel.
 
-WARNING: Missing a blank line after declarations
-
-Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- block/bio.c | 3 +++
- 1 file changed, 3 insertions(+)
+ Documentation/ABI/testing/sysfs-bus-iio | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/block/bio.c b/block/bio.c
-index 7495017..84f55b9 100644
---- a/block/bio.c
-+++ b/block/bio.c
-@@ -507,6 +507,7 @@ void zero_fill_bio(struct bio *bio)
+diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
+index 9a70c31..9a1a5fc 100644
+--- a/Documentation/ABI/testing/sysfs-bus-iio
++++ b/Documentation/ABI/testing/sysfs-bus-iio
+@@ -612,6 +612,8 @@ Description:
+ 		a given event type is enabled a future point (and not those for
+ 		whatever event was previously enabled).
  
- 	bio_for_each_segment(bv, bio, iter) {
- 		char *data = bvec_kmap_irq(&bv, &flags);
-+
- 		memset(data, 0, bv.bv_len);
- 		flush_dcache_page(bv.bv_page);
- 		bvec_kunmap_irq(data, &flags);
-@@ -726,6 +727,7 @@ static int __bio_add_page(struct request_queue *q, struct bio *bio, struct page
- 		if (page == prev->bv_page &&
- 		    offset == prev->bv_offset + prev->bv_len) {
- 			unsigned int prev_bv_len = prev->bv_len;
-+
- 			prev->bv_len += len;
- 
- 			if (q->merge_bvec_fn) {
-@@ -1778,6 +1780,7 @@ void bio_endio(struct bio *bio, int error)
- 		 */
- 		if (bio->bi_end_io == bio_chain_endio) {
- 			struct bio *parent = bio->bi_private;
-+
- 			bio_put(bio);
- 			bio = parent;
- 		} else {
++What:		/sys/.../events/in_accel_thresh_rising_value
++What:		/sys/.../events/in_accel_thresh_falling_value
+ What:		/sys/.../events/in_accel_x_raw_thresh_rising_value
+ What:		/sys/.../events/in_accel_x_raw_thresh_falling_value
+ What:		/sys/.../events/in_accel_y_raw_thresh_rising_value
 -- 
 1.9.1
 
