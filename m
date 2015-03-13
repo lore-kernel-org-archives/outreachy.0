@@ -3,117 +3,122 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,f25214db02e3b292
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.40.81 with SMTP id v17mr3064594lbk.5.1426232596064;
-        Fri, 13 Mar 2015 00:43:16 -0700 (PDT)
+X-Received: by 10.152.6.232 with SMTP id e8mr6956216laa.2.1426230478096;
+        Fri, 13 Mar 2015 00:07:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.9.168 with SMTP id a8ls345209lab.14.gmail; Fri, 13 Mar
- 2015 00:43:15 -0700 (PDT)
-X-Received: by 10.112.242.7 with SMTP id wm7mr4149616lbc.1.1426232595579;
-        Fri, 13 Mar 2015 00:43:15 -0700 (PDT)
+Received: by 10.152.170.164 with SMTP id an4ls378320lac.19.gmail; Fri, 13 Mar
+ 2015 00:07:57 -0700 (PDT)
+X-Received: by 10.112.199.69 with SMTP id ji5mr6882478lbc.0.1426230477536;
+        Fri, 13 Mar 2015 00:07:57 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id el6si78037wib.0.2015.03.13.00.43.15
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id o3si64657wib.2.2015.03.13.00.07.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 13 Mar 2015 00:43:15 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 13 Mar 2015 00:07:57 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.11,393,1422918000"; 
-   d="scan'208";a="125714028"
+   d="scan'208";a="103154070"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2015 08:43:14 +0100
-Date: Fri, 13 Mar 2015 08:43:14 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2015 08:07:56 +0100
+Date: Fri, 13 Mar 2015 08:07:55 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@localhost6.localdomain6
-To: Larry Finger <Larry.Finger@lwfinger.net>
-cc: Supriya Karanth <iskaranth@gmail.com>, outreachy-kernel@googlegroups.com, 
-    Jes.Sorensen@redhat.com
+To: Supriya Karanth <iskaranth@gmail.com>
+cc: Larry Finger <Larry.Finger@lwfinger.net>, julia.lawall@lip6.fr, 
+    outreachy-kernel@googlegroups.com, Jes.Sorensen@redhat.com
 Subject: Re: [Outreachy kernel] Re: [PATCH] staging: rtl8723au: Remove dead
  code
-In-Reply-To: <alpine.DEB.2.02.1503130803540.2006@localhost6.localdomain6>
-Message-ID: <alpine.DEB.2.02.1503130838510.2006@localhost6.localdomain6>
-References: <1426158600-30895-1-git-send-email-iskaranth@gmail.com> <5501C474.4010905@lwfinger.net> <20150313035724.GA6885@gmail.com> <alpine.DEB.2.02.1503130803540.2006@localhost6.localdomain6>
+In-Reply-To: <20150313035724.GA6885@gmail.com>
+Message-ID: <alpine.DEB.2.02.1503130803540.2006@localhost6.localdomain6>
+References: <1426158600-30895-1-git-send-email-iskaranth@gmail.com> <5501C474.4010905@lwfinger.net> <20150313035724.GA6885@gmail.com>
 User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
 
 
 
-On Fri, 13 Mar 2015, Julia Lawall wrote:
+On Fri, 13 Mar 2015, Supriya Karanth wrote:
 
+> On Thu, Mar 12, 2015 at 11:53:08AM -0500, Larry Finger wrote:
+> > On 03/12/2015 06:10 AM, Supriya Karanth wrote:
+> > >This dead code was detected by coccinelle while using --debug
+> > >option
+> > >diff --git a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+> > >index 0e0f73c..db4f235 100644
+> > >--- a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+> > >+++ b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+> > >@@ -1619,7 +1619,6 @@ OnAssocReq23a(struct rtw_adapter *padapter, struct recv_frame *precv_frame)
+> > >  			} else {
+> > >  				break;
+> > >  			}
+> > >-			p = p + p[1] + 2;
+> > >  		}
+> > >  	}
+> > >
+> > 
+> > Like most of this driver, the code is ugly, but I think this is a coccinelle
+> > bug, not dead code.
 > 
+> I checked it myself and thought coccinelle was right
+> > 
+> > The statement that you are removing is at the end of a for loop. On the next
+> > pass through the loop, and there will be a next pass, the first statement is
+> > "left = end - p;"; therefore, the incrementation of p is not useless code.
+> > 
 > 
-> On Fri, 13 Mar 2015, Supriya Karanth wrote:
+> I was under the impression that the line "p = p + p[1] + 2;" will never
+> execute.
 > 
-> > On Thu, Mar 12, 2015 at 11:53:08AM -0500, Larry Finger wrote:
-> > > On 03/12/2015 06:10 AM, Supriya Karanth wrote:
-> > > >This dead code was detected by coccinelle while using --debug
-> > > >option
-> > > >diff --git a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-> > > >index 0e0f73c..db4f235 100644
-> > > >--- a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-> > > >+++ b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-> > > >@@ -1619,7 +1619,6 @@ OnAssocReq23a(struct rtw_adapter *padapter, struct recv_frame *precv_frame)
-> > > >  			} else {
-> > > >  				break;
-> > > >  			}
-> > > >-			p = p + p[1] + 2;
-> > > >  		}
-> > > >  	}
-> > > >
-> > > 
-> > > Like most of this driver, the code is ugly, but I think this is a coccinelle
-> > > bug, not dead code.
-> > 
-> > I checked it myself and thought coccinelle was right
-> > > 
-> > > The statement that you are removing is at the end of a for loop. On the next
-> > > pass through the loop, and there will be a next pass, the first statement is
-> > > "left = end - p;"; therefore, the incrementation of p is not useless code.
-> > > 
-> > 
-> > I was under the impression that the line "p = p + p[1] + 2;" will never
-> > execute.
-> > 
-> > The for loop is in this form:
-> > for (;;) {
-> > 	if (p) {
-> > 		if (...) {
-> > 		...
-> > 
-> > 		}
-> > 		break;
-> > 	} else {
-> > 		break;
-> > 	}
-> > 	p = p ....
-> > }
-> > 
-> > There is a "break" in both the if and else condition which will break out
-> > of the for loop. I think the line "p = p + p[1] + 2;" is important but,
-> > I think it never gets executed. Perhaps I am wrong and I am missing something.
-> > 
-> > > Have you tested your change? I would guess not. I think it would lead to an
-> > > infinite loop.
-> > I am sorry but no I haven't tested it as I do not have the Hardware. I have
-> > tested the code format though and the line doesn't get executed.
-> > > 
-> > > The recent spate of untested patches generated by uncritical usage of
-> > > various tools is quite tiresome!!
-> > 
-> > I understand. I am very sorry to have wasted your time.
-> > > 
-> > > NACK
+> The for loop is in this form:
+> for (;;) {
+> 	if (p) {
+> 		if (...) {
+> 		...
 > 
-> I agree with Supriya.  I can't see how the code could be executed.  Maybe 
-> her fix is not correct, but something is wrong with the code.
+> 		}
+> 		break;
+> 	} else {
+> 		break;
+> 	}
+> 	p = p ....
+> }
+> 
+> There is a "break" in both the if and else condition which will break out
+> of the for loop. I think the line "p = p + p[1] + 2;" is important but,
+> I think it never gets executed. Perhaps I am wrong and I am missing something.
+> 
+> > Have you tested your change? I would guess not. I think it would lead to an
+> > infinite loop.
+> I am sorry but no I haven't tested it as I do not have the Hardware. I have
+> tested the code format though and the line doesn't get executed.
+> > 
+> > The recent spate of untested patches generated by uncritical usage of
+> > various tools is quite tiresome!!
+> 
+> I understand. I am very sorry to have wasted your time.
+> > 
+> > NACK
 
-The problem was introduced in the patch 7c3a8f2a5e.  Prior to that patch, 
-the break that is now below if (pstat->qos_info & 0xf) was inside the 
-"then" branch of that if.  The commit message of that patch doesn't 
-describe the changes in detail, so it is not clear why this change was 
-made.  However, the patch is from Jes, so maybe he remembers.
+I agree with Supriya.  I can't see how the code could be executed.  Maybe 
+her fix is not correct, but something is wrong with the code.
 
 julia
+
+
+
+> > 
+> > Larry
+> > 
+> > 
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150313035724.GA6885%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
