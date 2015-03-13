@@ -1,80 +1,73 @@
-X-GM-THRID: 213884338176
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,db22422998b7f0e5,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.79.168 with SMTP id k8mr29254569obx.49.1424209055790;
-        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
+X-GM-THRID: 8060695216128
+X-Received: by 10.236.61.197 with SMTP id w45mr46723683yhc.54.1426248031669;
+        Fri, 13 Mar 2015 05:00:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.93.165 with SMTP id d34ls3023916qge.61.gmail; Tue, 17 Feb
- 2015 13:37:35 -0800 (PST)
-X-Received: by 10.236.24.228 with SMTP id x64mr27331156yhx.26.1424209055634;
-        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-f181.google.com (mail-pd0-f181.google.com. [209.85.192.181])
-        by gmr-mx.google.com with ESMTPS id bo1si2292512pbc.0.2015.02.17.13.37.35
+Received: by 10.140.19.228 with SMTP id 91ls1641684qgh.14.gmail; Fri, 13 Mar
+ 2015 05:00:31 -0700 (PDT)
+X-Received: by 10.140.147.130 with SMTP id 124mr48024842qht.8.1426248031494;
+        Fri, 13 Mar 2015 05:00:31 -0700 (PDT)
+Return-Path: <iskaranth@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id ni4si302285pdb.2.2015.03.13.05.00.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.192.181 as permitted sender) client-ip=209.85.192.181;
+        Fri, 13 Mar 2015 05:00:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 209.85.192.181 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mail=iskaranth@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-f181.google.com with SMTP id z10so46445045pdj.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Feb 2015 13:37:35 -0800 (PST)
+Received: by mail-pa0-x231.google.com with SMTP id rd3so29035418pab.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 05:00:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=t8RT78uBKH5F7Blg0YZ+4IFycfCspnflU0ow9EiR+cM=;
-        b=jL/gFgDmQ4N/7FLV2vTeA3YyzQ4BDCgCJ3V8pOjX4bKCAkNJ6K9ZK4OE3cHMNr2X5p
-         vy1O4NNMstMZZxxtqTAgJ6F8zXotWSZ+tH2vPGtDXgSNJxNM6wy6febfadY/xN0lLxJg
-         M0RqNe6fh4iNJXMkWgBwtJYfGBb399um67zf2r9sgmmhehTu59E/K7hVNX8EYyLyNPh+
-         BJLa0mqjfsEurFgF8OjoG3rzG/6YNRjoHcs8B+SQorc6sdhJXSoWr6ZbKOhC4sEXtECZ
-         qOstPf4KjbmLXjl1m5j+KM8LBb3AyDEMzJwwe28OwtxychH2bbLHqqLnkM7r3puuFKGd
-         paOw==
-X-Received: by 10.68.252.198 with SMTP id zu6mr51947748pbc.102.1424209055439;
-        Tue, 17 Feb 2015 13:37:35 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id ex1sm18446376pbc.80.2015.02.17.13.37.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 17 Feb 2015 13:37:34 -0800 (PST)
-Date: Wed, 18 Feb 2015 03:07:20 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: i2o: Use preferred library linux/uaccess.h over
- asm/uaccess.h
-Message-ID: <20150217213720.GA9267@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        h=from:to:subject:date:message-id;
+        bh=HVysEAPogRjTDAZ3hJ+0M/nce2wbHDyH30Fgst2P/rg=;
+        b=AyAemcI9A2fLn5H4FGb0hV9qXpXVXCbLy7kEVJqoD7BN43xEVtOrDixl4j3jkWJjvk
+         IAdOY2uKlepNeWjvKw07+Av96+wWAdZUedzJZWyc0xZTw0JeeDsq7NqiRL/BrsQKwDPx
+         +Dx5aUBWIpQXd1Bp0xFz66En9QWdo054P/nPvmE3tScWMSjVyr7wJQfFEl81hjZwtaI0
+         Zfn8Dq5nzXWGhA8iPZKlNH/fm4LPNhvtyp1y/aAMK1mZ5vZ23KBPcwH0KSblsULAmK0y
+         e3AjieW/8Akqf3SPGpsNgq1YiG/ICnfVB3NfxPYmKXj/wMHIylfC6rKeozeSv+c+TvZI
+         xucg==
+X-Received: by 10.66.218.10 with SMTP id pc10mr101331717pac.116.1426248030981;
+        Fri, 13 Mar 2015 05:00:30 -0700 (PDT)
+Return-Path: <iskaranth@gmail.com>
+Received: from localhost.localdomain ([222.117.133.143])
+        by mx.google.com with ESMTPSA id fl4sm3261401pab.8.2015.03.13.05.00.28
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 13 Mar 2015 05:00:30 -0700 (PDT)
+From: Supriya Karanth <iskaranth@gmail.com>
+To: iskaranth@gmail.com,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: comedi: remove break after return
+Date: Fri, 13 Mar 2015 21:00:20 +0900
+Message-Id: <1426248020-18956-1-git-send-email-iskaranth@gmail.com>
+X-Mailer: git-send-email 2.1.0
 
-This patch fixes checkpatch.pl warning "Use #include
-<linux/uaccess.h> instead of <asm/uaccess.h>" in i2o/config-osm.c .
+Remove "break" statement after a "return" statement as
+it does not get executed.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Deadcode found by coccinelle --debug option
+
+Signed-off-by: Supriya Karanth <iskaranth@gmail.com>
 ---
- drivers/staging/i2o/config-osm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/comedi/drivers/ni_mio_common.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/i2o/config-osm.c b/drivers/staging/i2o/config-osm.c
-index 519f52f..45091ac 100644
---- a/drivers/staging/i2o/config-osm.c
-+++ b/drivers/staging/i2o/config-osm.c
-@@ -19,7 +19,7 @@
- #include <linux/namei.h>
- #include <linux/fs.h>
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index 42fdedd..850f7e6 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -3811,8 +3811,6 @@ static int ni_serial_insn_config(struct comedi_device *dev,
+ 			      Clock_and_FOUT_Register);
+ 		return 1;
  
--#include <asm/uaccess.h>
-+#include <linux/uaccess.h>
+-		break;
+-
+ 	case INSN_CONFIG_BIDIRECTIONAL_DATA:
  
- #define OSM_NAME	"config-osm"
- #define OSM_VERSION	"1.323"
+ 		if (devpriv->serial_interval_ns == 0)
 -- 
-1.9.1
+2.1.0
 
 
