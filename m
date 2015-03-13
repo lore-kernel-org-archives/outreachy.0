@@ -1,114 +1,78 @@
-X-GM-THRID: 6745921261807861760
-X-Received: by 2002:adf:e8d0:: with SMTP id k16mr4876360wrn.233.1570657189249;
-        Wed, 09 Oct 2019 14:39:49 -0700 (PDT)
+X-GM-THRID: 8039524466688
+X-Received: by 10.236.30.41 with SMTP id j29mr45789728yha.28.1426233568116;
+        Fri, 13 Mar 2015 00:59:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:b7cd:: with SMTP id t13ls618564wre.5.gmail; Wed, 09 Oct
- 2019 14:39:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7d1HNSRRIrPxZtcujsL3CnOfphkBeuCKT84ckrA3RSxehk+O6SZ+ECemvAIAqf6YUoQoE
-X-Received: by 2002:a05:6000:112:: with SMTP id o18mr5037788wrx.323.1570657188334;
-        Wed, 09 Oct 2019 14:39:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570657188; cv=none;
-        d=google.com; s=arc-20160816;
-        b=C+jfDfeHy7IFF114HAPPa9iSogxlXr8duJUGjkB3vSLLW6v/424jsTSGc2zZEXmdfI
-         m0+Re75LwESXeilRMuCK5/6+0v2VOm/28ZnFRy7ly/ns9HlrRCvrldIib1aUVjLV/xTn
-         YXIDVr3TZTwPKp/IcVJyzT/baATFF7v0F8oFfRmMpT2sQNGbRoJS70kzT2YvtcTFRwcq
-         +FKBYJTEgH5mtPaj5+k4iGD+zesQwMuvL9vrvJ3jL9daBywXieCmkqP5OJVDmGQJMtKA
-         4p+0Alcl5gQqtXBBRbXV6Qf7IlQIXKtBiVayHt6Y7DAHn23N71uUK2ZzvXZXSKvIAT8M
-         2EKg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=tcMFZrYzkXthDN2tPL7urUoh2Atq6M3SFm7VW5KGajA=;
-        b=YgBEMDkdSQ5Ec8MEefCc3vp+onXO+TvcwSCFxOlnuM5U9IZVCG4kaRjn+kzST/ifzg
-         GXFY6r1yfWUzItDOwUpScl1LTDn7AKAIyT+WmFF+vSNhYgaaJg0HeOYbWe1PWPEUUVP5
-         jwg5SFvu+3rHihbYihonLTLWvegASG+is/f78dKiQ+rvBp+KXS3swOH1jSVxbujJH7uz
-         qpXum4+fndrRMUAUqhj1/QcMfgpZsHS3oBpmYudod3QGDP3mDZDaXiwZj6qT7h5hBRRY
-         YszJBGBYMG5RVcPBDVh3caf7gWxhNqgyvKn16eKaSR06ajmxdlzv/7PFu1jNU9/Senp8
-         su9g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="u/wm28kE";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id q185si148475wme.1.2019.10.09.14.39.48
+Received: by 10.107.29.148 with SMTP id d142ls1018303iod.53.gmail; Fri, 13 Mar
+ 2015 00:59:27 -0700 (PDT)
+X-Received: by 10.66.151.101 with SMTP id up5mr46836368pab.10.1426233567930;
+        Fri, 13 Mar 2015 00:59:27 -0700 (PDT)
+Return-Path: <iskaranth@gmail.com>
+Received: from mail-pd0-x234.google.com (mail-pd0-x234.google.com. [2607:f8b0:400e:c02::234])
+        by gmr-mx.google.com with ESMTPS id ri9si241181pdb.1.2015.03.13.00.59.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Oct 2019 14:39:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Mar 2015 00:59:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) client-ip=2607:f8b0:400e:c02::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="u/wm28kE";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id r5so4894131wrm.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 14:39:48 -0700 (PDT)
+       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) smtp.mail=iskaranth@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by pdjy10 with SMTP id y10so26874962pdj.12
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 00:59:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tcMFZrYzkXthDN2tPL7urUoh2Atq6M3SFm7VW5KGajA=;
-        b=u/wm28kEkru3TyprTgddW261vX/5XbEce1Ws5zmBXcfUf86jiP3Djy4kG4KxmxxUK9
-         S+zhx24CvvPULDAfFFD2kFVkW4DRwrjnX9utOwcH92CSl5YKmfbNg9XpeZF132H7zSYW
-         BgNF4fWC5tGSlU9/dumZWgq+xHME9yHEqQ5LBs9I9FhBY9TvNuOJt3NFpX7BInPeC3Hx
-         iIyzQvFQkqpJzQXd8VUBNbfbgnwvoxm3DgpbN5vkWBWOGw2Vuf/7MedZnz2h24lBEATp
-         oBEmCJ0XnLkbxX+hEmPpelZVHP1oH1/yqeMIo4rZze1m/qHEnHk0C+z734FNqo/EXXE9
-         mXdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tcMFZrYzkXthDN2tPL7urUoh2Atq6M3SFm7VW5KGajA=;
-        b=hfY6aBYVYaNdZwCIUQ2HWiTkftLdu2ASU5J19WEypaXnQ8uEaGLriE4qKA0OEObmv5
-         DS0zZQjwXFLLmU+x+dFdrNXss6k2HsFxsg70hFuAAC4MkYoBbmw8a7BPlIipcR8IebGQ
-         n3q1aFYbIsVu1wdg7jhFoHx26RrOD5N6UCVzyx0tykdsBrfwNpxST4iBPQZmcw3ch31U
-         Bi7ILdbgQeR/dkE71UAq718R1/DH7NKF2/MuSqfGySuiTRL0caup8uZSO8/Vh0qRMSZK
-         WePvAR1hxlAi/AOPddxartUTinuZbk7z8SBhr98z/mBj7aMy2io7cuWEih8IyKnL5azV
-         D+ng==
-X-Gm-Message-State: APjAAAU9PPBw7Fkn9putp0Xx603EH40C4TnL8rNT+k73XYzth19COErz
-	JqopUeSWJlxj3nq4CIBNUgR2ohDUbkQFD+8=
-X-Received: by 2002:adf:f2cc:: with SMTP id d12mr4943049wrp.105.1570657187704;
-        Wed, 09 Oct 2019 14:39:47 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.googlemail.com with ESMTPSA id a3sm6025741wmc.3.2019.10.09.14.39.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2019 14:39:46 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	GR-Linux-NIC-Dev@marvell.com,
-	netdev@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH v2] staging: qlge: correct  a misspelled word
-Date: Wed,  9 Oct 2019 22:39:36 +0100
-Message-Id: <20191009213936.11532-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references:in-reply-to
+         :references;
+        bh=elgB9iipzHbWWByH0W9n/x9JlU9rOaBWTWdJgMM63GY=;
+        b=CLTakZvkVKCELrAWXUx9+c31fk1/6dTxaYsSloBo86wT1cE3uokzeMP5GAlEdqkRl+
+         +yWOtrq9jvpot3hybxOZpdljB/pvJhnL782F4R8mwnem0LLb4z1gpBv+XJofQ0ePO9og
+         qEL6dXxURuwHMKS5Nc4VRUnS1Pjc0h5x9LCQyBzIZmQ2CmJ0KheurDO6Qgh3sYJVjkbY
+         6f2y+HxrpM3LcgTJzcOE8dI5Q/VCROM+muqRrcBdsdR+DzUi+tgUfJ/Ti+bQg5yEVITb
+         r5UJ47rx3t+FM9pR4Xk/JPeUrODzBE7QMs9+L16bAQpcaYZxrAz77BI8wqmSqvtjDP9C
+         NG5g==
+X-Received: by 10.66.187.97 with SMTP id fr1mr35936476pac.157.1426233567818;
+        Fri, 13 Mar 2015 00:59:27 -0700 (PDT)
+Return-Path: <iskaranth@gmail.com>
+Received: from localhost.localdomain ([222.117.133.143])
+        by mx.google.com with ESMTPSA id z4sm2017947pdi.90.2015.03.13.00.59.25
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 13 Mar 2015 00:59:26 -0700 (PDT)
+From: Supriya Karanth <iskaranth@gmail.com>
+To: iskaranth@gmail.com,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/3] staging: rtl8192u: remove break after return
+Date: Fri, 13 Mar 2015 16:58:42 +0900
+Message-Id: <b98a2ed15a2c632f64837822461bb0adf7a31c41.1426233142.git.iskaranth@gmail.com>
+X-Mailer: git-send-email 2.1.0
+In-Reply-To: <cover.1426233142.git.iskaranth@gmail.com>
+References: <cover.1426233142.git.iskaranth@gmail.com>
+In-Reply-To: <cover.1426233142.git.iskaranth@gmail.com>
+References: <cover.1426233142.git.iskaranth@gmail.com>
 
-Fix a misspelling of "several" detected by checkpatch
+Remove "break" statement after a "return" statement as
+it does not get executed.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+Found by checkpatch.pl - break is not useful after a goto
+or return
+
+Signed-off-by: Supriya Karanth <iskaranth@gmail.com>
 ---
- drivers/staging/qlge/qlge_dbg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
-index 5599525a19d5..28fc974ce982 100644
---- a/drivers/staging/qlge/qlge_dbg.c
-+++ b/drivers/staging/qlge/qlge_dbg.c
-@@ -354,7 +354,7 @@ static int ql_get_xgmac_regs(struct ql_adapter *qdev, u32 *buf,
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index 878086a..5106b60 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -2110,7 +2110,6 @@ ieee80211_rx_frame_softmac(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 		break;
+ 	default:
+ 		return -1;
+-		break;
+ 	}
  
- 	for (i = PAUSE_SRC_LO; i < XGMAC_REGISTER_END; i += 4, buf++) {
- 		/* We're reading 400 xgmac registers, but we filter out
--		 * serveral locations that are non-responsive to reads.
-+		 * several locations that are non-responsive to reads.
- 		 */
- 		if ((i == 0x00000114) ||
- 			(i == 0x00000118) ||
+ 	//dev_kfree_skb_any(skb);
 -- 
-2.21.0
+2.1.0
 
 
