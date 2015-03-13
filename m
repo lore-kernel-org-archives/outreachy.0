@@ -1,98 +1,78 @@
-X-GM-THRID: 9321477832704
-X-Received: by 10.112.130.70 with SMTP id oc6mr13754005lbb.13.1426879539461;
-        Fri, 20 Mar 2015 12:25:39 -0700 (PDT)
+X-GM-THRID: 8063106940928
+X-Received: by 10.112.202.227 with SMTP id kl3mr495823lbc.2.1426255148892;
+        Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.83.130 with SMTP id q2ls413325wiy.13.canary; Fri, 20 Mar
- 2015 12:25:39 -0700 (PDT)
-X-Received: by 10.180.80.35 with SMTP id o3mr1837158wix.0.1426879538589;
-        Fri, 20 Mar 2015 12:25:38 -0700 (PDT)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id na10si13386wic.0.2015.03.20.12.25.38
+Received: by 10.152.115.135 with SMTP id jo7ls450974lab.101.gmail; Fri, 13 Mar
+ 2015 06:59:08 -0700 (PDT)
+X-Received: by 10.112.41.131 with SMTP id f3mr7411371lbl.20.1426255148289;
+        Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
+        by gmr-mx.google.com with ESMTPS id sf8si125752wic.2.2015.03.13.06.59.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2015 12:25:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x229.google.com with SMTP id cc7so97254591wgb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 12:25:38 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wg0-x22e.google.com with SMTP id l2so23466225wgh.8
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=jzNXUdBR2nICsxg7TrHZarat9ZEQcxqk9BeMmLfvVLU=;
-        b=Q1p26m5g0fMnA+JTFJBCb3H4RbQ25EWEbibCwjH+byPYzx05drs1t44grIumedTp1p
-         WHf71UQV8BK85coIB2e4D4Eeu6iSETHb7fEygZR/lgZZ3LmCTC3kNFOTEvgjZir15dU1
-         eWaZRobtA6pg5g7dRzRaiBLZk9yj0pZmY4x2wDISTd8WYeYigzETy5YeAQcgSWxNZt0K
-         HOG+wYbij2Os68oHWso1985agW3wD/naFOGpjw8fk3ZQiG86UcohZhhWl/HbHqi0rfKu
-         Vb6A/R1+Jh8DaSJBoDRlokUhlkqydef/yYa8cGCHIvyodlCL6+L9Pab2S4KpGbJj3ZJV
-         NcHw==
-X-Received: by 10.194.19.10 with SMTP id a10mr166925156wje.153.1426879538501;
-        Fri, 20 Mar 2015 12:25:38 -0700 (PDT)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id cf12sm7613286wjb.10.2015.03.20.12.25.36
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Mar 2015 12:25:37 -0700 (PDT)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8188eu: Delete space
-Date: Fri, 20 Mar 2015 21:25:20 +0200
-Message-Id: <1426879520-31206-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:sender:in-reply-to:references:date:message-id:subject
+         :from:to:cc:content-type;
+        bh=d1QQ9MnYgQt2mzH8pafDiOHjC7wtpWF2PnM7f+T+Qq8=;
+        b=qdRjeTXkpOghcij1hO1fsl/3hczFmIna8OPR7//G1x4AgLZ9CwicUCzQO0qI2m7Dfo
+         GLVji4JnDp+aSBld6WVHZO7mjBjs6/nop+xYsdhsKayxtNzfbMuw5Ti9T4auhQwlAxpX
+         aIm7zgwoPY/MUkwQA4XYoaZI8+P/hfldfPP7bYDHnpSWQ2qV/Jp1nWRzott3AWKCWqz9
+         UkIpHg0/e8VZZM0rFb5BorOkHOFPiVfIM7R58IJBL9CMvYKnwbHFa+Z00VskML+0MJqZ
+         98QV+jZ87Vuivi/a3NKaI/yY1PR+nYm17sqGvbAY+NEthlP43f13mpZ7CJCoGAS05EM7
+         x9jA==
+MIME-Version: 1.0
+X-Received: by 10.180.83.129 with SMTP id q1mr66313985wiy.46.1426255148158;
+ Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
+Sender: daniel.baluta@gmail.com
+Received: by 10.28.139.211 with HTTP; Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
+In-Reply-To: <1426254366-27021-1-git-send-email-darshanapadmadas@gmail.com>
+References: <1426254366-27021-1-git-send-email-darshanapadmadas@gmail.com>
+Date: Fri, 13 Mar 2015 15:59:08 +0200
+X-Google-Sender-Auth: i8v5INeelJCoHaN9la5-kfCyULw
+Message-ID: <CAEnQRZD7zQdfX_uMa74dD1Od_ZKzuwtriu22tmjsKJxmif8KOg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] iio: Add ABI documentation for in_magn
+ offset and raw values
+From: Daniel Baluta <daniel.baluta@intel.com>
+To: Darshana Padmadas <darshanapadmadas@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Jonathan Cameron <jic23@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8
 
-Deleted spaces before ','.Because it is prohibited by the kernel coding style.
-Error found with checkpatch.pl
+On Fri, Mar 13, 2015 at 3:46 PM, Darshana Padmadas
+<darshanapadmadas@gmail.com> wrote:
+> This patch adds ABI documentation entries for in_magn_offset
+> and in_magn_raw. At least one user exists, mag3110 and
+> hid-sensor-magn-3d in drivers/iio/magnetometer.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ieee80211.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-index f2c3ca7..2a0f4ff 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-@@ -789,7 +789,7 @@ u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen)
-  *
-  * Returns: the address of the specific WPS attribute found, or NULL
-  */
--u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id , u8 *buf_attr, u32 *len_attr)
-+u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id, u8 *buf_attr, u32 *len_attr)
- {
- 	u8 *attr_ptr = NULL;
- 	u8 *target_attr_ptr = NULL;
-@@ -799,7 +799,7 @@ u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id , u8 *buf_at
- 		*len_attr = 0;
- 
- 	if ((wps_ie[0] != _VENDOR_SPECIFIC_IE_) ||
--	    (memcmp(wps_ie + 2, wps_oui , 4)))
-+	    (memcmp(wps_ie + 2, wps_oui, 4)))
- 		return attr_ptr;
- 
- 	/*  6 = 1(Element ID) + 1(Length) + 4(WPS OUI) */
-@@ -835,7 +835,7 @@ u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id , u8 *buf_at
-  *
-  * Returns: the address of the specific WPS attribute content found, or NULL
-  */
--u8 *rtw_get_wps_attr_content(u8 *wps_ie, uint wps_ielen, u16 target_attr_id , u8 *buf_content, uint *len_content)
-+u8 *rtw_get_wps_attr_content(u8 *wps_ie, uint wps_ielen, u16 target_attr_id, u8 *buf_content, uint *len_content)
- {
- 	u8 *attr_ptr;
- 	u32 attr_len;
-@@ -1239,7 +1239,7 @@ void rtw_get_bcn_info(struct wlan_network *pnetwork)
- 	} else {
- 		pnetwork->BcnInfo.encryp_protocol = ENCRYP_PROTOCOL_OPENSYS;
- 	}
--	rtw_get_sec_ie(pnetwork->network.IEs , pnetwork->network.IELength, NULL, &rsn_len, NULL, &wpa_len);
-+	rtw_get_sec_ie(pnetwork->network.IEs, pnetwork->network.IELength, NULL, &rsn_len, NULL, &wpa_len);
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_get_bcn_info: ssid =%s\n", pnetwork->network.Ssid.Ssid));
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_get_bcn_info: wpa_len =%d rsn_len =%d\n", wpa_len, rsn_len));
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_get_bcn_info: ssid =%s\n", pnetwork->network.Ssid.Ssid));
--- 
-1.9.1
+Because we have:
 
+* .modified field set to 1
+* .channel2 set to some modifier (e.g IIO_MOD_X)
+* info_mask_separate  set to IIO_CHAN_INFO_RAW
+
+resulting attributes will be of the form:
+
+* in_magn_x_raw, in_magn_y_raw, in_magn_z_raw etc.
+
+
+The patch looks good for offset attribute because in hid-sensor-magn-3d we have:
+* info_mask_shared_by_type set to IIO_CHAN_OFFSET.
+
+Please use the dummy driver to confirm this. And resend the patch keeping only
+the entry for offset.
+
+thanks,
+Daniel.
 
