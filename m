@@ -1,53 +1,49 @@
 X-GM-THRID: 8179991707648
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,5417eb996bb2acbb
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.150.115 with SMTP id uh19mr4496623wib.7.1426280421858;
-        Fri, 13 Mar 2015 14:00:21 -0700 (PDT)
+X-Received: by 10.194.201.10 with SMTP id jw10mr7596369wjc.3.1426280352049;
+        Fri, 13 Mar 2015 13:59:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.170.164 with SMTP id an4ls465508lac.19.gmail; Fri, 13 Mar
- 2015 14:00:21 -0700 (PDT)
-X-Received: by 10.112.199.69 with SMTP id ji5mr7489542lbc.0.1426280421225;
-        Fri, 13 Mar 2015 14:00:21 -0700 (PDT)
+Received: by 10.152.228.136 with SMTP id si8ls474646lac.11.gmail; Fri, 13 Mar
+ 2015 13:59:11 -0700 (PDT)
+X-Received: by 10.152.21.9 with SMTP id r9mr7585417lae.0.1426280351553;
+        Fri, 13 Mar 2015 13:59:11 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id i8si210797wif.1.2015.03.13.14.00.21
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id i8si210523wif.1.2015.03.13.13.59.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 14:00:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Fri, 13 Mar 2015 13:59:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wggx13 with SMTP id x13so25749736wgg.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 14:00:21 -0700 (PDT)
+Received: by mail-wi0-x233.google.com with SMTP id bs8so9032991wib.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 13:59:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Xi62Evc7u+1fJ2RNgZiyT3uadz9Hqhy4uzFjVyViRl0=;
-        b=ReDTwalO9310croKycrzW7/xJs2HoPXu6jICTW+ipuYk9yGlu0PUjB3gZOJekSZgKW
-         agaHTnsAsLrGQ/to/4//1zBgT90ibWpxYa43B3dwvpLpfGDfgRxGkGUJBQaJiBR2v4OV
-         V5wZeOCF5x39B2JQazlE03NbcoE22HZQGIzB0BCWkwoVhmJoCabuUNY8v+p/3g+nCHHe
-         eJBCmi7lbSBwZbRVfD+8rjupJJVrWTC44pRretxnUe5QTVLUaBNlQkYpBrGgBNLCrsUg
-         yN+f6duYiafcyQPqO4I7HVK3xFlAczZFFJaeI9WOJv8nhEVE6lW80Br+nmHVktrMSwyE
-         15zA==
-X-Received: by 10.180.104.66 with SMTP id gc2mr143244696wib.34.1426280421111;
-        Fri, 13 Mar 2015 14:00:21 -0700 (PDT)
+        bh=9+hKajTY0yPil5XAI5DLa62ptj7ArMG6AxrT/2iwg9Y=;
+        b=pqmociW6lw3XgxmUxYIG2OJrCv/ti8dKK2ntAooSvxMqPQhfWk24qZovASZmhwNHU2
+         d5cEAMiWzGfmVQRd+vcQzNqy7rou8rE1Fi1FpwNVr4yJ2ntIR5O6LHpwFAF8lMm+mXgT
+         veHoBM10psmsvk2w8IfGsWCcz+Lovhshhh49XayTicBYqDG5m4GztzSy5zens+rY9DC/
+         atdZOfd+XIK+UFh+xVLll/2ZWIWyoDqivoK7qRQiPIhTTXlKotbNxgKdyAIuyC+Fj25n
+         qxchMFkBm0LED8vaIwyBoDhCF6noxSVzd9qPioPMo/1d4rOvGjr462yuBtaLj6KQ6ujf
+         1r6A==
+X-Received: by 10.180.198.13 with SMTP id iy13mr69790029wic.7.1426280351445;
+        Fri, 13 Mar 2015 13:59:11 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneen-vb ([79.170.55.220])
-        by mx.google.com with ESMTPSA id hl8sm4326656wjb.38.2015.03.13.14.00.18
+        by mx.google.com with ESMTPSA id kr5sm4364152wjc.1.2015.03.13.13.59.09
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 14:00:19 -0700 (PDT)
+        Fri, 13 Mar 2015 13:59:10 -0700 (PDT)
 Received: by haneen-vb (Postfix, from userid 1000)
-	id BEA08C1F52; Fri, 13 Mar 2015 20:48:10 +0300 (AST)
+	id 50DF8C1F52; Fri, 13 Mar 2015 20:46:58 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 5/8] Staging: iio: Remove parentheses around right side an assignment
-Date: Fri, 13 Mar 2015 20:47:22 +0300
-Message-Id: <1426268842-7889-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 4/8] Staging: media: Remove parentheses around right side an assignment
+Date: Fri, 13 Mar 2015 20:46:57 +0300
+Message-Id: <1426268817-7841-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426268725-7786-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1426268725-7786-1-git-send-email-hamohammed.sa@gmail.com>
@@ -75,80 +71,93 @@ x = (E1 == E2);
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/iio/accel/adis16240_core.c | 2 +-
- drivers/staging/iio/light/tsl2x7x_core.c   | 4 ++--
- drivers/staging/iio/meter/ade7753.c        | 2 +-
- drivers/staging/iio/meter/ade7754.c        | 2 +-
- drivers/staging/iio/meter/ade7759.c        | 2 +-
- 5 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/media/bcm2048/radio-bcm2048.c | 8 ++++----
+ drivers/staging/media/lirc/lirc_parallel.c    | 4 ++--
+ drivers/staging/media/lirc/lirc_serial.c      | 2 +-
+ drivers/staging/media/mn88472/mn88472.c       | 2 +-
+ drivers/staging/media/mn88473/mn88473.c       | 2 +-
+ 5 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/iio/accel/adis16240_core.c b/drivers/staging/iio/accel/adis16240_core.c
-index 3f46086..e2f8aff 100644
---- a/drivers/staging/iio/accel/adis16240_core.c
-+++ b/drivers/staging/iio/accel/adis16240_core.c
-@@ -46,7 +46,7 @@ static ssize_t adis16240_spi_read_signed(struct device *dev,
- 	if (val & ADIS16240_ERROR_ACTIVE)
- 		adis_check_status(st);
+diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
+index 116251b..e941c33 100644
+--- a/drivers/staging/media/bcm2048/radio-bcm2048.c
++++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
+@@ -1448,8 +1448,8 @@ static void bcm2048_parse_rds_pi(struct bcm2048_device *bdev)
+ 		/* Block A match, only data without crc errors taken */
+ 		if (bdev->rds_info.radio_text[i] == BCM2048_RDS_BLOCK_A) {
  
--	val = ((s16)(val << shift) >> shift);
-+	val = (s16)(val << shift) >> shift;
- 	return sprintf(buf, "%d\n", val);
- }
+-			pi = ((bdev->rds_info.radio_text[i+1] << 8) +
+-				bdev->rds_info.radio_text[i+2]);
++			pi = (bdev->rds_info.radio_text[i+1] << 8) +
++				bdev->rds_info.radio_text[i+2];
  
-diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
-index 52f4e65..010e607 100644
---- a/drivers/staging/iio/light/tsl2x7x_core.c
-+++ b/drivers/staging/iio/light/tsl2x7x_core.c
-@@ -613,8 +613,8 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
- 		return lux_val;
- 	}
+ 			if (!bdev->rds_info.rds_pi) {
+ 				bdev->rds_info.rds_pi = pi;
+@@ -1503,8 +1503,8 @@ static int bcm2048_parse_rt_match_b(struct bcm2048_device *bdev, int i)
+ 	if ((bdev->rds_info.radio_text[i] & BCM2048_RDS_BLOCK_MASK) ==
+ 		BCM2048_RDS_BLOCK_B) {
  
--	gain_trim_val =  (((chip->tsl2x7x_settings.als_cal_target)
--			* chip->tsl2x7x_settings.als_gain_trim) / lux_val);
-+	gain_trim_val =  ((chip->tsl2x7x_settings.als_cal_target)
-+			* chip->tsl2x7x_settings.als_gain_trim) / lux_val;
- 	if ((gain_trim_val < 250) || (gain_trim_val > 4000))
- 		return -ERANGE;
+-		rt_id = (bdev->rds_info.radio_text[i+1] &
+-			BCM2048_RDS_BLOCK_MASK);
++		rt_id = bdev->rds_info.radio_text[i+1] &
++			BCM2048_RDS_BLOCK_MASK;
+ 		rt_group_b = bdev->rds_info.radio_text[i+1] &
+ 			BCM2048_RDS_GROUP_AB_MASK;
+ 		rt_ab = bdev->rds_info.radio_text[i+2] &
+diff --git a/drivers/staging/media/lirc/lirc_parallel.c b/drivers/staging/media/lirc/lirc_parallel.c
+index 19c5c21..99ff7c7 100644
+--- a/drivers/staging/media/lirc/lirc_parallel.c
++++ b/drivers/staging/media/lirc/lirc_parallel.c
+@@ -161,8 +161,8 @@ static unsigned int init_lirc_timer(void)
+ 			     || (now.tv_sec == tv.tv_sec
+ 				 && now.tv_usec < tv.tv_usec)));
  
-diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
-index 78e8f56..f828f5f 100644
---- a/drivers/staging/iio/meter/ade7753.c
-+++ b/drivers/staging/iio/meter/ade7753.c
-@@ -411,7 +411,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
+-	timeelapsed = ((now.tv_sec + 1 - tv.tv_sec)*1000000
+-		     + (now.tv_usec - tv.tv_usec));
++	timeelapsed = (now.tv_sec + 1 - tv.tv_sec)*1000000
++		     + (now.tv_usec - tv.tv_usec);
+ 	if (count >= 1000 && timeelapsed > 0) {
+ 		if (default_timer == 0) {
+ 			/* autodetect timer */
+diff --git a/drivers/staging/media/lirc/lirc_serial.c b/drivers/staging/media/lirc/lirc_serial.c
+index 9f55a83..9eae23b 100644
+--- a/drivers/staging/media/lirc/lirc_serial.c
++++ b/drivers/staging/media/lirc/lirc_serial.c
+@@ -838,7 +838,7 @@ static int lirc_serial_probe(struct platform_device *dev)
+ 				nhigh++;
+ 			msleep(40);
+ 		}
+-		sense = (nlow >= nhigh ? 1 : 0);
++		sense = nlow >= nhigh ? 1 : 0;
+ 		dev_info(&dev->dev, "auto-detected active %s receiver\n",
+ 			 sense ? "low" : "high");
+ 	} else
+diff --git a/drivers/staging/media/mn88472/mn88472.c b/drivers/staging/media/mn88472/mn88472.c
+index 6eebe56..2a68582 100644
+--- a/drivers/staging/media/mn88472/mn88472.c
++++ b/drivers/staging/media/mn88472/mn88472.c
+@@ -276,7 +276,7 @@ static int mn88472_init(struct dvb_frontend *fe)
+ 			remaining -= (dev->i2c_wr_max - 1)) {
+ 		len = remaining;
+ 		if (len > (dev->i2c_wr_max - 1))
+-			len = (dev->i2c_wr_max - 1);
++			len = dev->i2c_wr_max - 1;
  
- 	mutex_lock(&indio_dev->mlock);
+ 		ret = regmap_bulk_write(dev->regmap[0], 0xf6,
+ 				&fw->data[fw->size - remaining], len);
+diff --git a/drivers/staging/media/mn88473/mn88473.c b/drivers/staging/media/mn88473/mn88473.c
+index 197e2d0..5baeb03 100644
+--- a/drivers/staging/media/mn88473/mn88473.c
++++ b/drivers/staging/media/mn88473/mn88473.c
+@@ -243,7 +243,7 @@ static int mn88473_init(struct dvb_frontend *fe)
+ 			remaining -= (dev->i2c_wr_max - 1)) {
+ 		len = remaining;
+ 		if (len > (dev->i2c_wr_max - 1))
+-			len = (dev->i2c_wr_max - 1);
++			len = dev->i2c_wr_max - 1;
  
--	t = (27900 / val);
-+	t = 27900 / val;
- 	if (t > 0)
- 		t--;
- 
-diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
-index 81f6731..e7171b5 100644
---- a/drivers/staging/iio/meter/ade7754.c
-+++ b/drivers/staging/iio/meter/ade7754.c
-@@ -432,7 +432,7 @@ static ssize_t ade7754_write_frequency(struct device *dev,
- 
- 	mutex_lock(&indio_dev->mlock);
- 
--	t = (26000 / val);
-+	t = 26000 / val;
- 	if (t > 0)
- 		t--;
- 
-diff --git a/drivers/staging/iio/meter/ade7759.c b/drivers/staging/iio/meter/ade7759.c
-index 694e0ce..2d5f038 100644
---- a/drivers/staging/iio/meter/ade7759.c
-+++ b/drivers/staging/iio/meter/ade7759.c
-@@ -371,7 +371,7 @@ static ssize_t ade7759_write_frequency(struct device *dev,
- 
- 	mutex_lock(&indio_dev->mlock);
- 
--	t = (27900 / val);
-+	t = 27900 / val;
- 	if (t > 0)
- 		t--;
- 
+ 		ret = regmap_bulk_write(dev->regmap[0], 0xf6,
+ 					&fw->data[fw->size - remaining], len);
 -- 
 1.9.1
 
