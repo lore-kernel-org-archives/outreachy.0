@@ -1,100 +1,163 @@
-X-GM-THRID: 7642276691968
+X-GM-THRID: 8056516640768
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,707ef40c40c4af83,start
+X-Google-Thread: 9ca63f596c,b1f76547a2774d7b,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.66.236.74 with SMTP id us10mr13620364pac.28.1426055182995;
-        Tue, 10 Mar 2015 23:26:22 -0700 (PDT)
+X-Received: by 10.112.98.38 with SMTP id ef6mr6346443lbb.3.1426246175810;
+        Fri, 13 Mar 2015 04:29:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.197 with SMTP id y5ls339353igl.32.gmail; Tue, 10 Mar
- 2015 23:26:22 -0700 (PDT)
-X-Received: by 10.66.136.175 with SMTP id qb15mr24670434pab.11.1426055182673;
-        Tue, 10 Mar 2015 23:26:22 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pd0-x234.google.com (mail-pd0-x234.google.com. [2607:f8b0:400e:c02::234])
-        by gmr-mx.google.com with ESMTPS id ri9si543272pdb.1.2015.03.10.23.26.22
+Received: by 10.180.87.72 with SMTP id v8ls132220wiz.15.gmail; Fri, 13 Mar
+ 2015 04:29:35 -0700 (PDT)
+X-Received: by 10.180.81.134 with SMTP id a6mr1299926wiy.1.1426246175433;
+        Fri, 13 Mar 2015 04:29:35 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wg0-x230.google.com (mail-wg0-x230.google.com. [2a00:1450:400c:c00::230])
+        by gmr-mx.google.com with ESMTPS id c8si87409wiw.1.2015.03.13.04.29.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 23:26:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) client-ip=2607:f8b0:400e:c02::234;
+        Fri, 13 Mar 2015 04:29:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) client-ip=2a00:1450:400c:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::230 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbfl12 with SMTP id fl12so8577759pdb.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 23:26:22 -0700 (PDT)
+Received: by mail-wg0-x230.google.com with SMTP id a1so22667770wgh.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 04:29:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=EA+zrzQrXq/DJWtaWWzkt9/d3F0WUXK7p9kYmCupfK0=;
-        b=f0ZSUdFnNutM/evb8LNLtyNHDvtM51XQJjtol3UefI+lXfNqSEFoBLmdaq84aYBQZE
-         jEjK4b97f9ckw85B/dCqEuv7zvgbW6jRnwyduuCJkAdIWZApAHjcWX+eWCNhhQj1wgP5
-         cIQcKCOsML2W+q3WesL8h9h499oAmQWQR/52xhdwxEywf4Df9NBXewpMT9HyMzFFSmSI
-         S+Qb810NxEEiYs/4jidpyzewDG4SlRSHXht7rO1jxePvZZG0EBSZCGIu7huJvpw0N2Vz
-         i3uZud1JnSgExw+c0Zt+dEQnxrITycEo+48TTNrUMPSuBCvzC0OdP7FKv6/D31T0mVCx
-         Cs2g==
-X-Received: by 10.66.182.166 with SMTP id ef6mr73821009pac.77.1426055182565;
-        Tue, 10 Mar 2015 23:26:22 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([106.66.86.3])
-        by mx.google.com with ESMTPSA id ht2sm4151221pdb.23.2015.03.10.23.26.18
+        bh=h518b8RW4ZJ1idsqtHtnbTmoM7zNXFepvOWtAheifsE=;
+        b=yPoY5y0lbwpmw6vQBsPB+hoyowAI64DuNKlgpeNzFQwVYQzpfRnT4omjfHmzbXZBSf
+         bJZQmg6V7Peafks8TmEad9J6z1mAz7jK8pGNDQPBhVHg+2atiCK/EPs7GySbyisdrfnh
+         6x8kh8qTqjJfgBHGbVICZqWDGORVWB05Ho/TxaX3SIlA8bBVK7744t7s5sIlbCmuhz3A
+         yKwMwnNZtUaaeJofGgaDkBTSZpKROErZcSYWJl0uIktP+eB8+yIz4/x7QNWR/NFEERzd
+         9RxHJVXK/EMr8e1eqS2vpmaksLpMnjaO9SySHVx2RtBZEoHYBH+q9wHd2hgYtHZi8NQo
+         1Grg==
+X-Received: by 10.180.89.227 with SMTP id br3mr47452125wib.67.1426246175323;
+        Fri, 13 Mar 2015 04:29:35 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneen-vb ([79.170.55.220])
+        by mx.google.com with ESMTPSA id ch6sm2433697wjc.3.2015.03.13.04.29.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 23:26:21 -0700 (PDT)
-Date: Wed, 11 Mar 2015 11:56:10 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
+        Fri, 13 Mar 2015 04:29:34 -0700 (PDT)
+Date: Fri, 13 Mar 2015 14:29:30 +0300
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH] Staging: rtl8192u: Convert use of __constant_<foo> to
- <foo>
-Message-ID: <20150311062609.GA32599@vaishali-Ideapad-Z570>
+Subject: [PATCH] Staging: comedi: Remove parentheses around right side
+ assignment
+Message-ID: <20150313112930.GA2597@haneen-vb>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Using functions of the form __constant_<foo> isn't preferred
-outside of include/uapi/ as using the function without
-__constant_ is identical when the argument is a constant.
-So, this patch replaces __constant_htons with htons.
+Parentheses are not needed around the right hand side of an assignment.
+This patch remove parenthese of such occurences. Issue was detected and
+solved using the following coccinelle script:
 
-This is done using Coccinelle and semantic patch used for
-this is as follows:
-
-@@identifier x;@@
+@rule1@
+identifier x, y, z;
+expression E1, E2;
+@@
 
 (
-- __constant_htons(x)
-+ htons(x)
+x = (y == z);
 |
-- __constant_htonl(x)
-+ htonl(x)
+x = (E1 == E2);
 |
-- __constant_ntohs(x)
-+ htons(x)
-|
-- __constant_ntohl(x)
-+ htonl(x)
+ x =
+-(
+...
+-)
+ ;
 )
 
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/comedi/drivers/addi_apci_3501.c | 4 ++--
+ drivers/staging/comedi/drivers/ni_mio_common.c  | 8 ++++----
+ drivers/staging/comedi/drivers/serial2002.c     | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index d2c2fb8..bd74510 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -55,7 +55,7 @@ static inline void ieee80211_monitor_rx(struct ieee80211_device *ieee,
+diff --git a/drivers/staging/comedi/drivers/addi_apci_3501.c b/drivers/staging/comedi/drivers/addi_apci_3501.c
+index b8f3366..babbdff 100644
+--- a/drivers/staging/comedi/drivers/addi_apci_3501.c
++++ b/drivers/staging/comedi/drivers/addi_apci_3501.c
+@@ -270,7 +270,7 @@ static irqreturn_t apci3501_interrupt(int irq, void *d)
  
- 	skb_pull(skb, ieee80211_get_hdrlen(fc));
- 	skb->pkt_type = PACKET_OTHERHOST;
--	skb->protocol = __constant_htons(ETH_P_80211_RAW);
-+	skb->protocol = htons(ETH_P_80211_RAW);
- 	memset(skb->cb, 0, sizeof(skb->cb));
- 	netif_rx(skb);
+ 	/*  Disable Interrupt */
+ 	ul_Command1 = inl(dev->iobase + APCI3501_TIMER_CTRL_REG);
+-	ul_Command1 = (ul_Command1 & 0xFFFFF9FDul);
++	ul_Command1 = ul_Command1 & 0xFFFFF9FDul;
+ 	outl(ul_Command1, dev->iobase + APCI3501_TIMER_CTRL_REG);
+ 
+ 	ui_Timer_AOWatchdog = inl(dev->iobase + APCI3501_TIMER_IRQ_REG) & 0x1;
+@@ -282,7 +282,7 @@ static irqreturn_t apci3501_interrupt(int irq, void *d)
+ 	/* Enable Interrupt Send a signal to from kernel to user space */
+ 	send_sig(SIGIO, devpriv->tsk_Current, 0);
+ 	ul_Command1 = inl(dev->iobase + APCI3501_TIMER_CTRL_REG);
+-	ul_Command1 = ((ul_Command1 & 0xFFFFF9FDul) | 1 << 1);
++	ul_Command1 = (ul_Command1 & 0xFFFFF9FDul) | 1 << 1;
+ 	outl(ul_Command1, dev->iobase + APCI3501_TIMER_CTRL_REG);
+ 	inl(dev->iobase + APCI3501_TIMER_STATUS_REG);
+ 
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index 42fdedd..ecfd0544 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -1360,7 +1360,7 @@ static void get_last_sample_611x(struct comedi_device *dev)
+ 	/* Check if there's a single sample stuck in the FIFO */
+ 	if (ni_readb(dev, XXX_Status) & 0x80) {
+ 		dl = ni_readl(dev, ADC_FIFO_Data_611x);
+-		data = (dl & 0xffff);
++		data = dl & 0xffff;
+ 		comedi_buf_write_samples(s, &data, 1);
+ 	}
  }
+@@ -1871,7 +1871,7 @@ static void ni_m_series_load_channelgain_list(struct comedi_device *dev,
+ 		chan = CR_CHAN(list[0]);
+ 		range = CR_RANGE(list[0]);
+ 		range_code = ni_gainlkup[board->gainlkup][range];
+-		dither = ((list[0] & CR_ALT_FILTER) != 0);
++		dither = (list[0] & CR_ALT_FILTER) != 0;
+ 		bypass_bits = MSeries_AI_Bypass_Config_FIFO_Bit;
+ 		bypass_bits |= chan;
+ 		bypass_bits |=
+@@ -1895,7 +1895,7 @@ static void ni_m_series_load_channelgain_list(struct comedi_device *dev,
+ 		chan = CR_CHAN(list[i]);
+ 		aref = CR_AREF(list[i]);
+ 		range = CR_RANGE(list[i]);
+-		dither = ((list[i] & CR_ALT_FILTER) != 0);
++		dither = (list[i] & CR_ALT_FILTER) != 0;
+ 
+ 		range_code = ni_gainlkup[board->gainlkup][range];
+ 		devpriv->ai_offset[i] = 0;
+@@ -2021,7 +2021,7 @@ static void ni_load_channelgain_list(struct comedi_device *dev,
+ 			chan = CR_CHAN(list[i]);
+ 		aref = CR_AREF(list[i]);
+ 		range = CR_RANGE(list[i]);
+-		dither = ((list[i] & CR_ALT_FILTER) != 0);
++		dither = (list[i] & CR_ALT_FILTER) != 0;
+ 
+ 		/* fix the external/internal range differences */
+ 		range = ni_gainlkup[board->gainlkup][range];
+diff --git a/drivers/staging/comedi/drivers/serial2002.c b/drivers/staging/comedi/drivers/serial2002.c
+index 482a2a8..ad35ed6 100644
+--- a/drivers/staging/comedi/drivers/serial2002.c
++++ b/drivers/staging/comedi/drivers/serial2002.c
+@@ -143,8 +143,8 @@ static void serial2002_tty_read_poll_wait(struct file *f, int timeout)
+ 			break;
+ 		}
+ 		do_gettimeofday(&now);
+-		elapsed = (1000000 * (now.tv_sec - start.tv_sec) +
+-			  now.tv_usec - start.tv_usec);
++		elapsed = 1000000 * (now.tv_sec - start.tv_sec) +
++			  now.tv_usec - start.tv_usec;
+ 		if (elapsed > timeout)
+ 			break;
+ 		set_current_state(TASK_INTERRUPTIBLE);
 -- 
 1.9.1
 
