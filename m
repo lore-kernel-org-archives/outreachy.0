@@ -1,47 +1,47 @@
 X-GM-THRID: 7913154281472
-X-Received: by 10.236.41.73 with SMTP id g49mr55738322yhb.57.1426275247433;
-        Fri, 13 Mar 2015 12:34:07 -0700 (PDT)
+X-Received: by 10.66.162.137 with SMTP id ya9mr47508616pab.47.1426275242609;
+        Fri, 13 Mar 2015 12:34:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.150.74 with SMTP id y71ls1123659iod.78.gmail; Fri, 13 Mar
- 2015 12:34:07 -0700 (PDT)
-X-Received: by 10.66.100.198 with SMTP id fa6mr50328749pab.31.1426275247209;
-        Fri, 13 Mar 2015 12:34:07 -0700 (PDT)
+Received: by 10.50.79.137 with SMTP id j9ls331948igx.39.gmail; Fri, 13 Mar
+ 2015 12:34:02 -0700 (PDT)
+X-Received: by 10.66.151.101 with SMTP id up5mr49694520pab.10.1426275242090;
+        Fri, 13 Mar 2015 12:34:02 -0700 (PDT)
 Return-Path: <somyaanand214@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id gb13si515575pac.2.2015.03.13.12.34.07
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id gb13si515283pac.2.2015.03.13.12.34.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 12:34:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Fri, 13 Mar 2015 12:34:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mail=somyaanand214@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id li10so31815556pab.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 12:34:07 -0700 (PDT)
+Received: by mail-pa0-x235.google.com with SMTP id lj1so31700883pab.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 12:34:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=ooswtx4MRxQ9fuM34ch9oQXM5vbQCht9HLcBc/24rcI=;
-        b=YPN+3fKtOtjcI+BFyus5lyg74r0TZeo1l/yQ28KUfAlefQ8Zrc0Ae2cvt3sB1NxKOK
-         pTniObYe7IbFMdd+yHe3gha1qP9lefUv9SPHhbv+yzUAuzrcIRt2eCrJAq84Lz1hFDYl
-         eyFewlBgE5/noTu2j55ltvfURH79qsO5hkU36JkqCJ3wTh8S0i86smVxiIQR45g+z1sZ
-         j/vFmvxMHO7bXfC3jZ+ipB/KdJEdxfVd/GYIjAAp/MojW4/cBUk1/mSLhtntA5mRCfd7
-         P7AQNZ+c6uWKU3dkK0dJhn4ljpTwx0uZ+t2KffAvTgAsI9qmvDYcZl9fstJJGWD8+CfB
-         B66g==
-X-Received: by 10.66.136.17 with SMTP id pw17mr106924647pab.33.1426275247075;
-        Fri, 13 Mar 2015 12:34:07 -0700 (PDT)
+        bh=XI1ignxIt04hJ6ib1L/vPwE1ia/gaJh4uNLHXCsadjY=;
+        b=rGflpVj/daSW7AnBMoHKuGSGtJrYmV5ZqHr1lMoUaK6hnjvcOA6NcXxERoeM6niiTq
+         ay7OcdPe91KhhsCEp2OoDaassodwinv9BQPDcc5RUyVLtniPY4wAZhtjDY4ngDSn1wOh
+         ZrXcuaTK76tEGlL8G0KaD27ZvbvtQv2VFsddskmy2iXSrfFk5/rQLr8uMt+bMD9EYVMD
+         u6tjOLapEp8IBMwKK5y92szCp5UCy+zh9PDTUe132n5ZbqQkMkTKvwJtR7THcRouBs5a
+         SvkFm5UrXv70r9N/yp2PxOeAuUp8FomKO7zWSFr29I6hcTp9RbKCJKM2xzIK5UtHLC5z
+         Tozg==
+X-Received: by 10.67.7.102 with SMTP id db6mr105837320pad.14.1426275242028;
+        Fri, 13 Mar 2015 12:34:02 -0700 (PDT)
 Return-Path: <somyaanand214@gmail.com>
 Received: from localhost.localdomain ([182.66.44.252])
-        by mx.google.com with ESMTPSA id j5sm4777540pdo.60.2015.03.13.12.34.02
+        by mx.google.com with ESMTPSA id j5sm4777540pdo.60.2015.03.13.12.33.56
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 13 Mar 2015 12:34:06 -0700 (PDT)
+        Fri, 13 Mar 2015 12:34:01 -0700 (PDT)
 From: Somya Anand <somyaanand214@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Somya Anand <somyaanand214@gmail.com>
-Subject: [PATCH v2  3/4] Staging: gdm72xx: Iterate list using list_for_each_entry
-Date: Sat, 14 Mar 2015 01:03:09 +0530
-Message-Id: <1426275190-9883-3-git-send-email-somyaanand214@gmail.com>
+Subject: [PATCH v2  2/4] Staging: emxx_udc: Iterate list using list_for_each_entry
+Date: Sat, 14 Mar 2015 01:03:08 +0530
+Message-Id: <1426275190-9883-2-git-send-email-somyaanand214@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426275190-9883-1-git-send-email-somyaanand214@gmail.com>
 References: <1426275190-9883-1-git-send-email-somyaanand214@gmail.com>
@@ -97,27 +97,23 @@ Changes since v1:
  * used improved coccinelle script.
  * reword commit message.
  
- drivers/staging/gdm72xx/gdm_wimax.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/emxx_udc/emxx_udc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/gdm72xx/gdm_wimax.c b/drivers/staging/gdm72xx/gdm_wimax.c
-index 9cab54b..32fe93b 100644
---- a/drivers/staging/gdm72xx/gdm_wimax.c
-+++ b/drivers/staging/gdm72xx/gdm_wimax.c
-@@ -129,11 +129,11 @@ static void __gdm_wimax_event_send(struct work_struct *work)
- 	int idx;
- 	unsigned long flags;
- 	struct evt_entry *e;
-+	struct evt_entry *tmp;
+diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+index 35dc1c4..561d47e 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.c
++++ b/drivers/staging/emxx_udc/emxx_udc.c
+@@ -2229,8 +2229,7 @@ static int _nbu2ss_nuke(struct nbu2ss_udc *udc,
+ 		return 0;
  
- 	spin_lock_irqsave(&wm_event.evt_lock, flags);
+ 	/* called with irqs blocked */
+-	while (!list_empty(&ep->queue)) {
+-		req = list_entry(ep->queue.next, struct nbu2ss_req, queue);
++	list_for_each_entry(req, &ep->queue, queue) {
+ 		_nbu2ss_ep_done(ep, req, status);
+ 	}
  
--	while (!list_empty(&wm_event.evtq)) {
--		e = list_entry(wm_event.evtq.next, struct evt_entry, list);
-+	list_for_each_entry_safe(e, tmp, &wm_event.evtq, list) {
- 		spin_unlock_irqrestore(&wm_event.evt_lock, flags);
- 
- 		if (sscanf(e->dev->name, "wm%d", &idx) == 1)
 -- 
 1.9.1
 
