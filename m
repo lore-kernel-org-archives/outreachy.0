@@ -1,78 +1,89 @@
 X-GM-THRID: 8063106940928
-X-Received: by 10.112.202.227 with SMTP id kl3mr495823lbc.2.1426255148892;
-        Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,7fd4eea76392c31c,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.66.97.97 with SMTP id dz1mr45069300pab.2.1426254373849;
+        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.115.135 with SMTP id jo7ls450974lab.101.gmail; Fri, 13 Mar
- 2015 06:59:08 -0700 (PDT)
-X-Received: by 10.112.41.131 with SMTP id f3mr7411371lbl.20.1426255148289;
-        Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id sf8si125752wic.2.2015.03.13.06.59.08
+Received: by 10.182.128.168 with SMTP id np8ls606496obb.6.gmail; Fri, 13 Mar
+ 2015 06:46:13 -0700 (PDT)
+X-Received: by 10.182.251.231 with SMTP id zn7mr51636088obc.24.1426254373517;
+        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
+Return-Path: <darshanapadmadas@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id ri9si375232pdb.1.2015.03.13.06.46.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=daniel.baluta@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id l2so23466225wgh.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
+       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id eu11so29704998pac.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:sender:in-reply-to:references:date:message-id:subject
-         :from:to:cc:content-type;
-        bh=d1QQ9MnYgQt2mzH8pafDiOHjC7wtpWF2PnM7f+T+Qq8=;
-        b=qdRjeTXkpOghcij1hO1fsl/3hczFmIna8OPR7//G1x4AgLZ9CwicUCzQO0qI2m7Dfo
-         GLVji4JnDp+aSBld6WVHZO7mjBjs6/nop+xYsdhsKayxtNzfbMuw5Ti9T4auhQwlAxpX
-         aIm7zgwoPY/MUkwQA4XYoaZI8+P/hfldfPP7bYDHnpSWQ2qV/Jp1nWRzott3AWKCWqz9
-         UkIpHg0/e8VZZM0rFb5BorOkHOFPiVfIM7R58IJBL9CMvYKnwbHFa+Z00VskML+0MJqZ
-         98QV+jZ87Vuivi/a3NKaI/yY1PR+nYm17sqGvbAY+NEthlP43f13mpZ7CJCoGAS05EM7
-         x9jA==
-MIME-Version: 1.0
-X-Received: by 10.180.83.129 with SMTP id q1mr66313985wiy.46.1426255148158;
- Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
-Sender: daniel.baluta@gmail.com
-Received: by 10.28.139.211 with HTTP; Fri, 13 Mar 2015 06:59:08 -0700 (PDT)
-In-Reply-To: <1426254366-27021-1-git-send-email-darshanapadmadas@gmail.com>
-References: <1426254366-27021-1-git-send-email-darshanapadmadas@gmail.com>
-Date: Fri, 13 Mar 2015 15:59:08 +0200
-X-Google-Sender-Auth: i8v5INeelJCoHaN9la5-kfCyULw
-Message-ID: <CAEnQRZD7zQdfX_uMa74dD1Od_ZKzuwtriu22tmjsKJxmif8KOg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] iio: Add ABI documentation for in_magn
- offset and raw values
-From: Daniel Baluta <daniel.baluta@intel.com>
-To: Darshana Padmadas <darshanapadmadas@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Jonathan Cameron <jic23@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>
-Content-Type: text/plain; charset=UTF-8
+        h=from:to:cc:subject:date:message-id:content-type
+         :content-transfer-encoding;
+        bh=wlO7FzwMNQZ7QN8Sedbs+rHzFcCs2bkC5zL2/Bk9bAs=;
+        b=mu4a+X0nkkZ92Y4PdC7/knBZmtzRfYKYRzFg7JUjEkf5LzpwDiFRtJ+NWBkVxn4I2X
+         4QuPTRnglauM9riHiC+xadNXi/9tBvFkDm+VKRDQkGrsKLF0mZpJrYqESdxjW8Mr1m4F
+         mVReWFWltLARtdAHddcC4tTntBQ5aOJV16vXb0wG2UnTL9WXgiP4edPCsgdvrFIxh2mC
+         r2ri3eZoNqx8JiBJTS7ieJWkesN790VneR0Rw3i9NhOlvsdkCheuf45fVJgw8lT3wkpj
+         H/To4BMcPOjlmkhzPHUEe18YspPKzgZKVhX4J7c5FGpA6X84A37zH2MINzyizfY+ThSY
+         iqXQ==
+X-Received: by 10.66.101.35 with SMTP id fd3mr104285849pab.50.1426254373376;
+        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
+Return-Path: <darshanapadmadas@gmail.com>
+Received: from localhost ([182.19.48.18])
+        by mx.google.com with ESMTPSA id bt2sm3709699pad.12.2015.03.13.06.46.11
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 13 Mar 2015 06:46:12 -0700 (PDT)
+From: Darshana Padmadas <darshanapadmadas@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: jic23@kernel.org,
+	gregkh@linuxfoundation.org,
+	linux-iio@vger.kernel.org,
+	Darshana Padmadas <darshanapadmadas@gmail.com>
+Subject: [PATCH] iio: Add ABI documentation for in_magn offset and raw values
+Date: Fri, 13 Mar 2015 19:16:06 +0530
+Message-Id: <1426254366-27021-1-git-send-email-darshanapadmadas@gmail.com>
+X-Mailer: git-send-email 1.9.1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 
-On Fri, Mar 13, 2015 at 3:46 PM, Darshana Padmadas
-<darshanapadmadas@gmail.com> wrote:
-> This patch adds ABI documentation entries for in_magn_offset
-> and in_magn_raw. At least one user exists, mag3110 and
-> hid-sensor-magn-3d in drivers/iio/magnetometer.
+This patch adds ABI documentation entries for in_magn_offset
+and in_magn_raw. At least one user exists, mag3110 and
+hid-sensor-magn-3d in drivers/iio/magnetometer.
 
-Hi,
+Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
+---
+ Documentation/ABI/testing/sysfs-bus-iio | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Because we have:
+diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
+index 9a70c31..37564cb 100644
+--- a/Documentation/ABI/testing/sysfs-bus-iio
++++ b/Documentation/ABI/testing/sysfs-bus-iio
+@@ -177,6 +177,7 @@ Description:
+ 		arbitrarily assigned). Data converted by application of offset
+ 		and scale to degrees.
+ 
++What:		/sys/bus/iio/devices/iio:deviceX/in_magn_raw
+ What:		/sys/bus/iio/devices/iio:deviceX/in_magn_x_raw
+ What:		/sys/bus/iio/devices/iio:deviceX/in_magn_y_raw
+ What:		/sys/bus/iio/devices/iio:deviceX/in_magn_z_raw
+@@ -253,6 +254,7 @@ What:		/sys/bus/iio/devices/iio:deviceX/in_temp_offset
+ What:		/sys/bus/iio/devices/iio:deviceX/in_pressureY_offset
+ What:		/sys/bus/iio/devices/iio:deviceX/in_pressure_offset
+ What:		/sys/bus/iio/devices/iio:deviceX/in_humidityrelative_offset
++What:		/sys/bus/iio/devices/iio:deviceX/in_magn_offset
+ KernelVersion:	2.6.35
+ Contact:	linux-iio@vger.kernel.org
+ Description:
+-- 
+1.9.1
 
-* .modified field set to 1
-* .channel2 set to some modifier (e.g IIO_MOD_X)
-* info_mask_separate  set to IIO_CHAN_INFO_RAW
-
-resulting attributes will be of the form:
-
-* in_magn_x_raw, in_magn_y_raw, in_magn_z_raw etc.
-
-
-The patch looks good for offset attribute because in hid-sensor-magn-3d we have:
-* info_mask_shared_by_type set to IIO_CHAN_OFFSET.
-
-Please use the dummy driver to confirm this. And resend the patch keeping only
-the entry for offset.
-
-thanks,
-Daniel.
 
