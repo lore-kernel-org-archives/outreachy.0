@@ -1,119 +1,113 @@
-X-GM-THRID: 6661069764566188032
-X-Received: by 2002:a24:3911:: with SMTP id l17mr1219884ita.40.1550901160684;
-        Fri, 22 Feb 2019 21:52:40 -0800 (PST)
+X-GM-THRID: 8297812852736
+X-Received: by 10.194.201.10 with SMTP id jw10mr8050931wjc.3.1426346544682;
+        Sat, 14 Mar 2015 08:22:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3b69:: with SMTP id i41ls988760jaf.3.gmail; Fri, 22 Feb
- 2019 21:52:39 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbVkGD2oai+AaUeftjLvonPfJGMGOOx1rjd0Op9z49nNlxohlgIrEv+oO8RSe3EhYWKf4p1
-X-Received: by 2002:a02:6614:: with SMTP id k20mr1135418jac.24.1550901159783;
-        Fri, 22 Feb 2019 21:52:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550901159; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ryVbZBCk7A2byUsBSTPCPt9JcXbTIF+ZeiPYU05CTsu6Typs2rd/yu826wp326NIEp
-         etiGeutd86Gv1xf1G3al2PAqEFHcbheJ9IZUWfVkIPNwe9kSS9kHjyLLc31MjImav4CQ
-         E6pdoLtERdgT6JkzY0IX6JS20ATTU4aU/AFoS56AUQHSyxnDD6jF5uTL3Cn+luMdJT+K
-         rYPE7O2bbqOJXG2XLxEMEdOo+UVrPTonk8OdCjqT3Dt1nWphrDmjBwS0DLZIYlj1x4sn
-         +DD79juj0l5z/ckFPeJaKU6HsL8zcIAbmA21ia1pNhNk1fcxsXqwsAjHFBCnjogS5jLZ
-         nctg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Fxkl+IeiJ2E9q62tBSU4A5ydlQQ1TQcOzS73INYuwTw=;
-        b=nIZeZE+yn5KV10ZyqonMOfSvrI5py0JQ8PIqdFX8sDZNevZuRxQeyW8jcIRqEmpobf
-         i2c4vMaCdHrmovFRDEylmV9vOS0u4g03zJhHss2Ef1MQWkNZBv9abkNiHt8OQoQl6jcU
-         8PR4PSpsQZ3slSDzqUv4Ki2mb9+2rdy3a0qLeAQ1roGPPbkjsiKylRLsyAlf4g2+D4GU
-         /dxP//v98AhaIoI9JXevMmAsgq+FzpoN7XOn1EQypGbxRdnANYUr0tOydHz1fSwAEdoc
-         chIkP5Kz9OpT3dXR8SdxSwmXrTNtfT475I2MxZy6Oyt/FpCYc51OKtV7JZV5Ev2Wib17
-         5vuw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SPnzEOE7;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id c191si183914itc.1.2019.02.22.21.52.39
+Received: by 10.153.6.33 with SMTP id cr1ls441585lad.47.gmail; Sat, 14 Mar
+ 2015 08:22:24 -0700 (PDT)
+X-Received: by 10.152.21.9 with SMTP id r9mr8037150lae.0.1426346544095;
+        Sat, 14 Mar 2015 08:22:24 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id el6si340875wib.0.2015.03.14.08.22.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 21:52:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 14 Mar 2015 08:22:24 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SPnzEOE7;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id y10so2058464plp.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 21:52:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Fxkl+IeiJ2E9q62tBSU4A5ydlQQ1TQcOzS73INYuwTw=;
-        b=SPnzEOE7c6qphYjCG6yuUeZVD2PsH2jzAlpmsry85+A48ZB7L1MYJyLQE3cvZBuH8+
-         onfgdekkx2SGmOOQACfPJZYMaNx6ojJIp301BKWDOrasI3LX24lBrMNJa3+0InIQNSzx
-         XDpyhBIz80XOpHG3opO2J+a72h/Np8dX+mYA5D5+Fl8b6Jb/l5K8H5lzyAfHvDlksvhY
-         RN4/kv6NOgutIdDDJTq9VmFbryDGYH1mc3U4Zx0mKwQyQA93n62eyxwfaNWGFfs3hit7
-         U2GtmDXKy65aPTIIYCV+9ce3JL0hwLLPYA0p3ho0lCu89PRQmy+9zwqvJTJ0tTDfEWbj
-         A6Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Fxkl+IeiJ2E9q62tBSU4A5ydlQQ1TQcOzS73INYuwTw=;
-        b=orUKTonba8G8PUeOLM+Nbqp2D3WZb/oTVwHDnKGb3ioXet6fSbUf2Au8FGPXDW6t3q
-         Oo18gFVqXrrISicLgtD2ayAc2ANonCfJ9bKg3kKTc73wG1BQS7K8vIo4KRt70uPO7o7E
-         ulOcchWOerh4Zg8Y4pNLWt14NaJu9MO8mbMPVnjshhObMbcSd7Y9y1JTZCgc579N+cAI
-         97QFj/aq/LMHsJUP8MelC7mmf4++SwUc8zIX5VCOXjKccoo9SjjW7/Wd3IeLHBcwAYm5
-         Iwmfdj04pIGYge0RpBX8dtFfhmopghhFh3H+OzckDt58hhTm+Hei8P0NlCqe2xCeWppB
-         qt/Q==
-X-Gm-Message-State: AHQUAuZmqIuixmn/Wf1+ORo0JOA3KaYnC+ZYTsxFvRuwpTkaLWGtHGpS
-	TEZE1MCw34fn0FQVRpnFOtmxqkxV008=
-X-Received: by 2002:a17:902:708b:: with SMTP id z11mr7925879plk.203.1550901158858;
-        Fri, 22 Feb 2019 21:52:38 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([2401:4900:16b2:4a74:49f0:95a6:ee9:3324])
-        by smtp.googlemail.com with ESMTPSA id s2sm6243190pfa.167.2019.02.22.21.52.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 21:52:38 -0800 (PST)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Bhanusree Pola <bhanusreemahesh@gmail.com>
-Subject: [PATCH v2] Staging: gasket: Replaces symbolic permissions
-Date: Sat, 23 Feb 2019 11:22:07 +0530
-Message-Id: <20190223055207.3792-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,400,1422918000"; 
+   d="scan'208";a="103340237"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Mar 2015 16:22:23 +0100
+Date: Sat, 14 Mar 2015 16:22:18 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Supriya Karanth <iskaranth@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: remove parantheses
+ from return statements
+In-Reply-To: <1426337711-32548-1-git-send-email-iskaranth@gmail.com>
+Message-ID: <alpine.DEB.2.10.1503141622000.2461@hadrien>
+References: <1426337711-32548-1-git-send-email-iskaranth@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Replaces Symbolic Permissions with Octal Permission which solves the
-checkpatch.pl warning:
-WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
+On Sat, 14 Mar 2015, Supriya Karanth wrote:
 
-v2: Subject line modified
-
- drivers/staging/gasket/gasket_sysfs.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
-index 151e8edd28ea..60590ea4b760 100644
---- a/drivers/staging/gasket/gasket_sysfs.h
-+++ b/drivers/staging/gasket/gasket_sysfs.h
-@@ -40,7 +40,7 @@
-  */
- #define GASKET_END_OF_ATTR_ARRAY                                               \
- 	{                                                                      \
--		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),   \
-+		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),   \
- 		.data.attr_type = 0,                                           \
- 	}
- 
-@@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {
- 
- #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
- 	{                                                                      \
--		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
-+		.attr = __ATTR(_name, 0444, _show_function, NULL),          \
- 		.data.attr_type = _attr_type                                   \
- 	}
- 
--- 
-2.17.1
-
+> found by checkpatch.pl :ERROR: return is not a function,
+> parentheses are not required
+>
+> changes made using coccinelle script:
+>
+> @@
+> expression e,e1;
+> @@
+> (
+> return (e / e1);
+> |
+> return
+> -(
+> e
+> -)
+> ;
+> )
+>
+> Signed-off-by: Supriya Karanth <iskaranth@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_chip.c  | 2 +-
+>  drivers/staging/sm750fb/ddk750_swi2c.c | 6 +++---
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> index 3c77207..33add64 100644
+> --- a/drivers/staging/sm750fb/ddk750_chip.c
+> +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> @@ -633,7 +633,7 @@ unsigned int formatPllReg(pll_value_t *pPLL)
+>        | FIELD_VALUE(0, PANEL_PLL_CTRL, N,      pPLL->N)
+>        | FIELD_VALUE(0, PANEL_PLL_CTRL, M,      pPLL->M);
+>
+> -    return(ulPllReg);
+> +    return ulPllReg;
+>  }
+>
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_swi2c.c b/drivers/staging/sm750fb/ddk750_swi2c.c
+> index 1249759..8557cce 100644
+> --- a/drivers/staging/sm750fb/ddk750_swi2c.c
+> +++ b/drivers/staging/sm750fb/ddk750_swi2c.c
+> @@ -304,7 +304,7 @@ long swI2CWriteByte(unsigned char data)
+>      if (i<0xff)
+>          return 0;
+>      else
+> -        return (-1);
+> +        return -1;
+>  }
+>
+>  /*
+> @@ -408,10 +408,10 @@ long swI2CInit(
+>
+>      /* Return 0 if the GPIO pins to be used is out of range. The range is only from [0..63] */
+>      if ((i2cClkGPIO > 31) || (i2cDataGPIO > 31))
+> -        return (-1);
+> +        return -1;
+>
+>      if (getChipType() == SM750LE)
+> -        return( swI2CInit_SM750LE(i2cClkGPIO, i2cDataGPIO) );
+> +        return swI2CInit_SM750LE(i2cClkGPIO, i2cDataGPIO);
+>
+>      /* Initialize the GPIO pin for the i2c Clock Register */
+>      g_i2cClkGPIOMuxReg = GPIO_MUX;
+> --
+> 2.1.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1426337711-32548-1-git-send-email-iskaranth%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
