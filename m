@@ -1,90 +1,108 @@
 X-GM-THRID: 8221215424512
-X-Received: by 10.112.98.38 with SMTP id ef6mr6997459lbb.3.1426315007291;
-        Fri, 13 Mar 2015 23:36:47 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,35fc9dbaa0120918
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.80.35 with SMTP id o3mr952564wix.0.1426314882675;
+        Fri, 13 Mar 2015 23:34:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.19.196 with SMTP id h4ls289962wie.39.gmail; Fri, 13 Mar
- 2015 23:36:46 -0700 (PDT)
-X-Received: by 10.194.221.65 with SMTP id qc1mr7826738wjc.7.1426315006963;
-        Fri, 13 Mar 2015 23:36:46 -0700 (PDT)
+Received: by 10.152.115.135 with SMTP id jo7ls542005lab.101.gmail; Fri, 13 Mar
+ 2015 23:34:41 -0700 (PDT)
+X-Received: by 10.112.242.7 with SMTP id wm7mr4967950lbc.1.1426314881889;
+        Fri, 13 Mar 2015 23:34:41 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id sf8si262850wic.2.2015.03.13.23.36.46
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i8si268511wif.1.2015.03.13.23.34.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 13 Mar 2015 23:36:46 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 13 Mar 2015 23:34:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.11,399,1422918000"; 
-   d="scan'208";a="103299387"
+   d="scan'208";a="125888132"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Mar 2015 07:36:46 +0100
-Date: Sat, 14 Mar 2015 07:36:45 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Mar 2015 07:34:41 +0100
+Date: Sat, 14 Mar 2015 07:34:39 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@localhost6.localdomain6
 To: Cristina Opriceana <cristina.opriceana@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/6] Staging: iio: Prefer using the
- BIT macro
-In-Reply-To: <c77aa9f0cb01943bd9b2b8afd1a87807da692eb5.1426296329.git.cristina.opriceana@gmail.com>
-Message-ID: <alpine.DEB.2.02.1503140735350.2075@localhost6.localdomain6>
-References: <cover.1426296329.git.cristina.opriceana@gmail.com> <c77aa9f0cb01943bd9b2b8afd1a87807da692eb5.1426296329.git.cristina.opriceana@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 5/6] Staging: iio: Alignment should
+ match open parenthesis
+In-Reply-To: <62ccda665be354990b06a5d12ccf410ce9e1013f.1426296329.git.cristina.opriceana@gmail.com>
+Message-ID: <alpine.DEB.2.02.1503140733520.2075@localhost6.localdomain6>
+References: <cover.1426296329.git.cristina.opriceana@gmail.com> <62ccda665be354990b06a5d12ccf410ce9e1013f.1426296329.git.cristina.opriceana@gmail.com>
 User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-> diff --git a/drivers/staging/iio/frequency/ad9834.h b/drivers/staging/iio/frequency/ad9834.h
-> index 8ca6e52..b54fb33 100644
-> --- a/drivers/staging/iio/frequency/ad9834.h
-> +++ b/drivers/staging/iio/frequency/ad9834.h
-> @@ -11,25 +11,25 @@
->  /* Registers */
->  
->  #define AD9834_REG_CMD		(0 << 14)
-> -#define AD9834_REG_FREQ0	(1 << 14)
-> +#define AD9834_REG_FREQ0	BIT(14)
 
-This makes it different from its neighbors.  It doesn't seem like a good
-idea here.
 
->  #define AD9834_REG_FREQ1	(2 << 14)
->  #define AD9834_REG_PHASE0	(6 << 13)
->  #define AD9834_REG_PHASE1	(7 << 13)
->  
->  /* Command Control Bits */
->  
-> -#define AD9834_B28		(1 << 13)
-> -#define AD9834_HLB		(1 << 12)
-> -#define AD9834_FSEL		(1 << 11)
-> -#define AD9834_PSEL		(1 << 10)
-> -#define AD9834_PIN_SW		(1 << 9)
-> -#define AD9834_RESET		(1 << 8)
-> -#define AD9834_SLEEP1		(1 << 7)
-> -#define AD9834_SLEEP12		(1 << 6)
-> -#define AD9834_OPBITEN		(1 << 5)
-> -#define AD9834_SIGN_PIB		(1 << 4)
-> -#define AD9834_DIV2		(1 << 3)
-> -#define AD9834_MODE		(1 << 1)
-> +#define AD9834_B28		BIT(13)
-> +#define AD9834_HLB		BIT(12)
-> +#define AD9834_FSEL		BIT(11)
-> +#define AD9834_PSEL		BIT(10)
-> +#define AD9834_PIN_SW		BIT(9)
+On Sat, 14 Mar 2015, Cristina Opriceana wrote:
 
-You could clean up the indentation at the same time.
+> This patch arranges multiple-line parameters in accordance with
+> the left side parenthesis to improve coding style.
+> Found by checkpatch.pl.
+
+Why the left side of the (?  The right side, ie lined up with the 
+parameter above, would look nicer.
 
 julia
 
-> +#define AD9834_RESET		BIT(8)
-> +#define AD9834_SLEEP1		BIT(7)
-> +#define AD9834_SLEEP12		BIT(6)
-> +#define AD9834_OPBITEN		BIT(5)
-> +#define AD9834_SIGN_PIB		BIT(4)
-> +#define AD9834_DIV2		BIT(3)
-> +#define AD9834_MODE		BIT(1)
+> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+> ---
+>  drivers/staging/iio/frequency/ad9834.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
+> index f06b14d..cc465d5 100644
+> --- a/drivers/staging/iio/frequency/ad9834.c
+> +++ b/drivers/staging/iio/frequency/ad9834.c
+> @@ -53,7 +53,7 @@ static int ad9834_write_frequency(struct ad9834_state *st,
+>  }
 >  
->  #define AD9834_FREQ_BITS	28
->  #define AD9834_PHASE_BITS	12
+>  static int ad9834_write_phase(struct ad9834_state *st,
+> -				  unsigned long addr, unsigned long phase)
+> +			      unsigned long addr, unsigned long phase)
+>  {
+>  	if (phase > BIT(AD9834_PHASE_BITS))
+>  		return -EINVAL;
+> @@ -63,9 +63,9 @@ static int ad9834_write_phase(struct ad9834_state *st,
+>  }
+>  
+>  static ssize_t ad9834_write(struct device *dev,
+> -		struct device_attribute *attr,
+> -		const char *buf,
+> -		size_t len)
+> +			    struct device_attribute *attr,
+> +			    const char *buf,
+> +			    size_t len)
+>  {
+>  	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+>  	struct ad9834_state *st = iio_priv(indio_dev);
+> @@ -142,9 +142,9 @@ error_ret:
+>  }
+>  
+>  static ssize_t ad9834_store_wavetype(struct device *dev,
+> -				 struct device_attribute *attr,
+> -				 const char *buf,
+> -				 size_t len)
+> +				     struct device_attribute *attr,
+> +				     const char *buf,
+> +				     size_t len)
+>  {
+>  	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+>  	struct ad9834_state *st = iio_priv(indio_dev);
+> @@ -179,7 +179,7 @@ static ssize_t ad9834_store_wavetype(struct device *dev,
+>  		break;
+>  	case 1:
+>  		if (sysfs_streq(buf, "square") &&
+> -			!(st->control & AD9834_MODE)) {
+> +		    !(st->control & AD9834_MODE)) {
+>  			st->control &= ~AD9834_MODE;
+>  			st->control |= AD9834_OPBITEN;
+>  		} else {
 > -- 
 > 1.9.1
 > 
@@ -92,7 +110,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/c77aa9f0cb01943bd9b2b8afd1a87807da692eb5.1426296329.git.cristina.opriceana%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/62ccda665be354990b06a5d12ccf410ce9e1013f.1426296329.git.cristina.opriceana%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 > 
 
