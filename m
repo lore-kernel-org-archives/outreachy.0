@@ -1,49 +1,53 @@
 X-GM-THRID: 8221215424512
-X-Received: by 10.180.13.195 with SMTP id j3mr11303535wic.2.1426359113990;
-        Sat, 14 Mar 2015 11:51:53 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,35fc9dbaa0120918
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.19.67 with SMTP id c3mr6835263lae.7.1426359089685;
+        Sat, 14 Mar 2015 11:51:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.20.13 with SMTP id j13ls364779wie.51.canary; Sat, 14 Mar
- 2015 11:51:53 -0700 (PDT)
-X-Received: by 10.180.13.195 with SMTP id j3mr11303534wic.2.1426359113497;
-        Sat, 14 Mar 2015 11:51:53 -0700 (PDT)
+Received: by 10.180.97.105 with SMTP id dz9ls359207wib.4.gmail; Sat, 14 Mar
+ 2015 11:51:29 -0700 (PDT)
+X-Received: by 10.180.90.169 with SMTP id bx9mr5345899wib.6.1426359089316;
+        Sat, 14 Mar 2015 11:51:29 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
-        by gmr-mx.google.com with ESMTPS id gj20si362665wic.1.2015.03.14.11.51.53
+Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id ew13si365098wid.0.2015.03.14.11.51.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Mar 2015 11:51:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
+        Sat, 14 Mar 2015 11:51:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x232.google.com with SMTP id j2so11747679wif.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2015 11:51:53 -0700 (PDT)
+Received: by mail-wi0-x234.google.com with SMTP id dy8so10126584wib.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2015 11:51:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=js4iwuOlFJtzYmKmFVu+8ex0pF3azbvtjn7wEcm13/I=;
-        b=rQk6i94WkOoTGKsFNTYw3R5oM6BJCAPAUfwXUgJaUM4kGn+x1VNVvrfz+sE6Zdyg57
-         NUSNelG++yMzdSMurHBg0X2Oqtc72V2n/OficF/T0wNJTm7SO/gy+y0lmiGoL4RFKS8u
-         9ZIUNb+qcddUS8ZofVTweUKIi8DbCNsvaymuv2bLx/oYyoU3FMgB/NMqitJVy1JpqD2/
-         wgIJCWDp2f+Saw+C2oJKaSMD48UIH37cjXToME+y5NCuLQI7LSH+IhXlYJChOz4gyqYO
-         NW4kMIkdg5QY8ZyGqUbyi8l9n68wDmbvCoYo/s/3Dn2BO9cjekeVFhv6HUFcsyLxI58x
-         WUgA==
-X-Received: by 10.194.177.195 with SMTP id cs3mr105383158wjc.141.1426359113434;
-        Sat, 14 Mar 2015 11:51:53 -0700 (PDT)
+        bh=eGwiMDLTzp3vVPgEO6BxYn7tRPVwjpiSXsJMALTMAww=;
+        b=yyhuYmPOgyem5Bg3AOdviVIB8alGuIuXcxpq6CegKbr1ZW8Z6aoGxRB+WDIT1WpT0N
+         aFpdSF+n1PnSHc9BZF9TgsWaKKs0xH2WhGvlXnRFV5mM0+BmLtHsUYOntWLuUoWT7Mnp
+         6fsEOuyhs/tAMu4UTz0NLyYrq1AnUpzzdtAtpkEc2bevlofHSTkAeBRfYvnNWKcEleIc
+         yPX0RylKoJzjiMEINNYeaNHDUV8Q1bOWytlYPdfEhQb9AJdkF0ykdvKRIN+CmJBa+5fs
+         F+8vP/KoErJ+0dMT7hhiWj+sWhfPF0aB1dkDdqEWghhiF9WqOSPkVR3C7yOkJn4nWwDK
+         vQmA==
+X-Received: by 10.194.59.199 with SMTP id b7mr109106724wjr.26.1426359089265;
+        Sat, 14 Mar 2015 11:51:29 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
 Received: from Inspiron ([46.214.223.212])
-        by mx.google.com with ESMTPSA id dz6sm8065747wib.0.2015.03.14.11.51.52
+        by mx.google.com with ESMTPSA id dc9sm8044301wib.9.2015.03.14.11.51.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 14 Mar 2015 11:51:52 -0700 (PDT)
-Date: Sat, 14 Mar 2015 20:51:12 +0200
+        Sat, 14 Mar 2015 11:51:28 -0700 (PDT)
+Date: Sat, 14 Mar 2015 20:50:48 +0200
 From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 3/6] Staging: iio: Prefer using the BIT macro
-Message-ID: <a13830f386c8310e44a106ab20ae9a2fac042078.1426353884.git.cristina.opriceana@gmail.com>
+Subject: [PATCH v2 2/6] Staging: iio: Remove explicit comparison to NULL
+Message-ID: <8fddb5ee8a8f3a53ebd4b337f08e475c2dce63ce.1426353884.git.cristina.opriceana@gmail.com>
 References: <cover.1426353884.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,136 +55,41 @@ Content-Disposition: inline
 In-Reply-To: <cover.1426353884.git.cristina.opriceana@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch replaces bit shifting on 1 with the BIT(x) macro
-as it's extensively used by other function in this driver.
-
-This was done with coccinelle:
-@@ int g; @@
-
--(1 << g)
-+BIT(g)
+This patch simplifies pointer comparison to NULL and makes code
+easier to read. Warning found by checkpatch.pl.
 
 Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
- drivers/staging/iio/frequency/ad9832.c |  2 +-
- drivers/staging/iio/frequency/ad9832.h | 12 ++++++------
- drivers/staging/iio/frequency/ad9834.c |  4 ++--
- drivers/staging/iio/frequency/ad9834.h | 36 +++++++++++++++++-----------------
- 4 files changed, 27 insertions(+), 27 deletions(-)
+ drivers/staging/iio/frequency/ad9832.c | 2 +-
+ drivers/staging/iio/frequency/ad9834.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/iio/frequency/ad9832.c b/drivers/staging/iio/frequency/ad9832.c
-index 8ecc0bc..a861fe0 100644
+index 9a16699..8ecc0bc 100644
 --- a/drivers/staging/iio/frequency/ad9832.c
 +++ b/drivers/staging/iio/frequency/ad9832.c
-@@ -59,7 +59,7 @@ static int ad9832_write_frequency(struct ad9832_state *st,
- static int ad9832_write_phase(struct ad9832_state *st,
- 			      unsigned long addr, unsigned long phase)
- {
--	if (phase > (1 << AD9832_PHASE_BITS))
-+	if (phase > BIT(AD9832_PHASE_BITS))
- 		return -EINVAL;
+@@ -220,7 +220,7 @@ static int ad9832_probe(struct spi_device *spi)
+ 	}
  
- 	st->phase_data[0] = cpu_to_be16((AD9832_CMD_PHA8BITSW << CMD_SHIFT) |
-diff --git a/drivers/staging/iio/frequency/ad9832.h b/drivers/staging/iio/frequency/ad9832.h
-index 386f4dc..d32323b 100644
---- a/drivers/staging/iio/frequency/ad9832.h
-+++ b/drivers/staging/iio/frequency/ad9832.h
-@@ -42,13 +42,13 @@
- #define AD9832_CMD_SYNCSELSRC	0x8
- #define AD9832_CMD_SLEEPRESCLR	0xC
- 
--#define AD9832_FREQ		(1 << 11)
-+#define AD9832_FREQ		BIT(11)
- #define AD9832_PHASE(x)		(((x) & 3) << 9)
--#define AD9832_SYNC		(1 << 13)
--#define AD9832_SELSRC		(1 << 12)
--#define AD9832_SLEEP		(1 << 13)
--#define AD9832_RESET		(1 << 12)
--#define AD9832_CLR		(1 << 11)
-+#define AD9832_SYNC		BIT(13)
-+#define AD9832_SELSRC		BIT(12)
-+#define AD9832_SLEEP		BIT(13)
-+#define AD9832_RESET		BIT(12)
-+#define AD9832_CLR		BIT(11)
- #define CMD_SHIFT		12
- #define ADD_SHIFT		8
- #define AD9832_FREQ_BITS	32
+ 	indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
+-	if (indio_dev == NULL) {
++	if (!indio_dev) {
+ 		ret = -ENOMEM;
+ 		goto error_disable_reg;
+ 	}
 diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
-index efea560..342c713 100644
+index a346673..efea560 100644
 --- a/drivers/staging/iio/frequency/ad9834.c
 +++ b/drivers/staging/iio/frequency/ad9834.c
-@@ -27,7 +27,7 @@
+@@ -336,7 +336,7 @@ static int ad9834_probe(struct spi_device *spi)
+ 	}
  
- static unsigned int ad9834_calc_freqreg(unsigned long mclk, unsigned long fout)
- {
--	unsigned long long freqreg = (u64)fout * (u64)(1 << AD9834_FREQ_BITS);
-+	unsigned long long freqreg = (u64)fout * (u64)BIT(AD9834_FREQ_BITS);
- 
- 	do_div(freqreg, mclk);
- 	return freqreg;
-@@ -55,7 +55,7 @@ static int ad9834_write_frequency(struct ad9834_state *st,
- static int ad9834_write_phase(struct ad9834_state *st,
- 				  unsigned long addr, unsigned long phase)
- {
--	if (phase > (1 << AD9834_PHASE_BITS))
-+	if (phase > BIT(AD9834_PHASE_BITS))
- 		return -EINVAL;
- 	st->data = cpu_to_be16(addr | phase);
- 
-diff --git a/drivers/staging/iio/frequency/ad9834.h b/drivers/staging/iio/frequency/ad9834.h
-index 8ca6e52..0a0de4c 100644
---- a/drivers/staging/iio/frequency/ad9834.h
-+++ b/drivers/staging/iio/frequency/ad9834.h
-@@ -10,31 +10,31 @@
- 
- /* Registers */
- 
--#define AD9834_REG_CMD		(0 << 14)
--#define AD9834_REG_FREQ0	(1 << 14)
--#define AD9834_REG_FREQ1	(2 << 14)
--#define AD9834_REG_PHASE0	(6 << 13)
--#define AD9834_REG_PHASE1	(7 << 13)
-+#define AD9834_REG_CMD		0
-+#define AD9834_REG_FREQ0	BIT(14)
-+#define AD9834_REG_FREQ1	BIT(15)
-+#define AD9834_REG_PHASE0	(BIT(15) | BIT(14))
-+#define AD9834_REG_PHASE1	(BIT(15) | BIT(14) | BIT(13))
- 
- /* Command Control Bits */
- 
--#define AD9834_B28		(1 << 13)
--#define AD9834_HLB		(1 << 12)
--#define AD9834_FSEL		(1 << 11)
--#define AD9834_PSEL		(1 << 10)
--#define AD9834_PIN_SW		(1 << 9)
--#define AD9834_RESET		(1 << 8)
--#define AD9834_SLEEP1		(1 << 7)
--#define AD9834_SLEEP12		(1 << 6)
--#define AD9834_OPBITEN		(1 << 5)
--#define AD9834_SIGN_PIB		(1 << 4)
--#define AD9834_DIV2		(1 << 3)
--#define AD9834_MODE		(1 << 1)
-+#define AD9834_B28		BIT(13)
-+#define AD9834_HLB		BIT(12)
-+#define AD9834_FSEL		BIT(11)
-+#define AD9834_PSEL		BIT(10)
-+#define AD9834_PIN_SW		BIT(9)
-+#define AD9834_RESET		BIT(8)
-+#define AD9834_SLEEP1		BIT(7)
-+#define AD9834_SLEEP12		BIT(6)
-+#define AD9834_OPBITEN		BIT(5)
-+#define AD9834_SIGN_PIB		BIT(4)
-+#define AD9834_DIV2		BIT(3)
-+#define AD9834_MODE		BIT(1)
- 
- #define AD9834_FREQ_BITS	28
- #define AD9834_PHASE_BITS	12
- 
--#define RES_MASK(bits)	((1 << (bits)) - 1)
-+#define RES_MASK(bits)	(BIT(bits) - 1)
- 
- /**
-  * struct ad9834_state - driver instance specific data
+ 	indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
+-	if (indio_dev == NULL) {
++	if (!indio_dev) {
+ 		ret = -ENOMEM;
+ 		goto error_disable_reg;
+ 	}
 -- 
 1.9.1
 
