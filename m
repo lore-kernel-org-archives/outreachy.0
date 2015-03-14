@@ -1,72 +1,87 @@
-X-GM-THRID: 9883922464768
-X-Received: by 10.52.90.11 with SMTP id bs11mr13219527vdb.8.1427328252714;
-        Wed, 25 Mar 2015 17:04:12 -0700 (PDT)
+X-GM-THRID: 8283938095104
+X-Received: by 10.236.17.168 with SMTP id j28mr54260342yhj.0.1426328482292;
+        Sat, 14 Mar 2015 03:21:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.129 with SMTP id u1ls500843qge.13.gmail; Wed, 25 Mar
- 2015 17:04:12 -0700 (PDT)
-X-Received: by 10.236.2.227 with SMTP id 63mr13215314yhf.12.1427328252551;
-        Wed, 25 Mar 2015 17:04:12 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-qg0-x229.google.com (mail-qg0-x229.google.com. [2607:f8b0:400d:c04::229])
-        by gmr-mx.google.com with ESMTPS id kt5si515229qcb.3.2015.03.25.17.04.12
+Received: by 10.107.16.2 with SMTP id y2ls1413806ioi.2.gmail; Sat, 14 Mar 2015
+ 03:21:22 -0700 (PDT)
+X-Received: by 10.66.141.104 with SMTP id rn8mr664945pab.42.1426328481768;
+        Sat, 14 Mar 2015 03:21:21 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id l3si839323pdo.0.2015.03.14.03.21.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2015 17:04:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) client-ip=2607:f8b0:400d:c04::229;
+        Sat, 14 Mar 2015 03:21:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) smtp.mail=helen.fornazier@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x229.google.com with SMTP id p97so71386092qge.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 17:04:12 -0700 (PDT)
+Received: by mail-pa0-x22c.google.com with SMTP id cy3so13361394pad.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2015 03:21:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=sAUbjCN21o+/H+JZ3YTGGC9r57hMrXsWKn5MMmLg3mo=;
-        b=qMfDWSmnTxqwRpgdjKZWuTQ5I1fbXbBvy2OVpYTzFU79zV+s2cZYC7P2LimCROYSls
-         USXAyVcSl3yGyF0SCcI2/a/nPKIW3rMpEYO6g3eF4QXqqWD7Ez+LaKCwWilemdy91Z/3
-         lCDVFrOg/Qa+dE3Njoz49vLwf9R/gBVJLOIQ4tOTAbvkry+HjpRWKrc+dC0D7SpfNbJ5
-         GY0OZUvNTfW53Si6QOAkP13RWkbGW/5XfZ/mjfs/hhHFI25mBreJz//PTeUCplmpgIzj
-         FDjJyh6EDC4tQHH9Uh9rKjlUliRTg/Hgcd+6GGreOqx3JN975Po4WJ6qptK2nlG1lspr
-         6sCg==
-X-Received: by 10.55.49.197 with SMTP id x188mr23691199qkx.49.1427328252446;
-        Wed, 25 Mar 2015 17:04:12 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from Cracker.linksys.com ([179.159.91.9])
-        by mx.google.com with ESMTPSA id 10sm2484187qhe.29.2015.03.25.17.04.10
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 25 Mar 2015 17:04:12 -0700 (PDT)
-From: Helen Fornazier <helen.fornazier@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=tn5MpCsPI4qB/F8Th44gPgRtk7Q8Cpn6Z9soyFfi2rY=;
+        b=YgWlNnpuGLQTpP5k5na9Z83Q5ExxMLdT3W5qjydA4fg6w3M8dzd0HLDQKKKlnP98Zj
+         zXiceI8WnwgJBVOySW4cOk2auGrm5CS3vn62OxbuPETQGEn2n76MKLUBnoRt9ycYW9Lu
+         AuwIISLVIDDwapQxd/PsjcAJF2OdmHcfFl0R9RXGVDfjvUQn1ArLTrjV/b5KZceYaxDC
+         AvMIaJT0O6dMc28E3OPiPOgqZQgBfJdIY6lDNkf9htjlGE5NyWtYgNdjY8/ojDn7Y1Fo
+         xkDjG1bjCWXNMPP1j9KnJxtA1U3KCzqhJhhlB5vmjL9kFtlWSKC48FC/8sQ/h+78K/Rx
+         bFiw==
+X-Received: by 10.66.249.68 with SMTP id ys4mr112983738pac.82.1426328481651;
+        Sat, 14 Mar 2015 03:21:21 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from akanksha ([14.139.82.6])
+        by mx.google.com with ESMTPSA id 7sm7552017pdj.16.2015.03.14.03.21.19
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 14 Mar 2015 03:21:20 -0700 (PDT)
+Date: Sat, 14 Mar 2015 15:49:30 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Helen Fornazier <helen.fornazier@gmail.com>
-Subject: [PATCH] block: Use kcalloc instead of kzalloc to initialize array
-Date: Wed, 25 Mar 2015 21:04:03 -0300
-Message-Id: <1427328243-6391-1-git-send-email-helen.fornazier@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] Staging: skein: Remove do-while(0) from single statement
+ macros
+Message-ID: <20150314101930.GA11063@akanksha>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes checkpatch.pl warning:
+Remove unneeded do-while(0) loop from single statement macros.
 
-WARNING: Prefer kcalloc over kzalloc with multiply
-+       bio_slabs = kzalloc(bio_slab_max * sizeof(struct bio_slab), GFP_KERNEL);
-
-Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- block/bio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/skein/skein_block.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/block/bio.c b/block/bio.c
-index f66a4ea..7495017 100644
---- a/block/bio.c
-+++ b/block/bio.c
-@@ -2051,7 +2051,7 @@ static int __init init_bio(void)
- {
- 	bio_slab_max = 2;
- 	bio_slab_nr = 0;
--	bio_slabs = kzalloc(bio_slab_max * sizeof(struct bio_slab), GFP_KERNEL);
-+	bio_slabs = kcalloc(bio_slab_max, sizeof(struct bio_slab), GFP_KERNEL);
- 	if (!bio_slabs)
- 		panic("bio: can't allocate bios\n");
+diff --git a/drivers/staging/skein/skein_block.c b/drivers/staging/skein/skein_block.c
+index 9bd69ce..b0cd935 100644
+--- a/drivers/staging/skein/skein_block.c
++++ b/drivers/staging/skein/skein_block.c
+@@ -68,9 +68,7 @@ do {                                         \
  
+ #if SKEIN_UNROLL_256 == 0
+ #define R256(p0, p1, p2, p3, ROT, r_num) /* fully unrolled */ \
+-do {                                                          \
+-	ROUND256(p0, p1, p2, p3, ROT, r_num);                 \
+-} while (0)
++	ROUND256(p0, p1, p2, p3, ROT, r_num)
+ 
+ #define I256(R)                                                           \
+ do {                                                                      \
+@@ -152,9 +150,7 @@ do {                                                         \
+ 
+ #if SKEIN_UNROLL_512 == 0
+ #define R512(p0, p1, p2, p3, p4, p5, p6, p7, ROT, r_num) /* unrolled */ \
+-do {                                                                    \
+-	ROUND512(p0, p1, p2, p3, p4, p5, p6, p7, ROT, r_num);           \
+-} while (0)
++	ROUND512(p0, p1, p2, p3, p4, p5, p6, p7, ROT, r_num)
+ 
+ #define I512(R)                                                           \
+ do {                                                                      \
 -- 
 1.9.1
 
