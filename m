@@ -1,62 +1,84 @@
 X-GM-THRID: 7448435884032
-X-Received: by 10.112.167.131 with SMTP id zo3mr3858109lbb.7.1426415200689;
-        Sun, 15 Mar 2015 03:26:40 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,bb1187e4a703feb6
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.70.234 with SMTP id p70mr57014728yhd.56.1426414860887;
+        Sun, 15 Mar 2015 03:21:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.98 with SMTP id m2ls582243lae.5.gmail; Sun, 15 Mar 2015
- 03:26:40 -0700 (PDT)
-X-Received: by 10.152.28.137 with SMTP id b9mr8432056lah.8.1426415200189;
-        Sun, 15 Mar 2015 03:26:40 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-la0-x22b.google.com (mail-la0-x22b.google.com. [2a00:1450:4010:c03::22b])
-        by gmr-mx.google.com with ESMTPS id b6si585695lbc.1.2015.03.15.03.26.40
+Received: by 10.50.142.98 with SMTP id rv2ls676231igb.34.gmail; Sun, 15 Mar
+ 2015 03:21:00 -0700 (PDT)
+X-Received: by 10.50.26.40 with SMTP id i8mr60477774igg.8.1426414860659;
+        Sun, 15 Mar 2015 03:21:00 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gb13si1240242pac.2.2015.03.15.03.21.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2015 03:26:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::22b as permitted sender) client-ip=2a00:1450:4010:c03::22b;
+        Sun, 15 Mar 2015 03:21:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::22b as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-la0-x22b.google.com with SMTP id w1so18965078lad.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 15 Mar 2015 03:26:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=qisAQNdRAIE/PqsIyBbY8/wNU8sAosuz7s4z5E+mSLQ=;
-        b=WngUac8FYwwv5bprFBlHNH9h5D1zVfW0v6vbsde9rWXt2LFF96sVFtZdjMYoQrIO9l
-         dzwAjV2uRjph3iwUhYi2TRTE7drafNl+v64VjVFoN7fBs3MdsLUs3Le6cUJN8XgwFubN
-         kxEp6E7CYsakZkl4Yxba4/VnIMxnNPJ2igaRFieWvvTCGlQ/4hndbl8dyOKkNfAWuQ/3
-         7yCDfiztBHf1Pac96eC49t0gmjYd2G/FcPsSNwJvG0i+SsNqIcb2NUeA84enQqOeHETE
-         La6mOA6cuWDyMorWDNgYIkPyOYB/OqiPW5HN45UhH4VMjDOjNW4Z4+2dYjxswnUL/bYq
-         kYhQ==
-MIME-Version: 1.0
-X-Received: by 10.112.201.231 with SMTP id kd7mr29911898lbc.35.1426415200116;
- Sun, 15 Mar 2015 03:26:40 -0700 (PDT)
-Received: by 10.112.59.7 with HTTP; Sun, 15 Mar 2015 03:26:40 -0700 (PDT)
-In-Reply-To: <20150315102056.GA29660@kroah.com>
-References: <20150310134242.GA9593@akanksha>
-	<20150315102056.GA29660@kroah.com>
-Date: Sun, 15 Mar 2015 15:56:40 +0530
-Message-ID: <CAHjTdYeQotZ67=KMTHYua6-hvuB3X8c2-O9N7ELx1R4=tPx=Zw@mail.gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2CEB58CF;
+	Sun, 15 Mar 2015 10:20:58 +0000 (UTC)
+Date: Sun, 15 Mar 2015 11:20:56 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Remove unneeded
  variable and replace its uses
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=001a11c32cda4e25990511512b3c
+Message-ID: <20150315102056.GA29660@kroah.com>
+References: <20150310134242.GA9593@akanksha>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150310134242.GA9593@akanksha>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---001a11c32cda4e25990511512b3c
-Content-Type: text/plain; charset=UTF-8
+On Tue, Mar 10, 2015 at 07:12:42PM +0530, Vatika Harlalka wrote:
+> Variable dotdot is only used as a function parameter and
+> can be replaced there directly to improve code compactness.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/llite/llite_nfs.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/llite/llite_nfs.c b/drivers/staging/lustre/lustre/llite/llite_nfs.c
+> index 6a67e71..b8ced3d 100644
+> --- a/drivers/staging/lustre/lustre/llite/llite_nfs.c
+> +++ b/drivers/staging/lustre/lustre/llite/llite_nfs.c
+> @@ -287,7 +287,6 @@ static struct dentry *ll_get_parent(struct dentry *dchild)
+>  	struct ll_sb_info     *sbi;
+>  	struct dentry	 *result = NULL;
+>  	struct mdt_body       *body;
+> -	static const char	   dotdot[] = "..";
+>  	struct md_op_data     *op_data;
+>  	int		   rc;
+>  	int		      lmmsize;
+> @@ -303,8 +302,8 @@ static struct dentry *ll_get_parent(struct dentry *dchild)
+>  	if (rc != 0)
+>  		return ERR_PTR(rc);
+>  
+> -	op_data = ll_prep_md_op_data(NULL, dir, NULL, dotdot,
+> -				     strlen(dotdot), lmmsize,
+> +	op_data = ll_prep_md_op_data(NULL, dir, NULL, "..",
+> +				     2, lmmsize,
+>  				     LUSTRE_OPC_ANY, NULL);
+>  	if (IS_ERR(op_data))
+>  		return (void *)op_data;
+> @@ -321,7 +320,7 @@ static struct dentry *ll_get_parent(struct dentry *dchild)
+>  	CDEBUG(D_INFO, "parent for "DFID" is "DFID"\n",
+>  		PFID(ll_inode2fid(dir)), PFID(&body->fid1));
+>  
+> -	result = ll_iget_for_nfs(dir->i_sb, &body->fid1, NULL);
+> +	
 
-Sorry, removing the call is a mistake on my side.
-I'll resend a patch for this one and will ensure that I'm
-more careful !
+Why did you delete this whole function call?  That does not seem to
+match up with what you said this patch did.
 
---001a11c32cda4e25990511512b3c
-Content-Type: text/html; charset=UTF-8
+I can't take this as-is, sorry.
 
-<div dir="ltr"><div>Sorry, removing the call is a mistake on my side. <br></div><div>I&#39;ll resend a patch for this one and will ensure that I&#39;m<br></div><div>more careful !<br></div></div>
-
---001a11c32cda4e25990511512b3c--
+greg k-h
 
