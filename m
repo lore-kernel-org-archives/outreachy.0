@@ -1,130 +1,137 @@
 X-GM-THRID: 8319960875008
-X-Received: by 10.236.4.134 with SMTP id 6mr62928365yhj.35.1426516147766;
-        Mon, 16 Mar 2015 07:29:07 -0700 (PDT)
+X-Received: by 10.152.87.141 with SMTP id ay13mr4455240lab.3.1426432065273;
+        Sun, 15 Mar 2015 08:07:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.99.6 with SMTP id p6ls2706538qge.51.gmail; Mon, 16 Mar
- 2015 07:29:07 -0700 (PDT)
-X-Received: by 10.140.201.202 with SMTP id w193mr18414748qha.7.1426516147607;
-        Mon, 16 Mar 2015 07:29:07 -0700 (PDT)
+Received: by 10.180.99.131 with SMTP id eq3ls405078wib.24.gmail; Sun, 15 Mar
+ 2015 08:07:44 -0700 (PDT)
+X-Received: by 10.180.109.34 with SMTP id hp2mr7316443wib.4.1426432064746;
+        Sun, 15 Mar 2015 08:07:44 -0700 (PDT)
 Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id gb13si1928263pac.2.2015.03.16.07.29.07
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id c8si267755wiw.1.2015.03.15.08.07.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 07:29:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Sun, 15 Mar 2015 08:07:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id r17so66437004pag.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 07:29:07 -0700 (PDT)
+Received: by mail-wi0-x236.google.com with SMTP id g7so17006515wib.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 15 Mar 2015 08:07:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=6eu4eJC7lPSB0VYil13Fa2hmzGIYsmRs4WevG8ghgks=;
-        b=tYgkdatc+G+esbbqhPQbrxv21a48a1+ymZCQU2Vl7Bids/F+SxnnCarWIneFo2BWNz
-         mkKkdJYbqG/1TdlnlREKvvnw/UNYJ1Q0pIy0sD2+obcXuZXCbhy0dGxyFWyJLJLieaTd
-         xSFD4bwPEsLx/17/zhjTtByItCVzZPqkLBJ+Cq1juLmSoaXiWQU0xlNhlaMUpw2/kj4V
-         1Q+KQwRcCLMPRR7TD+e6W06j5mh3kWSkzsvooIxHrfqgT3JPo70LjNGGdXydH2DOZxTw
-         ykZtsXGLZie+oEi5iHUctP4YSrkxG5gSAHTbORiYeZ4Av1/YshRIxUloaFW6rHNAhYVr
-         49/g==
-X-Received: by 10.70.91.75 with SMTP id cc11mr139059041pdb.150.1426516147344;
-        Mon, 16 Mar 2015 07:29:07 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([43.249.235.84])
-        by mx.google.com with ESMTPSA id ht2sm17661089pdb.23.2015.03.16.07.29.05
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 16 Mar 2015 07:29:06 -0700 (PDT)
-Date: Mon, 16 Mar 2015 19:59:01 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: speakup: Add helper macro for spk_synth
- boilerplate
-Message-ID: <20150316142901.GA18101@vaishali-Ideapad-Z570>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=+lVrFabiCi5BTCvkH39EJ0E0a/mu5aHeTMd620HuHvg=;
+        b=eZSZxfI3x6NDpk7Kv8Tp68okEJxoMFXr6rX2Al5w2ECl/C711NrvZTyBkvzM9SAwDA
+         GGJw/UrvdPTgBj3vZiW/l76Dt8eLWuBcwMMAq5d1aswet6ufgIE4K0nO0/PG8D1fU4KJ
+         az6N3c7jGnKL6mISGjnjvqW9oe/NlYCE6dJvX18x++bLN3XAOLk6cjZalNn9eN6OOcn2
+         yyVYU2jiO+VJWbCKCtUW0BOPd7tebultA8QkhTjUt+vUJTPnW2gqmvWouD57VoYplbAO
+         FTV7a3Pftnz5BfhJ6YJyoVemB3HmLurGBhsyyl6S00IqqX2IgEj4FHeLNN+Cf1QlMZYo
+         4N8Q==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.194.134.68 with SMTP id pi4mr115235468wjb.101.1426432064642;
+ Sun, 15 Mar 2015 08:07:44 -0700 (PDT)
+Received: by 10.194.13.168 with HTTP; Sun, 15 Mar 2015 08:07:44 -0700 (PDT)
+In-Reply-To: <20150315105016.GA5207@kroah.com>
+References: <20150314165235.GA24545@vaishali-Ideapad-Z570>
+	<20150315105016.GA5207@kroah.com>
+Date: Sun, 15 Mar 2015 20:37:44 +0530
+Message-ID: <CAK-LDbLi-4UeLHAzf-wuUEQaLxUfu1cXxJ=K0h7BFLAs7YLw-Q@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: speakup: Add helper macro for
+ spk_synth boilerplate
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-For simple modules that contain a single spk_synth without
-any additional setup code then ends up being a block of
-duplicated boilerplate. This patch adds a new macro,
-module_spk_synth(), which replaces the
-module_init()/module_exit() registrations with template
-functions.
+On Sun, Mar 15, 2015 at 4:20 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Sat, Mar 14, 2015 at 10:22:35PM +0530, Vaishali Thakkar wrote:
+>> For simple modules that contain a single spk_synth without
+>> any additional setup code then ends up being a block of
+>> duplicated boilerplate. This patch adds a new macro,
+>> module_spk_synth(), which replaces the
+>> module_init()/module_exit() registrations with template
+>> functions.
+>>
+>> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+>> ---
+>> v1 : Here, I know, I can go for changing all files
+>>      and make them use module_spk_synth at a single point.
+>>      But as I am sending this patch as a sample patch, I
+>>      am changing only one file to show the use of helper
+>>      macro. I will go for changing all other such cases in
+>>      this driver if this patch will be accepted.
+>>
+>>  drivers/staging/speakup/speakup_audptr.c | 12 +-----------
+>>  drivers/staging/speakup/spk_types.h      | 17 +++++++++++++++++
+>>  2 files changed, 18 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/drivers/staging/speakup/speakup_audptr.c b/drivers/staging/speakup/speakup_audptr.c
+>> index 5cbaec8..ea89e36 100644
+>> --- a/drivers/staging/speakup/speakup_audptr.c
+>> +++ b/drivers/staging/speakup/speakup_audptr.c
+>> @@ -177,18 +177,8 @@ module_param_named(start, synth_audptr.startup, short, S_IRUGO);
+>>  MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
+>>  MODULE_PARM_DESC(start, "Start the synthesizer once it is loaded.");
+>>
+>> -static int __init audptr_init(void)
+>> -{
+>> -     return synth_add(&synth_audptr);
+>> -}
+>> -
+>> -static void __exit audptr_exit(void)
+>> -{
+>> -     synth_remove(&synth_audptr);
+>> -}
+>> +module_spk_synth(synth_audptr);
+>>
+>> -module_init(audptr_init);
+>> -module_exit(audptr_exit);
+>>  MODULE_AUTHOR("Kirk Reiser <kirk@braille.uwo.ca>");
+>>  MODULE_AUTHOR("David Borowski");
+>>  MODULE_DESCRIPTION("Speakup support for Audapter synthesizer");
+>> diff --git a/drivers/staging/speakup/spk_types.h b/drivers/staging/speakup/spk_types.h
+>> index 8c565c9..e0c4fe3 100644
+>> --- a/drivers/staging/speakup/spk_types.h
+>> +++ b/drivers/staging/speakup/spk_types.h
+>> @@ -179,6 +179,23 @@ struct spk_synth {
+>>       struct attribute_group attributes;
+>>  };
+>>
+>> +/* module_spk_synth() - Helper macro for speakup drivers that don't
+>> + * do anything special in module init/exit. This eliminates a lot
+>> + * of boilerplate. Each module may only use this macro once, and
+>> + * calling it replaces module_init() and module_exit()
+>> + */
+>> +#define module_spk_synth(__spk_synth) \
+>> +static int __init __spk_synth##_init(void) \
+>> +{ \
+>> +     return synth_add(&(__spk_synth)); \
+>> +} \
+>> +module_init(__spk_synth##_init); \
+>> +static void __exit __spk_synth##_exit(void) \
+>> +{ \
+>> +     synth_remove(&(__spk_synth)); \
+>> +} \
+>> +module_exit(__spk_synth##_exit);
+>> +
+>
+> Can't you use the module_driver() macro here instead of "rolling your
+> own"?  Look at how module_usb_driver() is defined as an example.
 
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
----
-v1 : Here, I know, I can go for changing all files
-     and make them use module_spk_synth at a single point.
-     But as I am sending this patch as a sample patch, I
-     am changing only one file to show the use of helper
-     macro. I will go for changing all other such cases in
-     this driver if this patch will be accepted.
-v2 : Use module_driver macro in definition of helper macro
+Yes. I guess here I can use module_driver(). I will send revised version
+with this change.
 
- drivers/staging/speakup/speakup_audptr.c | 12 +-----------
- drivers/staging/speakup/spk_types.h      | 12 ++++++++++++
- 2 files changed, 13 insertions(+), 11 deletions(-)
+Thank You.
 
-diff --git a/drivers/staging/speakup/speakup_audptr.c b/drivers/staging/speakup/speakup_audptr.c
-index 5cbaec8..ea89e36 100644
---- a/drivers/staging/speakup/speakup_audptr.c
-+++ b/drivers/staging/speakup/speakup_audptr.c
-@@ -177,18 +177,8 @@ module_param_named(start, synth_audptr.startup, short, S_IRUGO);
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
- MODULE_PARM_DESC(start, "Start the synthesizer once it is loaded.");
- 
--static int __init audptr_init(void)
--{
--	return synth_add(&synth_audptr);
--}
--
--static void __exit audptr_exit(void)
--{
--	synth_remove(&synth_audptr);
--}
-+module_spk_synth(synth_audptr);
- 
--module_init(audptr_init);
--module_exit(audptr_exit);
- MODULE_AUTHOR("Kirk Reiser <kirk@braille.uwo.ca>");
- MODULE_AUTHOR("David Borowski");
- MODULE_DESCRIPTION("Speakup support for Audapter synthesizer");
-diff --git a/drivers/staging/speakup/spk_types.h b/drivers/staging/speakup/spk_types.h
-index 8c565c9..67aa5e9 100644
---- a/drivers/staging/speakup/spk_types.h
-+++ b/drivers/staging/speakup/spk_types.h
-@@ -16,6 +16,7 @@
- #include <linux/spinlock.h>
- #include <linux/mutex.h>
- #include <linux/io.h>		/* for inb_p, outb_p, inb, outb, etc... */
-+#include <linux/device.h>	/* for struct device */
- 
- enum var_type_t {
- 	VAR_NUM = 0,
-@@ -179,6 +180,17 @@ struct spk_synth {
- 	struct attribute_group attributes;
- };
- 
-+/**
-+ * module_spk_synth() - Helper macro for registering a speakup driver
-+ * @__spk_synth: spk_synth struct
-+ *
-+ * Helper macro for speakup drivers which do not do anything special in module
-+ * init/exit. This eliminates a lot of boilerplate. Each module may only
-+ * use this macro once, and calling it replaces module_init() and module_exit()
-+ */
-+#define module_spk_synth(__spk_synth) \
-+	module_driver(__spk_synth, synth_add, \
-+			synth_remove)
- struct speakup_info_t {
- 	spinlock_t spinlock;
- 	int port_tts;
+> thanks,
+>
+> greg k-h
+
+
+
 -- 
-1.9.1
-
+Vaishali
 
