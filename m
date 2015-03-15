@@ -1,74 +1,120 @@
-X-GM-THRID: 3532128256000
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,2cd963ab497c3ca7,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.101.101 with SMTP id ff5mr3265807wib.5.1424906789572;
-        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
+X-GM-THRID: 8453156241408
+X-Received: by 10.112.219.102 with SMTP id pn6mr8549783lbc.12.1426458402397;
+        Sun, 15 Mar 2015 15:26:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.211.114 with SMTP id nb18ls1087721wic.26.canary; Wed, 25
- Feb 2015 15:26:29 -0800 (PST)
-X-Received: by 10.181.29.66 with SMTP id ju2mr3265588wid.1.1424906789308;
-        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
-        by gmr-mx.google.com with ESMTPS id ta1si1236833wic.1.2015.02.25.15.26.29
+Received: by 10.180.82.168 with SMTP id j8ls498618wiy.1.gmail; Sun, 15 Mar
+ 2015 15:26:41 -0700 (PDT)
+X-Received: by 10.180.87.166 with SMTP id az6mr1838303wib.1.1426458401852;
+        Sun, 15 Mar 2015 15:26:41 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wg0-x236.google.com (mail-wg0-x236.google.com. [2a00:1450:400c:c00::236])
+        by gmr-mx.google.com with ESMTPS id sf8si555173wic.2.2015.03.15.15.26.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
+        Sun, 15 Mar 2015 15:26:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) client-ip=2a00:1450:400c:c00::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x233.google.com with SMTP id k48so6765403wev.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 15:26:29 -0800 (PST)
+Received: by mail-wg0-x236.google.com with SMTP id cc7so26398900wgb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 15 Mar 2015 15:26:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=1TuzGOeg1DR30qACEBxI00AWSCuiR3sqBHYx/HY7dVA=;
-        b=uOxXC0OrsVvFgWqBywHBf/J/6DgDi8C5X3EfQSOBcnII3LG7jL5w0rqFYKt/kX2Zoz
-         kX6HIHLCziAGlAhVue5vSi/QA55N0LUecnsvx5GagewNrL2k4xWdNawQGDm2SfgFxr1D
-         2KPieOFvinSDFl5LT3ADkkFYzgEQIx3ktmjZdtote/aU4mnmdnpJNuWrI2N+fnHxN+yy
-         vqNWMH4pksS8izefzUObqClgY4oClsIczkFxq6BpjYvXebi8YUXB7ERfmlzTh3zlichu
-         zxSixuGYHyM2hfdSPC3qUHgIwxC65tLfP52bKHiYaYk5tm8MigsjFnPdKprKBScSnUJC
-         l4tg==
-X-Received: by 10.194.173.138 with SMTP id bk10mr10639120wjc.112.1424906789237;
-        Wed, 25 Feb 2015 15:26:29 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.61.145])
-        by mx.google.com with ESMTPSA id ev7sm66928629wjb.47.2015.02.25.15.26.28
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 15:26:28 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        bh=MGVN/2jzNFtA6FlSd2HkTB0nwVNXJSkQxwDbomWIxMQ=;
+        b=Uh6JRWO2wiLFCFZ5Ms9gviEDVrs440usipeBm8Sr2l8cIhFUkrehHuCC86AtSdm05K
+         1zSr6PP4gqy2XSHyAbBEyj2xTHYs/WE7GfhUdIBvoEyVLAU7LLHdKRaZ8CMzoMM9OHDx
+         pR+32z3gRTTHYBovgnxO+8CIP+xx5hY9HjJTKxKZ3EPFtXIWIKlt72FeUom89oA/KCp/
+         3LGclinsAJXwFU1ZFGCyl2gHt8SM8H1yznBdIubJCI9czBg2C/Ri5URbVwf2w75SBf29
+         K4pfmAStiRF8MKv7M3ZyNvHCJhmwrgldmaPtYxcFUvVN6odZJzqnXysPiWX3xve4GYKp
+         weMw==
+X-Received: by 10.180.89.227 with SMTP id br3mr67532621wib.67.1426458401741;
+        Sun, 15 Mar 2015 15:26:41 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneen-vb ([79.170.55.48])
+        by mx.google.com with ESMTPSA id hl15sm12658853wib.3.2015.03.15.15.26.37
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 15 Mar 2015 15:26:40 -0700 (PDT)
+Received: by haneen-vb (Postfix, from userid 1000)
+	id 0A3F9C1F52; Mon, 16 Mar 2015 01:26:37 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: i2o: Add blank line
-Date: Thu, 26 Feb 2015 01:26:36 +0200
-Message-Id: <1424906796-8124-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH] Staging: emuxx_udc: replace pr_* with dev_*
+Date: Mon, 16 Mar 2015 01:26:37 +0300
+Message-Id: <1426458397-16773-1-git-send-email-hamohammed.sa@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Missing a blank line after declarations"
+dev_* is prefered over pr_* when appropriate dev structure is present.
+This patch replace pr_info and pr_warn with its dev_ counterpart.
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/i2o/debug.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/emxx_udc/emxx_udc.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
-index 7a16114..fa6fa87 100644
---- a/drivers/staging/i2o/debug.c
-+++ b/drivers/staging/i2o/debug.c
-@@ -54,6 +54,7 @@ void i2o_dump_message(struct i2o_message *m)
- #ifdef DEBUG
- 	u32 *msg = (u32 *) m;
- 	int i;
-+
- 	printk(KERN_INFO "Dumping I2O message size %d @ %p\n",
- 	       msg[0] >> 16 & 0xffff, msg);
- 	for (i = 0; i < ((msg[0] >> 16) & 0xffff); i++)
+diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+index 35dc1c4..69bcf43 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.c
++++ b/drivers/staging/emxx_udc/emxx_udc.c
+@@ -1426,7 +1426,7 @@ static void _nbu2ss_set_test_mode(struct nbu2ss_udc *udc, u32 mode)
+ 	if (mode > MAX_TEST_MODE_NUM)
+ 		return;
+ 
+-	pr_info("SET FEATURE : test mode = %d\n", mode);
++	dev_info(udc->dev, "SET FEATURE : test mode = %d\n", mode);
+ 
+ 	data = _nbu2ss_readl(&udc->p_regs->USB_CONTROL);
+ 	data &= ~TEST_FORCE_ENABLE;
+@@ -1885,8 +1885,8 @@ static inline void _nbu2ss_ep0_int(struct nbu2ss_udc *udc)
+ 			| STG_END_INT | EP0_OUT_NULL_INT);
+ 
+ 	if (status == 0) {
+-		pr_info("--- %s Not Decode Interrupt\n", __func__);
+-		pr_info("--- EP0_STATUS = 0x%08x\n", intr);
++		dev_info(udc->dev, "%s Not Decode Interrupt\n", __func__);
++		dev_info(udc->dev, "EP0_STATUS = 0x%08x\n", intr);
+ 		return;
+ 	}
+ 
+@@ -2407,7 +2407,7 @@ static inline void _nbu2ss_check_vbus(struct nbu2ss_udc *udc)
+ 		udc->linux_suspended = 0;
+ 
+ 		_nbu2ss_reset_controller(udc);
+-		pr_info(" ----- VBUS OFF\n");
++		dev_info(udc->dev, " ----- VBUS OFF\n");
+ 
+ 		if (udc->vbus_active == 1) {
+ 			/* VBUS OFF */
+@@ -2433,7 +2433,7 @@ static inline void _nbu2ss_check_vbus(struct nbu2ss_udc *udc)
+ 		if (reg_dt == 0)
+ 			return;
+ 
+-		pr_info(" ----- VBUS ON\n");
++		dev_info(udc->dev, " ----- VBUS ON\n");
+ 
+ 		if (udc->linux_suspended)
+ 			return;
+@@ -2768,7 +2768,7 @@ static int nbu2ss_ep_queue(
+ /*	INFO("=== %s(ep%d), zero=%d\n", __func__, ep->epnum, _req->zero); */
+ 
+ 	if (udc->vbus_active == 0) {
+-		pr_info("Can't ep_queue (VBUS OFF)\n");
++		dev_info(udc->dev, "Can't ep_queue (VBUS OFF)\n");
+ 		return -ESHUTDOWN;
+ 	}
+ 
+@@ -3092,7 +3092,7 @@ static int nbu2ss_gad_wakeup(struct usb_gadget *pgadget)
+ 
+ 	data = gpio_get_value(VBUS_VALUE);
+ 	if (data == 0) {
+-		pr_warn("VBUS LEVEL = %d\n", data);
++		dev_warn(&pgadget->dev, "VBUS LEVEL = %d\n", data);
+ 		return -EINVAL;
+ 	}
+ 
 -- 
-1.8.3.2
+1.9.1
 
 
