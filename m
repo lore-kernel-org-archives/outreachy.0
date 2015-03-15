@@ -1,114 +1,54 @@
-X-GM-THRID: 9605342035968
-X-Received: by 10.152.45.7 with SMTP id i7mr14831563lam.9.1427048372249;
-        Sun, 22 Mar 2015 11:19:32 -0700 (PDT)
+X-GM-THRID: 7583885688832
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,1710fc2133602604
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.199.66 with SMTP id ji2mr58577986obc.14.1426415806950;
+        Sun, 15 Mar 2015 03:36:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.163.36 with SMTP id yf4ls34107lab.43.gmail; Sun, 22 Mar
- 2015 11:19:30 -0700 (PDT)
-X-Received: by 10.112.242.7 with SMTP id wm7mr11880413lbc.1.1427048370852;
-        Sun, 22 Mar 2015 11:19:30 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id c8si318996wiw.1.2015.03.22.11.19.30
+Received: by 10.107.170.12 with SMTP id t12ls1537722ioe.21.gmail; Sun, 15 Mar
+ 2015 03:36:46 -0700 (PDT)
+X-Received: by 10.66.221.165 with SMTP id qf5mr58539267pac.30.1426415806753;
+        Sun, 15 Mar 2015 03:36:46 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id pc4si1282951pac.0.2015.03.15.03.36.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 11:19:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Sun, 15 Mar 2015 03:36:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id p45so121024916weo.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 11:19:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=IF6NWKYIeDilEMSToR39AOHpZCcr19q3W9rTONUaCtc=;
-        b=gu1rzbYU1+jn+oA/ESSFhpF2rSm/38vgIFrTLxzuToa8SLrCZxlU/YuKzOA0pRDmHb
-         RRQTkHPLXwQ4dcMr+7g/vgRPdDtIN/65fXLhggD6c8e9Jpns141EBFU8TdE85cx3556i
-         +GAbnSHo7pjVU/fJ+6NJE6fdk2/8mNm9A7ZRZ1e8/Pn/ROZnpwDlbILpUp7elcKeB6gm
-         V60vjzc1QK+lmG3B+9Z8D8ndUusD+1Y4Opp4887GRt8ojGkVC7umlWJQwcFVPvoPDILd
-         ijok6kKOOayXd4kBfN40KiS4Xoj/Tn52/KpzlRHqT3v6BWHBXqCaAepFtaN3WBJybh13
-         z6qw==
-X-Received: by 10.180.218.71 with SMTP id pe7mr13211325wic.70.1427048370771;
-        Sun, 22 Mar 2015 11:19:30 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.54.88])
-        by mx.google.com with ESMTPSA id l9sm7543535wij.16.2015.03.22.11.19.29
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 11:19:30 -0700 (PDT)
-Received: by haneen-vb (Postfix, from userid 1000)
-	id C4547C1FBB; Sun, 22 Mar 2015 21:19:21 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/2] Staging: iio: use the BIT macro in .h and adc 
-Date: Sun, 22 Mar 2015 21:17:48 +0300
-Message-Id: <1427048268-6999-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A18948CF;
+	Sun, 15 Mar 2015 10:36:45 +0000 (UTC)
+Date: Sun, 15 Mar 2015 11:36:42 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ioana Ciornei <ciorneiioana@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/7] staging: sm750: Place blank line
+ after declarations
+Message-ID: <20150315103642.GA8510@kroah.com>
+References: <cover.1426039205.git.ciorneiioana@gmail.com>
+ <614b3e2eda27d2869a8db7b20ed43ade65302d34.1426039205.git.ciorneiioana@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <614b3e2eda27d2869a8db7b20ed43ade65302d34.1426039205.git.ciorneiioana@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patchset replace bit shifting on 0,1,2, and 3 with the BIT(x) macro.
-Issue addressed by checkpatch.pl with --strict flag.
+On Wed, Mar 11, 2015 at 04:35:05AM +0200, Ioana Ciornei wrote:
+> Place blank line after each declaration, to follow the Linux coding style.
+> 
+> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+> ---
+>  drivers/staging/sm750fb/sm750.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
 
-This was done with the help of the following Coccinelle script:
+This patch doesn't apply to my tree, so I can't apply it or the rest of
+this series.  Please refresh it against my tree and resend.
 
-@r1@ 
-constant int g; 
-@@
-(
-0<<g
-|
-1<<g
-|
-2<<g
-|
-3<<g
-)
+thanks,
 
-@script:python b@
-g2 <<r1.g;
-y;
-@@
-coccinelle.y = int(g2) + 1
-
-@c@
-constant int r1.g;
-identifier b.y;
-@@
-(
--(1 << g)
-+BIT(g)
-|
--(0 << g)
-+ 0
-|
--(2 << g)
-+BIT(y)
-|
--(3 << g)
-+(BIT(y)| BIT(g))
-)
-
-
-Haneen Mohammed (2):
-  Staging: iio: use the BIT macro in .h files
-  Staging: iio: use the BIT macro in adc
-
- drivers/staging/iio/accel/adis16201.h | 18 +++++-----
- drivers/staging/iio/accel/adis16203.h | 24 ++++++-------
- drivers/staging/iio/accel/adis16204.h | 22 ++++++------
- drivers/staging/iio/accel/adis16209.h | 22 ++++++------
- drivers/staging/iio/accel/adis16220.h | 40 ++++++++++-----------
- drivers/staging/iio/accel/adis16240.h | 30 ++++++++--------
- drivers/staging/iio/adc/ad7192.c      | 64 +++++++++++++++++-----------------
- drivers/staging/iio/adc/ad7280a.c     | 58 +++++++++++++++----------------
- drivers/staging/iio/adc/ad7280a.h     |  8 ++---
- drivers/staging/iio/adc/ad7780.c      | 18 +++++-----
- drivers/staging/iio/adc/ad7816.c      |  2 +-
- drivers/staging/iio/adc/mxs-lradc.c   | 65 ++++++++++++++++++-----------------
- drivers/staging/iio/adc/spear_adc.c   |  6 ++--
- 13 files changed, 189 insertions(+), 188 deletions(-)
-
--- 
-1.9.1
-
+greg k-h
 
