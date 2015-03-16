@@ -1,74 +1,133 @@
-X-GM-THRID: 9691594752000
-X-Received: by 10.180.75.232 with SMTP id f8mr2308280wiw.0.1427133870685;
-        Mon, 23 Mar 2015 11:04:30 -0700 (PDT)
+X-GM-THRID: 8458850009088
+X-Received: by 10.180.77.165 with SMTP id t5mr6064635wiw.0.1426497101366;
+        Mon, 16 Mar 2015 02:11:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.37.229 with SMTP id b5ls849655wik.8.canary; Mon, 23 Mar
- 2015 11:04:30 -0700 (PDT)
-X-Received: by 10.180.80.132 with SMTP id r4mr2303569wix.4.1427133870335;
-        Mon, 23 Mar 2015 11:04:30 -0700 (PDT)
-Return-Path: <marianne@masu.dk>
-Received: from mail-la0-f46.google.com (mail-la0-f46.google.com. [209.85.215.46])
-        by gmr-mx.google.com with ESMTPS id b6si122359lbc.1.2015.03.23.11.04.30
+Received: by 10.153.7.172 with SMTP id dd12ls714524lad.20.gmail; Mon, 16 Mar
+ 2015 02:11:40 -0700 (PDT)
+X-Received: by 10.112.181.166 with SMTP id dx6mr6604701lbc.17.1426497100684;
+        Mon, 16 Mar 2015 02:11:40 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-we0-x230.google.com (mail-we0-x230.google.com. [2a00:1450:400c:c03::230])
+        by gmr-mx.google.com with ESMTPS id gj20si640757wic.1.2015.03.16.02.11.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Mar 2015 11:04:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marianne@masu.dk designates 209.85.215.46 as permitted sender) client-ip=209.85.215.46;
+        Mon, 16 Mar 2015 02:11:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) client-ip=2a00:1450:400c:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of marianne@masu.dk designates 209.85.215.46 as permitted sender) smtp.mail=marianne@masu.dk
-Received: by mail-la0-f46.google.com with SMTP id e1so8604116laa.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2015 11:04:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=BLGvR0mzB0FHoj9tY54eMiOybTz/M0dpT7tz50aY58g=;
-        b=HiorP6e4t40kL7XDBBwAD3rSSUMUBZE3Smp3OoqMwhSeJUIJJ4jsnZOSoCrpYkqO/B
-         yxRgnYjrZ0R+GO15rbhOC2n3yon4WVk5XWtMBLuTnaDV9gWusiX8u+cMB9z8s9Sny7pd
-         oFupfKv7iZysh7LFSoPQtn/WCPbm2zmsPRN7dvoBp84AT70jY+DLA92fPQyFPItjzEVc
-         7X507hQekZP5FImmSQu3fZXstGyFB0hQvcnIhsCyYrZaRZU0VupgTD66pbFJvdRFEUwC
-         5VvoDNTBTJsHCf3qf4zyC2LgtCZ7MAC+kjl0841KYx+7VpIQemUZKgNPzxHT8uii5GMC
-         iEQQ==
-X-Gm-Message-State: ALoCoQlyOW+J8wFpfqkHf+57TVqNPXDQX6hkE4aor70eSdDoBSHgiYBG73so6M4E3Jlnmxk4TqIf
-X-Received: by 10.112.201.231 with SMTP id kd7mr271489lbc.35.1427133869995;
-        Mon, 23 Mar 2015 11:04:29 -0700 (PDT)
-Return-Path: <marianne@masu.dk>
-Received: from debianvm (x1-6-20-4e-7f-5c-75-ca.cpe.webspeed.dk. [80.162.217.84])
-        by mx.google.com with ESMTPSA id k4sm324833laf.16.2015.03.23.11.04.28
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 23 Mar 2015 11:04:29 -0700 (PDT)
-Date: Mon, 23 Mar 2015 19:04:24 +0100
-From: Marianne Moeller Knudsen <marianne@masu.dk>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Replace printk with netdev_info
-Message-ID: <20150323180424.GA2636@debianvm>
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-x230.google.com with SMTP id p1so33122546weg.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 02:11:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ZeFfSnZX/V5G4IiEIKACXc86ry4BIEj0DxkfyfPjR5s=;
+        b=KlJioq1spzAhCknjRXuTLqRRVYTPspYBk2R5VkQWm4x7ZbqV7LhmVFBVajj+/sqDK9
+         i5LAJCHmgDb1t//mOtbk3eq9QOKcOELfU7nQpi2Ji5o/VDvAfsNhwpnr65128aAZXenb
+         bBDRjik7hBI/XfC0QEMQSNZ7+KEThiLhMU8dCvLkdQG7b1+wbFS7cHTsi9oudLYKIIUy
+         i8aJ1w2/AufLl355rM2tyj+NCsdunvzbxenXQb/gMhoWhCtCN6bLHCLts25iX+cD/tXG
+         SOyyeFxeZZHTppdThxPiZxOJu0MND2EINqoevNLILEf7XJ38G7QmD/J1oC8ETzb8PyvR
+         qDgw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.194.61.161 with SMTP id q1mr123341767wjr.132.1426497100471;
+ Mon, 16 Mar 2015 02:11:40 -0700 (PDT)
+Received: by 10.28.139.211 with HTTP; Mon, 16 Mar 2015 02:11:40 -0700 (PDT)
+In-Reply-To: <20150316000736.GA30387@Inspiron>
+References: <20150316000736.GA30387@Inspiron>
+Date: Mon, 16 Mar 2015 11:11:40 +0200
+Message-ID: <CAEnQRZCQ7eKcHDj5HMHcDnCit3WUDx=4DFkaQhu4D3VUuadmow@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: Replace const char *
+ with const char []
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Cristina Opriceana <cristina.opriceana@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Replace printk(KERN_INFO...) by netdev_info for more uniform error
-reporting. Issue found by checkpatch.
+On Mon, Mar 16, 2015 at 2:07 AM, Cristina Opriceana
+<cristina.opriceana@gmail.com> wrote:
+> Replace const char * with const char [] as the first one is represented
+> in memory as a pointer which points to a string and the second one only
+> as a single variable in which it copies the contents.
+>
+> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+> ---
+> This can be tested by generating assembly code for the two cases;
+> This platform also offers a simple view: http://assembly.ynh.io/.
+>
+>  drivers/staging/iio/Documentation/iio_utils.h | 2 +-
+>  drivers/staging/iio/Documentation/lsiio.c     | 4 ++--
+>  drivers/staging/iio/iio_dummy_evgen.c         | 2 +-
+>  drivers/staging/iio/iio_simple_dummy.c        | 2 +-
+>  4 files changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/iio/Documentation/iio_utils.h b/drivers/staging/iio/Documentation/iio_utils.h
+> index bd6982c..aa9570a 100644
+> --- a/drivers/staging/iio/Documentation/iio_utils.h
+> +++ b/drivers/staging/iio/Documentation/iio_utils.h
+> @@ -23,7 +23,7 @@
+>  #define FORMAT_SCAN_ELEMENTS_DIR "%s/scan_elements"
+>  #define FORMAT_TYPE_FILE "%s_type"
+>
+> -const char *iio_dir = "/sys/bus/iio/devices/";
+> +const char iio_dir[] = "/sys/bus/iio/devices/";
+>
+>  /**
+>   * iioutils_break_up_name() - extract generic name from full channel name
+> diff --git a/drivers/staging/iio/Documentation/lsiio.c b/drivers/staging/iio/Documentation/lsiio.c
+> index 98a0de0..50b0c70 100644
+> --- a/drivers/staging/iio/Documentation/lsiio.c
+> +++ b/drivers/staging/iio/Documentation/lsiio.c
+> @@ -26,8 +26,8 @@ static enum verbosity {
+>         VERBLEVEL_SENSORS,      /* 1 lists sensors */
+>  } verblevel = VERBLEVEL_DEFAULT;
+>
+> -const char *type_device = "iio:device";
+> -const char *type_trigger = "trigger";
+> +const char type_device[] = "iio:device";
+> +const char type_trigger[] = "trigger";
 
-Signed-off-by: Marianne Moeller Knudsen <marianne@masu.dk>
----
- drivers/staging/rtl8192e/rtl819x_TSProc.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This will generate a conflict when merged with IIO tree, since parts
+of Documentation/
+(e.g lsiio.c iio_utils.h) were moved out of stating.
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-index c51f7e0..949cba4 100644
---- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-@@ -479,7 +479,7 @@ void RemovePeerTS(struct rtllib_device *ieee, u8 *Addr)
- 
- 	list_for_each_entry_safe(pTS, pTmpTS, &ieee->Tx_TS_Admit_List, List) {
- 		if (memcmp(pTS->Addr, Addr, 6) == 0) {
--			printk(KERN_INFO "====>remove Tx_TS_admin_list\n");
-+			netdev_info(ieee->dev, "====>remove Tx_TS_admin_list\n");
- 			RemoveTsEntry(ieee, pTS, TX_DIR);
- 			list_del_init(&pTS->List);
- 			list_add_tail(&pTS->List, &ieee->Tx_TS_Unused_List);
--- 
-1.7.10.4
+https://git.kernel.org/cgit/linux/kernel/git/jic23/iio.git/commit/?h=testing&id=817020cfb3a2649064a1e14e083934234e2c208d
 
+
+>
+>
+>  static inline int check_prefix(const char *str, const char *prefix)
+> diff --git a/drivers/staging/iio/iio_dummy_evgen.c b/drivers/staging/iio/iio_dummy_evgen.c
+> index 59ad5a3..866e366 100644
+> --- a/drivers/staging/iio/iio_dummy_evgen.c
+> +++ b/drivers/staging/iio/iio_dummy_evgen.c
+> @@ -47,7 +47,7 @@ struct iio_dummy_eventgen {
+>
+>  /* We can only ever have one instance of this 'device' */
+>  static struct iio_dummy_eventgen *iio_evgen;
+> -static const char *iio_evgen_name = "iio_dummy_evgen";
+> +static const char iio_evgen_name[] = "iio_dummy_evgen";
+>
+>  static void iio_dummy_event_irqmask(struct irq_data *d)
+>  {
+> diff --git a/drivers/staging/iio/iio_simple_dummy.c b/drivers/staging/iio/iio_simple_dummy.c
+> index 8341dce..4fe1073 100644
+> --- a/drivers/staging/iio/iio_simple_dummy.c
+> +++ b/drivers/staging/iio/iio_simple_dummy.c
+> @@ -36,7 +36,7 @@ module_param(instances, int, 0);
+>  static struct iio_dev **iio_dummy_devs;
+>
+>  /* Fake a name for the part number, usually obtained from the id table */
+> -static const char *iio_dummy_part_number = "iio_dummy_part_no";
+> +static const char iio_dummy_part_number[] = "iio_dummy_part_no";
+>
+>  /**
+>   * struct iio_dummy_accel_calibscale - realworld to register mapping
+
+I'm not sure I see the benefit of this patch.
+
+Any other opinions?
+
+Daniel.
 
