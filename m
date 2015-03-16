@@ -1,94 +1,76 @@
-X-GM-THRID: 9541992316928
-X-Received: by 10.236.228.106 with SMTP id e100mr94426545yhq.21.1426998443363;
-        Sat, 21 Mar 2015 21:27:23 -0700 (PDT)
+X-GM-THRID: 8441271681024
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,357f64e33847ef5b
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.18.102 with SMTP id v6mr67306450obd.11.1426519570511;
+        Mon, 16 Mar 2015 08:26:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.233 with SMTP id 102ls1567595iom.25.gmail; Sat, 21 Mar
- 2015 21:27:23 -0700 (PDT)
-X-Received: by 10.66.124.198 with SMTP id mk6mr92324454pab.22.1426998443092;
-        Sat, 21 Mar 2015 21:27:23 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id iw3si354551pbd.1.2015.03.21.21.27.23
+Received: by 10.107.39.74 with SMTP id n71ls2049979ion.54.gmail; Mon, 16 Mar
+ 2015 08:26:10 -0700 (PDT)
+X-Received: by 10.66.162.137 with SMTP id ya9mr61640642pab.47.1426519570321;
+        Mon, 16 Mar 2015 08:26:10 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ni4si1961425pdb.2.2015.03.16.08.26.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 21:27:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Mon, 16 Mar 2015 08:26:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id we9so153184896pac.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 21:27:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=6O5f/ro4Ha513WWizkftsQaPGHOFle14K0r4fMWfRnk=;
-        b=upPkR1gW93dDtGFpsihRsdT1c6QDY1N2yXJ471nx/RbFzvk2YMxYR1SKGMO5W1Jc3n
-         cicV88Mb/8zN05d6d2yOMcohTUncnXpdZVwXQhx8w3VYWZm4O5Wdc4OEfIwP/5B148Cj
-         PDq5iR7l624zshTFd5vqHOOd8JyOACHH4fgYB9oLTWbQv/WyCVejSo6vO3syU3DNpiNN
-         TDs/XHPq19es5zdzggzL7iyM29/JnBRMiGEWTdS9erkePnsfC4ycjIUVZLSLvbwi4AHN
-         JCOwNGPbB7eQ37exid6IZRymCj1lp72GWd0wf493P/e6nlu17bOaQy8RGFh0of4e46Ig
-         XVPw==
-X-Received: by 10.70.109.197 with SMTP id hu5mr127544190pdb.98.1426998442964;
-        Sat, 21 Mar 2015 21:27:22 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.249.51])
-        by mx.google.com with ESMTPSA id id2sm3303604pbb.56.2015.03.21.21.27.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 21:27:22 -0700 (PDT)
-Date: Sun, 22 Mar 2015 09:57:18 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 4/5] Staging: sm750fb: Remove spaces in
- front of lines
-Message-ID: <20150322042718.GA30193@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (samsung-greg.wifi.rsr.lip6.fr [132.227.77.84])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 6F0EFAC6;
+	Mon, 16 Mar 2015 15:26:09 +0000 (UTC)
+Date: Mon, 16 Mar 2015 16:26:07 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: fbtft: Remove unnecessary
+ parenthesis and split lines to increase readability
+Message-ID: <20150316152607.GC22971@kroah.com>
+References: <20150315115705.GA28579@akanksha>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20150315115705.GA28579@akanksha>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixes checkpatch.pl warning by using tabs instead of spaces.
-WARNING: please, no spaces at the start of a line.
+On Sun, Mar 15, 2015 at 05:27:05PM +0530, Vatika Harlalka wrote:
+> Remove unnecessary parenthesis in condition statement and
+> split lines to increase readability.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  Changes in v2: Changed subject line to make it more
+> 		descriptive.
+>  drivers/staging/fbtft/fb_ra8875.c | 16 ++++++++++------
+>  1 file changed, 10 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
+> index e21af6c..bc8ca1e 100644
+> --- a/drivers/staging/fbtft/fb_ra8875.c
+> +++ b/drivers/staging/fbtft/fb_ra8875.c
+> @@ -72,12 +72,13 @@ static int init_display(struct fbtft_par *par)
+>  
+>  	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par,
+>  		"%s()\n", __func__);
+> -	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par,
+> -		"display size %dx%d\n", par->info->var.xres, par->info->var.yres);
+> +	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "display size %dx%d\n",
+> +			par->info->var.xres, par->info->var.yres);
+>  
+>  	par->fbtftops.reset(par);
+>  
+> -	if ((par->info->var.xres == 320) && (par->info->var.yres == 240)) {
+> +	if (par->info->var.xres == 320 &&
+> +		par->info->var.yres == 240) {
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+While yes, these () are not needed, it's good to keep them there, just
+to be "obvious" as to what is going on.  So they are fine to leave
+alone.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 0b6baae..a1672c8 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -170,8 +170,8 @@ void setMemoryClock(unsigned int frequency)
- 		break;
- 	}
- 
--        setCurrentGate(ulReg);
--    }
-+	setCurrentGate(ulReg);
-+	}
- }
- 
- 
-@@ -185,13 +185,13 @@ void setMemoryClock(unsigned int frequency)
-  */
- void setMasterClock(unsigned int frequency)
- {
--    unsigned int ulReg, divisor;
-+	unsigned int ulReg, divisor;
-   #if 1
- 	/* Cheok_0509: For SM750LE, the memory clock is fixed. Nothing to set. */
- 	if (getChipType() == SM750LE)
- 		return;
- #endif
--    if (frequency != 0)
-+	if (frequency != 0)
-     {
-         /* Set the frequency to the maximum frequency that the SM750 engine can
-            run, which is about 190 MHz. */
--- 
-1.9.1
+thanks,
 
+greg k-h
 
