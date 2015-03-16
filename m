@@ -1,52 +1,48 @@
 X-GM-THRID: 8658120343552
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,2a5fd0519661ea9d
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.133.69 with SMTP id pa5mr63635885obb.32.1426533520039;
-        Mon, 16 Mar 2015 12:18:40 -0700 (PDT)
+X-Received: by 10.140.146.5 with SMTP id 5mr55350878qhs.4.1426533512889;
+        Mon, 16 Mar 2015 12:18:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.57.42 with SMTP id f10ls1099531igq.14.canary; Mon, 16 Mar
- 2015 12:18:39 -0700 (PDT)
-X-Received: by 10.42.99.140 with SMTP id w12mr31632742icn.12.1426533519841;
-        Mon, 16 Mar 2015 12:18:39 -0700 (PDT)
+Received: by 10.50.134.99 with SMTP id pj3ls1059354igb.5.gmail; Mon, 16 Mar
+ 2015 12:18:32 -0700 (PDT)
+X-Received: by 10.50.43.170 with SMTP id x10mr12802857igl.2.1426533512666;
+        Mon, 16 Mar 2015 12:18:32 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id l3si2116026pdo.0.2015.03.16.12.18.39
+Received: from mail-pd0-x231.google.com (mail-pd0-x231.google.com. [2607:f8b0:400e:c02::231])
+        by gmr-mx.google.com with ESMTPS id gu4si2104859pac.1.2015.03.16.12.18.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 12:18:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Mon, 16 Mar 2015 12:18:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) client-ip=2607:f8b0:400e:c02::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id we9so73204272pac.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 12:18:39 -0700 (PDT)
+Received: by mail-pd0-x231.google.com with SMTP id op1so66307717pdb.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 12:18:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references:content-type:content-transfer-encoding;
-        bh=0V9D9Zfsxmk55kanwpqCQw4U/kGr9rwVFDVZxApFI9Q=;
-        b=frg4QQ/18mpzBzdTF/tmxKLoWvNXAkjkyz9La5FVwZsuZRILesX/AmL/aHIbuQkmp1
-         LyNXxMeCBbkdhOdLTMNOmkWOYsNGLQtnF7VODO7sJBE7cDVyKTO3PD45quSLEDFL/Il7
-         YIOiQYfggNcFI09A8znI5OTimXnvR0a2j0ZRUb70J/wqwSzI/8iEdWlIR+HTtzBCASi1
-         IFqYzE42KQt0tJUy+Q7vVsfYqrgNMCAEJsv88/ht0eiG5wdHz0Rj5LFEIoNzwkEUwz9h
-         5s6h2UBxZGt/BDt0o4Vkqu7FTAWfJk6vApqJru4hxizKgtr4Tr30FIUhnP8FYdJ+fR9+
-         NSMA==
-X-Received: by 10.70.28.130 with SMTP id b2mr142338513pdh.48.1426533519702;
-        Mon, 16 Mar 2015 12:18:39 -0700 (PDT)
+        bh=txF4KgoEdw9EF5Q+6cY6+qFl0j0QhnuJrQPDUv8Hogw=;
+        b=A7UPo15f8xd/U2HCmLsT/ZKBm8q1C23C16xwKLLnVLexNu1jCEVTpwLk2XZsXHxqQ6
+         9TSGIrPskHUtajlJ33t0mGDnOHjwwVATyTmj8ZHpP4kIo50iOs0wSIvJZEuKOTU7gSaT
+         qGHu2ka6RCHuFD/MKrF8/yMOMUsjaMiufsWNYV9nWGLh9exGuqE1Lgia1FzyPmcfopwS
+         ZHhoFXZxkC/WyHeFWqbo2rF8vSdEPZc1abcmeJ5MG3NkwVm4n7GLIhtG2FcmK9xX/k9k
+         mtVCfJ6u4kUhhLJIvCatl+fuEClQ1gYuEv6kP30EmKM4hwTTC7jcyrShTXWFtudGEN3r
+         /VjA==
+X-Received: by 10.70.100.39 with SMTP id ev7mr123164935pdb.29.1426533512545;
+        Mon, 16 Mar 2015 12:18:32 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
 Received: from localhost ([115.242.162.199])
-        by mx.google.com with ESMTPSA id or3sm18571506pdb.15.2015.03.16.12.18.37
+        by mx.google.com with ESMTPSA id kd9sm18624076pab.0.2015.03.16.12.18.30
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 16 Mar 2015 12:18:38 -0700 (PDT)
+        Mon, 16 Mar 2015 12:18:31 -0700 (PDT)
 From: Darshana Padmadas <darshanapadmadas@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH 2/5] Staging: rtl8192e: Use ether_addr_copy instead of memcpy
-Date: Tue, 17 Mar 2015 00:48:12 +0530
-Message-Id: <505785ea794f8d40840c64751e8156bdd857b9cc.1426533157.git.darshanapadmadas@gmail.com>
+Subject: [PATCH 1/5] Staging: rtl8192e: Replace memcpy with ether_addr_copy
+Date: Tue, 17 Mar 2015 00:48:11 +0530
+Message-Id: <07d5dca03ac0a1d777e133546e2f914e36efeb3f.1426533157.git.darshanapadmadas@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1426533157.git.darshanapadmadas@gmail.com>
 References: <cover.1426533157.git.darshanapadmadas@gmail.com>
@@ -55,69 +51,50 @@ References: <cover.1426533157.git.darshanapadmadas@gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
-This patch replaces use of memcpy with ether_addr_copy since
-the addresses for struct of hdr11 are aligned as shown by Pahole
-and hdr is of type u8.
+This patch fixes the following warning found by checkpatch.pl:
+Prefer ether_addr_copy() over memcpy() if the Ethernet addresses are __aligned(2
 
-struct rtllib_hdr_4addr {
+Pahole showed that the structure for BAReq and Delba is aligned:
+struct rtllib_hdr_3addr {
 	__le16                     frame_ctl;            /*     0     2 */
 	__le16                     duration_id;          /*     2     2 */
 	u8                         addr1[6];             /*     4     6 */
 	u8                         addr2[6];             /*    10     6 */
 	u8                         addr3[6];             /*    16     6 */
 	__le16                     seq_ctl;              /*    22     2 */
-	u8                         addr4[6];             /*    24     6 */
-	u8                         payload[0];           /*    30     0 */
+	u8                         payload[0];           /*    24     0 */
 
-	/* size: 30, cachelines: 1, members: 8 */
-	/* last cacheline: 30 bytes */
+	/* size: 24, cachelines: 1, members: 7 */
+	/* last cacheline: 24 bytes */
 };
-
-The following checkpatch warning is eliminated:
-WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet addresses are __aligned(2)
 
 Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_crypt_tkip.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-index 78db2b6..68a7fa6 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-@@ -525,19 +525,19 @@ static void michael_mic_hdr(struct sk_buff *skb, u8 *hdr)
- 	switch (le16_to_cpu(hdr11->frame_ctl) &
- 		(RTLLIB_FCTL_FROMDS | RTLLIB_FCTL_TODS)) {
- 	case RTLLIB_FCTL_TODS:
--		memcpy(hdr, hdr11->addr3, ETH_ALEN); /* DA */
-+		ether_addr_copy(hdr, hdr11->addr3); /* DA */
- 		memcpy(hdr + ETH_ALEN, hdr11->addr2, ETH_ALEN); /* SA */
- 		break;
- 	case RTLLIB_FCTL_FROMDS:
--		memcpy(hdr, hdr11->addr1, ETH_ALEN); /* DA */
-+		ether_addr_copy(hdr, hdr11->addr1); /* DA */
- 		memcpy(hdr + ETH_ALEN, hdr11->addr3, ETH_ALEN); /* SA */
- 		break;
- 	case RTLLIB_FCTL_FROMDS | RTLLIB_FCTL_TODS:
--		memcpy(hdr, hdr11->addr3, ETH_ALEN); /* DA */
-+		ether_addr_copy(hdr, hdr11->addr3); /* DA */
- 		memcpy(hdr + ETH_ALEN, hdr11->addr4, ETH_ALEN); /* SA */
- 		break;
- 	case 0:
--		memcpy(hdr, hdr11->addr1, ETH_ALEN); /* DA */
-+		ether_addr_copy(hdr, hdr11->addr1); /* DA */
- 		memcpy(hdr + ETH_ALEN, hdr11->addr2, ETH_ALEN); /* SA */
- 		break;
- 	}
-@@ -591,7 +591,7 @@ static void rtllib_michael_mic_failure(struct net_device *dev,
- 	else
- 		ev.flags |= IW_MICFAILURE_PAIRWISE;
- 	ev.src_addr.sa_family = ARPHRD_ETHER;
--	memcpy(ev.src_addr.sa_data, hdr->addr2, ETH_ALEN);
-+	ether_addr_copy(ev.src_addr.sa_data, hdr->addr2);
- 	memset(&wrqu, 0, sizeof(wrqu));
- 	wrqu.data.length = sizeof(ev);
- 	wireless_send_event(dev, IWEVMICHAELMICFAILURE, &wrqu, (char *) &ev);
+diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+index 0415e02..9bab409 100644
+--- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+@@ -103,7 +103,7 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+ 	BAReq = (struct rtllib_hdr_3addr *)skb_put(skb,
+ 		 sizeof(struct rtllib_hdr_3addr));
+ 
+-	memcpy(BAReq->addr1, Dst, ETH_ALEN);
++	ether_addr_copy(BAReq->addr1, Dst);
+ 	memcpy(BAReq->addr2, ieee->dev->dev_addr, ETH_ALEN);
+ 
+ 	memcpy(BAReq->addr3, ieee->current_network.bssid, ETH_ALEN);
+@@ -168,7 +168,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
+ 	Delba = (struct rtllib_hdr_3addr *) skb_put(skb,
+ 		 sizeof(struct rtllib_hdr_3addr));
+ 
+-	memcpy(Delba->addr1, dst, ETH_ALEN);
++	ether_addr_copy(Delba->addr1, dst);
+ 	memcpy(Delba->addr2, ieee->dev->dev_addr, ETH_ALEN);
+ 	memcpy(Delba->addr3, ieee->current_network.bssid, ETH_ALEN);
+ 	Delba->frame_ctl = cpu_to_le16(RTLLIB_STYPE_MANAGE_ACT);
 -- 
 1.9.1
 
