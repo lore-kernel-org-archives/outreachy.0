@@ -1,74 +1,131 @@
-X-GM-THRID: 1263646277632
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b53554fe122ef8f1,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.214.234 with SMTP id od10mr101564lbc.3.1424433671446;
-        Fri, 20 Feb 2015 04:01:11 -0800 (PST)
+X-GM-THRID: 6865699209216
+X-Received: by 10.112.130.70 with SMTP id oc6mr9517359lbb.13.1426517560628;
+        Mon, 16 Mar 2015 07:52:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.87.210 with SMTP id ba18ls239964lab.78.gmail; Fri, 20 Feb
- 2015 04:01:10 -0800 (PST)
-X-Received: by 10.152.36.132 with SMTP id q4mr11037laj.6.1424433670026;
-        Fri, 20 Feb 2015 04:01:10 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x231.google.com (mail-wg0-x231.google.com. [2a00:1450:400c:c00::231])
-        by gmr-mx.google.com with ESMTPS id ta1si90545wic.1.2015.02.20.04.01.09
+Received: by 10.180.80.68 with SMTP id p4ls639933wix.6.gmail; Mon, 16 Mar 2015
+ 07:52:40 -0700 (PDT)
+X-Received: by 10.180.90.169 with SMTP id bx9mr6494164wib.6.1426517559941;
+        Mon, 16 Mar 2015 07:52:39 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id bz6si699991wib.3.2015.03.16.07.52.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 04:01:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) client-ip=2a00:1450:400c:c00::231;
+        Mon, 16 Mar 2015 07:52:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f49.google.com with SMTP id l18so12714543wgh.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 04:01:09 -0800 (PST)
+Received: by mail-wi0-x22b.google.com with SMTP id j2so45660502wif.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 07:52:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=+2MI2vGMZKS/ehYntL8QEdmTYVpIp20EY3AbmNQX1DE=;
-        b=l+ivH1r7X+O/83w3vJQnAX5Ksxj0WhtMCZ/jjMNNeP6ts8ka7l7PnaVH7PQOWPqEBT
-         db3enYVaGtoFNznRSA6Yoq+Oe4dZfzNmkcSRwFDeTEIJeYD/ef0/YXZ0L42c2oJleSYw
-         e3cUc0xio8aH2TF1t5kK2C2MNfsoeAkcoSSOHs3YY8+IoJyCUf9JfwIPFyYIK9NTcvbv
-         n/BtVgOu+gBkQfEc0PbabR9aZw9BFapRNJeIsxtlVPYyNNfAXanH7lG9+MsR067shnvE
-         rlJ8IE9ChoJXKb3RAD50G5Rq76a7lhm8zozcSkrera2tEfY/blsDKusG1Vu7cw8FN5Vm
-         CImg==
-X-Received: by 10.194.240.164 with SMTP id wb4mr18016870wjc.66.1424433669871;
-        Fri, 20 Feb 2015 04:01:09 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.192.151])
-        by mx.google.com with ESMTPSA id cb14sm2053863wib.22.2015.02.20.04.01.08
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 04:01:09 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: dgnc: Add blank line
-Date: Fri, 20 Feb 2015 14:01:10 +0200
-Message-Id: <1424433670-7218-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=pyziYIK4tLwF4tp+rugaB/F5ebboecIr62jz9oAmcSs=;
+        b=ayqclogaCRZfb2KXRm5TjeckJ/O6y50/dCsakfj9b+UpSyTvwhVPivyUao7PYAHgKW
+         92xiV+/KzS13Jzt4b9ulLZWJQX07bsnVIJ8Zy0PclYGmhEBVBZ+JJu7QQiWFZ//Y3mTb
+         LYuWJtD60rFilwOHHBdE0Wv3Zn5WWn+HfvGT5DUnTT1MUDBzF3y6IXH1HAVGfWn3scm1
+         CaZedswjaJk6sYLLYzf+KglglqplPUv58uxuXi+jfRdi/mpl+gWVNuL7qaQawrSYIezn
+         D5LqMq6q8+kzF7NgVVLf2VTyedmoFSVRo9Ul88aNFlwloGPnnr8QLt0DgY5asVWSLeVo
+         KA2g==
+MIME-Version: 1.0
+X-Received: by 10.194.77.99 with SMTP id r3mr125217679wjw.149.1426517559866;
+ Mon, 16 Mar 2015 07:52:39 -0700 (PDT)
+Received: by 10.194.13.168 with HTTP; Mon, 16 Mar 2015 07:52:39 -0700 (PDT)
+Received: by 10.194.13.168 with HTTP; Mon, 16 Mar 2015 07:52:39 -0700 (PDT)
+In-Reply-To: <20150316144706.GA24906@kroah.com>
+References: <cover.1426054595.git.vthakkar1994@gmail.com>
+	<20150316144706.GA24906@kroah.com>
+Date: Mon, 16 Mar 2015 20:22:39 +0530
+Message-ID: <CAK-LDbLeFNsksDmoZvH+FzCDQznC7J0OG5TFAoNOZEkZcwXerA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [RESEND PATCH 0/2] Staging: rtl8712: Use del_timer_sync
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=047d7bfd09186bfb00051169002d
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Missing a blank line after declarations"
+--047d7bfd09186bfb00051169002d
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/dgnc/dgnc_tty.c | 1 +
- 1 file changed, 1 insertion(+)
+On Mar 16, 2015 8:17 PM, "Greg KH" <gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Mar 11, 2015 at 11:50:39AM +0530, Vaishali Thakkar wrote:
+> > This patch-set introduces the use of timer API function
+> > del_timer_sync instead of driver specific functions
+> > _cancel_timer_ex and _cancel_timer. Though definition
+> > of these functions were returning del_timer, here
+> > del_timer_sync is a preferred solution as besides
+> > deactivating a timer, it also ensures that the timer is
+> > stopped on all CPUs before the driver exists.
+> >
+> > All of these changes are done using Coccinelle.
+> >
+> > Vaishali Thakkar (2):
+> >   Staging: rtl8712: Eliminate _cancel_timer_ex
+> >   Staging: rtl8712: Eliminate use of _cancel_timer
+> >
+> >  drivers/staging/rtl8712/os_intfs.c        |  14 +--
+> >  drivers/staging/rtl8712/osdep_service.h   |  11 ---
+> >  drivers/staging/rtl8712/rtl8712_led.c     | 146
++++++++++++++++---------------
+> >  drivers/staging/rtl8712/rtl871x_cmd.c     |   3 +-
+> >  drivers/staging/rtl8712/rtl871x_mlme.c    |  10 +-
+> >  drivers/staging/rtl8712/rtl871x_pwrctrl.c |   2 +-
+> >  drivers/staging/rtl8712/rtl871x_sta_mgt.c |   2 +-
+> >  drivers/staging/rtl8712/rtl871x_xmit.c    |   5 +-
+> >  8 files changed, 88 insertions(+), 105 deletions(-)
+>
+> Why is this a "resend"?  did I miss the first version?
 
-diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
-index 67dc8ef..7a31fbf 100644
---- a/drivers/staging/dgnc/dgnc_tty.c
-+++ b/drivers/staging/dgnc/dgnc_tty.c
-@@ -3066,6 +3066,7 @@ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 	case DIGI_REALPORT_SENDIMMEDIATE:
- 	{
- 		unsigned char c;
-+
- 		DGNC_UNLOCK(ch->ch_lock, lock_flags);
- 		rc = get_user(c, (unsigned char __user *) arg);
- 		if (rc)
--- 
-1.8.3.2
+Yes. First version was not in your patch queue. So, you told me to resend.
 
+--047d7bfd09186bfb00051169002d
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<p><br>
+On Mar 16, 2015 8:17 PM, &quot;Greg KH&quot; &lt;<a href=3D"mailto:gregkh@l=
+inuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On Wed, Mar 11, 2015 at 11:50:39AM +0530, Vaishali Thakkar wrote:<br>
+&gt; &gt; This patch-set introduces the use of timer API function<br>
+&gt; &gt; del_timer_sync instead of driver specific functions<br>
+&gt; &gt; _cancel_timer_ex and _cancel_timer. Though definition<br>
+&gt; &gt; of these functions were returning del_timer, here<br>
+&gt; &gt; del_timer_sync is a preferred solution as besides<br>
+&gt; &gt; deactivating a timer, it also ensures that the timer is<br>
+&gt; &gt; stopped on all CPUs before the driver exists.<br>
+&gt; &gt;<br>
+&gt; &gt; All of these changes are done using Coccinelle.<br>
+&gt; &gt;<br>
+&gt; &gt; Vaishali Thakkar (2):<br>
+&gt; &gt;=C2=A0 =C2=A0Staging: rtl8712: Eliminate _cancel_timer_ex<br>
+&gt; &gt;=C2=A0 =C2=A0Staging: rtl8712: Eliminate use of _cancel_timer<br>
+&gt; &gt;<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/os_intfs.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 14 +--<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/osdep_service.h=C2=A0 =C2=A0|=C2=A0=
+ 11 ---<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/rtl8712_led.c=C2=A0 =C2=A0 =C2=A0| =
+146 +++++++++++++++---------------<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/rtl871x_cmd.c=C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 =C2=A03 +-<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/rtl871x_mlme.c=C2=A0 =C2=A0 |=C2=A0=
+ 10 +-<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/rtl871x_pwrctrl.c |=C2=A0 =C2=A02 +=
+-<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/rtl871x_sta_mgt.c |=C2=A0 =C2=A02 +=
+-<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8712/rtl871x_xmit.c=C2=A0 =C2=A0 |=C2=A0=
+ =C2=A05 +-<br>
+&gt; &gt;=C2=A0 8 files changed, 88 insertions(+), 105 deletions(-)<br>
+&gt;<br>
+&gt; Why is this a &quot;resend&quot;?=C2=A0 did I miss the first version?<=
+/p>
+<p>Yes. First version was not in your patch queue. So, you told me to resen=
+d.</p>
+
+--047d7bfd09186bfb00051169002d--
 
