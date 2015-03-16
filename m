@@ -1,159 +1,147 @@
 X-GM-THRID: 8354230435840
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,4a466ff2e2b78213
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.233.5 with SMTP id ts5mr52917068pac.27.1426606543255;
-        Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
+X-Received: by 10.112.97.37 with SMTP id dx5mr633990lbb.15.1426520498695;
+        Mon, 16 Mar 2015 08:41:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.83.209 with SMTP id j75ls191738qgd.1.gmail; Tue, 17 Mar
- 2015 08:35:43 -0700 (PDT)
-X-Received: by 10.236.223.166 with SMTP id v36mr68146906yhp.45.1426606543053;
-        Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
-        by gmr-mx.google.com with ESMTPS id e5si1693885qcg.1.2015.03.17.08.35.43
+Received: by 10.152.37.194 with SMTP id a2ls634212lak.88.gmail; Mon, 16 Mar
+ 2015 08:41:38 -0700 (PDT)
+X-Received: by 10.112.224.12 with SMTP id qy12mr9159740lbc.10.1426520497627;
+        Mon, 16 Mar 2015 08:41:37 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wg0-x22c.google.com (mail-wg0-x22c.google.com. [2a00:1450:400c:c00::22c])
+        by gmr-mx.google.com with ESMTPS id sf8si713663wic.2.2015.03.16.08.41.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
+        Mon, 16 Mar 2015 08:41:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) client-ip=2a00:1450:400c:c00::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22b.google.com with SMTP id 3so11346693qgf.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
+Received: by mail-wg0-x22c.google.com with SMTP id v3so43283592wgg.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 08:41:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:message-id:date:user-agent:mime-version:to:subject:references
-         :in-reply-to:content-type:content-transfer-encoding;
-        bh=EvKwlO4LGwScH4z6t51FWOm2P+VkuD3IpDWVQYbRhAU=;
-        b=aIiQML9moiB3A1ErWywNAOcrR2tgQlniuqVf6OAlG7s965du/AmSi2BkJOl4Ywispy
-         uIZXpXMzi32HTwASXf/7doyPC2uACuwIYpn8rXuxL5Qm13DGtKMKuYu7rXLazErdKKSN
-         riYqUpipZPnQL1SbYnnY7WpCFas8m2TdoWZEhbK+SRFhjLie0HLKlXg/9zciJOxzBPW7
-         5mK/8gTdXBZLzEONZ1AO8lsi4Ba+eUwM3UdGuAQVaS48IbxrBcM9lJ1Lz7QAAsD3sZjo
-         pp1ZDS0QPwp6DF3lPjNuMaGxRDYSEG3wfC45JSsDZDsPlW/ONZUkdZ9rD4W0n4IPfEb0
-         2ajA==
-X-Received: by 10.55.17.222 with SMTP id 91mr100847213qkr.17.1426606542963;
-        Tue, 17 Mar 2015 08:35:42 -0700 (PDT)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
-        by mx.google.com with ESMTPSA id 81sm9784139qhh.46.2015.03.17.08.35.41
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=2EfWRjqPYKvz8C2PbVh4dRVExYdRTCAjrPRZs4ZLqzM=;
+        b=h7+0GbVdRDIHes4bMJR+SGPYrf7SDogm/6u+5wvcOiZSdBs85DaeVyEFH3wLj41Hgn
+         arGJd6Yi87P9ktmiDpGcW1RV4Wi24kBprQumk1mi8/4tX7CK/+opRbYl0U/WgfqbhRvm
+         RzEcAiTvHbw3+Pq1fARucKKW5+L1S8BKaLoRtHq4suOS8EsY1DJ4/zRz9drwQV39yCe9
+         RNhaGtHkLCZ7oNPtv2WL0MLIduivlV95jUpsMZItbiB/oh68oc4OM371zGDEAVK6JhgZ
+         51DS9NM6xNbDIBWav9p6hyLjCkh+6yo99xtJ+Hl7/r9ev64gP1frzfujWGhCG7/w4lM4
+         jmcQ==
+X-Received: by 10.180.84.3 with SMTP id u3mr53701771wiy.38.1426520497398;
+        Mon, 16 Mar 2015 08:41:37 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneen-vb ([79.170.55.48])
+        by mx.google.com with ESMTPSA id dm6sm15850364wib.22.2015.03.16.08.41.35
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2015 08:35:42 -0700 (PDT)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <550849CD.10900@gmail.com>
-Date: Tue, 17 Mar 2015 11:35:41 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
-MIME-Version: 1.0
-To: Haneen Mohammed <hamohammed.sa@gmail.com>, 
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8712: replace memcpy
- with ether_addr_copy
-References: <20150316144736.GB24906@kroah.com> <1426520491-6131-1-git-send-email-hamohammed.sa@gmail.com>
-In-Reply-To: <1426520491-6131-1-git-send-email-hamohammed.sa@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+        Mon, 16 Mar 2015 08:41:36 -0700 (PDT)
+Received: by haneen-vb (Postfix, from userid 1000)
+	id 8E5B9C1F5A; Mon, 16 Mar 2015 18:41:32 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH v2] Staging: rtl8712: replace memcpy with ether_addr_copy
+Date: Mon, 16 Mar 2015 18:41:31 +0300
+Message-Id: <1426520491-6131-1-git-send-email-hamohammed.sa@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <20150316144736.GB24906@kroah.com>
+References: <20150316144736.GB24906@kroah.com>
 
-On 03/16/15 11:41, Haneen Mohammed wrote:
-> This patch replace memcpy with ethe_addr_copy to address the following
-> warning generated by checkpatch.pl: ""Prefer ether_addr_copy over memcpy
-> if the Ethernet addresses are __aligned(2)"
-> 
-> Follwoing is the output of pahole for the relevant datastructures:
-> 1- for  "iwe.u.ap_addr.sa_data" and "wrqu->ap_addr.sa_data"
-> 
-> struct sockaddr {
->         sa_family_t                sa_family;            /*     0     2 */
->         char                       sa_data[14];          /*     2    14 */
-> 
->         /* size: 16, cachelines: 1, members: 2 */
->         /* last cacheline: 16 bytes */
-> };
-> 
-> struct iw_event {
->         __u16                      len;                  /*     0     2 */
->         __u16                      cmd;                  /*     2     2 */
-> 
->         /* XXX 4 bytes hole, try to pack */
-> 
->         union iwreq_data           u;                    /*     8    16 */
-> 
->         /* size: 24, cachelines: 1, members: 3 */
->         /* sum members: 20, holes: 1, sum holes: 4 */
->         /* last cacheline: 24 bytes */
-> };
-> 
-> 2- for  "pnetwork->network.MacAddress" and "pcur_bss->MacAddress"
-> 
-> struct wlan_network {
->         struct list_head           list;                 /*     0    16 */
->         int                        network_type;         /*    16     4 */
->         int                        fixed;                /*    20     4 */
->         unsigned int               last_scanned;         /*    24     4 */
->         int                        aid;                  /*    28     4 */
->         int                        join_res;             /*    32     4 */
->         struct ndis_wlan_bssid_ex  network;              /*    36   884 */
->         /* --- cacheline 14 boundary (896 bytes) was 24 bytes ago ---   */
-> 
->         /* size: 920, cachelines: 15, members: 7 */
->         /* last cacheline: 24 bytes */
-> };
-> 
-> struct ndis_wlan_bssid_ex {
->         u32                        Length;               /*     0     4 */
->         unsigned char              MacAddress[6];        /*     4     6 */
->         u8                         Reserved[2];          /*    10     2 */
->         struct ndis_802_11_ssid    Ssid;                 /*    12    36 */
->         u32                        Privacy;              /*    48     4 */
->         s32                        Rssi;                 /*    52     4 */
->         enum NDIS_802_11_NETWORK_TYPE NetworkTypeInUse;  /*    56     4 */
->         struct NDIS_802_11_CONFIGURATION Configuration;  /*    60    32 */
->         /* --- cacheline 1 boundary (64 bytes) was 28 bytes ago --- */
->         enum NDIS_802_11_NETWORK_INFRASTRUCTURE InfrastructureMode; /* 92     4 */
->         NDIS_802_11_RATES_EX       SupportedRates;       /*    96    16 */
->         u32                        IELength;             /*   112     4 */
->         u8                         IEs[768];             /*   116   768 */
->         /* --- cacheline 13 boundary (832 bytes) was 52 bytes ago --- */
-> 
->         /* size: 884, cachelines: 14, members: 12 */
->         /* last cacheline: 52 bytes */
-> };
-> 
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
-> ---
-> v2: fix commit msg
-> 
->  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+This patch replace memcpy with ethe_addr_copy to address the following
+warning generated by checkpatch.pl: ""Prefer ether_addr_copy over memcpy
+if the Ethernet addresses are __aligned(2)"
 
-This looks good!
+Follwoing is the output of pahole for the relevant datastructures:
+1- for  "iwe.u.ap_addr.sa_data" and "wrqu->ap_addr.sa_data"
 
-Jes
+struct sockaddr {
+        sa_family_t                sa_family;            /*     0     2 */
+        char                       sa_data[14];          /*     2    14 */
 
-> diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> index eacba8c..81f39c3 100644
-> --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> @@ -185,7 +185,7 @@ static inline char *translate_scan(struct _adapter *padapter,
->  	/* AP MAC address */
->  	iwe.cmd = SIOCGIWAP;
->  	iwe.u.ap_addr.sa_family = ARPHRD_ETHER;
-> -	memcpy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress, ETH_ALEN);
-> +	ether_addr_copy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress);
->  	start = iwe_stream_add_event(info, start, stop, &iwe, IW_EV_ADDR_LEN);
->  	/* Add the ESSID */
->  	iwe.cmd = SIOCGIWESSID;
-> @@ -1117,7 +1117,7 @@ static int r8711_wx_get_wap(struct net_device *dev,
->  	wrqu->ap_addr.sa_family = ARPHRD_ETHER;
->  	if (check_fwstate(pmlmepriv, _FW_LINKED | WIFI_ADHOC_MASTER_STATE |
->  				     WIFI_AP_STATE))
-> -		memcpy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress, ETH_ALEN);
-> +		ether_addr_copy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress);
->  	else
->  		eth_zero_addr(wrqu->ap_addr.sa_data);
->  	return 0;
-> 
+        /* size: 16, cachelines: 1, members: 2 */
+        /* last cacheline: 16 bytes */
+};
+
+struct iw_event {
+        __u16                      len;                  /*     0     2 */
+        __u16                      cmd;                  /*     2     2 */
+
+        /* XXX 4 bytes hole, try to pack */
+
+        union iwreq_data           u;                    /*     8    16 */
+
+        /* size: 24, cachelines: 1, members: 3 */
+        /* sum members: 20, holes: 1, sum holes: 4 */
+        /* last cacheline: 24 bytes */
+};
+
+2- for  "pnetwork->network.MacAddress" and "pcur_bss->MacAddress"
+
+struct wlan_network {
+        struct list_head           list;                 /*     0    16 */
+        int                        network_type;         /*    16     4 */
+        int                        fixed;                /*    20     4 */
+        unsigned int               last_scanned;         /*    24     4 */
+        int                        aid;                  /*    28     4 */
+        int                        join_res;             /*    32     4 */
+        struct ndis_wlan_bssid_ex  network;              /*    36   884 */
+        /* --- cacheline 14 boundary (896 bytes) was 24 bytes ago ---   */
+
+        /* size: 920, cachelines: 15, members: 7 */
+        /* last cacheline: 24 bytes */
+};
+
+struct ndis_wlan_bssid_ex {
+        u32                        Length;               /*     0     4 */
+        unsigned char              MacAddress[6];        /*     4     6 */
+        u8                         Reserved[2];          /*    10     2 */
+        struct ndis_802_11_ssid    Ssid;                 /*    12    36 */
+        u32                        Privacy;              /*    48     4 */
+        s32                        Rssi;                 /*    52     4 */
+        enum NDIS_802_11_NETWORK_TYPE NetworkTypeInUse;  /*    56     4 */
+        struct NDIS_802_11_CONFIGURATION Configuration;  /*    60    32 */
+        /* --- cacheline 1 boundary (64 bytes) was 28 bytes ago --- */
+        enum NDIS_802_11_NETWORK_INFRASTRUCTURE InfrastructureMode; /* 92     4 */
+        NDIS_802_11_RATES_EX       SupportedRates;       /*    96    16 */
+        u32                        IELength;             /*   112     4 */
+        u8                         IEs[768];             /*   116   768 */
+        /* --- cacheline 13 boundary (832 bytes) was 52 bytes ago --- */
+
+        /* size: 884, cachelines: 14, members: 12 */
+        /* last cacheline: 52 bytes */
+};
+
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+v2: fix commit msg
+
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+index eacba8c..81f39c3 100644
+--- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
++++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+@@ -185,7 +185,7 @@ static inline char *translate_scan(struct _adapter *padapter,
+ 	/* AP MAC address */
+ 	iwe.cmd = SIOCGIWAP;
+ 	iwe.u.ap_addr.sa_family = ARPHRD_ETHER;
+-	memcpy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress, ETH_ALEN);
++	ether_addr_copy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress);
+ 	start = iwe_stream_add_event(info, start, stop, &iwe, IW_EV_ADDR_LEN);
+ 	/* Add the ESSID */
+ 	iwe.cmd = SIOCGIWESSID;
+@@ -1117,7 +1117,7 @@ static int r8711_wx_get_wap(struct net_device *dev,
+ 	wrqu->ap_addr.sa_family = ARPHRD_ETHER;
+ 	if (check_fwstate(pmlmepriv, _FW_LINKED | WIFI_ADHOC_MASTER_STATE |
+ 				     WIFI_AP_STATE))
+-		memcpy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress, ETH_ALEN);
++		ether_addr_copy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress);
+ 	else
+ 		eth_zero_addr(wrqu->ap_addr.sa_data);
+ 	return 0;
+-- 
+1.9.1
 
 
