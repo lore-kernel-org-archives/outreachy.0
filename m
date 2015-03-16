@@ -1,173 +1,112 @@
 X-GM-THRID: 8600984485888
-X-Received: by 10.236.11.196 with SMTP id 44mr70345665yhx.31.1426605831024;
-        Tue, 17 Mar 2015 08:23:51 -0700 (PDT)
+X-Received: by 10.152.19.67 with SMTP id c3mr8200187lae.7.1426535821362;
+        Mon, 16 Mar 2015 12:57:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.9.131 with SMTP id 3ls164266ioj.41.gmail; Tue, 17 Mar 2015
- 08:23:50 -0700 (PDT)
-X-Received: by 10.66.140.14 with SMTP id rc14mr20121260pab.18.1426605830823;
-        Tue, 17 Mar 2015 08:23:50 -0700 (PDT)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qc0-x229.google.com (mail-qc0-x229.google.com. [2607:f8b0:400d:c01::229])
-        by gmr-mx.google.com with ESMTPS id e5si1688541qcg.1.2015.03.17.08.23.50
+Received: by 10.152.7.208 with SMTP id l16ls662487laa.66.gmail; Mon, 16 Mar
+ 2015 12:57:00 -0700 (PDT)
+X-Received: by 10.152.164.171 with SMTP id yr11mr6564538lab.4.1426535820968;
+        Mon, 16 Mar 2015 12:57:00 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id i8si762959wif.1.2015.03.16.12.57.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2015 08:23:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::229 as permitted sender) client-ip=2607:f8b0:400d:c01::229;
+        Mon, 16 Mar 2015 12:57:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::229 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qc0-x229.google.com with SMTP id kw5so11458721qcb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 08:23:50 -0700 (PDT)
+Received: by mail-wi0-x230.google.com with SMTP id dy8so46543419wib.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 12:57:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:message-id:date:user-agent:mime-version:to:subject:references
-         :in-reply-to:content-type:content-transfer-encoding;
-        bh=xdFiBtEvtUFrHM1ccaKHVxNdb4dT79wviTZoEOtI1gA=;
-        b=FPEjcSPQgeHszS+MCyKzKjXjYpywyjrzRBHTvFKohlAQvRlbH00sf9qQkyfK1J19+9
-         ug/FA2hmbgRfjvpuKfq4KjRJQ60Fk9/B/XMBVC0VDbEtpg7pTNNrW7vuzKqPUmKStztG
-         K5D9WzzvxSlktWrJMxOWWuPL0l0l5TO0HgpwJ4RZsKPXM525uvkhQBOxCh+3l+gSc37u
-         IE3VEmWO8Y0S3m2HyvPCHw8HngWYgTB89/Jei5EitofBzkKztQB+sSrYX3zyGQ4rB3NM
-         bJMFM+qewVNM7rr3t9qcMIBVRrJCONeHAQkAhFz9YQJovmi01DtGHqOiJDXsPlEiUZsO
-         s8lQ==
-X-Received: by 10.55.23.204 with SMTP id 73mr101017571qkx.47.1426605830709;
-        Tue, 17 Mar 2015 08:23:50 -0700 (PDT)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
-        by mx.google.com with ESMTPSA id q32sm9783678qkh.32.2015.03.17.08.23.49
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2015 08:23:49 -0700 (PDT)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <55084703.4010906@gmail.com>
-Date: Tue, 17 Mar 2015 11:23:47 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=uLcEmzTEWHyuhgl34yw5wsJ79IwT9wy/kV7IcUdcbpc=;
+        b=SLIWPhQKWV6Z4wgFWPu4QC1i0UuuvnFMW1T4KNjzEXVYmIEr0MT3SzCf1ZXMuBrsji
+         R9jPBuxt8DQYOCaBwCLaZcq3I9w1rIVekbXybfFuL3Zbd1sDLAYSEltw6NCGplA/uccj
+         p4LUVYDZnrGhoY4axNWtQp+Rd6S21mQeqRfmE9w3rNXStKeJd73kvFNgWuYPgnoMgFlE
+         X8OzfVAIjp8b6JYVANh0QlDxGCapb/+viaNs3eIO4jB9gl+zLJQmGQzm8jk12eUtzXNI
+         iu0SxbGqh5AZc29KhlmrmohadG5AoqC4tz0Zd97qehPQtOZMUuMQqF3HTy90k604cVkl
+         Ramw==
+X-Received: by 10.194.192.167 with SMTP id hh7mr127335590wjc.151.1426535820888;
+        Mon, 16 Mar 2015 12:57:00 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id 17sm16785473wjt.45.2015.03.16.12.56.59
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 16 Mar 2015 12:57:00 -0700 (PDT)
+Date: Mon, 16 Mar 2015 21:56:13 +0200
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 2/2] Staging: rtl8192u: Rename struct to avoid CamelCase
+Message-ID: <4f739eaeea268c5ed359c8466e51008799a5ef22.1426534970.git.cristina.opriceana@gmail.com>
+References: <cover.1426534970.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
-To: Cristina Opriceana <cristina.opriceana@gmail.com>, 
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/2] Staging: rtl8192u: Do not add
- new typedefs
-References: <cover.1426534970.git.cristina.opriceana@gmail.com> <b16e872b9c5244f790cbcf81f3d801fddcae95f7.1426534970.git.cristina.opriceana@gmail.com>
-In-Reply-To: <b16e872b9c5244f790cbcf81f3d801fddcae95f7.1426534970.git.cristina.opriceana@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1426534970.git.cristina.opriceana@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On 03/16/15 15:55, Cristina Opriceana wrote:
-> This patch removes the dig_t and DRxPathSel type definitions in order to
-> avoid the following warning: "WARNING: Do not add new typedefs".
-> Done with coccinelle and this script:
-> 
-> @r@ type t; identifier id; @@
-> typedef struct id
-> {...}
-> t;
-> 
-> @script:python get_name@
-> t << r.t;
-> tdres;
-> @@
-> coccinelle.tdres = t.replace("_t", "");
-> 
-> @r_match@ type r.t; identifier r.id;
-> identifier get_name.tdres; @@
-> -typedef
-> struct
-> -id
-> +tdres
-> {...}
-> -t
-> ;
-> @r_replace@ type r.t; identifier get_name.tdres; @@
-> -t
-> +struct tdres
-> 
-> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+This patch renames struct DRxPathSel to dynamic_rx_path_sel in order to
+keep the notations consistent and to remove the warning:
+"CHECK: Avoid CamelCase". Done with coccinelle:
+@@ @@
+struct
+-DRxPathSel
++dynamic_rx_path_sel
+{...}
 
-Removing pointless typedefs like these is clearly a win. However for
-something like this, I don't think you need to include the coccinnelle
-rules, simply stating that you are getting rid of unnecessary typedefs
-is a win.
+@@ @@
+struct
+-DRxPathSel
++dynamic_rx_path_sel
 
-Cheers,
-Jes
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_dm.c | 2 +-
+ drivers/staging/rtl8192u/r8192U_dm.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-
-> ---
->  drivers/staging/rtl8192u/r8192U_dm.c |  5 +++--
->  drivers/staging/rtl8192u/r8192U_dm.h | 12 ++++++------
->  2 files changed, 9 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-> index 8669162..402abdf 100644
-> --- a/drivers/staging/rtl8192u/r8192U_dm.c
-> +++ b/drivers/staging/rtl8192u/r8192U_dm.c
-> @@ -36,11 +36,12 @@ static u32 edca_setting_UL[HT_IOT_PEER_MAX] = {
->  
->  /*------------------------Define global variable-----------------------------*/
->  /* Debug variable ? */
-> -dig_t	dm_digtable;
-> +struct dig dm_digtable;
->  /* Store current software write register content for MAC PHY. */
->  u8		dm_shadow[16][256] = { {0} };
->  /* For Dynamic Rx Path Selection by Signal Strength */
-> -DRxPathSel	DM_RxPathSelTable;
-> +struct DRxPathSel DM_RxPathSelTable;
-> +
->  /*------------------------Define global variable-----------------------------*/
->  
->  
-> diff --git a/drivers/staging/rtl8192u/r8192U_dm.h b/drivers/staging/rtl8192u/r8192U_dm.h
-> index 3008f91..091fdd1 100644
-> --- a/drivers/staging/rtl8192u/r8192U_dm.h
-> +++ b/drivers/staging/rtl8192u/r8192U_dm.h
-> @@ -67,7 +67,7 @@
->  
->  /*------------------------------Define structure----------------------------*/
->  /* 2007/10/04 MH Define upper and lower threshold of DIG enable or disable. */
-> -typedef struct _dynamic_initial_gain_threshold_ {
-> +struct dig {
->  	u8		dig_enable_flag;
->  	u8		dig_algorithm;
->  	u8		dbg_mode;
-> @@ -98,7 +98,7 @@ typedef struct _dynamic_initial_gain_threshold_ {
->  	bool		initialgain_lowerbound_state;
->  
->  	long		rssi_val;
-> -} dig_t;
-> +};
->  
->  typedef enum tag_dynamic_init_gain_state_definition {
->  	DM_STA_DIG_OFF = 0,
-> @@ -163,7 +163,7 @@ typedef enum tag_dig_cck_cs_ratio_state_definition {
->  	DIG_CS_RATIO_HIGHER = 1,
->  	DIG_CS_MAX
->  } dm_dig_cs_ratio_e;
-> -typedef struct _Dynamic_Rx_Path_Selection_ {
-> +struct DRxPathSel {
->  	u8		Enable;
->  	u8		DbgMode;
->  	u8		cck_method;
-> @@ -177,7 +177,7 @@ typedef struct _Dynamic_Rx_Path_Selection_ {
->  	u8		rf_rssi[4];
->  	u8		rf_enable_rssi_th[4];
->  	long		cck_pwdb_sta[4];
-> -} DRxPathSel;
-> +};
->  
->  typedef enum tag_CCK_Rx_Path_Method_Definition {
->  	CCK_Rx_Version_1 = 0,
-> @@ -200,9 +200,9 @@ typedef struct tag_Tx_Config_Cmd_Format {
->  
->  
->  /*------------------------Export global variable----------------------------*/
-> -extern dig_t dm_digtable;
-> +extern struct dig dm_digtable;
->  extern u8 dm_shadow[16][256];
-> -extern DRxPathSel DM_RxPathSelTable;
-> +extern struct DRxPathSel DM_RxPathSelTable;
->  /*------------------------Export global variable----------------------------*/
->  
->  
-> 
+diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
+index 402abdf..12dd19e 100644
+--- a/drivers/staging/rtl8192u/r8192U_dm.c
++++ b/drivers/staging/rtl8192u/r8192U_dm.c
+@@ -40,7 +40,7 @@ struct dig dm_digtable;
+ /* Store current software write register content for MAC PHY. */
+ u8		dm_shadow[16][256] = { {0} };
+ /* For Dynamic Rx Path Selection by Signal Strength */
+-struct DRxPathSel DM_RxPathSelTable;
++struct dynamic_rx_path_sel DM_RxPathSelTable;
+ 
+ /*------------------------Define global variable-----------------------------*/
+ 
+diff --git a/drivers/staging/rtl8192u/r8192U_dm.h b/drivers/staging/rtl8192u/r8192U_dm.h
+index 091fdd1..6cd32eb4 100644
+--- a/drivers/staging/rtl8192u/r8192U_dm.h
++++ b/drivers/staging/rtl8192u/r8192U_dm.h
+@@ -163,7 +163,7 @@ typedef enum tag_dig_cck_cs_ratio_state_definition {
+ 	DIG_CS_RATIO_HIGHER = 1,
+ 	DIG_CS_MAX
+ } dm_dig_cs_ratio_e;
+-struct DRxPathSel {
++struct dynamic_rx_path_sel {
+ 	u8		Enable;
+ 	u8		DbgMode;
+ 	u8		cck_method;
+@@ -202,7 +202,7 @@ typedef struct tag_Tx_Config_Cmd_Format {
+ /*------------------------Export global variable----------------------------*/
+ extern struct dig dm_digtable;
+ extern u8 dm_shadow[16][256];
+-extern struct DRxPathSel DM_RxPathSelTable;
++extern struct dynamic_rx_path_sel DM_RxPathSelTable;
+ /*------------------------Export global variable----------------------------*/
+ 
+ 
+-- 
+1.9.1
 
 
