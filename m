@@ -1,112 +1,151 @@
-X-GM-THRID: 6664928075702075392
-X-Received: by 2002:a17:906:938b:: with SMTP id l11mr159318ejx.8.1551799493391;
-        Tue, 05 Mar 2019 07:24:53 -0800 (PST)
+X-GM-THRID: 8496708845568
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,2bfe153fa2f5e7b
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.251.231 with SMTP id zn7mr68006278obc.24.1426514979860;
+        Mon, 16 Mar 2015 07:09:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:358c:: with SMTP id o12ls2372200ejb.0.gmail; Tue, 05
- Mar 2019 07:24:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzpd33hKALfeD1HIZB3PKuKw0xJEhGqIHB1jkqZWARcDqT4L1gy+SZNd4iIAjxtWfcZqxno
-X-Received: by 2002:a17:906:16c6:: with SMTP id t6mr161905ejd.6.1551799492545;
-        Tue, 05 Mar 2019 07:24:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551799492; cv=none;
-        d=google.com; s=arc-20160816;
-        b=VMdVGtlSYy7wN/iMRbnqv7u1i6lT8IX2cjFPzUL4BUUNDzoiwObUBMIJsRptl4ndje
-         u1FFvsMI1VsWiV8qwKojaWHVCMZEsWRUDyuPRw5qfcvESnGWr5G9TFNRB67atayagpA9
-         J+r14VuMHqGtGbOOqqXe+wR1VT6N1qjiyuu9ufLvVVyyNnkHy5QI5MB/7HsIILQspiFv
-         lYGjyrCCsxb5Cvr0J+X1qqFizttjy/ez4FXpFn4Z2yNke+QmeQHQn3NVI8ISZd5X1ibV
-         h9Wg+wj8xC7ptxLp2fZ828RMZC3MWeci/0bl4pO8kinck6hf+NJHi5QG3EOYwgG35b0b
-         zBPg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=MIN+aln9kL1cmAVDHPwG5hxAmOBe86uS+xQ0EM7Rf+s=;
-        b=f0tDG2THSmAyBnXaskgGGwWVf9B+sz2AFUE/qqPhRIY8CFllWNsqrECC9GUPS+54YS
-         8znlNzWsGXN3/yvWsH58Q3zUjErBhKlH4M2F1YnRr5erFRmVjV+dvuMrcMl9JR2JI7l+
-         6OKiZXdULi7MFOfkFjhr55orLocauuk2BcJQeTA+e8wEs+pHo4QKuV+lgciT+I5kIiT6
-         TeYI8V/H5tQ3wljCIEWHUBzSLGXE0Lj1AOYPq52LTOGKxtE/ZsHpWNqHvBxOB054zJ7V
-         YuHFjz2rbkAcdwWa2OjpBm0HB0q6Li9WUt/Qn3uH/TvqQhJHMvPNkiy+QxuQ3Pwlxlah
-         qUUg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=A09Ekq86;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id c7si343430ejx.1.2019.03.05.07.24.52
+Received: by 10.50.29.108 with SMTP id j12ls1002985igh.35.gmail; Mon, 16 Mar
+ 2015 07:09:39 -0700 (PDT)
+X-Received: by 10.70.96.163 with SMTP id dt3mr59004165pdb.1.1426514979653;
+        Mon, 16 Mar 2015 07:09:39 -0700 (PDT)
+Return-Path: <somyaanand214@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id gb13si1915801pac.2.2015.03.16.07.09.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 07:24:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2015 07:09:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=A09Ekq86;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id o17so9923947wrw.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 07:24:52 -0800 (PST)
+       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id we9so65967423pac.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 07:09:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MIN+aln9kL1cmAVDHPwG5hxAmOBe86uS+xQ0EM7Rf+s=;
-        b=A09Ekq86/VvBhlAMHZnXKi1cy+DlLziFpp73fO43akWoGpC9KHWwCh0FP2B2wWUowy
-         anznoPLoIKXZrx4tBR+4wDH5O9p7tB6XJZgaguhUu6JZ6oDYWyBbGElANTaJfCME/+Me
-         wjxN41b+Wg8w/KiyIJRRPRKBx6iNgTLFNAmRIj159lzXWakGmzY2eVf7NOUz3V6Wn9wr
-         MJ6cyXGdQkXb1Ux1TaWkJkFwuzvpNc0fGKhLGLB5evRDRfHONYKMh/AuVt6bUgChgrCC
-         Znot7N/UJMy0m6gv0ElzOGUs3O/+9ljwyR30SkCFk7MYZC5ZT+G5mfwRk3OU2JMSovQl
-         4VmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MIN+aln9kL1cmAVDHPwG5hxAmOBe86uS+xQ0EM7Rf+s=;
-        b=f6JvA627HoAM4ReddXRmMWtUj0LVqAyksH9as5oQRPP6pxlNmun00x7atlJ2Fo64C5
-         FN0PFlYiDOl7PNNatFx+ZSw7BhlgZUa51Fk0IgU2APqZdhB/TXKw2hnqb/kTOE+LvRS9
-         eVPBjzKui8tMn2lOa9Xn9gN//2bGlSzj0hJq0JtXOGl6aD0OwxD5J6JxWsmQLsLK0Gb8
-         sjjwe+EgN5/5OQQIOse80uulqDwxwqrk2ilA8/ti4zvGCT+yCdDfmfrFdxODn8P7AeCG
-         00NWzyG/WraE24l9OJ00tWRPNRbh8yM9OUstZkKE3avNcp/39+x1i1AeA2KDPcBW+OYu
-         XJHA==
-X-Gm-Message-State: APjAAAXXDAVtZkO0kturkJHxWc+me4JbcZrVOkM7V7VXmGsVVQDAk5Ns
-	blVBmL9KYkd7sGCSXzC9c+QmN+4T
-X-Received: by 2002:a5d:6a88:: with SMTP id s8mr17150118wru.303.1551799491875;
-        Tue, 05 Mar 2019 07:24:51 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([141.85.233.103])
-        by smtp.gmail.com with ESMTPSA id b4sm6112912wmj.3.2019.03.05.07.24.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 07:24:51 -0800 (PST)
-Date: Tue, 5 Mar 2019 17:24:49 +0200
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=CcTRPpwg8+cUL9kjec83pakL8iqRkNYgkESn+K/QOoI=;
+        b=P/vYySPSLbP2vS9a+DTRiAOGPwzXp3EMITzCLe9Ry5yztkCKWWkd40ydVRPhkJg5aZ
+         RSK1oCrDDEObqQPuxnoYNZQfhw1+9gNZuE2XXtOu5HEzFuIPBc7lpTvvpMQrkFAzzzIQ
+         UgtXmY0C5WYGldbzc1HOx3BepArWo2Rxs0XUqGwXb05Va5IVa8XJsgn8tNxH+wTUhOY7
+         JA1zzaeoj5hJOPQ+pDAA3zHU49l5vX0hAvSvGlOI78BLHVB+gpHC6Bsqqm0wgBNAsP3r
+         aPapqFaqdT5QiCEt/myyf6na5TrK9my/K2b2+LA2cKBJ0IHBssMGKxMGP9TWs4EIPjqU
+         lnPQ==
+X-Received: by 10.70.134.102 with SMTP id pj6mr60095680pdb.95.1426514979588;
+        Mon, 16 Mar 2015 07:09:39 -0700 (PDT)
+Return-Path: <somyaanand214@gmail.com>
+Received: from localhost.localdomain ([110.224.242.84])
+        by mx.google.com with ESMTPSA id i11sm17570578pdj.61.2015.03.16.07.09.35
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 16 Mar 2015 07:09:38 -0700 (PDT)
+From: Somya Anand <somyaanand214@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vboxvideo: Fix open parenthesis at the end of line
-Message-ID: <20190305152449.GA21888@pthm>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Somya Anand <somyaanand214@gmail.com>
+Subject: [PATCH 5/5] Staging: nvec: use !x instead of x == NULL
+Date: Mon, 16 Mar 2015 19:34:11 +0530
+Message-Id: <1426514651-2601-5-git-send-email-somyaanand214@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1426514651-2601-1-git-send-email-somyaanand214@gmail.com>
+References: <1426514651-2601-1-git-send-email-somyaanand214@gmail.com>
 
-Fix open parenthesis at the end of line
-to improve readability
+Functions like devm_kzalloc, kmalloc_array, devm_ioremap,
+usb_alloc_urb, alloc_netdev return NULL as a return value on failure.
+Generally, When NULL represents failure, !x is commonly used.
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+This patch cleans up the tests on the results of these functions, thereby
+using !x instead of x == NULL or NULL == x. This is done via following
+coccinelle script:
+@prob_7@
+identifier x;
+statement S;
+@@
+
+(
+ x = devm_kzalloc(...);
+|
+ x = usb_alloc_urb(...);
+|
+ x = kmalloc_array(...);
+|
+ x = devm_ioremap(...);
+|
+ x = alloc_netdev(...);
+)
+ ...
+- if(NULL == x)
++ if(!x)
+        S
+Further we have used isomorphism characteristics of coccinelle to
+indicate x == NULL and NULL == x are equivalent. This is done via
+following iso script.
+
+Expression
+@ is_null @ expression X; @@
+X == NULL <=> NULL == X
+
+Signed-off-by: Somya Anand <somyaanand214@gmail.com>
 ---
- drivers/staging/vboxvideo/vbox_mode.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/nvec/nvec.c       | 2 +-
+ drivers/staging/nvec/nvec_paz00.c | 2 +-
+ drivers/staging/nvec/nvec_power.c | 2 +-
+ drivers/staging/nvec/nvec_ps2.c   | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/vboxvideo/vbox_mode.c b/drivers/staging/vboxvideo/vbox_mode.c
-index c43bec4..28a2cc5 100644
---- a/drivers/staging/vboxvideo/vbox_mode.c
-+++ b/drivers/staging/vboxvideo/vbox_mode.c
-@@ -54,8 +54,7 @@ static void vbox_do_modeset(struct drm_crtc *crtc)
- 		vbox_write_ioport(VBE_DISPI_INDEX_VIRT_WIDTH, pitch * 8 / bpp);
- 		vbox_write_ioport(VBE_DISPI_INDEX_BPP, bpp);
- 		vbox_write_ioport(VBE_DISPI_INDEX_ENABLE, VBE_DISPI_ENABLED);
--		vbox_write_ioport(
--			VBE_DISPI_INDEX_X_OFFSET,
-+		vbox_write_ioport(VBE_DISPI_INDEX_X_OFFSET,
- 			vbox_crtc->fb_offset % pitch / bpp * 8 + vbox_crtc->x);
- 		vbox_write_ioport(VBE_DISPI_INDEX_Y_OFFSET,
- 				  vbox_crtc->fb_offset / pitch + vbox_crtc->y);
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index 5868ebb..1bdc8d0 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -803,7 +803,7 @@ static int tegra_nvec_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	nvec = devm_kzalloc(&pdev->dev, sizeof(struct nvec_chip), GFP_KERNEL);
+-	if (nvec == NULL)
++	if (!nvec)
+ 		return -ENOMEM;
+ 
+ 	platform_set_drvdata(pdev, nvec);
+diff --git a/drivers/staging/nvec/nvec_paz00.c b/drivers/staging/nvec/nvec_paz00.c
+index f0cea0e..68146bf 100644
+--- a/drivers/staging/nvec/nvec_paz00.c
++++ b/drivers/staging/nvec/nvec_paz00.c
+@@ -51,7 +51,7 @@ static int nvec_paz00_probe(struct platform_device *pdev)
+ 	int ret = 0;
+ 
+ 	led = devm_kzalloc(&pdev->dev, sizeof(*led), GFP_KERNEL);
+-	if (led == NULL)
++	if (!led)
+ 		return -ENOMEM;
+ 
+ 	led->cdev.max_brightness = NVEC_LED_MAX;
+diff --git a/drivers/staging/nvec/nvec_power.c b/drivers/staging/nvec/nvec_power.c
+index 6a1459d..3621b66 100644
+--- a/drivers/staging/nvec/nvec_power.c
++++ b/drivers/staging/nvec/nvec_power.c
+@@ -378,7 +378,7 @@ static int nvec_power_probe(struct platform_device *pdev)
+ 	struct nvec_chip *nvec = dev_get_drvdata(pdev->dev.parent);
+ 
+ 	power = devm_kzalloc(&pdev->dev, sizeof(struct nvec_power), GFP_NOWAIT);
+-	if (power == NULL)
++	if (!power)
+ 		return -ENOMEM;
+ 
+ 	dev_set_drvdata(&pdev->dev, power);
+diff --git a/drivers/staging/nvec/nvec_ps2.c b/drivers/staging/nvec/nvec_ps2.c
+index 4fd63c2..6ebbc82 100644
+--- a/drivers/staging/nvec/nvec_ps2.c
++++ b/drivers/staging/nvec/nvec_ps2.c
+@@ -109,7 +109,7 @@ static int nvec_mouse_probe(struct platform_device *pdev)
+ 	char mouse_reset[] = { NVEC_PS2, SEND_COMMAND, PSMOUSE_RST, 3 };
+ 
+ 	ser_dev = devm_kzalloc(&pdev->dev, sizeof(struct serio), GFP_KERNEL);
+-	if (ser_dev == NULL)
++	if (!ser_dev)
+ 		return -ENOMEM;
+ 
+ 	ser_dev->id.type = SERIO_PS_PSTHRU;
 -- 
-2.7.4
+1.9.1
 
 
