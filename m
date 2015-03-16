@@ -3,94 +3,122 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,35fc9dbaa0120918
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.112.167.131 with SMTP id zo3mr4427291lbb.7.1426497336408;
-        Mon, 16 Mar 2015 02:15:36 -0700 (PDT)
+X-Received: by 10.152.28.137 with SMTP id b9mr8993961lah.8.1426497277820;
+        Mon, 16 Mar 2015 02:14:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.207.101 with SMTP id lv5ls652590lac.22.gmail; Mon, 16 Mar
- 2015 02:15:35 -0700 (PDT)
-X-Received: by 10.112.219.102 with SMTP id pn6mr8829421lbc.12.1426497335910;
-        Mon, 16 Mar 2015 02:15:35 -0700 (PDT)
+Received: by 10.152.228.136 with SMTP id si8ls666433lac.11.gmail; Mon, 16 Mar
+ 2015 02:14:37 -0700 (PDT)
+X-Received: by 10.112.130.70 with SMTP id oc6mr9241177lbb.13.1426497277219;
+        Mon, 16 Mar 2015 02:14:37 -0700 (PDT)
 Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wg0-x236.google.com (mail-wg0-x236.google.com. [2a00:1450:400c:c00::236])
-        by gmr-mx.google.com with ESMTPS id c8si416906wiw.1.2015.03.16.02.15.35
+Received: from mail-we0-x230.google.com (mail-we0-x230.google.com. [2a00:1450:400c:c03::230])
+        by gmr-mx.google.com with ESMTPS id gj20si640757wic.1.2015.03.16.02.14.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 02:15:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) client-ip=2a00:1450:400c:c00::236;
+        Mon, 16 Mar 2015 02:14:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) client-ip=2a00:1450:400c:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wg0-x236.google.com with SMTP id cc7so34180796wgb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 02:15:35 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-we0-x230.google.com with SMTP id p1so33122546weg.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 02:14:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:sender:in-reply-to:references:date:message-id:subject
-         :from:to:cc:content-type;
-        bh=VAncG9kDnO0iCj8LrqdI4jM1+KwPsRnWAvBzwsLnips=;
-        b=G75e2ikaUAyISPEqAIsCQcFt7NV/lUfDOvP1DGotad/OA6jWgd4E9IVm0gUz+Nip8P
-         caYsae3ZqA1bsptaIiMjsk3bN8xFn+J4FYDDzbeH8YDJStiDk1KdUUFPINp0mv+b0jok
-         13fUZo1VwgsgJ0tqQIzyWF8O7UxuwaAoNIOKKfnUg7VHgW2WvZnsBjyrW48Naph2nnwA
-         uPi91EG8H9xA1NEUFHKsOyJpt2HUqtEa8uubMc8cZ603QccPi1QfjQqNoCKISyLpLmb6
-         rdR3Bv/3RliIwWzCo111EOy2SJzRVIRB/eKeivifCh0BQI5ejDAfOICoA8AqssimSZaD
-         izkA==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=XAP9eXMzaLXOs0WXpbPgGlTBHL45QFW/0GA04jW6zeA=;
+        b=NkEZE2n67Hk/Wp/1xi11WE8EnJoMOeRDxh7qipCzxOICXkPjuiiTD1RDz2C9y4jers
+         P5YgBbrgwHWl34bypQx1LR1rvI9Fjuh2nhowjPOsITFbtvTvs1oFo3VjxuXmiV2IxJ4s
+         OXEqgfiEBg3GfkLgtdrM/SoVDPjCGi2ppjEMuoni6mviYKn/6n900g+qkeYQiRCbxxTl
+         e6nFpeaYfxq1desih1GRw8TwGAdAxxPFZ+IlJlbwkQG5zxWYGZDsq3Vo5hgWrLc7F2lJ
+         iwfJYA9CiHwRupVvIcYF7WWR9WXmHfOouDMeLtAOEIIokgzO9+ne/SU+yDIJotjdv4xG
+         rQmA==
 MIME-Version: 1.0
-X-Received: by 10.194.86.135 with SMTP id p7mr122535006wjz.89.1426497335663;
- Mon, 16 Mar 2015 02:15:35 -0700 (PDT)
-Sender: daniel.baluta@gmail.com
-Received: by 10.28.139.211 with HTTP; Mon, 16 Mar 2015 02:15:35 -0700 (PDT)
-In-Reply-To: <8fddb5ee8a8f3a53ebd4b337f08e475c2dce63ce.1426353884.git.cristina.opriceana@gmail.com>
+X-Received: by 10.180.96.197 with SMTP id du5mr94558939wib.68.1426497277088;
+ Mon, 16 Mar 2015 02:14:37 -0700 (PDT)
+Received: by 10.28.139.211 with HTTP; Mon, 16 Mar 2015 02:14:37 -0700 (PDT)
+In-Reply-To: <53f8f070c1f2a23bd5acfa61ef6153f99b10d0f6.1426353884.git.cristina.opriceana@gmail.com>
 References: <cover.1426353884.git.cristina.opriceana@gmail.com>
-	<8fddb5ee8a8f3a53ebd4b337f08e475c2dce63ce.1426353884.git.cristina.opriceana@gmail.com>
-Date: Mon, 16 Mar 2015 11:15:35 +0200
-X-Google-Sender-Auth: 0Xk3c_E2Rn_koXdEpX3qVz3e5C0
-Message-ID: <CAEnQRZCLX2gFKu=xwKPNugcRuXghTjimawTrFxGsQk9PzkPFEQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 2/6] Staging: iio: Remove explicit
- comparison to NULL
-From: Daniel Baluta <daniel.baluta@intel.com>
+	<53f8f070c1f2a23bd5acfa61ef6153f99b10d0f6.1426353884.git.cristina.opriceana@gmail.com>
+Date: Mon, 16 Mar 2015 11:14:37 +0200
+Message-ID: <CAEnQRZDATeRLee7Mesn-NZ2uZ1knweY6uJ+Hju9MN2_e+Mw0gw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 1/6] Staging: iio: Remove space
+ after type cast
+From: Daniel Baluta <daniel.baluta@gmail.com>
 To: Cristina Opriceana <cristina.opriceana@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset=UTF-8
 
 On Sat, Mar 14, 2015 at 8:50 PM, Cristina Opriceana
 <cristina.opriceana@gmail.com> wrote:
-> This patch simplifies pointer comparison to NULL and makes code
-> easier to read. Warning found by checkpatch.pl.
+> This patch removes unnecessary space after type casts.
+> Warning found by checkpatch.pl.
 >
 > Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 
 Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
 > ---
->  drivers/staging/iio/frequency/ad9832.c | 2 +-
->  drivers/staging/iio/frequency/ad9834.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  drivers/staging/iio/frequency/ad9832.c | 6 +++---
+>  drivers/staging/iio/frequency/ad9834.c | 6 +++---
+>  2 files changed, 6 insertions(+), 6 deletions(-)
 >
 > diff --git a/drivers/staging/iio/frequency/ad9832.c b/drivers/staging/iio/frequency/ad9832.c
-> index 9a16699..8ecc0bc 100644
+> index cf68159..9a16699 100644
 > --- a/drivers/staging/iio/frequency/ad9832.c
 > +++ b/drivers/staging/iio/frequency/ad9832.c
-> @@ -220,7 +220,7 @@ static int ad9832_probe(struct spi_device *spi)
->         }
+> @@ -24,8 +24,8 @@
 >
->         indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
-> -       if (indio_dev == NULL) {
-> +       if (!indio_dev) {
->                 ret = -ENOMEM;
->                 goto error_disable_reg;
->         }
+>  static unsigned long ad9832_calc_freqreg(unsigned long mclk, unsigned long fout)
+>  {
+> -       unsigned long long freqreg = (u64) fout *
+> -                                    (u64) ((u64) 1L << AD9832_FREQ_BITS);
+> +       unsigned long long freqreg = (u64)fout *
+> +                                    (u64)((u64)1L << AD9832_FREQ_BITS);
+>         do_div(freqreg, mclk);
+>         return freqreg;
+>  }
+> @@ -86,7 +86,7 @@ static ssize_t ad9832_write(struct device *dev, struct device_attribute *attr,
+>                 goto error_ret;
+>
+>         mutex_lock(&indio_dev->mlock);
+> -       switch ((u32) this_attr->address) {
+> +       switch ((u32)this_attr->address) {
+>         case AD9832_FREQ0HM:
+>         case AD9832_FREQ1HM:
+>                 ret = ad9832_write_frequency(st, this_attr->address, val);
 > diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
-> index a346673..efea560 100644
+> index 5c80319..a346673 100644
 > --- a/drivers/staging/iio/frequency/ad9834.c
 > +++ b/drivers/staging/iio/frequency/ad9834.c
-> @@ -336,7 +336,7 @@ static int ad9834_probe(struct spi_device *spi)
->         }
+> @@ -27,7 +27,7 @@
 >
->         indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
-> -       if (indio_dev == NULL) {
-> +       if (!indio_dev) {
->                 ret = -ENOMEM;
->                 goto error_disable_reg;
->         }
+>  static unsigned int ad9834_calc_freqreg(unsigned long mclk, unsigned long fout)
+>  {
+> -       unsigned long long freqreg = (u64) fout * (u64) (1 << AD9834_FREQ_BITS);
+> +       unsigned long long freqreg = (u64)fout * (u64)(1 << AD9834_FREQ_BITS);
+>
+>         do_div(freqreg, mclk);
+>         return freqreg;
+> @@ -78,7 +78,7 @@ static ssize_t ad9834_write(struct device *dev,
+>                 goto error_ret;
+>
+>         mutex_lock(&indio_dev->mlock);
+> -       switch ((u32) this_attr->address) {
+> +       switch ((u32)this_attr->address) {
+>         case AD9834_REG_FREQ0:
+>         case AD9834_REG_FREQ1:
+>                 ret = ad9834_write_frequency(st, this_attr->address, val);
+> @@ -154,7 +154,7 @@ static ssize_t ad9834_store_wavetype(struct device *dev,
+>
+>         mutex_lock(&indio_dev->mlock);
+>
+> -       switch ((u32) this_attr->address) {
+> +       switch ((u32)this_attr->address) {
+>         case 0:
+>                 if (sysfs_streq(buf, "sine")) {
+>                         st->control &= ~AD9834_MODE;
 > --
 > 1.9.1
 >
@@ -98,6 +126,6 @@ Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/8fddb5ee8a8f3a53ebd4b337f08e475c2dce63ce.1426353884.git.cristina.opriceana%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/53f8f070c1f2a23bd5acfa61ef6153f99b10d0f6.1426353884.git.cristina.opriceana%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 
