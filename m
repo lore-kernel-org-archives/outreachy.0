@@ -1,71 +1,69 @@
-X-GM-THRID: 4831462817792
-X-Received: by 10.180.160.176 with SMTP id xl16mr738135wib.6.1425068177584;
-        Fri, 27 Feb 2015 12:16:17 -0800 (PST)
+X-GM-THRID: 8179991707648
+X-Received: by 10.236.60.202 with SMTP id u50mr16195426yhc.9.1426518668989;
+        Mon, 16 Mar 2015 08:11:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.6.38 with SMTP id x6ls219666lax.63.gmail; Fri, 27 Feb 2015
- 12:16:17 -0800 (PST)
-X-Received: by 10.112.138.202 with SMTP id qs10mr2282825lbb.24.1425068177290;
-        Fri, 27 Feb 2015 12:16:17 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wg0-x236.google.com (mail-wg0-x236.google.com. [2a00:1450:400c:c00::236])
-        by gmr-mx.google.com with ESMTPS id o3si181486wib.2.2015.02.27.12.16.17
+Received: by 10.107.19.221 with SMTP id 90ls1877424iot.55.gmail; Mon, 16 Mar
+ 2015 08:11:08 -0700 (PDT)
+X-Received: by 10.50.117.8 with SMTP id ka8mr12748851igb.6.1426518668829;
+        Mon, 16 Mar 2015 08:11:08 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ni4si1953888pdb.2.2015.03.16.08.11.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 12:16:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) client-ip=2a00:1450:400c:c00::236;
+        Mon, 16 Mar 2015 08:11:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghb13 with SMTP id b13so22575592wgh.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 12:16:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=L0jnYYpCVhzkfryzETseroHIFrwF8wMFH8tQRmc0vo4=;
-        b=cUPEp+bA3TveUHRJUSQfW2ffcQENzWgwHgWToqUhEQq2JOlU2q4EMr50Qta3rHl81z
-         48P3CEr56ud6xXinv+ORtRV3F1YcrKcz3Ch5Ao3ML3nH4RWEY2ErSe5Liv79/htl4nze
-         0ofi/jTtu2XbH7+PyJGzabK2476AOksc1ReF7nEZ2UX/NpXoGOUZDimYZcTCAGu3g3I+
-         1redSjTML5vxKyo4tfOr6qBxRqymMLV2w2AJU3K+AOj/Kq5nF/cVw+AQvCNECNRHdyYR
-         ywLs0pycTAdX7HmZZukwLBJQmPa3SotpzrBrpLU6jxdSZtBDcFy0h0KuYQFZwu4J7K9x
-         sW8Q==
-X-Received: by 10.180.188.41 with SMTP id fx9mr9732190wic.93.1425068177186;
-        Fri, 27 Feb 2015 12:16:17 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([151.250.87.133])
-        by mx.google.com with ESMTPSA id hi6sm7386845wjc.34.2015.02.27.12.16.15
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 12:16:16 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: lustre: Removed space prohibited
-Date: Fri, 27 Feb 2015 22:15:12 +0200
-Message-Id: <1425068112-27359-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (samsung-greg.wifi.rsr.lip6.fr [132.227.77.84])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A89DCAF3;
+	Mon, 16 Mar 2015 15:11:07 +0000 (UTC)
+Date: Mon, 16 Mar 2015 16:11:05 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 5/8] Staging: iio: Remove parentheses
+ around right side an assignment
+Message-ID: <20150316151105.GA20104@kroah.com>
+References: <1426268725-7786-1-git-send-email-hamohammed.sa@gmail.com>
+ <1426268842-7889-1-git-send-email-hamohammed.sa@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1426268842-7889-1-git-send-email-hamohammed.sa@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-WARNING:  space prohibited before that '--'
-Removed space prohibited. That was found by running checkpatch.
+On Fri, Mar 13, 2015 at 08:47:22PM +0300, Haneen Mohammed wrote:
+> Parentheses are not needed around the right hand side of an assignment.
+> This patch remove parenthese of such occurenses. Issue was detected and
+> solved using the following coccinelle script:
+> 
+> @rule1@
+> identifier x, y, z;
+> expression E1, E2;
+> @@
+> 
+> (
+> x = (y == z);
+> |
+> x = (E1 == E2);
+> |
+>  x =
+> -(
+> ...
+> -)
+>  ;
+> )
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> ---
+>  drivers/staging/iio/accel/adis16240_core.c | 2 +-
+>  drivers/staging/iio/light/tsl2x7x_core.c   | 4 ++--
+>  drivers/staging/iio/meter/ade7753.c        | 2 +-
+>  drivers/staging/iio/meter/ade7754.c        | 2 +-
+>  drivers/staging/iio/meter/ade7759.c        | 2 +-
+>  5 files changed, 6 insertions(+), 6 deletions(-)
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- drivers/staging/lustre/lustre/ptlrpc/layout.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/layout.c b/drivers/staging/lustre/lustre/ptlrpc/layout.c
-index bbef666..78984ae 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/layout.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/layout.c
-@@ -1839,7 +1839,7 @@ static int __req_capsule_offset(const struct req_capsule *pill,
- 	LASSERTF(offset > 0, "%s:%s, off=%d, loc=%d\n",
- 			    pill->rc_fmt->rf_name,
- 			    field->rmf_name, offset, loc);
--	offset --;
-+	offset--;
- 
- 	LASSERT(0 <= offset && offset < REQ_MAX_FIELD_NR);
- 	return offset;
--- 
-1.8.3.2
-
+This does not apply to my tree, I think someone else did this right
+before you did :(
 
