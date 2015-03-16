@@ -1,93 +1,65 @@
-X-GM-THRID: 5015409262592
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,eaeb13245395f719,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.80.7 with SMTP id n7mr15516960obx.10.1425091440219;
-        Fri, 27 Feb 2015 18:44:00 -0800 (PST)
+X-GM-THRID: 8439037165568
+X-Received: by 10.182.113.228 with SMTP id jb4mr66316917obb.31.1426519564739;
+        Mon, 16 Mar 2015 08:26:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.6.164 with SMTP id f36ls790786ioi.108.gmail; Fri, 27 Feb
- 2015 18:44:00 -0800 (PST)
-X-Received: by 10.50.61.132 with SMTP id p4mr6106959igr.7.1425091440060;
-        Fri, 27 Feb 2015 18:44:00 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id xj4si680042pbc.2.2015.02.27.18.44.00
+Received: by 10.182.4.2 with SMTP id g2ls1108747obg.44.gmail; Mon, 16 Mar 2015
+ 08:26:04 -0700 (PDT)
+X-Received: by 10.182.29.102 with SMTP id j6mr60815068obh.46.1426519564561;
+        Mon, 16 Mar 2015 08:26:04 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gu4si1984863pac.1.2015.03.16.08.26.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 18:44:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        Mon, 16 Mar 2015 08:26:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pabrd3 with SMTP id rd3so27289375pab.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 18:44:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=BBj1RgdxTDmnXNLOdqpEOtgY6DHA+C3oYXr1bhvBexc=;
-        b=cQsfaVZ7LEmUzpEOEWQcb5ZIJd15X4ezVKi28CcOuUnMZC+PAjTWJK0qg6TM9WweA0
-         eA4qSZrhpnFdXeqqAlr4Y//TwSIyCQTyaTVFz3vuwxw7/mQankDSSl2Di/DE+Gf/43O/
-         o7Xo4CPviONAeYHUp1EuByq89Vgddc2AYpqCTUlt8R9QXSUMr8A2z19fRmv946neMWgR
-         LbtIIidrAh5aCA/3qF0n4enIbjgjwwk+9eiKM10D+daX55Zvxy3n5FjUONvg1e5zQmLo
-         qLMV254ZC48LIFc/fnxEFHiFRJcnPrYsn/FHEBB2Sb3td0kxf0E3hGFJZS7DLd2JMLYd
-         A+Wg==
-X-Received: by 10.66.63.106 with SMTP id f10mr29265703pas.0.1425091439892;
-        Fri, 27 Feb 2015 18:43:59 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([150.107.242.202])
-        by mx.google.com with ESMTPSA id d11sm5269599pbu.10.2015.02.27.18.43.57
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 18:43:59 -0800 (PST)
-Date: Sat, 28 Feb 2015 08:13:54 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: Use del_timer
-Message-ID: <20150228024354.GA2767@vaishali-Ideapad-Z570>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (samsung-greg.wifi.rsr.lip6.fr [132.227.77.84])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 198C1AC6;
+	Mon, 16 Mar 2015 15:26:02 +0000 (UTC)
+Date: Mon, 16 Mar 2015 16:26:00 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: fbtft: Split function
+ call into two lines to improve readability
+Message-ID: <20150316152600.GB22971@kroah.com>
+References: <20150315113258.GA26684@akanksha>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20150315113258.GA26684@akanksha>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use timer API function del_timer instead of driver
-specific function _cancel_timer_ex as it is a standard
-way for deactivating a timer.
+On Sun, Mar 15, 2015 at 05:02:58PM +0530, Vatika Harlalka wrote:
+> Split function call to two lines improve code style and
+> increase readability.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  Changes in v2: Changed subject line to make it more
+> 		descriptive.
+>  
+>  drivers/staging/fbtft/fb_pcd8544.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/fbtft/fb_pcd8544.c b/drivers/staging/fbtft/fb_pcd8544.c
+> index b13162c..0228f4f 100644
+> --- a/drivers/staging/fbtft/fb_pcd8544.c
+> +++ b/drivers/staging/fbtft/fb_pcd8544.c
+> @@ -94,7 +94,8 @@ static int init_display(struct fbtft_par *par)
+>  
+>  static void set_addr_win(struct fbtft_par *par, int xs, int ys, int xe, int ye)
+>  {
+> -	fbtft_par_dbg(DEBUG_SET_ADDR_WIN, par, "%s(xs=%d, ys=%d, xe=%d, ye=%d)\n", __func__, xs, ys, xe, ye);
+> +	fbtft_par_dbg(DEBUG_SET_ADDR_WIN, par, "%s(xs=%d, ys=%d, xe=%d, ye=%d)\n",
+> +			__func__, xs, ys, xe, ye);
 
-This is done using Coccinelle and semantic patch used for
-this is as follows:
+These types of "tracing" calls can all be removed, they aren't needed as
+we have a build-in kernel tracing function.
 
-@@ expression x; @@
-- _cancel_timer_ex (&x);
-+ del_timer (&x);
+thanks,
 
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
----
-v1: Here, I am not sure whether I should use del_timer or
-    del_timer_sync [though function definition is using
-    del_timer]. That's why I am sending a sample patch. I will
-    go for removing all cases of _cancel_timer_ex once I have
-    cleae idea about the use of both functions.
-
- drivers/staging/rtl8712/rtl8712_recv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 546414d..0ec0bda 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -609,7 +609,7 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
- 		spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
- 	} else {
- 		spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
--		_cancel_timer_ex(&preorder_ctrl->reordering_ctrl_timer);
-+		del_timer(&preorder_ctrl->reordering_ctrl_timer);
- 	}
- 	return _SUCCESS;
- _err_exit:
--- 
-1.9.1
-
+greg k-h
 
