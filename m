@@ -1,172 +1,215 @@
-X-GM-THRID: 6392835608825298944
-X-Received: by 10.99.164.9 with SMTP id c9mr4649765pgf.4.1488448029295;
-        Thu, 02 Mar 2017 01:47:09 -0800 (PST)
+X-GM-THRID: 8708200333312
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d44f7e60dab64738
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.224.12 with SMTP id qy12mr9817980lbc.10.1426591257142;
+        Tue, 17 Mar 2015 04:20:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.79.79 with SMTP id c76ls1992018itb.21.gmail; Thu, 02 Mar
- 2017 01:47:08 -0800 (PST)
-X-Received: by 10.99.166.2 with SMTP id t2mr2575076pge.127.1488448028124;
-        Thu, 02 Mar 2017 01:47:08 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id s64si1368640pfk.0.2017.03.02.01.47.08
+Received: by 10.152.7.42 with SMTP id g10ls25850laa.51.gmail; Tue, 17 Mar 2015
+ 04:20:56 -0700 (PDT)
+X-Received: by 10.112.202.227 with SMTP id kl3mr3236736lbc.2.1426591256710;
+        Tue, 17 Mar 2015 04:20:56 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id sf8si103406wic.2.2015.03.17.04.20.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 01:47:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 17 Mar 2015 04:20:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id j5so6322655pfb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 01:47:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=kWwe0RKpgU5tji3VEF+5N4BTXMfD/TE40oTXqo20r20=;
-        b=adqYisjYan7rI/8hWFNCWzJLSwyu5DYn+0iIy0Bk+EAgqMW1ezr7VWqoLwK+omtuku
-         r4DkkpQhDjVkVgTQ2NPqwiSAb2xd+hnRjdEvq7sUcuRoHrQoLShGjSCFrNvfTQ5DkGad
-         oJgBJ8V8i39bdupiDUhZQfJExhEkZuMOdb/6HVr3Uu2w4Az62VVdXUOWiuzj/tCLvGju
-         YVEAtUF8lzQM7i3+nxzIQDkLOdPYHqF2nVCHA5PQoyc3DnO9qsd9eC9aVizxflrbKE0q
-         NPOMIKedMneQiszdtIWOoac/es5AtlZncKTmAFNjKARa5EyPFAyAU2RkhmIqwppOMM5x
-         dSMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=kWwe0RKpgU5tji3VEF+5N4BTXMfD/TE40oTXqo20r20=;
-        b=QWEGAfhtsnOx0CGyDqMAIid/GWIWpN5SgORew9dwmzAFLp8La40DOLMqIGvQX2fs2c
-         JZTl7AZaVwyBMQrHOhPyMe9W5GBCQvV8tDOV5LPlIkg3oqbqm082WZKLoNcqnytzmuTB
-         +6ddcbvb9XrjvM0N2Gi3JOMWc/m3BpqQWYP+lFTpdPOe/hcoSYKfetOUGHwJJKxjxzEp
-         TgOJMxL3B33sIgK3oYxl72zEdGlHDGJR2BUPWZ9fiz56hUZVyklYlx6dv63arE++xgPK
-         vto746B0yIT8XZcNAWTGYUz6MzskW6G6PncvAVmuq8ID3OTwl8+T+ozTxSimE6tBp6ne
-         ZUeA==
-X-Gm-Message-State: AMke39ljrq2GHbbHPB3fyHiNWKonrFUs8j5ppAE5SWtfo/CfcnVXa3kKvu51sxFrqzHB/g==
-X-Received: by 10.98.193.69 with SMTP id i66mr14404727pfg.35.1488448027741;
-        Thu, 02 Mar 2017 01:47:07 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x16sm15763329pfk.79.2017.03.02.01.47.05
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 01:47:06 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	sergio.paracuellos@gmail.com,
-	juliana.orod@gmail.com,
-	thomas.petazzoni@free-electrons.com,
-	noralf@tronnes.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/6] staging: wlan-ng: Fix sparse warning of restricted __le16
-Date: Thu,  2 Mar 2017 15:19:01 +0530
-Message-Id: <1488448146-29452-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,416,1422918000"; 
+   d="scan'208";a="126359728"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Mar 2015 12:20:55 +0100
+Date: Tue, 17 Mar 2015 12:20:50 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Haneen <hamohammed.sa@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/4] Staging: iio: replace pr_err with
+ dev_err
+In-Reply-To: <20150317111042.GA24753@haneen-vb>
+Message-ID: <alpine.DEB.2.10.1503171217460.2408@hadrien>
+References: <1426570219-22279-1-git-send-email-hamohammed.sa@gmail.com> <1426570541-22446-1-git-send-email-hamohammed.sa@gmail.com> <CAEnQRZA4fAKcA=Vh5DRCHfh=WjB1HnhySffgkgu+6-9Qfu6orA@mail.gmail.com> <alpine.DEB.2.10.1503170954390.2408@hadrien>
+ <20150317111042.GA24753@haneen-vb>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes the following sparse warning:
-warning: cast to restricted __le16
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/wlan-ng/prism2sta.c | 51 ++++++++++++++++++-------------------
- 1 file changed, 25 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 984804b..82d3a70 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -372,10 +372,9 @@ static int prism2sta_mlmerequest(struct wlandevice *wlandev,
- 			qualmsg->noise.status =
- 			    P80211ENUM_msgitem_status_data_ok;
- 
--			qualmsg->link.data = le16_to_cpu(hw->qual.cq_curr_bss);
--			qualmsg->level.data =
--				le16_to_cpu(hw->qual.asl_curr_bss);
--			qualmsg->noise.data = le16_to_cpu(hw->qual.anl_curr_fc);
-+			qualmsg->link.data = hw->qual.cq_curr_bss;
-+			qualmsg->level.data = hw->qual.asl_curr_bss;
-+			qualmsg->noise.data = hw->qual.anl_curr_fc;
- 			qualmsg->txrate.data = hw->txrate;
- 
- 			break;
-@@ -603,10 +602,10 @@ static int prism2sta_getcardinfo(struct wlandevice *wlandev)
- 	}
- 
- 	/* get all the nic id fields in host byte order */
--	hw->ident_nic.id = le16_to_cpu(hw->ident_nic.id);
--	hw->ident_nic.variant = le16_to_cpu(hw->ident_nic.variant);
--	hw->ident_nic.major = le16_to_cpu(hw->ident_nic.major);
--	hw->ident_nic.minor = le16_to_cpu(hw->ident_nic.minor);
-+	hw->ident_nic.id = hw->ident_nic.id;
-+	hw->ident_nic.variant = hw->ident_nic.variant;
-+	hw->ident_nic.major = hw->ident_nic.major;
-+	hw->ident_nic.minor = hw->ident_nic.minor;
- 
- 	netdev_info(wlandev->netdev, "ident: nic h/w: id=0x%02x %d.%d.%d\n",
- 		    hw->ident_nic.id, hw->ident_nic.major,
-@@ -622,10 +621,10 @@ static int prism2sta_getcardinfo(struct wlandevice *wlandev)
- 	}
- 
- 	/* get all the private fw id fields in host byte order */
--	hw->ident_pri_fw.id = le16_to_cpu(hw->ident_pri_fw.id);
--	hw->ident_pri_fw.variant = le16_to_cpu(hw->ident_pri_fw.variant);
--	hw->ident_pri_fw.major = le16_to_cpu(hw->ident_pri_fw.major);
--	hw->ident_pri_fw.minor = le16_to_cpu(hw->ident_pri_fw.minor);
-+	hw->ident_pri_fw.id = hw->ident_pri_fw.id;
-+	hw->ident_pri_fw.variant = hw->ident_pri_fw.variant;
-+	hw->ident_pri_fw.major = hw->ident_pri_fw.major;
-+	hw->ident_pri_fw.minor = hw->ident_pri_fw.minor;
- 
- 	netdev_info(wlandev->netdev, "ident: pri f/w: id=0x%02x %d.%d.%d\n",
- 		    hw->ident_pri_fw.id, hw->ident_pri_fw.major,
-@@ -648,10 +647,10 @@ static int prism2sta_getcardinfo(struct wlandevice *wlandev)
- 	}
- 
- 	/* get all the station fw id fields in host byte order */
--	hw->ident_sta_fw.id = le16_to_cpu(hw->ident_sta_fw.id);
--	hw->ident_sta_fw.variant = le16_to_cpu(hw->ident_sta_fw.variant);
--	hw->ident_sta_fw.major = le16_to_cpu(hw->ident_sta_fw.major);
--	hw->ident_sta_fw.minor = le16_to_cpu(hw->ident_sta_fw.minor);
-+	hw->ident_sta_fw.id = hw->ident_sta_fw.id;
-+	hw->ident_sta_fw.variant = hw->ident_sta_fw.variant;
-+	hw->ident_sta_fw.major = hw->ident_sta_fw.major;
-+	hw->ident_sta_fw.minor = hw->ident_sta_fw.minor;
- 
- 	/* strip out the 'special' variant bits */
- 	hw->mm_mods = hw->ident_sta_fw.variant & GENMASK(15, 14);
-@@ -683,11 +682,11 @@ static int prism2sta_getcardinfo(struct wlandevice *wlandev)
- 	/* get all the Compatibility range, modem interface supplier
- 	 * fields in byte order
- 	 */
--	hw->cap_sup_mfi.role = le16_to_cpu(hw->cap_sup_mfi.role);
--	hw->cap_sup_mfi.id = le16_to_cpu(hw->cap_sup_mfi.id);
--	hw->cap_sup_mfi.variant = le16_to_cpu(hw->cap_sup_mfi.variant);
--	hw->cap_sup_mfi.bottom = le16_to_cpu(hw->cap_sup_mfi.bottom);
--	hw->cap_sup_mfi.top = le16_to_cpu(hw->cap_sup_mfi.top);
-+	hw->cap_sup_mfi.role = hw->cap_sup_mfi.role;
-+	hw->cap_sup_mfi.id = hw->cap_sup_mfi.id;
-+	hw->cap_sup_mfi.variant = hw->cap_sup_mfi.variant;
-+	hw->cap_sup_mfi.bottom = hw->cap_sup_mfi.bottom;
-+	hw->cap_sup_mfi.top = hw->cap_sup_mfi.top;
- 
- 	netdev_info(wlandev->netdev,
- 		    "MFI:SUP:role=0x%02x:id=0x%02x:var=0x%02x:b/t=%d/%d\n",
-@@ -707,11 +706,11 @@ static int prism2sta_getcardinfo(struct wlandevice *wlandev)
- 	/* get all the Compatibility range, controller interface supplier
- 	 * fields in byte order
- 	 */
--	hw->cap_sup_cfi.role = le16_to_cpu(hw->cap_sup_cfi.role);
--	hw->cap_sup_cfi.id = le16_to_cpu(hw->cap_sup_cfi.id);
--	hw->cap_sup_cfi.variant = le16_to_cpu(hw->cap_sup_cfi.variant);
--	hw->cap_sup_cfi.bottom = le16_to_cpu(hw->cap_sup_cfi.bottom);
--	hw->cap_sup_cfi.top = le16_to_cpu(hw->cap_sup_cfi.top);
-+	hw->cap_sup_cfi.role = hw->cap_sup_cfi.role;
-+	hw->cap_sup_cfi.id = hw->cap_sup_cfi.id;
-+	hw->cap_sup_cfi.variant = hw->cap_sup_cfi.variant;
-+	hw->cap_sup_cfi.bottom = hw->cap_sup_cfi.bottom;
-+	hw->cap_sup_cfi.top = hw->cap_sup_cfi.top;
- 
- 	netdev_info(wlandev->netdev,
- 		    "CFI:SUP:role=0x%02x:id=0x%02x:var=0x%02x:b/t=%d/%d\n",
--- 
-2.7.4
+On Tue, 17 Mar 2015, Haneen wrote:
 
+> On Tue, Mar 17, 2015 at 09:54:57AM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Tue, 17 Mar 2015, Daniel Baluta wrote:
+> >
+> > > On Tue, Mar 17, 2015 at 7:35 AM, Haneen Mohammed
+> > > <hamohammed.sa@gmail.com> wrote:
+> > > > This patch replace pr_err with dev_err, when appropriate device structre
+> > > > is found.
+> > > > Issue found using the following Coccinelle script:
+> > > >
+> > > > @r exists@
+> > > > identifier f, s, i;
+> > > > position p;
+> > > > @@
+> > > >
+> > > > f(...,struct s *i,...) {
+> > > > <+...
+> > > > when != i == NULL
+> > > > pr_err@p(...);
+> > > > ...+>
+> > > > }
+> > > >
+> > > > @rr@
+> > > > identifier r.s, fld;
+> > > > @@
+> > > >
+> > > > struct s {
+> > > >         ...
+> > > >         struct device *fld;
+> > > >         ...
+> > > > };
+> > > >
+> > > > @@
+> > > > identifier r.i, rr.fld;
+> > > > position r.p;
+> > > > @@
+> > > > -pr_err@p
+> > > > +dev_err
+> > > >    (
+> > > > + i->fld,
+> > > > ...)
+> > > >
+> > > > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > >
+> > > Hi Haneen,
+> > >
+> > > There are a lot of other pr_err instances in that file that you can
+> > > convert to dev_err.
+> > >
+> > > E.g
+> > > ad2s1210_update_frequency_control_word
+> > >
+> > > You could use the st->sdev->dev. This applies for your changes below, too.
+> >
+> > Maybe this is related to the lack of --all-includes.
+> >
+> > julia
+> >
+>
+> I did use --all-includes :) this is what I used:
+
+OK, you can try replacing --all-includes with --recursive-includes.  That
+will include header files that are included by other header files.  It
+could be slow, though.
+
+In thinking about it, I think that you are right that you should include
+more patterns.  For your parameter, you have a type, so you need to look
+in it for a device strcuture, but if you don't find it, you may want to
+look in all other structure typed fields to see if their types have device
+structures.
+
+julia
+
+
+> $ spatch --sp-file ../pr3.cocci   --all-includes -I include/ --dir
+> drivers/staging/ > ../pr4.out
+>
+> This was hinted in this video, becuase without it I didn't get any
+> result:
+> https://www.youtube.com/watch?v=4uhHhKTOHDs
+>
+> But I think I need to refine the script to include other cases.
+> Also, I needed to manulaly adjust some of the outputs such as when the
+> device struct is what was passed in the function, becuase for that I got
+> the following in comedi/comedi_fops.c:
+>  dev_err(hardware_device->parent,
+>                        "ran out of minor numbers for board device
+>  files\n");
+>
+> And I got two outputs that I couldn't confirm if there were a device
+> struct, such as "dev_err(port->dev," from panel/panel.c file and
+> dev_err(mc_io->dev, from fsl-mc/bus/mc-bus.c
+>
+>
+> > >
+> > >
+> > > > ---
+> > > >  drivers/staging/iio/resolver/ad2s1210.c | 12 +++++++-----
+> > > >  1 file changed, 7 insertions(+), 5 deletions(-)
+> > > >
+> > > > diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
+> > > > index b4c14ba..1d8c5c0 100644
+> > > > --- a/drivers/staging/iio/resolver/ad2s1210.c
+> > > > +++ b/drivers/staging/iio/resolver/ad2s1210.c
+> > > > @@ -214,7 +214,7 @@ static ssize_t ad2s1210_store_fclkin(struct device *dev,
+> > > >         if (ret)
+> > > >                 return ret;
+> > > >         if (fclkin < AD2S1210_MIN_CLKIN || fclkin > AD2S1210_MAX_CLKIN) {
+> > > > -               pr_err("ad2s1210: fclkin out of range\n");
+> > > > +               dev_err(dev, "ad2s1210: fclkin out of range\n");
+> > > >                 return -EINVAL;
+> > > >         }
+> > > >
+> > > > @@ -252,7 +252,8 @@ static ssize_t ad2s1210_store_fexcit(struct device *dev,
+> > > >         if (ret < 0)
+> > > >                 return ret;
+> > > >         if (fexcit < AD2S1210_MIN_EXCIT || fexcit > AD2S1210_MAX_EXCIT) {
+> > > > -               pr_err("ad2s1210: excitation frequency out of range\n");
+> > > > +               dev_err(dev,
+> > > > +                       "ad2s1210: excitation frequency out of range\n");
+> > > >                 return -EINVAL;
+> > > >         }
+> > > >         mutex_lock(&st->lock);
+> > > > @@ -307,7 +308,8 @@ static ssize_t ad2s1210_store_control(struct device *dev,
+> > > >                 goto error_ret;
+> > > >         if (ret & AD2S1210_MSB_IS_HIGH) {
+> > > >                 ret = -EIO;
+> > > > -               pr_err("ad2s1210: write control register fail\n");
+> > > > +               dev_err(dev,
+> > > > +                       "ad2s1210: write control register fail\n");
+> > > >                 goto error_ret;
+> > > >         }
+> > > >         st->resolution
+> > > > @@ -346,7 +348,7 @@ static ssize_t ad2s1210_store_resolution(struct device *dev,
+> > > >
+> > > >         ret = kstrtou8(buf, 10, &udata);
+> > > >         if (ret || udata < 10 || udata > 16) {
+> > > > -               pr_err("ad2s1210: resolution out of range\n");
+> > > > +               dev_err(dev, "ad2s1210: resolution out of range\n");
+> > > >                 return -EINVAL;
+> > > >         }
+> > > >         mutex_lock(&st->lock);
+> > > > @@ -368,7 +370,7 @@ static ssize_t ad2s1210_store_resolution(struct device *dev,
+> > > >         data = ret;
+> > > >         if (data & AD2S1210_MSB_IS_HIGH) {
+> > > >                 ret = -EIO;
+> > > > -               pr_err("ad2s1210: setting resolution fail\n");
+> > > > +               dev_err(dev, "ad2s1210: setting resolution fail\n");
+> > > >                 goto error_ret;
+> > > >         }
+> > > >         st->resolution
+> > > thanks,
+> > > Daniel.
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAEnQRZA4fAKcA%3DVh5DRCHfh%3DWjB1HnhySffgkgu%2B6-9Qfu6orA%40mail.gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150317111042.GA24753%40haneen-vb.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
