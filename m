@@ -1,73 +1,45 @@
-X-GM-THRID: 7077030264832
-X-Received: by 10.112.199.69 with SMTP id ji5mr3060580lbc.0.1425761965597;
-        Sat, 07 Mar 2015 12:59:25 -0800 (PST)
+X-GM-THRID: 7921078370304
+X-Received: by 10.182.125.100 with SMTP id mp4mr30741340obb.21.1426585528417;
+        Tue, 17 Mar 2015 02:45:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.1.3 with SMTP id 3ls51903lai.36.gmail; Sat, 07 Mar 2015
- 12:59:25 -0800 (PST)
-X-Received: by 10.112.189.227 with SMTP id gl3mr3150211lbc.2.1425761965059;
-        Sat, 07 Mar 2015 12:59:25 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x22c.google.com (mail-wg0-x22c.google.com. [2a00:1450:400c:c00::22c])
-        by gmr-mx.google.com with ESMTPS id cl5si468111wib.3.2015.03.07.12.59.25
+Received: by 10.182.232.138 with SMTP id to10ls13301obc.93.gmail; Tue, 17 Mar
+ 2015 02:45:28 -0700 (PDT)
+X-Received: by 10.182.205.232 with SMTP id lj8mr67776116obc.39.1426585528246;
+        Tue, 17 Mar 2015 02:45:28 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ri9si2438711pdb.1.2015.03.17.02.45.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Mar 2015 12:59:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) client-ip=2a00:1450:400c:c00::22c;
+        Tue, 17 Mar 2015 02:45:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wggx13 with SMTP id x13so19693216wgg.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 07 Mar 2015 12:59:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=pfDQoIQK2IqADbl4kWYGUh2WgGUNxx3cIjXM4shWF6E=;
-        b=k3zxcKjUIlA4rgotmORYnWZwtwmMRfH/iqT1R8FlKYAPTF97HR55lQbKdwxUu9lbGb
-         Icqf/qD0QT0FPDlutLCHOGhZqDAmZVGxmEvTviw5V+33GX7dkQNAquIu9evknoIjRiMz
-         S10HdNDZ74vVBmzD6aXRFhdRkYdiknjUb8wdkow8nezd6VHgADPntd5Aq5RKVswx54iH
-         VAueIMzU0/08ruWD8NjUuUqddqQFn1k/HmAZ/mReIrrVJBOHWWwHQZrGp4BKgQqsZQMr
-         SoDOXybx/rsk45sbx4ysaywmj0nvasopyTK9atyA45MkepsFjlE1lReqSnaLicruj8No
-         GCPg==
-X-Received: by 10.180.189.37 with SMTP id gf5mr89377926wic.86.1425761964973;
-        Sat, 07 Mar 2015 12:59:24 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneensa-VirtualBox ([79.170.54.240])
-        by mx.google.com with ESMTPSA id lb6sm20841859wjb.22.2015.03.07.12.59.23
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Mar 2015 12:59:24 -0800 (PST)
-Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 1BE8362A1D; Sat,  7 Mar 2015 23:59:19 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/2] Remove unused variables
-Date: Sat,  7 Mar 2015 23:59:18 +0300
-Message-Id: <1425761958-1639-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B7319944;
+	Tue, 17 Mar 2015 09:45:26 +0000 (UTC)
+Date: Tue, 17 Mar 2015 10:45:24 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Cristina Opriceana <cristina.opriceana@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: drivers: Remove
+ unecessary return value
+Message-ID: <20150317094524.GB3917@kroah.com>
+References: <f972425373892a028f783e456e9990fa1ffba62a.1426538724.git.cristina.opriceana@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f972425373892a028f783e456e9990fa1ffba62a.1426538724.git.cristina.opriceana@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patchset is concerned with removing variable that was used only to store the return value of a function.
-These issues were detected and resolved using the following coccinelle script:
-    
-@@
-expression ret;
-identifier f;
-@@
-    
--ret =
-+return
-  f(...);
--return ret;
+On Mon, Mar 16, 2015 at 10:50:22PM +0200, Cristina Opriceana wrote:
+> Change _SUCCESS return value for function loadparam to void as it never
+> changes and it's also never used when calling the function.
 
-Haneen Mohammed (2):
-  Staging: dgap: Remove unused variable
-  Staging: speakup: Remove unused variable
+When you do this, please break it up into one-patch-per driver, to make
+it easier to review and merge.
 
- drivers/staging/dgap/dgap.c        | 4 +---
- drivers/staging/speakup/kobjects.c | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+thanks,
 
--- 
-1.9.1
-
+greg k-h
 
