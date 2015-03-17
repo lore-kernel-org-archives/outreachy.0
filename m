@@ -1,109 +1,159 @@
-X-GM-THRID: 6771501280908017664
-X-Received: by 2002:a05:6512:48c:: with SMTP id v12mr4020347lfq.56.1576613001510;
-        Tue, 17 Dec 2019 12:03:21 -0800 (PST)
+X-GM-THRID: 8354230435840
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,4a466ff2e2b78213
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.66.233.5 with SMTP id ts5mr52917068pac.27.1426606543255;
+        Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:9e01:: with SMTP id e1ls282333ljk.15.gmail; Tue, 17 Dec
- 2019 12:03:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy2L/Pr4T3TO6zBeM0jTQFKg3prYmMaKvWoY1ZQUXXazF/WCTc6ZC0kc6FyAWsl0Iu2/jTX
-X-Received: by 2002:a05:651c:1049:: with SMTP id x9mr4423500ljm.233.1576613000083;
-        Tue, 17 Dec 2019 12:03:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576613000; cv=none;
-        d=google.com; s=arc-20160816;
-        b=A2FQHmR4OD2BM4nx0+FpSVl4LdtNqPMEZ4icEyUHUCK3C6jXRqcjcFDdehI3EEFN5H
-         z4uBYMbFs9aVahKPGQOULANdEwqRwbqv12U1JPv5ITq8TFSASnGDyPiUmGaOMOiP89cf
-         +J4lzR8zQPkXcgY4C7TbjPO28j0nd82GwBSKHQNphHiRCA6NwlAE4OwMOd3B4LdQBfxh
-         XlFwmdaQrmsy7xrI5PIp6IMHCN41/4GHnOJZcIE79BJde1JGgl/MUGz7VQCbf83rnrpH
-         XOv2ekiltXw3r3CAsPYV4BAC2gfHTNqsOhdz63Di9PPvsWiTOd8rrn2Hv9HBCS8Y2b1G
-         B65g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=+TUvDoKcIZ5DCGGcDSAGdLdrlmatvPNo72nYGzYLQqQ=;
-        b=XEnCnV/gW7eFq+hdhYFOHmFBZ3fan635rzmK/ieZOPjizXpPLAnxbmdYB9x+3VWoik
-         wNyX1hba29M9KQIbrUeyWqjtvh8FRvyw3bjij7ifaMc2mM+7jicrGkaXszlzjzQMfgqT
-         ePicsbD8RnQoVaIOKqDK8OEYaI/ohnM3kfbpQYSNrjOUPSs64rKqnQ3fJzBmyuRs9iXy
-         /mdAoHw81IIlfZh8apRIS0/1KJdeUd28PJ8DqHXT22KcLqR6Or59pDAOaSFFznVQbMhj
-         aXbLpwYWVTayMlJ6jteyy3sUTjOCsP5CAgzz+YdAi52LOg3SiIwwqznZXMcrJ3XVZYML
-         nVsg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ATTYMQA8;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lf1-x141.google.com (mail-lf1-x141.google.com. [2a00:1450:4864:20::141])
-        by gmr-mx.google.com with ESMTPS id a26si684694ljn.1.2019.12.17.12.03.20
+Received: by 10.140.83.209 with SMTP id j75ls191738qgd.1.gmail; Tue, 17 Mar
+ 2015 08:35:43 -0700 (PDT)
+X-Received: by 10.236.223.166 with SMTP id v36mr68146906yhp.45.1426606543053;
+        Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
+        by gmr-mx.google.com with ESMTPS id e5si1693885qcg.1.2015.03.17.08.35.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Dec 2019 12:03:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) client-ip=2a00:1450:4864:20::141;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ATTYMQA8;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x141.google.com with SMTP id b15so7872813lfc.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Dec 2019 12:03:20 -0800 (PST)
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qg0-x22b.google.com with SMTP id 3so11346693qgf.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 08:35:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+TUvDoKcIZ5DCGGcDSAGdLdrlmatvPNo72nYGzYLQqQ=;
-        b=ATTYMQA8aThmxYZm/UJY5s72/PC6SSJzmjBZpgQeT9Yj/gW4YE9aHoYF/7L28GaoQh
-         lfkFJ+ZUBuoUNO4SBT5j7pR+2Uqsk1fkfM+HNuQmz32I9Ds3h1I3BrkxSZk3/cG1Ws7b
-         G/3KxJx7DzfrdEjeM8z/iyB3EOYC6p3AMpaW0q351a2bnhIFu/uvxpK80qwEYgh2wmvf
-         REEPeQ+KikcjCPfQqmY6VK2nz5GZftovVCa/Egxqqz2iFMzrbKWe9Y/SebWSO3ckZZMu
-         EpYzRHhzNnvfE5f8ODaXZcCWfBcjfGlhMV1GzwybNG0CfbcGRsSQGBfX8a7SObd0EYrb
-         UOyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+TUvDoKcIZ5DCGGcDSAGdLdrlmatvPNo72nYGzYLQqQ=;
-        b=KxLKfcg1QZnw5ratGpz5zojuuOawR4zQrT0xbKYDtNRMPGX8nHA2EIFwfwV+19z9Nl
-         3pmSKW23YkxJL3ST3lq7KivyXgx35jGQ/AKiE2i3XUFdXBB0VPW1BqxJhEr4N5Du574w
-         Tg+ZC7ZjKbH2dCiwkVlM+09cXiZd7UJ9ipWM1xFBSxW8Hw2NoU9m7a3UIhm/S1YS4U47
-         wHdfidvjaOgnUaUo8D93g8e8L6ySZwMDsgsa4unrxvnJ5QqCfvMYt/pfLV+PYeA/Wr8B
-         vmMHV2vJSI1xW77MvifkYxP7oArPy82GQhlJtoo13oOpk/GUla0DwhgEO6bsLPZ1aSyJ
-         R8rg==
-X-Gm-Message-State: APjAAAU1pR3bpD+K6T9gD6x5hU51W54qFJrlNRAZBIWUEU537PKaP+aG
-	C2z/wPLUtOvluDxakl9B47yu/fszsFg=
-X-Received: by 2002:a19:f10e:: with SMTP id p14mr3808334lfh.3.1576612999563;
-        Tue, 17 Dec 2019 12:03:19 -0800 (PST)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([78.190.237.100])
-        by smtp.gmail.com with ESMTPSA id b22sm13430843lji.66.2019.12.17.12.03.18
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 17 Dec 2019 12:03:19 -0800 (PST)
-Date: Tue, 17 Dec 2019 23:03:17 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Fix line over 80 characters
-Message-ID: <20191217200317.GA6493@siyah2>
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=EvKwlO4LGwScH4z6t51FWOm2P+VkuD3IpDWVQYbRhAU=;
+        b=aIiQML9moiB3A1ErWywNAOcrR2tgQlniuqVf6OAlG7s965du/AmSi2BkJOl4Ywispy
+         uIZXpXMzi32HTwASXf/7doyPC2uACuwIYpn8rXuxL5Qm13DGtKMKuYu7rXLazErdKKSN
+         riYqUpipZPnQL1SbYnnY7WpCFas8m2TdoWZEhbK+SRFhjLie0HLKlXg/9zciJOxzBPW7
+         5mK/8gTdXBZLzEONZ1AO8lsi4Ba+eUwM3UdGuAQVaS48IbxrBcM9lJ1Lz7QAAsD3sZjo
+         pp1ZDS0QPwp6DF3lPjNuMaGxRDYSEG3wfC45JSsDZDsPlW/ONZUkdZ9rD4W0n4IPfEb0
+         2ajA==
+X-Received: by 10.55.17.222 with SMTP id 91mr100847213qkr.17.1426606542963;
+        Tue, 17 Mar 2015 08:35:42 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 81sm9784139qhh.46.2015.03.17.08.35.41
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 08:35:42 -0700 (PDT)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <550849CD.10900@gmail.com>
+Date: Tue, 17 Mar 2015 11:35:41 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+To: Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8712: replace memcpy
+ with ether_addr_copy
+References: <20150316144736.GB24906@kroah.com> <1426520491-6131-1-git-send-email-hamohammed.sa@gmail.com>
+In-Reply-To: <1426520491-6131-1-git-send-email-hamohammed.sa@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
----
- drivers/staging/exfat/exfat_core.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On 03/16/15 11:41, Haneen Mohammed wrote:
+> This patch replace memcpy with ethe_addr_copy to address the following
+> warning generated by checkpatch.pl: ""Prefer ether_addr_copy over memcpy
+> if the Ethernet addresses are __aligned(2)"
+> 
+> Follwoing is the output of pahole for the relevant datastructures:
+> 1- for  "iwe.u.ap_addr.sa_data" and "wrqu->ap_addr.sa_data"
+> 
+> struct sockaddr {
+>         sa_family_t                sa_family;            /*     0     2 */
+>         char                       sa_data[14];          /*     2    14 */
+> 
+>         /* size: 16, cachelines: 1, members: 2 */
+>         /* last cacheline: 16 bytes */
+> };
+> 
+> struct iw_event {
+>         __u16                      len;                  /*     0     2 */
+>         __u16                      cmd;                  /*     2     2 */
+> 
+>         /* XXX 4 bytes hole, try to pack */
+> 
+>         union iwreq_data           u;                    /*     8    16 */
+> 
+>         /* size: 24, cachelines: 1, members: 3 */
+>         /* sum members: 20, holes: 1, sum holes: 4 */
+>         /* last cacheline: 24 bytes */
+> };
+> 
+> 2- for  "pnetwork->network.MacAddress" and "pcur_bss->MacAddress"
+> 
+> struct wlan_network {
+>         struct list_head           list;                 /*     0    16 */
+>         int                        network_type;         /*    16     4 */
+>         int                        fixed;                /*    20     4 */
+>         unsigned int               last_scanned;         /*    24     4 */
+>         int                        aid;                  /*    28     4 */
+>         int                        join_res;             /*    32     4 */
+>         struct ndis_wlan_bssid_ex  network;              /*    36   884 */
+>         /* --- cacheline 14 boundary (896 bytes) was 24 bytes ago ---   */
+> 
+>         /* size: 920, cachelines: 15, members: 7 */
+>         /* last cacheline: 24 bytes */
+> };
+> 
+> struct ndis_wlan_bssid_ex {
+>         u32                        Length;               /*     0     4 */
+>         unsigned char              MacAddress[6];        /*     4     6 */
+>         u8                         Reserved[2];          /*    10     2 */
+>         struct ndis_802_11_ssid    Ssid;                 /*    12    36 */
+>         u32                        Privacy;              /*    48     4 */
+>         s32                        Rssi;                 /*    52     4 */
+>         enum NDIS_802_11_NETWORK_TYPE NetworkTypeInUse;  /*    56     4 */
+>         struct NDIS_802_11_CONFIGURATION Configuration;  /*    60    32 */
+>         /* --- cacheline 1 boundary (64 bytes) was 28 bytes ago --- */
+>         enum NDIS_802_11_NETWORK_INFRASTRUCTURE InfrastructureMode; /* 92     4 */
+>         NDIS_802_11_RATES_EX       SupportedRates;       /*    96    16 */
+>         u32                        IELength;             /*   112     4 */
+>         u8                         IEs[768];             /*   116   768 */
+>         /* --- cacheline 13 boundary (832 bytes) was 52 bytes ago --- */
+> 
+>         /* size: 884, cachelines: 14, members: 12 */
+>         /* last cacheline: 52 bytes */
+> };
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> ---
+> v2: fix commit msg
+> 
+>  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-index b23fbf3..e4777e8 100644
---- a/drivers/staging/exfat/exfat_core.c
-+++ b/drivers/staging/exfat/exfat_core.c
-@@ -2312,7 +2312,8 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 
- 				if ((entry_type == TYPE_FILE) || (entry_type == TYPE_DIR)) {
- 					file_ep = (struct file_dentry_t *)ep;
--					if ((type == TYPE_ALL) || (type == entry_type)) {
-+					if ((type == TYPE_ALL) ||
-+			         	    (type == entry_type)) {
- 						num_ext_entries = file_ep->num_ext;
- 						is_feasible_entry = true;
- 					} else {
--- 
-2.7.4
+This looks good!
+
+Jes
+
+> diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> index eacba8c..81f39c3 100644
+> --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> @@ -185,7 +185,7 @@ static inline char *translate_scan(struct _adapter *padapter,
+>  	/* AP MAC address */
+>  	iwe.cmd = SIOCGIWAP;
+>  	iwe.u.ap_addr.sa_family = ARPHRD_ETHER;
+> -	memcpy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress, ETH_ALEN);
+> +	ether_addr_copy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress);
+>  	start = iwe_stream_add_event(info, start, stop, &iwe, IW_EV_ADDR_LEN);
+>  	/* Add the ESSID */
+>  	iwe.cmd = SIOCGIWESSID;
+> @@ -1117,7 +1117,7 @@ static int r8711_wx_get_wap(struct net_device *dev,
+>  	wrqu->ap_addr.sa_family = ARPHRD_ETHER;
+>  	if (check_fwstate(pmlmepriv, _FW_LINKED | WIFI_ADHOC_MASTER_STATE |
+>  				     WIFI_AP_STATE))
+> -		memcpy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress, ETH_ALEN);
+> +		ether_addr_copy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress);
+>  	else
+>  		eth_zero_addr(wrqu->ap_addr.sa_data);
+>  	return 0;
+> 
 
 
