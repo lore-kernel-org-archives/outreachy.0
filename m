@@ -1,49 +1,49 @@
 X-GM-THRID: 8708200333312
-X-Received: by 10.112.13.228 with SMTP id k4mr9551688lbc.8.1426570638620;
-        Mon, 16 Mar 2015 22:37:18 -0700 (PDT)
+X-Received: by 10.180.77.165 with SMTP id t5mr6801685wiw.0.1426570513499;
+        Mon, 16 Mar 2015 22:35:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.43.48 with SMTP id t16ls716927lal.55.gmail; Mon, 16 Mar
- 2015 22:37:18 -0700 (PDT)
-X-Received: by 10.112.35.135 with SMTP id h7mr9593330lbj.23.1426570638089;
-        Mon, 16 Mar 2015 22:37:18 -0700 (PDT)
+Received: by 10.152.20.67 with SMTP id l3ls759415lae.93.gmail; Mon, 16 Mar
+ 2015 22:35:12 -0700 (PDT)
+X-Received: by 10.112.25.7 with SMTP id y7mr9555131lbf.21.1426570512791;
+        Mon, 16 Mar 2015 22:35:12 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
-        by gmr-mx.google.com with ESMTPS id i8si55659wif.1.2015.03.16.22.37.18
+Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
+        by gmr-mx.google.com with ESMTPS id i8si55350wif.1.2015.03.16.22.35.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 22:37:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
+        Mon, 16 Mar 2015 22:35:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22d.google.com with SMTP id cq43so52722230web.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 22:37:18 -0700 (PDT)
+Received: by mail-we0-x234.google.com with SMTP id p45so27368473weo.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 22:35:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=rD0l+FoZLA1UsYmkOwMZfJdYkwo0H8bz9zMkiLugQsQ=;
-        b=lwUEleaeBZAGPNjZP9MMniR+0FA+QRikslK//aDDvu8TURR05fN4V0jEKD/w+5BBhP
-         Qn+F8zz+w/bhqA5WwRUKWu9u/hbgtp02R0vJnf2gcbVQLYMLQjVBeauJmh8GB9fQmwVr
-         E0SLprAzq666mFKthI6LUceW7JJXTmXB6f/ievg4bD4lBSOpykFO+/+SGum9tNMKGlJG
-         I7hfRnTExQ2KDHOcrjwH19Oc4GRpcscrkAzmrRxwbCYGdz0gANFD5KI7YP0gY+9shdFj
-         Ym3AX5VmNWNTKv67c+ktRmBIUJMuejMvHoa1Ko3FE+2u3C94vptMle+xEcITVZbEP95m
-         EfgA==
-X-Received: by 10.180.108.81 with SMTP id hi17mr70089819wib.91.1426570638016;
-        Mon, 16 Mar 2015 22:37:18 -0700 (PDT)
+        bh=BBGH8zUUYsg7Z4IYuM+h+y5pWEJtD4yniCTmA3a9vBQ=;
+        b=SXamrULjYI/Op18Vdzsp64DTw2rtEu9XmosjwtCCgs+lFDROF6Mal+sqz/5y2cuSKX
+         22i6BdX9pce7GYe55nQdohs5Yg5k4QnEzGHEaR0NMTpqSOUVU9P3Zz2rsvA6LXCnfULj
+         BM1X4rMwe0hZd3DdAAXS4WL70SrNbwIOv+TlWSzieJRAJui28F6hEdNWZ79ZMJ0q8gbz
+         smhUrLQavb1z3BFBhiMEK7d5Vea5JmmMrlIGC7vIek1Q2LO82MWk0v6Z/AvaKvt5GxBS
+         uL7UnHmm96rzQK6ruC1uQifRQi7ASGsZ6RkQnIdKzAJxQXuUE6nTvupETHNuuTRL0KIb
+         G8EA==
+X-Received: by 10.194.120.132 with SMTP id lc4mr131705797wjb.92.1426570512708;
+        Mon, 16 Mar 2015 22:35:12 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneen-vb ([79.170.55.48])
-        by mx.google.com with ESMTPSA id u16sm18344339wjr.5.2015.03.16.22.37.16
+        by mx.google.com with ESMTPSA id bx3sm18326363wjc.21.2015.03.16.22.35.11
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 22:37:17 -0700 (PDT)
+        Mon, 16 Mar 2015 22:35:12 -0700 (PDT)
 Received: by haneen-vb (Postfix, from userid 1000)
-	id B723EC1F80; Tue, 17 Mar 2015 08:37:14 +0300 (AST)
+	id 75FE1C1F80; Tue, 17 Mar 2015 08:35:08 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 3/4] Staging: iio: replace pr_err with dev_err
-Date: Tue, 17 Mar 2015 08:35:41 +0300
-Message-Id: <1426570541-22446-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 2/4] Staging: gdm724x: replace pr_err with dev_err
+Date: Tue, 17 Mar 2015 08:34:20 +0300
+Message-Id: <1426570460-22394-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426570219-22279-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1426570219-22279-1-git-send-email-hamohammed.sa@gmail.com>
@@ -86,60 +86,72 @@ position r.p;
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/iio/resolver/ad2s1210.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/staging/gdm724x/gdm_mux.c | 4 ++--
+ drivers/staging/gdm724x/gdm_usb.c | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
-index b4c14ba..1d8c5c0 100644
---- a/drivers/staging/iio/resolver/ad2s1210.c
-+++ b/drivers/staging/iio/resolver/ad2s1210.c
-@@ -214,7 +214,7 @@ static ssize_t ad2s1210_store_fclkin(struct device *dev,
- 	if (ret)
- 		return ret;
- 	if (fclkin < AD2S1210_MIN_CLKIN || fclkin > AD2S1210_MAX_CLKIN) {
--		pr_err("ad2s1210: fclkin out of range\n");
-+		dev_err(dev, "ad2s1210: fclkin out of range\n");
- 		return -EINVAL;
+diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
+index d1ab996..b987ba0 100644
+--- a/drivers/staging/gdm724x/gdm_mux.c
++++ b/drivers/staging/gdm724x/gdm_mux.c
+@@ -608,7 +608,7 @@ static int gdm_mux_suspend(struct usb_interface *intf, pm_message_t pm_msg)
+ 	rx = &mux_dev->rx;
+ 
+ 	if (mux_dev->usb_state != PM_NORMAL) {
+-		pr_err("usb suspend - invalid state\n");
++		dev_err(intf->usb_dev, "usb suspend - invalid state\n");
+ 		return -1;
  	}
  
-@@ -252,7 +252,8 @@ static ssize_t ad2s1210_store_fexcit(struct device *dev,
- 	if (ret < 0)
- 		return ret;
- 	if (fexcit < AD2S1210_MIN_EXCIT || fexcit > AD2S1210_MAX_EXCIT) {
--		pr_err("ad2s1210: excitation frequency out of range\n");
-+		dev_err(dev,
-+			"ad2s1210: excitation frequency out of range\n");
- 		return -EINVAL;
- 	}
- 	mutex_lock(&st->lock);
-@@ -307,7 +308,8 @@ static ssize_t ad2s1210_store_control(struct device *dev,
- 		goto error_ret;
- 	if (ret & AD2S1210_MSB_IS_HIGH) {
- 		ret = -EIO;
--		pr_err("ad2s1210: write control register fail\n");
-+		dev_err(dev,
-+			"ad2s1210: write control register fail\n");
- 		goto error_ret;
- 	}
- 	st->resolution
-@@ -346,7 +348,7 @@ static ssize_t ad2s1210_store_resolution(struct device *dev,
+@@ -637,7 +637,7 @@ static int gdm_mux_resume(struct usb_interface *intf)
+ 	mux_dev = tty_dev->priv_dev;
  
- 	ret = kstrtou8(buf, 10, &udata);
- 	if (ret || udata < 10 || udata > 16) {
--		pr_err("ad2s1210: resolution out of range\n");
-+		dev_err(dev, "ad2s1210: resolution out of range\n");
- 		return -EINVAL;
+ 	if (mux_dev->usb_state != PM_SUSPEND) {
+-		pr_err("usb resume - invalid state\n");
++		dev_err(intf->usb_dev, "usb resume - invalid state\n");
+ 		return -1;
  	}
- 	mutex_lock(&st->lock);
-@@ -368,7 +370,7 @@ static ssize_t ad2s1210_store_resolution(struct device *dev,
- 	data = ret;
- 	if (data & AD2S1210_MSB_IS_HIGH) {
- 		ret = -EIO;
--		pr_err("ad2s1210: setting resolution fail\n");
-+		dev_err(dev, "ad2s1210: setting resolution fail\n");
- 		goto error_ret;
+ 
+diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
+index d2a3b35..d59810f 100644
+--- a/drivers/staging/gdm724x/gdm_usb.c
++++ b/drivers/staging/gdm724x/gdm_usb.c
+@@ -848,7 +848,7 @@ static int gdm_usb_probe(struct usb_interface *intf,
+ 	udev->usbdev = usbdev;
+ 	ret = init_usb(udev);
+ 	if (ret < 0) {
+-		pr_err("init_usb func failed\n");
++		dev_err(intf->usb_dev, "init_usb func failed\n");
+ 		goto err_init_usb;
  	}
- 	st->resolution
+ 	udev->intf = intf;
+@@ -867,7 +867,7 @@ static int gdm_usb_probe(struct usb_interface *intf,
+ 
+ 	ret = request_mac_address(udev);
+ 	if (ret < 0) {
+-		pr_err("request Mac address failed\n");
++		dev_err(intf->usb_dev, "request Mac address failed\n");
+ 		goto err_mac_address;
+ 	}
+ 
+@@ -928,7 +928,7 @@ static int gdm_usb_suspend(struct usb_interface *intf, pm_message_t pm_msg)
+ 	udev = phy_dev->priv_dev;
+ 	rx = &udev->rx;
+ 	if (udev->usb_state != PM_NORMAL) {
+-		pr_err("usb suspend - invalid state\n");
++		dev_err(intf->usb_dev, "usb suspend - invalid state\n");
+ 		return -1;
+ 	}
+ 
+@@ -961,7 +961,7 @@ static int gdm_usb_resume(struct usb_interface *intf)
+ 	rx = &udev->rx;
+ 
+ 	if (udev->usb_state != PM_SUSPEND) {
+-		pr_err("usb resume - invalid state\n");
++		dev_err(intf->usb_dev, "usb resume - invalid state\n");
+ 		return -1;
+ 	}
+ 	udev->usb_state = PM_NORMAL;
 -- 
 1.9.1
 
