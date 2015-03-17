@@ -1,68 +1,89 @@
 X-GM-THRID: 8800398475264
-X-Received: by 10.152.28.137 with SMTP id b9mr10266454lah.8.1426611542391;
-        Tue, 17 Mar 2015 09:59:02 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,1ad4f5129e9b727
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.111.4 with SMTP id v4mr74039752yhg.55.1426605481124;
+        Tue, 17 Mar 2015 08:18:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.42.206 with SMTP id q14ls73184lal.49.gmail; Tue, 17 Mar
- 2015 09:59:01 -0700 (PDT)
-X-Received: by 10.152.6.232 with SMTP id e8mr10262501laa.2.1426611541943;
-        Tue, 17 Mar 2015 09:59:01 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id ew13si174228wid.0.2015.03.17.09.59.01
+Received: by 10.50.28.8 with SMTP id x8ls141840igg.11.gmail; Tue, 17 Mar 2015
+ 08:18:00 -0700 (PDT)
+X-Received: by 10.66.157.129 with SMTP id wm1mr69691632pab.15.1426605480815;
+        Tue, 17 Mar 2015 08:18:00 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qg0-x22e.google.com (mail-qg0-x22e.google.com. [2607:f8b0:400d:c04::22e])
+        by gmr-mx.google.com with ESMTPS id e5si1685018qcg.1.2015.03.17.08.18.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 17 Mar 2015 09:59:01 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 08:18:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) client-ip=2607:f8b0:400d:c04::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,417,1422918000"; 
-   d="scan'208";a="126430632"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Mar 2015 17:59:01 +0100
-Date: Tue, 17 Mar 2015 17:58:54 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Ioana Ciornei <ciorneiioana@gmail.com>
-cc: outreachy-kernel@googlegroups.com
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qg0-x22e.google.com with SMTP id a8so10801099qgf.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 08:18:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding;
+        bh=kEIEOLY6kPTqLAA8ze64Yf3ZhRCUbB1SGl5F+NaP0EU=;
+        b=p9bdBtubrchaeeVzEEIVa61k0D0reaVjmfldvqIR6WqsQ+MCPTrfFamOhZZQq8J9Mx
+         BoQyKb4MKxHuBi/GjMxBgtu9HmvfpsW2rwvnCt1OZygL3TqZNDRmVrYkDF/MxVFxfc9K
+         Y/o+O1g9WrZ893K4mqTkg1gsoEW/8pyW2JjDdzZq0MN/B2FomPzTx0PBqrn8GSeblxiH
+         kfHfEnfv5VmMrSRu5HLAOwwpXT7BxVdmIxIZqucXFDEis2+T6iqK9YriPFgIIvr9bP1d
+         cf94SGhYmvSKyuUMG3d2U2YXX01w/8BbdK8Rd/iBdCmWK/nG+7hjlq1XiIMFlyCUTq4y
+         c6bg==
+X-Received: by 10.55.26.222 with SMTP id l91mr105819312qkh.32.1426605480698;
+        Tue, 17 Mar 2015 08:18:00 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id b18sm9770450qkh.36.2015.03.17.08.17.59
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 08:18:00 -0700 (PDT)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <550845A6.4010200@gmail.com>
+Date: Tue, 17 Mar 2015 11:17:58 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+MIME-Version: 1.0
+To: Ioana Ciornei <ciorneiioana@gmail.com>, 
+ outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: p80211conv: Replace memcpy
  with ether_addr_copy
-In-Reply-To: <1426598097-26197-1-git-send-email-ciorneiioana@gmail.com>
-Message-ID: <alpine.DEB.2.10.1503171758350.2527@hadrien>
 References: <1426598097-26197-1-git-send-email-ciorneiioana@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+In-Reply-To: <1426598097-26197-1-git-send-email-ciorneiioana@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-On Tue, 17 Mar 2015, Ioana Ciornei wrote:
-
-> Replace memcpy() with ether_addr_copy() when using __aligned(2) Ethernet
-> addresses.
-
-You should justify why the addresses are aligned.
-
-julia
-
-
+On 03/17/15 09:14, Ioana Ciornei wrote:
+> Replace memcpy() with ether_addr_copy() when using __aligned(2) Ethernet 
+> addresses. 
 > Changes done using the following coccinelle script:
->
+> 
 > @@
 > expression e1, e2;
 > @@
->
+> 
 > - memcpy(e1, e2, ETH_ALEN);
-> + ether_addr_copy(e1, e2);
->
+> + ether_addr_copy(e1, e2); 
+> 
 > Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 > ---
 >  drivers/staging/wlan-ng/p80211conv.c | 20 ++++++++++----------
 >  1 file changed, 10 insertions(+), 10 deletions(-)
->
+
+Looks good to me!
+
+Jes
+
+
 > diff --git a/drivers/staging/wlan-ng/p80211conv.c b/drivers/staging/wlan-ng/p80211conv.c
 > index bd69e8c..b3f48074 100644
 > --- a/drivers/staging/wlan-ng/p80211conv.c
 > +++ b/drivers/staging/wlan-ng/p80211conv.c
 > @@ -178,21 +178,21 @@ int skb_ether_to_p80211(wlandevice_t *wlandev, u32 ethconv,
->
+>  
 >  	switch (wlandev->macmode) {
 >  	case WLAN_MACMODE_IBSS_STA:
 > -		memcpy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
@@ -94,21 +115,13 @@ julia
 >  		netdev_err(wlandev->netdev,
 > @@ -241,7 +241,7 @@ static void orinoco_spy_gather(wlandevice_t *wlandev, char *mac,
 >  	for (i = 0; i < wlandev->spy_number; i++) {
->
+>  
 >  		if (!memcmp(wlandev->spy_address[i], mac, ETH_ALEN)) {
 > -			memcpy(wlandev->spy_address[i], mac, ETH_ALEN);
 > +			ether_addr_copy(wlandev->spy_address[i], mac);
 >  			wlandev->spy_stat[i].level = rxmeta->signal;
 >  			wlandev->spy_stat[i].noise = rxmeta->noise;
 >  			wlandev->spy_stat[i].qual =
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1426598097-26197-1-git-send-email-ciorneiioana%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+> 
+
 
