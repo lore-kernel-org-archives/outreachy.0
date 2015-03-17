@@ -1,119 +1,109 @@
-X-GM-THRID: 6950222578852036608
-X-Received: by 2002:a5d:5308:: with SMTP id e8mr16298430wrv.41.1618224796552;
-        Mon, 12 Apr 2021 03:53:16 -0700 (PDT)
+X-GM-THRID: 8600984485888
+X-Received: by 10.42.243.68 with SMTP id ll4mr63739633icb.19.1426611006275;
+        Tue, 17 Mar 2015 09:50:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:6c6a:: with SMTP id r10ls2670911wrz.0.gmail; Mon, 12 Apr
- 2021 03:53:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz/KhsfFzL6HkIf4SKXyqtQ0sRxz6hKw2bvenPpn1hNou3z5DV+TBW99bHzCJoHUhhJfO6C
-X-Received: by 2002:a5d:6a04:: with SMTP id m4mr22835283wru.421.1618224795168;
-        Mon, 12 Apr 2021 03:53:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618224795; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CkvqlxBk2suqulONzGOCYzJLuU7YunOsqtejdbD0+FwvonavTtD9Xm5npmqmVwYTrI
-         hOkOiNeglOsVjt1459VqjonbLtGbQJRs/6ZIfGI5neKvPPgNw3Jz4zF+I4mbUXXMGCzd
-         QkjBiNsz0JtRHRAKw/wHjZkjpCG37XhRj15dAhgsTq57CQaNblcp1+kh8K9WEX/6hQHU
-         APUKNMDdZimgyitVY4AWSwqqa3vN5jT5enVuyTC1BHT+lHHcn7sY+dHfm1ArHfzHA69G
-         se233rVUz8oNp6oJp7U5/dRGsxKMoj/s1+bRNY3erBV68x5ETHFg5BIBsAvz0b88fFcY
-         iUVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=49JeyaReyjd8GfvCyaVKkL8+AueTjgTUZSBAlKbchY0=;
-        b=T+ESS+TdtinIqLvTUvDkDMnm8r3QwegHv0C6yKDpQbxbTcvIvjQWjEBXHTxnbRxOh8
-         g1QytF6tpg7pC9B43M41t5dFoIam+UQOqjslDLYuSxzJpSTa4M2cT2LTXfHIRTLci9SV
-         rj7NG+hAASJkpEJTdOcKzdkB5mI+wwmmSe2vibJ6omc5YOaAElBtPZ4G8Pci3Kb/m1Oc
-         z1VOR6DcCUN8rYJNFC3X+1Ux76ks4uC7bVhZddvzJZZ8vnqsXfxtSa1VKmodtLPGycQ5
-         wro/xEeoTrqiBOZhwDyFXaTTBEkEs01QioZ4md5zCi1r3vlDZBy5qPvo6Zg6vUR7kMYM
-         q21w==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GIPyjTEX;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com. [2a00:1450:4864:20::635])
-        by gmr-mx.google.com with ESMTPS id t124si1194629wmb.3.2021.04.12.03.53.15
+Received: by 10.50.47.74 with SMTP id b10ls185807ign.43.gmail; Tue, 17 Mar
+ 2015 09:50:06 -0700 (PDT)
+X-Received: by 10.43.104.69 with SMTP id dl5mr60400641icc.20.1426611006032;
+        Tue, 17 Mar 2015 09:50:06 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x22a.google.com (mail-qc0-x22a.google.com. [2607:f8b0:400d:c01::22a])
+        by gmr-mx.google.com with ESMTPS id kt5si1722027qcb.3.2015.03.17.09.50.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 03:53:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) client-ip=2a00:1450:4864:20::635;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 09:50:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22a as permitted sender) client-ip=2607:f8b0:400d:c01::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GIPyjTEX;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x635.google.com with SMTP id u21so19466155ejo.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 03:53:15 -0700 (PDT)
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22a as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-x22a.google.com with SMTP id o4so13933107qct.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 09:50:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=49JeyaReyjd8GfvCyaVKkL8+AueTjgTUZSBAlKbchY0=;
-        b=GIPyjTEX5TptfP7Krf/8sXk+lMMak+/9pG+SPE/m8FYh+j7Zzi6Etxe19Q90QiXpYQ
-         VOGnyA9GIEqWqmTtElzW9sdXv4tsZ7NaZMczEHBaIbYMzoRerf6EZoAuXivYVouhHSKH
-         HClRsAoMdgC60J+YSoQLNoEbSXmAX7LTkyOfxI2xEwrmSyKRdgubL5HJ6+ilPpHdqbrj
-         lRtoaxUjVboxRKyMQcIypC2ixG8b9pMgi5f/CKFjcSA6mvGjRYMmqJsbViV9StGnwk4v
-         0yvMhp41ZCtHirotYJtPLQnN62Fu8RYETUThY4sp31TN6/sn/dcTunxtZlTtzlpebfYB
-         JQ7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=49JeyaReyjd8GfvCyaVKkL8+AueTjgTUZSBAlKbchY0=;
-        b=bWFv2MCpYboSzkX0bNSPEmuGkV+h05AtGdI6yZAsuP4737HATIJAN63mC7R0Mjq4WF
-         kA0/xwj4wortYEOmOqZ4Gp5n+9VE2IP83BO/89NwWrWX41mGNlCb3ZEChjG+n4hagjDy
-         RVaglcWLIJEa/FhXdRSGyK9DErVGT1Aa5pmJQBEYbjmhBPYq8y6eXsnMvlgzM0v6l0+m
-         OP5S3IEIbiHRGBS+tCUJht2ZsLOCoDuhPR/ykkKvC7By65sEWP7pDA7oV0don3pavTvQ
-         uGEn95HoCoQGQPDoCJ+vXVsMttZ3qw8qfjvOGFFBcFYk8EXnk5ObxZvmvlEvnVpQI/g4
-         oQMQ==
-X-Gm-Message-State: AOAM531sqzhOXW+CzflGqtvzFYvdwbuV01R+NKQbv/qRbV3ohVnm25lc
-	sIk75Dyp74Yp+wpJZ/8E10w=
-X-Received: by 2002:a17:906:94d2:: with SMTP id d18mr19180579ejy.531.1618224794946;
-        Mon, 12 Apr 2021 03:53:14 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id gb22sm5416452ejc.78.2021.04.12.03.53.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 03:53:14 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: dri-devel@lists.freedesktop.org,
-	outreachy-kernel@googlegroups.com,
-	Daniel Vetter <daniel.vetter@ffwll.ch>,
-	Melissa Wen <melissa.srw@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@linux.ie>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] gpu: drm: Replace bare "unsigned" with "unsigned int"
-Date: Mon, 12 Apr 2021 12:53:09 +0200
-Message-Id: <20210412105309.27156-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:cc:subject
+         :references:in-reply-to:content-type:content-transfer-encoding;
+        bh=2+YtmRD2YYDqD+eyuMe08P/LMIY+eiPb/ez6aTpaMZc=;
+        b=O42nj4L/2rMk46ZMRqqOhQ3ZgsVE/ZgX099OrTsUimkbRn8LUdgskNlpXiXnLu9FOU
+         uZSLFxoOHFYzC1i6tJGUYCR7fnUTGZIuADZqv7jmVNy9B7ejtrEAz3SJjjlHSUCWXujL
+         kDZuCL+eS2qRzaD3+Pg1HvyK9RdWJUmZ73TOnb4+Md/6nJJ4Anvurpg6SQ5307GGLXPC
+         vclKXuH3f4+3jL1vShFPiHnGkC0kmb10iw0a8bLxlphbH1wjRzqwlzo3HcT6Sxkd9Wq/
+         nJGkC4zUZgQoehtaAF8cIvvDE9jRobkn3EFYIsOsshDiL3uksuKOXQaJ+0lUG0DB4AQ7
+         0nsQ==
+X-Received: by 10.55.42.137 with SMTP id q9mr119710279qkq.14.1426611005930;
+        Tue, 17 Mar 2015 09:50:05 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 9sm9992632qgo.38.2015.03.17.09.50.04
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 09:50:05 -0700 (PDT)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <55085B3B.1020703@gmail.com>
+Date: Tue, 17 Mar 2015 12:50:03 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+To: Julia Lawall <julia.lawall@lip6.fr>
+CC: Cristina Opriceana <cristina.opriceana@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 1/2] Staging: rtl8192u: Do not add
+ new typedefs
+References: <cover.1426534970.git.cristina.opriceana@gmail.com> <b16e872b9c5244f790cbcf81f3d801fddcae95f7.1426534970.git.cristina.opriceana@gmail.com> <55084703.4010906@gmail.com> <alpine.DEB.2.10.1503171746270.2527@hadrien>
+In-Reply-To: <alpine.DEB.2.10.1503171746270.2527@hadrien>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-Replaced the type "unsigned" with "unsigned int" because it is
-preferred. Issue detected by checkpatch.pl.
+On 03/17/15 12:47, Julia Lawall wrote:
+> 
+> 
+> On Tue, 17 Mar 2015, Jes Sorensen wrote:
+> 
+>> On 03/16/15 15:55, Cristina Opriceana wrote:
+>>> This patch removes the dig_t and DRxPathSel type definitions in order to
+>>> avoid the following warning: "WARNING: Do not add new typedefs".
+>>> Done with coccinelle and this script:
+>>>
+>>> @r@ type t; identifier id; @@
+>>> typedef struct id
+>>> {...}
+>>> t;
+>>>
+>>> @script:python get_name@
+>>> t << r.t;
+>>> tdres;
+>>> @@
+>>> coccinelle.tdres = t.replace("_t", "");
+>>>
+>>> @r_match@ type r.t; identifier r.id;
+>>> identifier get_name.tdres; @@
+>>> -typedef
+>>> struct
+>>> -id
+>>> +tdres
+>>> {...}
+>>> -t
+>>> ;
+>>> @r_replace@ type r.t; identifier get_name.tdres; @@
+>>> -t
+>>> +struct tdres
+>>>
+>>> Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+>>
+>> Removing pointless typedefs like these is clearly a win. However for
+>> something like this, I don't think you need to include the coccinnelle
+>> rules, simply stating that you are getting rid of unnecessary typedefs
+>> is a win.
+> 
+> Actually, I think the rule is nice, because we can see that she is taking
+> care of the _t before looking at each case.  I would tend to put a
+> complete rule like this in a cover letter though, but it depends on how
+> the patch series is organized.
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- drivers/gpu/drm/drm_atomic.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+There is definitely a level of personal preference here. IMHO the rule
+doesn't add value to the commit log, since it doesn't deal with an
+actual bug. Having it in a cover-letter would be fine.
 
-diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
-index 5b4547e0f775..46dceb51c90f 100644
---- a/drivers/gpu/drm/drm_atomic.c
-+++ b/drivers/gpu/drm/drm_atomic.c
-@@ -1302,8 +1302,8 @@ int drm_atomic_check_only(struct drm_atomic_state *state)
- 	struct drm_crtc_state *new_crtc_state;
- 	struct drm_connector *conn;
- 	struct drm_connector_state *conn_state;
--	unsigned requested_crtc = 0;
--	unsigned affected_crtc = 0;
-+	unsigned int requested_crtc = 0;
-+	unsigned int affected_crtc = 0;
- 	int i, ret = 0;
- 
- 	DRM_DEBUG_ATOMIC("checking %p\n", state);
--- 
-2.31.1
+Cheers,
+Jes
 
 
