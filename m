@@ -1,110 +1,99 @@
-X-GM-THRID: 6947408169247178752
-X-Received: by 2002:a05:600c:4d95:: with SMTP id v21mr22481580wmp.184.1617569515397;
-        Sun, 04 Apr 2021 13:51:55 -0700 (PDT)
+X-GM-THRID: 8176518823936
+X-Received: by 10.182.47.228 with SMTP id g4mr72460124obn.5.1426608401057;
+        Tue, 17 Mar 2015 09:06:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6000:162d:: with SMTP id v13ls5683818wrb.1.gmail; Sun,
- 04 Apr 2021 13:51:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSFq55ShYVGGAiJahaR768wsAWvzp91NX2hOV9XdLaUFM+sXtK+JdCMkcl1G+3mM9kpDc7
-X-Received: by 2002:adf:90f0:: with SMTP id i103mr25412559wri.318.1617569514138;
-        Sun, 04 Apr 2021 13:51:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617569514; cv=none;
-        d=google.com; s=arc-20160816;
-        b=QZOASHwcGnhoophwW4eaDKfJMwbKN8d5YWNVtoT24CxP7czzdLQOLwrBCGZW31AHc7
-         LaBBbtvezG77AurBL0Ejyzdg0uZsGiyXOr6E3qJjmjatDSBTJlKzrLcTFbnd9vh6aHz2
-         Y+zJp+BhhI2l4vEYxcF7HrmN5uzjlavsTd1QJi9B9BMjJmHvldHw5uKHTEj8p8Vpw4ji
-         uj5h4bsjf6WaCXvIVXxLiUPZ7/Oct/6GTXM/Pn+ial7jfzzogcpH/MurZWcWbTyBYQ5+
-         UyzPRC0RgAjCqDARS1sJqzK+cl90F9aUrPWdqaDZ2xP5ZbUoujNK+BdtRtlM1RBJJluD
-         etog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=nd2uOMxAh5X4a/nY+KPVcgXpJ+Zppj7YeUaSujV7w+E=;
-        b=iO8FVa+jCUVX9p15aCATCYuO7YXNbvgd+mmpmwfrLkNS9pdGT4x3Vi6ZS5wkbiMDH8
-         MRQU4Q40/g1L4dFkaWLgXOYm34TFIutcjqB/NyUI7MxtadSKzGx03r3xQcV9OwP6bcDz
-         rWi6l7hCb8I2lLVpq5stAkfQBbekuVqoW1JbRdUgX9EiJe7Iq/wMskKLIs16UJ4wt3o1
-         xE8TdmnFbXuJ4AV/+pgUdTy3nAe2OTzjYiaF8oP2AyJ0ttJBPef841rKwc/W6uWZ2vN8
-         E+ellNRzJCDvDhqH8EK/FMMVGlrshLoTSc1pM6Mi9ATgR0Lm4lUgU3YqnFBJxuf7DSzn
-         j7Dw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q42M4a3k;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::22b as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <zhansayabagdaulet@gmail.com>
-Received: from mail-lj1-x22b.google.com (mail-lj1-x22b.google.com. [2a00:1450:4864:20::22b])
-        by gmr-mx.google.com with ESMTPS id i16si770243wmq.2.2021.04.04.13.51.54
+Received: by 10.50.253.2 with SMTP id zw2ls1359760igc.41.canary; Tue, 17 Mar
+ 2015 09:06:40 -0700 (PDT)
+X-Received: by 10.66.221.165 with SMTP id qf5mr70786872pac.30.1426608400713;
+        Tue, 17 Mar 2015 09:06:40 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qc0-x231.google.com (mail-qc0-x231.google.com. [2607:f8b0:400d:c01::231])
+        by gmr-mx.google.com with ESMTPS id z1si1705759qcn.2.2015.03.17.09.06.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 04 Apr 2021 13:51:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::22b as permitted sender) client-ip=2a00:1450:4864:20::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 09:06:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::231 as permitted sender) client-ip=2607:f8b0:400d:c01::231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q42M4a3k;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::22b as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x22b.google.com with SMTP id 184so10828439ljf.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Apr 2021 13:51:54 -0700 (PDT)
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::231 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-x231.google.com with SMTP id i15so12899839qcy.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 09:06:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=nd2uOMxAh5X4a/nY+KPVcgXpJ+Zppj7YeUaSujV7w+E=;
-        b=q42M4a3ki91Ecw3m+TFxNzm+HK46z6MYd8UeYQSI8qzPU0LKX8smzmYn+VS8qNXyBf
-         MUJEV8WEXLgE/nz+QAotTlNh8ZeuqGtZWZ/hH9H0FX7ymD7ObTmxEJfgUVq8zdx/2mkG
-         4BJjcWOIp5zch/A0CMVOHZOBw2YA6z0G/fmZd5mNSHOOUqlqHvGdr4ugNmDveee19SbY
-         EueX+XYsk131jzy6+ZGMmsNPBxLky2kHeh0K3iKO6qJzt/7g1nVm7pEseSRleYCrTmou
-         MGBGJm6d/tYCv77DuQt2KxIA9cacZb5DRHBVNYiqw55OJaFH8bbztOayhAMgxv4NflP7
-         tviA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=nd2uOMxAh5X4a/nY+KPVcgXpJ+Zppj7YeUaSujV7w+E=;
-        b=T7fd5hYoHGU9cgU/EpNV7cYrNS7ag2yKv6itUCpwXs7YQ3874lEbaSzK2+5DrVF4tJ
-         1UFKmPwPjZU/MkhcgC6lPDka/KB2fH7Zyij12qOLp5cGuD0Ep/tTRa0K4HQbKoyxDiea
-         fQApjwDXO/xpt9Y/B/tKO2dVyTe4Q4Q9eIdO8YMuLFdyUx9+tO1F4AHy8CLMzRoQ6e/r
-         wzBWXoQcsJCjFkIYkCAhF/B00xNF9WWP9weno1qad5s/E6I9Ef1kmzeyb20NA/IDdK06
-         jJalmnq5Fu6vXjqBocEFYkMPDXNtOQdye6dmUilCS0maPl/pjoHCprGekOJwN0SBRp5K
-         lDHg==
-X-Gm-Message-State: AOAM532umB1s9XKFCw4rFioziLu3hOpceTdqt/1sDigG3ujMQnR1e1yR
-	fzCbZVnCKm5xfGGWP54r2gKtNzn5Wu84/7Ik
-X-Received: by 2002:a2e:b178:: with SMTP id a24mr14114441ljm.329.1617569513722;
-        Sun, 04 Apr 2021 13:51:53 -0700 (PDT)
-Return-Path: <zhansayabagdaulet@gmail.com>
-Received: from zhans ([37.151.32.231])
-        by smtp.gmail.com with ESMTPSA id x17sm1546124lfg.164.2021.04.04.13.51.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Apr 2021 13:51:53 -0700 (PDT)
-Date: Mon, 5 Apr 2021 02:51:51 +0600
-From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
-To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: rtl8712: add blank lines after declarations and
- remove extra blank lines
-Message-ID: <cover.1617568354.git.zhansayabagdaulet@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:message-id:date:user-agent:mime-version:to:cc:subject
+         :references:in-reply-to:content-type:content-transfer-encoding;
+        bh=MFXfChZUmIWvpgmQS/ftaas+zubJLi5+JJUOXnnVnhQ=;
+        b=HQB+shCBTI6VlpGHwyRZwa5Y5npYH8sCbxrslo7GVSo4XDhTOSm9HiV6s83iv+kTo2
+         fyZbcxH1H+iVeuAA/pRcW4dzoJaYdN8kWDx8GIgk/L4zYvM7eKmsEC36gdCl/y1O+kFT
+         jkAT+y4xhbezc3odHCd+WmyW6NEomzS4GaMGFvY+kgk8kSkSehaaCfyTJlqYdjvgOTGA
+         LgEoR9dLlupr6nfj08otDZWvBr5eSt9W9VdhnHdrN/l+MK/IU3KbXJFNCU5roKBNUH02
+         vWYw1xTm4mLthN7UrEpqMG02dQGWbpvjN4BoEfI0fs8HasPh7KyU/0DYL+6TGmawgmpY
+         92/w==
+X-Received: by 10.140.97.98 with SMTP id l89mr81167977qge.87.1426608400598;
+        Tue, 17 Mar 2015 09:06:40 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id 8sm9850792qhr.32.2015.03.17.09.06.39
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Mar 2015 09:06:40 -0700 (PDT)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <5508510F.2080504@gmail.com>
+Date: Tue, 17 Mar 2015 12:06:39 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+CC: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/8] Staging: rtl8188eu: Remove parentheses
+ around right side an assignment
+References: <20150313165555.GA6673@haneen-vb>
+In-Reply-To: <20150313165555.GA6673@haneen-vb>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patchset adds blank lines after function/struct/union/enum declarations and removes extra blank lines.
-Reported by checkpatch.
+On 03/13/15 12:55, Haneen Mohammed wrote:
+> Parentheses are not needed around the right hand side of an assignment.
+> This patch remove parenthese of such occurenses. Issue was detected and
+> solved using the following coccinelle script:
+> 
+> @rule1@
+> identifier x, y, z;
+> expression E1, E2;
+> @@
+> 
+> (
+> x = (y == z);
+> |
+> x = (E1 == E2);
+> |
+>  x =
+> -(
+> ...
+> -)
+>  ;
+> )
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_efuse.c         |  6 +++---
+>  drivers/staging/rtl8188eu/core/rtw_ieee80211.c     |  2 +-
+>  drivers/staging/rtl8188eu/core/rtw_mlme.c          |  2 +-
+>  drivers/staging/rtl8188eu/core/rtw_mlme_ext.c      | 22 +++++++++++-----------
+>  drivers/staging/rtl8188eu/core/rtw_recv.c          |  4 ++--
+>  drivers/staging/rtl8188eu/core/rtw_sreset.c        |  2 +-
+>  drivers/staging/rtl8188eu/core/rtw_wlan_util.c     | 18 +++++++++---------
+>  .../staging/rtl8188eu/hal/Hal8188ERateAdaptive.c   |  4 ++--
+>  drivers/staging/rtl8188eu/hal/odm_HWConfig.c       |  2 +-
+>  drivers/staging/rtl8188eu/hal/phy.c                | 20 ++++++++++----------
+>  drivers/staging/rtl8188eu/hal/rf.c                 |  2 +-
+>  11 files changed, 42 insertions(+), 42 deletions(-)
 
-Zhansaya Bagdauletkyzy (2):
-  staging: rtl8712: add blank lines after declarations
-  staging: rtl8712: remove extra blank lines
+Patch looks good, but there is something weird with your mailer. You are
+setting 'Reply-To:' which is a huge no-no, in addition it's pointing to
+an invalid email address.
 
- drivers/staging/rtl8712/rtl8712_recv.h     |  2 +-
- drivers/staging/rtl8712/rtl871x_cmd.h      | 10 ++++++++++
- drivers/staging/rtl8712/rtl871x_event.h    |  1 +
- drivers/staging/rtl8712/rtl871x_mlme.c     |  3 ---
- drivers/staging/rtl8712/rtl871x_mp.c       |  1 +
- drivers/staging/rtl8712/rtl871x_mp.h       |  1 +
- drivers/staging/rtl8712/rtl871x_mp_ioctl.c |  3 +++
- drivers/staging/rtl8712/rtl871x_pwrctrl.h  |  3 ---
- drivers/staging/rtl8712/rtl871x_recv.c     |  1 +
- drivers/staging/rtl8712/rtl871x_recv.h     |  1 -
- 10 files changed, 18 insertions(+), 8 deletions(-)
-
--- 
-2.25.1
+Cheers,
+Jes
 
 
