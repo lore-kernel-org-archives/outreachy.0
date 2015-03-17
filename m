@@ -3,92 +3,107 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,dab188cd27b71f71
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.236.28.230 with SMTP id g66mr70165873yha.2.1426602452318;
-        Tue, 17 Mar 2015 07:27:32 -0700 (PDT)
+X-Received: by 10.112.198.34 with SMTP id iz2mr10026171lbc.22.1426598324508;
+        Tue, 17 Mar 2015 06:18:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.61.200 with SMTP id s8ls145713igr.37.gmail; Tue, 17 Mar
- 2015 07:27:31 -0700 (PDT)
-X-Received: by 10.50.85.115 with SMTP id g19mr2336848igz.0.1426602449676;
-        Tue, 17 Mar 2015 07:27:29 -0700 (PDT)
+Received: by 10.152.170.164 with SMTP id an4ls40431lac.19.gmail; Tue, 17 Mar
+ 2015 06:18:44 -0700 (PDT)
+X-Received: by 10.112.219.102 with SMTP id pn6mr9884357lbc.12.1426598324108;
+        Tue, 17 Mar 2015 06:18:44 -0700 (PDT)
 Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id ni4si2543778pdb.2.2015.03.17.07.27.29
+Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
+        by gmr-mx.google.com with ESMTPS id gj20si116230wic.1.2015.03.17.06.18.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2015 07:27:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        Tue, 17 Mar 2015 06:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x236.google.com with SMTP id ni2so11149504pdb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 07:27:29 -0700 (PDT)
+Received: by mail-we0-x22f.google.com with SMTP id cq43so7418822web.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Mar 2015 06:18:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=S5TUsVpFrbCgMM5phVvo5FmOvPZxEGMH2Dp1c/dhdTA=;
-        b=rfQGVbVwPNBMku4LXWHSSk/8Vk4qC/Ra7aOoBKyIIpnuExdGocr0WejSzL61a1LPWP
-         v3qtjNhVlGFW7MdCm+gTpsNg3x7qAQWuGJ1Hs9QeZSD0THbjCt0zu2OBryA5KX/tDEZX
-         i3FTqBUN5Jke03qMg98OYrOBL6Hv1N2KaLkA+jgwqTT5o6JDb8cfmb+7epL2VSaxfCq8
-         owmWxaJ5BBfSfu54lJRwr/3ZdNApVhlutLcU0VChRllwCYvTuc5NY2z7RO0L4jxtECdc
-         KQfMqwe+7NDwMqtcGaR/u1A1DMFRgnhdbwSRLjP2SYA3FVQoYK52SHRruCcjoeNjnavf
-         EpiA==
-X-Received: by 10.66.253.101 with SMTP id zz5mr121055284pac.143.1426602449149;
-        Tue, 17 Mar 2015 07:27:29 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([43.249.235.206])
-        by mx.google.com with ESMTPSA id kd9sm22818590pab.0.2015.03.17.07.27.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 17 Mar 2015 07:27:28 -0700 (PDT)
-Date: Tue, 17 Mar 2015 19:57:23 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/2] Staging: speakup: Introduce helper macro
- module_spk_synth
-Message-ID: <cover.1426601962.git.vthakkar1994@gmail.com>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ZaucdqqMLnqJ7FxCp6omsr+IgR3O6fFfg6BU9QGRlyM=;
+        b=CHCOKEhdarzhLfvUOnGU0wwtMH6jdR2SegTED5rNmoNneBiHp3qMNqHfNhsm6Rlm03
+         V60g9h2Oy2omGEdKQNzg1K2TycHAZkfJGHzcJ5sQuBIzH+yBnusRC5E9zZ0RxSQ3Hh1i
+         x7bHQaFN02S4AGeBqHQr0UUSdXdI4QMll3WpFoVVlZ3M9V38Ng+OzANEo0O8Yvk07f6d
+         EWTe9CVgnc1eppWWSMGyADN0JFS2fOioGWof+gzxpXUG1zX2K/r06grW/Nygd2OwDB2s
+         eeYx8sKNjyzIBhe/8bg+Y9yrNp2gcEZ3/zdT/N+fz9lDviUbU5Nj9uFxbVayDtHBuhYb
+         pbgg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.180.85.103 with SMTP id g7mr170385860wiz.19.1426598323931;
+ Tue, 17 Mar 2015 06:18:43 -0700 (PDT)
+Received: by 10.194.13.168 with HTTP; Tue, 17 Mar 2015 06:18:43 -0700 (PDT)
+In-Reply-To: <20150317131020.GA22383@kroah.com>
+References: <cover.1426586934.git.vthakkar1994@gmail.com>
+	<2905c4008dfeb64eaff938812d63202c1828f041.1426586935.git.vthakkar1994@gmail.com>
+	<20150317131020.GA22383@kroah.com>
+Date: Tue, 17 Mar 2015 18:48:43 +0530
+Message-ID: <CAK-LDbJVSwHT8Rbjw0s-VA6hALRo-AVTRAEo923pbKZ8yQ6Deg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v4 1/2] Staging: speakup: Add helper
+ macro for spk_synth boilerplate
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch-set adds new macro module_spk_synth for
-simple modules that contain a single spk_synth without
-any additional setup code then ends up being a block of
-duplicated boilerplate. Macro module_spk_synth replaces
-module_init()/module_exit() registrations with template
-functions. So, patch-set also handles all such cases
-where module_spk_synth can be used.
+On Tue, Mar 17, 2015 at 6:40 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Tue, Mar 17, 2015 at 04:06:23PM +0530, Vaishali Thakkar wrote:
+>> For simple modules that contain a single spk_synth without
+>> any additional setup code then ends up being a block of
+>> duplicated boilerplate. This patch adds a new macro,
+>> module_spk_synth(), which replaces the
+>> module_init()/module_exit() registrations with template
+>> functions.
+>>
+>> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+>> ---
+>> Changes since v1:
+>>         - Use module_driver macro in definition of helper macro
+>> Changes since v2:
+>>         - Correct unnecessory line wrapping of module_driver
+>>         - Split patch in to 2 patches
+>> Changes since v3:
+>>       - Put blank line after module_spk_synth
+>>
+>>  drivers/staging/speakup/spk_types.h | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>
+>> diff --git a/drivers/staging/speakup/spk_types.h b/drivers/staging/speakup/spk_types.h
+>> index 8c565c9..38e0a3c 100644
+>> --- a/drivers/staging/speakup/spk_types.h
+>> +++ b/drivers/staging/speakup/spk_types.h
+>> @@ -16,6 +16,7 @@
+>>  #include <linux/spinlock.h>
+>>  #include <linux/mutex.h>
+>>  #include <linux/io.h>                /* for inb_p, outb_p, inb, outb, etc... */
+>> +#include <linux/device.h>    /* for struct device */
+>
+> Ah, more complaints sorry...
 
-Changes since v1:
-        - Add blank line after defining module_spk_synth
-Changes since v2:
-	- Avoid adding unnecessory comments
+No problem
 
-Vaishali Thakkar (2):
-  Staging: speakup: Add helper macro for spk_synth boilerplate
-  Staging: speakup: Use module_spk_synth
+> You aren't including this for 'struct device' you are doing it for
+> module_driver().  Just remove the /* */ entirely, you don't need to
+> specify why you are including a .h file, that's not needed.
 
- drivers/staging/speakup/speakup_acntpc.c | 12 +-----------
- drivers/staging/speakup/speakup_acntsa.c | 12 +-----------
- drivers/staging/speakup/speakup_apollo.c | 12 +-----------
- drivers/staging/speakup/speakup_audptr.c | 12 +-----------
- drivers/staging/speakup/speakup_bns.c    | 12 +-----------
- drivers/staging/speakup/speakup_decext.c | 12 +-----------
- drivers/staging/speakup/speakup_decpc.c  | 12 +-----------
- drivers/staging/speakup/speakup_dectlk.c | 12 +-----------
- drivers/staging/speakup/speakup_dtlk.c   | 12 +-----------
- drivers/staging/speakup/speakup_dummy.c  | 12 +-----------
- drivers/staging/speakup/speakup_keypc.c  | 12 +-----------
- drivers/staging/speakup/speakup_ltlk.c   | 12 +-----------
- drivers/staging/speakup/speakup_soft.c   | 13 +------------
- drivers/staging/speakup/speakup_spkout.c | 12 +-----------
- drivers/staging/speakup/speakup_txprt.c  | 12 +-----------
- drivers/staging/speakup/spk_types.h      | 11 +++++++++++
- 16 files changed, 26 insertions(+), 166 deletions(-)
+Yes but I thought as it is indirectly related to  struct _spk_synth,
+I should add it here. May be my misunderstanding.
+
+Anyways, I will drop entire comment in next version.
+
+Thank You.
+
+> thanks,
+>
+> greg k-h
+
+
 
 -- 
-1.9.1
-
+Vaishali
 
