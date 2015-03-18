@@ -1,68 +1,47 @@
-X-GM-THRID: 9831070040064
-X-Received: by 10.180.150.115 with SMTP id uh19mr4601264wib.7.1427307253799;
-        Wed, 25 Mar 2015 11:14:13 -0700 (PDT)
+X-GM-THRID: 8587620384768
+X-Received: by 10.52.5.169 with SMTP id t9mr74264145vdt.7.1426674188771;
+        Wed, 18 Mar 2015 03:23:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.7.105 with SMTP id db9ls125064lad.87.gmail; Wed, 25 Mar
- 2015 11:14:12 -0700 (PDT)
-X-Received: by 10.152.87.110 with SMTP id w14mr754505laz.3.1427307252804;
-        Wed, 25 Mar 2015 11:14:12 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x236.google.com (mail-wg0-x236.google.com. [2a00:1450:400c:c00::236])
-        by gmr-mx.google.com with ESMTPS id c8si998533wiw.1.2015.03.25.11.14.12
+Received: by 10.107.31.82 with SMTP id f79ls426220iof.11.gmail; Wed, 18 Mar
+ 2015 03:23:08 -0700 (PDT)
+X-Received: by 10.43.61.140 with SMTP id ww12mr4118630icb.33.1426674188623;
+        Wed, 18 Mar 2015 03:23:08 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gu4si3040565pac.1.2015.03.18.03.23.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2015 11:14:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) client-ip=2a00:1450:400c:c00::236;
+        Wed, 18 Mar 2015 03:23:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x236.google.com with SMTP id cc7so36719521wgb.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 11:14:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=l7i90MWpBZPgZmVq/EoUuoDbws0X2O9u9WV0Goqw3GE=;
-        b=ukWeOtobveHMspqL4dDfeRo0HXxih3pnM0ocVdyN2Yrd3eyz0XjtIw2Dl1PRiQF/la
-         Kq4QVa6Xtq1pVq/AsnpVudfGB3uxA1YXKFkfbLNf/pyhFUAF1U+5OLe6XtH4ZgYKlwQ6
-         RRcpgFVOQnAljhGIMae/U++cpE8bMjMKrKVGewdbyLavfxmt3TaKgIHRn8gjFHSWLirW
-         wQhltcaY0/SPAlD1f1iDxZQvgvSLsPCi3bmaJQUQbN27vzLuBxNWXTBC7Vmzs13SmbVp
-         sXG0K1d41pWGB9Qk1pS6/22RTIuUg3xV1hydNizlcn+n7OzGhxcDhH7ASy84BiukJVFp
-         kLKw==
-X-Received: by 10.194.239.65 with SMTP id vq1mr20003101wjc.98.1427307252670;
-        Wed, 25 Mar 2015 11:14:12 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.49.71])
-        by mx.google.com with ESMTPSA id n3sm4783147wja.36.2015.03.25.11.14.11
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2015 11:14:11 -0700 (PDT)
-Received: by haneen-vb (Postfix, from userid 1000)
-	id 4D900C1FFD; Wed, 25 Mar 2015 08:03:40 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9CDCCA80;
+	Wed, 18 Mar 2015 10:23:07 +0000 (UTC)
+Date: Wed, 18 Mar 2015 11:23:05 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/2] Staging: rtl8192u: fix space issues before '(' and after ')'
-Date: Wed, 25 Mar 2015 08:03:39 +0300
-Message-Id: <1427259819-1022-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: Re: Caught up on patches again.
+Message-ID: <20150318102305.GA23000@kroah.com>
+References: <20150316152951.GA4791@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150316152951.GA4791@kroah.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Space is required before the open and after the close parenthesis.
-This patch adds space after 'if' and before '{'.
-    
-This was done with the help of Coccinelle.
+On Mon, Mar 16, 2015 at 04:29:51PM +0100, Greg KH wrote:
+> Hi all,
+> 
+> I've again caught up on all submitted patches in my patch queue.  If
+> I've missed something, or asked you to fix something up, please resend
+> it against my latest staging-testing branch of staging.git on
+> git.kernel.org.
 
-Haneen Mohammed (2):
-  Staging: rtl8192u: Add space before open parenthesis
-  Staging: rtl8192u: Fix space issues before '(' and afte ')'
+And again, I should have caught up with everything that has been
+submitted.  If I've missed anything, please resend.
 
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c  |  68 +++++-----
- .../staging/rtl8192u/ieee80211/ieee80211_softmac.c | 138 ++++++++++-----------
- .../rtl8192u/ieee80211/ieee80211_softmac_wx.c      |  22 ++--
- .../staging/rtl8192u/ieee80211/rtl819x_BAProc.c    |  20 +--
- .../staging/rtl8192u/ieee80211/rtl819x_HTProc.c    |  18 +--
- 5 files changed, 133 insertions(+), 133 deletions(-)
+thanks,
 
--- 
-1.9.1
-
+greg k-h
 
