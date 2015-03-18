@@ -1,68 +1,85 @@
-X-GM-THRID: 7207946027008
-X-Received: by 10.66.236.74 with SMTP id us10mr3954792pac.28.1425897806574;
-        Mon, 09 Mar 2015 03:43:26 -0700 (PDT)
+X-GM-THRID: 8728898174976
+X-Received: by 10.112.98.38 with SMTP id ef6mr10037127lbb.3.1426673761258;
+        Wed, 18 Mar 2015 03:16:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.61.200 with SMTP id s8ls823327igr.37.gmail; Mon, 09 Mar
- 2015 03:43:26 -0700 (PDT)
-X-Received: by 10.42.142.69 with SMTP id r5mr20013867icu.3.1425897806398;
-        Mon, 09 Mar 2015 03:43:26 -0700 (PDT)
-Return-Path: <tinajohnson.1234@gmail.com>
-Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
-        by gmr-mx.google.com with ESMTPS id ni4si1709699pdb.2.2015.03.09.03.43.26
+Received: by 10.152.45.6 with SMTP id i6ls139303lam.10.gmail; Wed, 18 Mar 2015
+ 03:16:00 -0700 (PDT)
+X-Received: by 10.152.6.232 with SMTP id e8mr10898888laa.2.1426673760754;
+        Wed, 18 Mar 2015 03:16:00 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id bz6si94522wib.3.2015.03.18.03.16.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2015 03:43:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
+        Wed, 18 Mar 2015 03:16:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of tinajohnson.1234@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=tinajohnson.1234@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22f.google.com with SMTP id fl12so62894009pdb.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 03:43:26 -0700 (PDT)
+Received: by mail-wi0-x230.google.com with SMTP id w10so35010905wix.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 03:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=rEech17KudM6WZuz/HPECzi6UBo38oTxG85zGHg5s/4=;
-        b=vlQKU7wAGSFc2KjkUAUbAwB9eNxfgYAHEzlLnviTdk+7pQvVePw3KQG3+5P0tqweE7
-         ED68IykBVCadSaskXoUotT584DaydxGO2lsknf+rXGv3sP0F7e/+hgLdjj1RKeQuGCWU
-         Bt1tQqeTw8LhU0N50qQZ+bGbc9vZdK+2uqdJ0137/YaSAUhduPs6v/KzuoqV4BcNXAWa
-         kDdKIgEaslETDKMTTCLUTbwIDM+tWMEdGmGxcdwHRDxO/r7nE3k821VJA0rw49EaH6YP
-         6YbIOHUJvOMXyNw2+d5MchjXMmAgwe3+GUUde+xd5PpfRtLYDQ82ltNeeGM2RpS47Z6X
-         ZNJA==
-X-Received: by 10.66.234.2 with SMTP id ua2mr30711625pac.137.1425897806007;
-        Mon, 09 Mar 2015 03:43:26 -0700 (PDT)
-Return-Path: <tinajohnson.1234@gmail.com>
-Received: from localhost ([117.252.18.210])
-        by mx.google.com with ESMTPSA id x4sm18665186pas.40.2015.03.09.03.43.23
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 09 Mar 2015 03:43:24 -0700 (PDT)
-From: Tina Johnson <tinajohnson.1234@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Tina Johnson <tinajohnson.1234@gmail.com>
-Subject: [PATCH 0/5] Removed unnecessary variables in iio
-Date: Mon,  9 Mar 2015 16:11:15 +0530
-Message-Id: <1425897680-6179-1-git-send-email-tinajohnson.1234@gmail.com>
-X-Mailer: git-send-email 1.7.10.4
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=kiuDFzm8qRm1VoWSXlMEcYF7f8I219fHrEqV4i0b1xY=;
+        b=RjOIjN/ODNrzxJiRnoUayEmDgqGpKC3429LKgKRwGkhLsKSiTdNHTgYbzfzRsqKNCo
+         Xw9/Ch4VsX2E5TghNJPctnPidUCPfwd5VisuWBoaVBCp53pGczQpYI7jNWR25wYFnC/O
+         xSCoMAiAydb3zWCnSHyhR/JlK4EjOA/cuKvwnm+zgHj/zvvQfKO/iHfrRt1i6NUr5Kzg
+         V29NMWuVMmx49327JOlWbZFTKNtM9J+BiUM4vQizE9WEpkxvTleAmNIWWMa2NN/nJIPH
+         DMbsFDBEXksgYeFX83EhYhK+Oe7Wge+I1nt7zilo/Vq6MD8kEoDLvTKBC6cFfkQbvXVa
+         5HVA==
+MIME-Version: 1.0
+X-Received: by 10.180.19.9 with SMTP id a9mr5376692wie.85.1426673760619; Wed,
+ 18 Mar 2015 03:16:00 -0700 (PDT)
+Received: by 10.194.13.168 with HTTP; Wed, 18 Mar 2015 03:16:00 -0700 (PDT)
+In-Reply-To: <20150318100250.GA20143@kroah.com>
+References: <cover.1426601962.git.vthakkar1994@gmail.com>
+	<767a3b6bf7c8776e57c6a11caa1d30bcedb265be.1426601963.git.vthakkar1994@gmail.com>
+	<20150318100250.GA20143@kroah.com>
+Date: Wed, 18 Mar 2015 15:46:00 +0530
+Message-ID: <CAK-LDbJRbzxFR7yTsuQLpNiP1_Y=XnXSFtHtgdjwvc_VVo-GtQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 2/2] Staging: speakup: Use module_spk_synth
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Variables used just to store the return value of a function
-can be eliminated by modifying the return statement. The following
-patchset fixed the same in iio.
+On Wed, Mar 18, 2015 at 3:32 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Tue, Mar 17, 2015 at 07:57:39PM +0530, Vaishali Thakkar wrote:
+>> Macro module_spk_synth can be used for speakup drivers
+>> whose init and exit paths does only module registrations.
+>> So, here remove some boilerplate code by using
+>> module_spk_synth.
+>>
+>> Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
+>> ---
+>> Changes since v1:
+>>         - No change but as patch is in series with
+>>           another patch, send new version.
+>> Changes since v2:
+>>       - No change but as patch is in series with
+>>           another patch, send new version.
+>
+> You didn't test build these changes :(
+>
+> PLEASE always test your patches before sending them out, this series
+> broke the build horribly, and should have been very obvious that it
+> should have not been sent out.
+>
 
-Tina Johnson (5):
-  drivers: staging: iio: accel: Removed unnecessary variable
-  drivers: staging: iio: meter: Removed unnecessary variable
-  drivers: staging: iio: meter: Removed unnecessary variable
-  drivers: staging: iio: meter: Removed unnecessary variable
-  drivers: staging: iio: meter: Removed unnecessary variable
+Oh ...no. I am really very sorry for that. Actually it was working fine.
+But as it went through many versions, while sending last version by
+mistake I exchanged change of 2 files. I should have checked it before
+sending new version.
 
- drivers/staging/iio/accel/sca3000_core.c |    6 ++----
- drivers/staging/iio/meter/ade7758_core.c |    5 ++---
- drivers/staging/iio/meter/ade7758_ring.c |    3 +--
- drivers/staging/iio/meter/ade7854-i2c.c  |    5 +----
- drivers/staging/iio/meter/ade7854-spi.c  |    6 +-----
- 5 files changed, 7 insertions(+), 18 deletions(-)
+Sorry :(
+
+> greg k-h
+
+
 
 -- 
-1.7.10.4
-
+Vaishali
 
