@@ -1,92 +1,147 @@
 X-GM-THRID: 8920338792448
-X-Received: by 10.112.180.74 with SMTP id dm10mr3247642lbc.11.1426673534797;
-        Wed, 18 Mar 2015 03:12:14 -0700 (PDT)
+X-Received: by 10.194.201.10 with SMTP id jw10mr10929828wjc.3.1426673470357;
+        Wed, 18 Mar 2015 03:11:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.228.169 with SMTP id sj9ls139817lac.35.gmail; Wed, 18 Mar
- 2015 03:12:14 -0700 (PDT)
-X-Received: by 10.112.198.34 with SMTP id iz2mr10877557lbc.22.1426673534344;
-        Wed, 18 Mar 2015 03:12:14 -0700 (PDT)
+Received: by 10.152.207.101 with SMTP id lv5ls135845lac.22.gmail; Wed, 18 Mar
+ 2015 03:11:09 -0700 (PDT)
+X-Received: by 10.112.148.10 with SMTP id to10mr5944033lbb.18.1426673469635;
+        Wed, 18 Mar 2015 03:11:09 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
-        by gmr-mx.google.com with ESMTPS id el6si114055wib.0.2015.03.18.03.12.14
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id cl5si103256wib.3.2015.03.18.03.11.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 03:12:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
+        Wed, 18 Mar 2015 03:11:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x235.google.com with SMTP id m6so30651430wgd.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 03:12:14 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id j2so34882583wif.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 03:11:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=+ejrhJwUtaX/3FFEer5EYiIKSbKP5/s73XMmvwilOeA=;
-        b=g/Q2nsUmvABqb85cLvjdlX0sZc8CE6l4uoVbyNfXtvDuabbxUApqTxM5VnAAbnxWoh
-         29SBSMsnDBz8LhXfkPMbzqfrdUgdVOhAY6eBxuSw54noTISm9hmraCxiSVCYzzePhLZE
-         CTo/7qcAWOwt7f+KjFkn+9QzzuWkCykt6NWi01MsBdGOvc0e6MbGjhE5wwDjpxM70fFS
-         bFSF3QpUIVVH9oT/+Ek7DZjJ/Nv9yKb959hSW/CUQhKcFcqUcbDbFsdd0/rsrOSw1XBr
-         5LaxDei5j0UDONBIXzIyK2c3m3bZpOCHEgi1GgCJY4QrOCCSW+sjoDTICW7vdIoyreU2
-         Bm9Q==
-X-Received: by 10.194.76.69 with SMTP id i5mr312433wjw.3.1426673534056;
-        Wed, 18 Mar 2015 03:12:14 -0700 (PDT)
+        bh=S/GytzKQ6Se2zLoEKIPXmqGtmmf7YhxDZkwEqxcU0zk=;
+        b=iLSBD8N3+sjSbs+LL3PyiAfMdDR+wwt5+o/+7ZU/aso19DQJC4hd7+oT+UybTpju2d
+         2Wm9K0IwqOiKWEAJ2F7W7aOttbnUmGZ9wCABhLLeaofCmyO6JyC2bHOLHw+Q1g0Gv1Xw
+         vDHZwk8eLmnoa0xRR+A45ztPjrIO+WQTNprLepahivQ5jxe2RD0j8U1N/zpccDLh31JC
+         HgFOfkP0azOn2TaEhP3r/8LzMNUB7gwSwxFKWvpEBAg9ulFI6wKaNvbGGe6WrV3Xnut0
+         BJvXXBF9wXnuPQtckquQPlSW2XHYyqQAoFCdzhTAWfSvHuDFVHLWj/ukbhSKX7cr9tnP
+         z1WQ==
+X-Received: by 10.195.12.97 with SMTP id ep1mr143355289wjd.134.1426673469554;
+        Wed, 18 Mar 2015 03:11:09 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneen-vb ([5.41.223.113])
-        by mx.google.com with ESMTPSA id hl15sm2504268wib.3.2015.03.18.03.12.11
+        by mx.google.com with ESMTPSA id v8sm2571787wib.0.2015.03.18.03.11.08
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 03:12:12 -0700 (PDT)
+        Wed, 18 Mar 2015 03:11:08 -0700 (PDT)
 Received: by haneen-vb (Postfix, from userid 1000)
-	id 6187EC1F4B; Wed, 18 Mar 2015 13:12:09 +0300 (AST)
+	id EA887C1F4B; Wed, 18 Mar 2015 13:11:05 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 3/3] Staging: iio: replace pr_* with dev_*
-Date: Wed, 18 Mar 2015 13:12:07 +0300
-Message-Id: <1426673527-14462-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 2/3] Staging: media: replace pr_* with dev_*
+Date: Wed, 18 Mar 2015 13:09:50 +0300
+Message-Id: <1426673390-14408-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426668021-13846-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1426668021-13846-1-git-send-email-hamohammed.sa@gmail.com>
 
-dev_* is prefered over pr_* when appropriate device stuct is present.
-This patch replace pr_err and pr_warn with its dev_ counterpart.
+This patch replace pr_err/pr_info with dev_err/dev_infi, when
+appropriate device structure is found.
+
+Issues found using the following Coccinelle script. pr_err/dev_err was
+substituted with pr_info/dev_info in the later case.
+
+@r exists@
+identifier f, s, i;
+position p;
+@@
+f(...,struct s *i,...) {
+<+...
+when != i == NULL
+pr_err@p(...);
+...+>
+}
+@rr@
+identifier r.s, s2, fld;
+@@
+
+struct s {
+	...
+	struct s2 *fld;
+	...
+};
+
+@rrr@
+identifier rr.s2, fld2;
+@@
+
+struct s2 {
+	...
+	struct device fld2;
+	...
+};
+@@
+identifier r.i, r.s, rr.fld, rrr.fld2;
+position r.p;
+@@
+
+-pr_err@p
++dev_err
+   (
++ &i->fld->fld2,
+...)
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/iio/resolver/ad2s1210.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/media/davinci_vpfe/dm365_ipipeif.c | 2 +-
+ drivers/staging/media/lirc/lirc_sasem.c            | 9 ++++++---
+ 2 files changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
-index 1d8c5c0..5b1daea 100644
---- a/drivers/staging/iio/resolver/ad2s1210.c
-+++ b/drivers/staging/iio/resolver/ad2s1210.c
-@@ -151,7 +151,7 @@ int ad2s1210_update_frequency_control_word(struct ad2s1210_state *st)
- 
- 	fcw = (unsigned char)(st->fexcit * (1 << 15) / st->fclkin);
- 	if (fcw < AD2S1210_MIN_FCW || fcw > AD2S1210_MAX_FCW) {
--		pr_err("ad2s1210: FCW out of range\n");
-+		dev_err(&st->sdev->dev, "ad2s1210: FCW out of range\n");
- 		return -ERANGE;
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+index ceeef18..17e105e 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+@@ -209,7 +209,7 @@ static int ipipeif_hw_setup(struct v4l2_subdev *sd)
+ 	/* Combine all the fields to make CFG1 register of IPIPEIF */
+ 	tmp = val = get_oneshot_mode(ipipeif->input);
+ 	if (tmp < 0) {
+-		pr_err("ipipeif: links setup required");
++		dev_err(&sd->devnode->dev, "ipipeif: links setup required");
+ 		return -EINVAL;
  	}
+ 	val <<= ONESHOT_SHIFT;
+diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
+index 9944af1..8ba8311 100644
+--- a/drivers/staging/media/lirc/lirc_sasem.c
++++ b/drivers/staging/media/lirc/lirc_sasem.c
+@@ -172,7 +172,8 @@ static void delete_context(struct sasem_context *context)
+ 	kfree(context);
  
-@@ -317,7 +317,7 @@ static ssize_t ad2s1210_store_control(struct device *dev,
- 	if (st->pdata->gpioin) {
- 		data = ad2s1210_read_resolution_pin(st);
- 		if (data != st->resolution)
--			pr_warn("ad2s1210: resolution settings not match\n");
-+			dev_warn(dev, "ad2s1210: resolution settings not match\n");
- 	} else
- 		ad2s1210_set_resolution_pin(st);
+ 	if (debug)
+-		pr_info("%s: context deleted\n", __func__);
++		dev_info(&context->dev->dev, "%s: context deleted\n",
++			 __func__);
+ }
  
-@@ -378,7 +378,7 @@ static ssize_t ad2s1210_store_resolution(struct device *dev,
- 	if (st->pdata->gpioin) {
- 		data = ad2s1210_read_resolution_pin(st);
- 		if (data != st->resolution)
--			pr_warn("ad2s1210: resolution settings not match\n");
-+			dev_warn(dev, "ad2s1210: resolution settings not match\n");
- 	} else
- 		ad2s1210_set_resolution_pin(st);
- 	ret = len;
+ static void deregister_from_lirc(struct sasem_context *context)
+@@ -182,10 +183,12 @@ static void deregister_from_lirc(struct sasem_context *context)
+ 
+ 	retval = lirc_unregister_driver(minor);
+ 	if (retval)
+-		pr_err("%s: unable to deregister from lirc (%d)\n",
++		dev_err(&context->dev->dev,
++			"%s: unable to deregister from lirc (%d)\n",
+ 		       __func__, retval);
+ 	else
+-		pr_info("Deregistered Sasem driver (minor:%d)\n", minor);
++		dev_info(&context->dev->dev,
++		         "Deregistered Sasem driver (minor:%d)\n", minor);
+ 
+ }
+ 
 -- 
 1.9.1
 
