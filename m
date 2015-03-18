@@ -1,70 +1,118 @@
-X-GM-THRID: 3919989178368
-X-Received: by 10.112.147.35 with SMTP id th3mr1327718lbb.15.1424980053272;
-        Thu, 26 Feb 2015 11:47:33 -0800 (PST)
+X-GM-THRID: 9057687568384
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,6c8feab96d31799a,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.199.66 with SMTP id ji2mr78513826obc.14.1426715171400;
+        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.73.103 with SMTP id k7ls185904wiv.5.gmail; Thu, 26 Feb
- 2015 11:47:32 -0800 (PST)
-X-Received: by 10.180.72.44 with SMTP id a12mr1585000wiv.0.1424980052910;
-        Thu, 26 Feb 2015 11:47:32 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x233.google.com (mail-wg0-x233.google.com. [2a00:1450:400c:c00::233])
-        by gmr-mx.google.com with ESMTPS id cl5si188226wib.3.2015.02.26.11.47.32
+Received: by 10.140.81.85 with SMTP id e79ls957782qgd.4.gmail; Wed, 18 Mar
+ 2015 14:46:11 -0700 (PDT)
+X-Received: by 10.236.202.233 with SMTP id d69mr16665412yho.13.1426715171201;
+        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id gb13si3339153pac.2.2015.03.18.14.46.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 11:47:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) client-ip=2a00:1450:400c:c00::233;
+        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x233.google.com with SMTP id y19so14146905wgg.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 11:47:32 -0800 (PST)
+Received: by mail-pd0-x236.google.com with SMTP id ni2so54956580pdb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=3Br5bcYKRcq4CVmRYAz+MrYAwC3n81tboG5FnUDFMMY=;
-        b=sca1cRd/7wJT3esiflqH+PEmYlGcn77GUXyIIYyuc2EMhRLlpeDU9VSZRCE9me65Ae
-         oJZ419/0+5Eme2b+3W75zDRQYvzQ+kIwL093mMnmdTFeB7h2iZi3AQG4/6SAw/jqrbY0
-         yJ9UBvxg/eSUe4Gzvpsv77YujuoVS/bUJO8f9nTMkXfD8Y0p5HIA+5vp6sSsKkOKHlun
-         R2yWZfWGk/6RqylnafcWnol/po3U6Q+pQZjaHz3Dr2aCePdhT/c6TkYb2AXBVYDCB9kX
-         hd+o11V0WWRZJYpEs97tloWPNB+PzhBD/D+NG6+CpybRUHD44tGcqzxO2jgb8aZNmAi4
-         +kwA==
-X-Received: by 10.180.105.40 with SMTP id gj8mr54558751wib.67.1424980052782;
-        Thu, 26 Feb 2015 11:47:32 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from yeliz-N56DP.comu.edu.tr ([193.255.97.48])
-        by mx.google.com with ESMTPSA id l6sm2783091wjx.33.2015.02.26.11.47.31
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 11:47:31 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=fnG/Cr1qHjiJOrLmUlEy/oeQ3+nvvevQj/nr1vDofi8=;
+        b=ZCE1eqPlbn4kEbjAgsk5xpkcwXcF0tjXRpVRYWhFdGMDQjUYUsKCt9J7FT7qejd65b
+         sAox4E7dWL5PYgo7BnbRwMiY19kChZyI2wQ45NZULU8F6mALcgv/PxHKly6E9HQfwfJg
+         MYryuQ48tdPLAtw+uOxDoBZl6jPJRNSDg6OgF2Ssn2tFF4EfRzsWWnNqHTC4TWJ0fhWI
+         UDstfRp/tuwVoITZ4ufoTc5I1Kr3eBRmrEzrnPd1u+j1l5brRisn5WYSc6dt3y4dy+sS
+         BiChFSnEjK+XmlhY2WYJTOuT1D9srzavT9Ygm/PRc+Edgh9IrNPINSPdoERwNImg98LL
+         c7nA==
+X-Received: by 10.70.31.66 with SMTP id y2mr104829304pdh.118.1426715171038;
+        Wed, 18 Mar 2015 14:46:11 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from akanksha ([14.139.82.6])
+        by mx.google.com with ESMTPSA id um16sm29214495pab.7.2015.03.18.14.46.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 18 Mar 2015 14:46:09 -0700 (PDT)
+Date: Thu, 19 Mar 2015 03:14:15 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: ft1000: ft1000-pcmcia: Fix line over 80 characters
-Date: Thu, 26 Feb 2015 21:47:40 +0200
-Message-Id: <1424980060-13121-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH] Staging: rts5208: Add new variable idx to shorten line
+ length and increase readability
+Message-ID: <20150318214415.GA12733@akanksha>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Fix checkpatch.pl issues with line over 80 characters in ft1000_cs.c
+Add new variable idx to shorten line length of other statements
+and increase readability.
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rts5208/ms.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c
-index 922478e..f71305b 100644
---- a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c
-+++ b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_cs.c
-@@ -24,7 +24,7 @@
-   License along with this program; if not, write to the
-   Free Software Foundation, Inc., 59 Temple Place -
-   Suite 330, Boston, MA 02111-1307, USA.
--  -----------------------------------------------------------------------------*/
-+  ----------------------------------------------------------------------------*/
+diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
+index 5a9321b..4c38ff9 100644
+--- a/drivers/staging/rts5208/ms.c
++++ b/drivers/staging/rts5208/ms.c
+@@ -2194,7 +2194,7 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
+ 	struct zone_entry *segment;
+ 	bool defect_flag;
+ 	int retval, table_size, disable_cnt, i;
+-	u16 start, end, phy_blk, log_blk, tmp_blk;
++	u16 start, end, phy_blk, log_blk, tmp_blk, idx;
+ 	u8 extra[MS_EXTRA_SIZE], us1, us2;
  
- #include <linux/kernel.h>
- #include <linux/module.h>
+ 	dev_dbg(rtsx_dev(chip), "ms_build_l2p_tbl: %d\n", seg_no);
+@@ -2305,13 +2305,15 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
+ 			continue;
+ 		}
+ 
+-		if (segment->l2p_table[log_blk - ms_start_idx[seg_no]] == 0xFFFF) {
+-			segment->l2p_table[log_blk - ms_start_idx[seg_no]] = phy_blk;
++		idx = log_blk - ms_start_idx[seg_no];
++
++		if (segment->l2p_table[idx] == 0xFFFF) {
++			segment->l2p_table[idx] = phy_blk;
+ 			continue;
+ 		}
+ 
+ 		us1 = extra[0] & 0x10;
+-		tmp_blk = segment->l2p_table[log_blk - ms_start_idx[seg_no]];
++		tmp_blk = segment->l2p_table[idx];
+ 		retval = ms_read_extra_data(chip, tmp_blk, 0,
+ 					extra, MS_EXTRA_SIZE);
+ 		if (retval != STATUS_SUCCESS)
+@@ -2342,7 +2344,8 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
+ 
+ 	for (log_blk = ms_start_idx[seg_no];
+ 	     log_blk < ms_start_idx[seg_no + 1]; log_blk++) {
+-		if (segment->l2p_table[log_blk-ms_start_idx[seg_no]] == 0xFFFF) {
++		idx = log_blk - ms_start_idx[seg_no];
++		if (segment->l2p_table[idx] == 0xFFFF) {
+ 			phy_blk = ms_get_unused_block(chip, seg_no);
+ 			if (phy_blk == 0xFFFF) {
+ 				chip->card_wp |= MS_CARD;
+@@ -2352,7 +2355,7 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
+ 			if (retval != STATUS_SUCCESS)
+ 				TRACE_GOTO(chip, BUILD_FAIL);
+ 
+-			segment->l2p_table[log_blk-ms_start_idx[seg_no]] = phy_blk;
++			segment->l2p_table[idx] = phy_blk;
+ 			if (seg_no == ms_card->segment_cnt - 1) {
+ 				if (segment->unused_blk_cnt < 2) {
+ 					chip->card_wp |= MS_CARD;
 -- 
-1.8.3.2
+1.9.1
 
 
