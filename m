@@ -1,170 +1,95 @@
-X-GM-THRID: 8354230435840
+X-GM-THRID: 8904092155904
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,4a466ff2e2b78213,start
+X-Google-Thread: 9ca63f596c,26629a1a7bb6d568,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.11.34 with SMTP id n2mr8659356wib.2.1426368860290;
-        Sat, 14 Mar 2015 14:34:20 -0700 (PDT)
+X-Received: by 10.66.123.74 with SMTP id ly10mr46461462pab.16.1426662049416;
+        Wed, 18 Mar 2015 00:00:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.205.4 with SMTP id lc4ls493885lac.104.gmail; Sat, 14 Mar
- 2015 14:34:19 -0700 (PDT)
-X-Received: by 10.112.77.101 with SMTP id r5mr8420893lbw.4.1426368859603;
-        Sat, 14 Mar 2015 14:34:19 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id c8si149994wiw.1.2015.03.14.14.34.19
+Received: by 10.140.20.230 with SMTP id 93ls540949qgj.75.gmail; Wed, 18 Mar
+ 2015 00:00:49 -0700 (PDT)
+X-Received: by 10.236.40.112 with SMTP id e76mr81723220yhb.5.1426662049237;
+        Wed, 18 Mar 2015 00:00:49 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-pd0-x22c.google.com (mail-pd0-x22c.google.com. [2607:f8b0:400e:c02::22c])
+        by gmr-mx.google.com with ESMTPS id l3si2971459pdo.0.2015.03.18.00.00.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Mar 2015 14:34:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        Wed, 18 Mar 2015 00:00:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) client-ip=2607:f8b0:400e:c02::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) smtp.mail=vthakkar1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id w10so9650733wix.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2015 14:34:19 -0700 (PDT)
+Received: by mail-pd0-x22c.google.com with SMTP id op1so34124568pdb.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 00:00:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=she+hsETjZMxP6wZyFcRpCRL3WMlHHkwamvKEDnBNok=;
-        b=ZieIY0hVJPjTaMlqhWebGXAzlYPKIVxNG+R+p6r3JPhI3lU9jxlM0IMsM/0+joze4I
-         EUYfGIjMW8lWkdNohWCLJ3C7qPqZOHXhvzwVk+HXBkQiKpH588ZXLvV+nOyiKeKGWBD3
-         KLK6+W0tM2hbSWhxbRUrUNt9fT52aNwVKAcb+Zyz0+xejjMCOkeP8LPiVMwT98FFUdF2
-         giAkl977uQtYiLLAW5YdgnnT1+4NJIh8mmofp9+MXUblwplm70MvZnklU3Zq/Tt7SHVu
-         PuKhWucEwV6fNBXtW7i9VTzr2TS3ijIIIzj50z/F1yS50/vj8NONEA1FnqnFcC6arsUP
-         Hy4g==
-X-Received: by 10.180.187.12 with SMTP id fo12mr86388097wic.29.1426368859452;
-        Sat, 14 Mar 2015 14:34:19 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.55.48])
-        by mx.google.com with ESMTPSA id r15sm8505187wiw.12.2015.03.14.14.34.16
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Mar 2015 14:34:17 -0700 (PDT)
-Received: by haneen-vb (Postfix, from userid 1000)
-	id 90606C1F52; Sat, 14 Mar 2015 16:17:08 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=PWrxUej11OyqZ0iDBNOLu8voY7oqozsWat5b+tk5aDI=;
+        b=DFFG0NVwBGadhCB5N7DZZOwijAHnjRDlD3CdwTlxSbutwDlsbYMPIzAXnWu/t4slxr
+         AZbKoJ7KTyMkQWvmphJ01f0p71GGJs0ErHK+5OAjsYnt7fgbTzKNfybcfnzI/z5sLtc7
+         NLzakBKULnzDQb2S6Ye07vHYjaUKeMaivq2cgMvaDFmxXDJfFKcXlK6OBgxo0Ldhy8TX
+         w1Pr29zdYi9xZmq/0I2Hrsa2cXIR+d17DGe5pGR1zdSrqQAQIIwDrQvZ5Uri5gRHMd9j
+         ttIz1jap2REn6GhvNZqpb+iR4K6hml+cws29gOra6aIlLgerU0fTrN/VJwXzT6/IxIUZ
+         3Q7Q==
+X-Received: by 10.66.164.66 with SMTP id yo2mr158965122pab.59.1426662049004;
+        Wed, 18 Mar 2015 00:00:49 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from vaishali-Ideapad-Z570 ([150.107.241.95])
+        by mx.google.com with ESMTPSA id d4sm25711989pdm.50.2015.03.18.00.00.47
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 18 Mar 2015 00:00:48 -0700 (PDT)
+Date: Wed, 18 Mar 2015 12:30:44 +0530
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH] Staging: rtl8712: replace memcpy with ether_addr_copy
-Date: Sat, 14 Mar 2015 16:17:04 +0300
-Message-Id: <1426339024-11656-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] Staging: media: Use module_i2c_driver
+Message-ID: <20150318070044.GA9306@vaishali-Ideapad-Z570>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch replace memcpy with ethe_addr_copy to address the following
-warning generated by checkpatch.pl: ""Prefer ether_addr_copy over memcpy
-if the Ethernet addresses are __aligned(2)"
+Macro module_i2c_driver is used for drivers whose init
+and exit paths does only register and unregister to i2c
+API. So, here remove some boilerplate code by using
+module_i2c_driver.
 
-Follwoing is the output of pahole for the relevant datastructures:
-1- for  "iwe.u.ap_addr.sa_data" and "wrqu->ap_addr.sa_data"
-
-struct sockaddr {
-        sa_family_t                sa_family;            /*     0     2
-*/
-        char                       sa_data[14];          /*     2    14
-*/
-
-        /* size: 16, cachelines: 1, members: 2 */
-        /* last cacheline: 16 bytes */
-};
-
-struct iw_event {
-        __u16                      len;                  /*     0     2
-*/
-        __u16                      cmd;                  /*     2     2
-*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        union iwreq_data           u;                    /*     8    16
-*/
-
-        /* size: 24, cachelines: 1, members: 3 */
-        /* sum members: 20, holes: 1, sum holes: 4 */
-        /* last cacheline: 24 bytes */
-};
-
-2- for  "pnetwork->network.MacAddress" and "pcur_bss->MacAddress"
-
-struct wlan_network {
-        struct list_head           list;                 /*     0    16
-*/
-        int                        network_type;         /*    16     4
-*/
-        int                        fixed;                /*    20     4
-*/
-        unsigned int               last_scanned;         /*    24     4
-*/
-        int                        aid;                  /*    28     4
-*/
-        int                        join_res;             /*    32     4
-*/
-        struct ndis_wlan_bssid_ex  network;              /*    36   884
-*/
-        /* --- cacheline 14 boundary (896 bytes) was 24 bytes ago --- */
-
-        /* size: 920, cachelines: 15, members: 7 */
-        /* last cacheline: 24 bytes */
-};
-
-struct ndis_wlan_bssid_ex {
-        u32                        Length;               /*     0     4
-*/
-        unsigned char              MacAddress[6];        /*     4     6
-*/
-        u8                         Reserved[2];          /*    10     2
-*/
-        struct ndis_802_11_ssid    Ssid;                 /*    12    36
-*/
-        u32                        Privacy;              /*    48     4
-*/
-        s32                        Rssi;                 /*    52     4
-*/
-        enum NDIS_802_11_NETWORK_TYPE NetworkTypeInUse;  /*    56     4
-*/
-        struct NDIS_802_11_CONFIGURATION Configuration;  /*    60    32
-*/
-        /* --- cacheline 1 boundary (64 bytes) was 28 bytes ago --- */
-        enum NDIS_802_11_NETWORK_INFRASTRUCTURE InfrastructureMode; /*
-92     4 */
-        NDIS_802_11_RATES_EX       SupportedRates;       /*    96    16
-*/
-        u32                        IELength;             /*   112     4
-*/
-        u8                         IEs[768];             /*   116   768
-*/
-        /* --- cacheline 13 boundary (832 bytes) was 52 bytes ago --- */
-
-        /* size: 884, cachelines: 14, members: 12 */
-        /* last cacheline: 52 bytes */
-};
-
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/bcm2048/radio-bcm2048.c | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index eacba8c..81f39c3 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -185,7 +185,7 @@ static inline char *translate_scan(struct _adapter *padapter,
- 	/* AP MAC address */
- 	iwe.cmd = SIOCGIWAP;
- 	iwe.u.ap_addr.sa_family = ARPHRD_ETHER;
--	memcpy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress, ETH_ALEN);
-+	ether_addr_copy(iwe.u.ap_addr.sa_data, pnetwork->network.MacAddress);
- 	start = iwe_stream_add_event(info, start, stop, &iwe, IW_EV_ADDR_LEN);
- 	/* Add the ESSID */
- 	iwe.cmd = SIOCGIWESSID;
-@@ -1117,7 +1117,7 @@ static int r8711_wx_get_wap(struct net_device *dev,
- 	wrqu->ap_addr.sa_family = ARPHRD_ETHER;
- 	if (check_fwstate(pmlmepriv, _FW_LINKED | WIFI_ADHOC_MASTER_STATE |
- 				     WIFI_AP_STATE))
--		memcpy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress, ETH_ALEN);
-+		ether_addr_copy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress);
- 	else
- 		eth_zero_addr(wrqu->ap_addr.sa_data);
- 	return 0;
+diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
+index 25ab2e0..f28ffef 100644
+--- a/drivers/staging/media/bcm2048/radio-bcm2048.c
++++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
+@@ -2717,22 +2717,7 @@ static struct i2c_driver bcm2048_i2c_driver = {
+ 	.id_table	= bcm2048_id,
+ };
+ 
+-/*
+- *	Module Interface
+- */
+-static int __init bcm2048_module_init(void)
+-{
+-	pr_info(BCM2048_DRIVER_DESC "\n");
+-
+-	return i2c_add_driver(&bcm2048_i2c_driver);
+-}
+-module_init(bcm2048_module_init);
+-
+-static void __exit bcm2048_module_exit(void)
+-{
+-	i2c_del_driver(&bcm2048_i2c_driver);
+-}
+-module_exit(bcm2048_module_exit);
++module_i2c_driver(bcm2048_i2c_driver);
+ 
+ MODULE_LICENSE("GPL");
+ MODULE_AUTHOR(BCM2048_DRIVER_AUTHOR);
 -- 
 1.9.1
 
