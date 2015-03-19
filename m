@@ -1,92 +1,119 @@
-X-GM-THRID: 9034069442560
-X-Received: by 10.182.135.230 with SMTP id pv6mr72740596obb.17.1426700578870;
-        Wed, 18 Mar 2015 10:42:58 -0700 (PDT)
+X-GM-THRID: 8361998286848
+X-Received: by 10.182.104.37 with SMTP id gb5mr79880629obb.45.1426737321442;
+        Wed, 18 Mar 2015 20:55:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.149.197 with SMTP id uc5ls348541obb.70.gmail; Wed, 18 Mar
- 2015 10:42:58 -0700 (PDT)
-X-Received: by 10.182.205.232 with SMTP id lj8mr75967630obc.39.1426700578657;
-        Wed, 18 Mar 2015 10:42:58 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id ni4si3231115pdb.2.2015.03.18.10.42.58
+Received: by 10.107.164.132 with SMTP id d4ls622253ioj.68.gmail; Wed, 18 Mar
+ 2015 20:55:21 -0700 (PDT)
+X-Received: by 10.66.148.40 with SMTP id tp8mr62462503pab.35.1426737321076;
+        Wed, 18 Mar 2015 20:55:21 -0700 (PDT)
+Return-Path: <iskaranth@gmail.com>
+Received: from mail-pd0-x22d.google.com (mail-pd0-x22d.google.com. [2607:f8b0:400e:c02::22d])
+        by gmr-mx.google.com with ESMTPS id pc4si38140pac.0.2015.03.18.20.55.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 10:42:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Wed, 18 Mar 2015 20:55:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) client-ip=2607:f8b0:400e:c02::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::22d as permitted sender) smtp.mail=iskaranth@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id we9so48891408pac.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 10:42:58 -0700 (PDT)
+Received: by mail-pd0-x22d.google.com with SMTP id op1so63055126pdb.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 20:55:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=yE81nEXeom1YK1lj3OQjKA+LLXVmCWWw7gpEk7/AMvc=;
-        b=U/CADTDYktVdPOT+CNTeRO/TUSTmKtl0nPoy8Q0OrlqmeWiR4bYBIEvHDxDDJ6LR3t
-         MHYMawc/6tfOK6qy3dBj+aqSebOJBAsa66AwdJ2dCudjVwtAsOyYupNYtRlcbSNg/sBd
-         tLJrMiv4oxpPrOdj5s/vtbroWddVIaqso1qKhRm5OaAsKjJsuy+IgZTphjkiaLNgH5S1
-         yHuko3jUFObae0H3pxLJ1Z1Xjo/fkSvC9apPWEhJClfHj9E4Dw4YPs2TBodxLnohQCr3
-         Hgq3MLdlJqNxSO45gRwloE4CyUnIqhOPoxJ22Fr7F0vD0DLgGcGMczLXqgXVHBx6ARHO
-         R+KQ==
-X-Received: by 10.66.123.110 with SMTP id lz14mr69665587pab.30.1426700578413;
-        Wed, 18 Mar 2015 10:42:58 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([150.107.240.77])
-        by mx.google.com with ESMTPSA id i10sm28565499pdk.53.2015.03.18.10.42.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Mar 2015 10:42:57 -0700 (PDT)
-Date: Wed, 18 Mar 2015 23:12:53 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 0/2] Staging: speakup: Introduce helper macro
- module_spk_synth
-Message-ID: <cover.1426700096.git.vthakkar1994@gmail.com>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=cJTqdnOG8NvTCdHA58QhQFIX50LNFKdpWdbUdxZw63s=;
+        b=d/8X+8hCdzLfh3cAq/3hNTcvIhcixuSkMjCUyptkQJCwVSNacXWJ7Ipn44m2ivjb0g
+         Zq5nKojMi3FYKu+BwYJBVH3g8dzH9d6bW4sGj9WZMBsiSKUzZSlU5Dk0ODqv/nWoisl2
+         ON0mIb2O0GEKEF9tgnq1k6Zc7/g5H0oWuK0uLERXMxgzZy9qdRNZBZHCfwWS0kVwidiY
+         UyPzJI6mI7Q+GCZGtN2HZCu57f/9PlD9ORUCs3MHgdVI0K8qMpJu58oBv4JxrcZESWO1
+         AfOOoulracOUulA1g6we4xD/fOjP/i7cr1JOBBL8KtRrD5Py+TjbvM+phsL2O9RHheZS
+         tGaw==
+X-Received: by 10.66.55.68 with SMTP id q4mr154323747pap.71.1426737320950;
+        Wed, 18 Mar 2015 20:55:20 -0700 (PDT)
+Return-Path: <iskaranth@gmail.com>
+Received: from gmail.com ([222.117.133.143])
+        by mx.google.com with ESMTPSA id db10sm126488pdb.86.2015.03.18.20.55.18
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Mar 2015 20:55:20 -0700 (PDT)
+Date: Thu, 19 Mar 2015 12:55:13 +0900
+From: Supriya Karanth <iskaranth@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192u: remove return from
+ end of void function
+Message-ID: <20150319035511.GA6806@gmail.com>
+References: <1426390972-31372-1-git-send-email-iskaranth@gmail.com>
+ <alpine.DEB.2.02.1503150805370.2070@localhost6.localdomain6>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <alpine.DEB.2.02.1503150805370.2070@localhost6.localdomain6>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch-set adds new macro module_spk_synth for
-simple modules that contain a single spk_synth without
-any additional setup code then ends up being a block of 
-duplicated boilerplate. Macro module_spk_synth replaces 
-module_init()/module_exit() registrations with template
-functions. So, patch-set also handles all such cases
-where module_spk_synth can be used.
+On Sun, Mar 15, 2015 at 08:07:56AM +0100, Julia Lawall wrote:
+> 
+> 
+> On Sun, 15 Mar 2015, Supriya Karanth wrote:
+> 
+> > This patch removes the return statement at the end of a void
+> > function as it is not necessary.
+> > 
+> > found by checkpatch.pl: WARNING: void function return statements
+> > are not generally useful
+> > 
+> > changes made using coccinelle script:
+> > 
+> > @@
+> > @@
+> > 
+> > ... when != if (...) return;
+> >     when != if (...) { ... return;}
+> > -return;
+> 
+> You can try
+> 
+> @@
+> expression e;
+> @@
+> 
+> ... when != true e
+> - return;
+> 
+> You will still get false positives in loops and switces, but this should 
+> let you get more results.  The != true means that you don't go through th 
+> then branch of an if, ie no expression is ever considred to be true.
+> 
+> julia
+> 
+> 
+OK, I didn't realize it was that simple.
 
-Changes since v1:
-	- Add blank line after defining module_spk_synth 
-Changes since v2:
-	- Avoid adding unnecessory comments
-Changes since v3:
-	- Fix build warnings of v2
+It is not working on this file though and I am not able to understand why?
+drivers/staging/lustre/lustre/libcfs/workitem.c
 
-Vaishali Thakkar (2):
-  Staging: speakup: Add helper macro for spk_synth boilerplate
-  Staging: speakup: Use module_spk_synth
+There are 2 void functions with return cfs_wi_exit & cfs_wi_schedule and
+the script doesn't change it.
 
- drivers/staging/speakup/speakup_acntpc.c | 12 +-----------
- drivers/staging/speakup/speakup_acntsa.c | 12 +-----------
- drivers/staging/speakup/speakup_apollo.c | 12 +-----------
- drivers/staging/speakup/speakup_audptr.c | 12 +-----------
- drivers/staging/speakup/speakup_bns.c    | 12 +-----------
- drivers/staging/speakup/speakup_decext.c | 12 +-----------
- drivers/staging/speakup/speakup_decpc.c  | 12 +-----------
- drivers/staging/speakup/speakup_dectlk.c | 12 +-----------
- drivers/staging/speakup/speakup_dtlk.c   | 12 +-----------
- drivers/staging/speakup/speakup_dummy.c  | 12 +-----------
- drivers/staging/speakup/speakup_keypc.c  | 12 +-----------
- drivers/staging/speakup/speakup_ltlk.c   | 12 +-----------
- drivers/staging/speakup/speakup_soft.c   | 13 +------------
- drivers/staging/speakup/speakup_spkout.c | 12 +-----------
- drivers/staging/speakup/speakup_txprt.c  | 12 +-----------
- drivers/staging/speakup/spk_types.h      | 11 +++++++++++
- 16 files changed, 26 insertions(+), 166 deletions(-)
-
--- 
-1.9.1
-
+> >  
+> >  static u8 rtl8192_getSupportedWireleeMode(struct net_device *dev)
+> > @@ -2507,7 +2503,6 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
+> >  	//we need init DIG RATR table here again.
+> >  
+> >  	RT_TRACE(COMP_EPROM, "<===========%s()\n", __func__);
+> > -	return;
+> >  }
+> >  
+> >  static short rtl8192_get_channel_map(struct net_device *dev)
+> > -- 
+> > 2.1.0
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1426390972-31372-1-git-send-email-iskaranth%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> > 
 
