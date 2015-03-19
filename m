@@ -1,83 +1,63 @@
-X-GM-THRID: 2788406853632
-X-Received: by 10.50.2.71 with SMTP id 7mr10919167igs.4.1424688198791;
-        Mon, 23 Feb 2015 02:43:18 -0800 (PST)
+X-GM-THRID: 9068395626496
+X-Received: by 10.194.221.65 with SMTP id qc1mr11808645wjc.7.1426751962544;
+        Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.131 with SMTP id l3ls2348059qgl.5.gmail; Mon, 23 Feb
- 2015 02:43:18 -0800 (PST)
-X-Received: by 10.140.149.78 with SMTP id 75mr11231211qhv.9.1424688198636;
-        Mon, 23 Feb 2015 02:43:18 -0800 (PST)
+Received: by 10.152.5.104 with SMTP id r8ls238991lar.48.gmail; Thu, 19 Mar
+ 2015 00:59:22 -0700 (PDT)
+X-Received: by 10.112.120.136 with SMTP id lc8mr8739766lbb.24.1426751962096;
+        Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
 Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id xj4si3798590pbc.2.2015.02.23.02.43.18
+Received: from mail-lb0-x229.google.com (mail-lb0-x229.google.com. [2a00:1450:4010:c04::229])
+        by gmr-mx.google.com with ESMTPS id b6si35150lbc.1.2015.03.19.00.59.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 02:43:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::229 as permitted sender) client-ip=2a00:1450:4010:c04::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::229 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padbj1 with SMTP id bj1so26577679pad.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 02:43:18 -0800 (PST)
+Received: by mail-lb0-x229.google.com with SMTP id q5so18621902lbn.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=um8dvWGxZziB/7n9rUrucaXsKUE9rw1JnZMmh5Tu+u0=;
-        b=B+gtO9/XixU1mnhoCr0HXWYggbgTN2VHirXBMtYqVABS4vLJyahaRD3lQ/8Q4eauwK
-         epZjyLiljtwzmRWPn01JcsijMRQ22K0aUeh8UTfGLlgK4TWcIaEPpIJtJlwIVQuF9n0U
-         +4FUUypupdZQhHkk6H4s/CxTyFwzs1Ey/yuerUNLgdvfAqHC5gJS5vFXH6OlDNDlUXv7
-         RII5XH+7qfZ3wcnvj4/Q9kPHSSPEirem1BC74grvlY9k3xsP/kO3nMsM1PBPTPQhiUz7
-         rcs1TH5uA9LxB0Yo2pVnBpY+P4G4Pf2INLi8NQuBTEA6YIPWkpe4k5BcqWi1kipNpbVi
-         doQw==
-X-Received: by 10.70.137.99 with SMTP id qh3mr18180818pdb.39.1424688198496;
-        Mon, 23 Feb 2015 02:43:18 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id xx7sm35534205pab.21.2015.02.23.02.43.16
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 02:43:17 -0800 (PST)
-Date: Mon, 23 Feb 2015 16:12:59 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Remove redundant if condition
-Message-ID: <20150223104259.GA6583@gmail.com>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=pQv3/TKUdmrQb6pVa/fYLkYjk8aY/44/qAZvvLDP4gg=;
+        b=ab/d2Lw29rC9PhGHgQXRNruduRJUF/6muDmCJ4QE462REAw2fknEct79yybR7qEsl1
+         6FFcl+f+Ow+9rwrtolBhtbCtrOo0MSCMe1smizAIo648Ifcv/hK4YXB0yiMI/6gXxaaH
+         v0xIUgfCmh8yRG4OVL2pZgB7e+agtXquANFeHW1uVgSnNqeIDQDwtcWXB2K65OVgs1xo
+         SFLIeZZeYZwh2RpTwfZvJnovSt9qmaTpuEopK9GabfA//6IbeNxSbSoSTeTbgPCKmw+A
+         Q5t2u3AE4I/E0XaN7wnchdWT+mtd+wflNWpJC/RGtNCUoR6GuWJrzQLZnjyW4DIC8Dst
+         8uMw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.152.19.228 with SMTP id i4mr69051344lae.77.1426751962023;
+ Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
+Received: by 10.112.59.7 with HTTP; Thu, 19 Mar 2015 00:59:21 -0700 (PDT)
+In-Reply-To: <20150319071329.GA8454@kroah.com>
+References: <20150319044856.GA32197@akanksha>
+	<20150319065355.GA7725@kroah.com>
+	<20150319071329.GA8454@kroah.com>
+Date: Thu, 19 Mar 2015 13:29:21 +0530
+Message-ID: <CAHjTdYdYdXPr-4-yrGVN=iHcY-GKUzT0orsV3Nngr7TNeCKAeQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove unused
+ extern declarations.
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=089e01493c22e10c9b05119f931c
 
-Remove redundant if condition as !result is always false.
+--089e01493c22e10c9b05119f931c
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 4 ----
- 1 file changed, 4 deletions(-)
+Hey! :)
+I've resent them as a patchset in order.
+Sorry for the confusion caused!
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 341f0db..192d764 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -345,7 +345,6 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
- {
- 	struct hal_data_8188e *hal_data = GET_HAL_DATA(adapt);
- 	u8 tmpchannel = hal_data->CurrentChannel;
--	bool  result = true;
- 
- 	if (hal_data->rf_chip == RF_PSEUDO_11N)
- 		return;
-@@ -358,9 +357,6 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
- 	if ((!adapt->bDriverStopped) && (!adapt->bSurpriseRemoved)) {
- 		phy_sw_chnl_callback(adapt, channel);
- 
--		if (!result)
--			hal_data->CurrentChannel = tmpchannel;
--
- 	} else {
- 		hal_data->CurrentChannel = tmpchannel;
- 	}
--- 
-1.9.1
+--089e01493c22e10c9b05119f931c
+Content-Type: text/html; charset=UTF-8
 
+<div dir="ltr"><div><div><div>Hey! :)<br></div>I&#39;ve resent them as a patchset in order. <br></div>Sorry for the confusion caused!<br></div></div>
+
+--089e01493c22e10c9b05119f931c--
 
