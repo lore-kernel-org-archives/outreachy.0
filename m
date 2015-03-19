@@ -1,79 +1,100 @@
-X-GM-THRID: 6330756111319171072
-X-Received: by 10.129.76.18 with SMTP id z18mr8511838ywa.26.1473994020396;
-        Thu, 15 Sep 2016 19:47:00 -0700 (PDT)
+X-GM-THRID: 9182014078976
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,305b0a1e52ea2b35,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.13.228 with SMTP id k4mr12191853lbc.8.1426797157431;
+        Thu, 19 Mar 2015 13:32:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.51.74 with SMTP id u10ls5034883otd.30.gmail; Thu, 15 Sep
- 2016 19:47:00 -0700 (PDT)
-X-Received: by 10.237.40.5 with SMTP id r5mr9013511qtd.20.1473994019999;
-        Thu, 15 Sep 2016 19:46:59 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x233.google.com (mail-pf0-x233.google.com. [2607:f8b0:400e:c00::233])
-        by gmr-mx.google.com with ESMTPS id 7si1846863pfw.1.2016.09.15.19.46.59
+Received: by 10.152.180.138 with SMTP id do10ls251425lac.29.gmail; Thu, 19 Mar
+ 2015 13:32:36 -0700 (PDT)
+X-Received: by 10.112.41.131 with SMTP id f3mr12632368lbl.20.1426797156956;
+        Thu, 19 Mar 2015 13:32:36 -0700 (PDT)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id i8si223191wif.1.2015.03.19.13.32.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 19:46:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) client-ip=2607:f8b0:400e:c00::233;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Mar 2015 13:32:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x233.google.com with SMTP id z123so22611705pfz.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 19:46:59 -0700 (PDT)
+Received: by mail-wi0-x229.google.com with SMTP id w10so15897097wix.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 13:32:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=NjrAeVCqBNWrRrUxcN5kYhI5doTvfUcGlhrHj2xHsQA=;
-        b=PDBRRokouKmssaU8k/G9KKfBAYdFk0wtDtm2uyJ4LCZIR/tbIKxV32IGAbfZoA+KXx
-         0vzXR5bTkcQV52I2bAjBXFV+VW/IHuKltjD/+7ALu1l+6AJSx/k8HSL/tapR0yzb+157
-         3JxJDrPuFdzE5wuPSuLZVrTN1hhp4XZzD+Do0Pm0jAKhlEReX3G+02syTNJRLQzEHH0X
-         07pdDr3cA04A3ZKRD+FWRTu2OVqjrLQzyEamAUVPMTdRhWzsTiVIFG9qGK9Ln27XyZbU
-         jBBofVs4k41q6C0YxgpmAdXV33UFhfAXeE9YNF1xAGku34mjOrIyxCuvczvgobZYa4Dd
-         QB1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=NjrAeVCqBNWrRrUxcN5kYhI5doTvfUcGlhrHj2xHsQA=;
-        b=XbGkDxzy06mjOqxxKZSymPKZiiUZT+Y6MuYhA59EXD07hT8nPE78zYP+lQyMWqxZ9P
-         9YxpG9KKT5JyLpURWXpNedpFMmqi7sqVwf1fCoKcEROR+z/ahFL5mr4Max+qegLv+KDG
-         T4+UhJf5ZKnDPkdDPZu+sJrJ3nUuwIZmYWDqbmHTM96AQ/iLf3G/iRJAKmcHGljB0Kjc
-         C8B+4tUo0tth+ngCcySSj9Uz/VowThoZmbARftQOG8O9iiw0zs5KSIxRDRGfaWLqbrOq
-         MtJTSPbvgojNDm6CiNufJsu0UOpPIcIICw8zTe1if9L8FbO+NxNNI7pmV26Duq4KPmre
-         4QYg==
-X-Gm-Message-State: AE9vXwNguxcjrEYErmmNdQDF0UsU3EVf4/XyGceH7y7ZRGtwSZ1u10KMbEqPW3jw+LnDNw==
-X-Received: by 10.98.82.200 with SMTP id g191mr6355956pfb.84.1473994019791;
-        Thu, 15 Sep 2016 19:46:59 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id h67sm19190807pfg.32.2016.09.15.19.46.57
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 15 Sep 2016 19:46:58 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
+        bh=MT4A6j0As2szWjOV2pE9uhCxjAcjlFsIAIDxVn9x2XQ=;
+        b=mYAs06BkQQW2DKGAzHZHBG+KA5ENzC1CbV+a5aVaBoGMxGkOwm7KuMm2V4IEBxkjYu
+         Bv9FWyeQ5uA/lfj3ZOsdGwkGMW9YNM3K1m6BkwCqSIWWjk+s9DPMyajlrkVNQhTist7w
+         gCT6OxHD4PZSJRe4tsJQ1r6TwDx82o+vsxlNAbNr6EUWf/ptCtxO7I9xs0GmRSPo6lDi
+         eTU7FqBxsl++ApoaXjDQCgnbB+P3cJk9709O3dF6l/JV8Xrgxc59I70n1TeZ6mrnvZOH
+         cUiKD4Hgd/Nsx6Q/G3NnIu1towrTFlJIPUO/ZXGIe+lrn001NSjjY5+oaca3vchIH08i
+         307w==
+X-Received: by 10.180.14.196 with SMTP id r4mr19053066wic.77.1426797156742;
+        Thu, 19 Mar 2015 13:32:36 -0700 (PDT)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([78.189.63.210])
+        by mx.google.com with ESMTPSA id 14sm3412366wjv.29.2015.03.19.13.32.35
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 19 Mar 2015 13:32:36 -0700 (PDT)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH 0/8] fix multiple checkpatch issues
-Date: Fri, 16 Sep 2016 08:16:02 +0530
-Message-Id: <cover.1473993585.git.gs051095@gmail.com>
-X-Mailer: git-send-email 2.9.2
+Cc: Hatice ERTURK <haticeerturk27@gmail.com>
+Subject: [PATCH] Staging: rtl8192u: Remove unnecessary spaces
+Date: Thu, 19 Mar 2015 22:32:30 +0200
+Message-Id: <1426797150-23541-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Fix issues detected using checkpatch.pl
+Fix checkpatch.pl issues with "unnecessary whitespace before a quoted
+newline" in r819xU_phy.c
 
-Gargi Sharma (8):
-  staging: wlan-ng: add spaces around +
-  staging: wlan-ng: add spaces around &
-  staging: wlan-ng: add spaces around >>
-  staging: wlan-ng: add spaces around |
-  staging: wlan-ng: add spaces around <<
-  staging: wlan-ng: delete space after a cast
-  staging: wlan-ng: add blank line after declaration
-  staging: wlan-ng: fix block comment style
+Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+---
+ drivers/staging/rtl8192u/r819xU_phy.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
- drivers/staging/wlan-ng/hfa384x.h | 251 +++++++++--------
- pace                              | 567 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 707 insertions(+), 111 deletions(-)
- create mode 100644 pace
-
+diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
+index 3d4f57d..94fa9b8 100644
+--- a/drivers/staging/rtl8192u/r819xU_phy.c
++++ b/drivers/staging/rtl8192u/r819xU_phy.c
+@@ -898,7 +898,7 @@ void rtl8192_phy_getTxPower(struct net_device *dev)
+ 	read_nic_byte(dev, rOFDM0_RxDetector3, &priv->framesync);
+ 	read_nic_byte(dev, rOFDM0_RxDetector2, &tmp);
+ 	priv->framesyncC34 = tmp;
+-	RT_TRACE(COMP_INIT, "Default framesync (0x%x) = 0x%x \n",
++	RT_TRACE(COMP_INIT, "Default framesync (0x%x) = 0x%x\n",
+ 		rOFDM0_RxDetector3, priv->framesync);
+ 
+ 	/* Read SIFS (save the value read fome MACPHY_REG.txt) */
+@@ -1742,13 +1742,13 @@ void InitialGainOperateWorkItemCallBack(struct work_struct *work)
+ 		RT_TRACE(COMP_SCAN, "Scan InitialGainBackup 0xa0a is %x\n",
+ 			 priv->initgain_backup.cca);
+ 
+-		RT_TRACE(COMP_SCAN, "Write scan initial gain = 0x%x \n",
++		RT_TRACE(COMP_SCAN, "Write scan initial gain = 0x%x\n",
+ 			 initial_gain);
+ 		write_nic_byte(dev, rOFDM0_XAAGCCore1, initial_gain);
+ 		write_nic_byte(dev, rOFDM0_XBAGCCore1, initial_gain);
+ 		write_nic_byte(dev, rOFDM0_XCAGCCore1, initial_gain);
+ 		write_nic_byte(dev, rOFDM0_XDAGCCore1, initial_gain);
+-		RT_TRACE(COMP_SCAN, "Write scan 0xa0a = 0x%x \n",
++		RT_TRACE(COMP_SCAN, "Write scan 0xa0a = 0x%x\n",
+ 			 POWER_DETECTION_TH);
+ 		write_nic_byte(dev, 0xa0a, POWER_DETECTION_TH);
+ 		break;
+@@ -1789,7 +1789,7 @@ void InitialGainOperateWorkItemCallBack(struct work_struct *work)
+ 			rtl8192_setBBreg(dev, UFWP, bMaskByte1, 0x1);
+ 		break;
+ 	default:
+-		RT_TRACE(COMP_SCAN, "Unknown IG Operation. \n");
++		RT_TRACE(COMP_SCAN, "Unknown IG Operation.\n");
+ 		break;
+ 	}
+ }
 -- 
-2.9.2
+1.9.1
 
 
