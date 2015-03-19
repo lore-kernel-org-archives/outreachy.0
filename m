@@ -1,64 +1,118 @@
 X-GM-THRID: 9152848986112
-X-Received: by 10.112.142.1 with SMTP id rs1mr10795219lbb.19.1426841885151;
-        Fri, 20 Mar 2015 01:58:05 -0700 (PDT)
+X-Received: by 10.152.45.7 with SMTP id i7mr12357795lam.9.1426792979649;
+        Thu, 19 Mar 2015 12:22:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.197.97 with SMTP id it1ls406249lac.1.gmail; Fri, 20 Mar
- 2015 01:58:04 -0700 (PDT)
-X-Received: by 10.112.167.131 with SMTP id zo3mr8309413lbb.7.1426841884683;
-        Fri, 20 Mar 2015 01:58:04 -0700 (PDT)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wg0-x234.google.com (mail-wg0-x234.google.com. [2a00:1450:400c:c00::234])
-        by gmr-mx.google.com with ESMTPS id cl5si305673wib.3.2015.03.20.01.58.04
+Received: by 10.152.5.166 with SMTP id t6ls338975lat.83.gmail; Thu, 19 Mar
+ 2015 12:22:59 -0700 (PDT)
+X-Received: by 10.112.142.1 with SMTP id rs1mr10333077lbb.19.1426792979037;
+        Thu, 19 Mar 2015 12:22:59 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id bz6si462672wib.3.2015.03.19.12.22.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2015 01:58:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) client-ip=2a00:1450:400c:c00::234;
+        Thu, 19 Mar 2015 12:22:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c00::234 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x234.google.com with SMTP id m6so83620671wgd.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 01:58:04 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id g7so126669760wib.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 12:22:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=8B3qsWtMP54v5sKb2UIjuB3EwM1JMi7UF7jiTRVKIyw=;
-        b=eRp4AHR2j7ZuOhVlUlbp8kxgA9z48Z8QiDfpG0Yi1uVxVaT+ZlZa8C+dTPaB+UyUPN
-         s1Mc7tbymrpNH+i4Fxo15EzxXzA3qx8c3nezFAFAoAuRMNxFZmEqLYazLH4UbtLtp7gc
-         YAVyyWp4IOsvK00Het3HdtBQusGbHAVcQIqRTo3WXiHyOyegJm9eiKp6wBE2VmU4NJ4r
-         Z5YrvQBSmtfvu5jnB1YbcCPeJq1Q6UwkDT0gQQ00M3QYNaXWJwT1Hq8RfmdBEvHkxe4d
-         z/UW/GpKECI2nt2pucg8iYXWboGwzfRAn4+kKCKKC6DLXzCXokHmAV+I56Wjej86waZV
-         88rQ==
-MIME-Version: 1.0
-X-Received: by 10.194.61.161 with SMTP id q1mr162969459wjr.132.1426841884587;
- Fri, 20 Mar 2015 01:58:04 -0700 (PDT)
-Received: by 10.28.139.211 with HTTP; Fri, 20 Mar 2015 01:58:04 -0700 (PDT)
-In-Reply-To: <cover.1426790651.git.cristina.opriceana@gmail.com>
-References: <cover.1426790651.git.cristina.opriceana@gmail.com>
-Date: Fri, 20 Mar 2015 10:58:04 +0200
-Message-ID: <CAEnQRZD0VveCniAwYF4y4B=s-KPGodfFS=QJE0467F4Pw9V1Sg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/3] Add small improvements to
- iio/magnetometer hmc5843 driver
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Cristina Opriceana <cristina.opriceana@gmail.com>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=fXaUf3d/Foy/6Hrm2PVkDJHTx9jSXStnh+yzb71oHJc=;
+        b=g5RIOWwvCfi4QmyEcc1CMOnaSoVncuTWj51WKcunmdHsZBPgxi4vH+qAjohM4EUK5+
+         hrMEQYvqxZv9pPR9PnHZiDTa6SE05Xiwx56AewKRNNFiH8EYRwfWYZAdNqwdebyPvXJy
+         VgCg5R/WAIWWgGNvW9M3Lk2uN665TPM9w5t23ebU4MFYOepng21qENikTY6WTJ2o2ql+
+         CtJnnQsjKq/5NIAaeklm9TKoHgw5AEN94BVTn8ukRhUyozJxHd+81qUR70xd2edxtD9v
+         yIQEvEoUaO8nBtSrbTJOzxOyZskFNnIEe/ZSs1g2wH2tbAvdjW+aX2t6XYvXQ5m2VZH7
+         o/Sg==
+X-Received: by 10.194.23.39 with SMTP id j7mr158088591wjf.9.1426792978923;
+        Thu, 19 Mar 2015 12:22:58 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id dx11sm3194659wjb.23.2015.03.19.12.22.57
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 19 Mar 2015 12:22:58 -0700 (PDT)
+Date: Thu, 19 Mar 2015 21:22:14 +0200
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
+To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Subject: [PATCH 3/3] Staging: iio: Fix file header to match standards
+Message-ID: <33076868233b232db046b01db6f9d6925cbe0579.1426790651.git.cristina.opriceana@gmail.com>
+References: <cover.1426790651.git.cristina.opriceana@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1426790651.git.cristina.opriceana@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, Mar 19, 2015 at 9:17 PM, Cristina Opriceana
-<cristina.opriceana@gmail.com> wrote:
-> This patchset reviews the iio/magnetometer hmc5843 driver and fixes incorrect
-> file header, hardcoded values and reconfigures some small error checks.
->
-> Cristina Opriceana (3):
->   Staging: iio: Place driver in sleep mode on error
->   Staging: iio: Replace hardcoded value with number of channels
->   Staging: iio: Fix file header to match standards
+Fix file header to match Linux Kernel style. Remove Free Software
+Foundation reference to silence the checkpatch.pl warning.
+Add driver description and correct spelling mistakes.
 
-Not sure if this patch series depends on  [PATCH 0/5] Fix
-iio/magnetometer style warnings
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+---
+ drivers/staging/iio/magnetometer/hmc5843_core.c | 44 ++++++++++++-------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
 
-If so, please merge these into one. It will be easier for Greg to merge them.
+diff --git a/drivers/staging/iio/magnetometer/hmc5843_core.c b/drivers/staging/iio/magnetometer/hmc5843_core.c
+index 3898690..d03833b 100644
+--- a/drivers/staging/iio/magnetometer/hmc5843_core.c
++++ b/drivers/staging/iio/magnetometer/hmc5843_core.c
+@@ -1,25 +1,25 @@
+-/*  Copyright (C) 2010 Texas Instruments
+-    Author: Shubhrajyoti Datta <shubhrajyoti@ti.com>
+-    Acknowledgement: Jonathan Cameron <jic23@kernel.org> for valuable inputs.
+-
+-    Support for HMC5883 and HMC5883L by Peter Meerwald <pmeerw@pmeerw.net>.
+-
+-    Split to multiple files by Josef Gajdusek <atx@atx.name> - 2014
+-
+-    This program is free software; you can redistribute it and/or modify
+-    it under the terms of the GNU General Public License as published by
+-    the Free Software Foundation; either version 2 of the License, or
+-    (at your option) any later version.
+-
+-    This program is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-    GNU General Public License for more details.
+-
+-    You should have received a copy of the GNU General Public License
+-    along with this program; if not, write to the Free Software
+-    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+-*/
++/*
++ * Device driver for the the HMC5843 multi-chip module designed
++ * for low field magnetic sensing.
++ *
++ * Copyright (C) 2010 Texas Instruments
++ *
++ * Author: Shubhrajyoti Datta <shubhrajyoti@ti.com>
++ * Acknowledgment: Jonathan Cameron <jic23@kernel.org> for valuable inputs.
++ * Support for HMC5883 and HMC5883L by Peter Meerwald <pmeerw@pmeerw.net>.
++ * Split to multiple files by Josef Gajdusek <atx@atx.name> - 2014
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
+ 
+ #include <linux/module.h>
+ #include <linux/regmap.h>
+-- 
+1.9.1
 
-Daniel.
 
