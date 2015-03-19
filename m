@@ -1,53 +1,49 @@
 X-GM-THRID: 9130553114624
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,694247d93496d508
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.87.141 with SMTP id ay13mr8268702lab.3.1426792264602;
-        Thu, 19 Mar 2015 12:11:04 -0700 (PDT)
+X-Received: by 10.180.11.34 with SMTP id n2mr2057654wib.2.1426792116607;
+        Thu, 19 Mar 2015 12:08:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.88.50 with SMTP id bd18ls364644lab.108.gmail; Thu, 19 Mar
- 2015 12:11:04 -0700 (PDT)
-X-Received: by 10.152.19.67 with SMTP id c3mr11076480lae.7.1426792264133;
-        Thu, 19 Mar 2015 12:11:04 -0700 (PDT)
+Received: by 10.152.206.72 with SMTP id lm8ls350162lac.3.gmail; Thu, 19 Mar
+ 2015 12:08:36 -0700 (PDT)
+X-Received: by 10.112.180.74 with SMTP id dm10mr4731213lbc.11.1426792116142;
+        Thu, 19 Mar 2015 12:08:36 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
-        by gmr-mx.google.com with ESMTPS id gj20si473485wic.1.2015.03.19.12.11.04
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id o3si465255wib.2.2015.03.19.12.08.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2015 12:11:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
+        Thu, 19 Mar 2015 12:08:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x235.google.com with SMTP id v3so70893879wgg.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 12:11:04 -0700 (PDT)
+Received: by mail-wi0-x231.google.com with SMTP id g7so14764712wib.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 12:08:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=RBKO3Nj8q7KuZUKjjJbrN79/YO3nk3IfTcIdoeE8zKw=;
-        b=pGru0WEz9alWvKLjBfCwKKkAeJS1jwDmQP+eR/5H3jXPiKl7x0LkX4ibGKUiml+1TT
-         pBoqEAq7yAVQ6Pn3FyMEuiuBQJQrUWeQzMovdrIDYJt45MGwe6ktVY/PBnAexKBuNdRZ
-         sZi6zRdDRcEhG+R5qeyPizUs8GE68fr2Jl/FtPmreV4JxP/eEYsiIS1OGU0U5tjOfFaw
-         8TiOhiJ+9MAc7IET9P9sDAmUWec5WVxGQEYGyQi9ByGbBr4zYgPH86EdI9joI4N4ulgb
-         BrkVuM73ryWBbexVF/zCzSJar3K9fLWGt8GRwlTnvgunlyvepguhg7uSk31/A2O6yIE7
-         IZ6Q==
-X-Received: by 10.180.77.40 with SMTP id p8mr18594494wiw.1.1426792264034;
-        Thu, 19 Mar 2015 12:11:04 -0700 (PDT)
+        bh=lV//7sMLqnM98MBOatF+CqRTEDH+apjbUYZK3pWhYEQ=;
+        b=HJS9e4iVSccz0yf2QE5wxNJYYNwMfluxr0leCCeKuc7erVD8XV/+1h/s7nX4RUGPdZ
+         exRElbjiXM+7zRAjg4xCgHptnM5Lq56OXVc/D0gjf4h+9VkCskJbRBN9YQ29OH5ORFBQ
+         taa5pQdyNnBYUjYM4c3jErJMnX16vXKlTecJZFjIKFkQpNuyyW3C7Dy6RKvzZlIIASjL
+         D3kJUSVXLP9ivMEwSl4jQ79UI4Xnv6wPNFeRl9o/N+1eRC9yg5a4uhc8lEefSNaXmmXV
+         8PiXb0EhT0sXl3tyFBRrSZrvh5oHS/Yxmcdq9wDnyZrq6Lny71/JktTQVxDUdVYLxUxT
+         CfZQ==
+X-Received: by 10.194.121.68 with SMTP id li4mr155685203wjb.138.1426792116060;
+        Thu, 19 Mar 2015 12:08:36 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
 Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id ge8sm3144927wjc.32.2015.03.19.12.11.02
+        by mx.google.com with ESMTPSA id 14sm3140721wjv.29.2015.03.19.12.08.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Mar 2015 12:11:02 -0700 (PDT)
-Date: Thu, 19 Mar 2015 21:10:18 +0200
+        Thu, 19 Mar 2015 12:08:35 -0700 (PDT)
+Date: Thu, 19 Mar 2015 21:07:51 +0200
 From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 5/5] Staging: iio: Add kernel-doc for struct hmc5843
-Message-ID: <f3d3109464d5a23c6314b53ea8e9c00965c108e5.1426790662.git.cristina.opriceana@gmail.com>
+Subject: [PATCH 4/5] Staging: iio: Remove line over 80 characters
+Message-ID: <136b68d4cb8c7e59d52616c58ba0f8ae8e645c99.1426790662.git.cristina.opriceana@gmail.com>
 References: <cover.1426790662.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -55,41 +51,33 @@ Content-Disposition: inline
 In-Reply-To: <cover.1426790662.git.cristina.opriceana@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch documents the struct hmc5843 specific data following
-this warning:
-"CHECK: struct mutex definition without comment".
+Rename variable in order to fix the 80 characters per line warning.
+Found by checkpatch.pl
 
 Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
- drivers/staging/iio/magnetometer/hmc5843.h | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ drivers/staging/iio/magnetometer/hmc5843_i2c.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/iio/magnetometer/hmc5843.h b/drivers/staging/iio/magnetometer/hmc5843.h
-index 332a75c..ab729d3 100644
---- a/drivers/staging/iio/magnetometer/hmc5843.h
-+++ b/drivers/staging/iio/magnetometer/hmc5843.h
-@@ -31,12 +31,20 @@ enum hmc5843_ids {
- 	HMC5983_ID,
+diff --git a/drivers/staging/iio/magnetometer/hmc5843_i2c.c b/drivers/staging/iio/magnetometer/hmc5843_i2c.c
+index 8d090b4..6b4c742 100644
+--- a/drivers/staging/iio/magnetometer/hmc5843_i2c.c
++++ b/drivers/staging/iio/magnetometer/hmc5843_i2c.c
+@@ -56,11 +56,11 @@ static struct regmap_config hmc5843_i2c_regmap_config = {
+ 		.cache_type = REGCACHE_RBTREE,
  };
  
-+/**
-+ * struct hcm5843_data	- device specific data
-+ * @dev		actual device
-+ * @lock		update and read regmap data
-+ * @regmap		hardware access register maps
-+ * @variant		describe chip variants
-+ * @buffer		3x 16-bit channels + padding + 64-bit timestamp
-+ **/
- struct hmc5843_data {
- 	struct device *dev;
- 	struct mutex lock;
- 	struct regmap *regmap;
- 	const struct hmc5843_chip_info *variant;
--	__be16 buffer[8]; /* 3x 16-bit channels + padding + 64-bit timestamp */
-+	__be16 buffer[8];
- };
+-static int hmc5843_i2c_probe(struct i2c_client *client,
++static int hmc5843_i2c_probe(struct i2c_client *cli,
+ 			     const struct i2c_device_id *id)
+ {
+-	return hmc5843_common_probe(&client->dev,
+-			devm_regmap_init_i2c(client, &hmc5843_i2c_regmap_config),
++	return hmc5843_common_probe(&cli->dev,
++			devm_regmap_init_i2c(cli, &hmc5843_i2c_regmap_config),
+ 			id->driver_data);
+ }
  
- int hmc5843_common_probe(struct device *dev, struct regmap *regmap,
 -- 
 1.9.1
 
