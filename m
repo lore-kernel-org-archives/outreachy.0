@@ -1,81 +1,67 @@
 X-GM-THRID: 9088756875264
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,436ffdcf88b191cd
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.66.135 with SMTP id f7mr32082365pat.29.1426751822451;
-        Thu, 19 Mar 2015 00:57:02 -0700 (PDT)
+X-Received: by 10.182.251.231 with SMTP id zn7mr85153982obc.24.1426751815592;
+        Thu, 19 Mar 2015 00:56:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.35.194 with SMTP id j185ls698576ioj.46.gmail; Thu, 19 Mar
- 2015 00:57:02 -0700 (PDT)
-X-Received: by 10.42.64.67 with SMTP id f3mr73944403ici.5.1426751822259;
-        Thu, 19 Mar 2015 00:57:02 -0700 (PDT)
+Received: by 10.140.99.6 with SMTP id p6ls1063961qge.51.gmail; Thu, 19 Mar
+ 2015 00:56:55 -0700 (PDT)
+X-Received: by 10.52.5.169 with SMTP id t9mr79580882vdt.7.1426751815451;
+        Thu, 19 Mar 2015 00:56:55 -0700 (PDT)
 Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x230.google.com (mail-pd0-x230.google.com. [2607:f8b0:400e:c02::230])
-        by gmr-mx.google.com with ESMTPS id pc4si128478pac.0.2015.03.19.00.57.02
+Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
+        by gmr-mx.google.com with ESMTPS id ni4si93267pdb.2.2015.03.19.00.56.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2015 00:57:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) client-ip=2607:f8b0:400e:c02::230;
+        Thu, 19 Mar 2015 00:56:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x230.google.com with SMTP id ni2so68753827pdb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 00:57:02 -0700 (PDT)
+Received: by mail-pd0-x22f.google.com with SMTP id c3so68752191pdn.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 00:56:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=6MsTPrEtdMB6Crxu3Ouf34XPzg5oYKfnC15iX7/zVHc=;
-        b=Pxgn8wAwM12fIpJaIYvCj5kPAViDqhCoJt/dtV0w9eVJriwM5PJ9jGWY9ayEl7Fuhz
-         RnEdvUcaErBOWBDplnRlOoQcBei99aA+4YhcaIayrQ1qE/F4QO7jhFwW1rTBPVrpI458
-         R9s5yEEkTHKzHftQBQYbz5uUYZ+RsiFVaXA/lfeu+Rd/MZdvIBktmue8+ALtdnyV/1O6
-         zkctyGNZXqomN7ielRdhDnZENvnJSp9urNTqIUMx55OBRXo2TClFu/zOyul2FBqZ7Fat
-         QyP4sxtmoFdLdMP5q3tDKCV14rr96aQucjmNK3n+r4RyuDFKPsu2Yu/+1kY2LwM3uY7g
-         lLcw==
-X-Received: by 10.70.30.225 with SMTP id v1mr47588533pdh.104.1426751822177;
-        Thu, 19 Mar 2015 00:57:02 -0700 (PDT)
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=X1tt8Ck8QhEcwvtcY9UjLAwaj29tJQ+E0PDcKE2VJb4=;
+        b=0yGrewxozbntUu8mgHkCv2WLLQDTuJiAHSL+8P/3k7YA4XGnpLwOBOLA1W12O8qgzb
+         XwxpPVNzp5fmHnN11C2eVjsD8bWBs3nGtKprFoWl3lLkHlCtUCY1oKURoTrdPlknAZhL
+         L5b3PDUk6Bh+AfVleYj2cFzSBE3NZTf5JyYSeIrkyHz6FMtz61rQEC/lbEVksZgdwO5x
+         tA5Y/Sywve3xg9kdKuziAhFak+5WozWKsOOseFSp+SmoSVq+PaVJQgrsEiXFYgRnKrnQ
+         SJ/rOLPLT3YqJy1HivLbXnDcoKOI1HLNX9BB9Cy2pWkzsNcbuCJolIt2SK6QH522wkh9
+         REUQ==
+X-Received: by 10.70.46.137 with SMTP id v9mr89480149pdm.116.1426751815311;
+        Thu, 19 Mar 2015 00:56:55 -0700 (PDT)
 Return-Path: <vatikaharlalka@gmail.com>
 Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id zi10sm1417808pab.35.2015.03.19.00.57.00
+        by mx.google.com with ESMTPSA id n10sm1457929pdp.18.2015.03.19.00.56.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Mar 2015 00:57:01 -0700 (PDT)
-Date: Thu, 19 Mar 2015 13:25:06 +0530
+        Thu, 19 Mar 2015 00:56:54 -0700 (PDT)
+Date: Thu, 19 Mar 2015 13:24:59 +0530
 From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] Staging: rtl8188eu: Remove unused extern declarations.
-Message-ID: <8a4d035dce98b590c6ad0000ec0132a7b024f1bb.1426751449.git.vatikaharlalka@gmail.com>
-References: <cover.1426751449.git.vatikaharlalka@gmail.com>
+Subject: [PATCH 0/3] Staging: rtl8188eu: Cleanups involving removing unused
+ externs and macros
+Message-ID: <cover.1426751449.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1426751449.git.vatikaharlalka@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-These externs are defined but not used anywhere in the code.
+This patchset is for cleanups involving removing unused
+macros and externs
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/include/rtw_security.h | 4 ----
- 1 file changed, 4 deletions(-)
+Vatika Harlalka (3):
+  Staging: rtl8188eu: Remove unused extern declarations.
+  Staging: rtl8188eu: Remove unused macros
+  Staging: rtl8188eu: Remove extern as it is defined but never used
 
-diff --git a/drivers/staging/rtl8188eu/include/rtw_security.h b/drivers/staging/rtl8188eu/include/rtw_security.h
-index 66d60aa..a00d1e6 100644
---- a/drivers/staging/rtl8188eu/include/rtw_security.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_security.h
-@@ -245,10 +245,6 @@ struct mic_data {
- };
- 
- extern const u32 Te0[256];
--extern const u32 Te1[256];
--extern const u32 Te2[256];
--extern const u32 Te3[256];
--extern const u32 Te4[256];
- extern const u32 Td0[256];
- extern const u32 Td1[256];
- extern const u32 Td2[256];
+ drivers/staging/rtl8188eu/core/rtw_ieee80211.c   |  1 -
+ drivers/staging/rtl8188eu/include/ieee80211.h    |  1 -
+ drivers/staging/rtl8188eu/include/rtw_security.h | 26 ------------------------
+ 3 files changed, 28 deletions(-)
+
 -- 
 1.9.1
 
