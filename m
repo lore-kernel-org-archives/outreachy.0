@@ -1,67 +1,80 @@
 X-GM-THRID: 9114401898496
-X-Received: by 10.112.9.65 with SMTP id x1mr13033279lba.16.1426841722437;
-        Fri, 20 Mar 2015 01:55:22 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d1f69188a62ef4a,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.70.94.102 with SMTP id db6mr67021973pdb.0.1426771362778;
+        Thu, 19 Mar 2015 06:22:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.9.134 with SMTP id z6ls299633wia.48.canary; Fri, 20 Mar
- 2015 01:55:22 -0700 (PDT)
-X-Received: by 10.180.211.199 with SMTP id ne7mr406013wic.5.1426841722118;
-        Fri, 20 Mar 2015 01:55:22 -0700 (PDT)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id sf8si303799wic.2.2015.03.20.01.55.22
+Received: by 10.107.155.11 with SMTP id d11ls803603ioe.90.gmail; Thu, 19 Mar
+ 2015 06:22:42 -0700 (PDT)
+X-Received: by 10.66.249.35 with SMTP id yr3mr72860855pac.13.1426771362540;
+        Thu, 19 Mar 2015 06:22:42 -0700 (PDT)
+Return-Path: <darshanapadmadas@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id gu4si236878pac.1.2015.03.19.06.22.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2015 01:55:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Thu, 19 Mar 2015 06:22:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id dy8so11292116wib.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 01:55:22 -0700 (PDT)
+Received: by mail-pa0-x231.google.com with SMTP id we9so75720411pac.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 06:22:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=lGncrdrGpHIEx2VZ/mU3TmDbRBI+j+68ez7w5QBnOJ0=;
-        b=UV8TaGAVtgYpZnRr91ohxCCs/XHR5a85ldkLZ1vAdvikVm5y+F1YLA7Iu1kMff0UIN
-         0n+R2/gboZbGPswKgfVYnDCftFurXLl20JqIKRCxqv136vdPwc2PLKT/ajcxQjlGDl20
-         uYGHFZIRd/RXVg56bwYCh6boCmTgv9w3YtiHD8YrUCdUPs44ay55xyLajU5FlGS6rCWl
-         tZt7Crg64DnbtY5KZ3ZZDbSUW8N4iJvzhwDNb+JoK24g5HpcWG5ygCzaTK7rcJshoFi8
-         ZXpUv0XbJg4zoqydbQWqGPxtN4OvPVH71cNsDHJxVDHr67y3tOT81FzB38lPbaAzOCJ9
-         vTxA==
-MIME-Version: 1.0
-X-Received: by 10.194.87.100 with SMTP id w4mr154856186wjz.65.1426841722021;
- Fri, 20 Mar 2015 01:55:22 -0700 (PDT)
-Received: by 10.28.139.211 with HTTP; Fri, 20 Mar 2015 01:55:21 -0700 (PDT)
-In-Reply-To: <1426771356-19448-1-git-send-email-darshanapadmadas@gmail.com>
-References: <1426771356-19448-1-git-send-email-darshanapadmadas@gmail.com>
-Date: Fri, 20 Mar 2015 10:55:21 +0200
-Message-ID: <CAEnQRZDDn=nwGBH1YxCPHjeH4Pn5Jv32J_rKGkNzWTxGdmyryg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: Documentation: Fix
- resource leak in function dump_channels
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Darshana Padmadas <darshanapadmadas@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+        h=from:to:cc:subject:date:message-id:content-type
+         :content-transfer-encoding;
+        bh=k5cyXIxTesVAHBMhon9U37cI7AbdQAb4rHfMsIN8XFk=;
+        b=fgAAWZt6jLErWdj5tawQZWVJMVNYvK9uIR5DJ1ZnOVVEgbAKt3gc6sl3FIAy92M+8/
+         XL0Z1qkAxn7uXMPVxmxIVwuRgPPVwr4IC6VR+msqs5oQr/piVQhjMWbEUL9fK3Pbqktg
+         sUbTH4E0tOTZGwNuxMo6NLUDt5fXL1TRkmw9QOGyrLABsCumfiVk0jEgRKjMkTeGam/H
+         eI5qL2LV4bGgbmMlpmnLOPguTzdDlygtP89u1ASCdOP7Pp61WcMFxeEMBMR4tG3U7Y4+
+         SnjCKsez8koXePuVSpR+BL6YeE//md02j2t/XT3eKVmtN3djqCVUjQeirOfEIRZOGc1t
+         crSg==
+X-Received: by 10.66.241.36 with SMTP id wf4mr118575797pac.8.1426771362399;
+        Thu, 19 Mar 2015 06:22:42 -0700 (PDT)
+Return-Path: <darshanapadmadas@gmail.com>
+Received: from localhost ([182.19.48.18])
+        by mx.google.com with ESMTPSA id yf6sm3104730pab.26.2015.03.19.06.22.40
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 19 Mar 2015 06:22:41 -0700 (PDT)
+From: Darshana Padmadas <darshanapadmadas@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
+Subject: [PATCH] Staging: iio: Documentation: Fix resource leak in function dump_channels
+Date: Thu, 19 Mar 2015 18:52:36 +0530
+Message-Id: <1426771356-19448-1-git-send-email-darshanapadmadas@gmail.com>
+X-Mailer: git-send-email 1.9.1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 
-On Thu, Mar 19, 2015 at 3:22 PM, Darshana Padmadas
-<darshanapadmadas@gmail.com> wrote:
-> This patch fixes the following error reported by cppcheck tool:
-> [drivers/staging/iio/Documentation/lsiio.c:59]: (error) Resource leak: dp
->
-> The closedir function closes the file descriptor dp which was previously
-> opened by calling opendir and eliminated the cppcheck error.
->
+This patch fixes the following error reported by cppcheck tool:
+[drivers/staging/iio/Documentation/lsiio.c:59]: (error) Resource leak: dp
 
-This is a nice fix!
+The closedir function closes the file descriptor dp which was previously
+opened by calling opendir and eliminated the cppcheck error.
 
-lsiio was recently moved from staging to tools/iio. I think it's better to
-rebase your patch on top of Jonathan's iio tree [1] (togreg branch).
+Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
+---
+ drivers/staging/iio/Documentation/lsiio.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-.. and have this patch merged via linux-iio.
+diff --git a/drivers/staging/iio/Documentation/lsiio.c b/drivers/staging/iio/Documentation/lsiio.c
+index 98a0de0..7935ffc 100644
+--- a/drivers/staging/iio/Documentation/lsiio.c
++++ b/drivers/staging/iio/Documentation/lsiio.c
+@@ -55,6 +55,7 @@ static int dump_channels(const char *dev_dir_name)
+ 		    check_postfix(ent->d_name, "_raw")) {
+ 			printf("   %-10s\n", ent->d_name);
+ 		}
++	closedir(dp);
+ 
+ 	return 0;
+ }
+-- 
+1.9.1
 
-Daniel.
-
-[1] https://git.kernel.org/cgit/linux/kernel/git/jic23/iio.git/
 
