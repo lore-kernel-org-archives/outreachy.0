@@ -1,63 +1,58 @@
 X-GM-THRID: 9068395626496
-X-Received: by 10.194.221.65 with SMTP id qc1mr11808645wjc.7.1426751962544;
-        Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,3ccb23f0bdae8042
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.1.199 with SMTP id 7mr31722241obo.49.1426749213765;
+        Thu, 19 Mar 2015 00:13:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.104 with SMTP id r8ls238991lar.48.gmail; Thu, 19 Mar
- 2015 00:59:22 -0700 (PDT)
-X-Received: by 10.112.120.136 with SMTP id lc8mr8739766lbb.24.1426751962096;
-        Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-lb0-x229.google.com (mail-lb0-x229.google.com. [2a00:1450:4010:c04::229])
-        by gmr-mx.google.com with ESMTPS id b6si35150lbc.1.2015.03.19.00.59.22
+Received: by 10.107.16.214 with SMTP id 83ls763794ioq.75.gmail; Thu, 19 Mar
+ 2015 00:13:33 -0700 (PDT)
+X-Received: by 10.66.236.74 with SMTP id us10mr57626910pac.28.1426749213538;
+        Thu, 19 Mar 2015 00:13:33 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id gu4si101145pac.1.2015.03.19.00.13.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::229 as permitted sender) client-ip=2a00:1450:4010:c04::229;
+        Thu, 19 Mar 2015 00:13:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c04::229 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lb0-x229.google.com with SMTP id q5so18621902lbn.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=pQv3/TKUdmrQb6pVa/fYLkYjk8aY/44/qAZvvLDP4gg=;
-        b=ab/d2Lw29rC9PhGHgQXRNruduRJUF/6muDmCJ4QE462REAw2fknEct79yybR7qEsl1
-         6FFcl+f+Ow+9rwrtolBhtbCtrOo0MSCMe1smizAIo648Ifcv/hK4YXB0yiMI/6gXxaaH
-         v0xIUgfCmh8yRG4OVL2pZgB7e+agtXquANFeHW1uVgSnNqeIDQDwtcWXB2K65OVgs1xo
-         SFLIeZZeYZwh2RpTwfZvJnovSt9qmaTpuEopK9GabfA//6IbeNxSbSoSTeTbgPCKmw+A
-         Q5t2u3AE4I/E0XaN7wnchdWT+mtd+wflNWpJC/RGtNCUoR6GuWJrzQLZnjyW4DIC8Dst
-         8uMw==
-MIME-Version: 1.0
-X-Received: by 10.152.19.228 with SMTP id i4mr69051344lae.77.1426751962023;
- Thu, 19 Mar 2015 00:59:22 -0700 (PDT)
-Received: by 10.112.59.7 with HTTP; Thu, 19 Mar 2015 00:59:21 -0700 (PDT)
-In-Reply-To: <20150319071329.GA8454@kroah.com>
-References: <20150319044856.GA32197@akanksha>
-	<20150319065355.GA7725@kroah.com>
-	<20150319071329.GA8454@kroah.com>
-Date: Thu, 19 Mar 2015 13:29:21 +0530
-Message-ID: <CAHjTdYdYdXPr-4-yrGVN=iHcY-GKUzT0orsV3Nngr7TNeCKAeQ@mail.gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 7A6F5982;
+	Thu, 19 Mar 2015 07:13:32 +0000 (UTC)
+Date: Thu, 19 Mar 2015 08:13:29 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Remove unused
  extern declarations.
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=089e01493c22e10c9b05119f931c
+Message-ID: <20150319071329.GA8454@kroah.com>
+References: <20150319044856.GA32197@akanksha>
+ <20150319065355.GA7725@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150319065355.GA7725@kroah.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---089e01493c22e10c9b05119f931c
-Content-Type: text/plain; charset=UTF-8
+On Thu, Mar 19, 2015 at 07:53:55AM +0100, Greg KH wrote:
+> On Thu, Mar 19, 2015 at 10:18:56AM +0530, Vatika Harlalka wrote:
+> > These externs are defined but not used anywhere in the code.
+> > 
+> > Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> > ---
+> >  drivers/staging/rtl8188eu/include/rtw_security.h | 4 ----
+> >  1 file changed, 4 deletions(-)
+> 
+> You sent 3 patches for the same file, but no clue as to which patches
+> should be applied in which order :(
 
-Hey! :)
-I've resent them as a patchset in order.
-Sorry for the confusion caused!
+Should have said "driver", two patches were for the same file, which
+triggered this worry.  Please resend all 3.
 
---089e01493c22e10c9b05119f931c
-Content-Type: text/html; charset=UTF-8
+thanks,
 
-<div dir="ltr"><div><div><div>Hey! :)<br></div>I&#39;ve resent them as a patchset in order. <br></div>Sorry for the confusion caused!<br></div></div>
-
---089e01493c22e10c9b05119f931c--
+greg k-h
 
