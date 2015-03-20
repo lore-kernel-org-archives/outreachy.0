@@ -1,83 +1,93 @@
-X-GM-THRID: 4172222038016
-X-Received: by 10.112.138.202 with SMTP id qs10mr1599374lbb.24.1424990959489;
-        Thu, 26 Feb 2015 14:49:19 -0800 (PST)
+X-GM-THRID: 9011949731840
+X-Received: by 10.182.18.67 with SMTP id u3mr94268266obd.38.1426889775677;
+        Fri, 20 Mar 2015 15:16:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.23.72 with SMTP id k8ls5186wif.35.canary; Thu, 26 Feb 2015
- 14:49:19 -0800 (PST)
-X-Received: by 10.181.29.66 with SMTP id ju2mr40576wid.1.1424990959179;
-        Thu, 26 Feb 2015 14:49:19 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id i7si13150wif.0.2015.02.26.14.49.19
+Received: by 10.140.89.48 with SMTP id u45ls1821654qgd.58.gmail; Fri, 20 Mar
+ 2015 15:16:15 -0700 (PDT)
+X-Received: by 10.236.63.230 with SMTP id a66mr93697036yhd.51.1426889775465;
+        Fri, 20 Mar 2015 15:16:15 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id gb13si1011419pac.2.2015.03.20.15.16.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 14:49:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        Fri, 20 Mar 2015 15:16:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mail=ciorneiioana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id w62so15463512wes.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 14:49:19 -0800 (PST)
+Received: by mail-pa0-x234.google.com with SMTP id xg6so108690778pab.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 15:16:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=C0GRcftfmb4I9gR7aaKMvPAGZ7M9CEz+9x1XwH3ULyY=;
-        b=w9w27mDreACxRV0LYdXqPO2H30/2er4yQNLqXMuLAWg3/d5FBkir6d9on2EgsghWaH
-         4l/L4PM7S3TYXKDrAYYEexF33M4TXIb2Qxvn2nMCVdE0ueJaTw3N6KCDexch1PRbFhEy
-         lOJvbsHthYybBqN9mwE8M8pX7ifPpVfFD+z9/GXajqqWlPkjw7JZHTJmO/jS3546pf75
-         oO4FVYNLbIhzZ3140irKcE+SuTRRO8IOhnkdMAbbvZloBOwzmzJ3pyQSDtSRv0rWornK
-         SDvsuEvv3gQNXov+FS5gHRc9BF38Jv70rEhkZnxnKSEezS/qct9P2okcyokb6RB05PlL
-         D7hQ==
-X-Received: by 10.194.108.9 with SMTP id hg9mr22074261wjb.68.1424990958961;
-        Thu, 26 Feb 2015 14:49:18 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id j5sm246786wie.3.2015.02.26.14.49.17
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 26 Feb 2015 14:49:18 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v3] Staging: rtl8192u: Replace printk() with pr_debug()
-Date: Thu, 26 Feb 2015 23:49:10 +0100
-Message-Id: <1424990950-10390-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=og2/eQUjHIaLV5Ij6I+F/ZD8019dURXN2Av7ktYVOVM=;
+        b=ZKA0UC+opSuQu3rnfJZI9zJveTBGOdyOkaxuAjVjDmHHQlXYEp5MXTMqK9g+9uxtNc
+         hSEyjsYJ2lnn7TkSLzpgawDs0F8TnljG3/sOb9G2xPFHeG3aez4lqE0W/0u1ee3MWP90
+         LlNLe74i4Cpo3xc0c1m0kQhIgHrcCBVaBBWpvkZQ61CE5wDvuzToL2ia4qjAXEIKlcNS
+         I+kNiSlIxOZPHs+fneJPVVdDQKQfsK3EXerTys7RTLinGMgmDF+Ryn7yC+d6z5u1Pogq
+         l2u/T9OHST/sj9udwjNy01HaNbKfdtrxJFs7Fb/yXE0R7aPzX6XSmjlG17i+QBYf2Cuw
+         3dWg==
+MIME-Version: 1.0
+X-Received: by 10.70.48.97 with SMTP id k1mr61919780pdn.159.1426889775313;
+ Fri, 20 Mar 2015 15:16:15 -0700 (PDT)
+Received: by 10.70.124.101 with HTTP; Fri, 20 Mar 2015 15:16:15 -0700 (PDT)
+In-Reply-To: <20150320122158.GA4519@kroah.com>
+References: <1426686607-11608-1-git-send-email-ciorneiioana@gmail.com>
+	<20150320122158.GA4519@kroah.com>
+Date: Sat, 21 Mar 2015 00:16:15 +0200
+Message-ID: <CAHWJYFmFcM-HHk65muoQkzwzw1RsBz-xxyA1NRreVdc891V41A@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: p80211conv: Replace memcpy
+ with ether_addr_copy
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-For dynamic debugging netdev_dbg(), dev_dbg() or  pr_debug() macro is
-preferred over printk(), which is the raw way to print something.
-Network system has it's own printk format, netdev_dbg, but in this case
-function's argument list has no  pointer to a struct netdevice so
-pr_debug is used instead.
-Issue found by checkpatch.pl.
----
-v3: Change commit message.
-v2: Include only changes made to this file.
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Fri, Mar 20, 2015 at 2:21 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Mar 18, 2015 at 03:50:07PM +0200, Ioana Ciornei wrote:
+> > Replace memcpy() with ether_addr_copy() since addresses are __aligned(2).
+> > The 2 structures are aligned to u16:
+> >
+> > struct p80211_hdr_a3 {
+> >         __le16 fc;              /* 0    2 */
+> >         u16 dur;                /* 2    2 */
+> >         u8 a1[ETH_ALEN];        /* 4    6 */
+> >         u8 a2[ETH_ALEN];        /* 10   6 */
+> >         u8 a3[ETH_ALEN];        /* 16   6 */
+> >         u16 seq;                /* 22   2 */
+> > } __packed;
+> >
+> > Total size: 24
+> >
+> > struct wlan_ethhdr {
+> >         u8 daddr[WLAN_ETHADDR_LEN];     /* 0    6 */
+> >         u8 saddr[WLAN_ETHADDR_LEN];     /* 6    6 */
+> >         u16 type;                       /* 12   2 */
+> > } __packed;
+> >
+> > Total size: 14
+> >
+> > Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+> > ---
+> >
+> > Changes in v3:
+> >       - fixed corrupted patch
+>
+> Please resend this again, after fixing the obvious build errors with it
+> :(
+>
+> ALWAYS test build your patches, to not do so annoys the people you send
+> them to, as it breaks their workflow, and is a bit rude.
+>
+> thanks,
+>
+> greg k-h
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-index 8c1bf1f..7fab680 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-@@ -49,14 +49,14 @@ static void *prism2_wep_init(int keyidx)
- 
- 	priv->tx_tfm = crypto_alloc_blkcipher("ecb(arc4)", 0, CRYPTO_ALG_ASYNC);
- 	if (IS_ERR(priv->tx_tfm)) {
--		printk(KERN_DEBUG "ieee80211_crypt_wep: could not allocate "
-+		pr_debug("ieee80211_crypt_wep: could not allocate "
- 		       "crypto API arc4\n");
- 		priv->tx_tfm = NULL;
- 		goto fail;
- 	}
- 	priv->rx_tfm = crypto_alloc_blkcipher("ecb(arc4)", 0, CRYPTO_ALG_ASYNC);
- 	if (IS_ERR(priv->rx_tfm)) {
--		printk(KERN_DEBUG "ieee80211_crypt_wep: could not allocate "
-+		pr_debug("ieee80211_crypt_wep: could not allocate "
- 		       "crypto API arc4\n");
- 		priv->rx_tfm = NULL;
- 		goto fail;
--- 
-1.9.1
+I am very sorry. I will resend the patch.
 
+Ioana
 
