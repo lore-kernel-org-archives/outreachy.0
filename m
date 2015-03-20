@@ -1,102 +1,92 @@
-X-GM-THRID: 6618737831817773056
-X-Received: by 2002:a17:902:7109:: with SMTP id a9-v6mr148166pll.62.1541044989687;
-        Wed, 31 Oct 2018 21:03:09 -0700 (PDT)
+X-GM-THRID: 9199559901184
+X-Received: by 10.236.37.72 with SMTP id x48mr87722456yha.33.1426863116756;
+        Fri, 20 Mar 2015 07:51:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:46e:: with SMTP id 101-v6ls6933627ple.6.gmail; Wed,
- 31 Oct 2018 21:03:08 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cJDRiP/AzEJYFlz0eZXoqxz/jk7v88S/dA9YqK3r1S8hVjde4WJrDcoP3UBb6ps7Svvzhi
-X-Received: by 2002:a17:902:4d45:: with SMTP id o5-v6mr114564plh.86.1541044988703;
-        Wed, 31 Oct 2018 21:03:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541044988; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UcwZNDPlEp1+su9rBkL+4nMhcfkZxIU3kVUQjGIUFXfkvjn25U7ZPgCFnEFvsq2UGH
-         b44Nw5/g1j6MFhx0eizKKqloBhgYKWX9gEUiqVwye0IFkGcMGw3peAS6rwnWAj3eowR/
-         9ODRDumqtKDKVasGGJGPnT+9dkjFDsnXB2CqAdvdr1r7ROMIm1Hsdg1s4MTHxsmZGQW+
-         G7g6iaiwHpz8lc6HpgPDWaR2gKETMil27SAFyEyQbFadxxviOgo55XLur0npGgjIV+Mo
-         lubR9bzh61CgVDmglrsaAXjgVxylQSdD06FRSPsGqiWYhCjMM/3lZCefpL34+TMfIli3
-         kyGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=aX4nEjc10IsWrqIImk9XtCY3OrV+Hx09YcoB1Yxb0z4=;
-        b=T4bF9b6uSGStrAEZXjt5SgWFNL9k8K4vw79wtL2juKG2c/Gd39RnxzFDOm3aXuUnm3
-         WRUATKdaquV0uFfoChm7tbeDz/Npda19KMOsE5lPsumuVArJ0uitwNbAQ18ioW2jlYtN
-         2I49qnxmTBszFaupC1nue67Zdsx7yyT8BF46zSIaeHQBobgZ6PqvRyv0WXJofYQE0V/I
-         0O8jgLLBxE5Ht+ooQ9/LNNjLicoGVhcGAhSYk5e/hx8Y3vILGk98Y8HvUt6/D4JKIVjH
-         S78kXedxdy5WoqVB7KVfBh5WQ+sgcESLoOzZdmfqS5qsncgDSlMhiH5VAwGiEKtIFpxo
-         A3ug==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hgN4M1m0;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::12d as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-it1-x12d.google.com (mail-it1-x12d.google.com. [2607:f8b0:4864:20::12d])
-        by gmr-mx.google.com with ESMTPS id 7-v6si1394654pga.5.2018.10.31.21.03.08
+Received: by 10.50.29.108 with SMTP id j12ls644648igh.35.gmail; Fri, 20 Mar
+ 2015 07:51:56 -0700 (PDT)
+X-Received: by 10.43.82.202 with SMTP id ad10mr3883361icc.14.1426863116537;
+        Fri, 20 Mar 2015 07:51:56 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l42si329149yhq.1.2015.03.20.07.51.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Oct 2018 21:03:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::12d as permitted sender) client-ip=2607:f8b0:4864:20::12d;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 20 Mar 2015 07:51:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hgN4M1m0;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::12d as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x12d.google.com with SMTP id p11-v6so1225903itf.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 21:03:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=aX4nEjc10IsWrqIImk9XtCY3OrV+Hx09YcoB1Yxb0z4=;
-        b=hgN4M1m0QE29MiEFt3DK605GQAuzplW1FH8Nya2o2OWAVJVSRGoVN4M6FVfU30oMcZ
-         uGBe51l1M17N5hLGXZIcR4fFT1B05OfxUdhU/TKFddS++TEMxj9Fplb5rcIzx8wVS7bP
-         ZDZdPiQVtiUTEhcFrQn/MqcgllUTwC4cPQ/JsOJFG6ofTnolH15c1heG02CixSKJ5eny
-         1Vy9TyZ1TseRKvacZ6aqjoqU6Y0IY/Yzi9mLIwVUPletGpgtBlyAaLa0vhzRBdxybzNh
-         JAGb4sjvlMXdtGYYYs9AfRlGMKv3B/rxlojuZZvUcJ/0JfEArCstFdLSwGZO7e8njtxz
-         vBsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=aX4nEjc10IsWrqIImk9XtCY3OrV+Hx09YcoB1Yxb0z4=;
-        b=GORaQKQORcUtxrnclWAgAmDPWQLtTRrK53faS6Eu6OCZAi65LPvo0irw79TcfxF3pv
-         0cx5V5CgTHFIums2pWp9oT+PDXlhJyZ5vYPO4DumwhsdhosDQ9fmWtBJhdTXGRYy7vYy
-         RisIxn2zuR2KJmUVHnxC/PofJaqLUbHM/dCqRcXcfKsOxM4ZkugP1mofq9ssZUXCoJo+
-         6jBQHoNyRa8pFTX2MEgHECSHjZiknNG4wdKhKRoIOsxR5Ihi5B0PnKsxMJk89M2XhPA1
-         5UQIKdgaerkDCufHX23ZZLIkfZCasLQAKgXj5JyncZixgXQwOqn5SpwLtwk4js68IF+M
-         rmbw==
-X-Gm-Message-State: AGRZ1gIXR4ZHZWtYR1FGZ+jkhAXY+ZAmm9hWYH6CzIShf7FTcCFNouYl
-	PxTvvPpgu35eUHheVSQS4IrwHGhK
-X-Received: by 2002:a02:c497:: with SMTP id t23-v6mr4751496jam.143.1541044988060;
-        Wed, 31 Oct 2018 21:03:08 -0700 (PDT)
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id c71-v6sm10021840itd.18.2018.10.31.21.03.07
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Oct 2018 21:03:07 -0700 (PDT)
-Date: Wed, 31 Oct 2018 21:03:04 -0700
-From: Maya Nakamura <m.maya.nakamura@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: rtlwifi: Modify bool operations and clean up
- spacing
-Message-ID: <cover.1541037077.git.m.maya.nakamura@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,437,1422918000"; 
+   d="scan'208";a="126954952"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Mar 2015 15:51:55 +0100
+Date: Fri, 20 Mar 2015 15:51:47 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vaishali Thakkar <vthakkar1994@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: ste_rmi4: Use SIMPLE_DEV_PM_OPS()
+ macro
+In-Reply-To: <CAK-LDbLf0nk2iv2eeRKTOzd7PTke8jH2Cdk_prOdWTjNQjW1fw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1503201550180.2987@hadrien>
+References: <20150320071750.GA8322@vaishali-Ideapad-Z570> <alpine.DEB.2.10.1503200906150.2554@hadrien> <CAK-LDbJavp-uek_E=VKPSHObYRsCV90cOZcChFEPbzkqAMWoMA@mail.gmail.com> <CAK-LDbLf0nk2iv2eeRKTOzd7PTke8jH2Cdk_prOdWTjNQjW1fw@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patchset modifies bool assignments of 1 and a comparison with 1. It
-adds blank lines after if's and spaces before and after comments. It also
-changes line endings.
+> >> How does this work?  I guess that before the pm field could sometimes be
+> >> null, if power management is not supported.  Not the field is not null.
+> >> Are the fields for the functions now null if there is no power management,
+> >> or are there just trivial definitions?  (It's not a suggestion about
+> >> changing the patch; I am just wondering).
+> >
+> > Yes. I think members of  synaptics_rmi4_dev_pm_ops can be null if there
+> > is no power management after this change.
+> >
+> > As far as I understand, 'SIMPLE_DEV_PM_OPS' macro is defined as follows:
+> >
+> > #define SIMPLE_DEV_PM_OPS(name, suspend_fn, resume_fn) \
+> > const struct dev_pm_ops name = { \
+> >         SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \
+> > }
+> >
+> > And then 'SET_SYSTEM_SLEEP_PM_OPS' like this:
+> >
+> > #ifdef CONFIG_PM_SLEEP
+> > #define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \
+> >         .suspend = suspend_fn, \
+> >         .resume = resume_fn, \
+> >         .freeze = suspend_fn, \
+> >         .thaw = resume_fn, \
+> >         .poweroff = suspend_fn, \
+> >         .restore = resume_fn,
+> > #else
+> > #define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn)
+> > #endif
+> >
+> > So, when CONFIG_PM is not enabled, we can simply remove these
+> > guards. And we can write like this:
+> > static const struct dev_pm_ops synaptics_rmi4_dev_pm_ops{
+> > };
+> >
+> > However, at first I was unsure about this change. But as this patch is
+> > not giving any kind of build error I guess this change should work.
+> >
+> > Although this is my understanding. It may possible that I am wrong.
+> > Correct me if I am missing something.
+> >
+> > Thank You.
+>
+> Ah, I think I am missing something. May be I can use this macro when
+> there is CONFIG_PM_SLEEP. But the way here CONFIG_PM is used
+> it seems like it should be CONFIG_PM_SLEEP. Though I don't have
+> knowledge about this particular driver. So, it would be good if you can
+> enlighten me on this particular topic.
 
-Maya Nakamura (2):
-  staging: rtlwifi: Replace 1 with true and remove comparison for bool
-  staging: rtlwifi: Change line and comment spacing
+Actually, I don't know.  There is just the observation that a NULL value
+is turned into a & value, which cannot be NULL.  So one could check on
+what the driver infrastructure does with a NULL value in the field, and
+what it now does with a non-NULL value in the field, but a NULL value in
+each of the substructures.
 
- drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 12 ++++++------
- drivers/staging/rtlwifi/phydm/phydm_ccx.c          | 12 +++++++-----
- 2 files changed, 13 insertions(+), 11 deletions(-)
-
--- 
-2.17.1
-
+julia
 
