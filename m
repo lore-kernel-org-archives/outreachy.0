@@ -1,82 +1,59 @@
-X-GM-THRID: 6200582337123581952
-X-Received: by 10.107.160.72 with SMTP id j69mr7605188ioe.7.1443685576488;
-        Thu, 01 Oct 2015 00:46:16 -0700 (PDT)
+X-GM-THRID: 9111863296000
+X-Received: by 10.43.130.198 with SMTP id hn6mr4035901icc.29.1426862473928;
+        Fri, 20 Mar 2015 07:41:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.71.77 with SMTP id s13ls433762obu.26.gmail; Thu, 01 Oct
- 2015 00:46:15 -0700 (PDT)
-X-Received: by 10.182.56.70 with SMTP id y6mr6005985obp.17.1443685575970;
-        Thu, 01 Oct 2015 00:46:15 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id zg1si804092pbb.2.2015.10.01.00.46.15
+Received: by 10.50.114.4 with SMTP id jc4ls529715igb.23.canary; Fri, 20 Mar
+ 2015 07:41:13 -0700 (PDT)
+X-Received: by 10.66.150.41 with SMTP id uf9mr41853030pab.14.1426862473702;
+        Fri, 20 Mar 2015 07:41:13 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ni4si836564pdb.2.2015.03.20.07.41.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 00:46:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Mar 2015 07:41:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id hy16so66851179pad.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 00:46:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=B4y7tV1ZMf5AfHXBD8r0m3eUMeXDRvUGPvSOv1AtUa8=;
-        b=uHt1QsuWJs3dV5X4nhOZHlCOhjk9rBZkP/n8VIQIv9aTVYvufQ4ESUhcXHi7OG0Lmt
-         ZVZ6alF50RKwlfhPrlIgAQRjr0Q3DwSlNyIouIpI/4AaOnA+qcLqEpyy3R6oZG+/4xmf
-         aoOWZ3LXrYhGpodgLdWnQIkqOKstjHHseCeHhqvpdeJShn5dNDXFzfXBSO9AOnXk8QLH
-         9HYEjMqF6pwhmKNNhhj6KaRzre2c1cStcFbbCvPR9Ufcmbe+e/fXFLrezPVDsyMENbbG
-         4ImiqLNK6dDXaw9ixA8TPl6ScK6OXqoOBmm3enrMeg3OyUoChHnxhPNJqvR6XjsAnWUx
-         ILYQ==
-X-Received: by 10.68.190.5 with SMTP id gm5mr10382906pbc.25.1443685575803;
-        Thu, 01 Oct 2015 00:46:15 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id pq1sm4767916pbb.91.2015.10.01.00.46.14
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 01 Oct 2015 00:46:15 -0700 (PDT)
-Date: Thu, 1 Oct 2015 13:15:38 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: ptlrpc: nrs_fifo: Removed an unused
- structure
-Message-ID: <20151001074538.GA39335@ubuntu>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (unknown [31.221.94.139])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 10C50AF3;
+	Fri, 20 Mar 2015 14:41:12 +0000 (UTC)
+Date: Fri, 20 Mar 2015 13:20:40 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wlan-ng: Remove struct
+ typedefs
+Message-ID: <20150320122040.GA31606@kroah.com>
+References: <20150319125859.GA27166@akanksha>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20150319125859.GA27166@akanksha>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Removed a structure "nrs_conf_fifo" because it was not called/referenced
-in the entire code.
+On Thu, Mar 19, 2015 at 06:28:59PM +0530, Vatika Harlalka wrote:
+> Remove struct typedefs and rename structs accordingly 
+> as per kernel code conventions.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/lustre/lustre/ptlrpc/nrs_fifo.c | 7 -------
- 1 file changed, 7 deletions(-)
+You have trailing whitespace in your changelog comments :(
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/nrs_fifo.c b/drivers/staging/lustre/lustre/ptlrpc/nrs_fifo.c
-index 8e21f0c..6be1adb 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/nrs_fifo.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/nrs_fifo.c
-@@ -259,13 +259,6 @@ static const struct ptlrpc_nrs_pol_ops nrs_fifo_ops = {
- /**
-  * FIFO policy configuration
-  */
--struct ptlrpc_nrs_pol_conf nrs_conf_fifo = {
--	.nc_name		= NRS_POL_NAME_FIFO,
--	.nc_ops			= &nrs_fifo_ops,
--	.nc_compat		= nrs_policy_compat_all,
--	.nc_flags		= PTLRPC_NRS_FL_FALLBACK |
--				  PTLRPC_NRS_FL_REG_START
--};
- 
- /** @} fifo */
- 
--- 
-2.1.0
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/wlan-ng/hfa384x.h     |  78 +++++++--------
+>  drivers/staging/wlan-ng/hfa384x_usb.c | 179 +++++++++++++++++-----------------
+>  drivers/staging/wlan-ng/prism2mgmt.c  |  20 ++--
+>  drivers/staging/wlan-ng/prism2mgmt.h  |   4 +-
+>  drivers/staging/wlan-ng/prism2mib.c   |  36 +++----
+>  drivers/staging/wlan-ng/prism2sta.c   |  40 ++++----
+>  drivers/staging/wlan-ng/prism2usb.c   |   8 +-
+>  7 files changed, 183 insertions(+), 182 deletions(-)
 
+Please break this up into a patch series, each one only replacing one
+specific typedef.  As it is, it's a bit hard to read this way.
+
+thanks,
+
+greg k-h
 
