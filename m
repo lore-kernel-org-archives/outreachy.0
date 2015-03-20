@@ -1,107 +1,79 @@
 X-GM-THRID: 8491640029184
-X-Received: by 10.236.222.103 with SMTP id s97mr86516876yhp.19.1426846076463;
-        Fri, 20 Mar 2015 03:07:56 -0700 (PDT)
+X-Received: by 10.112.41.131 with SMTP id f3mr13044079lbl.20.1426841333423;
+        Fri, 20 Mar 2015 01:48:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.32.99 with SMTP id g90ls1622164qgg.53.gmail; Fri, 20 Mar
- 2015 03:07:56 -0700 (PDT)
-X-Received: by 10.236.19.8 with SMTP id m8mr88735602yhm.53.1426846076320;
-        Fri, 20 Mar 2015 03:07:56 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id gb13si714114pac.2.2015.03.20.03.07.56
+Received: by 10.152.37.194 with SMTP id a2ls369848lak.88.gmail; Fri, 20 Mar
+ 2015 01:48:52 -0700 (PDT)
+X-Received: by 10.112.142.1 with SMTP id rs1mr10785966lbb.19.1426841332977;
+        Fri, 20 Mar 2015 01:48:52 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
+        by gmr-mx.google.com with ESMTPS id el6si81645wib.0.2015.03.20.01.48.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2015 03:07:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Fri, 20 Mar 2015 01:48:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=daniel.baluta@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id we9so104642216pac.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 03:07:56 -0700 (PDT)
+Received: by mail-we0-x22d.google.com with SMTP id k59so76642817wet.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 01:48:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :content-type:content-transfer-encoding;
-        bh=/WRk1ev2QlupP1EsTC+91MzbJI3fMtEsOibcpZUDisE=;
-        b=CTo8f5gdiSf+HJCHh/MI82NwGejy5kHbGoPnt9I5/xf7qgxA80Tg9Bsdigj+IRNdSd
-         v68Utj5pbfRUSKoUU1OWqfqMoUVPwujmTkI82HtY5p3Jzer8MusLMHk2BsNPH4nBZ/6+
-         QSP9mYj7TAhKKDhTyYyEZlXelr2ahfFMTmxwIHtHEe/4l/Fb2gVb/uM23Ww1zYj3c86/
-         eyXfWs8rHfyMVrmlU/gwkr+PLlGrXOaZW7sA82o4OSRqFkICX++7lnTNHfI7HNq8lNsj
-         f7tJzcBbi90zZik5yIcKmDUj6WzW4xkP4b+rkkUuiNh2qkzUg3F5MztXDXFJbIT0ncSO
-         H5OA==
-X-Received: by 10.70.89.174 with SMTP id bp14mr102068968pdb.14.1426846076194;
-        Fri, 20 Mar 2015 03:07:56 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from localhost ([182.19.48.18])
-        by mx.google.com with ESMTPSA id mi9sm7360551pab.3.2015.03.20.03.07.53
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 20 Mar 2015 03:07:55 -0700 (PDT)
-From: Darshana Padmadas <darshanapadmadas@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH v2] iio: Add ABI documentation for illuminance raw and scale values in light
-Date: Fri, 20 Mar 2015 15:37:47 +0530
-Message-Id: <1426846067-26687-1-git-send-email-darshanapadmadas@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ODnBHgPdAlPEGbZiAYAiC+sYQFyrkidnc/YJCTZ0e7Q=;
+        b=uVyoZ/X0XJ/7XCaVzoFLSUb/5p4MLCPsRbddziulWmuXCwmPXa3KEzdMDEXH97H0vj
+         5wUuUeqZnaroqxafcoGuO9gS/vwj91T6QAaQtlSEv5VbnHF6Z6FhDTZbxEGehEAz0RbH
+         jTg9LG8W8kN2rXpwKXpalZulya1Z5RhqYXnM39RRoAw+kB8hPaymbnkT8PQLqLhUtTom
+         uVySm4MSLmiyHE/iknnvu7R2iHEM55J4+Dd+hK2kkhB2LzUxKEGBqwIiJ1nF0/aAKwnf
+         W7F2BqUh1v7mufH0BrdbZxoqX7o1a1y2H739aDwjjoHkO9uZ8wJ34RR7LQQl+Bno/4zi
+         STZw==
+MIME-Version: 1.0
+X-Received: by 10.180.104.33 with SMTP id gb1mr22797806wib.33.1426841332889;
+ Fri, 20 Mar 2015 01:48:52 -0700 (PDT)
+Received: by 10.28.139.211 with HTTP; Fri, 20 Mar 2015 01:48:52 -0700 (PDT)
 In-Reply-To: <1426506500-11836-1-git-send-email-darshanapadmadas@gmail.com>
 References: <1426506500-11836-1-git-send-email-darshanapadmadas@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Date: Fri, 20 Mar 2015 10:48:52 +0200
+Message-ID: <CAEnQRZDvupQzUVNtTRNyHSQG1tJpHcZMPkKOkM3j=TdXAN6ZXw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] iio: Add ABI documentation for
+ illuminance raw and scale values in light
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Darshana Padmadas <darshanapadmadas@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Jonathan Cameron <jic23@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8
 
-This patchset adds ABI documentation for the following attributes:
+On Mon, Mar 16, 2015 at 1:48 PM, Darshana Padmadas
+<darshanapadmadas@gmail.com> wrote:
+> This patchset adds ABI documentation for the following attributes:
+>
+> in_illuminance_scale, used atleast once in al3320a staging/iio/light/
 
-in_illuminance_scale, exported by  al3320a ambient light sensor,
-in_illuminance_calibscale, exported by cm32181 I2C ambient light sensor,
-in_illuminance_input, exported by cm3232 i2c ambient light sensor,
-in_illuminance_raw exported by al3320a ambient light sensor,
-in_illuminance_clear_raw and in_illuminance_ir_raw exposed by
-gp2ap020a00f i2c proximity/ALS sensor with modifiers
-IIO_MOD_LIGHT_CLEAR and IIO_MOD_LIGHT_IR respectively.
+Reference to staging/iio/light here is confusing. People might think
+that al3320 is in staging, while staging is your source tree top directory.
 
-Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
----
-Changes in v2:
-    - Made the commit message more clear.
+Better drop it :).
 
- Documentation/ABI/testing/sysfs-bus-iio | 6 ++++++
- 1 file changed, 6 insertions(+)
+Also s/atleast/at least/
 
-diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
-index 4fd3976..4d1cbba 100644
---- a/Documentation/ABI/testing/sysfs-bus-iio
-+++ b/Documentation/ABI/testing/sysfs-bus-iio
-@@ -297,6 +297,7 @@ What:		/sys/bus/iio/devices/iio:deviceX/in_pressureY_scale
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressure_scale
- What:		/sys/bus/iio/devices/iio:deviceX/in_humidityrelative_scale
- What:		/sys/bus/iio/devices/iio:deviceX/in_velocity_sqrt(x^2+y^2+z^2)_scale
-+What:		/sys/bus/iio/devices/iio:deviceX/in_illuminance_scale
- KernelVersion:	2.6.35
- Contact:	linux-iio@vger.kernel.org
- Description:
-@@ -337,6 +338,7 @@ what		/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibscale
- what		/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibscale
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibscale
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressure_calibscale
-+What:		/sys/bus/iio/devices/iio:deviceX/in_illuminance_calibscale
- KernelVersion:	2.6.35
- Contact:	linux-iio@vger.kernel.org
- Description:
-@@ -1144,9 +1146,13 @@ Description:
- 		values should behave in the same way as a distance, i.e. lower
- 		values indicate something is closer to the sensor.
- 
-+What:		/sys/.../iio:deviceX/in_illuminance_input
-+What:		/sys/.../iio:deviceX/in_illuminance_raw
- What:		/sys/.../iio:deviceX/in_illuminanceY_input
- What:		/sys/.../iio:deviceX/in_illuminanceY_raw
- What:		/sys/.../iio:deviceX/in_illuminanceY_mean_raw
-+What:		/sys/.../iio:deviceX/in_illuminance_ir_raw
-+What:		/sys/.../iio:deviceX/in_illuminance_clear_raw
- KernelVersion:	3.4
- Contact:	linux-iio@vger.kernel.org
- Description:
--- 
-1.9.1
+Just say:
 
+in_illuminance_scale, exported by  al3320a ambient light sensor.
+
+> in_illuminance_calibscale, used atleast once in cm32181
+> in_illuminance_input, used in cm3232 at least once
+> in_illuminance_raw used atleast once in al3320a
+> in_illuminance_clear_raw and in_illuminance_ir_raw exposed by
+> gp2ap020a00f with modifiers IIO_MOD_LIGHT_CLEAR and
+> IIO_MOD_LIGHT_IR respectively.
+
+The same for all the above.
+
+Other than that, the patch looks good to me.
+
+Daniel.
 
