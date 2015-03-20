@@ -1,57 +1,70 @@
 X-GM-THRID: 9245565124608
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,300e4aeb5c1268d3
+X-Google-Thread: 9ca63f596c,300e4aeb5c1268d3,start
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.180.80.35 with SMTP id o3mr1481222wix.0.1426855096150;
-        Fri, 20 Mar 2015 05:38:16 -0700 (PDT)
+X-Received: by 10.180.80.35 with SMTP id o3mr1444567wix.0.1426852433441;
+        Fri, 20 Mar 2015 04:53:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.2 with SMTP id m2ls415503laj.72.gmail; Fri, 20 Mar 2015
- 05:38:15 -0700 (PDT)
-X-Received: by 10.152.19.67 with SMTP id c3mr11738577lae.7.1426855095601;
-        Fri, 20 Mar 2015 05:38:15 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id l8si325288wia.0.2015.03.20.05.38.15
+Received: by 10.152.197.97 with SMTP id it1ls422965lac.1.gmail; Fri, 20 Mar
+ 2015 04:53:53 -0700 (PDT)
+X-Received: by 10.112.35.135 with SMTP id h7mr12821257lbj.23.1426852433033;
+        Fri, 20 Mar 2015 04:53:53 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id cl5si331359wib.3.2015.03.20.04.53.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 20 Mar 2015 05:38:15 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Mar 2015 04:53:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,436,1422918000"; 
-   d="scan'208";a="104124451"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Mar 2015 13:38:15 +0100
-Date: Fri, 20 Mar 2015 13:38:07 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [Outreachy] application: timeline needed?
-In-Reply-To: <20150320115347.GA20271@waves>
-Message-ID: <alpine.DEB.2.10.1503201337140.2987@hadrien>
-References: <20150320115347.GA20271@waves>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x234.google.com with SMTP id g7so142456617wib.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 04:53:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=Sas745YlQem4JH3fRPRpPr4vHdMdB0a6G8de2KRWrkw=;
+        b=dy4K6tpdskRyrEBZadJFSnlNpp0ggdVSoQEer2AtIPob9yNEnwGeOHCOzKPRVcuo74
+         G42aUE8gIXkoa+joI/Ehs46wT9ZNhiUcc7oxexmQ97H46WnT9mOGlAl9Zha8k/7RjCPx
+         RmyU+nYt25UD8i5ekAHNYrdUGqyCzGR7KTnt9/mYYHYLAPMjM3CVlCBjmmZOJGeCXkZl
+         X0mSSju4X5hz8C2ZDkT8CHsHdTqEfpc8+hdww/idmYa776xR8uy16NtNbotlPGFShg8+
+         EEdsGAU5kqwCkymtiqiSdx8mmMv9Sh4TxVyxkc7s4AOYKIZihp0B9mc1FsD8GixPtIEC
+         ZyBg==
+X-Received: by 10.194.210.103 with SMTP id mt7mr163121380wjc.103.1426852432929;
+        Fri, 20 Mar 2015 04:53:52 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.233.44])
+        by mx.google.com with ESMTPSA id uo6sm6022782wjc.49.2015.03.20.04.53.51
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 20 Mar 2015 04:53:52 -0700 (PDT)
+Date: Fri, 20 Mar 2015 13:53:49 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [Outreachy] application: timeline needed?
+Message-ID: <20150320115347.GA20271@waves>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Fri, 20 Mar 2015, Aya Mahfouz wrote:
+Hello All,
 
-> Hello All,
->
-> I had a general question concerning the application. For the projects,
-> should the applicant provide a timeline/gantt chart for how the work
-> will progress?
+I had a general question concerning the application. For the projects, 
+should the applicant provide a timeline/gantt chart for how the work
+will progress? 
 
-A timeline would be helpful.  Just a list of items and the amount of time
-to allocate to them would be fine.
+If any of the mentors need a timeline, could you kindly post a general
+one on your project's page? Such that it can be discussed and tweaked
+for each applicant through email/irc.
 
-> If any of the mentors need a timeline, could you kindly post a general
-> one on your project's page? Such that it can be discussed and tweaked
-> for each applicant through email/irc.
+Thanks for your time and consideration,
 
-This is a good idea, thanks.
-
-julia
+-- 
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
