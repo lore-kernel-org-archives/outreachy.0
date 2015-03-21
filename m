@@ -1,107 +1,89 @@
 X-GM-THRID: 9381605277696
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,5ac3f70b1eabe1bb
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.45.7 with SMTP id i7mr13989634lam.9.1426944925148;
-        Sat, 21 Mar 2015 06:35:25 -0700 (PDT)
+X-Received: by 10.42.89.205 with SMTP id h13mr9152436icm.25.1426942280807;
+        Sat, 21 Mar 2015 05:51:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.28.42 with SMTP id y10ls542347lag.71.gmail; Sat, 21 Mar
- 2015 06:35:24 -0700 (PDT)
-X-Received: by 10.112.125.67 with SMTP id mo3mr12201636lbb.6.1426944924498;
-        Sat, 21 Mar 2015 06:35:24 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id cl5si85055wib.3.2015.03.21.06.35.24
+Received: by 10.140.33.1 with SMTP id i1ls1957098qgi.34.gmail; Sat, 21 Mar
+ 2015 05:51:20 -0700 (PDT)
+X-Received: by 10.236.53.10 with SMTP id f10mr91322091yhc.17.1426942280629;
+        Sat, 21 Mar 2015 05:51:20 -0700 (PDT)
+Return-Path: <somyaanand214@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id pj7si182044pbb.2.2015.03.21.05.51.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 06:35:24 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 21 Mar 2015 05:51:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,442,1422918000"; 
-   d="scan'208";a="104223958"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Mar 2015 14:35:08 +0100
-Date: Sat, 21 Mar 2015 14:35:07 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Somya Anand <somyaanand214@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 0/2] Convert Macro into static
- inline function
+       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x233.google.com with SMTP id we9so137447059pac.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 05:51:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=NsmQyOhlrmwDuGac8n8JVUVitH4YarApsPnAY80+yFk=;
+        b=WFt8oXwQ+nT55EN9GwQBcxKF+vc2WY8hxOTTtMI0wIphIvDyErsc/EIq3wNDgH/pRh
+         m7DyALujIqsYHm0LzvWti/T7tBIdE8iQUfXyZRXcE7bvPkSZGfgkHYUHfNTOGsv7FDSy
+         82JvdXDye7OvH1X6BjJeputm7qWotWrPxvjEY6ULFdK0PT9oqZE+8SQlPe3Ai+7imlfy
+         dur3cXMCKDb1Beg2egfv2CnnHtIvRN0elgVkYiSmCUx1mPezheS2DWoVvq+QMAs6EGql
+         jF+QqqFJffzJSH6y+pyTPW02T/x1ogNBIPUw4nTpkiTfQgEga2htlQ2rUdsOdSf6kAna
+         6z/Q==
+X-Received: by 10.68.135.233 with SMTP id pv9mr4791192pbb.67.1426942280496;
+        Sat, 21 Mar 2015 05:51:20 -0700 (PDT)
+Return-Path: <somyaanand214@gmail.com>
+Received: from localhost.localdomain ([223.176.33.52])
+        by mx.google.com with ESMTPSA id dl1sm11495578pdb.75.2015.03.21.05.51.16
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 21 Mar 2015 05:51:19 -0700 (PDT)
+From: Somya Anand <somyaanand214@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Somya Anand <somyaanand214@gmail.com>
+Subject: [PATCH v2 2/2] Staging: lustre: Convert macro class_export_rpc_dec into static inline function
+Date: Sat, 21 Mar 2015 18:20:25 +0530
+Message-Id: <1426942225-7634-3-git-send-email-somyaanand214@gmail.com>
+X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426942225-7634-1-git-send-email-somyaanand214@gmail.com>
-Message-ID: <alpine.DEB.2.02.1503211434560.2041@localhost6.localdomain6>
 References: <1426942225-7634-1-git-send-email-somyaanand214@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Looks better. Thanks.
+This patch converts the macro class_export_rpc_dec into static inline
+function. This is possible because the types of arguments at all the call
+sites are same. So, the type of parameter is compatible with the types of
+the arguments at all of the call sites.
 
-julia
+Signed-off-by: Somya Anand <somyaanand214@gmail.com>
+---
+Changes since v1:
+ * Reword the commit message.
+ drivers/staging/lustre/lustre/include/obd_class.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-On Sat, 21 Mar 2015, Somya Anand wrote:
+diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
+index 9f528d4..3565660 100644
+--- a/drivers/staging/lustre/lustre/include/obd_class.h
++++ b/drivers/staging/lustre/lustre/include/obd_class.h
+@@ -229,13 +229,13 @@ static inline void class_export_rpc_inc(struct obd_export *exp)
+ 	       (exp), atomic_read(&(exp)->exp_rpc_count));
+ }
+ 
+-#define class_export_rpc_dec(exp)				       \
+-({								      \
+-	LASSERT_ATOMIC_POS(&exp->exp_rpc_count);			\
+-	atomic_dec(&(exp)->exp_rpc_count);			  \
+-	CDEBUG(D_INFO, "RPC PUTting export %p : new rpc_count %d\n",    \
+-	       (exp), atomic_read(&(exp)->exp_rpc_count));	  \
+-})
++static inline void class_export_rpc_dec(struct obd_export *exp)
++{
++	LASSERT_ATOMIC_POS(&exp->exp_rpc_count);
++	atomic_dec(&(exp)->exp_rpc_count);
++	CDEBUG(D_INFO, "RPC PUTting export %p : new rpc_count %d\n",
++	       (exp), atomic_read(&(exp)->exp_rpc_count));
++}
+ 
+ #define class_export_lock_get(exp, lock)				\
+ ({								      \
+-- 
+1.9.1
 
-> Static inline function are generally preferred over macros because
-> static inline functions have types and return values. But in order
-> to change a macro into static inline function we have to check the
-> calling sites of the macro and ensuring that the types of arguments
-> in each case is same and also ensure that macro always returns same
-> type.
-> 
-> This check is done via following coccinelle script.
-> 
-> Since this macro does not return anything, so coccinelle script can be
-> simplified to avoid return type checks.
-> 
-> 
-> @initialize:python@
-> @@
-> list = []
-> 
-> @rule1@
-> type T;
-> T e;
-> expression list[n] es;
-> @@
-> class_export_rpc_inc(es,e,...);
-> 
-> @script:python rule2@
-> e << rule1.e;
-> T << rule1.T;
-> @@
-> list.append(T)
-> 
-> @finalize:python@
-> @@
-> possible = True
-> for t in list:
->         if t != list[0]:
->                 possible = False
-> 
-> if possible:
->         print 'This patch is possible. Argument type:', list[0]
-> else:
->         print 'This patch is not possible'
-> 
-> Somya Anand (2):
->   Staging: lustre: Convert macro class_export_rpc_inc into static inline
->     function
->   Staging: lustre: Convert macro class_export_rpc_dec into static inline
->     function
-> 
->  drivers/staging/lustre/lustre/include/obd_class.h | 26 +++++++++++------------
->  1 file changed, 13 insertions(+), 13 deletions(-)
-> 
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1426942225-7634-1-git-send-email-somyaanand214%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
