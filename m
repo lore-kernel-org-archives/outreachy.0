@@ -1,105 +1,97 @@
-X-GM-THRID: 6250792352904904704
-X-Received: by 10.107.134.68 with SMTP id i65mr7796689iod.33.1455376006238;
-        Sat, 13 Feb 2016 07:06:46 -0800 (PST)
+X-GM-THRID: 9342022582272
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d29c9ec2710a016b,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.43.16.70 with SMTP id px6mr7427152icb.28.1426904314988;
+        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.39.102 with SMTP id u93ls1759919qgu.45.gmail; Sat, 13 Feb
- 2016 07:06:45 -0800 (PST)
-X-Received: by 10.129.108.3 with SMTP id h3mr7122146ywc.31.1455376005575;
-        Sat, 13 Feb 2016 07:06:45 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id 79si2407676pft.0.2016.02.13.07.06.45
+Received: by 10.107.165.81 with SMTP id o78ls1468072ioe.89.gmail; Fri, 20 Mar
+ 2015 19:18:34 -0700 (PDT)
+X-Received: by 10.43.64.143 with SMTP id xi15mr7424205icb.0.1426904314687;
+        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
+Return-Path: <helen.fornazier@gmail.com>
+Received: from mail-qc0-x22f.google.com (mail-qc0-x22f.google.com. [2607:f8b0:400d:c01::22f])
+        by gmr-mx.google.com with ESMTPS id e5si823375qcg.1.2015.03.20.19.18.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 07:06:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c01::22f as permitted sender) client-ip=2607:f8b0:400d:c01::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c01::22f as permitted sender) smtp.mail=helen.fornazier@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id fl4so49945660pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 07:06:45 -0800 (PST)
+Received: by mail-qc0-x22f.google.com with SMTP id o4so108308552qct.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=yFvv+fLBg5fQH0mU6hje5juVDvDNDc9UulRQGPzzLgE=;
-        b=fGhK1qVTeEStBu/ZXe9DTJ0W5WBjxziElz0tJGDhYo4HC6/02W4/U25Y43vL5w0jLZ
-         onfuqQWxh8Sc0eO+yTyel7vJLxYBQNxcej2ysYxNz1c8sGBzK9T5261nRFZeA9ckFbtZ
-         Zhk7zuPa9XXcVrlqtUJKJ7PCCoxv47Y0QJYHNKGqcEKVx4DvQ2NR6Fol1VrfaQta1CX2
-         p8XLi0+9u2gqTT9ICKJgMsJ/2+PaRLB8Wam9JiAkPp2lzYYOUZiuu07CvYTvD7ToLTPl
-         DN7/a8n6MAn8jNmBNCWc2r/ummQrN2kK6rNizft7Z1lQZU4ltbMTcQTWxvRYkme0nq1O
-         MTQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=yFvv+fLBg5fQH0mU6hje5juVDvDNDc9UulRQGPzzLgE=;
-        b=YfveeZYEuhgcRIuCb+OiSdcDnZbwqjk+KjwONm/UFnCSe6jpcEBxaNe52ngWO4KQuO
-         SrWSCE96Z/NZqEuvXYvFOqhFgtwsVc9bHbjgfWYR4MJ3u3SzFFpmljvjv91YW1z4N0/g
-         lmLSZXqjFwDLKbKVs3Zpv5TAVyjQqdksJgG4Iag3XcOV4i1k/Ff7RRrODaSSgetdhhwL
-         rNOwYB2I5dfXynHGjGy/affN/BFhYmR9/hnqNnJnPM9ZkU972fFgaDNZvyPk7LILHknP
-         1BFS2rpXmXLEkWKTvA/ANyOp7HGH9VYcjXEXYr3fQAxV/rrIblLnY9ncESgKo03zw7T9
-         Izdw==
-X-Gm-Message-State: AG10YOQT5cikKAozkJ38yxUNrMxYZwf/KIT6aA7VG9vT/7iDZ52pFgQboOEKFM/uGmJbqQ==
-X-Received: by 10.66.122.3 with SMTP id lo3mr10233197pab.25.1455376005388;
-        Sat, 13 Feb 2016 07:06:45 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id g81sm26870349pfj.1.2016.02.13.07.06.44
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Feb 2016 07:06:44 -0800 (PST)
-Date: Sat, 13 Feb 2016 20:36:41 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=wfOfTVvNT/MtWzdHN3aSravymsNb09KGyEKOYmeNED4=;
+        b=qlvSOpjwH4hKHxXS3ZWmadH2KHWL1UIH6sZ84QSu5j84l6shSdDK06iOX7lS6Rt8qv
+         FvshQG+yhopQn0BnscQVZj8mvbJKhkqQX4GpTuzUfc8toAKzKgiphjCSL8o8NhqITsDo
+         5PpwjLJeZMON1f3LdiXz+n3+7nNcwSL7j/pWRKDaG/LCz7Id5WWFX0MjVieSOEch1J/e
+         Y4wueMNiZMXtfGBJwzG4Qf01kaaZuC5A2F42fa4wIlEaHsVcC5KrZUaGNtloL1tWnaJB
+         z9lpGeQIKlqfmA8eeokT/RniNxFTS7hARpvm1myRBGxU4ADLQILMppm27qhww1t/TnoY
+         +RiA==
+X-Received: by 10.55.26.167 with SMTP id l39mr141842848qkh.63.1426904314571;
+        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
+Return-Path: <helen.fornazier@gmail.com>
+Received: from Cracker.wifi.univ-paris5.fr ([177.194.75.171])
+        by mx.google.com with ESMTPSA id 69sm4324405qgh.5.2015.03.20.19.18.33
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
+From: Helen Fornazier <helen.fornazier@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: llite: Use IS_ERR_OR_NULL
-Message-ID: <20160213150641.GA26097@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Helen Fornazier <helen.fornazier@gmail.com>
+Subject: [PATCH] staging: fbtft: Fix indentation style by space
+Date: Fri, 20 Mar 2015 23:18:10 -0300
+Message-Id: <1426904290-15019-1-git-send-email-helen.fornazier@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Use macro IS_ERR_OR_NULL in place of tests for NULL and IS_ERR.
+This patch fixes the checkpatch.pl warning and error:
 
-The Coccinelle semantic patch used to make the change is as follows:
+WARNING: please, no spaces at the start of a line
 
-//<smpl>
-@@
-expression e;
-@@
+ERROR: code indent should use tabs where possible
 
-- e == NULL || IS_ERR(e)
-+ IS_ERR_OR_NULL(e)
-//</smpl>
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/llite_lib.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/fbtft/fbtft.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index 446e4b8..5a32f9f 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -493,7 +493,7 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 	md_free_lustre_md(sbi->ll_md_exp, &lmd);
- 	ptlrpc_req_finished(request);
- 
--	if (root == NULL || IS_ERR(root)) {
-+	if (IS_ERR_OR_NULL(root)) {
- 		if (lmd.lsm)
- 			obd_free_memmd(sbi->ll_dt_exp, &lmd.lsm);
- #ifdef CONFIG_FS_POSIX_ACL
-@@ -1965,7 +1965,7 @@ int ll_prep_inode(struct inode **inode, struct ptlrpc_request *req,
- 		*inode = ll_iget(sb, cl_fid_build_ino(&md.body->fid1,
- 					     sbi->ll_flags & LL_SBI_32BIT_API),
- 				 &md);
--		if (*inode == NULL || IS_ERR(*inode)) {
-+		if (IS_ERR_OR_NULL(*inode)) {
- #ifdef CONFIG_FS_POSIX_ACL
- 			if (md.posix_acl) {
- 				posix_acl_release(md.posix_acl);
+diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
+index 0dbf3f9..36ecf02 100644
+--- a/drivers/staging/fbtft/fbtft.h
++++ b/drivers/staging/fbtft/fbtft.h
+@@ -326,8 +326,8 @@ static int fbtft_driver_remove_pdev(struct platform_device *pdev)          \
+ }                                                                          \
+ 									   \
+ static const struct of_device_id dt_ids[] = {                              \
+-        { .compatible = _compatible },                                     \
+-        {},                                                                \
++	{ .compatible = _compatible },                                     \
++	{},                                                                \
+ };                                                                         \
+ 									   \
+ MODULE_DEVICE_TABLE(of, dt_ids);                                           \
+@@ -337,7 +337,7 @@ static struct spi_driver fbtft_driver_spi_driver = {                       \
+ 	.driver = {                                                        \
+ 		.name   = _name,                                           \
+ 		.owner  = THIS_MODULE,                                     \
+-                .of_match_table = of_match_ptr(dt_ids),                    \
++		.of_match_table = of_match_ptr(dt_ids),                    \
+ 	},                                                                 \
+ 	.probe  = fbtft_driver_probe_spi,                                  \
+ 	.remove = fbtft_driver_remove_spi,                                 \
+@@ -347,7 +347,7 @@ static struct platform_driver fbtft_driver_platform_driver = {             \
+ 	.driver = {                                                        \
+ 		.name   = _name,                                           \
+ 		.owner  = THIS_MODULE,                                     \
+-                .of_match_table = of_match_ptr(dt_ids),                    \
++		.of_match_table = of_match_ptr(dt_ids),                    \
+ 	},                                                                 \
+ 	.probe  = fbtft_driver_probe_pdev,                                 \
+ 	.remove = fbtft_driver_remove_pdev,                                \
 -- 
 1.9.1
 
