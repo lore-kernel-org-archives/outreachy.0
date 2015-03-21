@@ -1,99 +1,90 @@
 X-GM-THRID: 9403654733824
-X-Received: by 10.180.90.175 with SMTP id bx15mr584891wib.3.1426954702317;
-        Sat, 21 Mar 2015 09:18:22 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,35a1d33afce4effe
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.41.131 with SMTP id f3mr14336923lbl.20.1426954562966;
+        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.6.101 with SMTP id z5ls55080laz.12.gmail; Sat, 21 Mar 2015
- 09:18:21 -0700 (PDT)
-X-Received: by 10.112.9.65 with SMTP id x1mr14319327lba.16.1426954701670;
-        Sat, 21 Mar 2015 09:18:21 -0700 (PDT)
+Received: by 10.180.99.131 with SMTP id eq3ls476186wib.24.gmail; Sat, 21 Mar
+ 2015 09:16:02 -0700 (PDT)
+X-Received: by 10.181.12.74 with SMTP id eo10mr584106wid.2.1426954562449;
+        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x236.google.com (mail-we0-x236.google.com. [2a00:1450:400c:c03::236])
-        by gmr-mx.google.com with ESMTPS id na10si121876wic.0.2015.03.21.09.18.21
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id gj20si136596wic.1.2015.03.21.09.16.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 09:18:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::236 as permitted sender) client-ip=2a00:1450:400c:c03::236;
+        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x236.google.com with SMTP id cq43so104420860web.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 09:18:21 -0700 (PDT)
+Received: by mail-wi0-x22d.google.com with SMTP id gn9so16627756wib.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=2qmhIJawclJ+qAMYvsA4myUxutx4G53dyWjHDfUpmhY=;
-        b=ndMx/utIVYNxWpaJuGD0pmKN+gZZsNZvcrWZ+MSVkXva3JkDO38IOcsvvoaKDVEZrF
-         8no0wbkES0Zw3nNAltRBKVN6J199aNF6LyHbdRZHeFTv5i0vWtaC4evk0SbBgTqibVHH
-         2ik6nXPljQVNrvXlTfv2O2UnAZJLWPfwu1+3Wm3Y7WPLC/tyqH0OPn8pyBxdjnOFq6Oy
-         Mke2vCMPNW1XxgnG+YtkTAElqex4nAEARjzg4mNllQkh1H2GC3P5d0TuTcEiI0FoVVon
-         uJggmeU08tCh1AcXa42WQrH/myAAUM6MF7kyQ962Vsyqb0aGWsHSP3qQyifzM/7UA4Ka
-         2Xgg==
-X-Received: by 10.194.90.210 with SMTP id by18mr164641976wjb.80.1426954701565;
-        Sat, 21 Mar 2015 09:18:21 -0700 (PDT)
+        bh=bUM9Z+6kgazi1SVtWUlf2ZFYT/F3Du3gxfM3870IaAQ=;
+        b=oQYZdIa2WsRh+yBntGi5SzpTiCste7+CkgesvhFupkTkK+BhUrDXgV7abz7TFM9WhJ
+         QOUOLtTmTnuOyYE6rezcGca++cVckkyQu8fPI9GOwq3G0+3i1PEOzKnahdx1tWDVtPv6
+         feIOexFIx/95zacM3rVCE5Lv67NKUCDp4H45PbVSlVSUvPcESoHvkZO1pheFfkPG3CaF
+         XkYsZ1DtfuQirxSjogB/nR9MvOQI35cl1acnKez/Y4bWvzj0Dualh29miOZr7Fv8gkWq
+         QiiHfEJwk8gW/qUzefHQAGCByBy7+J4KcJwb4tUER6gwTMvsiddcpFRQaEkAN23t2Olq
+         FGjQ==
+X-Received: by 10.180.202.228 with SMTP id kl4mr5268153wic.66.1426954562383;
+        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneen-vb ([79.170.54.138])
-        by mx.google.com with ESMTPSA id w8sm11214673wja.4.2015.03.21.09.18.20
+        by mx.google.com with ESMTPSA id fo9sm2985902wib.16.2015.03.21.09.16.00
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 09:18:20 -0700 (PDT)
+        Sat, 21 Mar 2015 09:16:01 -0700 (PDT)
 Received: by haneen-vb (Postfix, from userid 1000)
-	id 63C86C1FE4; Sat, 21 Mar 2015 10:51:43 +0300 (AST)
+	id C2ACDC1FE4; Sat, 21 Mar 2015 10:49:25 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 3/3] Staging: lustre: Fix Sparse warnings for static declarations
-Date: Sat, 21 Mar 2015 10:51:42 +0300
-Message-Id: <1426924302-24399-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 2/3] Stagin: lustre: Fix externs should be avoided in .c
+Date: Sat, 21 Mar 2015 10:48:30 +0300
+Message-Id: <1426924110-24342-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426923942-24228-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1426923942-24228-1-git-send-email-hamohammed.sa@gmail.com>
 
-The following patch fixes Sparse warnings in genops.c regrding:
-"Symbol * was not declared. Should it be static?"
+This patch moves extern declaration from genops.c to obd_class.h,
+addressing checkpatch.pl warning: externs should be avoided in .c
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/lustre/lustre/obdclass/genops.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/lustre/lustre/include/obd_class.h | 1 +
+ drivers/staging/lustre/lustre/obdclass/genops.c   | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
+index 0b6178e..c15f391 100644
+--- a/drivers/staging/lustre/lustre/include/obd_class.h
++++ b/drivers/staging/lustre/lustre/include/obd_class.h
+@@ -72,6 +72,7 @@ extern int lustre_get_jobid(char *jobid);
+ struct lu_device_type;
+ 
+ /* genops.c */
++extern struct list_head obd_types;
+ struct obd_export *class_conn2export(struct lustre_handle *);
+ int class_register_type(struct obd_ops *, struct md_ops *,
+ 			struct lprocfs_vars *, const char *nm,
 diff --git a/drivers/staging/lustre/lustre/obdclass/genops.c b/drivers/staging/lustre/lustre/obdclass/genops.c
-index d8626f9..138e4f6 100644
+index 50077b9..d8626f9 100644
 --- a/drivers/staging/lustre/lustre/obdclass/genops.c
 +++ b/drivers/staging/lustre/lustre/obdclass/genops.c
-@@ -48,11 +48,11 @@ spinlock_t obd_types_lock;
+@@ -43,7 +43,6 @@
+ #include "../include/obd_class.h"
+ #include "../include/lprocfs_status.h"
+ 
+-extern struct list_head obd_types;
+ spinlock_t obd_types_lock;
+ 
  struct kmem_cache *obd_device_cachep;
- struct kmem_cache *obdo_cachep;
- EXPORT_SYMBOL(obdo_cachep);
--struct kmem_cache *import_cachep;
-+static struct kmem_cache *import_cachep;
- 
--struct list_head      obd_zombie_imports;
--struct list_head      obd_zombie_exports;
--spinlock_t  obd_zombie_impexp_lock;
-+static struct list_head      obd_zombie_imports;
-+static struct list_head      obd_zombie_exports;
-+static spinlock_t  obd_zombie_impexp_lock;
- static void obd_zombie_impexp_notify(void);
- static void obd_zombie_export_add(struct obd_export *exp);
- static void obd_zombie_import_add(struct obd_import *imp);
-@@ -929,7 +929,7 @@ void class_unlink_export(struct obd_export *exp)
- EXPORT_SYMBOL(class_unlink_export);
- 
- /* Import management functions */
--void class_import_destroy(struct obd_import *imp)
-+static void class_import_destroy(struct obd_import *imp)
- {
- 	CDEBUG(D_IOCTL, "destroying import %p for %s\n", imp,
- 		imp->imp_obd->obd_name);
-@@ -1128,7 +1128,7 @@ int class_connect(struct lustre_handle *conn, struct obd_device *obd,
- EXPORT_SYMBOL(class_connect);
- 
- /* if export is involved in recovery then clean up related things */
--void class_export_recovery_cleanup(struct obd_export *exp)
-+static void class_export_recovery_cleanup(struct obd_export *exp)
- {
- 	struct obd_device *obd = exp->exp_obd;
- 
 -- 
 1.9.1
 
