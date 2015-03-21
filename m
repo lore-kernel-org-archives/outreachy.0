@@ -1,154 +1,82 @@
 X-GM-THRID: 9434651688960
-X-Received: by 10.67.29.201 with SMTP id jy9mr5463161pad.9.1427210754130;
-        Tue, 24 Mar 2015 08:25:54 -0700 (PDT)
+X-Received: by 10.182.246.67 with SMTP id xu3mr99588263obc.18.1426959833691;
+        Sat, 21 Mar 2015 10:43:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.25.196 with SMTP id 62ls3207064qgt.29.gmail; Tue, 24 Mar
- 2015 08:25:53 -0700 (PDT)
-X-Received: by 10.140.16.229 with SMTP id 92mr73940qgb.37.1427210753847;
-        Tue, 24 Mar 2015 08:25:53 -0700 (PDT)
-X-Google-Doc-Id: 4a328bf1626f113a
-X-Google-Web-Client: true
-Date: Tue, 24 Mar 2015 08:25:53 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
+Received: by 10.107.157.193 with SMTP id g184ls1571895ioe.107.gmail; Sat, 21
+ Mar 2015 10:43:53 -0700 (PDT)
+X-Received: by 10.68.209.164 with SMTP id mn4mr4162210pbc.8.1426959833440;
+        Sat, 21 Mar 2015 10:43:53 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l42si569620yhq.1.2015.03.21.10.43.52
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 21 Mar 2015 10:43:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,443,1422918000"; 
+   d="scan'208";a="127066687"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Mar 2015 18:43:51 +0100
+Date: Sat, 21 Mar 2015 18:43:51 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
 To: outreachy-kernel@googlegroups.com
-Message-Id: <1b7afe4b-8781-45eb-bc9a-ad4412add29e@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.02.1503211837560.2041@localhost6.localdomain6>
-References: <alpine.DEB.2.02.1503211837560.2041@localhost6.localdomain6>
-Subject: Re: status
+Subject: status
+Message-ID: <alpine.DEB.2.02.1503211837560.2041@localhost6.localdomain6>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_274_12817070.1427210753359"
-X-Google-Token: EIGExqgFm7bfMgnsJks0
-X-Google-IP: 141.85.0.103
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-46842695-1426959740=:2041"
+Content-ID: <alpine.DEB.2.02.1503211842380.2041@localhost6.localdomain6>
 
-------=_Part_274_12817070.1427210753359
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_275_668130790.1427210753359"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-------=_Part_275_668130790.1427210753359
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+--8323328-46842695-1426959740=:2041
+Content-Type: TEXT/PLAIN; CHARSET=UTF-8
+Content-Transfer-Encoding: 8BIT
+Content-ID: <alpine.DEB.2.02.1503211842381.2041@localhost6.localdomain6>
 
-=20
+The following people have at least one patch accepted, or have submitted 
+their first patch very recently that has not been picked up yet:
 
-On Saturday, March 21, 2015 at 7:43:53 PM UTC+2, Julia Lawall wrote:
->
-> The following people have at least one patch accepted, or have submitted=
-=20
-> their first patch very recently that has not been picked up yet:=20
->
-> Himani Agrawal=20
-> Somya Anand=20
-> Amitoj Kaur Chawla=20
-> Ioana Ciornei=20
-> Katie Dunne=20
-> Hatice ERT=C3=9CRK=20
-> Helen Fornazier=20
-> Vatika Harlalka=20
-> Tina Johnson=20
-> Supriya Karanth=20
-> Marianne M=C3=B8ller Knudsen=20
-> Aya Mahfouz=20
-> Haneen Mohammed=20
-> Navya Sri Nizamkari=20
-> Darshana Padmadas=20
-> Cristina Georgiana Opriceana=20
-> Ayb=C3=BCke =C3=96zdemir=20
-> Vaishali Thakkar=20
-> Taiane Ramos=20
-> Ksenija Stanojevic=20
-> Yeliz Tanero=C4=9Flu=20
-> Dilek Uzulmez=20
-> Ay=C5=9Fe Melike Yurto=C4=9Flu=20
->
-> If you are on this list, you should consider submitting an application.  =
-=20
-> The deadline is March 24 at 7pm UTC, but you can update your application=
-=20
-> until April 1 at 7pm UTC.  In working on your application, you may find i=
-t=20
-> useful to contact the mentors of the projects that you are interested in,=
-=20
-> if you have not done so already.=20
->
-> If you believe that you have accepted patches and are not on the above=20
-> list, then let me know.=20
->
-> I counted 420 patches accepted since the beginning of the application=20
-> period.  Great work :)=20
->
-> julia
+Himani Agrawal
+Somya Anand
+Amitoj Kaur Chawla
+Ioana Ciornei
+Katie Dunne
+Hatice ERTÜRK
+Helen Fornazier
+Vatika Harlalka
+Tina Johnson
+Supriya Karanth
+Marianne Møller Knudsen
+Aya Mahfouz
+Haneen Mohammed
+Navya Sri Nizamkari
+Darshana Padmadas
+Cristina Georgiana Opriceana
+Aybüke Özdemir
+Vaishali Thakkar
+Taiane Ramos
+Ksenija Stanojevic
+Yeliz Taneroğlu
+Dilek Uzulmez
+Ayşe Melike Yurtoğlu
 
+If you are on this list, you should consider submitting an application.  
+The deadline is March 24 at 7pm UTC, but you can update your application 
+until April 1 at 7pm UTC.  In working on your application, you may find it 
+useful to contact the mentors of the projects that you are interested in, 
+if you have not done so already.
 
-I have a question about the application process. I read that if I am=20
-interested in more than one project from the same organization I should=20
-submit only an application.
-Is it true? And also, the timeline requested should be for the one I am=20
-most interested in?
+If you believe that you have accepted patches and are not on the above 
+list, then let me know.
 
-Thanks,
+I counted 420 patches accepted since the beginning of the application 
+period.  Great work :)
 
-Ioana=20
-
-------=_Part_275_668130790.1427210753359
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>&nbsp;<br></div><br>On Saturday, March 21, 2015 at 7:=
-43:53 PM UTC+2, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=
-=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
-1ex;">The following people have at least one patch accepted, or have submit=
-ted=20
-<br>their first patch very recently that has not been picked up yet:
-<br>
-<br>Himani Agrawal
-<br>Somya Anand
-<br>Amitoj Kaur Chawla
-<br>Ioana Ciornei
-<br>Katie Dunne
-<br>Hatice ERT=C3=9CRK
-<br>Helen Fornazier
-<br>Vatika Harlalka
-<br>Tina Johnson
-<br>Supriya Karanth
-<br>Marianne M=C3=B8ller Knudsen
-<br>Aya Mahfouz
-<br>Haneen Mohammed
-<br>Navya Sri Nizamkari
-<br>Darshana Padmadas
-<br>Cristina Georgiana Opriceana
-<br>Ayb=C3=BCke =C3=96zdemir
-<br>Vaishali Thakkar
-<br>Taiane Ramos
-<br>Ksenija Stanojevic
-<br>Yeliz Tanero=C4=9Flu
-<br>Dilek Uzulmez
-<br>Ay=C5=9Fe Melike Yurto=C4=9Flu
-<br>
-<br>If you are on this list, you should consider submitting an application.=
- &nbsp;
-<br>The deadline is March 24 at 7pm UTC, but you can update your applicatio=
-n=20
-<br>until April 1 at 7pm UTC. &nbsp;In working on your application, you may=
- find it=20
-<br>useful to contact the mentors of the projects that you are interested i=
-n,=20
-<br>if you have not done so already.
-<br>
-<br>If you believe that you have accepted patches and are not on the above=
-=20
-<br>list, then let me know.
-<br>
-<br>I counted 420 patches accepted since the beginning of the application=
-=20
-<br>period. &nbsp;Great work :)
-<br>
-<br>julia</blockquote><div><br></div><div>I have a question about the appli=
-cation process. I read that if I am interested in more than one project fro=
-m the same organization I should submit only an application.</div><div>Is i=
-t true? And also, the timeline requested should be for the one I am most in=
-terested in?</div><div><br></div><div>Thanks,</div><div><br></div><div>Ioan=
-a&nbsp;</div></div>
-------=_Part_275_668130790.1427210753359--
-------=_Part_274_12817070.1427210753359--
+julia
+--8323328-46842695-1426959740=:2041--
 
