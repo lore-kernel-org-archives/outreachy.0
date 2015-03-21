@@ -1,90 +1,97 @@
 X-GM-THRID: 9403654733824
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,35a1d33afce4effe
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.41.131 with SMTP id f3mr14336923lbl.20.1426954562966;
-        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
+X-Received: by 10.112.142.1 with SMTP id rs1mr12029403lbb.19.1426954474701;
+        Sat, 21 Mar 2015 09:14:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.99.131 with SMTP id eq3ls476186wib.24.gmail; Sat, 21 Mar
- 2015 09:16:02 -0700 (PDT)
-X-Received: by 10.181.12.74 with SMTP id eo10mr584106wid.2.1426954562449;
-        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
+Received: by 10.152.204.69 with SMTP id kw5ls493087lac.86.gmail; Sat, 21 Mar
+ 2015 09:14:34 -0700 (PDT)
+X-Received: by 10.112.13.228 with SMTP id k4mr13841663lbc.8.1426954474004;
+        Sat, 21 Mar 2015 09:14:34 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id gj20si136596wic.1.2015.03.21.09.16.02
+Received: from mail-we0-x236.google.com (mail-we0-x236.google.com. [2a00:1450:400c:c03::236])
+        by gmr-mx.google.com with ESMTPS id na10si121051wic.0.2015.03.21.09.14.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Sat, 21 Mar 2015 09:14:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::236 as permitted sender) client-ip=2a00:1450:400c:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::236 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id gn9so16627756wib.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
+Received: by mail-we0-x236.google.com with SMTP id cq43so104342115web.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 09:14:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=bUM9Z+6kgazi1SVtWUlf2ZFYT/F3Du3gxfM3870IaAQ=;
-        b=oQYZdIa2WsRh+yBntGi5SzpTiCste7+CkgesvhFupkTkK+BhUrDXgV7abz7TFM9WhJ
-         QOUOLtTmTnuOyYE6rezcGca++cVckkyQu8fPI9GOwq3G0+3i1PEOzKnahdx1tWDVtPv6
-         feIOexFIx/95zacM3rVCE5Lv67NKUCDp4H45PbVSlVSUvPcESoHvkZO1pheFfkPG3CaF
-         XkYsZ1DtfuQirxSjogB/nR9MvOQI35cl1acnKez/Y4bWvzj0Dualh29miOZr7Fv8gkWq
-         QiiHfEJwk8gW/qUzefHQAGCByBy7+J4KcJwb4tUER6gwTMvsiddcpFRQaEkAN23t2Olq
-         FGjQ==
-X-Received: by 10.180.202.228 with SMTP id kl4mr5268153wic.66.1426954562383;
-        Sat, 21 Mar 2015 09:16:02 -0700 (PDT)
+        bh=5TF+vbV1ab7mUi2JY0W+7AottLPOCNA/TMjE4a6r5iY=;
+        b=BOsbQ55lDRNiLqyShLVOE64NbAjojX1HEZzpp1hw2XECdQUwALm1wKYNu83NWSVqHR
+         1ZsiFZFrSikxiR6KKpMlcpmZWo7u2erxI3F0NurY6C58SmFo2dJeVv1mrO8L3aJfgKvq
+         hLXhoEWXTUe2O49igGQKTK2rsMIVAYwaU/wMMPD5XX2OHtGnGa+azYqYGjxZM+Ogp3W6
+         3XVPqMWcP2vpNUVZwZ7y1WwOi2gM1LngrG42Idp/t//2y74bsx1SFA0khEu30iVPyj2q
+         WAMOZ13u/EMgVy6nihkirZYhV3JFU17oajq6knEugRCc8p/Fcf94ilbsPluanBBwmyqJ
+         Ydag==
+X-Received: by 10.180.91.79 with SMTP id cc15mr5164506wib.37.1426954473930;
+        Sat, 21 Mar 2015 09:14:33 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from haneen-vb ([79.170.54.138])
-        by mx.google.com with ESMTPSA id fo9sm2985902wib.16.2015.03.21.09.16.00
+        by mx.google.com with ESMTPSA id l4sm2927071wiw.6.2015.03.21.09.14.32
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 09:16:01 -0700 (PDT)
+        Sat, 21 Mar 2015 09:14:32 -0700 (PDT)
 Received: by haneen-vb (Postfix, from userid 1000)
-	id C2ACDC1FE4; Sat, 21 Mar 2015 10:49:25 +0300 (AST)
+	id 47588C1FE4; Sat, 21 Mar 2015 10:47:57 +0300 (AST)
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 2/3] Stagin: lustre: Fix externs should be avoided in .c
-Date: Sat, 21 Mar 2015 10:48:30 +0300
-Message-Id: <1426924110-24342-1-git-send-email-hamohammed.sa@gmail.com>
+Subject: [PATCH 1/3] Staging: lustre: Fix externs should be avoided in .c
+Date: Sat, 21 Mar 2015 10:47:56 +0300
+Message-Id: <1426924076-24292-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1426923942-24228-1-git-send-email-hamohammed.sa@gmail.com>
 References: <1426923942-24228-1-git-send-email-hamohammed.sa@gmail.com>
 
-This patch moves extern declaration from genops.c to obd_class.h,
-addressing checkpatch.pl warning: externs should be avoided in .c
+Thi patch moves extern declaration to "obd_class.h".
+Remove prototype from "class_obd.c".
+Issue addressed by checkpatch.pl.
 
 Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/lustre/lustre/include/obd_class.h | 1 +
- drivers/staging/lustre/lustre/obdclass/genops.c   | 1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/lustre/lustre/include/obd_class.h  | 2 ++
+ drivers/staging/lustre/lustre/obdclass/class_obd.c | 3 ---
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
-index 0b6178e..c15f391 100644
+index 4a29261..0b6178e 100644
 --- a/drivers/staging/lustre/lustre/include/obd_class.h
 +++ b/drivers/staging/lustre/lustre/include/obd_class.h
-@@ -72,6 +72,7 @@ extern int lustre_get_jobid(char *jobid);
- struct lu_device_type;
+@@ -1895,6 +1895,8 @@ void class_exit_uuidlist(void);
  
- /* genops.c */
-+extern struct list_head obd_types;
- struct obd_export *class_conn2export(struct lustre_handle *);
- int class_register_type(struct obd_ops *, struct md_ops *,
- 			struct lprocfs_vars *, const char *nm,
-diff --git a/drivers/staging/lustre/lustre/obdclass/genops.c b/drivers/staging/lustre/lustre/obdclass/genops.c
-index 50077b9..d8626f9 100644
---- a/drivers/staging/lustre/lustre/obdclass/genops.c
-+++ b/drivers/staging/lustre/lustre/obdclass/genops.c
-@@ -43,7 +43,6 @@
- #include "../include/obd_class.h"
- #include "../include/lprocfs_status.h"
+ /* class_obd.c */
+ extern char obd_jobid_node[];
++extern struct miscdevice obd_psdev;
++extern spinlock_t obd_types_lock;
  
--extern struct list_head obd_types;
- spinlock_t obd_types_lock;
+ /* prng.c */
+ #define ll_generate_random_uuid(uuid_out) cfs_get_random_bytes(uuid_out, sizeof(class_uuid_t))
+diff --git a/drivers/staging/lustre/lustre/obdclass/class_obd.c b/drivers/staging/lustre/lustre/obdclass/class_obd.c
+index 29456e1..d4b74b6 100644
+--- a/drivers/staging/lustre/lustre/obdclass/class_obd.c
++++ b/drivers/staging/lustre/lustre/obdclass/class_obd.c
+@@ -437,8 +437,6 @@ int class_handle_ioctl(unsigned int cmd, unsigned long arg)
+ 	return err;
+ } /* class_handle_ioctl */
  
- struct kmem_cache *obd_device_cachep;
+-extern struct miscdevice obd_psdev;
+-
+ #define OBD_INIT_CHECK
+ int obd_init_checks(void)
+ {
+@@ -508,7 +506,6 @@ int obd_init_checks(void)
+ 	return ret;
+ }
+ 
+-extern spinlock_t obd_types_lock;
+ #if defined (CONFIG_PROC_FS)
+ extern int class_procfs_init(void);
+ extern int class_procfs_clean(void);
 -- 
 1.9.1
 
