@@ -3,123 +3,97 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,885fbfd306c38f9f
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.50.178.175 with SMTP id cz15mr9020066igc.5.1427046196256;
-        Sun, 22 Mar 2015 10:43:16 -0700 (PDT)
+X-Received: by 10.152.87.141 with SMTP id ay13mr10681047lab.3.1427040074952;
+        Sun, 22 Mar 2015 09:01:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.94.44 with SMTP id f41ls30651qge.20.gmail; Sun, 22 Mar
- 2015 10:43:16 -0700 (PDT)
-X-Received: by 10.236.8.69 with SMTP id 45mr82124916yhq.39.1427046195986;
-        Sun, 22 Mar 2015 10:43:15 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id t6si488768pbs.0.2015.03.22.10.43.15
+Received: by 10.152.8.102 with SMTP id q6ls601954laa.24.gmail; Sun, 22 Mar
+ 2015 09:01:14 -0700 (PDT)
+X-Received: by 10.152.20.41 with SMTP id k9mr2735327lae.10.1427040074290;
+        Sun, 22 Mar 2015 09:01:14 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id na10si299174wic.0.2015.03.22.09.01.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 10:43:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 22 Mar 2015 09:01:14 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x236.google.com with SMTP id cz9so162783114pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 10:43:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=TsOhFgBmyYb32u8ZRIG1JmACPgUzIzCZpgSbkMojj3o=;
-        b=Mu15e5n8HIdL54fvJbFVPOTR7bAUtJL0aVmgtfoqtkVIk3U0/9Zfi2D7Vk2hmLHYmf
-         IBMwHhlfxksTyCxsv44ejg2U6FczSRJ7MlAg87zcL/yqNwGZfRif73n7MS5Hbg5Jgxm2
-         KA2pYoz7ek9wc1BONCBCwGgQMyt7cRH0/PAPxyT57F2aT9nXyVIj/OSDyAck4wfOabbY
-         kWxPNl0jSQqoZGaB00GHgXYApyJ43zPimt3J9ybLoSsmrZS06+Lu6UDqaBSYGMSdAZcN
-         1CEFLQjB+4lUZCigKYdPoqe5/m5VY7t6c7c4cxcLy9F7mH1aYwvHADlEXE5N65rB6OBV
-         NADA==
-X-Received: by 10.68.166.65 with SMTP id ze1mr13771007pbb.142.1427046195800;
-        Sun, 22 Mar 2015 10:43:15 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.249.51])
-        by mx.google.com with ESMTPSA id ff10sm14584654pad.1.2015.03.22.10.43.14
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 22 Mar 2015 10:43:15 -0700 (PDT)
-Date: Sun, 22 Mar 2015 23:13:11 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: sm750fb: Remove struct typedefs
-Message-ID: <20150322174311.GA2426@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,447,1422918000"; 
+   d="scan'208";a="105098627"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Mar 2015 17:01:13 +0100
+Date: Sun, 22 Mar 2015 17:01:04 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: Remove struct
+ typedefs
+In-Reply-To: <20150322155542.GA1063@amitoj-Inspiron-3542>
+Message-ID: <alpine.DEB.2.10.1503221656510.2475@hadrien>
+References: <20150322155542.GA1063@amitoj-Inspiron-3542>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove typedef for struct. Warning found using checkpatch.pl
-WARNING: do not add new typedefs
+On Sun, 22 Mar 2015, Amitoj Kaur Chawla wrote:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
-Changes in v2:
-        -Fix code error in removing typedef
+> Remove typedef for struct. Warning found using checkpatch.pl
+> WARNING: do not add new typedefs
 
- drivers/staging/sm750fb/ddk750_chip.c | 25 ++++++++++++-------------
- 1 file changed, 12 insertions(+), 13 deletions(-)
+This is not correct.  First, the syntax of typedef is as follows:
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 74a3642..3ac6478 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -2,13 +2,12 @@
- #include "ddk750_reg.h"
- #include "ddk750_chip.h"
- #include "ddk750_power.h"
--struct _pllcalparam {
-+struct pllcalparam {
- 	unsigned char power;/* d : 0~ 6*/
- 	unsigned char pod;
- 	unsigned char od;
- 	unsigned char value;/* value of  2 power d (2^d) */
--}
--pllcalparam;
-+};
- 
- 
- logical_chip_type_t getChipType(void)
-@@ -192,17 +191,17 @@ void setMasterClock(unsigned int frequency)
- 		return;
- #endif
- 	if (frequency != 0) {
--        /* Set the frequency to the maximum frequency that the SM750 engine can
--           run, which is about 190 MHz. */
--        if (frequency > MHz(190))
--            frequency = MHz(190);
-+		/* Set the frequency to the maximum frequency that the SM750
-+		engine can run, which is about 190 MHz. */
-+		if (frequency > MHz(190))
-+			frequency = MHz(190);
- 
--        /* Calculate the divisor */
--        divisor = (unsigned int) roundedDiv(getChipClock(), frequency);
-+	/* Calculate the divisor */
-+	divisor = (unsigned int) roundedDiv(getChipClock(), frequency);
- 
--        /* Set the corresponding divisor in the register. */
--        ulReg = PEEK32(CURRENT_GATE);
--        switch(divisor)
-+	/* Set the corresponding divisor in the register. */
-+	ulReg = PEEK32(CURRENT_GATE);
-+	switch(divisor)
-         {
-             default:
-             case 3:
-@@ -219,7 +218,7 @@ void setMasterClock(unsigned int frequency)
-                 break;
-         }
- 
--        setCurrentGate(ulReg);
-+	setCurrentGate(ulReg);
-     }
- }
- 
--- 
-1.9.1
+typedef {type} {typename};
 
+By removing the word typedef, you make something like:
+
+{type} {typename};
+
+But now typename is interpreted as the name of an identifier.  You have a
+useless variable, and if typename was every used, then you should have
+syntax errors.  If you think that you have compiled the code that uses
+this type name, then you have probably not.  Check that there is a .o file
+for each .c file that references this type.
+
+The proper way to remove the typedef is to remove both typedef and the
+type name, and then adjust the uses of the type name to refer to {type}.
+You may also want to change the name of type to be more friendly, as when
+typedef is used, it is often the type name that is friendly.  You can
+often use type name.  If it has the form foo_t, it would be better to drop
+the final _t.
+
+You can find many examples of correct typedef removals in the outreachy
+mailing list.
+
+julia
+
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_chip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> index 03d96c0..74a3642 100644
+> --- a/drivers/staging/sm750fb/ddk750_chip.c
+> +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> @@ -2,7 +2,7 @@
+>  #include "ddk750_reg.h"
+>  #include "ddk750_chip.h"
+>  #include "ddk750_power.h"
+> -typedef struct _pllcalparam{
+> +struct _pllcalparam {
+>  	unsigned char power;/* d : 0~ 6*/
+>  	unsigned char pod;
+>  	unsigned char od;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150322155542.GA1063%40amitoj-Inspiron-3542.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
