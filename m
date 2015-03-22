@@ -1,90 +1,106 @@
-X-GM-THRID: 4394383835136
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,eb582bedb9f3672e,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.181.29.66 with SMTP id ju2mr356146wid.1.1425033210247;
-        Fri, 27 Feb 2015 02:33:30 -0800 (PST)
+X-GM-THRID: 9571546431488
+X-Received: by 10.50.43.170 with SMTP id x10mr6974636igl.2.1427011411362;
+        Sun, 22 Mar 2015 01:03:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.88.84 with SMTP id be20ls161084lab.89.gmail; Fri, 27 Feb
- 2015 02:33:29 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr1955347lab.0.1425033209800;
-        Fri, 27 Feb 2015 02:33:29 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x232.google.com (mail-wg0-x232.google.com. [2a00:1450:400c:c00::232])
-        by gmr-mx.google.com with ESMTPS id ew5si92470wid.1.2015.02.27.02.33.29
+Received: by 10.50.41.66 with SMTP id d2ls1028232igl.29.canary; Sun, 22 Mar
+ 2015 01:03:31 -0700 (PDT)
+X-Received: by 10.42.153.135 with SMTP id m7mr13446990icw.4.1427011411092;
+        Sun, 22 Mar 2015 01:03:31 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id ni4si1394999pdb.2.2015.03.22.01.03.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 02:33:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) client-ip=2a00:1450:400c:c00::232;
+        Sun, 22 Mar 2015 01:03:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mail=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x232.google.com with SMTP id a1so19151238wgh.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 02:33:29 -0800 (PST)
+Received: by pagj4 with SMTP id j4so65630463pag.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 01:03:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=xTb49qYZZuToIZgAF3sIOT9c6qwmrRiNjjsiXDHzq2M=;
-        b=dIV0QIPeY9RYU04jEfjEAEnOpb0yNg1M2fpj6KDjTcul4D36iCtb6UoKD/EsAcaK22
-         YIEugtY3mShD/19cSl+0XOb49gJiQhzPOm3VMq2iwxD8Ijf+dk0yxAe6NBPm9gtyLbpb
-         0dfCypzxQG0BMg4saW5L4funVy75h7BpdzGcSJXr2mexIA15f0N/fsgaIdlfX2VKV9iW
-         +VI5psAPqHjZhWkgZo++YTACGn/2lums/Ga4UfmVVwWMGVXvWk87u1ifuuugWe3Bo03H
-         BASQmNtxhRhCT0r+SMOxcKNumie3l4dQBJ0uosQDbmaZJLUzX6sMMMo531eVufTQ/eJb
-         fP1w==
-X-Received: by 10.194.175.39 with SMTP id bx7mr26832081wjc.22.1425033209693;
-        Fri, 27 Feb 2015 02:33:29 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from yeliz-N56DP.comu.edu.tr ([193.255.97.48])
-        by mx.google.com with ESMTPSA id md8sm2175041wic.13.2015.02.27.02.33.28
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 02:33:29 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=YB0O/AHtuXcM+NfUtiyFx+AgpQsJZen6i3T6BEGXPJQ=;
+        b=Ow9LRypHQLEpM3VObZhatl1JnsBMcWCIjgI4Wq1dQDjOfGFjhZbLj/928o8LAXfD4i
+         UI3Hmx40etW9vCV6rIuoBDvpWBO5prO/UrGrIn9mcc1sht8qp6FWrp0S5VRQCm1ek0t/
+         Fry0Zp2FT4DimiLLh0HmQ7ZHRe9nLMe+rD9JpEG+eZxxd00InDiVABp1lMCB6TQEyb70
+         nbalrQRLc3OPv5AuQpn3nSEAfCX5VFFBuPolOZfJirfkEVbRS99aE9M1QqDT/nsJblSn
+         iF7nOaJ5k/41vXODbbK9GpgnCQJdjWVBMK6FzLQW3NVLpr6gNddrpX1kCi2be2n6l44d
+         XGxg==
+X-Received: by 10.68.195.6 with SMTP id ia6mr10701009pbc.55.1427011410963;
+        Sun, 22 Mar 2015 01:03:30 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.249.51])
+        by mx.google.com with ESMTPSA id mt11sm1141909pbc.20.2015.03.22.01.03.29
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sun, 22 Mar 2015 01:03:30 -0700 (PDT)
+Date: Sun, 22 Mar 2015 13:33:26 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: unisys: Removed unnecessary braces
-Date: Fri, 27 Feb 2015 12:33:37 +0200
-Message-Id: <1425033217-8249-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH v2 3/5] Staging: sm750fb: fix switch-case
+Message-ID: <20150322080326.GA31814@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The following patch fixes the checkpatch.pl warning:
-WARNING: braces {} are not necessary for single statement blocks
+Remove indentation in switch code. Problem foudn using checkpatch.pl
+ERROR: switch and case should be at the same indent
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/unisys/visorchannel/visorchannel_funcs.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Changes in v2:
+        -Fix commit message
 
-diff --git a/drivers/staging/unisys/visorchannel/visorchannel_funcs.c b/drivers/staging/unisys/visorchannel/visorchannel_funcs.c
-index 0188ef8..716deb4 100644
---- a/drivers/staging/unisys/visorchannel/visorchannel_funcs.c
-+++ b/drivers/staging/unisys/visorchannel/visorchannel_funcs.c
-@@ -416,9 +416,9 @@ signalremove_inner(struct visorchannel *channel, u32 queue, void *msg)
- {
- 	struct signal_queue_header sig_hdr;
+ drivers/staging/sm750fb/ddk750_chip.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 5020280..0b6baae 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -154,21 +154,21 @@ void setMemoryClock(unsigned int frequency)
  
--	if (!sig_read_header(channel, queue, &sig_hdr)) {
-+	if (!sig_read_header(channel, queue, &sig_hdr))
- 		return FALSE;
--	}
-+
- 	if (sig_hdr.head == sig_hdr.tail)
- 		return FALSE;	/* no signals to remove */
+ 	/* Set the corresponding divisor in the register. */
+ 	ulReg = PEEK32(CURRENT_GATE);
+-	switch(divisor) {
+-            default:
+-            case 1:
+-                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_1);
+-                break;
+-            case 2:
+-                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_2);
+-                break;
+-            case 3:
+-                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_3);
+-                break;
+-            case 4:
+-                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_4);
+-                break;
+-        }
++	switch (divisor) {
++	default:
++	case 1:
++		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_1);
++		break;
++	case 2:
++		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_2);
++		break;
++	case 3:
++		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_3);
++		break;
++	case 4:
++		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_4);
++		break;
++	}
  
-@@ -466,9 +466,9 @@ signalinsert_inner(struct visorchannel *channel, u32 queue, void *msg)
- {
- 	struct signal_queue_header sig_hdr;
- 
--	if (!sig_read_header(channel, queue, &sig_hdr)) {
-+	if (!sig_read_header(channel, queue, &sig_hdr))
- 		return FALSE;
--	}
-+
- 
- 	sig_hdr.head = ((sig_hdr.head + 1) % sig_hdr.max_slots);
- 	if (sig_hdr.head == sig_hdr.tail) {
+         setCurrentGate(ulReg);
+     }
 -- 
-1.8.3.2
+1.9.1
 
 
