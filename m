@@ -1,138 +1,87 @@
-X-GM-THRID: 6885724042283712512
-X-Received: by 2002:a05:620a:12a6:: with SMTP id x6mr1403198qki.189.1603207560466;
-        Tue, 20 Oct 2020 08:26:00 -0700 (PDT)
+X-GM-THRID: 9578996563968
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,eea10cd0b8e64b14,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.66.164.169 with SMTP id yr9mr54280508pab.34.1427015985922;
+        Sun, 22 Mar 2015 02:19:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ad4:4721:: with SMTP id l1ls637763qvz.2.gmail; Tue, 20 Oct
- 2020 08:25:59 -0700 (PDT)
-X-Received: by 2002:ad4:59cf:: with SMTP id el15mr4074491qvb.17.1603207559401;
-        Tue, 20 Oct 2020 08:25:59 -0700 (PDT)
-Received: by 2002:a37:9bd8:0:b029:114:f417:e038 with SMTP id d207-20020a379bd80000b0290114f417e038msqke;
-        Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmFaG6WnJFDtnkQUnDJV/Hobn16UBROOlTcjGRXsh5kTRM7disDIGbVATe4B7eGEUB0yNu
-X-Received: by 2002:a7b:c418:: with SMTP id k24mr3646045wmi.118.1603206755257;
-        Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603206755; cv=none;
-        d=google.com; s=arc-20160816;
-        b=1BKZoxkojMLMoUtyMY2yhhgCfRTnhABnRmPLfTcSX4Q6Qs0wm3fu+27qx+3MDlIlhA
-         scZ6N/FO5Ucr1UIrNkU8LpbhE6+TaDavea2y4ASP2K/JFYQ7LLF7RDkxIT/sfwyftCMu
-         JZIDHMDNKS44sPeUZGotHJqk6+k8H7r5hdfTh/7KW3tlQy8yofwU9Hv97vz8sxRKujPh
-         kLzeiigoNAgXsgnPt7ktXddyTfr6BE3HWP29m0VCtby8LMz6TN4zKZjqddE3DKLQGUew
-         U1/OXe9nrvoZy5u/ivUTj6sJl+U/Y01KG705sVI1/MlYVEabSl4j0NRoXrqAFerRJCyY
-         C/1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=EK3gcsHybVhWPEw7Y/gst/5psrELnXvW2wuD9XeQ/Ek=;
-        b=xdbZPqnDxHlEKZDH/VyQKGpqKCLr3BhpsEiyg0EE3BoGgBGb2NgYt3KZw24CrCZMiL
-         jAhjyc7aC80gCCAidg9BGnGizNfMxJKF6tRlq6LARu8seXfJ/32RNBtO9OZzDWhZMamp
-         wRNTjkLBl6hJLLjozTMK3Cvu8VV1JGLkfTDOJZvtlkNgvZGiaOym3Va96uopvJW+sjhv
-         ouy7Tt1c7jPQ9+U72vCiI5ccdfyy0odLCZ239vXZZnXw3UTBKxhayzhBUUq+l7znOqOV
-         rHJn1lqIy3f6ZJu6PFK+ewIgSR8Lwor2dNFJQBIMq1W7WBCSO5Od2K5wcXUUgijnhKua
-         8nzw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RU4GYeA1;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <eafanasova@gmail.com>
-Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
-        by gmr-mx.google.com with ESMTPS id j5si56960wro.2.2020.10.20.08.12.35
+Received: by 10.50.28.8 with SMTP id x8ls937249igg.11.gmail; Sun, 22 Mar 2015
+ 02:19:45 -0700 (PDT)
+X-Received: by 10.66.157.129 with SMTP id wm1mr96105298pab.15.1427015985688;
+        Sun, 22 Mar 2015 02:19:45 -0700 (PDT)
+Return-Path: <somyaanand214@gmail.com>
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id ni4si1412335pdb.2.2015.03.22.02.19.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 22 Mar 2015 02:19:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RU4GYeA1;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x244.google.com with SMTP id i2so2416213ljg.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
+       spf=pass (google.com: domain of somyaanand214@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=somyaanand214@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-x236.google.com with SMTP id cz9so154864724pdb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 02:19:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=EK3gcsHybVhWPEw7Y/gst/5psrELnXvW2wuD9XeQ/Ek=;
-        b=RU4GYeA19RJeCXJb5rcbmbVwScuNz4WWR3dTxNC6LiEuIx8PKNNz2LsW/pVcELfX0k
-         VP6gmY3gscsKdj527RPWGzU45TBNbLUqcWvM3wdLdIyh/XwqZGNDmm0puq0He2+qrph7
-         NsPnjVL0N6ItTnc5mTvdSG2N6aTkqOXzB7xeiKmCe80Xbb/oz3xzE+9+CyJ/+NGsLQ1V
-         qUevZV4WKyYWRAey5SjF0Ceyou5ZeBZ3W1s4biNj261pWI9hEZGRWtKQSBDl9nQ+SfUm
-         aiIRGCixoyL5epRhLAdhkZ21tsUhNf9UYqRDdV0n5LJrslzR+mx4LOD71b8vnjB4Ibcl
-         gdXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=EK3gcsHybVhWPEw7Y/gst/5psrELnXvW2wuD9XeQ/Ek=;
-        b=GO10xT6ngazs+ut7HYT98sP/kqb5P6eSPoLOIa210GVOIG+0s/OC2M61npjME3Rnz0
-         1UP26pr3JpaP5+1xm06EJ2yjDaj/LaZf7QE6HdDKpRwUmZsqgJYhGyu22qqy1IoGBtRM
-         LyIunPhMjeaXA/B2I9FudcczjPko7CX/PyfEXunLdWiiNzMKxC5eFoY+uVMr/SY1LMoR
-         riXX5dieEUfDURSZHRCKVV7uN9kV7nVEIsr/Ie8uQfqqWBbtw43xmMCr+qad//ZDpSVz
-         5MennJcmymf34yrL6HzVerMap3jxXDym+FuQvRuTqPnQL8mB1usuw0g4QpZOBNmUJAeh
-         gsRA==
-X-Gm-Message-State: AOAM531K106EMI/SHILWLTnvThVNGe87PDIajjqOR/lWEAyTt42+kOAu
-	XviHIP2t+Hzhc1VufdrS9x8=
-X-Received: by 2002:a2e:94e:: with SMTP id 75mr1281460ljj.95.1603206754952;
-        Tue, 20 Oct 2020 08:12:34 -0700 (PDT)
-Return-Path: <eafanasova@gmail.com>
-Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
-        by smtp.gmail.com with ESMTPSA id 73sm345864lff.125.2020.10.20.08.12.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Oct 2020 08:12:34 -0700 (PDT)
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	outreachy-kernel@googlegroups.com,
-	Elena Afanasova <eafanasova@gmail.com>
-Subject: [PATCH] staging/rtl8192u/ieee80211: fix line length exceeds 100 columns
-Date: Tue, 20 Oct 2020 08:11:11 -0700
-Message-Id: <20201020151111.35848-1-eafanasova@gmail.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=nMrBq+VFah/47gCuYXHAi0W3hd5v/NPdENUrTXZ1GCg=;
+        b=lsFSCUsLn6hT3C9egZ78vE3FpioF39posPQVNfOWVnUKhxboJUGQcQPjovi7mjQyIU
+         6He/WXVFD+XYCU3yhvpOQTqcrd6uiPI4tQm2yj3CVrAe3k2ug5guf/+J+GPv4Ps6Kf2T
+         YBS997/1ws3EMHTX0+4Wu/4Yd3S18EbVCZb4hiu0GPkkAWZo20UIYRrIZhwC/gWE2vB9
+         Q7c4IJXccuLBcMwIE9AkWkJUTitAVbVZlIR50yYDeEvClBCBTul2Ptt5KaURrQV9sKOf
+         lCbvyIgaB7/xDH6Of9pGUgMrGQyswlfalIDtUOFuvTZgOs+dM8BDxTg0qXsg8Z0Ecsnp
+         FG/Q==
+X-Received: by 10.66.101.106 with SMTP id ff10mr207557258pab.103.1427015985579;
+        Sun, 22 Mar 2015 02:19:45 -0700 (PDT)
+Return-Path: <somyaanand214@gmail.com>
+Received: from localhost.localdomain ([182.66.46.73])
+        by mx.google.com with ESMTPSA id pv4sm3897654pbb.17.2015.03.22.02.19.41
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 22 Mar 2015 02:19:44 -0700 (PDT)
+From: Somya Anand <somyaanand214@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Somya Anand <somyaanand214@gmail.com>
+Subject: [PATCH] Staging: rtl8723au: Remove unused function rtw_atimdone_event_callback23a
+Date: Sun, 22 Mar 2015 14:49:29 +0530
+Message-Id: <1427015969-27675-1-git-send-email-somyaanand214@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Reported by checkpatch.pl.
+This patch fixes the following sparse warning:
 
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+warning: symbol 'rtw_atimdone_event_callback23a' was not declared.
+Should it be static?
+rtw_atimdone_event_callback23a is local to the file rtw_mlme.c but
+it isn't exposed in a header file anywhere. Moreover it is never called
+from anywhere as well.
+
+So, this patch removes this function completely.
+
+Signed-off-by: Somya Anand <somyaanand214@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/dot11d.h | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_mlme.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/dot11d.h b/drivers/staging/rtl8192u/ieee80211/dot11d.h
-index 8b485fa18089..e1d794d8ac69 100644
---- a/drivers/staging/rtl8192u/ieee80211/dot11d.h
-+++ b/drivers/staging/rtl8192u/ieee80211/dot11d.h
-@@ -17,14 +17,16 @@ enum dot11d_state {
- };
+diff --git a/drivers/staging/rtl8723au/core/rtw_mlme.c b/drivers/staging/rtl8723au/core/rtw_mlme.c
+index 7299ef0..d6593a2 100644
+--- a/drivers/staging/rtl8723au/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723au/core/rtw_mlme.c
+@@ -568,13 +568,6 @@ static int rtw_is_desired_network(struct rtw_adapter *adapter,
+ 	return bselected;
+ }
  
- struct rt_dot11d_info {
--	u16 country_ie_len; /* > 0 if country_ie_buf[] contains valid country information element. */
-+	/* > 0 if country_ie_buf[] contains valid country information element. */
-+	u16 country_ie_len;
- 
- 	/*  country_ie_src_addr u16 aligned for comparison and copy */
- 	u8  country_ie_src_addr[ETH_ALEN]; /* Source AP of the country IE. */
- 	u8  country_ie_buf[MAX_IE_LEN];
- 	u8  country_ie_watchdog;
- 
--	u8  channel_map[MAX_CHANNEL_NUMBER + 1];  /* !Value 0: Invalid, 1: Valid (active scan), 2: Valid (passive scan) */
-+	/* !Value 0: Invalid, 1: Valid (active scan), 2: Valid (passive scan) */
-+	u8  channel_map[MAX_CHANNEL_NUMBER + 1];
- 	u8  max_tx_pwr_dbm_list[MAX_CHANNEL_NUMBER + 1];
- 
- 	enum dot11d_state state;
-@@ -36,8 +38,10 @@ struct rt_dot11d_info {
- #define IS_DOT11D_ENABLE(ieee_dev) (GET_DOT11D_INFO(ieee_dev)->dot11d_enabled)
- #define IS_COUNTRY_IE_VALID(ieee_dev) (GET_DOT11D_INFO(ieee_dev)->country_ie_len > 0)
- 
--#define IS_EQUAL_CIE_SRC(ieee_dev, addr) ether_addr_equal(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
--#define UPDATE_CIE_SRC(ieee_dev, addr) ether_addr_copy(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
-+#define IS_EQUAL_CIE_SRC(ieee_dev, addr) \
-+	ether_addr_equal(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
-+#define UPDATE_CIE_SRC(ieee_dev, addr) \
-+	ether_addr_copy(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
- 
- #define GET_CIE_WATCHDOG(ieee_dev) (GET_DOT11D_INFO(ieee_dev)->country_ie_watchdog)
- #define RESET_CIE_WATCHDOG(ieee_dev) (GET_CIE_WATCHDOG(ieee_dev) = 0)
+-/* TODO: Perry : For Power Management */
+-void rtw_atimdone_event_callback23a(struct rtw_adapter *adapter, const u8 *pbuf)
+-{
+-	RT_TRACE(_module_rtl871x_mlme_c_, _drv_err_,
+-		 ("receive atimdone_evet\n"));
+-}
+-
+ void rtw_survey_event_cb23a(struct rtw_adapter *adapter, const u8 *pbuf)
+ {
+ 	u32 len;
 -- 
-2.25.1
+1.9.1
 
 
