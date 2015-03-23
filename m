@@ -1,79 +1,87 @@
-X-GM-THRID: 2900779597824
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,33a226cb1b77c823,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.194.201.10 with SMTP id jw10mr1521564wjc.3.1424713636931;
-        Mon, 23 Feb 2015 09:47:16 -0800 (PST)
+X-GM-THRID: 9643848892416
+X-Received: by 10.236.227.162 with SMTP id d32mr113358133yhq.7.1427118827428;
+        Mon, 23 Mar 2015 06:53:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.108.197 with SMTP id hm5ls607499wib.51.canary; Mon, 23 Feb
- 2015 09:47:16 -0800 (PST)
-X-Received: by 10.181.29.66 with SMTP id ju2mr1484041wid.1.1424713636619;
-        Mon, 23 Feb 2015 09:47:16 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id by11si966609wib.1.2015.02.23.09.47.16
+Received: by 10.107.16.2 with SMTP id y2ls1947286ioi.2.gmail; Mon, 23 Mar 2015
+ 06:53:47 -0700 (PDT)
+X-Received: by 10.66.194.234 with SMTP id hz10mr11096215pac.10.1427118827158;
+        Mon, 23 Mar 2015 06:53:47 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id u27si63201yhu.4.2015.03.23.06.53.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 09:47:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Mon, 23 Mar 2015 06:53:47 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id w62so20234756wes.9
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 09:47:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=xlEo1eCvc1skWVvNBE7BGz60WU20znV+/QkC+gDktFQ=;
-        b=CouqtqRxC1kZijtonVzoq+Rxljo/8Txa5nO6/HaqSGV/MGsbvIZDtNVgiuOU678MG5
-         +G/IOvskteWbfUu5cEV9WaICnb+c/XAGZqGziDP8qBI19kBpfBWQtmSHgoj/Z9OdhQOa
-         5FZKplss0l8PCMNlGGmbUnS6/QlitH1JQsDCb9f7/TQI6xbSkw6Qp3yjuBgPBVDpsBTg
-         TlcqLVp9wrD+/VNBlmPzutf9aw3RZq89zzskUa6qVwECiptNxftYifmkR+waZPHqQrUm
-         Edb0tTMsHKnlluxtNP8J6pvjXHlsZdIyk8+kdHQAX2QdSZ9Cpeu7a8ShBQxk01+aSS/h
-         pHvQ==
-X-Received: by 10.194.193.99 with SMTP id hn3mr24793898wjc.148.1424713636533;
-        Mon, 23 Feb 2015 09:47:16 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id s19sm16827802wik.18.2015.02.23.09.47.15
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Feb 2015 09:47:15 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v2] Staging: slicoss: Join split string.
-Date: Mon, 23 Feb 2015 18:47:07 +0100
-Message-Id: <1424713627-3852-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,452,1422918000"; 
+   d="scan'208";a="128150554"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Mar 2015 14:53:45 +0100
+Date: Mon, 23 Mar 2015 14:53:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Cristina Opriceana <cristina.opriceana@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Use mem_dup()
+ instead of copy_from_user()
+In-Reply-To: <1427109852.6799.12.camel@Inspiron>
+Message-ID: <alpine.DEB.2.10.1503231452220.2432@hadrien>
+References: <20150322190400.GA1115@Inspiron>  <alpine.DEB.2.02.1503222101410.2195@localhost6.localdomain6> <1427109852.6799.12.camel@Inspiron>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes warning issue by checkpatch.pl by joining the split string.
-And also creates new warning that line exceeds 80 characters. In this case
-this is more beneficial because of possibility to grep the string.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-v2: Join the split string so that it forms one line.
 
- drivers/staging/slicoss/slicoss.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Mon, 23 Mar 2015, Cristina Opriceana wrote:
 
-diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
-index 42d62ef..3d1d409 100644
---- a/drivers/staging/slicoss/slicoss.c
-+++ b/drivers/staging/slicoss/slicoss.c
-@@ -99,8 +99,7 @@
- #include "slic.h"
- 
- static uint slic_first_init = 1;
--static char *slic_banner = "Alacritech SLIC Technology(tm) Server "
--		"and Storage Accelerator (Non-Accelerated)";
-+static char *slic_banner = "Alacritech SLIC Technology(tm) Server and Storage Accelerator (Non-Accelerated)";
- 
- static char *slic_proc_version = "2.0.351  2006/07/14 12:26:00";
- 
--- 
-1.9.1
+> On Du, 2015-03-22 at 21:04 +0100, Julia Lawall wrote:
+> >
+> > On Sun, 22 Mar 2015, Cristina Opriceana wrote:
+> >
+> > > Use mem_dup() instead of its duplicated implementation in order
+> > > to simplify code. Found with coccinelle.
+> > >
+> > > Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+> > > ---
+> > >  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 10 +++-------
+> > >  1 file changed, 3 insertions(+), 7 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > > index 81f39c3..c39d031 100644
+> > > --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > > +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > > @@ -1912,13 +1912,9 @@ static int r871x_mp_ioctl_hdl(struct net_device *dev,
+> > >  	bset = (u8)(p->flags & 0xFFFF);
+> > >  	len = p->length;
+> > >  	pparmbuf = NULL;
+> > > -	pparmbuf = kmalloc(len, GFP_ATOMIC);
+> > > -	if (pparmbuf == NULL) {
+> > > -		ret = -ENOMEM;
+> > > -		goto _r871x_mp_ioctl_hdl_exit;
+> > > -	}
+> > > -	if (copy_from_user(pparmbuf, p->pointer, len)) {
+> > > -		ret = -EFAULT;
+> > > +	pparmbuf = memdup_user(p->pointer, len);
+> >
+> > There is a potential problem with this.  memdup_user uses GFP_KERNEL
+> > (blocking allowed), while the original code used GFP_ATOMIC (blocking not
+> > allowed).  You could check whether any locks can be held on the way to
+> > this code, which would require GFP_ATOMIC.  On the other hand, it may be
+> > that copy_from_user can only be used when blocking is allowed.
+> >
+> > julia
+> >
+> As far as i understand, since copy_from_user() may sleep, it cannot be
+> used while holding a lock. So, the use of GFP_ATOMIC might be useless in
+> this context.
+> Either that or copy_from_user shouldn't be used, which is not the case
+> because the purpose of this function is to receive a command from the
+> userspace and call its associated handler.
 
+OK, it would be good to add a note about this to the commit message.
+
+julia
 
