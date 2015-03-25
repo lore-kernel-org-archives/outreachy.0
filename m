@@ -1,92 +1,78 @@
-X-GM-THRID: 7712472563712
-X-Received: by 10.112.40.81 with SMTP id v17mr1922202lbk.5.1426111723339;
-        Wed, 11 Mar 2015 15:08:43 -0700 (PDT)
+X-GM-THRID: 9822875418624
+X-Received: by 10.43.60.131 with SMTP id ws3mr30987915icb.13.1427299618427;
+        Wed, 25 Mar 2015 09:06:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.90.43 with SMTP id bt11ls473695wib.37.canary; Wed, 11 Mar
- 2015 15:08:42 -0700 (PDT)
-X-Received: by 10.180.80.132 with SMTP id r4mr2487917wix.4.1426111722920;
-        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
-        by gmr-mx.google.com with ESMTPS id o3si1396714wib.2.2015.03.11.15.08.42
+Received: by 10.182.158.104 with SMTP id wt8ls309827obb.65.gmail; Wed, 25 Mar
+ 2015 09:06:58 -0700 (PDT)
+X-Received: by 10.182.126.68 with SMTP id mw4mr11681672obb.40.1427299618087;
+        Wed, 25 Mar 2015 09:06:58 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id gb13si355469pac.2.2015.03.25.09.06.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
+        Wed, 25 Mar 2015 09:06:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevk48 with SMTP id k48so12334694wev.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
+Received: by mail-pa0-x232.google.com with SMTP id cy3so33188282pad.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 09:06:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=gQ/MAvNMZHoaO4BcBbdKen9PoCz6NMRZoOhL/KDwrZk=;
-        b=yd1MKuGTU0T6lI2aGvNuiqyOEgk0kq2I28BXND+oxpu/+hZGhy4iKBsSa+DAGVJ1Bn
-         wBSVM4UkKYCFqOjAa4vzJD4FHCEg1QIE1aIR6rbcfPDyKcgvwEH3D7Vo+5hyeEPPtbmH
-         i3i0jxOSTEEKClZbEkIO8gmmOY/9rQZ/nlmTY9X6p2+7oiIQ8P1DbzYDhc6g97Ow3Qo8
-         qrVBZtqTSgOF0hQ8AwSBQC9nOmNicv8nXfvZ7UJ1s+SIHGui6YQoY+Xz8SI/vLPQjqdA
-         CSRIyTI8UbT2A1JX4MfA3sGWmJhfjdfXtor5glG717TJiDxKRR2Z9Y94hBdhuuwLfLz8
-         W/Vg==
-X-Received: by 10.181.9.107 with SMTP id dr11mr37571640wid.40.1426111722826;
-        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.55.143])
-        by mx.google.com with ESMTPSA id pa4sm7255571wjb.11.2015.03.11.15.08.41
+        bh=Ecwb68lGT/jS4xvo48YcfduaE7rGRDCFB0OMXpGKz2Q=;
+        b=ltcZNyErmF1w/J4etEGyusOsh9c9K6st5PVnaYYSXdYxe3wvWMyPAE4oloPabQcUDH
+         yhBibAnqxFnMfgAq/W0SNoqcwCwuOb2lUK/XIYC1t05a8x6zMjvYnaHWkt3Gp9jxvZwI
+         hZ93VRwvEn7bgBbK5gE9+aH+D60lfSAV38zuqhVG8Cao4be4JQnfWLHhwWxFXc4sfXfa
+         9pIrqcI6o1vE7hX8j1fPN8/tUjcghBFwCViWDkw/TL6rs/JJAP2LdI/L8k0+CUEFCLIA
+         yHNVVZTAQ3kfLRUf5rmH0QyMjCeGFOBQ0EfQXDyfArvL6eUOuX3AxiM2TC8dekECMJlC
+         uS8A==
+X-Received: by 10.66.219.130 with SMTP id po2mr18345066pac.98.1427299617906;
+        Wed, 25 Mar 2015 09:06:57 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from akanksha ([14.139.82.6])
+        by mx.google.com with ESMTPSA id e4sm2892841pdm.70.2015.03.25.09.06.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 11 Mar 2015 15:08:42 -0700 (PDT)
-Date: Thu, 12 Mar 2015 01:08:32 +0300
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        Wed, 25 Mar 2015 09:06:56 -0700 (PDT)
+Date: Wed, 25 Mar 2015 21:34:48 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: remove else after return statement
-Message-ID: <20150311220832.GA7170@haneen-vb>
+Subject: [PATCH] Staging: lustre: Remove extern from function declaration
+Message-ID: <20150325160448.GA6708@akanksha>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-else after return generally is not useful. This patch removes else after return
-statement. Issue addressed by checkpatch.pl.
+Functions have the extern storage class specifier by default,
+so this keyword can be removed. 
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mlme.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+ drivers/staging/lustre/lustre/ldlm/ldlm_internal.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index bb78484..1f3707a 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -1601,17 +1601,15 @@ sint r8712_restruct_sec_ie(struct _adapter *adapter, u8 *in_ie,
- 	iEntry = SecIsInPMKIDList(adapter, pmlmepriv->assoc_bssid);
- 	if (iEntry < 0)
- 		return ielength;
--	else {
--		if (authmode == _WPA2_IE_ID_) {
--			out_ie[ielength] = 1;
--			ielength++;
--			out_ie[ielength] = 0;	/*PMKID count = 0x0100*/
--			ielength++;
--			memcpy(&out_ie[ielength],
--				&psecuritypriv->PMKIDList[iEntry].PMKID, 16);
--			ielength += 16;
--			out_ie[13] += 18;/*PMKID length = 2+16*/
--		}
-+	if (authmode == _WPA2_IE_ID_) {
-+		out_ie[ielength] = 1;
-+		ielength++;
-+		out_ie[ielength] = 0;	/*PMKID count = 0x0100*/
-+		ielength++;
-+		memcpy(&out_ie[ielength],
-+			&psecuritypriv->PMKIDList[iEntry].PMKID, 16);
-+		ielength += 16;
-+		out_ie[13] += 18;/*PMKID length = 2+16*/
- 	}
- 	return ielength;
- }
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+index 5bf9488..70b909f 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+@@ -211,9 +211,9 @@ struct ldlm_state {
+ /* interval tree, for LDLM_EXTENT. */
+ extern struct kmem_cache *ldlm_interval_slab; /* slab cache for ldlm_interval */
+ extern void ldlm_interval_attach(struct ldlm_interval *n, struct ldlm_lock *l);
+-extern struct ldlm_interval *ldlm_interval_detach(struct ldlm_lock *l);
+-extern struct ldlm_interval *ldlm_interval_alloc(struct ldlm_lock *lock);
+-extern void ldlm_interval_free(struct ldlm_interval *node);
++struct ldlm_interval *ldlm_interval_detach(struct ldlm_lock *l);
++struct ldlm_interval *ldlm_interval_alloc(struct ldlm_lock *lock);
++void ldlm_interval_free(struct ldlm_interval *node);
+ /* this function must be called with res lock held */
+ static inline struct ldlm_extent *
+ ldlm_interval_extent(struct ldlm_interval *node)
 -- 
 1.9.1
 
