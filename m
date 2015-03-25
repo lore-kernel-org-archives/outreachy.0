@@ -1,134 +1,120 @@
-X-GM-THRID: 6954012466570330112
-X-Received: by 2002:a5d:5711:: with SMTP id a17mr5065529wrv.342.1619107198582;
-        Thu, 22 Apr 2021 08:59:58 -0700 (PDT)
+X-GM-THRID: 9808836034560
+X-Received: by 10.182.33.97 with SMTP id q1mr10773738obi.42.1427288876221;
+        Wed, 25 Mar 2015 06:07:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:c1c3:: with SMTP id a3ls2932122wmj.0.gmail; Thu, 22 Apr
- 2021 08:59:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9EsEINDfsylKD2r4zrdAFP/DfDn6JJ8oCtEXP4aEIwnFZSjCgDP+yhH3jvkUvifRD7q2q
-X-Received: by 2002:a7b:c312:: with SMTP id k18mr4659738wmj.89.1619107197218;
-        Thu, 22 Apr 2021 08:59:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619107197; cv=none;
-        d=google.com; s=arc-20160816;
-        b=bB4vC03HmVUcsCCalGO07E94E98HMtuNhVZgNdj1/6G3jdj62svI2gbPSTcB3qbtCU
-         9TD1yGZcOa40vnoXuP3JQvG7+MAH2gVpWAKH9PhuIvX0toY6tP88fFso4Jn5xU78P6JB
-         HBN84JqL4P7fXJyzsaudH/O8RVHZC3+KOoB1bX0cZIcnmiDetYE6DZ/j/G+eoEk5ovli
-         aRVi1tYIfqSIjKjGRH3OfPhhqdRfJrg2Ge+nauQwl1qPJHQdFeoRaTrtKzXYNtVf0C4/
-         yCSsFqJPp4RXMcT/4HSosP+TJlKBANvhQze8TwMuTZJGfSNPbwE2keDZoSdfCnY/Nd9Q
-         A+Og==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=1MFsgMi1vScM/Xb4Qn/U8v6SwMwWvXpGL3C1LP/euKw=;
-        b=fGltD583mPvUUgcsiDbyzn7fuod9EIU3+hRGH5n4/3mVnadXDeEeWPRY3ZZVs64nKC
-         Uud7R/HlyiFwsEMxX4Vb+siRI6PEI8ptmFQYf5FA+RriVG+fLP32NMI7vCHO2XtJ+oMk
-         2X4OszTWZu+2LmctJMPbGzcOhz6eNnbjdgZQECjdDxkYRHHeNbf/o3u3aJvviZv/bM8m
-         D6eGH5/LI0lAVBhqoXI1JzwwRWDOm1isOL3b8cyae2boK0XbTq/OCaggXmEgEm9He4Q0
-         iC3qC/mgR7X0tGZ//jARhJqgNC9DbsWuWxVHKLtrW2Mv6a7D/94Ky6KPdgF5oQKsgWvI
-         m3kA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VMTL9Pms;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::634 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x634.google.com (mail-ej1-x634.google.com. [2a00:1450:4864:20::634])
-        by gmr-mx.google.com with ESMTPS id s8si609877wrn.5.2021.04.22.08.59.57
+Received: by 10.107.28.21 with SMTP id c21ls296279ioc.37.gmail; Wed, 25 Mar
+ 2015 06:07:56 -0700 (PDT)
+X-Received: by 10.66.194.234 with SMTP id hz10mr10256692pac.10.1427288875984;
+        Wed, 25 Mar 2015 06:07:55 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id pj7si294593pbb.2.2015.03.25.06.07.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Apr 2021 08:59:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::634 as permitted sender) client-ip=2a00:1450:4864:20::634;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Mar 2015 06:07:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VMTL9Pms;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::634 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x634.google.com with SMTP id w23so53766153ejb.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Apr 2021 08:59:57 -0700 (PDT)
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id xg6so28650650pab.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 06:07:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=1MFsgMi1vScM/Xb4Qn/U8v6SwMwWvXpGL3C1LP/euKw=;
-        b=VMTL9Pmsx8mAuoF2J0RLpSs6vSjUyH+Qb+ikO0dild2RCYQ3a4jdGEB5/vdO4WmL54
-         fQ4M9TjDLVcpbyb5dKniDuDZxSdHtqIhMISryjXKCkBbpaemDHnPmqYHXpbopgJeF86k
-         g0l08o39WKNbGipu9sZ+c3RgufZts87Rj+DefkBvns/nFM+DNJUNVIWQF1wwf9XIaYUC
-         1fcOaGzE44biHaJdvdwCmp4i/q5lvnEXA7PTiGN8FTRg1jJLqAKXKGYOUSqz4igMivnT
-         nGhdxYzRv+EscSZEwEkGuKlJl8MPUwKoM7GGeU5wmzBkcfnLiCBibU4/J0bhU6ok0d5r
-         u5gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=1MFsgMi1vScM/Xb4Qn/U8v6SwMwWvXpGL3C1LP/euKw=;
-        b=NqDIM7M1OKTKCXjCogiGPoRRLBBPopBhJHbLXI9NL43XL4ZPmtC/6Xb3Y9GjFB4bZN
-         po3DluHXT7Bgxjcf3qNWfE/mu0eWUINL0lCIA9TDbDpcoG8oKpfK3/4So0HgoQ8A9Ws9
-         gjNB6assmWS2Ld+9V8WAOpH+5+edb4RLUqo8E6RyfY/xXRvselukrZMYFuMMPpdPwYwa
-         6F4SGrtr55juJtiujdRrSMGmOzyG6bX1vdPh6AcW6lJUxXbGZnihsW2ekXBihFlmfBTQ
-         qwcXki5ki3Bu3QHrKzFP+TDyjoMCk1wOvO06EoopoLIzuQVZLqFQ4VywFqAgni+6BKaV
-         j+nA==
-X-Gm-Message-State: AOAM530Am0O3gSad1+EAeHozksOxE3lFWhDA6xlNxY7cFuFJAoYm1rT5
-	UytvaQknm1goxQNOoMyA49yRAbgLwGjb0FqU
-X-Received: by 2002:a17:906:4ed1:: with SMTP id i17mr4060093ejv.424.1619107196772;
-        Thu, 22 Apr 2021 08:59:56 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id q25sm2551608edt.51.2021.04.22.08.59.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Apr 2021 08:59:56 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Melissa Wen <melissa.srw@gmail.com>,
-	Matthew Wilcox <willy@infradead.org>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] drm/amd/amdgpu/amdgpu_drv.c: Replace drm_modeset_lock_all with drm_modeset_lock
-Date: Thu, 22 Apr 2021 17:59:51 +0200
-Message-Id: <20210422155951.6314-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=sQaEUs3zzU3m6QTSCSAGW0spcYPhWHxWuPqdZ74vajI=;
+        b=Z72wSoFBWIW6kduDDX53vXqBalqpZYNeUaBHgRB9iAV1NoDkwfkAsxk5LcMM/LzUd3
+         dkBc2yg7s5btiZBVfH7+saRHw3CFGhMCWJ2uwGL5HGdpogirbVz8ywP56pr6Xb+HrhoW
+         8yE/1M6OubyBuECwNNrtyxBWoHaqnsNWv29nVVLbeysz3JzJnb9UDed8fapRQWKx9Ks6
+         6TkQl4MdXn79fO6iKm+B65qLo/aP1FXPu1yEXh9vJleUvtz/xnRJuiNfDNJ4oKoMBBzA
+         9yjNN9IZ4LbZojG6OTWeS53ZIiugoL/eXjkDWg2QPK5+ik5UKhjt7h6zNMKpgUkzx/sz
+         jFwg==
+X-Received: by 10.70.42.197 with SMTP id q5mr17141431pdl.115.1427288875921;
+        Wed, 25 Mar 2015 06:07:55 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from akanksha ([14.139.82.6])
+        by mx.google.com with ESMTPSA id x1sm2505378pdp.1.2015.03.25.06.07.53
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 25 Mar 2015 06:07:54 -0700 (PDT)
+Date: Wed, 25 Mar 2015 18:35:47 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] Staging: rtl8188eu: Refactor repititive code to loop to
+ increase compactness
+Message-ID: <465dae90680239c3215985dea12f3c75d1f5e329.1427288450.git.vatikaharlalka@gmail.com>
+References: <cover.1427288450.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1427288450.git.vatikaharlalka@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-drm_modeset_lock_all() is not needed here, so it is replaced with
-drm_modeset_lock(). The crtc list around which we are looping never
-changes, therefore the only lock we need is to protect access to
-crtc->state.
+Refactor repetitive code to loop so as to increase
+compactness and introduce newlines for readability.
 
-Suggested-by: Daniel Vetter <daniel@ffwll.ch>
-Suggested-by: Matthew Wilcox <willy@infradead.org>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
 ---
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ .../staging/rtl8188eu/hal/Hal8188ERateAdaptive.c   | 26 +++++++++++-----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index 671ec1002230..bce8f6793d8e 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-@@ -1439,17 +1439,16 @@ static int amdgpu_pmops_runtime_idle(struct device *dev)
- 	if (amdgpu_device_has_dc_support(adev)) {
- 		struct drm_crtc *crtc;
+diff --git a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+index 22e4309..082f0ca 100644
+--- a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
++++ b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+@@ -260,7 +260,7 @@ static void odm_RateDecision_8188E(struct odm_dm_struct *dm_odm,
+ 		struct odm_ra_info *pRaInfo
+ 	)
+ {
+-	u8 RateID = 0, RtyPtID = 0, PenaltyID1 = 0, PenaltyID2 = 0;
++	u8 RateID = 0, RtyPtID = 0, PenaltyID1 = 0, PenaltyID2 = 0, i = 0;
+ 	/* u32 pool_retry; */
+ 	static u8 DynamicTxRPTTimingCounter;
  
--		drm_modeset_lock_all(drm_dev);
--
- 		drm_for_each_crtc(crtc, drm_dev) {
-+			drm_modeset_lock(&crtc->mutex, NULL);
- 			if (crtc->state->active) {
- 				ret = -EBUSY;
--				break;
- 			}
-+			drm_modeset_unlock(&crtc->mutex);
-+			if (ret < 0)
-+				break;
- 		}
+@@ -286,14 +286,14 @@ static void odm_RateDecision_8188E(struct odm_dm_struct *dm_odm,
  
--		drm_modeset_unlock_all(drm_dev);
--
- 	} else {
- 		struct drm_connector *list_connector;
- 		struct drm_connector_list_iter iter;
+ 		ODM_RT_TRACE(dm_odm, ODM_COMP_RATE_ADAPTIVE, ODM_DBG_TRACE,
+ 			     (" NscDown init is %d\n", pRaInfo->NscDown));
+-		pRaInfo->NscDown += pRaInfo->RTY[0] * RETRY_PENALTY[PenaltyID1][0];
+-		pRaInfo->NscDown += pRaInfo->RTY[1] * RETRY_PENALTY[PenaltyID1][1];
+-		pRaInfo->NscDown += pRaInfo->RTY[2] * RETRY_PENALTY[PenaltyID1][2];
+-		pRaInfo->NscDown += pRaInfo->RTY[3] * RETRY_PENALTY[PenaltyID1][3];
+-		pRaInfo->NscDown += pRaInfo->RTY[4] * RETRY_PENALTY[PenaltyID1][4];
++
++		for (i = 0 ; i <= 4 ; i++)
++			pRaInfo->NscDown += pRaInfo->RTY[i] * RETRY_PENALTY[PenaltyID1][i];
++
+ 		ODM_RT_TRACE(dm_odm, ODM_COMP_RATE_ADAPTIVE, ODM_DBG_TRACE,
+-			     (" NscDown is %d, total*penalty[5] is %d\n",
+-			     pRaInfo->NscDown, (pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID1][5])));
++			     (" NscDown is %d, total*penalty[5] is %d\n", pRaInfo->NscDown,
++			      (pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID1][5])));
++
+ 		if (pRaInfo->NscDown > (pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID1][5]))
+ 			pRaInfo->NscDown -= pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID1][5];
+ 		else
+@@ -303,14 +303,14 @@ static void odm_RateDecision_8188E(struct odm_dm_struct *dm_odm,
+ 		PenaltyID2 = RETRY_PENALTY_UP_IDX[RateID];
+ 		ODM_RT_TRACE(dm_odm, ODM_COMP_RATE_ADAPTIVE, ODM_DBG_TRACE,
+ 			     (" NscUp init is %d\n", pRaInfo->NscUp));
+-		pRaInfo->NscUp += pRaInfo->RTY[0] * RETRY_PENALTY[PenaltyID2][0];
+-		pRaInfo->NscUp += pRaInfo->RTY[1] * RETRY_PENALTY[PenaltyID2][1];
+-		pRaInfo->NscUp += pRaInfo->RTY[2] * RETRY_PENALTY[PenaltyID2][2];
+-		pRaInfo->NscUp += pRaInfo->RTY[3] * RETRY_PENALTY[PenaltyID2][3];
+-		pRaInfo->NscUp += pRaInfo->RTY[4] * RETRY_PENALTY[PenaltyID2][4];
++
++		for (i = 0 ; i <= 4 ; i++)
++			pRaInfo->NscUp += pRaInfo->RTY[i] * RETRY_PENALTY[PenaltyID2][i];
++
+ 		ODM_RT_TRACE(dm_odm, ODM_COMP_RATE_ADAPTIVE, ODM_DBG_TRACE,
+ 			     ("NscUp is %d, total*up[5] is %d\n",
+ 			     pRaInfo->NscUp, (pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID2][5])));
++
+ 		if (pRaInfo->NscUp > (pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID2][5]))
+ 			pRaInfo->NscUp -= pRaInfo->TOTAL * RETRY_PENALTY[PenaltyID2][5];
+ 		else
 -- 
-2.31.1
+1.9.1
+
 
