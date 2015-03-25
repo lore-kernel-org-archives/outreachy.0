@@ -1,88 +1,95 @@
-X-GM-THRID: 8063106940928
+X-GM-THRID: 9842395709440
 X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,7fd4eea76392c31c,start
+X-Google-Thread: 9ca63f596c,f3d42db10bb65f32
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.66.97.97 with SMTP id dz1mr45069300pab.2.1426254373849;
-        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
+X-Received: by 10.112.180.74 with SMTP id dm10mr2568196lbc.11.1427317600643;
+        Wed, 25 Mar 2015 14:06:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.128.168 with SMTP id np8ls606496obb.6.gmail; Fri, 13 Mar
- 2015 06:46:13 -0700 (PDT)
-X-Received: by 10.182.251.231 with SMTP id zn7mr51636088obc.24.1426254373517;
-        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id ri9si375232pdb.1.2015.03.13.06.46.13
+Received: by 10.152.43.133 with SMTP id w5ls146157lal.16.gmail; Wed, 25 Mar
+ 2015 14:06:40 -0700 (PDT)
+X-Received: by 10.152.163.99 with SMTP id yh3mr2536195lab.8.1427317600093;
+        Wed, 25 Mar 2015 14:06:40 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wg0-x22a.google.com (mail-wg0-x22a.google.com. [2a00:1450:400c:c00::22a])
+        by gmr-mx.google.com with ESMTPS id bz6si1010761wib.3.2015.03.25.14.06.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Wed, 25 Mar 2015 14:06:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) client-ip=2a00:1450:400c:c00::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id eu11so29704998pac.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
+Received: by mail-wg0-x22a.google.com with SMTP id a20so41922940wgr.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 14:06:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:content-type
-         :content-transfer-encoding;
-        bh=wlO7FzwMNQZ7QN8Sedbs+rHzFcCs2bkC5zL2/Bk9bAs=;
-        b=mu4a+X0nkkZ92Y4PdC7/knBZmtzRfYKYRzFg7JUjEkf5LzpwDiFRtJ+NWBkVxn4I2X
-         4QuPTRnglauM9riHiC+xadNXi/9tBvFkDm+VKRDQkGrsKLF0mZpJrYqESdxjW8Mr1m4F
-         mVReWFWltLARtdAHddcC4tTntBQ5aOJV16vXb0wG2UnTL9WXgiP4edPCsgdvrFIxh2mC
-         r2ri3eZoNqx8JiBJTS7ieJWkesN790VneR0Rw3i9NhOlvsdkCheuf45fVJgw8lT3wkpj
-         H/To4BMcPOjlmkhzPHUEe18YspPKzgZKVhX4J7c5FGpA6X84A37zH2MINzyizfY+ThSY
-         iqXQ==
-X-Received: by 10.66.101.35 with SMTP id fd3mr104285849pab.50.1426254373376;
-        Fri, 13 Mar 2015 06:46:13 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from localhost ([182.19.48.18])
-        by mx.google.com with ESMTPSA id bt2sm3709699pad.12.2015.03.13.06.46.11
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 13 Mar 2015 06:46:12 -0700 (PDT)
-From: Darshana Padmadas <darshanapadmadas@gmail.com>
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=pwmkLbKpWYj+DY5uY67GDlLNSBcJwEVuXE4mZc9Z0Tc=;
+        b=p0ckiAZlDEkSIzNwdiBF4wMfg9esJMmtSmCNO+N39tcPFWFS8PSWYdKvH1iq4MhOCL
+         mqqDxFE3mvJNSrulRndD5H16xK/XVRAbSQA6c3IO5BovHwsXRlFj6ZHm595Sxb8H/jco
+         4mR/LLjUB+8gpw/zXiApWAE8ku2dBJkCpT/PgtoIR7cmNsaTCb1UIc8tuc+95857VzOs
+         8ec+3VztyJen4Ou1FDE9JgMTry8eFI3waeUAlo/Pt2rEhyrTItJ4Jgpf7n4DD3XtAvzj
+         lDMRkyJDxtzBNe5+T4Y1lEjaGujtDvw35RjmxKBcG+aaitqqZ5W03/DDOX++vzKhpvog
+         T2GA==
+X-Received: by 10.194.158.234 with SMTP id wx10mr22079849wjb.23.1427317600013;
+        Wed, 25 Mar 2015 14:06:40 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneen-vb ([79.170.49.71])
+        by mx.google.com with ESMTPSA id k6sm22314690wia.6.2015.03.25.14.06.38
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Mar 2015 14:06:39 -0700 (PDT)
+Received: by haneen-vb (Postfix, from userid 1000)
+	id D0C13C1FFD; Wed, 25 Mar 2015 10:56:08 +0300 (AST)
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: jic23@kernel.org,
-	gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org,
-	Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH] iio: Add ABI documentation for in_magn offset and raw values
-Date: Fri, 13 Mar 2015 19:16:06 +0530
-Message-Id: <1426254366-27021-1-git-send-email-darshanapadmadas@gmail.com>
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
+Subject: [PATCH 4/4] Staging: iio: Add braces on all arms of if statement
+Date: Wed, 25 Mar 2015 10:55:06 +0300
+Message-Id: <1427270106-5024-1-git-send-email-hamohammed.sa@gmail.com>
 X-Mailer: git-send-email 1.9.1
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <1427269782-4769-1-git-send-email-hamohammed.sa@gmail.com>
+References: <1427269782-4769-1-git-send-email-hamohammed.sa@gmail.com>
 
-This patch adds ABI documentation entries for in_magn_offset
-and in_magn_raw. At least one user exists, mag3110 and
-hid-sensor-magn-3d in drivers/iio/magnetometer.
+The following patch adds braces on all arms of if statement.
+Issue addressed by checkpatch.pl.
 
-Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- Documentation/ABI/testing/sysfs-bus-iio | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/iio/accel/lis3l02dq_ring.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
-index 9a70c31..37564cb 100644
---- a/Documentation/ABI/testing/sysfs-bus-iio
-+++ b/Documentation/ABI/testing/sysfs-bus-iio
-@@ -177,6 +177,7 @@ Description:
- 		arbitrarily assigned). Data converted by application of offset
- 		and scale to degrees.
- 
-+What:		/sys/bus/iio/devices/iio:deviceX/in_magn_raw
- What:		/sys/bus/iio/devices/iio:deviceX/in_magn_x_raw
- What:		/sys/bus/iio/devices/iio:deviceX/in_magn_y_raw
- What:		/sys/bus/iio/devices/iio:deviceX/in_magn_z_raw
-@@ -253,6 +254,7 @@ What:		/sys/bus/iio/devices/iio:deviceX/in_temp_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressureY_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressure_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_humidityrelative_offset
-+What:		/sys/bus/iio/devices/iio:deviceX/in_magn_offset
- KernelVersion:	2.6.35
- Contact:	linux-iio@vger.kernel.org
- Description:
+diff --git a/drivers/staging/iio/accel/lis3l02dq_ring.c b/drivers/staging/iio/accel/lis3l02dq_ring.c
+index 740cd83..20435b5 100644
+--- a/drivers/staging/iio/accel/lis3l02dq_ring.c
++++ b/drivers/staging/iio/accel/lis3l02dq_ring.c
+@@ -330,19 +330,21 @@ static int lis3l02dq_buffer_postenable(struct iio_dev *indio_dev)
+ 	if (test_bit(0, indio_dev->active_scan_mask)) {
+ 		t |= LIS3L02DQ_REG_CTRL_1_AXES_X_ENABLE;
+ 		oneenabled = true;
+-	} else
++	} else {
+ 		t &= ~LIS3L02DQ_REG_CTRL_1_AXES_X_ENABLE;
++	}
+ 	if (test_bit(1, indio_dev->active_scan_mask)) {
+ 		t |= LIS3L02DQ_REG_CTRL_1_AXES_Y_ENABLE;
+ 		oneenabled = true;
+-	} else
++	} else {
+ 		t &= ~LIS3L02DQ_REG_CTRL_1_AXES_Y_ENABLE;
++	}
+ 	if (test_bit(2, indio_dev->active_scan_mask)) {
+ 		t |= LIS3L02DQ_REG_CTRL_1_AXES_Z_ENABLE;
+ 		oneenabled = true;
+-	} else
++	} else {
+ 		t &= ~LIS3L02DQ_REG_CTRL_1_AXES_Z_ENABLE;
+-
++	}
+ 	if (!oneenabled) /* what happens in this case is unknown */
+ 		return -EINVAL;
+ 	ret = lis3l02dq_spi_write_reg_8(indio_dev,
 -- 
 1.9.1
 
