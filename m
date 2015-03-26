@@ -1,46 +1,104 @@
 X-GM-THRID: 10068144685056
-X-Received: by 10.236.31.97 with SMTP id l61mr18568894yha.10.1427411152127;
-        Thu, 26 Mar 2015 16:05:52 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d6641f829ef09360
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.110.200 with SMTP id ic8mr18308914obb.34.1427398305218;
+        Thu, 26 Mar 2015 12:31:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.136.103 with SMTP id k100ls787062iod.15.gmail; Thu, 26 Mar
- 2015 16:05:51 -0700 (PDT)
-X-Received: by 10.42.99.140 with SMTP id w12mr38666704icn.12.1427411151551;
-        Thu, 26 Mar 2015 16:05:51 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id oc12si25402pdb.1.2015.03.26.16.05.51
+Received: by 10.50.43.197 with SMTP id y5ls23342igl.26.canary; Thu, 26 Mar
+ 2015 12:31:45 -0700 (PDT)
+X-Received: by 10.50.57.47 with SMTP id f15mr31750596igq.1.1427398305051;
+        Thu, 26 Mar 2015 12:31:45 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
+        by gmr-mx.google.com with ESMTPS id pj7si791347pbb.2.2015.03.26.12.31.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Mar 2015 16:05:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Thu, 26 Mar 2015 12:31:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 636C289D;
-	Thu, 26 Mar 2015 23:05:49 +0000 (UTC)
-Date: Fri, 27 Mar 2015 00:05:47 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Vatika Harlalka <vatikaharlalka@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: rtl8192u: Remove extern
- and add static
-Message-ID: <20150326230547.GA13524@kroah.com>
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-x235.google.com with SMTP id op1so71994379pdb.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 12:31:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=B4IXmvAXcZczRGeoL/HMXY5CwRmMRZHrCxeiW1xnEHc=;
+        b=eQvkHon8hV507vEFdSbJk5nBcg40GMz4uWactHw0NUG9/N76/pvyIrJA1/lzhrguo6
+         QbtqKCMH7wIYo+5BCPVGBMv8JBaEMUTIqozjYuDvcNGE2d+WxNiFqSVpJgaQ7A0e33Wr
+         +LFKOy2i/oOF5m3hXszCegWT77HSo6LEVVRmMpfa5bbJxh4G+ScoSPboqfQmZe4NTG+7
+         PX8Cdo8ndCM/OqJxaeOIQTpIDGFx0nZ1lk/3BqvqHcE1Z0t40aZ5+98SMsypuHE5uHDN
+         uyBv0I+TJDVmlEJFB+ptab0WQlKoJolRimwqPq1O3AN1uvhyrIx2FDge9k404Msl05D4
+         syUQ==
+X-Received: by 10.66.137.98 with SMTP id qh2mr29081064pab.76.1427398304956;
+        Thu, 26 Mar 2015 12:31:44 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from akanksha ([14.139.82.6])
+        by mx.google.com with ESMTPSA id ov5sm6388174pdb.91.2015.03.26.12.31.42
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 26 Mar 2015 12:31:43 -0700 (PDT)
+Date: Fri, 27 Mar 2015 00:59:30 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] Staging: rtl8192u: Make function static
+Message-ID: <c4cc5e33cfd1b952cb5da692b4dbae6f4611a16c.1427397436.git.vatikaharlalka@gmail.com>
 References: <cover.1427397436.git.vatikaharlalka@gmail.com>
- <848f4ec0238f31522dac7dc409d4a49df6afda05.1427397436.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <848f4ec0238f31522dac7dc409d4a49df6afda05.1427397436.git.vatikaharlalka@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1427397436.git.vatikaharlalka@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, Mar 27, 2015 at 12:59:19AM +0530, Vatika Harlalka wrote:
-> These functions are accessed only in this file and
-> so are declared as static.
-> 
-> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_core.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+This function is used in only one c file and so
+its definition is removed from the header file
+and it is declared as static.
 
-This doesn't apply to my tree at all :(
+Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U.h      | 1 -
+ drivers/staging/rtl8192u/r8192U_core.c | 4 ++--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8192u/r8192U.h b/drivers/staging/rtl8192u/r8192U.h
+index 6c2e438..221dbd7 100644
+--- a/drivers/staging/rtl8192u/r8192U.h
++++ b/drivers/staging/rtl8192u/r8192U.h
+@@ -1153,7 +1153,6 @@ typedef enum {
+ 
+ bool init_firmware(struct net_device *dev);
+ short rtl819xU_tx_cmd(struct net_device *dev, struct sk_buff *skb);
+-short rtl8192_tx(struct net_device *dev, struct sk_buff *skb);
+ 
+ u32 read_cam(struct net_device *dev, u8 addr);
+ void write_cam(struct net_device *dev, u8 addr, u32 data);
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index cbcdcf2..7e3671c 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -942,7 +942,7 @@ static void rtl8192_data_hard_resume(struct net_device *dev)
+ {
+ 	// FIXME !!
+ }
+-
++static short rtl8192_tx(struct net_device *dev, struct sk_buff *skb);
+ /* this function TX data frames when the ieee80211 stack requires this.
+  * It checks also if we need to stop the ieee tx queue, eventually do it
+  */
+@@ -1487,7 +1487,7 @@ static void tx_zero_isr(struct urb *tx_urb)
+  * skb->cb will contain all the following information,
+  * priority, morefrag, rate, &dev.
+  * */
+-short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
++static short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	cb_desc *tcb_desc = (cb_desc *)(skb->cb + MAX_DEV_ADDR_SIZE);
+-- 
+1.9.1
+
 
