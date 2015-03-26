@@ -1,84 +1,46 @@
-X-GM-THRID: 3565286326272
-X-Received: by 10.50.57.47 with SMTP id f15mr7154572igq.1.1424934431110;
-        Wed, 25 Feb 2015 23:07:11 -0800 (PST)
+X-GM-THRID: 10068144685056
+X-Received: by 10.236.31.97 with SMTP id l61mr18568894yha.10.1427411152127;
+        Thu, 26 Mar 2015 16:05:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.170 with SMTP id 42ls105450iom.25.gmail; Wed, 25 Feb
- 2015 23:07:10 -0800 (PST)
-X-Received: by 10.43.144.81 with SMTP id jp17mr7017641icc.25.1424934430827;
-        Wed, 25 Feb 2015 23:07:10 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id hs7si295278pad.1.2015.02.25.23.07.10
+Received: by 10.107.136.103 with SMTP id k100ls787062iod.15.gmail; Thu, 26 Mar
+ 2015 16:05:51 -0700 (PDT)
+X-Received: by 10.42.99.140 with SMTP id w12mr38666704icn.12.1427411151551;
+        Thu, 26 Mar 2015 16:05:51 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id oc12si25402pdb.1.2015.03.26.16.05.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 23:07:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Thu, 26 Mar 2015 16:05:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padfb1 with SMTP id fb1so11734268pad.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 23:07:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=bl6iEEvkapFBQBTkPGMRoOgwu2TbzUhWaTFrG6iXGq8=;
-        b=TOiWoP/5Ac13LzvVHWP0wMGZQNhNBV9pD+aszfrmYG6i7PCzcbjXjldSnvIwpVA6P2
-         dQGcwD9xVhrnzunxU3/5k+5+QsbbIyYVhguKv8DU28WGBfqEgoCmBL0WWKNdqvLZ81cy
-         oVfLI6NvQXxqzp4OED24B2bogB8a/DsGhIvErATJ1nrgQRKftdWcMuqS3VY6PDzzlTV/
-         EPU2lPehpFxO1D+gIgy1PGWFNso8hDxmJ5MAi4c2pDkZmSkXHSQRgUsJEXe3TVsVcKaU
-         tDlPIT27WwSXxJ/bh5xf14zKACPQTgM4MOm0Gc1COjiAggCtc/KxQgmGrkHczlnF7H58
-         mm5A==
-X-Received: by 10.68.253.104 with SMTP id zz8mr2652823pbc.73.1424934430684;
-        Wed, 25 Feb 2015 23:07:10 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id go1sm43250199pbd.75.2015.02.25.23.07.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 23:07:10 -0800 (PST)
-Date: Thu, 26 Feb 2015 12:38:13 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 0/4] staging: rtl8192u: Fix warnings in ieee80211_crypt.c
-Message-ID: <cover.1424934230.git.navyasri.tech@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 636C289D;
+	Thu, 26 Mar 2015 23:05:49 +0000 (UTC)
+Date: Fri, 27 Mar 2015 00:05:47 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: rtl8192u: Remove extern
+ and add static
+Message-ID: <20150326230547.GA13524@kroah.com>
+References: <cover.1427397436.git.vatikaharlalka@gmail.com>
+ <848f4ec0238f31522dac7dc409d4a49df6afda05.1427397436.git.vatikaharlalka@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <848f4ec0238f31522dac7dc409d4a49df6afda05.1427397436.git.vatikaharlalka@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-[changes in v4]
-In v4 version, code indentation is changed to look better.
+On Fri, Mar 27, 2015 at 12:59:19AM +0530, Vatika Harlalka wrote:
+> These functions are accessed only in this file and
+> so are declared as static.
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/r8192U_core.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-[changes in v3]
-In v3 version, the printk functions which are changed to pr_dbg
-are changed to pr_debug as pr_dbg gives a 'implicit declaration of
-function' warning when you build.
-
-[changes in v2]
-In v2 version of this patchset I correct the commit message of
-[PATCH 1/4] to be clearer and remove a comment from [PATCH 2/4]
-whose style was changed in version v1.
-
-[original cover letter]
-This patchset removes an unnecessary comment and clears checkpatch.pl
-warnings in ieee80211_crypt.c such as:
-convert printk to a preferable function like netdev_dbg or pr_dbg,
-replace asm header files with
-linux ones, fix the quoted string split across a line.
-
-
-Navya Sri Nizamkari (4):
-  staging: rtl8192u: Convert from printk into netdev_dbg or pr_dbg
-  staging: rtl8192u: Remove unnecessary comment.
-  staging: rtl8192u: Replace asm header files with linux ones.
-  staging: rtl8192u: Fix quoted string split across lines.
-
- .../staging/rtl8192u/ieee80211/ieee80211_crypt.c    | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
-
--- 
-1.9.1
-
+This doesn't apply to my tree at all :(
 
