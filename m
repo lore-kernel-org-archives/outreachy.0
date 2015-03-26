@@ -1,73 +1,70 @@
-X-GM-THRID: 6201441777566613504
-X-Received: by 10.195.12.234 with SMTP id et10mr3681346wjd.2.1443885680422;
-        Sat, 03 Oct 2015 08:21:20 -0700 (PDT)
+X-GM-THRID: 10040684576768
+X-Received: by 10.182.33.97 with SMTP id q1mr18094893obi.42.1427394616955;
+        Thu, 26 Mar 2015 11:30:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.41.4 with SMTP id p4ls287439lfp.58.gmail; Sat, 03 Oct 2015
- 08:21:19 -0700 (PDT)
-X-Received: by 10.112.209.73 with SMTP id mk9mr3656083lbc.14.1443885679834;
-        Sat, 03 Oct 2015 08:21:19 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
-        by gmr-mx.google.com with ESMTPS id w4si104937wiz.0.2015.10.03.08.21.19
+Received: by 10.107.29.213 with SMTP id d204ls706394iod.53.gmail; Thu, 26 Mar
+ 2015 11:30:16 -0700 (PDT)
+X-Received: by 10.70.53.137 with SMTP id b9mr17364445pdp.4.1427394616467;
+        Thu, 26 Mar 2015 11:30:16 -0700 (PDT)
+Return-Path: <helen.fornazier@gmail.com>
+Received: from mail-ie0-x22f.google.com (mail-ie0-x22f.google.com. [2607:f8b0:4001:c03::22f])
+        by gmr-mx.google.com with ESMTPS id s16si4603ign.0.2015.03.26.11.30.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Oct 2015 08:21:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Mar 2015 11:30:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:4001:c03::22f as permitted sender) client-ip=2607:f8b0:4001:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:4001:c03::22f as permitted sender) smtp.mail=helen.fornazier@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x232.google.com with SMTP id lk2so63904029wic.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Oct 2015 08:21:19 -0700 (PDT)
+Received: by mail-ie0-x22f.google.com with SMTP id vj10so53544459iec.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 11:30:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=v51YYFf1IqWGpx5p8sSVXn1oW1fb4K0Zf9WkrUmBsdM=;
-        b=D5Fx48jBxt7egzkSF2GxgC28TrqFX5if63LpjJa+17dH2SXvFKj2sbXJTfSaLhgEW+
-         8V9QVXcK/rxQ0x25macVm4mLst1QwCsc5apE1q2aC1tZFkHbW6Azi6Tht4ckkqe4nL5B
-         1rH+a6d3wMMSnTwO+4Hex/EWjWfyKxnrp9BsptVRNXi2vQxZQsq70YXN5Sxy30gAAzU7
-         aZZmtEkroApAaxhfM1vt8AV4xrdl1twFr594pb+ImDziNB5L98bR+rzGFjKJ3NNfKSNl
-         qyrKFvZOieFXYpxTa5R7MUeqHPcj6YQaChcyKvkZ6KBp0GZSsi2uDr83gD0sU8QtXqJ2
-         VLmQ==
-X-Received: by 10.180.107.1 with SMTP id gy1mr3229328wib.56.1443885679700;
-        Sat, 03 Oct 2015 08:21:19 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([141.85.225.214])
-        by smtp.gmail.com with ESMTPSA id it4sm16962809wjb.0.2015.10.03.08.21.17
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Oct 2015 08:21:19 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
+        h=mime-version:from:date:message-id:subject:to:content-type;
+        bh=a/AlORHzPFrVREF61fxSGwY3dS/+MCXQh2l0tMct7Jk=;
+        b=PCr8fdq8WLcd0cSUYE8oO8B/Iwv1TESf9YUsJjBDUis6VYw1rVLI6t0P0LMkyh2hLA
+         koHG+c3veuQ2qE8+9mp6o+dQHzIOYQleXJ0Mjc/OinURB4xUeSG/OJ0phIKrSwrd+ZPm
+         1XuIFjwlw6RCkOm5I0+k3UvZE6hzpSTzoJWwgUH86FbU5M1r0u+/yUiXJkGlOvYTiAmq
+         k1/Iy4csQvm9smJLIVD7ow/OPXy9GS03Q4OpEIRuYlmWT5Jixjysuj08E6ZrNm67mufY
+         BO7Gpefob156sfmYN7Wb58FBiMNXlKLYEjVT8eUPmSxJl3wXtHgT5h6rY/Jl6SlTy1MW
+         i6Dw==
+X-Received: by 10.50.25.225 with SMTP id f1mr38577967igg.29.1427394616335;
+ Thu, 26 Mar 2015 11:30:16 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.36.82.85 with HTTP; Thu, 26 Mar 2015 11:29:56 -0700 (PDT)
+From: Helen Fornazier <helen.fornazier@gmail.com>
+Date: Thu, 26 Mar 2015 15:29:56 -0300
+Message-ID: <CAPW4XYbz2rOWDJWPKeVf_PGWDK6Jqu6a49Y-9rOd8PJzhuZhKg@mail.gmail.com>
+Subject: [KERNEL NEWBIES ACCESS] HelenFornazier
 To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH] staging: android: Remove kernel-doc typo
-Date: Sat,  3 Oct 2015 18:20:47 +0300
-Message-Id: <1443885647-52092-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Content-Type: multipart/alternative; boundary=047d7bd76f7c0fa9430512353542
 
-Fix 'No description found for parameter 'prot_mask'' and 'Excess
-struct/union/enum/typedef member 'prot_masks' description in
-'ashmem_area'' warnings by removing typo
+--047d7bd76f7c0fa9430512353542
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
----
- drivers/staging/android/ashmem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi,
 
-diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-index 60200a3..236bfae0 100644
---- a/drivers/staging/android/ashmem.c
-+++ b/drivers/staging/android/ashmem.c
-@@ -43,7 +43,7 @@
-  * @unpinned_list:	The list of all ashmem areas
-  * @file:		The shmem-based backing file
-  * @size:		The size of the mapping, in bytes
-- * @prot_masks:		The allowed protection bits, as vm_flags
-+ * @prot_mask:		The allowed protection bits, as vm_flags
-  *
-  * The lifecycle of this structure is from our parent file's open() until
-  * its release(). It is also protected by 'ashmem_mutex'
+I would like to request the the kernel newbies access to allow me to follow
+the instructions in page http://kernelnewbies.org/OutreachyTasks
+
+Username: HelenFornazier
+
+Thanks
 -- 
-1.9.1
+Helen M. Koike Fornazier
 
+--047d7bd76f7c0fa9430512353542
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi,<div><br></div><div>I would like to request the the ker=
+nel newbies access to allow me to follow the instructions in page <a href=
+=3D"http://kernelnewbies.org/OutreachyTasks">http://kernelnewbies.org/Outre=
+achyTasks</a></div><div><br></div><div>Username:=C2=A0HelenFornazier<br cle=
+ar=3D"all"><div><br></div><div>Thanks</div>-- <br><div class=3D"gmail_signa=
+ture">Helen M. Koike Fornazier<br></div>
+</div></div>
+
+--047d7bd76f7c0fa9430512353542--
 
