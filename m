@@ -1,85 +1,108 @@
-X-GM-THRID: 9926466338816
-X-Received: by 10.52.90.11 with SMTP id bs11mr15096390vdb.8.1427362301327;
-        Thu, 26 Mar 2015 02:31:41 -0700 (PDT)
+X-GM-THRID: 9691594752000
+X-Received: by 10.182.44.199 with SMTP id g7mr11175956obm.11.1427397036382;
+        Thu, 26 Mar 2015 12:10:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.90.72 with SMTP id w66ls662119qgd.0.gmail; Thu, 26 Mar
- 2015 02:31:41 -0700 (PDT)
-X-Received: by 10.236.209.33 with SMTP id r21mr15272738yho.6.1427362301059;
-        Thu, 26 Mar 2015 02:31:41 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id iw3si620151pbd.1.2015.03.26.02.31.41
+Received: by 10.140.36.228 with SMTP id p91ls866896qgp.36.gmail; Thu, 26 Mar
+ 2015 12:10:36 -0700 (PDT)
+X-Received: by 10.140.147.130 with SMTP id 124mr17651163qht.8.1427397036167;
+        Thu, 26 Mar 2015 12:10:36 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-yh0-x229.google.com (mail-yh0-x229.google.com. [2607:f8b0:4002:c01::229])
+        by gmr-mx.google.com with ESMTPS id f61si410209yho.3.2015.03.26.12.10.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Mar 2015 02:31:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Thu, 26 Mar 2015 12:10:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:4002:c01::229 as permitted sender) client-ip=2607:f8b0:4002:c01::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:4002:c01::229 as permitted sender) smtp.mail=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id wz10so6676311pac.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 02:31:41 -0700 (PDT)
+Received: by mail-yh0-x229.google.com with SMTP id m52so30871673yhi.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 12:10:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=xVJ3lziz59TeOfDLr+Jd2Q6AWjjzVYiiPEHpGJWa9ek=;
-        b=I5RfE1NrORt2ACI3Tpv92+0QmSwdoSJUWDjfxV5as6zvFHEKTLnuLOTIrlZGDBk61c
-         Ztl3wA4BVeMNU4PAaYIBPZ6g0rAw5cbHcERH7SC1GVRTNTjcl06MgBLj5c9JGVomKqqS
-         YvcFVQJX7w5aXm8yjnGqkAk5eoBG6b5b/q+ec1NFXzGErn8hstXMXQrxtBmyIu5rIIMw
-         BBgESottMWiq4JIxMY1dEBAJBKp5XrmOZpBKbBqnM0q2XuKbq6AQRTNzPFJuui5sPxpK
-         VnR8aj5A6k8vO0IKtsSNCrrP4s0s/4susfFCqKv4ebwhDIf5/CbdGnRU3FiGcXDWinv1
-         htBw==
-X-Received: by 10.70.0.176 with SMTP id 16mr25355230pdf.78.1427362300929;
-        Thu, 26 Mar 2015 02:31:40 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id bt2sm4978482pad.12.2015.03.26.02.31.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Mar 2015 02:31:39 -0700 (PDT)
-Date: Thu, 26 Mar 2015 14:59:27 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: octeon: Move extern to header file
-Message-ID: <20150326092927.GA4803@akanksha>
+        h=from:message-id:date:user-agent:mime-version:to:cc:subject
+         :references:in-reply-to:content-type:content-transfer-encoding;
+        bh=KywqMJ6tWtNaHEj1mDbPAiiXVM4qtgox2loC+E/uAlE=;
+        b=LqCk2v7LFLnpO5moui5CKEp/bH17Wi6eBxjw3Ap4GUn8AV24jVbth0dlkcL9abUQXM
+         lToMDls+n03PiG5a3JHtCTPujHe6u2AsBXoxrVsLsaH6H+LD8SudawMg2/Ol6di2JVSU
+         z/DdkcBg4gzpmVtifu49OWWE38Dk5A7/zwYSSmEvUGMXY1VPB0W4b6ZcnnnBGqJf9FMn
+         +aswKFKQilP3IzrbOJMqJXz0ZTHUzXbbMz1lgtZeWmWrkQVSLYi7+3jn+3ymf3DDWyia
+         iLq6dac6CjzbGlUi+jk8gOSf9ZzlvQp4J5scsR+OwMlribdEG8cYHQrWXnVVLzJYuUoe
+         /fyQ==
+X-Received: by 10.55.26.209 with SMTP id l78mr31787758qkh.60.1427397036077;
+        Thu, 26 Mar 2015 12:10:36 -0700 (PDT)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from [10.15.49.233] (nat-pool-rdu-t.redhat.com. [66.187.233.202])
+        by mx.google.com with ESMTPSA id x15sm3993458qkx.28.2015.03.26.12.10.35
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Mar 2015 12:10:35 -0700 (PDT)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Message-ID: <551459AA.2030300@gmail.com>
+Date: Thu, 26 Mar 2015 15:10:34 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: Julia Lawall <julia.lawall@lip6.fr>, 
+ Marianne Moeller Knudsen <marianne@masu.dk>
+CC: Greg KH <gregkh@linuxfoundation.org>, 
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192e: Replace printk
+ with netdev_info
+References: <20150323180424.GA2636@debianvm> <20150323214302.GA24016@kroah.com> <20150326013322.GA3360@debianvm> <alpine.DEB.2.10.1503261426550.2661@hadrien>
+In-Reply-To: <alpine.DEB.2.10.1503261426550.2661@hadrien>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-Move extern to header file. Functions have extern storage
-class by default so the keyword "extern" is removed."
+On 03/26/15 09:27, Julia Lawall wrote:
+> 
+> 
+> On Thu, 26 Mar 2015, Marianne Moeller Knudsen wrote:
+> 
+>> On Mon, Mar 23, 2015 at 10:43:02PM +0100, Greg KH wrote:
+>>> On Mon, Mar 23, 2015 at 07:04:24PM +0100, Marianne Moeller Knudsen wrote:
+>>>> Replace printk(KERN_INFO...) by netdev_info for more uniform error
+>>>> reporting. Issue found by checkpatch.
+>>>>
+>>>> Signed-off-by: Marianne Moeller Knudsen <marianne@masu.dk>
+>>>> ---
+>>>>  drivers/staging/rtl8192e/rtl819x_TSProc.c |    2 +-
+>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
+>>>> index c51f7e0..949cba4 100644
+>>>> --- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
+>>>> +++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
+>>>> @@ -479,7 +479,7 @@ void RemovePeerTS(struct rtllib_device *ieee, u8 *Addr)
+>>>>
+>>>>  	list_for_each_entry_safe(pTS, pTmpTS, &ieee->Tx_TS_Admit_List, List) {
+>>>>  		if (memcmp(pTS->Addr, Addr, 6) == 0) {
+>>>> -			printk(KERN_INFO "====>remove Tx_TS_admin_list\n");
+>>>> +			netdev_info(ieee->dev, "====>remove Tx_TS_admin_list\n");
+>>>>  			RemoveTsEntry(ieee, pTS, TX_DIR);
+>>>>  			list_del_init(&pTS->List);
+>>>>  			list_add_tail(&pTS->List, &ieee->Tx_TS_Unused_List);
+>>>
+>>> Someone already sent this patch before you did :(
+>>
+>> Out of curiosity: All the other prints in this file uses RTLLIB_DEBUG. Could it be assumed
+>> that they could be used here as well? Something like RTLLIB_DEBUG(RLTLIB_DL_TS,
+>> ....)?
+> 
+> Your goal should be to get rid of RTLLIB_DEBUG, and replace them with
+> standard kernel functions (dev_err, etc).
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/octeon/ethernet-mdio.h | 1 +
- drivers/staging/octeon/ethernet.c      | 2 --
- 2 files changed, 1 insertion(+), 2 deletions(-)
+Note that RTLLIB_DEBUG is used to select the debug print levels based on
+a module parameter. Switching them over to always using netdev_debug()
+is not necessarily desirable.
 
-diff --git a/drivers/staging/octeon/ethernet-mdio.h b/drivers/staging/octeon/ethernet-mdio.h
-index eccfcc5..9cb652f 100644
---- a/drivers/staging/octeon/ethernet-mdio.h
-+++ b/drivers/staging/octeon/ethernet-mdio.h
-@@ -42,3 +42,4 @@
- extern const struct ethtool_ops cvm_oct_ethtool_ops;
- int cvm_oct_ioctl(struct net_device *dev, struct ifreq *rq, int cmd);
- int cvm_oct_phy_setup_device(struct net_device *dev);
-+void octeon_mdiobus_force_mod_depencency(void);
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 460e854..735d5be 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -573,8 +573,6 @@ static const struct net_device_ops cvm_oct_pow_netdev_ops = {
- #endif
- };
- 
--extern void octeon_mdiobus_force_mod_depencency(void);
--
- static struct device_node *cvm_oct_of_get_child(
- 				const struct device_node *parent, int reg_val)
- {
--- 
-1.9.1
+To a large extent it will depend on what the maintainer/developer needs
+them for. It might be possible to clean them up and make them prettier,
+but just pulling them out and replacing them with netdev_foo() needs
+consideration first.
+
+Cheers,
+Jes
+
 
 
