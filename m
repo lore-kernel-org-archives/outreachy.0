@@ -1,205 +1,322 @@
-X-GM-THRID: 7936016384000
-X-Received: by 10.194.161.194 with SMTP id xu2mr6574136wjb.1.1426181712991;
-        Thu, 12 Mar 2015 10:35:12 -0700 (PDT)
+X-GM-THRID: 9881078726656
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,dd95e5ef2cc5e81
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.236.202.66 with SMTP id c42mr15784057yho.18.1427371802429;
+        Thu, 26 Mar 2015 05:10:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.135 with SMTP id t7ls295363lag.45.gmail; Thu, 12 Mar
- 2015 10:35:12 -0700 (PDT)
-X-Received: by 10.112.130.70 with SMTP id oc6mr6750224lbb.13.1426181712456;
-        Thu, 12 Mar 2015 10:35:12 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x22d.google.com (mail-we0-x22d.google.com. [2a00:1450:400c:c03::22d])
-        by gmr-mx.google.com with ESMTPS id sf8si590700wic.2.2015.03.12.10.35.12
+Received: by 10.182.52.194 with SMTP id v2ls606409obo.21.gmail; Thu, 26 Mar
+ 2015 05:10:02 -0700 (PDT)
+X-Received: by 10.182.22.68 with SMTP id b4mr16138236obf.31.1427371802094;
+        Thu, 26 Mar 2015 05:10:02 -0700 (PDT)
+Return-Path: <helen.fornazier@gmail.com>
+Received: from mail-ig0-x22b.google.com (mail-ig0-x22b.google.com. [2607:f8b0:4001:c05::22b])
+        by gmr-mx.google.com with ESMTPS id e4si1418937igt.3.2015.03.26.05.10.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 10:35:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) client-ip=2a00:1450:400c:c03::22d;
+        Thu, 26 Mar 2015 05:10:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:4001:c05::22b as permitted sender) client-ip=2607:f8b0:4001:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::22d as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:4001:c05::22b as permitted sender) smtp.mail=helen.fornazier@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wevl61 with SMTP id l61so17954365wev.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 10:35:12 -0700 (PDT)
+Received: by mail-ig0-x22b.google.com with SMTP id qf9so51034324igb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 05:10:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=UI0zAKN6HsKr8DumWysDjNRB7zy/mFfE5qLuF8F9gI8=;
-        b=wQGR5gB+j3wDlZtojiJVj4LlE1jMeeNIk83/Um7/IZbVv5YnwSdf+DAqhoeYMHeRF4
-         2ctusz7n9MR7nyCd/7IWMz9mtC2U/eAS1hGtTZqMQkawVKou8ZW2z32hpsE+1BNFV4x4
-         g5R/xZcy8YvZtExpwqJArX7piFAhvoupSDSuAzXUvVnRp0j1ecngjVhazCsZFGzq7qnX
-         o/q68hrz3diOTYRvxWGBJuT001i7wAae08bglWjTbXIFu91kxNIeJPRPEnnmB6AobZWp
-         2OhIHwmjMuruCF3E1mCALVVSM+r02hyQytVSeHJvB+37VobV36a+CAdMamD6IKXsLeNG
-         dO3g==
-X-Received: by 10.194.94.1 with SMTP id cy1mr87543335wjb.127.1426181712309;
-        Thu, 12 Mar 2015 10:35:12 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id q10sm10975249wjr.41.2015.03.12.10.35.11
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 12 Mar 2015 10:35:11 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>,
-	ksenija.stanojevic@gmail.co
-Subject: [PATCH v2 1/2] Staging: rtl8192u: Remove typedefs
-Date: Thu, 12 Mar 2015 18:35:04 +0100
-Message-Id: <1e60da5ce257bae24aaee7d63b0857c2b6b2fe5d.1426181567.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1426181567.git.ksenija.stanojevic@gmail.com>
-References: <cover.1426181567.git.ksenija.stanojevic@gmail.com>
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=e/71rGoXQ8ylwsv0zjgl5vPVHwMcsidoZqzkFaXonV4=;
+        b=zhXbNj9HvvxWNZPg10/SagGKg0B3doebmsWnr9pShUAZ6U/ZFgC3czvvJ9z7y18SRS
+         m2H07h0//kbIUckd47w+/WV2r3fP3GzRPSVXTr1qJXP9O/cZIv5zH9yfXo16Mw+sqcGZ
+         JXnSlT1WzkXxOjeYYAFf62XGtnMctChwuDsbZ91vJamqgn2KW5gun4kX7ihHqOCt7G0/
+         P9IupsUSNyoIBWWwy4WSATqeyex5pGHQlqtXAxwgb/S5nIp+lgakkYa7HPM7pPka8O9+
+         2XwcgLhcm2swULp4tKwG4L1aXYJxRxWqwA3VbHeTg0FtEX8OfLjAn04lxRyKVVZWAweB
+         Gtrg==
+X-Received: by 10.50.43.138 with SMTP id w10mr36280267igl.19.1427371801766;
+ Thu, 26 Mar 2015 05:10:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.36.82.85 with HTTP; Thu, 26 Mar 2015 05:09:41 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.02.1503260732230.2066@localhost6.localdomain6>
+References: <1427328162-6345-1-git-send-email-helen.fornazier@gmail.com> <alpine.DEB.2.02.1503260732230.2066@localhost6.localdomain6>
+From: Helen Fornazier <helen.fornazier@gmail.com>
+Date: Thu, 26 Mar 2015 09:09:41 -0300
+Message-ID: <CAPW4XYYu3mfqW42rJU98SLv2yVAhiKemmw1x3KHFTejPEm-grg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: i2o: Remove indentation of labels
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=089e01176c7f34f45a05122fe566
 
-This patch removes typdefs and renames struct and enum structures
-according to kernel coding standard. Also where ever struct or enum
-was added, line were aligned and doesn't exceed 80 character mark.
-Macro cmpk_query_cfg_t was removed since it's the same as struct
-cmpk_set_cfg.
+--089e01176c7f34f45a05122fe566
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-v2:change commit message.
+On Thu, Mar 26, 2015 at 3:33 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 
- drivers/staging/rtl8192u/r819xU_cmdpkt.h | 53 +++++++++++++++-----------------
- 1 file changed, 25 insertions(+), 28 deletions(-)
+> i2o is on the way out of the kernel.  So there is no point to mae patches
+> on it.  You can find the list of the directories to avoid in the tutorial,
+> in the section Find a driver to clean up.
+>
+> julia
+>
 
-diff --git a/drivers/staging/rtl8192u/r819xU_cmdpkt.h b/drivers/staging/rtl8192u/r819xU_cmdpkt.h
-index 52cd437..6ea0cec 100644
---- a/drivers/staging/rtl8192u/r819xU_cmdpkt.h
-+++ b/drivers/staging/rtl8192u/r819xU_cmdpkt.h
-@@ -1,12 +1,12 @@
- #ifndef R819XUSB_CMDPKT_H
- #define R819XUSB_CMDPKT_H
- /* Different command packet have dedicated message length and definition. */
--#define		CMPK_RX_TX_FB_SIZE		sizeof(cmpk_txfb_t)	/* 20 */
--#define		CMPK_TX_SET_CONFIG_SIZE		sizeof(cmpk_set_cfg_t)	/* 16 */
--#define		CMPK_BOTH_QUERY_CONFIG_SIZE	sizeof(cmpk_set_cfg_t)	/* 16 */
--#define		CMPK_RX_TX_STS_SIZE		sizeof(cmpk_tx_status_t)
--#define		CMPK_RX_DBG_MSG_SIZE		sizeof(cmpk_rx_dbginfo_t)
--#define		CMPK_TX_RAHIS_SIZE		sizeof(cmpk_tx_rahis_t)
-+#define		CMPK_RX_TX_FB_SIZE sizeof(struct cmpk_txfb)	/* 20 */
-+#define		CMPK_TX_SET_CONFIG_SIZE sizeof(struct cmpk_set_cfg)	/* 16 */
-+#define		CMPK_BOTH_QUERY_CONFIG_SIZE sizeof(struct cmpk_set_cfg)	/* 16 */
-+#define		CMPK_RX_TX_STS_SIZE sizeof(struct cmpk_tx_status)
-+#define		CMPK_RX_DBG_MSG_SIZE sizeof(struct cmpk_rx_dbginfo)
-+#define		CMPK_TX_RAHIS_SIZE sizeof(struct cmpk_tx_rahis)
- 
- /* 2008/05/08 amy For USB constant. */
- #define ISR_TxBcnOk		BIT27		/* Transmit Beacon OK */
-@@ -19,7 +19,7 @@
- /*------------------------------Define structure----------------------------*/
- /* Define different command packet structure. */
- /* 1. RX side: TX feedback packet. */
--typedef struct tag_cmd_pkt_tx_feedback {
-+struct  cmpk_txfb {
- 	/* DWORD 0 */
- 	u8	element_id;			/* Command packet type. */
- 	u8	length;				/* Command packet length. */
-@@ -52,20 +52,20 @@ typedef struct tag_cmd_pkt_tx_feedback {
- 	/* DWORD 5 */
- 	u16	reserve3;
- 	u16	duration;
--} cmpk_txfb_t;
-+};
- 
- /* 2. RX side: Interrupt status packet. It includes Beacon State,
-  * Beacon Timer Interrupt and other useful informations in MAC ISR Reg. */
--typedef struct tag_cmd_pkt_interrupt_status {
-+struct cmpk_intr_sta {
- 	u8	element_id;			/* Command packet type. */
- 	u8	length;				/* Command packet length. */
- 	u16	reserve;
- 	u32	interrupt_status;		/* Interrupt Status. */
--} cmpk_intr_sta_t;
-+};
- 
- 
- /* 3. TX side: Set configuration packet. */
--typedef struct tag_cmd_pkt_set_configuration {
-+struct cmpk_set_cfg {
- 	u8	element_id;			/* Command packet type. */
- 	u8	length;				/* Command packet length. */
- 	u16	reserve1;
-@@ -80,14 +80,11 @@ typedef struct tag_cmd_pkt_set_configuration {
- 	u8	cfg_offset;
- 	u32	value;
- 	u32	mask;
--} cmpk_set_cfg_t;
-+};
- 
--/* 4. Both side : TX/RX query configuraton packet. The query structure is the
--      same as set configuration. */
--#define		cmpk_query_cfg_t	cmpk_set_cfg_t
- 
- /* 5. Multi packet feedback status. */
--typedef struct tag_tx_stats_feedback {
-+struct cmpk_tx_status {
- 	/* For endian transfer --> Driver will not the same as
- 	   firmware structure. */
- 	/* DW 0 */
-@@ -124,11 +121,11 @@ typedef struct tag_tx_stats_feedback {
- 	u16	reserve3_23;
- 	u8	reserve3_1;
- 	u8	rate;
--} __packed cmpk_tx_status_t;
-+};
- 
- /* 6. Debug feedback message. */
- /* Define RX debug message  */
--typedef struct tag_rx_debug_message_feedback {
-+struct cmpk_rx_dbginfo {
- 	/* For endian transfer --> for driver */
- 	/* DW 0 */
- 	u16	reserve1;
-@@ -138,10 +135,10 @@ typedef struct tag_rx_debug_message_feedback {
- 	/* DW 1-?? */
- 	/* Variable debug message. */
- 
--} cmpk_rx_dbginfo_t;
-+};
- 
- /* Define transmit rate history. For big endian format. */
--typedef struct tag_tx_rate_history {
-+struct cmpk_tx_rahis {
- 	/* For endian transfer --> for driver */
- 	/* DW 0 */
- 	u8	element_id;			/* Command packet type */
-@@ -161,9 +158,9 @@ typedef struct tag_tx_rate_history {
- 	 */
- 	u16	ht_mcs[4][16];
- 
--} __packed cmpk_tx_rahis_t;
-+};
- 
--typedef enum tag_command_packet_directories {
-+enum cmpk_element {
- 	RX_TX_FEEDBACK			= 0,
- 	RX_INTERRUPT_STATUS		= 1,
- 	TX_SET_CONFIG			= 2,
-@@ -173,19 +170,19 @@ typedef enum tag_command_packet_directories {
- 	RX_TX_PER_PKT_FEEDBACK		= 6,
- 	RX_TX_RATE_HISTORY		= 7,
- 	RX_CMD_ELE_MAX
--} cmpk_element_e;
-+};
- 
--typedef enum _rt_status {
-+enum rt_status {
- 	RT_STATUS_SUCCESS,
- 	RT_STATUS_FAILURE,
- 	RT_STATUS_PENDING,
- 	RT_STATUS_RESOURCE
--} rt_status, *prt_status;
-+};
- 
- extern u32 cmpk_message_handle_rx(struct net_device *dev,
--		struct ieee80211_rx_stats *pstats);
--extern rt_status SendTxCommandPacket(struct net_device *dev,
--		void *pData, u32 DataLen);
-+		                  struct ieee80211_rx_stats *pstats);
-+extern enum rt_status SendTxCommandPacket(struct net_device *dev,
-+		                          void *pData, u32 DataLen);
- 
- 
- #endif
+Sorry about that, I've read that list but I completely forgot about it.
+
+
+>
+> On Wed, 25 Mar 2015, Helen Fornazier wrote:
+>
+> > This patch fixes the checkpatche.pl warnings:
+> >
+> > WARNING: labels should not be indented
+> > +      context_remove:
+> >
+> > WARNING: labels should not be indented
+> > +      nop_msg:
+> >
+> > WARNING: labels should not be indented
+> > +      exit:
+> >
+> > Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
+> > ---
+> >  drivers/staging/i2o/i2o_block.c | 24 ++++++++++++------------
+> >  1 file changed, 12 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/drivers/staging/i2o/i2o_block.c
+> b/drivers/staging/i2o/i2o_block.c
+> > index 7784787..406758f 100644
+> > --- a/drivers/staging/i2o/i2o_block.c
+> > +++ b/drivers/staging/i2o/i2o_block.c
+> > @@ -871,13 +871,13 @@ static int i2o_block_transfer(struct request *req)
+> >
+> >       return 0;
+> >
+> > -      context_remove:
+> > +context_remove:
+> >       i2o_cntxt_list_remove(c, req);
+> >
+> > -      nop_msg:
+> > +nop_msg:
+> >       i2o_msg_nop(c, msg);
+> >
+> > -      exit:
+> > +exit:
+> >       return rc;
+> >  };
+> >
+> > @@ -1002,13 +1002,13 @@ static struct i2o_block_device
+> *i2o_block_device_alloc(void)
+> >
+> >       return dev;
+> >
+> > -      cleanup_queue:
+> > +cleanup_queue:
+> >       put_disk(gd);
+> >
+> > -      cleanup_dev:
+> > +cleanup_dev:
+> >       kfree(dev);
+> >
+> > -      exit:
+> > +exit:
+> >       return ERR_PTR(rc);
+> >  };
+> >
+> > @@ -1115,10 +1115,10 @@ static int i2o_block_probe(struct device *dev)
+> >
+> >       return 0;
+> >
+> > -      claim_release:
+> > +claim_release:
+> >       i2o_device_claim_release(i2o_dev);
+> >
+> > -      exit:
+> > +exit:
+> >       return rc;
+> >  };
+> >
+> > @@ -1187,16 +1187,16 @@ static int __init i2o_block_init(void)
+> >
+> >       return 0;
+> >
+> > -      unregister_blkdev:
+> > +unregister_blkdev:
+> >       unregister_blkdev(I2O_MAJOR, "i2o_block");
+> >
+> > -      free_mempool:
+> > +free_mempool:
+> >       mempool_destroy(i2o_blk_req_pool.pool);
+> >
+> > -      free_slab:
+> > +free_slab:
+> >       kmem_cache_destroy(i2o_blk_req_pool.slab);
+> >
+> > -      exit:
+> > +exit:
+> >       return rc;
+> >  };
+> >
+> > --
+> > 1.9.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/1427328162-6345-1-git-send-email-helen.fornazier%40gmail.com
+> .
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+
+
+
 -- 
-1.9.1
+Helen Fornazier
 
+--089e01176c7f34f45a05122fe566
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Thu, Mar 26, 2015 at 3:33 AM, Julia Lawall <span dir=3D"ltr">&lt;<a =
+href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">julia.lawall@lip6.fr=
+</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">i2o is on the way =
+out of the kernel.=C2=A0 So there is no point to mae patches<br>
+on it.=C2=A0 You can find the list of the directories to avoid in the tutor=
+ial,<br>
+in the section Find a driver to clean up.<br>
+<br>
+julia<br></blockquote><div><br></div><div>Sorry about that, I&#39;ve read t=
+hat list but I completely forgot about it.</div><div>=C2=A0</div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
+id;padding-left:1ex">
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+On Wed, 25 Mar 2015, Helen Fornazier wrote:<br>
+<br>
+&gt; This patch fixes the <a href=3D"http://checkpatche.pl" target=3D"_blan=
+k">checkpatche.pl</a> warnings:<br>
+&gt;<br>
+&gt; WARNING: labels should not be indented<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 context_remove:<br>
+&gt;<br>
+&gt; WARNING: labels should not be indented<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 nop_msg:<br>
+&gt;<br>
+&gt; WARNING: labels should not be indented<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 exit:<br>
+&gt;<br>
+&gt; Signed-off-by: Helen Fornazier &lt;<a href=3D"mailto:helen.fornazier@g=
+mail.com">helen.fornazier@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/i2o/i2o_block.c | 24 ++++++++++++------------<br=
+>
+&gt;=C2=A0 1 file changed, 12 insertions(+), 12 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/i2o/i2o_block.c b/drivers/staging/i2o/i2o=
+_block.c<br>
+&gt; index 7784787..406758f 100644<br>
+&gt; --- a/drivers/staging/i2o/i2o_block.c<br>
+&gt; +++ b/drivers/staging/i2o/i2o_block.c<br>
+&gt; @@ -871,13 +871,13 @@ static int i2o_block_transfer(struct request *re=
+q)<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 context_remove:<br>
+&gt; +context_remove:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2o_cntxt_list_remove(c, req);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 nop_msg:<br>
+&gt; +nop_msg:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2o_msg_nop(c, msg);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 exit:<br>
+&gt; +exit:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return rc;<br>
+&gt;=C2=A0 };<br>
+&gt;<br>
+&gt; @@ -1002,13 +1002,13 @@ static struct i2o_block_device *i2o_block_devi=
+ce_alloc(void)<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return dev;<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 cleanup_queue:<br>
+&gt; +cleanup_queue:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0put_disk(gd);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 cleanup_dev:<br>
+&gt; +cleanup_dev:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0kfree(dev);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 exit:<br>
+&gt; +exit:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return ERR_PTR(rc);<br>
+&gt;=C2=A0 };<br>
+&gt;<br>
+&gt; @@ -1115,10 +1115,10 @@ static int i2o_block_probe(struct device *dev)=
+<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 claim_release:<br>
+&gt; +claim_release:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2o_device_claim_release(i2o_dev);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 exit:<br>
+&gt; +exit:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return rc;<br>
+&gt;=C2=A0 };<br>
+&gt;<br>
+&gt; @@ -1187,16 +1187,16 @@ static int __init i2o_block_init(void)<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 unregister_blkdev:<br>
+&gt; +unregister_blkdev:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0unregister_blkdev(I2O_MAJOR, &quot;i2o_block=
+&quot;);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 free_mempool:<br>
+&gt; +free_mempool:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0mempool_destroy(i2o_blk_req_pool.pool);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 free_slab:<br>
+&gt; +free_slab:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0kmem_cache_destroy(i2o_blk_req_pool.slab);<b=
+r>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 exit:<br>
+&gt; +exit:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return rc;<br>
+&gt;=C2=A0 };<br>
+&gt;<br>
+&gt; --<br>
+&gt; 1.9.1<br>
+&gt;<br>
+</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@googlegroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com">outreachy-kernel@googlegroups.com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/1427328162-6345-1-git-send-email-helen.for=
+nazier%40gmail.com" target=3D"_blank">https://groups.google.com/d/msgid/out=
+reachy-kernel/1427328162-6345-1-git-send-email-helen.fornazier%40gmail.com<=
+/a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+&gt;<br>
+</font></span></blockquote></div><br><br clear=3D"all"><div><br></div>-- <b=
+r><div class=3D"gmail_signature">Helen Fornazier<br></div>
+</div></div>
+
+--089e01176c7f34f45a05122fe566--
 
