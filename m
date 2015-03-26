@@ -1,75 +1,46 @@
-X-GM-THRID: 10151071318016
-X-Received: by 10.112.73.33 with SMTP id i1mr5190508lbv.0.1427501010092;
-        Fri, 27 Mar 2015 17:03:30 -0700 (PDT)
+X-GM-THRID: 9926466338816
+X-Received: by 10.67.22.7 with SMTP id ho7mr4404512pad.29.1427364291636;
+        Thu, 26 Mar 2015 03:04:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.37 with SMTP id q5ls452892lag.40.gmail; Fri, 27 Mar
- 2015 17:03:29 -0700 (PDT)
-X-Received: by 10.112.73.33 with SMTP id i1mr5190499lbv.0.1427501009276;
-        Fri, 27 Mar 2015 17:03:29 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
-        by gmr-mx.google.com with ESMTPS id p4si242675wiz.0.2015.03.27.17.03.29
+Received: by 10.182.24.98 with SMTP id t2ls416244obf.92.gmail; Thu, 26 Mar
+ 2015 03:04:51 -0700 (PDT)
+X-Received: by 10.182.133.69 with SMTP id pa5mr14936547obb.32.1427364291361;
+        Thu, 26 Mar 2015 03:04:51 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id iw3si628313pbd.1.2015.03.26.03.04.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Mar 2015 17:03:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
+        Thu, 26 Mar 2015 03:04:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x233.google.com with SMTP id bg6so43702918wib.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2015 17:03:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=s62Xihi2lgw1eTWSnaFT7hSgfdkPm8oRJhm3t+ZExEM=;
-        b=yXv35udTlD6EmJwGdwnoV4Hz9htK74iUdun7rMGTTji2ugOIamseZ3I9+KGQ9fcFfF
-         1k68CQxDScGE94nOwlOnDvvsj8G2TdaHaLVQSBYAPwQPSakPEH4TpTYyJeYmt0BobupW
-         fmTfr12iXwScIehdR7/fNKWjK696H0N/j6A3pq7ZWp8TAm/o8rOgVz5A3rqBlZqVUXCz
-         FEcA4sOU6ZfGxO92ccA/Supq37VGxruCl0hpHC+JzkrCB98Ho3wdu1dGBUNwTlzteyoG
-         pLkQguOCoq38vn9hgYlrfel7gg9bZoclT7hTuxfdYjWuXZLhBZUqbhIazW6T8A5Evnig
-         kC5A==
-X-Received: by 10.180.187.67 with SMTP id fq3mr1972810wic.59.1427501009168;
-        Fri, 27 Mar 2015 17:03:29 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.55.58])
-        by mx.google.com with ESMTPSA id d9sm4879443wib.20.2015.03.27.17.03.27
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Mar 2015 17:03:28 -0700 (PDT)
-Received: by haneen-vb (Postfix, from userid 1000)
-	id 1DD29C1FC5; Sat, 28 Mar 2015 03:03:23 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	linux-iio@vger.kernel.org,
-	jic23@kernel.org,
-	daniel.baluta@intel.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH] iio: Add ABI documentation for in_rot offset value
-Date: Sat, 28 Mar 2015 03:02:39 +0300
-Message-Id: <1427500959-3404-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
+Received: from localhost (samsung-greg.rsr.lip6.fr [132.227.76.96])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 5734CA79;
+	Thu, 26 Mar 2015 10:04:50 +0000 (UTC)
+Date: Thu, 26 Mar 2015 11:04:47 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatika Harlalka <vatikaharlalka@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: octeon: Move extern to
+ header file
+Message-ID: <20150326100447.GB8908@kroah.com>
+References: <20150326092927.GA4803@akanksha>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150326092927.GA4803@akanksha>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch adds ABI documentation entries for in_rot_offset.
-At least one user for these is present that is the  HID Sensors Driver.
+On Thu, Mar 26, 2015 at 02:59:27PM +0530, Vatika Harlalka wrote:
+> Move extern to header file. Functions have extern storage
+> class by default so the keyword "extern" is removed."
+> 
+> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet-mdio.h | 1 +
+>  drivers/staging/octeon/ethernet.c      | 2 --
+>  2 files changed, 1 insertion(+), 2 deletions(-)
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
- Documentation/ABI/testing/sysfs-bus-iio | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
-index 5cabafb..4736a34 100644
---- a/Documentation/ABI/testing/sysfs-bus-iio
-+++ b/Documentation/ABI/testing/sysfs-bus-iio
-@@ -254,6 +254,7 @@ What:		/sys/bus/iio/devices/iio:deviceX/in_pressureY_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressure_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_humidityrelative_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_magn_offset
-+What:		/sys/bus/iio/devices/iio:deviceX/in_rot_offset
- KernelVersion:	2.6.35
- Contact:	linux-iio@vger.kernel.org
- Description:
--- 
-1.9.1
-
+Someone  just sent this patch right before you did :(
 
