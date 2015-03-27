@@ -3,75 +3,65 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,2ff1775a6d87248a
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.50.87.97 with SMTP id w1mr2410571igz.1.1427472436996;
-        Fri, 27 Mar 2015 09:07:16 -0700 (PDT)
+X-Received: by 10.112.44.167 with SMTP id f7mr4444198lbm.9.1427445378310;
+        Fri, 27 Mar 2015 01:36:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.97.73 with SMTP id dy9ls841092obb.2.gmail; Fri, 27 Mar
- 2015 09:07:16 -0700 (PDT)
-X-Received: by 10.182.97.2 with SMTP id dw2mr23430018obb.0.1427472436757;
-        Fri, 27 Mar 2015 09:07:16 -0700 (PDT)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qc0-x22e.google.com (mail-qc0-x22e.google.com. [2607:f8b0:400d:c01::22e])
-        by gmr-mx.google.com with ESMTPS id z1si412195qcn.2.2015.03.27.09.07.16
+Received: by 10.152.204.69 with SMTP id kw5ls316760lac.86.gmail; Fri, 27 Mar
+ 2015 01:36:17 -0700 (PDT)
+X-Received: by 10.112.242.7 with SMTP id wm7mr4284010lbc.1.1427445377746;
+        Fri, 27 Mar 2015 01:36:17 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-la0-x230.google.com (mail-la0-x230.google.com. [2a00:1450:4010:c03::230])
+        by gmr-mx.google.com with ESMTPS id xg8si97499lbb.0.2015.03.27.01.36.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Mar 2015 09:07:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22e as permitted sender) client-ip=2607:f8b0:400d:c01::22e;
+        Fri, 27 Mar 2015 01:36:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::230 as permitted sender) client-ip=2a00:1450:4010:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c01::22e as permitted sender) smtp.mail=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2a00:1450:4010:c03::230 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qc0-x22e.google.com with SMTP id y5so20378181qca.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2015 09:07:16 -0700 (PDT)
+Received: by mail-la0-x230.google.com with SMTP id e2so64797596lab.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2015 01:36:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:message-id:date:user-agent:mime-version:to:cc:subject
-         :references:in-reply-to:content-type:content-transfer-encoding;
-        bh=3mIxdDGNeGlwhWgqZnpfMvT1PpBRokN2xDrpPJZIj+4=;
-        b=QfdMA9znRq2a3NOOiEuC+RnSS7qqDYYkr0H8Eq/D8vxvgM6QHdBDcsKn0Rffhdlz2x
-         cGlolLyRlJhmlybNSMh3djZhPtRS5RLW3zQjvamcs+9ZfY++m+/DUDg8SHEkCokmtvcS
-         e1JYoI0MjeD9ECjVYEOL3gTZckxHarIz72LT2zYT0lujNnAgxD7L5aqXqT25erZDCOIz
-         D7RCkTEtD48zBdTravRLESBZ2WI5ARf+ZMXBKT2uwk19uT6lAhVDfq6SDJgIKJRC3wQB
-         f13um2PFuKlncf0eggiSVIj4P/gjsqb0xyD3Vcsr5eRNfWEshTXYoJylEnQOm5vDgpWQ
-         M1aw==
-X-Received: by 10.140.232.15 with SMTP id d15mr26269746qhc.52.1427472436648;
-        Fri, 27 Mar 2015 09:07:16 -0700 (PDT)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [192.168.99.32] (pool-72-68-159-94.nycmny.fios.verizon.net. [72.68.159.94])
-        by mx.google.com with ESMTPSA id w68sm1713519qha.32.2015.03.27.09.07.15
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Mar 2015 09:07:16 -0700 (PDT)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Message-ID: <55158033.5060704@gmail.com>
-Date: Fri, 27 Mar 2015 12:07:15 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=F1R6JuHzm8gOq6tSfb68HPM94zrwtCy5CJiP2i+jSIo=;
+        b=n5ilzqi6zSmrVw5Mv7w7lMgAkMzaggryeZaW6PlATmDUjBYalt1G6jShb5xrNUE6i7
+         GpWuad/yrg4bfzMN/lZxVvur6AacIdX+I9v7drYwjCNkK6pNQgKCJlwLXJqTw0rU/isc
+         QjNyGlYoFW2yIWOe6cWTU7ZHrSQiQrwESnk78wSKjAyFKy1+8tytZYETz1S1uYilPbyx
+         jDAfvGCZouypsIrMCSjdnCoiHkp/totjSETA+X6I2sFQXeWCl9Tg5xhOidvUQd7td5gL
+         xfOwI4F09cUH8Oeflo0GblUdgEN0a8W2zW1DOpHRwPX0PVBazjcduQWedU9mWfweIOZn
+         sOSg==
 MIME-Version: 1.0
+X-Received: by 10.152.198.203 with SMTP id je11mr16451714lac.85.1427445377624;
+ Fri, 27 Mar 2015 01:36:17 -0700 (PDT)
+Received: by 10.112.59.7 with HTTP; Fri, 27 Mar 2015 01:36:17 -0700 (PDT)
+In-Reply-To: <20150326230618.GA13601@kroah.com>
+References: <20150326194125.GA25188@akanksha>
+	<20150326230618.GA13601@kroah.com>
+Date: Fri, 27 Mar 2015 14:06:17 +0530
+Message-ID: <CAHjTdYe1kMAs_zXaq6=akLJMnwxWO-Vs0mj=hLH7Hh1bvicTNw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8188eu: Add new
+ variable to make code compact
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: Greg KH <gregkh@linuxfoundation.org>
-CC: Vatika Harlalka <vatikaharlalka@gmail.com>, 
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8188eu: Add new variable
- to make code compact
-References: <20150325131311.GA10728@akanksha> <55145A95.909@gmail.com> <CAHjTdYc0-dAGWOLq=Bvm2Mcy76XNyc3w_Z6kxtrKZDHgk=xa7Q@mail.gmail.com> <55145E92.4080209@gmail.com> <20150326204051.GB5122@kroah.com>
-In-Reply-To: <20150326204051.GB5122@kroah.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-On 03/26/15 16:40, Greg KH wrote:
-> On Thu, Mar 26, 2015 at 03:31:30PM -0400, Jes Sorensen wrote:
->> On 03/26/15 15:26, Vatika Harlalka wrote:
->>> Hi Jes
->>> This was to align the declaration with that of hal_data above.
->>> Should I change them both and send in a new patch?
->>>
+Alright, I will send a follow up patch on this one
+
+On Fri, Mar 27, 2015 at 4:36 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Fri, Mar 27, 2015 at 01:11:25AM +0530, Vatika Harlalka wrote:
+>> Introducing this variable leads to overall more code
+>> compactness and increases readability.
 >>
->> That would be preferred!
-> 
-> Not really as I've accepted the first patch.  So just a follow-on one
-> would be good.
-
-You're too fast, slow down and give the rest of us a chance :)
-
-Jes
-
+>> Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+>> ---
+>> Changes in v3: Aligned variable declaration.
+>> Changes in v2: Changed variable name as per
+>>               kernel code conventions.
+>
+> As I took v2, I can't take v3 :(
 
