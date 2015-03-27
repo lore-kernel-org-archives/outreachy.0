@@ -3,175 +3,135 @@ X-Google-Groups: outreachy-kernel
 X-Google-Thread: 9ca63f596c,7da8cb61ff6c25cf
 X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
 X-Google-NewGroupId: yes
-X-Received: by 10.70.63.37 with SMTP id d5mr22213801pds.3.1427471263470;
-        Fri, 27 Mar 2015 08:47:43 -0700 (PDT)
+X-Received: by 10.182.65.37 with SMTP id u5mr23337223obs.27.1427471255244;
+        Fri, 27 Mar 2015 08:47:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.114.100 with SMTP id jf4ls316505igb.9.gmail; Fri, 27 Mar
- 2015 08:47:43 -0700 (PDT)
-X-Received: by 10.50.122.7 with SMTP id lo7mr36348183igb.7.1427471263252;
-        Fri, 27 Mar 2015 08:47:43 -0700 (PDT)
+Received: by 10.107.131.18 with SMTP id f18ls1129051iod.39.gmail; Fri, 27 Mar
+ 2015 08:47:35 -0700 (PDT)
+X-Received: by 10.50.87.97 with SMTP id w1mr2357010igz.1.1427471255040;
+        Fri, 27 Mar 2015 08:47:35 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pd0-x22c.google.com (mail-pd0-x22c.google.com. [2607:f8b0:400e:c02::22c])
-        by gmr-mx.google.com with ESMTPS id iw3si262551pbd.1.2015.03.27.08.47.43
+Received: from mail-pd0-x22e.google.com (mail-pd0-x22e.google.com. [2607:f8b0:400e:c02::22e])
+        by gmr-mx.google.com with ESMTPS id oc12si261883pdb.1.2015.03.27.08.47.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Mar 2015 08:47:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) client-ip=2607:f8b0:400e:c02::22c;
+        Fri, 27 Mar 2015 08:47:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) client-ip=2607:f8b0:400e:c02::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22c.google.com with SMTP id ni2so100084591pdb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2015 08:47:43 -0700 (PDT)
+Received: by mail-pd0-x22e.google.com with SMTP id ni2so100075041pdb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2015 08:47:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :content-type:content-transfer-encoding;
-        bh=6qP1sUQGocf+nLFdrDWVKkApYnVFAcVAH00UXE71I2U=;
-        b=v7w1Ag8TRxkIFl5jWEB0vRxq9Ggr+QRLt2t2uwRboDrwNljurmr6mpzVi3gsO9V7ZG
-         iiOy4NlRw/+9mG0lV60qZ9yocgTW/DOyUCJQsGDfGexSM+49z2xZeY+bWrlmAxDjK18U
-         VvpjkOcXt9PCkb4CrZGf//KgvcAzUYsnLmRp7NHBgRdA3cWQ0rMkC9mT4AV/dZ2yznxz
-         zsgK3meWB6miq99KovhrOmw+vSnOQsSNprBG0J4l2MkbILUx6GUvuPDmAL+K0gaVOhsD
-         Ip0KUDLbduSNjtGJU7HnmJOUlQfahLBO8dI/rB96e1UUDPiE87WDHbN4y0CyD8fSKVk1
-         mT7Q==
-X-Received: by 10.68.89.4 with SMTP id bk4mr36394472pbb.80.1427471263169;
-        Fri, 27 Mar 2015 08:47:43 -0700 (PDT)
+        bh=a0vxIg6uEUne/gCHibbZKM6M2pOQKnqqHANt5y+bSrY=;
+        b=ATU1pSLk2JfiAzK+YKbyeYZi/fqGBXtEcArJ1wTlH76vsIpR7mpsM55d0qbh2JNR20
+         2+KoDGpQEE9zvGwTiAoWAz/yzmDJMxPMk+ffiXhpi487kbqJXb3MPTSB+Z11IaD6oraX
+         AA7zVFyxvLpyYfRfxaZc3cvo8b6/mZE4LKnJMrK/hbOgvPmKeUnjN2F7wVjoIm4Tqz1J
+         0u/oM4yrWsUTSrAwtf5/oN+ZcSacfyHZ0TgBaE7pCGE/xrcLc8MlK4nWtBhXVtftbKrI
+         43CluIMxXeRRMau6olkxaEJOkZeVvWMw9AHjm0ahU3orM3+g0xP81sAVxEHomeZqX7hO
+         9F8w==
+X-Received: by 10.66.140.39 with SMTP id rd7mr35923767pab.25.1427471254946;
+        Fri, 27 Mar 2015 08:47:34 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
 Received: from localhost ([101.63.83.78])
-        by mx.google.com with ESMTPSA id fj5sm2541175pbc.58.2015.03.27.08.47.40
+        by mx.google.com with ESMTPSA id fk4sm2540893pab.48.2015.03.27.08.47.31
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Mar 2015 08:47:41 -0700 (PDT)
+        Fri, 27 Mar 2015 08:47:33 -0700 (PDT)
 From: Darshana Padmadas <darshanapadmadas@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH v3 3/4] Staging: rtl8192e: Use ether_addr_copy replacing memcpy
-Date: Fri, 27 Mar 2015 21:17:06 +0530
-Message-Id: <1427471227-17259-4-git-send-email-darshanapadmadas@gmail.com>
+Subject: [PATCH v3 2/4] Staging: rtl8192e: Use ether_addr_copy instead of memcpy
+Date: Fri, 27 Mar 2015 21:17:05 +0530
+Message-Id: <1427471227-17259-3-git-send-email-darshanapadmadas@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1427471227-17259-1-git-send-email-darshanapadmadas@gmail.com>
 References: <1427471227-17259-1-git-send-email-darshanapadmadas@gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
-This patch uses ether_addr_copy instead of memcpy since
-the structures of beacon_buf, assoc, auth, a, header, a
-are aligned as shown by Pahole:
+This patch replaces use of memcpy with ether_addr_copy since
+the addresses for struct of hdr11 and ev are aligned as shown by Pahole
+and hdr is of type u8.
+The header file linux/etherdevice.h is also included where
+ether_addr_copy is defined.
 
-struct rtllib_probe_response {
-        struct rtllib_hdr_3addr    header;               /*     0    24 */
-        u32                        time_stamp[2];        /*    24     8 */
-        __le16                     beacon_interval;      /*    32     2 */
-        __le16                     capability;           /*    34     2 */
-        struct rtllib_info_element info_element[0];      /*    36     0 */
-
-        /* size: 36, cachelines: 1, members: 5 */
-        /* last cacheline: 36 bytes */
-};
-struct rtllib_assoc_response_frame {
-        struct rtllib_hdr_3addr    header;               /*     0    24 */
-        __le16                     capability;           /*    24     2 */
-        __le16                     status;               /*    26     2 */
-        __le16                     aid;                  /*    28     2 */
-        struct rtllib_info_element info_element[0];      /*    30     0 */
-
-        /* size: 30, cachelines: 1, members: 5 */
-        /* last cacheline: 30 bytes */
-};
-struct rtllib_authentication {
-        struct rtllib_hdr_3addr    header;               /*     0    24 */
-        __le16                     algorithm;            /*    24     2 */
-        __le16                     transaction;          /*    26     2 */
-        __le16                     status;               /*    28     2 */
-        struct rtllib_info_element info_element[0];      /*    30     0 */
-
-        /* size: 30, cachelines: 1, members: 5 */
-        /* last cacheline: 30 bytes */
-};
-struct rtllib_hdr_3addr {
+struct rtllib_hdr_4addr {
         __le16                     frame_ctl;            /*     0     2 */
         __le16                     duration_id;          /*     2     2 */
         u8                         addr1[6];             /*     4     6 */
         u8                         addr2[6];             /*    10     6 */
         u8                         addr3[6];             /*    16     6 */
         __le16                     seq_ctl;              /*    22     2 */
-        u8                         payload[0];           /*    24     0 */
+        u8                         addr4[6];             /*    24     6 */
+        u8                         payload[0];           /*    30     0 */
 
-        /* size: 24, cachelines: 1, members: 7 */
-        /* last cacheline: 24 bytes */
+        /* size: 30, cachelines: 1, members: 8 */
+        /* last cacheline: 30 bytes */
 };
-struct rtllib_assoc_request_frame {
-	struct rtllib_hdr_3addr    header;               /*     0    24 */
-	__le16                     capability;           /*    24     2 */
-	__le16                     listen_interval;      /*    26     2 */
-	struct rtllib_info_element info_element[0];      /*    28     0 */
+struct iw_michaelmicfailure {
+	__u32                      flags;                /*     0     4 */
+	struct sockaddr            src_addr;             /*     4    16 */
+	__u8                       tsc[8];               /*    20     8 */
 
-	/* size: 28, cachelines: 1, members: 4 */
+	/* size: 28, cachelines: 1, members: 3 */
 	/* last cacheline: 28 bytes */
 };
 
 Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_softmac.c | 12 ++++++------
+ drivers/staging/rtl8192e/rtllib_crypt_tkip.c | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
-index 16aef7c..d2ea955 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac.c
-@@ -911,7 +911,7 @@ static struct sk_buff *rtllib_probe_resp(struct rtllib_device *ieee, u8 *dest)
+diff --git a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+index 78db2b6..949fc8f 100644
+--- a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
++++ b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+@@ -21,7 +21,7 @@
+ #include <linux/crypto.h>
+ #include <linux/scatterlist.h>
+ #include <linux/crc32.h>
+-
++#include <linux/etherdevice.h>
+ #include "rtllib.h"
  
- 	beacon_buf = (struct rtllib_probe_response *) skb_put(skb,
- 		     (beacon_size - ieee->tx_headroom));
--	memcpy(beacon_buf->header.addr1, dest, ETH_ALEN);
-+	ether_addr_copy(beacon_buf->header.addr1, dest);
- 	memcpy(beacon_buf->header.addr2, ieee->dev->dev_addr, ETH_ALEN);
- 	memcpy(beacon_buf->header.addr3, ieee->current_network.bssid, ETH_ALEN);
- 
-@@ -1008,7 +1008,7 @@ static struct sk_buff *rtllib_assoc_resp(struct rtllib_device *ieee, u8 *dest)
- 		skb_put(skb, sizeof(struct rtllib_assoc_response_frame));
- 
- 	assoc->header.frame_ctl = cpu_to_le16(RTLLIB_STYPE_ASSOC_RESP);
--	memcpy(assoc->header.addr1, dest, ETH_ALEN);
-+	ether_addr_copy(assoc->header.addr1, dest);
- 	memcpy(assoc->header.addr3, ieee->dev->dev_addr, ETH_ALEN);
- 	memcpy(assoc->header.addr2, ieee->dev->dev_addr, ETH_ALEN);
- 	assoc->capability = cpu_to_le16(ieee->iw_mode == IW_MODE_MASTER ?
-@@ -1067,7 +1067,7 @@ static struct sk_buff *rtllib_auth_resp(struct rtllib_device *ieee, int status,
- 
- 	memcpy(auth->header.addr3, ieee->dev->dev_addr, ETH_ALEN);
- 	memcpy(auth->header.addr2, ieee->dev->dev_addr, ETH_ALEN);
--	memcpy(auth->header.addr1, dest, ETH_ALEN);
-+	ether_addr_copy(auth->header.addr1, dest);
- 	auth->header.frame_ctl = cpu_to_le16(RTLLIB_STYPE_AUTH);
- 	return skb;
- 
-@@ -1831,7 +1831,7 @@ static int auth_rq_parse(struct sk_buff *skb, u8 *dest)
+ struct rtllib_tkip_data {
+@@ -525,19 +525,19 @@ static void michael_mic_hdr(struct sk_buff *skb, u8 *hdr)
+ 	switch (le16_to_cpu(hdr11->frame_ctl) &
+ 		(RTLLIB_FCTL_FROMDS | RTLLIB_FCTL_TODS)) {
+ 	case RTLLIB_FCTL_TODS:
+-		memcpy(hdr, hdr11->addr3, ETH_ALEN); /* DA */
++		ether_addr_copy(hdr, hdr11->addr3); /* DA */
+ 		memcpy(hdr + ETH_ALEN, hdr11->addr2, ETH_ALEN); /* SA */
+ 		break;
+ 	case RTLLIB_FCTL_FROMDS:
+-		memcpy(hdr, hdr11->addr1, ETH_ALEN); /* DA */
++		ether_addr_copy(hdr, hdr11->addr1); /* DA */
+ 		memcpy(hdr + ETH_ALEN, hdr11->addr3, ETH_ALEN); /* SA */
+ 		break;
+ 	case RTLLIB_FCTL_FROMDS | RTLLIB_FCTL_TODS:
+-		memcpy(hdr, hdr11->addr3, ETH_ALEN); /* DA */
++		ether_addr_copy(hdr, hdr11->addr3); /* DA */
+ 		memcpy(hdr + ETH_ALEN, hdr11->addr4, ETH_ALEN); /* SA */
+ 		break;
+ 	case 0:
+-		memcpy(hdr, hdr11->addr1, ETH_ALEN); /* DA */
++		ether_addr_copy(hdr, hdr11->addr1); /* DA */
+ 		memcpy(hdr + ETH_ALEN, hdr11->addr2, ETH_ALEN); /* SA */
+ 		break;
  	}
- 	a = (struct rtllib_authentication *) skb->data;
- 
--	memcpy(dest, a->header.addr2, ETH_ALEN);
-+	ether_addr_copy(dest, a->header.addr2);
- 
- 	if (le16_to_cpu(a->algorithm) != WLAN_AUTH_OPEN)
- 		return  WLAN_STATUS_NOT_SUPPORTED_AUTH_ALG;
-@@ -1859,7 +1859,7 @@ static short probe_rq_parse(struct rtllib_device *ieee, struct sk_buff *skb,
- 	if (bssid_match)
- 		return -1;
- 
--	memcpy(src, header->addr2, ETH_ALEN);
-+	ether_addr_copy(src, header->addr2);
- 
- 	skbend = (u8 *)skb->data + skb->len;
- 
-@@ -1898,7 +1898,7 @@ static int assoc_rq_parse(struct sk_buff *skb, u8 *dest)
- 
- 	a = (struct rtllib_assoc_request_frame *) skb->data;
- 
--	memcpy(dest, a->header.addr2, ETH_ALEN);
-+	ether_addr_copy(dest, a->header.addr2);
- 
- 	return 0;
- }
+@@ -591,7 +591,7 @@ static void rtllib_michael_mic_failure(struct net_device *dev,
+ 	else
+ 		ev.flags |= IW_MICFAILURE_PAIRWISE;
+ 	ev.src_addr.sa_family = ARPHRD_ETHER;
+-	memcpy(ev.src_addr.sa_data, hdr->addr2, ETH_ALEN);
++	ether_addr_copy(ev.src_addr.sa_data, hdr->addr2);
+ 	memset(&wrqu, 0, sizeof(wrqu));
+ 	wrqu.data.length = sizeof(ev);
+ 	wireless_send_event(dev, IWEVMICHAELMICFAILURE, &wrqu, (char *) &ev);
 -- 
 1.9.1
 
