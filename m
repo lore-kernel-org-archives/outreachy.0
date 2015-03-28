@@ -1,145 +1,349 @@
-X-GM-THRID: 8172468174848
-X-Received: by 10.112.162.135 with SMTP id ya7mr7460045lbb.14.1426277130171;
-        Fri, 13 Mar 2015 13:05:30 -0700 (PDT)
+X-GM-THRID: 10244955570176
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,999d071005b279ba,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.180.81.134 with SMTP id a6mr1267023wiy.1.1427581412040;
+        Sat, 28 Mar 2015 15:23:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.43.82 with SMTP id u18ls495399lal.79.gmail; Fri, 13 Mar
- 2015 13:05:29 -0700 (PDT)
-X-Received: by 10.112.148.10 with SMTP id to10mr2497935lbb.18.1426277129538;
-        Fri, 13 Mar 2015 13:05:29 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id cl5si187989wib.3.2015.03.13.13.05.29
+Received: by 10.152.115.211 with SMTP id jq19ls567460lab.32.gmail; Sat, 28 Mar
+ 2015 15:23:31 -0700 (PDT)
+X-Received: by 10.152.115.145 with SMTP id jo17mr739983lab.2.1427581411357;
+        Sat, 28 Mar 2015 15:23:31 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id el6si370253wib.0.2015.03.28.15.23.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 13:05:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        Sat, 28 Mar 2015 15:23:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=ciorneiioana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id fb4so14832822wid.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 13:05:29 -0700 (PDT)
+Received: by mail-wi0-x22c.google.com with SMTP id m2so58203655wix.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2015 15:23:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=fUe6Uy7wxMJdZXVJsaedwRlef/VbDwppICZe8+2qvr8=;
-        b=kRAHcUVaJEhmiGRMrHs2IW7GeNIeSaLAPZ0NQv20lkyeg8ovz7o7JpgSD6tlWwtJmF
-         hPankdUA5yUE8CLgLseFATg3Q7ZSkXgAifiQ6rJN0RGZn2kSjbNU79WCvF51dDW9EPGi
-         49UaOCzMJuSNdvcnoihRGpVg3yjLinx7vfLu0V7JcN/hMR3tocpmAiQzMSAEFv8cP9fg
-         ihpqM/7uNDvc56l4PrFV38FpqUfvWPInhstD5DmSMluDoKqwpqQVw4qsaSq4CiSrvdpM
-         tRPngsB/MuaEFDh3uUkJ9JmyEC1EqBodcqJJYEKzzYDWyihTd4ML4clNIVd09fKrrLID
-         rU2w==
-X-Received: by 10.195.12.97 with SMTP id ep1mr102254860wjd.134.1426277129415;
-        Fri, 13 Mar 2015 13:05:29 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.55.220])
-        by mx.google.com with ESMTPSA id vh8sm4196967wjc.12.2015.03.13.13.05.28
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 13 Mar 2015 13:05:28 -0700 (PDT)
-Date: Fri, 13 Mar 2015 19:53:21 +0300
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=mCHB4MeXY5gPr3DrtfPkj+MvzBEOmbamgaWIP36PkBA=;
+        b=0VdIJHFw2l8vkkBbEM3/yPVbsw2wCjhxXIe7U3rjSrJe8FPNecQ6oLPEDKqcVnW0nY
+         pcGKPUz6sdCcvUj8C+ouG4VU6eU0RhcEtjRlJYXsLikEAwlOhZt4KIs3C6s23xPMjM43
+         BXx291iY7nhfUuHCrVgNurdHUiFRBkkE7vHiwDvf5jWt18GXwkZg6borCVUAiiNuTrrY
+         OhhHVQT6YUk38tb4S+rc9sKtyqZPIARm/VZTqBODmBtASxnz/iAx3ISWIAqWmFpuf57y
+         UgSp8WpLqfquQ42RszfZWPArqJbTDKlL4jaAjG6Lk634+jiJsFW7D3xhzzxl4ANgm4Dp
+         neFg==
+X-Received: by 10.194.121.10 with SMTP id lg10mr50195651wjb.71.1427581411234;
+        Sat, 28 Mar 2015 15:23:31 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id fm10sm8797929wib.7.2015.03.28.15.23.29
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 28 Mar 2015 15:23:30 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/8] Staging: Remove parentheses around right side an
- assignment
-Message-ID: <20150313165321.GA6657@haneen-vb>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Ioana Ciornei <ciorneiioana@gmail.com>
+Subject: [PATCH] staging: r8192U_core: Add blank line after declarations
+Date: Sun, 29 Mar 2015 00:23:22 +0200
+Message-Id: <1427581402-564-1-git-send-email-ciorneiioana@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Parentheses are not needed around the right hand side of an assignment.
-This patchset remove parenthese of such occurenses. Issue was detected and
-solved using the following coccinelle script:
+Add blank line after declarations and remove unnecessary 
+tabs from declarations.
 
-@rule1@
-identifier x, y, z;
-expression E1, E2;
-@@
+Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_core.c | 44 +++++++++++++++++++++++++++-------
+ 1 file changed, 36 insertions(+), 8 deletions(-)
 
-(
-x = (y == z);
-|
-x = (E1 == E2);
-|
- x =
--(
-...
--)
- ;
-)
-
-Haneen Mohammed (8):
-  Staging: rtl8188eu: Remove parentheses around right side an assignment
-  Staging: rtl8192e: Remove parentheses around right side an assignment
-  Staging: rtl8723au: Remove parentheses around right side an assignment
-  Staging: media: Remove parentheses around right side an assignment
-  Staging: iio: Remove parentheses around right side an assignment
-  Staging: lustre: Remove parentheses around right side an assignment
-  Staging: rtl8192u: Remove parentheses around right side an assignment
-  Staging: ft1000: Remove parentheses around right side an assignment
-
- drivers/staging/ft1000/ft1000-pcmcia/ft1000_dnld.c |  4 ++--
- drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c   |  4 ++--
- drivers/staging/ft1000/ft1000-usb/ft1000_debug.c   |  2 +-
- .../staging/ft1000/ft1000-usb/ft1000_download.c    |  4 ++--
- drivers/staging/iio/accel/adis16240_core.c         |  2 +-
- drivers/staging/iio/light/tsl2x7x_core.c           |  4 ++--
- drivers/staging/iio/meter/ade7753.c                |  2 +-
- drivers/staging/iio/meter/ade7754.c                |  2 +-
- drivers/staging/iio/meter/ade7759.c                |  2 +-
- .../staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c    |  2 +-
- .../staging/lustre/lnet/klnds/socklnd/socklnd.c    |  4 ++--
- .../staging/lustre/lnet/klnds/socklnd/socklnd_cb.c |  4 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  2 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_request.c  |  2 +-
- drivers/staging/lustre/lustre/libcfs/debug.c       |  2 +-
- drivers/staging/lustre/lustre/llite/file.c         |  2 +-
- drivers/staging/lustre/lustre/llite/lloop.c        |  2 +-
- drivers/staging/lustre/lustre/llite/rw.c           |  2 +-
- drivers/staging/lustre/lustre/lov/lov_obd.c        |  4 ++--
- drivers/staging/lustre/lustre/obdclass/genops.c    |  2 +-
- .../lustre/lustre/obdclass/linux/linux-sysctl.c    |  2 +-
- drivers/staging/lustre/lustre/osc/osc_io.c         |  2 +-
- drivers/staging/media/bcm2048/radio-bcm2048.c      |  8 ++++----
- drivers/staging/media/lirc/lirc_parallel.c         |  4 ++--
- drivers/staging/media/lirc/lirc_serial.c           |  2 +-
- drivers/staging/media/mn88472/mn88472.c            |  2 +-
- drivers/staging/media/mn88473/mn88473.c            |  2 +-
- drivers/staging/rtl8188eu/core/rtw_efuse.c         |  6 +++---
- drivers/staging/rtl8188eu/core/rtw_ieee80211.c     |  2 +-
- drivers/staging/rtl8188eu/core/rtw_mlme.c          |  2 +-
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c      | 22 +++++++++++-----------
- drivers/staging/rtl8188eu/core/rtw_recv.c          |  4 ++--
- drivers/staging/rtl8188eu/core/rtw_sreset.c        |  2 +-
- drivers/staging/rtl8188eu/core/rtw_wlan_util.c     | 18 +++++++++---------
- .../staging/rtl8188eu/hal/Hal8188ERateAdaptive.c   |  4 ++--
- drivers/staging/rtl8188eu/hal/odm_HWConfig.c       |  2 +-
- drivers/staging/rtl8188eu/hal/phy.c                | 20 ++++++++++----------
- drivers/staging/rtl8188eu/hal/rf.c                 |  2 +-
- drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c     | 14 +++++++-------
- drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c     | 20 ++++++++++----------
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c       |  6 +++---
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c         |  2 +-
- drivers/staging/rtl8192e/rtl8192e/rtl_eeprom.c     |  2 +-
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c       |  4 ++--
- drivers/staging/rtl8192e/rtllib_softmac.c          |  2 +-
- .../rtl8192u/ieee80211/ieee80211_crypt_ccmp.c      |  4 ++--
- .../staging/rtl8192u/ieee80211/ieee80211_softmac.c |  2 +-
- drivers/staging/rtl8192u/r8192U_core.c             | 12 ++++++------
- drivers/staging/rtl8192u/r8192U_dm.c               |  6 +++---
- drivers/staging/rtl8192u/r819xU_phy.c              |  4 ++--
- drivers/staging/rtl8723au/core/rtw_mlme_ext.c      | 16 ++++++++--------
- drivers/staging/rtl8723au/core/rtw_recv.c          |  4 ++--
- .../staging/rtl8723au/hal/rtl8723a_bt-coexist.c    |  2 +-
- drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c  | 12 ++++++------
- drivers/staging/rtl8723au/hal/rtl8723a_phycfg.c    |  4 ++--
- drivers/staging/rtl8723au/hal/rtl8723a_rf6052.c    |  4 ++--
- drivers/staging/rtl8723au/hal/rtl8723au_recv.c     |  4 ++--
- drivers/staging/rtl8723au/hal/usb_halinit.c        |  4 ++--
- 58 files changed, 144 insertions(+), 144 deletions(-)
-
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 0b8c88f..5990174 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -160,6 +160,7 @@ static void rtl819x_set_channel_map(u8 channel_plan, struct r8192_priv *priv)
+ {
+ 	int i, max_chan = -1, min_chan = -1;
+ 	struct ieee80211_device *ieee = priv->ieee80211;
++
+ 	switch (channel_plan) {
+ 	case COUNTRY_CODE_FCC:
+ 	case COUNTRY_CODE_IC:
+@@ -427,6 +428,7 @@ static int proc_get_stats_ap(struct seq_file *m, void *v)
+ 
+ 	list_for_each_entry(target, &ieee->network_list, list) {
+ 		const char *wpa = "non_WPA";
++
+ 		if (target->wpa_ie_len > 0 || target->rsn_ie_len > 0)
+ 			wpa = "WPA";
+ 
+@@ -673,6 +675,7 @@ void rtl8192_update_msr(struct net_device *dev)
+ void rtl8192_set_chan(struct net_device *dev, short ch)
+ {
+ 	struct r8192_priv *priv = (struct r8192_priv *)ieee80211_priv(dev);
++
+ 	RT_TRACE(COMP_CH, "=====>%s()====ch:%d\n", __func__, ch);
+ 	priv->chan = ch;
+ 
+@@ -878,6 +881,7 @@ static void rtl8192_rx_isr(struct urb *urb)
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	int out_pipe = info->out_pipe;
+ 	int err;
++
+ 	if (!priv->up)
+ 		return;
+ 	if (unlikely(urb->status)) {
+@@ -1062,8 +1066,8 @@ static void rtl8192_config_rate(struct net_device *dev, u16 *rate_config)
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	struct ieee80211_network *net;
+ 	u8 i = 0, basic_rate = 0;
+-	net = &priv->ieee80211->current_network;
+ 
++	net = &priv->ieee80211->current_network;
+ 	for (i = 0; i < net->rates_len; i++) {
+ 		basic_rate = net->rates[i]&0x7f;
+ 		switch (basic_rate) {
+@@ -1157,6 +1161,7 @@ static void rtl8192_update_cap(struct net_device *dev, u16 cap)
+ 	u32 tmp = 0;
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	struct ieee80211_network *net = &priv->ieee80211->current_network;
++
+ 	priv->short_preamble = cap & WLAN_CAPABILITY_SHORT_PREAMBLE;
+ 	tmp = priv->basic_rate;
+ 	if (priv->short_preamble)
+@@ -1165,6 +1170,7 @@ static void rtl8192_update_cap(struct net_device *dev, u16 cap)
+ 
+ 	if (net->mode & (IEEE_G|IEEE_N_24G)) {
+ 		u8 slot_time = 0;
++
+ 		if ((cap & WLAN_CAPABILITY_SHORT_SLOT) && (!priv->ieee80211->pHTInfo->bCurrentRT2RTLongSlotTime)) /* short slot time */
+ 			slot_time = SHORT_SLOT_TIME;
+ 		else //long slot time
+@@ -1181,6 +1187,7 @@ static void rtl8192_net_update(struct net_device *dev)
+ 	struct ieee80211_network *net;
+ 	u16 BcnTimeCfg = 0, BcnCW = 6, BcnIFS = 0xf;
+ 	u16 rate_config = 0;
++
+ 	net = &priv->ieee80211->current_network;
+ 
+ 	rtl8192_config_rate(dev, &rate_config);
+@@ -1497,6 +1504,7 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
+ 	int status;
+ 	struct urb *tx_urb = NULL, *tx_urb_zero = NULL;
+ 	unsigned int idx_pipe;
++
+ 	pend = atomic_read(&priv->tx_pending[tcb_desc->queue_index]);
+ 	/* we are locked here so the two atomic_read and inc are executed
+ 	 * without interleaves
+@@ -1619,6 +1627,7 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
+ 		//we need to send 0 byte packet whenever 512N bytes/64N(HIGN SPEED/NORMAL SPEED) bytes packet has been transmitted. Otherwise, it will be halt to wait for another packet. WB. 2008.08.27
+ 		bool bSend0Byte = false;
+ 		u8 zero = 0;
++
+ 		if (udev->speed == USB_SPEED_HIGH) {
+ 			if (skb->len > 0 && skb->len % 512 == 0)
+ 				bSend0Byte = true;
+@@ -1762,6 +1771,7 @@ static void rtl8192_link_change(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	struct ieee80211_device *ieee = priv->ieee80211;
++
+ 	if (ieee->state == IEEE80211_LINKED) {
+ 		rtl8192_net_update(dev);
+ 		rtl8192_update_ratr_table(dev);
+@@ -1772,6 +1782,7 @@ static void rtl8192_link_change(struct net_device *dev)
+ 	/*update timing params*/
+ 	if (ieee->iw_mode == IW_MODE_INFRA || ieee->iw_mode == IW_MODE_ADHOC) {
+ 		u32 reg = 0;
++
+ 		read_nic_dword(dev, RCR, &reg);
+ 		if (priv->ieee80211->state == IEEE80211_LINKED)
+ 			priv->ReceiveConfig = reg |= RCR_CBSSID;
+@@ -1957,6 +1968,7 @@ static int rtl8192_handle_assoc_response(struct net_device *dev,
+ 					 struct ieee80211_network *network)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
++
+ 	rtl8192_qos_association_resp(priv, network);
+ 	return 0;
+ }
+@@ -1969,6 +1981,7 @@ void rtl8192_update_ratr_table(struct net_device *dev)
+ 	u8 *pMcsRate = ieee->dot11HTOperationalRateSet;
+ 	u32 ratr_value = 0;
+ 	u8 rate_index = 0;
++
+ 	rtl8192_config_rate(dev, (u16 *)(&ratr_value));
+ 	ratr_value |= (*(u16 *)(pMcsRate)) << 12;
+ 	switch (ieee->mode) {
+@@ -2064,6 +2077,7 @@ static u8 rtl8192_getSupportedWireleeMode(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	u8 ret = 0;
++
+ 	switch (priv->rf_chip) {
+ 	case RF_8225:
+ 	case RF_8256:
+@@ -2118,6 +2132,7 @@ static void rtl8192_init_priv_variable(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	u8 i;
++
+ 	priv->card_8192 = NIC_8192U;
+ 	priv->chan = 1; //set to channel 1
+ 	priv->ieee80211->mode = WIRELESS_MODE_AUTO; //SET AUTO
+@@ -2266,6 +2281,7 @@ static void rtl8192_get_eeprom_size(struct net_device *dev)
+ {
+ 	u16 curCR = 0;
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
++
+ 	RT_TRACE(COMP_EPROM, "===========>%s()\n", __func__);
+ 	read_nic_word_E(dev, EPROM_CMD, &curCR);
+ 	RT_TRACE(COMP_EPROM, "read from Reg EPROM_CMD(%x):%x\n", EPROM_CMD, curCR);
+@@ -2289,6 +2305,7 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	u16 tmpValue = 0;
+ 	int i;
++
+ 	RT_TRACE(COMP_EPROM, "===========>%s()\n", __func__);
+ 	wEPROM_ID = eprom_read(dev, 0); //first read EEPROM ID out;
+ 	RT_TRACE(COMP_EPROM, "EEPROM ID is 0x%x\n", wEPROM_ID);
+@@ -2502,6 +2519,7 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
+ static short rtl8192_get_channel_map(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
++
+ 	if (priv->ChannelPlan > COUNTRY_CODE_GLOBAL_DOMAIN) {
+ 		netdev_err(dev, "rtl8180_init: Error channel plan! Set to default.\n");
+ 		priv->ChannelPlan = 0;
+@@ -2514,7 +2532,6 @@ static short rtl8192_get_channel_map(struct net_device *dev)
+ 
+ static short rtl8192_init(struct net_device *dev)
+ {
+-
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 
+ 	memset(&(priv->stats), 0, sizeof(struct Stats));
+@@ -2646,6 +2663,7 @@ static bool rtl8192_adapter_start(struct net_device *dev)
+ 	bool init_status = true;
+ 	u8 SECR_value = 0x0;
+ 	u8 tmp;
++
+ 	RT_TRACE(COMP_INIT, "====>%s()\n", __func__);
+ 	priv->Rf_Mode = RF_OP_By_SW_3wire;
+ 	//for ASIC power on sequence
+@@ -2863,8 +2881,9 @@ static struct net_device_stats *rtl8192_stats(struct net_device *dev)
+ static bool HalTxCheckStuck819xUsb(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+-	u16		RegTxCounter;
+-	bool		bStuck = false;
++	u16 RegTxCounter;
++	bool bStuck = false;
++
+ 	read_nic_word(dev, 0x128, &RegTxCounter);
+ 	RT_TRACE(COMP_RESET, "%s():RegTxCounter is %d,TxCounter is %d\n", __func__, RegTxCounter, priv->TxCounter);
+ 	if (priv->TxCounter == RegTxCounter)
+@@ -2911,7 +2930,8 @@ static bool HalRxCheckStuck819xUsb(struct net_device *dev)
+ 	u16	RegRxCounter;
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	bool bStuck = false;
+-	static u8	rx_chk_cnt;
++	static u8 rx_chk_cnt;
++
+ 	read_nic_word(dev, 0x130, &RegRxCounter);
+ 	RT_TRACE(COMP_RESET, "%s(): RegRxCounter is %d,RxCounter is %d\n", __func__, RegRxCounter, priv->RxCounter);
+ 	// If rssi is small, we should check rx for long time because of bad rx.
+@@ -3271,6 +3291,7 @@ void rtl819x_watchdog_wqcallback(struct work_struct *work)
+ void watch_dog_timer_callback(unsigned long data)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv((struct net_device *) data);
++
+ 	queue_delayed_work(priv->priv_wq, &priv->watch_dog_wq, 0);
+ 	mod_timer(&priv->watch_dog_timer, jiffies + MSECS(IEEE80211_WATCH_DOG_TIME));
+ }
+@@ -3278,8 +3299,10 @@ int _rtl8192_up(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	int init_status = 0;
++
+ 	priv->up = 1;
+ 	priv->ieee80211->ieee_up = 1;
++
+ 	RT_TRACE(COMP_INIT, "Bringing up iface");
+ 	init_status = rtl8192_adapter_start(dev);
+ 	if (!init_status) {
+@@ -3306,6 +3329,7 @@ static int rtl8192_open(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	int ret;
++
+ 	down(&priv->wx_sem);
+ 	ret = rtl8192_up(dev);
+ 	up(&priv->wx_sem);
+@@ -3384,6 +3408,7 @@ void rtl8192_commit(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	int reset_status = 0;
++
+ 	if (priv->up == 0)
+ 		return;
+ 	priv->up = 0;
+@@ -3702,13 +3727,12 @@ static void rtl8192_process_phyinfo(struct r8192_priv *priv, u8 *buffer,
+ 	static u32 slide_rssi_index, slide_rssi_statistics;
+ 	static u32 slide_evm_index, slide_evm_statistics;
+ 	static u32 last_rssi, last_evm;
+-
+ 	static u32 slide_beacon_adc_pwdb_index, slide_beacon_adc_pwdb_statistics;
+ 	static u32 last_beacon_adc_pwdb;
+-
+ 	struct ieee80211_hdr_3addr *hdr;
+ 	u16 sc;
+ 	unsigned int frag, seq;
++
+ 	hdr = (struct ieee80211_hdr_3addr *)buffer;
+ 	sc = le16_to_cpu(hdr->seq_ctl);
+ 	frag = WLAN_GET_SEQ_FRAG(sc);
+@@ -4421,6 +4445,7 @@ static void query_rxdesc_status(struct sk_buff *skb,
+ 		if (!stats->bHwError) {
+ 			u8	ret_rate;
+ 			ret_rate = HwRateToMRate90(driver_info->RxHT, driver_info->RxRate);
++
+ 			if (ret_rate == 0xff) {
+ 				// Abnormal Case: Receive CRC OK packet with Rx descriptor indicating non supported rate.
+ 				// Special Error Handling here, 2008.05.16, by Emily
+@@ -4667,6 +4692,7 @@ static int rtl8192_usb_probe(struct usb_interface *intf,
+ 	struct r8192_priv *priv = NULL;
+ 	struct usb_device *udev = interface_to_usbdev(intf);
+ 	int ret;
++
+ 	RT_TRACE(COMP_INIT, "Oops: i'm coming\n");
+ 
+ 	dev = alloc_ieee80211(sizeof(struct r8192_priv));
+@@ -4741,8 +4767,8 @@ void rtl8192_cancel_deferred_work(struct r8192_priv *priv)
+ static void rtl8192_usb_disconnect(struct usb_interface *intf)
+ {
+ 	struct net_device *dev = usb_get_intfdata(intf);
+-
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
++
+ 	if (dev) {
+ 
+ 		unregister_netdev(dev);
+@@ -4833,6 +4859,7 @@ void EnableHWSecurityConfig8192(struct net_device *dev)
+ 	u8 SECR_value = 0x0;
+ 	struct r8192_priv *priv = (struct r8192_priv *)ieee80211_priv(dev);
+ 	struct ieee80211_device *ieee = priv->ieee80211;
++
+ 	SECR_value = SCR_TxEncEnable | SCR_RxDecEnable;
+ 	if (((KEY_TYPE_WEP40 == ieee->pairwise_key_type) || (KEY_TYPE_WEP104 == ieee->pairwise_key_type)) && (priv->ieee80211->auth_mode != 2)) {
+ 		SECR_value |= SCR_RxUseDK;
+@@ -4863,6 +4890,7 @@ void setKey(struct net_device *dev, u8 EntryNo, u8 KeyIndex, u16 KeyType,
+ 	u32 TargetContent = 0;
+ 	u16 usConfig = 0;
+ 	u8 i;
++
+ 	if (EntryNo >= TOTAL_CAM_ENTRY)
+ 		RT_TRACE(COMP_ERR, "cam entry exceeds in setKey()\n");
+ 
 -- 
 1.9.1
 
