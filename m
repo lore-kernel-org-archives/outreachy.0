@@ -1,87 +1,96 @@
 X-GM-THRID: 10181885820928
-X-Received: by 10.43.5.201 with SMTP id oh9mr38585050icb.10.1427564716947;
-        Sat, 28 Mar 2015 10:45:16 -0700 (PDT)
+X-Received: by 10.68.143.234 with SMTP id sh10mr28324325pbb.7.1427564706355;
+        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.90.72 with SMTP id w66ls1813608qgd.0.gmail; Sat, 28 Mar
- 2015 10:45:16 -0700 (PDT)
-X-Received: by 10.236.230.39 with SMTP id i37mr28136723yhq.47.1427564716645;
-        Sat, 28 Mar 2015 10:45:16 -0700 (PDT)
+Received: by 10.140.29.134 with SMTP id b6ls1676159qgb.93.gmail; Sat, 28 Mar
+ 2015 10:45:06 -0700 (PDT)
+X-Received: by 10.236.53.10 with SMTP id f10mr28437875yhc.17.1427564706146;
+        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
 Received: from mail-pd0-x22c.google.com (mail-pd0-x22c.google.com. [2607:f8b0:400e:c02::22c])
-        by gmr-mx.google.com with ESMTPS id iw3si593752pbd.1.2015.03.28.10.45.16
+        by gmr-mx.google.com with ESMTPS id ni4si552751pdb.2.2015.03.28.10.45.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Mar 2015 10:45:16 -0700 (PDT)
+        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) client-ip=2607:f8b0:400e:c02::22c;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22c.google.com with SMTP id p1so37610891pdc.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2015 10:45:16 -0700 (PDT)
+Received: by mail-pd0-x22c.google.com with SMTP id ni2so129219603pdb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :content-type:content-transfer-encoding;
-        bh=hwOMQLT/xl8neSD69Mjl371VxzADHsa7/vQR5mrzRsc=;
-        b=vkIcwMYnOVoty32p1IUhXP+AwDn8Cu6ZWWIEzDXfS5dW4fpyD0j1SqkR0+zNv+3teW
-         T1o65Uo6X6+ZF3fZok9AkJQjf6XdUjakXU3vVw9++gfbBU0wPh+iPqCtxu0/ZNeaXzlb
-         a+sviXaee4TtS4GMYSqnx4G//p2hGD4CcELjZ9nGSFYEOl7rqGRtAPO3XLVWF69gxpXk
-         Atg5XHPvDNCKsjCo26eieLzhhR7XQIkVFu34ElyuGi6yFBBZiNv+WaYCLa6ONje4omnH
-         bXLtKj1SBPgaxojyjy1IR9dKWtf1+/8pAzXBR1Z5B9Qookz+MQsC7L1Fx8bvzr2VQfb9
-         Rikw==
-X-Received: by 10.70.126.225 with SMTP id nb1mr45540266pdb.40.1427564716541;
-        Sat, 28 Mar 2015 10:45:16 -0700 (PDT)
+        bh=XrmOCc8vKCozUmnLfyPRSHeLcWOIn4gHs3ViNFb73rU=;
+        b=rkQoZ/WpD7/gcNljryEXQsGG6zn4cQWD0G0/RY2tL3qg2l30JgKKn5L8Aeoywp6n1F
+         ebUbhiAx3VB/h7ubADMWOorMikiBCse3LGk5VMJRMlFWYvVT9Dir31OCpUPIR4CKRmBl
+         5in3ex/7zu0/Igi/MOOrKFtJUq21tZ/7172bT9Squata4ZLJpjwtGgUan9kmfbqQZle3
+         0q4sn8RQMVxh0JL6tO2T3C7PsWIY6FCTqkEymjpn/XnzcniMx3H6d1RF+We+pufSbcHO
+         Q2WXqtElr6HqaVXlfocnJOgJEn+KHZC1vIJlwrEzgikEsIFlS9+22KuKdvSrBz2fMaEt
+         yUNw==
+X-Received: by 10.70.87.195 with SMTP id ba3mr45040211pdb.126.1427564706039;
+        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
 Received: from localhost ([101.63.212.243])
-        by mx.google.com with ESMTPSA id eo5sm5618187pbb.51.2015.03.28.10.45.12
+        by mx.google.com with ESMTPSA id g10sm5630078pdm.29.2015.03.28.10.45.02
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 28 Mar 2015 10:45:15 -0700 (PDT)
+        Sat, 28 Mar 2015 10:45:04 -0700 (PDT)
 From: Darshana Padmadas <darshanapadmadas@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH 6/6] Staging: lustre: Mark internal functions static in llog_cat.c
-Date: Sat, 28 Mar 2015 23:13:57 +0530
-Message-Id: <1427564637-10305-7-git-send-email-darshanapadmadas@gmail.com>
+Subject: [PATCH 5/6] Staging: lustre: Mark internal functions as static
+Date: Sat, 28 Mar 2015 23:13:56 +0530
+Message-Id: <1427564637-10305-6-git-send-email-darshanapadmadas@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1427564637-10305-1-git-send-email-darshanapadmadas@gmail.com>
 References: <1427564637-10305-1-git-send-email-darshanapadmadas@gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
-This patch marks functions llog_cat_set_first_idx and cat_cancel_cb
-static as these are used only within this file.
+This patch makes functions mgc_logname2resid, mgc_set_info_async
+and mgc_init static as these are only used internally.
 
-This eliminates the following sparse warning:
+This also eliminates sparse warnings of the type:
 warning: symbol * was not declared. Should it be static?
 
 Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
 ---
- drivers/staging/lustre/lustre/obdclass/llog_cat.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/lustre/lustre/mgc/mgc_request.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/obdclass/llog_cat.c b/drivers/staging/lustre/lustre/obdclass/llog_cat.c
-index 08afdf3..aae660d 100644
---- a/drivers/staging/lustre/lustre/obdclass/llog_cat.c
-+++ b/drivers/staging/lustre/lustre/obdclass/llog_cat.c
-@@ -692,7 +692,7 @@ int llog_cat_reverse_process(const struct lu_env *env,
+diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+index 0375bfe..8443b99 100644
+--- a/drivers/staging/lustre/lustre/mgc/mgc_request.c
++++ b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+@@ -95,7 +95,7 @@ int mgc_fsname2resid(char *fsname, struct ldlm_res_id *res_id, int type)
  }
- EXPORT_SYMBOL(llog_cat_reverse_process);
+ EXPORT_SYMBOL(mgc_fsname2resid);
  
--int llog_cat_set_first_idx(struct llog_handle *cathandle, int index)
-+static int llog_cat_set_first_idx(struct llog_handle *cathandle, int index)
+-int mgc_logname2resid(char *logname, struct ldlm_res_id *res_id, int type)
++static int mgc_logname2resid(char *logname, struct ldlm_res_id *res_id, int type)
  {
- 	struct llog_log_hdr *llh = cathandle->lgh_hdr;
- 	int i, bitmap_size, idx;
-@@ -751,7 +751,7 @@ int llog_cat_cleanup(const struct lu_env *env, struct llog_handle *cathandle,
+ 	char *name_end;
+ 	int len;
+@@ -948,7 +948,7 @@ static int mgc_target_register(struct obd_export *exp,
  	return rc;
  }
  
--int cat_cancel_cb(const struct lu_env *env, struct llog_handle *cathandle,
-+static int cat_cancel_cb(const struct lu_env *env, struct llog_handle *cathandle,
- 		  struct llog_rec_hdr *rec, void *data)
+-int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
++static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
+ 		       u32 keylen, void *key, u32 vallen,
+ 		       void *val, struct ptlrpc_request_set *set)
  {
- 	struct llog_logid_rec	*lir = (struct llog_logid_rec *)rec;
+@@ -1724,7 +1724,7 @@ struct obd_ops mgc_obd_ops = {
+ 	.o_process_config = mgc_process_config,
+ };
+ 
+-int __init mgc_init(void)
++static int __init mgc_init(void)
+ {
+ 	return class_register_type(&mgc_obd_ops, NULL, NULL,
+ 				   LUSTRE_MGC_NAME, NULL);
 -- 
 1.9.1
 
