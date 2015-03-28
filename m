@@ -1,96 +1,77 @@
 X-GM-THRID: 10181885820928
-X-Received: by 10.68.143.234 with SMTP id sh10mr28324325pbb.7.1427564706355;
-        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
+X-Received: by 10.52.24.108 with SMTP id t12mr28571057vdf.6.1427564699465;
+        Sat, 28 Mar 2015 10:44:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.29.134 with SMTP id b6ls1676159qgb.93.gmail; Sat, 28 Mar
- 2015 10:45:06 -0700 (PDT)
-X-Received: by 10.236.53.10 with SMTP id f10mr28437875yhc.17.1427564706146;
-        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
+Received: by 10.50.143.100 with SMTP id sd4ls567060igb.16.canary; Sat, 28 Mar
+ 2015 10:44:57 -0700 (PDT)
+X-Received: by 10.43.152.9 with SMTP id ku9mr40110537icc.8.1427564697601;
+        Sat, 28 Mar 2015 10:44:57 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pd0-x22c.google.com (mail-pd0-x22c.google.com. [2607:f8b0:400e:c02::22c])
-        by gmr-mx.google.com with ESMTPS id ni4si552751pdb.2.2015.03.28.10.45.06
+Received: from mail-pd0-x234.google.com (mail-pd0-x234.google.com. [2607:f8b0:400e:c02::234])
+        by gmr-mx.google.com with ESMTPS id gu4si577112pac.1.2015.03.28.10.44.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) client-ip=2607:f8b0:400e:c02::22c;
+        Sat, 28 Mar 2015 10:44:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) client-ip=2607:f8b0:400e:c02::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::22c as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
+       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::234 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22c.google.com with SMTP id ni2so129219603pdb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
+Received: by mail-pd0-x234.google.com with SMTP id n5so13094155pdd.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2015 10:44:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :content-type:content-transfer-encoding;
-        bh=XrmOCc8vKCozUmnLfyPRSHeLcWOIn4gHs3ViNFb73rU=;
-        b=rkQoZ/WpD7/gcNljryEXQsGG6zn4cQWD0G0/RY2tL3qg2l30JgKKn5L8Aeoywp6n1F
-         ebUbhiAx3VB/h7ubADMWOorMikiBCse3LGk5VMJRMlFWYvVT9Dir31OCpUPIR4CKRmBl
-         5in3ex/7zu0/Igi/MOOrKFtJUq21tZ/7172bT9Squata4ZLJpjwtGgUan9kmfbqQZle3
-         0q4sn8RQMVxh0JL6tO2T3C7PsWIY6FCTqkEymjpn/XnzcniMx3H6d1RF+We+pufSbcHO
-         Q2WXqtElr6HqaVXlfocnJOgJEn+KHZC1vIJlwrEzgikEsIFlS9+22KuKdvSrBz2fMaEt
-         yUNw==
-X-Received: by 10.70.87.195 with SMTP id ba3mr45040211pdb.126.1427564706039;
-        Sat, 28 Mar 2015 10:45:06 -0700 (PDT)
+        bh=e43IKUflM3lXiFiCmUYBynYcuR4H04y8jHIbkI//XUU=;
+        b=bYkkstVh9FRJW7Fb92gzOfaN4y9LmVSGBRSDrHi+W39feFhgWwYEEQy0qpMAm5LBed
+         9jaDulJvVix708JyK5FQmEe4I/aYNFBUDFrtGd1mu+3AbvVlyRDGS3MqJgtOc6HhYmCW
+         S7kBJDv1EQrjUPOzNPPkMXzdssnTEBhwL6xNYHk25Uw2aDrFHo0vTb2TfZ5vU9q1+j+A
+         dgFv3Q35apW5wT7+EYx3ZrvYRciMfYA2QzXTebJyOLRsKIWtJRmwC0e+HdmM0VGxkNZc
+         3XnLhqcb3kDkHqcv5zsDXBaEN87QOTPhkCmIKPu+UCW/8W8bxBN4cqDcXq2tjvRAw4QG
+         pWDw==
+X-Received: by 10.68.109.197 with SMTP id hu5mr44922331pbb.126.1427564697525;
+        Sat, 28 Mar 2015 10:44:57 -0700 (PDT)
 Return-Path: <darshanapadmadas@gmail.com>
 Received: from localhost ([101.63.212.243])
-        by mx.google.com with ESMTPSA id g10sm5630078pdm.29.2015.03.28.10.45.02
+        by mx.google.com with ESMTPSA id zi10sm5637964pab.35.2015.03.28.10.44.55
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 28 Mar 2015 10:45:04 -0700 (PDT)
+        Sat, 28 Mar 2015 10:44:56 -0700 (PDT)
 From: Darshana Padmadas <darshanapadmadas@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH 5/6] Staging: lustre: Mark internal functions as static
-Date: Sat, 28 Mar 2015 23:13:56 +0530
-Message-Id: <1427564637-10305-6-git-send-email-darshanapadmadas@gmail.com>
+Subject: [PATCH 4/6] Staging: lustre: Include header file that declares lprocfs_mdc_init_vars
+Date: Sat, 28 Mar 2015 23:13:55 +0530
+Message-Id: <1427564637-10305-5-git-send-email-darshanapadmadas@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1427564637-10305-1-git-send-email-darshanapadmadas@gmail.com>
 References: <1427564637-10305-1-git-send-email-darshanapadmadas@gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
-This patch makes functions mgc_logname2resid, mgc_set_info_async
-and mgc_init static as these are only used internally.
+This patch includes the header file mdc_internal.h that declares the
+function lprocfs_mdc_init_vars.
 
-This also eliminates sparse warnings of the type:
-warning: symbol * was not declared. Should it be static?
+This also eliminates the sparse warning:
+warning: symbol 'lprocfs_mdc_init_vars' was not declared. Should it be static?
 
 Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
 ---
- drivers/staging/lustre/lustre/mgc/mgc_request.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/lustre/lustre/mdc/lproc_mdc.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
-index 0375bfe..8443b99 100644
---- a/drivers/staging/lustre/lustre/mgc/mgc_request.c
-+++ b/drivers/staging/lustre/lustre/mgc/mgc_request.c
-@@ -95,7 +95,7 @@ int mgc_fsname2resid(char *fsname, struct ldlm_res_id *res_id, int type)
- }
- EXPORT_SYMBOL(mgc_fsname2resid);
+diff --git a/drivers/staging/lustre/lustre/mdc/lproc_mdc.c b/drivers/staging/lustre/lustre/mdc/lproc_mdc.c
+index a4fb294..acfe08e 100644
+--- a/drivers/staging/lustre/lustre/mdc/lproc_mdc.c
++++ b/drivers/staging/lustre/lustre/mdc/lproc_mdc.c
+@@ -38,6 +38,7 @@
+ #include <linux/vfs.h>
+ #include "../include/obd_class.h"
+ #include "../include/lprocfs_status.h"
++#include "mdc_internal.h"
  
--int mgc_logname2resid(char *logname, struct ldlm_res_id *res_id, int type)
-+static int mgc_logname2resid(char *logname, struct ldlm_res_id *res_id, int type)
+ static int mdc_max_rpcs_in_flight_seq_show(struct seq_file *m, void *v)
  {
- 	char *name_end;
- 	int len;
-@@ -948,7 +948,7 @@ static int mgc_target_register(struct obd_export *exp,
- 	return rc;
- }
- 
--int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
-+static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
- 		       u32 keylen, void *key, u32 vallen,
- 		       void *val, struct ptlrpc_request_set *set)
- {
-@@ -1724,7 +1724,7 @@ struct obd_ops mgc_obd_ops = {
- 	.o_process_config = mgc_process_config,
- };
- 
--int __init mgc_init(void)
-+static int __init mgc_init(void)
- {
- 	return class_register_type(&mgc_obd_ops, NULL, NULL,
- 				   LUSTRE_MGC_NAME, NULL);
 -- 
 1.9.1
 
