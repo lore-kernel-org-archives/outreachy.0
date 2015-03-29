@@ -1,81 +1,89 @@
-X-GM-THRID: 3543146692608
-X-Received: by 10.66.65.109 with SMTP id w13mr6676673pas.28.1424931146181;
-        Wed, 25 Feb 2015 22:12:26 -0800 (PST)
+X-GM-THRID: 9654834823168
+X-Received: by 10.194.221.65 with SMTP id qc1mr7023252wjc.7.1427658249259;
+        Sun, 29 Mar 2015 12:44:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.96.111 with SMTP id j102ls3913635qge.31.gmail; Wed, 25 Feb
- 2015 22:12:26 -0800 (PST)
-X-Received: by 10.236.26.179 with SMTP id c39mr6604139yha.27.1424931146004;
-        Wed, 25 Feb 2015 22:12:26 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id hs7si280607pad.1.2015.02.25.22.12.25
+Received: by 10.152.5.66 with SMTP id q2ls99257laq.66.gmail; Sun, 29 Mar 2015
+ 12:44:08 -0700 (PDT)
+X-Received: by 10.152.163.99 with SMTP id yh3mr7008582lab.8.1427658248743;
+        Sun, 29 Mar 2015 12:44:08 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id sf8si457258wic.2.2015.03.29.12.44.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 22:12:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sun, 29 Mar 2015 12:44:08 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pabkx10 with SMTP id kx10so11479510pab.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 22:12:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=DFrIj3vpEK/bUKlXdbqb1yebOEof2+rklpnhJGm0DMo=;
-        b=LMLHskQQVT6dKYqFjdHxv9uhV/stxY6eXfRVjtWaN94KeDHUdQHPpmsSW3FrL3+ZA6
-         IurO2dR3gAbbXoqhKLpKULlkcR5FlRqN73ECpYffCTnsAja+s4PuF01+rEVJ4K+449fH
-         WFww1LW/FetR0m7z/zeMloXTxtkGq9yeuqG/AsQzR8pzTJnhmkVc9eiQsm1RG8GfTMza
-         pJjSRI12uaeV75LMEPKNQsbe1qR8w2oxQd97F4hq3fQzTSWLqc72N22UKYVQJX3+Gcox
-         FnwgC8KiIwVXxUZ60EGpVwMiqJyakWjRQszr83Qot04nLbXICILYcoOZpPpRe3ys+hC8
-         t4hA==
-X-Received: by 10.66.219.130 with SMTP id po2mr11904603pac.98.1424931145878;
-        Wed, 25 Feb 2015 22:12:25 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([150.107.242.220])
-        by mx.google.com with ESMTPSA id b3sm43188913pbu.0.2015.02.25.22.12.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 22:12:24 -0800 (PST)
-Date: Thu, 26 Feb 2015 11:42:20 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Staging: rtl8188eu: Use mod_timer and setup_timer
-Message-ID: <cover.1424930708.git.vthakkar1994@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.11,489,1422918000"; 
+   d="scan'208";a="130620283"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Mar 2015 21:44:08 +0200
+Date: Sun, 29 Mar 2015 21:44:07 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Marianne Moeller Knudsen <marianne@masu.dk>
+cc: Greg KH <gregkh@linuxfoundation.org>, Julia Lawall <julia.lawall@lip6.fr>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Replace printk with
+ pr_debug
+In-Reply-To: <20150329194012.GA11849@debianvm>
+Message-ID: <alpine.DEB.2.02.1503292143160.2037@localhost6.localdomain6>
+References: <20150322200502.GA7693@debianvm> <20150323213038.GA26335@kroah.com> <alpine.DEB.2.02.1503240736230.2061@localhost6.localdomain6> <20150324094514.GA6378@kroah.com> <20150329194012.GA11849@debianvm>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch-set introduces the use of timer API
-functions mod_timer and setup_timer instead of
-driver specific functions _set_timer and
-_init_timer respectively. Here, some of these 
-patches are handled using Coccinelle and some
-changes are done by hand. 
 
-Vaishali Thakkar (2):
-  Staging: rtl8188eu: Eliminate use of _set_timer
-  Staging: rtl8188eu: Eliminate use of _init_timer
 
- drivers/staging/rtl8188eu/core/rtw_cmd.c          | 18 ++++---
- drivers/staging/rtl8188eu/core/rtw_ioctl_set.c    |  3 +-
- drivers/staging/rtl8188eu/core/rtw_led.c          | 62 +++++++++++++++--------
- drivers/staging/rtl8188eu/core/rtw_mlme.c         | 15 ++++--
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c     |  7 +--
- drivers/staging/rtl8188eu/core/rtw_pwrctrl.c      |  2 +-
- drivers/staging/rtl8188eu/core/rtw_recv.c         |  8 +--
- drivers/staging/rtl8188eu/include/osdep_service.h | 14 -----
- drivers/staging/rtl8188eu/include/rtw_mlme_ext.h  |  6 ++-
- drivers/staging/rtl8188eu/include/rtw_pwrctrl.h   |  3 +-
- drivers/staging/rtl8188eu/include/rtw_recv.h      |  4 +-
- drivers/staging/rtl8188eu/os_dep/mlme_linux.c     | 18 ++++---
- drivers/staging/rtl8188eu/os_dep/os_intfs.c       |  6 ++-
- drivers/staging/rtl8188eu/os_dep/recv_linux.c     |  4 +-
- 14 files changed, 101 insertions(+), 69 deletions(-)
+On Sun, 29 Mar 2015, Marianne Moeller Knudsen wrote:
 
--- 
-1.9.1
+> On Tue, Mar 24, 2015 at 10:45:14AM +0100, Greg KH wrote:
+> > On Tue, Mar 24, 2015 at 07:37:31AM +0100, Julia Lawall wrote:
+> > > 
+> > > 
+> > > On Mon, 23 Mar 2015, Greg KH wrote:
+> > > 
+> > > > On Sun, Mar 22, 2015 at 09:05:02PM +0100, Marianne Moeller Knudsen wrote:
+> > > > > Replace printk without loglevel with pr_debug. Issue found by
+> > > > > checkpatch.
+> > > > > 
+> > > > > Signed-off-by: Marianne Moeller Knudsen <marianne@masu.dk>
+> > > > > ---
+> > > > >  drivers/staging/sm750fb/ddk750_display.c |    2 +-
+> > > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
+> > > > > index c84196a..9f768a3 100644
+> > > > > --- a/drivers/staging/sm750fb/ddk750_display.c
+> > > > > +++ b/drivers/staging/sm750fb/ddk750_display.c
+> > > > > @@ -51,7 +51,7 @@ static void setDisplayControl(int ctrl,int dispState)
+> > > > >  				POKE32(PANEL_DISPLAY_CTRL, ulDisplayCtrlReg);
+> > > > >  			} while((PEEK32(PANEL_DISPLAY_CTRL) & ~ulReservedBits) !=
+> > > > >  					(ulDisplayCtrlReg & ~ulReservedBits));
+> > > > > -			printk("Set Panel Plane enbit:after tried %d times\n",cnt);
+> > > > > +			pr_debug("Set Panel Plane enbit:after tried %d times\n",cnt);
+> > > > 
+> > > > It's a driver, it should use dev_debug() instead please.
+> > > 
+> > > The @@ line shows that the function only has integer arguments.  Is it 
+> > > acceptable to add arguments just for debug messages?
+> > 
+> > Yes, it's talking to hardware, so we need to know the exact device that
+> > caused the message.  Random messages like this don't help anyone out as
+> > it doesn't describe the device, the file, the driver, or much of
+> > anything else :(
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> 
+> I've tried to make some code changes in order to use dev_dbg instead by passing fb_info. Maybe I could get some comments/hints/omgwhathaveyoudone on it? and if so how should I post it?
 
+Just post what you propose.  If you have some doubts about what you have 
+done, you can discuss them under the ---.  That way ifthe strategy you 
+have taken is actually fine, the patch can be accepted as is, and your 
+comments will disappear.
+
+julia
 
