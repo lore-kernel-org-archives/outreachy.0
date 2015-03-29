@@ -1,72 +1,85 @@
-X-GM-THRID: 1229525614592
-X-Received: by 10.194.161.194 with SMTP id xu2mr1192785wjb.1.1424431506180;
-        Fri, 20 Feb 2015 03:25:06 -0800 (PST)
+X-GM-THRID: 10263819452416
+X-Received: by 10.43.16.70 with SMTP id px6mr54082552icb.28.1427619902749;
+        Sun, 29 Mar 2015 02:05:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.100 with SMTP id i4ls218135laa.106.gmail; Fri, 20 Feb
- 2015 03:25:05 -0800 (PST)
-X-Received: by 10.152.5.3 with SMTP id o3mr1199889lao.6.1424431505667;
-        Fri, 20 Feb 2015 03:25:05 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id ta1si83888wic.1.2015.02.20.03.25.05
+Received: by 10.140.29.134 with SMTP id b6ls1839927qgb.93.gmail; Sun, 29 Mar
+ 2015 02:05:02 -0700 (PDT)
+X-Received: by 10.236.41.73 with SMTP id g49mr35451443yhb.57.1427619902562;
+        Sun, 29 Mar 2015 02:05:02 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id pc4si746455pac.0.2015.03.29.02.05.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 03:25:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Sun, 29 Mar 2015 02:05:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-f171.google.com with SMTP id hi2so2241789wib.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 03:25:05 -0800 (PST)
+Received: by mail-pa0-x22b.google.com with SMTP id gg7so8961952pac.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 29 Mar 2015 02:05:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=muG3t7o+DD+6fsqsUSzSHdUJbZzkdoyKiR0uXMmTLh0=;
-        b=j3UFke/v8psgwuUw25dIlIYI1oL7GfZiF8hqiBDUgEgE+ueAmllOMWhXqPAE3zY0XO
-         R8tfLqyw/lKpd7w0zxhm3qbdkM0NxXcFNmh/N1Fze86lbhxP4/NdQYVThi+OSv98iHVS
-         B74BflRhKOb7KKn571dN+2MagL+ETREd4idpoxfoNhgSURezEtHkp90hPsNGbOBfHG31
-         7MYtKNw94WptFDAT1/ffj15ue48BOTRvwJTUWgAgcFNVM4OkLYYhu/r2hKa6zzekndKu
-         DpR11jwJEp4P5Do/yvsZwJFMi4Gs9JX6gdYHTW6xi04WDY7OdKWzIirySqKiC/CcOjS1
-         qx+Q==
-X-Received: by 10.180.198.44 with SMTP id iz12mr22986663wic.36.1424431505537;
-        Fri, 20 Feb 2015 03:25:05 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.192.150])
-        by mx.google.com with ESMTPSA id f1sm1968920wij.2.2015.02.20.03.25.04
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 03:25:04 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=46j0XBBf3PLOb+kEnwn4JqHoNW8rfuYFFHbGf5XuYDE=;
+        b=pKZ1LN1XkxuGCW9wH5t+sXPQg/L1qNbJg4drD0c7//VJyl1RV61EFU51METd1+H0ob
+         fW1KY+OCJF6EuscbTLTf8pWmINF6fGoCF20TWh4QRlpYEe+ir7+YyjMVJxXMVM1Db/mj
+         +3lzyAQW+L1QsHp0wfhCcs3RL5cU+BqKLDe41vYJ8/yXBLW4umrcU3VTaFZ3aqtejImD
+         vLfG1rlDeh7GRIuIZ/8LpKx41gLsXMpQZqok1XTYlG7IA6EVkrhcfR8JvTrk3A6EUyVD
+         udsyupC888M/Nl1pyAe3PViMF8gfVf9LRQdPB/zRIZzvKtGgvC898Ul3x2N/Xm7QzyZu
+         psqg==
+X-Received: by 10.70.21.227 with SMTP id y3mr19774251pde.101.1427619902408;
+        Sun, 29 Mar 2015 02:05:02 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.173.150])
+        by mx.google.com with ESMTPSA id pf3sm6928025pdb.3.2015.03.29.02.05.01
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sun, 29 Mar 2015 02:05:01 -0700 (PDT)
+Date: Sun, 29 Mar 2015 14:34:56 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: dgnc: Remove space before tab
-Date: Fri, 20 Feb 2015 13:25:02 +0200
-Message-Id: <1424431502-4155-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH 3/4] Staging: sm750fb: Fix else statement position
+Message-ID: <20150329090456.GA19865@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "please, no space before tabs"
+Fixed position of else statement after brace '}' by placing it in the
+same line. Problem found using checkpatch.pl
+ERROR: else should follow close brace '}'
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_mgmt.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/sm750fb/ddk750_chip.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_mgmt.c b/drivers/staging/dgnc/dgnc_mgmt.c
-index 31e9f45..ee821da 100644
---- a/drivers/staging/dgnc/dgnc_mgmt.c
-+++ b/drivers/staging/dgnc/dgnc_mgmt.c
-@@ -167,7 +167,8 @@ long dgnc_mgmt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		di.info_bdstate = dgnc_Board[brd]->dpastatus;
- 		di.info_ioport = 0;
- 		di.info_physaddr = (ulong) dgnc_Board[brd]->membase;
--		di.info_physsize = (ulong) dgnc_Board[brd]->membase - dgnc_Board[brd]->membase_end;
-+		di.info_physsize = (ulong) dgnc_Board[brd]->membase
-+			- dgnc_Board[brd]->membase_end;
- 		if (dgnc_Board[brd]->state != BOARD_FAILED)
- 			di.info_nports = dgnc_Board[brd]->nasync;
- 		else
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index b306d32..5f2f424 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -22,15 +22,13 @@ logical_chip_type_t getChipType(void)
+ 
+ 	if (physicalID == 0x718) {
+ 		chip = SM718;
+-	}
+-	else if (physicalID == 0x750) {
++	} else if (physicalID == 0x750) {
+ 		chip = SM750;
+ 		/* SM750 and SM750LE are different in their revision ID only. */
+ 		if (physicalRev == SM750LE_REVISION_ID){
+ 			chip = SM750LE;
+ 		}
+-	}
+-	else {
++	} else {
+ 		chip = SM_UNKNOWN;
+ 	}
+ 
 -- 
-1.8.3.2
+1.9.1
 
 
