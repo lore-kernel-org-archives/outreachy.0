@@ -1,93 +1,81 @@
 X-GM-THRID: 10349433585664
-X-Received: by 10.112.198.34 with SMTP id iz2mr6998099lbc.22.1427642464651;
-        Sun, 29 Mar 2015 08:21:04 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,222a9111e0db7cb8,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.152.87.110 with SMTP id w14mr5207906laz.3.1427642427138;
+        Sun, 29 Mar 2015 08:20:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.7 with SMTP id o7ls246438lao.52.gmail; Sun, 29 Mar 2015
- 08:21:04 -0700 (PDT)
-X-Received: by 10.152.87.110 with SMTP id w14mr5208281laz.3.1427642464005;
-        Sun, 29 Mar 2015 08:21:04 -0700 (PDT)
+Received: by 10.152.27.135 with SMTP id t7ls508411lag.45.gmail; Sun, 29 Mar
+ 2015 08:20:26 -0700 (PDT)
+X-Received: by 10.112.130.71 with SMTP id oc7mr2671799lbb.13.1427642426586;
+        Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
-        by gmr-mx.google.com with ESMTPS id o3si458566wib.2.2015.03.29.08.21.03
+Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
+        by gmr-mx.google.com with ESMTPS id a14si157742wib.3.2015.03.29.08.20.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 29 Mar 2015 08:21:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
+        Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x230.google.com with SMTP id a2so92938940wia.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 29 Mar 2015 08:21:03 -0700 (PDT)
+Received: by mail-wg0-x229.google.com with SMTP id m6so145569582wgd.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=HOoutvX0lrBvrhEqG3LQvS8jeJYRP+L2K2vuoKh3Cno=;
-        b=dxWt8bcCUwEUdUFtqmn+iQTmbKPLBV0OsYNVe7LKCCnGod9H+OUkUiol2cwZauR1FG
-         Qdg26Suq6c48qcmKwOgi7UEksn7LTr4c1ljXNMzVdqDvbg1B9HQzergr8oUWbEk08zs6
-         IPe4a58KDPa1v+HjqYORzIB6DnCf8oqwaJuOc2AZ/rE13AOrArg0ZldErNQkxAxIBNZT
-         kuHxhPyimWXdlYtnTCRpEWC9lJCsyr8anoJP6Lb12nkwvQXlq1miKXJ4VMpAFudI8hTQ
-         qRIbVVPmRmm7GK9hM2QIA/iIsMT6WHdUUwN7YHAcV+efLTiQC+fto+chXqlo/YIq6ZIF
-         JOjA==
-X-Received: by 10.194.21.193 with SMTP id x1mr53782645wje.144.1427642463930;
-        Sun, 29 Mar 2015 08:21:03 -0700 (PDT)
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=ppdvLfI4OO8XieRL3hn/JS4RRHGpm+0cydvz95qG27Q=;
+        b=Wx8/aTKT5jlI6NhKnzz56yTWVhYuK52RmXkU1Od6is0wrkRcAXwtTOo6Ap1f9MCOz5
+         0ZNpBwd+mi+pTRQp9ReWoIh/OdpC/W/URSGrSjxA/AZ7X1e7cdyd+TGzwlm6rIgd6kIj
+         c5B72tFUeprKyOTOHOQDKpy6yaJO/rwCvlzU+KxKEe0B8YqLF5VnCST6EpSridxlHjCt
+         sHVmA+u2NTZW06CE18PR+29aYO9Xme7IfNmqnxZkKG6FTD/l2/coyMBvd6nQvdl/pSQJ
+         9j4bKsRpi9JGrSXk6YtGpmsMbLoKd12jS5JMSyeHLqEKy8xIpsw/xM1qAIepqgg0OuL9
+         fHRQ==
+X-Received: by 10.194.211.104 with SMTP id nb8mr55732519wjc.51.1427642426496;
+        Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
 Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id kr5sm11643132wjc.1.2015.03.29.08.21.02
+        by mx.google.com with ESMTPSA id ga8sm11591868wib.11.2015.03.29.08.20.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 29 Mar 2015 08:21:03 -0700 (PDT)
-Date: Sun, 29 Mar 2015 18:20:06 +0300
+        Sun, 29 Mar 2015 08:20:25 -0700 (PDT)
+Date: Sun, 29 Mar 2015 18:19:28 +0300
 From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/7] Staging: iio: Simplify NULL comparison
-Message-ID: <47ca1ece477a84c24e6c90ec101bdba874f425c6.1427642156.git.cristina.opriceana@gmail.com>
-References: <cover.1427642156.git.cristina.opriceana@gmail.com>
+Subject: [PATCH 0/7] Staging: iio: Remove explicit NULL comparison
+Message-ID: <cover.1427642156.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1427642156.git.cristina.opriceana@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove explicit NULL comparison and write it in its simpler form.
-Replacement done with coccinelle:
+This patchet removes explicit NULL comparison from the iio drivers.
 
-@replace_rule@
-expression e;
-@@
+Cristina Opriceana (7):
+  Staging: iio: Simplify NULL comparison
+  Staging: iio: Remove explicit NULL comparison
+  Staging: iio: Remove explicit NULL comparison
+  Staging: iio: Remove explicit NULL comparison
+  Staging: iio: Remove explicit NULL comparison
+  Staging: iio: Remove explicit NULL comparison
+  Staging: iio: Remove explicit NULL comparison
 
--e == NULL
-+ !e
+ drivers/staging/iio/accel/lis3l02dq_ring.c          | 6 +++---
+ drivers/staging/iio/adc/ad7606_ring.c               | 2 +-
+ drivers/staging/iio/adc/ad7780.c                    | 2 +-
+ drivers/staging/iio/iio_dummy_evgen.c               | 4 ++--
+ drivers/staging/iio/iio_simple_dummy.c              | 2 +-
+ drivers/staging/iio/iio_simple_dummy_buffer.c       | 6 +++---
+ drivers/staging/iio/impedance-analyzer/ad5933.c     | 2 +-
+ drivers/staging/iio/meter/ade7758_core.c            | 2 +-
+ drivers/staging/iio/meter/ade7758_ring.c            | 2 +-
+ drivers/staging/iio/meter/ade7758_trigger.c         | 2 +-
+ drivers/staging/iio/trigger/iio-trig-periodic-rtc.c | 4 ++--
+ 11 files changed, 17 insertions(+), 17 deletions(-)
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
----
- drivers/staging/iio/iio_dummy_evgen.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/iio/iio_dummy_evgen.c b/drivers/staging/iio/iio_dummy_evgen.c
-index 59ad5a3..0c9c86d 100644
---- a/drivers/staging/iio/iio_dummy_evgen.c
-+++ b/drivers/staging/iio/iio_dummy_evgen.c
-@@ -72,7 +72,7 @@ static int iio_dummy_evgen_create(void)
- 	int ret, i;
- 
- 	iio_evgen = kzalloc(sizeof(*iio_evgen), GFP_KERNEL);
--	if (iio_evgen == NULL)
-+	if (!iio_evgen)
- 		return -ENOMEM;
- 
- 	iio_evgen->base = irq_alloc_descs(-1, 0, IIO_EVENTGEN_NO, 0);
-@@ -105,7 +105,7 @@ int iio_dummy_evgen_get_irq(void)
- {
- 	int i, ret = 0;
- 
--	if (iio_evgen == NULL)
-+	if (!iio_evgen)
- 		return -ENODEV;
- 
- 	mutex_lock(&iio_evgen->lock);
 -- 
 1.9.1
 
