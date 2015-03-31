@@ -1,80 +1,148 @@
-X-GM-THRID: 6203527091850313728
-X-Received: by 10.182.28.73 with SMTP id z9mr9589940obg.45.1444371205751;
-        Thu, 08 Oct 2015 23:13:25 -0700 (PDT)
+X-GM-THRID: 10511326380032
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,3582365e1fd9ea1d,start
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.68.134.66 with SMTP id pi2mr43639684pbb.9.1427811984803;
+        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.84.230 with SMTP id l93ls1270767qgd.87.gmail; Thu, 08 Oct
- 2015 23:13:25 -0700 (PDT)
-X-Received: by 10.129.154.137 with SMTP id r131mr9653018ywg.0.1444371205160;
-        Thu, 08 Oct 2015 23:13:25 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id el2si3466pbb.0.2015.10.08.23.13.25
+Received: by 10.107.29.213 with SMTP id d204ls2012847iod.53.gmail; Tue, 31 Mar
+ 2015 07:26:24 -0700 (PDT)
+X-Received: by 10.66.218.163 with SMTP id ph3mr41130279pac.46.1427811984530;
+        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
+        by gmr-mx.google.com with ESMTPS id oc12si1523854pdb.1.2015.03.31.07.26.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 23:13:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id ex6so77355892pac.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 23:13:25 -0700 (PDT)
+Received: by mail-pd0-x236.google.com with SMTP id h5so10026859pdm.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=LMLnP1NsHVTfkw4UVYA9H6+5weDNpR6eoxfrfyjmaas=;
-        b=vNL9mNbKkV99J81AhabpENXDAQHyP/fBfUTI5a1rBb5PRjvqgdcMJdk1VmEoiMNzkV
-         lYXCrjDnmHHsnf6gynqiM8Gyl8j9xhnpG0WxXotFt2LFidHmGsgPCYdYufP9uwr6BMgG
-         PQ3piSzNjyN9rLQt1f4RR3vPO0F/7V8YbxxL7+Zodd7j40pe3KbI9YDLOHFbpde2aRmw
-         kmN5vmOWaVJ7BFbIATpCGddnfKIO4NJqT9wKoIc+i5vL46ZMfHXxwib03ErEeiodhCqO
-         WOfW8hAEeNOOXDNeQCQaT5rzqra9R4wiGHvIfMEeih6rOLLnqgYaVDOGBu/Ro5GUznEk
-         Evgg==
-X-Received: by 10.66.144.135 with SMTP id sm7mr13558583pab.106.1444371205023;
-        Thu, 08 Oct 2015 23:13:25 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id iy1sm49071104pbb.85.2015.10.08.23.13.24
+        bh=U2rKGZrmSRO0piHz0KHbT0mxHcKEzr1AHgLPmSlwXUM=;
+        b=t8iGa9ASMO6FnHiuLpUmK8Y9QLpr3NP1Ovd0CSdyYLOw3zShc/rvtHMhV1QIdgTA8Y
+         Q0XqxkacVIHVgn524sn/IcF6ZdLCamr7L1/s3+CL9MtLKlHPV+1ymS/5/ZpUxdlKRes/
+         KgdjmBWpRQSwFMvIOxdITf34CDsv4x8YE0JypM0n9Fn4FcF7goPl7q8cc0evXvxT7+4s
+         C56k4z1tVXV2yzfsqxSRh2rf8NmKeFRyBmhMLO1copJ/N3x+rksaWynFTlJmVBCHshmQ
+         Dwo+rlcm1HrIKyC1Lrp9o9FGiZvzfsyAwBv1KgHFbTaT2Ac1/ZujVdEo/5gtuZVeutv9
+         05VA==
+X-Received: by 10.68.238.200 with SMTP id vm8mr36513040pbc.15.1427811984402;
+        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.95.190])
+        by mx.google.com with ESMTPSA id fd5sm14142245pdb.67.2015.03.31.07.26.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 08 Oct 2015 23:13:24 -0700 (PDT)
-Date: Thu, 8 Oct 2015 23:13:23 -0700
-From: Alison Schofield <amsfield22@gmail.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 31 Mar 2015 07:26:23 -0700 (PDT)
+Date: Tue, 31 Mar 2015 19:56:19 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: gdmwm: move constant to right side of comparison
- test
-Message-ID: <20151009061314.GA31693@Ubuntu-D830>
+Subject: [PATCH] Staging: sm750fb: Insert space before parenthesis
+Message-ID: <20150331142619.GA3793@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Move constant to right side of comparison test per checkpatch.pl:
-WARNING: Comparisons should place the constant on the right side of the
-test
+Inserted space before parenthesis '('. Problem found using
+checkpatch.pl
+ERROR: space required before the open parenthesis '('
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/gdm72xx/gdm_wimax.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/sm750fb/ddk750_chip.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/gdm72xx/gdm_wimax.c b/drivers/staging/gdm72xx/gdm_wimax.c
-index 6e8dbaf..69f00cc 100644
---- a/drivers/staging/gdm72xx/gdm_wimax.c
-+++ b/drivers/staging/gdm72xx/gdm_wimax.c
-@@ -581,8 +581,8 @@ static int gdm_wimax_get_prepared_info(struct net_device *dev, char *buf,
- 		}
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 93517d9..c506b5c 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -88,7 +88,7 @@ unsigned int getChipClock(void)
+ {
+ 	pll_value_t pll;
+ #if 1
+-	if(getChipType() == SM750LE)
++	if (getChipType() == SM750LE)
+ 		return MHz(130);
+ #endif
  
- 		pos += gdm_wimax_hci_get_tlv(&buf[pos], &T, &L, &V);
--		if (T == TLV_T(T_MAC_ADDRESS)) {
--			if (L != dev->addr_len) {
-+		if (TLV_T(T_MAC_ADDRESS) == T) {
-+			if (dev->addr_len != L) {
- 				netdev_err(dev,
- 					   "%s Invalid information result T/L [%x/%d]\n",
- 					   __func__, T, L);
+@@ -151,7 +151,7 @@ void setMemoryClock(unsigned int frequency)
+ 
+ 		/* Set the corresponding divisor in the register. */
+ 		ulReg = PEEK32(CURRENT_GATE);
+-		switch(divisor) {
++		switch (divisor) {
+ 		default:
+ 		case 1:
+ 			ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_1);
+@@ -199,7 +199,7 @@ void setMasterClock(unsigned int frequency)
+ 
+ 		/* Set the corresponding divisor in the register. */
+ 		ulReg = PEEK32(CURRENT_GATE);
+-		switch(divisor) {
++		switch (divisor) {
+ 		default:
+ 		case 3:
+ 			ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_3);
+@@ -226,7 +226,7 @@ unsigned int ddk750_getVMSize(void)
+ 	unsigned int data;
+ 
+ 	/* sm750le only use 64 mb memory*/
+-	if(getChipType() == SM750LE)
++	if (getChipType() == SM750LE)
+ 		return MB(64);
+ 
+ 	/* for 750,always use power mode0*/
+@@ -253,7 +253,7 @@ int ddk750_initHw(initchip_param_t * pInitParam)
+ 	unsigned int ulReg;
+ #if 0
+ 	/* move the code to map regiter function. */
+-	if(getChipType() == SM718){
++	if (getChipType() == SM718) {
+ 		/* turn on big endian bit*/
+ 		ulReg = PEEK32(0x74);
+ 		/* now consider register definition in a big endian pattern*/
+@@ -273,7 +273,7 @@ int ddk750_initHw(initchip_param_t * pInitParam)
+ 	ulReg = FIELD_SET(ulReg,CURRENT_GATE,LOCALMEM,ON);
+ 	setCurrentGate(ulReg);
+ 
+-	if(getChipType() != SM750LE){
++	if (getChipType() != SM750LE) {
+ 		/*	set panel pll and graphic mode via mmio_88 */
+ 		ulReg = PEEK32(VGA_CONFIGURATION);
+ 		ulReg = FIELD_SET(ulReg,VGA_CONFIGURATION,PLL,PANEL);
+@@ -445,7 +445,7 @@ unsigned int calcPllValue(unsigned int request_orig,pll_value_t *pll)
+ 
+ 	/* for MXCLK register , no POD provided, so need be treated differently	*/
+ 
+-	if(pll->clockType != MXCLK_PLL){
++	if (pll->clockType != MXCLK_PLL) {
+ 		xparm = &xparm_PIXEL[0];
+ 		xcnt = sizeof(xparm_PIXEL)/sizeof(xparm_PIXEL[0]);
+ 	}else{
+@@ -468,11 +468,11 @@ unsigned int calcPllValue(unsigned int request_orig,pll_value_t *pll)
+ 			M += fl_quo * X / 10000;
+ 			/* round step */
+ 			M += (fl_quo*X % 10000)>5000?1:0;
+-			if(M < 256 && M > 0) {
++			if (M < 256 && M > 0) {
+ 				unsigned int diff;
+ 				tmpClock = pll->inputFreq *M / N / X;
+ 				diff = absDiff(tmpClock,request_orig);
+-				if(diff < miniDiff)
++				if (diff < miniDiff)
+ 				{
+ 					pll->M = M;
+ 					pll->N = N;
 -- 
-2.1.4
+1.9.1
 
 
