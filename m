@@ -1,98 +1,107 @@
-X-GM-THRID: 6260476384901070848
-X-Received: by 10.182.27.101 with SMTP id s5mr3370534obg.35.1457630746812;
-        Thu, 10 Mar 2016 09:25:46 -0800 (PST)
+X-GM-THRID: 10349433585664
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,222a9111e0db7cb8
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.112.138.233 with SMTP id qt9mr2016040lbb.2.1427796329397;
+        Tue, 31 Mar 2015 03:05:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.196.36 with SMTP id ij4ls881016obc.61.gmail; Thu, 10 Mar
- 2016 09:25:46 -0800 (PST)
-X-Received: by 10.182.196.101 with SMTP id il5mr3351429obc.26.1457630746362;
-        Thu, 10 Mar 2016 09:25:46 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id sf5si728164pac.1.2016.03.10.09.25.46
+Received: by 10.152.234.236 with SMTP id uh12ls683014lac.54.gmail; Tue, 31 Mar
+ 2015 03:05:28 -0700 (PDT)
+X-Received: by 10.112.213.100 with SMTP id nr4mr8043435lbc.10.1427796328900;
+        Tue, 31 Mar 2015 03:05:28 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id a14si485274wib.3.2015.03.31.03.05.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Mar 2016 09:25:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Mar 2015 03:05:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id td3so45165278pab.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 09:25:46 -0800 (PST)
+Received: by mail-wi0-x231.google.com with SMTP id a2so19171336wia.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 03:05:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=pFe65iwpJNb50UUmorEOFaKUdTXAvg34pqLm14YNXkg=;
-        b=jBceDfKjeCRBVJ192G0TDtI7oK0oyVFIPu684RwW8IDFD0aTPdoQG47wcF/2zYuCWp
-         7nzO2wcJATMrB5+9FKIQDewLd/C3v2pnW84MMrC3sYij3mNjjeNmSygoh54GwXU/p7Jz
-         ROJzNB/EM9wxlRtnuMWurV0eFqop9vhfu+/Ovwn11UbpgoHE1TpAEr8M4eEMh5qHLVQO
-         KbmORhv+xt2lOPQjhyLysoQ404zeFNjimbS4bQHt/+ii/I7USQJYYAfh3zeSfC+6cGHP
-         tmeSRSoFsN414Lyp/equhDE+hvRnPewiqbzwK0pxRrLvEvQZ6OXOCy1mtJyWH1D8aC7v
-         INoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=pFe65iwpJNb50UUmorEOFaKUdTXAvg34pqLm14YNXkg=;
-        b=cBzGF9t8okbsOm5SydKVm7Byj2xPJxu6cNKGLq9SeGcUYD1SYeOvvEYYjWVFPtj2qv
-         c2hmxF4zI1kVK5kvIfWMq0URhI487z4FwnavPuggSK08PMCCo5ggRRjpOFew8yVOvq07
-         mQGUrwRjkKFIDe00Yoy06lFJxlcxQB5xUZkLPtPX8v8mdguu8zfPuwU/y2myz3EPCpT3
-         bz+7aEr8UG/FkynokTyi2Eb665/PIh0LRPneYgZe+pUf0sLDQk5S7k40RISoEh0d6ffg
-         ClG+brBDtLKWeTTv/ibqDMySPcl24CKtZQYbiQY7FtMOtwni6upU4IKnUwpNZbGoVSCw
-         /aWA==
-X-Gm-Message-State: AD7BkJIySNWjdq6Gzl0m2TCPPp4ei/9xrtjwam9wuj2XkxWW+YY6Of+AeQ5Rlmf3Cb86SA==
-X-Received: by 10.66.176.10 with SMTP id ce10mr6177242pac.68.1457630746208;
-        Thu, 10 Mar 2016 09:25:46 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id h85sm6921710pfj.52.2016.03.10.09.25.45
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=Zoq7g/zZ0xjhWXyXUN46Idek127cj3xGWRfRICDE3mU=;
+        b=mKJR5SMEiKF6qzbUwoZYhgpfHhslQ/h9nM9FElVSxldXWMQYrxXaxQkGsD34Q8tuSQ
+         xc5X6lixLSHUN91uoyW6IvsrGJpa3b1KQAz+SE28BAK4Zj9wXEhfm3+0AGVktM6WIn7A
+         fUdA+Ea22ztd/49RrO/oAVa1gsvTr1tY7d6IKAA7li6tf280hZm6JDVM8O4MYQuZBd5g
+         tFonGo2cJrG9xPPurEV48fPJTXv9W4E8nUy7QjMuF5d/bYxmAb+Lje6hLgHTAr5uHb/S
+         NNj4R43GIoen73y2e9uFdaeI1T+rH9OVvjzIL62HKb3WfmR7QOM2s5+srj+GlUsIEMF2
+         XyIg==
+X-Received: by 10.180.75.233 with SMTP id f9mr4016924wiw.5.1427796328820;
+        Tue, 31 Mar 2015 03:05:28 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id cj9sm19607952wjc.42.2015.03.31.03.05.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 10 Mar 2016 09:25:45 -0800 (PST)
-Date: Thu, 10 Mar 2016 22:43:34 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 31 Mar 2015 03:05:28 -0700 (PDT)
+Date: Tue, 31 Mar 2015 13:04:29 +0300
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: rtllib_crypt_tkip: Remove unnecessary
- else after return
-Message-ID: <20160310171334.GA19432@Karyakshetra>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 7/7] Staging: iio: accel: Remove explicit NULL comparison
+Message-ID: <80c073fcfea218cecbf400e16820013f7f09863b.1427795054.git.cristina.opriceana@gmail.com>
+References: <cover.1427795054.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1427795054.git.cristina.opriceana@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch warning that else is not generally
-useful after a break or return.
+This patch removes explicit NULL comparison and writes it in its
+equivalent shorter form. Done with coccinelle.
 
-This was done using Coccinelle:
+@replace_rule@
+expression e;
 @@
-expression e2;
-statement s1;
-@@
-if(e2) { ... return ...; }
--else
-         s1
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+-e == NULL
++ !e
+
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_crypt_tkip.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/iio/accel/lis3l02dq_ring.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-index 2096d78..7df824b 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-@@ -369,8 +369,7 @@ static int rtllib_tkip_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
-
- 	if (!tcb_desc->bHwSec)
- 		return ret;
--	else
--		return 0;
-+	return 0;
-
-
- }
---
-2.1.4
+diff --git a/drivers/staging/iio/accel/lis3l02dq_ring.c b/drivers/staging/iio/accel/lis3l02dq_ring.c
+index e6101bb..677774f 100644
+--- a/drivers/staging/iio/accel/lis3l02dq_ring.c
++++ b/drivers/staging/iio/accel/lis3l02dq_ring.c
+@@ -119,7 +119,7 @@ static int lis3l02dq_get_buffer_element(struct iio_dev *indio_dev,
+ 				       indio_dev->masklength);
+ 
+ 	rx_array = kcalloc(4, scan_count, GFP_KERNEL);
+-	if (rx_array == NULL)
++	if (!rx_array)
+ 		return -ENOMEM;
+ 	ret = lis3l02dq_read_all(indio_dev, rx_array);
+ 	if (ret < 0) {
+@@ -142,7 +142,7 @@ static irqreturn_t lis3l02dq_trigger_handler(int irq, void *p)
+ 	char *data;
+ 
+ 	data = kmalloc(indio_dev->scan_bytes, GFP_KERNEL);
+-	if (data == NULL)
++	if (!data)
+ 		goto done;
+ 
+ 	if (!bitmap_empty(indio_dev->active_scan_mask, indio_dev->masklength))
+@@ -410,7 +410,7 @@ int lis3l02dq_configure_buffer(struct iio_dev *indio_dev)
+ 						 "lis3l02dq_consumer%d",
+ 						 indio_dev->id);
+ 
+-	if (indio_dev->pollfunc == NULL) {
++	if (!indio_dev->pollfunc) {
+ 		ret = -ENOMEM;
+ 		goto error_iio_sw_rb_free;
+ 	}
+-- 
+1.9.1
 
 
