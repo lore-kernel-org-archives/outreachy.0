@@ -1,131 +1,128 @@
 X-GM-THRID: 10518770221056
-X-Received: by 10.112.180.74 with SMTP id dm10mr8846393lbc.11.1427829019699;
-        Tue, 31 Mar 2015 12:10:19 -0700 (PDT)
+X-Received: by 10.182.18.67 with SMTP id u3mr47952077obd.38.1427828692355;
+        Tue, 31 Mar 2015 12:04:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.91.103 with SMTP id cd7ls914363wib.47.gmail; Tue, 31 Mar
- 2015 12:10:19 -0700 (PDT)
-X-Received: by 10.194.53.225 with SMTP id e1mr10114086wjp.4.1427829019336;
-        Tue, 31 Mar 2015 12:10:19 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id na10si845457wic.0.2015.03.31.12.10.19
+Received: by 10.107.148.6 with SMTP id w6ls2254178iod.92.gmail; Tue, 31 Mar
+ 2015 12:04:52 -0700 (PDT)
+X-Received: by 10.66.142.196 with SMTP id ry4mr45679981pab.12.1427828692039;
+        Tue, 31 Mar 2015 12:04:52 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pd0-x230.google.com (mail-pd0-x230.google.com. [2607:f8b0:400e:c02::230])
+        by gmr-mx.google.com with ESMTPS id br7si542530pdb.2.2015.03.31.12.04.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 31 Mar 2015 12:10:19 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Mar 2015 12:04:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) client-ip=2607:f8b0:400e:c02::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,502,1422918000"; 
-   d="scan'208";a="107827544"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 31 Mar 2015 21:10:18 +0200
-Date: Tue, 31 Mar 2015 21:10:17 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Remove zero-testing
- pointer typed value
-In-Reply-To: <20150331190408.GA30198@amitoj-Inspiron-3542>
-Message-ID: <alpine.DEB.2.02.1503312109160.2115@localhost6.localdomain6>
-References: <20150331190408.GA30198@amitoj-Inspiron-3542>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) smtp.mail=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-x230.google.com with SMTP id w1so21140203pdr.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 12:04:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=WV0/OHh1lIooK8mwoU5dDa/KR8gXUSRlbGQEZyqSLrw=;
+        b=bVSxC3ZRlGFL1fTFeLidYqJ9OBZa8IizE5fY0LoyTMzPpfsfdGOxR0mrLlRCfnj4cN
+         ydRVliWckfgBWZRYz0ExApHIvxvpm4e8qem+us45PQajmyXl3BviIc2BKApQMpt/DuvY
+         9IQObImS0wrAkSIjrw88i2p0/sQJD5sT45++W37LU41N9ejRVit5bLWIKjRuwLbmSTzn
+         0yPi1suwwSMioU/XxjDEAQ5WzrDOPiTX3HrL8Gbv8ZLh1fiAeIUWGToPxAfr1cyN7Slc
+         1+OQ0Rx+fK8kKLkvezHBR1Ua6w9eDhoiEj2LsWa0mTMT4+fNmKD8YgRbCfhHxjILkckC
+         M6Mg==
+X-Received: by 10.66.147.138 with SMTP id tk10mr35157205pab.119.1427828691952;
+        Tue, 31 Mar 2015 12:04:51 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.193.27])
+        by mx.google.com with ESMTPSA id fl4sm14077818pab.8.2015.03.31.12.04.50
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 31 Mar 2015 12:04:51 -0700 (PDT)
+Date: Wed, 1 Apr 2015 00:34:47 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8712: Remove zero-testing pointer typed value
+Message-ID: <20150331190408.GA30198@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
+Removes variable comparison with 0 by using !. Done using following coccinelle script.
 
+@ disable is_zero,isnt_zero @
+expression *E;
+expression E1,f;
+@@
 
-On Wed, 1 Apr 2015, Amitoj Kaur Chawla wrote:
+E = f(...)
+<...
+(
+- E == 0
++ !E    
+|
+- E != 0
++ E
+|
+- 0 == E
++ !E
+|
+- 0 != E
++ E
+)
+...>
+?E = E1
 
-> Removes variable comparison with 0 by using !. Done using following coccinelle script.
-> 
-> @ disable is_zero,isnt_zero @
-> expression *E;
-> expression E1,f;
-> @@
-> 
-> E = f(...)
-> <...
-> (
-> - E == 0
-> + !E    
-> |
-> - E != 0
-> + E
-> |
-> - 0 == E
-> + !E
-> |
-> - 0 != E
-> + E
-> )
-> ...>
-> ?E = E1
-> 
-> @ disable is_zero,isnt_zero @
-> expression *E;
-> @@
-> 
-> (
->   E == 
-> - 0
-> + NULL  
-> |
->   E !=
-> - 0
-> + NULL  
-> |
-> - 0
-> + NULL
->   == E
-> |
-> - 0
-> + NULL
->   != E
-> )
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl871x_security.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
-> index a178c23..654435f 100644
-> --- a/drivers/staging/rtl8712/rtl871x_security.c
-> +++ b/drivers/staging/rtl8712/rtl871x_security.c
-> @@ -153,7 +153,7 @@ static u32 getcrc32(u8 *buf, u32 len)
->  	u8 *p;
->  	u32  crc;
->  
-> -	if (bcrc32initialized == 0)
-> +	if (!bcrc32initialized)
->  		crc32_init();
->  	crc = 0xffffffff; /* preload shift register, per CRC-32 spec */
->  	for (p = buf; len > 0; ++p, --len)
-> @@ -882,7 +882,7 @@ static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext)
->  	for (i = 0; i < 16; i++)
->  		round_key[i] = key[i];
->  	for (round = 0; round < 11; round++) {
-> -		if (round == 0) {
-> +		if (!round) {
+@ disable is_zero,isnt_zero @
+expression *E;
+@@
 
-I'm not sure that it is a good idea in this case.  round is 0, 1, 2, etc.  
-It makes sense to test for the value being 0, just like it is later tested 
-for being 10.
+(
+  E == 
+- 0
++ NULL  
+|
+  E !=
+- 0
++ NULL  
+|
+- 0
++ NULL
+  == E
+|
+- 0
++ NULL
+  != E
+)
 
-julia
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/rtl8712/rtl871x_security.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
->  			xor_128(round_key, data, ciphertext);
->  			next_key(round_key, round);
->  		} else if (round == 10) {
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150331190408.GA30198%40amitoj-Inspiron-3542.
-> For more options, visit https://groups.google.com/d/optout.
-> 
+diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
+index a178c23..654435f 100644
+--- a/drivers/staging/rtl8712/rtl871x_security.c
++++ b/drivers/staging/rtl8712/rtl871x_security.c
+@@ -153,7 +153,7 @@ static u32 getcrc32(u8 *buf, u32 len)
+ 	u8 *p;
+ 	u32  crc;
+ 
+-	if (bcrc32initialized == 0)
++	if (!bcrc32initialized)
+ 		crc32_init();
+ 	crc = 0xffffffff; /* preload shift register, per CRC-32 spec */
+ 	for (p = buf; len > 0; ++p, --len)
+@@ -882,7 +882,7 @@ static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext)
+ 	for (i = 0; i < 16; i++)
+ 		round_key[i] = key[i];
+ 	for (round = 0; round < 11; round++) {
+-		if (round == 0) {
++		if (!round) {
+ 			xor_128(round_key, data, ciphertext);
+ 			next_key(round_key, round);
+ 		} else if (round == 10) {
+-- 
+1.9.1
+
 
