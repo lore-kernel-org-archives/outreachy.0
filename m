@@ -1,86 +1,91 @@
 X-GM-THRID: 10440153235456
-X-Received: by 10.66.162.137 with SMTP id ya9mr42207048pab.47.1427781470013;
-        Mon, 30 Mar 2015 22:57:50 -0700 (PDT)
+X-Google-Groups: outreachy-kernel
+X-Google-Thread: 9ca63f596c,d0a324f464b87ff3
+X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
+X-Google-NewGroupId: yes
+X-Received: by 10.182.44.199 with SMTP id g7mr36941724obm.11.1427781387204;
+        Mon, 30 Mar 2015 22:56:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.246.8 with SMTP id xs8ls1256452obc.8.gmail; Mon, 30 Mar
- 2015 22:57:49 -0700 (PDT)
-X-Received: by 10.182.40.130 with SMTP id x2mr41010891obk.48.1427781469713;
-        Mon, 30 Mar 2015 22:57:49 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id gb13si1361502pac.2.2015.03.30.22.57.48
+Received: by 10.50.138.69 with SMTP id qo5ls1190871igb.31.canary; Mon, 30 Mar
+ 2015 22:56:27 -0700 (PDT)
+X-Received: by 10.70.130.67 with SMTP id oc3mr36132512pdb.5.1427781387020;
+        Mon, 30 Mar 2015 22:56:27 -0700 (PDT)
+Return-Path: <1213charlie@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id l3si1409702pdo.0.2015.03.30.22.56.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Mon, 30 Mar 2015 22:57:49 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Mar 2015 22:56:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 1213charlie@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,499,1422918000"; 
-   d="scan'208";a="130822550"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 31 Mar 2015 07:57:46 +0200
-Date: Tue, 31 Mar 2015 07:57:46 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Charlie Wong Super <1213charlie@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: comedi: addi_apci_1564:
- Delete Whitespace
-In-Reply-To: <20150331055617.GA19463@ThinkPad>
-Message-ID: <alpine.DEB.2.02.1503310757160.2051@localhost6.localdomain6>
-References: <20150331055617.GA19463@ThinkPad>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of 1213charlie@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mail=1213charlie@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22f.google.com with SMTP id j18so9306163pat.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2015 22:56:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=bEcaS/mo3lfE/ig6e8pbd9+MjR0NkuawW68f+qJeeDU=;
+        b=hLSlzAr08rEtb/YGuS9yAwmfSFitSqkePfFl/4TKOuuVpzzQVc31SjYD73f+3mCtm6
+         hVI5JhfzH2zdO/CzDx3soAnXoQO6DhbcU3SNE9EQkK4HUgyKlD+Ycpjc6NUzZgdTuUZq
+         VxFMGV2+Ar5K9E/lC6AOVJnq+/j/rDW110TKCLK5ZM8DfplIIWGU9MNpsshH0Sit05za
+         O1VpF82CH8WyJm/ugxaKGVLBERew8ERnLzqgOp+ewwB6czJNaSiSTHJyJybHYvSVFF/5
+         CX+fCmDJCVaFAxFsJiB+fPGdfGBtRzivcVKygJ4k7/lfcKDki5N4JPHp3lOfByiy7PAT
+         i5Zw==
+X-Received: by 10.68.102.228 with SMTP id fr4mr64056068pbb.87.1427781386848;
+        Mon, 30 Mar 2015 22:56:26 -0700 (PDT)
+Return-Path: <1213charlie@gmail.com>
+Received: from ThinkPad ([2001:250:4402:228:90e9:2717:61c3:1105])
+        by mx.google.com with ESMTPSA id c2sm12544422pbu.73.2015.03.30.22.56.24
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 30 Mar 2015 22:56:25 -0700 (PDT)
+Date: Tue, 31 Mar 2015 13:56:17 +0800
+From: Charlie Wong Super <1213charlie@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] Staging: comedi: addi_apci_1564: Delete Whitespace
+Message-ID: <20150331055617.GA19463@ThinkPad>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-You can probably leave it as is, but normally one does not capitalize all 
-the words in the subject line.
+Fix the checkpatch.pl WARNING: line over 80 characters
 
-julia
+Signed-off-by: Charlie Wong Super <1213charlie@gmail.com>	
+---
+Changes in v2:
+	1) edit the commit message, make it clear!
 
-On Tue, 31 Mar 2015, Charlie Wong Super wrote:
+ drivers/staging/comedi/drivers/addi_apci_1564.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-> Fix the checkpatch.pl WARNING: line over 80 characters
-> 
-> Signed-off-by: Charlie Wong Super <1213charlie@gmail.com>	
-> ---
-> Changes in v2:
-> 	1) edit the commit message, make it clear!
-> 
->  drivers/staging/comedi/drivers/addi_apci_1564.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/comedi/drivers/addi_apci_1564.c b/drivers/staging/comedi/drivers/addi_apci_1564.c
-> index c481c48..dd335e8 100644
-> --- a/drivers/staging/comedi/drivers/addi_apci_1564.c
-> +++ b/drivers/staging/comedi/drivers/addi_apci_1564.c
-> @@ -106,12 +106,12 @@
->  #define APCI1564_COUNTER(x)			((x) * 0x20)
->  
->  struct apci1564_private {
-> -	unsigned long eeprom;		/* base address of EEPROM register */
-> -	unsigned long timer;		/* base address of 12-bit timer */
-> -	unsigned long counters;		/* base address of 32-bit counters */
-> -	unsigned int mode1;		/* riding-edge/high level channels */
-> -	unsigned int mode2;		/* falling-edge/low level channels */
-> -	unsigned int ctrl;		/* interrupt mode OR (edge) . AND (level) */
-> +	unsigned long eeprom;		/*base address of EEPROM register*/
-> +	unsigned long timer;		/*base address of 12-bit timer*/
-> +	unsigned long counters;		/*base address of 32-bit counters*/
-> +	unsigned int mode1;		/*riding-edge/high level channels*/
-> +	unsigned int mode2;		/*falling-edge/low level channels*/
-> +	unsigned int ctrl;		/*interrupt mode OR (edge).AND(level)*/
->  	struct task_struct *tsk_current;
->  };
->  
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150331055617.GA19463%40ThinkPad.
-> For more options, visit https://groups.google.com/d/optout.
-> 
+diff --git a/drivers/staging/comedi/drivers/addi_apci_1564.c b/drivers/staging/comedi/drivers/addi_apci_1564.c
+index c481c48..dd335e8 100644
+--- a/drivers/staging/comedi/drivers/addi_apci_1564.c
++++ b/drivers/staging/comedi/drivers/addi_apci_1564.c
+@@ -106,12 +106,12 @@
+ #define APCI1564_COUNTER(x)			((x) * 0x20)
+ 
+ struct apci1564_private {
+-	unsigned long eeprom;		/* base address of EEPROM register */
+-	unsigned long timer;		/* base address of 12-bit timer */
+-	unsigned long counters;		/* base address of 32-bit counters */
+-	unsigned int mode1;		/* riding-edge/high level channels */
+-	unsigned int mode2;		/* falling-edge/low level channels */
+-	unsigned int ctrl;		/* interrupt mode OR (edge) . AND (level) */
++	unsigned long eeprom;		/*base address of EEPROM register*/
++	unsigned long timer;		/*base address of 12-bit timer*/
++	unsigned long counters;		/*base address of 32-bit counters*/
++	unsigned int mode1;		/*riding-edge/high level channels*/
++	unsigned int mode2;		/*falling-edge/low level channels*/
++	unsigned int ctrl;		/*interrupt mode OR (edge).AND(level)*/
+ 	struct task_struct *tsk_current;
+ };
+ 
+-- 
+1.9.1
+
 
