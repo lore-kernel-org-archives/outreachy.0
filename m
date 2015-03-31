@@ -1,76 +1,123 @@
-X-GM-THRID: 10424448712704
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b5be1ea9d2b637f,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.9.228 with SMTP id d4mr47832wib.1.1427758185634;
-        Mon, 30 Mar 2015 16:29:45 -0700 (PDT)
+X-GM-THRID: 10518770221056
+X-Received: by 10.236.29.146 with SMTP id i18mr24345271yha.58.1427829743356;
+        Tue, 31 Mar 2015 12:22:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.228 with SMTP id w4ls63609lag.29.gmail; Mon, 30 Mar
- 2015 16:29:44 -0700 (PDT)
-X-Received: by 10.112.159.135 with SMTP id xc7mr544430lbb.0.1427758184915;
-        Mon, 30 Mar 2015 16:29:44 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id a14si417093wib.3.2015.03.30.16.29.44
+Received: by 10.107.161.10 with SMTP id k10ls2262909ioe.20.gmail; Tue, 31 Mar
+ 2015 12:22:23 -0700 (PDT)
+X-Received: by 10.66.66.196 with SMTP id h4mr45601635pat.5.1427829743085;
+        Tue, 31 Mar 2015 12:22:23 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id br7si549369pdb.2.2015.03.31.12.22.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2015 16:29:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        Tue, 31 Mar 2015 12:22:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id a2so4409743wia.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2015 16:29:44 -0700 (PDT)
+Received: by mail-pa0-x229.google.com with SMTP id cy3so28368318pad.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 12:22:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=/lpbXN6HX8dkUY1QFTLPZ2IQRwMQxMwji57yaZ8UqIs=;
-        b=DiYES9q9K8qd/eXNfVXfk0ErOgrCasTiPp8OOThtkAmp4C0FyaChAs1rnSNTmTgTGV
-         IXSaDzI8a3BfF5cM5k1ORDQaiC0M2J6k0GLpvtZcnDKPTrjOWfS7dnoZxgrkqoysBP7v
-         F5ZSuLGdg6oIgMrpIq86lZ2qoqoqYSUbG331I61dQvERltrauCsZwB+LE+HiWiHMl716
-         RkRfBtp3nCZ3QRzK/Yfw1dbkveRhLBjJIZ/dZABnSvKd9PwrOGE4/vfdnX+Q67Si4veO
-         V6ydniZQz5eLwbL5hmcQPMJmX9TWrwkdPRVUe5EZcCsRgXRtoEIlG/rKjhB3cdugahv8
-         Vngw==
-X-Received: by 10.180.74.135 with SMTP id t7mr313723wiv.72.1427758184813;
-        Mon, 30 Mar 2015 16:29:44 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id hw7sm17771853wjb.24.2015.03.30.16.29.42
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 30 Mar 2015 16:29:43 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=I9FSYHeL0+SLdqsACY4iaFTukvco1j1MjXI11i1iW3k=;
+        b=qi83+Flc2EY4q1c3zT0nhip5yG5/xRFBGR8AaS/uXe3b6YGT+Hv6ASKakRoTvWNgdR
+         +oevQVfGxChjXThJpsPREfdARgTQFsTuLJJaeuHtmmu3sHrNaIHgLV78fZkJh2jT3UR8
+         +Thjobo+s+ag6M7NbnQSvUL1t7BUGM4ahV6fi01O0pI/QNVLQDydfPz/1FFQnxETAOvT
+         psueWiukcrUDIhjR5WXl2chqRl3ijCXpacXLcrEkx17ZAsDeyUNJnMxyixMLxpolvWEV
+         O+sjH3rVL2AvsatfL5BWIArJhuE/qpWEbol6sdlek+by7nYAouUNiCT17wS5G8+8wFXJ
+         LduA==
+X-Received: by 10.66.221.8 with SMTP id qa8mr69940818pac.62.1427829742987;
+        Tue, 31 Mar 2015 12:22:22 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.171.82])
+        by mx.google.com with ESMTPSA id jy9sm14726969pbc.31.2015.03.31.12.22.21
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 31 Mar 2015 12:22:22 -0700 (PDT)
+Date: Wed, 1 Apr 2015 00:52:18 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH] staging: dgnc_sysfs: Replace printk(KERN_ERR ) with pr_err()
-Date: Tue, 31 Mar 2015 02:29:35 +0300
-Message-Id: <1427758175-22003-1-git-send-email-ciorneiioana@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v2] Staging: rtl8712: Remove zero-testing pointer typed value
+Message-ID: <20150331192218.GA30680@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Fix the following checkpatch warning:
-WARNING: Prefer [subsystem eg: netdev]_err([subsystem]dev, ... 
-then dev_err(dev, ... then pr_err(...  to printk(KERN_ERR ...
+Removes variable comparison with 0 by using !. Done using following
+coccinelle script.
+
+@ disable is_zero,isnt_zero @
+expression *E;
+expression E1,f;
+@@
+
+E = f(...)
+<...
+(
+- E == 0
++ !E
+|
+- E != 0
++ E
+|
+- 0 == E
++ !E
+|
+- 0 != E
++ E
+)
+...>
+?E = E1
+
+@ disable is_zero,isnt_zero @
+expression *E;
+@@
+
+(
+  E ==
+- 0
++ NULL
+|
+  E !=
+- 0
++ NULL
+|
+- 0
++ NULL
+  == E
+|
+- 0
++ NULL
+  != E
+)
 
 
-Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_sysfs.c | 2 +-
+Changes in v2:
+        -Removed unnecessary comparison testing change
+
+ drivers/staging/rtl8712/rtl871x_security.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
-index 2df889e..65551d1 100644
---- a/drivers/staging/dgnc/dgnc_sysfs.c
-+++ b/drivers/staging/dgnc/dgnc_sysfs.c
-@@ -75,7 +75,7 @@ void dgnc_create_driver_sysfiles(struct pci_driver *dgnc_driver)
- 	rc |= driver_create_file(driverfs, &driver_attr_maxboards);
- 	rc |= driver_create_file(driverfs, &driver_attr_pollrate);
- 	if (rc)
--		printk(KERN_ERR "DGNC: sysfs driver_create_file failed!\n");
-+		pr_err("DGNC: sysfs driver_create_file failed!\n");
- }
+diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
+index a178c23..bcd1a51 100644
+--- a/drivers/staging/rtl8712/rtl871x_security.c
++++ b/drivers/staging/rtl8712/rtl871x_security.c
+@@ -153,7 +153,7 @@ static u32 getcrc32(u8 *buf, u32 len)
+ 	u8 *p;
+ 	u32  crc;
  
- 
+-	if (bcrc32initialized == 0)
++	if (!bcrc32initialized)
+ 		crc32_init();
+ 	crc = 0xffffffff; /* preload shift register, per CRC-32 spec */
+ 	for (p = buf; len > 0; ++p, --len)
 -- 
 1.9.1
 
