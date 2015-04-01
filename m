@@ -1,50 +1,50 @@
 X-GM-THRID: 10320556851200
-X-Received: by 10.194.236.196 with SMTP id uw4mr10882345wjc.5.1427889525514;
-        Wed, 01 Apr 2015 04:58:45 -0700 (PDT)
+X-Received: by 10.194.221.65 with SMTP id qc1mr10861650wjc.7.1427889065411;
+        Wed, 01 Apr 2015 04:51:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.7.226 with SMTP id m2ls63629laa.71.gmail; Wed, 01 Apr 2015
- 04:58:44 -0700 (PDT)
-X-Received: by 10.112.235.70 with SMTP id uk6mr6665772lbc.24.1427889524987;
-        Wed, 01 Apr 2015 04:58:44 -0700 (PDT)
+Received: by 10.180.101.168 with SMTP id fh8ls52281wib.33.gmail; Wed, 01 Apr
+ 2015 04:51:05 -0700 (PDT)
+X-Received: by 10.180.80.132 with SMTP id r4mr1795481wix.4.1427889065021;
+        Wed, 01 Apr 2015 04:51:05 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x22a.google.com (mail-wg0-x22a.google.com. [2a00:1450:400c:c00::22a])
-        by gmr-mx.google.com with ESMTPS id i8si107398wif.1.2015.04.01.04.58.44
+Received: from mail-wg0-x233.google.com (mail-wg0-x233.google.com. [2a00:1450:400c:c00::233])
+        by gmr-mx.google.com with ESMTPS id sf8si101167wic.2.2015.04.01.04.51.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Apr 2015 04:58:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) client-ip=2a00:1450:400c:c00::22a;
+        Wed, 01 Apr 2015 04:51:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) client-ip=2a00:1450:400c:c00::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::233 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22a.google.com with SMTP id m6so50092177wgd.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2015 04:58:44 -0700 (PDT)
+Received: by mail-wg0-x233.google.com with SMTP id e14so49194294wgo.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2015 04:51:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=message-id:subject:from:to:cc:date:in-reply-to:references
          :content-type:mime-version:content-transfer-encoding;
-        bh=oPhdHqPq26o+ROrc87N+ooLEPZ9m/DY9mAL80qrtoiU=;
-        b=oAN+PpCdsItOaRnwvSvtRjHA/qw0S4jg6nISxrkCaOqL41Li6v0h0I91Pnx8ixltUv
-         3Wj/U21hdkaaIobILXg3ZSGKfS6ucjuxh6mbDm4ehmSzUK1J95skO09SWvy1oooYdW1C
-         sXvpZrFJkVO9h1J6PZ0sv7Ql6ZAj75RKGmkTmlsd3eu40Bd7iw1uz8qc8HVZmekyyeuy
-         fnPzzk0L34ELrE6MzHWUa0+L1fZV3KbUAZJj9ulitS1A0wzlSZCim2E7Q56B/OJ+PwPG
-         XinfbBEhipWu2Vj/PjU7pejwGz5XHPMNwzfhLb+Dd9HtXhgFgxxLfMrGrvPSZoKnK+5c
-         hYDQ==
-X-Received: by 10.194.223.37 with SMTP id qr5mr5879385wjc.11.1427889524839;
-        Wed, 01 Apr 2015 04:58:44 -0700 (PDT)
+        bh=19SjVzaK/l0S3O53/66JGID4ifaGEU8ZGvM6vQI71MU=;
+        b=nDGXVxtaO3pi5QQLgm43ZJsjhP3vXTZnS2XMK0ETdhK/5HxjvwncnsiTlYBGp1+0/l
+         js8pQJwrX0ehDLiWoByeUbt2sa5LU0aPZph1FBtlLM9QQbO7KQK/CC/eHXGzBMkEkhFx
+         Kn1C/oSmkwTpeMRgAesBzTFPl4xZaF3JbT2GJmC2LEGMOH9gzkx1VN+7Im88tpUsR8kM
+         0St3zGM27JWJhVFNFcorhHB0ANWcEcRJ0BHsaPYL2vI9LndnN7zxDtdzwsQ0AYkXT41c
+         1emzO17QVFwLDUnXkBcI1MC1jhNTLx8BgZV6nkrnCMh8CKOE1pHvsFMKcGCc/VyLtmC+
+         7moA==
+X-Received: by 10.194.24.103 with SMTP id t7mr81723841wjf.15.1427889064900;
+        Wed, 01 Apr 2015 04:51:04 -0700 (PDT)
 Return-Path: <cristina.opriceana@gmail.com>
 Received: from [10.3.4.176] (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id ha10sm2361672wjc.37.2015.04.01.04.58.43
+        by mx.google.com with ESMTPSA id m4sm2340124wjb.25.2015.04.01.04.51.03
         (version=SSLv3 cipher=RC4-SHA bits=128/128);
-        Wed, 01 Apr 2015 04:58:44 -0700 (PDT)
-Message-ID: <1427889464.6503.2.camel@Inspiron>
+        Wed, 01 Apr 2015 04:51:04 -0700 (PDT)
+Message-ID: <1427889004.6503.1.camel@Inspiron>
 Subject: Re: [PATCH 2/2] iio: light: ltr501: Powerdown device on error
 From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: Daniel Baluta <daniel.baluta@gmail.com>
 Cc: Jonathan Cameron <jic23@kernel.org>, outreachy-kernel@googlegroups.com, 
 	"linux-iio@vger.kernel.org"
 	 <linux-iio@vger.kernel.org>
-Date: Wed, 01 Apr 2015 14:57:44 +0300
+Date: Wed, 01 Apr 2015 14:50:04 +0300
 In-Reply-To: <CAEnQRZAVb_70+Fyj+PiXLQ3ShZTomafE3ZEnCFUEkhQnb8ERYg@mail.gmail.com>
 References: <cover.1427797741.git.cristina.opriceana@gmail.com>
 	 <1abedb2004323a23e8dd120abf761f3488c8e9f6.1427797741.git.cristina.opriceana@gmail.com>
@@ -80,18 +80,18 @@ On Mi, 2015-04-01 at 14:46 +0300, Daniel Baluta wrote:
 > > +               data->ps_contr & ~LTR501_CONTR_ACTIVE);
 > > +}
 > > +
-
-> Don't forget
+> 
+> While at it please also fix the alignment for ltr501_write_contr
+> parameters. Don't forget
 > to mention this in the commit message. When running checkpatch.pl
 > please use --strict parameter.
-
-Okay, I'll make a v2. Ignore my previous question.
-
-Thanks,
-Cristina
-
+> 
 > thanks,
 > Daniel.
+
+Another patch would be fine or should I send a v2?
+
+Cristina
 
 
 
