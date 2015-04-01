@@ -1,93 +1,285 @@
-X-GM-THRID: 6342441922054848512
-X-Received: by 10.67.24.65 with SMTP id ig1mr5413138pad.76.1476714835295;
-        Mon, 17 Oct 2016 07:33:55 -0700 (PDT)
+X-GM-THRID: 10250351542272
+X-Received: by 10.236.51.170 with SMTP id b30mr51697912yhc.34.1427905143881;
+        Wed, 01 Apr 2015 09:19:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.7.18 with SMTP id 18ls13207156ote.9.gmail; Mon, 17 Oct
- 2016 07:33:54 -0700 (PDT)
-X-Received: by 10.157.42.168 with SMTP id e37mr6594829otb.24.1476714834968;
-        Mon, 17 Oct 2016 07:33:54 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-lf0-x241.google.com (mail-lf0-x241.google.com. [2a00:1450:4010:c07::241])
-        by gmr-mx.google.com with ESMTPS id x14si4191934vkd.3.2016.10.17.07.33.54
+Received: by 10.107.169.4 with SMTP id s4ls301449ioe.76.gmail; Wed, 01 Apr
+ 2015 09:19:03 -0700 (PDT)
+X-Received: by 10.50.73.7 with SMTP id h7mr10242464igv.2.1427905143674;
+        Wed, 01 Apr 2015 09:19:03 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
+        by gmr-mx.google.com with ESMTPS id gb13si264684pac.2.2015.04.01.09.19.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 07:33:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) client-ip=2a00:1450:4010:c07::241;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 01 Apr 2015 09:19:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=ciorneiioana@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x241.google.com with SMTP id x79so27119778lff.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 07:33:54 -0700 (PDT)
+Received: by mail-pd0-x233.google.com with SMTP id w1so51403306pdr.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2015 09:19:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=WO31lN177UjqEIbMu3jiZqqxFA8ceJg3J2fZTX5EQQU=;
-        b=MltBT5trw4NgEele5KXOVIZx8k8HqAGBYpEcIqtHsD3xS3Ztz6q87JkSbFty/uplOG
-         huUmZvA+KkniQlqGjVzxk8RmJ5HpB9MSCqQto8sTmZxUi/7WFMkk7NrVjcj0a67T6pnh
-         Xyk30S9qVTi3O54T8ZLxo27mrznzCGuQCl5KmLtJ0MWXyMBJqexMdh0zKSmwxFN6uGp+
-         +pLLJG8Zp84KF+jRo8kbC208C4BUxcn2fA7qhbBmuNYuvB4Fn7sifInBjF67dqjEbB/v
-         U5FHwURAUfx7VY+Yu6SoNTEIrTPi78tqctfm6JADIem5fC6tBTW6TyYIA6SYRi9eEmRu
-         W6rQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=WO31lN177UjqEIbMu3jiZqqxFA8ceJg3J2fZTX5EQQU=;
-        b=T64iGPZKAbyXxT593V0dmDxXu5qgMRUclvjnstxQ9JtGjWrACpJixMW5C/F5w2RW8v
-         t7VQPUxWCWtU+9BRqcHA8k9t2xC+265ZFggL9pbrFEt0u/kNeRLtBwHUYCt9f7LscL7f
-         s7wBUBC0WgIKbewsWwoNFH4pte2YhxbnQukN8vHj3J4Xzhy6vcbJo9UJyAOyuMnMJY3Z
-         crp7R5bcOaUP493S+ZqRZcaWNpP7rCbtJm/Dj1Ov+C/wEeXcvD4dqIQoLzJApJ58FZ5z
-         OlKv2eKIq7RKhtETEvGRp2YcZi2aOYcfo10iPZS4PbQH77zUZaPDWTTKSmvQVy5HQEh4
-         aJHQ==
-X-Gm-Message-State: AA6/9RnvOKgI71x7wjs1ambYTFP0zghG6KQmWsR6oRGATB8vkCf+EUgh63acBTej/d803A==
-X-Received: by 10.28.156.73 with SMTP id f70mr8020034wme.45.1476714834330;
-        Mon, 17 Oct 2016 07:33:54 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id jt8sm53504056wjc.33.2016.10.17.07.33.53
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 17 Oct 2016 07:33:53 -0700 (PDT)
-Date: Mon, 17 Oct 2016 17:33:52 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: emxx_udc: Make a read-only structure
-Message-ID: <20161017143352.GA13131@domino-MS-16Y1>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=XUmTPngdoH57fTRQpXC17ThVqMijrUi3Buupatu+UHs=;
+        b=zqL6UXrtXt11Ios4iTybOAihSm0ncZhcfbZSHJRVG6lxIBje5O9tx6Np3uoq663+No
+         JcfNabkRKuH8rH7UgLpwTYhwtkuDV/fcmjryxDeNm5Ikp2FrZ5lQCLMt7jbFN2ZIDqTL
+         E8J41RjsyfHxqMvjbQKWTErX6Nut4jUe/0dtIlDzf5xoasUsqDL0fPwwSa5V+6Oaomkd
+         tbDeTXnKFoHmja1NFSrLtjgR61IysqSYZSK+2WpzqeeBAI6V6VjJ8x4ORQ1qkcXqJ9hC
+         w4cvedBMxh+v3Ze1oCp6M7fmi47dqcJ3WvvLCtZ4OvWrRGrm/L0p+uHubE01zUaIV8tQ
+         knPA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.68.138.230 with SMTP id qt6mr19606615pbb.66.1427905143508;
+ Wed, 01 Apr 2015 09:19:03 -0700 (PDT)
+Received: by 10.70.80.133 with HTTP; Wed, 1 Apr 2015 09:19:03 -0700 (PDT)
+Received: by 10.70.80.133 with HTTP; Wed, 1 Apr 2015 09:19:03 -0700 (PDT)
+In-Reply-To: <20150401153326.GB15236@kroah.com>
+References: <1427590308-18551-1-git-send-email-ciorneiioana@gmail.com>
+	<20150401153326.GB15236@kroah.com>
+Date: Wed, 1 Apr 2015 19:19:03 +0300
+Message-ID: <CAHWJYF=UjhETMat+GxXNaF6PyVRCrb1rAyAUP3B7L=5vwE5HiA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtllib_crypt_tkip: Replase
+ printk() with pr_debug()
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=047d7b15a555da1c5a0512ac12c7
 
-This patch add const qualifier at the declaration of the structure.
-The structure become a read-only data, this increase the security.
+--047d7b15a555da1c5a0512ac12c7
+Content-Type: text/plain; charset=UTF-8
 
-Found with Coccinelle:
-@r disable optional_qualifier@
-identifier s,i;
-@@
-* static struct s i ={...};
+On Apr 1, 2015 6:33 PM, "Greg KH" <gregkh@linuxfoundation.org> wrote:
+>
+> On Sun, Mar 29, 2015 at 02:51:48AM +0200, Ioana Ciornei wrote:
+> > Replace printk(KERN_DEBUG ..) with pr_debug() since it is the preferred
+way when there
+> > is no netdevice or device struct object to pass as argument.
+> >
+> > Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+> > ---
+> >  drivers/staging/rtl8192e/rtllib_crypt_tkip.c | 39
+++++++++++------------------
+> >  1 file changed, 13 insertions(+), 26 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+> > index ccf8530..1c4025f 100644
+> > --- a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+> > +++ b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+> > @@ -66,8 +66,7 @@ static void *rtllib_tkip_init(int key_idx)
+> >       priv->tx_tfm_arc4 = crypto_alloc_blkcipher("ecb(arc4)", 0,
+> >                       CRYPTO_ALG_ASYNC);
+> >       if (IS_ERR(priv->tx_tfm_arc4)) {
+> > -             printk(KERN_DEBUG
+> > -                    "rtllib_crypt_tkip: could not allocate crypto API
+arc4\n");
+> > +             pr_debug("rtllib_crypt_tkip: could not allocate crypto
+API arc4\n");
+> >               priv->tx_tfm_arc4 = NULL;
+> >               goto fail;
+> >       }
+> > @@ -75,8 +74,7 @@ static void *rtllib_tkip_init(int key_idx)
+> >       priv->tx_tfm_michael = crypto_alloc_hash("michael_mic", 0,
+> >                       CRYPTO_ALG_ASYNC);
+> >       if (IS_ERR(priv->tx_tfm_michael)) {
+> > -             printk(KERN_DEBUG
+> > -                    "rtllib_crypt_tkip: could not allocate crypto API
+michael_mic\n");
+> > +             pr_debug("rtllib_crypt_tkip: could not allocate crypto
+API michael_mic\n");
+> >               priv->tx_tfm_michael = NULL;
+> >               goto fail;
+> >       }
+> > @@ -84,8 +82,7 @@ static void *rtllib_tkip_init(int key_idx)
+> >       priv->rx_tfm_arc4 = crypto_alloc_blkcipher("ecb(arc4)", 0,
+> >                       CRYPTO_ALG_ASYNC);
+> >       if (IS_ERR(priv->rx_tfm_arc4)) {
+> > -             printk(KERN_DEBUG
+> > -                    "rtllib_crypt_tkip: could not allocate crypto API
+arc4\n");
+> > +             pr_debug("rtllib_crypt_tkip: could not allocate crypto
+API arc4\n");
+> >               priv->rx_tfm_arc4 = NULL;
+> >               goto fail;
+> >       }
+> > @@ -93,8 +90,7 @@ static void *rtllib_tkip_init(int key_idx)
+> >       priv->rx_tfm_michael = crypto_alloc_hash("michael_mic", 0,
+> >                       CRYPTO_ALG_ASYNC);
+> >       if (IS_ERR(priv->rx_tfm_michael)) {
+> > -             printk(KERN_DEBUG
+> > -                    "rtllib_crypt_tkip: could not allocate crypto API
+michael_mic\n");
+> > +             pr_debug("rtllib_crypt_tkip: could not allocate crypto
+API michael_mic\n");
+> >               priv->rx_tfm_michael = NULL;
+> >               goto fail;
+> >       }
+> > @@ -399,23 +395,20 @@ static int rtllib_tkip_decrypt(struct sk_buff
+*skb, int hdr_len, void *priv)
+> >       keyidx = pos[3];
+> >       if (!(keyidx & (1 << 5))) {
+> >               if (net_ratelimit()) {
+> > -                     printk(KERN_DEBUG
+> > -                            "TKIP: received packet without ExtIV flag
+from %pM\n",
+> > +                     pr_debug("TKIP: received packet without ExtIV
+flag from %pM\n",
+> >                              hdr->addr2);
+>
+> If you have a skb, then you should be able to find the network device
+> somehow.
+>
+> For the other places, odds are you can dig and find it as well,
+> otherwise how does the code know what device it is working with?
+>
+> If you really can't, then the api needs to be fixed to provide it.  No
+> network driver should ever do "blind" printk/pr_* calls.
+>
+> thanks,
+>
+> greg k-h
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/emxx_udc/emxx_udc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for the hint.
+I wil revise all the patches and send a new patchset.
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index c3e2988..8b406f3 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -1386,7 +1386,7 @@ static void _nbu2ss_set_endpoint_stall(
- 
- /*-------------------------------------------------------------------------*/
- /* Device Descriptor */
--static struct usb_device_descriptor device_desc = {
-+static const struct usb_device_descriptor device_desc = {
- 	.bLength              = sizeof(device_desc),
- 	.bDescriptorType      = USB_DT_DEVICE,
- 	.bcdUSB               = cpu_to_le16(0x0200),
--- 
-2.7.4
+Ioana
 
+--047d7b15a555da1c5a0512ac12c7
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<p dir=3D"ltr"><br>
+On Apr 1, 2015 6:33 PM, &quot;Greg KH&quot; &lt;<a href=3D"mailto:gregkh@li=
+nuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On Sun, Mar 29, 2015 at 02:51:48AM +0200, Ioana Ciornei wrote:<br>
+&gt; &gt; Replace printk(KERN_DEBUG ..) with pr_debug() since it is the pre=
+ferred way when there<br>
+&gt; &gt; is no netdevice or device struct object to pass as argument.<br>
+&gt; &gt;<br>
+&gt; &gt; Signed-off-by: Ioana Ciornei &lt;<a href=3D"mailto:ciorneiioana@g=
+mail.com">ciorneiioana@gmail.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 drivers/staging/rtl8192e/rtllib_crypt_tkip.c | 39 +++++++++=
++------------------<br>
+&gt; &gt;=C2=A0 1 file changed, 13 insertions(+), 26 deletions(-)<br>
+&gt; &gt;<br>
+&gt; &gt; diff --git a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c b/drive=
+rs/staging/rtl8192e/rtllib_crypt_tkip.c<br>
+&gt; &gt; index ccf8530..1c4025f 100644<br>
+&gt; &gt; --- a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c<br>
+&gt; &gt; +++ b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c<br>
+&gt; &gt; @@ -66,8 +66,7 @@ static void *rtllib_tkip_init(int key_idx)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;tx_tfm_arc4 =3D crypto_alloc_b=
+lkcipher(&quot;ecb(arc4)&quot;, 0,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0CRYPTO_ALG_ASYNC);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (IS_ERR(priv-&gt;tx_tfm_arc4)) {<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0printk(KERN_DEBU=
+G<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &quot;rtllib_crypt_tkip: could not allocate crypto API arc4\n&quot;)=
+;<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pr_debug(&quot;r=
+tllib_crypt_tkip: could not allocate crypto API arc4\n&quot;);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;tx=
+_tfm_arc4 =3D NULL;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto fail;<=
+br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; &gt; @@ -75,8 +74,7 @@ static void *rtllib_tkip_init(int key_idx)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;tx_tfm_michael =3D crypto_allo=
+c_hash(&quot;michael_mic&quot;, 0,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0CRYPTO_ALG_ASYNC);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (IS_ERR(priv-&gt;tx_tfm_michael)) {<=
+br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0printk(KERN_DEBU=
+G<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &quot;rtllib_crypt_tkip: could not allocate crypto API michael_mic\n=
+&quot;);<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pr_debug(&quot;r=
+tllib_crypt_tkip: could not allocate crypto API michael_mic\n&quot;);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;tx=
+_tfm_michael =3D NULL;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto fail;<=
+br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; &gt; @@ -84,8 +82,7 @@ static void *rtllib_tkip_init(int key_idx)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;rx_tfm_arc4 =3D crypto_alloc_b=
+lkcipher(&quot;ecb(arc4)&quot;, 0,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0CRYPTO_ALG_ASYNC);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (IS_ERR(priv-&gt;rx_tfm_arc4)) {<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0printk(KERN_DEBU=
+G<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &quot;rtllib_crypt_tkip: could not allocate crypto API arc4\n&quot;)=
+;<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pr_debug(&quot;r=
+tllib_crypt_tkip: could not allocate crypto API arc4\n&quot;);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;rx=
+_tfm_arc4 =3D NULL;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto fail;<=
+br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; &gt; @@ -93,8 +90,7 @@ static void *rtllib_tkip_init(int key_idx)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;rx_tfm_michael =3D crypto_allo=
+c_hash(&quot;michael_mic&quot;, 0,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0CRYPTO_ALG_ASYNC);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (IS_ERR(priv-&gt;rx_tfm_michael)) {<=
+br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0printk(KERN_DEBU=
+G<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &quot;rtllib_crypt_tkip: could not allocate crypto API michael_mic\n=
+&quot;);<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pr_debug(&quot;r=
+tllib_crypt_tkip: could not allocate crypto API michael_mic\n&quot;);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;rx=
+_tfm_michael =3D NULL;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto fail;<=
+br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; &gt; @@ -399,23 +395,20 @@ static int rtllib_tkip_decrypt(struct sk_bu=
+ff *skb, int hdr_len, void *priv)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0keyidx =3D pos[3];<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (!(keyidx &amp; (1 &lt;&lt; 5))) {<b=
+r>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (net_rat=
+elimit()) {<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0printk(KERN_DEBUG<br>
+&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;TKIP: received packet without ExtI=
+V flag from %pM\n&quot;,<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0pr_debug(&quot;TKIP: received packet without ExtIV flag from %=
+pM\n&quot;,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 hdr-&gt;addr2);<br>
+&gt;<br>
+&gt; If you have a skb, then you should be able to find the network device<=
+br>
+&gt; somehow.<br>
+&gt;<br>
+&gt; For the other places, odds are you can dig and find it as well,<br>
+&gt; otherwise how does the code know what device it is working with?<br>
+&gt;<br>
+&gt; If you really can&#39;t, then the api needs to be fixed to provide it.=
+=C2=A0 No<br>
+&gt; network driver should ever do &quot;blind&quot; printk/pr_* calls.<br>
+&gt;<br>
+&gt; thanks,<br>
+&gt;<br>
+&gt; greg k-h</p>
+<p dir=3D"ltr">Thanks for the hint. <br>
+I wil revise all the patches and send a new patchset.</p>
+<p dir=3D"ltr">Ioana</p>
+
+--047d7b15a555da1c5a0512ac12c7--
 
