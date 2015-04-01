@@ -1,48 +1,49 @@
 X-GM-THRID: 10576027713536
-X-Received: by 10.180.126.37 with SMTP id mv5mr2098423wib.3.1427904806224;
-        Wed, 01 Apr 2015 09:13:26 -0700 (PDT)
+X-Received: by 10.112.166.164 with SMTP id zh4mr7055532lbb.20.1427904726593;
+        Wed, 01 Apr 2015 09:12:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.1.3 with SMTP id 3ls89770lai.36.gmail; Wed, 01 Apr 2015
- 09:13:25 -0700 (PDT)
-X-Received: by 10.112.138.233 with SMTP id qt9mr3614346lbb.2.1427904805690;
-        Wed, 01 Apr 2015 09:13:25 -0700 (PDT)
+Received: by 10.181.11.229 with SMTP id el5ls188978wid.43.gmail; Wed, 01 Apr
+ 2015 09:12:06 -0700 (PDT)
+X-Received: by 10.180.87.164 with SMTP id az4mr2083024wib.6.1427904726244;
+        Wed, 01 Apr 2015 09:12:06 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wg0-x22a.google.com (mail-wg0-x22a.google.com. [2a00:1450:400c:c00::22a])
-        by gmr-mx.google.com with ESMTPS id o3si1048379wib.2.2015.04.01.09.13.25
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id i8si154556wif.1.2015.04.01.09.12.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Apr 2015 09:13:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) client-ip=2a00:1450:400c:c00::22a;
+        Wed, 01 Apr 2015 09:12:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22a.google.com with SMTP id dm7so58777243wgb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2015 09:13:25 -0700 (PDT)
+Received: by mail-wi0-x231.google.com with SMTP id gn9so72801118wib.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2015 09:12:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=h8qa4B5PCijEcOBbSzIWZJcaLhNrpJE2jkEztEkJxfI=;
-        b=fNys4MoowZiKhbTKQ5A6FVArv2QTY5oH8mlyPL1v7bRNcdaLmTVpYsq5Ev5Ya3b2RG
-         3Eig0KZnUGrbIwkn6MxhaJjXHsXQYRhMhjx59uA8YvI75pt2Jqp7k6mqTjZuAum7k5sS
-         sjBEXShUmXTemJx/SxSwBCzbWDmMvcO0CgeT0P9JBdnUNe6llc12A6FzJii2VjgAFsj7
-         dkaoC7UZIe6RHf4e5QOAP5GSs+FNHd5zwWPeUWBwHXoLb3JQu+wlK/wSZwgvxVtpityp
-         H2FcmWWjAisF5iW3yI61gi8rLQaWwCetadTjvsnpsoEtuy9qDsH1RoZHImWhf+CuK4j3
-         CnVw==
-X-Received: by 10.180.20.177 with SMTP id o17mr16123128wie.66.1427904805602;
-        Wed, 01 Apr 2015 09:13:25 -0700 (PDT)
+        bh=J+qiWsCICC7pZCcYDJdx4Rg+uzeiH5vEShuUgEyxYo8=;
+        b=BbbJq4Aa9fwGRas2LjHbELcbNBuOsz1tH0AL6pwCPbqSLHDqnrvHUbx2E+kTIlL6tQ
+         yvR39XUBG+1AgP/pfGW3HVPMLGoy2OsYg6EuAV9W3Tga8EVeV1P49eF+S8+7YlaxCiJn
+         IjYYnTFULPMD9bXtyYI4raoPVrozncsNsDS2J9PHeHTuDKOD+1zCt7P6eMiDcJxR1pFE
+         sYNkTCaT8M5owk6rztRA6j/W3cLaCtn2kUALYTLcGNt75yh++9f5B7sctZB5yrDJOzVa
+         sWpxC2TGK66P4b+nrkft8mcV3daLcET3x60l0dLz09C2+vViWZ6rWdVk+VByp6sa1RLe
+         +0vA==
+X-Received: by 10.180.20.7 with SMTP id j7mr15832365wie.47.1427904726145;
+        Wed, 01 Apr 2015 09:12:06 -0700 (PDT)
 Return-Path: <mahfouz.saif.elyazal@gmail.com>
 Received: from localhost.localdomain ([62.135.96.11])
-        by mx.google.com with ESMTPSA id j7sm3817167wix.4.2015.04.01.09.13.22
+        by mx.google.com with ESMTPSA id m4sm3320176wjb.25.2015.04.01.09.12.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 01 Apr 2015 09:13:24 -0700 (PDT)
-Date: Wed, 1 Apr 2015 18:13:17 +0200
+        Wed, 01 Apr 2015 09:12:05 -0700 (PDT)
+Date: Wed, 1 Apr 2015 18:11:55 +0200
 From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 3/3] staging: lustre: include: remove unused macros
-Message-ID: <af78c5a6e724d770ba9dcfd21cf208fe6a250484.1427904237.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH v2 2/3] staging: lustre: include: replace
+ OBD_CHECK_DEV_ACTIVE by obd_check_dev_active
+Message-ID: <c9c6240dc1e51a0ffdcdfe0fc7b392712b7ee4e9.1427904237.git.mahfouz.saif.elyazal@gmail.com>
 References: <cover.1427904237.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -50,53 +51,89 @@ Content-Disposition: inline
 In-Reply-To: <cover.1427904237.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-OBD_CHECK_DEV and OBD_CHECK_DEV_ACTIVE have been replaced by static
-inline functions. They are removed since they are not used anymore.
+Static inline functions are preferred over macros. The inline function
+obd_check_dev_active is introduced to replace OBD_CHECK_DEV_ACTIVE.
+All functions that call obd_check_dev_active store the return values
+and return them if they represent an error code.
+
+Some of the changes were carried out manually while others were done
+using coccinelle.
 
 Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 ---
-v2: No changes. The patch is part of a patchset, so it was resent with
-them.
+v2: removed unneeded parenthesis around the variable obd.
 
- drivers/staging/lustre/lustre/include/obd_class.h | 18 ------------------
- 1 file changed, 18 deletions(-)
+ drivers/staging/lustre/lustre/include/obd_class.h | 28 +++++++++++++++++++----
+ 1 file changed, 24 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
-index 3c444fa..9af2b43 100644
+index ddc212a..3c444fa 100644
 --- a/drivers/staging/lustre/lustre/include/obd_class.h
 +++ b/drivers/staging/lustre/lustre/include/obd_class.h
-@@ -333,14 +333,6 @@ void obdo_le_to_cpu(struct obdo *dobdo, struct obdo *sobdo);
+@@ -361,7 +361,19 @@ do {							    \
+ 	}						       \
+ } while (0)
  
- /* Ensure obd_setup: used for cleanup which must be called
-    while obd is stopping */
--#define OBD_CHECK_DEV(obd)				      \
--do {							    \
--	if (!(obd)) {					   \
--		CERROR("NULL device\n");			\
--		return -ENODEV;				\
--	}						       \
--} while (0)
--
- static inline int obd_check_dev(struct obd_device *obd)
- {
- 	if (!(obd)) {
-@@ -351,16 +343,6 @@ static inline int obd_check_dev(struct obd_device *obd)
- }
++static inline int obd_check_dev_active(struct obd_device *obd)
++{
++	int rc;
  
- /* ensure obd_setup and !obd_stopping */
--#define OBD_CHECK_DEV_ACTIVE(obd)			       \
--do {							    \
--	OBD_CHECK_DEV(obd);				     \
--	if (!(obd)->obd_set_up || (obd)->obd_stopping) {	\
--		CERROR("Device %d not setup\n",		 \
--		       (obd)->obd_minor);		       \
--		return -ENODEV;				\
--	}						       \
--} while (0)
--
- static inline int obd_check_dev_active(struct obd_device *obd)
- {
++	rc = obd_check_dev(obd);
++	if (rc)
++		return rc;
++	if (!(obd)->obd_set_up || (obd)->obd_stopping) {
++		CERROR("Device %d not setup\n", (obd)->obd_minor);
++		return -ENODEV;
++	}
++	return rc;
++}
+ #if defined (CONFIG_PROC_FS)
+ #define OBD_COUNTER_OFFSET(op)				  \
+ 	((offsetof(struct obd_ops, o_ ## op) -		  \
+@@ -901,7 +913,9 @@ static inline int obd_add_conn(struct obd_import *imp, struct obd_uuid *uuid,
+ 	struct obd_device *obd = imp->imp_obd;
  	int rc;
+ 
+-	OBD_CHECK_DEV_ACTIVE(obd);
++	rc = obd_check_dev_active(obd);
++	if (rc)
++		return rc;
+ 	OBD_CHECK_DT_OP(obd, add_conn, -EOPNOTSUPP);
+ 	OBD_COUNTER_INCREMENT(obd, add_conn);
+ 
+@@ -914,7 +928,9 @@ static inline int obd_del_conn(struct obd_import *imp, struct obd_uuid *uuid)
+ 	struct obd_device *obd = imp->imp_obd;
+ 	int rc;
+ 
+-	OBD_CHECK_DEV_ACTIVE(obd);
++	rc = obd_check_dev_active(obd);
++	if (rc)
++		return rc;
+ 	OBD_CHECK_DT_OP(obd, del_conn, -EOPNOTSUPP);
+ 	OBD_COUNTER_INCREMENT(obd, del_conn);
+ 
+@@ -948,7 +964,9 @@ static inline int obd_connect(const struct lu_env *env,
+ 	__u64 ocf = data ? data->ocd_connect_flags : 0; /* for post-condition
+ 						   * check */
+ 
+-	OBD_CHECK_DEV_ACTIVE(obd);
++	rc = obd_check_dev_active(obd);
++	if (rc)
++		return rc;
+ 	OBD_CHECK_DT_OP(obd, connect, -EOPNOTSUPP);
+ 	OBD_COUNTER_INCREMENT(obd, connect);
+ 
+@@ -970,7 +988,9 @@ static inline int obd_reconnect(const struct lu_env *env,
+ 	__u64 ocf = d ? d->ocd_connect_flags : 0; /* for post-condition
+ 						   * check */
+ 
+-	OBD_CHECK_DEV_ACTIVE(obd);
++	rc = obd_check_dev_active(obd);
++	if (rc)
++		return rc;
+ 	OBD_CHECK_DT_OP(obd, reconnect, 0);
+ 	OBD_COUNTER_INCREMENT(obd, reconnect);
+ 
 -- 
 2.1.0
 
