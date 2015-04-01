@@ -1,70 +1,113 @@
-X-GM-THRID: 6203951800553308160
-X-Received: by 10.107.149.4 with SMTP id x4mr14886400iod.20.1444470090828;
-        Sat, 10 Oct 2015 02:41:30 -0700 (PDT)
+X-GM-THRID: 10320556851200
+X-Received: by 10.112.242.7 with SMTP id wm7mr9553099lbc.1.1427903482740;
+        Wed, 01 Apr 2015 08:51:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.85.10 with SMTP id d10ls706965igz.44.canary; Sat, 10 Oct
- 2015 02:41:30 -0700 (PDT)
-X-Received: by 10.68.236.167 with SMTP id uv7mr14823456pbc.12.1444470090518;
-        Sat, 10 Oct 2015 02:41:30 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id wl2si554611pab.1.2015.10.10.02.41.30
+Received: by 10.152.5.7 with SMTP id o7ls97290lao.52.gmail; Wed, 01 Apr 2015
+ 08:51:22 -0700 (PDT)
+X-Received: by 10.112.166.164 with SMTP id zh4mr7032488lbb.20.1427903482022;
+        Wed, 01 Apr 2015 08:51:22 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id na10si153427wic.0.2015.04.01.08.51.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Oct 2015 02:41:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 01 Apr 2015 08:51:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id ex6so109419697pac.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 02:41:30 -0700 (PDT)
+Received: by mail-wi0-x232.google.com with SMTP id m2so38571662wix.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2015 08:51:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=TckLtXDiCgc9KOVUL3TtJDZyRBA+1iWirq51fSRdK4o=;
-        b=qg39KVyxZ+SOdr16+SIedtZegJp/hQV32p9MasI1y9DfAxCiMer57beYbldS+Qcb5a
-         5MFxLw1tuuWA+DFohXniZtTdX2qPgoe6DGWGzEHYnKEYNdB4OHCOPxKYBzCSCigfvAKR
-         p5hOaiLPyA8N1UeCsiJc7U1J2m58V5iHoUUJzIlcpNhpkl7G2WTaSMGtoPX/uxx15ySx
-         q82vgfyd29kQss/eMSuSdHHSSM3hli1UIbMyphVndMbf5jobpi0fusvYsWcIZhU2oV/6
-         mA/+7JXjp3y5DIpYDvZd7T6YElzEwN8elgSaM3ehlMnFy/V5kpQqUosYhUUDKOgs04rr
-         Kptw==
-X-Received: by 10.68.204.37 with SMTP id kv5mr21327903pbc.64.1444470090429;
-        Sat, 10 Oct 2015 02:41:30 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id ih4sm7163650pbc.28.2015.10.10.02.41.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Oct 2015 02:41:29 -0700 (PDT)
-Date: Sat, 10 Oct 2015 15:11:18 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        bh=LABLilT+ncaaUsfL5icfS0lJkviJMyFbw0O6OVR7bLk=;
+        b=eZyS4d/W0m+hpMG3fUUYDGaBTH0//miJ6ZJidEq3Sfm5bEty7ZCT9xZIVopUgd6S8a
+         6Vn63oGI5IUVaJhKZuc/eCosjNk0a396P/bD8A41Kp/dfSSI1/qUtFB/QC8C3cYLNX9m
+         LV2aRWFTAtPJJgtI95E9wFcl3zjhKYUyHmNQiPpPZTxuxG12/ECyJcRKgeX2fMDSjD+D
+         XohNL9er3tGZHnxGn7itfpurZ0Ki68DQez+CgzLiu/DaV7kLnU+g4FspWJDT48iqRuOt
+         efYyh6Pa2m3In2Ii1LNJ2yr1Rs1Am6uULTV2O0NBrOJlzheaPfpcCjmH3paSLt8vxm7l
+         Yk4Q==
+X-Received: by 10.180.24.233 with SMTP id x9mr16697459wif.9.1427903481910;
+        Wed, 01 Apr 2015 08:51:21 -0700 (PDT)
+Return-Path: <cristina.opriceana@gmail.com>
+Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
+        by mx.google.com with ESMTPSA id ge8sm3243536wjc.32.2015.04.01.08.51.16
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 01 Apr 2015 08:51:20 -0700 (PDT)
+Date: Wed, 1 Apr 2015 18:50:17 +0300
+From: Cristina Opriceana <cristina.opriceana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/2] Fix coding style
-Message-ID: <cover.1444469447.git.shivanib134@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+Subject: [PATCH v2] iio: light: ltr501: Powerdown device on error
+Message-ID: <ba26e935b4fce83d6463762491960f0e6e13f498.1427903144.git.cristina.opriceana@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the warnings and errors generated by checkpatch
-about extra/missing characters.
-After applying this patch, file has less warnings and errors.
+Power down device when an error occurs  in order to avoid wasting
+power. Move powerdown function up to be seen by the new call and
+align parameters for the ltr501_write_contr() call.
 
+Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+---
 Changes in v2:
-	-Make the commit message better and clearer.
+ - align parameters in the ltr501_write_contr() function call
+ - update commit message to include this change
 
-Shivani Bhardwaj (2):
-  Staging: vt6655: rxtx: Remove unnecessary space character
-  Staging: vt6655: rxtx: Remove unnecessary parentheses
+ drivers/iio/light/ltr501.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
- drivers/staging/vt6655/rxtx.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
+diff --git a/drivers/iio/light/ltr501.c b/drivers/iio/light/ltr501.c
+index 62b7072..78b8783 100644
+--- a/drivers/iio/light/ltr501.c
++++ b/drivers/iio/light/ltr501.c
+@@ -333,6 +333,13 @@ static int ltr501_init(struct ltr501_data *data)
+ 		data->ps_contr);
+ }
+ 
++static int ltr501_powerdown(struct ltr501_data *data)
++{
++	return ltr501_write_contr(data->client,
++				  data->als_contr & ~LTR501_CONTR_ACTIVE,
++				  data->ps_contr & ~LTR501_CONTR_ACTIVE);
++}
++
+ static int ltr501_probe(struct i2c_client *client,
+ 			  const struct i2c_device_id *id)
+ {
+@@ -370,7 +377,7 @@ static int ltr501_probe(struct i2c_client *client,
+ 	ret = iio_triggered_buffer_setup(indio_dev, NULL,
+ 		ltr501_trigger_handler, NULL);
+ 	if (ret)
+-		return ret;
++		goto powerdown_on_error;
+ 
+ 	ret = iio_device_register(indio_dev);
+ 	if (ret)
+@@ -380,16 +387,11 @@ static int ltr501_probe(struct i2c_client *client,
+ 
+ error_unreg_buffer:
+ 	iio_triggered_buffer_cleanup(indio_dev);
++powerdown_on_error:
++	ltr501_powerdown(data);
+ 	return ret;
+ }
+ 
+-static int ltr501_powerdown(struct ltr501_data *data)
+-{
+-	return ltr501_write_contr(data->client,
+-		data->als_contr & ~LTR501_CONTR_ACTIVE,
+-		data->ps_contr & ~LTR501_CONTR_ACTIVE);
+-}
+-
+ static int ltr501_remove(struct i2c_client *client)
+ {
+ 	struct iio_dev *indio_dev = i2c_get_clientdata(client);
 -- 
-2.1.0
+1.9.1
 
 
