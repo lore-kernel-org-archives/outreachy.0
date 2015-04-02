@@ -1,158 +1,108 @@
 X-GM-THRID: 10576027713536
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,8137d625aae364a6
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.97.10 with SMTP id dw10mr55689766pab.48.1427991088670;
-        Thu, 02 Apr 2015 09:11:28 -0700 (PDT)
+X-Received: by 10.180.91.76 with SMTP id cc12mr3296275wib.7.1427988104491;
+        Thu, 02 Apr 2015 08:21:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.73.230 with SMTP id o6ls681486igv.30.gmail; Thu, 02 Apr
- 2015 09:11:28 -0700 (PDT)
-X-Received: by 10.69.13.226 with SMTP id fb2mr56078101pbd.0.1427991088199;
-        Thu, 02 Apr 2015 09:11:28 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id gu4si658728pac.1.2015.04.02.09.11.28
+Received: by 10.152.205.70 with SMTP id le6ls46008lac.50.gmail; Thu, 02 Apr
+ 2015 08:21:43 -0700 (PDT)
+X-Received: by 10.152.19.67 with SMTP id c3mr10927866lae.7.1427988103911;
+        Thu, 02 Apr 2015 08:21:43 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id i8si334138wif.1.2015.04.02.08.21.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Apr 2015 09:11:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Thu, 02 Apr 2015 08:21:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mail=gregkh@linuxfoundation.org
-Received: from localhost (gob75-2-82-67-192-59.fbx.proxad.net [82.67.192.59])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 322E3B3C;
-	Thu,  2 Apr 2015 16:11:26 +0000 (UTC)
-Date: Thu, 2 Apr 2015 18:11:24 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/3] staging: lustre: include:
- replace OBD_CHECK_DEV by obd_check_dev
-Message-ID: <20150402161124.GE29952@kroah.com>
-References: <cover.1427904237.git.mahfouz.saif.elyazal@gmail.com>
- <5ad6d9280a9080c3be07ca184ecdf84501c24c94.1427904237.git.mahfouz.saif.elyazal@gmail.com>
- <20150402083104.GA23918@kroah.com>
- <20150402140825.GA3126@waves>
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wi0-x230.google.com with SMTP id k4so18889242wiz.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Apr 2015 08:21:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=2jLn8/jkcvwmgr+p/k4v3ivlip8xrfOXzGgUZSINXrU=;
+        b=fqVEl8E+8vR5+Pwz7KfVohl1T8xJm+PY03IGxMSUjkkPMh6Exd+bNLNyVm07g2vymh
+         5ec1S5cvAMNCVrqhMyFwPIKvcH7Murfzmdvy91sjYvGvEf+Mfajw4ewK+nlghQuvYv+Z
+         Ill6cSxm+WyDrtzqyBdZZGTC8Tz3sD8MQMYuqQ7hXjcF3evtHJwCoF8IRfCDUYlkkSFw
+         vY/Flr1FCuIm1bPsoh3ywfMRGoU+9KYf3buwkgqJe7P0OP5aE5drV9vn7qfKyKEsuK0B
+         LaQP6CqAA/Mhrc+vT7fY0bOGytIHpSLgll1u/88djpQBS1b2eaOfV0qVw4Dg+WX62I4O
+         Voaw==
+X-Received: by 10.180.89.148 with SMTP id bo20mr25117657wib.91.1427988103835;
+        Thu, 02 Apr 2015 08:21:43 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.237.130])
+        by mx.google.com with ESMTPSA id lg18sm30451964wic.23.2015.04.02.08.21.42
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 02 Apr 2015 08:21:43 -0700 (PDT)
+Date: Thu, 2 Apr 2015 17:21:39 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 3/3] staging: lustre: include: remove unused macros
+Message-ID: <b1a984d9ac9c1d131acc31939625676f8c4ad500.1427987408.git.mahfouz.saif.elyazal@gmail.com>
+References: <cover.1427987408.git.mahfouz.saif.elyazal@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20150402140825.GA3126@waves>
+In-Reply-To: <cover.1427987408.git.mahfouz.saif.elyazal@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Thu, Apr 02, 2015 at 04:08:26PM +0200, Aya Mahfouz wrote:
-> On Thu, Apr 02, 2015 at 10:31:04AM +0200, Greg KH wrote:
-> > On Wed, Apr 01, 2015 at 06:09:35PM +0200, Aya Mahfouz wrote:
-> > > Static inline functions are preferred over macros. Hence, the function
-> > > obd_check_dev was introduced. obd_check_dev replaces the macro
-> > > OBD_CHECK_DEV. All functions that call obd_check_dev store the return
-> > > values and return them if they represent an error code.
-> > > 
-> > > Some of the changes were carried out manually while others were done
-> > > using coccinelle.
-> > > 
-> > > Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-> > > ---
-> > > v2: removed unneeded parenthesis around the variable obd.
-> > > 
-> > >  drivers/staging/lustre/lustre/include/obd_class.h | 33 ++++++++++++++++++-----
-> > >  1 file changed, 27 insertions(+), 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
-> > > index 5314f6f..ddc212a 100644
-> > > --- a/drivers/staging/lustre/lustre/include/obd_class.h
-> > > +++ b/drivers/staging/lustre/lustre/include/obd_class.h
-> > > @@ -341,6 +341,15 @@ do {							    \
-> > >  	}						       \
-> > >  } while (0)
-> > >  
-> > > +static inline int obd_check_dev(struct obd_device *obd)
-> > > +{
-> > > +	if (!(obd)) {
-> > 
-> > Why the extra () here?
-> > 
-> > 
-> > > +		CERROR("NULL device\n");
-> > > +		return -ENODEV;
-> > > +	}
-> > > +	return 0;
-> > > +}
-> > > +
-> > >  /* ensure obd_setup and !obd_stopping */
-> > >  #define OBD_CHECK_DEV_ACTIVE(obd)			       \
-> > >  do {							    \
-> > > @@ -594,7 +603,9 @@ static inline int obd_precleanup(struct obd_device *obd,
-> > >  	int rc;
-> > >  	DECLARE_LU_VARS(ldt, d);
-> > >  
-> > > -	OBD_CHECK_DEV(obd);
-> > > +	rc = obd_check_dev(obd);
-> > > +	if (rc)
-> > > +		return rc;
-> > >  	ldt = obd->obd_type->typ_lu;
-> > >  	d = obd->obd_lu_dev;
-> > >  	if (ldt != NULL && d != NULL) {
-> > > @@ -620,7 +631,9 @@ static inline int obd_cleanup(struct obd_device *obd)
-> > >  	int rc;
-> > >  	DECLARE_LU_VARS(ldt, d);
-> > >  
-> > > -	OBD_CHECK_DEV(obd);
-> > > +	rc = obd_check_dev(obd);
-> > > +	if (rc)
-> > > +		return rc;
-> > >  
-> > >  	ldt = obd->obd_type->typ_lu;
-> > >  	d = obd->obd_lu_dev;
-> > > @@ -668,7 +681,9 @@ obd_process_config(struct obd_device *obd, int datalen, void *data)
-> > >  	int rc;
-> > >  	DECLARE_LU_VARS(ldt, d);
-> > >  
-> > > -	OBD_CHECK_DEV(obd);
-> > > +	rc = obd_check_dev(obd);
-> > > +	if (rc)
-> > > +		return rc;
-> > >  
-> > >  	obd->obd_process_conf = 1;
-> > >  	ldt = obd->obd_type->typ_lu;
-> > > @@ -1280,7 +1295,9 @@ static inline int obd_notify(struct obd_device *obd,
-> > >  {
-> > >  	int rc;
-> > >  
-> > > -	OBD_CHECK_DEV(obd);
-> > > +	rc = obd_check_dev(obd);
-> > > +	if (rc)
-> > > +		return rc;
-> > >  
-> > >  	/* the check for async_recov is a complete hack - I'm hereby
-> > >  	   overloading the meaning to also mean "this was called from
-> > > @@ -1381,7 +1398,11 @@ static inline int obd_health_check(const struct lu_env *env,
-> > >  static inline int obd_register_observer(struct obd_device *obd,
-> > >  					struct obd_device *observer)
-> > >  {
-> > > -	OBD_CHECK_DEV(obd);
-> > > +	int rc;
-> > > +
-> > > +	rc = obd_check_dev(obd);
-> > > +	if (rc)
-> > > +		return rc;
-> > >  	down_write(&obd->obd_observer_link_sem);
-> > >  	if (obd->obd_observer && observer) {
-> > >  		up_write(&obd->obd_observer_link_sem);
-> > > @@ -1389,7 +1410,7 @@ static inline int obd_register_observer(struct obd_device *obd,
-> > >  	}
-> > >  	obd->obd_observer = observer;
-> > >  	up_write(&obd->obd_observer_link_sem);
-> > > -	return 0;
-> > > +	return rc;
-> > 
-> > This change isn't needed in this patch.
-> > 
-> obd_check_dev initializes rc to 0 upon success.
+OBD_CHECK_DEV and OBD_CHECK_DEV_ACTIVE have been replaced by static
+inline functions. They are removed since they are not used anymore.
 
-Yes, but why is that change needed here?  Just leave the line alone, it
-doesn't have anything to do with the horrid OBD_CHECK_DEV() macro.
+Signed-off-by: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+---
+v2: No changes. The patch is part of a patchset, so it was resent with
+them.
+v3: same as v2.
 
-thanks,
+ drivers/staging/lustre/lustre/include/obd_class.h | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-greg k-h
+diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
+index a6dd147..b61e64d 100644
+--- a/drivers/staging/lustre/lustre/include/obd_class.h
++++ b/drivers/staging/lustre/lustre/include/obd_class.h
+@@ -333,14 +333,6 @@ void obdo_le_to_cpu(struct obdo *dobdo, struct obdo *sobdo);
+ 
+ /* Ensure obd_setup: used for cleanup which must be called
+    while obd is stopping */
+-#define OBD_CHECK_DEV(obd)				      \
+-do {							    \
+-	if (!(obd)) {					   \
+-		CERROR("NULL device\n");			\
+-		return -ENODEV;				\
+-	}						       \
+-} while (0)
+-
+ static inline int obd_check_dev(struct obd_device *obd)
+ {
+ 	if (!obd) {
+@@ -351,16 +343,6 @@ static inline int obd_check_dev(struct obd_device *obd)
+ }
+ 
+ /* ensure obd_setup and !obd_stopping */
+-#define OBD_CHECK_DEV_ACTIVE(obd)			       \
+-do {							    \
+-	OBD_CHECK_DEV(obd);				     \
+-	if (!(obd)->obd_set_up || (obd)->obd_stopping) {	\
+-		CERROR("Device %d not setup\n",		 \
+-		       (obd)->obd_minor);		       \
+-		return -ENODEV;				\
+-	}						       \
+-} while (0)
+-
+ static inline int obd_check_dev_active(struct obd_device *obd)
+ {
+ 	int rc;
+-- 
+2.1.0
+
+
+-- 
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
