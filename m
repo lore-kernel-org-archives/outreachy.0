@@ -1,90 +1,92 @@
-X-GM-THRID: 6210399306923376640
-X-Received: by 10.112.134.129 with SMTP id pk1mr2990919lbb.24.1445971267963;
-        Tue, 27 Oct 2015 11:41:07 -0700 (PDT)
+X-GM-THRID: 10397500309504
+X-Received: by 10.70.130.67 with SMTP id oc3mr48820119pdb.5.1427969429931;
+        Thu, 02 Apr 2015 03:10:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.28.195 with SMTP id c186ls829034lfc.71.gmail; Tue, 27 Oct
- 2015 11:41:07 -0700 (PDT)
-X-Received: by 10.112.148.202 with SMTP id tu10mr9503173lbb.12.1445971266988;
-        Tue, 27 Oct 2015 11:41:06 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x241.google.com (mail-wi0-x241.google.com. [2a00:1450:400c:c05::241])
-        by gmr-mx.google.com with ESMTPS id bn7si645342wib.0.2015.10.27.11.41.06
+Received: by 10.107.30.135 with SMTP id e129ls565515ioe.3.gmail; Thu, 02 Apr
+ 2015 03:10:29 -0700 (PDT)
+X-Received: by 10.50.178.175 with SMTP id cz15mr14530017igc.5.1427969429553;
+        Thu, 02 Apr 2015 03:10:29 -0700 (PDT)
+Return-Path: <1213charlie@gmail.com>
+Received: from mail-pd0-x242.google.com (mail-pd0-x242.google.com. [2607:f8b0:400e:c02::242])
+        by gmr-mx.google.com with ESMTPS id dv5si555243pbb.0.2015.04.02.03.10.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 11:41:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) client-ip=2a00:1450:400c:c05::241;
+        Thu, 02 Apr 2015 03:10:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 1213charlie@gmail.com designates 2607:f8b0:400e:c02::242 as permitted sender) client-ip=2607:f8b0:400e:c02::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of 1213charlie@gmail.com designates 2607:f8b0:400e:c02::242 as permitted sender) smtp.mail=1213charlie@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x241.google.com with SMTP id vt6so29481710wib.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 11:41:06 -0700 (PDT)
+Received: by mail-pd0-x242.google.com with SMTP id g10so14603464pdj.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Apr 2015 03:10:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=0lcUQK2dHsLYZODoidW1DNG7JjEsiZl++t0NTvED5sI=;
-        b=OadJEKGaSgCmNVMEqjnTYV6FqJLunYEm6PQufvGAscrzv4yyk2PaZlBmYPkM7U7EaT
-         AoOZWXQiYMoPhBM2rK2ekHUjcatGaiQQAbetdM29eXLNiCUy21EvD56ETbrYY6yRux+b
-         Ob689jU8byExqlg07QUNAhulAXZeSAfN4GIQFvJRfuVQk7dqrPbPTWzZSX1F6xRUVMfR
-         /Sl+hqQIrharlnG8gJACKu0qZHesbhyFfeBIwxxAFai2cSZmwov0LRR/lSkJb2GD/sp1
-         4TmAnmJeikTo1iuTC+ENpMTyDKvpnUS59OF3iJ13DGTCUb/2CVR8qgm6EbLTHdPD9fU8
-         Mipw==
-X-Received: by 10.180.24.102 with SMTP id t6mr30641026wif.3.1445971266802;
-        Tue, 27 Oct 2015 11:41:06 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain ([141.85.114.141])
-        by smtp.gmail.com with ESMTPSA id x7sm4971418wia.7.2015.10.27.11.41.05
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=WQ0MTAD1gumkqdOVTSFXcnxvTiloORaVpNm5j5wVeRY=;
+        b=RFLFyJhYGlbbNaKIIUPfyMz4ueOvdvc6wNQq2IJcc1Wu4Md7Kghscuk/soEpBRg+hI
+         eHykeY5i3Nt2p5oxzzAT/rufkLPkBx5tkdk7IeCtekjnDVP4E1fAVXwU/W4sr0kH6P78
+         wxVSPEas3LNzk3vIv4VjArw5Zb56DxUvrXcCoSSiLS0O+4ysxxclLsxaquLBOiCRGeSf
+         6+/21QX0UPUYIC1PrCQx1YKfVl4ReTUEuNAauObEAYeAowvbI0PklDNcVI7u+m32KrRY
+         r1CEfb4wOwntv0HnTGq2xzl2jOn8bmf9mfpUa+oGf/+84NKpJZ3NoVSRMXyfwaHkmW7+
+         W9fg==
+X-Received: by 10.68.222.231 with SMTP id qp7mr84916695pbc.7.1427969429441;
+        Thu, 02 Apr 2015 03:10:29 -0700 (PDT)
+Return-Path: <1213charlie@gmail.com>
+Received: from localhost.localdomain ([2001:250:4402:228:cd6f:7693:85c:9c8c])
+        by mx.google.com with ESMTPSA id c16sm3393980pdl.61.2015.04.02.03.10.20
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 27 Oct 2015 11:41:06 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: linux-iio@vger.kernel.org
+        Thu, 02 Apr 2015 03:10:25 -0700 (PDT)
+From: Charlie WONG Super <1213charlie@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
-	cristina.opriceana@gmail.com,
-	Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH] staging: iio: dummy: complete IIO events delivery to userspace
-Date: Tue, 27 Oct 2015 20:40:56 +0200
-Message-Id: <1445971256-22474-1-git-send-email-ciorneiioana@gmail.com>
-X-Mailer: git-send-email 2.1.4
+	Charlie Wong Super <1213charlie@gmail.com>
+Subject: [PATCH v4] Staging: comedi: addi_apci_1564: Delete a tap
+Date: Thu,  2 Apr 2015 18:10:04 +0800
+Message-Id: <1427969404-10446-1-git-send-email-1213charlie@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <20150401153751.GB881@kroah.com>
+References: <20150401153751.GB881@kroah.com>
 
-Starting with commit fd2bb310ca (Staging: iio: Move evgen interrupt
-generation to irq_work) event processing is handled by calling
-both the top half and the threaded part properly simulating real
-hardware interrupts making use of threaded interrupts.
-This way the processing is split in 2 parts:
+From: Charlie Wong Super <1213charlie@gmail.com>
 
-* the IRQ handler that runs in IRQ context and only saves the event
-timestamp
-* the threaded handler that runs in process context, reads the events
-and pushes the in the userspace.
+Fix the checkpatch.pl WARNING: line over 80 characters
 
-If the IRQ handler returns IRQ_HANDLED the threaded handler is not
-even being called since the interrupt is considered to be processed.
-Because the iio dummy driver processes the events in the threaded
-handler the IRQ handler must return IRQ_WAKE_THREAD so that the
-threaded part would be awakened and called.
-
-Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+Signed-off-by: Charlie Wong Super <1213charlie@gmail.com>
 ---
-rebased on linux-iio tree
+Changes in v2:
+	-edit the commit message, make it clear
+Changes in v3:
+	-about the commit and patch style problem
+Changes in v4:
+	-delete a tap, keep the ' ' character before and after the * character
 
- drivers/iio/dummy/iio_simple_dummy_events.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/comedi/drivers/addi_apci_1564.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iio/dummy/iio_simple_dummy_events.c b/drivers/iio/dummy/iio_simple_dummy_events.c
-index bfbf1c5..6eb600f 100644
---- a/drivers/iio/dummy/iio_simple_dummy_events.c
-+++ b/drivers/iio/dummy/iio_simple_dummy_events.c
-@@ -159,7 +159,7 @@ static irqreturn_t iio_simple_dummy_get_timestamp(int irq, void *private)
- 	struct iio_dummy_state *st = iio_priv(indio_dev);
+diff --git a/drivers/staging/comedi/drivers/addi_apci_1564.c b/drivers/staging/comedi/drivers/addi_apci_1564.c
+index c481c48..c1d0021 100644
+--- a/drivers/staging/comedi/drivers/addi_apci_1564.c
++++ b/drivers/staging/comedi/drivers/addi_apci_1564.c
+@@ -106,12 +106,12 @@
+ #define APCI1564_COUNTER(x)			((x) * 0x20)
  
- 	st->event_timestamp = iio_get_time_ns();
--	return IRQ_HANDLED;
-+	return IRQ_WAKE_THREAD;
- }
+ struct apci1564_private {
+-	unsigned long eeprom;		/* base address of EEPROM register */
+-	unsigned long timer;		/* base address of 12-bit timer */
+-	unsigned long counters;		/* base address of 32-bit counters */
+-	unsigned int mode1;		/* riding-edge/high level channels */
+-	unsigned int mode2;		/* falling-edge/low level channels */
+-	unsigned int ctrl;		/* interrupt mode OR (edge) . AND (level) */
++	unsigned long eeprom;	/* base address of EEPROM register */
++	unsigned long timer;	/* base address of 12-bit timer */
++	unsigned long counters;	/* base address of 32-bit counters */
++	unsigned int mode1;	/* riding-edge/high level channels */
++	unsigned int mode2;	/* falling-edge/low level channels */
++	unsigned int ctrl;	/* interrupt mode OR (edge) . AND (level) */
+ 	struct task_struct *tsk_current;
+ };
  
- /**
 -- 
-2.1.4
+1.9.1
 
 
