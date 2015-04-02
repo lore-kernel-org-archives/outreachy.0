@@ -1,74 +1,141 @@
-X-GM-THRID: 6210868560555671552
-X-Received: by 10.129.4.203 with SMTP id 194mr42009526ywe.33.1446080524443;
-        Wed, 28 Oct 2015 18:02:04 -0700 (PDT)
+X-GM-THRID: 10695893581824
+X-Received: by 10.236.3.106 with SMTP id 70mr57660940yhg.20.1427995868881;
+        Thu, 02 Apr 2015 10:31:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.108.232 with SMTP id hn8ls31609obb.12.gmail; Wed, 28 Oct
- 2015 18:02:03 -0700 (PDT)
-X-Received: by 10.182.95.101 with SMTP id dj5mr30368078obb.13.1446080523953;
-        Wed, 28 Oct 2015 18:02:03 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id vy6si5130323pbc.1.2015.10.28.18.02.03
+Received: by 10.50.171.134 with SMTP id au6ls2184337igc.34.canary; Thu, 02 Apr
+ 2015 10:31:08 -0700 (PDT)
+X-Received: by 10.66.157.129 with SMTP id wm1mr56810587pab.15.1427995868650;
+        Thu, 02 Apr 2015 10:31:08 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id zw6si671941pbc.2.2015.04.02.10.31.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 18:02:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        Thu, 02 Apr 2015 10:31:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mail=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id hk11so22210611pad.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 18:02:03 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id tp5so90174717pac.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Apr 2015 10:31:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=DjxEt6vLBx81uyRXYG/2rG9MA1obRrX8S1ngzD+OKbU=;
-        b=RO4JI3Kdvb5+xiWSLg5TxvtxpWCAWN1OtDikU/4kbDRO6aI2qhnfUu9xbMmo7pKhrn
-         W+ZvfWvP+Q3Ttgxi4S+66A9+qOUQbUjEYeVEg8BD82Mhqt3xgSbc1QQk8qyuIYLNjRtj
-         hUDGyVO1wBKjWgMWYtdhGOMjq0o8Zs56wWKJFqnkB0cpfkHXn/AktlJx1ADIGeVp83sp
-         jEb296lfbPOqk+dwGLsXQs/KwAxJ7A7e+35XP3mtOW+dn0CF1iYuZ0WlpD8IKhtORvmF
-         9tPesKipsvHpZQ7bKqyllphV++WpRCj+egYCsBt+4buJcgwJhCYE0ClmW2BKuOWxzNHy
-         aC8Q==
-X-Received: by 10.68.163.69 with SMTP id yg5mr37485022pbb.157.1446080523827;
-        Wed, 28 Oct 2015 18:02:03 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
-        by smtp.gmail.com with ESMTPSA id ey17sm47841312pac.26.2015.10.28.18.02.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Oct 2015 18:02:03 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=nK2flRMbNVIBoWpTcx+98zA2b7htQEoGbsftwbsakRc=;
+        b=NIWF3UecPIC4IOsOYtShebmXahx/H5qof1fDmbMclSLyN6icDUWiZt0R6aMESIZ3EM
+         Is74xfBiu/jFgv2A10KO8OdlWz7+X4Kb1lFGZGFr8o+Ec0OfAPOxKviQqEr1KUvMUCId
+         5tW2JaMSlCjBn5QNXFCLJQzOrITWvo3RN44JS9SRIFFtkf8mHeL9LqwJ7la3bhfAKSDE
+         emrPOWbZDU/w50osjn/NauIASM5iEtAUO6hjWMqW4j3HZlF4dhHz38zVfoAQLpvJZsgZ
+         S3c11wqrSfig/RUrTzUeCiqqVosTCZujt5R0AMe2UzB4oGpueuwf0ez6Hjs1ufSABJJJ
+         oB8A==
+X-Received: by 10.68.190.106 with SMTP id gp10mr26076581pbc.163.1427995868537;
+        Thu, 02 Apr 2015 10:31:08 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.238.236])
+        by mx.google.com with ESMTPSA id cz10sm5829271pdb.9.2015.04.02.10.31.07
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 02 Apr 2015 10:31:07 -0700 (PDT)
+Date: Thu, 2 Apr 2015 23:01:04 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: comedi: Fix sparse endian warning
-Date: Wed, 28 Oct 2015 18:01:55 -0700
-Message-Id: <1446080515-29734-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v2 3/3] Staging: sm750fb: Remove zero testing pointer typed
+ value
+Message-ID: <20150402173104.GA7290@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Fix following sparse warning:
-warning: cast to restricted __le16
+Removes variable comparison with 0. 
+Done using following coccinelle script.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+@ disable is_zero,isnt_zero @
+expression *E;
+expression E1,f;
+@@
+
+E = f(...)
+<...
+(
+- E == 0
++ !E
+|
+- E != 0
++ E
+|
+- 0 == E
++ !E
+|
+- 0 != E
++ E
+)
+...>
+?E = E1
+
+@ disable is_zero,isnt_zero @
+expression *E;
+@@
+
+(
+  E ==
+- 0
++ NULL
+|
+  E !=
+- 0
++ NULL
+|
+- 0
++ NULL
+  == E
+|
+- 0
++ NULL
+  != E
+)
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/comedi/drivers/das16.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Changes made in v2:
+        -Numbered patches for same file
 
-diff --git a/drivers/staging/comedi/drivers/das16.c b/drivers/staging/comedi/drivers/das16.c
-index 056bca9..fd8e0b7 100644
---- a/drivers/staging/comedi/drivers/das16.c
-+++ b/drivers/staging/comedi/drivers/das16.c
-@@ -801,9 +801,10 @@ static void das16_ai_munge(struct comedi_device *dev,
- 	unsigned short *data = array;
- 	unsigned int num_samples = comedi_bytes_to_samples(s, num_bytes);
- 	unsigned int i;
-+	__le16 *buf = array;
+ drivers/staging/sm750fb/ddk750_chip.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index cd1508a..9b5bb7e 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -110,7 +110,7 @@ void setChipClock(unsigned int frequency)
+ 		return;
+ #endif
  
- 	for (i = 0; i < num_samples; i++) {
--		data[i] = le16_to_cpu(data[i]);
-+		data[i] = le16_to_cpu(buf[i]);
- 		if (s->maxdata == 0x0fff)
- 			data[i] >>= 4;
- 		data[i] &= s->maxdata;
+-	if (frequency != 0) {
++	if (frequency) {
+ 		/*
+ 		* Set up PLL, a structure to hold the value to be set in clocks.
+ 		*/
+@@ -139,7 +139,7 @@ void setMemoryClock(unsigned int frequency)
+ 	if (getChipType() == SM750LE)
+ 		return;
+ #endif
+-	if (frequency != 0) {
++	if (frequency) {
+ 		/* Set the frequency to the maximum frequency that the DDR Memory can take
+ 		which is 336MHz. */
+ 		if (frequency > MHz(336))
+@@ -187,7 +187,7 @@ void setMasterClock(unsigned int frequency)
+ 	if (getChipType() == SM750LE)
+ 		return;
+ #endif
+-	if (frequency != 0) {
++	if (frequency) {
+ 		/* Set the frequency to the maximum frequency that the SM750 engine can
+ 		run, which is about 190 MHz. */
+ 		if (frequency > MHz(190))
 -- 
 1.9.1
 
