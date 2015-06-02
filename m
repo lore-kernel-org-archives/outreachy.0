@@ -1,66 +1,84 @@
-X-GM-THRID: 6204471677993091072
-X-Received: by 10.50.30.37 with SMTP id p5mr2147370igh.11.1444591134137;
-        Sun, 11 Oct 2015 12:18:54 -0700 (PDT)
+X-GM-THRID: 6155780182483402752
+X-Received: by 10.66.249.70 with SMTP id ys6mr34704781pac.36.1433254262514;
+        Tue, 02 Jun 2015 07:11:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.166 with SMTP id g6ls27099igt.38.gmail; Sun, 11 Oct 2015
- 12:18:53 -0700 (PDT)
-X-Received: by 10.50.65.97 with SMTP id w1mr450804igs.10.1444591133684;
-        Sun, 11 Oct 2015 12:18:53 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id vy6si244596pbc.1.2015.10.11.12.18.53
+Received: by 10.50.176.196 with SMTP id ck4ls1268244igc.5.gmail; Tue, 02 Jun
+ 2015 07:11:02 -0700 (PDT)
+X-Received: by 10.69.13.226 with SMTP id fb2mr8628649pbd.0.1433254262175;
+        Tue, 02 Jun 2015 07:11:02 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
+        by gmr-mx.google.com with ESMTPS id x3si1874395pdh.2.2015.06.02.07.11.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 11 Oct 2015 12:18:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Tue, 02 Jun 2015 07:11:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id ex6so5831730pac.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Oct 2015 12:18:53 -0700 (PDT)
+Received: by mail-pd0-x235.google.com with SMTP id ki1so133761104pdb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 02 Jun 2015 07:11:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=O0PVv7LVi+Xt2U//Hud8xtAyBf+QfxNIDJMuJd2YR8Y=;
-        b=TNZyp52wGSDQq2lxNkBwp/NCWzYG7o6+bC3kvpecm5ahsbKuCzm8h8slPYB+8NlhWN
-         NbdEp4w00vyjfBDEfAKIjIAh0hLIXcAHWopnbZwziW9Cd/KV0daIZgRIuE89Yq/rg6zz
-         05e07+Oq4x4+XCVe1lRy4G5brdzSFXYFdNUuFtmlgLC0decvlxBWOoR4+axdxZ4OtRuE
-         ZfBm481045Wfq+SWWP10DfSkjqFUnFDdAqBp3kqeHeHyup9vE0fKAg01GgRuKjfes/hW
-         gXYPzx1mlt4IQ1F9E7OUI0vBzP2S3xOYLTxC+V69+q471Px9wAW+yTgXgiBRimwLHHS+
-         7Jgw==
-X-Received: by 10.66.254.101 with SMTP id ah5mr29905100pad.10.1444591133570;
-        Sun, 11 Oct 2015 12:18:53 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id ey17sm14081680pac.26.2015.10.11.12.18.51
+        bh=ttPPjLZzY1/WkWFFYTCxLoRPzkm6GNJ2gAulvvwVf9o=;
+        b=TPG2wnAMwIRRUXwHXmAwc4zGWNxNMspDOS92ZynUFr4FtdDAtvCxF2RgzFCLwTLAcs
+         NGksOD+ZpliBHJ6DYYO78CHxHGVPyRSfY+x+dDDk/fBxkvLuWIWRhKHIc7eoSmXUDzYw
+         TPoE4gbwg37qhQiMwMyEa7YtfBB+7z2DfenwlzGa9jXkOkZE5SGfKEZqgixDkT2UMshr
+         CpiSgO7/G2qc47BQIr7xB/cRBTjP3WDkb/TVL0V5fJ0uvFFBqcij/ryjJJBoRaUzTFQj
+         wLrUVwq5AW1VQoEr79lH051ioKd4XQGKaLRTrdOiZMXnhu5W2OTm2HV6yLBKCMVewjk4
+         Tqaw==
+X-Received: by 10.70.96.194 with SMTP id du2mr51038107pdb.108.1433254262093;
+        Tue, 02 Jun 2015 07:11:02 -0700 (PDT)
+Return-Path: <vatikaharlalka@gmail.com>
+Received: from vatika-Inspiron-3443 ([122.163.20.212])
+        by mx.google.com with ESMTPSA id i1sm18016633pdm.19.2015.06.02.07.10.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 11 Oct 2015 12:18:52 -0700 (PDT)
-Date: Mon, 12 Oct 2015 00:48:41 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 02 Jun 2015 07:11:00 -0700 (PDT)
+Date: Tue, 2 Jun 2015 19:40:56 +0530
+From: Vatika Harlalka <vatikaharlalka@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/2] Remove checkpatch warnings
-Message-ID: <cover.1444590771.git.shivanib134@gmail.com>
+Subject: [RFC] core.c : affine non-pinned timers.
+Message-ID: <20150602141056.GA15743@vatika-Inspiron-3443>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch removes/adds extra/missing characters respectively.
-After applying this patch, the file has less warnings.
+---
+ kernel/sched/core.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-Shivani Bhardwaj (2):
-  Staging: vt6655: rxtx: Remove extra space character
-  Staging: vt6655: rxtx: Remove extra parentheses
-
- drivers/staging/vt6655/rxtx.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 57bd333..e2785e0 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -599,7 +599,8 @@ int get_nohz_timer_target(int pinned)
+ 	int i;
+ 	struct sched_domain *sd;
+ 
+-	if (pinned || !get_sysctl_timer_migration() || !idle_cpu(cpu))
++	if (pinned || !get_sysctl_timer_migration() ||
++		(!idle_cpu(cpu) && is_housekeeping_cpu(cpu)))
+ 		return cpu;
+ 
+ 	rcu_read_lock();
+@@ -611,6 +612,11 @@ int get_nohz_timer_target(int pinned)
+ 			}
+ 		}
+ 	}
++
++	rcu_read_unlock();
++	cpu = cpumask_any_and(houekeeping_mask, cpu_online_mask);
++	return cpu;
++
+ unlock:
+ 	rcu_read_unlock();
+ 	return cpu;
 -- 
-2.1.0
+2.4.2
 
 
