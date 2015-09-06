@@ -1,51 +1,124 @@
 X-GM-THRID: 6191000708384292864
-X-Gmail-Labels: Topic type: DISCUSSION
-X-Received: by 10.112.139.137 with SMTP id qy9mr3975175lbb.17.1441575575895;
-        Sun, 06 Sep 2015 14:39:35 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.6 with SMTP id m6ls607875laj.32.gmail; Sun, 06 Sep 2015
- 14:39:35 -0700 (PDT)
-X-Received: by 10.112.202.165 with SMTP id kj5mr4019563lbc.5.1441575575360;
-        Sun, 06 Sep 2015 14:39:35 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id k7si115570wif.1.2015.09.06.14.39.35
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Sep 2015 14:39:35 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,481,1437429600"; 
-   d="scan'208";a="144910380"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 06 Sep 2015 23:39:34 +0200
-Date: Sun, 6 Sep 2015 23:39:33 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Ioana Ciornei <ciorneiioana@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-    rajdeep51994@gmail.com
+Date: Sun, 6 Sep 2015 14:32:00 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: rajdeep51994@gmail.com
+Message-Id: <82e76356-b891-4f9d-a2be-5ac714c03b72@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.02.1509051728240.2052@localhost6.localdomain6>
+References: <5c2e98ba-f953-4eb0-b0f4-f89d7e6e60a4@googlegroups.com>
+ <alpine.DEB.2.02.1509051728240.2052@localhost6.localdomain6>
 Subject: Re: [Outreachy kernel] about outreach 2015 winter program
-In-Reply-To: <82e76356-b891-4f9d-a2be-5ac714c03b72@googlegroups.com>
-Message-ID: <alpine.DEB.2.02.1509062337490.2089@localhost6.localdomain6>
-References: <5c2e98ba-f953-4eb0-b0f4-f89d7e6e60a4@googlegroups.com> <alpine.DEB.2.02.1509051728240.2052@localhost6.localdomain6> <82e76356-b891-4f9d-a2be-5ac714c03b72@googlegroups.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_344_1938942885.1441575120960"
+X-Google-Token: ENDhsq8FaI_FewPFkD00
+X-Google-IP: 141.85.0.122
 
-> Hi, Julia.
-> Can we start sending cleanup patches for the staging drivers or we should
-> just get ready for when
-> the application process starts?
+------=_Part_344_1938942885.1441575120960
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_345_1756995978.1441575120961"
 
-I think it would be better to wait.  I don't think Greg is paying 
-attention at the moment, and if there is too much delay between when you 
-send a patch and when he tries to apply it, there is a good chance that 
-the patch will not apply anyway.
+------=_Part_345_1756995978.1441575120961
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-You can feel free to start thinking about what patches you would like to 
-send, though.
 
-julia
+
+On Saturday, September 5, 2015 at 6:29:46 PM UTC+3, Julia Lawall wrote:
+>
+> On Sat, 5 Sep 2015, RAJDEEP KAUR wrote: 
+>
+> > hi i would like to know about outreach 2015 winter program do anyone 
+> have 
+> > idea what  projects  are there in  linux kernel how to communicate with 
+> the 
+> > mentor 
+>
+> The projects will be available closer to the start of the application 
+> period.  For the moment, you can read the tutorial and get ready for 
+> sending patches on staging drivers: 
+>
+> http://kernelnewbies.org/Outreachyfirstpatch 
+>
+> julia
+
+
+On Saturday, September 5, 2015 at 6:29:46 PM UTC+3, Julia Lawall wrote:
+>
+> On Sat, 5 Sep 2015, RAJDEEP KAUR wrote: 
+>
+> > hi i would like to know about outreach 2015 winter program do anyone 
+> have 
+> > idea what  projects  are there in  linux kernel how to communicate with 
+> the 
+> > mentor 
+>
+> The projects will be available closer to the start of the application 
+> period.  For the moment, you can read the tutorial and get ready for 
+> sending patches on staging drivers: 
+>
+> http://kernelnewbies.org/Outreachyfirstpatch 
+>
+> julia
+
+
+Hi, Julia.
+Can we start sending cleanup patches for the staging drivers or we should 
+just get ready for when
+the application process starts?
+
+Thanks,
+Ioana   
+
+------=_Part_345_1756995978.1441575120961
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Saturday, September 5, 2015 at 6:29:46 PM UTC+3=
+, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Sat, 5=
+ Sep 2015, RAJDEEP KAUR wrote:
+<br>
+<br>&gt; hi i would like to know about outreach 2015 winter program do anyo=
+ne have
+<br>&gt; idea what=C2=A0 projects=C2=A0 are there in=C2=A0 linux kernel how=
+ to communicate with the
+<br>&gt; mentor
+<br>
+<br>The projects will be available closer to the start of the application=
+=20
+<br>period. =C2=A0For the moment, you can read the tutorial and get ready f=
+or=20
+<br>sending patches on staging drivers:
+<br>
+<br><a href=3D"http://kernelnewbies.org/Outreachyfirstpatch" target=3D"_bla=
+nk" rel=3D"nofollow">http://kernelnewbies.org/<wbr>Outreachyfirstpatch</a>
+<br>
+<br>julia</blockquote><br>On Saturday, September 5, 2015 at 6:29:46 PM UTC+=
+3, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
+margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Sat, =
+5 Sep 2015, RAJDEEP KAUR wrote:
+<br>
+<br>&gt; hi i would like to know about outreach 2015 winter program do anyo=
+ne have
+<br>&gt; idea what=C2=A0 projects=C2=A0 are there in=C2=A0 linux kernel how=
+ to communicate with the
+<br>&gt; mentor
+<br>
+<br>The projects will be available closer to the start of the application=
+=20
+<br>period. =C2=A0For the moment, you can read the tutorial and get ready f=
+or=20
+<br>sending patches on staging drivers:
+<br>
+<br><a href=3D"http://kernelnewbies.org/Outreachyfirstpatch" target=3D"_bla=
+nk" rel=3D"nofollow">http://kernelnewbies.org/<wbr>Outreachyfirstpatch</a>
+<br>
+<br>julia</blockquote><div><br></div><div>Hi, Julia.</div><div>Can we start=
+ sending cleanup patches for the staging drivers or we should just get read=
+y for when</div><div>the application process starts?</div><div><br></div><d=
+iv>Thanks,</div><div>Ioana =C2=A0=C2=A0<br></div></div>
+------=_Part_345_1756995978.1441575120961--
+
+------=_Part_344_1938942885.1441575120960--
 
