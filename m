@@ -1,104 +1,76 @@
-X-GM-THRID: 6256318835401424896
-X-Received: by 10.66.146.193 with SMTP id te1mr8684140pab.17.1456662741941;
-        Sun, 28 Feb 2016 04:32:21 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.219.198 with SMTP id pq6ls907658obc.13.gmail; Sun, 28 Feb
- 2016 04:32:21 -0800 (PST)
-X-Received: by 10.182.53.233 with SMTP id e9mr8846295obp.28.1456662741381;
-        Sun, 28 Feb 2016 04:32:21 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id 12si3042445pfb.1.2016.02.28.04.32.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 04:32:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id t66so10290744pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 04:32:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=OMzOTt4CazSigiLNxeXx5J4mqyOgAgt5Pi14Kwsv1X0=;
-        b=zwzVt9adKNGNSLv75yQMQKrxsDMKBuMoolDFsD0MeiXsf4qxqFtf0B8vVeTpk6It9m
-         8aLnyRiB8HV8drvrjju/Wm9yaW8t2fgs8RkigWNUw33PSBaIGUNDhJIMiTbzyFjrg+FA
-         OkzBKYAglcH7u8a4iZf0Geqj6yt58P2BYOeF/zPkZHytIg4Q46Ed55zmouOVjRtglvbE
-         dL6ltZlOo6ShX+EHgsO5I1+hPVpBTjvm5axHOcDj0vTEC1B3A1ZNRJ05vxJ6y0KMk0FQ
-         aQYXzQaQN7o5Zxa19J6FUhVs+NwLQ3OW5qGSwsdLvnw7Tn4LMGAtweBPuv/syPoPBcYc
-         RakA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=OMzOTt4CazSigiLNxeXx5J4mqyOgAgt5Pi14Kwsv1X0=;
-        b=UGF8FucIyzdf01qyMaD8KZtxOjTqV6N4jBDUdy7+k+anKRTKf5PvGUCjvZuO1ruXiq
-         Ry7KXst+yALtgsljsGHycGePhj6a+9hDogT2k1/ee+KlWVKnoQ5FqHMyF31qVQuTVOtv
-         d8S44aKWe6ktKI85fRm+W5g5cyVD26Fu5wWFN5qZPnoQhPawr5i6FGCeqfYgTYP5YXPt
-         Ozf6fYXlD2oHt0nk6lxCyBqv0XX1RTW643mi1fzVzHnycyrzjbJ0Mx5nK3iX9y0jbSS6
-         7bYipHi6+ajSOmP37ywfgmYcAFdbcvzXX//2Zx936bFBLI8/si22DYulrLNug6B1MsXZ
-         azpw==
-X-Gm-Message-State: AD7BkJIle1nUry0dDhsz95KnLZRN2Vu62YOIrPerHWa0CXvOHcyDweSW2BpSTK57sDI4YA==
-X-Received: by 10.98.67.67 with SMTP id q64mr15445302pfa.44.1456662741219;
-        Sun, 28 Feb 2016 04:32:21 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.134])
-        by smtp.gmail.com with ESMTPSA id dg12sm31245142pac.47.2016.02.28.04.32.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 04:32:20 -0800 (PST)
-Date: Sun, 28 Feb 2016 10:02:19 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: most: Use usb_endpoint_dir_in(endpoint) instead of
- (endpoint->bEndpointAddress & USB_DIR_IN).
-Message-ID: <20160228043218.GA8192@sandhya>
+X-GM-THRID: 6192889737477357568
+X-Gmail-Labels: Topic type: DISCUSSION
+Date: Thu, 10 Sep 2015 08:43:34 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <f75d40b5-a2cb-4905-9df8-2e9b200a7883@googlegroups.com>
+In-Reply-To: <9f2cf9ed-2ba5-46ea-a4dc-8ce5e03bcde0@googlegroups.com>
+References: <9f2cf9ed-2ba5-46ea-a4dc-8ce5e03bcde0@googlegroups.com>
+Subject: Re: ios-image of linux 17.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_7618_714640041.1441899814309"
+X-Google-Token: EKbKxq8FlwQPMjGpeHA0
+X-Google-IP: 192.88.166.1
 
-Use usb_endpoint_dir_in(endpoint) instead of (endpoint->bEndpointAddress & USB_DIR_IN) to check if the endpoint has IN direction.
-This correction is based on following semantic patch,
+------=_Part_7618_714640041.1441899814309
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_7619_811901970.1441899814309"
 
-@@
-struct usb_endpoint_descriptor *endpoint;
-expression E;
-@@
+------=_Part_7619_811901970.1441899814309
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-(
-- endpoint->bEndpointAddress & USB_DIR_IN
-+ usb_endpoint_dir_in(endpoint)
-|
-- endpoint->bEndpointAddress == USB_DIR_IN
-+ usb_endpoint_dir_in(endpoint)
-|
-- (endpoint->bEndpointAddress & E) == USB_DIR_IN
-+ usb_endpoint_dir_in(endpoint)
-)
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/most/hdm-usb/hdm_usb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Thursday, September 10, 2015 at 5:15:03 PM UTC+3, RAJDEEP KAUR wrote:
+>
+> hi everyone i was trying to download the iso image of linux kernel but i 
+> couldn't understand does anyone have idea how to download and what to do ?
+>
 
-diff --git a/drivers/staging/most/hdm-usb/hdm_usb.c b/drivers/staging/most/hdm-usb/hdm_usb.c
-index 9d5555d..78031ab 100644
---- a/drivers/staging/most/hdm-usb/hdm_usb.c
-+++ b/drivers/staging/most/hdm-usb/hdm_usb.c
-@@ -1299,7 +1299,7 @@ hdm_probe(struct usb_interface *interface, const struct usb_device_id *id)
- 		tmp_cap->num_buffers_streaming = BUF_CHAIN_SIZE;
- 		tmp_cap->data_type = MOST_CH_CONTROL | MOST_CH_ASYNC |
- 				     MOST_CH_ISOC_AVP | MOST_CH_SYNC;
--		if (ep_desc->bEndpointAddress & USB_DIR_IN)
-+		if (usb_endpoint_dir_in(ep_desc))
- 			tmp_cap->direction = MOST_CH_RX;
- 		else
- 			tmp_cap->direction = MOST_CH_TX;
--- 
-1.8.3.4
+Hi, Rajdeep
 
+Just to make sure we are on the same page. Are you trying to download the 
+linux kernel or some distribution of Linux?
+In case the first option is true (you are trying to get a hold of the linux 
+kernel tree and setup your environment) I suggest to follow the steps from 
+[1]. 
+It's a realy nice tutorial describing exactly those steps. 
+
+If you have any more questions feel free to ask.
+
+Ioana
+
+
+[1] http://kernelnewbies.org/OutreachyfirstpatchSetup?action=show&redirect=OPWfirstpatchSetup
+
+
+ 
+
+  
+ 
+
+------=_Part_7619_811901970.1441899814309
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br>On Thursday, September 10, 2015 at 5:15:03 PM UTC+3, R=
+AJDEEP KAUR wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;marg=
+in-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"=
+ltr">hi everyone i was trying to download the iso image of linux kernel but=
+ i couldn&#39;t understand does anyone have idea how to download and what t=
+o do ?</div></blockquote><div><br></div><div>Hi, Rajdeep</div><div><br></di=
+v><div>Just to make sure we are on the same page. Are you trying to downloa=
+d the linux kernel or some distribution of Linux?</div><div>In case the fir=
+st option is true (you are trying to get a hold of the linux kernel tree an=
+d setup your environment) I suggest to follow the steps from [1].=C2=A0</di=
+v><div>It&#39;s a realy nice tutorial describing exactly those steps.=C2=A0=
+</div><div><br></div><div>If you have any more questions feel free to ask.<=
+/div><div><br></div><div>Ioana</div><div><br></div><div><br></div><div>[1]=
+=C2=A0http://kernelnewbies.org/OutreachyfirstpatchSetup?action=3Dshow&amp;r=
+edirect=3DOPWfirstpatchSetup</div><div><br></div><div><br></div><div>=C2=A0=
+</div><div><br></div><div>=C2=A0=C2=A0</div><div>=C2=A0</div></div>
+------=_Part_7619_811901970.1441899814309--
+
+------=_Part_7618_714640041.1441899814309--
 
