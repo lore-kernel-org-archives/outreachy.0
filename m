@@ -1,42 +1,56 @@
 X-GM-THRID: 6195023945658269696
-X-Received: by 10.180.208.108 with SMTP id md12mr569367wic.1.1442477429885;
-        Thu, 17 Sep 2015 01:10:29 -0700 (PDT)
+X-Received: by 10.182.70.4 with SMTP id i4mr26832026obu.15.1442476948039;
+        Thu, 17 Sep 2015 01:02:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.2.193 with SMTP id 1ls46680law.30.gmail; Thu, 17 Sep 2015
- 01:10:29 -0700 (PDT)
-X-Received: by 10.112.12.132 with SMTP id y4mr6275412lbb.0.1442477429379;
-        Thu, 17 Sep 2015 01:10:29 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id bn1si50455wib.0.2015.09.17.01.10.29
+Received: by 10.182.215.162 with SMTP id oj2ls88465obc.15.gmail; Thu, 17 Sep
+ 2015 01:02:27 -0700 (PDT)
+X-Received: by 10.182.33.3 with SMTP id n3mr5078311obi.14.1442476947682;
+        Thu, 17 Sep 2015 01:02:27 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-yk0-x22e.google.com (mail-yk0-x22e.google.com. [2607:f8b0:4002:c07::22e])
+        by gmr-mx.google.com with ESMTPS id u67si145049ywf.5.2015.09.17.01.02.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Sep 2015 01:10:29 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 17 Sep 2015 01:02:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::22e as permitted sender) client-ip=2607:f8b0:4002:c07::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,545,1437429600"; 
-   d="scan'208";a="178009056"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Sep 2015 10:10:29 +0200
-Date: Thu, 17 Sep 2015 10:10:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Daniel Baluta <daniel.baluta@gmail.com>
-cc: Ioana Ciornei <ciorneiioana@gmail.com>, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] round 11
-In-Reply-To: <CAEnQRZB4ajRP6qFzt4x1C3h9nJkM26KL68Ef-GnUKn61W=LPiQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1509170958080.2399@hadrien>
-References: <alpine.DEB.2.10.1509161012220.2429@hadrien> <CAHWJYFn+q64GkbLrKGsWSGtuMrkAR0bg-n+mCdfFAYLLfs1KVw@mail.gmail.com> <alpine.DEB.2.10.1509170933300.2399@hadrien> <CAEnQRZB4ajRP6qFzt4x1C3h9nJkM26KL68Ef-GnUKn61W=LPiQ@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::22e as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-yk0-x22e.google.com with SMTP id t18so9820134ykd.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 17 Sep 2015 01:02:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=Zw65VHXvOL2GSxjwc0esMIUVczeZf2YOXvAuOShHKO4=;
+        b=SM900j0NeHPUDHozSv613Y+61OzSUn+ylR8JZNtx9lPE6DlFQWQ9kjlSCtzit7eFU7
+         Wvwya4eOgqgZ457ZgMMPx1RwqzbtZl/8tBydPAK4eD3k0KNbunfySNZuxmsAecqMi18Y
+         87Ik2omvOKqqTb6iuMEcg3J2IIa1uuyKhYVJsGzkoxooen029fBH5LooU13MZddmfXkX
+         xmpBwqAbj1jm6oj1qNX6YtpcBa9eKyWl994mA//yDm751Tnc25sySq9p3BW2NlTJx0V1
+         5+2DOISYGcLGqzJFBmWFBYa0GgbV2NZO3bt1oGmor3UJThb+rfOoGLwZe2yp0i2eWjh6
+         JyDw==
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-Received: by 10.170.38.22 with SMTP id 22mr32485287ykg.15.1442476947570;
+ Thu, 17 Sep 2015 01:02:27 -0700 (PDT)
+Received: by 10.37.107.66 with HTTP; Thu, 17 Sep 2015 01:02:27 -0700 (PDT)
+In-Reply-To: <CAEnQRZB4ajRP6qFzt4x1C3h9nJkM26KL68Ef-GnUKn61W=LPiQ@mail.gmail.com>
+References: <alpine.DEB.2.10.1509161012220.2429@hadrien>
+	<CAHWJYFn+q64GkbLrKGsWSGtuMrkAR0bg-n+mCdfFAYLLfs1KVw@mail.gmail.com>
+	<alpine.DEB.2.10.1509170933300.2399@hadrien>
+	<CAEnQRZB4ajRP6qFzt4x1C3h9nJkM26KL68Ef-GnUKn61W=LPiQ@mail.gmail.com>
+Date: Thu, 17 Sep 2015 11:02:27 +0300
+Message-ID: <CAHWJYFmYWJDOvjcQnnqt_bLZPdtMrbt37jepLLkwZqehQfriAw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] round 11
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: Daniel Baluta <daniel.baluta@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-
-
-On Thu, 17 Sep 2015, Daniel Baluta wrote:
-
+On Thu, Sep 17, 2015 at 10:56 AM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
+>
 > On Thu, Sep 17, 2015 at 10:39 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 > >
 > >
@@ -84,28 +98,12 @@ On Thu, 17 Sep 2015, Daniel Baluta wrote:
 > period overlaps with winter vacation.
 >
 > I think this is the same case for some universities in India.
-
-It varies a lot.  An overlap of 3 weeks and then I will promise to work
-from 6pm to 2am every day, for example, is not acceptable.  In Denmark,
-the suggested number of outside working hours was 15-20 hours per week.
-And we had successful on-time completion rates of our undergraduate CS
-degree of around 3 out of 120.  It's hard to imagine that one can be a
-full time student and a full time worker without substantially cheating on
-one or the other.  And when school is right there in front of one, and
-then internship is on another continent, it's easy to imagine which one
-will be sacrificed for the other.  The numbers from the Outreachy program
-confirm this, with a 37% rate of substantial problems with the internship
-among students in the last winter round.  The internship is both an
-opportunity and a cost.  Both will be wasted if one doesn't have enough
-time to devote to it.
-
-If there is a feeling that the winter round is not very competitive, and
-the summer round is too competitive, because we don't actually seem to be
-getting any applicants from places like Australia or Southern Africa,
-maybe we should just move a couple of internship slots from the winter to
-the summer?
-
-julia
+>
+> thanks,
+> Daniel.
 
 
+Thanks a lot.
+
+Ioana
 
