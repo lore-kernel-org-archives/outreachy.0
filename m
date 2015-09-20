@@ -1,56 +1,109 @@
 X-GM-THRID: 6196813277998088192
-X-Received: by 10.182.101.129 with SMTP id fg1mr14790692obb.21.1442810514318;
-        Sun, 20 Sep 2015 21:41:54 -0700 (PDT)
+X-Received: by 10.68.246.163 with SMTP id xx3mr15416615pbc.4.1442808024836;
+        Sun, 20 Sep 2015 21:00:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.158.170 with SMTP id wv10ls858059obb.40.gmail; Sun, 20 Sep
- 2015 21:41:53 -0700 (PDT)
-X-Received: by 10.182.65.164 with SMTP id y4mr14953518obs.26.1442810513903;
-        Sun, 20 Sep 2015 21:41:53 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id k190si1928416ywe.3.2015.09.20.21.41.53
+Received: by 10.50.57.71 with SMTP id g7ls729279igq.21.canary; Sun, 20 Sep
+ 2015 21:00:24 -0700 (PDT)
+X-Received: by 10.66.229.69 with SMTP id so5mr15743498pac.26.1442808024379;
+        Sun, 20 Sep 2015 21:00:24 -0700 (PDT)
+Return-Path: <amber@amberadams.co>
+Received: from imap1-1.ox.privateemail.com (imap1-1.ox.privateemail.com. [198.187.29.239])
+        by gmr-mx.google.com with ESMTPS id z7si885996igw.0.2015.09.20.21.00.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Sep 2015 21:41:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sun, 20 Sep 2015 21:00:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amber@amberadams.co designates 198.187.29.239 as permitted sender) client-ip=198.187.29.239;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [70.35.39.2])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id ABB05D09;
-	Mon, 21 Sep 2015 04:41:52 +0000 (UTC)
-Date: Sun, 20 Sep 2015 21:41:51 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: "Amber N. Adams" <amber@amberadams.co>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: skein: Add * on subsequent
- lines in block comment
-Message-ID: <20150921044151.GA13276@kroah.com>
-References: <1442721709-20701-1-git-send-email-amber@amberadams.co>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1442721709-20701-1-git-send-email-amber@amberadams.co>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+       spf=pass (google.com: domain of amber@amberadams.co designates 198.187.29.239 as permitted sender) smtp.mailfrom=amber@amberadams.co
+Received: from localhost (localhost [127.0.0.1])
+	by imap1.ox.privateemail.com (Postfix) with ESMTP id 6D6B2B00093;
+	Mon, 21 Sep 2015 00:00:23 -0400 (EDT)
+X-Virus-Scanned: Debian amavisd-new at imap1.ox.privateemail.com
+Received: from imap1.ox.privateemail.com ([127.0.0.1])
+	by localhost (imap1.ox.privateemail.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id wWawUvuOS1oo; Mon, 21 Sep 2015 00:00:23 -0400 (EDT)
+Received: from parthenosis.attlocal.net (108-67-72-131.lightspeed.nsvltn.sbcglobal.net [108.67.72.131])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by imap1.ox.privateemail.com (Postfix) with ESMTPSA id 12AB4B00060;
+	Mon, 21 Sep 2015 00:00:23 -0400 (EDT)
+From: "Amber N. Adams" <amber@amberadams.co>
+To: outreachy-kernel@googlegroups.com
+Cc: "Amber N. Adams" <amber@amberadams.co>
+Subject: [PATCH] staging: skein: Add * on subsequent lines in block comment
+Date: Sat, 19 Sep 2015 23:01:49 -0500
+Message-Id: <1442721709-20701-1-git-send-email-amber@amberadams.co>
+X-Mailer: git-send-email 1.9.1
 
-On Sat, Sep 19, 2015 at 11:01:49PM -0500, Amber N. Adams wrote:
-> This patch fixes the checkpatch.pl warning:
-> 
-> WARNING: Block comments use * on subsequent lines
-> +/*
-> +Copyright (c) 2010 Werner Dittmann
-> 
-> Signed-off-by: Amber N. Adams <amber@amberadams.co>
-> ---
->  drivers/staging/skein/skein_api.h | 48 +++++++++++++++++++--------------------
->  1 file changed, 24 insertions(+), 24 deletions(-)
+This patch fixes the checkpatch.pl warning:
 
-I don't think that the outreachy kernel application process starts until
-September 29, so we can't do anything with this patch until then :(
+WARNING: Block comments use * on subsequent lines
++/*
++Copyright (c) 2010 Werner Dittmann
 
-I'd recommend just waiting a week, or if you really want to submit this,
-send it to the mailing list that the scripts/get_maintainer.pl tool
-tells you to, and I can take it that way, but it will not count for the
-application process here, sorry.
+Signed-off-by: Amber N. Adams <amber@amberadams.co>
+---
+ drivers/staging/skein/skein_api.h | 48 +++++++++++++++++++--------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
-greg k-h
+diff --git a/drivers/staging/skein/skein_api.h b/drivers/staging/skein/skein_api.h
+index 7da8b38..4cf7003 100644
+--- a/drivers/staging/skein/skein_api.h
++++ b/drivers/staging/skein/skein_api.h
+@@ -1,28 +1,28 @@
+-/*
+-Copyright (c) 2010 Werner Dittmann
+-
+-Permission is hereby granted, free of charge, to any person
+-obtaining a copy of this software and associated documentation
+-files (the "Software"), to deal in the Software without
+-restriction, including without limitation the rights to use,
+-copy, modify, merge, publish, distribute, sublicense, and/or sell
+-copies of the Software, and to permit persons to whom the
+-Software is furnished to do so, subject to the following
+-conditions:
+-
+-The above copyright notice and this permission notice shall be
+-included in all copies or substantial portions of the Software.
+-
+-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+-OTHER DEALINGS IN THE SOFTWARE.
++/**
++ * Copyright (c) 2010 Werner Dittmann
++ *
++ * Permission is hereby granted, free of charge, to any person
++ * obtaining a copy of this software and associated documentation
++ * files (the "Software"), to deal in the Software without
++ * restriction, including without limitation the rights to use,
++ * copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following
++ * conditions:
++ * 
++ * The above copyright notice and this permission notice shall be
++ * included in all copies or substantial portions of the Software.
++ * 
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ * OTHER DEALINGS IN THE SOFTWARE.
+ 
+-*/
++ */
+ 
+ #ifndef SKEINAPI_H
+ #define SKEINAPI_H
+-- 
+1.9.1
+
 
