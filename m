@@ -1,129 +1,90 @@
 X-GM-THRID: 6198081352243347456
-Date: Fri, 25 Sep 2015 02:09:44 -0700 (PDT)
-From: Supriya Srivatsa <sup0508@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: sup0508@gmail.com
-Message-Id: <15b6bd46-8210-4d6e-9f3f-02b93425b737@googlegroups.com>
-In-Reply-To: <CAEnQRZC99j+NDZe=dgfPhg3y+vfEwVq0eP2TCrEXokf6dXd0ng@mail.gmail.com>
-References: <979eb3fd-be55-4cad-8c74-8bb99fa095c9@googlegroups.com>
- <CAEnQRZC99j+NDZe=dgfPhg3y+vfEwVq0eP2TCrEXokf6dXd0ng@mail.gmail.com>
+X-Received: by 10.112.158.202 with SMTP id ww10mr6240956lbb.13.1443103783906;
+        Thu, 24 Sep 2015 07:09:43 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.180.109.193 with SMTP id hu1ls115436wib.37.canary; Thu, 24 Sep
+ 2015 07:09:43 -0700 (PDT)
+X-Received: by 10.180.89.104 with SMTP id bn8mr1470484wib.4.1443103783443;
+        Thu, 24 Sep 2015 07:09:43 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTP id fj10si431147wib.1.2015.09.24.07.09.43
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 24 Sep 2015 07:09:43 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,581,1437429600"; 
+   d="scan'208";a="179277200"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Sep 2015 16:09:43 +0200
+Date: Thu, 24 Sep 2015 16:09:41 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Supriya Srivatsa <sup0508@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Problem with building the kernel
+In-Reply-To: <979eb3fd-be55-4cad-8c74-8bb99fa095c9@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1509241609050.2370@hadrien>
+References: <979eb3fd-be55-4cad-8c74-8bb99fa095c9@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_2294_1787929157.1443172184207"
-X-Google-Token: ENielLAFIc4Jw-crDEw0
-X-Google-IP: 59.89.87.78
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-2097602711-1443103781=:2370"
 
-------=_Part_2294_1787929157.1443172184207
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_2295_1652895266.1443172184207"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-------=_Part_2295_1652895266.1443172184207
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+--8323329-2097602711-1443103781=:2370
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-That fixed it. Thank you Daniel.  :)
+On Thu, 24 Sep 2015, Supriya Srivatsa wrote:
 
-On Thursday, September 24, 2015 at 7:39:05 PM UTC+5:30, Daniel Baluta wrote:
->
-> On Thu, Sep 24, 2015 at 5:01 PM, Supriya Srivatsa <sup...@gmail.com 
-> <javascript:>> wrote: 
-> > Hello. 
-> > I am trying to build the kernel code. I am following instructions from 
-> the 
-> > tutorial page. 
-> > However, I have run into a problem. 
-> > When I run the 'make' command, I land at the following errors and 
-> > compilation is terminated. 
-> > 
-> > 
-> >   CHK     include/config/kernel.release 
-> >   CHK     include/generated/uapi/linux/version.h 
-> >   CHK     include/generated/utsrelease.h 
-> >   CHK     include/generated/bounds.h 
-> >   CHK     include/generated/timeconst.h 
-> >   CHK     include/generated/asm-offsets.h 
-> >   CALL    scripts/checksyscalls.sh 
-> >   HOSTCC  scripts/sign-file 
-> > scripts/sign-file.c:20:25: fatal error: openssl/bio.h: No such file or 
-> > directory 
-> >  #include <openssl/bio.h> 
-> >                          ^ 
-> > compilation terminated. 
-> > make[1]: *** [scripts/sign-file] Error 1 
-> > make: *** [scripts] Error 2 
-> > 
-> > 
-> > I am not able to proceed and will be really grateful for guidance. 
-> > Thank you. :) 
+> Hello.
+> I am trying to build the kernel code. I am following instructions from the
+> tutorial page.
+> However, I have run into a problem.
+> When I run the 'make' command, I land at the following errors and
+> compilation is terminated.
 >
 >
-> You are missing the package that brings openssl/bio.h file. On a debian 
-> based distribution, running: 
+>   CHK     include/config/kernel.release
+>   CHK     include/generated/uapi/linux/version.h
+>   CHK     include/generated/utsrelease.h
+>   CHK     include/generated/bounds.h
+>   CHK     include/generated/timeconst.h
+>   CHK     include/generated/asm-offsets.h
+>   CALL    scripts/checksyscalls.sh
+>   HOSTCC  scripts/sign-file
+> scripts/sign-file.c:20:25: fatal error: openssl/bio.h: No such file or
+> directory
+>  #include <openssl/bio.h>
+>                          ^
+> compilation terminated.
+> make[1]: *** [scripts/sign-file] Error 1
+> make: *** [scripts] Error 2
 >
-> $ apt get install libssl-dev 
 >
-> should fix the problem. 
->
-> thanks, 
-> Daniel. 
->
+> I am not able to proceed and will be really grateful for guidance.
 
-------=_Part_2295_1652895266.1443172184207
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+An old stack overflow response suggests that you need to install
+libssl-dev.  Did you try that?
 
-<div dir=3D"ltr">That fixed it. Thank you Daniel.=C2=A0 :)<br><br>On Thursd=
-ay, September 24, 2015 at 7:39:05 PM UTC+5:30, Daniel Baluta wrote:<blockqu=
-ote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left=
-: 1px #ccc solid;padding-left: 1ex;">On Thu, Sep 24, 2015 at 5:01 PM, Supri=
-ya Srivatsa &lt;<a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-ma=
-ilto=3D"vMluSRz6BQAJ" rel=3D"nofollow">sup...@gmail.com</a>&gt; wrote:
-<br>&gt; Hello.
-<br>&gt; I am trying to build the kernel code. I am following instructions =
-from the
-<br>&gt; tutorial page.
-<br>&gt; However, I have run into a problem.
-<br>&gt; When I run the &#39;make&#39; command, I land at the following err=
-ors and
-<br>&gt; compilation is terminated.
-<br>&gt;
-<br>&gt;
-<br>&gt; =C2=A0 CHK =C2=A0 =C2=A0 include/config/kernel.release
-<br>&gt; =C2=A0 CHK =C2=A0 =C2=A0 include/generated/uapi/linux/<wbr>version=
-.h
-<br>&gt; =C2=A0 CHK =C2=A0 =C2=A0 include/generated/utsrelease.h
-<br>&gt; =C2=A0 CHK =C2=A0 =C2=A0 include/generated/bounds.h
-<br>&gt; =C2=A0 CHK =C2=A0 =C2=A0 include/generated/timeconst.h
-<br>&gt; =C2=A0 CHK =C2=A0 =C2=A0 include/generated/asm-offsets.<wbr>h
-<br>&gt; =C2=A0 CALL =C2=A0 =C2=A0scripts/checksyscalls.sh
-<br>&gt; =C2=A0 HOSTCC =C2=A0scripts/sign-file
-<br>&gt; scripts/sign-file.c:20:25: fatal error: openssl/bio.h: No such fil=
-e or
-<br>&gt; directory
-<br>&gt; =C2=A0#include &lt;openssl/bio.h&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0^
-<br>&gt; compilation terminated.
-<br>&gt; make[1]: *** [scripts/sign-file] Error 1
-<br>&gt; make: *** [scripts] Error 2
-<br>&gt;
-<br>&gt;
-<br>&gt; I am not able to proceed and will be really grateful for guidance.
-<br>&gt; Thank you. :)
-<br>
-<br>
-<br>You are missing the package that brings openssl/bio.h file. On a debian
-<br>based distribution, running:
-<br>
-<br>$ apt get install libssl-dev
-<br>
-<br>should fix the problem.
-<br>
-<br>thanks,
-<br>Daniel.
-<br></blockquote></div>
-------=_Part_2295_1652895266.1443172184207--
+julia
 
-------=_Part_2294_1787929157.1443172184207--
+
+> Thank you. :)
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/979eb3fd-be55-4cad-8c74-
+> 8bb99fa095c9%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-2097602711-1443103781=:2370--
 
