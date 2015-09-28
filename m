@@ -1,75 +1,134 @@
-X-GM-THRID: 5549458456576
-X-Received: by 10.112.131.106 with SMTP id ol10mr3344339lbb.20.1425242394643;
-        Sun, 01 Mar 2015 12:39:54 -0800 (PST)
+X-GM-THRID: 6199480104398094336
+X-Received: by 10.180.149.210 with SMTP id uc18mr1451231wib.4.1443428943273;
+        Mon, 28 Sep 2015 01:29:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.204.134 with SMTP id ky6ls346576lac.76.gmail; Sun, 01 Mar
- 2015 12:39:54 -0800 (PST)
-X-Received: by 10.112.9.65 with SMTP id x1mr3345108lba.16.1425242394121;
-        Sun, 01 Mar 2015 12:39:54 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id r6si547166wix.0.2015.03.01.12.39.54
+Received: by 10.25.28.200 with SMTP id c191ls317748lfc.71.gmail; Mon, 28 Sep
+ 2015 01:29:02 -0700 (PDT)
+X-Received: by 10.112.147.7 with SMTP id tg7mr2486151lbb.16.1443428942474;
+        Mon, 28 Sep 2015 01:29:02 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ha7si202980wib.0.2015.09.28.01.29.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 12:39:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 28 Sep 2015 01:29:02 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id h11so10638277wiw.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 12:39:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=6QlTB/IS6cGCaQWjIKIMtu445j/HApq+oeEuxQGCJjg=;
-        b=rIZpgVR5OFYkiwAZpkz+NIe23b2X1nyPEpAocPTp/EOSR1F23R7uAwebUIe//J2URN
-         7mBxxwvbBgXsjLFWsGUCLSqOyEY6xx/x03X1rhx6GWjObVr7xI5V87VrCmKUv5RjAdqW
-         NuULlhoVeGLYyPCd5PZXr/gpvIkyQJ9dr+1pfAT3IZdnk/7s3KVd5Ckl2TVmzd6Dt0Ry
-         oMoEpcenmYDBdFFVEwEGihbEwUW7d4lus8fuohPWzMyrubokn51izZGK/9zh1xFwSVrs
-         EFoAFXTGLFaGPON5vya0YXcTcD458ky2EKkCwxJyu0P7n6Oy/tq7yO27okj96xy8aDrm
-         0FZQ==
-X-Received: by 10.180.76.45 with SMTP id h13mr28224886wiw.51.1425242394036;
-        Sun, 01 Mar 2015 12:39:54 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id pp10sm16194525wjc.31.2015.03.01.12.39.52
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 12:39:53 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,602,1437429600"; 
+   d="scan'208";a="148775168"
+Received: from eduroam-0963.wlan.uni-bremen.de ([134.102.19.195])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Sep 2015 10:29:01 +0200
+Date: Mon, 28 Sep 2015 10:29:01 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: lustre: Fix assignment in if condition checkpatch error
-Date: Sun,  1 Mar 2015 22:39:47 +0200
-Message-Id: <1425242387-10440-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: Welcome!
+Message-ID: <alpine.DEB.2.10.1509281027460.3256@hadrien>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix checkpatch.pl error assignment in if condition and assign variable
-before if condition.
+Greetings potential Linux kernel Outreachy interns!  Please read this
+*entire* email, even if you have applied in the past, as some things have
+changed for this application round.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h
-index eea55d9..ae6901b 100644
---- a/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h
-+++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_fail.h
-@@ -77,10 +77,9 @@ enum {
- static inline int cfs_fail_check_set(__u32 id, __u32 value,
- 				     int set, int quiet)
- {
--	int ret = 0;
-+	int ret = __cfs_fail_check_set(id, value, set);
- 
--	if (unlikely(CFS_FAIL_PRECHECK(id) &&
--		     (ret = __cfs_fail_check_set(id, value, set)))) {
-+	if (unlikely(CFS_FAIL_PRECHECK(id) && ret)) {
- 		if (quiet) {
- 			CDEBUG(D_INFO, "*** cfs_fail_loc=%x, val=%u***\n",
- 			       id, value);
--- 
-1.9.1
+What is Outreachy?
+------------
 
+The next application round for Outreachy internships starts tomorrow,
+September 29 and ends November2.  Outreachy interns are paid $5,500 to work
+on a full-time internship with an open source mentor from December 7, 2015
+to March 7, 2016.  Interns are also granted a $500 travel stipend to go to
+any conference approved by their mentor that relates to their project.
+
+
+Who can apply?
+--------------
+
+To qualify to apply for Outreachy, you must meet the following requirements:
+
+ * You must be over 18,
+ * You must be able to work full-time (40 hours per week) from December 7,
+   2015 to March 7, 2016,
+ * You must not have school obligations for more than a short period during
+   December 7, 2015 to March 7, 2016, unless 50% or more of your school
+   time is a project course, and the internship is being done as the project,
+ * You must be a woman (cis or trans), or a gender queer, gender free, or
+   gender fluid individual, or a resident or national of the United States
+   of any gender who is Black/African American, Hispanic/Latin@, American
+   Indian, Alaska Native, Native Hawaiian, or Pacific Islander, and
+ * You cannot have been an Outreachy intern or Google Summer of Code intern
+   before.
+
+Note that the explicit constraint about school obligations is new for
+Outreachy, but it has been applied informally for the Linux kernel in the past.
+
+What Outreachy projects can you apply to?
+-----------------------------------
+
+There will be several different open source projects participating in
+this round of Outreachy, and the full list is available at the link below.
+
+https://wiki.gnome.org/Outreachy/2015/DecemberMarch#Participating_Organizations
+
+The Linux kernel expects to offer five projects, most of which are already
+listed on our wiki.
+
+http://kernelnewbies.org/OutreachyIntro
+
+
+How do I apply to the Linux kernel project?
+-------------------------------------------
+
+The application process for the Linux kernel project is outlined here:
+
+http://kernelnewbies.org/OutreachyApply
+
+Basically, applicants will need to walk through our tutorial for
+creating their first Linux kernel patch:
+
+http://kernelnewbies.org/Outreachyfirstpatch
+
+Applicants should also join the #opw IRC channel on irc.gnome.org, and
+the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble with
+IRC, please ask for help on this mailing list.
+
+As in the last Outreachy round, we are encouraging applicants (once they
+have completed a number of Staging driver cleanup patches) to complete some
+small tasks outlined by the mentors.  The task lists for each mentor are
+linked from the OutreachyIntro page.
+
+*Before* you start on a task, please claim that task through this page:
+
+http://kernelnewbies.org/OutreachyTasks
+
+There is a tips section at the end of the tutorial to outline what
+behaviors we look for in potential Outreachy interns.  I hope this will
+give more insight into our selection process.
+
+http://kernelnewbies.org/Outreachyfirstpatch#tips
+
+We've also noticed that applicants (and even accepted interns!) aren't
+consistently using the email communication style preferred by the Linux
+kernel community.  This style can be as important as coding style to
+many community members, so please review the email style guidelines and
+attempt to follow them:
+
+http://kernelnewbies.org/Outreachyfirstpatch#head-9799d3ebaa1221875dfdb0a05c4063dc4eb474a1
+
+
+When can I apply?
+-----------------
+
+The application period for the Linux kernel project during Outreachy Round 11
+is September 29 to November 2.
+
+Good luck with your application!  If you have any questions, mentors
+will be available via IRC or this mailing list.  Do not hesitate to ask
+questions if you get stuck in the tutorial.
+
+Julia Lawall
+Linux Kernel Outreachy Coordinator
 
