@@ -1,73 +1,68 @@
-X-GM-THRID: 6252275562391273472
-X-Received: by 10.66.141.36 with SMTP id rl4mr1870707pab.3.1455721343953;
-        Wed, 17 Feb 2016 07:02:23 -0800 (PST)
+X-GM-THRID: 6199955857120165888
+X-Received: by 10.182.142.4 with SMTP id rs4mr1073728obb.2.1443544113013;
+        Tue, 29 Sep 2015 09:28:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.101.196 with SMTP id fi4ls1931191obb.32.gmail; Wed, 17 Feb
- 2016 07:02:23 -0800 (PST)
-X-Received: by 10.182.58.36 with SMTP id n4mr1753816obq.1.1455721343602;
-        Wed, 17 Feb 2016 07:02:23 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id yd9si244831pab.1.2016.02.17.07.02.23
+Received: by 10.107.156.195 with SMTP id f186ls1414350ioe.107.gmail; Tue, 29
+ Sep 2015 09:28:32 -0700 (PDT)
+X-Received: by 10.107.9.212 with SMTP id 81mr24055581ioj.19.1443544112013;
+        Tue, 29 Sep 2015 09:28:32 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-qg0-x236.google.com (mail-qg0-x236.google.com. [2607:f8b0:400d:c04::236])
+        by gmr-mx.google.com with ESMTPS id q133si2546468ywb.1.2015.09.29.09.28.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 07:02:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 29 Sep 2015 09:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) client-ip=2607:f8b0:400d:c04::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id c10so13197881pfc.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 07:02:23 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qg0-x236.google.com with SMTP id z77so10827598qge.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 09:28:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=UEsTYACMtTcJrFmVBD5Sda/O1THomdMPQ6zSdyamqnY=;
-        b=IoHhhCRUwRuldfGcXpvVdJBmm4z+H63mcYJUts8BBlxKQOnigflK43F8BV94SderbM
-         5aEy3QOBFwvso8y+brjjNTVKyQryoT6/BNkdsOfTgZ2LWB4sTfiOLQJbOHfKaMW05R5g
-         2eXyd6gbfxv+KDSz458OKJxd5XRE5K2of4YOmjMAIIAulwMqvPXM8cdrzKCYD1q/zu4p
-         EXva/LKIANy8a6/tKwYjWVOeYaQw4X7uw+MeXLV8vWyTJhQRNn4hx9ZIelv05yp93wda
-         YamWFEmPXssEg4JPto6rNJ6+Af2cmXMypBUsBBq639PQXlBcIYWDeWgMX5HOYhxoBS55
-         3q2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=UEsTYACMtTcJrFmVBD5Sda/O1THomdMPQ6zSdyamqnY=;
-        b=RdWJsV8RR7mOibJHKGJKRufU3nskXkTctSlfe/qcYq/amaVhaSyqKmKS+hd+bNrcV1
-         aei5MdvdNEON02R1ZMYAukiL2IVwaOmzEjAww7CeTo9q03FimLGtn6zFmF0ImPDUq/d2
-         Ws5EQrTSoUnm6a/Z054n2CP5r/YqJTwmYbL/UAhg4pU5Sc9hdjio5IUjKCWglXcf691h
-         N4m+izJY3ctXwmSSeUOvPEfxxgnN/oOgCtO6vxNYzNQQaOd0DC7dcwKKOq0VcAsUhkOd
-         u0fQWLa8MslTxntjpEnnBkJ6jdvm8q7HR4FqAO0PJRu4EbMDGMjYGuMM/cbke0uYvTwL
-         oqFQ==
-X-Gm-Message-State: AG10YOSlq1vKYRFw303khMVZwbiQzTF8FAHrsU5k5bAPyP/5mJNnTB3M5OmBpQQuyACkuQ==
-X-Received: by 10.98.10.149 with SMTP id 21mr2746295pfk.75.1455721343373;
-        Wed, 17 Feb 2016 07:02:23 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([103.14.62.168])
-        by smtp.gmail.com with ESMTPSA id h65sm3430153pfh.43.2016.02.17.07.02.22
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 07:02:22 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH 0/5] staging: iio: tsl2x7x_core: fix multiple checkpatch issues
-Date: Wed, 17 Feb 2016 23:02:12 +0800
-Message-Id: <1455721337-31883-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ZSF7NPJoog4GiT+MOrlJAcvqwlZVPI3XemVUZKqpNmg=;
+        b=EHgNAexdagAt7467ZO96RGE16b9ck1tMe06cWiv1Ru0cTSHy/C/Vhd4s4Y1LKQ1ztN
+         xOvqFCmIM7nJmWXVNfXurJtUCVRzJEZ5ytPLI5Kz+Zjvva0QIWCr1k2ugqFkwLZKziSG
+         DnN7fJqk6JbTOC81aygXzdEMq4yb1085GC0bTHRlfRTOOoJUSn7azqLEw46dxKvjK6c5
+         TEKwoQj8eArL45QOhueTO7FQG+mkuN1aVw4jL6NmAViRjImIVLK6XzJ0UXj3gsvtAMM/
+         xmu8yaJTlaaPlvYEZjdzAOFGFIBu4T5snqXnYKZFrEByPEnJdfAkBvX28k/3dNLTkkEc
+         V2Kg==
+MIME-Version: 1.0
+X-Received: by 10.140.164.141 with SMTP id k135mr32031369qhk.40.1443544111847;
+ Tue, 29 Sep 2015 09:28:31 -0700 (PDT)
+Received: by 10.55.15.42 with HTTP; Tue, 29 Sep 2015 09:28:31 -0700 (PDT)
+In-Reply-To: <20150929161746.GA23714@sudip-pc>
+References: <1443539701-2833-1-git-send-email-ksenija.stanojevic@gmail.com>
+	<20150929161746.GA23714@sudip-pc>
+Date: Tue, 29 Sep 2015 18:28:31 +0200
+Message-ID: <CAL7P5j+9c5ovuju2Bq+qD4Dk55u5myD340RFKvnZwdDCkiKzqA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: Remove typedef
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, y2038@lists.linaro.org
+Content-Type: text/plain; charset=UTF-8
 
-Eliminate majority of checkpatch issues on tsl2x7x_core.c
+On Tue, Sep 29, 2015 at 6:18 PM, Sudip Mukherjee
+<sudipm.mukherjee@gmail.com> wrote:
+> On Tue, Sep 29, 2015 at 05:15:01PM +0200, Ksenija Stanojevic wrote:
+>> WILC_Time is not used and also time_t is not y2038 safe, therefore remove it.
+>> Also remove comment refering to it.
+>>
+>> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+>> ---
+> This has already been done by 62f463a89242 ("staging: wilc1000: remove WILC_TIME typedef").
+> Please base your patches on staging tree.
 
-Eva Rachel Retuya (5):
-  staging: iio: tsl2x7x_core: adjust alignment to match open parenthesis
-  staging: iio: tsl2x7x_core: use preferred comment style
-  staging: iio: tsl2x7x_core: remove space after a cast
-  staging: iio: tsl2x7x_core: add spaces around operators
-  staging: iio: tsl2x7x_core: add blank line after struct declaration
+Thanks for letting me know I've done this patch yesterday and rebased
+my repository then.
+I'll it do it again.
 
- drivers/staging/iio/light/tsl2x7x_core.c | 211 ++++++++++++++++++-------------
- 1 file changed, 122 insertions(+), 89 deletions(-)
+Ksenija
 
--- 
-1.9.1
-
+> regards
+> sudip
 
