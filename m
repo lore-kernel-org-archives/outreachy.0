@@ -1,111 +1,72 @@
-X-GM-THRID: 6256374617143771136
-X-Received: by 10.98.67.142 with SMTP id l14mr6561468pfi.13.1456675729817;
-        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
+X-GM-THRID: 6199956515015622656
+X-Received: by 10.180.106.197 with SMTP id gw5mr4017289wib.7.1443541310135;
+        Tue, 29 Sep 2015 08:41:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.132.15 with SMTP id g15ls1104326iod.50.gmail; Sun, 28 Feb
- 2016 08:08:49 -0800 (PST)
-X-Received: by 10.66.124.200 with SMTP id mk8mr9284513pab.27.1456675729403;
-        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x229.google.com (mail-io0-x229.google.com. [2607:f8b0:4001:c06::229])
-        by gmr-mx.google.com with ESMTPS id p10si867347igg.1.2016.02.28.08.08.49
+Received: by 10.152.5.195 with SMTP id u3ls296566lau.37.gmail; Tue, 29 Sep
+ 2015 08:41:49 -0700 (PDT)
+X-Received: by 10.152.120.232 with SMTP id lf8mr1308723lab.1.1443541309565;
+        Tue, 29 Sep 2015 08:41:49 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id bn1si744218wib.0.2015.09.29.08.41.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::229 as permitted sender) client-ip=2607:f8b0:4001:c06::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 29 Sep 2015 08:41:49 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x229.google.com with SMTP id 9so160771277iom.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 08:08:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=7T56vLJgoELIEqheIUkfq3oOcMRCYbxdgpSK0WAhydY=;
-        b=fCuFH5FxDym0uE0qd/LeCZeunmAXIfVbAdz9SqN8a71BSLdsejgBzv1mEncFXoDA1Q
-         Rz9iH5FBnL3tf4mb6Nhr6o56dTaO0oXQeD3YO/38McMaMQtuTW4rAkrr8rzOIUwZ8kNP
-         dnpg0CU4E94WKcLxAaFD5mfOzQ7DdNUEPB7KGJsmwr60lr9wSZfz66R0IGQ55zhiI19T
-         3I1acSXeJLMGLCzMxcgLUN11fZ1qUUmjLvYr3CTzji/bi7UvcP+vCHA6dMoikG6jJ783
-         ORi9PrGkdKw+aooCIyVSxfMNDkMtz/Z36vgDjOUv7MeEVG6owF8GjvzdVnfa6e9vYVCm
-         X5pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=7T56vLJgoELIEqheIUkfq3oOcMRCYbxdgpSK0WAhydY=;
-        b=j3KEP8MfUfTAR2BbzOHYuQ5bM1fnZXddH/59nGHgZfuqrD7szA2j3MYM86vr/nWLgo
-         njIK7kzHLD1J5uSu10gqZFmNxYKOfzEbfRI0ArMuGwMgv/O3zwA7dupo9Dx+EVJNatHT
-         ROcQUjw8AJEnocZkN2T2PuMPTRFR7lrr8JubzeipUSzuArPzbseF2cYdeQ75m+/7/jfX
-         qKeCYeSp8AiuktERbHAiR7dYWQ5LuBOKJ9woBkzbOn2sICDOjw814nylWPnzqugCKQ8M
-         i/81Oz4LXhNBD1HZJf427y7TlWikCMQcKxJDXq+g7iQHDYqbjnZme96nacihRIX2zR0Z
-         6v6g==
-X-Gm-Message-State: AG10YOTZ/2ivjuSRJrTuh05NZOeyfl5MtwObV4eawfdxbZ9mpaBKf37ThtajT1d61aGvjw==
-X-Received: by 10.107.152.142 with SMTP id a136mr16525482ioe.84.1456675729243;
-        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id 90sm9241997iod.12.2016.02.28.08.08.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 08:08:48 -0800 (PST)
-Date: Sun, 28 Feb 2016 16:07:59 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lustre: osc: Use list_for_each_entry_safe()
-Message-ID: <20160228210759.GA7689@janani-Inspiron-3521>
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0MURRH-1a76tC0pdb-00RGWj; Tue, 29 Sep
+ 2015 17:41:49 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH] Staging: fbtbt: Replace timespec with timespec64
+Date: Tue, 29 Sep 2015 17:41:48 +0200
+Message-ID: <12448143.zpgRbU0bdf@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1443539855-3255-1-git-send-email-ksenija.stanojevic@gmail.com>
+References: <1443539855-3255-1-git-send-email-ksenija.stanojevic@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:dLXqmqnix8xCAev83ZsWHsFixOME/zzGTU8Z4wO06egQDK6UFId
+ 3DIe4SWOEmxltnotvjsxKqga4tcoYuDkaZgRoyCzwOQU7Eb0uY2DG9BKt7T/ZDgAWE82Waz
+ RKhsJRWe6AWuyQ69tESA/tbcax8XcFXo7pni0WFczYaavAnXzGOAqAd1RfSBVxfzfXZkMfE
+ itWtYWyd7d0fYBZBtuW0Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:2Y1ckG2wG+M=:a+CAtYL10wEYOf9Ma5UN/m
+ kThc0JpfRL59vTIUXf4dBZikO/LByIwLqZ2dcliYw++xJdhrQb5VVc06tHnXf3+qdxodilv6t
+ tzQ5JCIMIPxBbxQrL/ORMbESuh7GuYS5+gv/ldKNEeAwUyO7ZoZATZczxwsIGsmEc+CRGwmNd
+ djeiY2Hk+0GyIM1jGSuQfvU53gaYYjxDSWGvcykuDirvlxcjTp6jEC2wGuyFuke1FdrP4LDKI
+ To0G0pbFu6qIkGHjmjr87wcUoxEXnOhFECItzTllMgP9JWgzc+CWg8B8eljkvesgqvXy3zl04
+ bDvciG+ciSSb6sm+v7k3eVdwnC7GcNecM65wWMVoWYFF6Bd+ZQ5kG/WLh6Any6X/D6SkKD2cL
+ QYCTdpRj4mpc44O1vv6waB8v92/78WbleQHwn5L778n34hhb8uuDk4wSCGyNs8o/4rK9UYM8T
+ DwWrYyJMuT8REOz7EGpJwwQW4g1eHr3ifUbjPrj1O4T7SIA7JaGg1+DghVP1iMtTD+e4KdwlW
+ cWuCnDuHwUbPzsjWkHeao9Jyzi35WGgtNdy5LVtEMzxbMhyEl0Hn7uDuN1rsJq53/04qm5iDs
+ ZNE6P/1yjqNTNrtCzMGX6ZahoV8zBJIuPjBdIbNAqEBakMYMsZrnlcCt18629z2SZY4AAbeKm
+ H76DZJzmIYZ4wAs3lNeBOE1X9v9Ku3AUkeNzUKRXgtvJkrRp0lBTygU1/Mb4g9Xb9Zuzj6NTd
+ DnNdfwgtyPU+jSV/
 
-Use list_for_each_entry_safe() rather than a combination of list_for_each()
-and list_entry(). Also remove the variable l which becomes useless after
-the transformation. 
+On Tuesday 29 September 2015 17:17:35 Ksenija Stanojevic wrote:
+> struct timespec will overflow in year 2038, so replace it with
+> timespec64. And replace functions that use struct timespec,
+> timespec_sub with timespec64_sub and getnstimeofday with
+> getnstimeofday64. Also use parameters to convert the timespec64 values
+> instead of hard code.
+> 
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 
-Semantic patch used:
+The patch looks correct, and the changelog comment seems ok too.
 
-@a@
-expression pos, n, head;
-expression mem;
-type t;
-identifier var;
-iterator name list_for_each_entry_safe, list_for_each_safe;
-@@
+However, I think it makes sense to do two other changes at the
+same time here:
 
-- list_for_each_safe(pos, n, head)
-+ list_for_each_entry_safe(var, n, head, mem)
-  {
-   ... when != var
--  var = \(list_entry \| container_of\)(pos, t, mem);
-   ... when != pos
-  }
+- use ktime_t with ktime_us_delta()/ktime_to_ns to simplify the
+  code
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/lustre/lustre/osc/osc_cache.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+- use monotonic time (ktime_get) instead of wall time
+  (getnstimeofday64/ktime_get_real) to be more robust against
+  leap seconds and settimeofday() calls
 
-diff --git a/drivers/staging/lustre/lustre/osc/osc_cache.c b/drivers/staging/lustre/lustre/osc/osc_cache.c
-index c6623c1..6c3fc6f 100644
---- a/drivers/staging/lustre/lustre/osc/osc_cache.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_cache.c
-@@ -1624,11 +1624,10 @@ out:
- /* caller must hold loi_list_lock */
- void osc_wake_cache_waiters(struct client_obd *cli)
- {
--	struct list_head *l, *tmp;
-+	struct list_head *tmp;
- 	struct osc_cache_waiter *ocw;
- 
--	list_for_each_safe(l, tmp, &cli->cl_cache_waiters) {
--		ocw = list_entry(l, struct osc_cache_waiter, ocw_entry);
-+	list_for_each_entry_safe(ocw, tmp, &cli->cl_cache_waiters, ocw_entry) {
- 		list_del_init(&ocw->ocw_entry);
- 
- 		ocw->ocw_rc = -EDQUOT;
--- 
-2.5.0
-
+	Arnd
 
