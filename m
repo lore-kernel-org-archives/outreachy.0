@@ -1,62 +1,72 @@
 X-GM-THRID: 6200017795364683776
-X-Received: by 10.31.3.93 with SMTP id 90mr24809241vkd.0.1443555488143;
-        Tue, 29 Sep 2015 12:38:08 -0700 (PDT)
+X-Received: by 10.152.22.101 with SMTP id c5mr4575659laf.0.1443554133948;
+        Tue, 29 Sep 2015 12:15:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.89.228 with SMTP id v91ls3482310qgd.33.gmail; Tue, 29 Sep
- 2015 12:38:07 -0700 (PDT)
-X-Received: by 10.140.235.131 with SMTP id g125mr24802474qhc.4.1443555487606;
-        Tue, 29 Sep 2015 12:38:07 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id k190si2660799ywe.3.2015.09.29.12.38.07
+Received: by 10.180.108.133 with SMTP id hk5ls833923wib.7.canary; Tue, 29 Sep
+ 2015 12:15:32 -0700 (PDT)
+X-Received: by 10.194.118.65 with SMTP id kk1mr4583895wjb.5.1443554132837;
+        Tue, 29 Sep 2015 12:15:32 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id k7si879685wif.1.2015.09.29.12.15.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 12:38:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Tue, 29 Sep 2015 12:15:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [83.145.64.161])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1AD321154;
-	Tue, 29 Sep 2015 19:38:05 +0000 (UTC)
-Date: Tue, 29 Sep 2015 21:38:03 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: fbtbt:  show() methods
- should use scnprintf()
-Message-ID: <20150929193803.GA23361@kroah.com>
-References: <1443554123-15360-1-git-send-email-ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1443554123-15360-1-git-send-email-ksenija.stanojevic@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22f.google.com with SMTP id ge5so164356355wic.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 12:15:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=ClY6gEqjK66QpkwSoWnLCby8+zqEC1rlQQpLeu9geWU=;
+        b=SAjDC2QEvNzEy4F3IkkJ0X5z3QVCKvnHY3tb8k0koB+e89nIXz8h9miAUmnGYTu1jb
+         3/zr9kfq/2pxs0quYVldq4LJX3jHw5/wcYufcMG8wZ6yrTqjK24Byke5VMPajk1qhg/F
+         8PK6VxcMSBDTKVmRZwFpG2608Z/5U7Zm/To3C1nA77TzfN/K3U4aY+s38UFboGQQuIiA
+         d7+RdP9H6kcM56yRtiAXzrRvuM41PzvgyMpo2SPiYmA4muGeymIHYdTJGL+1nii3SvoY
+         Z6AR58gRlJ1YHsApJY9QRKgnM+D0f2aUoAB+j+Huzu90g6aIIl5/RNjSBUVj87k+UXsS
+         KBzw==
+X-Received: by 10.180.101.198 with SMTP id fi6mr338332wib.25.1443554132723;
+        Tue, 29 Sep 2015 12:15:32 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id nf15sm25350284wic.22.2015.09.29.12.15.31
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 29 Sep 2015 12:15:32 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: fbtbt:  show() methods should use scnprintf()
+Date: Tue, 29 Sep 2015 21:15:23 +0200
+Message-Id: <1443554123-15360-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Tue, Sep 29, 2015 at 09:15:23PM +0200, Ksenija Stanojevic wrote:
-> snprintf() may return a value that exceeds its second argument,
-> show() methods should use scnprintf() instead of snprintf().
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-> ---
->  drivers/staging/fbtft/fbtft-sysfs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/fbtft/fbtft-sysfs.c b/drivers/staging/fbtft/fbtft-sysfs.c
-> index 8d8bd12..36a1f4e 100644
-> --- a/drivers/staging/fbtft/fbtft-sysfs.c
-> +++ b/drivers/staging/fbtft/fbtft-sysfs.c
-> @@ -198,7 +198,7 @@ static ssize_t show_debug(struct device *device,
->  	struct fb_info *fb_info = dev_get_drvdata(device);
->  	struct fbtft_par *par = fb_info->par;
->  
-> -	return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
-> +	return scnprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
+snprintf() may return a value that exceeds its second argument,
+show() methods should use scnprintf() instead of snprintf().
 
-They should?  Why?  This shouldn't be needed at all, and really, a
-simple sprintf() is all that is necessary.  I would just leave this
-alone, it's fine as-is.
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/fbtft/fbtft-sysfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/fbtft/fbtft-sysfs.c b/drivers/staging/fbtft/fbtft-sysfs.c
+index 8d8bd12..36a1f4e 100644
+--- a/drivers/staging/fbtft/fbtft-sysfs.c
++++ b/drivers/staging/fbtft/fbtft-sysfs.c
+@@ -198,7 +198,7 @@ static ssize_t show_debug(struct device *device,
+ 	struct fb_info *fb_info = dev_get_drvdata(device);
+ 	struct fbtft_par *par = fb_info->par;
+ 
+-	return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
++	return scnprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
+ }
+ 
+ static struct device_attribute debug_device_attr = \
+-- 
+1.9.1
 
-greg k-h
 
