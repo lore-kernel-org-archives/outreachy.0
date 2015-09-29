@@ -1,127 +1,105 @@
-X-GM-THRID: 6392026082663464960
-X-Received: by 10.36.20.18 with SMTP id 18mr5365149itg.2.1488259547824;
-        Mon, 27 Feb 2017 21:25:47 -0800 (PST)
+X-GM-THRID: 6199808911972761600
+X-Received: by 10.112.125.104 with SMTP id mp8mr3949623lbb.20.1443505499535;
+        Mon, 28 Sep 2015 22:44:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.237.77 with SMTP id r74ls156178ith.11.gmail; Mon, 27 Feb
- 2017 21:25:47 -0800 (PST)
-X-Received: by 10.99.96.71 with SMTP id u68mr176042pgb.32.1488259547127;
-        Mon, 27 Feb 2017 21:25:47 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id c123si122584pfa.4.2017.02.27.21.25.47
+Received: by 10.180.103.170 with SMTP id fx10ls676883wib.51.canary; Mon, 28
+ Sep 2015 22:44:58 -0700 (PDT)
+X-Received: by 10.180.208.7 with SMTP id ma7mr1488965wic.5.1443505498951;
+        Mon, 28 Sep 2015 22:44:58 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id fj10si671923wib.1.2015.09.28.22.44.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 21:25:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 28 Sep 2015 22:44:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id p185so281159pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 21:25:47 -0800 (PST)
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x236.google.com with SMTP id ge5so133630396wic.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 28 Sep 2015 22:44:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=NHQNGQ4un3p3+/EKJpKrMd3Ms/dV5oCxUkhVYf6i+Ks=;
-        b=uvP5nLd3gfy2gfZraubsmWI36IZYFWCxuf4Y5GG9z6REiN8TZUnCA39H1wh1JYV21R
-         i/ooswMsTBMjX1rrQI3eAVgN/d0dhrT4TXHFdPGqeekeZTrOLEa+/xRaW4jZz0qRF4EZ
-         NsoAQ7hQVzpSG/HGbOCJVWgeVHtxYvXcRxynK7hfWmE64CkAiUGI2EX+FdXnGg57tAFW
-         I+UesG+WSKu9Pi6JiyQIk/SKcTP7GTTtEN4Z9ZyhvIhKky7/W0rHSrDdPlVn8OVXn6x+
-         Xmuk0rl4iW9LylbQSbmLnwoR0F/MBr0CCL2KQ6+zS+wulkI27zYmh3mG+1V2D3vgdow1
-         2/CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=NHQNGQ4un3p3+/EKJpKrMd3Ms/dV5oCxUkhVYf6i+Ks=;
-        b=B7nPfs0j8aIGvTkruxScQLwuS2ALG4rI30iHd8ExEcJHWghHmYfvgXnF64e7XFXki3
-         Tk9IIT5Nz8wbmf2rcNW90l6izGZB4vsBHDSaG9/Vcw+yNUi3ABNh7NpIigGgB41ov2uJ
-         W6zqKpyFJvbdpzXGB3WVMExotqNGplbxykUrB+ummvhF4+TaSNBHzlnU3nJs7biWt8rC
-         iIEVUkQh8r2YtEYLJVJGJ7UfTzo8kQ0OICpj7Vs9WzEULd+JFgRIhMzTooClBXl90anf
-         mh1wxTQNr4rRhCDiqk5ekbEZcWvGCSHQWt+vKLhYMRCJARJG2fI7MI/HYC0tlCWkcw3C
-         AhdQ==
-X-Gm-Message-State: AMke39lj3EMyjryjXSwQtYXf0lwmOMuFrzuT0NjLIOG4HhPjroIuP5KlWnAwbcip04dPVQ==
-X-Received: by 10.99.56.94 with SMTP id h30mr595913pgn.23.1488259546917;
-        Mon, 27 Feb 2017 21:25:46 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id d189sm1072495pga.17.2017.02.27.21.25.43
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 27 Feb 2017 21:25:45 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	oleg.drokin@intel.com,
-	andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: lustre: Replace typedef with struct
-Date: Tue, 28 Feb 2017 10:53:25 +0530
-Message-Id: <1488259405-19730-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        bh=N/e2SEzpfO23ttMxjSnqRieSBvAUTIc8dJmzheY8dws=;
+        b=Un+P7Z7qhSyHqNKpZR+eoHDBxbQlly7oWmQwDosvRVVOETgg6Y7Ig9+8BRJn1yxzIg
+         4m1Z0CCNpWfyV+LFH6yeL5p0neBgerTvzM4A3pRbVpHaZPGHjXQiMu7rMLQazh6BrGPk
+         LzbwtgWPozJ/ASNluJwlpNoxWoKkEp/04ZdxFAhM1s7C7GYG//FW5rtv+u1ulQdXndZS
+         8rJVnqXTXEPfp/LTJRapjUZaV5RSYgGEpcaov11F3h6nMNYSWTo2abKGfXsCMm2vbdbg
+         N89QosKrxemdKMCo2DXWU35Sm7vskHWCAbfn/kValnVk9r+AIXKkhyxvwa7ECRTNuYjy
+         9Zbg==
+X-Received: by 10.180.86.100 with SMTP id o4mr21971183wiz.59.1443505498840;
+        Mon, 28 Sep 2015 22:44:58 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id ju6sm7365314wid.9.2015.09.28.22.44.55
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 28 Sep 2015 22:44:57 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Cc: Shraddha Barke <shraddha.6596@gmail.com>
+Subject: [PATCH] Staging: most: Use module_i2c_driver
+Date: Tue, 29 Sep 2015 11:14:42 +0530
+Message-Id: <1443505482-11667-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150202.560A2558.0415,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-As per the Linux kernel coding style guidelines, using typedef for a
-structure type is not recommended. Hence, occurences of typedefs have
-been removed.
+Macro module_i2c_driver is used for drivers whose init
+and exit paths does only register and unregister to i2c
+API. Remove some boilerplate code by using module_i2c_driver.
 
-Coccinelle script:
+Problem found using Coccinelle.
 
-@r1@
-type T;
-@@
-
-typedef struct { ... } T;
-
-@script:python c1@
-T2;
-T << r1.T;
-@@
-coccinelle.T2=T;
-
-@@
-type r1.T;
-identifier c1.T2;
-@@
--typedef
-struct
-+ T2
-{ ... }
--T
-;
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/lustre/lustre/include/lustre_eacl.h | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/most/hdm-i2c/hdm_i2c.c | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/include/lustre_eacl.h b/drivers/staging/lustre/lustre/include/lustre_eacl.h
-index 1e71a86..c198eda 100644
---- a/drivers/staging/lustre/lustre/include/lustre_eacl.h
-+++ b/drivers/staging/lustre/lustre/include/lustre_eacl.h
-@@ -49,17 +49,17 @@
- #include <linux/fs.h>
- #include <linux/posix_acl_xattr.h>
+diff --git a/drivers/staging/most/hdm-i2c/hdm_i2c.c b/drivers/staging/most/hdm-i2c/hdm_i2c.c
+index 029ded3..5fddb28 100644
+--- a/drivers/staging/most/hdm-i2c/hdm_i2c.c
++++ b/drivers/staging/most/hdm-i2c/hdm_i2c.c
+@@ -423,27 +423,7 @@ static struct i2c_driver i2c_driver = {
+ 	.id_table = i2c_id,
+ };
  
--typedef struct {
-+struct ext_acl_xattr_entry {
- 	__u16		   e_tag;
- 	__u16		   e_perm;
- 	__u32		   e_id;
- 	__u32		   e_stat;
--} ext_acl_xattr_entry;
-+};
+-/**
+- * hdm_i2c_init - Driver Registration Routine
+- */
+-static int __init hdm_i2c_init(void)
+-{
+-	pr_info("hdm_i2c_init()\n");
+-
+-	return i2c_add_driver(&i2c_driver);
+-}
+-
+-/**
+- * hdm_i2c_exit - Driver Cleanup Routine
+- **/
+-static void __exit hdm_i2c_exit(void)
+-{
+-	i2c_del_driver(&i2c_driver);
+-	pr_info("hdm_i2c_exit()\n");
+-}
+-
+-module_init(hdm_i2c_init);
+-module_exit(hdm_i2c_exit);
++module_i2c_driver(i2c_driver);
  
--typedef struct {
--	__u32		   a_count;
--	ext_acl_xattr_entry     a_entries[0];
--} ext_acl_xattr_header;
-+struct ext_acl_xattr_header {
-+	__u32 a_count;
-+	struct ext_acl_xattr_entry a_entries[0];
-+};
- 
- #define CFS_ACL_XATTR_SIZE(count, prefix) \
- 	(sizeof(prefix ## _header) + (count) * sizeof(prefix ## _entry))
+ MODULE_AUTHOR("Jain Roy Ambi <JainRoy.Ambi@microchip.com>");
+ MODULE_AUTHOR("Andrey Shvetsov <andrey.shvetsov@k2l.de>");
 -- 
-2.7.4
+2.1.4
 
 
