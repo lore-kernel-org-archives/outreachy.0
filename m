@@ -1,98 +1,117 @@
 X-GM-THRID: 6199796620596346880
-X-Received: by 10.107.131.194 with SMTP id n63mr21594031ioi.8.1443505740687;
-        Mon, 28 Sep 2015 22:49:00 -0700 (PDT)
+X-Received: by 10.180.106.197 with SMTP id gw5mr3493556wib.7.1443505213283;
+        Mon, 28 Sep 2015 22:40:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.244 with SMTP id 107ls4312677qgp.24.gmail; Mon, 28 Sep
- 2015 22:48:59 -0700 (PDT)
-X-Received: by 10.129.159.71 with SMTP id w68mr3144920ywg.28.1443505739295;
-        Mon, 28 Sep 2015 22:48:59 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id uv4si3346057pac.0.2015.09.28.22.48.59
+Received: by 10.25.31.207 with SMTP id f198ls378060lff.31.gmail; Mon, 28 Sep
+ 2015 22:40:12 -0700 (PDT)
+X-Received: by 10.112.169.34 with SMTP id ab2mr3893879lbc.23.1443505212405;
+        Mon, 28 Sep 2015 22:40:12 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id hs5si635542wib.1.2015.09.28.22.40.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Sep 2015 22:48:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Mon, 28 Sep 2015 22:40:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id ex6so196105012pac.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 28 Sep 2015 22:48:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:in-reply-to:message-id:references
-         :user-agent:mime-version:content-type;
-        bh=5ucm7F+oHd3jYlsNbNDwwmDHwYGyFH7MghzsvMZ0j5Y=;
-        b=clXOqgWchVUe7B8vhW5rAVwZtMKTvCJqNCTWgfrKX8jcnn9EcgOuTv8iBJaebHAXE2
-         BG75lXcn/Y2A4OPl82orlTct7qoLi76/MrujFkUmXoNoZX5RKDVt1vwMjnweRK+0Ey12
-         cF1MpHcgF62vbzck1DSq8mflBKluaCWDqlSlRT3pscsBAkupd0OILhdtgMqMOkY5lzKF
-         cmZkt4dORNLWK39ih8URTPkCDMuvq+8r909mYVKu1nCGZK8MKwuLjaGNIPAxF/s+g7xz
-         z42oQbxOf0UcNrEO/vo2VwHdQc15BmPvqfzl9yT1pKfvGbolLulk5YuBSA9NT8riwCwH
-         R3cQ==
-X-Received: by 10.68.68.233 with SMTP id z9mr31126059pbt.132.1443505739134;
-        Mon, 28 Sep 2015 22:48:59 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from [10.30.0.216] ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id rb8sm22900868pbb.63.2015.09.28.22.48.56
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 28 Sep 2015 22:48:58 -0700 (PDT)
-Date: Tue, 29 Sep 2015 11:18:49 +0530 (IST)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-X-X-Sender: root@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-cc: Shraddha Barke <shraddha.6596@gmail.com>, 
-    outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,606,1437429600"; 
+   d="scan'208";a="148894406"
+Received: from ip4d16f0bc.dynamic.kabel-deutschland.de (HELO lanhost53) ([77.22.240.188])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Sep 2015 07:40:11 +0200
+Date: Tue, 29 Sep 2015 07:40:10 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shraddha Barke <shraddha.6596@gmail.com>
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: gdm724x: gdm_usb.c: Use
  module_usb_driver
-In-Reply-To: <20150929051951.GA5935@sudip-pc>
-Message-ID: <alpine.DEB.2.11.1509291100250.10963@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
-References: <1443502609-9918-1-git-send-email-shraddha.6596@gmail.com> <20150929051951.GA5935@sudip-pc>
-User-Agent: Alpine 2.11 (DEB 23 2013-08-11)
+In-Reply-To: <1443502609-9918-1-git-send-email-shraddha.6596@gmail.com>
+Message-ID: <alpine.DEB.2.10.1509290738570.2764@hadrien>
+References: <1443502609-9918-1-git-send-email-shraddha.6596@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150201.560A2649.03F8,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
 
 
-On Tue, 29 Sep 2015, Sudip Mukherjee wrote:
+On Tue, 29 Sep 2015, Shraddha Barke wrote:
 
-> On Tue, Sep 29, 2015 at 10:26:48AM +0530, Shraddha Barke wrote:
->> Macro module_usb_driver is used for drivers whose init
->> and exit paths does only register and unregister.Remove
->> boilerplate code by using module_usb_driver.
->>
->> Problem found using Coccinelle.
->>
->> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
->> ---
-> But then how are you going to create the workqueues and
-> gdm_lte_event_init()?
-> module_usb_driver() is used in places where the init function is only
-> having usb_register() and exit function is only having usb_deregister().
-> If they are doing something special then you can not use
-> module_usb_driver.
-
-Yes. I realised the mistake I made. Since the patch applied to the tree 
-correctly I made the mistake of thinking the workqueues don't have 
-significance. I have sent a patch which uses module_i2c_driver. Please 
-provide feedback on that.
-
-Thanks,
-
-Shraddha
+> Macro module_usb_driver is used for drivers whose init
+> and exit paths does only register and unregister.Remove
+> boilerplate code by using module_usb_driver.
 >
-> regards
-> sudip
+> Problem found using Coccinelle.
+
+If you find a problem with Coccinelle, please put at least a simplified
+version of the semantic patch you used.  As Sudip noted, this patch series
+is not at allcorrect, and knowing what semantic patch you used could help
+suggest where things went wrong.
+
+julia
+
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> ---
+>  drivers/staging/gdm724x/gdm_usb.c | 38 +-------------------------------------
+>  1 file changed, 1 insertion(+), 37 deletions(-)
+>
+> diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
+> index ed1a12f..3977663 100644
+> --- a/drivers/staging/gdm724x/gdm_usb.c
+> +++ b/drivers/staging/gdm724x/gdm_usb.c
+> @@ -998,43 +998,7 @@ static struct usb_driver gdm_usb_lte_driver = {
+>  	.reset_resume = gdm_usb_resume,
+>  };
+>
+> -static int __init gdm_usb_lte_init(void)
+> -{
+> -	if (gdm_lte_event_init() < 0) {
+> -		pr_err("error creating event\n");
+> -		return -1;
+> -	}
+> -
+> -	usb_tx_wq = create_workqueue("usb_tx_wq");
+> -	if (usb_tx_wq == NULL)
+> -		return -1;
+> -
+> -	usb_rx_wq = create_workqueue("usb_rx_wq");
+> -	if (usb_rx_wq == NULL)
+> -		return -1;
+> -
+> -	return usb_register(&gdm_usb_lte_driver);
+> -}
+> -
+> -static void __exit gdm_usb_lte_exit(void)
+> -{
+> -	gdm_lte_event_exit();
+> -
+> -	usb_deregister(&gdm_usb_lte_driver);
+> -
+> -	if (usb_tx_wq) {
+> -		flush_workqueue(usb_tx_wq);
+> -		destroy_workqueue(usb_tx_wq);
+> -	}
+> -
+> -	if (usb_rx_wq) {
+> -		flush_workqueue(usb_rx_wq);
+> -		destroy_workqueue(usb_rx_wq);
+> -	}
+> -}
+> -
+> -module_init(gdm_usb_lte_init);
+> -module_exit(gdm_usb_lte_exit);
+> +module_usb_driver(gdm_usb_lte_driver);
+>
+>  MODULE_VERSION(DRIVER_VERSION);
+>  MODULE_DESCRIPTION("GCT LTE USB Device Driver");
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443502609-9918-1-git-send-email-shraddha.6596%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 >
 
