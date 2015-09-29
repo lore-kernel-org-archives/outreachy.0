@@ -1,126 +1,99 @@
-X-GM-THRID: 6201390323940196352
-X-Received: by 10.107.136.229 with SMTP id s98mr18466467ioi.34.1443873700542;
-        Sat, 03 Oct 2015 05:01:40 -0700 (PDT)
+X-GM-THRID: 6200043059490586624
+X-Received: by 10.194.118.65 with SMTP id kk1mr17210wjb.5.1443561809232;
+        Tue, 29 Sep 2015 14:23:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.26.134 with SMTP id a128ls1263194ioa.108.gmail; Sat, 03
- Oct 2015 05:01:40 -0700 (PDT)
-X-Received: by 10.107.150.66 with SMTP id y63mr17889551iod.11.1443873700135;
-        Sat, 03 Oct 2015 05:01:40 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id el2si2364199pbb.0.2015.10.03.05.01.40
+Received: by 10.25.168.68 with SMTP id r65ls3938lfe.90.gmail; Tue, 29 Sep 2015
+ 14:23:28 -0700 (PDT)
+X-Received: by 10.152.3.131 with SMTP id c3mr23264lac.4.1443561808768;
+        Tue, 29 Sep 2015 14:23:28 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ch7si731447wib.2.2015.09.29.14.23.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Oct 2015 05:01:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Tue, 29 Sep 2015 14:23:28 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by padhy16 with SMTP id hy16so130821904pad.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Oct 2015 05:01:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=tF3Oj4ShUg0QcJnp6JkehVtFamKm9bvGpK86rACVVJs=;
-        b=iqL/X3UmzhCdJEfnqi7LT4VmUuYtx9mRigu+lT7Ku7lYYb4SH5wsOMNwMgplxLGbhV
-         7bibemeqnkyvMJMbUobUavnT5XiXcrx1enoLSpzDyhTAnerVfX+gfHWf0SuRA7rhdlCn
-         GuJC9EaX1LVPlM3Zf/dz35gEAXpeTEVpRCLpaRtJecUs0Edx4GiawEsznbyt/M2bLyio
-         DuHNK5c5TrsU2ttEbaDejCnCGkzJ6JkCgDKhL0vdYGRcKkkvp7MV6oycDWkDJyWKpA4c
-         HwZFLFmcge4FzFqcueQHRlPjxY2EKUqKwHWxYtZO3BNTKR5ImQSkgZwAt5uciZIT7coR
-         tgYQ==
-X-Received: by 10.66.227.230 with SMTP id sd6mr20694267pac.60.1443873699970;
-        Sat, 03 Oct 2015 05:01:39 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id iy1sm17114134pbb.85.2015.10.03.05.01.36
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Oct 2015 05:01:39 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: most: Use module_platform_driver
-Date: Sat,  3 Oct 2015 17:31:30 +0530
-Message-Id: <1443873690-30847-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150202.560FC3A2.018A,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,609,1437429600"; 
+   d="scan'208";a="180047255"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Sep 2015 23:23:07 +0200
+Date: Tue, 29 Sep 2015 23:23:07 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Drivers: clk: clk-mux: fixed line
+ exceeding char limit and irrelevant messages
+In-Reply-To: <20150929205325.GA10085@ubuntu>
+Message-ID: <alpine.DEB.2.02.1509292321540.2031@localhost6.localdomain6>
+References: <20150929205325.GA10085@ubuntu>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Use module_platform_driver for drivers whose init and exit functions
-only register and unregister, respectively. Thus remove some
-boilerplate code.
+On Wed, 30 Sep 2015, Shivani Bhardwaj wrote:
 
-A simplified version of Coccinelle patch -
+> Fixed warnings about line exceeding 80 characters and unnecessary error print
+> statements.
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+>  drivers/clk/clk-mux.c | 15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/clk/clk-mux.c b/drivers/clk/clk-mux.c
 
-@a@
-identifier f, x;
-@@
--static f(...) { return platform_driver_register(&x); }
-@b depends on a@
-identifier e, a.x;
-@@
--static e(...) { platform_driver_unregister(&x); }
-@c depends on a && b@
-identifier a.f;
-declarer name module_init;
-@@
--module_init(f);
+Again, this is not the code that you should be working on.
 
-@d depends on a && b && c@
-identifier b.e, a.x;
-declarer name module_exit;
-declarer name module_platform_driver;
-@@
--module_exit(e);
-+module_platform_driver(x);
+> index 7129c86..2ef8eda 100644
+> --- a/drivers/clk/clk-mux.c
+> +++ b/drivers/clk/clk-mux.c
+> @@ -35,12 +35,13 @@ static u8 clk_mux_get_parent(struct clk_hw *hw)
+>  	u32 val;
+>  
+>  	/*
+> -	 * FIXME need a mux-specific flag to determine if val is bitwise or numeric
+> -	 * e.g. sys_clkin_ck's clksel field is 3 bits wide, but ranges from 0x1
+> -	 * to 0x7 (index starts at one)
+> -	 * OTOH, pmd_trace_clk_mux_ck uses a separate bit for each clock, so
+> -	 * val = 0x4 really means "bit 2, index starts at bit 0"
+> -	 */
+> +	* FIXME need a mux-specific flag to determine if val is
+> +	* bitwise or numeric
+> +	* e.g. sys_clkin_ck's clksel field is 3 bits wide, but ranges from 0x1
+> +	* to 0x7 (index starts at one)
+> +	* OTOH, pmd_trace_clk_mux_ck uses a separate bit for each clock, so
+> +	* val = 0x4 really means "bit 2, index starts at bit 0"
+> +	*/
+>  	val = clk_readl(mux->reg) >> mux->shift;
+>  	val &= mux->mask;
+>  
+> @@ -138,7 +139,7 @@ struct clk *clk_register_mux_table(struct device *dev, const char *name,
+>  	/* allocate the mux */
+>  	mux = kzalloc(sizeof(struct clk_mux), GFP_KERNEL);
+>  	if (!mux) {
+> -		pr_err("%s: could not allocate mux clk\n", __func__);
+> +		/*pr_err("%s: could not allocate mux clk\n", __func__);*/
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/most/hdm-dim2/dim2_hdm.c | 21 +--------------------
- 1 file changed, 1 insertion(+), 20 deletions(-)
+If the print is not needed, you should just drop it.  The comment makes 
+clutter, and thus makes the code harder to read.  In general, code that is 
+not needed should not be put under comments.  It should just be removed.
 
-diff --git a/drivers/staging/most/hdm-dim2/dim2_hdm.c b/drivers/staging/most/hdm-dim2/dim2_hdm.c
-index 1bb70b7..c7e956f 100644
---- a/drivers/staging/most/hdm-dim2/dim2_hdm.c
-+++ b/drivers/staging/most/hdm-dim2/dim2_hdm.c
-@@ -926,26 +926,7 @@ static struct platform_driver dim2_driver = {
- 	},
- };
- 
--/**
-- * dim2_hdm_init - Driver Registration Routine
-- */
--static int __init dim2_hdm_init(void)
--{
--	pr_info("dim2_hdm_init()\n");
--	return platform_driver_register(&dim2_driver);
--}
--
--/**
-- * dim2_hdm_exit - Driver Cleanup Routine
-- **/
--static void __exit dim2_hdm_exit(void)
--{
--	pr_info("dim2_hdm_exit()\n");
--	platform_driver_unregister(&dim2_driver);
--}
--
--module_init(dim2_hdm_init);
--module_exit(dim2_hdm_exit);
-+module_platform_driver(dim2_driver);
- 
- MODULE_AUTHOR("Jain Roy Ambi <JainRoy.Ambi@microchip.com>");
- MODULE_AUTHOR("Andrey Shvetsov <andrey.shvetsov@k2l.de>");
--- 
-2.1.4
+julia
 
+>  		return ERR_PTR(-ENOMEM);
+>  	}
+>  
+> -- 
+> 2.1.0
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20150929205325.GA10085%40ubuntu.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
