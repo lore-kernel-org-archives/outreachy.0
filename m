@@ -1,85 +1,108 @@
 X-GM-THRID: 6199959961900941312
-X-Received: by 10.152.3.131 with SMTP id c3mr4407092lac.4.1443541636214;
-        Tue, 29 Sep 2015 08:47:16 -0700 (PDT)
+X-Received: by 10.180.210.212 with SMTP id mw20mr3989317wic.3.1443540668774;
+        Tue, 29 Sep 2015 08:31:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.1.195 with SMTP id 3ls378795lao.0.gmail; Tue, 29 Sep 2015
- 08:47:15 -0700 (PDT)
-X-Received: by 10.112.149.39 with SMTP id tx7mr4483515lbb.11.1443541635630;
-        Tue, 29 Sep 2015 08:47:15 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id ch7si691697wib.2.2015.09.29.08.47.15
+Received: by 10.180.188.204 with SMTP id gc12ls819230wic.20.gmail; Tue, 29 Sep
+ 2015 08:31:08 -0700 (PDT)
+X-Received: by 10.194.6.170 with SMTP id c10mr1870961wja.7.1443540668419;
+        Tue, 29 Sep 2015 08:31:08 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id bn1si742352wib.0.2015.09.29.08.31.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 08:47:15 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        Tue, 29 Sep 2015 08:31:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0MJCME-1ZeD290h5e-002lKU; Tue, 29 Sep
- 2015 17:47:15 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22b.google.com with SMTP id fx3so21593446wic.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 08:31:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:mime-version:content-type
+         :content-transfer-encoding;
+        bh=GIwVLaaF/2RSKqaqwgGIx+FjENGL56qC02TrWsdLYOg=;
+        b=hH0HTak64lriAii189HRb2FZ4ByUZjjhZamhjtNDvDhFuiX4HtcKJsDs3jKI18h93w
+         pRwlV0B4HOzYF7GrJEzNNN+OqOS2u0j4OVU+pPlyKHEgZeVBJEZF+eKOEbl+Qobrv4io
+         YQm5S14rbSw9CTF6+jZTEef9CNdNWlT0LB937tYWTFc+LUu0hwp31g8MD3zd7h8F6tTa
+         qEgVmkN5BGtKTOgMrDJcqzPEnZd7Rk5aeKcBpR51/gK8PN/jYzXGDQbRy8iJ3H3ZETcK
+         65h8PuJwl3UJ/fII9y0Tz3uTJNox3z4e1yXLH/giH96DAdY1TWN9Yf0HD7rIZ4mSCyQr
+         HW8w==
+X-Received: by 10.194.236.200 with SMTP id uw8mr27952688wjc.126.1443540668038;
+        Tue, 29 Sep 2015 08:31:08 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id c2sm24460636wiy.11.2015.09.29.08.31.07
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 29 Sep 2015 08:31:07 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: Re: [Outreachy kernel] [RFC] x86: include: asm: Fix build warning
-Date: Tue, 29 Sep 2015 17:47:14 +0200
-Message-ID: <65619350.xPqzLkLPqM@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1443540659-6900-1-git-send-email-ksenija.stanojevic@gmail.com>
-References: <1443540659-6900-1-git-send-email-ksenija.stanojevic@gmail.com>
+Subject: [RFC] x86: include: asm: Fix build warning
+Date: Tue, 29 Sep 2015 17:30:59 +0200
+Message-Id: <1443540659-6900-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
-X-Provags-ID: V03:K0:nETklsF1S52sPE6ci9smemMN+fIN9vOdYDRW3MzHke+0A62VRk2
- +BtV4vWEEgEjSqJEoBRnrg9ciP7nrVREYe8DDixHy9fza9nn8iswVeTLFvBerPH7yOqC5HJ
- O1PZ+MQw5HhvNuDsPNMLfFz1IjphozUGwbGWaXBmuYIDy3Db88lto0G7g0wiXtJ4h3PklBx
- U5h1eVph6hZb2ehu+CUqA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:VjwgmFKPlB8=:RbOy7gnTJVouqu44RqxXK4
- 6+Nn2XGqs9j0h8XQB8MFCcgXGEWVfMX2EWYzu74S02dAzAgNSNqjhQS2DS6745xzDcKGRSPwT
- 9G4y5dcAxe7XwwGKbzG7jguXhdF9Fvrxl/5eBOQc5ZWrlon/D8uarFTJ79ng9Jf76OmXF9rGL
- fQ52yQsR7dWtsm2Ob7kNsm5Nklyzoxj9TSc7M3GJA27kGLGPwSj6l/oTinoBoJQatvWEfiiMC
- V0mwXawBZXk4lY3UzeJVsJJNp/osjh668h1iYbt7C9vdO9PZ57d69/0L1BGsVKkswvzWzOSZn
- 3htWuwNwlWRQ75EqEk0HHbe6cdqxi2uezpAnpGiX7XdNsvT3aG7wMFAoqqQOpKMKntodvVcGM
- uUK3Ia3lnfg6mT43n/4UjaPS18V6ucrWFiobgQP0gQ82chNlX9eZ8JKFC9ciw85CMXSN7MJMi
- Hk5Uil1YMJNP7WLmCyOhSKKito1OJNd9nkazvnVxUMTOfeaboCnte7vkgkSsjAtKNhZldgeP6
- 3lUXLeilD2Uia/Gn9ylKRyucIjgC52UobbQQBKONA6f1w96GCvfhoohekr/W5/sQmL14lTv1A
- yJmJ8mi0EwVtvpnGNmOr2RMGIPdXryQE8oF2AanyXrFcoD9TrltXnj4WW9+z1kmlOo3xyY8K0
- QZAgVXKTgy50ApigN5482ITbCYNbQ/YJc5tcoVCLp16fL/EERw6t8Llc8pNg9tltUsZBi7dxL
- Iew+tFnUQcDuqviL
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-On Tuesday 29 September 2015 17:30:59 Ksenija Stanojevic wrote:
-> Fix build warnings:
-> error: implicit declaration of function =E2=80=98olpc_board_at_least=E2=
-=80=99
-> [-Werror=3Dimplicit-function-declaration]
->=20
->  error: implicit declaration of function =E2=80=98olpc_board=E2=80=99=
+Fix build warnings:
+error: implicit declaration of function ‘olpc_board_at_least’
+[-Werror=implicit-function-declaration]
 
-> [-Werror=3Dimplicit-function-declaration]
->=20
-> in files:
-> drivers/power/olpc_battery.c
-> drivers/input/mouse/hgpk.c
-> drivers/staging/olpc_dcon/olpc_dcon.c
-> arch/x86/platform/olpc/olpc.c
-> sound/pci/cs5535audio/cs5535audio_olpc.c
->=20
+ error: implicit declaration of function ‘olpc_board’
+[-Werror=implicit-function-declaration]
 
-The patch looks good to me in principle, except that it is missing
-a 'Signed-off-by' line, and a somewhat inaccurate return code:
+in files:
+drivers/power/olpc_battery.c
+drivers/input/mouse/hgpk.c
+drivers/staging/olpc_dcon/olpc_dcon.c
+arch/x86/platform/olpc/olpc.c
+sound/pci/cs5535audio/cs5535audio_olpc.c
+---
+Hi,
 
-> +static inline int olpc_board_at_least(uint32_t rev)
-> +{
-> +       return -ENODEV;
-> +}
+I know that Greg doesn't accept patches outside staging.
+I got some build warnings when working on driver olpc_dcon/olpc_dcon.c
+and I'm sending this patch here for a review, bc I'm not sure if it's good.
 
-The original function returns either 0 or 1, and so should this version=
-.
-Returning 0 probably makes more sense here.
+Thanks,
+Ksenija
+ arch/x86/include/asm/olpc.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-With those two things changed, you could send the patch to the x86
-architecture maintainers and the people that last touched
-arch/x86/platform/olpc/olpc.c.
+diff --git a/arch/x86/include/asm/olpc.h b/arch/x86/include/asm/olpc.h
+index 72f9adf6..7245efd 100644
+--- a/arch/x86/include/asm/olpc.h
++++ b/arch/x86/include/asm/olpc.h
+@@ -72,6 +72,11 @@ extern int olpc_ec_sci_query(u16 *sci_value);
+ 
+ #else
+ 
++static inline uint32_t olpc_board(uint8_t id)
++{
++	return 0;
++}
++
+ static inline int machine_is_olpc(void)
+ {
+ 	return 0;
+@@ -82,6 +87,11 @@ static inline int olpc_has_dcon(void)
+ 	return 0;
+ }
+ 
++static inline int olpc_board_at_least(uint32_t rev)
++{
++	return -ENODEV;
++}
++
+ static inline void olpc_ec_wakeup_set(u16 value) { }
+ static inline void olpc_ec_wakeup_clear(u16 value) { }
+ 
+-- 
+1.9.1
 
-=09Arnd
 
