@@ -1,92 +1,84 @@
-X-GM-THRID: 9659534540800
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,eb391f5c7768eaf3,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.37.72 with SMTP id x48mr100827337yha.33.1427079259137;
-        Sun, 22 Mar 2015 19:54:19 -0700 (PDT)
+X-GM-THRID: 6200017795364683776
+X-Received: by 10.66.218.130 with SMTP id pg2mr7493499pac.12.1443557562466;
+        Tue, 29 Sep 2015 13:12:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.254.129 with SMTP id ai1ls1143004igd.33.canary; Sun, 22 Mar
- 2015 19:54:18 -0700 (PDT)
-X-Received: by 10.70.131.81 with SMTP id ok17mr99376537pdb.6.1427079258955;
-        Sun, 22 Mar 2015 19:54:18 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x22b.google.com (mail-pd0-x22b.google.com. [2607:f8b0:400e:c02::22b])
-        by gmr-mx.google.com with ESMTPS id pj7si604449pbb.2.2015.03.22.19.54.18
+Received: by 10.140.85.111 with SMTP id m102ls9809qgd.43.gmail; Tue, 29 Sep
+ 2015 13:12:41 -0700 (PDT)
+X-Received: by 10.129.56.7 with SMTP id f7mr24317951ywa.52.1443557561539;
+        Tue, 29 Sep 2015 13:12:41 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id q133si2687045ywb.1.2015.09.29.13.12.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 19:54:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::22b as permitted sender) client-ip=2607:f8b0:400e:c02::22b;
+        Tue, 29 Sep 2015 13:12:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::22b as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22b.google.com with SMTP id cz9so172685396pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 19:54:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=p3UDg8qUUgICz6QpgsTYC7xJtmow8hEyolZETkVRktU=;
-        b=HKLz2c5mLJrA1E3KDj32qw7M0ENkV0S/YO9nZC824cZgMSlbc6ygM95PuUWFQJN0QA
-         DCPKn+tPjLI/5wRwDQyELo6Mke/jjdbY+oDMdidRmXeTDe2YWG6hm3+5izf9xrjdQpXP
-         GBlI2NoWWq/K9YjTcI+mM8Y7yw7vw9cOS47lBsrTss9qoCSgYRYsCviOF2MI11IkPWug
-         +pH9K9NQc/0iD/2ddfUBriEnuw0Lc5HTZ5YLBOs50iwyklHYM/jW7CXpm7MeMxSIljxa
-         LXJezTB/PMqW4zNSbX2aCETi/dORhGq0wJQpC0YbFwI+7hvflqm8B+6ER0DOipu62crY
-         IlbA==
-X-Received: by 10.70.1.227 with SMTP id 3mr128508481pdp.110.1427079258835;
-        Sun, 22 Mar 2015 19:54:18 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.143.110])
-        by mx.google.com with ESMTPSA id id2sm5539833pbb.56.2015.03.22.19.54.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 22 Mar 2015 19:54:18 -0700 (PDT)
-Date: Mon, 23 Mar 2015 08:24:14 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] Staging: sm750fb: Space after commas
-Message-ID: <20150323025414.GA3889@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [83.145.64.161])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 3DBA4A18;
+	Tue, 29 Sep 2015 20:12:40 +0000 (UTC)
+Date: Tue, 29 Sep 2015 22:12:38 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: fbtbt: show() methods should
+ use scnprintf()
+Message-ID: <20150929201238.GA27265@kroah.com>
+References: <1443554123-15360-1-git-send-email-ksenija.stanojevic@gmail.com>
+ <20150929193803.GA23361@kroah.com>
+ <CAL7P5jLdWFvBs9Bmc=YukTNnA=0A77LWB=PcdFxp4yN0neq5kg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL7P5jLdWFvBs9Bmc=YukTNnA=0A77LWB=PcdFxp4yN0neq5kg@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Put spaces after commas and a if statement. Problem found using
-checkpatch.pl
-ERROR: space required after that ';' (ctx:VxV)
+On Tue, Sep 29, 2015 at 09:50:58PM +0200, Ksenija Stanojević wrote:
+> Hi,
+> 
+> On Tue, Sep 29, 2015 at 9:38 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> > On Tue, Sep 29, 2015 at 09:15:23PM +0200, Ksenija Stanojevic wrote:
+> >> snprintf() may return a value that exceeds its second argument,
+> >> show() methods should use scnprintf() instead of snprintf().
+> >>
+> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> >> ---
+> >>  drivers/staging/fbtft/fbtft-sysfs.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/drivers/staging/fbtft/fbtft-sysfs.c b/drivers/staging/fbtft/fbtft-sysfs.c
+> >> index 8d8bd12..36a1f4e 100644
+> >> --- a/drivers/staging/fbtft/fbtft-sysfs.c
+> >> +++ b/drivers/staging/fbtft/fbtft-sysfs.c
+> >> @@ -198,7 +198,7 @@ static ssize_t show_debug(struct device *device,
+> >>       struct fb_info *fb_info = dev_get_drvdata(device);
+> >>       struct fbtft_par *par = fb_info->par;
+> >>
+> >> -     return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
+> >> +     return scnprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
+> >
+> > They should?  Why?  This shouldn't be needed at all, and really, a
+> > simple sprintf() is all that is necessary.  I would just leave this
+> > alone, it's fine as-is.
+> 
+> In kernel documentation :
+> https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt
+> it states:
+> 
+> show() must not use snprintf() when formatting the value to be
+>   returned to user space. If you can guarantee that an overflow
+>   will never happen you can use sprintf() otherwise you must use
+>   scnprintf()
+> 
+> Should I just use sprintf instead?
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+If you are writing new code for sysfs attributes like these, yes, use
+sprintf().  Don't modify existing code that is working just fine with no
+errors at all by trying to convert snprintf() to scnprintf() please.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 717ca18..31268b3 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -228,16 +228,16 @@ unsigned int ddk750_getVMSize(void)
- 	unsigned int data;
- 
- 	/* sm750le only use 64 mb memory*/
--	if(getChipType() == SM750LE)
-+	if (getChipType() == SM750LE)
- 		return MB(64);
- 
- 	/* for 750,always use power mode0*/
- 	reg = PEEK32(MODE0_GATE);
--	reg = FIELD_SET(reg,MODE0_GATE,GPIO,ON);
--	POKE32(MODE0_GATE,reg);
-+	reg = FIELD_SET(reg, MODE0_GATE, GPIO, ON);
-+	POKE32(MODE0_GATE, reg);
- 
- 	/* get frame buffer size from GPIO */
--	reg = FIELD_GET(PEEK32(MISC_CTRL),MISC_CTRL,LOCALMEM_SIZE);
-+	reg = FIELD_GET(PEEK32(MISC_CTRL), MISC_CTRL, LOCALMEM_SIZE);
- 	switch(reg){
-         case MISC_CTRL_LOCALMEM_SIZE_8M:  data = MB(8);  break; /* 8  Mega byte */
-         case MISC_CTRL_LOCALMEM_SIZE_16M: data = MB(16); break; /* 16 Mega byte */
--- 
-1.9.1
+thanks,
 
+greg k-h
 
