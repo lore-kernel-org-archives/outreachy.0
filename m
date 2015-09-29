@@ -1,72 +1,140 @@
 X-GM-THRID: 6199956515015622656
-X-Received: by 10.180.106.197 with SMTP id gw5mr4017289wib.7.1443541310135;
-        Tue, 29 Sep 2015 08:41:50 -0700 (PDT)
+X-Received: by 10.194.109.233 with SMTP id hv9mr4392278wjb.1.1443539866210;
+        Tue, 29 Sep 2015 08:17:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.5.195 with SMTP id u3ls296566lau.37.gmail; Tue, 29 Sep
- 2015 08:41:49 -0700 (PDT)
-X-Received: by 10.152.120.232 with SMTP id lf8mr1308723lab.1.1443541309565;
-        Tue, 29 Sep 2015 08:41:49 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id bn1si744218wib.0.2015.09.29.08.41.49
+Received: by 10.152.30.98 with SMTP id r2ls57214lah.45.gmail; Tue, 29 Sep 2015
+ 08:17:45 -0700 (PDT)
+X-Received: by 10.112.142.195 with SMTP id ry3mr2765420lbb.22.1443539865540;
+        Tue, 29 Sep 2015 08:17:45 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id c1si674835wiv.3.2015.09.29.08.17.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 08:41:49 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        Tue, 29 Sep 2015 08:17:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0MURRH-1a76tC0pdb-00RGWj; Tue, 29 Sep
- 2015 17:41:49 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: y2038@lists.linaro.org
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH] Staging: fbtbt: Replace timespec with timespec64
-Date: Tue, 29 Sep 2015 17:41:48 +0200
-Message-ID: <12448143.zpgRbU0bdf@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1443539855-3255-1-git-send-email-ksenija.stanojevic@gmail.com>
-References: <1443539855-3255-1-git-send-email-ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:dLXqmqnix8xCAev83ZsWHsFixOME/zzGTU8Z4wO06egQDK6UFId
- 3DIe4SWOEmxltnotvjsxKqga4tcoYuDkaZgRoyCzwOQU7Eb0uY2DG9BKt7T/ZDgAWE82Waz
- RKhsJRWe6AWuyQ69tESA/tbcax8XcFXo7pni0WFczYaavAnXzGOAqAd1RfSBVxfzfXZkMfE
- itWtYWyd7d0fYBZBtuW0Q==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:2Y1ckG2wG+M=:a+CAtYL10wEYOf9Ma5UN/m
- kThc0JpfRL59vTIUXf4dBZikO/LByIwLqZ2dcliYw++xJdhrQb5VVc06tHnXf3+qdxodilv6t
- tzQ5JCIMIPxBbxQrL/ORMbESuh7GuYS5+gv/ldKNEeAwUyO7ZoZATZczxwsIGsmEc+CRGwmNd
- djeiY2Hk+0GyIM1jGSuQfvU53gaYYjxDSWGvcykuDirvlxcjTp6jEC2wGuyFuke1FdrP4LDKI
- To0G0pbFu6qIkGHjmjr87wcUoxEXnOhFECItzTllMgP9JWgzc+CWg8B8eljkvesgqvXy3zl04
- bDvciG+ciSSb6sm+v7k3eVdwnC7GcNecM65wWMVoWYFF6Bd+ZQ5kG/WLh6Any6X/D6SkKD2cL
- QYCTdpRj4mpc44O1vv6waB8v92/78WbleQHwn5L778n34hhb8uuDk4wSCGyNs8o/4rK9UYM8T
- DwWrYyJMuT8REOz7EGpJwwQW4g1eHr3ifUbjPrj1O4T7SIA7JaGg1+DghVP1iMtTD+e4KdwlW
- cWuCnDuHwUbPzsjWkHeao9Jyzi35WGgtNdy5LVtEMzxbMhyEl0Hn7uDuN1rsJq53/04qm5iDs
- ZNE6P/1yjqNTNrtCzMGX6ZahoV8zBJIuPjBdIbNAqEBakMYMsZrnlcCt18629z2SZY4AAbeKm
- H76DZJzmIYZ4wAs3lNeBOE1X9v9Ku3AUkeNzUKRXgtvJkrRp0lBTygU1/Mb4g9Xb9Zuzj6NTd
- DnNdfwgtyPU+jSV/
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x231.google.com with SMTP id lk2so156211407wic.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 08:17:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=jEvALvpPDRe4y2t56+Ry2xBgjDSP2yp6ESRaxHAQbWs=;
+        b=w0MtiXaVN3Q1pZez2pjpU1dPjW/8tR6xJH7lL4O1XUS+WZpFvnASSR1hH5YKi/mSNy
+         DcUuIlRoAyNMuoJ+vRPRIJoPb7+B+Ks5Thej6SWDSJeo+w0gFadKy63ShmGyqZoy4hFR
+         kOL7rQSf4dqH5VedwDUKYUOwPK4LOE6uFEnbokf21tTrH7A6EMJ8dkrUw1Ce7ac77Z29
+         ucR+SUHB1c2egUO/uVv/dP+H8ROLg3vbzwphvOg1wJmFiUBoNt5ZmCP8ZrsVJs8cUZ7T
+         xFMu1zvRkjrD9u5jqjZJHeUYQkBxCZ6fs/oRqbl9WqjR3Kv4Kg5GWMEx+rGfsgYLboE2
+         W/OQ==
+X-Received: by 10.194.117.39 with SMTP id kb7mr27410172wjb.129.1443539865320;
+        Tue, 29 Sep 2015 08:17:45 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id hd7sm19167701wib.23.2015.09.29.08.17.44
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 29 Sep 2015 08:17:44 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: y2038@lists.linaro.org,
+	Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: fbtbt: Replace timespec with timespec64
+Date: Tue, 29 Sep 2015 17:17:35 +0200
+Message-Id: <1443539855-3255-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Tuesday 29 September 2015 17:17:35 Ksenija Stanojevic wrote:
-> struct timespec will overflow in year 2038, so replace it with
-> timespec64. And replace functions that use struct timespec,
-> timespec_sub with timespec64_sub and getnstimeofday with
-> getnstimeofday64. Also use parameters to convert the timespec64 values
-> instead of hard code.
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+struct timespec will overflow in year 2038, so replace it with
+timespec64. And replace functions that use struct timespec,
+timespec_sub with timespec64_sub and getnstimeofday with
+getnstimeofday64. Also use parameters to convert the timespec64 values
+instead of hard code.
 
-The patch looks correct, and the changelog comment seems ok too.
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/fbtft/fbtft-core.c | 26 +++++++++++++-------------
+ drivers/staging/fbtft/fbtft.h      |  2 +-
+ 2 files changed, 14 insertions(+), 14 deletions(-)
 
-However, I think it makes sense to do two other changes at the
-same time here:
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 23392eb..3e4eeac 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -365,16 +365,16 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
+ 				 unsigned end_line)
+ {
+ 	size_t offset, len;
+-	struct timespec ts_start, ts_end, ts_fps, ts_duration;
++	struct timespec64 ts_start, ts_end, ts_fps, ts_duration;
+ 	long fps_ms, fps_us, duration_ms, duration_us;
+-	long fps, throughput;
++	long  long fps, throughput;
+ 	bool timeit = false;
+ 	int ret = 0;
+ 
+ 	if (unlikely(par->debug & (DEBUG_TIME_FIRST_UPDATE | DEBUG_TIME_EACH_UPDATE))) {
+ 		if ((par->debug & DEBUG_TIME_EACH_UPDATE) ||
+ 				((par->debug & DEBUG_TIME_FIRST_UPDATE) && !par->first_update_done)) {
+-			getnstimeofday(&ts_start);
++			getnstimeofday64(&ts_start);
+ 			timeit = true;
+ 		}
+ 	}
+@@ -411,28 +411,28 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
+ 			__func__);
+ 
+ 	if (unlikely(timeit)) {
+-		getnstimeofday(&ts_end);
++		getnstimeofday64(&ts_end);
+ 		if (par->update_time.tv_nsec == 0 && par->update_time.tv_sec == 0) {
+ 			par->update_time.tv_sec = ts_start.tv_sec;
+ 			par->update_time.tv_nsec = ts_start.tv_nsec;
+ 		}
+-		ts_fps = timespec_sub(ts_start, par->update_time);
++		ts_fps = timespec64_sub(ts_start, par->update_time);
+ 		par->update_time.tv_sec = ts_start.tv_sec;
+ 		par->update_time.tv_nsec = ts_start.tv_nsec;
+-		fps_ms = (ts_fps.tv_sec * 1000) + ((ts_fps.tv_nsec / 1000000) % 1000);
+-		fps_us = (ts_fps.tv_nsec / 1000) % 1000;
+-		fps = fps_ms * 1000 + fps_us;
++		fps_ms = (ts_fps.tv_sec * MSEC_PER_SEC) + (ts_fps.tv_nsec / NSEC_PER_MSEC);
++		fps_us = ts_fps.tv_nsec / NSEC_PER_USEC;
++		fps = fps_ms * USEC_PER_MSEC + fps_us;
+ 		fps = fps ? 1000000 / fps : 0;
+ 
+-		ts_duration = timespec_sub(ts_end, ts_start);
+-		duration_ms = (ts_duration.tv_sec * 1000) + ((ts_duration.tv_nsec / 1000000) % 1000);
+-		duration_us = (ts_duration.tv_nsec / 1000) % 1000;
+-		throughput = duration_ms * 1000 + duration_us;
++		ts_duration = timespec64_sub(ts_end, ts_start);
++		duration_ms = (ts_duration.tv_sec * MSEC_PER_SEC) + (ts_duration.tv_nsec / NSEC_PER_MSEC);
++		duration_us = ts_duration.tv_nsec / NSEC_PER_USEC;
++		throughput = duration_ms * USEC_PER_MSEC + duration_us;
+ 		throughput = throughput ? (len * 1000) / throughput : 0;
+ 		throughput = throughput * 1000 / 1024;
+ 
+ 		dev_info(par->info->device,
+-			"Display update: %ld kB/s (%ld.%.3ld ms), fps=%ld (%ld.%.3ld ms)\n",
++			"Display update: %lld kB/s (%ld.%.3ld ms), fps=%lld (%ld.%.3ld ms)\n",
+ 			throughput, duration_ms, duration_us,
+ 			fps, fps_ms, fps_us);
+ 		par->first_update_done = true;
+diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
+index 7e9a506..bf4c358 100644
+--- a/drivers/staging/fbtft/fbtft.h
++++ b/drivers/staging/fbtft/fbtft.h
+@@ -251,7 +251,7 @@ struct fbtft_par {
+ 	} gamma;
+ 	unsigned long debug;
+ 	bool first_update_done;
+-	struct timespec update_time;
++	struct timespec64 update_time;
+ 	bool bgr;
+ 	void *extra;
+ };
+-- 
+1.9.1
 
-- use ktime_t with ktime_us_delta()/ktime_to_ns to simplify the
-  code
-
-- use monotonic time (ktime_get) instead of wall time
-  (getnstimeofday64/ktime_get_real) to be more robust against
-  leap seconds and settimeofday() calls
-
-	Arnd
 
