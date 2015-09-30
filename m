@@ -1,78 +1,246 @@
-X-GM-THRID: 6876686188544
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,ff204b327ade74ec,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.156.65 with SMTP id wc1mr2310240lbb.7.1425644108697;
-        Fri, 06 Mar 2015 04:15:08 -0800 (PST)
+X-GM-THRID: 6200081911391453184
+X-Received: by 10.194.156.193 with SMTP id wg1mr773823wjb.3.1443636309580;
+        Wed, 30 Sep 2015 11:05:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.21.33 with SMTP id s1ls66745lae.40.gmail; Fri, 06 Mar 2015
- 04:15:07 -0800 (PST)
-X-Received: by 10.112.147.35 with SMTP id th3mr2205557lbb.15.1425644107388;
-        Fri, 06 Mar 2015 04:15:07 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id l8si144864wia.0.2015.03.06.04.15.07
+Received: by 10.25.89.207 with SMTP id n198ls58436lfb.54.gmail; Wed, 30 Sep
+ 2015 11:05:09 -0700 (PDT)
+X-Received: by 10.152.20.195 with SMTP id p3mr772201lae.5.1443636309028;
+        Wed, 30 Sep 2015 11:05:09 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id c7si916024wiy.3.2015.09.30.11.05.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 04:15:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x235.google.com with SMTP id k11so59004168wes.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 04:15:07 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22c.google.com with SMTP id fx3so73546738wic.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=mCfVW2TVV+9puZfRJXLAVeVGrndn+tV2iJE0tKg3HTU=;
-        b=b2d4ahQWmL5q1IoRI7RkZLKy51wmR437lZWKK7SIROd155pm9sibJzZQ2SdEKAmpmv
-         CbrRGxXSOSgqIArBYZmv+wEoRXedw/CoVLCfDCz+BT/4Sr/Yz3mp+RiRSgux3nADVQZ3
-         eatf95DxER+CRzkDT1Qz+xdiV8QiHDKqpdZMluQDzuF0wqCGx3PuWQAViBTHEUxPcv49
-         VepoP4tUowCuP8aMbNcxlEH1hqsbrezc/hM/zAOj6VFqY/Njs1Qs7Z/FhxZFa1ZF/pvl
-         9xsmoaTvGxJmqkfYg0RINERXsvu62bfxibsoROA4zmnHe9qpPd1JzAXyVMVJDhVqvVCq
-         eg6Q==
-X-Received: by 10.180.149.205 with SMTP id uc13mr33145979wib.0.1425644107249;
-        Fri, 06 Mar 2015 04:15:07 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id cb9sm1977634wib.10.2015.03.06.04.15.05
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 06 Mar 2015 04:15:06 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=A6bgyYnlBwrYRnZnpiXnvfhtvIXneIpkGfKUp8dqDMA=;
+        b=myzl8ly4sGBFNNK2o0ga2gWQPCRiWdUfb9yYExRwjLoYOOv/H+qD9KoM710QfVO3Mj
+         0ZVLOtBNUyb0pHL8iYDNP+K+dNjBW2NPtkOOccF9vgxorPk7HDsu+60Bwu6z92Mr2R/R
+         oFtpSooUpPYlxqvnfkLErR4P+o8orzBujZzMxpfCg1j3e9j4wMCGQDMP+amFFisV+vzB
+         e0c6qifnl3Zm/GtzZoA1QvIMUKiDP7diR7FPumIOlhXaMuM3l840C8EZpgvXnDanEyP5
+         EzF8uxlE2d71HmZYGhrjBoVtRA/n5Y56s17xMbLcAKgMt9BHLgKXUfqPNEjSkUkBg1v6
+         qXeA==
+MIME-Version: 1.0
+X-Received: by 10.180.103.41 with SMTP id ft9mr5910314wib.95.1443636308865;
+ Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
+Received: by 10.27.186.66 with HTTP; Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
+In-Reply-To: <CAKHNQQGYc70qjW3Cjm=JOAbR5a5E+6KsTufMSuG2xsrY-g8Tgg@mail.gmail.com>
+References: <20150929232413.GA16457@ubuntu>
+	<alpine.DEB.2.02.1509300722250.1984@localhost6.localdomain6>
+	<CAKHNQQGYc70qjW3Cjm=JOAbR5a5E+6KsTufMSuG2xsrY-g8Tgg@mail.gmail.com>
+Date: Wed, 30 Sep 2015 23:35:08 +0530
+Message-ID: <CAKHNQQGZzRJ8GqC2pkmJ_0esk_N6+97wBJNgQtmmCo_C0H5sWA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: unisys: visorbus:
+ visorchipset: Converted arrays to static const
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: rtl8712: Replace __constant_cpu_to_le16
-Date: Fri,  6 Mar 2015 14:14:58 +0200
-Message-Id: <1425644098-6640-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Content-Type: multipart/alternative; boundary=20cf306845915ff7030520fac515
 
-This fixes the following checkpatch.pl warning:
-WARNING: __constant_cpu_to_le16 should be cpu_to_le16
+--20cf306845915ff7030520fac515
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/rtl8712/wifi.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks Julia!
+And Greg, I'm really sorry, warning was generated by checkpatch script not
+gcc. I read online that it does generate false warnings. Thank you.
 
-diff --git a/drivers/staging/rtl8712/wifi.h b/drivers/staging/rtl8712/wifi.h
-index 6b1e1fa..17f5131 100644
---- a/drivers/staging/rtl8712/wifi.h
-+++ b/drivers/staging/rtl8712/wifi.h
-@@ -243,9 +243,9 @@ enum WIFI_REG_DOMAIN {
- 
- #define SetFrameType(pbuf, type)	\
- 	do {	\
--		*(unsigned short *)(pbuf) &= __constant_cpu_to_le16(~(BIT(3) | \
-+		*(unsigned short *)(pbuf) &= cpu_to_le16(~(BIT(3) | \
- 		BIT(2))); \
--		*(unsigned short *)(pbuf) |= __constant_cpu_to_le16(type); \
-+		*(unsigned short *)(pbuf) |= cpu_to_le16(type); \
- 	} while (0)
- 
- #define GetFrameSubType(pbuf)	(cpu_to_le16(*(unsigned short *)(pbuf)) & \
--- 
-1.9.1
+On Wed, Sep 30, 2015 at 11:34 PM, Shivani Bhardwaj <shivanib134@gmail.com>
+wrote:
 
+> Thanks Julia!
+> And Greg, I'm really sorry, warning was generated by checkpatch script not
+> gcc. I read online that it does generate false warnings. Thank you.
+>
+>
+> On Wed, Sep 30, 2015 at 10:56 AM, Julia Lawall <julia.lawall@lip6.fr>
+> wrote:
+>
+>> On Wed, 30 Sep 2015, Shivani Bhardwaj wrote:
+>>
+>> > Replaced the declaration of character array from char * to
+>> > static const char * const as the array is not intended to be used
+>> > anywhere outside the function plus the values in array and the pointer
+>> > to it don't have to be changed.
+>>
+>> It's confusing, but static should not be used on local variable because
+>> they are not used outside the function.  Static means that the variable is
+>> allocated only once over all executions of the functions.  Actually, it
+>> becomes like a global variable that no one else can see.  If you call the
+>> function once, and change the value of the variable, then on the next call
+>> you see the changed value until the variable is modified.
+>>
+>> Here that all makes no sense, because you say that the array is not
+>> modified, and anyway the code explicitly sets the variable to its original
+>> value.
+>>
+>> julia
+>>
+>> > Signed-off-by: Shivani Bhardwaj <shivanib134@gmaail.com>
+>> > ---
+>> >  drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--
+>> >  1 file changed, 2 insertions(+), 2 deletions(-)
+>> >
+>> > diff --git a/drivers/staging/unisys/visorbus/visorchipset.c
+>> b/drivers/staging/unisys/visorbus/visorchipset.c
+>> > index 4b76cb4..073b45b 100644
+>> > --- a/drivers/staging/unisys/visorbus/visorchipset.c
+>> > +++ b/drivers/staging/unisys/visorbus/visorchipset.c
+>> > @@ -1411,7 +1411,7 @@ static int
+>> >  visorchipset_chipset_selftest(void)
+>> >  {
+>> >       char env_selftest[20];
+>> > -     char *envp[] = { env_selftest, NULL };
+>> > +     static const char * const envp[] = { env_selftest, NULL };
+>> >
+>> >       sprintf(env_selftest, "SPARSP_SELFTEST=%d", 1);
+>> >       kobject_uevent_env(&visorchipset_platform_device.dev.kobj,
+>> KOBJ_CHANGE,
+>> > @@ -1561,7 +1561,7 @@ parahotplug_request_kickoff(struct
+>> parahotplug_request *req)
+>> >       struct controlvm_message_packet *cmd = &req->msg.cmd;
+>> >       char env_cmd[40], env_id[40], env_state[40], env_bus[40],
+>> env_dev[40],
+>> >           env_func[40];
+>> > -     char *envp[] = {
+>> > +     static const char * const envp[] = {
+>> >               env_cmd, env_id, env_state, env_bus, env_dev, env_func,
+>> NULL
+>> >       };
+>> >
+>> > --
+>> > 2.1.0
+>> >
+>> > --
+>> > You received this message because you are subscribed to the Google
+>> Groups "outreachy-kernel" group.
+>> > To unsubscribe from this group and stop receiving emails from it, send
+>> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> > To view this discussion on the web visit
+>> https://groups.google.com/d/msgid/outreachy-kernel/20150929232413.GA16457%40ubuntu
+>> .
+>> > For more options, visit https://groups.google.com/d/optout.
+>> >
+>>
+>
+>
+
+--20cf306845915ff7030520fac515
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Thanks Julia!<br></div>And Greg, I&#39;m really sorry=
+, warning was=20
+generated by checkpatch script not gcc. I read online that it does=20
+generate false warnings. Thank you.</div><div class=3D"gmail_extra"><br><di=
+v class=3D"gmail_quote">On Wed, Sep 30, 2015 at 11:34 PM, Shivani Bhardwaj =
+<span dir=3D"ltr">&lt;<a href=3D"mailto:shivanib134@gmail.com" target=3D"_b=
+lank">shivanib134@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"g=
+mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex"><div dir=3D"ltr"><div><div>Thanks Julia!<br></div>And Greg, I&#39;=
+m really sorry, warning was generated by checkpatch script not gcc. I read =
+online that it does generate false warnings. Thank you.<br></div><div><br><=
+/div></div><div class=3D"HOEnZb"><div class=3D"h5"><div class=3D"gmail_extr=
+a"><br><div class=3D"gmail_quote">On Wed, Sep 30, 2015 at 10:56 AM, Julia L=
+awall <span dir=3D"ltr">&lt;<a href=3D"mailto:julia.lawall@lip6.fr" target=
+=3D"_blank">julia.lawall@lip6.fr</a>&gt;</span> wrote:<br><blockquote class=
+=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
+ing-left:1ex"><span>On Wed, 30 Sep 2015, Shivani Bhardwaj wrote:<br>
+<br>
+&gt; Replaced the declaration of character array from char * to<br>
+&gt; static const char * const as the array is not intended to be used<br>
+&gt; anywhere outside the function plus the values in array and the pointer=
+<br>
+&gt; to it don&#39;t have to be changed.<br>
+<br>
+</span>It&#39;s confusing, but static should not be used on local variable =
+because<br>
+they are not used outside the function.=C2=A0 Static means that the variabl=
+e is<br>
+allocated only once over all executions of the functions.=C2=A0 Actually, i=
+t<br>
+becomes like a global variable that no one else can see.=C2=A0 If you call =
+the<br>
+function once, and change the value of the variable, then on the next call<=
+br>
+you see the changed value until the variable is modified.<br>
+<br>
+Here that all makes no sense, because you say that the array is not<br>
+modified, and anyway the code explicitly sets the variable to its original<=
+br>
+value.<br>
+<br>
+julia<br>
+<span><br>
+&gt; Signed-off-by: Shivani Bhardwaj &lt;<a href=3D"mailto:shivanib134@gmaa=
+il.com" target=3D"_blank">shivanib134@gmaail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--<br>
+&gt;=C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/unisys/visorbus/visorchipset.c b/drivers/=
+staging/unisys/visorbus/visorchipset.c<br>
+&gt; index 4b76cb4..073b45b 100644<br>
+&gt; --- a/drivers/staging/unisys/visorbus/visorchipset.c<br>
+&gt; +++ b/drivers/staging/unisys/visorbus/visorchipset.c<br>
+&gt; @@ -1411,7 +1411,7 @@ static int<br>
+&gt;=C2=A0 visorchipset_chipset_selftest(void)<br>
+&gt;=C2=A0 {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0char env_selftest[20];<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0char *envp[] =3D { env_selftest, NULL };<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0static const char * const envp[] =3D { env_selfte=
+st, NULL };<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sprintf(env_selftest, &quot;SPARSP_SELFTEST=
+=3D%d&quot;, 1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0kobject_uevent_env(&amp;visorchipset_platfor=
+m_device.dev.kobj, KOBJ_CHANGE,<br>
+&gt; @@ -1561,7 +1561,7 @@ parahotplug_request_kickoff(struct parahotplug_r=
+equest *req)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct controlvm_message_packet *cmd =3D &am=
+p;req-&gt;msg.cmd;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0char env_cmd[40], env_id[40], env_state[40],=
+ env_bus[40], env_dev[40],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0env_func[40];<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0char *envp[] =3D {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0static const char * const envp[] =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0env_cmd, env_id,=
+ env_state, env_bus, env_dev, env_func, NULL<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0};<br>
+&gt;<br>
+&gt; --<br>
+&gt; 2.1.0<br>
+&gt;<br>
+</span><span>&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com" target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<b=
+r>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com" target=3D"_blank">outreachy-kernel@googlegroups.com</a>=
+.<br>
+</span>&gt; To view this discussion on the web visit <a href=3D"https://gro=
+ups.google.com/d/msgid/outreachy-kernel/20150929232413.GA16457%40ubuntu" re=
+l=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid/outrea=
+chy-kernel/20150929232413.GA16457%40ubuntu</a>.<br>
+<div><div>&gt; For more options, visit <a href=3D"https://groups.google.com=
+/d/optout" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d=
+/optout</a>.<br>
+&gt;<br>
+</div></div></blockquote></div><br></div>
+</div></div></blockquote></div><br></div>
+
+--20cf306845915ff7030520fac515--
 
