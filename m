@@ -1,29 +1,50 @@
 X-GM-THRID: 6200095553040154624
-X-Received: by 10.66.221.7 with SMTP id qa7mr2524663pac.33.1443608995518;
-        Wed, 30 Sep 2015 03:29:55 -0700 (PDT)
+X-Received: by 10.182.24.169 with SMTP id v9mr2458129obf.35.1443608829260;
+        Wed, 30 Sep 2015 03:27:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.6.157 with SMTP id f29ls226834ioi.44.gmail; Wed, 30 Sep
- 2015 03:29:54 -0700 (PDT)
-X-Received: by 10.107.131.194 with SMTP id n63mr3153681ioi.8.1443608994780;
-        Wed, 30 Sep 2015 03:29:54 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id i77si34186ywg.4.2015.09.30.03.29.54
+Received: by 10.182.40.170 with SMTP id y10ls169089obk.28.gmail; Wed, 30 Sep
+ 2015 03:27:08 -0700 (PDT)
+X-Received: by 10.182.106.11 with SMTP id gq11mr2534007obb.25.1443608828904;
+        Wed, 30 Sep 2015 03:27:08 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id zg1si37143pbb.2.2015.09.30.03.27.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 03:29:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 30 Sep 2015 03:27:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [89.202.203.52])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id E337A19EB;
-	Wed, 30 Sep 2015 10:29:52 +0000 (UTC)
-Date: Wed, 30 Sep 2015 12:29:49 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x229.google.com with SMTP id hy16so36982216pad.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 03:27:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=tmTf/X19j3uqu5lJTTNjgDXhM4g4KbWhHtKavm8HA90=;
+        b=IczSgq7M9mRBYC6X4fUK+tdMsHnTDiDK0lwGjrDiYFxD5BXxw+HJDeyKS6hclnYFMF
+         3/G0CLDnajg8TDRO+BCXyqvRkzj++jxKqB49y90Jh3d2Efq7o6mmyGQsWoBQ6W/FCDm7
+         PhkkU6b1DKJa4tVvbCf0P7/3vwTDmWLSYAG/df129pLG6T7rM5fKsq8wJ954uotxd67d
+         JkuayCLh6RP1V86NXmp74/YrStNofA1OvH2tZxJ+NDmyUyPvsl+NdidVPIC+68cVPzVj
+         1Ed2U362Rr1XPUpaJYZBefsHzvBh63k1XOoPq+gJmqOZYqmQEKVPfNkBrBgjQAARPMAJ
+         HcwQ==
+X-Received: by 10.68.139.72 with SMTP id qw8mr4101491pbb.60.1443608823708;
+        Wed, 30 Sep 2015 03:27:03 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.244.224])
+        by smtp.gmail.com with ESMTPSA id bz1sm600161pad.36.2015.09.30.03.27.01
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Wed, 30 Sep 2015 03:27:02 -0700 (PDT)
+Date: Wed, 30 Sep 2015 15:56:54 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 To: Ioana Ciornei <ciorneiioana@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: wil1000: fix misspelled words
-Message-ID: <20150930102949.GA15101@kroah.com>
+Message-ID: <20150930102654.GA27558@sudip-pc>
 References: <1443572226-27318-1-git-send-email-ciorneiioana@gmail.com>
  <20150930020039.GA14724@kroah.com>
  <CAHWJYFkFhEBVCKFBm6rmtd0j4077QewS8mj-txCxowp5RTHa_w@mail.gmail.com>
@@ -31,7 +52,7 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <CAHWJYFkFhEBVCKFBm6rmtd0j4077QewS8mj-txCxowp5RTHa_w@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
 On Wed, Sep 30, 2015 at 01:21:53PM +0300, Ioana Ciornei wrote:
 > On Wed, Sep 30, 2015 at 5:00 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
@@ -60,19 +81,9 @@ On Wed, Sep 30, 2015 at 01:21:53PM +0300, Ioana Ciornei wrote:
 > 
 > Just to be sure.. are we supposed to keep track and apply patches on
 > top of the staging-testing or staging-next branch?
-> In the tutorials it appears staging-next to be the one to follow.
 
-staging-testing usually only diverges from staging-next for less than 24
-hours, so usually working on staging-next is fine to do.  Except when
-you are working on a driver, like this one, that is also being worked on
-by other developers.  For that, I recommend using staging-testing.
+staging-testing
 
-But note, this driver is averaging 10-20 patches every few days from
-other developers, things are changing quickly in it, keeping up to date
-and slip your patch in while that happens is going to be tricky.  Expect
-to have to rebase it a few times because of this, sorry.
-
-thanks,
-
-greg k-h
+regards
+sudip
 
