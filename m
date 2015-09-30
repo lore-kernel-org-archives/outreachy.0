@@ -1,53 +1,57 @@
 X-GM-THRID: 6200365191427784704
-X-Received: by 10.180.160.146 with SMTP id xk18mr985340wib.3.1443647744214;
-        Wed, 30 Sep 2015 14:15:44 -0700 (PDT)
+X-Received: by 10.180.105.98 with SMTP id gl2mr5006459wib.0.1443635934404;
+        Wed, 30 Sep 2015 10:58:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.106.98 with SMTP id gt2ls5067wib.54.canary; Wed, 30 Sep
- 2015 14:15:43 -0700 (PDT)
-X-Received: by 10.195.12.234 with SMTP id et10mr880194wjd.2.1443647743854;
-        Wed, 30 Sep 2015 14:15:43 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id c7si939520wiy.3.2015.09.30.14.15.43
+Received: by 10.180.87.106 with SMTP id w10ls1021097wiz.53.canary; Wed, 30 Sep
+ 2015 10:58:54 -0700 (PDT)
+X-Received: by 10.194.118.65 with SMTP id kk1mr769063wjb.5.1443635934054;
+        Wed, 30 Sep 2015 10:58:54 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id k7si57735wif.1.2015.09.30.10.58.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 14:15:43 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        Wed, 30 Sep 2015 10:58:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue104) with ESMTPSA (Nemesis) id 0MPoeo-1ZmKfV1o9a-004x6n; Wed, 30 Sep
- 2015 23:15:43 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=mahfouz.saif.elyazal@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x231.google.com with SMTP id fx3so209555048wic.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 10:58:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=MfuyULJyhaq9o2WFogshS8LIw71jIumEnYUF2NmTjeI=;
+        b=Ka0IZ9XRqJqSMAKUpAZ/20Jaos8Y3CX3nBO5F1gGgfk7GgQ/7ujuf+ZiHtdydsaY1g
+         82BtOIQaUvDtzamytjy88iEerVQMKS1snPSmXq8i5UjSdpFwOBtBW3Zo8ecmXlr0lYX8
+         546+5Nv5QFuoqLOv/PBYLOIGoaMTcjO5Bfvvzjf5Rg9vo0RQazDEuVyN2eeQgkfOpxxr
+         tf5c9+DkNtA4JMESGkBQ5kG9Q4zn81CysoTJHDhd/eR/056ZmBCjCamkDU8a8Z/fgDDL
+         iSj+0m7Fu9VHT2O4YIoTlBI9vBw1VdNQng7viSdZpl2MbSldbqKz4YOI6DYXKLhBYIBn
+         r9zg==
+X-Received: by 10.194.91.193 with SMTP id cg1mr6911882wjb.88.1443635933874;
+        Wed, 30 Sep 2015 10:58:53 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.239.135])
+        by smtp.gmail.com with ESMTPSA id c2sm30803304wiy.11.2015.09.30.10.58.52
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 30 Sep 2015 10:58:52 -0700 (PDT)
+Date: Wed, 30 Sep 2015 19:58:50 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-Subject: Re: [Outreachy kernel] Concerning applicants who are CCing themselves
-Date: Wed, 30 Sep 2015 23:15:42 +0200
-Message-ID: <4543594.pJ5pIvqNYp@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20150930174335.GB12195@waves>
+Subject: Re: Concerning applicants who are CCing themselves
+Message-ID: <20150930175850.GA13735@waves>
 References: <20150930174335.GB12195@waves>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:qe9vAQhIHbmbAN+fe5EmFTevdFlS5qSAikmkFXnuPJHo8l7Uytj
- N04dyl5zLAtUirxy+vHUnm58X+tfDBwGzoxuXEwAZKz2eVbuP+gH+mSiMrQQQG+cXy5fN8k
- BUMmAVSpqQ9sWN11zHFC4BWGbkN1z/ge8q2blD9kQJF96dt2Vk4LLWQLe6Frgy1BSlWCIb2
- omIuixYvYfZ/sLctbl0xQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:4hFkuQ5a7Z0=:/0ECTN3DvrFMLTrtELveSL
- WT1vyhyvBRzqqTBPj58d1ju4bfMBx1X5daBYJ4QnZ1OcvNQYx/g0YeaDlDT0vNopWKFEiKqoX
- mKZMRQMV/ouXXkTyGmwZj5+4c7BD5DwuSF0nh5aFTjHJqligU9fAwbZmum+tZQaBzy3VXnDbl
- JWjfBbI9nJppA9Sg51Wl1J7fWfv6nN5rkLfSt0IKkWSWQGNMTYuXcdtivMxxpRyEeRwFeBHkD
- MtaccLqWjwtz5so8fmxmB8OD9QgpD+T3fB+s2VuNuwDvDEnzPW7Ya+oMbxg3387Bh3/AFWzNq
- HcDZspd+lDuaqbIodTm8BtT2DPwqEdmqdZIKYxWvxb6vftKLw3RmvOVrtuSbdTWxVIdkiZbJe
- dJHMcGpWQK+JeLH2XOiiBaCnNM/KCYDAZS4qRQsmVFHU3/ffO+bqxcvwAp4WWMZ/QKQZDSQ04
- mGMKTubbX/yZqmnmDgD7KDOjVS8Y1zcwOTxF04gBZU/ZlSvkWhBkIxciAr06Ipyh4CRtY0y0y
- YTcpi966XO9JQb2KH9fzQiwMvjaqRpe42jpeWBBU9bulyWoTmEyRjDrVwudwiCPxbCJzXy28u
- uMI7MjU5L5/mmf9zj+dOUK453/WW4/2FtVjxNk90epLQag3cwfzwQ6eSVrgnhtE3TXT+yspKg
- l4jcwVSOOiSFXwJ2S6gdQK9FX4x/zc+gENG6J++NCoAAVNRlUTKxpw7j89Wgr9hc5XDU3YcHM
- JABRgilGZuNmeRHC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20150930174335.GB12195@waves>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Wednesday 30 September 2015 19:43:35 Aya Mahfouz wrote:
+On Wed, Sep 30, 2015 at 07:43:35PM +0200, Aya Mahfouz wrote:
 > Dear All,
 > 
 > I've realized that there are few interns who are add themselves to the
@@ -62,11 +66,15 @@ On Wednesday 30 September 2015 19:43:35 Aya Mahfouz wrote:
 > 
 > If there is another reason for that behavior, kindly enlighten us.
 > 
-> 
+I forgot to add that you can always fetch your sent messages from mutt
+by navigating to Gmail/Sent Mail
 
-I think this is just because git-send-email by default adds
-the sender to 'Cc', unless you add an explicit --suppress-cc=self
-argument.
+On my PC I use c to change the mailbox and ? to list the IMAP folders
+> -- 
+> Kind Regards,
+> Aya Saif El-yazal Mahfouz
 
-	Arnd
+-- 
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
