@@ -1,169 +1,64 @@
 X-GM-THRID: 6200357690588266496
-X-Received: by 10.112.12.132 with SMTP id y4mr1530024lbb.0.1443713358351;
-        Thu, 01 Oct 2015 08:29:18 -0700 (PDT)
+X-Received: by 10.152.22.101 with SMTP id c5mr893965laf.0.1443649229708;
+        Wed, 30 Sep 2015 14:40:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.100.161 with SMTP id ez1ls188696wib.12.gmail; Thu, 01 Oct
- 2015 08:29:17 -0700 (PDT)
-X-Received: by 10.180.9.104 with SMTP id y8mr592207wia.7.1443713357436;
-        Thu, 01 Oct 2015 08:29:17 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id c7si92832wiy.3.2015.10.01.08.29.17
+Received: by 10.25.143.209 with SMTP id r200ls78530lfd.6.gmail; Wed, 30 Sep
+ 2015 14:40:29 -0700 (PDT)
+X-Received: by 10.112.190.65 with SMTP id go1mr908461lbc.9.1443649229068;
+        Wed, 30 Sep 2015 14:40:29 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by gmr-mx.google.com with ESMTPS id ch7si77716wib.2.2015.09.30.14.40.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 08:29:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Wed, 30 Sep 2015 14:40:28 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id fx3so38838611wic.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 08:29:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=RKCewzTLkqpsM4Psj8TOxV+jK/oqDcejui073qEYhC8=;
-        b=XPrUeZnWts7uZlYrNiWFABn/ubi0SQYluJe+omgK8J36HhrlKDJbd64YDNTuIi4Qp3
-         fgzK8uDUoyKl1MdUbWfNv9Ef6KEQb+bh0+F3pEyIbzL/QfNOPXCSmJWnwa95zDRgI/pn
-         KFZq9ix/xkFdvC7ipGREMhLzlu5hPMxYV5RVN8JoxKP6AEnzDCHayyo/BKRaXOd8RkNg
-         wwlu4eexfNFX2aHEfv71zbccDiyPSBgfC9XIXj1EyX0iATK3sf6L+W85rNRsLJ/Vtuww
-         VXmr0K/qE8agOSVmNtIWWGiFqEMFBYr8kPlB7TWQSQr+PVE8scpJbG7zj4DyCuGtb6fo
-         VQJg==
-X-Received: by 10.194.222.227 with SMTP id qp3mr13281588wjc.36.1443713357252;
-        Thu, 01 Oct 2015 08:29:17 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by smtp.gmail.com with ESMTPSA id it4sm6707156wjb.0.2015.10.01.08.29.16
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 01 Oct 2015 08:29:16 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org,
-	Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v3] Staging: olpc_dcon: Replace timespec with ktime_t
-Date: Thu,  1 Oct 2015 17:29:00 +0200
-Message-Id: <1443713340-3161-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue104) with ESMTPSA (Nemesis) id 0MasKg-1ZxI4E2gZu-00KQGD; Wed, 30 Sep
+ 2015 23:40:28 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH v2] Staging: olpc_dcon: Replace timespec with ktime_t
+Date: Wed, 30 Sep 2015 23:40:27 +0200
+Message-ID: <7115394.y6qqlMKRWG@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1443633261-16355-1-git-send-email-ksenija.stanojevic@gmail.com>
+References: <1443633261-16355-1-git-send-email-ksenija.stanojevic@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:lnXJMoPWc7TKhpKqW1OKICYDn4lFRbCTemghEQ+tXW9szp8UyF3
+ HmlnFwxKL2A+0ix0Ls61BHF0oYzrimUHrn9rIzd1zXsLa9ctY+4bi8OUCQ6Ex6APQhRjNEr
+ cCsNbIT+U3OpWW4Q97tTsGDA559lXxU99EwPWH4N/CZqRUSiPl58i4w7JSUKBEcgMUcF2fM
+ swFT1OwOQVan4JSV2oSjg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:5VbY2lEbFL0=:lrw0bIOuDx4w1EqijCIec7
+ yrtyEgNG87xR+2xJbhLCPlroj4UAAQMeS4/0ZMb318l/5bYczd2oQY9ihH0r42YZaPShf6Uly
+ 0Hfy56Y5Kk6jKJGyXIJ5mE0AUmlAYyyydqsyo4nDtL9nFPQePRjDw0RzeHcXJRmNr1Xa/LqdK
+ 4IvP8AY3vNssuqXExw9i3hOxVyR+4CF8IVtHGKbeKAb/GFpFzuPYob/984aYrbl6f4fCax/8q
+ 0wu/pIiA3iwDjfIpEuzYcXBl7atjuUTJb+NVG1cl1xnjk6wH30j5+qtxMX9mdl986roV8uS44
+ UyzAKKCSpcOwpmwJfrMTTL3cH0XsCxHahodZpoqCYjSr5R7jHppjH/gFQe8NGI2GR0tj/ju6k
+ 8CWxsNDetn5oyTVx21RCfR8jX1UnQ3bfh0+ZgvHf4ERoRH7/o8338TszVL9w8Ejekk8qSt82m
+ WvMdpnwtu/GYB/CfDm3ggUy42XWpv6+RIjWUiRRfntjxH8Sk98xHs1c94XHL09I/CAsNSk0k6
+ AiVcF0bfNfekHvso0r61LdOlgXbgq3ntoZ7w4HDRR5zPPSqI/OZv4Ck2UvbsPyBbbQkjy67+i
+ T1uCKHlkiKyJNyFOUNb/lEzTUhrUVzh2dLd7rFXs4Z5AzKGGlI803wjQQDXlWnlnHewR5dqWS
+ 4HlUa3gb3YhAm6roMQuIoHRMeNYbOLJnnqTggpqpBO1mfZr6j+iGKCuzY9TlR6Lw/X4PC9j8o
+ 9NXsqZo45DOfX9/s
 
-Struct timespec will overflow in year 2038, here it will not cause an
-overflow because it is used with timespec_sub, but still has to be
-removed as part of y2038 changes. Replace it with ktime_t. Also use
-monotonic instead of real-time by replacing functions getnstimeofday
-with ktime_get.
+On Wednesday 30 September 2015 19:14:21 Ksenija Stanojevic wrote:
+> Struct timespec will overflow in year 2038, here it will not cause an
+> overflow because it is used with timespec_sub, but still has to be
+> removed as part of y2038 changes. Replace it with ktime_t. Also use
+> monotonic instead of real-time by replacing functions getnstimeofday
+> with ktime_sub.
+>
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-Changes in v3:
-        -fix commit message (ktime_sub -> ktime_get)
+The last sentence seems wrong, incorrect, I assume you mean ktime_get()
+not ktime_sub(). Aside from that, everything looks fine, so please
+fix the changelog and add my
 
-Changes in v2:
-        -use ktime_t instead timespec64
-        -use ktime_sub instead timespec64_sub
-        -use monotonic instead real-time.
-
- drivers/staging/olpc_dcon/olpc_dcon.c | 27 +++++++++++++--------------
- drivers/staging/olpc_dcon/olpc_dcon.h |  4 ++--
- 2 files changed, 15 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/staging/olpc_dcon/olpc_dcon.c b/drivers/staging/olpc_dcon/olpc_dcon.c
-index d115f5c..2dc5d36 100644
---- a/drivers/staging/olpc_dcon/olpc_dcon.c
-+++ b/drivers/staging/olpc_dcon/olpc_dcon.c
-@@ -238,13 +238,12 @@ static void dcon_sleep(struct dcon_priv *dcon, bool sleep)
-  */
- static void dcon_load_holdoff(struct dcon_priv *dcon)
- {
--	struct timespec delta_t, now;
-+	ktime_t delta_t, now;
- 
- 	while (1) {
--		getnstimeofday(&now);
--		delta_t = timespec_sub(now, dcon->load_time);
--		if (delta_t.tv_sec != 0 ||
--			delta_t.tv_nsec > NSEC_PER_MSEC * 20) {
-+		now = ktime_get();
-+		delta_t = ktime_sub(now, dcon->load_time);
-+		if (ktime_to_ns(delta_t) > NSEC_PER_MSEC * 20) {
- 			break;
- 		}
- 		mdelay(4);
-@@ -325,19 +324,19 @@ static void dcon_source_switch(struct work_struct *work)
- 
- 		/* And turn off the DCON */
- 		pdata->set_dconload(1);
--		getnstimeofday(&dcon->load_time);
-+		dcon->load_time = ktime_get();
- 
- 		pr_info("The CPU has control\n");
- 		break;
- 	case DCON_SOURCE_DCON:
- 	{
--		struct timespec delta_t;
-+		ktime_t delta_t;
- 
- 		pr_info("dcon_source_switch to DCON\n");
- 
- 		/* Clear DCONLOAD - this implies that the DCON is in control */
- 		pdata->set_dconload(0);
--		getnstimeofday(&dcon->load_time);
-+		dcon->load_time = ktime_get();
- 
- 		wait_event_timeout(dcon->waitq, dcon->switched, HZ/2);
- 
-@@ -355,14 +354,14 @@ static void dcon_source_switch(struct work_struct *work)
- 			 * deassert and reassert, and hope for the best.
- 			 * see http://dev.laptop.org/ticket/9664
- 			 */
--			delta_t = timespec_sub(dcon->irq_time, dcon->load_time);
--			if (dcon->switched && delta_t.tv_sec == 0 &&
--					delta_t.tv_nsec < NSEC_PER_MSEC * 20) {
-+			delta_t = ktime_sub(dcon->irq_time, dcon->load_time);
-+			if (dcon->switched && 
-+				ktime_to_ns(delta_t) < NSEC_PER_MSEC * 20) {
- 				pr_err("missed loading, retrying\n");
- 				pdata->set_dconload(1);
- 				mdelay(41);
- 				pdata->set_dconload(0);
--				getnstimeofday(&dcon->load_time);
-+				dcon->load_time = ktime_get();
- 				mdelay(41);
- 			}
- 		}
-@@ -742,7 +741,7 @@ irqreturn_t dcon_interrupt(int irq, void *id)
- 	case 2:	/* switch to DCON mode */
- 	case 1: /* switch to CPU mode */
- 		dcon->switched = true;
--		getnstimeofday(&dcon->irq_time);
-+		dcon->irq_time = ktime_get();
- 		wake_up(&dcon->waitq);
- 		break;
- 
-@@ -756,7 +755,7 @@ irqreturn_t dcon_interrupt(int irq, void *id)
- 		 */
- 		if (dcon->curr_src != dcon->pending_src && !dcon->switched) {
- 			dcon->switched = true;
--			getnstimeofday(&dcon->irq_time);
-+			dcon->irq_time = ktime_get();
- 			wake_up(&dcon->waitq);
- 			pr_debug("switching w/ status 0/0\n");
- 		} else {
-diff --git a/drivers/staging/olpc_dcon/olpc_dcon.h b/drivers/staging/olpc_dcon/olpc_dcon.h
-index d06e19d..215e7ec 100644
---- a/drivers/staging/olpc_dcon/olpc_dcon.h
-+++ b/drivers/staging/olpc_dcon/olpc_dcon.h
-@@ -79,8 +79,8 @@ struct dcon_priv {
- 
- 	/* Variables used during switches */
- 	bool switched;
--	struct timespec irq_time;
--	struct timespec load_time;
-+	ktime_t irq_time;
-+	ktime_t load_time;
- 
- 	/* Current output type; true == mono, false == color */
- 	bool mono;
--- 
-1.9.1
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
