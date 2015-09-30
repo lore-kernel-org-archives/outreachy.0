@@ -1,122 +1,193 @@
-X-GM-THRID: 6253643249541447680
-X-Received: by 10.182.102.38 with SMTP id fl6mr20390286obb.46.1456039782290;
-        Sat, 20 Feb 2016 23:29:42 -0800 (PST)
+X-GM-THRID: 6200281981833445376
+X-Received: by 10.112.40.17 with SMTP id t17mr509920lbk.10.1443617333751;
+        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.154.146 with SMTP id c140ls529913ioe.76.gmail; Sat, 20 Feb
- 2016 23:29:41 -0800 (PST)
-X-Received: by 10.67.8.2 with SMTP id dg2mr21966327pad.16.1456039781957;
-        Sat, 20 Feb 2016 23:29:41 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id ui7si2538803pab.0.2016.02.20.23.29.41
+Received: by 10.180.109.200 with SMTP id hu8ls170478wib.0.gmail; Wed, 30 Sep
+ 2015 05:48:53 -0700 (PDT)
+X-Received: by 10.180.12.170 with SMTP id z10mr623179wib.1.1443617333329;
+        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id o5si234450wib.0.2015.09.30.05.48.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 23:29:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=mahfouz.saif.elyazal@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id c10so77432539pfc.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 23:29:41 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22b.google.com with SMTP id fx3so195460189wic.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=wgwSs7cMRYYDDkh8hD3yQa1rgrzxcBidsuLbIeua1Xc=;
-        b=hynkRGL1GFPFs62iZl50sHzuZQ2eisEPMPlsxbYRchnf6AWo8UBzkktnX+4B6sHMF6
-         CvtexRUIFrUPOW3Gp4+351JLpgeK2loSAgTxNn1H8J2iE2LqN6T4y+2Ek8DvwbphKBUU
-         8K4C38ppR/QE/+OtCk9dpIo61+IoUh+LZ5vRjrAstBU+0wuf+cozrIzBymlxmVzV9GbT
-         hezvT+Vx8Ml/YK+iaFQq2SN/AofqdTAXI9TRwMTF730er8JKN7g11JXeCaS4Cdpo+PYg
-         IZ1VQs+MOE2prRS+HLTJN5OtoNatgLhqaqzZbzsZD4yv0hyCCH1H4Kbm+9LVqdh//y7d
-         cDRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=wgwSs7cMRYYDDkh8hD3yQa1rgrzxcBidsuLbIeua1Xc=;
-        b=kAhYHwYa7dyG6EyKfEEoHBFRbO49f/ASvz48/cNn+1TziCvYeOCZhh2+t12luV/quf
-         PssWp8RqwXVBPijP/13kzHBY18v0/UM4bafq4ovhU2Cn1atLlS/xA9C/w8F3SBTvNBk0
-         5okQZ9JXhYvNxtn5Z5ytxBqA7X1mLWhr9gxF+r+ipm2O4qA/faunkEok3eNt/qTqbA7m
-         Py1Afg2/hORqRMfxtnuME14naH/WS0HvUHOMcELwqcpcRjCCH6IH8upUWJCGa/+Ucge7
-         oQ1yHsIcE1yupo1/g+t4TYWqIr5JLO89j+1qD7S4/KaY4g8aSY1s1/7xCl6NFh1eFBTT
-         X8pA==
-X-Gm-Message-State: AG10YORJNn0zxdcP7SerNwfWK2H6RZXZTl1OY7KEnEvPxwTzJNZ12RY19tot9sR8BANNlw==
-X-Received: by 10.98.87.80 with SMTP id l77mr29751843pfb.101.1456039781814;
-        Sat, 20 Feb 2016 23:29:41 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.44])
-        by smtp.gmail.com with ESMTPSA id t87sm28453913pfa.14.2016.02.20.23.29.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 23:29:41 -0800 (PST)
-Date: Sun, 21 Feb 2016 04:59:44 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: dgnc: Add block comments /* and */ on a separate
- line in dgnc_tty.c.
-Message-ID: <20160220232944.GA4107@sandhya>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=X9SWh0Pea1lI54PVwiEUBtkK5JjB26PZJ2SvBiIUDeg=;
+        b=pBtKoPOrDHDhkIsTrj0645zCvuT9nQLF1OkWMyLJH3qWljjw/MS+7l6Hq5v0Yvivve
+         YXvTgBu/+1HADbg/UHVlEEIu8w7wcYDqqRq6c/iorDF/c14PGOvY0R6Jyl6SKx01IjNt
+         drqmJI5ApywO/ebnz/5i7MCODyzDz8sU58Md2+18hnUvXpsK6vmdq3QwjlY6zY1ds2Rt
+         53Q6ptxoOLlbN2VCpclre7hrag/IJBMHtPbGZ0FB/ujmCVuqlTH74CQUuDS9ZbTksv7S
+         hjNjwi90z0OwfavhKOuGRXcO5gDWz87eTn/IYjkDd4X4RDnJIojh27gIEGQnj+yDWRQI
+         kI1Q==
+X-Received: by 10.194.62.112 with SMTP id x16mr4027299wjr.20.1443617333048;
+        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.239.145])
+        by smtp.gmail.com with ESMTPSA id o10sm610747wia.4.2015.09.30.05.48.51
+        (version=TLS1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 30 Sep 2015 05:48:52 -0700 (PDT)
+Date: Wed, 30 Sep 2015 14:48:49 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: Shraddha Barke <shraddha.6596@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: fbtft: Remove debug
+ messages related to DEBUG_WRITE_VMEM
+Message-ID: <20150930124849.GA3692@waves>
+References: <1443615633-5978-1-git-send-email-shraddha.6596@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+In-Reply-To: <1443615633-5978-1-git-send-email-shraddha.6596@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Add block comments /* and */ on a separate line. The warning is reported by checkpatch.pl.
+On Wed, Sep 30, 2015 at 05:50:32PM +0530, Shraddha Barke wrote:
 
-The preferred style for long (multi-line) comments is:
-/*
- *
- *
- */
+Hello Shraddha,
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/dgnc/dgnc_tty.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+Nice effort done there. But you forgot the cover letter for this
+patch set. Check the section 'Submitting a patchset' in:
 
-diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
-index b79eab0..21a50a4 100644
---- a/drivers/staging/dgnc/dgnc_tty.c
-+++ b/drivers/staging/dgnc/dgnc_tty.c
-@@ -443,7 +443,8 @@ void dgnc_tty_uninit(struct dgnc_board *brd)
- 	brd->PrintDriver.termios = NULL;
- }
- 
--/*=======================================================================
-+/*
-+ *=======================================================================
-  *
-  *	dgnc_wmove - Write data to transmit queue.
-  *
-@@ -451,7 +452,8 @@ void dgnc_tty_uninit(struct dgnc_board *brd)
-  *		buf	- Pointer to characters to be moved.
-  *		n	- Number of characters to move.
-  *
-- *=======================================================================*/
-+ *=======================================================================
-+ */
- static void dgnc_wmove(struct channel_t *ch, char *buf, uint n)
- {
- 	int	remain;
-@@ -489,13 +491,15 @@ static void dgnc_wmove(struct channel_t *ch, char *buf, uint n)
- 	ch->ch_w_head = head;
- }
- 
--/*=======================================================================
-+/*
-+ *=======================================================================
-  *
-  *      dgnc_input - Process received data.
-  *
-  *	      ch      - Pointer to channel structure.
-  *
-- *=======================================================================*/
-+ *=======================================================================
-+ */
- void dgnc_input(struct channel_t *ch)
- {
- 	struct dgnc_board *bd;
+http://kernelnewbies.org/Outreachyfirstpatch
+
+for instructions to generate a patchset and its cover letter.
+
+> Remove debug messages related to fbtft_par_dbg(DEBUG_WRITE_VMEM.. )
+> as this info can be obtained using kernel function tracer
+> 
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> ---
+>  drivers/staging/fbtft/fb_agm1264k-fl.c | 2 --
+>  drivers/staging/fbtft/fb_pcd8544.c     | 2 --
+>  drivers/staging/fbtft/fb_ssd1306.c     | 2 --
+>  drivers/staging/fbtft/fb_tls8204.c     | 2 --
+>  drivers/staging/fbtft/fb_uc1611.c      | 2 --
+>  drivers/staging/fbtft/fb_uc1701.c      | 2 --
+>  drivers/staging/fbtft/fb_watterott.c   | 4 ----
+>  7 files changed, 16 deletions(-)
+> 
+> diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
+> index 2a2d53c..88718f6 100644
+> --- a/drivers/staging/fbtft/fb_agm1264k-fl.c
+> +++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+> @@ -278,8 +278,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	if (!convert_buf)
+>  		return -ENOMEM;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	/* converting to grayscale16 */
+>  	for (x = 0; x < par->info->var.xres; ++x)
+>  		for (y = 0; y < par->info->var.yres; ++y) {
+> diff --git a/drivers/staging/fbtft/fb_pcd8544.c b/drivers/staging/fbtft/fb_pcd8544.c
+> index 828174a..8b52523 100644
+> --- a/drivers/staging/fbtft/fb_pcd8544.c
+> +++ b/drivers/staging/fbtft/fb_pcd8544.c
+> @@ -117,8 +117,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	int x, y, i;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	for (x = 0; x < 84; x++) {
+>  		for (y = 0; y < 6; y++) {
+>  			*buf = 0x00;
+> diff --git a/drivers/staging/fbtft/fb_ssd1306.c b/drivers/staging/fbtft/fb_ssd1306.c
+> index 7568e94..568b433 100644
+> --- a/drivers/staging/fbtft/fb_ssd1306.c
+> +++ b/drivers/staging/fbtft/fb_ssd1306.c
+> @@ -165,8 +165,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	int x, y, i;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	for (x = 0; x < par->info->var.xres; x++) {
+>  		for (y = 0; y < par->info->var.yres/8; y++) {
+>  			*buf = 0x00;
+> diff --git a/drivers/staging/fbtft/fb_tls8204.c b/drivers/staging/fbtft/fb_tls8204.c
+> index 4e16ea7..d609f87 100644
+> --- a/drivers/staging/fbtft/fb_tls8204.c
+> +++ b/drivers/staging/fbtft/fb_tls8204.c
+> @@ -98,8 +98,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	int x, y, i;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	for (y = 0; y < HEIGHT / 8; y++) {
+>  		u8 *buf = par->txbuf.buf;
+>  		/* The display is 102x68 but the LCD is 84x48.  Set
+> diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
+> index 5b83661..664e313 100644
+> --- a/drivers/staging/fbtft/fb_uc1611.c
+> +++ b/drivers/staging/fbtft/fb_uc1611.c
+> @@ -230,8 +230,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	int x, y, i;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	switch (par->pdata->display.buswidth) {
+>  	case 8:
+>  		switch (par->info->var.rotate) {
+> diff --git a/drivers/staging/fbtft/fb_uc1701.c b/drivers/staging/fbtft/fb_uc1701.c
+> index 28b13cf..28aa100 100644
+> --- a/drivers/staging/fbtft/fb_uc1701.c
+> +++ b/drivers/staging/fbtft/fb_uc1701.c
+> @@ -146,8 +146,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	int x, y, i;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	for (y = 0; y < PAGES; y++) {
+>  		buf = par->txbuf.buf;
+>  		for (x = 0; x < WIDTH; x++) {
+> diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+> index c480049..9c2f0e3 100644
+> --- a/drivers/staging/fbtft/fb_watterott.c
+> +++ b/drivers/staging/fbtft/fb_watterott.c
+> @@ -74,8 +74,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  	int i, j;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	start_line = offset / par->info->fix.line_length;
+>  	end_line = start_line + (len / par->info->fix.line_length) - 1;
+>  
+> @@ -113,8 +111,6 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
+>  	int i, j;
+>  	int ret = 0;
+>  
+> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
+> -
+>  	start_line = offset / par->info->fix.line_length;
+>  	end_line = start_line + (len / par->info->fix.line_length) - 1;
+>  
+> -- 
+> 2.1.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443615633-5978-1-git-send-email-shraddha.6596%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+
 -- 
-1.8.3.4
-
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
