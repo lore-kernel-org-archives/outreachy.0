@@ -1,246 +1,49 @@
 X-GM-THRID: 6200081911391453184
-X-Received: by 10.194.156.193 with SMTP id wg1mr773823wjb.3.1443636309580;
-        Wed, 30 Sep 2015 11:05:09 -0700 (PDT)
+X-Received: by 10.66.246.198 with SMTP id xy6mr1636714pac.36.1443590228792;
+        Tue, 29 Sep 2015 22:17:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.89.207 with SMTP id n198ls58436lfb.54.gmail; Wed, 30 Sep
- 2015 11:05:09 -0700 (PDT)
-X-Received: by 10.152.20.195 with SMTP id p3mr772201lae.5.1443636309028;
-        Wed, 30 Sep 2015 11:05:09 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id c7si916024wiy.3.2015.09.30.11.05.08
+Received: by 10.50.66.129 with SMTP id f1ls382441igt.2.canary; Tue, 29 Sep
+ 2015 22:17:08 -0700 (PDT)
+X-Received: by 10.107.148.204 with SMTP id w195mr2392482iod.15.1443590228420;
+        Tue, 29 Sep 2015 22:17:08 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id e64si611870ywb.7.2015.09.29.22.17.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Tue, 29 Sep 2015 22:17:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id fx3so73546738wic.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :content-type;
-        bh=A6bgyYnlBwrYRnZnpiXnvfhtvIXneIpkGfKUp8dqDMA=;
-        b=myzl8ly4sGBFNNK2o0ga2gWQPCRiWdUfb9yYExRwjLoYOOv/H+qD9KoM710QfVO3Mj
-         0ZVLOtBNUyb0pHL8iYDNP+K+dNjBW2NPtkOOccF9vgxorPk7HDsu+60Bwu6z92Mr2R/R
-         oFtpSooUpPYlxqvnfkLErR4P+o8orzBujZzMxpfCg1j3e9j4wMCGQDMP+amFFisV+vzB
-         e0c6qifnl3Zm/GtzZoA1QvIMUKiDP7diR7FPumIOlhXaMuM3l840C8EZpgvXnDanEyP5
-         EzF8uxlE2d71HmZYGhrjBoVtRA/n5Y56s17xMbLcAKgMt9BHLgKXUfqPNEjSkUkBg1v6
-         qXeA==
-MIME-Version: 1.0
-X-Received: by 10.180.103.41 with SMTP id ft9mr5910314wib.95.1443636308865;
- Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
-Received: by 10.27.186.66 with HTTP; Wed, 30 Sep 2015 11:05:08 -0700 (PDT)
-In-Reply-To: <CAKHNQQGYc70qjW3Cjm=JOAbR5a5E+6KsTufMSuG2xsrY-g8Tgg@mail.gmail.com>
-References: <20150929232413.GA16457@ubuntu>
-	<alpine.DEB.2.02.1509300722250.1984@localhost6.localdomain6>
-	<CAKHNQQGYc70qjW3Cjm=JOAbR5a5E+6KsTufMSuG2xsrY-g8Tgg@mail.gmail.com>
-Date: Wed, 30 Sep 2015 23:35:08 +0530
-Message-ID: <CAKHNQQGZzRJ8GqC2pkmJ_0esk_N6+97wBJNgQtmmCo_C0H5sWA@mail.gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [83.145.64.184])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 12F8D1F5D;
+	Wed, 30 Sep 2015 05:17:06 +0000 (UTC)
+Date: Wed, 30 Sep 2015 07:17:05 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: unisys: visorbus:
  visorchipset: Converted arrays to static const
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=20cf306845915ff7030520fac515
+Message-ID: <20150930051705.GA2303@kroah.com>
+References: <20150929232413.GA16457@ubuntu>
+ <20150930015931.GA14259@kroah.com>
+ <CAKHNQQFAUaJfbySZ_r-ZtFAz9B7ih0Vmezgz3Qv7-khTB-2WYA@mail.gmail.com>
+ <20150930041851.GA21970@kroah.com>
+ <CAKHNQQHv-LA-6W5EE=tx=xKc+aMFGiUTfnqTLEuL0NWMZj2nGQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAKHNQQHv-LA-6W5EE=tx=xKc+aMFGiUTfnqTLEuL0NWMZj2nGQ@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
---20cf306845915ff7030520fac515
-Content-Type: text/plain; charset=UTF-8
+On Wed, Sep 30, 2015 at 09:50:50AM +0530, Shivani Bhardwaj wrote:
+> This was a warning message by compiler only that I need to convert char * to
+> static const char * const.
 
-Thanks Julia!
-And Greg, I'm really sorry, warning was generated by checkpatch script not
-gcc. I read online that it does generate false warnings. Thank you.
+The compiler said that?  Can you post the exact message gcc gave you for
+this line, that seems very odd.
 
-On Wed, Sep 30, 2015 at 11:34 PM, Shivani Bhardwaj <shivanib134@gmail.com>
-wrote:
+thanks,
 
-> Thanks Julia!
-> And Greg, I'm really sorry, warning was generated by checkpatch script not
-> gcc. I read online that it does generate false warnings. Thank you.
->
->
-> On Wed, Sep 30, 2015 at 10:56 AM, Julia Lawall <julia.lawall@lip6.fr>
-> wrote:
->
->> On Wed, 30 Sep 2015, Shivani Bhardwaj wrote:
->>
->> > Replaced the declaration of character array from char * to
->> > static const char * const as the array is not intended to be used
->> > anywhere outside the function plus the values in array and the pointer
->> > to it don't have to be changed.
->>
->> It's confusing, but static should not be used on local variable because
->> they are not used outside the function.  Static means that the variable is
->> allocated only once over all executions of the functions.  Actually, it
->> becomes like a global variable that no one else can see.  If you call the
->> function once, and change the value of the variable, then on the next call
->> you see the changed value until the variable is modified.
->>
->> Here that all makes no sense, because you say that the array is not
->> modified, and anyway the code explicitly sets the variable to its original
->> value.
->>
->> julia
->>
->> > Signed-off-by: Shivani Bhardwaj <shivanib134@gmaail.com>
->> > ---
->> >  drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--
->> >  1 file changed, 2 insertions(+), 2 deletions(-)
->> >
->> > diff --git a/drivers/staging/unisys/visorbus/visorchipset.c
->> b/drivers/staging/unisys/visorbus/visorchipset.c
->> > index 4b76cb4..073b45b 100644
->> > --- a/drivers/staging/unisys/visorbus/visorchipset.c
->> > +++ b/drivers/staging/unisys/visorbus/visorchipset.c
->> > @@ -1411,7 +1411,7 @@ static int
->> >  visorchipset_chipset_selftest(void)
->> >  {
->> >       char env_selftest[20];
->> > -     char *envp[] = { env_selftest, NULL };
->> > +     static const char * const envp[] = { env_selftest, NULL };
->> >
->> >       sprintf(env_selftest, "SPARSP_SELFTEST=%d", 1);
->> >       kobject_uevent_env(&visorchipset_platform_device.dev.kobj,
->> KOBJ_CHANGE,
->> > @@ -1561,7 +1561,7 @@ parahotplug_request_kickoff(struct
->> parahotplug_request *req)
->> >       struct controlvm_message_packet *cmd = &req->msg.cmd;
->> >       char env_cmd[40], env_id[40], env_state[40], env_bus[40],
->> env_dev[40],
->> >           env_func[40];
->> > -     char *envp[] = {
->> > +     static const char * const envp[] = {
->> >               env_cmd, env_id, env_state, env_bus, env_dev, env_func,
->> NULL
->> >       };
->> >
->> > --
->> > 2.1.0
->> >
->> > --
->> > You received this message because you are subscribed to the Google
->> Groups "outreachy-kernel" group.
->> > To unsubscribe from this group and stop receiving emails from it, send
->> an email to outreachy-kernel+unsubscribe@googlegroups.com.
->> > To post to this group, send email to outreachy-kernel@googlegroups.com.
->> > To view this discussion on the web visit
->> https://groups.google.com/d/msgid/outreachy-kernel/20150929232413.GA16457%40ubuntu
->> .
->> > For more options, visit https://groups.google.com/d/optout.
->> >
->>
->
->
-
---20cf306845915ff7030520fac515
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Thanks Julia!<br></div>And Greg, I&#39;m really sorry=
-, warning was=20
-generated by checkpatch script not gcc. I read online that it does=20
-generate false warnings. Thank you.</div><div class=3D"gmail_extra"><br><di=
-v class=3D"gmail_quote">On Wed, Sep 30, 2015 at 11:34 PM, Shivani Bhardwaj =
-<span dir=3D"ltr">&lt;<a href=3D"mailto:shivanib134@gmail.com" target=3D"_b=
-lank">shivanib134@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"g=
-mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
-eft:1ex"><div dir=3D"ltr"><div><div>Thanks Julia!<br></div>And Greg, I&#39;=
-m really sorry, warning was generated by checkpatch script not gcc. I read =
-online that it does generate false warnings. Thank you.<br></div><div><br><=
-/div></div><div class=3D"HOEnZb"><div class=3D"h5"><div class=3D"gmail_extr=
-a"><br><div class=3D"gmail_quote">On Wed, Sep 30, 2015 at 10:56 AM, Julia L=
-awall <span dir=3D"ltr">&lt;<a href=3D"mailto:julia.lawall@lip6.fr" target=
-=3D"_blank">julia.lawall@lip6.fr</a>&gt;</span> wrote:<br><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex"><span>On Wed, 30 Sep 2015, Shivani Bhardwaj wrote:<br>
-<br>
-&gt; Replaced the declaration of character array from char * to<br>
-&gt; static const char * const as the array is not intended to be used<br>
-&gt; anywhere outside the function plus the values in array and the pointer=
-<br>
-&gt; to it don&#39;t have to be changed.<br>
-<br>
-</span>It&#39;s confusing, but static should not be used on local variable =
-because<br>
-they are not used outside the function.=C2=A0 Static means that the variabl=
-e is<br>
-allocated only once over all executions of the functions.=C2=A0 Actually, i=
-t<br>
-becomes like a global variable that no one else can see.=C2=A0 If you call =
-the<br>
-function once, and change the value of the variable, then on the next call<=
-br>
-you see the changed value until the variable is modified.<br>
-<br>
-Here that all makes no sense, because you say that the array is not<br>
-modified, and anyway the code explicitly sets the variable to its original<=
-br>
-value.<br>
-<br>
-julia<br>
-<span><br>
-&gt; Signed-off-by: Shivani Bhardwaj &lt;<a href=3D"mailto:shivanib134@gmaa=
-il.com" target=3D"_blank">shivanib134@gmaail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--<br>
-&gt;=C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/drivers/staging/unisys/visorbus/visorchipset.c b/drivers/=
-staging/unisys/visorbus/visorchipset.c<br>
-&gt; index 4b76cb4..073b45b 100644<br>
-&gt; --- a/drivers/staging/unisys/visorbus/visorchipset.c<br>
-&gt; +++ b/drivers/staging/unisys/visorbus/visorchipset.c<br>
-&gt; @@ -1411,7 +1411,7 @@ static int<br>
-&gt;=C2=A0 visorchipset_chipset_selftest(void)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0char env_selftest[20];<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0char *envp[] =3D { env_selftest, NULL };<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0static const char * const envp[] =3D { env_selfte=
-st, NULL };<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sprintf(env_selftest, &quot;SPARSP_SELFTEST=
-=3D%d&quot;, 1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0kobject_uevent_env(&amp;visorchipset_platfor=
-m_device.dev.kobj, KOBJ_CHANGE,<br>
-&gt; @@ -1561,7 +1561,7 @@ parahotplug_request_kickoff(struct parahotplug_r=
-equest *req)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct controlvm_message_packet *cmd =3D &am=
-p;req-&gt;msg.cmd;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0char env_cmd[40], env_id[40], env_state[40],=
- env_bus[40], env_dev[40],<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0env_func[40];<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0char *envp[] =3D {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0static const char * const envp[] =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0env_cmd, env_id,=
- env_state, env_bus, env_dev, env_func, NULL<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0};<br>
-&gt;<br>
-&gt; --<br>
-&gt; 2.1.0<br>
-&gt;<br>
-</span><span>&gt; --<br>
-&gt; You received this message because you are subscribed to the Google Gro=
-ups &quot;outreachy-kernel&quot; group.<br>
-&gt; To unsubscribe from this group and stop receiving emails from it, send=
- an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
-com" target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<b=
-r>
-&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
-l@googlegroups.com" target=3D"_blank">outreachy-kernel@googlegroups.com</a>=
-.<br>
-</span>&gt; To view this discussion on the web visit <a href=3D"https://gro=
-ups.google.com/d/msgid/outreachy-kernel/20150929232413.GA16457%40ubuntu" re=
-l=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid/outrea=
-chy-kernel/20150929232413.GA16457%40ubuntu</a>.<br>
-<div><div>&gt; For more options, visit <a href=3D"https://groups.google.com=
-/d/optout" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d=
-/optout</a>.<br>
-&gt;<br>
-</div></div></blockquote></div><br></div>
-</div></div></blockquote></div><br></div>
-
---20cf306845915ff7030520fac515--
+greg k-h
 
