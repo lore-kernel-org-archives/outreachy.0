@@ -1,48 +1,48 @@
 X-GM-THRID: 6200080718557609984
-X-Received: by 10.180.210.212 with SMTP id mw20mr5037953wic.3.1443641329319;
-        Wed, 30 Sep 2015 12:28:49 -0700 (PDT)
+X-Received: by 10.194.118.65 with SMTP id kk1mr815300wjb.5.1443640541924;
+        Wed, 30 Sep 2015 12:15:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.28.230 with SMTP id e6ls57427lah.66.gmail; Wed, 30 Sep
- 2015 12:28:48 -0700 (PDT)
-X-Received: by 10.112.125.104 with SMTP id mp8mr837094lbb.20.1443641328410;
-        Wed, 30 Sep 2015 12:28:48 -0700 (PDT)
+Received: by 10.180.89.102 with SMTP id bn6ls1053171wib.43.canary; Wed, 30 Sep
+ 2015 12:15:41 -0700 (PDT)
+X-Received: by 10.195.18.100 with SMTP id gl4mr819283wjd.4.1443640541361;
+        Wed, 30 Sep 2015 12:15:41 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id ch7si62463wib.2.2015.09.30.12.28.48
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id bj4si68502wib.1.2015.09.30.12.15.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 12:28:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Wed, 30 Sep 2015 12:15:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id lk2so1818405wic.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 12:28:48 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id fx3so76297747wic.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 12:15:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=I1+25pZFTreo6O+vFWzFdOSk28MtCEx1jGMW+mhysQQ=;
-        b=OuZ2YzAMxjSWWlAyeWYOrKHsGBQ05eR6vJYc2LwlhsGkKm0IktcD4deXiUs+LKvZjH
-         iTVTt4IOdFAWzAQPX3oKeEiTcTpIWedH9y+oJvkuX5dZTtu8nmuArMPRaslsEwJZXpI6
-         n9DJW09FCkUHh4YhICzEsPkPCVwifzIpKcVOHMg15/Tq1HLYHDHYetBukMg1yMHQaDmn
-         7bfrojAGQ/woThppTNMOH4VzPLNwLzIkpNzSuVd80G8qrQxnpmW4EVeh1IGcpj4VQdRd
-         sfBmClTIaR8dh+JrxnCT4eY3tvCzAG/2mWxBilC/mbBT0GxD/dVi8wU4pldti9LCCQSG
-         1SPA==
-X-Received: by 10.180.101.198 with SMTP id fi6mr3247639wib.25.1443641328216;
-        Wed, 30 Sep 2015 12:28:48 -0700 (PDT)
+        bh=IGGZ5Z8rwgMl43EKNMRkGxjh4gcvYr0qEkp1d/gKnQY=;
+        b=awMPxdR/gJAbENIWT83Jeu0+i2vMB9cKvx6sr///zBMPyGu0b2mh4FExuR3bg0XP4s
+         YWBVI50M0IRGqyjt3DoEsl4ulXIIeFdDIOqn7w28xnVmOOOJCs0H9upbf2G2xp4h04+D
+         WLI20SqhZAnC1glqJi2OV9GisBBLxoNSlmK9yuDKnAl5v1UJw/48DIyL3s30jZvXT/If
+         FESYfVE5xOkz9XZRnDzudcrm5q/dmSdJtq579+DXXDJqtd25PQQ7ZyF+TDhJ5Hv4ZQcc
+         yjr9nL5HDUtbX9C5TNB6UQYc3sNpIbGYJVLb6mQW/AyHfNIdKo03HwEFCM4ovYyfyFSE
+         N4Dw==
+X-Received: by 10.180.221.193 with SMTP id qg1mr32377546wic.87.1443640541189;
+        Wed, 30 Sep 2015 12:15:41 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by smtp.gmail.com with ESMTPSA id ju6sm16681556wid.9.2015.09.30.12.28.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 30 Sep 2015 12:28:47 -0700 (PDT)
+        by smtp.gmail.com with ESMTPSA id pk7sm2189871wjb.2.2015.09.30.12.15.39
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 30 Sep 2015 12:15:40 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH v3] staging: wlan-ng: fix block comment indentation
-Date: Wed, 30 Sep 2015 22:28:32 +0300
-Message-Id: <1443641312-29583-1-git-send-email-ciorneiioana@gmail.com>
+Subject: [PATCH v2] staging: wlan-ng: fix block comment indentation
+Date: Wed, 30 Sep 2015 22:14:54 +0300
+Message-Id: <1443640494-17123-1-git-send-email-ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
 
 Update indentation of block comments to follow linux coding style
@@ -50,16 +50,11 @@ Update indentation of block comments to follow linux coding style
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
 	Changes in v2:
-		- fix block comments before functions
+		- fix block comment indentation from every point of view
 
-	Changes in v3:
-		- fix block comments alignment
-
- drivers/staging/wlan-ng/prism2sta.c | 1013 ++++++++++++++++++-----------------
- 1 file changed, 510 insertions(+), 503 deletions(-)
-
+ drivers/staging/wlan-ng/prism2sta.c | 992 ++++++++++++++++++------------------
 diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 0329c52..bd97986 100644
+index 0329c52..637ccaa 100644
 --- a/drivers/staging/wlan-ng/prism2sta.c
 +++ b/drivers/staging/wlan-ng/prism2sta.c
 @@ -1,54 +1,54 @@
@@ -501,77 +496,7 @@ index 0329c52..bd97986 100644
  static int prism2sta_getcardinfo(wlandevice_t *wlandev)
  {
  	int result = 0;
-@@ -677,7 +677,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, modem interface supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_sup_mfi.role = le16_to_cpu(hw->cap_sup_mfi.role);
- 	hw->cap_sup_mfi.id = le16_to_cpu(hw->cap_sup_mfi.id);
- 	hw->cap_sup_mfi.variant = le16_to_cpu(hw->cap_sup_mfi.variant);
-@@ -700,7 +701,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, controller interface supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_sup_cfi.role = le16_to_cpu(hw->cap_sup_cfi.role);
- 	hw->cap_sup_cfi.id = le16_to_cpu(hw->cap_sup_cfi.id);
- 	hw->cap_sup_cfi.variant = le16_to_cpu(hw->cap_sup_cfi.variant);
-@@ -723,7 +725,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, primary firmware supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_sup_pri.role = le16_to_cpu(hw->cap_sup_pri.role);
- 	hw->cap_sup_pri.id = le16_to_cpu(hw->cap_sup_pri.id);
- 	hw->cap_sup_pri.variant = le16_to_cpu(hw->cap_sup_pri.variant);
-@@ -746,7 +749,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, station firmware supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_sup_sta.role = le16_to_cpu(hw->cap_sup_sta.role);
- 	hw->cap_sup_sta.id = le16_to_cpu(hw->cap_sup_sta.id);
- 	hw->cap_sup_sta.variant = le16_to_cpu(hw->cap_sup_sta.variant);
-@@ -777,7 +781,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, primary f/w actor, CFI supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_act_pri_cfi.role = le16_to_cpu(hw->cap_act_pri_cfi.role);
- 	hw->cap_act_pri_cfi.id = le16_to_cpu(hw->cap_act_pri_cfi.id);
- 	hw->cap_act_pri_cfi.variant = le16_to_cpu(hw->cap_act_pri_cfi.variant);
-@@ -800,7 +805,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, station f/w actor, CFI supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_act_sta_cfi.role = le16_to_cpu(hw->cap_act_sta_cfi.role);
- 	hw->cap_act_sta_cfi.id = le16_to_cpu(hw->cap_act_sta_cfi.id);
- 	hw->cap_act_sta_cfi.variant = le16_to_cpu(hw->cap_act_sta_cfi.variant);
-@@ -823,7 +829,8 @@ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
- 	}
- 
- 	/* get all the Compatibility range, station f/w actor, MFI supplier
--	   fields in byte order */
-+	 * fields in byte order
-+	 */
- 	hw->cap_act_sta_mfi.role = le16_to_cpu(hw->cap_act_sta_mfi.role);
- 	hw->cap_act_sta_mfi.id = le16_to_cpu(hw->cap_act_sta_mfi.id);
- 	hw->cap_act_sta_mfi.variant = le16_to_cpu(hw->cap_act_sta_mfi.variant);
-@@ -884,24 +891,24 @@ done:
+@@ -884,24 +884,24 @@ done:
  	return result;
  }
  
@@ -614,7 +539,7 @@ index 0329c52..bd97986 100644
  static int prism2sta_globalsetup(wlandevice_t *wlandev)
  {
  	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
-@@ -934,47 +941,47 @@ exit:
+@@ -934,47 +934,47 @@ exit:
  	return result;
  }
  
@@ -697,7 +622,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_tallies(wlandevice_t *wlandev,
  				  hfa384x_InfFrame_t *inf)
  {
-@@ -986,8 +993,8 @@ static void prism2sta_inf_tallies(wlandevice_t *wlandev,
+@@ -986,8 +986,8 @@ static void prism2sta_inf_tallies(wlandevice_t *wlandev,
  	int cnt;
  
  	/*
@@ -708,7 +633,7 @@ index 0329c52..bd97986 100644
  	 */
  
  	cnt = sizeof(hfa384x_CommTallies32_t) / sizeof(u32);
-@@ -1004,23 +1011,23 @@ static void prism2sta_inf_tallies(wlandevice_t *wlandev,
+@@ -1004,23 +1004,23 @@ static void prism2sta_inf_tallies(wlandevice_t *wlandev,
  	}
  }
  
@@ -749,7 +674,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_scanresults(wlandevice_t *wlandev,
  				      hfa384x_InfFrame_t *inf)
  {
-@@ -1060,23 +1067,23 @@ static void prism2sta_inf_scanresults(wlandevice_t *wlandev,
+@@ -1060,23 +1060,23 @@ static void prism2sta_inf_scanresults(wlandevice_t *wlandev,
  	}
  }
  
@@ -790,7 +715,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_hostscanresults(wlandevice_t *wlandev,
  					  hfa384x_InfFrame_t *inf)
  {
-@@ -1101,23 +1108,23 @@ static void prism2sta_inf_hostscanresults(wlandevice_t *wlandev,
+@@ -1101,23 +1101,23 @@ static void prism2sta_inf_hostscanresults(wlandevice_t *wlandev,
  	wake_up_interruptible(&hw->cmdq);
  };
  
@@ -831,7 +756,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_chinforesults(wlandevice_t *wlandev,
  					hfa384x_InfFrame_t *inf)
  {
-@@ -1414,23 +1421,23 @@ void prism2sta_processing_defer(struct work_struct *data)
+@@ -1414,23 +1414,23 @@ void prism2sta_processing_defer(struct work_struct *data)
  	wlandev->linkstatus = (hw->link_status == HFA384x_LINK_CONNECTED);
  }
  
@@ -872,7 +797,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_linkstatus(wlandevice_t *wlandev,
  				     hfa384x_InfFrame_t *inf)
  {
-@@ -1441,24 +1448,24 @@ static void prism2sta_inf_linkstatus(wlandevice_t *wlandev,
+@@ -1441,24 +1441,24 @@ static void prism2sta_inf_linkstatus(wlandevice_t *wlandev,
  	schedule_work(&hw->link_bh);
  }
  
@@ -915,7 +840,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
  				      hfa384x_InfFrame_t *inf)
  {
-@@ -1471,15 +1478,15 @@ static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
+@@ -1471,15 +1471,15 @@ static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
  	rec.reason = le16_to_cpu(rec.reason);
  
  	/*
@@ -940,7 +865,7 @@ index 0329c52..bd97986 100644
  	 */
  
  	for (i = 0; i < hw->authlist.cnt; i++)
-@@ -1501,25 +1508,25 @@ static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
+@@ -1501,25 +1501,25 @@ static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
  	}
  }
  
@@ -985,7 +910,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_authreq(wlandevice_t *wlandev,
  				  hfa384x_InfFrame_t *inf)
  {
-@@ -1545,23 +1552,23 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1545,23 +1545,23 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	u8 *addr;
  
  	/*
@@ -1014,7 +939,7 @@ index 0329c52..bd97986 100644
  		 */
  
  		for (i = 0; i < hw->authlist.cnt; i++)
-@@ -1576,7 +1583,7 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1576,7 +1576,7 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	case WLAN_ACCESS_ALL:
  
  		/*
@@ -1023,7 +948,7 @@ index 0329c52..bd97986 100644
  		 */
  
  		rec.status = P80211ENUM_status_successful;
-@@ -1585,13 +1592,13 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1585,13 +1585,13 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	case WLAN_ACCESS_ALLOW:
  
  		/*
@@ -1044,7 +969,7 @@ index 0329c52..bd97986 100644
  		 */
  
  		if (hw->allow.modify == 0) {
-@@ -1613,13 +1620,13 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1613,13 +1613,13 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	case WLAN_ACCESS_DENY:
  
  		/*
@@ -1065,7 +990,7 @@ index 0329c52..bd97986 100644
  		 */
  
  		if (hw->deny.modify == 0) {
-@@ -1642,12 +1649,12 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1642,12 +1642,12 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	}
  
  	/*
@@ -1084,7 +1009,7 @@ index 0329c52..bd97986 100644
  	 */
  
  	added = 0;
-@@ -1672,9 +1679,9 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1672,9 +1672,9 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	}
  
  	/*
@@ -1097,7 +1022,7 @@ index 0329c52..bd97986 100644
  	 */
  
  	rec.status = cpu_to_le16(rec.status);
-@@ -1691,24 +1698,24 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+@@ -1691,24 +1691,24 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
  	}
  }
  
@@ -1140,7 +1065,7 @@ index 0329c52..bd97986 100644
  static void prism2sta_inf_psusercnt(wlandevice_t *wlandev,
  				    hfa384x_InfFrame_t *inf)
  {
-@@ -1717,23 +1724,23 @@ static void prism2sta_inf_psusercnt(wlandevice_t *wlandev,
+@@ -1717,23 +1717,23 @@ static void prism2sta_inf_psusercnt(wlandevice_t *wlandev,
  	hw->psusercount = le16_to_cpu(inf->info.psusercnt.usercnt);
  }
  
@@ -1181,7 +1106,7 @@ index 0329c52..bd97986 100644
  void prism2sta_ev_info(wlandevice_t *wlandev, hfa384x_InfFrame_t *inf)
  {
  	inf->infotype = le16_to_cpu(inf->infotype);
-@@ -1782,46 +1789,46 @@ void prism2sta_ev_info(wlandevice_t *wlandev, hfa384x_InfFrame_t *inf)
+@@ -1782,46 +1782,46 @@ void prism2sta_ev_info(wlandevice_t *wlandev, hfa384x_InfFrame_t *inf)
  	}
  }
  
@@ -1263,7 +1188,7 @@ index 0329c52..bd97986 100644
  void prism2sta_ev_tx(wlandevice_t *wlandev, u16 status)
  {
  	pr_debug("Tx Complete, status=0x%04x\n", status);
-@@ -1829,49 +1836,49 @@ void prism2sta_ev_tx(wlandevice_t *wlandev, u16 status)
+@@ -1829,49 +1829,49 @@ void prism2sta_ev_tx(wlandevice_t *wlandev, u16 status)
  	wlandev->netdev->stats.tx_packets++;
  }
  
@@ -1346,7 +1271,7 @@ index 0329c52..bd97986 100644
  * create_wlan
  *
  * Called at module init time.  This creates the wlandevice_t structure
-@@ -1889,7 +1896,7 @@ void prism2sta_ev_alloc(wlandevice_t *wlandev)
+@@ -1889,7 +1889,7 @@ void prism2sta_ev_alloc(wlandevice_t *wlandev)
  * Call context:
  *	process thread
  *
