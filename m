@@ -1,89 +1,79 @@
 X-GM-THRID: 6200282727557627904
-X-Received: by 10.152.20.195 with SMTP id p3mr746092lae.5.1443633887752;
-        Wed, 30 Sep 2015 10:24:47 -0700 (PDT)
+X-Received: by 10.152.120.232 with SMTP id lf8mr620308lab.1.1443624596543;
+        Wed, 30 Sep 2015 07:49:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.79.106 with SMTP id i10ls214983wix.18.gmail; Wed, 30 Sep
- 2015 10:24:47 -0700 (PDT)
-X-Received: by 10.180.35.132 with SMTP id h4mr4967389wij.5.1443633887341;
-        Wed, 30 Sep 2015 10:24:47 -0700 (PDT)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id o5si273207wib.0.2015.09.30.10.24.47
+Received: by 10.25.152.199 with SMTP id a190ls47701lfe.62.gmail; Wed, 30 Sep
+ 2015 07:49:55 -0700 (PDT)
+X-Received: by 10.152.9.65 with SMTP id x1mr619877laa.7.1443624595863;
+        Wed, 30 Sep 2015 07:49:55 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id k7si30758wif.1.2015.09.30.07.49.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 10:24:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        Wed, 30 Sep 2015 07:49:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id lk2so209123476wic.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 10:24:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=Sl9JF+FyH5InmbLiRYSX9bok5BwWxH30ENOMJW0LAvs=;
-        b=0PSeBeWg0d2vNQu3TnbaV8nJIkvbFHmIqX6LU2Tkuc4ECYlq35Z7sFsvc8UY6R4Xuf
-         8OZpLu8eacBVkOMsbzz2PzlSj2BHmUZLqeb34x1jzARfwvYJFh6vITJR6K27eH+huxYX
-         TOdrkf6oKzmo5sUTATTWy9KkO/+aiYjYfbcE74/QniC8c1EHaVTLCfIbjHVz4qxl2tDG
-         xIOWMOqdVh+491+J4S0/kvWL7a/c0totAmjNznU0/6XNrQxj/MY/AaajHNvqYtTqQlAq
-         xOD9RAioWh5uYtusp4V1+iOwqtFJ/A/IzAHjgGfvIiTodj4U9rvzZd1xTuBypLrvUDas
-         XdVg==
-MIME-Version: 1.0
-X-Received: by 10.180.103.41 with SMTP id ft9mr5723803wib.95.1443633887146;
- Wed, 30 Sep 2015 10:24:47 -0700 (PDT)
-Received: by 10.28.47.210 with HTTP; Wed, 30 Sep 2015 10:24:47 -0700 (PDT)
-In-Reply-To: <alpine.DEB.2.10.1509301647590.2526@hadrien>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,612,1437429600"; 
+   d="scan'208";a="180224907"
+Received: from unknown (HELO hadrien.local) ([89.202.203.52])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 30 Sep 2015 16:49:55 +0200
+Date: Wed, 30 Sep 2015 16:49:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: aybuke <aybuke.147@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: octeon: Use preferred kernel
+ type
+In-Reply-To: <1443615808-6064-1-git-send-email-aybuke.147@gmail.com>
+Message-ID: <alpine.DEB.2.10.1509301647590.2526@hadrien>
 References: <1443615808-6064-1-git-send-email-aybuke.147@gmail.com>
-	<alpine.DEB.2.10.1509301647590.2526@hadrien>
-Date: Wed, 30 Sep 2015 20:24:47 +0300
-Message-ID: <CAEAX3JqSBe4HY0+1b6NhGoJ=HH-fbCf=sATKyh7fwTNvLF+71A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: octeon: Use preferred kernel type
-From: aybuke ozdemir <aybuke.147@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=20cf306845910780ce0520fa351f
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
---20cf306845910780ce0520fa351f
-Content-Type: text/plain; charset=UTF-8
+On Wed, 30 Sep 2015, aybuke wrote:
 
-Okey, I'll send the correct v2. I edited my name field. But I have one
-question.
+> This patch fixes "CHECK: Prefer kernel type 'u8' over 'uint8_t'"
+> checkpatch.pl issue in ethernet.c file.
 
-Am I just should edit the for uint*_t found by checkpatch.pl in ethernet.c
-file or change all the uint* types in same file.
-Because checkpatch.pl only find 2 uint* type control in file. But more than
-2.
+Say instead what you do to carry out the fix.  Here it could be "Change
+uint8_t to u8, as is preferred in kernel code.  Problem identified using
+checkpatch."
 
-Thanks.
+> Signed-off-by: aybuke <aybuke.147@gmail.com>
 
---20cf306845910780ce0520fa351f
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+The signed off needs to have your full name, ie what is in your passpport,
+more or less.
 
-<div dir=3D"ltr"><div>Okey, I&#39;ll send the correct v2. <span id=3D"resul=
-t_box" class=3D"" lang=3D"en"><span class=3D"">I edited</span> <span class=
-=3D"">my</span> <span class=3D"">name field</span><span class=3D"">. But I =
-have one question.<br><br></span></span><span id=3D"result_box" class=3D"" =
-lang=3D"en"><span class=3D"">Am I</span> <span class=3D"">just</span> <span=
- class=3D"">should</span> <span class=3D"">edit the</span> <span class=3D""=
->for</span> <span class=3D"">uint*_t</span> <span class=3D"">found by</span=
-> <span class=3D""><a href=3D"http://checkpatch.pl">checkpatch.pl</a> in </=
-span></span><span id=3D"result_box" class=3D"" lang=3D"en"><span class=3D""=
-><span class=3D"im"><span class=3D"im">ethernet.c file </span></span>or </s=
-pan></span><span id=3D"result_box" class=3D"" lang=3D"en"><span class=3D"">=
-change</span> <span class=3D"">all</span> <span class=3D"">the uint*</span>=
- <span class=3D""></span><span class=3D"">types in same file.<br></span></s=
-pan></div><div><span id=3D"result_box" class=3D"" lang=3D"en"><span class=
-=3D"">Because <a href=3D"http://checkpatch.pl">checkpatch.pl</a> </span></s=
-pan><span id=3D"result_box" class=3D"" lang=3D"en"><span class=3D""></span>=
-<span class=3D""></span><span class=3D"">only</span> <span class=3D"">find<=
-/span> <span class=3D"">2 uint* type control in file. But more than 2.<br><=
-/span></span></div><div><span id=3D"result_box" class=3D"" lang=3D"en"><spa=
-n class=3D""><br>Thanks.<br></span></span></div><span id=3D"result_box" cla=
-ss=3D"" lang=3D"en"><span class=3D""></span></span></div>
+julia
 
---20cf306845910780ce0520fa351f--
+> ---
+>  drivers/staging/octeon/ethernet.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+> index 7274fda..7f9518d 100644
+> --- a/drivers/staging/octeon/ethernet.c
+> +++ b/drivers/staging/octeon/ethernet.c
+> @@ -382,7 +382,7 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
+>  	    && (cvmx_helper_interface_get_mode(interface) !=
+>  		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+>  		int i;
+> -		uint8_t *ptr = dev->dev_addr;
+> +		u8 *ptr = dev->dev_addr;
+>  		uint64_t mac = 0;
+>
+>  		for (i = 0; i < 6; i++)
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443615808-6064-1-git-send-email-aybuke.147%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
