@@ -1,59 +1,173 @@
 X-GM-THRID: 6200385233952440320
-X-Received: by 10.152.120.232 with SMTP id lf8mr873489lab.1.1443647070246;
-        Wed, 30 Sep 2015 14:04:30 -0700 (PDT)
+X-Received: by 10.180.9.104 with SMTP id y8mr5023992wia.7.1443639684705;
+        Wed, 30 Sep 2015 12:01:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.9.6 with SMTP id v6ls70219laa.23.gmail; Wed, 30 Sep 2015
- 14:04:29 -0700 (PDT)
-X-Received: by 10.112.142.195 with SMTP id ry3mr891178lbb.22.1443647069587;
-        Wed, 30 Sep 2015 14:04:29 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id c7si938359wiy.3.2015.09.30.14.04.29
+Received: by 10.152.2.230 with SMTP id 6ls62949lax.7.gmail; Wed, 30 Sep 2015
+ 12:01:24 -0700 (PDT)
+X-Received: by 10.112.198.33 with SMTP id iz1mr802135lbc.8.1443639684052;
+        Wed, 30 Sep 2015 12:01:24 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id ch7si58053wib.2.2015.09.30.12.01.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 14:04:29 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        Wed, 30 Sep 2015 12:01:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0LipzN-1aDh5t33VN-00cz7p; Wed, 30 Sep
- 2015 23:04:28 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22f.google.com with SMTP id fx3so75337115wic.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 12:01:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=18142Aobf3FfO59hy4VmOm9cI7+YKyaVW9grzN3JqdY=;
+        b=zeO6sDmmLP3jvcnbol0l+98iNI9ktKWnCc2n6WtaiO4UxKFpd7zC6t/omL8GUBsi8b
+         as2gR+JbxOF9SRatXQkn5SIRKivFB9HvUMBvGjFIP8QeWOEroajoS7ExgoERjf9ai1vn
+         yX8a/T3ZsgCB4SwBZnJ03PaZjV6PwEB+jbMzbVf8TtVtl4IVPUGja+uvSnevxDvE/w1P
+         CuLVGrVTdnV5+DoukYiK43N+pKcELtrC+NytqhEAr1VFzyZnTSjistc6DvpGs/ZzMDUH
+         Sn8RN/7ox1dsjvawMmcqJoA89MIQJ7poy6L2rwBTSWm6RSog/Zh4m0fyNjdic0x+OA40
+         Ycfw==
+X-Received: by 10.180.35.199 with SMTP id k7mr7182941wij.13.1443639683910;
+        Wed, 30 Sep 2015 12:01:23 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id o10sm2217761wia.4.2015.09.30.12.01.22
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 30 Sep 2015 12:01:23 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: comedi: Use mutex instead of semaphore
-Date: Wed, 30 Sep 2015 23:04:28 +0200
-Message-ID: <2184557.dYc5OihC5l@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1443639675-18965-1-git-send-email-ksenija.stanojevic@gmail.com>
-References: <1443639675-18965-1-git-send-email-ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:1lGdHxwL5Oyy1zG7Z23tGTjORhegQHTBB9HIMch6+V2TdXCkKOa
- nMPvztZ29Mj14X1SnG5zPkgCpYxB7t5z2WqZmeXpz7qIi3ZrlZkbdZK6HXMrLZ3FMojvtUQ
- KAYYOrc9fH2OEjdztq+yzI7l+kVXBKwAQKxDQ7y/XzOFYlDIy3Cn+GnoqQZuhAN7ikK1yOM
- SrsuH6AhyswdULTxvY33w==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:VfSFLG0r7Nk=:aMv2c6xG2Q6puCWw4lMbow
- oPONLmYnOPgAiPkMHlto8cXtiSlSNXjHTvYFN4wobrH+9ZA5y0LOnHcJiLIK5bK/sxL63juKI
- A2+clkBpX0tsRIZsxuWQrgKG8laTModWMospwcKtGLmHFaNlvqgSpMY1Vbxrafo08gw55UGGT
- 9wROuhoCoavhsrVLTL0Sxz8LOO0rfti/eXKDoqJry2NbavXkK1z2YVj7AVd5jiyDoIgwPb9+t
- 2jNv/KfjfhsEbUwU8+4/OEsiofB/dZpx8AmMhBsEID6P/Ql75KdX73DBg80bGPk+ozGPck9kW
- BZ2zrTVfWx9qzP0yFwKvlVLr0l0PKISHwr/rGE0nGWmkVAkerA+4SNUXWeQayoAA7P1czHicD
- VWDXDuaHkOii1Tl3K5rwFQQI5x19U9f1J3OwF9PPRXF7Eo2VzzA48zk6bo6HKRYDjkFa8+FPe
- Jg83r91VnbHgg3oAYDnVZ75/yG3l+vD+7pvht7IhCg8614TpJiBtdNNgjPmGf/uIbgOY92BSw
- 0hOC6lYRghXPEvbIr0Y7oj8BTOviItjAJMH/ianKWBuKOpqEZVRKTAXKWihA552bOuEbFjyN2
- WkqO05B4ti1/XkIKctfo6lPCBqo4aUzQyDyteNx/E0+TTys2Yf2AtEnqiuNt5DMoOy22CAj+U
- SvbNvt665FcClhg+vpCOAO4PcbQ3qW4nyEL/YbccyxnhiZ3K4cSo7d75t2Oda7rpEPE4dz1bL
- OoqTn0IvTc8w9RXK
+Subject: [PATCH] Staging: comedi: Use mutex instead of semaphore
+Date: Wed, 30 Sep 2015 21:01:15 +0200
+Message-Id: <1443639675-18965-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Wednesday 30 September 2015 21:01:15 Ksenija Stanojevic wrote:
-> Replace binary semaphore with mutex because mutex gives better performance
-> than binary semaphore.
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Replace binary semaphore with mutex because mutex gives better performance
+than binary semaphore.
 
-Very nice!
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/comedi/drivers/dt9812.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+diff --git a/drivers/staging/comedi/drivers/dt9812.c b/drivers/staging/comedi/drivers/dt9812.c
+index e11c216..7d309f9 100644
+--- a/drivers/staging/comedi/drivers/dt9812.c
++++ b/drivers/staging/comedi/drivers/dt9812.c
+@@ -233,7 +233,7 @@ struct dt9812_usb_cmd {
+ };
+ 
+ struct dt9812_private {
+-	struct semaphore sem;
++	struct mutex mut;
+ 	struct {
+ 		__u8 addr;
+ 		size_t size;
+@@ -335,7 +335,7 @@ static int dt9812_digital_in(struct comedi_device *dev, u8 *bits)
+ 	u8 value[2];
+ 	int ret;
+ 
+-	down(&devpriv->sem);
++	mutex_lock(&devpriv->mut);
+ 	ret = dt9812_read_multiple_registers(dev, 2, reg, value);
+ 	if (ret == 0) {
+ 		/*
+@@ -345,7 +345,7 @@ static int dt9812_digital_in(struct comedi_device *dev, u8 *bits)
+ 		 */
+ 		*bits = (value[0] & 0x7f) | ((value[1] & 0x08) << 4);
+ 	}
+-	up(&devpriv->sem);
++	mutex_unlock(&devpriv->mut);
+ 
+ 	return ret;
+ }
+@@ -357,9 +357,9 @@ static int dt9812_digital_out(struct comedi_device *dev, u8 bits)
+ 	u8 value[1] = { bits };
+ 	int ret;
+ 
+-	down(&devpriv->sem);
++	mutex_lock(&devpriv->mut);
+ 	ret = dt9812_write_multiple_registers(dev, 1, reg, value);
+-	up(&devpriv->sem);
++	mutex_unlock(&devpriv->mut);
+ 
+ 	return ret;
+ }
+@@ -444,7 +444,7 @@ static int dt9812_analog_in(struct comedi_device *dev,
+ 	u8 val[3];
+ 	int ret;
+ 
+-	down(&devpriv->sem);
++	mutex_lock(&devpriv->mut);
+ 
+ 	/* 1 select the gain */
+ 	dt9812_configure_gain(dev, &rmw[0], gain);
+@@ -493,7 +493,7 @@ static int dt9812_analog_in(struct comedi_device *dev,
+ 	}
+ 
+ exit:
+-	up(&devpriv->sem);
++	mutex_unlock(&devpriv->mut);
+ 
+ 	return ret;
+ }
+@@ -504,7 +504,7 @@ static int dt9812_analog_out(struct comedi_device *dev, int channel, u16 value)
+ 	struct dt9812_rmw_byte rmw[3];
+ 	int ret;
+ 
+-	down(&devpriv->sem);
++	mutex_lock(&devpriv->mut);
+ 
+ 	switch (channel) {
+ 	case 0:
+@@ -545,7 +545,7 @@ static int dt9812_analog_out(struct comedi_device *dev, int channel, u16 value)
+ 	}
+ 	ret = dt9812_rmw_multiple_registers(dev, 3, rmw);
+ 
+-	up(&devpriv->sem);
++	mutex_unlock(&devpriv->mut);
+ 
+ 	return ret;
+ }
+@@ -608,9 +608,9 @@ static int dt9812_ao_insn_read(struct comedi_device *dev,
+ 	struct dt9812_private *devpriv = dev->private;
+ 	int ret;
+ 
+-	down(&devpriv->sem);
++	mutex_lock(&devpriv->mut);
+ 	ret = comedi_readback_insn_read(dev, s, insn, data);
+-	up(&devpriv->sem);
++	mutex_unlock(&devpriv->mut);
+ 
+ 	return ret;
+ }
+@@ -774,7 +774,7 @@ static int dt9812_auto_attach(struct comedi_device *dev,
+ 	if (!devpriv)
+ 		return -ENOMEM;
+ 
+-	sema_init(&devpriv->sem, 1);
++	mutex_init(&devpriv->mut);
+ 	usb_set_intfdata(intf, devpriv);
+ 
+ 	ret = dt9812_find_endpoints(dev);
+@@ -846,11 +846,11 @@ static void dt9812_detach(struct comedi_device *dev)
+ 	if (!devpriv)
+ 		return;
+ 
+-	down(&devpriv->sem);
++	mutex_lock(&devpriv->mut);
+ 
+ 	usb_set_intfdata(intf, NULL);
+ 
+-	up(&devpriv->sem);
++	mutex_unlock(&devpriv->mut);
+ }
+ 
+ static struct comedi_driver dt9812_driver = {
+-- 
+1.9.1
+
 
