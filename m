@@ -1,106 +1,83 @@
-X-GM-THRID: 6331596023688855552
-X-Received: by 10.157.21.60 with SMTP id u57mr2528829otf.134.1474189577114;
-        Sun, 18 Sep 2016 02:06:17 -0700 (PDT)
+X-GM-THRID: 6200365191427784704
+X-Received: by 10.194.118.65 with SMTP id kk1mr882979wjb.5.1443648591516;
+        Wed, 30 Sep 2015 14:29:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.162.132 with SMTP id l126ls2646614ioe.34.gmail; Sun, 18
- Sep 2016 02:06:16 -0700 (PDT)
-X-Received: by 10.107.128.87 with SMTP id b84mr2384338iod.65.1474189576767;
-        Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id um12si3919899pab.2.2016.09.18.02.06.16
+Received: by 10.152.9.98 with SMTP id y2ls77159laa.92.gmail; Wed, 30 Sep 2015
+ 14:29:50 -0700 (PDT)
+X-Received: by 10.112.130.41 with SMTP id ob9mr868623lbb.17.1443648590668;
+        Wed, 30 Sep 2015 14:29:50 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id c7si940709wiy.3.2015.09.30.14.29.50
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 30 Sep 2015 14:29:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mailfrom=mahfouz.saif.elyazal@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id vz6so5497080pab.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x229.google.com with SMTP id gb1so1981987wic.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 14:29:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=xGgYyIp6PKE4bptxaQECUVtDVvQ1cGyCPr9w3BuTCps=;
-        b=D+YcZR+YEnKmeGAwtPEt1Xd2DVyKPOnB+Hy0qRJdMcuuFXXxgSfe5Zd18KIisOrPoy
-         EXRKUGnPgxoVN8tEPoXT/lROnjkxR750GPzouG3FaZPleBGiAbJoTGYfsJkk9buPLVb0
-         ErJ2OV3gI2vCuG4LDQPT+b8bJpBpqFyMQ2u2VBdIAkEb20591Twq5PklaFp5ETjYOQ9N
-         DDT6T0FqB5Ksy4t3rQ3ySIXH49p/9oOuvIVNxjekpTAHPBhCeN732HFp2UR1Fbx8lkpH
-         i3lwECaSyQBQwJ8+3pzDLnSefZJ9CvZvdfC3o4pPb0ukWlXhJXocUC21IAnZaNrrsKpc
-         1BVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=xGgYyIp6PKE4bptxaQECUVtDVvQ1cGyCPr9w3BuTCps=;
-        b=NWEc/UpNLuQzPHntFiKlTfRoTWp3RxESHWy8yf3TZgnAR4ZvXOfduqYx/a1V0F9sr4
-         dPL/jtjO+ETT0dYCIbhfQa7SpVftZ6LwUBA7kql5QgdFlkyaFJOqRGTlqVrsSHkTXhay
-         klEbb2oKCaEd2tubkn1Oevz9TMlARs3g6+hJS43/sHhWlQqQHBbEA0RMlMFg62JVYmZa
-         XGdoU21vrOYeujx19lEY4offZU34U/rXWKmno7etLVOdjBFtBY7PvY1pG96P4q6aRN1z
-         LwZ7c8OKwx9NCsMFbeDRccz75gvIuzL7Wj8RDyBtBCa/YtxtAHkMYi6ZHi8/5fx/EQb3
-         9lxw==
-X-Gm-Message-State: AE9vXwPDyixK+RTyTSTYPXSd9lnABFg/Xf/lj2xGY4DRii8nO3tRjlrDUuSR1WczNFzTfg==
-X-Received: by 10.66.135.52 with SMTP id pp20mr36640039pab.121.1474189576161;
-        Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([106.215.172.195])
-        by smtp.gmail.com with ESMTPSA id uj8sm23358234pab.5.2016.09.18.02.06.08
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 02:06:14 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Sun, 18 Sep 2016 14:36:01 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org,
-	arnaud.patard@rtp-net.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: xgifb: Compress return logic
-Date: Sun, 18 Sep 2016 14:35:59 +0530
-Message-Id: <1474189559-17186-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=SWrTUokw27BlRGXNBV2WU+hFiNdb+tccZlIwwv7/Cl4=;
+        b=m1RqI4k7dYBlL8e3pxySA+cUGnfKeLyL1YC0l+5vZFcv+n9vGmf0F6CQZl83OnaqX4
+         r2scphQ2X2pXvEIwNXk9hFH75HONN71vZH/gCyHPS/CYG56R+16Dy14vTqCanXIRwlDq
+         2rKhZrD46Sh9XsvrUL5hoiQX4wFP40o5xw8miIw6zp/XbU9umprdXrnsaKd+6J5wu0KE
+         Hu9XsPAZ1p+9FKw4dmFDPQ1h9TKw3bCx3uyXlC1YCDQjMdaruYAMu58DiBtHVf4TIHCV
+         AfmC6Pya1LJqw9rSpGhp3FalJlER8oh07JCfwG6zzlj4K+KttCEr12+Rv0lbVYR1wUPU
+         VE9g==
+X-Received: by 10.180.87.225 with SMTP id bb1mr35649973wib.0.1443648590498;
+        Wed, 30 Sep 2015 14:29:50 -0700 (PDT)
+Return-Path: <mahfouz.saif.elyazal@gmail.com>
+Received: from localhost.localdomain ([41.130.239.135])
+        by smtp.gmail.com with ESMTPSA id pb4sm2658181wjb.8.2015.09.30.14.29.48
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 30 Sep 2015 14:29:48 -0700 (PDT)
+Date: Wed, 30 Sep 2015 23:29:47 +0200
+From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Concerning applicants who are CCing themselves
+Message-ID: <20150930212947.GA6942@waves>
+References: <20150930174335.GB12195@waves>
+ <4543594.pJ5pIvqNYp@wuerfel>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4543594.pJ5pIvqNYp@wuerfel>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch compresses the  return logic into a single statement
-and removes the now unused return variable.
-Done using coccinelle:
-@@
-type T;
-identifier r;
-@@
-- T r;
-... when !=r
-- r =
-+ return
-     ...;
-- return r;
+On Wed, Sep 30, 2015 at 11:15:42PM +0200, Arnd Bergmann wrote:
+> On Wednesday 30 September 2015 19:43:35 Aya Mahfouz wrote:
+> > Dear All,
+> > 
+> > I've realized that there are few interns who are add themselves to the
+> > CC field in the mails that they send. I don't think you need to do that
+> > if you adjust your group membership settings to receive every email sent
+> > to the group. 
+> > 
+> > I would advice the applicants who do that to manage their
+> > group settings from groups.google.com to receive all the emails in their
+> > inbox. It will help you get important notifications from the mentors and
+> > threads of fellow applicants.
+> > 
+> > If there is another reason for that behavior, kindly enlighten us.
+> > 
+> > 
+> 
+> I think this is just because git-send-email by default adds
+> the sender to 'Cc', unless you add an explicit --suppress-cc=self
+> argument.
+> 
+> 	Arnd
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/xgifb/XGI_main_26.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
-index d56ef14..cc69233 100644
---- a/drivers/staging/xgifb/XGI_main_26.c
-+++ b/drivers/staging/xgifb/XGI_main_26.c
-@@ -62,7 +62,6 @@ static int XGIfb_mode_rate_to_dclock(struct vb_device_info *XGI_Pr,
- 	unsigned short ModeNo = modeno;
- 	unsigned short ModeIdIndex = 0, ClockIndex = 0;
- 	unsigned short RefreshRateTableIndex = 0;
--	int Clock;
- 
- 	InitTo330Pointer(HwDeviceExtension->jChipType, XGI_Pr);
- 
-@@ -73,9 +72,7 @@ static int XGIfb_mode_rate_to_dclock(struct vb_device_info *XGI_Pr,
- 
- 	ClockIndex = XGI330_RefIndex[RefreshRateTableIndex].Ext_CRTVCLK;
- 
--	Clock = XGI_VCLKData[ClockIndex].CLOCK * 1000;
--
--	return Clock;
-+	return XGI_VCLKData[ClockIndex].CLOCK * 1000;
- }
- 
- static int XGIfb_mode_rate_to_ddata(struct vb_device_info *XGI_Pr,
+Interesting! Thanks Arnd for pointing this out!
 -- 
-1.9.1
-
+Kind Regards,
+Aya Saif El-yazal Mahfouz
 
