@@ -1,193 +1,121 @@
 X-GM-THRID: 6200281981833445376
-X-Received: by 10.112.40.17 with SMTP id t17mr509920lbk.10.1443617333751;
-        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
+X-Received: by 10.182.79.35 with SMTP id g3mr3058616obx.22.1443615647064;
+        Wed, 30 Sep 2015 05:20:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.109.200 with SMTP id hu8ls170478wib.0.gmail; Wed, 30 Sep
- 2015 05:48:53 -0700 (PDT)
-X-Received: by 10.180.12.170 with SMTP id z10mr623179wib.1.1443617333329;
-        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id o5si234450wib.0.2015.09.30.05.48.53
+Received: by 10.107.161.143 with SMTP id k137ls259078ioe.53.gmail; Wed, 30 Sep
+ 2015 05:20:46 -0700 (PDT)
+X-Received: by 10.50.66.170 with SMTP id g10mr3583020igt.5.1443615646612;
+        Wed, 30 Sep 2015 05:20:46 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id wl2si48881pab.1.2015.09.30.05.20.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Wed, 30 Sep 2015 05:20:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id fx3so195460189wic.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id fv12so40324749pac.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 05:20:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=X9SWh0Pea1lI54PVwiEUBtkK5JjB26PZJ2SvBiIUDeg=;
-        b=pBtKoPOrDHDhkIsTrj0645zCvuT9nQLF1OkWMyLJH3qWljjw/MS+7l6Hq5v0Yvivve
-         YXvTgBu/+1HADbg/UHVlEEIu8w7wcYDqqRq6c/iorDF/c14PGOvY0R6Jyl6SKx01IjNt
-         drqmJI5ApywO/ebnz/5i7MCODyzDz8sU58Md2+18hnUvXpsK6vmdq3QwjlY6zY1ds2Rt
-         53Q6ptxoOLlbN2VCpclre7hrag/IJBMHtPbGZ0FB/ujmCVuqlTH74CQUuDS9ZbTksv7S
-         hjNjwi90z0OwfavhKOuGRXcO5gDWz87eTn/IYjkDd4X4RDnJIojh27gIEGQnj+yDWRQI
-         kI1Q==
-X-Received: by 10.194.62.112 with SMTP id x16mr4027299wjr.20.1443617333048;
-        Wed, 30 Sep 2015 05:48:53 -0700 (PDT)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([41.130.239.145])
-        by smtp.gmail.com with ESMTPSA id o10sm610747wia.4.2015.09.30.05.48.51
-        (version=TLS1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 30 Sep 2015 05:48:52 -0700 (PDT)
-Date: Wed, 30 Sep 2015 14:48:49 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: Shraddha Barke <shraddha.6596@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: fbtft: Remove debug
- messages related to DEBUG_WRITE_VMEM
-Message-ID: <20150930124849.GA3692@waves>
-References: <1443615633-5978-1-git-send-email-shraddha.6596@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=ohmxYl/5whTga3s5N+NtsjaEiI05APYufen7esH4/Yw=;
+        b=PsOY4TRB70Hq8LC9oJ4JPBZoiq28Ne4vHxaO1/1xOfLLZkizTH1mltgMlYSOQdj1YF
+         zbJ92chU4IkVAP7HVDU2cfLqMtX09XU6ufJe5YPGGcz2EwWcEmnIMMW3Or5I84aNxc5p
+         2lB706QFuGuLbVRj1ejOfriyoP9/HmN5DzOBYUdoG1fcT5+JZehGUulRCgxDB8qYa1KC
+         d4oal0FQX/BOPDuHTB21U8ALqGO8d0jeiCCfwaYHQyuHJurVFrwOYzccIsHvLSAiRCxW
+         65Z49My+v5VOUaiIYvf84wgWXwawElf0iqe2noG26fITFiHrrAN6+RQte8ZQ/6Glz0ww
+         Xi6w==
+X-Received: by 10.68.68.133 with SMTP id w5mr4566591pbt.143.1443615646497;
+        Wed, 30 Sep 2015 05:20:46 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id eg5sm438174pac.30.2015.09.30.05.20.44
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 30 Sep 2015 05:20:46 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Cc: Shraddha Barke <shraddha.6596@gmail.com>
+Subject: [PATCH 2/2] Staging: fbtft: Remove debug messages related to DEBUG_BACKLIGHT
+Date: Wed, 30 Sep 2015 17:50:33 +0530
+Message-Id: <1443615633-5978-2-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1443615633-5978-1-git-send-email-shraddha.6596@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+References: <1443615633-5978-1-git-send-email-shraddha.6596@gmail.com>
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150206.560BD39D.00D1,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Wed, Sep 30, 2015 at 05:50:32PM +0530, Shraddha Barke wrote:
+Remove debug messages related to fbtft_par_dbg(DEBUG_BACKLIGHT.. )
+as this info can be obtained using kernel function tracer
 
-Hello Shraddha,
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/fbtft/fb_ssd1351.c   | 2 --
+ drivers/staging/fbtft/fb_watterott.c | 2 --
+ drivers/staging/fbtft/fbtft-core.c   | 4 ----
+ 3 files changed, 8 deletions(-)
 
-Nice effort done there. But you forgot the cover letter for this
-patch set. Check the section 'Submitting a patchset' in:
-
-http://kernelnewbies.org/Outreachyfirstpatch
-
-for instructions to generate a patchset and its cover letter.
-
-> Remove debug messages related to fbtft_par_dbg(DEBUG_WRITE_VMEM.. )
-> as this info can be obtained using kernel function tracer
-> 
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> ---
->  drivers/staging/fbtft/fb_agm1264k-fl.c | 2 --
->  drivers/staging/fbtft/fb_pcd8544.c     | 2 --
->  drivers/staging/fbtft/fb_ssd1306.c     | 2 --
->  drivers/staging/fbtft/fb_tls8204.c     | 2 --
->  drivers/staging/fbtft/fb_uc1611.c      | 2 --
->  drivers/staging/fbtft/fb_uc1701.c      | 2 --
->  drivers/staging/fbtft/fb_watterott.c   | 4 ----
->  7 files changed, 16 deletions(-)
-> 
-> diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-> index 2a2d53c..88718f6 100644
-> --- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-> +++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-> @@ -278,8 +278,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	if (!convert_buf)
->  		return -ENOMEM;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	/* converting to grayscale16 */
->  	for (x = 0; x < par->info->var.xres; ++x)
->  		for (y = 0; y < par->info->var.yres; ++y) {
-> diff --git a/drivers/staging/fbtft/fb_pcd8544.c b/drivers/staging/fbtft/fb_pcd8544.c
-> index 828174a..8b52523 100644
-> --- a/drivers/staging/fbtft/fb_pcd8544.c
-> +++ b/drivers/staging/fbtft/fb_pcd8544.c
-> @@ -117,8 +117,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	int x, y, i;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	for (x = 0; x < 84; x++) {
->  		for (y = 0; y < 6; y++) {
->  			*buf = 0x00;
-> diff --git a/drivers/staging/fbtft/fb_ssd1306.c b/drivers/staging/fbtft/fb_ssd1306.c
-> index 7568e94..568b433 100644
-> --- a/drivers/staging/fbtft/fb_ssd1306.c
-> +++ b/drivers/staging/fbtft/fb_ssd1306.c
-> @@ -165,8 +165,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	int x, y, i;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	for (x = 0; x < par->info->var.xres; x++) {
->  		for (y = 0; y < par->info->var.yres/8; y++) {
->  			*buf = 0x00;
-> diff --git a/drivers/staging/fbtft/fb_tls8204.c b/drivers/staging/fbtft/fb_tls8204.c
-> index 4e16ea7..d609f87 100644
-> --- a/drivers/staging/fbtft/fb_tls8204.c
-> +++ b/drivers/staging/fbtft/fb_tls8204.c
-> @@ -98,8 +98,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	int x, y, i;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	for (y = 0; y < HEIGHT / 8; y++) {
->  		u8 *buf = par->txbuf.buf;
->  		/* The display is 102x68 but the LCD is 84x48.  Set
-> diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
-> index 5b83661..664e313 100644
-> --- a/drivers/staging/fbtft/fb_uc1611.c
-> +++ b/drivers/staging/fbtft/fb_uc1611.c
-> @@ -230,8 +230,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	int x, y, i;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	switch (par->pdata->display.buswidth) {
->  	case 8:
->  		switch (par->info->var.rotate) {
-> diff --git a/drivers/staging/fbtft/fb_uc1701.c b/drivers/staging/fbtft/fb_uc1701.c
-> index 28b13cf..28aa100 100644
-> --- a/drivers/staging/fbtft/fb_uc1701.c
-> +++ b/drivers/staging/fbtft/fb_uc1701.c
-> @@ -146,8 +146,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	int x, y, i;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	for (y = 0; y < PAGES; y++) {
->  		buf = par->txbuf.buf;
->  		for (x = 0; x < WIDTH; x++) {
-> diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-> index c480049..9c2f0e3 100644
-> --- a/drivers/staging/fbtft/fb_watterott.c
-> +++ b/drivers/staging/fbtft/fb_watterott.c
-> @@ -74,8 +74,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
->  	int i, j;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	start_line = offset / par->info->fix.line_length;
->  	end_line = start_line + (len / par->info->fix.line_length) - 1;
->  
-> @@ -113,8 +111,6 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
->  	int i, j;
->  	int ret = 0;
->  
-> -	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
-> -
->  	start_line = offset / par->info->fix.line_length;
->  	end_line = start_line + (len / par->info->fix.line_length) - 1;
->  
-> -- 
-> 2.1.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443615633-5978-1-git-send-email-shraddha.6596%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-
+diff --git a/drivers/staging/fbtft/fb_ssd1351.c b/drivers/staging/fbtft/fb_ssd1351.c
+index 83867e1..eb45b27 100644
+--- a/drivers/staging/fbtft/fb_ssd1351.c
++++ b/drivers/staging/fbtft/fb_ssd1351.c
+@@ -206,8 +206,6 @@ static void register_onboard_backlight(struct fbtft_par *par)
+ 	struct backlight_device *bd;
+ 	struct backlight_properties bl_props = { 0, };
+ 
+-	fbtft_par_dbg(DEBUG_BACKLIGHT, par, "%s()\n", __func__);
+-
+ 	bl_props.type = BACKLIGHT_RAW;
+ 	bl_props.power = FB_BLANK_POWERDOWN;
+ 
+diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+index 9c2f0e3..2be2f66 100644
+--- a/drivers/staging/fbtft/fb_watterott.c
++++ b/drivers/staging/fbtft/fb_watterott.c
+@@ -253,8 +253,6 @@ static void register_chip_backlight(struct fbtft_par *par)
+ 	struct backlight_device *bd;
+ 	struct backlight_properties bl_props = { 0, };
+ 
+-	fbtft_par_dbg(DEBUG_BACKLIGHT, par, "%s()\n", __func__);
+-
+ 	bl_props.type = BACKLIGHT_RAW;
+ 	bl_props.power = FB_BLANK_POWERDOWN;
+ 	bl_props.max_brightness = 100;
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index b318daf..c26e624 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -266,8 +266,6 @@ static int fbtft_backlight_get_brightness(struct backlight_device *bd)
+ 
+ void fbtft_unregister_backlight(struct fbtft_par *par)
+ {
+-	fbtft_par_dbg(DEBUG_BACKLIGHT, par, "%s()\n", __func__);
+-
+ 	if (par->info->bl_dev) {
+ 		par->info->bl_dev->props.power = FB_BLANK_POWERDOWN;
+ 		backlight_update_status(par->info->bl_dev);
+@@ -286,8 +284,6 @@ void fbtft_register_backlight(struct fbtft_par *par)
+ 	struct backlight_device *bd;
+ 	struct backlight_properties bl_props = { 0, };
+ 
+-	fbtft_par_dbg(DEBUG_BACKLIGHT, par, "%s()\n", __func__);
+-
+ 	if (par->gpio.led[0] == -1) {
+ 		fbtft_par_dbg(DEBUG_BACKLIGHT, par,
+ 			"%s(): led pin not set, exiting.\n", __func__);
 -- 
-Kind Regards,
-Aya Saif El-yazal Mahfouz
+2.1.4
+
 
