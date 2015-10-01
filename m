@@ -1,134 +1,357 @@
 X-GM-THRID: 6200611211635064832
-X-Received: by 10.152.181.2 with SMTP id ds2mr591218lac.5.1443706650144;
-        Thu, 01 Oct 2015 06:37:30 -0700 (PDT)
+X-Received: by 10.68.166.132 with SMTP id zg4mr8171015pbb.7.1443706471516;
+        Thu, 01 Oct 2015 06:34:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.27.130 with SMTP id jg2ls149820wid.8.gmail; Thu, 01 Oct
- 2015 06:37:29 -0700 (PDT)
-X-Received: by 10.180.210.212 with SMTP id mw20mr486197wic.3.1443706649781;
-        Thu, 01 Oct 2015 06:37:29 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
-        by gmr-mx.google.com with ESMTPS id q6si82774wif.2.2015.10.01.06.37.29
+Received: by 10.140.104.176 with SMTP id a45ls1094136qgf.30.gmail; Thu, 01 Oct
+ 2015 06:34:30 -0700 (PDT)
+X-Received: by 10.31.178.196 with SMTP id b187mr8167660vkf.3.1443706470870;
+        Thu, 01 Oct 2015 06:34:30 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id w5si905193pbt.1.2015.10.01.06.34.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 06:37:29 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
+        Thu, 01 Oct 2015 06:34:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue104) with ESMTPSA (Nemesis) id 0Mdurl-1a07je1iub-00Pf2F; Thu, 01 Oct
- 2015 15:37:27 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x231.google.com with SMTP id lk4so74267906pab.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 06:34:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:in-reply-to:message-id:references
+         :user-agent:mime-version:content-type;
+        bh=K1vVkMRUzTH5UICi/YnkL3HKi1GlQZKfuyu1jGvL7oM=;
+        b=PKMZPFFuQwGbwoPXZBY/hrZLSPlua/7WnJmjPtl7i+LXh4ymkfLyf2DI6OK9dqu2tD
+         m03KSMl0PyC14o2OAcXgtX5bLTTeJVWlMD5DdTloapYyzhb0wKEn8ZXK/U8zw4MLHF0i
+         CBU3pOra9rbCLMo8keQSNfx10JbtbwxuNlfgkF7DCRcZoPBuHyAPb56rFqJNstAEYD27
+         uZq9XlmoDYto6WIpisq00X+1LDYWp1pWNILT5CQ/SX3bkVZy9dQNh4q570SUxJG3iNS2
+         b6f7ngF1DVHABtpuYMAYvttyXiNOSyWw9gMrwWFZW6amW3Crd50rCxSp6m/lgGVhX+LW
+         X3Bg==
+X-Received: by 10.68.238.228 with SMTP id vn4mr8397128pbc.119.1443706470662;
+        Thu, 01 Oct 2015 06:34:30 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from [10.30.0.216] ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id iy1sm6769352pbb.85.2015.10.01.06.34.26
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Oct 2015 06:34:30 -0700 (PDT)
+Date: Thu, 1 Oct 2015 19:04:22 +0530 (IST)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+X-X-Sender: root@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V
 To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Shraddha Barke <shraddha.6596@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: lustre: ptlrpc: Make functions static
-Date: Thu, 01 Oct 2015 15:37:26 +0200
-Message-ID: <1949518.HAv4iPaUmg@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+cc: Shraddha Barke <shraddha.6596@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: lustre: ptlrpc: Make
+ functions static
 In-Reply-To: <alpine.DEB.2.10.1510011515370.2648@hadrien>
-References: <1443692278-9074-1-git-send-email-shraddha.6596@gmail.com> <alpine.DEB.2.11.1510011534180.9108@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V> <alpine.DEB.2.10.1510011515370.2648@hadrien>
+Message-ID: <alpine.DEB.2.11.1510011855390.9108@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+References: <1443692278-9074-1-git-send-email-shraddha.6596@gmail.com> <1443692278-9074-2-git-send-email-shraddha.6596@gmail.com> <1696311.OJv2CH1NlN@wuerfel> <alpine.DEB.2.11.1510011534180.9108@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+ <alpine.DEB.2.10.1510011515370.2648@hadrien>
+User-Agent: Alpine 2.11 (DEB 23 2013-08-11)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:sijDqEk/0Grw8Bt4UH3D94EItEYuRvSc6617Dwm0i1g0mBD+yMk
- A88BPHochmDiBtOApiUPEBjGJRF3lE0sblWGICk4WEck1AiCMI/ZrUsKktBtRz8vezp6lCL
- 1/EdUAuV85sSRfXJ5SHeaciU7NBUbkDMYnxAK4NVvgRU3T5LJ8k2leTsLU2Y0jlgk6lnvtk
- 3IBe4bGtQCVLWYY+mR0wQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:PNeEN0cZEWk=:xuJ9xwsy9c82PPFR+X3eXP
- rBayvQLmnZVsY0Q5uqKkZp1kYia1zybH5tXAUQSny/uUUS24YwDtmte5jDEcP9lBaQhsVR8x8
- sdizlu2xOUAGYfro4tYLjgTRqiHmne2sAzdQrCY6tYfKSMwAZcmbqaqvMcGC6u92CdcK5BFiM
- JZbwW4onsBmPtqTgXJdDmzoBFh4YuNeOylFcjkmW4fvt1w0M0N+n9tq6eQ4Ii7QST5n+Beojx
- KHI4FET2XvmOTy/FahttKYI8x0XhXyi1QKWLO3hEZhJBi1FH5kTp6H/u6yZdY4n/8V+8mJn5H
- 9ffaDqPl2H0d4f9eEHsfrzBKago17g3RQMQga1UEkcXcIgJfthcpV7QGVtHKnWTJUDDYwbW9N
- G7W0cN/UAiia/Wfvr84ePg2JaAsBSeQD+oH/ur29ngi/IHpfUNme5vUYPqJKMvU7fl3iTLrSs
- 8A7vAL31+CLjk8V1tsBpLflgZlp7mOt4xpD5jKkhRLMgqDwBssK19TUSpFaV6j6djm2tcoKtX
- J4yV2CLb+jxgcElErCjRfH9zn3tceIS61gdWUPgM1tU4CdVWVuauXswzRlo1jpO8Pewrgj6WV
- +4wezkiz6pCUelhEJUWr6KMyM93e/REqW6TqjwN6z/XVFy9o3av/9fKSUUN9kdtG75GLS2s6y
- vafAYv0f6lFD73Nrk8a3xKiWD7ZR9N3FGaLWCBBhdAf0AyIORbBigyUmYegdFBC3J1dGOEfmb
- VGKsxSttfAGO/6bp
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150207.560D3664.0173,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Thursday 01 October 2015 15:20:39 Julia Lawall wrote:
+
+
+On Thu, 1 Oct 2015, Julia Lawall wrote:
+
 > On Thu, 1 Oct 2015, Shraddha Barke wrote:
-> 
-> >
-> >
-> > On Thu, 1 Oct 2015, Arnd Bergmann wrote:
-> >
-> > > On Thursday 01 October 2015 15:07:57 Shraddha Barke wrote:
-> > > > Since these functions are not called anywhere apart from this particular
-> > > > file, declare them as static.
-> > > >
-> > > > Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> > > >
-> > >
-> > > Reviewed-by: Arnd Bergmann <arnd@arndb.de>
-> > >
-> > > Note that there are hundreds more symbols in lustre that should be made
-> > > static.
-> > > Most of them are harder to find because they have a declaration in a header
-> > > file
-> > > despite being only used in one place.
-> 
+>
+>>
+>>
+>> On Thu, 1 Oct 2015, Arnd Bergmann wrote:
+>>
+>>> On Thursday 01 October 2015 15:07:57 Shraddha Barke wrote:
+>>>> Since these functions are not called anywhere apart from this particular
+>>>> file, declare them as static.
+>>>>
+>>>> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+>>>>
+>>>
+>>> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+>>>
+>>> Note that there are hundreds more symbols in lustre that should be made
+>>> static.
+>>> Most of them are harder to find because they have a declaration in a header
+>>> file
+>>> despite being only used in one place.
+>
 > Why does it make it hard to find?  One can make a spearate check in .c
 > files.
-
-We currently get a sparse warning for each global identifier definition
-that is not preceded by a declaration, but since most of our tools
-(gcc, sparse, coccinelle, ...) work on a single file at a time, they
-do not know whether a global symbol that is defined in a C file and
-(incorrectly) declared in a header is used in another C file or not.
-
-In case of lustre, a lot of functions were originally global because they
-were used in the server-side code. However, the code we have in staging
-today only includes the client-side implementation and we want to
-remove all traces of the server side from it for simplicity.
-
+>
 > I would think though that the clean up could be a little bit tedious.  I
 > guess that when the function is static, it shouldn't be declared in the
-> header file any more?
-
-Correct. The first step could be to remove declarations for the symbols,
-followed by actually removing the ones that we then get sparse warnings
-for.
-
->  At least not if the header file is shared
+> header file any more?  At least not if the header file is shared
 > between multipe files.  But it still may need to be declared somewhere, if
 > it is referenced before it is declared in the one file where it is used.
-
-I would also consider that a bug we should warn about: basically any
-'extern' variable declaration and any forward declaration for a 
-global function (with or without the redundant extern specifier) should
-be considered a bug. We want the same declaration to be visible by both
-the file that defines it and the file that uses it so we get warned about
-type mismatches.
-
+>
 > The question then is how to divide up the patches.  Should one just
 > address all of the functions that have this property in a single file?  Or
 > should one only work on a couple of functions at a time that seem related
 > to each other?
-
-I think either way would be fine.
-
-There is one more thing to look out for: if a symbol is only used in
-the file in which it gets defined, but the use comes before the
-definition, we still need a 'static' forward declaration. Ideally
-the functions should be reordered in a way that avoids those declarations,
-but we don't want patches that mix a large scale move of code around
-a file with a simpler change to make the symbols static.
-
-The two parts can be done in either order: we could mark the functions
-static and add the forward declarations in one patch, and move them
-to their proper place in a follow-up, or do the reverse without the
-forward declaration.
-
+>
 > Another issue in Lustre is that there are a some EXPORT_SYMBOLs on
 > functyions that are only used in one file.  Should they all be removed, or
 > is it like the case of android where there is code not yet in the kernel
 > that may rely on them?
+>
+> julia
+>
+>>> Coincidentally I've recently checked this for a subset of lustre while
+>>> removing
+>>> completely unused functions. Have a look at the list below to see if you can
+>>> do more of those.
+>>
 
-They should all be removed as far as I can tell. It's a bug to export
-a static symbol. I don't think that happens a lot, but this is something
-we could easily check for using coccinelle.
+Hello,
+I've sent a sample patch. Would you please review it so that I can send 
+more of them? And yes, how am I supposed to split the patches?
 
-	Arnd
+Thanks,
+
+Shraddha
+
+>> Yes I'll work on these.
+>>
+>> Thanks :)
+>>>
+>>> 	Arnd
+>>>
+>>> find build/tmp/drivers/staging/lustre/lustre/{ptlrpc,obdclass}/ -name \*.o |
+>>> \
+>>> 	grep -v built-in | xargs nm | grep -w [A-TV-Z] | grep -v __ksymtab |
+>>> 	grep -v __crc | cut -f 3 -d \  | sort -u > defs
+>>> find build/tmp/drivers/staging/lustre/ -name \*.o | grep -v built-in | \
+>>> 	xargs nm | grep -w U | cut -f 11- -d\  | sort -u > refs
+>>> diff -u defs refs | grep ^-  | cut -f 2 -d-
+>>>
+>>> __ptlrpc_free_bulk
+>>> cache_stats_init
+>>> cache_stats_print
+>>> capa_add
+>>> capa_cpy
+>>> capa_decrypt_id
+>>> capa_encrypt_id
+>>> capa_hmac
+>>> capa_lookup
+>>> cl_env_peek
+>>> cl_io_cancel
+>>> cl_io_rw_advance
+>>> cl_lock_enclosure
+>>> cl_lock_extransit
+>>> cl_lock_intransit
+>>> cl_lock_mutex_try
+>>> cl_lock_state_wait
+>>> cl_page_list_assume
+>>> cl_page_list_del
+>>> cl_page_list_discard
+>>> cl_page_list_fini
+>>> cl_sync_io_init
+>>> cl_sync_io_wait
+>>> class_add_conn
+>>> class_add_profile
+>>> class_attach
+>>> class_cleanup
+>>> class_config_dump_handler
+>>> class_config_parse_rec
+>>> class_del_conn
+>>> class_detach
+>>> class_get_type
+>>> class_match_param
+>>> class_resolve_dev_name
+>>> class_search_type
+>>> class_setup
+>>> cleanup_capa_hash
+>>> deuuidify
+>>> do_lcfg
+>>> dt_acct_features
+>>> dt_declare_version_set
+>>> dt_device_fini
+>>> dt_device_init
+>>> dt_directory_features
+>>> dt_find_or_create
+>>> dt_global_fini
+>>> dt_global_init
+>>> dt_index_read
+>>> dt_index_walk
+>>> dt_key
+>>> dt_lfsck_features
+>>> dt_locate_at
+>>> dt_lookup_dir
+>>> dt_mode_to_dft
+>>> dt_object_fini
+>>> dt_object_init
+>>> dt_otable_features
+>>> dt_path_parser
+>>> dt_quota_glb_features
+>>> dt_quota_slv_features
+>>> dt_read
+>>> dt_record_read
+>>> dt_record_write
+>>> dt_store_open
+>>> dt_store_resolve
+>>> dt_try_as_dir
+>>> dt_txn_callback_add
+>>> dt_txn_callback_del
+>>> dt_txn_hook_commit
+>>> dt_txn_hook_start
+>>> dt_txn_hook_stop
+>>> dt_version_get
+>>> dt_version_set
+>>> dump_exports
+>>> dump_obdo
+>>> iattr_from_obdo
+>>> init_capa_hash
+>>> interval_expand
+>>> interval_find
+>>> interval_is_overlapped
+>>> interval_iterate
+>>> interval_iterate_reverse
+>>> interval_search
+>>> ldlm_add_bl_work_item
+>>> ldlm_add_cp_work_item
+>>> ldlm_blocking_ast
+>>> ldlm_blocking_ast_nocheck
+>>> ldlm_cancel_locks_for_export
+>>> ldlm_cancel_locks_for_export_cb
+>>> ldlm_cancel_lru_local
+>>> ldlm_cli_cancel_req
+>>> ldlm_cli_convert
+>>> ldlm_cli_enqueue_local
+>>> ldlm_cli_inactive_namespace_list
+>>> ldlm_convert_policy_to_wire
+>>> ldlm_destroy_export
+>>> ldlm_dump_granted_max
+>>> ldlm_enqueue_pack
+>>> ldlm_errno2error
+>>> ldlm_expired_completion_wait
+>>> ldlm_flock_blocking_ast
+>>> ldlm_get_enq_timeout
+>>> ldlm_glimpse_ast
+>>> ldlm_init_export
+>>> ldlm_kobj
+>>> ldlm_lock_add_to_lru
+>>> ldlm_lock_add_to_lru_nolock
+>>> ldlm_lock_destroy_internal
+>>> ldlm_lock_downgrade
+>>> ldlm_lock_fail_match
+>>> ldlm_lock_touch_in_lru
+>>> ldlm_namespace_foreach
+>>> ldlm_namespace_free
+>>> ldlm_namespace_get_return
+>>> ldlm_namespace_register
+>>> ldlm_namespace_sysfs_register
+>>> ldlm_namespace_sysfs_unregister
+>>> ldlm_namespace_unregister
+>>> ldlm_ns_fid_hash_ops
+>>> ldlm_ns_hash_defs
+>>> ldlm_ns_hash_ops
+>>> ldlm_pool_get_clv
+>>> ldlm_pool_get_limit
+>>> ldlm_pool_recalc
+>>> ldlm_pool_set_limit
+>>> ldlm_pool_set_slv
+>>> ldlm_pool_setup
+>>> ldlm_pool_shrink
+>>> ldlm_pools_recalc
+>>> ldlm_process_flock_lock
+>>> ldlm_refresh_waiting_lock
+>>> ldlm_register_intent
+>>> ldlm_reprocess_all_ns
+>>> ldlm_resource_foreach
+>>> ldlm_resource_insert_lock_after
+>>> ldlm_resource_putref_locked
+>>> ldlm_svc_kset
+>>> ldlm_typename
+>>> ldlm_work_gl_ast_lock
+>>> llog_cat_id2handle
+>>> llog_cat_process_or_fork
+>>> llog_thread_key
+>>> lock_handle_ops
+>>> lprocfs_dt_rd_blksize
+>>> lprocfs_dt_rd_filesfree
+>>> lprocfs_dt_rd_filestotal
+>>> lprocfs_dt_rd_kbytesavail
+>>> lprocfs_dt_rd_kbytesfree
+>>> lprocfs_dt_rd_kbytestotal
+>>> lprocfs_stats_seq_fops
+>>> lprocfs_write_frac_u64_helper
+>>> lu_context_key_quiesce
+>>> lu_context_key_revive
+>>> lu_context_refill
+>>> lu_dev_add_linkage
+>>> lu_device_put
+>>> lu_global_key
+>>> lu_object_find
+>>> lu_site_hash_ops
+>>> lustre_attr_show
+>>> lustre_attr_store
+>>> lustre_fill_super
+>>> lustre_fs_type
+>>> lustre_init_lsi
+>>> lustre_mount
+>>> lustre_pack_reply_v2
+>>> lustre_profile_list
+>>> lustre_put_lsi
+>>> lustre_start_mgc
+>>> lustre_start_simple
+>>> lustre_swab_ldlm_lock_desc
+>>> lustre_swab_ldlm_policy_data
+>>> lustre_swab_ldlm_res_id
+>>> lustre_swab_ldlm_resource_desc
+>>> lustre_swab_ll_fid
+>>> lustre_swab_llog_id
+>>> lustre_swab_obdo
+>>> mgc_start_lock
+>>> nrs_policy_get_info_locked
+>>> obd_export_nid2str
+>>> obd_init_checks
+>>> obd_zombie_impexp_cull
+>>> ptl_get_pid
+>>> ptlrpc_interrupted_set
+>>> ptlrpc_new_bulk
+>>> ptlrpc_next_xid
+>>> ptlrpc_nrs_policy_register
+>>> ptlrpc_pinger_remove_timeouts
+>>> ptlrpc_register_bulk
+>>> ptlrpc_retain_replayable_request
+>>> ptlrpc_server_drop_request
+>>> ptlrpc_start_thread
+>>> ptlrpc_start_threads
+>>> ptlrpc_stop_all_threads
+>>> ptlrpc_unregister_reply
+>>> ptlrpcd_free
+>>> ptlrpcd_start
+>>> ptlrpcd_stop
+>>> req_capsule_field_present
+>>> req_capsule_init_area
+>>> server_name2fsname
+>>> server_name2index
+>>> sptlrpc_cli_wrap_bulk
+>>> sptlrpc_parse_rule
+>>> sptlrpc_req_replace_dead_ctx
+>>> sptlrpc_rule_set_choose
+>>> sptlrpc_rule_set_expand
+>>> sptlrpc_rule_set_free
+>>> sptlrpc_rule_set_merge
+>>> sptlrpc_sec_get
+>>> sptlrpc_secflags2str
+>>> sptlrpc_svc_install_rvs_ctx
+>>>
+>>>
+>>
+>
 
