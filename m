@@ -1,82 +1,96 @@
 X-GM-THRID: 6200732724667351040
-X-Received: by 10.112.132.6 with SMTP id oq6mr1777588lbb.1.1443730622022;
-        Thu, 01 Oct 2015 13:17:02 -0700 (PDT)
+X-Received: by 10.50.122.2 with SMTP id lo2mr34415igb.2.1443720604030;
+        Thu, 01 Oct 2015 10:30:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.35.225 with SMTP id l1ls248809wij.2.gmail; Thu, 01 Oct
- 2015 13:17:01 -0700 (PDT)
-X-Received: by 10.180.106.197 with SMTP id gw5mr146020wib.7.1443730621705;
-        Thu, 01 Oct 2015 13:17:01 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id k7si144090wif.1.2015.10.01.13.17.01
+Received: by 10.51.17.38 with SMTP id gb6ls289609igd.24.canary; Thu, 01 Oct
+ 2015 10:30:03 -0700 (PDT)
+X-Received: by 10.66.240.138 with SMTP id wa10mr8724958pac.43.1443720603437;
+        Thu, 01 Oct 2015 10:30:03 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id wl2si1097765pab.1.2015.10.01.10.30.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 13:17:01 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        Thu, 01 Oct 2015 10:30:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue005) with ESMTPSA (Nemesis) id 0MKMb4-1ZhC3O3yXm-001kVN; Thu, 01 Oct
- 2015 22:17:01 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Shraddha Barke <shraddha.6596@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/6] Declare functions and structures as static
-Date: Thu, 01 Oct 2015 22:17 +0200
-Message-ID: <1618733.OsocIDNLYM@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id lk4so79805147pab.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 10:30:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=RfGbbH1ZpPXIGecxB/OBcMnsPSEL7gZ7IK5uIG6aUQ8=;
+        b=ZQj+fHRw2CbxHZVRZv2e+V/tWYXWDtTk5rPrdG7N76zB2MA1YgbTAybvNxO66i4hYQ
+         wBx5vi2tEJb0GPGa7/L8pNQqEJpx/eIn8LnjggCG3INSF7MpL/xDRWWC0c+jYxXBpKWS
+         9SlF4lrU+2H6zXT+WbSkp7mfuzx5x+3m/o4KVgumZIhi1JtyLyrxd8YKmWqCwZ1MUHKU
+         Kn+0MwuulzYSy12K7FGEpN4qIXDQqM3+m2lBqSCqRdftv5FY/TGrJqDSkj4OnjFhW+uj
+         Esa0kWNP5VON6ELiZUhb8m1y7QF04Gf+imHAlqZ2Y5B7OYG6C1Blh8KHAmQZ+1Yxlphu
+         HiRw==
+X-Received: by 10.66.163.136 with SMTP id yi8mr13604110pab.124.1443720603295;
+        Thu, 01 Oct 2015 10:30:03 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id xm4sm7822424pab.27.2015.10.01.10.30.01
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Oct 2015 10:30:02 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 6/6] Staging: lustre: ptlrpc: Declare sptlrpc_parse_rule as static
+Date: Thu,  1 Oct 2015 22:59:41 +0530
+Message-Id: <1443720581-11352-7-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1443720581-11352-1-git-send-email-shraddha.6596@gmail.com>
 References: <1443720581-11352-1-git-send-email-shraddha.6596@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:nZo6sRiwZ+cB40PPCvdqn/bU015p5aPWj0XsmQN6qvhMgdG2LyU
- S/G/fUk/ysW+w21NvfvjonJcjJWADGyRA1b/7ftAaF73178uc/c/OOJTUwYjb5UqYbaNmqX
- 8x8jk7Uhug9+pCoPqswBAXMR0qr061+4fqq9VX1TsgX+xzXY6pP+u410LNM7jdMbZKsdg6F
- QQuJq9EffyLh13AuQUt+w==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:p1ltzj3XzaE=:xpaFPZBriPrweET8jdwSrp
- Tr6zAPxhcA5z0lPGHFFHCGWg4OnZ51i8OrlctQyCqLB4uKAecsDrav0EOG7j9VNDMcPHVRNhn
- Pva/WZcFRZzj7Q9HrII6EM6qMua54e7G2Y9CpKrh2hFfTpzFFZUxh4giVFT9vvwH0pL93ywOH
- HAfdXphSdtKJveBCsjX8va7SBcM5KkXM3T/tER+p2X8yXDkpTm1bigGOqwqaOWgfN6DmgW9It
- crSW4y5yuhzM9doO8Q1vs8W3g/bQtt9FZq5xNNxwjEmx9WXt9CQG74RbvvsYJgUZrQ98fmfUe
- XpAwQqomHLSqF/WPx58OtZpAxsxvXGbvo4Zti/BNrU1ekILxqcor7Tx8JQum7GtH/13/WE2Xz
- UjYJpJqkoDLvyJi7uZ8tF3AuTTJTOeAQj/G8QMrtNynpgCUCFBQmcWmx/4M84DA35Ieok/B/2
- Hg7if+TbcTkLAKfZL1Z2jlm1gvINqqrOU0YQ5h+a1uwPzjV+EwERSpXAo2RbPq0jQ4nPkhTY1
- JlLlpgOkV+Entj7bckbpbFIP7wgHRNM8MPxZRaAKk1p1XRokTPDtvMoGJWZV/7p6jTzQYzDb2
- Nf/qyHn/M38cqVqQ6pkeVS0GZhm6WiGvLQkHEoXfBBVEnup9vyXi0P6Je56rpbP48yZWy+2QH
- JkkSZZfq8BIFgCv5scc0iO6fYrEkH/WJK20PyQ0dCIInPFk9o53se9quvpB94bc+/2wxOaT3U
- BGMwwmrxRIBKdtVP
 
-On Thursday 01 October 2015 22:59:35 Shraddha Barke wrote:
-> These patches declare the functions and structures which are not
-> used anywhere else as static.
-> 
-> 
-> Shraddha Barke (6):
->   Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_merge as static
->   Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_free as static
->   Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_expand as static
->   Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_choose as static
->   Staging: lustre: ptlrpc: Declare sptlrpc_req_replace_dead_ctx as
->     static
->   Staging: lustre: ptlrpc: Declare sptlrpc_parse_rule as static
-> 
-> 
+Declare sptlrpc_parse_rule as static since it is accessed from this
+particular file only. Also remove it's declaration from
+header file
 
-Individually, each of these looks good and can be applied
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/lustre/lustre/include/lustre_sec.h | 1 -
+ drivers/staging/lustre/lustre/ptlrpc/sec_config.c  | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+diff --git a/drivers/staging/lustre/lustre/include/lustre_sec.h b/drivers/staging/lustre/lustre/include/lustre_sec.h
+index 5433fce..0dd5687 100644
+--- a/drivers/staging/lustre/lustre/include/lustre_sec.h
++++ b/drivers/staging/lustre/lustre/include/lustre_sec.h
+@@ -1037,7 +1037,6 @@ void sptlrpc_req_put_ctx(struct ptlrpc_request *req, int sync);
+ int  sptlrpc_req_refresh_ctx(struct ptlrpc_request *req, long timeout);
+ void sptlrpc_req_set_flavor(struct ptlrpc_request *req, int opcode);
+ 
+-int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule);
+ 
+ /* gc */
+ void sptlrpc_gc_add_sec(struct ptlrpc_sec *sec);
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
+index 6de9aa6..0b96f62 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
+@@ -180,7 +180,7 @@ static void sptlrpc_rule_init(struct sptlrpc_rule *rule)
+ /*
+  * format: network[.direction]=flavor
+  */
+-int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
++static int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
+ {
+ 	char *flavor, *dir;
+ 	int rc;
+@@ -234,7 +234,6 @@ int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL(sptlrpc_parse_rule);
+ 
+ static void sptlrpc_rule_set_free(struct sptlrpc_rule_set *rset)
+ {
+-- 
+2.1.4
 
-Now that you get the principle right, I think it would be better
-to continue with similar patches that do multiple functions at
-once and look at the bigger picture. In case of this series, it would
-be worth noting that there are two more sptlrpc_rule_set_* functions,
-and neither of them should be global. The sptlrpc_rule_set_init()
-one is slightly different because it's static inline but can simply
-be moved into the file that holds the other functions.
-
-Try to find patterns like this and then handle all symbols that
-fall into a similar category as a combined patch.
-
-	Arnd
 
