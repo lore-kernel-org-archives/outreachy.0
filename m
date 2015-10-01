@@ -1,78 +1,80 @@
-X-GM-THRID: 6201725617113661440
-X-Received: by 10.129.39.87 with SMTP id n84mr21515575ywn.4.1443951767218;
-        Sun, 04 Oct 2015 02:42:47 -0700 (PDT)
+X-GM-THRID: 6200751875195666432
+X-Received: by 10.112.136.99 with SMTP id pz3mr116070lbb.11.1443725050351;
+        Thu, 01 Oct 2015 11:44:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.61.204 with SMTP id s12ls937668igr.25.canary; Sun, 04 Oct
- 2015 02:42:46 -0700 (PDT)
-X-Received: by 10.68.222.104 with SMTP id ql8mr10529716pbc.9.1443951766775;
-        Sun, 04 Oct 2015 02:42:46 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id zg1si3037043pbb.2.2015.10.04.02.42.46
+Received: by 10.180.108.133 with SMTP id hk5ls211101wib.7.canary; Thu, 01 Oct
+ 2015 11:44:09 -0700 (PDT)
+X-Received: by 10.181.29.103 with SMTP id jv7mr78055wid.0.1443725049938;
+        Thu, 01 Oct 2015 11:44:09 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
+        by gmr-mx.google.com with ESMTPS id ha7si177993wib.0.2015.10.01.11.44.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 02:42:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Oct 2015 11:44:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id lk4so146359963pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 02:42:46 -0700 (PDT)
+Received: by mail-wi0-x229.google.com with SMTP id fx3so2162073wic.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 11:44:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=9wQJzj3k7gdzCZOweJIrRpYCbJy5x4AteV2wFIF/KzU=;
-        b=UABloxYmSP9f9nXXTJ3Auf9VIOwHnd9JXK+2K+UwXVSXs9AJTWi5v8MqJYO140rg1O
-         Jjk61NYCQFhvKGupsUrarE90Q4Rvz7XsayB4tVjQ/jqz3FKnaD30JzpglpkxJXUBqtYE
-         wba7B6imBXPxu0RhRi4+j+Rk34jwhv5Quv2fX8Hq91JPiqtZhC8qAWW74HDQ1j9BqjK2
-         8M7oaKs+HV7W6JhG8NQV3tuygxV/8Vpi2EJLpvJt52Jewh1Fn7ouip3s9NTKm1tTQRmI
-         yVRKaHQ0a7nbAME3xh89jG6WEHYzWtsVM2fZ6zkoqDIl9ahx0eA68+fY54VxjwxK3BGQ
-         UbNQ==
-X-Received: by 10.66.66.167 with SMTP id g7mr31527655pat.152.1443951766617;
-        Sun, 04 Oct 2015 02:42:46 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.240.135])
-        by smtp.gmail.com with ESMTPSA id pc8sm21316487pbc.27.2015.10.04.02.42.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 04 Oct 2015 02:42:46 -0700 (PDT)
-Date: Sun, 4 Oct 2015 15:12:42 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=phv6iCve0mx6N5A794Gjk2qhm0FNur/OAecSZ8SW7qQ=;
+        b=OpvH2Shd+Vj6KYjujJgS4+lL0rBNtmLDii1pN2I3LYgrwzobwM8SaQp2IHPJLlp05p
+         KInoVX2tcqL0ivRv9aXIK1Tq5xhiJU6jETl4ErKSDcMpDDscdMOIeClFOR2H2j38J/VU
+         qQSoNeKD6LLAaCu5QtywKQafRGr4YGO9gP62oOQiX3Dh/bfKAxWj0cQa1+5Qhb3io8cp
+         c/oEJ68zT1ktp5iD8xHob0/7J+DJYp8W6fvVACawJ9OwMut+ReGFgjT2X0Y5yC0iLJ2Y
+         F+WG6YdukU7bm1fRSUqCs8W9qePg99MoV8yR008hlnMbP6F38Mf0F0I0LPaOUITO7jzp
+         snpg==
+X-Received: by 10.194.179.231 with SMTP id dj7mr11487341wjc.146.1443725049828;
+        Thu, 01 Oct 2015 11:44:09 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([141.85.225.214])
+        by smtp.gmail.com with ESMTPSA id pu6sm7453387wjc.34.2015.10.01.11.44.08
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Oct 2015 11:44:09 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: sm750fb: Remove space before paranthesis
-Message-ID: <20151004094242.GA4089@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: dgnc: Fix indentation warning
+Date: Thu,  1 Oct 2015 21:43:57 +0300
+Message-Id: <1443725037-47939-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Remove space before paranthesis ')'. Problem found using
-checkpatch.pl
-ERROR: space prohibited before that close parenthesis ')'
+Fixed 'suspect code indent for conditional statements (8, 24)' Warning
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
-Changes in v2:
-        - Correct the commit message
+ drivers/staging/dgnc/dgnc_cls.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
- drivers/staging/sm750fb/ddk750_chip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 1683b3d..665238c 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -268,7 +268,7 @@ int ddk750_initHw(initchip_param_t *pInitParam)
- #endif
+diff --git a/drivers/staging/dgnc/dgnc_cls.c b/drivers/staging/dgnc/dgnc_cls.c
+index a629a78..76fe4b2 100644
+--- a/drivers/staging/dgnc/dgnc_cls.c
++++ b/drivers/staging/dgnc/dgnc_cls.c
+@@ -628,13 +628,13 @@ static void cls_param(struct tty_struct *tty)
+ 	 * we are in hardware flow control mode, or CLOCAL/FORCEDCD is not set.
+ 	 */
+ 	if ((ch->ch_digi.digi_flags & CTSPACE) ||
+-		(ch->ch_digi.digi_flags & RTSPACE) ||
+-		(ch->ch_c_cflag & CRTSCTS) ||
+-		!(ch->ch_digi.digi_flags & DIGI_FORCEDCD) ||
+-		!(ch->ch_c_cflag & CLOCAL))
+-			ier |= UART_IER_MSI;
++	    (ch->ch_digi.digi_flags & RTSPACE) ||
++	    (ch->ch_c_cflag & CRTSCTS) ||
++	    !(ch->ch_digi.digi_flags & DIGI_FORCEDCD) ||
++	    !(ch->ch_c_cflag & CLOCAL))
++		ier |= UART_IER_MSI;
+ 	else
+-			ier &= ~UART_IER_MSI;
++		ier &= ~UART_IER_MSI;
  
- 
--	if (pInitParam->powerMode != 0 )
-+	if (pInitParam->powerMode != 0)
- 		pInitParam->powerMode = 0;
- 	setPowerMode(pInitParam->powerMode);
+ 	ier |= UART_IER_THRI;
  
 -- 
 1.9.1
