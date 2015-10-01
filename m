@@ -1,48 +1,48 @@
 X-GM-THRID: 6200599277557776384
-X-Received: by 10.112.125.104 with SMTP id mp8mr2439408lbb.20.1443779971903;
-        Fri, 02 Oct 2015 02:59:31 -0700 (PDT)
+X-Received: by 10.112.145.3 with SMTP id sq3mr762311lbb.7.1443709414748;
+        Thu, 01 Oct 2015 07:23:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.87.8 with SMTP id l8ls207678lfb.92.gmail; Fri, 02 Oct 2015
- 02:59:31 -0700 (PDT)
-X-Received: by 10.112.144.99 with SMTP id sl3mr2369502lbb.12.1443779971297;
-        Fri, 02 Oct 2015 02:59:31 -0700 (PDT)
+Received: by 10.25.23.155 with SMTP id 27ls118433lfx.49.gmail; Thu, 01 Oct
+ 2015 07:23:34 -0700 (PDT)
+X-Received: by 10.112.40.17 with SMTP id t17mr1431623lbk.10.1443709414185;
+        Thu, 01 Oct 2015 07:23:34 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id bj4si222762wib.1.2015.10.02.02.59.31
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id c7si85104wiy.3.2015.10.01.07.23.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Oct 2015 02:59:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Oct 2015 07:23:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id fx3so26151222wic.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 02:59:31 -0700 (PDT)
+Received: by mail-wi0-x230.google.com with SMTP id lk2so31059836wic.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 07:23:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=jLM4t8vWvtT2l7dQXFY4CkBcp2sQzt4EPyzeSPkOJAM=;
-        b=Y3mzmdgYudyawqd0VADWxYchZjYNF4EPLfQ1Wa0VQ6rjoVFJ0PXX1iN0WJYfLz48Qq
-         n056aFrx/DiccCpBvS8r1VQ4pNVPCcy5TZdvP5rWWtu37wS0vvNgvym9CRCgFkZirLK2
-         Shp+UEtPkD/YSzM+JDFL0EOxnzxtrP171Oq8rzaPlRzwCjOjORkWjzScdpdh2NR+7GWn
-         GporEx7QMLa7BCDzHPlrtDJddDlSHJwNwASW8ruKiH1xcG6poWzzsOwzzaf01EbzMhnC
-         9iSK6VoRSXTaRU1LyOl62qppr28xR5ybnMZRlxirpXApxZmaV1EUnJgrt2AxPhOCqbVu
-         U9jQ==
-X-Received: by 10.194.178.196 with SMTP id da4mr18076365wjc.41.1443779971162;
-        Fri, 02 Oct 2015 02:59:31 -0700 (PDT)
+        bh=XxyQopT48XEBD9J+i5xM1LW/6KXStHhXMR+zi5TIvXs=;
+        b=i3/3H8CU9Gupqd9OTMWPTwaLF0roZZbDMYm0GmvkKpa33oIzYhnM3Hq8Nnwu78Xma8
+         TtbExnrWAJi2ENI9uD7Voa8wsbE8KlRBTVbB3O+krhFlWL62JZQcI+CRg1DGXZcgKifq
+         0YW4Fy1SMfnUIuUyAtoLILrzdXxzocRb8SmBSLhxpCWtnEHSm28v0jRF0peoaV+Y/HjV
+         h0yLnzOOg4n/4yYKE7RoCVk/3Kd2cxPnJ3tg8dj08k2I/jqiolin/215P2zbZA94Z7Ek
+         yPWvqE917NjMByxqd+ItQT+2NyKAJgF8kF30UhHhVNJePOWDVno/kU3w4NRN7yiXzzUv
+         jroA==
+X-Received: by 10.194.204.195 with SMTP id la3mr10533725wjc.77.1443709414003;
+        Thu, 01 Oct 2015 07:23:34 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain ([93.122.165.106])
-        by smtp.gmail.com with ESMTPSA id g5sm7549190wix.13.2015.10.02.02.59.30
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Oct 2015 02:59:30 -0700 (PDT)
+Received: from localhost.localdomain ([86.124.70.84])
+        by smtp.gmail.com with ESMTPSA id go5sm3463388wib.3.2015.10.01.07.23.33
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Oct 2015 07:23:33 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH v3] staging: wlan-ng: replace memcpy with ether_addr_copy
-Date: Fri,  2 Oct 2015 12:59:24 +0300
-Message-Id: <1443779964-12035-1-git-send-email-ciorneiioana@gmail.com>
+Subject: [PATCH v2] staging: wlan-ng: replace memcpy with ether_addr_copy
+Date: Thu,  1 Oct 2015 17:23:27 +0300
+Message-Id: <1443709407-14430-1-git-send-email-ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
 
 Replace memcpy with ether_addr_copy since the output of pahole
@@ -131,20 +131,18 @@ expression E1,E2;
 
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
+
 Changes in v2:
     - revised the cocci patch to be a more constrainting one
     - applied cocci patch on the entire wlan-ng folder
     - updated the patch description with further pahole output
-
-Changes in v3:
-    - make an explicit cast from u8 (*)[6] to const u8 * to avoid compile warning
 
  drivers/staging/wlan-ng/p80211conv.c   | 20 ++++++++++----------
  drivers/staging/wlan-ng/p80211netdev.c |  2 +-
  2 files changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/staging/wlan-ng/p80211conv.c b/drivers/staging/wlan-ng/p80211conv.c
-index 1b02cdf..8b6de4f 100644
+index 1b02cdf..c55a213 100644
 --- a/drivers/staging/wlan-ng/p80211conv.c
 +++ b/drivers/staging/wlan-ng/p80211conv.c
 @@ -178,21 +178,21 @@ int skb_ether_to_p80211(wlandevice_t *wlandev, u32 ethconv,
@@ -154,7 +152,7 @@ index 1b02cdf..8b6de4f 100644
 -		memcpy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
 -		memcpy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr, ETH_ALEN);
 -		memcpy(p80211_hdr->a3.a3, wlandev->bssid, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a1, (const u8*)&e_hdr.daddr);
++		ether_addr_copy(p80211_hdr->a3.a1, &e_hdr.daddr);
 +		ether_addr_copy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr);
 +		ether_addr_copy(p80211_hdr->a3.a3, wlandev->bssid);
  		break;
@@ -165,16 +163,16 @@ index 1b02cdf..8b6de4f 100644
 -		memcpy(p80211_hdr->a3.a3, &e_hdr.daddr, ETH_ALEN);
 +		ether_addr_copy(p80211_hdr->a3.a1, wlandev->bssid);
 +		ether_addr_copy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr);
-+		ether_addr_copy(p80211_hdr->a3.a3, (const u8*)&e_hdr.daddr);
++		ether_addr_copy(p80211_hdr->a3.a3, &e_hdr.daddr);
  		break;
  	case WLAN_MACMODE_ESS_AP:
  		fc |= cpu_to_le16(WLAN_SET_FC_FROMDS(1));
 -		memcpy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
 -		memcpy(p80211_hdr->a3.a2, wlandev->bssid, ETH_ALEN);
 -		memcpy(p80211_hdr->a3.a3, &e_hdr.saddr, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a1, (const u8*)&e_hdr.daddr);
++		ether_addr_copy(p80211_hdr->a3.a1, &e_hdr.daddr);
 +		ether_addr_copy(p80211_hdr->a3.a2, wlandev->bssid);
-+		ether_addr_copy(p80211_hdr->a3.a3, (const u8*)&e_hdr.saddr);
++		ether_addr_copy(p80211_hdr->a3.a3, &e_hdr.saddr);
  		break;
  	default:
  		netdev_err(wlandev->netdev,
