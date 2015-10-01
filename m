@@ -1,124 +1,139 @@
 X-GM-THRID: 6200611211635064832
-X-Received: by 10.112.138.4 with SMTP id qm4mr231562lbb.6.1443707875119;
-        Thu, 01 Oct 2015 06:57:55 -0700 (PDT)
+X-Received: by 10.112.147.7 with SMTP id tg7mr1452577lbb.16.1443707362661;
+        Thu, 01 Oct 2015 06:49:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.2.129 with SMTP id 1ls120807lau.31.gmail; Thu, 01 Oct 2015
- 06:57:54 -0700 (PDT)
-X-Received: by 10.112.145.3 with SMTP id sq3mr740938lbb.7.1443707874173;
-        Thu, 01 Oct 2015 06:57:54 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id bj4si102810wib.1.2015.10.01.06.57.54
+Received: by 10.180.102.232 with SMTP id fr8ls156524wib.28.gmail; Thu, 01 Oct
+ 2015 06:49:22 -0700 (PDT)
+X-Received: by 10.180.210.212 with SMTP id mw20mr494235wic.3.1443707362333;
+        Thu, 01 Oct 2015 06:49:22 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id bn1si103392wib.0.2015.10.01.06.49.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 06:57:54 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        Thu, 01 Oct 2015 06:49:22 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue001) with ESMTPSA (Nemesis) id 0MKQMA-1Zh6P90sXm-001lTt; Thu, 01 Oct
- 2015 15:57:53 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Shraddha Barke <shraddha.6596@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: lustre: ptlrpc: Make functions static
-Date: Thu, 01 Oct 2015 15:57:52 +0200
-Message-ID: <4003012.PLAPRmBvBo@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <alpine.DEB.2.10.1510011544300.2648@hadrien>
-References: <1443692278-9074-1-git-send-email-shraddha.6596@gmail.com> <1949518.HAv4iPaUmg@wuerfel> <alpine.DEB.2.10.1510011544300.2648@hadrien>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,617,1437429600"; 
+   d="scan'208";a="180465071"
+Received: from guest-rocq-135242.inria.fr ([128.93.135.242])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Oct 2015 15:49:21 +0200
+Date: Thu, 1 Oct 2015 15:49:21 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arnd Bergmann <arnd@arndb.de>
+cc: Shraddha Barke <shraddha.6596@gmail.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: lustre: ptlrpc: Make
+ functions static
+In-Reply-To: <1949518.HAv4iPaUmg@wuerfel>
+Message-ID: <alpine.DEB.2.10.1510011544300.2648@hadrien>
+References: <1443692278-9074-1-git-send-email-shraddha.6596@gmail.com> <alpine.DEB.2.11.1510011534180.9108@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V> <alpine.DEB.2.10.1510011515370.2648@hadrien> <1949518.HAv4iPaUmg@wuerfel>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:FoUItl7fVzFVtLtnSKJrepS9Q+j9TEIeyuppDmbYZaAjk1dV0k7
- CFO9ohXaF7QPJhgzuEa4Ix8uHHyg+TulOuDYGRYCAE97VBUvAh9x7BEbqQCq232RDgIRuwu
- 7Tc3jZJK02k+Ba8dcyt7XndSX0CoUtj6Okh370+uByH9z8frgHUVLGmG9F10zCuG077iU5N
- 3MLO1zwbOT5SXyGFzz0qg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:rRpz45ZMDec=:kuQDamTapipI/HpFvVT1qp
- nT4mVev5bhHeA4c27jz78nNuohY2GkxAjzpPyMuGPHrO6WQsL9xtd4C4Ea+MZz6C0OpGBm6NR
- e2ejDEH/1baoheWdUd8qNguTOf6LUIO0zjezzRzFEqKOMf+8hxcwFTaaF3pDgD7glTBiEY9xj
- dzy+fiHNzOSgn4TjEWr8OBlr9bgFfyOewPca38QhThsJlsUMVQxqdEeBv5/kKtwdmA+ejp40X
- sfsQ4hmQxJurUddNVkiDblI0bggbPJS6xvPRx3dQLXRo/PAOUFAYSxvrb6eke56leE2hx4E3v
- ZvsjT/WwpwRrcUrgm78GhSxwtpRjjTOEsv0/uPuFvClbAkvgCikk79se7eZL9RShdgi5M+MnF
- EjnsgvXmMCOjKx8HJN9prQF9BqKc+uRMU+SBtEhlapdAIHg6jEz0/C16ZVgQaE7DlLlNrpbge
- VIZVH3JpyFZsANGKTnRFDMMIj2QAbasXKM9/+yVHHnk2iO0OWDm4ml7raEfRymNfXMhAmRp02
- O7Y10O8X9XH5P7SHxTvngaDDAi4EpAPoiT21hZvNarOWOg5Yn5eVZa1ezUUtRJEH6vvR9+B29
- KoBxPc14WS05qtzbtkkbFn11WzY6h3o114wMdJgKvBMPeIqCTMcJ+LrMEqM+im9djyL8e9RnC
- yNADtJDNUgd5rn8wKKkuQX1j786LYQfrD+lLq9qsOkLxjKpzzLV7/SAXGQOWEzEPE1akQodGr
- U3B9ApesKR8Rhb7S
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Thursday 01 October 2015 15:49:21 Julia Lawall wrote:
-> On Thu, 1 Oct 2015, Arnd Bergmann wrote:
-> > On Thursday 01 October 2015 15:20:39 Julia Lawall wrote:
-> > > On Thu, 1 Oct 2015, Shraddha Barke wrote:
-> > > > > Note that there are hundreds more symbols in lustre that should be made
-> > > > > static.
-> > > > > Most of them are harder to find because they have a declaration in a header
-> > > > > file
-> > > > > despite being only used in one place.
+
+
+On Thu, 1 Oct 2015, Arnd Bergmann wrote:
+
+> On Thursday 01 October 2015 15:20:39 Julia Lawall wrote:
+> > On Thu, 1 Oct 2015, Shraddha Barke wrote:
+> >
 > > >
-> > > Why does it make it hard to find?  One can make a spearate check in .c
-> > > files.
+> > >
+> > > On Thu, 1 Oct 2015, Arnd Bergmann wrote:
+> > >
+> > > > On Thursday 01 October 2015 15:07:57 Shraddha Barke wrote:
+> > > > > Since these functions are not called anywhere apart from this particular
+> > > > > file, declare them as static.
+> > > > >
+> > > > > Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> > > > >
+> > > >
+> > > > Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+> > > >
+> > > > Note that there are hundreds more symbols in lustre that should be made
+> > > > static.
+> > > > Most of them are harder to find because they have a declaration in a header
+> > > > file
+> > > > despite being only used in one place.
 > >
-> > We currently get a sparse warning for each global identifier definition
-> > that is not preceded by a declaration, but since most of our tools
-> > (gcc, sparse, coccinelle, ...) work on a single file at a time, they
-> > do not know whether a global symbol that is defined in a C file and
-> > (incorrectly) declared in a header is used in another C file or not.
-> 
-> OK, but from Coccinlle you can just call grep, and check the extensions on
-> the returned file names, so it is not a big problem.
+> > Why does it make it hard to find?  One can make a spearate check in .c
+> > files.
+>
+> We currently get a sparse warning for each global identifier definition
+> that is not preceded by a declaration, but since most of our tools
+> (gcc, sparse, coccinelle, ...) work on a single file at a time, they
+> do not know whether a global symbol that is defined in a C file and
+> (incorrectly) declared in a header is used in another C file or not.
 
-I'm not following here. How exactly would you find symbols like this with coccinelle?
+OK, but from Coccinlle you can just call grep, and check the extensions on
+the returned file names, so it is not a big problem.
 
-subsystem.h:
+> In case of lustre, a lot of functions were originally global because they
+> were used in the server-side code. However, the code we have in staging
+> today only includes the client-side implementation and we want to
+> remove all traces of the server side from it for simplicity.
 
-extern int subsystem_state;
+OK.
 
-subsystem.c:
+> > I would think though that the clean up could be a little bit tedious.  I
+> > guess that when the function is static, it shouldn't be declared in the
+> > header file any more?
+>
+> Correct. The first step could be to remove declarations for the symbols,
+> followed by actually removing the ones that we then get sparse warnings
+> for.
+>
+> >  At least not if the header file is shared
+> > between multipe files.  But it still may need to be declared somewhere, if
+> > it is referenced before it is declared in the one file where it is used.
+>
+> I would also consider that a bug we should warn about: basically any
+> 'extern' variable declaration and any forward declaration for a
+> global function (with or without the redundant extern specifier) should
+> be considered a bug. We want the same declaration to be visible by both
+> the file that defines it and the file that uses it so we get warned about
+> type mismatches.
 
-#include "subsystem.h"
-long subsystem_state;
+I think there would be warning about type mismatches anyway, if the
+prototype doesn't match with the definition?
 
-static void function(void)
-{
-	...
-	subsystem_state++;
-	...
-}
+> > The question then is how to divide up the patches.  Should one just
+> > address all of the functions that have this property in a single file?  Or
+> > should one only work on a couple of functions at a time that seem related
+> > to each other?
+>
+> I think either way would be fine.
 
-with no users of this variable outside of this file.
+OK.  Then from my experience, I think that doing a few related functions
+at once would be easier.
 
-> > >  At least not if the header file is shared
-> > > between multipe files.  But it still may need to be declared somewhere, if
-> > > it is referenced before it is declared in the one file where it is used.
-> >
-> > I would also consider that a bug we should warn about: basically any
-> > 'extern' variable declaration and any forward declaration for a
-> > global function (with or without the redundant extern specifier) should
-> > be considered a bug. We want the same declaration to be visible by both
-> > the file that defines it and the file that uses it so we get warned about
-> > type mismatches.
-> 
-> I think there would be warning about type mismatches anyway, if the
-> prototype doesn't match with the definition?
+> There is one more thing to look out for: if a symbol is only used in
+> the file in which it gets defined, but the use comes before the
+> definition, we still need a 'static' forward declaration. Ideally
+> the functions should be reordered in a way that avoids those declarations,
+> but we don't want patches that mix a large scale move of code around
+> a file with a simpler change to make the symbols static.
+>
+> The two parts can be done in either order: we could mark the functions
+> static and add the forward declarations in one patch, and move them
+> to their proper place in a follow-up, or do the reverse without the
+> forward declaration.
+>
+> > Another issue in Lustre is that there are a some EXPORT_SYMBOLs on
+> > functyions that are only used in one file.  Should they all be removed, or
+> > is it like the case of android where there is code not yet in the kernel
+> > that may rely on them?
+>
+> They should all be removed as far as I can tell. It's a bug to export
+> a static symbol. I don't think that happens a lot, but this is something
+> we could easily check for using coccinelle.
 
-The point is that this only works if all files include the same header.
+I cleaned up a bunch of them at one point.  I don't seem to have
+integrated the semantic patch into the kernel though...
 
-e.g.
-
-subsystem.h:
-
-extern int subsystem_state;
-
-subsystem.c:
-
-#include "subsystem.h"
-long subsystem_state;
-
-driver.c:
-/* no #include subsystem.h */
-extern long subsystem_state;
-
-	Arnd
+julia
 
