@@ -1,82 +1,106 @@
 X-GM-THRID: 6200774307110453248
-X-Received: by 10.180.210.212 with SMTP id mw20mr278334wic.3.1443741814570;
-        Thu, 01 Oct 2015 16:23:34 -0700 (PDT)
+X-Received: by 10.112.169.34 with SMTP id ab2mr1920390lbc.23.1443741541674;
+        Thu, 01 Oct 2015 16:19:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.107.65 with SMTP id ha1ls254123wib.18.canary; Thu, 01 Oct
- 2015 16:23:34 -0700 (PDT)
-X-Received: by 10.180.105.98 with SMTP id gl2mr289790wib.0.1443741814177;
-        Thu, 01 Oct 2015 16:23:34 -0700 (PDT)
+Received: by 10.180.23.131 with SMTP id m3ls248893wif.47.gmail; Thu, 01 Oct
+ 2015 16:19:01 -0700 (PDT)
+X-Received: by 10.195.12.234 with SMTP id et10mr1935141wjd.2.1443741541240;
+        Thu, 01 Oct 2015 16:19:01 -0700 (PDT)
 Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id c1si152621wiv.3.2015.10.01.16.23.34
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id ch7si152155wib.2.2015.10.01.16.19.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 16:23:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Thu, 01 Oct 2015 16:19:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id fx3so9670502wic.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 16:23:34 -0700 (PDT)
+Received: by mail-wi0-x232.google.com with SMTP id lk2so9612251wic.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 16:19:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=hgbrJO3bhgY2eGwBIds7EJnOh4CoIJrJtzP1Zt0H0AE=;
-        b=WMzn0Or1Qh3s369Y4aKRtUI6XJLX5IkP3kQ/myisdoxB02wQEJtWwdRDHUO+zu6/tO
-         onC+Q+MSJMpVxkudp3n5vFFvkXBZVjwX08+odKxoJTLotZ9GCx/RA/QNS2FKnyT4G78W
-         BjD357kmoFZe6vEhQFSqf0xlxLL2rBnALcNdAsZnGZmnGOtammE8d7MTzbV+FUV4PpKT
-         j3kp4R+3SsOgO8a3KfKqCZhmiDfHlqLFeVbfK+VUfwPQbf8e7Gz9LvD01UlAzwRbIqB9
-         Yo7mh9r5z/G2ltGTWnEgeLfbfZEixT4WXUVAmgLs31SYUhhcajXuygX4XD3a3BMub0Ye
-         mXsg==
+        bh=F12kjkKa7gbH2yQ6tDkf8ijMbyXxn/nj03C4njKscjs=;
+        b=NNkvpBC4hlGZuJObHI6BDoQxLSUrCLp7zdemlP/527wVVrbu0W6cbjHZ41wDG1W4ll
+         GsUkqn5VxvDTzwkzt5zkmy3MFWeHx1UXiUwqu5V1busy0lTmdXexo4RMYQdsLpBHqyzL
+         IOGAFg/7dtZRAI9gl8gb5ut/TkIzjYSqTwM54b0yEMFnwa1sXLxa5JE19pTENNS5oUly
+         UZuqx8NML/EuwU/cyC+EuKbh9XiapV85csNbHUxPG1dutJXP14Pffg6e8Fr7V2hqy/CH
+         pZ1DGBYqQc+YhhlzA45U6eamrJxVHIvXnL6u3bjxAiFFeE2DuwUB34Qbof64AOD3rkal
+         VYvQ==
 MIME-Version: 1.0
-X-Received: by 10.194.110.37 with SMTP id hx5mr12967819wjb.149.1443741814038;
- Thu, 01 Oct 2015 16:23:34 -0700 (PDT)
-Received: by 10.194.67.99 with HTTP; Thu, 1 Oct 2015 16:23:33 -0700 (PDT)
-In-Reply-To: <cover.1443729484.git.ciorneiioana@gmail.com>
+X-Received: by 10.180.10.197 with SMTP id k5mr1100747wib.22.1443741541070;
+ Thu, 01 Oct 2015 16:19:01 -0700 (PDT)
+Received: by 10.194.67.99 with HTTP; Thu, 1 Oct 2015 16:19:01 -0700 (PDT)
+In-Reply-To: <41516ac4f917514f14dc5f8469a52aa8b6081818.1443729484.git.ciorneiioana@gmail.com>
 References: <cover.1443729484.git.ciorneiioana@gmail.com>
-Date: Fri, 2 Oct 2015 04:53:33 +0530
-Message-ID: <CAK-LDbLUyPE0Fj8sFGdchjCGSd-pvVSR_O_TbHHsmrx52X96Bw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/3] use resource managed devm_iio_device_register
+	<41516ac4f917514f14dc5f8469a52aa8b6081818.1443729484.git.ciorneiioana@gmail.com>
+Date: Fri, 2 Oct 2015 04:49:01 +0530
+Message-ID: <CAK-LDbJ3uLD2gH592oRLCLGn0Yx5zosxg9YgSERxDkhUxzQpJQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/3] staging: iio: resolver: replace
+ iio_device_register by devm_iio_device_register
 From: Vaishali Thakkar <vthakkar1994@gmail.com>
 To: Ioana Ciornei <ciorneiioana@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset=UTF-8
 
 On Fri, Oct 2, 2015 at 1:40 AM, Ioana Ciornei <ciorneiioana@gmail.com> wrote:
-> This patchset replaces the use of iio_device_register with
-> the resource managed function devm_iio_device_register when the remove function
-> only unregisters the device. Since an iio_dev registered with this function is
-> automatically unregistered on driver detach there is no need for the remove
-> function and therefore it is removed.
->
->
-> Ioana Ciornei (3):
->   staging: iio: cdc: use devm_iio_device_register instead
->     iio_device_register
->   staging: iio: light: use devm_iio_device_register instead
->     iio_device_register
->   staging: iio: resolver: replace iio_device_register by
->     devm_iio_device_register
->
->  drivers/staging/iio/cdc/ad7150.c      | 12 +-----------
->  drivers/staging/iio/cdc/ad7152.c      | 12 +-----------
->  drivers/staging/iio/cdc/ad7746.c      | 12 +-----------
->  drivers/staging/iio/light/isl29028.c  | 11 +----------
->  drivers/staging/iio/light/tsl2583.c   | 12 ++----------
+> Use devm_iio_device_register instead of iio_device_register when the remove
+> function is only used to call iio_device_unregister.
+> Function devm_iio_device_register implicitly calls unregister so there is
+> wqno need to specifically call it
+
+wqno->no
+
+Here, commit log looks confusing to me. Yes, it is good to use devm_iio_register
+only when remove function is calling iio_device_unregister. But that is not the
+reason why you should use resource managed function. Probably you need to
+write the clear reason of why you should replace current code with
+devm_iio_register.
+
+> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+> ---
 >  drivers/staging/iio/resolver/ad2s90.c | 10 +---------
->  6 files changed, 7 insertions(+), 62 deletions(-)
-
-Hi,
-
-Other than the changes I suggested, technically whole series looks good to me.
-
-Reviewed-by: Vaishali Thakkar <vthakkar1994@gmail.com>
-
-Thanks
-
+>  1 file changed, 1 insertion(+), 9 deletions(-)
+>
+> diff --git a/drivers/staging/iio/resolver/ad2s90.c b/drivers/staging/iio/resolver/ad2s90.c
+> index e24c589..c57a296 100644
+> --- a/drivers/staging/iio/resolver/ad2s90.c
+> +++ b/drivers/staging/iio/resolver/ad2s90.c
+> @@ -79,7 +79,7 @@ static int ad2s90_probe(struct spi_device *spi)
+>         indio_dev->num_channels = 1;
+>         indio_dev->name = spi_get_device_id(spi)->name;
+>
+> -       ret = iio_device_register(indio_dev);
+> +       ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
+>         if (ret)
+>                 return ret;
+>
+> @@ -91,13 +91,6 @@ static int ad2s90_probe(struct spi_device *spi)
+>         return 0;
+>  }
+>
+> -static int ad2s90_remove(struct spi_device *spi)
+> -{
+> -       iio_device_unregister(spi_get_drvdata(spi));
+> -
+> -       return 0;
+> -}
+> -
+>  static const struct spi_device_id ad2s90_id[] = {
+>         { "ad2s90" },
+>         {}
+> @@ -110,7 +103,6 @@ static struct spi_driver ad2s90_driver = {
+>                 .owner = THIS_MODULE,
+>         },
+>         .probe = ad2s90_probe,
+> -       .remove = ad2s90_remove,
+>         .id_table = ad2s90_id,
+>  };
+>  module_spi_driver(ad2s90_driver);
 > --
 > 2.1.4
 >
@@ -84,7 +108,7 @@ Thanks
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1443729484.git.ciorneiioana%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/41516ac4f917514f14dc5f8469a52aa8b6081818.1443729484.git.ciorneiioana%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 
 
