@@ -1,86 +1,87 @@
-X-GM-THRID: 6805874038364176384
-X-Received: by 2002:a5d:67cd:: with SMTP id n13mr3398232wrw.383.1584616032369;
-        Thu, 19 Mar 2020 04:07:12 -0700 (PDT)
+X-GM-THRID: 6200793894660079616
+X-Received: by 10.182.107.162 with SMTP id hd2mr10501124obb.29.1443734833146;
+        Thu, 01 Oct 2015 14:27:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:4441:: with SMTP id x1ls782608wrr.4.gmail; Thu, 19 Mar
- 2020 04:07:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtazZv6y5WJ2z7zE7GTNZKD+9e025ZOaYHZHkRrawcPg51Mcf20DL0NmskCaQGx5hZ0NCQ/
-X-Received: by 2002:adf:cf04:: with SMTP id o4mr3788256wrj.347.1584616031111;
-        Thu, 19 Mar 2020 04:07:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584616031; cv=none;
-        d=google.com; s=arc-20160816;
-        b=VkbgQlBF2NRNfKMW25+8JgiqVj8FUrdep6Ka5aAefSsj6meGpl0gxJ4kwRX27iFtFY
-         6oimTs35BL5RuI2usYJgYbstyF+FDg5wjzAvXUa2+m4J+tIBB5Bzg/kNWO/aMbAhdA+0
-         /n9W8hsqKrotjTp1pBB/fs0rVhVBdyyJNzX83kbwv0lbDU0BbTOQaTxCYUm3klAHxuj7
-         rJHp1YJU7CkcgOgUGYXvrddtyUaepXC2KWcINuEL+iaW49Qb5U2yG4ayFAm301olr+Jo
-         9o1b7mBizRg6ke7tSjix450KI/axDyYNC5TaqtCAAe2cWKgfizWNrA19kRnXQds6uG1e
-         DAzQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=mW7pqgOmMGsY+MB9XJ3ujOBCgg2F+Id3SeOU8XcvVtI=;
-        b=BSu9BCXNmTF0o1Eg69+3qSyO4A9gkpQGT0BfwlezzJG9769f7LgJObhWIafBGkpIQH
-         Rw6aoDRUAYGxnEhMzzUNYRv/aTsKgxyI/8tYlE3xx3T71UbJvSYk81giXZv3SoEk8K1y
-         c+UW7hQreZ0GzD5C4DrKVEspRzf+rhHHG+VOD9pcHye0FfDXfFuHT3tlSjQX4XvKnRLO
-         L069gO5xfumdnRYwuFIhOeN71N8FdaQFmcRx85CEQjxO5HfS8eIfJzwp61/OYMwh90dR
-         lJbzrLRSy5u0KFcZbyR9Buh+M+BYwAh+Fu8FZhOUVbUN9wAVej0h1goKudFHVkmyEZG9
-         atsQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id i19si96599wml.0.2020.03.19.04.07.11
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 04:07:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+Received: by 10.107.11.197 with SMTP id 66ls566350iol.10.gmail; Thu, 01 Oct
+ 2015 14:27:12 -0700 (PDT)
+X-Received: by 10.66.146.73 with SMTP id ta9mr10331914pab.21.1443734832578;
+        Thu, 01 Oct 2015 14:27:12 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id uv4si1345014pac.0.2015.10.01.14.27.12
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Oct 2015 14:27:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 27675 invoked from network); 19 Mar 2020 11:07:10 -0000
-Received: from unknown (HELO localhost) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 11:07:10 -0000
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: R Veera Kumar <vkor@vkten.in>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Larry Finger <Larry.Finger@lwfinger.net>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [RESEND PATCH 00/10] Correction of typos and long lines of comments
-Date: Thu, 19 Mar 2020 16:36:43 +0530
-Message-Id: <cover.1584514678.git.vkor@vkten.in>
-X-Mailer: git-send-email 2.20.1
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22c.google.com with SMTP id lk4so84921773pab.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 14:27:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=zVwHaqXxI3H3TKpr2OTTxfY3PVTVpWzHGC3gCuo9txo=;
+        b=S8I1gRgOG6oGHGj1uKpoUmS7PdKzff7rW+R/2Suf89zEgN36dyf4KZ/weK0XAjq3TU
+         l9tR/2xHkvGeXOCas7QPc7z7c5HMjAuxuyFsqMdEiukvv+/myba8/Dc5K95edJKN80WV
+         EGJm60EWzVxF1KFes2clSULPKdJ+4zvu044N397R5BLBr6j57zD7Q1zxs7jPzIURX1I4
+         jsLXzNALPQhT+nOaX+iJXf3992o5Zd+9kjw31MKxBV7y4yPH3LzBm3BPzn0tbAGCI2TE
+         w8c+YnS7349wKDxMXw1sqXIESoMnUN3LV88lCQOfSJzmagnYs/SSEgFPJG5UYKO3Z0Jt
+         pBtQ==
+X-Received: by 10.68.68.133 with SMTP id w5mr14886040pbt.143.1443734832460;
+        Thu, 01 Oct 2015 14:27:12 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id zn9sm8516916pac.48.2015.10.01.14.27.10
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 01 Oct 2015 14:27:11 -0700 (PDT)
+Date: Fri, 2 Oct 2015 02:57:03 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: xgifb: vb_util: Fixed sparse warning of bit
+ truncation due to cast
+Message-ID: <20151001212702.GA30608@ubuntu>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Correction of typos and long lines of comments.
-Misspellings found using checkpatch.pl.
+Fixed the warning generated by sparse that 'cast truncates bits from
+constant value' by typecasting unsigned values to u8 as their logical
+operation is being performed with and stored in a u8 type variable.
 
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
-R Veera Kumar (10):
-  staging: rtl8723bs: hal: Correct a typo in a comment
-  staging: rtl8723bs: hal: Correct a typo in a comment
-  staging: rtl8723bs: hal: Correct typos and long line of comment
-  staging: rtl8723bs: hal: Correct a typo and long line of a comment
-  staging: rtl8723bs: hal: Correct a typo and long line of a comment
-  staging: rtl8723bs: hal: Correct typos and long line of comments
-  staging: rtl8723bs: hal: Correct a typo in a comment
-  staging: rtl8723bs: hal: Correct typos in a comment
-  staging: rtl8723bs: hal: Correct a typo in a comment
-  staging: rtl8723bs: hal: Correct a typo in a comment
+ drivers/staging/xgifb/vb_util.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c |  2 +-
- drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c |  2 +-
- drivers/staging/rtl8723bs/hal/HalPhyRf.c        |  7 +++++--
- drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c    |  5 ++++-
- drivers/staging/rtl8723bs/hal/hal_intf.c        |  3 ++-
- drivers/staging/rtl8723bs/hal/odm_HWConfig.c    | 16 +++++++++-------
- drivers/staging/rtl8723bs/hal/odm_debug.h       |  4 ++--
- drivers/staging/rtl8723bs/hal/odm_types.h       |  2 +-
- drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c  |  2 +-
- drivers/staging/rtl8723bs/hal/sdio_halinit.c    |  2 +-
- 10 files changed, 27 insertions(+), 18 deletions(-)
-
+diff --git a/drivers/staging/xgifb/vb_util.h b/drivers/staging/xgifb/vb_util.h
+index 7bd395f..f613f54 100644
+--- a/drivers/staging/xgifb/vb_util.h
++++ b/drivers/staging/xgifb/vb_util.h
+@@ -18,7 +18,7 @@ static inline void xgifb_reg_and_or(unsigned long port, u8 index,
+ 	u8 temp;
+ 
+ 	temp = xgifb_reg_get(port, index);
+-	temp = (temp & data_and) | data_or;
++	temp = (u8) ((temp & data_and) | data_or);
+ 	xgifb_reg_set(port, index, temp);
+ }
+ 
+@@ -27,7 +27,7 @@ static inline void xgifb_reg_and(unsigned long port, u8 index, unsigned data_and
+ 	u8 temp;
+ 
+ 	temp = xgifb_reg_get(port, index);
+-	temp &= data_and;
++	temp = (u8) (temp & data_and);
+ 	xgifb_reg_set(port, index, temp);
+ }
+ 
 -- 
-2.20.1
+2.1.0
 
 
