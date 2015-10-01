@@ -1,177 +1,73 @@
 X-GM-THRID: 6200774307110453248
-X-Received: by 10.112.130.41 with SMTP id ob9mr1775103lbb.17.1443730274765;
-        Thu, 01 Oct 2015 13:11:14 -0700 (PDT)
+X-Received: by 10.180.149.210 with SMTP id uc18mr149953wib.4.1443730273784;
+        Thu, 01 Oct 2015 13:11:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.159.82 with SMTP id i79ls151032lfe.102.gmail; Thu, 01 Oct
+Received: by 10.25.208.78 with SMTP id h75ls155423lfg.83.gmail; Thu, 01 Oct
  2015 13:11:13 -0700 (PDT)
-X-Received: by 10.112.136.99 with SMTP id pz3mr192236lbb.11.1443730273975;
+X-Received: by 10.112.181.10 with SMTP id ds10mr729704lbc.3.1443730273191;
         Thu, 01 Oct 2015 13:11:13 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
-        by gmr-mx.google.com with ESMTPS id c7si123554wiy.3.2015.10.01.13.11.13
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id c7si123555wiy.3.2015.10.01.13.11.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Thu, 01 Oct 2015 13:11:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22a.google.com with SMTP id lk2so4962291wic.1
+Received: by mail-wi0-x22b.google.com with SMTP id lk2so4962297wic.1
         for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 13:11:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id:in-reply-to:references:in-reply-to
-         :references;
-        bh=Wjj6ZOizaO8h1wX/PjI6/aVLbhxIoL3T00LGv2e724w=;
-        b=kas154mWJDcGfdh17IvgeqQ+LSbu5BT1futnP5q2fTyKS7qGMNqZ7wLPuJ+6rLZCXe
-         zuTXCGfieQ7ES821ebduFx8312W+H0mtolhDQnZ+sbGqp2baYf2bjoeGov7LlsV8IeZQ
-         8Hxe2OKiS0qqhrnpwlqzyEnIyzd8baUJ2gB+D2u7+1ojcHqkpzmJicTmrlxw0NV0/igG
-         nVRLY8RT9Sh0En17in68jzeqmww5dKHKK71FZT7hWZq2/1iPGC7llBSpRUobOAyx/ROJ
-         ejmTvYeoPc3f0g0Fpfqf0385kcGtMc7iwAgejfN0MlGdlRsHXhYUQgSbIvYe40tQqalR
-         7zsQ==
-X-Received: by 10.180.99.66 with SMTP id eo2mr631484wib.88.1443730273875;
+        h=from:to:subject:date:message-id;
+        bh=kvSKJG+CJTs+4kmLAmaMslXzXKZTG+6vT/Xaa6dT/Gk=;
+        b=fXlEooruRtaCraafHinXWhoKSF2jO7DR91ut5JiBcm7gU7x9oq+AvyrHbSscYTd3SD
+         z33Fa7UkDuVTc5nJtg1lv89HIQTBpHHt0l56vvc8cmsrCT0eRZRe97ou83oa3pGx6rfi
+         NRMmTsotorb+n8OtUguCVYhVqqAEcviGg45CrTM/RbEiIgdWJAfMudDZrPHdFdBA8GMs
+         6O+ZJxRS73k3RmMF2rszvCm3gqYd6tsHKFxVpn8UOPhe+VUTllBOXr2jtw7gKA9roySt
+         QQke8/Nd+gBITiy+O02rcvKfR0tQCCWGuzxtYSE4tskpZduKdsgY6TgyvoJhfY1xjiMF
+         kBdQ==
+X-Received: by 10.194.8.227 with SMTP id u3mr12462578wja.38.1443730273049;
         Thu, 01 Oct 2015 13:11:13 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by smtp.gmail.com with ESMTPSA id r9sm7777516wjz.35.2015.10.01.13.11.13
+        by smtp.gmail.com with ESMTPSA id r9sm7777516wjz.35.2015.10.01.13.11.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 01 Oct 2015 13:11:13 -0700 (PDT)
+        Thu, 01 Oct 2015 13:11:12 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] staging: iio: cdc: use devm_iio_device_register instead iio_device_register
-Date: Thu,  1 Oct 2015 23:10:45 +0300
-Message-Id: <809f6405e8e4a3912ee65559df7436090c22a118.1443729484.git.ciorneiioana@gmail.com>
+Subject: [PATCH 0/3] use resource managed devm_iio_device_register
+Date: Thu,  1 Oct 2015 23:10:44 +0300
+Message-Id: <cover.1443729484.git.ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1443729484.git.ciorneiioana@gmail.com>
-References: <cover.1443729484.git.ciorneiioana@gmail.com>
-In-Reply-To: <cover.1443729484.git.ciorneiioana@gmail.com>
-References: <cover.1443729484.git.ciorneiioana@gmail.com>
 
-Replace iio_device_register with resource managed devm_iio_device_register in order
-to ease the error path. Also delete de remove function since there is no need after
-this change.
+This patchset replaces the use of iio_device_register with
+the resource managed function devm_iio_device_register when the remove function
+only unregisters the device. Since an iio_dev registered with this function is
+automatically unregistered on driver detach there is no need for the remove
+function and therefore it is removed.
 
-Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
----
- drivers/staging/iio/cdc/ad7150.c | 12 +-----------
- drivers/staging/iio/cdc/ad7152.c | 12 +-----------
- drivers/staging/iio/cdc/ad7746.c | 12 +-----------
- 3 files changed, 3 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index a2b7ae3..ff83394 100644
---- a/drivers/staging/iio/cdc/ad7150.c
-+++ b/drivers/staging/iio/cdc/ad7150.c
-@@ -636,7 +636,7 @@ static int ad7150_probe(struct i2c_client *client,
- 			return ret;
- 	}
- 
--	ret = iio_device_register(indio_dev);
-+	ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
- 	if (ret)
- 		return ret;
- 
-@@ -646,15 +646,6 @@ static int ad7150_probe(struct i2c_client *client,
- 	return 0;
- }
- 
--static int ad7150_remove(struct i2c_client *client)
--{
--	struct iio_dev *indio_dev = i2c_get_clientdata(client);
--
--	iio_device_unregister(indio_dev);
--
--	return 0;
--}
--
- static const struct i2c_device_id ad7150_id[] = {
- 	{ "ad7150", 0 },
- 	{ "ad7151", 0 },
-@@ -669,7 +660,6 @@ static struct i2c_driver ad7150_driver = {
- 		.name = "ad7150",
- 	},
- 	.probe = ad7150_probe,
--	.remove = ad7150_remove,
- 	.id_table = ad7150_id,
- };
- module_i2c_driver(ad7150_driver);
-diff --git a/drivers/staging/iio/cdc/ad7152.c b/drivers/staging/iio/cdc/ad7152.c
-index 87110d9..c3d5531 100644
---- a/drivers/staging/iio/cdc/ad7152.c
-+++ b/drivers/staging/iio/cdc/ad7152.c
-@@ -502,7 +502,7 @@ static int ad7152_probe(struct i2c_client *client,
- 	indio_dev->num_channels = ARRAY_SIZE(ad7152_channels);
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 
--	ret = iio_device_register(indio_dev);
-+	ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
- 	if (ret)
- 		return ret;
- 
-@@ -511,15 +511,6 @@ static int ad7152_probe(struct i2c_client *client,
- 	return 0;
- }
- 
--static int ad7152_remove(struct i2c_client *client)
--{
--	struct iio_dev *indio_dev = i2c_get_clientdata(client);
--
--	iio_device_unregister(indio_dev);
--
--	return 0;
--}
--
- static const struct i2c_device_id ad7152_id[] = {
- 	{ "ad7152", 0 },
- 	{ "ad7153", 1 },
-@@ -533,7 +524,6 @@ static struct i2c_driver ad7152_driver = {
- 		.name = KBUILD_MODNAME,
- 	},
- 	.probe = ad7152_probe,
--	.remove = ad7152_remove,
- 	.id_table = ad7152_id,
- };
- module_i2c_driver(ad7152_driver);
-diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
-index 10fa372..999c4fa 100644
---- a/drivers/staging/iio/cdc/ad7746.c
-+++ b/drivers/staging/iio/cdc/ad7746.c
-@@ -749,7 +749,7 @@ static int ad7746_probe(struct i2c_client *client,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = iio_device_register(indio_dev);
-+	ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
- 	if (ret)
- 		return ret;
- 
-@@ -758,15 +758,6 @@ static int ad7746_probe(struct i2c_client *client,
- 	return 0;
- }
- 
--static int ad7746_remove(struct i2c_client *client)
--{
--	struct iio_dev *indio_dev = i2c_get_clientdata(client);
--
--	iio_device_unregister(indio_dev);
--
--	return 0;
--}
--
- static const struct i2c_device_id ad7746_id[] = {
- 	{ "ad7745", 7745 },
- 	{ "ad7746", 7746 },
-@@ -781,7 +772,6 @@ static struct i2c_driver ad7746_driver = {
- 		.name = KBUILD_MODNAME,
- 	},
- 	.probe = ad7746_probe,
--	.remove = ad7746_remove,
- 	.id_table = ad7746_id,
- };
- module_i2c_driver(ad7746_driver);
+Ioana Ciornei (3):
+  staging: iio: cdc: use devm_iio_device_register instead
+    iio_device_register
+  staging: iio: light: use devm_iio_device_register instead
+    iio_device_register
+  staging: iio: resolver: replace iio_device_register by
+    devm_iio_device_register
+
+ drivers/staging/iio/cdc/ad7150.c      | 12 +-----------
+ drivers/staging/iio/cdc/ad7152.c      | 12 +-----------
+ drivers/staging/iio/cdc/ad7746.c      | 12 +-----------
+ drivers/staging/iio/light/isl29028.c  | 11 +----------
+ drivers/staging/iio/light/tsl2583.c   | 12 ++----------
+ drivers/staging/iio/resolver/ad2s90.c | 10 +---------
+ 6 files changed, 7 insertions(+), 62 deletions(-)
+
 -- 
 2.1.4
 
