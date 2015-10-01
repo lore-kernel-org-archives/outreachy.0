@@ -1,62 +1,104 @@
 X-GM-THRID: 6200671081613754368
-X-Received: by 10.112.138.170 with SMTP id qr10mr1451072lbb.4.1443706777198;
-        Thu, 01 Oct 2015 06:39:37 -0700 (PDT)
+X-Received: by 10.50.17.74 with SMTP id m10mr2664974igd.3.1443706239346;
+        Thu, 01 Oct 2015 06:30:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.121.4 with SMTP id lg4ls98076lab.75.gmail; Thu, 01 Oct
- 2015 06:39:36 -0700 (PDT)
-X-Received: by 10.112.169.34 with SMTP id ab2mr1406786lbc.23.1443706776606;
-        Thu, 01 Oct 2015 06:39:36 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id k7si102726wif.1.2015.10.01.06.39.36
+Received: by 10.107.164.165 with SMTP id d37ls656160ioj.39.gmail; Thu, 01 Oct
+ 2015 06:30:37 -0700 (PDT)
+X-Received: by 10.107.159.132 with SMTP id i126mr8906311ioe.23.1443706237225;
+        Thu, 01 Oct 2015 06:30:37 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id el2si932421pbb.0.2015.10.01.06.30.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 06:39:36 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Oct 2015 06:30:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue005) with ESMTPSA (Nemesis) id 0MTtPJ-1a7non0vdB-00Qjnl; Thu, 01 Oct
- 2015 15:39:36 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Shraddha Barke <shraddha.6596@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: ptlrpc: Declare functions as static
-Date: Thu, 01 Oct 2015 15:39:35 +0200
-Message-ID: <2438403.Nzdtl2GjMo@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1443706228-18751-1-git-send-email-shraddha.6596@gmail.com>
-References: <1443706228-18751-1-git-send-email-shraddha.6596@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:pTE6h9IruPFlawsIoUfOZQNmLto0RSg93ih6lJLE/zDv7O170vf
- 4A35UJZwTq0GXb9QLZSv9TMdYsMRDytkaTx3VFIorEbY5qxv9dzBo5k/Rzjzx7pOK09T1/d
- glH3HVPgpGRXOG7nZnchXd7xUgJ6ZV1YPh6SSSKK3HKD00PZkKplS9P+CXd1v7VRXzebFfs
- goVP0ob4/gaqwT9Q0q3lg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Q3MZpTbXa+M=:1hfUlfoUuMA3GKTrF86Q0e
- xeOMtvB4MdqHo4TkhSCCaoAFIpulw1/JuRH4eaiCHwKrrjIKpC9b18rl9zyKMlJydD2La7m7g
- RIPRi49YLcRtbSbqawvRcFzj/36ujnwtnKgwWS7LBCPC4xgKur5htiiGvS+rrUGPY4R/Cn9Cm
- qsRAzyYYGe4ifOjfy19Hj7aFMpDAHCNUZNtPW0ZYEmmUoKeZuW2lXP/qxhtrX/AmJsAVCrSbe
- HjU3WtrF6TwrzU8ZFciXV6xkLINeIFXj0J1WEgbMjRYgQwa/g2waUNpbNBtM2WlCLNlYNWou5
- 4lp7UA44RhtRn/fIMI8nkcQwvPHr8WENow5g1fNdoGKxRZnfvp+Az8JiNhhiRj2ATH94/24ob
- IXS5mjplC4xeJp4UBL6Pq+pQ8CvY4MhGhkOz37PwYazt/h72z0PzOLp3tJq3eYC9amus6GvSE
- CFLgcKVAgyKsPDNEwuwO9q57EO0/HppClxnx+G2F5105RXcvPgq5B5eJfKkXMj70pcbgBJQ0t
- aiju9NCFjHz2uR9Sy7laIdpU761EQN4V/b5kGy6Z+ardkhE+HVaCvZAuZAldStYMGMpKpV+Up
- Y5yy6OemR2RmfcVryGhnLACdKK09eFgzdPtth0sskNG2N9tVcN66HqJTzpsHCjDlTVuSX+jlS
- NZ1lsXeyn+Pq6RDQOq1W44GlmyqxywCt453MWoaPGpy7SMKfXPnVBDNHjGrj4S+OioHc4tYAY
- jR/VIgFGy5QGauBV
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x231.google.com with SMTP id fv12so76471086pac.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 06:30:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id;
+        bh=n3BCFYEj4/879Of0MVUyqvoEqQqBBnGAKixzr1Xgrk4=;
+        b=hn3MCpdPFpS6nntziaqkCoVnRDZXwbsv2fCzekctS+8KKZwM4Kei/R5VECaTEtJupz
+         FhNgm2nZ1UlyJGLZD3BExD43S5Lj9WZ1gfuphMJhUMZYPrOT8g9hJB/evrANqzGMlGmG
+         ZIOUwS+8oV5Jyzam0c8Y6x8F4aPzjD6QuV39sbGoRcvXrmWFWTQFvRufxkjXofcqhTw7
+         khwTr65ANoo9dxOR5U9/+JjYmJV7/6S/a8FeS9KhLoi35U0t4eFoLrdzXXPc6IuXT657
+         9UMS0K0OBiO7aY/M4oUzRShLsbd0IY6CkLsf8dlOn0Tuw05w+R+zJWZg3kCe+nCOI+l1
+         7WUw==
+X-Received: by 10.69.1.5 with SMTP id bc5mr12219198pbd.151.1443706237102;
+        Thu, 01 Oct 2015 06:30:37 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id dk2sm6776458pbd.57.2015.10.01.06.30.33
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Oct 2015 06:30:36 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] Staging: lustre: ptlrpc: Declare functions as static
+Date: Thu,  1 Oct 2015 19:00:28 +0530
+Message-Id: <1443706228-18751-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150206.560D357B.014D,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Thursday 01 October 2015 19:00:28 Shraddha Barke wrote:
-> Declare function as static since it is accessed from this
-> particular file only. Also remove it's declaration from
-> header file
-> 
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+Declare function as static since it is accessed from this
+particular file only. Also remove it's declaration from
+header file
 
-The patch looks good to me, but the subject line should be more specific.
-There are other functions that need to be changed the same way,
-and we want each subject line to be unique.
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/lustre/lustre/include/lustre_sec.h | 1 -
+ drivers/staging/lustre/lustre/ptlrpc/sec_config.c  | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-	Arnd
+diff --git a/drivers/staging/lustre/lustre/include/lustre_sec.h b/drivers/staging/lustre/lustre/include/lustre_sec.h
+index 707ff69..3b38b5e 100644
+--- a/drivers/staging/lustre/lustre/include/lustre_sec.h
++++ b/drivers/staging/lustre/lustre/include/lustre_sec.h
+@@ -330,7 +330,6 @@ static inline void sptlrpc_rule_set_init(struct sptlrpc_rule_set *set)
+ 	memset(set, 0, sizeof(*set));
+ }
+ 
+-void sptlrpc_rule_set_free(struct sptlrpc_rule_set *set);
+ int  sptlrpc_rule_set_expand(struct sptlrpc_rule_set *set);
+ int  sptlrpc_rule_set_merge(struct sptlrpc_rule_set *set,
+ 			    struct sptlrpc_rule *rule);
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
+index e7f2f33..d3bee4b 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
+@@ -236,7 +236,7 @@ int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
+ }
+ EXPORT_SYMBOL(sptlrpc_parse_rule);
+ 
+-void sptlrpc_rule_set_free(struct sptlrpc_rule_set *rset)
++static void sptlrpc_rule_set_free(struct sptlrpc_rule_set *rset)
+ {
+ 	LASSERT(rset->srs_nslot ||
+ 		(rset->srs_nrule == 0 && rset->srs_rules == NULL));
+@@ -246,7 +246,6 @@ void sptlrpc_rule_set_free(struct sptlrpc_rule_set *rset)
+ 		sptlrpc_rule_set_init(rset);
+ 	}
+ }
+-EXPORT_SYMBOL(sptlrpc_rule_set_free);
+ 
+ /*
+  * return 0 if the rule set could accommodate one more rule.
+-- 
+2.1.4
+
 
