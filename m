@@ -1,124 +1,83 @@
-X-GM-THRID: 6332141556994146304
-X-Received: by 10.157.36.101 with SMTP id p92mr254436ota.16.1474316594492;
-        Mon, 19 Sep 2016 13:23:14 -0700 (PDT)
+X-GM-THRID: 6200758808999886848
+X-Received: by 10.112.132.6 with SMTP id oq6mr1722681lbb.1.1443726664045;
+        Thu, 01 Oct 2015 12:11:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.1.7 with SMTP id 7ls376737otu.25.gmail; Mon, 19 Sep 2016
- 13:23:14 -0700 (PDT)
-X-Received: by 10.157.34.165 with SMTP id y34mr225896ota.28.1474316593891;
-        Mon, 19 Sep 2016 13:23:13 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 7si5384126pfw.1.2016.09.19.13.23.13
+Received: by 10.25.170.72 with SMTP id t69ls127931lfe.56.gmail; Thu, 01 Oct
+ 2015 12:11:03 -0700 (PDT)
+X-Received: by 10.112.55.69 with SMTP id q5mr1726707lbp.24.1443726663212;
+        Thu, 01 Oct 2015 12:11:03 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id ch7si130049wib.2.2015.10.01.12.11.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 13:23:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Oct 2015 12:11:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n24so7691266pfb.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 13:23:13 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22d.google.com with SMTP id lk2so2966264wic.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 12:11:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=oA3Fr1HP/STLOCLPATrLRieL0A7tufMiUZXAxl0NmdQ=;
-        b=p6NyqbDR6eaB03QpJ47nOdOId+9uS6QpA/WnW8tyQwDG4js05gvmV/2Y91swJFKS+I
-         PeM/+UPEY+TxJszIFQ9pTxrtZb0G14lMDcYQYcY/clOZdZCqv1yPwGfu9cdva/VDm8yN
-         vDFMZvdIsslLBkzXUGhjoJNpBnhseOxRdw3XiX3xL61IaydkJfbNe1b7L68WLrUt6kWy
-         7NLB3fwqchOtYwokgzTn87tGjr2+5eNZPF9NM+C3xCHpnnwRB2Y8zV6kULpxrPFSB4+A
-         ALkef4sN53MZLwvSNGIQmiTQ3vlQ3ECbmaP2O0II9A8tSotAmU3clDeDYPyMH7sEvszd
-         2erQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=oA3Fr1HP/STLOCLPATrLRieL0A7tufMiUZXAxl0NmdQ=;
-        b=lGucvUQG49d2VwNG1TsAqd2fbYQKu+4qC1yUaTA3wjHRqO00hJ0fXZeNchrTy3VVsK
-         EnIXICt37Jzg27A7Ekf815Z087iHPBSDMWJQi0LVYEs0gpIj7V8qSaEHlMfsXRELdNgu
-         elNtUX2APTUaw0iBMJdHblKad6+96r5R5iIeKuabZtkrEt77EkC+jNVWtWtO35Gfc0tb
-         6JBeGfzyeCu2WHKbff1jVbET29PqGRm1CPLUmDfO5/U3p6fxaG0bcnGjz9vl1NAsnCyY
-         nU+hCjTjOGmEqL4XPVbHYXdcWSqXDz15OsVFpI+/PRYMjT99wiKcMWVyzfrVIFXlW1ZT
-         inSg==
-X-Gm-Message-State: AE9vXwP40BfmakbDYR5iNn+rHzTmrLTVRZgOZ3qZih2XfGF+llRm2gr+aCYGA93g3n7FGA==
-X-Received: by 10.98.51.131 with SMTP id z125mr49897766pfz.109.1474316593359;
-        Mon, 19 Sep 2016 13:23:13 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id y184sm73537827pfg.94.2016.09.19.13.23.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 13:23:12 -0700 (PDT)
-Date: Tue, 20 Sep 2016 01:53:03 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=5Jws/LWsY8AFsf/H6bcUYFE2i70A66wYSAhFCiyZROA=;
+        b=hhj4RuY0kYu5S3hoXRmmyFzzdJNNHxL7jFwPLOnrIMRstfeqYudj98fNHaZVOkMKX/
+         Ei8AX4v7Aa/UJ65JYy38XLHwHFNLrRyYx/MBdoMAdFZ0VFLUXU4qdG8x05TAGeZ1b2hx
+         /nGzDVP8tmPNmdzCw1ALFUCn/6lw4xb5wyWoAPtHwZ1CTqjTVT6RZBD0G7kGul4rpmLR
+         bDgnu2nolhwJiNn3iiyzT4XiM+dT0/BLUxnWsqOzrTazI4DI1IRa8CDS/OVDTbF+TAj0
+         v9M0vEC8EVVolXaazGc7OI1ZOANeDGizXsumK/Mv4TNDx2xlLso/keYoUVU4mJjbyvO/
+         IIMA==
+X-Received: by 10.180.8.3 with SMTP id n3mr357994wia.41.1443726663087;
+        Thu, 01 Oct 2015 12:11:03 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([141.85.225.214])
+        by smtp.gmail.com with ESMTPSA id l1sm7580677wjx.13.2015.10.01.12.11.02
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Oct 2015 12:11:02 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Lidza Louina <lidza.louina@gmail.com>,
-	Mark Hounschell <markh@compro.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: dgnc: Remove unnecessary return capture
-Message-ID: <20160919202303.GA24269@toblerone>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: iio: Fix comment style warning
+Date: Thu,  1 Oct 2015 22:10:52 +0300
+Message-Id: <1443726652-48201-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Instead of storing the return value of a function call into a variable and
-then returning it, we can club the two into a single return statement. This
-change was made using the following semantic patch by Coccinelle:
+Move final */ to the next line, in accordance with the suggestion of
+checkpatch
 
-@@
-local idexpression ret;
-expression e;
-@@
-
--ret =
-+return
-     e;
--return ret;
-
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_tty.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ drivers/staging/iio/accel/lis3l02dq_ring.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
-index fd46ef0..1c1ac84 100644
---- a/drivers/staging/dgnc/dgnc_tty.c
-+++ b/drivers/staging/dgnc/dgnc_tty.c
-@@ -2548,9 +2548,8 @@ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
+diff --git a/drivers/staging/iio/accel/lis3l02dq_ring.c b/drivers/staging/iio/accel/lis3l02dq_ring.c
+index b892f2c..1a0651c 100644
+--- a/drivers/staging/iio/accel/lis3l02dq_ring.c
++++ b/drivers/staging/iio/accel/lis3l02dq_ring.c
+@@ -195,7 +195,8 @@ __lis3l02dq_write_data_ready_config(struct iio_dev *indio_dev, bool state)
+ 	/* Enable requested */
+ 	} else if (state && !currentlyset) {
+ 		/* If not set, enable requested
+-		 * first disable all events */
++		 * first disable all events
++		 */
+ 		ret = lis3l02dq_disable_all_events(indio_dev);
+ 		if (ret < 0)
+ 			goto error_ret;
+@@ -255,7 +256,8 @@ static int lis3l02dq_trig_try_reen(struct iio_trigger *trig)
+ 	int i;
  
- 		spin_unlock_irqrestore(&ch->ch_lock, flags);
- 
--		rc = put_user(C_CLOCAL(tty) ? 1 : 0,
--			      (unsigned long __user *)arg);
--		return rc;
-+		return put_user(C_CLOCAL(tty) ? 1 : 0,
-+				(unsigned long __user *)arg);
- 
- 	case TIOCSSOFTCAR:
- 
-@@ -2721,8 +2720,8 @@ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 
- 	case DIGI_GETCUSTOMBAUD:
- 		spin_unlock_irqrestore(&ch->ch_lock, flags);
--		rc = put_user(ch->ch_custom_speed, (unsigned int __user *)arg);
--		return rc;
-+		return put_user(ch->ch_custom_speed,
-+				(unsigned int __user *)arg);
- 
- 	case DIGI_SETCUSTOMBAUD:
- 	{
-@@ -2808,8 +2807,7 @@ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 			events |= (EV_IPU | EV_IPS);
- 
- 		spin_unlock_irqrestore(&ch->ch_lock, flags);
--		rc = put_user(events, (unsigned int __user *)arg);
--		return rc;
-+		return put_user(events, (unsigned int __user *)arg);
- 	}
- 
- 	/*
+ 	/* If gpio still high (or high again)
+-	 * In theory possible we will need to do this several times */
++	 * In theory possible we will need to do this several times
++	 */
+ 	for (i = 0; i < 5; i++)
+ 		if (gpio_get_value(st->gpio))
+ 			lis3l02dq_read_all(indio_dev, NULL);
 -- 
-2.7.4
+1.9.1
 
 
