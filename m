@@ -1,58 +1,53 @@
 X-GM-THRID: 6200357690588266496
-X-Received: by 10.140.135.5 with SMTP id 5mr11297473qhh.11.1443760878062;
-        Thu, 01 Oct 2015 21:41:18 -0700 (PDT)
+X-Received: by 10.112.54.197 with SMTP id l5mr1777078lbp.21.1443731353838;
+        Thu, 01 Oct 2015 13:29:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.96.47 with SMTP id j44ls1390690qge.4.gmail; Thu, 01 Oct
- 2015 21:41:16 -0700 (PDT)
-X-Received: by 10.129.84.198 with SMTP id i189mr11165563ywb.32.1443760876759;
-        Thu, 01 Oct 2015 21:41:16 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id wl2si1435229pab.1.2015.10.01.21.41.16
+Received: by 10.25.150.207 with SMTP id y198ls164285lfd.107.gmail; Thu, 01 Oct
+ 2015 13:29:13 -0700 (PDT)
+X-Received: by 10.112.169.34 with SMTP id ab2mr1801408lbc.23.1443731353012;
+        Thu, 01 Oct 2015 13:29:13 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by gmr-mx.google.com with ESMTPS id hs5si132879wib.1.2015.10.01.13.29.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 21:41:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Thu, 01 Oct 2015 13:29:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id lk4so95129083pab.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 21:41:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=ALugzWZLLfP/3ncdQ+x5wKt9iopr5Cas4gQvUh8sH60=;
-        b=jqV234/xBB5fT8iCLl+gUnkFgaLqfpslPlfxsVUd3MwTA+S5uJCuinoI4nqbxBMZFq
-         /ixSkyug04v/Hvyoze13aeoZ8xaOdELBTOumn7gQW+Mb/PCC1htohqFelLrF3t1whCg8
-         hI1jAkCsAJ797ibMq6EPLkyH1Ca2v45uqk7TcCre6iio8zLdDshof/AKZoD/9z5zwYhI
-         3cGmab1xJMi89ffOMuL9U7V1QpdzBQvEw1DN/+z35JDbdqkrVKaKsgPXi9NIiIyDB4iq
-         Yo1cplaYoIGNbdsgI1CMdcOWbtHv/JAhvokcmIfafhvSUXZGia/DxVnfDpKjKGdjFvNr
-         bMBQ==
-X-Received: by 10.68.68.233 with SMTP id z9mr17343931pbt.132.1443760876501;
-        Thu, 01 Oct 2015 21:41:16 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.244.224])
-        by smtp.gmail.com with ESMTPSA id bo5sm9659500pbb.76.2015.10.01.21.41.14
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Thu, 01 Oct 2015 21:41:15 -0700 (PDT)
-Date: Fri, 2 Oct 2015 10:11:06 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, y2038@lists.linaro.org
-Subject: Re: [Outreachy kernel] [PATCH v3] Staging: olpc_dcon: Replace
- timespec with ktime_t
-Message-ID: <20151002044106.GA3544@sudip-pc>
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue101) with ESMTPSA (Nemesis) id 0MQew1-1a4g9V23ED-00U1ex; Thu, 01 Oct
+ 2015 22:29:12 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH v3] Staging: olpc_dcon: Replace timespec with ktime_t
+Date: Thu, 01 Oct 2015 22:29:11 +0200
+Message-ID: <8301128.onq9Xb3UbV@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1443713340-3161-1-git-send-email-ksenija.stanojevic@gmail.com>
 References: <1443713340-3161-1-git-send-email-ksenija.stanojevic@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1443713340-3161-1-git-send-email-ksenija.stanojevic@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:UnsjyjWcW+LfbUAtgzsKiPNh1r1f/Mv8VDNNuoL4kQsSe6GgnF7
+ tt2yYamrPihZQ0j2TadOXdQruTCM2Eewb2wJTYubNlXbFBvBinwPid87ZEBAB6JYCeqk3AQ
+ ySY469wppEyESnQjoTLkdJo2Jo/g+JYAyZGhl3fogyT/pCTQBbRNanjKgNqHHoqyeHAwW5M
+ SEupNVkx4eJxTAXq9u0Og==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:4TgR31aU1MI=:o0xXeXHUfBYDmx/xMn1uTG
+ 6bxlbq5ZfD/Foo1xju+XCyDxG8Na3ga0zLZqraRuGBtzEvNIBQbnspoHpkObUT93B2/rzm/pJ
+ Nnc5j6z7TUsmjuVvdtMohyPPq8x/wyfyj+GDnXEn5kkookKnH5j4XzX1U1Zfsl1PNR/v9zVtC
+ KoCJ0v0Kw5gWfKQezUd6m0fnyJs/EdlrSAZDCQo3EdF09FYKlJLdMzZiYjHzuFjPeQiCl4Xws
+ rLR8grs//e4tTHhDBr1b7tYWoQy9TzJBiGxUCow1I3Hd4bS0iuxHRM+vwpFgH4e8SbNSlndQY
+ l9CPd0VzL+XvYbPAlAPMYeXtw6ai05C1hE4m+3QVXjZZpjdmMfCVFekZAE61iV5hLWxPliHco
+ yStRW0ZTb0GGJgByu/Wmr0vEROvorm+PYc0ciftfMuz7noEZHhEzlFfH4gvBBhVaoVPF/k0+v
+ Og89EnrGmek2axLmkyUKxEBM3krfhauaiX6tbXe8lwEKtCvoqAf8otrPjCyF65uYpJyY/MHUc
+ ukfBPyKOFdGyVrn8mibyRlDBhlxmBDGsGaZdAnJF+/LN0Nbv5iJZe7zl7DrtzMWE3GERX8cTV
+ 7F/8ugwHuWgR9eFfzh+6LCFGZJ0FHmXJpTJqtjJacwEPrAAIq2Fnw64aLUSJ8UkzD49Nuk9/W
+ hNihE0xttCrXIzNMqg/jKJ+VESCBtTd+XEZ79E/uvUKc8MUmHmMfQOH90EMlyHQ97UOerG/op
+ OCFHh0VSQ3wmxDJD
 
-On Thu, Oct 01, 2015 at 05:29:00PM +0200, Ksenija Stanojevic wrote:
+On Thursday 01 October 2015 17:29:00 Ksenija Stanojevic wrote:
 > Struct timespec will overflow in year 2038, here it will not cause an
 > overflow because it is used with timespec_sub, but still has to be
 > removed as part of y2038 changes. Replace it with ktime_t. Also use
@@ -60,22 +55,7 @@ On Thu, Oct 01, 2015 at 05:29:00PM +0200, Ksenija Stanojevic wrote:
 > with ktime_get.
 > 
 > Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-> ---
-Please always test your patch with checkpatch before sending. It has
-trailing whitespace.
->
-<snip>
-> @@ -355,14 +354,14 @@ static void dcon_source_switch(struct work_struct *work)
->  			 * deassert and reassert, and hope for the best.
->  			 * see http://dev.laptop.org/ticket/9664
->  			 */
-> -			delta_t = timespec_sub(dcon->irq_time, dcon->load_time);
-> -			if (dcon->switched && delta_t.tv_sec == 0 &&
-> -					delta_t.tv_nsec < NSEC_PER_MSEC * 20) {
-> +			delta_t = ktime_sub(dcon->irq_time, dcon->load_time);
-> +			if (dcon->switched && 
-whitespace error here.
+> 
 
-regards
-sudip
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
