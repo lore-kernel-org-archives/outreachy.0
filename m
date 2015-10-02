@@ -1,165 +1,60 @@
-X-GM-THRID: 6210684421978193920
-X-Received: by 10.107.38.141 with SMTP id m135mr39722131iom.18.1446037651348;
-        Wed, 28 Oct 2015 06:07:31 -0700 (PDT)
+X-GM-THRID: 6201028440983863296
+X-Received: by 10.180.72.68 with SMTP id b4mr137459wiv.2.1443815083579;
+        Fri, 02 Oct 2015 12:44:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.18.83 with SMTP id 77ls4641639qge.74.gmail; Wed, 28 Oct
- 2015 06:07:30 -0700 (PDT)
-X-Received: by 10.129.157.15 with SMTP id u15mr10172316ywg.4.1446037650529;
-        Wed, 28 Oct 2015 06:07:30 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id pe1si4880274pac.2.2015.10.28.06.07.30
+Received: by 10.180.100.233 with SMTP id fb9ls446760wib.26.canary; Fri, 02 Oct
+ 2015 12:44:42 -0700 (PDT)
+X-Received: by 10.180.9.104 with SMTP id y8mr126566wia.7.1443815082853;
+        Fri, 02 Oct 2015 12:44:42 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
+        by gmr-mx.google.com with ESMTPS id hs5si14218wib.1.2015.10.02.12.44.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 06:07:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Fri, 02 Oct 2015 12:44:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id hy1so1013047pad.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 06:07:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=8Yj/Nl+BwxM0XXuR13jbXr94bFgtQYpjWT/ELZL/MBg=;
-        b=WEFsDq20q0TOywZ8NLc4+kRft6qIBn3BVHRyuDzLwNuK6OgOyOclCW5hEzvmfPU6Ru
-         wvFHUWig6lksUrNOjpw9w/omy4uyjAj6DorV2EaW31TzNh5e7ikNRtdHSB2iaT5w1JW+
-         9qbLX3nHuNWu5DwSfT6Di670oLCcrKbP7IYrWOwjH+IJO09MbihiV/wPZDKYq36r3/4x
-         ZmaZSNTYj4ZcsbPtIkbt23bkwpuOXKV07qqgiZbrmNY4GBRwE361VpwG87CO8lhqVDLP
-         V9fHxFjvClwm7BMyGkMDQHJQOuVWGx6NidZSXeyenqBPdH+7ld/2f2tzlOVRV3VdelH5
-         mt1g==
-X-Received: by 10.68.224.132 with SMTP id rc4mr8891369pbc.11.1446037650305;
-        Wed, 28 Oct 2015 06:07:30 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id b6sm45446821pbu.90.2015.10.28.06.07.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 28 Oct 2015 06:07:29 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: wlan-ng: Remove unused p80211meta.h file
-Date: Wed, 28 Oct 2015 18:37:20 +0530
-Message-Id: <1446037640-18428-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150202.5630C891.0011,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue103) with ESMTPSA (Nemesis) id 0MGoe9-1ZvamZ1bqD-00DWz4; Fri, 02 Oct
+ 2015 21:44:42 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Shraddha Barke <shraddha.6596@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: obdclass: Remove unused functions
+Date: Fri, 02 Oct 2015 21:44:41 +0200
+Message-ID: <1694471.Iom2lyyDzT@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1443789424-17072-1-git-send-email-shraddha.6596@gmail.com>
+References: <1443789424-17072-1-git-send-email-shraddha.6596@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:XHp9imeOWtx0YQi+NBzTPt9Mo8qlBpREAxBqZ+rcCtUeT4GD/Qp
+ NsViR5l4dkEoNd2InA4fn3GTxS1YLm0d4G2G5FjXWDJ6OGvqcxZSC7GcIlyYYGdNuu9OD28
+ YU/935UaF7HOy4YUqjKRy0gQtbjE1k4ZGh8QZ8+sx+IY7Ra6Xvpd3ITWigOuC8Ei5iETUoV
+ c5isQAtPqPI85DMQ4ULFA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:8JD2QgJZNE8=:hPc3NQULoXnVJMxYAghF8j
+ PNJktBKbSuMbVFeiNfFDLCAdxRrAC3ePpSASwm+tXE7dtqioKb/LSqpkQFeDLq0Hkyr48YMao
+ srMlm45Gz9gdPxfDsEN8PTK3cRPxjzSDwdR5ZBSAFw2FRrVLCGllvmM94pN7L4Il0m7WzDRE2
+ Bj2rRr6gSARDxxqb3GJLL3/3CkW2e4J7yVhLEZvmCYoq+bIHmkcMi01FAxtJeWXFDokJ/U8zT
+ 4TaX29Jwmuzx5WXcXB5/d+arjYgW6O6SEZrMdta7TXgskjjuVXiTUNrDERMXY1Wl1wR7vP/XO
+ 6XFQItVESwVjoc4CfJC6g8IE+/IX/okK8t5S+Yzy+8LoX6mRbQpkALdtVo4Vk6L2efVa6aAfK
+ akgViqrmu5qvhhC/gDV+W8LZzRIdKpTB9+7+B54lIZzEye6z/gktog+/IgsDJJsQtUZ0ZDXOV
+ WKw+VJBjrdBG7OONn9U+Q/znxAvqhLcB/WSIVl1daHfwJayL4fABNjRjZW/Pq3tm5S10y+RkN
+ 4LIuXvbac9vByt0jl8hFiwul3AUUqtkERrssPUhuAXiVaivt7keCidAlzKrAl60ZfRLvgj/vp
+ UFkKpZGWzPF9QNq7cuDTZQ6E6bjTqfuNpoZKgOQpmZMKyBftLMXhQ0ArAvBLfVtfeWZg5SDec
+ +u3/ybz/CsI8xF/VCAs92Z6Hyfi3nQQOpwzV+aTQSoqUfpz/ZS42+987he1oRFBJ6y2rtUyUC
+ M8bxqvDdI182SNJw
 
-Remove the header file p80211meta.h since it is not needed
+On Friday 02 October 2015 18:07:04 Shraddha Barke wrote:
+> Remove dump_exports and print_export_data as they are defined
+> but not used anywhere.
+> 
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/wlan-ng/p80211meta.h | 90 ------------------------------------
- 1 file changed, 90 deletions(-)
- delete mode 100644 drivers/staging/wlan-ng/p80211meta.h
+Good catch! This became unused when I removed code from
+class_cleanup() last week.
 
-diff --git a/drivers/staging/wlan-ng/p80211meta.h b/drivers/staging/wlan-ng/p80211meta.h
-deleted file mode 100644
-index c5f1a63..0000000
---- a/drivers/staging/wlan-ng/p80211meta.h
-+++ /dev/null
-@@ -1,90 +0,0 @@
--/* p80211meta.h
--*
--* Macros, constants, types, and funcs for p80211 metadata
--*
--* Copyright (C) 1999 AbsoluteValue Systems, Inc.  All Rights Reserved.
--* --------------------------------------------------------------------
--*
--* linux-wlan
--*
--*   The contents of this file are subject to the Mozilla Public
--*   License Version 1.1 (the "License"); you may not use this file
--*   except in compliance with the License. You may obtain a copy of
--*   the License at http://www.mozilla.org/MPL/
--*
--*   Software distributed under the License is distributed on an "AS
--*   IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
--*   implied. See the License for the specific language governing
--*   rights and limitations under the License.
--*
--*   Alternatively, the contents of this file may be used under the
--*   terms of the GNU Public License version 2 (the "GPL"), in which
--*   case the provisions of the GPL are applicable instead of the
--*   above.  If you wish to allow the use of your version of this file
--*   only under the terms of the GPL and not to allow others to use
--*   your version of this file under the MPL, indicate your decision
--*   by deleting the provisions above and replace them with the notice
--*   and other provisions required by the GPL.  If you do not delete
--*   the provisions above, a recipient may use your version of this
--*   file under either the MPL or the GPL.
--*
--* --------------------------------------------------------------------
--*
--* Inquiries regarding the linux-wlan Open Source project can be
--* made directly to:
--*
--* AbsoluteValue Systems Inc.
--* info@linux-wlan.com
--* http://www.linux-wlan.com
--*
--* --------------------------------------------------------------------
--*
--* Portions of the development of this software were funded by
--* Intersil Corporation as part of PRISM(R) chipset product development.
--*
--* --------------------------------------------------------------------
--*
--* This file declares some of the constants and types used in various
--* parts of the linux-wlan system.
--*
--* Notes:
--*   - Constant values are always in HOST byte order.
--*
--* All functions and statics declared here are implemented in p80211types.c
--*   --------------------------------------------------------------------
--*/
--
--#ifndef _P80211META_H
--#define _P80211META_H
--
--/*----------------------------------------------------------------*/
--/* The following structure types are used for the metadata */
--/* representation of category list metadata, group list metadata, */
--/* and data item metadata for both Mib and Messages. */
--
--struct p80211meta {
--	char *name;		/* data item name */
--	u32 did;		/* partial did */
--	u32 flags;		/* set of various flag bits */
--	u32 min;		/* min value of a BOUNDEDint */
--	u32 max;		/* max value of a BOUNDEDint */
--
--	u32 maxlen;		/* maxlen of a OCTETSTR or DISPLAYSTR */
--	u32 minlen;		/* minlen of a OCTETSTR or DISPLAYSTR */
--	p80211enum_t *enumptr;	/* ptr to the enum type for ENUMint */
--	p80211_totext_t totextptr;	/* ptr to totext conversion function */
--	p80211_fromtext_t fromtextptr;	/* ptr to totext conversion function */
--	p80211_valid_t validfunptr;	/* ptr to totext conversion function */
--};
--
--struct grplistitem {
--	char *name;
--	struct p80211meta *itemlist;
--};
--
--struct catlistitem {
--	char *name;
--	struct grplistitem *grplist;
--};
--
--#endif /* _P80211META_H */
--- 
-2.1.4
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
