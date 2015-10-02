@@ -1,61 +1,70 @@
 X-GM-THRID: 6201108859850850304
-X-Received: by 10.112.138.4 with SMTP id qm4mr1777825lbb.6.1443818287413;
-        Fri, 02 Oct 2015 13:38:07 -0700 (PDT)
+X-Received: by 10.112.54.197 with SMTP id l5mr2939781lbp.21.1443818197204;
+        Fri, 02 Oct 2015 13:36:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.159.82 with SMTP id i79ls267575lfe.102.gmail; Fri, 02 Oct
- 2015 13:38:06 -0700 (PDT)
-X-Received: by 10.112.181.10 with SMTP id ds10mr1911986lbc.3.1443818286866;
-        Fri, 02 Oct 2015 13:38:06 -0700 (PDT)
+Received: by 10.180.91.137 with SMTP id ce9ls92547wib.37.canary; Fri, 02 Oct
+ 2015 13:36:36 -0700 (PDT)
+X-Received: by 10.180.210.212 with SMTP id mw20mr171342wic.3.1443818196817;
+        Fri, 02 Oct 2015 13:36:36 -0700 (PDT)
 Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
-        by gmr-mx.google.com with ESMTPS id bj4si23735wib.1.2015.10.02.13.38.06
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by gmr-mx.google.com with ESMTPS id bn1si30342wib.0.2015.10.02.13.36.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Oct 2015 13:38:06 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 02 Oct 2015 13:36:36 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
 Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0Lk8eg-1aEPhf3EUc-00c6CP; Fri, 02 Oct
- 2015 22:38:06 +0200
+ (mreue005) with ESMTPSA (Nemesis) id 0LhzVu-1aTnpG1nCE-00nCCw; Fri, 02 Oct
+ 2015 22:36:36 +0200
 From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
 Cc: Shraddha Barke <shraddha.6596@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 3/5] Staging: lustre: obdclass: obd_config: Declare as static
-Date: Fri, 02 Oct 2015 22:38:05 +0200
-Message-ID: <5034475.qjUZt7CvGz@wuerfel>
+Subject: Re: [Outreachy kernel] [PATCH 2/5] Staging: lustre: obdclass: cl_lock: Declare as static
+Date: Fri, 02 Oct 2015 22:36:35 +0200
+Message-ID: <4965740.aaLffJxEfT@wuerfel>
 User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1443808154-13944-4-git-send-email-shraddha.6596@gmail.com>
-References: <1443808154-13944-1-git-send-email-shraddha.6596@gmail.com> <1443808154-13944-4-git-send-email-shraddha.6596@gmail.com>
+In-Reply-To: <1443808154-13944-3-git-send-email-shraddha.6596@gmail.com>
+References: <1443808154-13944-1-git-send-email-shraddha.6596@gmail.com> <1443808154-13944-3-git-send-email-shraddha.6596@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:chXEBEki3BoUwTcsp0qiXlq24hEQjHiF9tR8J18cpHPj9FEekxP
- WBQn5TTQQsrn9SFMQwy5i6ItTFntFFV+Gs5JR6wLOw24m76vw0edrSlHnp2YxHtw8/JpGwj
- JQUuyUGcEJU9tMDqXZ5OU9dOWPemYwpa/J34M7FMZ7JijHjjR8SwyrACuTfv/5zIjhDy4h5
- Y0U/pRHXQMsZpomn2BUYg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:uAj7BYxsZcE=:pmgxl6IUF2Q+BGJwpNRsUJ
- DXxdDuc/2MUUfo1wEjxJeVYdCIeHm54gBmRIHcFg6ZaH9ddmiAy2IwPPPWmDSlH1cqmj8XVxp
- nKP/S+dfEfO4QPT64GWGUdniXOOhB9mLDtlVrzw1hUqOFTT2EvYgose3O9yhKdneX+yhampGq
- 5KcR6lZRMonWZI11EVmG23sDtKeLWQR0d1oy74QB3eEtnQv2Y0Kf0g6hw++hCpbPcTzjxy/J9
- M/wFHdSxjnNBmbX4Rd7QynD4OGv4uNd9HkxoQrQRV6NkZeu3YI7eh09mMlXjwNDzSzNvNLe0q
- xAjd3NzhrtiMfCYGBsqSqV0OqjG5BS+lvo7LhtjGJX+DXVaX5a9SzeEGkv0RtmERR6MNmrG6m
- 5x+wnj6MSGQgKVx5Z4NJj8sbQOTFoVIT6nUZ3NmZ5E2u0sYlIuh6+TUgRN09hU2eTSGYt4e2l
- KJ2xZot+5LB2d/7sayOS5+LahOPc66EVJDwgBmmOjwYvXW4KkvWAfaiA+AjjUvVypsYv0PO2n
- fVwl3zePZ5kbFQkbBVl2+XUERDBeFB6yFuoEhvsIV0LJB0XlLRT/KPGhJ/pvOXa5n0vkrNVMk
- kAqDy7ySL2eShM8DMMEDO8uIn2PhRNjcgLY2ALzidr8Jqjf9tUAqGptTX8Ihza03QdvIkvuo3
- NZjWh78FDPncLw6IzAJFgFRr3OpLzvwVMo09X9bkQnnTpcx++xI3RtAzztuq6gyuNB+PO13hz
- zgY4l8MlRIiOa85F
+X-Provags-ID: V03:K0:WO5uAt+VX6Mq0lv2mZa8sN11Sg29L2Yf9EfPZOYZTJRYL6eJ/Mo
+ Lkzo0m60jYnJ5qbiByzO1eYZtHRGaCogI0u9ZiHpDQOBiTuX/pb0w7du1GF8h3XFU9z4d4C
+ aSoFf2ZTXW6bjDXc7W7wO1ogD2ot4+eakOV4HXBkx/4mkkpqqTCHTAMtNMByBIegpRD8WQw
+ jTCBhbIauhtdjwZyrXxWw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:jF2b5GWqYeI=:K3FYlymSFlsUcbCO+PWgoh
+ L8mSs7Onu80OMRl8aA40mX4phPqb+y69K4SjA7aNZkYje8x4KwoKImTL9uhSKYBwP+Ldz4tY+
+ ozhW8EqCqioSOT/MsDHeoLI7IqOnJWi5YKcJBk/RWzcBYPNLnXgCfvn8+RjaO7dqB2P8YRrrt
+ uXHjhSBztUfrvJM4silEskXQiM0TSeOymYFFm6SsgR+AQ1UdB4eR6pxUtvDKvJIppJuOZErAJ
+ ci1JzAxa1uuYjLLFOXoCFQNmwDNYSQdHCG6x4lZyqE4ePlYn7L/+uQtz0goZ4hanQ73q/Adzb
+ BzfIuVDNZNkcxO0jDbWvQGNepH08wRkcMHe981peJUguL8glYNph0j0uj8SLVXklhayMtY1Qw
+ H2yFYfQ6Ea4rYpNiB2F4IVajZy7GNTIOOHYqEAxAsH1jXyVyyWGxvGVuPYywsGZkwiTbY03Eu
+ sFsJOjUvu7eKLWUU3vzEC/pjXME9y6MvlLObpv36BrMpynqsyzjnOl9zwLYSLkAwnSJZTBdzh
+ RvmGPmh2qZTgtqtFpogrsCRh9VAa7RcgVn0mt4jGiScWe8EVM13fVLeC44d5/tDt8NBNAn2tu
+ AuVimQD+LbTF2wwEzhYvPz8tyQ8myFu39mv2Ku8U9BZJlLAnsUyU8WU8oOfNUjswy5XSWAJQY
+ Xgo+UpvbKHAU3M/5bL6yY/yluzBP60vebAUVFN7tuke0+3DV0vGjkwG77d0htczkYcuhcvDV7
+ uqHFdirv/dqvDtxH
 
-On Friday 02 October 2015 23:19:12 Shraddha Barke wrote:
-> Declare class_add_conn, class_add_profile, class_cleanup,
-> class_config_parse_rec, class_del_conn, class_detach, class_match_param,
-> class_attach, class_setup as static since they are used only in this
-> particular file. Also remove the corresponding declarations from
-> header files.
+On Friday 02 October 2015 23:19:11 Shraddha Barke wrote:
+> Declare cl_lock_intransit and cl_lock_extransit as static since they
+> are used only in this particular file.
 > 
 > Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/obdclass/cl_lock.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
 > 
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+I still see declarations for these functions in cl_object.h, you 
+should remove them at the same time.
+
+I would have expected to see a compile-time error as a result of
+your patch, because you have an extern declaration and a static
+definition for the same symbol.
+
+Can you find out what happened?
+
+	Arnd
 
