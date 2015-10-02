@@ -1,96 +1,85 @@
-X-GM-THRID: 6249367928124211200
-X-Received: by 10.182.246.130 with SMTP id xw2mr34767355obc.29.1455044357466;
-        Tue, 09 Feb 2016 10:59:17 -0800 (PST)
+X-GM-THRID: 6201108859850850304
+X-Received: by 10.112.164.1 with SMTP id ym1mr2963314lbb.15.1443819278544;
+        Fri, 02 Oct 2015 13:54:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.157.136 with SMTP id g130ls2148403ioe.56.gmail; Tue, 09
- Feb 2016 10:59:16 -0800 (PST)
-X-Received: by 10.66.227.33 with SMTP id rx1mr14083638pac.8.1455044356759;
-        Tue, 09 Feb 2016 10:59:16 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x230.google.com (mail-qg0-x230.google.com. [2607:f8b0:400d:c04::230])
-        by gmr-mx.google.com with ESMTPS id l85si657903ywb.2.2016.02.09.10.59.16
+Received: by 10.25.161.20 with SMTP id k20ls241557lfe.88.gmail; Fri, 02 Oct
+ 2015 13:54:37 -0700 (PDT)
+X-Received: by 10.112.40.17 with SMTP id t17mr2963912lbk.10.1443819277938;
+        Fri, 02 Oct 2015 13:54:37 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by gmr-mx.google.com with ESMTPS id xl3si122506wib.1.2015.10.02.13.54.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 10:59:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::230 as permitted sender) client-ip=2607:f8b0:400d:c04::230;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 02 Oct 2015 13:54:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x230.google.com with SMTP id b67so60064484qgb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 10:59:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=/gGcjaEKEM1GvSK3Hw5xhoYNJnC4W55+zcNz2wac85c=;
-        b=ZoxeOm+wQ/r6mEVMRtYJDAehn1BFGDzSi3mvQx3R57PWfArHi7GXMKUW7gE/5WyNZe
-         Vagi1OrhocvsbW4Amm2YjZxuxLZjHv7TB/i/e/xIaQrHcA0mJbVN710sYwnpy8+QlJq0
-         b3xGv0cFIzuL/Q2DeUD7/wpMVkC1WXz7TZZKCXlhgwPcXSOTZmEhcW3T2cTpmfRNF8S3
-         xWdFtCHNk7baSq5R6jgdOBh2McXo8qmcoJCU2jlSUMpQynNGMvEZbkgBREKzkROyIT6Y
-         A6TBO4RMtrHWetZQw1KZ3ZBM0+TkZc/oQThVueaIQDhR5QpYqhEXYaPoK+w9MAADf3xi
-         23mA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=/gGcjaEKEM1GvSK3Hw5xhoYNJnC4W55+zcNz2wac85c=;
-        b=hCdH2IQBsjc3SLjMjWCWfXuBC6S8qiRA8W5FoUAx8kzNbLy636WdKJck2LPkzhwInY
-         8a3T3jeEWqPzFurWFfjq5D1JKvp1mIHGX4vCWJzwIwrV2EC9J/uDcOoE0FZNalQFWV6L
-         0gwYHShyaTLIevvzHCOv6SshKqGVnRIcBGsk9kjPMy41NHGjIOwH3kLpZLPXu9NthSuv
-         fC3mlyNimOhUk/d4mMCxLOAOUif0Bwx4N0UmaHQrdrS4IdVGEBS+8WSOwqk8IqH2sMJk
-         GV52S5et9+3kILTSFeE4ZzkPTkt9kFe6VhG2aDwvIB/9zhyP9PmuP12sMSLZq5/i0p9g
-         ruxw==
-X-Gm-Message-State: AG10YORQoCZ5JM9NmIcyifBUZ78x3d0yad8YRhRLQ1joOZOpP4uPSCEuqhBzHhv+Bpjq9w==
-X-Received: by 10.140.99.53 with SMTP id p50mr42777684qge.97.1455044356580;
-        Tue, 09 Feb 2016 10:59:16 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id j67sm16230830qgj.35.2016.02.09.10.59.15
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 10:59:16 -0800 (PST)
-Date: Tue, 9 Feb 2016 18:58:37 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192u: Use kmalloc_array instead of kmalloc
-Message-ID: <20160209235837.GA11402@janani-Inspiron-3521>
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue103) with ESMTPSA (Nemesis) id 0MCfv0-1ZqKYp1y54-009RuQ; Fri, 02 Oct
+ 2015 22:54:37 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Shraddha Barke <shraddha.6596@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/5] Staging: lustre: obdclass: cl_lock: Declare as static
+Date: Fri, 02 Oct 2015 22:54:37 +0200
+Message-ID: <6944166.1fiYEf27RQ@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <alpine.DEB.2.11.1510030216380.24977@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+References: <1443808154-13944-1-git-send-email-shraddha.6596@gmail.com> <4965740.aaLffJxEfT@wuerfel> <alpine.DEB.2.11.1510030216380.24977@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:gcoq8d3gAZA4DaxqcaGuLv6vF57hhZ0IQiNwS3f8EaQF6LBRJJf
+ 83URKHXqjlyCr8NZVXVHpbbpdcrxDOluAIU7z3lkQ1FELw6Zn7cKLurrk9jTbRC8nruz4Bf
+ qlmoMCXmeTISmHUcG9QxSUkjRz58f47KvgwGYqhJSafS+iClM61ZFw5MBhHqb7lTfJ08u2+
+ 5jROCwkCWTsMK//zfI+Og==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:kOM3TFj3X0U=:0+0TjGVpm6mb/18UeCyf2Q
+ NzLCoPCqvMUWlfeUVWB6LS6ByZ5MEhaUGqCi3DPfNOG/My39Vk8RAqdA007Ym3flDaULnj4uF
+ EvpZfTTAv9Ow+7+UqjRXOtdt8WRk+VFYcwQMBrF8R9BLQoPEZ8R4jlaxt4oulGxfxgL/ErQem
+ lpFsmNu1TqAkozx94c3OYuwaSG6dMA3F+LnZFbFwgediNPkKgysKYGg3JyDVkxzpEApZPhkSG
+ 8IzmMSWeRJv9wCfFvKlbacY0sxyeWuDZ6fsVtirMBx+bLjLpA+an1qABeRE3N17LqG0Bwk5ox
+ SApQeD/6e2yCqSYLTF0xEEQVdaoR7l+eWv7B5Ga5/7loyhVRclOmIIqoQ39/Gofd1SIVOdMLM
+ BwpFmnBZitzZ7aQmzCrtx8/QZRaMPgBA6QgNiNgEdsQj6Tr4QS84Va1zTl1SThhVt2OY+8rNj
+ MXodHJ1LGmLT+Kgl+DImJ8HAqwOBIeOYGnMF8XTJmKz38GKVT/xAUUHGegoF/B1Ld0bLRHXMv
+ CS06eO0b3vePc7avTgSIt2hw59wnAdNm8o6ugPwUIXiFR18/WzyCsdt9Rc36IsFLZHW8P2eSO
+ oyDMih906mdzJ+NMF7aOjzd7z/X46V6QKCuSHTwcZJXszh2SVfw/aje7wBNYcTMKjqAJM8BQF
+ XNleEOwAzBtmXo7aMkaRcNcDmPUwOZxuKKBe7jDiGLxQIZGIJ+N8R/1hhOwZ0HyEDNN+ytyDJ
+ 0YGnxYlH1froHP8e
 
-Use kmalloc_array instead of kmalloc for arrays. Coccinelle patch used:
+On Saturday 03 October 2015 02:21:10 Shraddha Barke wrote:
+> On Fri, 2 Oct 2015, Arnd Bergmann wrote:
+> 
+> > On Friday 02 October 2015 23:19:11 Shraddha Barke wrote:
+> >> Declare cl_lock_intransit and cl_lock_extransit as static since they
+> >> are used only in this particular file.
+> >>
+> >> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> >> ---
+> >>  drivers/staging/lustre/lustre/obdclass/cl_lock.c | 10 ++++------
+> >>  1 file changed, 4 insertions(+), 6 deletions(-)
+> >>
+> >
+> > I still see declarations for these functions in cl_object.h, you
+> > should remove them at the same time.
+> >
+> > I would have expected to see a compile-time error as a result of
+> > your patch, because you have an extern declaration and a static
+> > definition for the same symbol.
+> 
+> Yes that would normally happen. But the declarations for these were 
+> removed in another patch 4 days ago.
+> https://git.kernel.org/cgit/linux/kernel/git/gregkh/staging.git/commit/?h=staging-testing&id=a83a765d14df24c8fa0fc500d24b0334638ee828
 
-@@
-expression E, F;
-constant FLAG;
-@@
+Ah, got it. I guess it was actually me who removed the lines, I just
+forgot about it, and I would have thought that I put them back.
 
-- kmalloc(E*F, FLAG)
-+ kmalloc(E, F, FLAG)
+My initial dead code removal patch converted these two into static
+functions already, but then I realized just how much work it was
+to do them all at once, and I decided to revert that conversion for
+the time being and only do the code removal then.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+for your patch:
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 28ad63a..fb344d1 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -601,8 +601,8 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 	bool			bMatchWinStart = false, bPktInBuf = false;
- 	IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): Seq is %d,pTS->RxIndicateSeq is %d, WinSize is %d\n",__func__,SeqNum,pTS->RxIndicateSeq,WinSize);
- 
--	prxbIndicateArray = kmalloc(sizeof(struct ieee80211_rxb *) *
--			REORDER_WIN_SIZE, GFP_KERNEL);
-+	prxbIndicateArray = kmalloc_array(RECORDER_WIN_SIZE,
-+			sizeof(struct ieee80211_rxb *), GFP_KERNEL);
- 	if (!prxbIndicateArray)
- 		return;
- 
--- 
-2.5.0
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
