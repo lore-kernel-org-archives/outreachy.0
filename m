@@ -1,120 +1,109 @@
 X-GM-THRID: 6200732724667351040
-X-Received: by 10.112.55.69 with SMTP id q5mr2307004lbp.24.1443775767370;
-        Fri, 02 Oct 2015 01:49:27 -0700 (PDT)
+X-Received: by 10.129.92.197 with SMTP id q188mr11635113ywb.25.1443773771529;
+        Fri, 02 Oct 2015 01:16:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.152.199 with SMTP id a190ls200345lfe.62.gmail; Fri, 02 Oct
- 2015 01:49:26 -0700 (PDT)
-X-Received: by 10.112.55.69 with SMTP id q5mr2306994lbp.24.1443775766796;
-        Fri, 02 Oct 2015 01:49:26 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
-        by gmr-mx.google.com with ESMTPS id c1si195204wiv.3.2015.10.02.01.49.26
+Received: by 10.140.32.201 with SMTP id h67ls10592qgh.60.gmail; Fri, 02 Oct
+ 2015 01:16:10 -0700 (PDT)
+X-Received: by 10.13.240.132 with SMTP id z126mr11843923ywe.34.1443773770608;
+        Fri, 02 Oct 2015 01:16:10 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id w5si1468985pbt.1.2015.10.02.01.16.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Oct 2015 01:49:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
+        Fri, 02 Oct 2015 01:16:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x236.google.com with SMTP id gb1so21722645wic.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 01:49:26 -0700 (PDT)
+Received: by mail-pa0-x232.google.com with SMTP id hy16so100717674pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 01:16:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=LxEGGRnFbLPGPyOABjkovBLw6xJibr510EG48LlUSRY=;
-        b=LSlrRm4A7rfghMMVtoWcKKf4lcO5u6FliwdbziRCazcmRz7/DWyRPXzz3JN1wGtDgl
-         8tbzF2E5rADKI/ByE5ygcvUZDJ0gyYqCGv9gMY2CypUUD2KutLCWSyDGKSPerv7OSKnz
-         XCOf5e7dcbjf4uhHQ+RV9n5+EFRiXKLH10+uTx78lOTPUiuhz68nzX8+iwOAJF2qD1BN
-         a9UYk73344MHClUTVoOKSiTcsT6HU21VJmj6cLIgkTUq5D3DGg0N9T81FyNZcTAjqEYJ
-         o4bDGic226nY7tK3HEEvmuSaqr1zO6et1llcXLOeuZjQdnTnqqPopxpqZdhg/wEobYAe
-         u2xA==
-MIME-Version: 1.0
-X-Received: by 10.194.76.237 with SMTP id n13mr16308623wjw.128.1443775766620;
- Fri, 02 Oct 2015 01:49:26 -0700 (PDT)
-Received: by 10.194.67.99 with HTTP; Fri, 2 Oct 2015 01:49:26 -0700 (PDT)
-In-Reply-To: <1443773747-2985-2-git-send-email-shraddha.6596@gmail.com>
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=egV8942ZTkiElvB4+WZBu+tiZdX230jkPgE6lC0z+nc=;
+        b=q/JwJuLyYwkgP4tn5pEZcbYfVmk+G3/yE3nxj9TiJZPwMEicUCUDaev9DlvBZdVCtA
+         EtaIfMZegr7zzGT3KusHFoMtHwTn0bwdvUE/AuK86OOv0KUGkAmBR/R0WOTksZKLb4yb
+         0iPcql3gpazszJLdmIe1PluHgPC1UO2BUGUb0Qn/ux7qm5JQds/cLvCJnS6aC2HbqchI
+         OUd3GSwJMq88SD/m2zIalNcXC/sWkRPtkOTHcevkkd+3fxLB+KtZ+JmopjB2hPzHiugj
+         UGlc0/+O9Gp5A5bmXVKVWqxacc0FXv/cmnbPeqdneuLF86lKESut0BeNRAgx8BFjKp9k
+         A+Rg==
+X-Received: by 10.68.96.67 with SMTP id dq3mr18318266pbb.161.1443773770461;
+        Fri, 02 Oct 2015 01:16:10 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id cs5sm10749573pbc.15.2015.10.02.01.16.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 02 Oct 2015 01:16:09 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2 6/6] Staging: lustre: ptlrpc: Declare sptlrpc_parse_rule as static
+Date: Fri,  2 Oct 2015 13:45:47 +0530
+Message-Id: <1443773747-2985-7-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1443773747-2985-1-git-send-email-shraddha.6596@gmail.com>
 References: <1443773747-2985-1-git-send-email-shraddha.6596@gmail.com>
-	<1443773747-2985-2-git-send-email-shraddha.6596@gmail.com>
-Date: Fri, 2 Oct 2015 14:19:26 +0530
-Message-ID: <CAK-LDbKTvK=vqNnQaCHcpwMg8fODzoTy1QZZ42dxX1Bvy-Q=nA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 1/6] Staging: lustre: ptlrpc:
- Declare sptlrpc_rule_set_merge as static
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: Shraddha Barke <shraddha.6596@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150206.560E3D49.000D,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Fri, Oct 2, 2015 at 1:45 PM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
-> Declare sptlrpc_rule_set_merge as static since it is accessed from this
-> particular file only. Also remove its declaration from
-> header file
->
-> Changes in v2-
->  No change
+Declare sptlrpc_parse_rule as static since it is accessed from this
+particular file only. Also remove it's declaration from
+header file
 
-Hi,
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+Changes in v2-
+ No change.
 
-You need to write 'Changes in v2' part under --- . So that when the patch will
-be applied, part under --- will go away.
+ drivers/staging/lustre/lustre/include/lustre_sec.h | 1 -
+ drivers/staging/lustre/lustre/ptlrpc/sec_config.c  | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> ---
->  drivers/staging/lustre/lustre/include/lustre_sec.h | 2 --
->  drivers/staging/lustre/lustre/ptlrpc/sec_config.c  | 6 ++----
->  2 files changed, 2 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/lustre/lustre/include/lustre_sec.h b/drivers/staging/lustre/lustre/include/lustre_sec.h
-> index 1d2c572..96a717e2 100644
-> --- a/drivers/staging/lustre/lustre/include/lustre_sec.h
-> +++ b/drivers/staging/lustre/lustre/include/lustre_sec.h
-> @@ -331,8 +331,6 @@ static inline void sptlrpc_rule_set_init(struct sptlrpc_rule_set *set)
->
->  void sptlrpc_rule_set_free(struct sptlrpc_rule_set *set);
->  int  sptlrpc_rule_set_expand(struct sptlrpc_rule_set *set);
-> -int  sptlrpc_rule_set_merge(struct sptlrpc_rule_set *set,
-> -                           struct sptlrpc_rule *rule);
->  int sptlrpc_rule_set_choose(struct sptlrpc_rule_set *rset,
->                             enum lustre_sec_part from,
->                             enum lustre_sec_part to,
-> diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
-> index 0d29b87..6fb5b4c 100644
-> --- a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
-> +++ b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
-> @@ -285,8 +285,8 @@ static inline int rule_match_net(struct sptlrpc_rule *r1,
->   * merge @rule into @rset.
->   * the @rset slots might be expanded.
->   */
-> -int sptlrpc_rule_set_merge(struct sptlrpc_rule_set *rset,
-> -                          struct sptlrpc_rule *rule)
-> +static int sptlrpc_rule_set_merge(struct sptlrpc_rule_set *rset,
-> +                                 struct sptlrpc_rule *rule)
->  {
->         struct sptlrpc_rule *p = rset->srs_rules;
->         int spec_dir, spec_net;
-> @@ -370,8 +370,6 @@ int sptlrpc_rule_set_merge(struct sptlrpc_rule_set *rset,
->
->         return 0;
->  }
-> -EXPORT_SYMBOL(sptlrpc_rule_set_merge);
-> -
->  /**
->   * given from/to/nid, determine a matching flavor in ruleset.
->   * return 1 if a match found, otherwise return 0.
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443773747-2985-2-git-send-email-shraddha.6596%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-
-
-
+diff --git a/drivers/staging/lustre/lustre/include/lustre_sec.h b/drivers/staging/lustre/lustre/include/lustre_sec.h
+index ab963b9..fc1f573 100644
+--- a/drivers/staging/lustre/lustre/include/lustre_sec.h
++++ b/drivers/staging/lustre/lustre/include/lustre_sec.h
+@@ -1028,7 +1028,6 @@ void sptlrpc_req_put_ctx(struct ptlrpc_request *req, int sync);
+ int  sptlrpc_req_refresh_ctx(struct ptlrpc_request *req, long timeout);
+ void sptlrpc_req_set_flavor(struct ptlrpc_request *req, int opcode);
+ 
+-int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule);
+ 
+ /* gc */
+ void sptlrpc_gc_add_sec(struct ptlrpc_sec *sec);
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
+index 7e698f3..c96a5c7 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/sec_config.c
+@@ -159,7 +159,7 @@ static void sptlrpc_rule_init(struct sptlrpc_rule *rule)
+ /*
+  * format: network[.direction]=flavor
+  */
+-int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
++static int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
+ {
+ 	char *flavor, *dir;
+ 	int rc;
+@@ -213,7 +213,6 @@ int sptlrpc_parse_rule(char *param, struct sptlrpc_rule *rule)
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL(sptlrpc_parse_rule);
+ 
+ static void sptlrpc_rule_set_free(struct sptlrpc_rule_set *rset)
+ {
 -- 
-Vaishali
+2.1.4
+
 
