@@ -1,83 +1,65 @@
 X-GM-THRID: 6200732724667351040
-X-Received: by 10.182.108.228 with SMTP id hn4mr12351741obb.5.1443782990955;
-        Fri, 02 Oct 2015 03:49:50 -0700 (PDT)
+X-Received: by 10.182.213.73 with SMTP id nq9mr12450746obc.33.1443777662224;
+        Fri, 02 Oct 2015 02:21:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.161 with SMTP id x1ls483754igl.29.canary; Fri, 02 Oct
- 2015 03:49:50 -0700 (PDT)
-X-Received: by 10.67.23.163 with SMTP id ib3mr12180414pad.45.1443782990311;
-        Fri, 02 Oct 2015 03:49:50 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id uv4si1714255pac.0.2015.10.02.03.49.50
+Received: by 10.182.96.70 with SMTP id dq6ls666306obb.51.gmail; Fri, 02 Oct
+ 2015 02:21:01 -0700 (PDT)
+X-Received: by 10.182.107.162 with SMTP id hd2mr12478947obb.29.1443777661718;
+        Fri, 02 Oct 2015 02:21:01 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id o73si1063657ywd.6.2015.10.02.02.21.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Oct 2015 03:49:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Fri, 02 Oct 2015 02:21:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fv12so106191723pac.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 03:49:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=orCVBq0WFdLtOF0L2XQze18/bFtjCCjFFmQvmcXFGDE=;
-        b=UugeD/MDWU1YusZOQD69PPxSzhH10E/ffIE0SvwhmPx1ooW386PxPMN/hbJdr5c6zG
-         eKN9PbUZl5ZBm5QRfBbomqSEwZYizWHURTinokiw4Hz1bgtigux2eMfoBlmdqEAe96QH
-         zjMNvBUaISKjxd7G6/93qHvsih0rm7L4i6TcveKXV8+X2tCkifxE2jp1GhiiyGfy0FOn
-         PBHccNYE/sjRtY6zU/ES7wqRuUF/KgZ+1K39fHvgPAUhrwqtUimtstZjXo177UYnSpTq
-         Tk0zYaTPVdJhU/shy8lqMGjn6TwB35sX/rsGJP1CzZPb+rsx/97OwUR9qiiLh+wmtgK7
-         Dvkg==
-X-Received: by 10.67.8.102 with SMTP id dj6mr19324135pad.123.1443782990190;
-        Fri, 02 Oct 2015 03:49:50 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id ce3sm11419722pbb.35.2015.10.02.03.49.46
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Oct 2015 03:49:49 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3 0/6] Declare functions and structures as static
-Date: Fri,  2 Oct 2015 16:19:25 +0530
-Message-Id: <1443782971-6392-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150208.560E614C.0163,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [89.202.203.52])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1BE4C1D51;
+	Fri,  2 Oct 2015 09:20:59 +0000 (UTC)
+Date: Fri, 2 Oct 2015 11:20:57 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Shraddha Barke <shraddha.6596@gmail.com>
+Cc: Vaishali Thakkar <vthakkar1994@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 1/6] Staging: lustre: ptlrpc:
+ Declare sptlrpc_rule_set_merge as static
+Message-ID: <20151002092057.GA10080@kroah.com>
+References: <1443773747-2985-1-git-send-email-shraddha.6596@gmail.com>
+ <1443773747-2985-2-git-send-email-shraddha.6596@gmail.com>
+ <CAK-LDbKTvK=vqNnQaCHcpwMg8fODzoTy1QZZ42dxX1Bvy-Q=nA@mail.gmail.com>
+ <alpine.DEB.2.11.1510021424120.27480@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.11.1510021424120.27480@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-These patches declare the functions and structures which are not
-used anywhere else as static.
+On Fri, Oct 02, 2015 at 02:25:55PM +0530, Shraddha Barke wrote:
+> 
+> 
+> On Fri, 2 Oct 2015, Vaishali Thakkar wrote:
+> 
+> >On Fri, Oct 2, 2015 at 1:45 PM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
+> >>Declare sptlrpc_rule_set_merge as static since it is accessed from this
+> >>particular file only. Also remove its declaration from
+> >>header file
+> >>
+> >>Changes in v2-
+> >> No change
+> >
+> >Hi,
+> >
+> >You need to write 'Changes in v2' part under --- . So that when the patch will
+> >be applied, part under --- will go away.
+> 
+> Shoot. Will I have to send v3 ? Or just that one patch again?
 
-Changes in v3-
- These patches are made against the latest staging-testing branch.
+Please send a whole new series, that's much easier for me to handle than
+individual patch versions.
 
-  
+thanks,
 
-Shraddha Barke (6):
-  Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_merge as static
-  Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_free as static
-  Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_expand as static
-  Staging: lustre: ptlrpc: Declare sptlrpc_rule_set_choose as static
-  Staging: lustre: ptlrpc: Declare sptlrpc_req_replace_dead_ctx as
-    static
-  Staging: lustre: ptlrpc: Declare sptlrpc_parse_rule as static
-
- drivers/staging/lustre/lustre/include/lustre_sec.h | 12 -----------
- drivers/staging/lustre/lustre/ptlrpc/sec.c         |  3 +--
- drivers/staging/lustre/lustre/ptlrpc/sec_config.c  | 25 +++++++++-------------
- 3 files changed, 11 insertions(+), 29 deletions(-)
-
--- 
-2.1.4
-
+greg k-h
 
