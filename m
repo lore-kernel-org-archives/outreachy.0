@@ -1,68 +1,104 @@
 X-GM-THRID: 6200774307110453248
-X-Received: by 10.112.202.165 with SMTP id kj5mr3016244lbc.5.1443821287326;
-        Fri, 02 Oct 2015 14:28:07 -0700 (PDT)
+X-Received: by 10.112.40.17 with SMTP id t17mr2403773lbk.10.1443782283921;
+        Fri, 02 Oct 2015 03:38:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.39.6 with SMTP id n6ls242131lfn.36.gmail; Fri, 02 Oct 2015
- 14:28:06 -0700 (PDT)
-X-Received: by 10.112.130.41 with SMTP id ob9mr2990546lbb.17.1443821286612;
-        Fri, 02 Oct 2015 14:28:06 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id xl3si126238wib.1.2015.10.02.14.28.06
+Received: by 10.25.208.78 with SMTP id h75ls214819lfg.83.gmail; Fri, 02 Oct
+ 2015 03:38:03 -0700 (PDT)
+X-Received: by 10.112.181.10 with SMTP id ds10mr1363539lbc.3.1443782283451;
+        Fri, 02 Oct 2015 03:38:03 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id xl3si41351wib.1.2015.10.02.03.38.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Oct 2015 14:28:06 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        Fri, 02 Oct 2015 03:38:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue104) with ESMTPSA (Nemesis) id 0LbagN-1aNU1l0zud-00lDhg; Fri, 02 Oct
- 2015 23:28:06 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x234.google.com with SMTP id lk2so27690199wic.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 03:38:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=NQtrbQQsvwXO/xnG77UtzeyH7gFGn9HGvmU+5KFSEpQ=;
+        b=Ci32PjrdXUvGCGIWfvG7E7xxupfVlwpMg3rlOmaRkB+7utnd11qEwY3nhbNFAx7fI+
+         FB7Cne6mvfVzt8+BFGmftGHZl14csYBA2hDnQ4H+PBDsqbBq4GlyWrU88y7+fhJWHPS7
+         JQsp6VUAldij3tMFtR0ba0i6Ok/p/W024bOx07yk8UhxE76HSw1lYAvx9Ruvjoslv0UI
+         x6iWjuSLY8s+5qv843Aykpy7vLdXUbobSd6GMpzqpLHp9U/uAXDesiyc9SxCvzusdcEI
+         7C8wxUAFkrrbSaZzcTfRW/lA7tJz+NTVM+oxPCMilJIrxvStZF8eTu0Dkb80pQCkbFF7
+         b9wA==
+X-Received: by 10.194.236.74 with SMTP id us10mr15308317wjc.39.1443782283310;
+        Fri, 02 Oct 2015 03:38:03 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from localhost.localdomain ([93.122.165.106])
+        by smtp.gmail.com with ESMTPSA id g5sm7709038wix.13.2015.10.02.03.38.02
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 02 Oct 2015 03:38:02 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 0/3] use resource managed devm_iio_device_register
-Date: Fri, 02 Oct 2015 23:28:05 +0200
-Message-ID: <8187227.aifReskkfY@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+Subject: [PATCH v2 3/3] staging: iio: resolver: replace iio_device_register by devm_iio_device_register
+Date: Fri,  2 Oct 2015 13:37:50 +0300
+Message-Id: <837f374c520a6ad13159d412ec9259733d7426d6.1443781973.git.ciorneiioana@gmail.com>
+X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1443781973.git.ciorneiioana@gmail.com>
 References: <cover.1443781973.git.ciorneiioana@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:/2gD/ZAHhMAeq5xku2Ywd+7qfCy1oX4BVCPJCKmxyE/BJWUm3bc
- vlz5JEGO3tDvY5/oeT8TmQBF1avKLuycNol+sf5x7D8QcR2vudd918yO0ABLgm/0dT02Uip
- C7b5L4HRY5xcrAvk35CYoibCLLMIUf7gpBdKmTNXFVoAzFf9r2xpwxmAk+dkZYK9HqW2vZ/
- Xtbtn4sMisGsOotba+rXg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:HFYQ1wYBfJ4=:4MHikNfBS2C0j0xh4C7zr9
- VQ7/TM+WIwanmEKETNicFbKTmOFuuIVNwQXDARlHW9JnmSGM0IilKtpV2EWLTxWx0o7Ehoq/l
- 07M/5DxfP82vCrqjhyHyX7zqof/MKeSMSDFuxWh5/hClYkOLYPvfSfkiyWHrOJal77+tiDek6
- Gk34MHOF6v/4ZhCevsK8BgBGeTDHfGb4Y6geKhJihxrXmwtpehWW3wLbE429Rp1cJUwRtpTU3
- /WLXiWcX2Z5AeIeq4mB7hal8j46H3Tb1iKh742UtPIQr4mu3tDQgO5/3ULVW9qkcWu7SFN2/g
- XVguKXFyjgeyZkxAEggqfngZ6niQ6UvahFcuPAxwTDrvCLXjl9eNhuYcFQ6H3wiQ+85Rrwpay
- bybRczr+dvLxI4p4Mfo+AQnA6+tTp7mQGRKvQzMIVTMSc1cn9nZcVTBfsywIDxRB1lQuzLAy3
- l2UHYhFtU3b3q5U4wCI03bx2FdXL6OJf/Ok8FHKyvulWlcDlVRJTJy3w75D1XAxNNZ184b6j5
- sIslB/rLDujE8n60fc+jtgji+GzqoNij9MSCQrwSys0s/9gr3R/mObeOXkPqowPUi4zTlmuhz
- Nb99+dWoPi6FUS1qDwSAPVUoGXnhSHWajoXLM5EXSrWNeouFxQ9JsyUqf9J12helitU8nADpn
- B8tqNLjuLUexo2S2+b+UlIpL+GYBUXxrDPGvMpIYK+qwyHvmPsNk2Tz6kNw+dz8YUShnRng/f
- tcELUjAE/Xw+qxX7
+In-Reply-To: <cover.1443781973.git.ciorneiioana@gmail.com>
+References: <cover.1443781973.git.ciorneiioana@gmail.com>
 
-On Friday 02 October 2015 13:37:47 Ioana Ciornei wrote:
-> This patchset replaces the use of iio_device_register with
-> the resource managed function devm_iio_device_register when the remove function
-> only unregisters the device. Since an iio_dev registered with this function is
-> automatically unregistered on driver detach there is no need for the remove
-> function and therefore it is removed.
-> 
+Use devm_iio_device_register instead of iio_device_register when the remove
+function is only used to call iio_device_unregister in order to ease the error path.
+Since resource managed functions implicitly call unregister at driver detach also remove
+iio_device_unregister
 
-Hi Ioana,
+Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+---
+Changes in v2:
+    - rework commit message to be clearer
 
-I see you got a 'Reviewed-by: Vaishali Thakkar <vthakkar1994@gmail.com>'
-reply for this already. If someone replies with a tag like this, please
-it add below your Signed-off-by line.
+ drivers/staging/iio/resolver/ad2s90.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
 
-[The patches look ok to me as well, but I'm not sure enough about the
-meaning of devm_iio_device_register() to provide my own Reviewed-by]
+diff --git a/drivers/staging/iio/resolver/ad2s90.c b/drivers/staging/iio/resolver/ad2s90.c
+index e24c589..c57a296 100644
+--- a/drivers/staging/iio/resolver/ad2s90.c
++++ b/drivers/staging/iio/resolver/ad2s90.c
+@@ -79,7 +79,7 @@ static int ad2s90_probe(struct spi_device *spi)
+ 	indio_dev->num_channels = 1;
+ 	indio_dev->name = spi_get_device_id(spi)->name;
+ 
+-	ret = iio_device_register(indio_dev);
++	ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -91,13 +91,6 @@ static int ad2s90_probe(struct spi_device *spi)
+ 	return 0;
+ }
+ 
+-static int ad2s90_remove(struct spi_device *spi)
+-{
+-	iio_device_unregister(spi_get_drvdata(spi));
+-
+-	return 0;
+-}
+-
+ static const struct spi_device_id ad2s90_id[] = {
+ 	{ "ad2s90" },
+ 	{}
+@@ -110,7 +103,6 @@ static struct spi_driver ad2s90_driver = {
+ 		.owner = THIS_MODULE,
+ 	},
+ 	.probe = ad2s90_probe,
+-	.remove = ad2s90_remove,
+ 	.id_table = ad2s90_id,
+ };
+ module_spi_driver(ad2s90_driver);
+-- 
+2.1.4
 
-	Arnd
 
