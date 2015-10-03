@@ -1,124 +1,71 @@
-X-GM-THRID: 6200064367824732160
-X-Received: by 10.66.100.233 with SMTP id fb9mr381608pab.24.1443564977202;
-        Tue, 29 Sep 2015 15:16:17 -0700 (PDT)
+X-GM-THRID: 6201414054527893504
+X-Received: by 10.112.198.33 with SMTP id iz1mr3562115lbc.8.1443879225899;
+        Sat, 03 Oct 2015 06:33:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.142.202 with SMTP id ry10ls29627obb.10.gmail; Tue, 29 Sep
- 2015 15:16:16 -0700 (PDT)
-X-Received: by 10.182.29.40 with SMTP id g8mr349917obh.27.1443564976741;
-        Tue, 29 Sep 2015 15:16:16 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id el2si3746496pbb.0.2015.09.29.15.16.16
+Received: by 10.181.11.196 with SMTP id ek4ls537833wid.36.gmail; Sat, 03 Oct
+ 2015 06:33:45 -0700 (PDT)
+X-Received: by 10.194.59.166 with SMTP id a6mr3613156wjr.6.1443879225467;
+        Sat, 03 Oct 2015 06:33:45 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id o5si100061wib.0.2015.10.03.06.33.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 15:16:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 03 Oct 2015 06:33:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id lk4so17509159pab.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 15:16:16 -0700 (PDT)
+Received: by mail-wi0-x236.google.com with SMTP id lk2so66051443wic.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 03 Oct 2015 06:33:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=uHXpYj/cL4ZTouE35rGPflU3ljL46fFVjxjFQsH5kLo=;
-        b=E3GZJ9RDXJX/+pWXJr05IjV9TXwxrlAC1NemkwtksF4WPDE+A8toV3rOKu3nIq5KIt
-         UoMxfu1/i89f0BoZJTyCcD8+vbgjMWxEuj11YA4cKd+OJQ39/wLsaeBsNslxoJVw+8Hx
-         H/yDDHD+RNucIH2RRKeUDuRw+FX54n+euRpMKwhMqGfzvwvo+ipoPiTWg7nQMR2BuFQu
-         6EaNmLAs0GCBNGhd37H347XoKzCqjPUlEZPZVZ8m/V335LJgiwjNyy/pX1tKJh7TS5Zb
-         NDBo6l1TKwRBh/S8X2kc9wJFkHLHp1Y9ASAYsrgvlyImCoG0jDgNpA44nfYHEVSQc6Cn
-         PcyA==
-X-Received: by 10.68.134.234 with SMTP id pn10mr416815pbb.103.1443564976611;
-        Tue, 29 Sep 2015 15:16:16 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id yi8sm27613753pab.22.2015.09.29.15.16.14
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 29 Sep 2015 15:16:15 -0700 (PDT)
-Date: Wed, 30 Sep 2015 03:46:08 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=0M6rJaXHD5X/SJGonM8nRfCU4Xeu6ZomiOXoVQ8IkDc=;
+        b=CjHKzcqIHX2Zt+y54stPfVuEE7QQArb9br9Zd+BqMLyu2Q0hN/qv7jkDPuUNr0dqOW
+         pViGQGFhtVXbK4y4OxJXUZZzHuyu7EcN5Nj6qinj12hE8TfweN0KBsEPh+E+qRZjGBGU
+         NJwu1GwRIJMZAV1TPYax8nb0DrEqgPw1nZ7yAQc5AALUT2FyswnaRVBVDKanbDfv1kWb
+         2/o/I9Fhnl9cI9WOa+gs2AIxjCMwwptGqfW6iP7wPArdS4HGRijmvb/f/uaYLn3MgwYL
+         ulNWdDjSMM+uMYOBPRNlqXotHtLjYTUT8Thi4ZYvYpDoDSwypBaWaCow+QPfTf5wDGLU
+         PR/w==
+X-Received: by 10.194.20.68 with SMTP id l4mr3786483wje.24.1443879225358;
+        Sat, 03 Oct 2015 06:33:45 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([141.85.225.214])
+        by smtp.gmail.com with ESMTPSA id lv4sm16497302wjb.43.2015.10.03.06.33.44
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 03 Oct 2015 06:33:44 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Drivers: staging: wlan-ng: p80211conv: replaced functions
- for copying/comparing ethernet addresses
-Message-ID: <20150929221607.GA15184@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: octeon: Add kernel-doc params description
+Date: Sat,  3 Oct 2015 16:33:34 +0300
+Message-Id: <1443879214-51209-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Replaced the function memcpy() by ether_addr_copy() and, memcmp() by
-ether_addr_equal() as these functions are more preferable for copying
-and comparing the ethernet addresses respectively.
-Also fixed the issue of character limit of 80 per line and removed
-one unnecessary statement.
+Fix 'No description found for parameter' kernel-doc warnings
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/wlan-ng/p80211conv.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ drivers/staging/octeon/ethernet-rx.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/wlan-ng/p80211conv.c b/drivers/staging/wlan-ng/p80211conv.c
-index 49f2ef8..9c4dba6 100644
---- a/drivers/staging/wlan-ng/p80211conv.c
-+++ b/drivers/staging/wlan-ng/p80211conv.c
-@@ -178,21 +178,23 @@ int skb_ether_to_p80211(wlandevice_t *wlandev, u32 ethconv,
+diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
+index d1a33a9..24485b6 100644
+--- a/drivers/staging/octeon/ethernet-rx.c
++++ b/drivers/staging/octeon/ethernet-rx.c
+@@ -49,6 +49,8 @@ static struct napi_struct cvm_oct_napi;
  
- 	switch (wlandev->macmode) {
- 	case WLAN_MACMODE_IBSS_STA:
--		memcpy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
--		memcpy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr, ETH_ALEN);
--		memcpy(p80211_hdr->a3.a3, wlandev->bssid, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr,
-+				ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a3, wlandev->bssid, ETH_ALEN);
- 		break;
- 	case WLAN_MACMODE_ESS_STA:
- 		fc |= cpu_to_le16(WLAN_SET_FC_TODS(1));
--		memcpy(p80211_hdr->a3.a1, wlandev->bssid, ETH_ALEN);
--		memcpy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr, ETH_ALEN);
--		memcpy(p80211_hdr->a3.a3, &e_hdr.daddr, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a1, wlandev->bssid, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a2, wlandev->netdev->dev_addr,
-+				ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a3, &e_hdr.daddr, ETH_ALEN);
- 		break;
- 	case WLAN_MACMODE_ESS_AP:
- 		fc |= cpu_to_le16(WLAN_SET_FC_FROMDS(1));
--		memcpy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
--		memcpy(p80211_hdr->a3.a2, wlandev->bssid, ETH_ALEN);
--		memcpy(p80211_hdr->a3.a3, &e_hdr.saddr, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a1, &e_hdr.daddr, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a2, wlandev->bssid, ETH_ALEN);
-+		ether_addr_copy(p80211_hdr->a3.a3, &e_hdr.saddr, ETH_ALEN);
- 		break;
- 	default:
- 		netdev_err(wlandev->netdev,
-@@ -242,8 +244,8 @@ static void orinoco_spy_gather(wlandevice_t *wlandev, char *mac,
- 
- 	for (i = 0; i < wlandev->spy_number; i++) {
- 
--		if (!memcmp(wlandev->spy_address[i], mac, ETH_ALEN)) {
--			memcpy(wlandev->spy_address[i], mac, ETH_ALEN);
-+		if (!ether_addr_equal(wlandev->spy_address[i], mac, ETH_ALEN)) {
-+			ether_addr_copy(wlandev->spy_address[i], mac, ETH_ALEN);
- 			wlandev->spy_stat[i].level = rxmeta->signal;
- 			wlandev->spy_stat[i].noise = rxmeta->noise;
- 			wlandev->spy_stat[i].qual =
-@@ -614,8 +616,6 @@ int p80211skb_rxmeta_attach(struct wlandevice *wlandev, struct sk_buff *skb)
- 	rxmeta = kzalloc(sizeof(struct p80211_rxmeta), GFP_ATOMIC);
- 
- 	if (rxmeta == NULL) {
--		netdev_err(wlandev->netdev,
--			   "%s: Failed to allocate rxmeta.\n", wlandev->name);
- 		result = 1;
- 		goto exit;
- 	}
+ /**
+  * cvm_oct_do_interrupt - interrupt handler.
++ * @cpl: Interrupt number. Unused
++ * @dev_id: Cookie to identify the device. Unused
+  *
+  * The interrupt occurs whenever the POW has packets in our group.
+  *
 -- 
-2.1.0
+1.9.1
 
 
