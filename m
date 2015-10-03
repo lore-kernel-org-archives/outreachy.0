@@ -1,101 +1,92 @@
-X-GM-THRID: 6330628880333799424
-X-Received: by 10.200.54.228 with SMTP id b33mr5949819qtc.28.1473964396883;
-        Thu, 15 Sep 2016 11:33:16 -0700 (PDT)
+X-GM-THRID: 6200357690588266496
+X-Received: by 10.129.125.130 with SMTP id y124mr15959150ywc.14.1443854380478;
+        Fri, 02 Oct 2015 23:39:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.37.1 with SMTP id l1ls1346956iol.16.gmail; Thu, 15 Sep
- 2016 11:33:15 -0700 (PDT)
-X-Received: by 10.98.26.8 with SMTP id a8mr7487749pfa.4.1473964395309;
-        Thu, 15 Sep 2016 11:33:15 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 142si3103690pfx.2.2016.09.15.11.33.15
+Received: by 10.182.102.97 with SMTP id fn1ls995824obb.29.gmail; Fri, 02 Oct
+ 2015 23:39:40 -0700 (PDT)
+X-Received: by 10.182.196.98 with SMTP id il2mr16398191obc.40.1443854380142;
+        Fri, 02 Oct 2015 23:39:40 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id pe1si2056159pac.2.2015.10.02.23.39.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 11:33:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 02 Oct 2015 23:39:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id vz6so2424114pab.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 11:33:15 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by padhy16 with SMTP id hy16so125933835pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 23:39:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=NoaNoaA5UTWgQyDLqTLNGKeCMMMvawzxFAK9O8vVhr0=;
-        b=G9+M2B3dAF4+fQUqfdmXgWkNbnaqeY/qVtNWDpaW+8AOX0nRU2NbS5AWHz9IWh026N
-         WkYD6ctkVYK3NJRoBlAQlWfFy8cEIHuC9iSONmOKRZ42GRD9/qtY1AMG/bS/si5HJruA
-         c/rT15ofnOLdktdWgJKG9CXyYDlwgGMqyN03dsjzl2jdqol1pwT4rsSOkDVrnmAVibcj
-         DZvc8qjo/ATfr/oAGcCl9aT4HIBMVZvorZhtfATHIXapyAwvy8MMk10WHSjx6kWZa9d7
-         2gOzfkScKb9xz+MNTVEBCbbuvKWOG6vzSqTT1PijxHzBsgIDzq8qfvagFeBLat9CqGLB
-         e6LQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=NoaNoaA5UTWgQyDLqTLNGKeCMMMvawzxFAK9O8vVhr0=;
-        b=TD7sJIe01qyafwRWM8+N6ewG10FlbyEWEw7/5JK8aXLbHVKIV68GGIQObch/Z+mRSh
-         gqFYUvnbXb/0W+YwDzxoeoIcQtYSYLXkRR3h6OT3o6xenPL/mnhAkq6Lvd5St/dbNwDm
-         z98TUMTZK4K4ljjWGwIQT0KebbIJTMfGbgHYcYnMV7Ra/21nlng07o7SXqkrKlJS25p+
-         IIBQrfqWkPYxV9WBkWTTLFY+yBS1jMpi0fe+gn7d07b51NpcHP5aS/jh6+MhnPejooeH
-         91h5RnZpQnN1JkpLN8vDGI07H1ez0ph/LJGU+SRY8m1c2seLlHP6/c4gyYry7J3qPdcC
-         +7XA==
-X-Gm-Message-State: AE9vXwN7RzqeUe7X2PS70Dj50hTLj00S4tzVIyi/KYHSIFUPEXJpyvmHq/oFD/ZRkefstg==
-X-Received: by 10.66.72.8 with SMTP id z8mr16633949pau.141.1473964395085;
-        Thu, 15 Sep 2016 11:33:15 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.236.194])
-        by smtp.gmail.com with ESMTPSA id u19sm4347178pfa.40.2016.09.15.11.33.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 11:33:14 -0700 (PDT)
-Date: Fri, 16 Sep 2016 00:02:58 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: speakup: Remove unnecessary 'else' after a 'return'
- statement
-Message-ID: <20160915183258.GA13583@sayli-HP-15-Notebook-PC>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=Di89kaApQfdUiGT+kE670pxkluyRPwySpPEfi5Ycrwk=;
+        b=UABOzip2aY4pvkcr43agl5IF13wX/F7SmxnQ/W8pNFCgONTY0STEgYV8pTV08rNSXE
+         ilAqt+nX6+Evkzw1b3vMoYeT6uOxd1f8LNM151A0MXzlio72HsshPCaVSHagu8kn6nzI
+         Af6BqMSBhBylWH96qx2dk3zQgybg3DLXXfZoXAsJ0cIZdwDghY35fTX/33DSZKjxP+8P
+         b7guhCa9CkjFlIOAIvWwMuJlexrY4xrJoK/a39Yexvg8hyB3eAvpGRF+mBL5ovWWjsdo
+         A0J/lglyKtdn3lvOl76AA2Iq1HWznQz00ogsVKlRbcthaQtr2Q77d/+BM+H+aj4xnN0t
+         RZxg==
+X-Received: by 10.66.228.233 with SMTP id sl9mr25419202pac.139.1443854379931;
+        Fri, 02 Oct 2015 23:39:39 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([122.175.61.48])
+        by smtp.gmail.com with ESMTPSA id zk9sm15563679pac.7.2015.10.02.23.39.37
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 02 Oct 2015 23:39:39 -0700 (PDT)
+Date: Sat, 3 Oct 2015 12:09:33 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: olpc_dcon: Replace
+ timespec with ktime_t
+Message-ID: <20151003063933.GE4428@sudip-pc>
+References: <1443806645-16504-1-git-send-email-ksenija.stanojevic@gmail.com>
+ <20151003055909.GC4428@sudip-pc>
+ <CAL7P5jKVpNLPA318dgyw=wnA0kBxaXkVjgBsRU+-cV2dq00K2Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL7P5jKVpNLPA318dgyw=wnA0kBxaXkVjgBsRU+-cV2dq00K2Q@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch resolves the following issue detected by checkpatch.pl:
-WARNING: else is not generally useful after a break or return.
+On Sat, Oct 03, 2015 at 08:05:16AM +0200, Ksenija Stanojević wrote:
+> Hi Sudip,
+> 
+> On Sat, Oct 3, 2015 at 7:59 AM, Sudip Mukherjee
+> <sudipm.mukherjee@gmail.com> wrote:
+> > On Fri, Oct 02, 2015 at 07:24:05PM +0200, Ksenija Stanojevic wrote:
+> >> Struct timespec will overflow in year 2038, here it will not cause an
+> >> overflow because it is used with timespec_sub, but still has to be
+> >> removed as part of y2038 changes. Replace it with ktime_t. Also use
+> >> monotonic instead of real-time by replacing functions getnstimeofday
+> >> with ktime_get.
+> >>
+> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> >> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+> >> ---
+> >> Changes in v4:
+> >>       -fix checkpatch.pl errors/warnings introduced by changes made
+> > You missed one more checkpatch warning.
+> >>        in v3.
+> > <snip>
+> >> +             delta_t = ktime_sub(now, dcon->load_time);
+> >> +             if (ktime_to_ns(delta_t) > NSEC_PER_MSEC * 20) {
+> >>                       break;
+> >>               }
+> > braces are not required for single statement if block.
+> 
+> I didn't know whether snould I change that or not, because that change is maybe
+> for another  patch?
+> Should I fix it  and resend?
+Not required. Just pointed that out. Resend if Greg asks for it.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/speakup/keyhelp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
-index ce94cb1..ab56d89 100644
---- a/drivers/staging/speakup/keyhelp.c
-+++ b/drivers/staging/speakup/keyhelp.c
-@@ -178,7 +178,7 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
- 		synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));
- 		build_key_data(); /* rebuild each time in case new mapping */
- 		return 1;
--	} else {
-+	}
- 		name = NULL;
- 		if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
- 			synth_printf("%s\n",
-@@ -201,7 +201,7 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
- 		synth_printf(spk_msg_get(MSG_KEYDESC), name);
- 		synth_printf("\n");
- 		return 1;
--	}
-+
- 	name = spk_msg_get(MSG_FUNCNAMES_START + cur_item);
- 	func = funcvals[cur_item];
- 	synth_printf("%s", name);
--- 
-2.7.4
-
+regards
+sudip
 
