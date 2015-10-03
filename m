@@ -1,74 +1,145 @@
-X-GM-THRID: 6618081072101982208
-X-Received: by 2002:ab0:138e:: with SMTP id m14mr16078595uae.1.1540892075849;
-        Tue, 30 Oct 2018 02:34:35 -0700 (PDT)
+X-GM-THRID: 6201124442892926976
+X-Received: by 10.180.160.146 with SMTP id xk18mr520163wib.3.1443879331384;
+        Sat, 03 Oct 2015 06:35:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:70c5:: with SMTP id r5ls1249296ual.3.gmail; Tue, 30 Oct
- 2018 02:34:35 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cOSJpgqjyJAm5wtbvftvTORJhzJwjNTu/zcKGzWuSzIPsep2GXeb1WmeC3OkHCgM76Mwe9
-X-Received: by 2002:ab0:e03:: with SMTP id g3mr16082589uak.4.1540892075166;
-        Tue, 30 Oct 2018 02:34:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540892075; cv=none;
-        d=google.com; s=arc-20160816;
-        b=EU8F+1svivhQ25eimw6cEqt00ytjcWTulcioVoeFAi8zSdkk6R2TbfnQ6+AyGPDubH
-         iNDt/C3tkNMEJJSnWFXRXbTHytFpZmtdI/bq5i8g15MndYNiXE/VJ3SctZ3suQiwKeEH
-         yXn4glIHoNMDmheVq7T2u866NmZFr4vYGwzuhYVLrMOdaNVRzsl+s/UEXdmCS0Nxy6sg
-         Wqar4H3EtjDWtGwBuU3x2eg3iIM9zwLOc7F3LG4wN/3NtcMxLO7+cwlfV2AEDJlhaRbu
-         gr9XTYfmPmV/Z9niiWsCh15/xdZzjrw73yP9bNYB7Ht0/t6lNR5e7psgM0uWIy1Vz3G3
-         MtTg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=Da0YMPCvRpidwwze0/iQNL3fOyGRazAoPdOU8u+uP/A=;
-        b=zdIcmb1ogxnsUScExHYRhaS2pL5/KdXyQseJVlLEDWxilES8R2eAWJIEbsWjxzt6uG
-         fOof8twskoDcYiuzhdT++ClFLaizRrxe8vBnN1ojVHXM5m1CDqOQ5j6GmbJi3aqsoXRA
-         2pXUwb8bRq7mhH1ReU2gzzO4fdypED7WOGer5T9TrJfQNpRb9wuKpCzMU7ZNRv0vB9Dh
-         ERlGzzUu/CEVGsS7vAZHwEc0Vd9iYTSHim76MULFySiXPju43Cg19AxKQTofHprtIqgL
-         mOUM/oW3/fe3cM5CYSQC8TsyCJhZt6SpYtMfA73HzPZkz0+Pic9a/1uj+/JKbbKZMWrP
-         DFqQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=WJNAhtDM;
-       spf=pass (google.com: domain of srs0=30/j=nk=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=30/j=NK=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=30/j=NK=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id w9si1514753uac.0.2018.10.30.02.34.34
+Received: by 10.25.85.81 with SMTP id j78ls318003lfb.81.gmail; Sat, 03 Oct
+ 2015 06:35:30 -0700 (PDT)
+X-Received: by 10.112.142.195 with SMTP id ry3mr3678482lbb.22.1443879330610;
+        Sat, 03 Oct 2015 06:35:30 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ch7si110269wib.2.2015.10.03.06.35.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 02:34:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srs0=30/j=nk=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 03 Oct 2015 06:35:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=WJNAhtDM;
-       spf=pass (google.com: domain of srs0=30/j=nk=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=30/j=NK=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (ip-213-127-77-176.ip.prioritytelecom.net [213.127.77.176])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6ECFF20827;
-	Tue, 30 Oct 2018 09:34:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1540892074;
-	bh=Da0YMPCvRpidwwze0/iQNL3fOyGRazAoPdOU8u+uP/A=;
-	h=Date:From:To:Subject:From;
-	b=WJNAhtDMKYfuxJziviCwBY9HwftJjtbDMPCUK3xK9U502K7Df02FoRxAH0W77E2qZ
-	 VirX0iUGCIlv1nIc4XbFG1Ni8AaVnJUbnclgxB6TmTvrHhrPqCFwMh4PDP2idsC8tf
-	 6r1Y91HeHcO+pw8N7fwF4KNAWY25gVcr8b7pZ8x8=
-Date: Tue, 30 Oct 2018 10:34:59 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: outreachy-kernel@googlegroups.com
-Subject: Outreachy patches caught up on.
-Message-ID: <20181030093459.GA24461@kroah.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,628,1437429600"; 
+   d="scan'208";a="180856764"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 03 Oct 2015 15:35:30 +0200
+Date: Sat, 3 Oct 2015 15:35:29 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Cristina-Gabriela Moraru <cristina.moraru09@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: octeon: Switch unnecessary
+ /** to /*
+In-Reply-To: <CAGZ2q2x2isxseeCSJwrmaPsLCRF=07p+TU6ZbHoRZUGSYHRuPg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1510031533040.2586@hadrien>
+References: <1443811785-50375-1-git-send-email-cristina.moraru09@gmail.com> <alpine.DEB.2.02.1510022225350.2163@localhost6.localdomain6> <CAGZ2q2x2isxseeCSJwrmaPsLCRF=07p+TU6ZbHoRZUGSYHRuPg@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1772183141-1443879329=:2586"
 
-Hi all,
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-I'm now caught up on all submitted outreachy patches that I can apply
-(i.e. ones for the drivers/staging/ tree that are not drm patches.)
+--8323329-1772183141-1443879329=:2586
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-If you have not gotten an email from my patch system saying that your
-patch was applied, consider it lost, and please rebase and resend it.
+On Sat, 3 Oct 2015, Cristina-Gabriela Moraru wrote:
 
-thanks,
+> Yes, I changed "/**" to "/*" where "/**" was used in regular comments and
+> not kernel-doc comments.
+>
+> For example, the code:
+> > /**
+> > * cvm_oct_poll_queue - Workqueue for polling operations.
+> > */
+> > struct workqueue_struct *cvm_oct_poll_queue;
+>
+>
+> caused the following warning when I run the script kernel-doc:
+> > ethernet.c:92: warning: cannot understand function prototype: 'struct
+> workqueue_struct *cvm_oct_poll_queue;'
 
-greg k-h
+OK, it's not so clear, because your commit message doesn't say what tool
+generated the warning.  One would normally think that a warning about the
+function prototype would relate to the function code in some way.
+
+But overall, there seems to be only one kind of fix, not two, so it would
+be better to put only the message that best corresponds to what the fix
+does.
+
+Remember not to top post.
+
+julia
+
+> As far as I understood it, kernel-doc script failed to parse the comment
+> because it did not have the correct formatting for a kernel-doc comment for
+> a function or structure. But the comment was a regular comment describing
+> the use of one variable although it was using the reserved "/**".
+>
+>
+> 2015-10-02 23:26 GMT+03:00 Julia Lawall <julia.lawall@lip6.fr>:
+>       On Fri, 2 Oct 2015, Cristina Moraru wrote:
+>
+>       > Fix kernel-doc comment used as regular comment.
+>       > Fix 'cannot understand function prototype' Warning
+>
+>       Not sure to understand this one.  There seem to be only the
+>       changes on the
+>       comment starting characters, as described in the subject line.
+>
+>       julia
+>
+>       >
+>       > Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
+>       > ---
+>       >  drivers/staging/octeon/ethernet.c | 6 +++---
+>       >  1 file changed, 3 insertions(+), 3 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/octeon/ethernet.c
+>       b/drivers/staging/octeon/ethernet.c
+>       > index 87ab6c6..14eb4af 100644
+>       > --- a/drivers/staging/octeon/ethernet.c
+>       > +++ b/drivers/staging/octeon/ethernet.c
+>       > @@ -86,19 +86,19 @@ int rx_napi_weight = 32;
+>       >  module_param(rx_napi_weight, int, 0444);
+>       >  MODULE_PARM_DESC(rx_napi_weight, "The NAPI WEIGHT
+>       parameter.");
+>       >
+>       > -/**
+>       > +/*
+>       >   * cvm_oct_poll_queue - Workqueue for polling operations.
+>       >   */
+>       >  struct workqueue_struct *cvm_oct_poll_queue;
+>       >
+>       > -/**
+>       > +/*
+>       >   * cvm_oct_poll_queue_stopping - flag to indicate polling
+>       should stop.
+>       >   *
+>       >   * Set to one right before cvm_oct_poll_queue is destroyed.
+>       >   */
+>       >  atomic_t cvm_oct_poll_queue_stopping = ATOMIC_INIT(0);
+>       >
+>       > -/**
+>       > +/*
+>       >   * Array of every ethernet device owned by this driver
+>       indexed by
+>       >   * the ipd input port number.
+>       >   */
+>       > --
+>       > 1.9.1
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1443811785-50375-1-git-s
+> end-email-cristina.moraru09%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+>
+>
+>
+--8323329-1772183141-1443879329=:2586--
 
