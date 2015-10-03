@@ -1,98 +1,340 @@
-X-GM-THRID: 9342022582272
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,d29c9ec2710a016b,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.43.16.70 with SMTP id px6mr7427152icb.28.1426904314988;
-        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
+X-GM-THRID: 6201143102107811840
+X-Received: by 10.112.54.197 with SMTP id l5mr3351320lbp.21.1443859904570;
+        Sat, 03 Oct 2015 01:11:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.165.81 with SMTP id o78ls1468072ioe.89.gmail; Fri, 20 Mar
- 2015 19:18:34 -0700 (PDT)
-X-Received: by 10.43.64.143 with SMTP id xi15mr7424205icb.0.1426904314687;
-        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-qc0-x22f.google.com (mail-qc0-x22f.google.com. [2607:f8b0:400d:c01::22f])
-        by gmr-mx.google.com with ESMTPS id e5si823375qcg.1.2015.03.20.19.18.34
+Received: by 10.180.184.166 with SMTP id ev6ls530877wic.28.canary; Sat, 03 Oct
+ 2015 01:11:44 -0700 (PDT)
+X-Received: by 10.180.210.71 with SMTP id ms7mr327446wic.4.1443859904150;
+        Sat, 03 Oct 2015 01:11:44 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c7si59003wiy.3.2015.10.03.01.11.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c01::22f as permitted sender) client-ip=2607:f8b0:400d:c01::22f;
+        Sat, 03 Oct 2015 01:11:44 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c01::22f as permitted sender) smtp.mail=helen.fornazier@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qc0-x22f.google.com with SMTP id o4so108308552qct.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=wfOfTVvNT/MtWzdHN3aSravymsNb09KGyEKOYmeNED4=;
-        b=qlvSOpjwH4hKHxXS3ZWmadH2KHWL1UIH6sZ84QSu5j84l6shSdDK06iOX7lS6Rt8qv
-         FvshQG+yhopQn0BnscQVZj8mvbJKhkqQX4GpTuzUfc8toAKzKgiphjCSL8o8NhqITsDo
-         5PpwjLJeZMON1f3LdiXz+n3+7nNcwSL7j/pWRKDaG/LCz7Id5WWFX0MjVieSOEch1J/e
-         Y4wueMNiZMXtfGBJwzG4Qf01kaaZuC5A2F42fa4wIlEaHsVcC5KrZUaGNtloL1tWnaJB
-         z9lpGeQIKlqfmA8eeokT/RniNxFTS7hARpvm1myRBGxU4ADLQILMppm27qhww1t/TnoY
-         +RiA==
-X-Received: by 10.55.26.167 with SMTP id l39mr141842848qkh.63.1426904314571;
-        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from Cracker.wifi.univ-paris5.fr ([177.194.75.171])
-        by mx.google.com with ESMTPSA id 69sm4324405qgh.5.2015.03.20.19.18.33
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Mar 2015 19:18:34 -0700 (PDT)
-From: Helen Fornazier <helen.fornazier@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Helen Fornazier <helen.fornazier@gmail.com>
-Subject: [PATCH] staging: fbtft: Fix indentation style by space
-Date: Fri, 20 Mar 2015 23:18:10 -0300
-Message-Id: <1426904290-15019-1-git-send-email-helen.fornazier@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,627,1437429600"; 
+   d="scan'208";a="180822198"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 03 Oct 2015 10:11:21 +0200
+Date: Sat, 3 Oct 2015 10:11:21 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 2/4] Staging: comedi: Use mutex
+ instead of semaphore in usbdux.c
+In-Reply-To: <cfec30d2021f3462908802a6fe8cbb46cefe213b.1443815181.git.ksenija.stanojevic@gmail.com>
+Message-ID: <alpine.DEB.2.02.1510031010520.2022@localhost6.localdomain6>
+References: <cover.1443815181.git.ksenija.stanojevic@gmail.com> <cfec30d2021f3462908802a6fe8cbb46cefe213b.1443815181.git.ksenija.stanojevic@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes the checkpatch.pl warning and error:
 
-WARNING: please, no spaces at the start of a line
 
-ERROR: code indent should use tabs where possible
+On Fri, 2 Oct 2015, Ksenija Stanojevic wrote:
 
-Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
----
- drivers/staging/fbtft/fbtft.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+> Replace binary semaphore with mutex because mutex gives better
+> performance.
+> This change is safe because the thread that decrements the value of semaphore
+> is also the one that increments it, and acts like a mutex where owner of the
+> lock is the only one that can release the lock.
 
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 0dbf3f9..36ecf02 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -326,8 +326,8 @@ static int fbtft_driver_remove_pdev(struct platform_device *pdev)          \
- }                                                                          \
- 									   \
- static const struct of_device_id dt_ids[] = {                              \
--        { .compatible = _compatible },                                     \
--        {},                                                                \
-+	{ .compatible = _compatible },                                     \
-+	{},                                                                \
- };                                                                         \
- 									   \
- MODULE_DEVICE_TABLE(of, dt_ids);                                           \
-@@ -337,7 +337,7 @@ static struct spi_driver fbtft_driver_spi_driver = {                       \
- 	.driver = {                                                        \
- 		.name   = _name,                                           \
- 		.owner  = THIS_MODULE,                                     \
--                .of_match_table = of_match_ptr(dt_ids),                    \
-+		.of_match_table = of_match_ptr(dt_ids),                    \
- 	},                                                                 \
- 	.probe  = fbtft_driver_probe_spi,                                  \
- 	.remove = fbtft_driver_remove_spi,                                 \
-@@ -347,7 +347,7 @@ static struct platform_driver fbtft_driver_platform_driver = {             \
- 	.driver = {                                                        \
- 		.name   = _name,                                           \
- 		.owner  = THIS_MODULE,                                     \
--                .of_match_table = of_match_ptr(dt_ids),                    \
-+		.of_match_table = of_match_ptr(dt_ids),                    \
- 	},                                                                 \
- 	.probe  = fbtft_driver_probe_pdev,                                 \
- 	.remove = fbtft_driver_remove_pdev,                                \
--- 
-1.9.1
+Very nice commit message.
 
+julia
+
+> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> ---
+> Changes in v2:
+> 	-change subject line and commit message
+> 
+>  drivers/staging/comedi/drivers/usbdux.c | 64 ++++++++++++++++-----------------
+>  1 file changed, 32 insertions(+), 32 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/drivers/usbdux.c b/drivers/staging/comedi/drivers/usbdux.c
+> index 39710f2..f4f05d2 100644
+> --- a/drivers/staging/comedi/drivers/usbdux.c
+> +++ b/drivers/staging/comedi/drivers/usbdux.c
+> @@ -210,7 +210,7 @@ struct usbdux_private {
+>  	unsigned int ai_interval;
+>  	/* commands */
+>  	u8 *dux_commands;
+> -	struct semaphore sem;
+> +	struct mutex mut;
+>  };
+>  
+>  static void usbdux_unlink_urbs(struct urb **urbs, int num_urbs)
+> @@ -237,10 +237,10 @@ static int usbdux_ai_cancel(struct comedi_device *dev,
+>  	struct usbdux_private *devpriv = dev->private;
+>  
+>  	/* prevent other CPUs from submitting new commands just now */
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  	/* unlink only if the urb really has been submitted */
+>  	usbdux_ai_stop(dev, devpriv->ai_cmd_running);
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return 0;
+>  }
+> @@ -365,10 +365,10 @@ static int usbdux_ao_cancel(struct comedi_device *dev,
+>  	struct usbdux_private *devpriv = dev->private;
+>  
+>  	/* prevent other CPUs from submitting a command just now */
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  	/* unlink only if it is really running */
+>  	usbdux_ao_stop(dev, devpriv->ao_cmd_running);
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return 0;
+>  }
+> @@ -646,7 +646,7 @@ static int usbdux_ai_inttrig(struct comedi_device *dev,
+>  	if (trig_num != cmd->start_arg)
+>  		return -EINVAL;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (!devpriv->ai_cmd_running) {
+>  		devpriv->ai_cmd_running = 1;
+> @@ -662,7 +662,7 @@ static int usbdux_ai_inttrig(struct comedi_device *dev,
+>  	}
+>  
+>  ai_trig_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  	return ret;
+>  }
+>  
+> @@ -675,7 +675,7 @@ static int usbdux_ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  	int i;
+>  
+>  	/* block other CPUs from starting an ai_cmd */
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (devpriv->ai_cmd_running)
+>  		goto ai_cmd_exit;
+> @@ -736,7 +736,7 @@ static int usbdux_ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  	}
+>  
+>  ai_cmd_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret;
+>  }
+> @@ -754,7 +754,7 @@ static int usbdux_ai_insn_read(struct comedi_device *dev,
+>  	int ret = -EBUSY;
+>  	int i;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (devpriv->ai_cmd_running)
+>  		goto ai_read_exit;
+> @@ -782,7 +782,7 @@ static int usbdux_ai_insn_read(struct comedi_device *dev,
+>  	}
+>  
+>  ai_read_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret ? ret : insn->n;
+>  }
+> @@ -795,9 +795,9 @@ static int usbdux_ao_insn_read(struct comedi_device *dev,
+>  	struct usbdux_private *devpriv = dev->private;
+>  	int ret;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  	ret = comedi_readback_insn_read(dev, s, insn, data);
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret;
+>  }
+> @@ -814,7 +814,7 @@ static int usbdux_ao_insn_write(struct comedi_device *dev,
+>  	int ret = -EBUSY;
+>  	int i;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (devpriv->ao_cmd_running)
+>  		goto ao_write_exit;
+> @@ -838,7 +838,7 @@ static int usbdux_ao_insn_write(struct comedi_device *dev,
+>  	}
+>  
+>  ao_write_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret ? ret : insn->n;
+>  }
+> @@ -854,7 +854,7 @@ static int usbdux_ao_inttrig(struct comedi_device *dev,
+>  	if (trig_num != cmd->start_arg)
+>  		return -EINVAL;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (!devpriv->ao_cmd_running) {
+>  		devpriv->ao_cmd_running = 1;
+> @@ -870,7 +870,7 @@ static int usbdux_ao_inttrig(struct comedi_device *dev,
+>  	}
+>  
+>  ao_trig_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  	return ret;
+>  }
+>  
+> @@ -960,7 +960,7 @@ static int usbdux_ao_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  	struct comedi_cmd *cmd = &s->async->cmd;
+>  	int ret = -EBUSY;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (devpriv->ao_cmd_running)
+>  		goto ao_cmd_exit;
+> @@ -1002,7 +1002,7 @@ static int usbdux_ao_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  	}
+>  
+>  ao_cmd_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret;
+>  }
+> @@ -1033,7 +1033,7 @@ static int usbdux_dio_insn_bits(struct comedi_device *dev,
+>  	struct usbdux_private *devpriv = dev->private;
+>  	int ret;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	comedi_dio_update_state(s, data);
+>  
+> @@ -1055,7 +1055,7 @@ static int usbdux_dio_insn_bits(struct comedi_device *dev,
+>  	data[1] = le16_to_cpu(devpriv->insn_buf[1]);
+>  
+>  dio_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret ? ret : insn->n;
+>  }
+> @@ -1070,7 +1070,7 @@ static int usbdux_counter_read(struct comedi_device *dev,
+>  	int ret = 0;
+>  	int i;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	for (i = 0; i < insn->n; i++) {
+>  		ret = send_dux_commands(dev, USBDUX_CMD_TIMER_RD);
+> @@ -1084,7 +1084,7 @@ static int usbdux_counter_read(struct comedi_device *dev,
+>  	}
+>  
+>  counter_read_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret ? ret : insn->n;
+>  }
+> @@ -1100,7 +1100,7 @@ static int usbdux_counter_write(struct comedi_device *dev,
+>  	int ret = 0;
+>  	int i;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	devpriv->dux_commands[1] = chan;
+>  
+> @@ -1112,7 +1112,7 @@ static int usbdux_counter_write(struct comedi_device *dev,
+>  			break;
+>  	}
+>  
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret ? ret : insn->n;
+>  }
+> @@ -1148,11 +1148,11 @@ static int usbdux_pwm_cancel(struct comedi_device *dev,
+>  	struct usbdux_private *devpriv = dev->private;
+>  	int ret;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  	/* unlink only if it is really running */
+>  	usbdux_pwm_stop(dev, devpriv->pwm_cmd_running);
+>  	ret = send_dux_commands(dev, USBDUX_CMD_PWM_OFF);
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret;
+>  }
+> @@ -1257,7 +1257,7 @@ static int usbdux_pwm_start(struct comedi_device *dev,
+>  	struct usbdux_private *devpriv = dev->private;
+>  	int ret = 0;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	if (devpriv->pwm_cmd_running)
+>  		goto pwm_start_exit;
+> @@ -1276,7 +1276,7 @@ static int usbdux_pwm_start(struct comedi_device *dev,
+>  		devpriv->pwm_cmd_running = 0;
+>  
+>  pwm_start_exit:
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  
+>  	return ret;
+>  }
+> @@ -1576,7 +1576,7 @@ static int usbdux_auto_attach(struct comedi_device *dev,
+>  	if (!devpriv)
+>  		return -ENOMEM;
+>  
+> -	sema_init(&devpriv->sem, 1);
+> +	mutex_init(&devpriv->mut);
+>  
+>  	usb_set_intfdata(intf, devpriv);
+>  
+> @@ -1691,7 +1691,7 @@ static void usbdux_detach(struct comedi_device *dev)
+>  	if (!devpriv)
+>  		return;
+>  
+> -	down(&devpriv->sem);
+> +	mutex_lock(&devpriv->mut);
+>  
+>  	/* force unlink all urbs */
+>  	usbdux_pwm_stop(dev, 1);
+> @@ -1700,7 +1700,7 @@ static void usbdux_detach(struct comedi_device *dev)
+>  
+>  	usbdux_free_usb_buffers(dev);
+>  
+> -	up(&devpriv->sem);
+> +	mutex_unlock(&devpriv->mut);
+>  }
+>  
+>  static struct comedi_driver usbdux_driver = {
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cfec30d2021f3462908802a6fe8cbb46cefe213b.1443815181.git.ksenija.stanojevic%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
