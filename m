@@ -1,116 +1,78 @@
-X-GM-THRID: 6203096899740762112
-X-Received: by 10.50.36.104 with SMTP id p8mr876028igj.0.1444271043294;
-        Wed, 07 Oct 2015 19:24:03 -0700 (PDT)
+X-GM-THRID: 6201725617113661440
+X-Received: by 10.112.144.99 with SMTP id sl3mr4162548lbb.12.1443953800053;
+        Sun, 04 Oct 2015 03:16:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.41.136 with SMTP id z8ls979152qgz.37.gmail; Wed, 07 Oct
- 2015 19:24:02 -0700 (PDT)
-X-Received: by 10.140.233.142 with SMTP id e136mr3836651qhc.13.1444271042772;
-        Wed, 07 Oct 2015 19:24:02 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id zg1si5488031pbb.2.2015.10.07.19.24.02
+Received: by 10.180.91.137 with SMTP id ce9ls290127wib.37.canary; Sun, 04 Oct
+ 2015 03:16:39 -0700 (PDT)
+X-Received: by 10.180.160.146 with SMTP id xk18mr1139056wib.3.1443953799697;
+        Sun, 04 Oct 2015 03:16:39 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id q6si193366wif.2.2015.10.04.03.16.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 19:24:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Oct 2015 03:16:39 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id lk4so38720922pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 19:24:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=BlkWLFcbmzRT6xWjvU1hyof9Utryvq33mYhIwu2Y1AE=;
-        b=ej1cgY9dEjIAdDUSkJQypal+Wv6QQfJOf07E30APfpk4Bj6ucmwCOAPDa8pdIL/Q1p
-         poo5o+64Bz5RVnR3AQEvD/eT/aBFBv5U4GOw3Uyn0e1azYrvEcDQdV0YDukiWbZoJlZr
-         CHBfA5Ykdy8SHI8w2KzTidJH9n0D0ZST6S78h94mWSrN7vIo0YLjoPQLZazFjFaK7suQ
-         YOX9+zPyPROHasXaKxzwjxg/1dC58iVPS1watgweC/7PwAPrfpMuu41fyIIQCfYRqMiB
-         QmIkJ3huSDFK27FOr+q8mfF0vxs54dZeFchPK2qXGpbmLRA48k0WeLWkXCIDI6ZaqPqm
-         7NnA==
-X-Received: by 10.68.69.79 with SMTP id c15mr4946888pbu.90.1444271042596;
-        Wed, 07 Oct 2015 19:24:02 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.135.17])
-        by smtp.gmail.com with ESMTPSA id xm4sm42186805pab.27.2015.10.07.19.24.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 07 Oct 2015 19:24:01 -0700 (PDT)
-Date: Thu, 8 Oct 2015 07:53:58 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove multiple blank lines
-Message-ID: <20151008022358.GA6582@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,633,1437429600"; 
+   d="scan'208";a="180971457"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Oct 2015 12:16:38 +0200
+Date: Sun, 4 Oct 2015 12:16:37 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: sm750fb: Remove space
+ before paranthesis
+In-Reply-To: <20151004094242.GA4089@amitoj-Inspiron-3542>
+Message-ID: <alpine.DEB.2.02.1510041216270.2026@localhost6.localdomain6>
+References: <20151004094242.GA4089@amitoj-Inspiron-3542>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove multiple blank lines. Problem found using checkpatch.pl
-CHECK: Please don't use multiple blank lines
+On Sun, 4 Oct 2015, Amitoj Kaur Chawla wrote:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 7 -------
- 1 file changed, 7 deletions(-)
+> Remove space before paranthesis ')'. Problem found using
+> checkpatch.pl
+> ERROR: space prohibited before that close parenthesis ')'
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+> Changes in v2:
+>         - Correct the commit message
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index a80eb94..270d10b 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -12,7 +12,6 @@ typedef struct _pllcalparam {
- }
- pllcalparam;
- 
--
- logical_chip_type_t getChipType(void)
- {
- 	unsigned short physicalID;
-@@ -74,7 +73,6 @@ static unsigned int getPllValue(clock_type_t clockType, pll_value_t *pPLL)
- 	return calcPLL(pPLL);
- }
- 
--
- static unsigned int getChipClock(void)
- {
- 	pll_value_t pll;
-@@ -86,7 +84,6 @@ static unsigned int getChipClock(void)
- 	return getPllValue(MXCLK_PLL, &pll);
- }
- 
--
- /*
-  * This function set up the main chip clock.
-  *
-@@ -121,8 +118,6 @@ static void setChipClock(unsigned int frequency)
- 	}
- }
- 
--
--
- static void setMemoryClock(unsigned int frequency)
- {
- 	unsigned int ulReg, divisor;
-@@ -162,7 +157,6 @@ static void setMemoryClock(unsigned int frequency)
- 	}
- }
- 
--
- /*
-  * This function set up the master clock (MCLK).
-  *
-@@ -210,7 +204,6 @@ static void setMasterClock(unsigned int frequency)
- 		}
- }
- 
--
- unsigned int ddk750_getVMSize(void)
- {
- 	unsigned int reg;
--- 
-1.9.1
+Looks better, thanks.
 
+julia
+
+> 
+>  drivers/staging/sm750fb/ddk750_chip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> index 1683b3d..665238c 100644
+> --- a/drivers/staging/sm750fb/ddk750_chip.c
+> +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> @@ -268,7 +268,7 @@ int ddk750_initHw(initchip_param_t *pInitParam)
+>  #endif
+>  
+>  
+> -	if (pInitParam->powerMode != 0 )
+> +	if (pInitParam->powerMode != 0)
+>  		pInitParam->powerMode = 0;
+>  	setPowerMode(pInitParam->powerMode);
+>  
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151004094242.GA4089%40amitoj-Inspiron-3542.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
