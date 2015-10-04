@@ -1,77 +1,84 @@
-X-GM-THRID: 6200494472986361856
-X-Received: by 10.50.79.201 with SMTP id l9mr498125igx.13.1443665119742;
-        Wed, 30 Sep 2015 19:05:19 -0700 (PDT)
+X-GM-THRID: 6201728963441590272
+X-Received: by 10.112.55.69 with SMTP id q5mr4451792lbp.24.1443985121481;
+        Sun, 04 Oct 2015 11:58:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.151.145 with SMTP id z139ls432885iod.46.gmail; Wed, 30 Sep
- 2015 19:05:19 -0700 (PDT)
-X-Received: by 10.66.141.135 with SMTP id ro7mr5809584pab.27.1443665119362;
-        Wed, 30 Sep 2015 19:05:19 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id zg1si645690pbb.2.2015.09.30.19.05.19
+Received: by 10.180.104.73 with SMTP id gc9ls678954wib.27.canary; Sun, 04 Oct
+ 2015 11:58:41 -0700 (PDT)
+X-Received: by 10.194.156.193 with SMTP id wg1mr4516776wjb.3.1443985121177;
+        Sun, 04 Oct 2015 11:58:41 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id bj4si256058wib.1.2015.10.04.11.58.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 19:05:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Oct 2015 11:58:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id lk4so57276635pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 19:05:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=OINL4N5NDKwTDHDw5O5a+pQTClaXdvm0D7yVtwY/tXU=;
-        b=RyLTURL98CLyKITfWksAbNiWgKEwk2ec8eRd1QH1ZPei66BhiLFv7/wz4qQox6z6Jz
-         JjgxKCcaZmHA9VS1i9+wAxu35htYGkNcsKEHtXBl2XkqRwZebG1GpztFYhxyhM+Ex5Vb
-         aHox9VrIXYn8qZ+QTUclQCy/Nt5udKxlbzoqGdjg2LvddlqLM4PUxSqJRy+mVhpQU78g
-         0sNMzRAHPBmfvNsRVRVd2Y3ntUyTXhtpxb/mykN83JKfWYR4bY54cOh7QgX6/X+pkh1x
-         2qzRb/emVzB4AJA80R1UCmBWufqQBaQAt/yeGtQxcq+NTThxecdd5SfENi5lv71q+Lla
-         fcXA==
-X-Received: by 10.68.65.37 with SMTP id u5mr8837061pbs.154.1443665119254;
-        Wed, 30 Sep 2015 19:05:19 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from deepa-ubuntu ([2601:647:4700:de30:81e4:85ec:35c9:4f6c])
-        by smtp.gmail.com with ESMTPSA id a17sm3116570pbu.55.2015.09.30.19.05.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 19:05:19 -0700 (PDT)
-Date: Wed, 30 Sep 2015 19:05:13 -0700
-From: Deepa Dinamani <deepa.kernel@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] net: defxx: Fix warning of uninitialized variable
-Message-ID: <20151001020508.GA14693@deepa-ubuntu>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,634,1437429600"; 
+   d="scan'208";a="181003083"
+Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Oct 2015 20:58:40 +0200
+Date: Sun, 4 Oct 2015 19:58:40 +0100 (IST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arnd Bergmann <arnd@arndb.de>
+cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>, 
+    Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Remove space after
+ paranthesis
+In-Reply-To: <725507103.bmWo1bzATP@wuerfel>
+Message-ID: <alpine.DEB.2.10.1510041958170.2368@hadrien>
+References: <20151004095542.GA7011@amitoj-Inspiron-3542> <alpine.DEB.2.02.1510041211390.2026@localhost6.localdomain6> <725507103.bmWo1bzATP@wuerfel>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This adds explicit initialization of bar_start and bar_len
-resource arrays in accordance with the compiler warning.
+On Sun, 4 Oct 2015, Arnd Bergmann wrote:
 
-Signed-off-by: Deepa Dinamani <deepa.kernel@gmail.com>
----
- drivers/net/fddi/defxx.c | 3 +++
- 1 file changed, 3 insertions(+)
+> On Sunday 04 October 2015 12:14:00 Julia Lawall wrote:
+> > > diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> > > index 665238c..9f0883b 100644
+> > > --- a/drivers/staging/sm750fb/ddk750_chip.c
+> > > +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> > > @@ -600,9 +600,9 @@ unsigned int formatPllReg(pll_value_t *pPLL)
+> > >         On returning a 32 bit number, the value can be applied to any PLL in the calling function.
+> > >      */
+> > >       ulPllReg =
+> > > -     FIELD_SET(  0, PANEL_PLL_CTRL, BYPASS, OFF)
+> > > -     | FIELD_SET(  0, PANEL_PLL_CTRL, POWER,  ON)
+> > > -     | FIELD_SET(  0, PANEL_PLL_CTRL, INPUT,  OSC)
+> > > +     FIELD_SET(0, PANEL_PLL_CTRL, BYPASS, OFF)
+> > > +     | FIELD_SET(0, PANEL_PLL_CTRL, POWER,  ON)
+> > > +     | FIELD_SET(0, PANEL_PLL_CTRL, INPUT,  OSC)
+> >
+> > This code still looks unpleasant.  It would be better with an extra tab in
+> > front of the lines of the right hand side of the assignment, and possibly
+> > with the first FIELD_SET on the same line as ulPllReg.  And there
+> > should uniformly be one space after the commas.  This makes several
+> > changes, but since they are all related to the formatting of a single
+> > expression, they could all be in one patch.
+>
+> I'm not sure about it now, but isn't the kernel coding style to put the
+> operator at the end of the line in a multi-line statement like this?
+> I mean
+>
+> 	ulPllReg = FIELD_SET(  0, PANEL_PLL_CTRL, BYPASS, OFF) |
+> 		   FIELD_SET(  0, PANEL_PLL_CTRL, POWER,  ON) |
+> 			...
 
-diff --git a/drivers/net/fddi/defxx.c b/drivers/net/fddi/defxx.c
-index 7f975a2..bd73948 100644
---- a/drivers/net/fddi/defxx.c
-+++ b/drivers/net/fddi/defxx.c
-@@ -439,6 +439,9 @@ static void dfx_get_bars(struct device *bdev,
- 	int dfx_bus_tc = DFX_BUS_TC(bdev);
- 	int dfx_use_mmio = DFX_MMIO || dfx_bus_tc;
- 
-+	memset(bar_start, 0, sizeof(resource_size_t) * 3);
-+	memset(bar_len, 0, sizeof(resource_size_t) * 3);
-+
- 	if (dfx_bus_pci) {
- 		int num = dfx_use_mmio ? 0 : 1;
- 
--- 
-1.9.1
+It looks much better there.
 
+julia
+
+>
+> 	Arnd
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/725507103.bmWo1bzATP%40wuerfel.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
