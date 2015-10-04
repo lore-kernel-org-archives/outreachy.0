@@ -1,68 +1,120 @@
 X-GM-THRID: 6201866686183768064
-X-Received: by 10.112.202.165 with SMTP id kj5mr4501987lbc.5.1443987955023;
-        Sun, 04 Oct 2015 12:45:55 -0700 (PDT)
+X-Received: by 10.180.105.98 with SMTP id gl2mr1689337wib.0.1443984612350;
+        Sun, 04 Oct 2015 11:50:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.170.72 with SMTP id t69ls343562lfe.56.gmail; Sun, 04 Oct
- 2015 12:45:54 -0700 (PDT)
-X-Received: by 10.112.198.33 with SMTP id iz1mr4466500lbc.8.1443987954310;
-        Sun, 04 Oct 2015 12:45:54 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
-        by gmr-mx.google.com with ESMTPS id xl3si376571wib.1.2015.10.04.12.45.54
+Received: by 10.180.105.132 with SMTP id gm4ls694417wib.17.canary; Sun, 04 Oct
+ 2015 11:50:11 -0700 (PDT)
+X-Received: by 10.180.188.211 with SMTP id gc19mr1681558wic.6.1443984611980;
+        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id c7si232685wiy.3.2015.10.04.11.50.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 12:45:54 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
+        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue101) with ESMTPSA (Nemesis) id 0LtFON-1aks2M1gol-012oFy; Sun, 04 Oct
- 2015 21:45:53 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mailfrom=haticeerturk27@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by wiclk2 with SMTP id lk2so92656056wic.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:mime-version:content-type
+         :content-transfer-encoding;
+        bh=nmi9Z07JGxNEZdNLYvGojAbfUdD3tCFRh1NejFddgcE=;
+        b=Kga4/ksMqefrrMi8VORxVBMtXk5vxQqlCpJfP71onw46WRSWPOyIp+hjJ7G5ENTiDq
+         Aqe9gu8qll7wCEVbqhm5GxtI1zUtBqeEgU8QBHniuJPqN85Eb7gQupBGr145tgOjHfEk
+         kmDT/jgwPsA9Qq0Lcu/iB4jMsjfS5cpoCw4mo2kaNrMxSv1EfGwhrS9TsZrGylFEzOxN
+         Dss5eRMuBFtftD44FqsLhUeoUG8AXs/QvNT0W+Ju7oatWIDBPHcktAfz/mHR9K2CgzcI
+         ux2AqY5jxif4lEKfMQYLvNWWLGUt6lZXgABM26AE/UlVpashptsHUcVzVW7trBY0DEya
+         MwEw==
+X-Received: by 10.180.109.35 with SMTP id hp3mr6959743wib.51.1443984611885;
+        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([88.242.105.163])
+        by smtp.googlemail.com with ESMTPSA id qc4sm22848639wjc.33.2015.10.04.11.50.06
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 04 Oct 2015 11:50:11 -0700 (PDT)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice =?ISO-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] drivers: mtd: ftl.c: Remove intialization of static to 0
-Date: Sun, 04 Oct 2015 21:45:52 +0200
-Message-ID: <27989039.P1pxbOgr35@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1443984593-12445-1-git-send-email-haticeerturk27@gmail.com>
-References: <1443984593-12445-1-git-send-email-haticeerturk27@gmail.com>
+Subject: [PATCH] drivers: mtd: ftl.c: Remove intialization of static to 0
+Date: Sun,  4 Oct 2015 21:49:53 +0300
+Message-Id: <1443984593-12445-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
-X-Provags-ID: V03:K0:DaW4EzUa7wLZI48Roha7NXv72NO/znQIH7keegDa9NgL+f48Mff
- 3ABGbFwK3KHfXU8Qyt763hmxjB9g1pqtBToYcTzlybppsthnVoqcYykl+bzC8HgVTKl+/dS
- 4ZWuijGN/uzbDBQVB3KVpRtkIFUcv4OXMi6BYaH6Wt592FJLAv0cxKrInvNFTaiC6i0dCeE
- cPc9EiEPhT7Gb6Q1HZWtA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:VAnlDijf9rw=:ZbDGf9R9ninwNvOkC4Q888
- UeMfKemMb7RTWIk+S+41M/iNaEQYIMAJkjBOQB2U28cDnVvJ/iYnP9NJHeS+RL03Xkj4pQ0FF
- 3AflLOeMBC/0dLr0BKrn8TtM8xNPHGmr2LQYd54P9zpiH2Y7OkJNHWggaRK2mjZ08pq87/a1d
- qwKXbAOA/tzdkWdtXbzAvPBL6OrhPEIlQ054mYS/juCmKVOebGjoiVlscrNQ3cuuqR6TQPRbQ
- h0v88cIg7KobE1dZSzPJZk8Ob1BWVRePDIom5dJKNy525ilaj6WCql7+vqwVEs4dRCwV4rVMx
- M9CEpWIzof/AaTaa6HhLkIFyYiQDt3MV8aOP+d11VYol2epoIwn8Bt45YRVhGE99O/ZoPrads
- XJKTaTtGmtTGngLtxwLfdN2ETkUMWkiYRoC1cf7rq8dPAzUe/DJUPj95xj/kOkMV9HRYX1tm/
- gxJiyeNb1/FN2AP2EwhD7zlAW1Cx2Ps/HOVii9xq84/jO+Sd/SqvJsctDvuUKjselXCdgTpOE
- 8camcMHzh1ieyz/ukJYsd+ZTI5R8eTmvWgV9189Xiii+prp6GShx/XdyBn4yw+ZYAHoxlMiWJ
- wPuDyswskSabN/oA/4FMPfrUj9+ufFwnvQsuuvQ97SiNpGhg2LKOplc+DhbW+FfT6ebgvr+c3
- s6WgLditbgCv0eJPBomBURq3fyHnFQxRkGYKAX5tGY2+QR8H5XKFFXD34a9Ss9FyDphKHqAuV
- RbMkHsOVpX2lLLfl
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-On Sunday 04 October 2015 21:49:53 Hatice ERT=DCRK wrote:
-> initial value unassigned static variables are automatically set to ze=
-ro. So it is unnecessary to assign the initial value to zero
->=20
-> Signed-off-by: Hatice ERT=DCRK <haticeerturk27@gmail.com>
+initial value unassigned static variables are automatically set to zero. So it is unnecessary to assign the initial value to zero
 
-Hi Hatice,
+Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
+---
+ drivers/mtd/ftl.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-This file is outside of drivers/staging, which means that Greg won't
-apply it to his staging tree, and we don't have a mentor that volunteer=
-ed
-for drivers/mtd.
+diff --git a/drivers/mtd/ftl.c b/drivers/mtd/ftl.c
+index dabf084..afec65f 100644
+--- a/drivers/mtd/ftl.c
++++ b/drivers/mtd/ftl.c
+@@ -651,7 +651,7 @@ static int reclaim_block(partition_t *part)
+ 		      "unit to be prepared...\n");
+ 		mtd_sync(part->mbd.mtd);
+ 	    } else {
+-		static int ne = 0;
++		static int ne;
+ 		if (++ne < 5)
+ 		    printk(KERN_NOTICE "ftl_cs: reclaim failed: no "
+ 			   "suitable transfer units!\n");
+@@ -681,7 +681,7 @@ static int reclaim_block(partition_t *part)
+ 		eun = i;
+ 	    }
+ 	if (best == 0) {
+-	    static int ne = 0;
++	    static int ne;
+ 	    if (++ne < 5)
+ 		printk(KERN_NOTICE "ftl_cs: reclaim failed: "
+ 		       "no free blocks!\n");
+@@ -765,7 +765,7 @@ static uint32_t find_free(partition_t *part)
+ 	if (BLOCK_FREE(le32_to_cpu(part->bam_cache[blk]))) break;
+     if (blk == part->BlocksPerUnit) {
+ #ifdef PSYCHO_DEBUG
+-	static int ne = 0;
++	static int ne;
+ 	if (++ne == 1)
+ 	    dump_lists(part);
+ #endif
+@@ -861,7 +861,7 @@ static int set_bam_entry(partition_t *part, uint32_t log_addr,
+     if (((virt_addr == 0xfffffffe) && !BLOCK_FREE(old_addr)) ||
+ 	((virt_addr == 0) && (BLOCK_TYPE(old_addr) != BLOCK_DATA)) ||
+ 	(!BLOCK_DELETED(virt_addr) && (old_addr != 0xfffffffe))) {
+-	static int ne = 0;
++	static int ne;
+ 	if (++ne < 5) {
+ 	    printk(KERN_NOTICE "ftl_cs: set_bam_entry() inconsistency!\n");
+ 	    printk(KERN_NOTICE "ftl_cs:   log_addr = 0x%x, old = 0x%x"
+@@ -874,7 +874,7 @@ static int set_bam_entry(partition_t *part, uint32_t log_addr,
+     if (part->bam_index == eun) {
+ #ifdef PSYCHO_DEBUG
+ 	if (le32_to_cpu(part->bam_cache[blk]) != old_addr) {
+-	    static int ne = 0;
++	    static int ne;
+ 	    if (++ne < 5) {
+ 		printk(KERN_NOTICE "ftl_cs: set_bam_entry() "
+ 		       "inconsistency!\n");
+@@ -931,7 +931,7 @@ static int ftl_write(partition_t *part, caddr_t buffer,
+ 	/* Grab a free block */
+ 	blk = find_free(part);
+ 	if (blk == 0) {
+-	    static int ne = 0;
++	    static int ne;
+ 	    if (++ne < 5)
+ 		printk(KERN_NOTICE "ftl_cs: internal error: "
+ 		       "no free blocks!\n");
+-- 
+1.9.1
 
-Also, the kind of change means that this is something most maintainers
-would not take. Purely cosmetic coding style changes are definitely
-ok for staging, but I'd recommend sending them for other subsystems.
-
-=09Arnd
 
