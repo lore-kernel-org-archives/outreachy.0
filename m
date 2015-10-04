@@ -1,53 +1,48 @@
 X-GM-THRID: 6201721942564667392
-X-Received: by 10.66.182.162 with SMTP id ef2mr21417708pac.35.1443954400268;
-        Sun, 04 Oct 2015 03:26:40 -0700 (PDT)
+X-Received: by 10.66.102.101 with SMTP id fn5mr20910963pab.38.1443953717562;
+        Sun, 04 Oct 2015 03:15:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.91.4 with SMTP id ca4ls1141437obb.2.gmail; Sun, 04 Oct
- 2015 03:26:39 -0700 (PDT)
-X-Received: by 10.182.28.73 with SMTP id z9mr21183023obg.45.1443954399943;
-        Sun, 04 Oct 2015 03:26:39 -0700 (PDT)
+Received: by 10.140.17.53 with SMTP id 50ls2080291qgc.26.gmail; Sun, 04 Oct
+ 2015 03:15:17 -0700 (PDT)
+X-Received: by 10.13.240.132 with SMTP id z126mr21015661ywe.34.1443953717099;
+        Sun, 04 Oct 2015 03:15:17 -0700 (PDT)
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id u67si1952078ywf.5.2015.10.04.03.26.39
+        by gmr-mx.google.com with ESMTPS id k190si1950725ywe.3.2015.10.04.03.15.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 03:26:39 -0700 (PDT)
+        Sun, 04 Oct 2015 03:15:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (unknown [193.120.146.54])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id EA0D61E1D;
-	Sun,  4 Oct 2015 10:26:37 +0000 (UTC)
-Date: Sun, 4 Oct 2015 11:26:33 +0100
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A5C021769;
+	Sun,  4 Oct 2015 10:15:15 +0000 (UTC)
+Date: Sun, 4 Oct 2015 11:15:05 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Shraddha Barke <shraddha.6596@gmail.com>,
-	outreachy-kernel@googlegroups.com
+To: Shraddha Barke <shraddha.6596@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: obdclass: Remove
  unused function obd_export_nid2str
-Message-ID: <20151004102633.GA9758@kroah.com>
+Message-ID: <20151004101505.GA26845@kroah.com>
 References: <1443950881-25330-1-git-send-email-shraddha.6596@gmail.com>
- <alpine.DEB.2.02.1510041208410.2026@localhost6.localdomain6>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1510041208410.2026@localhost6.localdomain6>
+In-Reply-To: <1443950881-25330-1-git-send-email-shraddha.6596@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sun, Oct 04, 2015 at 12:09:19PM +0200, Julia Lawall wrote:
-> On Sun, 4 Oct 2015, Shraddha Barke wrote:
+On Sun, Oct 04, 2015 at 02:58:01PM +0530, Shraddha Barke wrote:
+> Remove obd_export_nid2str as it is defined but not used anymore.
 > 
-> > Remove obd_export_nid2str as it is defined but not used anymore.
-> 
-> I think this is on top of your previous patch.  It should be on top of 
-> Greg's tree, since I guess he won't take a patch that causes build 
-> warnings.
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/obdclass/genops.c | 8 --------
+>  1 file changed, 8 deletions(-)
 
-No, it's ok, I noticed the build warnings after I applied it, and it was
-due to patches from a different developer that I accepted, not this
-series, from what I can tell, so I let it go in.
+Thanks, now applied.
 
-thanks,
+I beat the 0-day bot telling you about this for once! :)
 
 greg k-h
 
