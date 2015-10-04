@@ -1,80 +1,76 @@
 X-GM-THRID: 6201835486956224512
-X-Received: by 10.112.26.212 with SMTP id n20mr4527303lbg.2.1443980160127;
-        Sun, 04 Oct 2015 10:36:00 -0700 (PDT)
+X-Received: by 10.180.208.7 with SMTP id ma7mr1350756wic.5.1443977348029;
+        Sun, 04 Oct 2015 09:49:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.16.210 with SMTP id 79ls417451lfq.12.gmail; Sun, 04 Oct
- 2015 10:35:59 -0700 (PDT)
-X-Received: by 10.112.147.7 with SMTP id tg7mr4533476lbb.16.1443980159505;
-        Sun, 04 Oct 2015 10:35:59 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id w4si215934wiz.0.2015.10.04.10.35.59
+Received: by 10.180.198.44 with SMTP id iz12ls679680wic.4.gmail; Sun, 04 Oct
+ 2015 09:49:07 -0700 (PDT)
+X-Received: by 10.194.59.166 with SMTP id a6mr4448200wjr.6.1443977347449;
+        Sun, 04 Oct 2015 09:49:07 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id c7si222671wiy.3.2015.10.04.09.49.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 10:35:59 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 04 Oct 2015 09:49:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,634,1437429600"; 
-   d="scan'208";a="180998806"
-Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Oct 2015 19:35:59 +0200
-Date: Sun, 4 Oct 2015 18:35:57 +0100 (IST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Cristina Moraru <cristina.moraru09@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: octeon: Add kernel-doc for
- function
-In-Reply-To: <1443977338-86936-1-git-send-email-cristina.moraru09@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510041835380.2672@hadrien>
-References: <1443977338-86936-1-git-send-email-cristina.moraru09@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x236.google.com with SMTP id fx3so89869091wic.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 09:49:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=ZHBHELcx1C+1EDSBp3p8GEsBxTpu5d/Ho6QKAfj+230=;
+        b=TUzB2PgA57lhCGrSaS32brHTgoukbQOAjDtlUb19B1oNoDy2s6RDAooW+IHMEEYLM5
+         tqUv2a7d8j033pXFOW2acvXf7mruur63sdXhBKfBbx9xmIQY8nlSpfYfrWme/qQMkTdu
+         6ZBMe5QFJ3axaGMoHt7yDnVtf5szB6vMZLhGGHQJe/h+JFnYTa0ewP4HkC7GSJuXk+h3
+         cllrdk8hkPaMed7o5VHeLGqxiyaw7ECx3iyO8XZXmpfy3azf7/Glq0c9LG+M7q/uYNQb
+         IQa4L3e74sD0C5yQxWXITnp57k2IajG7742XSe+Q8Yuf4j6xnJ5bwWZd9EIIcpKeC5V5
+         8aNw==
+X-Received: by 10.180.39.175 with SMTP id q15mr7755443wik.73.1443977347364;
+        Sun, 04 Oct 2015 09:49:07 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([141.85.225.214])
+        by smtp.gmail.com with ESMTPSA id mx19sm10126844wic.0.2015.10.04.09.49.06
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 04 Oct 2015 09:49:06 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: octeon: Add kernel-doc for function
+Date: Sun,  4 Oct 2015 19:48:58 +0300
+Message-Id: <1443977338-86936-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
+Add kernel-doc comment for function cvm_oct_set_mac_filter
 
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
+---
+ drivers/staging/octeon/ethernet.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-On Sun, 4 Oct 2015, Cristina Moraru wrote:
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 798aa6c..eb3b12c 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -363,7 +363,12 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
+ 			       gmx_cfg.u64);
+ 	}
+ }
+-
++/**
++ * cvm_oct_set_mac_filter - set the MAC filter for a device
++ * @dev:    The device in question.
++ *
++ * Returns Zero on success
++ */
+ static int cvm_oct_set_mac_filter(struct net_device *dev)
+ {
+ 	struct octeon_ethernet *priv = netdev_priv(dev);
+-- 
+1.9.1
 
-> Add kernel-doc comment for function cvm_oct_set_mac_filter
->
-> Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
-> ---
->  drivers/staging/octeon/ethernet.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-> index 798aa6c..eb3b12c 100644
-> --- a/drivers/staging/octeon/ethernet.c
-> +++ b/drivers/staging/octeon/ethernet.c
-> @@ -363,7 +363,12 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
->  			       gmx_cfg.u64);
->  	}
->  }
-> -
-> +/**
-> + * cvm_oct_set_mac_filter - set the MAC filter for a device
-> + * @dev:    The device in question.
-> + *
-> + * Returns Zero on success
-
-Is it more common to put 0?
-
-julia
-
-> + */
->  static int cvm_oct_set_mac_filter(struct net_device *dev)
->  {
->  	struct octeon_ethernet *priv = netdev_priv(dev);
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443977338-86936-1-git-send-email-cristina.moraru09%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
