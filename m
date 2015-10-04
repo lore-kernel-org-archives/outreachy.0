@@ -1,297 +1,98 @@
-X-GM-THRID: 2453394161664
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e95dbbcdacaa1bd2,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.182.44 with SMTP id eb12mr707969wic.4.1424617131154;
-        Sun, 22 Feb 2015 06:58:51 -0800 (PST)
+X-GM-THRID: 6201831238329696256
+X-Received: by 10.180.210.212 with SMTP id mw20mr1643660wic.3.1443980370176;
+        Sun, 04 Oct 2015 10:39:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.87.210 with SMTP id ba18ls402520lab.78.gmail; Sun, 22 Feb
- 2015 06:58:50 -0800 (PST)
-X-Received: by 10.112.131.106 with SMTP id ol10mr755321lbb.20.1424617130729;
-        Sun, 22 Feb 2015 06:58:50 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id i7si497891wif.0.2015.02.22.06.58.50
+Received: by 10.25.153.196 with SMTP id b187ls419502lfe.80.gmail; Sun, 04 Oct
+ 2015 10:39:29 -0700 (PDT)
+X-Received: by 10.112.138.170 with SMTP id qr10mr4550723lbb.4.1443980369646;
+        Sun, 04 Oct 2015 10:39:29 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id xl3si365351wib.1.2015.10.04.10.39.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 06:58:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        Sun, 04 Oct 2015 10:39:29 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22e.google.com with SMTP id a1so21296658wgh.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 06:58:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=XxyMK0XN3yhx4UG9wVbXuLzdMxL390DIFKfj8Ww01fg=;
-        b=fqDDbHKoGd5V+MkbaarJFhZs1jRO3fVzQzFsRLOl8KViz5Cxzfmyx0yBdw6hgA4a0I
-         DS2Yx+++HYz7pk0R3dNwCXIhDmcNBvs4oIHaHh9LmIBDlWvbidCy+APkewcAAsXXxnqj
-         thXYZSpjYsbsII3O5Lt/Jef8UFYFvtKRy2EjJDcF4LCNLy5dPN4DSKTb74mBXAQ1vCp+
-         qLqz4FlUJfe9F8NdNFkYLAziFI8LaJ78yHsbtdCkCCYL9Z1beDDoAgOGBIH3/RAOzOOn
-         9e318Ac2At/cSIALJmScW08ghYJ13DWjJXi+RiNateQTZyXCEbGytQnO2Ux0PifLNdlt
-         4N3A==
-X-Received: by 10.180.74.111 with SMTP id s15mr12162200wiv.61.1424617130618;
-        Sun, 22 Feb 2015 06:58:50 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id f1sm11769660wij.2.2015.02.22.06.58.48
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 22 Feb 2015 06:58:49 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: rtl8192e: replace memcpy() by ether_addr_copy() using coccinelle and pack variable
-Date: Sun, 22 Feb 2015 16:58:08 +0200
-Message-Id: <1424617088-2826-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,634,1437429600"; 
+   d="scan'208";a="180999012"
+Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Oct 2015 19:39:29 +0200
+Date: Sun, 4 Oct 2015 18:39:27 +0100 (IST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Cristina Moraru <cristina.moraru09@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: octeon: Move comment to
+ correct location
+In-Reply-To: <1443976340-86703-1-git-send-email-cristina.moraru09@gmail.com>
+Message-ID: <alpine.DEB.2.10.1510041836340.2672@hadrien>
+References: <1443976340-86703-1-git-send-email-cristina.moraru09@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch focuses on fixing the following warning generated
-by checkpatch.pl for the file rxtx.c
+On Sun, 4 Oct 2015, Cristina Moraru wrote:
 
-Prefer ether_addr_copy() over memcpy() if the Ethernet addresses
-are __aligned(2)
+> Remove 'Excess function parameter 'addr' description in
+> 'cvm_oct_set_mac_filter'' kernel-doc warning by moving
+> the desciption to the correct function: cvm_oct_common_set_mac_address
+>
+> Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+> index 7274fda..798aa6c 100644
+> --- a/drivers/staging/octeon/ethernet.c
+> +++ b/drivers/staging/octeon/ethernet.c
+> @@ -364,13 +364,6 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
+>  	}
+>  }
+>
+> -/**
+> - * cvm_oct_common_set_mac_address - set the hardware MAC address for a device
+> - * @dev:    The device in question.
+> - * @addr:   Address structure to change it too.
+> -
+> - * Returns Zero on success
+> - */
+>  static int cvm_oct_set_mac_filter(struct net_device *dev)
+>  {
+>  	struct octeon_ethernet *priv = netdev_priv(dev);
+> @@ -413,6 +406,13 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
+>  	return 0;
+>  }
+>
+> +/**
+> + * cvm_oct_common_set_mac_address - set the hardware MAC address for a device
+> + * @dev:    The device in question.
+> + * @addr:   Address structure to change it too.
 
-@@ expression e1, e2; @@
+too -> to
 
-- memcpy(e1, e2, ETH_ALEN);
-+ ether_addr_copy(e1, e2);
+I don't think that the address is a structure.  It could be helpfu to look
+at the kerneldoc information for eth_mac_addr, since that takes the same
+arguments as this function.
 
-struct net_device {
-        char                       name[16];             /*     0    16*/
-        struct hlist_node          name_hlist;           /*    16    16*/
-        char *                     ifalias;              /*    32     8*/
-        long unsigned int          mem_end;              /*    40     8*/
-        long unsigned int          mem_start;            /*    48     8*/
-        long unsigned int          base_addr;            /*    56     8*/
-        /* --- cacheline 1 boundary (64 bytes) --- */
-        int                        irq;                  /*    64     4*/
+julia
 
-        /* XXX 4 bytes hole, try to pack */
-
-        long unsigned int          state;                /*    72     8*/
-        struct list_head           dev_list;             /*    80    16*/
-        struct list_head           napi_list;            /*    96    16*/
-        struct list_head           unreg_list;           /*   112    16*/
-        /* --- cacheline 2 boundary (128 bytes) --- */
-        struct list_head           close_list;           /*   128    16*/
-        struct {
-                struct list_head   upper;                /*   144    16*/
-                struct list_head   lower;                /*   160    16*/
-        } adj_list;                                      /*   144    32*/
-        struct {
-                struct list_head   upper;                /*   176    16*/
-                struct list_head   lower;                /*   192    16*/
-        } all_adj_list;                                  /*   176    32*/
-        /* --- cacheline 3 boundary (192 bytes) was 16 bytes ago --- */
-        netdev_features_t          features;             /*   208     8*/
-        netdev_features_t          hw_features;          /*   216     8*/
-        netdev_features_t          wanted_features;      /*   224     8*/
-        netdev_features_t          vlan_features;        /*   232     8*/
-        netdev_features_t          hw_enc_features;      /*   240     8*/
-        netdev_features_t          mpls_features;        /*   248     8*/
-        /* --- cacheline 4 boundary (256 bytes) --- */
-	int                        ifindex;              /*   256     4*/
-        int                        iflink;               /*   260     4*/
-        struct net_device_stats    stats;                /*   264   184*/
-        /* --- cacheline 7 boundary (448 bytes) --- */
-        atomic_long_t              rx_dropped;           /*   448     8*/
-        atomic_long_t              tx_dropped;           /*   456     8*/
-        atomic_t                   carrier_changes;      /*   464     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        const struct iw_handler_def  * wireless_handlers; /*   472     8*/
-        struct iw_public_data *    wireless_data;        /*   480     8*/
-        const struct net_device_ops  * netdev_ops;       /*   488     8*/
-        const struct ethtool_ops  * ethtool_ops;         /*   496     8*/
-        const struct forwarding_accel_ops  * fwd_ops;    /*   504     8*/
-        /* --- cacheline 8 boundary (512 bytes) --- */
-        const struct header_ops  * header_ops;           /*   512     8*/
-        unsigned int               flags;                /*   520     4*/
-        unsigned int               priv_flags;           /*   524     4*/
-        short unsigned int         gflags;               /*   528     2*/
-        short unsigned int         padded;               /*   530     2*/
-        unsigned char              operstate;            /*   532     1*/
-        unsigned char              link_mode;            /*   533     1*/
-        unsigned char              if_port;              /*   534     1*/
-        unsigned char              dma;                  /*   535     1*/
-        unsigned int               mtu;                  /*   536     4*/
-        short unsigned int         type;                 /*   540     2*/
-        short unsigned int         hard_header_len;      /*   542     2*/
-        short unsigned int         needed_headroom;      /*   544     2*/
-        short unsigned int         needed_tailroom;      /*   546     2*/
-        unsigned char              perm_addr[32];        /*   548    32*/
-        /* --- cacheline 9 boundary (576 bytes) was 4 bytes ago --- */
-        unsigned char              addr_assign_type;     /*   580     1*/
-        unsigned char              addr_len;             /*   581     1*/
-        short unsigned int         neigh_priv_len;       /*   582     2*/
-        short unsigned int         dev_id;               /*   584     2*/
-        short unsigned int         dev_port;             /*   586     2*/
-        spinlock_t                 addr_list_lock;       /*   588     4*/
-	struct netdev_hw_addr_list uc;                   /*   592    24*/
-        struct netdev_hw_addr_list mc;                   /*   616    24*/
-        /* --- cacheline 10 boundary (640 bytes) --- */
-        struct netdev_hw_addr_list dev_addrs;            /*   640    24*/
-        struct kset *              queues_kset;          /*   664     8*/
-        unsigned char              name_assign_type;     /*   672     1*/
-        bool                       uc_promisc;           /*   673     1*/
-
-        /* XXX 2 bytes hole, try to pack */
-
-        unsigned int               promiscuity;          /*   676     4*/
-        unsigned int               allmulti;             /*   680     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct vlan_info *         vlan_info;            /*   688     8*/
-        struct dsa_switch_tree *   dsa_ptr;              /*   696     8*/
-        /* --- cacheline 11 boundary (704 bytes) --- */
-        struct tipc_bearer *       tipc_ptr;             /*   704     8*/
-        void *                     atalk_ptr;            /*   712     8*/
-        struct in_device *         ip_ptr;               /*   720     8*/
-        struct dn_dev *            dn_ptr;               /*   728     8*/
-        struct inet6_dev *         ip6_ptr;              /*   736     8*/
-        void *                     ax25_ptr;             /*   744     8*/
-        struct wireless_dev *      ieee80211_ptr;        /*   752     8*/
-        struct wpan_dev *          ieee802154_ptr;       /*   760     8*/
-        /* --- cacheline 12 boundary (768 bytes) --- */
-        long unsigned int          last_rx;              /*   768     8*/
-        unsigned char *            dev_addr;             /*   776     8*/
-        struct netdev_rx_queue *   _rx;                  /*   784     8*/
-        unsigned int               num_rx_queues;        /*   792     4*/
-        unsigned int               real_num_rx_queues;   /*   796     4*/
-        long unsigned int          gro_flush_timeout;    /*   800     8*/
-        rx_handler_func_t *        rx_handler;           /*   808     8*/
-        void *                     rx_handler_data;      /*   816     8*/
-        struct netdev_queue *      ingress_queue;        /*   824     8*/
-        /* --- cacheline 13 boundary (832 bytes) --- */
-	unsigned char              broadcast[32];        /*   832    32*/
-
-        /* XXX 32 bytes hole, try to pack */
-
-        /* --- cacheline 14 boundary (896 bytes) --- */
-        struct netdev_queue *      _tx;                  /*   896     8*/
-        unsigned int               num_tx_queues;        /*   904     4*/
-        unsigned int               real_num_tx_queues;   /*   908     4*/
-        struct Qdisc *             qdisc;                /*   912     8*/
-        long unsigned int          tx_queue_len;         /*   920     8*/
-        spinlock_t                 tx_global_lock;       /*   928     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct xps_dev_maps *      xps_maps;             /*   936     8*/
-        struct cpu_rmap *          rx_cpu_rmap;          /*   944     8*/
-        long unsigned int          trans_start;          /*   952     8*/
-        /* --- cacheline 15 boundary (960 bytes) --- */
-        int                        watchdog_timeo;       /*   960     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct timer_list          watchdog_timer;       /*   968    80*/
-        /* --- cacheline 16 boundary (1024 bytes) was 24 bytes ago ---* */
-        int *                      pcpu_refcnt;          /*  1048     8*/
-        struct list_head           todo_list;            /*  1056    16*/
-        struct hlist_node          index_hlist;          /*  1072    16*/
-        /* --- cacheline 17 boundary (1088 bytes) --- */
-        struct list_head           link_watch_list;      /*  1088    16*/
-        enum {
-                NETREG_UNINITIALIZED = 0,
-                NETREG_REGISTERED = 1,
-                NETREG_UNREGISTERING = 2,
-                NETREG_UNREGISTERED = 3,
-                NETREG_RELEASED = 4,
-                NETREG_DUMMY = 5,
-        } reg_state:8;                                     /*  1104 4 */
-	/* Bitfield combined with next fields */
-
-        bool                       dismantle;            /*  1105     1*/
-
-        /* Bitfield combined with previous fields */
-
-        enum {
-                RTNL_LINK_INITIALIZED = 0,
-                RTNL_LINK_INITIALIZING = 1,
-        } rtnl_link_state:16;                               /*  1104 4 */
-
-        /* XXX 4 bytes hole, try to pack */
-
-        void                       (*destructor)(struct net_device *);/*  1112     8 */
-        struct netpoll_info *      npinfo;               /*  1120     8*/
-        struct net *               nd_net;               /*  1128     8*/
-        union {
-                void *             ml_priv;              /*           8*/
-                struct pcpu_lstats * lstats;             /*           8*/
-                struct pcpu_sw_netstats * tstats;        /*           8*/
-                struct pcpu_dstats * dstats;             /*           8*/
-                struct pcpu_vstats * vstats;             /*           8*/
-        };                                               /*  1136     8*/
-        struct garp_port *         garp_port;            /*  1144     8*/
-        /* --- cacheline 18 boundary (1152 bytes) was 4 bytes ago --- */
-        struct mrp_port *          mrp_port;             /*  1152     8*/
-        struct device              dev;                  /*  1160   696*/
-
-        /* XXX last struct has 7 bytes of padding */
-
-        /* --- cacheline 29 boundary (1856 bytes) was 4 bytes ago --- */
-        const struct attribute_group  * sysfs_groups[4]; /*  1856    32*/
-        const struct attribute_group  * sysfs_rx_queue_group; /*  18888 */
-        const struct rtnl_link_ops  * rtnl_link_ops;     /*  1896     8*/
-        unsigned int               gso_max_size;         /*  1904     4*/
-        u16                        gso_max_segs;         /*  1908     2*/
-        u16                        gso_min_segs;         /*  1910     2*/
-	const struct dcbnl_rtnl_ops  * dcbnl_ops;        /*  1912     8*/
-        /* --- cacheline 30 boundary (1920 bytes) was 4 bytes ago --- */
-        u8                         num_tc;               /*  1920     1*/
-
-        /* XXX 1 byte hole, try to pack */
-
-        struct netdev_tc_txq       tc_to_txq[16];        /*  1922    64*/
-        /* --- cacheline 31 boundary (1984 bytes) was 6 bytes ago --- */
-        u8                         prio_tc_map[16];      /*  1986    16*/
-
-        /* XXX 2 bytes hole, try to pack */
-
-        unsigned int               fcoe_ddp_xid;         /*  2004     4*/
-        struct phy_device *        phydev;               /*  2008     8*/
-        struct lock_class_key *    qdisc_tx_busylock;    /*  2016     8*/
-        int                        group;                /*  2024     4*/
-
-        /* XXX 4 bytes hole, try to pack */
-
-        struct pm_qos_request      pm_qos_req;           /*  2032   176*/
-        /* --- cacheline 34 boundary (2176 bytes) was 36 bytes ago --- * */
-
-        /* size: 2240, cachelines: 35, members: 120 */
-        /* sum members: 2147, holes: 11, sum holes: 65 */
-        /* padding: 32 */
-        /* paddings: 1, sum paddings: 7 */
-
-        /* BRAIN FART ALERT! 2240 != 2147 + 65(holes), diff = 28 */
-
-};
-
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index 5615c80..2fbb964 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -2567,7 +2567,7 @@ static int r8192_set_mac_adr(struct net_device *dev, void *mac)
- 
- 	down(&priv->wx_sem);
- 
--	memcpy(dev->dev_addr, addr->sa_data, ETH_ALEN);
-+	ether_addr_copy(dev->dev_addr, addr->sa_data);
- 
- 	schedule_work(&priv->reset_wq);
- 	up(&priv->wx_sem);
--- 
-1.8.3.2
-
+> + *
+> + * Returns Zero on success
+> + */
+>  static int cvm_oct_common_set_mac_address(struct net_device *dev, void *addr)
+>  {
+>  	int r = eth_mac_addr(dev, addr);
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1443976340-86703-1-git-send-email-cristina.moraru09%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
