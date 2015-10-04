@@ -1,97 +1,80 @@
-X-GM-THRID: 9979778039808
-X-Received: by 10.42.24.201 with SMTP id x9mr1916964icb.30.1427375745555;
-        Thu, 26 Mar 2015 06:15:45 -0700 (PDT)
+X-GM-THRID: 6201801686594355200
+X-Received: by 10.182.117.225 with SMTP id kh1mr21397763obb.12.1443969478108;
+        Sun, 04 Oct 2015 07:37:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.57.42 with SMTP id f10ls2350883igq.14.canary; Thu, 26 Mar
- 2015 06:15:45 -0700 (PDT)
-X-Received: by 10.50.178.143 with SMTP id cy15mr9468542igc.4.1427375745354;
-        Thu, 26 Mar 2015 06:15:45 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x235.google.com (mail-pd0-x235.google.com. [2607:f8b0:400e:c02::235])
-        by gmr-mx.google.com with ESMTPS id iw3si677588pbd.1.2015.03.26.06.15.45
+Received: by 10.50.1.52 with SMTP id 20ls982840igj.1.gmail; Sun, 04 Oct 2015
+ 07:37:57 -0700 (PDT)
+X-Received: by 10.67.24.39 with SMTP id if7mr795127pad.24.1443969477699;
+        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id uv4si3282792pac.0.2015.10.04.07.37.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Mar 2015 06:15:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) client-ip=2607:f8b0:400e:c02::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::235 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x235.google.com with SMTP id ni2so62454959pdb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 06:15:45 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id ex6so150894132pac.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=B4IXmvAXcZczRGeoL/HMXY5CwRmMRZHrCxeiW1xnEHc=;
-        b=YsWkXbR5u5zFfLHGEb+Nncje9S8RPL9CqYFmyA8Gvqp+00Oqob34sUBrt45Y/BD9SQ
-         fE/fErB002iu6Iu+9RdvkeAUrZ81GZ2785D84p4VWWZDErfvFodAayHD8oebrzjJd+k+
-         MnfdBK4J+KTW7Vc3LTTwEIGU7Vf3CIY+Y0aMDompJ4rhLsCNLLJobZA+xVATm3EcEzYA
-         i693XexCHCxFfk4pGWuKiliJSea9dSTYz7yJ9WCC1d1TStKj/7DqE/wCUg9S2m5gB/Oj
-         HEbt37j8rkFh/bfCbVcBdY7RbD4yklB4xmrFL+5NRuSrpzIwMgq1pu2oaOm07L+4Mx8j
-         yTjA==
-X-Received: by 10.70.54.198 with SMTP id l6mr26893751pdp.74.1427375745180;
-        Thu, 26 Mar 2015 06:15:45 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id fr13sm5623018pdb.55.2015.03.26.06.15.42
+        bh=5ZLSvYcKXm1CjPDCkJcEHjv+jySC8YTDdIDc8/nI7f0=;
+        b=Gka/VI5q5XgafWTfNJbO5yGjbI/Qc+a3fUWK73gjzZ4qnpt67XsDJn7l2+bzEtunEE
+         B4TdjVrjANtDas3tOPCP3LdDXWwjNA/+BXSqVKzWOm/Rbd5FHgjqftvVR9432Z2CmZfT
+         P4jZwPVsAMjp5j7Iqd7fc8+yRABOkR7CUVyRnziMKuFgOeT8TiZcftSPLU5E3CLRwmds
+         P4+aiBrCHwMQhVGFfA0Dd9zJp0Lg88xkmZlj6E2GihrcEEhcTdHJsEfO+fS7vrdzuei5
+         HyP8naoKKJPlVcBkPlL6n8hsuAGfuoDG9YH+lwHnuRKOU5sR8C5SXF2oNOd8YTFaoM+e
+         XOaw==
+X-Received: by 10.68.219.4 with SMTP id pk4mr33850276pbc.138.1443969477537;
+        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.217.58])
+        by smtp.gmail.com with ESMTPSA id fx4sm22338867pbb.92.2015.10.04.07.37.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Mar 2015 06:15:43 -0700 (PDT)
-Date: Thu, 26 Mar 2015 18:43:26 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sun, 04 Oct 2015 07:37:57 -0700 (PDT)
+Date: Sun, 4 Oct 2015 20:07:53 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] Staging: rtl8192u: Make function static
-Message-ID: <20150326131326.GA9213@akanksha>
+Subject: [PATCH 1/4] staging: sm750fb: Add space around '/'
+Message-ID: <20151004143753.GA9625@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This function is used in only one c file and so
-its definition is removed from the header file
-and it is declared as static.
+Add space around operator '/'. Problem found using
+checkpatch.pl
+CHECK: spaces preferred around that '/' (ctx:VxV)
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rtl8192u/r8192U.h      | 1 -
- drivers/staging/rtl8192u/r8192U_core.c | 4 ++--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r8192U.h b/drivers/staging/rtl8192u/r8192U.h
-index 6c2e438..221dbd7 100644
---- a/drivers/staging/rtl8192u/r8192U.h
-+++ b/drivers/staging/rtl8192u/r8192U.h
-@@ -1153,7 +1153,6 @@ typedef enum {
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index e987971..8d167fc 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -391,10 +391,10 @@ unsigned int calcPllValue(unsigned int request_orig, pll_value_t *pll)
  
- bool init_firmware(struct net_device *dev);
- short rtl819xU_tx_cmd(struct net_device *dev, struct sk_buff *skb);
--short rtl8192_tx(struct net_device *dev, struct sk_buff *skb);
+ 	if (pll->clockType != MXCLK_PLL) {
+ 		xparm = &xparm_PIXEL[0];
+-		xcnt = sizeof(xparm_PIXEL)/sizeof(xparm_PIXEL[0]);
++		xcnt = sizeof(xparm_PIXEL) / sizeof(xparm_PIXEL[0]);
+ 	} else {
+ 		xparm = &xparm_MXCLK[0];
+-		xcnt = sizeof(xparm_MXCLK)/sizeof(xparm_MXCLK[0]);
++		xcnt = sizeof(xparm_MXCLK) / sizeof(xparm_MXCLK[0]);
+ 	}
  
- u32 read_cam(struct net_device *dev, u8 addr);
- void write_cam(struct net_device *dev, u8 addr, u32 data);
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index cbcdcf2..7e3671c 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -942,7 +942,7 @@ static void rtl8192_data_hard_resume(struct net_device *dev)
- {
- 	// FIXME !!
- }
--
-+static short rtl8192_tx(struct net_device *dev, struct sk_buff *skb);
- /* this function TX data frames when the ieee80211 stack requires this.
-  * It checks also if we need to stop the ieee tx queue, eventually do it
-  */
-@@ -1487,7 +1487,7 @@ static void tx_zero_isr(struct urb *tx_urb)
-  * skb->cb will contain all the following information,
-  * priority, morefrag, rate, &dev.
-  * */
--short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
-+static short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 	cb_desc *tcb_desc = (cb_desc *)(skb->cb + MAX_DEV_ADDR_SIZE);
+ 
 -- 
 1.9.1
 
