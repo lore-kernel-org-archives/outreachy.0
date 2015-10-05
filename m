@@ -1,96 +1,95 @@
 X-GM-THRID: 6201888067640360960
-X-Received: by 10.194.240.230 with SMTP id wd6mr4976373wjc.0.1444032706484;
-        Mon, 05 Oct 2015 01:11:46 -0700 (PDT)
+X-Received: by 10.107.37.206 with SMTP id l197mr25463596iol.17.1444027809496;
+        Sun, 04 Oct 2015 23:50:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.82.73 with SMTP id g9ls765185wiy.30.gmail; Mon, 05 Oct
- 2015 01:11:46 -0700 (PDT)
-X-Received: by 10.180.210.71 with SMTP id ms7mr1872778wic.4.1444032706098;
-        Mon, 05 Oct 2015 01:11:46 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id q6si306741wif.2.2015.10.05.01.11.46
+Received: by 10.107.32.195 with SMTP id g186ls1580420iog.70.gmail; Sun, 04 Oct
+ 2015 23:50:09 -0700 (PDT)
+X-Received: by 10.66.102.101 with SMTP id fn5mr24611287pab.38.1444027809266;
+        Sun, 04 Oct 2015 23:50:09 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-ig0-x243.google.com (mail-ig0-x243.google.com. [2607:f8b0:4001:c05::243])
+        by gmr-mx.google.com with ESMTPS id n7si943298iga.3.2015.10.04.23.50.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Oct 2015 01:11:46 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
+        Sun, 04 Oct 2015 23:50:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) client-ip=2607:f8b0:4001:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue101) with ESMTPSA (Nemesis) id 0LdVp4-1aQZ6J0bGk-00iou0; Mon, 05 Oct
- 2015 10:11:45 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija =?utf-8?B?U3Rhbm9qZXZpxIc=?= <ksenija.stanojevic@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/4] Do not DMA on the stack
-Date: Mon, 05 Oct 2015 10:11:44 +0200
-Message-ID: <7470920.ePDpii2jg9@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CAL7P5jJDJKXjERbZXvmyt0V22zbbWCr2=_rMVbwptK_WtQCuFA@mail.gmail.com>
-References: <cover.1443989364.git.ksenija.stanojevic@gmail.com> <CAL7P5jLBOQH4Z7vk62uKMRoV7EO3AwCkVBL4ODto-oTyS+XKWg@mail.gmail.com> <CAL7P5jJDJKXjERbZXvmyt0V22zbbWCr2=_rMVbwptK_WtQCuFA@mail.gmail.com>
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by igbbp9 with SMTP id bp9so8721706igb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 23:50:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type:content-transfer-encoding;
+        bh=Hxg6Dy7epcZtOTZqV4aKqcNiLTnworB5raDiaVVrjs0=;
+        b=Qyb/0C0Kwc94YRY2DK9cCR2F0GbW5wm5x6+gTeZ22S1dQ1mr1nezH/uU44Vzm8nQtE
+         Uc1oLR8UXxITOYp1lhCiqwX13VWD9DIeRVLUqYrvHxu1dBx/czfYK1UZqGuwnYyNgGJz
+         HQtnGg1wuGZxK50b5niwNzB1svrT76mBRFUkth7arfJUP6Hfj8TaYAvYnoiOX/79ZSKl
+         srbpzEpxz2fz6qx74wfwhMF/eZtYqZOskuTqnixHrUCO/uqLmsLprQTR7if/ZBMXyyMS
+         U88pP5lGGTEtvYjxxi/hhiyMiL8KEU1Ll06zAkP8F4ILQ/010UngfxNwQjfY92wgHOCr
+         kKrg==
 MIME-Version: 1.0
+X-Received: by 10.50.66.197 with SMTP id h5mr7226973igt.82.1444027809117; Sun,
+ 04 Oct 2015 23:50:09 -0700 (PDT)
+Received: by 10.107.158.211 with HTTP; Sun, 4 Oct 2015 23:50:09 -0700 (PDT)
+In-Reply-To: <CAL7P5jLBOQH4Z7vk62uKMRoV7EO3AwCkVBL4ODto-oTyS+XKWg@mail.gmail.com>
+References: <cover.1443989364.git.ksenija.stanojevic@gmail.com>
+	<5522999.85D2llbvgZ@wuerfel>
+	<CAL7P5jKuXg05eAZTUO4LRgzw7nNhCY9P16Qm25zpHXjmuBnoVA@mail.gmail.com>
+	<CAL7P5jLVUXSeqXDPCcB2VaJO5ubqJnKSMucXpUxBj0nSpdrHpA@mail.gmail.com>
+	<CAL7P5jLBOQH4Z7vk62uKMRoV7EO3AwCkVBL4ODto-oTyS+XKWg@mail.gmail.com>
+Date: Mon, 5 Oct 2015 08:50:09 +0200
+Message-ID: <CAL7P5jJDJKXjERbZXvmyt0V22zbbWCr2=_rMVbwptK_WtQCuFA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/4] Do not DMA on the stack
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
-X-Provags-ID: V03:K0:emmDO8N+cB0WMLJ6YxKijxFqHMgYXDg7GGVe89Inj4n0pdLYizT
- SEz+qna4ge3TXjkEdxg9qVKosSNiWTKos0TrM+ENxns6kcrAmPzaAxr9n6ji/x8VjAfEek1
- Op5J6hXfHzCJy2MmfRTAtFlV/4MrmlOVKaEZsK+1lNgmgQvej8VjgRQ5GWAgiCh13qQH/5B
- Dh6fZmjTzzYkacblY6jPA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:M/PxearSU2g=:H0O+wYKhi2Td35pQRnuZd/
- tmQQFzB1T0wOkJ4p492y0ppwJ9buT7wgYvNXTL2Rurg0MxHdoRZ8R3a3S2Sv4xH5n+IWXDoZB
- vYhlBqc1dhtqvhi9XLLYB9lGjFQ5dkU3iMYO+T6usbD9UJi3Jq0w64yIfbaGlFGenvL1vjN9y
- pIUDttnfjkZ6pkcZxZ0D5mFHs3nPEYhf57d0fkBvGPHN1ZHmdtLPBUcU7w2yF0skFF6ya4ITm
- 9HqLPnes5uOrLMD1yOk9GDfRf38d9qYNfULzeqcuyOx4SzDulNndw/2dhJ1TeFrO08O8ZCquC
- 3tG27zoh89RfnaWAun5p3nmcCnH31OXgiU5qesCwbGr6Uau+7Bcs5+XC9lw8qbA886A54OJ+T
- ndhkBPeXx1Fv/NC6BW+sAVq4xZqseuYRRUBAuHz1pfzcx/TsOckuW2Hpww898PTCq93WgcvoZ
- xjKwRrcJfTNaw65mcAx6Q8BMd9V8MhFnmnCH+xw3uVBPaRDhT19FErJBE8F5fCj5t17YKtb0t
- DOvo0D3Ga5Fcby1AYbgiR4DVdD376isEI+QMIBfSkCEMnbxTdjcQKUjzx3gxC+WCv/PZxW1fg
- 61NNMBAgVjcDBNVxJmiQnefq3R07QzWhdOh9H5uqBkbe5flaC9jcYaxzQuPwTam8hRPAsWo4+
- 9U/mDR4OxPlqbaQbHOfeaPvV84m+k9E9B0WAnmD+aWKKoSQKu1zr6EVHLjX4plWkB5nPOafQu
- aa2+dzw66UCl2kSF
 
-On Monday 05 October 2015 08:50:09 Ksenija Stanojevi=C4=87 wrote:
-> On Mon, Oct 5, 2015 at 8:44 AM, Ksenija Stanojevi=C4=87
+On Mon, Oct 5, 2015 at 8:44 AM, Ksenija Stanojevi=C4=87
+<ksenija.stanojevic@gmail.com> wrote:
+> On Mon, Oct 5, 2015 at 8:40 AM, Ksenija Stanojevi=C4=87
 > <ksenija.stanojevic@gmail.com> wrote:
-> > On Mon, Oct 5, 2015 at 8:40 AM, Ksenija Stanojevi=C4=87
-> > <ksenija.stanojevic@gmail.com> wrote:
-> >> On Mon, Oct 5, 2015 at 7:28 AM, Ksenija Stanojevi=C4=87
-> >> <ksenija.stanojevic@gmail.com> wrote:
-> >>> On Sun, Oct 4, 2015 at 10:39 PM, Arnd Bergmann <arnd@arndb.de> wr=
-ote:
-> >>>> On Sunday 04 October 2015 22:13:02 Ksenija Stanojevic wrote:
-> >>>>> Fix error "doing DMA on the stack" by using kzalloc for buffer
-> >>>>> allocation in rtl8192u/r8192U_core.c in the following functions=
-:
-> >>>>>         write_nic_byte_E()
-> >>>>>         write_nic_byte()
-> >>>>>         write_nic_word()
-> >>>>>         write_nic_dword()
-> >>>>> Issue found by smatch.
-> >>>>>
-> >>>>> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com=
->
-> >>>>>
-> >>>>> Ksenija Stanojevic (4):
-> >>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_byte_=
-E()
-> >>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_byte(=
-)
-> >>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_word(=
-)
-> >>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_dword=
-()
-> >>>>>
-> >>>>
-> >>>> The changes all look wrong to me, can you guess what the problem=
- is
-> >>>> when you read them again?
-> >>>
-> > Please ignore this.
-> >> And also assign pdata to point to data
-> >>  pdata =3D &data;
->=20
-> I meant *pdata =3D data.
+>> On Mon, Oct 5, 2015 at 7:28 AM, Ksenija Stanojevi=C4=87
+>> <ksenija.stanojevic@gmail.com> wrote:
+>>> On Sun, Oct 4, 2015 at 10:39 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+>>>> On Sunday 04 October 2015 22:13:02 Ksenija Stanojevic wrote:
+>>>>> Fix error "doing DMA on the stack" by using kzalloc for buffer
+>>>>> allocation in rtl8192u/r8192U_core.c in the following functions:
+>>>>>         write_nic_byte_E()
+>>>>>         write_nic_byte()
+>>>>>         write_nic_word()
+>>>>>         write_nic_dword()
+>>>>> Issue found by smatch.
+>>>>>
+>>>>> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+>>>>>
+>>>>> Ksenija Stanojevic (4):
+>>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_byte_E()
+>>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_byte()
+>>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_word()
+>>>>>   Staging: rtl8192u: Do not DMA on the stack in write_nic_dword()
+>>>>>
+>>>>
+>>>> The changes all look wrong to me, can you guess what the problem is
+>>>> when you read them again?
+>>>
+> Please ignore this.
+>> And also assign pdata to point to data
+>>  pdata =3D &data;
 
-Right. Once you change that, it should be fine.
+I meant *pdata =3D data.
 
-=09Arnd
+> thanks,
+> Ksenija
+>>>>
+>>>> Also, these are four instances of the same code, in the same file,
+>>>> so it would be reasonable to do a single patch, and then you can
+>>>> do the other five instances in the same file as well.
+>>>>
+>>>>         Arnd
 
