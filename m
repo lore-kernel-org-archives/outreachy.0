@@ -1,90 +1,83 @@
 X-GM-THRID: 6202220318097932288
-X-Received: by 10.180.35.132 with SMTP id h4mr2834298wij.5.1444078832368;
-        Mon, 05 Oct 2015 14:00:32 -0700 (PDT)
+X-Received: by 10.181.29.103 with SMTP id jv7mr2445806wid.0.1444066948160;
+        Mon, 05 Oct 2015 10:42:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.102.38 with SMTP id fl6ls943643wib.35.canary; Mon, 05 Oct
- 2015 14:00:31 -0700 (PDT)
-X-Received: by 10.180.210.212 with SMTP id mw20mr2834687wic.3.1444078831984;
-        Mon, 05 Oct 2015 14:00:31 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id w4si406438wiz.0.2015.10.05.14.00.31
+Received: by 10.180.109.167 with SMTP id ht7ls28925wib.7.canary; Mon, 05 Oct
+ 2015 10:42:27 -0700 (PDT)
+X-Received: by 10.194.6.170 with SMTP id c10mr5541070wja.7.1444066947687;
+        Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id bj4si418329wib.1.2015.10.05.10.42.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Oct 2015 14:00:31 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,640,1437429600"; 
-   d="scan'208";a="181213124"
-Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 05 Oct 2015 23:00:31 +0200
-Date: Mon, 5 Oct 2015 22:00:30 +0100 (IST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lnet: klnds: socklnd:
- Missing a blank line after declarations
-In-Reply-To: <1444066940-6921-1-git-send-email-haticeerturk27@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510052159510.2608@hadrien>
-References: <1444066940-6921-1-git-send-email-haticeerturk27@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mailfrom=haticeerturk27@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x230.google.com with SMTP id lk2so125238055wic.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:mime-version:content-type
+         :content-transfer-encoding;
+        bh=zz0nTm6lHi3/jTLhYFktgtEwA6+ZdjsQFAequKi5LI4=;
+        b=zCtF8qysvviHLTFJoREm+Do0h8D1fcU+T06Hu7de3O9/vEU/UgtnJksH5NyfAzc99/
+         v+vU99f58i4N2tm7btyJ1BUplvTapeIJQ0rlNRNMA3GHrqTR1F0sZVA0Q95z1Hw9GWaN
+         nwSjroB9SGgxbxmM6De73Im7LEZNFy757dvwn7Ufadq8aU6CWMwIL2gTZUfDA4Chseen
+         +K+khpDWHYRgJovVBhBmhKXruVGlcD5n6pvpXLDuL6nMDnvyV4tyJDGLt95wkH3+XoQO
+         wcNh4/o3Q4zwd3RdQxrGTB/JItpYfb2bWY3aJ4EzmDpgwESMVwci/37SKPS0Dw2KVl+U
+         HWZA==
+X-Received: by 10.180.106.70 with SMTP id gs6mr13182629wib.19.1444066947586;
+        Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
+Return-Path: <haticeerturk27@gmail.com>
+Received: from localhost.localdomain ([88.242.105.163])
+        by smtp.googlemail.com with ESMTPSA id c2sm15752731wiy.11.2015.10.05.10.42.26
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 05 Oct 2015 10:42:26 -0700 (PDT)
+From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: lustre: lnet: klnds: socklnd: Missing a blank line after declarations
+Date: Mon,  5 Oct 2015 20:42:20 +0300
+Message-Id: <1444066940-6921-1-git-send-email-haticeerturk27@gmail.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1099360703-1444078831=:2608"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+This patch fixes these warning messages found by checkpatch.pl:
+WARNING : Missing a blank line after declarations.
 
---8323329-1099360703-1444078831=:2608
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
+---
+ drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-On Mon, 5 Oct 2015, Hatice ERTÜRK wrote:
+diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+index 904d158..1b472f4 100644
+--- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
++++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+@@ -2440,6 +2440,7 @@ ksocknal_base_startup(void)
+ 
+ 	for (i = 0; i < *ksocknal_tunables.ksnd_nconnds; i++) {
+ 		char name[16];
++
+ 		spin_lock_bh(&ksocknal_data.ksnd_connd_lock);
+ 		ksocknal_data.ksnd_connd_starting++;
+ 		spin_unlock_bh(&ksocknal_data.ksnd_connd_lock);
+@@ -2705,6 +2706,7 @@ ksocknal_start_schedulers(struct ksock_sched_info *info)
+ 		long id;
+ 		char name[20];
+ 		ksock_sched_t *sched;
++
+ 		id = KSOCK_THREAD_ID(info->ksi_cpt, info->ksi_nthreads + i);
+ 		sched = &info->ksi_scheds[KSOCK_THREAD_SID(id)];
+ 		snprintf(name, sizeof(name), "socknal_sd%02d_%02d",
+-- 
+1.9.1
 
-> This patch fixes these warning messages found by checkpatch.pl:
-> WARNING : Missing a blank line after declarations.
-
-A better subject would be "Add blank line after a declaration. Problem
-found using checkpatch."  That would make more explicit what you did.
-
-julia
-
->
-> Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
-> ---
->  drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> index 904d158..1b472f4 100644
-> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> @@ -2440,6 +2440,7 @@ ksocknal_base_startup(void)
->
->  	for (i = 0; i < *ksocknal_tunables.ksnd_nconnds; i++) {
->  		char name[16];
-> +
->  		spin_lock_bh(&ksocknal_data.ksnd_connd_lock);
->  		ksocknal_data.ksnd_connd_starting++;
->  		spin_unlock_bh(&ksocknal_data.ksnd_connd_lock);
-> @@ -2705,6 +2706,7 @@ ksocknal_start_schedulers(struct ksock_sched_info *info)
->  		long id;
->  		char name[20];
->  		ksock_sched_t *sched;
-> +
->  		id = KSOCK_THREAD_ID(info->ksi_cpt, info->ksi_nthreads + i);
->  		sched = &info->ksi_scheds[KSOCK_THREAD_SID(id)];
->  		snprintf(name, sizeof(name), "socknal_sd%02d_%02d",
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1444066940-6921-1-git-send-email-haticeerturk27%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
---8323329-1099360703-1444078831=:2608--
 
