@@ -1,87 +1,109 @@
 X-GM-THRID: 6200341306580926464
-X-Received: by 10.180.9.104 with SMTP id y8mr2142749wia.7.1444033215067;
-        Mon, 05 Oct 2015 01:20:15 -0700 (PDT)
+X-Received: by 10.66.227.166 with SMTP id sb6mr24563722pac.0.1444022238307;
+        Sun, 04 Oct 2015 22:17:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.151.79 with SMTP id z76ls416643lfd.104.gmail; Mon, 05 Oct
- 2015 01:20:14 -0700 (PDT)
-X-Received: by 10.25.149.203 with SMTP id x194mr121870lfd.6.1444033214378;
-        Mon, 05 Oct 2015 01:20:14 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id w4si284866wiz.0.2015.10.05.01.20.14
+Received: by 10.182.99.197 with SMTP id es5ls1255440obb.80.gmail; Sun, 04 Oct
+ 2015 22:17:17 -0700 (PDT)
+X-Received: by 10.182.28.100 with SMTP id a4mr24631144obh.20.1444022237860;
+        Sun, 04 Oct 2015 22:17:17 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id el2si3433302pbb.0.2015.10.04.22.17.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Oct 2015 01:20:14 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Oct 2015 22:17:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue005) with ESMTPSA (Nemesis) id 0M0dvG-1acmJe3K2Q-00unzf; Mon, 05 Oct
- 2015 10:20:12 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: Ksenija =?utf-8?B?U3Rhbm9qZXZpxIc=?= <ksenija.stanojevic@gmail.com>, y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH v2] Staging: fbtbt: Replace timespec with ktime_t
-Date: Mon, 05 Oct 2015 10:20:12 +0200
-Message-ID: <9607634.7a18Wz6LMX@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151005051705.GA20276@sudip-pc>
-References: <1443629449-12352-1-git-send-email-ksenija.stanojevic@gmail.com> <5548451.nrtKaPCYPk@wuerfel> <20151005051705.GA20276@sudip-pc>
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pablk4 with SMTP id lk4so164355646pab.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 22:17:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=R6/22nOGXdLjE/U2Eg19CVfHmVYlnGBxN/ownYVF0Tc=;
+        b=IGvh0cpX1q0o/v+8JXKhvRZBcxjm036eRs+l3bCpRMHzh6kcqAjCTYy6SNO/s/hqvT
+         On76XXCMRmaKWjL3W09LMKU26v3eGJ32wNaQzsu83OtzoewJYpAWGT6AshEItBimbYK4
+         0JSL+6tFjcP9FkHod2Ec87GCkZ6z4CLltQAtcnzoTQLnWAe2PxpNwON6XLFXZSDC6N9N
+         Y+NfxSCsVFb9+omrf4R9mE8oEMRBCkAK3SW8EzjhaTRBrSC3nWSxilzZgiOD3+JMN/FW
+         PXpJ0ry1O2yNy16HJcxheAlLwItOIc+S/b5usv+Ubt16X4TcrQ6jpO3bLVn8VHRdil34
+         XT8Q==
+X-Received: by 10.68.202.9 with SMTP id ke9mr37820174pbc.85.1444022237649;
+        Sun, 04 Oct 2015 22:17:17 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id bs3sm24876357pbd.89.2015.10.04.22.17.15
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sun, 04 Oct 2015 22:17:17 -0700 (PDT)
+Date: Mon, 5 Oct 2015 10:47:05 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>,
+	y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH v2] Staging: fbtbt:
+ Replace timespec with ktime_t
+Message-ID: <20151005051705.GA20276@sudip-pc>
+References: <1443629449-12352-1-git-send-email-ksenija.stanojevic@gmail.com>
+ <4117012.VUd9JF0oa2@wuerfel>
+ <CAL7P5jL8Y5EORR4pvZHEhc9nKJuh7p+v_k_Kcjy8dXidiBq7Bg@mail.gmail.com>
+ <5548451.nrtKaPCYPk@wuerfel>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
-X-Provags-ID: V03:K0:hkvI28tKSMN9+2zyiH4qv5ggSgiG/Jkuxv1rjIlHMnnhwociI+2
- 0+IRonBiTZBQY6DDEJKaUC2zS9Uixs9+08HBOO30HPgYiCyxdceZTwDkoD0x/ylOgNgZ8M5
- FzXFWKfMEfOr4299++jRRbmn3Hebh8SJSr1kV7kxeR1OEaAI4cBDe6iMgAG464S+8Dg0non
- uEJ8YQDn9GpCSaUT7hm7Q==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:qvNlQschyqI=:Lm6nlOHfc++cH04SFOhZz/
- PzeClVJ2DqY4JC7tJC5ecozBmn/Kz77NDv9mojdevBbReBF/yZKEWPatF/yrdrPB0oMgQuWQR
- GuoPnZ+bMnWrIP6rDLg6PrjKBoUi6KsCOuBbmw40CIaPVNCvlcVfyRfe9o2MZ/E6YbuW/wP61
- na46nQcWHpwGMmybi9NZ5dsH/AdFMnBMYX7xAuEjHqb/6t7DbPOOGgI4RIO/dIOss8lSdi75e
- d8cDmbrrhRUTgEwHBkIzFzujhO9VbcZbXpe4cuGVfgRQVsuYHh61Atd7xs4/xyFBP8wEEjoWN
- PQB3nltIBdHP/Ugr6V64dGRnAG+Sz56uo9FRIvhKnwdh78NznNF2r0Sdkf5l3VzoGAwiNqLRA
- GPUd2+W3Cee2c1UTufoJyewnVbcYh0W6ksMDVPo6WBxxjdOoJHHbI82ZppDQBOJ+7YLGFELlt
- twCWJp3GI9ZGWYFzzNbU4xSjBytNKnLm7ePVQYTOogD884bEIqprDue9BcYBLD6Z1F1jnSTfy
- zaq2H8y+tj2f8KBuqGq24J7lbZsGw7HjPBQX9lJV6WehpftXVqGPGFrSeDbweCcErnEgW5C8X
- SYxUOJEGkNLBvMWGik8C6Gi628Jsx9LPd+bQrUPrlRoNoTNcAl4KHQLVk55nx5DbPN2Y2QGCC
- ze9/jYOwhmGtssg9ySin63lYhCWgns2Iy1rzjHVS/gTcUg6fkK19Zpc/uNvurR8dDHWQsyznV
- BpWFmGL9dmHA95ga
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5548451.nrtKaPCYPk@wuerfel>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Monday 05 October 2015 10:47:05 Sudip Mukherjee wrote:
-> On Sun, Oct 04, 2015 at 09:34:40PM +0200, Arnd Bergmann wrote:
-> > On Saturday 03 October 2015 21:15:46 Ksenija Stanojevi=C4=87 wrote:=
+On Sun, Oct 04, 2015 at 09:34:40PM +0200, Arnd Bergmann wrote:
+> On Saturday 03 October 2015 21:15:46 Ksenija Stanojević wrote:
+> > On Thu, Oct 1, 2015 at 10:05 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> > > On Thursday 01 October 2015 19:44:46 Ksenija Stanojević wrote:
+> > >>
+> > >> In my local repository I modified my .config file so that CONFIG_64BIT
+> > >> is not set,
+> > >> and after that I recompiled all directory, but I don't get any errors/warning at
+> > >> compile-time.
+> > >> Also I separetly compiled this specific file but still no warnings
+> > >> My .config  looks something like this:
+> > >>
+> > >> . . .
+> > >>
+> > >> Should I change my working kernel or .config file is just enough?
+> > >
+> > > I think the problem is that you only compiled that directory but did
+> > > not attempt to do a full rebuild of the kernel and modules, which is
+> > > required to catch link-time errors.
+> > >
+> > > The compiler does not know at this point that the 64-bit division function
+> > > is undefined in the kernel, you only get a warning at the 'make vmlinux'
+> > > link stage (for built-in drivers) or the 'make modules' modpost stage
+> > > afterwards.
+> > 
+> > I rebuilded my repository with:
+> > make vmlinux
+> > make modules
+> > but I still don't get any warnings.
+> > Do you have any other suggestion on what I'm doing wrong?
+> 
+> I just tried it on my machine and I get (for an ARM build)
+> 
+> $ make -skj30   
+> ERROR: "__aeabi_ldivmod" [drivers/staging/fbtft/fbtft.ko] undefined!
+> 
+> Two possible explanations why you don't get it:
+> 
+> - your .config file got changed back to CONFIG_64BIT being enabled
+> - you don't have CONFIG_FB_TFT enabled in this build.
 
-> > Two possible explanations why you don't get it:
-> >=20
-> > - your .config file got changed back to CONFIG_64BIT being enabled
-> > - you don't have CONFIG_FB_TFT enabled in this build.
->=20
-> After modifying manually .config file use make oldconfig and then mak=
-e
-> prepare.
-> I think i missed the beginning of the thread. Are you saying that fbt=
-ft
-> build fails on 32 bit arch?
+After modifying manually .config file use make oldconfig and then make
+prepare.
+I think i missed the beginning of the thread. Are you saying that fbtft
+build fails on 32 bit arch?
 
-Ksenija's patch from last week causes this build regression, but it is =
-not
-merged yet. This is my original comment:
-
-| > -             ts_duration =3D timespec_sub(ts_end, ts_start);
-| > -             duration_ms =3D (ts_duration.tv_sec * 1000) + ((ts_du=
-ration.tv_nsec / 1000000) % 1000);
-| > -             duration_us =3D (ts_duration.tv_nsec / 1000) % 1000;
-| > -             throughput =3D duration_ms * 1000 + duration_us;
-| > +             throughput =3D ktime_us_delta(ts_end, ts_start);
-| >               throughput =3D throughput ? (len * 1000) / throughput=
- : 0;
-| >               throughput =3D throughput * 1000 / 1024;
-|=20
-| As mentioned above, throughput is a 64-bit 'long long', so the last l=
-ine
-| of the context will result in a 64-bit division, which is not allowed=
- in
-| 32-bit kernels.
-
-=09Arnd
+regards
+sudip
 
