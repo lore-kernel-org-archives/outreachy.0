@@ -1,99 +1,81 @@
 X-GM-THRID: 6200341306580926464
-X-Received: by 10.68.104.193 with SMTP id gg1mr2169941pbb.3.1444243584102;
-        Wed, 07 Oct 2015 11:46:24 -0700 (PDT)
+X-Received: by 10.67.24.39 with SMTP id if7mr5394546pad.24.1444056742112;
+        Mon, 05 Oct 2015 07:52:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.5.139 with SMTP id 133ls283775iof.107.gmail; Wed, 07 Oct
- 2015 11:46:23 -0700 (PDT)
-X-Received: by 10.66.197.136 with SMTP id iu8mr2166901pac.47.1444243583353;
-        Wed, 07 Oct 2015 11:46:23 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-io0-x22f.google.com (mail-io0-x22f.google.com. [2607:f8b0:4001:c06::22f])
-        by gmr-mx.google.com with ESMTPS id z7si259094igw.0.2015.10.07.11.46.23
+Received: by 10.107.27.14 with SMTP id b14ls1698315iob.5.gmail; Mon, 05 Oct
+ 2015 07:52:21 -0700 (PDT)
+X-Received: by 10.107.34.8 with SMTP id i8mr27218670ioi.2.1444056741644;
+        Mon, 05 Oct 2015 07:52:21 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id el2si3717696pbb.0.2015.10.05.07.52.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 11:46:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::22f as permitted sender) client-ip=2607:f8b0:4001:c06::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Oct 2015 07:52:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-io0-x22f.google.com with SMTP id z6so32680925ioi.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 11:46:23 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id hy16so38937424pad.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Oct 2015 07:52:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type:content-transfer-encoding;
-        bh=YNvA1fNfOHDzSh9MyKp/law5al65mGiQ1ollbw8GADY=;
-        b=QwnS1TYZGjeSIj+kap4NQfKgR6iEbtrkBaU6wMauiIzKceIez+OxFQqHCgk9rGP3FM
-         UBYJofGq5pi5Ty0uS0qIIg7M5tp1RqwVD/NyILNlyQwi8AwKvPCQIaruz+VuwZBnLLhj
-         9HaBFxX4ZDOFgeyuFD4Ica1m6vFQ7yvPu5dfL0J5+kN53Yt30Q8B7Sh3bCLscMN0tg+g
-         LHH2xRoiJ6o+hqRGtA7gJxn6Q1oMqOgvcpnrIZY48OYfy9vWd0UDPFuvYYq9aa9EDFDL
-         mvjCH4e6gqFIOsLd95smu5QrreXqz99Ysiwf6Bn5Q+tLTV0xDNKPDp5sk+wlfSiJH1EQ
-         dOXQ==
-MIME-Version: 1.0
-X-Received: by 10.107.18.26 with SMTP id a26mr3992757ioj.150.1444243583157;
- Wed, 07 Oct 2015 11:46:23 -0700 (PDT)
-Received: by 10.107.158.211 with HTTP; Wed, 7 Oct 2015 11:46:23 -0700 (PDT)
-In-Reply-To: <5548451.nrtKaPCYPk@wuerfel>
-References: <1443629449-12352-1-git-send-email-ksenija.stanojevic@gmail.com>
-	<4117012.VUd9JF0oa2@wuerfel>
-	<CAL7P5jL8Y5EORR4pvZHEhc9nKJuh7p+v_k_Kcjy8dXidiBq7Bg@mail.gmail.com>
-	<5548451.nrtKaPCYPk@wuerfel>
-Date: Wed, 7 Oct 2015 20:46:23 +0200
-Message-ID: <CAL7P5j+BvLMFomdsYW4hTHRJHj4J4iFDRLjF=UW2a9WgfUxDFA@mail.gmail.com>
-Subject: Re: [Y2038] [PATCH v2] Staging: fbtbt: Replace timespec with ktime_t
-From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=qzZQeblroxN15Rzbe37cbtHoaw7GyEyKYmxgNSeJmR8=;
+        b=M8WuAydGBwEernIXgCNckJh6b9ygCYSo9uij4CeGdqOyBrbIE/GJ6Nzb3k1+QN2nj3
+         vZn/5jC8yVYu2RmWmOPKnprZJcSAuTK6yCYWg/eFoLd2uE9aT+iLE93rxCgzdQLVOUix
+         1EBp3J7JgO4+XEfLoeknb5qKGcG9xw4g4py8oXbqeRfw58K4NWdyIqeRLVcrIVZvS73S
+         lXA28l/fm4Q4BDc22EMUYNEASQv/DMn12c8y2yljh08bw70XvHjF1emATVW3Ap1AZWRy
+         TcLLZzSbGVT1rlXTRUygwbYwGzIkxwguRWqcD935xTZ4szPjki09qyljhxW8WgHkURTE
+         M/UA==
+X-Received: by 10.66.144.135 with SMTP id sm7mr41110955pab.106.1444056741400;
+        Mon, 05 Oct 2015 07:52:21 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id fe8sm28346159pab.40.2015.10.05.07.52.18
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Mon, 05 Oct 2015 07:52:20 -0700 (PDT)
+Date: Mon, 5 Oct 2015 20:22:04 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 To: Arnd Bergmann <arnd@arndb.de>
-Cc: y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Cc: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>,
+	y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH v2] Staging: fbtbt:
+ Replace timespec with ktime_t
+Message-ID: <20151005145204.GA16683@sudip-pc>
+References: <1443629449-12352-1-git-send-email-ksenija.stanojevic@gmail.com>
+ <5548451.nrtKaPCYPk@wuerfel>
+ <20151005051705.GA20276@sudip-pc>
+ <9607634.7a18Wz6LMX@wuerfel>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <9607634.7a18Wz6LMX@wuerfel>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Sun, Oct 4, 2015 at 9:34 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> On Saturday 03 October 2015 21:15:46 Ksenija Stanojevi=C4=87 wrote:
->> On Thu, Oct 1, 2015 at 10:05 PM, Arnd Bergmann <arnd@arndb.de> wrote:
->> > On Thursday 01 October 2015 19:44:46 Ksenija Stanojevi=C4=87 wrote:
->> >>
->> >> In my local repository I modified my .config file so that CONFIG_64BI=
-T
->> >> is not set,
->> >> and after that I recompiled all directory, but I don't get any errors=
-/warning at
->> >> compile-time.
->> >> Also I separetly compiled this specific file but still no warnings
->> >> My .config  looks something like this:
->> >>
->> >> . . .
->> >>
->> >> Should I change my working kernel or .config file is just enough?
->> >
->> > I think the problem is that you only compiled that directory but did
->> > not attempt to do a full rebuild of the kernel and modules, which is
->> > required to catch link-time errors.
->> >
->> > The compiler does not know at this point that the 64-bit division func=
-tion
->> > is undefined in the kernel, you only get a warning at the 'make vmlinu=
-x'
->> > link stage (for built-in drivers) or the 'make modules' modpost stage
->> > afterwards.
->>
->> I rebuilded my repository with:
->> make vmlinux
->> make modules
->> but I still don't get any warnings.
->> Do you have any other suggestion on what I'm doing wrong?
->
-> I just tried it on my machine and I get (for an ARM build)
->
-> $ make -skj30
-> ERROR: "__aeabi_ldivmod" [drivers/staging/fbtft/fbtft.ko] undefined!
+On Mon, Oct 05, 2015 at 10:20:12AM +0200, Arnd Bergmann wrote:
+> On Monday 05 October 2015 10:47:05 Sudip Mukherjee wrote:
+> > On Sun, Oct 04, 2015 at 09:34:40PM +0200, Arnd Bergmann wrote:
+> > > On Saturday 03 October 2015 21:15:46 Ksenija Stanojević wrote:
+> > > Two possible explanations why you don't get it:
+> > > 
+> > > - your .config file got changed back to CONFIG_64BIT being enabled
+> > > - you don't have CONFIG_FB_TFT enabled in this build.
+> > 
+> > After modifying manually .config file use make oldconfig and then make
+> > prepare.
+> > I think i missed the beginning of the thread. Are you saying that fbtft
+> > build fails on 32 bit arch?
+> 
+> Ksenija's patch from last week causes this build regression, but it is not
+> merged yet.
+Ohhh .. ok. thanks. I have also checked the thread from my archieve now.
 
-I got this error:
-ERROR: "__divdi3" [drivers/staging/fbtft/fbtft.ko] undefined!
-
-I suppose that divdi3 is division used for long long by gcc on x86
-
-
-Ksenija
+regards
+sudip
 
