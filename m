@@ -1,140 +1,90 @@
-X-GM-THRID: 6201514199734026240
-X-Received: by 10.182.221.196 with SMTP id qg4mr18146463obc.23.1443902542385;
-        Sat, 03 Oct 2015 13:02:22 -0700 (PDT)
+X-GM-THRID: 6202220318097932288
+X-Received: by 10.180.35.132 with SMTP id h4mr2834298wij.5.1444078832368;
+        Mon, 05 Oct 2015 14:00:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.169.167 with SMTP id f39ls1189482ioj.62.gmail; Sat, 03 Oct
- 2015 13:02:22 -0700 (PDT)
-X-Received: by 10.107.31.209 with SMTP id f200mr18775389iof.14.1443902542111;
-        Sat, 03 Oct 2015 13:02:22 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id wl2si2592795pab.1.2015.10.03.13.02.22
+Received: by 10.180.102.38 with SMTP id fl6ls943643wib.35.canary; Mon, 05 Oct
+ 2015 14:00:31 -0700 (PDT)
+X-Received: by 10.180.210.212 with SMTP id mw20mr2834687wic.3.1444078831984;
+        Mon, 05 Oct 2015 14:00:31 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w4si406438wiz.0.2015.10.05.14.00.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Oct 2015 13:02:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Oct 2015 14:00:31 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id hy16so137061009pad.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Oct 2015 13:02:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=jmg3mzCkgB249jIGkdCjaQKqocsRw9vITbOrPKeT11g=;
-        b=rn7dIRu/9CF4re2BowpnJ+0lPZad0AzPXpPNUhED1nmb0cjQwVwGpkoKwTV49GlA+w
-         NVUFqRgodJZjZoHYN9e1S4lPLNLh5DN6dPtZ5sMF05ARF3ztJz6A2CN9P5oNXqcRback
-         8MRWKnxiV50EYFjNAO2e6XTXFvrTVJI7+uf++WghD/xRWq1zP0iHQNtAJd4efH3fBTJd
-         O8d2lMlLfwgbB4hX9tlYJTIXr+0EF19KfIJrw1QvJZwvLqosX3WGFWouC/XDHZffxESw
-         M9+fozZbMm230pp4esGpZXPiR+vTs7eGwnJTBtpo6NGemcF+A7MscKi4wK/bNBZ101Wu
-         6MwQ==
-X-Received: by 10.68.92.194 with SMTP id co2mr29144189pbb.147.1443902541978;
-        Sat, 03 Oct 2015 13:02:21 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id sl7sm18851711pbc.54.2015.10.03.13.02.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Oct 2015 13:02:21 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v4] Staging: iio: meter: Use devm functions
-Date: Sun,  4 Oct 2015 01:32:11 +0530
-Message-Id: <1443902531-20190-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150201.5610344C.006C,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,640,1437429600"; 
+   d="scan'208";a="181213124"
+Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 05 Oct 2015 23:00:31 +0200
+Date: Mon, 5 Oct 2015 22:00:30 +0100 (IST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lnet: klnds: socklnd:
+ Missing a blank line after declarations
+In-Reply-To: <1444066940-6921-1-git-send-email-haticeerturk27@gmail.com>
+Message-ID: <alpine.DEB.2.10.1510052159510.2608@hadrien>
+References: <1444066940-6921-1-git-send-email-haticeerturk27@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1099360703-1444078831=:2608"
 
-Introduce use of managed resource function devm_iio_trigger_alloc
-instead of iio_trigger_alloc and devm_request_irq instead of request_irq
-Remove corresponding calls to iio_trigger_free and free_irq in the probe
-and remove functions.
-The now unnecessary labels error_free_trig and err_free_irq are dropped.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
-Changes in v4-
- Dropped the use of free_irq.Also updated commit message and changed the
- subject.
+--8323329-1099360703-1444078831=:2608
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Changes in v3-
- Used devm_request_irq instead of request_irq.Also updated commit message.
+On Mon, 5 Oct 2015, Hatice ERTÜRK wrote:
 
-Changes in v2-
- Use appropriate arguments in devm_iio_trigger_alloc. 
+> This patch fixes these warning messages found by checkpatch.pl:
+> WARNING : Missing a blank line after declarations.
 
- drivers/staging/iio/meter/ade7758_trigger.c | 26 ++++++++++----------------
- 1 file changed, 10 insertions(+), 16 deletions(-)
+A better subject would be "Add blank line after a declaration. Problem
+found using checkpatch."  That would make more explicit what you did.
 
-diff --git a/drivers/staging/iio/meter/ade7758_trigger.c b/drivers/staging/iio/meter/ade7758_trigger.c
-index 5b35a7f..e313b37 100644
---- a/drivers/staging/iio/meter/ade7758_trigger.c
-+++ b/drivers/staging/iio/meter/ade7758_trigger.c
-@@ -63,21 +63,21 @@ int ade7758_probe_trigger(struct iio_dev *indio_dev)
- 	struct ade7758_state *st = iio_priv(indio_dev);
- 	int ret;
- 
--	st->trig = iio_trigger_alloc("%s-dev%d",
--					spi_get_device_id(st->us)->name,
--					indio_dev->id);
-+	st->trig = devm_iio_trigger_alloc(&indio_dev->id, "%s-dev%d",
-+					  spi_get_device_id(st->us)->name,
-+					  indio_dev->id);
- 	if (!st->trig) {
- 		ret = -ENOMEM;
- 		goto error_ret;
- 	}
- 
--	ret = request_irq(st->us->irq,
--			  ade7758_data_rdy_trig_poll,
--			  IRQF_TRIGGER_LOW,
--			  spi_get_device_id(st->us)->name,
--			  st->trig);
-+	ret = devm_request_irq(&indio_dev->dev, st->us->irq,
-+			       ade7758_data_rdy_trig_poll,
-+			       IRQF_TRIGGER_LOW,
-+			       spi_get_device_id(st->us)->name,
-+			       st->trig);
- 	if (ret)
--		goto error_free_trig;
-+		goto error_ret
- 
- 	st->trig->dev.parent = &st->us->dev;
- 	st->trig->ops = &ade7758_trigger_ops;
-@@ -87,14 +87,10 @@ int ade7758_probe_trigger(struct iio_dev *indio_dev)
- 	/* select default trigger */
- 	indio_dev->trig = iio_trigger_get(st->trig);
- 	if (ret)
--		goto error_free_irq;
-+		goto error_ret;
- 
- 	return 0;
- 
--error_free_irq:
--	free_irq(st->us->irq, st->trig);
--error_free_trig:
--	iio_trigger_free(st->trig);
- error_ret:
- 	return ret;
- }
-@@ -104,6 +100,4 @@ void ade7758_remove_trigger(struct iio_dev *indio_dev)
- 	struct ade7758_state *st = iio_priv(indio_dev);
- 
- 	iio_trigger_unregister(st->trig);
--	free_irq(st->us->irq, st->trig);
--	iio_trigger_free(st->trig);
- }
--- 
-2.1.4
+julia
 
+>
+> Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
+> ---
+>  drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+> index 904d158..1b472f4 100644
+> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+> @@ -2440,6 +2440,7 @@ ksocknal_base_startup(void)
+>
+>  	for (i = 0; i < *ksocknal_tunables.ksnd_nconnds; i++) {
+>  		char name[16];
+> +
+>  		spin_lock_bh(&ksocknal_data.ksnd_connd_lock);
+>  		ksocknal_data.ksnd_connd_starting++;
+>  		spin_unlock_bh(&ksocknal_data.ksnd_connd_lock);
+> @@ -2705,6 +2706,7 @@ ksocknal_start_schedulers(struct ksock_sched_info *info)
+>  		long id;
+>  		char name[20];
+>  		ksock_sched_t *sched;
+> +
+>  		id = KSOCK_THREAD_ID(info->ksi_cpt, info->ksi_nthreads + i);
+>  		sched = &info->ksi_scheds[KSOCK_THREAD_SID(id)];
+>  		snprintf(name, sizeof(name), "socknal_sd%02d_%02d",
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1444066940-6921-1-git-send-email-haticeerturk27%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-1099360703-1444078831=:2608--
 
