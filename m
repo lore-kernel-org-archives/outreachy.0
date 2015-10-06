@@ -1,84 +1,113 @@
 X-GM-THRID: 6202672545102036992
-X-Received: by 10.129.146.87 with SMTP id j84mr34313424ywg.18.1444194905920;
-        Tue, 06 Oct 2015 22:15:05 -0700 (PDT)
+X-Received: by 10.112.130.41 with SMTP id ob9mr6835706lbb.17.1444172260094;
+        Tue, 06 Oct 2015 15:57:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.29.227 with SMTP id b90ls94753qgb.72.gmail; Tue, 06 Oct
- 2015 22:15:05 -0700 (PDT)
-X-Received: by 10.129.51.86 with SMTP id z83mr32986734ywz.45.1444194905214;
-        Tue, 06 Oct 2015 22:15:05 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id wl2si4654678pab.1.2015.10.06.22.15.05
+Received: by 10.25.21.229 with SMTP id 98ls561649lfv.97.gmail; Tue, 06 Oct
+ 2015 15:57:37 -0700 (PDT)
+X-Received: by 10.112.12.132 with SMTP id y4mr6915444lbb.0.1444172257028;
+        Tue, 06 Oct 2015 15:57:37 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id c7si659107wiy.3.2015.10.06.15.57.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Oct 2015 22:15:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Tue, 06 Oct 2015 15:57:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id ex6so9588704pac.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 22:15:05 -0700 (PDT)
+Received: by mail-wi0-x233.google.com with SMTP id fx3so3770727wic.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 15:57:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=gU4nxEm2HqOIWq89RXI9NJ16WnolqFwGwlvy5aQYnhA=;
-        b=RrGTfRsvPO+kGnnBAOpCcPnTjuySaoLXCbCVlZCVK6u440HKNUUKFtJ4mR8VDOfCB8
-         MTnhjiAxsw7tXAH7LljPaNhTqT9QBBXiAK8xgGoFYRzwHUPHQx/r5bEtHiUZlzGB/DJo
-         Saf7pxZ+esRNb0V8JX98NDHUcF01RHqHIm6cNI4OpzhjnG0aqGHWGK+0oJA8LBMbZJWy
-         176ex+P5jsPCkQN8V8XpEWjk3QqibyfX9t0sElDNecVHoGqTzC4CoHpry44zkxTol3Nv
-         vAIvxpkkigDmUNKU8X7NRmxBRRUv5I0LlatjC3QoFCEtvfJgdexPJdHnTxNH/NiYy5bj
-         IqKw==
-X-Received: by 10.68.93.133 with SMTP id cu5mr51779791pbb.71.1444194905025;
-        Tue, 06 Oct 2015 22:15:05 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id xo2sm6687506pbb.48.2015.10.06.22.15.03
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 06 Oct 2015 22:15:04 -0700 (PDT)
-Date: Wed, 7 Oct 2015 10:44:59 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Ioana Ciornei <ciorneiioana@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 08/10] staging: iio: adc: remove the
- use of CamelCase
-Message-ID: <20151007051459.GC4070@sudip-pc>
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=ZAiKmw8+RjyHyVrrihrmVF/c3x9VgOOER5+n2gjF868=;
+        b=CrIhGe2FUYnOcaeCXo+MSGuBrki9HcdFyqUhaHqyh1NER2lXO6FljmQEA8NcwVwPsj
+         9LjkPAOIhxzaF4ef3rF3lUPxx2WnnGbFl3tZV0X+WFPEP+3BFpgHHMcqsuZaNAvlMo03
+         NwNtqRWGj3hnyDnu1fPkrjhho8fV3S3FIRli6lA8xs1R3eKVfaCbi3O/Ao7ddR3TmKOU
+         d243HFBotua6v1NhPMAxXBLMBxYjGC9I1PyaqFAvp6l6MuoQLnfGnm6OURVBY+5D6TaG
+         QqDcBXUl5IYHwH1p64S+qTYoJkQqqDc1SZoGIFJ6vUilGdQRHrR/2DcYG5E/aRzzA+I1
+         ewyQ==
+X-Received: by 10.194.6.106 with SMTP id z10mr20043721wjz.104.1444172256944;
+        Tue, 06 Oct 2015 15:57:36 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
+        by smtp.gmail.com with ESMTPSA id cv4sm35261421wjc.17.2015.10.06.15.57.36
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 06 Oct 2015 15:57:36 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ioana Ciornei <ciorneiioana@gmail.com>
+Subject: [PATCH 10/10] staging: iio: adc: properly indent block comments
+Date: Wed,  7 Oct 2015 01:57:10 +0300
+Message-Id: <da76fbcb4571c288a7a66b4488b9196daee5c9ec.1444172066.git.ciorneiioana@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1444172065.git.ciorneiioana@gmail.com>
 References: <cover.1444172065.git.ciorneiioana@gmail.com>
- <7b2dd35a1b76b4457bc85272f255b982e6003cfc.1444172066.git.ciorneiioana@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7b2dd35a1b76b4457bc85272f255b982e6003cfc.1444172066.git.ciorneiioana@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <cover.1444172065.git.ciorneiioana@gmail.com>
+References: <cover.1444172065.git.ciorneiioana@gmail.com>
 
-On Wed, Oct 07, 2015 at 01:57:08AM +0300, Ioana Ciornei wrote:
-> Remove the use of CamelCase to follow the kernel naming conventions
-> 
-> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
-> ---
->  drivers/staging/iio/adc/ad7192.c      | 12 ++++++------
->  drivers/staging/iio/adc/ad7192.h      |  2 +-
->  drivers/staging/iio/adc/ad7280a.c     | 14 +++++++-------
->  drivers/staging/iio/adc/lpc32xx_adc.c |  6 +++---
->  4 files changed, 17 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-> index f293dbd..f1d4911 100644
-> --- a/drivers/staging/iio/adc/ad7192.c
-> +++ b/drivers/staging/iio/adc/ad7192.c
-> @@ -118,13 +118,13 @@
->  /* GPOCON Register Bit Designations (AD7192_REG_GPOCON) */
->  #define AD7192_GPOCON_BPDSW	BIT(6) /* Bridge power-down switch enable */
->  #define AD7192_GPOCON_GP32EN	BIT(5) /* Digital Output P3 and P2 enable */
-> -#define AD7192_GPOCON_GP10EN	BIT(4) /* Digital Output P1 and P0 enable */
-> +#define AD7193_GPOCON_GP10EN	BIT(4) /* Digital Output P1 and P0 enable */
-Why did you change AD7192_GPOCON_GP10EN to AD7193_GPOCON_GP10EN?
+Rework block comments in order to follow
+kernel coding style
 
-And I donot see any camelcase here, not even in the next few
-conversions.
+Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+---
+ drivers/staging/iio/adc/ad7192.c | 30 ++++++++++++++++++++----------
+ 1 file changed, 20 insertions(+), 10 deletions(-)
 
-regards
-sudip
+diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+index f1d4911..2a16731 100644
+--- a/drivers/staging/iio/adc/ad7192.c
++++ b/drivers/staging/iio/adc/ad7192.c
+@@ -35,10 +35,14 @@
+ #define AD7192_REG_DATA		3 /* Data Register	     (RO, 24/32-bit) */
+ #define AD7192_REG_ID		4 /* ID Register	     (RO, 8-bit) */
+ #define AD7192_REG_GPOCON	5 /* GPOCON Register	     (RO, 8-bit) */
+-#define AD7192_REG_OFFSET	6 /* Offset Register	     (RW, 16-bit
+-				   * (AD7792)/24-bit (AD7192)) */
+-#define AD7192_REG_FULLSALE	7 /* Full-Scale Register
+-				   * (RW, 16-bit (AD7792)/24-bit (AD7192)) */
++#define AD7192_REG_OFFSET	6 /*
++				   * Offset Register	     (RW, 16-bit
++				   * (AD7792)/24-bit (AD7192))
++				   */
++#define AD7192_REG_FULLSALE	7 /*
++				   * Full-Scale Register
++				   * (RW, 16-bit (AD7792)/24-bit (AD7192))
++				   */
+ 
+ /* Communications Register Bit Designations (AD7192_REG_COMM) */
+ #define AD7192_COMM_WEN		BIT(7) /* Write Enable */
+@@ -80,13 +84,19 @@
+ #define AD7192_MODE_CAL_SYS_FULL	7 /* System Full-Scale Calibration */
+ 
+ /* Mode Register: AD7192_MODE_CLKSRC options */
+-#define AD7192_CLK_EXT_MCLK1_2		0 /* External 4.92 MHz Clock connected
+-					   * from MCLK1 to MCLK2 */
++#define AD7192_CLK_EXT_MCLK1_2		0 /*
++					   * External 4.92 MHz Clock connected
++					   * from MCLK1 to MCLK2
++					   */
+ #define AD7192_CLK_EXT_MCLK2		1 /* External Clock applied to MCLK2 */
+-#define AD7192_CLK_INT			2 /* Internal 4.92 MHz Clock not
+-					   * available at the MCLK2 pin */
+-#define AD7192_CLK_INT_CO		3 /* Internal 4.92 MHz Clock available
+-					   * at the MCLK2 pin */
++#define AD7192_CLK_INT			2 /*
++					   * Internal 4.92 MHz Clock not
++					   * available at the MCLK2 pin
++					   */
++#define AD7192_CLK_INT_CO		3 /*
++					   * Internal 4.92 MHz Clock available
++					   * at the MCLK2 pin
++					   */
+ 
+ /* Configuration Register Bit Designations (AD7192_REG_CONF) */
+ 
+-- 
+2.1.4
+
 
