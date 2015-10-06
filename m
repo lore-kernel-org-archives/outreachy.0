@@ -1,110 +1,86 @@
-X-GM-THRID: 6665805280714948608
-X-Received: by 2002:a2e:974d:: with SMTP id f13mr855623ljj.14.1552003733969;
-        Thu, 07 Mar 2019 16:08:53 -0800 (PST)
+X-GM-THRID: 6202590873254887424
+X-Received: by 10.112.142.195 with SMTP id ry3mr6820543lbb.22.1444153225360;
+        Tue, 06 Oct 2015 10:40:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:92cf:: with SMTP id k15ls930045ljh.6.gmail; Thu, 07 Mar
- 2019 16:08:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwu3Cx5akflF5KpnBWZMqqYn3sNKQ/Q5LQDx9SSmfG3BiK+93JJIulPV1oh7NRYy4bluU98
-X-Received: by 2002:a2e:8ec9:: with SMTP id e9mr810961ljl.6.1552003732774;
-        Thu, 07 Mar 2019 16:08:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552003732; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KEHlzoQPu5fLhXpaGmEhGD8Y53CBzJwqD1eKACkRTOcXXw21s97YP42ly2zIR7q4II
-         XUKe1w0cu/9N1UuDem9M5RwS1C4ZOPb1S2B2MBN7RJDQtRQJiyODsSAEiSKsnZGvdlep
-         qf11CQvM9Q1Fe7GDHsS5KXKY7aoj0gmu+1BXCJjJ4qXHWyTDlXpD/HKFjVeSsPoVFMnz
-         haIIgZ5K1bbEEslYuJMrLVqtvfLnn5eFUAXyIC2VqAFMju11/BcIY2J3h/RusiBG43xk
-         o1LgjWkMjq43nJkLhkSIQ/mNJNGTJ3RdysReJ5QbB7nq/5JYjK19Q2zTNzbkUqR8YISQ
-         X1yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=98PeJVC6M60RgmdP9MHI4kFOHi8VNpdFt+pjMO5xw7c=;
-        b=pWm3APMXV6aFhgd/8UTrZS/zisVUF7UApZYDUnlvLlZ9ljxVjBj2eGlC230yLvovhI
-         lLuCtAuj9BWax5a914fH0kEGzTgf7QMtmh4wlWl3psbAexDT9+wZBtBMtucrF2AYLfzp
-         j7IK8TwNwqtdWw9jQ/4M1J6FJfhYFMwGW+oF1hn5zfLh3bgStVl/+qm557dM+El5vAup
-         6vSo5vkOI8PbOWDEOm/3FHwOYtjGEmrPTyEsNtBt+ksH5u5v/XsKa1BzCq53LCc7tbDI
-         mVZYEn6qAiY4KW3RMQj+YzVVbBxWWS93Ky4aft9ADufRH++lCWUzLZQ8p5ME0cVIDHeQ
-         mfWQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vV2I3KsD;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com. [2a00:1450:4864:20::431])
-        by gmr-mx.google.com with ESMTPS id h11si284755lfm.3.2019.03.07.16.08.52
+Received: by 10.180.82.73 with SMTP id g9ls1111907wiy.30.gmail; Tue, 06 Oct
+ 2015 10:40:24 -0700 (PDT)
+X-Received: by 10.180.9.104 with SMTP id y8mr3872402wia.7.1444153224631;
+        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id c7si609066wiy.3.2015.10.06.10.40.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 16:08:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) client-ip=2a00:1450:4864:20::431;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vV2I3KsD;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x431.google.com with SMTP id d17so19475958wre.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 16:08:52 -0800 (PST)
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22d.google.com with SMTP id ge5so177728923wic.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=98PeJVC6M60RgmdP9MHI4kFOHi8VNpdFt+pjMO5xw7c=;
-        b=vV2I3KsDjV8a7jN0y++jL5Lc/RAUoAZYNoACaLZAk3XFJJrNXri5emYddclT0f9gNF
-         mPZTrhoegPhhY9L/WG9RVzRmVHE98/W2lRRaBnu22UjbIxAK+k16iPC934/nVdZuJd2O
-         xsAroIoF1T/k6DtnUmj6ygo9uJt1JqYnKDWUIQE5HZW5G3luGqIaKEYoY6HrXYQnAEEU
-         +Wiq/xbtFlz8qlN2EV86rUqRaoaYdA6AfJ95bv2D9rl2M0uk9g3rhOP1wu7Ggp2OuZMN
-         oOK6ho01t8WK5Jv35QaeE3rgZCK88MEJbpPHujtTIy+9k2cnRR1Ey9BIR7RpgT8tkaNj
-         9qmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=98PeJVC6M60RgmdP9MHI4kFOHi8VNpdFt+pjMO5xw7c=;
-        b=EPZMCCKh4mqwJLSKwj/SSKmbDpSOalEEdn+iBsgkobqA5JRtgPEbHAKuRCbFENl2gC
-         ROsYFW7phcUccEHSNG0gFpoftiDwvsui4kDmo6PQbBZNd4KJVKW5F/IpyZVlEm4M4fuE
-         DuFQhBV6daI5NGsiZeGUFY9V9fqUZU3gqjByxU1jeYyRr/euWXIMxe6/LIVfldyxycgm
-         bQaVIEezdnFT2yCYIpaEeFBrnOeYlSHE9j1jcKZjIvd4LyK8XvagyM1XlmbrwKfXeprA
-         Wf5V65mfSJaTMNVXntxW1biO/ncEK0DE7Q5p7YPBf/DRzem1HwK9JDupYjjmH5HjjcBd
-         OQWw==
-X-Gm-Message-State: APjAAAXjee/ZwjGfDjtgGurjhbpSbFn+reWcSOVHpuJLcJrpSXK+mnrU
-	EKg075N7PdWaJzi90Zais8t2T34=
-X-Received: by 2002:a5d:6b07:: with SMTP id v7mr8506238wrw.314.1552003732295;
-        Thu, 07 Mar 2019 16:08:52 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
-        by smtp.gmail.com with ESMTPSA id p68sm7179144wme.45.2019.03.07.16.08.50
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2019 16:08:51 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: emxx_udc: replace bool with unsigned base type to fix  possible alignment warning
-Date: Fri,  8 Mar 2019 00:06:32 +0000
-Message-Id: <20190308000632.23509-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=j0lDQq8qQZt+YyDWiknXbiiTlPLwpdZ/DmsnA3+xb0k=;
+        b=ahxI33buTOMk4YuboEjsGtkQfTI456A6XKejBEKaMwFKdMKEO+S+FuDZynNtlt79ee
+         h97KvqVYJLzLfvpfN9w792YF4MFj+Lv2NpyfXnwqpaxP/31efA2u5nbar06nt0O0z7ei
+         RIorv1D/QraHwEmOyfWhOT7CVJZraTZmKZqklBrDqd9sqikdOW/J6mJaoaPjo0HfAWn0
+         mLI6A/Z/eSlONohvfC7s81uOeRKJynlLsCMOOTIKTwW4HfFN8qAp6WOKhp+zjoy3E5r4
+         F3k17au2ZnVG1A/N1vKJj+ObiSy3r1TtJN3rJbcedq3uJbbzgX5vZ0+hEDx3MHqnI81z
+         VdSQ==
+X-Received: by 10.194.7.97 with SMTP id i1mr4118402wja.87.1444153224514;
+        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([213.233.101.76])
+        by smtp.gmail.com with ESMTPSA id ry1sm33837272wjb.24.2015.10.06.10.40.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: octeon: Remove /** from regular comments
+Date: Tue,  6 Oct 2015 20:39:43 +0300
+Message-Id: <1444153183-88471-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-replace bool with unsigned base type to fix the checkpatch.pl warning
- Avoid using bool structure members because of possible alignment issues
+Fix kernel-doc warnings 'cannot understand function prototype'
+by removing /** from regular comments
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/emxx_udc/emxx_udc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/octeon/ethernet.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
-index b8c3dee5626c..4a610bc90db3 100644
---- a/drivers/staging/emxx_udc/emxx_udc.h
-+++ b/drivers/staging/emxx_udc/emxx_udc.h
-@@ -528,7 +528,7 @@ struct nbu2ss_req {
- 	struct list_head		queue;
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 87ab6c6..14eb4af 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -86,19 +86,19 @@ int rx_napi_weight = 32;
+ module_param(rx_napi_weight, int, 0444);
+ MODULE_PARM_DESC(rx_napi_weight, "The NAPI WEIGHT parameter.");
  
- 	u32			div_len;
--	bool		dma_flag;
-+	unsigned int		dma_flag;
- 	bool		zero;
+-/**
++/*
+  * cvm_oct_poll_queue - Workqueue for polling operations.
+  */
+ struct workqueue_struct *cvm_oct_poll_queue;
  
- 	bool		unaligned;
+-/**
++/*
+  * cvm_oct_poll_queue_stopping - flag to indicate polling should stop.
+  *
+  * Set to one right before cvm_oct_poll_queue is destroyed.
+  */
+ atomic_t cvm_oct_poll_queue_stopping = ATOMIC_INIT(0);
+ 
+-/**
++/*
+  * Array of every ethernet device owned by this driver indexed by
+  * the ipd input port number.
+  */
 -- 
-2.20.1
+1.9.1
 
 
