@@ -1,98 +1,61 @@
-X-GM-THRID: 9071203713024
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,65e027b63c37ed8,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.63.230 with SMTP id a66mr83191682yhd.51.1426743113061;
-        Wed, 18 Mar 2015 22:31:53 -0700 (PDT)
+X-GM-THRID: 6202249828233117696
+X-Received: by 10.112.26.212 with SMTP id n20mr6187074lbg.2.1444119140330;
+        Tue, 06 Oct 2015 01:12:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.130.200 with SMTP id og8ls484956obb.15.gmail; Wed, 18 Mar
- 2015 22:31:52 -0700 (PDT)
-X-Received: by 10.182.246.37 with SMTP id xt5mr79686739obc.25.1426743112832;
-        Wed, 18 Mar 2015 22:31:52 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id gb13si39699pac.2.2015.03.18.22.31.52
+Received: by 10.25.206.211 with SMTP id e202ls550237lfg.109.gmail; Tue, 06 Oct
+ 2015 01:12:19 -0700 (PDT)
+X-Received: by 10.112.202.165 with SMTP id kj5mr6065936lbc.5.1444119139714;
+        Tue, 06 Oct 2015 01:12:19 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id h2si150799wiy.0.2015.10.06.01.12.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2015 22:31:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Tue, 06 Oct 2015 01:12:19 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id we9so64818863pac.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2015 22:31:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=zc2hFvgQgpbXMmvsaoScz145P5UEov6pGOlg71TDILk=;
-        b=s9CBA3e8+fG0ui/x1h/qmX0vdWRjcpkYgpX4QKcx3gWUqHVPex0H2WJFNOeb5B/c+3
-         /IlIqf2IKpT0vgP1MkHHY5aJCXL2KCjgYD5LCYrcVWZDOludM+L3VOzpa9TGcwqp4zKY
-         elPw1XrVxi5T/aE7fVAhm5fvNY8Wdc/1IIQI/SDPzieQtlIdjd0zGayGSTdH1fNONMyy
-         ba4wJ2fcFaJh0djlilgPELrWueLTIXjmSUcdaY5Cz3yI10SbEIbx6NXBldrVFRjQnM5N
-         2TT8ciz8OaYnQv5Z3D+aqkQbhPIg83MGZG6ztzKtOjIxDGolVU+vb+tore/032DTUhmd
-         95Wg==
-X-Received: by 10.66.235.169 with SMTP id un9mr166836333pac.45.1426743112715;
-        Wed, 18 Mar 2015 22:31:52 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id yf6sm637189pab.26.2015.03.18.22.31.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Mar 2015 22:31:51 -0700 (PDT)
-Date: Thu, 19 Mar 2015 10:59:54 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue002) with ESMTPSA (Nemesis) id 0MR7U6-1aCdZt019y-00UMHv; Tue, 06 Oct
+ 2015 10:12:19 +0200
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Remove unused macros
-Message-ID: <20150319052954.GA6674@akanksha>
+Cc: Hatice =?ISO-8859-1?Q?ERT=DCRK?= <haticeerturk27@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 4/4] Staging: lustre: lnet: klnds: socklnd: Fixed comment style warnings
+Date: Tue, 06 Oct 2015 10:12:18 +0200
+Message-ID: <5387713.QMGkoe8ZvK@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1444073583-9311-1-git-send-email-haticeerturk27@gmail.com>
+References: <1444073583-9311-1-git-send-email-haticeerturk27@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
+X-Provags-ID: V03:K0:tCLNg+OYmqNYVHdKBpn8d2/wHaI6om+1y59ADv0HIe9OweRhpc9
+ 2EFjyerCySJ51WCx/q/J13yNKA6aOBQZFU2qkNyABYW6L2eHOKnSGkXB/G/d6nMwZioK7UU
+ DhNV/q6OYW0OEBHuaDD1n5jto+w9w5+LqPRh8YEeps3Kw6IfH7Qlj033rUO1gTwdehwTt6u
+ 0J65zZZ454mvBB5ICFSiQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:2kEufcl58FA=:wodWlb4MM2mccLiqo+YytY
+ inq8UTgBzqtjkXcBzTl89vPS8sUulFmvcsvgzUxu4LjypBKclUytPqQqQlqaT9+vPN3CWnr9/
+ xug2A+EQkXqzJMrtjJf4OY/O4/gHRLmSp7k3Vl1waePkuMHyZt3kDE+MBGe5XRvXreHLZBwlS
+ p94RHjH8TjQQnKnPQok+HTWsMVqWXqCC2XdGppoZ1ZoRebEXYXnTqDUPbciA/PgxygfggDn5P
+ yGL2ptVKDGHl7XQ+lSSE3Fq4F34iYSrIZ1Ue4SPjY2n6DAw187GpKs5h+tGz96xK1JmFjUTQ0
+ mrDzxSJzJO642dWuE+QliBkz0bHZ79/iIHCl9guLhg+077VkIduK4Qe/o+QG1l/jcIF7ib2uh
+ yL8aDQ/8j49Kve7efJJneal6lArYLhdAOn8c+OdTgcXYbraZM+XfcRPfqExKzKabl3dDQ9VGi
+ 8yNpMvts5bSDbBhMAvMSFW1+2j/5E9Ohg42SL14vYn2nzgKrlsD0UvhvtXFsJueGjBbEHRIXx
+ odWbFlEQGGVwT2VoJVTXFYrKkQ1Px/PSNpUjtFKRUCN+A53MfEbHg52IyMm8eVIRyjQVaOOcK
+ VNeA5DkIqpUPRE+26fmVraa8LmsDLe2Xu2PtQQiUJdxZi8FG7pliSZ2oRttFhQaJ2agVDu4Nu
+ KoJEa8CInSxgI8dk5NJZ7lKhVzoLn1sETgO+YEEsaEZiUeE2b4xd2G3OVRNT/6RlEqcBMy+py
+ gSM3f11NmUAa4449
 
-These macros are defined but never used in the code.
+On Monday 05 October 2015 22:33:03 Hatice ERT=DCRK wrote:
+> +               /*=20
+> +                * All IPs in peer->ksnp_passive_ips[] come from the
+> +                * interface list, therefore the call must succeed.
+> +                */
+>=20
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/include/rtw_security.h | 22 ----------------------
- 1 file changed, 22 deletions(-)
+There is also trailing whitespace in this one. Not sure if you already
+found this after the comment on the other patch.
 
-diff --git a/drivers/staging/rtl8188eu/include/rtw_security.h b/drivers/staging/rtl8188eu/include/rtw_security.h
-index a00d1e6..e9723a7 100644
---- a/drivers/staging/rtl8188eu/include/rtw_security.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_security.h
-@@ -265,28 +265,6 @@ static inline u32 rotr(u32 val, int bits)
- #define TE1(i) rotr(Te0[((i) >> 16) & 0xff], 8)
- #define TE2(i) rotr(Te0[((i) >> 8) & 0xff], 16)
- #define TE3(i) rotr(Te0[(i) & 0xff], 24)
--#define TE41(i) ((Te0[((i) >> 24) & 0xff] << 8) & 0xff000000)
--#define TE42(i) (Te0[((i) >> 16) & 0xff] & 0x00ff0000)
--#define TE43(i) (Te0[((i) >> 8) & 0xff] & 0x0000ff00)
--#define TE44(i) ((Te0[(i) & 0xff] >> 8) & 0x000000ff)
--#define TE421(i) ((Te0[((i) >> 16) & 0xff] << 8) & 0xff000000)
--#define TE432(i) (Te0[((i) >> 8) & 0xff] & 0x00ff0000)
--#define TE443(i) (Te0[(i) & 0xff] & 0x0000ff00)
--#define TE414(i) ((Te0[((i) >> 24) & 0xff] >> 8) & 0x000000ff)
--#define TE4(i) ((Te0[(i)] >> 8) & 0x000000ff)
--
--#define TD0(i) Td0[((i) >> 24) & 0xff]
--#define TD1(i) rotr(Td0[((i) >> 16) & 0xff], 8)
--#define TD2(i) rotr(Td0[((i) >> 8) & 0xff], 16)
--#define TD3(i) rotr(Td0[(i) & 0xff], 24)
--#define TD41(i) (Td4s[((i) >> 24) & 0xff] << 24)
--#define TD42(i) (Td4s[((i) >> 16) & 0xff] << 16)
--#define TD43(i) (Td4s[((i) >> 8) & 0xff] << 8)
--#define TD44(i) (Td4s[(i) & 0xff])
--#define TD0_(i) Td0[(i) & 0xff]
--#define TD1_(i) rotr(Td0[(i) & 0xff], 8)
--#define TD2_(i) rotr(Td0[(i) & 0xff], 16)
--#define TD3_(i) rotr(Td0[(i) & 0xff], 24)
- 
- #define GETU32(pt) (((u32)(pt)[0] << 24) ^ ((u32)(pt)[1] << 16) ^ \
- 			((u32)(pt)[2] <<  8) ^ ((u32)(pt)[3]))
--- 
-1.9.1
-
+=09Arnd
 
