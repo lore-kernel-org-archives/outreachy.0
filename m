@@ -1,65 +1,75 @@
-X-GM-THRID: 2067485687808
-X-Received: by 10.180.80.35 with SMTP id o3mr438220wix.0.1424548585072;
-        Sat, 21 Feb 2015 11:56:25 -0800 (PST)
+X-GM-THRID: 6202440506735067136
+X-Received: by 10.182.65.134 with SMTP id x6mr30335356obs.14.1444118215126;
+        Tue, 06 Oct 2015 00:56:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.28.132 with SMTP id b4ls420379lah.33.gmail; Sat, 21 Feb
- 2015 11:56:23 -0800 (PST)
-X-Received: by 10.152.88.40 with SMTP id bd8mr428449lab.0.1424548583513;
-        Sat, 21 Feb 2015 11:56:23 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
-        by gmr-mx.google.com with ESMTPS id i7si368138wif.0.2015.02.21.11.56.23
+Received: by 10.50.110.36 with SMTP id hx4ls1068458igb.22.canary; Tue, 06 Oct
+ 2015 00:56:54 -0700 (PDT)
+X-Received: by 10.68.69.102 with SMTP id d6mr29722366pbu.10.1444118214800;
+        Tue, 06 Oct 2015 00:56:54 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id pe1si3833447pac.2.2015.10.06.00.56.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 11:56:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Oct 2015 00:56:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22a.google.com with SMTP id x3so11243378wes.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 11:56:23 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x234.google.com with SMTP id fv12so206780659pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 00:56:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=XizpHR9UYVD8R1Vr5ri9hhkpM6NTLsc4vlbJNvFggtI=;
-        b=ySpc5lSg6BM18Cb9biaFtX6PS80LxQXFkFWrdHkVEMqLJdxzZCfFAu4V2xpntG8ojG
-         byacg3TRQuTe3Bw6Xbxa8csJGhUEN2DYHUlJfNR4RcRe5Jsz2MDfNFz22J+bUxVNXPVT
-         rt5T4WV8Adp8XjNqGozg/FZ40NRcaRiFlpT7lQsSOctnVauIteRVvJMYkTEpdPDwrciQ
-         j+zDIkWDWMC2nRWQQ1MqAz+9mMYIcPTF4r6T+upRSIiVA4tXg8FxCM+Fx2pgawmrWYT1
-         37YSukx0erx0pqnzN256linODEKLJQgwJVkD252mh+K/Y+FrffdtwoVw90ydkGfFLMsZ
-         YZEw==
-X-Received: by 10.180.8.98 with SMTP id q2mr6347588wia.80.1424548583419;
-        Sat, 21 Feb 2015 11:56:23 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from localhost ([79.170.54.52])
-        by mx.google.com with ESMTPSA id cb14sm8227863wib.22.2015.02.21.11.56.22
+        bh=XLDqu/MQomcGpNpZIZeRVLn2bbztgb/xzX8jZU3+XcY=;
+        b=Xb9b/Pbp4kHOcApI52ZNGACBDDHLhKJEj6fHo8X6msW4csmWwyOowRXTEK812wQL1V
+         zmCQ5gIUtYPDhBMP0ywGz+3qm3xCMesy4lJETTVGr5VPpxvK53eYKkEu8sGCKaHX5WlJ
+         pafwBP7wEr3KtEQZ5s57/Cwqgwgjp1yYK6CYSIPbk1fqyy9s9QIjq31mRnxtltoTXQ4x
+         6k6I4dCewce0GsXejD2RD7ertjOoLJQt49ScGaIKtYmXRZLedOiWFZ6HIDJLdxVKyJWp
+         8B+f4mfEoZQvhzbmgd+UCz+Q3EcW4r6nt3t76LO+flbCsdI/643+32gDE/6Nok1W/7zs
+         kbpw==
+X-Received: by 10.68.93.227 with SMTP id cx3mr4878842pbb.155.1444118214671;
+        Tue, 06 Oct 2015 00:56:54 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.64.85.185])
+        by smtp.gmail.com with ESMTPSA id dg2sm20562533pbb.9.2015.10.06.00.56.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 11:56:22 -0800 (PST)
-Date: Sat, 21 Feb 2015 02:21:32 +0300
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        Tue, 06 Oct 2015 00:56:53 -0700 (PDT)
+Date: Tue, 6 Oct 2015 13:26:50 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Staging: emxx_udc: Fix checkpatch.pl warnings
-Message-ID: <cover.1424473862.git.hamohammed.sa@gmail.com>
+Subject: [PATCH] staging: vt6656: Remove space after opening brace
+Message-ID: <20151006075650.GA25183@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patchset fixes the following coding style issues found by checkpatch.pl:
-Do not add new typedefs
-Replace printk with pr_err
+Remove space after opening brace '{'. Problem found using
+checkpatch.pl
+CHECK: Blank lines aren't necessary after an open brace '{'
 
-Haneen Mohammed (2):
-  Staging: emxx_udc: Fix do not add new typedefs
-  Staging: emxx_udc: Replace printk with pr_err
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/vt6656/baseband.c | 1 -
+ 1 file changed, 1 deletion(-)
 
- drivers/staging/emxx_udc/emxx_udc.c | 60 ++++++++++++++++++-------------------
- drivers/staging/emxx_udc/emxx_udc.h | 28 ++++++++---------
- 2 files changed, 44 insertions(+), 44 deletions(-)
-
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index 26b1677..3bdbae8 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -527,7 +527,6 @@ void vnt_set_short_slot_time(struct vnt_private *priv)
+ 
+ void vnt_set_vga_gain_offset(struct vnt_private *priv, u8 data)
+ {
+-
+ 	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xE7, data);
+ 
+ 	/* patch for 3253B0 Baseband with Cardbus module */
 -- 
 1.9.1
 
