@@ -1,109 +1,79 @@
-X-GM-THRID: 6253707231891554304
-X-Received: by 10.31.152.208 with SMTP id a199mr21766002vke.4.1456054680592;
-        Sun, 21 Feb 2016 03:38:00 -0800 (PST)
+X-GM-THRID: 6202300337979654144
+X-Received: by 10.194.240.230 with SMTP id wd6mr6803727wjc.0.1444158855895;
+        Tue, 06 Oct 2015 12:14:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.114.133 with SMTP id jg5ls172664igb.11.gmail; Sun, 21 Feb
- 2016 03:38:00 -0800 (PST)
-X-Received: by 10.66.63.68 with SMTP id e4mr21293287pas.40.1456054680252;
-        Sun, 21 Feb 2016 03:38:00 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id ff2si2797350pad.2.2016.02.21.03.38.00
+Received: by 10.25.19.223 with SMTP id 92ls653512lft.101.gmail; Tue, 06 Oct
+ 2015 12:14:15 -0700 (PDT)
+X-Received: by 10.112.132.6 with SMTP id oq6mr6692141lbb.1.1444158855072;
+        Tue, 06 Oct 2015 12:14:15 -0700 (PDT)
+Return-Path: <aybuke.147@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id w4si599736wiz.0.2015.10.06.12.14.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 03:38:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Tue, 06 Oct 2015 12:14:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id ho8so77416786pac.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 03:38:00 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x232.google.com with SMTP id lk2so173313307wic.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 12:14:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=gL17JBdFNlYdLDhf/dbW8Hrd4gRlDHFO1cC2Ey2H7zU=;
-        b=HcCacyv4No5ZlG67wbCSUyj6tFKXVAbwKvsJQS9GIYDMvCsfysagZ9c5SjesQWpX2w
-         K5fhqkLCTDik9675r7XE5HMBVzc4/y0DwxPS+FLtpscKIi0UWgpFgl7NO/ZwltMdob8w
-         G2njh20nLhCzPQvfSMqh4SKWU4i0ALk7w4QVvNzznjXH7AZy3YIE3Jng21+Ps3BqYrwl
-         vF25aGhQdnfJ/pCEImxygLrLWzukane3fRGZAEfQw4sgcEhuxGKg4VuuH+VgcyRs3ySe
-         b8XngB/38zXRryCCd4d/baFqQ/OS/4uwNxLR/yIq760Z+unYe4UdFSTMSe+AYQdWRvFj
-         MELA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=gL17JBdFNlYdLDhf/dbW8Hrd4gRlDHFO1cC2Ey2H7zU=;
-        b=IjTla7KqQtPTINJNejoMOsftUKnQOPS2k9CxT/HQVmAvuF0S1ULoKlu90ek63A2lGX
-         idT9/2ggjS2Orj+jlz25lwXqozIZG/62YqmG/vNNE1UiJFd5Em5dfPLhRR0bsl8fMcaM
-         4p8JCMg+21sWu8sc3/uviM26GSQ9bowwghuRAocppA63hmqqkFz7lTCUN0eNqgl+05kO
-         Zs89cFrciAsy/oKw2QrhWry8geBEpQjWusZSN8siXlZ4QjhIUewNY1ohBHjZfqnXI/Oj
-         +GbCdVBe1hZohMo6Zs53dC9m2y/rd1TfmX4vAo7ubLRpdGiJFslDUBXGUUrcg/j7OQdJ
-         w2Hg==
-X-Gm-Message-State: AG10YOQ5VmNpaFKpIHJTZTaCZycQ3v2k5Qma/Z+fRyZdCIk1HKsqjKfp+QHYiA5CXyfrhA==
-X-Received: by 10.67.23.161 with SMTP id ib1mr29494926pad.156.1456054680165;
-        Sun, 21 Feb 2016 03:38:00 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e4sm770893pat.37.2016.02.21.03.37.59
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 03:37:59 -0800 (PST)
-Date: Sun, 21 Feb 2016 17:08:32 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=qUE34Z2Wua83ZHwJ1GMdzN29goKRli0chmfoYu3a94k=;
+        b=umYDmsynfLAisAupkhcy2AOBEI5tDX/wIev3KBXP4OBYKzjdaO0LGFf+L+kpb4uIPT
+         oZVBAlX3R7lKd16D9PFsRUmnnhWGstk9I7KkVAy8O6cqpWZQ0mmwHSPl+kzaZzYqGKbo
+         kCGruKwmGfY9/ReRISaTCsXC5Xcm5nvxTq6UjpzpleGJqFjJ1ThPDuf4M4Na41QsAZhZ
+         PaR88i2rCoVeLGmHn8j3DLozm/ywLYPLxiwCvM6cE4rg0H9hqwP4H0VLjZszmIBQHO0a
+         VwrSDbyhCSeT6j+puPE2ThzikMUR7CFALK1yIPLcPEdX3Xnazm3AaboeTt/s8n1y1Ame
+         N6Dg==
+X-Received: by 10.194.171.69 with SMTP id as5mr37998087wjc.137.1444158854954;
+        Tue, 06 Oct 2015 12:14:14 -0700 (PDT)
+Return-Path: <aybuke.147@gmail.com>
+Received: from localhost.localdomain ([78.178.177.3])
+        by smtp.gmail.com with ESMTPSA id bv2sm34294866wjc.11.2015.10.06.12.14.13
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 06 Oct 2015 12:14:13 -0700 (PDT)
+From: Aybuke Ozdemir <aybuke.147@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fbtft:  Prefer using kmalloc_array
-Message-ID: <20160221113832.GA28242@Karyakshetra>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Aybuke Ozdemir <aybuke.147@gmail.com>
+Subject: [PATCH v3 2/2] Staging: wilc1000: fix spelling mistake.
+Date: Tue,  6 Oct 2015 22:14:02 +0300
+Message-Id: <1444158842-6903-1-git-send-email-aybuke.147@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Use kmalloc_array instead of kmalloc for arrays to prevent integer
-overflows.
-This was done using Coccinelle:
-@@
-expression e1, e2;
-constant C;
-type t;
-@@
-(
-- kmalloc(sizeof(e1)*e2, C)
-+ kmalloc_array(e2, sizeof(e1), C)
-|
-- kmalloc(e2*sizeof(e1), C)
-+ kmalloc_array(e2, sizeof(e1), C)
-|
-- kmalloc(e2*sizeof(t), C)
-+ kmalloc_array(e2, sizeof(t), C)
-|
-- kmalloc(sizeof(t)*e2, C)
-+ kmalloc_array(e2, sizeof(t), C)
-)
+This patch corrects the spelling of the word function by adding missing
+letter.
+Problem found by checkpatch.pl :
+CHECK: 'funcion' may be misspelled - perhaps 'function'?
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
 ---
- drivers/staging/fbtft/fb_agm1264k-fl.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Changed v1:
+* "Added" commit message title in the form of the "fixed" has been changed.
+Changed v2:
+* Edited complex message content
+---
+ drivers/staging/wilc1000/coreconfigurator.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-index 2a50cf9..5fbfd50 100644
---- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-+++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-@@ -272,8 +272,9 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 	int ret = 0;
-
- 	/* buffer to convert RGB565 -> grayscale16 -> Dithered image 1bpp */
--	signed short *convert_buf = kmalloc(par->info->var.xres *
--		par->info->var.yres * sizeof(signed short), GFP_NOIO);
-+	signed short *convert_buf = kmalloc_array(par->info->var.xres * par->info->var.yres,
-+						  sizeof(signed short),
-+						  GFP_NOIO);
-
- 	if (!convert_buf)
- 		return -ENOMEM;
---
-2.1.4
+diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
+index 65a130d..9f87d05 100644
+--- a/drivers/staging/wilc1000/coreconfigurator.c
++++ b/drivers/staging/wilc1000/coreconfigurator.c
+@@ -264,7 +264,7 @@ static inline u16 get_assoc_resp_cap_info(u8 *data)
+ 	return cap_info;
+ }
+ 
+-/* This funcion extracts the association status code from the incoming       */
++/* This function extracts the association status code from the incoming       */
+ /* association response frame and returns association status code            */
+ static inline u16 get_asoc_status(u8 *data)
+ {
+-- 
+1.9.1
 
 
