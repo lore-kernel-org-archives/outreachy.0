@@ -1,67 +1,77 @@
 X-GM-THRID: 6202842590500356096
-X-Received: by 10.68.194.72 with SMTP id hu8mr150788pbc.8.1444212819495;
-        Wed, 07 Oct 2015 03:13:39 -0700 (PDT)
+X-Received: by 10.66.221.7 with SMTP id qa7mr45014pac.33.1444211832853;
+        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.28.97 with SMTP id 88ls200189qgy.90.gmail; Wed, 07 Oct
- 2015 03:13:39 -0700 (PDT)
-X-Received: by 10.31.44.18 with SMTP id s18mr150339vks.6.1444212819028;
-        Wed, 07 Oct 2015 03:13:39 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id uv4si5244167pac.0.2015.10.07.03.13.38
+Received: by 10.107.167.67 with SMTP id q64ls182259ioe.20.gmail; Wed, 07 Oct
+ 2015 02:57:12 -0700 (PDT)
+X-Received: by 10.50.79.234 with SMTP id m10mr491496igx.5.1444211832464;
+        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id wl2si4759754pab.1.2015.10.07.02.57.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 03:13:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id hy16so17493978pad.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 03:13:38 -0700 (PDT)
+Received: by mail-pa0-x231.google.com with SMTP id lk4so16970732pab.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=I36pjpTrwBzNipmZfdb7ukqeujiNJsCc4tPyBILIfCo=;
-        b=UP3LRw0g7LUQkGJgrbOnZEw696u0awsbfmvRDR+loeazJZUCFtT9DFseQaNQENetJo
-         7V9Bk0d5zXLbtRWksvCsTBeOHBX0WEj2qp35GzmLATtHo2PT3v00cTrQUXmA5u7Zj8/8
-         oj00ZnB5wdgWOXguNEWGIM8yfvvIrZ2EcDggHnu8//Mlae07gHaXKRAV8DnMUAGGVKAE
-         bbFoybg73x0vSXgXUtv5v860B5Sn9YahAIR7cdWjRgwl+VO8i3Ud3mBWBrhbMgI5hfBl
-         2zZFSH+nZQ2mlWOADs1bK3iEp0wXRnHe2hLls6YN+NJeqbsAmcdIUYB+tZ4fI359RBuw
-         yyMA==
-X-Received: by 10.67.30.136 with SMTP id ke8mr287978pad.16.1444212818805;
-        Wed, 07 Oct 2015 03:13:38 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id bk8sm38758191pad.18.2015.10.07.03.13.37
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 07 Oct 2015 03:13:38 -0700 (PDT)
-Date: Wed, 7 Oct 2015 15:43:30 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: most: networking: Fixed the
- warning of using integer as NULL
-Message-ID: <20151007101330.GA3142@sudip-pc>
-References: <20151007095703.GA47324@ubuntu>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=75PHqBbNMqCl7jSiBdIUPp3zkFpZPWzHHJGyidMmySk=;
+        b=GTw1gNF7/QrlPwLxJpZ8s+6u5O1Au1Jmxuu0X+M3V/M/Ds9SXF1gCmgjMkeoXUKZyH
+         csjtqbdOjU/Vls1WwmmyFT2a+7ifmvTU/qrSVf0pzOt/SZlFy11AMpXmJpgtJmTE8J/w
+         3JY92j+H3g3bck+kP4GquZjugSHSNo5+ht6yvt5IpR+tFnNbDbINwox0nAYCg0f2pY7W
+         ydDPQevg9UmbbsZh6eUtukn4FydFMZq035wZl5xpW4ciw9g72+7jQj6A3Jo5VbLmd0/e
+         AzRsHrzIsqrG3lsuCeMTzIO1Pl4tLBORCdCAF4a6O0znNfdOT/SHocO96EZiPMg3pBWp
+         YXSg==
+X-Received: by 10.68.131.6 with SMTP id oi6mr129996pbb.3.1444211832344;
+        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id iy1sm38403894pbb.85.2015.10.07.02.57.10
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 07 Oct 2015 02:57:11 -0700 (PDT)
+Date: Wed, 7 Oct 2015 15:27:03 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: most: networking: Fixed the warning of using
+ integer as NULL
+Message-ID: <20151007095703.GA47324@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20151007095703.GA47324@ubuntu>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Wed, Oct 07, 2015 at 03:27:03PM +0530, Shivani Bhardwaj wrote:
-> Fixed the warning generated by sparse : Using plain integer as NULL
-> pointer, by changing the value pointed to by nd->dev from 0 to NULL.
-> 
-> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> ---
-This has already been done by 1865e4ea0b2d ("Staging: most: Use NULL instead of zero")
+Fixed the warning generated by sparse : Using plain integer as NULL
+pointer, by changing the value pointed to by nd->dev from 0 to NULL.
 
-Which tree are you using?
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/most/aim-network/networking.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-regards
-sudip
+diff --git a/drivers/staging/most/aim-network/networking.c b/drivers/staging/most/aim-network/networking.c
+index c8ab239..a1e1bce 100644
+--- a/drivers/staging/most/aim-network/networking.c
++++ b/drivers/staging/most/aim-network/networking.c
+@@ -295,7 +295,7 @@ static void most_net_rm_netdev_safe(struct net_dev_context *nd)
+ 
+ 	unregister_netdev(nd->dev);
+ 	free_netdev(nd->dev);
+-	nd->dev = 0;
++	nd->dev = NULL;
+ }
+ 
+ static struct net_dev_context *get_net_dev_context(
+-- 
+2.1.0
+
 
