@@ -1,65 +1,106 @@
 X-GM-THRID: 6201947249365221376
-X-Received: by 10.182.196.71 with SMTP id ik7mr2934598obc.36.1444252739970;
-        Wed, 07 Oct 2015 14:18:59 -0700 (PDT)
+X-Received: by 10.112.181.10 with SMTP id ds10mr600851lbc.3.1444248397735;
+        Wed, 07 Oct 2015 13:06:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.30.65 with SMTP id e62ls371078ioe.49.gmail; Wed, 07 Oct
- 2015 14:18:59 -0700 (PDT)
-X-Received: by 10.107.148.204 with SMTP id w195mr3387410iod.15.1444252739496;
-        Wed, 07 Oct 2015 14:18:59 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id zg1si5375993pbb.2.2015.10.07.14.18.58
+Received: by 10.180.93.166 with SMTP id cv6ls220591wib.39.gmail; Wed, 07 Oct
+ 2015 13:06:37 -0700 (PDT)
+X-Received: by 10.194.109.233 with SMTP id hv9mr613010wjb.1.1444248397521;
+        Wed, 07 Oct 2015 13:06:37 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id c1si174577wiv.3.2015.10.07.13.06.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 14:18:59 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
+        Wed, 07 Oct 2015 13:06:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue103) with ESMTPSA (Nemesis) id 0MCfv0-1ZtK1t3C4I-009RsK; Wed, 07 Oct
- 2015 23:18:55 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Shraddha Barke <shraddha.6596@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/5] Declare local functions as static
-Date: Wed, 07 Oct 2015 23:18:55 +0200
-Message-ID: <5182395.LaiSdLnjxc@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x232.google.com with SMTP id lk2so44437842wic.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 13:06:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=3evlXxfzI4MRqNTCj/OCi4C1gAwvb9hu+IgY01/kPCg=;
+        b=ZPsCxZ5wS2Q70YQ8x5gs7ckB0RgGQjcVTARjKArF3546pv01VAxrTVAqBZm++cnhtA
+         JW9kURPHdHx1Ma2Lrp9tA4ois1asOqx8DEa+q5jSeci5gHmRyL+JiBiGyNtyeuJaPpUG
+         z8eYeMw5JUurVtSQyUMUs6zuNJbSmT0vwSQfiWxX8ApuIbE+fywrRPeK7ahkmNIyUmxG
+         8PispDOdd1vu6Ab+05acp1v7CgwNQCs4TmK0s9O8PiTpnfYdImSAKxZj8y9tIpxnUQjJ
+         hqty92Bld3a7fhQSOHbxTpBFoSDvPPZ9HVM/dKi+bjeD+ZM+r0mk8LpyzGHl4wkZ26Cu
+         NJXA==
+X-Received: by 10.194.118.5 with SMTP id ki5mr3199208wjb.94.1444248397430;
+        Wed, 07 Oct 2015 13:06:37 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id fv13sm4016186wic.7.2015.10.07.13.06.33
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 07 Oct 2015 13:06:36 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 5/5] Staging: lustre: obdclass: obdo: Declare iattr_from_obdo as static
+Date: Thu,  8 Oct 2015 01:36:08 +0530
+Message-Id: <1444248368-29504-6-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1444248368-29504-1-git-send-email-shraddha.6596@gmail.com>
 References: <1444248368-29504-1-git-send-email-shraddha.6596@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:hxXc/thQMgtmmtHHD/2ELQL/GyZFv8AnS07JRuMinK8lG8CHkjk
- 8/L8f477ASToQ1NOMDWlnkFmN0CVv+bITGtyG96slJSfsgIvJS9MmRS+wumipuLafOKbn4Q
- Juu6Q7u4kUN2MVGLIr+AOIlMdmIVvoYW6DtFcEQz4H4KK0STi5T+dEd4WMDF/5rsMzCPNvY
- 6lUBEg+Ii8TrhtbONAvfg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Q9XQBKUmwqs=:+RBULEDCU0Y3hqtMs2OHjG
- GjjoPG/xlIL7aiIEdOpynf1ByBqTDVQr9KGByktbEI6dzN8VQ0XNuDZTyQa0TeKu/Xxka7vBG
- pJIgV40LtTThdZGd9LxrMsH9/ilAHCYxqlt4I1083FnkWy4hF63Oh3G3ZXmgEm807zPiJtVS4
- B4KYuYhGaAhFTv1M9eTNPwmybO5Skv02B3zRQLlHrwu9cyBMuTVqybhAV++qMl8a+gLiNw4NL
- TQLoLtn4Dr+9ITbI0H3pJDBQ8LTNo6hSmiRQhlQvv7bu5+ls1m/MBQuYLsKcH7KHX/FIXumlT
- ReU+/11GXJKOnLAMvwrXZCoI3ggP5IMqPx2tN3B5eSxzWyYmJBvPrfhs2lSoADoALHKcdwoXl
- RGs9DjNT8z3M2NUiJD1MT35eTla0X1jU9fOdSdEdyaHuFHDukdEh6tmqkh49+1ICDN1l5/ply
- JBInxSUpPK9XaN1xGgdusBInj/aSULp8IKdPWM9gRQBOPdkssMHSc0dJb+5mvNLkOIO+j2vKy
- MwpDVXxkWMtOUEpFS/f//S2SJ7R6pm3H/tr9kbt7eblX+mAn7cbZ/ObRtAuGYR7L/6fEhVIZq
- 0s0WHWq9UfdSCuqb9yvlP8OtTUk2+VGcBEOnCrvUdh4VMYeIf+ct12GBq0sqmJgbFlKb2Cgbf
- kV7YK0dEh5t02BcaePyeflLWGVDB/V8HS/tOx6hvliUrhGjB++wdtq0AjL3rK7Lx5OVH23hd/
- GGHnaIBOqWbOs7/k
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150207.56157B4B.009E,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Thursday 08 October 2015 01:36:03 Shraddha Barke wrote:
-> Declare functions as static since they are used only in a particular file. 
-> 
-> Shraddha Barke (5):
->   Staging: lustre: obdclass: llog_cat: Declare local functions as static
->   Staging: lustre: ptlrpc: pack_generic: Declare local functions as
->     static
->   Staging: lustre: ptlrpc: import: Declare deuuidify as static
->   Staging: lustre: ptlrpc: service: Declare local functions as static
->   Staging: lustre: obdclass: obdo: Declare iattr_from_obdo as static
-> 
+Declare iattr_from_obdo as static since it is used only in this
+particular file.Also remove the corresponding declaration from
+header file.
 
-All five patches
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/lustre/lustre/include/obd_class.h | 1 -
+ drivers/staging/lustre/lustre/obdclass/obdo.c     | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
+index 648132a..82f1a26 100644
+--- a/drivers/staging/lustre/lustre/include/obd_class.h
++++ b/drivers/staging/lustre/lustre/include/obd_class.h
+@@ -271,7 +271,6 @@ struct obdo;
+ void obdo_refresh_inode(struct inode *dst, struct obdo *src, u32 valid);
+ 
+ void obdo_to_ioobj(struct obdo *oa, struct obd_ioobj *ioobj);
+-void iattr_from_obdo(struct iattr *attr, struct obdo *oa, u32 valid);
+ void md_from_obdo(struct md_op_data *op_data, struct obdo *oa, u32 valid);
+ 
+ #define OBT(dev)	(dev)->obd_type
+diff --git a/drivers/staging/lustre/lustre/obdclass/obdo.c b/drivers/staging/lustre/lustre/obdclass/obdo.c
+index 1a950fb..75e1dea 100644
+--- a/drivers/staging/lustre/lustre/obdclass/obdo.c
++++ b/drivers/staging/lustre/lustre/obdclass/obdo.c
+@@ -127,7 +127,7 @@ void obdo_to_ioobj(struct obdo *oa, struct obd_ioobj *ioobj)
+ }
+ EXPORT_SYMBOL(obdo_to_ioobj);
+ 
+-void iattr_from_obdo(struct iattr *attr, struct obdo *oa, u32 valid)
++static void iattr_from_obdo(struct iattr *attr, struct obdo *oa, u32 valid)
+ {
+ 	valid &= oa->o_valid;
+ 
+@@ -174,7 +174,6 @@ void iattr_from_obdo(struct iattr *attr, struct obdo *oa, u32 valid)
+ 		attr->ia_valid |= ATTR_GID;
+ 	}
+ }
+-EXPORT_SYMBOL(iattr_from_obdo);
+ 
+ void md_from_obdo(struct md_op_data *op_data, struct obdo *oa, u32 valid)
+ {
+-- 
+2.1.4
+
 
