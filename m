@@ -1,73 +1,80 @@
-X-GM-THRID: 6199955857120165888
-X-Received: by 10.112.54.197 with SMTP id l5mr4275780lbp.21.1443539712325;
-        Tue, 29 Sep 2015 08:15:12 -0700 (PDT)
+X-GM-THRID: 6202978899734822912
+X-Received: by 10.50.114.2 with SMTP id jc2mr23694472igb.5.1444245534315;
+        Wed, 07 Oct 2015 12:18:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.17.70 with SMTP id g67ls412322lfi.13.gmail; Tue, 29 Sep
- 2015 08:15:11 -0700 (PDT)
-X-Received: by 10.152.120.232 with SMTP id lf8mr1283892lab.1.1443539711534;
-        Tue, 29 Sep 2015 08:15:11 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id o5si69875wib.0.2015.09.29.08.15.11
+Received: by 10.50.29.36 with SMTP id g4ls1902146igh.31.canary; Wed, 07 Oct
+ 2015 12:18:53 -0700 (PDT)
+X-Received: by 10.66.249.100 with SMTP id yt4mr2328275pac.42.1444245533761;
+        Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-yk0-x22b.google.com (mail-yk0-x22b.google.com. [2607:f8b0:4002:c07::22b])
+        by gmr-mx.google.com with ESMTPS id u67si3281224ywf.5.2015.10.07.12.18.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 08:15:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::22b as permitted sender) client-ip=2607:f8b0:4002:c07::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::22b as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id ge5so155215679wic.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 08:15:11 -0700 (PDT)
+Received: by mail-yk0-x22b.google.com with SMTP id g206so27594274ykd.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=ctmHZOKbzRP0z37oyNG7axUrPqUm8N+6upk+qt3xpgw=;
-        b=TIWJ59Bnb7S7bGOzgCTcY32llHaeR9pqwKsKGW2Qo0wOB81B4HGFmjoCLiTZxw4dpJ
-         ennF5w6qpuKlrqyYIU2wVlZ/npKpHYrYk2P6BJFty3/0GiM5J2BoAiSIuSZtQVgP1c6k
-         EgeFSHYNCVWbcxtgDz2HZ/JXjnRfqybFo0H8rv8blNeFJVmc+9W/E+gV4Llz3CHBkF8D
-         S7SL4eYQHeYbfgQM7cr8kbLmPM4vwghPit6zOpAQyjiETv66kqjfsYrvDEBJiCjNxcBR
-         2rmw8F8L+NNJb+Yf8hDi90F5oIqe7dJAoKZU7Mb/kpKc2cjTGLLRiSJ+EikTiBBjvfsZ
-         iLrg==
-X-Received: by 10.194.52.6 with SMTP id p6mr33313473wjo.119.1443539711282;
-        Tue, 29 Sep 2015 08:15:11 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by smtp.gmail.com with ESMTPSA id lh11sm24383273wic.18.2015.09.29.08.15.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 29 Sep 2015 08:15:10 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org,
-	Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: wilc1000: Remove typedef
-Date: Tue, 29 Sep 2015 17:15:01 +0200
-Message-Id: <1443539701-2833-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=J7DvRhj7PVqg0tUTEawjW8Tr919M0Q6CCF2pTxiPiYA=;
+        b=fKmqwv3TQ1SY+Vd6wydIk+kWq6I0ZKwL9v7g7eDxFsfg6ELkHxVD+nWSI3eXJP9Vjd
+         BOaBmvN8ku0hAdHr7kkaTxlWARp8gDP49jG+C8J3gSJbg5Iq0ocSi7/pS3WqbrLHONx6
+         C8hCNrbCgfFHZSLk2S4HKQu4KUr9fUGFQumHkeIOClchLX+Tr0sFs0LhXNi8N+toIMli
+         pxjQNMLFJNHCy1Bzpz9HeX8OlB3kkelVnNZE9Bv14/11vuYaf3fIaBnznatXhxCr5Nx0
+         pa17ZzgVq9ZpECo4HVeyt8l9MSApnzcsFc6IHFpMVCRj616VQvGkdIt0h86xdwr9SypB
+         OdFQ==
+MIME-Version: 1.0
+X-Received: by 10.13.223.141 with SMTP id i135mr2385272ywe.30.1444245533595;
+ Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
+Received: by 10.37.107.66 with HTTP; Wed, 7 Oct 2015 12:18:53 -0700 (PDT)
+In-Reply-To: <4982395.WtRaKIPf3W@wuerfel>
+References: <1444243562-19812-1-git-send-email-ciorneiioana@gmail.com>
+	<4982395.WtRaKIPf3W@wuerfel>
+Date: Wed, 7 Oct 2015 22:18:53 +0300
+Message-ID: <CAHWJYFnukj268RW2aPBp2tuLUWSSCdxiQNG5CKc-io9S860vPg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adc: remove unused definitions
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-WILC_Time is not used and also time_t is not y2038 safe, therefore remove it.
-Also remove comment refering to it.
+On Wed, Oct 7, 2015 at 10:10 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+>
+> On Wednesday 07 October 2015 21:46:02 Ioana Ciornei wrote:
+> > diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+> > index fe56fb6..53bce3a 100644
+> > --- a/drivers/staging/iio/adc/ad7192.c
+> > +++ b/drivers/staging/iio/adc/ad7192.c
+> > @@ -118,12 +118,6 @@
+> >
+> >  /* GPOCON Register Bit Designations (AD7192_REG_GPOCON) */
+> >  #define AD7192_GPOCON_BPDSW    BIT(6) /* Bridge power-down switch enable */
+> > -#define AD7192_GPOCON_GP32EN   BIT(5) /* Digital Output P3 and P2 enable */
+> > -#define AD7192_GPOCON_GP10EN   BIT(4) /* Digital Output P1 and P0 enable */
+> > -#define AD7192_GPOCON_P3DAT    BIT(3) /* P3 state */
+> > -#define AD7192_GPOCON_P2DAT    BIT(2) /* P2 state */
+> > -#define AD7192_GPOCON_P1DAT    BIT(1) /* P1 state */
+> > -#define AD7192_GPOCON_P0DAT    BIT(0) /* P0 state */
+> >
+> >  #define AD7192_INT_FREQ_MHz    4915200
+>
+> I'd say it makes sense to leave these ones present, because it documents
+> the hardware registers.
+>
+> Any unused code or definitions that are purely for the code's own sake
+> should be removed normally, but in this case the bit 6 is clearly used
+> in the code, so it's good to know what the other bits are.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- drivers/staging/wilc1000/wilc_platform.h | 2 --
- 1 file changed, 2 deletions(-)
+I also had doubts about this one.
+Thanks for the feedback,
 
-diff --git a/drivers/staging/wilc1000/wilc_platform.h b/drivers/staging/wilc1000/wilc_platform.h
-index 1e56973..83f309d 100644
---- a/drivers/staging/wilc1000/wilc_platform.h
-+++ b/drivers/staging/wilc1000/wilc_platform.h
-@@ -33,8 +33,6 @@ typedef struct __MessageQueue_struct {
- 
- 
- 
--/*Time represented in 64 bit format*/
--typedef time_t WILC_Time;
- 
- 
- /*******************************************************************
--- 
-1.9.1
-
+Ioana
 
