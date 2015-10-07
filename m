@@ -1,92 +1,94 @@
 X-GM-THRID: 6202887067130658816
-X-Received: by 10.112.138.170 with SMTP id qr10mr1067573lbb.4.1444287937924;
-        Thu, 08 Oct 2015 00:05:37 -0700 (PDT)
+X-Received: by 10.129.123.85 with SMTP id w82mr646582ywc.39.1444222193308;
+        Wed, 07 Oct 2015 05:49:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.28.200 with SMTP id c191ls162696lfc.71.gmail; Thu, 08 Oct
- 2015 00:05:37 -0700 (PDT)
-X-Received: by 10.112.147.7 with SMTP id tg7mr1050261lbb.16.1444287937375;
-        Thu, 08 Oct 2015 00:05:37 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id ch7si255506wib.2.2015.10.08.00.05.37
+Received: by 10.140.94.7 with SMTP id f7ls323013qge.39.gmail; Wed, 07 Oct 2015
+ 05:49:52 -0700 (PDT)
+X-Received: by 10.129.70.6 with SMTP id t6mr715982ywa.5.1444222192936;
+        Wed, 07 Oct 2015 05:49:52 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id zg1si5108009pbb.2.2015.10.07.05.49.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 00:05:37 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 07 Oct 2015 05:49:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,653,1437429600"; 
-   d="scan'208";a="181678467"
-Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 08 Oct 2015 09:05:36 +0200
-Date: Thu, 8 Oct 2015 08:05:32 +0100 (IST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Shraddha Barke <shraddha.6596@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: sm750fb: Use ARRAY_SIZE
- macro
-In-Reply-To: <1444222177-11153-2-git-send-email-shraddha.6596@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510080804150.2559@hadrien>
-References: <1444222177-11153-1-git-send-email-shraddha.6596@gmail.com> <1444222177-11153-2-git-send-email-shraddha.6596@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x229.google.com with SMTP id hy16so20950746pad.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 05:49:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=lQvTAROBjUqfqPEqySp2qQ6h1+bjyXZs0nuIIyQsEhk=;
+        b=LTANuaPmTxOXZud7EnRzXDSuhYVVtEuvDAMt7rpE8Nk9pN2wdpVUlitgGq47bsGCzZ
+         Lv80gvsKPp0XgC3nqwwznQh+BhCUzygoVInNHzO1r86bInbF515R234Uwz32xZgTIpd+
+         NELS5bbuXCGfZoUz9ktgwyr435IaTGUE48uDqVqENRkf40GAGHu9mTlnR2eDgANq86mm
+         zIk1Yzb45DGhRC7HayGoubgF6hGTDpojn6E16NzgfZ9mLtAqBfzxEDE0Dy/V0gmMaBQY
+         i7bCHnSzF548v5WHKOG6RDta3/0zl5Rds4bboOm43P2NrSLbsg0sHvHYv+GQnsCtyPkz
+         sSUg==
+X-Received: by 10.68.238.130 with SMTP id vk2mr1022689pbc.114.1444222192770;
+        Wed, 07 Oct 2015 05:49:52 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id ci2sm11668110pbc.66.2015.10.07.05.49.50
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 07 Oct 2015 05:49:52 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 2/2] Staging: speakup: Use ARRAY_SIZE macro
+Date: Wed,  7 Oct 2015 18:19:37 +0530
+Message-Id: <1444222177-11153-3-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1444222177-11153-1-git-send-email-shraddha.6596@gmail.com>
+References: <1444222177-11153-1-git-send-email-shraddha.6596@gmail.com>
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150207.561514EF.0187,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Wed, 7 Oct 2015, Shraddha Barke wrote:
+ARRAY_SIZE is more concise to use when the size of an array is divided
+by the size of its type or the size of its first element.
 
-> ARRAY_SIZE is more concise to use when the size of an array is divided
-> by the size of its type or the size of its first element.
->
-> Change made using Coccinelle-
->
-> @@
-> type T;
-> T[] E;
-> @@
->
-> - (sizeof(E)/sizeof(T))
-> + ARRAY_SIZE(E)
+Changes made using Coccinelle-
 
-This semantic patch doesn't have a pattern for the size of the first
-element.  You don't have to put the complete semantic patch in the commit
-message whn it does multiple things.  But it would be better to put the
-part of the semantic patch that actually relates to the transformation
-that is made.  Then someone can understand the transformation that was
-made better.
+@@
+type T;
+T[] E;
+@@
 
-julia
+- (sizeof(E)/sizeof(T))
++ ARRAY_SIZE(E)
 
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-> index e987971..f542cd5 100644
-> --- a/drivers/staging/sm750fb/ddk750_chip.c
-> +++ b/drivers/staging/sm750fb/ddk750_chip.c
-> @@ -391,10 +391,10 @@ unsigned int calcPllValue(unsigned int request_orig, pll_value_t *pll)
->
->  	if (pll->clockType != MXCLK_PLL) {
->  		xparm = &xparm_PIXEL[0];
-> -		xcnt = sizeof(xparm_PIXEL)/sizeof(xparm_PIXEL[0]);
-> +		xcnt = ARRAY_SIZE(xparm_PIXEL);
->  	} else {
->  		xparm = &xparm_MXCLK[0];
-> -		xcnt = sizeof(xparm_MXCLK)/sizeof(xparm_MXCLK[0]);
-> +		xcnt = ARRAY_SIZE(xparm_MXCLK);
->  	}
->
->
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1444222177-11153-2-git-send-email-shraddha.6596%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/speakup/i18n.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+index f061747..12f880e 100644
+--- a/drivers/staging/speakup/i18n.c
++++ b/drivers/staging/speakup/i18n.c
+@@ -389,7 +389,7 @@ static struct msg_group_t all_groups[] = {
+ 	},
+ };
+ 
+-static const  int num_groups = sizeof(all_groups) / sizeof(struct msg_group_t);
++static const  int num_groups = ARRAY_SIZE(all_groups);
+ 
+ char *spk_msg_get(enum msg_index_t index)
+ {
+-- 
+2.1.4
+
 
