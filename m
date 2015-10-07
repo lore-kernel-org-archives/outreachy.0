@@ -1,49 +1,59 @@
 X-GM-THRID: 6203007824854777856
-X-Received: by 10.107.165.5 with SMTP id o5mr11644494ioe.5.1444972865242;
-        Thu, 15 Oct 2015 22:21:05 -0700 (PDT)
+X-Received: by 10.31.149.200 with SMTP id x191mr2666039vkd.14.1444250304203;
+        Wed, 07 Oct 2015 13:38:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.33.201 with SMTP id h192ls676938ioh.96.gmail; Thu, 15 Oct
- 2015 22:21:04 -0700 (PDT)
-X-Received: by 10.66.168.12 with SMTP id zs12mr11473558pab.37.1444972864912;
-        Thu, 15 Oct 2015 22:21:04 -0700 (PDT)
+Received: by 10.50.29.36 with SMTP id g4ls1919307igh.31.canary; Wed, 07 Oct
+ 2015 13:38:23 -0700 (PDT)
+X-Received: by 10.66.165.3 with SMTP id yu3mr2633602pab.15.1444250303747;
+        Wed, 07 Oct 2015 13:38:23 -0700 (PDT)
 Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id wl2si1830667pab.1.2015.10.15.22.21.04
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id zg1si5355431pbb.2.2015.10.07.13.38.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Oct 2015 22:21:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 07 Oct 2015 13:38:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id fv9so11088413pac.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 22:21:04 -0700 (PDT)
+Received: by mail-pa0-x232.google.com with SMTP id ex6so31090067pac.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 13:38:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
+        h=from:to:cc:subject:date:message-id;
         bh=1ozlnmGieCKWs1JtX8DuvvnvXZ/67n3iOCqzDovEv58=;
-        b=Jhcx9uvxfHM48O29ZnXv+Uop07+dn5WGngT+99Xu3V75NI97ofirZHxR6lpshzkGyd
-         zHybM0oO8tlFWgu4iJ6zd+JcmEFUlnjOQKzXR6I4j+zM+h6A2nNUBqSSPgmIUNHAfvRu
-         ndnv+hhkDgO2PdKjiwsXtDtboI1oOJNd2qN9Y7iLGN5JOOsbit9ddww933YCLapnf8El
-         u+8/qtRusxBizzX9G8bT4/KJcQY13PfV6K1GDqY3pJf6bw35NnvXNCwhx+Sn1JGeQQBC
-         UxYqwTANed4BWar4EXLsJj/w1ZhFJ+xSOEJfKgTdllrQnHTQlD/eBfokWbMJbRyHk9Y+
-         ec/Q==
-X-Received: by 10.68.222.163 with SMTP id qn3mr14446364pbc.54.1444972864762;
-        Thu, 15 Oct 2015 22:21:04 -0700 (PDT)
+        b=MrZrrv+QM2BN6foi9oP2cQ4I4QkrItBi+xmNaV2aJOv4VTLKrdGCugiusAA8pIK0OY
+         hbNGWfxdI3r3eVRxuIyfzx2oEqxxmGt6q4kK8U73YZ3zOVECjCacUI0XCe1Pb/7qMb0B
+         l2760TQfCBwJaLq/tkv88YJn77sbFubDRRqONa/FcfEsiYor19h0hVPT4s+d7Y95s0UI
+         rlilGTfxCquhT6ctFGDg4q1r/lNV+I1nwuaLCMo3huDDVT3HeT9sQz93YFXu1D2yJ/DX
+         GGLbgFpbNZtufumR6sa87JYQB/NvVqYla99kqh8d+rxoiVILXH7GILG1PenxYPusCqqQ
+         JxYw==
+X-Received: by 10.66.221.104 with SMTP id qd8mr3286570pac.155.1444250303578;
+        Wed, 07 Oct 2015 13:38:23 -0700 (PDT)
 Return-Path: <shraddha.6596@gmail.com>
 Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id u3sm18591513pbs.33.2015.10.15.22.21.03
-        for <outreachy-kernel@googlegroups.com>
+        by smtp.gmail.com with ESMTPSA id rk2sm41084795pbc.75.2015.10.07.13.38.19
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 15 Oct 2015 22:21:04 -0700 (PDT)
+        Wed, 07 Oct 2015 13:38:23 -0700 (PDT)
 From: Shraddha Barke <shraddha.6596@gmail.com>
 To: <outreachy-kernel@googlegroups.com>
+Cc: Jonathan Cameron <jic23@kernel.org>
 Subject: [PATCH] Staging: iio: cdc: Remove unused macros
-Date: Fri, 16 Oct 2015 10:50:56 +0530
-Message-Id: <1444972856-4624-1-git-send-email-shraddha.6596@gmail.com>
+Date: Thu,  8 Oct 2015 02:08:10 +0530
+Message-Id: <1444250290-32700-1-git-send-email-shraddha.6596@gmail.com>
 X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150205.561582BE.0048,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
 Remove the macros since they are not used anywhere throughout the
 kernel.
