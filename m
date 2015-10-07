@@ -1,95 +1,76 @@
-X-GM-THRID: 3930400489472
-X-Received: by 10.180.87.166 with SMTP id az6mr55760wib.1.1424981094264;
-        Thu, 26 Feb 2015 12:04:54 -0800 (PST)
+X-GM-THRID: 6202765946513260544
+X-Received: by 10.50.36.104 with SMTP id p8mr15150213igj.0.1444193987803;
+        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.103.166 with SMTP id fx6ls1258943wib.20.canary; Thu, 26
- Feb 2015 12:04:53 -0800 (PST)
-X-Received: by 10.194.142.174 with SMTP id rx14mr1565722wjb.4.1424981093914;
-        Thu, 26 Feb 2015 12:04:53 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x231.google.com (mail-wg0-x231.google.com. [2a00:1450:400c:c00::231])
-        by gmr-mx.google.com with ESMTPS id ev8si1420738wib.3.2015.02.26.12.04.53
+Received: by 10.182.199.73 with SMTP id ji9ls42391obc.45.gmail; Tue, 06 Oct
+ 2015 21:59:47 -0700 (PDT)
+X-Received: by 10.182.126.228 with SMTP id nb4mr34195114obb.19.1444193987429;
+        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id zg1si4910189pbb.2.2015.10.06.21.59.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 12:04:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) client-ip=2a00:1450:400c:c00::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::231 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghl18 with SMTP id l18so14341627wgh.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 12:04:53 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id hy16so8979782pad.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=/PpjAVN9/RO6BCi6dShwWrtrAtk0TrjCICmZpMKPEOI=;
-        b=SgA0b+OM5I/wrc5iPgr4C8+FPn064OvkwSVD041ohB4lGTpbYTIomaP/2Dq7CfkGff
-         koEo6P3Wx6eQz7Vy76zwfRkcZ1x030xUfaPk+H20SSSxC+eUXxP4TmhfnJTEMi/jQdJe
-         uBuz5/TwjaRrugcMeRnRDNopnC0Y9NaPnStJXTTTCXGu2iuJ+0Snc5zXWi2dMlNqh59O
-         agiTEHOQ+V2Dx/+YWltuP1WdIoMfQm9iqHuPJqKG4bCjfyQDlxKRaQ2UnwFwzZKIYUNy
-         tU4un6eV7/M865sFPLxgM7zBig+VynRvq83oBf9qU3GCWXtRDtqfPU0effvsAi2tf1nl
-         bX4w==
-X-Received: by 10.180.105.97 with SMTP id gl1mr19928304wib.74.1424981093777;
-        Thu, 26 Feb 2015 12:04:53 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from yeliz-N56DP.comu.edu.tr ([193.255.97.48])
-        by mx.google.com with ESMTPSA id k1sm2881217wjn.9.2015.02.26.12.04.53
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 12:04:53 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=EVMk8uzRJzNN7w86Dkkk1vbKKG/Akyi8+shmNn2gQ60=;
+        b=fT4LY8TW6Pv5d1Dq4lnI3CQySJyYEXFQpuGEKiIlRQSg+G1623rudpvch5+uBbX8g4
+         Do7rIyZT04tVMubkmEVRYXvilzkDtHx0P2CRfYmxbGa4liBGkWvfita31SCQoj6qsKtR
+         eI6SpYB05h8pNmpS/Aa8WyDsdR5cDn7r/gOhohfTl2jEFHv7zHvZ/fDTnhKKCeIlgIX+
+         aNvYFb+F/8etEjRF9Il6q97BSi8FA4yJBjqpgnlvksZX6JOJwZRXS2/UdU/JJ1RaSnYR
+         DDCkrli0JphlDd83ToGRc7DPVATBtCXpvZw3P0cs3YNAcswaz0Z7Ov7v5QsS79I4I0TU
+         vfTg==
+X-Received: by 10.68.129.198 with SMTP id ny6mr51459965pbb.42.1444193987238;
+        Tue, 06 Oct 2015 21:59:47 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.52.112])
+        by smtp.gmail.com with ESMTPSA id qn5sm36603121pbc.74.2015.10.06.21.59.46
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 06 Oct 2015 21:59:46 -0700 (PDT)
+Date: Wed, 7 Oct 2015 10:29:43 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: ft1000: Removed unnecessary braces
-Date: Thu, 26 Feb 2015 22:05:02 +0200
-Message-Id: <1424981102-14231-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Subject: [PATCH] staging: vt6656: Remove space before closing brace
+Message-ID: <20151007045942.GA32659@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The following patch fixes the checkpatch.pl warning:
-WARNING: braces {} are not necessary for single statement blocks
+Remove space before closing brace '}'. Problem found using
+checkpatch.pl
+CHECK: Blank lines aren't necessary before a close brace '}'
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/ft1000/ft1000-usb/ft1000_debug.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ drivers/staging/vt6656/baseband.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-index c8d2782..da34257 100644
---- a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-+++ b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-@@ -317,9 +317,8 @@ static int ft1000_open(struct inode *inode, struct file *file)
- 
- 	/* Search for available application info block */
- 	for (i = 0; i < MAX_NUM_APP; i++) {
--		if ((dev->app_info[i].fileobject == NULL)) {
-+		if ((dev->app_info[i].fileobject == NULL))
- 			break;
--		}
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index 3bdbae8..e5be261 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -810,7 +810,6 @@ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
+ 			cr_206 = 0x38;
+ 		}
+ 		break;
+-
  	}
  
- 	/* Fail due to lack of application info block */
-@@ -575,9 +574,8 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
- 			} else {
- 				/* Check if this message came from a registered application */
- 				for (i = 0; i < MAX_NUM_APP; i++) {
--					if (ft1000dev->app_info[i].fileobject == &file->f_owner) {
-+					if (ft1000dev->app_info[i].fileobject == &file->f_owner)
- 						break;
--					}
- 				}
- 				if (i == MAX_NUM_APP) {
- 					pr_debug("No matching application fileobject\n");
-@@ -629,9 +627,8 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
- 						pmsg = (u16 *)&dpram_data->pseudohdr;
- 						ppseudo_hdr = (struct pseudo_hdr *)pmsg;
- 						total_len = msgsz+2;
--						if (total_len & 0x1) {
-+						if (total_len & 0x1)
- 							total_len++;
--						}
- 
- 						/* Insert slow queue sequence number */
- 						ppseudo_hdr->seq_num = info->squeseqnum++;
+ 	if (ed_inx == priv->bb_pre_ed_index && !scanning)
 -- 
-1.8.3.2
+1.9.1
 
 
