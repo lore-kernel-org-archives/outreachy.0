@@ -1,49 +1,49 @@
 X-GM-THRID: 6202759012965941248
-X-Received: by 10.107.3.76 with SMTP id 73mr2182641iod.1.1444237565518;
-        Wed, 07 Oct 2015 10:06:05 -0700 (PDT)
+X-Received: by 10.66.160.135 with SMTP id xk7mr34514713pab.28.1444192373660;
+        Tue, 06 Oct 2015 21:32:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.61.204 with SMTP id s12ls1888309igr.25.canary; Wed, 07 Oct
- 2015 10:06:05 -0700 (PDT)
-X-Received: by 10.66.90.132 with SMTP id bw4mr1773277pab.7.1444237565038;
-        Wed, 07 Oct 2015 10:06:05 -0700 (PDT)
+Received: by 10.140.84.106 with SMTP id k97ls98660qgd.83.gmail; Tue, 06 Oct
+ 2015 21:32:53 -0700 (PDT)
+X-Received: by 10.31.154.19 with SMTP id c19mr34113457vke.13.1444192373105;
+        Tue, 06 Oct 2015 21:32:53 -0700 (PDT)
 Return-Path: <deepa.kernel@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id zg1si5247553pbb.2.2015.10.07.10.06.05
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id w5si4395749pbt.1.2015.10.06.21.32.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 10:06:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Oct 2015 21:32:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
+       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id fv12so27153321pac.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 10:06:05 -0700 (PDT)
+Received: by mail-pa0-x22a.google.com with SMTP id lk4so8274134pab.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 21:32:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
         bh=h0vYt5Mq3OyJ7eqDSlHB8MBvm7X4M3ZCW66JNNtx1zg=;
-        b=xkIaDD/TM8IauWanoK3VPruy+0bL29MzlR7tmhSJoUJEFpgg70POj+UqQcEOYJJ0El
-         JlsU6v0Urg/qgHO3VgCjvJtdPdHZwC5z4gZgu33pbnA191o8xUQS8F5MTNpacc29pXsU
-         iUlaYIPRHWdg9lZLrstnROOnSxCMY/PWEHZad+3+x+XCgZKy1rSTv2YcHukpLY9f8BUF
-         7I2fJPCgQ5ALHSRHuXykwjK7KveUALUL+p3No3laM0DpAiiWHRerPEpQ/XHT0TrOBwCi
-         EbykKSYywf7EUc1RZr3xJFdEDxyAAGQYFbp8z8Zyn5tDfCbV05L0hoDQQT3Si/vl30cR
-         d+6g==
-X-Received: by 10.68.185.132 with SMTP id fc4mr2260535pbc.96.1444237564951;
-        Wed, 07 Oct 2015 10:06:04 -0700 (PDT)
+        b=EzArk/OUqrMSoLb9RnWY6o31ur7qWvh69uSmtGWMaam2078VYHVghAvNfScgi27LbC
+         89QKw/BWWm1nRg829VB20CSP4dalVLZrCC/qzofcl/fCYHTl0Nzju4nddXSf0WyCw/xs
+         t76OVSwwewef9hJDNbt5TwiyoZycNinxI7ZBRzTX0VGgoBzUCBtoTTcXidy93YCgdJUE
+         RjZkk8spqNWr7zKx1rBGhU4yJRAzkj+KfCM+CEmvO6GQInF4tIpn6MskXKrz3o+39aHa
+         EKrX71kxp8h5KN/NeEgd/0RbGNW+7Lp9K/HSSTdlZC7x7dh/ZaogpMbc+Ohjdj9xGeSq
+         IanQ==
+X-Received: by 10.68.181.34 with SMTP id dt2mr50458258pbc.7.1444192372969;
+        Tue, 06 Oct 2015 21:32:52 -0700 (PDT)
 Return-Path: <deepa.kernel@gmail.com>
-Received: from deepa-ubuntu ([2601:647:4700:de30:95d7:22da:961f:adf6])
-        by smtp.gmail.com with ESMTPSA id rw8sm40722773pac.11.2015.10.07.10.06.04
+Received: from deepa-ubuntu ([2601:647:4700:de30:74ae:f377:907a:fc63])
+        by smtp.gmail.com with ESMTPSA id rm9sm14948589pab.14.2015.10.06.21.32.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 07 Oct 2015 10:06:04 -0700 (PDT)
-Date: Wed, 7 Oct 2015 10:06:02 -0700
+        Tue, 06 Oct 2015 21:32:52 -0700 (PDT)
+Date: Tue, 6 Oct 2015 21:32:50 -0700
 From: Deepa Dinamani <deepa.kernel@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Subject: [PATCH 1/2] staging: skein: remove extra indentation
-Message-ID: <20151007170600.GA24764@deepa-ubuntu>
+Message-ID: <20151007043247.GA3981@deepa-ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
