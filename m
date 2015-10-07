@@ -1,149 +1,112 @@
 X-GM-THRID: 6200341306580926464
-X-Received: by 10.112.40.17 with SMTP id t17mr615003lbk.10.1444248424661;
-        Wed, 07 Oct 2015 13:07:04 -0700 (PDT)
+X-Received: by 10.112.158.202 with SMTP id ww10mr576844lbb.13.1444244892556;
+        Wed, 07 Oct 2015 12:08:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.16.210 with SMTP id 79ls114322lfq.12.gmail; Wed, 07 Oct
- 2015 13:07:03 -0700 (PDT)
-X-Received: by 10.112.147.7 with SMTP id tg7mr620724lbb.16.1444248423924;
-        Wed, 07 Oct 2015 13:07:03 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
-        by gmr-mx.google.com with ESMTPS id c1si174577wiv.3.2015.10.07.13.07.03
+Received: by 10.180.93.166 with SMTP id cv6ls211148wib.39.gmail; Wed, 07 Oct
+ 2015 12:08:12 -0700 (PDT)
+X-Received: by 10.180.81.165 with SMTP id b5mr5168944wiy.1.1444244892115;
+        Wed, 07 Oct 2015 12:08:12 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id bj4si177299wib.1.2015.10.07.12.08.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 13:07:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
+        Wed, 07 Oct 2015 12:08:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x232.google.com with SMTP id lk2so44437842wic.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 13:07:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=i6XhI7hawVJj72tal5k1sPNdPHE/LCK97Uz6RAQ8Pt8=;
-        b=whVtaMjWI0erfIkqc6wahTLnjG09+qZdggp5e7HN4kJhwDilFGzeHjqCSibb/QlU4a
-         s8w4EgLrN420a/BwTgUsuSB+eME/pXF+bKKtAvEOEXKVGIIuT2XKmdBUEbEDc9tqhPNE
-         7aNb70O/mvhAoEJNQMsVYbOtRS9+m1hwt+b3qv6ADBNFLzuUwHMrCMo+2QCaEbUUQxg1
-         eeoRZqNXnFPkmVXKjFAdhs6ZS1hrQpeyzUoTXf596s8oQ45eVmsbWbxP7OAw4qS4mWAW
-         vA6OQCM3vRWiKCcQbZrRZunWA6erCRn3YmpvcZsZBYRgIKyV8Q/RQfWnNSs9XMjn/KjG
-         ygOg==
-X-Received: by 10.194.7.97 with SMTP id i1mr3613911wja.87.1444248423760;
-        Wed, 07 Oct 2015 13:07:03 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by smtp.gmail.com with ESMTPSA id kr10sm41357361wjc.25.2015.10.07.13.07.02
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 07 Oct 2015 13:07:03 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org,
-	Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v3] Staging: fbtbt: Replace timespec with ktime_t
-Date: Wed,  7 Oct 2015 22:06:55 +0200
-Message-Id: <1444248415-16249-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0MPbr3-1ZfFEZ1yLJ-004m5d; Wed, 07 Oct
+ 2015 21:08:10 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Ksenija =?utf-8?B?U3Rhbm9qZXZpxIc=?= <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH v2] Staging: fbtbt: Replace timespec with ktime_t
+Date: Wed, 07 Oct 2015 21:08:09 +0200
+Message-ID: <50103211.AYms3ikkHa@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CAL7P5j+BvLMFomdsYW4hTHRJHj4J4iFDRLjF=UW2a9WgfUxDFA@mail.gmail.com>
+References: <1443629449-12352-1-git-send-email-ksenija.stanojevic@gmail.com> <5548451.nrtKaPCYPk@wuerfel> <CAL7P5j+BvLMFomdsYW4hTHRJHj4J4iFDRLjF=UW2a9WgfUxDFA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+X-Provags-ID: V03:K0:U9ULkZVp7bCIMhX/C2RXEEFusdn5SLco2TMw9TwX/Ow2xQSdRxF
+ OAkmte5EoUky5TZfsTAnbaR/i0m8mGgcRmBDjN7JsitOYvTTQm0rVbGs1KOfLkverZq9Q2o
+ s+CyRTlhVuFv7DiCv4Zv4ZK6qSWpEW9+D5C1UyL09uvwpCQbbjFlNyRqkQOTFbQ1VbRzQwB
+ +kbP4N9xfaMYqCf0Yq4aA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:FPt7Rh33Q/A=:xuk4x1FIRpkSF3RfSveCoK
+ 61dI3wj0AZwXrouxO2exwG8FNsj/5dnq+c9EAlGv3CU1R4vq1b41K6P5hJM1IMMTpeNLaDBTa
+ rTbr+9ihU5xCarHsLxsjO39XsjLuPYdfk6v9CpZXKPjHzYMfvp/RS/ZWu7e+GY5ard2skIxGU
+ 5MDSZEYvIiyeo1OKzyTeORSGUSMm4ijO5jlIA+7WyzDAXOSD0RVIvM9JYEj+lmEyJG3wmFBgU
+ lJpBBCfilFKUqARrfKpP4u0kXKVjH76x7absUNbXDw1Ha9o8ln4UDCqJjMiTu3LMgcBZRAkG1
+ KmLmhEMreoHGIoj6zSG072boC4TflvXEJbN8Mj5wwLLIR49s1SEyThaPjuQtpzV/FUp+3foPy
+ QkvFcJcXn24ogKD2q1WoZPpP1CMlsqOEobstPiALgKQsQ5PGlH5RHZMLaPfQUSfClc0rEFgOv
+ bzN8kMxEgLLSd7jjy//zyemVL+jfBhMTHf8pKKkSYVuQpnbrEuo7Fv2WMdzEUk3ntpThLH36I
+ MQyRUPOLhhWwHWALjHcPS+fuK3L91YYMbXUcU5tgNVBDf3OwzrGyJ3/E6+DXUvDmfmDUxsQ44
+ acHRuv9wMMO89RNGQX24+MMuVZsy/VmLaZke3XtQnp5Wlur5lZZDWJr31KWt+uyPtsNGq3yVS
+ I29c7b59P+Ltf2PcU2WFkX3pE3c913EyLoxFmxU+g/yfMqwHl4jZrzrsTRK+Yx+lWNzJD3dGG
+ azy3FA5Fy7YRq/I0
 
-struct timespec will overflow in year 2038, so replace it with
-ktime_t. And replace functions that use struct timespec,
-timespec_sub with ktime_sub. Also use monotonic time instead of real
-time, by replacing getnstimeofday with ktime_get, to be more robust
-against leap seconds and settimeofday() calls.
+On Wednesday 07 October 2015 20:46:23 Ksenija Stanojevi=C4=87 wrote:
+> On Sun, Oct 4, 2015 at 9:34 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> > On Saturday 03 October 2015 21:15:46 Ksenija Stanojevi=C4=87 wrote:=
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-Changes in v3:
-	-fix build error
-	-do not access tv64 directly
+> >> On Thu, Oct 1, 2015 at 10:05 PM, Arnd Bergmann <arnd@arndb.de> wro=
+te:
+> >> > On Thursday 01 October 2015 19:44:46 Ksenija Stanojevi=C4=87 wro=
+te:
+> >> >>
+> >> >> In my local repository I modified my .config file so that CONFI=
+G_64BIT
+> >> >> is not set,
+> >> >> and after that I recompiled all directory, but I don't get any =
+errors/warning at
+> >> >> compile-time.
+> >> >> Also I separetly compiled this specific file but still no warni=
+ngs
+> >> >> My .config  looks something like this:
+> >> >>
+> >> >> . . .
+> >> >>
+> >> >> Should I change my working kernel or .config file is just enoug=
+h?
+> >> >
+> >> > I think the problem is that you only compiled that directory but=
+ did
+> >> > not attempt to do a full rebuild of the kernel and modules, whic=
+h is
+> >> > required to catch link-time errors.
+> >> >
+> >> > The compiler does not know at this point that the 64-bit divisio=
+n function
+> >> > is undefined in the kernel, you only get a warning at the 'make =
+vmlinux'
+> >> > link stage (for built-in drivers) or the 'make modules' modpost =
+stage
+> >> > afterwards.
+> >>
+> >> I rebuilded my repository with:
+> >> make vmlinux
+> >> make modules
+> >> but I still don't get any warnings.
+> >> Do you have any other suggestion on what I'm doing wrong?
+> >
+> > I just tried it on my machine and I get (for an ARM build)
+> >
+> > $ make -skj30
+> > ERROR: "__aeabi_ldivmod" [drivers/staging/fbtft/fbtft.ko] undefined=
+!
+>=20
+> I got this error:
+> ERROR: "__divdi3" [drivers/staging/fbtft/fbtft.ko] undefined!
+>=20
+> I suppose that divdi3 is division used for long long by gcc on x86
 
-Changes in v2:
-        -use ktime_t instead timespec64
-        -use ktime_sub instead timespec64_sub
-        -use monotonic instead real-time.
+Correct, this function name is architecture specific. These
+functions (__divdi3, __aeabi_ldivmod, ...) are intentionally not
+part of the kernel image so force kernel developers to either
+use the div_u64() family of functions for division or find a way
+to avoid it, which is usually preferred but not always possible.
 
- drivers/staging/fbtft/fbtft-core.c | 32 +++++++++++---------------------
- drivers/staging/fbtft/fbtft.h      |  2 +-
- 2 files changed, 12 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-index 4691bcc..81aa600 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -350,8 +350,7 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
- 				 unsigned end_line)
- {
- 	size_t offset, len;
--	struct timespec ts_start, ts_end, ts_fps, ts_duration;
--	long fps_ms, fps_us, duration_ms, duration_us;
-+	ktime_t ts_start, ts_end;
- 	long fps, throughput;
- 	bool timeit = false;
- 	int ret = 0;
-@@ -359,7 +358,7 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
- 	if (unlikely(par->debug & (DEBUG_TIME_FIRST_UPDATE | DEBUG_TIME_EACH_UPDATE))) {
- 		if ((par->debug & DEBUG_TIME_EACH_UPDATE) ||
- 				((par->debug & DEBUG_TIME_FIRST_UPDATE) && !par->first_update_done)) {
--			getnstimeofday(&ts_start);
-+			ts_start = ktime_get();
- 			timeit = true;
- 		}
- 	}
-@@ -396,30 +395,21 @@ static void fbtft_update_display(struct fbtft_par *par, unsigned start_line,
- 			__func__);
- 
- 	if (unlikely(timeit)) {
--		getnstimeofday(&ts_end);
--		if (par->update_time.tv_nsec == 0 && par->update_time.tv_sec == 0) {
--			par->update_time.tv_sec = ts_start.tv_sec;
--			par->update_time.tv_nsec = ts_start.tv_nsec;
--		}
--		ts_fps = timespec_sub(ts_start, par->update_time);
--		par->update_time.tv_sec = ts_start.tv_sec;
--		par->update_time.tv_nsec = ts_start.tv_nsec;
--		fps_ms = (ts_fps.tv_sec * 1000) + ((ts_fps.tv_nsec / 1000000) % 1000);
--		fps_us = (ts_fps.tv_nsec / 1000) % 1000;
--		fps = fps_ms * 1000 + fps_us;
-+		ts_end = ktime_get();
-+		if (ktime_to_ns(par->update_time))
-+			par->update_time = ts_start;
-+
-+		par->update_time = ts_start;
-+		fps = ktime_us_delta(ts_start, par->update_time);
- 		fps = fps ? 1000000 / fps : 0;
- 
--		ts_duration = timespec_sub(ts_end, ts_start);
--		duration_ms = (ts_duration.tv_sec * 1000) + ((ts_duration.tv_nsec / 1000000) % 1000);
--		duration_us = (ts_duration.tv_nsec / 1000) % 1000;
--		throughput = duration_ms * 1000 + duration_us;
-+		throughput = ktime_us_delta(ts_end, ts_start);
- 		throughput = throughput ? (len * 1000) / throughput : 0;
- 		throughput = throughput * 1000 / 1024;
- 
- 		dev_info(par->info->device,
--			"Display update: %ld kB/s (%ld.%.3ld ms), fps=%ld (%ld.%.3ld ms)\n",
--			throughput, duration_ms, duration_us,
--			fps, fps_ms, fps_us);
-+			"Display update: %ld kB/s, fps=%ld\n",
-+			throughput, fps);
- 		par->first_update_done = true;
- 	}
- }
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 6dd42b2..20e69f0 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -246,7 +246,7 @@ struct fbtft_par {
- 	} gamma;
- 	unsigned long debug;
- 	bool first_update_done;
--	struct timespec update_time;
-+	ktime_t update_time;
- 	bool bgr;
- 	void *extra;
- };
--- 
-1.9.1
-
+=09Arnd
 
