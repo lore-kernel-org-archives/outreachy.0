@@ -1,54 +1,56 @@
 X-GM-THRID: 6202795679273713664
-X-Received: by 10.180.9.104 with SMTP id y8mr4443579wia.7.1444201186616;
-        Tue, 06 Oct 2015 23:59:46 -0700 (PDT)
+X-Received: by 10.182.27.69 with SMTP id r5mr15382111obg.17.1444200910001;
+        Tue, 06 Oct 2015 23:55:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.13.13 with SMTP id eu13ls70122wid.43.gmail; Tue, 06 Oct
- 2015 23:59:44 -0700 (PDT)
-X-Received: by 10.180.107.167 with SMTP id hd7mr4203416wib.6.1444201184569;
-        Tue, 06 Oct 2015 23:59:44 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id ch7si46126wib.2.2015.10.06.23.59.44
+Received: by 10.50.41.100 with SMTP id e4ls141080igl.8.gmail; Tue, 06 Oct 2015
+ 23:55:09 -0700 (PDT)
+X-Received: by 10.107.30.76 with SMTP id e73mr36154178ioe.16.1444200909646;
+        Tue, 06 Oct 2015 23:55:09 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id zg1si4961534pbb.2.2015.10.06.23.55.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Oct 2015 23:59:44 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Oct 2015 23:55:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,647,1437429600"; 
-   d="scan'208";a="181477815"
-Received: from no-reverse-dns.mlnet.ie (HELO hadrien.local) ([31.216.236.133])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 07 Oct 2015 08:59:44 +0200
-Date: Wed, 7 Oct 2015 07:59:43 +0100 (IST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Alison Schofield <amsfield22@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [KERNEL NEWBIES ACCESS] AlisonSchofield
-In-Reply-To: <20151007065507.GA3486@Ubuntu-D830>
-Message-ID: <alpine.DEB.2.10.1510070759250.2561@hadrien>
-References: <20151007065507.GA3486@Ubuntu-D830>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pacfv12 with SMTP id fv12so12487846pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 23:55:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=nOAvlxjaQe9sSqsf5fqrlomHD9HZZznrY+IEdN/z79w=;
+        b=DNgCZc2ZCQ9vpmxuvg5lZlvezQ4BNlw59aLeLNIsBPwXq+ZeOjWW7z8UzLCko3Ps5X
+         46gs2HMPm4PZmCI4IvKE2SgbL45JxvREfT+lb2poCkQd8bkl/vJ94OfIAwF99dmv6EW5
+         ueQmibacEYybotDuV6et2tWv6uJd3a/MprDrEED30HAE0QpK0zA+zKLNrHxBJt6HE03e
+         s1fLbXa1rftZbJ4Qcgu+W5bhWtUaK9rPn0OK3OF5vs+wbykIHDoHUhRMxeleCQikohbM
+         Hx7nxIXL6iqHk8eQbpn6SDfFEGhVWq0XK3SlT6S8ct1Gore1UchPOata5YXVpYJjlt8w
+         FIVQ==
+X-Received: by 10.66.155.231 with SMTP id vz7mr50857919pab.58.1444200909541;
+        Tue, 06 Oct 2015 23:55:09 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
+        by smtp.gmail.com with ESMTPSA id zc4sm37360706pbb.24.2015.10.06.23.55.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 06 Oct 2015 23:55:09 -0700 (PDT)
+Date: Tue, 6 Oct 2015 23:55:08 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [KERNEL NEWBIES ACCESS] AlisonSchofield
+Message-ID: <20151007065507.GA3486@Ubuntu-D830>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tue, 6 Oct 2015, Alison Schofield wrote:
-
-> Requesting edit access to the Outreachyfirstpatch wiki to correct the
-> example used for modprobe. (rm file extension on module name)
-
-Have you made an account?  I would need your user name.
-
-julia
-
-> Thanks,
-> alison
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151007065507.GA3486%40Ubuntu-D830.
-> For more options, visit https://groups.google.com/d/optout.
->
+Requesting edit access to the Outreachyfirstpatch wiki to correct the
+example used for modprobe. (rm file extension on module name)
+Thanks,
+alison
 
