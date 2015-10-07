@@ -1,83 +1,66 @@
-X-GM-THRID: 6251162931836223488
-X-Received: by 10.66.141.102 with SMTP id rn6mr11770931pab.26.1455462289744;
-        Sun, 14 Feb 2016 07:04:49 -0800 (PST)
+X-GM-THRID: 6202953043434012672
+X-Received: by 10.140.145.78 with SMTP id 75mr1772903qhr.1.1444237549892;
+        Wed, 07 Oct 2015 10:05:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.112.42 with SMTP id in10ls578008igb.13.canary; Sun, 14 Feb
- 2016 07:04:49 -0800 (PST)
-X-Received: by 10.50.164.134 with SMTP id yq6mr7768295igb.13.1455462289407;
-        Sun, 14 Feb 2016 07:04:49 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id ff2si2443665pad.2.2016.02.14.07.04.49
+Received: by 10.140.29.227 with SMTP id b90ls414477qgb.72.gmail; Wed, 07 Oct
+ 2015 10:05:49 -0700 (PDT)
+X-Received: by 10.129.159.71 with SMTP id w68mr1726975ywg.28.1444237549268;
+        Wed, 07 Oct 2015 10:05:49 -0700 (PDT)
+Return-Path: <deepa.kernel@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id uv4si5448002pac.0.2015.10.07.10.05.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Feb 2016 07:04:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Wed, 07 Oct 2015 10:05:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id yy13so71950161pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 07:04:49 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x233.google.com with SMTP id ex6so26713249pac.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 10:05:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Hb4K12uNnmqLim620SvYhtQGCtulU53ohNyMDCgYMuo=;
-        b=slr4jXQR4n3rpNQur9WDdqnpJGwDastkrTG0tly9IQgBj3+O3SD5HUyrSg7o63tjbX
-         MW6FL4izl0ZjwyTIGmjqSqbEqr5IffFY2v9hBcg/gbOqFmQK5SoVc8UAB9x8xAwwQkBk
-         DxXGJcppvhZ0yOMo8rKMMzSUn7f7B0wdT0pdrDRYu8nibWV77Jp5IshKTtU1TviXc0+W
-         W5LdTS4dsILUXTk1D/41QMMiG2n9lBlnbDF7ynqGPVZDxj8nhqzR49P07A4WRYEEan+b
-         caUEPrFLKCeUbRoSqC9rtTno8om0zz7HJOjbTJsFMAyylhse8vlEo53cV5dxQd7Kgg+5
-         3yiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Hb4K12uNnmqLim620SvYhtQGCtulU53ohNyMDCgYMuo=;
-        b=mtDRGGe4SHKmFz8WzzmLWq8wTiekXEYhEBWUE6HToSNFeBUq/8czwsjiH4QrY5D+t2
-         s509Nz7oqcSecnACFhm/x3XrQfUi0xeEZO8kUwr9FAGx7i2i9ytrDpAQUhHx4hwW9R+6
-         ymkIZzHl4FUTICclRsmAN33Tuq0Oio4zfwNr2IafTPpa64lMimOvLb8yObjiHE5Q9Xbh
-         W/xyXhgKeVW5aRp+aBaqMv2omLAtiRbUabH6FTkLj2Wh4pA3UE3B84F3pwD8jc4BYsWp
-         emKvgPp+kyJBxtCvBT6KItFshFNc4HCP/koVYrRtj2tbjuPY7eqrL6cH0I5GKmCIj21W
-         ZPlA==
-X-Gm-Message-State: AG10YORceMAQUXwfPa4sonYTaCw1Es7mLwlNEZp5p1ZOlM5H4MWjP2BKQx4REhTVkxHSsA==
-X-Received: by 10.66.97.102 with SMTP id dz6mr16852757pab.59.1455462289295;
-        Sun, 14 Feb 2016 07:04:49 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([223.176.137.116])
-        by smtp.gmail.com with ESMTPSA id w89sm32142278pfi.13.2016.02.14.07.04.45
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 14 Feb 2016 07:04:48 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 20:34:40 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=C4G1XArZdgWZ34lmyRfCkEx21T7LtpU4+LgyU+9t6Ss=;
+        b=Q/jl2pb1LCi6pk2CRsBgdTAMzT1L21h+CFaBoZr+r76hgNf/mgXQQh5ybJjoZSd/GT
+         azife/aTXLEgXgEF37cXcNsYsrx80ZT2zbVeD/V5GjRWnO4ODr9dcXuDenZgcI8vuAXc
+         58w8bBxIg/257Jt5OA2EwpPUGhW7iK82IlTKuxgUYGVaPWXh3KL+XsAtlueCYUBiud6J
+         KQLARRgIBGH8DjWF7DtpqWyrN6uc0zgFE6OE0xrJdLRBbylYt3xJ8zK5AKAl8wCFsvcs
+         VP5N3Jy08DUsFAb18v3PAqCugxIzwBK7ADDHEkO8orZEMnJw855ccmEL9BtnxRavXV+E
+         qEHQ==
+X-Received: by 10.68.57.175 with SMTP id j15mr2282523pbq.34.1444237549120;
+        Wed, 07 Oct 2015 10:05:49 -0700 (PDT)
+Return-Path: <deepa.kernel@gmail.com>
+Received: from deepa-ubuntu ([2601:647:4700:de30:95d7:22da:961f:adf6])
+        by smtp.gmail.com with ESMTPSA id rz7sm5003004pbc.7.2015.10.07.10.05.48
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA256 bits=128/128);
+        Wed, 07 Oct 2015 10:05:48 -0700 (PDT)
+Date: Wed, 7 Oct 2015 10:05:46 -0700
+From: Deepa Dinamani <deepa.kernel@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rdma: hfi1: Delete NULL check before vfree
-Date: Sun, 14 Feb 2016 20:34:28 +0530
-Message-Id: <1455462268-6963-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH 0/2] staging: skein: checkpatch patches
+Message-ID: <20151007170544.GA24755@deepa-ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The function vfree test whether the argument is NULL and return
-immediately. SO NULL test is not needed before vfree.
+This patch series addresses checkpatch.pl warnings in
+the skein driver.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/rdma/hfi1/user_sdma.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Deepa Dinamani (2):
+  staging: skein: remove extra indentation
+  staging: skein: fix block comment style
 
-diff --git a/drivers/staging/rdma/hfi1/user_sdma.c b/drivers/staging/rdma/hfi1/user_sdma.c
-index d3de771..4f55950 100644
---- a/drivers/staging/rdma/hfi1/user_sdma.c
-+++ b/drivers/staging/rdma/hfi1/user_sdma.c
-@@ -468,8 +468,7 @@ int hfi1_user_sdma_free_queues(struct hfi1_filedata *fd)
- 		fd->pq = NULL;
- 	}
- 	if (fd->cq) {
--		if (fd->cq->comps)
--			vfree(fd->cq->comps);
-+		vfree(fd->cq->comps);
- 		kfree(fd->cq);
- 		fd->cq = NULL;
- 	}
+ drivers/staging/skein/skein_api.c   | 47 ++++++++++++++++++-------------------
+ drivers/staging/skein/skein_base.c  | 18 +++++++++-----
+ drivers/staging/skein/skein_block.c | 40 +++++++++++++++----------------
+ 3 files changed, 55 insertions(+), 50 deletions(-)
+
 -- 
 1.9.1
 
