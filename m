@@ -1,80 +1,76 @@
 X-GM-THRID: 6202978899734822912
-X-Received: by 10.50.114.2 with SMTP id jc2mr23694472igb.5.1444245534315;
-        Wed, 07 Oct 2015 12:18:54 -0700 (PDT)
+X-Received: by 10.112.54.197 with SMTP id l5mr550161lbp.21.1444245002637;
+        Wed, 07 Oct 2015 12:10:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.29.36 with SMTP id g4ls1902146igh.31.canary; Wed, 07 Oct
- 2015 12:18:53 -0700 (PDT)
-X-Received: by 10.66.249.100 with SMTP id yt4mr2328275pac.42.1444245533761;
-        Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-yk0-x22b.google.com (mail-yk0-x22b.google.com. [2607:f8b0:4002:c07::22b])
-        by gmr-mx.google.com with ESMTPS id u67si3281224ywf.5.2015.10.07.12.18.53
+Received: by 10.25.208.78 with SMTP id h75ls105147lfg.83.gmail; Wed, 07 Oct
+ 2015 12:10:02 -0700 (PDT)
+X-Received: by 10.112.158.202 with SMTP id ww10mr578234lbb.13.1444245002012;
+        Wed, 07 Oct 2015 12:10:02 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
+        by gmr-mx.google.com with ESMTPS id xl3si160423wib.1.2015.10.07.12.10.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::22b as permitted sender) client-ip=2607:f8b0:4002:c07::22b;
+        Wed, 07 Oct 2015 12:10:01 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::22b as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-yk0-x22b.google.com with SMTP id g206so27594274ykd.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=J7DvRhj7PVqg0tUTEawjW8Tr919M0Q6CCF2pTxiPiYA=;
-        b=fKmqwv3TQ1SY+Vd6wydIk+kWq6I0ZKwL9v7g7eDxFsfg6ELkHxVD+nWSI3eXJP9Vjd
-         BOaBmvN8ku0hAdHr7kkaTxlWARp8gDP49jG+C8J3gSJbg5Iq0ocSi7/pS3WqbrLHONx6
-         C8hCNrbCgfFHZSLk2S4HKQu4KUr9fUGFQumHkeIOClchLX+Tr0sFs0LhXNi8N+toIMli
-         pxjQNMLFJNHCy1Bzpz9HeX8OlB3kkelVnNZE9Bv14/11vuYaf3fIaBnznatXhxCr5Nx0
-         pa17ZzgVq9ZpECo4HVeyt8l9MSApnzcsFc6IHFpMVCRj616VQvGkdIt0h86xdwr9SypB
-         OdFQ==
-MIME-Version: 1.0
-X-Received: by 10.13.223.141 with SMTP id i135mr2385272ywe.30.1444245533595;
- Wed, 07 Oct 2015 12:18:53 -0700 (PDT)
-Received: by 10.37.107.66 with HTTP; Wed, 7 Oct 2015 12:18:53 -0700 (PDT)
-In-Reply-To: <4982395.WtRaKIPf3W@wuerfel>
-References: <1444243562-19812-1-git-send-email-ciorneiioana@gmail.com>
-	<4982395.WtRaKIPf3W@wuerfel>
-Date: Wed, 7 Oct 2015 22:18:53 +0300
-Message-ID: <CAHWJYFnukj268RW2aPBp2tuLUWSSCdxiQNG5CKc-io9S860vPg@mail.gmail.com>
+       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue104) with ESMTPSA (Nemesis) id 0LsywU-1amH4734jC-012akC; Wed, 07 Oct
+ 2015 21:10:01 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Ioana Ciornei <ciorneiioana@gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adc: remove unused definitions
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Date: Wed, 07 Oct 2015 21:10:01 +0200
+Message-ID: <4982395.WtRaKIPf3W@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1444243562-19812-1-git-send-email-ciorneiioana@gmail.com>
+References: <1444243562-19812-1-git-send-email-ciorneiioana@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:JKy9KSCMiL1cGbEldqoMJvlrR5gFXHbDlN//Ki3KZQrafdla10y
+ /bc9Q/Ghg2aAEHcxYZCy9stg3oF2sgltTWHzlS9/NIQwPeoY/iaRM6aTaEXUtH1xnkOXM8Y
+ JAq5j+n7NKStZGQxD5/hgu4gge3rNzRqnanGerW0gnkYi6+kThegVXc40bV3G2FDKbz/YW2
+ PPyj2lXVUS4bMtISFxezA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:0JxEtprhCwc=:dOmVhK4sF3a8y6WgEUN49L
+ Thk5H9UHkpPrza7sigrzqgnhf2afYVyXeOG9xSyIcaUtzG9WwB+RfoXFisRa9Q0AxrrHJOH6V
+ oHTOAMXtBKfL7aKryvy4C4jiNs7yFPsbYx8PqA83nqW/A7xjPPZDUJ42zEUxcnP+DWzPQA3Hx
+ 8gb0JzEEsdvcAZtJYx+0bes7krkqjcGs4R+hKeQm3Um8UHIutEaaoLNA0JOkpYMc5ufaUBznN
+ BrbH8+JKSiJ6w/D4zd4thQb45kfFzuZItgtUGzj5OJzHjC8RZpQol3TJ98w7yzFU3v0TpKx+f
+ RUhCPE1zZ4SJgsFikVMn4qGHh8XzOGyGhFC3tJcnMuJjQ2YyM+OkfRDXVwXkFvsBMDEZFQg0E
+ yCkyChdtft2swYJ/0kjFLWGwTA7nXvXXbdFd6+u8niWrBxRKJ8b8UXCblnp7RBv+T6MxeEaJV
+ Ut3wmoBMjy/RPN7T15xOz1p76haJ6RbYgB7zLiwQs0HAPrL4tiKVkoAyLTcAEyoy7dnSvREr5
+ mahXsiO027wf0w2CU65DA2RX/cW3a66bx8Q5SL1c3K5uSJoaTSxPgpqcchNQ/7idEuay+IPFZ
+ YKYxq/TBUzqU5xtgWSf4BQyjLtzvyeuESRpmVfougbqONngTseoDRnsJjUT+KEgWDzZpWghUU
+ GsHY/r8wSE8dZ/a7JsujNov+uJEukITbt2N+wZ2cKRRdJH+a0/W7xXfeLDp1AMXq206Tv6C0o
+ 7c0BpJUUxnEAIGFW
 
-On Wed, Oct 7, 2015 at 10:10 PM, Arnd Bergmann <arnd@arndb.de> wrote:
->
-> On Wednesday 07 October 2015 21:46:02 Ioana Ciornei wrote:
-> > diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-> > index fe56fb6..53bce3a 100644
-> > --- a/drivers/staging/iio/adc/ad7192.c
-> > +++ b/drivers/staging/iio/adc/ad7192.c
-> > @@ -118,12 +118,6 @@
-> >
-> >  /* GPOCON Register Bit Designations (AD7192_REG_GPOCON) */
-> >  #define AD7192_GPOCON_BPDSW    BIT(6) /* Bridge power-down switch enable */
-> > -#define AD7192_GPOCON_GP32EN   BIT(5) /* Digital Output P3 and P2 enable */
-> > -#define AD7192_GPOCON_GP10EN   BIT(4) /* Digital Output P1 and P0 enable */
-> > -#define AD7192_GPOCON_P3DAT    BIT(3) /* P3 state */
-> > -#define AD7192_GPOCON_P2DAT    BIT(2) /* P2 state */
-> > -#define AD7192_GPOCON_P1DAT    BIT(1) /* P1 state */
-> > -#define AD7192_GPOCON_P0DAT    BIT(0) /* P0 state */
-> >
-> >  #define AD7192_INT_FREQ_MHz    4915200
->
-> I'd say it makes sense to leave these ones present, because it documents
-> the hardware registers.
->
-> Any unused code or definitions that are purely for the code's own sake
-> should be removed normally, but in this case the bit 6 is clearly used
-> in the code, so it's good to know what the other bits are.
+On Wednesday 07 October 2015 21:46:02 Ioana Ciornei wrote:
+> diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+> index fe56fb6..53bce3a 100644
+> --- a/drivers/staging/iio/adc/ad7192.c
+> +++ b/drivers/staging/iio/adc/ad7192.c
+> @@ -118,12 +118,6 @@
+>  
+>  /* GPOCON Register Bit Designations (AD7192_REG_GPOCON) */
+>  #define AD7192_GPOCON_BPDSW    BIT(6) /* Bridge power-down switch enable */
+> -#define AD7192_GPOCON_GP32EN   BIT(5) /* Digital Output P3 and P2 enable */
+> -#define AD7192_GPOCON_GP10EN   BIT(4) /* Digital Output P1 and P0 enable */
+> -#define AD7192_GPOCON_P3DAT    BIT(3) /* P3 state */
+> -#define AD7192_GPOCON_P2DAT    BIT(2) /* P2 state */
+> -#define AD7192_GPOCON_P1DAT    BIT(1) /* P1 state */
+> -#define AD7192_GPOCON_P0DAT    BIT(0) /* P0 state */
+>  
+>  #define AD7192_INT_FREQ_MHz    4915200
 
-I also had doubts about this one.
-Thanks for the feedback,
+I'd say it makes sense to leave these ones present, because it documents
+the hardware registers.
 
-Ioana
+Any unused code or definitions that are purely for the code's own sake
+should be removed normally, but in this case the bit 6 is clearly used
+in the code, so it's good to know what the other bits are.
+
+	Arnd
 
