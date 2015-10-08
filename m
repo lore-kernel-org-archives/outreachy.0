@@ -1,88 +1,70 @@
 X-GM-THRID: 6203187246248493056
-X-Received: by 10.112.151.9 with SMTP id um9mr1119319lbb.19.1444294110657;
-        Thu, 08 Oct 2015 01:48:30 -0700 (PDT)
+X-Received: by 10.13.212.203 with SMTP id w194mr4983500ywd.44.1444292802748;
+        Thu, 08 Oct 2015 01:26:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.102.34 with SMTP id fl2ls80718wib.21.gmail; Thu, 08 Oct
- 2015 01:48:30 -0700 (PDT)
-X-Received: by 10.180.208.7 with SMTP id ma7mr442753wic.5.1444294110272;
-        Thu, 08 Oct 2015 01:48:30 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id w4si107870wiz.0.2015.10.08.01.48.30
+Received: by 10.140.30.201 with SMTP id d67ls930155qgd.55.gmail; Thu, 08 Oct
+ 2015 01:26:41 -0700 (PDT)
+X-Received: by 10.129.78.205 with SMTP id c196mr4764490ywb.21.1444292801654;
+        Thu, 08 Oct 2015 01:26:41 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id wl2si5281787pab.1.2015.10.08.01.26.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 01:48:30 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Oct 2015 01:26:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0MIe7s-1ZmIjN26Ke-002DJe; Thu, 08 Oct
- 2015 10:48:29 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>, Alison Schofield <amsfield22@gmail.com>
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id ve7so7439953pab.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 01:26:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=ENvHl9wcmXERrg18REMr2iOiB4+hiUYgM6uRTMfkYMc=;
+        b=TeSG9KWU+PvCVtWCGV2CxPt2UtFP4ffYVWGDlH0VjFc6oQv2YVTTY2z+nG0nVahQhz
+         BQjBkpgXQ7U+DmICnta2Cc1Hcqs4Tm+7LFNYaOim/Z5sO6cV4+y68bPJ7x/zBy7ALU+f
+         Kj/89D1ezVXBfhDl5MCV2x2pEIs3uEDU96YftOWCfT0M35arIw3JE/NBV0/YGFcWIBqB
+         a/dgqQbBoQhWmusly5kTmLs8kbrtVfKnq7wO0VQAOMxqblEXrszyaJombrrQLFVUSvqU
+         FnkNCabrcTG3viU3zgvat3+iFEpcuoHautIoHteAaWONDIBOUJ9QqMvMqBYIbY5Ej6fU
+         dmqA==
+X-Received: by 10.69.25.1 with SMTP id im1mr6660012pbd.102.1444292801470;
+        Thu, 08 Oct 2015 01:26:41 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id sm9sm5089710pbc.56.2015.10.08.01.26.39
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 08 Oct 2015 01:26:41 -0700 (PDT)
+Date: Thu, 8 Oct 2015 13:56:32 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Alison Schofield <amsfield22@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Where is IBMEBUS in makeconfig?
-Date: Thu, 08 Oct 2015 10:48:28 +0200
-Message-ID: <5142957.QYB8fYfozY@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151008082632.GA12448@sudip-pc>
-References: <20151008081436.GA31765@Ubuntu-D830> <20151008082632.GA12448@sudip-pc>
+Message-ID: <20151008082632.GA12448@sudip-pc>
+References: <20151008081436.GA31765@Ubuntu-D830>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:NL8pdpyFbfRC8c1QcUZw8e9yMto0OH4EW3jmkHF2AYzZrGrjrRC
- MhfMU7lE7juueUIcCbpA1DNEdn37kPgELWxDDSyCvrPYdvhJhDwdEkxZZoSvTJbhtrb5a2h
- SlUgpMlCuLsTnOvW2BXxXtwAZZzy4Y67rPzF34NJklZyI4tX3tAS5/3325Lz+r7crz5A+fW
- 91zNP6FmoYJh9iKOlavpQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Ot1fqyto38w=:bxikUtVL9Et1bX2iSm0f/U
- 0XJhRccAAhCyjPH4k/bnE26dx7q6AByihChylZysVIwCBvH2onoZQCvMwO3ATwb3oyoNKhXjN
- 5gob1By21ooTIxZXqxir6YQ0K83CiO7L4fC1AIoZ++L7GQ73WeHHIWuB1PzwHnCtTRrhlBnok
- khgJqtPoNIhIc0XlnK1xHh8Akf6SOQJ9mbaDEL21zCUGwZG+YmmSyshtKcwMaJPrHW3qWsmBp
- vSRwo6o0SRrgqrUFghoRd74JWPgDB0SRgb1VWciHZCKGO9LgImDYV/SMEoReqpXSON2yoLQCm
- mV8FA6PcRCUGCLuQbJjMnL85yb4w3y7Tt9U1nmf9AY8wlUKWdPrejGu66ivWid7hEombrBdsZ
- FkJE0iOV/k8z6FbbkcWSfgZZAq36/qNDGFglQ+9q0AEKRh2lDoh6i3TNWyGJaWnlQzTiAYnZs
- 70m7yExnwBXWuVXMRGQB421CyyeKR6xbUCPMmoM8eO4EfdMxSwdkUq48buPP6i+TAm2P4RmPS
- lyq3BauuLYQYcS4ZjaqXgM1jVq8eIRW3iuQbtSxYzG9WJHgT7kVtelI7zUVZd+LufFNmEWk9D
- rIkDXlkJhKx0/QYX09G14ZIRqHJi29xKfXDqEVFjG0Lgr/PWIFgOSqErlBQpRBb5DA8kxObVH
- ieWOqg/d3avZ93CcpJLVpYqXQxHIdLVDar3U6DUU+PiIjnBdcQUPKq0bJH2lz60HjSX9xiH+5
- WELxJ7ZXU+HTQT2K
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20151008081436.GA31765@Ubuntu-D830>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thursday 08 October 2015 13:56:32 Sudip Mukherjee wrote:
-> On Thu, Oct 08, 2015 at 01:14:36AM -0700, Alison Schofield wrote:
-> > Need to load this module but cannot find IBMEBUS dependency in
-> > makeconfig.  Appreciate the help!
-> > 
-> >       config INFINIBAND_EHCA
-> >               tristate "eHCA support"
-> >               depends on IBMEBUS
+On Thu, Oct 08, 2015 at 01:14:36AM -0700, Alison Schofield wrote:
+> Need to load this module but cannot find IBMEBUS dependency in
+> makeconfig.  Appreciate the help!
 > 
-> Looks like IBMEBUS is not there in staging tree, I checked linux-next
-> also and its not there even. That means this module cannot be built.
-> 
-> Maybe Greg knows what to do now... remove ehca folder as it has out of
-> tree dependency?
+> 	config INFINIBAND_EHCA
+> 		tristate "eHCA support"
+> 		depends on IBMEBUS
 
-$ git grep IBMEBUS
-arch/powerpc/configs/ppc64_defconfig:CONFIG_IBMEBUS=y                                                    
-arch/powerpc/configs/pseries_defconfig:CONFIG_IBMEBUS=y                                                  
-arch/powerpc/include/asm/ibmebus.h:#endif /* _ASM_IBMEBUS_H */
-arch/powerpc/kernel/Makefile:obj-$(CONFIG_IBMEBUS)           += ibmebus.o
-arch/powerpc/kernel/ibmebus.c:#define IBMEBUS_BUS_PM_OPS_PTR    (&ibmebus_bus_dev_pm_ops)
-arch/powerpc/kernel/ibmebus.c:#define IBMEBUS_BUS_PM_OPS_PTR    NULL
-arch/powerpc/kernel/ibmebus.c:  .pm        = IBMEBUS_BUS_PM_OPS_PTR,
-arch/powerpc/mm/hash_utils_64.c:#ifdef CONFIG_IBMEBUS
-arch/powerpc/platforms/Kconfig:config IBMEBUS
-drivers/net/ethernet/ibm/Kconfig:       depends on PPC_PSERIES || PPC_DCR || (IBMEBUS && SPARSEMEM)
-drivers/net/ethernet/ibm/Kconfig:       depends on IBMEBUS && SPARSEMEM
-drivers/staging/rdma/ehca/Kconfig:      depends on IBMEBUS
+Looks like IBMEBUS is not there in staging tree, I checked linux-next
+also and its not there even. That means this module cannot be built.
 
-IBMEBUS is a construct from the times before device tree based nodes
-would become platform devices implicitly. It is used for the GX/GX+/GX++
-bus on POWER4 through POWER7 (but not the current POWER8), and usually
-just connects PCIe cages adapters these days.
+Maybe Greg knows what to do now... remove ehca folder as it has out of
+tree dependency?
 
-EHEA and EHCA are directly attached, and at least EHEA seems to still
-be around and commonly used on older machines.
-
-	Arnd
+regards
+sudip
 
