@@ -1,110 +1,110 @@
 X-GM-THRID: 6203209865038397440
-X-Received: by 10.180.160.146 with SMTP id xk18mr745700wib.3.1444311757424;
-        Thu, 08 Oct 2015 06:42:37 -0700 (PDT)
+X-Received: by 10.68.184.35 with SMTP id er3mr5509315pbc.2.1444304392834;
+        Thu, 08 Oct 2015 04:39:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.107.199 with SMTP id he7ls140916wib.16.canary; Thu, 08 Oct
- 2015 06:42:37 -0700 (PDT)
-X-Received: by 10.180.81.165 with SMTP id b5mr745540wiy.1.1444311756997;
-        Thu, 08 Oct 2015 06:42:36 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id ch7si315266wib.2.2015.10.08.06.42.36
+Received: by 10.107.10.16 with SMTP id u16ls472769ioi.56.gmail; Thu, 08 Oct
+ 2015 04:39:52 -0700 (PDT)
+X-Received: by 10.50.85.20 with SMTP id d20mr2538318igz.8.1444304392380;
+        Thu, 08 Oct 2015 04:39:52 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id el2si5556034pbb.0.2015.10.08.04.39.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 06:42:36 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 08 Oct 2015 04:39:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,654,1437429600"; 
-   d="scan'208";a="181769602"
-Received: from smb-adpcdg1-06.hotspot.hub-one.net (HELO hadrien.local) ([213.174.99.134])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 08 Oct 2015 15:42:36 +0200
-Date: Thu, 8 Oct 2015 14:42:36 +0100 (IST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-cc: outreachy-kernel@googlegroups.com
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x231.google.com with SMTP id ve7so12191665pab.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 04:39:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=3nzoKf9uC58KFUiPpYdLWPzihuvyZZVCSjSeo862rMA=;
+        b=i6pqRFttXBcavD1pybsqYgKOU72fXrf8vv4TqMeIu6WmtvokRKfzt+wIAY58OE7N0f
+         Q7qxrnn28jXPB/h3Q3hbvdcTHhqrGlOr+aljyclZqxZ43dQGyD3vc2JqnFA2ELyDGs9+
+         uQjgx0j53hynDn7EgOrIKnb2DQCgGfWfMmgvdaRD70hXr763GpI5nOQENZ5SqCJQJ7a9
+         IcPIS+bbAKScBLI66QQadAszz3VyD7he9b/AYbWCH+XtUmNktTboNfRVpQlVqTlho0EK
+         SScRv/9VDExWcZD0WHTuOL69GdcWpRbQHK1TP/0EZF9oQz5ZCZhJwHpY4MSQu5jrjT1B
+         A6KA==
+X-Received: by 10.66.241.40 with SMTP id wf8mr7720779pac.157.1444304392241;
+        Thu, 08 Oct 2015 04:39:52 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id qg2sm44992687pbb.80.2015.10.08.04.39.50
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Oct 2015 04:39:51 -0700 (PDT)
+Date: Thu, 8 Oct 2015 17:09:44 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: ddk750_dvi: Fixed
  character limit warning
-In-Reply-To: <20151008113944.GA5621@ubuntu>
-Message-ID: <alpine.DEB.2.10.1510081441030.2596@hadrien>
-References: <20151008094215.GA4799@ubuntu> <alpine.DEB.2.10.1510081124360.2613@hadrien> <20151008113944.GA5621@ubuntu>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Message-ID: <20151008113944.GA5621@ubuntu>
+References: <20151008094215.GA4799@ubuntu>
+ <alpine.DEB.2.10.1510081124360.2613@hadrien>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.10.1510081124360.2613@hadrien>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Thu, 8 Oct 2015, Shivani Bhardwaj wrote:
-
-> On Thu, Oct 08, 2015 at 11:25:22AM +0100, Julia Lawall wrote:
-> > On Thu, 8 Oct 2015, Shivani Bhardwaj wrote:
+On Thu, Oct 08, 2015 at 11:25:22AM +0100, Julia Lawall wrote:
+> On Thu, 8 Oct 2015, Shivani Bhardwaj wrote:
+> 
+> > Fixed the warning - line over 80 characters generated by checkpatch by
+> > breaking the line at appropriate places so that the code looks more
+> > readable and good.
 > >
-> > > Fixed the warning - line over 80 characters generated by checkpatch by
-> > > breaking the line at appropriate places so that the code looks more
-> > > readable and good.
-> > >
-> > > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> > > ---
-> > >  drivers/staging/sm750fb/ddk750_dvi.c | 7 ++++---
-> > >  1 file changed, 4 insertions(+), 3 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
-> > > index a7a2351..382b515 100644
-> > > --- a/drivers/staging/sm750fb/ddk750_dvi.c
-> > > +++ b/drivers/staging/sm750fb/ddk750_dvi.c
-> > > @@ -46,9 +46,10 @@ int dviInit(
-> > >
-> > >  	pCurrentDviCtrl = g_dcftSupportedDviController;
-> > >  	if (pCurrentDviCtrl->pfnInit != NULL) {
-> > > -		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect, dualEdgeClkSelect, hsyncEnable,
-> > > -						vsyncEnable, deskewEnable, deskewSetting, continuousSyncEnable,
-> > > -						pllFilterEnable, pllFilterValue);
-> > > +		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect,
-> > > +			dualEdgeClkSelect, hsyncEnable, vsyncEnable,
-> > > +			deskewEnable, deskewSetting, continuousSyncEnable,
-> > > +					pllFilterEnable, pllFilterValue);
+> > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> > ---
+> >  drivers/staging/sm750fb/ddk750_dvi.c | 7 ++++---
+> >  1 file changed, 4 insertions(+), 3 deletions(-)
 > >
-> > It looks like the arguments are not all lined up - the last ones are more
-> > indented than the others.  The real problem would be the ariable names...
+> > diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
+> > index a7a2351..382b515 100644
+> > --- a/drivers/staging/sm750fb/ddk750_dvi.c
+> > +++ b/drivers/staging/sm750fb/ddk750_dvi.c
+> > @@ -46,9 +46,10 @@ int dviInit(
 > >
-> > julia
+> >  	pCurrentDviCtrl = g_dcftSupportedDviController;
+> >  	if (pCurrentDviCtrl->pfnInit != NULL) {
+> > -		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect, dualEdgeClkSelect, hsyncEnable,
+> > -						vsyncEnable, deskewEnable, deskewSetting, continuousSyncEnable,
+> > -						pllFilterEnable, pllFilterValue);
+> > +		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect,
+> > +			dualEdgeClkSelect, hsyncEnable, vsyncEnable,
+> > +			deskewEnable, deskewSetting, continuousSyncEnable,
+> > +					pllFilterEnable, pllFilterValue);
+> 
+> It looks like the arguments are not all lined up - the last ones are more
+> indented than the others.  The real problem would be the ariable names...
+> 
+> julia
+> 
+
+So, should I indent the last line in accordance with the previous ones?
+Will that work fine? I'm sorry, I do not understand what would be the
+problem with variable names.
+
+Thanks
+Shivani
+
+> >  	}
+> >  	return -1; /* error */
+> >  }
+> > --
+> > 2.1.0
 > >
->
-> So, should I indent the last line in accordance with the previous ones?
-> Will that work fine? I'm sorry, I do not understand what would be the
-> problem with variable names.
-
-All the arguments should always be lined up in the same way.
-
-The variable names are very long.  If you look in the mainline kernel, the
-variable names are not so long, and camel case is not used.  It's sort of
-orthogonal to the patch, except that if the variable names were not so
-long, the code might not have been over the 80 character limit.
-
-julia
-
->
-> Thanks
-> Shivani
->
-> > >  	}
-> > >  	return -1; /* error */
-> > >  }
-> > > --
-> > > 2.1.0
-> > >
-> > > --
-> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151008094215.GA4799%40ubuntu.
-> > > For more options, visit https://groups.google.com/d/optout.
-> > >
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151008113944.GA5621%40ubuntu.
-> For more options, visit https://groups.google.com/d/optout.
->
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151008094215.GA4799%40ubuntu.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
