@@ -1,108 +1,95 @@
 X-GM-THRID: 6202253257836855296
-X-Received: by 10.129.73.143 with SMTP id w137mr12265655ywa.19.1444416994407;
-        Fri, 09 Oct 2015 11:56:34 -0700 (PDT)
+X-Received: by 10.112.209.73 with SMTP id mk9mr1059649lbc.14.1444289861675;
+        Thu, 08 Oct 2015 00:37:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.114.3 with SMTP id jc3ls558119igb.0.canary; Fri, 09 Oct
- 2015 11:56:33 -0700 (PDT)
-X-Received: by 10.50.62.68 with SMTP id w4mr704203igr.13.1444416993859;
-        Fri, 09 Oct 2015 11:56:33 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qg0-x232.google.com (mail-qg0-x232.google.com. [2607:f8b0:400d:c04::232])
-        by gmr-mx.google.com with ESMTPS id y11si209636ywd.7.2015.10.09.11.56.33
+Received: by 10.25.152.83 with SMTP id a80ls135393lfe.96.gmail; Thu, 08 Oct
+ 2015 00:37:41 -0700 (PDT)
+X-Received: by 10.112.26.212 with SMTP id n20mr1084852lbg.2.1444289861172;
+        Thu, 08 Oct 2015 00:37:41 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id bj4si271387wib.1.2015.10.08.00.37.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 11:56:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::232 as permitted sender) client-ip=2607:f8b0:400d:c04::232;
+        Thu, 08 Oct 2015 00:37:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-qg0-x232.google.com with SMTP id 61so76165936qgx.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 11:56:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=N9zjGK+QaZebyH23ZA1PZwNdDzmkWQcTrUNGLOOruPI=;
-        b=GUfgI/b54OMln00uxDHt3MrZGhZOX8nBVsaAn+0ka801bmOvRqFkOUVKLFDDOcoKCu
-         94vZoU++EQjugB/VTLOO/cpLhAT0VQT6v+aKCK8oIMMdBwFTUqIqBcRcHkf5jnE3TEbl
-         PJ/j2becT3n+kPhptrhSHHLQcCvVFQ4yvQlN6g8z/CjlhRXKYaHYi4ij5O8rO72G+osj
-         y/0WlmHZIC+5auNCvfSQIPpIG3LC+xEbH/8Rnz/9gSArLrb5uLnVoAsGhKZi6FYGaaZF
-         ll/QtVxkdtTPuQpUanAxroxvxRy2Tr56r5R7bxmC0ZK0JTAhP1KBUKN86QcKyjGc65ZQ
-         k8dQ==
-MIME-Version: 1.0
-X-Received: by 10.140.129.22 with SMTP id 22mr17980897qhb.74.1444416993663;
- Fri, 09 Oct 2015 11:56:33 -0700 (PDT)
-Received: by 10.140.21.38 with HTTP; Fri, 9 Oct 2015 11:56:33 -0700 (PDT)
-In-Reply-To: <5882355.uMFG4U3DtR@wuerfel>
-References: <20151005195012.GA21881@amitoj-Inspiron-3542>
-	<6335208.lbv5QB1mEN@wuerfel>
-	<CA+5yK5GTb7o0GzUNHEwq-7nFLKXSht31kvHLvxG31WiTC4EEHw@mail.gmail.com>
-	<5882355.uMFG4U3DtR@wuerfel>
-Date: Sat, 10 Oct 2015 00:26:33 +0530
-Message-ID: <CA+5yK5GwMXDUVUUSdzn1O1iuAed1CDs6Ogqs+fcoH=xufPSzmA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: usleep_range is
- preferred over udelay
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0MHtgv-1ZlS9J3EWj-003eGU; Thu, 08 Oct
+ 2015 09:37:40 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: usleep_range is preferred over udelay
+Date: Thu, 08 Oct 2015 09:37:40 +0200
+Message-ID: <5882355.uMFG4U3DtR@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CA+5yK5GTb7o0GzUNHEwq-7nFLKXSht31kvHLvxG31WiTC4EEHw@mail.gmail.com>
+References: <20151005195012.GA21881@amitoj-Inspiron-3542> <6335208.lbv5QB1mEN@wuerfel> <CA+5yK5GTb7o0GzUNHEwq-7nFLKXSht31kvHLvxG31WiTC4EEHw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:Y0bU2rO0Lh4HlT0mufugr3nK5WHHrBxK8m22C1JAfsmgJOlfeMd
+ 5baCKIxNd53qC1qR67Bmgf0iZOrvcfQ6ILDtro6ZCEdhjB2TnKMOjeEQExxHSGj9GGu75ED
+ FF6A5dFXNhBbUAmaLysHlj4QoVjSp3TZxxh1Bzj9fgI+vl+FyxP9xC0tdWNQJ7flCkOFK0g
+ 0O0lw+2oGpt+JRwjXR4qA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:mLuE0z5DYz0=:QxBHsZMPuhcSn+EA5Yr1KQ
+ q3wNHVKlau18SfTg8PmvKZL8Pdat4cJxv6cqcv1LweO4IC7IxF17IZrFWkcijabOao6At69hX
+ Ryw+gde5xX/82OdGZQW2RCUH51AiobKHferM31FIbVRNBQ40CFKQiTDHYYSTFlnRIw8aeutFT
+ Kqf2snGvxBKjUij6Uf7NPMXGDe+axMcdQDo/gk2IWdWFCUI3ve1/IKJLlcfjQ/l0Egs1eqO/F
+ sZNz1zQ8PP/EdAclw3k/JZESKHNPLCrICOBKZ9HuiBLnvUbqvz/AC+nXFYq+nyKf0Gq4NLI8M
+ KdfRPq4Z+0jPH9mVQosDsZ6c5AIcqwjhCRQS+isLPzH/O7WUhL7s/scB+FvFV9sZX97scP5Y6
+ 2gPrI8iq2vhNc3yucQnejqNgUwMQhIbZPaZsua1J4wEyx0CKp2BYSVbuDHbwfoY+khUEGHChg
+ iAjZ0N3iYw501rzdv8p7PvZbhX+3DFa2OdL5u1cadasZo0htJQGrl4w9id/oSASAx/bNS5vrm
+ YgqIGwEBtIwsGrBF24CQU0SFLC8wOoRFpw2VPe2IVaByJKjAQXi8eJkyC7+Y58faVIEWubwTI
+ CFIHeeS+bjrj7qWGzD87PcmN9NtcwjYl7N47u/H6/8Kr0cjveatg7frHoc4jiqfVv7IQ+9oFB
+ iRkRUNxibHqhTRZQCreIkXuhZYuQYGF3Ju9CnLX8Ch+wlT2Og1Bs4yQKKKjFfwW8fcfHXdZDb
+ sh5bN06YOaw7gCZl
 
-On Thu, Oct 8, 2015 at 1:07 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> On Thursday 08 October 2015 08:23:10 Amitoj Kaur Chawla wrote:
->> On Tue, Oct 6, 2015 at 1:15 PM, Arnd Bergmann <arnd@arndb.de> wrote:
->> > It really depends on what the driver is trying to do. In this case, it
->> > waits for a device register to signal 'done', and it tries this five times
->> > for a maximum of 50 microseconds, which is a relatively short period.
->> >
->> > Changing the maximum to 1000 means that it can now sleep for up to
->> > 5 milliseconds instead, which is a noticeable time, especially if
->> > it gets called frequently.
->> >
->> > The questions to answer here are:
->> >
->> > * Is it safe to call a sleeping function from this point at all?
->> >   Look for other sleeping functions (proves that it is allowed to
->> >   sleep) and for spinlocks (if a lock is held, you may not sleep)
->> >   in this function.
->> >
->>
->> There aren't any other sleeping functions in this function. However,
->> udelay() has been used one more time in a loop.
->
-> udelay() is not a sleeping function, so that doesn't count here.
->
-> Try to look further out if you can't find a sleeping function or a spinlock
-> here, scanning the callers of this function and everything they call for
-> common sleeping functions like kmalloc(..., GFP_KERNEL), mutex_lock() or
-> msleep().
+On Thursday 08 October 2015 08:23:10 Amitoj Kaur Chawla wrote:
+> On Tue, Oct 6, 2015 at 1:15 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> > It really depends on what the driver is trying to do. In this case, it
+> > waits for a device register to signal 'done', and it tries this five times
+> > for a maximum of 50 microseconds, which is a relatively short period.
+> >
+> > Changing the maximum to 1000 means that it can now sleep for up to
+> > 5 milliseconds instead, which is a noticeable time, especially if
+> > it gets called frequently.
+> >
+> > The questions to answer here are:
+> >
+> > * Is it safe to call a sleeping function from this point at all?
+> >   Look for other sleeping functions (proves that it is allowed to
+> >   sleep) and for spinlocks (if a lock is held, you may not sleep)
+> >   in this function.
+> >
+> 
+> There aren't any other sleeping functions in this function. However,
+> udelay() has been used one more time in a loop.
 
-kmalloc(..., GFP_ATOMIC) is being called in the function. Callers of
-this function aren't calling these sleeping functions.
+udelay() is not a sleeping function, so that doesn't count here.
 
->
->> > * How often do you expect the function to get called? Once per data
->> >   packet means it's not ok to sleep long, once an hour would mean it's
->> >   clearly ok.
->> >
->> > * Are there other calls in this function that take longer than a
->> >   millisecond?
->>
->> How can I find out these 2 things? Only udelay() is the sleeping function.
->
-> Try understanding what the functions actually do by looking at the call
-> chain for the first one, it should be fairly easy in this case.
->
-> For the second one, look for functions that get called from this one,
-> if any of them contains a mdelay() or msleep(), or a loop around
-> udelay(), try guessing how long that can take.
+Try to look further out if you can't find a sleeping function or a spinlock
+here, scanning the callers of this function and everything they call for
+common sleeping functions like kmalloc(..., GFP_KERNEL), mutex_lock() or
+msleep().
 
-The function is calling msleep(20) and has a loop around it, repeating
-hundred times so that means a couple of milliseconds delay, right? Is
-usleep_range() only used for short delays and msleep() for the longer
-ones?
+> > * How often do you expect the function to get called? Once per data
+> >   packet means it's not ok to sleep long, once an hour would mean it's
+> >   clearly ok.
+> >
+> > * Are there other calls in this function that take longer than a
+> >   millisecond?
+> 
+> How can I find out these 2 things? Only udelay() is the sleeping function.
 
+Try understanding what the functions actually do by looking at the call
+chain for the first one, it should be fairly easy in this case.
 
-Amitoj
+For the second one, look for functions that get called from this one,
+if any of them contains a mdelay() or msleep(), or a loop around
+udelay(), try guessing how long that can take.
+
+	Arnd
 
