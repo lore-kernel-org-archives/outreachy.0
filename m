@@ -1,147 +1,130 @@
-X-GM-THRID: 6261375089460117504
-X-Received: by 10.129.125.215 with SMTP id y206mr13003728ywc.54.1457839992069;
-        Sat, 12 Mar 2016 19:33:12 -0800 (PST)
+X-GM-THRID: 6203334269363814400
+X-Received: by 10.182.70.4 with SMTP id i4mr7195435obu.15.1444331056679;
+        Thu, 08 Oct 2015 12:04:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.42.66 with SMTP id b60ls3803574qga.56.gmail; Sat, 12 Mar
- 2016 19:33:11 -0800 (PST)
-X-Received: by 10.140.253.198 with SMTP id y189mr13384704qhc.9.1457839991415;
-        Sat, 12 Mar 2016 19:33:11 -0800 (PST)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qg0-x229.google.com (mail-qg0-x229.google.com. [2607:f8b0:400d:c04::229])
-        by gmr-mx.google.com with ESMTPS id i133si892663ywe.7.2016.03.12.19.33.11
+Received: by 10.107.16.166 with SMTP id 38ls662837ioq.71.gmail; Thu, 08 Oct
+ 2015 12:04:16 -0700 (PDT)
+X-Received: by 10.50.78.170 with SMTP id c10mr4432185igx.6.1444331056094;
+        Thu, 08 Oct 2015 12:04:16 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-ig0-x22a.google.com (mail-ig0-x22a.google.com. [2607:f8b0:4001:c05::22a])
+        by gmr-mx.google.com with ESMTPS id rr9si392069igb.1.2015.10.08.12.04.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 12 Mar 2016 19:33:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) client-ip=2607:f8b0:400d:c04::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Oct 2015 12:04:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::22a as permitted sender) client-ip=2607:f8b0:4001:c05::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::22a as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x229.google.com with SMTP id y89so129208054qge.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 19:33:11 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-ig0-x22a.google.com with SMTP id x6so19798254igx.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 12:04:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=fJ22y4eoiiBfFjSPtLxSEtTp3FS8w9WfbqIw0ZodwDs=;
-        b=rTayR9PWBdiqUBzzXUXKJYOhbh14ebhdE7t8Km1Oo3sWlbZ2hKotqaUWUQEmZFewUb
-         B3PTi5IvkWz4OS9UlBuiqqSsW00h8HyZapS6F87W4JCtDup1wqycrAKG1LX0voyTocn+
-         uwQDo/Gei3c87tqfvp7+F2tHPMTB7RyatDoofyFCktLlXtV9bO0jD96PzfIrAmxmEj2b
-         ecNcZsi10Cvc3tJ77xjfuSepndph+8WmTwAPbs9aD5vT425vWWvX2nKwycQLP040E5G8
-         ZWKt5JbjPoSj64vLmiWbCsqJJ49T1TU1NxYV63HHwPixCPkAxzY4NY7sHD+EsX+i8XxG
-         6IIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=fJ22y4eoiiBfFjSPtLxSEtTp3FS8w9WfbqIw0ZodwDs=;
-        b=FbnJ4Q2wiU314Bd5myt/2ldowH8Uj+0fa597OTQOxr1hTMDlEJDUHZwMPzguRSstb8
-         9a/Oo/Hhe2IPcCtQWkCRUFFqzmKr1i8ln9cwEUdDbbecjWQYlBdIE4kr+Ye94r6SUXQQ
-         tUZCiwyB6n8HHe4RvZ+fy5zDmaOMNfHJeuzZ2F+txViR3L2V1d+L3wupb4RkgtBUaE7d
-         bdgXxG5OEXosgnS2RsA0DBJGEhWc0MMrZ/VO/+G9J8qb+Ov7r3758qk1253jCBTWJHeF
-         ingFkD7YLu2d2xBif/9NX1Z+AAiiZUrXk1mR9rAaGDnhceybOs8atg3Kw1c2/kfS1xSq
-         MY+w==
-X-Gm-Message-State: AD7BkJITnj4fyfgrG/YWERMiYa+vB/0K8wRW0y8c9MvOFQtCdhZPq5s8RFz9BxVq+MOjaQ==
-X-Received: by 10.140.251.70 with SMTP id w67mr22032860qhc.99.1457839991113;
-        Sat, 12 Mar 2016 19:33:11 -0800 (PST)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([191.191.241.196])
-        by smtp.gmail.com with ESMTPSA id e11sm7392008qkb.39.2016.03.12.19.33.09
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 12 Mar 2016 19:33:10 -0800 (PST)
-Date: Sun, 13 Mar 2016 00:33:07 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Bcc: juliana.orod@gmail.com
-Subject: [PATCH] staging: dgnc: fixed multiple blank lines on dgnc_driver.h
-Message-ID: <20160313033307.GA596@spock>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=38OMp21aPxyo6/TveKwfp7EOrzmPsTddTiWVYSvgGnw=;
+        b=rrSsxsTl0bdi4B/1bbD8RA4sUSqhaNibN7HiHl1//RRDNT5RNgfZ1wDucnJ33T/8sC
+         yyK9tVa7VUtCU7uomuaw/ky2lOJ+gQPJPK4mFovN2DE2tP9SED2eUaqJoVG2wvh3Ofnn
+         urp8JtXLcWRI93F4M7FrjX2srQZeIIcxtqnUdYMNCXl1o3w3xDTy4GxNdEbxZ+zmd+t5
+         +WlT0RFKtrlopJtWeQ0gFA/D0V66Pu2Y+TqFAO+Anheox1LQn3o5U5UV1UM5BdtyswAo
+         R8q3Xxl8TDvJr5G8gjEWXBJ53Eqxwa5JNYNbYkEvptBUA8wcVFGjZFm26icR9YnsRv0h
+         Px2g==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.50.111.83 with SMTP id ig19mr5721727igb.82.1444331055931;
+ Thu, 08 Oct 2015 12:04:15 -0700 (PDT)
+Received: by 10.107.158.211 with HTTP; Thu, 8 Oct 2015 12:04:15 -0700 (PDT)
+In-Reply-To: <20151008183503.GA10133@kroah.com>
+References: <1444326298-12640-1-git-send-email-ksenija.stanojevic@gmail.com>
+	<20151008183503.GA10133@kroah.com>
+Date: Thu, 8 Oct 2015 21:04:15 +0200
+Message-ID: <CAL7P5jLWB15mVHA8AGG1bNXiAeij9Qnvofy=VkpA17bpqXCaYg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Replace switch by
+ if-else statement
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: Greg KH <greg@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch removes multiple blank lines that caused checkpatch issues.
+On Thu, Oct 8, 2015 at 8:35 PM, Greg KH <greg@kroah.com> wrote:
+> On Thu, Oct 08, 2015 at 07:44:58PM +0200, Ksenija Stanojevic wrote:
+>> Use of switch statement is wrong here, better use if-else statement
+>> instead.
+>
+> Why is it "wrong"?  It looks cleaner to me as a switch statement, easier
+> to read and understand.  Why change it?
+>
+>
+>>
+>> Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com>
+>> ---
+>>  drivers/staging/vt6655/channel.c | 33 +++++++++++++--------------------
+>>  1 file changed, 13 insertions(+), 20 deletions(-)
+>>
+>> diff --git a/drivers/staging/vt6655/channel.c b/drivers/staging/vt6655/channel.c
+>> index 7a71782..3d12da6 100644
+>> --- a/drivers/staging/vt6655/channel.c
+>> +++ b/drivers/staging/vt6655/channel.c
+>> @@ -132,26 +132,10 @@ void vnt_init_bands(struct vnt_private *priv)
+>>       struct ieee80211_channel *ch;
+>>       int i;
+>>
+>> -     switch (priv->byRFType) {
+>> -     case RF_AIROHA7230:
+>> -     case RF_UW2452:
+>> -     case RF_NOTHING:
+>> -     default:
+>> -             ch = vnt_channels_5ghz;
+>> +     if (priv->byRFType == RF_RFMD2959 || priv->byRFType == RF_AIROHA ||
+>> +         priv->byRFType == RF_AL2230S || priv->byRFType == RF_UW2451 ||
+>> +         priv->byRFType == RF_VT3226) {
+>
+> That's hard to read which types are and are not included here, right?
+>
+>
+>>
+>> -             for (i = 0; i < ARRAY_SIZE(vnt_channels_5ghz); i++) {
+>> -                     ch[i].max_power = 0x3f;
+>> -                     ch[i].flags = IEEE80211_CHAN_NO_HT40;
+>> -             }
+>> -
+>> -             priv->hw->wiphy->bands[IEEE80211_BAND_5GHZ] =
+>> -                                             &vnt_supported_5ghz_band;
+>> -     /* fallthrough */
+>> -     case RF_RFMD2959:
+>> -     case RF_AIROHA:
+>> -     case RF_AL2230S:
+>> -     case RF_UW2451:
+>> -     case RF_VT3226:
+>>               ch = vnt_channels_2ghz;
+>>
+>>               for (i = 0; i < ARRAY_SIZE(vnt_channels_2ghz); i++) {
+>> @@ -161,7 +145,16 @@ void vnt_init_bands(struct vnt_private *priv)
+>>
+>>               priv->hw->wiphy->bands[IEEE80211_BAND_2GHZ] =
+>>                                               &vnt_supported_2ghz_band;
+>> -             break;
+>> +     } else {
+>> +             ch = vnt_channels_5ghz;
+>> +
+>> +             for (i = 0; i < ARRAY_SIZE(vnt_channels_5ghz); i++) {
+>> +                     ch[i].max_power = 0x3f;
+>> +                     ch[i].flags = IEEE80211_CHAN_NO_HT40;
+>> +             }
+>> +
+>> +             priv->hw->wiphy->bands[IEEE80211_BAND_5GHZ] =
+>> +                                             &vnt_supported_5ghz_band;
+>
+> I think you are changing the logic here a bit, are you sure it's still
+> identical?
 
-Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
----
- drivers/staging/dgnc/dgnc_driver.h | 9 ---------
- 1 file changed, 9 deletions(-)
+Break is missing so I thought that in cases
+RF_RFMD2959, RF_AIROHA, RF_AL2230S, RF_UW2451, RF_VT3226
+ch and priv->hw->wiphy->bands[IEEE80211_BAND_5GHZ] will be overwritten
+but I see now that in that part of the code
+priv->hw->wiphy->bands[IEEE80211_BAND_2GHZ] is used, so the change is
+not correct
 
-diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
-index 6d91abd..d76f91e 100644
---- a/drivers/staging/dgnc/dgnc_driver.h
-+++ b/drivers/staging/dgnc/dgnc_driver.h
-@@ -88,7 +88,6 @@
- #define   _POSIX_VDISABLE '\0'
- #endif
- 
--
- /*
-  * All the possible states the driver can be while being loaded.
-  */
-@@ -106,7 +105,6 @@ enum {
- 	BOARD_READY
- };
- 
--
- /*************************************************************************
-  *
-  * Structures and closely related defines.
-@@ -145,7 +143,6 @@ struct board_ops {
-  ************************************************************************/
- #define BD_IS_PCI_EXPRESS     0x0001	  /* Is a PCI Express board */
- 
--
- /*
-  *	Per-board information
-  */
-@@ -241,7 +238,6 @@ struct dgnc_board {
- 
- };
- 
--
- /************************************************************************
-  * Unit flag definitions for un_flags.
-  ************************************************************************/
-@@ -277,7 +273,6 @@ struct un_t {
- 	struct device *un_sysfs;
- };
- 
--
- /************************************************************************
-  * Device flag definitions for ch_flags.
-  ************************************************************************/
-@@ -300,7 +295,6 @@ struct un_t {
- #define CH_FORCED_STOP  0x20000		/* Output is forcibly stopped	*/
- #define CH_FORCED_STOPI 0x40000		/* Input is forcibly stopped	*/
- 
--
- /* Our Read/Error/Write queue sizes */
- #define RQUEUEMASK	0x1FFF		/* 8 K - 1 */
- #define EQUEUEMASK	0x1FFF		/* 8 K - 1 */
-@@ -309,7 +303,6 @@ struct un_t {
- #define EQUEUESIZE	RQUEUESIZE
- #define WQUEUESIZE	(WQUEUEMASK + 1)
- 
--
- /************************************************************************
-  * Channel information structure.
-  ************************************************************************/
-@@ -397,7 +390,6 @@ struct channel_t {
- 	ulong		ch_intr_tx;	/* Count of interrupts */
- 	ulong		ch_intr_rx;	/* Count of interrupts */
- 
--
- 	/* /proc/<board>/<channel> entries */
- 	struct proc_dir_entry *proc_entry_pointer;
- 	struct dgnc_proc_entry *dgnc_channel_table;
-@@ -415,5 +407,4 @@ extern uint		dgnc_NumBoards;		/* Total number of boards */
- extern struct dgnc_board	*dgnc_Board[MAXBOARDS];	/* Array of board
- 							 * structs
- 							 */
--
- #endif
--- 
-2.7.2
-
+Ksenija
 
