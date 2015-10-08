@@ -1,98 +1,108 @@
-X-GM-THRID: 6205509094362578944
-X-Received: by 10.66.227.166 with SMTP id sb6mr2838499pac.0.1444832676601;
-        Wed, 14 Oct 2015 07:24:36 -0700 (PDT)
+X-GM-THRID: 6202887067130658816
+X-Received: by 10.180.210.212 with SMTP id mw20mr1088366wic.3.1444332346115;
+        Thu, 08 Oct 2015 12:25:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.47.41 with SMTP id j41ls42924ioo.52.gmail; Wed, 14 Oct
- 2015 07:24:36 -0700 (PDT)
-X-Received: by 10.68.222.104 with SMTP id ql8mr2793116pbc.9.1444832676039;
-        Wed, 14 Oct 2015 07:24:36 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id zg1si918774pbb.2.2015.10.14.07.24.36
+Received: by 10.180.107.130 with SMTP id hc2ls230234wib.1.canary; Thu, 08 Oct
+ 2015 12:25:45 -0700 (PDT)
+X-Received: by 10.180.188.211 with SMTP id gc19mr1092559wic.6.1444332345249;
+        Thu, 08 Oct 2015 12:25:45 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id bn1si385107wib.0.2015.10.08.12.25.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 07:24:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        Thu, 08 Oct 2015 12:25:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id p3so7883000pay.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 07:24:36 -0700 (PDT)
+Received: by mail-wi0-x22b.google.com with SMTP id fx3so42221463wic.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 12:25:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ZB8hBrZ31JExX0tItP5LBWEv09N2/8xbBtkvNq/gK+k=;
-        b=AFWxI5mDdgTvG2QOBQU9ldWCPOcV6tnEIe82cayNNBK4e+vW48eWV0feJnaoyJu/Yj
-         yEVJgA9uicPIQ/03hQ75LQ/x/cqHuAQD/ITgWNgXFtMhOp0jAKdw/vf7HDQWtHoh5rqi
-         gWyb7FPWB8ldaDTuhWIFVvYRDLl7MMMOeCEjiWdi52M9TntannyevG+jJmE9rEnIOjZt
-         atK66+DXJvkK+cO8izp4e5eeGDJGLeu0bYjkfSl3CADgdPH9Ae2QW1YtI4Q/hhTkHLQf
-         kkqMmbZYwqngdtEpiAmz1N+t0bt/4A2on7UMwEcSnBt6O+LDVuA6BnRo73Lh6gGuY10D
-         uWwA==
-X-Received: by 10.68.192.9 with SMTP id hc9mr4011696pbc.57.1444832675595;
-        Wed, 14 Oct 2015 07:24:35 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id or6sm10094681pac.32.2015.10.14.07.24.30
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=n/zuYYpEnlBOINuLmwDAaG6T4bNqSPaXfrmF64KTys0=;
+        b=RZ0zrKlPhvPVOsQ0AODdVJB3cDk1gCaZFdrFKz+lLeysgsMwMRLgYF1KLA7SJJAwK7
+         gRTHNHszBXe1JXoc+Q37dtZl9hTJHn2tndBixN5RafSgFDf0HKANxhvd7VM5DeyUBmog
+         52QX6qdNql2EKjs4MPnA++Esn06G5xOV/FSLooqdKb96ijv5GVJNwR/cRD+6TBr0qCfh
+         E+i63RybtTShMNczshVo5GGqd7e+5Ogtovhaq7lmtfROVSUNAC4pn6zj6r+tr+UrkYpu
+         xnX7rFp0JO3a96ROghKjCx7vhM5LANp4skiv44n9yZTs5aFyce7LEJW3NkFG6fJV8zEu
+         AYvw==
+X-Received: by 10.180.87.194 with SMTP id ba2mr5815549wib.11.1444332345151;
+        Thu, 08 Oct 2015 12:25:45 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id fv5sm75362wic.7.2015.10.08.12.25.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 07:24:33 -0700 (PDT)
-Date: Wed, 14 Oct 2015 19:54:14 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8192u: ieee80211_rx: Remove unused code
-Message-ID: <20151014142414.GA17736@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 08 Oct 2015 12:25:44 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 3/3] Staging: rtl8188eu: core: Use ARRAY_SIZE macro
+Date: Fri,  9 Oct 2015 00:55:19 +0530
+Message-Id: <1444332319-654-4-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1444332319-654-1-git-send-email-shraddha.6596@gmail.com>
+References: <1444332319-654-1-git-send-email-shraddha.6596@gmail.com>
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150202.5616C337.007A,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-The variable frame_authorized is declared and mentioned in the code but
-is not used anywhere so, it should be removed.
-Semantic patch used:
+ARRAY_SIZE is more concise to use when the size of an array is divided
+by the size of its type.
+
+Changes made using Coccinelle-
+
 @@
 type T;
-identifier i;
-constant C;
-position p != e.p;
+T[] E;
 @@
 
-- T i@p;
-  <+... when != i
-- i = C;
-  ...+>
+- (sizeof(E)/sizeof(T))
++ ARRAY_SIZE(E)
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 2 +-
+ drivers/staging/rtl8188eu/core/rtw_rf.c       | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 4b5f32d..ab60c3f 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -899,7 +899,6 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 	struct net_device *wds = NULL;
- 	struct sk_buff *skb2 = NULL;
- 	struct net_device *wds = NULL;
--	int frame_authorized = 0;
- 	int from_assoc_ap = 0;
- 	void *sta = NULL;
- #endif
-@@ -1106,10 +1105,8 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 		switch (hostap_handle_sta_rx(ieee, dev, skb, rx_stats,
- 					     wds != NULL)) {
- 		case AP_RX_CONTINUE_NOT_AUTHORIZED:
--			frame_authorized = 0;
- 			break;
- 		case AP_RX_CONTINUE:
--			frame_authorized = 1;
- 			break;
- 		case AP_RX_DROP:
- 			goto rx_dropped;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 0270755..d8a0895 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -3926,7 +3926,7 @@ static unsigned int OnAction(struct adapter *padapter,
+ 
+ 	category = frame_body[0];
+ 
+-	for (i = 0; i < sizeof(OnAction_tbl)/sizeof(struct action_handler); i++) {
++	for (i = 0; i < ARRAY_SIZE(OnAction_tbl); i++) {
+ 		ptable = &OnAction_tbl[i];
+ 		if (category == ptable->num)
+ 			ptable->func(padapter, precv_frame);
+diff --git a/drivers/staging/rtl8188eu/core/rtw_rf.c b/drivers/staging/rtl8188eu/core/rtw_rf.c
+index 1170dd0..6983c57 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_rf.c
++++ b/drivers/staging/rtl8188eu/core/rtw_rf.c
+@@ -52,7 +52,7 @@ static struct ch_freq ch_freq_map[] = {
+ 	{216, 5080},/* Japan, means J16 */
+ };
+ 
+-static int ch_freq_map_num = (sizeof(ch_freq_map) / sizeof(struct ch_freq));
++static int ch_freq_map_num = ARRAY_SIZE(ch_freq_map);
+ 
+ u32 rtw_ch2freq(u32 channel)
+ {
 -- 
-2.1.0
+2.1.4
 
 
