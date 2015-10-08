@@ -1,96 +1,110 @@
-X-GM-THRID: 6199821821107240960
-X-Received: by 10.107.163.80 with SMTP id m77mr23227601ioe.0.1443508505966;
-        Mon, 28 Sep 2015 23:35:05 -0700 (PDT)
+X-GM-THRID: 6203209865038397440
+X-Received: by 10.180.160.146 with SMTP id xk18mr745700wib.3.1444311757424;
+        Thu, 08 Oct 2015 06:42:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.43.34 with SMTP id d31ls4518301qga.59.gmail; Mon, 28 Sep
- 2015 23:35:05 -0700 (PDT)
-X-Received: by 10.129.74.198 with SMTP id x189mr10349780ywa.53.1443508505529;
-        Mon, 28 Sep 2015 23:35:05 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-yk0-x230.google.com (mail-yk0-x230.google.com. [2607:f8b0:4002:c07::230])
-        by gmr-mx.google.com with ESMTPS id r189si2291013ywf.0.2015.09.28.23.35.05
+Received: by 10.180.107.199 with SMTP id he7ls140916wib.16.canary; Thu, 08 Oct
+ 2015 06:42:37 -0700 (PDT)
+X-Received: by 10.180.81.165 with SMTP id b5mr745540wiy.1.1444311756997;
+        Thu, 08 Oct 2015 06:42:36 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ch7si315266wib.2.2015.10.08.06.42.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Sep 2015 23:35:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::230 as permitted sender) client-ip=2607:f8b0:4002:c07::230;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Oct 2015 06:42:36 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::230 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-yk0-x230.google.com with SMTP id t14so204768869ykf.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 28 Sep 2015 23:35:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=HZtS/wUrQTa7Wn8vEjY9P0TeW+SZjOHcgSmQq7Kd92o=;
-        b=GhwgarQ+kUWHssFFLavNo7v85r/8WlBMug7VTK0TMYeEY/WCBPKBuko0laxhwvaIWQ
-         7LVIN3XsJgakzNmqyxV7n9f3UV5xpQOgqgzocu+Eys5x6B0Z3j36aCce/YQ3WyJJ0u2W
-         sSmFei8UOSpE5FJAuROw0hF34eBKVPahZWrO0yKbQQsrjbOPZYvtEIi1l6XHl5QmcYFR
-         R5gK4/KKk3rUxF6mf85Yw82Lxp4dAOrG516VWtqd24qwK5ncVnx/AHh0PKSHl2n7fD0n
-         WfhqxlLBipZqj6F0OSr2jK9BMyHPLGmhDC1b9/nkdF6ve8OM3R7Koq8V2vSDtxRKtDhy
-         uP5w==
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,654,1437429600"; 
+   d="scan'208";a="181769602"
+Received: from smb-adpcdg1-06.hotspot.hub-one.net (HELO hadrien.local) ([213.174.99.134])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 08 Oct 2015 15:42:36 +0200
+Date: Thu, 8 Oct 2015 14:42:36 +0100 (IST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: ddk750_dvi: Fixed
+ character limit warning
+In-Reply-To: <20151008113944.GA5621@ubuntu>
+Message-ID: <alpine.DEB.2.10.1510081441030.2596@hadrien>
+References: <20151008094215.GA4799@ubuntu> <alpine.DEB.2.10.1510081124360.2613@hadrien> <20151008113944.GA5621@ubuntu>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-X-Received: by 10.13.227.4 with SMTP id m4mr20391369ywe.72.1443508505397; Mon,
- 28 Sep 2015 23:35:05 -0700 (PDT)
-Received: by 10.37.107.66 with HTTP; Mon, 28 Sep 2015 23:35:05 -0700 (PDT)
-Received: by 10.37.107.66 with HTTP; Mon, 28 Sep 2015 23:35:05 -0700 (PDT)
-In-Reply-To: <35465e02-616a-4c1a-b177-84f34b04700b@googlegroups.com>
-References: <35465e02-616a-4c1a-b177-84f34b04700b@googlegroups.com>
-Date: Tue, 29 Sep 2015 09:35:05 +0300
-Message-ID: <CAHWJYF=PDpQPFtGtdo9Hqb8wQ8CKmB3YEnR7osPpS-vqTj4mUw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Error in building kernel
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: Bhumika S Goyal <bhumikas.goyal@st.niituniversity.in>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=94eb2c07d624b1d0d90520dd03f5
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
---94eb2c07d624b1d0d90520dd03f5
-Content-Type: text/plain; charset=UTF-8
+On Thu, 8 Oct 2015, Shivani Bhardwaj wrote:
 
-On Sep 29, 2015 9:28 AM, "Bhumika S Goyal" <
-bhumikas.goyal@st.niituniversity.in> wrote:
+> On Thu, Oct 08, 2015 at 11:25:22AM +0100, Julia Lawall wrote:
+> > On Thu, 8 Oct 2015, Shivani Bhardwaj wrote:
+> >
+> > > Fixed the warning - line over 80 characters generated by checkpatch by
+> > > breaking the line at appropriate places so that the code looks more
+> > > readable and good.
+> > >
+> > > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> > > ---
+> > >  drivers/staging/sm750fb/ddk750_dvi.c | 7 ++++---
+> > >  1 file changed, 4 insertions(+), 3 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
+> > > index a7a2351..382b515 100644
+> > > --- a/drivers/staging/sm750fb/ddk750_dvi.c
+> > > +++ b/drivers/staging/sm750fb/ddk750_dvi.c
+> > > @@ -46,9 +46,10 @@ int dviInit(
+> > >
+> > >  	pCurrentDviCtrl = g_dcftSupportedDviController;
+> > >  	if (pCurrentDviCtrl->pfnInit != NULL) {
+> > > -		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect, dualEdgeClkSelect, hsyncEnable,
+> > > -						vsyncEnable, deskewEnable, deskewSetting, continuousSyncEnable,
+> > > -						pllFilterEnable, pllFilterValue);
+> > > +		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect,
+> > > +			dualEdgeClkSelect, hsyncEnable, vsyncEnable,
+> > > +			deskewEnable, deskewSetting, continuousSyncEnable,
+> > > +					pllFilterEnable, pllFilterValue);
+> >
+> > It looks like the arguments are not all lined up - the last ones are more
+> > indented than the others.  The real problem would be the ariable names...
+> >
+> > julia
+> >
 >
-> While building the kernel I am getting an error :
-> scripts/sign-file.c:20:25: fatal error: openssl/bio.h: No such file or
-directory
->  #include <openssl/bio.h>
->                          ^
-> compilation terminated.
-> make[1]: *** [scripts/sign-file] Error 1
-> make: *** [scripts] Error 2
+> So, should I indent the last line in accordance with the previous ones?
+> Will that work fine? I'm sorry, I do not understand what would be the
+> problem with variable names.
+
+All the arguments should always be lined up in the same way.
+
+The variable names are very long.  If you look in the mainline kernel, the
+variable names are not so long, and camel case is not used.  It's sort of
+orthogonal to the patch, except that if the variable names were not so
+long, the code might not have been over the 80 character limit.
+
+julia
+
 >
-> How do I fix it?
-
-It seems like you need to install libssl-dev on your machine.
-
-Ioana
-
---94eb2c07d624b1d0d90520dd03f5
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-On Sep 29, 2015 9:28 AM, &quot;Bhumika S Goyal&quot; &lt;<a href=3D"mailto:=
-bhumikas.goyal@st.niituniversity.in">bhumikas.goyal@st.niituniversity.in</a=
->&gt; wrote:<br>
-&gt;<br>
-&gt; While building the kernel I am getting an error :<br>
-&gt; scripts/sign-file.c:20:25: fatal error: openssl/bio.h: No such file or=
- directory<br>
-&gt; =C2=A0#include &lt;openssl/bio.h&gt;<br>
-&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- ^<br>
-&gt; compilation terminated.<br>
-&gt; make[1]: *** [scripts/sign-file] Error 1<br>
-&gt; make: *** [scripts] Error 2<br>
-&gt;<br>
-&gt; How do I fix it?</p>
-<p dir=3D"ltr">It seems like you need to install libssl-dev on your machine=
-.</p>
-<p dir=3D"ltr">Ioana</p>
-
---94eb2c07d624b1d0d90520dd03f5--
+> Thanks
+> Shivani
+>
+> > >  	}
+> > >  	return -1; /* error */
+> > >  }
+> > > --
+> > > 2.1.0
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151008094215.GA4799%40ubuntu.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151008113944.GA5621%40ubuntu.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
