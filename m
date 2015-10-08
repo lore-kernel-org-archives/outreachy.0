@@ -1,65 +1,84 @@
 X-GM-THRID: 6203360253861429248
-X-Received: by 10.182.94.204 with SMTP id de12mr1156876obb.21.1444340249712;
-        Thu, 08 Oct 2015 14:37:29 -0700 (PDT)
+X-Received: by 10.129.83.10 with SMTP id h10mr7613003ywb.6.1444332927917;
+        Thu, 08 Oct 2015 12:35:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.52 with SMTP id t49ls1265565qge.1.gmail; Thu, 08 Oct
- 2015 14:37:29 -0700 (PDT)
-X-Received: by 10.140.196.14 with SMTP id r14mr8006326qha.3.1444340249192;
-        Thu, 08 Oct 2015 14:37:29 -0700 (PDT)
+Received: by 10.182.85.233 with SMTP id k9ls483155obz.32.gmail; Thu, 08 Oct
+ 2015 12:35:27 -0700 (PDT)
+X-Received: by 10.182.18.66 with SMTP id u2mr7241596obd.1.1444332927688;
+        Thu, 08 Oct 2015 12:35:27 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id wl2si5623329pab.1.2015.10.08.14.37.29
+Received: from mail-qk0-x234.google.com (mail-qk0-x234.google.com. [2607:f8b0:400d:c09::234])
+        by gmr-mx.google.com with ESMTPS id q133si3648061ywb.1.2015.10.08.12.35.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 14:37:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Oct 2015 12:35:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::234 as permitted sender) client-ip=2607:f8b0:400d:c09::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id ve7so6756763pab.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 14:37:29 -0700 (PDT)
+Received: by mail-qk0-x234.google.com with SMTP id s79so23781038qka.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 12:35:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=1hnIJqlaWHVoJT+qq70RPL3/IZUH2PkZ9Y7TM28/dVE=;
-        b=kNTY8bGaA6FETsN86ecEOQZrNnsFkLz0H5e+Sj4+Y+DApv+CtmP77g5YCHE6++EhXK
-         zJEeZqig7UMFa7aDPjCC7oP/+Yz4ZTYpatMq3BAlBN2CRn/Wma+SwtOWHVwppXWtdXqQ
-         eT/8PZDitkB1Tu7X/Nmvipg561DGKCbikmFBpVWPf3gYFZGUe4qYOxWK/6BiW71z6b6O
-         YK/yC2NDcFAvN4CbkZ/Yk5dnmhnKcBJy/FcnMQAgEIwNVmkRsbBbsVUkVZ1chMiXRa0u
-         h3yqMWEUBuFQHEYUNYoQkO+s7o62/WQExuPCZMxSyLt28gtS4tm7emr4G/VuiHOgpMHe
-         0swQ==
-X-Received: by 10.66.101.68 with SMTP id fe4mr10745394pab.30.1444340249005;
-        Thu, 08 Oct 2015 14:37:29 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.203.20])
-        by smtp.gmail.com with ESMTPSA id ih4sm31115182pbc.28.2015.10.08.14.37.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Thu, 08 Oct 2015 14:37:28 -0700 (PDT)
-Date: Fri, 9 Oct 2015 03:07:24 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/3] Fix multiple checkpatch issues
-Message-ID: <cover.1444340091.git.amitoj1606@gmail.com>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=iuu0x1Cbd62/GCLL1XAuZM4mOJpAsJcHIsqPQcKtkZc=;
+        b=r2FaYUKC9+/OsCFtO3VeQAJljhyW/UNHaq0nLd3T3be+WKcQPetqiZ4S7YRAK2Cqsj
+         4a3kBj+Fs9qKFxhvUT4gu4jb6X+/J2haUyyqVXczCgF4QvrfS7BQVZOYzPsPTO7mXwTy
+         1LNR0dMeC1HUewKz081SJhT/kwDpkgScdaxE4G+Y/Vu9GBzbJb4KYPMRY9h89pjtMQMG
+         LbgAH/Ce9Sr9DAxnpOm2fi8EubLMOGQif6GCUFLvcnTA7KQEbXCaQ5vl07wRnC+kxNcd
+         vTWuWBrau8FuvLn8I7CZmkbt3clCNFg2qPiK/2p7B5cNPCz7F1KUdocC3KiSWNHHsbel
+         oRxw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.55.195.135 with SMTP id r7mr10984798qkl.4.1444332927514;
+ Thu, 08 Oct 2015 12:35:27 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Thu, 8 Oct 2015 12:35:27 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.02.1510082133320.2165@localhost6.localdomain6>
+References: <cover.1444332001.git.amitoj1606@gmail.com>
+	<65d703974d96550d8802203b4243da28797ae8bf.1444332001.git.amitoj1606@gmail.com>
+	<alpine.DEB.2.02.1510082133320.2165@localhost6.localdomain6>
+Date: Fri, 9 Oct 2015 01:05:27 +0530
+Message-ID: <CA+5yK5EzXvbWeue4s3UadYgEBR3PhyVvbJ3uu0pYtWQrVRowfg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/3] staging: sm750fb: Remove space
+ after opening brace
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patchset fixes multiple issues found using checkpatch.pl
+On Fri, Oct 9, 2015 at 1:03 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Fri, 9 Oct 2015, Amitoj Kaur Chawla wrote:
+>
+>> Remove space after opening brace '{'. Problem found using
+>> checkpatch.pl
+>> CHECK: Blank lines aren't necessary after an open brace '{'
+>>
+>> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+>> ---
+>>  drivers/staging/sm750fb/ddk750_chip.c | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+>> index ebc3242..6f05f78 100644
+>> --- a/drivers/staging/sm750fb/ddk750_chip.c
+>> +++ b/drivers/staging/sm750fb/ddk750_chip.c
+>> @@ -238,7 +238,6 @@ unsigned int ddk750_getVMSize(void)
+>>
+>>  int ddk750_initHw(initchip_param_t *pInitParam)
+>>  {
+>> -
+>>       unsigned int ulReg;
+>>
+>>  <<<<<<< HEAD
+>
+> Something went wrong here.
+>
 
-Amitoj Kaur Chawla (3):
-  staging: sm750fb: Remove space after cast
-  staging: sm750fb: Remove space before closing brace
-  staging: sm750fb: Remove space after opening brace
+I just saw. This last line. HEAD. I'll look into this!
 
- drivers/staging/sm750fb/ddk750_chip.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Thanks,
 
--- 
-1.9.1
-
+Amitoj
 
