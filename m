@@ -1,76 +1,170 @@
-X-GM-THRID: 2532715790336
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,1fe12539ed2f9d18,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.37.200 with SMTP id a8mr783691lak.5.1424623229408;
-        Sun, 22 Feb 2015 08:40:29 -0800 (PST)
+X-GM-THRID: 6203507432884273152
+X-Received: by 10.66.182.162 with SMTP id ef2mr9484787pac.35.1444366719936;
+        Thu, 08 Oct 2015 21:58:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.243.37 with SMTP id wv5ls120020lac.59.gmail; Sun, 22 Feb
- 2015 08:40:28 -0800 (PST)
-X-Received: by 10.152.26.74 with SMTP id j10mr782124lag.10.1424623228421;
-        Sun, 22 Feb 2015 08:40:28 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id r6si519059wix.0.2015.02.22.08.40.28
+Received: by 10.183.6.193 with SMTP id cw1ls280331obd.69.gmail; Thu, 08 Oct
+ 2015 21:58:39 -0700 (PDT)
+X-Received: by 10.182.102.194 with SMTP id fq2mr9297421obb.43.1444366719284;
+        Thu, 08 Oct 2015 21:58:39 -0700 (PDT)
+Return-Path: <deepa.kernel@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id wl2si5749552pab.1.2015.10.08.21.58.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 08:40:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Oct 2015 21:58:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id em10so15025778wid.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 08:40:28 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22e.google.com with SMTP id hy16so75156161pad.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 21:58:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=gGewvv/QsP3KraxjwzuCI49YtS2nTWvnnK30AzD5B4w=;
-        b=bT/0EUE6EdSaL3WNChDwrAytGLW4NN3ZZ0cKtYNccmyNFC2/4VPDe7lmUBufYEil2n
-         bLyPRrnZpMYbK2w07Uy2zPdmVj8YHhQeirrKOZdvj4LvRRnxx/2dUVibeFe67avHQlym
-         w/4d9DyJk1yMlF+eOj3g9NUQ6t4OI7rZb/RQEMmn/dIF5CcS/gitEfGxoLoqEV7gBLgU
-         zhoOtDOoZ0wfZ6BmuY/Nn8mXaj1W210M8UjMZSTi+4fmiTX9taAsRbFd/oCNFHO3RHbr
-         JD/k3FpVqvJICOipG53fQVQknwpJy8YxVZNe+zWb0udD+NjgBrOV3ed/R+xEcz2VCv1B
-         VRRQ==
-X-Received: by 10.180.72.211 with SMTP id f19mr13405003wiv.9.1424623228335;
-        Sun, 22 Feb 2015 08:40:28 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id dx11sm48873449wjb.23.2015.02.22.08.40.26
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 22 Feb 2015 08:40:27 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=iZ2tMZ8da2qwF7TGswW5SALqUxCWkzlTPr5rcyl4u7k=;
+        b=UWiVQTCfFa2v0uo4Kjn7RhKDf4yGnb4Nx4Ozk74FZEaoK648tZijbvzYitOrmtJgM9
+         qG5Du5UU23iO8QSly6mh6/G9fl/+LrfCsQnBF5LD5zwkeMIMMpl/FnlTV7yM2folgyVj
+         BdVGkcWIZ495Oyg7LZv6m8v9PASh+Cc7AikeyGlI9H2ko7RYvP7p+paA/mFwjkZp5WgK
+         IU6tTa4gDyXf4XpQIXegv02z+zYwayOqTevF4NuFmmPce9klfsI2CoC2rVSjtbjzLHlV
+         7gtcmimwZdfnpXEVGHZNcpe0AapmamRO/PcjqQ7pjaQ3UaUry63F93RAPVeV2Lci4hPj
+         Q9kw==
+X-Received: by 10.68.242.41 with SMTP id wn9mr6227852pbc.79.1444366719172;
+        Thu, 08 Oct 2015 21:58:39 -0700 (PDT)
+Return-Path: <deepa.kernel@gmail.com>
+Received: from deepa-ubuntu ([2601:647:4700:de30:8067:188f:6c60:7880])
+        by smtp.gmail.com with ESMTPSA id rx10sm28757641pab.21.2015.10.08.21.58.38
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 08 Oct 2015 21:58:38 -0700 (PDT)
+Date: Thu, 8 Oct 2015 21:58:36 -0700
+From: Deepa Dinamani <deepa.kernel@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: rtl8712: Remove unnecessary else after return or break
-Date: Sun, 22 Feb 2015 18:40:18 +0200
-Message-Id: <1424623218-9487-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v2 1/2] staging: skein: fix block comment style
+Message-ID: <893959004abe3e05cdad581b57b1138df238f237.1444366020.git.deepa.kernel@gmail.com>
+References: <cover.1444366020.git.deepa.kernel@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1444366020.git.deepa.kernel@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes checkpatch.pl warning in files of rtl8712
-WARNING: else is not generally useful after a break or return
+Use a separate line for the opening marker of a comment block,
+a leading asterisk in front of subsequent lines in the block comment,
+and a separate line for the closing marker of the comment block.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+This patch fixes the checkpatch.pl warnings:
+
+WARNING: Block comments use a trailing */ on a separate line
+WARNING: Block comments use * on subsequent lines
+
+Signed-off-by: Deepa Dinamani <deepa.kernel@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/skein/skein_api.c  | 47 +++++++++++++++++++-------------------
+ drivers/staging/skein/skein_base.c | 18 ++++++++++-----
+ 2 files changed, 35 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index 9bb364f..3a1b8b2 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -612,8 +612,8 @@ static int r871x_set_wpa_ie(struct _adapter *padapter, char *pie,
- 					netdev_info(padapter->pnetdev, "r8712u: SET WPS_IE, wps_phase==true\n");
- 					cnt += buf[cnt+1]+2;
- 					break;
--				} else
--					cnt += buf[cnt + 1] + 2;
-+				}
-+				cnt += buf[cnt + 1] + 2;
- 			}
- 		}
- 	}
+diff --git a/drivers/staging/skein/skein_api.c b/drivers/staging/skein/skein_api.c
+index 5bfce07..e6c2b06 100644
+--- a/drivers/staging/skein/skein_api.c
++++ b/drivers/staging/skein/skein_api.c
+@@ -1,28 +1,27 @@
+ /*
+-Copyright (c) 2010 Werner Dittmann
+-
+-Permission is hereby granted, free of charge, to any person
+-obtaining a copy of this software and associated documentation
+-files (the "Software"), to deal in the Software without
+-restriction, including without limitation the rights to use,
+-copy, modify, merge, publish, distribute, sublicense, and/or sell
+-copies of the Software, and to permit persons to whom the
+-Software is furnished to do so, subject to the following
+-conditions:
+-
+-The above copyright notice and this permission notice shall be
+-included in all copies or substantial portions of the Software.
+-
+-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+-OTHER DEALINGS IN THE SOFTWARE.
+-
+-*/
++ * Copyright (c) 2010 Werner Dittmann
++ *
++ * Permission is hereby granted, free of charge, to any person
++ * obtaining a copy of this software and associated documentation
++ * files (the "Software"), to deal in the Software without
++ * restriction, including without limitation the rights to use,
++ * copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following
++ * conditions:
++ *
++ * The above copyright notice and this permission notice shall be
++ * included in all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ * OTHER DEALINGS IN THE SOFTWARE.
++ */
+ 
+ #include <linux/string.h>
+ #include "skein_api.h"
+diff --git a/drivers/staging/skein/skein_base.c b/drivers/staging/skein/skein_base.c
+index 7e700a6..bfb08fa 100644
+--- a/drivers/staging/skein/skein_base.c
++++ b/drivers/staging/skein/skein_base.c
+@@ -75,8 +75,10 @@ int skein_256_init(struct skein_256_ctx *ctx, size_t hash_bit_len)
+ 
+ /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ /* init the context for a MAC and/or tree hash operation */
+-/* [identical to skein_256_init() when key_bytes == 0 && \
+- *	tree_info == SKEIN_CFG_TREE_INFO_SEQUENTIAL] */
++/*
++ * [identical to skein_256_init() when key_bytes == 0 && \
++ *	tree_info == SKEIN_CFG_TREE_INFO_SEQUENTIAL]
++ */
+ int skein_256_init_ext(struct skein_256_ctx *ctx, size_t hash_bit_len,
+ 		       u64 tree_info, const u8 *key, size_t key_bytes)
+ {
+@@ -301,8 +303,10 @@ int skein_512_init(struct skein_512_ctx *ctx, size_t hash_bit_len)
+ 
+ /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ /* init the context for a MAC and/or tree hash operation */
+-/* [identical to skein_512_init() when key_bytes == 0 && \
+- *	tree_info == SKEIN_CFG_TREE_INFO_SEQUENTIAL] */
++/*
++ * [identical to skein_512_init() when key_bytes == 0 && \
++ *	tree_info == SKEIN_CFG_TREE_INFO_SEQUENTIAL]
++ */
+ int skein_512_init_ext(struct skein_512_ctx *ctx, size_t hash_bit_len,
+ 		       u64 tree_info, const u8 *key, size_t key_bytes)
+ {
+@@ -520,8 +524,10 @@ int skein_1024_init(struct skein_1024_ctx *ctx, size_t hash_bit_len)
+ 
+ /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ /* init the context for a MAC and/or tree hash operation */
+-/* [identical to skein_1024_init() when key_bytes == 0 && \
+- *	tree_info == SKEIN_CFG_TREE_INFO_SEQUENTIAL] */
++/*
++ * [identical to skein_1024_init() when key_bytes == 0 && \
++ *	tree_info == SKEIN_CFG_TREE_INFO_SEQUENTIAL]
++ */
+ int skein_1024_init_ext(struct skein_1024_ctx *ctx, size_t hash_bit_len,
+ 			u64 tree_info, const u8 *key, size_t key_bytes)
+ {
 -- 
 1.9.1
 
