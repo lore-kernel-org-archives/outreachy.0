@@ -1,51 +1,51 @@
 X-GM-THRID: 6203663047553187840
-X-Received: by 10.50.78.170 with SMTP id c10mr8317774igx.6.1444402932627;
-        Fri, 09 Oct 2015 08:02:12 -0700 (PDT)
+X-Received: by 10.31.140.88 with SMTP id o85mr11269693vkd.8.1444402898491;
+        Fri, 09 Oct 2015 08:01:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.135.168 with SMTP id r40ls208841ioi.75.gmail; Fri, 09 Oct
- 2015 08:02:12 -0700 (PDT)
-X-Received: by 10.66.160.135 with SMTP id xk7mr11384152pab.28.1444402932366;
-        Fri, 09 Oct 2015 08:02:12 -0700 (PDT)
+Received: by 10.182.65.3 with SMTP id t3ls644719obs.57.gmail; Fri, 09 Oct 2015
+ 08:01:38 -0700 (PDT)
+X-Received: by 10.182.236.225 with SMTP id ux1mr11146259obc.2.1444402898191;
+        Fri, 09 Oct 2015 08:01:38 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id el2si219545pbb.0.2015.10.09.08.02.12
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id zg1si164539pbb.2.2015.10.09.08.01.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 08:02:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 08:01:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id ex6so89276118pac.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 08:02:12 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id ex6so89364026pac.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 08:01:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=btrELx7zzaOJKBI+td3xyDETApvLxyVJtJ1UjKbknX8=;
-        b=kOHOc+DjRIjk2CmnCnApIsWDn5klKJpS+gfdynOPgYEHDB08JyHhyQu//24cLpkSdd
-         A1xnPpYNGFoPexPjO7BQH2WbCFOkFy6bpIaEKnATR8Qartws4TfMaYaOHsqqICo1+TrE
-         YVkh0bp2/NNTd9t6sKH3XxjVgttGy9RbfGBJas8Z94xqXUWAi0hx4jc0Mn+UVq+GhxbO
-         trsfHYYVlHGLRvqH17OFhRQ7caNbgNnpSFo+Kn5pGAgqeZEGUYUgjO/g05jiHxR3ZtSb
-         WC++pu6PQsOs+Isc/o6c9IeATxbaH4n7PnPCSPFgDvBaniCPXED4PP5O9JrZMEKxgmrx
-         glPA==
-X-Received: by 10.66.145.193 with SMTP id sw1mr15928139pab.74.1444402932270;
-        Fri, 09 Oct 2015 08:02:12 -0700 (PDT)
+        bh=QeqUZU1cMjvywY2L04Zj48jrxxD7taJoRzOgdK0U5j4=;
+        b=hLJK3U1reYYeNmZZ1zSDIJ04d8URkZ+I1MtuUd5pKq186lRAZcNF02+M0+bSSCEfSh
+         uReSUu4zb/r4y86+i97yK16ub58et4Hs+1SRrMMYDeTCO0eLrb8D0YEKa0LlhRKWnn3R
+         7HSP2ya1s4c2PC03z6yM6g4K1BP/G4vAKWBGZ3K7vmo+ITk58fCB8KtyocM1bgIi2xJV
+         WBggkDFgxF2ULUM0+UMKV/mybmv2ZZch4zQ8Aww7dLYkoUIggY0DJeK9itwKYv235XlM
+         Oryu5BMj4fLxfGlF7Jv1s9rPPxdI+MvxCJd3P7MRMiFOk4uPFlCUqc37YKvwE513gXKI
+         4vHQ==
+X-Received: by 10.68.201.168 with SMTP id kb8mr15764279pbc.95.1444402898057;
+        Fri, 09 Oct 2015 08:01:38 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
 Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id zc4sm3008465pbb.24.2015.10.09.08.02.10
+        by smtp.gmail.com with ESMTPSA id fm3sm2989669pbb.36.2015.10.09.08.01.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 08:02:11 -0700 (PDT)
-Date: Fri, 9 Oct 2015 20:32:02 +0530
+        Fri, 09 Oct 2015 08:01:37 -0700 (PDT)
+Date: Fri, 9 Oct 2015 20:31:28 +0530
 From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] Staging: lustre: ldlm_resource: Fixed character limit
- warning
-Message-ID: <3cb7200002e89d30ef792838a05319e37ae4f948.1444402286.git.shivanib134@gmail.com>
+Subject: [PATCH 1/2] Staging: lustre: ldlm_resource: Removed initialization
+ of global variables
+Message-ID: <dc621223a28a29a4c04097db94aabc3ee732bc89.1444402286.git.shivanib134@gmail.com>
 References: <cover.1444402286.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -53,50 +53,30 @@ Content-Disposition: inline
 In-Reply-To: <cover.1444402286.git.shivanib134@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixed warning generated by checkpatch : line over 80 characters, by
-breaking up the lines into sensible chunks. User-visible strings were
-not broken as it might break the ability to grep for them.
+Fixed the error generated by checkpatch : do not initialise
+globals to 0 or NULL, by removing the initialization of variables
+ldlm_srv_namespace_nr and ldlm_cli_namespace_nr.
 
 Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/lustre/lustre/ldlm/ldlm_resource.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/staging/lustre/lustre/ldlm/ldlm_resource.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
-index cc212b9..6bc6f89 100644
+index 4bb3173..cc212b9 100644
 --- a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
 +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
-@@ -778,7 +778,8 @@ static void cleanup_resource(struct ldlm_resource *res, struct list_head *q,
- 		} else {
- 			ldlm_resource_unlink_lock(lock);
- 			unlock_res(res);
--			LDLM_DEBUG(lock, "Freeing a lock still held by a client node");
-+			LDLM_DEBUG(lock,
-+				"Freeing a lock still held by a client node");
- 			ldlm_lock_destroy(lock);
- 		}
- 		LDLM_LOCK_RELEASE(lock);
-@@ -862,8 +863,8 @@ force_wait:
- 		 * so it's safe to wait forever... we can't leak locks... */
- 		if (force && rc == -ETIMEDOUT) {
- 			LCONSOLE_ERROR("Forced cleanup waiting for %s namespace with %d resources in use, (rc=%d)\n",
--				       ldlm_ns_name(ns),
--				       atomic_read(&ns->ns_bref), rc);
-+					ldlm_ns_name(ns),
-+					atomic_read(&ns->ns_bref), rc);
- 			goto force_wait;
- 		}
+@@ -47,8 +47,8 @@
  
-@@ -1445,7 +1446,8 @@ void ldlm_resource_dump(int level, struct ldlm_resource *res)
- 			LDLM_DEBUG_LIMIT(level, lock, "###");
- 			if (!(level & D_CANTMASK) &&
- 			    ++granted > ldlm_dump_granted_max) {
--				CDEBUG(level, "only dump %d granted locks to avoid DDOS.\n",
-+				CDEBUG(level,
-+					"only dump %d granted locks to avoid DDOS.\n",
- 				       granted);
- 				break;
- 			}
+ struct kmem_cache *ldlm_resource_slab, *ldlm_lock_slab;
+ 
+-int ldlm_srv_namespace_nr = 0;
+-int ldlm_cli_namespace_nr = 0;
++int ldlm_srv_namespace_nr;
++int ldlm_cli_namespace_nr;
+ 
+ struct mutex ldlm_srv_namespace_lock;
+ LIST_HEAD(ldlm_srv_namespace_list);
 -- 
 2.1.0
 
