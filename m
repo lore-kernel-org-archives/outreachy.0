@@ -1,82 +1,82 @@
 X-GM-THRID: 6203546917110022144
-X-Received: by 10.180.210.212 with SMTP id mw20mr1957573wic.3.1444399141555;
-        Fri, 09 Oct 2015 06:59:01 -0700 (PDT)
+X-Received: by 10.31.161.201 with SMTP id k192mr9755231vke.12.1444376679186;
+        Fri, 09 Oct 2015 00:44:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.168.83 with SMTP id r80ls282303lfe.75.gmail; Fri, 09 Oct
- 2015 06:59:00 -0700 (PDT)
-X-Received: by 10.112.138.170 with SMTP id qr10mr2699519lbb.4.1444399140863;
-        Fri, 09 Oct 2015 06:59:00 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
-        by gmr-mx.google.com with ESMTPS id c7si506456wiy.3.2015.10.09.06.59.00
+Received: by 10.140.89.228 with SMTP id v91ls1299697qgd.33.gmail; Fri, 09 Oct
+ 2015 00:44:38 -0700 (PDT)
+X-Received: by 10.129.39.214 with SMTP id n205mr5131970ywn.4.1444376678783;
+        Fri, 09 Oct 2015 00:44:38 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id uv4si46272pac.0.2015.10.09.00.44.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 06:59:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
+        Fri, 09 Oct 2015 00:44:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x233.google.com with SMTP id gb1so69376327wic.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 06:59:00 -0700 (PDT)
+Received: by mail-pa0-x230.google.com with SMTP id hy16so79390221pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 00:44:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=QNNfvSTxibpIZ5JepL3TUcvQoJKSGbEExEkbGmWsMUc=;
-        b=jBHLJaCewaBJB268c/xngH7LQVYbm8YVo92vNPpC9DgTXLAlH1arDf9xpiqVrAl/UF
-         E6ZgkDoQ0fGm3m6eGdE2rNJ4j6ZwxwrGJAACgvRf7E5y7u0QW/mXKPs6hjsuT27REZZj
-         qfD+OQia3onJZrxaBudKDX2PlJsSWXo5veoe7RxTwOxeQbAT/kpmkXxbmHmw08qvwNED
-         8ox+zS0Ie/KsCsble5NAXKd5s26b3UhT+m0n0zEJ6n5wvAKC2jQ3gVLd5Hx/POyY/UG+
-         zRzspKqtRBmL+fo/bLT3teESIe//EgRTwjtU6RQh10d5ZH44+C7n0S5qRB4XMYkesyYJ
-         0RcQ==
-MIME-Version: 1.0
-X-Received: by 10.180.206.52 with SMTP id ll20mr10082709wic.48.1444399140723;
- Fri, 09 Oct 2015 06:59:00 -0700 (PDT)
-Received: by 10.27.186.66 with HTTP; Fri, 9 Oct 2015 06:59:00 -0700 (PDT)
-In-Reply-To: <20151009074430.GA15721@sudip-pc>
-References: <20151009073010.GA40264@ubuntu>
-	<20151009074430.GA15721@sudip-pc>
-Date: Fri, 9 Oct 2015 19:29:00 +0530
-Message-ID: <CAKHNQQEO0bG7y8rx_3L1SvGsd7NhSBxnYCZY3yy78uK8BnF2uw@mail.gmail.com>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=lu/KTA77X9+YhXbgPWbFSbjUyoeyvjEixY1ngiQkMDE=;
+        b=DjQNasTHoKHWE7MX9WDWQ3cavsdfTZs9UXK5C9ERtozHs6MQ7Jlkp45SVky912NBji
+         RRkqBOaTFcwo4gtdFei84UbkM/55MCoic67TY/kO50y8/3P5+l++45V30mWdHPXSguix
+         nfqXbZhw5t3LHQcWupBHZ7UQBYeY4wyQnB4zF8/3k6WwC73KUgcJRJ+EEWEFlKOe2U3I
+         OzViln6P+w2ZX2e6d+v2Y65oonpVYAPrYdRSZ1FnmtGDKIrnAEwMz1I4QQGW7z0ba9yM
+         ZXWibCeVrKBCVm+csQp5fSf12vU+cmB5G6usXaxrj/6wcRg6NoQ7fhE/ViJ9Q90kUE7C
+         yP3Q==
+X-Received: by 10.66.136.39 with SMTP id px7mr13330870pab.23.1444376678604;
+        Fri, 09 Oct 2015 00:44:38 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id qn5sm525448pbc.74.2015.10.09.00.44.37
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 09 Oct 2015 00:44:38 -0700 (PDT)
+Date: Fri, 9 Oct 2015 13:14:30 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] Staging: sm750fb: ddk750_help:
  Included KERN_facility level using dev_info
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Message-ID: <20151009074430.GA15721@sudip-pc>
+References: <20151009073010.GA40264@ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20151009073010.GA40264@ubuntu>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, Oct 9, 2015 at 1:14 PM, Sudip Mukherjee
-<sudipm.mukherjee@gmail.com> wrote:
-> On Fri, Oct 09, 2015 at 01:00:10PM +0530, Shivani Bhardwaj wrote:
->> Replaced the function printk() with dev_info() to fix the warning
->> generated by checkpatch : printk() should include KERN_ facility level.
->>
->> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
->> ---
->> Changes in v2:
->>       - Replaced the function pr_info() with dev_info()
->>
->>  drivers/staging/sm750fb/ddk750_help.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
->> index 9637dd3..d20cd92 100644
->> --- a/drivers/staging/sm750fb/ddk750_help.c
->> +++ b/drivers/staging/sm750fb/ddk750_help.c
->> @@ -11,7 +11,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
->>       devId750 = devId;
->>       revId750 = revId;
->>       if (revId == 0xfe)
->> -             printk("found sm750le\n");
->> +             dev_info("found sm750le\n");
->
-> Did you try to compile it?
->
-> regards
-> sudip
-No, I just checked it against checkpatch, I found out that I have used
-the function in wrong way and I am working on fixing that.
-Thank you!
+On Fri, Oct 09, 2015 at 01:00:10PM +0530, Shivani Bhardwaj wrote:
+> Replaced the function printk() with dev_info() to fix the warning
+> generated by checkpatch : printk() should include KERN_ facility level.
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+> Changes in v2:
+> 	- Replaced the function pr_info() with dev_info()
+> 
+>  drivers/staging/sm750fb/ddk750_help.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
+> index 9637dd3..d20cd92 100644
+> --- a/drivers/staging/sm750fb/ddk750_help.c
+> +++ b/drivers/staging/sm750fb/ddk750_help.c
+> @@ -11,7 +11,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
+>  	devId750 = devId;
+>  	revId750 = revId;
+>  	if (revId == 0xfe)
+> -		printk("found sm750le\n");
+> +		dev_info("found sm750le\n");
+
+Did you try to compile it?
+
+regards
+sudip
 
