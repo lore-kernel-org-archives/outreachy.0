@@ -1,106 +1,129 @@
 X-GM-THRID: 6202253257836855296
-X-Received: by 10.112.12.132 with SMTP id y4mr2954414lbb.0.1444419553415;
-        Fri, 09 Oct 2015 12:39:13 -0700 (PDT)
+X-Received: by 10.107.40.133 with SMTP id o127mr12422929ioo.27.1444417899967;
+        Fri, 09 Oct 2015 12:11:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.151.203 with SMTP id z194ls311296lfd.57.gmail; Fri, 09 Oct
- 2015 12:39:12 -0700 (PDT)
-X-Received: by 10.112.151.9 with SMTP id um9mr2939324lbb.19.1444419552819;
-        Fri, 09 Oct 2015 12:39:12 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id c1si6470wiv.3.2015.10.09.12.39.12
+Received: by 10.140.90.115 with SMTP id w106ls2039165qgd.20.gmail; Fri, 09 Oct
+ 2015 12:11:39 -0700 (PDT)
+X-Received: by 10.13.242.134 with SMTP id b128mr13334847ywf.7.1444417899331;
+        Fri, 09 Oct 2015 12:11:39 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x233.google.com (mail-qg0-x233.google.com. [2607:f8b0:400d:c04::233])
+        by gmr-mx.google.com with ESMTPS id q68si234679ywf.0.2015.10.09.12.11.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 12:39:12 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        Fri, 09 Oct 2015 12:11:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) client-ip=2607:f8b0:400d:c04::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue003) with ESMTPSA (Nemesis) id 0LvNnr-1alIGp1Ud1-010bBL; Fri, 09 Oct
- 2015 21:39:12 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: usleep_range is preferred over udelay
-Date: Fri, 09 Oct 2015 21:39:11 +0200
-Message-ID: <7171425.3xfd39zfgx@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CA+5yK5F6=SeWD0XFXu9QcMu7=_HimGjL9=GpevzCaRzK78b9_g@mail.gmail.com>
-References: <20151005195012.GA21881@amitoj-Inspiron-3542> <6179643.RVhvoqj9Rt@wuerfel> <CA+5yK5F6=SeWD0XFXu9QcMu7=_HimGjL9=GpevzCaRzK78b9_g@mail.gmail.com>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qg0-x233.google.com with SMTP id 61so76800110qgx.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 12:11:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=7rmSuVltxygP63NliwptIiWPsLVsXjJEQOyyzVs4p6s=;
+        b=rvGw6bb/aSLLi75LWzF8JrWhJgkr3yEn999SFDi9Q4txrcXmhfv/pDfIVKn7vIt8FN
+         T+eUgWhD2ndsBmEz97F/lJcOprycsPXY4DkbenxD/DvUXhf1XCjqXKD2Gn4XcgYYwROD
+         ZE8OJ0l/ZpYBMOWRksRTCdTar6j+y2tQWvBFYxIBqaW981WO58FxdPz3TkRIF043e40x
+         BESBjTVDPM4szsfh9wljyrZUzRZdMrtoZ8TW+Md0GVrkyGVF1+qp55iITFMD6r/R3uNH
+         pJNfZVlJyvAqkG7Cwj9zMKuyX9qHQQfBk6VHQUTQ+LEMwnEJgWe6+rMRFrP4NFn9PCAc
+         ToZw==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:OtNys5RrDfsSrL7nihr5+EvLoL6pOZaGPx8N8Pn5/jKoR90Ng4D
- LAoTv0NJzxjKJM8Kbsh+bvuhXYHusjQ38Otu+7tXVQpnPhb0nK99UMzxSHHi7leIzOKDS+Y
- Xt56PgH/wolqLyLs0CcMjI+MJ2FoqnWXqXe/OBrVqvjG9S4kRU82vU8MwRuLQmKtWAB42AE
- ReTcV/N4OfOAlly/3LcHw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:d9IsUtqwE+k=:QMfe1I1k53rz3E9hIqSTm7
- 9VPnQTm/Isr+2zcWUB7b56DWplrlsI+OAzEWTpCtqX7FPDUqvpVKdx0XY6U+LIIPRn1FJgr9s
- 1VEanBxKW935VF/vFdJrlzsBiCr3Cw6dYlDC9/mW1c7njhYOi41Vr1XPKo1UJErcogyu8TJlc
- kY+W8YLUi5jk8z0ety+02M+awf3Kg2uePaKU9kC7o+Corq8QIFZnh0P1LRHRr6o/Ts/ylRls8
- 8phfYXgQTTtavZpGDXiijCVNLn+09yT1Fti64Qekl7X9vy/zrlDPjLGLdCfs4VBaRpdCOlclP
- C74BMY6Lbvo5c5iiqWJUwxZYDs4c8f/111bJkomstvU7Xm/C0I9wsDGInhvdtgB+7PYuN1Rv/
- cByhyxqJEivT4rImDYKLFzLCpIgHok5wTCB/Y3Cuitw/oxHZyV1j2RLuOvAYjbjeLNMgXT6Nx
- RpKuRtqTXx7jNtmGfZS4Xl8V9unA8LXbCdmaBepgKs8H+5uTtrsa1wGDnWXhWdRCx7/IIU3SN
- OIr7Wdm4RH/eX5ulcqLEr/UEdG7/WeUWYEWkCfFW7zY6bfHEjGWExSxKR/aZsefmfhyLb2VTU
- 4rfeOVC8+UJog/lUo+FIdFKkB0Ah48o8ZuPg5RHj1KaB3ETS8PIH4dwxhqRyZJbzB8fwHvuH8
- 5kr1RK2hKJ+fn8apDjC/38yxnJplrT+SvNTAEJNb+nuawBgyJohqBc2kfltpiqvDUlQ2onvih
- FdPhW7TlBG/qVc7U
+X-Received: by 10.140.128.81 with SMTP id 78mr18508293qha.62.1444417897849;
+ Fri, 09 Oct 2015 12:11:37 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Fri, 9 Oct 2015 12:11:37 -0700 (PDT)
+In-Reply-To: <6179643.RVhvoqj9Rt@wuerfel>
+References: <20151005195012.GA21881@amitoj-Inspiron-3542>
+	<5882355.uMFG4U3DtR@wuerfel>
+	<CA+5yK5GwMXDUVUUSdzn1O1iuAed1CDs6Ogqs+fcoH=xufPSzmA@mail.gmail.com>
+	<6179643.RVhvoqj9Rt@wuerfel>
+Date: Sat, 10 Oct 2015 00:41:37 +0530
+Message-ID: <CA+5yK5F6=SeWD0XFXu9QcMu7=_HimGjL9=GpevzCaRzK78b9_g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: usleep_range is
+ preferred over udelay
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>
+Content-Type: text/plain; charset=UTF-8
 
-On Saturday 10 October 2015 00:41:37 Amitoj Kaur Chawla wrote:
-> On Sat, Oct 10, 2015 at 12:34 AM, Arnd Bergmann <arnd@arndb.de> wrote:
-> > This means the function can sleep up to 2 seconds, which is basically
-> > an eternity from a driver's perspective, so adding a few shorter sleep
-> > periods is certainly not harmful.
-> >
-> >> Is usleep_range() only used for short delays and msleep() for the longer
-> >> ones?
-> >
-> > Yes. There are other differences, but a main one is that msleep() can
-> > not sleep less than a millisecond, while usleep_range() can sleep much
-> > shorter periods.
-> >
-> 
-> Conclusively, Shorter sleep periods means using usleep_range() instead
-> of msleep() in this case with a small range since the loop is
-> repeating a 100 times?
+On Sat, Oct 10, 2015 at 12:34 AM, Arnd Bergmann <arnd@arndb.de> wrote:
+> On Saturday 10 October 2015 00:26:33 Amitoj Kaur Chawla wrote:
+>> On Thu, Oct 8, 2015 at 1:07 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+>> > On Thursday 08 October 2015 08:23:10 Amitoj Kaur Chawla wrote:
+>> >> On Tue, Oct 6, 2015 at 1:15 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+>> >> > It really depends on what the driver is trying to do. In this case, it
+>> >> > waits for a device register to signal 'done', and it tries this five times
+>> >> > for a maximum of 50 microseconds, which is a relatively short period.
+>> >> >
+>> >> > Changing the maximum to 1000 means that it can now sleep for up to
+>> >> > 5 milliseconds instead, which is a noticeable time, especially if
+>> >> > it gets called frequently.
+>> >> >
+>> >> > The questions to answer here are:
+>> >> >
+>> >> > * Is it safe to call a sleeping function from this point at all?
+>> >> >   Look for other sleeping functions (proves that it is allowed to
+>> >> >   sleep) and for spinlocks (if a lock is held, you may not sleep)
+>> >> >   in this function.
+>> >> >
+>> >>
+>> >> There aren't any other sleeping functions in this function. However,
+>> >> udelay() has been used one more time in a loop.
+>> >
+>> > udelay() is not a sleeping function, so that doesn't count here.
+>> >
+>> > Try to look further out if you can't find a sleeping function or a spinlock
+>> > here, scanning the callers of this function and everything they call for
+>> > common sleeping functions like kmalloc(..., GFP_KERNEL), mutex_lock() or
+>> > msleep().
+>>
+>> kmalloc(..., GFP_ATOMIC) is being called in the function. Callers of
+>> this function aren't calling these sleeping functions.
+>
+> Ah, interesting. Using kmalloc(..., GFP_ATOMIC) is usually a sign that the
+> function is called in atomic context and is not allowed to sleep. However
+> based on what you write below, I suspect that is actually a mistake
+> and it should use GFP_KERNEL instead, because GFP_ATOMIC allocations
+> are much more likely to fail.
+>
+>> >> > * How often do you expect the function to get called? Once per data
+>> >> >   packet means it's not ok to sleep long, once an hour would mean it's
+>> >> >   clearly ok.
+>> >> >
+>> >> > * Are there other calls in this function that take longer than a
+>> >> >   millisecond?
+>> >>
+>> >> How can I find out these 2 things? Only udelay() is the sleeping function.
+>> >
+>> > Try understanding what the functions actually do by looking at the call
+>> > chain for the first one, it should be fairly easy in this case.
+>> >
+>> > For the second one, look for functions that get called from this one,
+>> > if any of them contains a mdelay() or msleep(), or a loop around
+>> > udelay(), try guessing how long that can take.
+>>
+>> The function is calling msleep(20) and has a loop around it, repeating
+>> hundred times so that means a couple of milliseconds delay, right?
+>
+> This means the function can sleep up to 2 seconds, which is basically
+> an eternity from a driver's perspective, so adding a few shorter sleep
+> periods is certainly not harmful.
+>
+>> Is usleep_range() only used for short delays and msleep() for the longer
+>> ones?
+>
+> Yes. There are other differences, but a main one is that msleep() can
+> not sleep less than a millisecond, while usleep_range() can sleep much
+> shorter periods.
+>
 
-That is a bit oversimplified. What we found so far is 
+Conclusively, Shorter sleep periods means using usleep_range() instead
+of msleep() in this case with a small range since the loop is
+repeating a 100 times?
 
-- This is a function that is allowed to sleep. We know that because
-  it calls msleep(). This means your original patch is good, but you
-  should explain this in the changelog.
 
-- you found another bug in the same function, which is allowed to
-  sleep but calls kmalloc(..., GFP_ATOMIC) when it should use GFP_KERNEL.
-
-- usleep_range(10, 1000) is a huge range (a factor of 100). This is ok
-  here, because even the time spent in a 1000 microsecond wait is dwarfed
-  by the 100 * 20ms wait time later in the function.
-
-Other points that we have not talked about are:
-
-- using a smaller range would also be ok, typically one would use a factor
-  between 1.1 (+10%) and 10 (+1000%), but not a factor of 100.
-
-- the function actually has two copies of the same loop with udelay()
-  in it. If you change one of them, it would be logical to change both
-  in the same patch.
-
-- the loop you found below is interesting as well. Waiting 100 times for
-  20ms means we can actually wait even longer, as each 20ms interval can
-  turn into 30 or 40 milliseconds. If we care about the actual maximum
-  time, this could be improved by writing it as:
-
-	unsigned long timeout = jiffies + 2 * HZ; /* up to two seconds */
-	do {
-		tmp16 = r8712_read16(padapter, TCR);
-		if ((tmp16 & _DMEM_CODE_DONE)
-			break;
-		msleep(20);
-	} while (time_before(timeout, jiffies));
-
-  We probably don't care about that here though.
-
-	Arnd
+Amitoj
 
