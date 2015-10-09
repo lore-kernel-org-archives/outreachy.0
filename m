@@ -1,130 +1,121 @@
-X-GM-THRID: 6254088718103085056
-X-Received: by 10.129.51.2 with SMTP id z2mr26561106ywz.49.1456143501424;
-        Mon, 22 Feb 2016 04:18:21 -0800 (PST)
+X-GM-THRID: 6201947249365221376
+X-Received: by 10.66.159.194 with SMTP id xe2mr11281721pab.13.1444410622323;
+        Fri, 09 Oct 2015 10:10:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.19.171 with SMTP id 40ls1401035qgh.42.gmail; Mon, 22 Feb
- 2016 04:18:20 -0800 (PST)
-X-Received: by 10.129.88.135 with SMTP id m129mr26094231ywb.47.1456143500630;
-        Mon, 22 Feb 2016 04:18:20 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id yd9si3072621pab.1.2016.02.22.04.18.20
+Received: by 10.140.93.138 with SMTP id d10ls1570516qge.27.gmail; Fri, 09 Oct
+ 2015 10:10:21 -0700 (PDT)
+X-Received: by 10.129.108.133 with SMTP id h127mr11535685ywc.8.1444410621933;
+        Fri, 09 Oct 2015 10:10:21 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id w5si255449pbt.1.2015.10.09.10.10.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 04:18:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Fri, 09 Oct 2015 10:10:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id fl4so90607167pad.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 04:18:20 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x229.google.com with SMTP id ve7so33166548pab.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 10:10:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=0+HJcnjR+gSvPzrrM+ddZDhlt6/pwZiA82b2Nj9mJWE=;
-        b=08jZCl3/MeR72/SPMvSBq1iSAOovRyq9u3g38vIpVqlKs4BU19M+8RbImi9qMTQxJ1
-         fKawZL5SNZBrPF2lqvMQM/KY1IP3UQtvE8rf7GztMEwEwctVtcc6PS49BwKur0Z7Y46g
-         1SjMlZoD7ewK2VqjF1/b/kjn34RCiVCvBHVcjBHbhXffM5e8rS03kZ5sMrZHuMpOmB4o
-         6+ntr+MHJpQaoM+qm/xOD0Y+nbWSgm7FK8O+KTlTojt6/whNWG0W1znxB7SSwoFI4ULL
-         QhIripzZ+nC5bJ/kls80maqZfqeZZnl8nG2JIDseGQXWXea9xIEe7UVh3UAk/N8gvwom
-         qbRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=0+HJcnjR+gSvPzrrM+ddZDhlt6/pwZiA82b2Nj9mJWE=;
-        b=OMNzWgDddBZGFwNwWBun5Ln2IY0f2AlUp3FjPrJd6f8oGkJbwrEgj5q9C2qWUHaOef
-         +TkdC9PofHcsxGzwQS9jo7v9N6yvWT8+PeDft0lSwYCUwKoPHXL8jjdRTxI1NQPv9Nvi
-         omJvsLrEoQHUNnnS7uH5sIAprRnCo4naqxA3s6ZAVNTNwjnMBViwxdAFU1ojSaPJkngJ
-         Qj/XHS3e9l6oXEB/UKA1rBBlF+anuzLAcwSSCfY+wG8fe6AoGhVcqzknrtPYjP7NG4Tj
-         KlAW6oszSg24PU1lw4UnwP67MClYpRBuAZxof6GCDLJBE703/t0qen5Zed3BjTddRaFC
-         yyGw==
-X-Gm-Message-State: AG10YORMJp9d//JaWnsaMyajMsVJPBvW7ggqFFWMggwcUfMVksG09NsZy9GfIqOx4EbyGw==
-X-Received: by 10.66.62.134 with SMTP id y6mr37516703par.43.1456143500387;
-        Mon, 22 Feb 2016 04:18:20 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.106.39])
-        by smtp.gmail.com with ESMTPSA id z3sm36809957par.17.2016.02.22.04.18.15
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=AWaVZxYvnamRp4w9K8z+jnnX27koyXVDXrIJ4wVKFss=;
+        b=uisu8uXjgGLVUNGFZNe7P8rrY44q4Umpe1JjHbyAdkNP1/CFvNOUdibP3vEvEGLdjB
+         e9mxd9nPl5kAJKdTNT1wlFIFkFXtorpTZIb2kyov9wLMZHK4EMsA7d5jXnp0Er8dFK9u
+         BX6ffbZigny6Q5SoWTca58A5qAlHsftc0ge2QO8zKNn0pQNX/zUSuJM8iwgfkSJLa1xt
+         teGCZG0h1IdlBOzB02u0tEg98aN0iqTHneJ00CN2g1+5BKX/wA1gx5dgOzICd45gcM5n
+         VFmsSqdu0jvG9X38WKeUYmUoN7BoPHBTe6sIC867fqcEeapGdbdzoZtCgQf+vYZIdHQr
+         pT+A==
+X-Received: by 10.68.219.169 with SMTP id pp9mr16800381pbc.115.1444410621799;
+        Fri, 09 Oct 2015 10:10:21 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id sn9sm3509950pac.16.2015.10.09.10.10.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 04:18:19 -0800 (PST)
-Date: Mon, 22 Feb 2016 17:48:11 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: Replace simple_strtoul with kstrtoul
-Message-ID: <20160222121811.GA21856@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 09 Oct 2015 10:10:21 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 2/2] Staging: lustre: obdclass: lprocfs_status: Declare local functions as static
+Date: Fri,  9 Oct 2015 22:40:07 +0530
+Message-Id: <1444410607-5068-3-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1444410607-5068-1-git-send-email-shraddha.6596@gmail.com>
+References: <1444410607-5068-1-git-send-email-shraddha.6596@gmail.com>
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150209.5617F4FC.0099,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-Replace obsolete simple_strtoul with kstrtoul.
-The Coccinelle semantic patch used to make this change is as follows:
+Declare lustre_attr_show and lustre_attr_store as static
+since they are used only in this particular file. Also remove them from
+corresponding header files.
 
-// <smpl>
-@@
-unsigned long l;
-expression e,f,g;
-@@
-- l = simple_strtoul(e, &f, g)
-+ kstrtoul(e, g, &l)
-// </smpl>
-
-Additionally, since kstrtoul returns 0 on success and an error code on
-failure introduced `err` variable to store and return the error code.
-This change was made by hand.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+ drivers/staging/lustre/lustre/include/lprocfs_status.h  |  5 -----
+ drivers/staging/lustre/lustre/obdclass/lprocfs_status.c | 10 ++++------
+ 2 files changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index fdfeb42..f626084 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -125,7 +125,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 	int reset = 0;
- 	int do_characters = !strcmp(attr->attr.name, "characters");
- 	size_t desc_length = 0;
--	int i;
-+	int i, err;
+diff --git a/drivers/staging/lustre/lustre/include/lprocfs_status.h b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+index 22f3777..6d127a0 100644
+--- a/drivers/staging/lustre/lustre/include/lprocfs_status.h
++++ b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+@@ -713,11 +713,6 @@ static struct lustre_attr lustre_attr_##name = __ATTR(name, mode, show, store)
+ #define LUSTRE_RO_ATTR(name) LUSTRE_ATTR(name, 0444, name##_show, NULL)
+ #define LUSTRE_RW_ATTR(name) LUSTRE_ATTR(name, 0644, name##_show, name##_store)
  
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
- 	while (cp < end) {
-@@ -153,7 +153,9 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 			continue;
- 		}
+-ssize_t lustre_attr_show(struct kobject *kobj, struct attribute *attr,
+-			 char *buf);
+-ssize_t lustre_attr_store(struct kobject *kobj, struct attribute *attr,
+-			  const char *buf, size_t len);
+-
+ extern const struct sysfs_ops lustre_sysfs_ops;
  
--		index = simple_strtoul(cp, &temp, 10);
-+		err = kstrtoul(cp, 10, &index);
-+		if (err)
-+			return err;
- 		if (index > 255) {
- 			rejected++;
- 			cp = linefeed + 1;
-@@ -757,6 +759,7 @@ static ssize_t message_store_helper(const char *buf, size_t count,
- 	enum msg_index_t firstmessage = group->start;
- 	enum msg_index_t lastmessage = group->end;
- 	enum msg_index_t curmessage;
-+	int err;
+ /* all quota proc functions */
+diff --git a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+index da4afe0..c8a5ff4 100644
+--- a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
++++ b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+@@ -1467,23 +1467,21 @@ void lprocfs_oh_clear(struct obd_histogram *oh)
+ }
+ EXPORT_SYMBOL(lprocfs_oh_clear);
  
- 	while (cp < end) {
+-ssize_t lustre_attr_show(struct kobject *kobj,
+-			 struct attribute *attr, char *buf)
++static ssize_t lustre_attr_show(struct kobject *kobj,
++				struct attribute *attr, char *buf)
+ {
+ 	struct lustre_attr *a = container_of(attr, struct lustre_attr, attr);
  
-@@ -783,7 +786,9 @@ static ssize_t message_store_helper(const char *buf, size_t count,
- 			continue;
- 		}
+ 	return a->show ? a->show(kobj, attr, buf) : 0;
+ }
+-EXPORT_SYMBOL_GPL(lustre_attr_show);
  
--		index = simple_strtoul(cp, &temp, 10);
-+		err = kstrtoul(cp, 10, &index);
-+		if (err)
-+			return err;
+-ssize_t lustre_attr_store(struct kobject *kobj, struct attribute *attr,
+-			  const char *buf, size_t len)
++static ssize_t lustre_attr_store(struct kobject *kobj, struct attribute *attr,
++				 const char *buf, size_t len)
+ {
+ 	struct lustre_attr *a = container_of(attr, struct lustre_attr, attr);
  
- 		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
- 			temp++;
+ 	return a->store ? a->store(kobj, attr, buf, len) : len;
+ }
+-EXPORT_SYMBOL_GPL(lustre_attr_store);
+ 
+ const struct sysfs_ops lustre_sysfs_ops = {
+ 	.show  = lustre_attr_show,
 -- 
-1.9.1
+2.1.4
 
 
