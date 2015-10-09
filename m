@@ -1,62 +1,76 @@
 X-GM-THRID: 6203759305105080320
-X-Received: by 10.112.181.10 with SMTP id ds10mr2991379lbc.3.1444425667792;
-        Fri, 09 Oct 2015 14:21:07 -0700 (PDT)
+X-Received: by 10.182.137.227 with SMTP id ql3mr12750623obb.32.1444425272513;
+        Fri, 09 Oct 2015 14:14:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.23.81 with SMTP id n78ls364560lfi.33.gmail; Fri, 09 Oct
- 2015 14:21:07 -0700 (PDT)
-X-Received: by 10.112.202.165 with SMTP id kj5mr3018956lbc.5.1444425667079;
-        Fri, 09 Oct 2015 14:21:07 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id ch7si25514wib.2.2015.10.09.14.21.06
+Received: by 10.182.251.198 with SMTP id zm6ls735941obc.33.gmail; Fri, 09 Oct
+ 2015 14:14:32 -0700 (PDT)
+X-Received: by 10.182.240.202 with SMTP id wc10mr13541894obc.9.1444425272013;
+        Fri, 09 Oct 2015 14:14:32 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id uv4si412141pac.0.2015.10.09.14.14.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 14:21:06 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0MLgGJ-1ZlU2r38jL-000pbH; Fri, 09 Oct
- 2015 23:21:06 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x229.google.com with SMTP id ve7so38026572pab.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=HsD6wGIJRr5h9EjtGXGoobdmyc9RYgBH9kAbeYBgD48=;
+        b=hKQG3h+r6SSxoZgg9nr/i/hL00a8boErqgmMOAKuLroX8aFw2JmyQvYAAbYnBeam+C
+         N0dG4YBpUluTd85x3NVoTPtG5i9l2bTKF+xoK/sle+HbgaMyJQpAM8v1PIZZd0pUFqvs
+         mFyCfcaXcuG0Cpu90AEJbeKIuKnCR6BTxlVxlx8R5Q22Ms1s8xOo9QPg/raKiTn+hBA5
+         cVesr2ihW5gOWITrcn6n1PGZjSDyZnrJjBx8maU/hznoMO5Su+fHJfxugEPgTTCUiTii
+         fhzxwYB4eSk7It8THtxklvqZiiTac4y+KI0MH3hJsdA0cpHbnaGkxtBMSpu910FXtbNm
+         44KQ==
+X-Received: by 10.68.69.17 with SMTP id a17mr17652159pbu.10.1444425271803;
+        Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.135.155])
+        by smtp.gmail.com with ESMTPSA id q8sm4204770pap.34.2015.10.09.14.14.30
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
+Date: Sat, 10 Oct 2015 02:44:27 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Replace GFP_ATOMIC with GFP_KERNEL
-Date: Fri, 09 Oct 2015 23:21:05 +0200
-Message-ID: <8361732.BvEsE9DUWK@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151009211427.GA29470@amitoj-Inspiron-3542>
-References: <20151009211427.GA29470@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: rtl8712: Replace GFP_ATOMIC with GFP_KERNEL
+Message-ID: <20151009211427.GA29470@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:LdhwXhQ+3TtLbWwiSiO9cPUi2eAF/5EeSyarpluzp0+vt8G7oCq
- 76fzKlwCy9Z3mzz1wNWhAkICwtXt9mkEpYQTr1v4wBjuzPaFP+UA427wvXt3WuhvUNBiyHF
- aTeXA/VtzPQR/jS2kiWwfe7AsN0ffFyfRChG65/NoGJJVZgY6ru4tUCFmNB+3AnA8tWtiR4
- XB3Fv/Y8LRpWgN2+brbnA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:MpjsEkODLLI=:075qGtifvAotkvoBqt9DKk
- R1mC2v4DllUiF1GlOHyajcnTfofJeL68ZI0x/bDHvx0QfKcNURctvWWoRB82Hm2Vkqiyc/AaV
- xdt6x4MQVukuP4vkF7tJYDsdfItsE2e9Z7s/zFvamDDDTHickQVmgG0NNnhD0znJsMQyN6I7I
- lcG/txjphMfUQulZzAr1aImDUQyd3YKvc0n4qDxuO/ZQkRonnYftgvUqZMTrwqpxai9nSshiF
- nyZCkiYj8wP86ll7qqQEpYvKNCGPWFgGBG698tyHJSIv19APsk73YSTCxvwHue0Iuz/KyedJV
- b/+izbZGdCeKTIdWuqQVXQmgl2pvZ8rZ2FfyCJ8YovveyVxvcpK6r1PYQUljxFcdt38KQIGU+
- aj4+UXTYKkZLR1xrFr1/+QpeXc4Nrs4zDsMLHUQNfpKzY3J6wOEztgJvQTEnE1QBdZjllyJs1
- A3EiC3BVapaUqzOLUXWEV/qZtJur4MbR82FCRONQqsyB7u4076ooXz0Ln8oyqJXhrBHCdSQJJ
- 7XBWqCWgXaFmeCobWYu5q3KBixA1VTXJp4CBqZ9SnUy0X/XjDVWpCX4g+23yOdCuOSptYrXMn
- 1dTx+Vfi4tfVRsf3//K1dVGcSvz4URm2KvzO1kBLTFbY1ABuoZAykRwqW+XzaTsOWeH2LWqAc
- PePisA9bTSzD4vA2l1mJrxQm+M01zstZZqiq/ELcdSQv0L8IRKwhh21Arg5UXXGd4fWcmXGBI
- CJzjiWOAt75rktDq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Saturday 10 October 2015 02:44:27 Amitoj Kaur Chawla wrote:
-> Replace GFP_ATOMIC with GFP_KERNEL since the function is calling
-> sleeping functions.
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Replace GFP_ATOMIC with GFP_KERNEL since the function is calling
+sleeping functions.
 
-The sentence is missing a few words I think. The fact that the function
-calls other sleeping functions is not the reason for the change, it's
-just an indication that the change is safe. You should still explain
-what the change is good for.
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/rtl8712/hal_init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-	Arnd
+diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
+index 2031291..39ba658 100644
+--- a/drivers/staging/rtl8712/hal_init.c
++++ b/drivers/staging/rtl8712/hal_init.c
+@@ -177,7 +177,7 @@ static u8 rtl8712_dl_fw(struct _adapter *padapter)
+ 		maxlen = (fwhdr.img_IMEM_size > fwhdr.img_SRAM_size) ?
+ 			  fwhdr.img_IMEM_size : fwhdr.img_SRAM_size;
+ 		maxlen += txdscp_sz;
+-		ptmpchar = kmalloc(maxlen + FWBUFF_ALIGN_SZ, GFP_ATOMIC);
++		ptmpchar = kmalloc(maxlen + FWBUFF_ALIGN_SZ, GFP_KERNEL);
+ 		if (!ptmpchar)
+ 			return ret;
+ 
+-- 
+1.9.1
+
 
