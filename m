@@ -1,82 +1,84 @@
-X-GM-THRID: 6251584620419088384
-X-Received: by 10.107.15.79 with SMTP id x76mr17895801ioi.31.1455560471349;
-        Mon, 15 Feb 2016 10:21:11 -0800 (PST)
+X-GM-THRID: 6203646587368898560
+X-Received: by 10.112.144.99 with SMTP id sl3mr2609976lbb.12.1444399027878;
+        Fri, 09 Oct 2015 06:57:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.81.106 with SMTP id e97ls2767208qgd.67.gmail; Mon, 15 Feb
- 2016 10:21:10 -0800 (PST)
-X-Received: by 10.129.51.2 with SMTP id z2mr17294624ywz.49.1455560470480;
-        Mon, 15 Feb 2016 10:21:10 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id 12si2735208pfb.1.2016.02.15.10.21.10
+Received: by 10.25.78.81 with SMTP id c78ls280304lfb.45.gmail; Fri, 09 Oct
+ 2015 06:57:07 -0700 (PDT)
+X-Received: by 10.112.158.202 with SMTP id ww10mr2684748lbb.13.1444399027283;
+        Fri, 09 Oct 2015 06:57:07 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id w4si2684wiz.0.2015.10.09.06.57.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Feb 2016 10:21:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Fri, 09 Oct 2015 06:57:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id ho8so90299148pac.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 10:21:10 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x231.google.com with SMTP id gb1so69295845wic.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 06:57:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=MAJh3cobbOMwSUPcaNu+iTTlMeCPQOdnoLspJrMGfZs=;
-        b=FjW/Sh2zlQyP9uUnWK1HEtEMsrbELSu/SZlQ1TcguoYxoDsCOS8Qbqs3/6UU9SBvjy
-         u2q40rhqP+tm/pKLzAsQsnPOawMe7W5NenhhhoeqfUMGNZC1AIr+vB1JZbY3ViJyoCAl
-         NhDZnY5giBpdT/VWir/HuT+j7vVosCZ7O28d571J1SxfZyPpSXU3nFLFGfmMR0vg+AQl
-         EOsrslzQlOhiUjHsKuquNGjtaJAMQpCGeRqexjuTW+/PXA0TqP6KA+le5wZYHDCzCJsf
-         gMM52LSlHDYIn3WmqaBB4TqbF4Be8gU65W9FfCp/XPA0sYaIA7991yB2zWgfCjeWaiJF
-         5tqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=MAJh3cobbOMwSUPcaNu+iTTlMeCPQOdnoLspJrMGfZs=;
-        b=Mw8BW+5kxolF+2B5E2p9o78tPQoTBm3QDHABpsUzMMwAVziK//Yx0A83w6TOReYf3K
-         FUCkGYlG80L1xy8Hwk6+2NEoauxH9PDoTdBDU5JZFChn4b0Mf226Ghavtrk/Mnwgx9To
-         Lg3QhT3uUqvaghni5GQvsnoCgNqg7TGhuKm+lkDZjXAcNVDb4O/jo5x0/Nkm/gg4Ta8e
-         p7XmRhLjQZmISTRtSG5mpxC2xbbcjW0Z92qShKOssmHu9Otu6IzEdx53k4V8dqbYHHzW
-         m8T19juu4yZq/z/JILYxC5nb/sCx7PYOKc9HWcNSkds01PJDoCZe0Kg1MMwEHoVeDwAY
-         AuLQ==
-X-Gm-Message-State: AG10YOS7Zf9g8wM8xMT0xYMhFABS7WyOB08xOoOfm1zg/oQnSRCmSwIeWb8bbsPRGE5JsQ==
-X-Received: by 10.66.101.36 with SMTP id fd4mr25731689pab.76.1455560470306;
-        Mon, 15 Feb 2016 10:21:10 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([171.48.60.250])
-        by smtp.gmail.com with ESMTPSA id xg9sm23939247pac.9.2016.02.15.10.21.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 10:21:09 -0800 (PST)
-Date: Mon, 15 Feb 2016 23:51:06 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=SeJEaVBmlLmidGBSFJCvKq53oPWB9969frnaT6XUN2c=;
+        b=gS+krbnOlSXzDjMH8F57OU0Y0CZgDHUiq81BMLrhoFNHC3ycFYtxvCix/Vh/CUFGEK
+         wtRzqq0XBNFGlaYWRSmXUzb6c6/qSlL2RJpzOjwKzb50WC4HG0iklWbDZnTiqPGzbQkU
+         XZuY55K/sLI2IaELaqpmYy2QjeQrRd5va9z5h5VUFD7NDsx9WoX8+XIgjiJ7o0H0JQRh
+         /YAqdw8dcqbDb1ZAiZ9hU+L30VCda0rzTOh12BGiTIiCfooEC4dzTWENluuXCVN/y+Fk
+         cG6ktvfXLR6yX4KTXPV0Za2hMfOpZfo4vPfUbj0+4f0dLtKBpAcrCrwSX2UHUe1b1TnZ
+         UVwQ==
+X-Received: by 10.180.106.66 with SMTP id gs2mr10920994wib.14.1444399027112;
+        Fri, 09 Oct 2015 06:57:07 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id l1sm2308009wjx.13.2015.10.09.06.57.06
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 09 Oct 2015 06:57:06 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove inclusion of header file
-Message-ID: <20160215182106.GA3501@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: rdma: Use memdup_user
+Date: Fri,  9 Oct 2015 15:56:59 +0200
+Message-Id: <1444399019-7558-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-version.h header inclusion is not necessary as detected by
-versioncheck.
+Use memdup_user when user data is immediately copied into the
+allocated region.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Issue found using coccinelle.
+
+Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com>
 ---
- drivers/staging/sm750fb/sm750_hw.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rdma/ipath/ipath_fs.c | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index 01850bf..807d992 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -1,4 +1,3 @@
--#include <linux/version.h>
- #include <linux/module.h>
- #include <linux/kernel.h>
- #include <linux/errno.h>
+diff --git a/drivers/staging/rdma/ipath/ipath_fs.c b/drivers/staging/rdma/ipath/ipath_fs.c
+index 25422a3..796af68 100644
+--- a/drivers/staging/rdma/ipath/ipath_fs.c
++++ b/drivers/staging/rdma/ipath/ipath_fs.c
+@@ -195,16 +195,9 @@ static ssize_t flash_write(struct file *file, const char __user *buf,
+ 		goto bail;
+ 	}
+ 
+-	tmp = kmalloc(count, GFP_KERNEL);
+-	if (!tmp) {
+-		ret = -ENOMEM;
+-		goto bail;
+-	}
+-
+-	if (copy_from_user(tmp, buf, count)) {
+-		ret = -EFAULT;
+-		goto bail_tmp;
+-	}
++	tmp = memdup_user(buf, count);
++	if (IS_ERR(tmp))
++		return PTR_ERR(tmp);
+ 
+ 	dd = file_inode(file)->i_private;
+ 	if (ipath_eeprom_write(dd, pos, tmp, count)) {
 -- 
 1.9.1
 
