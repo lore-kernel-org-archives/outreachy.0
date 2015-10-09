@@ -1,92 +1,88 @@
 X-GM-THRID: 6203546917110022144
-X-Received: by 10.13.215.73 with SMTP id z70mr14162350ywd.23.1444461288540;
-        Sat, 10 Oct 2015 00:14:48 -0700 (PDT)
+X-Received: by 10.67.23.163 with SMTP id ib3mr11111838pad.45.1444400490243;
+        Fri, 09 Oct 2015 07:21:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.98 with SMTP id a95ls328502ioj.25.gmail; Sat, 10 Oct
- 2015 00:14:48 -0700 (PDT)
-X-Received: by 10.66.227.166 with SMTP id sb6mr14468255pac.0.1444461288219;
-        Sat, 10 Oct 2015 00:14:48 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id uv4si638854pac.0.2015.10.10.00.14.48
+Received: by 10.182.215.162 with SMTP id oj2ls704294obc.15.gmail; Fri, 09 Oct
+ 2015 07:21:28 -0700 (PDT)
+X-Received: by 10.182.240.202 with SMTP id wc10mr11732867obc.9.1444400488513;
+        Fri, 09 Oct 2015 07:21:28 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id wl2si156365pab.1.2015.10.09.07.21.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Oct 2015 00:14:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Fri, 09 Oct 2015 07:21:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id lk4so106969906pab.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 00:14:48 -0700 (PDT)
+Received: by mail-pa0-x22a.google.com with SMTP id lk4so88283165pab.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 07:21:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=t2zT8H0SHvOO/ovoSXirCwoVe3eTAhAAJGfIdVKYiEE=;
-        b=j+KepoF1i5aVA7yyaGwRTfC/0EiAUH8nkdTt1ODox3eSbRwIoPuccJaJoUulCdFzEW
-         FQASD1SWKywCVfEgA3mDP5IHJjnecGcIpsMGeI3MRMYZIqNJxAxCuyaJEwB8bocdBbdc
-         MOCu4wZ4thal5fBjiZOPSsZW+UIBlX7gYYVZJEw5KQYpwtAy0Z+w32uNem6w1fDST0Dj
-         V5ClfWwzEvUOMaYNkt1yuVf4QFd7BIFeRSoa99HXKruZbz1PCXETnihC2W4X34S93Svp
-         BZEzOwh3OK6GKk4DfNJNiNQLocnhwkrxvClw1x27sH6/jboW0sRct+h0AcZ9O3r+4aN4
-         LILw==
-X-Received: by 10.66.147.74 with SMTP id ti10mr20621705pab.88.1444461288101;
-        Sat, 10 Oct 2015 00:14:48 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id or6sm6330251pac.32.2015.10.10.00.14.46
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 10 Oct 2015 00:14:47 -0700 (PDT)
-Date: Sat, 10 Oct 2015 12:44:43 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: sm750fb: ddk750_help:
- Included KERN_facility level using dev_info
-Message-ID: <20151010071443.GC4795@sudip-pc>
-References: <20151009142118.GA57009@ubuntu>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=FQz1J2sAe7OqCq8uHm9OGEuecKmHDCFZhg29H+li2HA=;
+        b=MKUNOz75/lhXwQwXyaWtvewQakzYjSQfkq/GLrVBbB1ukIe7DF/i6ICMbGkhXDzcUX
+         4VXQqd1lij7lClRjND4pwdYY+4rFaDOncnu3MtKshbXF/wpamSUYOJbvC9PMAA9KkSbi
+         mWiJ8mN5yuLlhi69lJUsuwKVMUE4Fvu+pwzo5UgPQgm6D35br9eROXX/72ALVs96dpau
+         SY2CjluVcwTO+90LsriGxm73yyfvyog4d+Pg1nRQheRtnuY8rcJoXVAcvROJO9Ied1Eg
+         mMM1NaIkJ+aU1Y9TBR+SMyrzxfK5XTPXps+MJ3ISq4NvzAALB+C3DCaaBCblnGAQ2bWC
+         D2zg==
+X-Received: by 10.68.225.138 with SMTP id rk10mr15339047pbc.121.1444400488389;
+        Fri, 09 Oct 2015 07:21:28 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id ql7sm2801608pbc.45.2015.10.09.07.21.26
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 07:21:27 -0700 (PDT)
+Date: Fri, 9 Oct 2015 19:51:18 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] Staging: sm750fb: ddk750_help: Included KERN_facility
+ level using dev_info
+Message-ID: <20151009142118.GA57009@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20151009142118.GA57009@ubuntu>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Fri, Oct 09, 2015 at 07:51:18PM +0530, Shivani Bhardwaj wrote:
-> Replaced the function printk() with dev_info() to fix the warning
-> generated by checkpatch : printk() should include KERN_ facility level.
-> 
-> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> ---
-> Changes in v2:
-> 	-Replaced the function pr_info() with dev_info()
-> 
->  drivers/staging/sm750fb/ddk750_help.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
-> index 9637dd3..b877704 100644
-> --- a/drivers/staging/sm750fb/ddk750_help.c
-> +++ b/drivers/staging/sm750fb/ddk750_help.c
-> @@ -1,5 +1,7 @@
->  #include "ddk750_help.h"
-> +#include <linux/pci.h>
->  
-> +static struct pci_dev *pdev;
->  void __iomem *mmio750;
->  char revId750;
->  unsigned short devId750;
-> @@ -11,7 +13,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
->  	devId750 = devId;
->  	revId750 = revId;
->  	if (revId == 0xfe)
-> -		printk("found sm750le\n");
-> +		dev_info(&pdev->dev, "found sm750le\n");
+Replaced the function printk() with dev_info() to fix the warning
+generated by checkpatch : printk() should include KERN_ facility level.
 
-OOPS .. no..
-pdev is initialized to NULL, so when you do pdev->dev, you are doing a
-dereference of NULL pointer.
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+Changes in v2:
+	-Replaced the function pr_info() with dev_info()
 
-regards
-sudip
+ drivers/staging/sm750fb/ddk750_help.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
+index 9637dd3..b877704 100644
+--- a/drivers/staging/sm750fb/ddk750_help.c
++++ b/drivers/staging/sm750fb/ddk750_help.c
+@@ -1,5 +1,7 @@
+ #include "ddk750_help.h"
++#include <linux/pci.h>
+ 
++static struct pci_dev *pdev;
+ void __iomem *mmio750;
+ char revId750;
+ unsigned short devId750;
+@@ -11,7 +13,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
+ 	devId750 = devId;
+ 	revId750 = revId;
+ 	if (revId == 0xfe)
+-		printk("found sm750le\n");
++		dev_info(&pdev->dev, "found sm750le\n");
+ }
+ 
+ 
+-- 
+2.1.0
+
 
