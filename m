@@ -1,57 +1,56 @@
 X-GM-THRID: 6202672545102036992
-X-Received: by 10.180.9.104 with SMTP id y8mr186972wia.7.1444420305741;
-        Fri, 09 Oct 2015 12:51:45 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.83.82 with SMTP id h79ls297409lfb.76.gmail; Fri, 09 Oct
- 2015 12:51:45 -0700 (PDT)
-X-Received: by 10.112.54.197 with SMTP id l5mr2919396lbp.21.1444420304950;
+X-Received: by 10.180.210.71 with SMTP id ms7mr202449wic.4.1444420304105;
         Fri, 09 Oct 2015 12:51:44 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.25.154.131 with SMTP id c125ls368794lfe.52.gmail; Fri, 09 Oct
+ 2015 12:51:43 -0700 (PDT)
+X-Received: by 10.112.190.65 with SMTP id go1mr3009256lbc.9.1444420303465;
+        Fri, 09 Oct 2015 12:51:43 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id w4si65029wiz.0.2015.10.09.12.51.44
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id hs5si8597wib.1.2015.10.09.12.51.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 12:51:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Fri, 09 Oct 2015 12:51:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id lk2so80687093wic.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 12:51:44 -0700 (PDT)
+Received: by mail-wi0-x236.google.com with SMTP id fx3so80200629wic.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 12:51:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=GWEhFs5UdpKhmag6ld/DnY+gHNxpd49SpS4eXq9oVRM=;
-        b=Ym1zSoeNxdusZh6yEEXgc6M4/9zHew43MdwsE1h4wVWiecsZ8D5ncc/jQOJ3NgLS+R
-         KrWHOVobdF5+7I3HnwwHfj27SVgpW9vIIDnfNZ72Sck/k0jOAKS/QfsGbG6JTHjd2+Mh
-         0dlWgi657cLXq2yqTSt3xfuNaBpPhcxJm5jsfQK6SBmQDKIqXrQvRZi17anlMjFHLkgj
-         aTtq58MTOHnZHmiRiv6es/myuCcO+6i4w/2Qh9708yd2xYlUCRxflISJLyDDPEhk7noq
-         LnaEiuvXSPEIDdtxMogj8dzQyx6mwfGN1UqjFP2+eDDnHOv+GrPqKxr2vGzGHCAEpkr6
-         rMBQ==
-X-Received: by 10.180.102.169 with SMTP id fp9mr1117145wib.29.1444420304849;
-        Fri, 09 Oct 2015 12:51:44 -0700 (PDT)
+        bh=F/87Q0F8G0JG8bNR19JFVPN55e/cvp2MFxzjZ2EdiFk=;
+        b=TayvoYze/6d+3cxOJQ5m/LnquI+PTP2Pc5DgIYlPQPisdkDakuGVYFKs1J7UbIwNAi
+         S7hliHwmZERJSG5VFB4vP5ECH4tiIZk5+IVh8ca2sh9lBI/uLc+b5cevDTjBnpO4LdLs
+         fRXntGZLNPhkBgyLGuB0QUojKiEIdcfKNz3TTHClxVLnnRMmiRbVXMAkPyArZTaFN+o7
+         WyfQfW6kP90Ap8HOAwlW7csur3TRGDj8jYooVpSI53fHKs1lCFZfTUxVLCcLXZi7Mhl0
+         h22LkGgH4MeqOBgU12P+awLjaB6mKcqDVPMfk8GlPdrPKQfR97YNuA6wctBg/pdW1VQF
+         I0RA==
+X-Received: by 10.194.77.77 with SMTP id q13mr18544848wjw.79.1444420303357;
+        Fri, 09 Oct 2015 12:51:43 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by smtp.gmail.com with ESMTPSA id wj4sm3895064wjb.10.2015.10.09.12.51.43
+        by smtp.gmail.com with ESMTPSA id wj4sm3895064wjb.10.2015.10.09.12.51.42
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 09 Oct 2015 12:51:44 -0700 (PDT)
+        Fri, 09 Oct 2015 12:51:42 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH v3 4/9] staging: iio: adc: remove space after cast
-Date: Fri,  9 Oct 2015 22:51:03 +0300
-Message-Id: <38a48156926a77db8a247e311f879238c0f60981.1444419393.git.ciorneiioana@gmail.com>
+Subject: [PATCH v3 3/9] staging: iio: adc: remove explicit comparison to NULL
+Date: Fri,  9 Oct 2015 22:51:02 +0300
+Message-Id: <d529e839c73bfd1156a2b6ac578189b641efa01f.1444419393.git.ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1444419393.git.ciorneiioana@gmail.com>
 References: <cover.1444419393.git.ciorneiioana@gmail.com>
 In-Reply-To: <cover.1444419393.git.ciorneiioana@gmail.com>
 References: <cover.1444419393.git.ciorneiioana@gmail.com>
 
-Remove the space after an explicit cast because there is no
-point in having it
+Use !condition instead off condition == NULL when comparing with NULL
 
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
@@ -61,91 +60,77 @@ Changes in v2:
 Changes in v3:
     - nothing
 
- drivers/staging/iio/adc/ad7192.c      | 2 +-
- drivers/staging/iio/adc/ad7280a.c     | 6 +++---
- drivers/staging/iio/adc/ad7606_core.c | 2 +-
- drivers/staging/iio/adc/ad7606_par.c  | 4 ++--
- 4 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/iio/adc/ad7192.c    | 2 +-
+ drivers/staging/iio/adc/ad7280a.c   | 8 ++++----
+ drivers/staging/iio/adc/mxs-lradc.c | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-index 6adac61..e7212c8 100644
+index 5ae7a50..6adac61 100644
 --- a/drivers/staging/iio/adc/ad7192.c
 +++ b/drivers/staging/iio/adc/ad7192.c
-@@ -424,7 +424,7 @@ static ssize_t ad7192_set(struct device *dev,
- 		return -EBUSY;
+@@ -626,7 +626,7 @@ static int ad7192_probe(struct spi_device *spi)
  	}
  
--	switch ((u32) this_attr->address) {
-+	switch ((u32)this_attr->address) {
- 	case AD7192_REG_GPOCON:
- 		if (val)
- 			st->gpocon |= AD7192_GPOCON_BPDSW;
+ 	indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
+-	if (indio_dev == NULL)
++	if (!indio_dev)
+ 		return -ENOMEM;
+ 
+ 	st = iio_priv(indio_dev);
 diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-index 8ee2868..2c07198 100644
+index d3db25f..8ee2868 100644
 --- a/drivers/staging/iio/adc/ad7280a.c
 +++ b/drivers/staging/iio/adc/ad7280a.c
-@@ -606,7 +606,7 @@ static ssize_t ad7280_read_channel_config(struct device *dev,
- 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
- 	unsigned val;
+@@ -488,7 +488,7 @@ static int ad7280_channel_init(struct ad7280_state *st)
  
--	switch ((u32) this_attr->address) {
-+	switch ((u32)this_attr->address) {
- 	case AD7280A_CELL_OVERVOLTAGE:
- 		val = 1000 + (st->cell_threshhigh * 1568) / 100;
- 		break;
-@@ -642,7 +642,7 @@ static ssize_t ad7280_write_channel_config(struct device *dev,
- 	if (ret)
- 		return ret;
+ 	st->channels = kcalloc((st->slave_num + 1) * 12 + 2,
+ 			       sizeof(*st->channels), GFP_KERNEL);
+-	if (st->channels == NULL)
++	if (!st->channels)
+ 		return -ENOMEM;
  
--	switch ((u32) this_attr->address) {
-+	switch ((u32)this_attr->address) {
- 	case AD7280A_CELL_OVERVOLTAGE:
- 	case AD7280A_CELL_UNDERVOLTAGE:
- 		val = ((val - 1000) * 100) / 1568; /* LSB 15.68mV */
-@@ -658,7 +658,7 @@ static ssize_t ad7280_write_channel_config(struct device *dev,
- 	val = clamp(val, 0L, 0xFFL);
+ 	for (dev = 0, cnt = 0; dev <= st->slave_num; dev++)
+@@ -550,7 +550,7 @@ static int ad7280_attr_init(struct ad7280_state *st)
+ 	st->iio_attr = kcalloc(2, sizeof(*st->iio_attr) *
+ 			       (st->slave_num + 1) * AD7280A_CELLS_PER_DEV,
+ 			       GFP_KERNEL);
+-	if (st->iio_attr == NULL)
++	if (!st->iio_attr)
+ 		return -ENOMEM;
  
- 	mutex_lock(&indio_dev->mlock);
--	switch ((u32) this_attr->address) {
-+	switch ((u32)this_attr->address) {
- 	case AD7280A_CELL_OVERVOLTAGE:
- 		st->cell_threshhigh = val;
- 		break;
-diff --git a/drivers/staging/iio/adc/ad7606_core.c b/drivers/staging/iio/adc/ad7606_core.c
-index 1e324fe..5796ed2 100644
---- a/drivers/staging/iio/adc/ad7606_core.c
-+++ b/drivers/staging/iio/adc/ad7606_core.c
-@@ -97,7 +97,7 @@ static int ad7606_read_raw(struct iio_dev *indio_dev,
+ 	for (dev = 0, cnt = 0; dev <= st->slave_num; dev++)
+@@ -689,7 +689,7 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
+ 	int i, ret;
  
- 		if (ret < 0)
- 			return ret;
--		*val = (short) ret;
-+		*val = (short)ret;
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_SCALE:
- 		*val = st->range * 2;
-diff --git a/drivers/staging/iio/adc/ad7606_par.c b/drivers/staging/iio/adc/ad7606_par.c
-index fbe8237..3537a78 100644
---- a/drivers/staging/iio/adc/ad7606_par.c
-+++ b/drivers/staging/iio/adc/ad7606_par.c
-@@ -22,7 +22,7 @@ static int ad7606_par16_read_block(struct device *dev,
- 	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
- 	struct ad7606_state *st = iio_priv(indio_dev);
+ 	channels = kcalloc(st->scan_cnt, sizeof(*channels), GFP_KERNEL);
+-	if (channels == NULL)
++	if (!channels)
+ 		return IRQ_HANDLED;
  
--	insw((unsigned long) st->base_address, buf, count);
-+	insw((unsigned long)st->base_address, buf, count);
+ 	ret = ad7280_read_all_channels(st, st->scan_cnt, channels);
+@@ -846,7 +846,7 @@ static int ad7280_probe(struct spi_device *spi)
+ 	struct iio_dev *indio_dev;
  
- 	return 0;
- }
-@@ -38,7 +38,7 @@ static int ad7606_par8_read_block(struct device *dev,
- 	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
- 	struct ad7606_state *st = iio_priv(indio_dev);
+ 	indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
+-	if (indio_dev == NULL)
++	if (!indio_dev)
+ 		return -ENOMEM;
  
--	insb((unsigned long) st->base_address, buf, count * 2);
-+	insb((unsigned long)st->base_address, buf, count * 2);
+ 	st = iio_priv(indio_dev);
+diff --git a/drivers/staging/iio/adc/mxs-lradc.c b/drivers/staging/iio/adc/mxs-lradc.c
+index f250aaf..407d4a2 100644
+--- a/drivers/staging/iio/adc/mxs-lradc.c
++++ b/drivers/staging/iio/adc/mxs-lradc.c
+@@ -1232,7 +1232,7 @@ static int mxs_lradc_trigger_init(struct iio_dev *iio)
+ 	struct mxs_lradc *lradc = iio_priv(iio);
  
- 	return 0;
- }
+ 	trig = iio_trigger_alloc("%s-dev%i", iio->name, iio->id);
+-	if (trig == NULL)
++	if (!trig)
+ 		return -ENOMEM;
+ 
+ 	trig->dev.parent = lradc->dev;
 -- 
 2.1.4
 
