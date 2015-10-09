@@ -1,97 +1,74 @@
-X-GM-THRID: 6337248154845446144
-X-Received: by 10.46.32.169 with SMTP id g41mr1306621lji.26.1475505566718;
-        Mon, 03 Oct 2016 07:39:26 -0700 (PDT)
+X-GM-THRID: 6203640071663386624
+X-Received: by 10.180.210.212 with SMTP id mw20mr1930230wic.3.1444397511937;
+        Fri, 09 Oct 2015 06:31:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.9.201 with SMTP id 192ls493481ljj.0.gmail; Mon, 03 Oct 2016
- 07:39:25 -0700 (PDT)
-X-Received: by 10.25.66.207 with SMTP id p198mr230217lfa.7.1475505565772;
-        Mon, 03 Oct 2016 07:39:25 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id e21si1088979wmc.2.2016.10.03.07.39.25
+Received: by 10.180.105.104 with SMTP id gl8ls354534wib.41.gmail; Fri, 09 Oct
+ 2015 06:31:51 -0700 (PDT)
+X-Received: by 10.194.109.233 with SMTP id hv9mr2631625wjb.1.1444397511605;
+        Fri, 09 Oct 2015 06:31:51 -0700 (PDT)
+Return-Path: <aybuke.147@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id w4si333140wiz.0.2015.10.09.06.31.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 Oct 2016 07:39:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Fri, 09 Oct 2015 06:31:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id p138so15034325wmb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 03 Oct 2016 07:39:25 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x231.google.com with SMTP id gb1so68213081wic.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 06:31:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0M2Q8WWUHgcCv9/mvNMIttiGV+/T1CsOV7Ttl0Hi2ig=;
-        b=HOR8dDL50IVuSkVcw8tHh1WnryUsW93uGFqFH0j5UqS1PhUCmmiGs/YAEKsEhznUAv
-         DrPl6yiOweNuxNykcxlJ1DPPesNbwtKL5ez5Sb4Y81cSaF9G/zw3RY2DxEHjx/jE8cRA
-         6TyAVNbdcSENzvAZP6LuuUYh/fnslK7gHU48aH3TvLgdJ5qe1wkOOMFK6NHLl+zVUTj8
-         cZuNSwGThkI7ORGH7PNgE2XksWiHolUZVUdlhyw/mcE+UJzF5K/tlCyMd2l/wy11t6z+
-         t5tyUPObhORTDBHCv/a6Ihc61jYDZ5OvqLC46sLCRLjmSkHc5l4H52JbeBJ2Pe3wDx7K
-         YiGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0M2Q8WWUHgcCv9/mvNMIttiGV+/T1CsOV7Ttl0Hi2ig=;
-        b=B4dDrl3mqZ5ERrK0dw6VujzVBso+StEs8+fDrHMweGSi5gEva6l0T7eShIpQhuW4UI
-         PPGxJf6z1SnH+YI/MfauxdXi4zDrxtXFod3vBb2v6zNjwvOpjvnen89PK25RiLMRhQeS
-         wQWUBqqsReLZCJn+gAxKocCrcladU6j2JHvpNX4DoA74iScCkOcAOEN1w6j3gyHZBiNL
-         ZMLkamPKrkUj0VQ6sw7P9LRZwDn2DZKbNhjBofSduTrWkrNYxjzXqcUBOB74APQKD2qN
-         tt/Lf0WjNR3mdEf8MZVc96ouUus9+4Bhy+tiHLITEfkZ24abI4L9SRGud5m0ao2KGOm9
-         rbtw==
-X-Gm-Message-State: AA6/9Rnhs8PgmjQxKBQKdFc2g94DTIX9kf8SmbCrHjvfiioRjE7f3bB9zyEeM5lOIuUt2Q==
-X-Received: by 10.194.30.167 with SMTP id t7mr16798773wjh.199.1475505565259;
-        Mon, 03 Oct 2016 07:39:25 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([109.166.128.3])
-        by smtp.gmail.com with ESMTPSA id xy4sm34643124wjc.2.2016.10.03.07.39.24
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 03 Oct 2016 07:39:24 -0700 (PDT)
-Date: Mon, 3 Oct 2016 17:39:21 +0300
-From: Muraru Mihaela <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sm750fb: use unsigned int instead unsigned
-Message-ID: <20161003143921.GA7591@domino-MS-16Y1>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=fiYeUzJ5IdM7hAYHxCvJZiO3I4Pa+r9s6IZeBDbdme4=;
+        b=ER4U0N8PtMU3mDvsSKxdgddjTHJeOSXwZC584RPlXj4BNIk1YNe5U3ga2j8So8vVVN
+         3Hy1fZkRlSdZMl8s3i5ev4pHoEJFuZzHEyyzTBofTF8iPlqJuxe/ByFdEkK9/Ey1aZro
+         /sH9Y+7/lLn830nKI3Uu4b14DeHhjNR+Q8s2srlhrfkHuoc7izc+KpUQJPMyYBIODdtf
+         nOZ3FltNAn58E92TPbQdo9hfq9wiX5EoV6IHXxJJ5hpM7bksG+J9WspRoxJmwTYQ/a6E
+         IIISWnzJ6EnLLFkkMgNQxv/wcpggw4vsRHdgEuZUwyVQkhpYxXBJ6U+WemtubCk7Ttve
+         oEGw==
+X-Received: by 10.194.111.198 with SMTP id ik6mr15871434wjb.96.1444397511520;
+        Fri, 09 Oct 2015 06:31:51 -0700 (PDT)
+Return-Path: <aybuke.147@gmail.com>
+Received: from kripton.comu.edu.tr ([193.255.97.45])
+        by smtp.gmail.com with ESMTPSA id hk5sm2191467wjb.6.2015.10.09.06.31.50
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 09 Oct 2015 06:31:50 -0700 (PDT)
+From: Aybuke Ozdemir <aybuke.147@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Aybuke Ozdemir <aybuke.147@gmail.com>
+Subject: [PATCH 2/2] Staging: skein: Remove space after cast
+Date: Fri,  9 Oct 2015 16:31:38 +0300
+Message-Id: <1444397498-5082-2-git-send-email-aybuke.147@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1444397498-5082-1-git-send-email-aybuke.147@gmail.com>
+References: <1444397498-5082-1-git-send-email-aybuke.147@gmail.com>
 
-This patch fixes a WARNING: Prefer 'unsigned int' to bare use of
-'unsigned', found by checkpatch.pl. By fixing this the parameters of the
-function became more verbose.
+Remove unnecessary space after cast. Problem found using checkpatch.pl
+CHECK: No space is necessary after a cast.
 
-Signed-off-by: Muraru Mihaela <mihaela.muraru21@gmail.com>
+Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
 ---
- drivers/staging/sm750fb/sm750.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/skein/skein_generic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 7d90e25..8770a46 100644
---- a/drivers/staging/sm750fb/sm750.c
-+++ b/drivers/staging/sm750fb/sm750.c
-@@ -575,11 +575,11 @@ static int lynxfb_ops_check_var(struct fb_var_screeninfo *var,
- 	return hw_sm750_crtc_checkMode(crtc, var);
+diff --git a/drivers/staging/skein/skein_generic.c b/drivers/staging/skein/skein_generic.c
+index c112694..e29b9ab 100644
+--- a/drivers/staging/skein/skein_generic.c
++++ b/drivers/staging/skein/skein_generic.c
+@@ -22,7 +22,7 @@
+ 
+ static int skein256_init(struct shash_desc *desc)
+ {
+-	return skein_256_init((struct skein_256_ctx *) shash_desc_ctx(desc),
++	return skein_256_init((struct skein_256_ctx *)shash_desc_ctx(desc),
+ 			SKEIN256_DIGEST_BIT_SIZE);
  }
  
--static int lynxfb_ops_setcolreg(unsigned regno,
--				unsigned red,
--				unsigned green,
--				unsigned blue,
--				unsigned transp,
-+static int lynxfb_ops_setcolreg(unsigned int regno,
-+				unsigned int red,
-+				unsigned int green,
-+				unsigned int blue,
-+				unsigned int transp,
- 				struct fb_info *info)
- {
- 	struct lynxfb_par *par;
 -- 
-2.7.4
+1.9.1
 
 
