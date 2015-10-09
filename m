@@ -1,117 +1,129 @@
-X-GM-THRID: 6261786973061513216
-X-Received: by 10.182.22.48 with SMTP id a16mr17438395obf.29.1457935891991;
-        Sun, 13 Mar 2016 23:11:31 -0700 (PDT)
+X-GM-THRID: 6201868537095520256
+X-Received: by 10.129.109.211 with SMTP id i202mr12149363ywc.16.1444418952986;
+        Fri, 09 Oct 2015 12:29:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.78.200 with SMTP id d8ls734190igx.35.gmail; Sun, 13 Mar
- 2016 23:11:31 -0700 (PDT)
-X-Received: by 10.66.124.200 with SMTP id mk8mr16878752pab.27.1457935891518;
-        Sun, 13 Mar 2016 23:11:31 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id tu5si2343489pab.2.2016.03.13.23.11.31
+Received: by 10.140.92.112 with SMTP id a103ls1126784qge.94.gmail; Fri, 09 Oct
+ 2015 12:29:10 -0700 (PDT)
+X-Received: by 10.129.146.87 with SMTP id j84mr12503872ywg.18.1444418950787;
+        Fri, 09 Oct 2015 12:29:10 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-io0-x235.google.com (mail-io0-x235.google.com. [2607:f8b0:4001:c06::235])
+        by gmr-mx.google.com with ESMTPS id j7si71254igu.1.2015.10.09.12.29.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 23:11:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 12:29:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2607:f8b0:4001:c06::235 as permitted sender) client-ip=2607:f8b0:4001:c06::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2607:f8b0:4001:c06::235 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id x3so35520287pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 23:11:31 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-io0-x235.google.com with SMTP id v82so1179760iod.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 12:29:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=h9M9731pc1MOC0/JGw+s3pvIPpPdXtoV+7i7OlExgMo=;
-        b=qHztyBKHgfSZobcnHbAsvHUxEBUXkVjgwjZ0h1ZT8WD722Ba90qvgu0yR2au+u0HJy
-         KL2gJj1t16H4qOexO3S5dPsow3NFi7Xo8sul/IVvLIi00/TuvwmWRpO6v1IZDtw2P1lZ
-         JQSll93yvbgZTccLW8IyaiwdQVNs69EbZqsiuht/mvgJvNDTd0MsFIoF3b1yRG0ezUaT
-         mFBucTul+F8rAGNAj+/Q0yye21R/M6YejicnFx39vpkkY/XxOkXYcObPzMd6JBDjJSvH
-         lpJ4T8RLinMuxDI+79XmDF6H9Q8l/0oIIgunQmPx+8FoW8cCPs40G0zmgTjD9pA19vCp
-         JUfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=h9M9731pc1MOC0/JGw+s3pvIPpPdXtoV+7i7OlExgMo=;
-        b=I3dKPXitGFvtAw1u5R7AKPGK2LxpwvmNvFR2qTx9dg7MpAW9DTPrcv25dsM4R+M+18
-         xELilDH4oJ7ZERgkrVXLw96fMVwowmV2EcHta7pfAkasdPfRIRb3hq+N+Pmrsdz770of
-         JwT44ryR5liS9G7ZS7QMWsBcwe4uZdKctIy0tO2SJbDspWQ/Ip7jxNd2+UKQAuMfDOkx
-         RmgUXjG17JtIjNxNj8F+ujIJvCBYVbtH2IMRZtqCi8eEib139jTr9MIo+aaEjdZPtI/P
-         Sb8q5BuEef69zy0JZQUW4AC7/s3jqhDyfZRPI1u4c/qSyQEfyNGAbr8x7IWB4ComErTt
-         UiZw==
-X-Gm-Message-State: AD7BkJK3hYwXuw7+tKtt7uFqZ0ZTBZFCbqaM/v3BEyemRNNbAkvevrPbNbzanlZj58yrMg==
-X-Received: by 10.98.7.135 with SMTP id 7mr16052149pfh.124.1457935891357;
-        Sun, 13 Mar 2016 23:11:31 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-71-44.dhcp.embarqhsd.net. [67.232.71.44])
-        by smtp.gmail.com with ESMTPSA id yh5sm29046300pab.13.2016.03.13.23.11.30
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 23:11:30 -0700 (PDT)
-Date: Sun, 13 Mar 2016 23:11:30 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: meter: remove fixme comment on device remove
-Message-ID: <20160314061120.GA6620@d830.WORKGROUP>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=BMmsIEkIVpJtPHVd01arPRfNYjfDgpAt6M9djc/+nuA=;
+        b=mqgMcXCDkouj/2TgHSU/L13Ex6wllKDigmQAo81R4jIVWsuogKua8zXt5rI4jzTsU5
+         w9lckznK3eiMfPglWR0YPsozweh4nqagJ6mq1kvzGI3ayzexr2s/gUi07h0azM+r01am
+         2Hca9c+vm+NTDD1pkiCroyOwPbIv/e5prKO0RB7cZKpTNjmu2t5YL/Uyb5JrIGAOZVMt
+         GiHix78EPLbYXkOd4nEWw7xS7SLARKmdVylZUZBYmlBVhYrR9Jy6bOkVcPXbQSbmVa8P
+         790FX5u7oMSrte+mcPUtyMJM/VueLc68dVF1L6tPqcys+5ceFo7FWJloFIk3uzce9j2b
+         MVUQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.107.163.204 with SMTP id m195mr19086948ioe.65.1444418950666;
+ Fri, 09 Oct 2015 12:29:10 -0700 (PDT)
+Received: by 10.64.155.6 with HTTP; Fri, 9 Oct 2015 12:29:10 -0700 (PDT)
+In-Reply-To: <1444418279-127467-2-git-send-email-cristina.moraru09@gmail.com>
+References: <1443984978-87338-1-git-send-email-cristina.moraru09@gmail.com>
+	<1444418279-127467-1-git-send-email-cristina.moraru09@gmail.com>
+	<1444418279-127467-2-git-send-email-cristina.moraru09@gmail.com>
+Date: Fri, 9 Oct 2015 22:29:10 +0300
+Message-ID: <CAGZ2q2zzC36cv4M_KAY7ym0QM9vAQqDmD7cG82YSLeR8cLOC-g@mail.gmail.com>
+Subject: Re: [PATCH 1/3] staging: octeon: Remove extra line from kernel-doc
+From: Cristina-Gabriela Moraru <cristina.moraru09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Content-Type: multipart/alternative; boundary=001a1140fb707620be0521b0fe38
 
-This comment was in place in the original drafts of these drivers
-when the remove function did a whole lot of work: flushed queues,
-unregistered interrupts, uninitialized rings, unconfigured rings,
-and a few kfree's.
+--001a1140fb707620be0521b0fe38
+Content-Type: text/plain; charset=UTF-8
 
-The remove functions have since been reduced to unregistering and
-stopping the device.  This is the inverse of what was done during
-probe and is correct. Time to remove the comment.
+Appearantly I have mistaken something in the git send-email command and my
+patchset has been sent into 4 separate emails. I am extremely sorry for the
+spam. I will try to figure this out and resend correctly.
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
- drivers/staging/iio/meter/ade7753.c | 1 -
- drivers/staging/iio/meter/ade7754.c | 1 -
- drivers/staging/iio/meter/ade7759.c | 1 -
- 3 files changed, 3 deletions(-)
+2015-10-09 22:17 GMT+03:00 Cristina Moraru <cristina.moraru09@gmail.com>:
 
-diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
-index 6928710..b0bc99a 100644
---- a/drivers/staging/iio/meter/ade7753.c
-+++ b/drivers/staging/iio/meter/ade7753.c
-@@ -528,7 +528,6 @@ static int ade7753_probe(struct spi_device *spi)
- 	return iio_device_register(indio_dev);
- }
- 
--/* fixme, confirm ordering in this function */
- static int ade7753_remove(struct spi_device *spi)
- {
- 	struct iio_dev *indio_dev = spi_get_drvdata(spi);
-diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
-index f4188e1..fed1180 100644
---- a/drivers/staging/iio/meter/ade7754.c
-+++ b/drivers/staging/iio/meter/ade7754.c
-@@ -558,7 +558,6 @@ powerdown_on_error:
- 	return ret;
- }
- 
--/* fixme, confirm ordering in this function */
- static int ade7754_remove(struct spi_device *spi)
- {
- 	struct iio_dev *indio_dev = spi_get_drvdata(spi);
-diff --git a/drivers/staging/iio/meter/ade7759.c b/drivers/staging/iio/meter/ade7759.c
-index 684e612..c14892d 100644
---- a/drivers/staging/iio/meter/ade7759.c
-+++ b/drivers/staging/iio/meter/ade7759.c
-@@ -476,7 +476,6 @@ static int ade7759_probe(struct spi_device *spi)
- 	return iio_device_register(indio_dev);
- }
- 
--/* fixme, confirm ordering in this function */
- static int ade7759_remove(struct spi_device *spi)
- {
- 	struct iio_dev *indio_dev = spi_get_drvdata(spi);
--- 
-2.1.4
+> Fix 'bad line' kernel-doc warning
+>
+> Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/octeon/ethernet.c
+> b/drivers/staging/octeon/ethernet.c
+> index 7274fda..a8da250 100644
+> --- a/drivers/staging/octeon/ethernet.c
+> +++ b/drivers/staging/octeon/ethernet.c
+> @@ -368,7 +368,7 @@ static void cvm_oct_common_set_multicast_list(struct
+> net_device *dev)
+>   * cvm_oct_common_set_mac_address - set the hardware MAC address for a
+> device
+>   * @dev:    The device in question.
+>   * @addr:   Address structure to change it too.
+> -
+> + *
+>   * Returns Zero on success
+>   */
+>  static int cvm_oct_set_mac_filter(struct net_device *dev)
+> --
+> 1.9.1
+>
+>
 
+--001a1140fb707620be0521b0fe38
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Appearantly I have mistaken something in the git send-emai=
+l command and my patchset has been sent into 4 separate emails. I am extrem=
+ely sorry for the spam. I will try to figure this out and resend correctly.=
+<br></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">2015-10=
+-09 22:17 GMT+03:00 Cristina Moraru <span dir=3D"ltr">&lt;<a href=3D"mailto=
+:cristina.moraru09@gmail.com" target=3D"_blank">cristina.moraru09@gmail.com=
+</a>&gt;</span>:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0=
+ .8ex;border-left:1px #ccc solid;padding-left:1ex"><div class=3D"HOEnZb"><d=
+iv class=3D"h5">Fix &#39;bad line&#39; kernel-doc warning<br>
+<br>
+Signed-off-by: Cristina Moraru &lt;<a href=3D"mailto:cristina.moraru09@gmai=
+l.com">cristina.moraru09@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/octeon/ethernet.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/eth=
+ernet.c<br>
+index 7274fda..a8da250 100644<br>
+--- a/drivers/staging/octeon/ethernet.c<br>
++++ b/drivers/staging/octeon/ethernet.c<br>
+@@ -368,7 +368,7 @@ static void cvm_oct_common_set_multicast_list(struct ne=
+t_device *dev)<br>
+=C2=A0 * cvm_oct_common_set_mac_address - set the hardware MAC address for =
+a device<br>
+=C2=A0 * @dev:=C2=A0 =C2=A0 The device in question.<br>
+=C2=A0 * @addr:=C2=A0 =C2=A0Address structure to change it too.<br>
+-<br>
++ *<br>
+=C2=A0 * Returns Zero on success<br>
+=C2=A0 */<br>
+=C2=A0static int cvm_oct_set_mac_filter(struct net_device *dev)<br>
+--<br>
+1.9.1<br>
+<br>
+</div></div></blockquote></div><br></div>
+
+--001a1140fb707620be0521b0fe38--
 
