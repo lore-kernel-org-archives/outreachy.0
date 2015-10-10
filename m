@@ -1,87 +1,123 @@
 X-GM-THRID: 6203845991245807616
-X-Received: by 10.129.70.6 with SMTP id t6mr15740476ywa.5.1444465244920;
-        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
+X-Received: by 10.129.51.86 with SMTP id z83mr13263941ywz.45.1444445503509;
+        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.29.36 with SMTP id g4ls679377igh.31.canary; Sat, 10 Oct
- 2015 01:20:44 -0700 (PDT)
-X-Received: by 10.66.165.3 with SMTP id yu3mr14447685pab.15.1444465244596;
-        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
+Received: by 10.107.167.67 with SMTP id q64ls1086945ioe.20.gmail; Fri, 09 Oct
+ 2015 19:51:43 -0700 (PDT)
+X-Received: by 10.66.168.12 with SMTP id zs12mr14308129pab.37.1444445503259;
+        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
 Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id wl2si529094pab.1.2015.10.10.01.20.44
+        by gmr-mx.google.com with ESMTPS id el2si501832pbb.0.2015.10.09.19.51.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pablk4 with SMTP id lk4so108022177pab.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
+Received: by mail-pa0-x22d.google.com with SMTP id hy16so102288447pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=Y7FKNwtWvqmLBlRLp/SzVP9DvLtxpXYHOcVPVxCoRyI=;
-        b=Pqgqy73BTFS+U+8dU9dHOjbOvv65cZNCscOSMqZiMlQ0lmx+7WkJW8+QielQRSLx4I
-         V99l4ntaFvIIUWNEMsfVdYek2K2mKX7Jx+hOw5K8mHK99QnNOdZ6lwb6FLP4RI43w+QT
-         FKt7HYkxKevNDg+YcNBYlx3sBF9XtFNSopEK0eZVlN+iPd3RTUIvIRvSjxDEFb5l/7OL
-         MJ15dLEsgIwjiEWHx2IUwxNs/nLae9ZZv5j9jZQ6QZBc3pCEauHRjCXlrUGKHd4zFpx2
-         fEtheCeA5Ur8Ey4paXrfhITqvP6el40zxtsK4756t+dvB+oZCjSQ8eXdVObySM1XRN+9
-         5zVQ==
-X-Received: by 10.68.228.101 with SMTP id sh5mr8958682pbc.157.1444465244360;
-        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id qn5sm6697585pac.41.2015.10.10.01.20.42
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 10 Oct 2015 01:20:43 -0700 (PDT)
-Date: Sat, 10 Oct 2015 13:50:37 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Shivani Bhardwaj <shivanib134@gmail.com>
+        bh=YlmYLsY0hYSDorV8LhkgsMDmeeByqzjnWCOMXGb+ZWg=;
+        b=ksEZzuiKI8Y9ldS6PYD63WLBW6obLtWteB+mwoDsa/EXramz4js5ufTmCTxGKNYquu
+         ry9MOcebH3IcSrJsnW5+M0diUKqTjB97G4hLyk0NQFiLZ7l495DFPY/TNuEEPynR2tve
+         0OQ11FOSBaMtp/Fdou9qbRNZwkTk+gdVkq/styBwQZFF7oZtGwVjuT/hJbK8ZgIf1UJY
+         a2qd5YHKq3WTeYlc+AhzkkhGs8c3XOdGdosi3fHn74Rh5CdX/lU/ZJ1ho8mIqo7G8IqX
+         20Yp5b8d+Q76CYYoM6FntxygOQJzOeMLsoS83PyGLIca9bIGB/2eLJt1iGW8BPNtqhUj
+         Y00g==
+X-Received: by 10.66.227.101 with SMTP id rz5mr19324706pac.123.1444445503170;
+        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id be3sm5006435pbc.88.2015.10.09.19.51.40
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 19:51:42 -0700 (PDT)
+Date: Sat, 10 Oct 2015 08:21:33 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: vt6655: mac: Fixed
- character limit warning
-Message-ID: <20151010082037.GH4795@sudip-pc>
+Subject: [PATCH 2/2] Staging: vt6655: mac: Fixed character limit warning
+Message-ID: <407daf4e3379895fe86ff67e256b46d65be5a3cb.1444445237.git.shivanib134@gmail.com>
 References: <cover.1444445237.git.shivanib134@gmail.com>
- <407daf4e3379895fe86ff67e256b46d65be5a3cb.1444445237.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <407daf4e3379895fe86ff67e256b46d65be5a3cb.1444445237.git.shivanib134@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <cover.1444445237.git.shivanib134@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Sat, Oct 10, 2015 at 08:21:33AM +0530, Shivani Bhardwaj wrote:
-> Fixed the warning generated by checkpatch: line over 80 characters
-> by breaking the lines into sensible chunks.
-> 
-> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> ---
-<snip>
-> -void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
-> +void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase,
-> +		unsigned long dwCurrDescAddr)
-This will introduce new checkpatch warning. It should be:
+Fixed the warning generated by checkpatch: line over 80 characters
+by breaking the lines into sensible chunks.
+
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/vt6655/mac.c | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
-index 688c3be..18d1ef8 100644
+index 688c3be..8a709ea 100644
 --- a/drivers/staging/vt6655/mac.c
 +++ b/drivers/staging/vt6655/mac.c
-@@ -565,7 +565,8 @@ void MACvInitialize(void __iomem *dwIoBase)
+@@ -46,9 +46,9 @@
+  *      MACvTimer0MicroSDelay - Micro Second Delay Loop by MAC
+  *
+  * Revision History:
+- *      08-22-2003 Kyle Hsu     :  Porting MAC functions from sim53
+- *      09-03-2003 Bryan YC Fan :  Add MACvClearBusSusInd()& MACvEnableBusSusEn()
+- *      09-18-2003 Jerry Chen   :  Add MACvSetKeyEntry & MACvDisableKeyEntry
++ *      08-22-2003 Kyle Hsu     : Porting MAC functions from sim53
++ *      09-03-2003 Bryan YC Fan : Add MACvClearBusSusInd()& MACvEnableBusSusEn()
++ *      09-18-2003 Jerry Chen   : Add MACvSetKeyEntry & MACvDisableKeyEntry
+  *
+  */
+ 
+@@ -313,7 +313,8 @@ bool MACbSoftwareReset(void __iomem *dwIoBase)
+ 
+ /*
+  * Description:
+- *      save some important register's value, then do reset, then restore register's value
++ *      Save some important register's value, then do reset,
++ *      then restore register's value
+  *
+  * Parameters:
+  *  In:
+@@ -326,7 +327,8 @@ bool MACbSoftwareReset(void __iomem *dwIoBase)
+  */
+ bool MACbSafeSoftwareReset(void __iomem *dwIoBase)
+ {
+-	unsigned char abyTmpRegData[MAC_MAX_CONTEXT_SIZE_PAGE0+MAC_MAX_CONTEXT_SIZE_PAGE1];
++	unsigned char abyTmpRegData[MAC_MAX_CONTEXT_SIZE_PAGE0 +
++		MAC_MAX_CONTEXT_SIZE_PAGE1];
+ 	bool bRetVal;
+ 
+ 	/* PATCH....
+@@ -565,7 +567,8 @@ void MACvInitialize(void __iomem *dwIoBase)
   * Return Value: none
   *
   */
 -void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
 +void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase,
-+			    unsigned long dwCurrDescAddr)
++		unsigned long dwCurrDescAddr)
  {
  	unsigned short ww;
  	unsigned char byData;
+@@ -600,7 +603,8 @@ void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr
+  * Return Value: none
+  *
+  */
+-void MACvSetCurrRx1DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
++void MACvSetCurrRx1DescAddr(void __iomem *dwIoBase,
++		unsigned long dwCurrDescAddr)
+ {
+ 	unsigned short ww;
+ 	unsigned char byData;
+-- 
+2.1.0
 
----
-
-regards
-sudip
 
