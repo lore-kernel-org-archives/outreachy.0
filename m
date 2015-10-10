@@ -1,172 +1,95 @@
-X-GM-THRID: 6200385233952440320
-X-Received: by 10.180.9.104 with SMTP id y8mr5023992wia.7.1443639684705;
-        Wed, 30 Sep 2015 12:01:24 -0700 (PDT)
+X-GM-THRID: 6202253257836855296
+X-Received: by 10.50.20.227 with SMTP id q3mr3783095ige.11.1444479854739;
+        Sat, 10 Oct 2015 05:24:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.2.230 with SMTP id 6ls62949lax.7.gmail; Wed, 30 Sep 2015
- 12:01:24 -0700 (PDT)
-X-Received: by 10.112.198.33 with SMTP id iz1mr802135lbc.8.1443639684052;
-        Wed, 30 Sep 2015 12:01:24 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id ch7si58053wib.2.2015.09.30.12.01.24
+Received: by 10.107.14.194 with SMTP id 185ls1144402ioo.0.gmail; Sat, 10 Oct
+ 2015 05:24:14 -0700 (PDT)
+X-Received: by 10.50.78.170 with SMTP id c10mr3829150igx.6.1444479854234;
+        Sat, 10 Oct 2015 05:24:14 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id wl2si602770pab.1.2015.10.10.05.24.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2015 12:01:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 10 Oct 2015 05:24:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id fx3so75337115wic.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 30 Sep 2015 12:01:23 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id ve7so52995631pab.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 05:24:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=18142Aobf3FfO59hy4VmOm9cI7+YKyaVW9grzN3JqdY=;
-        b=zeO6sDmmLP3jvcnbol0l+98iNI9ktKWnCc2n6WtaiO4UxKFpd7zC6t/omL8GUBsi8b
-         as2gR+JbxOF9SRatXQkn5SIRKivFB9HvUMBvGjFIP8QeWOEroajoS7ExgoERjf9ai1vn
-         yX8a/T3ZsgCB4SwBZnJ03PaZjV6PwEB+jbMzbVf8TtVtl4IVPUGja+uvSnevxDvE/w1P
-         CuLVGrVTdnV5+DoukYiK43N+pKcELtrC+NytqhEAr1VFzyZnTSjistc6DvpGs/ZzMDUH
-         Sn8RN/7ox1dsjvawMmcqJoA89MIQJ7poy6L2rwBTSWm6RSog/Zh4m0fyNjdic0x+OA40
-         Ycfw==
-X-Received: by 10.180.35.199 with SMTP id k7mr7182941wij.13.1443639683910;
-        Wed, 30 Sep 2015 12:01:23 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by smtp.gmail.com with ESMTPSA id o10sm2217761wia.4.2015.09.30.12.01.22
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 30 Sep 2015 12:01:23 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=StRS+VDfoqY/EPulSRJclZKaBbi5kDo4+IdVsFHvIuU=;
+        b=fohoEUs84FByTzOy7HJSfCY0l5lDT4bTXHTduwhijOchC5fejfpRCf1Je5k2BsEjk+
+         GeQ9cnTTc7+9WvYSgPUbRsn1L1nNJxrBy9g0v/KRWqhToWbhSO2o+WnjoQATyveNVe/T
+         oELJG90s8EUkx+j9q2/p/utPYmHSnZMeXtf15d3kF4w46vGSrwoSLVvPXzDCit5bOU6W
+         AEoogporVjTGRCZn+k4c/8G3gKn/e/pvDz76gQt6NTOCUNVO4FEEvpU5Wm3jmcJOg0wi
+         BdMqtIOrzZqPgD1M9mS/JkvKCJWxD4TyCCEu6EiNhDH6m8wAiI0KoKowX4fPPaVhEX5B
+         64dQ==
+X-Received: by 10.66.102.106 with SMTP id fn10mr22429751pab.156.1444479854058;
+        Sat, 10 Oct 2015 05:24:14 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.64.220.154])
+        by smtp.gmail.com with ESMTPSA id ci2sm7962857pbc.66.2015.10.10.05.24.12
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sat, 10 Oct 2015 05:24:13 -0700 (PDT)
+Date: Sat, 10 Oct 2015 17:54:09 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: comedi: Use mutex instead of semaphore
-Date: Wed, 30 Sep 2015 21:01:15 +0200
-Message-Id: <1443639675-18965-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v3] staging: rtl8712: usleep_range is preferred over udelay
+Message-ID: <20151010122409.GA805@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Replace binary semaphore with mutex because mutex gives better performance
-than binary semaphore.
+Fix checkpatch.pl issue: "CHECK: usleep_range is preferred over
+udelay;
+see Documentation/timers/timers-howto.txt".
+Replace `udelay()` with a call to `usleep_range()` with a reasonable
+upper limit determined by the other sleeping functions present.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/comedi/drivers/dt9812.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+Changes in v2:
+        -Modified commit message
+        -Replaced the second udelay() with usleep_range() present in the
+         same function
+Changes in v3:
+        -Removed checkpatch warning of space after ',' occurring in
+         previous version
 
-diff --git a/drivers/staging/comedi/drivers/dt9812.c b/drivers/staging/comedi/drivers/dt9812.c
-index e11c216..7d309f9 100644
---- a/drivers/staging/comedi/drivers/dt9812.c
-+++ b/drivers/staging/comedi/drivers/dt9812.c
-@@ -233,7 +233,7 @@ struct dt9812_usb_cmd {
- };
- 
- struct dt9812_private {
--	struct semaphore sem;
-+	struct mutex mut;
- 	struct {
- 		__u8 addr;
- 		size_t size;
-@@ -335,7 +335,7 @@ static int dt9812_digital_in(struct comedi_device *dev, u8 *bits)
- 	u8 value[2];
- 	int ret;
- 
--	down(&devpriv->sem);
-+	mutex_lock(&devpriv->mut);
- 	ret = dt9812_read_multiple_registers(dev, 2, reg, value);
- 	if (ret == 0) {
- 		/*
-@@ -345,7 +345,7 @@ static int dt9812_digital_in(struct comedi_device *dev, u8 *bits)
- 		 */
- 		*bits = (value[0] & 0x7f) | ((value[1] & 0x08) << 4);
- 	}
--	up(&devpriv->sem);
-+	mutex_unlock(&devpriv->mut);
- 
- 	return ret;
- }
-@@ -357,9 +357,9 @@ static int dt9812_digital_out(struct comedi_device *dev, u8 bits)
- 	u8 value[1] = { bits };
- 	int ret;
- 
--	down(&devpriv->sem);
-+	mutex_lock(&devpriv->mut);
- 	ret = dt9812_write_multiple_registers(dev, 1, reg, value);
--	up(&devpriv->sem);
-+	mutex_unlock(&devpriv->mut);
- 
- 	return ret;
- }
-@@ -444,7 +444,7 @@ static int dt9812_analog_in(struct comedi_device *dev,
- 	u8 val[3];
- 	int ret;
- 
--	down(&devpriv->sem);
-+	mutex_lock(&devpriv->mut);
- 
- 	/* 1 select the gain */
- 	dt9812_configure_gain(dev, &rmw[0], gain);
-@@ -493,7 +493,7 @@ static int dt9812_analog_in(struct comedi_device *dev,
- 	}
- 
- exit:
--	up(&devpriv->sem);
-+	mutex_unlock(&devpriv->mut);
- 
- 	return ret;
- }
-@@ -504,7 +504,7 @@ static int dt9812_analog_out(struct comedi_device *dev, int channel, u16 value)
- 	struct dt9812_rmw_byte rmw[3];
- 	int ret;
- 
--	down(&devpriv->sem);
-+	mutex_lock(&devpriv->mut);
- 
- 	switch (channel) {
- 	case 0:
-@@ -545,7 +545,7 @@ static int dt9812_analog_out(struct comedi_device *dev, int channel, u16 value)
- 	}
- 	ret = dt9812_rmw_multiple_registers(dev, 3, rmw);
- 
--	up(&devpriv->sem);
-+	mutex_unlock(&devpriv->mut);
- 
- 	return ret;
- }
-@@ -608,9 +608,9 @@ static int dt9812_ao_insn_read(struct comedi_device *dev,
- 	struct dt9812_private *devpriv = dev->private;
- 	int ret;
- 
--	down(&devpriv->sem);
-+	mutex_lock(&devpriv->mut);
- 	ret = comedi_readback_insn_read(dev, s, insn, data);
--	up(&devpriv->sem);
-+	mutex_unlock(&devpriv->mut);
- 
- 	return ret;
- }
-@@ -774,7 +774,7 @@ static int dt9812_auto_attach(struct comedi_device *dev,
- 	if (!devpriv)
- 		return -ENOMEM;
- 
--	sema_init(&devpriv->sem, 1);
-+	mutex_init(&devpriv->mut);
- 	usb_set_intfdata(intf, devpriv);
- 
- 	ret = dt9812_find_endpoints(dev);
-@@ -846,11 +846,11 @@ static void dt9812_detach(struct comedi_device *dev)
- 	if (!devpriv)
- 		return;
- 
--	down(&devpriv->sem);
-+	mutex_lock(&devpriv->mut);
- 
- 	usb_set_intfdata(intf, NULL);
- 
--	up(&devpriv->sem);
-+	mutex_unlock(&devpriv->mut);
- }
- 
- static struct comedi_driver dt9812_driver = {
+ drivers/staging/rtl8712/hal_init.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
+index 15c6160..7f1f21b 100644
+--- a/drivers/staging/rtl8712/hal_init.c
++++ b/drivers/staging/rtl8712/hal_init.c
+@@ -209,7 +209,7 @@ static u8 rtl8712_dl_fw(struct _adapter *padapter)
+ 		i = 10;
+ 		tmp16 = r8712_read16(padapter, TCR);
+ 		while (((tmp16 & _IMEM_CODE_DONE) == 0) && (i > 0)) {
+-			udelay(10);
++			usleep_range(10, 1000);
+ 			tmp16 = r8712_read16(padapter, TCR);
+ 			i--;
+ 		}
+@@ -237,7 +237,7 @@ static u8 rtl8712_dl_fw(struct _adapter *padapter)
+ 		i = 5;
+ 		tmp16 = r8712_read16(padapter, TCR);
+ 		while (((tmp16 & _EMEM_CODE_DONE) == 0) && (i > 0)) {
+-			udelay(10);
++			usleep_range(10, 1000);
+ 			tmp16 = r8712_read16(padapter, TCR);
+ 			i--;
+ 		}
 -- 
 1.9.1
 
