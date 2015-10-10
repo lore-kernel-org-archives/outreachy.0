@@ -1,68 +1,84 @@
-X-GM-THRID: 6205025075895205888
-X-Received: by 10.107.31.209 with SMTP id f200mr27214257iof.14.1444719982964;
-        Tue, 13 Oct 2015 00:06:22 -0700 (PDT)
+X-GM-THRID: 6203907014219792384
+X-Received: by 10.180.85.133 with SMTP id h5mr625271wiz.1.1444459870267;
+        Fri, 09 Oct 2015 23:51:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.146 with SMTP id 18ls110498iom.103.gmail; Tue, 13 Oct
- 2015 00:06:22 -0700 (PDT)
-X-Received: by 10.66.249.100 with SMTP id yt4mr27357074pac.42.1444719982531;
-        Tue, 13 Oct 2015 00:06:22 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id zg1si145815pbb.2.2015.10.13.00.06.22
+Received: by 10.180.93.166 with SMTP id cv6ls487673wib.39.gmail; Fri, 09 Oct
+ 2015 23:51:09 -0700 (PDT)
+X-Received: by 10.180.106.197 with SMTP id gw5mr621185wib.7.1444459869936;
+        Fri, 09 Oct 2015 23:51:09 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id hs5si81552wib.1.2015.10.09.23.51.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 00:06:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 23:51:09 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id ve7so12674688pab.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 00:06:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=y7KyOfEmQR716nNeFdcIEPzPbLcdlMqIqQ1cdl09td0=;
-        b=t96VS7YqxbVPdza9HQiEnxYSA7xKnle9iNCF27xjJ787hCpB74z8oh374DpBiE9qtM
-         T2vRHQ9I+wuEW28pc71UZYi/tJD73uxmbEvW2EGjeuLf42OFp+e+V5au5zx8IxZJ92VK
-         /Er0u4XaivQb2iyjJ9oLzSI57CG1KitYvrFw9RY0kyVoJrQdfntsfI7YpWEZZCvFAvS9
-         0WdtZRhvWRWdAFtCwz7G14d9Zhi2QCfku8TKV++fPrsYrmhU0fHtMiadhmjAFphQsSJ/
-         wAITk+hEqPj81krboGrID0682b83OJYpmLVu1jiMed94f5/PdEtot2ep6Bi1n8w/AhtG
-         vIvw==
-X-Received: by 10.68.219.4 with SMTP id pk4mr39311444pbc.138.1444719982435;
-        Tue, 13 Oct 2015 00:06:22 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id qb7sm1838301pab.47.2015.10.13.00.06.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 00:06:21 -0700 (PDT)
-Date: Tue, 13 Oct 2015 12:36:09 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/3] Fix issues discovered by coccinelle
-Message-ID: <cover.1444719312.git.shivanib134@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,662,1437429600"; 
+   d="scan'208";a="182058359"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 10 Oct 2015 08:51:09 +0200
+Date: Sat, 10 Oct 2015 08:51:08 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: vt6655: rxtx: Removed
+ unnecessary parentheses
+In-Reply-To: <9c601c11ccb65c7789bb750fd9e357672015bd11.1444459442.git.shivanib134@gmail.com>
+Message-ID: <alpine.DEB.2.02.1510100850310.2062@localhost6.localdomain6>
+References: <cover.1444459442.git.shivanib134@gmail.com> <9c601c11ccb65c7789bb750fd9e357672015bd11.1444459442.git.shivanib134@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch removes extra NULL tests, extra casts and irrelevant
-typedefs and code.
-After applying this patch, code becomes cleaner.
+On Sat, 10 Oct 2015, Shivani Bhardwaj wrote:
 
-Shivani Bhardwaj (3):
-  Staging: wilc1000: host_interface: Remove extra NULL test
-  Staging: wilc1000: host_interface: Remove unnecessary typedef and code
-  Staging: wilc1000: host_interface: Remove unnecessary cast
+> Fixed the warning generated by checkpatch: unnecessary parentheses ,by
+> removing extra pair of parentheses from if statements.
 
- drivers/staging/wilc1000/host_interface.c | 148 +++++++++++++-----------------
- 1 file changed, 64 insertions(+), 84 deletions(-)
+Same here.  Also, it would be more precise to say something like "if 
+tests" or "if test expressions", since it is not the whole statement.
 
--- 
-2.1.0
+julia
 
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+>  drivers/staging/vt6655/rxtx.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> index a909128..3eb8f29 100644
+> --- a/drivers/staging/vt6655/rxtx.c
+> +++ b/drivers/staging/vt6655/rxtx.c
+> @@ -566,7 +566,7 @@ s_uFillDataHead(
+>  			return buf->duration_a;
+>  		} /* if (byFBOption == AUTO_FB_NONE) */
+>  	} else if (byPktType == PK_TYPE_11A) {
+> -		if ((byFBOption != AUTO_FB_NONE)) {
+> +		if (byFBOption != AUTO_FB_NONE) {
+>  			/* Auto Fallback */
+>  			struct vnt_tx_datahead_a_fb *buf = pTxDataHead;
+>  			/* Get SignalField, ServiceField & Length */
+> @@ -1008,7 +1008,7 @@ s_vGenerateTxParameter(
+>  			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11A, cbFrameSize, wCurrentRate, bNeedACK);
+>  		}
+>  	} else if (byPktType == PK_TYPE_11B) {
+> -		if ((pvRTS != NULL)) {/* RTS_need, non PCF mode */
+> +		if (pvRTS != NULL) {/* RTS_need, non PCF mode */
+>  			struct vnt_rrv_time_ab *buf = pvRrvTime;
+>  
+>  			buf->rts_rrv_time = s_uGetRTSCTSRsvTime(pDevice, 0, byPktType, cbFrameSize, wCurrentRate);
+> -- 
+> 2.1.0
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/9c601c11ccb65c7789bb750fd9e357672015bd11.1444459442.git.shivanib134%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
