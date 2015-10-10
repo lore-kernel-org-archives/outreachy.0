@@ -1,77 +1,87 @@
-X-GM-THRID: 6201804435735183360
-X-Received: by 10.129.155.5 with SMTP id s5mr21387049ywg.38.1443970118130;
-        Sun, 04 Oct 2015 07:48:38 -0700 (PDT)
+X-GM-THRID: 6203845991245807616
+X-Received: by 10.129.70.6 with SMTP id t6mr15740476ywa.5.1444465244920;
+        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.220.200 with SMTP id py8ls1109382obc.58.gmail; Sun, 04 Oct
- 2015 07:48:36 -0700 (PDT)
-X-Received: by 10.182.107.162 with SMTP id hd2mr22554462obb.29.1443970116753;
-        Sun, 04 Oct 2015 07:48:36 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id el2si3067732pbb.0.2015.10.04.07.48.36
+Received: by 10.50.29.36 with SMTP id g4ls679377igh.31.canary; Sat, 10 Oct
+ 2015 01:20:44 -0700 (PDT)
+X-Received: by 10.66.165.3 with SMTP id yu3mr14447685pab.15.1444465244596;
+        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id wl2si529094pab.1.2015.10.10.01.20.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 07:48:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id lk4so150034010pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 07:48:36 -0700 (PDT)
+Received: by pablk4 with SMTP id lk4so108022177pab.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=53/ZjWcfoP85uxfbNqy78jXxfpKAb0Kj6Lwuhjk7ag4=;
-        b=BrphSKvWcYqQHx82BIfdZd96HC3VWrrftghqN/fZkAUE84vjhBbZ9mgn8RJByIuzQt
-         MVMvpM+0bmB47Gzq81k9RT3gOF5i2/Rn5EWDrj1eYu350u9VP0VKHhpH0/ii+U3r/SD1
-         vDwMlBaroHvRlCb7UcO4e40JOF+SOX6aw1wvBHvBbhFna52oCfHFAXfcD6fYbcCUXXSi
-         dBTcMXun6AATZjX0leh2I7ka/YgBM5XN8pn6fb5cqDviEFB38hgqtFVyqkCFxvtXc0WH
-         aelnHBhjeWBOg8UcDp5XCLESn2acM0AVkKBjDLcw0hyuG9D0x5QlH5jKULdXhEhWUfZ3
-         wOlw==
-X-Received: by 10.68.137.3 with SMTP id qe3mr34152943pbb.26.1443970116594;
-        Sun, 04 Oct 2015 07:48:36 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.217.58])
-        by smtp.gmail.com with ESMTPSA id ux7sm22577577pac.10.2015.10.04.07.48.35
-        for <outreachy-kernel@googlegroups.com>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=Y7FKNwtWvqmLBlRLp/SzVP9DvLtxpXYHOcVPVxCoRyI=;
+        b=Pqgqy73BTFS+U+8dU9dHOjbOvv65cZNCscOSMqZiMlQ0lmx+7WkJW8+QielQRSLx4I
+         V99l4ntaFvIIUWNEMsfVdYek2K2mKX7Jx+hOw5K8mHK99QnNOdZ6lwb6FLP4RI43w+QT
+         FKt7HYkxKevNDg+YcNBYlx3sBF9XtFNSopEK0eZVlN+iPd3RTUIvIRvSjxDEFb5l/7OL
+         MJ15dLEsgIwjiEWHx2IUwxNs/nLae9ZZv5j9jZQ6QZBc3pCEauHRjCXlrUGKHd4zFpx2
+         fEtheCeA5Ur8Ey4paXrfhITqvP6el40zxtsK4756t+dvB+oZCjSQ8eXdVObySM1XRN+9
+         5zVQ==
+X-Received: by 10.68.228.101 with SMTP id sh5mr8958682pbc.157.1444465244360;
+        Sat, 10 Oct 2015 01:20:44 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id qn5sm6697585pac.41.2015.10.10.01.20.42
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 04 Oct 2015 07:48:36 -0700 (PDT)
-Date: Sun, 4 Oct 2015 20:18:32 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] staging: sm750fb: Add space around ':'
-Message-ID: <20151004144832.GA9774@amitoj-Inspiron-3542>
+        Sat, 10 Oct 2015 01:20:43 -0700 (PDT)
+Date: Sat, 10 Oct 2015 13:50:37 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: vt6655: mac: Fixed
+ character limit warning
+Message-ID: <20151010082037.GH4795@sudip-pc>
+References: <cover.1444445237.git.shivanib134@gmail.com>
+ <407daf4e3379895fe86ff67e256b46d65be5a3cb.1444445237.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <407daf4e3379895fe86ff67e256b46d65be5a3cb.1444445237.git.shivanib134@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Add space around operator ':'. Problem found using
-checkpatch.pl
-CHECK: spaces preferred around that ':' (ctx:VxV)
+On Sat, Oct 10, 2015 at 08:21:33AM +0530, Shivani Bhardwaj wrote:
+> Fixed the warning generated by checkpatch: line over 80 characters
+> by breaking the lines into sensible chunks.
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+<snip>
+> -void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
+> +void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase,
+> +		unsigned long dwCurrDescAddr)
+This will introduce new checkpatch warning. It should be:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
+index 688c3be..18d1ef8 100644
+--- a/drivers/staging/vt6655/mac.c
++++ b/drivers/staging/vt6655/mac.c
+@@ -565,7 +565,8 @@ void MACvInitialize(void __iomem *dwIoBase)
+  * Return Value: none
+  *
+  */
+-void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
++void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase,
++			    unsigned long dwCurrDescAddr)
+ {
+ 	unsigned short ww;
+ 	unsigned char byData;
+
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 2aacb01..03e259d 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -410,7 +410,7 @@ unsigned int calcPllValue(unsigned int request_orig, pll_value_t *pll)
- 			M = quo * X;
- 			M += fl_quo * X / 10000;
- 			/* round step */
--			M += (fl_quo * X % 10000) > 5000 ? 1:0;
-+			M += (fl_quo * X % 10000) > 5000 ? 1 : 0;
- 			if (M < 256 && M > 0) {
- 				unsigned int diff;
- 
--- 
-1.9.1
-
+regards
+sudip
 
