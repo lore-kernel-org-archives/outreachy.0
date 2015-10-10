@@ -1,80 +1,67 @@
 X-GM-THRID: 6203845991245807616
-X-Received: by 10.107.167.13 with SMTP id q13mr1188171ioe.12.1444445477414;
-        Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
+X-Received: by 10.66.90.132 with SMTP id bw4mr13859471pab.7.1444445455026;
+        Fri, 09 Oct 2015 19:50:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.224.137 with SMTP id rc9ls823006obc.92.gmail; Fri, 09 Oct
- 2015 19:51:17 -0700 (PDT)
-X-Received: by 10.182.227.136 with SMTP id sa8mr4324435obc.0.1444445477132;
-        Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
+Received: by 10.107.132.164 with SMTP id o36ls1027614ioi.64.gmail; Fri, 09 Oct
+ 2015 19:50:54 -0700 (PDT)
+X-Received: by 10.107.32.11 with SMTP id g11mr692051iog.34.1444445454540;
+        Fri, 09 Oct 2015 19:50:54 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id uv4si530171pac.0.2015.10.09.19.51.17
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id wl2si419243pab.1.2015.10.09.19.50.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Fri, 09 Oct 2015 19:50:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pablk4 with SMTP id lk4so102554793pab.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
+Received: by mail-pa0-x22e.google.com with SMTP id ve7so43996193pab.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 19:50:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=k53sud1Qux4jk4zDUw8/ifmjiadRXxJwkubLcmgpYak=;
-        b=CS/OKGHcNos2L8SXSRmbJLkKPlxvuSDn8P+8y7m7xQN2A1dgoURaFeNxuguCee+iaB
-         fH9G+k8QfYDy0JoGyK46U0k5HTfTpj0lUif70qx7AMpKB6NAmQZCL96WYSpC9TewSIhJ
-         GTFgNvw730ByYxXhs6NaNtZzUNIDb0hdnnCB2jo2fOnXVW/Qcp9MJBvVaz6whQd3bcCQ
-         GyxlqCnpXekp1uBsSn9qabf8/VOutlvz5V4lcEqe0KxJReutoCQYhpmRoHfuP8A6ut1x
-         IcQCqrbXWv1g2SyINKwfw9tPkee8H6ieE/k1aWfXV7S9w2ZzzM8EXnubyJ+U3LNcdds8
-         oTYg==
-X-Received: by 10.69.1.5 with SMTP id bc5mr19232681pbd.151.1444445476985;
-        Fri, 09 Oct 2015 19:51:16 -0700 (PDT)
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=gEBdLb6MMHGvXImkEcYG301kyK5MVIqpXI6ipEKoPP0=;
+        b=mcQkWwikfUJpXqpZ+AtB+Ry3ma7JdmAUdsvFXChMMxwjNTvii1rFL33EDyK+oorXvh
+         lYFmTSSXdzjJvRRFq8WSOB0bmKBIoGXPGLt0NF0VuOsWFLNKUd/KC7BfOcnah/o8+g+t
+         OZbcMGwIlu5O4MskdicjLfsuGbNoU2036Zg24N1PUoA1PGIx5mPCj7PCl4XJITsVCNmC
+         Wjb8ekopTR3mvn3GAb6drr6LOfImS3VyXTKLD50Di8FXT4MmL4BomugC3mrs3oBAnYfG
+         JqWlCUCu1FmDzvsggMaFOYH0plmV1p0VWBsUjpjlq5WgnblNceea/jB3WW4+xbcu7fxe
+         coqQ==
+X-Received: by 10.66.182.135 with SMTP id ee7mr19475137pac.95.1444445454410;
+        Fri, 09 Oct 2015 19:50:54 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
 Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id db8sm5036783pad.43.2015.10.09.19.51.14
+        by smtp.gmail.com with ESMTPSA id bo5sm5015768pbb.76.2015.10.09.19.50.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 19:51:16 -0700 (PDT)
-Date: Sat, 10 Oct 2015 08:21:07 +0530
+        Fri, 09 Oct 2015 19:50:53 -0700 (PDT)
+Date: Sat, 10 Oct 2015 08:20:44 +0530
 From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] Staging: vt6655: mac: Removed unnecessary braces
-Message-ID: <678e908484d88741b349907914444078433e2e70.1444445237.git.shivanib134@gmail.com>
-References: <cover.1444445237.git.shivanib134@gmail.com>
+Subject: [PATCH 0/2] Fixed checkpatch warning messages
+Message-ID: <cover.1444445237.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1444445237.git.shivanib134@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixed the warning generated by checkpatch braces {} are not necessary
-for single statement blocks, by removing them.
+This patch fixes the warnings generated by checkpatch about unnecessary
+code and character limits.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/vt6655/mac.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+After applying this patch, the file becomes completely warning free.
 
-diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
-index 3dfd333..688c3be 100644
---- a/drivers/staging/vt6655/mac.c
-+++ b/drivers/staging/vt6655/mac.c
-@@ -689,9 +689,8 @@ void MACvSetCurrAC0DescAddrEx(void __iomem *dwIoBase,
- 		if (!(byData & DMACTL_RUN))
- 			break;
- 	}
--	if (ww == W_MAX_TIMEOUT) {
-+	if (ww == W_MAX_TIMEOUT)
- 		pr_debug(" DBG_PORT80(0x26)\n");
--	}
- 	VNSvOutPortD(dwIoBase + MAC_REG_AC0DMAPTR, dwCurrDescAddr);
- 	if (byOrgDMACtl & DMACTL_RUN)
- 		VNSvOutPortB(dwIoBase + MAC_REG_AC0DMACTL, DMACTL_RUN);
+Shivani Bhardwaj (2):
+  Staging: vt6655: mac: Removed unnecessary braces
+  Staging: vt6655: mac: Fixed character limit warning
+
+ drivers/staging/vt6655/mac.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
 -- 
 2.1.0
 
