@@ -1,92 +1,81 @@
-X-GM-THRID: 6207856013446479872
-X-Received: by 10.194.248.131 with SMTP id ym3mr1203053wjc.7.1445379111302;
-        Tue, 20 Oct 2015 15:11:51 -0700 (PDT)
+X-GM-THRID: 6203546917110022144
+X-Received: by 10.129.73.143 with SMTP id w137mr14545459ywa.19.1444464442091;
+        Sat, 10 Oct 2015 01:07:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.86.70 with SMTP id k67ls137162lfb.43.gmail; Tue, 20 Oct
- 2015 15:11:50 -0700 (PDT)
-X-Received: by 10.112.190.74 with SMTP id go10mr1219690lbc.9.1445379110486;
-        Tue, 20 Oct 2015 15:11:50 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id d7si206161wiy.2.2015.10.20.15.11.50
+Received: by 10.140.81.179 with SMTP id f48ls2139657qgd.22.gmail; Sat, 10 Oct
+ 2015 01:07:21 -0700 (PDT)
+X-Received: by 10.140.237.202 with SMTP id i193mr14600773qhc.10.1444464441669;
+        Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id el2si622417pbb.0.2015.10.10.01.07.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Oct 2015 15:11:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id p11so68012327wij.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2015 15:11:50 -0700 (PDT)
+Received: by mail-pa0-x22c.google.com with SMTP id hy16so107492359pad.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=6m5j+Lvkb5OCs2Hlr7GZlKV2D4gSHkHUvlYvmkqyYOc=;
-        b=N/QuHN7R+5bcejBCIKkTU5pKdw4gcdhiJsnEQQFLwvMlpQSyXJfAbRVvajKDcYSNS6
-         NrbyfxfzDkmjeMEEK2zCq6wMK7pvxejZMti9vb0DfIoeE+LsPyRBWr5RJJVDK7snMThr
-         4bk+83oh7cj5Gna/VdTGcDg+O3oF1ahu4K9+XKdVN9MQAXgzX05pFT88h7wIuFR3dAeN
-         4+kxTHPGJmWgpUExN7QqnomyFcBD5l4AroxUJ6sMr4nsLi7fzadu8tA9MKXtwFkskmfE
-         tfVeV0iktWODWs+cDPdRJv2ygBLbCPbNKllYTCYh0oQivIRWBlyMdef9l1k/vNFHE/8t
-         HdRA==
-X-Received: by 10.194.134.98 with SMTP id pj2mr7549816wjb.30.1445379110361;
-        Tue, 20 Oct 2015 15:11:50 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([213.233.103.222])
-        by smtp.gmail.com with ESMTPSA id lg1sm21005249wic.17.2015.10.20.15.11.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 20 Oct 2015 15:11:49 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH] staging: iio: Add error code handling
-Date: Wed, 21 Oct 2015 01:10:22 +0300
-Message-Id: <1445379022-14114-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=x7d+0kWiWROGWQr1hNG5nepxszWDYOKIvbbrgZMBMhY=;
+        b=GXYGrv4avPglcKeAc9WPYUFR/KEPoZ+8u4YpZ5EYskkHLUmLTKjtAGKfZb9Y2CXrlj
+         8tIhmak5IeoSqF1e2J4UYeFw5659ion/FikVWHL8ve3E6dBOhTHgGzAxXv0ylwEpI0om
+         cIf96bt9Z/HgPymhyXqZdeqlVuvqgsqoyMUQjUde4AyNFnKIWypCiujw6T+UsW//ooaZ
+         WKi3wlT+e3K5f/dJ0BmH8BIvoYLx9iiFlKMk9TSGf/tV5AggeRJbotK0Pd+GsL0KDm6b
+         c0vSI6qiMa2VuiKD2acncD2rpyUToQzOvSwm0PvwQOcLU33ZAxCiuw4OJiiEiuAY2HUC
+         x7Fg==
+X-Received: by 10.66.161.234 with SMTP id xv10mr3643308pab.131.1444464441494;
+        Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id bo5sm6581002pbb.76.2015.10.10.01.07.19
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sat, 10 Oct 2015 01:07:20 -0700 (PDT)
+Date: Sat, 10 Oct 2015 13:37:15 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Shivani Bhardwaj <shivanib134@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: sm750fb: ddk750_help:
+ Included KERN_facility level using dev_info
+Message-ID: <20151010080715.GF4795@sudip-pc>
+References: <20151009142118.GA57009@ubuntu>
+ <20151010071443.GC4795@sudip-pc>
+ <alpine.DEB.2.02.1510100923080.2062@localhost6.localdomain6>
+ <20151010073822.GE4795@sudip-pc>
+ <alpine.DEB.2.02.1510100940030.2062@localhost6.localdomain6>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.02.1510100940030.2062@localhost6.localdomain6>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The function adis16060_spi_read can return negative values
-which must be caught and handled.
+On Sat, Oct 10, 2015 at 09:40:53AM +0200, Julia Lawall wrote:
+> 
+> 
+> On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
+> 
+> > On Sat, Oct 10, 2015 at 09:24:52AM +0200, Julia Lawall wrote:
+> > > On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
+> > > 
+> > > > On Fri, Oct 09, 2015 at 07:51:18PM +0530, Shivani Bhardwaj wrote:
+<snip>
+> > 
+> > pr_info will be better. I can use dev_info here, but the changes that
+> > has to be made for that, I think that will become too complicated for
+> > her, atleast at this stage.
+> 
+> Maybe the callers have a device structure available?
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
----
- drivers/staging/iio/gyro/adis16060_core.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+Yes, they have. :)
 
-diff --git a/drivers/staging/iio/gyro/adis16060_core.c b/drivers/staging/iio/gyro/adis16060_core.c
-index 80783e7..fb02bed 100644
---- a/drivers/staging/iio/gyro/adis16060_core.c
-+++ b/drivers/staging/iio/gyro/adis16060_core.c
-@@ -89,11 +89,13 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 		/* Take the iio_dev status lock */
- 		mutex_lock(&indio_dev->mlock);
- 		ret = adis16060_spi_write(indio_dev, chan->address);
--		if (ret < 0) {
--			mutex_unlock(&indio_dev->mlock);
--			return ret;
--		}
-+		if (ret < 0)
-+			goto error_ret;
-+
- 		ret = adis16060_spi_read(indio_dev, &tval);
-+		if (ret < 0)
-+			goto error_ret;
-+
- 		mutex_unlock(&indio_dev->mlock);
- 		*val = tval;
- 		return IIO_VAL_INT;
-@@ -108,6 +110,10 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 	}
- 
- 	return -EINVAL;
-+
-+error_ret:
-+	mutex_unlock(&indio_dev->mlock);
-+	return ret;
- }
- 
- static const struct iio_info adis16060_info = {
--- 
-1.9.1
-
+regards
+sudip
 
