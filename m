@@ -1,80 +1,68 @@
 X-GM-THRID: 6203907014219792384
-X-Received: by 10.182.106.11 with SMTP id gq11mr14344595obb.25.1444459691522;
-        Fri, 09 Oct 2015 23:48:11 -0700 (PDT)
+X-Received: by 10.182.106.228 with SMTP id gx4mr14315716obb.34.1444459663596;
+        Fri, 09 Oct 2015 23:47:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.24.103 with SMTP id t7ls964436obf.41.gmail; Fri, 09 Oct
- 2015 23:48:11 -0700 (PDT)
-X-Received: by 10.182.28.73 with SMTP id z9mr14415746obg.45.1444459691241;
-        Fri, 09 Oct 2015 23:48:11 -0700 (PDT)
+Received: by 10.182.199.73 with SMTP id ji9ls858900obc.45.gmail; Fri, 09 Oct
+ 2015 23:47:42 -0700 (PDT)
+X-Received: by 10.182.128.101 with SMTP id nn5mr14420088obb.31.1444459662211;
+        Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id el2si589498pbb.0.2015.10.09.23.48.11
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id pe1si560709pac.2.2015.10.09.23.47.42
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 23:48:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id ex6so106725270pac.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 23:48:11 -0700 (PDT)
+Received: by mail-pa0-x22d.google.com with SMTP id hy16so106225832pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=XRiJzgaelNQOoOKz662jfDAqc8CMEWD1JLG1NSK/Q+Y=;
-        b=j4XATeRLIsxu9IY6GJOe6q3ktOrm5kCZQ5RfNNwemQkwNAFas8LQ1/yjkw8BuIMM/i
-         /pODZxkFVlS/cbU+vLP008nSGgxLmYvIe2k90GZq8KRyWKnqcFU7yk9XFO9E+EWwpqBu
-         Mw/kuOwXD537Vhv5l9kN81jDR93lK/sUWO4VPiOggPBNs3JPuNGDsaHlsRMlRgrPXLn5
-         ymY8VCWMfxe/Btl7A5wh1ub5+qUHSzT7KUKhL5B8wvkSxzWhsTgyvJbkVBrdHtMGPCP1
-         DStbPcR/0rlg96jmLc5WcRa1vzG91DHy4Vy1m5cjnSplFA7MM7EBHGnQY5ntRhvAToTm
-         lAFQ==
-X-Received: by 10.66.190.6 with SMTP id gm6mr20346134pac.27.1444459691112;
-        Fri, 09 Oct 2015 23:48:11 -0700 (PDT)
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=uGgNspwQGPIoxxUSzDxJgshcSXK4PngAn3bTTLAogaw=;
+        b=mYhNt9F4yUdHtmat4bniiIFcv6coU33wgBUoBZ5l+y/dmMhOFtkNMZcHRuLcay7tqg
+         NNClmos4YXBC6et6+GJlZkoDnIEanPYmaDKXIuwenvPh/EiS8ILOj8sukEd/6TuAXD3E
+         LHlkfvT1Nk69ARSm3WUNPYKe6wWG0MZX6xX4jkgnkHO1R8B3JdRXnt7ZS4MjFb1sHVfl
+         aq2U0dKXTHtDb1ZYXqfUvDT0uwjBzhz9voCImjtvzIooI4lJeUBBlygSZhdPcen2g9Fp
+         7+NHMbWV68H1uG/pU5RtPe/Y+4XrTXm0X68X6JYS/0CjY/cC1KekRydkbnsafSqa0Pkz
+         zMQg==
+X-Received: by 10.66.191.131 with SMTP id gy3mr20135733pac.113.1444459662084;
+        Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
 Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id aw5sm6208774pbc.13.2015.10.09.23.48.08
+        by smtp.gmail.com with ESMTPSA id xa4sm6177756pac.28.2015.10.09.23.47.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 23:48:10 -0700 (PDT)
-Date: Sat, 10 Oct 2015 12:18:01 +0530
+        Fri, 09 Oct 2015 23:47:41 -0700 (PDT)
+Date: Sat, 10 Oct 2015 12:17:27 +0530
 From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] Staging: vt6655: rxtx: Removed unnecessary space
- character
-Message-ID: <3ae4b94df52e3ada9fd74b65178961ac4d185a4c.1444459442.git.shivanib134@gmail.com>
-References: <cover.1444459442.git.shivanib134@gmail.com>
+Subject: [PATCH 0/2] Fixed coding style issues
+Message-ID: <cover.1444459442.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1444459442.git.shivanib134@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixed the warning generated by checkpatch :  space prohibited before
-that ',' (ctx:WxW) , by removing space character after the variable
-RATE_16M.
+Fixed warnings and errors generated by checkpatch about 
+missing/extra characters.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/vt6655/rxtx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+After applying this patch, 1 error and 2 warnings don't show up
+in the file.
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 5875d65..a909128 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -78,7 +78,7 @@ static const unsigned short wFB_Opt0[2][5] = {
- };
- static const unsigned short wFB_Opt1[2][5] = {
- 	{RATE_12M, RATE_18M, RATE_24M, RATE_24M, RATE_36M}, /* fallback_rate0 */
--	{RATE_6M , RATE_6M,  RATE_12M, RATE_12M, RATE_18M}, /* fallback_rate1 */
-+	{RATE_6M, RATE_6M,  RATE_12M, RATE_12M, RATE_18M}, /* fallback_rate1 */
- };
- 
- #define RTSDUR_BB       0
+Shivani Bhardwaj (2):
+  Staging: vt6655: rxtx: Removed unnecessary space character
+  Staging: vt6655: rxtx: Removed unnecessary parentheses
+
+ drivers/staging/vt6655/rxtx.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 -- 
 2.1.0
 
