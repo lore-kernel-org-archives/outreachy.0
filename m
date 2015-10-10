@@ -1,114 +1,94 @@
 X-GM-THRID: 6203546917110022144
-X-Received: by 10.68.131.104 with SMTP id ol8mr14492378pbb.4.1444462708412;
-        Sat, 10 Oct 2015 00:38:28 -0700 (PDT)
+X-Received: by 10.180.91.233 with SMTP id ch9mr649292wib.4.1444461894104;
+        Sat, 10 Oct 2015 00:24:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.107.7 with SMTP id g7ls1976957qgf.98.gmail; Sat, 10 Oct
- 2015 00:38:27 -0700 (PDT)
-X-Received: by 10.140.195.2 with SMTP id q2mr14490861qha.5.1444462707969;
-        Sat, 10 Oct 2015 00:38:27 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id wl2si512300pab.1.2015.10.10.00.38.27
+Received: by 10.25.164.77 with SMTP id n74ls350598lfe.94.gmail; Sat, 10 Oct
+ 2015 00:24:53 -0700 (PDT)
+X-Received: by 10.112.130.41 with SMTP id ob9mr3365210lbb.17.1444461893486;
+        Sat, 10 Oct 2015 00:24:53 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id bj4si96706wib.1.2015.10.10.00.24.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Oct 2015 00:38:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Sat, 10 Oct 2015 00:24:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id lk4so107265292pab.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 00:38:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=t03A/pF9S3btFv1VBqoNTr4dtfZDQeoalutEqbJ+ChQ=;
-        b=gYNsvdaBOBYKMRAsZZN/vgy/d80sGN4x5wn4BhZxb1ly7xbtT1gdKfOE7mg4P+X2gA
-         q4qdYhM3hAN5uA6MhogJaBxs+HtlYKpyLnyDwpzYyzFbAH1O2f8bJ2JpGAzevqhXFC3+
-         p6HiktX6+wbOTCzKcd1Np9jc+6euoRxZM96YSLteHDKUIXXmg2s28QaPOuWcdw97pbU5
-         UzrjS9QBd4s2KuborWTWRjeOLzqKIlWAMazVZcTZpR3G67VIIKG3wyU8GRebNqZ3lFtF
-         s7qL1MjIaFhsib29cdVjOVtdEr+g2WN7IewyFhNVQbuxGsshR5WmtZG6aIaIaWQAbG/E
-         LyNw==
-X-Received: by 10.68.184.195 with SMTP id ew3mr20778748pbc.28.1444462707802;
-        Sat, 10 Oct 2015 00:38:27 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id xm9sm6473298pbc.32.2015.10.10.00.38.26
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 10 Oct 2015 00:38:27 -0700 (PDT)
-Date: Sat, 10 Oct 2015 13:08:22 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Shivani Bhardwaj <shivanib134@gmail.com>,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,662,1437429600"; 
+   d="scan'208";a="182060985"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 10 Oct 2015 09:24:52 +0200
+Date: Sat, 10 Oct 2015 09:24:52 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+cc: Shivani Bhardwaj <shivanib134@gmail.com>, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] Staging: sm750fb: ddk750_help:
  Included KERN_facility level using dev_info
-Message-ID: <20151010073822.GE4795@sudip-pc>
-References: <20151009142118.GA57009@ubuntu>
- <20151010071443.GC4795@sudip-pc>
- <alpine.DEB.2.02.1510100923080.2062@localhost6.localdomain6>
+In-Reply-To: <20151010071443.GC4795@sudip-pc>
+Message-ID: <alpine.DEB.2.02.1510100923080.2062@localhost6.localdomain6>
+References: <20151009142118.GA57009@ubuntu> <20151010071443.GC4795@sudip-pc>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1510100923080.2062@localhost6.localdomain6>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Sat, Oct 10, 2015 at 09:24:52AM +0200, Julia Lawall wrote:
-> On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
-> 
-> > On Fri, Oct 09, 2015 at 07:51:18PM +0530, Shivani Bhardwaj wrote:
-> > > Replaced the function printk() with dev_info() to fix the warning
-> > > generated by checkpatch : printk() should include KERN_ facility level.
-> > > 
-> > > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> > > ---
-> > > Changes in v2:
-> > > 	-Replaced the function pr_info() with dev_info()
-> > > 
-> > >  drivers/staging/sm750fb/ddk750_help.c | 4 +++-
-> > >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
-> > > index 9637dd3..b877704 100644
-> > > --- a/drivers/staging/sm750fb/ddk750_help.c
-> > > +++ b/drivers/staging/sm750fb/ddk750_help.c
-> > > @@ -1,5 +1,7 @@
-> > >  #include "ddk750_help.h"
-> > > +#include <linux/pci.h>
-> > >  
-> > > +static struct pci_dev *pdev;
-> > >  void __iomem *mmio750;
-> > >  char revId750;
-> > >  unsigned short devId750;
-> > > @@ -11,7 +13,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
-> > >  	devId750 = devId;
-> > >  	revId750 = revId;
-> > >  	if (revId == 0xfe)
-> > > -		printk("found sm750le\n");
-> > > +		dev_info(&pdev->dev, "found sm750le\n");
+On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
+
+> On Fri, Oct 09, 2015 at 07:51:18PM +0530, Shivani Bhardwaj wrote:
+> > Replaced the function printk() with dev_info() to fix the warning
+> > generated by checkpatch : printk() should include KERN_ facility level.
 > > 
-> > OOPS .. no..
-> > pdev is initialized to NULL, so when you do pdev->dev, you are doing a
-> > dereference of NULL pointer.
+> > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> > ---
+> > Changes in v2:
+> > 	-Replaced the function pr_info() with dev_info()
+> > 
+> >  drivers/staging/sm750fb/ddk750_help.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
+> > index 9637dd3..b877704 100644
+> > --- a/drivers/staging/sm750fb/ddk750_help.c
+> > +++ b/drivers/staging/sm750fb/ddk750_help.c
+> > @@ -1,5 +1,7 @@
+> >  #include "ddk750_help.h"
+> > +#include <linux/pci.h>
+> >  
+> > +static struct pci_dev *pdev;
+> >  void __iomem *mmio750;
+> >  char revId750;
+> >  unsigned short devId750;
+> > @@ -11,7 +13,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
+> >  	devId750 = devId;
+> >  	revId750 = revId;
+> >  	if (revId == 0xfe)
+> > -		printk("found sm750le\n");
+> > +		dev_info(&pdev->dev, "found sm750le\n");
 > 
-> To be precise, Shivani's code isn't doing a dereference, it's doing an 
-> addition.  But then dev_info will dereference the result of that addition 
-> (which is not likely to be NULL, but rather a small integer), and then 
-> there will be a problem.
+> OOPS .. no..
+> pdev is initialized to NULL, so when you do pdev->dev, you are doing a
+> dereference of NULL pointer.
 
-Yes, dereference was wrong word. It is taking the address of that
-member. But my main point was that pdev is not initialized. So using
-&pdev->dev for dev_info is wrong.
+To be precise, Shivani's code isn't doing a dereference, it's doing an 
+addition.  But then dev_info will dereference the result of that addition 
+(which is not likely to be NULL, but rather a small integer), and then 
+there will be a problem.
+
+So one would have to use pr_info here.
+
+julia
 
 > 
-> So one would have to use pr_info here.
-
-pr_info will be better. I can use dev_info here, but the changes that
-has to be made for that, I think that will become too complicated for
-her, atleast at this stage.
-
-regards
-sudip
+> regards
+> sudip
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151010071443.GC4795%40sudip-pc.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
