@@ -1,50 +1,50 @@
 X-GM-THRID: 6203845991245807616
-X-Received: by 10.129.51.86 with SMTP id z83mr13263941ywz.45.1444445503509;
-        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+X-Received: by 10.107.167.13 with SMTP id q13mr1188171ioe.12.1444445477414;
+        Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.167.67 with SMTP id q64ls1086945ioe.20.gmail; Fri, 09 Oct
- 2015 19:51:43 -0700 (PDT)
-X-Received: by 10.66.168.12 with SMTP id zs12mr14308129pab.37.1444445503259;
-        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+Received: by 10.182.224.137 with SMTP id rc9ls823006obc.92.gmail; Fri, 09 Oct
+ 2015 19:51:17 -0700 (PDT)
+X-Received: by 10.182.227.136 with SMTP id sa8mr4324435obc.0.1444445477132;
+        Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id el2si501832pbb.0.2015.10.09.19.51.43
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id uv4si530171pac.0.2015.10.09.19.51.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id hy16so102288447pad.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+Received: by pablk4 with SMTP id lk4so102554793pab.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 19:51:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=YlmYLsY0hYSDorV8LhkgsMDmeeByqzjnWCOMXGb+ZWg=;
-        b=ksEZzuiKI8Y9ldS6PYD63WLBW6obLtWteB+mwoDsa/EXramz4js5ufTmCTxGKNYquu
-         ry9MOcebH3IcSrJsnW5+M0diUKqTjB97G4hLyk0NQFiLZ7l495DFPY/TNuEEPynR2tve
-         0OQ11FOSBaMtp/Fdou9qbRNZwkTk+gdVkq/styBwQZFF7oZtGwVjuT/hJbK8ZgIf1UJY
-         a2qd5YHKq3WTeYlc+AhzkkhGs8c3XOdGdosi3fHn74Rh5CdX/lU/ZJ1ho8mIqo7G8IqX
-         20Yp5b8d+Q76CYYoM6FntxygOQJzOeMLsoS83PyGLIca9bIGB/2eLJt1iGW8BPNtqhUj
-         Y00g==
-X-Received: by 10.66.227.101 with SMTP id rz5mr19324706pac.123.1444445503170;
-        Fri, 09 Oct 2015 19:51:43 -0700 (PDT)
+        bh=k53sud1Qux4jk4zDUw8/ifmjiadRXxJwkubLcmgpYak=;
+        b=CS/OKGHcNos2L8SXSRmbJLkKPlxvuSDn8P+8y7m7xQN2A1dgoURaFeNxuguCee+iaB
+         fH9G+k8QfYDy0JoGyK46U0k5HTfTpj0lUif70qx7AMpKB6NAmQZCL96WYSpC9TewSIhJ
+         GTFgNvw730ByYxXhs6NaNtZzUNIDb0hdnnCB2jo2fOnXVW/Qcp9MJBvVaz6whQd3bcCQ
+         GyxlqCnpXekp1uBsSn9qabf8/VOutlvz5V4lcEqe0KxJReutoCQYhpmRoHfuP8A6ut1x
+         IcQCqrbXWv1g2SyINKwfw9tPkee8H6ieE/k1aWfXV7S9w2ZzzM8EXnubyJ+U3LNcdds8
+         oTYg==
+X-Received: by 10.69.1.5 with SMTP id bc5mr19232681pbd.151.1444445476985;
+        Fri, 09 Oct 2015 19:51:16 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
 Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id be3sm5006435pbc.88.2015.10.09.19.51.40
+        by smtp.gmail.com with ESMTPSA id db8sm5036783pad.43.2015.10.09.19.51.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 19:51:42 -0700 (PDT)
-Date: Sat, 10 Oct 2015 08:21:33 +0530
+        Fri, 09 Oct 2015 19:51:16 -0700 (PDT)
+Date: Sat, 10 Oct 2015 08:21:07 +0530
 From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] Staging: vt6655: mac: Fixed character limit warning
-Message-ID: <407daf4e3379895fe86ff67e256b46d65be5a3cb.1444445237.git.shivanib134@gmail.com>
+Subject: [PATCH 1/2] Staging: vt6655: mac: Removed unnecessary braces
+Message-ID: <678e908484d88741b349907914444078433e2e70.1444445237.git.shivanib134@gmail.com>
 References: <cover.1444445237.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -52,71 +52,29 @@ Content-Disposition: inline
 In-Reply-To: <cover.1444445237.git.shivanib134@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixed the warning generated by checkpatch: line over 80 characters
-by breaking the lines into sensible chunks.
+Fixed the warning generated by checkpatch braces {} are not necessary
+for single statement blocks, by removing them.
 
 Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/vt6655/mac.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
+ drivers/staging/vt6655/mac.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
-index 688c3be..8a709ea 100644
+index 3dfd333..688c3be 100644
 --- a/drivers/staging/vt6655/mac.c
 +++ b/drivers/staging/vt6655/mac.c
-@@ -46,9 +46,9 @@
-  *      MACvTimer0MicroSDelay - Micro Second Delay Loop by MAC
-  *
-  * Revision History:
-- *      08-22-2003 Kyle Hsu     :  Porting MAC functions from sim53
-- *      09-03-2003 Bryan YC Fan :  Add MACvClearBusSusInd()& MACvEnableBusSusEn()
-- *      09-18-2003 Jerry Chen   :  Add MACvSetKeyEntry & MACvDisableKeyEntry
-+ *      08-22-2003 Kyle Hsu     : Porting MAC functions from sim53
-+ *      09-03-2003 Bryan YC Fan : Add MACvClearBusSusInd()& MACvEnableBusSusEn()
-+ *      09-18-2003 Jerry Chen   : Add MACvSetKeyEntry & MACvDisableKeyEntry
-  *
-  */
- 
-@@ -313,7 +313,8 @@ bool MACbSoftwareReset(void __iomem *dwIoBase)
- 
- /*
-  * Description:
-- *      save some important register's value, then do reset, then restore register's value
-+ *      Save some important register's value, then do reset,
-+ *      then restore register's value
-  *
-  * Parameters:
-  *  In:
-@@ -326,7 +327,8 @@ bool MACbSoftwareReset(void __iomem *dwIoBase)
-  */
- bool MACbSafeSoftwareReset(void __iomem *dwIoBase)
- {
--	unsigned char abyTmpRegData[MAC_MAX_CONTEXT_SIZE_PAGE0+MAC_MAX_CONTEXT_SIZE_PAGE1];
-+	unsigned char abyTmpRegData[MAC_MAX_CONTEXT_SIZE_PAGE0 +
-+		MAC_MAX_CONTEXT_SIZE_PAGE1];
- 	bool bRetVal;
- 
- 	/* PATCH....
-@@ -565,7 +567,8 @@ void MACvInitialize(void __iomem *dwIoBase)
-  * Return Value: none
-  *
-  */
--void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
-+void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase,
-+		unsigned long dwCurrDescAddr)
- {
- 	unsigned short ww;
- 	unsigned char byData;
-@@ -600,7 +603,8 @@ void MACvSetCurrRx0DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr
-  * Return Value: none
-  *
-  */
--void MACvSetCurrRx1DescAddr(void __iomem *dwIoBase, unsigned long dwCurrDescAddr)
-+void MACvSetCurrRx1DescAddr(void __iomem *dwIoBase,
-+		unsigned long dwCurrDescAddr)
- {
- 	unsigned short ww;
- 	unsigned char byData;
+@@ -689,9 +689,8 @@ void MACvSetCurrAC0DescAddrEx(void __iomem *dwIoBase,
+ 		if (!(byData & DMACTL_RUN))
+ 			break;
+ 	}
+-	if (ww == W_MAX_TIMEOUT) {
++	if (ww == W_MAX_TIMEOUT)
+ 		pr_debug(" DBG_PORT80(0x26)\n");
+-	}
+ 	VNSvOutPortD(dwIoBase + MAC_REG_AC0DMAPTR, dwCurrDescAddr);
+ 	if (byOrgDMACtl & DMACTL_RUN)
+ 		VNSvOutPortB(dwIoBase + MAC_REG_AC0DMACTL, DMACTL_RUN);
 -- 
 2.1.0
 
