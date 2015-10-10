@@ -1,70 +1,71 @@
-X-GM-THRID: 9893768593408
-X-Received: by 10.140.235.83 with SMTP id g80mr13281453qhc.5.1427328473497;
-        Wed, 25 Mar 2015 17:07:53 -0700 (PDT)
+X-GM-THRID: 6203663047553187840
+X-Received: by 10.68.217.74 with SMTP id ow10mr4378918pbc.10.1444461482709;
+        Sat, 10 Oct 2015 00:18:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.19.66 with SMTP id 60ls312065qgg.14.gmail; Wed, 25 Mar
- 2015 17:07:53 -0700 (PDT)
-X-Received: by 10.140.147.130 with SMTP id 124mr13304304qht.8.1427328473243;
-        Wed, 25 Mar 2015 17:07:53 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-qg0-x22f.google.com (mail-qg0-x22f.google.com. [2607:f8b0:400d:c04::22f])
-        by gmr-mx.google.com with ESMTPS id z1si517124qcn.2.2015.03.25.17.07.53
+Received: by 10.182.51.131 with SMTP id k3ls868930obo.35.gmail; Sat, 10 Oct
+ 2015 00:18:02 -0700 (PDT)
+X-Received: by 10.182.102.194 with SMTP id fq2mr14487383obb.43.1444461482410;
+        Sat, 10 Oct 2015 00:18:02 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id zg1si545271pbb.2.2015.10.10.00.18.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2015 17:07:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) client-ip=2607:f8b0:400d:c04::22f;
+        Sat, 10 Oct 2015 00:18:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) smtp.mail=helen.fornazier@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22f.google.com with SMTP id a8so67687459qgf.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2015 17:07:53 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22f.google.com with SMTP id ve7so48386845pab.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 00:18:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=uwHKt0BUO6yeELaH4BLvbWG4rNE8NZEsBHMxBLWVHDM=;
-        b=m7Miu4M+RJH3ZFnL6OFNh5v3MGYKKJ5Jcjco56/BLxr1vpdZW/LWYo8Ps+Aha5UoHx
-         LMNAN1eSxYhx8QRdVRwFqn04iXuc04B1aR4ViqpKI/2BoeOXHXDCU7TupJbim75lrsAH
-         cF727ahmTIaZfpKScmX+54c/wUwPZCIRVmYG7xC+wQdy1Kt/ksceFswjPBH5tpIiHxIB
-         4n8wYzh1UAdC/RCgctcZEpMGSj+Suf2NAPjnLOVw0pya14ibmQ7X7/0isBLcuwhnyXHp
-         NiYPsUjsHoR7Ygvptaeao83QMOy0d9etrX+TT98QWO74gZ3TgjHzu/8xM1MPA2HZAKaX
-         43LQ==
-X-Received: by 10.140.98.243 with SMTP id o106mr14115115qge.99.1427328473180;
-        Wed, 25 Mar 2015 17:07:53 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from Cracker.linksys.com ([179.159.91.9])
-        by mx.google.com with ESMTPSA id h34sm2518197qge.13.2015.03.25.17.07.51
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 25 Mar 2015 17:07:52 -0700 (PDT)
-From: Helen Fornazier <helen.fornazier@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Helen Fornazier <helen.fornazier@gmail.com>
-Subject: [PATCH] block: remove trailing white space
-Date: Wed, 25 Mar 2015 21:07:44 -0300
-Message-Id: <1427328464-6485-1-git-send-email-helen.fornazier@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=cBqjTUcGqFyDnKWY1NlUpm6UY8kLMoxVxJDdZdBoTfM=;
+        b=hwVpXpGYUMw0xK0o8Pc9rADPtjApWLdiAy55q52ejiZRr81s7MH1/Re/YWjGe9Wbgy
+         HjtNgq/CJuEZiJWZaAfHcNd59RGfEI4MSR5DdeBnUgqaNsuFTpJ5ZD/ABhyRO2gEkTmK
+         3qGoEalZSUUdmnH307XZJC23Ewiihqb46n7wDxUnUJZL0BG5fGYJBzQfcDb+J/Hfvnzl
+         D6PL6dnlvxspo4FWTf52R7L2SF1JvoNw1y4snX8c1aAlDqtirJVRp4LkwnMMsFHrSG44
+         3oEkhpEFiyCHpkgv7xz6q5KVskRcFwLTUD/qs3gLV3nLc68Y+PfH2jFp0mSzl0xVcg9m
+         yPcQ==
+X-Received: by 10.68.228.129 with SMTP id si1mr20394416pbc.119.1444461482234;
+        Sat, 10 Oct 2015 00:18:02 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id jv5sm6340484pbc.47.2015.10.10.00.18.00
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sat, 10 Oct 2015 00:18:01 -0700 (PDT)
+Date: Sat, 10 Oct 2015 12:47:57 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: lustre: ldlm_resource:
+ Removed initialization of global variables
+Message-ID: <20151010071757.GD4795@sudip-pc>
+References: <cover.1444402286.git.shivanib134@gmail.com>
+ <dc621223a28a29a4c04097db94aabc3ee732bc89.1444402286.git.shivanib134@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <dc621223a28a29a4c04097db94aabc3ee732bc89.1444402286.git.shivanib134@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Clean useless trailing white spaces
+On Fri, Oct 09, 2015 at 08:31:28PM +0530, Shivani Bhardwaj wrote:
+> Fixed the error generated by checkpatch : do not initialise
+> globals to 0 or NULL, by removing the initialization of variables
+> ldlm_srv_namespace_nr and ldlm_cli_namespace_nr.
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
 
-Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
----
- block/bio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This has already been done by:
+ea28d21ac51a ("staging: lustre: fix GLOBAL_INITIALISERS checkpatch.pl errors")
 
-diff --git a/block/bio.c b/block/bio.c
-index 84f55b9..a80e62f 100644
---- a/block/bio.c
-+++ b/block/bio.c
-@@ -1344,7 +1344,7 @@ struct bio *bio_map_user_iov(struct request_queue *q,
- 
- 			if (len <= 0)
- 				break;
--			
-+
- 			if (bytes > len)
- 				bytes = len;
- 
--- 
-1.9.1
+which tree you are using?
 
+regards
+sudip
 
