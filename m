@@ -1,81 +1,98 @@
 X-GM-THRID: 6203546917110022144
-X-Received: by 10.129.73.143 with SMTP id w137mr14545459ywa.19.1444464442091;
-        Sat, 10 Oct 2015 01:07:22 -0700 (PDT)
+X-Received: by 10.112.132.6 with SMTP id oq6mr3400956lbb.1.1444462855623;
+        Sat, 10 Oct 2015 00:40:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.81.179 with SMTP id f48ls2139657qgd.22.gmail; Sat, 10 Oct
- 2015 01:07:21 -0700 (PDT)
-X-Received: by 10.140.237.202 with SMTP id i193mr14600773qhc.10.1444464441669;
-        Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id el2si622417pbb.0.2015.10.10.01.07.21
+Received: by 10.181.11.196 with SMTP id ek4ls505951wid.36.gmail; Sat, 10 Oct
+ 2015 00:40:55 -0700 (PDT)
+X-Received: by 10.180.81.165 with SMTP id b5mr657066wiy.1.1444462855267;
+        Sat, 10 Oct 2015 00:40:55 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id hs5si87937wib.1.2015.10.10.00.40.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Sat, 10 Oct 2015 00:40:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id hy16so107492359pad.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=x7d+0kWiWROGWQr1hNG5nepxszWDYOKIvbbrgZMBMhY=;
-        b=GXYGrv4avPglcKeAc9WPYUFR/KEPoZ+8u4YpZ5EYskkHLUmLTKjtAGKfZb9Y2CXrlj
-         8tIhmak5IeoSqF1e2J4UYeFw5659ion/FikVWHL8ve3E6dBOhTHgGzAxXv0ylwEpI0om
-         cIf96bt9Z/HgPymhyXqZdeqlVuvqgsqoyMUQjUde4AyNFnKIWypCiujw6T+UsW//ooaZ
-         WKi3wlT+e3K5f/dJ0BmH8BIvoYLx9iiFlKMk9TSGf/tV5AggeRJbotK0Pd+GsL0KDm6b
-         c0vSI6qiMa2VuiKD2acncD2rpyUToQzOvSwm0PvwQOcLU33ZAxCiuw4OJiiEiuAY2HUC
-         x7Fg==
-X-Received: by 10.66.161.234 with SMTP id xv10mr3643308pab.131.1444464441494;
-        Sat, 10 Oct 2015 01:07:21 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id bo5sm6581002pbb.76.2015.10.10.01.07.19
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 10 Oct 2015 01:07:20 -0700 (PDT)
-Date: Sat, 10 Oct 2015 13:37:15 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Shivani Bhardwaj <shivanib134@gmail.com>,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,662,1437429600"; 
+   d="scan'208";a="182062113"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 10 Oct 2015 09:40:54 +0200
+Date: Sat, 10 Oct 2015 09:40:53 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+cc: Shivani Bhardwaj <shivanib134@gmail.com>, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] Staging: sm750fb: ddk750_help:
  Included KERN_facility level using dev_info
-Message-ID: <20151010080715.GF4795@sudip-pc>
-References: <20151009142118.GA57009@ubuntu>
- <20151010071443.GC4795@sudip-pc>
- <alpine.DEB.2.02.1510100923080.2062@localhost6.localdomain6>
- <20151010073822.GE4795@sudip-pc>
- <alpine.DEB.2.02.1510100940030.2062@localhost6.localdomain6>
+In-Reply-To: <20151010073822.GE4795@sudip-pc>
+Message-ID: <alpine.DEB.2.02.1510100940030.2062@localhost6.localdomain6>
+References: <20151009142118.GA57009@ubuntu> <20151010071443.GC4795@sudip-pc> <alpine.DEB.2.02.1510100923080.2062@localhost6.localdomain6> <20151010073822.GE4795@sudip-pc>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1510100940030.2062@localhost6.localdomain6>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Sat, Oct 10, 2015 at 09:40:53AM +0200, Julia Lawall wrote:
-> 
-> 
-> On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
-> 
-> > On Sat, Oct 10, 2015 at 09:24:52AM +0200, Julia Lawall wrote:
-> > > On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
-> > > 
-> > > > On Fri, Oct 09, 2015 at 07:51:18PM +0530, Shivani Bhardwaj wrote:
-<snip>
+
+
+On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
+
+> On Sat, Oct 10, 2015 at 09:24:52AM +0200, Julia Lawall wrote:
+> > On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
 > > 
-> > pr_info will be better. I can use dev_info here, but the changes that
-> > has to be made for that, I think that will become too complicated for
-> > her, atleast at this stage.
+> > > On Fri, Oct 09, 2015 at 07:51:18PM +0530, Shivani Bhardwaj wrote:
+> > > > Replaced the function printk() with dev_info() to fix the warning
+> > > > generated by checkpatch : printk() should include KERN_ facility level.
+> > > > 
+> > > > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> > > > ---
+> > > > Changes in v2:
+> > > > 	-Replaced the function pr_info() with dev_info()
+> > > > 
+> > > >  drivers/staging/sm750fb/ddk750_help.c | 4 +++-
+> > > >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
+> > > > index 9637dd3..b877704 100644
+> > > > --- a/drivers/staging/sm750fb/ddk750_help.c
+> > > > +++ b/drivers/staging/sm750fb/ddk750_help.c
+> > > > @@ -1,5 +1,7 @@
+> > > >  #include "ddk750_help.h"
+> > > > +#include <linux/pci.h>
+> > > >  
+> > > > +static struct pci_dev *pdev;
+> > > >  void __iomem *mmio750;
+> > > >  char revId750;
+> > > >  unsigned short devId750;
+> > > > @@ -11,7 +13,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
+> > > >  	devId750 = devId;
+> > > >  	revId750 = revId;
+> > > >  	if (revId == 0xfe)
+> > > > -		printk("found sm750le\n");
+> > > > +		dev_info(&pdev->dev, "found sm750le\n");
+> > > 
+> > > OOPS .. no..
+> > > pdev is initialized to NULL, so when you do pdev->dev, you are doing a
+> > > dereference of NULL pointer.
+> > 
+> > To be precise, Shivani's code isn't doing a dereference, it's doing an 
+> > addition.  But then dev_info will dereference the result of that addition 
+> > (which is not likely to be NULL, but rather a small integer), and then 
+> > there will be a problem.
 > 
-> Maybe the callers have a device structure available?
+> Yes, dereference was wrong word. It is taking the address of that
+> member. But my main point was that pdev is not initialized. So using
+> &pdev->dev for dev_info is wrong.
+> 
+> > 
+> > So one would have to use pr_info here.
+> 
+> pr_info will be better. I can use dev_info here, but the changes that
+> has to be made for that, I think that will become too complicated for
+> her, atleast at this stage.
 
-Yes, they have. :)
+Maybe the callers have a device structure available?
 
-regards
-sudip
+julia
 
