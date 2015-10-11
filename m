@@ -1,86 +1,79 @@
-X-GM-THRID: 6202590873254887424
-X-Received: by 10.112.142.195 with SMTP id ry3mr6820543lbb.22.1444153225360;
-        Tue, 06 Oct 2015 10:40:25 -0700 (PDT)
+X-GM-THRID: 6204471677993091072
+X-Received: by 10.112.138.170 with SMTP id qr10mr4834792lbb.4.1444591297421;
+        Sun, 11 Oct 2015 12:21:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.82.73 with SMTP id g9ls1111907wiy.30.gmail; Tue, 06 Oct
- 2015 10:40:24 -0700 (PDT)
-X-Received: by 10.180.9.104 with SMTP id y8mr3872402wia.7.1444153224631;
-        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id c7si609066wiy.3.2015.10.06.10.40.24
+Received: by 10.25.146.9 with SMTP id u9ls486304lfd.63.gmail; Sun, 11 Oct 2015
+ 12:21:36 -0700 (PDT)
+X-Received: by 10.112.63.165 with SMTP id h5mr4821578lbs.18.1444591296168;
+        Sun, 11 Oct 2015 12:21:36 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c1si344636wiv.3.2015.10.11.12.21.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 11 Oct 2015 12:21:36 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id ge5so177728923wic.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=j0lDQq8qQZt+YyDWiknXbiiTlPLwpdZ/DmsnA3+xb0k=;
-        b=ahxI33buTOMk4YuboEjsGtkQfTI456A6XKejBEKaMwFKdMKEO+S+FuDZynNtlt79ee
-         h97KvqVYJLzLfvpfN9w792YF4MFj+Lv2NpyfXnwqpaxP/31efA2u5nbar06nt0O0z7ei
-         RIorv1D/QraHwEmOyfWhOT7CVJZraTZmKZqklBrDqd9sqikdOW/J6mJaoaPjo0HfAWn0
-         mLI6A/Z/eSlONohvfC7s81uOeRKJynlLsCMOOTIKTwW4HfFN8qAp6WOKhp+zjoy3E5r4
-         F3k17au2ZnVG1A/N1vKJj+ObiSy3r1TtJN3rJbcedq3uJbbzgX5vZ0+hEDx3MHqnI81z
-         VdSQ==
-X-Received: by 10.194.7.97 with SMTP id i1mr4118402wja.87.1444153224514;
-        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([213.233.101.76])
-        by smtp.gmail.com with ESMTPSA id ry1sm33837272wjb.24.2015.10.06.10.40.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 06 Oct 2015 10:40:24 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH] staging: octeon: Remove /** from regular comments
-Date: Tue,  6 Oct 2015 20:39:43 +0300
-Message-Id: <1444153183-88471-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,667,1437429600"; 
+   d="scan'208";a="182194281"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Oct 2015 21:21:35 +0200
+Date: Sun, 11 Oct 2015 21:21:35 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3 1/2] Staging: vt6655: rxtx: Remove
+ extra space character
+In-Reply-To: <43aba6a5182d22a3856fe326dfa8e69ff796f12d.1444590771.git.shivanib134@gmail.com>
+Message-ID: <alpine.DEB.2.02.1510112121190.2096@localhost6.localdomain6>
+References: <cover.1444590771.git.shivanib134@gmail.com> <43aba6a5182d22a3856fe326dfa8e69ff796f12d.1444590771.git.shivanib134@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix kernel-doc warnings 'cannot understand function prototype'
-by removing /** from regular comments
+On Mon, 12 Oct 2015, Shivani Bhardwaj wrote:
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
----
- drivers/staging/octeon/ethernet.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> Remove unnecessary space character after the variable RATE_16M
+> preserving the alignment of all other variables and comments.
+> Fixes the warning by checkpatch:  space prohibited before
+> that ',' (ctx:WxW)
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+> Changes in v3:
+> 	-Make alignment of variables better.
+> 
+>  drivers/staging/vt6655/rxtx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> index 5875d65..0c1f6a1 100644
+> --- a/drivers/staging/vt6655/rxtx.c
+> +++ b/drivers/staging/vt6655/rxtx.c
+> @@ -78,7 +78,7 @@ static const unsigned short wFB_Opt0[2][5] = {
+>  };
+>  static const unsigned short wFB_Opt1[2][5] = {
+>  	{RATE_12M, RATE_18M, RATE_24M, RATE_24M, RATE_36M}, /* fallback_rate0 */
+> -	{RATE_6M , RATE_6M,  RATE_12M, RATE_12M, RATE_18M}, /* fallback_rate1 */
+> +	{RATE_6M,  RATE_6M,  RATE_12M, RATE_12M, RATE_18M}, /* fallback_rate1 */
 
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 87ab6c6..14eb4af 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -86,19 +86,19 @@ int rx_napi_weight = 32;
- module_param(rx_napi_weight, int, 0444);
- MODULE_PARM_DESC(rx_napi_weight, "The NAPI WEIGHT parameter.");
- 
--/**
-+/*
-  * cvm_oct_poll_queue - Workqueue for polling operations.
-  */
- struct workqueue_struct *cvm_oct_poll_queue;
- 
--/**
-+/*
-  * cvm_oct_poll_queue_stopping - flag to indicate polling should stop.
-  *
-  * Set to one right before cvm_oct_poll_queue is destroyed.
-  */
- atomic_t cvm_oct_poll_queue_stopping = ATOMIC_INIT(0);
- 
--/**
-+/*
-  * Array of every ethernet device owned by this driver indexed by
-  * the ipd input port number.
-  */
--- 
-1.9.1
+It looks nice now :)
 
+julia
+
+>  };
+>  
+>  #define RTSDUR_BB       0
+> -- 
+> 2.1.0
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/43aba6a5182d22a3856fe326dfa8e69ff796f12d.1444590771.git.shivanib134%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
