@@ -1,71 +1,66 @@
 X-GM-THRID: 6204202017564393472
-X-Received: by 10.66.249.100 with SMTP id yt4mr23238413pac.42.1444644388899;
-        Mon, 12 Oct 2015 03:06:28 -0700 (PDT)
+X-Received: by 10.182.46.196 with SMTP id x4mr18506178obm.22.1444528349140;
+        Sat, 10 Oct 2015 18:52:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.144 with SMTP id h16ls2830963qgd.88.gmail; Mon, 12 Oct
- 2015 03:06:28 -0700 (PDT)
-X-Received: by 10.129.46.204 with SMTP id u195mr22939724ywu.47.1444644388489;
-        Mon, 12 Oct 2015 03:06:28 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id wl2si1324622pab.1.2015.10.12.03.06.28
+Received: by 10.50.136.196 with SMTP id qc4ls844483igb.25.gmail; Sat, 10 Oct
+ 2015 18:52:28 -0700 (PDT)
+X-Received: by 10.66.146.131 with SMTP id tc3mr18375328pab.20.1444528348670;
+        Sat, 10 Oct 2015 18:52:28 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id w5si922948pbt.1.2015.10.10.18.52.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 03:06:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Sat, 10 Oct 2015 18:52:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id ve7so92449258pab.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 03:06:28 -0700 (PDT)
+Received: by mail-pa0-x22e.google.com with SMTP id hy16so121150538pad.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Oct 2015 18:52:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=TYzs1vrFlnuyIQT4uJQkaZwWz4nFoigMg59AqEGkqKs=;
-        b=FU5Ugrk7SAlkEJn8L/6G1E8yKoGK0A3/cTR/lGJ2Mff+SDOwDu4FXNNYg0/gEN/U+Y
-         i+9yeIT51jfHQ5HNGdApE0yyo8CJmGWpc1/DxEbVY8ewUH7x/u8t0gIavMR/U+78luC+
-         j6ZkacWbiiIywB/agMYHNHizP/Dm1QhNGexaEFn8b5FQK4VJpN5xnxHci9ctoaUlqLfa
-         YAGqoUdE8szocZxe32kU+kaYoRWjguMSzLhju2DKb9jo2603pJc9xWwfjXsfsWVPggi5
-         8h4KWOzLFYVqgN2bnZlZDGdNAVYV0v1BuG5itUL5V2LhifCbbm2xeXOZo0mEuzVHvBBY
-         7Hvg==
-X-Received: by 10.68.232.162 with SMTP id tp2mr34196142pbc.162.1444644388331;
-        Mon, 12 Oct 2015 03:06:28 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([49.206.251.3])
-        by smtp.gmail.com with ESMTPSA id bh4sm17354333pbb.62.2015.10.12.03.06.26
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 12 Oct 2015 03:06:27 -0700 (PDT)
-Date: Mon, 12 Oct 2015 15:36:23 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Alison Schofield <amsfield22@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] sending patch revisions w mutt ???
-Message-ID: <20151012100623.GD13596@sudip-pc>
-References: <20151011015226.GA3134@Ubuntu-D830>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=J+X7lQ2aM1DM1nuhxnLHmpaBvkWmhOKNNQiyTmsPa7M=;
+        b=1CU7Jj0yxaud9KOKg/87vNeMR7v6WWfp/gbotadn7SqO7vGIDzXr2OQCy7vV0ghnvp
+         XfaUX20KUlKGt3WWr8toFZDvcjWlUdfhpBz0C6QH8ffVFQvsHoPbc3HVMsnzBk1Awiel
+         FNHTrRJxKQ8zzHpLQSlQZb/iZTt7P4uPoItPbatwADSEtjtaKLu4htisDzpVAS5pdeSK
+         OCHD4MKhjjwWYSti12ll0nIN7CPN1Kc47uAjWK1rndwCfbY3tOsbXgYrAYj0bfu+Fzll
+         ngCG3vO15SER9XKCAr6TK9BscUoO9NsX+qGW0uqnddMBXImap42uzb7RjTsjgwCEIF/q
+         cxZQ==
+X-Received: by 10.68.68.167 with SMTP id x7mr25555518pbt.140.1444528348586;
+        Sat, 10 Oct 2015 18:52:28 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
+        by smtp.gmail.com with ESMTPSA id ln10sm9447177pab.29.2015.10.10.18.52.27
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 10 Oct 2015 18:52:28 -0700 (PDT)
+Date: Sat, 10 Oct 2015 18:52:27 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: sending patch revisions w mutt ???
+Message-ID: <20151011015226.GA3134@Ubuntu-D830>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20151011015226.GA3134@Ubuntu-D830>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Sat, Oct 10, 2015 at 06:52:27PM -0700, Alison Schofield wrote:
-> Looking for help threading my patch revisions in mutt.
-> 
-> I use the mutt -H option to send the original and now I want to send v2 threaded.  
-> 
-> I can open mutt, goto thread, select reply, and then read (:r) in the patch
-> file with vim.  This also means I edit the Subject line manually. None of this is very elegant. 
-> 
-> Is there a better way?
+Looking for help threading my patch revisions in mutt.
 
-For sending patch I always use git send-email. mutt is only for replying
-to mails.
-for sending v2 threaded you can use --in-reply-to option of git
-send-email.
+I use the mutt -H option to send the original and now I want to send v2 threaded.  
 
-regards
-sudip
+I can open mutt, goto thread, select reply, and then read (:r) in the patch
+file with vim.  This also means I edit the Subject line manually. None of this is very elegant. 
+
+Is there a better way?
+
+Also, do you want it threaded right on top, ie. in reply to the previous
+patch message.
+
+Thanks,
+alison
 
