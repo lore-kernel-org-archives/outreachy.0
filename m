@@ -1,77 +1,104 @@
 X-GM-THRID: 6203527091850313728
-X-Received: by 10.66.221.7 with SMTP id qa7mr25729151pac.33.1444683211788;
-        Mon, 12 Oct 2015 13:53:31 -0700 (PDT)
+X-Received: by 10.182.89.129 with SMTP id bo1mr23117360obb.4.1444643035708;
+        Mon, 12 Oct 2015 02:43:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.96.109 with SMTP id j100ls1153413qge.57.gmail; Mon, 12 Oct
- 2015 13:53:31 -0700 (PDT)
-X-Received: by 10.140.238.83 with SMTP id j80mr25840982qhc.2.1444683211239;
-        Mon, 12 Oct 2015 13:53:31 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id zg1si1902875pbb.2.2015.10.12.13.53.31
+Received: by 10.140.104.205 with SMTP id a71ls1471914qgf.23.gmail; Mon, 12 Oct
+ 2015 02:43:55 -0700 (PDT)
+X-Received: by 10.129.156.216 with SMTP id t207mr23068946ywg.26.1444643035065;
+        Mon, 12 Oct 2015 02:43:55 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id pe1si1548175pac.2.2015.10.12.02.43.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 13:53:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Oct 2015 02:43:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id rc13so28012958pab.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 13:53:31 -0700 (PDT)
+Received: by mail-pa0-x234.google.com with SMTP id rc13so14992331pab.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 02:43:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=mp2SSkSFl+rVb33kaIwyUZR3ZPupHmK2LCwjW1Qp/ws=;
-        b=gJ4WA+BFTugik5kr47fj8wDDnrC6fYeb5yWR3y521PkZf7KTa9ro0kxn1iFgPBeFbt
-         1OZEHE7W9hH2JUKnTx8TtvY5D+hpb+ZdkrDuDCnZ9Ac6Fm9XuO4EleN+pKQXYbtsTaaV
-         vaa2ontuXZxlXurBB6KfEKSppf4i0bEwp4WY5ONyluGzL9+Rz23tYNpY33Eio7dcesyc
-         M+FdIiEBqXIt0j5DudkRgtXuyqsAlDSpte/K2xs3N4zXijLPbKyq4/hX/fJz+3mcI5Ye
-         eH2vYeHd07jZCpiietk3MXc+V9qjA3oC3HxHgmqn/XpbnfRDBdzC4oO8hevSyTc2RcAQ
-         +jjQ==
-X-Received: by 10.68.219.169 with SMTP id pp9mr37343498pbc.115.1444683211084;
-        Mon, 12 Oct 2015 13:53:31 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from localhost.localdomain (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id a17sm19976072pbu.55.2015.10.12.13.53.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 12 Oct 2015 13:53:30 -0700 (PDT)
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: gdmwm: move variables to right side of comparison test
-Date: Mon, 12 Oct 2015 13:53:22 -0700
-Message-Id: <1444683202-10946-1-git-send-email-amsfield22@gmail.com>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <20151009061314.GA31693@Ubuntu-D830>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=aBo80oKRHGrK2FS87mo6jcStyK/dK636qRMnzAmaZnk=;
+        b=X3rTjApOPsbBI5cgO2qmkvKcuLqnjNJ/KGYQZHPo2UX+7F5xLeT9mJVc7Qpe4UzcWT
+         NrmUQNrHTpzGBj1LBZGMc6dyZdnrJtHYXVq9DL7Y+hE+vycwKEDqNHPCEgrsV8H5YdCH
+         alQGYnrrMMwffw5Sr0sYN/q5LvNtIa5NqqAy9E/M9932UstD35kswSyLWHSwy+sc9anu
+         c/gIgT9CAp2jwjgQ5Vsl/4Dp3o8spd/WSzSJJdaI8bXu/5Skv8WsMj8g5aM6yJm1zoVY
+         IOCQlDHoCIMb+FoX3zVKqlKLZR0arlWA1sDwyYMOxXGokGEpvVvtdYmSglk3Wgj4M8+v
+         fLJA==
+X-Received: by 10.68.202.40 with SMTP id kf8mr5051642pbc.119.1444643034889;
+        Mon, 12 Oct 2015 02:43:54 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.251.3])
+        by smtp.gmail.com with ESMTPSA id v6sm17255686pbs.40.2015.10.12.02.43.52
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Mon, 12 Oct 2015 02:43:54 -0700 (PDT)
+Date: Mon, 12 Oct 2015 15:13:46 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Alison Schofield <amsfield22@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: gdmwm: move constant to
+ right side of comparison test
+Message-ID: <20151012094318.GA13596@sudip-pc>
 References: <20151009061314.GA31693@Ubuntu-D830>
+ <20151010070034.GA4795@sudip-pc>
+ <alpine.DEB.2.02.1510100921000.2062@localhost6.localdomain6>
+ <20151011063707.GA6423@Ubuntu-D830>
+ <alpine.DEB.2.02.1510111203300.2052@localhost6.localdomain6>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.02.1510111203300.2052@localhost6.localdomain6>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Move variables to right side of comparison test to improve readability.
+On Sun, Oct 11, 2015 at 12:04:22PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Sat, 10 Oct 2015, Alison Schofield wrote:
+> 
+> > On Sat, Oct 10, 2015 at 09:22:27AM +0200, Julia Lawall wrote:
+> > > On Sat, 10 Oct 2015, Sudip Mukherjee wrote:
+> > > 
+> > > > On Thu, Oct 08, 2015 at 11:13:23PM -0700, Alison Schofield wrote:
+<snip>
+> > > 
+> > > I'm not sure there is such a semantic intent to the rule.  Do something 
+> > > complex and then see if it is like T, looks better to me than see if T is 
+> > > like doing something complex.  The checkpatch/commit message is indeed 
+> > > misleading, but the layout of characters looks better.
+> > > 
+> > > julia
+> > 
+> > Let me see if I have the correct understanding.
+> > 
+> > T and L are variables, not constants, therefore the checkpatch error and
+> > my subsequent commit msg are misleading. 
+> 
+> Yes.
+> 
+> > Regardless of whether this
+> > case should have been flagged by checkpatch the edit improves
+> > readability.
+> > 
+> > So, I'd lean towards keeping the edit and changing the commit msg & 
+> > description like this:
+> > 
+> > 	staging: gdmwm: move variable to right side of comparison test
+> >     
+> > 	Move variables to right side of comparison test to improve readability.
+> > 		
+> > Your thoughts?
+> 
+> It seems good to me.
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
+Sorry for the late reply. Commit message looks good now.
 
-Changes in v2: clarified commit message and description
-
- drivers/staging/gdm72xx/gdm_wimax.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/gdm72xx/gdm_wimax.c b/drivers/staging/gdm72xx/gdm_wimax.c
-index 6e8dbaf..69f00cc 100644
---- a/drivers/staging/gdm72xx/gdm_wimax.c
-+++ b/drivers/staging/gdm72xx/gdm_wimax.c
-@@ -581,8 +581,8 @@ static int gdm_wimax_get_prepared_info(struct net_device *dev, char *buf,
- 		}
- 
- 		pos += gdm_wimax_hci_get_tlv(&buf[pos], &T, &L, &V);
--		if (T == TLV_T(T_MAC_ADDRESS)) {
--			if (L != dev->addr_len) {
-+		if (TLV_T(T_MAC_ADDRESS) == T) {
-+			if (dev->addr_len != L) {
- 				netdev_err(dev,
- 					   "%s Invalid information result T/L [%x/%d]\n",
- 					   __func__, T, L);
--- 
-2.1.4
-
+regards
+sudip
 
