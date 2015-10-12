@@ -1,56 +1,43 @@
 X-GM-THRID: 6204781093577555968
-X-Received: by 10.180.210.71 with SMTP id ms7mr3158386wic.4.1444670439963;
-        Mon, 12 Oct 2015 10:20:39 -0700 (PDT)
+X-Received: by 10.180.91.233 with SMTP id ch9mr3032090wib.4.1444663731056;
+        Mon, 12 Oct 2015 08:28:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.184.133 with SMTP id eu5ls860978wic.53.gmail; Mon, 12 Oct
- 2015 10:20:39 -0700 (PDT)
-X-Received: by 10.180.81.165 with SMTP id b5mr3149914wiy.1.1444670439415;
-        Mon, 12 Oct 2015 10:20:39 -0700 (PDT)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
-        by gmr-mx.google.com with ESMTPS id w4si604833wiz.0.2015.10.12.10.20.39
+Received: by 10.180.77.106 with SMTP id r10ls835587wiw.42.gmail; Mon, 12 Oct
+ 2015 08:28:49 -0700 (PDT)
+X-Received: by 10.194.83.169 with SMTP id r9mr5810830wjy.6.1444663729755;
+        Mon, 12 Oct 2015 08:28:49 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id hs5si529280wib.1.2015.10.12.08.28.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 10:20:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
+        Mon, 12 Oct 2015 08:28:49 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x236.google.com with SMTP id ge5so26127187wic.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 10:20:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=lzxBFv7gEcD+u5hvr27tBcG01QP8Ez3Q8ftMoRS1TNg=;
-        b=NxyM0EzwthRJAhE1f+klxsffHg+iquP+bTg2nIu5DUBqNjoM7Di7iqVrI2ZvJvpqDV
-         2XWSVp1Pr5J8w8P2clp+vYHzN6ZpH05w8WETDnYjQvCW3tgA5cAqSqcrKrhuJ/o8HQ/9
-         O6A98saILsvLG2OIu9cBRNgZ1jIg4q+H8lgJ0LmGTF8FnxtfE325lzzPD0zm9BXt0R4P
-         a5bldgTIfAtfDRwU7ygiyXGLr6IIS4/WCOakpxL1UxWqouPcluCsGcEhIL42DPT5JpFP
-         D60cfy4sqddMQeGN2NEls/zoiCQpVaeVNI665b3eTANdocb0jv0MKEeWVVGKI1AomFnO
-         K8Bg==
-MIME-Version: 1.0
-X-Received: by 10.194.202.137 with SMTP id ki9mr30197699wjc.16.1444670439263;
- Mon, 12 Oct 2015 10:20:39 -0700 (PDT)
-Received: by 10.194.165.102 with HTTP; Mon, 12 Oct 2015 10:20:39 -0700 (PDT)
-In-Reply-To: <1444663160-26795-2-git-send-email-shraddha.6596@gmail.com>
-References: <1444663160-26795-1-git-send-email-shraddha.6596@gmail.com>
-	<1444663160-26795-2-git-send-email-shraddha.6596@gmail.com>
-Date: Mon, 12 Oct 2015 20:20:39 +0300
-Message-ID: <CAEnQRZDOP28rr4jsSow2WdL8cMPpiTV2oeAvgyV+bEQVc1MtCw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/3] Staging: lustre: osc: Remove null
- check before kfree
-From: Daniel Baluta <daniel.baluta@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,673,1437429600"; 
+   d="scan'208";a="182375131"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Oct 2015 17:28:30 +0200
+Date: Mon, 12 Oct 2015 17:28:28 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Shraddha Barke <shraddha.6596@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/3] Staging: wilc1000: wilc_wfi_cfgoperations:
+ Remove NULL check before kfree
+In-Reply-To: <1444663160-26795-3-git-send-email-shraddha.6596@gmail.com>
+Message-ID: <alpine.DEB.2.10.1510121727480.2652@hadrien>
+References: <1444663160-26795-1-git-send-email-shraddha.6596@gmail.com> <1444663160-26795-3-git-send-email-shraddha.6596@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Mon, Oct 12, 2015 at 6:19 PM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
+On Mon, 12 Oct 2015, Shraddha Barke wrote:
+
 > kfree on NULL pointer is a no-op.
-> The semantic patch used to find such an instance where NULL check is
-> present before kfree-
+>
+> The semantic patch used-
 >
 > // <smpl>
 > @@ expression E; @@
@@ -63,30 +50,158 @@ On Mon, Oct 12, 2015 at 6:19 PM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
 > // </smpl>smpl>
 >
 > Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-
-Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
-
 > ---
->  drivers/staging/lustre/lustre/osc/osc_request.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 78 ++++++++---------------
+>  1 file changed, 25 insertions(+), 53 deletions(-)
 >
-> diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
-> index 225e5ed..86c0303e 100644
-> --- a/drivers/staging/lustre/lustre/osc/osc_request.c
-> +++ b/drivers/staging/lustre/lustre/osc/osc_request.c
-> @@ -1998,9 +1998,7 @@ out:
->         if (mem_tight != 0)
->                 cfs_memory_pressure_restore(mpflag);
+> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> index 6472777..f16bf5b 100644
+> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> @@ -234,10 +234,8 @@ static void remove_network_from_shadow(unsigned long arg)
+>  		if (time_after(now, astrLastScannedNtwrksShadow[i].u32TimeRcvdInScan + (unsigned long)(SCAN_RESULT_EXPIRE))) {
+>  			PRINT_D(CFG80211_DBG, "Network expired in ScanShadow: %s\n", astrLastScannedNtwrksShadow[i].au8ssid);
 >
-> -       if (crattr != NULL) {
-> -               kfree(crattr);
-> -       }
-> +       kfree(crattr);
+> -			if (astrLastScannedNtwrksShadow[i].pu8IEs != NULL) {
+> -				kfree(astrLastScannedNtwrksShadow[i].pu8IEs);
+> -				astrLastScannedNtwrksShadow[i].pu8IEs = NULL;
+> -			}
+> +			kfree(astrLastScannedNtwrksShadow[i].pu8IEs);
+> +			astrLastScannedNtwrksShadow[i].pu8IEs = NULL;
+
+iWonderWhatIsTheLongestVariableNameInTheLinuxKernel :)
+
+julia
+
 >
->         if (rc != 0) {
->                 LASSERT(req == NULL);
+>  			host_int_freeJoinParams(astrLastScannedNtwrksShadow[i].pJoinParams);
+>
+> @@ -1172,15 +1170,13 @@ static int add_key(struct wiphy *wiphy, struct net_device *netdev, u8 key_index,
+>  					KeyLen = params->key_len - 16;
+>  				}
+>  				/* if there has been previous allocation for the same index through its key, free that memory and allocate again*/
+> -				if (priv->wilc_gtk[key_index]->key)
+> -					kfree(priv->wilc_gtk[key_index]->key);
+> +				kfree(priv->wilc_gtk[key_index]->key);
+>
+>  				priv->wilc_gtk[key_index]->key = kmalloc(params->key_len, GFP_KERNEL);
+>  				memcpy(priv->wilc_gtk[key_index]->key, params->key, params->key_len);
+>
+>  				/* if there has been previous allocation for the same index through its seq, free that memory and allocate again*/
+> -				if (priv->wilc_gtk[key_index]->seq)
+> -					kfree(priv->wilc_gtk[key_index]->seq);
+> +				kfree(priv->wilc_gtk[key_index]->seq);
+>
+>  				if ((params->seq_len) > 0) {
+>  					priv->wilc_gtk[key_index]->seq = kmalloc(params->seq_len, GFP_KERNEL);
+> @@ -1218,13 +1214,11 @@ static int add_key(struct wiphy *wiphy, struct net_device *netdev, u8 key_index,
+>  					KeyLen = params->key_len - 16;
+>  				}
+>
+> -				if (priv->wilc_ptk[key_index]->key)
+> -					kfree(priv->wilc_ptk[key_index]->key);
+> +				kfree(priv->wilc_ptk[key_index]->key);
+>
+>  				priv->wilc_ptk[key_index]->key = kmalloc(params->key_len, GFP_KERNEL);
+>
+> -				if (priv->wilc_ptk[key_index]->seq)
+> -					kfree(priv->wilc_ptk[key_index]->seq);
+> +				kfree(priv->wilc_ptk[key_index]->seq);
+>
+>  				if ((params->seq_len) > 0)
+>  					priv->wilc_ptk[key_index]->seq = kmalloc(params->seq_len, GFP_KERNEL);
+> @@ -1371,25 +1365,17 @@ static int del_key(struct wiphy *wiphy, struct net_device *netdev,
+>  		g_wep_keys_saved = false;
+>
+>  		/*Delete saved WEP keys params, if any*/
+> -		if (g_key_wep_params.key != NULL) {
+> -			kfree(g_key_wep_params.key);
+> -			g_key_wep_params.key = NULL;
+> -		}
+> +		kfree(g_key_wep_params.key);
+> +		g_key_wep_params.key = NULL;
+>
+>  		/*freeing memory allocated by "wilc_gtk" and "wilc_ptk" in "WILC_WIFI_ADD_KEY"*/
+>
+>  		if ((priv->wilc_gtk[key_index]) != NULL) {
+>
+> -			if (priv->wilc_gtk[key_index]->key != NULL) {
+> -
+> -				kfree(priv->wilc_gtk[key_index]->key);
+> -				priv->wilc_gtk[key_index]->key = NULL;
+> -			}
+> -			if (priv->wilc_gtk[key_index]->seq) {
+> -
+> -				kfree(priv->wilc_gtk[key_index]->seq);
+> -				priv->wilc_gtk[key_index]->seq = NULL;
+> -			}
+> +			kfree(priv->wilc_gtk[key_index]->key);
+> +			priv->wilc_gtk[key_index]->key = NULL;
+> +			kfree(priv->wilc_gtk[key_index]->seq);
+> +			priv->wilc_gtk[key_index]->seq = NULL;
+>
+>  			kfree(priv->wilc_gtk[key_index]);
+>  			priv->wilc_gtk[key_index] = NULL;
+> @@ -1398,38 +1384,24 @@ static int del_key(struct wiphy *wiphy, struct net_device *netdev,
+>
+>  		if ((priv->wilc_ptk[key_index]) != NULL) {
+>
+> -			if (priv->wilc_ptk[key_index]->key) {
+> -
+> -				kfree(priv->wilc_ptk[key_index]->key);
+> -				priv->wilc_ptk[key_index]->key = NULL;
+> -			}
+> -			if (priv->wilc_ptk[key_index]->seq) {
+> -
+> -				kfree(priv->wilc_ptk[key_index]->seq);
+> -				priv->wilc_ptk[key_index]->seq = NULL;
+> -			}
+> +			kfree(priv->wilc_ptk[key_index]->key);
+> +			priv->wilc_ptk[key_index]->key = NULL;
+> +			kfree(priv->wilc_ptk[key_index]->seq);
+> +			priv->wilc_ptk[key_index]->seq = NULL;
+>  			kfree(priv->wilc_ptk[key_index]);
+>  			priv->wilc_ptk[key_index] = NULL;
+>  		}
+>
+>  		/*Delete saved PTK and GTK keys params, if any*/
+> -		if (g_key_ptk_params.key != NULL) {
+> -			kfree(g_key_ptk_params.key);
+> -			g_key_ptk_params.key = NULL;
+> -		}
+> -		if (g_key_ptk_params.seq != NULL) {
+> -			kfree(g_key_ptk_params.seq);
+> -			g_key_ptk_params.seq = NULL;
+> -		}
+> -
+> -		if (g_key_gtk_params.key != NULL) {
+> -			kfree(g_key_gtk_params.key);
+> -			g_key_gtk_params.key = NULL;
+> -		}
+> -		if (g_key_gtk_params.seq != NULL) {
+> -			kfree(g_key_gtk_params.seq);
+> -			g_key_gtk_params.seq = NULL;
+> -		}
+> +		kfree(g_key_ptk_params.key);
+> +		g_key_ptk_params.key = NULL;
+> +		kfree(g_key_ptk_params.seq);
+> +		g_key_ptk_params.seq = NULL;
+> +
+> +		kfree(g_key_gtk_params.key);
+> +		g_key_gtk_params.key = NULL;
+> +		kfree(g_key_gtk_params.seq);
+> +		g_key_gtk_params.seq = NULL;
+>
+>  		/*Reset WILC_CHANGING_VIR_IF register to allow adding futrue keys to CE H/W*/
+>  		Set_machw_change_vir_if(false);
 > --
 > 2.1.4
 >
 > --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1444663160-26795-3-git-send-email-shraddha.6596%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
