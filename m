@@ -1,128 +1,90 @@
 X-GM-THRID: 6204754090721804288
-X-Received: by 10.112.63.165 with SMTP id h5mr6086809lbs.18.1444677991692;
-        Mon, 12 Oct 2015 12:26:31 -0700 (PDT)
+X-Received: by 10.112.198.33 with SMTP id iz1mr5910032lbc.8.1444675954759;
+        Mon, 12 Oct 2015 11:52:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.184.133 with SMTP id eu5ls878626wic.53.gmail; Mon, 12 Oct
- 2015 12:26:31 -0700 (PDT)
-X-Received: by 10.180.107.167 with SMTP id hd7mr3268356wib.6.1444677991322;
-        Mon, 12 Oct 2015 12:26:31 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id ch7si579932wib.2.2015.10.12.12.26.31
+Received: by 10.25.85.81 with SMTP id j78ls562542lfb.81.gmail; Mon, 12 Oct
+ 2015 11:52:34 -0700 (PDT)
+X-Received: by 10.25.152.7 with SMTP id a7mr145057lfe.7.1444675954401;
+        Mon, 12 Oct 2015 11:52:34 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id ch7si571492wib.2.2015.10.12.11.52.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 12:26:31 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 12 Oct 2015 11:52:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,674,1437429600"; 
-   d="scan'208";a="182414114"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Oct 2015 21:26:30 +0200
-Date: Mon, 12 Oct 2015 21:26:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 3/3] Staging: wilc1000: host_interface:
- Remove unused code
-In-Reply-To: <89a5b09ad425b0a21649a5438e3311f92ade83a6.1444670615.git.shivanib134@gmail.com>
-Message-ID: <alpine.DEB.2.02.1510122125520.2057@localhost6.localdomain6>
-References: <cover.1444670615.git.shivanib134@gmail.com> <89a5b09ad425b0a21649a5438e3311f92ade83a6.1444670615.git.shivanib134@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x233.google.com with SMTP id gb1so160244568wic.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 11:52:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=pP5SDKe3h73GGXBKqoZW1udHC3964PlTE1b9G87hO2c=;
+        b=00Q8MjR9bnTsf6W6+c9fRY3D6PnmSkEV9IMQzK1RH0mvQAwtEv6lnJUzezeDXYzZpN
+         N8U0dcPSXigwxGltMj4iGVzV+i/SqKJFhdxtSoVrDpiNe/njCoDbCoeLjQbaDQSvmHO5
+         yK8a6zWFyb7DL6N4WNvn1R0qzDDuXLGCfoGp0SZF60Iw2EaZdaS4tGAd/Tz/7vrn0I+2
+         AJTpzBZ5vFzPc2D1dlnxEM8p1ooktH7QCKPcBDz8YIJKboK6XLCAdmchH0V88OvnoDQP
+         kPI/AKWwECCx9OM1CYZMrzi9XYfxaY2wZ4obmFIITxpol7tO4sjR3vF3x+OI/GATNO2Z
+         86wA==
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-Received: by 10.180.189.102 with SMTP id gh6mr14791444wic.95.1444675954259;
+ Mon, 12 Oct 2015 11:52:34 -0700 (PDT)
+Received: by 10.27.186.66 with HTTP; Mon, 12 Oct 2015 11:52:34 -0700 (PDT)
+In-Reply-To: <5343370.v9SSDYu64C@wuerfel>
+References: <cover.1444670615.git.shivanib134@gmail.com>
+	<3f3303356a62e08e17ffde7cdc8531d5b1fd34bc.1444670615.git.shivanib134@gmail.com>
+	<5343370.v9SSDYu64C@wuerfel>
+Date: Tue, 13 Oct 2015 00:22:34 +0530
+Message-ID: <CAKHNQQH0hz5_yDC9KSc65uRXybLNe62Xiu7kk5edZawO0qJLMw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 1/3] Staging: wilc1000:
+ host_interface: Remove extra NULL test
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-
-
-On Mon, 12 Oct 2015, Shivani Bhardwaj wrote:
-
-> Remove declaration and initialization of variables that are not used
-> anywhere in the code.
-> Issue found using coccinelle.
-
-You also removed the typedef.  That should be in the commit message.
-
-julia
-
-> 
-> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> ---
-> Changes in v2:
->         Deleted one patch and added another. Improved the other ones.
-> 
->  drivers/staging/wilc1000/host_interface.c | 15 ---------------
->  1 file changed, 15 deletions(-)
-> 
-> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-> index 6c41e62..e36c767 100644
-> --- a/drivers/staging/wilc1000/host_interface.c
-> +++ b/drivers/staging/wilc1000/host_interface.c
-> @@ -449,12 +449,6 @@ typedef struct _tstrBssTable {
->  	tstrJoinBssParam *tail;
->  } tstrBssTable;
->  
-> -typedef enum {
-> -	SCAN_TIMER = 0,
-> -	CONNECT_TIMER	= 1,
-> -	SCAN_CONNECT_TIMER_FORCE_32BIT = 0xFFFFFFFF
-> -} tenuScanConnTimer;
-> -
->  /*****************************************************************************/
->  /*																			 */
->  /*							Global Variabls	                                                                 */
-> @@ -4853,7 +4847,6 @@ s32 host_int_set_join_req(tstrWILC_WFIDrv *hWFIDrv, u8 *pu8bssid,
->  {
->  	s32 s32Error = 0;
->  	struct host_if_msg msg;
-> -	tenuScanConnTimer enuScanConnTimer;
->  
->  	if (pstrWFIDrv == NULL || pfConnectResult == NULL) {
->  		s32Error = -EFAULT;
-> @@ -4861,11 +4854,6 @@ s32 host_int_set_join_req(tstrWILC_WFIDrv *hWFIDrv, u8 *pu8bssid,
->  		return s32Error;
->  	}
->  
-> -	if (hWFIDrv == NULL) {
-> -		PRINT_ER("Driver is null\n");
-> -		return -EFAULT;
-> -	}
-> -
->  	if (pJoinParams == NULL) {
->  		PRINT_ER("Unable to Join - JoinParams is NULL\n");
->  		return -EFAULT;
-> @@ -4916,7 +4904,6 @@ s32 host_int_set_join_req(tstrWILC_WFIDrv *hWFIDrv, u8 *pu8bssid,
->  		return -EFAULT;
->  	}
->  
-> -	enuScanConnTimer = CONNECT_TIMER;
->  	pstrWFIDrv->hConnectTimer.data = (unsigned long)hWFIDrv;
->  	mod_timer(&pstrWFIDrv->hConnectTimer,
->  		  jiffies + msecs_to_jiffies(HOST_IF_CONNECT_TIMEOUT));
-> @@ -5506,7 +5493,6 @@ s32 host_int_scan(tstrWILC_WFIDrv *hWFIDrv, u8 u8ScanSource,
->  {
->  	s32 s32Error = 0;
->  	struct host_if_msg msg;
-> -	tenuScanConnTimer enuScanConnTimer;
->  
->  	if (pstrWFIDrv == NULL || ScanResult == NULL) {
->  		PRINT_ER("pstrWFIDrv or ScanResult = NULL\n");
-> @@ -5548,7 +5534,6 @@ s32 host_int_scan(tstrWILC_WFIDrv *hWFIDrv, u8 u8ScanSource,
->  		return -EINVAL;
->  	}
->  
-> -	enuScanConnTimer = SCAN_TIMER;
->  	PRINT_D(HOSTINF_DBG, ">> Starting the SCAN timer\n");
->  	pstrWFIDrv->hScanTimer.data = (unsigned long)hWFIDrv;
->  	mod_timer(&pstrWFIDrv->hScanTimer,
-> -- 
-> 2.1.0
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/89a5b09ad425b0a21649a5438e3311f92ade83a6.1444670615.git.shivanib134%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
+On Tue, Oct 13, 2015 at 12:20 AM, Arnd Bergmann <arnd@arndb.de> wrote:
+> On Monday 12 October 2015 23:02:01 Shivani Bhardwaj wrote:
+>> Remove NULL test statement as it is preceded by another NULL test on the
+>> same variable in the code.
+>> Issue found using coccinelle.
+>>
+>> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+>> ---
+>> Changes in v2:
+>>         Deleted one patch and added another. Improved the other ones.
+>>  drivers/staging/wilc1000/host_interface.c | 3 ---
+>>  1 file changed, 3 deletions(-)
+>
+> In the text above, it makes sense to provide an abbreviated
+> version of the semantic patch when you send something that was
+> generated by coccinelle.
+>
+>> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+>> index bb833d3..5e4d620 100644
+>> --- a/drivers/staging/wilc1000/host_interface.c
+>> +++ b/drivers/staging/wilc1000/host_interface.c
+>> @@ -6044,12 +6044,9 @@ s32 host_int_deinit(tstrWILC_WFIDrv *hWFIDrv)
+>>         if (ret)
+>>                 s32Error = -ENOENT;
+>>
+>> -       if (pstrWFIDrv != NULL) {
+>>                 kfree(pstrWFIDrv);
+>>                 /* pstrWFIDrv=NULL; */
+>>
+>> -       }
+>> -
+>
+> Now the indentation of the kfree() is wrong, it needs to go one tabstop
+> to the left. Also, the comment behind it can be removed in the same
+> patch.
+>
+>         Arnd
+Yes, I'm fixing that and removing the comment. Sending v3.
+thank you.
 
