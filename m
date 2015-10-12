@@ -1,132 +1,145 @@
 X-GM-THRID: 6204754090721804288
-X-Received: by 10.180.210.71 with SMTP id ms7mr2922129wic.4.1444658066972;
-        Mon, 12 Oct 2015 06:54:26 -0700 (PDT)
+X-Received: by 10.68.222.104 with SMTP id ql8mr24077804pbc.9.1444657571331;
+        Mon, 12 Oct 2015 06:46:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.20.197 with SMTP id 66ls60992lfu.96.gmail; Mon, 12 Oct 2015
- 06:54:26 -0700 (PDT)
-X-Received: by 10.112.173.136 with SMTP id bk8mr5713496lbc.20.1444658066349;
-        Mon, 12 Oct 2015 06:54:26 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h2si506660wiy.0.2015.10.12.06.54.26
+Received: by 10.182.247.7 with SMTP id ya7ls1234066obc.82.gmail; Mon, 12 Oct
+ 2015 06:46:10 -0700 (PDT)
+X-Received: by 10.182.28.73 with SMTP id z9mr24128179obg.45.1444657570894;
+        Mon, 12 Oct 2015 06:46:10 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id uv4si1868140pac.0.2015.10.12.06.46.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 06:54:26 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 12 Oct 2015 06:46:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,673,1437429600"; 
-   d="scan'208";a="182351604"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Oct 2015 15:54:25 +0200
-Date: Mon, 12 Oct 2015 15:54:23 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x234.google.com with SMTP id hy16so154725803pad.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 06:46:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:in-reply-to:message-id:references
+         :user-agent:mime-version:content-type;
+        bh=CXWnaG9tJgJElK7PleMpMp0oRAIcHeJBj3tCNPHMHAk=;
+        b=WpkLbhGKhqps3QZBXxUXIXcOLR7hTIrOz0CToDJ0up1D/RIO/r3cyYdKWTDT5mfYAp
+         +oCb4DDk84OJNeIK00LSBtt/PMO3EmtrbmN+rTfNs3gVhZF8ZfHvet52PwwjEvZ6PCsO
+         LAb0Tmk8cNjcPlIZSACwfZaougTPBPPnYXiX6WttyDwf8HVIMS/4b8dunqNh9xnVwoUO
+         vXNr/bx+Za/Lq8vlC2ucGpZHGY+qLsa1i/1Jm/Wj9F3e6h61SDXPv8h4Hlz90QIzET85
+         1FDTU/PW1aks4bCxE/RgcS/SRvsKkM5e5BBMg39d2gFXFW6Gm1v8Iko0fAYivD0yXxIB
+         n/Bg==
+X-Received: by 10.66.234.138 with SMTP id ue10mr34979553pac.9.1444657570748;
+        Mon, 12 Oct 2015 06:46:10 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from [10.30.0.216] ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id su3sm18520118pbc.83.2015.10.12.06.46.06
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 12 Oct 2015 06:46:10 -0700 (PDT)
+Date: Mon, 12 Oct 2015 19:15:59 +0530 (IST)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+X-X-Sender: root@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V
 To: Shivani Bhardwaj <shivanib134@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/3] Staging: wilc1000: host_interface:
- Remove unused code
-In-Reply-To: <d8f8cff7018b0c9905df40eaa754b53e8164324e.1444655924.git.shivanib134@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510121542430.2652@hadrien>
-References: <cover.1444655924.git.shivanib134@gmail.com> <d8f8cff7018b0c9905df40eaa754b53e8164324e.1444655924.git.shivanib134@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Subject: Re: [Outreachy kernel] [PATCH 1/3] Staging: wilc1000: host_interface:
+ Replace kmalloc with kzalloc
+In-Reply-To: <eac47047141a3ed75e04ca4cfb1fece8a8ef349f.1444655924.git.shivanib134@gmail.com>
+Message-ID: <alpine.DEB.2.11.1510121914060.20398@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+References: <cover.1444655924.git.shivanib134@gmail.com> <eac47047141a3ed75e04ca4cfb1fece8a8ef349f.1444655924.git.shivanib134@gmail.com>
+User-Agent: Alpine 2.11 (DEB 23 2013-08-11)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150208.561BB9A1.0110,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
+
+
 
 On Mon, 12 Oct 2015, Shivani Bhardwaj wrote:
 
-> Remove declaration and initialization of variables that are not used
-> anywhere in the code.
+> Replace the function kmalloc and following memset function with a
+> single function kzalloc.
 > Issue found using coccinelle.
+
+Hello Shivani,
+  This was done by me in a patch series on 9th Oct. Since it hasn't been 
+applied yet, you probably missed it :)
+
+Shraddha
 >
 > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 > ---
->  drivers/staging/wilc1000/host_interface.c | 4 ----
->  1 file changed, 4 deletions(-)
+> drivers/staging/wilc1000/host_interface.c | 13 +++----------
+> 1 file changed, 3 insertions(+), 10 deletions(-)
 >
 > diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-> index b6eea9a..9e8bbc1 100644
+> index bb833d3..d279eba 100644
 > --- a/drivers/staging/wilc1000/host_interface.c
 > +++ b/drivers/staging/wilc1000/host_interface.c
-> @@ -4894,7 +4894,6 @@ s32 host_int_set_join_req(tstrWILC_WFIDrv *hWFIDrv, u8 *pu8bssid,
->  	s32 s32Error = 0;
->  	tstrWILC_WFIDrv *pstrWFIDrv = (tstrWILC_WFIDrv *)hWFIDrv;
->  	struct host_if_msg msg;
-> -	tenuScanConnTimer enuScanConnTimer;
-
-Got grep shows me only three uses of "tenuScanConnTimer".  One is the
-typedef, and the other two are removed by your patch.  So you could redo
-the patch and get rid of the typedef as well.
-
-Looking a bit more at the code, I see the following, which looks strange:
-
-tstrWILC_WFIDrv *pstrWFIDrv = (tstrWILC_WFIDrv *)hWFIDrv;
-
-As far as I can tell, hWFIDrv already has type tstrWILC_WFIDrv, so the
-cast is not necessary.  And it seems strange to have the two tests, first
-
-if (pstrWFIDrv == NULL || pfConnectResult == NULL)
-
-and then
-
-if (hWFIDrv == NULL)
-
-because the second one tests a subset of what the first one tests.
-
-Greg would also say that we don't need the type names embedded in the
-variable names either, but that would be a lot to change, especially since
-it impacts the field names too.
-
-In Coccinelle, you can make an expression metavariable that matches
-expressions of a particular type.  So
-
-@@
-type T;
-T e;
-identifier x;
-@@
-
-* T x = (T)e;
-
-will highlight initializations with useless casts.
-
-julia
-
+> @@ -2523,16 +2523,13 @@ static int Handle_Key(tstrWILC_WFIDrv *drvHandler,
 >
->  	if (pstrWFIDrv == NULL || pfConnectResult == NULL) {
->  		s32Error = -EFAULT;
-> @@ -4957,7 +4956,6 @@ s32 host_int_set_join_req(tstrWILC_WFIDrv *hWFIDrv, u8 *pu8bssid,
->  		return -EFAULT;
->  	}
+> 	case WPARxGtk:
+> 		if (pstrHostIFkeyAttr->u8KeyAction & ADDKEY_AP)	{
+> -			pu8keybuf = kmalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
+> +			pu8keybuf = kzalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
+> 			if (pu8keybuf == NULL) {
+> 				PRINT_ER("No buffer to send RxGTK Key\n");
+> 				ret = -1;
+> 				goto _WPARxGtk_end_case_;
+> 			}
 >
-> -	enuScanConnTimer = CONNECT_TIMER;
->  	pstrWFIDrv->hConnectTimer.data = (unsigned long)hWFIDrv;
->  	mod_timer(&pstrWFIDrv->hConnectTimer,
->  		  jiffies + msecs_to_jiffies(HOST_IF_CONNECT_TIMEOUT));
-> @@ -5560,7 +5558,6 @@ s32 host_int_scan(tstrWILC_WFIDrv *hWFIDrv, u8 u8ScanSource,
->  	s32 s32Error = 0;
->  	tstrWILC_WFIDrv *pstrWFIDrv = (tstrWILC_WFIDrv *)hWFIDrv;
->  	struct host_if_msg msg;
-> -	tenuScanConnTimer enuScanConnTimer;
+> -			memset(pu8keybuf, 0, RX_MIC_KEY_MSG_LEN);
+> -
+> -
+> 			/*|----------------------------------------------------------------------------|
+> 			 * |Sta Address | Key RSC | KeyID | Key Length | Temporal Key	| Rx Michael Key |
+> 			 * |------------|---------|-------|------------|---------------|----------------|
+> @@ -2574,16 +2571,13 @@ static int Handle_Key(tstrWILC_WFIDrv *drvHandler,
+> 		if (pstrHostIFkeyAttr->u8KeyAction & ADDKEY) {
+> 			PRINT_D(HOSTINF_DBG, "Handling group key(Rx) function\n");
 >
->  	if (pstrWFIDrv == NULL || ScanResult == NULL) {
->  		PRINT_ER("pstrWFIDrv or ScanResult = NULL\n");
-> @@ -5602,7 +5599,6 @@ s32 host_int_scan(tstrWILC_WFIDrv *hWFIDrv, u8 u8ScanSource,
->  		return -EINVAL;
->  	}
+> -			pu8keybuf = kmalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
+> +			pu8keybuf = kzalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
+> 			if (pu8keybuf == NULL) {
+> 				PRINT_ER("No buffer to send RxGTK Key\n");
+> 				ret = -1;
+> 				goto _WPARxGtk_end_case_;
+> 			}
 >
-> -	enuScanConnTimer = SCAN_TIMER;
->  	PRINT_D(HOSTINF_DBG, ">> Starting the SCAN timer\n");
->  	pstrWFIDrv->hScanTimer.data = (unsigned long)hWFIDrv;
->  	mod_timer(&pstrWFIDrv->hScanTimer,
-> --
+> -			memset(pu8keybuf, 0, RX_MIC_KEY_MSG_LEN);
+> -
+> -
+> 			/*|----------------------------------------------------------------------------|
+> 			 * |Sta Address | Key RSC | KeyID | Key Length | Temporal Key	| Rx Michael Key |
+> 			 * |------------|---------|-------|------------|---------------|----------------|
+> @@ -6750,9 +6744,8 @@ static void *host_int_ParseJoinBssParam(tstrNetworkInfo *ptstrNetworkInfo)
+> 	pu8IEs = ptstrNetworkInfo->pu8IEs;
+> 	u16IEsLen = ptstrNetworkInfo->u16IEsLen;
+>
+> -	pNewJoinBssParam = kmalloc(sizeof(tstrJoinBssParam), GFP_KERNEL);
+> +	pNewJoinBssParam = kzalloc(sizeof(tstrJoinBssParam), GFP_KERNEL);
+> 	if (pNewJoinBssParam != NULL) {
+> -		memset(pNewJoinBssParam, 0, sizeof(tstrJoinBssParam));
+> 		pNewJoinBssParam->dtim_period = ptstrNetworkInfo->u8DtimPeriod;
+> 		pNewJoinBssParam->beacon_period = ptstrNetworkInfo->u16BeaconPeriod;
+> 		pNewJoinBssParam->cap_info = ptstrNetworkInfo->u16CapInfo;
+> -- 
 > 2.1.0
 >
-> --
+> -- 
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/d8f8cff7018b0c9905df40eaa754b53e8164324e.1444655924.git.shivanib134%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/eac47047141a3ed75e04ca4cfb1fece8a8ef349f.1444655924.git.shivanib134%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
