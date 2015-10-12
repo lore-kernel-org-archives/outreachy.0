@@ -1,59 +1,57 @@
 X-GM-THRID: 6202672545102036992
-X-Received: by 10.180.210.212 with SMTP id mw20mr3097716wic.3.1444667956004;
-        Mon, 12 Oct 2015 09:39:16 -0700 (PDT)
+X-Received: by 10.112.209.73 with SMTP id mk9mr5826152lbc.14.1444667884334;
+        Mon, 12 Oct 2015 09:38:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.81.208 with SMTP id f199ls69121lfb.101.gmail; Mon, 12 Oct
- 2015 09:39:15 -0700 (PDT)
-X-Received: by 10.112.140.202 with SMTP id ri10mr5183269lbb.10.1444667955315;
-        Mon, 12 Oct 2015 09:39:15 -0700 (PDT)
+Received: by 10.25.208.78 with SMTP id h75ls572388lfg.83.gmail; Mon, 12 Oct
+ 2015 09:38:03 -0700 (PDT)
+X-Received: by 10.112.202.165 with SMTP id kj5mr5824886lbc.5.1444667883851;
+        Mon, 12 Oct 2015 09:38:03 -0700 (PDT)
 Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
-        by gmr-mx.google.com with ESMTPS id bh7si539718wib.1.2015.10.12.09.39.15
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id hs5si543231wib.1.2015.10.12.09.38.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 09:39:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Oct 2015 09:38:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22a.google.com with SMTP id q12so28610578wie.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 09:39:15 -0700 (PDT)
+Received: by mail-wi0-x233.google.com with SMTP id gb1so156137818wic.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 09:38:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=mLypjdca2FzFEKG6QqG53ShMIfUyklWuIjS3ep4Q4E4=;
-        b=Z9P8cuq95mnS2DNZGovtzjgWCJzTxkTmCwfnTdUGvO0OGwS4//h3d28WtCU52bD2Ma
-         bV9v7/DMPqerg+O8SM2Sg+N6TiC70bqKpVf4DopsO9g3qPPA6VCYgHqQfoG94gpCllbo
-         e/QUz36/Drp5FbWU6Dv+uMwM251L7DXaN2LD0ZEY5+aJguZ/+5IcDMEQGFAAK3oBIZYj
-         9zsS4jux1dAwvvHKHfIKbdltejOq5Ku7keZGVbPBb0OHBTh3PjwA05oM57WL2wBCeQ+I
-         /mA2reXv/8Lxaok++92JP/fbBg6VroHa2X7ToJbmHvHgialf5H/swXJijEquW930r3pp
-         6yyQ==
+        bh=dDfgPclA1+Wk3fFIKv1ZJxBTuEURMussewWjjtcjI0A=;
+        b=TjWEO6cdwLe0uYr/sS8rUpQ4YtkSO49jU6kGvEkkl7VYIkmB5G1VXEkmLCHyxwvWMk
+         WOKmKeOmZd6SX/Eh1DAX0UORWIusN4vg9jUD97BTKdMTT1b/u7a2yJu4z4SdExZ2CgXe
+         u/F5fmHzXJ5pVKBQQMdzPP0qTToHoCPuAnHejqQHG2fM7GO4FqDrvSkEA7LTY2/XyPTH
+         5S1SlU1/5QKAillpF/278PC/XA0ygx5Uo7ucVIOR/iQVbMlx/WTWpVaMbuRxO/DNO7/G
+         6NdOglI2r1E/SheDvoqGcLG3C1PjQeK/hZZBMYRG3Kl4yTVvMd71kfT7/Swnl1HTKHOF
+         eX6Q==
 MIME-Version: 1.0
-X-Received: by 10.194.175.104 with SMTP id bz8mr31489913wjc.42.1444667955158;
- Mon, 12 Oct 2015 09:39:15 -0700 (PDT)
-Received: by 10.194.165.102 with HTTP; Mon, 12 Oct 2015 09:39:15 -0700 (PDT)
-In-Reply-To: <dda33ad15dafe15f720f120eb5c0d87efb52f391.1444419393.git.ciorneiioana@gmail.com>
+X-Received: by 10.180.221.193 with SMTP id qg1mr14924873wic.87.1444667883647;
+ Mon, 12 Oct 2015 09:38:03 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Mon, 12 Oct 2015 09:38:03 -0700 (PDT)
+In-Reply-To: <d94402f948a0d2561ee046fd5fcb56ea562ab1bf.1444419393.git.ciorneiioana@gmail.com>
 References: <cover.1444419393.git.ciorneiioana@gmail.com>
-	<dda33ad15dafe15f720f120eb5c0d87efb52f391.1444419393.git.ciorneiioana@gmail.com>
-Date: Mon, 12 Oct 2015 19:39:15 +0300
-Message-ID: <CAEnQRZCfnbYtcrXUrfenNP7hOVr6MVsy-iS-0oT=G-p5TRew+Q@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v3 6/9] staging: iio: adc: add blank
- line after declarations
+	<d94402f948a0d2561ee046fd5fcb56ea562ab1bf.1444419393.git.ciorneiioana@gmail.com>
+Date: Mon, 12 Oct 2015 19:38:03 +0300
+Message-ID: <CAEnQRZAZ0f5p3myoNWSdzF=WhxoPWMxNLYn+wcHThYz_YrqKzg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 5/9] staging: iio: adc: add spaces
+ around binary operators
 From: Daniel Baluta <daniel.baluta@gmail.com>
 To: Ioana Ciornei <ciorneiioana@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Content-Type: text/plain; charset=UTF-8
 
 On Fri, Oct 9, 2015 at 10:51 PM, Ioana Ciornei <ciorneiioana@gmail.com> wrote:
-> Insert a blank line after declarations
+> Add spaces around binary operators like -, +, * etc
+> in order to improve readability
 >
 > Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
-
-Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
-
 > ---
 >
 > Changes in v2:
@@ -61,34 +59,77 @@ Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 > Changes in v3:
 >     - nothing
 >
->  drivers/staging/iio/adc/ad7606_par.c | 1 +
->  drivers/staging/iio/adc/ad7606_spi.c | 1 +
->  2 files changed, 2 insertions(+)
+>  drivers/staging/iio/adc/ad7192.c  | 2 +-
+>  drivers/staging/iio/adc/ad7280a.c | 4 ++--
+>  drivers/staging/iio/adc/ad7816.c  | 2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
 >
-> diff --git a/drivers/staging/iio/adc/ad7606_par.c b/drivers/staging/iio/adc/ad7606_par.c
-> index 3537a78..adc370e 100644
-> --- a/drivers/staging/iio/adc/ad7606_par.c
-> +++ b/drivers/staging/iio/adc/ad7606_par.c
-> @@ -113,6 +113,7 @@ static const struct dev_pm_ops ad7606_pm_ops = {
->         .suspend = ad7606_par_suspend,
->         .resume  = ad7606_par_resume,
+> diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+> index e7212c8..1bae258 100644
+> --- a/drivers/staging/iio/adc/ad7192.c
+> +++ b/drivers/staging/iio/adc/ad7192.c
+> @@ -377,7 +377,7 @@ ad7192_show_scale_available(struct device *dev,
+>  }
+>
+>  static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
+> -                            in_voltage-voltage_scale_available,
+> +                            in_voltage - voltage_scale_available,
+
+This is not ok :). in_voltage-voltage_scale_available is the name of
+an IIO sysfs
+attribute exposed to user space. '-' is a part of the name, there is
+no binary operator
+here.
+
+If checkpatch complains about this then it's a false positive.
+
+
+>                              S_IRUGO, ad7192_show_scale_available, NULL, 0);
+>
+>  static IIO_DEVICE_ATTR(in_voltage_scale_available, S_IRUGO,
+> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> index 2c07198..e8e1eb1 100644
+> --- a/drivers/staging/iio/adc/ad7280a.c
+> +++ b/drivers/staging/iio/adc/ad7280a.c
+> @@ -748,14 +748,14 @@ out:
+>  }
+>
+>  static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+> -               in_voltage-voltage_thresh_low_value,
+> +               in_voltage - voltage_thresh_low_value,
+>                 S_IRUGO | S_IWUSR,
+>                 ad7280_read_channel_config,
+>                 ad7280_write_channel_config,
+>                 AD7280A_CELL_UNDERVOLTAGE);
+
+Ditto.
+
+>
+>  static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
+> -               in_voltage-voltage_thresh_high_value,
+> +               in_voltage - voltage_thresh_high_value,
+
+Ditto.
+
+>                 S_IRUGO | S_IWUSR,
+>                 ad7280_read_channel_config,
+>                 ad7280_write_channel_config,
+> diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
+> index 4e954d2..6636087 100644
+> --- a/drivers/staging/iio/adc/ad7816.c
+> +++ b/drivers/staging/iio/adc/ad7816.c
+> @@ -48,7 +48,7 @@ struct ad7816_chip_info {
+>         u16 rdwr_pin;
+>         u16 convert_pin;
+>         u16 busy_pin;
+> -       u8  oti_data[AD7816_CS_MAX+1];
+> +       u8  oti_data[AD7816_CS_MAX + 1];
+
+This is ok.
+
+>         u8  channel_id; /* 0 always be temperature */
+>         u8  mode;
 >  };
-> +
->  #define AD7606_PAR_PM_OPS (&ad7606_pm_ops)
->
->  #else
-> diff --git a/drivers/staging/iio/adc/ad7606_spi.c b/drivers/staging/iio/adc/ad7606_spi.c
-> index 9c62e94..b88f882 100644
-> --- a/drivers/staging/iio/adc/ad7606_spi.c
-> +++ b/drivers/staging/iio/adc/ad7606_spi.c
-> @@ -85,6 +85,7 @@ static const struct dev_pm_ops ad7606_pm_ops = {
->         .suspend = ad7606_spi_suspend,
->         .resume  = ad7606_spi_resume,
->  };
-> +
->  #define AD7606_SPI_PM_OPS (&ad7606_pm_ops)
->
->  #else
 > --
 > 2.1.4
 >
@@ -96,6 +137,6 @@ Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/dda33ad15dafe15f720f120eb5c0d87efb52f391.1444419393.git.ciorneiioana%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/d94402f948a0d2561ee046fd5fcb56ea562ab1bf.1444419393.git.ciorneiioana%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 
