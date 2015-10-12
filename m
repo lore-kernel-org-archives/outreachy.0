@@ -1,151 +1,183 @@
 X-GM-THRID: 6202672545102036992
-X-Received: by 10.31.161.201 with SMTP id k192mr25376451vke.12.1444676431745;
-        Mon, 12 Oct 2015 12:00:31 -0700 (PDT)
+X-Received: by 10.112.159.4 with SMTP id wy4mr3942972lbb.15.1444669196469;
+        Mon, 12 Oct 2015 09:59:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.31.54 with SMTP id e51ls2610009qge.6.gmail; Mon, 12 Oct
- 2015 12:00:31 -0700 (PDT)
-X-Received: by 10.129.70.6 with SMTP id t6mr27393397ywa.5.1444676431083;
-        Mon, 12 Oct 2015 12:00:31 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-yk0-x231.google.com (mail-yk0-x231.google.com. [2607:f8b0:4002:c07::231])
-        by gmr-mx.google.com with ESMTPS id y11si1273927ywd.7.2015.10.12.12.00.31
+Received: by 10.25.162.81 with SMTP id l78ls492648lfe.46.gmail; Mon, 12 Oct
+ 2015 09:59:55 -0700 (PDT)
+X-Received: by 10.112.63.165 with SMTP id h5mr5953721lbs.18.1444669195903;
+        Mon, 12 Oct 2015 09:59:55 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id w4si600970wiz.0.2015.10.12.09.59.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 12:00:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::231 as permitted sender) client-ip=2607:f8b0:4002:c07::231;
+        Mon, 12 Oct 2015 09:59:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::231 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-yk0-x231.google.com with SMTP id c126so105132568yke.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 12:00:31 -0700 (PDT)
+Received: by mail-wi0-x230.google.com with SMTP id ge5so25517728wic.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 09:59:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=uJ1aVOfdpePoTf2Ga3oY8BPZ6egTIYOYI8g5+VdHva8=;
-        b=kaL6ZByWHXbPj117at9PEHbgGj+dnrLZ0T3LDpRsz2FQ9M2YqWnDBBD1vlo1ld9hfs
-         4xap/BIuxfdzaR+W57UVS5I00cp0cklEPj2AJjuBxQKBRrSDX3z08kHfum2TM/uoTXfB
-         CQ/mM7ZsHt5q7S58d7VqSAo9x4JdJo3cEYC9orEyNt673OE1h3nKFSEiIoSO1LPBOh3G
-         WzuIh84itqqAET88/3jY8bmYemhwLTuPEAH2Apk5D+b83IYmkT/weSxSk/N7HH2NcjjP
-         ebJTk3we30GandtqKAQZvwa9wBFM/QrknAo5zPntjDHpTeX1FbOn1uEbI2pzMDku9vZe
-         hgcA==
+        bh=sLcwoI+m4S0YoqRt9cGTEhTcY0YuC5kNtXvQW/uquX4=;
+        b=pgsfLpHbi2C6q2UFZjJP9N8Q/rEDr2+zOGhysZ1qly6s/ix6bqKslOIVBQw1/+oU6N
+         Hf56C/qe8+Ki0/4JAqqKmjP+u6aApSRXb81QC5eqJALwjSdXltLGI60pi2iVlcXMEwxl
+         +08VphrrzA4pauzZKWo7Qi+mmw6IAlhB/K4zR9gk4nxHaQfd+aOPsfWA9jinerukqToA
+         7KyaRZ3WHSmAg29k5BttLdiIjFWgmLRXfIrV+79aY60LrN44Ex9Lr1+fOPwZ6xh3Mb/R
+         GzinkVDs73XNXqQnJf1HdbY1dPwlYfjX5g32UH/HiuB7dByO+2I1Kx+f3tRSZRtteT7s
+         zRKg==
 MIME-Version: 1.0
-X-Received: by 10.129.157.129 with SMTP id u123mr23391875ywg.11.1444676430997;
- Mon, 12 Oct 2015 12:00:30 -0700 (PDT)
-Received: by 10.37.107.66 with HTTP; Mon, 12 Oct 2015 12:00:30 -0700 (PDT)
-In-Reply-To: <CAEnQRZAZ0f5p3myoNWSdzF=WhxoPWMxNLYn+wcHThYz_YrqKzg@mail.gmail.com>
+X-Received: by 10.180.81.199 with SMTP id c7mr15060795wiy.87.1444669195754;
+ Mon, 12 Oct 2015 09:59:55 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Mon, 12 Oct 2015 09:59:55 -0700 (PDT)
+In-Reply-To: <e6bc65aa90f1ab391b061fd8a046c452ebcd95a9.1444419393.git.ciorneiioana@gmail.com>
 References: <cover.1444419393.git.ciorneiioana@gmail.com>
-	<d94402f948a0d2561ee046fd5fcb56ea562ab1bf.1444419393.git.ciorneiioana@gmail.com>
-	<CAEnQRZAZ0f5p3myoNWSdzF=WhxoPWMxNLYn+wcHThYz_YrqKzg@mail.gmail.com>
-Date: Mon, 12 Oct 2015 22:00:30 +0300
-Message-ID: <CAHWJYFm8t+=JB7RGOb1xVtFVrn8fDvT0eVyH5jxio2yojcohpQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v3 5/9] staging: iio: adc: add spaces
- around binary operators
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: Daniel Baluta <daniel.baluta@gmail.com>
+	<e6bc65aa90f1ab391b061fd8a046c452ebcd95a9.1444419393.git.ciorneiioana@gmail.com>
+Date: Mon, 12 Oct 2015 19:59:55 +0300
+Message-ID: <CAEnQRZAzubs6JJ9vO_FiYS-+JQDcXCEPWdeHvF_h5vD8_D68_A@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 1/9] staging: iio: adc: use kernel
+ types u32 and u64
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Ioana Ciornei <ciorneiioana@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Content-Type: text/plain; charset=UTF-8
 
-On Mon, Oct 12, 2015 at 7:38 PM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
-> On Fri, Oct 9, 2015 at 10:51 PM, Ioana Ciornei <ciorneiioana@gmail.com> wrote:
->> Add spaces around binary operators like -, +, * etc
->> in order to improve readability
->>
->> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
->> ---
->>
->> Changes in v2:
->>     - nothing
->> Changes in v3:
->>     - nothing
->>
->>  drivers/staging/iio/adc/ad7192.c  | 2 +-
->>  drivers/staging/iio/adc/ad7280a.c | 4 ++--
->>  drivers/staging/iio/adc/ad7816.c  | 2 +-
->>  3 files changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
->> index e7212c8..1bae258 100644
->> --- a/drivers/staging/iio/adc/ad7192.c
->> +++ b/drivers/staging/iio/adc/ad7192.c
->> @@ -377,7 +377,7 @@ ad7192_show_scale_available(struct device *dev,
->>  }
->>
->>  static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
->> -                            in_voltage-voltage_scale_available,
->> +                            in_voltage - voltage_scale_available,
+On Fri, Oct 9, 2015 at 10:51 PM, Ioana Ciornei <ciorneiioana@gmail.com> wrote:
+> Convert uint32_t to u32 and uint64_t to u64 in order to
+> follow the kernel best practice
 >
-> This is not ok :). in_voltage-voltage_scale_available is the name of
-> an IIO sysfs
-> attribute exposed to user space. '-' is a part of the name, there is
-> no binary operator
-> here.
->
-> If checkpatch complains about this then it's a false positive.
+> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
-Yes, checkpatch generated a warning and also there were no build errors.
-Sorry about this. I will send a v2.
-
-Ioana
-
+> ---
+> Changes in v2:
+>     - nothing
+> Changes in v3:
+>     - nothing
 >
+>  drivers/staging/iio/adc/mxs-lradc.c | 30 +++++++++++++++---------------
+>  1 file changed, 15 insertions(+), 15 deletions(-)
 >
->>                              S_IRUGO, ad7192_show_scale_available, NULL, 0);
->>
->>  static IIO_DEVICE_ATTR(in_voltage_scale_available, S_IRUGO,
->> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
->> index 2c07198..e8e1eb1 100644
->> --- a/drivers/staging/iio/adc/ad7280a.c
->> +++ b/drivers/staging/iio/adc/ad7280a.c
->> @@ -748,14 +748,14 @@ out:
->>  }
->>
->>  static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
->> -               in_voltage-voltage_thresh_low_value,
->> +               in_voltage - voltage_thresh_low_value,
->>                 S_IRUGO | S_IWUSR,
->>                 ad7280_read_channel_config,
->>                 ad7280_write_channel_config,
->>                 AD7280A_CELL_UNDERVOLTAGE);
+> diff --git a/drivers/staging/iio/adc/mxs-lradc.c b/drivers/staging/iio/adc/mxs-lradc.c
+> index 3f7715c..d88d85b 100644
+> --- a/drivers/staging/iio/adc/mxs-lradc.c
+> +++ b/drivers/staging/iio/adc/mxs-lradc.c
+> @@ -108,12 +108,12 @@ static const char * const mx28_lradc_irq_names[] = {
+>  struct mxs_lradc_of_config {
+>         const int               irq_count;
+>         const char * const      *irq_name;
+> -       const uint32_t          *vref_mv;
+> +       const u32               *vref_mv;
+>  };
 >
-> Ditto.
+>  #define VREF_MV_BASE 1850
 >
->>
->>  static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
->> -               in_voltage-voltage_thresh_high_value,
->> +               in_voltage - voltage_thresh_high_value,
+> -static const uint32_t mx23_vref_mv[LRADC_MAX_TOTAL_CHANS] = {
+> +static const u32 mx23_vref_mv[LRADC_MAX_TOTAL_CHANS] = {
+>         VREF_MV_BASE,           /* CH0 */
+>         VREF_MV_BASE,           /* CH1 */
+>         VREF_MV_BASE,           /* CH2 */
+> @@ -132,7 +132,7 @@ static const uint32_t mx23_vref_mv[LRADC_MAX_TOTAL_CHANS] = {
+>         VREF_MV_BASE * 4,       /* CH15 VDD5V */
+>  };
 >
-> Ditto.
+> -static const uint32_t mx28_vref_mv[LRADC_MAX_TOTAL_CHANS] = {
+> +static const u32 mx28_vref_mv[LRADC_MAX_TOTAL_CHANS] = {
+>         VREF_MV_BASE,           /* CH0 */
+>         VREF_MV_BASE,           /* CH1 */
+>         VREF_MV_BASE,           /* CH2 */
+> @@ -198,14 +198,14 @@ struct mxs_lradc {
 >
->>                 S_IRUGO | S_IWUSR,
->>                 ad7280_read_channel_config,
->>                 ad7280_write_channel_config,
->> diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
->> index 4e954d2..6636087 100644
->> --- a/drivers/staging/iio/adc/ad7816.c
->> +++ b/drivers/staging/iio/adc/ad7816.c
->> @@ -48,7 +48,7 @@ struct ad7816_chip_info {
->>         u16 rdwr_pin;
->>         u16 convert_pin;
->>         u16 busy_pin;
->> -       u8  oti_data[AD7816_CS_MAX+1];
->> +       u8  oti_data[AD7816_CS_MAX + 1];
+>         struct clk              *clk;
 >
-> This is ok.
+> -       uint32_t                *buffer;
+> +       u32                     *buffer;
+>         struct iio_trigger      *trig;
 >
->>         u8  channel_id; /* 0 always be temperature */
->>         u8  mode;
->>  };
->> --
->> 2.1.4
->>
->> --
->> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
->> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
->> To post to this group, send email to outreachy-kernel@googlegroups.com.
->> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/d94402f948a0d2561ee046fd5fcb56ea562ab1bf.1444419393.git.ciorneiioana%40gmail.com.
->> For more options, visit https://groups.google.com/d/optout.
+>         struct mutex            lock;
+>
+>         struct completion       completion;
+>
+> -       const uint32_t          *vref_mv;
+> +       const u32               *vref_mv;
+>         struct mxs_lradc_scale  scale_avail[LRADC_MAX_TOTAL_CHANS][2];
+>         unsigned long           is_divided;
+>
+> @@ -1138,8 +1138,8 @@ static irqreturn_t mxs_lradc_handle_irq(int irq, void *data)
+>         struct iio_dev *iio = data;
+>         struct mxs_lradc *lradc = iio_priv(iio);
+>         unsigned long reg = readl(lradc->base + LRADC_CTRL1);
+> -       uint32_t clr_irq = mxs_lradc_irq_mask(lradc);
+> -       const uint32_t ts_irq_mask =
+> +       u32 clr_irq = mxs_lradc_irq_mask(lradc);
+> +       const u32 ts_irq_mask =
+>                 LRADC_CTRL1_TOUCH_DETECT_IRQ |
+>                 LRADC_CTRL1_LRADC_IRQ(TOUCHSCREEN_VCHANNEL1) |
+>                 LRADC_CTRL1_LRADC_IRQ(TOUCHSCREEN_VCHANNEL2);
+> @@ -1175,7 +1175,7 @@ static irqreturn_t mxs_lradc_trigger_handler(int irq, void *p)
+>         struct iio_poll_func *pf = p;
+>         struct iio_dev *iio = pf->indio_dev;
+>         struct mxs_lradc *lradc = iio_priv(iio);
+> -       const uint32_t chan_value = LRADC_CH_ACCUMULATE |
+> +       const u32 chan_value = LRADC_CH_ACCUMULATE |
+>                 ((LRADC_DELAY_TIMER_LOOP - 1) << LRADC_CH_NUM_SAMPLES_OFFSET);
+>         unsigned int i, j = 0;
+>
+> @@ -1198,7 +1198,7 @@ static int mxs_lradc_configure_trigger(struct iio_trigger *trig, bool state)
+>  {
+>         struct iio_dev *iio = iio_trigger_get_drvdata(trig);
+>         struct mxs_lradc *lradc = iio_priv(iio);
+> -       const uint32_t st = state ? STMP_OFFSET_REG_SET : STMP_OFFSET_REG_CLR;
+> +       const u32 st = state ? STMP_OFFSET_REG_SET : STMP_OFFSET_REG_CLR;
+>
+>         mxs_lradc_reg_wrt(lradc, LRADC_DELAY_KICK, LRADC_DELAY(0) + st);
+>
+> @@ -1248,10 +1248,10 @@ static int mxs_lradc_buffer_preenable(struct iio_dev *iio)
+>         struct mxs_lradc *lradc = iio_priv(iio);
+>         int ret = 0, chan, ofs = 0;
+>         unsigned long enable = 0;
+> -       uint32_t ctrl4_set = 0;
+> -       uint32_t ctrl4_clr = 0;
+> -       uint32_t ctrl1_irq = 0;
+> -       const uint32_t chan_value = LRADC_CH_ACCUMULATE |
+> +       u32 ctrl4_set = 0;
+> +       u32 ctrl4_clr = 0;
+> +       u32 ctrl1_irq = 0;
+> +       const u32 chan_value = LRADC_CH_ACCUMULATE |
+>                 ((LRADC_DELAY_TIMER_LOOP - 1) << LRADC_CH_NUM_SAMPLES_OFFSET);
+>         const int len = bitmap_weight(iio->active_scan_mask,
+>                         LRADC_MAX_TOTAL_CHANS);
+> @@ -1456,7 +1456,7 @@ static const struct iio_chan_spec mx28_lradc_chan_spec[] = {
+>  static int mxs_lradc_hw_init(struct mxs_lradc *lradc)
+>  {
+>         /* The ADC always uses DELAY CHANNEL 0. */
+> -       const uint32_t adc_cfg =
+> +       const u32 adc_cfg =
+>                 (1 << (LRADC_DELAY_TRIGGER_DELAYS_OFFSET + 0)) |
+>                 (LRADC_DELAY_TIMER_PER << LRADC_DELAY_DELAY_OFFSET);
+>
+> @@ -1583,7 +1583,7 @@ static int mxs_lradc_probe(struct platform_device *pdev)
+>         struct resource *iores;
+>         int ret = 0, touch_ret;
+>         int i, s;
+> -       uint64_t scale_uv;
+> +       u64 scale_uv;
+>
+>         /* Allocate the IIO device. */
+>         iio = devm_iio_device_alloc(dev, sizeof(*lradc));
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/e6bc65aa90f1ab391b061fd8a046c452ebcd95a9.1444419393.git.ciorneiioana%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
