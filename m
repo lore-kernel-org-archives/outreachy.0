@@ -1,86 +1,101 @@
-X-GM-THRID: 10397500309504
-X-Received: by 10.182.24.38 with SMTP id r6mr29641220obf.20.1427730021463;
-        Mon, 30 Mar 2015 08:40:21 -0700 (PDT)
+X-GM-THRID: 6204879927318151168
+X-Received: by 10.129.85.149 with SMTP id j143mr26600334ywb.31.1444686187506;
+        Mon, 12 Oct 2015 14:43:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.97.10 with SMTP id l10ls2245708qge.73.gmail; Mon, 30 Mar
- 2015 08:40:21 -0700 (PDT)
-X-Received: by 10.236.51.170 with SMTP id b30mr39507202yhc.34.1427730021219;
-        Mon, 30 Mar 2015 08:40:21 -0700 (PDT)
-Return-Path: <1213charlie@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id gu4si1138400pac.1.2015.03.30.08.40.21
+Received: by 10.107.7.13 with SMTP id 13ls498222ioh.91.gmail; Mon, 12 Oct 2015
+ 14:43:07 -0700 (PDT)
+X-Received: by 10.107.156.129 with SMTP id f123mr9016787ioe.4.1444686187216;
+        Mon, 12 Oct 2015 14:43:07 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id zg1si1923450pbb.2.2015.10.12.14.43.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2015 08:40:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 1213charlie@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Oct 2015 14:43:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of 1213charlie@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mail=1213charlie@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id tp5so4179596pac.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2015 08:40:21 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id hy16so163697395pad.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 14:43:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=mCzWB5l3ieGa0+trwG9emIGGAIFDbhCTnWrGSTQ+sOA=;
-        b=Sn64CyzkVbQ/b70Ffx9SP3h14e1aM2sl1EukRc25D0hmCw1Q+4Xx3YJdOi3GqRwDYp
-         paruzZJGKnMqcI/wyBXmLJr2x8s2RXXJhrB2mhgKRQdFfWhAZk8ieX9SMYuFT8TMYQF7
-         20vd0S4KTyqRHqNOq+NhKMFJvaztVULm8iWVRD5y3Kh+/2zxSFq9bIGcwUi3Gx27GmqR
-         7dGCA4z+Ul3Gu/vt/s4DkXBDDIWUT8sQjX0dG9XZTJevrC7mmsergEgJ9MqFqcCEWq/1
-         PgMkxliiMCktX7cLxdfoGwmZykH9wPyvtqON9MTXRyL5a8QlPk2NV/UvlesXkIzQ2wRp
-         ViZw==
-X-Received: by 10.66.248.40 with SMTP id yj8mr59754583pac.141.1427730021063;
-        Mon, 30 Mar 2015 08:40:21 -0700 (PDT)
-Return-Path: <1213charlie@gmail.com>
-Received: from ThinkPad ([2001:250:4402:228:7c63:20b1:d91f:bd6f])
-        by mx.google.com with ESMTPSA id fl4sm10431963pab.8.2015.03.30.08.40.18
+        bh=LH7HcnaMqFUGFibbh2SqWCxqrQx6ueO+dXU2oUhZbng=;
+        b=MdtIex+ekHUdjf2zsfNJ8y2Zoz5nI0KYB//2rtgZ6jt1/35u42t6MPb6zFmsdjADhk
+         BPFx8y4rCCUEILyIQrJyqC6k9rLCXcTtHb63cAQIj4J/IV80CwXtUM/J9dR8M9pcDwUA
+         uYbGJKpJNVWeFquL84Ha+ypzzOUF8lztvB3iWuIg7q/75ADGOkN3FFx5oEFZl2j7s+Mj
+         m1GmGUdMfDpE8PUDxtQzb8fNYvjL4hpHfAOmd19ZmaLjNemQY8RXBtjyX6k+yYXkF4Hu
+         ycWUkvLhm3Nyc6brCxJbpjT77w+h9pMpaUmhwDiA4AFw6B1ikpBWHLMJlSqKFnztHRaY
+         CPbQ==
+X-Received: by 10.68.184.5 with SMTP id eq5mr36902344pbc.130.1444686187028;
+        Mon, 12 Oct 2015 14:43:07 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.205.254])
+        by smtp.gmail.com with ESMTPSA id x6sm20146065pbt.3.2015.10.12.14.43.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 30 Mar 2015 08:40:20 -0700 (PDT)
-Date: Mon, 30 Mar 2015 23:40:11 +0800
-From: Charlie Wong Super <1213charlie@gmail.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Mon, 12 Oct 2015 14:43:06 -0700 (PDT)
+Date: Tue, 13 Oct 2015 03:13:02 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: comedi: addi_apci_1564: Delete whitespace
-Message-ID: <20150330154011.GA11201@ThinkPad>
+Subject: [PATCH] staging: lustre: llite: Remove useless cast on void pointer
+Message-ID: <20151012214302.GA18071@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch.pl warning:
-WARNING: line over 80 characters
-FILE: drivers/staging/comedi/drivers/addi_apci_1564.c:114:
-+	unsigned int ctrl;		/* interrupt mode OR (edge) . AND (level) */
+The semantic patch used to find this is:
 
-Signed-off-by: Charlie Wong Super <1213charlie@gmail.com>
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
+
+(
+  *((T *)e)
+|
+  ((T *)x)[...]
+|
+  ((T *)x)->f
+|
+- (T *)
+  e
+)
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/comedi/drivers/addi_apci_1564.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/lustre/lustre/llite/statahead.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/addi_apci_1564.c b/drivers/staging/comedi/drivers/addi_apci_1564.c
-index c481c48..dd335e8 100644
---- a/drivers/staging/comedi/drivers/addi_apci_1564.c
-+++ b/drivers/staging/comedi/drivers/addi_apci_1564.c
-@@ -106,12 +106,12 @@
- #define APCI1564_COUNTER(x)			((x) * 0x20)
+diff --git a/drivers/staging/lustre/lustre/llite/statahead.c b/drivers/staging/lustre/lustre/llite/statahead.c
+index c860281..18f5f2b 100644
+--- a/drivers/staging/lustre/lustre/llite/statahead.c
++++ b/drivers/staging/lustre/lustre/llite/statahead.c
+@@ -947,7 +947,7 @@ static void ll_statahead_one(struct dentry *parent, const char *entry_name,
  
- struct apci1564_private {
--	unsigned long eeprom;		/* base address of EEPROM register */
--	unsigned long timer;		/* base address of 12-bit timer */
--	unsigned long counters;		/* base address of 32-bit counters */
--	unsigned int mode1;		/* riding-edge/high level channels */
--	unsigned int mode2;		/* falling-edge/low level channels */
--	unsigned int ctrl;		/* interrupt mode OR (edge) . AND (level) */
-+	unsigned long eeprom;		/*base address of EEPROM register*/
-+	unsigned long timer;		/*base address of 12-bit timer*/
-+	unsigned long counters;		/*base address of 32-bit counters*/
-+	unsigned int mode1;		/*riding-edge/high level channels*/
-+	unsigned int mode2;		/*falling-edge/low level channels*/
-+	unsigned int ctrl;		/*interrupt mode OR (edge).AND(level)*/
- 	struct task_struct *tsk_current;
- };
+ static int ll_agl_thread(void *arg)
+ {
+-	struct dentry	    *parent = (struct dentry *)arg;
++	struct dentry	    *parent = arg;
+ 	struct inode	     *dir    = d_inode(parent);
+ 	struct ll_inode_info     *plli   = ll_i2info(dir);
+ 	struct ll_inode_info     *clli;
+@@ -1038,7 +1038,7 @@ static void ll_start_agl(struct dentry *parent, struct ll_statahead_info *sai)
  
+ static int ll_statahead_thread(void *arg)
+ {
+-	struct dentry	    *parent = (struct dentry *)arg;
++	struct dentry	    *parent = arg;
+ 	struct inode	     *dir    = d_inode(parent);
+ 	struct ll_inode_info     *plli   = ll_i2info(dir);
+ 	struct ll_inode_info     *clli;
 -- 
 1.9.1
 
