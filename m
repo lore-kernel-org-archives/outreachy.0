@@ -1,79 +1,86 @@
 X-GM-THRID: 6204754090721804288
-X-Received: by 10.180.189.49 with SMTP id gf17mr3212441wic.6.1444675905289;
-        Mon, 12 Oct 2015 11:51:45 -0700 (PDT)
+X-Received: by 10.112.16.229 with SMTP id j5mr1239035lbd.6.1444675856433;
+        Mon, 12 Oct 2015 11:50:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.160.13 with SMTP id j13ls534206lfe.67.gmail; Mon, 12 Oct
- 2015 11:51:44 -0700 (PDT)
-X-Received: by 10.112.169.34 with SMTP id ab2mr5930845lbc.23.1444675904800;
-        Mon, 12 Oct 2015 11:51:44 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
-        by gmr-mx.google.com with ESMTPS id hs5si570554wib.1.2015.10.12.11.51.44
+Received: by 10.180.35.196 with SMTP id k4ls384488wij.24.gmail; Mon, 12 Oct
+ 2015 11:50:56 -0700 (PDT)
+X-Received: by 10.180.91.233 with SMTP id ch9mr3234957wib.4.1444675856022;
+        Mon, 12 Oct 2015 11:50:56 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by gmr-mx.google.com with ESMTPS id c1si567870wiv.3.2015.10.12.11.50.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 11:51:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Oct 2015 11:50:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x236.google.com with SMTP id ge5so161714437wic.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 11:51:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=swKI3fhl1s9X902i9XUS4XU96pLZmx0Fs04gaS7VBcs=;
-        b=GizDPE1+B4he9cq5y4RU6UnMmh5EqXKNVnlI82j1RY9aBWT49R/qyCf12Wq3gT0qfa
-         8S2V8D/Hzkb0c/QgBD6kJ2sIxUGSwv8ksxMqUt9MCJVU7wjjUUK1IQQSA1e7VsFYLXao
-         XuO/db98hKnrxwzgMt5bbxf+H6qx7/3aK/RPbi7BFY5SrcabFfzvJKBh1Edum/Arv8HX
-         zHtsRUevcIWvSIFoAef1nsaAd52PSNp0hysPTYjW50l7AQfR3Cc8iN3Vt1vlL3vs6Abt
-         mMBq5NqNJDPI/Odda9DGuOYsA+K70rc2evDmN3qcEsYNHaO/SH1IG+ZSAOxoe324BOpL
-         NEkA==
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue101) with ESMTPSA (Nemesis) id 0MPp3a-1ZhshZ1z8s-0053mE; Mon, 12 Oct
+ 2015 20:50:55 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Shivani Bhardwaj <shivanib134@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 1/3] Staging: wilc1000: host_interface: Remove extra NULL test
+Date: Mon, 12 Oct 2015 20:50:54 +0200
+Message-ID: <5343370.v9SSDYu64C@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <3f3303356a62e08e17ffde7cdc8531d5b1fd34bc.1444670615.git.shivanib134@gmail.com>
+References: <cover.1444670615.git.shivanib134@gmail.com> <3f3303356a62e08e17ffde7cdc8531d5b1fd34bc.1444670615.git.shivanib134@gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.180.102.230 with SMTP id fr6mr15037968wib.66.1444675904675;
- Mon, 12 Oct 2015 11:51:44 -0700 (PDT)
-Received: by 10.27.186.66 with HTTP; Mon, 12 Oct 2015 11:51:44 -0700 (PDT)
-In-Reply-To: <31296892.7kyR2l26jl@wuerfel>
-References: <cover.1444670615.git.shivanib134@gmail.com>
-	<aa140d8daabc374f3cc6bfc12625164e47b37acb.1444670615.git.shivanib134@gmail.com>
-	<31296892.7kyR2l26jl@wuerfel>
-Date: Tue, 13 Oct 2015 00:21:44 +0530
-Message-ID: <CAKHNQQGS3mmm5aDbfuviH2F-5a+GgM4JG0qCwTb3e6xE_t=u2Q@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 2/3] Staging: wilc1000:
- host_interface: Remove useless cast
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:GMf/mrQ5s1x1HHmLMgxgaN5mMYcM5d21RWQX2pPhBG1lNdmChZj
+ URwJnfQIOOVtWzlhhGhI8km3GjInvwfZ5TFuWTGnEthnenCe4jDabbRzyMuoF+DxSfAs1hj
+ vYV/BES2S1XnfZ7gSVE8uQgwASxbqEjYHWvXWBnWbluSbt7vV7fQnLXeTJj/N6HsOUmJORZ
+ 8YD0+Ia7Joqyd7CfAy1QA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:QDnlXSHZDs4=:j+LzZEX7wYSNVFh8rJ9mIW
+ HiOYKBc0klBA9/KGB+Vt66aNdKExC4OZZL2eurtbZ+/CQgcXJSxsgc0lAznAvnmDF7vf5H+ul
+ 1q7H3urv2jzWhWPTjcPDG/UYvSfIFLnWWn2kocqcMOz5/JRZqBpucZuE2R7RrdbCTKV1/LCSj
+ IjC3u3mowdQRReIYtbw3z+Wur4yOVs7XRICUotwxfuV3Cx1I2SyWgOCycYVjUHynmihUdN5st
+ 2jkUHAmpKSlsusyTFK9TedF/twN453jB1ylavF5vrRnKmkg22fAToQ0RAPaPpVJpXeN87uGMG
+ BKRBGW5I2zMDfSn5EZ83VyEGf+NZvTvzPIj6e510FwSXOutBl/pW/o4kMxTfCGPoZH4Wp+X6f
+ v8MuflQUEBR4+YKWQWFV5pHiW6UMHVf5ExT8QL2LO+XHtswkskVqKiNTQNCPfTcIRJ6OAmqNt
+ j6kpJ2ebJajodW+d+s5VT1BBTF7R7iutTxJCqhAMOPPS9ZSRRBhmIZ13NRNMaCq6zyhaIRWix
+ ZLprfjU58/ysUQWPcA1BW/Y8+jMZv2h2E/cHTENm6rx5pwaK5Dj9dKHA9x0okp7+AxyrjVJFg
+ zYbOmqR3mb0rdrc8/9yKMd8TX/9Xw3QkuN9BUAHIHsyfmcRf33vjFi0ZgX4csymxDZkj+21zF
+ TIMzg5JZlROkj7NuLafIAxYO4PLBXfbuiUMbKL1ZRAOAghweeUCtpYwJY4J2qfGka5dRveUT/
+ J3r4rWBNfB2wTY15
 
-On Tue, Oct 13, 2015 at 12:19 AM, Arnd Bergmann <arnd@arndb.de> wrote:
-> On Monday 12 October 2015 23:02:53 Shivani Bhardwaj wrote:
->> @@ -573,7 +573,6 @@ static s32 Handle_SetChannel(tstrWILC_WFIDrv *drvHandler,
->>
->>         s32 s32Error = 0;
->>         tstrWID strWID;
->> -       tstrWILC_WFIDrv *pstrWFIDrv = (tstrWILC_WFIDrv *)drvHandler;
->>
->>         /*prepare configuration packet*/
->>         strWID.u16WIDid = (u16)WID_CURRENT_CHANNEL;
->>
->
-> In the code I'm looking at, the variable is still used, just the cast
-> can be removed. I haven't checked the other variables, but I'd guess
-> that the same is true for them, because gcc tends to warn otherwise.
->
->         Arnd
->
-Yes, Arnd. I've just removed the cast throughout the code. The
-variable is still used in the code. Unused code removal is given in
-other patch of same series.
-Thank you
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/31296892.7kyR2l26jl%40wuerfel.
-> For more options, visit https://groups.google.com/d/optout.
+On Monday 12 October 2015 23:02:01 Shivani Bhardwaj wrote:
+> Remove NULL test statement as it is preceded by another NULL test on the
+> same variable in the code.
+> Issue found using coccinelle.
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+> Changes in v2:
+>         Deleted one patch and added another. Improved the other ones.
+>  drivers/staging/wilc1000/host_interface.c | 3 ---
+>  1 file changed, 3 deletions(-)
+
+In the text above, it makes sense to provide an abbreviated
+version of the semantic patch when you send something that was
+generated by coccinelle.
+
+> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+> index bb833d3..5e4d620 100644
+> --- a/drivers/staging/wilc1000/host_interface.c
+> +++ b/drivers/staging/wilc1000/host_interface.c
+> @@ -6044,12 +6044,9 @@ s32 host_int_deinit(tstrWILC_WFIDrv *hWFIDrv)
+>         if (ret)
+>                 s32Error = -ENOENT;
+>  
+> -       if (pstrWFIDrv != NULL) {
+>                 kfree(pstrWFIDrv);
+>                 /* pstrWFIDrv=NULL; */
+>  
+> -       }
+> -
+
+Now the indentation of the kfree() is wrong, it needs to go one tabstop
+to the left. Also, the comment behind it can be removed in the same
+patch.
+
+	Arnd
 
