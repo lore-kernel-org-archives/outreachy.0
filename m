@@ -1,163 +1,137 @@
 X-GM-THRID: 6203986156822986752
-X-Received: by 10.194.94.66 with SMTP id da2mr1631615wjb.7.1444671108878;
-        Mon, 12 Oct 2015 10:31:48 -0700 (PDT)
+X-Received: by 10.112.145.3 with SMTP id sq3mr5950964lbb.7.1444670830646;
+        Mon, 12 Oct 2015 10:27:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.84.1 with SMTP id i1ls515797lfb.15.gmail; Mon, 12 Oct 2015
- 10:31:48 -0700 (PDT)
-X-Received: by 10.112.181.10 with SMTP id ds10mr5831653lbc.3.1444671108266;
-        Mon, 12 Oct 2015 10:31:48 -0700 (PDT)
+Received: by 10.180.23.231 with SMTP id p7ls861262wif.5.canary; Mon, 12 Oct
+ 2015 10:27:10 -0700 (PDT)
+X-Received: by 10.180.107.167 with SMTP id hd7mr3162256wib.6.1444670830132;
+        Mon, 12 Oct 2015 10:27:10 -0700 (PDT)
 Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
-        by gmr-mx.google.com with ESMTPS id q6si532296wif.2.2015.10.12.10.31.48
+Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
+        by gmr-mx.google.com with ESMTPS id bh7si547709wib.1.2015.10.12.10.27.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 10:31:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Oct 2015 10:27:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x236.google.com with SMTP id q12so30287417wie.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 10:31:48 -0700 (PDT)
+Received: by mail-wi0-x22a.google.com with SMTP id q8so67823905wij.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 10:27:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=tYPiS9sDAdJQ3u9lxsr2Ol+mGFSOSuMz52RNh/KvCDY=;
-        b=cUNxB9JyWVTABE4XjBBfHKxf+Ohxec178tqoVOZGLuWw8ge9p3F9nN7ofpIMKuquer
-         fuP1poSXkv4J5mDKAXNEPpq0NkldbawpXGFy7plHOSgKeOuyaamT0jyQgSC9wzUktXff
-         rkP0GJdslb2i57uUNNlC/Tr0sygO/bCvTvWKQvLU3P1v8Evz4KtZV4R0pLkzRD4XZWQO
-         8XOkR7wKA5Z3TLfdD0/47n8wrdDRYiUPdQwQClhpPJYVgcNUH+YEdXyzfFdTCryCF+jF
-         +8dw8Zwbr3aOk4vIOEfblHLJ6L4dPoj2XT7YXkiRKQJnMIJgaA1POQZBV3GatxfbleNA
-         W2EQ==
+        bh=fCzcdpKUoNHhxTY2k0Tx3fer3a+zbQGJhsBkW0sEf7Q=;
+        b=S6VE34J1xhFrQiYo2+pVJcIZNeTTIkfVLSq77LHeTQ+7U2VDwZIXRhQpkgJxx85Pf9
+         QTmvDyDv1ajbCRrTg68pu7Nc0INlvwrkorMMRoaTxXH41wPfvlYeg+V1mvbu28Fj8Slp
+         2qvyjBbfsGoy+JJNcFqs4Z53vPmob/JOPVSfeKlu5nNkJkONrJdfafTLEAABm4INwQId
+         lBM2kiin5hW+K+qFvobtdzByrjOq93/uXXzi73mPVNioXmZ68rZFKJGjrJ924GKCvpgc
+         X3A3zqDXr8e/jDlPAUCeinW0pMdTxuGL/R1NtCYZSYCa6nKfJSWgI9TlfVnvIuSsBSAm
+         5DXQ==
 MIME-Version: 1.0
-X-Received: by 10.194.236.200 with SMTP id uw8mr30430129wjc.126.1444671108086;
- Mon, 12 Oct 2015 10:31:48 -0700 (PDT)
-Received: by 10.194.165.102 with HTTP; Mon, 12 Oct 2015 10:31:48 -0700 (PDT)
-In-Reply-To: <1444540283-9605-4-git-send-email-shraddha.6596@gmail.com>
+X-Received: by 10.194.175.104 with SMTP id bz8mr31728526wjc.42.1444670829987;
+ Mon, 12 Oct 2015 10:27:09 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Mon, 12 Oct 2015 10:27:09 -0700 (PDT)
+In-Reply-To: <1444540283-9605-3-git-send-email-shraddha.6596@gmail.com>
 References: <1444540283-9605-1-git-send-email-shraddha.6596@gmail.com>
-	<1444540283-9605-4-git-send-email-shraddha.6596@gmail.com>
-Date: Mon, 12 Oct 2015 20:31:48 +0300
-Message-ID: <CAEnQRZD83hXXSzk=gBSgn7+F85L=PECwQizpp50xHwOv4Y_FQg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v4 3/3] Staging: rtl8192u: ieee80211:
- ieee80211_rx: Remove commented printk messages
+	<1444540283-9605-3-git-send-email-shraddha.6596@gmail.com>
+Date: Mon, 12 Oct 2015 20:27:09 +0300
+Message-ID: <CAEnQRZAWyXfHzx55=jnUNGkitTMysawHhhPU90n5eBRMYA=8nA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v4 2/3] Staging: rtl8192u: ieee80211:
+ ieee80211_wx: Remove commented printk messages
 From: Daniel Baluta <daniel.baluta@gmail.com>
 To: Shraddha Barke <shraddha.6596@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Content-Type: text/plain; charset=UTF-8
 
 On Sun, Oct 11, 2015 at 8:11 AM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
-> Remove commented out printk messages since they are not needed. Also remove
-> the unnecessary braces and blank lines
+> Remove commented out printk messages since they are not needed
 >
 > Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 
 Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
+I think we should raise the bar when accepting things into staging,
+the amount of garbage
+here is too high :).
+
 > ---
 > Changes in v4-
->  Updated commit message
->
+>  No change
 > Changes in v3-
->  Removed braces and blank line
->
+>  No change
 > Changes in v2-
 >  Fixed subject line.
 >
->  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 15 +--------------
->  1 file changed, 1 insertion(+), 14 deletions(-)
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c | 8 --------
+>  1 file changed, 8 deletions(-)
 >
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-> index 0aa9021..4b5f32d 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-> @@ -492,14 +492,10 @@ static int is_duplicate_packet(struct ieee80211_device *ieee,
->  //     }
->         if ((*last_seq == seq) &&
->             time_after(*last_time + IEEE_PACKET_RETRY_TIME, jiffies)) {
-> -               if (*last_frag == frag){
-> -                       //printk(KERN_WARNING "[1] go drop!\n");
-> +               if (*last_frag == frag)
->                         goto drop;
-> -
-> -               }
->                 if (*last_frag + 1 != frag)
->                         /* out-of-order fragment */
-> -                       //printk(KERN_WARNING "[2] go drop!\n");
->                         goto drop;
->         } else
->                 *last_seq = seq;
-> @@ -510,7 +506,6 @@ static int is_duplicate_packet(struct ieee80211_device *ieee,
->
->  drop:
->  //     BUG_ON(!(fc & IEEE80211_FCTL_RETRY));
-> -//     printk("DUP\n");
->
->         return 1;
->  }
-> @@ -578,14 +573,12 @@ void ieee80211_indicate_packets(struct ieee80211_device *ieee, struct ieee80211_
->
->                 /* Indicat the packets to upper layer */
->                         if (sub_skb) {
-> -                               //printk("0skb_len(%d)\n", skb->len);
->                                 sub_skb->protocol = eth_type_trans(sub_skb, ieee->dev);
->                                 memset(sub_skb->cb, 0, sizeof(sub_skb->cb));
->                                 sub_skb->dev = ieee->dev;
->                                 sub_skb->ip_summed = CHECKSUM_NONE; /* 802.11 crc not sufficient */
->                                 //skb->ip_summed = CHECKSUM_UNNECESSARY; /* 802.11 crc not sufficient */
->                                 ieee->last_rx_ps_time = jiffies;
-> -                               //printk("1skb_len(%d)\n", skb->len);
->                                 netif_rx(sub_skb);
->                         }
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
+> index ae1b3cf..208be5f 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
+> @@ -522,7 +522,6 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
+>         struct ieee80211_security sec = {
+>                 .flags = 0,
+>         };
+> -       //printk("======>encoding flag:%x,ext flag:%x, ext alg:%d\n", encoding->flags,ext->ext_flags, ext->alg);
+>         idx = encoding->flags & IW_ENCODE_INDEX;
+>         if (idx) {
+>                 if (idx < 1 || idx > WEP_KEYS)
+> @@ -538,7 +537,6 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
+>                 group_key = 1;
+>         } else {
+>                 /* some Cisco APs use idx>0 for unicast in dynamic WEP */
+> -               //printk("not group key, flags:%x, ext->alg:%d\n", ext->ext_flags, ext->alg);
+>                 if (idx != 0 && ext->alg != IW_ENCODE_ALG_WEP)
+>                         return -EINVAL;
+>                 if (ieee->iw_mode == IW_MODE_INFRA)
+> @@ -567,7 +565,6 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
+>                         sec.level = SEC_LEVEL_0;
+>                         sec.flags |= SEC_LEVEL;
 >                 }
-> @@ -795,7 +788,6 @@ static u8 parse_subframe(struct sk_buff *skb,
->         if (rx_stats->bContainHTC) {
->                 LLCOffset += sHTCLng;
+> -               //printk("disabled: flag:%x\n", encoding->flags);
+>                 goto done;
 >         }
-> -       //printk("ChkLength = %d\n", LLCOffset);
->         // Null packet, don't indicate it to upper layer
->         ChkLength = LLCOffset;/* + (Frame_WEP(frame)!=0 ?Adapter->MgntInfo.SecurityInfo.EncryptionHeadOverhead:0);*/
 >
-> @@ -1340,14 +1332,12 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
->                                 }
->
->                                 /* Indicat the packets to upper layer */
-> -                               //printk("0skb_len(%d)\n", skb->len);
->                                 sub_skb->protocol = eth_type_trans(sub_skb, dev);
->                                 memset(sub_skb->cb, 0, sizeof(sub_skb->cb));
->                                 sub_skb->dev = dev;
->                                 sub_skb->ip_summed = CHECKSUM_NONE; /* 802.11 crc not sufficient */
->                                 //skb->ip_summed = CHECKSUM_UNNECESSARY; /* 802.11 crc not sufficient */
->                                 ieee->last_rx_ps_time = jiffies;
-> -                               //printk("1skb_len(%d)\n", skb->len);
->                                 netif_rx(sub_skb);
->                         }
+> @@ -638,7 +635,6 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
+>                 goto done;
+>         }
+>   //skip_host_crypt:
+> -       //printk("skip_host_crypt:ext_flags:%x\n", ext->ext_flags);
+>         if (ext->ext_flags & IW_ENCODE_EXT_SET_TX_KEY) {
+>                 ieee->tx_keyidx = idx;
+>                 sec.active_key = idx;
+> @@ -760,7 +756,6 @@ int ieee80211_wx_set_auth(struct ieee80211_device *ieee,
+>         switch (data->flags & IW_AUTH_INDEX) {
+>         case IW_AUTH_WPA_VERSION:
+>              /*need to support wpa2 here*/
+> -               //printk("wpa version:%x\n", data->value);
+>                 break;
+>         case IW_AUTH_CIPHER_PAIRWISE:
+>         case IW_AUTH_CIPHER_GROUP:
+> @@ -791,16 +786,13 @@ int ieee80211_wx_set_auth(struct ieee80211_device *ieee,
+>                 else if(data->value & IW_AUTH_ALG_LEAP){
+>                         ieee->open_wep = 1;
+>                         ieee->auth_mode = 2;
+> -                       //printk("hahahaa:LEAP\n");
 >                 }
-> @@ -1758,8 +1748,6 @@ int ieee80211_parse_info_param(struct ieee80211_device *ieee,
+>                 else
+>                         return -EINVAL;
+> -               //printk("open_wep:%d\n", ieee->open_wep);
+>                 break;
 >
->                         offset = (info_element->data[2] >> 1)*2;
+>         case IW_AUTH_WPA_ENABLED:
+>                 ieee->wpa_enabled = (data->value)?1:0;
+> -               //printk("enalbe wpa:%d\n", ieee->wpa_enabled);
+>                 break;
 >
-> -                       //printk("offset1:%x aid:%x\n",offset, ieee->assoc_id);
-> -
->                         if(ieee->assoc_id < 8*offset ||
->                                 ieee->assoc_id > 8*(offset + info_element->len -3))
->
-> @@ -2070,7 +2058,6 @@ int ieee80211_parse_info_param(struct ieee80211_device *ieee,
->                 case MFIE_TYPE_COUNTRY:
->                         IEEE80211_DEBUG_SCAN("MFIE_TYPE_COUNTRY: %d bytes\n",
->                                              info_element->len);
-> -                       //printk("=====>Receive <%s> Country IE\n",network->ssid);
->                         ieee80211_extract_country_ie(ieee, info_element, network, network->bssid);//addr2 is same as addr3 when from an AP
->                         break;
->  /* TODO */
+>         case IW_AUTH_RX_UNENCRYPTED_EAPOL:
 > --
 > 2.1.4
 >
 > --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1444540283-9605-4-git-send-email-shraddha.6596%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 
