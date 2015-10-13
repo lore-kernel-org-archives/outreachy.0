@@ -1,110 +1,152 @@
-X-GM-THRID: 6250914240431915008
-X-Received: by 10.182.56.233 with SMTP id d9mr8872845obq.2.1455404386803;
-        Sat, 13 Feb 2016 14:59:46 -0800 (PST)
+X-GM-THRID: 6205076512382648320
+X-Received: by 10.112.144.99 with SMTP id sl3mr6710784lbb.12.1444733082631;
+        Tue, 13 Oct 2015 03:44:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.86.102 with SMTP id o93ls2071976qgd.16.gmail; Sat, 13 Feb
- 2016 14:59:46 -0800 (PST)
-X-Received: by 10.13.204.85 with SMTP id o82mr9213996ywd.51.1455404386103;
-        Sat, 13 Feb 2016 14:59:46 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x229.google.com (mail-qk0-x229.google.com. [2607:f8b0:400d:c09::229])
-        by gmr-mx.google.com with ESMTPS id w126si1405476ywe.6.2016.02.13.14.59.46
+Received: by 10.25.43.135 with SMTP id r129ls652272lfr.93.gmail; Tue, 13 Oct
+ 2015 03:44:42 -0700 (PDT)
+X-Received: by 10.112.158.202 with SMTP id ww10mr6903080lbb.13.1444733082005;
+        Tue, 13 Oct 2015 03:44:42 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id c7si693153wiy.3.2015.10.13.03.44.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 14:59:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::229 as permitted sender) client-ip=2607:f8b0:400d:c09::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2015 03:44:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x229.google.com with SMTP id s68so44074373qkh.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 14:59:46 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22f.google.com with SMTP id q8so24074475wij.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 03:44:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=R5HQB38QqyHUVYthjDd0XzOjMKtblGrDQviYgk041RM=;
-        b=zD6r6nqc5iWuOVMEcnyZxtNC64SWo/DGMUqPLk6qJH8UrV9smwQbbojn66Z9ie2UFn
-         /QS/Nvw/Qaqhl0WnHTRejmrho609LcSPP/4tJb7247m7LjNr9gw+9O14AMKvyYhig8Yf
-         nY0R/81oWxzHpnHDlNA9FfiUrI21X2WmNE3bAGkeXLF4+Q4UQGqjPRaaJysC4cdqhLrf
-         mlGvZ9PvUWBOl/s78Oel/0xxoV8qK+u/2i36iUmExQhUKlEy8aMSysaS3maXNHWMFA5Q
-         ToTo4rMe60Gsg4vGV0upndfbu/6oRdGrBFBZbHN033pStD5pfK3eH9ba40tenqhf9XHR
-         Rytw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=R5HQB38QqyHUVYthjDd0XzOjMKtblGrDQviYgk041RM=;
-        b=cnOd8IXyhkwwNReDX3BTq0IJyiqzZxR5raS+uzdk8yc74wYqwLhhnM0ut5YfqBNlcI
-         moO/IIiNE0561WC2NznCeyK99nXaSbntugA/sch+eSLLWhFoCCjN4cU3EoH0HiQyduAz
-         rLrb5LWW7ww+2n8077BUM7+3rJNNY4ZFKTz7I8xQLpCsH6eXbs/vQEUHAOaATgBVcQnI
-         BtiZqy+BEI6XXIOgMTOCKEDfqdCmaykL+clDnmuSyZIL14mU4t3jjBjll1KP37/u6YLo
-         zNQtPDfy8mbTldNbYTQuF7Xym1zrvYjKuw6k3WSa7DCb+U0mSDCZk7YSDA8wnppXA0Kp
-         iciw==
-X-Gm-Message-State: AG10YOQ4Rg5Tw/jmZLdmgEXu73qKkERtWejTuKvIdOYLGGYWeqJW7O7P4nU45LNwDTLv+g==
-X-Received: by 10.55.74.14 with SMTP id x14mr11204366qka.70.1455404385928;
-        Sat, 13 Feb 2016 14:59:45 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
-        by smtp.gmail.com with ESMTPSA id t103sm8261281qgd.37.2016.02.13.14.59.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 14:59:45 -0800 (PST)
-Date: Sat, 13 Feb 2016 22:59:06 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Fix indentation of if...else statements
-Message-ID: <20160214035906.GA25208@janani-Inspiron-3521>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=+dYfND1Y3OT0k5O4SJ54X6tzxbWAypvXiWJlPY1jujk=;
+        b=LMhngI/pMRZbPuC6hnCuvkmafva9NXkGAwudXNjXHgPKfDWUgHqoUHuGcDqGJ6NQXc
+         m9ZDuHVMbtIXXuIXT1zLiaF61K07kEvKX/iy9sTPv604n39SPgI5a6qEV8IEg7ty8waM
+         PnUm7pYEE65+/yFuSpp+8pBsGMGQw1vVaQ10P0apcEJphWPbahj/CjEfNVP1HdWLdRM1
+         bAGS/Tt7bqWMo4kzn8jyrf3nIsh9r1Sp6xYyxtLQHMbqKmUEii9O+Jo8i3SZHcDg9czk
+         iHFmrNzWthEnZsr2lZBiHqU9e6SyLzYTjp2G1dG6d3FftRpd5hQYVtL+JoHrbW6CViF5
+         nHwA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.180.189.41 with SMTP id gf9mr18434010wic.95.1444733081809;
+ Tue, 13 Oct 2015 03:44:41 -0700 (PDT)
+Received: by 10.27.186.66 with HTTP; Tue, 13 Oct 2015 03:44:41 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1510131240030.2391@hadrien>
+References: <20151013102548.GA8383@ubuntu>
+	<alpine.DEB.2.10.1510131240030.2391@hadrien>
+Date: Tue, 13 Oct 2015 16:14:41 +0530
+Message-ID: <CAKHNQQECxUAcT1O-VDhOECyCC4Pwj5EAUzM2OfT3UxWQvtSP=w@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: wilc1000:
+ wilc_wfi_cfgoperations: Remove unnecessary constants
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-This patch clears the checkpatch warning about suspect code indent for
-conditional statements in the file.
+On Tue, Oct 13, 2015 at 4:11 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Tue, 13 Oct 2015, Shivani Bhardwaj wrote:
+>
+>> Remove constants wherever not required and change variables to bool type
+>> to get rid of constants.
+>
+> This seems like two unrelated things.  I think you could put them in
+> different patches.
+>
+>> Semantic patch used:
+>>
+>> @@
+>> type T;
+>> identifier i;
+>> constant C;
+>> position p != e.p;
+>> @@
+>>
+>> - T i@p;
+>>   <+... when != i
+>> - i = C;
+>>   ...+>
+>>
+>> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+>> ---
+>> Changes in v2:
+>>       -Improve the patch by completely eliminating the constant.
+>>
+>>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 8 +++-----
+>>  1 file changed, 3 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+>> index 6472777..f6259f7 100644
+>> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+>> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+>> @@ -1714,7 +1714,7 @@ static int set_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+>>  {
+>>       u32 i;
+>>       s32 s32Error = 0;
+>> -     u8 flag = 0;
+>> +     bool flag = 0;
+>
+> Actually, my thought was to have a bool variable called pmkid_found.  That
+> would be more understandable than flag.
+>
+> Also the initial value should be false, not 0.
+>
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/sm750fb/sm750_hw.c | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+Fine. I'm sending a patch set.
+Thank you. :)
 
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index 2b1cb9a..01850bf 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -149,22 +149,21 @@ int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
- 		/* Set up GPIO for software I2C to program DVI chip in the
- 		   Xilinx SP605 board, in order to have video signal.
- 		 */
--	sm750_sw_i2c_init(0, 1);
-+		sm750_sw_i2c_init(0, 1);
- 
--
--	/* Customer may NOT use CH7301 DVI chip, which has to be
--	   initialized differently.
--	*/
--	if (sm750_sw_i2c_read_reg(0xec, 0x4a) == 0x95) {
-+		/* Customer may NOT use CH7301 DVI chip, which has to be
-+		initialized differently.
-+		*/
-+		if (sm750_sw_i2c_read_reg(0xec, 0x4a) == 0x95) {
- 		/* The following register values for CH7301 are from
- 		   Chrontel app note and our experiment.
- 		*/
- 			pr_info("yes,CH7301 DVI chip found\n");
--		sm750_sw_i2c_write_reg(0xec, 0x1d, 0x16);
--		sm750_sw_i2c_write_reg(0xec, 0x21, 0x9);
--		sm750_sw_i2c_write_reg(0xec, 0x49, 0xC0);
-+			sm750_sw_i2c_write_reg(0xec, 0x1d, 0x16);
-+			sm750_sw_i2c_write_reg(0xec, 0x21, 0x9);
-+			sm750_sw_i2c_write_reg(0xec, 0x49, 0xC0);
- 			pr_info("okay,CH7301 DVI chip setup done\n");
--	}
-+		}
- 	}
- 
- 	/* init 2d engine */
--- 
-2.5.0
-
+>>       struct wilc_priv *priv = wiphy_priv(wiphy);
+>>
+>> @@ -1725,7 +1725,7 @@ static int set_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+>>               if (!memcmp(pmksa->bssid, priv->pmkid_list.pmkidlist[i].bssid,
+>>                                ETH_ALEN)) {
+>>                       /*If bssid already exists and pmkid value needs to reset*/
+>> -                     flag = PMKID_FOUND;
+>> +                     flag = 1;
+>
+> And here the value would be true.
+>
+> julia
+>
+>>                       PRINT_D(CFG80211_DBG, "PMKID already exists\n");
+>>                       break;
+>>               }
+>> @@ -1736,7 +1736,7 @@ static int set_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+>>                           ETH_ALEN);
+>>               memcpy(priv->pmkid_list.pmkidlist[i].pmkid, pmksa->pmkid,
+>>                           PMKID_LEN);
+>> -             if (!(flag == PMKID_FOUND))
+>> +             if (!flag)
+>>                       priv->pmkid_list.numpmkid++;
+>>       } else {
+>>               PRINT_ER("Invalid PMKID index\n");
+>> @@ -1764,7 +1764,6 @@ static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+>>  {
+>>
+>>       u32 i;
+>> -     u8 flag = 0;
+>>       s32 s32Error = 0;
+>>
+>>       struct wilc_priv *priv = wiphy_priv(wiphy);
+>> @@ -1777,7 +1776,6 @@ static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+>>                       /*If bssid is found, reset the values*/
+>>                       PRINT_D(CFG80211_DBG, "Reseting PMKID values\n");
+>>                       memset(&priv->pmkid_list.pmkidlist[i], 0, sizeof(struct host_if_pmkid));
+>> -                     flag = PMKID_FOUND;
+>>                       break;
+>>               }
+>>       }
+>> --
+>> 2.1.0
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151013102548.GA8383%40ubuntu.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
