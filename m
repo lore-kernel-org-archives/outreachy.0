@@ -1,86 +1,71 @@
-X-GM-THRID: 10169912131584
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,f16c06afa3361ded,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.66.232 with SMTP id h68mr13305428yhd.39.1427524645897;
-        Fri, 27 Mar 2015 23:37:25 -0700 (PDT)
+X-GM-THRID: 6205086344963686400
+X-Received: by 10.180.85.133 with SMTP id h5mr4304738wiz.1.1444746373943;
+        Tue, 13 Oct 2015 07:26:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.137.3 with SMTP id l3ls1238611iod.94.gmail; Fri, 27 Mar
- 2015 23:37:25 -0700 (PDT)
-X-Received: by 10.66.248.74 with SMTP id yk10mr137836pac.9.1427524645588;
-        Fri, 27 Mar 2015 23:37:25 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id pc4si467460pac.0.2015.03.27.23.37.25
+Received: by 10.25.44.79 with SMTP id s76ls682723lfs.29.gmail; Tue, 13 Oct
+ 2015 07:26:13 -0700 (PDT)
+X-Received: by 10.112.173.136 with SMTP id bk8mr7123088lbc.20.1444746373411;
+        Tue, 13 Oct 2015 07:26:13 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id bh7si732255wib.1.2015.10.13.07.26.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Mar 2015 23:37:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        Tue, 13 Oct 2015 07:26:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x236.google.com with SMTP id c3so118056818pdn.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2015 23:37:25 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22e.google.com with SMTP id q8so34690840wij.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 07:26:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:content-type
-         :content-transfer-encoding;
-        bh=yMRGk9Q1KAJptDuJYlKdSgwjdEfskWaCUb1uex18SKw=;
-        b=t9UbIp2emVfNdh6ScSUQxtYcjyHXzIGH3CP7BpEy2TdeklF7vI2x0TntBq60rMcJlP
-         ZQVHeOXAtCsy9WGH3YZdBv2UgPKhh0qH735GFLl3egso2BtbjF+9fkG7iA1QSlY95TGt
-         b9x6v1AN3EwlYl/qg1cbCucaV5xGeprAnVkVV4d85b6rFuyXkdopeG/8KZSWXKI7Clsi
-         Z+cqiVdWYeB89Z55FzcjXBnXCQM9ljB4ugUGu4qZtsBEElrpbQjSBWxwABS7ExVWUM3s
-         fw0A3HfEhbJ7NATOsPYTgMIQx0i/1qVZyJXTAx7iJc3pTg11PJFRms2lU2LMucq/6K90
-         5w8w==
-X-Received: by 10.70.43.134 with SMTP id w6mr41039552pdl.169.1427524645492;
-        Fri, 27 Mar 2015 23:37:25 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from localhost ([182.19.48.18])
-        by mx.google.com with ESMTPSA id fz1sm4007509pbb.12.2015.03.27.23.37.23
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 27 Mar 2015 23:37:24 -0700 (PDT)
-From: Darshana Padmadas <darshanapadmadas@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: jic23@kernel.org,
-	linux-iio@vger.kernel.org,
-	srinivas.pandruvada@linux.intel.com,
-	daniel.baluta@intel.com,
-	Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH] iio: imu: Use iio_trigger_get for indio_dev->trig assignment
-Date: Sat, 28 Mar 2015 12:07:14 +0530
-Message-Id: <1427524634-5677-1-git-send-email-darshanapadmadas@gmail.com>
-X-Mailer: git-send-email 1.9.1
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ITXW9Fk3gnxAWw0dPvlCuzuZpLDf/3yPIKoSioiMfI4=;
+        b=csMeMdwCpWtMHZmcDZqzeryLJ5DPjyczkIBFPxldGf5LQAxXi7roJP6AaFc2OYiElg
+         Qj09hcdsd4WrRxi43z21I6Q0rKnDw0emzc42XWLkNhVrsuLc81o7ngVeAywFJnPND2gy
+         wmW3FT1M3R4SRWgCqeapJCCpgPRYXS6Z5JibStiuZpjebXjz9EEvgUBB6S3DcJP7dNZN
+         W3ElP+H7T/duPaNQMYW1NAm04ifQCzt9qaA3wmmh2A4dBiCbVEeq7TZtdQjnqnYVh83+
+         ZebnR627r9msw+HjWo1yaGspCy/37Dc8JLab8VhKvMOcY79fL1jVMj5N+8sxuwt1Yfyr
+         NDyA==
+MIME-Version: 1.0
+X-Received: by 10.194.116.197 with SMTP id jy5mr37837612wjb.86.1444746367756;
+ Tue, 13 Oct 2015 07:26:07 -0700 (PDT)
+Received: by 10.27.186.66 with HTTP; Tue, 13 Oct 2015 07:26:07 -0700 (PDT)
+In-Reply-To: <20151013142446.GA7818@kroah.com>
+References: <cover.1444733999.git.shivanib134@gmail.com>
+	<20151013142446.GA7818@kroah.com>
+Date: Tue, 13 Oct 2015 19:56:07 +0530
+Message-ID: <CAKHNQQEh-WKZ=DZgpEAdBZpvdXjqjhqUuXbUwCORbifF4OFGWA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/2] Fix various issues
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-This patch uses iio_trigger_get to increment the reference
-count of trigger device, to avoid incorrect assignment.
+On Tue, Oct 13, 2015 at 7:54 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Tue, Oct 13, 2015 at 04:33:56PM +0530, Shivani Bhardwaj wrote:
+>> This patch removes unused code and changes the variable type to more
+>> effective one.
+>> After applying this patch, code becomes better.
+>
+> Ok, not to pick on just this patch, but everyone's 0/X emails need a bit
+> more work please.
+>
+> First off, they need 'staging' in them, and then need to be a bit more
+> descriptive as to what the patch series does (hint, this one is really
+> vague.)
+>
+> Don't worry about this one, I'll take it, but in the future, if
+> _everyone_ could work on their 0/X emails, I would greatly appreciate
+> it.
+>
+> thanks,
+>
+> greg k-h
 
-This patch refers to a similar situation encountered through the
-following discussion:
-http://www.spinics.net/lists/linux-iio/msg13669.html
-
-Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
----
- drivers/iio/imu/adis_trigger.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/iio/imu/adis_trigger.c b/drivers/iio/imu/adis_trigger.c
-index e0017c2..f53e9a8 100644
---- a/drivers/iio/imu/adis_trigger.c
-+++ b/drivers/iio/imu/adis_trigger.c
-@@ -60,7 +60,7 @@ int adis_probe_trigger(struct adis *adis, struct iio_dev *indio_dev)
- 	iio_trigger_set_drvdata(adis->trig, adis);
- 	ret = iio_trigger_register(adis->trig);
- 
--	indio_dev->trig = adis->trig;
-+	indio_dev->trig = iio_trigger_get(adis->trig);
- 	if (ret)
- 		goto error_free_irq;
- 
--- 
-1.9.1
-
+I'll take care. Thanks, Greg.
 
