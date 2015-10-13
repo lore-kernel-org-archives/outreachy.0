@@ -1,115 +1,86 @@
 X-GM-THRID: 6205157797691129856
-X-Received: by 10.182.107.162 with SMTP id hd2mr30362605obb.29.1444751594720;
-        Tue, 13 Oct 2015 08:53:14 -0700 (PDT)
+X-Received: by 10.50.79.234 with SMTP id m10mr17714430igx.5.1444750884370;
+        Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.157.149 with SMTP id g143ls1840801ioe.30.gmail; Tue, 13
- Oct 2015 08:53:14 -0700 (PDT)
-X-Received: by 10.66.132.69 with SMTP id os5mr29208321pab.12.1444751594301;
-        Tue, 13 Oct 2015 08:53:14 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id zg1si377034pbb.2.2015.10.13.08.53.14
+Received: by 10.50.43.227 with SMTP id z3ls1456479igl.16.canary; Tue, 13 Oct
+ 2015 08:41:24 -0700 (PDT)
+X-Received: by 10.50.134.199 with SMTP id pm7mr1342315igb.0.1444750884088;
+        Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id uv4si435120pac.0.2015.10.13.08.41.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 08:53:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id ve7so25258595pab.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 08:53:14 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id ve7so24956314pab.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:in-reply-to:message-id:references
-         :user-agent:mime-version:content-type;
-        bh=MZaeBIV2bTY/nCsrMQ7L8oyPCEogxLlt+4Ip087ITJc=;
-        b=FQD+pkM3Yvltdm6RYg8vUI8ie7jEhbgoH39E5VehABNAY/PWWKNKgzF08vfUhN6x+g
-         iI1AfW/mjWlJ0amx13tfC9PA76kcJqlv2lsw67f/9Fd/EG5rLqXoQAa68W1vEDYw6Wea
-         +UGEH8FOR/s7Y8UhFFpOGBDvolQFIkGfKQ08wPC3DYAMV+TIwhLfBCvLh6YkXNMnI4Be
-         Gu1xk67aOZn2Kk7VDnWPWjot4sMXEvV/5wwjAY1KJ6Pmwl8VyklVGns7QUSZDf+0NavY
-         g5aW+HpyqptQF7u9jkpWTDLnf2nIL62Gzgn6NVZm811RwLTbNV/HTanUz+CZVLZN2Uwy
-         H8cw==
-X-Received: by 10.68.129.231 with SMTP id nz7mr41112305pbb.53.1444751594065;
-        Tue, 13 Oct 2015 08:53:14 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from [10.30.0.216] ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id yi8sm4643842pab.22.2015.10.13.08.53.10
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 13 Oct 2015 08:53:13 -0700 (PDT)
-Date: Tue, 13 Oct 2015 21:22:43 +0530 (IST)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-X-X-Sender: root@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: unisys: visornic_main:
- Replace kzalloc with kcalloc
-In-Reply-To: <20151013154113.GA28785@ubuntu>
-Message-ID: <alpine.DEB.2.11.1510132121200.15426@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
-References: <20151013154113.GA28785@ubuntu>
-User-Agent: Alpine 2.11 (DEB 23 2013-08-11)
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=NbkZTzpdZ5qNWASZG/YjwMttVWEMP/tDq42rPIPHq/U=;
+        b=H+APUm6S/eMq9i2bo5/Qw3RqRYcgGXK645oAdt4XaKuFssVuHYScn6pwdS1MDlTmkK
+         EevmWCAcUY7VW2jlRD4wkNdgSOwGyocokE50rzmIWLYUK/2RZNrp/xVw7Vw561nRx18G
+         lbce4bGwMpu4jagx1hPQqw+zyOrLGU3fKBy7MbjBC32S3VApGR2PlMmpzzSWDH51UxBK
+         GiA3OfQ7PQj6Yel6Ox6kyWiQSsI8zOk6scorRbGPHQO4jkC6uBpyJ1Lqv09Ye8C7Kfap
+         6SWtgOMnF33jdQLeM5c2JVOyj3uQLdKtcuPvQWh/xOXMz41I0xnyipSi65gwT3E9nm7v
+         Ifvg==
+X-Received: by 10.66.102.106 with SMTP id fn10mr41847234pab.156.1444750883966;
+        Tue, 13 Oct 2015 08:41:23 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id xm9sm4579917pbc.32.2015.10.13.08.41.22
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2015 08:41:23 -0700 (PDT)
+Date: Tue, 13 Oct 2015 21:11:13 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: unisys: visornic_main: Replace kzalloc with kcalloc
+Message-ID: <20151013154113.GA28785@ubuntu>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150202.561D28E8.0105,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
+Use kcalloc instead of kzalloc for allocation of array as it prevents
+integer overflow.
+Semantic patch used:
 
+@@
+expression E1,E2,E3;
+@@
 
-On Tue, 13 Oct 2015, Shivani Bhardwaj wrote:
+- kzalloc(E1*sizeof(E2),E3)
++ kcalloc(E1,sizeof(E2),E3)
 
-> Use kcalloc instead of kzalloc for allocation of array as it prevents
-> integer overflow.
-> Semantic patch used:
->
-> @@
-> expression E1,E2,E3;
-> @@
->
-> - kzalloc(E1*sizeof(E2),E3)
-> + kcalloc(E1,sizeof(E2),E3)
->
-> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> ---
-> drivers/staging/unisys/visornic/visornic_main.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/unisys/visornic/visornic_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Hello, this has already been done.I think you should update your 
-staging-testing branch
+diff --git a/drivers/staging/unisys/visornic/visornic_main.c b/drivers/staging/unisys/visornic/visornic_main.c
+index 85c9fec..6db74de 100644
+--- a/drivers/staging/unisys/visornic/visornic_main.c
++++ b/drivers/staging/unisys/visornic/visornic_main.c
+@@ -1797,8 +1797,8 @@ static int visornic_probe(struct visor_device *dev)
+ 		goto cleanup_netdev;
+ 	}
+ 
+-	devdata->rcvbuf = kzalloc(sizeof(struct sk_buff *) *
+-				  devdata->num_rcv_bufs, GFP_KERNEL);
++	devdata->rcvbuf = kcalloc(devdata->num_rcv_bufs,
++				  sizeof(struct sk_buff *), GFP_KERNEL);
+ 	if (!devdata->rcvbuf) {
+ 		err = -ENOMEM;
+ 		goto cleanup_rcvbuf;
+-- 
+2.1.0
 
-Shraddha
->
-> diff --git a/drivers/staging/unisys/visornic/visornic_main.c b/drivers/staging/unisys/visornic/visornic_main.c
-> index 85c9fec..6db74de 100644
-> --- a/drivers/staging/unisys/visornic/visornic_main.c
-> +++ b/drivers/staging/unisys/visornic/visornic_main.c
-> @@ -1797,8 +1797,8 @@ static int visornic_probe(struct visor_device *dev)
-> 		goto cleanup_netdev;
-> 	}
->
-> -	devdata->rcvbuf = kzalloc(sizeof(struct sk_buff *) *
-> -				  devdata->num_rcv_bufs, GFP_KERNEL);
-> +	devdata->rcvbuf = kcalloc(devdata->num_rcv_bufs,
-> +				  sizeof(struct sk_buff *), GFP_KERNEL);
-> 	if (!devdata->rcvbuf) {
-> 		err = -ENOMEM;
-> 		goto cleanup_rcvbuf;
-> -- 
-> 2.1.0
->
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151013154113.GA28785%40ubuntu.
-> For more options, visit https://groups.google.com/d/optout.
->
 
