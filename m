@@ -1,172 +1,155 @@
 X-GM-THRID: 6202672545102036992
-X-Received: by 10.68.138.132 with SMTP id qq4mr27955598pbb.11.1444729978457;
-        Tue, 13 Oct 2015 02:52:58 -0700 (PDT)
+X-Received: by 10.50.55.71 with SMTP id q7mr15807875igp.7.1444715268239;
+        Mon, 12 Oct 2015 22:47:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.104.201 with SMTP id gg9ls1520826obb.27.gmail; Tue, 13 Oct
- 2015 02:52:56 -0700 (PDT)
-X-Received: by 10.182.246.98 with SMTP id xv2mr29728501obc.3.1444729976936;
-        Tue, 13 Oct 2015 02:52:56 -0700 (PDT)
+Received: by 10.107.37.4 with SMTP id l4ls1469428iol.105.gmail; Mon, 12 Oct
+ 2015 22:47:47 -0700 (PDT)
+X-Received: by 10.66.102.101 with SMTP id fn5mr27119783pab.38.1444715267917;
+        Mon, 12 Oct 2015 22:47:47 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-yk0-x229.google.com (mail-yk0-x229.google.com. [2607:f8b0:4002:c07::229])
-        by gmr-mx.google.com with ESMTPS id u67si123401ywf.5.2015.10.13.02.52.56
+Received: from mail-yk0-x230.google.com (mail-yk0-x230.google.com. [2607:f8b0:4002:c07::230])
+        by gmr-mx.google.com with ESMTPS id t64si83870ywd.2.2015.10.12.22.47.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 02:52:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::229 as permitted sender) client-ip=2607:f8b0:4002:c07::229;
+        Mon, 12 Oct 2015 22:47:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::230 as permitted sender) client-ip=2607:f8b0:4002:c07::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::229 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::230 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-yk0-x229.google.com with SMTP id c126so11100074yke.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 02:52:56 -0700 (PDT)
+Received: by mail-yk0-x230.google.com with SMTP id y125so6851944yke.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 22:47:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=iEWxRBft0Xwu1C0P1j8/3Mr8Se+AfM0gHrrxkcTBpQc=;
-        b=ET41nY0gVRDI5lxn/5v0CwvE5LIh+Rd7uGHHtdT0+AJe2d7co3e905+xZrlIAtqTRz
-         0eInlmmT9E+FLOkeXGTf501BrI86DLcSJu0xSs3WGiaFLgaDHnQWaEYNh5K8e4xXNpTE
-         p4ttOY1pAvBEDW7I4b9nmZeKKu2fREce9jDSHJHG3qIQu7vRLljbzPqTZ92RHCxIYaPt
-         0aP5Zfe40shbJgXLSV6V0S5axsXm0zen5dzzXFg9RpBY38YexYUn/bguoWb5MAxIIoY1
-         VBw4a0h1Z8gLEr+YxBog2+3NvDaJ6aYjUwOqxpRqaG+8KuLG3r5G/zlGYJ/x5n8LMbJd
-         dg7w==
+        bh=JfXgaqm/BrGu4lAxxGv0tDMj3mMIGaY/8aZES0CJB7M=;
+        b=Kd9XRPyk3znWnW7bGbqoLhnJXJG/83kfVYkJbSGussX6I4eOdMnHvdJQMWC/412NYA
+         UPz29Pj15422e7Fo9jAMRrav6oiTXMNajkEe3AmcZVxqSAHg/QtxEa4ZcGFyttlrHBPp
+         rgHZWgmCnG8nmOc5jKlg7cHFcjaojz3ixQU1YDJpjzybd1FbJmNjO6wat/5m8aWrZc5I
+         FiE0zOZJT0AxeuDaV2MkVcAu0us21UIyyv6awCV54s82Vq6+jGSi9Cr0NJIIp+B3+VKs
+         bzm45xpLAc8w4enqpIkdv/TL8OXd4s7zkjwYSG13T9dbJm6WB/CiW9aubh0DksBsQLfb
+         mvPw==
 MIME-Version: 1.0
-X-Received: by 10.13.216.212 with SMTP id a203mr5273475ywe.112.1444729976779;
- Tue, 13 Oct 2015 02:52:56 -0700 (PDT)
-Received: by 10.37.107.66 with HTTP; Tue, 13 Oct 2015 02:52:56 -0700 (PDT)
-In-Reply-To: <CAEnQRZCHUZvcVU-oRzbddfp=oDrb+kJvwkTnZPBFj4J1OBWFDQ@mail.gmail.com>
+X-Received: by 10.129.157.129 with SMTP id u123mr25102820ywg.11.1444715267776;
+ Mon, 12 Oct 2015 22:47:47 -0700 (PDT)
+Received: by 10.37.107.66 with HTTP; Mon, 12 Oct 2015 22:47:47 -0700 (PDT)
+In-Reply-To: <20151013000103.GA23613@kroah.com>
 References: <cover.1444419393.git.ciorneiioana@gmail.com>
-	<9e336af188b6ce1cf21d0a4959672db4f84afc0a.1444419393.git.ciorneiioana@gmail.com>
-	<CAEnQRZCHUZvcVU-oRzbddfp=oDrb+kJvwkTnZPBFj4J1OBWFDQ@mail.gmail.com>
-Date: Tue, 13 Oct 2015 12:52:56 +0300
-Message-ID: <CAHWJYFn-cd5tCRRjU-vV72-x5HM+=u5uojF6cYFT3XjqyjKE8g@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v3 2/9] staging: iio: adc: properly
- indent to match open paranthesis
+	<d94402f948a0d2561ee046fd5fcb56ea562ab1bf.1444419393.git.ciorneiioana@gmail.com>
+	<CAEnQRZAZ0f5p3myoNWSdzF=WhxoPWMxNLYn+wcHThYz_YrqKzg@mail.gmail.com>
+	<CAHWJYFm8t+=JB7RGOb1xVtFVrn8fDvT0eVyH5jxio2yojcohpQ@mail.gmail.com>
+	<20151013000103.GA23613@kroah.com>
+Date: Tue, 13 Oct 2015 08:47:47 +0300
+Message-ID: <CAHWJYF=Wu7ihsMtQaVn3_UFv93u93FPEtsLVL5yLd1Bpuxit-Q@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 5/9] staging: iio: adc: add spaces
+ around binary operators
 From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: Daniel Baluta <daniel.baluta@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Daniel Baluta <daniel.baluta@gmail.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=94eb2c0bdaa6566bb80521f5fc30
+
+--94eb2c0bdaa6566bb80521f5fc30
 Content-Type: text/plain; charset=UTF-8
 
-On Mon, Oct 12, 2015 at 6:14 PM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
+On Tue, Oct 13, 2015 at 3:01 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Mon, Oct 12, 2015 at 10:00:30PM +0300, Ioana Ciornei wrote:
+>> On Mon, Oct 12, 2015 at 7:38 PM, Daniel Baluta <daniel.baluta@gmail.com>
+wrote:
+>> > On Fri, Oct 9, 2015 at 10:51 PM, Ioana Ciornei <ciorneiioana@gmail.com>
+wrote:
+>> >> Add spaces around binary operators like -, +, * etc
+>> >> in order to improve readability
+>> >>
+>> >> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+>> >> ---
+>> >>
+>> >> Changes in v2:
+>> >>     - nothing
+>> >> Changes in v3:
+>> >>     - nothing
+>> >>
+>> >>  drivers/staging/iio/adc/ad7192.c  | 2 +-
+>> >>  drivers/staging/iio/adc/ad7280a.c | 4 ++--
+>> >>  drivers/staging/iio/adc/ad7816.c  | 2 +-
+>> >>  3 files changed, 4 insertions(+), 4 deletions(-)
+>> >>
+>> >> diff --git a/drivers/staging/iio/adc/ad7192.c
+b/drivers/staging/iio/adc/ad7192.c
+>> >> index e7212c8..1bae258 100644
+>> >> --- a/drivers/staging/iio/adc/ad7192.c
+>> >> +++ b/drivers/staging/iio/adc/ad7192.c
+>> >> @@ -377,7 +377,7 @@ ad7192_show_scale_available(struct device *dev,
+>> >>  }
+>> >>
+>> >>  static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
+>> >> -                            in_voltage-voltage_scale_available,
+>> >> +                            in_voltage - voltage_scale_available,
+>> >
+>> > This is not ok :). in_voltage-voltage_scale_available is the name of
+>> > an IIO sysfs
+>> > attribute exposed to user space. '-' is a part of the name, there is
+>> > no binary operator
+>> > here.
+>> >
+>> > If checkpatch complains about this then it's a false positive.
+>>
+>>
+>> Yes, checkpatch generated a warning and also there were no build errors.
+>> Sorry about this. I will send a v2.
 >
-> On Fri, Oct 9, 2015 at 10:51 PM, Ioana Ciornei <ciorneiioana@gmail.com> wrote:
-> > Indent parameters and arguments passed to function calls to match
-> > open paranthesis
-> >
-> > Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
-> > ---
-> > Changes in v2:
-> >     - nothing
-> > Changes in v3:
-> >     - rework changes in order to avoid introducing new checkpatch warnings
-> >
->
-> <snip>
->
-> > @@ -565,10 +565,11 @@ static int ad7280_attr_init(struct ad7280_state *st)
-> >                         st->iio_attr[cnt].dev_attr.store =
-> >                                 ad7280_store_balance_sw;
-> >                         st->iio_attr[cnt].dev_attr.attr.name =
-> > -                               kasprintf(GFP_KERNEL,
->
-> This line looks good to me as it is. Is there any particular reason
-> for which you we want GFP_KERNEL to be moved on the next line?
->
-
-I chose to move kasprintf on the next line and all the others
-arguments also in order to improve readability.
-I had to choose between leaving the kasprintf where it was and
-properly align the arguments to match the open bracket but
-cross the 80 char limit or moving the kasprintf call on the next line
-so the arguments are somewhat distinguishable.
-
-Was this a bad call?
-
->
-> > +                               kasprintf(
-> > +                                       GFP_KERNEL,
-> >                                         "in%d-in%d_balance_switch_en",
-> > -                                       (dev * AD7280A_CELLS_PER_DEV) + ch,
-> > -                                       (dev * AD7280A_CELLS_PER_DEV) + ch + 1);
-> > +                                       dev * AD7280A_CELLS_PER_DEV + ch,
-> > +                                       dev * AD7280A_CELLS_PER_DEV + ch + 1);
->
-> This lines should be properly aligned.
-
-Answered above.
-
->
-> >                         ad7280_attributes[cnt] =
-> >                                 &st->iio_attr[cnt].dev_attr.attr;
-> >                         cnt++;
-> > @@ -582,9 +583,11 @@ static int ad7280_attr_init(struct ad7280_state *st)
-> >                         st->iio_attr[cnt].dev_attr.store =
-> >                                 ad7280_store_balance_timer;
-> >                         st->iio_attr[cnt].dev_attr.attr.name =
-> > -                               kasprintf(GFP_KERNEL, "in%d-in%d_balance_timer",
-> > -                                       (dev * AD7280A_CELLS_PER_DEV) + ch,
-> > -                                       (dev * AD7280A_CELLS_PER_DEV) + ch + 1);
-> > +                               kasprintf(
-> > +                                       GFP_KERNEL,
->
-> The same here.
+> You mean "v4", right?  This is v3 already...
 
 
->
-> > +                                       "in%d-in%d_balance_timer",
-> > +                                       dev * AD7280A_CELLS_PER_DEV + ch,
-> > +                                       dev * AD7280A_CELLS_PER_DEV + ch + 1);
-> >                         ad7280_attributes[cnt] =
-> >                                 &st->iio_attr[cnt].dev_attr.attr;
-> >                 }
-> > @@ -595,8 +598,8 @@ static int ad7280_attr_init(struct ad7280_state *st)
-> >  }
-> >
-> >  static ssize_t ad7280_read_channel_config(struct device *dev,
-> > -                                       struct device_attribute *attr,
-> > -                                       char *buf)
-> > +                                         struct device_attribute *attr,
-> > +                                         char *buf)
-> >  {
-> >         struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-> >         struct ad7280_state *st = iio_priv(indio_dev);
-> > @@ -624,9 +627,9 @@ static ssize_t ad7280_read_channel_config(struct device *dev,
-> >  }
-> >
-> >  static ssize_t ad7280_write_channel_config(struct device *dev,
-> > -                                        struct device_attribute *attr,
-> > -                                        const char *buf,
-> > -                                        size_t len)
-> > +                                          struct device_attribute *attr,
-> > +                                          const char *buf,
-> > +                                          size_t len)
-> >  {
-> >         struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-> >         struct ad7280_state *st = iio_priv(indio_dev);
-> > @@ -698,39 +701,43 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
-> >                         if (((channels[i] >> 11) & 0xFFF) >=
-> >                                 st->cell_threshhigh)
-> >                                 iio_push_event(indio_dev,
-> > -                                       IIO_EVENT_CODE(IIO_VOLTAGE,
-> > -                                                      1,
-> > -                                                      0,
-> > -                                                      IIO_EV_DIR_RISING,
-> > -                                                      IIO_EV_TYPE_THRESH,
-> > -                                                      0, 0, 0),
-> > -                                       iio_get_time_ns());
-> > +                                              IIO_EVENT_CODE(
-> > +                                                       IIO_VOLTAGE,
-> The same here, I think IIO_VOLTAGE should not be moved.
-
->
-> > +                                                       1,
-> > +                                                       0,
->
-> The rest of the patch looks good.
-
-
-Thanks,
+Yes, I was meaning v4. I will send it right away.
 
 Ioana
+
+--94eb2c0bdaa6566bb80521f5fc30
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tue, Oct 13, 2015 at 3:01 AM, Greg KH &lt;<a hr=
+ef=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt;=
+ wrote:<br>&gt; On Mon, Oct 12, 2015 at 10:00:30PM +0300, Ioana Ciornei wro=
+te:<br>&gt;&gt; On Mon, Oct 12, 2015 at 7:38 PM, Daniel Baluta &lt;<a href=
+=3D"mailto:daniel.baluta@gmail.com">daniel.baluta@gmail.com</a>&gt; wrote:<=
+br>&gt;&gt; &gt; On Fri, Oct 9, 2015 at 10:51 PM, Ioana Ciornei &lt;<a href=
+=3D"mailto:ciorneiioana@gmail.com">ciorneiioana@gmail.com</a>&gt; wrote:<br=
+>&gt;&gt; &gt;&gt; Add spaces around binary operators like -, +, * etc<br>&=
+gt;&gt; &gt;&gt; in order to improve readability<br>&gt;&gt; &gt;&gt;<br>&g=
+t;&gt; &gt;&gt; Signed-off-by: Ioana Ciornei &lt;<a href=3D"mailto:ciorneii=
+oana@gmail.com">ciorneiioana@gmail.com</a>&gt;<br>&gt;&gt; &gt;&gt; ---<br>=
+&gt;&gt; &gt;&gt;<br>&gt;&gt; &gt;&gt; Changes in v2:<br>&gt;&gt; &gt;&gt; =
+=C2=A0 =C2=A0 - nothing<br>&gt;&gt; &gt;&gt; Changes in v3:<br>&gt;&gt; &gt=
+;&gt; =C2=A0 =C2=A0 - nothing<br>&gt;&gt; &gt;&gt;<br>&gt;&gt; &gt;&gt; =C2=
+=A0drivers/staging/iio/adc/ad7192.c =C2=A0| 2 +-<br>&gt;&gt; &gt;&gt; =C2=
+=A0drivers/staging/iio/adc/ad7280a.c | 4 ++--<br>&gt;&gt; &gt;&gt; =C2=A0dr=
+ivers/staging/iio/adc/ad7816.c =C2=A0| 2 +-<br>&gt;&gt; &gt;&gt; =C2=A03 fi=
+les changed, 4 insertions(+), 4 deletions(-)<br>&gt;&gt; &gt;&gt;<br>&gt;&g=
+t; &gt;&gt; diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging=
+/iio/adc/ad7192.c<br>&gt;&gt; &gt;&gt; index e7212c8..1bae258 100644<br>&gt=
+;&gt; &gt;&gt; --- a/drivers/staging/iio/adc/ad7192.c<br>&gt;&gt; &gt;&gt; =
++++ b/drivers/staging/iio/adc/ad7192.c<br>&gt;&gt; &gt;&gt; @@ -377,7 +377,=
+7 @@ ad7192_show_scale_available(struct device *dev,<br>&gt;&gt; &gt;&gt; =
+=C2=A0}<br>&gt;&gt; &gt;&gt;<br>&gt;&gt; &gt;&gt; =C2=A0static IIO_DEVICE_A=
+TTR_NAMED(in_v_m_v_scale_available,<br>&gt;&gt; &gt;&gt; - =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0in_voltage-voltage_scale_available,<br>&gt;&gt; &gt;&gt; + =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0in_voltage - voltage_scale_available,<br>&gt;&gt; &gt;<br>=
+&gt;&gt; &gt; This is not ok :). in_voltage-voltage_scale_available is the =
+name of<br>&gt;&gt; &gt; an IIO sysfs<br>&gt;&gt; &gt; attribute exposed to=
+ user space. &#39;-&#39; is a part of the name, there is<br>&gt;&gt; &gt; n=
+o binary operator<br>&gt;&gt; &gt; here.<br>&gt;&gt; &gt;<br>&gt;&gt; &gt; =
+If checkpatch complains about this then it&#39;s a false positive.<br>&gt;&=
+gt;<br>&gt;&gt;<br>&gt;&gt; Yes, checkpatch generated a warning and also th=
+ere were no build errors.<br>&gt;&gt; Sorry about this. I will send a v2.<b=
+r>&gt;<br>&gt; You mean &quot;v4&quot;, right?=C2=A0 This is v3 already...<=
+br><br><br>Yes, I was meaning v4. I will send it right away.<div><br></div>=
+<div>Ioana</div></div>
+
+--94eb2c0bdaa6566bb80521f5fc30--
 
