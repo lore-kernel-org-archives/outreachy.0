@@ -1,132 +1,125 @@
-X-GM-THRID: 7921078370304
-X-Received: by 10.112.198.34 with SMTP id iz2mr6402545lbc.22.1426180035743;
-        Thu, 12 Mar 2015 10:07:15 -0700 (PDT)
+X-GM-THRID: 6205255404261212160
+X-Received: by 10.67.3.137 with SMTP id bw9mr31636312pad.4.1444773609717;
+        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.36.199 with SMTP id s7ls264767laj.57.gmail; Thu, 12 Mar
- 2015 10:07:15 -0700 (PDT)
-X-Received: by 10.112.120.136 with SMTP id lc8mr3562884lbb.24.1426180035246;
-        Thu, 12 Mar 2015 10:07:15 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
-        by gmr-mx.google.com with ESMTPS id gj20si1587064wic.1.2015.03.12.10.07.15
+Received: by 10.107.155.19 with SMTP id d19ls1939470ioe.19.gmail; Tue, 13 Oct
+ 2015 15:00:09 -0700 (PDT)
+X-Received: by 10.66.227.166 with SMTP id sb6mr30787148pac.0.1444773609345;
+        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id zg1si549505pbb.2.2015.10.13.15.00.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 10:07:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22e.google.com with SMTP id w55so17834493wes.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 10:07:15 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22c.google.com with SMTP id ex6so32747537pac.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=NQ6PJeGkjhzGceYdVMUjBxTkt4V8UWsMO3HRV0mRgYc=;
-        b=To/Yl9Wx456QSQ+vNaxeAfGF1IuLoafU1ot3PvzUOsJByzZ5Gsn4m6EhUBA0VX5Ra5
-         vevEMgD8I0tX0z7tOr+a/v8UeKotSHH5F2LWrA8tkLsbMr0jHHL7u4wmr/dg0HvEAmEK
-         2VkMt9Ki9oSHV3Mb1fpb5uQ1N3C+DGqk7IAPoG0pEoFdB10GrCYbAa+jcX7NNFPkbsMh
-         3yv6uO0tlpbc2km0KTi3yktHl/xHaa092NMKm0ysghGd8y7G0T1gaUeBum6XT/E9x8dj
-         cp2XeglsbKhFGu6iZdHT2p49OAd3iWExQKvIn225d2PK6lF5CeyX3P3mVisPZzNKE/pa
-         owQg==
-X-Received: by 10.194.235.71 with SMTP id uk7mr90250628wjc.13.1426180035153;
-        Thu, 12 Mar 2015 10:07:15 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id md2sm13987627wic.19.2015.03.12.10.07.14
+        bh=JRAoA9E2cen2zYHLKI4wJxOTHyJ5HQSDqUfuAR6uBHs=;
+        b=THulnPqjAdeS+W6K+S0GmbmmvY1sVzFTwWoThwDWsYIPbWNemtuGaq40+P8hQRCIZu
+         ydaunuAEw0151Wo0G7uYnmiHpyuMAI0UaUE5JNNiZLfe9GB3UvNHA2UQBpz1k0wfeK5z
+         7jprLrdnxiRXdLaFQdD3TBoXU5mSUpwlrxIKHnhsqJ70FSW+0YzoUnjUsbi/5TZOeAGL
+         tA2acQ30zmuDg4+v6Jz35U+TaCY4myGr13FqMk9FjSwTRc09riasdi1cVk0VyVJ1Xa7L
+         ErrFtPRQyJzdguKCQle72jYLeHXC26zb6imcKa6bwUgCAZXIMpcNvE6K4vVqEBmlh3Hz
+         /shQ==
+X-Received: by 10.66.145.97 with SMTP id st1mr42332777pab.145.1444773609244;
+        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id x6sm5687643pbt.3.2015.10.13.15.00.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 12 Mar 2015 10:07:14 -0700 (PDT)
-Date: Thu, 12 Mar 2015 19:06:30 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2015 15:00:08 -0700 (PDT)
+Date: Wed, 14 Oct 2015 03:29:58 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: drivers: Remove unecessary return value
-Message-ID: <20150312170630.GA30999@Inspiron>
+Subject: [PATCH] Staging: wilc1000: host_interface: Remove unnecessary enum
+Message-ID: <20151013215958.GA14072@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Change _SUCCESS return value for function loadparam to void as it never
-changes and it's also never used when calling the function.
+enum scan_conn_timer and its instances are never used anywhere
+in the code so, remove it.
+Semantic patch used:
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+@@
+type T;
+identifier i;
+constant C;
+position p != e.p;
+@@
+
+- T i@p;
+  <+... when != i
+- i = C;
+  ...+>
+
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/rtl8188eu/os_dep/os_intfs.c | 3 +--
- drivers/staging/rtl8712/os_intfs.c          | 5 ++---
- drivers/staging/rtl8723au/os_dep/os_intfs.c | 3 +--
- 3 files changed, 4 insertions(+), 7 deletions(-)
+ drivers/staging/wilc1000/host_interface.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/os_dep/os_intfs.c b/drivers/staging/rtl8188eu/os_dep/os_intfs.c
-index 88a909c..d2f5490 100644
---- a/drivers/staging/rtl8188eu/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8188eu/os_dep/os_intfs.c
-@@ -510,7 +510,7 @@ void rtw_proc_remove_one(struct net_device *dev)
- }
- #endif
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 04f3bc2..14c8abe 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -229,12 +229,6 @@ struct join_bss_param {
+ 	u8 au8StartTime[4];
+ };
  
--static uint loadparam(struct adapter *padapter,  struct  net_device *pnetdev)
-+static void loadparam(struct adapter *padapter,  struct  net_device *pnetdev)
+-enum scan_conn_timer {
+-	SCAN_TIMER = 0,
+-	CONNECT_TIMER	= 1,
+-	SCAN_CONNECT_TIMER_FORCE_32BIT = 0xFFFFFFFF
+-};
+-
+ static struct host_if_drv *wfidrv_list[NUM_CONCURRENT_IFC + 1];
+ struct host_if_drv *terminated_handle;
+ struct host_if_drv *gWFiDrvHandle;
+@@ -3584,7 +3578,6 @@ s32 host_int_set_join_req(struct host_if_drv *hif_drv, u8 *pu8bssid,
  {
- 	struct registry_priv  *registry_par = &padapter->registrypriv;
+ 	s32 s32Error = 0;
+ 	struct host_if_msg msg;
+-	enum scan_conn_timer enuScanConnTimer;
  
-@@ -581,7 +581,6 @@ static uint loadparam(struct adapter *padapter,  struct  net_device *pnetdev)
- 	snprintf(registry_par->ifname, 16, "%s", ifname);
- 	snprintf(registry_par->if2name, 16, "%s", if2name);
- 	registry_par->notch_filter = (u8)rtw_notch_filter;
--	return _SUCCESS;
- }
+ 	if (!hif_drv || pfConnectResult == NULL) {
+ 		s32Error = -EFAULT;
+@@ -3636,7 +3629,6 @@ s32 host_int_set_join_req(struct host_if_drv *hif_drv, u8 *pu8bssid,
+ 		return -EFAULT;
+ 	}
  
- static int rtw_net_set_mac_address(struct net_device *pnetdev, void *p)
-diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
-index 3cac773..7b3d377 100644
---- a/drivers/staging/rtl8712/os_intfs.c
-+++ b/drivers/staging/rtl8712/os_intfs.c
-@@ -122,11 +122,11 @@ module_param(low_power, int, 0644);
- MODULE_PARM_DESC(ifname, " Net interface name, wlan%d=default");
- MODULE_PARM_DESC(initmac, "MAC-Address, default: use FUSE");
- 
--static uint loadparam(struct _adapter *padapter, struct  net_device *pnetdev);
-+static void loadparam(struct _adapter *padapter, struct  net_device *pnetdev);
- static int netdev_open(struct net_device *pnetdev);
- static int netdev_close(struct net_device *pnetdev);
- 
--static uint loadparam(struct _adapter *padapter, struct  net_device *pnetdev)
-+static void loadparam(struct _adapter *padapter, struct  net_device *pnetdev)
+-	enuScanConnTimer = CONNECT_TIMER;
+ 	hif_drv->hConnectTimer.data = (unsigned long)hif_drv;
+ 	mod_timer(&hif_drv->hConnectTimer,
+ 		  jiffies + msecs_to_jiffies(HOST_IF_CONNECT_TIMEOUT));
+@@ -4020,7 +4012,6 @@ s32 host_int_scan(struct host_if_drv *hif_drv, u8 u8ScanSource,
  {
- 	struct registry_priv  *registry_par = &padapter->registrypriv;
+ 	s32 s32Error = 0;
+ 	struct host_if_msg msg;
+-	enum scan_conn_timer enuScanConnTimer;
  
-@@ -171,7 +171,6 @@ static uint loadparam(struct _adapter *padapter, struct  net_device *pnetdev)
- 	registry_par->low_power = (u8)low_power;
- 	registry_par->wifi_test = (u8) wifi_test;
- 	r8712_initmac = initmac;
--	return _SUCCESS;
- }
+ 	if (!hif_drv || ScanResult == NULL) {
+ 		PRINT_ER("hif_drv or ScanResult = NULL\n");
+@@ -4058,7 +4049,6 @@ s32 host_int_scan(struct host_if_drv *hif_drv, u8 u8ScanSource,
+ 		return -EINVAL;
+ 	}
  
- static int r871x_net_set_mac_address(struct net_device *pnetdev, void *p)
-diff --git a/drivers/staging/rtl8723au/os_dep/os_intfs.c b/drivers/staging/rtl8723au/os_dep/os_intfs.c
-index 1b23eb1..d6d9af6 100644
---- a/drivers/staging/rtl8723au/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8723au/os_dep/os_intfs.c
-@@ -172,7 +172,7 @@ MODULE_PARM_DESC(debug, "Set debug level (1-9) (default 1)");
- 
- static int netdev_close(struct net_device *pnetdev);
- 
--static int loadparam(struct rtw_adapter *padapter,  struct net_device *pnetdev)
-+static void loadparam(struct rtw_adapter *padapter,  struct net_device *pnetdev)
- {
- 	struct registry_priv  *registry_par = &padapter->registrypriv;
- 
-@@ -233,7 +233,6 @@ static int loadparam(struct rtw_adapter *padapter,  struct net_device *pnetdev)
- 	snprintf(registry_par->if2name, 16, "%s", if2name);
- 	registry_par->notch_filter = (u8)rtw_notch_filter;
- 	registry_par->regulatory_tid = (u8)rtw_regulatory_id;
--	return _SUCCESS;
- }
- 
- static int rtw_net_set_mac_address(struct net_device *pnetdev, void *p)
+-	enuScanConnTimer = SCAN_TIMER;
+ 	PRINT_D(HOSTINF_DBG, ">> Starting the SCAN timer\n");
+ 	hif_drv->hScanTimer.data = (unsigned long)hif_drv;
+ 	mod_timer(&hif_drv->hScanTimer,
 -- 
-1.9.1
+2.1.0
 
 
