@@ -1,144 +1,120 @@
-X-GM-THRID: 6330207690176856064
-X-Received: by 10.129.155.145 with SMTP id s139mr2377035ywg.31.1473866330992;
-        Wed, 14 Sep 2016 08:18:50 -0700 (PDT)
+X-GM-THRID: 6203640047549284352
+X-Received: by 10.194.94.66 with SMTP id da2mr2990389wjb.7.1444757833279;
+        Tue, 13 Oct 2015 10:37:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.138.70 with SMTP id m67ls442295iod.41.gmail; Wed, 14 Sep
- 2016 08:18:50 -0700 (PDT)
-X-Received: by 10.107.141.145 with SMTP id p139mr2806240iod.15.1473866330442;
-        Wed, 14 Sep 2016 08:18:50 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id si10si1449223pab.1.2016.09.14.08.18.50
+Received: by 10.181.13.231 with SMTP id fb7ls1129876wid.38.canary; Tue, 13 Oct
+ 2015 10:37:12 -0700 (PDT)
+X-Received: by 10.180.85.133 with SMTP id h5mr4523732wiz.1.1444757832420;
+        Tue, 13 Oct 2015 10:37:12 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id bh7si759336wib.1.2015.10.13.10.37.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 08:18:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2015 10:37:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id pp5so881393pac.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 08:18:50 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22d.google.com with SMTP id gb1so198482822wic.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 10:37:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=1DsWkXSsJxqjWiUAHWBOQVv/h/Es3SHG3yHr/tQQBLE=;
-        b=fdk2PkRq7mQkhh7D9UAXILPzMKXforObFoHnZyliDHQMR7zOVWXPidkyDVNYp+JPDl
-         ld7Rzv6+NqH+8tiSSncItjKuzVgR9GS9mnGyxWofpkEKufhCR9fDYpXLmZOFcfV7VL1X
-         e6vDrMLqe8LvTAuxGiudebpN2Vq7PP+eKzdQgZ+aG/aDK9uWi2eW80cn9QXh76FIMrKw
-         aOTRiwcTKhn6iLJ/O2ki21DTcpNTRxm1fkkJsTQTl6eD1731GKQBXI5kdKuolYFdJXLJ
-         UOtXBhpmowr5g2ydmMUlp8q6DWyJdJD0MGnz2d2lqo0VkATqAvvQ1YtflggaCmrqYFE3
-         t6RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=1DsWkXSsJxqjWiUAHWBOQVv/h/Es3SHG3yHr/tQQBLE=;
-        b=bbqE8fjAuruHyn+NGMBBxr+l+CQgC3vTgADHFURhAR8mcN2+ZfZyb9UZVUECf2PGfM
-         80issDmb5TiDAAkqY3evbFjShjE9mZCuCo7hYDW/tZhGl7PwaCNL01Ox85uf2R36Nqfd
-         T0XX3sXUPHpYek/2AwNUXcVC+7qcAS9hon8Q0/f4jMTvxpHQ9ksU3g1Nlw+AWpQuyl1B
-         hqxLrv/zWVgo0SHGYy2Wqgx475GB3IWoNfQSCv5zPcdvuHyYDn3wROKx/lEeP8sP1RaT
-         SgUWFZ2ca3hKhyM1/mutpe1fhCbwsRvjt3fGjqND8l2dgZ9aEFZfVxebh8ZG71I9JaK4
-         7qvw==
-X-Gm-Message-State: AE9vXwPEiFg0vp/SrJWJ427XeUsTKKVH5CUmMygTXHeyKEE7K/IfSy3PeWvPO2WBsN9aMw==
-X-Received: by 10.66.72.8 with SMTP id z8mr5392211pau.141.1473866330193;
-        Wed, 14 Sep 2016 08:18:50 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.22])
-        by smtp.gmail.com with ESMTPSA id o87sm32030718pfa.16.2016.09.14.08.18.47
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 08:18:49 -0700 (PDT)
-Date: Wed, 14 Sep 2016 20:48:34 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: marcel@holtmann.org
-Cc: outreachy-kernel@googlegroups.com, gustavo@padovan.org
-Subject: [PATCH 1/3] drivers: bluetooth: bfusb: Line over 80 characters in
- conditional stataments
-Message-ID: <20160914151712.GA9806@life-desktop>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        h=from:to:subject:date:message-id;
+        bh=GojWLQXwkVdWVeCqAl9gfwSuoYHwCL0UC519EPiNGzc=;
+        b=lHaE3J3HFxF/rG98DqO04t7aa1FDhEwo/QrDtDZJDG4+dL4G7jnBMnE+Z8O84vj83G
+         OuNN1M3SzQFz7DKnLcDSAyT4spgdxJrxDSbTL9m0yPfFrO7Ly6NGzyLYurvkI5/2Djov
+         e6oEVVBdzz3Y8CXq01I7uHD1An84gxZxDf1yQUxbgw73NscVP5N6yhulYTB6EDwogP2f
+         pGM2XWMvRrA9DrGINaK7tmNHsc7RoMa6gHC8O6BnmoxZHmK3yzU9uTben3mZy8yL4L3D
+         VnR/9M9cOJcPcU5eEKvEIBlJ4g9JpGZv2Bjec41Av5lNfLX2f1UfoRKe3uqs+4BcEbL5
+         tWVQ==
+X-Received: by 10.194.79.196 with SMTP id l4mr42095548wjx.93.1444757832199;
+        Tue, 13 Oct 2015 10:37:12 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id d8sm25415454wiy.1.2015.10.13.10.37.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 13 Oct 2015 10:37:11 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3] Staging: wilc1000: Use kzalloc instead of kmalloc and memset
+Date: Tue, 13 Oct 2015 23:07:00 +0530
+Message-Id: <1444757820-2008-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150206.561D4146.007B,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-This patch remove the warning of checkpatch.pl Line over 80 characters.
-to remove this warning break the conditional statements into small chunks.
+Replace kmalloc and memset with a single call to kzalloc.
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/bluetooth/bfusb.c | 27 ++++++++++++++++++---------
- 1 file changed, 18 insertions(+), 9 deletions(-)
+Changes in v3-
+ Based on latest staging-testing branch
 
-diff --git a/drivers/bluetooth/bfusb.c b/drivers/bluetooth/bfusb.c
-index 3bf4ec6..1c2e16d 100644
---- a/drivers/bluetooth/bfusb.c
-+++ b/drivers/bluetooth/bfusb.c
-@@ -148,7 +148,7 @@ static int bfusb_send_bulk(struct bfusb_data *data, struct sk_buff *skb)
+ drivers/staging/wilc1000/host_interface.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 392bf08..706b27d 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -1867,15 +1867,13 @@ static int Handle_Key(struct host_if_drv *hif_drv,
  
- 	err = usb_submit_urb(urb, GFP_ATOMIC);
- 	if (err) {
--		BT_ERR("%s bulk tx submit failed urb %p err %d", 
-+		BT_ERR("%s bulk tx submit failed urb %p err %d",
- 					data->hdev->name, urb, err);
- 		skb_unlink(skb, &data->pending_q);
- 		usb_free_urb(urb);
-@@ -289,30 +289,38 @@ static inline int bfusb_recv_block(struct bfusb_data *data, int hdr, unsigned ch
- 		switch (pkt_type) {
- 		case HCI_EVENT_PKT:
- 			if (len >= HCI_EVENT_HDR_SIZE) {
--				struct hci_event_hdr *hdr = (struct hci_event_hdr *) buf;
-+				struct hci_event_hdr *hdr = (struct
-+							     hci_event_hdr *)
-+							     buf;
- 				pkt_len = HCI_EVENT_HDR_SIZE + hdr->plen;
- 			} else {
--				BT_ERR("%s event block is too short", data->hdev->name);
-+				BT_ERR("%s event block is too short",
-+				       data->hdev->name);
- 				return -EILSEQ;
+ 	case WPARxGtk:
+ 		if (pstrHostIFkeyAttr->action & ADDKEY_AP) {
+-			pu8keybuf = kmalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
++			pu8keybuf = kzalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
+ 			if (pu8keybuf == NULL) {
+ 				PRINT_ER("No buffer to send RxGTK Key\n");
+ 				ret = -1;
+ 				goto _WPARxGtk_end_case_;
  			}
- 			break;
  
- 		case HCI_ACLDATA_PKT:
- 			if (len >= HCI_ACL_HDR_SIZE) {
--				struct hci_acl_hdr *hdr = (struct hci_acl_hdr *) buf;
--				pkt_len = HCI_ACL_HDR_SIZE + __le16_to_cpu(hdr->dlen);
-+				struct hci_acl_hdr *hdr = (struct hci_acl_hdr *)
-+							  buf;
-+				pkt_len = HCI_ACL_HDR_SIZE + __le16_to_cpu
-+								(hdr->dlen);
- 			} else {
--				BT_ERR("%s data block is too short", data->hdev->name);
-+				BT_ERR("%s data block is too short",
-+				       data->hdev->name);
- 				return -EILSEQ;
- 			}
- 			break;
+-			memset(pu8keybuf, 0, RX_MIC_KEY_MSG_LEN);
+-
+ 			if (pstrHostIFkeyAttr->attr.wpa.seq != NULL)
+ 				memcpy(pu8keybuf + 6, pstrHostIFkeyAttr->attr.wpa.seq, 8);
  
- 		case HCI_SCODATA_PKT:
- 			if (len >= HCI_SCO_HDR_SIZE) {
--				struct hci_sco_hdr *hdr = (struct hci_sco_hdr *) buf;
-+				struct hci_sco_hdr *hdr = (struct hci_sco_hdr *)
-+							   buf;
- 				pkt_len = HCI_SCO_HDR_SIZE + hdr->dlen;
- 			} else {
--				BT_ERR("%s audio block is too short", data->hdev->name);
-+				BT_ERR("%s audio block is too short",
-+				       data->hdev->name);
- 				return -EILSEQ;
+@@ -1904,15 +1902,13 @@ static int Handle_Key(struct host_if_drv *hif_drv,
+ 		if (pstrHostIFkeyAttr->action & ADDKEY) {
+ 			PRINT_D(HOSTINF_DBG, "Handling group key(Rx) function\n");
+ 
+-			pu8keybuf = kmalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
++			pu8keybuf = kzalloc(RX_MIC_KEY_MSG_LEN, GFP_KERNEL);
+ 			if (pu8keybuf == NULL) {
+ 				PRINT_ER("No buffer to send RxGTK Key\n");
+ 				ret = -1;
+ 				goto _WPARxGtk_end_case_;
  			}
- 			break;
-@@ -329,7 +337,8 @@ static inline int bfusb_recv_block(struct bfusb_data *data, int hdr, unsigned ch
- 		data->reassembly = skb;
- 	} else {
- 		if (!data->reassembly) {
--			BT_ERR("%s unexpected continuation block", data->hdev->name);
-+			BT_ERR("%s unexpected continuation block",
-+			       data->hdev->name);
- 			return -EIO;
- 		}
- 	}
+ 
+-			memset(pu8keybuf, 0, RX_MIC_KEY_MSG_LEN);
+-
+ 			if (hif_drv->enuHostIFstate == HOST_IF_CONNECTED)
+ 				memcpy(pu8keybuf, hif_drv->au8AssociatedBSSID, ETH_ALEN);
+ 			else
+@@ -4936,9 +4932,8 @@ static void *host_int_ParseJoinBssParam(tstrNetworkInfo *ptstrNetworkInfo)
+ 	pu8IEs = ptstrNetworkInfo->pu8IEs;
+ 	u16IEsLen = ptstrNetworkInfo->u16IEsLen;
+ 
+-	pNewJoinBssParam = kmalloc(sizeof(struct join_bss_param), GFP_KERNEL);
++	pNewJoinBssParam = kzalloc(sizeof(struct join_bss_param), GFP_KERNEL);
+ 	if (pNewJoinBssParam != NULL) {
+-		memset(pNewJoinBssParam, 0, sizeof(struct join_bss_param));
+ 		pNewJoinBssParam->dtim_period = ptstrNetworkInfo->u8DtimPeriod;
+ 		pNewJoinBssParam->beacon_period = ptstrNetworkInfo->u16BeaconPeriod;
+ 		pNewJoinBssParam->cap_info = ptstrNetworkInfo->u16CapInfo;
 -- 
-1.9.1
+2.1.4
 
 
