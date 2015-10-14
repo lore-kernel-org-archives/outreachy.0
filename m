@@ -1,48 +1,48 @@
 X-GM-THRID: 6205587481887244288
-X-Received: by 10.50.41.7 with SMTP id b7mr23583407igl.12.1444850963336;
-        Wed, 14 Oct 2015 12:29:23 -0700 (PDT)
+X-Received: by 10.182.18.66 with SMTP id u2mr3985307obd.1.1444850960541;
+        Wed, 14 Oct 2015 12:29:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.50.168 with SMTP id d8ls172306obo.60.gmail; Wed, 14 Oct
- 2015 12:29:23 -0700 (PDT)
-X-Received: by 10.182.29.41 with SMTP id g9mr4077843obh.27.1444850962997;
-        Wed, 14 Oct 2015 12:29:22 -0700 (PDT)
+Received: by 10.107.12.146 with SMTP id 18ls259928iom.103.gmail; Wed, 14 Oct
+ 2015 12:29:20 -0700 (PDT)
+X-Received: by 10.107.6.221 with SMTP id f90mr1904982ioi.13.1444850960232;
+        Wed, 14 Oct 2015 12:29:20 -0700 (PDT)
 Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id ce6si477854pad.0.2015.10.14.12.29.22
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id el2si1075158pbb.0.2015.10.14.12.29.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 12:29:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Wed, 14 Oct 2015 12:29:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pabrc13 with SMTP id rc13so62539972pab.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 12:29:22 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id cn9so31307218pad.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 12:29:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=KBZf9fWc0HbfsYMR2oUDyImyckax/6AndxGxKMZr/hM=;
-        b=j9elvdK7Eo+0OxSgQl2gg1GGhaWSwGKhUk8+zGg4rLzHIKyL4EGcwTzdKI/iByDdah
-         lwQS9nI7nCRteS2Jpu1p+l9N1dc9JP52ImTqcOHCKY8I6rzGbukC1PYYluApJZP6QAca
-         NoWGE/gvQ8wuogpfFaUyAxiMnk/Eho83erJz6exxlF9Qpm91V4zkGYojzCYaat/eBjBS
-         ViIgDEP94YSrSVczWe3Xew29UguiEYeXq6yyYamfJnL0PCjYm5JDT73Tpepeml4dL7Oe
-         x278XGqWQXi+WyI4N6SVnXT6bzVzvgKVH7W2ZbBHFdnxSl4S5x/p11V+sY02oGLERP6V
-         xyqw==
-X-Received: by 10.68.57.137 with SMTP id i9mr5231573pbq.101.1444850962854;
-        Wed, 14 Oct 2015 12:29:22 -0700 (PDT)
+        bh=qQNoazwBYcTr0TN+gsuOsw8diIaJ6/MS2LMe4Tkn2qg=;
+        b=nlJ+XBwYYH340w4nf3A88JozouRTgjJUqrocxU07klWz6/e2UnfaIewd3DxpqUKPyH
+         KnVexleMh9iQriXMyb9w5l6Y1Rv/MCuR5NPNnbnYlJK7TlN8HZpImdGuuyQE7ffP295O
+         Fp8JWOHvT+BeLQN6GpWEjs9Qm1kkGvIhNOvYxDtz/TPfcYKKCYMEOLgTWpUeLKQ/L8Qr
+         izAU+KY2v4giFURruI/PbZnhE3PDfp43JWSzKQdo9jozyHafAwWVePDYPdpQmX5x2MgF
+         vVY6Prp1yOt1o8R5WPVNvObX4twNi6ikfYSEYzrM4VgfwCxP3Y6eCAqDCbgRBfBsZB6/
+         B7hQ==
+X-Received: by 10.66.190.6 with SMTP id gm6mr5286821pac.27.1444850960107;
+        Wed, 14 Oct 2015 12:29:20 -0700 (PDT)
 Return-Path: <shraddha.6596@gmail.com>
 Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id aw5sm11106380pbc.13.2015.10.14.12.29.20
+        by smtp.gmail.com with ESMTPSA id aw5sm11106380pbc.13.2015.10.14.12.29.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Oct 2015 12:29:22 -0700 (PDT)
+        Wed, 14 Oct 2015 12:29:19 -0700 (PDT)
 From: Shraddha Barke <shraddha.6596@gmail.com>
 To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 12/12] Staging: media: Remove unnecessary cast on void pointer
-Date: Thu, 15 Oct 2015 00:58:30 +0530
-Message-Id: <1444850910-11408-13-git-send-email-shraddha.6596@gmail.com>
+Subject: [PATCH 11/12] Staging: rdma: hfi1: Remove unnecessary cast on void pointer
+Date: Thu, 15 Oct 2015 00:58:29 +0530
+Message-Id: <1444850910-11408-12-git-send-email-shraddha.6596@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1444850910-11408-1-git-send-email-shraddha.6596@gmail.com>
 References: <1444850910-11408-1-git-send-email-shraddha.6596@gmail.com>
@@ -52,7 +52,7 @@ X-CTCH-PVer:  0000001
 X-CTCH-Spam:  Unknown
 X-CTCH-VOD:  Unknown
 X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150201.561EAD11.008B,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-RefID:  str=0001.0A150201.561EAD0E.008F,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
 X-CTCH-Score:  0.000
 X-CTCH-ScoreCust:  0.000
 X-CTCH-Rules:  
@@ -81,283 +81,203 @@ identifier f;
 
 Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 60 ++++++++++++------------
- 1 file changed, 30 insertions(+), 30 deletions(-)
+ drivers/staging/rdma/hfi1/chip.c  | 30 +++++++++++++++---------------
+ drivers/staging/rdma/hfi1/mad.c   |  8 ++++----
+ drivers/staging/rdma/hfi1/verbs.c |  2 +-
+ 3 files changed, 20 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-index 1bbb90c..b1dfa2c 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-@@ -79,7 +79,7 @@ static int ipipe_set_lutdpc_params(struct vpfe_ipipe_device *ipipe, void *param)
- 	}
- 
- 	dev = ipipe->subdev.v4l2_dev->dev;
--	dpc_param = (struct vpfe_ipipe_lutdpc *)param;
-+	dpc_param = param;
- 	lutdpc->en = dpc_param->en;
- 	lutdpc->repl_white = dpc_param->repl_white;
- 	lutdpc->dpc_size = dpc_param->dpc_size;
-@@ -96,7 +96,7 @@ success:
- 
- static int ipipe_get_lutdpc_params(struct vpfe_ipipe_device *ipipe, void *param)
+diff --git a/drivers/staging/rdma/hfi1/chip.c b/drivers/staging/rdma/hfi1/chip.c
+index 1152359..46ebc38 100644
+--- a/drivers/staging/rdma/hfi1/chip.c
++++ b/drivers/staging/rdma/hfi1/chip.c
+@@ -1295,7 +1295,7 @@ static inline u64 read_write_csr(const struct hfi1_devdata *dd, u32 csr,
+ static u64 dev_access_u32_csr(const struct cntr_entry *entry,
+ 			    void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_lutdpc *lut_param = (struct vpfe_ipipe_lutdpc *)param;
-+	struct vpfe_ipipe_lutdpc *lut_param = param;
- 	struct vpfe_ipipe_lutdpc *lutdpc = &ipipe->config.lutdpc;
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
- 	lut_param->en = lutdpc->en;
-@@ -171,7 +171,7 @@ static int ipipe_validate_otfdpc_params(struct vpfe_ipipe_otfdpc *dpc_param)
- 
- static int ipipe_set_otfdpc_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1305,7 +1305,7 @@ static u64 dev_access_u32_csr(const struct cntr_entry *entry,
+ static u64 dev_access_u64_csr(const struct cntr_entry *entry, void *context,
+ 			    int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_otfdpc *dpc_param = (struct vpfe_ipipe_otfdpc *)param;
-+	struct vpfe_ipipe_otfdpc *dpc_param = param;
- 	struct vpfe_ipipe_otfdpc *otfdpc = &ipipe->config.otfdpc;
- 	struct device *dev;
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
-@@ -194,7 +194,7 @@ success:
- 
- static int ipipe_get_otfdpc_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	u64 val = 0;
+ 	u64 csr = entry->csr;
+@@ -1326,7 +1326,7 @@ static u64 dev_access_u64_csr(const struct cntr_entry *entry, void *context,
+ static u64 dc_access_lcb_cntr(const struct cntr_entry *entry, void *context,
+ 			    int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_otfdpc *dpc_param = (struct vpfe_ipipe_otfdpc *)param;
-+	struct vpfe_ipipe_otfdpc *dpc_param = param;
- 	struct vpfe_ipipe_otfdpc *otfdpc = &ipipe->config.otfdpc;
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
+ 	u32 csr = entry->csr;
+ 	int ret = 0;
  
- 	memcpy(dpc_param, otfdpc, sizeof(struct vpfe_ipipe_otfdpc));
-@@ -226,7 +226,7 @@ static int ipipe_validate_nf_params(struct vpfe_ipipe_nf *nf_param)
- static int ipipe_set_nf_params(struct vpfe_ipipe_device *ipipe,
- 			       unsigned int id, void *param)
+@@ -1350,7 +1350,7 @@ static u64 dc_access_lcb_cntr(const struct cntr_entry *entry, void *context,
+ static u64 port_access_u32_csr(const struct cntr_entry *entry, void *context,
+ 			     int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_nf *nf_param = (struct vpfe_ipipe_nf *)param;
-+	struct vpfe_ipipe_nf *nf_param = param;
- 	struct vpfe_ipipe_nf *nf = &ipipe->config.nf1;
- 	struct device *dev;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
  
-@@ -264,7 +264,7 @@ static int ipipe_set_nf2_params(struct vpfe_ipipe_device *ipipe, void *param)
- static int ipipe_get_nf_params(struct vpfe_ipipe_device *ipipe,
- 			       unsigned int id, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1360,7 +1360,7 @@ static u64 port_access_u32_csr(const struct cntr_entry *entry, void *context,
+ static u64 port_access_u64_csr(const struct cntr_entry *entry,
+ 			     void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_nf *nf_param = (struct vpfe_ipipe_nf *)param;
-+	struct vpfe_ipipe_nf *nf_param = param;
- 	struct vpfe_ipipe_nf *nf = &ipipe->config.nf1;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
+ 	u64 val;
+ 	u64 csr = entry->csr;
  
- 	if (id == IPIPE_D2F_2ND)
-@@ -299,7 +299,7 @@ static int ipipe_validate_gic_params(struct vpfe_ipipe_gic *gic)
- 
- static int ipipe_set_gic_params(struct vpfe_ipipe_device *ipipe, void *param)
+@@ -1400,7 +1400,7 @@ static inline u64 read_write_sw(struct hfi1_devdata *dd, u64 *cntr, int mode,
+ static u64 access_sw_link_dn_cnt(const struct cntr_entry *entry, void *context,
+ 			       int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_gic *gic_param = (struct vpfe_ipipe_gic *)param;
-+	struct vpfe_ipipe_gic *gic_param = param;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	struct vpfe_ipipe_gic *gic = &ipipe->config.gic;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
  
-@@ -322,7 +322,7 @@ success:
- 
- static int ipipe_get_gic_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1410,7 +1410,7 @@ static u64 access_sw_link_dn_cnt(const struct cntr_entry *entry, void *context,
+ static u64 access_sw_link_up_cnt(const struct cntr_entry *entry, void *context,
+ 			       int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_gic *gic_param = (struct vpfe_ipipe_gic *)param;
-+	struct vpfe_ipipe_gic *gic_param = param;
- 	struct vpfe_ipipe_gic *gic = &ipipe->config.gic;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
  
- 	memcpy(gic_param, gic, sizeof(struct vpfe_ipipe_gic));
-@@ -351,7 +351,7 @@ static int ipipe_validate_wb_params(struct vpfe_ipipe_wb *wbal)
- 
- static int ipipe_set_wb_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1420,7 +1420,7 @@ static u64 access_sw_link_up_cnt(const struct cntr_entry *entry, void *context,
+ static u64 access_sw_xmit_discards(const struct cntr_entry *entry,
+ 				    void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_wb *wb_param = (struct vpfe_ipipe_wb *)param;
-+	struct vpfe_ipipe_wb *wb_param = param;
- 	struct vpfe_ipipe_wb *wbal = &ipipe->config.wbal;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
  
- 	if (!wb_param) {
-@@ -377,7 +377,7 @@ success:
- 
- static int ipipe_get_wb_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1431,7 +1431,7 @@ static u64 access_sw_xmit_discards(const struct cntr_entry *entry,
+ static u64 access_xmit_constraint_errs(const struct cntr_entry *entry,
+ 				     void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_wb *wb_param = (struct vpfe_ipipe_wb *)param;
-+	struct vpfe_ipipe_wb *wb_param = param;
- 	struct vpfe_ipipe_wb *wbal = &ipipe->config.wbal;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
  
- 	memcpy(wb_param, wbal, sizeof(struct vpfe_ipipe_wb));
-@@ -407,7 +407,7 @@ static int ipipe_validate_cfa_params(struct vpfe_ipipe_cfa *cfa)
- 
- static int ipipe_set_cfa_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1443,7 +1443,7 @@ static u64 access_xmit_constraint_errs(const struct cntr_entry *entry,
+ static u64 access_rcv_constraint_errs(const struct cntr_entry *entry,
+ 				     void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_cfa *cfa_param = (struct vpfe_ipipe_cfa *)param;
-+	struct vpfe_ipipe_cfa *cfa_param = param;
- 	struct vpfe_ipipe_cfa *cfa = &ipipe->config.cfa;
+-	struct hfi1_pportdata *ppd = (struct hfi1_pportdata *)context;
++	struct hfi1_pportdata *ppd = context;
  
- 	if (!cfa_param) {
-@@ -428,7 +428,7 @@ success:
- 
- static int ipipe_get_cfa_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	if (vl != CNTR_INVALID_VL)
+ 		return 0;
+@@ -1491,7 +1491,7 @@ static u64 read_write_cpu(struct hfi1_devdata *dd, u64 *z_val,
+ static u64 access_sw_cpu_intr(const struct cntr_entry *entry,
+ 			      void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_cfa *cfa_param = (struct vpfe_ipipe_cfa *)param;
-+	struct vpfe_ipipe_cfa *cfa_param = param;
- 	struct vpfe_ipipe_cfa *cfa = &ipipe->config.cfa;
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
- 	memcpy(cfa_param, cfa, sizeof(struct vpfe_ipipe_cfa));
-@@ -498,7 +498,7 @@ static int ipipe_set_rgb2rgb_params(struct vpfe_ipipe_device *ipipe,
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	struct vpfe_ipipe_rgb2rgb *rgb2rgb_param;
- 
--	rgb2rgb_param = (struct vpfe_ipipe_rgb2rgb *)param;
-+	rgb2rgb_param = param;
- 
- 	if (id == IPIPE_RGB2RGB_2)
- 		rgb2rgb = &ipipe->config.rgb2rgb2;
-@@ -551,7 +551,7 @@ static int ipipe_get_rgb2rgb_params(struct vpfe_ipipe_device *ipipe,
- 	struct vpfe_ipipe_rgb2rgb *rgb2rgb = &ipipe->config.rgb2rgb1;
- 	struct vpfe_ipipe_rgb2rgb *rgb2rgb_param;
- 
--	rgb2rgb_param = (struct vpfe_ipipe_rgb2rgb *)param;
-+	rgb2rgb_param = param;
- 
- 	if (id == IPIPE_RGB2RGB_2)
- 		rgb2rgb = &ipipe->config.rgb2rgb2;
-@@ -634,7 +634,7 @@ ipipe_validate_gamma_params(struct vpfe_ipipe_gamma *gamma, struct device *dev)
- static int
- ipipe_set_gamma_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	return read_write_cpu(dd, &dd->z_int_counter, dd->int_counter, vl,
+ 			      mode, data);
+@@ -1500,7 +1500,7 @@ static u64 access_sw_cpu_intr(const struct cntr_entry *entry,
+ static u64 access_sw_cpu_rcv_limit(const struct cntr_entry *entry,
+ 			      void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_gamma *gamma_param = (struct vpfe_ipipe_gamma *)param;
-+	struct vpfe_ipipe_gamma *gamma_param = param;
- 	struct vpfe_ipipe_gamma *gamma = &ipipe->config.gamma;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	int table_size;
-@@ -678,7 +678,7 @@ success:
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
- static int ipipe_get_gamma_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	return read_write_cpu(dd, &dd->z_rcv_limit, dd->rcv_limit, vl,
+ 			      mode, data);
+@@ -1509,7 +1509,7 @@ static u64 access_sw_cpu_rcv_limit(const struct cntr_entry *entry,
+ static u64 access_sw_pio_wait(const struct cntr_entry *entry,
+ 			      void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_gamma *gamma_param = (struct vpfe_ipipe_gamma *)param;
-+	struct vpfe_ipipe_gamma *gamma_param = param;
- 	struct vpfe_ipipe_gamma *gamma = &ipipe->config.gamma;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	int table_size;
-@@ -737,7 +737,7 @@ static int ipipe_validate_3d_lut_params(struct vpfe_ipipe_3d_lut *lut)
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
- static int ipipe_get_3d_lut_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	return dd->verbs_dev.n_piowait;
+ }
+@@ -1517,7 +1517,7 @@ static u64 access_sw_pio_wait(const struct cntr_entry *entry,
+ static u64 access_sw_vtx_wait(const struct cntr_entry *entry,
+ 			      void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_3d_lut *lut_param = (struct vpfe_ipipe_3d_lut *)param;
-+	struct vpfe_ipipe_3d_lut *lut_param = param;
- 	struct vpfe_ipipe_3d_lut *lut = &ipipe->config.lut;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
-@@ -757,7 +757,7 @@ static int ipipe_get_3d_lut_params(struct vpfe_ipipe_device *ipipe, void *param)
- static int
- ipipe_set_3d_lut_params(struct vpfe_ipipe_device *ipipe, void *param)
+ 	return dd->verbs_dev.n_txwait;
+ }
+@@ -1525,7 +1525,7 @@ static u64 access_sw_vtx_wait(const struct cntr_entry *entry,
+ static u64 access_sw_kmem_wait(const struct cntr_entry *entry,
+ 			       void *context, int vl, int mode, u64 data)
  {
--	struct vpfe_ipipe_3d_lut *lut_param = (struct vpfe_ipipe_3d_lut *)param;
-+	struct vpfe_ipipe_3d_lut *lut_param = param;
- 	struct vpfe_ipipe_3d_lut *lut = &ipipe->config.lut;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
+-	struct hfi1_devdata *dd = (struct hfi1_devdata *)context;
++	struct hfi1_devdata *dd = context;
  
-@@ -831,7 +831,7 @@ ipipe_set_rgb2yuv_params(struct vpfe_ipipe_device *ipipe, void *param)
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	struct vpfe_ipipe_rgb2yuv *rgb2yuv_param;
+ 	return dd->verbs_dev.n_kmem_wait;
+ }
+diff --git a/drivers/staging/rdma/hfi1/mad.c b/drivers/staging/rdma/hfi1/mad.c
+index b2c1b72..58723fb 100644
+--- a/drivers/staging/rdma/hfi1/mad.c
++++ b/drivers/staging/rdma/hfi1/mad.c
+@@ -1438,7 +1438,7 @@ static int __subn_set_opa_pkeytable(struct opa_smp *smp, u32 am, u8 *data,
  
--	rgb2yuv_param = (struct vpfe_ipipe_rgb2yuv *)param;
-+	rgb2yuv_param = param;
- 	if (!rgb2yuv_param) {
- 		/* Defaults for rgb2yuv conversion */
- 		const struct vpfe_ipipe_rgb2yuv rgb2yuv_defaults = {
-@@ -871,7 +871,7 @@ ipipe_get_rgb2yuv_params(struct vpfe_ipipe_device *ipipe, void *param)
- 	struct vpfe_ipipe_rgb2yuv *rgb2yuv = &ipipe->config.rgb2yuv;
- 	struct vpfe_ipipe_rgb2yuv *rgb2yuv_param;
+ static int get_sc2vlt_tables(struct hfi1_devdata *dd, void *data)
+ {
+-	u64 *val = (u64 *)data;
++	u64 *val = data;
  
--	rgb2yuv_param = (struct vpfe_ipipe_rgb2yuv *)param;
-+	rgb2yuv_param = param;
- 	memcpy(rgb2yuv_param, rgb2yuv, sizeof(struct vpfe_ipipe_rgb2yuv));
+ 	*val++ = read_csr(dd, SEND_SC2VLT0);
+ 	*val++ = read_csr(dd, SEND_SC2VLT1);
+@@ -1457,7 +1457,7 @@ static int get_sc2vlt_tables(struct hfi1_devdata *dd, void *data)
+ static void filter_sc2vlt(void *data)
+ {
+ 	int i;
+-	u8 *pd = (u8 *)data;
++	u8 *pd = data;
+ 
+ 	for (i = 0; i < OPA_MAX_SCS; i++) {
+ 		if (i == 15)
+@@ -1469,7 +1469,7 @@ static void filter_sc2vlt(void *data)
+ 
+ static int set_sc2vlt_tables(struct hfi1_devdata *dd, void *data)
+ {
+-	u64 *val = (u64 *)data;
++	u64 *val = data;
+ 
+ 	filter_sc2vlt(data);
+ 
+@@ -1478,7 +1478,7 @@ static int set_sc2vlt_tables(struct hfi1_devdata *dd, void *data)
+ 	write_csr(dd, SEND_SC2VLT2, *val++);
+ 	write_csr(dd, SEND_SC2VLT3, *val++);
+ 	write_seqlock_irq(&dd->sc2vl_lock);
+-	memcpy(dd->sc2vl, (u64 *)data, sizeof(dd->sc2vl));
++	memcpy(dd->sc2vl, data, sizeof(dd->sc2vl));
+ 	write_sequnlock_irq(&dd->sc2vl_lock);
  	return 0;
  }
-@@ -896,7 +896,7 @@ static int ipipe_validate_gbce_params(struct vpfe_ipipe_gbce *gbce)
+diff --git a/drivers/staging/rdma/hfi1/verbs.c b/drivers/staging/rdma/hfi1/verbs.c
+index a43fccd..45f291f 100644
+--- a/drivers/staging/rdma/hfi1/verbs.c
++++ b/drivers/staging/rdma/hfi1/verbs.c
+@@ -1885,7 +1885,7 @@ static void init_ibport(struct hfi1_pportdata *ppd)
  
- static int ipipe_set_gbce_params(struct vpfe_ipipe_device *ipipe, void *param)
+ static void verbs_txreq_kmem_cache_ctor(void *obj)
  {
--	struct vpfe_ipipe_gbce *gbce_param = (struct vpfe_ipipe_gbce *)param;
-+	struct vpfe_ipipe_gbce *gbce_param = param;
- 	struct vpfe_ipipe_gbce *gbce = &ipipe->config.gbce;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
+-	struct verbs_txreq *tx = (struct verbs_txreq *)obj;
++	struct verbs_txreq *tx = obj;
  
-@@ -917,7 +917,7 @@ static int ipipe_set_gbce_params(struct vpfe_ipipe_device *ipipe, void *param)
- 
- static int ipipe_get_gbce_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_gbce *gbce_param = (struct vpfe_ipipe_gbce *)param;
-+	struct vpfe_ipipe_gbce *gbce_param = param;
- 	struct vpfe_ipipe_gbce *gbce = &ipipe->config.gbce;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 
-@@ -950,7 +950,7 @@ ipipe_set_yuv422_conv_params(struct vpfe_ipipe_device *ipipe, void *param)
- 	struct vpfe_ipipe_yuv422_conv *yuv422_conv_param;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 
--	yuv422_conv_param = (struct vpfe_ipipe_yuv422_conv *)param;
-+	yuv422_conv_param = param;
- 	if (!yuv422_conv_param) {
- 		memset(yuv422_conv, 0, sizeof(struct vpfe_ipipe_yuv422_conv));
- 		yuv422_conv->chrom_pos = VPFE_IPIPE_YUV422_CHR_POS_COSITE;
-@@ -974,7 +974,7 @@ ipipe_get_yuv422_conv_params(struct vpfe_ipipe_device *ipipe, void *param)
- 	struct vpfe_ipipe_yuv422_conv *yuv422_conv = &ipipe->config.yuv422_conv;
- 	struct vpfe_ipipe_yuv422_conv *yuv422_conv_param;
- 
--	yuv422_conv_param = (struct vpfe_ipipe_yuv422_conv *)param;
-+	yuv422_conv_param = param;
- 	memcpy(yuv422_conv_param, yuv422_conv,
- 	       sizeof(struct vpfe_ipipe_yuv422_conv));
- 
-@@ -1018,7 +1018,7 @@ static int ipipe_validate_yee_params(struct vpfe_ipipe_yee *yee)
- 
- static int ipipe_set_yee_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_yee *yee_param = (struct vpfe_ipipe_yee *)param;
-+	struct vpfe_ipipe_yee *yee_param = param;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	struct vpfe_ipipe_yee *yee = &ipipe->config.yee;
- 
-@@ -1039,7 +1039,7 @@ static int ipipe_set_yee_params(struct vpfe_ipipe_device *ipipe, void *param)
- 
- static int ipipe_get_yee_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_yee *yee_param = (struct vpfe_ipipe_yee *)param;
-+	struct vpfe_ipipe_yee *yee_param = param;
- 	struct vpfe_ipipe_yee *yee = &ipipe->config.yee;
- 
- 	yee_param->en = yee->en;
-@@ -1081,7 +1081,7 @@ static int ipipe_validate_car_params(struct vpfe_ipipe_car *car)
- 
- static int ipipe_set_car_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_car *car_param = (struct vpfe_ipipe_car *)param;
-+	struct vpfe_ipipe_car *car_param = param;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	struct vpfe_ipipe_car *car = &ipipe->config.car;
- 
-@@ -1102,7 +1102,7 @@ static int ipipe_set_car_params(struct vpfe_ipipe_device *ipipe, void *param)
- 
- static int ipipe_get_car_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_car *car_param = (struct vpfe_ipipe_car *)param;
-+	struct vpfe_ipipe_car *car_param = param;
- 	struct vpfe_ipipe_car *car = &ipipe->config.car;
- 
- 	memcpy(car_param, car, sizeof(struct vpfe_ipipe_car));
-@@ -1119,7 +1119,7 @@ static int ipipe_validate_cgs_params(struct vpfe_ipipe_cgs *cgs)
- 
- static int ipipe_set_cgs_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_cgs *cgs_param = (struct vpfe_ipipe_cgs *)param;
-+	struct vpfe_ipipe_cgs *cgs_param = param;
- 	struct device *dev = ipipe->subdev.v4l2_dev->dev;
- 	struct vpfe_ipipe_cgs *cgs = &ipipe->config.cgs;
- 
-@@ -1140,7 +1140,7 @@ static int ipipe_set_cgs_params(struct vpfe_ipipe_device *ipipe, void *param)
- 
- static int ipipe_get_cgs_params(struct vpfe_ipipe_device *ipipe, void *param)
- {
--	struct vpfe_ipipe_cgs *cgs_param = (struct vpfe_ipipe_cgs *)param;
-+	struct vpfe_ipipe_cgs *cgs_param = param;
- 	struct vpfe_ipipe_cgs *cgs = &ipipe->config.cgs;
- 
- 	memcpy(cgs_param, cgs, sizeof(struct vpfe_ipipe_cgs));
+ 	memset(tx, 0, sizeof(*tx));
+ }
 -- 
 2.1.4
 
