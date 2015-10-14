@@ -1,88 +1,88 @@
-X-GM-THRID: 6388469372118106112
-X-Received: by 10.129.138.194 with SMTP id a185mr4749311ywg.62.1487431435368;
-        Sat, 18 Feb 2017 07:23:55 -0800 (PST)
+X-GM-THRID: 6205445895815692288
+X-Received: by 10.180.107.167 with SMTP id hd7mr1226442wib.6.1444847579020;
+        Wed, 14 Oct 2015 11:32:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.39.226 with SMTP id c89ls6711640otb.2.gmail; Sat, 18 Feb
- 2017 07:23:55 -0800 (PST)
-X-Received: by 10.200.51.85 with SMTP id u21mr3774746qta.39.1487431434987;
-        Sat, 18 Feb 2017 07:23:54 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 23si1407009pfw.4.2017.02.18.07.23.54
+Received: by 10.180.108.166 with SMTP id hl6ls179615wib.54.gmail; Wed, 14 Oct
+ 2015 11:32:58 -0700 (PDT)
+X-Received: by 10.180.10.202 with SMTP id k10mr5895175wib.2.1444847578664;
+        Wed, 14 Oct 2015 11:32:58 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id ch7si367887wib.2.2015.10.14.11.32.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 07:23:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 14 Oct 2015 11:32:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 68so6336207pfx.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Feb 2017 07:23:54 -0800 (PST)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x235.google.com with SMTP id p11so6593865wij.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:32:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=8rN/dUVo5U457Uv6tEzT8iHmwwPjHVX9uDE8xDuZqT8=;
-        b=ED5xCmfogSqlKwthrp32VZr6e9U1gjKmHt8fsnjUW/TbBV3BCiS1cHKNC3XelckXNT
-         v02i+/wDViBYLiUF2n/tk+xNAO2sB7ger5m1r2fQ/KfonFn/iDGpgda2YPh9kOv1bGWK
-         NfUcVSXY+e9NaIsbkEZbnIwEHGwqTTgFOq0R5+hVGOW1Vb/r+3wgCCVvI+I3VD+HXIag
-         VeV0b3DZ8UdOb37bhFi5C829v67VPtA/ek9636ByD0hDODfuPyxy0alhq7uwnVyxs+bZ
-         w0baRkeMJ8GF06V/UaA816rrvT7OdVtqw8XMqNNDWKdNdksfZKQri9OIAuFEV+nBkDPs
-         BsEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=8rN/dUVo5U457Uv6tEzT8iHmwwPjHVX9uDE8xDuZqT8=;
-        b=FRBrWIote8XKRVExfXHCR61GTg9jtXwdDF45YzYAJgA37H/ZK+rGllbtEnTaMkusX8
-         2Teo5Fal63TcE+F6isU2EtnYiI8tysiyEYpq55MYyCzsEmNy4pQ1pkwWU2Bh7YZyoSb8
-         CcnFbWm5wDi+nRKkjQrfiiE2PPYM/lWfe3sontYqdIpma3N7DxzZEVcP6xJXrrIsvMcE
-         bmrOIWLoZQeoGD+j4RwKSk2GkR6zxmsHBf1lm+bHbxFBstGen/xWSa5uTx8KmpDPyn4E
-         GZ/nC0t9+3KBcKVFihber1pz8NG2gbw84IIZ04AtC2iB5eR4iNzbFpFySoikVgiWA5rv
-         iCkA==
-X-Gm-Message-State: AMke39mYDlrTbbvPhTF+bo3SWf7Jy4B7e3ofR3azwxw80G/wbQZvmW5Azb8tpUGHtt/wQg==
-X-Received: by 10.98.87.142 with SMTP id i14mr15525828pfj.85.1487431434772;
-        Sat, 18 Feb 2017 07:23:54 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id p66sm25915045pfb.88.2017.02.18.07.23.52
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 18 Feb 2017 07:23:53 -0800 (PST)
-Date: Sat, 18 Feb 2017 20:53:51 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/6] staging: rtl8192e: Fix block comments warning
-Message-ID: <20170218152351.GA28908@singhal-Inspiron-5558>
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=HfsK2YZ3UL9HTqlNWTbZrp7Ylv6zEPuBcmN1qOnU/C8=;
+        b=NHUOjej4s1pM5o1eBLOKsIHAzSWzmuqlJD+7g9aJgpiCVU26xDCAyIqoQOt3Lizx0R
+         hMVcNsYpKony4Xy7Squ455NbL7Yar1NNqBcQ/TJGfsxT6IaEAMhCkMxFTEWMjgAfQAaY
+         LCqExb7vxPtOfHYryR0IqzmVjsJ5uVK0CJDhRsLPBm4JD916RTa2P5Fm20C/LoaQ1QjN
+         lPomRxduxzDsBE58bOAba2AmklazV5erRgyAjqthSeNg7nsIa6AV8jFR7igCspS1u3AE
+         8zCSsOst23sstZvIRBDzicn8XGBr+QgYCDnKuKdqaYB5k2nM2JE9ZKsyu3KvevczgqQU
+         FVHA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.180.90.166 with SMTP id bx6mr28064941wib.93.1444847578492;
+ Wed, 14 Oct 2015 11:32:58 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Wed, 14 Oct 2015 11:32:58 -0700 (PDT)
+In-Reply-To: <20151014101906.GA3935@ubuntu>
+References: <20151014101906.GA3935@ubuntu>
+Date: Wed, 14 Oct 2015 21:32:58 +0300
+Message-ID: <CAEnQRZDrRmc3WbSZWfRL49uqtKJxjLbkPF+NRT3L5nKwVRyrhA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8723au: rtw_mlme_ext:
+ Remove unnecessary test expression
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Align * on a line, to conform to the kernal coding
-style for block comments.
+On Wed, Oct 14, 2015 at 1:19 PM, Shivani Bhardwaj <shivanib134@gmail.com> wrote:
+> Logical and-ing of a struct and its member should be replaced by the
+> member only as the struct has already been NULL tested before.
+>
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/rtl8192e/rtl819x_HT.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Fair enough.
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_HT.h b/drivers/staging/rtl8192e/rtl819x_HT.h
-index 6eb018f..48d101a 100644
---- a/drivers/staging/rtl8192e/rtl819x_HT.h
-+++ b/drivers/staging/rtl8192e/rtl819x_HT.h
-@@ -11,7 +11,7 @@
-  *
-  * Contact Information:
-  * wlanfae <wlanfae@realtek.com>
--******************************************************************************/
-+ ******************************************************************************/
- #ifndef _RTL819XU_HTTYPE_H_
- #define _RTL819XU_HTTYPE_H_
- 
--- 
-2.7.4
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
+> ---
+> Changes in v3:
+>         -Make commit message better.
+>
+>  drivers/staging/rtl8723au/core/rtw_mlme_ext.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+> index fca22ba..d28f29a 100644
+> --- a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+> +++ b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
+> @@ -1715,7 +1715,7 @@ OnAssocReq23a(struct rtw_adapter *padapter, struct recv_frame *precv_frame)
+>         spin_unlock_bh(&pstapriv->asoc_list_lock);
+>
+>         /*  now the station is qualified to join our BSS... */
+> -       if (pstat && pstat->state & WIFI_FW_ASSOC_SUCCESS &&
+> +       if (pstat->state & WIFI_FW_ASSOC_SUCCESS &&
+>             status == WLAN_STATUS_SUCCESS) {
+>                 /* 1 bss_cap_update & sta_info_update23a */
+>                 bss_cap_update_on_sta_join23a(padapter, pstat);
+> --
+> 2.1.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151014101906.GA3935%40ubuntu.
+> For more options, visit https://groups.google.com/d/optout.
 
