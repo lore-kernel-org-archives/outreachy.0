@@ -1,109 +1,79 @@
-X-GM-THRID: 6253680199579205632
-X-Received: by 10.50.65.69 with SMTP id v5mr5949472igs.13.1456048386686;
-        Sun, 21 Feb 2016 01:53:06 -0800 (PST)
+X-GM-THRID: 6205557909558919168
+X-Received: by 10.129.148.129 with SMTP id l123mr3593853ywg.35.1444844042426;
+        Wed, 14 Oct 2015 10:34:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.73.101 with SMTP id k5ls327367igv.20.gmail; Sun, 21 Feb
- 2016 01:53:06 -0800 (PST)
-X-Received: by 10.50.79.161 with SMTP id k1mr5978576igx.5.1456048386122;
-        Sun, 21 Feb 2016 01:53:06 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
-        by gmr-mx.google.com with ESMTPS id u66si2816319pfa.2.2016.02.21.01.53.06
+Received: by 10.140.90.115 with SMTP id w106ls338480qgd.20.gmail; Wed, 14 Oct
+ 2015 10:34:01 -0700 (PDT)
+X-Received: by 10.129.109.211 with SMTP id i202mr3600941ywc.16.1444844041774;
+        Wed, 14 Oct 2015 10:34:01 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id vy6si955078pbc.1.2015.10.14.10.34.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 01:53:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
+        Wed, 14 Oct 2015 10:34:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22e.google.com with SMTP id q63so76039299pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 01:53:06 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22b.google.com with SMTP id p3so12117042pay.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 10:34:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=rJ/KbRJxXAnlTjO7OL4tLL472+Kd7NmrlkujXkOmOMI=;
-        b=nSA9PV9EnuMfViAPL6yWBxZ/UfFAovThTq/uJYDGYhUGLdmDvAd0hexx6JXe7c0XJB
-         karNadlsQuFSxoWNV2gaSy9eGaBoiDEVFOUcBXdCJc+NJGO9pTgDP6BuwsCarRJF5PDT
-         XCUlp+ekdCHikBjtE05+jyMp7KNzQjbXPLm70XWgS4JkHp64aOe10608GDVPkYmBjt1K
-         F0et1ZvoEtlcmo5tpmTGIaOPnuhhT9mykZpW6XmWGMTx6NKhXYzelDbgYP0S5PgD+J8r
-         OTSAmIpB84wga9s1gnSDjnfu412QgVek/SK2PYM9+fAfE/tE1NUCcIlV4eZWrEAa8jyB
-         JteA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=rJ/KbRJxXAnlTjO7OL4tLL472+Kd7NmrlkujXkOmOMI=;
-        b=DIm2Pt6Enj+tUJaMsI7wiXbC9Ow6VzkkMWEN0bBWnVuYrLMA3sy7FNqxbkIc4uTXwP
-         PpQVPM4j+s+vOECM/G3eBMkRJs/hwsISSiwsfskzhRouZSfKqFAeK7rRHiPYJwI66j6+
-         C9hU/jBI2oTyi3CGeigH4572v9URQLhP9RH7b70ssnxYEBIj20sT6lyeup//cfljA+PV
-         6QZfM/Mx/dG/Ixo5bGDfchjKpet8kfbKnVU4TKl76kS8nBiAcF3bGA1dacWK7etE9urv
-         nOCGEUhhBA0zOqsOJrLyzAFuC/o9tidqbgpbyUN5VTShvF/9G5iAsvVptTRxFkGfcWc7
-         punA==
-X-Gm-Message-State: AG10YOQAf1aS4XbMahPYKFP8jrDvZl0mjskU6BivSU9eXxhl27VBIvhEiCY1nl+IDH7+uQ==
-X-Received: by 10.98.68.86 with SMTP id r83mr30427042pfa.12.1456048385994;
-        Sun, 21 Feb 2016 01:53:05 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id kw10sm29399716pab.0.2016.02.21.01.53.04
+        bh=AjKB3e3U4k7phDvdVUl3pOTXI9dWoPt0Bg8HnFlvc24=;
+        b=RBka672po+og8U88pNgyVsVM0eqt70i0FK+qtVrj7meccngwa1ipgBXMdSpF/dMOu/
+         XFxzbD4nz7W9oRavKorMIbA5HCocMlkSsCRnQ//92aTWtrRtGJVE7p0umK7Zoae6u8Q6
+         w5nbcpynLn7t/SojIU5ulkN97sfQz0jcHaZ+rTxd5w0Ltskl8bAEUartF0SsNm0MzAN4
+         lSVg2NZUUoSTmIAfXTxba0ptqkRzTNOR3CIMAD6n2AZ5fHbZ0SMgfjWqKlgWb0m2jF7D
+         nRNUbEV89Wwaud+aoN7gJmVv/PI5cDiwIQFl+854Jf7JHCaYHO1uSXMOVHnUsmdQ8/BM
+         ck7w==
+X-Received: by 10.66.165.106 with SMTP id yx10mr4870508pab.102.1444844041633;
+        Wed, 14 Oct 2015 10:34:01 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id b7sm10828340pas.31.2015.10.14.10.33.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 01:53:05 -0800 (PST)
-Date: Sun, 21 Feb 2016 15:23:37 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 10:34:00 -0700 (PDT)
+Date: Wed, 14 Oct 2015 23:03:50 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rts5208: Prefer using BIT macro
-Message-ID: <20160221095337.GA25362@Karyakshetra>
+Subject: [PATCH] Staging: rtl8192u: ieee80211_softmac: Remove extra NULL check
+Message-ID: <20151014173350.GA19821@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Replace all instances of bit shifting on 1 with the BIT(x) macro.
-This was done using Coccinelle.
+Remove NULL check on a variable as it is already preceded by one.
 
-@@ int c; @@
-- (1 << c)
-+ BIT(c)
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/rts5208/rtsx_transport.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index f564a74..914bb39 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -224,7 +224,7 @@ void rtsx_add_cmd(struct rtsx_chip *chip,
-
- void rtsx_send_cmd_no_wait(struct rtsx_chip *chip)
- {
--	u32 val = 1 << 31;
-+	u32 val = BIT(31);
-
- 	rtsx_writel(chip, RTSX_HCBAR, chip->host_cmds_addr);
-
-@@ -238,7 +238,7 @@ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
- {
- 	struct rtsx_dev *rtsx = chip->rtsx;
- 	struct completion trans_done;
--	u32 val = 1 << 31;
-+	u32 val = BIT(31);
- 	long timeleft;
- 	int err = 0;
-
-@@ -647,7 +647,7 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
- 	dma_addr_t addr;
- 	u8 dir;
- 	int err = 0;
--	u32 val = 1 << 31;
-+	u32 val = BIT(31);
- 	long timeleft;
-
- 	if (!buf || (len <= 0))
---
-2.1.4
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index c443e2e..fcbd59f 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -1463,10 +1463,8 @@ inline void ieee80211_softmac_new_net(struct ieee80211_device *ieee, struct ieee
+ 				}
+ 				memcpy(&ieee->current_network, net, sizeof(struct ieee80211_network));
+ 
+-				if (!ssidbroad) {
+-					strncpy(ieee->current_network.ssid, tmp_ssid, IW_ESSID_MAX_SIZE);
+-					ieee->current_network.ssid_len = tmp_ssid_len;
+-				}
++				strncpy(ieee->current_network.ssid, tmp_ssid, IW_ESSID_MAX_SIZE);
++				ieee->current_network.ssid_len = tmp_ssid_len;
+ 				printk(KERN_INFO"Linking with %s,channel:%d, qos:%d, myHT:%d, networkHT:%d\n",ieee->current_network.ssid,ieee->current_network.channel, ieee->current_network.qos_data.supported, ieee->pHTInfo->bEnableHT, ieee->current_network.bssht.bdSupportHT);
+ 
+ 				//ieee->pHTInfo->IOTAction = 0;
+-- 
+2.1.0
 
 
