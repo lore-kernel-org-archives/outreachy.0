@@ -1,84 +1,183 @@
-X-GM-THRID: 6249445155877683200
-X-Received: by 10.112.135.234 with SMTP id pv10mr4288427lbb.24.1455062338651;
-        Tue, 09 Feb 2016 15:58:58 -0800 (PST)
+X-GM-THRID: 6205602990220378112
+X-Received: by 10.112.136.99 with SMTP id pz3mr1242785lbb.11.1444854538937;
+        Wed, 14 Oct 2015 13:28:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.86.70 with SMTP id k67ls6122lfb.62.gmail; Tue, 09 Feb 2016
- 15:58:57 -0800 (PST)
-X-Received: by 10.112.135.234 with SMTP id pv10mr4288426lbb.24.1455062337902;
-        Tue, 09 Feb 2016 15:58:57 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
-        by gmr-mx.google.com with ESMTPS id c140si525781wmh.0.2016.02.09.15.58.57
+Received: by 10.25.157.135 with SMTP id g129ls77654lfe.84.gmail; Wed, 14 Oct
+ 2015 13:28:58 -0700 (PDT)
+X-Received: by 10.112.209.73 with SMTP id mk9mr1218994lbc.14.1444854538369;
+        Wed, 14 Oct 2015 13:28:58 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id c7si970016wiy.3.2015.10.14.13.28.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 15:58:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 13:28:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x233.google.com with SMTP id g62so6018512wme.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 15:58:57 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x236.google.com with SMTP id gb1so417309wic.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 13:28:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=441GqFmOdJuRTLXNQ/zPXD5MdQDDIu9r8X2lddqf3nY=;
-        b=wI3xKNzmyrqvetqW3t4dksZORJNQFu6F3KEg2ScmsrY5PRxnJj/St5eHG9t4iPDZXL
-         gRw9LBThOtXzJfFERRZjNm5JPQdcn4gSdJWbpOitU53c2woGZzNFJYVIFEE6CCZA5F5K
-         rnbBJ7YF8uiq3QtcCshBlgHz2FdvHOP1JBfliujjkFxzXh6IJyMgjv4xBP7cil9uo1Q2
-         a9eGy6Jn/vxsfbxNnbaDZoMAaWIEHhULhjq69jzHdTrVS6LipAGwdCT8O8FTUDlOmZpP
-         OMd5xAVs+kQ12eVzZXX0FpIVEi9fYfodPDFprXxPKQbMxAcodMspfRRruGjC+EaKbr7M
-         RJkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=441GqFmOdJuRTLXNQ/zPXD5MdQDDIu9r8X2lddqf3nY=;
-        b=aUccjI1VILVpt6wOJbO3NTgEcZxIcU5GLvhUTqh9HkqfaV9nh6B7I7FL4mO5VMlypw
-         rby2+RYlOampqAHh5NTe1IMhZIgwxT40Hg0G1vzzpXDNZBuWLWU4/wd4YHz5Xqw9WBBk
-         5tqX5dK/M04O9FNSHFqSJx551P7iFMLEhTPrEdmuXVcd0qZtKz9FQi8EliBvLo6GQPUW
-         /Y96M+sOZYhcfNNOC0hH8BIo7pmXhZ9/vjyKvWJe4Jnbbw+9rGte+3TRfviVysuHRkw3
-         /6W822w2iqW/u4nEthdXIEZ8+ez/oz4QIh+9vp56tWXK5HHwnmp4oQH8nByVLXqNhklu
-         j6Qw==
-X-Gm-Message-State: AG10YOR14XkZSeeLxLhEIpuD73dG1NqEyFbe9iB4ZYypdvYB8QlBwR/6tDyF2JCvfugtfQ==
-X-Received: by 10.28.68.139 with SMTP id r133mr7464636wma.13.1455062337776;
-        Tue, 09 Feb 2016 15:58:57 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id w66sm865367wmd.2.2016.02.09.15.58.53
+        bh=aYLT3F5C3x3c+fYeVqvhIZiSVfxQmREkb0dsItc4Nwc=;
+        b=VjHhtxE/+pQBZJo6rHPMzcUWBAqZKSEKVjCkcP+c3lDjga0l7sK19epP8nKZcYhTiU
+         7nC2JvfpGGhDv/nCwO5PY/WWhkxT41vuQG08tM2dDhBy0R6sI7WCY7vSfmjcKkuwpaQ5
+         q1mD0P45wf5sG9JSCjuIQiizLO4Gke7UYknUf5rskq25qcZKIEQ4XsaKcgZ0kKvK/EwF
+         VJN/2Tz+CrmsULukNB00p3jVPzyQ91DYA8xLmSW0k4P/UGUuIIxtsQdnT07niLesAz11
+         s5cBSRNacwQ+qtxa0sNG63b6eYVRtut5xbuPEXjZ0lRrJtXkwJnrtP2kLfSmH6YEf7zn
+         u5Og==
+X-Received: by 10.194.108.103 with SMTP id hj7mr6213296wjb.46.1444854538233;
+        Wed, 14 Oct 2015 13:28:58 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([213.233.104.115])
+        by smtp.gmail.com with ESMTPSA id lv4sm12101767wjb.43.2015.10.14.13.28.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 15:58:57 -0800 (PST)
-From: Rakhi Sharma <rakhish1994@gmail.com>
+        Wed, 14 Oct 2015 13:28:57 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Julia.Lawall@lip6.fr,
-	daniel.baluta@gmail.com,
-	gregkh@linuxfoundation.org,
-	Rakhi Sharma <rakhish1994@gmail.com>
-Subject: [PATCH] drivers: staging: lustre: lustre: lov: lov_pool: Fixed a warning
-Date: Wed, 10 Feb 2016 05:28:46 +0530
-Message-Id: <1455062326-20870-1-git-send-email-rakhish1994@gmail.com>
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: speakup: Fix multi-line comment style
+Date: Wed, 14 Oct 2015 23:28:29 +0300
+Message-Id: <1444854509-22980-1-git-send-email-cristina.moraru09@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-Fixed a checkpatch warning.
-WARNING: struct file_operations should normally be const
+Thus using the preferred style for multi-line coments as
+mentioned in Documentation/CodingStyle.
 
-Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
+It also silences 'Block comments use * on subsequent lines'
+and 'Block comments use a trailing */ on a separate line'
+checkpatch.pl warnings.
+
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/lustre/lustre/lov/lov_pool.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/speakup/speakup_soft.c     |  3 +-
+ drivers/staging/speakup/spk_priv.h         | 42 ++++++++++++++--------------
+ drivers/staging/speakup/spk_priv_keyinfo.h | 44 +++++++++++++++---------------
+ 3 files changed, 45 insertions(+), 44 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/lov/lov_pool.c b/drivers/staging/lustre/lustre/lov/lov_pool.c
-index b43ce6c..bba37bf 100644
---- a/drivers/staging/lustre/lustre/lov/lov_pool.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_pool.c
-@@ -288,7 +288,7 @@ static int pool_proc_open(struct inode *inode, struct file *file)
- 	return rc;
- }
+diff --git a/drivers/staging/speakup/speakup_soft.c b/drivers/staging/speakup/speakup_soft.c
+index 366358b..b2eb5b1 100644
+--- a/drivers/staging/speakup/speakup_soft.c
++++ b/drivers/staging/speakup/speakup_soft.c
+@@ -19,7 +19,8 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  *
+  * this code is specificly written as a driver for the speakup screenreview
+- * package and is not a general device driver.  */
++ * package and is not a general device driver.
++ */
  
--static struct file_operations pool_proc_operations = {
-+static const struct file_operations pool_proc_operations = {
- 	.open	   = pool_proc_open,
- 	.read	   = seq_read,
- 	.llseek	 = seq_lseek,
+ #include <linux/unistd.h>
+ #include <linux/miscdevice.h> /* for misc_register, and SYNTH_MINOR */
+diff --git a/drivers/staging/speakup/spk_priv.h b/drivers/staging/speakup/spk_priv.h
+index 1ef3795..9bb281d 100644
+--- a/drivers/staging/speakup/spk_priv.h
++++ b/drivers/staging/speakup/spk_priv.h
+@@ -1,26 +1,26 @@
+ /* spk_priv.h
+-   review functions for the speakup screen review package.
+-   originally written by: Kirk Reiser and Andy Berdan.
++ * review functions for the speakup screen review package.
++ * originally written by: Kirk Reiser and Andy Berdan.
++ *
++ * extensively modified by David Borowski.
++ *
++ * Copyright (C) 1998  Kirk Reiser.
++ * Copyright (C) 2003  David Borowski.
+ 
+-  extensively modified by David Borowski.
+-
+-    Copyright (C) 1998  Kirk Reiser.
+-    Copyright (C) 2003  David Borowski.
+-
+-    This program is free software; you can redistribute it and/or modify
+-    it under the terms of the GNU General Public License as published by
+-    the Free Software Foundation; either version 2 of the License, or
+-    (at your option) any later version.
+-
+-    This program is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-    GNU General Public License for more details.
+-
+-    You should have received a copy of the GNU General Public License
+-    along with this program; if not, write to the Free Software
+-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-*/
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
+ #ifndef _SPEAKUP_PRIVATE_H
+ #define _SPEAKUP_PRIVATE_H
+ 
+diff --git a/drivers/staging/speakup/spk_priv_keyinfo.h b/drivers/staging/speakup/spk_priv_keyinfo.h
+index 95c473a..3116ef7 100644
+--- a/drivers/staging/speakup/spk_priv_keyinfo.h
++++ b/drivers/staging/speakup/spk_priv_keyinfo.h
+@@ -1,26 +1,26 @@
+ /* spk_priv.h
+-   review functions for the speakup screen review package.
+-   originally written by: Kirk Reiser and Andy Berdan.
+-
+-  extensively modified by David Borowski.
+-
+-    Copyright (C) 1998  Kirk Reiser.
+-    Copyright (C) 2003  David Borowski.
+-
+-    This program is free software; you can redistribute it and/or modify
+-    it under the terms of the GNU General Public License as published by
+-    the Free Software Foundation; either version 2 of the License, or
+-    (at your option) any later version.
+-
+-    This program is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-    GNU General Public License for more details.
+-
+-    You should have received a copy of the GNU General Public License
+-    along with this program; if not, write to the Free Software
+-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-*/
++ * review functions for the speakup screen review package.
++ * originally written by: Kirk Reiser and Andy Berdan.
++ *
++ * extensively modified by David Borowski.
++ *
++ * Copyright (C) 1998  Kirk Reiser.
++ * Copyright (C) 2003  David Borowski.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
+ 
+ #ifndef _SPEAKUP_KEYINFO_H
+ #define _SPEAKUP_KEYINFO_H
 -- 
 1.9.1
 
