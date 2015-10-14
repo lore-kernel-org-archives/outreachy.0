@@ -1,94 +1,101 @@
-X-GM-THRID: 6210894171417346048
-X-Received: by 10.141.23.137 with SMTP id z131mr41295831qhd.7.1446086487633;
-        Wed, 28 Oct 2015 19:41:27 -0700 (PDT)
+X-GM-THRID: 6205501309830823936
+X-Received: by 10.182.215.226 with SMTP id ol2mr2700205obc.11.1444830864927;
+        Wed, 14 Oct 2015 06:54:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.133.41 with SMTP id oz9ls41211obb.82.gmail; Wed, 28 Oct
- 2015 19:41:27 -0700 (PDT)
-X-Received: by 10.182.52.132 with SMTP id t4mr42836450obo.16.1446086487006;
-        Wed, 28 Oct 2015 19:41:27 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id pe1si5307098pac.2.2015.10.28.19.41.26
+Received: by 10.50.88.42 with SMTP id bd10ls181886igb.27.gmail; Wed, 14 Oct
+ 2015 06:54:24 -0700 (PDT)
+X-Received: by 10.68.131.193 with SMTP id oo1mr2678997pbb.6.1444830864581;
+        Wed, 14 Oct 2015 06:54:24 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id zg1si904502pbb.2.2015.10.14.06.54.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 19:41:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 06:54:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id z6so25094092pas.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 19:41:26 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id ur7so6344649pab.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 06:54:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=AO4B0XNVSE8q4ojjxAdBcYurySNkKtMXBnEJA/ta3No=;
-        b=MzEfMEwkOy9fQbD4Uv7lMLvAQbnZL7OIQdr4zSmpjpeHop0hu3+lrBjPvFdQn/lF9P
-         spW6JhW7PO9AeOppZBYFWETJ05XnAkwvzAjxErCratcNZS1Gt5BUSTy7N4dnVbu8vrf3
-         jGgQdaMmEDnt8H0H9/XZh7XiJnjTE+6DmxGvz2EBMsE5WMGjhntD02+RvBFmFB6Bf/v5
-         2O+zt4oHiw/UElNjNlnY2bmYPxubRmyvJYa6SNCPBteCzPRKEa4BL4+42VuPd4oDHjEd
-         oER/07hANqxPhDJ8Kc7f/VA+qGmIORkh/f6grmNShToZYGuALLU4aiBMpucNhI2aQanp
-         nRkw==
-X-Received: by 10.66.129.137 with SMTP id nw9mr37198604pab.107.1446086486807;
-        Wed, 28 Oct 2015 19:41:26 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
-        by smtp.gmail.com with ESMTPSA id xa4sm48099873pac.28.2015.10.28.19.41.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Oct 2015 19:41:26 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=qyYsnS62xi4sNYvqafOKyPUdHYO7+ZX/IJ5LJ/dxHuY=;
+        b=Vb8rcrcTpxOfyUkTK8vW3HwkZpUj0JrxwJwiqgNaFWOU3GIgHbEjENQuyBD/fUeg09
+         ezgJdTy2aPLPjWWipBPN8tjbssXV8dnuy2jYeiXU4JZ+U0LJVP4Qvk/AU5sctNowuyDa
+         4sYhgjfHToW1gbmtJ9aCi/ik30A3yDEfJknaSKSHOwTkxBtFC41EzIQuSYu3Z7RVSZ8X
+         fWTaOmNtz6DbW4s/9xwvWUoKgIBRsns1YoGDe4ieWqkC5AZfoj30uLUZRo/Pk+Se5R0e
+         i7k9HV3fBwn5KihjytHDnUgU5sQeV8iVRoXFaaHAA7P8IG2ra6XMxC73hjc8b6N7j4Mp
+         zYkw==
+X-Received: by 10.68.93.194 with SMTP id cw2mr3922624pbb.36.1444830864498;
+        Wed, 14 Oct 2015 06:54:24 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id q8sm9962634pap.34.2015.10.14.06.54.21
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 06:54:23 -0700 (PDT)
+Date: Wed, 14 Oct 2015 19:24:10 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: gdm72xx: Fix sparse warning
-Date: Wed, 28 Oct 2015 19:41:18 -0700
-Message-Id: <1446086478-14386-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] Staging: rtl8712: usb_ops_linux: Remove useless cast
+Message-ID: <20151014135410.GA15869@ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Calls copy_{to,from}_user() do not use '__user' annotation
-while refrencing user space pointers.
+Explicit type conversion is not required and should be removed.
+Semantic patch used:
+@@
+type T;
+T e;
+identifier x;
+@@
 
-Fix following sparse warnings by passing missing __user annotation:
+* T x = (T)e;
 
-drivers/staging/gdm72xx/gdm_wimax.c:381:37: warning: incorrect type in
-argument 1 (different address spaces)
-drivers/staging/gdm72xx/gdm_wimax.c:381:37:    expected void [noderef]
-<asn:1>*to
-drivers/staging/gdm72xx/gdm_wimax.c:381:37:    got void *buf
-drivers/staging/gdm72xx/gdm_wimax.c:404:41: warning: incorrect type in
-argument 2 (different address spaces)
-drivers/staging/gdm72xx/gdm_wimax.c:404:41:    expected void const
-[noderef] <asn:1>*from
-drivers/staging/gdm72xx/gdm_wimax.c:404:41:    got void *buf
-
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/gdm72xx/gdm_wimax.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/usb_ops_linux.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/gdm72xx/gdm_wimax.c b/drivers/staging/gdm72xx/gdm_wimax.c
-index d9ddced..a5b4b72 100644
---- a/drivers/staging/gdm72xx/gdm_wimax.c
-+++ b/drivers/staging/gdm72xx/gdm_wimax.c
-@@ -378,7 +378,7 @@ static int gdm_wimax_ioctl_get_data(struct data_s *dst, struct data_s *src)
- 	if (src->size) {
- 		if (!dst->buf)
- 			return -EINVAL;
--		if (copy_to_user(dst->buf, src->buf, size))
-+		if (copy_to_user((void __user *)dst->buf, src->buf, size))
- 			return -EFAULT;
- 	}
- 	return 0;
-@@ -401,7 +401,7 @@ static int gdm_wimax_ioctl_set_data(struct data_s *dst, struct data_s *src)
- 			return -ENOMEM;
- 	}
+diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
+index 9d0d031..c940722 100644
+--- a/drivers/staging/rtl8712/usb_ops_linux.c
++++ b/drivers/staging/rtl8712/usb_ops_linux.c
+@@ -170,7 +170,7 @@ void r8712_usb_write_mem(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *wmem)
+ 	unsigned int pipe;
+ 	struct _adapter *padapter = (struct _adapter *)pintfhdl->adapter;
+ 	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
+-	struct io_queue *pio_queue = (struct io_queue *)padapter->pio_queue;
++	struct io_queue *pio_queue = padapter->pio_queue;
+ 	struct dvobj_priv *pdvobj = (struct dvobj_priv *)pintfpriv->intf_dev;
+ 	struct usb_device *pusbd = pdvobj->pusbdev;
+ 	struct urb *piorw_urb = pintfpriv->piorw_urb;
+@@ -259,7 +259,7 @@ u32 r8712_usb_read_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *rmem)
+ 	struct recv_buf	*precvbuf = (struct recv_buf *)rmem;
+ 	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
+ 	struct dvobj_priv *pdvobj = (struct dvobj_priv *)pintfpriv->intf_dev;
+-	struct _adapter *adapter = (struct _adapter *)pdvobj->padapter;
++	struct _adapter *adapter = pdvobj->padapter;
+ 	struct recv_priv *precvpriv = &adapter->recvpriv;
+ 	struct usb_device *pusbd = pdvobj->pusbdev;
  
--	if (copy_from_user(dst->buf, src->buf, src->size)) {
-+	if (copy_from_user(dst->buf, (void __user *)src->buf, src->size)) {
- 		kdelete(&dst->buf);
- 		return -EFAULT;
- 	}
+@@ -400,7 +400,7 @@ u32 r8712_usb_write_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *wmem)
+ 	u32 ret, bwritezero;
+ 	struct urb *purb = NULL;
+ 	struct _adapter *padapter = (struct _adapter *)pintfhdl->adapter;
+-	struct dvobj_priv *pdvobj = (struct dvobj_priv   *)&padapter->dvobjpriv;
++	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 	struct xmit_frame *pxmitframe = (struct xmit_frame *)wmem;
+ 	struct usb_device *pusbd = pdvobj->pusbdev;
 -- 
-1.9.1
+2.1.0
 
 
