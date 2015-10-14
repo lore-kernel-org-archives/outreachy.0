@@ -1,49 +1,50 @@
 X-GM-THRID: 6205566056947253248
-X-Received: by 10.140.135.5 with SMTP id 5mr3798722qhh.11.1444846398302;
-        Wed, 14 Oct 2015 11:13:18 -0700 (PDT)
+X-Received: by 10.66.219.2 with SMTP id pk2mr3976048pac.16.1444846275892;
+        Wed, 14 Oct 2015 11:11:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.161 with SMTP id x1ls1772858igl.29.canary; Wed, 14 Oct
- 2015 11:13:18 -0700 (PDT)
-X-Received: by 10.66.163.102 with SMTP id yh6mr3827625pab.23.1444846398017;
-        Wed, 14 Oct 2015 11:13:18 -0700 (PDT)
+Received: by 10.182.101.135 with SMTP id fg7ls142698obb.54.gmail; Wed, 14 Oct
+ 2015 11:11:15 -0700 (PDT)
+X-Received: by 10.182.24.42 with SMTP id r10mr3746413obf.42.1444846275626;
+        Wed, 14 Oct 2015 11:11:15 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id el2si1042210pbb.0.2015.10.14.11.13.17
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id zg1si1046973pbb.2.2015.10.14.11.11.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 11:13:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 11:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id cn9so29819680pad.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:13:17 -0700 (PDT)
+Received: by mail-pa0-x22a.google.com with SMTP id p3so12933045pay.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:11:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=dkSdsEcgdbbroKJSuX868Y41ZvBNgmSm7uTKOGHCbXc=;
-        b=YSRsX34cH1ScWme7q3UM7K6YUDjdXTVepKfkwJD/1FXMJ89fj+y5/HplXKDdnhYPqS
-         n3jj+IR1YLUxgetmRo9onYiBlS6W9JjJLTEq6ecAsQxXtsQNCZD+QogE/dhjSJL8/HIK
-         R11WT1oC295MTMRC1CWL2/04cceqqz5JcuIJSLxiqDBB4DsuUAFTVstazf818kov3Vbc
-         DdSi97QTv7z9Sb7+fAZ8DRKWpj/qvQV9ePycwmoV1MCqsQV/krKdk44JchULeofu1ohl
-         8JOruQVDbJUduT+yIeJvsR7wCzVTyVY3Y4djrkOoNcRJADs7M412KI0a8BR5jKfuAFaE
-         TEPQ==
-X-Received: by 10.68.111.3 with SMTP id ie3mr5019314pbb.63.1444846397851;
-        Wed, 14 Oct 2015 11:13:17 -0700 (PDT)
+        bh=cmJHZ8G8n+RwBwU06QSIJDyJatxqFoBPiPaThwdwPJg=;
+        b=BmWdLEFuSipGq6n/d3YbM+2MEg56gvxim1pAhgJ+pwdV7rAU+8vJQoMgY9zhkfYMNy
+         x/L4k3hAduMxlt2rLm3dpCIoZanC0vxGHOpjx5iEIgUKh43W2p/g3Daa6TeOZfxQFGP4
+         0rFbXh+Gz84oWYhcYH0JpbRzO9eZYR539Zg/3VYUTM2BD/jZgs3dhYsLTH2gdoYegmWX
+         g97pLmmT8BYdrfasefr5tGCXfr0K/QXG+nYK/DuuLEOxQ31UVx6Jb3qPOo6UZUoAnjbR
+         C1w+UdDqzZKHkoaCad1I4WKATDkHj3NXVZnUCgkdwwQ/mNUmLsfKP9uB1r7izC8uLF0/
+         weqw==
+X-Received: by 10.66.250.197 with SMTP id ze5mr5099153pac.50.1444846275430;
+        Wed, 14 Oct 2015 11:11:15 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([182.68.206.151])
-        by smtp.gmail.com with ESMTPSA id yp9sm10960911pab.1.2015.10.14.11.13.16
+        by smtp.gmail.com with ESMTPSA id iu2sm8507899pbd.16.2015.10.14.11.11.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 14 Oct 2015 11:13:17 -0700 (PDT)
-Date: Wed, 14 Oct 2015 23:43:13 +0530
+        Wed, 14 Oct 2015 11:11:14 -0700 (PDT)
+Date: Wed, 14 Oct 2015 23:41:10 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 5/6] staging: lustre: mgc: Remove useless cast on void pointer
-Message-ID: <2b1d049d4f1404be907b51028ebc92f78bdfe95a.1444845733.git.amitoj1606@gmail.com>
+Subject: [PATCH 4/6] staging: lustre: ptlrpc: Remove useless cast on void
+ pointer
+Message-ID: <2129dbf675b1cd7e1c8bee23a6127559d168fc73.1444845733.git.amitoj1606@gmail.com>
 References: <cover.1444845733.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -74,40 +75,22 @@ identifier f;
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/lustre/lustre/mgc/mgc_request.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/lustre/lustre/ptlrpc/sec_gc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
-index 3e9cca0..b36bad9 100644
---- a/drivers/staging/lustre/lustre/mgc/mgc_request.c
-+++ b/drivers/staging/lustre/lustre/mgc/mgc_request.c
-@@ -756,7 +756,7 @@ static int mgc_blocking_ast(struct ldlm_lock *lock, struct ldlm_lock_desc *desc,
- 			    void *data, int flag)
- {
- 	struct lustre_handle lockh;
--	struct config_llog_data *cld = (struct config_llog_data *)data;
-+	struct config_llog_data *cld = data;
- 	int rc = 0;
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c b/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
+index 520329f..e570359 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
+@@ -148,7 +148,7 @@ static void sec_do_gc(struct ptlrpc_sec *sec)
  
- 	switch (flag) {
-@@ -860,7 +860,7 @@ static int mgc_enqueue(struct obd_export *exp, struct lov_stripe_md *lsm,
- 		       void *data, __u32 lvb_len, void *lvb_swabber,
- 		       struct lustre_handle *lockh)
+ static int sec_gc_main(void *arg)
  {
--	struct config_llog_data *cld = (struct config_llog_data *)data;
-+	struct config_llog_data *cld = data;
- 	struct ldlm_enqueue_info einfo = {
- 		.ei_type	= type,
- 		.ei_mode	= mode,
-@@ -972,7 +972,7 @@ static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
- 	if (KEY_IS(KEY_SET_INFO)) {
- 		struct mgs_send_param *msp;
+-	struct ptlrpc_thread *thread = (struct ptlrpc_thread *) arg;
++	struct ptlrpc_thread *thread = arg;
+ 	struct l_wait_info lwi;
  
--		msp = (struct mgs_send_param *)val;
-+		msp = val;
- 		rc =  mgc_set_mgs_param(exp, msp);
- 		return rc;
- 	}
+ 	unshare_fs_struct();
 -- 
 1.9.1
 
