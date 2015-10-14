@@ -1,80 +1,99 @@
 X-GM-THRID: 6205554058197991424
-X-Received: by 10.31.149.200 with SMTP id x191mr6179614vkd.14.1444891841217;
-        Wed, 14 Oct 2015 23:50:41 -0700 (PDT)
+X-Received: by 10.129.83.10 with SMTP id h10mr3639428ywb.6.1444843145360;
+        Wed, 14 Oct 2015 10:19:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.39.225 with SMTP id s1ls258432obk.79.gmail; Wed, 14 Oct
- 2015 23:50:40 -0700 (PDT)
-X-Received: by 10.182.126.47 with SMTP id mv15mr3997784obb.44.1444891840824;
-        Wed, 14 Oct 2015 23:50:40 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id wl2si1284499pab.1.2015.10.14.23.50.40
+Received: by 10.182.24.195 with SMTP id w3ls127922obf.75.gmail; Wed, 14 Oct
+ 2015 10:19:04 -0700 (PDT)
+X-Received: by 10.182.50.170 with SMTP id d10mr3565756obo.48.1444843144684;
+        Wed, 14 Oct 2015 10:19:04 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id wl2si980903pab.1.2015.10.14.10.19.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 23:50:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Wed, 14 Oct 2015 10:19:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id p3so30623078pay.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 23:50:40 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id ur7so10768874pab.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 10:19:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=CHyFLwgvOSjqFFXsvEJecE+UtJMT2ylT3yZBkosJNgE=;
-        b=kgJ5S30hojTGlxuVSH2kih5WaWyTw9u4LUjxa241qGhDgMBLKQPkP0mSOjMDj6rrJv
-         ZVG6c+5Z9WpYoR58LP90xMlTZLLuAkK8gbcv7JOhE7ldWWMtUwZa/mDgG1uzBHtr2L/V
-         6gqPqMPQR+G4ploJtw9fYEFRVcdw3ZM6RD/4Ko1OkYFZvQxCtPKeGga82/Ii8+pac7mu
-         cfCV/PDK+//8/X0AKnDovz27uUZrk9cvsa2NF7CbLGj9lbJyMvDOycJ2t5WsDj1suJ9R
-         dZ3QpZKj4gmmZYHUMwonlGrLYAbmFPDOCmqay+PixykwkLYnpJDnVn6VFnqU1vn1tvhl
-         ps9w==
-X-Received: by 10.68.191.200 with SMTP id ha8mr8385372pbc.72.1444891840695;
-        Wed, 14 Oct 2015 23:50:40 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([122.169.135.176])
-        by smtp.gmail.com with ESMTPSA id zk9sm13359206pac.7.2015.10.14.23.50.39
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 14 Oct 2015 23:50:40 -0700 (PDT)
-Date: Thu, 15 Oct 2015 12:20:35 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: ieee80211_rx:
- Remove unnecessary code
-Message-ID: <20151015065035.GC3134@sudip-pc>
-References: <20151014171850.GA19220@ubuntu>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=q7GjbDeDxitu5fE8T+TRneCoOPBZXl0qdGmhTj/QKNQ=;
+        b=wbjfJHhorUrFe0TrU6ean40KAYoMIaPPZDQCXbDAXyr265xDqIJLwJ/XHduwF7Qgik
+         l2WKo8iEkdJd1UbGfovqyIfxsqe2K1h9PgPLBz8Ebs1gEgSH+pv4s0MkJJdwxkmIGRB5
+         RAFTKk3cGuI2XUM+VFpRTh1f7XLYXpaXSBndL6MUTV+rPnU4lwuTfwGH8DLC3B+iC547
+         fZpXTkI+Sb+VoWXDrMo8IoTLA/6KRYH/fP6om5Gvs9MoUYhfpu0q02M7clNwfKUzvc4q
+         W0zzBefr3JPX+i0yb1f+gTeZAMuqV9SY+WZoH7RtrReViZ18dDjfeVuPAsUGLfAn6tfP
+         fkOQ==
+X-Received: by 10.69.26.5 with SMTP id iu5mr4881879pbd.12.1444843144554;
+        Wed, 14 Oct 2015 10:19:04 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id x6sm10740610pbt.3.2015.10.14.10.19.01
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 10:19:03 -0700 (PDT)
+Date: Wed, 14 Oct 2015 22:48:50 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8192u: ieee80211_rx: Remove unnecessary code
+Message-ID: <20151014171850.GA19220@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20151014171850.GA19220@ubuntu>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Wed, Oct 14, 2015 at 10:48:50PM +0530, Shivani Bhardwaj wrote:
-> The variable frame_authorized is declared and mentioned in the code but
-> is not used anywhere so, it should be removed. Also, two case statements
-> are merged by removing an extra break.
-<snip>
-> @@ -1106,10 +1105,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
->  		switch (hostap_handle_sta_rx(ieee, dev, skb, rx_stats,
->  					     wds != NULL)) {
->  		case AP_RX_CONTINUE_NOT_AUTHORIZED:
-> -			frame_authorized = 0;
-> -			break;
->  		case AP_RX_CONTINUE:
-> -			frame_authorized = 1;
->  			break;
+The variable frame_authorized is declared and mentioned in the code but
+is not used anywhere so, it should be removed. Also, two case statements
+are merged by removing an extra break.
+Semantic patch used:
+@@
+type T;
+identifier i;
+constant C;
+position p != e.p;
+@@
 
-Just a doubt, it now becomes:
-	case AP_RX_CONTINUE_NOT_AUTHORIZED:
-	case AP_RX_CONTINUE:
-		break;
+- T i@p;
+  <+... when != i
+- i = C;
+  ...+>
 
-If these two cases are not doing anything then what is the use of having
-them here in the switch-case?
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-regards
-sudip
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index 4b5f32d..130c852 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -899,7 +899,6 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 	struct net_device *wds = NULL;
+ 	struct sk_buff *skb2 = NULL;
+ 	struct net_device *wds = NULL;
+-	int frame_authorized = 0;
+ 	int from_assoc_ap = 0;
+ 	void *sta = NULL;
+ #endif
+@@ -1106,10 +1105,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 		switch (hostap_handle_sta_rx(ieee, dev, skb, rx_stats,
+ 					     wds != NULL)) {
+ 		case AP_RX_CONTINUE_NOT_AUTHORIZED:
+-			frame_authorized = 0;
+-			break;
+ 		case AP_RX_CONTINUE:
+-			frame_authorized = 1;
+ 			break;
+ 		case AP_RX_DROP:
+ 			goto rx_dropped;
+-- 
+2.1.0
+
 
