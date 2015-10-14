@@ -1,92 +1,91 @@
-X-GM-THRID: 7339802361856
-X-Received: by 10.180.109.34 with SMTP id hp2mr2980445wib.4.1425934144188;
-        Mon, 09 Mar 2015 13:49:04 -0700 (PDT)
+X-GM-THRID: 6205598685907124224
+X-Received: by 10.68.217.74 with SMTP id ow10mr4263767pbc.10.1444853536571;
+        Wed, 14 Oct 2015 13:12:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.188.172 with SMTP id gb12ls35216wic.21.gmail; Mon, 09 Mar
- 2015 13:49:04 -0700 (PDT)
-X-Received: by 10.180.211.199 with SMTP id ne7mr933847wic.5.1425934143905;
-        Mon, 09 Mar 2015 13:49:03 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x22c.google.com (mail-wg0-x22c.google.com. [2a00:1450:400c:c00::22c])
-        by gmr-mx.google.com with ESMTPS id c8si377575wiw.1.2015.03.09.13.49.03
+Received: by 10.50.66.202 with SMTP id h10ls1863617igt.38.canary; Wed, 14 Oct
+ 2015 13:12:16 -0700 (PDT)
+X-Received: by 10.107.27.7 with SMTP id b7mr4823807iob.30.1444853536135;
+        Wed, 14 Oct 2015 13:12:16 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id wl2si1061856pab.1.2015.10.14.13.12.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2015 13:49:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) client-ip=2a00:1450:400c:c00::22c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 13:12:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::22c as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22c.google.com with SMTP id l18so20939093wgh.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 13:49:03 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x230.google.com with SMTP id ur7so14388069pab.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 13:12:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=lMimzyFkYc57F0pHO9T7Muq1jEk9pLj8IkM7MjHiXNI=;
-        b=wgfqC9whs2cp4ye7cUhTuvX80TtHsT+121piBxgPNVpCG/+cQ4vh72vdssKbOmMi60
-         oMJGIIdDlFWSZ+TCc0ORe6yx8UvdZI8baPKKSQ/S3fXCPQo8WmGChbNWN5DsPNbRO7nC
-         MFS2PAQ7tNplShhj917U3OY743vHNNGVZeO06Lc5VSiOiVe95h8jovEqKWcLenUP+uf/
-         8f2WmzxG73McZqTV9MPQ5aKnzZywPLdDoQ5Hy6L6Hgj/jqXe0K7S/vPRmqLmr1Zm6wd+
-         pW3vdi7dgO8+056bhMeFJteI1fW7v/iyO/4D7fazkjAeYWnXz5Sq+Vzp+JvyWob2zJko
-         GcDw==
-X-Received: by 10.180.104.33 with SMTP id gb1mr43803796wib.33.1425934143805;
-        Mon, 09 Mar 2015 13:49:03 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id b4sm17068944wic.2.2015.03.09.13.49.02
+        bh=VajO6N6JwwXxoVyFn8zUk5squBBwQYWotFtApwOEjW8=;
+        b=az+yIhmSwHuswugbKeKF5CQkBd3KAdKjbwNSjcriMogDDZobDNJFG1+WrhGeu6oJvn
+         k9wPzea5sIQDr/wob9fdMauLWBqWCjWFAinOQZepxWPTRr8IiNFjLORm/Jj53K5Gwoi5
+         2pV4IwXFgZqeKtPZfBAxR1jFeex701KIWMBo6CwES/0+/OleAp+838e0ir9xDTVeWi+P
+         VldgZmj2fgcpxKu4qvjk65+3niC7G4b4VPTpB5oR/BJFLkBBWXwHrTngwiBriZeSEJQs
+         Cbm8vDXzM2d/1U78seM0w/gOKt6Ck+ETAwG996jvGxi1s+fk9QiM/ZMcs6lOQG4O7y+f
+         /HpA==
+X-Received: by 10.68.192.9 with SMTP id hc9mr5470692pbc.57.1444853535915;
+        Wed, 14 Oct 2015 13:12:15 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.206.151])
+        by smtp.gmail.com with ESMTPSA id sl7sm11195096pbc.54.2015.10.14.13.12.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 09 Mar 2015 13:49:03 -0700 (PDT)
-Date: Mon, 9 Mar 2015 22:48:28 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Wed, 14 Oct 2015 13:12:15 -0700 (PDT)
+Date: Thu, 15 Oct 2015 01:42:11 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8192e: Remove unnecessary macro
-Message-ID: <20150309204828.GA25299@Inspiron>
+Subject: [PATCH] staging: wlan-ng: Remove useless initialization
+Message-ID: <20151014201211.GA1835@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch removes the RTLLIB_PRINT_STR macro definition because it is
-olny defined in the header and it is never referenced.
+Remove intialisation of a variable that is immediately reassigned.
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
+The semantic patch used to find this is:
+
+// <smpl>
+@@
+type T;
+identifier x;
+constant C;
+expression e;
+@@
+
+T x
+- = C
+ ;
+x = e;
+// </smpl>
+
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib.h | 20 --------------------
- 1 file changed, 20 deletions(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
-index cef2dc2..96e9246 100644
---- a/drivers/staging/rtl8192e/rtllib.h
-+++ b/drivers/staging/rtl8192e/rtllib.h
-@@ -784,26 +784,6 @@ do {								\
- #define RTLLIB_DEBUG_RX(f, a...)  RTLLIB_DEBUG(RTLLIB_DL_RX, f, ## a)
- #define RTLLIB_DEBUG_QOS(f, a...)  RTLLIB_DEBUG(RTLLIB_DL_QOS, f, ## a)
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index e109a7f..444ebed 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -1194,7 +1194,7 @@ int hfa384x_cmd_download(hfa384x_t *hw, u16 mode, u16 lowaddr,
+ ----------------------------------------------------------------*/
+ int hfa384x_corereset(hfa384x_t *hw, int holdtime, int settletime, int genesis)
+ {
+-	int result = 0;
++	int result;
  
--/* Added by Annie, 2005-11-22. */
--#define MAX_STR_LEN     64
--/* I want to see ASCII 33 to 126 only. Otherwise, I print '?'. */
--#define PRINTABLE(_ch)  (_ch > '!' && _ch < '~')
--#define RTLLIB_PRINT_STR(_Comp, _TitleString, _Ptr, _Len)		\
--	if ((_Comp) & level) {					       \
--		int	     __i;				    \
--		u8  struct buffer[MAX_STR_LEN];				\
--		int length = (_Len < MAX_STR_LEN) ? _Len : (MAX_STR_LEN-1) ;\
--		memset(struct buffer, 0, MAX_STR_LEN);		\
--		memcpy(struct buffer, (u8 *)_Ptr, length);		\
--		for (__i = 0; __i < MAX_STR_LEN; __i++) {		\
--			if (!PRINTABLE(struct buffer[__i]))		\
--				struct buffer[__i] = '?';		\
--		}							\
--		struct buffer[length] = '\0';				\
--		printk(KERN_INFO "Rtl819x: ");				\
--		printk(_TitleString);					\
--		printk(": %d, <%s>\n", _Len, struct buffer);		\
--	}
- #ifndef ETH_P_PAE
- #define ETH_P_PAE 0x888E /* Port Access Entity (IEEE 802.1X) */
- #define ETH_P_IP	0x0800		/* Internet Protocol packet	*/
+ 	result = usb_reset_device(hw->usb);
+ 	if (result < 0) {
 -- 
 1.9.1
 
