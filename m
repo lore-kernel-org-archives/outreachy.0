@@ -1,84 +1,81 @@
-X-GM-THRID: 6206160535830921216
-X-Received: by 10.13.247.132 with SMTP id h126mr11413945ywf.56.1444984352128;
-        Fri, 16 Oct 2015 01:32:32 -0700 (PDT)
+X-GM-THRID: 6205588981452636160
+X-Received: by 10.112.202.165 with SMTP id kj5mr1169657lbc.5.1444851276063;
+        Wed, 14 Oct 2015 12:34:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.1.52 with SMTP id 20ls140870igj.1.gmail; Fri, 16 Oct 2015
- 01:32:31 -0700 (PDT)
-X-Received: by 10.107.15.168 with SMTP id 40mr7990099iop.16.1444984351692;
-        Fri, 16 Oct 2015 01:32:31 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id wl2si1889368pab.1.2015.10.16.01.32.31
+Received: by 10.25.148.143 with SMTP id w137ls69101lfd.105.gmail; Wed, 14 Oct
+ 2015 12:34:34 -0700 (PDT)
+X-Received: by 10.112.169.34 with SMTP id ab2mr1162524lbc.23.1444851274298;
+        Wed, 14 Oct 2015 12:34:34 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id bh7si940934wib.1.2015.10.14.12.34.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 01:32:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 12:34:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id fv9so16121295pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 01:32:31 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id q8so96607058wij.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 12:34:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ig6rjEQt/illaegeFlju5yxP7OISotiljOEzi6Tgpmw=;
-        b=FV0thF1LbgrjhpxNzn6kWWhNuNMF4P7+k2aYt4WBMv//eCb+7eFN7wqvCf8PLOV3l/
-         wC2+PmTPiH9UlIluY9LgMpBDGgqyfRuY+1giqiTW4CAz4DJ2cPCq2y1/tZi/YRvKk3jf
-         NExf+w/0pFa2fuQI9ipNCzq1S79Y0f6HEVJRz01bIqVs0HUhTFtrF5wN/hhshmSGcNf5
-         SK+yxCPbSg5Qxtrfeuxj9xrRH3d5d/WyHvnaDtCUaElz0GDNybHxGfk3AncrC06xPR7v
-         39OlCnjq4hMkv7zVmuTbxcZiOjrCdPMc/ry4MTAiJYhXjPKsFkI4mxcK8C+2DoqqXTfs
-         VyjQ==
-X-Received: by 10.69.1.67 with SMTP id be3mr15326736pbd.78.1444984351529;
-        Fri, 16 Oct 2015 01:32:31 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id v13sm3073838pbs.51.2015.10.16.01.32.28
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 01:32:30 -0700 (PDT)
-Date: Fri, 16 Oct 2015 14:02:18 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=ZFBEy7H8EzqJiK6887aWCo3wqUrzQMtQX8A2B7Lcvh0=;
+        b=RjapRHVEKXJ6DTw1k2Ys0YkF29eAvbFp5AzJj8bEBWWPBBaHvqmsfQserMLlMV/7zy
+         aLW2AX4fnlqnUrEVcW1gTcQ9DstBY1xfxhGuuSYdax1dMRJ837kJ2zjmET/s4rr23wlX
+         HMjOPcKZEYtJOpLhnqBQWPwCEHoCNNiyCHlfqscrrbF9LyQ7xccPL45elaqXgc70/nTd
+         iELJEGCz4XoUXVr68UToF26LmMrQyYYXsELvgYCv3Bg80ERKIdQ0gp5NoMka0gwPX1My
+         WHMJ3bWnzkICvLcukX2IFtD5lZGDcRBSh/Me+HYQBw8VWQYcZRG3g33sAvNYfCJwsrs/
+         yTBg==
+X-Received: by 10.194.63.5 with SMTP id c5mr5831925wjs.127.1444851274150;
+        Wed, 14 Oct 2015 12:34:34 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
+        by smtp.gmail.com with ESMTPSA id ka10sm11869434wjc.30.2015.10.14.12.34.33
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 14 Oct 2015 12:34:33 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: lustre: lpoc_osc:  Change the variable to be
- checked
-Message-ID: <20151016083218.GA2815@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Ioana Ciornei <ciorneiioana@gmail.com>
+Subject: [PATCH] staging: iio: cdc: simplify return flow
+Date: Wed, 14 Oct 2015 22:34:27 +0300
+Message-Id: <1444851267-4576-1-git-send-email-ciorneiioana@gmail.com>
+X-Mailer: git-send-email 2.1.4
 
-The variable rc is supposed to hold the value returned by function
-kstrtoul which can either be 0, -EINVAL (-22) or -ERANGE (-34).
-Therefore, the check must be performed on rc instead of val for error
-values. Also, rc can never be greater than 0.
+Simplify return flow ad7150_write_event_params in order to reduce code length.
+Since i2c_smbus_write_word_data only returns a negative value or 0 the change is safe.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+This patch fixes the following coccicheck warning:
+
+drivers/staging/iio/cdc/ad7150.c:182:2-5: WARNING: end returns can be simpified if negative or 0 value
+
+Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
-Changes in v2:
-	Update the commit message.
+ drivers/staging/iio/cdc/ad7150.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
- drivers/staging/lustre/lustre/osc/lproc_osc.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/osc/lproc_osc.c b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-index 053d508..cdc7f88 100644
---- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
-+++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-@@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
- 	unsigned long val;
- 
- 	rc = kstrtoul(buffer, 10, &val);
--	if (rc)
--		return rc;
--	if (val < 0 || val > 1)
-+	if (rc < 0)
- 		return -ERANGE;
- 
- 	/* opposite senses */
+diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
+index ff83394..636a7ee 100644
+--- a/drivers/staging/iio/cdc/ad7150.c
++++ b/drivers/staging/iio/cdc/ad7150.c
+@@ -179,12 +179,9 @@ static int ad7150_write_event_params(struct iio_dev *indio_dev,
+ 		/* Note completely different from the adaptive versions */
+ 	case IIO_EV_TYPE_THRESH:
+ 		value = chip->threshold[rising][chan];
+-		ret = i2c_smbus_write_word_data(chip->client,
++		return i2c_smbus_write_word_data(chip->client,
+ 						ad7150_addresses[chan][3],
+ 						swab16(value));
+-		if (ret < 0)
+-			return ret;
+-		return 0;
+ 	case IIO_EV_TYPE_MAG_ADAPTIVE:
+ 		sens = chip->mag_sensitivity[rising][chan];
+ 		timeout = chip->mag_timeout[rising][chan];
 -- 
-2.1.0
+2.1.4
 
 
