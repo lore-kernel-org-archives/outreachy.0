@@ -1,77 +1,116 @@
-X-GM-THRID: 5105028956160
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e0e50212896d54e6,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.6.41 with SMTP id x9mr2663506lax.10.1425124114448;
-        Sat, 28 Feb 2015 03:48:34 -0800 (PST)
+X-GM-THRID: 6205566056947253248
+X-Received: by 10.129.107.139 with SMTP id g133mr3952338ywc.38.1444848607785;
+        Wed, 14 Oct 2015 11:50:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.204.200 with SMTP id la8ls272037lac.90.gmail; Sat, 28 Feb
- 2015 03:48:33 -0800 (PST)
-X-Received: by 10.112.138.202 with SMTP id qs10mr2610818lbb.24.1425124113909;
-        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
-        by gmr-mx.google.com with ESMTPS id ev8si279845wib.3.2015.02.28.03.48.33
+Received: by 10.140.43.136 with SMTP id e8ls340531qga.40.gmail; Wed, 14 Oct
+ 2015 11:50:07 -0700 (PDT)
+X-Received: by 10.31.165.84 with SMTP id o81mr3898281vke.11.1444848607378;
+        Wed, 14 Oct 2015 11:50:07 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id zg1si1066342pbb.2.2015.10.14.11.50.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 11:50:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by widem10 with SMTP id em10so5461230wid.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 03:48:33 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x234.google.com with SMTP id ur7so12694277pab.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:50:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=BZ/t6llK9pcdr+IO1Mh0vI3UpWQRcEwlw0IMchoOnew=;
-        b=qx1sgbN2jTmSyOPMgcIfPKGMqJUebrw7mAH+XGTyhgZDDzC5GS50jLDvoHI8u8FSA6
-         mIQzDSCEOsRIWIXNY4amDXes7ZLIqwsS4bmF8uIIQTpY9DrbuGoWjgmKJ3WQp4U6tLaW
-         VHkdgt6IfWuZWKRIPZ+wFYQtFulKpc+Fw48fw5VjMaxWA6KOApoRkA5sxrVHi+U+RUM8
-         U9ERoDJ2CjC7Kt758S6Ck25Ww99Uz7RraeaNf5eQExgCiwl+CJJx1qQ0fNxrzMCMa6Q+
-         LXQ+Na+ahS9UCEssn3USZGQh4WszrSGd6h+HLyI4kUmUg75V2OVKIXHmFuIE6wQhp481
-         zUQA==
-X-Received: by 10.194.243.1 with SMTP id wu1mr38568584wjc.69.1425124113828;
-        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id m4sm6726468wik.20.2015.02.28.03.48.32
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Feb 2015 03:48:33 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=cAZScV+n7PDVTzcgDNPTStXy8PCgWY4tGbBNhrxSgu0=;
+        b=VPsHJ+897TFCM8z2sHh2yDZRcP4tXSjX+MzLM49URo7mwdfELDVM8DowW7D+Oa4YCL
+         BUpgqGoddgS6f+zXha5Y2kLutw0m7Qz162T92KZGYzR2w7i7RXCFcQKJvO1dHWtsXE7+
+         fYBFYD7j84OmmfiC+pcTC4kAyhMslo42lPI0SgzSv/aImM1sqVYzSwpBn8F/V1YGYvvq
+         TZfYTLklWFH6l7rbF16j0mDsY6aBHLf5P29M4O/brrrqkJqDYhJGWQiwo5p+UgSLOlFv
+         770u6AQQMRZasxzAQs+Br8F9NJGw9FZecGUlQPGBy24JYU4V+XhKdSFjX4cqY5mJJx+h
+         z3KA==
+X-Received: by 10.68.190.170 with SMTP id gr10mr4978953pbc.91.1444848607180;
+        Wed, 14 Oct 2015 11:50:07 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.206.151])
+        by smtp.gmail.com with ESMTPSA id rk2sm10971965pbc.75.2015.10.14.11.50.05
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Wed, 14 Oct 2015 11:50:06 -0700 (PDT)
+Date: Thu, 15 Oct 2015 00:20:03 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 3/3] Staging: rtl8192u: Replace printk() with netdev_dbg()
-Date: Sat, 28 Feb 2015 12:48:27 +0100
-Message-Id: <8a791746344b01c621f471346f63d8bbd58c82c1.1425124010.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1425124010.git.ksenija.stanojevic@gmail.com>
-References: <cover.1425124010.git.ksenija.stanojevic@gmail.com>
+Subject: [PATCH v2 6/6] staging: lustre: osc: Remove useless cast on void
+ pointer
+Message-ID: <1fd382602338da45f57dc5eb8e966109ed3b023e.1444847780.git.amitoj1606@gmail.com>
+References: <cover.1444847780.git.amitoj1606@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1444847780.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-For dynamic debugging netdev_dbg (if there is a ponterto a device
-net structure) is preferred over printk(), which is the raw way
-to print something. Issue found by checkpatch.pl.
+The semantic patch used to find this is:
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
+
+(
+  *((T *)e)
+|
+  ((T *)x)[...]
+|
+  ((T *)x)->f
+|
+- (T *)
+  e
+)
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+        -None
+ drivers/staging/lustre/lustre/osc/osc_request.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
-index 361d2d0..b5a26f3 100644
---- a/drivers/staging/rtl8192u/r8192U_wx.c
-+++ b/drivers/staging/rtl8192u/r8192U_wx.c
-@@ -139,7 +139,7 @@ static int r8192_wx_force_reset(struct net_device *dev,
+diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
+index 225e5ed..2ab94c5 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_request.c
++++ b/drivers/staging/lustre/lustre/osc/osc_request.c
+@@ -2664,7 +2664,7 @@ static int osc_iocontrol(unsigned int cmd, struct obd_export *exp, int len,
+ 					       data->ioc_offset);
+ 		goto out;
+ 	case OBD_IOC_POLL_QUOTACHECK:
+-		err = osc_quota_poll_check(exp, (struct if_quotacheck *)karg);
++		err = osc_quota_poll_check(exp, karg);
+ 		goto out;
+ 	case OBD_IOC_PING_TARGET:
+ 		err = ptlrpc_obd_ping(obd);
+@@ -2731,8 +2731,7 @@ static int osc_get_info(const struct lu_env *env, struct obd_export *exp,
+ 		ptlrpc_req_finished(req);
+ 		return rc;
+ 	} else if (KEY_IS(KEY_FIEMAP)) {
+-		struct ll_fiemap_info_key *fm_key =
+-				(struct ll_fiemap_info_key *)key;
++		struct ll_fiemap_info_key *fm_key = key;
+ 		struct ldlm_res_id res_id;
+ 		ldlm_policy_data_t policy;
+ 		struct lustre_handle lockh;
+@@ -2854,7 +2853,7 @@ static int osc_set_info_async(const struct lu_env *env, struct obd_export *exp,
+ 		struct client_obd *cli = &obd->u.cli;
  
- 	down(&priv->wx_sem);
+ 		LASSERT(cli->cl_cache == NULL); /* only once */
+-		cli->cl_cache = (struct cl_client_cache *)val;
++		cli->cl_cache = val;
+ 		atomic_inc(&cli->cl_cache->ccc_users);
+ 		cli->cl_lru_left = &cli->cl_cache->ccc_lru_left;
  
--	printk("%s(): force reset ! extra is %d\n", __func__, *extra);
-+	netdev_dbg(dev, "%s(): force reset ! extra is %d\n", __func__, *extra);
- 	priv->force_reset = *extra;
- 	up(&priv->wx_sem);
- 	return 0;
 -- 
 1.9.1
 
