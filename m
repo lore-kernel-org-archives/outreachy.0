@@ -1,96 +1,112 @@
 X-GM-THRID: 6205566056947253248
-X-Received: by 10.107.14.196 with SMTP id 187mr4434228ioo.24.1444847969314;
-        Wed, 14 Oct 2015 11:39:29 -0700 (PDT)
+X-Received: by 10.182.29.41 with SMTP id g9mr3831132obh.27.1444847048037;
+        Wed, 14 Oct 2015 11:24:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.98.232 with SMTP id o95ls350086qge.32.gmail; Wed, 14 Oct
- 2015 11:39:28 -0700 (PDT)
-X-Received: by 10.31.44.18 with SMTP id s18mr3901207vks.6.1444847968872;
-        Wed, 14 Oct 2015 11:39:28 -0700 (PDT)
+Received: by 10.107.135.105 with SMTP id j102ls276905iod.85.gmail; Wed, 14 Oct
+ 2015 11:24:07 -0700 (PDT)
+X-Received: by 10.50.30.37 with SMTP id p5mr4316118igh.11.1444847047728;
+        Wed, 14 Oct 2015 11:24:07 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id el2si1055130pbb.0.2015.10.14.11.39.28
+Received: from mail-qg0-x22e.google.com (mail-qg0-x22e.google.com. [2607:f8b0:400d:c04::22e])
+        by gmr-mx.google.com with ESMTPS id t64si701284ywd.2.2015.10.14.11.24.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 11:39:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Oct 2015 11:24:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) client-ip=2607:f8b0:400d:c04::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pabur7 with SMTP id ur7so12483343pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:39:28 -0700 (PDT)
+Received: by mail-qg0-x22e.google.com with SMTP id z77so50694381qge.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:24:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=aTvHNjjFbsG9rmzBidIVg69JjHqCRNarz25TMuPQwKI=;
-        b=WsSBeAvt3Bmqv2aJOF8e5Ye4GyW92SglBMGRuv3A+nr3ic9S2rRReuANEtQeNsjSSS
-         jvdylUVcKqRQfSJ+GxIUad4l2Gf4g+d7cupWeLcR+QZioLLyplGzpgtGSp+Xw+/CJC/f
-         HzW7p63n15lQbAMmQ/od1yyT6aq877NjMzUcz/AUxEISef2etf4RtJiQOG3QfM3Owzbg
-         g1kHnCZr/omW9jttu3DG5J+s6rQpnLT6r4BJ1oXabeQJlKYlk2SfZ/2/X8VAZ8hWVA6Y
-         LEcYA+Hq/cTl0mvTvGJgB0gwfbfTq9X2KmB+b/ImKx53fsoZdseViSwhNeK6X9gE1v2d
-         wpEA==
-X-Received: by 10.66.119.135 with SMTP id ku7mr5045844pab.21.1444847968683;
-        Wed, 14 Oct 2015 11:39:28 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.206.151])
-        by smtp.gmail.com with ESMTPSA id dd4sm10958455pbb.52.2015.10.14.11.39.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 14 Oct 2015 11:39:28 -0700 (PDT)
-Date: Thu, 15 Oct 2015 00:09:24 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/6] staging: lustre: Remove useless cast on void pointer
-Message-ID: <cover.1444847780.git.amitoj1606@gmail.com>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ZBAOHVctGWMnZklOPDsCvDlOhLLWy2il4A33EBhGm/I=;
+        b=iyUDh/LWAE169c0sp4Ro0FKv4+iRG6NTlL+kNSxjBAkkPEd+O+cUtdte6STfI4WRgb
+         bZzWZriCx9wEbywXBSZYY83zKDQfJ851UoxUxD6gIoEZYXHxZcbqjdDItxjliy4Zis7l
+         vfjtjzSxjXer2LrQSKC/ZBumwhCAuZArHQZfx9kSqDKOiXdNmW2rtZt4Y16ZISn7LPlK
+         ZIy+wqWeu+tslA329In34gdI6h8uvv8++dX8McmJkBmbFdhpD6rUR6/JRIrKSCZwZO1d
+         WbxNKeFyxvRxi4oLi1ak7dUdsnVzigCHTk7e8UAdm0t0e1HiWsRBopLul2rJpsxcBlEP
+         UGQQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.140.147.146 with SMTP id 140mr6321346qht.68.1444847047511;
+ Wed, 14 Oct 2015 11:24:07 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Wed, 14 Oct 2015 11:24:07 -0700 (PDT)
+In-Reply-To: <CAEnQRZBTpkZi+y_W6sySGxGx-zx-1TJXiXeyvLqP5JgDPPh_3g@mail.gmail.com>
+References: <cover.1444845733.git.amitoj1606@gmail.com>
+	<alpine.DEB.2.10.1510142008470.2421@hadrien>
+	<CA+5yK5H3g3GGtDob2=UNVRdgjn9BMUy7tzkO6EOcd3OLn16Qgw@mail.gmail.com>
+	<CAEnQRZBTpkZi+y_W6sySGxGx-zx-1TJXiXeyvLqP5JgDPPh_3g@mail.gmail.com>
+Date: Wed, 14 Oct 2015 23:54:07 +0530
+Message-ID: <CA+5yK5F+8=wUG-Dgc2oDJpp78pUeiV1XzzRTFtmmr3q+YMzKag@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/6] staging: lustre: Remove useless
+ cast on void pointer
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Daniel Baluta <daniel.baluta@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-This patchset fixes multiple useless casts on void pointers.
+On Wed, Oct 14, 2015 at 11:52 PM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
+> On Wed, Oct 14, 2015 at 9:16 PM, Amitoj Kaur Chawla
+> <amitoj1606@gmail.com> wrote:
+>> On Wed, Oct 14, 2015 at 11:39 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>>> On Wed, 14 Oct 2015, Amitoj Kaur Chawla wrote:
+>>>
+>>>> This patchset fixes multiple useless casts on void pointers.
+>>>>
+>>>> The semantic patch used to find this is:
+>>>>
+>>>> @r@
+>>>> expression x;
+>>>> void* e;
+>>>> type T;
+>>>> identifier f;
+>>>> @@
+>>>>
+>>>> (
+>>>>   *((T *)e)
+>>>> |
+>>>>   ((T *)x)[...]
+>>>> |
+>>>>   ((T *)x)->f
+>>>> |
+>>>> - (T *)
+>>>>   e
+>>>> )
+>>>>
+>>>>
+>>>> Amitoj Kaur Chawla (6):
+>>>>   staging: lustre: ptlrpc: Remove useless cast on void pointer
+>>>>   staging: lustre: ptlrpc: Remove useless cast on void pointer
+>>>>   staging: lustre: ptlrpc: Remove useless cast on void pointer
+>>>>   staging: lustre: ptlrpc: Remove useless cast on void pointer
+>>>
+>>> The patches haven't arrived in my mailbox yet, but it looks like you will
+>>> have four with the same subject?
+>>>
+>>> julia
+>>>
+>> Yes all 4 are doing the same thing. Is this a bad thing?
+>> Since I'm making changes in separate files I thought it would be
+>> better to send them as separate patches.
+>> Should I combine the 4 and resend the series?
+>
+> It's very good that you've split the patches. The issue here is that
+> all patches have the same subject.
+>
+> You can introduce the filename into the equation, thus resulting
+> different subjects for your patches.
+>
+> e.g.  staging: lustre: ptlrpc: pinger: Remove useless cast on void pointer
 
-The semantic patch used to find this is:
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
+Okay will do that!
 
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T *)x)->f
-|
-- (T *)
-  e
-)
+Thanks,
 
-Changes in v2:
-        -Fixed subject in commit message
-
-Amitoj Kaur Chawla (6):
-  staging: lustre: ptlrpc: sec_bulk: Remove useless cast on void pointer
-  staging: lustre: ptlrpc: service: Remove useless cast on void pointer
-  staging: lustre: ptlrpc: pinger: Remove useless cast on void pointer
-  staging: lustre: ptlrpc: sec_gc: Remove useless cast on void pointer
-  staging: lustre: mgc: Remove useless cast on void pointer
-  staging: lustre: osc: Remove useless cast on void pointer
-
- drivers/staging/lustre/lustre/mgc/mgc_request.c | 6 +++---
- drivers/staging/lustre/lustre/osc/osc_request.c | 7 +++----
- drivers/staging/lustre/lustre/ptlrpc/pinger.c   | 2 +-
- drivers/staging/lustre/lustre/ptlrpc/sec_bulk.c | 3 +--
- drivers/staging/lustre/lustre/ptlrpc/sec_gc.c   | 2 +-
- drivers/staging/lustre/lustre/ptlrpc/service.c  | 6 +++---
- 6 files changed, 12 insertions(+), 14 deletions(-)
-
--- 
-1.9.1
-
+Amitoj
 
