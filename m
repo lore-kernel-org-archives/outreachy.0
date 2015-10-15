@@ -1,77 +1,76 @@
 X-GM-THRID: 6205878038435987456
-X-Received: by 10.180.208.7 with SMTP id ma7mr2337539wic.5.1444919163492;
-        Thu, 15 Oct 2015 07:26:03 -0700 (PDT)
+X-Received: by 10.50.134.199 with SMTP id pm7mr10724687igb.0.1444918578776;
+        Thu, 15 Oct 2015 07:16:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.143.209 with SMTP id r200ls179956lfd.6.gmail; Thu, 15 Oct
- 2015 07:26:02 -0700 (PDT)
-X-Received: by 10.112.12.132 with SMTP id y4mr2225594lbb.0.1444919162796;
-        Thu, 15 Oct 2015 07:26:02 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id c1si479197wiv.3.2015.10.15.07.26.02
+Received: by 10.107.25.137 with SMTP id 131ls338610ioz.45.gmail; Thu, 15 Oct
+ 2015 07:16:18 -0700 (PDT)
+X-Received: by 10.107.32.11 with SMTP id g11mr5726287iog.34.1444918578282;
+        Thu, 15 Oct 2015 07:16:18 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id pe1si1401448pac.2.2015.10.15.07.16.18
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Oct 2015 07:16:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pabur7 with SMTP id ur7so6837136pab.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 07:16:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=0EAhIwHglqr9NTcjZb+cXG6pmVVHO73CCwnjZI0E6zo=;
+        b=j9TObzEg6p+kDX8KljWyFmbTYR63evULilo0Gy6QcWqBDFKoUxqDUh/LVOa5If++HZ
+         4eYnchBiHPDVloCQv0KuAczlKGJRMRuuxstNwynVbxeyE1LzKk4/ZSpYZ8CDPNeAWpvw
+         GOC9Jumbeqe7wZDbW6bUM7EVMj3k+qcVI5ANqQIXmVO9xAYPVnMnuAe0C2i64VyEWl78
+         zaJdYLabvTPbiKdPduMxdPs5B7pubXd3XQkjpF4r1UALHqnwk4Z8C94I1xGVqJSn5vXz
+         hNVVeuN6qOCrOc1HbgU7lJPE7ImhzrvNtXILwXnKdW+DdTytwOO2gdLFbyECH5dNCo8J
+         N3Rw==
+X-Received: by 10.68.68.134 with SMTP id w6mr10441674pbt.61.1444918578149;
+        Thu, 15 Oct 2015 07:16:18 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id w8sm15743193pbs.87.2015.10.15.07.16.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Oct 2015 07:26:02 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
- (mreue002) with ESMTPSA (Nemesis) id 0Lghtu-1aOU873rjK-00oFYw; Thu, 15 Oct
- 2015 16:26:01 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+        Thu, 15 Oct 2015 07:16:17 -0700 (PDT)
+Date: Thu, 15 Oct 2015 19:46:06 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Shivani Bhardwaj <shivanib134@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: mdc_locks: Remove extra test expression
-Date: Thu, 15 Oct 2015 16:26:01 +0200
-Message-ID: <5102490.D91ZYVuE4I@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151015141605.GA33977@ubuntu>
-References: <20151015141605.GA33977@ubuntu>
+Subject: [PATCH] Staging: lustre: mdc_locks: Remove extra test expression
+Message-ID: <20151015141605.GA33977@ubuntu>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:sXdgl/JTBX/Ws+Kphln65FhhmWpvXLv0jAFDV34gym7fwKm6QV3
- ZULRR9a3NQOi0anbYMBHd3mVgmcNA+KyHSb3Cv34vzt8QZPQ86B31T+9GQsdmqRRqlUeiGK
- CGLwI0Ag0pMLiG3eyVaV16xPGmtTOiXpROJj3qsi0aMDiEh/B+mJbw43U+OyJEcEKkSs0o9
- nttj4ccEsyBjY5FDxnd+w==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:n8thQPqPrvQ=:bvCwxfp/1wJcyfLhA/E4/t
- WKrPJ/NfaTCEdCkLLv25Xlxdq26UBjHlPHjiME6sHL66+XjV4MlUwk4EkYlX5R/6Xxui/+Up6
- jXKTTfkQdm2bQZTWv75Sre/dRSncgpKBaaYa+B5XMHgxvnDS2sYm5Skg4RNLoQ6VWYoq68jui
- CIxP+/P141YAMvRqZbFE9mE61lIyc1/EHKw5g+8X2t0niWGGvp2duDxT05JVAs7STDVVww5Na
- 6NDqHTcukIrVE4Z9o/rl4ETd+LE5SIJGf1/cIB+SgUd0RtvnweSNV7UZBy2clnCBaON+1tLsv
- yHc5yDMx7L3tiuSoNURNM7WIWDxSL6SBJTvo1Ovgci71pU54uF7JONQ9gPMIRGLr6UWmq/1Ro
- wd/0T3tHoy03wBslZvA/hEKyUrblxjj7jutQFa4Jehd5eUOOsRp/D6OcmBVogkdBFH64R+6W8
- 8jojV76OLULPGNd6ez47XeEfs33RLs5DMz9syCAo6tejIlAkSR3fBo10WSlnmMT5dEIi1ZuTp
- uvUmCqsbNStSc70ySXPusgGEBas7X2nqv5FGJj8DEeHUUDLO1TZcP4I/GiPJI+N1ydIgMEe79
- d49F/svpg4bglw2tEb/ParMzDsRgvhUMWmVgEPpBaLauXmIe/ylIPkSyGLwB8E22QbnPJLCB9
- uGzpCpzv7KSlya8Kx8RwzT5QpFkv88c16bxEHRe5XdB/xtTkkTVQPHl9LPk/0ZeAmu5qkAiif
- 5yx1hegMkKSAscBU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Thursday 15 October 2015 19:46:06 Shivani Bhardwaj wrote:
-> struct it is already NULL tested before so, it should be removed from
-> the if test expression.
-> 
-> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
-> ---
->  drivers/staging/lustre/lustre/mdc/mdc_locks.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/lustre/lustre/mdc/mdc_locks.c b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
-> index e0b81ee..d4bf34b 100644
-> --- a/drivers/staging/lustre/lustre/mdc/mdc_locks.c
-> +++ b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
-> @@ -885,7 +885,7 @@ resend:
->  
->         /* Retry the create infinitely when we get -EINPROGRESS from
->          * server. This is required by the new quota design. */
-> -       if (it && it->it_op & IT_CREAT &&
-> +       if (it->it_op & IT_CREAT &&
->             (int)lockrep->lock_policy_res2 == -EINPROGRESS) {
->                 mdc_clear_replay_flag(req, rc);
->                 ptlrpc_req_finished(req);
+struct it is already NULL tested before so, it should be removed from
+the if test expression.
 
-It took me a while to figure out that this is actually correct, but
-it is.
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/lustre/lustre/mdc/mdc_locks.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+diff --git a/drivers/staging/lustre/lustre/mdc/mdc_locks.c b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+index e0b81ee..d4bf34b 100644
+--- a/drivers/staging/lustre/lustre/mdc/mdc_locks.c
++++ b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+@@ -885,7 +885,7 @@ resend:
+ 
+ 	/* Retry the create infinitely when we get -EINPROGRESS from
+ 	 * server. This is required by the new quota design. */
+-	if (it && it->it_op & IT_CREAT &&
++	if (it->it_op & IT_CREAT &&
+ 	    (int)lockrep->lock_policy_res2 == -EINPROGRESS) {
+ 		mdc_clear_replay_flag(req, rc);
+ 		ptlrpc_req_finished(req);
+-- 
+2.1.0
+
 
