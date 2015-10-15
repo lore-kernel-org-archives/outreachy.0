@@ -1,118 +1,77 @@
-X-GM-THRID: 6206644398472560640
-X-Received: by 10.107.155.130 with SMTP id d124mr19124663ioe.28.1445097010208;
-        Sat, 17 Oct 2015 08:50:10 -0700 (PDT)
+X-GM-THRID: 6205878038435987456
+X-Received: by 10.180.208.7 with SMTP id ma7mr2337539wic.5.1444919163492;
+        Thu, 15 Oct 2015 07:26:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.1.52 with SMTP id 20ls443000igj.1.gmail; Sat, 17 Oct 2015
- 08:50:08 -0700 (PDT)
-X-Received: by 10.107.14.196 with SMTP id 187mr18494052ioo.24.1445097008288;
-        Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id ce6si2040484pad.0.2015.10.17.08.50.08
+Received: by 10.25.143.209 with SMTP id r200ls179956lfd.6.gmail; Thu, 15 Oct
+ 2015 07:26:02 -0700 (PDT)
+X-Received: by 10.112.12.132 with SMTP id y4mr2225594lbb.0.1444919162796;
+        Thu, 15 Oct 2015 07:26:02 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id c1si479197wiv.3.2015.10.15.07.26.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Oct 2015 07:26:02 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id fv9so50701781pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=O6mYUh/nJ7vvdAnXJFa75KfHL5M6CtRO9UzrGvAmgcA=;
-        b=JWkKWLHBILJc1Z0RwmVkqVVr28smFqMn0VzKdYYRdHPSjmSIE7A/TnQwmiHd0WxMpF
-         KGHWXm/delZhbpgDDjA1AuPZ6i5+zm+crZ1DwkaQ7LAOjeASd2jw07ciYdrud/KeqESh
-         WYdeKO/HSb1r0XAqxSqhk+ef7aKblMy0ljLNth1oCemAQ5dzpMIGLZXsPcsFMnAFyV84
-         Yr/EdhfIu4DN3umEXwz53urCNJhYJ8TPypDaxz7drb+3PB+I2NNoDhPYqoPPCAK6qhrX
-         aHNE+Mhuj2HUDqdt5Sv55kbulEAGVNAtsGeepv0gunP6zCZ4epVtsWHTAtfGH/CeHMN+
-         jOwQ==
-X-Received: by 10.68.105.164 with SMTP id gn4mr24049883pbb.44.1445097008069;
-        Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.64.146.165])
-        by smtp.gmail.com with ESMTPSA id i9sm27247708pbq.84.2015.10.17.08.50.05
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 17 Oct 2015 08:50:07 -0700 (PDT)
-Date: Sat, 17 Oct 2015 21:20:00 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([149.172.15.242]) by mrelayeu.kundenserver.de
+ (mreue002) with ESMTPSA (Nemesis) id 0Lghtu-1aOU873rjK-00oFYw; Thu, 15 Oct
+ 2015 16:26:01 +0200
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Prefer using BIT Macro
-Message-ID: <20151017155000.GA15425@amitoj-Inspiron-3542>
+Cc: Shivani Bhardwaj <shivanib134@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: mdc_locks: Remove extra test expression
+Date: Thu, 15 Oct 2015 16:26:01 +0200
+Message-ID: <5102490.D91ZYVuE4I@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151015141605.GA33977@ubuntu>
+References: <20151015141605.GA33977@ubuntu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:sXdgl/JTBX/Ws+Kphln65FhhmWpvXLv0jAFDV34gym7fwKm6QV3
+ ZULRR9a3NQOi0anbYMBHd3mVgmcNA+KyHSb3Cv34vzt8QZPQ86B31T+9GQsdmqRRqlUeiGK
+ CGLwI0Ag0pMLiG3eyVaV16xPGmtTOiXpROJj3qsi0aMDiEh/B+mJbw43U+OyJEcEKkSs0o9
+ nttj4ccEsyBjY5FDxnd+w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:n8thQPqPrvQ=:bvCwxfp/1wJcyfLhA/E4/t
+ WKrPJ/NfaTCEdCkLLv25Xlxdq26UBjHlPHjiME6sHL66+XjV4MlUwk4EkYlX5R/6Xxui/+Up6
+ jXKTTfkQdm2bQZTWv75Sre/dRSncgpKBaaYa+B5XMHgxvnDS2sYm5Skg4RNLoQ6VWYoq68jui
+ CIxP+/P141YAMvRqZbFE9mE61lIyc1/EHKw5g+8X2t0niWGGvp2duDxT05JVAs7STDVVww5Na
+ 6NDqHTcukIrVE4Z9o/rl4ETd+LE5SIJGf1/cIB+SgUd0RtvnweSNV7UZBy2clnCBaON+1tLsv
+ yHc5yDMx7L3tiuSoNURNM7WIWDxSL6SBJTvo1Ovgci71pU54uF7JONQ9gPMIRGLr6UWmq/1Ro
+ wd/0T3tHoy03wBslZvA/hEKyUrblxjj7jutQFa4Jehd5eUOOsRp/D6OcmBVogkdBFH64R+6W8
+ 8jojV76OLULPGNd6ez47XeEfs33RLs5DMz9syCAo6tejIlAkSR3fBo10WSlnmMT5dEIi1ZuTp
+ uvUmCqsbNStSc70ySXPusgGEBas7X2nqv5FGJj8DEeHUUDLO1TZcP4I/GiPJI+N1ydIgMEe79
+ d49F/svpg4bglw2tEb/ParMzDsRgvhUMWmVgEPpBaLauXmIe/ylIPkSyGLwB8E22QbnPJLCB9
+ uGzpCpzv7KSlya8Kx8RwzT5QpFkv88c16bxEHRe5XdB/xtTkkTVQPHl9LPk/0ZeAmu5qkAiif
+ 5yx1hegMkKSAscBU
 
-Replace bit shifting on 1 with the BIT(x) Macro
-Problem found using checkpatch.pl
-WARNING: 'Prefer using the BIT macro'
+On Thursday 15 October 2015 19:46:06 Shivani Bhardwaj wrote:
+> struct it is already NULL tested before so, it should be removed from
+> the if test expression.
+> 
+> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/mdc/mdc_locks.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/mdc/mdc_locks.c b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+> index e0b81ee..d4bf34b 100644
+> --- a/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+> +++ b/drivers/staging/lustre/lustre/mdc/mdc_locks.c
+> @@ -885,7 +885,7 @@ resend:
+>  
+>         /* Retry the create infinitely when we get -EINPROGRESS from
+>          * server. This is required by the new quota design. */
+> -       if (it && it->it_op & IT_CREAT &&
+> +       if (it->it_op & IT_CREAT &&
+>             (int)lockrep->lock_policy_res2 == -EINPROGRESS) {
+>                 mdc_clear_replay_flag(req, rc);
+>                 ptlrpc_req_finished(req);
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_display.h | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+It took me a while to figure out that this is actually correct, but
+it is.
 
-diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
-index 3d2e8b4..ca35aa1 100644
---- a/drivers/staging/sm750fb/ddk750_display.h
-+++ b/drivers/staging/sm750fb/ddk750_display.h
-@@ -17,7 +17,7 @@
- 	0: both off
- */
- #define PRI_TP_OFFSET 4
--#define PRI_TP_MASK (1 << PRI_TP_OFFSET)
-+#define PRI_TP_MASK BIT(PRI_TP_OFFSET)
- #define PRI_TP_USAGE (PRI_TP_MASK << 16)
- #define PRI_TP_ON ((0x1 << PRI_TP_OFFSET)|PRI_TP_USAGE)
- #define PRI_TP_OFF ((0x0 << PRI_TP_OFFSET)|PRI_TP_USAGE)
-@@ -27,18 +27,18 @@
- 	80000[27:24]
- */
- #define PNL_SEQ_OFFSET 6
--#define PNL_SEQ_MASK (1 << PNL_SEQ_OFFSET)
-+#define PNL_SEQ_MASK BIT(PNL_SEQ_OFFSET)
- #define PNL_SEQ_USAGE (PNL_SEQ_MASK << 16)
--#define PNL_SEQ_ON ((1 << PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
-+#define PNL_SEQ_ON (BIT(PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
- #define PNL_SEQ_OFF ((0 << PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
- 
- /* dual digital output
- 	80000[19]
- */
- #define DUAL_TFT_OFFSET 8
--#define DUAL_TFT_MASK (1 << DUAL_TFT_OFFSET)
-+#define DUAL_TFT_MASK BIT(DUAL_TFT_OFFSET)
- #define DUAL_TFT_USAGE (DUAL_TFT_MASK << 16)
--#define DUAL_TFT_ON ((1 << DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
-+#define DUAL_TFT_ON (BIT(DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
- #define DUAL_TFT_OFF ((0 << DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
- 
- /* secondary timing & plane enable bit
-@@ -46,7 +46,7 @@
- 	0: both off
- */
- #define SEC_TP_OFFSET 5
--#define SEC_TP_MASK (1 << SEC_TP_OFFSET)
-+#define SEC_TP_MASK BIT(SEC_TP_OFFSET)
- #define SEC_TP_USAGE (SEC_TP_MASK << 16)
- #define SEC_TP_ON  ((0x1 << SEC_TP_OFFSET)|SEC_TP_USAGE)
- #define SEC_TP_OFF ((0x0 << SEC_TP_OFFSET)|SEC_TP_USAGE)
-@@ -65,7 +65,7 @@
- 	4[20]
- */
- #define DAC_OFFSET 7
--#define DAC_MASK (1 << DAC_OFFSET)
-+#define DAC_MASK BIT(DAC_OFFSET)
- #define DAC_USAGE (DAC_MASK << 16)
- #define DAC_ON ((0x0 << DAC_OFFSET)|DAC_USAGE)
- #define DAC_OFF ((0x1 << DAC_OFFSET)|DAC_USAGE)
--- 
-1.9.1
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
