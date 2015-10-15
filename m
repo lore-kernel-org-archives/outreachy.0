@@ -1,145 +1,77 @@
-X-GM-THRID: 6257896431456092160
-X-Received: by 10.182.230.65 with SMTP id sw1mr2661063obc.1.1457030054059;
-        Thu, 03 Mar 2016 10:34:14 -0800 (PST)
+X-GM-THRID: 6205958961152131072
+X-Received: by 10.182.104.137 with SMTP id ge9mr9381301obb.49.1444937419524;
+        Thu, 15 Oct 2015 12:30:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.78.133 with SMTP id b5ls37055igx.5.canary; Thu, 03 Mar 2016
- 10:34:12 -0800 (PST)
-X-Received: by 10.50.150.34 with SMTP id uf2mr471541igb.2.1457030052612;
-        Thu, 03 Mar 2016 10:34:12 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id y20si4264542pfa.2.2016.03.03.10.34.12
+Received: by 10.50.59.211 with SMTP id b19ls2162325igr.37.canary; Thu, 15 Oct
+ 2015 12:30:19 -0700 (PDT)
+X-Received: by 10.68.176.132 with SMTP id ci4mr8994769pbc.13.1444937418996;
+        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id wl2si1604175pab.1.2015.10.15.12.30.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Mar 2016 10:34:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id w128so19665436pfb.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 03 Mar 2016 10:34:12 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22e.google.com with SMTP id ur7so13538737pab.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MCIHrweNGwhXCIx/UprbAEhhfFwR/lb02FwqkZzLwQI=;
-        b=Ca/9KY3NzOrflOt+TZTlPkpf6qqqhTZVJs+2I8vY7RjAtdPH0YK0mNQoTZQuXgC0N5
-         NrzydCCO41/FJaHJWN6ufb4bmwZw78sSsHlYuz3DXzbEcjRhWJ9ZGuLhVdZJZM0B8Gk5
-         9tptL+JBCrBiClDd5PvHaSVxBx6Qpu41hNd+sBGaktK3RkctDAbDOX4O3y01advaRrtC
-         nHIZgMN3fL4wPUBFsz+iz3Fltda8Unf3k4berHeZD4o3EOrKLZHhHxL9BsmsqCCGNIzC
-         +HAN3+o8aVR4xmdnxDaNtACsLRdNt66UuTcyFWpzr6AsznJK6W5WQihS9vtQhPkI8o7C
-         sBvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MCIHrweNGwhXCIx/UprbAEhhfFwR/lb02FwqkZzLwQI=;
-        b=jHpaa9IML38oB9rATyVYref3UW+xCsOaoaRy5zrkve9j93H9l1qpsUWtuK164vTInH
-         6woWWhSdMELHddQVWw8cdXqLugeZm4pETCDudh2Ex3XaugqltfAqXUl8v4H1RiUt+l80
-         UIlY8gYkckQfP0CPXmUF7sBFZOUTUbWr2We+QTO09JE+HCu1uWjQaYC2pbd+nxWYbNOk
-         VdqO7fxDRU1wJsnnlQCemJu0RW9NdFuOIfgk2B5QDOPtM+xGCICLSKFrWpSmK0n8ozkh
-         JVFae/kdZz9lAWQMrVbgP2jxP7ZmioU+q4HuKOUy2qmikgmEUsHEnP2T7KaqkQEJjbnI
-         ytxg==
-X-Gm-Message-State: AD7BkJLJjSO7YZCz7bBptLKn9ZaIQfFZ6CjZAPBL+EP12hEaEkpDJlkWJCVwIHBe1tcvOg==
-X-Received: by 10.98.0.71 with SMTP id 68mr5724947pfa.156.1457030052406;
-        Thu, 03 Mar 2016 10:34:12 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.179])
-        by smtp.gmail.com with ESMTPSA id p9sm62171644pfa.11.2016.03.03.10.33.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Mar 2016 10:33:41 -0800 (PST)
-Date: Thu, 3 Mar 2016 16:03:55 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: fbtft: Do not use same argument more than once in
- bit operation.
-Message-ID: <20160303103355.GA5375@sandhya>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+        h=from:to:subject:date:message-id;
+        bh=RcztAI+YvZLxQnDPr8uOJkhanYcIofarQLFro41cdx4=;
+        b=VBx2ylbX7HAt6XChff8EePVqjV9h3RjY5+Z/3uGgjTg0wQnY1QshaejcT4PvOw9Kvh
+         cPLN8h+DnY2WB485AJDELXPw4Z/7bHTFZ2C2agmD9UdxZkozuVbrxZ9tKgg52YRkL3JH
+         CWGfyeURbHmRCAWyhort9ld61TSJGnojF+ID2S8Fukh3/YMqUmt1jfo6XTCUqSZtRHCr
+         dpvOUdYZJBS1O3UvHXb2RmYQMu3rZUIRntaeryCKOuaXWl4ELLFiFaRbZlLTfmaVE4it
+         UgFEDT1UmVjNadgnTuNopf1+g4v3FLvEwgO+bX0zAz5K3HBvVi5eQfE9nDz1UT7PsV4j
+         5kfg==
+X-Received: by 10.68.107.133 with SMTP id hc5mr11713536pbb.5.1444937418892;
+        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id k10sm16824791pbq.78.2015.10.15.12.30.16
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>,
+	Oleg Drokin <oleg.drokin@intel.com>,
+	<lustre-devel@lists.lustre.org>,
+	driverdev-devel@linuxdriverproject.org
+Subject: [PATCH] Staging: lustre: obd_support.h: Remove unused OBD_SLAB_FREE_RTN0
+Date: Fri, 16 Oct 2015 01:00:10 +0530
+Message-Id: <1444937410-4796-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
 
-Do not use same argument more than once in bit operation.
+Remove macro OBD_SLAB_FREE_RTN0 since it is defined but not used
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/fbtft/fb_uc1611.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ drivers/staging/lustre/lustre/include/obd_support.h | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
-index 4e82814..bffe694 100644
---- a/drivers/staging/fbtft/fb_uc1611.c
-+++ b/drivers/staging/fbtft/fb_uc1611.c
-@@ -100,7 +100,7 @@ static int init_display(struct fbtft_par *par)
- 	write_reg(par, 0x2C | (pump & 0x03));
+diff --git a/drivers/staging/lustre/lustre/include/obd_support.h b/drivers/staging/lustre/lustre/include/obd_support.h
+index ec14b72c..abc53f1 100644
+--- a/drivers/staging/lustre/lustre/include/obd_support.h
++++ b/drivers/staging/lustre/lustre/include/obd_support.h
+@@ -517,12 +517,6 @@ do {									      \
+ /* we memset() the slab object to 0 when allocation succeeds, so DO NOT
+  * HAVE A CTOR THAT DOES ANYTHING.  its work will be cleared here.  we'd
+  * love to assert on that, but slab.c keeps kmem_cache_s all to itself. */
+-#define OBD_SLAB_FREE_RTN0(ptr, slab)					 \
+-({									    \
+-	kmem_cache_free((slab), (ptr));				    \
+-	(ptr) = NULL;							 \
+-	0;								    \
+-})
  
- 	/* Set inverse display */
--	write_reg(par, 0xA6 | (0x01 & 0x01));
-+	write_reg(par, 0xA6 | 0x01);
- 
- 	/* Set 4-bit grayscale mode */
- 	write_reg(par, 0xD0 | (0x02 & 0x03));
-@@ -166,8 +166,8 @@ static int set_var(struct fbtft_par *par)
- 		/* Set RAM address control */
- 		write_reg(par, 0x88
- 			| (0x0 & 0x1) << 2 /* Increment positively */
--			| (0x1 & 0x1) << 1 /* Increment page first */
--			| (0x1 & 0x1));    /* Wrap around (default) */
-+			| (0x1 << 1) /* Increment page first */
-+			| 0x1);    /* Wrap around (default) */
- 
- 		/* Set LCD mapping */
- 		write_reg(par, 0xC0
-@@ -180,11 +180,11 @@ static int set_var(struct fbtft_par *par)
- 		write_reg(par, 0x88
- 			| (0x0 & 0x1) << 2 /* Increment positively */
- 			| (0x0 & 0x1) << 1 /* Increment column first */
--			| (0x1 & 0x1));    /* Wrap around (default) */
-+			| 0x1);    /* Wrap around (default) */
- 
- 		/* Set LCD mapping */
- 		write_reg(par, 0xC0
--			| (0x1 & 0x1) << 2 /* Mirror Y ON */
-+			| (0x1 << 2) /* Mirror Y ON */
- 			| (0x0 & 0x1) << 1 /* Mirror X OFF */
- 			| (0x0 & 0x1));    /* MS nibble last (default) */
- 		break;
-@@ -192,13 +192,13 @@ static int set_var(struct fbtft_par *par)
- 		/* Set RAM address control */
- 		write_reg(par, 0x88
- 			| (0x0 & 0x1) << 2 /* Increment positively */
--			| (0x1 & 0x1) << 1 /* Increment page first */
--			| (0x1 & 0x1));    /* Wrap around (default) */
-+			| (0x1 << 1) /* Increment page first */
-+			| 0x1);    /* Wrap around (default) */
- 
- 		/* Set LCD mapping */
- 		write_reg(par, 0xC0
--			| (0x1 & 0x1) << 2 /* Mirror Y ON */
--			| (0x1 & 0x1) << 1 /* Mirror X ON */
-+			| (0x1 << 2) /* Mirror Y ON */
-+			| (0x1 << 1) /* Mirror X ON */
- 			| (0x0 & 0x1));    /* MS nibble last (default) */
- 		break;
- 	default:
-@@ -206,12 +206,12 @@ static int set_var(struct fbtft_par *par)
- 		write_reg(par, 0x88
- 			| (0x0 & 0x1) << 2 /* Increment positively */
- 			| (0x0 & 0x1) << 1 /* Increment column first */
--			| (0x1 & 0x1));    /* Wrap around (default) */
-+			| 0x1);    /* Wrap around (default) */
- 
- 		/* Set LCD mapping */
- 		write_reg(par, 0xC0
- 			| (0x0 & 0x1) << 2 /* Mirror Y OFF */
--			| (0x1 & 0x1) << 1 /* Mirror X ON */
-+			| (0x1 << 1) /* Mirror X ON */
- 			| (0x0 & 0x1));    /* MS nibble last (default) */
- 		break;
- 	}
+ #define __OBD_SLAB_ALLOC_VERBOSE(ptr, slab, cptab, cpt, size, type)	      \
+ do {									      \
 -- 
-1.8.3.4
+2.1.4
 
 
