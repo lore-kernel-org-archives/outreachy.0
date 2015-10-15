@@ -1,90 +1,143 @@
 X-GM-THRID: 6205970063032320000
-X-Received: by 10.66.123.14 with SMTP id lw14mr7512919pab.6.1444942054244;
-        Thu, 15 Oct 2015 13:47:34 -0700 (PDT)
+X-Received: by 10.194.156.193 with SMTP id wg1mr2615345wjb.3.1444941672467;
+        Thu, 15 Oct 2015 13:41:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.196.102 with SMTP id il6ls488478obc.17.gmail; Thu, 15 Oct
- 2015 13:47:33 -0700 (PDT)
-X-Received: by 10.182.196.71 with SMTP id ik7mr9505835obc.36.1444942053794;
-        Thu, 15 Oct 2015 13:47:33 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id pe1si1590410pac.2.2015.10.15.13.47.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Oct 2015 13:47:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id p3so49759063pay.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 13:47:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=/4AUyipktjUWAtU0el5JltEw5nIfT2RscBqQVpjoeF8=;
-        b=MuLnTmLAWE3V9w7cNPEcLCYwzX2jhccAkZzkiX9Yk9/VocgB8GeTwz4kPHV56gHycB
-         vFqcT1i/p3/CTEkoASlWM9+lpA1mAInyfG8LH7oN2g8eHeCiS0DvDs06PPeTowYGPj0c
-         mnTUaesrL0GTi017mHGY18e7QwEzv70Ma0+8K+2VNwLl9UveUWmxlOlBe3RS9LQeaE/n
-         gV1/6L6GDQUy7Eot01lbuPntkj+peVRzkDTtB2G8oxT9eStCm00UXjVJZ6fk+FMn1vOH
-         RsPaEX8HchI+tN3KD9doBnGXEyFK846V/7kAFQ15Nx1Qx3+R0pnvBxMbaGAXJ1VEhsVn
-         UJbQ==
-X-Received: by 10.66.165.5 with SMTP id yu5mr12054791pab.109.1444942053576;
-        Thu, 15 Oct 2015 13:47:33 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id b6sm17016831pbu.90.2015.10.15.13.47.31
+Received: by 10.25.86.70 with SMTP id k67ls227421lfb.43.gmail; Thu, 15 Oct
+ 2015 13:41:11 -0700 (PDT)
+X-Received: by 10.112.190.74 with SMTP id go10mr2714749lbc.9.1444941671835;
+        Thu, 15 Oct 2015 13:41:11 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id o3si23576wiz.1.2015.10.15.13.41.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Oct 2015 13:47:32 -0700 (PDT)
-Date: Fri, 16 Oct 2015 02:17:20 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: lustre: lproc_ptlrpc: Replace simple_strtol with
- simple_stroul
-Message-ID: <20151015204720.GA45986@ubuntu>
+        Thu, 15 Oct 2015 13:41:11 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,687,1437429600"; 
+   d="scan'208";a="183013761"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Oct 2015 22:41:11 +0200
+Date: Thu, 15 Oct 2015 22:41:10 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lproc_ptlrpc: Replace
+ simple_strtol with simple_stroul
+In-Reply-To: <CAKHNQQH9iKJL02m5p+KjH0-H947u5ncpV5GbPm_-g_o6KLEqcg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1510152240290.2027@localhost6.localdomain6>
+References: <20151015201311.GA45040@ubuntu> <alpine.DEB.2.02.1510152215180.2027@localhost6.localdomain6> <CAKHNQQGPX=Ku867t8UWX59hqta6e8EidrLX7H=M+Gfc_+GL+1A@mail.gmail.com> <alpine.DEB.2.02.1510152222460.2027@localhost6.localdomain6>
+ <CAKHNQQFLOnnXntd85qZJ1s+Uhz6R71nbY7rP5phuORg1woXqWA@mail.gmail.com> <CAKHNQQH9iKJL02m5p+KjH0-H947u5ncpV5GbPm_-g_o6KLEqcg@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The variable inst is a __u32 type and hence the function used should be
-simple_strtoul.
-Semantic patch used:
 
-@@
-typedef __u32;
-__u32 e;
-@@
-e =
-- simple_strtol
-+ simple_strtoul
-  (...)
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
-Changes in v2:
-	-Make semantic patch correct.
+On Fri, 16 Oct 2015, Shivani Bhardwaj wrote:
 
- drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> On Fri, Oct 16, 2015 at 1:56 AM, Shivani Bhardwaj <shivanib134@gmail.com> wrote:
+> > On Fri, Oct 16, 2015 at 1:53 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >>
+> >>
+> >> On Fri, 16 Oct 2015, Shivani Bhardwaj wrote:
+> >>
+> >>> On Fri, Oct 16, 2015 at 1:46 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >>> > On Fri, 16 Oct 2015, Shivani Bhardwaj wrote:
+> >>> >
+> >>> >> The variable inst is a __u32 type and hence the function used should be
+> >>> >> simple_strtoul.
+> >>> >> Semantic patch used:
+> >>> >>
+> >>> >> @@ type T;
+> >>> >> T e;@@
+> >>> >> e=
+> >>> >> - simple_strtol
+> >>> >> + simple_strtoul
+> >>> >>   (...)
+> >>> >
+> >>> > The semantic patch is not really helpful here.  Certainly you don't want
+> >>> > to replace all calls to simple_strtol by simple_strtoul.  I guess that
+> >>> > something around the call should have type __u32.
+> >>> >
+> >>> > julia
+> >>> >
+> >>> @@ __u32 T;
+> >>> T e;@@
+> >>> e=
+> >>> - simple_strtol
+> >>> + simple_strtoul
+> >>>   (...)
+> >>>
+> >>> Like this?
+> >>
+> >> No.  You want e to have type __u32.  So it would be
+> >>
+> >> __u32 e;
+> >>
+> >> You don't need T at all.  In some other semantic patches there has been T,
+> >> but that was a metavariable to hold any possible type.  Here you want to
+> >> specify a specific type.
+> >>
+> >> julia
+> >>
+> 
+> It shows parse error for __u32, works fine for int. What should I do?
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-index ec44b3c..415817c 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
-@@ -1251,7 +1251,7 @@ int lprocfs_wr_import(struct file *file, const char __user *buffer,
- 		*ptr = 0;
- 		do_reconn = 0;
- 		ptr += strlen("::");
--		inst = simple_strtol(ptr, &endptr, 10);
-+		inst = simple_strtoul(ptr, &endptr, 10);
- 		if (*endptr) {
- 			CERROR("config: wrong instance # %s\n", ptr);
- 		} else if (inst != imp->imp_connect_data.ocd_instance) {
--- 
-2.1.0
+__u32 is not known as a type to Coccinelle.
 
+Put typedef __u32; just on the line before.
+
+julia
+
+> > All right. Thank you. I'm sending new version.
+> >
+> >>>
+> >>> >>
+> >>> >> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+> >>> >> ---
+> >>> >>  drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c | 2 +-
+> >>> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>> >>
+> >>> >> diff --git a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
+> >>> >> index ec44b3c..415817c 100644
+> >>> >> --- a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
+> >>> >> +++ b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
+> >>> >> @@ -1251,7 +1251,7 @@ int lprocfs_wr_import(struct file *file, const char __user *buffer,
+> >>> >>               *ptr = 0;
+> >>> >>               do_reconn = 0;
+> >>> >>               ptr += strlen("::");
+> >>> >> -             inst = simple_strtol(ptr, &endptr, 10);
+> >>> >> +             inst = simple_strtoul(ptr, &endptr, 10);
+> >>> >>               if (*endptr) {
+> >>> >>                       CERROR("config: wrong instance # %s\n", ptr);
+> >>> >>               } else if (inst != imp->imp_connect_data.ocd_instance) {
+> >>> >> --
+> >>> >> 2.1.0
+> >>> >>
+> >>> >> --
+> >>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151015201311.GA45040%40ubuntu.
+> >>> >> For more options, visit https://groups.google.com/d/optout.
+> >>> >>
+> >>>
+> >>> --
+> >>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKHNQQGPX%3DKu867t8UWX59hqta6e8EidrLX7H%3DM%2BGfc_%2BGL%2B1A%40mail.gmail.com.
+> >>> For more options, visit https://groups.google.com/d/optout.
+> >>>
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKHNQQH9iKJL02m5p%2BKjH0-H947u5ncpV5GbPm_-g_o6KLEqcg%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
