@@ -1,115 +1,122 @@
 X-GM-THRID: 6205781635135176704
-X-Received: by 10.112.55.69 with SMTP id q5mr1803494lbp.24.1444896349584;
-        Thu, 15 Oct 2015 01:05:49 -0700 (PDT)
+X-Received: by 10.107.169.78 with SMTP id s75mr684342ioe.31.1444896285608;
+        Thu, 15 Oct 2015 01:04:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.167.140 with SMTP id q134ls134377lfe.23.gmail; Thu, 15 Oct
- 2015 01:05:49 -0700 (PDT)
-X-Received: by 10.112.142.195 with SMTP id ry3mr1853689lbb.22.1444896349003;
-        Thu, 15 Oct 2015 01:05:49 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id q6si1029143wif.2.2015.10.15.01.05.48
+Received: by 10.107.33.201 with SMTP id h192ls415077ioh.96.gmail; Thu, 15 Oct
+ 2015 01:04:45 -0700 (PDT)
+X-Received: by 10.107.165.5 with SMTP id o5mr6967334ioe.5.1444896285353;
+        Thu, 15 Oct 2015 01:04:45 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id vy6si1265122pbc.1.2015.10.15.01.04.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Oct 2015 01:05:48 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 15 Oct 2015 01:04:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,684,1437429600"; 
-   d="scan'208";a="182876034"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Oct 2015 10:05:48 +0200
-Date: Thu, 15 Oct 2015 10:05:44 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 00/18] staging: Remove useless
- initialisation
-In-Reply-To: <cover.1444895817.git.amitoj1606@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510151004560.2350@hadrien>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22a.google.com with SMTP id p3so32624878pay.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 01:04:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=mqib70WP0anyIAQplxseK4b2mAgXQRmf+6YqsREh/ws=;
+        b=GktnfBzwpoGOMOdXj21BtwHx1KBskvFDXPmjBoz9lO5Ru/yHdCrGmaudyV3isKv2DQ
+         o1g1qXeWUADBYZsnH2fuw/u67esj6aQyIBNlrYDt2JUOzg+lAK10btBvfbNfXOcDFuu9
+         yls046LABFwTnKksljvTsBxmLzq6nTiLvYh+RhqmddM7Ufy04QMnT4VrwDTk4TdwVHpM
+         lh/1OnYr/a8Ae7iYUAyyXJFeEsoJ7K92uCwAz408f7RA4oY0X76U9wFvWE10uGJcqFiu
+         uTcqXIvGGwdX1H47IqU+OaIhsF9BiXXkrZDh96SaK+Vt2SRItN7YOZc+mEZKijOkSXqh
+         sDTg==
+X-Received: by 10.66.221.193 with SMTP id qg1mr8787114pac.103.1444896285205;
+        Thu, 15 Oct 2015 01:04:45 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.84.71])
+        by smtp.gmail.com with ESMTPSA id ih4sm13736880pbc.28.2015.10.15.01.04.44
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 15 Oct 2015 01:04:44 -0700 (PDT)
+Date: Thu, 15 Oct 2015 13:34:41 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 01/18] staging: rtl8723au: hal: Remove useless intialisation
+Message-ID: <2bedbf1e8f169cce6ebd43c31ac225855f60b99d.1444895819.git.amitoj1606@gmail.com>
 References: <cover.1444895817.git.amitoj1606@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1444895817.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, 15 Oct 2015, Amitoj Kaur Chawla wrote:
+Remove intialisation of a variable that is immediately reassigned. The
+problem was found using coccinelle semantic patch and further
+opportunities were identified by hand.
 
-> This patchset removes multiple useless intialisations of variables
-> which are immediately reassigned.
+The semantic patch used to find this is:
 
-The patch is probably fine, but in general, you may find that it is more
-comfortable not to send quite so many patches at once.
+// <smpl>
+@@
+type T;
+identifier x;
+constant C;
+expression e;
+@@
 
-julia
+T x
+- = C
+ ;
+x = e;
+// </smpl>
 
->
-> The semantic patch used to find this is:
->
-> // <smpl>
-> @@
-> type T;
-> identifier x;
-> constant C;
-> expression e;
-> @@
->
-> T x
-> - = C
->  ;
-> x = e;
-> // </smpl>
->
->
-> Amitoj Kaur Chawla (18):
->   staging: rtl8723au: hal: Remove useless intialisation
->   staging: rtl8723au: core: rtw_wlan_util: Remove useless intialisation
->   staging: rtl8723au: core: rtw_recv: Remove useless initialisation
->   staging: rtl8723au: core: rtw_ap: Remove useless intialisation
->   staging: media: lirc: Remove useless initialisation
->   staging: media: davinci_vpfe: Remove useless intialisation
->   staging: lustre: ptlrpc: Remove useless initialisation
->   staging: skein: Remove useless initialisation
->   staging: vt6655: Remove useless initialisation
->   staging: vt6656: Remove useless initialisation
->   staging: wilc1000: wilc_wfi_cfgoperations: Remove useless
->     initialisation
->   staging: wilc1000: coreconfigurator: Remove useless initialisation
->   staging: rdma: ipath: ipath_eeprom: Remove useless intialisation
->   staging: rdma: ipath: ipath_init_chip: Remove useless initialisation
->   staging: rdma: hfi1: diag: Remove useless initialisation
->   staging: rdma: hfi1: sysfs: Remove useless initialisation
->   staging: dgnc: dgnc_tty: Remove useless initialisation
->   staging: dgnc: dgnc_driver: Remove useless initialisation
->
->  drivers/staging/dgnc/dgnc_driver.c                   |  2 +-
->  drivers/staging/dgnc/dgnc_tty.c                      |  2 +-
->  drivers/staging/lustre/lustre/ptlrpc/client.c        |  2 +-
->  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c |  2 +-
->  drivers/staging/media/lirc/lirc_sasem.c              |  2 +-
->  drivers/staging/rdma/hfi1/diag.c                     |  4 ++--
->  drivers/staging/rdma/hfi1/sysfs.c                    |  2 +-
->  drivers/staging/rdma/ipath/ipath_eeprom.c            |  2 +-
->  drivers/staging/rdma/ipath/ipath_init_chip.c         |  2 +-
->  drivers/staging/rtl8723au/core/rtw_ap.c              |  4 ++--
->  drivers/staging/rtl8723au/core/rtw_recv.c            |  6 +++---
->  drivers/staging/rtl8723au/core/rtw_wlan_util.c       |  2 +-
->  drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c  |  8 ++++----
->  drivers/staging/skein/skein_api.c                    |  2 +-
->  drivers/staging/vt6655/card.c                        |  2 +-
->  drivers/staging/vt6656/card.c                        |  2 +-
->  drivers/staging/wilc1000/coreconfigurator.c          | 10 +++++-----
->  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c    |  2 +-
->  18 files changed, 29 insertions(+), 29 deletions(-)
->
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1444895817.git.amitoj1606%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
+index cf15f80..b5d9e7e 100644
+--- a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
++++ b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
+@@ -5648,7 +5648,7 @@ static void btdm_1AntTdmaDurationAdjustForACL(struct rtw_adapter *padapter)
+ 		    (pBtdm8723->curPsTdma != 11)) {
+ 			btdm_1AntSetPSTDMA(padapter, true, 0, true, pBtdm8723->psTdmaDuAdjType);
+ 		} else {
+-			s32 judge = 0;
++			s32 judge;
+ 
+ 			judge = btdm_1AntTdmaJudgement(padapter, pHalData->bt_coexist.halCoex8723.btRetryCnt);
+ 			if (judge == -1) {
+@@ -9079,7 +9079,7 @@ static void btdm_BTCoexist8723AHandler(struct rtw_adapter *padapter)
+ u32 BTDM_BtTxRxCounterH(struct rtw_adapter *padapter)
+ {
+ 	struct hal_data_8723a *pHalData = GET_HAL_DATA(padapter);
+-	u32	counters = 0;
++	u32	counters;
+ 
+ 	counters = pHalData->bt_coexist.halCoex8723.highPriorityTx+
+ 		pHalData->bt_coexist.halCoex8723.highPriorityRx;
+@@ -9089,7 +9089,7 @@ u32 BTDM_BtTxRxCounterH(struct rtw_adapter *padapter)
+ u32 BTDM_BtTxRxCounterL(struct rtw_adapter *padapter)
+ {
+ 	struct hal_data_8723a *pHalData = GET_HAL_DATA(padapter);
+-	u32	counters = 0;
++	u32	counters;
+ 
+ 	counters = pHalData->bt_coexist.halCoex8723.lowPriorityTx+
+ 		pHalData->bt_coexist.halCoex8723.lowPriorityRx;
+@@ -9301,7 +9301,7 @@ static void BTDM_AdjustForBtOperation8723A(struct rtw_adapter *padapter)
+ static void BTDM_FwC2hBtRssi8723A(struct rtw_adapter *padapter, u8 *tmpBuf)
+ {
+ 	struct hal_data_8723a *pHalData = GET_HAL_DATA(padapter);
+-	u8 percent = 0, u1tmp = 0;
++	u8 percent, u1tmp;
+ 
+ 	u1tmp = tmpBuf[0];
+ 	percent = u1tmp*2+10;
+-- 
+1.9.1
+
 
