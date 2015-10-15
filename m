@@ -1,104 +1,96 @@
-X-GM-THRID: 6946206210186018816
-X-Received: by 2002:adf:fcc9:: with SMTP id f9mr10218964wrs.420.1617289662944;
-        Thu, 01 Apr 2021 08:07:42 -0700 (PDT)
+X-GM-THRID: 6205949945587957760
+X-Received: by 10.112.181.10 with SMTP id ds10mr2574476lbc.3.1444938886846;
+        Thu, 15 Oct 2015 12:54:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:9ac6:: with SMTP id c189ls3112032wme.3.canary-gmail;
- Thu, 01 Apr 2021 08:07:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+lFffqHFRs0lrHkAHbwUA1TBaG1/1nbls1l0luT3aZfhBRzz9Yj/gBVnfZxF012CfGbNB
-X-Received: by 2002:a1c:9803:: with SMTP id a3mr8532095wme.161.1617289661488;
-        Thu, 01 Apr 2021 08:07:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617289661; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tBNFxnqRfXf/gIX8p2dKjYKbWhBHdMCdqyDoX5Zc23NebSO0ZKTbITmDFX1sAKuVtK
-         G7lAQngBVN8GdA11wh9uEGB5Nwa4UOHDvwcvoptFI36dMxbGSdxOsAnWgY8qUBWHfu5O
-         34r8vWf24EzP3s/tfEqjirmL03HA9NxvQ0fXXdo8WGPG7eDwLh84QCs2YlnaY3GX+uLU
-         UI/hl9niHH/J9RxkLLBJKzNH0R50Y/wlLX+rBqJuNTXhBHIaLMRULgedXxGbZIOjG0xP
-         7vnxVxeiCpDUQlJXHPJZYNIEIJaX6kyl1iPnCDhCSMczPNmSxjmmp6sZoZkrjhY0+9Ho
-         IAXg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:dkim-signature;
-        bh=kB6b35TkKeBEpWPgQVDGgf20f9VdNcsRCGKE/IEecDU=;
-        b=m3mTFr/7zAyZrPlVmVQrojZlaIO+MlYbtWkBXXfHh19gOPX+kgKWJ2+xCu4nahLAh1
-         GWjFHhhw/LcJOFzG5+bAkMuchgZY/b+YMXlyWN2yzNRbY4zppW7C+RrIV+ndND+5WYkT
-         EVbrcVtZb65U0/nbRIjpYo0IkM1Mqj16ki04J9MeOhy9kSt3ztR2P0mC9hlRsYkncLxN
-         qmbfRaJvvez361a8GuoI9hyaZSrSO7HlFyCjGHwan6ItHFGtWCjRmjFupqcYgkr48O26
-         cIsWaNJhZAeig/2YiG4alUOmuLu6GeU9IQihSI90fcOkBORkKnWtvnvg82j105UfV6qJ
-         o32A==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fiYgqtRb;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from mail-wr1-x433.google.com (mail-wr1-x433.google.com. [2a00:1450:4864:20::433])
-        by gmr-mx.google.com with ESMTPS id p189si516889wmp.1.2021.04.01.08.07.41
+Received: by 10.180.37.164 with SMTP id z4ls3590wij.4.gmail; Thu, 15 Oct 2015
+ 12:54:46 -0700 (PDT)
+X-Received: by 10.180.87.164 with SMTP id az4mr142014wib.1.1444938886472;
+        Thu, 15 Oct 2015 12:54:46 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-lb0-x233.google.com (mail-lb0-x233.google.com. [2a00:1450:4010:c04::233])
+        by gmr-mx.google.com with ESMTPS id jp7si444256lbc.2.2015.10.15.12.54.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Apr 2021 08:07:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) client-ip=2a00:1450:4864:20::433;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Oct 2015 12:54:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:4010:c04::233 as permitted sender) client-ip=2a00:1450:4010:c04::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fiYgqtRb;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x433.google.com with SMTP id v4so2141261wrp.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Apr 2021 08:07:41 -0700 (PDT)
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:4010:c04::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-lb0-x233.google.com with SMTP id ao8so82519716lbc.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 12:54:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=kB6b35TkKeBEpWPgQVDGgf20f9VdNcsRCGKE/IEecDU=;
-        b=fiYgqtRbuHkAOIB9pENfmYb9zlD+pRfCDLUG+YkieQk7mjFtH6p2GAAQdasUBiQbp3
-         wnmiNcXg21EjkroMnjElV7BTQhJZOliEG2w4cPWVcs1i4vIrP1+x7eEV98xAo/82ZaR4
-         kTWtiQ+NG5fyJQUBBa1X06X5D2kSadWkTSIppl6bEZnOc3vT7sp+TL4xD0NyQzm3wIwX
-         oL8ziPJfasSMRa9W6DXxQ49thzeIQZQcCWzqFs9n7cU/CxYGu5mP/7D/iiGviNGt5JH+
-         BnA3bea56LqRMbGP8OPETfZR/GCuFE1Mw8GaClX9W377R/PvhvpGLl06kyjLkJoZ5TXg
-         rlUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=kB6b35TkKeBEpWPgQVDGgf20f9VdNcsRCGKE/IEecDU=;
-        b=lm+iqBlV+Lxa1UTJro6ZfKMW1kr+UikBYf7jLTc1hrO9fCIzArj3dmYWe0xnVq1FTL
-         wYXrKUaiZFfpN3zBsBKpRMI6NDHioBXhQHv54FYcwU/BxvI6xCK3QIPvwy8u7rnR5QGm
-         PF5y/+9XmxY6jcKL+UzfNr3S05eeFOo6J8V+Dj0DNxV/jRp+T1/I0+neh9H7XtBXDVB3
-         iLpCxEzADDA46lVedGvLwUsWiHZLn2h2e9ksbekhlxiq9IsxxlvqApN52xo9qi3rud4S
-         VKsU18hKbf0p4K2/Aqw8ERBftYyvFlVYT9oCbkm0syxlJUbCDY+jB0l17kQVff7sqap0
-         ZjJQ==
-X-Gm-Message-State: AOAM533Ar14oMb9T75/AaGVolybCdN96dABMW3K8zozgXPBZGORcR1mc
-	VIaA017GmQHcohTs6CHxMDY=
-X-Received: by 2002:adf:f54c:: with SMTP id j12mr10303387wrp.264.1617289661280;
-        Thu, 01 Apr 2021 08:07:41 -0700 (PDT)
-Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:a182:b5f0:9f7c:c891])
-        by smtp.gmail.com with ESMTPSA id n8sm9710108wrm.70.2021.04.01.08.07.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Apr 2021 08:07:40 -0700 (PDT)
-From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-To: laurent.pinchart@ideasonboard.com,
-	mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: media: omap4iss: Patchsets cleans up in iss.c
-Date: Thu,  1 Apr 2021 16:07:37 +0100
-Message-Id: <cover.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=xmTZt0xx/0vBlmIm5Y0Spe65xs8iJjLLCL+rHfGOJDs=;
+        b=gFis9Y+XkJ90v3SCpKoe4n+gseQ9rGb041M6MdjZGb2wxyIKnJH+9SKsVu5+hdfass
+         Z0CWikfxIe3be1SbYFDIytaXJTBTPIE7/VUQEeuGeB2Ok3a/sHZiGK/CnVRGLTtpoL4R
+         qhiVKiupfxpWIKIr9M09kg9H0MdBcFF5LOnwNFfdgJTVFjmDDgmNgZSQAPMmn8SQXxFD
+         0OGk9a3vLzZEQuJpuDGRJWIx6W9hDBhR4/PR/c2NqB6JwiBP4v9077BCdrZrqnvz/caj
+         Qrmxh0047JSPbR1yW0e3VdfaghKmJVQ0NFkaKcaUL+SHO3zzLA67w9dkfCOPKzYnfZbm
+         5LjA==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Received: by 10.194.116.197 with SMTP id jy5mr12938652wjb.86.1444938886333;
+ Thu, 15 Oct 2015 12:54:46 -0700 (PDT)
+Received: by 10.27.186.66 with HTTP; Thu, 15 Oct 2015 12:54:46 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.02.1510152150280.2027@localhost6.localdomain6>
+References: <20151015185507.GA40274@ubuntu>
+	<alpine.DEB.2.02.1510152150280.2027@localhost6.localdomain6>
+Date: Fri, 16 Oct 2015 01:24:46 +0530
+Message-ID: <CAKHNQQF3c1687N=AkBXGjZxjWAqPKRAaPM9M-uoM_8gcmf9zxQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lproc_osc: Change the
+ variable to be tested
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Clean up checks of "Alignment should match open parenthesis" and 
-"CHECK: Lines should not end with a '('" in iss.c
+On Fri, Oct 16, 2015 at 1:20 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Fri, 16 Oct 2015, Shivani Bhardwaj wrote:
+>
+>> The variable rc is supposed to hold the value returned by function
+>> kstrtoul which can either be 0, -EINVAL (-22) or -ERANGE (-34).
+>> Therefore, the check must be performed on rc instead of val for error
+>> values. Also, val can never be positive.
+>
+> Typo.  val can never be negative.
+>
+> julia
+>
+Right. I had to write that for rc. rc can never be greater than zero
+actually. This is what should be there.
 
-Beatriz Martins de Carvalho (2):
-  staging: media: omap4iss: Ending line with argument
-  staging: media: omap4iss: align arguments with open parenthesis
-
- drivers/staging/media/omap4iss/iss.c | 48 +++++++++++++---------------
- 1 file changed, 23 insertions(+), 25 deletions(-)
-
--- 
-2.25.1
-
+>>
+>> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+>> ---
+>>  drivers/staging/lustre/lustre/osc/lproc_osc.c | 4 +---
+>>  1 file changed, 1 insertion(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/staging/lustre/lustre/osc/lproc_osc.c b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+>> index 053d508..cdc7f88 100644
+>> --- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
+>> +++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+>> @@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
+>>       unsigned long val;
+>>
+>>       rc = kstrtoul(buffer, 10, &val);
+>> -     if (rc)
+>> -             return rc;
+>> -     if (val < 0 || val > 1)
+>> +     if (rc < 0)
+>>               return -ERANGE;
+>>
+>>       /* opposite senses */
+>> --
+>> 2.1.0
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151015185507.GA40274%40ubuntu.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
