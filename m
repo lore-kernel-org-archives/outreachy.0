@@ -1,48 +1,81 @@
-X-GM-THRID: 10493452353536
-X-Received: by 10.180.80.132 with SMTP id r4mr507719wix.4.1427796305132;
-        Tue, 31 Mar 2015 03:05:05 -0700 (PDT)
+X-GM-THRID: 6205968349385457664
+X-Received: by 10.50.122.2 with SMTP id lo2mr728987igb.2.1444939605261;
+        Thu, 15 Oct 2015 13:06:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.205.4 with SMTP id lc4ls616968lac.104.gmail; Tue, 31 Mar
- 2015 03:05:04 -0700 (PDT)
-X-Received: by 10.112.125.67 with SMTP id mo3mr8038351lbb.6.1427796304420;
-        Tue, 31 Mar 2015 03:05:04 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id bz6si781028wib.3.2015.03.31.03.05.04
+Received: by 10.140.108.230 with SMTP id j93ls903820qgf.69.gmail; Thu, 15 Oct
+ 2015 13:06:44 -0700 (PDT)
+X-Received: by 10.31.182.10 with SMTP id g10mr9204713vkf.7.1444939604681;
+        Thu, 15 Oct 2015 13:06:44 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id wl2si1619325pab.1.2015.10.15.13.06.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 31 Mar 2015 03:05:04 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Oct 2015 13:06:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.11,500,1422918000"; 
-   d="scan'208";a="130873453"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 31 Mar 2015 12:05:03 +0200
-Date: Tue, 31 Mar 2015 12:04:49 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x230.google.com with SMTP id p3so48876053pay.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 13:06:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=ajXDO6BjKft2SbSJQlpTVM0m6UXUGu4HG7LD/qlJATU=;
+        b=PpZWMQsxvDpeUDKyNTMHdj8uCjgm4CuuBs8/ageBh65G4SiWXJ8NB6i31LAtNCXhYR
+         WCYLZTpsl8cZaR1C4dXy+sKrRj5MdoXlzdzgD1/EGJaHK4LJkRb9+Mo4XPOVja5xvqrh
+         3BIGNfuIvVA0mnsEIz/++nWa9C9sJJMgMFB+vGe+4kZDsMSSbT4Wr43sU9KqkGFcaq6L
+         AoePafrvZblbwCJxAZ4FtFsT4Jtm8W9axOT5M68RT+7sOdY1eHmWzwUvofbTHbtd6Qru
+         ceMAB0YRcbQ17wgNozWoFd8V3sQRbYwMifnhGOXEl/6Oq/OWnSQ8OoQmnHuNLQpg9Bik
+         SekA==
+X-Received: by 10.66.61.205 with SMTP id s13mr11661448par.96.1444939604513;
+        Thu, 15 Oct 2015 13:06:44 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id pf7sm16953380pbc.6.2015.10.15.13.06.42
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Oct 2015 13:06:43 -0700 (PDT)
+Date: Fri, 16 Oct 2015 01:36:31 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: application reminder
-Message-ID: <alpine.DEB.2.10.1503311157590.2520@hadrien>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Subject: [PATCH v2] Staging: lustre: lproc_osc: Change the variable to be
+ checked
+Message-ID: <20151015200630.GA44907@ubuntu>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-If you have submitted an application, please be sure that it is complete
-by April 1 at 7pm UTC.  The most important points that may need updating
-are your preferences among the projects and your proposed work plan.  Your
-application should in general reflect all the work that you have done,
-both in terms of submitting patches (I can find out this information,
-though) and in terms of project-specific activities.
+The variable rc is supposed to hold the value returned by function
+kstrtoul which can either be 0, -EINVAL (-22) or -ERANGE (-34).
+Therefore, the check must be performed on rc instead of val for error
+values. Also, rc can never be greater than 0.
 
-Patches submitted to the outreachy mailing list until April 1 at 7pm UTC
-will be considered for the application.  Afterwards, if you would like to
-continue contributing to the Linux kernel, please send patches to the
-maintainers of the affected code directly (scripts/get_maintainer.pl).  I
-use the arguents --nokeywords --nogit --nogit-fallback --norolestats to
-get the maintainers of the affected code, but not everyone who has ever
-contributed a patch on it.
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/lustre/lustre/osc/lproc_osc.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-julia
+diff --git a/drivers/staging/lustre/lustre/osc/lproc_osc.c b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+index 053d508..cdc7f88 100644
+--- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
++++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+@@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
+ 	unsigned long val;
+ 
+ 	rc = kstrtoul(buffer, 10, &val);
+-	if (rc)
+-		return rc;
+-	if (val < 0 || val > 1)
++	if (rc < 0)
+ 		return -ERANGE;
+ 
+ 	/* opposite senses */
+-- 
+2.1.0
+
 
