@@ -1,93 +1,74 @@
 X-GM-THRID: 6206160535830921216
-X-Received: by 10.112.159.4 with SMTP id wy4mr3307111lbb.15.1444985856237;
-        Fri, 16 Oct 2015 01:57:36 -0700 (PDT)
+X-Received: by 10.112.190.74 with SMTP id go10mr3359779lbc.9.1444984867216;
+        Fri, 16 Oct 2015 01:41:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.81.195 with SMTP id c3ls97116wiy.29.gmail; Fri, 16 Oct
- 2015 01:57:35 -0700 (PDT)
-X-Received: by 10.180.87.164 with SMTP id az4mr828882wib.1.1444985855882;
-        Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id go9si8325wib.3.2015.10.16.01.57.35
+Received: by 10.180.11.238 with SMTP id t14ls80800wib.40.canary; Fri, 16 Oct
+ 2015 01:41:06 -0700 (PDT)
+X-Received: by 10.180.91.233 with SMTP id ch9mr810486wib.4.1444984866323;
+        Fri, 16 Oct 2015 01:41:06 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id m4si93679wib.0.2015.10.16.01.41.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Fri, 16 Oct 2015 01:41:06 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id p11so125678wij.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=qjx3XDBWXks55VpGXgZDDAt63mwcsWKe1nSV/CScz5o=;
-        b=jAahbMQDQwbWop2dypKVMgg5c12nu4beePC/xl+zNuiekgVinySZiyvXUfSweC5l68
-         cI3CMxx4+CoC+iTNFoJQC55fnSU9rHoOb+4g/deYDpCWXW1WXGdz0ll12RDyafl1eo24
-         Z9tmGydHqfV3J7df+m4KrsdynfmPL+qncP6XMoErYD4Fgjle5gkVZUXYkhn41CaaepYQ
-         uzu0k3kmaDsmFd9RPBw3ChUF45hOxP/fo0xL33s9xiej8OQ3B8opqu8bLWfEiiKkm84q
-         gk/SOb15HYvlqRnJX/JFDqs2sbNXR8F5TbE4joqHAf3z2Xhr39aeNW4LCA4lyQ0oLIIo
-         R/6A==
-MIME-Version: 1.0
-X-Received: by 10.180.189.41 with SMTP id gf9mr3212534wic.95.1444985855776;
- Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
-Received: by 10.27.186.66 with HTTP; Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
-In-Reply-To: <4275207.TTHHeQE8pW@wuerfel>
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue005) with ESMTPSA (Nemesis) id 0Ls5Ln-1aZ1iQ2vjr-013uaN; Fri, 16 Oct
+ 2015 10:41:05 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Shivani Bhardwaj <shivanib134@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lpoc_osc:  Change the variable to be checked
+Date: Fri, 16 Oct 2015 10:41:05 +0200
+Message-ID: <4275207.TTHHeQE8pW@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151016083218.GA2815@ubuntu>
 References: <20151016083218.GA2815@ubuntu>
-	<4275207.TTHHeQE8pW@wuerfel>
-Date: Fri, 16 Oct 2015 14:27:35 +0530
-Message-ID: <CAKHNQQFXZ2rqkbig2hwPSd=nHg-OZt3c6JiaGAHao6mkXPsUQQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lpoc_osc: Change
- the variable to be checked
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:sB+G3jhi9e1fRdluvC/tJbkEjOptLxPGGbJTYXvB1wPFDDyLfOF
+ csP3UD2Eg8wAqb6DMTUUgJTchHRLUeqIPoCOpsxjyuZgnxN3HFFuDNT+1KZJhsQvvgyszs9
+ 8itb0LJhEy8yCE2rLxZSETKJzTDGQMa8RCx2/+NeFIzHZeuXror7gP0UD9gsAvgtn4glTzv
+ HlIdSMMotvPCECJn85J+Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Up90+5Lja2Q=:OaeHxOdFgHlagwW7GJWyIx
+ DSBjNQrE1rMjidobWlGEv3V1AbsIUAY41Iu+p2dg7iAGSkHynx48xIXxJ9K7W5X71/51UeGtk
+ MmhiEAfFKGbsBJo+nc9qoSr1flauRT6a/plt7AyJiFZCnyql13aiDk6Wo7ACILWBeRM1YQSFX
+ 6cl91kMkf5ObYOcB/wab0GgwdIkHSI7fWAKLggNQNW15Dm9dvH+Tk8iU9io+CP0VXUa69zp9U
+ EZr7WgvloN/Ttcy54YGntMDNTmOAWsCLcfpCrOmGMy5Dw3QjRFN1/Fm0vLsFi872Pz0grM5KH
+ Q2i8d65cpAZ07ST2IrBcN38HJVma4GLDNYiMLTrZYFWx3eI2bAcXdYno6amOPV5B0tu66kdn2
+ dT+ZFOKhZD74BC6kLGVHeRX6vB1SPGj7UisDjTvtSUxsIFAdEXXrkhCm29utDC0AcMWnG1BQo
+ h4B5DIO5nqLt9gsywtsUvUmk2p64jvDM4MQRrKCtjTKNUXB23n43J6qq5wsYFjk2X+LiSyCOf
+ Paqxc/LIfKxuRp+qhsM0m93HgwFBBG0wLuh824jDgMtSttgZ9070p0v9spBWObKrURbnyVb8q
+ 6mLeZJnyg6FT80rQiRFA/gmZmJu8dbpVM6BIKpq3JwF+zxiCnHHEXsXlEC0K3Qre1p1lPupE6
+ hSD8lTwgmGEi3fVfk9ebURdzn2/52GiCH2aSxDP9x1xZKE0xIohTGjDZAaSAVuNXgnrka2Csy
+ hGuahF5TUpMe028L
 
-Shivani
+On Friday 16 October 2015 14:02:18 Shivani Bhardwaj wrote:
+> index 053d508..cdc7f88 100644
+> --- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
+> +++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+> @@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
+>         unsigned long val;
+>  
+>         rc = kstrtoul(buffer, 10, &val);
+> -       if (rc)
+> -               return rc;
+> -       if (val < 0 || val > 1)
+> +       if (rc < 0)
+>                 return -ERANGE;
+>  
+>         /* opposite senses */
+> -- 
+> 
 
+I believe the intention of the code is to return -ERANGE if anything other
+than 0 or 1 is stored here, which no longer works after your patch. The
+range check in kstrtoul only ensures that there is a number that fits within
+an 'unsigned long'.
 
-On Fri, Oct 16, 2015 at 2:11 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> On Friday 16 October 2015 14:02:18 Shivani Bhardwaj wrote:
->> index 053d508..cdc7f88 100644
->> --- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
->> +++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
->> @@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
->>         unsigned long val;
->>
->>         rc = kstrtoul(buffer, 10, &val);
->> -       if (rc)
->> -               return rc;
->> -       if (val < 0 || val > 1)
->> +       if (rc < 0)
->>                 return -ERANGE;
->>
->>         /* opposite senses */
->> --
->>
->
-> I believe the intention of the code is to return -ERANGE if anything other
-> than 0 or 1 is stored here, which no longer works after your patch. The
-> range check in kstrtoul only ensures that there is a number that fits within
-> an 'unsigned long'.
-
-This means it is never going to throw out of range error?
-If that is the case why do we take the variable val as unsigned long?
-It can be typecasted in the function kstrtoul. We can take it as
-simple int. And still
-if (rc)
-     return rc;
-
-statement is never going to be valid, is it?
-Plus, why base 10? base 2 should work fine to check for 0 and 1.
-
-And, if everything above is wrong then, since val is taken as unsigned
-int it can again never be less than 0 so, shouldn't the check be made
-only for val>1?
-
->
->         Arnd
+	Arnd
 
