@@ -1,74 +1,110 @@
-X-GM-THRID: 6205238315000528896
-X-Received: by 10.67.4.38 with SMTP id cb6mr18478671pad.44.1444769630934;
-        Tue, 13 Oct 2015 13:53:50 -0700 (PDT)
+X-GM-THRID: 6206265644827017216
+X-Received: by 10.182.126.228 with SMTP id nb4mr13016407obb.19.1445008824645;
+        Fri, 16 Oct 2015 08:20:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.87.36 with SMTP id q33ls574534qgd.62.gmail; Tue, 13 Oct
- 2015 13:53:50 -0700 (PDT)
-X-Received: by 10.13.228.133 with SMTP id n127mr30148121ywe.37.1444769630538;
-        Tue, 13 Oct 2015 13:53:50 -0700 (PDT)
+Received: by 10.107.170.227 with SMTP id g96ls865265ioj.55.gmail; Fri, 16 Oct
+ 2015 08:20:22 -0700 (PDT)
+X-Received: by 10.50.78.170 with SMTP id c10mr4643888igx.6.1445008822859;
+        Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id zg1si521152pbb.2.2015.10.13.13.53.50
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id ce6si1521437pad.0.2015.10.16.08.20.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 13:53:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pabrc13 with SMTP id rc13so31609456pab.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 13:53:50 -0700 (PDT)
+Received: by mail-pa0-x234.google.com with SMTP id cn9so8526801pad.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=AUfU7XqdKEX+kLb352011kBGUJJPkXZ0Gw+RhA+Db4c=;
-        b=X9jznFxMs3zAabrlFMBJwz/lbTn60mMaknHMnihRHgCXhB/BKpyS5JmQqzkGU/BhQd
-         iQCVaNFkpNw3Kz9JETdnwSrjkTFSNaB3AiXLB6OLy/CF68+XvU4vzrvMFZ5r1IlzH3EY
-         Za1bmw8lGiBJ9rZWWCKRIFXoPJqR7EqpwneCz8SlP+cvnwwJlvyCiPcT/9mGkHUJeWv5
-         tZBbD5KPDHgyPqK4DgyfGb9eEiy8lIdOey+ehKABokyBDcg5gqNpPud8MIJpdFIdXaeg
-         d3JElmAwrlrkfS5QF3agiwYgW8B2HC8n4C4yRwsa6WGUnlocH7eSPucaBqCwAI+Q4It4
-         6iqw==
-X-Received: by 10.68.164.98 with SMTP id yp2mr42495558pbb.125.1444769630403;
-        Tue, 13 Oct 2015 13:53:50 -0700 (PDT)
+        bh=zjzCHEj3e9VOi+SwGmgx+i0rYCXAs3Yr5UBS1CjMfvI=;
+        b=QeXkC2qaf8FNqgxnANv+4/Ne1kDhh5dNIfwvYXZmVdZ77woWArFBIWAc1URoFVlwZL
+         WBmW+cZXAxydyETXu4WQFsSKaAWxbWwzJrVtGqwYGN+aSNXSm/rO+Sso2XiA4HKOIDhM
+         uWmtU4nE1J794Xzxd31o5/mtG3J1iJjgytVzvro1wQHpwRyGfv0rVxMSEG2tv1NWfCuX
+         rX7J9iBBfxo30VFdoIu1nclkr7UthC57bk8qAvuAdsj6590t8oJC0gRjzry5tVRstFsH
+         JhlMT8+Ce2RV3zBITuujVc8qBMqPgTmWL9LP518HbhV9boSyYIUNA/rwLo4GF7l92yTg
+         VTDQ==
+X-Received: by 10.66.219.162 with SMTP id pp2mr17126627pac.59.1445008822702;
+        Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
 Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id bs3sm5496781pbd.89.2015.10.13.13.53.48
+        by smtp.gmail.com with ESMTPSA id es4sm21828255pbc.42.2015.10.16.08.20.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 13:53:49 -0700 (PDT)
-Date: Wed, 14 Oct 2015 02:23:40 +0530
+        Fri, 16 Oct 2015 08:20:21 -0700 (PDT)
+Date: Fri, 16 Oct 2015 20:50:10 +0530
 From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: wilc1000: wilc_wlan_cfg: Remove unnecessary cast
-Message-ID: <20151013205340.GA10223@ubuntu>
+Subject: [PATCH v2] Staging: iio: tsl2x7x_core: Remove unrequired parentheses
+ from DIV_ROUND_UP
+Message-ID: <20151016152010.GA19210@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove a cast which is not required.
+Remove parentheses surrounding the first argument of the macro
+DIV_ROUND_UP as they are not required.
+Semantic patch used:
+
+@@
+expression e1,e2;
+@@
+DIV_ROUND_UP(
+- (
+  e1
+- )
+  ,e2)
 
 Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/wilc1000/wilc_wlan_cfg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+	Improve semantic patch.
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan_cfg.c b/drivers/staging/wilc1000/wilc_wlan_cfg.c
-index d148d6e..a34a81c 100644
---- a/drivers/staging/wilc1000/wilc_wlan_cfg.c
-+++ b/drivers/staging/wilc1000/wilc_wlan_cfg.c
-@@ -364,7 +364,7 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
+ drivers/staging/iio/light/tsl2x7x_core.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
+index 010e607..bf9627e 100644
+--- a/drivers/staging/iio/light/tsl2x7x_core.c
++++ b/drivers/staging/iio/light/tsl2x7x_core.c
+@@ -418,9 +418,9 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
+ 	if (p->ratio == 0) {
+ 		lux = 0;
+ 	} else {
+-		ch0lux = DIV_ROUND_UP((ch0 * p->ch0),
++		ch0lux = DIV_ROUND_UP(ch0 * p->ch0,
+ 			tsl2X7X_als_gainadj[chip->tsl2x7x_settings.als_gain]);
+-		ch1lux = DIV_ROUND_UP((ch1 * p->ch1),
++		ch1lux = DIV_ROUND_UP(ch1 * p->ch1,
+ 			tsl2X7X_als_gainadj[chip->tsl2x7x_settings.als_gain]);
+ 		lux = ch0lux - ch1lux;
+ 	}
+@@ -1057,7 +1057,7 @@ static ssize_t tsl2x7x_als_persistence_store(struct device *dev,
+ 	z = y * TSL2X7X_MIN_ITIME;
  
- static int wilc_wlan_parse_info_frame(u8 *info, int size)
- {
--	wilc_mac_cfg_t *pd = (wilc_mac_cfg_t *)&g_mac;
-+	wilc_mac_cfg_t *pd = &g_mac;
- 	u32 wid, len;
- 	int type = WILC_CFG_RSP_STATUS;
+ 	filter_delay =
+-		DIV_ROUND_UP(((result.integer * 1000) + result.fract), z);
++		DIV_ROUND_UP((result.integer * 1000) + result.fract, z);
  
+ 	chip->tsl2x7x_settings.persistence &= 0xF0;
+ 	chip->tsl2x7x_settings.persistence |= (filter_delay & 0x0F);
+@@ -1103,7 +1103,7 @@ static ssize_t tsl2x7x_prox_persistence_store(struct device *dev,
+ 	z = y * TSL2X7X_MIN_ITIME;
+ 
+ 	filter_delay =
+-		DIV_ROUND_UP(((result.integer * 1000) + result.fract), z);
++		DIV_ROUND_UP((result.integer * 1000) + result.fract, z);
+ 
+ 	chip->tsl2x7x_settings.persistence &= 0x0F;
+ 	chip->tsl2x7x_settings.persistence |= ((filter_delay << 4) & 0xF0);
 -- 
 2.1.0
 
