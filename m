@@ -1,49 +1,49 @@
 X-GM-THRID: 6206285490616795136
-X-Received: by 10.107.165.5 with SMTP id o5mr14142212ioe.5.1445013760264;
-        Fri, 16 Oct 2015 09:42:40 -0700 (PDT)
+X-Received: by 10.50.79.201 with SMTP id l9mr4949244igx.13.1445013701381;
+        Fri, 16 Oct 2015 09:41:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.99.45 with SMTP id p42ls1469361qge.5.gmail; Fri, 16 Oct
- 2015 09:42:39 -0700 (PDT)
-X-Received: by 10.140.234.135 with SMTP id f129mr13512867qhc.9.1445013759823;
-        Fri, 16 Oct 2015 09:42:39 -0700 (PDT)
+Received: by 10.140.93.138 with SMTP id d10ls1311067qge.27.gmail; Fri, 16 Oct
+ 2015 09:41:40 -0700 (PDT)
+X-Received: by 10.129.108.133 with SMTP id h127mr13196051ywc.8.1445013700853;
+        Fri, 16 Oct 2015 09:41:40 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id ce6si1566314pad.0.2015.10.16.09.42.39
+        by gmr-mx.google.com with ESMTPS id pe1si2043261pac.2.2015.10.16.09.41.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 09:42:39 -0700 (PDT)
+        Fri, 16 Oct 2015 09:41:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id cn9so10310855pad.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 09:42:39 -0700 (PDT)
+Received: by mail-pa0-x235.google.com with SMTP id ez2so9223317pac.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 09:41:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=apP7GQhInaVf0yxuLOO9igI6byciEl/HOFQ2peP6XcU=;
-        b=WRoE+FtNuvVeTD2I+CxV8r8PtvsCkD1VDyt/XKJ56+Ir+LPna5LEnhs/+eHAGupSfx
-         8FYTXYf9krfeOKePULHSvr0FV5FqD+duwUEXEAKc6CC9J5dPCMgboBjSxO/tAjogTdPv
-         sK3jdf0bklbve3TRvNmHsmSvUtaeiKmaS3BJcte0uxmZhUBeWM3S7EMCaBTVNexEAmvR
-         zScU1CCSrwi7FXJl3IxJ9KtcHJX1whnd3soAgZ/jeA8FRSjOTDqF77XdzQuIP/Nbn4ir
-         vncrQ1zw5kNP29VViCQcdRM8Bb0OjOtW8PIZqIx/5clIF0aCca35u13+wtB0c5rL2d3b
-         obQA==
-X-Received: by 10.66.186.141 with SMTP id fk13mr17379281pac.7.1445013759643;
-        Fri, 16 Oct 2015 09:42:39 -0700 (PDT)
+        bh=ijjj3TGEX8XgwdEKw+6pmghtKDGzZ0arH2wDNKFV5Os=;
+        b=xpu1DQW79RzwOcszTv5UDCrjIB9oVbwV0vcdfKJqDeik9PheMmEEGMx+wY64TLplDK
+         NbtXkasYTOA3jjUxKMvNn1Y/zqR6yzP99MgluVvBGKvNCL/VzzjK1wmuZnoJX8zzZOTw
+         XHwTEy+GrjCogiOdotoUgw5y3P+X3VRIAbLf+ur3gCKkPNa7oGumBoZGwcQie50f7uHn
+         fGjiW6vKU35nfhD+CFKnaTu83bVmMBGRgngEQq1vxu++jzDzRpWcXTDHSkppSWpJEaWR
+         EKC8JvBAzqY04/d5X598Bxuu72az38s5RyBwAI0zZFhF9u5fe6MyetlYZCngd8N/hm6L
+         O63w==
+X-Received: by 10.68.211.68 with SMTP id na4mr17757292pbc.94.1445013700707;
+        Fri, 16 Oct 2015 09:41:40 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([182.68.222.108])
-        by smtp.gmail.com with ESMTPSA id qn5sm22294064pac.41.2015.10.16.09.42.38
+        by smtp.gmail.com with ESMTPSA id yz3sm22137758pbb.37.2015.10.16.09.41.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 16 Oct 2015 09:42:39 -0700 (PDT)
-Date: Fri, 16 Oct 2015 22:12:35 +0530
+        Fri, 16 Oct 2015 09:41:40 -0700 (PDT)
+Date: Fri, 16 Oct 2015 22:11:36 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/5] staging: vt6656: Prefer using BIT Macro
-Message-ID: <6820714aeeda2b9f2956038418ce3807f4461496.1445013271.git.amitoj1606@gmail.com>
+Subject: [PATCH 3/5] staging: panel: Prefer using BIT Macro
+Message-ID: <c7576b638bee7db49d7017741ed63dc0259cc322.1445013271.git.amitoj1606@gmail.com>
 References: <cover.1445013271.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -61,22 +61,37 @@ The semantic patch used to find this is:
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/vt6656/card.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/panel/panel.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 167dca9..70685e5 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -473,7 +473,7 @@ int vnt_ofdm_min_rate(struct vnt_private *priv)
- 	int ii;
+diff --git a/drivers/staging/panel/panel.c b/drivers/staging/panel/panel.c
+index a7e3875..b47da2b 100644
+--- a/drivers/staging/panel/panel.c
++++ b/drivers/staging/panel/panel.c
+@@ -1794,7 +1794,7 @@ static void phys_scan_contacts(void)
+ 		 * So we'll scan them.
+ 		 */
+ 		for (bit = 0; bit < 8; bit++) {
+-			bitval = 1 << bit;
++			bitval = BIT(bit);
  
- 	for (ii = RATE_54M; ii >= RATE_6M; ii--) {
--		if ((priv->basic_rates) & ((u16)(1 << ii)))
-+		if ((priv->basic_rates) & ((u16)BIT(ii)))
- 			return true;
- 	}
+ 			if (!(scan_mask_o & bitval))	/* skip unused bits */
+ 				continue;
+@@ -2060,12 +2060,12 @@ static int input_name2mask(const char *name, pmask_t *mask, pmask_t *value,
+ 			return 0;	/* input name not found */
+ 		neg = (in & 1);	/* odd (lower) names are negated */
+ 		in >>= 1;
+-		im |= (1 << in);
++		im |= BIT(in);
  
+ 		name++;
+ 		if (isdigit(*name)) {
+ 			out = *name - '0';
+-			om |= (1 << out);
++			om |= BIT(out);
+ 		} else if (*name == '-') {
+ 			out = 8;
+ 		} else {
 -- 
 1.9.1
 
