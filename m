@@ -1,66 +1,88 @@
 X-GM-THRID: 6205668721559601152
-X-Received: by 10.180.105.98 with SMTP id gl2mr1791740wib.0.1445038261473;
-        Fri, 16 Oct 2015 16:31:01 -0700 (PDT)
+X-Received: by 10.31.149.200 with SMTP id x191mr15035921vkd.14.1445036269285;
+        Fri, 16 Oct 2015 15:57:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.37.197 with SMTP id a5ls237319wik.3.canary; Fri, 16 Oct
- 2015 16:31:00 -0700 (PDT)
-X-Received: by 10.194.118.65 with SMTP id kk1mr4211463wjb.5.1445038260903;
-        Fri, 16 Oct 2015 16:31:00 -0700 (PDT)
+Received: by 10.140.94.170 with SMTP id g39ls2064477qge.9.gmail; Fri, 16 Oct
+ 2015 15:57:48 -0700 (PDT)
+X-Received: by 10.31.7.70 with SMTP id 67mr15086638vkh.2.1445036268741;
+        Fri, 16 Oct 2015 15:57:48 -0700 (PDT)
 Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id cm6si267016wib.1.2015.10.16.16.31.00
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by gmr-mx.google.com with ESMTPS id n7si391629iga.3.2015.10.16.15.57.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 16:31:00 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Oct 2015 15:57:48 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
 Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue003) with ESMTPSA (Nemesis) id 0M2YnR-1aen3J01iP-00sJUG; Sat, 17 Oct
- 2015 01:31:00 +0200
+ (mreue003) with ESMTPSA (Nemesis) id 0Mh8o1-1a92Bk2BLV-00MIXw; Sat, 17 Oct
+ 2015 00:57:45 +0200
 From: Arnd Bergmann <arnd@arndb.de>
-To: y2038@lists.linaro.org
-Cc: outreachy-kernel@googlegroups.com, Deepa Dinamani <deepa.kernel@gmail.com>
-Subject: Re: [Y2038] [Outreachy kernel] Re: [PATCH] staging: ft1000: replace timeval with ktime_t
-Date: Sat, 17 Oct 2015 01:30:59 +0200
-Message-ID: <5068430.5O6VKJJBka@wuerfel>
+To: outreachy-kernel@googlegroups.com
+Cc: Deepa Dinamani <deepa.kernel@gmail.com>, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH] staging: ft1000: replace timeval with ktime_t
+Date: Sat, 17 Oct 2015 00:57:45 +0200
+Message-ID: <9822706.yKCeF9F5MV@wuerfel>
 User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <9822706.yKCeF9F5MV@wuerfel>
-References: <1444869780-26658-1-git-send-email-deepa.kernel@gmail.com> <CABeXuvrTDkfM=2umfNcoyATN866zWQ2ed-VspCyn-xC846e1nw@mail.gmail.com> <9822706.yKCeF9F5MV@wuerfel>
+In-Reply-To: <CABeXuvrTDkfM=2umfNcoyATN866zWQ2ed-VspCyn-xC846e1nw@mail.gmail.com>
+References: <1444869780-26658-1-git-send-email-deepa.kernel@gmail.com> <30046181.iodvR1OlJa@wuerfel> <CABeXuvrTDkfM=2umfNcoyATN866zWQ2ed-VspCyn-xC846e1nw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:CkCYGD7TxU3jA47qXDumKgobcO++tV0aI/MT80LOM8j2S/TXM7e
- JTvO05jicyHT8t5WjR/It475BLCYlyxk4Z+qodHzdB9DcUV7o1wsyV6qSzQ2XouLFe7nneE
- 2L5nI6Gze8PK+V6TAFyFkNkyhjWSPYQzZlTLchtKYb1kq8gDevoSd4ZMPmUQdk05g5GaF9g
- NaFLW5NSTZ4D46OER0glg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:lzoGPgISifk=:KIhLAVglAqAcVMBvYFFPTs
- y0ruIim/b6AseUFMTaAFdgJajCaP0o+lMCcFygAmjpDXts1nyNF2XJhKkxE1PsHfK+K1J+/JQ
- 6xkSTXTZN8/5t3F+aVJZiEhNpeB5Yn4SJou3nsCfK/edJrjatRa1kWr/5w/ID3YsIad9/iSO0
- +ogLCta8T9t2rdFZfi0N/XdRldDCNnvRwBjXRIN0Ohf8LJYvOBJ4vFH9qyV/alQuEI+5daOvR
- VqFz70h8uSFLKfttaPKzamoMBC6iO/v5Ymkj+D62qxacnjGw9d2Fn3b8mHkHOn2xPeKCdn/tz
- acLpq4R+VvfpaWAh160mF9KiUVkEVs2bZMlTQ/zTei30bdqncZ4MCji95sNT9Eymoz3omsy58
- /xsk3CB9aVJAGtKFcoVfh6ZgEPS8znlgpKBMnLMiGntqW11d2FArWH7sYvn47FGcBeUXnoWdH
- f+u6MIFL2VpTL/jJLpocU5MPN00G08q5etEcaDFkS05+jqKdJMxWUFhlR3p0bvDKDTVkxnaGn
- Pp8xsBbtNkXpLpkoK4xaAMAytf5NFI1B4WxPxJ4OuxZwFRxYKIPmGm6V1pwp+34XgLMjbJUaG
- UKrANdLDzQKAVrNGucBaye/x0Fr8niiAJdQgKd2bxDuzuJNdA30NhgHmYNAPp2v4mpIXEcljp
- WmI9TqWbiyUWpgqRV9UoCSY1b4RdU27QYXNMLdjtXmtJqnuwKXkvWwMsBaSH1UEgUBPq4+m9c
- /NRSfAOusCrgl/gT
+X-Provags-ID: V03:K0:rt1O9HPnJ3C43GVmbg8rCBamn0omk45Ja+pfQEcco9iIjQFbF8P
+ o89b5rrH56iR2SkQSARjlgBPDWgVI8qINLyDz+nTMBmgT2f78D5DI6weQFsEL7Nn6EKeW5t
+ w8wUiHx65oIcqm9xWHB81pVlh0gPneDYddPr6Vn6O5TZSA5v7uVpu9PehJC2erf5UkIcknr
+ Yqd9Et++P3kxkluF+zYVw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:XUS6/n4fXeY=:jm6ngROERUZNPA5jCsTe6q
+ Pja2MAP0ZsXuUrQ4/P+m9Trs425LCgTlxGENoUFoank3nKHUSmPSyi7XR/Xura3130h/Acuha
+ DgzQAvLkwIXxY52XwWAzIg7yvJwMdLyucHw32IHBCVfposdEuWwU2cXUMDgEUs9p1Gml9H1+j
+ Wk17+lL0UqO45YQgqe7XDgdjbw3+I7mxpoOM9elaa9uJQksW0i+lF3aBMRBxWsU8uQ0S2GGy1
+ sN+HeTeItW0PdCtfn6h8AHoqK5SM14/FerTFYIwOBn/DsLbKzgiOnzZ7nNBsxevxCaXsCAEwq
+ KH3ZDtVavaQ9rdKDNtCoQg96/g3Umy3dLrkR7XCJcqxw/VXcoBVVwQVGpx3GJq/T4RKZLxsd4
+ Pa6zxeojA+BLVY5+V7Rpr7CTt3efn+BozR+MCbjNrb4XSfMyTfmq4AqLrmjvrZSlWSnDd3tf/
+ btqaN/xSsbSeLhC0HiMRlLYS6FkgX7aKedTOclkAVpGKfcVu/7dEv8XD0oLE6wUx7X4+A3Yan
+ cNK6gS8DqjHTlUhTfabAhJEOoHtMOzv6lWbWtcI775qjOx8EkCGsK/LMh5lRHclUOUBK/jUfe
+ fW7uEW5MfNQR8aNcSRPBT/qyL9Gcc4e0GkNp3B2aBBHxg8xjj1jwzU5rzCWZAjj4cZ4XM6XIt
+ zSLPtkjjEj7wYFxkr7DorWGUfPcz3thxUSjOnER1QU6WS89KGSS6cmBcKkB/TgcbhxOnqkV7q
+ b4RRAXZ1wySoaW7C
 
-On Saturday 17 October 2015 00:57:45 Arnd Bergmann wrote:
+On Friday 16 October 2015 15:53:04 Deepa Dinamani wrote:
+> Forgot to do reply-all earlier.
+> 
+> Resending.
+> 
+> I considered using the ktime_get_seconds() earlier.
+> However, I'm not convinced that the driver actually needs time in seconds.
+> It would be hard to guess given that I'm not actually running this on a
+> platform.
+> So I used ktime_get() instead so that when the driver gets cleaned up
+> later, it can be updated to use correct time granularity.
+> 
+> Given that sometimes they could end up calculating time from epoch seems to
+> hint that there is more cleanup required on the driver.
+> 
+> Do you think this is reasonable?
+> 
 
-> A more likely cleanup would be the removal of the debug interface,
-> replacing it with something completely different.
+The driver only uses the time in one place, which is the ioctl function
+returning the connection time in seconds, and this is a debugging
+interface.
 
-A little more research shows that we can probably remove the driver
-from the kernel really soon, as the only remaining operator is
-shutting down its service:
+From this, we know that there is little value in using a more accurate
+time representation. Your approach gives us better rounding, but it
+won't really matter as the connection time for a wireless connection
+is not interesting in the low seconds anyway.
 
-http://www.gtigroup.org/news/ind/2015-08-18/6996.html
+Regarding future cleanups, you should not introduce features just
+because you think they might be used later: Code is easy to change,
+so if someone needs the higher resolution, they can change it then.
+In this case, it's particularly unlikely to change, as the only
+user is in an ioctl. Making a change to that interface would break
+existing binaries, so we don't want that.
 
-They just went from a nationwide service to one that is only
-available in the two largest cities of the country, and they
-already offer much faster LTE service there.
+A more likely cleanup would be the removal of the debug interface,
+replacing it with something completely different.
 
 	Arnd
 
