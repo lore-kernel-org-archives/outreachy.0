@@ -1,99 +1,93 @@
 X-GM-THRID: 6206160535830921216
-X-Received: by 10.180.10.135 with SMTP id i7mr904806wib.2.1444989338186;
-        Fri, 16 Oct 2015 02:55:38 -0700 (PDT)
+X-Received: by 10.112.159.4 with SMTP id wy4mr3307111lbb.15.1444985856237;
+        Fri, 16 Oct 2015 01:57:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.8.74 with SMTP id p10ls98523wia.13.gmail; Fri, 16 Oct 2015
- 02:55:37 -0700 (PDT)
-X-Received: by 10.180.105.98 with SMTP id gl2mr908478wib.0.1444989337801;
-        Fri, 16 Oct 2015 02:55:37 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id cm6si174997wib.1.2015.10.16.02.55.37
+Received: by 10.180.81.195 with SMTP id c3ls97116wiy.29.gmail; Fri, 16 Oct
+ 2015 01:57:35 -0700 (PDT)
+X-Received: by 10.180.87.164 with SMTP id az4mr828882wib.1.1444985855882;
+        Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id go9si8325wib.3.2015.10.16.01.57.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 02:55:37 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0MMamg-1ZvI8641La-008L1e; Fri, 16 Oct
- 2015 11:55:37 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Shivani Bhardwaj <shivanib134@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lpoc_osc: Change the variable to be checked
-Date: Fri, 16 Oct 2015 11:55:36 +0200
-Message-ID: <9667273.8SQsnSMdnh@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CAKHNQQFXZ2rqkbig2hwPSd=nHg-OZt3c6JiaGAHao6mkXPsUQQ@mail.gmail.com>
-References: <20151016083218.GA2815@ubuntu> <4275207.TTHHeQE8pW@wuerfel> <CAKHNQQFXZ2rqkbig2hwPSd=nHg-OZt3c6JiaGAHao6mkXPsUQQ@mail.gmail.com>
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22b.google.com with SMTP id p11so125678wij.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=qjx3XDBWXks55VpGXgZDDAt63mwcsWKe1nSV/CScz5o=;
+        b=jAahbMQDQwbWop2dypKVMgg5c12nu4beePC/xl+zNuiekgVinySZiyvXUfSweC5l68
+         cI3CMxx4+CoC+iTNFoJQC55fnSU9rHoOb+4g/deYDpCWXW1WXGdz0ll12RDyafl1eo24
+         Z9tmGydHqfV3J7df+m4KrsdynfmPL+qncP6XMoErYD4Fgjle5gkVZUXYkhn41CaaepYQ
+         uzu0k3kmaDsmFd9RPBw3ChUF45hOxP/fo0xL33s9xiej8OQ3B8opqu8bLWfEiiKkm84q
+         gk/SOb15HYvlqRnJX/JFDqs2sbNXR8F5TbE4joqHAf3z2Xhr39aeNW4LCA4lyQ0oLIIo
+         R/6A==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:S6GKCHsoOKexuKWVfVNSJ+RtTsj4qPLPbCRL140txTYteTLRdCC
- 7UdZxLfit/pu+LBq8SJu8q7NJhVTr0ZGwwwKmt08XETNZNTESIstozlnpcNGptuB2VMskte
- cJI0HZyh0ytuUAykgTbPJNXNACwPceVuFm9DP/Q2x0Df5TNDDfETgRnJhsoWpL9v0XxXG9U
- CXbJPv/TdBdxZgNVdyBlQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:1p0ldZ5PC3E=:wYGHgfykROurkCZsIvnHoc
- lp7tddQoIvdszIVC/iG7D81ia0gGVki1Nb03AFxQDSwgDj+77U2C6JPmWzzVNrdROPWa7jXpZ
- K1yBjmd0IWwW90jDZOfgcU94bwdUrv7y5XYuKmiwxupQFYPka8Q6FLkrvSWP7F1Z8OJgs7Fof
- yYnVW91kz0iMj+nKkoUi6xQsiwIpAcaF0NL4sO9GjFQlDTIi1oZotgi1C1y4gnLSxAUwrTEWF
- MXs90VI6XCfJUDANiJ2GGWKJnAtkeHXs60TTgEhXIo9t4myJTCXDx7x5ehY7KNr41Yg/ITMVf
- X5yedAb1UZxEhEybZVWz3YJA4ynBQtETwU+8yPp+6Wm13AHP4Rul6fcw2P9hpdHcOYyd+I2Mv
- 0Zhgr097sIB49R9FJADdV2oZuIrolZ9sOocU2mqKP+o5jqjIR+ap1C4lpB9zwNmuNGc0ftaR6
- qNbszy/a54RK1qcTFuCGy4vsczCp9a/TV3+ZFfwDICsjVFE5vFPlslUfKRhxXAgSYAbqHtwP2
- Wq98MgOh/u+cF8yZzQh1bNWimGlU5nla+awYS3ngTAHqqjrFOvb9aZB56G23UXPs1lHB0OxTk
- tW7zhf+vZdvc5HrV8hkw4TAnu6lV3b+ppbpQ7+sh/xgdrL8DDc7pYc+kKTUeRgGNdw1Gpzr8n
- 1rQ94K/DvY+POGMvE+PhYHTg34eq/h52TH6EcPZtRb+QyrfycNf65KjxL/qqijjlCy84rTaib
- wz/N9SE0KzlI9u+X
+X-Received: by 10.180.189.41 with SMTP id gf9mr3212534wic.95.1444985855776;
+ Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
+Received: by 10.27.186.66 with HTTP; Fri, 16 Oct 2015 01:57:35 -0700 (PDT)
+In-Reply-To: <4275207.TTHHeQE8pW@wuerfel>
+References: <20151016083218.GA2815@ubuntu>
+	<4275207.TTHHeQE8pW@wuerfel>
+Date: Fri, 16 Oct 2015 14:27:35 +0530
+Message-ID: <CAKHNQQFXZ2rqkbig2hwPSd=nHg-OZt3c6JiaGAHao6mkXPsUQQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lpoc_osc: Change
+ the variable to be checked
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-On Friday 16 October 2015 14:27:35 Shivani Bhardwaj wrote:
-> On Fri, Oct 16, 2015 at 2:11 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> > On Friday 16 October 2015 14:02:18 Shivani Bhardwaj wrote:
-> >> index 053d508..cdc7f88 100644
-> >> --- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
-> >> +++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-> >> @@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
-> >>         unsigned long val;
-> >>
-> >>         rc = kstrtoul(buffer, 10, &val);
-> >> -       if (rc)
-> >> -               return rc;
-> >> -       if (val < 0 || val > 1)
-> >> +       if (rc < 0)
-> >>                 return -ERANGE;
-> >>
-> >>         /* opposite senses */
-> >> --
-> >>
-> >
-> > I believe the intention of the code is to return -ERANGE if anything other
-> > than 0 or 1 is stored here, which no longer works after your patch. The
-> > range check in kstrtoul only ensures that there is a number that fits within
-> > an 'unsigned long'.
-> 
-> This means it is never going to throw out of range error?
-> If that is the case why do we take the variable val as unsigned long?
-> It can be typecasted in the function kstrtoul. We can take it as
-> simple int. And still
-> if (rc)
->      return rc;
-> 
-> statement is never going to be valid, is it?
+Shivani
 
-A used may still write "aardvark" into the file, which would return
--EINVAL, and writing 999999999999999999 would return -ERANGE.
 
-> Plus, why base 10? base 2 should work fine to check for 0 and 1.
+On Fri, Oct 16, 2015 at 2:11 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> On Friday 16 October 2015 14:02:18 Shivani Bhardwaj wrote:
+>> index 053d508..cdc7f88 100644
+>> --- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
+>> +++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
+>> @@ -61,9 +61,7 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
+>>         unsigned long val;
+>>
+>>         rc = kstrtoul(buffer, 10, &val);
+>> -       if (rc)
+>> -               return rc;
+>> -       if (val < 0 || val > 1)
+>> +       if (rc < 0)
+>>                 return -ERANGE;
+>>
+>>         /* opposite senses */
+>> --
+>>
+>
+> I believe the intention of the code is to return -ERANGE if anything other
+> than 0 or 1 is stored here, which no longer works after your patch. The
+> range check in kstrtoul only ensures that there is a number that fits within
+> an 'unsigned long'.
 
-Right, it doesn't matter here. 'base=0' (autodetect) would work too.
+This means it is never going to throw out of range error?
+If that is the case why do we take the variable val as unsigned long?
+It can be typecasted in the function kstrtoul. We can take it as
+simple int. And still
+if (rc)
+     return rc;
 
-> And, if everything above is wrong then, since val is taken as unsigned
-> int it can again never be less than 0 so, shouldn't the check be made
-> only for val>1?
+statement is never going to be valid, is it?
+Plus, why base 10? base 2 should work fine to check for 0 and 1.
 
-Yes, that would be correct.
+And, if everything above is wrong then, since val is taken as unsigned
+int it can again never be less than 0 so, shouldn't the check be made
+only for val>1?
 
-	Arnd
-
+>
+>         Arnd
 
