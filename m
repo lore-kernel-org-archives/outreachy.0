@@ -1,153 +1,90 @@
-X-GM-THRID: 10535493959680
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,88d40c3dbd42b212,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.68.173.97 with SMTP id bj1mr15496261pbc.8.1427831407340;
-        Tue, 31 Mar 2015 12:50:07 -0700 (PDT)
+X-GM-THRID: 6203007824854777856
+X-Received: by 10.112.169.34 with SMTP id ab2mr3140359lbc.23.1444981062650;
+        Fri, 16 Oct 2015 00:37:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.96.67 with SMTP id j61ls2994427qge.67.gmail; Tue, 31 Mar
- 2015 12:50:07 -0700 (PDT)
-X-Received: by 10.52.24.108 with SMTP id t12mr45669787vdf.6.1427831407126;
-        Tue, 31 Mar 2015 12:50:07 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id oc12si1648138pdb.1.2015.03.31.12.50.07
+Received: by 10.25.23.39 with SMTP id n39ls282259lfi.33.gmail; Fri, 16 Oct
+ 2015 00:37:42 -0700 (PDT)
+X-Received: by 10.112.147.7 with SMTP id tg7mr3241082lbb.16.1444981061969;
+        Fri, 16 Oct 2015 00:37:41 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-lb0-x22b.google.com (mail-lb0-x22b.google.com. [2a00:1450:4010:c04::22b])
+        by gmr-mx.google.com with ESMTPS id b6si224476lbp.1.2015.10.16.00.37.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2015 12:50:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Fri, 16 Oct 2015 00:37:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c04::22b as permitted sender) client-ip=2a00:1450:4010:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c04::22b as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id j18so29045032pat.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 12:50:07 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-lb0-x22b.google.com with SMTP id ao8so92779072lbc.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 00:37:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=T+d+NxY+cdvE3LBsYo33uV8sOet5+qWumYXmBrUbisQ=;
-        b=KTlr3O5DbQ3+F1jKnzzZxidzgOlbF7p0++OPb7TjLhK6MfXP6+1y7pRdHRqBcMrNzS
-         Z5ZdJqNQimGHG6cdy48QsxzpIAWfBYDMHvDjEGu5GntnZWNE4Cj88AvIWcXCGwAKBdUt
-         5zh0w9CnkmoKZ3Xww4NIKcjTPA0BYwjrRocnWLKM6vAL/Wx5c6uJaSj7sljULZlIjLiC
-         aSJ/cvZVHcpaBx4CNUwk33IrKDz7k2+d47nSwQ5j+CEmcbeREOqUg+1KEd/LTA2uWQje
-         BSZGI0OzB9mJnmB0Khz8cKrdD3XcSo5+COlxTe1pxK4AU4h3mkiGyCiADaU1G3kuEh3N
-         z8sA==
-X-Received: by 10.68.248.39 with SMTP id yj7mr71283387pbc.58.1427831406970;
-        Tue, 31 Mar 2015 12:50:06 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.171.82])
-        by mx.google.com with ESMTPSA id jy9sm14764710pbc.31.2015.03.31.12.50.05
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 31 Mar 2015 12:50:06 -0700 (PDT)
-Date: Wed, 1 Apr 2015 01:20:03 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] Staging: rtl8712: Fix zero-testing pointer typed value
-Message-ID: <20150331195003.GA30918@amitoj-Inspiron-3542>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=0GFCHd4MC64/lB0NPwWNWvGOsWMHZxqv/PRueznVsXg=;
+        b=PA2kVFbRvD40dMw5uHP1lTGW0j6pkqqabA0P3TLt90jAnm0VJ+diCEOHTM+mgVZQLB
+         lGZrj9vcEgbVQ4EmIChkR57roT9emsbbl1dq+9eOMOSiy3nNvxLeOMNbcKPu67DP86PY
+         O1VKzBR95XM4k9D24cjf/UrQu0UK70UnA/QaY359NTN8Eov9eUWJ5dsk829TQ4rYxDrn
+         Ftz/tzPZ1fBCs+Y+82VM9OQPBhTIYqPNS9k38iRG0kMJ35TMtMHb6DvDEGwjiY3J1+Cc
+         4DJ8bJj1qdiAn3dAYmttbDd8cv3ISEmej3NXOyUhPy7bXNH3g3y3eLWCaW+9YmBjORYF
+         ob2Q==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.194.236.200 with SMTP id uw8mr14763591wjc.126.1444981061797;
+ Fri, 16 Oct 2015 00:37:41 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Fri, 16 Oct 2015 00:37:41 -0700 (PDT)
+In-Reply-To: <1444972856-4624-1-git-send-email-shraddha.6596@gmail.com>
+References: <1444972856-4624-1-git-send-email-shraddha.6596@gmail.com>
+Date: Fri, 16 Oct 2015 10:37:41 +0300
+Message-ID: <CAEnQRZAia7=-w55EwT6C36AXDdQnOcpdA4HAkBftSusFozoJfQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: cdc: Remove unused macros
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Shraddha Barke <shraddha.6596@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Removes variable comparison with 0 by using !. Done using following
-coccinelle script. 
+On Fri, Oct 16, 2015 at 8:20 AM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
+> Remove the macros since they are not used anywhere throughout the
+> kernel.
+>
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 
-@ disable is_zero,isnt_zero @ 
-expression *E; 
-expression E1,f; 
-@@ 
+Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
-E = f(...) 
-<... 
-( 
-- E == 0 
-+ !E     
-| 
-- E != 0 
-+ E 
-| 
-- 0 == E 
-+ !E 
-| 
-- 0 != E 
-+ E 
-) 
-...> 
-?E = E1 
-
-@ disable is_zero,isnt_zero @ 
-expression *E; 
-@@ 
-
-( 
-  E == 
-- 0 
-+ NULL   
-| 
-  E != 
-- 0 
-+ NULL   
-| 
-- 0 
-+ NULL 
-  == E 
-| 
-- 0 
-+ NULL 
-  != E 
-) 
-
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_cmd.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
-index 007f0a3..26971b5 100644
---- a/drivers/staging/rtl8712/rtl8712_cmd.c
-+++ b/drivers/staging/rtl8712/rtl8712_cmd.c
-@@ -91,7 +91,7 @@ static void query_fw_rx_phy_status(struct _adapter *padapter)
- 			pollingcnts--;
- 			msleep(20);
- 		}
--		if (pollingcnts != 0)
-+		if (pollingcnts)
- 			val32 = r8712_read32(padapter, IOCMD_DATA_REG);
- 		else /* time out */
- 			val32 = 0;
-@@ -289,12 +289,12 @@ u8 r8712_fw_cmd(struct _adapter *pAdapter, u32 cmd)
- 
- 	r8712_write32(pAdapter, IOCMD_CTRL_REG, cmd);
- 	msleep(100);
--	while ((0 != r8712_read32(pAdapter, IOCMD_CTRL_REG)) &&
-+	while ((r8712_read32(pAdapter, IOCMD_CTRL_REG)) &&
- 	       (pollingcnts > 0)) {
- 		pollingcnts--;
- 		msleep(20);
- 	}
--	if (pollingcnts == 0)
-+	if (!pollingcnts)
- 		return false;
- 	return true;
- }
-@@ -346,10 +346,10 @@ _next:
- 			pdesc->txdw0 |= cpu_to_le32((wr_sz-TXDESC_SIZE) &
- 						     0x0000ffff);
- 			if (pdvobj->ishighspeed) {
--				if ((wr_sz % 512) == 0)
-+				if (!wr_sz % 512)
- 					blnPending = 1;
- 			} else {
--				if ((wr_sz % 64) == 0)
-+				if (!wr_sz % 64)
- 					blnPending = 1;
- 			}
- 			if (blnPending) /* 32 bytes for TX Desc - 8 offset */
--- 
-1.9.1
-
+> ---
+>  drivers/staging/iio/cdc/ad7746.c | 7 -------
+>  1 file changed, 7 deletions(-)
+>
+> diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
+> index 028b4e8..a4bb152 100644
+> --- a/drivers/staging/iio/cdc/ad7746.c
+> +++ b/drivers/staging/iio/cdc/ad7746.c
+> @@ -27,11 +27,7 @@
+>
+>  #define AD7746_REG_STATUS              0
+>  #define AD7746_REG_CAP_DATA_HIGH       1
+> -#define AD7746_REG_CAP_DATA_MID                2
+> -#define AD7746_REG_CAP_DATA_LOW                3
+>  #define AD7746_REG_VT_DATA_HIGH                4
+> -#define AD7746_REG_VT_DATA_MID         5
+> -#define AD7746_REG_VT_DATA_LOW         6
+>  #define AD7746_REG_CAP_SETUP           7
+>  #define AD7746_REG_VT_SETUP            8
+>  #define AD7746_REG_EXC_SETUP           9
+> @@ -39,11 +35,8 @@
+>  #define AD7746_REG_CAPDACA             11
+>  #define AD7746_REG_CAPDACB             12
+>  #define AD7746_REG_CAP_OFFH            13
+> -#define AD7746_REG_CAP_OFFL            14
+>  #define AD7746_REG_CAP_GAINH           15
+> -#define AD7746_REG_CAP_GAINL           16
+>  #define AD7746_REG_VOLT_GAINH          17
+> -#define AD7746_REG_VOLT_GAINL          18
+>
+>  /* Status Register Bit Designations (AD7746_REG_STATUS) */
+>  #define AD7746_STATUS_EXCERR           BIT(3)
+> --
+> 2.1.4
 
