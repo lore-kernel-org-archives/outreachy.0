@@ -1,247 +1,118 @@
-X-GM-THRID: 6885970595942498304
-X-Received: by 2002:a9d:3a09:: with SMTP id j9mr1667170otc.312.1603264966229;
-        Wed, 21 Oct 2020 00:22:46 -0700 (PDT)
+X-GM-THRID: 6206644398472560640
+X-Received: by 10.107.155.130 with SMTP id d124mr19124663ioe.28.1445097010208;
+        Sat, 17 Oct 2015 08:50:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6830:1f59:: with SMTP id u25ls1128129oth.1.gmail; Wed,
- 21 Oct 2020 00:22:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQPuRUKeRdrs1A7eIhhIDrKIXBH5AUpU4gyaV7uPNp5e87hYcci2GUmf33qLYcwxIguJGp
-X-Received: by 2002:a05:6830:2436:: with SMTP id k22mr1639475ots.185.1603264964979;
-        Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603264964; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CszeFwBdwzrNlB6bEiObASmtWdJEJY3AkA1Q17VnKl9gTEn1Hlbrir7QFd8NrFIqaF
-         EuKK/5fHv8zIcSDtfYBtrxfz0TW+Nq40e27HbbdpCFwVJp7hhSldEXjki0CoofGTSvyP
-         Wa0efVzl8GUQkYbfNxU9WbJaVJZm6b+GAMtztpRQfn+U1ZmLaPBdHOW1bpp25OFCzgFO
-         E9ZohbTiFLGhiaUml8ZOsRw0hM48SshQiW7YpwPCeax2hhU2fkzN+odnGDcPqUAi4Utq
-         TC7/qSiJ0HY+WlbiPBqKvLYCeItQFt7RoduP2E2i/g37pj897b3JbPQxcnYa3GOIRzEi
-         uDCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=TDUK2ueSGjIe6K+YFlkySvwrKftZbl2/og1v3K5Fvho=;
-        b=s1acqxDowZ1PwbBWjCUaJXC81WLAdCyRfTz+w7F54+WdGmGTUYrNg6Z+jFc0ELl/to
-         JT+Gjzl5zmyCrBEVBqRrhweSx1D4VJ5jLWUb1fflJM8opLvtDGb+sERet1D7ZsR0DHTD
-         nOk3w6yKHX7SIdNQ/kBgIa+NXn5E2+D2DFWCzTOVjodyDaIB1eBqGA1YcQnNfSqiGYSz
-         lpuFtP4OwJjUijvkSjwwsYZPdRcO/eXEE+TgoNkbD0B+3/CakeNOW5hJJQwCUG3y1Std
-         TWvbs5C7sEYnQmpfxJn0JyGBeB4CY2J0u4ziRS3EJMAWIUAh9NOogc8vF/xo4BgepWQ+
-         vXiQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OBi+Qzvj;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
-        by gmr-mx.google.com with ESMTPS id d22si139077ooj.1.2020.10.21.00.22.44
+Received: by 10.50.1.52 with SMTP id 20ls443000igj.1.gmail; Sat, 17 Oct 2015
+ 08:50:08 -0700 (PDT)
+X-Received: by 10.107.14.196 with SMTP id 187mr18494052ioo.24.1445097008288;
+        Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id ce6si2040484pad.0.2015.10.17.08.50.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OBi+Qzvj;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x642.google.com with SMTP id t18so776547plo.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x234.google.com with SMTP id fv9so50701781pac.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=TDUK2ueSGjIe6K+YFlkySvwrKftZbl2/og1v3K5Fvho=;
-        b=OBi+Qzvjm6zbf2H3I+dHK8W52+iXxbsUBCrWB7Zlimu44wRJAJhF2YTtl2aAPzw45P
-         yLi+lnLZvwNXC9ssHHPzQ9ho00HeZ0q4Fu4qskKQ8qG6a+UbARJTZFoUgIDKhmM+a3Mn
-         NPNJqEJMoguATa3u9ciA5yf7TxCVyR5BopVFeNNG5GmCE4BFyhy63kVLqHTT79pc/95w
-         7bVhb8avF1O7sfV3RNZ9Aqbm1YAODwAFSFhIYelH4CqxlzKHcsZkGDbyYSz4opL5juzb
-         Cnx4W6JT5P+d1Cx9kzmL2Vug4V0Mq/afk7Wiu88UT+Y5mfvYDBxYShY4RABPSoyqDujS
-         8E7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=TDUK2ueSGjIe6K+YFlkySvwrKftZbl2/og1v3K5Fvho=;
-        b=tuIMPCj3dwscfoBt9flxnctrSlgK8y/UD5/DToo00XiNJu2Aqzjg3u8d1jyKNjnuJF
-         lQM4DMfWsx3BPCOwxFuuKbgQnO+ujSA3EIkeiiiJeQ2wrf6p5ccyKU1dLsyovEOcjGih
-         WsnwqWv/psamHdpONKavhNT1LjdJLeKUuzmDCYOTdDbZmje2LV2fPu6rULISWHA0q4Xr
-         zN8ZaNLxmz1OIjqFiPvzP3sjD7xQLmhCWJDJNIJP4KQfvOyyoP1QUt7z1PmiGM+iKFQl
-         fRefvMjTXFvXJCmyb8E8qC54EnF7TJlPhvmI3+r0R2ziMB6vXSj2FnRYprolS4WSZByI
-         Ai5g==
-X-Gm-Message-State: AOAM530A7TzlPccvSJYRArVh9OyTqZhj7pYQLP9zieBvb2YkmbyKwSWD
-	1JZse1olyLdYi2IoOvHxHlQ=
-X-Received: by 2002:a17:902:d355:b029:d4:d88c:ded9 with SMTP id l21-20020a170902d355b02900d4d88cded9mr2226257plk.13.1603264964258;
-        Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id k127sm1419005pgk.10.2020.10.21.00.22.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Oct 2020 00:22:43 -0700 (PDT)
-Date: Wed, 21 Oct 2020 12:52:39 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org
-Cc: mh12gx2825@gmail.com
-Subject: [PATCH v2 1/3] staging: kpc2000: rearrange lines exceeding 100
- columns
-Message-ID: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=O6mYUh/nJ7vvdAnXJFa75KfHL5M6CtRO9UzrGvAmgcA=;
+        b=JWkKWLHBILJc1Z0RwmVkqVVr28smFqMn0VzKdYYRdHPSjmSIE7A/TnQwmiHd0WxMpF
+         KGHWXm/delZhbpgDDjA1AuPZ6i5+zm+crZ1DwkaQ7LAOjeASd2jw07ciYdrud/KeqESh
+         WYdeKO/HSb1r0XAqxSqhk+ef7aKblMy0ljLNth1oCemAQ5dzpMIGLZXsPcsFMnAFyV84
+         Yr/EdhfIu4DN3umEXwz53urCNJhYJ8TPypDaxz7drb+3PB+I2NNoDhPYqoPPCAK6qhrX
+         aHNE+Mhuj2HUDqdt5Sv55kbulEAGVNAtsGeepv0gunP6zCZ4epVtsWHTAtfGH/CeHMN+
+         jOwQ==
+X-Received: by 10.68.105.164 with SMTP id gn4mr24049883pbb.44.1445097008069;
+        Sat, 17 Oct 2015 08:50:08 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.64.146.165])
+        by smtp.gmail.com with ESMTPSA id i9sm27247708pbq.84.2015.10.17.08.50.05
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sat, 17 Oct 2015 08:50:07 -0700 (PDT)
+Date: Sat, 17 Oct 2015 21:20:00 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: sm750fb: Prefer using BIT Macro
+Message-ID: <20151017155000.GA15425@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Reformat lines that exceed 100 column in length. Issue reported by
-checkpatch script.
+Replace bit shifting on 1 with the BIT(x) Macro
+Problem found using checkpatch.pl
+WARNING: 'Prefer using the BIT macro'
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
-Changes since v1:
-   - Separate specific checkpatch issues into individual patches.
-   - Updated patch subject and description to be specific to the issue
-     being fixed.
-   - Introduced patch 3/3.
-   - Suggested by Vaishali T.
+ drivers/staging/sm750fb/ddk750_display.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
- drivers/staging/kpc2000/kpc2000/cell_probe.c | 71 +++++++++++++++-----
- 1 file changed, 55 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-index 738122afc2ae..e7e963d62699 100644
---- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
-+++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-@@ -30,9 +30,12 @@
-  *
-  */
+diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+index 3d2e8b4..ca35aa1 100644
+--- a/drivers/staging/sm750fb/ddk750_display.h
++++ b/drivers/staging/sm750fb/ddk750_display.h
+@@ -17,7 +17,7 @@
+ 	0: both off
+ */
+ #define PRI_TP_OFFSET 4
+-#define PRI_TP_MASK (1 << PRI_TP_OFFSET)
++#define PRI_TP_MASK BIT(PRI_TP_OFFSET)
+ #define PRI_TP_USAGE (PRI_TP_MASK << 16)
+ #define PRI_TP_ON ((0x1 << PRI_TP_OFFSET)|PRI_TP_USAGE)
+ #define PRI_TP_OFF ((0x0 << PRI_TP_OFFSET)|PRI_TP_USAGE)
+@@ -27,18 +27,18 @@
+ 	80000[27:24]
+ */
+ #define PNL_SEQ_OFFSET 6
+-#define PNL_SEQ_MASK (1 << PNL_SEQ_OFFSET)
++#define PNL_SEQ_MASK BIT(PNL_SEQ_OFFSET)
+ #define PNL_SEQ_USAGE (PNL_SEQ_MASK << 16)
+-#define PNL_SEQ_ON ((1 << PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
++#define PNL_SEQ_ON (BIT(PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
+ #define PNL_SEQ_OFF ((0 << PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
  
--#define KPC_OLD_DMA_CH_NUM(present, channel)   ((present) ? (0x8 | ((channel) & 0x7)) : 0)
--#define KPC_OLD_S2C_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
--#define KPC_OLD_C2S_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
-+#define KPC_OLD_DMA_CH_NUM(present, channel)   \
-+		((present) ? (0x8 | ((channel) & 0x7)) : 0)
-+#define KPC_OLD_S2C_DMA_CH_NUM(cte)   \
-+		KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
-+#define KPC_OLD_C2S_DMA_CH_NUM(cte)   \
-+		KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
+ /* dual digital output
+ 	80000[19]
+ */
+ #define DUAL_TFT_OFFSET 8
+-#define DUAL_TFT_MASK (1 << DUAL_TFT_OFFSET)
++#define DUAL_TFT_MASK BIT(DUAL_TFT_OFFSET)
+ #define DUAL_TFT_USAGE (DUAL_TFT_MASK << 16)
+-#define DUAL_TFT_ON ((1 << DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
++#define DUAL_TFT_ON (BIT(DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
+ #define DUAL_TFT_OFF ((0 << DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
  
- #define KP_CORE_ID_INVALID      0
- #define KP_CORE_ID_I2C          3
-@@ -67,7 +70,8 @@ void  parse_core_table_entry_v0(struct core_table_entry *cte, const u64 read_val
- static
- void dbg_cte(struct kp2000_device *pcard, struct core_table_entry *cte)
- {
--	dev_dbg(&pcard->pdev->dev, "CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
-+	dev_dbg(&pcard->pdev->dev,
-+		"CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
- 		cte->type,
- 		cte->offset,
- 		cte->offset / 4096,
-@@ -107,7 +111,14 @@ static int probe_core_basic(unsigned int core_num, struct kp2000_device *pcard,
- 		.ddna              = pcard->ddna,
- 	};
- 
--	dev_dbg(&pcard->pdev->dev, "Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
-+	dev_dbg(&pcard->pdev->dev,
-+		"Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
-+		cte.type,
-+		KPC_OLD_S2C_DMA_CH_NUM(cte),
-+		KPC_OLD_C2S_DMA_CH_NUM(cte),
-+		cte.offset,
-+		cte.length,
-+		cte.length / 8);
- 
- 	cell.platform_data = &core_pdata;
- 	cell.pdata_size = sizeof(struct kpc_core_device_platdata);
-@@ -290,7 +301,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
- 	struct kpc_uio_device *kudev;
- 	int rv;
- 
--	dev_dbg(&pcard->pdev->dev, "Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
-+	dev_dbg(&pcard->pdev->dev,
-+		"Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
-+		cte.type,
-+		KPC_OLD_S2C_DMA_CH_NUM(cte),
-+		KPC_OLD_C2S_DMA_CH_NUM(cte),
-+		cte.offset,
-+		cte.length,
-+		cte.length / 8);
- 
- 	kudev = kzalloc(sizeof(*kudev), GFP_KERNEL);
- 	if (!kudev)
-@@ -315,10 +333,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
- 
- 	kudev->uioinfo.mem[0].name = "uiomap";
- 	kudev->uioinfo.mem[0].addr = pci_resource_start(pcard->pdev, REG_BAR) + cte.offset;
--	kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1); // Round up to nearest PAGE_SIZE boundary
-+
-+	// Round up to nearest PAGE_SIZE boundary
-+	kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
- 	kudev->uioinfo.mem[0].memtype = UIO_MEM_PHYS;
- 
--	kudev->dev = device_create(kpc_uio_class, &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d", kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
-+	kudev->dev = device_create(kpc_uio_class,
-+				   &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d",
-+				   kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
- 	if (IS_ERR(kudev->dev)) {
- 		dev_err(&pcard->pdev->dev, "%s: device_create failed!\n",
- 			__func__);
-@@ -341,7 +363,9 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
- 	return 0;
- }
- 
--static int  create_dma_engine_core(struct kp2000_device *pcard, size_t engine_regs_offset, int engine_num, int irq_num)
-+static int  create_dma_engine_core(struct kp2000_device *pcard,
-+				   size_t engine_regs_offset,
-+				   int engine_num, int irq_num)
- {
- 	struct mfd_cell  cell = { .id = engine_num };
- 	struct resource  resources[2];
-@@ -380,18 +404,28 @@ static int  kp2000_setup_dma_controller(struct kp2000_device *pcard)
- 
- 	// S2C Engines
- 	for (i = 0 ; i < 32 ; i++) {
--		capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
-+		capabilities_reg = readq(pcard->dma_bar_base +
-+					 KPC_DMA_S2C_BASE_OFFSET +
-+					 (KPC_DMA_ENGINE_SIZE * i));
-+
- 		if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
--			err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), i,  pcard->pdev->irq);
-+			err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET +
-+							    (KPC_DMA_ENGINE_SIZE * i)),
-+						     i, pcard->pdev->irq);
- 			if (err)
- 				goto err_out;
- 		}
- 	}
- 	// C2S Engines
- 	for (i = 0 ; i < 32 ; i++) {
--		capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
-+		capabilities_reg = readq(pcard->dma_bar_base +
-+					 KPC_DMA_C2S_BASE_OFFSET +
-+					 (KPC_DMA_ENGINE_SIZE * i));
-+
- 		if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
--			err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), 32 + i,  pcard->pdev->irq);
-+			err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET +
-+							    (KPC_DMA_ENGINE_SIZE * i)),
-+						     32 + i,  pcard->pdev->irq);
- 			if (err)
- 				goto err_out;
- 		}
-@@ -433,10 +467,15 @@ int  kp2000_probe_cores(struct kp2000_device *pcard)
- 	// Then, iterate over the possible core types.
- 	for (current_type_id = 1 ; current_type_id <= highest_core_id ; current_type_id++) {
- 		unsigned int core_num = 0;
--		// Foreach core type, iterate the whole table and instantiate subdevices for each core.
--		// Yes, this is O(n*m) but the actual runtime is small enough that it's an acceptable tradeoff.
-+		/*
-+		 * Foreach core type, iterate the whole table and instantiate
-+		 * subdevices for each core.
-+		 * Yes, this is O(n*m) but the actual runtime is small enough
-+		 * that it's an acceptable tradeoff.
-+		 */
- 		for (i = 0 ; i < pcard->core_table_length ; i++) {
--			read_val = readq(pcard->sysinfo_regs_base + ((pcard->core_table_offset + i) * 8));
-+			read_val = readq(pcard->sysinfo_regs_base +
-+					 ((pcard->core_table_offset + i) * 8));
- 			parse_core_table_entry(&cte, read_val, pcard->core_table_rev);
- 
- 			if (cte.type != current_type_id)
+ /* secondary timing & plane enable bit
+@@ -46,7 +46,7 @@
+ 	0: both off
+ */
+ #define SEC_TP_OFFSET 5
+-#define SEC_TP_MASK (1 << SEC_TP_OFFSET)
++#define SEC_TP_MASK BIT(SEC_TP_OFFSET)
+ #define SEC_TP_USAGE (SEC_TP_MASK << 16)
+ #define SEC_TP_ON  ((0x1 << SEC_TP_OFFSET)|SEC_TP_USAGE)
+ #define SEC_TP_OFF ((0x0 << SEC_TP_OFFSET)|SEC_TP_USAGE)
+@@ -65,7 +65,7 @@
+ 	4[20]
+ */
+ #define DAC_OFFSET 7
+-#define DAC_MASK (1 << DAC_OFFSET)
++#define DAC_MASK BIT(DAC_OFFSET)
+ #define DAC_USAGE (DAC_MASK << 16)
+ #define DAC_ON ((0x0 << DAC_OFFSET)|DAC_USAGE)
+ #define DAC_OFF ((0x1 << DAC_OFFSET)|DAC_USAGE)
 -- 
-2.25.1
+1.9.1
 
 
