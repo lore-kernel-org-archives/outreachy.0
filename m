@@ -1,74 +1,62 @@
 X-GM-THRID: 6205668721559601152
-X-Received: by 10.129.107.139 with SMTP id g133mr18580814ywc.38.1445106236466;
-        Sat, 17 Oct 2015 11:23:56 -0700 (PDT)
+X-Received: by 10.112.136.99 with SMTP id pz3mr4872517lbb.11.1445081357235;
+        Sat, 17 Oct 2015 04:29:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.52 with SMTP id t49ls1853975qge.1.gmail; Sat, 17 Oct
- 2015 11:23:55 -0700 (PDT)
-X-Received: by 10.140.196.76 with SMTP id r73mr18232503qha.3.1445106235871;
-        Sat, 17 Oct 2015 11:23:55 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id wl2si2588472pab.1.2015.10.17.11.23.55
+Received: by 10.180.189.104 with SMTP id gh8ls317516wic.51.canary; Sat, 17 Oct
+ 2015 04:29:16 -0700 (PDT)
+X-Received: by 10.180.10.135 with SMTP id i7mr2392727wib.2.1445081356915;
+        Sat, 17 Oct 2015 04:29:16 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
+        by gmr-mx.google.com with ESMTPS id m4si241921wib.0.2015.10.17.04.29.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 11:23:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 17 Oct 2015 04:29:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id fb7so7180510pad.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 11:23:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=content-type:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=UwyBD0gLFr6lFXIsJ+DF68kA62uvg/jLM1kn0uY0Okg=;
-        b=dfQqUC/3PfoCjwEFrH0qm5VWEhhSm/mFlc3QYTV7NxpoGzrN1pVDnZVmmyfxrghTzG
-         u/bXiqmpuh/5Jw4TBQKiIfbqXqAL0WSlC/64HlWbtsrHIoz4DLUSANYXjDgQRtoYhYf7
-         gstxanP7doptN542lKzJFmVQh1BDol5nnkXhR9KCwkDwW4tJ+iXK9PZhlzapJRSNy48J
-         MJ3lpEr9iqo4CmBwvTy6lp4POsM3NQrBAU5wqnlo2PlRSrgcn1kcOUe6Sh9cLEJ5LPgG
-         OfACTFck3mJV5aBuff3+AmzZXy4/63H1v9KQlIArLxX+mmCWCEn4PLwnclHHUSD/zxe2
-         ZGrg==
-X-Received: by 10.66.194.138 with SMTP id hw10mr24620252pac.71.1445106235741;
-        Sat, 17 Oct 2015 11:23:55 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from ?IPv6:2601:647:4700:de30:de3:6654:e7cb:47b7? ([2601:647:4700:de30:de3:6654:e7cb:47b7])
-        by smtp.gmail.com with ESMTPSA id gj10sm27729595pbc.68.2015.10.17.11.23.55
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 17 Oct 2015 11:23:55 -0700 (PDT)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (1.0)
+       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue104) with ESMTPSA (Nemesis) id 0Mhl9H-1a9Bow3UnL-00MvDl; Sat, 17 Oct
+ 2015 13:29:13 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Deepa Dinamani <deepa.kernel@gmail.com>, y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Y2038] [Outreachy kernel] Re: [PATCH] staging: ft1000: replace timeval with ktime_t
-From: Deepa Dinamani <deepa.kernel@gmail.com>
-X-Mailer: iPad Mail (13B137)
-In-Reply-To: <14714669.cmuInrGK0Q@wuerfel>
-Date: Sat, 17 Oct 2015 11:23:55 -0700
-Cc: Greg KH <gregkh@linuxfoundation.org>, y2038@lists.linaro.org,
- outreachy-kernel@googlegroups.com
-Content-Transfer-Encoding: 7bit
-Message-Id: <4CDC6B9C-A188-4AFB-BCFB-FFC79FA74566@gmail.com>
-References: <1444869780-26658-1-git-send-email-deepa.kernel@gmail.com> <929BCFA7-B28D-4B76-9006-A488345D945F@gmail.com> <20151017055511.GA30187@kroah.com> <14714669.cmuInrGK0Q@wuerfel>
-To: Arnd Bergmann <arnd@arndb.de>
+Date: Sat, 17 Oct 2015 13:29:13 +0200
+Message-ID: <14714669.cmuInrGK0Q@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151017055511.GA30187@kroah.com>
+References: <1444869780-26658-1-git-send-email-deepa.kernel@gmail.com> <929BCFA7-B28D-4B76-9006-A488345D945F@gmail.com> <20151017055511.GA30187@kroah.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:aP0kNSj+a6f9Hz0+qG3hvnv4NJWvtE/n8l/6S0cushVavw2DzCq
+ wpON63bnteATE0V5V1hOXWL7MquLh22CL6oEGuHMOJe61ddwdV8Iu5nehMqRMFgjJXRkADM
+ ETj5Qx6+sQdUCi0bwADN+FRCUOrUlnMUpVqWEy7NZv+eQYo4v+p567u9TVTXqDmMKQLMazI
+ ocTYcEAgdO2cFtNDyolzQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:1WlR0ab/+WY=:xxW9i0U9KS38qMWQnm0hAr
+ MX27/Vcv6Z1ByQxbyvHtIfOLIHar1pfp2uljPMjBOtaDM7sg1yJO1AzSp7WAPwSTLkX279ReU
+ zzmbjscHUoHnGbmFUSdYXllV9BMwo81afKBJawHBFGpayUOKrq5NqDc3XY7QmXeSdpzaFI0do
+ 4RDe/NxnPF9E6qT1oiGkURUR2wCxUz31efi0mX9ple70i628ShqsTsAFWUVCkmDbU88+Cybbh
+ 845r2fuGmwU3wz9bKHe2Ub3eDCmAIfY3F6OHqQZG8O2gASmsmPwY04DQIA322uZJ0B8EbtGM2
+ 4ejUJRRa5aWWDLSXZIJH+npZRWIPMpjfWQOzaTRLpCEKbBsowZi8lZOfNnMLPASKDJ734W71B
+ G/Ims3bXG0UHUfcxSy2Pu8J7cjZ9ZaV45rky53CUY2VWpGQIL6gb13mXk5mv9BpKFaL41XYiu
+ JAwJkbc+3eGIkuVxLS7lXBmLgjDanxKp+MfYo+/cu8IrVJUYzI85nr1CpxIqtCqaqo5svlPln
+ piY/57lZibPpPGGeDjVX8SVDOEr7fUIvfGmOukvPHBmXskgu+jzQJidedZ3Fjq4q9FkS4eugh
+ vdo+KqOLs6fljR2knQ/iEPE0k0xIx2CM+cgqkB12kRloVL8cK3idAviMWvGl08lWit0M/shpo
+ Skcqbmr4iz4+ojvOa05WAwW+A5Is7vR3CQhOd6Ga+Ko4iNQ2+SwOnuBNdZHWJQwTSAXSBaEES
+ vn1o0cgGSVGCIuVH
 
-
-
-> On Oct 17, 2015, at 04:29, Arnd Bergmann <arnd@arndb.de> wrote:
+On Friday 16 October 2015 22:55:11 Greg KH wrote:
+> On Fri, Oct 16, 2015 at 05:32:25PM -0700, Deepa Dinamani wrote:
+> > Should I then fix this patch as per your suggestion or let it be?
 > 
->> On Friday 16 October 2015 22:55:11 Greg KH wrote:
->>> On Fri, Oct 16, 2015 at 05:32:25PM -0700, Deepa Dinamani wrote:
->>> Should I then fix this patch as per your suggestion or let it be?
->> 
->> Let's just delete the driver from the tree.
-> 
-> Ok.
-> 
-> Deepa, can you send a patch to remove the driver with an explanation
-> of why it's no longer used?
+> Let's just delete the driver from the tree.
 
-Sure. Will do.
+Ok.
 
--Deepa
+Deepa, can you send a patch to remove the driver with an explanation
+of why it's no longer used?
+
+	Arnd
 
