@@ -1,76 +1,81 @@
 X-GM-THRID: 6206645020679733248
-X-Received: by 10.66.147.33 with SMTP id th1mr14035155pab.27.1445159038360;
-        Sun, 18 Oct 2015 02:03:58 -0700 (PDT)
+X-Received: by 10.194.240.230 with SMTP id wd6mr5105989wjc.0.1445100740288;
+        Sat, 17 Oct 2015 09:52:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.69 with SMTP id w66ls853857ioi.58.gmail; Sun, 18 Oct
- 2015 02:03:57 -0700 (PDT)
-X-Received: by 10.66.90.231 with SMTP id bz7mr4193418pab.31.1445159037914;
-        Sun, 18 Oct 2015 02:03:57 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id fa8si6308pab.1.2015.10.18.02.03.57
+Received: by 10.180.126.5 with SMTP id mu5ls363707wib.17.gmail; Sat, 17 Oct
+ 2015 09:52:19 -0700 (PDT)
+X-Received: by 10.194.71.107 with SMTP id t11mr1817481wju.6.1445100739788;
+        Sat, 17 Oct 2015 09:52:19 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id cm6si355963wib.1.2015.10.17.09.52.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 02:03:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 17 Oct 2015 09:52:19 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pabrc13 with SMTP id rc13so160817327pab.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 02:03:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=QMoKJL+TxyxoonWCobd7mdXJUcxo3UWvzM4M7gT6xIw=;
-        b=EeSrBK0x/G0SCM1DR8B4TVHwUK5wZH5LC0JTnqHGIL44qiRfiZxQaEOm4auUyiBD4G
-         9VeHj55nLEUprZHlOKTi99Txh+fHoLjXG15ik77NAm9IOQTWhaUIZPnPiBWJ478SJCGs
-         v1nxmlEgy3zXKYuv4m7bDeKLQR19WglhXcvYxtULMtYeJy53fHFcYPXLFdUbO6D95psX
-         oMaZRsjUm8vwvIlXU5QDpefidvYGC5IfauRooLN0+DIUdcDcTc36rek+v9AlVhsfT2Q3
-         ifyNf4GmKuRiZ+BMHDTwuchDJwKa9bNYUp7RDZPCoiTj7J7xXmWTwsm4CfqvmNcewYmb
-         lTEA==
-X-Received: by 10.68.100.226 with SMTP id fb2mr27385953pbb.92.1445159037778;
-        Sun, 18 Oct 2015 02:03:57 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.120.246])
-        by smtp.gmail.com with ESMTPSA id oo2sm30132492pbb.86.2015.10.18.02.03.56
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 18 Oct 2015 02:03:57 -0700 (PDT)
-Date: Sun, 18 Oct 2015 17:03:53 +0800
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,693,1437429600"; 
+   d="scan'208";a="150875783"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Oct 2015 18:52:19 +0200
+Date: Sat, 17 Oct 2015 18:52:18 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Eva Rachel Retuya <eraretuya@gmail.com>
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: mt29f_spinand: Remove space
  after a cast
-Message-ID: <20151018090250.GA4509@Socrates-Mint>
+In-Reply-To: <20151017155226.GA6368@Socrates-Mint>
+Message-ID: <alpine.DEB.2.02.1510171850000.2093@localhost6.localdomain6>
 References: <20151017155226.GA6368@Socrates-Mint>
- <alpine.DEB.2.02.1510171850000.2093@localhost6.localdomain6>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1510171850000.2093@localhost6.localdomain6>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Sat, Oct 17, 2015 at 06:52:18PM +0200, Julia Lawall wrote:
-> On Sat, 17 Oct 2015, Eva Rachel Retuya wrote:
-> 
-> > Modify retval to reflect removal of space during cast operation.
-> 
-> Thanks for your patch.  However, the commit message is a bit confusing.  
-> Retval is not modified.  Actually, there is not much to say beyond what 
-> you have in the subject line.  Maybe you could say "Remove the unneeded 
-> space before retval".
-> 
-> Please send v2.
-> 
-> julia
->
+On Sat, 17 Oct 2015, Eva Rachel Retuya wrote:
 
-Sorry I made it confusing. I will revise according to your suggestion.
-Thank you for the feedback!
+> Modify retval to reflect removal of space during cast operation.
 
-Eva
- 
+Thanks for your patch.  However, the commit message is a bit confusing.  
+Retval is not modified.  Actually, there is not much to say beyond what 
+you have in the subject line.  Maybe you could say "Remove the unneeded 
+space before retval".
+
+Please send v2.
+
+julia
+
+> Checkpatch found this issue.
+> 
+> CHECK: No space is necessary after a cast
+> 
+> Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+> ---
+>  drivers/staging/mt29f_spinand/mt29f_spinand.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+> index 1aa449e..cf98228 100644
+> --- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
+> +++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+> @@ -594,7 +594,7 @@ static int spinand_erase_block(struct spi_device *spi_nand, u16 block_id)
+>  		if (retval < 0) {
+>  			dev_err(&spi_nand->dev,
+>  					"error %d reading status register\n",
+> -					(int) retval);
+> +					(int)retval);
+>  			return retval;
+>  		}
+>  
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151017155226.GA6368%40Socrates-Mint.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
