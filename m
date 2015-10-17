@@ -1,70 +1,66 @@
 X-GM-THRID: 6205612297408217088
-X-Received: by 10.112.150.229 with SMTP id ul5mr4713769lbb.2.1445068598199;
-        Sat, 17 Oct 2015 00:56:38 -0700 (PDT)
+X-Received: by 10.66.123.74 with SMTP id ly10mr15554296pab.41.1445066203437;
+        Sat, 17 Oct 2015 00:16:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.39.162 with SMTP id q2ls290038wik.20.canary; Sat, 17 Oct
- 2015 00:56:37 -0700 (PDT)
-X-Received: by 10.194.94.66 with SMTP id da2mr4627736wjb.7.1445068597818;
-        Sat, 17 Oct 2015 00:56:37 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
-        by gmr-mx.google.com with ESMTPS id go9si137341wib.3.2015.10.17.00.56.37
+Received: by 10.182.40.134 with SMTP id x6ls898116obk.40.gmail; Sat, 17 Oct
+ 2015 00:16:43 -0700 (PDT)
+X-Received: by 10.182.28.100 with SMTP id a4mr16291480obh.20.1445066203136;
+        Sat, 17 Oct 2015 00:16:43 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id zg1si2450007pbb.2.2015.10.17.00.16.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 00:56:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 17 Oct 2015 00:16:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x231.google.com with SMTP id gb1so35354326wic.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 00:56:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=VbjbuYz7J2B/wPOVCPhG91qOSX/2jzt4qqfYI/Et3W0=;
-        b=HI4FQwY630C4rKluFatr2sYGyZXIlsVWG1UXw1RaF0z8aiD+0ikcUbqhkZOICPBh5S
-         Q+TU9g1j5ZGRKzCH+/61dT/61BbG6gRZhMxl3fCKS21YdBnNEthrvR/Pm6d6gcbQoS00
-         svERzw2zHteXM1t4UOFYQTHKuaB74AXnKqClRCidW9yzAd6dwlBni4pS3Gksr8TYS+K5
-         0UXUHl/FeLMhNWSrpZ/xQDThjf9aTMnuVfvW4/dm/UA0SDLn1plNbs1MfmDRC/w2YRj3
-         7LYwqHiAIQ8r8n2LEu/AZlUBErf4t9wgkzH6osfClo+NrokwY0I1j9sGzkklEFzzf2B8
-         8cGg==
-X-Received: by 10.180.85.165 with SMTP id i5mr1212566wiz.79.1445068597717;
-        Sat, 17 Oct 2015 00:56:37 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by smtp.gmail.com with ESMTPSA id fz2sm6168678wic.2.2015.10.17.00.56.36
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 17 Oct 2015 00:56:37 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v2 0/4]Staging: lustre: Use static inline functions instead of macros
-Date: Sat, 17 Oct 2015 09:56:24 +0200
-Message-Id: <cover.1445067394.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id AED4E9D;
+	Sat, 17 Oct 2015 07:16:42 +0000 (UTC)
+Date: Sat, 17 Oct 2015 00:16:42 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/4] Staging: lustre: include: Move
+ function prototypes
+Message-ID: <20151017071642.GA27949@kroah.com>
+References: <cover.1444856328.git.ksenija.stanojevic@gmail.com>
+ <06092be207de8d5980babdcc7e8d9f1140ebd856.1444856328.git.ksenija.stanojevic@gmail.com>
+ <20151017052453.GA19124@kroah.com>
+ <CAL7P5jLo4S91AsoYSt3FgQT1qDYwcG=43iH1R2chopjQC0gwug@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL7P5jLo4S91AsoYSt3FgQT1qDYwcG=43iH1R2chopjQC0gwug@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Convert macros class_export_lock_get and class_export_lock_put into static inline
-functions and also remove some unused macros.
+On Sat, Oct 17, 2015 at 09:09:19AM +0200, Ksenija Stanojević wrote:
+> Hi,
+> 
+> On Sat, Oct 17, 2015 at 7:24 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> > On Wed, Oct 14, 2015 at 11:06:28PM +0200, Ksenija Stanojevic wrote:
+> >> Function prototypes need to be declared before functions are being
+> >> used.
+> >
+> > They do?  What problem is this patch fixing, I don't see the error...
+> 
+> These functions:
+> 
+> +struct obd_export *class_export_get(struct obd_export *exp);
+> +void class_export_put(struct obd_export *exp)
+> 
+>  are used in macros that I changed into static inline
+> functions. So if I don't move them, there will be warning: implicit
+> declaration...
 
-Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com>
+Ah, then you needed to say that, please be more specific, I dropped this
+patch, and then the later ones failed horribly.
 
-Changes in v2:
-	- be more specific in commit message
+Please fix up and resend the series.
 
-Ksenija Stanojevic (4):
-  Staging: lustre: include: Move function prototypes
-  Staging: lustre: include: Convert macro class_export_lock_get into
-    static inline function
-  Staging: lustre: include: Convert macro class_export_lock_put into
-    static inline function
-  Staging: lustre: include : Remove unused macros
+thanks,
 
- drivers/staging/lustre/lustre/include/obd_class.h | 90 ++++++++++-------------
- 1 file changed, 38 insertions(+), 52 deletions(-)
-
--- 
-1.9.1
-
+greg k-h
 
