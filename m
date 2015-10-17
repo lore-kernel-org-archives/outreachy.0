@@ -1,89 +1,61 @@
 X-GM-THRID: 6206327457482539008
-X-Received: by 10.112.136.99 with SMTP id pz3mr4822038lbb.11.1445078002821;
-        Sat, 17 Oct 2015 03:33:22 -0700 (PDT)
+X-Received: by 10.31.178.196 with SMTP id b187mr15986673vkf.3.1445058403206;
+        Fri, 16 Oct 2015 22:06:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.163.194 with SMTP id m185ls362866lfe.66.gmail; Sat, 17 Oct
- 2015 03:33:22 -0700 (PDT)
-X-Received: by 10.112.198.33 with SMTP id iz1mr4777490lbc.8.1445078002052;
-        Sat, 17 Oct 2015 03:33:22 -0700 (PDT)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id q6si204236wif.2.2015.10.17.03.33.22
+Received: by 10.140.37.114 with SMTP id q105ls1608185qgq.14.gmail; Fri, 16 Oct
+ 2015 22:06:42 -0700 (PDT)
+X-Received: by 10.129.157.18 with SMTP id u18mr15438334ywg.28.1445058402586;
+        Fri, 16 Oct 2015 22:06:42 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id pe1si2299677pac.2.2015.10.16.22.06.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 03:33:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        Fri, 16 Oct 2015 22:06:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id fv8so20279543wic.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 03:33:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=3veE27a8emBHPhm0om0hKhIxlyqEjtGI6AaEDA/37pk=;
-        b=sskmA/nYzQtVy5PnPRv/S7BkpF1i4TG1hhckdBd3YET72raBJrfMAxz9uzReDQX7pR
-         SKmqqns7g8kKCQ7fucGZOTTJCzwklRJZdCTPeqY2VFRYBoDPTKzQ9hz5JtMGPpY3B2P5
-         lHb/A2k/L14lyZscz4wmxhpN+fHinOPtTXj5JNTdUmrtaNtmTaz4OmSIlRGJRN0iLwxD
-         i95HyBp6Lj1z7xUjY+PulivEkiOm8KmsvTgwLAMG2Q1zBSR8G3G5b4G45kg0F5km+Zmd
-         CAHi3tKZYdT4eK0/TB4W3ASlONgkwm1ykj2tM3Se4rxssoC0YuDu7t21JD+B+QN6uNEm
-         ki7A==
-MIME-Version: 1.0
-X-Received: by 10.180.35.163 with SMTP id i3mr9441008wij.80.1445078001897;
- Sat, 17 Oct 2015 03:33:21 -0700 (PDT)
-Received: by 10.28.159.133 with HTTP; Sat, 17 Oct 2015 03:33:21 -0700 (PDT)
-In-Reply-To: <20151017050641.GA3052@kroah.com>
-References: <1445033073-10154-1-git-send-email-aybuke.147@gmail.com>
-	<20151017050641.GA3052@kroah.com>
-Date: Sat, 17 Oct 2015 13:33:21 +0300
-Message-ID: <CAEAX3JrU=56tg94bo1w6gHNBr9nEtcgRauXfa+GFxa8r477hmw@mail.gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 37F2F67;
+	Sat, 17 Oct 2015 05:06:42 +0000 (UTC)
+Date: Fri, 16 Oct 2015 22:06:41 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Aybuke Ozdemir <aybuke.147@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2 1/2] Staging: sm750fb: Include
  appropriate KERN_ facility level
-From: Aybuke Ozdemir <aybuke.147@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=e89a8f83a3f9f9df6e05224a7063
+Message-ID: <20151017050641.GA3052@kroah.com>
+References: <1445033073-10154-1-git-send-email-aybuke.147@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1445033073-10154-1-git-send-email-aybuke.147@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
---e89a8f83a3f9f9df6e05224a7063
-Content-Type: text/plain; charset=UTF-8
+On Sat, Oct 17, 2015 at 01:04:32AM +0300, Aybuke Ozdemir wrote:
+> Problem found using checkpatch.pl:
+> "WARNING: printk() should include KERN_ facility level"
+> 
+> Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
+> ---
+> Changes since v1:
+> * used dev_info instead of pr_info.
+> ---
+>  drivers/staging/sm750fb/ddk750_help.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/sm750fb/ddk750_help.c b/drivers/staging/sm750fb/ddk750_help.c
+> index 9637dd3..d20cd92 100644
+> --- a/drivers/staging/sm750fb/ddk750_help.c
+> +++ b/drivers/staging/sm750fb/ddk750_help.c
+> @@ -11,7 +11,7 @@ void ddk750_set_mmio(void __iomem *addr, unsigned short devId, char revId)
+>  	devId750 = devId;
+>  	revId750 = revId;
+>  	if (revId == 0xfe)
+> -		printk("found sm750le\n");
+> +		dev_info("found sm750le\n");
+>  }
 
-Hi Greg,
+You obviously did not try to build this patch :(
 
-I used this command "make drivers/staging/sm750fb/" before applying the
-patch.
-I sent that I faced no problems. :( command output:
-
-aybuke@kripton:~/git/kernels/staging$ make drivers/staging/sm750fb/
-  CHK     include/config/kernel.release
-  CHK     include/generated/uapi/linux/version.h
-  CHK     include/generated/utsrelease.h
-  CHK     include/generated/bounds.h
-  CHK     include/generated/timeconst.h
-  CHK     include/generated/asm-offsets.h
-  CALL    scripts/checksyscalls.sh
-aybuke@kripton:~/git/kernels/staging$
-
---e89a8f83a3f9f9df6e05224a7063
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Greg,<br><br>I used this command &quot;make drivers/sta=
-ging/sm750fb/&quot; <span id=3D"result_box" class=3D"" lang=3D"en"><span cl=
-ass=3D"">before applying</span> <span class=3D"">the patch. </span></span><=
-br><span id=3D"result_box" class=3D"" lang=3D"en"><span class=3D"">I sent</=
-span> <span class=3D"">that I</span> <span class=3D"">faced no problems. :(=
- command output</span></span>:<br><br>aybuke@kripton:~/git/kernels/staging$=
- make drivers/staging/sm750fb/<br>=C2=A0 CHK=C2=A0=C2=A0=C2=A0=C2=A0 includ=
-e/config/kernel.release<br>=C2=A0 CHK=C2=A0=C2=A0=C2=A0=C2=A0 include/gener=
-ated/uapi/linux/version.h<br>=C2=A0 CHK=C2=A0=C2=A0=C2=A0=C2=A0 include/gen=
-erated/utsrelease.h<br>=C2=A0 CHK=C2=A0=C2=A0=C2=A0=C2=A0 include/generated=
-/bounds.h<br>=C2=A0 CHK=C2=A0=C2=A0=C2=A0=C2=A0 include/generated/timeconst=
-.h<br>=C2=A0 CHK=C2=A0=C2=A0=C2=A0=C2=A0 include/generated/asm-offsets.h<br=
->=C2=A0 CALL=C2=A0=C2=A0=C2=A0 scripts/checksyscalls.sh<br>aybuke@kripton:~=
-/git/kernels/staging$<br></div>
-
---e89a8f83a3f9f9df6e05224a7063--
 
