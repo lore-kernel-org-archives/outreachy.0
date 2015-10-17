@@ -1,59 +1,91 @@
 X-GM-THRID: 6205612297408217088
-X-Received: by 10.129.83.10 with SMTP id h10mr18197658ywb.6.1445097950016;
-        Sat, 17 Oct 2015 09:05:50 -0700 (PDT)
+X-Received: by 10.194.118.65 with SMTP id kk1mr4638129wjb.5.1445068918635;
+        Sat, 17 Oct 2015 01:01:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.38.10 with SMTP id s10ls1868637qgs.8.gmail; Sat, 17 Oct
- 2015 09:05:49 -0700 (PDT)
-X-Received: by 10.31.21.194 with SMTP id 185mr17978458vkv.10.1445097949379;
-        Sat, 17 Oct 2015 09:05:49 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id vy6si2470202pbc.1.2015.10.17.09.05.49
+Received: by 10.25.213.82 with SMTP id m79ls406880lfg.19.gmail; Sat, 17 Oct
+ 2015 01:01:58 -0700 (PDT)
+X-Received: by 10.112.54.197 with SMTP id l5mr4643439lbp.21.1445068918083;
+        Sat, 17 Oct 2015 01:01:58 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x236.google.com (mail-wi0-x236.google.com. [2a00:1450:400c:c05::236])
+        by gmr-mx.google.com with ESMTPS id hs5si221601wib.1.2015.10.17.01.01.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 09:05:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sat, 17 Oct 2015 01:01:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) client-ip=2a00:1450:400c:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 04BF51BB;
-	Sat, 17 Oct 2015 16:05:48 +0000 (UTC)
-Date: Sat, 17 Oct 2015 09:05:48 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/4] Staging: lustre: include: Move
- function prototypes
-Message-ID: <20151017160548.GA19750@kroah.com>
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x236.google.com with SMTP id p11so37440801wij.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 01:01:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=1pGqyZFTK9GaRnviKjNqH3G4Fug4xNsYuzWNAb3gRuQ=;
+        b=qr4lRvR0LZphPvZpvn5Q/Z4OBDjBjUi0oHib6vn/sFaIYUqYo9aUtaWop5astwrbb5
+         O4dnK7IWeWQdai/nU4Ou+ZkOXfQBrTFEcnIo8Yy6+X2fyHollWuzJapOeA1rcpCQDTgG
+         xTV5QZ1h7MLAeSJ3Qt/Q192AozBmdBW7GVoVlycApfdLO4S9g7xkr2zZKBvkW8DyO6xt
+         hkrW7A2dQ/a/eZQS3S+/4et71VaKipdqMOj9qNht8EWSfK6r3D3KDoe3y6wywJf7FgNM
+         AtJJUk5dmsE8jo1etHCQRc1/TuiNXzuD4USR8uhLGqZJZNLkiBmNNeGm5vPFmbkfc1p3
+         HFkg==
+X-Received: by 10.181.8.72 with SMTP id di8mr9430402wid.62.1445068917988;
+        Sat, 17 Oct 2015 01:01:57 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id ka10sm26956252wjc.30.2015.10.17.01.01.56
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 17 Oct 2015 01:01:57 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH v2 4/4] Staging: lustre: include : Remove unused macros
+Date: Sat, 17 Oct 2015 10:01:43 +0200
+Message-Id: <05ab101e947b154314749a1ceb051a9af96c1753.1445067394.git.ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1445067394.git.ksenija.stanojevic@gmail.com>
 References: <cover.1445067394.git.ksenija.stanojevic@gmail.com>
- <06092be207de8d5980babdcc7e8d9f1140ebd856.1445067394.git.ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <06092be207de8d5980babdcc7e8d9f1140ebd856.1445067394.git.ksenija.stanojevic@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sat, Oct 17, 2015 at 09:58:16AM +0200, Ksenija Stanojevic wrote:
-> Functions:
-> struct obd_export *class_export_get(struct obd_export *exp);
-> void class_export_put(struct obd_export *exp)
-> are being used in macros that are converted into static inline 
+These macro are not used anymore, therefore remove them.
 
-Trailing whitespace :(
+Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com>
+---
+Changes in v2:
+        - nothing
 
-> functions, therefore move function prototypes to avoid build
-> error.
+ drivers/staging/lustre/lustre/include/obd_class.h | 17 -----------------
+ 1 file changed, 17 deletions(-)
 
-The build error will happen in later patches, please be specific about
-this, as written it sounds like there is a build error now.
+diff --git a/drivers/staging/lustre/lustre/include/obd_class.h b/drivers/staging/lustre/lustre/include/obd_class.h
+index 4871b6a..53c255c 100644
+--- a/drivers/staging/lustre/lustre/include/obd_class.h
++++ b/drivers/staging/lustre/lustre/include/obd_class.h
+@@ -244,23 +244,6 @@ static inline void class_export_lock_put(struct obd_export *exp,
+ 	class_export_put(exp);
+ }
+ 
+-#define class_export_cb_get(exp)					\
+-({								      \
+-	atomic_inc(&(exp)->exp_cb_count);			   \
+-	CDEBUG(D_INFO, "callback GETting export %p : new cb_count %d\n",\
+-	       (exp), atomic_read(&(exp)->exp_cb_count));	   \
+-	class_export_get(exp);					  \
+-})
+-
+-#define class_export_cb_put(exp)					\
+-({								      \
+-	LASSERT_ATOMIC_POS(&exp->exp_cb_count);			 \
+-	atomic_dec(&(exp)->exp_cb_count);			   \
+-	CDEBUG(D_INFO, "callback PUTting export %p : new cb_count %d\n",\
+-	       (exp), atomic_read(&(exp)->exp_cb_count));	   \
+-	class_export_put(exp);					  \
+-})
+-
+ static inline enum obd_option exp_flags_from_obd(struct obd_device *obd)
+ {
+ 	return ((obd->obd_fail ? OBD_OPT_FAILOVER : 0) |
+-- 
+1.9.1
 
-> Signed-off-by: Ksenija Stanojevic<ksenija.stanojevic@gmail.com>
-
-We need a space between the '<' character and your your name :(
-
-Can you redo this series again please?
-
-thanks,
-
-greg k-h
 
