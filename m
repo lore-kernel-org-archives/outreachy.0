@@ -1,68 +1,83 @@
 X-GM-THRID: 6206645020679733248
-X-Received: by 10.194.109.233 with SMTP id hv9mr5759224wjb.1.1445172957639;
-        Sun, 18 Oct 2015 05:55:57 -0700 (PDT)
+X-Received: by 10.50.83.98 with SMTP id p2mr5744706igy.8.1445163380099;
+        Sun, 18 Oct 2015 03:16:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.169.198 with SMTP id s189ls419570lfe.87.gmail; Sun, 18 Oct
- 2015 05:55:57 -0700 (PDT)
-X-Received: by 10.112.169.34 with SMTP id ab2mr5686699lbc.23.1445172957129;
-        Sun, 18 Oct 2015 05:55:57 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id h2si352576wiy.0.2015.10.18.05.55.57
+Received: by 10.182.38.197 with SMTP id i5ls1003933obk.34.gmail; Sun, 18 Oct
+ 2015 03:16:18 -0700 (PDT)
+X-Received: by 10.182.128.101 with SMTP id nn5mr21098956obb.31.1445163378247;
+        Sun, 18 Oct 2015 03:16:18 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id zg1si2913746pbb.2.2015.10.18.03.16.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 05:55:57 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        Sun, 18 Oct 2015 03:16:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue002) with ESMTPSA (Nemesis) id 0LjiA5-1aOn9334R7-00boSw; Sun, 18 Oct
- 2015 14:55:56 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x236.google.com with SMTP id rc13so161708690pab.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 03:16:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=zCVeFPY3mnjTyAFY5z+s41q3PPKNJAW4IGZ/+8RdeYw=;
+        b=txwOxIgivia5M+L4NNv/3Gqjc/J/rlNd5e15h0XJFyYM1f6QwbQ5IpMzbxkV/nenl6
+         QQlv1WZUrP5SMzEgYCMNjlFJFYan1c5u5NWJxGWkYNnEtWK8YVQCS+lUQgwjjyfbJ4c+
+         xmPpxxj6xPGdYOYWUZJ762/e6djam9Ts/hKpYAktbN0xkyVjqoiuZtVHtd/Yw5i6993Q
+         YjPYriGZeuRc5zVP46FtJZA1gSS6KsEahigtYMrMwdzdqXRLve9TnJcmrXnR66NpQCJ4
+         e6SKFhunR1/QwTLC+nVp9PLw8mJ9HmLjS0XowYoQ2Aa8Pnx98ss0D4hDS0PHGjw3LrMW
+         lobg==
+X-Received: by 10.66.227.101 with SMTP id rz5mr27524273pac.123.1445163378138;
+        Sun, 18 Oct 2015 03:16:18 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([203.215.120.246])
+        by smtp.gmail.com with ESMTPSA id gw3sm30407879pbc.46.2015.10.18.03.16.17
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 18 Oct 2015 03:16:17 -0700 (PDT)
+Date: Sun, 18 Oct 2015 18:16:09 +0800
+From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: mt29f_spinand: Remove space after a cast
-Date: Sun, 18 Oct 2015 14:55:56 +0200
-Message-ID: <5200397.Z5PqNk5xTM@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151018101529.GA6434@Socrates-Mint>
-References: <20151018101529.GA6434@Socrates-Mint>
+Subject: [PATCH v2] Staging: mt29f_spinand: Remove space after a cast
+Message-ID: <20151018101529.GA6434@Socrates-Mint>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:gCEKRL8J3NiDapdT4w3YWD5ikVrzdbAXWlpqPL28rn1N15U3qFE
- TS9kcmGDc/yLu7IHMKRi1/ALsm2L2zXnc8eYaqt6n8dWMzGV0DXknXaMm9I3gUSLgJgmfEo
- mk/3LjIGnITS1pVyeEP7aQWjgVQ43H7VeoslqugKByd4kj1YXo25FtVo75osTyiMBQnCsgy
- 3YhajW457L4GTAs1ov9pg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:PbFIbY3QRcs=:RCbSBF6OFoUS57dnMtzaFs
- qKuMXqtz1QGqT6fwNM5maj3lSNrSbzEXahBNOy+9Eaghd7hs/85m5Bttc0ReSRzv5ZrSfcgUN
- Yr2jXkPz5fEqUnanFHiMmimOK6/+3VOuaVNt882U6rpUgw2TWIZA508tX9orYQVa0K6+dS4gb
- 7f+UGR2CC48XwVv8kSEK6zyAuFeN3GkonodIyLGsL9Hh2ioj7J4qq9FFm0ZolfHlE+YG1jB5q
- LrvZ7JYeo1d2Uk0xe4SB/79iu/E+N9o91XI/Ab8KSbEX7fbmwbKGxmUozCwnfdiLWCFCz9HFE
- 00u4D3CZ1VJEw1BiwEtmgTjNdO0BqjtZjg6J/Vl/CZ4JrfrAAvSbuKdN0rg9Fnix5MKOJncpW
- 1dex6TZbXtALtgKWE0GAlkca8farHrXnzKeEpXCUzo/xN10PItBEdM7ZiUOKxGN+P41iDrlmS
- ARul0jomcSsVvduDlCJxuPdQsufRcvTHqpDp/TvE0B0D4sajLTJwvUML6s7uw7zpb7P6nFSTD
- orXnyu984ks5sG1SOk/7P/cgEz/wMqQkcFbX37v8f0IFXJgVaLf+jDUoafsPjAb9g1aU0kf9n
- J65nkVwE1Id7x42vvTfsxg2rvO2KGlhO73tdSgURRTX01fIApXWAB7KNMJCUy+XbAu1moGkro
- mNlw826jLgYjSa+k8MVrGt4XvEku17rjPIUllPyz2h2zllbweO9JcW5kITPNUiQbgPfubTUdL
- l3YffhHt+XYofMw6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Sunday 18 October 2015 18:16:09 Eva Rachel Retuya wrote:
-> diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-> index 1aa449e..cf98228 100644
-> --- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
-> +++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-> @@ -594,7 +594,7 @@ static int spinand_erase_block(struct spi_device *spi_nand, u16 block_id)
->                 if (retval < 0) {
->                         dev_err(&spi_nand->dev,
->                                         "error %d reading status register\n",
-> -                                       (int) retval);
-> +                                       (int)retval);
->                         return retval;
+Remove the unneeded space before retval.
+Checkpatch found this issue.
 
+CHECK: No space is necessary after a cast
 
-The change is correct, but it would be nicer to remove the cast as well,
-because 'retval' is already an 'int'.
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
 
-	Arnd
+Changes since v2:
+ * Made commit message more clear
+
+ drivers/staging/mt29f_spinand/mt29f_spinand.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+index 1aa449e..cf98228 100644
+--- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
++++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+@@ -594,7 +594,7 @@ static int spinand_erase_block(struct spi_device *spi_nand, u16 block_id)
+ 		if (retval < 0) {
+ 			dev_err(&spi_nand->dev,
+ 					"error %d reading status register\n",
+-					(int) retval);
++					(int)retval);
+ 			return retval;
+ 		}
+ 
+-- 
+1.9.1
+
 
