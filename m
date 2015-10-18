@@ -1,152 +1,82 @@
-X-GM-THRID: 6467597635831201792
-X-Received: by 10.46.80.65 with SMTP id v1mr302431ljd.14.1505854920817;
-        Tue, 19 Sep 2017 14:02:00 -0700 (PDT)
+X-GM-THRID: 6206976986922876928
+X-Received: by 10.25.156.140 with SMTP id f134mr138756lfe.5.1445178062400;
+        Sun, 18 Oct 2015 07:21:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.65.81 with SMTP id o78ls2323lja.34.gmail; Tue, 19 Sep 2017
- 14:01:59 -0700 (PDT)
-X-Received: by 10.25.212.195 with SMTP id l186mr289656lfg.31.1505854919361;
-        Tue, 19 Sep 2017 14:01:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505854919; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Hcs8APP81Z4PeDNMIV1qFcLx/qapwAKeotNoKc57wD73AKeOqh5XrydjB/5phm1UEJ
-         661HtKieOxvmvr8AKYITkavfHCh6oXHRKgsamnK1TL8wpf8dRY45Nysoct+726k/mikZ
-         oxaDBaj9X+LRwKuEIdpgLRSWQ8k54bu3kJ4EsCkMRAlUtjL1fRpi2KdjNukFnVnhmco0
-         l4uDv+z8DPbUttL0u+ie1uF/HFFXfliZBseAR3JnTzQrwkDsB5ywMP45fescnCzwBDeI
-         qjhKCzuu35ga+FoNOQWFBKa/QRMCyCcEDYwW/knmDAByzbfYZEMXT2McCNsFAklgJzNB
-         J+Mg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:date:from:dkim-signature:arc-authentication-results;
-        bh=Yx5OYC/C0TV8ThPkB68j8Sh5ZmZNufi1xh5Tjkq6MCE=;
-        b=AMvmPXx2yLthfpBjpdCXl8oTfTjvd9Y5tmgGOgpDBes5vj74RUqzgo05hZYtV4DM0I
-         gr0OvjISeSwOvncLvH8r1s6gqwFvAZGgm6EEI2jDp9EU4cSH08IeG7MAGh42AQq+uznf
-         zEjIbIOmEbF0GxEzsWOqslcv9avoWvi74uQPSfk41VCXNVly2EdOYjgStFJDMQZ0F8TJ
-         ZFMFH/rSPnKf0yiOXDd/TXO+9rZRitfj3uYW2l8gnjPYLdkOsgbaLO5a5Qa3JCfFZBPl
-         B6FVx86OBVT4apCvXD1bPabs8IunNXyT0GaRccWfz06Sx3PG7C29n+zqRkd9dUgRYOwH
-         gJWA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DB7IAzot;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id 200si45118wmj.0.2017.09.19.14.01.59
+Received: by 10.25.90.85 with SMTP id o82ls428787lfb.98.gmail; Sun, 18 Oct
+ 2015 07:21:01 -0700 (PDT)
+X-Received: by 10.112.136.99 with SMTP id pz3mr5857186lbb.11.1445178061900;
+        Sun, 18 Oct 2015 07:21:01 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id o3si390998wiz.1.2015.10.18.07.21.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Sep 2017 14:01:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Sun, 18 Oct 2015 07:21:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DB7IAzot;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id u48so425443wrf.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 14:01:59 -0700 (PDT)
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x232.google.com with SMTP id ll6so63798459wic.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 07:21:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Yx5OYC/C0TV8ThPkB68j8Sh5ZmZNufi1xh5Tjkq6MCE=;
-        b=DB7IAzot9y1tdn/vPDH+4q/M5RUZRqvbgvLrOWcJ7CwEx3tM0r8hhm52xoBQ7hImVA
-         oJuqLcUdUllLfH/WiMpMO9xGMtDl5HvXL2+mUAJZ1R7eMroYGgVDDETjLczMsNtJ8SwJ
-         /2BUqOsBo7cP44V07pPlSFBHZbsIHkWKb9PzcLcM/VFdAVIqD9lG11OI/hPoU5Ae9ydC
-         hc/8lXdosVb8sEJFgQoYz4TPHQdc3t5l67LUghA1KGoxd/oDz6fCT80qBxZO2kzVIIsS
-         XS33V3G69TH+Fw/T7uLRVIB39kFQ20GyqGvgSeqpuySXajph7sqi+vf3XpOAJZlFJDsx
-         p51Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Yx5OYC/C0TV8ThPkB68j8Sh5ZmZNufi1xh5Tjkq6MCE=;
-        b=ub+iscHmfMig9ugnCHGCF1MeBoUJhRBtTVrCr5T9CrgPP5bqnIPgFGwiViSp0xnbgz
-         n9SDIOuvP8yfjeq6zy4xPf9b86qSWuxqt1IFuIhFFgWUA98blQVCuXQ2K6oU+TJ/2PlH
-         BCyYOCRWmsqoY4Cer3hbaJKp4k3pMZ83X00C51wLiuPLGuXqh0uT7uIecfe9jdGHeHWg
-         ZpP/mDQdhFuvnYfZsYq5dKUJtEf9yEq/Zcz3vgGk4nCsytYs8MCP4S0e0ifV30XiYyfP
-         Pjfp5SNGN7ugFCQlXECKtRvWKq6hd7lfvZ76sROACcRQkup7p9I6iyr1j3VI96TA44v/
-         DADw==
-X-Gm-Message-State: AHPjjUjqKxHz5gww+Or68MuUP9hpgzhlAhgjdoinMYN2kWh7Q1yfUJOw
-	SxjUNUyF7A6vhMZLVaOIFjI=
-X-Google-Smtp-Source: AOwi7QA5Qd/FOJOoy9C2UGh4QO2BxwciNsWUiNuvCDbvDwWRNGDqYGeLUFbbXc120qla6NCS8/P9bw==
-X-Received: by 10.223.138.151 with SMTP id y23mr2272675wry.244.1505854918958;
-        Tue, 19 Sep 2017 14:01:58 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([86.124.247.82])
-        by smtp.gmail.com with ESMTPSA id v98sm210190wrc.71.2017.09.19.14.01.58
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 14:01:58 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-X-Google-Original-From: Georgiana Chelu <georgiana.chelu93@example.com>
-Date: Wed, 20 Sep 2017 00:01:57 +0300
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: rtlwifi: halmac: Remove unnecessary 'out of memory'
- messages
-Message-ID: <20170919210157.44uf4sm27tjshxn6@fireworks>
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=FtmhBFN3LreadHSofNbZ6LGpzBJpIKUFvd07oaJgmMQ=;
+        b=Nqy9AYmoxZ5NufOXIRBqr6XJNDVuItYkp8VZWU6uZbhKtgJ8w4R/8Xpt+igS92r2QL
+         zj6cKVPUC7RX2mWb9nMnDoflbrXQsyVkRtlnYa+SbtW/JQnCvp9Wvo79N7VGztsk0PWr
+         LyN352TnsPJTdp+I0zU/4QWZ55q9QfdL0icqzKxeIQkVTJEXlBqMN4ChoHpxyty/mhJC
+         febyDsQhyTjn5zYiIhsWa+AyOZT/zNAgN4IiOAtwsWuTClwgicim2ndJlkfanZA5O4Sv
+         e3maFP+KZhdRr0/nTHOMNFVqoNJlVGWkf4XL6dK84dZEAakJ6WvLRT+prlUa/aGDNw0t
+         zhdA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20170113 (1.7.2)
+X-Received: by 10.194.7.97 with SMTP id i1mr30926574wja.87.1445178061798; Sun,
+ 18 Oct 2015 07:21:01 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Sun, 18 Oct 2015 07:21:01 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1510181618100.2614@hadrien>
+References: <20151018132030.GA30680@ubuntu>
+	<alpine.DEB.2.10.1510181523580.2614@hadrien>
+	<CAKHNQQEJLf1LXOZr7KS=BdC8riOXdjg6jgfDMfV8OK2uXvpJww@mail.gmail.com>
+	<alpine.DEB.2.10.1510181529260.2614@hadrien>
+	<CAKHNQQFtPSq5TRrFrGq4gqOPC_oWxOZqdUsPdSaVp0DVux1OBg@mail.gmail.com>
+	<alpine.DEB.2.10.1510181618100.2614@hadrien>
+Date: Sun, 18 Oct 2015 19:51:01 +0530
+Message-ID: <CAKHNQQEfTNqKRA-5hHmavaOOsUSMRLVHtmCYPTrhqdxeFRDYow@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lproc_osc: Add check
+ on a variable
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove unnecessary messages because OOM (Out Of Memory Manager)
-reports memory allocation fail messages.
+On Sun, Oct 18, 2015 at 7:49 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> > I don't follow.  When there was rc < 0, there would also not be a return.
+>> > There are three cases: rc < 0, rc = 0, rc > 0.  If you put rc < 0 you will
+>> > get a return on rc < 0 only.  And if you put rc you will get a return on
+>> > rc < 0 and rc > 0, but rc is never > 0 (you have said - I don't check), so
+>> > with rc you will also only get a return when rc < 0.  Putting rc is a bit
+>> > more concise.  But putting rc < 0 makes it more clear that what is going
+>> > on is an error check.  And I guess it is the code that was there
+>> > previously, so it is what the developer preferred,
+>> >
+>> > julia
+>> >
+>>
+>> What you say is perfectly fine. But, earlier code mentioned 'if (rc)'
+>> only [developer version]. I changed that to 'if(rc<0)' along with some
+>> other changes that I got wrong. I've been asked to provide a fix up.
+>> If you say, I can change it to rc<0. Yes, it would be more precise.
+>> I've consulted Arnd about the positive values. It is never going to
+>> happen. Please suggest?
+>
+> OK, thanks for the explanation.  If the code was originally if (rc), it
+> would probably be reasonable to leave it as is.  I was thrown off by the
+> fact that there was a - on rc < 0 in the proposed patch.  Did Greg apply
+> an incorrect one that you now have to fix up?
+>
+> julia
 
-Fix issue found by by checkpatch.pl.
-WARNING: Possible unnecessary 'out of memory' message.
-
-Signed-off-by: Georgiana Chelu <georgiana.chelu93@example.com>
----
- drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-index f33024e4d853..269c9e082165 100644
---- a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-+++ b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-@@ -277,7 +277,7 @@ halmac_dump_efuse_drv_88xx(struct halmac_adapter *halmac_adapter)
- 	if (!halmac_adapter->hal_efuse_map) {
- 		halmac_adapter->hal_efuse_map = kzalloc(efuse_size, GFP_KERNEL);
- 		if (!halmac_adapter->hal_efuse_map) {
--			pr_err("[ERR]halmac allocate efuse map Fail!!\n");
-+			/* out of memory */
- 			return HALMAC_RET_MALLOC_FAIL;
- 		}
- 	}
-@@ -538,7 +538,7 @@ halmac_read_logical_efuse_map_88xx(struct halmac_adapter *halmac_adapter,
- 	if (!halmac_adapter->hal_efuse_map_valid) {
- 		efuse_map = kzalloc(efuse_size, GFP_KERNEL);
- 		if (!efuse_map) {
--			pr_err("[ERR]halmac allocate local efuse map Fail!!\n");
-+			/* out of memory */
- 			return HALMAC_RET_MALLOC_FAIL;
- 		}
- 
-@@ -554,7 +554,7 @@ halmac_read_logical_efuse_map_88xx(struct halmac_adapter *halmac_adapter,
- 			halmac_adapter->hal_efuse_map =
- 				kzalloc(efuse_size, GFP_KERNEL);
- 			if (!halmac_adapter->hal_efuse_map) {
--				pr_err("[ERR]halmac allocate efuse map Fail!!\n");
-+				/* out of memory */
- 				kfree(efuse_map);
- 				return HALMAC_RET_MALLOC_FAIL;
- 			}
-@@ -3579,7 +3579,7 @@ halmac_verify_send_rsvd_page_88xx(struct halmac_adapter *halmac_adapter)
- 	rsvd_buf = kzalloc(h2c_pkt_verify_size, GFP_KERNEL);
- 
- 	if (!rsvd_buf) {
--		/*pr_err("[ERR]rsvd buffer malloc fail!!\n");*/
-+		/* out of memory */
- 		return HALMAC_RET_MALLOC_FAIL;
- 	}
- 
-@@ -3598,7 +3598,7 @@ halmac_verify_send_rsvd_page_88xx(struct halmac_adapter *halmac_adapter)
- 			    GFP_KERNEL);
- 
- 	if (!rsvd_page) {
--		pr_err("[ERR]rsvd page malloc fail!!\n");
-+		/* out of memory */
- 		kfree(rsvd_buf);
- 		return HALMAC_RET_MALLOC_FAIL;
- 	}
--- 
-2.11.0
-
+Yes, that's what exactly happened.
 
