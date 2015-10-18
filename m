@@ -1,105 +1,96 @@
-X-GM-THRID: 6207482452562149376
-X-Received: by 10.112.202.165 with SMTP id kj5mr7029019lbc.5.1445292134571;
-        Mon, 19 Oct 2015 15:02:14 -0700 (PDT)
+X-GM-THRID: 6207028887884398592
+X-Received: by 10.180.89.41 with SMTP id bl9mr3179288wib.1.1445187617371;
+        Sun, 18 Oct 2015 10:00:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.81.208 with SMTP id f199ls657910lfb.101.gmail; Mon, 19 Oct
- 2015 15:02:13 -0700 (PDT)
-X-Received: by 10.112.63.165 with SMTP id h5mr7290661lbs.18.1445292133971;
-        Mon, 19 Oct 2015 15:02:13 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id c7si546682wiy.3.2015.10.19.15.02.13
+Received: by 10.180.188.1 with SMTP id fw1ls456647wic.26.canary; Sun, 18 Oct
+ 2015 10:00:16 -0700 (PDT)
+X-Received: by 10.180.89.41 with SMTP id bl9mr3179274wib.1.1445187616516;
+        Sun, 18 Oct 2015 10:00:16 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id hs5si394252wib.1.2015.10.18.10.00.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Oct 2015 15:02:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        Sun, 18 Oct 2015 10:00:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id ll6so19012416wic.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 15:02:13 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id fx6so20829724wic.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 10:00:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=D1qHME8IxsuU01yZIcwaDEoqrtXLQ8yzLeREI9foc3Q=;
-        b=KKUgmScCJLSGt7d7mG+mqeDjpmP/v79hMCzlyHxISuhZ/q9WBrceRDQod+f6YEQ8Ip
-         OHLKD5XxX/InVlUbU0EGfnyRczi/ToBi8d5LDBIKjoAzrSMF9Y6uoeDDS//xDyuj05JA
-         Cx/f8l/6S7ttDahSuLoktAuk7TeZN17YmUHyDdke1Cet4jiR9UdBoi9CKEtYCorxIGGT
-         3jndAP3EmTpL0jfEj046fhJZ9nafZBtsyGQ99igmYuaE3DVy+OSWZR/5582x56moZELd
-         PxEdDRXcfzgu56TM6E0q4ZTuIZ96lPrTc31f6Sk6pPj8XLWP8mL8oFPM2GrLlKIwQArk
-         UP/g==
-X-Received: by 10.180.93.168 with SMTP id cv8mr24169886wib.54.1445292133850;
-        Mon, 19 Oct 2015 15:02:13 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([213.233.93.61])
-        by smtp.gmail.com with ESMTPSA id bf8sm42577788wjc.22.2015.10.19.15.02.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Oct 2015 15:02:13 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH 00/10] staging: iio: Remove explicit comparisons
-Date: Tue, 20 Oct 2015 01:01:35 +0300
-Message-Id: <cover.1445291799.git.cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=dnRN2A16UYcKgZ3kndurUbfYqQY8gfnwNeSD6Ops63I=;
+        b=Xx83uXHpOayadw+ziO6t8Lsf9ClucC51ir6Z/bdYJLF103cgutUSn4BQ4tuWQ7CbC0
+         vKalOJp2aI4u0RE68hrQ3cFONB76u+fgfVENhDS33YmWYAEfuEgjIVdsLCKXaE6RHne8
+         Y7AxWh8USMLFNHQalDtkONOr/Om5oHeqT1RI5BbZfLyzIK0lwLu2v6KIS616S8ACrI1C
+         9eZXdV86Kvc6zAjbeDerAXD4l4Ne1cx1rOvEW8LRbqy61Rgg8tt8bwVmPOuOJrSNiyGr
+         0LPQ34/7uwhkJtRH+l6fuF1/x25xe/yFxnthIBeinqje5L7q9kwgWCy9Yp6S74zxgwwE
+         /vAQ==
+MIME-Version: 1.0
+X-Received: by 10.180.189.102 with SMTP id gh6mr14961417wic.95.1445187616420;
+ Sun, 18 Oct 2015 10:00:16 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Sun, 18 Oct 2015 10:00:16 -0700 (PDT)
+In-Reply-To: <CAEnQRZAduH-jJ1ei44dO2HME91+oDXBFPp2x787wGY6N1pDtTw@mail.gmail.com>
+References: <20151018164156.GA31672@ubuntu>
+	<CAEnQRZAduH-jJ1ei44dO2HME91+oDXBFPp2x787wGY6N1pDtTw@mail.gmail.com>
+Date: Sun, 18 Oct 2015 22:30:16 +0530
+Message-ID: <CAKHNQQFXKH=_18wBX4L_-zTfW-Qoi27n=x37DBCYHPkpqchiLQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lcommon_misc: Correct
+ block comments
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Daniel Baluta <daniel.baluta@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove comparisons to 0 or NULL in order to provide efficiency.
-Done with coccinelle
-@replace@
-identifier e;
-@@
-(
--e == 0
-+ !e
-|
--e != 0
-+ e
-|
--e == NULL
-+ !e
-|
--e != NULL
-+ e
-)
+On Sun, Oct 18, 2015 at 10:28 PM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
+> On Sun, Oct 18, 2015 at 7:41 PM, Shivani Bhardwaj <shivanib134@gmail.com> wrote:
+>> Alignment of block comments should be correct.
+>> Fix checkpatch WARNING: Block comments use a trailing */ on a separate
+>> line
+>>
+>> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+>> ---
+>>  drivers/staging/lustre/lustre/lclient/lcommon_misc.c | 6 ++++--
+>>  1 file changed, 4 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/lustre/lustre/lclient/lcommon_misc.c b/drivers/staging/lustre/lustre/lclient/lcommon_misc.c
+>> index 8389a0e..d80bcedd 100644
+>> --- a/drivers/staging/lustre/lustre/lclient/lcommon_misc.c
+>> +++ b/drivers/staging/lustre/lustre/lclient/lcommon_misc.c
+>> @@ -48,7 +48,8 @@
+>>  /* Initialize the default and maximum LOV EA and cookie sizes.  This allows
+>>   * us to make MDS RPCs with large enough reply buffers to hold the
+>>   * maximum-sized (= maximum striped) EA and cookie without having to
+>> - * calculate this (via a call into the LOV + OSCs) each time we make an RPC. */
+>> + * calculate this (via a call into the LOV + OSCs) each time we make an RPC.
+>> + */
+>>  int cl_init_ea_size(struct obd_export *md_exp, struct obd_export *dt_exp)
+>>  {
+>>         struct lov_stripe_md lsm = { .lsm_magic = LOV_MAGIC_V3 };
+>> @@ -74,7 +75,8 @@ int cl_init_ea_size(struct obd_export *md_exp, struct obd_export *dt_exp)
+>>         cookiesize = stripes * sizeof(struct llog_cookie);
+>>
+>>         /* default cookiesize is 0 because from 2.4 server doesn't send
+>> -        * llog cookies to client. */
+>> +        * llog cookies to client.
+>> +        */
+>>         CDEBUG(D_HA,
+>>                "updating def/max_easize: %d/%d def/max_cookiesize: 0/%d\n",
+>>                def_easize, easize, cookiesize);
+>
+> While at it please also add an empty comment line at the begining:
+>
+> /*
+>  * first text line
+>  * ..
+>  */
+>
+> Like here: http://lxr.free-electrons.com/source/Documentation/CodingStyle#L467
 
-Cristina Moraru (10):
-  staging: iio: adc: Remove explicit comparisons
-  staging: iio: addac: Remove explicit comparisons
-  staging: iio: light: Remove explicit comparisons
-  staging: iio: meter: Remove explicit comparisons
-  staging: iio: accel: Remove explicit comparisons
-  staging: iio: cdc: Remove explicit comparisons
-  staging: iio: frequency: Remove explicit comparisons
-  staging: iio: trigger: Remove explicit comparisons
-  staging: iio: gyro: Remove explicit comparisons
-  staging: iio: magnetometer: Remove explicit comparisons
-
- drivers/staging/iio/accel/sca3000_ring.c            |  2 +-
- drivers/staging/iio/adc/ad7192.c                    |  4 ++--
- drivers/staging/iio/adc/ad7280a.c                   |  6 +++---
- drivers/staging/iio/adc/mxs-lradc.c                 | 10 +++++-----
- drivers/staging/iio/adc/spear_adc.c                 |  2 +-
- drivers/staging/iio/addac/adt7316.c                 |  4 ++--
- drivers/staging/iio/cdc/ad7150.c                    |  2 +-
- drivers/staging/iio/cdc/ad7152.c                    |  2 +-
- drivers/staging/iio/frequency/ad9832.c              |  2 +-
- drivers/staging/iio/frequency/ad9834.c              |  2 +-
- drivers/staging/iio/gyro/adis16060_core.c           |  2 +-
- drivers/staging/iio/light/isl29018.c                |  6 +++---
- drivers/staging/iio/light/tsl2583.c                 |  6 +++---
- drivers/staging/iio/light/tsl2x7x_core.c            |  6 +++---
- drivers/staging/iio/magnetometer/hmc5843_core.c     |  2 +-
- drivers/staging/iio/meter/ade7753.c                 |  2 +-
- drivers/staging/iio/meter/ade7754.c                 |  2 +-
- drivers/staging/iio/meter/ade7759.c                 |  2 +-
- drivers/staging/iio/meter/ade7854-spi.c             |  2 +-
- drivers/staging/iio/trigger/iio-trig-bfin-timer.c   |  4 ++--
- drivers/staging/iio/trigger/iio-trig-periodic-rtc.c |  4 ++--
- 21 files changed, 37 insertions(+), 37 deletions(-)
-
--- 
-1.9.1
-
+All right. Thank you.
 
