@@ -1,91 +1,77 @@
 X-GM-THRID: 6206160535830921216
-X-Received: by 10.180.208.7 with SMTP id ma7mr3329306wic.5.1445173326631;
-        Sun, 18 Oct 2015 06:02:06 -0700 (PDT)
+X-Received: by 10.180.210.212 with SMTP id mw20mr3321021wic.3.1445172877855;
+        Sun, 18 Oct 2015 05:54:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.11.232 with SMTP id el8ls108105wid.48.canary; Sun, 18 Oct
- 2015 06:02:06 -0700 (PDT)
-X-Received: by 10.180.105.98 with SMTP id gl2mr3344798wib.0.1445173326230;
-        Sun, 18 Oct 2015 06:02:06 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-wi0-x22a.google.com (mail-wi0-x22a.google.com. [2a00:1450:400c:c05::22a])
-        by gmr-mx.google.com with ESMTPS id go9si281461wib.3.2015.10.18.06.02.06
+Received: by 10.180.149.244 with SMTP id ud20ls442545wib.49.gmail; Sun, 18 Oct
+ 2015 05:54:37 -0700 (PDT)
+X-Received: by 10.180.105.98 with SMTP id gl2mr3341187wib.0.1445172877503;
+        Sun, 18 Oct 2015 05:54:37 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
+        by gmr-mx.google.com with ESMTPS id go9si281204wib.3.2015.10.18.05.54.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 06:02:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) client-ip=2a00:1450:400c:c05::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Oct 2015 05:54:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22a as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22a.google.com with SMTP id fv8so44023731wic.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 06:02:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=e2V6fYO/rlslyOS6NZjG+D8gwmeSTgBLiofBYFf04jc=;
-        b=CJvzGnilQ3S5tW3GMrcDN17/OdzMoenw9K5l1lifJvRJwN0A06PrzenYWfSImGot3t
-         eyw8h+EwHwWsMq0OjfVw2+9bHg17IysOkCWjMvS33zx11K75pz9gFWmBtg0cJG1lfsrD
-         H8svUkhcoj79naf8vPqod5vjlCp+s891vEUruPqVK5vRJoP7wndtNE4RQtiXJgpyTnUe
-         zeu6yWdCyQeqxWouq9jGpNqj3uyKTBX9AczLlnxqNXdYzQ6EKImrwK6TQ8lvSuqweBGq
-         rOkL4wMLH2hRKZN/FfBQTt9z2C7s43cwEdTAJTYa2pHPCpzNQa+LW1vmzhJ1/Q7tGiqE
-         AZAg==
-MIME-Version: 1.0
-X-Received: by 10.180.198.233 with SMTP id jf9mr11169717wic.66.1445173326144;
- Sun, 18 Oct 2015 06:02:06 -0700 (PDT)
-Received: by 10.27.186.23 with HTTP; Sun, 18 Oct 2015 06:02:06 -0700 (PDT)
-In-Reply-To: <11015695.tbMmBsISvl@wuerfel>
-References: <20151016083218.GA2815@ubuntu>
-	<CAKHNQQGQTmd2-UHKSqyf_86D7Xo30HPm=y-VZM4AagrQ_u6zFA@mail.gmail.com>
-	<CAKHNQQHa4qnxs-CnrdLhFFTSxRs=xjH2XQbNb-bKBymFJDzrpg@mail.gmail.com>
-	<11015695.tbMmBsISvl@wuerfel>
-Date: Sun, 18 Oct 2015 18:32:06 +0530
-Message-ID: <CAKHNQQGC4LAGrQ2Z-A_TBVu9NhXE_uXpiQCBb-exKbuLMYHGMw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lpoc_osc: Change
- the variable to be checked
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
+       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue103) with ESMTPSA (Nemesis) id 0Lurx3-1aVUBZ3qwT-0102aT; Sun, 18 Oct
+ 2015 14:54:36 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: lpoc_osc: Change the variable to be checked
+Date: Sun, 18 Oct 2015 14:54:36 +0200
+Message-ID: <11015695.tbMmBsISvl@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CAKHNQQHa4qnxs-CnrdLhFFTSxRs=xjH2XQbNb-bKBymFJDzrpg@mail.gmail.com>
+References: <20151016083218.GA2815@ubuntu> <CAKHNQQGQTmd2-UHKSqyf_86D7Xo30HPm=y-VZM4AagrQ_u6zFA@mail.gmail.com> <CAKHNQQHa4qnxs-CnrdLhFFTSxRs=xjH2XQbNb-bKBymFJDzrpg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:C5Gd4ciUnHQXHmh1GKS/GcMu/w71Da/68bg/eHowKc8IvC0wz9q
+ B7MUfzfy9ZZnNzmaqKm4v2csHd1Fml3YCkcL9AA+q2MftFuz06dO7Oip/TpK69oW6aSSLVV
+ lISQiEKEVyQE2RD59gs0YI+tjMg+k8PpxV1UpBt54tezZH+wCsfsQUW3FONNhB3Zl9lvWzF
+ ByHhOdBPbDGi1v5h/CHBg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:8I5S6EHXMr0=:ZjShA7hChdbg/ULX8U+g48
+ cMIbAE6sgqxaQXUem1JpvNDDMYM73/mT9CrfceUaWw/i9FweXJmUWUElvdi+l5n9PgG6WS6yw
+ hjM0U9nizppTmvGk/WTVSimC/QfqEda88pWdnU9H2lB6Vzzq+/KFlAoi+K1XH7/KVAr8bLkvX
+ LNkKoa16x4huBeWLnudJO+89+aowJHNn1KrapGveEPlkCJzCSn5owWS1z66OAHnMI1kYA2zYB
+ 79mJwrMQA6A8/pWKwHSQiT/q1kIp/QqaYIpQVHb/kq8/2JOm0J7DkT+Adn/uw/iBPZUd+KNoX
+ fxcqhLxR3D7wkjrw7U052k7PeAdkIXOPsSie8IrqsOpie1BFFM+OY4Q13/t2XECACp+E0zaPK
+ DoMuHn8wJ05H64ieGCeOI+KSGnuk+sXxzPEd5LhGp7YNDRRRAgGIrhkA5VCSWn4E3/drTdPL7
+ Uqqw0nRZelwHeqpbHH0xzUzk1N5P9Lth8/x+mcwPrCEm/6Jd2+Lt6Srb+ALe6bHEwl39v6jBX
+ T3oY/YxqXpF4kswQrWmLEvoWheX8ZSt/o6pQxOeLIiyxUFUxLCD/Fclag6oXIyoK2hWf4RkvT
+ HxDmRwqgXzyRkLI25n3uB1oHxYuzksPJGilxVL2uVHRDHEIra4TlWqUSgyukB0sajYzcqB/Zm
+ kb8rEyg7G2Aehw9805BSt3F5YdGGiX05m6U1ISxyZclNlSFQRZS9qDnuys8qz4zRHurx3l9kq
+ ddqKr09MmgtIzQf+
 
-On Sun, Oct 18, 2015 at 6:24 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> On Sunday 18 October 2015 16:01:48 Shivani Bhardwaj wrote:
->> Hi Arnd! I still have a doubt.
->> if (rc)
->>      return rc;
->>
->> still doesn't make any sense, right?
->
-> I don't understand what you mean.
->
->> On Fri, Oct 16, 2015 at 4:32 PM, Shivani Bhardwaj <shivanib134@gmail.com> wrote:
->> > On Fri, Oct 16, 2015 at 3:25 PM, Arnd Bergmann <arnd@arndb.de> wrote:
->> >>>
->> >>> This means it is never going to throw out of range error?
->> >>> If that is the case why do we take the variable val as unsigned long?
->> >>> It can be typecasted in the function kstrtoul. We can take it as
->> >>> simple int. And still
->> >>> if (rc)
->> >>>      return rc;
->> >>>
->> >>> statement is never going to be valid, is it?
->> >>
->> >> A used may still write "aardvark" into the file, which would return
->> >> -EINVAL, and writing 999999999999999999 would return -ERANGE.
->
-> Anything wrong with my explanation here?
->
->         Arnd
+On Sunday 18 October 2015 16:01:48 Shivani Bhardwaj wrote:
+> Hi Arnd! I still have a doubt.
+> if (rc)
+>      return rc;
+> 
+> still doesn't make any sense, right?
 
-According to your explanation, -EINVAL or -ERANGE if failure or 0 if success.
-if(rc)     ->   if rc happens to be true which means >0.
-This is never going to happen. Right?
-So, this
+I don't understand what you mean.
 
-if(rc)
-     return rc;
+> On Fri, Oct 16, 2015 at 4:32 PM, Shivani Bhardwaj <shivanib134@gmail.com> wrote:
+> > On Fri, Oct 16, 2015 at 3:25 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> >>>
+> >>> This means it is never going to throw out of range error?
+> >>> If that is the case why do we take the variable val as unsigned long?
+> >>> It can be typecasted in the function kstrtoul. We can take it as
+> >>> simple int. And still
+> >>> if (rc)
+> >>>      return rc;
+> >>>
+> >>> statement is never going to be valid, is it?
+> >>
+> >> A used may still write "aardvark" into the file, which would return
+> >> -EINVAL, and writing 999999999999999999 would return -ERANGE.
 
-stays useless. Doesn't it?
-I'm just asking to avoid introducing bugs if I have misunderstood the thing.
+Anything wrong with my explanation here?
+
+	Arnd
 
