@@ -1,53 +1,62 @@
 X-GM-THRID: 6206591728806264832
-X-Received: by 10.129.83.10 with SMTP id h10mr4086194ywb.6.1445219880225;
-        Sun, 18 Oct 2015 18:58:00 -0700 (PDT)
+X-Received: by 10.194.192.71 with SMTP id he7mr5886401wjc.2.1445188582133;
+        Sun, 18 Oct 2015 10:16:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.244 with SMTP id 107ls2378904qgp.24.gmail; Sun, 18 Oct
- 2015 18:57:59 -0700 (PDT)
-X-Received: by 10.31.21.194 with SMTP id 185mr23928864vkv.10.1445219879579;
-        Sun, 18 Oct 2015 18:57:59 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id zg1si3186848pbb.2.2015.10.18.18.57.59
+Received: by 10.180.102.226 with SMTP id fr2ls470935wib.50.canary; Sun, 18 Oct
+ 2015 10:16:21 -0700 (PDT)
+X-Received: by 10.180.35.132 with SMTP id h4mr3453185wij.5.1445188581766;
+        Sun, 18 Oct 2015 10:16:21 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id bn7si6360wib.0.2015.10.18.10.16.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 18:57:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Oct 2015 10:16:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 23E0167;
-	Mon, 19 Oct 2015 01:57:59 +0000 (UTC)
-Date: Sun, 18 Oct 2015 18:57:58 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Daniel Baluta <daniel.baluta@gmail.com>
-Cc: Aybuke Ozdemir <aybuke.147@gmail.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22e.google.com with SMTP id fv8so48492111wic.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 10:16:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=EhluqSJ8dIiQqzBUOROZiPDURYaf6r4C7mqivajEsvc=;
+        b=tWTedj0OupZeBGFn04KaOOyKoawYvoIucg7HxQy2kx0Kw/v0hovH9ziMnXdd5BVwzr
+         iUdDbMEIaK/mz2JkYDgG17JbV+uDAMGJ5XXYszTqDZO5O61C5ilIqR1ZMLcMjDX1GGM7
+         KhGHniNt+sr1PP6Wn/tr94bT+6/rmG4tSpDLUolAoKJRx/UoaC1eKGfi5G27P4p7kevQ
+         qjMSOFm3Ui5mEFWUuNwgdt5lyamy0Y+0MJy7Cvya+EpGyBlcrFZsez0phaVfluj1v+PW
+         c/NwnRQOh3GtXLRDb7QJlKeAhgzWqYTh+uss5ERGJ26yFd2VC2PPnZsRkZYluPJ98O9S
+         Qjtg==
+MIME-Version: 1.0
+X-Received: by 10.180.211.47 with SMTP id mz15mr15382632wic.93.1445188581671;
+ Sun, 18 Oct 2015 10:16:21 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Sun, 18 Oct 2015 10:16:21 -0700 (PDT)
+In-Reply-To: <CAEnQRZBQ3adxxn-trtEWRdqfDUycQvzhjA1i0A68Z81CgUiO0A@mail.gmail.com>
+References: <1445084735-20133-1-git-send-email-aybuke.147@gmail.com>
+	<1445084735-20133-2-git-send-email-aybuke.147@gmail.com>
+	<1445084735-20133-3-git-send-email-aybuke.147@gmail.com>
+	<CAEnQRZBQ3adxxn-trtEWRdqfDUycQvzhjA1i0A68Z81CgUiO0A@mail.gmail.com>
+Date: Sun, 18 Oct 2015 20:16:21 +0300
+Message-ID: <CAEnQRZAM89=q=i=T6a5B_uveiDTs4e2otaZpd0JQj+pbP6Q0qw@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH 3/3] Staging: wilc1000: Remove
  unnecessary parentheses
-Message-ID: <20151019015758.GA8496@kroah.com>
-References: <1445084735-20133-1-git-send-email-aybuke.147@gmail.com>
- <1445084735-20133-2-git-send-email-aybuke.147@gmail.com>
- <1445084735-20133-3-git-send-email-aybuke.147@gmail.com>
- <CAEnQRZBQ3adxxn-trtEWRdqfDUycQvzhjA1i0A68Z81CgUiO0A@mail.gmail.com>
- <CAEnQRZAM89=q=i=T6a5B_uveiDTs4e2otaZpd0JQj+pbP6Q0qw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAEnQRZAM89=q=i=T6a5B_uveiDTs4e2otaZpd0JQj+pbP6Q0qw@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Aybuke Ozdemir <aybuke.147@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-On Sun, Oct 18, 2015 at 08:16:21PM +0300, Daniel Baluta wrote:
-> On Sun, Oct 18, 2015 at 8:12 PM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
-> > On Sat, Oct 17, 2015 at 3:25 PM, Aybuke Ozdemir <aybuke.147@gmail.com> wrote:
-> >> Problem found using checkpatch.pl:
-> >> CHECK: Unnecessary parentheses around pstrNetworkInfo->u8SsidLen
-> >>
-> >> Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
-> >
-> > Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
-> 
-> Ignore this, the patches are already applied.
+On Sun, Oct 18, 2015 at 8:12 PM, Daniel Baluta <daniel.baluta@gmail.com> wrote:
+> On Sat, Oct 17, 2015 at 3:25 PM, Aybuke Ozdemir <aybuke.147@gmail.com> wrote:
+>> Problem found using checkpatch.pl:
+>> CHECK: Unnecessary parentheses around pstrNetworkInfo->u8SsidLen
+>>
+>> Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
+>
+> Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
 
-Sorry, was too fast :)
+Ignore this, the patches are already applied.
 
