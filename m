@@ -1,104 +1,80 @@
-X-GM-THRID: 6388342428982575104
-X-Received: by 10.99.125.27 with SMTP id y27mr3741132pgc.130.1487401879022;
-        Fri, 17 Feb 2017 23:11:19 -0800 (PST)
+X-GM-THRID: 6206985870127398912
+X-Received: by 10.182.65.134 with SMTP id x6mr21766893obs.14.1445176515311;
+        Sun, 18 Oct 2015 06:55:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.76.84 with SMTP id a81ls1038573itb.7.gmail; Fri, 17 Feb
- 2017 23:11:18 -0800 (PST)
-X-Received: by 10.98.27.199 with SMTP id b190mr2947648pfb.5.1487401878301;
-        Fri, 17 Feb 2017 23:11:18 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id h130si1159333pfe.1.2017.02.17.23.11.18
+Received: by 10.107.27.14 with SMTP id b14ls1209818iob.5.gmail; Sun, 18 Oct
+ 2015 06:55:14 -0700 (PDT)
+X-Received: by 10.68.138.132 with SMTP id qq4mr21518838pbb.11.1445176514720;
+        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id el2si2885842pbb.0.2015.10.18.06.55.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Feb 2017 23:11:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id o64so5661886pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 17 Feb 2017 23:11:18 -0800 (PST)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by padhk11 with SMTP id hk11so3009474pad.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Coz6iyd+ozSbcq02D9W2shrdSXwC+7aZDnPIWX1Z8GA=;
-        b=R+4fCX8UPBjf6owBqxb9EuJ+W2Jag0naf3Yq5zbcXH739ibcM1KusUI6IlYMN4o8oE
-         hCLuoB7usaOHOmGQgVxDaji8QMkvNrr5XIEIKGXfvQkLh3FZlbXnU5tJxzTtEacSSkPb
-         5+8exEkfr8ppfn5L4gfALAqqmEigsvvwHvEBnNvzt18Ex2me6E3QtJmGgPNAaMHSZI+h
-         IObSOWYbwjSANSB3QLN8hejNyCH/V11bn7/J1dLU45/z2Z9BLZh8AMXOBtvhsWkob403
-         WHuFWzQERiMCJ1R1vQylXkf0AF97hHgTqdROCvXsNetcT7PfgBaC3aXiDLNITiLT/Ij7
-         jgew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=Coz6iyd+ozSbcq02D9W2shrdSXwC+7aZDnPIWX1Z8GA=;
-        b=HkfOIDAYPsrrpkT8rvUkx/FaU8NQ27EZngqSUVak44sRUxcUERavcRYxFR1LL0LDaB
-         meaaGhYs9rQVgz4HGMKzzPPNR+7vqYvqFCeLpATUZBz+DNSKkVMLC/lTLE8LOSeAXL0B
-         p76Oa88RpODTQ41cZALjN9Y4e9gWakFGGzjKHxTpwUwFb/XQARIqPHz/6LIX/hrLH6x1
-         OOFz8aqooQPpKOh2qTVUiHWYRICkppCbI2io2KxGKRLjJUechCkvnMudvn2wry3aWLZ1
-         Kn8qkEMg8ZxkMM+Ftb66xs9CdNLyHe7EVEHNMwMqHsucO9WHtI2iV/aeqYlz/HuWohll
-         hBkw==
-X-Gm-Message-State: AMke39mRCWankP5A+x27ZyJJgz8gmjLwqFyxHownlwCjHXA6mRZ2hdTVmQpqjLL3si2E9g==
-X-Received: by 10.99.253.81 with SMTP id m17mr14849615pgj.78.1487401878125;
-        Fri, 17 Feb 2017 23:11:18 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r17sm23357607pgg.19.2017.02.17.23.11.16
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 17 Feb 2017 23:11:17 -0800 (PST)
-Date: Sat, 18 Feb 2017 12:41:15 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/6] staging: rtl8192e: Replaced comparison to NULL statements
-Message-ID: <20170218071115.GA10540@singhal-Inspiron-5558>
+        bh=+YHubHS+f+Zfmy+nANCzetOm0UpB9W/4btxBV+YH3Tk=;
+        b=MswSjLzVzHejyHDQ+4QSBRy7eBxAa39W/SFitnNIlPt9QTeEQRig6p30k1Fai8oHdf
+         YZQmv+r+rQIoegmJkC29ypI98x+ICcVKHO45uVxDZBHBnyByetA/7/S9YUTqAvjzbG5t
+         xskG8veJC2KrjpKAUzJ9DYRqafYcwLVg6CwNep4TxtMHZtC0DOVLwF98wJNEv5ydglvL
+         Ty0TGmzz3SLChY2FinZdvuoelT+lKCqoa3Rf4hH1S/8wBGBUOGdAf+er7qUwGPSiHBt8
+         MmHb5GmysSWln0exo5WpNKpFLiVEMBvzirzS4SLCVgP5duCCq/14urX/UsyyS/tAN0cm
+         +F9A==
+X-Received: by 10.68.90.195 with SMTP id by3mr28827606pbb.148.1445176514567;
+        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.167.66])
+        by smtp.gmail.com with ESMTPSA id dd4sm31163242pbb.52.2015.10.18.06.55.13
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sun, 18 Oct 2015 06:55:14 -0700 (PDT)
+Date: Sun, 18 Oct 2015 19:25:10 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: sm750fb: Replace include <asm/*.h> with include
+ <linux/*.h>
+Message-ID: <20151018135509.GA24240@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch corrects check generated by checkpatch.pl by
-replacing comparison to null statements with equivalent
-statements in the form of "!x".
+Problem found using checkpatch.pl
+WARNING: Use #include <linux/io.h> instead of <asm/io.h>
+WARNING: Use #include <linux/uaccess.h> instead of <asm/uaccess.h>
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rtl8192e/rtl819x_BAProc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/sm750fb/ddk750_help.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-index 20260af..bdbd21c 100644
---- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-@@ -83,12 +83,12 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
- 	netdev_dbg(ieee->dev, "%s(): frame(%d) sentd to: %pM, ieee->dev:%p\n",
- 		   __func__, type, Dst, ieee->dev);
+diff --git a/drivers/staging/sm750fb/ddk750_help.h b/drivers/staging/sm750fb/ddk750_help.h
+index 9b2d2d2..5be814e 100644
+--- a/drivers/staging/sm750fb/ddk750_help.h
++++ b/drivers/staging/sm750fb/ddk750_help.h
+@@ -4,8 +4,8 @@
+ #ifndef USE_INTERNAL_REGISTER_ACCESS
  
--	if (pBA == NULL) {
-+	if (!pBA) {
- 		netdev_warn(ieee->dev, "pBA is NULL\n");
- 		return NULL;
- 	}
- 	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
--	if (skb == NULL)
-+	if (!skb)
- 		return NULL;
+ #include <linux/ioport.h>
+-#include <asm/io.h>
+-#include <asm/uaccess.h>
++#include <linux/io.h>
++#include <linux/uaccess.h>
+ #include "sm750_help.h"
  
- 	memset(skb->data, 0, sizeof(struct rtllib_hdr_3addr));
-@@ -154,7 +154,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
- 	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
- 
- 	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
--	if (skb == NULL)
-+	if (!skb)
- 		return NULL;
- 
- 	skb_reserve(skb, ieee->tx_headroom);
+ /* software control endianness */
 -- 
-2.7.4
+1.9.1
 
 
