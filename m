@@ -1,83 +1,76 @@
-X-GM-THRID: 6205472646715408384
-X-Received: by 10.107.149.4 with SMTP id x4mr76891iod.20.1444824190521;
-        Wed, 14 Oct 2015 05:03:10 -0700 (PDT)
+X-GM-THRID: 6207061175018979328
+X-Received: by 10.182.120.3 with SMTP id ky3mr22274942obb.6.1445194048558;
+        Sun, 18 Oct 2015 11:47:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.57.84 with SMTP id g20ls159301igq.36.gmail; Wed, 14 Oct
- 2015 05:03:09 -0700 (PDT)
-X-Received: by 10.68.184.35 with SMTP id er3mr2264869pbc.2.1444824189941;
-        Wed, 14 Oct 2015 05:03:09 -0700 (PDT)
+Received: by 10.182.22.231 with SMTP id h7ls1023129obf.64.gmail; Sun, 18 Oct
+ 2015 11:47:28 -0700 (PDT)
+X-Received: by 10.182.245.163 with SMTP id xp3mr3263322obc.45.1445194048082;
+        Sun, 18 Oct 2015 11:47:28 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id wl2si824552pab.1.2015.10.14.05.03.09
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id el2si2969489pbb.0.2015.10.18.11.47.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 05:03:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Oct 2015 11:47:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id cn9so21924923pad.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 05:03:09 -0700 (PDT)
+Received: by mail-pa0-x231.google.com with SMTP id fv9so71105032pac.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 11:47:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=2nLUqwNa/tuci2O8OaFfZ+/ftjIDUaiBAJYiEB8UU4o=;
-        b=rz5Tr7DqA4k97i2SukvfDpVJlWMd0xmbxIjxRIuFPYuQ9eHmeU08q+QSsIXm9xtbXY
-         gEfK6hdJyI45ky8Lxvv5q5IfDHjA49oJ8vC3EhnKMQ8DQPO2BGKnkLenE64gZlKxe72R
-         EZxQyrEJX37DDxCfu9f5qlnPRjgKuBqXIlSIqctWc+Jdnc5ZObOz+BJwBYLrV/dyETqT
-         Np4oo/TlEz3VF+XX/s5i8BDBb70BoB2iD2SxrOCsJdijLw45ywW+jCwiAYjwPZSzgCBn
-         9jTR/HngDcIi/GEyOQoOgL1dRIdGM96HZ3ijy5cUt1HusjazSxArH0Ee69l/GTkyRne/
-         43gw==
-X-Received: by 10.68.68.167 with SMTP id x7mr3393093pbt.140.1444824189820;
-        Wed, 14 Oct 2015 05:03:09 -0700 (PDT)
+        bh=2DnnT7pSVB1bPq22a87UfPJWVHA5JWqnTuxrHw+5XLQ=;
+        b=W0TRO5T/hKFo0LlxqIG95Dzm1BEgZzlKwSvlZzaHFzMWq3wp3GLbGpotHhIoWDiRnm
+         L8k7p8C9T7iwTKURsaY4eg+RzopvDLiVpOOMgSyV2HH4zDKCltStTAXhKx6IJjxHlF1g
+         02uA5/kxXkuJ2BSm5zFGfzQf1SJj9LgNDFczoTBKlwSKgMGuqSLNkGJK5+L+AvCaFDII
+         QbwiIFqG6ZuJujMxYRONgBFw2oYzBXqpmF4gfkwiBUkNGixfQI5Z7VjSQ+l+pyurrEgs
+         SXkUEChdMEheTMF66XYTjsr7bXHA/hPLZKSd4AkUkCAE9SuxQKzIT8ToRl1QNd9jI3PS
+         2iSQ==
+X-Received: by 10.66.227.230 with SMTP id sd6mr29633787pac.60.1445194047961;
+        Sun, 18 Oct 2015 11:47:27 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
 Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id dy8sm9410194pab.38.2015.10.14.05.03.07
+        by smtp.gmail.com with ESMTPSA id u10sm32060946pbs.63.2015.10.18.11.47.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 05:03:08 -0700 (PDT)
-Date: Wed, 14 Oct 2015 17:32:58 +0530
+        Sun, 18 Oct 2015 11:47:27 -0700 (PDT)
+Date: Mon, 19 Oct 2015 00:17:13 +0530
 From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: os_intfs: Remove unnecessary cast
-Message-ID: <20151014120258.GA9142@ubuntu>
+Subject: [PATCH] Staging: lustre: interval_tree: Remove multiple assignments
+Message-ID: <20151018184713.GA33618@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Explicit type conversions are not required and so, they should be
-removed.
-Semantic patch used:
-@@
-type T;
-T e;
-identifier x;
-@@
-
-* T x = (T)e;
+Remove multiple assignments by factorizing them.
+Fix checkpatch CHECK: multiple assignments should be avoided
 
 Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/rtl8712/os_intfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/lustre/lustre/ldlm/interval_tree.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
-index f34a963..6805f79 100644
---- a/drivers/staging/rtl8712/os_intfs.c
-+++ b/drivers/staging/rtl8712/os_intfs.c
-@@ -333,7 +333,7 @@ u8 r8712_init_drv_sw(struct _adapter *padapter)
+diff --git a/drivers/staging/lustre/lustre/ldlm/interval_tree.c b/drivers/staging/lustre/lustre/ldlm/interval_tree.c
+index 3d2d85b..39b5717 100644
+--- a/drivers/staging/lustre/lustre/ldlm/interval_tree.c
++++ b/drivers/staging/lustre/lustre/ldlm/interval_tree.c
+@@ -294,7 +294,8 @@ struct interval_node *interval_insert(struct interval_node *node,
+ 	/* link node into the tree */
+ 	node->in_parent = parent;
+ 	node->in_color = INTERVAL_RED;
+-	node->in_left = node->in_right = NULL;
++	node->in_left = NULL;
++	node->in_right = NULL;
+ 	*p = node;
  
- u8 r8712_free_drv_sw(struct _adapter *padapter)
- {
--	struct net_device *pnetdev = (struct net_device *)padapter->pnetdev;
-+	struct net_device *pnetdev = padapter->pnetdev;
- 
- 	r8712_free_cmd_priv(&padapter->cmdpriv);
- 	r8712_free_evt_priv(&padapter->evtpriv);
+ 	interval_insert_color(node, root);
 -- 
 2.1.0
 
