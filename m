@@ -1,73 +1,53 @@
-X-GM-THRID: 5146632257536
-X-Received: by 10.180.72.44 with SMTP id a12mr1226413wiv.0.1425149280136;
-        Sat, 28 Feb 2015 10:48:00 -0800 (PST)
+X-GM-THRID: 6206773156840996864
+X-Received: by 10.50.78.230 with SMTP id e6mr11490459igx.10.1445139476998;
+        Sat, 17 Oct 2015 20:37:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.95.7 with SMTP id dg7ls309892wib.45.gmail; Sat, 28 Feb
- 2015 10:47:59 -0800 (PST)
-X-Received: by 10.194.221.65 with SMTP id qc1mr2812897wjc.7.1425149279860;
-        Sat, 28 Feb 2015 10:47:59 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x22d.google.com (mail-wg0-x22d.google.com. [2a00:1450:400c:c00::22d])
-        by gmr-mx.google.com with ESMTPS id by11si373248wib.1.2015.02.28.10.47.59
+Received: by 10.50.134.104 with SMTP id pj8ls603140igb.32.gmail; Sat, 17 Oct
+ 2015 20:37:56 -0700 (PDT)
+X-Received: by 10.66.221.131 with SMTP id qe3mr12439607pac.2.1445139476525;
+        Sat, 17 Oct 2015 20:37:56 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id vy6si2653668pbc.1.2015.10.17.20.37.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 10:47:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) client-ip=2a00:1450:400c:c00::22d;
+        Sat, 17 Oct 2015 20:37:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22d as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wghl2 with SMTP id l2so26184071wgh.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 10:47:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=kqycSWkoPEhes1jcJJOWZc76CgoFkIH1xB6GugR7Oic=;
-        b=iBbcqzy1KXV7CKOOEbmA/zSl6ob0egTQ9LJKptdIfajujs4fqpy+I4RY9smkhCufnS
-         CdxPk1lQ4TQFd3sqnmicyL3PGSPHoc76FmRC1/B3fnxPw30i6hS/5sXx/hbPZ33HUk4Z
-         9zH83wRpx0PfuYJYy7AliIom4MUVbCGlL7KQy+ngilYRLcLPymIEYN8anj9/l+jcP2tY
-         7znVS8+3yqvHQvfebIZRjkHeQIjrdU6ypXV34IrxQ59KzmcDDvObNiHZ+t1i9k2DoECy
-         Pm+9qSmrzhtGRYy7nIwqYbRQoPslNfjcm9QJ+RXmoCge48K2MnIzDTU3EA//X5W0ISG1
-         RYLQ==
-X-Received: by 10.180.83.129 with SMTP id q1mr19010216wiy.46.1425149279785;
-        Sat, 28 Feb 2015 10:47:59 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id uc18sm8124728wib.0.2015.02.28.10.47.58
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Feb 2015 10:47:59 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 3/3] Staging: rtl8192e: Fix line over 80 characters
-Date: Sat, 28 Feb 2015 19:47:53 +0100
-Message-Id: <4ecd3d6393d82eda6177f29b0dbf1b610396ecbd.1425149231.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1425149231.git.ksenija.stanojevic@gmail.com>
-References: <cover.1425149231.git.ksenija.stanojevic@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2EF3D412;
+	Sun, 18 Oct 2015 03:37:56 +0000 (UTC)
+Date: Sat, 17 Oct 2015 20:16:09 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Burcin Akalin <brcnakalin@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH]  Do not use multiple blank lines.
+Message-ID: <20151018031609.GA12600@kroah.com>
+References: <1445126881-27409-1-git-send-email-brcnakalin@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1445126881-27409-1-git-send-email-brcnakalin@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch fixes line to fit 80 characters.
-Issue found by checkpatch.pl
+On Sun, Oct 18, 2015 at 03:08:01AM +0300, Burcin Akalin wrote:
+> Remove multiple blank lines. Problem found using checkpatch.pl
+> 
+> Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_wx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Your patch looks good, but your subject: needs a bit of work.  You have
+an extra space in there for some reason, and you don't say what part of
+the kernel you are modifying.
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index d5f4bcb..309cda0 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -344,7 +344,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 				if (key_provided)
- 					break;
- 				lib80211_crypt_delayed_deinit(&ieee->crypt_info,
--							    &ieee->crypt_info.crypt[i]);
-+						    &ieee->crypt_info.crypt[i]);
- 			}
- 		}
- 
--- 
-1.9.1
+The subject should look like this:
+	Subject: [PATCH] staging: panel: do not use multiple blank lines.
 
+which lets me properly sort the patches when I am applying them.
+
+Can you fix this up and resend?
+
+thanks,
+
+greg k-h
 
