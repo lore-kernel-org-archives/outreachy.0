@@ -1,105 +1,66 @@
-X-GM-THRID: 6249380756525678592
-X-Received: by 10.98.71.209 with SMTP id p78mr33977520pfi.13.1455047343441;
-        Tue, 09 Feb 2016 11:49:03 -0800 (PST)
+X-GM-THRID: 6207359559095287808
+X-Received: by 10.129.85.80 with SMTP id j77mr11370759ywb.31.1445263521285;
+        Mon, 19 Oct 2015 07:05:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.30.8 with SMTP id o8ls6138igh.44.gmail; Tue, 09 Feb 2016
- 11:49:03 -0800 (PST)
-X-Received: by 10.66.157.37 with SMTP id wj5mr35239348pab.30.1455047343101;
-        Tue, 09 Feb 2016 11:49:03 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x22e.google.com (mail-qk0-x22e.google.com. [2607:f8b0:400d:c09::22e])
-        by gmr-mx.google.com with ESMTPS id l85si673970ywb.2.2016.02.09.11.49.03
+Received: by 10.107.137.164 with SMTP id t36ls880929ioi.34.gmail; Mon, 19 Oct
+ 2015 07:05:20 -0700 (PDT)
+X-Received: by 10.107.27.7 with SMTP id b7mr26625290iob.30.1445263520776;
+        Mon, 19 Oct 2015 07:05:20 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x22d.google.com (mail-qg0-x22d.google.com. [2607:f8b0:400d:c04::22d])
+        by gmr-mx.google.com with ESMTPS id u67si2165263ywf.5.2015.10.19.07.05.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 11:49:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22e as permitted sender) client-ip=2607:f8b0:400d:c09::22e;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Oct 2015 07:05:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) client-ip=2607:f8b0:400d:c04::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22e as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x22e.google.com with SMTP id s68so74112787qkh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 11:49:03 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qg0-x22d.google.com with SMTP id m9so8918982qge.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 07:05:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=nkI+a0m6mQJt5CJblj4LyGgHwF3IfTQMBMI91mtT3kU=;
-        b=0QjuyuxOSPzJ9kCMJhxDk4R02CvAro2iEIvkBg+yqCnWp7Uioi/y7fhmcrRNtt5ZiW
-         6ZWbdi4Qb6YLCtRObxsqnEc2Phugp3qlQGaMJBBqW1yZalzJK7q40yKM3vKgzSZE/YRt
-         rvw1HliLje8EDmNpEoEVx6yHpXxyDjiqArtTcUsz/pxHTJJ6Q5xNeL8Cd3pGgeCDlbfM
-         mhIK7foJYIRfudQ659PdBa/Vbk0bejMJbz0w6coUBrI6wKCI32o0R9dinHr8EEZWJVIm
-         Br+QJKnJny3AxcRKWS3bLPzisZFYdtp70LjEwYqqpsBz08ccSMmzz4GMlS3K/eQYQAt0
-         gYuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=nkI+a0m6mQJt5CJblj4LyGgHwF3IfTQMBMI91mtT3kU=;
-        b=TBexew4oSBj3nKw9l1pgMPvFVCUHQZa7NY0HM9qygPTj4UCjSAzVtyyTsFp8Fg7MqU
-         R7D28aI9ZGfJ0tFT1O56A7t+31UHNext5IbJhqPdh9F0/pT7+dhvJeoPI8bAGrbTMbWy
-         xgxaRFbhRehKnBtjue2F74+W5GV39gGGxLWBChFViVzBJFLOC2PHqdjU72QrpHU7w0Wx
-         s5pSJdZjxYrP0N/J5cRwadUPB4Ut176oLQGISz5PhZb+AxVE1WbD0400bT/3ksm3WEQ5
-         2FeV/g59KI7AwaC5byHM3C1g4SWMwiQ5FKFHWxHhGwFb6T2YUj+vsnFem8VKcka8upT3
-         sx6g==
-X-Gm-Message-State: AG10YOTVm5nb7SXYUMxvfVxFH9UAY2gz+ATD2aB2Mj1s3B5HhrmoBneqJi37ZQQrBHhfKw==
-X-Received: by 10.55.71.76 with SMTP id u73mr44566394qka.6.1455047342712;
-        Tue, 09 Feb 2016 11:49:02 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id c135sm16402762qka.23.2016.02.09.11.49.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 11:49:02 -0800 (PST)
-Date: Tue, 9 Feb 2016 19:48:25 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: Eliminate commented out code
-Message-ID: <20160210004825.GA11829@janani-Inspiron-3521>
+        h=mime-version:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding;
+        bh=asyNnKBYa5tW1+DRq9nVUPeTmuv/jU00/VOmpjMnk8E=;
+        b=BG/XDmhHM8YUi5sxLoFxGbRSg5uneUmtiehub/YceAiIx18MTR+VvuZlgg36XvbF0y
+         vkpX4Z/In5QYvSoVWwjlzppBqD4/LtzNZsgyAe1hjRPc3qM0eEYIH780KQADzS8H/xqc
+         mTHoEr43odN8EknmGQDqqbaB/KiAoJLgBZYV6xg9MEBNLWemMTwqMocFTWNseB36LtUK
+         aaRnO9pdFP4f4HDKes7kfMwr+SZx6ubbbriw4sgTv2SZqrF0MpLol2a/JuwJT2YaOBQx
+         S+tXzCD2Cbxfuo6H7tmK7mvUGiO8SHkIM2OkWL6yU5L2vswJAMTEeoBCZrmbAuR3EkGA
+         dEmw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.140.42.136 with SMTP id c8mr35753855qga.64.1445263520548;
+ Mon, 19 Oct 2015 07:05:20 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Mon, 19 Oct 2015 07:05:20 -0700 (PDT)
+Date: Mon, 19 Oct 2015 19:35:20 +0530
+Message-ID: <CA+5yK5FETr5jLSvt=Zk1hr-UsCbc-FOs2XuVvCisS6v_nNm2MA@mail.gmail.com>
+Subject: Not able to build test module
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-This patch removes commented out code as it contributes to code clutter.
+Hi,
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/speakup/serialio.c | 7 -------
- 1 file changed, 7 deletions(-)
+I was working on a patch in staging/media/omap4iss and after making my
+changes wanted to build test it.
 
-diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index a5bbb33..3615457 100644
---- a/drivers/staging/speakup/serialio.c
-+++ b/drivers/staging/speakup/serialio.c
-@@ -92,8 +92,6 @@ const struct old_serial_port *spk_serial_init(int index)
- static irqreturn_t synth_readbuf_handler(int irq, void *dev_id)
- {
- 	unsigned long flags;
--/*printk(KERN_ERR "in irq\n"); */
--/*pr_warn("in IRQ\n"); */
- 	int c;
- 
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
-@@ -101,8 +99,6 @@ static irqreturn_t synth_readbuf_handler(int irq, void *dev_id)
- 
- 		c = inb_p(speakup_info.port_tts+UART_RX);
- 		synth->read_buff_add((u_char) c);
--/*printk(KERN_ERR "c = %d\n", c); */
--/*pr_warn("C = %d\n", c); */
- 	}
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
- 	return IRQ_HANDLED;
-@@ -175,9 +171,6 @@ int spk_wait_for_xmitr(void)
- 	while (!((inb_p(speakup_info.port_tts + UART_MSR)) & UART_MSR_CTS)) {
- 		/* CTS */
- 		if (--tmout == 0) {
--			/* pr_warn("%s: timed out (cts)\n",
--			 * synth->long_name);
--			 */
- 			timeouts++;
- 			return 0;
- 		}
--- 
-2.5.0
+But I can't find it to make it configurable as a module. This is what
+I see when I run
+$ make menuconfig command
 
+--- Media staging drivers
+  =E2=94=82 =E2=94=82    <M>   Broadcom BCM2048 FM Radio Receiver support
+  =E2=94=82 =E2=94=82    <M>   CXD2099AR Common Interface driver
+  =E2=94=82 =E2=94=82    <M>   Panasonic MN88472
+  =E2=94=82 =E2=94=82    <M>   Panasonic MN88473
+  =E2=94=82 =E2=94=82    [*]   Linux Infrared Remote Control IR receiver/tr=
+ansmitter drive
+  =E2=94=82 =E2=94=82
+
+--=20
+Amitoj
 
