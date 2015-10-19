@@ -1,79 +1,75 @@
 X-GM-THRID: 6207218463763595264
-X-Received: by 10.129.92.198 with SMTP id q189mr21022245ywb.40.1445237683051;
-        Sun, 18 Oct 2015 23:54:43 -0700 (PDT)
+X-Received: by 10.194.240.230 with SMTP id wd6mr6226051wjc.0.1445232297664;
+        Sun, 18 Oct 2015 22:24:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.30.5 with SMTP id c5ls1157549qgc.65.gmail; Sun, 18 Oct
- 2015 23:54:42 -0700 (PDT)
-X-Received: by 10.129.92.198 with SMTP id q189mr21022213ywb.40.1445237682311;
-        Sun, 18 Oct 2015 23:54:42 -0700 (PDT)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id zg1si3278436pbb.2.2015.10.18.23.54.42
+Received: by 10.25.212.195 with SMTP id l186ls343394lfg.67.gmail; Sun, 18 Oct
+ 2015 22:24:56 -0700 (PDT)
+X-Received: by 10.112.144.105 with SMTP id sl9mr1086039lbb.3.1445232296921;
+        Sun, 18 Oct 2015 22:24:56 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id cm6si538355wib.1.2015.10.18.22.24.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 23:54:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Oct 2015 22:24:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=navyasri.tech@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id rc13so182024957pab.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 23:54:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=kdVVVyknJypNVqh0BKduUF3QMoGPWJONomq41eGoVGE=;
-        b=Lx8ZnP/bs37X+1NfUcwx45oln0xNdNN9z0QxKYNRqCnMb/pJI8MLbJtVLokMPM1G/4
-         ShmDwCnFjn8BlQpOCvIPUOv5qMlukZ05QqxHp+g+7n3BChYrXU91hiOijSvX+8FkM+ET
-         arOFTWGvW83Svv0jpK3BIbqNGGd59TarKAnln7qTraItgoFFztMnj6UzpPWPp2avXp4b
-         Bj9/wRaJAEK61Ij/f8VFuhpBCA9hLLRPw+HHIu31YTvus/ZyD14Lalb3FDEtTENT37v2
-         yUn1opXx+q8h4yb5HeBw/46K5+f4SxAAou9MVYnzv0GvRBMPSMEE9BJMW0GYzaMGaREP
-         6eBA==
-X-Received: by 10.66.131.76 with SMTP id ok12mr20385792pab.30.1445237682113;
-        Sun, 18 Oct 2015 23:54:42 -0700 (PDT)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from navya ([111.93.5.194])
-        by smtp.gmail.com with ESMTPSA id xa4sm34652860pac.28.2015.10.18.23.54.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 18 Oct 2015 23:54:41 -0700 (PDT)
-Date: Mon, 19 Oct 2015 12:24:39 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: emxx_udc: Add space around operator.
-Message-ID: <20151019065438.GA5680@navya>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,700,1437429600"; 
+   d="scan'208";a="183367637"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Oct 2015 07:24:55 +0200
+Date: Mon, 19 Oct 2015 07:24:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: emxx_udc: Add space around
+ operator.
+In-Reply-To: <20151019045746.GA4126@navya>
+Message-ID: <alpine.DEB.2.02.1510190724090.2080@localhost6.localdomain6>
+References: <20151019045746.GA4126@navya>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Add a space around '>>' operator.
-Problem found using checkpatch.
+On Mon, 19 Oct 2015, Navya Sri Nizamkari wrote:
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
-Changes in v2:
-    -Make commit message better.
+> This patch fixes the checkpatch.pl warning about
+> addition of space around the '>>' operator.
 
- drivers/staging/emxx_udc/emxx_udc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Write your commit message in the imperative, focusing on what is done, not 
+what checkpatch has told you.  So it could be "Add a space around >>.  
+Problem found using checkpatch.*
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index 0492747..60604c8 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -211,7 +211,7 @@ static u32 _nbu2ss_get_begin_ram_address(struct nbu2ss_udc *udc)
- 		}
- 
- 		if ((data >> 16) > last_ram_adr)
--			last_ram_adr = data>>16;
-+			last_ram_adr = data >> 16;
- 	}
- 
- 	return last_ram_adr + use_ram_size;
--- 
-1.9.1
+julia
 
+> Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+> ---
+>  drivers/staging/emxx_udc/emxx_udc.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+> index 0492747..60604c8 100644
+> --- a/drivers/staging/emxx_udc/emxx_udc.c
+> +++ b/drivers/staging/emxx_udc/emxx_udc.c
+> @@ -211,7 +211,7 @@ static u32 _nbu2ss_get_begin_ram_address(struct nbu2ss_udc *udc)
+>  		}
+>  
+>  		if ((data >> 16) > last_ram_adr)
+> -			last_ram_adr = data>>16;
+> +			last_ram_adr = data >> 16;
+>  	}
+>  
+>  	return last_ram_adr + use_ram_size;
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151019045746.GA4126%40navya.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
