@@ -1,162 +1,85 @@
-X-GM-THRID: 8445029777408
-X-Received: by 10.66.142.196 with SMTP id ry4mr13875741pab.12.1426427780092;
-        Sun, 15 Mar 2015 06:56:20 -0700 (PDT)
+X-GM-THRID: 6207307696795811840
+X-Received: by 10.112.198.33 with SMTP id iz1mr6497417lbc.8.1445251446177;
+        Mon, 19 Oct 2015 03:44:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.48.3 with SMTP id n3ls2403527qga.30.gmail; Sun, 15 Mar
- 2015 06:56:19 -0700 (PDT)
-X-Received: by 10.236.15.167 with SMTP id f27mr57047137yhf.8.1426427779863;
-        Sun, 15 Mar 2015 06:56:19 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
-        by gmr-mx.google.com with ESMTPS id ri9si1349462pdb.1.2015.03.15.06.56.19
+Received: by 10.25.142.16 with SMTP id q16ls20608lfd.64.gmail; Mon, 19 Oct
+ 2015 03:44:05 -0700 (PDT)
+X-Received: by 10.112.16.229 with SMTP id j5mr6579646lbd.6.1445251445533;
+        Mon, 19 Oct 2015 03:44:05 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id hs5si497165wib.1.2015.10.19.03.44.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2015 06:56:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
+        Mon, 19 Oct 2015 03:44:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22f.google.com with SMTP id ni2so32156907pdb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 15 Mar 2015 06:56:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:content-transfer-encoding:user-agent;
-        bh=QQGuFdYsZ38rX3dCuUUnuGfxSmb9zTTFIhUCSNMuBuo=;
-        b=CKb7D1gMBbF5++OSrZkcA5uNPPKB9qvLrYNSiMpxuuVeiX+XYySRjYrJuaqNqqnEOq
-         /woaGm6UMkRYsuOPaW/8dTKyp7tnGPCROtFPMR2xd6rffQP6VHl2Uly3eMdhnL73zqrX
-         tAB2e9U5J+yEs91+qJdpz3UdkaNygecLozPtkt3mXANVlKABBAkcFfRzCcxDFePqTYtW
-         EvVCW2Uoz3kdPZY4MZ/+UQ1mt64KICnE5ngIw3ACRcHVK++WepLvu3oJiCxSBqaWlAji
-         L5PXS+yKDnGrslO2eLNh/2XKtwS/1g/yDBe5/+eEPHZ2cCHwpUQ1qxHq94RdDxY3fjoa
-         BLCg==
-X-Received: by 10.66.62.137 with SMTP id y9mr125977428par.87.1426427779689;
-        Sun, 15 Mar 2015 06:56:19 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id fr13sm12554218pdb.55.2015.03.15.06.56.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 15 Mar 2015 06:56:18 -0700 (PDT)
-Date: Sun, 15 Mar 2015 19:24:28 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: fbtft: Move variable declarations to improve
- codestyle
-Message-ID: <20150315135428.GA5372@akanksha>
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue002) with ESMTPSA (Nemesis) id 0LcbA7-1aE9X00Y8l-00k5ta; Mon, 19 Oct
+ 2015 12:44:05 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Deepa Dinamani <deepa.kernel@gmail.com>, y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
+Subject: Re: timespec64
+Date: Mon, 19 Oct 2015 12:44:04 +0200
+Message-ID: <4086504.Z6Re8QtBdp@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CABeXuvpuNRuDFyLUNVWtZM_sJh5NwEu2vh5=eXP3NvDUbH81sQ@mail.gmail.com>
+References: <CABeXuvpuNRuDFyLUNVWtZM_sJh5NwEu2vh5=eXP3NvDUbH81sQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:KpVkFmBQMHrDe5JTIjcNlX8d4IHebBRDSgV7pFLlM2Sqn0ada5K
+ i/OP0swXe7FIwhm9Poanon4J+5wMn5uKgKEpr9UYp4GFYfmCXtXvbmjhBPzHwCCAqGlh0nN
+ fKosjOXsOlVUGUyAAPIOSmB+36ogMCVftdP1EKKNn8s22jQG83uVmdOkqU55v8UOzTw/UC5
+ fYZdOqVrpgkIDuBOn0S1g==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:BjFzmnwSDDo=:bWdINbpN4kZsgvgcDNBrdm
+ cKpuXmGJdnVs8vul87m8CYcKGfXzSHHPtoEtI3PEPz8pHRhK5clUoH67figo4gpHbO9pu6EMK
+ Yn01g5EM9wwLBM+qXN4g+ywyf7hTqN5OUH01XG5eoLNdVGsgOAlWjZn2UDx1seW57pChJJh1/
+ kUhits+NabtYNDGZtE5d/7v5Ip/u9xNOPK22lmmAbzAlu4PXi9snMvTdLeagNN/WUVXMBbISf
+ SsKUggPaeZrcrj0dwP4VTZZjUEVeGv/tmRxf/iDI880LO/abDpypRKuzUyeOcaWv5ZeGUaasj
+ P7hwbNlT4GdtRhC4KOQ9FsoJ6ld4tzORRoRqqSqhTQ+Zw1cvaIRrkouxQmi/3auqjk6pLr4vE
+ pUoz7OEPSJY296mjueON9aohV7OgZY6InhoniUvqghiHnOuIU0mJhJISrLUEMLiXAES0ARdu1
+ LCSmaHDy57RbzbdLqcyprtD3fPcTKjy4DG734pq72ZG60LXxH8U4/lVgITtIkYzGrWYsrAeeS
+ Q3eqr6IQwDuFlxKET/ZuBykguQqpThVbgruRo9avNIWirb/o/0eqDswybYOaEkzc4krC+uKr0
+ iokamD7rLtqFVzZim0VgeMt8C0HGIJjzcqwTeCilAb36+L1m8dd/3YZh9a64REUUZdTZUJ6tg
+ KNZP91QdSRAmNMEty1415Liih3gSVC1bV4ik9r2ZVf7PFYPyMgUqM8fiZRGNnSI5Iu/P4FvAf
+ gY9vz+YtkNJ3TV5V
 
-Move variable declarations, use typedefs to define
-variables and reindent code to improve compactness
-and readability.
+On Sunday 18 October 2015 21:21:22 Deepa Dinamani wrote:
+> Hi Arnd,
+> 
+> I'm working on the usbtest ioctl task.
+> I was trying to figure out how to copy a timespec64 value to userspace.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/fbtft/fb_agm1264k-fl.c | 39 ++++++++++++++++------------------
- 1 file changed, 18 insertions(+), 21 deletions(-)
+(I'm adding the y2038 and outreachy lists to Cc, hope that's ok for you)
 
-diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-index 7aa9e8c..acf5acb 100644
---- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-+++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-@@ -33,13 +33,13 @@
- #define WIDTH		64
- #define HEIGHT		64
- #define TOTALWIDTH	(WIDTH * 2)	 /* because 2 x ks0108 in one display */
--#define FPS			20
-+#define FPS		20
- 
- #define EPIN		gpio.wr
--#define RS			gpio.dc
--#define RW			gpio.aux[2]
--#define CS0			gpio.aux[0]
--#define CS1			gpio.aux[1]
-+#define RS		gpio.dc
-+#define RW		gpio.aux[2]
-+#define CS0		gpio.aux[0]
-+#define CS1		gpio.aux[1]
- 
- 
- /* diffusing error (�Floyd-Steinberg�) */
-@@ -275,22 +275,25 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- {
- 	u16 *vmem16 = (u16 *)par->info->screen_base;
- 	u8 *buf = par->txbuf.buf;
-+	u16 i, j, b, g, r;
- 	int x, y;
- 	int ret = 0;
-+	s16 pixel, error_b, error_w, error, *write_pos;
-+	s8 coeff;
- 
- 	/* buffer to convert RGB565 -> grayscale16 -> Ditherd image 1bpp */
--	signed short *convert_buf = kmalloc(par->info->var.xres *
-+	s16 *convert_buf = kmalloc(par->info->var.xres *
- 		par->info->var.yres * sizeof(signed short), GFP_NOIO);
--
- 	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
- 
- 	/* converting to grayscale16 */
- 	for (x = 0; x < par->info->var.xres; ++x)
- 		for (y = 0; y < par->info->var.yres; ++y) {
- 			u16 pixel = vmem16[y *  par->info->var.xres + x];
--			u16 b = pixel & 0x1f;
--			u16 g = (pixel & (0x3f << 5)) >> 5;
--			u16 r = (pixel & (0x1f << (5 + 6))) >> (5 + 6);
-+
-+			b = pixel & 0x1f;
-+			g = (pixel & (0x3f << 5)) >> 5;
-+			r = (pixel & (0x1f << (5 + 6))) >> (5 + 6);
- 
- 			pixel = (299 * r + 587 * g + 114 * b) / 200;
- 			if (pixel > 255)
-@@ -304,12 +307,9 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 	/* Image Dithering */
- 	for (x = 0; x < par->info->var.xres; ++x)
- 		for (y = 0; y < par->info->var.yres; ++y) {
--			signed short pixel =
--				convert_buf[y *  par->info->var.xres + x];
--			signed short error_b = pixel - BLACK;
--			signed short error_w = pixel - WHITE;
--			signed short error;
--			u16 i, j;
-+			pixel = convert_buf[y *  par->info->var.xres + x];
-+			error_b = pixel - BLACK;
-+			error_w = pixel - WHITE;
- 
- 			/* what color close? */
- 			if (abs(error_b) >= abs(error_w)) {
-@@ -328,8 +328,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 			for (i = 0; i < DIFFUSING_MATRIX_WIDTH; ++i)
- 				/* diffusion matrix column */
- 				for (j = 0; j < DIFFUSING_MATRIX_HEIGHT; ++j) {
--					signed short *write_pos;
--					signed char coeff;
- 
- 					/* skip pixels out of zone */
- 					if (x + i < 0 ||
-@@ -412,15 +410,14 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 
- static int write(struct fbtft_par *par, void *buf, size_t len)
- {
-+	u8 i, data;
-+
- 	fbtft_par_dbg_hex(DEBUG_WRITE, par, par->info->device, u8, buf, len,
- 		"%s(len=%d): ", __func__, len);
- 
- 	gpio_set_value(par->RW, 0); /* set write mode */
- 
--
- 	while (len--) {
--		u8 i, data;
--
- 		data = *(u8 *) buf++;
- 
- 		/* set data bus */
--- 
-1.9.1
+> I found this patch online:
+> https://lists.linaro.org/pipermail/y2038/2015-May/000201.html
+> But, this doesn't seem to be merged anywhere.
+> Is the plan to expose timespec64 through __kernel_timespec still on?
 
+Yes, that is the current plan, but there are a number of dependencies.
+
+However, the driver here uses 'struct timeval', not 'struct timespec',
+and I do *not* plan to have the same infrastructure for timeval that
+I submitted for timespec. Almost all user space facing users of timeval
+have been replaced with timespec based interfaces  (this one has not)
+over time.
+
+We should still keep this for backwards compatibility, but I think it's
+better to solve the timeval users case-by-case rather than adding
+infrastructure for it.
+
+> I'm using the staging tree as the usb/misc folder does not have a specific
+> maintainer.
+
+I checked using "git log torvalds/master..next/master --merges drivers/usb/misc/"
+and found that Felipe Balbi has queued up one patch for this driver in his
+tree at git://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git#next
+(see the list in linux-next/Next/Trees for a mapping from tree names to
+URLS). It probably makes sense to use that tree as a base, even if Felipe
+is not the official maintainer.
+
+	Arnd
 
