@@ -1,85 +1,99 @@
-X-GM-THRID: 6392973595050508288
-X-Received: by 10.46.20.27 with SMTP id u27mr2357431ljd.4.1488480156429;
-        Thu, 02 Mar 2017 10:42:36 -0800 (PST)
+X-GM-THRID: 6207401921303543808
+X-Received: by 10.194.156.193 with SMTP id wg1mr6861312wjb.3.1445273384489;
+        Mon, 19 Oct 2015 09:49:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.213.204 with SMTP id m195ls25893wmg.23.gmail; Thu, 02 Mar
- 2017 10:42:35 -0800 (PST)
-X-Received: by 10.28.31.196 with SMTP id f187mr308472wmf.10.1488480155611;
-        Thu, 02 Mar 2017 10:42:35 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id v70si956251wmf.0.2017.03.02.10.42.35
+Received: by 10.180.23.229 with SMTP id p5ls654677wif.45.gmail; Mon, 19 Oct
+ 2015 09:49:43 -0700 (PDT)
+X-Received: by 10.180.105.98 with SMTP id gl2mr4438226wib.0.1445273383735;
+        Mon, 19 Oct 2015 09:49:43 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id o3si556936wiz.1.2015.10.19.09.49.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 10:42:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Oct 2015 09:49:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id u48so10656990wrc.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:42:35 -0800 (PST)
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x231.google.com with SMTP id fx6so14541174wic.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 09:49:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=7eiRoVgYTy5tAlW/YKBTl6T4y8gfvQ/Fdkcd6Yw4QT4=;
-        b=m2fE3LJZUeR8SPCx4WjUjxYDRVUHcrTCYE9y+bpxwpXYmux9GOdCTsM1Oh9F/Jqrth
-         +DeQgXEY/muqQvtlW13DUKkZvEYHwL5f7XlJXF5ew7UjpylUysfnL+lVx3FRj/PzhLti
-         lNAzq9Uft+6yycr/SjFe1FISpTHoDjeCYppHqOeDHE8KuCI25ib+EMM22oL4y7TlcW/g
-         6kTB444Yfu9lVhvaU9xkkfGVpc8zMDut9w47Z/4I9MW3xcpjhscrSSn2H1p05BWoHoOI
-         2yrD2Xa98zbtNGBrPHh+emjbK+UrL3Ycn8dL/Gc1occ4atmnHv49vMBPngNl06iSmmn8
-         XAjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7eiRoVgYTy5tAlW/YKBTl6T4y8gfvQ/Fdkcd6Yw4QT4=;
-        b=YcqzyrUtLhM7bIrFrAG2E1wLl2tXo5pMPMAsc5fXJOqXSFFDTcWoysWzd2ZfuAFuQG
-         OVyvEdZ17+61jTiaCS8bV/IftrEhdi0li/5y5IoaK3tFOxUPaj2n88Whovn6Ba8lZBxK
-         bnDAars9W8dzLkWZHH8XNcoSiMVtv7fQyK/Bf7vkWA3SRJa/QUNwNDfPsGdgU8cw3G2+
-         IDRaGdzLogvGPvl4NQ0p0it2hqBgTmIP0cI2e2mlAzoxHhLNvbPhXyVgwX4lCJwF9n5M
-         pHLiakmZRMH+dkp86cQnfuCBMPWPDsxJ41xfu0d3cceLuqE0RdhLQhXdBWihfRjWJeFB
-         ociQ==
-X-Gm-Message-State: AMke39kcHbBw15nWXwVWww2KgL2nY8UIfOY1rDvXP0c5Le56SSMSp1xEF2J6umcINAhvJQ==
-X-Received: by 10.223.134.44 with SMTP id 41mr2256670wrv.26.1488480155286;
-        Thu, 02 Mar 2017 10:42:35 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.72])
-        by smtp.gmail.com with ESMTPSA id m83sm28067304wmc.33.2017.03.02.10.42.34
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 10:42:34 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH v2 3/5] staging:cxd2099:Add struct mutex definition
-Date: Thu,  2 Mar 2017 20:42:31 +0200
-Message-Id: <20170302184231.3428-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        bh=3STheWJLlpIHsigZiuuC302MDseZ7cphAt/9/efHt9M=;
+        b=jj0mLq52Gke0lEn2m0apJI7M4VZT4u3Y9oCD5YEgiOUlxpAy/yBPD1MukDmYIwF4KJ
+         cEVkmT63JuZYuKFoAWu2fR4yIzzRuTcuD3VkRenrEg/tOJ1MNXOIhjNKe6FPrO6FLR1b
+         KmtzmBE/xIOr83Z70DsPlXO44lsjIL1NO7rHzO/kHFul0Eb87yFrsSadI1GwV2w6O8O3
+         IZrGNDxVbEMcpRlWjGQGMEnlQVFoZEPYi1LIcm4cyhuZGl/FcfSobId1Dqrl4Zq+ditl
+         f8XvUYD9HNkqMJ4qV+eeMiBiB/OVY0RFo18FLuRWvCg4BxjSyQdrFnzGI1veYhSXiWh7
+         EyzA==
+X-Received: by 10.180.75.47 with SMTP id z15mr20822793wiv.36.1445273383593;
+        Mon, 19 Oct 2015 09:49:43 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id ew2sm15707154wic.20.2015.10.19.09.49.42
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 19 Oct 2015 09:49:42 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH] Staging: rtl8192e: Use module_pci_driver
+Date: Mon, 19 Oct 2015 18:49:12 +0200
+Message-Id: <1445273352-6576-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Added the struct mutex definition (A mutex is a mutual exclusion lock
-used to protect data from concurrent access) to fix the following
-checkpath.pl issue: CHECK: struct mutex definition without comment.
+Use module_pci_driver for drivers whose init and exit functions only
+register and unregister, respectively.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
- drivers/staging/media/cxd2099/cxd2099.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
 
-diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
-index b26f28d..001bffe 100644
---- a/drivers/staging/media/cxd2099/cxd2099.c
-+++ b/drivers/staging/media/cxd2099/cxd2099.c
-@@ -54,6 +54,7 @@ struct cxd {
- 	int    amem_read;
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+index 2e3c25c..8f989a9 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+@@ -2775,24 +2775,7 @@ bool rtl92e_disable_nic(struct net_device *dev)
+ 	return true;
+ }
  
- 	int    cammode;
-+	/* use a mutex to protect data from concurrent access */
- 	struct mutex lock;
- };
+-static int __init _rtl92e_pci_module_init(void)
+-{
+-	pr_info("\nLinux kernel driver for RTL8192E WLAN cards\n");
+-	pr_info("Copyright (c) 2007-2008, Realsil Wlan Driver\n");
+-
+-	if (0 != pci_register_driver(&rtl8192_pci_driver)) {
+-		/*pci_unregister_driver (&rtl8192_pci_driver);*/
+-		return -ENODEV;
+-	}
+-	return 0;
+-}
+-
+-static void __exit _rtl92e_pci_module_exit(void)
+-{
+-	pci_unregister_driver(&rtl8192_pci_driver);
+-
+-	RT_TRACE(COMP_DOWN, "Exiting");
+-}
++module_pci_driver(rtl8192_pci_driver);
  
+ void rtl92e_check_rfctrl_gpio_timer(unsigned long data)
+ {
+@@ -2809,9 +2792,6 @@ void rtl92e_check_rfctrl_gpio_timer(unsigned long data)
+ /***************************************************************************
+ 	------------------- module init / exit stubs ----------------
+ ****************************************************************************/
+-module_init(_rtl92e_pci_module_init);
+-module_exit(_rtl92e_pci_module_exit);
+-
+ MODULE_DESCRIPTION("Linux driver for Realtek RTL819x WiFi cards");
+ MODULE_AUTHOR(DRV_COPYRIGHT " " DRV_AUTHOR);
+ MODULE_VERSION(DRV_VERSION);
 -- 
-2.9.3
+1.9.1
 
 
