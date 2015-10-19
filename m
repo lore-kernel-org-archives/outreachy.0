@@ -1,49 +1,49 @@
 X-GM-THRID: 6207482452562149376
-X-Received: by 10.112.136.99 with SMTP id pz3mr7169900lbb.11.1445292145307;
-        Mon, 19 Oct 2015 15:02:25 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.35.225 with SMTP id l1ls12118wij.2.gmail; Mon, 19 Oct 2015
- 15:02:24 -0700 (PDT)
-X-Received: by 10.180.198.139 with SMTP id jc11mr2595756wic.4.1445292144979;
+X-Received: by 10.180.184.164 with SMTP id ev4mr47053wic.3.1445292144396;
         Mon, 19 Oct 2015 15:02:24 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.25.24.170 with SMTP id 42ls673806lfy.3.gmail; Mon, 19 Oct 2015
+ 15:02:23 -0700 (PDT)
+X-Received: by 10.112.14.4 with SMTP id l4mr5194841lbc.20.1445292143800;
+        Mon, 19 Oct 2015 15:02:23 -0700 (PDT)
 Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id bn7si180087wib.0.2015.10.19.15.02.24
+Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
+        by gmr-mx.google.com with ESMTPS id d7si4116wiy.2.2015.10.19.15.02.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Oct 2015 15:02:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        Mon, 19 Oct 2015 15:02:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id ll6so19012426wic.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 15:02:24 -0700 (PDT)
+Received: by mail-wi0-x235.google.com with SMTP id ll6so19012405wic.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 15:02:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=CAJfd1p47rsSLgy6VeVCIf/6e9PeIdt30/nvyn222lM=;
-        b=mIElQqbdWw+WxUSc8cZiGcQcfd/bfl9dM9xxNWH24s5EULmHi2VY4Js0pg2E4N/jU1
-         6mQtj7Jofx/0jLwGKtv5Ev5Gnzg2sIPXyajHjMmDbmhVOM3yTe87CrLZopJH35VQpwnf
-         7Z+KDflTVR1IUcdKHPHz/34Zy9OBt10Ut6Jd+E1Ikex3hyVk+1gitXId02SHMvCYq/rl
-         Yxl3v/QeHNln8K8wSkz94+B1lFGfzEmlUELveflAwntbEyTN38g6Y3nAoFTzHdmlURlx
-         cATLB36FWb6xDtHuSkgm+2Nswt0HkVmQcuMuCCkQ8roPcIsalJcjh9QPKvd2TcytWhme
-         TSYg==
-X-Received: by 10.180.11.1 with SMTP id m1mr24522278wib.69.1445292144893;
-        Mon, 19 Oct 2015 15:02:24 -0700 (PDT)
+        bh=Sz6575VuLotCr1BWRbT7JNjjIaEHpUNIVOjCjDe4EDM=;
+        b=dsmVN04iuhGcFJxg1MXNp+n/IfycQnjEaPzqU0PyclFDGB9F6cts564H34BZB5Piji
+         23Et4CzYq/b7LRAkW+hbd+7RYD+Iv8hZ8k5acLYwlHgLRtyxUfiYqDDbae35wVoY9cxk
+         +/Pa4FtGLXWhLQ1DnucX+sgWva/EoPXOFUthJFha2HoZZnWREdmGIGdfvO9aV9tGEOrh
+         y/e+zj0Q9oXgetEGy5k75UO3Uc9D2hbrcRvqyd3CT1LHYqZXv5zdwMCm5xxNiawp0Rgb
+         c5erEWwH0aO7Si+1r3SUVzPsTJAuCfnMawx1hz9Qpq7DbtzokdzrtNiWHv8WhH6byqxb
+         CSxw==
+X-Received: by 10.180.109.226 with SMTP id hv2mr397264wib.46.1445292143711;
+        Mon, 19 Oct 2015 15:02:23 -0700 (PDT)
 Return-Path: <cristina.moraru09@gmail.com>
 Received: from localhost.localdomain ([213.233.93.61])
-        by smtp.gmail.com with ESMTPSA id bf8sm42577788wjc.22.2015.10.19.15.02.23
+        by smtp.gmail.com with ESMTPSA id bf8sm42577788wjc.22.2015.10.19.15.02.22
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Oct 2015 15:02:24 -0700 (PDT)
+        Mon, 19 Oct 2015 15:02:23 -0700 (PDT)
 From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH 09/10] staging: iio: gyro: Remove explicit comparisons
-Date: Tue, 20 Oct 2015 01:01:44 +0300
-Message-Id: <15c4c4c68b43f515c769396fc11a11cbcb7c8582.1445291799.git.cristina.moraru09@gmail.com>
+Subject: [PATCH 08/10] staging: iio: trigger: Remove explicit comparisons
+Date: Tue, 20 Oct 2015 01:01:43 +0300
+Message-Id: <2f4fdd95ce5505b88169fafdac081d2072a40b48.1445291799.git.cristina.moraru09@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1445291799.git.cristina.moraru09@gmail.com>
 References: <cover.1445291799.git.cristina.moraru09@gmail.com>
@@ -54,22 +54,54 @@ Remove comparisons to 0 or NULL in order to provide efficiency
 
 Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/iio/gyro/adis16060_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/iio/trigger/iio-trig-bfin-timer.c   | 4 ++--
+ drivers/staging/iio/trigger/iio-trig-periodic-rtc.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/gyro/adis16060_core.c b/drivers/staging/iio/gyro/adis16060_core.c
-index 4c5869d..80783e7 100644
---- a/drivers/staging/iio/gyro/adis16060_core.c
-+++ b/drivers/staging/iio/gyro/adis16060_core.c
-@@ -67,7 +67,7 @@ static int adis16060_spi_read(struct iio_dev *indio_dev, u16 *val)
- 	 * starts to place data MSB first on the DOUT line at
- 	 * the 6th falling edge of SCLK
- 	 */
+diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
+index 9fe48ef..035dd45 100644
+--- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
++++ b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
+@@ -100,7 +100,7 @@ static ssize_t iio_bfin_tmr_frequency_store(struct device *dev,
+ 	if (enabled)
+ 		disable_gptimers(st->t->bit);
+ 
+-	if (val == 0)
++	if (!val)
+ 		return count;
+ 
+ 	val = get_sclk() / val;
+@@ -125,7 +125,7 @@ static ssize_t iio_bfin_tmr_frequency_show(struct device *dev,
+ 	unsigned int period = get_gptimer_period(st->t->id);
+ 	unsigned long val;
+ 
+-	if (period == 0)
++	if (!period)
+ 		val = 0;
+ 	else
+ 		val = get_sclk() / get_gptimer_period(st->t->id);
+diff --git a/drivers/staging/iio/trigger/iio-trig-periodic-rtc.c b/drivers/staging/iio/trigger/iio-trig-periodic-rtc.c
+index 2db8857..ddce5e2 100644
+--- a/drivers/staging/iio/trigger/iio-trig-periodic-rtc.c
++++ b/drivers/staging/iio/trigger/iio-trig-periodic-rtc.c
+@@ -39,7 +39,7 @@ static int iio_trig_periodic_rtc_set_state(struct iio_trigger *trig, bool state)
+ 	dev_dbg(&trig_info->rtc->dev, "trigger frequency is %u\n",
+ 		trig_info->frequency);
+ 	ret = rtc_irq_set_state(trig_info->rtc, &trig_info->task, state);
 -	if (ret == 0)
 +	if (!ret)
- 		*val = ((st->buf[0] & 0x3) << 12) |
- 			(st->buf[1] << 4) |
- 			((st->buf[2] >> 4) & 0xF);
+ 		trig_info->state = state;
+ 
+ 	return ret;
+@@ -71,7 +71,7 @@ static ssize_t iio_trig_periodic_write_freq(struct device *dev,
+ 
+ 	if (val > 0) {
+ 		ret = rtc_irq_set_freq(trig_info->rtc, &trig_info->task, val);
+-		if (ret == 0 && trig_info->state && trig_info->frequency == 0)
++		if (!ret && trig_info->state && trig_info->frequency == 0)
+ 			ret = rtc_irq_set_state(trig_info->rtc,
+ 						&trig_info->task, 1);
+ 	} else {
 -- 
 1.9.1
 
