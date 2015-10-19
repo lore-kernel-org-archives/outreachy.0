@@ -1,106 +1,161 @@
-X-GM-THRID: 6253849436134309888
-X-Received: by 10.129.85.68 with SMTP id j65mr25348433ywb.57.1456087789054;
-        Sun, 21 Feb 2016 12:49:49 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.33.85 with SMTP id h82ls641708ioh.63.gmail; Sun, 21 Feb
- 2016 12:49:48 -0800 (PST)
-X-Received: by 10.107.136.160 with SMTP id s32mr25010756ioi.14.1456087788589;
-        Sun, 21 Feb 2016 12:49:48 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id yd9si2761564pab.1.2016.02.21.12.49.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 12:49:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id c10so83403754pfc.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 12:49:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=lebyZ1h333jG6eKq7gFQFIG7mWHVa5ETZ4Uz1+acKUc=;
-        b=GtzUMcYmimzPxGCCSyKeu9fuMtlKAON2QBEQIXejeZkmWC1V4Kz14BI7Ind5n234Nw
-         75c4jGSLDZlMpWqhClhrL3JTH44i2BE0bnZWuHahmyZW1RUavgBzTGCI3mZZnuB+txkv
-         DqtawH3XzQY1d2GB5JE3X7rLewuamC5QqPJUJBljiZY98pjSSJT2ZvGnOBWucq5KS0SH
-         RLYeZoovUOMO3IsdvH3gjC0fWwI9K+8MhGabpvQi8x8g3ZJXUXuqQL9wxgRGe45Sf6+M
-         heBtaGWcwOOzCCK7f22D0FUoCDShPuB7PfQv0dMfTKT0Yg97SR/CKI1cJ5fkfMAD3ycv
-         YEZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=lebyZ1h333jG6eKq7gFQFIG7mWHVa5ETZ4Uz1+acKUc=;
-        b=aBIDCD22S3/MedcJCagzhW5zN5stmXx2KRF2eSgkGs+7Nj/XKqbs2xSjx4WTZi6e0+
-         L1Jaj1XiU21Ld/K/SJhRzeBwSgZQc96eWfgYfXvLZDVyqEOuBE7MFjIeDtNBcvKxiDcL
-         0IVqmYQ4tt1JhNoYz/sfPx9jlLlaSZxsg/e3sTJBATBWbs2abA2k0LHTPUj0N1v38SUa
-         pNmkjKTrK0mwQye4IfHjPi0QmwJtgQUqemuDC8lCGAFqyHskjCF0i9382EekCehlOZwH
-         agn5soRM5q1tvEQf04ixWfDxjO07UBwF3MwNVfIGptRDHQ42SeciJWi0LcxSA0djhvSs
-         dh5w==
-X-Gm-Message-State: AG10YOQaiA5mP2v1qnYvg8lNtNJ4Mqt2+l1DJK/LUfd23cxBfDVeB3wlIf17E2rt327iQA==
-X-Received: by 10.98.93.155 with SMTP id n27mr33435781pfj.88.1456087788461;
-        Sun, 21 Feb 2016 12:49:48 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id tb10sm31839483pab.22.2016.02.21.12.49.47
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 12:49:47 -0800 (PST)
-Date: Mon, 22 Feb 2016 02:20:18 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Drop else after return
-Message-ID: <20160221205018.GA6525@Karyakshetra>
+X-GM-THRID: 6207218463763595264
+Date: Mon, 19 Oct 2015 06:58:15 -0700 (PDT)
+From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: navyasri.tech@gmail.com
+Message-Id: <569d96a3-7bc7-40db-a1e3-f999fc6b9335@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.10.1510190928430.2438@hadrien>
+References: <20151019065438.GA5680@navya>
+ <alpine.DEB.2.10.1510190928430.2438@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: emxx_udc: Add space
+ around operator.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2822_948456967.1445263095856"
+X-Google-Token: EPftk7EFOLs1BBAUcUM0
+X-Google-IP: 111.93.5.194
 
-Remove unnecessary else when there is a return statement in the
-corresponding if block.
+------=_Part_2822_948456967.1445263095856
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2823_240671881.1445263095856"
 
-The following Coccinelle patch used:
-
-@@
-expression e2;
-statement s1;
-@@
-if(e2) { ... return ...; }
--else
-         s1
-
-@@
-expression e1;
-@@
-if (e1) { ... return ...; }
--else{
-	...
--}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8712/xmit_linux.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
-index f8866d7..adb51f0 100644
---- a/drivers/staging/rtl8712/xmit_linux.c
-+++ b/drivers/staging/rtl8712/xmit_linux.c
-@@ -72,8 +72,7 @@ sint r8712_endofpktfile(struct pkt_file *pfile)
- {
- 	if (pfile->pkt_len == 0)
- 		return true;
--	else
--		return false;
-+	return false;
- }
+------=_Part_2823_240671881.1445263095856
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
 
---
-2.1.4
 
+On Monday, October 19, 2015 at 12:59:14 PM UTC+5:30, Julia Lawall wrote:
+>
+> On Mon, 19 Oct 2015, Navya Sri Nizamkari wrote: 
+>
+> > Add a space around '>>' operator. 
+> > Problem found using checkpatch. 
+>
+> Looks better, thanks. 
+>
+> Reviewed-by: Julia Lawall <julia....@lip6.fr <javascript:>> 
+>
+> Thanks for reviewing. 
+
+> > 
+> > Signed-off-by: Navya Sri Nizamkari <navyas...@gmail.com <javascript:>> 
+> > --- 
+> > Changes in v2: 
+> >     -Make commit message better. 
+> > 
+> >  drivers/staging/emxx_udc/emxx_udc.c | 2 +- 
+> >  1 file changed, 1 insertion(+), 1 deletion(-) 
+> > 
+> > diff --git a/drivers/staging/emxx_udc/emxx_udc.c 
+> b/drivers/staging/emxx_udc/emxx_udc.c 
+> > index 0492747..60604c8 100644 
+> > --- a/drivers/staging/emxx_udc/emxx_udc.c 
+> > +++ b/drivers/staging/emxx_udc/emxx_udc.c 
+> > @@ -211,7 +211,7 @@ static u32 _nbu2ss_get_begin_ram_address(struct 
+> nbu2ss_udc *udc) 
+> >                  } 
+> > 
+> >                  if ((data >> 16) > last_ram_adr) 
+> > -                        last_ram_adr = data>>16; 
+> > +                        last_ram_adr = data >> 16; 
+> >          } 
+> > 
+> >          return last_ram_adr + use_ram_size; 
+> > -- 
+> > 1.9.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20151019065438.GA5680%40navya. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_2823_240671881.1445263095856
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Monday, October 19, 2015 at 12:59:14 PM UTC+5:3=
+0, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
+margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Mon, =
+19 Oct 2015, Navya Sri Nizamkari wrote:
+<br>
+<br>&gt; Add a space around &#39;&gt;&gt;&#39; operator.
+<br>&gt; Problem found using checkpatch.
+<br>
+<br>Looks better, thanks.
+<br>
+<br>Reviewed-by: Julia Lawall &lt;<a href=3D"javascript:" target=3D"_blank"=
+ gdf-obfuscated-mailto=3D"jx8eaQEYDQAJ" rel=3D"nofollow">julia....@lip6.fr<=
+/a>&gt;
+<br>
+<br></blockquote><div>Thanks for reviewing. <br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc so=
+lid;padding-left: 1ex;">&gt;
+<br>&gt; Signed-off-by: Navya Sri Nizamkari &lt;<a href=3D"javascript:" tar=
+get=3D"_blank" gdf-obfuscated-mailto=3D"jx8eaQEYDQAJ" rel=3D"nofollow">navy=
+as...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; Changes in v2:
+<br>&gt; =C2=A0 =C2=A0 -Make commit message better.
+<br>&gt;
+<br>&gt; =C2=A0drivers/staging/emxx_udc/<wbr>emxx_udc.c | 2 +-
+<br>&gt; =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/emxx_udc/<wbr>emxx_udc.c b/drivers/st=
+aging/emxx_udc/<wbr>emxx_udc.c
+<br>&gt; index 0492747..60604c8 100644
+<br>&gt; --- a/drivers/staging/emxx_udc/<wbr>emxx_udc.c
+<br>&gt; +++ b/drivers/staging/emxx_udc/<wbr>emxx_udc.c
+<br>&gt; @@ -211,7 +211,7 @@ static u32 _nbu2ss_get_begin_ram_address(<wbr>=
+struct nbu2ss_udc *udc)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if ((data &gt;&gt; 16) &gt; last_ram_ad=
+r)
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0last_<wbr>ram_adr =3D data&gt;&gt;16;
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0last_<wbr>ram_adr =3D data &gt;&gt; 16;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return last_=
+ram_adr + use_ram_size;
+<br>&gt; --
+<br>&gt; 1.9.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"jx8eaQEYDQAJ" rel=3D"nofollow">outreachy-kern...@<wbr>googlegroups=
+.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"jx8eaQEYDQAJ" rel=3D"nofollow">outrea=
+ch...@googlegroups.<wbr>com</a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20151019065438.GA5680%40navya" target=
+=3D"_blank" rel=3D"nofollow">https://groups.google.com/d/<wbr>msgid/outreac=
+hy-kernel/<wbr>20151019065438.GA5680%40navya</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow">https://groups.google.com/d/<wbr>op=
+tout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_2823_240671881.1445263095856--
+
+------=_Part_2822_948456967.1445263095856--
 
