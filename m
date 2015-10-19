@@ -1,105 +1,64 @@
-X-GM-THRID: 6255240278040379392
-X-Received: by 10.182.245.131 with SMTP id xo3mr3578056obc.49.1456411620486;
-        Thu, 25 Feb 2016 06:47:00 -0800 (PST)
+X-GM-THRID: 6205612297408217088
+X-Received: by 10.66.163.102 with SMTP id yh6mr26770696pab.23.1445267809527;
+        Mon, 19 Oct 2015 08:16:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.8.230 with SMTP id h99ls431454ioi.75.gmail; Thu, 25 Feb
- 2016 06:47:00 -0800 (PST)
-X-Received: by 10.66.148.69 with SMTP id tq5mr41937319pab.28.1456411620153;
-        Thu, 25 Feb 2016 06:47:00 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x230.google.com (mail-ig0-x230.google.com. [2607:f8b0:4001:c05::230])
-        by gmr-mx.google.com with ESMTPS id i9si240559igg.1.2016.02.25.06.47.00
+Received: by 10.107.47.41 with SMTP id j41ls1331495ioo.52.gmail; Mon, 19 Oct
+ 2015 08:16:48 -0700 (PDT)
+X-Received: by 10.66.136.40 with SMTP id px8mr27337066pab.11.1445267808758;
+        Mon, 19 Oct 2015 08:16:48 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-io0-x22c.google.com (mail-io0-x22c.google.com. [2607:f8b0:4001:c06::22c])
+        by gmr-mx.google.com with ESMTPS id hx4si976219igb.0.2015.10.19.08.16.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:47:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) client-ip=2607:f8b0:4001:c05::230;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Oct 2015 08:16:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::22c as permitted sender) client-ip=2607:f8b0:4001:c06::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::22c as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x230.google.com with SMTP id hb3so14304102igb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:47:00 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-io0-x22c.google.com with SMTP id l68so33818086iol.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 08:16:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=509IQ/24lwLP2CFluJcQkWEK6vYBuDX2HvWX0O+V6c8=;
-        b=qLTKLU0eju+egEvCWJStlIbEC6cLiTxxSdh979s/vt6yWqs0821BTMU2KWfpXCY5sF
-         dTmqZK34g3GydpW1SMkw9zi/eYeKKe8I5rm9p0htRGv5/ePhkH/S1N60RzlGLwvrIzc5
-         2YDN/ibJFxY/5EFFnBH4oYOQsgUUecsIlSBBbLSecHZuM2gtvCG8IqrnAf5z1yEreODU
-         npX9BtLc8nP9GG0jbCO88ubosxeKBDbEVsDY4lBkWLqDnbFrmEJpI8C+C/LPXsfILo8J
-         dgd9udvgUF1AzWc/uGTZLUM4VqjpYyxNRZeu3bsqRnLikvsDtbYqx8/d1f1Je0OcepJN
-         wKzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=509IQ/24lwLP2CFluJcQkWEK6vYBuDX2HvWX0O+V6c8=;
-        b=VxhDojznEGcQ7V7ZoKZGIdeaLzP3yWPD7JPiPk9NPOn47456xQG89aFmRqCPUfgyXo
-         wLdMsv+fj1mjhaLldelsm30psrHIwP6/DLYyr6DxfK+5mb1LJYqwdIMNwZAzHCO4DLjN
-         +oZc7bgMtKAgv2a1+7cdPA8GHNfVIBKg8C6mS13p68xTiWVh1Udt76ntYiXmXt2rSeqs
-         xJv1QvVVW7yRhyBh+F0IchumK8Hr5DkTzheTLGhMU2Osr5INqotI2+DUOeoEl1/KRxYI
-         34hnef95bka5Ld8YiINAxKrWl8m7w7BL9TYdeeU1W+wLlN6gOCLR3sL8CeV4d+b/95rC
-         gMYw==
-X-Gm-Message-State: AG10YOSLU7N/9K/vqIf2lGIaV+MyjuPTfORFVlvWxtlvTV8D2SiXRaEkROgZNAf9i1YfCw==
-X-Received: by 10.50.43.133 with SMTP id w5mr2491177igl.80.1456411619992;
-        Thu, 25 Feb 2016 06:46:59 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id 83sm3343537ioi.25.2016.02.25.06.46.59
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:46:59 -0800 (PST)
-Date: Thu, 25 Feb 2016 14:46:11 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fsl-mc: Drop unneeded void pointer cast
-Message-ID: <20160225194611.GA7542@janani-Inspiron-3521>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=Fxh0F+MfrQNIYFxEOJZiQrXpSGI9DVpTINTtTrVjqrk=;
+        b=wkG3dfvWwUuN3qzJ3GV1nDnFv9pP2lpnz+8DGarquUn1jtfXLK204qSJBK7CvKk0yv
+         +CI3mVdTi7vmcnKHayYAQkHdg3tGvr+IfYGuA9lCqFxsvqKXTAdiOvcdKSKUls3Qxl2t
+         hMWBbnoQkwn6IMFkU5rPVN0YBeF8Wn8ATDq3EAIijIRGcFwVxP9HXIhPRnlqj+QljrwW
+         BXpBTGbZsz0yynGNfUL21toDNYNF1aWZ++nXkSZthqob8QmOFO78/6HvChZ9yGX3Rvk3
+         TVwArvD02edIoxeQjQTtXEqCwFjpqJvP3tOsb7XHJgQjGbL/8pO2rJRx24BSbjt9wiJa
+         p77Q==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.107.151.195 with SMTP id z186mr20550957iod.8.1445267808315;
+ Mon, 19 Oct 2015 08:16:48 -0700 (PDT)
+Received: by 10.107.158.211 with HTTP; Mon, 19 Oct 2015 08:16:48 -0700 (PDT)
+In-Reply-To: <6422089.hfNKf1xMHR@wuerfel>
+References: <cover.1445097871.git.ksenija.stanojevic@gmail.com>
+	<6422089.hfNKf1xMHR@wuerfel>
+Date: Mon, 19 Oct 2015 17:16:48 +0200
+Message-ID: <CAL7P5jJOcfSakK7sAjF9DXJyjYNiT0A+7+AdWD6XNLLkoi4VPQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 0/4] Staging: lustre: Use static
+ inline functions instead of macros
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Void pointers need not be cast to other pointer types.
-Semantic patch used:
+Hi Arnd,
 
-@r@
-expression x;
-void *e;
-type T;
-identifier f;
-@@
+On Mon, Oct 19, 2015 at 3:27 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> On Saturday 17 October 2015 18:13:15 Ksenija Stanojevic wrote:
+>> Convert macros class_export_lock_get and class_export_lock_put into static
+>> inline functions and also remove some unused macros.
+>>
+>> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+>
+> Whole series,
+>
+> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
-(
-  *((T *)e)
-| 
-  ((T *)x) [...]
-|   
-  ((T *)x)->f
-| 
-- (T *) 
-  e
-)
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/fsl-mc/bus/dprc-driver.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/fsl-mc/bus/dprc-driver.c b/drivers/staging/fsl-mc/bus/dprc-driver.c
-index 9380ebc..31488a7 100644
---- a/drivers/staging/fsl-mc/bus/dprc-driver.c
-+++ b/drivers/staging/fsl-mc/bus/dprc-driver.c
-@@ -407,7 +407,7 @@ static irqreturn_t dprc_irq0_handler_thread(int irq_num, void *arg)
- {
- 	int error;
- 	u32 status;
--	struct device *dev = (struct device *)arg;
-+	struct device *dev = arg;
- 	struct fsl_mc_device *mc_dev = to_fsl_mc_device(dev);
- 	struct fsl_mc_bus *mc_bus = to_fsl_mc_bus(mc_dev);
- 	struct fsl_mc_io *mc_io = mc_dev->mc_io;
--- 
-2.5.0
-
+Greg already merged these patches
 
