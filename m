@@ -1,39 +1,37 @@
 X-GM-THRID: 6207874064974872576
-X-Received: by 10.112.136.99 with SMTP id pz3mr1599421lbb.11.1445405056627;
-        Tue, 20 Oct 2015 22:24:16 -0700 (PDT)
+X-Received: by 10.182.79.70 with SMTP id h6mr5412755obx.22.1445383744817;
+        Tue, 20 Oct 2015 16:29:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.11.196 with SMTP id ek4ls315743wid.36.gmail; Tue, 20 Oct
- 2015 22:24:16 -0700 (PDT)
-X-Received: by 10.180.87.164 with SMTP id az4mr6292097wib.1.1445405056084;
-        Tue, 20 Oct 2015 22:24:16 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id cm6si933686wib.1.2015.10.20.22.24.16
+Received: by 10.50.20.225 with SMTP id q1ls1268438ige.8.canary; Tue, 20 Oct
+ 2015 16:29:04 -0700 (PDT)
+X-Received: by 10.66.102.38 with SMTP id fl6mr5037221pab.48.1445383744404;
+        Tue, 20 Oct 2015 16:29:04 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id fa8si710629pab.1.2015.10.20.16.29.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Oct 2015 22:24:16 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 20 Oct 2015 16:29:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,709,1437429600"; 
-   d="scan'208";a="183734460"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Oct 2015 07:24:15 +0200
-Date: Wed, 21 Oct 2015 07:24:15 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1654A90;
+	Tue, 20 Oct 2015 23:29:04 +0000 (UTC)
+Date: Tue, 20 Oct 2015 16:29:03 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Alison Schofield <amsfield22@gmail.com>
-cc: outreachy-kernel@googlegroups.com
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] patchset question
-In-Reply-To: <20151020232149.GA13649@Ubuntu-D830>
-Message-ID: <alpine.DEB.2.02.1510210723340.2038@localhost6.localdomain6>
+Message-ID: <20151020232903.GA8110@kroah.com>
 References: <20151020232149.GA13649@Ubuntu-D830>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20151020232149.GA13649@Ubuntu-D830>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Tue, 20 Oct 2015, Alison Schofield wrote:
-
+On Tue, Oct 20, 2015 at 04:21:50PM -0700, Alison Schofield wrote:
 > 
 > Patchset help needed:
 > 
@@ -45,28 +43,8 @@ On Tue, 20 Oct 2015, Alison Schofield wrote:
 > and build as a patchset because they are all on the same branch.
 > 
 > Is this method  OK?
-> 
-> (The alternative is to give each commit it's own branch to keep them
-> independent.)
-> 
-> Searching archives of opw kernel I found reference to the dependent
-> commits, stating it was OK.  But that may be outdated, so checking in.
 
-I still don't understand why this methodology would cause code to move 
-from above to below a comment.
+Yes it is, and in fact, it's the preferred method, nice job.
 
-julia
-
-> 
-> Thanks!
-> alison
-> 
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151020232149.GA13649%40Ubuntu-D830.
-> For more options, visit https://groups.google.com/d/optout.
-> 
+greg k-h
 
