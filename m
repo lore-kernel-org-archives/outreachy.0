@@ -1,98 +1,63 @@
 X-GM-THRID: 6207450266150633472
-X-Received: by 10.182.213.73 with SMTP id nq9mr6512529obc.33.1445406705626;
-        Tue, 20 Oct 2015 22:51:45 -0700 (PDT)
+X-Received: by 10.112.27.134 with SMTP id t6mr197039lbg.13.1445317691695;
+        Mon, 19 Oct 2015 22:08:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.101.135 with SMTP id fg7ls312484obb.54.gmail; Tue, 20 Oct
- 2015 22:51:45 -0700 (PDT)
-X-Received: by 10.182.107.130 with SMTP id hc2mr5942603obb.39.1445406705204;
-        Tue, 20 Oct 2015 22:51:45 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id zg1si858232pbb.2.2015.10.20.22.51.45
+Received: by 10.25.154.17 with SMTP id c17ls23491lfe.52.gmail; Mon, 19 Oct
+ 2015 22:08:07 -0700 (PDT)
+X-Received: by 10.112.63.165 with SMTP id h5mr199401lbs.18.1445317687414;
+        Mon, 19 Oct 2015 22:08:07 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id bn7si224282wib.0.2015.10.19.22.08.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Oct 2015 22:51:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Oct 2015 22:08:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pasz6 with SMTP id z6so44304231pas.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2015 22:51:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=PZR2dNZbwfUqbaoKp0WfYF8jWqn4YhhVLrxfxLsvOTM=;
-        b=t7ZSRS5zxyUm69IZDS+OMcePyYB4JODEYQj2nNgqDBZThU8jM8zKJiVBYsJgeRTWNv
-         pkIO2PTZngD1Oh0xFpWumGVK9aD6e3Mbw6BjIvnC77iePvQHjLlsU9S80PHnW3sBSoBo
-         OTEBj5pUUzUMxSWZ2cuhgdfUVXjkauQppqQ7JUKqPRsfmkdTanCpB3uiLBew1sy1Iouv
-         BE1RuCAsAEKo+caoXk8TWjZiMQLjGJ9eu5sjHjGSpcoUWzjkF+P11SkYqOP/lSjEULhQ
-         DbnSgmRMA4O7rQn/nTyOa6tYysyNeVdi+JoUvnX0jSRBjM/sqV2e92UcnZUKV/7AqHc1
-         gB9g==
-X-Received: by 10.67.3.167 with SMTP id bx7mr8581039pad.47.1445406705054;
-        Tue, 20 Oct 2015 22:51:45 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id bh4sm6935304pbb.62.2015.10.20.22.51.44
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 20 Oct 2015 22:51:44 -0700 (PDT)
-Date: Tue, 20 Oct 2015 22:51:43 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/5] staging: r8723au: replace
- printk() with pr_err()
-Message-ID: <20151021055142.GA15857@Ubuntu-D830>
-References: <cover.1445282918.git.amsfield22@gmail.com>
- <beee0bc7850917329b2b0ad3d3e0584f5cbbcdba.1445282918.git.amsfield22@gmail.com>
- <alpine.DEB.2.02.1510192209190.2034@localhost6.localdomain6>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.17,706,1437429600"; 
+   d="scan'208";a="151099398"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Oct 2015 07:08:06 +0200
+Date: Tue, 20 Oct 2015 07:08:06 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Alison Schofield <amsfield22@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/5] staging: r8723au: use kernel
+ preferred style for block comments
+In-Reply-To: <20151020022938.GA24424@Ubuntu-D830>
+Message-ID: <alpine.DEB.2.02.1510200703330.2044@localhost6.localdomain6>
+References: <cover.1445282918.git.amsfield22@gmail.com> <ca096ddbb44df952c41fd95e6397d902d3baf767.1445282918.git.amsfield22@gmail.com> <alpine.DEB.2.02.1510192206570.2034@localhost6.localdomain6> <20151020022938.GA24424@Ubuntu-D830>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1510192209190.2034@localhost6.localdomain6>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Mon, Oct 19, 2015 at 10:09:46PM +0200, Julia Lawall wrote:
-> On Mon, 19 Oct 2015, Alison Schofield wrote:
+> Your comments have made me rethink how I addressed the checkpatch
+> errors. 
 > 
-> > Replace printk() with pr_err() for uniform error reporting.
-> > Issue found by checkpatch.
-> > 
-> > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723au/core/rtw_cmd.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/rtl8723au/core/rtw_cmd.c b/drivers/staging/rtl8723au/core/rtw_cmd.c
-> > index c3579ac..7bf0f30 100644
-> > --- a/drivers/staging/rtl8723au/core/rtw_cmd.c
-> > +++ b/drivers/staging/rtl8723au/core/rtw_cmd.c
-> > @@ -248,7 +248,7 @@ int rtw_enqueue_cmd23a(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
-> >  	res = queue_work(pcmdpriv->wq, &cmd_obj->work);
-> >  
-> >  	if (!res) {
-> > -		printk(KERN_ERR "%s: Call to queue_work() failed\n", __func__);
-> > +		pr_err("%s: Call to queue_work() failed\n", __func__);
+> Previously, I only cleaned those that checkpatch complained about. Now,
+> I'm realizing while I'm cleaning up, I should clean up more throughly
+> and correct all the comments. (without changing wording of course.)
 > 
-> There is no device tructure or network device structure available?
+> Similarly with the data structure.  There are 2 main structs at the top of
+> this file, and although only the first one triggered checkpatch
+> warnings, the second one could use some clean up also.
 > 
-> julia
->
-Yes there is a netdev. Used in v2.  Thanks!
+> Is that the correct mindset for these type of checkpatch warnings?
 
-> >  		res = _FAIL;
-> >  	} else
-> >  		res = _SUCCESS;
-> > -- 
-> > 2.1.4
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/beee0bc7850917329b2b0ad3d3e0584f5cbbcdba.1445282918.git.amsfield22%40gmail.com.
-> > For more options, visit https://groups.google.com/d/optout.
-> > 
+I think it depends on how complicated the other problems you are.  If you
+are fixing a code formatting problem, and you see other code formatting
+problems, then you could really fix them all up at once.  If there is any
+doubt about the correctness of any of your changes, then you should do them
+ome by one, so that they can be reverted independently, if needed.  For
+example, if checkpatch tells you about spaces around parentheses in an if
+test, and if it also tells you that the xyz function should be used instead
+of abc, and the goal of your patch is to fix spaces around parentheses,
+then you should not change abc to xyz at the same time.  But if you are
+working on abc to xyz conversion, and you see a space around parentheses
+problem on the same line, you could probably fix it up too, especially if
+it is the only one in the file.
+
+julia
 
