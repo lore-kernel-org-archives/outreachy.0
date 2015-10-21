@@ -1,9 +1,9 @@
 X-GM-THRID: 6208125602285748224
-Date: Wed, 21 Oct 2015 10:00:15 -0700 (PDT)
+Date: Wed, 21 Oct 2015 10:00:04 -0700 (PDT)
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Cc: navyasri.tech@gmail.com
-Message-Id: <1175f7c5-3cc8-450c-8365-fac9c526e5cc@googlegroups.com>
+Message-Id: <dc6ae6b3-9f12-4ec3-a6b8-016f91a81c8e@googlegroups.com>
 In-Reply-To: <20151021160754.GA24814@kroah.com>
 References: <20151021153800.GA3140@navya>
  <20151021160754.GA24814@kroah.com>
@@ -11,15 +11,15 @@ Subject: Re: [Outreachy kernel] [PATCH] Staging: xgifb: Replace udelay
  function with usleep_range
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_4376_702834690.1445446815179"
-X-Google-Token: EJ-Jn7EFpSqRgPzsmzM0
+	boundary="----=_Part_6184_1137459990.1445446804371"
+X-Google-Token: EJSJn7EFsP9O-pF5jXo0
 X-Google-IP: 27.6.33.173
 
-------=_Part_4376_702834690.1445446815179
+------=_Part_6184_1137459990.1445446804371
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_4377_465301480.1445446815179"
+	boundary="----=_Part_6185_1796018505.1445446804371"
 
-------=_Part_4377_465301480.1445446815179
+------=_Part_6185_1796018505.1445446804371
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
@@ -57,7 +57,7 @@ On Wednesday, October 21, 2015 at 9:37:55 PM UTC+5:30, gregkh wrote:
 I'm sorry about that. I'll update and send in a new version of the patch 
 which doesn't break the build. 
 
-------=_Part_4377_465301480.1445446815179
+------=_Part_6185_1796018505.1445446804371
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -99,7 +99,7 @@ x31},
 <br></blockquote><div><br>I&#39;m sorry about that. I&#39;ll update and sen=
 d in a new version of the patch which doesn&#39;t break the build. <br></di=
 v>
-------=_Part_4377_465301480.1445446815179--
+------=_Part_6185_1796018505.1445446804371--
 
-------=_Part_4376_702834690.1445446815179--
+------=_Part_6184_1137459990.1445446804371--
 
