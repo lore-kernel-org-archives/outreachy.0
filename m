@@ -1,81 +1,88 @@
 X-GM-THRID: 6208113115518730240
-X-Received: by 10.180.210.71 with SMTP id ms7mr2399315wic.4.1445439424211;
-        Wed, 21 Oct 2015 07:57:04 -0700 (PDT)
+X-Received: by 10.67.23.163 with SMTP id ib3mr7885277pad.45.1445438972532;
+        Wed, 21 Oct 2015 07:49:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.25.67 with SMTP id 64ls248166lfz.41.gmail; Wed, 21 Oct 2015
- 07:57:03 -0700 (PDT)
-X-Received: by 10.112.145.201 with SMTP id sw9mr930455lbb.13.1445439423321;
-        Wed, 21 Oct 2015 07:57:03 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id cm6si1028351wib.1.2015.10.21.07.57.03
+Received: by 10.50.78.202 with SMTP id d10ls1537978igx.41.canary; Wed, 21 Oct
+ 2015 07:49:31 -0700 (PDT)
+X-Received: by 10.66.148.72 with SMTP id tq8mr7753169pab.34.1445438971920;
+        Wed, 21 Oct 2015 07:49:31 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id fa8si1119087pab.1.2015.10.21.07.49.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 07:57:03 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Oct 2015 07:49:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,712,1437429600"; 
-   d="scan'208";a="183860874"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Oct 2015 16:57:02 +0200
-Date: Wed, 21 Oct 2015 16:56:53 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Shraddha Barke <shraddha.6596@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Eliminate use of
- MSECS macro
-In-Reply-To: <1445438958-7663-1-git-send-email-shraddha.6596@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510211656360.2588@hadrien>
-References: <1445438958-7663-1-git-send-email-shraddha.6596@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x231.google.com with SMTP id z6so56719265pas.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 07:49:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id;
+        bh=vG1fo+MuWvi1TTmSJY6SL0pRKu3VVaFzrMhwESHx6Yg=;
+        b=IJTeSV4zVv2QNuQKjqupYBEmVmyRz0kOqh1RLuLfqzZAXS/LjGVCH30LjY3eH779v1
+         aBv/MxBD0cj4MSmuc9u9WLJHZABfROct8ST+nhOqRk+QNpFkgHcsO1hj1tP7VT7XCd1g
+         ca6qW0aP/0e1/63vgjKA1Ox5bJYIVRHPCVs9B8YXOKgutrPwj1BrLYik9re/TUN68exq
+         TDy4Cgsx6yqAkMNszRH37DZyxtM2La5v/z/bvkrygUTQ5wOinIQP+/iLOS4VW3A7r21U
+         MXrVrLQE+nx+wHqZw96JFOO5EBUEBs7Ijb0muM3U9eg+12mzKs1gaW34+hxMwecfB9dt
+         oudw==
+X-Received: by 10.66.119.135 with SMTP id ku7mr11085146pab.21.1445438971800;
+        Wed, 21 Oct 2015 07:49:31 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id ez2sm9637483pbb.5.2015.10.21.07.49.28
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 21 Oct 2015 07:49:31 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] Staging: rtl8192u: Eliminate use of MSECS macro
+Date: Wed, 21 Oct 2015 20:19:18 +0530
+Message-Id: <1445438958-7663-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150201.5627A5FA.0108,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Wed, 21 Oct 2015, Shraddha Barke wrote:
+Use msecs_to_jiffies instead of driver specific macro
+MSECS. This is done using Coccinelle and semantic
+patch used for this is as follows:
 
-> Use msecs_to_jiffies instead of driver specific macro
-> MSECS. This is done using Coccinelle and semantic
-> patch used for this is as follows:
->
-> @@expression t;@@
->
-> - MSECS(t)
-> + msecs_to_jiffies(t)
+@@expression t;@@
 
-Can you now get rid of the marco?
+- MSECS(t)
++ msecs_to_jiffies(t)
 
-julia
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 678ecf6..e06864f 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -3516,7 +3516,7 @@ static void watch_dog_timer_callback(unsigned long data)
+ 
+ 	queue_delayed_work(priv->priv_wq, &priv->watch_dog_wq, 0);
+ 	mod_timer(&priv->watch_dog_timer,
+-		  jiffies + MSECS(IEEE80211_WATCH_DOG_TIME));
++		  jiffies + msecs_to_jiffies(IEEE80211_WATCH_DOG_TIME));
+ }
+ static int _rtl8192_up(struct net_device *dev)
+ {
+-- 
+2.1.4
 
->
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-> index 678ecf6..e06864f 100644
-> --- a/drivers/staging/rtl8192u/r8192U_core.c
-> +++ b/drivers/staging/rtl8192u/r8192U_core.c
-> @@ -3516,7 +3516,7 @@ static void watch_dog_timer_callback(unsigned long data)
->
->  	queue_delayed_work(priv->priv_wq, &priv->watch_dog_wq, 0);
->  	mod_timer(&priv->watch_dog_timer,
-> -		  jiffies + MSECS(IEEE80211_WATCH_DOG_TIME));
-> +		  jiffies + msecs_to_jiffies(IEEE80211_WATCH_DOG_TIME));
->  }
->  static int _rtl8192_up(struct net_device *dev)
->  {
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1445438958-7663-1-git-send-email-shraddha.6596%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
