@@ -1,437 +1,296 @@
 X-GM-THRID: 6207871882034675712
-X-Received: by 10.194.156.193 with SMTP id wg1mr2680698wjb.3.1445458704535;
-        Wed, 21 Oct 2015 13:18:24 -0700 (PDT)
+X-Received: by 10.112.140.202 with SMTP id ri10mr2638709lbb.10.1445458702766;
+        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.156.78 with SMTP id f75ls286966lfe.69.gmail; Wed, 21 Oct
- 2015 13:18:23 -0700 (PDT)
-X-Received: by 10.112.184.170 with SMTP id ev10mr2693086lbc.4.1445458703935;
-        Wed, 21 Oct 2015 13:18:23 -0700 (PDT)
+Received: by 10.180.90.234 with SMTP id bz10ls421587wib.44.gmail; Wed, 21 Oct
+ 2015 13:18:22 -0700 (PDT)
+X-Received: by 10.194.118.65 with SMTP id kk1mr2679324wjb.5.1445458702320;
+        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x242.google.com (mail-wi0-x242.google.com. [2a00:1450:400c:c05::242])
-        by gmr-mx.google.com with ESMTPS id m4si400851wib.0.2015.10.21.13.18.23
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id c7si927469wiy.3.2015.10.21.13.18.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 13:18:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::242 as permitted sender) client-ip=2a00:1450:400c:c05::242;
+        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::242 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by wicuk10 with SMTP id uk10so14853351wic.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 13:18:23 -0700 (PDT)
+Received: by mail-wi0-x22d.google.com with SMTP id ll6so106841022wic.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=nW/yQ3MOBRrSkkcXIAwuOGJLDumYABmqvF0TvNf8e+E=;
-        b=tgYwoe/8+aY1spFDbUnL1Bnq0Ly7Db6PFPxHwZs5fNdW7YLdgAh7QI5olcorER2WeU
-         urDQSK80faFWivdbFW03/7ZEf7qs3iwuRxOy1Gf6hC7er+gTyvK8sLOYHhvdohUDOLj3
-         mk2RLSkXf4jgsSfBer6pJ23Y4Kaj9p+DR8X/y8AJyisnhTLwqPXYMz2V1JJgNCjmR8C6
-         oEVIkNDnnzzpAMPO920MXCuWxQoLA1XT8Y8UzkO2inlkiQsvCeIRq1fooSbUBra4oyAR
-         ZOTrL1JG2sq9lsP853QOTv3qGXm7Fr26bFl2wtYE+PvKRKDi4qOOcSVvbFqZ/0KBih52
-         +dZA==
-X-Received: by 10.180.198.43 with SMTP id iz11mr13197732wic.17.1445458703802;
-        Wed, 21 Oct 2015 13:18:23 -0700 (PDT)
+        bh=cYNt+Odnd4/scSaNbgP2g/QHtsvtxy6eBiS1p+kp0F4=;
+        b=axCzWWhEZO5q8JZnIO5rni9vm3wV55Olw0x4phpTaALaTc3gaKJQss20rg5JokLTPX
+         c1KI62/Uefh9aXJuIWhsV/UDuIlgYNHWtC3xL4PkCqTGTMk6L66tbDOJdVHVoXRWlOZU
+         uJlgisK23EJGcqSOaQ52M82k3Xmj/VKXc/1m9cShRzBFcRztzVSBsN6xbI34wqSdAV52
+         rLQUwSxA67SbnV82ucDCVOzMuwOSJwpTxc3xJ3zISBz6r0EMNES50ir6AdRiegWfXEVF
+         gkKoVVN9Tf2xgRfwdFhZ9OsJYZ2bA6rWMJvBaRCss0uvjjl3a9MGhSMJ/z5lo/FVfD1i
+         eYLQ==
+X-Received: by 10.180.85.164 with SMTP id i4mr13714199wiz.54.1445458702200;
+        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by smtp.gmail.com with ESMTPSA id m6sm8703173wif.11.2015.10.21.13.18.22
+        by smtp.gmail.com with ESMTPSA id m6sm8703173wif.11.2015.10.21.13.18.21
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Oct 2015 13:18:23 -0700 (PDT)
+        Wed, 21 Oct 2015 13:18:21 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH v2 3/5] staging: dgap: remove unnecessary space after cast
-Date: Wed, 21 Oct 2015 23:17:54 +0300
-Message-Id: <0a515a30b5b82e9cfe9ca72eccbf5a1d50b1567a.1445458023.git.ciorneiioana@gmail.com>
+Subject: [PATCH v2 2/5] staging: dgap: properly indent to match open paranthesis
+Date: Wed, 21 Oct 2015 23:17:53 +0300
+Message-Id: <d4331a6cd9560c17481eccf6119bb8c894c7838b.1445458023.git.ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1445458023.git.ciorneiioana@gmail.com>
 References: <cover.1445458023.git.ciorneiioana@gmail.com>
 In-Reply-To: <cover.1445458023.git.ciorneiioana@gmail.com>
 References: <cover.1445458023.git.ciorneiioana@gmail.com>
 
-This patch removes unnecessary spaces after the cast.
-Patch done with coccinelle semantic patch:
-
-@rule0@
-type t;
-identifier e;
-constant c;
-expression expr;
-@@
-
-(
-- (t) e
-+ (t)e
-|
-- (t) c
-+ (t)c
-|
-- (t) expr
-+ (t)expr
-)
+Indent parameters and arguments passed to function calls to match
+open paranthesis
 
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
 
 Changes in v2:
-    - nothing
+    - reworked the alignment of some conditional expressions in order to
+    improve readability
+    - reverted the add and the removal of some blank lines
 
- drivers/staging/dgap/dgap.c | 88 ++++++++++++++++++++++-----------------------
- 1 file changed, 44 insertions(+), 44 deletions(-)
+ drivers/staging/dgap/dgap.c | 55 ++++++++++++++++++++++-----------------------
+ 1 file changed, 27 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/staging/dgap/dgap.c b/drivers/staging/dgap/dgap.c
-index f7850f4..3cda302 100644
+index 2d36ea5..f7850f4 100644
 --- a/drivers/staging/dgap/dgap.c
 +++ b/drivers/staging/dgap/dgap.c
-@@ -1412,7 +1412,7 @@ static void dgap_parity_scan(struct channel_t *ch, unsigned char *cbuf,
+@@ -931,8 +931,8 @@ static int dgap_parsefile(char **in)
+ 				brd->u.board.conc1++;
  
- 		case 0:
- 			/* No FF seen yet */
--			if (c == (unsigned char) '\377')
-+			if (c == (unsigned char)'\377')
- 				/* delete this character from stream */
- 				ch->pscan_state = 1;
- 			else {
-@@ -1424,7 +1424,7 @@ static void dgap_parity_scan(struct channel_t *ch, unsigned char *cbuf,
+ 			conc_type = dgap_gettok(in);
+-			if (conc_type == 0 || (conc_type != CX &&
+-			    conc_type != EPC)) {
++			if (conc_type == 0 ||
++			    (conc_type != CX && conc_type != EPC)) {
+ 				pr_err("failed to set a type of concentratros");
+ 				return -1;
+ 			}
+@@ -972,8 +972,8 @@ static int dgap_parsefile(char **in)
+ 				brd->u.board.module1++;
  
- 		case 1:
- 			/* first FF seen */
--			if (c == (unsigned char) '\377') {
-+			if (c == (unsigned char)'\377') {
- 				/* doubled ff, transform to single ff */
- 				*cout++ = c;
- 				*fout++ = TTY_NORMAL;
-@@ -1836,7 +1836,7 @@ static int dgap_event(struct board_t *bd)
- 		return -EIO;
- 	}
+ 			module_type = dgap_gettok(in);
+-			if (module_type == 0 || (module_type != PORTS &&
+-			    module_type != MODEM)) {
++			if (module_type == 0 ||
++			    (module_type != PORTS && module_type != MODEM)) {
+ 				pr_err("failed to set a type of module");
+ 				return -1;
+ 			}
+@@ -1351,8 +1351,7 @@ static int dgap_remap(struct board_t *brd)
+ 	if (!request_mem_region(brd->membase, 0x200000, "dgap"))
+ 		return -ENOMEM;
  
--	eaddr = (struct ev_t __iomem *) (vaddr + EVBUF);
-+	eaddr = (struct ev_t __iomem *)(vaddr + EVBUF);
+-	if (!request_mem_region(brd->membase + PCI_IO_OFFSET, 0x200000,
+-					"dgap"))
++	if (!request_mem_region(brd->membase + PCI_IO_OFFSET, 0x200000, "dgap"))
+ 		goto err_req_mem;
  
- 	/* Get our head and tail */
- 	head = readw(&(eaddr->ev_head));
-@@ -1993,7 +1993,7 @@ next:
+ 	brd->re_map_membase = ioremap(brd->membase, 0x200000);
+@@ -1390,7 +1389,7 @@ static void dgap_unmap(struct board_t *brd)
+  * the Linux line discipline way.
   */
- static void dgap_poll_tasklet(unsigned long data)
+ static void dgap_parity_scan(struct channel_t *ch, unsigned char *cbuf,
+-				unsigned char *fbuf, int *len)
++			     unsigned char *fbuf, int *len)
  {
--	struct board_t *bd = (struct board_t *) data;
-+	struct board_t *bd = (struct board_t *)data;
- 	ulong lock_flags;
- 	char __iomem *vaddr;
- 	u16 head, tail;
-@@ -2026,7 +2026,7 @@ static void dgap_poll_tasklet(unsigned long data)
- 		if (!bd->nasync)
- 			goto out;
+ 	int l = *len;
+ 	int count = 0;
+@@ -1649,7 +1648,7 @@ static void dgap_input(struct channel_t *ch)
  
--		eaddr = (struct ev_t __iomem *) (vaddr + EVBUF);
-+		eaddr = (struct ev_t __iomem *)(vaddr + EVBUF);
- 
- 		/* Get our head and tail */
- 		head = readw(&(eaddr->ev_head));
-@@ -2261,7 +2261,7 @@ static void dgap_poll_handler(ulong dummy)
- 				continue;
- 			if (!brd->intr_running)
- 				/* Call the real board poller directly */
--				dgap_poll_tasklet((unsigned long) brd);
-+				dgap_poll_tasklet((unsigned long)brd);
- 		}
+ 		len = tty_buffer_request_room(tp->port, len);
+ 		tty_insert_flip_string_flags(tp->port, ch->ch_bd->flipbuf,
+-			ch->ch_bd->flipflagbuf, len);
++					     ch->ch_bd->flipflagbuf, len);
  	} else {
- 		/*
-@@ -2314,7 +2314,7 @@ schedule_poller:
+ 		len = tty_buffer_request_room(tp->port, len);
+ 		tty_insert_flip_string(tp->port, ch->ch_bd->flipbuf, len);
+@@ -2161,7 +2160,7 @@ static struct board_t *dgap_found_board(struct pci_dev *pdev, int id,
  
- 	new_time = dgap_poll_time - jiffies;
+ 	/* init our poll helper tasklet */
+ 	tasklet_init(&brd->helper_tasklet, dgap_poll_tasklet,
+-			(unsigned long) brd);
++		     (unsigned long)brd);
  
--	if ((ulong) new_time >= 2 * dgap_poll_tick) {
-+	if ((ulong)new_time >= 2 * dgap_poll_tick) {
- 		dgap_poll_time =
- 			jiffies +  dgap_jiffies_from_ms(dgap_poll_tick);
+ 	ret = dgap_remap(brd);
+ 	if (ret)
+@@ -2342,7 +2341,7 @@ schedule_poller:
+  *
+  *=======================================================================*/
+ static void dgap_cmdb(struct channel_t *ch, u8 cmd, u8 byte1,
+-			u8 byte2, uint ncmds)
++		      u8 byte2, uint ncmds)
+ {
+ 	char __iomem *vaddr;
+ 	struct __iomem cm_t *cm_addr;
+@@ -3011,7 +3010,7 @@ static int dgap_block_til_ready(struct tty_struct *tty, struct file *file,
+ 	int sleep_on_un_flags;
+ 
+ 	if (!tty || tty->magic != TTY_MAGIC || !file || !ch ||
+-		ch->magic != DGAP_CHANNEL_MAGIC)
++	    ch->magic != DGAP_CHANNEL_MAGIC)
+ 		return -EIO;
+ 
+ 	un = tty->driver_data;
+@@ -3509,7 +3508,7 @@ static int dgap_tty_write_room(struct tty_struct *tty)
+  * In here exists all the Transparent Print magic as well.
+  */
+ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
+-				int count)
++			  int count)
+ {
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+@@ -3575,7 +3574,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
+ 	 */
+ 	if ((un->un_type == DGAP_PRINT) && !(ch->ch_flags & CH_PRON)) {
+ 		dgap_wmove(ch, ch->ch_digi.digi_onstr,
+-		    (int) ch->ch_digi.digi_onlen);
++			   (int)ch->ch_digi.digi_onlen);
+ 		head = readw(&(bs->tx_head)) & tmask;
+ 		ch->ch_flags |= CH_PRON;
  	}
-@@ -2368,7 +2368,7 @@ static void dgap_cmdb(struct channel_t *ch, u8 cmd, u8 byte1,
- 	if (!vaddr)
- 		return;
- 
--	cm_addr = (struct cm_t __iomem *) (vaddr + CMDBUF);
-+	cm_addr = (struct cm_t __iomem *)(vaddr + CMDBUF);
- 	head = readw(&(cm_addr->cm_head));
- 
- 	/*
-@@ -2383,7 +2383,7 @@ static void dgap_cmdb(struct channel_t *ch, u8 cmd, u8 byte1,
- 	 * Put the data in the circular command buffer.
+@@ -3586,7 +3585,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
  	 */
- 	writeb(cmd, (vaddr + head + CMDSTART + 0));
--	writeb((u8) ch->ch_portnum, (vaddr + head + CMDSTART + 1));
-+	writeb((u8)ch->ch_portnum, (vaddr + head + CMDSTART + 1));
- 	writeb(byte1, (vaddr + head + CMDSTART + 2));
- 	writeb(byte2, (vaddr + head + CMDSTART + 3));
- 
-@@ -2451,7 +2451,7 @@ static void dgap_cmdw(struct channel_t *ch, u8 cmd, u16 word, uint ncmds)
- 	if (!vaddr)
- 		return;
- 
--	cm_addr = (struct cm_t __iomem *) (vaddr + CMDBUF);
-+	cm_addr = (struct cm_t __iomem *)(vaddr + CMDBUF);
- 	head = readw(&(cm_addr->cm_head));
- 
- 	/*
-@@ -2466,8 +2466,8 @@ static void dgap_cmdw(struct channel_t *ch, u8 cmd, u16 word, uint ncmds)
- 	 * Put the data in the circular command buffer.
+ 	if ((un->un_type != DGAP_PRINT) && (ch->ch_flags & CH_PRON)) {
+ 		dgap_wmove(ch, ch->ch_digi.digi_offstr,
+-			(int) ch->ch_digi.digi_offlen);
++			   (int)ch->ch_digi.digi_offlen);
+ 		head = readw(&(bs->tx_head)) & tmask;
+ 		ch->ch_flags &= ~CH_PRON;
+ 	}
+@@ -3644,7 +3643,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
+ 			writeb(1, &(bs->iempty));
+ 		} else {
+ 			dgap_wmove(ch, ch->ch_digi.digi_offstr,
+-				(int) ch->ch_digi.digi_offlen);
++				   (int)ch->ch_digi.digi_offlen);
+ 			head = readw(&(bs->tx_head)) & tmask;
+ 			ch->ch_flags &= ~CH_PRON;
+ 		}
+@@ -3731,7 +3730,7 @@ static int dgap_tty_tiocmget(struct tty_struct *tty)
+  * Set modem signals, called by ld.
+  */
+ static int dgap_tty_tiocmset(struct tty_struct *tty,
+-		unsigned int set, unsigned int clear)
++			     unsigned int set, unsigned int clear)
+ {
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+@@ -4222,7 +4221,7 @@ static int dgap_tty_digisetcustombaud(struct channel_t *ch, struct board_t *bd,
+  * dgap_set_termios()
+  */
+ static void dgap_tty_set_termios(struct tty_struct *tty,
+-				struct ktermios *old_termios)
++				 struct ktermios *old_termios)
+ {
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+@@ -4385,7 +4384,7 @@ static int dgap_tty_open(struct tty_struct *tty, struct file *file)
+ 	 * sleep waiting for it to happen or they cancel the open.
  	 */
- 	writeb(cmd, (vaddr + head + CMDSTART + 0));
--	writeb((u8) ch->ch_portnum, (vaddr + head + CMDSTART + 1));
--	writew((u16) word, (vaddr + head + CMDSTART + 2));
-+	writeb((u8)ch->ch_portnum, (vaddr + head + CMDSTART + 1));
-+	writew((u16)word, (vaddr + head + CMDSTART + 2));
+ 	rc = wait_event_interruptible(brd->state_wait,
+-		(brd->state & BOARD_READY));
++				      (brd->state & BOARD_READY));
  
- 	head = (head + 4) & (CMDMAX - CMDSTART - 4);
- 
-@@ -2533,7 +2533,7 @@ static void dgap_cmdw_ext(struct channel_t *ch, u16 cmd, u16 word, uint ncmds)
- 	if (!vaddr)
- 		return;
- 
--	cm_addr = (struct cm_t __iomem *) (vaddr + CMDBUF);
-+	cm_addr = (struct cm_t __iomem *)(vaddr + CMDBUF);
- 	head = readw(&(cm_addr->cm_head));
- 
- 	/*
-@@ -2549,19 +2549,19 @@ static void dgap_cmdw_ext(struct channel_t *ch, u16 cmd, u16 word, uint ncmds)
- 	 */
- 
- 	/* Write an FF to tell the FEP that we want an extended command */
--	writeb((u8) 0xff, (vaddr + head + CMDSTART + 0));
-+	writeb((u8)0xff, (vaddr + head + CMDSTART + 0));
- 
--	writeb((u8) ch->ch_portnum, (vaddr + head + CMDSTART + 1));
--	writew((u16) cmd, (vaddr + head + CMDSTART + 2));
-+	writeb((u8)ch->ch_portnum, (vaddr + head + CMDSTART + 1));
-+	writew((u16)cmd, (vaddr + head + CMDSTART + 2));
- 
- 	/*
- 	 * If the second part of the command won't fit,
- 	 * put it at the beginning of the circular buffer.
- 	 */
- 	if (((head + 4) >= ((CMDMAX - CMDSTART)) || (head & 03)))
--		writew((u16) word, (vaddr + CMDSTART));
-+		writew((u16)word, (vaddr + CMDSTART));
- 	else
--		writew((u16) word, (vaddr + head + CMDSTART + 4));
-+		writew((u16)word, (vaddr + head + CMDSTART + 4));
- 
- 	head = (head + 8) & (CMDMAX - CMDSTART - 4);
- 
-@@ -2859,13 +2859,13 @@ static int dgap_param(struct channel_t *ch, struct board_t *bd, u32 un_type)
- 		cflag &= 0xffff;
- 
- 		if (cflag != ch->ch_fepcflag) {
--			ch->ch_fepcflag = (u16) (cflag & 0xffff);
-+			ch->ch_fepcflag = (u16)(cflag & 0xffff);
- 
- 			/*
- 			 * Okay to have channel and board
- 			 * locks held calling this
+ 	if (rc)
+ 		return rc;
+@@ -4597,7 +4596,7 @@ static void dgap_tty_close(struct tty_struct *tty, struct file *file)
+ 			 * have been dropped for modems to see it.
  			 */
--			dgap_cmdw(ch, SCFLAG, (u16) cflag, 0);
-+			dgap_cmdw(ch, SCFLAG, (u16)cflag, 0);
- 		}
+ 			spin_unlock_irqrestore(&ch->ch_lock,
+-					lock_flags);
++					       lock_flags);
  
- 		/* Handle transition from B0 */
-@@ -2906,7 +2906,7 @@ static int dgap_param(struct channel_t *ch, struct board_t *bd, u32 un_type)
- 		ch->ch_fepiflag = iflag;
- 
- 		/* Okay to have channel and board locks held calling this */
--		dgap_cmdw(ch, SIFLAG, (u16) ch->ch_fepiflag, 0);
-+		dgap_cmdw(ch, SIFLAG, (u16)ch->ch_fepiflag, 0);
- 	}
- 
- 	/*
-@@ -2931,7 +2931,7 @@ static int dgap_param(struct channel_t *ch, struct board_t *bd, u32 un_type)
- 		ch->ch_hflow = hflow;
- 
- 		/* Okay to have channel and board locks held calling this */
--		dgap_cmdb(ch, SHFLOW, (u8) hflow, 0xff, 0);
-+		dgap_cmdb(ch, SHFLOW, (u8)hflow, 0xff, 0);
- 	}
- 
- 	/*
-@@ -2959,7 +2959,7 @@ static int dgap_param(struct channel_t *ch, struct board_t *bd, u32 un_type)
- 		ch->ch_mostat = mval;
- 
- 		/* Okay to have channel and board locks held calling this */
--		dgap_cmdb(ch, SMODEM, (u8) mval, D_RTS(ch)|D_DTR(ch), 0);
-+		dgap_cmdb(ch, SMODEM, (u8)mval, D_RTS(ch) | D_DTR(ch), 0);
- 	}
- 
- 	/*
-@@ -3158,7 +3158,7 @@ static void dgap_tty_flush_buffer(struct tty_struct *tty)
- 
- 	ch->ch_flags &= ~CH_STOP;
- 	head = readw(&(ch->ch_bs->tx_head));
--	dgap_cmdw(ch, FLUSHTX, (u16) head, 0);
-+	dgap_cmdw(ch, FLUSHTX, (u16)head, 0);
- 	dgap_cmdw(ch, RESUMETX, 0, 0);
- 	if (ch->ch_tun.un_flags & (UN_LOW|UN_EMPTY)) {
- 		ch->ch_tun.un_flags &= ~(UN_LOW|UN_EMPTY);
-@@ -3603,7 +3603,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
- 		n -= remain;
- 		vaddr = ch->ch_taddr + head;
- 
--		memcpy_toio(vaddr, (u8 *) buf, remain);
-+		memcpy_toio(vaddr, (u8 *)buf, remain);
- 
- 		head = ch->ch_tstart;
- 		buf += remain;
-@@ -3616,7 +3616,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
- 		vaddr = ch->ch_taddr + head;
- 		remain = n;
- 
--		memcpy_toio(vaddr, (u8 *) buf, remain);
-+		memcpy_toio(vaddr, (u8 *)buf, remain);
- 		head += remain;
- 	}
- 
-@@ -3829,7 +3829,7 @@ static int dgap_tty_send_break(struct tty_struct *tty, int msec)
- #if 0
- 	dgap_cmdw(ch, SBREAK, (u16) SBREAK_TIME, 0);
- #endif
--	dgap_cmdw(ch, SBREAK, (u16) msec, 0);
-+	dgap_cmdw(ch, SBREAK, (u16)msec, 0);
- 
- 	spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
- 	spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
-@@ -4151,7 +4151,7 @@ static int dgap_tty_digisetedelay(struct channel_t *ch, struct board_t *bd,
- 	spin_lock_irqsave(&bd->bd_lock, lock_flags);
- 	spin_lock_irqsave(&ch->ch_lock, lock_flags2);
- 
--	writew((u16) new_digi, &(ch->ch_bs->edelay));
-+	writew((u16)new_digi, &ch->ch_bs->edelay);
- 
- 	dgap_param(ch, bd, un->un_type);
- 
-@@ -4758,7 +4758,7 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 	u16 head;
- 	ulong lock_flags = 0;
- 	ulong lock_flags2 = 0;
--	void __user *uarg = (void __user *) arg;
-+	void __user *uarg = (void __user *)arg;
- 
- 	if (!tty || tty->magic != TTY_MAGIC)
- 		return -ENODEV;
-@@ -4810,7 +4810,7 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 		spin_lock_irqsave(&ch->ch_lock, lock_flags2);
- 
- 		if (((cmd == TCSBRK) && (!arg)) || (cmd == TCSBRKP))
--			dgap_cmdw(ch, SBREAK, (u16) SBREAK_TIME, 0);
-+			dgap_cmdw(ch, SBREAK, (u16)SBREAK_TIME, 0);
- 
- 		spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
- 		spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
-@@ -4837,7 +4837,7 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 		spin_lock_irqsave(&bd->bd_lock, lock_flags);
- 		spin_lock_irqsave(&ch->ch_lock, lock_flags2);
- 
--		dgap_cmdw(ch, SBREAK, (u16) SBREAK_TIME, 0);
-+		dgap_cmdw(ch, SBREAK, (u16)SBREAK_TIME, 0);
- 
- 		spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
- 		spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
-@@ -4864,7 +4864,7 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 		spin_lock_irqsave(&bd->bd_lock, lock_flags);
- 		spin_lock_irqsave(&ch->ch_lock, lock_flags2);
- 
--		dgap_cmdw(ch, SBREAK, (u16) SBREAK_TIME, 0);
-+		dgap_cmdw(ch, SBREAK, (u16)SBREAK_TIME, 0);
- 
- 		spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
- 		spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
-@@ -4888,13 +4888,13 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 		spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
- 
- 		return put_user(C_CLOCAL(tty) ? 1 : 0,
--				(unsigned long __user *) arg);
-+				(unsigned long __user *)arg);
- 
- 	case TIOCSSOFTCAR:
- 		spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
- 		spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
- 
--		rc = get_user(arg, (unsigned long __user *) arg);
-+		rc = get_user(arg, (unsigned long __user *)arg);
- 		if (rc)
- 			return rc;
- 
-@@ -4959,7 +4959,7 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
- 
- 		ch->ch_flags &= ~CH_STOP;
- 		head = readw(&(ch->ch_bs->tx_head));
--		dgap_cmdw(ch, FLUSHTX, (u16) head, 0);
-+		dgap_cmdw(ch, FLUSHTX, (u16)head, 0);
- 		dgap_cmdw(ch, RESUMETX, 0, 0);
- 		if (ch->ch_tun.un_flags & (UN_LOW|UN_EMPTY)) {
- 			ch->ch_tun.un_flags &= ~(UN_LOW|UN_EMPTY);
-@@ -5984,7 +5984,7 @@ static int dgap_test_bios(struct board_t *brd)
- 	brd->wait_for_bios = 0;
- 	while (brd->wait_for_bios < 1000) {
- 		/* Check to see if BIOS thinks board is good. (GD). */
--		if (word == *(u16 *) "GD")
-+		if (word == *(u16 *)"GD")
- 			return 0;
- 		msleep_interruptible(10);
- 		brd->wait_for_bios++;
-@@ -6070,12 +6070,12 @@ static int dgap_test_fep(struct board_t *brd)
- 	brd->wait_for_fep = 0;
- 	while (brd->wait_for_fep < 500) {
- 		/* Check to see if FEP is up and running now. */
--		if (word == *(u16 *) "OS") {
-+		if (word == *(u16 *)"OS") {
- 			/*
- 			 * Check to see if the board can support FEP5+ commands.
- 			*/
- 			word = readw(addr + FEP5_PLUS);
--			if (word == *(u16 *) "5A")
-+			if (word == *(u16 *)"5A")
- 				brd->bd_flags |= BD_FEP5PLUS;
- 
- 			return 0;
-@@ -6161,8 +6161,8 @@ static void dgap_do_conc_load(struct board_t *brd, u8 *uaddr, int len)
- 
- 	vaddr = brd->re_map_membase;
- 
--	offset = readw((u16 *) (vaddr + DOWNREQ));
--	to_dp = (struct downld_t *) (vaddr + (int) offset);
-+	offset = readw((u16 *)(vaddr + DOWNREQ));
-+	to_dp = (struct downld_t *)(vaddr + (int)offset);
- 	memcpy_toio(to_dp, uaddr, len);
- 
- 	/* Tell card we have data for it */
-@@ -6621,7 +6621,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
- 	 * is requesting a concentrator image from us.
+ 			/* .25 second delay for dropping RTS/DTR */
+ 			schedule_timeout_interruptible(msecs_to_jiffies(250));
+@@ -4615,7 +4614,7 @@ static void dgap_tty_close(struct tty_struct *tty, struct file *file)
  	 */
- 	if ((bd->type == PCX) || (bd->type == PEPC)) {
--		chk_addr = (u16 *) (vaddr + DOWNREQ);
-+		chk_addr = (u16 *)(vaddr + DOWNREQ);
- 		/* Nonzero if FEP is requesting concentrator image. */
- 		check = readw(chk_addr);
- 		vaddr = brd->re_map_membase;
-@@ -6636,7 +6636,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
- 			return ret;
- 		}
- 		/* Put concentrator firmware loading code here */
--		offset = readw((u16 *) (vaddr + DOWNREQ));
-+		offset = readw((u16 *)(vaddr + DOWNREQ));
- 		memcpy_toio(offset, fw->data, fw->size);
+ 	if ((un->un_type == DGAP_PRINT)  && (ch->ch_flags & CH_PRON)) {
+ 		dgap_wmove(ch, ch->ch_digi.digi_offstr,
+-			(int) ch->ch_digi.digi_offlen);
++			   (int)ch->ch_digi.digi_offlen);
+ 		ch->ch_flags &= ~CH_PRON;
+ 	}
  
- 		dgap_do_conc_load(brd, (char *)fw->data, fw->size)
-@@ -6719,8 +6719,8 @@ static int dgap_tty_init(struct board_t *brd)
- 	ch = brd->channels[0];
- 	vaddr = brd->re_map_membase;
+@@ -4750,7 +4749,7 @@ static void dgap_tty_flush_chars(struct tty_struct *tty)
+  * The usual assortment of ioctl's
+  */
+ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
+-		unsigned long arg)
++			  unsigned long arg)
+ {
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+@@ -5996,7 +5995,7 @@ static int dgap_test_bios(struct board_t *brd)
+ 	err1 = readw(addr + SEQUENCE);
+ 	err2 = readw(addr + ERROR);
+ 	dev_warn(&brd->pdev->dev, "%s failed diagnostics.  Error #(%x,%x).\n",
+-		brd->name, err1, err2);
++		 brd->name, err1, err2);
+ 	brd->state = BOARD_FAILED;
+ 	brd->dpastatus = BD_NOBIOS;
  
--	bs = (struct bs_t __iomem *) ((ulong) vaddr + CHANBUF);
--	cm = (struct cm_t __iomem *) ((ulong) vaddr + CMDBUF);
-+	bs = (struct bs_t __iomem *)((ulong)vaddr + CHANBUF);
-+	cm = (struct cm_t __iomem *)((ulong)vaddr + CMDBUF);
+@@ -6531,7 +6530,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
  
- 	brd->bd_bs = bs;
+ 	if (fw_info[card_type].conf_name) {
+ 		ret = request_firmware(&fw, fw_info[card_type].conf_name,
+-					 &pdev->dev);
++				       &pdev->dev);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "config file %s not found\n",
+ 				fw_info[card_type].conf_name);
+@@ -6584,7 +6583,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
  
+ 	if (fw_info[card_type].bios_name) {
+ 		ret = request_firmware(&fw, fw_info[card_type].bios_name,
+-					&pdev->dev);
++				       &pdev->dev);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "bios file %s not found\n",
+ 				fw_info[card_type].bios_name);
+@@ -6601,7 +6600,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
+ 
+ 	if (fw_info[card_type].fep_name) {
+ 		ret = request_firmware(&fw, fw_info[card_type].fep_name,
+-					&pdev->dev);
++				       &pdev->dev);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "dgap: fep file %s not found\n",
+ 				fw_info[card_type].fep_name);
+@@ -6630,7 +6629,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
+ 
+ 	if (fw_info[card_type].con_name && check && vaddr) {
+ 		ret = request_firmware(&fw, fw_info[card_type].con_name,
+-					&pdev->dev);
++				       &pdev->dev);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "conc file %s not found\n",
+ 				fw_info[card_type].con_name);
+@@ -6994,8 +6993,8 @@ static int dgap_start(void)
+ 	}
+ 
+ 	device = device_create(dgap_class, NULL,
+-		MKDEV(DIGI_DGAP_MAJOR, 0),
+-		NULL, "dgap_mgmt");
++			       MKDEV(DIGI_DGAP_MAJOR, 0),
++			       NULL, "dgap_mgmt");
+ 	if (IS_ERR(device)) {
+ 		rc = PTR_ERR(device);
+ 		goto failed_device;
 -- 
 2.1.4
 
