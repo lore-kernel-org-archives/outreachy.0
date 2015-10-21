@@ -1,17 +1,17 @@
 X-GM-THRID: 6208227682236235776
-X-Received: by 10.50.62.68 with SMTP id w4mr10369286igr.13.1445465838133;
-        Wed, 21 Oct 2015 15:17:18 -0700 (PDT)
+X-Received: by 10.50.17.106 with SMTP id n10mr17360246igd.6.1445465647153;
+        Wed, 21 Oct 2015 15:14:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.137.103 with SMTP id l100ls607116iod.22.gmail; Wed, 21 Oct
- 2015 15:17:17 -0700 (PDT)
-X-Received: by 10.107.156.129 with SMTP id f123mr10527040ioe.4.1445465837790;
-        Wed, 21 Oct 2015 15:17:17 -0700 (PDT)
+Received: by 10.107.7.155 with SMTP id g27ls675575ioi.40.gmail; Wed, 21 Oct
+ 2015 15:14:06 -0700 (PDT)
+X-Received: by 10.107.26.84 with SMTP id a81mr10279537ioa.6.1445465646699;
+        Wed, 21 Oct 2015 15:14:06 -0700 (PDT)
 Return-Path: <deepa.kernel@gmail.com>
 Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id vy6si1325045pbc.1.2015.10.21.15.17.17
+        by gmr-mx.google.com with ESMTPS id vy6si1325045pbc.1.2015.10.21.15.14.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 15:17:17 -0700 (PDT)
+        Wed, 21 Oct 2015 15:14:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
@@ -19,30 +19,30 @@ Authentication-Results: gmr-mx.google.com;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
 Received: by mail-pa0-x229.google.com with SMTP id z6so66320336pas.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 15:17:17 -0700 (PDT)
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 15:14:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=0yh3MG0ellUEbF7vr2sQpSJd4Sf7MFq1KrL2jDwtbVs=;
-        b=EV8cJqSjMnPmIi2qpiYcsNk/rwFXlcL1BbFz0oc/p3YV3N76abh71aJIbp/usb/dHO
-         PiWnGsF7WqpY3M57fLZ6Vylyu8Po08F9H/TXpDQvq6zde9kHaxUNalGYqGhkFZhvMCJ2
-         gnvHyUHEp3cEdPQELfvOwD1vEbYGK0Msv1h8ECD5q8+Uyx3p3P+ERhfhtwLKdTktGyp5
-         BgFLvPAQ9Pv1fgS3UyCE28ZkAPrnhQC6hyw1j3K+rqxe3qqPrQc/l0x6EopyZD9GBXsc
-         l88mgjHO+oxNXUgZQ8i5KbT0KYFq5G33SkbfvMnax6krZxePJN36oAWC7X4RtOMoMoQn
-         6uSA==
-X-Received: by 10.68.57.175 with SMTP id j15mr13271908pbq.34.1445465837671;
-        Wed, 21 Oct 2015 15:17:17 -0700 (PDT)
+        bh=TcVtDXMQUxDfIX5/g0CRkx8OlkeLJQiNXgf2C3/lFLk=;
+        b=h71hJ8bDUwLigh/Y4xOlU2ZBvtmyTfTTpRirnrisEe7beEkdDsIhuwHKqGMutZJBwQ
+         knnyqGmR0iOiszP1uTe+zT/+eT0hT4t7tnPC/+uv6j+XZMcysnnFPlA42mGjatUis99T
+         +K9/c99FBaTpBRSfyVWoFL3al/i4uJzgfmKeR+t+04GHjcYu87NWCQeAsLWmAp7G0SkE
+         +ORj6n0HGbiqwygRJvo3nBu7yBGRXY7O0UhH/CeaODb8xK8sKJauK/sFmhUh2Ewxc5Ja
+         /oqoA8AH4DrCq1VrpCoJAjvUnsetPN2HAnEVXcee6BcNSD1ptHj70RrlenqdmMedyJNM
+         XgWg==
+X-Received: by 10.66.120.237 with SMTP id lf13mr13012886pab.25.1445465646507;
+        Wed, 21 Oct 2015 15:14:06 -0700 (PDT)
 Return-Path: <deepa.kernel@gmail.com>
 Received: from deepa-ubuntu.hsd1.ca.comcast.net (c-73-162-232-39.hsd1.ca.comcast.net. [73.162.232.39])
-        by smtp.gmail.com with ESMTPSA id zk3sm10901880pbb.41.2015.10.21.15.17.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Oct 2015 15:17:17 -0700 (PDT)
+        by smtp.gmail.com with ESMTPSA id l16sm10897867pbq.22.2015.10.21.15.14.05
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 21 Oct 2015 15:14:06 -0700 (PDT)
 From: Deepa Dinamani <deepa.kernel@gmail.com>
-To: y2038@lists.linaro.org
+To: y2038@list.linaro.org
 Cc: outreachy-kernel@googlegroups.com
 Subject: [PATCH] usb: usbtest: Add new ioctl interface
-Date: Wed, 21 Oct 2015 15:17:14 -0700
-Message-Id: <1445465834-24407-1-git-send-email-deepa.kernel@gmail.com>
+Date: Wed, 21 Oct 2015 15:13:50 -0700
+Message-Id: <1445465630-24286-1-git-send-email-deepa.kernel@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 The new USBTEST_REQUEST ioctl is intended to eventually replace
@@ -64,8 +64,6 @@ difference is in how delta time is returned.
 
 Signed-off-by: Deepa Dinamani <deepa.kernel@gmail.com>
 ---
-Resending due to incorrect recipient list
-
 This patch is intended for the next branch of the usb tree:
 git://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git
 
