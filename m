@@ -1,57 +1,85 @@
 X-GM-THRID: 6208213403443396608
-X-Received: by 10.66.255.70 with SMTP id ao6mr10878773pad.3.1445761683134;
-        Sun, 25 Oct 2015 01:28:03 -0700 (PDT)
+X-Received: by 10.180.9.104 with SMTP id y8mr7416167wia.7.1445462522839;
+        Wed, 21 Oct 2015 14:22:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.244 with SMTP id c107ls922058qgf.39.gmail; Sun, 25 Oct
- 2015 01:28:02 -0700 (PDT)
-X-Received: by 10.129.132.83 with SMTP id u80mr19372171ywf.58.1445761682745;
-        Sun, 25 Oct 2015 01:28:02 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id fa8si3047246pab.1.2015.10.25.01.28.02
+Received: by 10.25.218.208 with SMTP id r199ls277533lfg.2.gmail; Wed, 21 Oct
+ 2015 14:22:02 -0700 (PDT)
+X-Received: by 10.112.132.10 with SMTP id oq10mr2695458lbb.1.1445462522289;
+        Wed, 21 Oct 2015 14:22:02 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
+        by gmr-mx.google.com with ESMTPS id o3si367935wiz.1.2015.10.21.14.22.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Oct 2015 01:28:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Oct 2015 14:22:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [58.123.138.205])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id CDFD267;
-	Sun, 25 Oct 2015 08:28:01 +0000 (UTC)
-Date: Sat, 24 Oct 2015 18:50:35 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/3] Staging: lustre: Replace
- LPROCFS_CLIMP_CHECK with lprocfs_climp_check
-Message-ID: <20151025015035.GC536@kroah.com>
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22c.google.com with SMTP id fx6so109582897wic.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 14:22:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=iowbuI9eITmZyiJmQpJV84nz7cM8IOuKLutwmzL2bJU=;
+        b=Y8CWW6DeONBUOks6Y9YvidYHXXs8BkNLsosFbYh9EJ9I9e/XUhfz7jAH1DGyZJaWV8
+         L/ojViup8ZhOjr1H1TWyCRWJH+awW2ejD+pRHGpI+KJ+2jKroEqgVxEs2bfjfpFn8bwI
+         Diy8u2kw7p/cunJF0vwlKTgCcofxb75l+/jQGqo7nvFRx1xhdSssZ1wF+uy1ZAmOoOnl
+         +dT4LA/FicltWUG+Wmh/b5XHLElXJS5iVPGhb7Zvq9aNAF5GJTEVY3DxM2dx5GDEQ9Rh
+         NpQFh65A0eIl1Q/xnfk7W6tYfptsgPqEpDR7uW3Ib8Fak/KSKspiEVlyhRPlUimXGB/y
+         g62g==
+X-Received: by 10.180.93.232 with SMTP id cx8mr12867287wib.26.1445462522187;
+        Wed, 21 Oct 2015 14:22:02 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
+        by smtp.gmail.com with ESMTPSA id p2sm12750184wjb.21.2015.10.21.14.22.01
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 21 Oct 2015 14:22:01 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH 3/3] Staging: lustre: Remove unused macros
+Date: Wed, 21 Oct 2015 23:21:53 +0200
+Message-Id: <c283335f7c43aaa0fe8794045742d0be4bae0c18.1445462106.git.ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1445462106.git.ksenija.stanojevic@gmail.com>
 References: <cover.1445462106.git.ksenija.stanojevic@gmail.com>
- <0b63f2da700fe4ef978ca1bd94b954080e98ca86.1445462106.git.ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0b63f2da700fe4ef978ca1bd94b954080e98ca86.1445462106.git.ksenija.stanojevic@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Oct 21, 2015 at 11:19:41PM +0200, Ksenija Stanojevic wrote:
-> Static inline functions are preferred over macros. The function is
-> placed in obd_class.h instead lprocfs_status.h because obd_class.h
-> includes header obd.h which contains definition of struct obd_device
-> and in that way avoids build error: Dereferencing pointer to incomplete
-> type.
-> 
-> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-> ---
->  drivers/staging/lustre/lustre/include/obd_class.h  | 11 +++++++
->  drivers/staging/lustre/lustre/mgc/mgc_request.c    |  6 +++-
->  .../lustre/lustre/obdclass/lprocfs_status.c        | 38 +++++++++++++++++-----
->  .../staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c    | 16 +++++++--
->  4 files changed, 59 insertions(+), 12 deletions(-)
+Macros LPROCFS_CLIMP_CHECK and LPROCFS_CLIMP_EXIT are not used anymore,
+therefore remove them along with the comment.
 
-Why haven't you deleted the macro as well?  It's hard to validate this
-patch is correct without seeing the macro removed.
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+ drivers/staging/lustre/lustre/include/lprocfs_status.h | 13 -------------
+ 1 file changed, 13 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/lustre/lustre/include/lprocfs_status.h b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+index 6e41129..532d195 100644
+--- a/drivers/staging/lustre/lustre/include/lprocfs_status.h
++++ b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+@@ -626,19 +626,6 @@ void lprocfs_stats_collect(struct lprocfs_stats *stats, int idx,
+ int lprocfs_single_release(struct inode *, struct file *);
+ int lprocfs_seq_release(struct inode *, struct file *);
+ 
+-/* You must use these macros when you want to refer to
+- * the import in a client obd_device for a lprocfs entry */
+-#define LPROCFS_CLIMP_CHECK(obd) do {	   \
+-	typecheck(struct obd_device *, obd);    \
+-	down_read(&(obd)->u.cli.cl_sem);    \
+-	if ((obd)->u.cli.cl_import == NULL) {   \
+-	     up_read(&(obd)->u.cli.cl_sem); \
+-	     return -ENODEV;		    \
+-	}				       \
+-} while (0)
+-#define LPROCFS_CLIMP_EXIT(obd)		 \
+-	up_read(&(obd)->u.cli.cl_sem)
+-
+ /* write the name##_seq_show function, call LPROC_SEQ_FOPS_RO for read-only
+   proc entries; otherwise, you will define name##_seq_write function also for
+   a read-write proc entry, and then call LPROC_SEQ_SEQ instead. Finally,
+-- 
+1.9.1
 
-greg k-h
 
