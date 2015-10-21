@@ -1,79 +1,77 @@
 X-GM-THRID: 6208147011756097536
-X-Received: by 10.194.71.166 with SMTP id w6mr2475701wju.6.1445446871409;
-        Wed, 21 Oct 2015 10:01:11 -0700 (PDT)
+X-Received: by 10.112.132.10 with SMTP id oq10mr2434612lbb.1.1445446864523;
+        Wed, 21 Oct 2015 10:01:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.24.84 with SMTP id o81ls230642lfi.48.gmail; Wed, 21 Oct
- 2015 10:01:10 -0700 (PDT)
-X-Received: by 10.112.140.202 with SMTP id ri10mr2436454lbb.10.1445446870860;
-        Wed, 21 Oct 2015 10:01:10 -0700 (PDT)
+Received: by 10.25.87.139 with SMTP id l133ls217111lfb.34.gmail; Wed, 21 Oct
+ 2015 10:01:03 -0700 (PDT)
+X-Received: by 10.112.151.9 with SMTP id um9mr2449232lbb.19.1445446863932;
+        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
 Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id cm6si1048091wib.1.2015.10.21.10.01.10
+Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
+        by gmr-mx.google.com with ESMTPS id cm6si1048097wib.1.2015.10.21.10.01.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 10:01:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id q8so103001777wik.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 10:01:10 -0700 (PDT)
+Received: by mail-wi0-x22d.google.com with SMTP id p11so104660216wij.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=RJScYM+hKTZletcS3qlEdvPgGxwOUDBiu18JRd+QYgU=;
-        b=LEt9CebPWh3m2nU9mS2LFOZ5Ei1D0qE2Xja2ZQobU68Ut96jE4YhAtO04QEulOp3zS
-         QcLEQtm/HCEEptpSoe+rZeIf/dqwI359GeFWCrQbrusrGBGfwGoygPpEz4mrSExEreM2
-         EYET4CkzwZJnc2vISmdO2hYjbh9+0fyqZILf8Nv/oO5kHh0VaLZroGh08xVeFnY9xdQP
-         srCNynTMzFZ6vcRqdp+vqiJajG7Wk/m+MXCA28OE/pvrKAe+R5lE/EfMbC5t/aodnNjm
-         MdcFVcrs3KbuoNyJjBBwsOUX/n3xYVXg6yqF1YuJcNdr3EbmNLrhpF2tNYEQywSAetCK
-         B6yw==
-X-Received: by 10.194.123.2 with SMTP id lw2mr13407981wjb.48.1445446870768;
-        Wed, 21 Oct 2015 10:01:10 -0700 (PDT)
+        h=from:to:cc:subject:date:message-id;
+        bh=NI2uPr0vWBqQF/URn3kkg4Bq3SKov9/Oq8feZ85JirM=;
+        b=S30SnDGMT9Vk4Y1pfEGkLOuorMtpxGWpnzERjozY6jZXD3mrMUkm2a2WrdJnxgg2b/
+         hnBSwRKXSiDgeLQ+9PwY8a+OCoCggWCG8KMh59aQg3pKGbD7IavLWRk9DNyRzDFJ+T+l
+         YIgIFG6mWh4mW/cTM8mGzEV6Rrp/PaccF6bIugZjHH0d4LliNO5GNwi6Jyx/+6vs9Iqr
+         84+ieyUOKr6ag6paCM+wTJXtKMGmt3L9bMj6l8hhZsn+eofb/zOYgxeqDq09OoHQ+zol
+         ZunLXw5FAtzXNGm7LSwRHtzkDs3QGXSL9P1CJN4j7LF6s1Qt/t0l2nsxSx+ruM88YhZw
+         fyxw==
+X-Received: by 10.194.133.105 with SMTP id pb9mr13417548wjb.158.1445446863817;
+        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
 Return-Path: <cristina.moraru09@gmail.com>
 Received: from localhost.localdomain ([141.85.225.204])
-        by smtp.gmail.com with ESMTPSA id x7sm24456745wia.10.2015.10.21.10.01.09
+        by smtp.gmail.com with ESMTPSA id x7sm24456745wia.10.2015.10.21.10.01.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Oct 2015 10:01:10 -0700 (PDT)
+        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
 From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH 1/3] staging: rtl8712: Replace kmalloc with kmalloc_array
-Date: Wed, 21 Oct 2015 20:00:49 +0300
-Message-Id: <01dc6462a66136c42d0ee22abe8aa61a67d6d649.1445379358.git.cristina.moraru09@gmail.com>
+Subject: [PATCH 0/3] Replace kmalloc with kmalloc_array
+Date: Wed, 21 Oct 2015 20:00:48 +0300
+Message-Id: <cover.1445379358.git.cristina.moraru09@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1445379358.git.cristina.moraru09@gmail.com>
-References: <cover.1445379358.git.cristina.moraru09@gmail.com>
-In-Reply-To: <cover.1445379358.git.cristina.moraru09@gmail.com>
-References: <cover.1445379358.git.cristina.moraru09@gmail.com>
 
 Replace kmalloc with specialized function kmalloc_array
 when the size is a multiplication of:
-	number_of_elements * size_of_element
+        number_of_elements * size_of_element
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_mlme.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Done with coccinelle:
+@replace@
+identifier a, b;
+expression e, f;
+@@
+(
+- a = kmalloc(e * f, b);
++ a = kmalloc_array(e, f, b);
+)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index fbcb248..e69621a 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -62,8 +62,8 @@ static sint _init_mlme_priv(struct _adapter *padapter)
- 	_init_queue(&(pmlmepriv->scanned_queue));
- 	set_scanned_network_val(pmlmepriv, 0);
- 	memset(&pmlmepriv->assoc_ssid, 0, sizeof(struct ndis_802_11_ssid));
--	pbuf = kmalloc(MAX_BSS_CNT * (sizeof(struct wlan_network)),
--		       GFP_ATOMIC);
-+	pbuf = kmalloc_array(MAX_BSS_CNT, sizeof(struct wlan_network),
-+			     GFP_ATOMIC);
- 	if (pbuf == NULL)
- 		return _FAIL;
- 	pmlmepriv->free_bss_buf = pbuf;
+
+
+Cristina Moraru (3):
+  staging: rtl8712: Replace kmalloc with kmalloc_array
+  staging: octeon-usb: Replace kmalloc with kmalloc_array
+  staging: rdma: Replace kmalloc with kmalloc_array
+
+ drivers/staging/octeon-usb/octeon-hcd.c     | 6 +++---
+ drivers/staging/rdma/amso1100/c2_provider.c | 2 +-
+ drivers/staging/rdma/ipath/ipath_verbs.c    | 4 ++--
+ drivers/staging/rtl8712/rtl871x_mlme.c      | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
 -- 
 1.9.1
 
