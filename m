@@ -1,296 +1,416 @@
 X-GM-THRID: 6207871882034675712
-X-Received: by 10.112.140.202 with SMTP id ri10mr2638709lbb.10.1445458702766;
-        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
+X-Received: by 10.112.173.170 with SMTP id bl10mr2677191lbc.7.1445458701107;
+        Wed, 21 Oct 2015 13:18:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.90.234 with SMTP id bz10ls421587wib.44.gmail; Wed, 21 Oct
- 2015 13:18:22 -0700 (PDT)
-X-Received: by 10.194.118.65 with SMTP id kk1mr2679324wjb.5.1445458702320;
-        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
+Received: by 10.25.206.211 with SMTP id e202ls267719lfg.109.gmail; Wed, 21 Oct
+ 2015 13:18:20 -0700 (PDT)
+X-Received: by 10.112.209.73 with SMTP id mk9mr2659252lbc.14.1445458700482;
+        Wed, 21 Oct 2015 13:18:20 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id c7si927469wiy.3.2015.10.21.13.18.22
+Received: from mail-wi0-x242.google.com (mail-wi0-x242.google.com. [2a00:1450:400c:c05::242])
+        by gmr-mx.google.com with ESMTPS id cm6si3846wib.1.2015.10.21.13.18.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Wed, 21 Oct 2015 13:18:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::242 as permitted sender) client-ip=2a00:1450:400c:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::242 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id ll6so106841022wic.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
+Received: by mail-wi0-x242.google.com with SMTP id vt6so14949033wib.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 13:18:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=cYNt+Odnd4/scSaNbgP2g/QHtsvtxy6eBiS1p+kp0F4=;
-        b=axCzWWhEZO5q8JZnIO5rni9vm3wV55Olw0x4phpTaALaTc3gaKJQss20rg5JokLTPX
-         c1KI62/Uefh9aXJuIWhsV/UDuIlgYNHWtC3xL4PkCqTGTMk6L66tbDOJdVHVoXRWlOZU
-         uJlgisK23EJGcqSOaQ52M82k3Xmj/VKXc/1m9cShRzBFcRztzVSBsN6xbI34wqSdAV52
-         rLQUwSxA67SbnV82ucDCVOzMuwOSJwpTxc3xJ3zISBz6r0EMNES50ir6AdRiegWfXEVF
-         gkKoVVN9Tf2xgRfwdFhZ9OsJYZ2bA6rWMJvBaRCss0uvjjl3a9MGhSMJ/z5lo/FVfD1i
-         eYLQ==
-X-Received: by 10.180.85.164 with SMTP id i4mr13714199wiz.54.1445458702200;
-        Wed, 21 Oct 2015 13:18:22 -0700 (PDT)
+        bh=mBFFvWRHjB/v2kquoE12dKtAZlpuA+7YgKQVEfrdNag=;
+        b=iCLylBe4l3PXYLL/HAQ7a8s9ycSDmu0P1iSsyN25k3AmXB51Mlmz2IjNGn/xuVbUmB
+         oMHln19LiPwxrhfrHsjVVaXXXuZkPcU5w8w5YzARZPt7sHOxnD0lfCvIFuopkkHBdC7E
+         VhbTTuxDoqDJn3xc93vlfumHVywSthk8UlGIYxBn35k1E57i5IvaU5ci4v54QIcZ5Yn+
+         JKr5AYGZoA4dx/0bw5jPion0dmp2VK/AMbGxt2ckKiSwLnByRgxuodPOs4dVq2c5FVo6
+         3Kcs5OpbHhUswHc2dckBm0a3R7LM6MqB5h6+A3DijARtm6m/pK/hZtJSWobgDrwplcIN
+         eF5w==
+X-Received: by 10.180.11.37 with SMTP id n5mr12525175wib.20.1445458700352;
+        Wed, 21 Oct 2015 13:18:20 -0700 (PDT)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by smtp.gmail.com with ESMTPSA id m6sm8703173wif.11.2015.10.21.13.18.21
+        by smtp.gmail.com with ESMTPSA id m6sm8703173wif.11.2015.10.21.13.18.18
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Oct 2015 13:18:21 -0700 (PDT)
+        Wed, 21 Oct 2015 13:18:19 -0700 (PDT)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH v2 2/5] staging: dgap: properly indent to match open paranthesis
-Date: Wed, 21 Oct 2015 23:17:53 +0300
-Message-Id: <d4331a6cd9560c17481eccf6119bb8c894c7838b.1445458023.git.ciorneiioana@gmail.com>
+Subject: [PATCH v2 1/5] staging: dgap: remove unnecessary blank lines
+Date: Wed, 21 Oct 2015 23:17:52 +0300
+Message-Id: <23fe9b72274a527eccd9a7f2d479be0818ab878e.1445458023.git.ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1445458023.git.ciorneiioana@gmail.com>
 References: <cover.1445458023.git.ciorneiioana@gmail.com>
 In-Reply-To: <cover.1445458023.git.ciorneiioana@gmail.com>
 References: <cover.1445458023.git.ciorneiioana@gmail.com>
 
-Indent parameters and arguments passed to function calls to match
-open paranthesis
+This patch removes the unnecessary blank lines before a closed
+bracket and after an open bracket.
 
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
 
 Changes in v2:
-    - reworked the alignment of some conditional expressions in order to
-    improve readability
-    - reverted the add and the removal of some blank lines
+    - nothing
 
- drivers/staging/dgap/dgap.c | 55 ++++++++++++++++++++++-----------------------
- 1 file changed, 27 insertions(+), 28 deletions(-)
+ drivers/staging/dgap/dgap.c | 44 --------------------------------------------
+ 1 file changed, 44 deletions(-)
 
 diff --git a/drivers/staging/dgap/dgap.c b/drivers/staging/dgap/dgap.c
-index 2d36ea5..f7850f4 100644
+index ca64126..2d36ea5 100644
 --- a/drivers/staging/dgap/dgap.c
 +++ b/drivers/staging/dgap/dgap.c
-@@ -931,8 +931,8 @@ static int dgap_parsefile(char **in)
- 				brd->u.board.conc1++;
+@@ -514,7 +514,6 @@ static uint dgap_config_get_num_prts(struct board_t *bd)
+ 		return 0;
  
- 			conc_type = dgap_gettok(in);
--			if (conc_type == 0 || (conc_type != CX &&
--			    conc_type != EPC)) {
-+			if (conc_type == 0 ||
-+			    (conc_type != CX && conc_type != EPC)) {
- 				pr_err("failed to set a type of concentratros");
- 				return -1;
- 			}
-@@ -972,8 +972,8 @@ static int dgap_parsefile(char **in)
- 				brd->u.board.module1++;
- 
- 			module_type = dgap_gettok(in);
--			if (module_type == 0 || (module_type != PORTS &&
--			    module_type != MODEM)) {
-+			if (module_type == 0 ||
-+			    (module_type != PORTS && module_type != MODEM)) {
- 				pr_err("failed to set a type of module");
- 				return -1;
- 			}
-@@ -1351,8 +1351,7 @@ static int dgap_remap(struct board_t *brd)
- 	if (!request_mem_region(brd->membase, 0x200000, "dgap"))
- 		return -ENOMEM;
- 
--	if (!request_mem_region(brd->membase + PCI_IO_OFFSET, 0x200000,
--					"dgap"))
-+	if (!request_mem_region(brd->membase + PCI_IO_OFFSET, 0x200000, "dgap"))
- 		goto err_req_mem;
- 
- 	brd->re_map_membase = ioremap(brd->membase, 0x200000);
-@@ -1390,7 +1389,7 @@ static void dgap_unmap(struct board_t *brd)
-  * the Linux line discipline way.
-  */
- static void dgap_parity_scan(struct channel_t *ch, unsigned char *cbuf,
--				unsigned char *fbuf, int *len)
-+			     unsigned char *fbuf, int *len)
- {
- 	int l = *len;
- 	int count = 0;
-@@ -1649,7 +1648,7 @@ static void dgap_input(struct channel_t *ch)
- 
- 		len = tty_buffer_request_room(tp->port, len);
- 		tty_insert_flip_string_flags(tp->port, ch->ch_bd->flipbuf,
--			ch->ch_bd->flipflagbuf, len);
-+					     ch->ch_bd->flipflagbuf, len);
- 	} else {
- 		len = tty_buffer_request_room(tp->port, len);
- 		tty_insert_flip_string(tp->port, ch->ch_bd->flipbuf, len);
-@@ -2161,7 +2160,7 @@ static struct board_t *dgap_found_board(struct pci_dev *pdev, int id,
- 
- 	/* init our poll helper tasklet */
- 	tasklet_init(&brd->helper_tasklet, dgap_poll_tasklet,
--			(unsigned long) brd);
-+		     (unsigned long)brd);
- 
- 	ret = dgap_remap(brd);
- 	if (ret)
-@@ -2342,7 +2341,7 @@ schedule_poller:
-  *
-  *=======================================================================*/
- static void dgap_cmdb(struct channel_t *ch, u8 cmd, u8 byte1,
--			u8 byte2, uint ncmds)
-+		      u8 byte2, uint ncmds)
- {
- 	char __iomem *vaddr;
- 	struct __iomem cm_t *cm_addr;
-@@ -3011,7 +3010,7 @@ static int dgap_block_til_ready(struct tty_struct *tty, struct file *file,
- 	int sleep_on_un_flags;
- 
- 	if (!tty || tty->magic != TTY_MAGIC || !file || !ch ||
--		ch->magic != DGAP_CHANNEL_MAGIC)
-+	    ch->magic != DGAP_CHANNEL_MAGIC)
- 		return -EIO;
- 
- 	un = tty->driver_data;
-@@ -3509,7 +3508,7 @@ static int dgap_tty_write_room(struct tty_struct *tty)
-  * In here exists all the Transparent Print magic as well.
-  */
- static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
--				int count)
-+			  int count)
- {
- 	struct channel_t *ch;
- 	struct un_t *un;
-@@ -3575,7 +3574,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
- 	 */
- 	if ((un->un_type == DGAP_PRINT) && !(ch->ch_flags & CH_PRON)) {
- 		dgap_wmove(ch, ch->ch_digi.digi_onstr,
--		    (int) ch->ch_digi.digi_onlen);
-+			   (int)ch->ch_digi.digi_onlen);
- 		head = readw(&(bs->tx_head)) & tmask;
- 		ch->ch_flags |= CH_PRON;
+ 	for (p = bd->bd_config; p; p = p->next) {
+-
+ 		switch (p->type) {
+ 		case BNODE:
+ 			/*
+@@ -547,7 +546,6 @@ static char *dgap_create_config_string(struct board_t *bd, char *string)
  	}
-@@ -3586,7 +3585,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
+ 
+ 	for (p = bd->bd_config; p; p = p->next) {
+-
+ 		switch (p->type) {
+ 		case LNODE:
+ 			*ptr = '\0';
+@@ -1446,7 +1444,6 @@ static void dgap_parity_scan(struct channel_t *ch, unsigned char *cbuf,
+ 			*cout++ = c;
+ 
+ 			if (ch->pscan_savechar == 0x0) {
+-
+ 				if (c == 0x0) {
+ 					ch->ch_err_break++;
+ 					*fout++ = TTY_BREAK;
+@@ -1536,7 +1533,6 @@ static void dgap_input(struct channel_t *ch)
+ 	    !(ch->ch_tun.un_flags & UN_ISOPEN) ||
+ 	    !(tp->termios.c_cflag & CREAD) ||
+ 	    (ch->ch_tun.un_flags & UN_CLOSING)) {
+-
+ 		writew(head, &(bs->rx_tail));
+ 		writeb(1, &(bs->idata));
+ 		spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
+@@ -1618,7 +1614,6 @@ static void dgap_input(struct channel_t *ch)
+ 	 * of data the card actually has pending...
  	 */
- 	if ((un->un_type != DGAP_PRINT) && (ch->ch_flags & CH_PRON)) {
- 		dgap_wmove(ch, ch->ch_digi.digi_offstr,
--			(int) ch->ch_digi.digi_offlen);
-+			   (int)ch->ch_digi.digi_offlen);
- 		head = readw(&(bs->tx_head)) & tmask;
- 		ch->ch_flags &= ~CH_PRON;
+ 	while (n) {
+-
+ 		s = ((head >= tail) ? head : ch->ch_rsize) - tail;
+ 		s = min(s, n);
+ 
+@@ -1668,7 +1663,6 @@ static void dgap_input(struct channel_t *ch)
+ 
+ 	if (ld)
+ 		tty_ldisc_deref(ld);
+-
+ }
+ 
+ static void dgap_write_wakeup(struct board_t *bd, struct channel_t *ch,
+@@ -1739,7 +1733,6 @@ static void dgap_carrier(struct channel_t *ch)
+ 	 * Test for a VIRTUAL carrier transition to HIGH.
+ 	 */
+ 	if (((ch->ch_flags & CH_FCAR) == 0) && (virt_carrier == 1)) {
+-
+ 		/*
+ 		 * When carrier rises, wake any threads waiting
+ 		 * for carrier in the open routine.
+@@ -1753,7 +1746,6 @@ static void dgap_carrier(struct channel_t *ch)
+ 	 * Test for a PHYSICAL carrier transition to HIGH.
+ 	 */
+ 	if (((ch->ch_flags & CH_CD) == 0) && (phys_carrier == 1)) {
+-
+ 		/*
+ 		 * When carrier rises, wake any threads waiting
+ 		 * for carrier in the open routine.
+@@ -1775,7 +1767,6 @@ static void dgap_carrier(struct channel_t *ch)
+ 	if ((virt_carrier == 0) &&
+ 	    ((ch->ch_flags & CH_CD) != 0) &&
+ 	    (phys_carrier == 0)) {
+-
+ 		/*
+ 		 *   When carrier drops:
+ 		 *
+@@ -1867,7 +1858,6 @@ static int dgap_event(struct board_t *bd)
+ 	 * Loop to process all the events in the buffer.
+ 	 */
+ 	while (tail != head) {
+-
+ 		/*
+ 		 * Get interrupt information.
+ 		 */
+@@ -1910,7 +1900,6 @@ static int dgap_event(struct board_t *bd)
+ 		 * Process received data.
+ 		 */
+ 		if (reason & IFDATA) {
+-
+ 			/*
+ 			 * ALL LOCKS *MUST* BE DROPPED BEFORE CALLING INPUT!
+ 			 * input could send some data to ld, which in turn
+@@ -1949,7 +1938,6 @@ static int dgap_event(struct board_t *bd)
+ 		 * Process break.
+ 		 */
+ 		if (reason & IFBREAK) {
+-
+ 			if (ch->ch_tun.un_tty) {
+ 				/* A break has been indicated */
+ 				ch->ch_err_break++;
+@@ -2025,7 +2013,6 @@ static void dgap_poll_tasklet(unsigned long data)
+ 	 * If board is ready, parse deeper to see if there is anything to do.
+ 	 */
+ 	if (bd->state == BOARD_READY) {
+-
+ 		struct ev_t __iomem *eaddr;
+ 
+ 		if (!bd->re_map_membase) {
+@@ -2269,7 +2256,6 @@ static void dgap_poll_handler(ulong dummy)
+ 	 */
+ 	if ((dgap_numboards == 1) || (num_online_cpus() <= 1)) {
+ 		for (i = 0; i < dgap_numboards; i++) {
+-
+ 			brd = dgap_board[i];
+ 
+ 			if (brd->state == BOARD_FAILED)
+@@ -2413,7 +2399,6 @@ static void dgap_cmdb(struct channel_t *ch, u8 cmd, u8 byte1,
+ 	 * is outlandish, declare the FEP dead.
+ 	 */
+ 	for (count = dgap_count ;;) {
+-
+ 		head = readw(&(cm_addr->cm_head));
+ 		tail = readw(&(cm_addr->cm_tail));
+ 
+@@ -2496,7 +2481,6 @@ static void dgap_cmdw(struct channel_t *ch, u8 cmd, u16 word, uint ncmds)
+ 	 * is outlandish, declare the FEP dead.
+ 	 */
+ 	for (count = dgap_count ;;) {
+-
+ 		head = readw(&(cm_addr->cm_head));
+ 		tail = readw(&(cm_addr->cm_tail));
+ 
+@@ -2591,7 +2575,6 @@ static void dgap_cmdw_ext(struct channel_t *ch, u16 cmd, u16 word, uint ncmds)
+ 	 * is outlandish, declare the FEP dead.
+ 	 */
+ 	for (count = dgap_count ;;) {
+-
+ 		head = readw(&(cm_addr->cm_head));
+ 		tail = readw(&(cm_addr->cm_tail));
+ 
+@@ -2711,7 +2694,6 @@ static int dgap_param(struct channel_t *ch, struct board_t *bd, u32 un_type)
+ 	 * If baud rate is zero, flush queues, and set mval to drop DTR.
+ 	 */
+ 	if ((ch->ch_c_cflag & (CBAUD)) == 0) {
+-
+ 		/* flush rx */
+ 		head = readw(&(ch->ch_bs->rx_head));
+ 		writew(head, &(ch->ch_bs->rx_tail));
+@@ -3042,7 +3024,6 @@ static int dgap_block_til_ready(struct tty_struct *tty, struct file *file,
+ 
+ 	/* Loop forever */
+ 	while (1) {
+-
+ 		sleep_on_un_flags = 0;
+ 
+ 		/*
+@@ -3069,7 +3050,6 @@ static int dgap_block_til_ready(struct tty_struct *tty, struct file *file,
+ 		 */
+ 		if (!((ch->ch_tun.un_flags | ch->ch_pun.un_flags) &
+ 		      UN_CLOSING)) {
+-
+ 			/*
+ 			 * Our conditions to leave cleanly and happily:
+ 			 * 1) NONBLOCKING on the tty is set.
+@@ -3353,7 +3333,6 @@ static int dgap_wait_for_drain(struct tty_struct *tty)
+ 
+ 	/* Loop until data is drained */
+ 	while (count != 0) {
+-
+ 		count = dgap_tty_chars_in_buffer(tty);
+ 
+ 		if (count == 0)
+@@ -3632,7 +3611,6 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
  	}
-@@ -3644,7 +3643,7 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
- 			writeb(1, &(bs->iempty));
- 		} else {
- 			dgap_wmove(ch, ch->ch_digi.digi_offstr,
--				(int) ch->ch_digi.digi_offlen);
-+				   (int)ch->ch_digi.digi_offlen);
- 			head = readw(&(bs->tx_head)) & tmask;
- 			ch->ch_flags &= ~CH_PRON;
+ 
+ 	if (n > 0) {
+-
+ 		/*
+ 		 * Move rest of data.
+ 		 */
+@@ -3641,7 +3619,6 @@ static int dgap_tty_write(struct tty_struct *tty, const unsigned char *buf,
+ 
+ 		memcpy_toio(vaddr, (u8 *) buf, remain);
+ 		head += remain;
+-
+ 	}
+ 
+ 	if (count) {
+@@ -4227,7 +4204,6 @@ static int dgap_tty_digisetcustombaud(struct channel_t *ch, struct board_t *bd,
+ 		return -EFAULT;
+ 
+ 	if (bd->bd_flags & BD_FEP5PLUS) {
+-
+ 		spin_lock_irqsave(&bd->bd_lock, lock_flags);
+ 		spin_lock_irqsave(&ch->ch_lock, lock_flags2);
+ 
+@@ -4319,7 +4295,6 @@ static void dgap_tty_throttle(struct tty_struct *tty)
+ 
+ 	spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
+ 	spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
+-
+ }
+ 
+ static void dgap_tty_unthrottle(struct tty_struct *tty)
+@@ -4478,7 +4453,6 @@ static int dgap_tty_open(struct tty_struct *tty, struct file *file)
+ 	 * Initialize if neither terminal or printer is open.
+ 	 */
+ 	if (!((ch->ch_tun.un_flags | ch->ch_pun.un_flags) & UN_ISOPEN)) {
+-
+ 		ch->ch_mforce = 0;
+ 		ch->ch_mval = 0;
+ 
+@@ -4595,7 +4569,6 @@ static void dgap_tty_close(struct tty_struct *tty, struct file *file)
+ 	 */
+ 	if ((ch->ch_open_count == 0) &&
+ 	    !(ch->ch_digi.digi_flags & DIGI_PRINTER)) {
+-
+ 		ch->ch_flags &= ~(CH_RXBLOCK);
+ 
+ 		spin_unlock_irqrestore(&ch->ch_lock, lock_flags);
+@@ -4635,7 +4608,6 @@ static void dgap_tty_close(struct tty_struct *tty, struct file *file)
+ 		ch->pscan_state = 0;
+ 		ch->pscan_savechar = 0;
+ 		ch->ch_baud_info = 0;
+-
+ 	}
+ 
+ 	/*
+@@ -4814,9 +4786,7 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
+ 	}
+ 
+ 	switch (cmd) {
+-
+ 	/* Here are all the standard ioctl's that we MUST implement */
+-
+ 	case TCSBRK:
+ 		/*
+ 		 * TCSBRK is SVID version: non-zero arg --> no break
+@@ -5066,7 +5036,6 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
  		}
-@@ -3731,7 +3730,7 @@ static int dgap_tty_tiocmget(struct tty_struct *tty)
-  * Set modem signals, called by ld.
-  */
- static int dgap_tty_tiocmset(struct tty_struct *tty,
--		unsigned int set, unsigned int clear)
-+			     unsigned int set, unsigned int clear)
- {
- 	struct board_t *bd;
- 	struct channel_t *ch;
-@@ -4222,7 +4221,7 @@ static int dgap_tty_digisetcustombaud(struct channel_t *ch, struct board_t *bd,
-  * dgap_set_termios()
-  */
- static void dgap_tty_set_termios(struct tty_struct *tty,
--				struct ktermios *old_termios)
-+				 struct ktermios *old_termios)
- {
- 	struct board_t *bd;
- 	struct channel_t *ch;
-@@ -4385,7 +4384,7 @@ static int dgap_tty_open(struct tty_struct *tty, struct file *file)
- 	 * sleep waiting for it to happen or they cancel the open.
- 	 */
- 	rc = wait_event_interruptible(brd->state_wait,
--		(brd->state & BOARD_READY));
-+				      (brd->state & BOARD_READY));
  
- 	if (rc)
- 		return rc;
-@@ -4597,7 +4596,7 @@ static void dgap_tty_close(struct tty_struct *tty, struct file *file)
- 			 * have been dropped for modems to see it.
- 			 */
- 			spin_unlock_irqrestore(&ch->ch_lock,
--					lock_flags);
-+					       lock_flags);
+ 		switch (arg) {
+-
+ 		case TCOON:
+ 			spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
+ 			spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
+@@ -5104,7 +5073,6 @@ static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
  
- 			/* .25 second delay for dropping RTS/DTR */
- 			schedule_timeout_interruptible(msecs_to_jiffies(250));
-@@ -4615,7 +4614,7 @@ static void dgap_tty_close(struct tty_struct *tty, struct file *file)
- 	 */
- 	if ((un->un_type == DGAP_PRINT)  && (ch->ch_flags & CH_PRON)) {
- 		dgap_wmove(ch, ch->ch_digi.digi_offstr,
--			(int) ch->ch_digi.digi_offlen);
-+			   (int)ch->ch_digi.digi_offlen);
- 		ch->ch_flags &= ~CH_PRON;
+ 		/* set information for ditty */
+ 		if (cmd == (DIGI_SETAW)) {
+-
+ 			spin_unlock_irqrestore(&ch->ch_lock, lock_flags2);
+ 			spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
+ 			rc = dgap_wait_for_drain(tty);
+@@ -5839,14 +5807,12 @@ static ssize_t dgap_tty_name_show(struct device *d,
+ 	cn = ch->ch_portnum;
+ 
+ 	for (cptr = bd->bd_config; cptr; cptr = cptr->next) {
+-
+ 		if ((cptr->type == BNODE) &&
+ 		    ((cptr->u.board.type == APORT2_920P) ||
+ 		     (cptr->u.board.type == APORT4_920P) ||
+ 		     (cptr->u.board.type == APORT8_920P) ||
+ 		     (cptr->u.board.type == PAPORT4) ||
+ 		     (cptr->u.board.type == PAPORT8))) {
+-
+ 			found = TRUE;
+ 			if (cptr->u.board.v_start)
+ 				starto = cptr->u.board.start;
+@@ -5875,7 +5841,6 @@ static ssize_t dgap_tty_name_show(struct device *d,
+ 		}
+ 
+ 		if (cptr->type == CNODE) {
+-
+ 			for (i = 0; i < cptr->u.conc.nport; i++) {
+ 				if (cn != (i + ncount))
+ 					continue;
+@@ -5892,7 +5857,6 @@ static ssize_t dgap_tty_name_show(struct device *d,
+ 		}
+ 
+ 		if (cptr->type == MNODE) {
+-
+ 			for (i = 0; i < cptr->u.module.nport; i++) {
+ 				if (cn != (i + ncount))
+ 					continue;
+@@ -6082,7 +6046,6 @@ static void dgap_do_fep_load(struct board_t *brd, const u8 *ufep, int len)
+ 
+ 	writel(0xbfc01004, (addr + 0xc34));
+ 	writel(0x3, (addr + 0xc30));
+-
+ }
+ 
+ /*
+@@ -6157,7 +6120,6 @@ static void dgap_do_reset_board(struct board_t *brd)
+ 		if (check == FEPRST)
+ 			break;
+ 		udelay(10);
+-
  	}
+ 	if (i > 1000) {
+ 		dev_warn(&brd->pdev->dev,
+@@ -6254,7 +6216,6 @@ static void dgap_get_vpd(struct board_t *brd)
+ 	 * the first 2 bytes (header) should be 0x55, 0xAA
+ 	 */
+ 	if (byte1 == 0x55 && byte2 == 0xAA) {
+-
+ 		base_offset = 0;
  
-@@ -4750,7 +4749,7 @@ static void dgap_tty_flush_chars(struct tty_struct *tty)
-  * The usual assortment of ioctl's
-  */
- static int dgap_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
--		unsigned long arg)
-+			  unsigned long arg)
- {
- 	struct board_t *bd;
- 	struct channel_t *ch;
-@@ -5996,7 +5995,7 @@ static int dgap_test_bios(struct board_t *brd)
- 	err1 = readw(addr + SEQUENCE);
- 	err2 = readw(addr + ERROR);
- 	dev_warn(&brd->pdev->dev, "%s failed diagnostics.  Error #(%x,%x).\n",
--		brd->name, err1, err2);
-+		 brd->name, err1, err2);
- 	brd->state = BOARD_FAILED;
- 	brd->dpastatus = BD_NOBIOS;
+ 		/*
+@@ -6262,7 +6223,6 @@ static void dgap_get_vpd(struct board_t *brd)
+ 		 * for the VPD offset.
+ 		 */
+ 		while (base_offset <= EXPANSION_ROM_SIZE) {
+-
+ 			/*
+ 			 * Lots of magic numbers here.
+ 			 *
+@@ -6406,7 +6366,6 @@ static void dgap_create_tty_sysfs(struct un_t *un, struct device *c)
+ 		return;
  
-@@ -6531,7 +6530,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
+ 	dev_set_drvdata(c, un);
+-
+ }
  
- 	if (fw_info[card_type].conf_name) {
- 		ret = request_firmware(&fw, fw_info[card_type].conf_name,
--					 &pdev->dev);
-+				       &pdev->dev);
- 		if (ret) {
- 			dev_err(&pdev->dev, "config file %s not found\n",
- 				fw_info[card_type].conf_name);
-@@ -6584,7 +6583,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
+ static void dgap_remove_tty_sysfs(struct device *c)
+@@ -6442,7 +6401,6 @@ static int dgap_tty_register_ports(struct board_t *brd)
  
- 	if (fw_info[card_type].bios_name) {
- 		ret = request_firmware(&fw, fw_info[card_type].bios_name,
--					&pdev->dev);
-+				       &pdev->dev);
- 		if (ret) {
- 			dev_err(&pdev->dev, "bios file %s not found\n",
- 				fw_info[card_type].bios_name);
-@@ -6601,7 +6600,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
+ 	ch = brd->channels[0];
+ 	for (i = 0; i < brd->nasync; i++, ch = brd->channels[i]) {
+-
+ 		struct device *classp;
  
- 	if (fw_info[card_type].fep_name) {
- 		ret = request_firmware(&fw, fw_info[card_type].fep_name,
--					&pdev->dev);
-+				       &pdev->dev);
- 		if (ret) {
- 			dev_err(&pdev->dev, "dgap: fep file %s not found\n",
- 				fw_info[card_type].fep_name);
-@@ -6630,7 +6629,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
+ 		classp = tty_port_register_device(&brd->serial_ports[i],
+@@ -6546,7 +6504,6 @@ static int dgap_request_irq(struct board_t *brd)
+ 	 * Set up our interrupt handler if we are set to do interrupts.
+ 	 */
+ 	if (dgap_config_get_useintr(brd) && brd->irq) {
+-
+ 		rc = request_irq(brd->irq, dgap_intr, IRQF_SHARED, "DGAP", brd);
  
- 	if (fw_info[card_type].con_name && check && vaddr) {
- 		ret = request_firmware(&fw, fw_info[card_type].con_name,
--					&pdev->dev);
-+				       &pdev->dev);
- 		if (ret) {
- 			dev_err(&pdev->dev, "conc file %s not found\n",
- 				fw_info[card_type].con_name);
-@@ -6994,8 +6993,8 @@ static int dgap_start(void)
- 	}
+ 		if (!rc)
+@@ -6770,7 +6727,6 @@ static int dgap_tty_init(struct board_t *brd)
  
- 	device = device_create(dgap_class, NULL,
--		MKDEV(DIGI_DGAP_MAJOR, 0),
--		NULL, "dgap_mgmt");
-+			       MKDEV(DIGI_DGAP_MAJOR, 0),
-+			       NULL, "dgap_mgmt");
- 	if (IS_ERR(device)) {
- 		rc = PTR_ERR(device);
- 		goto failed_device;
+ 	/* Set up channel variables */
+ 	for (i = 0; i < brd->nasync; i++, ch = brd->channels[i], bs++) {
+-
+ 		spin_lock_init(&ch->ch_lock);
+ 
+ 		/* Store all our magic numbers */
 -- 
 2.1.4
 
