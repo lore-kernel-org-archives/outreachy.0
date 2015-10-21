@@ -1,77 +1,73 @@
 X-GM-THRID: 6208221372561227776
-X-Received: by 10.112.136.99 with SMTP id pz3mr3314776lbb.11.1445501425765;
-        Thu, 22 Oct 2015 01:10:25 -0700 (PDT)
+X-Received: by 10.112.145.201 with SMTP id sw9mr1367474lbb.13.1445464178196;
+        Wed, 21 Oct 2015 14:49:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.24.70 with SMTP id s6ls546130wif.17.canary; Thu, 22 Oct
- 2015 01:10:25 -0700 (PDT)
-X-Received: by 10.180.221.227 with SMTP id qh3mr3398175wic.2.1445501425352;
-        Thu, 22 Oct 2015 01:10:25 -0700 (PDT)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id em5si198138wib.2.2015.10.22.01.10.25
+Received: by 10.180.91.226 with SMTP id ch2ls500471wib.22.gmail; Wed, 21 Oct
+ 2015 14:49:37 -0700 (PDT)
+X-Received: by 10.180.89.41 with SMTP id bl9mr2840809wib.1.1445464177835;
+        Wed, 21 Oct 2015 14:49:37 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id o3si369767wiz.1.2015.10.21.14.49.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 01:10:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Wed, 21 Oct 2015 14:49:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id ll6so107164993wic.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 01:10:25 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id p11so4196285wij.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 14:49:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=hMjbLFJlo4UlbRS4WQM1Uqq9Qxen09VZtaX/ydVHjoI=;
-        b=CljkVw9BaUZXGHXbDQAxxTiOffLYlcm5+vmviJg/wmhgKaZsCbhsDp6hZx4XXori65
-         /t6LeyxXPic4dtMuSRDoAZLAu0m+CLCl+WD+AOkRroBk/rLenLjHNMQxlA+PrtQbNsP1
-         kVXEPIURJcMIVbcRLdjQ8o8JbyxuiBcOqQ61w/gl893arojLp225Gk4txUYclu8h0nx8
-         Q0bYA0xO8iOklNprWb/2An1/OMZ5jNskFdF3K+15TT3FzwwERjtxH2P7jeHwAjBEEALY
-         YFhhc84Pei6HAIbrL9/LnzLvWNrMeBbvf2U6xWhGaXq7Kba9QEh9mznwY3HhdMceK335
-         N/Og==
-MIME-Version: 1.0
-X-Received: by 10.194.202.137 with SMTP id ki9mr15051918wjc.16.1445501425213;
- Thu, 22 Oct 2015 01:10:25 -0700 (PDT)
-Received: by 10.194.165.102 with HTTP; Thu, 22 Oct 2015 01:10:25 -0700 (PDT)
-In-Reply-To: <1445464109-13553-1-git-send-email-brcnakalin@gmail.com>
-References: <1445464109-13553-1-git-send-email-brcnakalin@gmail.com>
-Date: Thu, 22 Oct 2015 11:10:25 +0300
-Message-ID: <CAEnQRZASrHVuoxuC6zMBM_96GEELYcCZj8YA8mOgi40UbGxvqQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Add space around '*'
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Burcin Akalin <brcnakalin@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+        h=from:to:cc:subject:date:message-id;
+        bh=IW2PdCkkDvx5bx19wwzhZxVTe8WC4dr4vYkZoeBsl10=;
+        b=WJ8xr7czpt3/nd9oIrwr83h0b8pavWPcK5gEYxpfw+rw0FcmmdEhhwLKgG2d9qcGeg
+         ef2bXPwa4InPRl8fIdGSBfa8DHwDJwKCy45LqOcTmJk61EqQ/X8Yb9VSAuMKds81slzS
+         +/ZIDhc7w1OToMOYDZ4U0++aARLF3qBnjFJoUk/VsZW8VUXlJalDBL2WwAmAJfaQUSCe
+         EEwUZO4D5CJGcNN/eRVlzbhunV8Bp7NmKqbf2OkIEgB/uvRbywfxQufSoa8Kb2Wk+1D+
+         FDlb/vlGiTbUQk++0HfSkHwk46zmgJAwNp6H5hwTAlCPfUBLeUwJE+1K51tjheU2KyT0
+         1UDg==
+X-Received: by 10.180.96.136 with SMTP id ds8mr14538015wib.76.1445464177712;
+        Wed, 21 Oct 2015 14:49:37 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from localhost.localdomain ([95.13.215.164])
+        by smtp.gmail.com with ESMTPSA id gd10sm12852371wjb.47.2015.10.21.14.49.35
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 21 Oct 2015 14:49:37 -0700 (PDT)
+From: Burcin Akalin <brcnakalin@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Burcin Akalin <brcnakalin@gmail.com>
+Subject: [PATCH] staging: vt6655: Add space around '*'
+Date: Thu, 22 Oct 2015 00:48:29 +0300
+Message-Id: <1445464109-13553-1-git-send-email-brcnakalin@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Thu, Oct 22, 2015 at 12:48 AM, Burcin Akalin <brcnakalin@gmail.com> wrote:
-> Add space around operator '*'. Problem found using
-> checkpatch.pl
-> CHECK: spaces preferred around that '*' (ctx:VxV)
->
-> Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+Add space around operator '*'. Problem found using
+checkpatch.pl
+CHECK: spaces preferred around that '*' (ctx:VxV)
 
-Reviewed-by: Daniel Baluta <daniel.baluta@intel.com>
+Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+---
+ drivers/staging/vt6655/card.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  drivers/staging/vt6655/card.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-> index ecbe94f..6989050 100644
-> --- a/drivers/staging/vt6655/card.c
-> +++ b/drivers/staging/vt6655/card.c
-> @@ -238,7 +238,7 @@ bool CARDbSetPhyParameter(struct vnt_private *pDevice, u8 bb_type)
->                 BBbWriteEmbedded(pDevice, 0x88, 0x03);
->                 bySlot = C_SLOT_SHORT;
->                 bySIFS = C_SIFS_A;
-> -               byDIFS = C_SIFS_A + 2*C_SLOT_SHORT;
-> +               byDIFS = C_SIFS_A + 2 * C_SLOT_SHORT;
->                 byCWMaxMin = 0xA4;
->         } else if (bb_type == BB_TYPE_11B) {
->                 MACvSetBBType(pDevice->PortOffset, BB_TYPE_11B);
-> --
-> 1.9.1
->
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index ecbe94f..6989050 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -238,7 +238,7 @@ bool CARDbSetPhyParameter(struct vnt_private *pDevice, u8 bb_type)
+ 		BBbWriteEmbedded(pDevice, 0x88, 0x03);
+ 		bySlot = C_SLOT_SHORT;
+ 		bySIFS = C_SIFS_A;
+-		byDIFS = C_SIFS_A + 2*C_SLOT_SHORT;
++		byDIFS = C_SIFS_A + 2 * C_SLOT_SHORT;
+ 		byCWMaxMin = 0xA4;
+ 	} else if (bb_type == BB_TYPE_11B) {
+ 		MACvSetBBType(pDevice->PortOffset, BB_TYPE_11B);
+-- 
+1.9.1
+
 
