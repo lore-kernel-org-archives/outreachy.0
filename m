@@ -1,79 +1,117 @@
 X-GM-THRID: 6208409681994448896
-X-Received: by 10.180.9.104 with SMTP id y8mr8168219wia.7.1445510295625;
-        Thu, 22 Oct 2015 03:38:15 -0700 (PDT)
+X-Received: by 10.66.152.230 with SMTP id vb6mr11629625pab.46.1445508022413;
+        Thu, 22 Oct 2015 03:00:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.17.203 with SMTP id 72ls312065lfr.24.gmail; Thu, 22 Oct
- 2015 03:38:15 -0700 (PDT)
-X-Received: by 10.112.132.10 with SMTP id oq10mr3438589lbb.1.1445510295011;
-        Thu, 22 Oct 2015 03:38:15 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id cm6si98378wib.1.2015.10.22.03.38.14
+Received: by 10.182.18.106 with SMTP id v10ls666894obd.78.gmail; Thu, 22 Oct
+ 2015 03:00:20 -0700 (PDT)
+X-Received: by 10.182.68.104 with SMTP id v8mr25916obt.9.1445508020478;
+        Thu, 22 Oct 2015 03:00:20 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id sm2si251884pab.0.2015.10.22.03.00.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 03:38:14 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 03:00:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0M3Sim-1afwN40mvo-00r0kJ; Thu, 22 Oct
- 2015 12:38:14 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x236.google.com with SMTP id z6so82927616pas.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 03:00:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=M+J2OCpDiidO4NRq4hQETVUXIwaI/57IH7EClZZilEI=;
+        b=u3P8we+pcLTcyrkyx+wQcbMe4QwKXg0S/LrM6xY1ldjirgyQkA8SxH6pSv4TmE6w9J
+         IIkkltjK6BH5gLwMfR5lU81dMep6yrsYoMbHFXan8j9kQv7YVWRjX4LdSyN3mNFsexeO
+         jO4K6VhqcZKFPDbUMx73w/C9C5eiWkVbaQ37Hrg3t3V/rEyBj5lds1G4xVI1nw2YVa/5
+         srlbvsNCGrcNr8GKp0q8N+IGiWKQKgrqidyzRrdJRqXeXekOeQFuhkJx0rjrhVd+FR62
+         Dkz0S8j51xs9Gf5tTb/IRxCz0MdqOycJguc3VTSJbU14QvkLZGubt5mu5RnbqWY1Qwgu
+         p/5w==
+X-Received: by 10.68.222.163 with SMTP id qn3mr16811042pbc.54.1445508019452;
+        Thu, 22 Oct 2015 03:00:19 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.64.0.234])
+        by smtp.gmail.com with ESMTPSA id we9sm13254064pab.3.2015.10.22.03.00.18
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 22 Oct 2015 03:00:19 -0700 (PDT)
+Date: Thu, 22 Oct 2015 15:30:14 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] ide: Replace timeval with ktime_t
-Date: Thu, 22 Oct 2015 12:38:13 +0200
-Message-ID: <6283563.jJXPJxPvGx@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151022100014.GA13736@amitoj-Inspiron-3542>
-References: <20151022100014.GA13736@amitoj-Inspiron-3542>
+Subject: [PATCH] ide: Replace timeval with ktime_t
+Message-ID: <20151022100014.GA13736@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:h0USrzpIKSUtMkwUPDxysT5HVwWlIaJn3kregtKZ1Ogd+x7rp+r
- 5bJIqW3EFjtTfe5VXpXKrJw8b6vt0ykcdBpyl8gGolBndnntDIOooaHYBpKHjli9Zl+MVr+
- sf01v8gkoTm9LI5F+3QLHvjgt1d6gdAjIKUbn5I9FFWZnHGysZzF83UQKRY5Y4eQmfm2vUY
- tf0/P4w+zM4ZT6VigECRQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:3tTeLml+iPE=:jhu63+EtZeSQ8Q7LVgMdQC
- 4yUGgXR5rSce3D2PKO1ofeUnXat6u1SzqiDhyhzV6RF+wBWPyidqQJHZkMre1PSn2w369tF4E
- yh0fEf3SwOUY4FGGGiA9tikvdT+2fsJtVq8vMg2Wz8R+vCVC7tc580USQJTuSIuz8YbzaJYKc
- Rc7vyTr3zpHseUfULAK3pBx/7YtHBuBTVKXkIUdCdOycOlaqxFmVOz4oSS1OdpuKu/V9QsIAt
- pxcFJr8uQ0TlAH4z1Li1Ps+LwRfV9gjg/TNgSDAn+zSjHCLxU4ikCQPyvp38fPU1qEo9y/f1x
- g7zF6feFXS+UQiDSoJFKR5RvBwToVNA/vOV1rv9Bec6ICyBQDdGtijQmeWSuhkooZCQcFfDaV
- /4wSQvVExXJMzYGoEtEWvEXTwxIdGCpJRAMywq9hZicuSIYU+C6L1SlxnlTpCEV1pkEe4JlEg
- 0WWLokqYLkWLy69da/9QY/7u43o6HaLkYdQy6SN/3HpEZX1bDS7m1sjnyFJLZNw8BANQjBMBQ
- qRzsEsaaHjZtKnVlRoqtHRUrd/rmn9gU3cp1UKbiTwWDHZNu16rrL9zjKIhB75r5Fh5gTbDc/
- 6w70d7K9qLO06Tagk7un3xvp7LS4ymH0XWD/mIfnzw6qrEEy/bbK7Ad3tgptXGb2e5kd0rA9h
- rI3IwX7Aa8rsfdlZBkqBeX5cT4g73Du4P7ac3cqyGgtLza7H8yydJy6OnLHNr+Ybq5L+mdOus
- 2cAQs+NO7sIttK+x
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thursday 22 October 2015 15:30:14 Amitoj Kaur Chawla wrote:
-> This driver uses 'struct timeval' which we are trying to remove since
-> 32 bit time types will break in the year 2038 by replacing it with
-> ktime_t. 
-> 
-> This patch changes do_gettimeofday() to ktime_get() because
-> ktime_get() returns a ktime_t while do_gettimeofday() returns struct
-> timeval.
-> 
-> This patch also uses ktime_us_delta() to get the elapsed time.
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> 
+This driver uses 'struct timeval' which we are trying to remove since
+32 bit time types will break in the year 2038 by replacing it with
+ktime_t. 
 
-Very good,
+This patch changes do_gettimeofday() to ktime_get() because
+ktime_get() returns a ktime_t while do_gettimeofday() returns struct
+timeval.
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+This patch also uses ktime_us_delta() to get the elapsed time.
 
-In the subject line, I would like to see the name of the driver you
-are patching, like '[PATCH] ide: pdc202xx: replace timeval with ktime_t'.
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/ide/pdc202xx_new.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Please always add y2038@lists.linaro.org to Cc with these patches. If
-you want to send more of the same, you can also subscribe to the list
-at https://lists.linaro.org/mailman/listinfo/y2038.
+diff --git a/drivers/ide/pdc202xx_new.c b/drivers/ide/pdc202xx_new.c
+index df73cbd..9ad014a 100644
+--- a/drivers/ide/pdc202xx_new.c
++++ b/drivers/ide/pdc202xx_new.c
+@@ -22,6 +22,7 @@
+ #include <linux/pci.h>
+ #include <linux/init.h>
+ #include <linux/ide.h>
++#include <linux/ktime.h>
+ 
+ #include <asm/io.h>
+ 
+@@ -243,13 +244,13 @@ static long read_counter(u32 dma_base)
+  */
+ static long detect_pll_input_clock(unsigned long dma_base)
+ {
+-	struct timeval start_time, end_time;
++	ktime_t start_time, end_time;
+ 	long start_count, end_count;
+ 	long pll_input, usec_elapsed;
+ 	u8 scr1;
+ 
+ 	start_count = read_counter(dma_base);
+-	do_gettimeofday(&start_time);
++	start_time = ktime_get();
+ 
+ 	/* Start the test mode */
+ 	outb(0x01, dma_base + 0x01);
+@@ -261,7 +262,7 @@ static long detect_pll_input_clock(unsigned long dma_base)
+ 	mdelay(10);
+ 
+ 	end_count = read_counter(dma_base);
+-	do_gettimeofday(&end_time);
++	end_time = ktime_get();
+ 
+ 	/* Stop the test mode */
+ 	outb(0x01, dma_base + 0x01);
+@@ -273,8 +274,7 @@ static long detect_pll_input_clock(unsigned long dma_base)
+ 	 * Calculate the input clock in Hz
+ 	 * (the clock counter is 30 bit wide and counts down)
+ 	 */
+-	usec_elapsed = (end_time.tv_sec - start_time.tv_sec) * 1000000 +
+-		(end_time.tv_usec - start_time.tv_usec);
++	usec_elapsed = ktime_us_delta(end_time, start_time);
+ 	pll_input = ((start_count - end_count) & 0x3fffffff) / 10 *
+ 		(10000000 / usec_elapsed);
+ 
+-- 
+1.9.1
 
-As the patch looks good, please send it again with the ide maintainers
-on Cc. 
-
-	Arnd
 
