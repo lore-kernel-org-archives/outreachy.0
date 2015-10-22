@@ -1,48 +1,58 @@
-X-GM-THRID: 6949289318658605056
-Date: Fri, 9 Apr 2021 15:31:45 -0700 (PDT)
-From: Mo Jauhar <siddmohamed19@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <0e9eb226-2111-4afa-a2c5-5a6cec9537c0n@googlegroups.com>
-Subject: [Help Needed] Driver Modification on Native Linux
+X-GM-THRID: 6208392208366698496
+X-Received: by 10.107.132.77 with SMTP id g74mr12304464iod.10.1445503953555;
+        Thu, 22 Oct 2015 01:52:33 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.140.92.55 with SMTP id a52ls1466519qge.94.gmail; Thu, 22 Oct
+ 2015 01:52:32 -0700 (PDT)
+X-Received: by 10.129.92.198 with SMTP id q189mr11932225ywb.40.1445503952756;
+        Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-io0-x233.google.com (mail-io0-x233.google.com. [2607:f8b0:4001:c06::233])
+        by gmr-mx.google.com with ESMTPS id hx4si1746705igb.0.2015.10.22.01.52.32
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::233 as permitted sender) client-ip=2607:f8b0:4001:c06::233;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::233 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-io0-x233.google.com with SMTP id v82so84253471iod.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=vVP6eR3tDt2SIUosOE+K6F5ii3HRCMFdeaGz+vuBBx8=;
+        b=jWr7s4+rVOke48GwpQqG548kjhzzL8jlkSI9R40ki4nZM+oJNiYS2NpcXeKt2dR04W
+         UW+X4qX+CZu8G1VbQU/cqAuRb92hslL7wq+fFVFzg6WBLfRdkKOPNtE/9J3bU+jfISwO
+         BAKfogn0UuBTX//P0p01aOmXXzwi8GNEyLUH5Ng5LZZUBkyAOfaC5IpoYc/x7HYqd/qh
+         JcYbiUXFHghlpbtPaM0tYigH2R8jybfYS2LRNtAv0Z2zN5eIpDUNkrjml+OcIJMyrn7S
+         9NgWuPJGAwesajc9BsBkNkgl35j0rwTfmDXF+oQfZ4balNwa5Y09StSLdm12krrt0V2r
+         nU5A==
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_2740_64051448.1618007505539"
-
-------=_Part_2740_64051448.1618007505539
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_2741_1876046498.1618007505539"
-
-------=_Part_2741_1876046498.1618007505539
+X-Received: by 10.107.151.195 with SMTP id z186mr17846540iod.8.1445503952629;
+ Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
+Received: by 10.107.158.211 with HTTP; Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
+Date: Thu, 22 Oct 2015 10:52:32 +0200
+Message-ID: <CAL7P5j+qabDCjT4mTjTh=rGjJXd=NzuZrAt-k=LVm287dUzr4w@mail.gmail.com>
+Subject: Staging driver cleanup project
+From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Hello everybody,
+Hi Greg,
 
-I am following the step, *Make a driver change* in the tutorial but am 
-stuck. My addition of print() statements inside the probe functions of 
-modules does not show up in the log when I reboot my machine. 
+I have a few questions concerning Staging driver cleanup project:
 
-Here is what I am trying to do:
-1. Pick a module from the result of *lsmod*
-2. I picked up *xhci-pci* and added a *printk("I can ...")* in its 
-*xhci-pci.c* file, inside *xhci_pci_probe()*
-3. I reboot
-4. Check the log file using *dmesg | less *and search for *"I can ..." *and 
-I am unsuccesful.
+1. Which drivers in staging area can be considered for internship period?
+2. I noticed that TODO list of drivers are generally outdated, so  I'm
+interested
+    what could be the tasks to complete during the project?
+3. You mentioned : If possible, hardware will be provided for the code
+being worked on
+    What is the criteria for that? Does it matter where the intern lives?
 
-I have tried to do the same with *realtek *but I am still not successful.
-
-Thanks in advance for your help. Please have a nice day!
-
-Regards,
-- Mohd Ali Jauhar
-
-------=_Part_2741_1876046498.1618007505539
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Hello everybody,<div><br></div><div>I am following the step, <b>Make a driver change</b>&nbsp;in the tutorial but am stuck. My addition of print() statements inside the probe functions of modules does not show up in the log when I reboot my machine.&nbsp;</div><div><br></div><div>Here is what I am trying to do:</div><div>1. Pick a module from the result of <b>lsmod</b></div><div>2. I picked up <b>xhci-pci</b> and added a <b>printk("I can ...")</b> in its <b>xhci-pci.c</b> file, inside <b>xhci_pci_probe()</b></div><div>3. I reboot</div><div>4. Check the log file using <b>dmesg | less </b>and search for <b>"I can ..." </b>and I am unsuccesful.</div><div><br></div><div>I have tried to do the same with <b>realtek </b>but I am still not successful.</div><div><br></div><div>Thanks in advance for your help. Please have a nice day!</div><div><br></div><div>Regards,</div><div>- Mohd Ali Jauhar</div>
-------=_Part_2741_1876046498.1618007505539--
-
-------=_Part_2740_64051448.1618007505539--
+Thanks,
+Ksenija
 
