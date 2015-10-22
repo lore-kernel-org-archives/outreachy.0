@@ -1,158 +1,76 @@
 X-GM-THRID: 6208472977162371072
-X-Received: by 10.107.10.22 with SMTP id u22mr13035918ioi.19.1445524391979;
-        Thu, 22 Oct 2015 07:33:11 -0700 (PDT)
+X-Received: by 10.182.120.231 with SMTP id lf7mr12331126obb.50.1445523554992;
+        Thu, 22 Oct 2015 07:19:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.107.202 with SMTP id h68ls1527642qgf.63.gmail; Thu, 22 Oct
- 2015 07:33:11 -0700 (PDT)
-X-Received: by 10.13.220.4 with SMTP id f4mr12398601ywe.22.1445524391195;
-        Thu, 22 Oct 2015 07:33:11 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id sm2si364876pab.0.2015.10.22.07.33.11
+Received: by 10.107.26.134 with SMTP id a128ls847489ioa.108.gmail; Thu, 22 Oct
+ 2015 07:19:14 -0700 (PDT)
+X-Received: by 10.107.9.196 with SMTP id 65mr13211153ioj.11.1445523554490;
+        Thu, 22 Oct 2015 07:19:14 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by gmr-mx.google.com with ESMTPS id j129si386294vkd.1.2015.10.22.07.19.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 07:33:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 07:19:14 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id z6so88207518pas.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 07:33:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=w3ZT+6A8IQJK5eks1sGpVPE0IotsoXNhjYPr3Ji8+fA=;
-        b=AHyiVcI8SOOdx58sRwfzXNq3GkM9njjshX1uHz2uWThRHI/a+2UL8O9FgPHHZ+sph7
-         +kP1bHQ1E5WpIWlBy9juR5a8yK+GU2LHW4Q3HtTqeyG+zmHBP+as7RWvKBMG9qTUOGi7
-         vWfU79AP1EwSUtd5gNOSDrUPujk1xPs6uLX40ZKQsNtCORs5j0vSW+UOaqUQNxko3wLG
-         0WxsuEDJzj0NiOB0rz0NDvN4oVT6lQSGSlcnROxv6DbDW2N+SvVIH9z4J5GMFZ1e/SSN
-         aqHipWVbpx3DW9YaFN5ssYZIb3FeS7Szu2QjhxfHAAsTiOOdgGDK0sjBXn5aEYpai1a1
-         tdbw==
-X-Received: by 10.66.219.227 with SMTP id pr3mr18069531pac.33.1445524391042;
-        Thu, 22 Oct 2015 07:33:11 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id rc5sm14220887pbc.95.2015.10.22.07.33.08
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 22 Oct 2015 07:33:10 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Cc: David Woodhouse <dwmw2@infradead.org>,
-	y2038@lists.linaro.org
-Subject: [PATCH v2] mtd: tests: Replace timeval with ktime_t
-Date: Thu, 22 Oct 2015 20:02:59 +0530
-Message-Id: <1445524379-14541-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0Ly8sz-1acmvh3d5x-015ZFX; Thu, 22 Oct
+ 2015 16:19:08 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Shraddha Barke <shraddha.6596@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH] mtd: tests: Replace timeval with ktime_t
+Date: Thu, 22 Oct 2015 16:19:08 +0200
+Message-ID: <3945767.60xPqpFfYF@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1445522749-14269-1-git-send-email-shraddha.6596@gmail.com>
+References: <1445522749-14269-1-git-send-email-shraddha.6596@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:KI+KJIxFq9/GEF8cS1e4er54+bMXYBAkIPJVIyQAc9DQmTvmTsB
+ +JEXBV0PFaaqxqbk5pbd4SycDr4Pn9ahDqS8TOyQLPdxKpsvMstciAxq/S8RsSpPp5jW4+2
+ EetH+1W9evCI0XEWZ0QylkeGEe6BaR3qhkwIz8x1iIY37+cAXc7scA3T060vtEk5ufLpaJG
+ DZ7ZwhKibSWJOjuDQzTvA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:8APTFQf9Amc=:LHIjRSvGoVpV/70DHZF/F2
+ FE33+C/4FcdqU2VC6GvsQ9CiOQ7yaKifMQEzjiU4LImQH5S761U3VJrmzAGA3F/aqeZuBVs2R
+ u1onvAs5UbsqZUOh9qhsf6mhN+/SDTqd/lbsl9o1XR5vmryh9etKxi7tbsoJhTMc2QXH7sT1g
+ MykXeNoBNLjMfbpPILFs7BkdQ1rwLgEFrYajunO6IGQpsmSd/4h+C2xaqFYDHU+HfbYrL7pA7
+ NPVU4V9r7jV2Xr3N2DEPTHRYb8ug3e0E1Lnv/5K5zyCXR7sKV34c1yP1EVL5+ABOOeyUy5A7Y
+ Wprbub11jPgxIvAX4DNYbUls3v3aVIqYvD1fHI8MWlxt0YKDk4MxFZdMNzOKKyjhgSzQBfaCm
+ 4bjqvQKV66wXpDQStkBZzYQOFGEUSbMi0Rx/bG27yttHYF4BOS5ZJOodj0ipq7p/05rIWp3pY
+ dG9em4mngF2Cu+JGVvVQe+zkA/d3NHU/MsQsGcMODbeXbKz5qq37IxX6PRaS81lB/7lFP9RZk
+ vtqmdE/6eJYnue6v2BE6E/UseZBxKDrj4MuetM6FRBZZ1JIkL6+xZWC/B31Wp2arO40WyQbu3
+ 5W3ADxVbDBOkUeWh8jj9j2tDatm0zxYaK+cVp10ei9zwgAwHgzc0nrNn0c09pSNgLDZ43xKIP
+ 8MFQPzwzKrNP46Fxe9YLVxZHfXH6yLpBKADoOVl4miVmLrWz/S7v1WcPuqcSu82RnSpQ75rGa
+ YNHVXdBoP2XQ3sjU
 
-Changes the 32-bit time type timeval to the 64-bit time type
-ktime_t, since 32-bit systems using struct timeval will break in the
-year 2038. Correspondingly change do_gettimeofday() to ktime_get()
-since ktime_get returns a ktime_t, but do_gettimeofday returns a
-struct timeval.Here, ktime_get() is used instead of ktime_get_real()
-since ktime_get() uses monotonic clock.
+On Thursday 22 October 2015 19:35:49 Shraddha Barke wrote:
+> Change the 32-bit time type timeval to the 64-bit time type
+> ktime_t, since 32-bit systems using struct timeval will break in the
+> year 2038. Correspondingly change do_gettimeofday() to ktime_get()
+> since ktime_get returns a ktime_t, but do_gettimeofday returns a
+> struct timeval.
+> 
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
-Changes in v2-
- Make commit message clearer.
+The patch looks good to me, but please add a sentence to explain
+why you use ktime_get() instead of ktime_get_real(). It is the
+right choice here, but it may not be obvious to the reader
+that you now use monotonic times.
 
- drivers/mtd/tests/speedtest.c   | 10 +++++-----
- drivers/mtd/tests/torturetest.c | 10 +++++-----
- 2 files changed, 10 insertions(+), 10 deletions(-)
+With that, please resend the patch and Cc the MTD maintainers.
 
-diff --git a/drivers/mtd/tests/speedtest.c b/drivers/mtd/tests/speedtest.c
-index 5a6f31a..0b89418 100644
---- a/drivers/mtd/tests/speedtest.c
-+++ b/drivers/mtd/tests/speedtest.c
-@@ -22,6 +22,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
- #include <linux/init.h>
-+#include <linux/ktime.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/err.h>
-@@ -49,7 +50,7 @@ static int pgsize;
- static int ebcnt;
- static int pgcnt;
- static int goodebcnt;
--static struct timeval start, finish;
-+static ktime_t start, finish;
- 
- static int multiblock_erase(int ebnum, int blocks)
- {
-@@ -168,12 +169,12 @@ static int read_eraseblock_by_2pages(int ebnum)
- 
- static inline void start_timing(void)
- {
--	do_gettimeofday(&start);
-+	start = ktime_get();
- }
- 
- static inline void stop_timing(void)
- {
--	do_gettimeofday(&finish);
-+	finish = ktime_get();
- }
- 
- static long calc_speed(void)
-@@ -181,8 +182,7 @@ static long calc_speed(void)
- 	uint64_t k;
- 	long ms;
- 
--	ms = (finish.tv_sec - start.tv_sec) * 1000 +
--	     (finish.tv_usec - start.tv_usec) / 1000;
-+	ms = ktime_ms_delta(finish, start);
- 	if (ms == 0)
- 		return 0;
- 	k = (uint64_t)goodebcnt * (mtd->erasesize / 1024) * 1000;
-diff --git a/drivers/mtd/tests/torturetest.c b/drivers/mtd/tests/torturetest.c
-index e5d6e6d..93c2729 100644
---- a/drivers/mtd/tests/torturetest.c
-+++ b/drivers/mtd/tests/torturetest.c
-@@ -26,6 +26,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
- #include <linux/init.h>
-+#include <linux/ktime.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/err.h>
-@@ -79,18 +80,18 @@ static unsigned char *check_buf;
- static unsigned int erase_cycles;
- 
- static int pgsize;
--static struct timeval start, finish;
-+static ktime_t start, finish;
- 
- static void report_corrupt(unsigned char *read, unsigned char *written);
- 
- static inline void start_timing(void)
- {
--	do_gettimeofday(&start);
-+	start = ktime_get();
- }
- 
- static inline void stop_timing(void)
- {
--	do_gettimeofday(&finish);
-+	finish = ktime_get();
- }
- 
- /*
-@@ -333,8 +334,7 @@ static int __init tort_init(void)
- 			long ms;
- 
- 			stop_timing();
--			ms = (finish.tv_sec - start.tv_sec) * 1000 +
--			     (finish.tv_usec - start.tv_usec) / 1000;
-+			ms = ktime_ms_delta(finish, start);
- 			pr_info("%08u erase cycles done, took %lu "
- 			       "milliseconds (%lu seconds)\n",
- 			       erase_cycles, ms, ms / 1000);
--- 
-2.1.4
+How did you pick this driver? I thought I had originally given this
+task to someone else and not listed it in the y2038 wiki page. The
+other person has not worked on it over the last month, and it's
+a relatively simple patch, so don't worry about it.
 
+Are we running out of simple tasks? I can always add a few more to the
+wiki as there are around 50 other drivers that need to be changed
+in a similar way.
+
+	Arnd
 
