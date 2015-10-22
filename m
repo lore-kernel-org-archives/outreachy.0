@@ -1,83 +1,72 @@
-X-GM-THRID: 6209264752387948544
-X-Received: by 10.67.21.136 with SMTP id hk8mr8552663pad.14.1445707108473;
-        Sat, 24 Oct 2015 10:18:28 -0700 (PDT)
+X-GM-THRID: 6208461910524821504
+X-Received: by 10.182.165.37 with SMTP id yv5mr843081obb.36.1445520182458;
+        Thu, 22 Oct 2015 06:23:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.109.138 with SMTP id l10ls885340qgf.36.gmail; Sat, 24 Oct
- 2015 10:18:27 -0700 (PDT)
-X-Received: by 10.31.171.12 with SMTP id u12mr22404305vke.12.1445707107923;
-        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id vy6si2783069pbc.1.2015.10.24.10.18.27
+Received: by 10.50.225.34 with SMTP id rh2ls1726821igc.34.canary; Thu, 22 Oct
+ 2015 06:23:01 -0700 (PDT)
+X-Received: by 10.66.124.131 with SMTP id mi3mr12874470pab.32.1445520181678;
+        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id el2si1682445pbb.0.2015.10.22.06.23.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id z6so145816449pas.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
+Received: by mail-pa0-x22f.google.com with SMTP id z6so86898293pas.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=eNeQtHumy6if5JP32O5URjkhRx59NdDyCvAvkItLyRA=;
-        b=lglusIDen8xscoEc/ENMMAHcTnnpRFxl9uonu/DsVLGGO6GEUXs5XxZY5rgsukbdb6
-         VG1LWHmKE222e5oRAsY7DWQpZ+2u82utqiXl1oW0awullGvg6LBQDG4B/U863snrAHnW
-         1MUzMqMwMJfxYZzK7HXLQlYGxsdh+wuv5irOPdFOVmDtuvL4fvr+X1TffmEhiMhxf+ET
-         /C/QpTludHdnAY6rVb6MUeSnHR1tQceKTI9CmXRS8/6pnJQfHhqymtmBr+X9bzr6Hlxm
-         eyRFfvsmUb9GYs9oGxAWYTb0sKLZ915UxGB1Y7Fl9VgbWGk2w5nfuODcyDMOhytyVjd+
-         Ugdw==
-X-Received: by 10.67.5.193 with SMTP id co1mr15363713pad.134.1445707107719;
-        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.222.180])
-        by smtp.gmail.com with ESMTPSA id xa4sm25192992pac.28.2015.10.24.10.18.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
-Date: Sat, 24 Oct 2015 22:48:23 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: Do not export static functions
-Message-ID: <cover.1445706942.git.amitoj1606@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        h=from:to:subject:date:message-id;
+        bh=xe0h8EkOcY2E9tOwCJRej4cLFrtJJsQMl33u/4HZquY=;
+        b=kYWu/btxrAM0jCQjYNOp+6Qr+GcacM5YPcGQsfZIhpDGsAastHB+1mxZ8+QsZjvy5h
+         4tVRAoMWk1e44GHuZjmN1oQPKITSRb/K3+XwnfqsfwpRWfqSS2ej1oyFc4KJwqR7GAZ6
+         mY+FvvM27jf7RtNvE1S1Zy50r7mc3M2h7MlplfVzGSETs/6A7ZY2TeUIB9QJMda5kuG/
+         wLTmm4dL5wuvcFWbmV8VYUpjIZSKW8yFWdk5XoITDlnVE3EyH3WuanCu8GPM8C7UXuIk
+         FuiUNPwXw49XL7zdGZxI+D+PL8PDBogiYPdyPgMqHLsfvjo8FTLhHvljVa/1nCEq+uUh
+         I8ZQ==
+X-Received: by 10.68.139.100 with SMTP id qx4mr17317389pbb.149.1445520181554;
+        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id ug4sm14035443pac.11.2015.10.22.06.23.00
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>,
+	devel@driverdev.osuosl.org
+Subject: [PATCH] Staging: lustre: lprocfs_status: Remove unused declaration
+Date: Thu, 22 Oct 2015 18:52:49 +0530
+Message-Id: <1445520169-7398-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
 
-This patchset removes the export symbol for static functions.
+Remove declaration of function lprocfs_wr_timeouts from header file
+since it is not used
 
-The semantic patch used to find this is:
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/lustre/lustre/include/lprocfs_status.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-// <smpl>
-@r@
-type T;
-identifier f;
-@@
-
-static T f (...) { ... }
-
-@@
-identifier r.f;
-declarer name EXPORT_SYMBOL;
-@@
-
--EXPORT_SYMBOL(f);
-// </smpl>
-
-Amitoj Kaur Chawla (2):
-  staging: lustre: ldlm: Do not export static function
-  staging: rtl8192u: ieee80211: Do not export static function
-
- drivers/staging/lustre/lustre/ldlm/ldlm_pool.c         | 1 -
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 1 -
- 2 files changed, 2 deletions(-)
-
+diff --git a/drivers/staging/lustre/lustre/include/lprocfs_status.h b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+index 6e41129..f332351 100644
+--- a/drivers/staging/lustre/lustre/include/lprocfs_status.h
++++ b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+@@ -594,8 +594,6 @@ int lprocfs_rd_connect_flags(struct seq_file *m, void *data);
+ struct adaptive_timeout;
+ int lprocfs_at_hist_helper(struct seq_file *m, struct adaptive_timeout *at);
+ int lprocfs_rd_timeouts(struct seq_file *m, void *data);
+-int lprocfs_wr_timeouts(struct file *file, const char __user *buffer,
+-			unsigned long count, void *data);
+ int lprocfs_wr_ping(struct file *file, const char __user *buffer,
+ 		    size_t count, loff_t *off);
+ int lprocfs_wr_import(struct file *file, const char __user *buffer,
 -- 
-1.9.1
+2.1.4
 
 
