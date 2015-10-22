@@ -1,207 +1,426 @@
 X-GM-THRID: 6208227682236235776
-X-Received: by 10.112.173.170 with SMTP id bl10mr3415522lbc.7.1445506610385;
-        Thu, 22 Oct 2015 02:36:50 -0700 (PDT)
+X-Received: by 10.182.102.194 with SMTP id fq2mr10299749obb.43.1445475783660;
+        Wed, 21 Oct 2015 18:03:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.164.77 with SMTP id n74ls287840lfe.94.gmail; Thu, 22 Oct
- 2015 02:36:49 -0700 (PDT)
-X-Received: by 10.112.148.202 with SMTP id tu10mr3001979lbb.12.1445506609739;
-        Thu, 22 Oct 2015 02:36:49 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id hs5si1074137wib.1.2015.10.22.02.36.49
+Received: by 10.140.20.36 with SMTP id 33ls982494qgi.28.gmail; Wed, 21 Oct
+ 2015 18:03:02 -0700 (PDT)
+X-Received: by 10.140.202.202 with SMTP id x193mr10433538qha.12.1445475782801;
+        Wed, 21 Oct 2015 18:03:02 -0700 (PDT)
+Return-Path: <deepa.kernel@gmail.com>
+Received: from mail-ig0-x230.google.com (mail-ig0-x230.google.com. [2607:f8b0:4001:c05::230])
+        by gmr-mx.google.com with ESMTPS id fs10si1651368igb.3.2015.10.21.18.03.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 02:36:49 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Oct 2015 18:03:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) client-ip=2607:f8b0:4001:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue103) with ESMTPSA (Nemesis) id 0MaU9p-1a4vti1GTB-00K9aQ; Thu, 22 Oct
- 2015 11:36:43 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Deepa Dinamani <deepa.kernel@gmail.com>, y2038@lists.linaro.org
-Subject: Re: [Outreachy kernel] [PATCH] usb: usbtest: Add new ioctl interface
-Date: Thu, 22 Oct 2015 11:36:42 +0200
-Message-ID: <4702937.ch2QM1X5CA@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CABeXuvpgNwSArZYy4LZdLg=5=9hGAXvsO5PjmZEsGo9NYCPdmg@mail.gmail.com>
-References: <1445465834-24407-1-git-send-email-deepa.kernel@gmail.com> <8949060.7jQkPAjlGW@wuerfel> <CABeXuvpgNwSArZYy4LZdLg=5=9hGAXvsO5PjmZEsGo9NYCPdmg@mail.gmail.com>
+       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-ig0-x230.google.com with SMTP id g1so99206789igd.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 18:03:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=jGQPZy0pRWicEWDFXzmL39P3H6LGqquZ7pTxOyr7bu0=;
+        b=J1/0ZO4tms/IoFK+ec4Gj2f3WKc3umt5SzDUUufzhLnTTm95Tje5Sgz56kC31Ra9Ku
+         5FBAB//iY8Yxk0IHQ99DKEBb4UBEdpZW7CDrnvxUmt42sbzO4FflCItYR81qYbWwq8sR
+         mAHEAktrP1rCl83vxgLAvV/8+guVDOlTRHdUCtEk498BrV+0X6w+rjusRu9r0dj9IVl5
+         8ypUEz2tjBXlE12/S51vwuoUmcQjcxcEaK4CCsfYKAcLh/+VGD9i1n2O1z+l3EkNsn4C
+         cIgbdq1Cw+TsvF5ClSl9cDA4oUWKR+5R3MqQsvHbK6d99kQGIQZhwKV80VBALAM+9mke
+         w0Bw==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:Z6zkLoVBjTi3zBnUsG/DOi4l+8z9hHbc3QHfsiYzRKFdFJHz9tX
- uzAkxb9N0uW/0RgPoT0ba7fsqbi7nVm94dCgY3vnGy2uOx0qIM3oAX7iRcyof09jSch/ms/
- c9utpeERcd7FwHyzBv/oGU1bg7ciIbPQ4gsh4xBMYCxAMvH0NpSv8sZVffZLKv6wRXqOyGZ
- Clo4r/BqQXMyXBUT6I6JA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:HyXnW/bDgvU=:5O1SSKuHYR6F4vCs0kY0O7
- N+CvLRKP2CbkA66+Cl7jcQCWt5HqYiPAHJU+0SacUvn6vc66cl4tj38JqS0e7Bul74WH5DwoV
- fpdlk8OqeHih08/Fg09cfqN1AFc442np7kAeNlvsG9E5pgFcLz2dE/tG491w9uJLgiJEo6Xbg
- Z86grx+dvYgeaKC+Kal7I2/ZCwZoW+VKnbAVCqoa4L+XRFqsd9MR9ug+i35Z4MMWNJZdbWjWP
- KNLZsQZpOVwXDOFP04jwGbiMTQf26eDXrmyWtmfWBL9EWTnclXzw1axBij9jlE0cWiiqwrDI+
- vEJeGGDJjt5+zCTKX3bVQdbwaIpwuutQOFr17fRerHdgAwe772vIMAG1OT6dgxbRWMeMC7npx
- rguZBO2UHnBU9Ap5Hur7ZrwbpQIkz/R1peQfPXUyDLFs4eeZgph7zRGI0JMQEAfuDF0DCQwg4
- lFv3jWWzgyEjPTYZoWAh/BsZviqIK8IZYX4K6Wooh5uq7fj+GN7uOhxKGIPRTZUV0Me0nteAk
- jvJozYdG/lkFGWMMJIpoy28da1JZQ1Tnf01dq/36Z/EIdExiqh+ZpFwGdGSmvl4BYaaJbExKE
- IjotYilQ/L8ZwxNEB5D6p5KGmYA+0G4fgbN+HFzG7oQb0aCjps15Bc/9fgMdl55Bs8IkQ5zeC
- o4MKvSzjZu84/Sd3k0WKzlf4vvaRTqrNJD4p3bQGq6CiNTFgmYisOTTefN9yNOtnUkrvq9WF4
- sa3n9XiFQtZJXZ9I
+X-Received: by 10.50.73.137 with SMTP id l9mr14139387igv.85.1445475782645;
+ Wed, 21 Oct 2015 18:03:02 -0700 (PDT)
+Received: by 10.107.171.198 with HTTP; Wed, 21 Oct 2015 18:03:02 -0700 (PDT)
+In-Reply-To: <8949060.7jQkPAjlGW@wuerfel>
+References: <1445465834-24407-1-git-send-email-deepa.kernel@gmail.com>
+	<8949060.7jQkPAjlGW@wuerfel>
+Date: Wed, 21 Oct 2015 18:03:02 -0700
+Message-ID: <CABeXuvpgNwSArZYy4LZdLg=5=9hGAXvsO5PjmZEsGo9NYCPdmg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] usb: usbtest: Add new ioctl interface
+From: Deepa Dinamani <deepa.kernel@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com, y2038@lists.linaro.org
+Content-Type: multipart/alternative; boundary=089e013a22688e6f5b0522a70e1e
 
-On Wednesday 21 October 2015 18:03:02 Deepa Dinamani wrote:
-> On Wed, Oct 21, 2015 at 4:17 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> > On Wednesday 21 October 2015 15:17:14 Deepa Dinamani wrote:
-> > > Rename old ioctl and data types to COMPAT_USBTEST_REQUEST and
-> > > usbtest_param_compat, respectively.
-> > >
-> > > The change also uses monotonic time instead of real time for both ioctls.
-> > > This ensures that the time duration is always positive.  Also use ktime
-> > > api's for time routines accomodating moving all of kernel to use 64 bit
-> > > time eventually.
+--089e013a22688e6f5b0522a70e1e
+Content-Type: text/plain; charset=UTF-8
+
+On Wed, Oct 21, 2015 at 4:17 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+
+> On Wednesday 21 October 2015 15:17:14 Deepa Dinamani wrote:
+> > The new USBTEST_REQUEST ioctl is intended to eventually replace
+> > the old timeval exposing interface.  struct timeval can have different
+> > sizes based on whether the kernel/ userspace are compiled in 32 bit/
+> > 64 bit mode.  The new ioctl exposes the duration the tests run as a
+> > scalar nanosecond value.
+>
+> Hi Deepa,
+>
+> This is an interesting approach, but you are going in a slightly
+> wrong direction. The new ioctl definition is indeed safe for y2038
+> and gets it all right, but it is not compatible at source level,
+> so existing user space programs will require source changes in
+> order to use it. I think this can be avoided, and we also don't
+> really need the new command to solve the y2038 problem.
+>
+
+I was trying to address the problem that the old interface was not right to
+begin with.
+And, thought maybe replacing the whole interface would be a good idea.
+I explain more below.
+
+
+> > Rename old ioctl and data types to COMPAT_USBTEST_REQUEST and
+> > usbtest_param_compat, respectively.
 > >
-> > Changing to monotonic time is good here. Using ktime_t is often
-> > a good idea, but I think in this case it causes more problems
-> > because we end up having to convert it back into timeval.
+> > The change also uses monotonic time instead of real time for both ioctls.
+> > This ensures that the time duration is always positive.  Also use ktime
+> > api's for time routines accomodating moving all of kernel to use 64 bit
+> > time eventually.
+>
+> Changing to monotonic time is good here. Using ktime_t is often
+> a good idea, but I think in this case it causes more problems
+> because we end up having to convert it back into timeval.
+>
+
+If we are keeping timeval in the interface, then I agree we don't need
+ktime_t.
+It was my understanding from the y2038 summary that you were recommending
+eliminating timeval.
+
+
+> > Refactor usbtest_ioctl for readability to clarify that the only
+> > difference is in how delta time is returned.
 > >
-> 
-> If we are keeping timeval in the interface, then I agree we don't need
-> ktime_t.
-> It was my understanding from the y2038 summary that you were recommending
-> eliminating timeval.
-
-It's a little more complicated: We try to avoid breaking compilation of
-user space programs if at all possible, so if they use timeval today,
-it's better not to require an API change as far as user space is
-concerned.
-
-On the other hand, we know that we have to do significant changes to
-glibc, and any interfaces that are between the kernel and libc (i.e.
-most system calls) should stop passing timeval. Instead the libc can
-provide its own helper functions and e.g. implement gettimeofday()
-by calling clock_gettime() and then converting the result.
-> > The most important point to notice here is that the definition is in a .c
-> > file, where user space cannot access it. This means that any program
-> > calling it already has a copy of this definition, and changing the
-> > definition here will not help you the way it would if the definition
-> > was in include/uapi/linux/*.h
+> > Signed-off-by: Deepa Dinamani <deepa.kernel@gmail.com>
+> > ---
+> > Resending due to incorrect recipient list
 > >
-> 
-> This was going to be in a follow on patch.
-> But, I was not sure if it should be done as part of outreachy.
-> The driver in the current state is self contained in this .c file.
-> All definitions should really be moved to a uapi header file as the
-> original fixme comment indicates.
-> 
-> But the only current user program that seems to be using it is in the
-> kernel tools.
-> The structures and the ioctl are indeed redefined there.
-> 
-> Also, the previous struct and IOCTL definitions have not changed because of
-> the above reason.
-> I kept them intact for compatibility with existing binaries.
-
-Yes, and that is the right idea. I suspect we will have to provide
-different definitions for kernel and user space though, in one
-form or another. You are right that we want to remove 'timeval'
-from the kernel, and in order to keep user space unchanged, this
-means defining the structure like
-
-struct usbtest_param_32 {
-        /* inputs */
-        __u32                test_num;       /* 0..(TEST_CASES-1) */
-        __u32                iterations;
-	...
-        __s32		      duration_sec;
-	__s32		      duration_usec;
-};
-
-which is a well-defined binary version of what 32-bit user space
-sees today. We also need the 64-bit version of that, for both
-normal 64-bit tasks and future 32-bit tasks that are built with
-the old structure definition.
-
-Optionally, we can introduce a better interface with a new command
-number as your patch does, but that should be a separate patch,
-and we have to see if the USB maintainers want to do this or not.
-
-> > > +     switch (code) {
-> > > +     case USBTEST_REQUEST_COMPAT:
-> > > +             temp.test_num = param_compat->test_num;
-> > > +             temp.iterations = param_compat->iterations;
-> > > +             temp.length = param_compat->length;
-> > > +             temp.sglen = param_compat->sglen;
-> > > +             temp.vary = param_compat->vary;
-> > > +             param = &temp;
-> > > +             break;
-> > > +
-> > > +     case USBTEST_REQUEST:
-> > > +             break;
+> > This patch is intended for the next branch of the usb tree:
+> > git://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git
 > >
-> > This part looks ok, you just need to adapt it to using the right
-> > structures. Basically what we want to do here is to handle both
-> > variants of 'struct timeval' that user space might see. Based on
-> > the _IOWR() macro definition, they give us two different command
-> > codes that you can test for in the same way here.
+> >  drivers/usb/misc/usbtest.c | 208
+> +++++++++++++++++++++++++++++----------------
+> >  1 file changed, 134 insertions(+), 74 deletions(-)
 > >
-> > It also makes sense to add support for the .compat_ioctl at the
-> > same time, because 64-bit kernels with 32-bit user space have
-> > the exact same problem in this driver that future 32-bit kernels
-> > will have with new vs old user space.
+> > diff --git a/drivers/usb/misc/usbtest.c b/drivers/usb/misc/usbtest.c
+> > index 637f3f7..00daff3 100644
+> > --- a/drivers/usb/misc/usbtest.c
+> > +++ b/drivers/usb/misc/usbtest.c
+> > @@ -22,7 +22,11 @@ static void complicated_callback(struct urb *urb);
 > >
-> 
-> So, you are suggesting using compat_timeval and timeval structs for the
-> IOCTL's
-> and hence maintaining the same ioctl code but use the difference in sizes
-> to get different values.
-> My understanding was that we don't want to expose any new timeval
-> interfaces to the user.
-> This is the reason I was adding the new interface.
+> /*-------------------------------------------------------------------------*/
+> >
+> >  /* FIXME make these public somewhere; usbdevfs.h? */
+> > -struct usbtest_param {
+> > +
+> > +/* Compat parameter for the compat interface.
+> > + * This is deprecated due to the timeval output parameter.
+> > + */
+> > +struct usbtest_param_compat {
+> >       /* inputs */
+> >       unsigned                test_num;       /* 0..(TEST_CASES-1) */
+> >       unsigned                iterations;
+> > @@ -33,7 +37,27 @@ struct usbtest_param {
+> >       /* outputs */
+> >       struct timeval          duration;
+> >  };
+> > -#define USBTEST_REQUEST      _IOWR('U', 100, struct usbtest_param)
+> > +
+>
+> The most important point to notice here is that the definition is in a .c
+> file, where user space cannot access it. This means that any program
+> calling it already has a copy of this definition, and changing the
+> definition here will not help you the way it would if the definition
+> was in include/uapi/linux/*.h
+>
 
-My plan is a bit different: I want to remove all references to timeval
-from the kernel, except for the bits we need for backwards compatibility.
+This was going to be in a follow on patch.
+But, I was not sure if it should be done as part of outreachy.
+The driver in the current state is self contained in this .c file.
+All definitions should really be moved to a uapi header file as the
+original fixme comment indicates.
 
-In this driver, we are actually lucky that the structure has never
-been visible to user space before, because that means nothing expects
-to find the timeval mentioned in a particular kernel header, and
-we can change it as I suggested above without breaking compilation,
-because user space still sees its own definition of the same struct.
+But the only current user program that seems to be using it is in the
+kernel tools.
+The structures and the ioctl are indeed redefined there.
 
-> On future 32-bit kernels however, timeval and compat_timeval would have the
-> same size.
-> This seems a concern at the offset.
-> Unless we define the compat ioctl under #ifdef this will not work because
-> of same size values for both ioctls.
+Also, the previous struct and IOCTL definitions have not changed because of
+the above reason.
+I kept them intact for compatibility with existing binaries.
 
-Good thinking, but this can be avoided by having two fixed-size
-structure definitions that are known to be different.
 
-> USB framework does not support .compat_ioctl in the struct usb_driver.
-> Isn't the general guideline to stay away from the .compat ioclt and provide
-> a single interface which works for both 32/ 64 bit versions?
+>
+> > +     switch (code) {
+> > +     case USBTEST_REQUEST_COMPAT:
+> > +             temp.test_num = param_compat->test_num;
+> > +             temp.iterations = param_compat->iterations;
+> > +             temp.length = param_compat->length;
+> > +             temp.sglen = param_compat->sglen;
+> > +             temp.vary = param_compat->vary;
+> > +             param = &temp;
+> > +             break;
+> > +
+> > +     case USBTEST_REQUEST:
+> > +             break;
+>
+> This part looks ok, you just need to adapt it to using the right
+> structures. Basically what we want to do here is to handle both
+> variants of 'struct timeval' that user space might see. Based on
+> the _IOWR() macro definition, they give us two different command
+> codes that you can test for in the same way here.
+>
+> It also makes sense to add support for the .compat_ioctl at the
+> same time, because 64-bit kernels with 32-bit user space have
+> the exact same problem in this driver that future 32-bit kernels
+> will have with new vs old user space.
+>
 
-Ah, I wasn't aware that the USB framework didn't have that. You are
-exactly right that in general it's best to define ioctl structures to
-be compatible for both, but the problem in this driver is specifically
-that it didn't do that.
+So, you are suggesting using compat_timeval and timeval structs for the
+IOCTL's
+and hence maintaining the same ioctl code but use the difference in sizes
+to get different values.
+My understanding was that we don't want to expose any new timeval
+interfaces to the user.
+This is the reason I was adding the new interface.
 
-> USB framework's higher level ioctl framework already supports a
-> .compat_ioctl and pointers are fixed before coming into this usbtest driver.
-> Are you suggesting .compat_ioctl extension to the usb_driver, or rewriting
-> the driver as a cdev?
+On future 32-bit kernels however, timeval and compat_timeval would have the
+same size.
+This seems a concern at the offset.
+Unless we define the compat ioctl under #ifdef this will not work because
+of same size values for both ioctls.
 
-Once the handler is changed to handle both versions of the structure,
-we don't need a separate .compat_ioctl any more, we just need to make
-sure that the handler gets called for both. I haven't checked this but
-according to your description I expect that is what happens already/
+USB framework does not support .compat_ioctl in the struct usb_driver.
+Isn't the general guideline to stay away from the .compat ioclt and provide
+a single interface which works for both 32/ 64 bit versions?
 
-> The other ioctls take care of individual compat data types by internally
-> using #ifdef CONFIG_COMPAT.
+USB framework's higher level ioctl framework already supports a
+.compat_ioctl and pointers are fixed before coming into this usbtest driver.
+Are you suggesting .compat_ioctl extension to the usb_driver, or rewriting
+the driver as a cdev?
 
-Ok. In my system call patch series, I introduce a new CONFIG_COMPAT_TIME
-symbol that specifically deals with compatibility mode for 32-bit time_t
-on both 32-bit and 64-bit architectures. This is the #ifdef we should
-be using here as well in principle. My patches however are not merged
-yet, but there is no harm in leaving that code active here, as both versions
-provide a correct API and do not overflow in 2038.
+The other ioctls take care of individual compat data types by internally
+using #ifdef CONFIG_COMPAT.
 
-	Arnd
+
+> >
+> /*-------------------------------------------------------------------------*/
+> >
+> >  static unsigned force_interrupt;
+> > @@ -2891,4 +2952,3 @@ module_exit(usbtest_exit);
+> >
+> >  MODULE_DESCRIPTION("USB Core/HCD Testing Driver");
+> >  MODULE_LICENSE("GPL");
+> > -
+> >
+>
+> These two changes should not be here, as they are unrelated to what  you
+> are doing.
+>
+
+These whitespace changes got added by mistake. Will remove these.
+
+>
+>         Arnd
+>
+
+- Deepa
+
+--089e013a22688e6f5b0522a70e1e
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Wed, Oct 21, 2015 at 4:17 PM, Arnd Bergmann <span dir=3D"ltr">&lt;<a=
+ href=3D"mailto:arnd@arndb.de" target=3D"_blank">arnd@arndb.de</a>&gt;</spa=
+n> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><span>On Wed=
+nesday 21 October 2015 15:17:14 Deepa Dinamani wrote:<br>
+&gt; The new USBTEST_REQUEST ioctl is intended to eventually replace<br>
+&gt; the old timeval exposing interface.=C2=A0 struct timeval can have diff=
+erent<br>
+&gt; sizes based on whether the kernel/ userspace are compiled in 32 bit/<b=
+r>
+&gt; 64 bit mode.=C2=A0 The new ioctl exposes the duration the tests run as=
+ a<br>
+&gt; scalar nanosecond value.<br>
+<br>
+</span>Hi Deepa,<br>
+<br>
+This is an interesting approach, but you are going in a slightly<br>
+wrong direction. The new ioctl definition is indeed safe for y2038<br>
+and gets it all right, but it is not compatible at source level,<br>
+so existing user space programs will require source changes in<br>
+order to use it. I think this can be avoided, and we also don&#39;t<br>
+really need the new command to solve the y2038 problem.<br></blockquote><di=
+v><br></div><div>I was trying to address the problem that the old interface=
+ was not right to begin with.<br></div><div>And, thought maybe replacing th=
+e whole interface would be a good idea.<br></div><div>I explain more below.=
+<br><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<span><br>
+&gt; Rename old ioctl and data types to COMPAT_USBTEST_REQUEST and<br>
+&gt; usbtest_param_compat, respectively.<br>
+&gt;<br>
+&gt; The change also uses monotonic time instead of real time for both ioct=
+ls.<br>
+&gt; This ensures that the time duration is always positive.=C2=A0 Also use=
+ ktime<br>
+&gt; api&#39;s for time routines accomodating moving all of kernel to use 6=
+4 bit<br>
+&gt; time eventually.<br>
+<br>
+</span>Changing to monotonic time is good here. Using ktime_t is often<br>
+a good idea, but I think in this case it causes more problems<br>
+because we end up having to convert it back into timeval.<br></blockquote><=
+div><br></div><div>If we are keeping timeval in the interface, then I agree=
+ we don&#39;t need ktime_t.<br></div><div>It was my understanding from the =
+y2038 summary that you were recommending eliminating timeval.<br>=C2=A0<br>=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex">
+<div><div>
+&gt; Refactor usbtest_ioctl for readability to clarify that the only<br>
+&gt; difference is in how delta time is returned.<br>
+&gt;<br>
+&gt; Signed-off-by: Deepa Dinamani &lt;<a href=3D"mailto:deepa.kernel@gmail=
+.com" target=3D"_blank">deepa.kernel@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt; Resending due to incorrect recipient list<br>
+&gt;<br>
+&gt; This patch is intended for the next branch of the usb tree:<br>
+&gt; git://<a href=3D"http://git.kernel.org/pub/scm/linux/kernel/git/balbi/=
+usb.git" rel=3D"noreferrer" target=3D"_blank">git.kernel.org/pub/scm/linux/=
+kernel/git/balbi/usb.git</a><br>
+&gt;<br>
+&gt;=C2=A0 drivers/usb/misc/usbtest.c | 208 +++++++++++++++++++++++++++++--=
+--------------<br>
+&gt;=C2=A0 1 file changed, 134 insertions(+), 74 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/usb/misc/usbtest.c b/drivers/usb/misc/usbtest.c<b=
+r>
+&gt; index 637f3f7..00daff3 100644<br>
+&gt; --- a/drivers/usb/misc/usbtest.c<br>
+&gt; +++ b/drivers/usb/misc/usbtest.c<br>
+&gt; @@ -22,7 +22,11 @@ static void complicated_callback(struct urb *urb);<=
+br>
+&gt;=C2=A0 /*--------------------------------------------------------------=
+-----------*/<br>
+&gt;<br>
+&gt;=C2=A0 /* FIXME make these public somewhere; usbdevfs.h? */<br>
+&gt; -struct usbtest_param {<br>
+&gt; +<br>
+&gt; +/* Compat parameter for the compat interface.<br>
+&gt; + * This is deprecated due to the timeval output parameter.<br>
+&gt; + */<br>
+&gt; +struct usbtest_param_compat {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* inputs */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 test_num;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* 0..(TEST_CASES-=
+1) */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 iterations;<br>
+&gt; @@ -33,7 +37,27 @@ struct usbtest_param {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* outputs */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct timeval=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 duration;<br>
+&gt;=C2=A0 };<br>
+&gt; -#define USBTEST_REQUEST=C2=A0 =C2=A0 =C2=A0 _IOWR(&#39;U&#39;, 100, s=
+truct usbtest_param)<br>
+&gt; +<br>
+<br>
+</div></div>The most important point to notice here is that the definition =
+is in a .c<br>
+file, where user space cannot access it. This means that any program<br>
+calling it already has a copy of this definition, and changing the<br>
+definition here will not help you the way it would if the definition<br>
+was in include/uapi/linux/*.h<br></blockquote><div><br></div><div>This was =
+going to be in a follow on patch.<br></div><div>But, I was not sure if it s=
+hould be done as part of outreachy.<br></div><div>The driver in the current=
+ state is self contained in this .c file.<br></div><div>All definitions sho=
+uld really be moved to a uapi header file as the original fixme comment ind=
+icates.<br><br></div><div>But the only current user program that seems to b=
+e using it is in the kernel tools.<br></div><div>The structures and the ioc=
+tl are indeed redefined there.<br><br></div><div>Also, the previous struct =
+and IOCTL definitions have not changed because of the above reason.<br></di=
+v><div>I kept them intact for compatibility with existing binaries.<br></di=
+v><div>=C2=A0<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<span><br>
+&gt; +=C2=A0 =C2=A0 =C2=A0switch (code) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0case USBTEST_REQUEST_COMPAT:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0temp.test_num =3D par=
+am_compat-&gt;test_num;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0temp.iterations =3D p=
+aram_compat-&gt;iterations;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0temp.length =3D param=
+_compat-&gt;length;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0temp.sglen =3D param_=
+compat-&gt;sglen;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0temp.vary =3D param_c=
+ompat-&gt;vary;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0param =3D &amp;temp;<=
+br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0case USBTEST_REQUEST:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+</span>This part looks ok, you just need to adapt it to using the right<br>
+structures. Basically what we want to do here is to handle both<br>
+variants of &#39;struct timeval&#39; that user space might see. Based on<br=
+>
+the _IOWR() macro definition, they give us two different command<br>
+codes that you can test for in the same way here.<br>
+<br>
+It also makes sense to add support for the .compat_ioctl at the<br>
+same time, because 64-bit kernels with 32-bit user space have<br>
+the exact same problem in this driver that future 32-bit kernels<br>
+will have with new vs old user space.<br></blockquote><div><br></div><div>S=
+o, you are suggesting using compat_timeval and timeval structs for the IOCT=
+L&#39;s<br></div><div>and hence maintaining the same ioctl code but use the=
+ difference in sizes to get different values.<br></div><div>My understandin=
+g was that we don&#39;t want to expose any new timeval interfaces to the us=
+er.<br>This is the reason I was adding the new interface.<br></div><div><br=
+></div><div></div><div>On future 32-bit kernels however, timeval and compat=
+_timeval would have the same size.<br></div><div>This seems a concern at th=
+e offset.<br></div><div>Unless we define the compat ioctl under #ifdef this=
+ will not work because of same size values for both ioctls.<br></div><div><=
+br></div><div>USB framework does not support .compat_ioctl in the struct us=
+b_driver.<br></div><div>Isn&#39;t the general guideline to stay away from t=
+he .compat ioclt and provide a single interface which works for both 32/ 64=
+ bit versions?<br><br></div><div>USB framework&#39;s higher level ioctl fra=
+mework already supports a .compat_ioctl and pointers are fixed before comin=
+g into this usbtest driver.<br><div>Are you suggesting .compat_ioctl extens=
+ion to the usb_driver, or rewriting the driver as a cdev?<br></div><div><br=
+></div></div><div>The other ioctls take care of individual compat data type=
+s by internally using #ifdef CONFIG_COMPAT.<br></div><br><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">
+<span><br>
+&gt;=C2=A0 /*--------------------------------------------------------------=
+-----------*/<br>
+&gt;<br>
+&gt;=C2=A0 static unsigned force_interrupt;<br>
+&gt; @@ -2891,4 +2952,3 @@ module_exit(usbtest_exit);<br>
+&gt;<br>
+&gt;=C2=A0 MODULE_DESCRIPTION(&quot;USB Core/HCD Testing Driver&quot;);<br>
+&gt;=C2=A0 MODULE_LICENSE(&quot;GPL&quot;);<br>
+&gt; -<br>
+&gt;<br>
+<br>
+</span>These two changes should not be here, as they are unrelated to what=
+=C2=A0 you<br>
+are doing.<br></blockquote><div><br></div><div>These whitespace changes got=
+ added by mistake. Will remove these. <br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex">
+<span><font color=3D"#888888"><br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Arnd<br></font></span></blockquote><div><br></d=
+iv><div>- Deepa <br></div></div><br></div></div>
+
+--089e013a22688e6f5b0522a70e1e--
 
