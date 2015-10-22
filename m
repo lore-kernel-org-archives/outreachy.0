@@ -1,89 +1,73 @@
-X-GM-THRID: 6250289163666456576
-X-Received: by 10.182.24.41 with SMTP id r9mr47056157obf.25.1455258848219;
-        Thu, 11 Feb 2016 22:34:08 -0800 (PST)
+X-GM-THRID: 6208221372561227776
+X-Received: by 10.112.55.69 with SMTP id q5mr3541635lbp.24.1445516149277;
+        Thu, 22 Oct 2015 05:15:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.17.33 with SMTP id 30ls1501038qgc.99.gmail; Thu, 11 Feb
- 2016 22:34:07 -0800 (PST)
-X-Received: by 10.129.92.65 with SMTP id q62mr46452952ywb.19.1455258847612;
-        Thu, 11 Feb 2016 22:34:07 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id ff2si1286419pad.2.2016.02.11.22.34.07
+Received: by 10.181.11.232 with SMTP id el8ls225171wid.48.canary; Thu, 22 Oct
+ 2015 05:15:48 -0700 (PDT)
+X-Received: by 10.194.118.65 with SMTP id kk1mr3606693wjb.5.1445516148943;
+        Thu, 22 Oct 2015 05:15:48 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id em5si215893wib.2.2015.10.22.05.15.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 22:34:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 05:15:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id x65so42635725pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 22:34:07 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22f.google.com with SMTP id fx6so129321239wic.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 05:15:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=KNqo67s3eQLVEbI5Ejvy2rYx/Ctg4A9JalFUzhNYM5Q=;
-        b=rUFQFrjjMzSPxjNEWV3oSWyZvROh3FbcrPaubMWdZ/K4bJMX/ZIdN8GNjfrjTh53hQ
-         J2loXKVDCE5fBqvY/+zw14w5doeYfvizb61sE3EvecNKy4glteRrwum/i6JCoCJa6gOf
-         s9vTwydmzCYJZPtZleMAeeDDPlnAC11EqYpK8C2B1QuC0TvJ9a/CbeGP3CodS2rzcbDY
-         Iqp/E0E/uPBebieTVduhqYLMkjZK6AFXs7qrrbDRpgBCd1pDbO70ajaSTcWHhiMXIa7O
-         4QWRtVGqy9v81woJZVBqcVENgnuRYxNxbzY+dck0mTLhAkuYnU4yZC3k43D8IsouSWHX
-         D25w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=KNqo67s3eQLVEbI5Ejvy2rYx/Ctg4A9JalFUzhNYM5Q=;
-        b=Seo72jh0HpHz8/dMslmBZFrcp9bZ/8aN6rOaj2n37L46WpuLmfKrrOZBn0/ucfPzhu
-         SFYuvNs2MZBz+c68ijjPKnBGznakxjYjDAn1G7b7Pw4e32kJH5J1QxyIz0VD+Ymhq/I3
-         1bSInd0F0syTDQAFUWMZO+NfLKGY45U+J6ITZOyRMkeu34DwIn7GbsiwWOJ/vY+Bms+d
-         OOGcUvDIhb/klfjS1BAl1PoW9Jsb8QM3sy8tDku2KdYee4rzPtQljc3mO1sr6YUC8jZ1
-         p2lGMWVKpDK5h7HRFPGJWpqeyDJycNsH1CHuNYFN9mjoqhL+YWr87KJFTnLY7ibtYE5W
-         dNfQ==
-X-Gm-Message-State: AG10YOTg8JKFIHpWG88NG37WAD3wkWdp8jQJVQTannLPdWtRwiI3dNctl23Ea2F5NtUCPg==
-X-Received: by 10.98.80.135 with SMTP id g7mr72892521pfj.132.1455258847450;
-        Thu, 11 Feb 2016 22:34:07 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-97.dhcp.embarqhsd.net. [67.232.66.97])
-        by smtp.gmail.com with ESMTPSA id z3sm16537203par.17.2016.02.11.22.34.06
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 11 Feb 2016 22:34:06 -0800 (PST)
-Date: Thu, 11 Feb 2016 22:34:05 -0800
-From: Alison Schofield <amsfield22@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=OViQRkafMciq46hTtyvia6hCK587zKtAl7N6Ro5v8j4=;
+        b=zCQ5uvrbOJc/qrbjFL8bUZ//M6yYdxPzlTcA/U5vgCWPVz//hjT7g3W5P5oKVaFjR7
+         +JCNy9QDGQHY6gDOkY5blTIVcYuIJVE+JSZwT+askW9sasezl3epARBqjqxBGBxkFbue
+         u3WCOAvxq6v8Xck+Fn4YboXh+VWQdfcUz6ehVyzjbmBWTu8/Oco8bxme8e81n0p8TQ7F
+         bR7/evxDsaclf0o3VkxgvyC1ArOQjO+raBmNd9mwS6Z2BusvwJc3EthEhavCJ9j1mFCv
+         wmhRRSE7fSyBVNoB4wSGs+tfY5QWGWDAIc7hCUW6n2x5XZjEnaO7GhRHtrxueMPxp4Zd
+         xclA==
+X-Received: by 10.180.10.101 with SMTP id h5mr16212487wib.22.1445516148854;
+        Thu, 22 Oct 2015 05:15:48 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from kripton.comu.edu.tr ([193.255.97.44])
+        by smtp.gmail.com with ESMTPSA id hk5sm16518653wjb.6.2015.10.22.05.15.46
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 22 Oct 2015 05:15:48 -0700 (PDT)
+From: Burcin Akalin <brcnakalin@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6656: replace kzalloc with kmalloc
-Message-ID: <20160212063353.GA12041@d830.WORKGROUP>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Burcin Akalin <brcnakalin@gmail.com>
+Subject: [PATCH] staging: vt6655: Add space around '*'
+Date: Thu, 22 Oct 2015 15:15:39 +0300
+Message-Id: <1445516139-3914-1-git-send-email-brcnakalin@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-All fields of allocated structure are filled in directly following
-the allocate, so no need to initialize it to zero.
+Add space around operator '*'. Problem found using
+checkpatch.pl
+CHECK: spaces preferred around that '*' (ctx:VxV)
 
-Use preferred kmalloc() sizeof style to silence:
-CHECK: Prefer kmalloc(sizeof(*priv->rcb[ii])...)
-
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
 ---
- drivers/staging/vt6656/main_usb.c | 2 +-
+ drivers/staging/vt6655/card.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index a2f23ae..74ff707 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -449,7 +449,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
- 	}
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index 6989050..15953cf 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -286,7 +286,7 @@ bool CARDbSetPhyParameter(struct vnt_private *pDevice, u8 bb_type)
  
- 	for (ii = 0; ii < priv->num_rcb; ii++) {
--		priv->rcb[ii] = kzalloc(sizeof(struct vnt_rcb), GFP_KERNEL);
-+		priv->rcb[ii] = kmalloc(sizeof(*priv->rcb[ii]), GFP_KERNEL);
- 		if (!priv->rcb[ii]) {
- 			dev_err(&priv->usb->dev,
- 					"failed to allocate rcb no %d\n", ii);
+ 		if (pDevice->bShortSlotTime) {
+ 			bySlot = C_SLOT_SHORT;
+-			byDIFS = C_SIFS_BG + 2*C_SLOT_SHORT;
++			byDIFS = C_SIFS_BG + 2 * C_SLOT_SHORT;
+ 		} else {
+ 			bySlot = C_SLOT_LONG;
+ 			byDIFS = C_SIFS_BG + 2*C_SLOT_LONG;
 -- 
-2.1.4
+1.9.1
 
 
