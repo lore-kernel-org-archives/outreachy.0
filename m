@@ -1,92 +1,171 @@
 X-GM-THRID: 6208472977162371072
-X-Received: by 10.129.134.129 with SMTP id w123mr12505948ywf.17.1445525011308;
-        Thu, 22 Oct 2015 07:43:31 -0700 (PDT)
+X-Received: by 10.129.108.212 with SMTP id h203mr12951483ywc.38.1445524817187;
+        Thu, 22 Oct 2015 07:40:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.97.73 with SMTP id l67ls1378302qge.36.gmail; Thu, 22 Oct
- 2015 07:43:30 -0700 (PDT)
-X-Received: by 10.140.196.76 with SMTP id r73mr12839067qha.3.1445525010778;
-        Thu, 22 Oct 2015 07:43:30 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id zg1si1715930pbb.2.2015.10.22.07.43.30
+Received: by 10.140.17.147 with SMTP id 19ls1490647qgd.23.gmail; Thu, 22 Oct
+ 2015 07:40:16 -0700 (PDT)
+X-Received: by 10.13.226.134 with SMTP id l128mr6194219ywe.12.1445524724223;
+        Thu, 22 Oct 2015 07:38:44 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id j129si388468vkd.1.2015.10.22.07.38.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 07:43:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id fv9so92566246pac.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 07:43:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:in-reply-to:message-id:references
-         :user-agent:mime-version:content-type;
-        bh=YbtLX+cdoXqSMHeORSaghwFzLFI77NmJ1rEZzsk4H5c=;
-        b=qAcHTlzW5u0FlG4nkkzGyR0ahXZeJgRsXp5BK4aQDfyN8Xox2fyh5OeP39kZO9+tKW
-         FFWwPG92tMbY4z6FkPlwtgmuvReAm/5Rw6XEE/039TLpEEUjvIHBB5zCHnLTCgCWzRLy
-         GFcQvPwt8rl5TxmhuFOed9kvIo9JuCuU1I2ujzmcSuDgG7DSIavANDTh5uw5FDMa4hok
-         MuMr1WHs//PkhHOXuSQF4Z5eUrT8SnlTcpRBvxr2Vsk8ElE7XTJOtOANPtmUUt7L1Yxf
-         O2sQGIIORU6ESE5AN31+vq3/KBOWUsoD1rz8lWD5zv3GJUGt1WebbPXg3Kk1fZyL8kpD
-         UTqw==
-X-Received: by 10.66.120.237 with SMTP id lf13mr17648106pab.25.1445525010524;
-        Thu, 22 Oct 2015 07:43:30 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from [10.4.9.105] ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id qa5sm14266670pbc.70.2015.10.22.07.43.28
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 07:43:30 -0700 (PDT)
-Date: Thu, 22 Oct 2015 20:13:18 +0530 (IST)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-X-X-Sender: root@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V
-To: Arnd Bergmann <arnd@arndb.de>
-cc: y2038@lists.linaro.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH] mtd: tests: Replace timeval with ktime_t
-In-Reply-To: <3945767.60xPqpFfYF@wuerfel>
-Message-ID: <alpine.DEB.2.11.1510222011270.14576@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
-References: <1445522749-14269-1-git-send-email-shraddha.6596@gmail.com> <3945767.60xPqpFfYF@wuerfel>
-User-Agent: Alpine 2.11 (DEB 23 2013-08-11)
+        Thu, 22 Oct 2015 07:38:44 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue002) with ESMTPSA (Nemesis) id 0Lup4D-1aXIzv3xKr-0107Oa; Thu, 22 Oct
+ 2015 16:37:51 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Shraddha Barke <shraddha.6596@gmail.com>, outreachy-kernel@googlegroups.com, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, linux-mtd@lists.infradead.org
+Subject: Re: [Y2038] [PATCH v2] mtd: tests: Replace timeval with ktime_t
+Date: Thu, 22 Oct 2015 16:37:50 +0200
+Message-ID: <5015706.z4SiC6myD8@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1445524379-14541-1-git-send-email-shraddha.6596@gmail.com>
+References: <1445524379-14541-1-git-send-email-shraddha.6596@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:zukDazxU4lnfVqyOk7OmSy1Z0RHifd2mCuFujO7i4dkOL1W7vtv
+ SeRZl9Yx4ynw6SGxnaYKe34HwuaYKrwDEUzPxxIxsc4CgR5Utd77XjJwKdexIAdj4gZ1gMv
+ qaoNYf04gKJePXJYnAFSD50BEtvEWuNxbYG8adxE0akt+EDlS4h8g1g6ByL4m9q9d2aq0NM
+ /fD1vFCY4GGujJqePKx5w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:yy8k1Fq1HVA=:3mK3yEm67rqBbjovbZ+U5G
+ IUZxe1VQ5Z5aSJEErSTjx4kyEDx4U4dvpCyOE/auRcxcltiAHJ1hFJHuSWg7jUWR9TdNxsoS+
+ 4CfYugBrHD3FM1p0OltS9n0+Rf90PgahlPhIr/PRniDahzZgpPAzlFoiSBQlCo94PcOCug48e
+ piJ3GogjxgYdbjCbuvjJnwwv1DkOb/F9dZzUe/fNmMRL6ZfAVUh51PAzW06jrgwax9v38Gv8i
+ GB/ShQylASEv1bqhFurKh1QBblUXxz90cS23DcLDagyT8t8rNPDBnFFf7LIO5cSSl0+AYt/vw
+ ny6jNhI8lkU2XK8ix05pL9rwBOzSYk2QWe3PBjfq66QhDZpxEBQC/5vVDr1lKr+LNu03PmFuG
+ 8swldLUuQq+MTo7hTu/FKl94BiQp7OjwOmBU9Me+8B5EZ2NXSgvna6C9Qz/2MEES0mNhLphu0
+ PpjlyuOIxmnfdMHu/LqYp44ChTJcoX+tmEjpU9Yqj0YB+SOWtRHrqw5KN4RTaps0pkaiAuFaf
+ pEtaWnYB2GOA8HDsoHz0XhNiGXgn4dZD/pws4h1KAbkchkUwI99h8yxu+6Du/YhLJZJqas6Wd
+ +EdEgv6b6I5w4i+d2tP3fHJvpjtwJcWcYi3JdfuVZ2mf6I0NPDNxjWb40AETz0uXq1PErE7BP
+ hP3zQ+QB0jymYkaedOPgza0hX+7yau92TQ0W+T+BuGnqyteJ8IWW+JAYCR+l9zRc88TL1J6/C
+ 6q4E53DzH+MVVXmU
 
+On Thursday 22 October 2015 20:02:59 Shraddha Barke wrote:
+> Changes the 32-bit time type timeval to the 64-bit time type
+> ktime_t, since 32-bit systems using struct timeval will break in the
+> year 2038. Correspondingly change do_gettimeofday() to ktime_get()
+> since ktime_get returns a ktime_t, but do_gettimeofday returns a
+> struct timeval.Here, ktime_get() is used instead of ktime_get_real()
+> since ktime_get() uses monotonic clock.
+> 
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
-On Thu, 22 Oct 2015, Arnd Bergmann wrote:
+I've added Brian and the linux-mtd list to Cc as well here. It's take
+a little practice to get the right people out of the output of
+scripts/get_maintainer.pl. In this case, you sent the patch only
+to David Woodhouse. However, Brian Norris currently does most of the
+work of picking up patches, and you should always include the mailing
+lists on Cc as well.
 
-> On Thursday 22 October 2015 19:35:49 Shraddha Barke wrote:
->> Change the 32-bit time type timeval to the 64-bit time type
->> ktime_t, since 32-bit systems using struct timeval will break in the
->> year 2038. Correspondingly change do_gettimeofday() to ktime_get()
->> since ktime_get returns a ktime_t, but do_gettimeofday returns a
->> struct timeval.
->>
->> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
->
-> The patch looks good to me, but please add a sentence to explain
-> why you use ktime_get() instead of ktime_get_real(). It is the
-> right choice here, but it may not be obvious to the reader
-> that you now use monotonic times.
->
-> With that, please resend the patch and Cc the MTD maintainers.
->
-> How did you pick this driver? I thought I had originally given this
-> task to someone else and not listed it in the y2038 wiki page. The
-> other person has not worked on it over the last month, and it's
-> a relatively simple patch, so don't worry about it.
+Please re-send with my 'Reviewed-by' tag added.
 
-No particular reason. Sorry about that , I'll stick to the tasks given on 
-the tasks page.
+> ---
+> Changes in v2-
+>  Make commit message clearer.
+> 
+>  drivers/mtd/tests/speedtest.c   | 10 +++++-----
+>  drivers/mtd/tests/torturetest.c | 10 +++++-----
+>  2 files changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/mtd/tests/speedtest.c b/drivers/mtd/tests/speedtest.c
+> index 5a6f31a..0b89418 100644
+> --- a/drivers/mtd/tests/speedtest.c
+> +++ b/drivers/mtd/tests/speedtest.c
+> @@ -22,6 +22,7 @@
+>  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+>  
+>  #include <linux/init.h>
+> +#include <linux/ktime.h>
+>  #include <linux/module.h>
+>  #include <linux/moduleparam.h>
+>  #include <linux/err.h>
+> @@ -49,7 +50,7 @@ static int pgsize;
+>  static int ebcnt;
+>  static int pgcnt;
+>  static int goodebcnt;
+> -static struct timeval start, finish;
+> +static ktime_t start, finish;
+>  
+>  static int multiblock_erase(int ebnum, int blocks)
+>  {
+> @@ -168,12 +169,12 @@ static int read_eraseblock_by_2pages(int ebnum)
+>  
+>  static inline void start_timing(void)
+>  {
+> -	do_gettimeofday(&start);
+> +	start = ktime_get();
+>  }
+>  
+>  static inline void stop_timing(void)
+>  {
+> -	do_gettimeofday(&finish);
+> +	finish = ktime_get();
+>  }
+>  
+>  static long calc_speed(void)
+> @@ -181,8 +182,7 @@ static long calc_speed(void)
+>  	uint64_t k;
+>  	long ms;
+>  
+> -	ms = (finish.tv_sec - start.tv_sec) * 1000 +
+> -	     (finish.tv_usec - start.tv_usec) / 1000;
+> +	ms = ktime_ms_delta(finish, start);
+>  	if (ms == 0)
+>  		return 0;
+>  	k = (uint64_t)goodebcnt * (mtd->erasesize / 1024) * 1000;
+> diff --git a/drivers/mtd/tests/torturetest.c b/drivers/mtd/tests/torturetest.c
+> index e5d6e6d..93c2729 100644
+> --- a/drivers/mtd/tests/torturetest.c
+> +++ b/drivers/mtd/tests/torturetest.c
+> @@ -26,6 +26,7 @@
+>  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+>  
+>  #include <linux/init.h>
+> +#include <linux/ktime.h>
+>  #include <linux/module.h>
+>  #include <linux/moduleparam.h>
+>  #include <linux/err.h>
+> @@ -79,18 +80,18 @@ static unsigned char *check_buf;
+>  static unsigned int erase_cycles;
+>  
+>  static int pgsize;
+> -static struct timeval start, finish;
+> +static ktime_t start, finish;
+>  
+>  static void report_corrupt(unsigned char *read, unsigned char *written);
+>  
+>  static inline void start_timing(void)
+>  {
+> -	do_gettimeofday(&start);
+> +	start = ktime_get();
+>  }
+>  
+>  static inline void stop_timing(void)
+>  {
+> -	do_gettimeofday(&finish);
+> +	finish = ktime_get();
+>  }
+>  
+>  /*
+> @@ -333,8 +334,7 @@ static int __init tort_init(void)
+>  			long ms;
+>  
+>  			stop_timing();
+> -			ms = (finish.tv_sec - start.tv_sec) * 1000 +
+> -			     (finish.tv_usec - start.tv_usec) / 1000;
+> +			ms = ktime_ms_delta(finish, start);
+>  			pr_info("%08u erase cycles done, took %lu "
+>  			       "milliseconds (%lu seconds)\n",
+>  			       erase_cycles, ms, ms / 1000);
+> 
 
-Thanks,
-
-Shraddha
->
-> Are we running out of simple tasks? I can always add a few more to the
-> wiki as there are around 50 other drivers that need to be changed
-> in a similar way.
->
-> 	Arnd
->
 
