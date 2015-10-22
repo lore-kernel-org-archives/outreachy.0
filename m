@@ -1,147 +1,150 @@
 X-GM-THRID: 6208412714735239168
-X-Received: by 10.50.4.68 with SMTP id i4mr13031368igi.3.1445518421850;
-        Thu, 22 Oct 2015 05:53:41 -0700 (PDT)
+X-Received: by 10.194.240.230 with SMTP id wd6mr3632151wjc.0.1445517498585;
+        Thu, 22 Oct 2015 05:38:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.16.149 with SMTP id 21ls815660ioq.71.gmail; Thu, 22 Oct
- 2015 05:53:41 -0700 (PDT)
-X-Received: by 10.107.135.218 with SMTP id r87mr607834ioi.28.1445518421622;
-        Thu, 22 Oct 2015 05:53:41 -0700 (PDT)
+Received: by 10.180.86.234 with SMTP id s10ls622902wiz.33.gmail; Thu, 22 Oct
+ 2015 05:38:18 -0700 (PDT)
+X-Received: by 10.181.29.103 with SMTP id jv7mr3728579wid.0.1445517498037;
+        Thu, 22 Oct 2015 05:38:18 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id pe1si1610821pac.2.2015.10.22.05.53.41
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id c7si1017024wiy.3.2015.10.22.05.38.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 05:53:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 05:38:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id fv9so90311402pac.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 05:53:41 -0700 (PDT)
+Received: by mail-wi0-x231.google.com with SMTP id ll6so115119632wic.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 05:38:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=JAhCUSknXL/1UmvpNt3cGqCpF5sGMWeKEJEdeMEgnH4=;
-        b=bNjyEk9kFPDU3lK3TFUY6aPCoe1jqLylGgvs7GDwnLhLCD6/1hfqXqftqiyVWStaJ0
-         c4b6mwji1g/2jevOoTDyFXBdXxsuqLCmCvyKrtYnAhqAQ0/C5NLhBMe4x7WsVAnatmb5
-         87rWn18KhKAqpoSZxYBv7rtgxuX3oA81PYWml1yddc6upmp7McmwnGjUQ6oXCuECZ26e
-         KdjCvg1rAn2ilS32FHEa3RQyepvnVdXsDGQuOjOOug5ixHV46XO2YpV7NLPdSwaKxT6V
-         f1tFVggSz8JP+09rHC5IqaNdt0RwilQcbKRT3lu8pevvFDTVUWJheYdVx3uoEXy4cyxm
-         EXZg==
-X-Received: by 10.66.235.4 with SMTP id ui4mr17129612pac.129.1445518421488;
-        Thu, 22 Oct 2015 05:53:41 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id w9sm13891120pbt.29.2015.10.22.05.53.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 05:53:40 -0700 (PDT)
-Date: Thu, 22 Oct 2015 18:23:33 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: wilc1000: coreconfigurator: Drop unneeded wrapper
- functions
-Message-ID: <20151022125333.GA21176@ubuntu>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=thC1pPedylimWXBc21K81mHGouewAJiyYnBRKgS18Tk=;
+        b=p3dBH9h4KdhErACARxtyqBeP1iOFVo3gn1uNEVPbHklmD+F+1YO9ke9jwifcQoMaBl
+         vtDayrQr7wjNkT65cFvDCflSGkP3ExLYfzPnGpKNLJF13y+BZ4G/rO/h43QswxZYMlj2
+         wiIAy8izwgazeU+J4BF6aITo9pU5DkS/uVtDCGhrjF6m5PwyhAXDeLxxBWuRFuDaMlon
+         qolthcLB2LOTTEUWULdrT+iqEzB+kyumSZV2OjbK1b7yIVSAJ7vC7Nf89v2zrSdN2a2D
+         mWFV7LKaFVXQ3nx7Fm9KY2Vw+nMiQIEy7Ov2UW33Ay6Nx1FgoG8zu3G9A9Rr8I/f1V0Q
+         0eZQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.180.189.102 with SMTP id gh6mr37578912wic.95.1445517497952;
+ Thu, 22 Oct 2015 05:38:17 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Thu, 22 Oct 2015 05:38:17 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1510221436380.2607@hadrien>
+References: <20151022101158.GA17223@ubuntu>
+	<alpine.DEB.2.10.1510221232200.2607@hadrien>
+	<CAKHNQQHxMbQtwVhA8uVkP8uZqX-q_HwSWNmKRPhXwFYsXpve-w@mail.gmail.com>
+	<alpine.DEB.2.10.1510221310400.2607@hadrien>
+	<CAKHNQQHP7dpLZdz6E=CC+ziN4df1Cdtb7Es-qc2KCFVnXrpF6w@mail.gmail.com>
+	<alpine.DEB.2.10.1510221342290.2607@hadrien>
+	<CAKHNQQE-rMmuZ-UyzLyYkaS4kcT7UMqLRec-kzhKODA+zX8bAw@mail.gmail.com>
+	<alpine.DEB.2.10.1510221430190.2607@hadrien>
+	<CAKHNQQFTZtBPjC7=ffib8iORubFKSo_B0GNKvJSbUXuGx6ryUQ@mail.gmail.com>
+	<alpine.DEB.2.10.1510221436380.2607@hadrien>
+Date: Thu, 22 Oct 2015 18:08:17 +0530
+Message-ID: <CAKHNQQF1LMcU9+cPtMs=wARNu808pZVUm2Jf2mmu9qZh4uufEw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: coreconfigurator:
+ Drop unneeded wrapper functions
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove the wrapper functions get_address1, get_address2 and get_address3
-as they are not required and replace their calls by suitable functions.
-Semantic patch used:
+On Thu, Oct 22, 2015 at 6:07 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Thu, 22 Oct 2015, Shivani Bhardwaj wrote:
+>
+>> On Thu, Oct 22, 2015 at 6:00 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Thu, 22 Oct 2015, Shivani Bhardwaj wrote:
+>> >
+>> >> On Thu, Oct 22, 2015 at 5:13 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >> >
+>> >> >
+>> >> > On Thu, 22 Oct 2015, Shivani Bhardwaj wrote:
+>> >> >
+>> >> >> On Thu, Oct 22, 2015 at 4:43 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >> >> > On Thu, 22 Oct 2015, Shivani Bhardwaj wrote:
+>> >> >> >
+>> >> >> >> On Thu, Oct 22, 2015 at 4:04 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >> >> >> > On Thu, 22 Oct 2015, Shivani Bhardwaj wrote:
+>> >> >> >> >
+>> >> >> >> >> Remove the wrapper functions get_address1, get_address2 and get_address3
+>> >> >> >> >> as they are not required and replace their calls by suitable functions.
+>> >> >> >> >
+>> >> >> >> > The existing functions serve two purposes:
+>> >> >> >> >
+>> >> >> >> > 1.  They make clear that an ethernet address is being copied
+>> >> >> >> > 2.  They hide the offsets
+>> >> >> >> >
+>> >> >> >> > To preserve the first property, the kernel has a function for copying
+>> >> >> >> > ethernet addresses.
+>> >> >> >> >
+>> >> >> >> > To preserve the second property, maybe it would be possible to #define
+>> >> >> >> > constants that describe the offsets, if there is any way to figure out
+>> >> >> >> > what they semantically mean.
+>> >> >> >> >
+>> >> >> >> > julia
+>> >> >> >> >
+>> >> >> >>
+>> >> >> >> Right. I am thinking of writing one wrapper function instead of three
+>> >> >> >> where I'll pass on an offset each time which will be #defined.
+>> >> >> >> For example,
+>> >> >> >>
+>> >> >> >> #define ofs 4
+>> >> >> >> #define c 6
+>> >> >> >
+>> >> >> > #define things should always be in all (or at least mostly) capital
+>> >> >> > letters.
+>> >> >> >
+>> >> >> >> static inline void get_address(u8 *pum8sa, u8 *addr, u8 *offset){
+>> >> >> >>         ether_addr_copy(addr, pum8sa + offset);
+>> >> >> >> }
+>> >> >> >
+>> >> >> > I don't think this is the best idea.  ether_addr_copy is something that is
+>> >> >> > easily understandable to someone reading the code.  get_address, on the
+>> >> >> > other hand, could be anything.  If you can find meaningful names for the
+>> >> >> > offsets, then it would be better to say eg:
+>> >> >> >
+>> >> >> > ether_addr_copy(addr, pum8sa + NAME1)
+>> >> >> >
+>> >> >> > julia
+>> >> >> >
+>> >> >>
+>> >> >> #define NAME1 4
+>> >> >> #define NAME2 10
+>> >> >> #define NAME3 16
+>> >> >
+>> >> > Sorry, NAME was just supposed to be a metavariable, that you could fill in
+>> >> > with something appropriate.  From the comments in the code it seems like
+>> >> > it should be ADDRESS1, ADDRESS2, etc.
+>> >> >
+>> >> > julia
+>> >> >
+>> >> >
+>> >>
+>> >> Yes, I understand that. I was just presenting a prototype. :)
+>> >> I was thinking of ADDR1, ADDR2.. But, ADDRESS1, ADDRESS2,.. would be fine too.
+>> >
+>> > Either way should be OK.
+>> >
+>> > julia
+>> >
+>> Thanks. I'm sending v2.
+>> I'm getting implicit function declaration error for ether_addr_copy
+>> function. Can it be ignored?
+>
+> No.  You need to find the appropriate header file to include.
+>
+> julia
 
-@@
-identifier f,g;
-@@
-
-*f(...) {
- g(...); }
-
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/wilc1000/coreconfigurator.c | 48 ++++++++++++++---------------
- 1 file changed, 23 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
-index 427adfd..6dfe26d 100644
---- a/drivers/staging/wilc1000/coreconfigurator.c
-+++ b/drivers/staging/wilc1000/coreconfigurator.c
-@@ -13,8 +13,12 @@
- #include "wilc_wlan.h"
- #include <linux/errno.h>
- #include <linux/slab.h>
-+#include <linux/etherdevice.h>
- #define TAG_PARAM_OFFSET	(MAC_HDR_LEN + TIME_STAMP_LEN + \
- 							BEACON_INTERVAL_LEN + CAP_INFO_LEN)
-+#define ADDR1 4
-+#define ADDR2 10
-+#define ADDR3 16
- 
- /* Basic Frame Type Codes (2-bit) */
- enum basic_frame_type {
-@@ -171,38 +175,32 @@ static inline u8 get_from_ds(u8 *header)
- 	return ((header[1] & 0x02) >> 1);
- }
- 
--/* This function extracts the MAC Address in 'address1' field of the MAC     */
--/* header and updates the MAC Address in the allocated 'addr' variable.      */
--static inline void get_address1(u8 *pu8msa, u8 *addr)
--{
--	memcpy(addr, pu8msa + 4, 6);
--}
--
--/* This function extracts the MAC Address in 'address2' field of the MAC     */
--/* header and updates the MAC Address in the allocated 'addr' variable.      */
--static inline void get_address2(u8 *pu8msa, u8 *addr)
--{
--	memcpy(addr, pu8msa + 10, 6);
--}
--
--/* This function extracts the MAC Address in 'address3' field of the MAC     */
--/* header and updates the MAC Address in the allocated 'addr' variable.      */
--static inline void get_address3(u8 *pu8msa, u8 *addr)
--{
--	memcpy(addr, pu8msa + 16, 6);
--}
--
- /* This function extracts the BSSID from the incoming WLAN packet based on   */
--/* the 'from ds' bit, and updates the MAC Address in the allocated 'addr'    */
-+/* the 'from ds' bit, and updates the MAC Address in the allocated 'data'    */
- /* variable.                                                                 */
- static inline void get_BSSID(u8 *data, u8 *bssid)
- {
- 	if (get_from_ds(data) == 1)
--		get_address2(data, bssid);
-+		/*
-+		 * Extract the MAC Address in 'address2' field of the MAC
-+		 * header and update the MAC Address in the allocated 'data'
-+		 *  variable.
-+		 */
-+		ether_addr_copy(data, bssid + ADDR2);
- 	else if (get_to_ds(data) == 1)
--		get_address1(data, bssid);
-+		/*
-+		 * Extract the MAC Address in 'address1' field of the MAC
-+		 * header and update the MAC Address in the allocated 'data'
-+		 * variable.
-+		 */
-+		ether_addr_copy(data, bssid + ADDR1);
- 	else
--		get_address3(data, bssid);
-+		/*
-+		 * Extract the MAC Address in 'address3' field of the MAC
-+		 * header and update the MAC Address in the allocated 'data'
-+		 * variable.
-+		 */
-+		ether_addr_copy(data, bssid + ADDR3);
- }
- 
- /* This function extracts the SSID from a beacon/probe response frame        */
--- 
-2.1.0
-
+All right.
+Thank you
 
