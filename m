@@ -1,114 +1,82 @@
 X-GM-THRID: 6208143559134019584
-Date: Thu, 22 Oct 2015 03:30:57 -0700 (PDT)
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: navyasri.tech@gmail.com
-Message-Id: <ed5e219a-8d33-4c11-a003-211d9da23960@googlegroups.com>
+X-Received: by 10.112.144.105 with SMTP id sl9mr3329457lbb.3.1445503368149;
+        Thu, 22 Oct 2015 01:42:48 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.180.126.5 with SMTP id mu5ls576026wib.17.gmail; Thu, 22 Oct
+ 2015 01:42:47 -0700 (PDT)
+X-Received: by 10.180.10.202 with SMTP id k10mr8029364wib.2.1445503367675;
+        Thu, 22 Oct 2015 01:42:47 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id cm6si81991wib.1.2015.10.22.01.42.47
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 01:42:47 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.20,181,1444687200"; 
+   d="scan'208";a="151402122"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Oct 2015 10:42:46 +0200
+Date: Thu, 22 Oct 2015 10:42:36 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Daniel Baluta <daniel.baluta@gmail.com>
+cc: Navya Sri Nizamkari <navyasri.tech@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/5] Staging: xgifb: Add space between
+ ; and variable name
 In-Reply-To: <CAEnQRZBqVWVHtc_pRUemU-6qZMmbD90TzuGsWe-5Xuh63mXG2A@mail.gmail.com>
-References: <cover.1445445320.git.navyasri.tech@gmail.com>
- <b2831ecccc09c2e69d330c453f911d8a0ae61e0f.1445445320.git.navyasri.tech@gmail.com>
- <CAEnQRZBqVWVHtc_pRUemU-6qZMmbD90TzuGsWe-5Xuh63mXG2A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/5] Staging: xgifb: Add space
- between ; and variable name
+Message-ID: <alpine.DEB.2.10.1510221041590.2607@hadrien>
+References: <cover.1445445320.git.navyasri.tech@gmail.com> <b2831ecccc09c2e69d330c453f911d8a0ae61e0f.1445445320.git.navyasri.tech@gmail.com> <CAEnQRZBqVWVHtc_pRUemU-6qZMmbD90TzuGsWe-5Xuh63mXG2A@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_787_1161446475.1445509857665"
-X-Google-Token: EOH1orEF-RDEoTQi8Yw0
-X-Google-IP: 27.6.34.222
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-------=_Part_787_1161446475.1445509857665
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_788_1149586504.1445509857665"
+On Thu, 22 Oct 2015, Daniel Baluta wrote:
 
-------=_Part_788_1149586504.1445509857665
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-
-
-On Thursday, October 22, 2015 at 2:08:02 PM UTC+5:30, Daniel Baluta wrote:
+> On Wed, Oct 21, 2015 at 7:48 PM, Navya Sri Nizamkari
+> <navyasri.tech@gmail.com> wrote:
+> > This patch fixes the checkpatch.pl error:
+> >
+> > ERROR: space required after that ';'
+> >
+> > Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
+> > ---
+> >  drivers/staging/xgifb/vb_init.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/xgifb/vb_init.c b/drivers/staging/xgifb/vb_init.c
+> > index ea358a0..6204a98 100644
+> > --- a/drivers/staging/xgifb/vb_init.c
+> > +++ b/drivers/staging/xgifb/vb_init.c
+> > @@ -10,7 +10,7 @@ static const unsigned short XGINew_DDRDRAM_TYPE340[4][2] = {
+> >         { 16, 0x45},
+> >         {  8, 0x35},
+> >         {  4, 0x31},
+> > -       {  2, 0x21} };e
+> > +       {  2, 0x21} }; e
 >
-> On Wed, Oct 21, 2015 at 7:48 PM, Navya Sri Nizamkari 
-> <navyas...@gmail.com <javascript:>> wrote: 
-> > This patch fixes the checkpatch.pl error: 
-> > 
-> > ERROR: space required after that ';' 
-> > 
-> > Signed-off-by: Navya Sri Nizamkari <navyas...@gmail.com <javascript:>> 
-> > --- 
-> >  drivers/staging/xgifb/vb_init.c | 2 +- 
-> >  1 file changed, 1 insertion(+), 1 deletion(-) 
-> > 
-> > diff --git a/drivers/staging/xgifb/vb_init.c 
-> b/drivers/staging/xgifb/vb_init.c 
-> > index ea358a0..6204a98 100644 
-> > --- a/drivers/staging/xgifb/vb_init.c 
-> > +++ b/drivers/staging/xgifb/vb_init.c 
-> > @@ -10,7 +10,7 @@ static const unsigned short 
-> XGINew_DDRDRAM_TYPE340[4][2] = { 
-> >         { 16, 0x45}, 
-> >         {  8, 0x35}, 
-> >         {  4, 0x31}, 
-> > -       {  2, 0x21} };e 
-> > +       {  2, 0x21} }; e 
+> Hmm, something went wrong here :)
 >
-> Hmm, something went wrong here :) 
+> Please edit the file and remove 'e' after ';'. Otherwise, your code
+> wouldn't even compile.
+
+Also, this seems to be a patch on top of your previous patch, whereas your
+corrected patches should be on top of the current state of Greg's tree.
+
+julia
+
 >
-> Please edit the file and remove 'e' after ';'. Otherwise, your code 
-> wouldn't even compile. 
+> thanks,
+> Daniel.
 >
-> thanks, 
-> Daniel. 
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAEnQRZBqVWVHtc_pRUemU-6qZMmbD90TzuGsWe-5Xuh63mXG2A%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 >
-
-This 'e' seems the typo introduced by me. Sorry. Thanks for the correction. 
-
-------=_Part_788_1149586504.1445509857665
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<br><br>On Thursday, October 22, 2015 at 2:08:02 PM UTC+5:30, Daniel Baluta=
- wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.=
-8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Wed, Oct 21, 2015 at=
- 7:48 PM, Navya Sri Nizamkari
-<br>&lt;<a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-mailto=3D"=
-jEXXWoAHDgAJ" rel=3D"nofollow">navyas...@gmail.com</a>&gt; wrote:
-<br>&gt; This patch fixes the <a href=3D"http://checkpatch.pl" target=3D"_b=
-lank" rel=3D"nofollow">checkpatch.pl</a> error:
-<br>&gt;
-<br>&gt; ERROR: space required after that &#39;;&#39;
-<br>&gt;
-<br>&gt; Signed-off-by: Navya Sri Nizamkari &lt;<a href=3D"javascript:" tar=
-get=3D"_blank" gdf-obfuscated-mailto=3D"jEXXWoAHDgAJ" rel=3D"nofollow">navy=
-as...@gmail.com</a>&gt;
-<br>&gt; ---
-<br>&gt; =C2=A0drivers/staging/xgifb/vb_<wbr>init.c | 2 +-
-<br>&gt; =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>&gt;
-<br>&gt; diff --git a/drivers/staging/xgifb/vb_<wbr>init.c b/drivers/stagin=
-g/xgifb/vb_<wbr>init.c
-<br>&gt; index ea358a0..6204a98 100644
-<br>&gt; --- a/drivers/staging/xgifb/vb_<wbr>init.c
-<br>&gt; +++ b/drivers/staging/xgifb/vb_<wbr>init.c
-<br>&gt; @@ -10,7 +10,7 @@ static const unsigned short XGINew_DDRDRAM_TYPE3=
-40[4][2] =3D {
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 { 16, 0x45},
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 { =C2=A08, 0x35},
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 { =C2=A04, 0x31},
-<br>&gt; - =C2=A0 =C2=A0 =C2=A0 { =C2=A02, 0x21} };e
-<br>&gt; + =C2=A0 =C2=A0 =C2=A0 { =C2=A02, 0x21} }; e
-<br>
-<br>Hmm, something went wrong here :)
-<br>
-<br>Please edit the file and remove &#39;e&#39; after &#39;;&#39;. Otherwis=
-e, your code
-<br>wouldn&#39;t even compile.
-<br>
-<br>thanks,
-<br>Daniel.
-<br></blockquote><div><br>This &#39;e&#39; seems the typo introduced by me.=
- Sorry. Thanks for the correction. <br></div>
-------=_Part_788_1149586504.1445509857665--
-
-------=_Part_787_1161446475.1445509857665--
 
