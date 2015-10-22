@@ -1,49 +1,49 @@
 X-GM-THRID: 6208143559134019584
-X-Received: by 10.107.14.196 with SMTP id 187mr13862941ioo.24.1445532611069;
-        Thu, 22 Oct 2015 09:50:11 -0700 (PDT)
+X-Received: by 10.31.108.23 with SMTP id h23mr13360862vkc.4.1445532502466;
+        Thu, 22 Oct 2015 09:48:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.107.7 with SMTP id g7ls1715357qgf.98.gmail; Thu, 22 Oct
- 2015 09:50:10 -0700 (PDT)
-X-Received: by 10.13.223.72 with SMTP id i69mr12889038ywe.28.1445532610547;
-        Thu, 22 Oct 2015 09:50:10 -0700 (PDT)
+Received: by 10.50.13.36 with SMTP id e4ls1823374igc.13.canary; Thu, 22 Oct
+ 2015 09:48:22 -0700 (PDT)
+X-Received: by 10.67.14.6 with SMTP id fc6mr13765743pad.14.1445532502184;
+        Thu, 22 Oct 2015 09:48:22 -0700 (PDT)
 Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id sm2si435634pab.0.2015.10.22.09.50.10
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id zg1si1781403pbb.2.2015.10.22.09.48.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 09:50:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 09:48:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=navyasri.tech@gmail.com;
+       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=navyasri.tech@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id z6so91116382pas.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 09:50:10 -0700 (PDT)
+Received: by mail-pa0-x235.google.com with SMTP id fv9so95468500pac.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 09:48:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=Oq5OtjixwycaER4KW0hP4dtjXXJlTXpFeau7AfjyEvM=;
-        b=F0hOEDoWusGT8T8y2tiWmNTW/rYDh1bs3LOI0m8U0T/fJLuNaj5FX8Vp2jLTKpzpod
-         fSItQl1Bvd9LqfF3zjqbwaoCnlhl2EY46NK9ZCV6kT/W75C3tdoktp7VaCDvXMn3V4eN
-         KfFIfgskRIiPlJ3O/58PmvJQxnIobhnK6K9t90LGQPt6RiEg0SFanSViV/l9jUotX/FT
-         6vbHFwSKF8Ho9Arf2oageBjOvh45PAUCkAyJB9uUaSiv6Bua/sU+stE64asbeuRR4vgg
-         0Vb6/wU1GZEdKASys2csV+m/UZ8oORCGZYMIwWQJEMYBEcXgOBcpLid/fiLp16n+xJ5I
-         UJKQ==
-X-Received: by 10.66.157.72 with SMTP id wk8mr18354079pab.132.1445532610375;
-        Thu, 22 Oct 2015 09:50:10 -0700 (PDT)
+        bh=sL8AAFJ4p6M7/pJ+x8MgB6xjvm9Wpxpy+pZAlBSX1SU=;
+        b=0rnWFj2cS4Z80X72kcPLrDzT7lwr+o8K7r2z/ZmPGWq/6o8t9vuFLIiFjYRA5D6bNf
+         3InQDyEkM3METxrHJ+5pc8V5qcO2SdkM38c5ApifGTToJfwwW2D/iswu7xxL5ldPaKoD
+         02cXRKzZAWDKR/jMqaDZ2sQKsii7ciKs0aMt4AmgJNbDtJ2trAVb4ouWnQ4PHn3cgRAS
+         xBjW3A4PVbs5GXf19Lio1nj2IY3qLEVrIOXyZTu+MbAXNfpC/cLkrpKMg1SHlOk8Kryj
+         WbhOjt3ktMP6wbdhP5HJ/6R1UaGCW94gdxC2OfThI3dnkOKtKPLsACCKAx5nVM7Z7/bg
+         DFkQ==
+X-Received: by 10.68.249.34 with SMTP id yr2mr18482828pbc.73.1445532502062;
+        Thu, 22 Oct 2015 09:48:22 -0700 (PDT)
 Return-Path: <navyasri.tech@gmail.com>
 Received: from navya ([27.6.34.222])
-        by smtp.gmail.com with ESMTPSA id we9sm14732753pab.3.2015.10.22.09.50.09
+        by smtp.gmail.com with ESMTPSA id qb7sm14728963pab.47.2015.10.22.09.48.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 22 Oct 2015 09:50:10 -0700 (PDT)
-Date: Thu, 22 Oct 2015 22:20:15 +0530
+        Thu, 22 Oct 2015 09:48:21 -0700 (PDT)
+Date: Thu, 22 Oct 2015 22:18:26 +0530
 From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 4/4] Staging: xgifb: Remove space after cast
-Message-ID: <e8aa491d96948ebf4f6a9643cbb48ad0f519bbdd.1445527912.git.navyasri.tech@gmail.com>
+Subject: [PATCH v2 3/4] Staging: xgifb: Fix comparison to NULL warning
+Message-ID: <049c9140847061f21fb52984531ee0f2fa180172.1445527912.git.navyasri.tech@gmail.com>
 References: <cover.1445527912.git.navyasri.tech@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,47 +51,53 @@ Content-Disposition: inline
 In-Reply-To: <cover.1445527912.git.navyasri.tech@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch check:
-
-CHECK: No space is necessary after a cast
+Change comparison to NULL to a ! operation.
+Found using checkpatch.
 
 Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
 ---
 Changes in v2:
-   -Remove space between one more cast.
+   -Include one other NULL to ! operation conversion.
 
- drivers/staging/xgifb/vb_init.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/xgifb/vb_init.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/xgifb/vb_init.c b/drivers/staging/xgifb/vb_init.c
-index be30c13..879a7e6 100644
+index af91523..be30c13 100644
 --- a/drivers/staging/xgifb/vb_init.c
 +++ b/drivers/staging/xgifb/vb_init.c
-@@ -814,7 +814,7 @@ static int XGINew_DDRSizing340(struct xgi_hw_device_info *HwDeviceExtension,
+@@ -850,11 +850,11 @@ static u8 *xgifb_copy_rom(struct pci_dev *dev, size_t *rom_size)
+ 	u8 *rom_copy;
  
- 		memsize += (pVBInfo->ram_channel - 2) + 20;
- 		if ((HwDeviceExtension->ulVideoMemorySize - 1) <
--			(unsigned long) (1 << memsize))
-+			(unsigned long)(1 << memsize))
- 			continue;
+ 	rom_address = pci_map_rom(dev, rom_size);
+-	if (rom_address == NULL)
++	if (!rom_address)
+ 		return NULL;
  
- 		if (XGINew_ReadWriteRest(memsize, start_addr, pVBInfo) == 1)
-@@ -835,13 +835,13 @@ static void XGINew_SetDRAMSize_340(struct xgifb_video_info *xgifb_info,
+ 	rom_copy = vzalloc(XGIFB_ROM_SIZE);
+-	if (rom_copy == NULL)
++	if (!rom_copy)
+ 		goto done;
  
- 	data = xgifb_reg_get(pVBInfo->P3c4, 0x21);
- 	/* disable read cache */
--	xgifb_reg_set(pVBInfo->P3c4, 0x21, (unsigned short) (data & 0xDF));
-+	xgifb_reg_set(pVBInfo->P3c4, 0x21, (unsigned short)(data & 0xDF));
- 	XGI_DisplayOff(xgifb_info, HwDeviceExtension, pVBInfo);
+ 	*rom_size = min_t(size_t, *rom_size, XGIFB_ROM_SIZE);
+@@ -876,7 +876,7 @@ static bool xgifb_read_vbios(struct pci_dev *pdev)
+ 	int entry;
  
- 	XGINew_DDRSizing340(HwDeviceExtension, pVBInfo);
- 	data = xgifb_reg_get(pVBInfo->P3c4, 0x21);
- 	/* enable read cache */
--	xgifb_reg_set(pVBInfo->P3c4, 0x21, (unsigned short) (data | 0x20));
-+	xgifb_reg_set(pVBInfo->P3c4, 0x21, (unsigned short)(data | 0x20));
- }
+ 	vbios = xgifb_copy_rom(pdev, &vbios_size);
+-	if (vbios == NULL) {
++	if (!vbios) {
+ 		dev_err(&pdev->dev, "Video BIOS not available\n");
+ 		return false;
+ 	}
+@@ -1186,7 +1186,7 @@ unsigned char XGIInitNew(struct pci_dev *pdev)
  
- static u8 *xgifb_copy_rom(struct pci_dev *dev, size_t *rom_size)
+ 	pVBInfo->FBAddr = HwDeviceExtension->pjVideoMemoryAddress;
+ 
+-	if (pVBInfo->FBAddr == NULL) {
++	if (!pVBInfo->FBAddr) {
+ 		dev_dbg(&pdev->dev, "pVBInfo->FBAddr == 0\n");
+ 		return 0;
+ 	}
 -- 
 1.9.1
 
