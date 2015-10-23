@@ -1,72 +1,71 @@
 X-GM-THRID: 6208975538800820224
-X-Received: by 10.180.221.227 with SMTP id qh3mr1806264wic.2.1445667939017;
-        Fri, 23 Oct 2015 23:25:39 -0700 (PDT)
+X-Received: by 10.112.140.202 with SMTP id ri10mr5413309lbb.10.1445639771892;
+        Fri, 23 Oct 2015 15:36:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.147.16 with SMTP id v16ls421258lfd.63.gmail; Fri, 23 Oct
- 2015 23:25:38 -0700 (PDT)
-X-Received: by 10.112.55.69 with SMTP id q5mr5773798lbp.24.1445667938210;
-        Fri, 23 Oct 2015 23:25:38 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id o3si234144wiz.1.2015.10.23.23.25.38
+Received: by 10.180.92.163 with SMTP id cn3ls211715wib.38.gmail; Fri, 23 Oct
+ 2015 15:36:11 -0700 (PDT)
+X-Received: by 10.180.102.162 with SMTP id fp2mr1432873wib.4.1445639771508;
+        Fri, 23 Oct 2015 15:36:11 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id l1si18642wmb.3.2015.10.23.15.36.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 23:25:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Oct 2015 15:36:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,190,1444687200"; 
-   d="scan'208";a="151614532"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Oct 2015 08:25:37 +0200
-Date: Sat, 24 Oct 2015 08:25:36 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Burcin Akalin <brcnakalin@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: Removed parentheses.
-In-Reply-To: <1445639761-16571-1-git-send-email-brcnakalin@gmail.com>
-Message-ID: <alpine.DEB.2.02.1510240825210.2001@localhost6.localdomain6>
-References: <1445639761-16571-1-git-send-email-brcnakalin@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22e.google.com with SMTP id ll6so49166708wic.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 15:36:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=VgMQfUSNPtzczjO6u7cqgnxu61KS3+bTk1I/xuH5MM8=;
+        b=sGgw22gfSEucsOzFDKHD3f5LYkqOT5jhpBQUYSMn8ux9pD5Ktsosy+p6ttQNHo9AHY
+         ZpFHmf6knD2AxMAgywyYWTt/sbs5K0lALRNkRak7Lc7nnnPJFsLWElXWrhAZmUN6yQHz
+         8xrx7CkgInFZ2FtEDS3G3qsJTvrjooMM71mCBH6vPAbGmeHEvYEuo4DRpXnBuIGLYjri
+         y0QexZd/Un+H2v1RzUGbQTfCDor9zSZmh0vd/RPUVldSlcXLDJKvWxeSfaLSmX0Opd8p
+         oBgMRM/miLTmXiSbALZcX9PR0vSent7pbJJBSy+ikhjO20KjPwCRJd7VKCvw+/c84U05
+         +8qw==
+X-Received: by 10.180.108.148 with SMTP id hk20mr7183541wib.83.1445639771387;
+        Fri, 23 Oct 2015 15:36:11 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from localhost.localdomain ([95.13.215.164])
+        by smtp.gmail.com with ESMTPSA id ju5sm389292wjc.1.2015.10.23.15.36.10
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 23 Oct 2015 15:36:10 -0700 (PDT)
+From: Burcin Akalin <brcnakalin@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Burcin Akalin <brcnakalin@gmail.com>
+Subject: [PATCH] staging: dgnc: Removed parentheses.
+Date: Sat, 24 Oct 2015 01:36:01 +0300
+Message-Id: <1445639761-16571-1-git-send-email-brcnakalin@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Sat, 24 Oct 2015, Burcin Akalin wrote:
+Removed unnecessary parentheses.Problem found using checkpatch.pl
+"CHECK: Unnecessary parentheses around brd->vpd[i + 3]"
 
-> Removed unnecessary parentheses.Problem found using checkpatch.pl
-> "CHECK: Unnecessary parentheses around brd->vpd[i + 3]"
-> 
-> Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
-> ---
->  drivers/staging/dgnc/dgnc_neo.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
-> index 900e3ae..42005cb 100644
-> --- a/drivers/staging/dgnc/dgnc_neo.c
-> +++ b/drivers/staging/dgnc/dgnc_neo.c
-> @@ -1841,6 +1841,6 @@ static void neo_vpd(struct dgnc_board *brd)
->  		/* Search for the serial number */
->  		for (i = 0; i < NEO_VPD_IMAGEBYTES - 3; i++)
->  			if (brd->vpd[i] == 'S' && brd->vpd[i + 1] == 'N')
-> -				strncpy(brd->serial_num, &(brd->vpd[i + 3]), 9);
-> +				strncpy(brd->serial_num, & brd->vpd[i + 3], 9);
+Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+---
+ drivers/staging/dgnc/dgnc_neo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-You don't need a space after the & either.
+diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
+index 900e3ae..42005cb 100644
+--- a/drivers/staging/dgnc/dgnc_neo.c
++++ b/drivers/staging/dgnc/dgnc_neo.c
+@@ -1841,6 +1841,6 @@ static void neo_vpd(struct dgnc_board *brd)
+ 		/* Search for the serial number */
+ 		for (i = 0; i < NEO_VPD_IMAGEBYTES - 3; i++)
+ 			if (brd->vpd[i] == 'S' && brd->vpd[i + 1] == 'N')
+-				strncpy(brd->serial_num, &(brd->vpd[i + 3]), 9);
++				strncpy(brd->serial_num, & brd->vpd[i + 3], 9);
+ 	}
+ }
+-- 
+1.9.1
 
-julia
-
->  	}
->  }
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1445639761-16571-1-git-send-email-brcnakalin%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
