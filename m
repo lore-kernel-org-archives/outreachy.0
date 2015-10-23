@@ -1,99 +1,160 @@
-X-GM-THRID: 6210951142862487552
-X-Received: by 10.107.38.141 with SMTP id m135mr1221531iom.18.1446099752783;
-        Wed, 28 Oct 2015 23:22:32 -0700 (PDT)
+X-GM-THRID: 6208876911170420736
+X-Received: by 10.129.84.198 with SMTP id i189mr17841776ywb.32.1445616807081;
+        Fri, 23 Oct 2015 09:13:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.101.135 with SMTP id fg7ls61113obb.54.gmail; Wed, 28 Oct
- 2015 23:22:31 -0700 (PDT)
-X-Received: by 10.182.107.130 with SMTP id hc2mr300obb.39.1446099751230;
-        Wed, 28 Oct 2015 23:22:31 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id pe1si1393pac.2.2015.10.28.23.22.30
+Received: by 10.50.122.97 with SMTP id lr1ls245393igb.17.canary; Fri, 23 Oct
+ 2015 09:13:26 -0700 (PDT)
+X-Received: by 10.67.7.35 with SMTP id cz3mr17607277pad.40.1445616806623;
+        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id sm2si990877pab.0.2015.10.23.09.13.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 23:22:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id hy1so24823564pad.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 23:22:30 -0700 (PDT)
+Received: by mail-pa0-x22d.google.com with SMTP id hk11so122173776pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=cVbHA8NOHB2bs1FcjYIQ/OgBcW/343fEJ7IAW7k/MT4=;
-        b=EDp7KKnPKnJ2e+GTuUENwiOcmyvPgcv3kBqXV2XECWWVHOnNRYg3oELtRfVyqH6jJz
-         14e4htFUHEvJ9ZS7VDB4oma0wode/M+TBao/SC+R+7ZLPX9uGX5wAH1aVYgW1QKOVmPH
-         JIoVKjUhK6BLVaUj0vFDBb9E4d6/bOnD14zXiKDFtKNzfak+OeO5d9tGughtOE/GT5N0
-         Jw2Vv0mZKSNIdml/noFip3ADFCvrFxcwvJDzF1lpiKtZoxPdP70YcN1GznYkqCi+k1Aw
-         MFA+pzZI9L5HlLJSoPQc08282y8BaYE5Kba/SsKY31HtfKlsqxuBqpR/W/VJPBBe0+uZ
-         BdtA==
-X-Received: by 10.66.248.106 with SMTP id yl10mr38538913pac.73.1446099750932;
-        Wed, 28 Oct 2015 23:22:30 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id it10sm93833pbc.14.2015.10.28.23.22.29
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 23:22:30 -0700 (PDT)
-Date: Thu, 29 Oct 2015 11:52:23 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=Gk/VhvG2bGDYcxyLL6lRc5Y1JtcbK0nskAq6awZJo7c=;
+        b=ZGZASdjKYeCpUjh3GsvRFXq3M6H1661F39SiNlvpJTx5/w84405vH1ifM6OQLT4/x/
+         P+mJ2ln05ATW4kckuJNN0vJYIVLCiIMGNRZxqMzS6kq1PAyBMc72t85gh4022Tlb8gGO
+         MG7UU/w2XxEmbo+F308oKywXyesSnst5W7YMgFIEbD6UI8o/e3yADTkV0Dtdr9nXS9ZV
+         RW5Iwh1GdS4u74owycTJVNQu3vhk2zSooDYSU/k48u1Wk5seJCglLRNyBgTjzZn3+IqL
+         TtJit1yThcXHuZInlUmVWcbVleA3TdZqojcLD6tLgIkfoWYFNhggrEbfW48cmNpwtmTM
+         g6KQ==
+X-Received: by 10.69.10.163 with SMTP id eb3mr5999881pbd.162.1445616806512;
+        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([203.215.121.5])
+        by smtp.gmail.com with ESMTPSA id yq2sm19749657pbb.39.2015.10.23.09.13.25
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: rpc: Remove unnecessary wrapper function
-Message-ID: <20151029062222.GA36689@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH v2] Staging: mt29f_spinand: Use preferred kernel types
+Date: Sat, 24 Oct 2015 00:13:19 +0800
+Message-Id: <1445616799-27018-1-git-send-email-eraretuya@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Remove the function srpc_post_active_rqtbuf() and replace its only call
-with the function srpc_post_active_rdma() by adding and typecasting the
-appropriate parameters.
+Replace remaining instances of 'uint8_t' with 'u8' for consistency since
+'u8' and 'u16' are already being used in other parts of the code.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+Replace also 'uint32_t' with 'u32' on the header file.
+Checkpatch pointed out this issue.
+
+CHECK: Prefer kernel type 'u8' over 'uint8_t'
+CHECK: Prefer kernel type 'u32' over 'uint32_t'
+
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/lustre/lnet/selftest/rpc.c | 17 +++++------------
- 1 file changed, 5 insertions(+), 12 deletions(-)
+Changes in v2:
+ * Reflect type change on mt29f_spinand.h
+ * Update commit message
 
-diff --git a/drivers/staging/lustre/lnet/selftest/rpc.c b/drivers/staging/lustre/lnet/selftest/rpc.c
-index 162f9d3..cb895c3 100644
---- a/drivers/staging/lustre/lnet/selftest/rpc.c
-+++ b/drivers/staging/lustre/lnet/selftest/rpc.c
-@@ -445,15 +445,6 @@ srpc_post_active_rdma(int portal, __u64 matchbits, void *buf, int len,
+ drivers/staging/mt29f_spinand/mt29f_spinand.c | 18 +++++++++---------
+ drivers/staging/mt29f_spinand/mt29f_spinand.h |  4 ++--
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+index 4165fb4..a8292a1 100644
+--- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
++++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+@@ -145,7 +145,7 @@ static int spinand_read_id(struct spi_device *spi_nand, u8 *id)
+  *    Once the status turns to be ready, the other status bits also are
+  *    valid status bits.
+  */
+-static int spinand_read_status(struct spi_device *spi_nand, uint8_t *status)
++static int spinand_read_status(struct spi_device *spi_nand, u8 *status)
+ {
+ 	struct spinand_cmd cmd = {0};
+ 	int ret;
+@@ -478,7 +478,7 @@ static int spinand_program_page(struct spi_device *spi_nand,
+ {
+ 	int retval;
+ 	u8 status = 0;
+-	uint8_t *wbuf;
++	u8 *wbuf;
+ #ifdef CONFIG_MTD_SPINAND_ONDIEECC
+ 	unsigned int i, j;
+ 
+@@ -613,9 +613,9 @@ static int spinand_erase_block(struct spi_device *spi_nand, u16 block_id)
+ 
+ #ifdef CONFIG_MTD_SPINAND_ONDIEECC
+ static int spinand_write_page_hwecc(struct mtd_info *mtd,
+-		struct nand_chip *chip, const uint8_t *buf, int oob_required)
++		struct nand_chip *chip, const u8 *buf, int oob_required)
+ {
+-	const uint8_t *p = buf;
++	const u8 *p = buf;
+ 	int eccsize = chip->ecc.size;
+ 	int eccsteps = chip->ecc.steps;
+ 
+@@ -625,11 +625,11 @@ static int spinand_write_page_hwecc(struct mtd_info *mtd,
  }
  
- static int
--srpc_post_active_rqtbuf(lnet_process_id_t peer, int service, void *buf,
--			int len, lnet_handle_md_t *mdh, srpc_event_t *ev)
--{
--	return srpc_post_active_rdma(srpc_serv_portal(service), service,
--				     buf, len, LNET_MD_OP_PUT, peer,
--				     LNET_NID_ANY, mdh, ev);
--}
--
--static int
- srpc_post_passive_rqtbuf(int service, int local, void *buf, int len,
- 			 lnet_handle_md_t *mdh, srpc_event_t *ev)
+ static int spinand_read_page_hwecc(struct mtd_info *mtd, struct nand_chip *chip,
+-		uint8_t *buf, int oob_required, int page)
++		u8 *buf, int oob_required, int page)
  {
-@@ -798,9 +789,11 @@ srpc_send_request(srpc_client_rpc_t *rpc)
- 	ev->ev_data  = rpc;
- 	ev->ev_type  = SRPC_REQUEST_SENT;
+ 	int retval;
+ 	u8 status;
+-	uint8_t *p = buf;
++	u8 *p = buf;
+ 	int eccsize = chip->ecc.size;
+ 	int eccsteps = chip->ecc.steps;
+ 	struct spinand_info *info = (struct spinand_info *)chip->priv;
+@@ -667,7 +667,7 @@ static void spinand_select_chip(struct mtd_info *mtd, int dev)
+ {
+ }
  
--	rc = srpc_post_active_rqtbuf(rpc->crpc_dest, rpc->crpc_service,
--				     &rpc->crpc_reqstmsg, sizeof(srpc_msg_t),
--				     &rpc->crpc_reqstmdh, ev);
-+	rc = srpc_post_active_rdma(srpc_serv_portal(rpc->crpc_service),
-+				   rpc->crpc_service, &rpc->crpc_reqstmsg,
-+				   sizeof(srpc_msg_t), LNET_MD_OP_PUT,
-+				   (lnet_process_id_t)rpc->crpc_dest,
-+				   LNET_NID_ANY, &rpc->crpc_reqstmdh, ev);
- 	if (rc != 0) {
- 		LASSERT(rc == -ENOMEM);
- 		ev->ev_fired = 1;  /* no more event expected */
+-static uint8_t spinand_read_byte(struct mtd_info *mtd)
++static u8 spinand_read_byte(struct mtd_info *mtd)
+ {
+ 	struct spinand_state *state = mtd_to_state(mtd);
+ 	u8 data;
+@@ -707,7 +707,7 @@ static int spinand_wait(struct mtd_info *mtd, struct nand_chip *chip)
+ 	return 0;
+ }
+ 
+-static void spinand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
++static void spinand_write_buf(struct mtd_info *mtd, const u8 *buf, int len)
+ {
+ 	struct spinand_state *state = mtd_to_state(mtd);
+ 
+@@ -715,7 +715,7 @@ static void spinand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
+ 	state->buf_ptr += len;
+ }
+ 
+-static void spinand_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
++static void spinand_read_buf(struct mtd_info *mtd, u8 *buf, int len)
+ {
+ 	struct spinand_state *state = mtd_to_state(mtd);
+ 
+diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.h b/drivers/staging/mt29f_spinand/mt29f_spinand.h
+index 6c8e413..fe6c15a 100644
+--- a/drivers/staging/mt29f_spinand/mt29f_spinand.h
++++ b/drivers/staging/mt29f_spinand/mt29f_spinand.h
+@@ -84,8 +84,8 @@ struct spinand_info {
+ };
+ 
+ struct spinand_state {
+-	uint32_t	col;
+-	uint32_t	row;
++	u32	col;
++	u32	row;
+ 	int		buf_ptr;
+ 	u8		*buf;
+ };
 -- 
-2.1.0
+1.9.1
 
 
