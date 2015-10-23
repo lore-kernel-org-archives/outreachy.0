@@ -1,106 +1,102 @@
-X-GM-THRID: 6663318182228393984
-X-Received: by 2002:a25:b81:: with SMTP id 123mr1772752ybl.40.1551424661844;
-        Thu, 28 Feb 2019 23:17:41 -0800 (PST)
+X-GM-THRID: 6208828760687378432
+X-Received: by 10.107.17.8 with SMTP id z8mr65895ioi.12.1445610483601;
+        Fri, 23 Oct 2015 07:28:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:cd0a:: with SMTP id d10ls76625ybf.8.gmail; Thu, 28 Feb
- 2019 23:17:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwnS1nRPFdCWo9teZ7WzIDzZXgol1qDjRO9DxGeD/i0YAnFcevb1V4R2nG0d53aIlRR6ytx
-X-Received: by 2002:a25:6602:: with SMTP id a2mr1787745ybc.60.1551424660987;
-        Thu, 28 Feb 2019 23:17:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551424660; cv=none;
-        d=google.com; s=arc-20160816;
-        b=B7fsqDCciULZKnbXeNxbDppU7B9dmDvU1r/cB2BUcydkxGLjF5xwLTPK1uUsNSaPCd
-         Ecxl/8nCeOhT5pwO9NDBgW103zyh1EMHQk1bTfEKEXeXkiamrHHyMY+pPW2WG+oSHqC1
-         3QoqeqRbohoimDXSRmQsRlkm2IevmFg462R/dq8a4sOU/l7UB9ax5CRc4pT0zUO9NvQ4
-         pQRSYfrLzAAmvsqPNexqMh2IYhsqQqxWPsoBfd6vgR+LmQ5+JX0S/38Qi9R920cBaqNK
-         eU5CZA2Tiu1GY6QQXTYIqIFWtyln2rn0p8SS6sgIUBuBM0Jrd7GEBsPEOfihDyjRR+ck
-         HEfg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bhSsJe+ZiPTJ77lQTCfpuniakyLjQnXawBUyLKB04Tg=;
-        b=beWsiFSbCbFPZpNZYqOjG8kgoafhXd3V4pwKHa8A3OCguoaCfrCcTE8Xpas1riOG13
-         Rb+oUSKtO3ffUnhQJNkszjPWG/klkAaROLTGuvBpu7MbHaRj/KWX1tc+l9Fhv3rJ7Ait
-         aWhrd4JjT7q3mFgnduN8D4CzSipeXsPQGEGjlYv0zTGb3MHPSxZMncKOhv28j3nsPV5n
-         Zz+M6kPEnFhKTqZ9K76ZV36E0O9CRX68Azy95up6Ksu7PKqEJgIh5Lk+6QqkbMa+fMkn
-         lZzJ8lE6yaPPMzjErCTjo+KcYwIeq56FJUlTjN7CzLfQzSU80qyIfYZYtWFvlXYcP0Kl
-         W5ag==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K58ZkS+w;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id l39si1491027ywh.5.2019.02.28.23.17.40
+Received: by 10.182.250.164 with SMTP id zd4ls1007827obc.76.gmail; Fri, 23 Oct
+ 2015 07:28:03 -0700 (PDT)
+X-Received: by 10.182.106.228 with SMTP id gx4mr17264038obb.34.1445610483044;
+        Fri, 23 Oct 2015 07:28:03 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id el2si2296427pbb.0.2015.10.23.07.28.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 23:17:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Fri, 23 Oct 2015 07:28:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K58ZkS+w;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id j5so11013964pfa.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Feb 2019 23:17:40 -0800 (PST)
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x233.google.com with SMTP id z6so119875828pas.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 07:28:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=bhSsJe+ZiPTJ77lQTCfpuniakyLjQnXawBUyLKB04Tg=;
-        b=K58ZkS+wfThx75V26HQlMlAddLrf4FHWPeh/JwgI3DVbrxMGnbspnBhoczNMmjD8Kd
-         NKdPelVmhmfDwnOGWl8Nk4rhTD82Q4Z+IpBXMDi/UOEyT8Ybk67fKn2VOBaQxeK6hjqo
-         WMZRypfIUOIktvl3OywUscdwcmlcIqsnNlaZTb0O6N0yiPB48conMY1BVXF9aIQlQOAY
-         dGHR5c6B2U2d4ZpksCkUuLo/DUNfPOBua/sgDs1d2wTUrfquOmQEvjJ60UmNCnzPZUrh
-         KA3lYBHF/087BiPtA1QqKYZaD1YGLKByH3ZSjr7BMALx3JuFaYtAgqv4ZiZJDXxcONUk
-         qaqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bhSsJe+ZiPTJ77lQTCfpuniakyLjQnXawBUyLKB04Tg=;
-        b=tGhYeis7iGRPNbjvLrBKkWUEoZpBIJHtqZd87Jk6ezNX0we0D3tEy6IheRnw7Q1tyP
-         54R71a8UlwSr5sgYNfvHx0y96+5mVVpJCKV5a7Avw2kCYg9RRLzavfWaR2xlQIJsiaNK
-         0N22lY2UaagEYSe6o8vkvs5todaAC40uOm5jW1Kx5j8ST5iFBnFfWLSw5on+JLNEfX/T
-         GJcXwqk5oLXSQHtpWfUHXY9z1XtVqvtOl4YapnSzKL+crOJRqwiToq6yn0rsgCwbJZMz
-         Mjdf/ETldNFrmYh9MgsdTlW1UrLknhsEUL9DeOolG87w+MrzAg0XmDOwqCqjJ0i4Zc/F
-         G9Bw==
-X-Gm-Message-State: APjAAAWFHbSp8Z/oafHku1a7makbnxrFu1lk+R7UbVWr4yXc2f8B4ROh
-	4idGqvh7RNAMS2fGDpB/RvU=
-X-Received: by 2002:a63:3d7:: with SMTP id 206mr3388833pgd.350.1551424660200;
-        Thu, 28 Feb 2019 23:17:40 -0800 (PST)
-Return-Path: <etsai042@gmail.com>
-Received: from localhost.localdomain ([112.122.31.150])
-        by smtp.googlemail.com with ESMTPSA id q62sm36657766pfi.183.2019.02.28.23.17.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 23:17:39 -0800 (PST)
-From: Wentao Cai <etsai042@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Wentao Cai <etsai042@gmail.com>
-Subject: [PATCH] Staging: ks7010: Replace typecast to int
-Date: Fri,  1 Mar 2019 15:17:25 +0800
-Message-Id: <20190301071725.18261-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id;
+        bh=zcGCFlNa4nqhqLVbMn2O7BLopQ6dU4NVEtgGTrLkJlc=;
+        b=di4fxTuNFLggjg/WJGgQsaUnl4iVk2RX/THkLLUVvu+77gBaPzrNI21yDNGsBdq+8Z
+         lBQOlt2D4X6ET1CDGrOHbfmq9gzMFF4pgzFLsa0AQ++R8vYnOCHIdFFF+JnT9svSfv+S
+         bLB28KbTnJXErfihgKFsXauJX79s57Gazev9PUbFiBh+dyruV4XmWGoOJM5zr4PY4qf5
+         41m+p4gMHnK3Z0JhNUSpEbCfMnHYJRq6VC8/E2bQ5CADiyp3fpSEkFPMOG3buJtllzj5
+         mZQGe917yv7MmULoiDSi1wAKpaORYxELyxSApmGeKGNjJosfnqr7CPK0SW1uHq3kDtMz
+         krQw==
+X-Received: by 10.66.154.165 with SMTP id vp5mr5280875pab.90.1445610482844;
+        Fri, 23 Oct 2015 07:28:02 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id dd4sm19364097pbb.52.2015.10.23.07.27.59
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 23 Oct 2015 07:28:02 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2] Staging: rtl8723au: Use put_unaligned_le32
+Date: Fri, 23 Oct 2015 19:57:52 +0530
+Message-Id: <1445610472-2752-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150207.562A43F1.00AE,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-This patch fixes the checkpatch.pl warning:
-WARNING: Unnecessary typecast of c90 int constant
+Introduce the use of function put_unaligned_le32.
 
-Signed-off-by: Wentao Cai <etsai042@gmail.com>
+A simplified version of Coccinelle semantic patch used -
+
+@@ identifier tmp; expression ptr; expression y,e; type T; @@
+
+- tmp = cpu_to_le32(y);
+
+  <+... when != tmp
+- memcpy(ptr, (T)&tmp, ...);
++ put_unaligned_le32(y,ptr);
+  ...+>
+? tmp = e
+
+@@ type T; identifier tmp; @@
+
+- T tmp;
+...when != tmp
+
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/ks7010/ks_wlan_net.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2-
+ Update commit message
 
-diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-index dc5459ae0b51..3cffc8be6656 100644
---- a/drivers/staging/ks7010/ks_wlan_net.c
-+++ b/drivers/staging/ks7010/ks_wlan_net.c
-@@ -182,7 +182,7 @@ static int ks_wlan_set_freq(struct net_device *dev,
- 	/* for SLEEP MODE */
- 	/* If setting by frequency, convert to a channel */
- 	if ((fwrq->freq.e == 1) &&
--	    (fwrq->freq.m >= (int)2.412e8) && (fwrq->freq.m <= (int)2.487e8)) {
-+	    (fwrq->freq.m >= 241200000) && (fwrq->freq.m <= 248700000)) {
- 		int f = fwrq->freq.m / 100000;
- 		int c = 0;
+ drivers/staging/rtl8723au/hal/rtl8723a_cmd.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_cmd.c b/drivers/staging/rtl8723au/hal/rtl8723a_cmd.c
+index 9733aa6..1662c03c 100644
+--- a/drivers/staging/rtl8723au/hal/rtl8723a_cmd.c
++++ b/drivers/staging/rtl8723au/hal/rtl8723a_cmd.c
+@@ -127,8 +127,7 @@ int rtl8723a_set_raid_cmd(struct rtw_adapter *padapter, u32 mask, u8 arg)
+ 	u8 buf[5];
  
+ 	memset(buf, 0, 5);
+-	mask = cpu_to_le32(mask);
+-	memcpy(buf, &mask, 4);
++	put_unaligned_le32(mask, buf);
+ 	buf[4]  = arg;
+ 
+ 	FillH2CCmd(padapter, MACID_CONFIG_EID, 5, buf);
 -- 
-2.17.1
+2.1.4
 
 
