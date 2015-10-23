@@ -1,106 +1,89 @@
 X-GM-THRID: 6208527977579282432
-X-Received: by 10.182.102.194 with SMTP id fq2mr17402474obb.43.1445612875390;
-        Fri, 23 Oct 2015 08:07:55 -0700 (PDT)
+X-Received: by 10.194.189.81 with SMTP id gg17mr943660wjc.5.1445610100782;
+        Fri, 23 Oct 2015 07:21:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.131.197 with SMTP id n66ls1117390ioi.86.gmail; Fri, 23 Oct
- 2015 08:07:55 -0700 (PDT)
-X-Received: by 10.67.7.35 with SMTP id cz3mr17345810pad.40.1445612874993;
-        Fri, 23 Oct 2015 08:07:54 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id pe1si2264506pac.2.2015.10.23.08.07.54
+Received: by 10.180.186.180 with SMTP id fl20ls158699wic.11.canary; Fri, 23
+ Oct 2015 07:21:40 -0700 (PDT)
+X-Received: by 10.180.82.101 with SMTP id h5mr927307wiy.5.1445610100113;
+        Fri, 23 Oct 2015 07:21:40 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id o3si144646wiz.1.2015.10.23.07.21.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 08:07:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Oct 2015 07:21:40 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id z6so120653372pas.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 08:07:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+ECptmosJmMKiOYrBL2uFoBqSVaF+nDNTjc8Xf99fiU=;
-        b=sSv+NQQ2sYlussfIJUpVuVHsGB3DngXIr49lqWVvRPy0/xAQ5PTZZs7ITdUPPGUgfi
-         vIFlW30R7ZFMTkaI4WNBn1avfUB/KnRAtfwe56L6O+DEJsOPAI4/bSXhB11XV/UZtblm
-         OwUwd3EoZaZ09oClLiUqzep7TO7aK2Acp8O0TU0ZIkzAipwpExjzgr/KJh/VYYwVNs2u
-         W89zAibeRkez0/53a/IccAAcVjNxYOOpKTT/7eM6OR3q4Mp8hVU7ZKpMIbV8Ppbuc8yo
-         gDmH//NPQzETdw+e5MjJTO3VAN0dS1Gfxr5EnYfb9+OThQXJfyJnt8pt0WkEkRq3PcjM
-         WdpA==
-X-Received: by 10.69.14.225 with SMTP id fj1mr5604683pbd.103.1445612874826;
-        Fri, 23 Oct 2015 08:07:54 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.64.69.106])
-        by smtp.gmail.com with ESMTPSA id gv1sm19519653pbc.38.2015.10.23.08.07.53
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 23 Oct 2015 08:07:54 -0700 (PDT)
-Date: Fri, 23 Oct 2015 20:37:49 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: arnd@arndb.de, gregkh@linuxfoundation.org, y2038@lists.linaro.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3] misc: ibmasm: Replace timeval with timespec64
-Message-ID: <20151023150749.GA13762@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue003) with ESMTPSA (Nemesis) id 0MbLNo-1a8GXP1EXM-00IhRg; Fri, 23 Oct
+ 2015 16:21:39 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel <outreachy-kernel@googlegroups.com>, Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Y2038] [Outreachy kernel] [PATCH v2] misc: ibmasm: Replace timeval with timespec64
+Date: Fri, 23 Oct 2015 16:21:38 +0200
+Message-ID: <4334098.D135Jbk2rc@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CA+5yK5HXwj8fgv5wOmZgJ0hneotaaYvV+-r_DVB=GztoPtmG_Q@mail.gmail.com>
+References: <20151023122206.GA16757@amitoj-Inspiron-3542> <3821582.4qFXg7Ezn8@wuerfel> <CA+5yK5HXwj8fgv5wOmZgJ0hneotaaYvV+-r_DVB=GztoPtmG_Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:UVVvKSd8lh7y5Uz/PbS8+CtdwIQ898yfwrLr9dsAD28hlG8Is76
+ gRQY2fvOzneW32FYfvH8D5Zvo1AWtM+a9mr72QazdcUDpqqNgbeM8OtM6oD21QiPKORG74v
+ Ht8mQ4tgNlTXT3EF20wK1VbGuflIsad3gm1iwsFaqj9F/5f3L9jvDTjj6wufDT2HKmQnKgF
+ gd5xfsujUQNXsvSG1yFqw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:RsA4gHm/l6A=:35hhIG7+Bat/gDE0L8UE3w
+ qz9n+ZLVI23zAuFeYTjcwm178rDdBELNo/MwHIShHm9s8IE9GPYtxNlI7tP6f71VDaoXxQOxT
+ 4ulwRfZZJHw9mhs/0QxGCaavP1s51+See4GSsySmzXrjUSXLiI+VEzamBQq8Xgq68mtDnbLtj
+ uyUW290oyrqtOVo/4raBDUAUNdlr5XKyagQv/cEnEiJEaR8iLCbwktpYkkzOCd4SdEI3OyPlq
+ FIRal1oP3i0cojcHif+zEf21K+91HL6JMhhIpEbcuIUz+pmjVO5991KkIQI+fatvckFWgGhdN
+ gvhV1g47SuwLpHpmkrra89yBWhbYgD0cbjYRhY1UKo1PD2hWDTSXxz4UpTUW0VbuoGPNg5sb0
+ BcuL1fe30jRkdKpyUAElOEeqs5ckp8WygYoM6lbKO7IZtu0PTzQpxe94vBikyfaBsVGMh6WcO
+ KHXAr3LLikoNCWgiT5lGGMGm/CJMcGPGQo9g5eYh+HaDN5NWcRL3+FYkgPHbXXD875AYvFSoA
+ 0KDw3iayt1TWjgjpr8d9c/Mz1HRpKJNoBAJDOKuQ/c5yDgSZuv3EKFiGKNYfdbihkvuS3NvKe
+ l9pcw9ooCEKFJ9WkvNdoVjhNLEdoX+QzISNyPW1l6kWtKD4JQrhZz708E2kx6l55DZ2EeKChV
+ Uqz2kSgY2ZufM/uI674WmsQwApEwhYAXSqrZWZHp2VNi23XkcLUtuYD8ufRXzkr+++lxANEND
+ jgXUeSw2yoUgkZow
 
-This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
-will not give current time beyond 2038.
+On Friday 23 October 2015 19:28:00 Amitoj Kaur Chawla wrote:
+> On Fri, Oct 23, 2015 at 7:17 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> > On Friday 23 October 2015 15:39:49 Arnd Bergmann wrote:
+> >> On Friday 23 October 2015 17:52:06 Amitoj Kaur Chawla wrote:
+> >> > This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
+> >> > will not give current time beyond 2038.
+> >> >
+> >> > The patch changes the code to use ktime_get_real_ts64() which returns
+> >> > a 'struct timespec64' instead of do_gettimeofday() which returns a
+> >> > 'struct timeval'
+> >> >
+> >> > This patch also alters the format strings in sprintf() for now.tv_sec and
+> >> > now.tv_nsec to incorporate 'long long' on 32 bit architectures and
+> >> > leading zeroes respectively.
+> >> >
+> >> > Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> >>
+> >> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+> >
+> > I was going to suggest to send this to the maintainers now, but after
+> > checking the MAINTAINERS file myself, I see that this would be Greg and me 
+> >
+> > Greg, can you pick this up into the char-misc tree?
+> >
+> >         Arnd
+> 
+> Hi Arnd,
+> 
+> I made a slight error while sending v2 which I caught after figuring
+> out of my issue of compiling the module.
+> 
+> I'm sending a v3 after build testing it.
+> 
+> Should I cc you and Greg separately or let it be?
 
-The patch changes the code to use ktime_get_real_ts64() which returns
-a 'struct timespec64' instead of do_gettimeofday() which returns a
-'struct timeval'
+In general, it helps to Cc maintainers. We are good at ignoring duplicate
+mails.
 
-This patch also alters the format strings in sprintf() for now.tv_sec
-and now.tv_nsec to incorporate 'long long' on 32 bit architectures and
-leading zeroes respectively.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
----
-Changes in v2:
-        -change format string of now.tv_sec to '%llu'
-        -change format string of now.tv_nsec to '%.08lu'
-Changes in v3:
-        -Replace tv_usec with tv_nsec, error made in v2
-        -Build tested
-
- drivers/misc/ibmasm/ibmasm.h | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/misc/ibmasm/ibmasm.h b/drivers/misc/ibmasm/ibmasm.h
-index 9b08344..82380ae 100644
---- a/drivers/misc/ibmasm/ibmasm.h
-+++ b/drivers/misc/ibmasm/ibmasm.h
-@@ -34,6 +34,7 @@
- #include <linux/kref.h>
- #include <linux/device.h>
- #include <linux/input.h>
-+#include <linux/time64.h>
- 
- /* Driver identification */
- #define DRIVER_NAME	"ibmasm"
-@@ -53,9 +54,10 @@ extern int ibmasm_debug;
- 
- static inline char *get_timestamp(char *buf)
- {
--	struct timeval now;
--	do_gettimeofday(&now);
--	sprintf(buf, "%lu.%lu", now.tv_sec, now.tv_usec);
-+	struct timespec64 now;
-+	ktime_get_real_ts64(&now);
-+	sprintf(buf, "%llu.%.08lu", (long long)now.tv_sec, 
-+					now.tv_nsec / NSEC_PER_USEC);
- 	return buf;
- }
- 
--- 
-1.9.1
-
+	Arnd
 
