@@ -1,74 +1,100 @@
 X-GM-THRID: 6208527977579282432
-X-Received: by 10.182.58.105 with SMTP id p9mr16333237obq.21.1445603045459;
-        Fri, 23 Oct 2015 05:24:05 -0700 (PDT)
+X-Received: by 10.13.236.135 with SMTP id v129mr18573132ywe.9.1445602932222;
+        Fri, 23 Oct 2015 05:22:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.30.79 with SMTP id e76ls920042ioe.43.gmail; Fri, 23 Oct
- 2015 05:24:05 -0700 (PDT)
-X-Received: by 10.50.49.109 with SMTP id t13mr3115628ign.9.1445603045191;
-        Fri, 23 Oct 2015 05:24:05 -0700 (PDT)
+Received: by 10.140.32.201 with SMTP id h67ls2004953qgh.60.gmail; Fri, 23 Oct
+ 2015 05:22:11 -0700 (PDT)
+X-Received: by 10.129.51.213 with SMTP id z204mr16879539ywz.20.1445602931586;
+        Fri, 23 Oct 2015 05:22:11 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qk0-x232.google.com (mail-qk0-x232.google.com. [2607:f8b0:400d:c09::232])
-        by gmr-mx.google.com with ESMTPS id m124si1201716ywb.7.2015.10.23.05.24.05
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id el2si2241048pbb.0.2015.10.23.05.22.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 05:24:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender) client-ip=2607:f8b0:400d:c09::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Oct 2015 05:22:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-qk0-x232.google.com with SMTP id y65so72003272qkc.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 05:24:05 -0700 (PDT)
+Received: by mail-pa0-x22e.google.com with SMTP id fv9so122855637pac.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 05:22:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=LohxPXkNZNtAF4sRRc9vikMu0hmM7rh41oFLnWPy9h0=;
-        b=LvKcgmQliX4pK5LkOR/i9Fcfp6L2dBaMN4cZ8MZboz2WPgEjGDX8ckraKDf84m7/Cg
-         xsDYs5tueat9nPdkPmSsfyoQ3SukBdlgTI8xgVgeGNr+9YBBLElqJwIG6OEDxBh8ktCM
-         RK/0YR7QxWztn2KtPEDJ4EueT6BiuDg5OTICzG/UVkUJ9KvZooHhdCAau10Y8f5NKjV2
-         QrbCsZQDX6UJsupD58iSwGTwKRvg9VEKDR2bwcJoM523euj35/bdyzfc8f7G1sV6dez0
-         M63PUtuzht57PkpWuXX37vfwNJ0SwMpo8yqlwXqp2Si3yMzKOIRqiwkRemTcM6u9obo2
-         asFA==
-MIME-Version: 1.0
-X-Received: by 10.140.98.183 with SMTP id o52mr24674226qge.70.1445603045015;
- Fri, 23 Oct 2015 05:24:05 -0700 (PDT)
-Received: by 10.140.21.38 with HTTP; Fri, 23 Oct 2015 05:24:04 -0700 (PDT)
-In-Reply-To: <CAL7P5jK37Y7F81P23OsBE6cckNSBWBiDVxmMc5kUhv+43sS7xw@mail.gmail.com>
-References: <20151022173920.GA32329@amitoj-Inspiron-3542>
-	<8980519.8CTrMHEHrD@wuerfel>
-	<CA+5yK5HER69sFe9PuCisL-GNdOcKk686WDy956U8hzasO=1ZqQ@mail.gmail.com>
-	<CAL7P5jK37Y7F81P23OsBE6cckNSBWBiDVxmMc5kUhv+43sS7xw@mail.gmail.com>
-Date: Fri, 23 Oct 2015 17:54:04 +0530
-Message-ID: <CA+5yK5E-ZP4txCn8WSYemwgO6aB4YRDE7s+aGqmJMboCLUxHOA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH] misc: ibmasm: Replace
- timeval with timespec64
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=XVZY2ve7TgY+kS9PTXV8Ang9wMiYR9wbkgydZcT++NE=;
+        b=mQ0QWbLThZ3anfpm3aX/bSv83HFNO7/66l+r/v18Nt+hRS2wQC/XNk0g/p3uoe5YQn
+         5Us/H6UURrt4pwKjVDBly+2gJ4DQkqQrzntLBmpZ78AgIGmD+NxP9C7SArnY5AO4A343
+         0yUb0VgEQ8p11VO6xIq9wluXWuneLhsX2rHC+hwtDgHSRsNKgRmv8n3KbUDGLobv/DfG
+         XQuhPgIt53SxZ30XIp6Tc2KYZm0myfiQ4Ik7zLaW4TrVLFQssyJJvO+VB+oCW9lOYmIn
+         z7LM9eBCGYMaTsLzcE+aSZWsO/u64b1osJNMnTqHOOtq20vnsjh+cwWpaqNNEntkWGRJ
+         r7XQ==
+X-Received: by 10.68.98.195 with SMTP id ek3mr4937538pbb.36.1445602931362;
+        Fri, 23 Oct 2015 05:22:11 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.64.235.225])
+        by smtp.gmail.com with ESMTPSA id kp4sm18844683pbc.34.2015.10.23.05.22.10
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 23 Oct 2015 05:22:10 -0700 (PDT)
+Date: Fri, 23 Oct 2015 17:52:06 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, y2038@lists.linaro.org, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+To: outreachy-kernel@googlegroups.com
+Cc: y2038@lists.linaro.org
+Subject: [PATCH v2] misc: ibmasm: Replace timeval with timespec64
+Message-ID: <20151023122206.GA16757@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
->> Okay! Next patches will be the simple tasks. Also, I couldn't find the
->> tutorial you mentioned for compiling, can you help me out some there?
->
-> I think the tutorial mentioned is kernel newbies First patch tutorial and under
-> section Make a driver change:
-> http://kernelnewbies.org/Outreachyfirstpatch#head-816e6eef0008340eab7d542c3f6923a1f896478d
-> there is instruction how to compile your changes:
->
-> Compile your changes:
->
-> Recompile your kernel, by running make (with an optional -jN flag):
-> make -j2
+This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
+will not give current time beyond 2038.
 
-Hi Ksenija,
+The patch changes the code to use ktime_get_real_ts64() which returns
+a 'struct timespec64' instead of do_gettimeofday() which returns a
+'struct timeval'
 
-Thanks for the help. I'm already doing this, I was under the
-impression that Arnd was mentioning something other than this. I could
-be wrong.
+This patch also alters the format strings in sprintf() for now.tv_sec and
+now.tv_nsec to incorporate 'long long' on 32 bit architectures and
+leading zeroes respectively.
 
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v2:
+        -change format string of now.tv_sec to '%llu'
+        -change format string of now.tv_nsec to '%.08lu' 
+
+ drivers/misc/ibmasm/ibmasm.h | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/misc/ibmasm/ibmasm.h b/drivers/misc/ibmasm/ibmasm.h
+index 9b08344..d73be61 100644
+--- a/drivers/misc/ibmasm/ibmasm.h
++++ b/drivers/misc/ibmasm/ibmasm.h
+@@ -34,6 +34,7 @@
+ #include <linux/kref.h>
+ #include <linux/device.h>
+ #include <linux/input.h>
++#include <linux/time64.h>
+ 
+ /* Driver identification */
+ #define DRIVER_NAME	"ibmasm"
+@@ -53,9 +54,9 @@ extern int ibmasm_debug;
+ 
+ static inline char *get_timestamp(char *buf)
+ {
+-	struct timeval now;
+-	do_gettimeofday(&now);
+-	sprintf(buf, "%lu.%lu", now.tv_sec, now.tv_usec);
++	struct timespec64 now;
++	ktime_get_real_ts64(&now);
++	sprintf(buf, "%llu.%.08lu", (long long)now.tv_sec, now.tv_usec);
+ 	return buf;
+ }
+ 
 -- 
-Amitoj
+1.9.1
+
 
