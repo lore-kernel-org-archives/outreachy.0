@@ -1,133 +1,64 @@
 X-GM-THRID: 6208527977579282432
-X-Received: by 10.107.47.219 with SMTP id v88mr7973609iov.25.1445602743962;
-        Fri, 23 Oct 2015 05:19:03 -0700 (PDT)
+X-Received: by 10.194.248.131 with SMTP id ym3mr4608795wjc.7.1445587617174;
+        Fri, 23 Oct 2015 01:06:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.16.19 with SMTP id 19ls2003368qga.41.gmail; Fri, 23 Oct
- 2015 05:19:03 -0700 (PDT)
-X-Received: by 10.13.235.207 with SMTP id u198mr16509523ywe.3.1445602743291;
-        Fri, 23 Oct 2015 05:19:03 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-ig0-x22f.google.com (mail-ig0-x22f.google.com. [2607:f8b0:4001:c05::22f])
-        by gmr-mx.google.com with ESMTPS id j7si391569igu.1.2015.10.23.05.19.03
+Received: by 10.25.16.222 with SMTP id 91ls416122lfq.12.gmail; Fri, 23 Oct
+ 2015 01:06:56 -0700 (PDT)
+X-Received: by 10.112.145.201 with SMTP id sw9mr3234028lbb.13.1445587616527;
+        Fri, 23 Oct 2015 01:06:56 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id w4si219083wiz.0.2015.10.23.01.06.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 05:19:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::22f as permitted sender) client-ip=2607:f8b0:4001:c05::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Oct 2015 01:06:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-ig0-x22f.google.com with SMTP id ni9so33191953igb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 05:19:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=Wqx0vOw8Hfx3ShwMlrBsJAg2mEqiY6ADskhcjID7AYs=;
-        b=aMDI72WQq1FtngqjKlLPqfKWMnz1jYyFJcofgA4Ww4M86Q9HrwAqxUJIMlA6nVyUYQ
-         Rs0KcyrymSTlKhXpZuNr0IOirRhhN0QvvDIy20KzmHcMOL3zW5JabVbQ5UTMDJlS5GmA
-         iIu0QcMnOws4wi9Z3+vVsDNQuRLEhJPWX52GD4sWZ6AOa6+/1wj0dl1WM6kTXBTdE/ry
-         JEcTJrLs5CNg5/FlNWsl9ucbHoYspDWj4pwvwJ1+KOUMssU1rihhj55QcZEUF+zKQ12d
-         CdEL8dj3el3EeeXow3lprWVDzRRFL6J/QBYrnXsG/teGUb4PuekDO1EFJLXIB6oJVGoP
-         qIFA==
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue002) with ESMTPSA (Nemesis) id 0LyNJG-1adMXg0AJq-015u41; Fri, 23 Oct
+ 2015 10:06:54 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Y2038] [PATCH] misc: ibmasm: Replace timeval with timespec64
+Date: Fri, 23 Oct 2015 10:06:53 +0200
+Message-ID: <4548019.sSo3BcqfAg@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CA+5yK5GdMua2-ppTd6y4X=dMYgH8xqjp6nA3nFjCVt=Xkivm5A@mail.gmail.com>
+References: <20151022173920.GA32329@amitoj-Inspiron-3542> <CA+5yK5HER69sFe9PuCisL-GNdOcKk686WDy956U8hzasO=1ZqQ@mail.gmail.com> <CA+5yK5GdMua2-ppTd6y4X=dMYgH8xqjp6nA3nFjCVt=Xkivm5A@mail.gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.50.43.162 with SMTP id x2mr3812186igl.82.1445602743145; Fri,
- 23 Oct 2015 05:19:03 -0700 (PDT)
-Received: by 10.107.158.211 with HTTP; Fri, 23 Oct 2015 05:19:03 -0700 (PDT)
-In-Reply-To: <CA+5yK5HER69sFe9PuCisL-GNdOcKk686WDy956U8hzasO=1ZqQ@mail.gmail.com>
-References: <20151022173920.GA32329@amitoj-Inspiron-3542>
-	<8980519.8CTrMHEHrD@wuerfel>
-	<CA+5yK5HER69sFe9PuCisL-GNdOcKk686WDy956U8hzasO=1ZqQ@mail.gmail.com>
-Date: Fri, 23 Oct 2015 14:19:03 +0200
-Message-ID: <CAL7P5jK37Y7F81P23OsBE6cckNSBWBiDVxmMc5kUhv+43sS7xw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH] misc: ibmasm: Replace
- timeval with timespec64
-From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, y2038@lists.linaro.org, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:ekb5QVD8VH9H0InXHmAnrnVVqzOIcBTLByc8FxxCg9XUIZjE445
+ cvpe48r3M14oT+umhR6Tj09yS+5hiBI9FuaIplv+FHiLZjrX/Cl1Kp8Yhwv32yq1Ut8ZCWG
+ VgIFLxchGurpF/Z8QGlS4puI7XiZ3YF3ikqHs+YiPz9l+d5Q3wpWKO4FoZhoH+XovokkEaU
+ ZJSElbekAXJNtDyV0uHpA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:VrOKWYBK7Fw=:Kfsixu8h5rKUkgHnxiHyO2
+ /uFWKZdm9pZUnivyscPmkDj9d7yMZ1WkqZOGjVnY7o0r0toyZ4EmzYH8qG0PATeHCcJXEZYgc
+ /0lYl5YgrhxZnaw73QQd/ut0wa3K9VnE6qVd9B5Zn2hepBcwHVZIGmGIgDOYAYtDi1flDoFvI
+ jvyVl5OucUokBbMwGue4C3pxBsBEqDj6Z0cSPN2xLwx1BeZDo0hIIDsriSCu7kbQ3D47clSCV
+ ZeXfBxtzKTt40y6/nHlMrJ1F6TOHcCNStwZvZErZJHkmcUjq6fLQsaDnoM8xHRSo+AhTTX8Gl
+ XiXYnW9dw0PjjTmeV+2mvFxXBmYBK2M7/mZ0RLQsiV8Jg4E1P/wjdq+tH744l3jwVTD2Lzr1h
+ y2LcVBH6ABt7FkTmuOMc5gGH66QT/w+zUmVi82jEwqm+6vgfFtTlzW9T6RYP/TPJXMtVSpF4l
+ nGsax3GCYTCqdMnN+6Ft8flYK7XMs29XPXjAmFkcoCck9ihaJZa0F4Hmzt1upE8RJWbDQzcEd
+ FAZNxysP++5Hoq0ZGVuCgk95ZCzcFVi5ykSj270DuQE4NaslyL2nSTAC+EJlrZks6TJQxZWUF
+ 1v0sN73V5QdPxQkXmbiA48s3UT1u69hRQVVARpb54Go6whxUepsorsOIZAvbf9CNNLbxJbtsH
+ Giul7ZQ1yDJgQN8Fu/lfw8Kv0uAMq3Qy5n2FhlTwrRec7Wpc9yht/wS3UeNphPD1msrbG4eXq
+ x0QwNhxV3v/srPEe
 
-Hi Amitoj,
+On Friday 23 October 2015 08:55:22 Amitoj Kaur Chawla wrote:
+> >
+> > Just to clarify, I should change this to
+> >    sprintf(buf, "%llu.%8.8lu", now.tv_sec, now.tv_nsec / NSEC_PER_USEC);
+> >
+> 
+> Sorry, it should be changed to
+>     sprintf(buf, "%llu.%.08lu", (long long)now.tv_sec, now.tv_nsec /
+> NSEC_PER_USEC);
+> 
 
-On Fri, Oct 23, 2015 at 3:48 AM, Amitoj Kaur Chawla
-<amitoj1606@gmail.com> wrote:
-> On Fri, Oct 23, 2015 at 12:45 AM, Arnd Bergmann <arnd@arndb.de> wrote:
->> On Thursday 22 October 2015 23:09:20 Amitoj Kaur Chawla wrote:
->>> This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
->>> will not give current time beyond 2038.
->>>
->>> This also changes the code to use ktime_get_real_ts64() which returns
->>> a 'struct timespec64' instead of do_gettimeofday() which returns a
->>> 'struct timeval'
->>>
->>> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
->>
->> Looks almost right, except for one bit:
->>
->>> ---
->>>  drivers/misc/ibmasm/ibmasm.h | 7 ++++---
->>>  1 file changed, 4 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/drivers/misc/ibmasm/ibmasm.h b/drivers/misc/ibmasm/ibmasm.h
->>> index 9b08344..0c7bb6d 100644
->>> --- a/drivers/misc/ibmasm/ibmasm.h
->>> +++ b/drivers/misc/ibmasm/ibmasm.h
->>> @@ -34,6 +34,7 @@
->>>  #include <linux/kref.h>
->>>  #include <linux/device.h>
->>>  #include <linux/input.h>
->>> +#include <linux/time64.h>
->>>
->>>  /* Driver identification */
->>>  #define DRIVER_NAME    "ibmasm"
->>> @@ -53,9 +54,9 @@ extern int ibmasm_debug;
->>>
->>>  static inline char *get_timestamp(char *buf)
->>>  {
->>> -       struct timeval now;
->>> -       do_gettimeofday(&now);
->>> -       sprintf(buf, "%lu.%lu", now.tv_sec, now.tv_usec);
->>> +       struct timespec64 now;
->>> +       ktime_get_real_ts64(&now);
->>> +       sprintf(buf, "%lu.%lu", now.tv_sec, now.tv_nsec / NSEC_PER_USEC);
->>>         return buf;
->>>
->>
->> now.tv_sec is using a 'time_t' a.k.a. 'long' on 64-bit architectures, but
->> a 'time64_t' a.k.a. 'long long' on 32-bit architectures. This is a bit
->> nonintuitive, but please change the format string to %llu for the first
->> argument and add a corresponding cast to 's64' or 'long long', so we
->> actually print the correct data and do not get a compiler warning.
->>
->> The tv_nsec argument is always 'long', on both 32-bit and 64-bit
->> architectures, so there is no warning and we correctly print the
->> number. However, there is a preexisting bug in the format string
->> that you should fix while you are here: %lu drops leading zeroes,
->> which results in something like "12345678.1234" where we want to
->> see "1234567.001234". Please change the format string to add the
->> correct number of leading zeroes here.
->>
->
-> Just to clarify, I should change this to
->    sprintf(buf, "%llu.%8.8lu", now.tv_sec, now.tv_nsec / NSEC_PER_USEC);
->
->> As you seem to generally be doing well with the trivial patches, please
->> move on to the 'simple' category next. I should also add a few more
->> 'medium' level tasks but need to pick them carefully first.
->>
->
-> Okay! Next patches will be the simple tasks. Also, I couldn't find the
-> tutorial you mentioned for compiling, can you help me out some there?
+Yes, the last version of that looks correct to me.
 
-I think the tutorial mentioned is kernel newbies First patch tutorial and under
-section Make a driver change:
-http://kernelnewbies.org/Outreachyfirstpatch#head-816e6eef0008340eab7d542c3f6923a1f896478d
-there is instruction how to compile your changes:
-
-Compile your changes:
-
-Recompile your kernel, by running make (with an optional -jN flag):
-make -j2
+	Arnd
 
