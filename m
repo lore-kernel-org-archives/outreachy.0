@@ -1,176 +1,168 @@
-X-GM-THRID: 6211362438184435712
-X-Received: by 10.68.195.197 with SMTP id ig5mr5249647pbc.4.1446195514281;
-        Fri, 30 Oct 2015 01:58:34 -0700 (PDT)
+X-GM-THRID: 6208553968461676544
+X-Received: by 10.112.140.202 with SMTP id ri10mr4465322lbb.10.1445582016028;
+        Thu, 22 Oct 2015 23:33:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.42.19 with SMTP id b19ls869125qga.42.gmail; Fri, 30 Oct
- 2015 01:58:33 -0700 (PDT)
-X-Received: by 10.31.174.146 with SMTP id x140mr5239657vke.3.1446195513519;
-        Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id pe1si613357pac.2.2015.10.30.01.58.33
+Received: by 10.25.157.135 with SMTP id g129ls366404lfe.84.gmail; Thu, 22 Oct
+ 2015 23:33:35 -0700 (PDT)
+X-Received: by 10.112.173.170 with SMTP id bl10mr4544553lbc.7.1445582015389;
+        Thu, 22 Oct 2015 23:33:35 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
+        by gmr-mx.google.com with ESMTPS id l1si7195wmb.3.2015.10.22.23.33.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2015 23:33:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id hy1so62614780pad.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
+Received: by mail-wi0-x233.google.com with SMTP id q8so62214808wik.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 23:33:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ut40iSkmyEsBK0Dry9wl4kHAf1NhxLlNKQP4cmpxkjY=;
-        b=vBQJJq6/x5h88jCjXX8AsVgcakXm20vvRqR3fyjlir7kuvw+PeXaTx/9rx2bdhJvcp
-         5Me20LH5hFU05H5IQhu5LUWqUYe9tbS8q+1a4n126im7ZHSOKAm9zJSmhOmYUrRsT6Fz
-         SmJlLguLKQvbz5UdSNKeiPfMT5/zCsnPyjzYzVbxMSXQOgUB/Aet4f4qAm8pcHFwksmK
-         rfvpJ0do8idgaDNFys5gWm6mfSraprA2Z17+uZpLGhmNsviu8r8cqEp4yCrlnY+pCxVj
-         A24VzVjZpY2jrL4gcVbcoBwVYmnf7BfEzjrnIe6nTycpUoIRaT80iyzg5ilHy3H9JoPR
-         Xn+g==
-X-Received: by 10.68.178.1 with SMTP id cu1mr7285381pbc.99.1446195513052;
-        Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.173.100.45])
-        by smtp.gmail.com with ESMTPSA id wy8sm6871309pab.8.2015.10.30.01.58.31
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 30 Oct 2015 01:58:32 -0700 (PDT)
-Date: Fri, 30 Oct 2015 14:28:28 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org
-Subject: [PATCH] char: mmtimer: Replace timespec with timespec64
-Message-ID: <20151030085827.GA21224@amitoj-Inspiron-3542>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=6B3C47hTYjlqydcCAJOX27VMFlr3HnD9dkxQHT4FBG4=;
+        b=bLTExzL/2EL18L1AkdyU9p6DKhwh44HP9XuMTJ+zO8A9qI/SyE+xMb1qyzJeQWXFQU
+         UibzLD7Fy56MmDyDm1Dga6gPeeOvQrI+zb504st3ANJEoJemZxvbs8izLR6CzBzSg2lG
+         n68bB7wbC7hqVuDvZa6Y/D3wCaVYOp08AnaxS7iQPGvGbCzTWI7SbHqJx6sG9vy0zvoD
+         wAZDuv99KECzm8CN0v48svxS2vFCuroxq0ob1JdBzqDBIPDCwKRcLpxpqWdAFOMFFo3u
+         BfMRkZN4xK1L39S3PQdbm5STnfyzygDqxMk3zLHLNVHkW1E+DubG1YvwaN79JA3FZa0s
+         gnvA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.194.7.97 with SMTP id i1mr24256024wja.87.1445582015288; Thu,
+ 22 Oct 2015 23:33:35 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Thu, 22 Oct 2015 23:33:35 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.02.1510230824070.2068@localhost6.localdomain6>
+References: <20151022192006.GA23576@ubuntu>
+	<alpine.DEB.2.02.1510222128020.2066@localhost6.localdomain6>
+	<CAKHNQQGaEZ8DofL6F4psu-8Xg_PS5BShLh6Z=btxUDN8xLDNBQ@mail.gmail.com>
+	<alpine.DEB.2.02.1510230718540.2068@localhost6.localdomain6>
+	<CAKHNQQFZVD0CNUFpQpsyq876O87vLeYy9R92CpOCudsC3012eg@mail.gmail.com>
+	<alpine.DEB.2.02.1510230824070.2068@localhost6.localdomain6>
+Date: Fri, 23 Oct 2015 12:03:35 +0530
+Message-ID: <CAKHNQQHXzyAXQVFXF3LMTDee=x-wmhcQJv1nPATn5c9b6ke=2g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: coreconfigurator:
+ Remove unnecessary wrapper function
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-32 bit systems using struct timespec will overflow in y2038, so as
-part of y2038 cleanup replace struct timespec with struct timespec64.
+On Fri, Oct 23, 2015 at 11:54 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Fri, 23 Oct 2015, Shivani Bhardwaj wrote:
+>
+>> On Fri, Oct 23, 2015 at 10:50 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Fri, 23 Oct 2015, Shivani Bhardwaj wrote:
+>> >
+>> >> On Fri, Oct 23, 2015 at 12:59 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >> > On Fri, 23 Oct 2015, Shivani Bhardwaj wrote:
+>> >> >
+>> >> >> Remove the function get_current_channel() and replace its calls by
+>> >> >> get_current_channel_802_11n() as the former function's definition
+>> >> >> involves only returning the value of latter function.
+>> >> >> Semantic patch used to find out the issue:
+>> >> >>
+>> >> >> @@
+>> >> >> identifier f,g;
+>> >> >> @@
+>> >> >>
+>> >> >> *f(...) {
+>> >> >>  return g(...); }
+>> >> >>
+>> >> >> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+>> >> >> ---
+>> >> >>  drivers/staging/wilc1000/coreconfigurator.c | 14 +++++---------
+>> >> >>  1 file changed, 5 insertions(+), 9 deletions(-)
+>> >> >>
+>> >> >> diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
+>> >> >> index 6dfe26d..f20f2f3 100644
+>> >> >> --- a/drivers/staging/wilc1000/coreconfigurator.c
+>> >> >> +++ b/drivers/staging/wilc1000/coreconfigurator.c
+>> >> >> @@ -331,13 +331,6 @@ u8 get_current_channel_802_11n(u8 *pu8msa, u16 u16RxLen)
+>> >> >>       return 0;  /* no MIB here */
+>> >> >>  }
+>> >> >>
+>> >> >> -u8 get_current_channel(u8 *pu8msa, u16 u16RxLen)
+>> >> >> -{
+>> >> >> -     /* Extract current channel information from */
+>> >> >> -     /* the beacon/probe response frame          */
+>> >> >> -     return get_current_channel_802_11n(pu8msa, u16RxLen);
+>> >> >> -}
+>> >> >> -
+>> >> >>  /**
+>> >> >>   *  @brief                      parses the received 'N' message
+>> >> >>   *  @details
+>> >> >> @@ -425,8 +418,11 @@ s32 parse_network_info(u8 *pu8MsgBuffer, tstrNetworkInfo **ppstrNetworkInfo)
+>> >> >>               /* Get BSSID */
+>> >> >>               get_BSSID(pu8msa, pstrNetworkInfo->au8bssid);
+>> >> >>
+>> >> >> -             /* Get the current channel */
+>> >> >> -             pstrNetworkInfo->u8channel = get_current_channel(pu8msa, (u16RxLen + FCS_LEN));
+>> >> >> +             /*
+>> >> >> +              * Extract current channel information from
+>> >> >> +              * the beacon/probe response frame
+>> >> >> +              */
+>> >> >> +             pstrNetworkInfo->u8channel = get_current_channel_802_11n(pu8msa, (u16RxLen + FCS_LEN));
+>> >> >
+>> >> > This goes way over 80 characters.  I know the code went over 80 characters
+>> >> > before, but in constructing the new code, you could respect the 80
+>> >> > character limit at the same time.
+>> >> >
+>> >> > Another issue, if someone is looking for something to do with Coccinelle,
+>> >> > is that the parentheses on the second argument above and on the addition
+>> >> > below are not necessary.  But fixing that shouldn't be in the same patch.
+>> >> >
+>> >>
+>> >> I don't understand this issue, can you please elaborate a tad bit more?
+>> >
+>> > See below.
+>> >
+>> >> > julia
+>> >> >
+>> >> >>
+>> >> >>               /* Get beacon period */
+>> >> >>               u8index = (MAC_HDR_LEN + TIME_STAMP_LEN);
+>> >
+>> > This code could be u8index = MAC_HDR_LEN + TIME_STAMP_LEN;.  Parentheses
+>> > on the outside of an expression don't help anything.
+>> >
+>> > julia
+>> >
+>>
+>> I get that. Thanks. I'm sending v2.
+>
+> Dropping the parens shouldn't be in the same patch.  It could be in a
+> series.
+>
+> julia
+>
 
-This patch replaces struct itimerspec with struct itimerspec64.
+I'll take care. Thanks!
 
-This patch also replaces getnstimeofday() and timespec_to_ns() with 
-ktime_get_real_ns() to return the current time in nanoseconds.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/char/mmtimer.c | 34 +++++++++++++++-------------------
- 1 file changed, 15 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/char/mmtimer.c b/drivers/char/mmtimer.c
-index 3d6c067..42a64e5 100644
---- a/drivers/char/mmtimer.c
-+++ b/drivers/char/mmtimer.c
-@@ -30,7 +30,8 @@
- #include <linux/miscdevice.h>
- #include <linux/posix-timers.h>
- #include <linux/interrupt.h>
--#include <linux/time.h>
-+#include <linux/ktime.h>
-+#include <linux/time64.h>
- #include <linux/math64.h>
- #include <linux/mutex.h>
- #include <linux/slab.h>
-@@ -468,28 +469,25 @@ static struct miscdevice mmtimer_miscdev = {
- 	&mmtimer_fops
- };
- 
--static struct timespec sgi_clock_offset;
--static int sgi_clock_period;
--
- /*
-  * Posix Timer Interface
-  */
- 
--static struct timespec sgi_clock_offset;
-+static struct timespec64 sgi_clock_offset;
- static int sgi_clock_period;
- 
--static int sgi_clock_get(clockid_t clockid, struct timespec *tp)
-+static int sgi_clock_get(clockid_t clockid, struct timespec64 *tp)
- {
- 	u64 nsec;
- 
- 	nsec = rtc_time() * sgi_clock_period
- 			+ sgi_clock_offset.tv_nsec;
--	*tp = ns_to_timespec(nsec);
-+	*tp = ns_to_timespec64(nsec);
- 	tp->tv_sec += sgi_clock_offset.tv_sec;
- 	return 0;
- };
- 
--static int sgi_clock_set(const clockid_t clockid, const struct timespec *tp)
-+static int sgi_clock_set(const clockid_t clockid, const struct timespec64 *tp)
- {
- 
- 	u64 nsec;
-@@ -657,7 +655,7 @@ static int sgi_timer_del(struct k_itimer *timr)
- }
- 
- /* Assumption: it_lock is already held with irq's disabled */
--static void sgi_timer_get(struct k_itimer *timr, struct itimerspec *cur_setting)
-+static void sgi_timer_get(struct k_itimer *timr, struct itimerspec64 *cur_setting)
- {
- 
- 	if (timr->it.mmtimer.clock == TIMER_OFF) {
-@@ -668,14 +666,14 @@ static void sgi_timer_get(struct k_itimer *timr, struct itimerspec *cur_setting)
- 		return;
- 	}
- 
--	cur_setting->it_interval = ns_to_timespec(timr->it.mmtimer.incr * sgi_clock_period);
--	cur_setting->it_value = ns_to_timespec((timr->it.mmtimer.expires - rtc_time()) * sgi_clock_period);
-+	cur_setting->it_interval = ns_to_timespec64(timr->it.mmtimer.incr * sgi_clock_period);
-+	cur_setting->it_value = ns_to_timespec64((timr->it.mmtimer.expires - rtc_time()) * sgi_clock_period);
- }
- 
- 
- static int sgi_timer_set(struct k_itimer *timr, int flags,
--	struct itimerspec * new_setting,
--	struct itimerspec * old_setting)
-+	struct itimerspec64 * new_setting,
-+	struct itimerspec64 * old_setting)
- {
- 	unsigned long when, period, irqflags;
- 	int err = 0;
-@@ -687,8 +685,8 @@ static int sgi_timer_set(struct k_itimer *timr, int flags,
- 		sgi_timer_get(timr, old_setting);
- 
- 	sgi_timer_del(timr);
--	when = timespec_to_ns(&new_setting->it_value);
--	period = timespec_to_ns(&new_setting->it_interval);
-+	when = timespec64_to_ns(&new_setting->it_value);
-+	period = timespec64_to_ns(&new_setting->it_interval);
- 
- 	if (when == 0)
- 		/* Clear timer */
-@@ -699,11 +697,9 @@ static int sgi_timer_set(struct k_itimer *timr, int flags,
- 		return -ENOMEM;
- 
- 	if (flags & TIMER_ABSTIME) {
--		struct timespec n;
- 		unsigned long now;
- 
--		getnstimeofday(&n);
--		now = timespec_to_ns(&n);
-+		now = ktime_get_real_ns();
- 		if (when > now)
- 			when -= now;
- 		else
-@@ -765,7 +761,7 @@ static int sgi_timer_set(struct k_itimer *timr, int flags,
- 	return err;
- }
- 
--static int sgi_clock_getres(const clockid_t which_clock, struct timespec *tp)
-+static int sgi_clock_getres(const clockid_t which_clock, struct timespec64 *tp)
- {
- 	tp->tv_sec = 0;
- 	tp->tv_nsec = sgi_clock_period;
--- 
-1.9.1
-
+>>
+>> >> >> 2.1.0
+>> >> >>
+>> >> >> --
+>> >> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151022192006.GA23576%40ubuntu.
+>> >> >> For more options, visit https://groups.google.com/d/optout.
+>> >> >>
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKHNQQGaEZ8DofL6F4psu-8Xg_PS5BShLh6Z%3DbtxUDN8xLDNBQ%40mail.gmail.com.
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >>
+>>
 
