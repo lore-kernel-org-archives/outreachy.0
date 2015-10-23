@@ -1,89 +1,146 @@
 X-GM-THRID: 6208527977579282432
-X-Received: by 10.194.189.81 with SMTP id gg17mr943660wjc.5.1445610100782;
-        Fri, 23 Oct 2015 07:21:40 -0700 (PDT)
+X-Received: by 10.68.88.196 with SMTP id bi4mr3571088pbb.6.1445609133598;
+        Fri, 23 Oct 2015 07:05:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.186.180 with SMTP id fl20ls158699wic.11.canary; Fri, 23
- Oct 2015 07:21:40 -0700 (PDT)
-X-Received: by 10.180.82.101 with SMTP id h5mr927307wiy.5.1445610100113;
-        Fri, 23 Oct 2015 07:21:40 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id o3si144646wiz.1.2015.10.23.07.21.40
+Received: by 10.140.83.48 with SMTP id i45ls2262154qgd.21.gmail; Fri, 23 Oct
+ 2015 07:05:32 -0700 (PDT)
+X-Received: by 10.129.79.87 with SMTP id d84mr17996288ywb.4.1445609132859;
+        Fri, 23 Oct 2015 07:05:32 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qk0-x22b.google.com (mail-qk0-x22b.google.com. [2607:f8b0:400d:c09::22b])
+        by gmr-mx.google.com with ESMTPS id d207si1368710ywb.4.2015.10.23.07.05.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 07:21:40 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Oct 2015 07:05:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) client-ip=2607:f8b0:400d:c09::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue003) with ESMTPSA (Nemesis) id 0MbLNo-1a8GXP1EXM-00IhRg; Fri, 23 Oct
- 2015 16:21:39 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: y2038@lists.linaro.org
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel <outreachy-kernel@googlegroups.com>, Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [Y2038] [Outreachy kernel] [PATCH v2] misc: ibmasm: Replace timeval with timespec64
-Date: Fri, 23 Oct 2015 16:21:38 +0200
-Message-ID: <4334098.D135Jbk2rc@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CA+5yK5HXwj8fgv5wOmZgJ0hneotaaYvV+-r_DVB=GztoPtmG_Q@mail.gmail.com>
-References: <20151023122206.GA16757@amitoj-Inspiron-3542> <3821582.4qFXg7Ezn8@wuerfel> <CA+5yK5HXwj8fgv5wOmZgJ0hneotaaYvV+-r_DVB=GztoPtmG_Q@mail.gmail.com>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qk0-x22b.google.com with SMTP id y65so75134754qkc.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 07:05:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=LQp9oVP6jkcSE5IWJi1TiBz8MAlD7UFsPL03pYl8nqQ=;
+        b=B1A/xP24Gsb+y0mefLWkcaQuzsZaJHzK41Jxu6bhrJxbt0tfnlsx4Y/HiSinPkiEei
+         1WguKkMLtNnCMAUR5WB+UuBcUFSQHgdh6H1tAuEpIefTFp/A+qvjtbeRthLZjhsx4jIA
+         7ZztNXtIARc2EbczUZpKJ7HeAwzvuA++crzrPronh7zifv5GgrkbM9KVZqKnWp/ecwUn
+         PU5YNmmrfrrB6nsUFXACCfu8lIHE6ATJTA8uKyJDNmaL6msj4/9HChjTwsMf2/abuyp1
+         9Fm/dHycT25cRRcln1iy1bg3PZ8VNiAOtZvweJEI1/uKC4fMNJ/E7Q/npmymC+hA5xvX
+         8/pA==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:UVVvKSd8lh7y5Uz/PbS8+CtdwIQ898yfwrLr9dsAD28hlG8Is76
- gRQY2fvOzneW32FYfvH8D5Zvo1AWtM+a9mr72QazdcUDpqqNgbeM8OtM6oD21QiPKORG74v
- Ht8mQ4tgNlTXT3EF20wK1VbGuflIsad3gm1iwsFaqj9F/5f3L9jvDTjj6wufDT2HKmQnKgF
- gd5xfsujUQNXsvSG1yFqw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:RsA4gHm/l6A=:35hhIG7+Bat/gDE0L8UE3w
- qz9n+ZLVI23zAuFeYTjcwm178rDdBELNo/MwHIShHm9s8IE9GPYtxNlI7tP6f71VDaoXxQOxT
- 4ulwRfZZJHw9mhs/0QxGCaavP1s51+See4GSsySmzXrjUSXLiI+VEzamBQq8Xgq68mtDnbLtj
- uyUW290oyrqtOVo/4raBDUAUNdlr5XKyagQv/cEnEiJEaR8iLCbwktpYkkzOCd4SdEI3OyPlq
- FIRal1oP3i0cojcHif+zEf21K+91HL6JMhhIpEbcuIUz+pmjVO5991KkIQI+fatvckFWgGhdN
- gvhV1g47SuwLpHpmkrra89yBWhbYgD0cbjYRhY1UKo1PD2hWDTSXxz4UpTUW0VbuoGPNg5sb0
- BcuL1fe30jRkdKpyUAElOEeqs5ckp8WygYoM6lbKO7IZtu0PTzQpxe94vBikyfaBsVGMh6WcO
- KHXAr3LLikoNCWgiT5lGGMGm/CJMcGPGQo9g5eYh+HaDN5NWcRL3+FYkgPHbXXD875AYvFSoA
- 0KDw3iayt1TWjgjpr8d9c/Mz1HRpKJNoBAJDOKuQ/c5yDgSZuv3EKFiGKNYfdbihkvuS3NvKe
- l9pcw9ooCEKFJ9WkvNdoVjhNLEdoX+QzISNyPW1l6kWtKD4JQrhZz708E2kx6l55DZ2EeKChV
- Uqz2kSgY2ZufM/uI674WmsQwApEwhYAXSqrZWZHp2VNi23XkcLUtuYD8ufRXzkr+++lxANEND
- jgXUeSw2yoUgkZow
+X-Received: by 10.140.34.75 with SMTP id k69mr18893601qgk.64.1445609132515;
+ Fri, 23 Oct 2015 07:05:32 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Fri, 23 Oct 2015 07:05:32 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1510231424110.2437@hadrien>
+References: <20151022173920.GA32329@amitoj-Inspiron-3542>
+	<8980519.8CTrMHEHrD@wuerfel>
+	<CA+5yK5HER69sFe9PuCisL-GNdOcKk686WDy956U8hzasO=1ZqQ@mail.gmail.com>
+	<CAL7P5jK37Y7F81P23OsBE6cckNSBWBiDVxmMc5kUhv+43sS7xw@mail.gmail.com>
+	<CA+5yK5E-ZP4txCn8WSYemwgO6aB4YRDE7s+aGqmJMboCLUxHOA@mail.gmail.com>
+	<alpine.DEB.2.10.1510231424110.2437@hadrien>
+Date: Fri, 23 Oct 2015 19:35:32 +0530
+Message-ID: <CA+5yK5EfqA5jD20FYFw940_V6d4zvMGPkPzxSCgN2rBf0fi+HQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH] misc: ibmasm: Replace
+ timeval with timespec64
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>, 
+	Arnd Bergmann <arnd@arndb.de>, y2038@lists.linaro.org, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a11c0d406d3e7550522c61ad6
 
-On Friday 23 October 2015 19:28:00 Amitoj Kaur Chawla wrote:
-> On Fri, Oct 23, 2015 at 7:17 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> > On Friday 23 October 2015 15:39:49 Arnd Bergmann wrote:
-> >> On Friday 23 October 2015 17:52:06 Amitoj Kaur Chawla wrote:
-> >> > This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
-> >> > will not give current time beyond 2038.
-> >> >
-> >> > The patch changes the code to use ktime_get_real_ts64() which returns
-> >> > a 'struct timespec64' instead of do_gettimeofday() which returns a
-> >> > 'struct timeval'
-> >> >
-> >> > This patch also alters the format strings in sprintf() for now.tv_sec and
-> >> > now.tv_nsec to incorporate 'long long' on 32 bit architectures and
-> >> > leading zeroes respectively.
-> >> >
-> >> > Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> >>
-> >> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
-> >
-> > I was going to suggest to send this to the maintainers now, but after
-> > checking the MAINTAINERS file myself, I see that this would be Greg and me 
-> >
-> > Greg, can you pick this up into the char-misc tree?
-> >
-> >         Arnd
-> 
-> Hi Arnd,
-> 
-> I made a slight error while sending v2 which I caught after figuring
-> out of my issue of compiling the module.
-> 
-> I'm sending a v3 after build testing it.
-> 
-> Should I cc you and Greg separately or let it be?
+--001a11c0d406d3e7550522c61ad6
+Content-Type: text/plain; charset=UTF-8
 
-In general, it helps to Cc maintainers. We are good at ignoring duplicate
-mails.
+On Fri, Oct 23, 2015 at 5:55 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Fri, 23 Oct 2015, Amitoj Kaur Chawla wrote:
+>
+>> >> Okay! Next patches will be the simple tasks. Also, I couldn't find the
+>> >> tutorial you mentioned for compiling, can you help me out some there?
+>> >
+>> > I think the tutorial mentioned is kernel newbies First patch tutorial
+and under
+>> > section Make a driver change:
+>> >
+http://kernelnewbies.org/Outreachyfirstpatch#head-816e6eef0008340eab7d542c3f6923a1f896478d
+>> > there is instruction how to compile your changes:
+>> >
+>> > Compile your changes:
+>> >
+>> > Recompile your kernel, by running make (with an optional -jN flag):
+>> > make -j2
+>>
+>> Hi Ksenija,
+>>
+>> Thanks for the help. I'm already doing this, I was under the
+>> impression that Arnd was mentioning something other than this. I could
+>> be wrong.
+>
+> Are you sure that you have a .o file for the code you are working on?  And
+> if you do, are you compiling the whole kernel?  Maybe the problem is
+> related to linking?
+>
+> julia
 
-	Arnd
+Yep, found the issue.
+
+For reference of other applicants in case they get stuck in a similar
+issue, I'll clarify what happened.
+
+I had initially modified only staging drivers to be compilable as a module.
+But here I was working on other drivers. Hence the issue.
+
+The Outreachyfirstpatch <http://kernelnewbies.org/Outreachyfirstpatch> page
+specifies the process for staging drivers. For other drivers, the Kconfig
+file can be referred to for finding the driver to make it compilable as a
+module.
+
+
+Thank you Julia for helping out!
+
+
+-- 
+Amitoj
+
+--001a11c0d406d3e7550522c61ad6
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Fri, Oct 23, 2015 at 5:55 PM, Julia Lawall &lt;=
+<a href=3D"mailto:julia.lawall@lip6.fr">julia.lawall@lip6.fr</a>&gt; wrote:=
+<br>&gt;<br>&gt;<br>&gt; On Fri, 23 Oct 2015, Amitoj Kaur Chawla wrote:<br>=
+&gt;<br>&gt;&gt; &gt;&gt; Okay! Next patches will be the simple tasks. Also=
+, I couldn&#39;t find the<br>&gt;&gt; &gt;&gt; tutorial you mentioned for c=
+ompiling, can you help me out some there?<br>&gt;&gt; &gt;<br>&gt;&gt; &gt;=
+ I think the tutorial mentioned is kernel newbies First patch tutorial and =
+under<br>&gt;&gt; &gt; section Make a driver change:<br>&gt;&gt; &gt; <a hr=
+ef=3D"http://kernelnewbies.org/Outreachyfirstpatch#head-816e6eef0008340eab7=
+d542c3f6923a1f896478d">http://kernelnewbies.org/Outreachyfirstpatch#head-81=
+6e6eef0008340eab7d542c3f6923a1f896478d</a><br>&gt;&gt; &gt; there is instru=
+ction how to compile your changes:<br>&gt;&gt; &gt;<br>&gt;&gt; &gt; Compil=
+e your changes:<br>&gt;&gt; &gt;<br>&gt;&gt; &gt; Recompile your kernel, by=
+ running make (with an optional -jN flag):<br>&gt;&gt; &gt; make -j2<br>&gt=
+;&gt;<br>&gt;&gt; Hi Ksenija,<br>&gt;&gt;<br>&gt;&gt; Thanks for the help. =
+I&#39;m already doing this, I was under the<br>&gt;&gt; impression that Arn=
+d was mentioning something other than this. I could<br>&gt;&gt; be wrong.<b=
+r>&gt;<br>&gt; Are you sure that you have a .o file for the code you are wo=
+rking on?=C2=A0 And<br>&gt; if you do, are you compiling the whole kernel?=
+=C2=A0 Maybe the problem is<br>&gt; related to linking?<br>&gt;<br>&gt; jul=
+ia<br><br>Yep, found the issue.<br><br>For reference of other applicants in=
+ case they get stuck in a similar issue, I&#39;ll clarify what happened.<br=
+><br>I had initially modified only staging drivers to be compilable as a mo=
+dule. But here I was working on other drivers. Hence the issue.<br><br>The =
+<a href=3D"http://kernelnewbies.org/Outreachyfirstpatch">Outreachyfirstpatc=
+h</a>=C2=A0page specifies the process for staging drivers. For other driver=
+s, the Kconfig file can be referred to for finding the driver to make it co=
+mpilable as a module.<br><br><br>Thank you Julia for helping out!<div><br><=
+/div><div><br>-- <br>Amitoj</div></div>
+
+--001a11c0d406d3e7550522c61ad6--
 
