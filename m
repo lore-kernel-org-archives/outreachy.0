@@ -1,49 +1,49 @@
 X-GM-THRID: 6209065689827770368
-X-Received: by 10.182.68.104 with SMTP id v8mr9156821obt.9.1445661036095;
-        Fri, 23 Oct 2015 21:30:36 -0700 (PDT)
+X-Received: by 10.31.108.23 with SMTP id h23mr20306468vkc.4.1445660882307;
+        Fri, 23 Oct 2015 21:28:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.16.168 with SMTP id 37ls877741qgb.52.gmail; Fri, 23 Oct
- 2015 21:30:35 -0700 (PDT)
-X-Received: by 10.13.216.14 with SMTP id a14mr19673110ywe.8.1445661035612;
-        Fri, 23 Oct 2015 21:30:35 -0700 (PDT)
+Received: by 10.107.34.73 with SMTP id i70ls187687ioi.5.gmail; Fri, 23 Oct
+ 2015 21:28:01 -0700 (PDT)
+X-Received: by 10.66.248.199 with SMTP id yo7mr6158235pac.38.1445660881885;
+        Fri, 23 Oct 2015 21:28:01 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
 Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id vy6si2574805pbc.1.2015.10.23.21.30.35
+        by gmr-mx.google.com with ESMTPS id el2si2619502pbb.0.2015.10.23.21.28.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 21:30:35 -0700 (PDT)
+        Fri, 23 Oct 2015 21:28:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id hk11so135131650pad.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 21:30:35 -0700 (PDT)
+Received: by mail-pa0-x231.google.com with SMTP id rc13so134726981pab.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 21:28:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=azIK/Y49WNo81caXv3tML8RETgQbCnva+ID3Eai+/3w=;
-        b=BymliuqblEyqsAKFzFG/kGX0d9AxfMEo7xtre3RCA+l7YxRWQgw+aCFB7dwKnCRBAZ
-         A9WtTsBFP4U+LHEjFy0Eeqd9PpdGMRi/qy2Pm+6AQaW/SNycOAtxQXWWW+284F3YDgbP
-         e6+nwmbYY9KiHnUXjd/r1uiN2NrzEBXGt7xIeb3tCjgrjKe/Ml7eyiMOBJyBa/8GJxAZ
-         zIv7HGqlsd4uv5grKEHShguevwC1bR4Vvl5qgzaUvUT9FUH+HlC5Rd0yn5iWGrUeEjNx
-         oUkOBiWh+tk14IL7O/gSArVxLX2tcz9lmWRUKW4XUuSqEN/chedIifdm8cYUehKowHNu
-         h0xQ==
-X-Received: by 10.68.107.65 with SMTP id ha1mr8977690pbb.143.1445661035451;
-        Fri, 23 Oct 2015 21:30:35 -0700 (PDT)
+        bh=0Sh/X2zzrluMxZmd6fCeg37m4gS29BIbWLICoN0Jmgo=;
+        b=kGNVFOAjnbl5JMg3z/R0vGLKnbPFqU/xTKK6gxRv6mBsCzwiry4kaN7Bynp/mQh6Gp
+         xTuQfF6Q8/J6fyW+pCOZqB0jIE8Nxq4MZX4tbkk/Cp4VGCbkD75cx3AG8jCWRL739+E7
+         d/Rk/xw8pt0NzjCSfXBHZik4/HQrCdgWsK82LoZ6hjSQswUsu/qcBKPUQ/06x8JnRzul
+         UA4bOQCMUXziawZ+rP33CG4NVwFoLO4asgb9qIC2PSzKMkfaitQpURC1JyrpP3zIgO0b
+         ijM4tZQIV8ceXl9Zz55QbiACvUtG5wKpx7sQEgz+8WrO1b+Wve+SeNmcZ8ynDhxV9OGI
+         ZmmA==
+X-Received: by 10.66.193.134 with SMTP id ho6mr8952635pac.52.1445660881753;
+        Fri, 23 Oct 2015 21:28:01 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
 Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id zi1sm21722165pbc.10.2015.10.23.21.30.34
+        by smtp.gmail.com with ESMTPSA id ff2sm11120200pac.14.2015.10.23.21.28.01
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 23 Oct 2015 21:30:35 -0700 (PDT)
-Date: Fri, 23 Oct 2015 21:30:34 -0700
+        Fri, 23 Oct 2015 21:28:01 -0700 (PDT)
+Date: Fri, 23 Oct 2015 21:28:00 -0700
 From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: r8723au: move params to new line to improve
- readability
-Message-ID: <26a472013a14bf1e03dfd2ba7852b10832bdceb2.1445653471.git.amsfield22@gmail.com>
+Subject: [PATCH 1/4] staging: r8723au: use kernel preferred style for
+ commenting
+Message-ID: <86e0a6b5faf8ddcc4fb473823745dfd632bc8c9d.1445653471.git.amsfield22@gmail.com>
 References: <cover.1445653471.git.amsfield22@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,270 +51,391 @@ Content-Disposition: inline
 In-Reply-To: <cover.1445653471.git.amsfield22@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Parameters are shifted to new line to stay within 80 char line
-limit and improve readability.
+Reworked comments per kernel coding style to improve readability.
 
-Addresses checkpatch.pl: WARNING: line over 80 characters
+Corrects checkpatch.pl:
+WARNING: Block comments use * on subsequent lines
+WARNING: line over 80 characters
 
 Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/rtl8723au/core/rtw_ap.c | 78 ++++++++++++++++++++++-----------
- 1 file changed, 52 insertions(+), 26 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_ap.c | 152 +++++++++++++++++++-------------
+ 1 file changed, 89 insertions(+), 63 deletions(-)
 
 diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
-index 852f4ae..69e3f09 100644
+index a0b6845..852f4ae 100644
 --- a/drivers/staging/rtl8723au/core/rtw_ap.c
 +++ b/drivers/staging/rtl8723au/core/rtw_ap.c
-@@ -120,7 +120,8 @@ static void update_BCNTIM(struct rtw_adapter *padapter)
- 	if (remainder_ielen > 0) {
- 		pbackup_remainder_ie = kmalloc(remainder_ielen, GFP_ATOMIC);
- 		if (pbackup_remainder_ie && premainder_ie)
--			memcpy(pbackup_remainder_ie, premainder_ie, remainder_ielen);
-+			memcpy(pbackup_remainder_ie, premainder_ie,
-+			       remainder_ielen);
+@@ -132,11 +132,11 @@ static void update_BCNTIM(struct rtw_adapter *padapter)
+ 
+ 	*dst_ie++ = tim_ielen;
+ 
+-	*dst_ie++ = 0;/* DTIM count */
+-	*dst_ie++ = 1;/* DTIM period */
++	*dst_ie++ = 0; /* DTIM count */
++	*dst_ie++ = 1; /* DTIM period */
+ 
+-	if (pstapriv->tim_bitmap & BIT(0))/* for bc/mc frames */
+-		*dst_ie++ = BIT(0);/* bitmap ctrl */
++	if (pstapriv->tim_bitmap & BIT(0)) /* for bc/mc frames */
++		*dst_ie++ = BIT(0);	   /* bitmap ctrl */
+ 	else
+ 		*dst_ie++ = 0;
+ 
+@@ -239,11 +239,16 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
+ 
+ 			if (psta->state & WIFI_SLEEP_STATE) {
+ 				if (!(psta->state & WIFI_STA_ALIVE_CHK_STATE)) {
+-					/* to check if alive by another methods if station is at ps mode. */
++					/*
++					 * check if alive by another method
++					 * if station is at ps mode.
++					 */
+ 					psta->expire_to = pstapriv->expire_to;
+ 					psta->state |= WIFI_STA_ALIVE_CHK_STATE;
+-
+-					/* to update bcn with tim_bitmap for this station */
++					/*
++					 * update bcn with tim_bitmap
++					 * for this station
++					 */
+ 					pstapriv->tim_bitmap |= CHKBIT(psta->aid);
+ 					update_beacon23a(padapter, WLAN_EID_TIM, NULL, false);
+ 
+@@ -264,7 +269,10 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
+ 				  psta->hwaddr, psta->state);
+ 			updated = ap_free_sta23a(padapter, psta, false, WLAN_REASON_DEAUTH_LEAVING);
+ 		} else {
+-			/* TODO: Aging mechanism to digest frames in sleep_q to avoid running out of xmitframe */
++			/*
++			 * TODO: Aging mechanism to digest frames in
++			 * sleep_q to avoid running out of xmitframe
++			 */
+ 			if (psta->sleepq_len > (NR_XMITFRAME/pstapriv->asoc_list_cnt)
+ 				&& padapter->xmitpriv.free_xmitframe_cnt < ((NR_XMITFRAME/pstapriv->asoc_list_cnt)/2)
+ 			) {
+@@ -285,13 +293,16 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
+ 
+ 		u8 backup_oper_channel = 0;
+ 		struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+-		/* switch to correct channel of current network  before issue keep-alive frames */
++		/*
++		 * switch to correct channel of current
++		 * network before issue keep-alive frames
++		 */
+ 		if (rtw_get_oper_ch23a(padapter) != pmlmeext->cur_channel) {
+ 			backup_oper_channel = rtw_get_oper_ch23a(padapter);
+ 			SelectChannel23a(padapter, pmlmeext->cur_channel);
+ 		}
+ 
+-	/* issue null data to check sta alive*/
++	/* issue null data to check sta alive */
+ 	for (i = 0; i < chk_alive_num; i++) {
+ 
+ 		int ret = _FAIL;
+@@ -332,7 +343,7 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
+ 
  	}
  
- 	*dst_ie++ = WLAN_EID_TIM;
-@@ -250,7 +251,8 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
- 					 * for this station
- 					 */
- 					pstapriv->tim_bitmap |= CHKBIT(psta->aid);
--					update_beacon23a(padapter, WLAN_EID_TIM, NULL, false);
-+					update_beacon23a(padapter, WLAN_EID_TIM,
-+							 NULL, false);
- 
- 					if (!pmlmeext->active_keep_alive_check)
- 						continue;
-@@ -267,7 +269,8 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
- 
- 			DBG_8723A("asoc expire %pM, state = 0x%x\n",
- 				  psta->hwaddr, psta->state);
--			updated = ap_free_sta23a(padapter, psta, false, WLAN_REASON_DEAUTH_LEAVING);
-+			updated = ap_free_sta23a(padapter, psta, false,
-+						 WLAN_REASON_DEAUTH_LEAVING);
- 		} else {
- 			/*
- 			 * TODO: Aging mechanism to digest frames in
-@@ -312,9 +315,11 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
- 			continue;
- 
- 		if (psta->state & WIFI_SLEEP_STATE)
--			ret = issue_nulldata23a(padapter, psta->hwaddr, 0, 1, 50);
-+			ret = issue_nulldata23a(padapter, psta->hwaddr,
-+						0, 1, 50);
- 		else
--			ret = issue_nulldata23a(padapter, psta->hwaddr, 0, 3, 50);
-+			ret = issue_nulldata23a(padapter, psta->hwaddr,
-+						0, 3, 50);
- 
- 		psta->keep_alive_trycnt++;
- 		if (ret == _SUCCESS) {
-@@ -337,7 +342,8 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
- 		if (!list_empty(&psta->asoc_list)) {
- 			list_del_init(&psta->asoc_list);
- 			pstapriv->asoc_list_cnt--;
--			updated = ap_free_sta23a(padapter, psta, false, WLAN_REASON_DEAUTH_LEAVING);
-+			updated = ap_free_sta23a(padapter, psta, false,
-+						 WLAN_REASON_DEAUTH_LEAVING);
- 		}
- 		spin_unlock_bh(&pstapriv->asoc_list_lock);
- 
-@@ -350,7 +356,8 @@ void	expire_timeout_chk23a(struct rtw_adapter *padapter)
- 	associated_clients_update23a(padapter, updated);
+-	if (backup_oper_channel > 0) /* back to the original operation channel */
++	if (backup_oper_channel > 0) /* back to original operation channel */
+ 		SelectChannel23a(padapter, backup_oper_channel);
  }
  
--void add_RATid23a(struct rtw_adapter *padapter, struct sta_info *psta, u8 rssi_level)
-+void add_RATid23a(struct rtw_adapter *padapter, struct sta_info *psta,
-+		  u8 rssi_level)
- {
- 	int i;
- 	u8 rf_type;
-@@ -472,7 +479,8 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
- 		supportRateNum = rtw_get_rateset_len23a((u8 *)&pcur_network->SupportedRates);
- 		network_type = rtw_check_network_type23a((u8 *)&pcur_network->SupportedRates, supportRateNum, 1);
+@@ -369,9 +380,9 @@ void add_RATid23a(struct rtw_adapter *padapter, struct sta_info *psta, u8 rssi_l
+ 		rf_type = rtl8723a_get_rf_type(padapter);
  
--		memcpy(psta->bssrateset, &pcur_network->SupportedRates, supportRateNum);
-+		memcpy(psta->bssrateset, &pcur_network->SupportedRates,
-+		       supportRateNum);
- 		psta->bssratelen = supportRateNum;
+ 		if (rf_type == RF_2T2R)
+-			limit = 16;/*  2R */
++			limit = 16; /* 2R */
+ 		else
+-			limit = 8;/*   1R */
++			limit = 8;  /* 1R */
  
- 		/* b/g mode ra_bitmap */
-@@ -492,7 +500,8 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
- 		}
+ 		for (i = 0; i < limit; i++) {
+ 			if (psta_ht->ht_cap.mcs.rx_mask[i / 8] & BIT(i % 8))
+@@ -407,7 +418,7 @@ void add_RATid23a(struct rtw_adapter *padapter, struct sta_info *psta, u8 rssi_l
  
- 		raid = networktype_to_raid23a(network_type);
--		init_rate = get_highest_rate_idx23a(tx_ra_bitmap&0x0fffffff)&0x3f;
-+		init_rate = get_highest_rate_idx23a(tx_ra_bitmap & 0x0fffffff)
-+						    & 0x3f;
+ 		arg = psta->mac_id&0x1f;
  
- 		/* ap mode */
- 		rtl8723a_SetHalODMVar(padapter, HAL_ODM_STA_INFO, psta, true);
-@@ -506,7 +515,8 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
+-		arg |= BIT(7);/* support entry 2~31 */
++		arg |= BIT(7); /* support entry 2~31 */
  
- 			tx_ra_bitmap |= ((raid<<28)&0xf0000000);
+ 		if (shortGIrate == true)
+ 			arg |= BIT(5);
+@@ -446,7 +457,7 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
+ 	struct sta_info *psta = rtw_get_bcmc_stainfo23a(padapter);
  
--			DBG_8723A("update_bmc_sta, mask = 0x%x, arg = 0x%x\n", tx_ra_bitmap, arg);
-+			DBG_8723A("update_bmc_sta, mask = 0x%x, arg = 0x%x\n",
-+				  tx_ra_bitmap, arg);
+ 	if (psta) {
+-		psta->aid = 0;/* default set to 0 */
++		psta->aid = 0; /* default set to 0 */
+ 		psta->mac_id = psta->aid + 1;
  
- 			/* bitmap[0:27] = tx_rate_bitmap */
- 			/* bitmap[28:31]= Rate Adaptive id */
-@@ -534,7 +544,8 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
-  * MAC_ID = 0 for bssid for sta/ap/adhoc
-  * CAM_ID = 0~3 for default key, cmd_id=macid+3, macid=aid+1;
-  */
--void update_sta_info23a_apmode23a(struct rtw_adapter *padapter, struct sta_info *psta)
-+void update_sta_info23a_apmode23a(struct rtw_adapter *padapter,
-+				  struct sta_info *psta)
+ 		psta->qos_option = 0;
+@@ -473,7 +484,7 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
+ 		if (pcur_network->DSConfig > 14) {
+ 			/* force to A mode. 5G doesn't support CCK rates */
+ 			network_type = WIRELESS_11A;
+-			tx_ra_bitmap = 0x150; /*  6, 12, 24 Mbps */
++			tx_ra_bitmap = 0x150; /* 6, 12, 24 Mbps */
+ 		} else {
+ 			/* force to b mode */
+ 			network_type = WIRELESS_11B;
+@@ -516,13 +527,13 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
+ 		DBG_8723A("add_RATid23a_bmc_sta error!\n");
+ }
+ 
+-/* notes: */
+-/* AID: 1~MAX for sta and 0 for bc/mc in ap/adhoc mode */
+-/* MAC_ID = AID+1 for sta in ap/adhoc mode */
+-/* MAC_ID = 1 for bc/mc for sta/ap/adhoc */
+-/* MAC_ID = 0 for bssid for sta/ap/adhoc */
+-/* CAM_ID = 0~3 for default key, cmd_id = macid + 3, macid = aid+1; */
+-
++/*
++ * AID: 1~MAX for sta and 0 for bc/mc in ap/adhoc mode
++ * MAC_ID = AID+1 for sta in ap/adhoc mode
++ * MAC_ID = 1 for bc/mc for sta/ap/adhoc
++ * MAC_ID = 0 for bssid for sta/ap/adhoc
++ * CAM_ID = 0~3 for default key, cmd_id = macid + 3, macid = aid + 1;
++ */
+ void update_sta_info23a_apmode23a(struct rtw_adapter *padapter, struct sta_info *psta)
  {
  	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
-@@ -568,11 +579,12 @@ void update_sta_info23a_apmode23a(struct rtw_adapter *padapter, struct sta_info
+@@ -556,7 +567,7 @@ void update_sta_info23a_apmode23a(struct rtw_adapter *padapter, struct sta_info
+ 		if ((phtpriv_sta->ht_cap.cap_info & phtpriv_ap->ht_cap.cap_info) & cpu_to_le16(IEEE80211_HT_CAP_SGI_20|IEEE80211_HT_CAP_SGI_40))
  			phtpriv_sta->sgi = true;
  
- 		/* bwmode */
--		if ((phtpriv_sta->ht_cap.cap_info & phtpriv_ap->ht_cap.cap_info) & cpu_to_le16(IEEE80211_HT_CAP_SUP_WIDTH_20_40)) {
-+		if ((phtpriv_sta->ht_cap.cap_info
-+		     & phtpriv_ap->ht_cap.cap_info)
-+		    & cpu_to_le16(IEEE80211_HT_CAP_SUP_WIDTH_20_40)) {
+-		/*  bwmode */
++		/* bwmode */
+ 		if ((phtpriv_sta->ht_cap.cap_info & phtpriv_ap->ht_cap.cap_info) & cpu_to_le16(IEEE80211_HT_CAP_SUP_WIDTH_20_40)) {
  			/* phtpriv_sta->bwmode = HT_CHANNEL_WIDTH_40; */
  			phtpriv_sta->bwmode = pmlmeext->cur_bwmode;
- 			phtpriv_sta->ch_offset = pmlmeext->cur_ch_offset;
--
- 		}
- 
- 		psta->qos_option = true;
-@@ -1108,7 +1120,8 @@ int rtw_acl_add_sta23a(struct rtw_adapter *padapter, u8 *addr)
- 
- 			paclnode->valid = true;
- 
--			list_add_tail(&paclnode->list, get_list_head(pacl_node_q));
-+			list_add_tail(&paclnode->list,
-+				      get_list_head(pacl_node_q));
- 
- 			pacl_list->num++;
- 
-@@ -1413,7 +1426,8 @@ void associated_clients_update23a(struct rtw_adapter *padapter, u8 updated)
- }
- 
- /* called > TSR LEVEL for USB or SDIO Interface */
--void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter, struct sta_info *psta)
-+void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter,
-+				   struct sta_info *psta)
- {
- 	u8 beacon_updated = false;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
-@@ -1455,7 +1469,8 @@ void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter, struct sta_info
- 
- 			if (pmlmepriv->num_sta_non_erp == 1) {
- 				beacon_updated = true;
--				update_beacon23a(padapter, WLAN_EID_ERP_INFO, NULL, true);
-+				update_beacon23a(padapter, WLAN_EID_ERP_INFO,
-+						 NULL, true);
- 			}
- 		}
- 
-@@ -1467,7 +1482,8 @@ void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter, struct sta_info
- 
- 			if (pmlmepriv->num_sta_non_erp == 0) {
- 				beacon_updated = true;
--				update_beacon23a(padapter, WLAN_EID_ERP_INFO, NULL, true);
-+				update_beacon23a(padapter, WLAN_EID_ERP_INFO,
-+						 NULL, true);
- 			}
- 		}
- 
-@@ -1554,7 +1570,8 @@ void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter, struct sta_info
- 	DBG_8723A("%s, updated =%d\n", __func__, beacon_updated);
- }
- 
--u8 bss_cap_update_on_sta_leave23a(struct rtw_adapter *padapter, struct sta_info *psta)
-+u8 bss_cap_update_on_sta_leave23a(struct rtw_adapter *padapter,
-+				  struct sta_info *psta)
- {
- 	u8 beacon_updated = false;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
-@@ -1620,7 +1637,8 @@ u8 bss_cap_update_on_sta_leave23a(struct rtw_adapter *padapter, struct sta_info
- 	return beacon_updated;
- }
- 
--u8 ap_free_sta23a(struct rtw_adapter *padapter, struct sta_info *psta, bool active, u16 reason)
-+u8 ap_free_sta23a(struct rtw_adapter *padapter, struct sta_info *psta,
-+		  bool active, u16 reason)
- {
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	u8 beacon_updated = false;
-@@ -1665,7 +1683,8 @@ u8 ap_free_sta23a(struct rtw_adapter *padapter, struct sta_info *psta, bool acti
- 	return beacon_updated;
- }
- 
--int rtw_ap_inform_ch_switch23a(struct rtw_adapter *padapter, u8 new_ch, u8 ch_offset)
-+int rtw_ap_inform_ch_switch23a(struct rtw_adapter *padapter, u8 new_ch,
-+			       u8 ch_offset)
- {
- 	struct list_head *phead, *plist;
- 	struct sta_info *psta = NULL;
-@@ -1686,7 +1705,9 @@ int rtw_ap_inform_ch_switch23a(struct rtw_adapter *padapter, u8 new_ch, u8 ch_of
- 	list_for_each(plist, phead) {
- 		psta = container_of(plist, struct sta_info, asoc_list);
- 
--		issue_action_spct_ch_switch23a(padapter, psta->hwaddr, new_ch, ch_offset);
-+		issue_action_spct_ch_switch23a(padapter, psta->hwaddr,
-+					       new_ch, ch_offset);
-+
- 		psta->expire_to = ((pstapriv->expire_to * 2) > 5) ? 5 : (pstapriv->expire_to * 2);
+@@ -575,10 +586,10 @@ void update_sta_info23a_apmode23a(struct rtw_adapter *padapter, struct sta_info
  	}
- 	spin_unlock_bh(&pstapriv->asoc_list_lock);
-@@ -1770,7 +1791,8 @@ void sta_info_update23a(struct rtw_adapter *padapter, struct sta_info *psta)
+ 
+ 	/* Rx AMPDU */
+-	send_delba23a(padapter, 0, psta->hwaddr);/*  recipient */
++	send_delba23a(padapter, 0, psta->hwaddr); /* recipient */
+ 
+ 	/* TX AMPDU */
+-	send_delba23a(padapter, 1, psta->hwaddr);/*  originator */
++	send_delba23a(padapter, 1, psta->hwaddr); /* originator */
+ 	phtpriv_sta->agg_enable_bitmap = 0x0;/* reset */
+ 	phtpriv_sta->candidate_tid_bitmap = 0x0;/* reset */
+ 
+@@ -599,11 +610,10 @@ static void update_hw_ht_param(struct rtw_adapter *padapter)
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+ 
+ 	DBG_8723A("%s\n", __func__);
+-
+-	/* handle A-MPDU parameter field */
+ 	/*
+-		AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
+-		AMPDU_para [4:2]:Min MPDU Start Spacing
++	 * handle A-MPDU parameter field
++	 * AMPDU_para [1:0]:Max AMPDU Len => 0:8k, 1:16k, 2:32k, 3:64k
++	 * AMPDU_para [4:2]:Min MPDU Start Spacing
+ 	*/
+ 	max_AMPDU_len = pmlmeinfo->ht_cap.ampdu_params_info &
+ 		IEEE80211_HT_AMPDU_PARM_FACTOR;
+@@ -614,7 +624,7 @@ static void update_hw_ht_param(struct rtw_adapter *padapter)
+ 	rtl8723a_set_ampdu_min_space(padapter, min_MPDU_spacing);
+ 	rtl8723a_set_ampdu_factor(padapter, max_AMPDU_len);
+ 
+-	/*  Config SM Power Save setting */
++	/* Config SM Power Save setting */
+ 	pmlmeinfo->SM_PS = (le16_to_cpu(pmlmeinfo->ht_cap.cap_info) &
+ 			    IEEE80211_HT_CAP_SM_PS) >> 2;
+ 	if (pmlmeinfo->SM_PS == WLAN_HT_CAP_SM_PS_STATIC)
+@@ -641,9 +651,13 @@ static void start_bss_network(struct rtw_adapter *padapter, u8 *pbuf)
+ 	cur_bwmode = HT_CHANNEL_WIDTH_20;
+ 	cur_ch_offset = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
+ 
+-	/* check if there is wps ie, */
+-	/* if there is wpsie in beacon, the hostapd will update beacon twice when stating hostapd, */
+-	/* and at first time the security ie (RSN/WPA IE) will not include in beacon. */
++	/*
++	 * check if there is wps ie
++	 * if there is wpsie in beacon the hostapd will
++	 * update beacon twice when stating hostapd
++	 * and at first time the security
++	 * ie (RSN/WPA IE) will not include in beacon
++	 */
+ 	if (NULL == cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
+ 					    WLAN_OUI_TYPE_MICROSOFT_WPS,
+ 					    pnetwork->IEs,
+@@ -663,8 +677,11 @@ static void start_bss_network(struct rtw_adapter *padapter, u8 *pbuf)
+ 	}
+ 
+ 	if (pmlmepriv->cur_network.join_res != true) {
+-		/* setting only at  first time */
+-		/* WEP Key will be set before this function, do not clear CAM. */
++		/*
++		 * setting only at first time
++		 * WEP Key will be set before this
++		 * function, do not clear CAM.
++		 */
+ 		if (psecuritypriv->dot11PrivacyAlgrthm !=
+ 		    WLAN_CIPHER_SUITE_WEP40 &&
+ 		    psecuritypriv->dot11PrivacyAlgrthm !=
+@@ -679,13 +696,13 @@ static void start_bss_network(struct rtw_adapter *padapter, u8 *pbuf)
+ 	hw_var_set_bssid(padapter, pnetwork->MacAddress);
+ 
+ 	/* Set EDCA param reg */
+-	acparm = 0x002F3217; /*  VO */
++	acparm = 0x002F3217; /* VO */
+ 	rtl8723a_set_ac_param_vo(padapter, acparm);
+-	acparm = 0x005E4317; /*  VI */
++	acparm = 0x005E4317; /* VI */
+ 	rtl8723a_set_ac_param_vi(padapter, acparm);
+ 	acparm = 0x005ea42b;
+ 	rtl8723a_set_ac_param_be(padapter, acparm);
+-	acparm = 0x0000A444; /*  BK */
++	acparm = 0x0000A444; /* BK */
+ 	rtl8723a_set_ac_param_bk(padapter, acparm);
+ 
+ 	/* Set Security */
+@@ -722,8 +739,10 @@ static void start_bss_network(struct rtw_adapter *padapter, u8 *pbuf)
+ 			switch (pht_info->ht_param &
+ 				IEEE80211_HT_PARAM_CHA_SEC_OFFSET) {
+ 			case IEEE80211_HT_PARAM_CHA_SEC_ABOVE:
+-				/* pmlmeext->cur_ch_offset =
+-				   HAL_PRIME_CHNL_OFFSET_LOWER; */
++				/*
++				 * pmlmeext->cur_ch_offset =
++				 * HAL_PRIME_CHNL_OFFSET_LOWER;
++				 */
+ 				cur_ch_offset = HAL_PRIME_CHNL_OFFSET_LOWER;
+ 				break;
+ 			case IEEE80211_HT_PARAM_CHA_SEC_BELOW:
+@@ -735,7 +754,10 @@ static void start_bss_network(struct rtw_adapter *padapter, u8 *pbuf)
+ 			}
+ 		}
+ 	}
+-	/* TODO: need to judge the phy parameters on concurrent mode for single phy */
++	/*
++	 * TODO: need to judge the phy parameters
++	 * on concurrent mode for single phy
++	 */
+ 	set_channel_bwmode23a(padapter, cur_channel, cur_ch_offset, cur_bwmode);
+ 
+ 	DBG_8723A("CH =%d, BW =%d, offset =%d\n", cur_channel, cur_bwmode,
+@@ -886,7 +908,7 @@ int rtw_check_beacon_data23a(struct rtw_adapter *padapter,
+ 					 &pairwise_cipher, NULL) == _SUCCESS) {
+ 			psecuritypriv->dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
+ 
+-			psecuritypriv->dot8021xalg = 1;/* psk,  todo:802.1x */
++			psecuritypriv->dot8021xalg = 1; /* psk, todo:802.1x */
+ 			psecuritypriv->wpa_psk |= BIT(1);
+ 
+ 			psecuritypriv->wpa2_group_cipher = group_cipher;
+@@ -934,7 +956,7 @@ int rtw_check_beacon_data23a(struct rtw_adapter *padapter,
+ 			if ((p) && !memcmp(p+2, WMM_PARA_IE, 6)) {
+ 				pmlmepriv->qos_option = 1;
+ 
+-				*(p+8) |= BIT(7);/* QoS Info, support U-APSD */
++				*(p + 8) |= BIT(7);/* QoS Info:support U-APSD */
+ 
+ 				/* disable all ACM bits since the WMM admission
+ 				 * control is not supported
+@@ -1286,16 +1308,16 @@ void update_beacon23a(struct rtw_adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
  }
  
- /* called >= TSR LEVEL for USB or SDIO Interface */
--void ap_sta_info_defer_update23a(struct rtw_adapter *padapter, struct sta_info *psta)
-+void ap_sta_info_defer_update23a(struct rtw_adapter *padapter,
-+				 struct sta_info *psta)
+ /*
+-op_mode
+-Set to 0 (HT pure) under the following conditions
+-	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
+-	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
+-Set to 1 (HT non-member protection) if there may be non-HT STAs
+-	in both the primary and the secondary channel
+-Set to 2 if only HT STAs are associated in BSS,
+-	however and at least one 20 MHz HT STA is associated
+-Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
+-	(currently non-GF HT station is considered as non-HT STA also)
++ * op_mode
++ * Set to 0 (HT pure) under the following conditions
++ *	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
++ *	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
++ * Set to 1 (HT non-member protection) if there may be non-HT STAs
++ *	in both the primary and the secondary channel
++ * Set to 2 if only HT STAs are associated in BSS,
++ *	however and at least one 20 MHz HT STA is associated
++ * Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
++ *	(currently non-GF HT station is considered as non-HT STA also)
+ */
+ static int rtw_ht_operation_update(struct rtw_adapter *padapter)
+ {
+@@ -1338,7 +1360,8 @@ static int rtw_ht_operation_update(struct rtw_adapter *padapter)
+ 		op_mode_changes++;
+ 	}
+ 
+-	/* Note: currently we switch to the MIXED op mode if HT non-greenfield
++	/*
++	 * Note: currently we switch to the MIXED op mode if HT non-greenfield
+ 	 * station is associated. Probably it's a theoretical case, since
+ 	 * it looks like all known HT STAs support greenfield.
+ 	 */
+@@ -1389,7 +1412,7 @@ void associated_clients_update23a(struct rtw_adapter *padapter, u8 updated)
+ 	}
+ }
+ 
+-/* called > TSR LEVEL for USB or SDIO Interface*/
++/* called > TSR LEVEL for USB or SDIO Interface */
+ void bss_cap_update_on_sta_join23a(struct rtw_adapter *padapter, struct sta_info *psta)
+ {
+ 	u8 beacon_updated = false;
+@@ -1607,16 +1630,16 @@ u8 ap_free_sta23a(struct rtw_adapter *padapter, struct sta_info *psta, bool acti
+ 
+ 	if (active) {
+ 		/* tear down Rx AMPDU */
+-		send_delba23a(padapter, 0, psta->hwaddr);/*  recipient */
++		send_delba23a(padapter, 0, psta->hwaddr); /* recipient */
+ 
+ 		/* tear down TX AMPDU */
+-		send_delba23a(padapter, 1, psta->hwaddr);/* originator */
++		send_delba23a(padapter, 1, psta->hwaddr); /* originator */
+ 
+ 		issue_deauth23a(padapter, psta->hwaddr, reason);
+ 	}
+ 
+-	psta->htpriv.agg_enable_bitmap = 0x0;/* reset */
+-	psta->htpriv.candidate_tid_bitmap = 0x0;/* reset */
++	psta->htpriv.agg_enable_bitmap = 0x0;	 /* reset */
++	psta->htpriv.candidate_tid_bitmap = 0x0; /* reset */
+ 
+ 	/* report_del_sta_event23a(padapter, psta->hwaddr, reason); */
+ 
+@@ -1717,7 +1740,7 @@ int rtw_sta_flush23a(struct rtw_adapter *padapter)
+ 	return 0;
+ }
+ 
+-/* called > TSR LEVEL for USB or SDIO Interface*/
++/* called > TSR LEVEL for USB or SDIO Interface */
+ void sta_info_update23a(struct rtw_adapter *padapter, struct sta_info *psta)
+ {
+ 	int flags = psta->flags;
+@@ -1746,7 +1769,7 @@ void sta_info_update23a(struct rtw_adapter *padapter, struct sta_info *psta)
+ 	update_sta_info23a_apmode23a(padapter, psta);
+ }
+ 
+-/* called >= TSR LEVEL for USB or SDIO Interface*/
++/* called >= TSR LEVEL for USB or SDIO Interface */
+ void ap_sta_info_defer_update23a(struct rtw_adapter *padapter, struct sta_info *psta)
  {
  	if (psta->state & _FW_LINKED) {
- 		/* add ratid */
-@@ -1793,7 +1815,8 @@ void rtw_ap_restore_network(struct rtw_adapter *padapter)
+@@ -1870,7 +1893,10 @@ void stop_ap_mode23a(struct rtw_adapter *padapter)
+ 	pmlmepriv->update_bcn = false;
+ 	pmlmeext->bstart_bss = false;
  
- 	rtw_setopmode_cmd23a(padapter, NL80211_IFTYPE_AP);
- 
--	set_channel_bwmode23a(padapter, pmlmeext->cur_channel, pmlmeext->cur_ch_offset, pmlmeext->cur_bwmode);
-+	set_channel_bwmode23a(padapter, pmlmeext->cur_channel,
-+			      pmlmeext->cur_ch_offset, pmlmeext->cur_bwmode);
- 
- 	start_bss_network(padapter, (u8 *)&mlmepriv->cur_network.network);
- 
-@@ -1832,7 +1855,8 @@ void rtw_ap_restore_network(struct rtw_adapter *padapter)
- 		if (psta->state & _FW_LINKED) {
- 			Update_RA_Entry23a(padapter, psta);
- 			/* pairwise key */
--			rtw_setstakey_cmd23a(padapter, (unsigned char *)psta, true);
-+			rtw_setstakey_cmd23a(padapter, (unsigned char *)psta,
-+					     true);
- 		}
- 	}
- }
-@@ -1897,7 +1921,8 @@ void stop_ap_mode23a(struct rtw_adapter *padapter)
- 	 * reset and init security priv , this can
- 	 * refine with rtw_reset_securitypriv23a
- 	 */
--	memset((unsigned char *)&padapter->securitypriv, 0, sizeof(struct security_priv));
-+	memset((unsigned char *)&padapter->securitypriv, 0,
-+	       sizeof(struct security_priv));
+-	/* reset and init security priv , this can refine with rtw_reset_securitypriv23a */
++	/*
++	 * reset and init security priv , this can
++	 * refine with rtw_reset_securitypriv23a
++	 */
+ 	memset((unsigned char *)&padapter->securitypriv, 0, sizeof(struct security_priv));
  	padapter->securitypriv.ndisauthtype = Ndis802_11AuthModeOpen;
  	padapter->securitypriv.ndisencryptstatus = Ndis802_11WEPDisabled;
- 
-@@ -1918,7 +1943,8 @@ void stop_ap_mode23a(struct rtw_adapter *padapter)
- 	}
- 	spin_unlock_bh(&pacl_node_q->lock);
- 
--	DBG_8723A("%s, free acl_node_queue, num =%d\n", __func__, pacl_list->num);
-+	DBG_8723A("%s, free acl_node_queue, num =%d\n", __func__,
-+		  pacl_list->num);
- 
- 	rtw_sta_flush23a(padapter);
- 
 -- 
 2.1.4
 
