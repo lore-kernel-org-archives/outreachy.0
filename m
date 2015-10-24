@@ -1,57 +1,55 @@
 X-GM-THRID: 6209264752387948544
-X-Received: by 10.66.147.33 with SMTP id th1mr21746495pab.27.1445707196559;
-        Sat, 24 Oct 2015 10:19:56 -0700 (PDT)
+X-Received: by 10.67.21.136 with SMTP id hk8mr8552663pad.14.1445707108473;
+        Sat, 24 Oct 2015 10:18:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.37 with SMTP id g34ls68305qgd.19.gmail; Sat, 24 Oct
- 2015 10:19:54 -0700 (PDT)
-X-Received: by 10.31.134.2 with SMTP id i2mr16409969vkd.8.1445707194380;
-        Sat, 24 Oct 2015 10:19:54 -0700 (PDT)
+Received: by 10.140.109.138 with SMTP id l10ls885340qgf.36.gmail; Sat, 24 Oct
+ 2015 10:18:27 -0700 (PDT)
+X-Received: by 10.31.171.12 with SMTP id u12mr22404305vke.12.1445707107923;
+        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id el2si2829072pbb.0.2015.10.24.10.19.54
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id vy6si2783069pbc.1.2015.10.24.10.18.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Oct 2015 10:19:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id rc13so145684312pab.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 10:19:54 -0700 (PDT)
+Received: by mail-pa0-x22c.google.com with SMTP id z6so145816449pas.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=koc3zWmqrb11VuucnSAhMvhBc5mnwVGkTHbgZAbeWnM=;
-        b=dh6eOSmI7IKHI8a6M1IYKVkMmStEFfXLauxnF1m/iVBa26JulDVW6jgD0+mcosovEk
-         fYjah/kmzBKu2tct+BLhZIRoadjYt4/gSIa0rodGb8V9yZ0dwIlbrlGlJ6ANcYOMKjwM
-         RlJzhnvnzx+fJC5wp6K05fUXxYDzN8m38yIe4eVUZYiJl4IOC5S2zUvLyUxKghDz0hiy
-         /HyDVEv8KkRlZ0AgxkIYtacPjTnnqP8KxxoodcxJlsqd0VvrxzmTRqbMEKO/tKFzi0pj
-         Sg7rAfHoq4txs9dDDS7sz51XKuq9QcTLxjn3FyaSaGuEhCU8rETD427WhcUPSooPjvFk
-         TQ7g==
-X-Received: by 10.66.132.9 with SMTP id oq9mr11861320pab.101.1445707194183;
-        Sat, 24 Oct 2015 10:19:54 -0700 (PDT)
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=eNeQtHumy6if5JP32O5URjkhRx59NdDyCvAvkItLyRA=;
+        b=lglusIDen8xscoEc/ENMMAHcTnnpRFxl9uonu/DsVLGGO6GEUXs5XxZY5rgsukbdb6
+         VG1LWHmKE222e5oRAsY7DWQpZ+2u82utqiXl1oW0awullGvg6LBQDG4B/U863snrAHnW
+         1MUzMqMwMJfxYZzK7HXLQlYGxsdh+wuv5irOPdFOVmDtuvL4fvr+X1TffmEhiMhxf+ET
+         /C/QpTludHdnAY6rVb6MUeSnHR1tQceKTI9CmXRS8/6pnJQfHhqymtmBr+X9bzr6Hlxm
+         eyRFfvsmUb9GYs9oGxAWYTb0sKLZ915UxGB1Y7Fl9VgbWGk2w5nfuODcyDMOhytyVjd+
+         Ugdw==
+X-Received: by 10.67.5.193 with SMTP id co1mr15363713pad.134.1445707107719;
+        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([182.68.222.180])
-        by smtp.gmail.com with ESMTPSA id db8sm25249836pad.43.2015.10.24.10.19.53
+        by smtp.gmail.com with ESMTPSA id xa4sm25192992pac.28.2015.10.24.10.18.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 24 Oct 2015 10:19:53 -0700 (PDT)
-Date: Sat, 24 Oct 2015 22:49:50 +0530
+        Sat, 24 Oct 2015 10:18:27 -0700 (PDT)
+Date: Sat, 24 Oct 2015 22:48:23 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: lustre: ldlm: Do not export static function
-Message-ID: <35d5a42884f3b5197edd3030b94e0b4f02567b15.1445706942.git.amitoj1606@gmail.com>
-References: <cover.1445706942.git.amitoj1606@gmail.com>
+Subject: [PATCH 0/2] staging: Do not export static functions
+Message-ID: <cover.1445706942.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1445706942.git.amitoj1606@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove the export symbol for static function.
+This patchset removes the export symbol for static functions.
 
 The semantic patch used to find this is:
 
@@ -71,23 +69,14 @@ declarer name EXPORT_SYMBOL;
 -EXPORT_SYMBOL(f);
 // </smpl>
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/lustre/lustre/ldlm/ldlm_pool.c | 1 -
- 1 file changed, 1 deletion(-)
+Amitoj Kaur Chawla (2):
+  staging: lustre: ldlm: Do not export static function
+  staging: rtl8192u: ieee80211: Do not export static function
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-index a4ee591..b73cf6d 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-@@ -1005,7 +1005,6 @@ static int ldlm_pools_recalc(ldlm_side_t client)
- 	}
- 	return time;
- }
--EXPORT_SYMBOL(ldlm_pools_recalc);
- 
- static int ldlm_pools_thread_main(void *arg)
- {
+ drivers/staging/lustre/lustre/ldlm/ldlm_pool.c         | 1 -
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 1 -
+ 2 files changed, 2 deletions(-)
+
 -- 
 1.9.1
 
