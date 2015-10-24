@@ -1,77 +1,94 @@
-X-GM-THRID: 6206972446110646272
-X-Received: by 10.180.105.98 with SMTP id gl2mr3345306wib.0.1445173389541;
-        Sun, 18 Oct 2015 06:03:09 -0700 (PDT)
+X-GM-THRID: 6209264752387948544
+X-Received: by 10.129.145.71 with SMTP id i68mr9214537ywg.1.1445707264985;
+        Sat, 24 Oct 2015 10:21:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.39.68 with SMTP id n4ls440427wik.4.canary; Sun, 18 Oct
- 2015 06:03:09 -0700 (PDT)
-X-Received: by 10.180.160.194 with SMTP id xm2mr1014565wib.6.1445173389181;
-        Sun, 18 Oct 2015 06:03:09 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id cm6si451138wib.1.2015.10.18.06.03.09
+Received: by 10.107.156.202 with SMTP id f193ls226652ioe.60.gmail; Sat, 24 Oct
+ 2015 10:21:04 -0700 (PDT)
+X-Received: by 10.107.160.8 with SMTP id j8mr9885044ioe.4.1445707264566;
+        Sat, 24 Oct 2015 10:21:04 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id el2si2830034pbb.0.2015.10.24.10.21.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 06:03:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
+        Sat, 24 Oct 2015 10:21:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22e.google.com with SMTP id p11so65126055wij.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 06:03:09 -0700 (PDT)
+Received: by pacfv9 with SMTP id fv9so152568911pac.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 10:21:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=uBOuT4kJKANE2bqWxOWB+B3gR40GKl6xMYWZufXj3P0=;
-        b=M30vzl2oORaoUC+HRg1YDYmT8GzR1YfxCwWQxlUqYkyYB1QxSoG5x5x8hMwRRJeQkR
-         GUPbKizluAtG1c+Fwj1N+puHv7mtEyvA6mQU2XYYGtZ1cdOQvZnPhpryktHOrH1IZ8HU
-         MtedT3RSCgvLv6yDVV/Tj+bHHXtDjyIfnOMK0iRUFIQgAbd9Z7cbsPd2i/qkpuMNxPk4
-         WqMTOgUYBUxSDA3hZjrcxHfIM8xgSqBBEHExO1GO1M93A2ALFTCvnKOpuDyEc6/EN+zV
-         fdwNyXEh5N3l5JZqfO6oUfKbDsGcWBIvPoTKAm2VRgk0x7qRSBF0t5CXi937ztTNkj+Q
-         /q2w==
-X-Received: by 10.181.29.74 with SMTP id ju10mr15667227wid.5.1445173389097;
-        Sun, 18 Oct 2015 06:03:09 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([213.233.104.168])
-        by smtp.gmail.com with ESMTPSA id he3sm34011928wjc.48.2015.10.18.06.03.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 18 Oct 2015 06:03:08 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=ng7DBYvSJ0QQgCpRo5bYxBZbYb7jrmpK2T2aLlx4c+0=;
+        b=ZO3MoTutCta7uykJT6jS4D/biEH6g4RUgR8rlqj1+PFf3hvQ7QvlTiktxYOusjhuqp
+         HPssaPf5eBEM0oIFDmV01KDxwMEs8yT7Sf87fz5H3Se7uQ331ZaDVM/spTZBBTl/cqTW
+         xtXVjNeB+1ftVrXiJpEvOF270U8eIudFVl2WtP4DwGzpQQHuEMkybyKeFruZJF0HEDyM
+         LLP7JNL/4k3CGcE17bj5Rs4V46Qdv6mJG6w+N7AFmt9FuRsr9TkqqsiRi9LIKTuVprPm
+         HmVNcNWG85gJlCQ4oVKnMutieea4xhKx2rJv/WhG0X6B8i4klj/uj3VoCXOI5Xp4OSzo
+         piNw==
+X-Received: by 10.68.100.228 with SMTP id fb4mr12338635pbb.25.1445707264404;
+        Sat, 24 Oct 2015 10:21:04 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.222.180])
+        by smtp.gmail.com with ESMTPSA id rc5sm25098856pbc.95.2015.10.24.10.21.03
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sat, 24 Oct 2015 10:21:04 -0700 (PDT)
+Date: Sat, 24 Oct 2015 22:51:00 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH] staging: lustre: Replace sscanf with kstrtoint
-Date: Sun, 18 Oct 2015 16:02:39 +0300
-Message-Id: <1445173359-123710-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH 2/2] staging: rtl8192u: ieee80211: Do not export static
+ function
+Message-ID: <c6eea468132785a0866ed395c03ab09055fdbfbe.1445706942.git.amitoj1606@gmail.com>
+References: <cover.1445706942.git.amitoj1606@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1445706942.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Replace single variable sscanf with specialized function
-kstrtoint at the suggestion of checkpatch.pl, to fix
-'WARNING: Prefer kstrto<type> to single variable sscanf'
+Remove the export symbol for static function.
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
+The semantic patch used to find this is:
+
+// <smpl>
+@r@
+type T;
+identifier f;
+@@
+
+static T f (...) { ... }
+
+@@
+identifier r.f;
+declarer name EXPORT_SYMBOL;
+@@
+
+-EXPORT_SYMBOL(f);
+// </smpl>
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/lustre/lustre/lov/lov_obd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/lov/lov_obd.c b/drivers/staging/lustre/lustre/lov/lov_obd.c
-index c3be0b5..725bcf6 100644
---- a/drivers/staging/lustre/lustre/lov/lov_obd.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_obd.c
-@@ -914,11 +914,11 @@ int lov_process_config_base(struct obd_device *obd, struct lustre_cfg *lcfg,
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index f2d09fe..30e11bb 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -417,7 +417,6 @@ static void ieee80211_send_probe_requests(struct ieee80211_device *ieee)
+ 		ieee80211_send_probe(ieee);
+ 	}
+ }
+-EXPORT_SYMBOL(ieee80211_send_probe_requests);
  
- 		obd_str2uuid(&obd_uuid,  lustre_cfg_buf(lcfg, 1));
- 
--		if (sscanf(lustre_cfg_buf(lcfg, 2), "%d", indexp) != 1) {
-+		if (kstrtoint(lustre_cfg_buf(lcfg, 2), 10, indexp)) {
- 			rc = -EINVAL;
- 			goto out;
- 		}
--		if (sscanf(lustre_cfg_buf(lcfg, 3), "%d", genp) != 1) {
-+		if (kstrtoint(lustre_cfg_buf(lcfg, 3), 10, genp)) {
- 			rc = -EINVAL;
- 			goto out;
- 		}
+ /* this performs syncro scan blocking the caller until all channels
+  * in the allowed channel map has been checked.
 -- 
 1.9.1
 
