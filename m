@@ -1,86 +1,92 @@
-X-GM-THRID: 6209266424669536256
-X-Received: by 10.182.28.100 with SMTP id a4mr22541766obh.20.1445707498722;
-        Sat, 24 Oct 2015 10:24:58 -0700 (PDT)
+X-GM-THRID: 6209222856637677568
+X-Received: by 10.66.253.37 with SMTP id zx5mr7992168pac.37.1445697354299;
+        Sat, 24 Oct 2015 07:35:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.230 with SMTP id i6ls504514igt.38.canary; Sat, 24 Oct
- 2015 10:24:58 -0700 (PDT)
-X-Received: by 10.66.246.234 with SMTP id xz10mr8184469pac.10.1445707498466;
-        Sat, 24 Oct 2015 10:24:58 -0700 (PDT)
+Received: by 10.107.6.81 with SMTP id 78ls370554iog.81.gmail; Sat, 24 Oct 2015
+ 07:35:53 -0700 (PDT)
+X-Received: by 10.107.16.9 with SMTP id y9mr20576697ioi.7.1445697353848;
+        Sat, 24 Oct 2015 07:35:53 -0700 (PDT)
 Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id vy6si2784871pbc.1.2015.10.24.10.24.58
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id zg1si2784437pbb.2.2015.10.24.07.35.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Oct 2015 10:24:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Sat, 24 Oct 2015 07:35:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pasz6 with SMTP id z6so145910666pas.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 10:24:58 -0700 (PDT)
+Received: by mail-pa0-x230.google.com with SMTP id hk11so143986742pad.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 07:35:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=FeJoZpITOQ1+U22Pdnop8UaScSVUJ6lss20d1sPPyt0=;
-        b=Tgt0hQVlsyVWQ9oIbRIydNjw5vWlojHbBItJL4a965tLgiVmV+0utovOOBkfhNs4cS
-         jmMDudPVK/9H3oyzhJ8kklAwiEOQOpXw7jyWmQplqYdwuXfrKTHX43f0pl56EjlvMbNa
-         QlYe4ocyedbiJ5Gp7UxYeicOpSrMnFm5Ku3bwlasr6HEiE+IhTWQbLOFsgvg0BR2yNy0
-         NFOXJ8WVcauwcNdGUk1Wb6GV2bsfZtSfA/vNAdHwJ7NSJ25hW8YoCpyxCCpDlKU/3k1x
-         BUz53Tj7o1xubss5KAubVrZ8ponR3EqKYqaq1shZt/UmDAyHa2X1+gfDEgyslyrM18Ts
-         HBYQ==
-X-Received: by 10.68.135.161 with SMTP id pt1mr12322705pbb.80.1445707498355;
-        Sat, 24 Oct 2015 10:24:58 -0700 (PDT)
+        bh=46Akc17udHP+r3fiuLK5BRTSkaqAMEJnNJpFvLMVK1U=;
+        b=sOfTnHpGf8M0aSLLRQduim/xcbnnW9bLlautj4X6TvJKL0WQzOvootH15O0owNuUXc
+         KMMOEZZ8T7N3miBiynTD+LGrDqEahNEYz81DE7IkFMfktbleH14S3RjjlshmvcHiOzdI
+         JdEWnob/bMmMQGXDJvHbzRsBOhxdLh85uu1otkkRtU1nMQi1fReVuQ5GkzcX4nQYuNNA
+         dbqh+sLfh8fkACUDbdGr6n4MLH78VbloiIppjeFotku8/25GoP9zWni1pWYLCOdrJ26m
+         635fiY57tKQj6b5CJ5OLlHmNClNGzFjoU3rgPRoQkSyOxrmOczLIMaf3Z12HjULzCbhB
+         VdZQ==
+X-Received: by 10.66.171.171 with SMTP id av11mr11471059pac.85.1445697353720;
+        Sat, 24 Oct 2015 07:35:53 -0700 (PDT)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-Mint ([125.212.122.114])
-        by smtp.gmail.com with ESMTPSA id tp6sm25120093pbc.81.2015.10.24.10.24.57
+        by smtp.gmail.com with ESMTPSA id rw8sm4174740pbc.70.2015.10.24.07.35.52
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 24 Oct 2015 10:24:57 -0700 (PDT)
+        Sat, 24 Oct 2015 07:35:53 -0700 (PDT)
 From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] Staging: mt29f_spinand: Replace udelay function with usleep_range
-Date: Sun, 25 Oct 2015 01:24:51 +0800
-Message-Id: <1445707491-28304-1-git-send-email-eraretuya@gmail.com>
+Subject: [PATCH] Staging: mt29f_spinand: Prefer using the BIT macro
+Date: Sat, 24 Oct 2015 22:35:47 +0800
+Message-Id: <1445697347-32590-1-git-send-email-eraretuya@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-Use 'usleep_range' instead of 'udelay' to elapse time. For
-spinand_reset, define the upper limit by a factor of 2 to keep the wait
-short while still allowing a "good enough" range for wakeup. Define the
-range 250us - 1ms for spinand_cmdfunc to provide enough leeway before
-issuing spinand_reset. Checkpatch found this issue.
+Replace all instances of bit shifting on 1 with the BIT(x) macro. In
+addition, convert other non-1 shift operations with the equivalent
+BIT(x) macro for uniformity. Issue pointed out by checkpatch.
 
-CHECK: usleep_range is preferred over udelay; see
-Documentation/timers/timers-howto.txt
+CHECK: Prefer using the BIT macro
 
 Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/mt29f_spinand/mt29f_spinand.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/mt29f_spinand/mt29f_spinand.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-index a8292a1..b6a1ffc 100644
---- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
-+++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-@@ -736,7 +736,7 @@ static void spinand_reset(struct spi_device *spi_nand)
- 		pr_info("spinand reset failed!\n");
+diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.h b/drivers/staging/mt29f_spinand/mt29f_spinand.h
+index fe6c15a..ae62975 100644
+--- a/drivers/staging/mt29f_spinand/mt29f_spinand.h
++++ b/drivers/staging/mt29f_spinand/mt29f_spinand.h
+@@ -44,19 +44,19 @@
  
- 	/* elapse 1ms before issuing any other command */
--	udelay(1000);
-+	usleep_range(1000, 2000);
+ /* status */
+ #define STATUS_OIP_MASK			0x01
+-#define STATUS_READY			(0 << 0)
+-#define STATUS_BUSY			(1 << 0)
++#define STATUS_READY			0
++#define STATUS_BUSY			BIT(0)
  
- 	if (wait_till_ready(spi_nand))
- 		dev_err(&spi_nand->dev, "wait timedout!\n");
-@@ -802,7 +802,7 @@ static void spinand_cmdfunc(struct mtd_info *mtd, unsigned int command,
- 		if (wait_till_ready(info->spi))
- 			dev_err(&info->spi->dev, "WAIT timedout!!!\n");
- 		/* a minimum of 250us must elapse before issuing RESET cmd*/
--		udelay(250);
-+		usleep_range(250, 1000);
- 		spinand_reset(info->spi);
- 		break;
- 	default:
+ #define STATUS_E_FAIL_MASK		0x04
+-#define STATUS_E_FAIL			(1 << 2)
++#define STATUS_E_FAIL			BIT(2)
+ 
+ #define STATUS_P_FAIL_MASK		0x08
+-#define STATUS_P_FAIL			(1 << 3)
++#define STATUS_P_FAIL			BIT(3)
+ 
+ #define STATUS_ECC_MASK			0x30
+-#define STATUS_ECC_1BIT_CORRECTED	(1 << 4)
+-#define STATUS_ECC_ERROR		(2 << 4)
+-#define STATUS_ECC_RESERVED		(3 << 4)
++#define STATUS_ECC_1BIT_CORRECTED	BIT(4)
++#define STATUS_ECC_ERROR		BIT(5)
++#define STATUS_ECC_RESERVED		(BIT(5) | BIT(4))
+ 
+ /*ECC enable defines*/
+ #define OTP_ECC_MASK			0x10
 -- 
 1.9.1
 
