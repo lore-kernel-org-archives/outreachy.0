@@ -1,66 +1,91 @@
 X-GM-THRID: 6209587037429825536
-X-Received: by 10.66.146.73 with SMTP id ta9mr18563011pab.18.1445931779977;
-        Tue, 27 Oct 2015 00:42:59 -0700 (PDT)
+X-Received: by 10.194.109.233 with SMTP id hv9mr7205486wjb.1.1445782146413;
+        Sun, 25 Oct 2015 07:09:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.106 with SMTP id k97ls3627804qgk.48.gmail; Tue, 27 Oct
- 2015 00:42:59 -0700 (PDT)
-X-Received: by 10.129.88.87 with SMTP id m84mr33547637ywb.0.1445931779432;
-        Tue, 27 Oct 2015 00:42:59 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id pe1si3996775pac.2.2015.10.27.00.42.59
+Received: by 10.25.44.79 with SMTP id s76ls571017lfs.29.gmail; Sun, 25 Oct
+ 2015 07:09:05 -0700 (PDT)
+X-Received: by 10.112.63.165 with SMTP id h5mr7255988lbs.18.1445782145777;
+        Sun, 25 Oct 2015 07:09:05 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by gmr-mx.google.com with ESMTPS id g18si37667wmd.1.2015.10.25.07.09.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 00:42:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 25 Oct 2015 07:09:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pasz6 with SMTP id z6so214400208pas.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 00:42:59 -0700 (PDT)
+Received: by mail-wi0-x22b.google.com with SMTP id ll6so82920609wic.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2015 07:09:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=lzevXNpQU2DwlGzmWzv0D1w0KZnG+qcZcbvxgZ9Y/Bo=;
-        b=tzfNPEPzsTeeOYA/mDzCQieSQvXpURm29CsoUhFp14xrtaWa4Oz9ZvNtE6SCh2J5pg
-         zlqoj1V5PpD9VhvrWCvhTLS5PAaqIu6PT/1QGTnkGqhLzCYUY3QLfseY/MIJSC03s4hj
-         MLhcmgI85/SKynQxdGqPlhcdioAtDs/00Ifw2dDGL8QHP8fZStHV55wkmlKFjDVeea3a
-         omeUmq8zCKu9U1r0Yx5njzEeX89YAf480P5/WggeUO6WsAA68WVZj2xSZ88lfbWBIVzV
-         sogv/qcb4L1pyaPPx+fLzIoShFJTE8wulCdScWuJdWhd/BA/OAxA9tVyv16S5/t+DYuz
-         DIfQ==
-X-Received: by 10.67.8.101 with SMTP id dj5mr26281956pad.127.1445931779259;
-        Tue, 27 Oct 2015 00:42:59 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([122.169.137.63])
-        by smtp.gmail.com with ESMTPSA id w8sm37834460pbs.87.2015.10.27.00.42.57
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 27 Oct 2015 00:42:58 -0700 (PDT)
-Date: Tue, 27 Oct 2015 13:12:37 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Burcin Akalin <brcnakalin@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: skein:Add space around '/'
-Message-ID: <20151027074237.GA22738@sudip-pc>
-References: <1445782135-4972-1-git-send-email-brcnakalin@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1445782135-4972-1-git-send-email-brcnakalin@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        h=from:to:cc:subject:date:message-id;
+        bh=cJCQMc+AOTANdSBG/kb9eA2BjwRwMELJS8Ma+uHLyso=;
+        b=r1/agwsjHxVTcFx6JWZ2P+hrtSRN21gNy/b5bKH73kK6/5ELWAMpssCSXB2ONhJpjc
+         i+Fk9gf1oAlBQK1OyyLeeGD1uuCqtnBz+Sd8zMkP0pJLYxzig0CJ8mjqvT19O3QA4L57
+         /H9L3e8bSOzZStz8fw5/nSQiJXAPcw3ysBh4bTuNPbdN5df7hgTqKbWS5b588VDy2yUf
+         GdMTqf1ynmOA05fJZohkIb+ZoR0+NzA/f/Fhsu5HQy6omcATN+ngEekgmOi/wzpLI3fu
+         T0lFuS0In/tu+x0ToLMCk1aJ627ZFiVjq+TLd8RbOBmU142QaFCjx6qZCm1pBUfOl58T
+         zlmQ==
+X-Received: by 10.180.211.109 with SMTP id nb13mr14506893wic.52.1445782145580;
+        Sun, 25 Oct 2015 07:09:05 -0700 (PDT)
+Return-Path: <brcnakalin@gmail.com>
+Received: from kripton.comu.edu.tr ([193.255.97.44])
+        by smtp.gmail.com with ESMTPSA id q1sm33674958wjy.31.2015.10.25.07.09.04
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 25 Oct 2015 07:09:04 -0700 (PDT)
+From: Burcin Akalin <brcnakalin@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Burcin Akalin <brcnakalin@gmail.com>
+Subject: [PATCH] staging: skein:Add space around '/'
+Date: Sun, 25 Oct 2015 16:08:55 +0200
+Message-Id: <1445782135-4972-1-git-send-email-brcnakalin@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Sun, Oct 25, 2015 at 04:08:55PM +0200, Burcin Akalin wrote:
-> Add space around operator '/'. Problem found using
-> checkpatch.pl
-> CHECK: spaces preferred around that '/' (ctx:VxV)
-> 
-> Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
-> ---
+Add space around operator '/'. Problem found using
+checkpatch.pl
+CHECK: spaces preferred around that '/' (ctx:VxV)
 
-This has already been done by 9efbbfada99c ("skein: fix coding style")
+Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+---
+ drivers/staging/skein/skein_api.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-regards
-sudip
+diff --git a/drivers/staging/skein/skein_api.c b/drivers/staging/skein/skein_api.c
+index 18acf18..3fb0d1c 100644
+--- a/drivers/staging/skein/skein_api.c
++++ b/drivers/staging/skein/skein_api.c
+@@ -51,7 +51,7 @@ int skein_init(struct skein_ctx *ctx, size_t hash_bit_len)
+ 	 * memory available.  The beauty of C :-) .
+ 	 */
+ 	x = ctx->m.s256.x;
+-	x_len = ctx->skein_size/8;
++	x_len = ctx->skein_size / 8;
+ 	/*
+ 	 * If size is the same and hash bit length is zero then reuse
+ 	 * the save chaining variables.
+@@ -92,7 +92,7 @@ int skein_mac_init(struct skein_ctx *ctx, const u8 *key, size_t key_len,
+ 	skein_assert_ret(ctx, SKEIN_FAIL);
+ 
+ 	x = ctx->m.s256.x;
+-	x_len = ctx->skein_size/8;
++	x_len = ctx->skein_size / 8;
+ 
+ 	skein_assert_ret(hash_bit_len, SKEIN_BAD_HASHLEN);
+ 
+@@ -136,7 +136,7 @@ void skein_reset(struct skein_ctx *ctx)
+ 	 * memory available.  The beautiy of C :-) .
+ 	 */
+ 	x = ctx->m.s256.x;
+-	x_len = ctx->skein_size/8;
++	x_len = ctx->skein_size / 8;
+ 	/* Restore the chaing variable, reset byte counter */
+ 	memcpy(x, ctx->x_save, x_len);
+ 
+-- 
+1.9.1
+
 
