@@ -1,83 +1,87 @@
 X-GM-THRID: 6209462121071116288
-X-Received: by 10.112.151.9 with SMTP id um9mr6941632lbb.19.1445758606567;
-        Sun, 25 Oct 2015 00:36:46 -0700 (PDT)
+X-Received: by 10.129.137.133 with SMTP id z127mr4423813ywf.25.1445753506302;
+        Sat, 24 Oct 2015 23:11:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.31.8 with SMTP id f8ls298447lff.31.gmail; Sun, 25 Oct 2015
- 00:36:44 -0700 (PDT)
-X-Received: by 10.112.145.201 with SMTP id sw9mr5592408lbb.13.1445758604056;
-        Sun, 25 Oct 2015 00:36:44 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id g9si35341wmd.2.2015.10.25.00.36.43
+Received: by 10.140.31.164 with SMTP id f33ls2936498qgf.29.gmail; Sat, 24 Oct
+ 2015 23:11:45 -0700 (PDT)
+X-Received: by 10.140.151.198 with SMTP id 189mr24416303qhx.11.1445753505567;
+        Sat, 24 Oct 2015 23:11:45 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id sm2si1645160pab.0.2015.10.24.23.11.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Oct 2015 00:36:44 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sat, 24 Oct 2015 23:11:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,195,1444687200"; 
-   d="scan'208";a="151673694"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 25 Oct 2015 08:36:43 +0100
-Date: Sun, 25 Oct 2015 08:36:42 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Alison Schofield <amsfield22@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: r8723au: remove external
- function declarations from .c file
-In-Reply-To: <a039d39e612445309cc6263707209995cb3cc071.1445752141.git.amsfield22@gmail.com>
-Message-ID: <alpine.DEB.2.02.1510250836210.2050@localhost6.localdomain6>
-References: <cover.1445752141.git.amsfield22@gmail.com> <a039d39e612445309cc6263707209995cb3cc071.1445752141.git.amsfield22@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id fa8so494082pac.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 23:11:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=gZbwkq5qXTmdikEq6DtG6dBh73yFj2R4bP7cqstcN54=;
+        b=Ow9TGz05V1krKDGRWXqB/EhimJRoQGHypxz6gQ06qJ65EIOBTSUK4S7nAe7JnetWWF
+         GH/Yw+B6Hl94c+zIYO1YI47bR7g2e7fSoEMI+YetKuLeslJ67/cEisZpRdozWCZQ2+YZ
+         /zXfVDX6488VGR/FFN1RBlO8OaQLTfYCzj4bl5pZIRTnK1KcEasheCrGvL6KuthOmz+v
+         jAoWANMaaz8HdTpSOzGXcUgFSrtKjf6lJ0o3FlwgJZDx1b7OPLaAxX1/DlBWwGqhkYvl
+         BY52KGIdLrFX8/YyPoq/GxRvvSVNTNdYWLbEr+DxE469cpiQjb8GdsfD+QIKs3x6ojPN
+         Tq2Q==
+X-Received: by 10.68.134.39 with SMTP id ph7mr3128111pbb.106.1445753505443;
+        Sat, 24 Oct 2015 23:11:45 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
+        by smtp.gmail.com with ESMTPSA id c3sm27124822pbu.24.2015.10.24.23.11.44
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 24 Oct 2015 23:11:44 -0700 (PDT)
+Date: Sat, 24 Oct 2015 23:11:44 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 4/4] staging: r8723au: remove external function declarations
+ from .c file
+Message-ID: <a039d39e612445309cc6263707209995cb3cc071.1445752141.git.amsfield22@gmail.com>
+References: <cover.1445752141.git.amsfield22@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1445752141.git.amsfield22@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Sat, 24 Oct 2015, Alison Schofield wrote:
+Remove unused external function declarations.
 
-> Remove unused external function declarations.
-> 
-> Addresses checkpatch.pl:
-> WARNING: externs should be avoided in .c files
-> 
-> Signed-off-by: Alison Schofield <amsfield22@gmail.com>
-> ---
->  drivers/staging/rtl8723au/core/rtw_efuse.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723au/core/rtw_efuse.c b/drivers/staging/rtl8723au/core/rtw_efuse.c
-> index bf27ea4..906b578 100644
-> --- a/drivers/staging/rtl8723au/core/rtw_efuse.c
-> +++ b/drivers/staging/rtl8723au/core/rtw_efuse.c
-> @@ -274,7 +274,6 @@ u8 EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
->  }
->  
->  /* Copy from WMAC fot EFUSE write 1 byte. */
-> -void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value);
+Addresses checkpatch.pl:
+WARNING: externs should be avoided in .c files
 
-Are these really external declarations?
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+---
+ drivers/staging/rtl8723au/core/rtw_efuse.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-julia
+diff --git a/drivers/staging/rtl8723au/core/rtw_efuse.c b/drivers/staging/rtl8723au/core/rtw_efuse.c
+index bf27ea4..906b578 100644
+--- a/drivers/staging/rtl8723au/core/rtw_efuse.c
++++ b/drivers/staging/rtl8723au/core/rtw_efuse.c
+@@ -274,7 +274,6 @@ u8 EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
+ }
+ 
+ /* Copy from WMAC fot EFUSE write 1 byte. */
+-void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value);
+ void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value)
+ {
+ 	u8	Bytetemp = {0x00};
+@@ -502,7 +501,6 @@ int rtw_BT_efuse_map_read23a(struct rtw_adapter *padapter,
+ }
+ 
+ /* Read All Efuse content */
+-void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse);
+ void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse)
+ {
+ 	u16	mapLen = 0;
+-- 
+2.1.4
 
->  void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value)
->  {
->  	u8	Bytetemp = {0x00};
-> @@ -502,7 +501,6 @@ int rtw_BT_efuse_map_read23a(struct rtw_adapter *padapter,
->  }
->  
->  /* Read All Efuse content */
-> -void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse);
->  void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse)
->  {
->  	u16	mapLen = 0;
-> -- 
-> 2.1.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a039d39e612445309cc6263707209995cb3cc071.1445752141.git.amsfield22%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
