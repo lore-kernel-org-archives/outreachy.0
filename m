@@ -1,83 +1,97 @@
 X-GM-THRID: 6207450266150633472
-X-Received: by 10.67.21.136 with SMTP id hk8mr10891399pad.14.1445762164612;
-        Sun, 25 Oct 2015 01:36:04 -0700 (PDT)
+X-Received: by 10.182.72.166 with SMTP id e6mr25505927obv.47.1445762162092;
+        Sun, 25 Oct 2015 01:36:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.98.35 with SMTP id n32ls2885547qge.78.gmail; Sun, 25 Oct
- 2015 01:36:04 -0700 (PDT)
-X-Received: by 10.13.215.214 with SMTP id z205mr24246693ywd.23.1445762164068;
-        Sun, 25 Oct 2015 01:36:04 -0700 (PDT)
+Received: by 10.140.109.138 with SMTP id l10ls1101133qgf.36.gmail; Sun, 25 Oct
+ 2015 01:36:01 -0700 (PDT)
+X-Received: by 10.140.233.208 with SMTP id e199mr24732292qhc.8.1445762161635;
+        Sun, 25 Oct 2015 01:36:01 -0700 (PDT)
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id vy6si2995120pbc.1.2015.10.25.01.36.03
+        by gmr-mx.google.com with ESMTPS id pe1si3031912pac.2.2015.10.25.01.36.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Oct 2015 01:36:04 -0700 (PDT)
+        Sun, 25 Oct 2015 01:36:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (unknown [58.123.138.205])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 4B59D67;
-	Sun, 25 Oct 2015 08:36:03 +0000 (UTC)
-Date: Sat, 24 Oct 2015 19:41:21 -0700
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id E8B5C67;
+	Sun, 25 Oct 2015 08:36:00 +0000 (UTC)
+Date: Sat, 24 Oct 2015 19:40:29 -0700
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Alison Schofield <amsfield22@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 5/5] staging: r8723au: use kernel
- preferred style for commenting
-Message-ID: <20151025024121.GB16589@kroah.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 1/5] staging: r8723au: break
+ parameter list at separators and align to open braces
+Message-ID: <20151025024029.GA16589@kroah.com>
 References: <cover.1445402009.git.amsfield22@gmail.com>
- <2759bb6566b8295027e88324efb338b1e471a970.1445402009.git.amsfield22@gmail.com>
+ <d49b2db25364b18631d33f0a0e27d5396ae20f79.1445402009.git.amsfield22@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2759bb6566b8295027e88324efb338b1e471a970.1445402009.git.amsfield22@gmail.com>
+In-Reply-To: <d49b2db25364b18631d33f0a0e27d5396ae20f79.1445402009.git.amsfield22@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Tue, Oct 20, 2015 at 11:10:41PM -0700, Alison Schofield wrote:
-> Reworked comments per kernel coding style to improve readability.
+On Tue, Oct 20, 2015 at 11:01:58PM -0700, Alison Schofield wrote:
+> Improve readability by aligning the struct cmd_hdl wlancmds[] to fit
+> within 80 chars and cleaning up the adjacent index comments.
 > 
-> Addresses checkpatch.pl:
-> 	WARNING: Block comments use * on subsequent lines
+> Addresses checkpatch.pl WARNING: line over 80 characters
 > 
 > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 > ---
->  drivers/staging/rtl8723au/core/rtw_cmd.c | 159 ++++++++++++++++---------------
->  1 file changed, 80 insertions(+), 79 deletions(-)
+>  drivers/staging/rtl8723au/core/rtw_cmd.c | 64 +++++++++++++++++++-------------
+>  1 file changed, 38 insertions(+), 26 deletions(-)
 > 
 > diff --git a/drivers/staging/rtl8723au/core/rtw_cmd.c b/drivers/staging/rtl8723au/core/rtw_cmd.c
-> index 6330933..4db4dfe 100644
+> index 46aea16..c3579ac 100644
 > --- a/drivers/staging/rtl8723au/core/rtw_cmd.c
 > +++ b/drivers/staging/rtl8723au/core/rtw_cmd.c
-> @@ -102,83 +102,76 @@ static struct cmd_hdl wlancmds[] = {
->  			     tdls_hdl23a)
->  };
+> @@ -22,7 +22,7 @@
+>  #include <rtw_sreset.h>
 >  
-> -struct _cmd_callback	rtw_cmd_callback[] = {
-> -	{GEN_CMD_CODE(_Read_MACREG), NULL}, /*0*/
-> +struct _cmd_callback rtw_cmd_callback[] = {
-> +	{GEN_CMD_CODE(_Read_MACREG), NULL},				/*0*/
->  	{GEN_CMD_CODE(_Write_MACREG), NULL},
->  	{GEN_CMD_CODE(_Read_BBREG), &rtw_getbbrfreg_cmdrsp_callback23a},
->  	{GEN_CMD_CODE(_Write_BBREG), NULL},
->  	{GEN_CMD_CODE(_Read_RFREG), &rtw_getbbrfreg_cmdrsp_callback23a},
-> -	{GEN_CMD_CODE(_Write_RFREG), NULL}, /*5*/
-> +	{GEN_CMD_CODE(_Write_RFREG), NULL},
->  	{GEN_CMD_CODE(_Read_EEPROM), NULL},
->  	{GEN_CMD_CODE(_Write_EEPROM), NULL},
->  	{GEN_CMD_CODE(_Read_EFUSE), NULL},
->  	{GEN_CMD_CODE(_Write_EFUSE), NULL},
-> -
-> -	{GEN_CMD_CODE(_Read_CAM),	NULL},	/*10*/
-> -	{GEN_CMD_CODE(_Write_CAM),	 NULL},
-> +	{GEN_CMD_CODE(_Read_CAM), NULL},				/*10*/
-> +	{GEN_CMD_CODE(_Write_CAM), NULL},
->  	{GEN_CMD_CODE(_setBCNITV), NULL},
->  	{GEN_CMD_CODE(_setMBIDCFG), NULL},
-> -	{GEN_CMD_CODE(_JoinBss), &rtw_joinbss_cmd23a_callback},  /*14*/
-> -	{GEN_CMD_CODE(_DisConnect), &rtw_disassoc_cmd23a_callback}, /*15*/
-> +	{GEN_CMD_CODE(_JoinBss), &rtw_joinbss_cmd23a_callback},
-> +	{GEN_CMD_CODE(_DisConnect), &rtw_disassoc_cmd23a_callback},
+>  static struct cmd_hdl wlancmds[] = {
+> -	GEN_DRV_CMD_HANDLER(0, NULL) /*0*/
+> +	GEN_DRV_CMD_HANDLER(0, NULL)					/*0*/
+>  	GEN_DRV_CMD_HANDLER(0, NULL)
+>  	GEN_DRV_CMD_HANDLER(0, NULL)
+>  	GEN_DRV_CMD_HANDLER(0, NULL)
+> @@ -32,18 +32,26 @@ static struct cmd_hdl wlancmds[] = {
+>  	GEN_MLME_EXT_HANDLER(0, NULL)
+>  	GEN_MLME_EXT_HANDLER(0, NULL)
+>  	GEN_MLME_EXT_HANDLER(0, NULL)
+> -	GEN_MLME_EXT_HANDLER(0, NULL) /*10*/
+> +	GEN_MLME_EXT_HANDLER(0, NULL)					/*10*/
+>  	GEN_MLME_EXT_HANDLER(0, NULL)
+>  	GEN_MLME_EXT_HANDLER(0, NULL)
+>  	GEN_MLME_EXT_HANDLER(0, NULL)
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct wlan_bssid_ex), join_cmd_hdl23a) /*14*/
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct disconnect_parm), disconnect_hdl23a)
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct wlan_bssid_ex), createbss_hdl23a)
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct setopmode_parm), setopmode_hdl23a)
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct sitesurvey_parm), sitesurvey_cmd_hdl23a) /*18*/
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct setauth_parm), setauth_hdl23a)
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct setkey_parm), setkey_hdl23a) /*20*/
+> -	GEN_MLME_EXT_HANDLER(sizeof(struct set_stakey_parm), set_stakey_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct wlan_bssid_ex),
+> +			     join_cmd_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct disconnect_parm),
+> +			     disconnect_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct wlan_bssid_ex),
+> +			     createbss_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct setopmode_parm),
+> +			     setopmode_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct sitesurvey_parm),
+> +			     sitesurvey_cmd_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct setauth_parm),
+> +			     setauth_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct setkey_parm),		/*20*/
+> +			     setkey_hdl23a)
+> +	GEN_MLME_EXT_HANDLER(sizeof(struct set_stakey_parm),
+> +			     set_stakey_hdl23a)
 
-Why delete the comments?
+
+This seems harder to read to me than before, how about you?
 
 
