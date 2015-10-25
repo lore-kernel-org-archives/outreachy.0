@@ -1,140 +1,114 @@
-X-GM-THRID: 500390952960
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9286914636319bba,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.194.163 with SMTP id hx3mr2291919pac.18.1424311542832;
-        Wed, 18 Feb 2015 18:05:42 -0800 (PST)
+X-GM-THRID: 6208177008118071296
+X-Received: by 10.67.4.135 with SMTP id ce7mr11831226pad.20.1445782300744;
+        Sun, 25 Oct 2015 07:11:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.8.205 with SMTP id h74ls313943ioi.30.gmail; Wed, 18 Feb
- 2015 18:05:42 -0800 (PST)
-X-Received: by 10.67.29.231 with SMTP id jz7mr2407594pad.9.1424311542498;
-        Wed, 18 Feb 2015 18:05:42 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pd0-f180.google.com (mail-pd0-f180.google.com. [209.85.192.180])
-        by gmr-mx.google.com with ESMTPS id bo1si2726696pbc.0.2015.02.18.18.05.42
+Received: by 10.107.156.202 with SMTP id f193ls385081ioe.60.gmail; Sun, 25 Oct
+ 2015 07:11:40 -0700 (PDT)
+X-Received: by 10.50.110.6 with SMTP id hw6mr11819962igb.7.1445782300245;
+        Sun, 25 Oct 2015 07:11:40 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x229.google.com (mail-qg0-x229.google.com. [2607:f8b0:400d:c04::229])
+        by gmr-mx.google.com with ESMTPS id t64si1964421ywd.2.2015.10.25.07.11.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Feb 2015 18:05:42 -0800 (PST)
-Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.192.180;
+        Sun, 25 Oct 2015 07:11:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) client-ip=2607:f8b0:400d:c04::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
-Received: by pdjy10 with SMTP id y10so5382413pdj.6
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Feb 2015 18:05:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Paf/tpnT9LKpqVZqzknZpvaC3tbQEJdFAju/e//whcE=;
-        b=CKFEA0SO4x35W3ohzncF2MRkkEjZ80kweGMDD1TnoTCU0KdsZIl9LTiFpkmcD+YE41
-         OGWNW4f2tnEnLfANl1pGoik2oiqT6P5/QxP+AWFV8Mtf95OOO1xjuKs7JBC3pzkNjFHK
-         gqaPbGZwyNTOZ7Wuh98jH0HQLwJh0wXtYOk+AyQqtJ38eBLWcAovAVdmsfJIixBDYkB7
-         gUgsQ0rUGe0OLaiiS+VR9IPM3b8QVdiebml+cmROOz67rZ24a4QTyRIvIP3Q+6KKx2KD
-         THPRRqIz7mOIVh2jYdsPW4fBsrByJnKKcGCGf2OSbMseBqWlPpe9tigf7dF1yTyFSN++
-         y9hw==
-X-Gm-Message-State: ALoCoQlYpV6U6kUxdkDNumQfXrgQtsNfR3gvENtEwBTAq+cROVUnDnE/yxSixIaroNRLaoQARSgM
-X-Received: by 10.70.130.69 with SMTP id oc5mr3615522pdb.160.1424311542317;
-        Wed, 18 Feb 2015 18:05:42 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 ([2601:9:8340:b6:59cf:aa00:32a0:a253])
-        by mx.google.com with ESMTPSA id n2sm22057644pdo.0.2015.02.18.18.05.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 18 Feb 2015 18:05:41 -0800 (PST)
-Date: Wed, 18 Feb 2015 18:05:40 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: media: mn88473: Match alignment with open
- parenthesis
-Message-ID: <20150219020540.GA12874@katie-Inspiron-5748>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qg0-x229.google.com with SMTP id o38so101904581qge.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2015 07:11:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=PLsyafuiPxYRLb31BcaAqsjYPs0Gdh5xkFC7incDDQw=;
+        b=OQdwbyf8sdBDpSR5jVMjRKBW2WNuGc2wPnCSWmHW/xScZC7FWWX0cto69IMbOFxJeu
+         bqPA0cHFB9O8chTDlhtFjBO3ncYH1ET46i5O2IBn7+b+xk9TBfXHBi6DjdiY3pHr7MPW
+         TeuFBfJ4w50vgteGtBs9ZQvjRAI3B5CCguutFu3Lauu0OHcLJe9oF+kJAN1c6rbqxTWL
+         Dqft3ikoez9RPnRsl/SBiTvz3zmfETH+ptg9WJI0DAfCrBDp7d1pNi8o9gXJVJy1xMhK
+         YfUJPDUNXPA+GhKrc7zy29hYQCE70fjV9dI8sY8LtNNpGLi+twXOuIaSDWa8iRvGynSd
+         9lvQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.140.39.199 with SMTP id v65mr13103613qgv.34.1445782300031;
+ Sun, 25 Oct 2015 07:11:40 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Sun, 25 Oct 2015 07:11:39 -0700 (PDT)
+In-Reply-To: <20151025014856.GA536@kroah.com>
+References: <cover.1445453573.git.amitoj1606@gmail.com>
+	<7c9a1c8af81dc6676b31d2ad2e8d9de2df9dfbd8.1445453573.git.amitoj1606@gmail.com>
+	<20151025014856.GA536@kroah.com>
+Date: Sun, 25 Oct 2015 19:41:39 +0530
+Message-ID: <CA+5yK5E2xBBETtxA6Mj9rP4mSdu8rkWYZ+3VeJ+NSY59_Z+GxQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/3] staging: lustre: lmv: Fix endian
+ sparse warnings
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Fixes the checkpatch.pl Check:
-CHECK: Alignment should match open parenthesis
+On Sun, Oct 25, 2015 at 7:18 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Thu, Oct 22, 2015 at 12:31:32AM +0530, Amitoj Kaur Chawla wrote:
+>> Fix bug found using sparse which generates the following warning:
+>>
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2422:25: warning:
+>> incorrect type in assignment (different base types)
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2422:25: expected unsigned
+>> int [unsigned] [usertype] mea_magic
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2422:25: got restricted
+>> __le32 [usertype] <noident>
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2423:25: warning:
+>> incorrect type in assignment (different base types)
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2423:25: expected unsigned
+>> int [unsigned] [usertype] mea_count
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2423:25: got restricted
+>> __le32 [usertype] <noident>
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2424:26: warning:
+>> incorrect type in assignment (different base types)
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2424:26: expected unsigned
+>> int [unsigned] [usertype] mea_master
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2424:26: got restricted
+>> __le32 [usertype] <noident>
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2467:25: warning: cast to
+>> restricted __le32
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2477:30: warning: cast to
+>> restricted __le32
+>> drivers/staging/lustre/lustre/lmv/lmv_obd.c:2478:31: warning: cast to
+>> restricted __le32
+>>
+>> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+>> ---
+>>  drivers/staging/lustre/lustre/lmv/lmv_obd.c | 12 ++++++------
+>>  1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+>> index 7e6a060..8d90f19 100644
+>> --- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+>> +++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+>> @@ -2419,9 +2419,9 @@ static int lmv_packmd(struct obd_export *exp, struct lov_mds_md **lmmp,
+>>           lsmp->mea_magic != MEA_MAGIC_ALL_CHARS)
+>>               return -EINVAL;
+>>
+>> -     meap->mea_magic = cpu_to_le32(lsmp->mea_magic);
+>> -     meap->mea_count = cpu_to_le32(lsmp->mea_count);
+>> -     meap->mea_master = cpu_to_le32(lsmp->mea_master);
+>> +     meap->mea_magic = lsmp->mea_magic;
+>> +     meap->mea_count = lsmp->mea_count;
+>> +     meap->mea_master = lsmp->mea_master;
+>
+> Yes, deleting the calls will remove the warning, but maybe this isn't
+> the correct fix?  I think you just broke the code :(
+>
+> There is a better fix here, a "correct" one, can you think of it?
+>
+> thanks,
+>
+> greg k-h
 
-Increases readability by standardizing 7 argument indentations
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
----
- drivers/staging/media/mn88473/mn88473.c | 24 ++++++++++++++----------
- 1 file changed, 14 insertions(+), 10 deletions(-)
+Umm, I can only think of changing the definition instead.
 
-diff --git a/drivers/staging/media/mn88473/mn88473.c b/drivers/staging/media/mn88473/mn88473.c
-index a333744..197e2d0 100644
---- a/drivers/staging/media/mn88473/mn88473.c
-+++ b/drivers/staging/media/mn88473/mn88473.c
-@@ -17,7 +17,7 @@
- #include "mn88473_priv.h"
- 
- static int mn88473_get_tune_settings(struct dvb_frontend *fe,
--	struct dvb_frontend_tune_settings *s)
-+				     struct dvb_frontend_tune_settings *s)
- {
- 	s->min_delay_ms = 1000;
- 	return 0;
-@@ -33,10 +33,14 @@ static int mn88473_set_frontend(struct dvb_frontend *fe)
- 	u8 delivery_system_val, if_val[3], bw_val[7];
- 
- 	dev_dbg(&client->dev,
--			"delivery_system=%u modulation=%u frequency=%u bandwidth_hz=%u symbol_rate=%u inversion=%d stream_id=%d\n",
--			c->delivery_system, c->modulation,
--			c->frequency, c->bandwidth_hz, c->symbol_rate,
--			c->inversion, c->stream_id);
-+		"delivery_system=%u modulation=%u frequency=%u bandwidth_hz=%u symbol_rate=%u inversion=%d stream_id=%d\n",
-+		c->delivery_system,
-+		c->modulation,
-+		c->frequency,
-+		c->bandwidth_hz,
-+		c->symbol_rate,
-+		c->inversion,
-+		c->stream_id);
- 
- 	if (!dev->warm) {
- 		ret = -EAGAIN;
-@@ -112,7 +116,7 @@ static int mn88473_set_frontend(struct dvb_frontend *fe)
- 		break;
- 	default:
- 		dev_err(&client->dev, "IF frequency %d not supported\n",
--				if_frequency);
-+			if_frequency);
- 		ret = -EINVAL;
- 		goto err;
- 	}
-@@ -229,7 +233,7 @@ static int mn88473_init(struct dvb_frontend *fe)
- 	}
- 
- 	dev_info(&client->dev, "downloading firmware from file '%s'\n",
--			fw_file);
-+		 fw_file);
- 
- 	ret = regmap_write(dev->regmap[0], 0xf5, 0x03);
- 	if (ret)
-@@ -242,10 +246,10 @@ static int mn88473_init(struct dvb_frontend *fe)
- 			len = (dev->i2c_wr_max - 1);
- 
- 		ret = regmap_bulk_write(dev->regmap[0], 0xf6,
--				&fw->data[fw->size - remaining], len);
-+					&fw->data[fw->size - remaining], len);
- 		if (ret) {
- 			dev_err(&client->dev, "firmware download failed=%d\n",
--					ret);
-+				ret);
- 			goto err;
- 		}
- 	}
-@@ -325,7 +329,7 @@ static struct dvb_frontend_ops mn88473_ops = {
- };
- 
- static int mn88473_probe(struct i2c_client *client,
--		const struct i2c_device_id *id)
-+			 const struct i2c_device_id *id)
- {
- 	struct mn88473_config *config = client->dev.platform_data;
- 	struct mn88473_dev *dev;
 -- 
-1.9.1
-
+Amitoj
 
