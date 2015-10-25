@@ -1,110 +1,72 @@
-X-GM-THRID: 6609994215538556928
-X-Received: by 2002:a0c:bd29:: with SMTP id m41-v6mr18156637qvg.2.1539009207133;
-        Mon, 08 Oct 2018 07:33:27 -0700 (PDT)
+X-GM-THRID: 6209697474171371520
+X-Received: by 10.112.140.202 with SMTP id ri10mr7420534lbb.10.1445807859730;
+        Sun, 25 Oct 2015 14:17:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:1931:: with SMTP id t46-v6ls325175qtj.0.gmail; Mon, 08
- Oct 2018 07:33:26 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60YJOn5xvv0HneIyPU3j9CD220C2LJki8eB90HDHYtDc7+OzxvSeiuvSsv7FXzlmsHbkTvY
-X-Received: by 2002:ac8:23f5:: with SMTP id r50-v6mr18300650qtr.53.1539009206626;
-        Mon, 08 Oct 2018 07:33:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539009206; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Jr/GuhHMIrQxprumvjws1TIPBc5UjUulDnm8wvcdJnv5RVZ0U7u8yxMUAGOvwKK17b
-         kYoPBG+ugFTqZWWYc80khB2CXFdgkKi5yYt4CgmXsGvQTm7kyTNYzuNd4M4a8VDCnJbr
-         YaqIR09V5csL8J+HCcKXWSNgY1BcufgjzTVmxD6x9Vu5GgY5KFGFanTeh66hUSSvs8bd
-         9Hxq9CRuOCEm4948esgS69B+L9wsuaDoZNAKJPzyyMBGNiSNKwzzABCQmZKxA5hmG5I3
-         iVPt/aTRFssOy70ble4Prf0Y9loD4rfOMspo6+D58LTqxHAnKqaP9T/sETm0ofXqJXw0
-         7rNA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=kGMM8DjPo+qyzllk6xHG8K5q84wQHMZ/RImEB4cSMmg=;
-        b=UKW6tRhdA+j8N9mpLGcSsxwYV1jjKFMSEo7cLatURJ+GV6xmnECRRVCxigH27KSwbE
-         QiBOp7WTssF2vQRMOGErgKPgaSt4ct79M80VMEYQpmZAgAUXeUrVjF1P3xofGV/EuhcW
-         vBiylTn8pguHiHtBoEAnSLF45R0pvVlP8yFMLF7eTxpevDBfJDXKsf+qF5CbEKS05Wdx
-         FDeX4Z78aPnfbZDsL3SKcV7u+bfvqqdK+88bYS6hLshlrz2dgO4pZj8yfqaE239zkXUs
-         WiPi1gh7wt5WXxUJMIhux34km4SYwu8SAt9cM2UU3hIwOaXD4NOGzenPwmNWOZrVe7CX
-         3cuw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ogewWUCz;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id o2-v6si245576qtc.5.2018.10.08.07.33.26
+Received: by 10.25.211.137 with SMTP id k131ls594539lfg.53.gmail; Sun, 25 Oct
+ 2015 14:17:39 -0700 (PDT)
+X-Received: by 10.112.134.129 with SMTP id pk1mr605080lbb.24.1445807859091;
+        Sun, 25 Oct 2015 14:17:39 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
+        by gmr-mx.google.com with ESMTPS id c7si382578wiy.3.2015.10.25.14.17.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 08 Oct 2018 07:33:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Sun, 25 Oct 2015 14:17:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ogewWUCz;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id v5-v6so10154883plz.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 08 Oct 2018 07:33:26 -0700 (PDT)
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x232.google.com with SMTP id q8so139498096wik.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2015 14:17:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=kGMM8DjPo+qyzllk6xHG8K5q84wQHMZ/RImEB4cSMmg=;
-        b=ogewWUCzurxFiRwPhNmngA+a5CGm4MS4D9Ly38lbRfvMIUPT5pvxRjYuNURZDWzGv2
-         VZO8oZxfwkNUivhjAPt46FIfD3jUj2Vz16SbOsW/4gzqkO/FvChQJK/HnEwyTNerBcnZ
-         iil3NuWtFKdGJBOUjaiO7rUG8CAkBHiIwm9QJo0WhZXZ2Wfd8kNPn7hMuq9+Gqu4IeRT
-         82Q5Te0bvH9zXsg0j3+4e3s18ukZGHF+mtPNCSvReiiKWHSZByfZBM42ocdBGn4tt2BR
-         3ObJ43W0qnMk5jich69cwYhzJnYhOA6MioYnNwq97DxVYoc92czPrcFiujgWO5OBtdvJ
-         PY9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=kGMM8DjPo+qyzllk6xHG8K5q84wQHMZ/RImEB4cSMmg=;
-        b=sg8qruOXcPQLC117vSuAZez6c23VHEfn+4eCYPinheRwu5DEPzJRtGAonuu3Vp+qFk
-         DJ+np4ixcc5lW7emqLQQSkDZSCLmgFYlvaGfbCkTLkoN7H8E0uC2AfG6bJgd1XxDSL7z
-         rVWUtxjVc+K76nP+Nq0iXLv1upJ71Ik8xQ7713MRlmCxS7moNdGbLKVkpx8077Ea/KTH
-         aE9h3Vpu0Zgjoip3aV0rFZheRV/ucFUD7pnudB9JXqEmfVf7+1NhAXP8Hc+NbcFSTJgD
-         JMDcmfSXssLT4N8FZnpAJfCnPM6a+Erun8HnOvTm3n+GyhWQXabZTPA2Z5NvOQ+TahXA
-         rAVg==
-X-Gm-Message-State: ABuFfogKjxmqHmyKUS8q37D/1ecDz8pn2W8dJBulqkjZlUDbANbehCwF
-	iT1BHTwCQJygMPyWMlgGWRS1aRa/
-X-Received: by 2002:a17:902:6689:: with SMTP id e9-v6mr24223014plk.115.1539009205631;
-        Mon, 08 Oct 2018 07:33:25 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from veda-VGN-CS3AGH-R ([183.83.92.101])
-        by smtp.gmail.com with ESMTPSA id k23-v6sm19851373pgl.42.2018.10.08.07.33.24
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Oct 2018 07:33:24 -0700 (PDT)
-Date: Mon, 8 Oct 2018 20:03:22 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=j/x/t7WZGf6PJZ4KxspgTciCnd/6x1r5Za4EqydNtqM=;
+        b=splyCScdsT6XFFlPAwvJ8X9SOOCid/NE3La7oAamx0k+N0HnVVPmlKVhdLwadgCPOU
+         BT0AtXAilfmwtIP9/Z+aCNtggHn+YC0Q2Q3LmdGo+CR8dRURbv2zI5Edx2bknFFTrUGn
+         uFPgFHqTLl29I0UKrXLS1ViXMHIIts5hk73d45VrJunEZGTSNE7c+j9mYQH42+MrkQtN
+         N0jjywFfq6pgTE+GjTRxiB9Zd2mOsolZYIOozJpgEFEkYgcqO4yCtPT6J5nhR0REWhUl
+         C0GB8tkcZYEBYIzFVPqQybKJMiaQ9G7J8RIAbdL50j66pOUr6SLasebDEgeVt5xdbHUt
+         bcWg==
+X-Received: by 10.180.87.1 with SMTP id t1mr17332982wiz.77.1445807858978;
+        Sun, 25 Oct 2015 14:17:38 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([213.233.101.193])
+        by smtp.gmail.com with ESMTPSA id hk5sm35327867wjb.6.2015.10.25.14.17.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 25 Oct 2015 14:17:38 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: greg@kroah.com
-Subject: [Outreachy kernel][PATCH] staging: mt7621-dma: Fix Spelling
-Message-ID: <20181008143321.GA12062@veda-VGN-CS3AGH-R>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH] staging: lustre: Don't ignore error code
+Date: Sun, 25 Oct 2015 23:16:31 +0200
+Message-Id: <1445807791-8328-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Error stored in rc was never reported,
+so directly return it here.
 
-Fix Spelling in #define GDMA_REG_CTRL1_CONTINOUS. Perhaps 'CONTINUOUS'
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/mt7621-dma/ralink-gdma.c | 2 +-
+ drivers/staging/lustre/lnet/selftest/conctl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/mt7621-dma/ralink-gdma.c b/drivers/staging/mt7621-dma/ralink-gdma.c
-index 6d9fe175ea52..a430c8afa3d0 100644
---- a/drivers/staging/mt7621-dma/ralink-gdma.c
-+++ b/drivers/staging/mt7621-dma/ralink-gdma.c
-@@ -47,7 +47,7 @@
- #define GDMA_REG_CTRL1_REQ_MASK		0x3f
- #define GDMA_REG_CTRL1_SRC_REQ_SHIFT	16
- #define GDMA_REG_CTRL1_DST_REQ_SHIFT	8
--#define GDMA_REG_CTRL1_CONTINOUS	BIT(14)
-+#define GDMA_REG_CTRL1_CONTINUOUS	BIT(14)
- #define GDMA_REG_CTRL1_NEXT_MASK	0x1f
- #define GDMA_REG_CTRL1_NEXT_SHIFT	3
- #define GDMA_REG_CTRL1_COHERENT		BIT(2)
+diff --git a/drivers/staging/lustre/lnet/selftest/conctl.c b/drivers/staging/lustre/lnet/selftest/conctl.c
+index 8173966..556c837 100644
+--- a/drivers/staging/lustre/lnet/selftest/conctl.c
++++ b/drivers/staging/lustre/lnet/selftest/conctl.c
+@@ -441,7 +441,7 @@ lst_group_info_ioctl(lstio_group_info_args_t *args)
+ 	if (args->lstio_grp_dentsp != NULL &&
+ 	    (copy_to_user(args->lstio_grp_idxp, &index, sizeof(index)) ||
+ 	     copy_to_user(args->lstio_grp_ndentp, &ndent, sizeof(ndent))))
+-		rc = -EFAULT;
++		return -EFAULT;
+ 
+ 	return 0;
+ }
 -- 
-2.17.1
+1.9.1
 
 
