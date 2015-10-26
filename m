@@ -1,95 +1,230 @@
 X-GM-THRID: 6208887489417969664
-X-Received: by 10.50.176.129 with SMTP id ci1mr16879052igc.12.1445880048470;
-        Mon, 26 Oct 2015 10:20:48 -0700 (PDT)
+X-Received: by 10.129.148.129 with SMTP id l123mr12967703ywg.35.1445830189282;
+        Sun, 25 Oct 2015 20:29:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.94.67 with SMTP id f61ls1591375qge.95.gmail; Mon, 26 Oct
- 2015 10:20:47 -0700 (PDT)
-X-Received: by 10.129.134.129 with SMTP id w123mr29964233ywf.17.1445880047840;
-        Mon, 26 Oct 2015 10:20:47 -0700 (PDT)
+Received: by 10.107.26.134 with SMTP id a128ls635318ioa.108.gmail; Sun, 25 Oct
+ 2015 20:29:48 -0700 (PDT)
+X-Received: by 10.66.184.175 with SMTP id ev15mr14137773pac.26.1445830188420;
+        Sun, 25 Oct 2015 20:29:48 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id pe1si3639255pac.2.2015.10.26.10.20.47
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id sm2si1969202pab.0.2015.10.25.20.29.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Oct 2015 10:20:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 25 Oct 2015 20:29:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fv9so202621512pac.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 10:20:47 -0700 (PDT)
+Received: by mail-pa0-x235.google.com with SMTP id z6so173752059pas.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2015 20:29:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=NzRvxizIF12sxupXztfwmOAYMC9LSqddcRscVo9cuKI=;
-        b=Lub4WRXAlE3YM3D58fx8OaroT86a8C8w11worPFVSVtT4DDm+mqiLgnGRapG9Icn4B
-         q1kTIeineL0wNPogjcjXeQdXnstfIED9PLqowQYyOMAEmeS3zS9kQcRYwcmCsSFEdFD0
-         7xHNjVybISfxpKFUaX7ZE4p0skCV1EwvTTW5nt1NVmmz8PeV+JNx0nIWYDmeo9ZHnTet
-         XxI4dAwNbIiD3gecNhofisWesPVsf4t8HFEt7oDqyO8gthXTTIok3/S7GNPgQA8uQLwH
-         3dPtYxU4t6aGjwQopN8UyPfYLB1jr73h6hHe7u+HQxOCQo81XUjL4M365uyTsKMapQq8
-         DmvQ==
-X-Received: by 10.66.161.73 with SMTP id xq9mr22896477pab.0.1445880047643;
-        Mon, 26 Oct 2015 10:20:47 -0700 (PDT)
+        bh=F/M6mGqyzDfzarCkbadxXfddnDpW0DRZMHqWuzT5LIg=;
+        b=km6KC7jjjwauEYeR7o6TyCy+1JQ4A6jyo7v5ppyJ3/CCjQDIQTr5NyMkYRJ7hvKIS+
+         h6FSMNha1zxP6npWAfnN8ai0bhWUGVPJKA1qGOEj/WOzRol1nKADH4D/T2m2xfB880Ht
+         RAvFj+qFdLO5lw2uq7mK0q/sjftO4dBMAz9mQ85Eb6+FG+ZAa2gwY7IrY5GcgBrNjuvX
+         fpy4hcWaNyXNbzoDgySZgiA2HkgcqPz5e6gJQDYe+FIzmo2lmf7Ib3prxSsEUgHxUKVf
+         fkd4tmeWQycq5QI3LlTLIVvNccZFfOamg3jxXJTCq7G+RHCTGPLaGal3naOa+cLKtySF
+         Fgkg==
+X-Received: by 10.68.228.200 with SMTP id sk8mr20202637pbc.115.1445830188260;
+        Sun, 25 Oct 2015 20:29:48 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
 Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id kv9sm35187049pab.39.2015.10.26.10.20.47
+        by smtp.gmail.com with ESMTPSA id xa4sm30980758pac.28.2015.10.25.20.29.47
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 26 Oct 2015 10:20:47 -0700 (PDT)
-Date: Mon, 26 Oct 2015 10:20:46 -0700
+        Sun, 25 Oct 2015 20:29:47 -0700 (PDT)
+Date: Sun, 25 Oct 2015 20:29:46 -0700
 From: Alison Schofield <amsfield22@gmail.com>
-To: Daniel Baluta <daniel.baluta@intel.com>
-Cc: outreachy-kernel@googlegroups.com, jic23@kernel.org,
-	linux-iio@vger.kernel.org
+To: Jonathan Cameron <jic23@kernel.org>, gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
 Subject: Re: [PATCH] staging: iio: dummy: clean up the define and usage of
  dummy_scan_elements
-Message-ID: <20151026172045.GA18550@Ubuntu-D830>
+Message-ID: <20151026032945.GD2104@Ubuntu-D830>
 References: <20151023165418.GA18718@Ubuntu-D830>
- <562DE019.3060807@intel.com>
+ <562CB4E5.8010503@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <562DE019.3060807@intel.com>
+In-Reply-To: <562CB4E5.8010503@kernel.org>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Mon, Oct 26, 2015 at 10:11:05AM +0200, Daniel Baluta wrote:
+On Sun, Oct 25, 2015 at 10:54:29AM +0000, Jonathan Cameron wrote:
+> On 23/10/15 17:54, Alison Schofield wrote:
+> > Cleanups related to the usage of dummy_scan_elements in the
+> > iio dummy driver:
+> > - change enum names to upper case INDEX_*
+> > - use the enum for IIO_CHAN_SOFT_TIMESTAMP (rm hard coded value)
+> > - comment edited to match changes & follow preferred kernel style
+> > 
+> As Greg observed this would be better as three separate patches.
+> Comment inline as well.
 > 
-> 
-> On 10/23/2015 07:54 PM, Alison Schofield wrote:
-> >Cleanups related to the usage of dummy_scan_elements in the
-> >iio dummy driver:
-> >- change enum names to upper case INDEX_*
-> >- use the enum for IIO_CHAN_SOFT_TIMESTAMP (rm hard coded value)
-> >- comment edited to match changes & follow preferred kernel style
-> >
-> >Signed-off-by: Alison Schofield <amsfield22@gmail.com>
-> >---
+> Jonathan
+
+Greg, Jonathan,
+
+Thanks for the review.  I understand it needs to be a set. 
+
+I only see 2 patches:
+1) change enum names to be upper case.
+2) replace hardcoded scan_index in IIO_CHAN_SOFT_TIMESTAMP
+
+I don't see the comments as a 3rd, they go with each change.
+ie. when I change the enum names, I update the comments
+right above it to match.  Same with Patch 2.
+
+OK?
+
+alison
+
+> > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+> > ---
 > >  drivers/staging/iio/iio_simple_dummy.c        | 22 ++++++++++++----------
 > >  drivers/staging/iio/iio_simple_dummy.h        | 20 +++++++++++---------
 > >  drivers/staging/iio/iio_simple_dummy_buffer.c |  9 +++++----
 > >  3 files changed, 28 insertions(+), 23 deletions(-)
-> >
-> >diff --git a/drivers/staging/iio/iio_simple_dummy.c b/drivers/staging/iio/iio_simple_dummy.c
-> >index 381f90f..5e19068 100644
-> >--- a/drivers/staging/iio/iio_simple_dummy.c
-> >+++ b/drivers/staging/iio/iio_simple_dummy.c
-> >@@ -1,4 +1,4 @@
-> >-/**
-> >+/*
-> This change should be in the 3rd patch.
->
-Thanks for the eagle eyes! I see this (and the other comment I edit'd
-also.) It leads to another question. 
-
-In these dummy files, there are 27 comment blocks that start with
-/** instead of /* .  I touched 2 of them as a passerby, but now
-that I'm looking.... should I change them all or is /** that an acceptable
-variation.
-
-alison
-
-
-< snip >
+> > 
+> > diff --git a/drivers/staging/iio/iio_simple_dummy.c b/drivers/staging/iio/iio_simple_dummy.c
+> > index 381f90f..5e19068 100644
+> > --- a/drivers/staging/iio/iio_simple_dummy.c
+> > +++ b/drivers/staging/iio/iio_simple_dummy.c
+> > @@ -1,4 +1,4 @@
+> > -/**
+> > +/*
+> >   * Copyright (c) 2011 Jonathan Cameron
+> >   *
+> >   * This program is free software; you can redistribute it and/or modify it
+> > @@ -137,7 +137,7 @@ static const struct iio_chan_spec iio_dummy_channels[] = {
+> >  		 */
+> >  		.info_mask_shared_by_dir = BIT(IIO_CHAN_INFO_SAMP_FREQ),
+> >  		/* The ordering of elements in the buffer via an enum */
+> > -		.scan_index = voltage0,
+> > +		.scan_index = INDEX_VOLTAGE_0,
+> >  		.scan_type = { /* Description of storage in buffer */
+> >  			.sign = 'u', /* unsigned */
+> >  			.realbits = 13, /* 13 bits */
+> > @@ -176,7 +176,7 @@ static const struct iio_chan_spec iio_dummy_channels[] = {
+> >  		 * sampling_frequency
+> >  		 * The frequency in Hz at which the channels are sampled
+> >  		 */
+> > -		.scan_index = diffvoltage1m2,
+> > +		.scan_index = INDEX_DIFFVOLTAGE_1M2,
+> >  		.scan_type = { /* Description of storage in buffer */
+> >  			.sign = 's', /* signed */
+> >  			.realbits = 12, /* 12 bits */
+> > @@ -194,7 +194,7 @@ static const struct iio_chan_spec iio_dummy_channels[] = {
+> >  		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),
+> >  		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),
+> >  		.info_mask_shared_by_dir = BIT(IIO_CHAN_INFO_SAMP_FREQ),
+> > -		.scan_index = diffvoltage3m4,
+> > +		.scan_index = INDEX_DIFFVOLTAGE_3M4,
+> >  		.scan_type = {
+> >  			.sign = 's',
+> >  			.realbits = 11,
+> > @@ -221,7 +221,7 @@ static const struct iio_chan_spec iio_dummy_channels[] = {
+> >  		BIT(IIO_CHAN_INFO_CALIBSCALE) |
+> >  		BIT(IIO_CHAN_INFO_CALIBBIAS),
+> >  		.info_mask_shared_by_dir = BIT(IIO_CHAN_INFO_SAMP_FREQ),
+> > -		.scan_index = accelx,
+> > +		.scan_index = INDEX_ACCELX,
+> >  		.scan_type = { /* Description of storage in buffer */
+> >  			.sign = 's', /* signed */
+> >  			.realbits = 16, /* 16 bits */
+> > @@ -230,10 +230,10 @@ static const struct iio_chan_spec iio_dummy_channels[] = {
+> >  		},
+> >  	},
+> >  	/*
+> > -	 * Convenience macro for timestamps. 4 is the index in
+> > -	 * the buffer.
+> > +	 * Convenience macro for timestamps.
+> > +	 * INDEX_TIMESTAMP is the index in the buffer.
+> >  	 */
+> > -	IIO_CHAN_SOFT_TIMESTAMP(4),
+> > +	IIO_CHAN_SOFT_TIMESTAMP(INDEX_TIMESTAMP),
+> >  	/* DAC channel out_voltage0_raw */
+> >  	{
+> >  		.type = IIO_VOLTAGE,
+> > @@ -364,8 +364,10 @@ static int iio_dummy_read_raw(struct iio_dev *indio_dev,
+> >  				ret = IIO_VAL_INT_PLUS_MICRO;
+> >  				break;
+> >  			case 1:
+> > -				/* all differential adc channels ->
+> > -				 * 0.000001344 */
+> > +				/*
+> > +				 * all differential adc
+> > +				 * channels -> 0.000001344
+> > +				 */
+> >  				*val = 0;
+> >  				*val2 = 1344;
+> >  				ret = IIO_VAL_INT_PLUS_NANO;
+> > diff --git a/drivers/staging/iio/iio_simple_dummy.h b/drivers/staging/iio/iio_simple_dummy.h
+> > index 5c2f4d0..31b62ad 100644
+> > --- a/drivers/staging/iio/iio_simple_dummy.h
+> > +++ b/drivers/staging/iio/iio_simple_dummy.h
+> > @@ -96,20 +96,22 @@ iio_simple_dummy_events_unregister(struct iio_dev *indio_dev)
+> >  
+> >  #endif /* CONFIG_IIO_SIMPLE_DUMMY_EVENTS*/
+> >  
+> > -/**
+> > +/*
+> >   * enum iio_simple_dummy_scan_elements - scan index enum
+> > - * @voltage0:		the single ended voltage channel
+> > - * @diffvoltage1m2:	first differential channel
+> > - * @diffvoltage3m4:	second differenial channel
+> > - * @accelx:		acceleration channel
+> > + * @INDEX_VOLTAGE_0:		the single ended voltage channel
+> > + * @INDEX_DIFFVOLTAGE_1M2:	first differential channel
+> > + * @INDEX_DIFFVOLTAGE_3M4:	second differential channel
+> > + * @INDEX_ACCELX:		acceleration channel
+> > + * @INDEX_TIMESTAMP:		timestamp channel
+> >   *
+> >   * Enum provides convenient numbering for the scan index.
+> >   */
+> >  enum iio_simple_dummy_scan_elements {
+> > -	voltage0,
+> > -	diffvoltage1m2,
+> > -	diffvoltage3m4,
+> > -	accelx,
+> > +	INDEX_VOLTAGE_0,
+> Even better would be to prefix these to make it clear they
+> are driver specific.  With such generic names one might
+> suspect they come from somewhere in the core.
+> 
+> Perhaps
+> DUMMY_INDEX_...
+> ?
+> > +	INDEX_DIFFVOLTAGE_1M2,
+> > +	INDEX_DIFFVOLTAGE_3M4,
+> > +	INDEX_ACCELX,
+> > +	INDEX_TIMESTAMP,
+> >  };
+> >  
+> >  #ifdef CONFIG_IIO_SIMPLE_DUMMY_BUFFER
+> > diff --git a/drivers/staging/iio/iio_simple_dummy_buffer.c b/drivers/staging/iio/iio_simple_dummy_buffer.c
+> > index 00ed774..7516835 100644
+> > --- a/drivers/staging/iio/iio_simple_dummy_buffer.c
+> > +++ b/drivers/staging/iio/iio_simple_dummy_buffer.c
+> > @@ -27,10 +27,11 @@
+> >  /* Some fake data */
+> >  
+> >  static const s16 fakedata[] = {
+> > -	[voltage0] = 7,
+> > -	[diffvoltage1m2] = -33,
+> > -	[diffvoltage3m4] = -2,
+> > -	[accelx] = 344,
+> > +	[INDEX_VOLTAGE_0] = 7,
+> > +	[INDEX_DIFFVOLTAGE_1M2] = -33,
+> > +	[INDEX_DIFFVOLTAGE_3M4] = -2,
+> > +	[INDEX_ACCELX] = 344,
+> > +	[INDEX_TIMESTAMP] = 50,
+> >  };
+> >  
+> >  /**
+> > 
+> 
 
