@@ -1,81 +1,225 @@
 X-GM-THRID: 6209462121071116288
-X-Received: by 10.129.146.4 with SMTP id j4mr8045332ywg.45.1445885062826;
-        Mon, 26 Oct 2015 11:44:22 -0700 (PDT)
+X-Received: by 10.182.230.197 with SMTP id ta5mr29811654obc.37.1445884995955;
+        Mon, 26 Oct 2015 11:43:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.85.73 with SMTP id m67ls2961929qgd.81.gmail; Mon, 26 Oct
- 2015 11:44:21 -0700 (PDT)
-X-Received: by 10.140.202.202 with SMTP id x193mr31089342qha.12.1445885061427;
-        Mon, 26 Oct 2015 11:44:21 -0700 (PDT)
+Received: by 10.140.104.209 with SMTP id a75ls2849801qgf.45.gmail; Mon, 26 Oct
+ 2015 11:43:14 -0700 (PDT)
+X-Received: by 10.129.145.71 with SMTP id i68mr17352005ywg.1.1445884994124;
+        Mon, 26 Oct 2015 11:43:14 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id pe1si3687580pac.2.2015.10.26.11.44.21
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id vy6si3640278pbc.1.2015.10.26.11.43.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Oct 2015 11:44:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Oct 2015 11:43:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id fv9so204605573pac.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 11:44:21 -0700 (PDT)
+Received: by mail-pa0-x235.google.com with SMTP id hk11so195856325pad.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 11:43:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=58DV5mMEponfr3GimdkucraM5pK9lVjwnCFLfl9E/uY=;
-        b=L4iuTzY9wLvjFepGTm5MqZgfn6L7h9Pa+bw1jJC4XQF7ER6vrAaxb7JOmZPVNuuJpc
-         2DzI+ANGhAYK7ffmF8XH3KSmEkKlg3WdvxWcyDfIkJw4NcLLhYzs+iRsEeT30Kl08uGG
-         wPbV0NQ3xxjBiEzhHDTRJRYzecrK1v1JlDknmQ5LrIEX1e/9cQifTaPADkTh3J9zCltc
-         pUOWyFZNblsFoJvfMnXhK67gpiEQgUUjyI8FTcxWx5XFoRLWOQ7PbuW39CFONp/WgWh3
-         ZVU1r4X8IjbFfafB6WX9tVAJxr9McY6EYvSb3ZAc7KmW230BD8Vz4cCeRxsqj03HyPHU
-         I8gA==
-X-Received: by 10.66.142.106 with SMTP id rv10mr41707926pab.29.1445885061191;
-        Mon, 26 Oct 2015 11:44:21 -0700 (PDT)
+        bh=ths3x8ArUp1NTrwzgGr4TXHBuP+DU/cA/9SSDVz1Wn8=;
+        b=CiyRwXtAS1afJK5+PQkx1LAWG99X/KF6CxWgUark7DOktZJd2Un7l8EoU0gwT30qh7
+         uv8csgBidZ/WFAXPnrRJ9LwHOpSibuYuZXFurGnUv9CkbwNfZbbFylhc/hXrU4AWPwfv
+         1QnGpvvGLu+a/zULLsJqzOF9q6i9vlyGR9RjyT6Fgis0I1ypidTvfVhVIJSgKF14CFRN
+         mO27ZW+oFbO7fw0oTGz1l/6bCqxVD8TrmSluROLiip8dXHsHkGXcPULEUQF83YxIvrA6
+         iOmDNyNvsgpihXSZgbTii5w5L88VJCc5HFIccnj7OUN8X+wxIt7TyQLvxZv7Jr4yCsy9
+         LggQ==
+X-Received: by 10.68.248.6 with SMTP id yi6mr23953016pbc.158.1445884993880;
+        Mon, 26 Oct 2015 11:43:13 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
 Received: from localhost.localdomain (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id bz1sm10614508pab.20.2015.10.26.11.44.20
+        by smtp.gmail.com with ESMTPSA id ve8sm35244651pbc.48.2015.10.26.11.43.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 26 Oct 2015 11:44:20 -0700 (PDT)
+        Mon, 26 Oct 2015 11:43:13 -0700 (PDT)
 From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 4/4] staging: r8723au: remove unneeded forward function declarations
-Date: Mon, 26 Oct 2015 11:44:16 -0700
-Message-Id: <35e3bff56b6f9f3e77f991b91ba28641bce66c75.1445883001.git.amsfield22@gmail.com>
+Subject: [PATCH v2 3/4] staging: r8723au: move function type in line with function name
+Date: Mon, 26 Oct 2015 11:43:09 -0700
+Message-Id: <3732ea5b6267cd471ab10c5f211ec5017484cf3d.1445883001.git.amsfield22@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1445883001.git.amsfield22@gmail.com>
 References: <cover.1445883001.git.amsfield22@gmail.com>
 
-Remove unneeded forward function declarations.
-
-Addresses checkpatch.pl:
-WARNING: externs should be avoided in .c files
+Move function types to be adjacent to the function names in
+declarations to improve readability.
 
 Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/rtl8723au/core/rtw_efuse.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_efuse.c | 58 +++++++++++-------------------
+ 1 file changed, 21 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/staging/rtl8723au/core/rtw_efuse.c b/drivers/staging/rtl8723au/core/rtw_efuse.c
-index bf27ea4..906b578 100644
+index 0fb4726..bf27ea4 100644
 --- a/drivers/staging/rtl8723au/core/rtw_efuse.c
 +++ b/drivers/staging/rtl8723au/core/rtw_efuse.c
-@@ -274,7 +274,6 @@ u8 EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
+@@ -87,8 +87,7 @@ static void Efuse_PowerSwitch(struct rtw_adapter *padapter,
+ 	}
+ }
+ 
+-u16
+-Efuse_GetCurrentSize23a(struct rtw_adapter *pAdapter, u8 efuseType)
++u16 Efuse_GetCurrentSize23a(struct rtw_adapter *pAdapter, u8 efuseType)
+ {
+ 	u16 ret = 0;
+ 
+@@ -101,8 +100,7 @@ Efuse_GetCurrentSize23a(struct rtw_adapter *pAdapter, u8 efuseType)
+ }
+ 
+ /* Get current efuse area enabled word */
+-u8
+-Efuse_CalculateWordCnts23a(u8 word_en)
++u8 Efuse_CalculateWordCnts23a(u8 word_en)
+ {
+ 	return hweight8((~word_en) & 0xf);
+ }
+@@ -113,8 +111,7 @@ Efuse_CalculateWordCnts23a(u8 word_en)
+  * Assumptions: 1. Boot from E-Fuse and successfully auto-load.
+  *              2. PASSIVE_LEVEL (USB interface)
+  */
+-void
+-ReadEFuseByte23a(struct rtw_adapter *Adapter, u16 _offset, u8 *pbuf)
++void ReadEFuseByte23a(struct rtw_adapter *Adapter, u16 _offset, u8 *pbuf)
+ {
+ 	u32	value32;
+ 	u8	readbyte;
+@@ -151,9 +148,8 @@ ReadEFuseByte23a(struct rtw_adapter *Adapter, u16 _offset, u8 *pbuf)
+ 	*pbuf = (u8)(value32 & 0xff);
+ }
+ 
+-void
+-EFUSE_GetEfuseDefinition23a(struct rtw_adapter *pAdapter, u8 efuseType,
+-			    u8 type, void *pOut)
++void EFUSE_GetEfuseDefinition23a(struct rtw_adapter *pAdapter, u8 efuseType,
++				 u8 type, void *pOut)
+ {
+ 	u8 *pu1Tmp;
+ 	u16 *pu2Tmp;
+@@ -235,8 +231,7 @@ EFUSE_GetEfuseDefinition23a(struct rtw_adapter *pAdapter, u8 efuseType,
+ }
+ 
+ /* Copy from WMAC for EFUSE read 1 byte. */
+-u8
+-EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
++u8 EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
+ {
+ 	u8	data;
+ 	u8	Bytetemp = {0x00};
+@@ -279,10 +274,8 @@ EFUSE_Read1Byte23a(struct rtw_adapter *Adapter, u16 Address)
  }
  
  /* Copy from WMAC fot EFUSE write 1 byte. */
--void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value);
- void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value)
+-void
+-EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value);
+-void
+-EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value)
++void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value);
++void EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value)
  {
  	u8	Bytetemp = {0x00};
-@@ -502,7 +501,6 @@ int rtw_BT_efuse_map_read23a(struct rtw_adapter *padapter,
+ 	u8	temp = {0x00};
+@@ -324,8 +317,7 @@ EFUSE_Write1Byte(struct rtw_adapter *Adapter, u16 Address, u8 Value)
+ }
+ 
+ /* Read one byte from real Efuse. */
+-int
+-efuse_OneByteRead23a(struct rtw_adapter *pAdapter, u16 addr, u8 *data)
++int efuse_OneByteRead23a(struct rtw_adapter *pAdapter, u16 addr, u8 *data)
+ {
+ 	u8	tmpidx = 0;
+ 	int	bResult;
+@@ -353,8 +345,7 @@ efuse_OneByteRead23a(struct rtw_adapter *pAdapter, u16 addr, u8 *data)
+ }
+ 
+ /* Write one byte to reald Efuse. */
+-int
+-efuse_OneByteWrite23a(struct rtw_adapter *pAdapter, u16 addr, u8 data)
++int efuse_OneByteWrite23a(struct rtw_adapter *pAdapter, u16 addr, u8 data)
+ {
+ 	u8	tmpidx = 0;
+ 	int	bResult;
+@@ -385,10 +376,7 @@ efuse_OneByteWrite23a(struct rtw_adapter *pAdapter, u16 addr, u8 data)
+ }
+ 
+ /* Read allowed word in current efuse section data. */
+-void
+-efuse_WordEnableDataRead23a(u8	word_en,
+-			 u8	*sourdata,
+-			 u8	*targetdata)
++void efuse_WordEnableDataRead23a(u8 word_en, u8 *sourdata, u8 *targetdata)
+ {
+ 	if (!(word_en&BIT(0))) {
+ 		targetdata[0] = sourdata[0];
+@@ -514,10 +502,8 @@ int rtw_BT_efuse_map_read23a(struct rtw_adapter *padapter,
  }
  
  /* Read All Efuse content */
--void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse);
- void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse)
+-void
+-Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse);
+-void
+-Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse)
++void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse);
++void Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse)
  {
  	u16	mapLen = 0;
+ 
+@@ -538,16 +524,16 @@ Efuse_ReadAllMap(struct rtw_adapter *pAdapter, u8 efuseType, u8 *Efuse)
+  *
+  * Read from efuse init map by one/two/four bytes
+  */
+-static void
+-efuse_ShadowRead1Byte(struct rtw_adapter *pAdapter, u16 Offset, u8 *Value)
++static void efuse_ShadowRead1Byte(struct rtw_adapter *pAdapter, u16 Offset,
++				  u8 *Value)
+ {
+ 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(pAdapter);
+ 
+ 	*Value = pEEPROM->efuse_eeprom_data[Offset];
+ }
+ 
+-static void
+-efuse_ShadowRead2Byte(struct rtw_adapter *pAdapter, u16 Offset, u16 *Value)
++static void efuse_ShadowRead2Byte(struct rtw_adapter *pAdapter, u16 Offset,
++				  u16 *Value)
+ {
+ 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(pAdapter);
+ 
+@@ -555,8 +541,8 @@ efuse_ShadowRead2Byte(struct rtw_adapter *pAdapter, u16 Offset, u16 *Value)
+ 	*Value |= pEEPROM->efuse_eeprom_data[Offset+1]<<8;
+ }
+ 
+-static void
+-efuse_ShadowRead4Byte(struct rtw_adapter *pAdapter, u16 Offset, u32 *Value)
++static void efuse_ShadowRead4Byte(struct rtw_adapter *pAdapter, u16 Offset,
++				  u32 *Value)
+ {
+ 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(pAdapter);
+ 
+@@ -567,7 +553,6 @@ efuse_ShadowRead4Byte(struct rtw_adapter *pAdapter, u16 Offset, u32 *Value)
+ }
+ 
+ /* Transfer current EFUSE content to shadow init and modify map. */
+-
+ void EFUSE_ShadowMapUpdate23a(struct rtw_adapter *pAdapter, u8 efuseType)
+ {
+ 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(pAdapter);
+@@ -584,9 +569,8 @@ void EFUSE_ShadowMapUpdate23a(struct rtw_adapter *pAdapter, u8 efuseType)
+ }
+ 
+ /* Read from efuse init map */
+-void
+-EFUSE_ShadowRead23a(struct rtw_adapter *pAdapter,
+-		    u8 Type, u16 Offset, u32 *Value)
++void EFUSE_ShadowRead23a(struct rtw_adapter *pAdapter, u8 Type,
++			 u16 Offset, u32 *Value)
+ {
+ 	if (Type == 1)
+ 		efuse_ShadowRead1Byte(pAdapter, Offset, (u8 *)Value);
 -- 
 2.1.4
 
