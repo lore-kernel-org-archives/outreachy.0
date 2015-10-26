@@ -1,103 +1,90 @@
-X-GM-THRID: 6209375197445750784
-X-Received: by 10.182.19.195 with SMTP id h3mr9689003obe.25.1445732823768;
-        Sat, 24 Oct 2015 17:27:03 -0700 (PDT)
+X-GM-THRID: 6206972446110646272
+X-Received: by 10.180.10.170 with SMTP id j10mr4768195wib.6.1445898644300;
+        Mon, 26 Oct 2015 15:30:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.137 with SMTP id w9ls559751igl.38.gmail; Sat, 24 Oct
- 2015 17:27:03 -0700 (PDT)
-X-Received: by 10.68.245.234 with SMTP id xr10mr9802651pbc.7.1445732823422;
-        Sat, 24 Oct 2015 17:27:03 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id vy6si2891376pbc.1.2015.10.24.17.27.03
+Received: by 10.25.149.198 with SMTP id x189ls9040lfd.51.gmail; Mon, 26 Oct
+ 2015 15:30:43 -0700 (PDT)
+X-Received: by 10.112.150.229 with SMTP id ul5mr8861137lbb.2.1445898643537;
+        Mon, 26 Oct 2015 15:30:43 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id bn7si521983wib.0.2015.10.26.15.30.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Oct 2015 17:27:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Mon, 26 Oct 2015 15:30:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id hk11so151262720pad.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2015 17:27:03 -0700 (PDT)
+Received: by mail-wi0-x234.google.com with SMTP id q8so185710673wik.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 15:30:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=OROO0YE/sGTtK/TjnLnyI5K2q0a1ZRedHjivdu/dNvM=;
-        b=uHwawV/qcJC0WrnDMvs9BproCPnWLFZ1AYbP+uxK4Btndz8+ERiKbz5lRqB+K1IbeL
-         H9PZk8tvCu72gTCdNuoBZURvUYJPPNSmnnZt3o+FSiLJq68gX3stzp97+AmL6OR6o89t
-         NhoWWFdTrav8fOYcHNZm5/AykB53l4KHPp7ImZLP4cwdoSn9PHxZl0RcMFkQgsTtdI3G
-         MhRizDOQysL7ZwafIcTvIOOr/Dz5jtPbVA27tQELll5K4AwL56V6NF1sleffMnNM+SEf
-         GR5sesYak2n8LOSqD11dTvwhO7D1pzhC6FwxObGoVbDlx7aUhdUeHvHz+N7mmehU69wH
-         ch5g==
-X-Received: by 10.68.193.5 with SMTP id hk5mr13747747pbc.152.1445732823303;
-        Sat, 24 Oct 2015 17:27:03 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id tk4sm26267942pab.45.2015.10.24.17.27.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Oct 2015 17:27:02 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: lustre: Remove unused obd_cache.h file
-Date: Sun, 25 Oct 2015 05:56:55 +0530
-Message-Id: <1445732815-7251-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=q7s5s6wd/zuPzJZdWo3JeFVdd3FuwiYH3TpcrY234dE=;
+        b=Lc6EhAOmm9WOhcPlWwkAxM61kMEKal9IJUqxXwazEF2wlo6eFQlW1Pn+7esL/4P//P
+         +SptGzREpsAjRYyCpK0ani0a18G888+Gy2y38RWJAvOSI3u7e0xaajWRES/6QoEXZn6U
+         lHCRXpfrreCgzCTSWzVaG0d1XkaP2moOy+5XapQJnLsLrqpnhoFvii7Ccsq4t+tCrDCg
+         CKNtSYy2hxZCO1e+h1pe/ALeRkoLQx0PgciZILAKjFhDaxq+3s7p5CEhY4OOhYxI1Af5
+         1Ho4k9CZu1HkvbOWBeNDw1WIlbMp1rvNd1DTueDbbYqoHJn9VKHsn4cz2pbDTUbeUx2j
+         sxmw==
+X-Received: by 10.180.91.15 with SMTP id ca15mr11651244wib.40.1445898643369;
+        Mon, 26 Oct 2015 15:30:43 -0700 (PDT)
+Return-Path: <cristina.moraru09@gmail.com>
+Received: from localhost.localdomain ([213.233.103.165])
+        by smtp.gmail.com with ESMTPSA id bo7sm16055213wjb.46.2015.10.26.15.30.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 26 Oct 2015 15:30:42 -0700 (PDT)
+From: Cristina Moraru <cristina.moraru09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Cristina Moraru <cristina.moraru09@gmail.com>
+Subject: [PATCH v3] staging: lustre: Replace sscanf with kstrtoint
+Date: Tue, 27 Oct 2015 00:30:08 +0200
+Message-Id: <1445898608-12624-1-git-send-email-cristina.moraru09@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1445173359-123710-1-git-send-email-cristina.moraru09@gmail.com>
+References: <1445173359-123710-1-git-send-email-cristina.moraru09@gmail.com>
 
-Remove the header file obd_cache.h since it is not needed
+Replace single variable sscanf with specialized function
+kstrtoint at the suggestion of checkpatch.pl, to fix
+'WARNING: Prefer kstrto<type> to single variable sscanf'
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
 ---
- drivers/staging/lustre/lustre/include/obd_cache.h | 38 -----------------------
- 1 file changed, 38 deletions(-)
- delete mode 100644 drivers/staging/lustre/lustre/include/obd_cache.h
+Changes in v2:
+  - Change error code handling.
+Changes in v3:
+  - Remove unnecessary braces
 
-diff --git a/drivers/staging/lustre/lustre/include/obd_cache.h b/drivers/staging/lustre/lustre/include/obd_cache.h
-deleted file mode 100644
-index b5e1155..0000000
---- a/drivers/staging/lustre/lustre/include/obd_cache.h
-+++ /dev/null
-@@ -1,38 +0,0 @@
--/*
-- * GPL HEADER START
-- *
-- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 only,
-- * as published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful, but
-- * WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License version 2 for more details (a copy is included
-- * in the LICENSE file that accompanied this code).
-- *
-- * You should have received a copy of the GNU General Public License
-- * version 2 along with this program; If not, see
-- * http://www.sun.com/software/products/lustre/docs/GPLv2.pdf
-- *
-- * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
-- * CA 95054 USA or visit www.sun.com if you need additional information or
-- * have any questions.
-- *
-- * GPL HEADER END
-- */
--/*
-- * Copyright (c) 2003, 2010, Oracle and/or its affiliates. All rights reserved.
-- * Use is subject to license terms.
-- */
--/*
-- * This file is part of Lustre, http://www.lustre.org/
-- * Lustre is a trademark of Sun Microsystems, Inc.
-- */
--
--#ifndef _OBD_CACHE_H__
--#define _OBD_CACHE_H__
--
--#endif
+ drivers/staging/lustre/lustre/lov/lov_obd.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/lov/lov_obd.c b/drivers/staging/lustre/lustre/lov/lov_obd.c
+index c3be0b5..220a919 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_obd.c
++++ b/drivers/staging/lustre/lustre/lov/lov_obd.c
+@@ -914,14 +914,12 @@ int lov_process_config_base(struct obd_device *obd, struct lustre_cfg *lcfg,
+ 
+ 		obd_str2uuid(&obd_uuid,  lustre_cfg_buf(lcfg, 1));
+ 
+-		if (sscanf(lustre_cfg_buf(lcfg, 2), "%d", indexp) != 1) {
+-			rc = -EINVAL;
++		rc = kstrtoint(lustre_cfg_buf(lcfg, 2), 10, indexp);
++		if (rc < 0)
+ 			goto out;
+-		}
+-		if (sscanf(lustre_cfg_buf(lcfg, 3), "%d", genp) != 1) {
+-			rc = -EINVAL;
++		rc = kstrtoint(lustre_cfg_buf(lcfg, 3), 10, genp);
++		if (rc < 0)
+ 			goto out;
+-		}
+ 		index = *indexp;
+ 		gen = *genp;
+ 		if (cmd == LCFG_LOV_ADD_OBD)
 -- 
-2.1.4
+1.9.1
 
 
