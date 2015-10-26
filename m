@@ -1,112 +1,104 @@
 X-GM-THRID: 6210088605629546496
-X-Received: by 10.13.209.70 with SMTP id t67mr32285274ywd.46.1445899311640;
-        Mon, 26 Oct 2015 15:41:51 -0700 (PDT)
+X-Received: by 10.66.227.1 with SMTP id rw1mr17649592pac.31.1445899124804;
+        Mon, 26 Oct 2015 15:38:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.252.196 with SMTP id zu4ls1796877obc.59.gmail; Mon, 26 Oct
- 2015 15:41:51 -0700 (PDT)
-X-Received: by 10.182.126.47 with SMTP id mv15mr34416756obb.44.1445899311291;
-        Mon, 26 Oct 2015 15:41:51 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-io0-x236.google.com (mail-io0-x236.google.com. [2607:f8b0:4001:c06::236])
-        by gmr-mx.google.com with ESMTPS id mh4si897832igb.0.2015.10.26.15.41.51
+Received: by 10.140.108.118 with SMTP id i109ls3973385qgf.50.gmail; Mon, 26
+ Oct 2015 15:38:44 -0700 (PDT)
+X-Received: by 10.140.236.65 with SMTP id h62mr31959132qhc.13.1445899124278;
+        Mon, 26 Oct 2015 15:38:44 -0700 (PDT)
+Return-Path: <theonly.ultimate@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id vy6si3749936pbc.1.2015.10.26.15.38.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Oct 2015 15:41:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::236 as permitted sender) client-ip=2607:f8b0:4001:c06::236;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Oct 2015 15:38:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=theonly.ultimate@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-io0-x236.google.com with SMTP id z202so202298483iof.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 15:41:51 -0700 (PDT)
+Received: by mail-pa0-x234.google.com with SMTP id z6so200498539pas.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 15:38:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=0/3ICoU16MMDDx17PyHr3SgG9R4ldO4AANOguKOx3QA=;
-        b=v5BRwGnOe6S4MfxjAqP3G5M5Uh/zvqNf0UYZlmBiwNIT+t2QG9ysX6UUzy9v98Ywjf
-         YrdF96+QiX6LupzgUEenAFo5YvxjH4HqcYyp7L0z7Bts66lMzKYA0y4zdMM853bgjW4c
-         kEQgEoIDZEZ9kkRcgYoplUZVHlaMWSHGiz7VEmG5dgUFXVGdELSrb1d4pDDkoJh0l/vL
-         XFkgHrcE4SQu+RHNd2ofmjld+bPesw1yRm5cpHOsL+iahXpR/bO3dL7oAaafYWKL41xG
-         UDmmi/JzZYbmm8ocv/KSBvHIQIkEReyFCh5BCNIvIXugi7CvDd4k4MO2MymXxZEomA4e
-         9w2Q==
-MIME-Version: 1.0
-X-Received: by 10.107.4.83 with SMTP id 80mr3440479ioe.150.1445899311186; Mon,
- 26 Oct 2015 15:41:51 -0700 (PDT)
-Received: by 10.107.149.205 with HTTP; Mon, 26 Oct 2015 15:41:51 -0700 (PDT)
-In-Reply-To: <5b741301ef667e414f76794607dcdc4355aa1595.1445898781.git.theonly.ultimate@gmail.com>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=AoaSiY5zkIUrIP0Q0A/cMh6mInlPW8L1fWjZpcoQWFU=;
+        b=eLnkLMz8QVKsvOAQEEYNQeoWOOryEy8tt0FIrMTvGPx8qLEcVLYm+fppFJrkcg82X0
+         xq5CFzqLBJJYw8SySwQc6dt69Ul5Oh2ZQd7i7QA9I4/JQn23iNaApIquGObiONliUJ18
+         iAoquPRwcq4vWNQWJBWunRV3Q/lUU2NC3ErAPIrMiz3eCx5pc2YR1GJVmP2THBvmVEsP
+         0HQ6d2Gh+2zq2IqYd8lFKewgPqqHV6Oq5RrW4pGGW8UX5ZLvZh8vCFxlDXFuZPSnR5df
+         KSgrqNoUcWIlbCuEml31fTg9mhTvQuFskRcT11YQ4E1CcKmvtmE0uWOfcLxfIUOuJ9UE
+         zk+A==
+X-Received: by 10.68.203.2 with SMTP id km2mr24126843pbc.155.1445899124159;
+        Mon, 26 Oct 2015 15:38:44 -0700 (PDT)
+Return-Path: <theonly.ultimate@gmail.com>
+Received: from localhost ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id pw7sm35805191pbc.4.2015.10.26.15.38.43
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Mon, 26 Oct 2015 15:38:43 -0700 (PDT)
+Date: Tue, 27 Oct 2015 04:08:48 +0530
+From: Swetha <theonly.ultimate@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: linux-usb@vger.kernel.org
+Subject: [PATCH 8/8] Staging: rdma ipath: braces should be used on all arms
+Message-ID: <a678fb2d681bb755289dead9c6d46daed2095d29.1445898782.git.theonly.ultimate@gmail.com>
 References: <cover.1445898781.git.theonly.ultimate@gmail.com>
-	<5b741301ef667e414f76794607dcdc4355aa1595.1445898781.git.theonly.ultimate@gmail.com>
-Date: Mon, 26 Oct 2015 15:41:51 -0700
-Message-ID: <CAL7P5jKksi7VXpupfG5RzfE7zvSPPmTBv+2SdkUzngh-j83zfQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/8] Staging: rdma ipath: Removing
- multiple blank lines
-From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
-To: Swetha <theonly.ultimate@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, linux-usb@vger.kernel.org
-Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1445898781.git.theonly.ultimate@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Hi Swetha,
+Fix all instances of the following checkpatch.pl check:
 
-On Mon, Oct 26, 2015 at 3:36 PM, Swetha <theonly.ultimate@gmail.com> wrote:
-> This patch fixes the checkpatch issue
->
-> CHECK: Please don't use multiple blank lines
->
-> Signed-off-by: Swetha <theonly.ultimate@gmail.com>
-                         ^^^^^^^
-Here you need to write your full name, look at other patches on the list.
+CHECK: braces {} should be used on all arms of this statement
 
-Ksenija
+Signed-off-by: Swetha <theonly.ultimate@gmail.com>
+---
+ drivers/staging/rdma/ipath/ipath_cq.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-> ---
->  drivers/staging/rdma/ipath/ipath_common.h | 4 ----
->  1 file changed, 4 deletions(-)
->
-> diff --git a/drivers/staging/rdma/ipath/ipath_common.h b/drivers/staging/rdma/ipath/ipath_common.h
-> index 28cfe97..812fb9b 100644
-> --- a/drivers/staging/rdma/ipath/ipath_common.h
-> +++ b/drivers/staging/rdma/ipath/ipath_common.h
-> @@ -39,7 +39,6 @@
->   * to communicate between kernel and user code.
->   */
->
-> -
->  /* This is the IEEE-assigned OUI for QLogic Inc. InfiniPath */
->  #define IPATH_SRC_OUI_1 0x00
->  #define IPATH_SRC_OUI_2 0x11
-> @@ -344,7 +343,6 @@ struct ipath_base_info {
->
->  } __attribute__ ((aligned(8)));
->
-> -
->  /*
->   * This version number is given to the driver by the user code during
->   * initialization in the spu_userversion field of ipath_user_info, so
-> @@ -767,7 +765,6 @@ struct ether_header {
->         __u8 unused[2];         /* currently unused */
->  };
->
-> -
->  /* IB - LRH header consts */
->  #define IPATH_LRH_GRH 0x0003   /* 1. word of IB LRH - next header: GRH */
->  #define IPATH_LRH_BTH 0x0002   /* 1. word of IB LRH - next header: BTH */
-> @@ -793,7 +790,6 @@ struct ether_header {
->  #define RCVHQ_RCV_TYPE_NON_KD    2
->  #define RCVHQ_RCV_TYPE_ERROR     3
->
-> -
->  /* sub OpCodes - ith4x  */
->  #define IPATH_ITH4X_OPCODE_ENCAP 0x81
->  #define IPATH_ITH4X_OPCODE_LID_ARP 0x82
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/5b741301ef667e414f76794607dcdc4355aa1595.1445898781.git.theonly.ultimate%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+diff --git a/drivers/staging/rdma/ipath/ipath_cq.c b/drivers/staging/rdma/ipath/ipath_cq.c
+index 071de3c..a676232 100644
+--- a/drivers/staging/rdma/ipath/ipath_cq.c
++++ b/drivers/staging/rdma/ipath/ipath_cq.c
+@@ -63,8 +63,9 @@ void ipath_cq_enter(struct ipath_cq *cq, struct ib_wc *entry, int solicited)
+ 	if (head >= (unsigned)cq->ibcq.cqe) {
+ 		head = cq->ibcq.cqe;
+ 		next = 0;
+-	} else
++	} else {
+ 		next = head + 1;
++	}
+ 	if (unlikely(next == wc->tail)) {
+ 		spin_unlock_irqrestore(&cq->lock, flags);
+ 		if (cq->ibcq.event_handler) {
+@@ -94,8 +95,9 @@ void ipath_cq_enter(struct ipath_cq *cq, struct ib_wc *entry, int solicited)
+ 		wc->uqueue[head].port_num = entry->port_num;
+ 		/* Make sure entry is written before the head index. */
+ 		smp_wmb();
+-	} else
++	} else {
+ 		wc->kqueue[head] = *entry;
++	}
+ 	wc->head = next;
+ 
+ 	if (cq->notify == IB_CQ_NEXT_COMP ||
+@@ -261,9 +263,9 @@ struct ib_cq *ipath_create_cq(struct ib_device *ibdev,
+ 			ret = ERR_PTR(err);
+ 			goto bail_ip;
+ 		}
+-	} else
++	} else {
+ 		cq->ip = NULL;
+-
++	}
+ 	spin_lock(&dev->n_cqs_lock);
+ 	if (dev->n_cqs_allocated == ib_ipath_max_cqs) {
+ 		spin_unlock(&dev->n_cqs_lock);
+-- 
+1.9.1
+
 
