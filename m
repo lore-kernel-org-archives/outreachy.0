@@ -1,121 +1,105 @@
-X-GM-THRID: 6208452343363534848
-X-Received: by 10.67.1.102 with SMTP id bf6mr12405042pad.19.1445517955408;
-        Thu, 22 Oct 2015 05:45:55 -0700 (PDT)
+X-GM-THRID: 6209942832976756736
+X-Received: by 10.66.147.33 with SMTP id th1mr32405264pab.27.1445932914062;
+        Tue, 27 Oct 2015 01:01:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.26.134 with SMTP id a128ls824008ioa.108.gmail; Thu, 22 Oct
- 2015 05:45:54 -0700 (PDT)
-X-Received: by 10.68.138.233 with SMTP id qt9mr12320830pbb.11.1445517954876;
-        Thu, 22 Oct 2015 05:45:54 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id el2si1666505pbb.0.2015.10.22.05.45.54
+Received: by 10.140.19.85 with SMTP id 79ls4218537qgg.22.gmail; Tue, 27 Oct
+ 2015 01:01:53 -0700 (PDT)
+X-Received: by 10.129.83.10 with SMTP id h10mr33777196ywb.6.1445932913550;
+        Tue, 27 Oct 2015 01:01:53 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id vy6si3938240pbc.1.2015.10.27.01.01.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 05:45:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 01:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id rc13so86111108pab.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 05:45:54 -0700 (PDT)
+Received: by mail-pa0-x22c.google.com with SMTP id fv9so224655175pac.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 01:01:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=oXlsSlYKKJvT+tGBa3YUlUp1jijuAWWKpZnAk2cPcSM=;
-        b=DHUuJUDzDKxBitBOrO7rtR61FRKmjOastByA0MP/VzLDhLyxRX8qR32OrZyoT3UvCk
-         wr3ZQfXjKmnfLy3eJUcICGseIp7ZTEuCMVjieMRuWepO6vGsBY8e1KYA8t5AlSqnC/rB
-         63Ozc3fu/2flOdogwJMraLfYTz3xjGfZPS1Ft/Kj2kuZBPD9/bASgPYGnlr/qNzevOra
-         haEE5la14gpyVK5mHoEqEcFxSPV1NtLPRS5rmkC217FLcBpYLAkikew9ky/g5/QKAiQ4
-         vC2gfcRIbSx3kjZ4GPlnHUtpnzPIMFg3gaXJt0P2eA0CTSY6D0tQfxO/uF0cvQisQPlb
-         pLRg==
-X-Received: by 10.66.250.197 with SMTP id ze5mr17613468pac.50.1445517954683;
-        Thu, 22 Oct 2015 05:45:54 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.64.167.45])
-        by smtp.gmail.com with ESMTPSA id k10sm13837404pbq.78.2015.10.22.05.45.53
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=KIIAz3AlyaRMlf63D+eUHncOqkpNhLuWGYWeYGSoX8o=;
+        b=Hh8o888JVrCVgPeh2Z058KInsOmzN7RftSnAXVSMgrPVfddMB7cp7aEJm9hOQF3eiB
+         bZbj/5dLgvc7FoGn5X49T7/6uAAxdPKH7tfuGYR4fyQFhZWKj0ezCyxJZbYypB+1XDQG
+         bqyBgLZk1E2mDfYGcNREGJFHF8ZdykhBKkfjg5YmwgTgHVmRl7T+wogR+1OpKk+0qBuF
+         7+gmbMtqwTMW67bmKpzfGy4R6Aa55cWIopuIfBqYzWe84V9PlHCrN62kFclgOG2UoCbP
+         pHlSHluJJDyr4wlGwxKhlPdQ8bYHrd7/GMOa9k4eE98RcVASYW2nDU2QG7x33cqvRbFA
+         IRUw==
+X-Received: by 10.68.136.69 with SMTP id py5mr27158634pbb.94.1445932913351;
+        Tue, 27 Oct 2015 01:01:53 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([122.169.137.63])
+        by smtp.gmail.com with ESMTPSA id bz2sm37940362pad.32.2015.10.27.01.01.51
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Thu, 22 Oct 2015 05:45:53 -0700 (PDT)
-Date: Thu, 22 Oct 2015 18:15:50 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org, davem@davemloft.net, linux-ide@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] ide: pdc202xx_new: Replace timeval with ktime_t
-Message-ID: <20151022124550.GA18694@amitoj-Inspiron-3542>
+        Tue, 27 Oct 2015 01:01:52 -0700 (PDT)
+Date: Tue, 27 Oct 2015 13:31:45 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Amarjargal Gundjalam <amarjargal.gundjalam@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>,
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/6] staging: media: omap4iss:
+ Replaces bit shift on 1 with BIT Macro
+Message-ID: <20151027080145.GC22738@sudip-pc>
+References: <cover.1445864494.git.amarjargal.gundjalam@gmail.com>
+ <3c4b9cd96e78d3d0d114b697f154f291631fc60f.1445864494.git.amarjargal.gundjalam@gmail.com>
+ <alpine.DEB.2.10.1510261544000.2521@hadrien>
+ <20151026084806.7473ef61e6f53570ea5f575d@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20151026084806.7473ef61e6f53570ea5f575d@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This driver uses 'struct timeval' which we are trying to remove since
-32 bit time types will break in the year 2038 by replacing it with
-ktime_t.
+On Mon, Oct 26, 2015 at 08:48:06AM -0700, Amarjargal Gundjalam wrote:
+> On Mon, 26 Oct 2015 15:46:27 +0100 (CET)
+> Julia Lawall <julia.lawall@lip6.fr> wrote:
+> 
+> > > diff --git a/drivers/staging/media/omap4iss/iss_ipipe.h b/drivers/staging/media/omap4iss/iss_ipipe.h
+> > > index c22d904..b8c1b8e0 100644
+> > > --- a/drivers/staging/media/omap4iss/iss_ipipe.h
+> > > +++ b/drivers/staging/media/omap4iss/iss_ipipe.h
+> > > @@ -21,7 +21,7 @@ enum ipipe_input_entity {
+> > >  	IPIPE_INPUT_IPIPEIF,
+> > >  };
+> > >
+> > > -#define IPIPE_OUTPUT_VP		(1 << 0)
+> > > +#define IPIPE_OUTPUT_VP				BIT(0)
+> > 
+> > Why did the amount of space change?
+> 
+> I tried to align it with the the others below it.
+> 
+> > 
+> > >
+> > >  /* Sink and source IPIPE pads */
+> > >  #define IPIPE_PAD_SINK				0
+> > > diff --git a/drivers/staging/media/omap4iss/iss_ipipeif.h b/drivers/staging/media/omap4iss/iss_ipipeif.h
+> > > index cbdccb9..cf8a47a 100644
+> > > --- a/drivers/staging/media/omap4iss/iss_ipipeif.h
+> > > +++ b/drivers/staging/media/omap4iss/iss_ipipeif.h
+> > > @@ -22,8 +22,8 @@ enum ipipeif_input_entity {
+> > >  	IPIPEIF_INPUT_CSI2B
+> > >  };
+> > >
+> > > -#define IPIPEIF_OUTPUT_MEMORY		(1 << 0)
+> > > -#define IPIPEIF_OUTPUT_VP		(1 << 1)
+> > > +#define IPIPEIF_OUTPUT_MEMORY			BIT(0)
+> > > +#define IPIPEIF_OUTPUT_VP			BIT(1)
+> > 
+> > Here, however, you could take advantage of the opportunity to line them
+> > up.  Maybe these are just a problem with tabs and the patch?
+> > 
+> 
+> I did aligned them with tabs, maybe it's just a problem with patch formatting?
 
-This patch changes do_gettimeofday() to ktime_get() because
-ktime_get() returns a ktime_t while do_gettimeofday() returns struct
-timeval.
+They looks aligned after applying.
 
-This patch also uses ktime_us_delta() to get the elapsed time.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
-Changes in v2:
-        -Modified subject of commit message
-
- drivers/ide/pdc202xx_new.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/ide/pdc202xx_new.c b/drivers/ide/pdc202xx_new.c
-index df73cbd..9ad014a 100644
---- a/drivers/ide/pdc202xx_new.c
-+++ b/drivers/ide/pdc202xx_new.c
-@@ -22,6 +22,7 @@
- #include <linux/pci.h>
- #include <linux/init.h>
- #include <linux/ide.h>
-+#include <linux/ktime.h>
- 
- #include <asm/io.h>
- 
-@@ -243,13 +244,13 @@ static long read_counter(u32 dma_base)
-  */
- static long detect_pll_input_clock(unsigned long dma_base)
- {
--	struct timeval start_time, end_time;
-+	ktime_t start_time, end_time;
- 	long start_count, end_count;
- 	long pll_input, usec_elapsed;
- 	u8 scr1;
- 
- 	start_count = read_counter(dma_base);
--	do_gettimeofday(&start_time);
-+	start_time = ktime_get();
- 
- 	/* Start the test mode */
- 	outb(0x01, dma_base + 0x01);
-@@ -261,7 +262,7 @@ static long detect_pll_input_clock(unsigned long dma_base)
- 	mdelay(10);
- 
- 	end_count = read_counter(dma_base);
--	do_gettimeofday(&end_time);
-+	end_time = ktime_get();
- 
- 	/* Stop the test mode */
- 	outb(0x01, dma_base + 0x01);
-@@ -273,8 +274,7 @@ static long detect_pll_input_clock(unsigned long dma_base)
- 	 * Calculate the input clock in Hz
- 	 * (the clock counter is 30 bit wide and counts down)
- 	 */
--	usec_elapsed = (end_time.tv_sec - start_time.tv_sec) * 1000000 +
--		(end_time.tv_usec - start_time.tv_usec);
-+	usec_elapsed = ktime_us_delta(end_time, start_time);
- 	pll_input = ((start_count - end_count) & 0x3fffffff) / 10 *
- 		(10000000 / usec_elapsed);
- 
--- 
-1.9.1
-
+regards
+sudip
 
