@@ -1,49 +1,49 @@
 X-GM-THRID: 6210088605629546496
-X-Received: by 10.66.147.33 with SMTP id th1mr32560741pab.27.1445936490904;
-        Tue, 27 Oct 2015 02:01:30 -0700 (PDT)
+X-Received: by 10.69.26.231 with SMTP id jb7mr19649165pbd.9.1445936463923;
+        Tue, 27 Oct 2015 02:01:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.104.209 with SMTP id a75ls3136029qgf.45.gmail; Tue, 27 Oct
- 2015 02:01:30 -0700 (PDT)
-X-Received: by 10.129.145.71 with SMTP id i68mr19818465ywg.1.1445936490385;
-        Tue, 27 Oct 2015 02:01:30 -0700 (PDT)
+Received: by 10.107.130.101 with SMTP id e98ls1858221iod.28.gmail; Tue, 27 Oct
+ 2015 02:01:03 -0700 (PDT)
+X-Received: by 10.68.209.129 with SMTP id mm1mr19672207pbc.5.1445936463648;
+        Tue, 27 Oct 2015 02:01:03 -0700 (PDT)
 Return-Path: <theonly.ultimate@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id fa8si4035260pab.1.2015.10.27.02.01.30
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id pe1si4048846pac.2.2015.10.27.02.01.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 02:01:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 02:01:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=theonly.ultimate@gmail.com;
+       spf=pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=theonly.ultimate@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id z6so216462866pas.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 02:01:30 -0700 (PDT)
+Received: by mail-pa0-x22f.google.com with SMTP id fv9so226237630pac.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 02:01:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=qL2AusoElvNcU1gUctWyp+ALs+LYWhwHR/XoXRijog4=;
-        b=ZFU9YuN+P8uXiiJ3Sk+RHqfTU6TK7WL8yh+YK50EvSufuJ1B5pi0MHwhvKXvcDmnSD
-         9Q7lS3xlPtWt7ovxFJFlXErspxywhz+2r07UR6Dt1oNIjsLHBOlZDarsUt9lXPlDJprO
-         C0u36bIsMeauw7inqAUVdUtPWX+bOOq4uborH4RLT22EggRo2+JMcUBtOKan3XxH9SYk
-         bmpaRzGeIvd3AJz2D7uE3vBV4/+MWojaWH3piA6vcAu/T9P3SqZKtdKY8l6f770qmN4U
-         qV37q8vF0LhNvRj18LCArzWwyN21WUAOSLqLFXLZTpS1Q8vrsyZ6xu4Z0WQ5+B8t5oeI
-         ZMBQ==
-X-Received: by 10.68.178.1 with SMTP id cu1mr26273090pbc.99.1445936490259;
-        Tue, 27 Oct 2015 02:01:30 -0700 (PDT)
+        bh=mpC6kkaSPclRkiKq/PWWulVB65pdWEjc5+3tDq25H5c=;
+        b=sn0SamlyRStx+ZvzoweIMZtjsM2wlsXUcWZn2a+IbRXW6qBo4Iv6q9oabqT58ofCOD
+         +hRD5UaVjy12lsWmsVDY7jcop4INPRBVSlgOqki0kz92zoznzMwPaMtvjKDF6CtccBtG
+         A55fHVQ+OjM3S6mgiDlVsx4ngM/ZiFkQ40nsyH/dpU3oOQNlQGgL83mUTEm3aQ19AsKE
+         RArbpO7SoY0dF+3hS3/rnGLjU9wQFUE4N9DSkeL5sUEFq/rt7cQxO5DdMZ2E4XFOjGDy
+         /CfkrV4mYGRbfJpRamuxZ4jIVScfc+7+HQsr6x9WU0Z8cQ0mVBD8lMgC0y/5fcbYgMrd
+         tEEA==
+X-Received: by 10.68.211.132 with SMTP id nc4mr27750816pbc.16.1445936463559;
+        Tue, 27 Oct 2015 02:01:03 -0700 (PDT)
 Return-Path: <theonly.ultimate@gmail.com>
 Received: from localhost ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ch3sm38322800pbb.18.2015.10.27.02.01.29
+        by smtp.gmail.com with ESMTPSA id ir4sm38302820pbb.93.2015.10.27.02.01.02
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 27 Oct 2015 02:01:29 -0700 (PDT)
-Date: Tue, 27 Oct 2015 14:31:34 +0530
+        Tue, 27 Oct 2015 02:01:03 -0700 (PDT)
+Date: Tue, 27 Oct 2015 14:31:06 +0530
 From: SirnamSwetha <theonly.ultimate@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: linux-usb@vger.kernel.org
-Subject: [PATCH 4/8] Staging : rdma ipath: "foo * bar" should be "foo *bar"
-Message-ID: <c755dd7d39bdd23ae077b761f5f73439ba6bf330.1445936144.git.theonly.ultimate@gmail.com>
+Subject: [PATCH 3/8] Staging : rdma ipath: spaces preferred around that '<<'
+Message-ID: <e7077e1d1c8bc59b7ebfa8151fa4788b38daf74b.1445936144.git.theonly.ultimate@gmail.com>
 References: <cover.1445936143.git.theonly.ultimate@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,48 +51,37 @@ Content-Disposition: inline
 In-Reply-To: <cover.1445936143.git.theonly.ultimate@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes:
+This patch fixes the checkpatch issue:
 
-ERROR: "foo * bar" should be "foo *bar"
+CHECK: spaces preferred around that '<<'
 
 Signed-off-by: SirnamSwetha <theonly.ultimate@gmail.com>
 ---
- drivers/staging/rdma/ipath/ipath_common.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rdma/ipath/ipath_common.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/rdma/ipath/ipath_common.h b/drivers/staging/rdma/ipath/ipath_common.h
-index 3f9b4bc..9ce581e 100644
+index df2a211..3f9b4bc 100644
 --- a/drivers/staging/rdma/ipath/ipath_common.h
 +++ b/drivers/staging/rdma/ipath/ipath_common.h
-@@ -798,24 +798,24 @@ struct ether_header {
- 
- /* functions for extracting fields from rcvhdrq entries for the driver.
+@@ -365,7 +365,7 @@ struct ipath_base_info {
   */
--static inline __u32 ipath_hdrget_err_flags(const __le32 * rbuf)
-+static inline __u32 ipath_hdrget_err_flags(const __le32 *rbuf)
- {
- 	return __le32_to_cpu(rbuf[1]) & INFINIPATH_RHF_H_ERR_MASK;
- }
+ #define IPATH_USER_SWMINOR 6
  
--static inline __u32 ipath_hdrget_rcv_type(const __le32 * rbuf)
-+static inline __u32 ipath_hdrget_rcv_type(const __le32 *rbuf)
- {
- 	return (__le32_to_cpu(rbuf[0]) >> INFINIPATH_RHF_RCVTYPE_SHIFT)
- 	    & INFINIPATH_RHF_RCVTYPE_MASK;
- }
+-#define IPATH_USER_SWVERSION ((IPATH_USER_SWMAJOR<<16) | IPATH_USER_SWMINOR)
++#define IPATH_USER_SWVERSION ((IPATH_USER_SWMAJOR << 16) | IPATH_USER_SWMINOR)
  
--static inline __u32 ipath_hdrget_length_in_bytes(const __le32 * rbuf)
-+static inline __u32 ipath_hdrget_length_in_bytes(const __le32 *rbuf)
- {
- 	return ((__le32_to_cpu(rbuf[0]) >> INFINIPATH_RHF_LENGTH_SHIFT)
- 		& INFINIPATH_RHF_LENGTH_MASK) << 2;
- }
+ #define IPATH_KERN_TYPE 0
  
--static inline __u32 ipath_hdrget_index(const __le32 * rbuf)
-+static inline __u32 ipath_hdrget_index(const __le32 *rbuf)
- {
- 	return (__le32_to_cpu(rbuf[0]) >> INFINIPATH_RHF_EGRINDEX_SHIFT)
- 	    & INFINIPATH_RHF_EGRINDEX_MASK;
+@@ -380,7 +380,7 @@ struct ipath_base_info {
+  * spi_sw_version field of ipath_base_info, so the user code can in turn
+  * check for compatibility with the kernel.
+ */
+-#define IPATH_KERN_SWVERSION ((IPATH_KERN_TYPE<<31) | IPATH_USER_SWVERSION)
++#define IPATH_KERN_SWVERSION ((IPATH_KERN_TYPE << 31) | IPATH_USER_SWVERSION)
+ 
+ /*
+  * This structure is passed to ipath_userinit() to tell the driver where
 -- 
 1.9.1
 
