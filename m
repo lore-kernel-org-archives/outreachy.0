@@ -1,132 +1,98 @@
-X-GM-THRID: 6670079368034779136
-X-Received: by 2002:a1f:1e4a:: with SMTP id e71mr14012625vke.2.1552998872304;
-        Tue, 19 Mar 2019 05:34:32 -0700 (PDT)
+X-GM-THRID: 6210467183328231424
+X-Received: by 10.129.101.196 with SMTP id z187mr36096119ywb.41.1445987324667;
+        Tue, 27 Oct 2015 16:08:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:c782:: with SMTP id t2ls2432923vsk.2.gmail; Tue, 19 Mar
- 2019 05:34:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzCjK6w2v7qmGDmQVLoPk0n4Z27gHDgPfmaM4GUWaW8GUkUkZ0KTZkGG+xfTAtAJ4GAQBT5
-X-Received: by 2002:a67:ee92:: with SMTP id n18mr14100745vsp.32.1552998871555;
-        Tue, 19 Mar 2019 05:34:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552998871; cv=none;
-        d=google.com; s=arc-20160816;
-        b=EGa8WG1xUnGaGErgjDac1WYyYHUmqs+/Pp+YXkGVTfnYwcroxBBqJhBJo0WaXsvrZy
-         6UcC0KAJp1UeIy0ZuHaN4AZpSBfSmjQzmCcr+ZeCRFbcD+zxGjfL1D9VIlXYdIdpUgFU
-         GGHrVurlq+sGtIGK9NXHgf561tfYpEzO/VHkp8U/Lw8ZGPaDeeQ+CmX3wy4ktgY+LvjW
-         mQR73dBhFvLbvk3+9LyY5sMCXwDVMd5dbe9iNX0NsxxnCHPLk4eOiT/yD6e2oqnUQzBo
-         3hUFXcD0w3b+/7tjOs2v4EJKFXQtzRkTf/z0w+asXLHCp3vkZ4sfU/I92eOliPscC3G5
-         9jSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gGbS3PIsPQwq2rTmKaZlnmFbSGiCVbVTGuHx770Wg7A=;
-        b=0lRSwFj7gsfP/VNEW5dlbhyALBZmfIklu3VV21M/RqUAvesoEJLtSUAazKGCwPTgaN
-         aJb5fDko7bz0BhiF3z3OE7Q2abSoy0aLIhyymkmRN5X9pmaRj7UPASjE0sAqfo/8dm4g
-         as0ZFPy6MZzX13EGmCIHE0ESind3UqTrPO5T9eK3tZJRWvv5/FFbTw/sK03WZ5TBTBrT
-         28tV8Ybse4ewcQLMaQ6RNkISV23hNlETqLLlQUUkCbl9jeP1Q68swPNA+qRhO/x8fa1h
-         RN/TgdcCgBSbInxg+F51AKAwHqLfxRwRRI9ZpqVul1mHaaCOXLZo/XY1VlIh0yOi14nI
-         qNsA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WoBiy9h0;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id 12si476806vkg.3.2019.03.19.05.34.31
+Received: by 10.50.114.102 with SMTP id jf6ls1094696igb.5.gmail; Tue, 27 Oct
+ 2015 16:08:44 -0700 (PDT)
+X-Received: by 10.66.221.7 with SMTP id qa7mr36615170pac.33.1445987324355;
+        Tue, 27 Oct 2015 16:08:44 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id zg1si4589878pbb.2.2015.10.27.16.08.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 05:34:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Tue, 27 Oct 2015 16:08:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WoBiy9h0;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id g8so3099286pgf.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 05:34:31 -0700 (PDT)
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22f.google.com with SMTP id hk11so235891417pad.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 16:08:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=gGbS3PIsPQwq2rTmKaZlnmFbSGiCVbVTGuHx770Wg7A=;
-        b=WoBiy9h0mYLto1y+N7mczitni/ClHnGZysSjCxsxOm3UXeJgIB9akIAms0pRnYOH82
-         ArkR8ZuvroKDPeG3BGV0UbakNt9SZBHtJEP6vfsXUC0YP7/31Jws6FaP3sdNgLpLMQ5F
-         hEpxzgaoh590kFYkiuHLWDmeK1NKAjT3t4lXaKkzeORFdlyK+7AtEs5BKCkozfdRY1ec
-         WRfFqhsvH9VrsgaNnOgWkYadsTMoED+K/x27sy/PJzpaV8DVi13fxT5mIO+7uA05OkCX
-         ldrh6lk0dUQIbuRRnY/RkNS1uhqMWbZIZS/bpIgrQxlyM+uNCE3HrlB/g3S3rk66BxbV
-         SEjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=gGbS3PIsPQwq2rTmKaZlnmFbSGiCVbVTGuHx770Wg7A=;
-        b=VXU+u0rTS0VtDdshnPgN79Hmy6EvhuFTyZognLksR9H7qGVJu0+kdicjaThAh0PP3H
-         XFJ83WLwcv0BOo6T8b+nUA3GRwI1JiQYNwYQgw6/QFbE1V36/y5B8vBy4u3Aify7sFCT
-         SX7fOsosukWo8zCd5Lem7t7HyygJabLIgPKSx+S8RDL58pbeWfzvPsPZIDjQf/hDndGy
-         srlJ/PegT2XYURkSg1ZRsJ/rEpchYe1j9hm93ykXJSCA32v4VkfQP6UVzbFvNerDkuex
-         QHSo4ZZpMnXBYEF/TAsoL4coRCexlGrMDeXpi6kgvDCoaYqPFjshDzYCQh0MGsh36P0Z
-         Zf8Q==
-X-Gm-Message-State: APjAAAUcRLdviRuCGuBNGc6BF7psvQlHAFIzT8f54yJutM1k8k2VRhEb
-	uASFOHYStL16mYm5inm7akaegurhE3E=
-X-Received: by 2002:a17:902:2bab:: with SMTP id l40mr1824088plb.273.1552998870151;
-        Tue, 19 Mar 2019 05:34:30 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.64])
-        by smtp.googlemail.com with ESMTPSA id b85sm29237428pfj.56.2019.03.19.05.34.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 05:34:29 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8192u: r8180_93cx6.c: Fix space around '<<'.
-Date: Tue, 19 Mar 2019 18:04:18 +0530
-Message-Id: <20190319123418.6724-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=EeuMuXF0u2fsP+jr/3jShTVgxa2JxlRjZ1m6QKJDQ9o=;
+        b=iiusqe97QQmf8qR9anFkyHnqyke9Iiq6sBASgMYkxbLEOR0JOX8Zs9vsNY2Eqc7ygl
+         HG/yrRW0B/SdS4nuhTXIY48ywS6JIguXVEQOUYCXwEucb5AB+/xaWDRdMMoxS09NAjM/
+         1VUroddvFX0cT6EVfqZqECyDE87IEjawtHmlehuGwO0RqB6A6koheEFBEpCWgIPlkamA
+         qgi4vFqhiBH836inl3tvIH+gdVJcZ4WM1DPn0TsuHWGbPZqSEaHsZGiHnmK2YBphhG9P
+         nCGlBsaDF7kNjFWd9dD3G+3UNs19yFZ3FxLavIyzOoz2/ltLGtctmhwoHVWpV/yu237c
+         d0yA==
+X-Received: by 10.66.179.236 with SMTP id dj12mr30401410pac.41.1445987324239;
+        Tue, 27 Oct 2015 16:08:44 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
+        by smtp.gmail.com with ESMTPSA id oi3sm24398789pbb.53.2015.10.27.16.08.43
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Oct 2015 16:08:43 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH 2/2] Staging: iio: adc: Fix sparse warning
+Date: Tue, 27 Oct 2015 16:08:37 -0700
+Message-Id: <304f7088d71d949f7d79276803257e018dbd872a.1445986777.git.ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1445986777.git.ksenija.stanojevic@gmail.com>
+References: <cover.1445986777.git.ksenija.stanojevic@gmail.com>
 
-Fix the check as per Linux kernel style for use of spaces.
-Issue found by checkpatch.pl
+Fix following sparse endianness problems:
 
-CHECK:spaces preffered around that '<<'
+  CHECK   drivers/staging/iio/adc/ad7816.c
+drivers/staging/iio/adc/ad7816.c:91:17: warning: cast to restricted
+__be16
+drivers/staging/iio/adc/ad7816.c:91:17: warning: cast to restricted
+__be16
+drivers/staging/iio/adc/ad7816.c:91:17: warning: cast to restricted
+__be16
+drivers/staging/iio/adc/ad7816.c:91:17: warning: cast to restricted
+__be16
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
- drivers/staging/rtl8192u/r8180_93cx6.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/staging/iio/adc/ad7816.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r8180_93cx6.c b/drivers/staging/rtl8192u/r8180_93cx6.c
-index c414efc0662e..163daed789b4 100644
---- a/drivers/staging/rtl8192u/r8180_93cx6.c
-+++ b/drivers/staging/rtl8192u/r8180_93cx6.c
-@@ -125,21 +125,21 @@ int eprom_read(struct net_device *dev, u32 addr)
+diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
+index b3dec706..ccec57c 100644
+--- a/drivers/staging/iio/adc/ad7816.c
++++ b/drivers/staging/iio/adc/ad7816.c
+@@ -59,6 +59,7 @@ static int ad7816_spi_read(struct ad7816_chip_info *chip, u16 *data)
+ {
+ 	struct spi_device *spi_dev = chip->spi_dev;
+ 	int ret = 0;
++	__be16 buf;
  
- 	if (priv->epromtype == EPROM_93c56) {
- 		addr_str[7] = addr & 1;
--		addr_str[6] = addr & (1<<1);
--		addr_str[5] = addr & (1<<2);
--		addr_str[4] = addr & (1<<3);
--		addr_str[3] = addr & (1<<4);
--		addr_str[2] = addr & (1<<5);
--		addr_str[1] = addr & (1<<6);
--		addr_str[0] = addr & (1<<7);
-+		addr_str[6] = addr & (1 << 1);
-+		addr_str[5] = addr & (1 << 2);
-+		addr_str[4] = addr & (1 << 3);
-+		addr_str[3] = addr & (1 << 4);
-+		addr_str[2] = addr & (1 << 5);
-+		addr_str[1] = addr & (1 << 6);
-+		addr_str[0] = addr & (1 << 7);
- 		addr_len = 8;
- 	} else {
- 		addr_str[5] = addr & 1;
--		addr_str[4] = addr & (1<<1);
--		addr_str[3] = addr & (1<<2);
--		addr_str[2] = addr & (1<<3);
--		addr_str[1] = addr & (1<<4);
--		addr_str[0] = addr & (1<<5);
-+		addr_str[4] = addr & (1 << 1);
-+		addr_str[3] = addr & (1 << 2);
-+		addr_str[2] = addr & (1 << 3);
-+		addr_str[1] = addr & (1 << 4);
-+		addr_str[0] = addr & (1 << 5);
- 		addr_len = 6;
+ 	gpio_set_value(chip->rdwr_pin, 1);
+ 	gpio_set_value(chip->rdwr_pin, 0);
+@@ -82,13 +83,13 @@ static int ad7816_spi_read(struct ad7816_chip_info *chip, u16 *data)
+ 
+ 	gpio_set_value(chip->rdwr_pin, 0);
+ 	gpio_set_value(chip->rdwr_pin, 1);
+-	ret = spi_read(spi_dev, (u8 *)data, sizeof(*data));
++	ret = spi_read(spi_dev, &buf, sizeof(*data));
+ 	if (ret < 0) {
+ 		dev_err(&spi_dev->dev, "SPI data read error\n");
+ 		return ret;
  	}
- 	eprom_cs(dev, 1);
+ 
+-	*data = be16_to_cpu(*data);
++	*data = be16_to_cpu(buf);
+ 
+ 	return ret;
+ }
 -- 
-2.17.1
+1.9.1
 
 
