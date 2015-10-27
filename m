@@ -1,124 +1,80 @@
-X-GM-THRID: 6390274261051768832
-X-Received: by 10.176.85.135 with SMTP id v7mr9811335uaa.8.1487851669714;
-        Thu, 23 Feb 2017 04:07:49 -0800 (PST)
+X-GM-THRID: 6210380525285146624
+X-Received: by 10.182.24.170 with SMTP id v10mr33870782obf.17.1445966895997;
+        Tue, 27 Oct 2015 10:28:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.240 with SMTP id g103ls3639446otg.39.gmail; Thu, 23 Feb
- 2017 04:07:49 -0800 (PST)
-X-Received: by 10.13.250.197 with SMTP id k188mr10541852ywf.167.1487851669346;
-        Thu, 23 Feb 2017 04:07:49 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id u12si894977pfd.3.2017.02.23.04.07.49
+Received: by 10.182.32.35 with SMTP id f3ls2035153obi.94.gmail; Tue, 27 Oct
+ 2015 10:28:15 -0700 (PDT)
+X-Received: by 10.182.250.233 with SMTP id zf9mr36401749obc.7.1445966895504;
+        Tue, 27 Oct 2015 10:28:15 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id el2si4331788pbb.0.2015.10.27.10.28.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 04:07:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 27 Oct 2015 10:28:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 1so4380307pgz.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 04:07:49 -0800 (PST)
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22a.google.com with SMTP id hk11so228648133pad.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 10:28:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ZV1Wi5L/IsQF27FiylGE0Vpkk312rULOSq14b9aKkd4=;
-        b=qgr3uEHEuTSMFKpsk0RMBegNOngaVvB85j/ty2GhVwWmcX663s2xhUCW9xYdAihxho
-         lcJbqoMZMIcNj4km7HhceCWENyrf/gFAhTYdaSYgjlR5SIsao9jjkUp5L0EzMpFpIABP
-         YzMj47d5DIYpi5r/JZlxZW9jVd2l5E1NTQzM32ZZoL+XXlyyX/lkc08yA0CPSlDsx7rQ
-         i6s7/9+fxR4XxPoIqWbORm5Uo/zosH615ZW2lLX9HMqQtcWNYk3ZBhGnH4o/r+DeyU4g
-         kjhK1e0DKlLhARxtGon//uUz8lor6oxv9bVe8kJUVXoqo87Vz9NZt3SSKqTFIaCZ3sr/
-         Ug0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=ZV1Wi5L/IsQF27FiylGE0Vpkk312rULOSq14b9aKkd4=;
-        b=pY9/u2QDghk4zvOIJv7zd9uAZzvMO+aDROQoCi1xMljQ7XP2DJr1jkY3+eEPS5XAaH
-         PTqUe5kc+R23aKyJRghbk/qvX7xWqtwgvGFYoKGMyGAFZt/HRum6dK979yy4iUJmbhSF
-         7NUky9459k8CNFsqeiY64fqCLqEgwSEFiJYWnr6J1t6pNsUz7z6vBsfXvsi9rf0aWgiC
-         FuWtuJ6CHbgHTjbn3on7LHCYN80SeZ9K+CTA94AONdNwke1G4vCL/t6EP9p97T3O1D+g
-         wPNkrO6J52NrHsRmxiViItW7J3o3Rb8DNMzsM0v5V+WRjxi8hDtcc5R+0yLCtmY6kfCo
-         j5bQ==
-X-Gm-Message-State: AMke39k3c+jc7H5J8NYbugkulS+elRkNfYCM8cWsf0ZHcCx+vfEUOwC8oj30JUSRl6yTzg==
-X-Received: by 10.98.207.193 with SMTP id b184mr46237911pfg.12.1487851668913;
-        Thu, 23 Feb 2017 04:07:48 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.161.153])
-        by smtp.gmail.com with ESMTPSA id g85sm4225277pfd.89.2017.02.23.04.07.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 04:07:48 -0800 (PST)
-Date: Thu, 23 Feb 2017 17:37:31 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
+        bh=LQMml+i2TZZTCfdWdS2tZKBHInMg0XOoDPxcI8IcItc=;
+        b=UMip5vuc0RU38zmnN7kKxfsnmFXSPoLVfmz/z+n0ATqEfJQ/fwTFdae8pPBARrhvNZ
+         L7M9HaI+c/CqpSKJ4Kd/Sn04Zu8hEUSllC64qxvKNwvYdoYoVnzmCyyAafpiFu1H0fG1
+         FHpOteXAVxgGUsyYnZFqRMcwF+1NwEbF21hsdIyt0+1/ebD8k+3Q5vmjQkncSnqjTyaq
+         bsb7yj7suPi0mic93VdvAYRgPJsk3DSTUIM3hfdU1uzF/VlI6mz4xIPqAdyLjL1XG4Eh
+         Q7yHrPdgbBhlTSyUqUZAl7rWHRyfzWSEIOy6eTayr2BRJGXh9rNS4Eu78rRvHmHXQKSB
+         EDAQ==
+X-Received: by 10.67.4.133 with SMTP id ce5mr28967511pad.38.1445966895348;
+        Tue, 27 Oct 2015 10:28:15 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id pq1sm40703599pbb.91.2015.10.27.10.28.12
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 10:28:13 -0700 (PDT)
+Date: Tue, 27 Oct 2015 22:58:06 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: speakup: i18n: Add spaces around operators
-Message-ID: <20170223120730.GA9607@sayli-HP-15-Notebook-PC>
+Subject: [PATCH] Staging: wilc1000: coreconfigurator: Remove trailing
+ whitespace
+Message-ID: <20151027172806.GA2634@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The patch adds spaces around binary operators as suggested by
-checkpatch.pl
+In block comments, trailing whitespaces should be removed.
+Fix checkpatch ERROR: trailing whitespace
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/wilc1000/coreconfigurator.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 4e7ebc3..bf28d3d 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -292,7 +292,7 @@ static ssize_t keymap_store(struct kobject *kobj, struct kobj_attribute *attr,
- 	i *= (int)cp1[-1] + 1;
- 	i += 2; /* 0 and last map ver */
- 	if (cp1[-3] != KEY_MAP_VER || cp1[-1] > 10 ||
--			i+SHIFT_TBL_SIZE+4 >= sizeof(spk_key_buf)) {
-+			i + SHIFT_TBL_SIZE + 4 >= sizeof(spk_key_buf)) {
- 		pr_warn("i %d %d %d %d\n", i,
- 				(int)cp1[-3], (int)cp1[-2], (int)cp1[-1]);
- 		kfree(in_buff);
-@@ -344,7 +344,7 @@ static ssize_t silent_store(struct kobject *kobj, struct kobj_attribute *attr,
- 		return -EINVAL;
- 	}
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
--	if (ch&2) {
-+	if (ch & 2) {
- 		shut = 1;
- 		spk_do_flush();
- 	} else {
-@@ -479,12 +479,12 @@ static ssize_t punc_show(struct kobject *kobj, struct kobj_attribute *attr,
- 	pb = (struct st_bits_data *) &spk_punc_info[var->value];
- 	mask = pb->mask;
- 	for (i = 33; i < 128; i++) {
--		if (!(spk_chartab[i]&mask))
-+		if (!(spk_chartab[i] & mask))
- 			continue;
- 		*cp++ = (char)i;
- 	}
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
--	return cp-buf;
-+	return cp - buf;
- }
+diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
+index d002cfb..e10c6ff 100644
+--- a/drivers/staging/wilc1000/coreconfigurator.c
++++ b/drivers/staging/wilc1000/coreconfigurator.c
+@@ -418,9 +418,9 @@ s32 parse_network_info(u8 *pu8MsgBuffer, tstrNetworkInfo **ppstrNetworkInfo)
+ 		/* Get BSSID */
+ 		get_BSSID(pu8msa, pstrNetworkInfo->au8bssid);
  
- /*
-@@ -575,7 +575,7 @@ ssize_t spk_var_show(struct kobject *kobj, struct kobj_attribute *attr,
- 			*cp1++ = '"';
- 			*cp1++ = '\n';
- 			*cp1 = '\0';
--			rv = cp1-buf;
-+			rv = cp1 - buf;
- 		} else {
- 			rv = sprintf(buf, "\"\"\n");
- 		}
+-		/* 
++		/*
+ 		 * Extract current channel information from
+-		 * the beacon/probe response frame          
++		 * the beacon/probe response frame
+ 		 */
+ 		pstrNetworkInfo->u8channel = get_current_channel_802_11n(pu8msa,
+ 							u16RxLen + FCS_LEN);
 -- 
-2.7.4
+2.1.0
 
 
