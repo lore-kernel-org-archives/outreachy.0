@@ -1,89 +1,104 @@
 X-GM-THRID: 6210088605629546496
-X-Received: by 10.194.203.33 with SMTP id kn1mr5234705wjc.3.1445936753821;
-        Tue, 27 Oct 2015 02:05:53 -0700 (PDT)
+X-Received: by 10.68.195.197 with SMTP id ig5mr19759702pbc.4.1445936591345;
+        Tue, 27 Oct 2015 02:03:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.211.230 with SMTP id nf6ls291462wic.19.canary; Tue, 27 Oct
- 2015 02:05:53 -0700 (PDT)
-X-Received: by 10.194.82.193 with SMTP id k1mr5249028wjy.2.1445936753355;
-        Tue, 27 Oct 2015 02:05:53 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id em5si540290wib.2.2015.10.27.02.05.53
+Received: by 10.107.17.32 with SMTP id z32ls2236773ioi.54.gmail; Tue, 27 Oct
+ 2015 02:03:11 -0700 (PDT)
+X-Received: by 10.107.136.19 with SMTP id k19mr10853387iod.5.1445936591101;
+        Tue, 27 Oct 2015 02:03:11 -0700 (PDT)
+Return-Path: <theonly.ultimate@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id el2si4023023pbb.0.2015.10.27.02.03.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 02:05:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 27 Oct 2015 02:03:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,204,1444687200"; 
-   d="scan'208";a="184609279"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Oct 2015 10:05:53 +0100
-Date: Tue, 27 Oct 2015 10:05:40 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: SirnamSwetha <theonly.ultimate@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/8] Staging : rdma ipath: spaces
- preferred around that '<<'
-In-Reply-To: <e7077e1d1c8bc59b7ebfa8151fa4788b38daf74b.1445936144.git.theonly.ultimate@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510271004380.2363@hadrien>
-References: <cover.1445936143.git.theonly.ultimate@gmail.com> <e7077e1d1c8bc59b7ebfa8151fa4788b38daf74b.1445936144.git.theonly.ultimate@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of theonly.ultimate@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=theonly.ultimate@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22b.google.com with SMTP id fv9so226345032pac.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 02:03:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=DhnuDA9FFv5+8h/9k/Ci962AHhXmpnl4w2Xlxv+Fblo=;
+        b=b5lpgWdFUpOEGaMYm6Kq3O4i81wxZqLY1Pn96zc3HMy0fx6gWAHR8chy61y6cPzz9B
+         46iurkpW8H3Xko6KZDe3WuFCntq0SSFzZyITrHOQbf9uCbq8e434oGNYYsrOWMJ+WQIc
+         CdvhxobW4fvZPhHarQvRGZCoH9zxXuOCSawHio9u0MDppxaB/yOQ81HiBPDHjubTafad
+         gR8eNJJWuOAxevk8k5sOt/dc/tcqbmfO5TGVUtOHHEqDdJmVidVopKFied7/eEayfE77
+         rWZRSbBWG839EPvU8fb/VF4ZpUEH4BiO45lskQJJUsUIB4n8zpGXVgccBqrRGtDmgGjK
+         q9BA==
+X-Received: by 10.66.55.66 with SMTP id q2mr26673955pap.109.1445936590966;
+        Tue, 27 Oct 2015 02:03:10 -0700 (PDT)
+Return-Path: <theonly.ultimate@gmail.com>
+Received: from localhost ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id dd4sm38336921pbb.52.2015.10.27.02.03.10
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 02:03:10 -0700 (PDT)
+Date: Tue, 27 Oct 2015 14:33:14 +0530
+From: SirnamSwetha <theonly.ultimate@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: linux-usb@vger.kernel.org
+Subject: [PATCH 8/8] Staging: rdma ipath: braces should be used on all arms
+Message-ID: <a678fb2d681bb755289dead9c6d46daed2095d29.1445936145.git.theonly.ultimate@gmail.com>
+References: <cover.1445936143.git.theonly.ultimate@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1445936143.git.theonly.ultimate@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
+Fix all instances of the following checkpatch.pl check:
 
+CHECK: braces {} should be used on all arms of this statement
 
-On Tue, 27 Oct 2015, SirnamSwetha wrote:
+Signed-off-by: SirnamSwetha <theonly.ultimate@gmail.com>
+---
+ drivers/staging/rdma/ipath/ipath_cq.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-> This patch fixes the checkpatch issue:
->
-> CHECK: spaces preferred around that '<<'
->
-> Signed-off-by: SirnamSwetha <theonly.ultimate@gmail.com>
+diff --git a/drivers/staging/rdma/ipath/ipath_cq.c b/drivers/staging/rdma/ipath/ipath_cq.c
+index 071de3c..a676232 100644
+--- a/drivers/staging/rdma/ipath/ipath_cq.c
++++ b/drivers/staging/rdma/ipath/ipath_cq.c
+@@ -63,8 +63,9 @@ void ipath_cq_enter(struct ipath_cq *cq, struct ib_wc *entry, int solicited)
+ 	if (head >= (unsigned)cq->ibcq.cqe) {
+ 		head = cq->ibcq.cqe;
+ 		next = 0;
+-	} else
++	} else {
+ 		next = head + 1;
++	}
+ 	if (unlikely(next == wc->tail)) {
+ 		spin_unlock_irqrestore(&cq->lock, flags);
+ 		if (cq->ibcq.event_handler) {
+@@ -94,8 +95,9 @@ void ipath_cq_enter(struct ipath_cq *cq, struct ib_wc *entry, int solicited)
+ 		wc->uqueue[head].port_num = entry->port_num;
+ 		/* Make sure entry is written before the head index. */
+ 		smp_wmb();
+-	} else
++	} else {
+ 		wc->kqueue[head] = *entry;
++	}
+ 	wc->head = next;
+ 
+ 	if (cq->notify == IB_CQ_NEXT_COMP ||
+@@ -261,9 +263,9 @@ struct ib_cq *ipath_create_cq(struct ib_device *ibdev,
+ 			ret = ERR_PTR(err);
+ 			goto bail_ip;
+ 		}
+-	} else
++	} else {
+ 		cq->ip = NULL;
+-
++	}
+ 	spin_lock(&dev->n_cqs_lock);
+ 	if (dev->n_cqs_allocated == ib_ipath_max_cqs) {
+ 		spin_unlock(&dev->n_cqs_lock);
+-- 
+1.9.1
 
-Normally there would be a space between the two parts of your name.
-
-Also, you shouldn't be sending patches to linux-usb, only to the outreachy
-mailing list.
-
-julia
-
-> ---
->  drivers/staging/rdma/ipath/ipath_common.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/rdma/ipath/ipath_common.h b/drivers/staging/rdma/ipath/ipath_common.h
-> index df2a211..3f9b4bc 100644
-> --- a/drivers/staging/rdma/ipath/ipath_common.h
-> +++ b/drivers/staging/rdma/ipath/ipath_common.h
-> @@ -365,7 +365,7 @@ struct ipath_base_info {
->   */
->  #define IPATH_USER_SWMINOR 6
->
-> -#define IPATH_USER_SWVERSION ((IPATH_USER_SWMAJOR<<16) | IPATH_USER_SWMINOR)
-> +#define IPATH_USER_SWVERSION ((IPATH_USER_SWMAJOR << 16) | IPATH_USER_SWMINOR)
->
->  #define IPATH_KERN_TYPE 0
->
-> @@ -380,7 +380,7 @@ struct ipath_base_info {
->   * spi_sw_version field of ipath_base_info, so the user code can in turn
->   * check for compatibility with the kernel.
->  */
-> -#define IPATH_KERN_SWVERSION ((IPATH_KERN_TYPE<<31) | IPATH_USER_SWVERSION)
-> +#define IPATH_KERN_SWVERSION ((IPATH_KERN_TYPE << 31) | IPATH_USER_SWVERSION)
->
->  /*
->   * This structure is passed to ipath_userinit() to tell the driver where
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/e7077e1d1c8bc59b7ebfa8151fa4788b38daf74b.1445936144.git.theonly.ultimate%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
