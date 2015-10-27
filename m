@@ -1,78 +1,70 @@
-X-GM-THRID: 6206976986922876928
-X-Received: by 10.50.30.37 with SMTP id p5mr12912375igh.11.1445174447418;
-        Sun, 18 Oct 2015 06:20:47 -0700 (PDT)
+X-GM-THRID: 6210026226543755264
+X-Received: by 10.107.159.72 with SMTP id i69mr12023030ioe.23.1445933590535;
+        Tue, 27 Oct 2015 01:13:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.32.201 with SMTP id h67ls2290495qgh.60.gmail; Sun, 18 Oct
- 2015 06:20:46 -0700 (PDT)
-X-Received: by 10.31.149.200 with SMTP id x191mr21477439vkd.14.1445174446631;
-        Sun, 18 Oct 2015 06:20:46 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id el2si2876296pbb.0.2015.10.18.06.20.46
+Received: by 10.50.79.193 with SMTP id l1ls1152720igx.1.canary; Tue, 27 Oct
+ 2015 01:13:10 -0700 (PDT)
+X-Received: by 10.66.110.111 with SMTP id hz15mr20216777pab.16.1445933590255;
+        Tue, 27 Oct 2015 01:13:10 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x22a.google.com (mail-qg0-x22a.google.com. [2607:f8b0:400d:c04::22a])
+        by gmr-mx.google.com with ESMTPS id y206si2017273ywd.6.2015.10.27.01.13.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 06:20:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        Tue, 27 Oct 2015 01:13:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) client-ip=2607:f8b0:400d:c04::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id z6so3083250pas.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 06:20:46 -0700 (PDT)
+Received: by qgem9 with SMTP id m9so139988852qge.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 01:13:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=7+DBhNqArxRArGMJziSGEOcXuUH6j6Z2fyT7ETUVoiw=;
-        b=N81kpRHkOeHjklpJ8kZND6gj4OcCkjJLNnbEfM2yquoStO2Jkdzw8ppayapbcPkJee
-         iMwzVTTwWT0TRNM6/fVuI/esDC5XwUfghQI15Jw//QsyWgUvNs5W38vOJkx1DEwR2AmF
-         Q7++w4LJw3ikH3baM+SOE/JyV8HUTARZ+7FtbnBpdPYS0Ro3XrNLyaQKGgTYQQsw+Clq
-         nT2+MmkZ+q1gehtjKPcUuSUu/cdnkh3HaruRwFvgueFcS3vj/tNHFjhwNbra8atFFvqa
-         g7YF+0TfK/s6nkFQeEyt08N6l68I1TINkzXqQzBc/cbtIAaLvT5cyw9l1//ynUx2n2j2
-         ieyA==
-X-Received: by 10.66.229.8 with SMTP id sm8mr28362606pac.135.1445174446477;
-        Sun, 18 Oct 2015 06:20:46 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id yi8sm31384467pab.22.2015.10.18.06.20.44
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 06:20:45 -0700 (PDT)
-Date: Sun, 18 Oct 2015 18:50:30 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: lproc_osc: Add check on a variable
-Message-ID: <20151018132030.GA30680@ubuntu>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=XpGxanpi/WMaTtpt9aP0TbKAwS8heYptQ79bvWjQS5c=;
+        b=SyaGcTrD25jHWAFgyJAHOzcHOLCeL1U0W50LDf1lZ/6FgojAGEkWZjk1VjtpNekbU+
+         dvxQKpkJxux9C3R2JLpYS6nZ7kZJxwx5/OnwfcyyV4vACOkPinAF41iLhvJKlXoOix4Q
+         hoKApr2FOBkHOZhI198AEyeDqXPQZ2Qrs3OKEbuZj4xqZ8VSLJVDIgki7RfB782rFTiO
+         X2Q/lvL2xwrZUhZKX8FdvqnqsQ8blL6mw8Fa32hJzqUvN3f4VCrooZYiuIPjlTiQqA9X
+         GXNGAY0Yd9XEvaniATYEk6FHZvMibHEyKl2PwggwGD1AtVRhtVkllCPOpm73CVkH8CCP
+         IxdA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.140.34.75 with SMTP id k69mr41350862qgk.64.1445933589966;
+ Tue, 27 Oct 2015 01:13:09 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Tue, 27 Oct 2015 01:13:09 -0700 (PDT)
+In-Reply-To: <20151027080612.GA11046@kroah.com>
+References: <20151026183318.GA25808@amitoj-Inspiron-3542>
+	<20151027080612.GA11046@kroah.com>
+Date: Tue, 27 Oct 2015 13:43:09 +0530
+Message-ID: <CA+5yK5HBVsLQn8xMBKq5DiChTc=Q81pxUVqhpszNVkQSPL6Q9g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Remove unneeded function
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Variable rc is not tested for negative values and hence a check should
-be included. Also, a check for variable val should be introduced.
+On Tue, Oct 27, 2015 at 1:36 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Tue, Oct 27, 2015 at 12:03:18AM +0530, Amitoj Kaur Chawla wrote:
+>> The function hw_sm750_getVMSize() had code that was replaceable by a single
+>> line. It was being called only once so replaced that call with the
+>> single line code and removed the extraneous function.
+>>
+>> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+>> ---
+>>  drivers/staging/sm750fb/sm750_hw.c | 9 +--------
+>>  1 file changed, 1 insertion(+), 8 deletions(-)
+>
+> This no longer applies due to patches that someone else sent right
+> before you did, sorry :(
+>
+> greg k-h
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/lustre/lustre/osc/lproc_osc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/osc/lproc_osc.c b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-index cdc7f88..c4d44e7 100644
---- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
-+++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-@@ -61,7 +61,9 @@ static ssize_t active_store(struct kobject *kobj, struct attribute *attr,
- 	unsigned long val;
- 
- 	rc = kstrtoul(buffer, 10, &val);
--	if (rc < 0)
-+	if (rc)
-+		return rc;
-+	if (val > 1)
- 		return -ERANGE;
- 
- 	/* opposite senses */
+No issues.
+
 -- 
-2.1.0
-
+Amitoj
 
