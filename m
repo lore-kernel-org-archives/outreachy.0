@@ -1,81 +1,97 @@
 X-GM-THRID: 6209338350434779136
-X-Received: by 10.112.134.129 with SMTP id pk1mr6003281lbb.24.1446592095558;
-        Tue, 03 Nov 2015 15:08:15 -0800 (PST)
+X-Received: by 10.182.24.170 with SMTP id v10mr31868763obf.17.1445932746246;
+        Tue, 27 Oct 2015 00:59:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.54.20 with SMTP id d20ls182915wma.13.gmail; Tue, 03 Nov
- 2015 15:08:14 -0800 (PST)
-X-Received: by 10.28.19.148 with SMTP id 142mr4014088wmt.4.1446592094726;
-        Tue, 03 Nov 2015 15:08:14 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id g18si752667wmd.1.2015.11.03.15.08.14
+Received: by 10.182.97.6 with SMTP id dw6ls284038obb.81.gmail; Tue, 27 Oct
+ 2015 00:59:05 -0700 (PDT)
+X-Received: by 10.182.226.195 with SMTP id ru3mr28230577obc.12.1445932745818;
+        Tue, 27 Oct 2015 00:59:05 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id pe1si4003990pac.2.2015.10.27.00.59.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Nov 2015 15:08:14 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 00:59:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0LfioM-1aEB0B24JW-00pLpx; Wed, 04 Nov
- 2015 00:08:13 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x230.google.com with SMTP id fv9so224494315pac.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 00:59:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=FgvEV0ujIwrgWTVe+prENvrJK+biZ6AggP9ZoGPv4eM=;
+        b=LySM4U7VOnBX42tOLLupG4+teIJlB6bhhIWeFjDd5OzZumqeBScDO+XNZHOosRRVDo
+         XkGi2DQiBk2Y0IU/RuXA1joaqkQKij16ucbt2XWUeVYs7qBtd6cZctPpUJra3rb/3/s7
+         aoSxRxf/bvvAw16W9mNxQJCQx3KLpwZN0EqXCmqb/864lFAw7LAXsvswrpBR8u5kuqUn
+         BxhNkd0+wZTUJNyYTKL5LR0rlOe0oR65vx3tjTGPZ5+TxYHdagNeqlzycGdwpZmFlLur
+         Qhf/HXOt1pPwt2y7B+wWjRdATu7vh/yzX+Und8JaXpUJTabZ6Un1Jf2iqHEJUh9vA2an
+         +yBQ==
+X-Received: by 10.66.144.130 with SMTP id sm2mr23644035pab.105.1445932745626;
+        Tue, 27 Oct 2015 00:59:05 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.162.184.86])
+        by smtp.gmail.com with ESMTPSA id ff5sm16086824pbd.26.2015.10.27.00.59.04
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 00:59:04 -0700 (PDT)
+Date: Tue, 27 Oct 2015 13:29:01 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, y2038@lists.linaro.org
-Subject: Re: [Outreachy kernel] [PATCH] scsi: bfa: bfad_bsg: Use ktime_get_real_seconds()
-Date: Wed, 04 Nov 2015 00:08:12 +0100
-Message-ID: <4012644.7ErTP1A9Pc@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151024220358.GA17274@amitoj-Inspiron-3542>
-References: <20151024220358.GA17274@amitoj-Inspiron-3542>
+Cc: y2038@lists.linaro.org
+Subject: [PATCH v2] scsi: bfa: bfad_bsg: Use ktime_get_real_seconds()
+Message-ID: <20151027075901.GA27166@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:So4HdwL/ncSUvnP8MNDp4GOrZGOzoLhm0pq7y/Aai3jq8k7qedy
- +WZqzO4Ae8sDCaJy51lGVf5uQVYMTEu2kPMurfD+vN9wZOuJrLvE0SYiXXPqCFjF/SnaWdK
- 7DtkKRJ/6+UUXeeUELsE/Yts6Cms9NtFVpIN+DIaYVIOa1KrG69sFzFOwF3tdOU8Zc49pTo
- XzcPOcaMDsZEzI9mi37jg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:HusBliLK5RI=:lsSojXEBhzhjlws7mifdUP
- PIFqe+zJyj8EUKdaTUwfS3lcFb1nTJqKNjdse8j2sLIyLILd2ZTt++H4cW0wo7c+fp2rohMpN
- VVMZI4joX6Fr3FHsR91xXPIU3/ihZfg4eBRrqRqp63dp6eXbmDOlRTaHk+ef/4vb25WOxbnTZ
- JtM6mt0jAqqWvoOx52CrY49Si6j4DnCJzZMvM6gVEbddQMPCqn4/MfvJqiJhfTqDIRXOny87E
- XeMHA9Xm4BclM4Tn5R83Qr3/LUtsYxx03msf+pi83brFG2l2klAFwCO5i+QDhRCnTOrzfJ8BM
- e+YENFChHXfheVRrBZWlo63EQ2D6lGwZFq6zPXwNEGK4EvEqIU+Mk7WT2I/DrRugsaX5sRXc2
- tEKhY5oEajQIrh80almcL2lvvTzaxGRob7hNhFn7d4uzIZGZ7ci0OX5QhE6RARXp3KoHvYrvb
- tFjYpzwTZ36xNio08zjANlVefcCb5IiZ5Ki+P7C6R1S91mdgXeM67V7wsIaboqCRCcVYvv/sq
- BjrLlLJLTWUPWsvBiLmHfjbpvqvPXv8xPT8JOsXsNHlDIU4H0Qmj5y3IaEiqc7ga/E58S3nSk
- resf7yWCzJflLZRiHE0P1Enyo2jOVH8ZIoZdm99bmZjNjiYosHkfGhdFzIRm208mC4TFJO7zb
- CWAZd3kdM4yb5DYEE1Y5OQJ8Ra78TaCkEr+Yuka6EOJ/VrhcG4sewHLgUE060pLSKZxVHIWsw
- mVcsBTFkJUc9E3Bp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Sunday 25 October 2015 03:33:58 Amitoj Kaur Chawla wrote:
-> 32 bit systems using 'struct timeval' will break in the year 2038, so
-> we modify the code appropriately.
-> 
-> This patch replaces the use of struct timeval and do_gettimeofday() with
-> ktime_get_real_seconds().
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+32 bit systems using 'struct timeval' will break in the year 2038, so
+we modify the code appropriately.
 
-Sorry for taking so long to review this, I'm only now catching up
-with my mails from the kernel summit.
+This patch replaces the use of struct timeval and do_gettimeofday()
+with ktime_get_real_seconds().
 
-This patch looks incomplete:
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v2:
+        -Removed trailing whitespace
 
->  	if (v_cmd == IOCMD_FCPIM_PROFILE_ON)
-> -		iocmd->status = bfa_fcpim_profile_on(&bfad->bfa, tv.tv_sec);
-> +		iocmd->status = bfa_fcpim_profile_on(&bfad->bfa, 
-> +						ktime_get_real_seconds());
->  	else if (v_cmd == IOCMD_FCPIM_PROFILE_OFF)
->  		iocmd->status = bfa_fcpim_profile_off(&bfad->bfa);
->  	spin_unlock_irqrestore(&bfad->bfad_lock, flags);
-> 
+ drivers/scsi/bfa/bfad_bsg.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-bfa_fcpim_profile_on() takes a "u32" argument, so this will still
-overflow in year 2106. As you did in the later patches, you need to
-follow the variable to see how it is used, and whether it can be
-extended to time64_t consistently. Try to do the conversion as late
-as possible, and add a code comment about the overflow if the data
-ends up in a structure that cannot be changed.
+diff --git a/drivers/scsi/bfa/bfad_bsg.c b/drivers/scsi/bfa/bfad_bsg.c
+index 023b9d4..92f5b0f 100644
+--- a/drivers/scsi/bfa/bfad_bsg.c
++++ b/drivers/scsi/bfa/bfad_bsg.c
+@@ -15,6 +15,7 @@
+  * General Public License for more details.
+  */
+ 
++#include <linux/ktime.h>
+ #include <linux/uaccess.h>
+ #include "bfad_drv.h"
+ #include "bfad_im.h"
+@@ -2093,13 +2094,12 @@ bfad_iocmd_fcpim_cfg_profile(struct bfad_s *bfad, void *cmd, unsigned int v_cmd)
+ {
+ 	struct bfa_bsg_fcpim_profile_s *iocmd =
+ 				(struct bfa_bsg_fcpim_profile_s *)cmd;
+-	struct timeval  tv;
+ 	unsigned long	flags;
+ 
+-	do_gettimeofday(&tv);
+ 	spin_lock_irqsave(&bfad->bfad_lock, flags);
+ 	if (v_cmd == IOCMD_FCPIM_PROFILE_ON)
+-		iocmd->status = bfa_fcpim_profile_on(&bfad->bfa, tv.tv_sec);
++		iocmd->status = bfa_fcpim_profile_on(&bfad->bfa,
++						ktime_get_real_seconds());
+ 	else if (v_cmd == IOCMD_FCPIM_PROFILE_OFF)
+ 		iocmd->status = bfa_fcpim_profile_off(&bfad->bfa);
+ 	spin_unlock_irqrestore(&bfad->bfad_lock, flags);
+-- 
+1.9.1
 
-	Arnd
 
