@@ -1,55 +1,35 @@
 X-GM-THRID: 6209894564031889408
-X-Received: by 10.141.23.137 with SMTP id z131mr32405238qhd.7.1445932404647;
-        Tue, 27 Oct 2015 00:53:24 -0700 (PDT)
+X-Received: by 10.129.57.197 with SMTP id g188mr33528532ywa.18.1445932343412;
+        Tue, 27 Oct 2015 00:52:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.84.243 with SMTP id l106ls986040qgd.33.gmail; Tue, 27 Oct
- 2015 00:53:22 -0700 (PDT)
-X-Received: by 10.129.155.83 with SMTP id s80mr35207627ywg.55.1445932402282;
-        Tue, 27 Oct 2015 00:53:22 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id el2si3972543pbb.0.2015.10.27.00.53.22
+Received: by 10.140.89.116 with SMTP id u107ls4235742qgd.54.gmail; Tue, 27 Oct
+ 2015 00:52:22 -0700 (PDT)
+X-Received: by 10.129.39.65 with SMTP id n62mr27185887ywn.13.1445932342872;
+        Tue, 27 Oct 2015 00:52:22 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id zg1si4039740pbb.2.2015.10.27.00.52.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 00:53:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 00:52:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id fv9so224364129pac.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 00:53:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=lLODKGWQ3ys7H4ukjnskklLGEWZ6L7noUzgwe37il0A=;
-        b=OT0zkHbxhrBIos/n0QSLvNQQfe9sxgzyFwmMmLpTtKtuWIoJbErHSLTYKgDQdNQbkx
-         oVUWkTIN5qyWjuYP7zjdWmGmQ/A/Nlj4YZo7Fu6LNH5dNDr12dlRs26qLv+qE506cvfS
-         7x5+JdnY8UZNftrsJeHblBtj8w3tqvDq8keH4kNp0qQLbkuFEyJCu3YTtSkSdcKvT3ge
-         DYay7/SU0qnj3U43oGkJfd7aHYP397QGo6PqWTVkkcfBTvlEAOib4VdIZR4NwtFZqKkd
-         IrmnvyI0DBWOYIAcMAuPGrGcQsqRjjkUxKJ18kJq2CuL4iLfZGHqqCFUqcoKZ9ndaQU6
-         mBrQ==
-X-Received: by 10.66.66.166 with SMTP id g6mr45370017pat.152.1445932402093;
-        Tue, 27 Oct 2015 00:53:22 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([122.169.137.63])
-        by smtp.gmail.com with ESMTPSA id xm4sm38066962pab.27.2015.10.27.00.53.20
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 27 Oct 2015 00:53:21 -0700 (PDT)
-Date: Tue, 27 Oct 2015 13:22:59 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [58.123.138.250])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 09C6F67;
+	Tue, 27 Oct 2015 07:52:21 +0000 (UTC)
+Date: Tue, 27 Oct 2015 16:52:19 +0900
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Burcin Akalin <brcnakalin@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: xgifb:Block comments edited.
-Message-ID: <20151027075259.GB22738@sudip-pc>
+Message-ID: <20151027075219.GA18185@kroah.com>
 References: <1445853740-8215-1-git-send-email-brcnakalin@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1445853740-8215-1-git-send-email-brcnakalin@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
 On Mon, Oct 26, 2015 at 01:02:20PM +0300, Burcin Akalin wrote:
 > Alignment of block comments should be correct.Fix checkpatch.pl
@@ -72,11 +52,14 @@ On Mon, Oct 26, 2015 at 01:02:20PM +0300, Burcin Akalin wrote:
 > -		/* LCD+TV can't support in slave mode
 > -		 * (Force LCDA+TV->LCDB) */
 > +		/* 
-Trailing whitespace		   
 > +		 * LCD+TV can't support in slave mode
 > +		 * (Force LCDA+TV->LCDB) 
-and also here.
 
-regards
-sudip
+Trailing whitespace :(
+
+Always check your patches with checkpatch.pl before you send them out.
+
+thanks,
+
+greg k-h
 
