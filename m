@@ -1,124 +1,115 @@
-X-GM-THRID: 6254894706255200256
-X-Received: by 10.66.148.69 with SMTP id tq5mr37755604pab.28.1456331160224;
-        Wed, 24 Feb 2016 08:26:00 -0800 (PST)
+X-GM-THRID: 6210349176655446016
+X-Received: by 10.112.173.170 with SMTP id bl10mr9802555lbc.7.1445962333472;
+        Tue, 27 Oct 2015 09:12:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.24.41 with SMTP id r9ls1349460obf.14.gmail; Wed, 24 Feb
- 2016 08:25:59 -0800 (PST)
-X-Received: by 10.182.199.70 with SMTP id ji6mr36559469obc.32.1456331159626;
-        Wed, 24 Feb 2016 08:25:59 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id yd9si485369pab.1.2016.02.24.08.25.59
+Received: by 10.25.141.198 with SMTP id p189ls812173lfd.79.gmail; Tue, 27 Oct
+ 2015 09:12:12 -0700 (PDT)
+X-Received: by 10.112.140.202 with SMTP id ri10mr9650836lbb.10.1445962332743;
+        Tue, 27 Oct 2015 09:12:12 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wi0-x241.google.com (mail-wi0-x241.google.com. [2a00:1450:400c:c05::241])
+        by gmr-mx.google.com with ESMTPS id c7si625600wiy.3.2015.10.27.09.12.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 08:25:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 09:12:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) client-ip=2a00:1450:400c:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id yy13so14974371pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 08:25:59 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x241.google.com with SMTP id vt6so28565847wib.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 09:12:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=QqNEXCitHaWsYsp7MyxW7oTYNg0bXMQZyaMs6dpahvA=;
-        b=gPzWFtSOUgUoADP1nUc/4HMUIeHF4B1n7ZdRN/PbQu9ROOLX8GcWoXKrr5rE3068T9
-         REgbRY4yae/Q50xMdvVAjXTwMhjubWkLrX+6+sOzCj2fHvFGvqLqScy/EMiW690fsDF+
-         g2QFvUoSHY6ZUcxGRHyuLP51JzoiK0j/8B91HHB90015S8kzLS/kW9kKnb2EUC+BeyaT
-         QI9t0g1raT73q9uiCEJzXAfVH1GxYTS11LBh+cTPAyXORPJfbom4W5FuGx333CB/m+Vo
-         rvVSrT6zc8lCoaKWz11lBMCzEqsyxhhsCW5DwKLMX66yhWu8Z0zC6hzQN3Pyi7JCuZ+u
-         VoSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=QqNEXCitHaWsYsp7MyxW7oTYNg0bXMQZyaMs6dpahvA=;
-        b=EgWAqPRxtldf7+WWlZAaNd/bPNa/CB7Fmw9BkAbaWHlTiHFIYPpm27PsB7a24/mvHi
-         Hxgtx317ZkQWUjtgxqURAg04zJHkOcIO+p/U53yTdahz6yUyhEy14PIG9p+A+q1abcrk
-         HWWL9XL6sUHkAmxqCkdVFsx1xbmCyvsPyTAiBRlv++4ovIhAiNJNFfinIxnU6npAO2Hw
-         gH20krWojLDRimB4EnqexmUgljahmGVoaQT/8MaqdNDxEeJ/zEY7JZzIqwXJHaGF7AaF
-         j6u6/18hsSalgibgVvxLNO5nAA6lvZTmlkOHNjXC+KRafqE1vfRP25Z+W+LgRPP+A+UO
-         qOdw==
-X-Gm-Message-State: AG10YOTsb8sYf+roMfbla/94w8XETg39moQPYiJTvazZdzy/8ySRVudBzld622qpm6/fNw==
-X-Received: by 10.66.145.194 with SMTP id sw2mr55387854pab.69.1456331159396;
-        Wed, 24 Feb 2016 08:25:59 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id v7sm6148952pfi.56.2016.02.24.08.25.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 08:25:58 -0800 (PST)
-Date: Wed, 24 Feb 2016 21:55:49 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: Remove unnecessary macro
-Message-ID: <20160224162549.GA3992@amitoj-Inspiron-3542>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=w/YyVK3DEf6PeUt4gM3JqoryE2YekDAEL/DpoWThDQ4=;
+        b=0X7hKITfl2/8o8v+HczRpkBcHe/fsBmdyOGwkNLQ65A8U7egfP0p+UCxkHvmiohx/V
+         /RN0atWJSZo+XKjcIjKTvQQAlEDKIgfbQjXrYnhZDiIA1rGF53gwEnNB5wdITOboccJx
+         cjp0AKwdDBvlYT3uKzVzOfjjDAm9Or2tlB5uDruPVOQOEdloQQtTnJWI1Z0as/21mAX3
+         K5GrZXhB04vmbzffsNJf4vSt44KV4+fTliKWnz5cxTIaU3ylsxswgkL5PLemVf8V3KkE
+         pcvAWt5K25B6MXhFTXdjrLtfj0uOIEY4tF5+8lEUXoEOLpdVauhKmsSyvmTzwgq/m+KM
+         kj/g==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.180.73.146 with SMTP id l18mr26950838wiv.87.1445962332594;
+ Tue, 27 Oct 2015 09:12:12 -0700 (PDT)
+Received: by 10.194.165.102 with HTTP; Tue, 27 Oct 2015 09:12:12 -0700 (PDT)
+In-Reply-To: <1445959587-25953-1-git-send-email-ciorneiioana@gmail.com>
+References: <1445959587-25953-1-git-send-email-ciorneiioana@gmail.com>
+Date: Tue, 27 Oct 2015 18:12:12 +0200
+Message-ID: <CAEnQRZCEaZ=AW7ka6BWZ5MjBGvMcZuqr=rAcVk3Ga7fKVw_kZQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: change IRQ_HANDLED to IRQ_WAKE_THREAD
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Ioana Ciornei <ciorneiioana@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>, Jonathan Cameron <jic23@kernel.org>
+Content-Type: text/plain; charset=UTF-8
 
-Remove unnecessary macro SUBMIT_URB by replacing it with a direct call
-to usb_submit_urb()
+On Tue, Oct 27, 2015 at 5:26 PM, Ioana Ciornei <ciorneiioana@gmail.com> wrote:
+> This patch changes the return value of the primary interrupt handler to
+> IRQ_WAKE_THREAD in order to wake the kernel thread represented by the
+> iio_simple_dummy_event_handler function and continue handling the event.
+>
 
-This change was made with the help of the following Coccinelle semantic 
-patch:
+This is a very good catch! We need to have a better commit message. You
+need to describe why the commit is needed.
 
-//<smpl>
-@@
-identifier f,g;
-@@
-* #define f(...) g(...)
-// </smpl>
+==
+iio: dummy: Complete IIO events delivery to userspace
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x_usb.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+Since commit fd2bb310ca ("Staging: iio: Move evgen interrupt
+generation to irq_work")
+event processing is split in two parts using threaded interrupts:
 
-diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index 09b4b2c..602c3f3 100644
---- a/drivers/staging/wlan-ng/hfa384x_usb.c
-+++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -126,8 +126,6 @@
- #include <linux/usb.h>
- #include <linux/byteorder/generic.h>
- 
--#define SUBMIT_URB(u, f)  usb_submit_urb(u, f)
--
- #include "p80211types.h"
- #include "p80211hdr.h"
- #include "p80211mgmt.h"
-@@ -346,7 +344,7 @@ static int submit_rx_urb(hfa384x_t *hw, gfp_t memflags)
- 	result = -ENOLINK;
- 	if (!hw->wlandev->hwremoved &&
- 	    !test_bit(WORK_RX_HALT, &hw->usb_flags)) {
--		result = SUBMIT_URB(&hw->rx_urb, memflags);
-+		result = usb_submit_urb(&hw->rx_urb, memflags);
- 
- 		/* Check whether we need to reset the RX pipe */
- 		if (result == -EPIPE) {
-@@ -395,7 +393,7 @@ static int submit_tx_urb(hfa384x_t *hw, struct urb *tx_urb, gfp_t memflags)
- 	if (netif_running(netdev)) {
- 		if (!hw->wlandev->hwremoved &&
- 		    !test_bit(WORK_TX_HALT, &hw->usb_flags)) {
--			result = SUBMIT_URB(tx_urb, memflags);
-+			result = usb_submit_urb(tx_urb, memflags);
- 
- 			/* Test whether we need to reset the TX pipe */
- 			if (result == -EPIPE) {
-@@ -2925,7 +2923,7 @@ static void hfa384x_usbctlxq_run(hfa384x_t *hw)
- 		hw->ctlx_urb.transfer_flags |= USB_QUEUE_BULK;
- 
- 		/* Now submit the URB and update the CTLX's state */
--		result = SUBMIT_URB(&hw->ctlx_urb, GFP_ATOMIC);
-+		result = usb_submit_urb(&hw->ctlx_urb, GFP_ATOMIC);
- 		if (result == 0) {
- 			/* This CTLX is now running on the active queue */
- 			head->state = CTLX_REQ_SUBMITTED;
--- 
-1.9.1
+* part 1, IRQ handler - runs in IRQ context and only saves event timestamp.
+* part 2, threaded handler, runs in process context, get events and
+pushes them to userspace.
 
+When IRQ handler returns IRQ_HANDLED code the interrupt is considered
+to be processed
+and the threaded handler will not be called. We don't want this for
+IIO dummy events driver, since
+the events processing takes places in the threaded handler.
+
+Thus, IRQ handler needs to wake up threaded handler by returning IRQ_WAKE_THREAD
+
+Fixes: fd2bb310ca ("Staging: iio: Move evgen interrupt generation to irq_work")
+==
+
+Also, because IIO driver was moved out of staging please rebase your
+patch on Jonathan's tree:
+
+https://git.kernel.org/cgit/linux/kernel/git/jic23/iio.git/log/?h=testing
+
+use testing branch for this.
+
+
+> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+> ---
+>  drivers/staging/iio/iio_simple_dummy_events.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/iio/iio_simple_dummy_events.c b/drivers/staging/iio/iio_simple_dummy_events.c
+> index bfbf1c5..6eb600f 100644
+> --- a/drivers/staging/iio/iio_simple_dummy_events.c
+> +++ b/drivers/staging/iio/iio_simple_dummy_events.c
+> @@ -159,7 +159,7 @@ static irqreturn_t iio_simple_dummy_get_timestamp(int irq, void *private)
+>         struct iio_dummy_state *st = iio_priv(indio_dev);
+>
+>         st->event_timestamp = iio_get_time_ns();
+> -       return IRQ_HANDLED;
+> +       return IRQ_WAKE_THREAD;
+>  }
+>
+>  /**
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1445959587-25953-1-git-send-email-ciorneiioana%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
