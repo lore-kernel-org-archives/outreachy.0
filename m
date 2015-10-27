@@ -1,129 +1,170 @@
-X-GM-THRID: 6205449459620380672
-X-Received: by 10.129.70.6 with SMTP id t6mr2070494ywa.5.1444818791903;
-        Wed, 14 Oct 2015 03:33:11 -0700 (PDT)
+X-GM-THRID: 6210356255905546240
+X-Received: by 10.182.28.39 with SMTP id y7mr719676obg.11.1445961244200;
+        Tue, 27 Oct 2015 08:54:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.125.71 with SMTP id mo7ls37105obb.19.gmail; Wed, 14 Oct
- 2015 03:33:11 -0700 (PDT)
-X-Received: by 10.182.98.196 with SMTP id ek4mr1880502obb.17.1444818791446;
-        Wed, 14 Oct 2015 03:33:11 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id wl2si791820pab.1.2015.10.14.03.33.11
+Received: by 10.50.142.37 with SMTP id rt5ls1316365igb.24.gmail; Tue, 27 Oct
+ 2015 08:54:03 -0700 (PDT)
+X-Received: by 10.66.154.170 with SMTP id vp10mr18947512pab.29.1445961243690;
+        Tue, 27 Oct 2015 08:54:03 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id pe1si4316997pac.2.2015.10.27.08.54.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 03:33:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Tue, 27 Oct 2015 08:54:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pabrc13 with SMTP id rc13so51067323pab.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 03:33:11 -0700 (PDT)
+Received: by mail-pa0-x234.google.com with SMTP id z6so225931811pas.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 08:54:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=l9fwXdNqFLO6Hmp3NW8mAgWfv1G561QA34S/4qDzdvc=;
-        b=HQ658yj67FtDKun+vupPtunEoxuFesUpxJ9y8Prbdd/oTQv6B3WgNJAiXdHSUnqr2s
-         vAHlwGtkvqaZZ6vBJFifLM3hASpj4yEWSxxoBIjOv9xmP9SIp9bgUVJxbaLev7SiPfSI
-         ynDdJmrApCMOZ+s+udfziM1wZoaO0vd+t4vmA4Szf8WYrTxfTSHA9RHH7jYaYPkugNlR
-         WQJszwgGJ7I3Hg3htFGCBh7m1OPGjJTQ3ZUaTedYmcJR72br5DqfAoiXjYz81OoZBe2d
-         06TuWpq36RO+lMK0uOk+eVHfXOngI9QiUaGIS6z6dPaylNJvmOQzmEE0Z/DTGPeDgJ0e
-         5fCA==
-X-Received: by 10.66.193.162 with SMTP id hp2mr2966865pac.108.1444818791315;
-        Wed, 14 Oct 2015 03:33:11 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id si10sm8892875pab.15.2015.10.14.03.33.07
+        h=from:to:subject:date:message-id;
+        bh=HzjXaxh/el+Iu6eMQ5zKZWtb0kuCDpBwL2oHObHoqYg=;
+        b=uolJLpiOttmB1McjJlvNCv2tSXmMnAJckpuEaHVpRtlsX/jN52nCLXyEsVr2usbDDe
+         PJDINe97fx6IyQs6FHFt5BmBYlNU3vbZDMWIcfbbAqdDRiCdfnKotFl8M94XDKAHw5Z/
+         6eg03PnjoWq0oPfhgSElXiNnjAVR/fUQ0q97D/OUt96/cPKfeUAHTDyPU3qJB9SM8gcI
+         AVS0SYS6Keb9iQikpuiNQWErDgVwuxrXgrn8EQ11kntHhu9VqpJpnpQvB30noKncRngy
+         UMBjUn+dknzV8avV08pmiiPFPyqIFqbAdWx6VpqlGq6/HJWtmf0VimrAppskQnKEmLl0
+         V37Q==
+X-Received: by 10.66.161.35 with SMTP id xp3mr28854874pab.13.1445961243599;
+        Tue, 27 Oct 2015 08:54:03 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id bn1sm40540432pad.17.2015.10.27.08.53.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 03:33:10 -0700 (PDT)
-Date: Wed, 14 Oct 2015 16:02:56 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: rtl8723au: rtw_xmit: Remove unnecessary tests
-Message-ID: <20151014103256.GA4491@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 08:54:02 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] Staging: lustre: Remove unused lustre_lfsck_user.h file
+Date: Tue, 27 Oct 2015 21:23:46 +0530
+Message-Id: <1445961226-7196-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150206.562F9E1A.0037,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-The variables which are preceded by NULL tests on them should not be
-checked again.
-Semantic patch used:
-@@ expression E;
-statement S1, S2, S3; @@
-if(E==NULL) {... return ...;}
-else S1
-- if(E==NULL)
-  S2
-- else S3
+Remove the header file lustre_lfsck_user.h since it is not needed
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
-Changes in v2:
-	-Correct the semantic patch and make commit message better.
+ .../lustre/include/lustre/lustre_lfsck_user.h      | 95 ----------------------
+ 1 file changed, 95 deletions(-)
+ delete mode 100644 drivers/staging/lustre/lustre/include/lustre/lustre_lfsck_user.h
 
- drivers/staging/rtl8723au/core/rtw_xmit.c | 9 ---------
- 1 file changed, 9 deletions(-)
-
-diff --git a/drivers/staging/rtl8723au/core/rtw_xmit.c b/drivers/staging/rtl8723au/core/rtw_xmit.c
-index a4b6bb6..0ea521b 100644
---- a/drivers/staging/rtl8723au/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723au/core/rtw_xmit.c
-@@ -667,7 +667,6 @@ static int xmitframe_addmic(struct rtw_adapter *padapter,
- 
- 	if (pattrib->encrypt == WLAN_CIPHER_SUITE_TKIP) {
- 		/* encode mic code */
--		if (stainfo) {
- 			u8 null_key[16]={0x0, 0x0, 0x0, 0x0,
- 					 0x0, 0x0, 0x0, 0x0,
- 					 0x0, 0x0, 0x0, 0x0,
-@@ -792,10 +791,6 @@ static int xmitframe_addmic(struct rtw_adapter *padapter,
- 					 *(payload + curfragnum + 6),
- 					 *(payload + curfragnum + 7));
- 			}
--		} else {
--			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
--				 "xmitframe_addmic: rtw_get_stainfo23a ==NULL!!!\n");
--		}
- 	}
- 
- 	return _SUCCESS;
-@@ -934,7 +929,6 @@ static int rtw_make_wlanhdr(struct rtw_adapter *padapter, u8 *hdr,
- 		/* TODO: fill HT Control Field */
- 
- 		/* Update Seq Num will be handled by f/w */
--		if (psta) {
- 			psta->sta_xmitpriv.txseq_tid[pattrib->priority]++;
- 			psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 0xFFF;
- 			pattrib->seqnum = psta->sta_xmitpriv.txseq_tid[pattrib->priority];
-@@ -970,7 +964,6 @@ static int rtw_make_wlanhdr(struct rtw_adapter *padapter, u8 *hdr,
- 					pattrib->ampdu_en = true;/* AGG EN */
- 				}
- 			}
--		}
- 	}
- exit:
- 	return res;
-@@ -1132,7 +1125,6 @@ int rtw_xmitframe_coalesce23a(struct rtw_adapter *padapter, struct sk_buff *skb,
- 
- 		/* adding icv, if necessary... */
- 		if (pattrib->iv_len) {
--			if (psta) {
- 				switch (pattrib->encrypt) {
- 				case WLAN_CIPHER_SUITE_WEP40:
- 				case WLAN_CIPHER_SUITE_WEP104:
-@@ -1158,7 +1150,6 @@ int rtw_xmitframe_coalesce23a(struct rtw_adapter *padapter, struct sk_buff *skb,
- 						       psta->dot11txpn, 0);
- 					break;
- 				}
--			}
- 
- 			memcpy(pframe, pattrib->iv, pattrib->iv_len);
- 
+diff --git a/drivers/staging/lustre/lustre/include/lustre/lustre_lfsck_user.h b/drivers/staging/lustre/lustre/include/lustre/lustre_lfsck_user.h
+deleted file mode 100644
+index 1c87a61..0000000
+--- a/drivers/staging/lustre/lustre/include/lustre/lustre_lfsck_user.h
++++ /dev/null
+@@ -1,95 +0,0 @@
+-/*
+- * GPL HEADER START
+- *
+- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License version 2 only,
+- * as published by the Free Software Foundation.
+-
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License version 2 for more details.  A copy is
+- * included in the COPYING file that accompanied this code.
+-
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+- *
+- * GPL HEADER END
+- */
+-/*
+- * Copyright (c) 2012, Intel Corporation.
+- */
+-/*
+- * lustre/include/lustre/lustre_lfsck_user.h
+- *
+- * Lustre LFSCK userspace interfaces.
+- *
+- * Author: Fan Yong <yong.fan@whamcloud.com>
+- */
+-
+-#ifndef _LUSTRE_LFSCK_USER_H
+-# define _LUSTRE_LFSCK_USER_H
+-
+-enum lfsck_param_flags {
+-	/* Reset LFSCK iterator position to the device beginning. */
+-	LPF_RESET       = 0x0001,
+-
+-	/* Exit when fail. */
+-	LPF_FAILOUT     = 0x0002,
+-
+-	/* Dryrun mode, only check without modification */
+-	LPF_DRYRUN      = 0x0004,
+-};
+-
+-enum lfsck_type {
+-	/* For MDT-OST consistency check/repair. */
+-	LT_LAYOUT	= 0x0001,
+-
+-	/* For MDT-MDT consistency check/repair. */
+-	LT_DNE		= 0x0002,
+-
+-	/* For FID-in-dirent and linkEA consistency check/repair. */
+-	LT_NAMESPACE	= 0x0004,
+-};
+-
+-#define LFSCK_VERSION_V1	1
+-#define LFSCK_VERSION_V2	2
+-
+-#define LFSCK_TYPES_ALL		((__u16)(~0))
+-#define LFSCK_TYPES_DEF		((__u16)0)
+-#define LFSCK_TYPES_SUPPORTED	LT_NAMESPACE
+-
+-#define LFSCK_SPEED_NO_LIMIT	0
+-#define LFSCK_SPEED_LIMIT_DEF	LFSCK_SPEED_NO_LIMIT
+-
+-enum lfsck_start_valid {
+-	LSV_SPEED_LIMIT		= 0x00000001,
+-	LSV_ERROR_HANDLE	= 0x00000002,
+-	LSV_DRYRUN		= 0x00000004,
+-};
+-
+-/* Arguments for starting lfsck. */
+-struct lfsck_start {
+-	/* Which arguments are valid, see 'enum lfsck_start_valid'. */
+-	__u32   ls_valid;
+-
+-	/* How many items can be scanned at most per second. */
+-	__u32   ls_speed_limit;
+-
+-	/* For compatibility between user space tools and kernel service. */
+-	__u16   ls_version;
+-
+-	/* Which LFSCK components to be (have been) started. */
+-	__u16   ls_active;
+-
+-	/* Flags for the LFSCK, see 'enum lfsck_param_flags'. */
+-	__u16   ls_flags;
+-
+-	/* For 64-bits aligned. */
+-	__u16   ls_padding;
+-};
+-
+-#endif /* _LUSTRE_LFSCK_USER_H */
 -- 
-2.1.0
+2.1.4
 
 
