@@ -1,75 +1,74 @@
 X-GM-THRID: 6210349176655446016
-X-Received: by 10.112.140.202 with SMTP id ri10mr9598185lbb.10.1445959739348;
-        Tue, 27 Oct 2015 08:28:59 -0700 (PDT)
+X-Received: by 10.112.133.232 with SMTP id pf8mr462138lbb.20.1445959596861;
+        Tue, 27 Oct 2015 08:26:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.17.70 with SMTP id g67ls790238lfi.13.gmail; Tue, 27 Oct
- 2015 08:28:58 -0700 (PDT)
-X-Received: by 10.112.130.41 with SMTP id ob9mr9664306lbb.17.1445959738845;
-        Tue, 27 Oct 2015 08:28:58 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id bn7si623658wib.0.2015.10.27.08.28.58
+Received: by 10.25.42.76 with SMTP id q73ls411902lfq.72.gmail; Tue, 27 Oct
+ 2015 08:26:36 -0700 (PDT)
+X-Received: by 10.112.54.197 with SMTP id l5mr9663393lbp.21.1445959596097;
+        Tue, 27 Oct 2015 08:26:36 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-wi0-x243.google.com (mail-wi0-x243.google.com. [2a00:1450:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id h1si283862wiy.0.2015.10.27.08.26.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 08:28:58 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2015 08:26:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) client-ip=2a00:1450:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,205,1444687200"; 
-   d="scan'208";a="184690400"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Oct 2015 16:28:58 +0100
-Date: Tue, 27 Oct 2015 16:28:41 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Ioana Ciornei <ciorneiioana@gmail.com>
-cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: iio: change IRQ_HANDLED to
- IRQ_WAKE_THREAD
-In-Reply-To: <1445959587-25953-1-git-send-email-ciorneiioana@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510271627540.2370@hadrien>
-References: <1445959587-25953-1-git-send-email-ciorneiioana@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by wiut4 with SMTP id t4so28293636wiu.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 08:26:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=UDY8leoWH+l50vElhf5DsxkJL5wbDBWU9FxcjhBvVYw=;
+        b=hQkApdRbbB+TWYs610Dk94yUIBZDIryi1z+v+hVWFrcMJK2GwFDtYmFR6m63NjU7DJ
+         5W7NCdIN9tQmE8whIQpIGgfIv6R9sx+0GFF6b9z6lunrhONzuRSkDXUq43jztD862czX
+         hStEXZ6Lu7poEZB8p2Fuzw59DTjzTY0gcNHk5GVaAz1zz1ZRDDTMHwktUbjPG2f67gIh
+         T5Nz0jlsor/ASMTUxdLBvF+w1BEo0IoBP7cYytUQLuyjbs7S8ycIBPt2lRS6Wi/c/76I
+         lNu7ASBljc7SCzCRMDJjLAMJN/VrVg+u1YIbngFXx8ihmVw0wi663KHhmsGNlebfPm0Q
+         0ltw==
+X-Received: by 10.180.211.50 with SMTP id mz18mr28076230wic.65.1445959595956;
+        Tue, 27 Oct 2015 08:26:35 -0700 (PDT)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from localhost.localdomain ([141.85.114.141])
+        by smtp.gmail.com with ESMTPSA id ub15sm13460800wib.6.2015.10.27.08.26.35
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Oct 2015 08:26:35 -0700 (PDT)
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	linux-iio@vger.kernel.org
+Cc: Ioana Ciornei <ciorneiioana@gmail.com>
+Subject: [PATCH] staging: iio: change IRQ_HANDLED to IRQ_WAKE_THREAD
+Date: Tue, 27 Oct 2015 17:26:27 +0200
+Message-Id: <1445959587-25953-1-git-send-email-ciorneiioana@gmail.com>
+X-Mailer: git-send-email 2.1.4
 
-On Tue, 27 Oct 2015, Ioana Ciornei wrote:
+This patch changes the return value of the primary interrupt handler to
+IRQ_WAKE_THREAD in order to wake the kernel thread represented by the
+iio_simple_dummy_event_handler function and continue handling the event.
 
-> This patch changes the return value of the primary interrupt handler to
-> IRQ_WAKE_THREAD in order to wake the kernel thread represented by the
-> iio_simple_dummy_event_handler function and continue handling the event.
+Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+---
+ drivers/staging/iio/iio_simple_dummy_events.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Can you give some more justification about why that is the right thing to
-do?  Is it for example what other IIO drivers do in this situation?
+diff --git a/drivers/staging/iio/iio_simple_dummy_events.c b/drivers/staging/iio/iio_simple_dummy_events.c
+index bfbf1c5..6eb600f 100644
+--- a/drivers/staging/iio/iio_simple_dummy_events.c
++++ b/drivers/staging/iio/iio_simple_dummy_events.c
+@@ -159,7 +159,7 @@ static irqreturn_t iio_simple_dummy_get_timestamp(int irq, void *private)
+ 	struct iio_dummy_state *st = iio_priv(indio_dev);
+ 
+ 	st->event_timestamp = iio_get_time_ns();
+-	return IRQ_HANDLED;
++	return IRQ_WAKE_THREAD;
+ }
+ 
+ /**
+-- 
+2.1.4
 
-julia
-
-> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
-> ---
->  drivers/staging/iio/iio_simple_dummy_events.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/iio/iio_simple_dummy_events.c b/drivers/staging/iio/iio_simple_dummy_events.c
-> index bfbf1c5..6eb600f 100644
-> --- a/drivers/staging/iio/iio_simple_dummy_events.c
-> +++ b/drivers/staging/iio/iio_simple_dummy_events.c
-> @@ -159,7 +159,7 @@ static irqreturn_t iio_simple_dummy_get_timestamp(int irq, void *private)
->  	struct iio_dummy_state *st = iio_priv(indio_dev);
->
->  	st->event_timestamp = iio_get_time_ns();
-> -	return IRQ_HANDLED;
-> +	return IRQ_WAKE_THREAD;
->  }
->
->  /**
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1445959587-25953-1-git-send-email-ciorneiioana%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
