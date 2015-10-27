@@ -1,121 +1,134 @@
-X-GM-THRID: 6256406465172471808
-X-Received: by 10.182.227.137 with SMTP id sa9mr10276326obc.44.1456683144876;
-        Sun, 28 Feb 2016 10:12:24 -0800 (PST)
+X-GM-THRID: 6210234849248149504
+X-Received: by 10.129.109.148 with SMTP id i142mr32830171ywc.14.1445934762711;
+        Tue, 27 Oct 2015 01:32:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.18.194 with SMTP id 60ls1745673qgf.81.gmail; Sun, 28 Feb
- 2016 10:12:24 -0800 (PST)
-X-Received: by 10.140.252.131 with SMTP id x125mr1819486qhc.12.1456683144381;
-        Sun, 28 Feb 2016 10:12:24 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x243.google.com (mail-ig0-x243.google.com. [2607:f8b0:4001:c05::243])
-        by gmr-mx.google.com with ESMTPS id iq8si717277igb.0.2016.02.28.10.12.24
+Received: by 10.140.17.147 with SMTP id 19ls4047401qgd.23.gmail; Tue, 27 Oct
+ 2015 01:32:42 -0700 (PDT)
+X-Received: by 10.129.92.198 with SMTP id q189mr34798008ywb.40.1445934762129;
+        Tue, 27 Oct 2015 01:32:42 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id pe1si4026000pac.2.2015.10.27.01.32.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 10:12:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) client-ip=2607:f8b0:4001:c05::243;
+        Tue, 27 Oct 2015 01:32:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x243.google.com with SMTP id hb3so7520086igb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 10:12:24 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x233.google.com with SMTP id z6so215638867pas.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 01:32:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ZNQJa7ur74AHvQ4A7ZcdwB8M+a0WfvL+4noXStKKrvk=;
-        b=nLTjEZKXiMXRuoy43wkC6lTGVDHpwxmBz39hGNoijPfDh/3K1jef52jav+59/ItJxa
-         ajt6zLfDDpDIARj3LevwJ8pUoqSUP3WR+JO9wFJm+MOeaflRaIfMSDHVdlpFL/AG6nH9
-         JkPFzJWSZHZ0n1JADtVdY3E9VWkM2OOrfitjfP8Wj6yGqlDPczsTeoTuql1UEh/wVN1F
-         X7Rhl/QjE96oMV2xSDmprmm/GTWbg/3IUo0KDnzIIGXJIq0a+tUSlWlEoh65joZgni8g
-         EMY7bqTepJO/HiVe7R5xJ869h3zigd7Imzltbt15Vw0hfV19E8aVupkSZ6T4/ozoPyuF
-         Te4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=ZNQJa7ur74AHvQ4A7ZcdwB8M+a0WfvL+4noXStKKrvk=;
-        b=Ta+4OJN40Xr/CpJgpyQ1snTQBejBi2oASjDWF0QZzw62F+oJwuUgFXE68DbXJyx8jv
-         BRZs13MuYOMa1f062Lu1QvFm0NfHFCFEmK5KqI3Ormhu36Qycuv57Mh6BzXYu9vI8/Yw
-         YyE76Enmcs/0ntIaNtnU3Ngj4dL4ZrGC3UVfC4t8z9unyC6wkDrS8wajJVzzDqVXwaFm
-         rW7B9cbORC58kJM9bh2i5hMDD4U1Nbl8H3gH0+GfCHCdX1BVbyZXuSvKxe3+k3h/5Hyf
-         FpX8Hs0rtNY3/a/U/SF8Sm613MG2UywbfSC+a0ESD2r7FaMnlpLORGbeP/nhcG28klQq
-         pU5w==
-X-Gm-Message-State: AD7BkJKmQmlFdgIjjGBY6WisIJmTa2DDMNo08n6cx7exIhpA3aIwD6czmYLcQM8XUgeHFA==
-X-Received: by 10.50.43.134 with SMTP id w6mr6203116igl.22.1456683144200;
-        Sun, 28 Feb 2016 10:12:24 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id f70sm9437952ioj.37.2016.02.28.10.12.22
+        bh=nldjTrV7q7fQWGmidpJKVIEfr20lek8eArU+hnpdz5Y=;
+        b=mYC/TYJAc6NdzMko2GIWYX8kczf91DbzZPK5OuasC6NoD0g6OK/pP+qaA8eTqWhbSZ
+         LJN8V4dugG9FZKTVRBsXYL+Q59i449vRFniJNI1Buu5ppP/myjPfDoUrM6LJCxbfjQ7z
+         f1obtmSAoWyBmOgYSDH1sLjUrLTDeJSHVQ46mGJcbPm2qyOpIx37gvYYoLZiD6dcQH7h
+         3nX6dSKBV8Yx/JJk9RutwiMicOJGFr1LXNqXunkBQG4L5wWvkkhmbcCyJGdSbhWrD0qd
+         GV8mtmIebSoT2dhuiAhkkAmy9fq9wTegz2ZGvPY62H24t4PTpG0FNWQb9rQAQWFPXM+j
+         NB0g==
+X-Received: by 10.66.136.39 with SMTP id px7mr45398987pab.23.1445934761956;
+        Tue, 27 Oct 2015 01:32:41 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.162.184.86])
+        by smtp.gmail.com with ESMTPSA id xs2sm38135427pbb.75.2015.10.27.01.32.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 10:12:23 -0800 (PST)
-Date: Sun, 28 Feb 2016 18:11:23 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 01:32:41 -0700 (PDT)
+Date: Tue, 27 Oct 2015 14:02:37 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: rtl8723au: core: rtw_mlme.c: Prefer
- list_for_each_entry()
-Message-ID: <20160228231123.GA10086@janani-Inspiron-3521>
+Subject: [PATCH v2] staging: rtl8723au: core: Remove unnecessary functions
+Message-ID: <20151027083237.GA6312@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Use list_for_each_entry() rather than a combination of list_for_each()
-and container_of(). Also remove variable plist as it becomes useless after
-the transformation.
-Semantic patch:
+Drop functions that are declared but are not being used anywhere.
 
-@a@
-expression pos,  head;
-expression mem;
-type t;
-identifier var;
-iterator name list_for_each_entry, list_for_each;
-@@
-
-- list_for_each(pos, head)
-+ list_for_each_entry(var, head, mem)
-  {
-   ... when != var
--  var = \(list_entry \| container_of\)(pos, t, mem);
-   ... when != pos
-  }
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
-Changes since v2:
-  *Removed variable plist
-  *Changed semantic patch
+Changes in v2:
+        -Remove function callers
 
- drivers/staging/rtl8723au/core/rtw_mlme.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_ap.c | 37 ---------------------------------
+ 1 file changed, 37 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_mlme.c b/drivers/staging/rtl8723au/core/rtw_mlme.c
-index 3adda55..ae62f94e16 100644
---- a/drivers/staging/rtl8723au/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723au/core/rtw_mlme.c
-@@ -426,7 +426,7 @@ Caller must hold pmlmepriv->lock first.
- static void rtw_update_scanned_network(struct rtw_adapter *adapter,
- 				       struct wlan_bssid_ex *target)
- {
--	struct list_head *plist, *phead;
-+	struct list_head *phead;
- 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
- 	struct wlan_network *pnetwork = NULL;
- 	struct wlan_network *oldest = NULL;
-@@ -436,9 +436,7 @@ static void rtw_update_scanned_network(struct rtw_adapter *adapter,
+diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
+index a7c8b73..65a9df4 100644
+--- a/drivers/staging/rtl8723au/core/rtw_ap.c
++++ b/drivers/staging/rtl8723au/core/rtw_ap.c
+@@ -1135,11 +1135,6 @@ int rtw_acl_remove_sta23a(struct rtw_adapter *padapter, u8 *addr)
+ 	return 0;
+ }
  
- 	spin_lock_bh(&queue->lock);
- 	phead = get_list_head(queue);
--	list_for_each(plist, phead) {
--		pnetwork = container_of(plist, struct wlan_network, list);
+-static void update_bcn_fixed_ie(struct rtw_adapter *padapter)
+-{
+-	DBG_8723A("%s\n", __func__);
+-}
 -
-+	list_for_each_entry(pnetwork, phead, list) {
- 		if (is_same_network23a(&pnetwork->network, target)) {
- 			found = 1;
- 			break;
+ static void update_bcn_erpinfo_ie(struct rtw_adapter *padapter)
+ {
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+@@ -1173,21 +1168,6 @@ static void update_bcn_erpinfo_ie(struct rtw_adapter *padapter)
+ 	}
+ }
+ 
+-static void update_bcn_htcap_ie(struct rtw_adapter *padapter)
+-{
+-	DBG_8723A("%s\n", __func__);
+-}
+-
+-static void update_bcn_htinfo_ie(struct rtw_adapter *padapter)
+-{
+-	DBG_8723A("%s\n", __func__);
+-}
+-
+-static void update_bcn_rsn_ie(struct rtw_adapter *padapter)
+-{
+-	DBG_8723A("%s\n", __func__);
+-}
+-
+ static void update_bcn_wpa_ie(struct rtw_adapter *padapter)
+ {
+ 	DBG_8723A("%s\n", __func__);
+@@ -1244,11 +1224,6 @@ void update_beacon23a(struct rtw_adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
+ 	spin_lock_bh(&pmlmepriv->bcn_update_lock);
+ 
+ 	switch (ie_id) {
+-	case 0xFF:
+-		/* 8: TimeStamp, 2: Beacon Interval 2:Capability */
+-		update_bcn_fixed_ie(padapter);
+-		break;
+-
+ 	case WLAN_EID_TIM:
+ 		update_BCNTIM(padapter);
+ 		break;
+@@ -1257,18 +1232,6 @@ void update_beacon23a(struct rtw_adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
+ 		update_bcn_erpinfo_ie(padapter);
+ 		break;
+ 
+-	case WLAN_EID_HT_CAPABILITY:
+-		update_bcn_htcap_ie(padapter);
+-		break;
+-
+-	case WLAN_EID_RSN:
+-		update_bcn_rsn_ie(padapter);
+-		break;
+-
+-	case WLAN_EID_HT_OPERATION:
+-		update_bcn_htinfo_ie(padapter);
+-		break;
+-
+ 	case WLAN_EID_VENDOR_SPECIFIC:
+ 		update_bcn_vendor_spec_ie(padapter, oui);
+ 		break;
 -- 
-2.5.0
+1.9.1
 
 
