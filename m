@@ -1,94 +1,102 @@
-X-GM-THRID: 1851894267904
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,6fd1f02eee315fcc,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.88.40 with SMTP id bd8mr322008lab.0.1424529504685;
-        Sat, 21 Feb 2015 06:38:24 -0800 (PST)
+X-GM-THRID: 6210775302197477376
+X-Received: by 10.140.235.193 with SMTP id g184mr31037792qhc.10.1446058811488;
+        Wed, 28 Oct 2015 12:00:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.198.231 with SMTP id jf7ls389476lac.92.gmail; Sat, 21 Feb
- 2015 06:38:24 -0800 (PST)
-X-Received: by 10.152.37.200 with SMTP id a8mr317661lak.5.1424529504217;
-        Sat, 21 Feb 2015 06:38:24 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x243.google.com (mail-wi0-x243.google.com. [2a00:1450:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id o3si309170wib.2.2015.02.21.06.38.24
+Received: by 10.140.41.100 with SMTP id y91ls5451620qgy.7.gmail; Wed, 28 Oct
+ 2015 12:00:10 -0700 (PDT)
+X-Received: by 10.13.209.70 with SMTP id t67mr41196486ywd.46.1446058810811;
+        Wed, 28 Oct 2015 12:00:10 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id pe1si5082343pac.2.2015.10.28.12.00.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 06:38:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) client-ip=2a00:1450:400c:c05::243;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 12:00:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x243.google.com with SMTP id bs8so3601622wib.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 06:38:24 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x235.google.com with SMTP id hk11so14806891pad.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 12:00:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=eFh47EZ8f9YG2mdaoHK01+F01rS77SMtCEkNYKtiJVs=;
-        b=GBqVOclXP21R1m1+9YwGCEbkqWa7J5BFtuD520MYULbO+mWgFJLvJ73nOHO5eJutTL
-         O8uvFJYtqChwj9nL7JRZaMprTZf+OZBsrP+GDGnODlwSlS/72TknzWVRU+a4lWRpe4Ur
-         ES9/IV9+zcv0NQ5ULg+2L/9VLZCVU9CYMmpa1418MMOR/UvI1ugN4mJnzSJlhaz8FFoI
-         0yAu2EXlStUwiLBtZRfh5XhRJV/qP1+mJiI/j61bRbMutLJ3vnzOE3T8HvCcGVlZf0UN
-         TDdEY8D2BeWFu9ZWcsYykitI4DTDXR833IZpnp+HuMOHLFtw8I6MpB6DPfp+OeVSzU9o
-         FDhQ==
-X-Received: by 10.194.58.84 with SMTP id o20mr5193113wjq.75.1424529504125;
-        Sat, 21 Feb 2015 06:38:24 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id qo10sm46879237wjc.38.2015.02.21.06.38.23
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 06:38:23 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=wx2tlPn9ihY4CRUwUvcAL91vnDGU6jckqLMCgXoZZmw=;
+        b=za95wGgWHu3/h9rahBZT/TWXapA0bt1j7Gyviyink2bfgfK720LtxRHd7Mf6gk1Xy3
+         5D6e2izAqbZgczRyM+pU0K5ysgXcFH4WAu6VhHrJ6a9picJywwNbMpI2CD26bFjUfzoG
+         S7ORXGTpKHKcLXukN5DXSSrjMBQt+4MKRldX8qQCM/K9c7TaP2YyPmodvvucgCeAgRf9
+         2VidIMZy2ZLp6is5Hmh0qFnmmu1bha5ukUuub5KO/crMjwR4tbaCFLvFJMlQxx2A3WxE
+         4l//McbS6KXHLXDxoxJZseKrgWoTMViytNMfJQXlRrd3RuccOnE3mXbvIY0NZzHURKpW
+         W2Og==
+X-Received: by 10.68.217.102 with SMTP id ox6mr36794581pbc.146.1446058810662;
+        Wed, 28 Oct 2015 12:00:10 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id d2sm31852150pat.24.2015.10.28.12.00.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 12:00:09 -0700 (PDT)
+Date: Thu, 29 Oct 2015 00:30:01 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8188eu: core: Add blank line
-Date: Sat, 21 Feb 2015 16:38:16 +0200
-Message-Id: <1424529496-16682-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] Staging: wilc1000: wilc_wfi_cfgoperations: Remove irrelevant
+ wrapper function
+Message-ID: <20151028190001.GA24637@ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-It should be noted that to be added to the blank line after per
-overtrick.
-This warning found with checkpatch.pl
+Remove the wrapper function WILC_WFI_add_wilcvendorspec() and replace
+its call with memcpy().
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_pwrctrl.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 20 +++++---------------
+ 1 file changed, 5 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-index 076d38c..cfc404f 100644
---- a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-@@ -284,6 +284,7 @@ exit:
- static void pwr_state_check_handler(void *FunctionContext)
- {
- 	struct adapter *padapter = FunctionContext;
-+
- 	rtw_ps_cmd(padapter);
+diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+index ac32d2b..7a03b0d 100644
+--- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
++++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+@@ -2180,20 +2180,6 @@ static int cancel_remain_on_channel(struct wiphy *wiphy,
+ 	return s32Error;
  }
+ /**
+- *  @brief       WILC_WFI_add_wilcvendorspec
+- *  @details    Adding WILC information elemet to allow two WILC devices to
+- *                              identify each other and connect
+- *  @param[in]   u8 * buf
+- *  @return     void
+- *  @author	mdaftedar
+- *  @date	01 JAN 2014
+- *  @version	1.0
+- */
+-void WILC_WFI_add_wilcvendorspec(u8 *buff)
+-{
+-	memcpy(buff, u8P2P_vendorspec, sizeof(u8P2P_vendorspec));
+-}
+-/**
+  *  @brief      WILC_WFI_mgmt_tx_frame
+  *  @details
+  *
+@@ -2316,7 +2302,11 @@ static int mgmt_tx(struct wiphy *wiphy,
+ 								}
  
-@@ -548,8 +549,10 @@ void rtw_init_pwrctrl_priv(struct adapter *padapter)
- }
- 
- inline void rtw_set_ips_deny(struct adapter *padapter, u32 ms)
-+
- {
- 	struct pwrctrl_priv *pwrpriv = &padapter->pwrctrlpriv;
-+
- 	pwrpriv->ips_deny_time = jiffies + msecs_to_jiffies(ms);
- }
- 
-@@ -573,6 +576,7 @@ int _rtw_pwr_wakeup(struct adapter *padapter, u32 ips_deffer_ms, const char *cal
- 
- {
- 	u32 start = jiffies;
-+
- 	if (pwrpriv->ps_processing) {
- 		DBG_88E("%s wait ps_processing...\n", __func__);
- 		while (pwrpriv->ps_processing && rtw_get_passing_time_ms(start) <= 3000)
+ 								if (buf[P2P_PUB_ACTION_SUBTYPE] != P2P_INV_REQ && buf[P2P_PUB_ACTION_SUBTYPE] != P2P_INV_RSP) {
+-									WILC_WFI_add_wilcvendorspec(&mgmt_tx->buff[len]);
++									/*
++									 * Adding WILC information element to allow two WILC devices to
++									 * identify each other and connect
++									 */
++									memcpy(&mgmt_tx->buff[len], u8P2P_vendorspec, sizeof(u8P2P_vendorspec));
+ 									mgmt_tx->buff[len + sizeof(u8P2P_vendorspec)] = u8P2Plocalrandom;
+ 									mgmt_tx->size = buf_len;
+ 								}
 -- 
-1.9.1
+2.1.0
 
 
