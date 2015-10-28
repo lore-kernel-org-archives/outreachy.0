@@ -1,76 +1,76 @@
 X-GM-THRID: 6210663897171492864
-X-Received: by 10.107.164.233 with SMTP id d102mr39148444ioj.13.1446037845069;
-        Wed, 28 Oct 2015 06:10:45 -0700 (PDT)
+X-Received: by 10.66.221.42 with SMTP id qb10mr25448520pac.35.1446037534992;
+        Wed, 28 Oct 2015 06:05:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.38 with SMTP id b35ls472278qgf.96.gmail; Wed, 28 Oct
- 2015 06:10:44 -0700 (PDT)
-X-Received: by 10.13.236.135 with SMTP id v129mr42896602ywe.9.1446037844454;
-        Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+Received: by 10.182.113.131 with SMTP id iy3ls2171876obb.93.gmail; Wed, 28 Oct
+ 2015 06:05:34 -0700 (PDT)
+X-Received: by 10.182.52.226 with SMTP id w2mr39627403obo.40.1446037534398;
+        Wed, 28 Oct 2015 06:05:34 -0700 (PDT)
 Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id vy6si4760391pbc.1.2015.10.28.06.10.44
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id pe1si4880274pac.2.2015.10.28.06.05.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Wed, 28 Oct 2015 06:05:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pacfv9 with SMTP id fv9so7320250pac.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id hy1so1013047pad.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 06:05:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:content-transfer-encoding
-         :in-reply-to:user-agent;
-        bh=qNYqMjdIxEnMn8aAO5FHLmVDDWkqG92FNYSu6+zKh/w=;
-        b=bHhRRIBOFo+hwreT+9vDmVCKnUtta/mlCyxXdM7Sdl++fISOLBXuU5QiebqKivnAgT
-         0NUal2sRE+8jE2IkPfXF3McLN3Yv+AmYq5lYPkwQKon+t4MSMk/QhLiSOg0/Y3Gn6yKB
-         YIWvLkT648ZrosVDe2Qr3BnbRjVuvFbo1c4iST9aNNelhb9WcanEui108orzwWPTnzI/
-         VuwS46y/G8Intzd4Gz/US+qxpKReLCf0Km3DgfGU2dVvEHZAydo0yELCN9Yd/jiESRk6
-         Pj3AlwCGLeIDjuOYfPMtnPRX+rKVheIs7cguuMt/ZvDKwdnNb+cGP36rx08FOR1/JQqU
-         42XQ==
-X-Received: by 10.67.8.101 with SMTP id dj5mr34134292pad.127.1446037844262;
-        Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=MWMllBMd1hwaCuqBLP2UU2bA4nIzuZq9c1l3LsNFpwc=;
+        b=PGk0BTbb8L9vtwBi+qpca5jWyPSoOlamnQdbwXjrQhmq2XTEDdgyV8ofZ289RB8cuU
+         HaoCG8QKqYu5ZBSs2KoaHzTo8SHKxugUW0c1ORfVptLj7FiXCEm1BciQ2M0FSQcsH4eg
+         Jy/T1Scbt+wb62vZbfGJHeiUsgaGRslKTa65cH49umvkwVmWYEXuLsGkqWvmdBiOTPgp
+         vaepUW7xRrdTPp+H6PKQLhHMgljbKDajYtRPWJWVmGbOcNY3+LXSbq8142S4JUpgsjm9
+         jil4k9VIFUYhqpV7fZXCdHxuGzFgoKY6mmF/lTVZdz+lOAXMpJEO2QXl7nHAb9WlVEtt
+         2Mbg==
+X-Received: by 10.66.156.169 with SMTP id wf9mr33947110pab.91.1446037534216;
+        Wed, 28 Oct 2015 06:05:34 -0700 (PDT)
 Return-Path: <sudipm.mukherjee@gmail.com>
 Received: from sudip-pc ([122.169.155.175])
-        by smtp.gmail.com with ESMTPSA id ff2sm34985159pac.14.2015.10.28.06.10.42
+        by smtp.gmail.com with ESMTPSA id ug4sm45602245pac.11.2015.10.28.06.05.32
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 28 Oct 2015 06:10:43 -0700 (PDT)
-Date: Wed, 28 Oct 2015 18:40:19 +0530
+        Wed, 28 Oct 2015 06:05:33 -0700 (PDT)
+Date: Wed, 28 Oct 2015 18:35:03 +0530
 From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 To: Shivani Bhardwaj <shivanib134@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 3/3] Staging: wilc1000: linux_wlan:
- Replace function calls
-Message-ID: <20151028131019.GB16810@sudip-pc>
+Subject: Re: [Outreachy kernel] [PATCH v2 1/3] Staging: wilc1000:
+ linux_wlan_sdio: Drop unneeded wrapper functions
+Message-ID: <20151028130503.GA16810@sudip-pc>
 References: <cover.1446032441.git.shivanib134@gmail.com>
- <f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
+ <5a66436fde0503739c5a6e99c6cc5c9c2c2a7cbf.1446032441.git.shivanib134@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
+In-Reply-To: <5a66436fde0503739c5a6e99c6cc5c9c2c2a7cbf.1446032441.git.shivanib134@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Wed, Oct 28, 2015 at 05:19:04PM +0530, Shivani Bhardwaj wrote:
-> Replace calls to wrapper functions with the actual functions called by
-> wrapper functions. Definitions needed to make those calls should also be added.
+On Wed, Oct 28, 2015 at 05:18:21PM +0530, Shivani Bhardwaj wrote:
+> Remove the functions linux_sdio_get_speed(), linux_sdio_set_max_speed()
+> and linux_sdio_set_default_speed(). Replace their calls with appropriate
+> functions. Also, definitions associated with these functions should be
+> removed.
 > 
 > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 > ---
 
-Not build tested. :(
+You have not build tested it.
+WARNING: "linux_sdio_set_default_speed" [drivers/staging/wilc1000/wilc1000.ko] undefined!
+WARNING: "linux_sdio_set_max_speed" [drivers/staging/wilc1000/wilc1000.ko] undefined!
 
-error: implicit declaration of function ‘linux_sdio_set_speed’ [-Werror=implicit-function-declaration]
-  nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_speed(MAX_SPEED);
+We have:
+wilc1000/linux_wlan.c:  nwi->io_func.u.sdio.sdio_set_default_speed = linux_sdio_set_default_speed;
 
-drivers/staging/wilc1000/linux_wlan.c:990:41: warning: assignment makes pointer from integer without a cast [enabled by default]
-  nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_speed(MAX_SPEED);
-
-drivers/staging/wilc1000/linux_wlan.c:991:68: error: ‘sdio_default_speed’ undeclared (first use in this function)
+and also:
+nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_max_speed;
 
 regards
 sudip
