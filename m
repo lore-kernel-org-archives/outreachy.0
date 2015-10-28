@@ -1,99 +1,77 @@
 X-GM-THRID: 6210663897171492864
-X-Received: by 10.180.82.101 with SMTP id h5mr608876wiy.5.1446040116189;
-        Wed, 28 Oct 2015 06:48:36 -0700 (PDT)
+X-Received: by 10.107.164.233 with SMTP id d102mr39148444ioj.13.1446037845069;
+        Wed, 28 Oct 2015 06:10:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.79.6 with SMTP id d6ls777104lfb.47.gmail; Wed, 28 Oct 2015
- 06:48:35 -0700 (PDT)
-X-Received: by 10.112.63.165 with SMTP id h5mr10841059lbs.18.1446040115466;
-        Wed, 28 Oct 2015 06:48:35 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id s134si110896wmb.3.2015.10.28.06.48.35
+Received: by 10.140.105.38 with SMTP id b35ls472278qgf.96.gmail; Wed, 28 Oct
+ 2015 06:10:44 -0700 (PDT)
+X-Received: by 10.13.236.135 with SMTP id v129mr42896602ywe.9.1446037844454;
+        Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id vy6si4760391pbc.1.2015.10.28.06.10.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 06:48:35 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,210,1444687200"; 
-   d="scan'208";a="184855847"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Oct 2015 14:48:35 +0100
-Date: Wed, 28 Oct 2015 14:48:17 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pacfv9 with SMTP id fv9so7320250pac.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=qNYqMjdIxEnMn8aAO5FHLmVDDWkqG92FNYSu6+zKh/w=;
+        b=bHhRRIBOFo+hwreT+9vDmVCKnUtta/mlCyxXdM7Sdl++fISOLBXuU5QiebqKivnAgT
+         0NUal2sRE+8jE2IkPfXF3McLN3Yv+AmYq5lYPkwQKon+t4MSMk/QhLiSOg0/Y3Gn6yKB
+         YIWvLkT648ZrosVDe2Qr3BnbRjVuvFbo1c4iST9aNNelhb9WcanEui108orzwWPTnzI/
+         VuwS46y/G8Intzd4Gz/US+qxpKReLCf0Km3DgfGU2dVvEHZAydo0yELCN9Yd/jiESRk6
+         Pj3AlwCGLeIDjuOYfPMtnPRX+rKVheIs7cguuMt/ZvDKwdnNb+cGP36rx08FOR1/JQqU
+         42XQ==
+X-Received: by 10.67.8.101 with SMTP id dj5mr34134292pad.127.1446037844262;
+        Wed, 28 Oct 2015 06:10:44 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([122.169.155.175])
+        by smtp.gmail.com with ESMTPSA id ff2sm34985159pac.14.2015.10.28.06.10.42
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Wed, 28 Oct 2015 06:10:43 -0700 (PDT)
+Date: Wed, 28 Oct 2015 18:40:19 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 To: Shivani Bhardwaj <shivanib134@gmail.com>
-cc: outreachy-kernel@googlegroups.com
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2 3/3] Staging: wilc1000: linux_wlan:
  Replace function calls
-In-Reply-To: <f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510281447310.2456@hadrien>
-References: <cover.1446032441.git.shivanib134@gmail.com> <f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Message-ID: <20151028131019.GB16810@sudip-pc>
+References: <cover.1446032441.git.shivanib134@gmail.com>
+ <f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Wed, 28 Oct 2015, Shivani Bhardwaj wrote:
-
+On Wed, Oct 28, 2015 at 05:19:04PM +0530, Shivani Bhardwaj wrote:
 > Replace calls to wrapper functions with the actual functions called by
 > wrapper functions. Definitions needed to make those calls should also be added.
-
-The second sentence of the commit message is not clear.  When you say
-"should be" it gives the impression that you expect someone else to do it.
-So it would be better to say "are added".
-
-julia
-
->
+> 
 > Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 > ---
-> Changes in v2:
->         -Break the patch 1/2 of v1 into two for clarity
->
->  drivers/staging/wilc1000/linux_wlan.c | 15 +++++++++++++--
->  1 file changed, 13 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-> index 9f899da..fbc3584 100644
-> --- a/drivers/staging/wilc1000/linux_wlan.c
-> +++ b/drivers/staging/wilc1000/linux_wlan.c
-> @@ -45,6 +45,17 @@
->   #define _linux_wlan_device_removal()		{}
->  #endif
->
-> +#if defined(CUSTOMER_PLATFORM)
-> +/* TODO : User have to stable bus clock as user's environment. */
-> +#ifdef MAX_BUS_SPEED
-> +#define MAX_SPEED MAX_BUS_SPEED
-> +#else
-> +#define MAX_SPEED 50000000
-> +#endif
-> +#else
-> +#define MAX_SPEED (6 * 1000000) /* Max 50M */
-> +#endif
-> +
->  extern bool g_obtainingIP;
->  extern u16 Set_machw_change_vir_if(bool bValue);
->  extern void resolve_disconnect_aberration(void *drvHandler);
-> @@ -976,8 +987,8 @@ void linux_to_wlan(wilc_wlan_inp_t *nwi, struct wilc *nic)
->  	nwi->io_func.io_deinit = linux_sdio_deinit;
->  	nwi->io_func.u.sdio.sdio_cmd52 = linux_sdio_cmd52;
->  	nwi->io_func.u.sdio.sdio_cmd53 = linux_sdio_cmd53;
-> -	nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_max_speed;
-> -	nwi->io_func.u.sdio.sdio_set_default_speed = linux_sdio_set_default_speed;
-> +	nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_speed(MAX_SPEED);
-> +	nwi->io_func.u.sdio.sdio_set_default_speed = linux_sdio_set_speed(sdio_default_speed);
->  #else
->  	nwi->io_func.io_type = HIF_SPI;
->  	nwi->io_func.io_init = linux_spi_init;
-> --
-> 2.1.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+
+Not build tested. :(
+
+error: implicit declaration of function ‘linux_sdio_set_speed’ [-Werror=implicit-function-declaration]
+  nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_speed(MAX_SPEED);
+
+drivers/staging/wilc1000/linux_wlan.c:990:41: warning: assignment makes pointer from integer without a cast [enabled by default]
+  nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_speed(MAX_SPEED);
+
+drivers/staging/wilc1000/linux_wlan.c:991:68: error: ‘sdio_default_speed’ undeclared (first use in this function)
+
+regards
+sudip
 
