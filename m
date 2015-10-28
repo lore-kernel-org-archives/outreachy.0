@@ -1,81 +1,137 @@
 X-GM-THRID: 6210573207264559104
-X-Received: by 10.112.134.129 with SMTP id pk1mr854350lbb.24.1446676134145;
-        Wed, 04 Nov 2015 14:28:54 -0800 (PST)
+X-Received: by 10.107.159.72 with SMTP id i69mr16528857ioe.23.1446011757126;
+        Tue, 27 Oct 2015 22:55:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.170.130 with SMTP id t124ls243569lfe.7.gmail; Wed, 04 Nov
- 2015 14:28:53 -0800 (PST)
-X-Received: by 10.112.209.73 with SMTP id mk9mr856361lbc.14.1446676133604;
-        Wed, 04 Nov 2015 14:28:53 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by gmr-mx.google.com with ESMTPS id t72si930154wme.0.2015.11.04.14.28.53
+Received: by 10.182.24.195 with SMTP id w3ls2366027obf.75.gmail; Tue, 27 Oct
+ 2015 22:55:56 -0700 (PDT)
+X-Received: by 10.182.24.42 with SMTP id r10mr38052066obf.42.1446011756663;
+        Tue, 27 Oct 2015 22:55:56 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id el2si4649460pbb.0.2015.10.27.22.55.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Nov 2015 14:28:53 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
+        Tue, 27 Oct 2015 22:55:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue002) with ESMTPSA (Nemesis) id 0Mep7w-1a5CO43JPM-00OIe5; Wed, 04 Nov
- 2015 23:28:52 +0100
-From: Arnd Bergmann <arnd@arndb.de>
-To: y2038@lists.linaro.org
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH] staging: gdm72xx: gdm_stdio: Replace timeval with ktime_t
-Date: Wed, 04 Nov 2015 23:28:52 +0100
-Message-ID: <4688460.3Iu6Snb5je@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151028055552.GA14174@amitoj-Inspiron-3542>
-References: <20151028055552.GA14174@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x234.google.com with SMTP id la5so52992832pab.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 22:55:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=KZ1vSgXWDCLAxYO59ZeKPxyT7l5mwA9AwNmxkllGCxo=;
+        b=NUDS6CWCSTxS6+H4fpgJHl/RoVY5zOylw5alFSBjkdDEUQB2lr5LVgfpclJtKSdWBI
+         O66cPaGO9ZG9GioCixyyjE1YdpNU27GmpDYUCjNZS6FQ/6/xtOVYhx//bjp6mK/rGhXl
+         AwiEv7Ot4gF2lFu7FGa+IiDwQT0tAJNH/68p5/PAQDEMVZOkcvAkIloQOypUmEH9zrX2
+         sjUMdX1EbY6epVPgUvsO4T6c2a/t5dekA+uD51JW3QrvVuy8uuQsOjMsrdjjFbU0l6tI
+         UsQSJ/5XyD066C6oB0KRJsIY61a9vpu9abIxY//MiyRHJeUhqT+kRP7XHbrafuAU+c2k
+         ZxfA==
+X-Received: by 10.68.57.129 with SMTP id i1mr51265279pbq.51.1446011756476;
+        Tue, 27 Oct 2015 22:55:56 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.204.253])
+        by smtp.gmail.com with ESMTPSA id xe9sm6885526pbc.4.2015.10.27.22.55.55
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 22:55:56 -0700 (PDT)
+Date: Wed, 28 Oct 2015 11:25:52 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: y2038@lists.linaro.org
+Subject: [PATCH] staging: gdm72xx: gdm_stdio: Replace timeval with ktime_t
+Message-ID: <20151028055552.GA14174@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:sQcT5k7jZ/XpQicfISUsp8ukdS5UDaD/Zusf5KmeBM0SbHxg2Zh
- y0lPVa0p2Bm6Ol5yidQSL6ikEnJpnpm08vNLubI6TjjetUsIffMv6R5qBOnuaDi4kRCSk14
- zOIibD/NbyKyJHdy8N06nktL1D4XduC7+B51Hc6q7uvezHcFUjJaVgYA2fV+MgHjnDDNAZl
- jj8m7C6+Ss4xaE42zzmZA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:ebuNWOiBjPA=:I3FkjVsGcCgPf1IsMa8ew/
- 00iuAm0TGGEfCev4dBIUgb2OwKThJMC9v2JROtxQRjYkgH/L3lGwRm4M0aQsuzrdu4FbB2E6m
- v1TXHzwJFso+VXwo1UkGH/4M5Sr5pdFKstM5B/WkJvhWpdg9fsxvHP1d7Pc6QIABEV0GIWf1d
- uPOTQwOGbSsnBLOVNFW657arNCxNr9DGq4XvCuoq+7+cJKYkmH1KaL6y01I/jOhAUXlpMUI5j
- z79dq6f3OFwkRUYlkO5xk0tX+WLkvUMkhPSbovPrIJRjuDdDN9ButyqzOXVGJc6uoKh/mAIrq
- 5ZtbfcNjGsAQIcZMft0tuEQlugs1T9GWwkiC6Xsh65uysVpymmtkNuw0cGphdXUtnBVZxO+gq
- HTB2eQUf1K1VJ2GWWnKY1VzTkD/0LNcaWmXOJ67BQsEcyesLYlBdlVjJa613Jcdg6C483m3t4
- CZxvxVnUDbYAntffIb15iKmBkSDNBJBQTZhe7HHQlGEPmbAWOFdusCIFQ/jejgP+ba4bgo+gY
- x9TYP3gMPAq3licPghS2XWUsGRtF+0wQ/JVXNaI/jZdQYpow0IloEM2TXuHfY5pHitk3IPctL
- NosC3KCgyl0HXsfTO9rETwFxY7oOCcz2MQVPljXs859z08mNU0+sAS9CtGGwPvhpAYCZWXR6+
- +DxBOAfgtb4mzjKIiXcifxiUmNacn7oXQGFdkNP9WAR8ZH5hm9iKAxhzBw+ltixaLMF7FTJnW
- Qwhu3VvRmByc99/Z
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Wednesday 28 October 2015 11:25:52 Amitoj Kaur Chawla wrote:
-> This driver uses 'struct timeval' which we are trying to remove since
-> 32 bit time types will break in the year 2038 by replacing it with
-> ktime_t.
-> 
-> This patch changes do_gettimeofday() to ktime_get() because
-> ktime_get() returns a ktime_t while do_gettimeofday() returns struct
-> timeval.
-> 
-> This patch also uses ktime_us_delta() to get the elapsed time.
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+This driver uses 'struct timeval' which we are trying to remove since
+32 bit time types will break in the year 2038 by replacing it with
+ktime_t.
 
-The patch looks great, except for one important detail:
+This patch changes do_gettimeofday() to ktime_get() because
+ktime_get() returns a ktime_t while do_gettimeofday() returns struct
+timeval.
 
->         } else if (!tx->stop_sdu_tx && !list_empty(&tx->sdu_list)) {
-> -               do_gettimeofday(&now);
-> +               now = ktime_get();
->                 before = &tx->sdu_stamp;
->  
-> -               diff = (now.tv_sec - before->tv_sec) * 1000000 +
-> -                       (now.tv_usec - before->tv_usec);
-> +               diff = ktime_us_delta(now, before);
->                 if (diff >= 0 && diff < TX_INTERVAL) {
->                         schedule_work(&sdev->ws);
->                         spin_unlock_irqrestore(&tx->lock, flags);
+This patch also uses ktime_us_delta() to get the elapsed time.
 
-This will not compile. Something must have gone wrong with your build
-testing, otherwise you would have surely found the problem.
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/gdm72xx/gdm_sdio.c | 10 +++++-----
+ drivers/staging/gdm72xx/gdm_sdio.h |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-	Arnd
+diff --git a/drivers/staging/gdm72xx/gdm_sdio.c b/drivers/staging/gdm72xx/gdm_sdio.c
+index b0521da..1a2a5a4 100644
+--- a/drivers/staging/gdm72xx/gdm_sdio.c
++++ b/drivers/staging/gdm72xx/gdm_sdio.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
+ #include <linux/init.h>
+ #include <linux/kernel.h>
++#include <linux/ktime.h>
+ 
+ #include <linux/mmc/core.h>
+ #include <linux/mmc/card.h>
+@@ -303,7 +304,7 @@ static void send_sdu(struct sdio_func *func, struct tx_cxt *tx)
+ 		put_tx_struct(t->tx_cxt, t);
+ 	}
+ 
+-	do_gettimeofday(&tx->sdu_stamp);
++	tx->sdu_stamp = ktime_get();
+ 	spin_unlock_irqrestore(&tx->lock, flags);
+ }
+ 
+@@ -330,7 +331,7 @@ static void do_tx(struct work_struct *work)
+ 	struct sdio_func *func = sdev->func;
+ 	struct tx_cxt *tx = &sdev->tx;
+ 	struct sdio_tx *t = NULL;
+-	struct timeval now, *before;
++	ktime_t now, *before;
+ 	int is_sdu = 0;
+ 	long diff;
+ 	unsigned long flags;
+@@ -346,11 +347,10 @@ static void do_tx(struct work_struct *work)
+ 		list_del(&t->list);
+ 		is_sdu = 0;
+ 	} else if (!tx->stop_sdu_tx && !list_empty(&tx->sdu_list)) {
+-		do_gettimeofday(&now);
++		now = ktime_get();
+ 		before = &tx->sdu_stamp;
+ 
+-		diff = (now.tv_sec - before->tv_sec) * 1000000 +
+-			(now.tv_usec - before->tv_usec);
++		diff = ktime_us_delta(now, before);
+ 		if (diff >= 0 && diff < TX_INTERVAL) {
+ 			schedule_work(&sdev->ws);
+ 			spin_unlock_irqrestore(&tx->lock, flags);
+diff --git a/drivers/staging/gdm72xx/gdm_sdio.h b/drivers/staging/gdm72xx/gdm_sdio.h
+index 77ad9d6..aa7dad2 100644
+--- a/drivers/staging/gdm72xx/gdm_sdio.h
++++ b/drivers/staging/gdm72xx/gdm_sdio.h
+@@ -15,7 +15,7 @@
+ #define __GDM72XX_GDM_SDIO_H__
+ 
+ #include <linux/types.h>
+-#include <linux/time.h>
++#include <linux/ktime.h>
+ 
+ #define MAX_NR_SDU_BUF  64
+ 
+@@ -32,7 +32,7 @@ struct tx_cxt {
+ 	struct list_head	free_list;
+ 	struct list_head	sdu_list;
+ 	struct list_head	hci_list;
+-	struct timeval		sdu_stamp;
++	ktime_t			sdu_stamp;
+ 	u8			*sdu_buf;
+ 	spinlock_t		lock;
+ 	int			can_send;
+-- 
+1.9.1
+
 
