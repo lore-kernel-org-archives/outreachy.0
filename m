@@ -1,84 +1,119 @@
 X-GM-THRID: 6210663897171492864
-X-Received: by 10.112.162.169 with SMTP id yb9mr3254200lbb.15.1446048592645;
-        Wed, 28 Oct 2015 09:09:52 -0700 (PDT)
+X-Received: by 10.112.142.195 with SMTP id ry3mr11001456lbb.22.1446048460932;
+        Wed, 28 Oct 2015 09:07:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.23.129 with SMTP id 123ls149376wmx.15.gmail; Wed, 28 Oct
- 2015 09:09:52 -0700 (PDT)
-X-Received: by 10.28.55.209 with SMTP id e200mr415454wma.1.1446048592184;
-        Wed, 28 Oct 2015 09:09:52 -0700 (PDT)
+Received: by 10.25.32.202 with SMTP id g193ls316053lfg.18.gmail; Wed, 28 Oct
+ 2015 09:07:40 -0700 (PDT)
+X-Received: by 10.112.202.165 with SMTP id kj5mr10943761lbc.5.1446048460245;
+        Wed, 28 Oct 2015 09:07:40 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
-        by gmr-mx.google.com with ESMTPS id q6si575274wiz.0.2015.10.28.09.09.52
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id cm6si1048769wib.1.2015.10.28.09.07.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 09:09:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 09:07:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by wmec75 with SMTP id c75so9222880wme.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 09:09:52 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id fv8so18467104wic.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 09:07:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type:content-transfer-encoding;
-        bh=9a/v2n/1CghUR39Bnr+klK6KvvV2ZaS5m06QYNzuza4=;
-        b=sU17iRJfuHqAX4EK9/gUM7LEYXcW3/adNcKeZE8QUwlLAwoCAo3XJ0c3yzLoo2wjwE
-         xjBh94hp1ynL20nByqggDBYITD+PefZWCaHlpIq8MexolWat0M/K/7zMXAuI1ogS2NCj
-         E6ckqPOuB5Df2E5kHhFH06vahi8hCzGFV2o1ZTtShfwf6d9/0dEC5/r23xltf9w0H0AD
-         QevcajcksPYpCXNKAyWwdr4fiNC338yv/z8VN5k+Mp6Afe/traKDasY6Vlrt2za6tSf4
-         YRlN5hJ0td06Owekd4Gi2m2eNQSUIIYYwTQLSsIwBsuidl4hlAqBjvIgqw4lHuZTNTZM
-         euVA==
+         :cc:content-type;
+        bh=LRFN85ooDvXTqkAzCqVjq3wr5TrT5biNMReF4qZiMFo=;
+        b=oE3UTnrWuIY/Ujv9/v8oEcEIr5KoTi6ho+HocDStQumw7aHPH0TqNGu8Py6hWdhNPH
+         jt14Mex6fNHU9npG+BMmX/ya40ujsaYUUQ2kTWzny8/3gVTAOpfJxWXEnFluatQbrNR8
+         NYVTHah7/D/rma9yJuCwK/UPBL7EIsNsJfN/lLZrvj+lFk9DZd12QOF7qaC7wrReU0bV
+         DebWdelFfO5pHHo9IQfD9Dz1fYv2/C9IEC0DHJYJgo4z5BGnpANkche0FzKZo/IIqMJm
+         qD90Ba4TvNPhlo2OLqIWBUOZOqm7J2l6Le/8vSqI7djp4f6fHjjrGnbe0AE4afZPrLX/
+         A98A==
 MIME-Version: 1.0
-X-Received: by 10.28.46.143 with SMTP id u137mr2074572wmu.52.1446048592083;
- Wed, 28 Oct 2015 09:09:52 -0700 (PDT)
-Received: by 10.27.186.23 with HTTP; Wed, 28 Oct 2015 09:09:52 -0700 (PDT)
-In-Reply-To: <20151028131019.GB16810@sudip-pc>
+X-Received: by 10.194.116.197 with SMTP id jy5mr53765469wjb.86.1446048460085;
+ Wed, 28 Oct 2015 09:07:40 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Wed, 28 Oct 2015 09:07:39 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1510281447310.2456@hadrien>
 References: <cover.1446032441.git.shivanib134@gmail.com>
 	<f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134@gmail.com>
-	<20151028131019.GB16810@sudip-pc>
-Date: Wed, 28 Oct 2015 21:39:52 +0530
-Message-ID: <CAKHNQQE6UVcQ9eS_pisCed4ExE4BU-KdzVGcd_T269tP8Pim2A@mail.gmail.com>
+	<alpine.DEB.2.10.1510281447310.2456@hadrien>
+Date: Wed, 28 Oct 2015 21:37:39 +0530
+Message-ID: <CAKHNQQErLiLrLbjP7zD22cVXgtYuoCg9sXoDj=hLKpqq_Gq_SA@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH v2 3/3] Staging: wilc1000: linux_wlan:
  Replace function calls
 From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Oct 28, 2015 at 6:40 PM, Sudip Mukherjee
-<sudipm.mukherjee@gmail.com> wrote:
-> On Wed, Oct 28, 2015 at 05:19:04PM +0530, Shivani Bhardwaj wrote:
+On Wed, Oct 28, 2015 at 7:18 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Wed, 28 Oct 2015, Shivani Bhardwaj wrote:
+>
 >> Replace calls to wrapper functions with the actual functions called by
->> wrapper functions. Definitions needed to make those calls should also be=
- added.
+>> wrapper functions. Definitions needed to make those calls should also be added.
+>
+> The second sentence of the commit message is not clear.  When you say
+> "should be" it gives the impression that you expect someone else to do it.
+> So it would be better to say "are added".
+>
+> julia
+>
+
+I'll correct that.
+Thank you
+
 >>
 >> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 >> ---
->
-> Not build tested. :(
->
-> error: implicit declaration of function =E2=80=98linux_sdio_set_speed=E2=
-=80=99 [-Werror=3Dimplicit-function-declaration]
->   nwi->io_func.u.sdio.sdio_set_max_speed =3D linux_sdio_set_speed(MAX_SPE=
-ED);
->
-> drivers/staging/wilc1000/linux_wlan.c:990:41: warning: assignment makes p=
-ointer from integer without a cast [enabled by default]
->   nwi->io_func.u.sdio.sdio_set_max_speed =3D linux_sdio_set_speed(MAX_SPE=
-ED);
->
-> drivers/staging/wilc1000/linux_wlan.c:991:68: error: =E2=80=98sdio_defaul=
-t_speed=E2=80=99 undeclared (first use in this function)
->
-> regards
-> sudip
-
-I'm really very sorry I didn't do make allmodconfig, make didn't show
-me any errors at that time. In order to fix these mistakes, I'm
-thinking of changing some part of code. Please check the next version.
-Thank you
+>> Changes in v2:
+>>         -Break the patch 1/2 of v1 into two for clarity
+>>
+>>  drivers/staging/wilc1000/linux_wlan.c | 15 +++++++++++++--
+>>  1 file changed, 13 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
+>> index 9f899da..fbc3584 100644
+>> --- a/drivers/staging/wilc1000/linux_wlan.c
+>> +++ b/drivers/staging/wilc1000/linux_wlan.c
+>> @@ -45,6 +45,17 @@
+>>   #define _linux_wlan_device_removal()                {}
+>>  #endif
+>>
+>> +#if defined(CUSTOMER_PLATFORM)
+>> +/* TODO : User have to stable bus clock as user's environment. */
+>> +#ifdef MAX_BUS_SPEED
+>> +#define MAX_SPEED MAX_BUS_SPEED
+>> +#else
+>> +#define MAX_SPEED 50000000
+>> +#endif
+>> +#else
+>> +#define MAX_SPEED (6 * 1000000) /* Max 50M */
+>> +#endif
+>> +
+>>  extern bool g_obtainingIP;
+>>  extern u16 Set_machw_change_vir_if(bool bValue);
+>>  extern void resolve_disconnect_aberration(void *drvHandler);
+>> @@ -976,8 +987,8 @@ void linux_to_wlan(wilc_wlan_inp_t *nwi, struct wilc *nic)
+>>       nwi->io_func.io_deinit = linux_sdio_deinit;
+>>       nwi->io_func.u.sdio.sdio_cmd52 = linux_sdio_cmd52;
+>>       nwi->io_func.u.sdio.sdio_cmd53 = linux_sdio_cmd53;
+>> -     nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_max_speed;
+>> -     nwi->io_func.u.sdio.sdio_set_default_speed = linux_sdio_set_default_speed;
+>> +     nwi->io_func.u.sdio.sdio_set_max_speed = linux_sdio_set_speed(MAX_SPEED);
+>> +     nwi->io_func.u.sdio.sdio_set_default_speed = linux_sdio_set_speed(sdio_default_speed);
+>>  #else
+>>       nwi->io_func.io_type = HIF_SPI;
+>>       nwi->io_func.io_init = linux_spi_init;
+>> --
+>> 2.1.0
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/f2a06d6455d1f322d873ec728f622162fd00d959.1446032441.git.shivanib134%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
