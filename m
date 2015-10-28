@@ -1,71 +1,80 @@
-X-GM-THRID: 2053825888256
-X-Received: by 10.152.43.166 with SMTP id x6mr422644lal.3.1424548497410;
-        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
+X-GM-THRID: 6210777532431597568
+X-Received: by 10.13.223.72 with SMTP id i69mr39341728ywe.28.1446059330473;
+        Wed, 28 Oct 2015 12:08:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.93.70 with SMTP id cs6ls272953wib.24.gmail; Sat, 21 Feb
- 2015 11:54:57 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr390518wib.4.1424548497107;
-        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x244.google.com (mail-wi0-x244.google.com. [2a00:1450:400c:c05::244])
-        by gmr-mx.google.com with ESMTPS id l8si540278wia.0.2015.02.21.11.54.57
+Received: by 10.107.159.130 with SMTP id i124ls21826ioe.41.gmail; Wed, 28 Oct
+ 2015 12:08:49 -0700 (PDT)
+X-Received: by 10.50.79.201 with SMTP id l9mr3600659igx.13.1446059329968;
+        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id vy6si4969933pbc.1.2015.10.28.12.08.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::244 as permitted sender) client-ip=2a00:1450:400c:c05::244;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::244 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x244.google.com with SMTP id em10so3834202wid.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 11:54:57 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pacfv9 with SMTP id fv9so15617507pac.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=t/4IIz+LG4TEzaesvJkXnsIwX2KLv3GGERKZaQR2F10=;
-        b=LYtHjhK8dt3PUSbFTpt5qW82uR7odye2HoXlUO+o0jxFIeNJhmvc5NHqQ13XW0MTmx
-         ya0MXb2XKV9VCkxd2Axn+uGijpZ/KUTn8+qZ7fzKNus1+3mqEIcwv6R73c+IaCCxbGgW
-         9zL2NIxP9FxR/JRoMn/CAoIazLydkO8XA6WAuTl6VVmNQXPlgDlFOb0q00LWDyPMMGf5
-         jCnoxyvMwI3uIm67tBSaPKnQWcUJ8E2j3KnHjKt7OI5Bm+C1QS4x1sJjFXSYAN7i4K4A
-         gZeKSCtb8AnTHY4DaVKRq7DV6BQHY53c3XZSjfvs2Q4AZQ1HHB9jFprRObG0QMY31pqD
-         feVA==
-X-Received: by 10.180.89.131 with SMTP id bo3mr6306975wib.89.1424548497035;
-        Sat, 21 Feb 2015 11:54:57 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id ka1sm47948715wjc.2.2015.02.21.11.54.55
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 11:54:56 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=tuUVcagFWdcQOVKUSq9oBvGL5dcZvXMwLd8vXAA/POE=;
+        b=zb/NO19WjSiXER9XwmwAYRBMdrMPJncuvmJs/7DTm7pbqlYRa6/WH4fC8x23sGTspq
+         qze7WZAay0cr2idT9SEqamQvfA4ovm0DygL0DS4lpEuysG9Alhe1KJMRaIfa01fn98M3
+         yP6afYiahgykgfnhvyNTu5RV8/iQu3clyAheXlI7LWN+7IVbfEU8NNwXJ7jn1eYuuKlQ
+         J4muVhc2N+2DiyRtek5bgxfM3++eKkMmvx9l6LuzoEq7rzFNKIKTuQgcf4FqbI7MLCFQ
+         rJuggY7bVAtO/TFybUj58PNzpYFMc2oU+ksgtaa5Zz0obB/F4hBQVffo4qTMU0zkXoVJ
+         ry7A==
+X-Received: by 10.66.254.7 with SMTP id ae7mr35369925pad.129.1446059329779;
+        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.198.148])
+        by smtp.gmail.com with ESMTPSA id tn2sm46962286pac.0.2015.10.28.12.08.48
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Wed, 28 Oct 2015 12:08:49 -0700 (PDT)
+Date: Thu, 29 Oct 2015 00:38:44 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8188eu: hal: Deleted space
-Date: Sat, 21 Feb 2015 21:54:49 +0200
-Message-Id: <1424548489-21304-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: rtl8712: rtl871x_io: Remove unused function
+Message-ID: <20151028190844.GA22829@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Deleted spaces before ','.Because it is prohibited by the kernel coding
-style.
-Error found with checkpatch.pl
+Drop function that is declared but not called anywhere.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/usb_halinit.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8712/rtl871x_io.h | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-index 14650e9..0078468 100644
---- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
-+++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-@@ -1796,7 +1796,7 @@ static void SetHwReg8188EU(struct adapter *Adapter, u8 variable, u8 *val)
- 		}
- 		break;
- 	case HW_VAR_H2C_MEDIA_STATUS_RPT:
--		rtl8188e_set_FwMediaStatus_cmd(Adapter , (*(__le16 *)val));
-+		rtl8188e_set_FwMediaStatus_cmd(Adapter, (*(__le16 *)val));
- 		break;
- 	case HW_VAR_BCN_VALID:
- 		/* BCN_VALID, BIT16 of REG_TDECTRL = BIT0 of REG_TDECTRL+2, write 1 to clear, Clear by sw */
+diff --git a/drivers/staging/rtl8712/rtl871x_io.h b/drivers/staging/rtl8712/rtl871x_io.h
+index 070cc03..26dd24c 100644
+--- a/drivers/staging/rtl8712/rtl871x_io.h
++++ b/drivers/staging/rtl8712/rtl871x_io.h
+@@ -232,14 +232,6 @@ struct io_queue {
+ 	struct	intf_hdl intf;
+ };
+ 
+-static inline u32 _RND4(u32 sz)
+-{
+-	u32	val;
+-
+-	val = ((sz >> 2) + ((sz & 3) ? 1 : 0)) << 2;
+-	return val;
+-}
+-
+ u8 r8712_read8(struct _adapter *adapter, u32 addr);
+ u16 r8712_read16(struct _adapter *adapter, u32 addr);
+ u32 r8712_read32(struct _adapter *adapter, u32 addr);
 -- 
 1.9.1
 
