@@ -1,49 +1,49 @@
 X-GM-THRID: 6210381585761435648
-X-Received: by 10.107.18.17 with SMTP id a17mr1213387ioj.24.1446099759605;
-        Wed, 28 Oct 2015 23:22:39 -0700 (PDT)
+X-Received: by 10.107.134.102 with SMTP id i99mr1255470iod.34.1446099524089;
+        Wed, 28 Oct 2015 23:18:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.38.81 with SMTP id m78ls162668iom.33.gmail; Wed, 28 Oct
- 2015 23:22:39 -0700 (PDT)
-X-Received: by 10.50.164.167 with SMTP id yr7mr1185735igb.13.1446099759320;
-        Wed, 28 Oct 2015 23:22:39 -0700 (PDT)
+Received: by 10.140.103.182 with SMTP id y51ls252862qge.30.gmail; Wed, 28 Oct
+ 2015 23:18:43 -0700 (PDT)
+X-Received: by 10.140.151.198 with SMTP id 189mr42919130qhx.11.1446099523656;
+        Wed, 28 Oct 2015 23:18:43 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id pe1si1393pac.2.2015.10.28.23.22.39
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id vy6si4497pbc.1.2015.10.28.23.18.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 23:22:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Wed, 28 Oct 2015 23:18:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id hy1so24823564pad.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 23:22:39 -0700 (PDT)
+Received: by mail-pa0-x230.google.com with SMTP id hk11so30721215pad.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 23:18:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=LEWTiZtXoYltnBKd1obqtISL2MKFAd8tKChFlF68E2k=;
-        b=Umky7wjkl31W6XxqcSlyD6Nu4j2N2/xdqzY5SLDtT9TvWCRwQelSoZwS/QgP/OdRtL
-         wvv8VJs8YzEnbPQoqgfQGph+Qm5JKW+GjAtjrqcWp3AgDmeNd7cjq0XXghATBrBSgoC1
-         dT6/xxn2R2z9qZHfPp47uibZF8AuZhMd2xz7eAzHUHt7/2AU6NmSegphagTJck0oZkrD
-         ljr0XjLELbp8+S9SkNJt3Cfm9wIpo8JzD07pjkHBz8IK7eW2kc/e3JbAmpScA2RMVA4Z
-         pC5EAHCka3SMRBKMqHa4w4tqpW5bCq79sUm/XIIfpDvJQ4HT84rFgW5EBrI/nbF22UY+
-         27OQ==
-X-Received: by 10.66.151.138 with SMTP id uq10mr59854pab.22.1446099759019;
-        Wed, 28 Oct 2015 23:22:39 -0700 (PDT)
+        bh=xdw7oFRm3OAeqf5qRxciUhbDAOYEeBR0NJ9ewdh9K58=;
+        b=SYINp3RQSBCFI4/UbxPWU4JM7cGKCBBmDJRKvqxK6BBXTSnjiafgqnjQigTdhzLQlH
+         GWfX/UtVdgeckexlEAhKNGGMqWtfP2goq2uuQQfwWz1A55PGFdt9kdMUyF+4mH+AlN26
+         7hnR/orLjsfEMIViQk3sscui4eyKHwm14ERo4gn7bmtg/68gnqWdKw/wHSOohAgsQSDH
+         x7xENKsSQZoh5McoPZLMdmsnKLD5gcYazNWuAOzIA7esnewCKjXJUWxTegJLCF0YV1sR
+         I4zOox9I0Q5gAyL5i68NR9YoEC6Av8nxdko5u3/KFUYA59jo5V/sG2P6tHqNqISP93fR
+         fa8w==
+X-Received: by 10.67.4.231 with SMTP id ch7mr9331325pad.109.1446099523491;
+        Wed, 28 Oct 2015 23:18:43 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([182.68.198.148])
-        by smtp.gmail.com with ESMTPSA id tp6sm18880pbc.81.2015.10.28.23.22.38
+        by smtp.gmail.com with ESMTPSA id rz9sm18007pbb.61.2015.10.28.23.18.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 28 Oct 2015 23:22:38 -0700 (PDT)
-Date: Thu, 29 Oct 2015 11:52:35 +0530
+        Wed, 28 Oct 2015 23:18:43 -0700 (PDT)
+Date: Thu, 29 Oct 2015 11:48:39 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 3/3] staging: rtl8188eu: core: Remove wrapper function
-Message-ID: <9efda1f2e9d8126a6d0468e442ff68aa27031e25.1446098996.git.amitoj1606@gmail.com>
+Subject: [PATCH v2 2/3] staging: rtl8188eu: Remove unused function
+Message-ID: <da725e4523bd43041e267086757a7093212411bb.1446098996.git.amitoj1606@gmail.com>
 References: <cover.1446098996.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,111 +51,45 @@ Content-Disposition: inline
 In-Reply-To: <cover.1446098996.git.amitoj1606@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove wrapper function issue_probereq() that can be replaced by a
-single line of code and rename _issue_probereq() to issue_probereq().
-
-This patch also fixes line over 80 characters checkpatch.pl warning.
+Remove function that is declared but not called anywhere.
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
 Changes in v2:
-        -Renamed _issue_probereq() to issue_probereq()
+        -None
 
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 41 ++++++++++++++++-----------
- 1 file changed, 24 insertions(+), 17 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_xmit.c    | 5 -----
+ drivers/staging/rtl8188eu/include/rtw_xmit.h | 1 -
+ 2 files changed, 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-index 0270755..d3b92c5 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-@@ -608,7 +608,7 @@ static void issue_probersp(struct adapter *padapter, unsigned char *da)
- 	return;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+index cabb810..11dbfc0 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
++++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+@@ -2186,11 +2186,6 @@ void rtw_sctx_done_err(struct submit_ctx **sctx, int status)
+ 	}
  }
  
--static int _issue_probereq(struct adapter *padapter, struct ndis_802_11_ssid *pssid, u8 *da, int wait_ack)
-+static int issue_probereq(struct adapter *padapter, struct ndis_802_11_ssid *pssid, u8 *da, int wait_ack)
- {
- 	int ret = _FAIL;
- 	struct xmit_frame		*pmgntframe;
-@@ -701,12 +701,6 @@ exit:
- 	return ret;
- }
- 
--static inline void issue_probereq(struct adapter *padapter,
--				  struct ndis_802_11_ssid *pssid, u8 *da)
+-void rtw_sctx_done(struct submit_ctx **sctx)
 -{
--	_issue_probereq(padapter, pssid, da, false);
+-	rtw_sctx_done_err(sctx, RTW_SCTX_DONE_SUCCESS);
 -}
 -
- static int issue_probereq_ex(struct adapter *padapter,
- 			     struct ndis_802_11_ssid *pssid, u8 *da,
- 			     int try_cnt, int wait_ms)
-@@ -716,7 +710,7 @@ static int issue_probereq_ex(struct adapter *padapter,
- 	u32 start = jiffies;
+ int rtw_ack_tx_wait(struct xmit_priv *pxmitpriv, u32 timeout_ms)
+ {
+ 	struct submit_ctx *pack_tx_ops = &pxmitpriv->ack_tx_ops;
+diff --git a/drivers/staging/rtl8188eu/include/rtw_xmit.h b/drivers/staging/rtl8188eu/include/rtw_xmit.h
+index 62f5db1..b7c2088 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_xmit.h
++++ b/drivers/staging/rtl8188eu/include/rtw_xmit.h
+@@ -197,7 +197,6 @@ enum {
+ void rtw_sctx_init(struct submit_ctx *sctx, int timeout_ms);
+ int rtw_sctx_wait(struct submit_ctx *sctx);
+ void rtw_sctx_done_err(struct submit_ctx **sctx, int status);
+-void rtw_sctx_done(struct submit_ctx **sctx);
  
- 	do {
--		ret = _issue_probereq(padapter, pssid, da, wait_ms > 0 ? true : false);
-+		ret = issue_probereq(padapter, pssid, da, wait_ms > 0 ? true : false);
- 
- 		i++;
- 
-@@ -2029,24 +2023,28 @@ static void site_survey(struct adapter *padapter)
- 			for (i = 0; i < RTW_SSID_SCAN_AMOUNT; i++) {
- 				if (pmlmeext->sitesurvey_res.ssid[i].SsidLength) {
- 					/* todo: to issue two probe req??? */
--					issue_probereq(padapter, &(pmlmeext->sitesurvey_res.ssid[i]), NULL);
-+					issue_probereq(padapter,
-+					&(pmlmeext->sitesurvey_res.ssid[i]),
-+								NULL, false);
- 					/* msleep(SURVEY_TO>>1); */
--					issue_probereq(padapter, &(pmlmeext->sitesurvey_res.ssid[i]), NULL);
-+					issue_probereq(padapter,
-+					&(pmlmeext->sitesurvey_res.ssid[i]),
-+								NULL, false);
- 				}
- 			}
- 
- 			if (pmlmeext->sitesurvey_res.scan_mode == SCAN_ACTIVE) {
- 				/* todo: to issue two probe req??? */
--				issue_probereq(padapter, NULL, NULL);
-+				issue_probereq(padapter, NULL, NULL, false);
- 				/* msleep(SURVEY_TO>>1); */
--				issue_probereq(padapter, NULL, NULL);
-+				issue_probereq(padapter, NULL, NULL, false);
- 			}
- 
- 			if (pmlmeext->sitesurvey_res.scan_mode == SCAN_ACTIVE) {
- 				/* todo: to issue two probe req??? */
--				issue_probereq(padapter, NULL, NULL);
-+				issue_probereq(padapter, NULL, NULL, false);
- 				/* msleep(SURVEY_TO>>1); */
--				issue_probereq(padapter, NULL, NULL);
-+				issue_probereq(padapter, NULL, NULL, false);
- 			}
- 		}
- 
-@@ -4820,9 +4818,18 @@ void linked_status_chk(struct adapter *padapter)
- 			} else {
- 				if (rx_chk != _SUCCESS) {
- 					if (pmlmeext->retry == 0) {
--						issue_probereq(padapter, &pmlmeinfo->network.Ssid, pmlmeinfo->network.MacAddress);
--						issue_probereq(padapter, &pmlmeinfo->network.Ssid, pmlmeinfo->network.MacAddress);
--						issue_probereq(padapter, &pmlmeinfo->network.Ssid, pmlmeinfo->network.MacAddress);
-+						issue_probereq(padapter,
-+						&pmlmeinfo->network.Ssid,
-+						pmlmeinfo->network.MacAddress,
-+									false);
-+						issue_probereq(padapter,
-+						&pmlmeinfo->network.Ssid,
-+						pmlmeinfo->network.MacAddress,
-+									false);
-+						issue_probereq(padapter,
-+						&pmlmeinfo->network.Ssid,
-+						pmlmeinfo->network.MacAddress,
-+									false);
- 					}
- 				}
- 
+ struct xmit_buf {
+ 	struct list_head list;
 -- 
 1.9.1
 
