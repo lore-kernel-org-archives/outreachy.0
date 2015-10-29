@@ -1,88 +1,73 @@
 X-GM-THRID: 6211002090683105280
-X-Received: by 10.50.142.1 with SMTP id rs1mr1084747igb.0.1446187307437;
-        Thu, 29 Oct 2015 23:41:47 -0700 (PDT)
+X-Received: by 10.28.211.201 with SMTP id k192mr1387188wmg.3.1446129715874;
+        Thu, 29 Oct 2015 07:41:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.28.138 with SMTP id 10ls370984qgz.51.gmail; Thu, 29 Oct
- 2015 23:41:45 -0700 (PDT)
-X-Received: by 10.129.82.193 with SMTP id g184mr5005650ywb.44.1446187305582;
-        Thu, 29 Oct 2015 23:41:45 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id pe1si576228pac.2.2015.10.29.23.41.45
+Received: by 10.28.136.143 with SMTP id k137ls367447wmd.28.canary; Thu, 29 Oct
+ 2015 07:41:55 -0700 (PDT)
+X-Received: by 10.28.19.148 with SMTP id 142mr1394493wmt.4.1446129715436;
+        Thu, 29 Oct 2015 07:41:55 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l1si127913wmb.3.2015.10.29.07.41.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Oct 2015 23:41:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Oct 2015 07:41:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id hk11so65041291pad.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 23:41:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:references
-         :mime-version:content-type:content-disposition:in-reply-to
-         :user-agent;
-        bh=NHbd2lAGkVrzUQFA158nq339qj/7h46HaysdHrblE0Q=;
-        b=ow3ib1ulzdVajgfy/b9sy0e2RlPf+QM12svgz0JFFcggvbhlZz/fAVn/OKrn1KYDen
-         Al1ypwOsJNGjr84OJDyel/2KmpIA7IPTclrRHiGf/uOuEY1do7nkNKwn0qU+CK2ilhUr
-         kL1UXxarPQVFtBJk9t+ZjneAzta20OMvA4oGdk/W3gycQbAvTjfi3+PSFwnV0gm2DhxY
-         rIJ6mFAV9urWAm3sVpBPR4cHGGNPTxdEaG+LQRevhrUeouRk886/60Y3+2/yHaI/rrpt
-         euc5eiW0Szt8JCAwmgQXi23rzen843Ds5RhfXR64HKpB90y50at7g4+TynagNzNz71Kn
-         xL8Q==
-X-Received: by 10.68.197.9 with SMTP id iq9mr6765549pbc.123.1446187305359;
-        Thu, 29 Oct 2015 23:41:45 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([103.14.62.253])
-        by smtp.gmail.com with ESMTPSA id pk2sm6027269pbb.21.2015.10.29.23.41.44
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 29 Oct 2015 23:41:44 -0700 (PDT)
-Date: Fri, 30 Oct 2015 14:41:41 +0800
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.20,214,1444687200"; 
+   d="scan'208";a="185043679"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Oct 2015 15:41:55 +0100
+Date: Thu, 29 Oct 2015 15:41:54 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Eva Rachel Retuya <eraretuya@gmail.com>
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] depmod: modules in dependency cycles
-Message-ID: <20151030064138.GA4398@Socrates-Mint>
-Mail-Followup-To: Julia Lawall <julia.lawall@lip6.fr>,
-	outreachy-kernel@googlegroups.com
+In-Reply-To: <20151029094006.GA15647@Socrates-Mint>
+Message-ID: <alpine.DEB.2.10.1510291541310.2505@hadrien>
 References: <20151029094006.GA15647@Socrates-Mint>
- <alpine.DEB.2.10.1510291541310.2505@hadrien>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.10.1510291541310.2505@hadrien>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Thu, Oct 29, 2015 at 03:41:54PM +0100, Julia Lawall wrote:
-> 
-> 
-> On Thu, 29 Oct 2015, Eva Rachel Retuya wrote:
-> 
-> > Hi,
-> >
-> > After successfully finishing a few patches and rebasing my branch to
-> > obtain the latest updates, I have run into this problem that keeps me
-> > from updating my kernel and therefore won't let me test patch/es I
-> > intend to send.
-> >
-> > A snippet of my "failed" installation can be found here:
-> > http://pastebin.com/8WzV1Ayn
-> >
-> > I'd like to ask for help as to how to resolve this issue. My searches so
-> > far did not yield enough information for me to successfully solve this
-> > on my own. What I am doing lately was to boot to my stable kernel
-> > (3.16.0-38), copy its config to .config as directed from the tutorial. Compile the kernel and install (sudo make modules_install install). The end result are as indicated on the pastebin link. Even booting from my last-known working "latest" kernel (rc5) yields the same result.
-> 
-> I usually use make allyesconfig.  Maybe try that.
-> 
-> julia
+
+
+On Thu, 29 Oct 2015, Eva Rachel Retuya wrote:
+
+> Hi,
 >
+> After successfully finishing a few patches and rebasing my branch to
+> obtain the latest updates, I have run into this problem that keeps me
+> from updating my kernel and therefore won't let me test patch/es I
+> intend to send.
+>
+> A snippet of my "failed" installation can be found here:
+> http://pastebin.com/8WzV1Ayn
+>
+> I'd like to ask for help as to how to resolve this issue. My searches so
+> far did not yield enough information for me to successfully solve this
+> on my own. What I am doing lately was to boot to my stable kernel
+> (3.16.0-38), copy its config to .config as directed from the tutorial. Compile the kernel and install (sudo make modules_install install). The end result are as indicated on the pastebin link. Even booting from my last-known working "latest" kernel (rc5) yields the same result.
 
-I tried allyesconfig and was able to install the modules fine without the dependency issue popping out. However, I cannot seem to load any module (modprobe/insmod) without it spouting 'directory not found' messages. Before the dependency issue, modprobe works. I also checked the directory that should house the said modules and it looked fine to me.
+I usually use make allyesconfig.  Maybe try that.
 
-Right now I'm retracing my steps, incorporating the advice so far. I will update again after a few hours of my progress whether the new issue still persists.
+julia
 
-Eva
+> I reviewed the config and the lustre components were selected as
+> modules. It worked without a hitch before so I'm puzzled as to why the
+> said modules are in dependency cycles now. I also did "make clean" and
+> recompiled from scratch, still no dice.
+>
+> Thank you in advance,
+> Eva
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20151029094006.GA15647%40Socrates-Mint.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
