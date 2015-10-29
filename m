@@ -1,69 +1,82 @@
 X-GM-THRID: 6210938115276668928
-X-Received: by 10.129.154.205 with SMTP id r196mr40478294ywg.48.1446097715768;
-        Wed, 28 Oct 2015 22:48:35 -0700 (PDT)
+X-Received: by 10.107.132.77 with SMTP id g74mr1114720iod.10.1446096778600;
+        Wed, 28 Oct 2015 22:32:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.108.232 with SMTP id hn8ls55584obb.12.gmail; Wed, 28 Oct
- 2015 22:48:35 -0700 (PDT)
-X-Received: by 10.182.65.67 with SMTP id v3mr7062367obs.38.1446097715397;
-        Wed, 28 Oct 2015 22:48:35 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id sm2si3926136pab.0.2015.10.28.22.48.35
+Received: by 10.140.105.38 with SMTP id b35ls224882qgf.96.gmail; Wed, 28 Oct
+ 2015 22:32:58 -0700 (PDT)
+X-Received: by 10.31.148.206 with SMTP id w197mr42694293vkd.9.1446096778038;
+        Wed, 28 Oct 2015 22:32:58 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id pe1si5386193pac.2.2015.10.28.22.32.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 22:48:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Wed, 28 Oct 2015 22:32:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id z6so29758551pas.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 22:48:35 -0700 (PDT)
+Received: by mail-pa0-x231.google.com with SMTP id fv9so30585827pac.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 22:32:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=0muZi1V4zL86lZ3nNA/BM8VNtpDxhlR3QjQ2mXRRkT8=;
-        b=yZBcL9N8t1IWzRUuBuk4LQLcIbkFe74ti8i37Gk7v4iwO7lCRXP2cvMWGJYlrIMAXk
-         hV6t2L+W8MnjCL7R4mWl+OzbdMLuEPqZgn0UlUuk5HR5I8tnS4/+Ok+DQvFd34a6FdC1
-         xF/Nm8HZ9rCzhKLEtTY/DQxk0UcfMC1kzTPxPIbDcCEFLtMx4NJFfn+3Ywv/ZmfJqVuU
-         5ZL4Ru6MZCFKrUWRtHcdWJcu9sjZwUDAHnIXkt5FcGTjBQwQHTdRa9YosanN7/PYQ6rJ
-         bR0HiY6NHWOMR3PFIk12qJGS5NwdeW96TF9orohIImnPH9sWoj4eIJijrEl2yO4VIzSI
-         wf8w==
-X-Received: by 10.66.196.168 with SMTP id in8mr38343012pac.27.1446097715231;
-        Wed, 28 Oct 2015 22:48:35 -0700 (PDT)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([122.169.170.95])
-        by smtp.gmail.com with ESMTPSA id ub4sm33217197pac.29.2015.10.28.22.48.33
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 28 Oct 2015 22:48:34 -0700 (PDT)
-Date: Thu, 29 Oct 2015 11:18:28 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Shivani Bhardwaj <shivanib134@gmail.com>
+        bh=8F1ucF57UU5dnSFigTStEnb1PQn7RfeCdJ+JA98jkes=;
+        b=v7NYJoDWV1oqVNUzHvtChVJRhWPNfuwmcsaj7sk1oNwMzjlLFI76FwUNRAyfxu0Fl1
+         Gi+Pah8DGgOtVZzLNAWlTR0Omgnbb1ERVKxvGrJk46htJiHkCchWTmOQeU4lNNFnFnpG
+         CeyclnXH8bRdEr1IFQbBXGIbwGhdxudU/92v+vzAQ/Z84OPmP4KGn+wmoltsQBOJLUOc
+         syZE56V8pO7MwA0pcp+jvkV3BvpUnypnhaLYqaDEjOE2+OnJ4BUms9tqPeJrJXjPReS+
+         B2fieyGO1AJX3s3XdO88S7vTLJr9E1nwU3aIlxqmIvF9sQx+VyntiJwfatz3OmkeKZBS
+         /ioQ==
+X-Received: by 10.68.165.35 with SMTP id yv3mr38745183pbb.53.1446096777822;
+        Wed, 28 Oct 2015 22:32:57 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id ub4sm33124000pac.29.2015.10.28.22.32.55
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 22:32:56 -0700 (PDT)
+Date: Thu, 29 Oct 2015 11:02:48 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: console: Remove
- irrelevant return statement
-Message-ID: <20151029054828.GB16140@sudip-pc>
+Subject: [PATCH 2/2] Staging: lustre: console: Remove irrelevant return
+ statement
+Message-ID: <add1870ead28913d364e09a1d06f85c5da8c74ed.1446096468.git.shivanib134@gmail.com>
 References: <cover.1446096468.git.shivanib134@gmail.com>
- <add1870ead28913d364e09a1d06f85c5da8c74ed.1446096468.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <add1870ead28913d364e09a1d06f85c5da8c74ed.1446096468.git.shivanib134@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <cover.1446096468.git.shivanib134@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Thu, Oct 29, 2015 at 11:02:48AM +0530, Shivani Bhardwaj wrote:
-> Remove return statement from the function lstcon_group_ndlink_move()
-> as its return type is void.
-> Fix checkpatch WARNING: void function return statements are not
-> generally useful
-> 
-> Signed-off-by : Shivani Bhardwaj <shivanib134@gmail.com>
+Remove return statement from the function lstcon_group_ndlink_move()
+as its return type is void.
+Fix checkpatch WARNING: void function return statements are not
+generally useful
 
-checkpatch is complaining about the "Signed-off-by" because of an
-extra space.
+Signed-off-by : Shivani Bhardwaj <shivanib134@gmail.com>
+---
+ drivers/staging/lustre/lnet/selftest/console.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-regards
-sudip
+diff --git a/drivers/staging/lustre/lnet/selftest/console.c b/drivers/staging/lustre/lnet/selftest/console.c
+index 9748a09..b1eceb4 100644
+--- a/drivers/staging/lustre/lnet/selftest/console.c
++++ b/drivers/staging/lustre/lnet/selftest/console.c
+@@ -318,8 +318,6 @@ lstcon_group_ndlink_move(lstcon_group_t *old,
+ 	list_add_tail(&ndl->ndl_hlink, &new->grp_ndl_hash[idx]);
+ 	list_add_tail(&ndl->ndl_link, &new->grp_ndl_list);
+ 	new->grp_nnode++;
+-
+-	return;
+ }
+ 
+ static void
+-- 
+2.1.0
+
 
