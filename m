@@ -1,111 +1,98 @@
-X-GM-THRID: 7280184524800
-X-Received: by 10.180.75.232 with SMTP id f8mr7129658wiw.0.1425908764594;
-        Mon, 09 Mar 2015 06:46:04 -0700 (PDT)
+X-GM-THRID: 6210960460687081472
+X-Received: by 10.182.107.130 with SMTP id hc2mr81744obb.39.1446101921615;
+        Wed, 28 Oct 2015 23:58:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.198.225 with SMTP id jf1ls542099wic.12.gmail; Mon, 09 Mar
- 2015 06:46:03 -0700 (PDT)
-X-Received: by 10.180.80.35 with SMTP id o3mr7138237wix.0.1425908763224;
-        Mon, 09 Mar 2015 06:46:03 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id r6si828517wix.0.2015.03.09.06.46.03
+Received: by 10.50.138.8 with SMTP id qm8ls150774igb.36.gmail; Wed, 28 Oct
+ 2015 23:58:41 -0700 (PDT)
+X-Received: by 10.66.156.202 with SMTP id wg10mr24453pab.47.1446101921164;
+        Wed, 28 Oct 2015 23:58:41 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id pe1si7496pac.2.2015.10.28.23.58.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2015 06:46:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 23:58:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mail=ciorneiioana@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id em10so5906617wid.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 06:46:03 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22e.google.com with SMTP id z6so31781921pas.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 23:58:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=bkdNIh2odH8vsZ/5Qi9ZhxKO4fL8GMukz95llOx1qHo=;
-        b=qphNlarx5CuQOg0T8Sk/sJKfMnc7Om6NYmhzL7rOZ7zywi+TN81OifccQjwWYiF4Uh
-         Yizln756Qzwtd5l1q9nXEtaedDG7Houiy8VQI5efo96OBNVCK9U7StEu4Z5hi8nZcbkT
-         Hb775Nv3C80S/hcmXi5z+2sXNL6loZOk9zDb/4/iZ99G+4/Jgn9YkJFVyaXCylNpy72Z
-         gfoW4RrQuLxKURoTG8HzJM23SAQN5ZoBHWTSxXtieKjW2Pi5gAnlG+JY/s9aMWuPknHD
-         3GgaGPaOPvmMVvY+D3s7QjP7BVqsLL5vjgNTcdh3Y6pBmI9vWEAZhm+sGgcfVgaxLQ60
-         hx8Q==
-X-Received: by 10.180.171.35 with SMTP id ar3mr61562549wic.24.1425908763099;
-        Mon, 09 Mar 2015 06:46:03 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id kr5sm28350443wjc.1.2015.03.09.06.46.00
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 09 Mar 2015 06:46:01 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH] drivers: staging: rtl8188eu: core: rtw_xmt: Delete spaces before tabs
-Date: Mon,  9 Mar 2015 15:45:52 +0200
-Message-Id: <1425908752-7321-1-git-send-email-ciorneiioana@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=6g8QhF8XP0Q/nglFMmQoK2BGwIqDPRByf3mTfZn6WbE=;
+        b=XY66ZGAVKiq8oE55yp0xPnlZMWvkrsLsZro7S+GQRg9lYJN5UEMUm2enQtYDxcPP3S
+         QhF1wm2V8Oq5uBABktx5LDbLyC8ikSTQgRnJyMDitLJ8ltWzHVmGPAWdgXt/gAWn+Ih/
+         LsaVCjtkswYfCqH/hty+tClAUWxVA/oflZZqE7qRGZp89k3cIgHNS7QJKm0H3D57f4ot
+         Plr1WW8oevZyOCrGL92L8OPq1YCNlHkVd3sK8S5pLkHmWdXt8CvB+PX7LzfhZAyWz7g4
+         WxLcgvE7bGNvDEytGQfZKr65G0l1CObcMAt7J3DmwMenze4wrVX7eISlTocObjFcU98g
+         UQ6Q==
+X-Received: by 10.66.90.198 with SMTP id by6mr201146pab.78.1446101921053;
+        Wed, 28 Oct 2015 23:58:41 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id jt1sm234235pbc.83.2015.10.28.23.58.38
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 23:58:40 -0700 (PDT)
+Date: Thu, 29 Oct 2015 12:28:31 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: lustre: config: Remove unnecessary wrapper functions
+Message-ID: <20151029065831.GA41482@ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the checkpatch.pl warning:
+Remove the function lnet_ipaddr_free_enumeration() and replace all its
+calls with LIBCFS_FREE().
 
-WARNING: please, no space before tabs
-
-Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_xmit.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/lustre/lnet/lnet/config.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-index 7a71df1..7a35c47 100644
---- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-@@ -94,7 +94,7 @@ s32	_rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+diff --git a/drivers/staging/lustre/lnet/lnet/config.c b/drivers/staging/lustre/lnet/lnet/config.c
+index 1b3bc83..4e8b54b 100644
+--- a/drivers/staging/lustre/lnet/lnet/config.c
++++ b/drivers/staging/lustre/lnet/lnet/config.c
+@@ -1103,12 +1103,6 @@ lnet_match_networks(char **networksp, char *ip2nets, __u32 *ipaddrs, int nip)
+ 	return count;
+ }
+ 
+-static void
+-lnet_ipaddr_free_enumeration(__u32 *ipaddrs, int nip)
+-{
+-	LIBCFS_FREE(ipaddrs, nip * sizeof(*ipaddrs));
+-}
+-
+ static int
+ lnet_ipaddr_enumerate(__u32 **ipaddrsp)
+ {
+@@ -1169,7 +1163,7 @@ lnet_ipaddr_enumerate(__u32 **ipaddrsp)
+ 				rc = nip;
+ 			}
+ 		}
+-		lnet_ipaddr_free_enumeration(ipaddrs, nif);
++		LIBCFS_FREE(ipaddrs, nip * sizeof(*ipaddrs));
  	}
- 	pxmitpriv->pxmit_frame_buf = (u8 *)N_BYTE_ALIGMENT((size_t)(pxmitpriv->pallocated_frame_buf), 4);
- 	/* pxmitpriv->pxmit_frame_buf = pxmitpriv->pallocated_frame_buf + 4 - */
--	/* 						((size_t) (pxmitpriv->pallocated_frame_buf) &3); */
-+	/*						((size_t) (pxmitpriv->pallocated_frame_buf) &3); */
- 
- 	pxframe = (struct xmit_frame *)pxmitpriv->pxmit_frame_buf;
- 
-@@ -132,7 +132,7 @@ s32	_rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
- 
- 	pxmitpriv->pxmitbuf = (u8 *)N_BYTE_ALIGMENT((size_t)(pxmitpriv->pallocated_xmitbuf), 4);
- 	/* pxmitpriv->pxmitbuf = pxmitpriv->pallocated_xmitbuf + 4 - */
--	/* 						((size_t) (pxmitpriv->pallocated_xmitbuf) &3); */
-+	/*						((size_t) (pxmitpriv->pallocated_xmitbuf) &3); */
- 
- 	pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
- 
-@@ -283,8 +283,8 @@ static void update_attrib_vcs_info(struct adapter *padapter, struct xmit_frame *
- 
- 	/*  (1) RTS_Threshold is compared to the MPDU, not MSDU. */
- 	/*  (2) If there are more than one frag in  this MSDU, only the first frag uses protection frame. */
--	/* 		Other fragments are protected by previous fragment. */
--	/* 		So we only need to check the length of first fragment. */
-+	/*		Other fragments are protected by previous fragment. */
-+	/*		So we only need to check the length of first fragment. */
- 	if (pmlmeext->cur_wireless_mode < WIRELESS_11_24N  || padapter->registrypriv.wifi_spec) {
- 		if (sz > padapter->registrypriv.rts_thresh) {
- 			pattrib->vcs_mode = RTS_CTS;
-@@ -413,7 +413,7 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
- 	/*  get user_prio from IP hdr */
- 	if (pattrib->ether_type == 0x0800) {
- 		_rtw_pktfile_read(ppktfile, (u8 *)&ip_hdr, sizeof(ip_hdr));
--/* 		user_prio = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
-+/*		user_prio = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
- 		user_prio = ip_hdr.tos >> 5;
- 	} else if (pattrib->ether_type == 0x888e) {
- 		/*  "When priority processing of data frames is supported, */
-@@ -1469,7 +1469,7 @@ s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitfram
- 	if (rtw_xmit_classifier(padapter, pxmitframe) == _FAIL) {
- 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
- 			 ("rtw_xmitframe_enqueue: drop xmit pkt for classifier fail\n"));
--/* 		pxmitframe->pkt = NULL; */
-+/*		pxmitframe->pkt = NULL; */
- 		return _FAIL;
+ 	return nip;
+ }
+@@ -1195,7 +1189,7 @@ lnet_parse_ip2nets(char **networksp, char *ip2nets)
  	}
  
+ 	rc = lnet_match_networks(networksp, ip2nets, ipaddrs, nip);
+-	lnet_ipaddr_free_enumeration(ipaddrs, nip);
++	LIBCFS_FREE(ipaddrs, nip * sizeof(*ipaddrs));
+ 
+ 	if (rc < 0) {
+ 		LCONSOLE_ERROR_MSG(0x119, "Error %d parsing ip2nets\n", rc);
 -- 
-1.9.1
+2.1.0
 
 
