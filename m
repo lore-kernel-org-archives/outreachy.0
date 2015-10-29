@@ -1,205 +1,186 @@
-X-GM-THRID: 6251864015306227712
-X-Received: by 10.182.243.135 with SMTP id wy7mr20170047obc.8.1455625522914;
-        Tue, 16 Feb 2016 04:25:22 -0800 (PST)
+X-GM-THRID: 6208213403443396608
+X-Received: by 10.50.66.210 with SMTP id h18mr4231637igt.10.1446078652239;
+        Wed, 28 Oct 2015 17:30:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.229 with SMTP id 92ls3584272qgp.65.gmail; Tue, 16 Feb
- 2016 04:25:22 -0800 (PST)
-X-Received: by 10.31.168.130 with SMTP id r124mr21114588vke.10.1455625522100;
-        Tue, 16 Feb 2016 04:25:22 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x235.google.com (mail-qg0-x235.google.com. [2607:f8b0:400d:c04::235])
-        by gmr-mx.google.com with ESMTPS id t198si2234875ywe.3.2016.02.16.04.25.22
+Received: by 10.140.41.227 with SMTP id z90ls113157qgz.37.gmail; Wed, 28 Oct
+ 2015 17:30:51 -0700 (PDT)
+X-Received: by 10.129.156.198 with SMTP id t189mr41367187ywg.26.1446078651571;
+        Wed, 28 Oct 2015 17:30:51 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id el2si5168156pbb.0.2015.10.28.17.30.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 04:25:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::235 as permitted sender) client-ip=2607:f8b0:400d:c04::235;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 17:30:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::235 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x235.google.com with SMTP id b35so130912581qge.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 04:25:22 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x236.google.com with SMTP id z6so21775117pas.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 17:30:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=X7ezFExomKlp3qyR0uFvz1uhHKLJ7h6XXMe6dA47GjE=;
-        b=u85UVwopZ7pQMwGrCI68Z0u4UlghpOtgjLxu+k7hOfW/cKUbJFjhl1JlhQJRrR7Yqy
-         OB6fzKCKlUMqh1+lBdZarD6pbtH1R/DDBObFSKUSOs26GjQzvb+2K4/5f+ujPHjys9VL
-         mTm1vB9NJGYxvq2HQu8Jd6An4SBlFblm2M1XDtJ2iC2sTncas/mUI7fjUxergFsnN7hd
-         dQbYbmT7SI5o3McSjOqTRwSarDiMfUAF2M/31gJUB+JcqADmpU14nILhpURUFPxGNCAX
-         mX0oQuinnOhxUBwFnfX9U3u0m6lPwM1rM5PX9jZUT9sFf88r27GxWoQ1/Pz6lgljhg9P
-         3rkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=X7ezFExomKlp3qyR0uFvz1uhHKLJ7h6XXMe6dA47GjE=;
-        b=DHQWXDFI5ATQiXCDxlzbGumB0+smdmcXgqaDDhfAfNfUWQUfGzRlLHPkRnIc6nRCW3
-         iVBEo5HGKyx8iPukU1bng3DNB7qDwlz4ua7J+IgINPgJus8jfaygNWVSjTBwhJmuNVxj
-         WGBwqjWvWbyQYbhuOLjdHIPhmq7bAnYvXGSb6Fmwrjyg3Y/IrmiN93YAuqwNJGUExMEJ
-         enGKaw5C5caTEs0Kv1e8Nicctyq/mRWkL7BBzbO6USRT0JzjD46t3m7fcPK0NIDUh1hP
-         G+LRSu/4SY2urulzGNUTCKT+kwWJRSR0sJtuJAall5b5G2X3wCLLY2SVURDeNZdE5R6Y
-         rxhQ==
-X-Gm-Message-State: AG10YORprd2SilAxTJwfWeMK0P9Ge9WZEZJTP92+tzg7SDqTd2SjjEeCEDF6o8nDYT0XUQ==
-X-Received: by 10.140.220.69 with SMTP id q66mr9186650qhb.103.1455625521940;
-        Tue, 16 Feb 2016 04:25:21 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id y16sm11000393qgd.49.2016.02.16.04.25.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 04:25:21 -0800 (PST)
-Date: Tue, 16 Feb 2016 12:24:40 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=w8BlbS3ONj1gXSBMFrIFNkEFVk5HZbyt1716hbWS+qI=;
+        b=AsSBIqSGybvP0m7T+WP2cAac2zr0Yr0panOIhSfmpAvOE1bgqZhIo76IHewIZ7Zn+n
+         JSE/FD07m50ZUgawAP+4jMhvHZR4qnGVLJOuC5TZrhMpkcHtHpT64s1bVBL/2F2FHUhG
+         +c3S5/hqbB6KsXU5F5EFfCwne4vfuLjUPZEdX1Wko+nfzDP1iRvLjpN0yakZG4D/ulCN
+         a7x15JT+I/gk1U+HfYNMEoHy4OauoMce5wxQADs1eZIZxaM7wwz2VwevTetb7xPTlARh
+         eQ9U71ySWYXPPyi1uPNGJYCkOoWMByhOc7H6Cc+4nkzSIk76IrGkzz/WR/vHI1P7RfZD
+         Qy5A==
+X-Received: by 10.68.234.230 with SMTP id uh6mr37805712pbc.19.1446078651378;
+        Wed, 28 Oct 2015 17:30:51 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
+        by smtp.gmail.com with ESMTPSA id ix1sm47584126pbd.40.2015.10.28.17.30.50
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 28 Oct 2015 17:30:50 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Remove explicit pointer cast in
- assignments
-Message-ID: <20160216172440.GA10563@janani-Inspiron-3521>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: [PATCH v3] Staging: lustre: Replace LPROCFS_CLIMP_EXIT with up_read
+Date: Wed, 28 Oct 2015 17:30:43 -0700
+Message-Id: <1446078643-16479-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-In this file, the values returned by rtllib_priv() are unnecessarily cast
-into a pointer type in some assignment statements. Remove the cast as it
-is unneeded.
+In all call sites type of argument that macro LPROCFS_CLIMP_EXIT
+use is the same, so replace it with up_read function.
+Also remove the macro since it's no longer used.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 ---
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+Changes in v3:
+ - drop unnecessary parentheses.
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index 8f989a9..0b06482 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -288,7 +288,7 @@ static void _rtl92e_tx_timeout(struct net_device *dev)
+Changes in v2:
+ - remove macro in this patch and not in separate one.
+ - use up_read and not a static inline wrapper function
+
+ drivers/staging/lustre/lustre/include/lprocfs_status.h  |  3 ---
+ drivers/staging/lustre/lustre/mgc/mgc_request.c         |  2 +-
+ drivers/staging/lustre/lustre/obdclass/lprocfs_status.c | 12 ++++++------
+ drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c     |  6 +++---
+ 4 files changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/include/lprocfs_status.h b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+index 9e654b2..f18c0c7 100644
+--- a/drivers/staging/lustre/lustre/include/lprocfs_status.h
++++ b/drivers/staging/lustre/lustre/include/lprocfs_status.h
+@@ -624,9 +624,6 @@ void lprocfs_stats_collect(struct lprocfs_stats *stats, int idx,
+ int lprocfs_single_release(struct inode *, struct file *);
+ int lprocfs_seq_release(struct inode *, struct file *);
  
- void rtl92e_irq_enable(struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
+-#define LPROCFS_CLIMP_EXIT(obd)		 \
+-	up_read(&(obd)->u.cli.cl_sem)
+-
+ /* write the name##_seq_show function, call LPROC_SEQ_FOPS_RO for read-only
+   proc entries; otherwise, you will define name##_seq_write function also for
+   a read-write proc entry, and then call LPROC_SEQ_SEQ instead. Finally,
+diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+index b81efcd..abee084 100644
+--- a/drivers/staging/lustre/lustre/mgc/mgc_request.c
++++ b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+@@ -463,7 +463,7 @@ int lprocfs_mgc_rd_ir_state(struct seq_file *m, void *data)
+ 	}
+ 	spin_unlock(&config_list_lock);
  
- 	priv->irq_enabled = 1;
- 
-@@ -297,7 +297,7 @@ void rtl92e_irq_enable(struct net_device *dev)
- 
- void rtl92e_irq_disable(struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 
- 	priv->ops->irq_disable(dev);
- 
-@@ -306,7 +306,7 @@ void rtl92e_irq_disable(struct net_device *dev)
- 
- static void _rtl92e_set_chan(struct net_device *dev, short ch)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 
- 	RT_TRACE(COMP_CH, "=====>%s()====ch:%d\n", __func__, ch);
- 	if (priv->chan_forced)
-@@ -1546,14 +1546,14 @@ static void _rtl92e_watchdog_timer_cb(unsigned long data)
- *****************************************************************************/
- void rtl92e_rx_enable(struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 
- 	priv->ops->rx_enable(dev);
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 	return 0;
  }
  
- void rtl92e_tx_enable(struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
+diff --git a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+index 333ac7d..2de3c1b 100644
+--- a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
++++ b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+@@ -502,7 +502,7 @@ int lprocfs_rd_server_uuid(struct seq_file *m, void *data)
+ 		   obd2cli_tgt(obd), imp_state_name,
+ 		   imp->imp_deactive ? "\tDEACTIVATED" : "");
  
- 	priv->ops->tx_enable(dev);
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
  
-@@ -1612,7 +1612,7 @@ static void _rtl92e_free_tx_ring(struct net_device *dev, unsigned int prio)
- static void _rtl92e_hard_data_xmit(struct sk_buff *skb, struct net_device *dev,
- 				   int rate)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	int ret;
- 	struct cb_desc *tcb_desc = (struct cb_desc *)(skb->cb +
- 				    MAX_DEV_ADDR_SIZE);
-@@ -1643,7 +1643,7 @@ static void _rtl92e_hard_data_xmit(struct sk_buff *skb, struct net_device *dev,
+ 	return 0;
+ }
+@@ -526,7 +526,7 @@ int lprocfs_rd_conn_uuid(struct seq_file *m, void *data)
+ 	else
+ 		seq_puts(m, "<none>\n");
  
- static int _rtl92e_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	int ret;
- 	struct cb_desc *tcb_desc = (struct cb_desc *)(skb->cb +
- 				    MAX_DEV_ADDR_SIZE);
-@@ -1676,7 +1676,7 @@ static int _rtl92e_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
  
- static void _rtl92e_tx_isr(struct net_device *dev, int prio)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
+ 	return 0;
+ }
+@@ -765,7 +765,7 @@ int lprocfs_rd_import(struct seq_file *m, void *data)
+ 	}
  
- 	struct rtl8192_tx_ring *ring = &priv->tx_ring[prio];
+ out_climp:
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 	return 0;
+ }
+ EXPORT_SYMBOL(lprocfs_rd_import);
+@@ -796,7 +796,7 @@ int lprocfs_rd_state(struct seq_file *m, void *data)
+ 			   ptlrpc_import_state_name(ish->ish_state));
+ 	}
  
-@@ -1850,7 +1850,7 @@ static short _rtl92e_alloc_rx_ring(struct net_device *dev)
- static int _rtl92e_alloc_tx_ring(struct net_device *dev, unsigned int prio,
- 				 unsigned int entries)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	struct tx_desc *ring;
- 	dma_addr_t dma;
- 	int i;
-@@ -1944,7 +1944,7 @@ void rtl92e_reset_desc_ring(struct net_device *dev)
- void rtl92e_update_rx_pkt_timestamp(struct net_device *dev,
- 				    struct rtllib_rx_stats *stats)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 	return 0;
+ }
+ EXPORT_SYMBOL(lprocfs_rd_state);
+@@ -857,7 +857,7 @@ int lprocfs_rd_timeouts(struct seq_file *m, void *data)
+ 		lprocfs_at_hist_helper(m, &imp->imp_at.iat_service_estimate[i]);
+ 	}
  
- 	if (stats->bIsAMPDU && !stats->bFirstMPDU)
- 		stats->mac_time = priv->LastRxDescTSF;
-@@ -2022,7 +2022,7 @@ void rtl92e_copy_mpdu_stats(struct rtllib_rx_stats *psrc_stats,
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 	return 0;
+ }
+ EXPORT_SYMBOL(lprocfs_rd_timeouts);
+@@ -876,7 +876,7 @@ int lprocfs_rd_connect_flags(struct seq_file *m, void *data)
+ 	seq_printf(m, "flags=%#llx\n", flags);
+ 	obd_connect_seq_flags2str(m, flags, "\n");
+ 	seq_printf(m, "\n");
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 	return 0;
+ }
+ EXPORT_SYMBOL(lprocfs_rd_connect_flags);
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
+index afab0de..2aecab2 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/lproc_ptlrpc.c
+@@ -1197,7 +1197,7 @@ int lprocfs_wr_ping(struct file *file, const char __user *buffer,
+ 		return rc;
  
- static void _rtl92e_rx_normal(struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	struct rtllib_hdr_1addr *rtllib_hdr = NULL;
- 	bool unicast_packet = false;
- 	bool bLedBlinking = true;
-@@ -2128,7 +2128,7 @@ done:
+ 	req = ptlrpc_prep_ping(obd->u.cli.cl_import);
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 	if (req == NULL)
+ 		return -ENOMEM;
  
- static void _rtl92e_tx_resume(struct net_device *dev)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	struct rtllib_device *ieee = priv->rtllib;
- 	struct sk_buff *skb;
- 	int queue_index;
-@@ -2279,7 +2279,7 @@ static int _rtl92e_set_mac_adr(struct net_device *dev, void *mac)
- /* based on ipw2200 driver */
- static int _rtl92e_ioctl(struct net_device *dev, struct ifreq *rq, int cmd)
- {
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	struct iwreq *wrq = (struct iwreq *)rq;
- 	int ret = -1;
- 	struct rtllib_device *ieee = priv->rtllib;
-@@ -2403,7 +2403,7 @@ out:
- static irqreturn_t _rtl92e_irq(int irq, void *netdev)
- {
- 	struct net_device *dev = (struct net_device *) netdev;
--	struct r8192_priv *priv = (struct r8192_priv *)rtllib_priv(dev);
-+	struct r8192_priv *priv = rtllib_priv(dev);
- 	unsigned long flags;
- 	u32 inta;
- 	u32 intb;
+@@ -1291,7 +1291,7 @@ int lprocfs_rd_pinger_recov(struct seq_file *m, void *n)
+ 		return rc;
+ 
+ 	seq_printf(m, "%d\n", !imp->imp_no_pinger_recover);
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 
+ 	return 0;
+ }
+@@ -1319,7 +1319,7 @@ int lprocfs_wr_pinger_recov(struct file *file, const char __user *buffer,
+ 	spin_lock(&imp->imp_lock);
+ 	imp->imp_no_pinger_recover = !val;
+ 	spin_unlock(&imp->imp_lock);
+-	LPROCFS_CLIMP_EXIT(obd);
++	up_read(&obd->u.cli.cl_sem);
+ 
+ 	return count;
+ 
 -- 
-2.5.0
+1.9.1
 
 
