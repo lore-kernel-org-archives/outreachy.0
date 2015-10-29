@@ -1,92 +1,109 @@
-X-GM-THRID: 6251854821494620160
-X-Received: by 10.107.152.10 with SMTP id a10mr22564684ioe.28.1455623382029;
-        Tue, 16 Feb 2016 03:49:42 -0800 (PST)
+X-GM-THRID: 6210938115276668928
+X-Received: by 10.68.245.234 with SMTP id xr10mr749579pbc.7.1446115619642;
+        Thu, 29 Oct 2015 03:46:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.236.2 with SMTP id uq2ls1709731obc.11.gmail; Tue, 16 Feb
- 2016 03:49:41 -0800 (PST)
-X-Received: by 10.182.254.35 with SMTP id af3mr20133554obd.37.1455623381681;
-        Tue, 16 Feb 2016 03:49:41 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
-        by gmr-mx.google.com with ESMTPS id 12si3072686pfb.1.2016.02.16.03.49.41
+Received: by 10.140.33.228 with SMTP id j91ls476834qgj.56.gmail; Thu, 29 Oct
+ 2015 03:46:59 -0700 (PDT)
+X-Received: by 10.129.155.83 with SMTP id s80mr755935ywg.55.1446115619084;
+        Thu, 29 Oct 2015 03:46:59 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id el2si125464pbb.0.2015.10.29.03.46.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 03:49:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Oct 2015 03:46:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x231.google.com with SMTP id q63so104018260pfb.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 03:49:41 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x231.google.com with SMTP id hy1so31753432pad.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 03:46:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Kv2BlxyGTjlPT6Fl4Ai/DXTf0WHLCjf4AGb+bJvdDlA=;
-        b=B7fbgD/Ljva45ve8CNMwAddYYucgEhW4wfY2EgCW7hfqyst3YtcdzkMaD5RFYpN+na
-         iTg13/A9xyYMXuFcjsBDYu0fnO8s37TVUBGS4nChYklV4zF36N7fprhECm0PYp+mqwHW
-         HMEDfij4H9+QomOQl1nDoBQdzRQYPFlVXEmw0ZSEAfYsLm1q0f/diFNLjnSldUqCDOuQ
-         c9S7y2MVJJgVb6IIhNEyzUWDVrLGsGND99b9U7AzWRD/LmctlPtiFCx99fgwgLbmn6SA
-         i7vjePf0PBbKSr6ynj3mnN3dxUwODItq/Vi0/VUWUKr4HSFN3jLpG0IJU1X4oHQmCfg2
-         mO0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Kv2BlxyGTjlPT6Fl4Ai/DXTf0WHLCjf4AGb+bJvdDlA=;
-        b=Fo2Uhqb48HZT7ZVQvagu19IXDE9MzC0BYRA196tQ2ObNtacwGSqzNHMVFk6a59pDS7
-         ok4JtyNQiKJ2Fbzjacn4ExrYpSeRs0pOLb/ii+Nfqy95BnNDTYl714AUd7eAi11j4uNK
-         VqMJkrwgOWI/OK5lVHrPfYyrFA9TwzPhJdRBAcKIVc+/KFleM8wcNf6XKa3TKVKNER9y
-         ftCjf/sQ00Zwm974y37ZMQFuvtaqA3lKs2bIJMHRMfc241r+0lVREh05UmvD8Xo7kDUn
-         i8O8zgsAnYpiZfajz3SyRROvvSczalBmmO6Gc7/gKiQV5NMuGoEks5Xa2EaMYiHeCBqL
-         m1ww==
-X-Gm-Message-State: AG10YOS+lboPff9W7gSKTIbaFZhyb8fz3ylebubP/TUgxuebRzt7k15FLf/6KodiB7nsyQ==
-X-Received: by 10.98.11.134 with SMTP id 6mr30751103pfl.109.1455623381471;
-        Tue, 16 Feb 2016 03:49:41 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id y15sm45311792pfi.16.2016.02.16.03.49.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 03:49:40 -0800 (PST)
-Date: Tue, 16 Feb 2016 17:19:35 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: obdclass: obd_mount: Declare function as
- static
-Message-ID: <20160216114934.GA15426@amitoj-Inspiron-3542>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=qMK9tmcbYqhDiEw+jwd4GBpJjT3oQsY7PUQ9hgwRd7A=;
+        b=Z69OJQMS9eaCGFCeCFENlzDqOaWYMWEeusGiKG0GiC9YzEDrQFEg4qMGYUGXblDgJH
+         r9+HXgTKaY8u79F1TW04+5fXJgjuLqrdI+ZG/vn3COHecbfLJtJjTXeq4PzcYrBx+A4x
+         TvB6O2o04VOIB+p0lW3Wsc/YdpFoA7mMUcTm980MSbtRMRA0g0lIihliKJt9fR2KoXV5
+         4gB3mZpGaLwii0knpsKNNTVJIe1Mry/3d1m6wlrIogI/5qFZwOovkSd4gjbO7jjm/a0C
+         lnbbY5HtF3E0J9OQU4tXw6FsvQSM458KurV4MvJSjBxEA1M5HerM+LZi3XaNeV2oHENF
+         hXFg==
+X-Received: by 10.68.216.6 with SMTP id om6mr1213862pbc.29.1446115618916;
+        Thu, 29 Oct 2015 03:46:58 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([122.169.170.95])
+        by smtp.gmail.com with ESMTPSA id rz9sm1620704pbb.61.2015.10.29.03.46.57
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 29 Oct 2015 03:46:58 -0700 (PDT)
+Date: Thu, 29 Oct 2015 16:16:52 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: console: Remove
+ irrelevant return statement
+Message-ID: <20151029104652.GC1331@sudip-pc>
+References: <cover.1446096468.git.shivanib134@gmail.com>
+ <add1870ead28913d364e09a1d06f85c5da8c74ed.1446096468.git.shivanib134@gmail.com>
+ <20151029054828.GB16140@sudip-pc>
+ <CAKHNQQF68wTk1v65i+aGEJwTmLsce-HCE0h4fiXsF-wze=_ksw@mail.gmail.com>
+ <20151029055750.GC16140@sudip-pc>
+ <CAKHNQQEGXJ5=xdwyUeyvggB6jY=FinnRA8vUyCPWBWg8xGs=fA@mail.gmail.com>
+ <CAKHNQQE=hZL1yAULMiCj332R6qRW0KtfufTdG3yQzuGH-0T55w@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <CAKHNQQE=hZL1yAULMiCj332R6qRW0KtfufTdG3yQzuGH-0T55w@mail.gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Declare lustre_mount() function static since it is defined and called in this
-file only.
+On Thu, Oct 29, 2015 at 11:30:17AM +0530, Shivani Bhardwaj wrote:
+> On Thu, Oct 29, 2015 at 11:29 AM, Shivani Bhardwaj <shivanib134@gmail.com>
+> wrote:
+> 
+> >
+> >
+> > On Thu, Oct 29, 2015 at 11:27 AM, Sudip Mukherjee <
+> > sudipm.mukherjee@gmail.com> wrote:
+> >
+> >> On Thu, Oct 29, 2015 at 11:24:59AM +0530, Shivani Bhardwaj wrote:
+> >> > On Thu, Oct 29, 2015 at 11:18 AM, Sudip Mukherjee <
+> >> > sudipm.mukherjee@gmail.com> wrote:
+> >> >
+> >> > > On Thu, Oct 29, 2015 at 11:02:48AM +0530, Shivani Bhardwaj wrote:
+> >> > > > Remove return statement from the function lstcon_group_ndlink_move()
+> >> > > > as its return type is void.
+> >> > > > Fix checkpatch WARNING: void function return statements are not
+> >> > > > generally useful
+> >> > > >
+> >> > > > Signed-off-by : Shivani Bhardwaj <shivanib134@gmail.com>
+> >> > >
+> >> > > checkpatch is complaining about the "Signed-off-by" because of an
+> >> > > extra space.
+> >> > >
+> >> > > regards
+> >> > > sudip
+> >> > >
+> >> >
+> >> > Sending this again. I'm sorry.
+> >>
+> >> BTW, are you adding this manually? Let git add these Signed-off-by and
+> >> you do not need to worry about these anymore.
+> >>
+> >> regards
+> >> sudip
+> >>
+> >
+> > I fixed the commit message by git commit --amend. Did I do anything wrong?
+> > Thank you
+> >
+> 
+> And, should I be sending it again?
 
-This fixes the following sparse warning:
-drivers/staging/lustre/lustre/obdclass/obd_mount.c:1169:15: warning:
-symbol 'lustre_mount' was not declared. Should it be static?
+I am seeing that you have already sent it, but I think Greg will be
+confused by that patch.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/lustre/lustre/obdclass/obd_mount.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/lustre/lustre/obdclass/obd_mount.c b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
-index b5aa816..a486a96 100644
---- a/drivers/staging/lustre/lustre/obdclass/obd_mount.c
-+++ b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
-@@ -1166,7 +1166,7 @@ void lustre_register_kill_super_cb(void (*cfs)(struct super_block *sb))
- EXPORT_SYMBOL(lustre_register_kill_super_cb);
- 
- /***************** FS registration ******************/
--struct dentry *lustre_mount(struct file_system_type *fs_type, int flags,
-+static struct dentry *lustre_mount(struct file_system_type *fs_type, int flags,
- 				const char *devname, void *data)
- {
- 	struct lustre_mount_data2 lmd2 = {
--- 
-1.9.1
-
+regards
+sudip
 
