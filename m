@@ -1,79 +1,154 @@
 X-GM-THRID: 6210938115276668928
-X-Received: by 10.182.196.34 with SMTP id ij2mr27657obc.24.1446099644967;
-        Wed, 28 Oct 2015 23:20:44 -0700 (PDT)
+X-Received: by 10.112.202.165 with SMTP id kj5mr11514257lbc.5.1446098417772;
+        Wed, 28 Oct 2015 23:00:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.41.100 with SMTP id e4ls178444igl.8.gmail; Wed, 28 Oct 2015
- 23:20:44 -0700 (PDT)
-X-Received: by 10.50.33.79 with SMTP id p15mr3509347igi.3.1446099644524;
-        Wed, 28 Oct 2015 23:20:44 -0700 (PDT)
+Received: by 10.28.15.149 with SMTP id 143ls257483wmp.22.canary; Wed, 28 Oct
+ 2015 23:00:17 -0700 (PDT)
+X-Received: by 10.28.132.75 with SMTP id g72mr270348wmd.2.1446098417356;
+        Wed, 28 Oct 2015 23:00:17 -0700 (PDT)
 Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id iz5si923pbc.2.2015.10.28.23.20.44
+Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
+        by gmr-mx.google.com with ESMTPS id t18si181614wme.0.2015.10.28.23.00.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 23:20:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Oct 2015 23:00:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by padhk11 with SMTP id hk11so30802923pad.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 23:20:44 -0700 (PDT)
+Received: by mail-wi0-x22f.google.com with SMTP id q8so274189151wik.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 23:00:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ukvWBpQYtV59BJDVQT55hKMLLrAHMJmFprBhH/nfxd0=;
-        b=bcsUvcllLPMG0Ubu73B7NgwBM7bipGo2x7NrFNGXqfTpo0pU4AJNrKgGk/H144L8/Y
-         sZACPdnolPg3ls5fUOXLgY54ojknERfoia6vGp46SRe1vbg/6AcVCjQRO9Er1Ag3LrSV
-         fFTIlBxspsndrltN/Yq/7LYquDm2bjr03O2Cu5Tk/q9sJPlwj3junLhJi9Oy5tkmezT3
-         73s82DHaNxc01nP1FY3XvUz4zsVqij7XCVYY3jqyq59jQxppFBZMqT0K7woa2cikNeY8
-         GzJY7T3OBEFI1xVSfoqQFAPpNbSXeGqzY+H7PJp8SHC19uC7mZSB0C/iTPb9+sMjFBdb
-         qWhQ==
-X-Received: by 10.66.167.101 with SMTP id zn5mr41030pab.48.1446099644382;
-        Wed, 28 Oct 2015 23:20:44 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id wy8sm69294pab.8.2015.10.28.23.20.42
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 23:20:43 -0700 (PDT)
-Date: Thu, 29 Oct 2015 11:50:35 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] Staging: lustre: console: Remove irrelevant return
- statement
-Message-ID: <20151029062035.GA36208@ubuntu>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=NlxqGVkrJNrlDa4J2iwA/mD5SZqOIAsb1VNDNRoERJg=;
+        b=vkja0vIS4AtFZtCn86wqGbhDH0cDf/tf6rIFo/du2hbjazoCHraxHhN2AJ8SxXo7+S
+         C/QrqU8W/jR+vfzwprMu9mmN9Ceoi6oOH+oDQDamQni9x8s95LYOAt6hFARjc4X3FbKo
+         dD/J44j74EG/NWkpeZDvZnwYuLdYZIU8cIexqIbC8/GTlO/zohLe/XzBKFeMRsFWn3Y3
+         DEUvVMhrUNqc4NW4AqBhasdMcfhj+rl3TljTAUoYUM8nPJPiXPWmxLyl1LX31W68Edy/
+         +alP2TCH51GkQElH/0w0AnZAOuIHBHRfKeu/oUZva8L3wGj+ZnfHg4BjZOc5RA8TDOh9
+         kO4g==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.194.7.97 with SMTP id i1mr62966245wja.87.1446098417277; Wed,
+ 28 Oct 2015 23:00:17 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Wed, 28 Oct 2015 23:00:17 -0700 (PDT)
+In-Reply-To: <CAKHNQQEGXJ5=xdwyUeyvggB6jY=FinnRA8vUyCPWBWg8xGs=fA@mail.gmail.com>
+References: <cover.1446096468.git.shivanib134@gmail.com>
+	<add1870ead28913d364e09a1d06f85c5da8c74ed.1446096468.git.shivanib134@gmail.com>
+	<20151029054828.GB16140@sudip-pc>
+	<CAKHNQQF68wTk1v65i+aGEJwTmLsce-HCE0h4fiXsF-wze=_ksw@mail.gmail.com>
+	<20151029055750.GC16140@sudip-pc>
+	<CAKHNQQEGXJ5=xdwyUeyvggB6jY=FinnRA8vUyCPWBWg8xGs=fA@mail.gmail.com>
+Date: Thu, 29 Oct 2015 11:30:17 +0530
+Message-ID: <CAKHNQQE=hZL1yAULMiCj332R6qRW0KtfufTdG3yQzuGH-0T55w@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: console: Remove
+ irrelevant return statement
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=047d7b5d86a578e3950523380680
 
-Remove return statement from the function lstcon_group_ndlink_move()
-as its return type is void.
-Fix checkpatch WARNING: void function return statements are not
-generally useful
+--047d7b5d86a578e3950523380680
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/lustre/lnet/selftest/console.c | 2 --
- 1 file changed, 2 deletions(-)
+On Thu, Oct 29, 2015 at 11:29 AM, Shivani Bhardwaj <shivanib134@gmail.com>
+wrote:
 
-diff --git a/drivers/staging/lustre/lnet/selftest/console.c b/drivers/staging/lustre/lnet/selftest/console.c
-index 9748a09..b1eceb4 100644
---- a/drivers/staging/lustre/lnet/selftest/console.c
-+++ b/drivers/staging/lustre/lnet/selftest/console.c
-@@ -318,8 +318,6 @@ lstcon_group_ndlink_move(lstcon_group_t *old,
- 	list_add_tail(&ndl->ndl_hlink, &new->grp_ndl_hash[idx]);
- 	list_add_tail(&ndl->ndl_link, &new->grp_ndl_list);
- 	new->grp_nnode++;
--
--	return;
- }
- 
- static void
--- 
-2.1.0
+>
+>
+> On Thu, Oct 29, 2015 at 11:27 AM, Sudip Mukherjee <
+> sudipm.mukherjee@gmail.com> wrote:
+>
+>> On Thu, Oct 29, 2015 at 11:24:59AM +0530, Shivani Bhardwaj wrote:
+>> > On Thu, Oct 29, 2015 at 11:18 AM, Sudip Mukherjee <
+>> > sudipm.mukherjee@gmail.com> wrote:
+>> >
+>> > > On Thu, Oct 29, 2015 at 11:02:48AM +0530, Shivani Bhardwaj wrote:
+>> > > > Remove return statement from the function lstcon_group_ndlink_move()
+>> > > > as its return type is void.
+>> > > > Fix checkpatch WARNING: void function return statements are not
+>> > > > generally useful
+>> > > >
+>> > > > Signed-off-by : Shivani Bhardwaj <shivanib134@gmail.com>
+>> > >
+>> > > checkpatch is complaining about the "Signed-off-by" because of an
+>> > > extra space.
+>> > >
+>> > > regards
+>> > > sudip
+>> > >
+>> >
+>> > Sending this again. I'm sorry.
+>>
+>> BTW, are you adding this manually? Let git add these Signed-off-by and
+>> you do not need to worry about these anymore.
+>>
+>> regards
+>> sudip
+>>
+>
+> I fixed the commit message by git commit --amend. Did I do anything wrong?
+> Thank you
+>
 
+And, should I be sending it again?
+
+--047d7b5d86a578e3950523380680
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Thu, Oct 29, 2015 at 11:29 AM, Shivani Bhardwaj <span dir=3D"ltr">&l=
+t;<a href=3D"mailto:shivanib134@gmail.com" target=3D"_blank">shivanib134@gm=
+ail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D=
+"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D=
+"ltr"><div><div class=3D"h5"><br><div class=3D"gmail_extra"><br><div class=
+=3D"gmail_quote">On Thu, Oct 29, 2015 at 11:27 AM, Sudip Mukherjee <span di=
+r=3D"ltr">&lt;<a href=3D"mailto:sudipm.mukherjee@gmail.com" target=3D"_blan=
+k">sudipm.mukherjee@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D=
+"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
+-left:1ex"><span>On Thu, Oct 29, 2015 at 11:24:59AM +0530, Shivani Bhardwaj=
+ wrote:<br>
+&gt; On Thu, Oct 29, 2015 at 11:18 AM, Sudip Mukherjee &lt;<br>
+&gt; <a href=3D"mailto:sudipm.mukherjee@gmail.com" target=3D"_blank">sudipm=
+.mukherjee@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; &gt; On Thu, Oct 29, 2015 at 11:02:48AM +0530, Shivani Bhardwaj wrote:=
+<br>
+&gt; &gt; &gt; Remove return statement from the function lstcon_group_ndlin=
+k_move()<br>
+&gt; &gt; &gt; as its return type is void.<br>
+&gt; &gt; &gt; Fix checkpatch WARNING: void function return statements are =
+not<br>
+&gt; &gt; &gt; generally useful<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; Signed-off-by : Shivani Bhardwaj &lt;<a href=3D"mailto:shiva=
+nib134@gmail.com" target=3D"_blank">shivanib134@gmail.com</a>&gt;<br>
+&gt; &gt;<br>
+&gt; &gt; checkpatch is complaining about the &quot;Signed-off-by&quot; bec=
+ause of an<br>
+&gt; &gt; extra space.<br>
+&gt; &gt;<br>
+&gt; &gt; regards<br>
+&gt; &gt; sudip<br>
+&gt; &gt;<br>
+&gt;<br>
+&gt; Sending this again. I&#39;m sorry.<br>
+<br>
+</span>BTW, are you adding this manually? Let git add these Signed-off-by a=
+nd<br>
+you do not need to worry about these anymore.<br>
+<br>
+regards<br>
+<span><font color=3D"#888888">sudip<br>
+</font></span></blockquote></div><br></div></div></div><div class=3D"gmail_=
+extra">I fixed the commit message by git commit --amend. Did I do anything =
+wrong?<br></div><div class=3D"gmail_extra">Thank you<br></div></div>
+</blockquote></div><br></div><div class=3D"gmail_extra">And, should I be se=
+nding it again?<br></div></div>
+
+--047d7b5d86a578e3950523380680--
 
