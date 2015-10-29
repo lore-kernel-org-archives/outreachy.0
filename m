@@ -1,76 +1,59 @@
-X-GM-THRID: 6207218463763595264
-X-Received: by 10.68.131.104 with SMTP id ol8mr24261484pbb.4.1445230670757;
-        Sun, 18 Oct 2015 21:57:50 -0700 (PDT)
+X-GM-THRID: 6210549354962354176
+X-Received: by 10.129.156.198 with SMTP id t189mr3573041ywg.26.1446158044602;
+        Thu, 29 Oct 2015 15:34:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.216 with SMTP id 85ls630983ios.106.gmail; Sun, 18 Oct
- 2015 21:57:50 -0700 (PDT)
-X-Received: by 10.107.167.13 with SMTP id q13mr24441837ioe.12.1445230670401;
-        Sun, 18 Oct 2015 21:57:50 -0700 (PDT)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id fa8si326070pab.1.2015.10.18.21.57.50
+Received: by 10.50.61.136 with SMTP id p8ls397421igr.30.gmail; Thu, 29 Oct
+ 2015 15:34:04 -0700 (PDT)
+X-Received: by 10.66.228.69 with SMTP id sg5mr3531010pac.12.1446158044040;
+        Thu, 29 Oct 2015 15:34:04 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id el2si447293pbb.0.2015.10.29.15.34.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 21:57:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Oct 2015 15:34:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=navyasri.tech@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id hk11so17753660pad.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 21:57:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=+NbxpLOiCj/CZ7rHPMWV8rtVHHqQKkz0Blt1tjb9MMI=;
-        b=Qh8v+MG/RJWN00e842tEyGGmNVjDCpUd7hpLr7g/jfrtkUiHqnk8aY85xT0uJ0o2Td
-         MPd/4QGqXK0mMUCdQQY0WE28/ubIP5SOtI50CKI6xLXzvt1suP/0qEMOociCKUDBRLob
-         ITrSRL5Rd6jYBOBDBWv8ji7k9S2cGmb/IpaNmpeH91Gl+b3Mx6PzUnrvtUGVKSxyXs3l
-         DGDCvy9w7982gSnACbDrS6SR1O43NCs6nL2CpaPuaddLudZADZsD7/7RTQC1wW3KkKc6
-         OeZ11T2LoP2co1ly82bRkiczDymuVBywy8guIzpU7/mCKI5WJ0+Um/MCdl9xBAqsseYX
-         ogdg==
-X-Received: by 10.66.100.166 with SMTP id ez6mr32370152pab.78.1445230670262;
-        Sun, 18 Oct 2015 21:57:50 -0700 (PDT)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from navya ([61.12.40.177])
-        by smtp.gmail.com with ESMTPSA id ez1sm1110135pab.6.2015.10.18.21.57.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 18 Oct 2015 21:57:49 -0700 (PDT)
-Date: Mon, 19 Oct 2015 10:27:46 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: emxx_udc: Add space around operator.
-Message-ID: <20151019045746.GA4126@navya>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (75-104-70-114.mobility.exede.net [75.104.70.114])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9A89C67;
+	Thu, 29 Oct 2015 22:34:02 +0000 (UTC)
+Date: Thu, 29 Oct 2015 15:33:55 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel@googlegroups.com,
+	Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: comedi: Use rwsemaphore
+Message-ID: <20151029223355.GA19648@kroah.com>
+References: <1446006196-6294-1-git-send-email-ksenija.stanojevic@gmail.com>
+ <20151028044625.GA6015@kroah.com>
+ <5132136.EW41hst8xX@wuerfel>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <5132136.EW41hst8xX@wuerfel>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch fixes the checkpatch.pl warning about
-addition of space around the '>>' operator.
+On Thu, Oct 29, 2015 at 11:20:46PM +0100, Arnd Bergmann wrote:
+> On Wednesday 28 October 2015 13:46:25 Greg KH wrote:
+> > On Tue, Oct 27, 2015 at 09:23:16PM -0700, Ksenija Stanojevic wrote:
+> > > Functions that use semaphore for locking are divided into read/write
+> > > functions, so use locking mechanism that provides similar semantics.
+> > > 
+> > > Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> > 
+> > Unless you can measure the speed differences by switching to such a
+> > lock, never switch to such a lock as they are much more complex and can
+> > actually cause things to go _slower_.
+> > 
+> > So I can't take this patch unless you have measureable benchmark
+> > numbers.
+> > 
+> 
+> Agreed. However, changing this driver to use 'struct mutex' would
+> be an obvious improvement and should be safe as far as I can tell.
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
- drivers/staging/emxx_udc/emxx_udc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Yes, that's fine to do.
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index 0492747..60604c8 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -211,7 +211,7 @@ static u32 _nbu2ss_get_begin_ram_address(struct nbu2ss_udc *udc)
- 		}
- 
- 		if ((data >> 16) > last_ram_adr)
--			last_ram_adr = data>>16;
-+			last_ram_adr = data >> 16;
- 	}
- 
- 	return last_ram_adr + use_ram_size;
--- 
-1.9.1
-
+greg k-h
 
