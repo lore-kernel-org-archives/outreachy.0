@@ -1,187 +1,237 @@
 X-GM-THRID: 6211494140664872960
-X-Received: by 10.107.47.219 with SMTP id v88mr8540448iov.25.1446232342626;
-        Fri, 30 Oct 2015 12:12:22 -0700 (PDT)
+X-Received: by 10.50.17.106 with SMTP id n10mr3527422igd.6.1446229560713;
+        Fri, 30 Oct 2015 11:26:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.229 with SMTP id 92ls1285931qgp.24.gmail; Fri, 30 Oct
- 2015 12:12:19 -0700 (PDT)
-X-Received: by 10.129.148.129 with SMTP id l123mr7566816ywg.35.1446232339407;
-        Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+Received: by 10.140.106.225 with SMTP id e88ls1103356qgf.59.gmail; Fri, 30 Oct
+ 2015 11:26:00 -0700 (PDT)
+X-Received: by 10.31.134.2 with SMTP id i2mr7377990vkd.8.1446229560177;
+        Fri, 30 Oct 2015 11:26:00 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id iz5si768276pbc.2.2015.10.30.12.12.19
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id vy6si865261pbc.1.2015.10.30.11.26.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Fri, 30 Oct 2015 11:26:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id fv9so85611714pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+Received: by mail-pa0-x22e.google.com with SMTP id z6so81241263pas.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 11:26:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=lH6I04Nbvdo+drYtZ42kXegcxdYBa8kEsC2LvVh6u+s=;
-        b=m2ynoEQME3/Zvw7XVkgmk+Ov7JpGe1qNV9raPbNKpSU0fs9hCxbIS0QivlZUAYDCpU
-         XJUhRij1QUZhnaNtKkayC/D492/TOg8MWjUJSkZG29pyjY9ddnVbeYrnEgUDGRqeR1dt
-         EBooCVyEYr6WTuD5nNpM908yy8shK3fnis4FabNUadyNoBMpRIVWnk3S5+zc2jqhuxfG
-         +zT2+oJkMpqGOkW3zsoqo0wFbd2SGXzipgc6/PsxzdJxJWJdv0E78CV2dRdtp20PNQTG
-         1FJ8XBtTcSqM9op+V/rFRN717B3pX1ifqPn+OQ7aA2QJSu+GAJvjudlSHeo2PE4O+9mk
-         jRIA==
-X-Received: by 10.66.172.6 with SMTP id ay6mr10551579pac.44.1446232339193;
-        Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+        bh=LxngcFpFawpo0b56FuXlrWgTlvSt0MwsBU/IJmCG8qc=;
+        b=raH2Mu/R4ioz3j6Z29uy6nni0FRUGNtu100kknAe6jT57YkZqAZiajiAPq6t/XVue7
+         gWZse2dXWtioZHubFRx/SfTpsoFB+qNlPRUj/ulHVt0YIt6ZMXYLcf72ufGvnqPzIwva
+         DQgQzlTvSd9GCRsP+WYWEhdQ4GpuYcrsl32STDe7Gij5G2J2Wr7LHwdlKmG9XLWzs9N4
+         VKiuiR4O2y+EwWKxTztz+M8reskgVxgvUzP3av3s0PK1n6cqGkJdTI/59/Pqap21HcJ2
+         ff5lernQMXQH9I/2FOWXUYLmy541CxWtAdIjBtQ4fMPNWImD1VSOok4hr9lYGRKjMxSr
+         0/Kw==
+X-Received: by 10.66.248.137 with SMTP id ym9mr10447308pac.157.1446229559950;
+        Fri, 30 Oct 2015 11:25:59 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([182.68.182.136])
-        by smtp.gmail.com with ESMTPSA id rn7sm9616616pab.23.2015.10.30.12.12.17
+        by smtp.gmail.com with ESMTPSA id ou1sm9498628pbc.7.2015.10.30.11.25.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 30 Oct 2015 12:12:18 -0700 (PDT)
-Date: Sat, 31 Oct 2015 00:42:14 +0530
+        Fri, 30 Oct 2015 11:25:59 -0700 (PDT)
+Date: Fri, 30 Oct 2015 23:55:55 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: llite: dir: Add __user annotations
-Message-ID: <20151030191214.GA15157@amitoj-Inspiron-3542>
+Subject: [PATCH v2] staging: lustre: llite: dir: Add __user annotations
+Message-ID: <20151030182555.GA27970@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
 This patch fixes the following multiple sparse warnings by adding
-__user annotations in multiple places including struct declarations:
-
-warning: incorrect type in argument 2 (different address spaces)
-expected void const [noderef] <asn:1>*from got struct lov_user_md_v3
-
-warning: incorrect type in argument 2 (different address spaces)
-expected void const [noderef] <asn:1>*from got struct lov_user_md_v1
-
-warning: incorrect type in argument 2 (different address spaces)
-expected void const [noderef] <asn:1>*from got struct lov_user_md
-
-warning: incorrect type in argument 2 (different address spaces)
-expected void const [noderef] <asn:1>*from got const char
+__user annotations:
 
 warning: incorrect type in argument 1 (different address spaces)
-expected void const [noderef] <asn:1>*to got struct lov_user_md_v
+expected void [noderef] <asn:1>*to got char *<noident>
+
+warning: incorrect type in argument 1 (different address spaces)
+expected void [noderef] <asn:1>*to got int *<noident>
+
+warning: incorrect type in argument 1 (different address spaces)
+expected void [noderef] <asn:1>*to got void *<noident>
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
 Note:
-This patch is in continuation to a previous patch that fixed sparse
-warnings in this file. Now, this file does not give any further sparse
-warnings.
+This patch does not fix all sparse warnings of these kind for this
+file but eliminates most of them.
 
- drivers/staging/lustre/lustre/llite/dir.c | 31 +++++++++++++++++--------------
- 1 file changed, 17 insertions(+), 14 deletions(-)
+Changes in v2:
+        -Added Note
+
+ drivers/staging/lustre/lustre/llite/dir.c | 38 +++++++++++++++----------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/lustre/lustre/llite/dir.c
-index 6a20e61..72900ea 100644
+index cc6f0f5..6a20e61 100644
 --- a/drivers/staging/lustre/lustre/llite/dir.c
 +++ b/drivers/staging/lustre/lustre/llite/dir.c
-@@ -1370,8 +1370,10 @@ lmv_out_free:
- 	case LL_IOC_LOV_SETSTRIPE: {
- 		struct lov_user_md_v3 lumv3;
- 		struct lov_user_md_v1 *lumv1 = (struct lov_user_md_v1 *)&lumv3;
--		struct lov_user_md_v1 *lumv1p = (struct lov_user_md_v1 *)arg;
--		struct lov_user_md_v3 *lumv3p = (struct lov_user_md_v3 *)arg;
-+		struct lov_user_md_v1 __user *lumv1p =
-+					(struct lov_user_md_v1 __user *)arg;
-+		struct lov_user_md_v3 __user *lumv3p =
-+					(struct lov_user_md_v3 __user *)arg;
+@@ -1259,7 +1259,7 @@ static long ll_dir_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 		return ll_iocontrol(inode, file, cmd, arg);
+ 	case FSFILT_IOC_GETVERSION_OLD:
+ 	case FSFILT_IOC_GETVERSION:
+-		return put_user(inode->i_generation, (int *)arg);
++		return put_user(inode->i_generation, (int __user *)arg);
+ 	/* We need to special case any other ioctls we want to handle,
+ 	 * to send them to the MDS/OST as appropriate and to properly
+ 	 * network encode the arg field.
+@@ -1273,7 +1273,7 @@ static long ll_dir_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 		if (mdtidx < 0)
+ 			return mdtidx;
  
- 		int set_default = 0;
+-		if (put_user((int)mdtidx, (int *)arg))
++		if (put_user((int)mdtidx, (int __user *)arg))
+ 			return -EFAULT;
  
-@@ -1396,7 +1398,8 @@ lmv_out_free:
- 		return rc;
- 	}
- 	case LL_IOC_LMV_GETSTRIPE: {
--		struct lmv_user_md *lump = (struct lmv_user_md *)arg;
-+		struct lmv_user_md __user *lump =
-+					(struct lmv_user_md __user *)arg;
- 		struct lmv_user_md lum;
- 		struct lmv_user_md *tmp;
- 		int lum_size;
-@@ -1446,7 +1449,7 @@ free_lmv:
- 	case IOC_MDC_GETFILEINFO:
- 	case IOC_MDC_GETFILESTRIPE: {
- 		struct ptlrpc_request *request = NULL;
--		struct lov_user_md *lump;
-+		struct lov_user_md __user *lump;
- 		struct lov_mds_md *lmm = NULL;
- 		struct mdt_body *body;
- 		char *filename = NULL;
-@@ -1454,7 +1457,7 @@ free_lmv:
- 
- 		if (cmd == IOC_MDC_GETFILEINFO ||
- 		    cmd == IOC_MDC_GETFILESTRIPE) {
--			filename = ll_getname((const char *)arg);
-+			filename = ll_getname((const char __user *)arg);
- 			if (IS_ERR(filename))
- 				return PTR_ERR(filename);
- 
-@@ -1483,11 +1486,11 @@ free_lmv:
- 
- 		if (cmd == IOC_MDC_GETFILESTRIPE ||
- 		    cmd == LL_IOC_LOV_GETSTRIPE) {
--			lump = (struct lov_user_md *)arg;
-+			lump = (struct lov_user_md __user *)arg;
- 		} else {
--			struct lov_user_mds_data *lmdp;
-+			struct lov_user_mds_data __user *lmdp;
- 
--			lmdp = (struct lov_user_mds_data *)arg;
-+			lmdp = (struct lov_user_mds_data __user *)arg;
- 			lump = &lmdp->lmd_lmm;
+ 		return 0;
+@@ -1429,7 +1429,7 @@ lmv_out_free:
+ 		tmp->lum_objects[0].lum_mds = mdtindex;
+ 		memcpy(&tmp->lum_objects[0].lum_fid, ll_inode2fid(inode),
+ 		       sizeof(struct lu_fid));
+-		if (copy_to_user((void *)arg, tmp, lum_size)) {
++		if (copy_to_user((void __user *)arg, tmp, lum_size)) {
+ 			rc = -EFAULT;
+ 			goto free_lmv;
  		}
- 		if (copy_to_user(lump, lmm, lmmsize)) {
-@@ -1499,7 +1502,7 @@ free_lmv:
+@@ -1643,7 +1643,7 @@ free_lmm:
+ 				   NULL);
+ 		if (rc) {
+ 			CDEBUG(D_QUOTA, "mdc ioctl %d failed: %d\n", cmd, rc);
+-			if (copy_to_user((void *)arg, check,
++			if (copy_to_user((void __user *)arg, check,
+ 					     sizeof(*check)))
+ 				CDEBUG(D_QUOTA, "copy_to_user failed\n");
+ 			goto out_poll;
+@@ -1653,7 +1653,7 @@ free_lmm:
+ 				   NULL);
+ 		if (rc) {
+ 			CDEBUG(D_QUOTA, "osc ioctl %d failed: %d\n", cmd, rc);
+-			if (copy_to_user((void *)arg, check,
++			if (copy_to_user((void __user *)arg, check,
+ 					     sizeof(*check)))
+ 				CDEBUG(D_QUOTA, "copy_to_user failed\n");
+ 			goto out_poll;
+@@ -1669,14 +1669,14 @@ out_poll:
+ 		if (!qctl)
+ 			return -ENOMEM;
+ 
+-		if (copy_from_user(qctl, (void *)arg, sizeof(*qctl))) {
++		if (copy_from_user(qctl, (void __user *)arg, sizeof(*qctl))) {
+ 			rc = -EFAULT;
+ 			goto out_quotactl;
  		}
- skip_lmm:
- 		if (cmd == IOC_MDC_GETFILEINFO || cmd == LL_IOC_MDC_GETINFO) {
--			struct lov_user_mds_data *lmdp;
-+			struct lov_user_mds_data __user *lmdp;
- 			lstat_t st = { 0 };
  
- 			st.st_dev     = inode->i_sb->s_dev;
-@@ -1516,7 +1519,7 @@ skip_lmm:
- 			st.st_ctime   = body->ctime;
- 			st.st_ino     = inode->i_ino;
+ 		rc = quotactl_ioctl(sbi, qctl);
  
--			lmdp = (struct lov_user_mds_data *)arg;
-+			lmdp = (struct lov_user_mds_data __user *)arg;
- 			if (copy_to_user(&lmdp->lmd_st, &st, sizeof(st))) {
- 				rc = -EFAULT;
- 				goto out_req;
-@@ -1530,14 +1533,14 @@ out_req:
- 		return rc;
+-		if (rc == 0 && copy_to_user((void *)arg, qctl, sizeof(*qctl)))
++		if (rc == 0 && copy_to_user((void __user *)arg, qctl, sizeof(*qctl)))
+ 			rc = -EFAULT;
+ 
+ out_quotactl:
+@@ -1706,7 +1706,7 @@ out_quotactl:
+ 		int count, vallen;
+ 		struct obd_export *exp;
+ 
+-		if (copy_from_user(&count, (int *)arg, sizeof(int)))
++		if (copy_from_user(&count, (int __user *)arg, sizeof(int)))
+ 			return -EFAULT;
+ 
+ 		/* get ost count when count is zero, get mdt count otherwise */
+@@ -1719,13 +1719,13 @@ out_quotactl:
+ 			return rc;
+ 		}
+ 
+-		if (copy_to_user((int *)arg, &count, sizeof(int)))
++		if (copy_to_user((int __user *)arg, &count, sizeof(int)))
+ 			return -EFAULT;
+ 
+ 		return 0;
  	}
- 	case IOC_LOV_GETINFO: {
--		struct lov_user_mds_data *lumd;
-+		struct lov_user_mds_data __user *lumd;
- 		struct lov_stripe_md *lsm;
--		struct lov_user_md *lum;
-+		struct lov_user_md __user *lum;
- 		struct lov_mds_md *lmm;
- 		int lmmsize;
- 		lstat_t st;
+ 	case LL_IOC_PATH2FID:
+-		if (copy_to_user((void *)arg, ll_inode2fid(inode),
++		if (copy_to_user((void __user *)arg, ll_inode2fid(inode),
+ 				     sizeof(struct lu_fid)))
+ 			return -EFAULT;
+ 		return 0;
+@@ -1737,16 +1737,16 @@ out_quotactl:
+ 		if (!capable(CFS_CAP_SYS_ADMIN))
+ 			return -EPERM;
  
--		lumd = (struct lov_user_mds_data *)arg;
-+		lumd = (struct lov_user_mds_data __user *)arg;
- 		lum = &lumd->lmd_lmm;
- 
- 		rc = ll_get_max_mdsize(sbi, &lmmsize);
-@@ -1818,7 +1821,7 @@ out_quotactl:
- 		return rc;
- 	}
- 	case LL_IOC_HSM_CT_START:
 -		rc = copy_and_ioctl(cmd, sbi->ll_md_exp, (void *)arg,
 +		rc = copy_and_ioctl(cmd, sbi->ll_md_exp, (void __user *)arg,
- 				    sizeof(struct lustre_kernelcomm));
+ 				    sizeof(struct ioc_changelog));
  		return rc;
+ 	case OBD_IOC_FID2PATH:
+-		return ll_fid2path(inode, (void *)arg);
++		return ll_fid2path(inode, (void __user *)arg);
+ 	case LL_IOC_HSM_REQUEST: {
+ 		struct hsm_user_request	*hur;
+ 		ssize_t			 totalsize;
  
+-		hur = memdup_user((void *)arg, sizeof(*hur));
++		hur = memdup_user((void __user *)arg, sizeof(*hur));
+ 		if (IS_ERR(hur))
+ 			return PTR_ERR(hur);
+ 
+@@ -1765,7 +1765,7 @@ out_quotactl:
+ 			return -ENOMEM;
+ 
+ 		/* Copy the whole struct */
+-		if (copy_from_user(hur, (void *)arg, totalsize)) {
++		if (copy_from_user(hur, (void __user *)arg, totalsize)) {
+ 			kvfree(hur);
+ 			return -EFAULT;
+ 		}
+@@ -1801,7 +1801,7 @@ out_quotactl:
+ 		struct hsm_progress_kernel	hpk;
+ 		struct hsm_progress		hp;
+ 
+-		if (copy_from_user(&hp, (void *)arg, sizeof(hp)))
++		if (copy_from_user(&hp, (void __user *)arg, sizeof(hp)))
+ 			return -EFAULT;
+ 
+ 		hpk.hpk_fid = hp.hp_fid;
+@@ -1826,12 +1826,12 @@ out_quotactl:
+ 		struct hsm_copy	*copy;
+ 		int		 rc;
+ 
+-		copy = memdup_user((char *)arg, sizeof(*copy));
++		copy = memdup_user((char __user *)arg, sizeof(*copy));
+ 		if (IS_ERR(copy))
+ 			return PTR_ERR(copy);
+ 
+ 		rc = ll_ioc_copy_start(inode->i_sb, copy);
+-		if (copy_to_user((char *)arg, copy, sizeof(*copy)))
++		if (copy_to_user((char __user *)arg, copy, sizeof(*copy)))
+ 			rc = -EFAULT;
+ 
+ 		kfree(copy);
+@@ -1841,12 +1841,12 @@ out_quotactl:
+ 		struct hsm_copy	*copy;
+ 		int		 rc;
+ 
+-		copy = memdup_user((char *)arg, sizeof(*copy));
++		copy = memdup_user((char __user *)arg, sizeof(*copy));
+ 		if (IS_ERR(copy))
+ 			return PTR_ERR(copy);
+ 
+ 		rc = ll_ioc_copy_end(inode->i_sb, copy);
+-		if (copy_to_user((char *)arg, copy, sizeof(*copy)))
++		if (copy_to_user((char __user *)arg, copy, sizeof(*copy)))
+ 			rc = -EFAULT;
+ 
+ 		kfree(copy);
 -- 
 1.9.1
 
