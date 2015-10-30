@@ -1,61 +1,61 @@
 X-GM-THRID: 6211530445013647360
-X-Received: by 10.28.133.3 with SMTP id h3mr13600wmd.0.1446235206645;
-        Fri, 30 Oct 2015 13:00:06 -0700 (PDT)
+X-Received: by 10.112.169.34 with SMTP id ab2mr2093258lbc.23.1446234631156;
+        Fri, 30 Oct 2015 12:50:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.18.90 with SMTP id h87ls251246lfi.9.gmail; Fri, 30 Oct 2015
- 13:00:06 -0700 (PDT)
-X-Received: by 10.112.142.195 with SMTP id ry3mr2142396lbb.22.1446235206022;
-        Fri, 30 Oct 2015 13:00:06 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id t2si145285wme.1.2015.10.30.13.00.05
+Received: by 10.28.138.1 with SMTP id m1ls196579wmd.10.gmail; Fri, 30 Oct 2015
+ 12:50:30 -0700 (PDT)
+X-Received: by 10.28.19.148 with SMTP id 142mr3674wmt.4.1446234630694;
+        Fri, 30 Oct 2015 12:50:30 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
+        by gmr-mx.google.com with ESMTPS id l1si141254wmb.3.2015.10.30.12.50.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 13:00:05 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 12:50:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,220,1444687200"; 
-   d="scan'208";a="185269179"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 30 Oct 2015 21:00:05 +0100
-Date: Fri, 30 Oct 2015 21:00:04 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Shivani Bhardwaj <shivanib134@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [KERNEL NEWBIES ACCESS] ShivaniBhardwaj
-In-Reply-To: <CAKHNQQHCyA=3h6m1LJ1CELFiwh=t0jSJUQzbDJsUyGZh_pPvYQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.02.1510302059560.2057@localhost6.localdomain6>
-References: <CAKHNQQHCyA=3h6m1LJ1CELFiwh=t0jSJUQzbDJsUyGZh_pPvYQ@mail.gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wm0-x236.google.com with SMTP id f134so19651882wmf.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 12:50:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=45GF6e2hf3m3xGpG7dN7Y+vWV6If2qBpHOYxHOEfMI4=;
+        b=LEhba8iEhjm0RA9ohoX2KEsOo7HiQ5/RI83055ru7pXawiUcDI+8voJO4Z9B+yG7xP
+         /2VGtsixo/t5faJS+aES5K5ku/ZygMzw5iscEY9njfjU8WvYnQBSxxRwOjGbjMD9CLaT
+         DCaB85557sh2HANpcmM4LhWeE1DhVjmejOz7qkLUkNS/CB+bnaCY68b1Cvo++QXOuw4z
+         hu6bK43uTR30CjVwbWK+k/3eQDiq5upichhUswsQkoV/vu3yhjlKumPuAMoIQq04EtXv
+         vo6TQsfPZZ8e74UQQCxWARv9bsxTmy7p0u9zVyoUk/oNjUkTo6/JeHIgylL513gMALdl
+         pD7A==
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-Received: by 10.28.229.212 with SMTP id c203mr5091423wmh.11.1446234630551;
+ Fri, 30 Oct 2015 12:50:30 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Fri, 30 Oct 2015 12:50:30 -0700 (PDT)
+Date: Sat, 31 Oct 2015 01:20:30 +0530
+Message-ID: <CAKHNQQHCyA=3h6m1LJ1CELFiwh=t0jSJUQzbDJsUyGZh_pPvYQ@mail.gmail.com>
+Subject: [KERNEL NEWBIES ACCESS] ShivaniBhardwaj
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a114717a86a80e2052357bda2
 
-On Sat, 31 Oct 2015, Shivani Bhardwaj wrote:
+--001a114717a86a80e2052357bda2
+Content-Type: text/plain; charset=UTF-8
 
-> Hi,
-> 
-> Could someone please provide me edit privileges on the kernel page?
-> Username: ShivaniBhardwaj
+Hi,
 
-Done.
+Could someone please provide me edit privileges on the kernel page?
+Username: ShivaniBhardwaj
 
-julia
+Thank you
+Shivani
 
-> 
-> Thank you
-> Shivani
-> 
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAKHNQQHCyA%3D3h6m1LJ1CE
-> LFiwh%3Dt0jSJUQzbDJsUyGZh_pPvYQ%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
-> 
+--001a114717a86a80e2052357bda2
+Content-Type: text/html; charset=UTF-8
+
+<div dir="ltr"><div><div><div><div><div>Hi,<br><br></div>Could someone please provide me edit privileges on the kernel page?<br></div></div>Username: ShivaniBhardwaj<br><br></div>Thank you<br></div>Shivani<br></div>
+
+--001a114717a86a80e2052357bda2--
 
