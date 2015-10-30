@@ -1,110 +1,73 @@
-X-GM-THRID: 6670735710407884800
-X-Received: by 2002:a9d:7d09:: with SMTP id v9mr541254otn.6.1553151689117;
-        Thu, 21 Mar 2019 00:01:29 -0700 (PDT)
+X-GM-THRID: 6211478013725376512
+X-Received: by 10.50.77.110 with SMTP id r14mr132451igw.9.1446236826224;
+        Fri, 30 Oct 2015 13:27:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4143:: with SMTP id o64ls135866oia.8.gmail; Thu, 21 Mar
- 2019 00:01:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzzwKwLidB0z8R3nMJXbkP5v0ZPGMLZ2DeJku/39iHtVlKlSVI2s63gks9RBD+6GmY6RQGg
-X-Received: by 2002:aca:4b4a:: with SMTP id y71mr666730oia.43.1553151688342;
-        Thu, 21 Mar 2019 00:01:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553151688; cv=none;
-        d=google.com; s=arc-20160816;
-        b=xzIhUpof5klSF4KjcVLTE3CWdGyvCBWJcoYBOXURUTJrlZFpICVFjApVe85lyJTe+b
-         6dzNMW8CfjYRwjMCEm6JOutdI5uBb9vUQDsRpiutX0LlaSu9878gMuWt7NkUi2ts72YV
-         oDvAucvmBV6F9hxqOPugJh+ev3Dv9nIxI0mAhWfFGYPJG4Iky3DWUSA6JhWaGfDcl7NH
-         RlfQcSQuJFvkPp0CaoEP76UGdFZjG0Z+yMinrQbvcs9/jydhDdxTrMa+zrBxqjLjh9kw
-         u8FF4w3IHjst2Yoz8PiAo+yyseXFyimxZU3l+GG60sY75BmxI/lI6ajb6zljPaFuwzsa
-         wW/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=de5n3FWedsxCSvehYf77bJsFmSdHw/hfnJUauXaWwwM=;
-        b=oLMcsz6+dChUFgXyudSlR9eI/su8pKjtNeoZxzp0zGioYW679w7/+w7bWryUzrcr2a
-         dFFzmT3+G2xTkadJE/xDxKpfNr5NUpmhQR4IcX1lqXRChcQDuDa/J+6TfBOJUhtsZrno
-         AXT0pXGJzAajfpdGo89jvGDnmrgUG7xN/QMF89V5tHNCSh7h2W5ihUp9u4cgOVZ3YNeS
-         +YSFER3JjlYHI56tuuHYbgl5Jd1ZY2+/8A3cjU7PKp3PacvbUq654stSqNGh022ccBPz
-         qAhHQBuTzMMGSD6iB8WZogNRCcAz3zhS2LFkcMvm5eyNP82s31IqrNLC1YODWlWdPh0I
-         TihA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CMUZOjKp;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id p8si219995oig.5.2019.03.21.00.01.28
+Received: by 10.140.97.136 with SMTP id m8ls1143625qge.72.gmail; Fri, 30 Oct
+ 2015 13:27:05 -0700 (PDT)
+X-Received: by 10.129.92.198 with SMTP id q189mr8211119ywb.40.1446236825780;
+        Fri, 30 Oct 2015 13:27:05 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x232.google.com (mail-qg0-x232.google.com. [2607:f8b0:400d:c04::232])
+        by gmr-mx.google.com with ESMTPS id z62si642694ywb.4.2015.10.30.13.27.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 00:01:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 13:27:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::232 as permitted sender) client-ip=2607:f8b0:400d:c04::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CMUZOjKp;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id a3so3675097pff.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 00:01:28 -0700 (PDT)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qg0-x232.google.com with SMTP id o38so71853806qge.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 13:27:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=de5n3FWedsxCSvehYf77bJsFmSdHw/hfnJUauXaWwwM=;
-        b=CMUZOjKpTvw6TFj12AqV5gH+1my6uFqM8X8IE7cqF1fnQoObUJmLEK+S0XA9znaW1y
-         Rk3NAn6K+yQ6TMPSoETsX6BFq7oMAhP9MrqHfZ+U8pNzu+9eaLsmTmjQOjXXenoaL51e
-         GWTemYCUkg0cJdk8J3LXZ4G88tJPDHAmx/4k4oIRDuV3MPBeh2zQzbPkjeayzpfAmVXn
-         CkoF114Zzu/o01jU3biPkivZ0/zDtbcmc3iC8ipKBCrFVpzuKPLgGFu2S1JBLERbHi8M
-         SYqLVfZgzbSatWd3rAijmer47oiiRe2zCZEhQ75LEM7ZEe/2syOCisevnC8ZqvY5U4X4
-         2Ctw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=de5n3FWedsxCSvehYf77bJsFmSdHw/hfnJUauXaWwwM=;
-        b=Cz1o6hQK7WPJ0pK8OMkyJCwfIeQj0geeX0+SfEF8hAWPmk4UzTrXpjef9uG52lym3+
-         0M4VLKpzaMeSi2ewo/SEPazvFLA+dox2fcCFfxduNLD8q8dj1Pn0Nrv5u60zrmQdQzn4
-         CWXRSFYmhYiOz/ZfQ7mZRnyz0lhOOnwIZbVDEumgmlW/pirhsBQexAQNaif4GxZjJMtB
-         YtunxsSQX1vmCJwoAvLbtCNWOpVjpQfSFHVozDytvtlzgPIJ8zCk66izZttYPE7lPOR9
-         Gg+44ww5jYTxcvtUxf+VUHTBiAliQSEQQ1NZ9B45ScNHQ4mkkP703hvO8rDlcEWKtiBi
-         R9EQ==
-X-Gm-Message-State: APjAAAX6P9n6fAqYZZEG/RW1Kh3RXDCu+X9qe4P3RaBI0Nm9QZs7a6Du
-	GgVSApHS/5m1ntJpEUCjnuUj6zwOtQI=
-X-Received: by 2002:a17:902:6aca:: with SMTP id i10mr1985798plt.43.1553151687634;
-        Thu, 21 Mar 2019 00:01:27 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.81])
-        by smtp.googlemail.com with ESMTPSA id k10sm10124551pgj.11.2019.03.21.00.01.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 00:01:26 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: greybus: usb.c: Remove unnecessary local variables.
-Date: Thu, 21 Mar 2019 12:31:14 +0530
-Message-Id: <20190321070114.7272-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=Thv7/Ura1KKBc7LsvdTEKDNPrcypPX6qGQBsz0JcB5I=;
+        b=fF8iKHARJ5fsoZxiIcJQWpbKs9VdKCmzCPiC3aP7FRG8kGyGLFNs5lgg89MhmyfUeA
+         Kqz3DnkcniK8sV2iJFmkNSbXfJ/qOf5FirMUBXhSGOqTtJLkglukyFq28O7k+W5gzx0e
+         1mZ/g4AJT42qN39yY84BYr1aVBSdLEc2TNllBMe8k71Ys891SWI6Dprz3Rvxq2OJSKuQ
+         2bHnkmkGqeb1VpGhpMyYjaS1blnlgcmPR2snhhB+SPxZAzn3hJaXbihCd2DEog6I3+CE
+         dS15oH5e1A41EidkeN82LrJtYgzZAusqv1lx1Y6TwPMvo8RBB1TycUgpSyghzG5uRdDw
+         TiUg==
+MIME-Version: 1.0
+X-Received: by 10.140.177.67 with SMTP id x64mr6378230qhx.74.1446236825617;
+ Fri, 30 Oct 2015 13:27:05 -0700 (PDT)
+Received: by 10.140.21.38 with HTTP; Fri, 30 Oct 2015 13:27:05 -0700 (PDT)
+In-Reply-To: <3734328.UQFFTVvvm5@wuerfel>
+References: <20151030162658.GA14714@amitoj-Inspiron-3542>
+	<3734328.UQFFTVvvm5@wuerfel>
+Date: Sat, 31 Oct 2015 01:57:05 +0530
+Message-ID: <CA+5yK5GgKgadBcQx8P_scxBwzL=jTGjf_Jq94vdbt29Q78yDbw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: llite: Add __user annotations
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-The two lines could be compressed into one statement.
-Challenge suggested by Coccinelle using ret.cocci.
+On Sat, Oct 31, 2015 at 1:10 AM, Arnd Bergmann <arnd@arndb.de> wrote:
+> On Friday 30 October 2015 21:56:58 Amitoj Kaur Chawla wrote:
+>> @@ -2245,7 +2245,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+>>                 struct file *file2;
+>>                 struct lustre_swap_layouts lsl;
+>>
+>> -               if (copy_from_user(&lsl, (char *)arg,
+>> +               if (copy_from_user(&lsl, (char __user *)arg,
+>>                                        sizeof(struct lustre_swap_layouts)))
+>>                         return -EFAULT;
+>>
+>>
+>
+> The same comment that I made for "staging: lustre: llite: dir: Add __user
+> annotations" also applies here: when you add a temporary variable
+> at the start of the function, you can replace all those casts from
+> arg to various function calls with just one cast.
+>
+>         Arnd
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/greybus/usb.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Okay, then I'll redo the whole thing and send it as one patch.
 
-diff --git a/drivers/staging/greybus/usb.c b/drivers/staging/greybus/usb.c
-index 1c246c73a085..3aac637c3a50 100644
---- a/drivers/staging/greybus/usb.c
-+++ b/drivers/staging/greybus/usb.c
-@@ -48,11 +48,9 @@ static inline struct usb_hcd *gb_usb_device_to_hcd(struct gb_usb_device *dev)
- static void hcd_stop(struct usb_hcd *hcd)
- {
- 	struct gb_usb_device *dev = to_gb_usb_device(hcd);
--	int ret;
- 
--	ret = gb_operation_sync(dev->connection, GB_USB_TYPE_HCD_STOP,
--				NULL, 0, NULL, 0);
--	if (ret)
-+	if (gb_operation_sync(dev->connection, GB_USB_TYPE_HCD_STOP,
-+			      NULL, 0, NULL, 0))
- 		dev_err(&dev->gbphy_dev->dev, "HCD stop failed '%d'\n", ret);
- }
- 
 -- 
-2.17.1
-
+Amitoj
 
