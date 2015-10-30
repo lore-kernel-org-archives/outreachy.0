@@ -1,73 +1,80 @@
 X-GM-THRID: 6211434117440995328
-X-Received: by 10.112.130.41 with SMTP id ob9mr1721083lbb.17.1446212637583;
-        Fri, 30 Oct 2015 06:43:57 -0700 (PDT)
+X-Received: by 10.129.101.196 with SMTP id z187mr5997462ywb.41.1446212203661;
+        Fri, 30 Oct 2015 06:36:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.9.17 with SMTP id 17ls134478wmj.12.gmail; Fri, 30 Oct 2015
- 06:43:57 -0700 (PDT)
-X-Received: by 10.28.55.135 with SMTP id e129mr705740wma.7.1446212637141;
-        Fri, 30 Oct 2015 06:43:57 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id m135si101804wmb.0.2015.10.30.06.43.57
+Received: by 10.107.29.148 with SMTP id d142ls584038iod.13.gmail; Fri, 30 Oct
+ 2015 06:36:43 -0700 (PDT)
+X-Received: by 10.66.248.9 with SMTP id yi9mr5849856pac.43.1446212203352;
+        Fri, 30 Oct 2015 06:36:43 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
+        by gmr-mx.google.com with ESMTPS id vy6si719617pbc.1.2015.10.30.06.36.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 06:43:57 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 06:36:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,218,1444687200"; 
-   d="scan'208";a="185211587"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 30 Oct 2015 14:43:56 +0100
-Date: Fri, 30 Oct 2015 14:43:56 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Shraddha Barke <shraddha.6596@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: dgnc: Remove unused
- #include header file
-In-Reply-To: <1446212156-28978-1-git-send-email-shraddha.6596@gmail.com>
-Message-ID: <alpine.DEB.2.10.1510301443380.2364@hadrien>
-References: <1446212156-28978-1-git-send-email-shraddha.6596@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x232.google.com with SMTP id hk11so75195742pad.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 06:36:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id;
+        bh=U5mlqiILWk0WgsorC/DdZLGyjEqT8A7yU2zfhQdl8MY=;
+        b=iR7HcF4Fcb8cwTbmBqR89bopIfpG379q74vBwBZAEkUmhK1/czlszWjMy/vKe+d1vC
+         LtNxZsTA1/OMoi6cH48+Z4K18AIJTDp/3VKlSnq2XR+/5zSCn/L4jBIImgZQWHlHLupa
+         5IzNc8GWgerf2fAGrbmsXzMKAA3U0PxyaT/XT5hSGgWf2pY6fhQv/wXHLQingTLlpWZC
+         Jv/mp765ToSamMEsNbMYjTAmvJNlcBiUc17206Sox8zpyIEJDuLvgOy7Rfhsoh6XCLD0
+         U87pTcIS2It7OWMtRdCIWJdImGOtprDd9uMu9sSRQqYnjhC6Cg8SVRedt8Aa4MTdaWI+
+         d7Cw==
+X-Received: by 10.68.135.40 with SMTP id pp8mr8858174pbb.50.1446212203256;
+        Fri, 30 Oct 2015 06:36:43 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id tj2sm8400741pab.4.2015.10.30.06.36.39
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 30 Oct 2015 06:36:42 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 2/2] Staging: dgnc: Remove unused #include header file
+Date: Fri, 30 Oct 2015 19:05:56 +0530
+Message-Id: <1446212156-28978-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150205.5633726A.0012,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Fri, 30 Oct 2015, Shraddha Barke wrote:
+Remove digi.h header since it is not needed.
 
-> Remove digi.h header since it is not needed.
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/dgnc/dgnc_utils.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Here too, it would be nicer to say "since nothing it defines is used in
-this file".
+diff --git a/drivers/staging/dgnc/dgnc_utils.c b/drivers/staging/dgnc/dgnc_utils.c
+index f76de82..95272f4 100644
+--- a/drivers/staging/dgnc/dgnc_utils.c
++++ b/drivers/staging/dgnc/dgnc_utils.c
+@@ -1,7 +1,6 @@
+ #include <linux/tty.h>
+ #include <linux/sched.h>
+ #include "dgnc_utils.h"
+-#include "digi.h"
+ 
+ /*
+  * dgnc_ms_sleep()
+-- 
+2.1.4
 
-julia
-
->
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> ---
->  drivers/staging/dgnc/dgnc_utils.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/drivers/staging/dgnc/dgnc_utils.c b/drivers/staging/dgnc/dgnc_utils.c
-> index f76de82..95272f4 100644
-> --- a/drivers/staging/dgnc/dgnc_utils.c
-> +++ b/drivers/staging/dgnc/dgnc_utils.c
-> @@ -1,7 +1,6 @@
->  #include <linux/tty.h>
->  #include <linux/sched.h>
->  #include "dgnc_utils.h"
-> -#include "digi.h"
->
->  /*
->   * dgnc_ms_sleep()
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1446212156-28978-1-git-send-email-shraddha.6596%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
