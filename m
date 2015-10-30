@@ -1,102 +1,89 @@
 X-GM-THRID: 6211311290389889024
-X-Received: by 10.28.211.201 with SMTP id k192mr4064449wmg.3.1446596958471;
-        Tue, 03 Nov 2015 16:29:18 -0800 (PST)
+X-Received: by 10.182.120.231 with SMTP id lf7mr4591959obb.50.1446183605078;
+        Thu, 29 Oct 2015 22:40:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.6.65 with SMTP id 62ls990766wmg.26.canary; Tue, 03 Nov 2015
- 16:29:18 -0800 (PST)
-X-Received: by 10.28.170.75 with SMTP id t72mr1743wme.5.1446596958078;
-        Tue, 03 Nov 2015 16:29:18 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id t72si733192wme.0.2015.11.03.16.29.17
+Received: by 10.107.130.101 with SMTP id e98ls432178iod.28.gmail; Thu, 29 Oct
+ 2015 22:40:04 -0700 (PDT)
+X-Received: by 10.66.233.8 with SMTP id ts8mr4481138pac.13.1446183604702;
+        Thu, 29 Oct 2015 22:40:04 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id fa8si548874pab.1.2015.10.29.22.40.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Nov 2015 16:29:18 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        Thu, 29 Oct 2015 22:40:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue005) with ESMTPSA (Nemesis) id 0LpRtB-1aPWGG0suj-00fC6q; Wed, 04 Nov
- 2015 01:29:17 +0100
-From: Arnd Bergmann <arnd@arndb.de>
-To: y2038@lists.linaro.org
-Cc: Alison Schofield <amsfield22@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH] scsi: replace struct timeval with ktime_get_real_seconds()
-Date: Wed, 04 Nov 2015 01:29:16 +0100
-Message-ID: <4517379.Q0sjf8SHC3@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151030053949.GA9694@d830.WORKGROUP>
-References: <20151030053949.GA9694@d830.WORKGROUP>
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pasz6 with SMTP id z6so63264827pas.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 22:40:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=QKfZtH8k2IQXBL5VR1JZNOCjtSb/r33Jimkwd5aee1U=;
+        b=yu4n/cC1EGC6yEyQvVYnmL7ecjm3V4/mG+mkTlns6PbkExNM5y+lxuriRVCMxa8HnT
+         F+kku0SYZobIgPBeWMhjcvGe8wcuOeSHaQjL++g5pF4lqovnkUVVEImrVCUvTbP3HlAS
+         XoZ2gg+x9+vR2/X3vlmzB5eQk4h/XyQxh0F+lbPZPoA0y8MI8QyIMG82CC7R9/3hQNZM
+         g5y8KLPRftMbq8wj5iXZ3PLLvVahfmxiZmDd1xJXtXcENg+GANsxgFJzheXCP+ZhvJS5
+         V1tQ2ie1w1qc7gy7EZi9NU3OfmN508Rn7NjlFsqvUwzIFv5ws33U9B+/74UXrjcapKjr
+         A0vA==
+X-Received: by 10.67.6.161 with SMTP id cv1mr6413741pad.131.1446183604568;
+        Thu, 29 Oct 2015 22:40:04 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-70-157.dhcp.embarqhsd.net. [67.232.70.157])
+        by smtp.gmail.com with ESMTPSA id oi3sm5609754pbb.53.2015.10.29.22.40.03
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 29 Oct 2015 22:40:03 -0700 (PDT)
+Date: Thu, 29 Oct 2015 22:40:03 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: y2038@lists.linaro.org
+Subject: [PATCH] scsi: replace struct timeval with ktime_get_real_seconds()
+Message-ID: <20151030053949.GA9694@d830.WORKGROUP>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:M3RRxJqq01zTLVc2KRmycefmAE5Mpoa2ZuN48T/Qam8y9eTBUt2
- SM6HCfreIRLaEDRwXzXnkkRrh97Jl+c5WCsLjMp/5wITeqqXj6gsd3p1MFmC8KF3vvx8uvV
- s/Q469/FzSstxltKLEduiCul1wRRUCgGbjrqwfsh4vZyOdWKTzxf6Un3o+pHLuSmYWz+1m1
- wRJFpxI/kJh7OgyNB+XhQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:vxH8/8W1POU=:eu2CqtVoomOx1EM/iJU7Nu
- cIWllehkN4SAE2DyttwWB+PUDUEyGwPtPsBYr5IOpptq3gfopcfwPNg1qT5gmfo/1pt6Ph1EN
- y4Y5G3dfTx01yhYjSF0sC6EfpfsphMCQN/UefZVfhc3Z0CGldhmgK8VlKgnMcAMEPa5i/R/g4
- ndQqO6rp/MRpoPifrYUg4QtytYVVDdX1ZZJdK1EIUIPsl4e6mq6CLQFlaIgpW+sA48Vq5v6WG
- d7VPOrDsl1HXUtiSPZkDnEgyMJLEznEpTE4/NSCtdLTy0JlKnNIAfPc5yukoN3R8F4BQlRDxg
- SuKR8BysTowgwbepRGvAR9Cm1Q6ZbdNix+oDIXb2V857BqyW6W0ugPeIzxurLQDEOb1ITsoh+
- 414CcUWlZfqXM59VT819dwif4xqygsh3YHbifw+7h3FWA4vA9QrFO/Bdk4JI1IPAml+yAKIzL
- DGyDtwUBeFDH859ThP6P1Rebj4JhRm5g4ObnqpFrhgVkZoGUAJXmOE+nwAyLMmPhgHi+jaUas
- 4P6ltkDj7yrNVi4m9bq6Bb6M8bu6g5Yr7abpUP1H5NlVs+wuewYIfNR6DxwGeMao695sgHEax
- fumUTqGSwKrbfarIvLNxFuj91Dn8Zd26intXKsvVZK6triJNTUx9eWmEgXHo7z2nS8PCzufBc
- pU19taxOuBPdNIK8IIOmOCDCtAMZUyeuFqhP+pSgPwqcV1fmyn4xmNWP0UisBGD2c3DC/scan
- aJjX8icbto58shcJ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Thursday 29 October 2015 22:40:03 Alison Schofield wrote:
-> Replace the use of struct timeval and do_gettimeofday() with
-> 64 bit ktime_get_real_seconds. Prevents 32-bit type overflow
-> in year 2038 on 32-bit systems.
-> 
-> Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+Replace the use of struct timeval and do_gettimeofday() with
+64 bit ktime_get_real_seconds. Prevents 32-bit type overflow
+in year 2038 on 32-bit systems.
 
-In the subject line, please be more specific and name the driver, not just
-the subsystem.
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+---
+ drivers/scsi/pmcraid.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-The patch looks correct, but it would be nice to explain in the
-changelog how the time is used here (it gets passed to the firmware
-as 64-bit milliseconds).
+diff --git a/drivers/scsi/pmcraid.c b/drivers/scsi/pmcraid.c
+index ed31d8c..3f64275 100644
+--- a/drivers/scsi/pmcraid.c
++++ b/drivers/scsi/pmcraid.c
+@@ -45,6 +45,7 @@
+ #include <asm/processor.h>
+ #include <linux/libata.h>
+ #include <linux/mutex.h>
++#include <linux/ktime.h>
+ #include <scsi/scsi.h>
+ #include <scsi/scsi_host.h>
+ #include <scsi/scsi_device.h>
+@@ -5563,11 +5564,9 @@ static void pmcraid_set_timestamp(struct pmcraid_cmd *cmd)
+ 	__be32 time_stamp_len = cpu_to_be32(PMCRAID_TIMESTAMP_LEN);
+ 	struct pmcraid_ioadl_desc *ioadl = ioarcb->add_data.u.ioadl;
+ 
+-	struct timeval tv;
+ 	__le64 timestamp;
+ 
+-	do_gettimeofday(&tv);
+-	timestamp = tv.tv_sec * 1000;
++	timestamp = ktime_get_real_seconds() * 1000;
+ 
+ 	pinstance->timestamp_data->timestamp[0] = (__u8)(timestamp);
+ 	pinstance->timestamp_data->timestamp[1] = (__u8)((timestamp) >> 8);
+-- 
+2.1.4
 
-> @@ -45,6 +45,7 @@
->  #include <asm/processor.h>
->  #include <linux/libata.h>
->  #include <linux/mutex.h>
-> +#include <linux/ktime.h>
->  #include <scsi/scsi.h>
->  #include <scsi/scsi_host.h>
->  #include <scsi/scsi_device.h>
-> @@ -5563,11 +5564,9 @@ static void pmcraid_set_timestamp(struct pmcraid_cmd *cmd)
->  	__be32 time_stamp_len = cpu_to_be32(PMCRAID_TIMESTAMP_LEN);
->  	struct pmcraid_ioadl_desc *ioadl = ioarcb->add_data.u.ioadl;
->  
-> -	struct timeval tv;
->  	__le64 timestamp;
->  
-> -	do_gettimeofday(&tv);
-> -	timestamp = tv.tv_sec * 1000;
-> +	timestamp = ktime_get_real_seconds() * 1000;
->  
-
-This is a nice simplification on top of the fix.
-
-I see that the driver for some reason leaves the sub-second portion of
-the 64-bit milliseconds as zero, which is a bit odd. Did you notice that
-too?
-
-What I'd do in a case like this is to list in the changelog an alternative
-approach, so the maintainer can decide whether to apply the patch as-is or
-to ask for the alternative. The other approach would be to fix the
-milliseconds as well and do:
-
-	struct timespec64 ts;
-
-	ktime_get_real_ts64(&ts);
-	timestamp = ts.tv_sec * MSEC_PER_SEC + ts.tv_nsec / NSEC_PER_MSEC;
-	
-
-	Arnd
 
