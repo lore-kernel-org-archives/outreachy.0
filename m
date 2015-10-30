@@ -1,75 +1,71 @@
 X-GM-THRID: 6211494140664872960
-X-Received: by 10.129.4.203 with SMTP id 194mr8408031ywe.33.1446246020315;
-        Fri, 30 Oct 2015 16:00:20 -0700 (PDT)
+X-Received: by 10.112.142.195 with SMTP id ry3mr2123099lbb.22.1446233737627;
+        Fri, 30 Oct 2015 12:35:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.244 with SMTP id c107ls1181313qgf.39.gmail; Fri, 30
- Oct 2015 16:00:19 -0700 (PDT)
-X-Received: by 10.129.82.193 with SMTP id g184mr8572691ywb.44.1446246019775;
-        Fri, 30 Oct 2015 16:00:19 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id pe1si961495pac.2.2015.10.30.16.00.19
+Received: by 10.28.18.198 with SMTP id 189ls204522wms.11.gmail; Fri, 30 Oct
+ 2015 12:35:37 -0700 (PDT)
+X-Received: by 10.28.170.75 with SMTP id t72mr1049898wme.5.1446233737130;
+        Fri, 30 Oct 2015 12:35:37 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id t2si143046wme.1.2015.10.30.12.35.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 16:00:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Fri, 30 Oct 2015 12:35:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 62400323;
-	Fri, 30 Oct 2015 23:00:19 +0000 (UTC)
-Date: Fri, 30 Oct 2015 16:00:19 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: llite: dir: Add
- __user annotations
-Message-ID: <20151030230019.GA2920@kroah.com>
-References: <20151030182555.GA27970@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue003) with ESMTPSA (Nemesis) id 0LjOHr-1aTmnn17hH-00dXeT; Fri, 30 Oct
+ 2015 20:35:36 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: llite: dir: Add __user annotations
+Date: Fri, 30 Oct 2015 20:35:35 +0100
+Message-ID: <3741911.Fn7QnqVu3M@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151030191214.GA15157@amitoj-Inspiron-3542>
+References: <20151030191214.GA15157@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20151030182555.GA27970@amitoj-Inspiron-3542>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:TZB8P8Zvk3Ep+oSR0RkhgKfiSVZV1lNZZEWzxvdpaOfkhgxV1IR
+ ZfNArLwaQrFT2ATkPYNUHn9mz75+cljd4UhbXu387ZxocoA02OBV/nNdGbD3/MUoMERCxCt
+ LIKv9FWmCwIf2TLjbnT/kR9oMxi3J9tvUdodESvGqMJ/3W3O8NUZDIvVdgps1UnU/4z8sfL
+ 8VskfpnppuDa+5qFK86RA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:CLnPD24SQKw=:YGYIogu0FT9eiqPI6LW4V0
+ 80sKvjjJpOsEoBsxxoFuE6Gx62eMQA7a9KGuJ4KESrBPadNeyTYR/dm89u433ZicAweg3NWUF
+ 9f2gAYD9D4hReeknZ++e4qb7qIxhZVJSyfpIq9J0c+LZD+IpovtUAwFEXS25i97fAREe9LO5p
+ 9I/rqkgyogESViBloQB8yyZSz+hUadMiaSwf3GNrrf9i2aqC4gUbUo0ywDfEyQhwamCyl1QiK
+ fVN4IFuvqqs4UDwQPQbV0YTCv70USjhZm+lw1dyL1BfSdOBycPGoLxr75Ig5bUU2zUrNzSbnj
+ WJ2gKIfmayXDbXXfPvlvWble0ADaY1o8pZzs+BEWwkdCggyJgTLGnTY5X6dD6zfP0RYZ8w0Pe
+ t1Z5G8LkaDQyhfawEZighgPvbjsq5UiZ6BMwBmSV5WT6ebz2Ejt++6a0ocywbC3DpMk7pOhrx
+ fGica+A56eTMUVlH74qnCjozXyxznZEzRIAi2DHl7O/PlzZ4QRJt8CETRF8NtEPnw62thfZQF
+ cBsw9z4Mb2LLUfy9cC5RBv+lLhJxjvMLyMX2EDLNwEMx4H+wfKMfZDHmXbku2xApr402C0se9
+ UrwqIkfv946F+XPh3ScZ/1gPDo00bh9JzDOTGvv1RatP2Q/5LMC8MMB/aMx3W7gggujCkKf7y
+ P17Reu+X46eBCaUhibhOEsIYxgWiPJ+DE/Ks3Re1xvPUAIt2ny8GSZUc+6bkV/avzokAU8d7Y
+ zYKtThm8P7LkzGQf
 
-On Fri, Oct 30, 2015 at 11:55:55PM +0530, Amitoj Kaur Chawla wrote:
-> This patch fixes the following multiple sparse warnings by adding
-> __user annotations:
+On Saturday 31 October 2015 00:42:14 Amitoj Kaur Chawla wrote:
+>         case LL_IOC_LOV_SETSTRIPE: {
+>                 struct lov_user_md_v3 lumv3;
+>                 struct lov_user_md_v1 *lumv1 = (struct lov_user_md_v1 *)&lumv3;
+> -               struct lov_user_md_v1 *lumv1p = (struct lov_user_md_v1 *)arg;
+> -               struct lov_user_md_v3 *lumv3p = (struct lov_user_md_v3 *)arg;
+> +               struct lov_user_md_v1 __user *lumv1p =
+> +                                       (struct lov_user_md_v1 __user *)arg;
+> +               struct lov_user_md_v3 __user *lumv3p =
+> +                                       (struct lov_user_md_v3 __user *)arg;
+>  
 > 
-> warning: incorrect type in argument 1 (different address spaces)
-> expected void [noderef] <asn:1>*to got char *<noident>
-> 
-> warning: incorrect type in argument 1 (different address spaces)
-> expected void [noderef] <asn:1>*to got int *<noident>
-> 
-> warning: incorrect type in argument 1 (different address spaces)
-> expected void [noderef] <asn:1>*to got void *<noident>
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> ---
-> Note:
-> This patch does not fix all sparse warnings of these kind for this
-> file but eliminates most of them.
-> 
-> Changes in v2:
->         -Added Note
-> 
->  drivers/staging/lustre/lustre/llite/dir.c | 38 +++++++++++++++----------------
->  1 file changed, 19 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/lustre/lustre/llite/dir.c
-> index cc6f0f5..6a20e61 100644
-> --- a/drivers/staging/lustre/lustre/llite/dir.c
-> +++ b/drivers/staging/lustre/lustre/llite/dir.c
-> @@ -1259,7 +1259,7 @@ static long ll_dir_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->  		return ll_iocontrol(inode, file, cmd, arg);
->  	case FSFILT_IOC_GETVERSION_OLD:
->  	case FSFILT_IOC_GETVERSION:
-> -		return put_user(inode->i_generation, (int *)arg);
-> +		return put_user(inode->i_generation, (int __user *)arg);
 
-Again, lustre is impossible to fix when it comes to __user markings,
-sorry, I'm going to drop this patch from my queue.
+A nicer way to do this is to only have a single cast at the start of the
+function, like
 
-greg k-h
+	void __iomem *argp = (void __iomem *)arg;
+
+and then using normal assignments from that to the specific structures.
+
+	Arnd
 
