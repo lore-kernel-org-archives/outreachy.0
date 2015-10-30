@@ -1,69 +1,135 @@
 X-GM-THRID: 6211463142533234688
-X-Received: by 10.28.87.15 with SMTP id l15mr61008wmb.1.1446239520995;
-        Fri, 30 Oct 2015 14:12:00 -0700 (PDT)
+X-Received: by 10.13.219.195 with SMTP id d186mr6489646ywe.30.1446218978351;
+        Fri, 30 Oct 2015 08:29:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.37.69 with SMTP id l66ls19386lfl.8.gmail; Fri, 30 Oct 2015
- 14:12:00 -0700 (PDT)
-X-Received: by 10.112.166.40 with SMTP id zd8mr1463893lbb.21.1446239520441;
-        Fri, 30 Oct 2015 14:12:00 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by gmr-mx.google.com with ESMTPS id t18si150553wme.0.2015.10.30.14.12.00
+Received: by 10.50.138.8 with SMTP id qm8ls191173igb.36.gmail; Fri, 30 Oct
+ 2015 08:29:38 -0700 (PDT)
+X-Received: by 10.107.41.207 with SMTP id p198mr2885763iop.6.1446218978033;
+        Fri, 30 Oct 2015 08:29:38 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id el2si797813pbb.0.2015.10.30.08.29.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 14:12:00 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 08:29:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0LodXq-1aOYmo0QkE-00gZoi; Fri, 30 Oct
- 2015 22:12:00 +0100
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Shraddha Barke <shraddha.6596@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/7] Staging: lustre: Declare local functions as static  and drop unused functions
-Date: Fri, 30 Oct 2015 22:11:59 +0100
-Message-ID: <4106483.85KOHKPzK9@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id z6so77388856pas.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 08:29:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=MwqHnIghgeXlS1x4oLSs/IXgFZDzb3KPwlslk8CdsSM=;
+        b=letjvhFQozvCsBF3OZkPDMIQxqxfkRmzGowMrQECpLQVdw9nquP0CqqwZvVliz79L7
+         oUrZyYLOVpTnH4/j8VrR1VmaaDLqKhZPdtZco0yJRt+F7qDTOUbhOyrgZbfFqsGUnD2I
+         iGvCOJsRhHvaVIyJESYhbg2rhc80trAsPbMNGcxMt1GwYDFp1IWhTRSND5ZHt05gcrlj
+         21IEHGnjor1O0ayiPzE+rNpcyk9epepiVNV8Ah8SmV5rHf0NKL8KYXQuJ4uTqNaNBK+r
+         x0Th75JjLOwB2gn03BG7HIdKDcRo2cnHwR0OZpKHQTh+Bgn9piCIwAOhMKuseOxJQd2x
+         cGZw==
+X-Received: by 10.68.189.69 with SMTP id gg5mr9586172pbc.55.1446218977920;
+        Fri, 30 Oct 2015 08:29:37 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id dn4sm8883843pbd.0.2015.10.30.08.29.35
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 30 Oct 2015 08:29:37 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 7/7] Staging: lustre: osc: Declare local functions as static
+Date: Fri, 30 Oct 2015 20:59:09 +0530
+Message-Id: <1446218949-8599-8-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1446218949-8599-1-git-send-email-shraddha.6596@gmail.com>
 References: <1446218949-8599-1-git-send-email-shraddha.6596@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:sd3rExYe45qlkusGmylH9vQ8as0ZWlaIXx18L+mYcOLJtG5sbQY
- VLJlNSCDaXB5E7YqF6YUkTaxWaMDxyv1i7U73/q7Ef8p7rYPOyo6ZwvkJ+tVj4hEAsPDA+3
- 0fgIMciXehO5AxhGv8Ck8KdK2fqhgkrgUFPwtd2c5LaQUJRnhk8dV6R57WkdwYekR8sRI1c
- MPovC3J7x1DgXBoECVFjQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:06ZlVZkwZ00=:xN7OOim31Ska7Q1MVn/7Et
- yNOtYdWyeHF8w3xlwwRwMCU2dU2vvl464ZP1WOZj7JgZFMM7jUC/oL7KvlmBvTNHFrRqLp6RT
- zidYAV8SZyCaOj4Joj31lQ1FYtPTwfNu5QcJ3AGzcdD0r61IdW2qUxObxrQJvxfDKRrLoEiyM
- 1AItrSaziF+uTdbxBIdvQrfFw+Kt3t5gGq3WxsRa6ralLqR9paZtLWiAT1YiCKIDAv9RI9kZN
- SiArN4eZcxx2jcKZ11EPUMLcUSRKCSOJ5GkdlUZhQmw/94Gt8T2H0QxO7GCt3e+G/h3PACdSX
- M84jf9cjHX8gTBT8XZIdsiaACuHzxEMyiWTJyrWZF4v9HotCuTWCO4SjuMd5WUVDf08hug9rD
- I+gZkg4SeGqF+JraCsmcmIqRy8EtRJxaOyBbrG8zV6Nj5/yBEHFtkIwybuepkOyXwLz2WR1+Q
- tIvknReYNZstIC1Uyzlq6YvdZ5cJDlp554rrxYprHbDLfzUmphwrED21XZvOvTiDCKE8nRXdl
- D+PNDzD9O3tyAS+fLO2uTxbedw4rKCbli0Hx7Txo55G91pRWIZ0fVxh3PlllYZRCsHFjV1ha9
- IIRrYaOILsvtjkaat2Es7jXOdAcG0cn4vxXC6sjI5x291dlhZc9BMalmowMkIoCBzd/J8r3XF
- u2h/puCN9emNIeiZAj5pLJ2XyU64zg2FO3COl8Nt0fFGckloPKI7OGym0P01Jpy9fVocwRSRn
- 6GqBxn4+7vK1hFsa
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A15020A.56338CE0.00E1,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Friday 30 October 2015 20:59:02 Shraddha Barke wrote:
-> These patches declare local functions as static and remove corresponding
-> declarations from header files. Unused function definitions and declarations
-> are also removed.
-> 
-> Shraddha Barke (7):
->   Staging: lustre: mdc: Declare local functions as static
->   Staging: lustre: mdc: Remove unused mdc_open function from header
->   Staging: lustre: fld: Remove unused seq_client_alloc_super
->   Staging: lustre: fld: Declare local functions as static
->   Staging: lustre: fld: Remove unused functions
->   Staging: lustre: fld: Remove unused declaration
->   Staging: lustre: osc: Declare local functions as static
-> 
-> 
+Declare osc_real_create, osc_create and osc_cleanup as static
+since they are used only in this particular file. Also remove the
+corresponding declarations from header file.
 
-Nice work, whole series
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/lustre/lustre/osc/osc_internal.h |  6 ------
+ drivers/staging/lustre/lustre/osc/osc_request.c  | 13 +++++++------
+ 2 files changed, 7 insertions(+), 12 deletions(-)
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+diff --git a/drivers/staging/lustre/lustre/osc/osc_internal.h b/drivers/staging/lustre/lustre/osc/osc_internal.h
+index 5ed30ec..db2ee9c 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_internal.h
++++ b/drivers/staging/lustre/lustre/osc/osc_internal.h
+@@ -89,11 +89,6 @@ struct osc_cache_waiter {
+ 	int		     ocw_rc;
+ };
+ 
+-int osc_create(const struct lu_env *env, struct obd_export *exp,
+-	       struct obdo *oa, struct lov_stripe_md **ea,
+-	       struct obd_trans_info *oti);
+-int osc_real_create(struct obd_export *exp, struct obdo *oa,
+-		    struct lov_stripe_md **ea, struct obd_trans_info *oti);
+ void osc_wake_cache_waiters(struct client_obd *cli);
+ int osc_shrink_grant_to_target(struct client_obd *cli, __u64 target_bytes);
+ void osc_update_next_shrink(struct client_obd *cli);
+@@ -137,7 +132,6 @@ int osc_lru_shrink(struct client_obd *cli, int target);
+ 
+ extern spinlock_t osc_ast_guard;
+ 
+-int osc_cleanup(struct obd_device *obd);
+ int osc_setup(struct obd_device *obd, struct lustre_cfg *lcfg);
+ 
+ int lproc_osc_attach_seqstat(struct obd_device *dev);
+diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
+index 367f83a..3e2d431 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_request.c
++++ b/drivers/staging/lustre/lustre/osc/osc_request.c
+@@ -104,7 +104,7 @@ struct osc_enqueue_args {
+ static void osc_release_ppga(struct brw_page **ppga, u32 count);
+ static int brw_interpret(const struct lu_env *env,
+ 			 struct ptlrpc_request *req, void *data, int rc);
+-int osc_cleanup(struct obd_device *obd);
++static int osc_cleanup(struct obd_device *obd);
+ 
+ /* Pack OSC object metadata for disk storage (LE byte order). */
+ static int osc_packmd(struct obd_export *exp, struct lov_mds_md **lmmp,
+@@ -431,8 +431,9 @@ static int osc_setattr_async(struct obd_export *exp, struct obd_info *oinfo,
+ 				      oinfo->oi_cb_up, oinfo, rqset);
+ }
+ 
+-int osc_real_create(struct obd_export *exp, struct obdo *oa,
+-		    struct lov_stripe_md **ea, struct obd_trans_info *oti)
++static int osc_real_create(struct obd_export *exp, struct obdo *oa,
++			   struct lov_stripe_md **ea,
++			   struct obd_trans_info *oti)
+ {
+ 	struct ptlrpc_request *req;
+ 	struct ost_body *body;
+@@ -689,9 +690,9 @@ static int osc_can_send_destroy(struct client_obd *cli)
+ 	return 0;
+ }
+ 
+-int osc_create(const struct lu_env *env, struct obd_export *exp,
+-	       struct obdo *oa, struct lov_stripe_md **ea,
+-	       struct obd_trans_info *oti)
++static int osc_create(const struct lu_env *env, struct obd_export *exp,
++		      struct obdo *oa, struct lov_stripe_md **ea,
++		      struct obd_trans_info *oti)
+ {
+ 	int rc = 0;
+ 
+-- 
+2.1.4
+
 
