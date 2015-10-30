@@ -1,122 +1,65 @@
 X-GM-THRID: 6211302879745015808
-X-Received: by 10.107.160.8 with SMTP id j8mr5922187ioe.4.1446182574039;
-        Thu, 29 Oct 2015 22:22:54 -0700 (PDT)
+X-Received: by 10.68.195.197 with SMTP id ig5mr4664750pbc.4.1446181647698;
+        Thu, 29 Oct 2015 22:07:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.25.166 with SMTP id d6ls68396igg.43.canary; Thu, 29 Oct
- 2015 22:22:53 -0700 (PDT)
-X-Received: by 10.68.245.234 with SMTP id xr10mr4663830pbc.7.1446182573601;
-        Thu, 29 Oct 2015 22:22:53 -0700 (PDT)
+Received: by 10.182.133.41 with SMTP id oz9ls296315obb.82.gmail; Thu, 29 Oct
+ 2015 22:07:27 -0700 (PDT)
+X-Received: by 10.182.27.101 with SMTP id s5mr4569221obg.35.1446181647384;
+        Thu, 29 Oct 2015 22:07:27 -0700 (PDT)
 Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id vy6si566249pbc.1.2015.10.29.22.22.53
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id fa8si540127pab.1.2015.10.29.22.07.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Oct 2015 22:22:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Oct 2015 22:07:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by padhk11 with SMTP id hk11so62938756pad.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 22:22:53 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id fv9so64985702pac.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 22:07:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-type:content-transfer-encoding;
-        bh=aH9cyxORzHUyM/MVFRMDObLhqeWxO200RY9QSfG8Tso=;
-        b=GO9BT2iteyB1w7m/uyxdzxgGGfWPEhVLJ4+ggnCpgshXtKNFvLqdqRoZqe/Poif3/N
-         ObvlIJq/tUsI8VzOegbONEUIJmZV5KfZj6G9BMz+gH6arNWGNv5G/E7B6rcw83n9dl4b
-         42nEq70cdNOPy0h6HpRU5iRCztjFNjSmdQFkrIwg5GjkfhJoAnoYTbyRT5HP97s2DhEt
-         CtX/KbG5yD6TEzKqSl7i/B+9jyHRHHEJ7ff0I3c79luRdVDuJYKOc9mo/w6wDZ3GByRm
-         PWmCzYKF/ceDyKLNU77v0l2TaTyj/1PhpFEMTz912j3QCZx6bqNReBzhcVosYGzrylCn
-         s2SA==
-X-Received: by 10.66.55.42 with SMTP id o10mr6399671pap.124.1446182573457;
-        Thu, 29 Oct 2015 22:22:53 -0700 (PDT)
+        h=from:to:cc:subject:date:message-id;
+        bh=dM4HPSJewIfauoos94K7i/bgN2tBjtQy/t0Y28ddD98=;
+        b=VwdTLwxANU/AwV9UffetVXjIyRWc6qijq5+PrGmfcDeK6uSLFjD5Qs5mJO3b51Jw/s
+         g5xLr1gE+1JiY8vZ5yx6Ob3xdjhHorXlWXbl7BJD2HFK+CW+TCRZx9MPnHzGIV1c45Mq
+         KjZ9Ei0rK/hNJPV3Dy5rhAY7NxlvimLzEeifOkEp5Em9Zr/p4vzXvgnYOAzyVm6ENhTW
+         L2Tu3RpggGLG5cPrAplcaAHBYXml9GYfyqcFZwPmU9WfiNWn5IqyWdeZxY+uCPs2eRe8
+         qMqUrtfrZPtyxmi0udtCm/0AgSMjDt0mEf5+XmWhLpYbRB/NU91moZzm+t7l88DhwqS3
+         SDAw==
+X-Received: by 10.68.178.131 with SMTP id cy3mr6326202pbc.125.1446181647245;
+        Thu, 29 Oct 2015 22:07:27 -0700 (PDT)
 Return-Path: <ksenija.stanojevic@gmail.com>
 Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
-        by smtp.gmail.com with ESMTPSA id tj2sm5562117pab.4.2015.10.29.22.22.52
+        by smtp.gmail.com with ESMTPSA id ou3sm5432686pbb.44.2015.10.29.22.07.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 29 Oct 2015 22:22:52 -0700 (PDT)
+        Thu, 29 Oct 2015 22:07:26 -0700 (PDT)
 From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 1/2] Staging: comedi: ni_mio_common: Fix endian sparse warning
-Date: Thu, 29 Oct 2015 22:22:45 -0700
-Message-Id: <59f1545cfe6cadeeb4e23ea099df3dab1ff9e6a3.1446181130.git.ksenija.stanojevic@gmail.com>
+Subject: [PATCH 0/2] Staging: comedi: Fix sparse warnings
+Date: Thu, 29 Oct 2015 22:07:18 -0700
+Message-Id: <cover.1446181130.git.ksenija.stanojevic@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1446181130.git.ksenija.stanojevic@gmail.com>
-References: <cover.1446181130.git.ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 
-Data is pointer of type void and can be used to store any type of data.
-In function ni_ai_munge:
-barray and array have the same 16 bit offset.
-blarray and larray have the same 32 bit offset.
+Fix sparse endian warnings in ni_mio_common and adl_pci9118.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-Note:
-This function even before my changes had a lot of build warnings.
-I think it's because some config options are not enabled, but I 
-might be wrong.
-Also I think I introduced new warnings because PCIDMA is not set:
-drivers/staging/comedi/drivers/ni_mio_common.c:1520:10: warning: unused variable ‘blarray’ [-Wunused-variable]
-  __le32 *blarray = data;
-          ^
-drivers/staging/comedi/drivers/ni_mio_common.c:1519:10: warning: unused variable ‘barray’ [-Wunused-variable]
-  __le16 *barray = data;
+I didn't fix warnings of ni_pcimio driver because it seems more
+complex and one solution that I see is to change struct ni_private
+with adding a new field (unsigned int), but I don't know if that's
+a valid solution.
 
+Ksenija Stanojevic (2):
+  Staging: comedi: ni_mio_common: Fix endian sparse warning
+  Staging: comedi: adl_pci9118: Fix endian sparse warning
+
+ drivers/staging/comedi/drivers/adl_pci9118.c   |  3 ++-
  drivers/staging/comedi/drivers/ni_mio_common.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ 2 files changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
-index 6cc304a..0c034f2 100644
---- a/drivers/staging/comedi/drivers/ni_mio_common.c
-+++ b/drivers/staging/comedi/drivers/ni_mio_common.c
-@@ -1516,13 +1516,15 @@ static void ni_ai_munge(struct comedi_device *dev, struct comedi_subdevice *s,
- 	unsigned short *array = data;
- 	unsigned int *larray = data;
- 	unsigned int i;
-+	__le16 *barray = data;
-+	__le32 *blarray = data;
- 
- 	for (i = 0; i < nsamples; i++) {
- #ifdef PCIDMA
- 		if (s->subdev_flags & SDF_LSAMPL)
--			larray[i] = le32_to_cpu(larray[i]);
-+			larray[i] = le32_to_cpu(blarray[i]);
- 		else
--			array[i] = le16_to_cpu(array[i]);
-+			array[i] = le16_to_cpu(barray[i]);
- #endif
- 		if (s->subdev_flags & SDF_LSAMPL)
- 			larray[i] += devpriv->ai_offset[chan_index];
-@@ -2574,6 +2576,7 @@ static void ni_ao_munge(struct comedi_device *dev, struct comedi_subdevice *s,
- 	unsigned int nsamples = comedi_bytes_to_samples(s, num_bytes);
- 	unsigned short *array = data;
- 	unsigned int i;
-+	__le16 buf, *barray = data;
- 
- 	for (i = 0; i < nsamples; i++) {
- 		unsigned int range = CR_RANGE(cmd->chanlist[chan_index]);
-@@ -2586,10 +2589,11 @@ static void ni_ao_munge(struct comedi_device *dev, struct comedi_subdevice *s,
- 		if (comedi_range_is_bipolar(s, range))
- 			val = comedi_offset_munge(s, val);
- #ifdef PCIDMA
--		val = cpu_to_le16(val);
--#endif
-+		buf = cpu_to_le16(val);
-+		barray[i] = buf;
-+#else
- 		array[i] = val;
--
-+#endif
- 		chan_index++;
- 		chan_index %= cmd->chanlist_len;
- 	}
 -- 
 1.9.1
 
