@@ -1,85 +1,78 @@
-X-GM-THRID: 6206267235727572992
-X-Received: by 10.182.28.100 with SMTP id a4mr13149541obh.20.1445009195856;
-        Fri, 16 Oct 2015 08:26:35 -0700 (PDT)
+X-GM-THRID: 6208227682236235776
+X-Received: by 10.182.236.4 with SMTP id uq4mr8468826obc.3.1446238853294;
+        Fri, 30 Oct 2015 14:00:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.27.14 with SMTP id b14ls812112iob.5.gmail; Fri, 16 Oct
- 2015 08:26:35 -0700 (PDT)
-X-Received: by 10.66.122.201 with SMTP id lu9mr12705477pab.8.1445009195361;
-        Fri, 16 Oct 2015 08:26:35 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id zg1si2112198pbb.2.2015.10.16.08.26.35
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 08:26:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id rc13so123639245pab.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 08:26:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=E/dfNiK4ZxDtzlAJOPoi3sCKGYXG4CKbGYTdOTS2thc=;
-        b=sQzAkpNBMsqsBB8UXvjDCZRGCXT0Jg1QSW3LBHxbkUVhqltHyobTZAUXBXKgfv+jCP
-         ixm0wmTtfXHq23QqTKQq7llwq82jCU+2ErNysAY2+YzNqoWYZMmTPTwtRl/bR/Jon011
-         SrX0kX/e9bN7PxaD5atRedvJOogGf7LT9Ozaqvz0En/fS/I/qxaIEvSe3ZyoB7272J0n
-         bPV6cP11bDire10zafXmGFIb2Uf7Z5hIx1wbr/Lw7jv40dLmCYRvVGtdatY/Bzfo8uhL
-         UnlZKideJb6r+GLzsk+ZdtmEz1UmXGjIPNdVRnMcNH57/KAPJ3/HAu8sk73tuYwLAQ68
-         opkQ==
-X-Received: by 10.68.196.202 with SMTP id io10mr17397670pbc.108.1445009195240;
-        Fri, 16 Oct 2015 08:26:35 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id xd10sm21995482pab.25.2015.10.16.08.26.32
+Received: by 10.50.176.227 with SMTP id cl3ls303398igc.6.gmail; Fri, 30 Oct
+ 2015 14:00:52 -0700 (PDT)
+X-Received: by 10.107.134.102 with SMTP id i99mr9524211iod.34.1446238852965;
+        Fri, 30 Oct 2015 14:00:52 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id tg5si202318igb.2.2015.10.30.14.00.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 08:26:34 -0700 (PDT)
-Date: Fri, 16 Oct 2015 20:56:22 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: gdx724x: gdm_mux: Remove explicit cast
-Message-ID: <20151016152622.GA19808@ubuntu>
+        Fri, 30 Oct 2015 14:00:52 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue005) with ESMTPSA (Nemesis) id 0Mefy0-1a7Zgw00UK-00OCcZ; Fri, 30 Oct
+ 2015 22:00:50 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: Deepa Dinamani <deepa.kernel@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH] usb: usbtest: Add new ioctl interface
+Date: Fri, 30 Oct 2015 22:00:49 +0100
+Message-ID: <27629683.AOlbHP47a8@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CABeXuvrMNR0vs6iH2Hb5xbeobhzuHQrCSnMdme19AKyNVviuEA@mail.gmail.com>
+References: <1445465834-24407-1-git-send-email-deepa.kernel@gmail.com> <CABeXuvrS6bRH0cxP8Uan35vtWZxZLJvcut2ZWvrM=1bYKrjoPQ@mail.gmail.com> <CABeXuvrMNR0vs6iH2Hb5xbeobhzuHQrCSnMdme19AKyNVviuEA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:s4AgMs8ZchVFI3LQ2ic+9YPeRVxQGPf5qJfwDZ5s5wn1TkoV80g
+ 9Ev6CCpRExsM/hgbCc7g5Mc41vXF/YLFNbCs4TKHrUsJEgp2htxgG0XAHzK3zJaB0/hfFJr
+ Ny62jGvWM0cPy/22r0dMC4nM0vlWY9UbFtDKgM6eBJHYM3r6Uz5U6unx5+6+8jJXU1h8CY3
+ iH1B/ZGExNN+cph/TGc1Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:C13HjWxJArc=:th7ivLnBnymptTbaaespPp
+ NXoTFTDwZB8T5EX87QNpJHB9UIBkoLZUO3pgePg1Kdakkd3sqtwTVsxZCNwgN04vVrHPiHJEn
+ 67Lci1BEyuXhuY4F8Vd/yPsf6BJLuChH6awQzsSv3anuBl52Kg/B7/uPQtPi1+45NQr7KKN9L
+ 3YHhjkSrYNnazlPHeYp62zEDDb/VwNZdah6lbyUpPhAau1+RpUSKN+3/R4DBjZO+yeIv6fZ9G
+ 0hmuVUoujoDqscQLc8KsnyOkOZWQPCfFxrlbxWP0toVZqJcZVlYKwSvp0HqcTPYncn8VjW4fa
+ lFt0iT0vuHXD47vCIm4sis+m/c36qNcugqh43geRj/T5+Q9cP/AYpqFmqDDujsyTZrbirnPBG
+ wJOQbS5COYOXuS2bgXcmKyrb6feF5GAlxpA1wTQWT6XNLUPSDEIR60s+1gN+BOuBkBXqnizcZ
+ LFe4nF+hyM9I4Fw+d5DzhEQVrKwtbOYZgbUn1v+gexXJVYM74As5NG9vI0qMhMXklIb7KmpDL
+ VJj3GZe+xUnvUn3eLZSpGTqOLgF+YdLa0YzZHoMTLVPIVvS90Q/zM1Xa0MTM6aUqFmXxm+W9s
+ GCAOg/+1PoYPgJMxAQcFA3OO6631ppjUPmF1abky7fjMP2LPlmryJRxvFLAzygk9a7Z1pHOoP
+ 52FCYwGzK/n1HLPYK5Z9x+B1FiRX5VNdleCvAWZtkr4BORgQkxxCJFm2Le8ip7XhS7O8jOGJz
+ qsSH/pgzA5XAQ/gM
 
-Compiler can typecast variables implicitly so, explicit type cast is not
-required and should be removed.
-Semantic patch used:
+On Friday 30 October 2015 10:55:10 Deepa Dinamani wrote:
+> >
+> >
+> I looked at the spreadsheet(sheet 3). Nothing else actually needs timeval
+> being exposed to userspace.
+> Either whatever uses timeval, is only using it internally or uses time_t to
+> user.
 
-@@
-type T;
-T e;
-identifier x;
-@@
+Ah, excellent!
 
-* T x = (T)e;
+I think there are a few that might not be on the list because I've already
+addressed them in another patch: 
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/gdm724x/gdm_mux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+* include/uapi/linux/can/bcm.h (my patch is already merged)
+* include/uapi/linux/input.h (hard to fix, working on it)
+* include/uapi/linux/videodev2.h (also nontrivial, has been
+  discussed at last weeks media summit, patch under work)
+* drivers/char/ppdev.c (patch exists, needs to get merged)
 
-diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
-index 1cf24e4..a6bfd42 100644
---- a/drivers/staging/gdm724x/gdm_mux.c
-+++ b/drivers/staging/gdm724x/gdm_mux.c
-@@ -222,7 +222,7 @@ static void do_rx(struct work_struct *work)
- 	struct mux_dev *mux_dev =
- 		container_of(work, struct mux_dev, work_rx.work);
- 	struct mux_rx *r;
--	struct rx_cxt *rx = (struct rx_cxt *)&mux_dev->rx;
-+	struct rx_cxt *rx = &mux_dev->rx;
- 	unsigned long flags;
- 	int ret = 0;
- 
--- 
-2.1.0
+Each of the above is a bit different and needs a custom solution
+anyway, but it's definitely good to know that there are no others.
 
+> I submitted a v2 of the patch that doesn't require a new timeval struct
+> accordingly.
+
+Thanks,
+
+	Arnd
 
