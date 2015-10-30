@@ -1,106 +1,74 @@
-X-GM-THRID: 6253319309318160384
-X-Received: by 10.194.85.169 with SMTP id i9mr2373331wjz.4.1455964359673;
-        Sat, 20 Feb 2016 02:32:39 -0800 (PST)
+X-GM-THRID: 6211329060983799808
+X-Received: by 10.50.176.225 with SMTP id cl1mr1063420igc.7.1446187743204;
+        Thu, 29 Oct 2015 23:49:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.34.79 with SMTP id i76ls140628lfi.82.gmail; Sat, 20 Feb
- 2016 02:32:38 -0800 (PST)
-X-Received: by 10.112.150.105 with SMTP id uh9mr787242lbb.17.1455964358973;
-        Sat, 20 Feb 2016 02:32:38 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x22f.google.com (mail-wm0-x22f.google.com. [2a00:1450:400c:c09::22f])
-        by gmr-mx.google.com with ESMTPS id w10si532036wmw.3.2016.02.20.02.32.38
+Received: by 10.182.101.135 with SMTP id fg7ls319200obb.54.gmail; Thu, 29 Oct
+ 2015 23:49:02 -0700 (PDT)
+X-Received: by 10.182.24.42 with SMTP id r10mr4870960obf.42.1446187742826;
+        Thu, 29 Oct 2015 23:49:02 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id sm2si553322pab.0.2015.10.29.23.49.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 02:32:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22f as permitted sender) client-ip=2a00:1450:400c:c09::22f;
+        Thu, 29 Oct 2015 23:49:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22f as permitted sender) smtp.mailfrom=nevola@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22f.google.com with SMTP id a4so102125304wme.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 02:32:38 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22a.google.com with SMTP id z6so65161806pas.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 23:49:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=FYuH3hz294TLoumMU8u9lYN4a51m8m83NEZT+F61OiI=;
-        b=eLCTXYykI8WB/r2p/A2O96Gd/kFbx3z2iQ6iUSocsQFtwQMpT4uQzv2QmYDmgHgGTh
-         4vRaqNJD2wHWfkBsTb72GkC7aPD7MkmMOS4pBdfDkbVIBOW8+kxU/ff9+OCvlSYgrjn4
-         U+Zi830VqhGJmqMnq20jez9xEnoPJIXPMeqpcQq+shZ1q88r+0yV+4fE88BP2aA2A20s
-         WRo3wbOxJEHzfIH9XQrc6C5jwgQKSJAVC3YW30fg7eHM46Q3TRXVGB73N7X30qisez2u
-         FEXXGIoGOs62naZZUNcC8GEewed8Jo4LGMA8MRKLGrWwXV6QvM/sTYhM12N4SbjTi4rz
-         HGpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=FYuH3hz294TLoumMU8u9lYN4a51m8m83NEZT+F61OiI=;
-        b=di/Rf/4+GL9EsCofHBf40sQpiFcCCHagrFwSDgitD1aMKsR5JpcwYDYvv6UspfAKyo
-         ieuEiSHFrL5zzUQHJ3/zSaj4HNX9t9ggJ+4vMstDwpJEdClbmEQp/V3Y0W+ZLxcVsWKI
-         IVjBqL/rwTeYCq6s9yqh4A7gtp8oh65+PjiMa97BBiO9KoRYF3LXNEs6HMOgl38o2k99
-         WdLIAgV26bwTEzZkclBpy0DpuFrbNjoTQEDRN8rjIoVutwo0Xxt0+mxT8c4RiiL2W3dM
-         n98P9aQeNsbHOdFWrXW+5YQkB+k/NQzwoKQDBrURR+ATfFnN4wM7b6kvzKwT+Aag5/oz
-         OG7w==
-X-Gm-Message-State: AG10YOQ7IRzaHw8W9PhHraW27SmI8zFVytqnrEtlwLTOU0AUegUlWo+RPOAcEc4RCFBYwQ==
-X-Received: by 10.28.45.71 with SMTP id t68mr2104961wmt.46.1455964358864;
-        Sat, 20 Feb 2016 02:32:38 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
-        by smtp.gmail.com with ESMTPSA id lc3sm15120770wjb.7.2016.02.20.02.32.37
+        bh=bCbo61oGOG488qYnDHV1g3crt+EPGe0V7Zhqz1R+FuA=;
+        b=n8JLKeFPb7IviRQZzqAtU+jNJA/6rmXYGiq3eYkUkPAgAAs7fwVzMhGU9y+MmX0AyU
+         lVx7xyr997I1pbVU3moab49paS3IFxgS7gurzD9Ho9Z+YYB71YQZ/rlVZRXv6VfjNCai
+         od+2F/FDiI+Pt1Ul0OWzi1WLbDWPZnRz20Ax/lV9g3j/MlkfKFOAkHvtl5OIrzAUVaqh
+         n52MAeegU7D7fqO1m8We8RI1RYg+qNpbMWAGL7GbnsIdUaJtp8TJOX3uhUu+AIioJzVe
+         ZBh100QlyFswz9cb2hnwuWDouSHoZGPYCHBon4hDEB1+5OKuDGCMyC3mYP23OD0o/kyK
+         ZOmA==
+X-Received: by 10.66.100.129 with SMTP id ey1mr6867414pab.94.1446187742613;
+        Thu, 29 Oct 2015 23:49:02 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.182.136])
+        by smtp.gmail.com with ESMTPSA id dk2sm6032568pbd.57.2015.10.29.23.49.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 02:32:38 -0800 (PST)
-Date: Sat, 20 Feb 2016 11:32:36 +0100
-From: Laura Garcia Liebana <nevola@gmail.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 29 Oct 2015 23:49:02 -0700 (PDT)
+Date: Fri, 30 Oct 2015 12:18:56 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: nvec: Use the BIT macro
-Message-ID: <20160220103232.GA3277@sonyv>
+Subject: [PATCH] staging: wilc1000: Remove inclusion of version.h
+Message-ID: <20151030064856.GA8280@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Prefer using the BIT macro instead of (1 << X). Checkpatch detected this
-issue.
+version.h header inclusion is not necessary as detected by versioncheck.
 
-Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/nvec/nvec.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/wilc1000/linux_wlan.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 1503ad7..bdea8fa 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -38,18 +38,18 @@
- #include "nvec.h"
+diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
+index f6a6287..4737f0d 100644
+--- a/drivers/staging/wilc1000/linux_wlan.c
++++ b/drivers/staging/wilc1000/linux_wlan.c
+@@ -23,7 +23,6 @@
+ #include <linux/kernel.h>
+ #include <linux/skbuff.h>
  
- #define I2C_CNFG			0x00
--#define I2C_CNFG_PACKET_MODE_EN		(1 << 10)
--#define I2C_CNFG_NEW_MASTER_SFM		(1 << 11)
-+#define I2C_CNFG_PACKET_MODE_EN		BIT(10)
-+#define I2C_CNFG_NEW_MASTER_SFM		BIT(11)
- #define I2C_CNFG_DEBOUNCE_CNT_SHIFT	12
+-#include <linux/version.h>
+ #include <linux/semaphore.h>
  
- #define I2C_SL_CNFG		0x20
--#define I2C_SL_NEWSL		(1 << 2)
--#define I2C_SL_NACK		(1 << 1)
--#define I2C_SL_RESP		(1 << 0)
--#define I2C_SL_IRQ		(1 << 3)
--#define END_TRANS		(1 << 4)
--#define RCVD			(1 << 2)
--#define RNW			(1 << 1)
-+#define I2C_SL_NEWSL		BIT(2)
-+#define I2C_SL_NACK		BIT(1)
-+#define I2C_SL_RESP		BIT(0)
-+#define I2C_SL_IRQ		BIT(3)
-+#define END_TRANS		BIT(4)
-+#define RCVD			BIT(2)
-+#define RNW			BIT(1)
- 
- #define I2C_SL_RCVD		0x24
- #define I2C_SL_STATUS		0x28
+ #ifdef WILC_SDIO
 -- 
-2.7.0
+1.9.1
 
 
