@@ -1,70 +1,73 @@
-X-GM-THRID: 6206773156840996864
-X-Received: by 10.180.106.197 with SMTP id gw5mr2991004wib.7.1445126989526;
-        Sat, 17 Oct 2015 17:09:49 -0700 (PDT)
+X-GM-THRID: 6211434117440995328
+X-Received: by 10.112.130.41 with SMTP id ob9mr1721083lbb.17.1446212637583;
+        Fri, 30 Oct 2015 06:43:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.205.7 with SMTP id d7ls482947lfg.82.gmail; Sat, 17 Oct 2015
- 17:09:48 -0700 (PDT)
-X-Received: by 10.112.209.73 with SMTP id mk9mr5346262lbc.14.1445126988508;
-        Sat, 17 Oct 2015 17:09:48 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
-        by gmr-mx.google.com with ESMTPS id cm6si388626wib.1.2015.10.17.17.09.48
+Received: by 10.28.9.17 with SMTP id 17ls134478wmj.12.gmail; Fri, 30 Oct 2015
+ 06:43:57 -0700 (PDT)
+X-Received: by 10.28.55.135 with SMTP id e129mr705740wma.7.1446212637141;
+        Fri, 30 Oct 2015 06:43:57 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id m135si101804wmb.0.2015.10.30.06.43.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 17:09:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 06:43:57 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x233.google.com with SMTP id p11so53994638wij.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 17:09:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=g4bX+AwUGuucpGtex41yonL0q5djg70piXRbOTO33fc=;
-        b=QhhOMM2ONsZbegbdXZ3hP3QMD/4fqdNITiZGYkVYhbp5D+7A/l9URRVGCA+PteFAKy
-         PwAOlZgK3RdrhqxrjZvAN/US5PNk6kRbz/nq8SgkMg1m9sS4n0LDY+D+iGWFPE6mdOLl
-         VCZt9dioPsK882Xz3n7YceBq7PpNLrfIaopfehzIBfaakOMoel6moo77B3VPMogE5844
-         fZhA8FLfc4m8WKq1MMy9xEgN8s3gLe4kNGmfaxA4QE8s/8rB9rpQIrh1TupF31QKSEgf
-         vAjh9OH5Z/Xd5C/N4kNw9l7KfSd5fUF/QEximo4RXP7wigVt+LuP80h/cGphbGRHGsc2
-         pjpg==
-X-Received: by 10.180.85.165 with SMTP id i5mr4372797wiz.79.1445126988404;
-        Sat, 17 Oct 2015 17:09:48 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from localhost.localdomain ([95.13.215.164])
-        by smtp.gmail.com with ESMTPSA id fp4sm1508360wib.24.2015.10.17.17.09.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 17 Oct 2015 17:09:47 -0700 (PDT)
-From: Burcin Akalin <brcnakalin@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Burcin Akalin <brcnakalin@gmail.com>
-Subject: [PATCH]  Do not use multiple blank lines.
-Date: Sun, 18 Oct 2015 03:08:01 +0300
-Message-Id: <1445126881-27409-1-git-send-email-brcnakalin@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.20,218,1444687200"; 
+   d="scan'208";a="185211587"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 30 Oct 2015 14:43:56 +0100
+Date: Fri, 30 Oct 2015 14:43:56 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shraddha Barke <shraddha.6596@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: dgnc: Remove unused
+ #include header file
+In-Reply-To: <1446212156-28978-1-git-send-email-shraddha.6596@gmail.com>
+Message-ID: <alpine.DEB.2.10.1510301443380.2364@hadrien>
+References: <1446212156-28978-1-git-send-email-shraddha.6596@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove multiple blank lines. Problem found using checkpatch.pl
+On Fri, 30 Oct 2015, Shraddha Barke wrote:
 
-Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
----
- drivers/staging/panel/panel.c | 1 -
- 1 file changed, 1 deletion(-)
+> Remove digi.h header since it is not needed.
 
-diff --git a/drivers/staging/panel/panel.c b/drivers/staging/panel/panel.c
-index 498d623..a10557c 100644
---- a/drivers/staging/panel/panel.c
-+++ b/drivers/staging/panel/panel.c
-@@ -576,7 +576,6 @@ static int keypad_enabled = NOT_SET;
- module_param(keypad_enabled, int, 0000);
- MODULE_PARM_DESC(keypad_enabled, "Deprecated option, use keypad_type instead");
- 
--
- static const unsigned char *lcd_char_conv;
- 
- /* for some LCD drivers (ks0074) we need a charset conversion table. */
--- 
-1.9.1
+Here too, it would be nicer to say "since nothing it defines is used in
+this file".
 
+julia
+
+>
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> ---
+>  drivers/staging/dgnc/dgnc_utils.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/dgnc/dgnc_utils.c b/drivers/staging/dgnc/dgnc_utils.c
+> index f76de82..95272f4 100644
+> --- a/drivers/staging/dgnc/dgnc_utils.c
+> +++ b/drivers/staging/dgnc/dgnc_utils.c
+> @@ -1,7 +1,6 @@
+>  #include <linux/tty.h>
+>  #include <linux/sched.h>
+>  #include "dgnc_utils.h"
+> -#include "digi.h"
+>
+>  /*
+>   * dgnc_ms_sleep()
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1446212156-28978-1-git-send-email-shraddha.6596%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
