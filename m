@@ -1,77 +1,176 @@
 X-GM-THRID: 6211362438184435712
-X-Received: by 10.112.123.17 with SMTP id lw17mr883239lbb.6.1446678387924;
-        Wed, 04 Nov 2015 15:06:27 -0800 (PST)
+X-Received: by 10.68.195.197 with SMTP id ig5mr5249647pbc.4.1446195514281;
+        Fri, 30 Oct 2015 01:58:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.27.130 with SMTP id b124ls183751lfb.26.gmail; Wed, 04 Nov
- 2015 15:06:27 -0800 (PST)
-X-Received: by 10.112.162.169 with SMTP id yb9mr873329lbb.15.1446678387345;
-        Wed, 04 Nov 2015 15:06:27 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id t2si197409wme.1.2015.11.04.15.06.27
+Received: by 10.140.42.19 with SMTP id b19ls869125qga.42.gmail; Fri, 30 Oct
+ 2015 01:58:33 -0700 (PDT)
+X-Received: by 10.31.174.146 with SMTP id x140mr5239657vke.3.1446195513519;
+        Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id pe1si613357pac.2.2015.10.30.01.58.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Nov 2015 15:06:27 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0Lvg2y-1aWa7i1dgy-017UKR; Thu, 05 Nov
- 2015 00:06:26 +0100
-From: Arnd Bergmann <arnd@arndb.de>
-To: y2038@lists.linaro.org
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH] char: mmtimer: Replace timespec with timespec64
-Date: Thu, 05 Nov 2015 00:06:17 +0100
-Message-ID: <3846828.Zb56WxhgZB@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151030085827.GA21224@amitoj-Inspiron-3542>
-References: <20151030085827.GA21224@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x236.google.com with SMTP id hy1so62614780pad.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=ut40iSkmyEsBK0Dry9wl4kHAf1NhxLlNKQP4cmpxkjY=;
+        b=vBQJJq6/x5h88jCjXX8AsVgcakXm20vvRqR3fyjlir7kuvw+PeXaTx/9rx2bdhJvcp
+         5Me20LH5hFU05H5IQhu5LUWqUYe9tbS8q+1a4n126im7ZHSOKAm9zJSmhOmYUrRsT6Fz
+         SmJlLguLKQvbz5UdSNKeiPfMT5/zCsnPyjzYzVbxMSXQOgUB/Aet4f4qAm8pcHFwksmK
+         rfvpJ0do8idgaDNFys5gWm6mfSraprA2Z17+uZpLGhmNsviu8r8cqEp4yCrlnY+pCxVj
+         A24VzVjZpY2jrL4gcVbcoBwVYmnf7BfEzjrnIe6nTycpUoIRaT80iyzg5ilHy3H9JoPR
+         Xn+g==
+X-Received: by 10.68.178.1 with SMTP id cu1mr7285381pbc.99.1446195513052;
+        Fri, 30 Oct 2015 01:58:33 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.173.100.45])
+        by smtp.gmail.com with ESMTPSA id wy8sm6871309pab.8.2015.10.30.01.58.31
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 30 Oct 2015 01:58:32 -0700 (PDT)
+Date: Fri, 30 Oct 2015 14:28:28 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: y2038@lists.linaro.org
+Subject: [PATCH] char: mmtimer: Replace timespec with timespec64
+Message-ID: <20151030085827.GA21224@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:edP4lP+PE4X6xQOiDmwCIo2V7yxSm67w8QyIeG3Y6pC/mJlE/na
- xod/eMQ91u+hwr5LBjYoC9/Q+GdYzvHIMwaxiUM+ehsW+DpuanLiPaST9LeK0o2hpaVKI1P
- 4DMSNIo57M926jFjpmyp0sT2v7UpZQBhh+3HrLcsR+OmddVvbM8fqzBa1hwEcrVA7iPjV0w
- guDGemtKxjy6dvtera2fw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:p50pT3YkhtQ=:6YGDgNxXGJx/3YX0Yc7iY9
- egs0MT2md5IDTPSekrfQUZIkMC3r/aSmFKjN9fije4BxiTM42yp35tWePhqjxUSLSG/ZG0AJr
- 1PkbBSdRmC6eu0eOx4NMdnw5ZhfcCtsRid8YHdDrRKGyEAdzD2z6KEdloKYMmmxO5x/xeAt1C
- ZnEUN2f+31ARnsEzbWuzgMqnoxDrxpYrq/qu0XILg1I6QMD6nv5y1Oe7RCH25IwaBTbwE0xQ1
- +SEI89503oScu7dCriswoXSdvg+ie+kV/5PS7PFDDlKJ7zCNC6j/CqshK4MV9CqHMtUZRar6z
- GuYDNsKGE4uldA/3r5P5wRLsijs4TCY85pvvzj6aglON4Uca0QCyEXNhxlfKkdbAd3Veqzh1G
- dM3phM2mxQfoU3v8UuZIjxpLITx4SD3eLsj5zuqZU8Jasr0Jp1LEe+79O672jeBi6lMIf83QF
- kdAu/RpbyYbMo53S3+O3y7kKBiTpKMAQbQGfuVVf32h8+LqX3297tL7MTBO97joQVIgAfWmfQ
- 8z2/kfJkI7TekRUYZ4qPvqkIaFdWS/aJVcuEloPcGI797SWSWEXd9dkGvoRbwYyYvoT1QWK0n
- cS+8Y6h7E5XT10c2LJpBL9kQjFQzagIg6sTumgZdedPxmTEl44bg2nglxacaDu2vyofjw8wgr
- CPOMyZh8YVA4a+WKWQjeyy9RQkB6pynrlzaRkT/cv1X5d+/4OArsWKdnR3arcYuKIcoiPtNv/
- clYk0ITLM5N92kO68xI7fgTkiVBT9rr9Dj6/XA==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Friday 30 October 2015 14:28:28 Amitoj Kaur Chawla wrote:
-> 32 bit systems using struct timespec will overflow in y2038, so as
-> part of y2038 cleanup replace struct timespec with struct timespec64.
-> 
-> This patch replaces struct itimerspec with struct itimerspec64.
-> 
-> This patch also replaces getnstimeofday() and timespec_to_ns() with 
-> ktime_get_real_ns() to return the current time in nanoseconds.
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> ---
->  drivers/char/mmtimer.c | 34 +++++++++++++++-------------------
->  1 file changed, 15 insertions(+), 19 deletions(-)
+32 bit systems using struct timespec will overflow in y2038, so as
+part of y2038 cleanup replace struct timespec with struct timespec64.
 
-My mistake, I miscategorized this driver as 'simple', it should not
-have been part of the Outreachy suggested topics.
+This patch replaces struct itimerspec with struct itimerspec64.
 
-Baolin Wang has worked on converting struct k_clock in the past, but
-his patches are not upstream yet, so you could not have guessed this
-correctly what parts of this driver still need to be converted
-after his patch.
+This patch also replaces getnstimeofday() and timespec_to_ns() with 
+ktime_get_real_ns() to return the current time in nanoseconds.
 
-Your patch by itself will not work, and will result in a broken
-build (or at least warnings), which you should have caught in compile
-testing.
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/char/mmtimer.c | 34 +++++++++++++++-------------------
+ 1 file changed, 15 insertions(+), 19 deletions(-)
 
-	Arnd
+diff --git a/drivers/char/mmtimer.c b/drivers/char/mmtimer.c
+index 3d6c067..42a64e5 100644
+--- a/drivers/char/mmtimer.c
++++ b/drivers/char/mmtimer.c
+@@ -30,7 +30,8 @@
+ #include <linux/miscdevice.h>
+ #include <linux/posix-timers.h>
+ #include <linux/interrupt.h>
+-#include <linux/time.h>
++#include <linux/ktime.h>
++#include <linux/time64.h>
+ #include <linux/math64.h>
+ #include <linux/mutex.h>
+ #include <linux/slab.h>
+@@ -468,28 +469,25 @@ static struct miscdevice mmtimer_miscdev = {
+ 	&mmtimer_fops
+ };
+ 
+-static struct timespec sgi_clock_offset;
+-static int sgi_clock_period;
+-
+ /*
+  * Posix Timer Interface
+  */
+ 
+-static struct timespec sgi_clock_offset;
++static struct timespec64 sgi_clock_offset;
+ static int sgi_clock_period;
+ 
+-static int sgi_clock_get(clockid_t clockid, struct timespec *tp)
++static int sgi_clock_get(clockid_t clockid, struct timespec64 *tp)
+ {
+ 	u64 nsec;
+ 
+ 	nsec = rtc_time() * sgi_clock_period
+ 			+ sgi_clock_offset.tv_nsec;
+-	*tp = ns_to_timespec(nsec);
++	*tp = ns_to_timespec64(nsec);
+ 	tp->tv_sec += sgi_clock_offset.tv_sec;
+ 	return 0;
+ };
+ 
+-static int sgi_clock_set(const clockid_t clockid, const struct timespec *tp)
++static int sgi_clock_set(const clockid_t clockid, const struct timespec64 *tp)
+ {
+ 
+ 	u64 nsec;
+@@ -657,7 +655,7 @@ static int sgi_timer_del(struct k_itimer *timr)
+ }
+ 
+ /* Assumption: it_lock is already held with irq's disabled */
+-static void sgi_timer_get(struct k_itimer *timr, struct itimerspec *cur_setting)
++static void sgi_timer_get(struct k_itimer *timr, struct itimerspec64 *cur_setting)
+ {
+ 
+ 	if (timr->it.mmtimer.clock == TIMER_OFF) {
+@@ -668,14 +666,14 @@ static void sgi_timer_get(struct k_itimer *timr, struct itimerspec *cur_setting)
+ 		return;
+ 	}
+ 
+-	cur_setting->it_interval = ns_to_timespec(timr->it.mmtimer.incr * sgi_clock_period);
+-	cur_setting->it_value = ns_to_timespec((timr->it.mmtimer.expires - rtc_time()) * sgi_clock_period);
++	cur_setting->it_interval = ns_to_timespec64(timr->it.mmtimer.incr * sgi_clock_period);
++	cur_setting->it_value = ns_to_timespec64((timr->it.mmtimer.expires - rtc_time()) * sgi_clock_period);
+ }
+ 
+ 
+ static int sgi_timer_set(struct k_itimer *timr, int flags,
+-	struct itimerspec * new_setting,
+-	struct itimerspec * old_setting)
++	struct itimerspec64 * new_setting,
++	struct itimerspec64 * old_setting)
+ {
+ 	unsigned long when, period, irqflags;
+ 	int err = 0;
+@@ -687,8 +685,8 @@ static int sgi_timer_set(struct k_itimer *timr, int flags,
+ 		sgi_timer_get(timr, old_setting);
+ 
+ 	sgi_timer_del(timr);
+-	when = timespec_to_ns(&new_setting->it_value);
+-	period = timespec_to_ns(&new_setting->it_interval);
++	when = timespec64_to_ns(&new_setting->it_value);
++	period = timespec64_to_ns(&new_setting->it_interval);
+ 
+ 	if (when == 0)
+ 		/* Clear timer */
+@@ -699,11 +697,9 @@ static int sgi_timer_set(struct k_itimer *timr, int flags,
+ 		return -ENOMEM;
+ 
+ 	if (flags & TIMER_ABSTIME) {
+-		struct timespec n;
+ 		unsigned long now;
+ 
+-		getnstimeofday(&n);
+-		now = timespec_to_ns(&n);
++		now = ktime_get_real_ns();
+ 		if (when > now)
+ 			when -= now;
+ 		else
+@@ -765,7 +761,7 @@ static int sgi_timer_set(struct k_itimer *timr, int flags,
+ 	return err;
+ }
+ 
+-static int sgi_clock_getres(const clockid_t which_clock, struct timespec *tp)
++static int sgi_clock_getres(const clockid_t which_clock, struct timespec64 *tp)
+ {
+ 	tp->tv_sec = 0;
+ 	tp->tv_nsec = sgi_clock_period;
+-- 
+1.9.1
+
 
