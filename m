@@ -1,104 +1,69 @@
-X-GM-THRID: 6252320028227534848
-X-Received: by 10.107.198.137 with SMTP id w131mr4292836iof.9.1455731696729;
-        Wed, 17 Feb 2016 09:54:56 -0800 (PST)
+X-GM-THRID: 6211463142533234688
+X-Received: by 10.28.87.15 with SMTP id l15mr61008wmb.1.1446239520995;
+        Fri, 30 Oct 2015 14:12:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.13.103 with SMTP id g7ls859098igc.29.gmail; Wed, 17 Feb
- 2016 09:54:56 -0800 (PST)
-X-Received: by 10.107.136.23 with SMTP id k23mr4202921iod.23.1455731696437;
-        Wed, 17 Feb 2016 09:54:56 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id ui7si370463pab.0.2016.02.17.09.54.56
+Received: by 10.25.37.69 with SMTP id l66ls19386lfl.8.gmail; Fri, 30 Oct 2015
+ 14:12:00 -0700 (PDT)
+X-Received: by 10.112.166.40 with SMTP id zd8mr1463893lbb.21.1446239520441;
+        Fri, 30 Oct 2015 14:12:00 -0700 (PDT)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by gmr-mx.google.com with ESMTPS id t18si150553wme.0.2015.10.30.14.12.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 09:54:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        Fri, 30 Oct 2015 14:12:00 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id e127so15180891pfe.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 09:54:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=YCLotqyhqY1gp0wD4aMlSWxOPBVCBlau25DVp4GcKbQ=;
-        b=tFBX6VV2NNIplQrH4UVUjhrWzez7wNHbGpr4T/dFTJ61LlmGDIyy425pbNoubo0PuM
-         BWAvngef8A24ntnz91M4BbnCFAABmGn7H4vaHze6KXiJk0Wb43MZ1LQ0KTGM6SOUXIsi
-         46OkjPSokvh5xVmAy2ngN2dMc4CxTDoMghR13Zf50xE/fpIwU90TZYdWebI8bKUWSqMc
-         8MQZZLyGfbuQL3GkWzlyqYUcAlmBK7Fn52AnlA5OavTN6KvfXe1QTT9DAck8YjwMb7yr
-         pCtOQcyvt8S6hrWlJV4f2wwghlMxCQMw8rygfe/u52B5KupYMcX9nWUcLU8PZCLg9CR1
-         gP/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=YCLotqyhqY1gp0wD4aMlSWxOPBVCBlau25DVp4GcKbQ=;
-        b=lPwlizV00DYPsZNFJt1n+bSfyJajIJCoNYYRN2JCBKEmSNsXJ4cnEcd98cYguzX+/l
-         XsumDx0AS/nYXtLHAkpVnq2BgoDdqYEXvizM/ObHsv8O2ffrpFecq7yh/82/bnMcXzn8
-         KouyJe3O0QNxRhjDJ9rv367CIcMhsfEHNwUlCNMfaukZhugwL8zViEFH4lM1j+ALiB3/
-         mHwQo7YRCQgkWPXzgUvqRPJ76hLFWmwcyaNbpuhOpFrr8WnTV2APzODexSMuCJhJh3K/
-         K0vQwBAeALGvnKBBPYDNhFsfF9Y9W7qkwrQKPTyiIEm6qFoTFdBaTwfp1qSWiW2vZWOB
-         FgoA==
-X-Gm-Message-State: AG10YOR27KLRBTzTk6MApnfXM9aOlEaglj+Vt6NfIqKgImc1LQQGbC6QvNMRSRyqq+JeUw==
-X-Received: by 10.98.17.129 with SMTP id 1mr3981262pfr.30.1455731696300;
-        Wed, 17 Feb 2016 09:54:56 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id o90sm4242573pfi.17.2016.02.17.09.54.55
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 09:54:55 -0800 (PST)
-Date: Wed, 17 Feb 2016 23:25:25 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0LodXq-1aOYmo0QkE-00gZoi; Fri, 30 Oct
+ 2015 22:12:00 +0100
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lusture: llite: Use IS_ERR_OR_NULL
-Message-ID: <20160217175525.GA19663@Karyakshetra>
+Cc: Shraddha Barke <shraddha.6596@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/7] Staging: lustre: Declare local functions as static  and drop unused functions
+Date: Fri, 30 Oct 2015 22:11:59 +0100
+Message-ID: <4106483.85KOHKPzK9@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1446218949-8599-1-git-send-email-shraddha.6596@gmail.com>
+References: <1446218949-8599-1-git-send-email-shraddha.6596@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:sd3rExYe45qlkusGmylH9vQ8as0ZWlaIXx18L+mYcOLJtG5sbQY
+ VLJlNSCDaXB5E7YqF6YUkTaxWaMDxyv1i7U73/q7Ef8p7rYPOyo6ZwvkJ+tVj4hEAsPDA+3
+ 0fgIMciXehO5AxhGv8Ck8KdK2fqhgkrgUFPwtd2c5LaQUJRnhk8dV6R57WkdwYekR8sRI1c
+ MPovC3J7x1DgXBoECVFjQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:06ZlVZkwZ00=:xN7OOim31Ska7Q1MVn/7Et
+ yNOtYdWyeHF8w3xlwwRwMCU2dU2vvl464ZP1WOZj7JgZFMM7jUC/oL7KvlmBvTNHFrRqLp6RT
+ zidYAV8SZyCaOj4Joj31lQ1FYtPTwfNu5QcJ3AGzcdD0r61IdW2qUxObxrQJvxfDKRrLoEiyM
+ 1AItrSaziF+uTdbxBIdvQrfFw+Kt3t5gGq3WxsRa6ralLqR9paZtLWiAT1YiCKIDAv9RI9kZN
+ SiArN4eZcxx2jcKZ11EPUMLcUSRKCSOJ5GkdlUZhQmw/94Gt8T2H0QxO7GCt3e+G/h3PACdSX
+ M84jf9cjHX8gTBT8XZIdsiaACuHzxEMyiWTJyrWZF4v9HotCuTWCO4SjuMd5WUVDf08hug9rD
+ I+gZkg4SeGqF+JraCsmcmIqRy8EtRJxaOyBbrG8zV6Nj5/yBEHFtkIwybuepkOyXwLz2WR1+Q
+ tIvknReYNZstIC1Uyzlq6YvdZ5cJDlp554rrxYprHbDLfzUmphwrED21XZvOvTiDCKE8nRXdl
+ D+PNDzD9O3tyAS+fLO2uTxbedw4rKCbli0Hx7Txo55G91pRWIZ0fVxh3PlllYZRCsHFjV1ha9
+ IIRrYaOILsvtjkaat2Es7jXOdAcG0cn4vxXC6sjI5x291dlhZc9BMalmowMkIoCBzd/J8r3XF
+ u2h/puCN9emNIeiZAj5pLJ2XyU64zg2FO3COl8Nt0fFGckloPKI7OGym0P01Jpy9fVocwRSRn
+ 6GqBxn4+7vK1hFsa
 
-Replaced tests for NULL and IS_ER with macro IS_ERR_OR_NULL.
+On Friday 30 October 2015 20:59:02 Shraddha Barke wrote:
+> These patches declare local functions as static and remove corresponding
+> declarations from header files. Unused function definitions and declarations
+> are also removed.
+> 
+> Shraddha Barke (7):
+>   Staging: lustre: mdc: Declare local functions as static
+>   Staging: lustre: mdc: Remove unused mdc_open function from header
+>   Staging: lustre: fld: Remove unused seq_client_alloc_super
+>   Staging: lustre: fld: Declare local functions as static
+>   Staging: lustre: fld: Remove unused functions
+>   Staging: lustre: fld: Remove unused declaration
+>   Staging: lustre: osc: Declare local functions as static
+> 
+> 
 
-The following Coccinelle semantic patch was used:
+Nice work, whole series
 
-@@
-expression ex;
-@@
-
-- ex == NULL || IS_ERR(ex)
-+ IS_ERR_OR_NULL(ex)
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/lustre/lustre/llite/llite_lib.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index 446e4b8..5a32f9f 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -493,7 +493,7 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 	md_free_lustre_md(sbi->ll_md_exp, &lmd);
- 	ptlrpc_req_finished(request);
-
--	if (root == NULL || IS_ERR(root)) {
-+	if (IS_ERR_OR_NULL(root)) {
- 		if (lmd.lsm)
- 			obd_free_memmd(sbi->ll_dt_exp, &lmd.lsm);
- #ifdef CONFIG_FS_POSIX_ACL
-@@ -1965,7 +1965,7 @@ int ll_prep_inode(struct inode **inode, struct ptlrpc_request *req,
- 		*inode = ll_iget(sb, cl_fid_build_ino(&md.body->fid1,
- 					     sbi->ll_flags & LL_SBI_32BIT_API),
- 				 &md);
--		if (*inode == NULL || IS_ERR(*inode)) {
-+		if (IS_ERR_OR_NULL(*inode)) {
- #ifdef CONFIG_FS_POSIX_ACL
- 			if (md.posix_acl) {
- 				posix_acl_release(md.posix_acl);
---
-2.1.4
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
