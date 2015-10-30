@@ -1,71 +1,188 @@
 X-GM-THRID: 6211494140664872960
-X-Received: by 10.112.142.195 with SMTP id ry3mr2123099lbb.22.1446233737627;
-        Fri, 30 Oct 2015 12:35:37 -0700 (PDT)
+X-Received: by 10.107.47.219 with SMTP id v88mr8540448iov.25.1446232342626;
+        Fri, 30 Oct 2015 12:12:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.18.198 with SMTP id 189ls204522wms.11.gmail; Fri, 30 Oct
- 2015 12:35:37 -0700 (PDT)
-X-Received: by 10.28.170.75 with SMTP id t72mr1049898wme.5.1446233737130;
-        Fri, 30 Oct 2015 12:35:37 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by gmr-mx.google.com with ESMTPS id t2si143046wme.1.2015.10.30.12.35.37
+Received: by 10.140.23.229 with SMTP id 92ls1285931qgp.24.gmail; Fri, 30 Oct
+ 2015 12:12:19 -0700 (PDT)
+X-Received: by 10.129.148.129 with SMTP id l123mr7566816ywg.35.1446232339407;
+        Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id iz5si768276pbc.2.2015.10.30.12.12.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 12:35:37 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
+        Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue003) with ESMTPSA (Nemesis) id 0LjOHr-1aTmnn17hH-00dXeT; Fri, 30 Oct
- 2015 20:35:36 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id fv9so85611714pac.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=lH6I04Nbvdo+drYtZ42kXegcxdYBa8kEsC2LvVh6u+s=;
+        b=m2ynoEQME3/Zvw7XVkgmk+Ov7JpGe1qNV9raPbNKpSU0fs9hCxbIS0QivlZUAYDCpU
+         XJUhRij1QUZhnaNtKkayC/D492/TOg8MWjUJSkZG29pyjY9ddnVbeYrnEgUDGRqeR1dt
+         EBooCVyEYr6WTuD5nNpM908yy8shK3fnis4FabNUadyNoBMpRIVWnk3S5+zc2jqhuxfG
+         +zT2+oJkMpqGOkW3zsoqo0wFbd2SGXzipgc6/PsxzdJxJWJdv0E78CV2dRdtp20PNQTG
+         1FJ8XBtTcSqM9op+V/rFRN717B3pX1ifqPn+OQ7aA2QJSu+GAJvjudlSHeo2PE4O+9mk
+         jRIA==
+X-Received: by 10.66.172.6 with SMTP id ay6mr10551579pac.44.1446232339193;
+        Fri, 30 Oct 2015 12:12:19 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.68.182.136])
+        by smtp.gmail.com with ESMTPSA id rn7sm9616616pab.23.2015.10.30.12.12.17
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 30 Oct 2015 12:12:18 -0700 (PDT)
+Date: Sat, 31 Oct 2015 00:42:14 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: llite: dir: Add __user annotations
-Date: Fri, 30 Oct 2015 20:35:35 +0100
-Message-ID: <3741911.Fn7QnqVu3M@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20151030191214.GA15157@amitoj-Inspiron-3542>
-References: <20151030191214.GA15157@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: lustre: llite: dir: Add __user annotations
+Message-ID: <20151030191214.GA15157@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:TZB8P8Zvk3Ep+oSR0RkhgKfiSVZV1lNZZEWzxvdpaOfkhgxV1IR
- ZfNArLwaQrFT2ATkPYNUHn9mz75+cljd4UhbXu387ZxocoA02OBV/nNdGbD3/MUoMERCxCt
- LIKv9FWmCwIf2TLjbnT/kR9oMxi3J9tvUdodESvGqMJ/3W3O8NUZDIvVdgps1UnU/4z8sfL
- 8VskfpnppuDa+5qFK86RA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:CLnPD24SQKw=:YGYIogu0FT9eiqPI6LW4V0
- 80sKvjjJpOsEoBsxxoFuE6Gx62eMQA7a9KGuJ4KESrBPadNeyTYR/dm89u433ZicAweg3NWUF
- 9f2gAYD9D4hReeknZ++e4qb7qIxhZVJSyfpIq9J0c+LZD+IpovtUAwFEXS25i97fAREe9LO5p
- 9I/rqkgyogESViBloQB8yyZSz+hUadMiaSwf3GNrrf9i2aqC4gUbUo0ywDfEyQhwamCyl1QiK
- fVN4IFuvqqs4UDwQPQbV0YTCv70USjhZm+lw1dyL1BfSdOBycPGoLxr75Ig5bUU2zUrNzSbnj
- WJ2gKIfmayXDbXXfPvlvWble0ADaY1o8pZzs+BEWwkdCggyJgTLGnTY5X6dD6zfP0RYZ8w0Pe
- t1Z5G8LkaDQyhfawEZighgPvbjsq5UiZ6BMwBmSV5WT6ebz2Ejt++6a0ocywbC3DpMk7pOhrx
- fGica+A56eTMUVlH74qnCjozXyxznZEzRIAi2DHl7O/PlzZ4QRJt8CETRF8NtEPnw62thfZQF
- cBsw9z4Mb2LLUfy9cC5RBv+lLhJxjvMLyMX2EDLNwEMx4H+wfKMfZDHmXbku2xApr402C0se9
- UrwqIkfv946F+XPh3ScZ/1gPDo00bh9JzDOTGvv1RatP2Q/5LMC8MMB/aMx3W7gggujCkKf7y
- P17Reu+X46eBCaUhibhOEsIYxgWiPJ+DE/Ks3Re1xvPUAIt2ny8GSZUc+6bkV/avzokAU8d7Y
- zYKtThm8P7LkzGQf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Saturday 31 October 2015 00:42:14 Amitoj Kaur Chawla wrote:
->         case LL_IOC_LOV_SETSTRIPE: {
->                 struct lov_user_md_v3 lumv3;
->                 struct lov_user_md_v1 *lumv1 = (struct lov_user_md_v1 *)&lumv3;
-> -               struct lov_user_md_v1 *lumv1p = (struct lov_user_md_v1 *)arg;
-> -               struct lov_user_md_v3 *lumv3p = (struct lov_user_md_v3 *)arg;
-> +               struct lov_user_md_v1 __user *lumv1p =
-> +                                       (struct lov_user_md_v1 __user *)arg;
-> +               struct lov_user_md_v3 __user *lumv3p =
-> +                                       (struct lov_user_md_v3 __user *)arg;
->  
-> 
+This patch fixes the following multiple sparse warnings by adding
+__user annotations in multiple places including struct declarations:
 
-A nicer way to do this is to only have a single cast at the start of the
-function, like
+warning: incorrect type in argument 2 (different address spaces)
+expected void const [noderef] <asn:1>*from got struct lov_user_md_v3
 
-	void __iomem *argp = (void __iomem *)arg;
+warning: incorrect type in argument 2 (different address spaces)
+expected void const [noderef] <asn:1>*from got struct lov_user_md_v1
 
-and then using normal assignments from that to the specific structures.
+warning: incorrect type in argument 2 (different address spaces)
+expected void const [noderef] <asn:1>*from got struct lov_user_md
 
-	Arnd
+warning: incorrect type in argument 2 (different address spaces)
+expected void const [noderef] <asn:1>*from got const char
+
+warning: incorrect type in argument 1 (different address spaces)
+expected void const [noderef] <asn:1>*to got struct lov_user_md_v
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Note:
+This patch is in continuation to a previous patch that fixed sparse
+warnings in this file. Now, this file does not give any further sparse
+warnings.
+
+ drivers/staging/lustre/lustre/llite/dir.c | 31 +++++++++++++++++--------------
+ 1 file changed, 17 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/lustre/lustre/llite/dir.c
+index 6a20e61..72900ea 100644
+--- a/drivers/staging/lustre/lustre/llite/dir.c
++++ b/drivers/staging/lustre/lustre/llite/dir.c
+@@ -1370,8 +1370,10 @@ lmv_out_free:
+ 	case LL_IOC_LOV_SETSTRIPE: {
+ 		struct lov_user_md_v3 lumv3;
+ 		struct lov_user_md_v1 *lumv1 = (struct lov_user_md_v1 *)&lumv3;
+-		struct lov_user_md_v1 *lumv1p = (struct lov_user_md_v1 *)arg;
+-		struct lov_user_md_v3 *lumv3p = (struct lov_user_md_v3 *)arg;
++		struct lov_user_md_v1 __user *lumv1p =
++					(struct lov_user_md_v1 __user *)arg;
++		struct lov_user_md_v3 __user *lumv3p =
++					(struct lov_user_md_v3 __user *)arg;
+ 
+ 		int set_default = 0;
+ 
+@@ -1396,7 +1398,8 @@ lmv_out_free:
+ 		return rc;
+ 	}
+ 	case LL_IOC_LMV_GETSTRIPE: {
+-		struct lmv_user_md *lump = (struct lmv_user_md *)arg;
++		struct lmv_user_md __user *lump =
++					(struct lmv_user_md __user *)arg;
+ 		struct lmv_user_md lum;
+ 		struct lmv_user_md *tmp;
+ 		int lum_size;
+@@ -1446,7 +1449,7 @@ free_lmv:
+ 	case IOC_MDC_GETFILEINFO:
+ 	case IOC_MDC_GETFILESTRIPE: {
+ 		struct ptlrpc_request *request = NULL;
+-		struct lov_user_md *lump;
++		struct lov_user_md __user *lump;
+ 		struct lov_mds_md *lmm = NULL;
+ 		struct mdt_body *body;
+ 		char *filename = NULL;
+@@ -1454,7 +1457,7 @@ free_lmv:
+ 
+ 		if (cmd == IOC_MDC_GETFILEINFO ||
+ 		    cmd == IOC_MDC_GETFILESTRIPE) {
+-			filename = ll_getname((const char *)arg);
++			filename = ll_getname((const char __user *)arg);
+ 			if (IS_ERR(filename))
+ 				return PTR_ERR(filename);
+ 
+@@ -1483,11 +1486,11 @@ free_lmv:
+ 
+ 		if (cmd == IOC_MDC_GETFILESTRIPE ||
+ 		    cmd == LL_IOC_LOV_GETSTRIPE) {
+-			lump = (struct lov_user_md *)arg;
++			lump = (struct lov_user_md __user *)arg;
+ 		} else {
+-			struct lov_user_mds_data *lmdp;
++			struct lov_user_mds_data __user *lmdp;
+ 
+-			lmdp = (struct lov_user_mds_data *)arg;
++			lmdp = (struct lov_user_mds_data __user *)arg;
+ 			lump = &lmdp->lmd_lmm;
+ 		}
+ 		if (copy_to_user(lump, lmm, lmmsize)) {
+@@ -1499,7 +1502,7 @@ free_lmv:
+ 		}
+ skip_lmm:
+ 		if (cmd == IOC_MDC_GETFILEINFO || cmd == LL_IOC_MDC_GETINFO) {
+-			struct lov_user_mds_data *lmdp;
++			struct lov_user_mds_data __user *lmdp;
+ 			lstat_t st = { 0 };
+ 
+ 			st.st_dev     = inode->i_sb->s_dev;
+@@ -1516,7 +1519,7 @@ skip_lmm:
+ 			st.st_ctime   = body->ctime;
+ 			st.st_ino     = inode->i_ino;
+ 
+-			lmdp = (struct lov_user_mds_data *)arg;
++			lmdp = (struct lov_user_mds_data __user *)arg;
+ 			if (copy_to_user(&lmdp->lmd_st, &st, sizeof(st))) {
+ 				rc = -EFAULT;
+ 				goto out_req;
+@@ -1530,14 +1533,14 @@ out_req:
+ 		return rc;
+ 	}
+ 	case IOC_LOV_GETINFO: {
+-		struct lov_user_mds_data *lumd;
++		struct lov_user_mds_data __user *lumd;
+ 		struct lov_stripe_md *lsm;
+-		struct lov_user_md *lum;
++		struct lov_user_md __user *lum;
+ 		struct lov_mds_md *lmm;
+ 		int lmmsize;
+ 		lstat_t st;
+ 
+-		lumd = (struct lov_user_mds_data *)arg;
++		lumd = (struct lov_user_mds_data __user *)arg;
+ 		lum = &lumd->lmd_lmm;
+ 
+ 		rc = ll_get_max_mdsize(sbi, &lmmsize);
+@@ -1818,7 +1821,7 @@ out_quotactl:
+ 		return rc;
+ 	}
+ 	case LL_IOC_HSM_CT_START:
+-		rc = copy_and_ioctl(cmd, sbi->ll_md_exp, (void *)arg,
++		rc = copy_and_ioctl(cmd, sbi->ll_md_exp, (void __user *)arg,
+ 				    sizeof(struct lustre_kernelcomm));
+ 		return rc;
+ 
+-- 
+1.9.1
+
 
