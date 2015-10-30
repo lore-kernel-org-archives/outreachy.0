@@ -1,64 +1,67 @@
 X-GM-THRID: 6211002090683105280
-X-Received: by 10.129.145.71 with SMTP id i68mr6103428ywg.1.1446216564970;
-        Fri, 30 Oct 2015 07:49:24 -0700 (PDT)
+X-Received: by 10.50.110.6 with SMTP id hw6mr2614321igb.7.1446216456796;
+        Fri, 30 Oct 2015 07:47:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.102.165 with SMTP id w34ls1345051qge.68.gmail; Fri, 30 Oct
- 2015 07:49:24 -0700 (PDT)
-X-Received: by 10.129.156.198 with SMTP id t189mr6431779ywg.26.1446216564476;
-        Fri, 30 Oct 2015 07:49:24 -0700 (PDT)
+Received: by 10.50.67.69 with SMTP id l5ls172667igt.21.gmail; Fri, 30 Oct 2015
+ 07:47:36 -0700 (PDT)
+X-Received: by 10.66.228.169 with SMTP id sj9mr6511758pac.24.1446216456358;
+        Fri, 30 Oct 2015 07:47:36 -0700 (PDT)
 Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id pe1si749706pac.2.2015.10.30.07.49.24
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id sm2si710286pab.0.2015.10.30.07.47.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 07:49:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2015 07:47:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id hy1so70503813pad.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 07:49:24 -0700 (PDT)
+Received: by pacfv9 with SMTP id fv9so79690288pac.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 07:47:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mail-followup-to:references
          :mime-version:content-type:content-disposition:in-reply-to
          :user-agent;
-        bh=Vm5K/zGMko9+JjAjVLFeK5rhIXbpmQ4UAwBsJOxyJsA=;
-        b=ogmA+cwU2NFe5o5f+0MLhQ/Cx+MgDk0mBrzs1FrVq7xQpN2cLGWNSis95blvzLPfvd
-         3QOE4v5DnXbp18ENb8cgO9vjpmgFEryGZO6bwV9QYGj6hOUTv6fkhNp0nYClamj6Yqxk
-         jjv+k53EVHlMMJbuabI3gZvecflhsUHAq7G7gxVCgRal6D3QrlqKajKsAKIDWf2/JucM
-         YW9Hu520DWTofrQHArKlTQ3LZ36fFEKrSycywXktcljP6iXB7wODctqbKrO+Av8dK5te
-         BprOvA7MVDt6HzoMxGCEGpaGyt2/QZqzySITOrNg5Ti/GNxIfxhSjshz8AagENYaLVuz
-         Tyww==
-X-Received: by 10.68.57.171 with SMTP id j11mr9345710pbq.17.1446216564353;
-        Fri, 30 Oct 2015 07:49:24 -0700 (PDT)
+        bh=lt2gApsk89vxEVGDo1bZNOBsRLJm7maoa5ez/re6efo=;
+        b=S2TnBEcQveKKf5zFDMEhlXI5oWvRmcQtjH8u7oL6qwTHOegNXE1qWuPnyk9z5Kft8Z
+         mA9UP1BPN62eRluvLokfozmdoPtrfZZdfQ3BjH5qh3R8QQAtbg0H9GhRfVoIBRidCWhG
+         xfU+jO8U3MtmwtLXtEgC1eJo7wedZAOjrzd29Iz9Rp+ECwbdXfp6MKzRcArj5aRjhNWt
+         OpZn/GqFFNuOj92A1Rjm8X+yovxxVPeWTsegm8ZnmXuE3jdoRCZYVUtyrQccnl51UKEE
+         NL+EDO0ZwAXfrTxlEKZ22Yo5KeHiryEBe6UJ9lW/yUcDnAVxMeQH1pwOPlGf/7L++h1F
+         MYXw==
+X-Received: by 10.68.139.65 with SMTP id qw1mr4620873pbb.34.1446216456254;
+        Fri, 30 Oct 2015 07:47:36 -0700 (PDT)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-Mint ([103.14.62.253])
-        by smtp.gmail.com with ESMTPSA id tn2sm8724624pac.0.2015.10.30.07.49.23
+        by smtp.gmail.com with ESMTPSA id ub4sm8666045pac.29.2015.10.30.07.47.35
         (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 30 Oct 2015 07:49:23 -0700 (PDT)
-Date: Fri, 30 Oct 2015 22:49:21 +0800
+        Fri, 30 Oct 2015 07:47:35 -0700 (PDT)
+Date: Fri, 30 Oct 2015 22:47:32 +0800
 From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] depmod: modules in dependency cycles
-Message-ID: <20151030144920.GB3063@Socrates-Mint>
-Mail-Followup-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+Message-ID: <20151030144731.GA3063@Socrates-Mint>
+Mail-Followup-To: Julia Lawall <julia.lawall@lip6.fr>,
 	outreachy-kernel@googlegroups.com
 References: <20151029094006.GA15647@Socrates-Mint>
  <alpine.DEB.2.10.1510291541310.2505@hadrien>
  <20151030064138.GA4398@Socrates-Mint>
- <20151030065741.GA31483@sudip-pc>
+ <alpine.DEB.2.02.1510300745180.2253@localhost6.localdomain6>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20151030065741.GA31483@sudip-pc>
+In-Reply-To: <alpine.DEB.2.02.1510300745180.2253@localhost6.localdomain6>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, Oct 30, 2015 at 12:29:08PM +0530, Sudip Mukherjee wrote:
-> On Fri, Oct 30, 2015 at 02:41:41PM +0800, Eva Rachel Retuya wrote:
+On Fri, Oct 30, 2015 at 07:47:40AM +0100, Julia Lawall wrote:
+> 
+> 
+> On Fri, 30 Oct 2015, Eva Rachel Retuya wrote:
+> 
 > > On Thu, Oct 29, 2015 at 03:41:54PM +0100, Julia Lawall wrote:
 > > > 
 > > > 
@@ -88,14 +91,22 @@ On Fri, Oct 30, 2015 at 12:29:08PM +0530, Sudip Mukherjee wrote:
 > > 
 > > Right now I'm retracing my steps, incorporating the advice so far. I will update again after a few hours of my progress whether the new issue still persists.
 > 
-> Can you also reset your tree before your next try. Maybe something has
-> changed. git reset --hard <tree/branch>
+> Considering that there are only four more days for submitting patches, I 
+> would suggest that you spend your time on that now, and solve the module 
+> issue afterwards.  For now, you don't need to be actually testing your 
+> patches, just compiling them.  Most patches are very hard to test anyway, 
+> because you don't have the relevant device.  For the actual internship 
+> it's different, if your mentor can send a device to you.  So it is 
+> important to solve the problem.  It is just not quite so urgent.
 > 
-> regards
-> sudip
+> julia
 
-I tried this but still the dependency issue persist. Thank you
-for the idea regardless.
+Okay, I will. The only reason I kept fixated on resolving that issue is
+that I think it keeps me from successfully installing modules I wish to
+load with modprobe/insmod.
+
+I have a question with the small task for the projects, does that need
+to be fulfilled by Nov.2 also?
 
 Eva
 
