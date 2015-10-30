@@ -1,96 +1,310 @@
 X-GM-THRID: 6211294151973011456
-X-Received: by 10.112.144.105 with SMTP id sl9mr1619212lbb.3.1446206228436;
-        Fri, 30 Oct 2015 04:57:08 -0700 (PDT)
+X-Received: by 10.31.170.17 with SMTP id t17mr4606835vke.2.1446179615303;
+        Thu, 29 Oct 2015 21:33:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.160.72 with SMTP id j69ls172073lfe.106.gmail; Fri, 30 Oct
- 2015 04:57:07 -0700 (PDT)
-X-Received: by 10.112.142.195 with SMTP id ry3mr1667741lbb.22.1446206227818;
-        Fri, 30 Oct 2015 04:57:07 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id g9si78696wmd.2.2015.10.30.04.57.07
+Received: by 10.50.3.69 with SMTP id a5ls54879iga.4.gmail; Thu, 29 Oct 2015
+ 21:33:34 -0700 (PDT)
+X-Received: by 10.68.92.35 with SMTP id cj3mr4545899pbb.11.1446179614954;
+        Thu, 29 Oct 2015 21:33:34 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id iz5si465522pbc.2.2015.10.29.21.33.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 04:57:07 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Oct 2015 21:33:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue104) with ESMTPSA (Nemesis) id 0MSa4i-1a20E31k2u-00RclM; Fri, 30 Oct
- 2015 12:57:07 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x233.google.com with SMTP id z6so61479144pas.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 21:33:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=2Ij+SuJtXlmIZvww+emcX9Who4x6w7sPNAlUYJkYUcM=;
+        b=E/0JFaKX5h1qC83hsyzS3IA4B++Z8d9zmfS3gPnwDvEHBPHS6xuwT6XCLlFsH6NWgh
+         Syd9Fv14NrrmoLaoK/U0qJ4oK0rgsmYSv16AMdpkfmJn8vWHGHtJ5RS3RtWDlM1qbrGd
+         kiAuH9lF5azoKSrAaUrHYajq7zrkCFgh8rql+Ix7elakr2bz5/Ve1ZHNLLFCr7j5ScHE
+         2KR3DgWHN15uJ1WHgTSBt4p62TiyZ/iL01y8FTPOxl12FUaWiBfEMtcQHXTadbolcNju
+         jQb+zE3Mmz5eccyjQtpCeyvf4fKasupiQK6qzGyw9baUQO24Of85gcjrwbfKT5O4m0K1
+         c+rA==
+X-Received: by 10.66.243.225 with SMTP id xb1mr6220434pac.1.1446179614825;
+        Thu, 29 Oct 2015 21:33:34 -0700 (PDT)
+Return-Path: <ksenija.stanojevic@gmail.com>
+Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
+        by smtp.gmail.com with ESMTPSA id ij3sm5232311pbb.62.2015.10.29.21.33.34
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 29 Oct 2015 21:33:34 -0700 (PDT)
+From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: comedi: vmk80xx: Replace semaphore with mutex
-Date: Fri, 30 Oct 2015 12:57:06 +0100
-Message-ID: <4329000.9joMaq9Gbl@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <1446179606-29779-1-git-send-email-ksenija.stanojevic@gmail.com>
-References: <1446179606-29779-1-git-send-email-ksenija.stanojevic@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:4WvrjQ1WhRpmBdHcFQrwEsWfx8PfsLrA5W3gF9GTE1TsfNgPPKQ
- djM8HVBBYPafVPg2FuOhQt204HGDsoeT6x2vB2/HsahK9oyLSa3ox5Vmk0a/ckIEeb/F4qp
- dG6vednJhRZXHhcUR5q57KoD8h1LNyZgfje9/4GxYTITnTsBUALk826c4Zs2jF+YjRe+vRO
- Vs578k19WofSEe05pdf7Q==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:o5ZY17pE39c=:rUerof+lkyXynhdsrI/op+
- LVzvoqtbo9MSybuyJs6KGDkZIZS/FMP3v0Aat49mdcnBdpuuQ8A3w6Tos+YCuxwow+lC5L47b
- Qp6jL/ugodZW4bfLFQtAE8eMlWgx9662LkGRyWW9YA0uR1t2mV2osqYCKdejgVVbVH+dR7bnZ
- 9vwKtfl6Nt8g76rFZcKoCpVSXwMpKFgmZM2QVpgYBs6a1nYdOsqs2kVmgE5W+cCH6l2QQamyv
- co1zaVIZ7AXssObqenYupvdBEeyk9ZPgIaueRMx5Ug2/TNw2GWEqloq3V+Zg/AI6XTjsstEen
- YN0lIjCnnyrq9W3IoIhUP2ZG0yKhKcGhS63HaqzsbRhxuPpILs5/saPX0+0FM3t+Ifrg2LFFI
- oEo5mhKy0++YO+IW+GjVKDF7ZYURiCcF4OgsDhaK/RdB9Q31waUnYEDiRnMixYqI1QbPuHYW7
- r6S7KqFPzCJ7N9+O0L1ozRdpfgzg4syhAWDwHm4oAo9Ohi/WXCc0fjzfIUCPiajSsj6SHVSlQ
- WpzBsAXiuT/XEOkOsey5VF2czOsTaMZ+T8f1yWMMmvfuhehc9ktsTZtLTz7xgLjo7Jpc4CGrn
- 1WxoSaQBn6q6q6KMi4iTgymI7kJ0MTRdr1PcUBzUKvsK6dp2jw05FFOv9ASqzcvHdPmGaxW3t
- SzilGgMX6V3YJe9fdpCyIk/0IOTgnionD5v5LBred1tsL+4BUfaKjbYl4yoCOkDbu47uv6aH5
- YbRlUCdovNPlyLHF
+Subject: [PATCH v2] Staging: comedi: vmk80xx: Replace semaphore with mutex
+Date: Thu, 29 Oct 2015 21:33:26 -0700
+Message-Id: <1446179606-29779-1-git-send-email-ksenija.stanojevic@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Thursday 29 October 2015 21:33:26 Ksenija Stanojevic wrote:
-> @@ -817,7 +817,7 @@ static int vmk80xx_auto_attach(struct comedi_device *dev,
->         if (ret)
->                 return ret;
->  
-> -       sema_init(&devpriv->limit_sem, 8);
-> +       mutex_init(&devpriv->limit_mut);
->  
->         usb_set_intfdata(intf, devpriv);
->  
+Replace semaphore with mutex because mutex gives better performance.
+This change is safe because the thread that decrements the value of
+semaphore is also the one that increments it, and acts like a mutex
+where owner of the lock is the only one that can release the lock.
 
-I missed this one line when I made the recommendation to use a mutex here.
+Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+---
+Changes in v2:
+ - replace rw_semaphore with mutex
 
-I'm sorry about my mistake, but using a mutex will not be a direct
-replacement as a consequence (and neither would rwsem). We only have
-a very small number of semaphores in the kernel that are truly counting
-like this one is: Normal drivers use 'sema_init(&devpriv->limit_sem, 1)'
-to get mutex behavior where the 'down()' call ensures that the following
-code can be entered only from one process, whereas this one allows
-eight concurrent users to enter the function.
+ drivers/staging/comedi/drivers/vmk80xx.c | 54 ++++++++++++++++----------------
+ 1 file changed, 27 insertions(+), 27 deletions(-)
 
-We should still try to replace the semaphore (as we should do in
-all drivers), but doing so is now harder. An equivalent replacement
-would be:
-
+diff --git a/drivers/staging/comedi/drivers/vmk80xx.c b/drivers/staging/comedi/drivers/vmk80xx.c
+index 8c7393e..6299cba 100644
+--- a/drivers/staging/comedi/drivers/vmk80xx.c
++++ b/drivers/staging/comedi/drivers/vmk80xx.c
+@@ -152,7 +152,7 @@ static const struct vmk80xx_board vmk80xx_boardinfo[] = {
+ struct vmk80xx_private {
+ 	struct usb_endpoint_descriptor *ep_rx;
+ 	struct usb_endpoint_descriptor *ep_tx;
+-	struct semaphore limit_sem;
++	struct mutex limit_mut;
+ 	unsigned char *usb_rx_buf;
+ 	unsigned char *usb_tx_buf;
+ 	enum vmk80xx_model model;
+@@ -249,7 +249,7 @@ static int vmk80xx_ai_insn_read(struct comedi_device *dev,
+ 	int reg[2];
+ 	int n;
+ 
 -	down(&devpriv->limit_sem);
-+	wait_event(devpriv->limit_wq, atomic_add_unless(&devpriv->limit, 1, VMK80XX_LIMIT));
-	...
++	mutex_lock(&devpriv->limit_mut);
+ 	chan = CR_CHAN(insn->chanspec);
+ 
+ 	switch (devpriv->model) {
+@@ -282,7 +282,7 @@ static int vmk80xx_ai_insn_read(struct comedi_device *dev,
+ 		    devpriv->usb_rx_buf[reg[1]];
+ 	}
+ 
 -	up(&devpriv->limit_sem);
-+	atomic_dec(&devpriv->limit);
-+	wake_up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -298,7 +298,7 @@ static int vmk80xx_ao_insn_write(struct comedi_device *dev,
+ 	int reg;
+ 	int n;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 	chan = CR_CHAN(insn->chanspec);
+ 
+ 	switch (devpriv->model) {
+@@ -323,7 +323,7 @@ static int vmk80xx_ao_insn_write(struct comedi_device *dev,
+ 			break;
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -338,7 +338,7 @@ static int vmk80xx_ao_insn_read(struct comedi_device *dev,
+ 	int reg;
+ 	int n;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 	chan = CR_CHAN(insn->chanspec);
+ 
+ 	reg = VMK8061_AO_REG - 1;
+@@ -352,7 +352,7 @@ static int vmk80xx_ao_insn_read(struct comedi_device *dev,
+ 		data[n] = devpriv->usb_rx_buf[reg + chan];
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -367,7 +367,7 @@ static int vmk80xx_di_insn_bits(struct comedi_device *dev,
+ 	int reg;
+ 	int retval;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 
+ 	rx_buf = devpriv->usb_rx_buf;
+ 
+@@ -391,7 +391,7 @@ static int vmk80xx_di_insn_bits(struct comedi_device *dev,
+ 		retval = 2;
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return retval;
+ }
+@@ -415,7 +415,7 @@ static int vmk80xx_do_insn_bits(struct comedi_device *dev,
+ 		cmd = VMK8055_CMD_WRT_AD;
+ 	}
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 
+ 	if (comedi_dio_update_state(s, data)) {
+ 		tx_buf[reg] = s->state;
+@@ -435,7 +435,7 @@ static int vmk80xx_do_insn_bits(struct comedi_device *dev,
+ 	}
+ 
+ out:
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return ret ? ret : insn->n;
+ }
+@@ -450,7 +450,7 @@ static int vmk80xx_cnt_insn_read(struct comedi_device *dev,
+ 	int reg[2];
+ 	int n;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 	chan = CR_CHAN(insn->chanspec);
+ 
+ 	switch (devpriv->model) {
+@@ -479,7 +479,7 @@ static int vmk80xx_cnt_insn_read(struct comedi_device *dev,
+ 			    + 256 * devpriv->usb_rx_buf[reg[1] * 2 + 2];
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -495,7 +495,7 @@ static int vmk80xx_cnt_insn_config(struct comedi_device *dev,
+ 	int reg;
+ 	int ret;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 	switch (data[0]) {
+ 	case INSN_CONFIG_RESET:
+ 		if (devpriv->model == VMK8055_MODEL) {
+@@ -516,7 +516,7 @@ static int vmk80xx_cnt_insn_config(struct comedi_device *dev,
+ 		ret = -EINVAL;
+ 		break;
+ 	}
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return ret ? ret : insn->n;
+ }
+@@ -533,7 +533,7 @@ static int vmk80xx_cnt_insn_write(struct comedi_device *dev,
+ 	int cmd;
+ 	int n;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 	chan = CR_CHAN(insn->chanspec);
+ 
+ 	if (!chan)
+@@ -560,7 +560,7 @@ static int vmk80xx_cnt_insn_write(struct comedi_device *dev,
+ 			break;
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -576,7 +576,7 @@ static int vmk80xx_pwm_insn_read(struct comedi_device *dev,
+ 	int reg[2];
+ 	int n;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 
+ 	tx_buf = devpriv->usb_tx_buf;
+ 	rx_buf = devpriv->usb_rx_buf;
+@@ -593,7 +593,7 @@ static int vmk80xx_pwm_insn_read(struct comedi_device *dev,
+ 		data[n] = rx_buf[reg[0]] + 4 * rx_buf[reg[1]];
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -609,7 +609,7 @@ static int vmk80xx_pwm_insn_write(struct comedi_device *dev,
+ 	int cmd;
+ 	int n;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 
+ 	tx_buf = devpriv->usb_tx_buf;
+ 
+@@ -639,7 +639,7 @@ static int vmk80xx_pwm_insn_write(struct comedi_device *dev,
+ 			break;
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return n;
+ }
+@@ -707,7 +707,7 @@ static int vmk80xx_init_subdevices(struct comedi_device *dev)
+ 	int n_subd;
+ 	int ret;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 
+ 	if (devpriv->model == VMK8055_MODEL)
+ 		n_subd = 5;
+@@ -715,7 +715,7 @@ static int vmk80xx_init_subdevices(struct comedi_device *dev)
+ 		n_subd = 6;
+ 	ret = comedi_alloc_subdevices(dev, n_subd);
+ 	if (ret) {
+-		up(&devpriv->limit_sem);
++		mutex_unlock(&devpriv->limit_mut);
+ 		return ret;
+ 	}
+ 
+@@ -783,7 +783,7 @@ static int vmk80xx_init_subdevices(struct comedi_device *dev)
+ 		s->insn_write	= vmk80xx_pwm_insn_write;
+ 	}
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ 
+ 	return 0;
+ }
+@@ -817,7 +817,7 @@ static int vmk80xx_auto_attach(struct comedi_device *dev,
+ 	if (ret)
+ 		return ret;
+ 
+-	sema_init(&devpriv->limit_sem, 8);
++	mutex_init(&devpriv->limit_mut);
+ 
+ 	usb_set_intfdata(intf, devpriv);
+ 
+@@ -835,14 +835,14 @@ static void vmk80xx_detach(struct comedi_device *dev)
+ 	if (!devpriv)
+ 		return;
+ 
+-	down(&devpriv->limit_sem);
++	mutex_lock(&devpriv->limit_mut);
+ 
+ 	usb_set_intfdata(intf, NULL);
+ 
+ 	kfree(devpriv->usb_rx_buf);
+ 	kfree(devpriv->usb_tx_buf);
+ 
+-	up(&devpriv->limit_sem);
++	mutex_unlock(&devpriv->limit_mut);
+ }
+ 
+ static struct comedi_driver vmk80xx_driver = {
+-- 
+1.9.1
 
-I have an old patch for the usb-skeleton driver (and I think I never
-submitted that patch) at
-http://git.kernel.org/cgit/linux/kernel/git/arnd/playground.git/commit/?h=semaphore-3.2&id=7f3ec7ad361f08317480a632d67fe64928f71fa7
-
-which uses a similar construct (presumably this one was copied from
-usb-skeleton). If you do this, please research and explain in the
-changelog the following:
-
-- Does the current usage of limit_sem in this driver actually make
-  sense?
-- If not, do we need a mutex instead, or is the semaphore completely
-  useless here?
-
-	Arnd
 
