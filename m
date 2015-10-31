@@ -1,213 +1,223 @@
 X-GM-THRID: 6211892414504763392
-X-Received: by 10.112.144.105 with SMTP id sl9mr2910195lbb.3.1446319196455;
-        Sat, 31 Oct 2015 12:19:56 -0700 (PDT)
+X-Received: by 10.112.166.40 with SMTP id zd8mr2240559lbb.21.1446319094657;
+        Sat, 31 Oct 2015 12:18:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.174.196 with SMTP id x187ls344431wme.3.gmail; Sat, 31 Oct
- 2015 12:19:56 -0700 (PDT)
-X-Received: by 10.28.138.83 with SMTP id m80mr832301wmd.7.1446319196052;
-        Sat, 31 Oct 2015 12:19:56 -0700 (PDT)
+Received: by 10.28.7.203 with SMTP id 194ls355332wmh.6.gmail; Sat, 31 Oct 2015
+ 12:18:14 -0700 (PDT)
+X-Received: by 10.28.11.65 with SMTP id 62mr839998wml.6.1446319094353;
+        Sat, 31 Oct 2015 12:18:14 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id t18si260773wme.0.2015.10.31.12.19.55
+        by gmr-mx.google.com with ESMTPS id t18si260626wme.0.2015.10.31.12.18.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 12:19:56 -0700 (PDT)
+        Sat, 31 Oct 2015 12:18:14 -0700 (PDT)
 Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.20,225,1444687200"; 
-   d="scan'208";a="185378501"
+   d="scan'208";a="185378410"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 31 Oct 2015 20:19:55 +0100
-Date: Sat, 31 Oct 2015 20:19:54 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 31 Oct 2015 20:18:13 +0100
+Date: Sat, 31 Oct 2015 20:18:12 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@localhost6.localdomain6
 To: Shraddha Barke <shraddha.6596@gmail.com>
 cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: lustre: lnet: Remove
- typedef srpc_server_rpc_t
-In-Reply-To: <1446318898-27986-2-git-send-email-shraddha.6596@gmail.com>
-Message-ID: <alpine.DEB.2.02.1510312018530.2194@localhost6.localdomain6>
-References: <1446318898-27986-1-git-send-email-shraddha.6596@gmail.com> <1446318898-27986-2-git-send-email-shraddha.6596@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: lnet: Remove
+ typedef cfs_workitem_t
+In-Reply-To: <1446318898-27986-3-git-send-email-shraddha.6596@gmail.com>
+Message-ID: <alpine.DEB.2.02.1510312016590.2194@localhost6.localdomain6>
+References: <1446318898-27986-1-git-send-email-shraddha.6596@gmail.com> <1446318898-27986-3-git-send-email-shraddha.6596@gmail.com>
 User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
-
-
 
 On Sun, 1 Nov 2015, Shraddha Barke wrote:
 
 > The Linux kernel coding style guidelines suggest not using typedefs
 > for structure types. This patch gets rid of the typedef for
-> srpc_server_rpc_t.
+> cfs_workitem_t.
 > 
 > Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 > ---
->  drivers/staging/lustre/lnet/selftest/brw_test.c  |  4 ++--
->  drivers/staging/lustre/lnet/selftest/console.c   |  2 +-
->  drivers/staging/lustre/lnet/selftest/framework.c |  8 ++++----
->  drivers/staging/lustre/lnet/selftest/rpc.c       |  6 +++---
->  drivers/staging/lustre/lnet/selftest/selftest.h  | 13 +++++++------
->  5 files changed, 17 insertions(+), 16 deletions(-)
+>  drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h    |  4 ++--
+>  .../staging/lustre/include/linux/libcfs/libcfs_workitem.h    | 12 ++++++------
+>  drivers/staging/lustre/lnet/selftest/selftest.h              |  6 +++---
+>  drivers/staging/lustre/lustre/libcfs/hash.c                  |  6 +++---
+>  drivers/staging/lustre/lustre/libcfs/workitem.c              | 10 +++++-----
+>  5 files changed, 19 insertions(+), 19 deletions(-)
 > 
-> diff --git a/drivers/staging/lustre/lnet/selftest/brw_test.c b/drivers/staging/lustre/lnet/selftest/brw_test.c
-> index 0605c65..0f26226 100644
-> --- a/drivers/staging/lustre/lnet/selftest/brw_test.c
-> +++ b/drivers/staging/lustre/lnet/selftest/brw_test.c
-> @@ -358,7 +358,7 @@ out:
->  }
->  
->  static void
-> -brw_server_rpc_done(srpc_server_rpc_t *rpc)
-> +brw_server_rpc_done(struct srpc_server_rpc *rpc)
->  {
->  	srpc_bulk_t *blk = rpc->srpc_bulk;
->  
-> @@ -378,7 +378,7 @@ brw_server_rpc_done(srpc_server_rpc_t *rpc)
->  }
->  
->  static int
-> -brw_bulk_ready(srpc_server_rpc_t *rpc, int status)
-> +brw_bulk_ready(struct srpc_server_rpc *rpc, int status)
->  {
->  	__u64 magic = BRW_MAGIC;
->  	srpc_brw_reply_t *reply = &rpc->srpc_replymsg.msg_body.brw_reply;
-> diff --git a/drivers/staging/lustre/lnet/selftest/console.c b/drivers/staging/lustre/lnet/selftest/console.c
-> index d315dd4..043bf42 100644
-> --- a/drivers/staging/lustre/lnet/selftest/console.c
-> +++ b/drivers/staging/lustre/lnet/selftest/console.c
-> @@ -1891,7 +1891,7 @@ lstcon_session_feats_check(unsigned feats)
->  }
->  
->  static int
-> -lstcon_acceptor_handle(srpc_server_rpc_t *rpc)
-> +lstcon_acceptor_handle(struct srpc_server_rpc *rpc)
->  {
->  	srpc_msg_t *rep  = &rpc->srpc_replymsg;
->  	srpc_msg_t *req  = &rpc->srpc_reqstbuf->buf_msg;
-> diff --git a/drivers/staging/lustre/lnet/selftest/framework.c b/drivers/staging/lustre/lnet/selftest/framework.c
-> index f18e500..5d68d4a 100644
-> --- a/drivers/staging/lustre/lnet/selftest/framework.c
-> +++ b/drivers/staging/lustre/lnet/selftest/framework.c
-> @@ -111,7 +111,7 @@ static struct smoketest_framework {
->  	spinlock_t        fw_lock;            /* serialise */
->  	sfw_session_t     *fw_session;        /* _the_ session */
->  	int               fw_shuttingdown;    /* shutdown in progress */
-> -	srpc_server_rpc_t *fw_active_srpc;    /* running RPC */
-> +	struct srpc_server_rpc *fw_active_srpc;    /* running RPC */
+> diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
+> index 70b8b29..ca1c1eb 100644
+> --- a/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
+> +++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
+> @@ -249,7 +249,7 @@ struct cfs_hash {
+>  	/** # of iterators (caller of cfs_hash_for_each_*) */
+>  	__u32		       hs_iterators;
+>  	/** rehash workitem */
+> -	cfs_workitem_t	      hs_rehash_wi;
+> +	struct cfs_workitem	      hs_rehash_wi;
 
-Same problem here.  I don't know if you want to move all of the comments 
-to the right, but at least put the modified one closer to the others.
+You should clean up the code by hand to preserve the "alignment" (I put 
+"alignment" in quotes because it looks like this code was not very well 
+aligned in the first place...  But in some of the other cases it was 
+better).
 
 julia
 
->  } sfw_data;
+>  	/** refcount on this hash table */
+>  	atomic_t		hs_refcount;
+>  	/** rehash buckets-table */
+> @@ -266,7 +266,7 @@ struct cfs_hash {
+>  	/** bits when we found the max depth */
+>  	unsigned int		hs_dep_bits;
+>  	/** workitem to output max depth */
+> -	cfs_workitem_t	      hs_dep_wi;
+> +	struct cfs_workitem	      hs_dep_wi;
+>  #endif
+>  	/** name of htable */
+>  	char			hs_name[0];
+> diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h
+> index 5cc64f3..f9b20c5 100644
+> --- a/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h
+> +++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h
+> @@ -73,7 +73,7 @@ int cfs_wi_sched_create(char *name, struct cfs_cpt_table *cptab, int cpt,
+>  struct cfs_workitem;
 >  
->  /* forward ref's */
-> @@ -722,7 +722,7 @@ sfw_unpack_addtest_req(srpc_msg_t *msg)
->  }
->  
->  static int
-> -sfw_add_test_instance(sfw_batch_t *tsb, srpc_server_rpc_t *rpc)
-> +sfw_add_test_instance(sfw_batch_t *tsb, struct srpc_server_rpc *rpc)
->  {
->  	srpc_msg_t *msg = &rpc->srpc_reqstbuf->buf_msg;
->  	srpc_test_reqst_t *req = &msg->msg_body.tes_reqst;
-> @@ -1091,7 +1091,7 @@ sfw_query_batch(sfw_batch_t *tsb, int testidx, srpc_batch_reply_t *reply)
->  }
->  
->  void
-> -sfw_free_pages(srpc_server_rpc_t *rpc)
-> +sfw_free_pages(struct srpc_server_rpc *rpc)
->  {
->  	srpc_free_bulk(rpc->srpc_bulk);
->  	rpc->srpc_bulk = NULL;
-> @@ -1112,7 +1112,7 @@ sfw_alloc_pages(struct srpc_server_rpc *rpc, int cpt, int npages, int len,
->  }
->  
->  static int
-> -sfw_add_test(srpc_server_rpc_t *rpc)
-> +sfw_add_test(struct srpc_server_rpc *rpc)
->  {
->  	sfw_session_t *sn = sfw_data.fw_session;
->  	srpc_test_reply_t *reply = &rpc->srpc_replymsg.msg_body.tes_reply;
-> diff --git a/drivers/staging/lustre/lnet/selftest/rpc.c b/drivers/staging/lustre/lnet/selftest/rpc.c
-> index 162f9d3..cfd95d1 100644
-> --- a/drivers/staging/lustre/lnet/selftest/rpc.c
-> +++ b/drivers/staging/lustre/lnet/selftest/rpc.c
-> @@ -866,7 +866,7 @@ srpc_prepare_bulk(srpc_client_rpc_t *rpc)
->  }
->  
->  static int
-> -srpc_do_bulk(srpc_server_rpc_t *rpc)
-> +srpc_do_bulk(struct srpc_server_rpc *rpc)
->  {
->  	srpc_event_t *ev = &rpc->srpc_ev;
->  	srpc_bulk_t *bk = rpc->srpc_bulk;
-> @@ -894,7 +894,7 @@ srpc_do_bulk(srpc_server_rpc_t *rpc)
->  
->  /* only called from srpc_handle_rpc */
->  static void
-> -srpc_server_rpc_done(srpc_server_rpc_t *rpc, int status)
-> +srpc_server_rpc_done(struct srpc_server_rpc *rpc, int status)
->  {
->  	struct srpc_service_cd *scd = rpc->srpc_scd;
->  	struct srpc_service *sv  = scd->scd_svc;
-> @@ -1404,7 +1404,7 @@ srpc_lnet_ev_handler(lnet_event_t *ev)
->  	struct srpc_service_cd *scd;
->  	srpc_event_t *rpcev = ev->md.user_ptr;
->  	srpc_client_rpc_t *crpc;
-> -	srpc_server_rpc_t *srpc;
-> +	struct srpc_server_rpc *srpc;
->  	srpc_buffer_t *buffer;
->  	srpc_service_t *sv;
->  	srpc_msg_t *msg;
-> diff --git a/drivers/staging/lustre/lnet/selftest/selftest.h b/drivers/staging/lustre/lnet/selftest/selftest.h
-> index 8a77d3f..cbc8699 100644
-> --- a/drivers/staging/lustre/lnet/selftest/selftest.h
-> +++ b/drivers/staging/lustre/lnet/selftest/selftest.h
-> @@ -198,7 +198,7 @@ typedef struct srpc_server_rpc {
->  	unsigned int           srpc_aborted; /* being given up */
->  	int                    srpc_status;
->  	void                   (*srpc_done)(struct srpc_server_rpc *);
-> -} srpc_server_rpc_t;
+>  typedef int (*cfs_wi_action_t) (struct cfs_workitem *);
+> -typedef struct cfs_workitem {
+> +struct cfs_workitem {
+>  	/** chain on runq or rerunq */
+>  	struct list_head       wi_list;
+>  	/** working function */
+> @@ -84,10 +84,10 @@ typedef struct cfs_workitem {
+>  	unsigned short   wi_running:1;
+>  	/** scheduled */
+>  	unsigned short   wi_scheduled:1;
+> -} cfs_workitem_t;
 > +};
 >  
->  /* client-side state of a RPC */
->  typedef struct srpc_client_rpc {
-> @@ -318,8 +318,9 @@ typedef struct srpc_service {
->  	 * - sv_handler: process incoming RPC request
->  	 * - sv_bulk_ready: notify bulk data
->  	 */
-> -	int                     (*sv_handler) (srpc_server_rpc_t *);
-> -	int                     (*sv_bulk_ready) (srpc_server_rpc_t *, int);
-> +	int                     (*sv_handler) (struct srpc_server_rpc *);
-> +	int                     (*sv_bulk_ready) (struct srpc_server_rpc *,
-> +						  int);
->  } srpc_service_t;
+>  static inline void
+> -cfs_wi_init(cfs_workitem_t *wi, void *data, cfs_wi_action_t action)
+> +cfs_wi_init(struct cfs_workitem *wi, void *data, cfs_wi_action_t action)
+>  {
+>  	INIT_LIST_HEAD(&wi->wi_list);
 >  
->  typedef struct {
-> @@ -423,9 +424,9 @@ void sfw_abort_rpc(srpc_client_rpc_t *rpc);
->  void sfw_post_rpc(srpc_client_rpc_t *rpc);
->  void sfw_client_rpc_done(srpc_client_rpc_t *rpc);
->  void sfw_unpack_message(srpc_msg_t *msg);
-> -void sfw_free_pages(srpc_server_rpc_t *rpc);
-> +void sfw_free_pages(struct srpc_server_rpc *rpc);
->  void sfw_add_bulk_page(srpc_bulk_t *bk, struct page *pg, int i);
-> -int sfw_alloc_pages(srpc_server_rpc_t *rpc, int cpt, int npages, int len,
-> +int sfw_alloc_pages(struct srpc_server_rpc *rpc, int cpt, int npages, int len,
->  		    int sink);
->  int sfw_make_session (srpc_mksn_reqst_t *request, srpc_mksn_reply_t *reply);
+> @@ -97,9 +97,9 @@ cfs_wi_init(cfs_workitem_t *wi, void *data, cfs_wi_action_t action)
+>  	wi->wi_action    = action;
+>  }
 >  
-> @@ -440,7 +441,7 @@ void srpc_free_bulk(srpc_bulk_t *bk);
->  srpc_bulk_t *srpc_alloc_bulk(int cpt, unsigned bulk_npg, unsigned bulk_len,
->  			     int sink);
->  int srpc_send_rpc(swi_workitem_t *wi);
-> -int srpc_send_reply(srpc_server_rpc_t *rpc);
-> +int srpc_send_reply(struct srpc_server_rpc *rpc);
->  int srpc_add_service(srpc_service_t *sv);
->  int srpc_remove_service(srpc_service_t *sv);
->  void srpc_shutdown_service(srpc_service_t *sv);
+> -void cfs_wi_schedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi);
+> -int  cfs_wi_deschedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi);
+> -void cfs_wi_exit(struct cfs_wi_sched *sched, cfs_workitem_t *wi);
+> +void cfs_wi_schedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi);
+> +int  cfs_wi_deschedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi);
+> +void cfs_wi_exit(struct cfs_wi_sched *sched, struct cfs_workitem *wi);
+>  
+>  int  cfs_wi_startup(void);
+>  void cfs_wi_shutdown(void);
+> diff --git a/drivers/staging/lustre/lnet/selftest/selftest.h b/drivers/staging/lustre/lnet/selftest/selftest.h
+> index cbc8699..354fe20 100644
+> --- a/drivers/staging/lustre/lnet/selftest/selftest.h
+> +++ b/drivers/staging/lustre/lnet/selftest/selftest.h
+> @@ -176,13 +176,13 @@ typedef int (*swi_action_t) (struct swi_workitem *);
+>  
+>  typedef struct swi_workitem {
+>  	struct cfs_wi_sched *swi_sched;
+> -	cfs_workitem_t      swi_workitem;
+> +	struct cfs_workitem      swi_workitem;
+>  	swi_action_t        swi_action;
+>  	int                 swi_state;
+>  } swi_workitem_t;
+>  
+>  /* server-side state of a RPC */
+> -typedef struct srpc_server_rpc {
+> +struct srpc_server_rpc {
+>  	/* chain on srpc_service::*_rpcq */
+>  	struct list_head       srpc_list;
+>  	struct srpc_service_cd *srpc_scd;
+> @@ -462,7 +462,7 @@ srpc_serv_is_framework(struct srpc_service *svc)
+>  }
+>  
+>  static inline int
+> -swi_wi_action(cfs_workitem_t *wi)
+> +swi_wi_action(struct cfs_workitem *wi)
+>  {
+>  	swi_workitem_t *swi = container_of(wi, swi_workitem_t, swi_workitem);
+>  
+> diff --git a/drivers/staging/lustre/lustre/libcfs/hash.c b/drivers/staging/lustre/lustre/libcfs/hash.c
+> index 0308744..47ccd87 100644
+> --- a/drivers/staging/lustre/lustre/libcfs/hash.c
+> +++ b/drivers/staging/lustre/lustre/libcfs/hash.c
+> @@ -971,10 +971,10 @@ cfs_hash_buckets_realloc(struct cfs_hash *hs, struct cfs_hash_bucket **old_bkts,
+>   * @flags    - CFS_HASH_REHASH enable synamic hash resizing
+>   *	   - CFS_HASH_SORT enable chained hash sort
+>   */
+> -static int cfs_hash_rehash_worker(cfs_workitem_t *wi);
+> +static int cfs_hash_rehash_worker(struct cfs_workitem *wi);
+>  
+>  #if CFS_HASH_DEBUG_LEVEL >= CFS_HASH_DEBUG_1
+> -static int cfs_hash_dep_print(cfs_workitem_t *wi)
+> +static int cfs_hash_dep_print(struct cfs_workitem *wi)
+>  {
+>  	struct cfs_hash *hs = container_of(wi, struct cfs_hash, hs_dep_wi);
+>  	int	 dep;
+> @@ -1874,7 +1874,7 @@ cfs_hash_rehash_bd(struct cfs_hash *hs, struct cfs_hash_bd *old)
+>  }
+>  
+>  static int
+> -cfs_hash_rehash_worker(cfs_workitem_t *wi)
+> +cfs_hash_rehash_worker(struct cfs_workitem *wi)
+>  {
+>  	struct cfs_hash	 *hs = container_of(wi, struct cfs_hash, hs_rehash_wi);
+>  	struct cfs_hash_bucket **bkts;
+> diff --git a/drivers/staging/lustre/lustre/libcfs/workitem.c b/drivers/staging/lustre/lustre/libcfs/workitem.c
+> index e1143a5..2dd0a0c 100644
+> --- a/drivers/staging/lustre/lustre/libcfs/workitem.c
+> +++ b/drivers/staging/lustre/lustre/libcfs/workitem.c
+> @@ -120,7 +120,7 @@ cfs_wi_sched_cansleep(struct cfs_wi_sched *sched)
+>   * 1. when it returns no one shall try to schedule the workitem.
+>   */
+>  void
+> -cfs_wi_exit(struct cfs_wi_sched *sched, cfs_workitem_t *wi)
+> +cfs_wi_exit(struct cfs_wi_sched *sched, struct cfs_workitem *wi)
+>  {
+>  	LASSERT(!in_interrupt()); /* because we use plain spinlock */
+>  	LASSERT(!sched->ws_stopping);
+> @@ -149,7 +149,7 @@ EXPORT_SYMBOL(cfs_wi_exit);
+>   * cancel schedule request of workitem \a wi
+>   */
+>  int
+> -cfs_wi_deschedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi)
+> +cfs_wi_deschedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi)
+>  {
+>  	int	rc;
+>  
+> @@ -190,7 +190,7 @@ EXPORT_SYMBOL(cfs_wi_deschedule);
+>   * be added, and even dynamic creation of serialised queues might be supported.
+>   */
+>  void
+> -cfs_wi_schedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi)
+> +cfs_wi_schedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi)
+>  {
+>  	LASSERT(!in_interrupt()); /* because we use plain spinlock */
+>  	LASSERT(!sched->ws_stopping);
+> @@ -240,12 +240,12 @@ cfs_wi_scheduler (void *arg)
+>  	while (!sched->ws_stopping) {
+>  		int	     nloops = 0;
+>  		int	     rc;
+> -		cfs_workitem_t *wi;
+> +		struct cfs_workitem *wi;
+>  
+>  		while (!list_empty(&sched->ws_runq) &&
+>  		       nloops < CFS_WI_RESCHED) {
+>  			wi = list_entry(sched->ws_runq.next,
+> -					    cfs_workitem_t, wi_list);
+> +					    struct cfs_workitem, wi_list);
+>  			LASSERT(wi->wi_scheduled && !wi->wi_running);
+>  
+>  			list_del_init(&wi->wi_list);
 > -- 
 > 2.1.4
 > 
@@ -215,7 +225,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1446318898-27986-2-git-send-email-shraddha.6596%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1446318898-27986-3-git-send-email-shraddha.6596%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 > 
 
