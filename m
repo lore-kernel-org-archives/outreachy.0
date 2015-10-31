@@ -1,115 +1,103 @@
-X-GM-THRID: 6250079795032358912
-X-Received: by 10.140.155.14 with SMTP id b14mr3342337qhb.5.1455210101462;
-        Thu, 11 Feb 2016 09:01:41 -0800 (PST)
+X-GM-THRID: 6211825929976545280
+X-Received: by 10.66.235.1 with SMTP id ui1mr10678100pac.36.1446303429940;
+        Sat, 31 Oct 2015 07:57:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.14.15 with SMTP id 15ls613051ioo.92.gmail; Thu, 11 Feb
- 2016 09:01:41 -0800 (PST)
-X-Received: by 10.66.144.138 with SMTP id sm10mr44658390pab.4.1455210100970;
-        Thu, 11 Feb 2016 09:01:40 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x22c.google.com (mail-qk0-x22c.google.com. [2607:f8b0:400d:c09::22c])
-        by gmr-mx.google.com with ESMTPS id g136si687524ywb.5.2016.02.11.09.01.40
+Received: by 10.140.109.71 with SMTP id k65ls1628271qgf.99.gmail; Sat, 31 Oct
+ 2015 07:57:09 -0700 (PDT)
+X-Received: by 10.129.38.135 with SMTP id m129mr10680665ywm.49.1446303429492;
+        Sat, 31 Oct 2015 07:57:09 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id vy6si1204230pbc.1.2015.10.31.07.57.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 09:01:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22c as permitted sender) client-ip=2607:f8b0:400d:c09::22c;
+        Sat, 31 Oct 2015 07:57:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22c as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x22c.google.com with SMTP id s68so21219030qkh.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 09:01:40 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by pasz6 with SMTP id z6so102034202pas.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 07:57:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=o1Q3ITose0ptBTYgD0FlYFGfkx8ipTAxWdQtrjq/0io=;
-        b=JPL96ZEqeaDw/uhsSxwtYOH35HKQ5N8Fu7osBzIDfkZq4CZ0d54PKs2FdHaFvfsGTJ
-         UbGd0iVjspZ3ShHzFTTgPnmYmm1hnFmoJRnA8YnDd8+ZYzQcmVXLaO8vvFRPHGqvyqxQ
-         MQyiUtxStwoaJG/sNs1Kiy6NQKNRcjiYj9IAJKgs0nJgNbZvkDQOUVMAk60+tGNMOGnD
-         xteUaRDyxDdBWfQpbtSUGGLGtq3o6REXD4RS0IPK1HRlmgvqHNRV2+BFBBrY+GFieadr
-         nGJEJNXDkAGBasdIkSCV7PIVn265MR/2TkHFo/v8qZmr2octhzXZFdYEN2rQ6CABrjXs
-         ybcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=o1Q3ITose0ptBTYgD0FlYFGfkx8ipTAxWdQtrjq/0io=;
-        b=T0wAcC58YxK0hKjZWCSXT14N1BQ8Px5KZcRKF+hsBeWCOtILp4fGre5nxqNTjIuadc
-         p+i7M2tiQmFj9z7wzucOJngV7hcedFsMU0dEOd53Ihqi5MrRj5vpnIWxYT3w7JTK0C+P
-         zlSe1i6vp0AjX0ITLu6T6Jmc2JlqWR8IORgsMgOd3UwL2mjDEXQq5iEHPqYYCzecB6Nv
-         XzQOR/P0xP88lhdbQFix3WKFpOY4SZFfPaaeplsyqvddIStzqRbX/NR2wWUDQMtaBWKd
-         VvFKSZd0ys5v/lDNelsCqc88Yp7/rMUt8vFybheSJ5MaR7z/b+NQ0bHWjtZH5Q+BHBJ5
-         uvMQ==
-X-Gm-Message-State: AG10YORONyvwnH4vPR06TfzDjprNMRYdhyZIGEwGdtqkhAh9ivnPH9R291m6diIQGGDMgw==
-X-Received: by 10.55.197.6 with SMTP id p6mr50960131qki.75.1455210100785;
-        Thu, 11 Feb 2016 09:01:40 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id j67sm3668119qgj.35.2016.02.11.09.01.39
+        bh=duDIDvruo8YQ6fpR+PiOs2ThhgIyls6yPz5NKDD4/+g=;
+        b=eQ+qLA76+M5D6jZeYGhe6UilIHThZyZS430M0wje6iMMF6lLMXzrG3Xjz1TxdKHLRK
+         4wAAztC5c+AsLLWSHMaHff6tieB1YGYvIK0i/CfiV/ku+XXna/YbIbHWRB7JugP6Ng/c
+         zFpqApoovLslFgPTFwOyFv4x+hlJxDJ0DNmiiOEfNsMVHrUnUt9FFPsXUdkZsgAQ0O8k
+         ZBSX4KWASVMP4oMkuewwJ+IFoAKfLVkoirtpEauvgNvnrwVJLDNlDZR7fKg0fzlgCZ8U
+         iN0lRAnnOzZJSp7pBEOfd6NsmlCX5Bcl3q9PeszSr/Ym1Ja6iilNesxcbOV6oPagIGQ+
+         JhCw==
+X-Received: by 10.68.69.15 with SMTP id a15mr15597882pbu.62.1446303429332;
+        Sat, 31 Oct 2015 07:57:09 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id bc2sm14402071pbd.2.2015.10.31.07.57.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 09:01:40 -0800 (PST)
-Date: Thu, 11 Feb 2016 17:01:01 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 31 Oct 2015 07:57:08 -0700 (PDT)
+Date: Sat, 31 Oct 2015 20:26:56 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: gdm724x: Remove unneeded parentheses
-Message-ID: <20160211220101.GA4505@janani-Inspiron-3521>
+Subject: [PATCH] Staging: lustre: Drop wrapper functions
+Message-ID: <20151031145656.GA16212@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove parentheses around the right hand side of assignment statements
-as they are not needed.
-Semantic patch:
+Remove the functions node_equal() and node_compare() and replace their
+calls with appropriate functions.
 
-@@
-expression a, b, c;
-@@
-
-(
-  a = (b == c)
-|
-  a =
-- (
-  b
-- )
-)
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/gdm724x/gdm_lte.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/lustre/lustre/ldlm/interval_tree.c | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
-index 17d148f..98570c6 100644
---- a/drivers/staging/gdm724x/gdm_lte.c
-+++ b/drivers/staging/gdm724x/gdm_lte.c
-@@ -382,7 +382,7 @@ static s32 gdm_lte_tx_nic_type(struct net_device *dev, struct sk_buff *skb)
- 		/* Check DHCPv4 */
- 		if (ip->protocol == IPPROTO_UDP) {
- 			struct udphdr *udp =
--					(network_data + sizeof(struct iphdr));
-+					network_data + sizeof(struct iphdr);
- 			if (ntohs(udp->dest) == 67 || ntohs(udp->dest) == 68)
- 				nic_type |= NIC_TYPE_F_DHCP;
- 		}
-@@ -393,12 +393,12 @@ static s32 gdm_lte_tx_nic_type(struct net_device *dev, struct sk_buff *skb)
+diff --git a/drivers/staging/lustre/lustre/ldlm/interval_tree.c b/drivers/staging/lustre/lustre/ldlm/interval_tree.c
+index 39b5717..a2ea8e5 100644
+--- a/drivers/staging/lustre/lustre/ldlm/interval_tree.c
++++ b/drivers/staging/lustre/lustre/ldlm/interval_tree.c
+@@ -96,18 +96,6 @@ static inline int extent_equal(struct interval_node_extent *e1,
+ 	return (e1->start == e2->start) && (e1->end == e2->end);
+ }
  
- 		if (ipv6->nexthdr == IPPROTO_ICMPV6) /* Check NDP request */ {
- 			struct icmp6hdr *icmp6 =
--					(network_data + sizeof(struct ipv6hdr));
-+					network_data + sizeof(struct ipv6hdr);
- 			if (icmp6->icmp6_type == NDISC_NEIGHBOUR_SOLICITATION)
- 				nic_type |= NIC_TYPE_ICMPV6;
- 		} else if (ipv6->nexthdr == IPPROTO_UDP) /* Check DHCPv6 */ {
- 			struct udphdr *udp =
--					(network_data + sizeof(struct ipv6hdr));
-+					network_data + sizeof(struct ipv6hdr);
- 			if (ntohs(udp->dest) == 546 || ntohs(udp->dest) == 547)
- 				nic_type |= NIC_TYPE_F_DHCP;
- 		}
+-static inline int node_compare(struct interval_node *n1,
+-			       struct interval_node *n2)
+-{
+-	return extent_compare(&n1->in_extent, &n2->in_extent);
+-}
+-
+-static inline int node_equal(struct interval_node *n1,
+-			     struct interval_node *n2)
+-{
+-	return extent_equal(&n1->in_extent, &n2->in_extent);
+-}
+-
+ static inline __u64 max_u64(__u64 x, __u64 y)
+ {
+ 	return x > y ? x : y;
+@@ -278,14 +266,14 @@ struct interval_node *interval_insert(struct interval_node *node,
+ 	p = root;
+ 	while (*p) {
+ 		parent = *p;
+-		if (node_equal(parent, node))
++		if (extent_equal(&parent->in_extent, &node->in_extent))
+ 			return parent;
+ 
+ 		/* max_high field must be updated after each iteration */
+ 		if (parent->in_max_high < interval_high(node))
+ 			parent->in_max_high = interval_high(node);
+ 
+-		if (node_compare(node, parent) < 0)
++		if (extent_compare(&node->in_extent, &parent->in_extent) < 0)
+ 			p = &parent->in_left;
+ 		else
+ 			p = &parent->in_right;
 -- 
-2.5.0
+2.1.0
 
 
