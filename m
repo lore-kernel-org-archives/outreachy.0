@@ -1,71 +1,92 @@
 X-GM-THRID: 6211302879745015808
-X-Received: by 10.107.161.83 with SMTP id k80mr11467503ioe.8.1446298212642;
-        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
+X-Received: by 10.68.209.129 with SMTP id mm1mr9444000pbc.5.1446273719014;
+        Fri, 30 Oct 2015 23:41:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.19.207 with SMTP id 76ls835985iot.4.gmail; Sat, 31 Oct
- 2015 06:30:12 -0700 (PDT)
-X-Received: by 10.66.147.33 with SMTP id th1mr10236462pab.27.1446298212137;
-        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id fa8si1140063pab.1.2015.10.31.06.30.12
+Received: by 10.107.41.10 with SMTP id p10ls899684iop.89.gmail; Fri, 30 Oct
+ 2015 23:41:58 -0700 (PDT)
+X-Received: by 10.107.35.135 with SMTP id j129mr10362707ioj.27.1446273718629;
+        Fri, 30 Oct 2015 23:41:58 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id fa8si1046776pab.1.2015.10.30.23.41.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Fri, 30 Oct 2015 23:41:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id hy1so94839845pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
+Received: by mail-pa0-x230.google.com with SMTP id z6so94398037pas.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 23:41:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=SSaCkUXLNTNg9royGB2OSipbJz0vWX7dKPJu/K0hH10=;
-        b=S7kUa2W3cCpuQdSoV7RqnmtkAGIYxRgC5mwRcBYqh3VsuNKk09Uvoo5B0qANM8/7UP
-         faTKvKo7axSg0B46wm+JL/iPc/CF8iDr4sUfLs0y3ESuth5FdnUVPSSW9sv2Jf9KlNUU
-         AvQ+QQKtSzObErKYaJiYpOl2H6zWdoALfFVJ4ThEpprC8hVmcF8mAD/NZFKBV7uxsfV4
-         TKDzlb4nBv8pW2y0b/WdYTMZgeX1zPdqg54/X8tPUU2D8K/wRf2loGt6iqiZwAewy1Cm
-         XDIeA5VTyl92Hw9vKweGnM08zshfvhTOfog+9gi2t5ojcB3Sj7PTVRDtwrrSCu+Tc5zF
-         RKeQ==
-X-Received: by 10.68.249.164 with SMTP id yv4mr10875209pbc.51.1446298212031;
-        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (108-60-106-94.static.wiline.com. [108.60.106.94])
-        by smtp.gmail.com with ESMTPSA id tj2sm14050804pab.4.2015.10.31.06.30.11
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 31 Oct 2015 06:30:11 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v2 0/2] Staging: comedi: Fix sparse warnings
-Date: Sat, 31 Oct 2015 06:30:05 -0700
-Message-Id: <cover.1446297932.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=k4c0x/cTZVaSfEbSw9H21h9vCJUTQAClL6PyMonBdpE=;
+        b=vOLQBiGBf/ddPFrdiP5r/a0cvK2ZJOz/g6YXrNMEVn7AIe5+k2MsMkJ8xWHWKEl3Qv
+         9sT6X0z8U2FOqLMI/hPaQjM1y3X0T/MfJor4Mbw4dTBgbPMMQHnZyNXZoaYJzT58BYxk
+         s7Doo6eC1V/c6NvSy9koc0n+Wm3nCecjnieDepNzx8720x+ODL+wa5trqb1J/PGnoHio
+         4VMV8S8Tcs8LEfGzilBMHHktOV2vfOQ/zOTjyvODT4mCBQUkjd0G9IK5/7+B2ZpTUW9M
+         gmtH0jXdfJrUfJdaoc9XAEdkVKcEBvyHwlryAZd0uDjXHHb4Djx+Z42NveOhFSur++IR
+         /RFA==
+X-Received: by 10.66.90.165 with SMTP id bx5mr13344642pab.87.1446273718495;
+        Fri, 30 Oct 2015 23:41:58 -0700 (PDT)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([122.169.128.226])
+        by smtp.gmail.com with ESMTPSA id dg2sm11840545pbb.9.2015.10.30.23.41.56
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Fri, 30 Oct 2015 23:41:57 -0700 (PDT)
+Date: Sat, 31 Oct 2015 12:11:48 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Ksenija =?utf-8?Q?Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: comedi: ni_mio_common:
+ Fix endian sparse warning
+Message-ID: <20151031064127.GA5145@sudip-pc>
+References: <cover.1446181130.git.ksenija.stanojevic@gmail.com>
+ <59f1545cfe6cadeeb4e23ea099df3dab1ff9e6a3.1446181130.git.ksenija.stanojevic@gmail.com>
+ <20151030071517.GB31483@sudip-pc>
+ <CAL7P5j+v+ovje8fnEMz046CdmDsNKXR+HUETXSYFS20mErzTRg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL7P5j+v+ovje8fnEMz046CdmDsNKXR+HUETXSYFS20mErzTRg@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Fix sparse endian warnings in ni_mio_common and adl_pci9118.
+On Fri, Oct 30, 2015 at 08:01:27AM -0700, Ksenija Stanojević wrote:
+> HI Sudip,
+> 
+> On Fri, Oct 30, 2015 at 12:15 AM, Sudip Mukherjee
+> <sudipm.mukherjee@gmail.com> wrote:
+> > On Thu, Oct 29, 2015 at 10:22:45PM -0700, Ksenija Stanojevic wrote:
+> >> Data is pointer of type void and can be used to store any type of data.
+> >> In function ni_ai_munge:
+> >> barray and array have the same 16 bit offset.
+> >> blarray and larray have the same 32 bit offset.
+> >>
+> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> >> ---
+> >
+> > Yes, it introduces build warning. You will have to do the change in such
+> > a way that it does not introduce any new warnings.
+> 
+> My idea was to place declaration of buf and barray within #ifdef PCIDMA
+> but in that case I have a new warning:
+> warning: ISO C90 forbids mixed declarations and code
+> [-Wdeclaration-after-statement]
+>    __le16 buf, *barray = data;
+>    ^
+> 
+> So, I'm not sure what to do and if it's possible to avoid introducing warnings.
 
-I didn't fix warnings of ni_pcimio driver because it seems more
-complex and one solution that I see is to change struct ni_private
-with adding a new field (unsigned int), but I don't know if that's
-a valid solution.
+Keep the declaration where you have kept it, add another #ifdef PCIDMA
+just before the declaration of buf and barray and #endif just after
+the declaration.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-
-Changes in v2:
- -fix build warnings caused by changes in v1
-
-Ksenija Stanojevic (2):
-  Staging: comedi: ni_mio_common: Fix endian sparse warning
-  Staging: comedi: adl_pci9118: Fix endian sparse warning
-
- drivers/staging/comedi/drivers/adl_pci9118.c   |  3 ++-
- drivers/staging/comedi/drivers/ni_mio_common.c | 18 +++++++++++++-----
- 2 files changed, 15 insertions(+), 6 deletions(-)
-
--- 
-1.9.1
-
+regards
+sudip
 
