@@ -1,134 +1,92 @@
-X-GM-THRID: 6199480104398094336
-X-Received: by 10.180.149.210 with SMTP id uc18mr1451231wib.4.1443428943273;
-        Mon, 28 Sep 2015 01:29:03 -0700 (PDT)
+X-GM-THRID: 6211756809938534400
+X-Received: by 10.129.53.14 with SMTP id c14mr9691865ywa.16.1446287353684;
+        Sat, 31 Oct 2015 03:29:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.28.200 with SMTP id c191ls317748lfc.71.gmail; Mon, 28 Sep
- 2015 01:29:02 -0700 (PDT)
-X-Received: by 10.112.147.7 with SMTP id tg7mr2486151lbb.16.1443428942474;
-        Mon, 28 Sep 2015 01:29:02 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id ha7si202980wib.0.2015.09.28.01.29.02
+Received: by 10.182.101.135 with SMTP id fg7ls576205obb.54.gmail; Sat, 31 Oct
+ 2015 03:29:13 -0700 (PDT)
+X-Received: by 10.182.250.233 with SMTP id zf9mr10184953obc.7.1446287353264;
+        Sat, 31 Oct 2015 03:29:13 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id iz5si994083pbc.2.2015.10.31.03.29.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Sep 2015 01:29:02 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 31 Oct 2015 03:29:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.17,602,1437429600"; 
-   d="scan'208";a="148775168"
-Received: from eduroam-0963.wlan.uni-bremen.de ([134.102.19.195])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Sep 2015 10:29:01 +0200
-Date: Mon, 28 Sep 2015 10:29:01 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: Welcome!
-Message-ID: <alpine.DEB.2.10.1509281027460.3256@hadrien>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22a.google.com with SMTP id hy1so92148130pad.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 03:29:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=Pr8B0yfCcy/yGMDaovPg9tK3xD11/s9RWBXkR0+Drgk=;
+        b=k0y70jJ1JMIJgz7VcQKTdGRKev996gYDVLAt3cNLma8ZjB611CA3bVngGHou+oe3H8
+         RA26LDpXVaHL0IkXlT+tG/v8Q7jaMyzgai+QnaaA+DMdWfN2JYtj4BW/iMsp3BuJcyrc
+         FuHatQCJCp/cAmjxgu22Wa2FM1o/yrqim0tL3LqSqJVo5Qyxmtl/rg4Y6PfGAuELOidq
+         xmatEz4eOT9DqD3J5CDIyfAMhRH9DaHTfG3LyzbXt49MnmfeQG8LeNZ2uUbAS2qlN5oz
+         x6YHBIcRzDmI3YGJTNj7Kva2dl34JlDQIim5aBCwjDkWJsUAfQJSgIw56eBKAphvRTtl
+         l/wQ==
+X-Received: by 10.66.252.131 with SMTP id zs3mr14440003pac.69.1446287353141;
+        Sat, 31 Oct 2015 03:29:13 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id wh10sm13145706pab.2.2015.10.31.03.29.10
+        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 31 Oct 2015 03:29:12 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Cc: <devel@driverdev.osuosl.org>
+Subject: [PATCH 6/6] Staging: lustre: mdc: Remove unused declarations
+Date: Sat, 31 Oct 2015 15:58:46 +0530
+Message-Id: <1446287326-9404-7-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1446287326-9404-1-git-send-email-shraddha.6596@gmail.com>
+References: <1446287326-9404-1-git-send-email-shraddha.6596@gmail.com>
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150202.563497F8.0023,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-Greetings potential Linux kernel Outreachy interns!  Please read this
-*entire* email, even if you have applied in the past, as some things have
-changed for this application round.
+The functions mdc_pack_req and mdc_getxattr_pack have been
+declared in header file but not used. Thus remove the
+declarations.
 
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ drivers/staging/lustre/lustre/mdc/mdc_internal.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-What is Outreachy?
-------------
+diff --git a/drivers/staging/lustre/lustre/mdc/mdc_internal.h b/drivers/staging/lustre/lustre/mdc/mdc_internal.h
+index 29b46f7..b01c75c 100644
+--- a/drivers/staging/lustre/lustre/mdc/mdc_internal.h
++++ b/drivers/staging/lustre/lustre/mdc/mdc_internal.h
+@@ -44,7 +44,6 @@ void lprocfs_mdc_init_vars(struct lprocfs_static_vars *lvars);
+ 
+ void mdc_pack_body(struct ptlrpc_request *req, const struct lu_fid *fid,
+ 		   __u64 valid, int ea_size, __u32 suppgid, int flags);
+-int mdc_pack_req(struct ptlrpc_request *req, int version, int opc);
+ void mdc_is_subdir_pack(struct ptlrpc_request *req, const struct lu_fid *pfid,
+ 			const struct lu_fid *cfid, int flags);
+ void mdc_swap_layouts_pack(struct ptlrpc_request *req,
+@@ -62,7 +61,6 @@ void mdc_open_pack(struct ptlrpc_request *req, struct md_op_data *op_data,
+ 		   __u32 mode, __u64 rdev, __u64 flags, const void *data,
+ 		   int datalen);
+ void mdc_unlink_pack(struct ptlrpc_request *req, struct md_op_data *op_data);
+-void mdc_getxattr_pack(struct ptlrpc_request *req, struct md_op_data *op_data);
+ void mdc_link_pack(struct ptlrpc_request *req, struct md_op_data *op_data);
+ void mdc_rename_pack(struct ptlrpc_request *req, struct md_op_data *op_data,
+ 		     const char *old, int oldlen, const char *new, int newlen);
+-- 
+2.1.4
 
-The next application round for Outreachy internships starts tomorrow,
-September 29 and ends November2.  Outreachy interns are paid $5,500 to work
-on a full-time internship with an open source mentor from December 7, 2015
-to March 7, 2016.  Interns are also granted a $500 travel stipend to go to
-any conference approved by their mentor that relates to their project.
-
-
-Who can apply?
---------------
-
-To qualify to apply for Outreachy, you must meet the following requirements:
-
- * You must be over 18,
- * You must be able to work full-time (40 hours per week) from December 7,
-   2015 to March 7, 2016,
- * You must not have school obligations for more than a short period during
-   December 7, 2015 to March 7, 2016, unless 50% or more of your school
-   time is a project course, and the internship is being done as the project,
- * You must be a woman (cis or trans), or a gender queer, gender free, or
-   gender fluid individual, or a resident or national of the United States
-   of any gender who is Black/African American, Hispanic/Latin@, American
-   Indian, Alaska Native, Native Hawaiian, or Pacific Islander, and
- * You cannot have been an Outreachy intern or Google Summer of Code intern
-   before.
-
-Note that the explicit constraint about school obligations is new for
-Outreachy, but it has been applied informally for the Linux kernel in the past.
-
-What Outreachy projects can you apply to?
------------------------------------
-
-There will be several different open source projects participating in
-this round of Outreachy, and the full list is available at the link below.
-
-https://wiki.gnome.org/Outreachy/2015/DecemberMarch#Participating_Organizations
-
-The Linux kernel expects to offer five projects, most of which are already
-listed on our wiki.
-
-http://kernelnewbies.org/OutreachyIntro
-
-
-How do I apply to the Linux kernel project?
--------------------------------------------
-
-The application process for the Linux kernel project is outlined here:
-
-http://kernelnewbies.org/OutreachyApply
-
-Basically, applicants will need to walk through our tutorial for
-creating their first Linux kernel patch:
-
-http://kernelnewbies.org/Outreachyfirstpatch
-
-Applicants should also join the #opw IRC channel on irc.gnome.org, and
-the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble with
-IRC, please ask for help on this mailing list.
-
-As in the last Outreachy round, we are encouraging applicants (once they
-have completed a number of Staging driver cleanup patches) to complete some
-small tasks outlined by the mentors.  The task lists for each mentor are
-linked from the OutreachyIntro page.
-
-*Before* you start on a task, please claim that task through this page:
-
-http://kernelnewbies.org/OutreachyTasks
-
-There is a tips section at the end of the tutorial to outline what
-behaviors we look for in potential Outreachy interns.  I hope this will
-give more insight into our selection process.
-
-http://kernelnewbies.org/Outreachyfirstpatch#tips
-
-We've also noticed that applicants (and even accepted interns!) aren't
-consistently using the email communication style preferred by the Linux
-kernel community.  This style can be as important as coding style to
-many community members, so please review the email style guidelines and
-attempt to follow them:
-
-http://kernelnewbies.org/Outreachyfirstpatch#head-9799d3ebaa1221875dfdb0a05c4063dc4eb474a1
-
-
-When can I apply?
------------------
-
-The application period for the Linux kernel project during Outreachy Round 11
-is September 29 to November 2.
-
-Good luck with your application!  If you have any questions, mentors
-will be available via IRC or this mailing list.  Do not hesitate to ask
-questions if you get stuck in the tutorial.
-
-Julia Lawall
-Linux Kernel Outreachy Coordinator
 
