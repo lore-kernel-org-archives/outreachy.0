@@ -1,106 +1,132 @@
-X-GM-THRID: 6529093465723109376
-X-Received: by 10.98.139.71 with SMTP id j68mr1243501pfe.1.1520173034055;
-        Sun, 04 Mar 2018 06:17:14 -0800 (PST)
+X-GM-THRID: 6211753081535725568
+X-Received: by 10.182.27.101 with SMTP id s5mr9841380obg.35.1446286869120;
+        Sat, 31 Oct 2015 03:21:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.13.6 with SMTP id v6ls4197364pfi.12.gmail; Sun, 04 Mar 2018
- 06:17:12 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvXkpf/ypHQyJKlfqsHbrYFNKsz/AIbXoY2mGAS+L2dFF0AcV4Bc1jEIlGzDF3Af8WlkvUU
-X-Received: by 10.101.81.200 with SMTP id i8mr2286728pgq.103.1520173032694;
-        Sun, 04 Mar 2018 06:17:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520173032; cv=none;
-        d=google.com; s=arc-20160816;
-        b=FsLLAMpES84NwhBvaueu5tFtSiCU6Oc0DgO5Na23Qz3POWYuddCbi/Qiv9mDdn6oIh
-         fQsoddVYKvaliIWGjWhbykpdyBUN10nFbbtwFB4ewt/iWRza7d2dDI2JNfn5XsUhi1Aq
-         GsaNm9sCziuRyi8YHmqbsc1zsVvxsdVzFprHUlLtTVMfOLpEPf6tAohx241SR1eSAiIb
-         BZVLrWtIU+hkCIQr2lSJQhvqWI6N38BcJomoJVeg83+RQBLC5NK9Tcf2UnLAcow6d8WC
-         oNd/UmQ7vZpo4X3dhexAEqaMyMrCA8O681uqmQxSl865/bBApQhZp9ul8nYIjMSvSiDC
-         8TmQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=yXv4kGwkMed3L2JQx6/SWcx+WqalZFXiNVnyYNhEhPg=;
-        b=lMQUrlRYaVLHN/4ZU9ji4Q7NRuuhO330VGnD/x+69DFmCCo6L5ne5+6JJCtgqnJYPP
-         E9Ee2Gg7lz5hCkIczDB/eNr3K9YL5jI5WthdoD7K5KMtrxYEu5B2JlRHiMO+efKiCXbX
-         qsioexdPBR6d8qZQjgewyVGuEP4ZSL0A9OyX/FA7WAlMU1ITPGw12d8/vSujY5I2kwIs
-         TCDRzFLaKsQSLn2XXxw+wvuFslRWhXN73c4OThe6k5mcEeJnomsuSR0daS/01NMd0RFK
-         dR7GMpwQGEUkcP8ATyoy4GbRCrW5QaNROTFOd+GFs+ge19MlyF+B/TDR88RXFzB6T7nC
-         5Gdw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BN9r3qvc;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id s21-v6si564708plr.1.2018.03.04.06.17.12
+Received: by 10.140.41.227 with SMTP id z90ls1431000qgz.37.gmail; Sat, 31 Oct
+ 2015 03:21:08 -0700 (PDT)
+X-Received: by 10.129.156.198 with SMTP id t189mr10004678ywg.26.1446286868748;
+        Sat, 31 Oct 2015 03:21:08 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id pe1si1126841pac.2.2015.10.31.03.21.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Mar 2018 06:17:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 31 Oct 2015 03:21:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BN9r3qvc;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id m19so5792997pgn.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 06:17:12 -0800 (PST)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22a.google.com with SMTP id z6so98032882pas.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 03:21:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=yXv4kGwkMed3L2JQx6/SWcx+WqalZFXiNVnyYNhEhPg=;
-        b=BN9r3qvcAVqHrn5lYAZ7sHlY4wzmRP4svv6mJcj5wV276yBvRTQqoLxtB/d6V+rUSD
-         m07U5Hk9aIuIreydZYSfWitzz50ejSccRs7DWncQu2MkkdfGV0VJDo3MH9w+eW75WEe1
-         qJhQZEhWEKMliFLnPVcnN8Zv2YQoAJf72CIV6x2EEcftmp+kwEzraYzgrTEK5V1VZ0bf
-         CRbI8LjYpMAfham8trkuH++1uWimvGnBtPsaNCMETuLvJ4VQYYajsONY3PgUuDLJa4U9
-         GLL8xoyftevu8nYUJVsiCA2UFkwWZY71x04PaGL4AtowI6zJQakUPMDfeUzCbRVuazK3
-         BN+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yXv4kGwkMed3L2JQx6/SWcx+WqalZFXiNVnyYNhEhPg=;
-        b=SCzcoTG7uCUEdkFs+RkwBPyef1245sHiM5QVx2mm7oaVi2mhMcAIjsDmqqJzu0ENuh
-         ChMkAg/QNPmAvv7p3yelE3rxmJET2f0EYvcuYXMcZAwWbDfOxZSmMrVsgOn2opKcloxZ
-         XyrwrQKBP4kcSj9QwwDj4FOWIWwgbIys2vw5+Hnm2sMNm6RU3HVxT/wZGYrSXi1nDyln
-         ggvGPHFZ1Uir7flaAaSkhbf+DX9u7QhImUARB9K9UrhbDU50VUhfjNZUlf83o+MBCYdt
-         oAym20X6+5GxoA9/4Nt94ged4fXtD+Uwvvkrib/3YjLBzdOvQdfuYAYNsGGo0v4Jt/5C
-         +KrQ==
-X-Gm-Message-State: APf1xPDR+ljT/LsYbS12rIvXlHJHgEqRtP3oScD1pbGiprRSKFLdgLIr
-	PPMbZpkZQwFqfnL1Gjg9iV7MyYUm
-X-Received: by 10.98.156.148 with SMTP id u20mr12062177pfk.167.1520173032140;
-        Sun, 04 Mar 2018 06:17:12 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567.iiit.ac.in ([14.139.82.6])
-        by smtp.googlemail.com with ESMTPSA id m3sm16041826pgd.3.2018.03.04.06.17.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Mar 2018 06:17:10 -0800 (PST)
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: oleg.drokin@intel.com
-Cc: andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	gregkh@linuxfoundation.org,
-	lustre-devel@lists.lustre.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 0/3] staging: lustre: cleanup
-Date: Sun,  4 Mar 2018 19:46:05 +0530
-Message-Id: <1520172968-17448-1-git-send-email-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=ia5Hkd3zx4/MABiUffOCm07ZmLDCjEJQ8GSZt3WkuFE=;
+        b=FEqvUa1V5FC4ZF57wk1WkiNoxKwPVsC5zjukKItvOb9hz6xfnpQSnMa0dHShX/Rh6U
+         TsEnTL3PMdrSiaioEvw8tlj3a1QQUrBoBZESNWGHhh3uyIKTVRpxE9schqjqoSeOw+V3
+         xxrBlUu9zA8pYFVtMho1EsjpicmVmFCxt5k1nDqyhkaTnc2YZVWke+5m+tBaur56sz0G
+         uoCkvA6anWyCtPEPLvucNDS3REaxl1p30FZ3fwbo5iIgoa70aRpZ00XqmpOX2gKtwl87
+         kr/b1P3JCyS1xXldyFoFTZUOodW5gUczrGqb361cSqITluI9ujn7I+0cLTAVnUxQsVDy
+         pxXA==
+X-Received: by 10.66.193.134 with SMTP id ho6mr14323120pac.52.1446286868564;
+        Sat, 31 Oct 2015 03:21:08 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.162.170.60])
+        by smtp.gmail.com with ESMTPSA id yp9sm13116816pab.1.2015.10.31.03.21.07
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Sat, 31 Oct 2015 03:21:08 -0700 (PDT)
+Date: Sat, 31 Oct 2015 15:51:04 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/3] staging: wlan-ng: Remove wrapper function
+Message-ID: <e8a3a711bc6154adbbd62903368bd19fa3a6c487.1446286290.git.amitoj1606@gmail.com>
+References: <cover.1446286289.git.amitoj1606@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1446286289.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Spellcheck the comments. 
-Remove the repeated, consecutive words with single word.
+Remove wrapper function that can be replaced by a single line of code.
 
-Arushi Singhal (3):
-  staging: lustre: Replace "be be" with "be"
-  staging: lustre: Replace "to to" with "to"
-  staging: lustre: Replace "dont" with "don't"
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/wlan-ng/hfa384x_usb.c |  4 ++--
+ drivers/staging/wlan-ng/prism2mgmt.h  |  1 -
+ drivers/staging/wlan-ng/prism2sta.c   | 21 ---------------------
+ 3 files changed, 2 insertions(+), 24 deletions(-)
 
- drivers/staging/lustre/lnet/libcfs/debug.c             | 2 +-
- drivers/staging/lustre/lustre/fld/fld_cache.c          | 2 +-
- drivers/staging/lustre/lustre/include/cl_object.h      | 2 +-
- drivers/staging/lustre/lustre/include/lprocfs_status.h | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index 444ebed..e3c9860 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -3504,7 +3504,7 @@ static void hfa384x_usbin_rx(wlandevice_t *wlandev, struct sk_buff *skb)
+ 		rxmeta->signal = usbin->rxfrm.desc.signal - hw->dbmadjust;
+ 		rxmeta->noise = usbin->rxfrm.desc.silence - hw->dbmadjust;
+ 
+-		prism2sta_ev_rx(wlandev, skb);
++		p80211netdev_rx(wlandev, skb);
+ 
+ 		break;
+ 
+@@ -3628,7 +3628,7 @@ static void hfa384x_int_rxmonitor(wlandevice_t *wlandev,
+ 	}
+ 
+ 	/* pass it back up */
+-	prism2sta_ev_rx(wlandev, skb);
++	p80211netdev_rx(wlandev, skb);
+ }
+ 
+ /*----------------------------------------------------------------
+diff --git a/drivers/staging/wlan-ng/prism2mgmt.h b/drivers/staging/wlan-ng/prism2mgmt.h
+index 16f1239..7a9f424 100644
+--- a/drivers/staging/wlan-ng/prism2mgmt.h
++++ b/drivers/staging/wlan-ng/prism2mgmt.h
+@@ -68,7 +68,6 @@ u32 prism2sta_ifstate(wlandevice_t *wlandev, u32 ifstate);
+ void prism2sta_ev_info(wlandevice_t *wlandev, hfa384x_InfFrame_t *inf);
+ void prism2sta_ev_txexc(wlandevice_t *wlandev, u16 status);
+ void prism2sta_ev_tx(wlandevice_t *wlandev, u16 status);
+-void prism2sta_ev_rx(wlandevice_t *wlandev, struct sk_buff *skb);
+ void prism2sta_ev_alloc(wlandevice_t *wlandev);
+ 
+ int prism2mgmt_mibset_mibget(wlandevice_t *wlandev, void *msgp);
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index c57f48a..131223a 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -1837,27 +1837,6 @@ void prism2sta_ev_tx(wlandevice_t *wlandev, u16 status)
+ }
+ 
+ /*
+- * prism2sta_ev_rx
+- *
+- * Handles the Rx event.
+- *
+- * Arguments:
+- *	wlandev		wlan device structure
+- *
+- * Returns:
+- *	nothing
+- *
+- * Side effects:
+- *
+- * Call context:
+- *	interrupt
+- */
+-void prism2sta_ev_rx(wlandevice_t *wlandev, struct sk_buff *skb)
+-{
+-	p80211netdev_rx(wlandev, skb);
+-}
+-
+-/*
+  * prism2sta_ev_alloc
+  *
+  * Handles the Alloc event.
 -- 
-2.7.4
+1.9.1
 
 
