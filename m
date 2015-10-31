@@ -1,121 +1,70 @@
 X-GM-THRID: 6211302879745015808
-X-Received: by 10.129.39.65 with SMTP id n62mr10579713ywn.13.1446298477950;
-        Sat, 31 Oct 2015 06:34:37 -0700 (PDT)
+X-Received: by 10.107.161.83 with SMTP id k80mr11467503ioe.8.1446298212642;
+        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.170.234 with SMTP id g103ls870839ioj.55.gmail; Sat, 31 Oct
- 2015 06:34:37 -0700 (PDT)
-X-Received: by 10.107.134.102 with SMTP id i99mr12270553iod.34.1446298477576;
-        Sat, 31 Oct 2015 06:34:37 -0700 (PDT)
+Received: by 10.107.19.207 with SMTP id 76ls835985iot.4.gmail; Sat, 31 Oct
+ 2015 06:30:12 -0700 (PDT)
+X-Received: by 10.66.147.33 with SMTP id th1mr10236462pab.27.1446298212137;
+        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
 Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id iz5si1033129pbc.2.2015.10.31.06.34.37
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id fa8si1140063pab.1.2015.10.31.06.30.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 06:34:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id fv9so105034690pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 06:34:37 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id hy1so94839845pad.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=7Pz48Srq3x6Kis5F4RsxT5QKo4QwLeOGD/L4MQXj3zg=;
-        b=jS//18q0xCAUblf+B4GKA5N+S8+EQoUcM9Uc9nZsf1Lgj0lzotvKVeJwIY843H4y2r
-         OOatTPTVa/CMBCybSTwWd+OEzwt6kHSG0XquWrkJ9lW0AfmaZkg4nasuddwQIBEKiozv
-         Uayvrv3gZSHC7OrEQ7HJU6cWcR+b7jdDGQlti4pIE/wO0eikebZL2c5pwiJCMDCfhfQx
-         Wf8GrbPfHot9jwZSrEbFrjBdSUCYHLBfuwLOtaiDOu0zQLUgG2Wf6dqn9nd4vVUcdGhO
-         7k7OPbY1J/16ZNg6DkVo/OFgGSA4ut9o2/TCH8pBXh0oFTsgv/RmF1w063BMgkKxlijH
-         63nw==
-X-Received: by 10.66.100.226 with SMTP id fb2mr15195109pab.72.1446298477463;
-        Sat, 31 Oct 2015 06:34:37 -0700 (PDT)
+        h=from:to:cc:subject:date:message-id;
+        bh=SSaCkUXLNTNg9royGB2OSipbJz0vWX7dKPJu/K0hH10=;
+        b=S7kUa2W3cCpuQdSoV7RqnmtkAGIYxRgC5mwRcBYqh3VsuNKk09Uvoo5B0qANM8/7UP
+         faTKvKo7axSg0B46wm+JL/iPc/CF8iDr4sUfLs0y3ESuth5FdnUVPSSW9sv2Jf9KlNUU
+         AvQ+QQKtSzObErKYaJiYpOl2H6zWdoALfFVJ4ThEpprC8hVmcF8mAD/NZFKBV7uxsfV4
+         TKDzlb4nBv8pW2y0b/WdYTMZgeX1zPdqg54/X8tPUU2D8K/wRf2loGt6iqiZwAewy1Cm
+         XDIeA5VTyl92Hw9vKweGnM08zshfvhTOfog+9gi2t5ojcB3Sj7PTVRDtwrrSCu+Tc5zF
+         RKeQ==
+X-Received: by 10.68.249.164 with SMTP id yv4mr10875209pbc.51.1446298212031;
+        Sat, 31 Oct 2015 06:30:12 -0700 (PDT)
 Return-Path: <ksenija.stanojevic@gmail.com>
 Received: from localhost.localdomain (108-60-106-94.static.wiline.com. [108.60.106.94])
-        by smtp.gmail.com with ESMTPSA id yk5sm14065257pac.5.2015.10.31.06.34.36
+        by smtp.gmail.com with ESMTPSA id tj2sm14050804pab.4.2015.10.31.06.30.11
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 31 Oct 2015 06:34:36 -0700 (PDT)
+        Sat, 31 Oct 2015 06:30:11 -0700 (PDT)
 From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v2 1/2] Staging: comedi: ni_mio_common: Fix endian sparse warning
-Date: Sat, 31 Oct 2015 06:34:29 -0700
-Message-Id: <bdca5869ceed616f88e28080d251e40fcb49b1df.1446297932.git.ksenija.stanojevic@gmail.com>
+Subject: [PATCH v2 0/2] Staging: comedi: Fix sparse warnings
+Date: Sat, 31 Oct 2015 06:30:05 -0700
+Message-Id: <cover.1446297932.git.ksenija.stanojevic@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1446297932.git.ksenija.stanojevic@gmail.com>
-References: <cover.1446297932.git.ksenija.stanojevic@gmail.com>
 
-Fix following sparse warnings:
-warning: cast to restricted __le32
-warning: cast to restricted __le16
-warning: incorrect type in assignment (different base types)
-expected unsigned short [unsigned] [assigned] val
-got restricted __le16 [usertype] <noident>
+Fix sparse endian warnings in ni_mio_common and adl_pci9118.
 
-Data is pointer of type void and can be used to store any type of data.
-In function ni_ai_munge:
-barray and array have the same 16 bit offset.
-blarray and larray have the same 32 bit offset.
+I didn't fix warnings of ni_pcimio driver because it seems more
+complex and one solution that I see is to change struct ni_private
+with adding a new field (unsigned int), but I don't know if that's
+a valid solution.
 
 Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
+
 Changes in v2:
- - fix build warning caused by changes in v1.
+ -fix build warnings caused by changes in v1
 
+Ksenija Stanojevic (2):
+  Staging: comedi: ni_mio_common: Fix endian sparse warning
+  Staging: comedi: adl_pci9118: Fix endian sparse warning
+
+ drivers/staging/comedi/drivers/adl_pci9118.c   |  3 ++-
  drivers/staging/comedi/drivers/ni_mio_common.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+ 2 files changed, 15 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
-index 6cc304a..cbb44fc 100644
---- a/drivers/staging/comedi/drivers/ni_mio_common.c
-+++ b/drivers/staging/comedi/drivers/ni_mio_common.c
-@@ -1516,13 +1516,17 @@ static void ni_ai_munge(struct comedi_device *dev, struct comedi_subdevice *s,
- 	unsigned short *array = data;
- 	unsigned int *larray = data;
- 	unsigned int i;
-+#ifdef PCIDMA
-+	__le16 *barray = data;
-+	__le32 *blarray = data;
-+#endif
- 
- 	for (i = 0; i < nsamples; i++) {
- #ifdef PCIDMA
- 		if (s->subdev_flags & SDF_LSAMPL)
--			larray[i] = le32_to_cpu(larray[i]);
-+			larray[i] = le32_to_cpu(blarray[i]);
- 		else
--			array[i] = le16_to_cpu(array[i]);
-+			array[i] = le16_to_cpu(barray[i]);
- #endif
- 		if (s->subdev_flags & SDF_LSAMPL)
- 			larray[i] += devpriv->ai_offset[chan_index];
-@@ -2574,6 +2578,9 @@ static void ni_ao_munge(struct comedi_device *dev, struct comedi_subdevice *s,
- 	unsigned int nsamples = comedi_bytes_to_samples(s, num_bytes);
- 	unsigned short *array = data;
- 	unsigned int i;
-+#ifdef PCIDMA
-+	__le16 buf, *barray = data;
-+#endif
- 
- 	for (i = 0; i < nsamples; i++) {
- 		unsigned int range = CR_RANGE(cmd->chanlist[chan_index]);
-@@ -2586,10 +2593,11 @@ static void ni_ao_munge(struct comedi_device *dev, struct comedi_subdevice *s,
- 		if (comedi_range_is_bipolar(s, range))
- 			val = comedi_offset_munge(s, val);
- #ifdef PCIDMA
--		val = cpu_to_le16(val);
--#endif
-+		buf = cpu_to_le16(val);
-+		barray[i] = buf;
-+#else
- 		array[i] = val;
--
-+#endif
- 		chan_index++;
- 		chan_index %= cmd->chanlist_len;
- 	}
 -- 
 1.9.1
 
