@@ -1,105 +1,234 @@
 X-GM-THRID: 6211498487054336000
-X-Received: by 10.28.51.146 with SMTP id z140mr2735506wmz.2.1446501811628;
-        Mon, 02 Nov 2015 14:03:31 -0800 (PST)
+X-Received: by 10.112.209.73 with SMTP id mk9mr2606720lbc.14.1446284744013;
+        Sat, 31 Oct 2015 02:45:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.86.9 with SMTP id k9ls507612lfb.43.gmail; Mon, 02 Nov 2015
- 14:03:30 -0800 (PST)
-X-Received: by 10.112.166.40 with SMTP id zd8mr4118645lbb.21.1446501810971;
-        Mon, 02 Nov 2015 14:03:30 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id t2si558026wme.1.2015.11.02.14.03.30
+Received: by 10.28.94.134 with SMTP id s128ls287928wmb.41.canary; Sat, 31 Oct
+ 2015 02:45:43 -0700 (PDT)
+X-Received: by 10.28.87.15 with SMTP id l15mr513863wmb.1.1446284743460;
+        Sat, 31 Oct 2015 02:45:43 -0700 (PDT)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wi0-x22e.google.com (mail-wi0-x22e.google.com. [2a00:1450:400c:c05::22e])
+        by gmr-mx.google.com with ESMTPS id g9si209964wmd.2.2015.10.31.02.45.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Nov 2015 14:03:30 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        Sat, 31 Oct 2015 02:45:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) client-ip=2a00:1450:400c:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue102) with ESMTPSA (Nemesis) id 0LyDvp-1aVOul0kPl-015dsr; Mon, 02 Nov
- 2015 23:03:30 +0100
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Shivani Bhardwaj <shivanib134@gmail.com>
-Subject: Re: [Outreachy kernel] Help needed with debugfs functions
-Date: Mon, 02 Nov 2015 23:03:29 +0100
-Message-ID: <9992375.P9TNU4lbau@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CAKHNQQHSgqMqFPwxNeNk+ULuTWqojMZaKhNt-ZpNZ-x3taiZZg@mail.gmail.com>
-References: <CAKHNQQG6GJWTStPeSVEJOsTAqNbetQPeF3KR90WibZ=Ns+5RMA@mail.gmail.com> <3921328.RGgLIZQx3h@wuerfel> <CAKHNQQHSgqMqFPwxNeNk+ULuTWqojMZaKhNt-ZpNZ-x3taiZZg@mail.gmail.com>
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c05::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wi0-x22e.google.com with SMTP id ll6so23984657wic.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 02:45:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=5Pa76fDRbhaNw9u7fl1GgDX3useH+znnjMtuaTApvgo=;
+        b=QAIj0jkYQRf/DSkFQMLTRdSIHy9KVOJr9ltQLcf+D1lflKZEaRbRwY7Q21Cf/FJNLy
+         bo6uJd49krH5YhD8/n4ieDDZ/z4uEMnx030D5JRLXDnQzuzE1V3W6fvBkTx818lxw3fq
+         kvcea47sFOqTwk1KlvRK6UbQMYnjKv/QbKhujbpsT2hd214hYju3Z5FTN5t7fEn4C83y
+         u3BFlfYJXGw0Zix5bDNuf+ic9ojLrGJQClcxjFjAnWQre3SzNy+veExXSXyu7a24+ztw
+         1NgJqebjzroKA3ZSDomVLBs60m9c046Rhm0hd01cl4tv+VBVLlu77A13ND9ypGItGh3N
+         55Iw==
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:IVeOkKaZJgkbI/e+U/j7lnpKXlw3usFOjSLakEzAOf77G2P2TOs
- uHbURSsHaFD65jpxuGvAmtQepr8qd61qtHo7nwF+s9TWIFyQmjA9DKJMK23+yY8UCakBzT0
- uZceVb1HwyO3ZZBrKOTg6RmLaPwNyTwA/mBay4sn6LbPXDYuyIPXqy6BQI86ZX+/B576dJe
- V/QOF3Z5fZlP2a2upk5iA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:rlSu62irMrQ=:01l79Wzz+AgZpeFr4U9R/A
- pV9JvWqTj15d/Cz3A0l4Y+mzPGglb4mzk7BjVk69TBHat9ya6u9hLN3G4UK19SifcNyDCPRBp
- s8hrhO0fCEUt4JgoEwAG0JA2+VwSAus0y3qgl323ov26l4QP92EROTyqQYDCts4lOH5PnVltC
- 1Z44Dr3P5eOWluQDibxZ4+bxqxfm+4zjpeu1k/y/zbZc2+TZigbWfY0+01nenCg31tBJeqf9P
- TcZxskCxAmRYJdtig3BSIz9+UHD5AtrTKsrQTPbs9iuoD1EZYB1QuBshVdoS3w9C0ZNh0GGbP
- XGdMC8BH1n+JTgtdTrjkiqDuvIoC3+TGodQA82Qm4oK+SLjK59BeLqJiAaiiRefK4JIi+xxbc
- RY7e8ISi0M9ybPodQvUvTgvsr/6Ogy0BLNa7zAMPV0BbKWllBNknkOM9ffpfDFmnpgP7aTj/s
- YmL0XzyBL6fEgr5rEpskaQqnjDj/fFmF9cIpw30JrzvaVsxaF9isJG51Ps2aa5qzHTb8j1k+r
- DKR8fRHV5oXOvgHXMGzImgyrPG+VY5tyGSja7b1vVTWFRsrXmFxGe9vEIkqYnKpgJpkq4nHPj
- rxXhZWhZzpBfH4A5zq4tYeG0to7iiZej84uGMIUGHGIMKQu9+nRsdeFFcVL7WtzSCKefX+aOw
- ENum6jfdlTGNvc1luAKyrsrFgofuG9U51HSdvUSr+rqrz2iRzJarA17gVJpIfsqMjfsS/fNTp
- Hqz2MM847uNx7wXh
+X-Received: by 10.194.116.197 with SMTP id jy5mr13198533wjb.86.1446284743348;
+ Sat, 31 Oct 2015 02:45:43 -0700 (PDT)
+Received: by 10.27.186.23 with HTTP; Sat, 31 Oct 2015 02:45:43 -0700 (PDT)
+In-Reply-To: <3921328.RGgLIZQx3h@wuerfel>
+References: <CAKHNQQG6GJWTStPeSVEJOsTAqNbetQPeF3KR90WibZ=Ns+5RMA@mail.gmail.com>
+	<3921328.RGgLIZQx3h@wuerfel>
+Date: Sat, 31 Oct 2015 15:15:43 +0530
+Message-ID: <CAKHNQQHSgqMqFPwxNeNk+ULuTWqojMZaKhNt-ZpNZ-x3taiZZg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Help needed with debugfs functions
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a1130cf265f19cd05236368a2
 
-On Saturday 31 October 2015 15:15:43 Shivani Bhardwaj wrote:
-> On Sat, Oct 31, 2015 at 2:37 AM, Arnd Bergmann <arnd@arndb.de> wrote:
-> 
-> > On Friday 30 October 2015 23:16:29 Shivani Bhardwaj wrote:
-> > >
-> > > While working on removal of irrelevant wrapper functions, I came across a
-> > > function lustre_insert_debugfs() in the following file.
-> > > drivers/staging/lustre/lnet/lnet/router_proc.c
-> > >
-> > > However, after some searching, I found out that lnet router debugfs was
-> > > enabled in this patch:
-> > > http://lkml.iu.edu/hypermail/linux/kernel/1509.1/04202.html
-> > >
-> > > So, my focus is on two functions:
-> > > 1. void lnet_proc_init(void) which was converted to void
-> > > lnet_router_debugfs_init(void)
-> > > 2. void lnet_proc_fini(void) which was converted to void
-> > > lnet_router_debugfs_fini(void)
-> > >
-> > > Now, the first function that is, lnet_router_debugfs_init() acts as a
-> > > wrapper for the function lustre_insert_debugfs() which is defined in
-> > > drivers/staging/lustre/lustre/libcfs/module.c.
-> > >
-> > > But, the second function, that is, lnet_router_debugfs_fini() has got
-> > > nothing in its definition but it is still called at many places which
-> > > implies that it does simply nothing when called. So, I thought of adding
-> > > lustre_remove_debugfs() in its definition because that is what it is
-> > > supposed to do. (Please correct me if I am wrong here)
-> >
-> > I think that would be wrong, as lustre_remove_debugfs() removes all
-> > debugfs files, while lnet_router_debugfs_init() only creates a subset
-> > of the files that refer to lnet_router.
-> >
-> > This is fine because we don't actually need to remove them from the
-> > exact place that they were added from -- removing all files once
-> > is sufficient.
-> >
-> > It's also possible that there is an actual bug here: if
-> > lnet_router_debugfs_init is part of a loadable module that can
-> > get removed before lustre_remove_debugfs() is called, then opening
-> > one of the files after the implementation has been removed would
-> > certainly result in a crash.
-> >
-> >
-> Fine. But, what should happen when  lnet_proc_fini() is called? There must
-> be some kind of functionality associated with it. Or, if it is not needed
-> at all, should I remove all its occurences?
+--001a1130cf265f19cd05236368a2
+Content-Type: text/plain; charset=UTF-8
 
-If it's not needed at all, I think removing it is a sensible cleanup. Just
-try to figure out first whether the current behavior is correct or not:
-can we get into a situation where we create debugfs files from this code,
-and then remove the module that contains the handlers before the files
-are removed?
+On Sat, Oct 31, 2015 at 2:37 AM, Arnd Bergmann <arnd@arndb.de> wrote:
 
-	Arnd
+> On Friday 30 October 2015 23:16:29 Shivani Bhardwaj wrote:
+> >
+> > While working on removal of irrelevant wrapper functions, I came across a
+> > function lustre_insert_debugfs() in the following file.
+> > drivers/staging/lustre/lnet/lnet/router_proc.c
+> >
+> > However, after some searching, I found out that lnet router debugfs was
+> > enabled in this patch:
+> > http://lkml.iu.edu/hypermail/linux/kernel/1509.1/04202.html
+> >
+> > So, my focus is on two functions:
+> > 1. void lnet_proc_init(void) which was converted to void
+> > lnet_router_debugfs_init(void)
+> > 2. void lnet_proc_fini(void) which was converted to void
+> > lnet_router_debugfs_fini(void)
+> >
+> > Now, the first function that is, lnet_router_debugfs_init() acts as a
+> > wrapper for the function lustre_insert_debugfs() which is defined in
+> > drivers/staging/lustre/lustre/libcfs/module.c.
+> >
+> > But, the second function, that is, lnet_router_debugfs_fini() has got
+> > nothing in its definition but it is still called at many places which
+> > implies that it does simply nothing when called. So, I thought of adding
+> > lustre_remove_debugfs() in its definition because that is what it is
+> > supposed to do. (Please correct me if I am wrong here)
+>
+> I think that would be wrong, as lustre_remove_debugfs() removes all
+> debugfs files, while lnet_router_debugfs_init() only creates a subset
+> of the files that refer to lnet_router.
+>
+> This is fine because we don't actually need to remove them from the
+> exact place that they were added from -- removing all files once
+> is sufficient.
+>
+> It's also possible that there is an actual bug here: if
+> lnet_router_debugfs_init is part of a loadable module that can
+> get removed before lustre_remove_debugfs() is called, then opening
+> one of the files after the implementation has been removed would
+> certainly result in a crash.
+>
+>
+Fine. But, what should happen when  lnet_proc_fini() is called? There must
+be some kind of functionality associated with it. Or, if it is not needed
+at all, should I remove all its occurences?
+
+> So, I added lustre_remove_debugfs() as a prototype in the header file
+> > drivers/staging/lustre/include/linux/libcfs/libcfs.h so that it can
+> easily
+> > be called from inside of lnet_router_debugfs_fini().
+> >
+> > Now, if the above mentioned is the right thing to do, then I'd like to
+> know
+> > what role does EXPORT_SYMBOL_GPL() play. Please explain with any of the
+> > above functions as example. I'm asking this because lustre_insert_debugfs
+> > has been defined and then exported with EXPORT_SYMBOL_GPL, but no matter
+> > whether I do that with lustre_remove_debugfs or not, it does not throw
+> any
+> > errors. So, what is it exactly doing here?
+>
+> EXPORT_SYMBOL_GPL() is needed specifically when the code is defined in
+> one module and used in another one. I believe that lustre has too many
+> EXPORT_SYMBOL_GPL() statements and a lot of them could be removed, but
+> it's not clear if lustre_insert_debugfs is one of them or not.
+>
+> Try removing the EXPORT_SYMBOL_GPL() and build the entire kernel with
+> lustre configured as a loadable module. It is important that you run
+> 'make vmlinux && make modules' or a similar command but not just
+> 'make drivers/staging/lustre/', which would not check for missing
+> export statements.
+>
+>         Arnd
+>
+
+OK. I'm trying this out.
+
+Thanks a lot, Arnd.
+
+--001a1130cf265f19cd05236368a2
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Sat, Oct 31, 2015 at 2:37 AM, Arnd Bergmann <span dir=3D"ltr">&lt;<a=
+ href=3D"mailto:arnd@arndb.de" target=3D"_blank">arnd@arndb.de</a>&gt;</spa=
+n> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><span class=
+=3D"">On Friday 30 October 2015 23:16:29 Shivani Bhardwaj wrote:<br>
+&gt;<br>
+&gt; While working on removal of irrelevant wrapper functions, I came acros=
+s a<br>
+&gt; function lustre_insert_debugfs() in the following file.<br>
+&gt; drivers/staging/lustre/lnet/lnet/router_proc.c<br>
+&gt;<br>
+&gt; However, after some searching, I found out that lnet router debugfs wa=
+s<br>
+&gt; enabled in this patch:<br>
+&gt; <a href=3D"http://lkml.iu.edu/hypermail/linux/kernel/1509.1/04202.html=
+" rel=3D"noreferrer" target=3D"_blank">http://lkml.iu.edu/hypermail/linux/k=
+ernel/1509.1/04202.html</a><br>
+&gt;<br>
+&gt; So, my focus is on two functions:<br>
+&gt; 1. void lnet_proc_init(void) which was converted to void<br>
+&gt; lnet_router_debugfs_init(void)<br>
+&gt; 2. void lnet_proc_fini(void) which was converted to void<br>
+&gt; lnet_router_debugfs_fini(void)<br>
+&gt;<br>
+&gt; Now, the first function that is, lnet_router_debugfs_init() acts as a<=
+br>
+&gt; wrapper for the function lustre_insert_debugfs() which is defined in<b=
+r>
+&gt; drivers/staging/lustre/lustre/libcfs/module.c.<br>
+&gt;<br>
+&gt; But, the second function, that is, lnet_router_debugfs_fini() has got<=
+br>
+&gt; nothing in its definition but it is still called at many places which<=
+br>
+&gt; implies that it does simply nothing when called. So, I thought of addi=
+ng<br>
+&gt; lustre_remove_debugfs() in its definition because that is what it is<b=
+r>
+&gt; supposed to do. (Please correct me if I am wrong here)<br>
+<br>
+</span>I think that would be wrong, as lustre_remove_debugfs() removes all<=
+br>
+debugfs files, while lnet_router_debugfs_init() only creates a subset<br>
+of the files that refer to lnet_router.<br>
+<br>
+This is fine because we don&#39;t actually need to remove them from the<br>
+exact place that they were added from -- removing all files once<br>
+is sufficient.<br>
+<br>
+It&#39;s also possible that there is an actual bug here: if<br>
+lnet_router_debugfs_init is part of a loadable module that can<br>
+get removed before lustre_remove_debugfs() is called, then opening<br>
+one of the files after the implementation has been removed would<br>
+certainly result in a crash.<br>
+<span class=3D""><br></span></blockquote><div><br>Fine. But, what should ha=
+ppen when=C2=A0<span class=3D""> lnet_proc_fini() is called? There must be =
+some kind of functionality associated with it. Or, if it is not needed at a=
+ll, should I remove all its occurences?<br><br></span> </div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex"><span class=3D"">
+&gt; So, I added lustre_remove_debugfs() as a prototype in the header file<=
+br>
+&gt; drivers/staging/lustre/include/linux/libcfs/libcfs.h so that it can ea=
+sily<br>
+&gt; be called from inside of lnet_router_debugfs_fini().<br>
+&gt;<br>
+&gt; Now, if the above mentioned is the right thing to do, then I&#39;d lik=
+e to know<br>
+&gt; what role does EXPORT_SYMBOL_GPL() play. Please explain with any of th=
+e<br>
+&gt; above functions as example. I&#39;m asking this because lustre_insert_=
+debugfs<br>
+&gt; has been defined and then exported with EXPORT_SYMBOL_GPL, but no matt=
+er<br>
+&gt; whether I do that with lustre_remove_debugfs or not, it does not throw=
+ any<br>
+&gt; errors. So, what is it exactly doing here?<br>
+<br>
+</span>EXPORT_SYMBOL_GPL() is needed specifically when the code is defined =
+in<br>
+one module and used in another one. I believe that lustre has too many<br>
+EXPORT_SYMBOL_GPL() statements and a lot of them could be removed, but<br>
+it&#39;s not clear if lustre_insert_debugfs is one of them or not.<br>
+<br>
+Try removing the EXPORT_SYMBOL_GPL() and build the entire kernel with<br>
+lustre configured as a loadable module. It is important that you run<br>
+&#39;make vmlinux &amp;&amp; make modules&#39; or a similar command but not=
+ just<br>
+&#39;make drivers/staging/lustre/&#39;, which would not check for missing<b=
+r>
+export statements.<br>
+<span class=3D""><font color=3D"#888888"><br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Arnd<br>
+</font></span></blockquote></div><br></div><div class=3D"gmail_extra">OK. I=
+&#39;m trying this out.<br><br></div><div class=3D"gmail_extra">Thanks a lo=
+t, Arnd.<br></div></div>
+
+--001a1130cf265f19cd05236368a2--
 
