@@ -1,89 +1,95 @@
-X-GM-THRID: 6250355885565018112
-X-Received: by 10.182.137.193 with SMTP id qk1mr669399obb.50.1455274383149;
-        Fri, 12 Feb 2016 02:53:03 -0800 (PST)
+X-GM-THRID: 6212138738119606272
+X-Received: by 10.129.108.212 with SMTP id h203mr14106332ywc.38.1446377812578;
+        Sun, 01 Nov 2015 03:36:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.142.232 with SMTP id rz8ls871406obb.62.gmail; Fri, 12 Feb
- 2016 02:53:02 -0800 (PST)
-X-Received: by 10.182.92.226 with SMTP id cp2mr706515obb.19.1455274382646;
-        Fri, 12 Feb 2016 02:53:02 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id ui7si1684744pab.0.2016.02.12.02.53.02
+Received: by 10.140.109.138 with SMTP id l10ls1680694qgf.36.gmail; Sun, 01 Nov
+ 2015 03:36:51 -0800 (PST)
+X-Received: by 10.13.223.72 with SMTP id i69mr13690112ywe.28.1446377811890;
+        Sun, 01 Nov 2015 03:36:51 -0800 (PST)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id el2si1512457pbb.0.2015.11.01.03.36.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 02:53:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Sun, 01 Nov 2015 03:36:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id fl4so33280434pad.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 02:53:02 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id fv9so123588528pac.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 03:36:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=gmr246Ipvc3+B8dkTBwjRtTVMAzfh22dVzkSpaHLbCU=;
-        b=UCLcGG0GVSfiqspfPlc4sH7lxewmfMDi/WfV97+vaajKNWv9Wzl69bhBpSCZuFrmkT
-         gr/0Ow/36yUtQ+HrR6wqkSK/yffqKwG++eDmHsarXLtMdruLUlb6cxQvi9pAfGBrbvUB
-         bl6k1w3poqGpgmOio7vZq0ltCT8wJ0FrqKYanHElyshkq4CgoyJystzVAL9tAjxwhY6a
-         LQOdym9aUWRBErXLyJwQUhVRbI5K04ESDFM+543Hj9G25eYJvCJ5a/g9WOcl/e1qL/yZ
-         7X+h2qsjolZHo2ulVTTe0Ja7mGEAcyfkwi1/QVyP5mQgasjz1Kni+Pa5L2kCD/sDeB6p
-         v7mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=gmr246Ipvc3+B8dkTBwjRtTVMAzfh22dVzkSpaHLbCU=;
-        b=Mz83BYfMG01Rc4xpPaQWsIkURZV/D88gkNS2hNloFU9cZnheJqYw9ZSzTiu1LJxQh9
-         wGGOWY62Z2OZW334ZRd7hTzPwFsxrGlQlMYDvvEY4HJckCFKPiVeCvVztJqjCGAE2lfj
-         NXFx7Vj1xmyXKirzWvig47VMjVVyOIDSvkkP9DzX2GMiLkzdOPGLh4zz0wViS983jbqf
-         syaktT8g+Z7QPiS5SBfJ+jRwKyNJadg9pRnruLJN4z3eA0wleHcuqWCMAPeTEMQtCaEX
-         irRGu2ZZJDNMIOG8Dfopq98XCFhHnF/42u6mqiPeHIBHmHh1ohtmsrpmJi7pE3vVAEws
-         u3Qg==
-X-Gm-Message-State: AG10YOSDvqdRlmgky4ckp1eZkTHeEDbzLRDVBoMY1o+8jZQkwhzWawCOWCDNHH1AuL91bg==
-X-Received: by 10.66.251.162 with SMTP id zl2mr1106792pac.116.1455274382508;
-        Fri, 12 Feb 2016 02:53:02 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.159.20])
-        by smtp.gmail.com with ESMTPSA id bx1sm18562906pab.33.2016.02.12.02.52.54
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 02:53:01 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 12 Feb 2016 16:22:31 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: Replace header files
-Date: Fri, 12 Feb 2016 16:22:19 +0530
-Message-Id: <1455274339-15418-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=Jqy2757b8iUXq3Tfl/mTWJslwo01+dHvAZ32vWrj3qs=;
+        b=N8BbuDBmqiP5853X+Ndobb4jIbOePrfeBTblOKPswcZeJInVWoupIapglUld2vv/JK
+         7Vk7TYA+c5siyHib/ayY9eorEA7CEsFDjXY5JqEqpQo2bpQbW9LOVPA2C2yU82DSfux6
+         ItCgg6k9quqMZgntAqFv+6IxR4Q/Q2LYrJCWJNgIANEbOj1qENpXVmAzDsDJsKiB1UMm
+         pt2LLkaPR2shpWzUXN06aLHiOrDcQUnzIpU8/mbGoNPHfiWX1pUX2ywwxglxeh9nIXpa
+         op8urrUhXuL//mykexf8UEBUk4MeEQkKHMUSeEm/ByPc9NHicrSR6EwFApa/kLmJtruM
+         7UqQ==
+X-Received: by 10.69.16.228 with SMTP id fz4mr20258619pbd.164.1446377811759;
+        Sun, 01 Nov 2015 03:36:51 -0800 (PST)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id qn5sm18230904pac.41.2015.11.01.03.36.49
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 01 Nov 2015 03:36:51 -0800 (PST)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2 2/3] Staging: lustre: obdclass: Declare local function cl_lock_mutex_try as static
+Date: Sun,  1 Nov 2015 17:06:34 +0530
+Message-Id: <1446377794-7761-4-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1446377794-7761-1-git-send-email-shraddha.6596@gmail.com>
+References: <1446377794-7761-1-git-send-email-shraddha.6596@gmail.com>
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150201.5635F952.00B3,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-The headers <asm/uaccess.h>,<asm/atomic.h>,<asm/atomic.h> should not be
-directly included so replace them.
-Warning generated by checkpatch.pl.
+Function cl_lock_mutex_try has been used only in this particular file.
+Thus declare the function as static.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
 ---
- drivers/staging/rtl8723au/include/osdep_service.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v2-
+ No change
 
-diff --git a/drivers/staging/rtl8723au/include/osdep_service.h b/drivers/staging/rtl8723au/include/osdep_service.h
-index dedb418..98250b1 100644
---- a/drivers/staging/rtl8723au/include/osdep_service.h
-+++ b/drivers/staging/rtl8723au/include/osdep_service.h
-@@ -29,10 +29,10 @@
- #include <linux/kref.h>
- #include <linux/netdevice.h>
- #include <linux/skbuff.h>
--#include <asm/uaccess.h>
-+#include <linux/uaccess.h>
- #include <asm/byteorder.h>
--#include <asm/atomic.h>
--#include <asm/io.h>
-+#include <linux/atomic.h>
-+#include <linux/io.h>
- #include <linux/semaphore.h>
- #include <linux/sem.h>
- #include <linux/sched.h>
+ drivers/staging/lustre/lustre/obdclass/cl_lock.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/obdclass/cl_lock.c b/drivers/staging/lustre/lustre/obdclass/cl_lock.c
+index 5621beb..1836dc0 100644
+--- a/drivers/staging/lustre/lustre/obdclass/cl_lock.c
++++ b/drivers/staging/lustre/lustre/obdclass/cl_lock.c
+@@ -687,7 +687,7 @@ EXPORT_SYMBOL(cl_lock_mutex_get);
+  *
+  * \see cl_lock_mutex_get()
+  */
+-int cl_lock_mutex_try(const struct lu_env *env, struct cl_lock *lock)
++static int cl_lock_mutex_try(const struct lu_env *env, struct cl_lock *lock)
+ {
+ 	int result;
+ 
+@@ -705,7 +705,6 @@ int cl_lock_mutex_try(const struct lu_env *env, struct cl_lock *lock)
+ 		result = -EBUSY;
+ 	return result;
+ }
+-EXPORT_SYMBOL(cl_lock_mutex_try);
+ 
+ /**
+  {* Unlocks cl_lock object.
 -- 
-1.9.1
+2.1.4
 
 
