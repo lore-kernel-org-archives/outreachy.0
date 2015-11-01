@@ -1,48 +1,234 @@
 X-GM-THRID: 6211892414504763392
-X-Received: by 10.182.24.42 with SMTP id r10mr26863306obf.42.1446616573970;
-        Tue, 03 Nov 2015 21:56:13 -0800 (PST)
+X-Received: by 10.107.150.208 with SMTP id y199mr15250888iod.15.1446360720270;
+        Sat, 31 Oct 2015 23:52:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.37 with SMTP id d34ls549010qgf.53.gmail; Tue, 03 Nov
- 2015 21:56:13 -0800 (PST)
-X-Received: by 10.13.234.137 with SMTP id t131mr23933807ywe.53.1446616573543;
-        Tue, 03 Nov 2015 21:56:13 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id iz5si2679669pbc.2.2015.11.03.21.56.13
+Received: by 10.140.102.165 with SMTP id w34ls2098853qge.68.gmail; Sat, 31 Oct
+ 2015 23:51:59 -0700 (PDT)
+X-Received: by 10.31.142.13 with SMTP id q13mr13443364vkd.11.1446360719709;
+        Sat, 31 Oct 2015 23:51:59 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id sm2si1333289pab.0.2015.10.31.23.51.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Nov 2015 21:56:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sat, 31 Oct 2015 23:51:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (64-21-211-131.static-ip.telepacific.net [64.21.211.131])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2A5E48DC;
-	Wed,  4 Nov 2015 05:56:13 +0000 (UTC)
-Date: Tue, 3 Nov 2015 19:43:49 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Shraddha Barke <shraddha.6596@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 2/2] Staging: lustre: lnet: Remove
- typedef cfs_workitem_t
-Message-ID: <20151104034349.GA5244@kroah.com>
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x22b.google.com with SMTP id ec8so5690752pad.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 23:51:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=njeKxr3rldIU7XM3ooruu5W0GEh+0dilDF5P2Cc765o=;
+        b=Dt5qqutD1D9Ci40w10uMTh+Bd5vJy+fiYOC924z7gSvpV69Xn+kDtAZMJ5Cc70StIf
+         INzU3SJl7YI7ldbZFWQU/X4OPlRjSE0ICXiv5Pwg8ucim3Fem4Vh+MuNtct2CfXO6qXN
+         cIoIdEKudsaiREGnoAPcslfcBscaRvAFVixMm2b6pgCSM8/QcYekjD4BQRNq4AxzGpQX
+         BXo3hZwh+wrAzNVISXIllw37ZyzAHXGjqD4fCOIJlr+xtOMBvchv+A38DR0gMPtdu5Uf
+         LocDNBG8Rd/jdAU+mltoHPE7ZDEp0zfhIa0MXchwB8bgGKW1KaGxjG7gEmus3Sfs8FsS
+         uK6g==
+X-Received: by 10.66.254.106 with SMTP id ah10mr18947575pad.65.1446360719558;
+        Sat, 31 Oct 2015 23:51:59 -0700 (PDT)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id rc5sm16997350pbc.95.2015.10.31.23.51.54
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 31 Oct 2015 23:51:59 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2 2/2] Staging: lustre: lnet: Remove typedef cfs_workitem_t
+Date: Sun,  1 Nov 2015 12:21:38 +0530
+Message-Id: <1446360698-9942-3-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1446360698-9942-1-git-send-email-shraddha.6596@gmail.com>
 References: <1446360698-9942-1-git-send-email-shraddha.6596@gmail.com>
- <1446360698-9942-3-git-send-email-shraddha.6596@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1446360698-9942-3-git-send-email-shraddha.6596@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer:  0000001
+X-CTCH-Spam:  Unknown
+X-CTCH-VOD:  Unknown
+X-CTCH-Flags:  0
+X-CTCH-RefID:  str=0001.0A150204.5635B68E.0079,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTCH-Score:  0.000
+X-CTCH-ScoreCust:  0.000
+X-CTCH-Rules:  
 
-On Sun, Nov 01, 2015 at 12:21:38PM +0530, Shraddha Barke wrote:
-> The Linux kernel coding style guidelines suggest not using typedefs
-> for structure types. This patch gets rid of the typedef for
-> cfs_workitem_t.
-> 
-> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
-> ---
-> Changes in v2-
->  Fix alignment.
+The Linux kernel coding style guidelines suggest not using typedefs
+for structure types. This patch gets rid of the typedef for
+cfs_workitem_t.
 
-Due to other changes from other developers, this patch doesn't apply
-anymore :(
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+Changes in v2-
+ Fix alignment.
+
+ drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h    |  4 ++--
+ .../staging/lustre/include/linux/libcfs/libcfs_workitem.h    | 12 ++++++------
+ drivers/staging/lustre/lnet/selftest/selftest.h              |  4 ++--
+ drivers/staging/lustre/lustre/libcfs/hash.c                  |  6 +++---
+ drivers/staging/lustre/lustre/libcfs/workitem.c              | 10 +++++-----
+ 5 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
+index 70b8b29..b0ebb26 100644
+--- a/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
++++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_hash.h
+@@ -249,7 +249,7 @@ struct cfs_hash {
+ 	/** # of iterators (caller of cfs_hash_for_each_*) */
+ 	__u32		       hs_iterators;
+ 	/** rehash workitem */
+-	cfs_workitem_t	      hs_rehash_wi;
++	struct cfs_workitem	hs_rehash_wi;
+ 	/** refcount on this hash table */
+ 	atomic_t		hs_refcount;
+ 	/** rehash buckets-table */
+@@ -266,7 +266,7 @@ struct cfs_hash {
+ 	/** bits when we found the max depth */
+ 	unsigned int		hs_dep_bits;
+ 	/** workitem to output max depth */
+-	cfs_workitem_t	      hs_dep_wi;
++	struct cfs_workitem	hs_dep_wi;
+ #endif
+ 	/** name of htable */
+ 	char			hs_name[0];
+diff --git a/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h b/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h
+index 5cc64f3..f9b20c5 100644
+--- a/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h
++++ b/drivers/staging/lustre/include/linux/libcfs/libcfs_workitem.h
+@@ -73,7 +73,7 @@ int cfs_wi_sched_create(char *name, struct cfs_cpt_table *cptab, int cpt,
+ struct cfs_workitem;
+ 
+ typedef int (*cfs_wi_action_t) (struct cfs_workitem *);
+-typedef struct cfs_workitem {
++struct cfs_workitem {
+ 	/** chain on runq or rerunq */
+ 	struct list_head       wi_list;
+ 	/** working function */
+@@ -84,10 +84,10 @@ typedef struct cfs_workitem {
+ 	unsigned short   wi_running:1;
+ 	/** scheduled */
+ 	unsigned short   wi_scheduled:1;
+-} cfs_workitem_t;
++};
+ 
+ static inline void
+-cfs_wi_init(cfs_workitem_t *wi, void *data, cfs_wi_action_t action)
++cfs_wi_init(struct cfs_workitem *wi, void *data, cfs_wi_action_t action)
+ {
+ 	INIT_LIST_HEAD(&wi->wi_list);
+ 
+@@ -97,9 +97,9 @@ cfs_wi_init(cfs_workitem_t *wi, void *data, cfs_wi_action_t action)
+ 	wi->wi_action    = action;
+ }
+ 
+-void cfs_wi_schedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi);
+-int  cfs_wi_deschedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi);
+-void cfs_wi_exit(struct cfs_wi_sched *sched, cfs_workitem_t *wi);
++void cfs_wi_schedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi);
++int  cfs_wi_deschedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi);
++void cfs_wi_exit(struct cfs_wi_sched *sched, struct cfs_workitem *wi);
+ 
+ int  cfs_wi_startup(void);
+ void cfs_wi_shutdown(void);
+diff --git a/drivers/staging/lustre/lnet/selftest/selftest.h b/drivers/staging/lustre/lnet/selftest/selftest.h
+index 2a53775..a8b2b6f 100644
+--- a/drivers/staging/lustre/lnet/selftest/selftest.h
++++ b/drivers/staging/lustre/lnet/selftest/selftest.h
+@@ -176,7 +176,7 @@ typedef int (*swi_action_t) (struct swi_workitem *);
+ 
+ typedef struct swi_workitem {
+ 	struct cfs_wi_sched *swi_sched;
+-	cfs_workitem_t      swi_workitem;
++	struct cfs_workitem swi_workitem;
+ 	swi_action_t        swi_action;
+ 	int                 swi_state;
+ } swi_workitem_t;
+@@ -461,7 +461,7 @@ srpc_serv_is_framework(struct srpc_service *svc)
+ }
+ 
+ static inline int
+-swi_wi_action(cfs_workitem_t *wi)
++swi_wi_action(struct cfs_workitem *wi)
+ {
+ 	swi_workitem_t *swi = container_of(wi, swi_workitem_t, swi_workitem);
+ 
+diff --git a/drivers/staging/lustre/lustre/libcfs/hash.c b/drivers/staging/lustre/lustre/libcfs/hash.c
+index 0308744..47ccd87 100644
+--- a/drivers/staging/lustre/lustre/libcfs/hash.c
++++ b/drivers/staging/lustre/lustre/libcfs/hash.c
+@@ -971,10 +971,10 @@ cfs_hash_buckets_realloc(struct cfs_hash *hs, struct cfs_hash_bucket **old_bkts,
+  * @flags    - CFS_HASH_REHASH enable synamic hash resizing
+  *	   - CFS_HASH_SORT enable chained hash sort
+  */
+-static int cfs_hash_rehash_worker(cfs_workitem_t *wi);
++static int cfs_hash_rehash_worker(struct cfs_workitem *wi);
+ 
+ #if CFS_HASH_DEBUG_LEVEL >= CFS_HASH_DEBUG_1
+-static int cfs_hash_dep_print(cfs_workitem_t *wi)
++static int cfs_hash_dep_print(struct cfs_workitem *wi)
+ {
+ 	struct cfs_hash *hs = container_of(wi, struct cfs_hash, hs_dep_wi);
+ 	int	 dep;
+@@ -1874,7 +1874,7 @@ cfs_hash_rehash_bd(struct cfs_hash *hs, struct cfs_hash_bd *old)
+ }
+ 
+ static int
+-cfs_hash_rehash_worker(cfs_workitem_t *wi)
++cfs_hash_rehash_worker(struct cfs_workitem *wi)
+ {
+ 	struct cfs_hash	 *hs = container_of(wi, struct cfs_hash, hs_rehash_wi);
+ 	struct cfs_hash_bucket **bkts;
+diff --git a/drivers/staging/lustre/lustre/libcfs/workitem.c b/drivers/staging/lustre/lustre/libcfs/workitem.c
+index e1143a5..2dd0a0c 100644
+--- a/drivers/staging/lustre/lustre/libcfs/workitem.c
++++ b/drivers/staging/lustre/lustre/libcfs/workitem.c
+@@ -120,7 +120,7 @@ cfs_wi_sched_cansleep(struct cfs_wi_sched *sched)
+  * 1. when it returns no one shall try to schedule the workitem.
+  */
+ void
+-cfs_wi_exit(struct cfs_wi_sched *sched, cfs_workitem_t *wi)
++cfs_wi_exit(struct cfs_wi_sched *sched, struct cfs_workitem *wi)
+ {
+ 	LASSERT(!in_interrupt()); /* because we use plain spinlock */
+ 	LASSERT(!sched->ws_stopping);
+@@ -149,7 +149,7 @@ EXPORT_SYMBOL(cfs_wi_exit);
+  * cancel schedule request of workitem \a wi
+  */
+ int
+-cfs_wi_deschedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi)
++cfs_wi_deschedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi)
+ {
+ 	int	rc;
+ 
+@@ -190,7 +190,7 @@ EXPORT_SYMBOL(cfs_wi_deschedule);
+  * be added, and even dynamic creation of serialised queues might be supported.
+  */
+ void
+-cfs_wi_schedule(struct cfs_wi_sched *sched, cfs_workitem_t *wi)
++cfs_wi_schedule(struct cfs_wi_sched *sched, struct cfs_workitem *wi)
+ {
+ 	LASSERT(!in_interrupt()); /* because we use plain spinlock */
+ 	LASSERT(!sched->ws_stopping);
+@@ -240,12 +240,12 @@ cfs_wi_scheduler (void *arg)
+ 	while (!sched->ws_stopping) {
+ 		int	     nloops = 0;
+ 		int	     rc;
+-		cfs_workitem_t *wi;
++		struct cfs_workitem *wi;
+ 
+ 		while (!list_empty(&sched->ws_runq) &&
+ 		       nloops < CFS_WI_RESCHED) {
+ 			wi = list_entry(sched->ws_runq.next,
+-					    cfs_workitem_t, wi_list);
++					    struct cfs_workitem, wi_list);
+ 			LASSERT(wi->wi_scheduled && !wi->wi_running);
+ 
+ 			list_del_init(&wi->wi_list);
+-- 
+2.1.4
+
 
