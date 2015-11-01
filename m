@@ -1,113 +1,127 @@
 X-GM-THRID: 6212095586717401088
-X-Received: by 10.28.132.75 with SMTP id g72mr1235642wmd.2.1446368898203;
-        Sun, 01 Nov 2015 01:08:18 -0800 (PST)
+X-Received: by 10.13.214.200 with SMTP id y191mr13460387ywd.10.1446368888630;
+        Sun, 01 Nov 2015 01:08:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.7.129 with SMTP id 123ls396255wmh.17.canary; Sun, 01 Nov
- 2015 01:08:17 -0800 (PST)
-X-Received: by 10.28.132.75 with SMTP id g72mr1235638wmd.2.1446368897805;
-        Sun, 01 Nov 2015 01:08:17 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id g18si338904wmd.1.2015.11.01.01.08.17
+Received: by 10.140.100.171 with SMTP id s40ls1864561qge.43.gmail; Sun, 01 Nov
+ 2015 01:08:08 -0800 (PST)
+X-Received: by 10.129.108.212 with SMTP id h203mr13736479ywc.38.1446368887958;
+        Sun, 01 Nov 2015 01:08:07 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qk0-x22b.google.com (mail-qk0-x22b.google.com. [2607:f8b0:400d:c09::22b])
+        by gmr-mx.google.com with ESMTPS id i140si1099250ywe.3.2015.11.01.01.08.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 01:08:17 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Nov 2015 01:08:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) client-ip=2607:f8b0:400d:c09::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.20,228,1444687200"; 
-   d="scan'208";a="185426238"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Nov 2015 10:08:17 +0100
-Date: Sun, 1 Nov 2015 10:08:16 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH 3/5] staging: rdma: hfi1: chip: Remove
- wrapper function
-In-Reply-To: <CA+5yK5E2vnAQfvv0F_TyyyNf6ALtz-MVQnCmQ8Nazn7gL30q3g@mail.gmail.com>
-Message-ID: <alpine.DEB.2.02.1511011007130.2070@localhost6.localdomain6>
-References: <cover.1446366036.git.amitoj1606@gmail.com> <23ac38a01d5092053da227aaa0741b270125ceeb.1446366036.git.amitoj1606@gmail.com> <alpine.DEB.2.02.1511010938560.2070@localhost6.localdomain6>
- <CA+5yK5E2vnAQfvv0F_TyyyNf6ALtz-MVQnCmQ8Nazn7gL30q3g@mail.gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qk0-x22b.google.com with SMTP id r67so721963qkb.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 01:08:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=eXI4QbtC+F/FHz4kirOFYdVHflQslIEx1mu/8CybxzY=;
+        b=HpreJSPOiUfV+kz710CY8bCC3cOUG+TGzY2ZA1gvvWMnOd6thH6P7odWfGF56VpAvp
+         yQ5hPU6ejvJno9ZS5AscdOON/CURONd1D3j1vyTHnq5w9sA2EzKIAkmrZhLN8UNfWtdQ
+         XawNeWQuMMR7K5gNy123sB2JpuVEzha5rJ00p6FtXdTr9XWPcDo6soueoizSmR8lkc0R
+         FZG5Lv2yTDenLvOiwWyWxGSMik++Io3F7kEOjVOIfiImFk7+tOvgPvrdIklCDkfwxHls
+         V2MV2ZFXgTT0GUA9baEjQReE0kfcmp3KF+Ui6bKV6+jLzxZjPK8useBUCi/XZP3VgzjE
+         wqyA==
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-Received: by 10.55.71.81 with SMTP id u78mr22103180qka.81.1446368887804;
+ Sun, 01 Nov 2015 01:08:07 -0800 (PST)
+Received: by 10.140.21.38 with HTTP; Sun, 1 Nov 2015 01:08:07 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.02.1511011006180.2070@localhost6.localdomain6>
+References: <cover.1446366036.git.amitoj1606@gmail.com>
+	<5cd4f403201b3e1c6b0f44429a5203b3447e2d27.1446366036.git.amitoj1606@gmail.com>
+	<alpine.DEB.2.02.1511010942530.2070@localhost6.localdomain6>
+	<CA+5yK5FrkzY+_YZde7e-Y5EUtAFh5H8niFo-=neivh8JQ7MDBw@mail.gmail.com>
+	<alpine.DEB.2.02.1511011006180.2070@localhost6.localdomain6>
+Date: Sun, 1 Nov 2015 14:38:07 +0530
+Message-ID: <CA+5yK5FkNdP9D1mpiPuO7z0thN8ppqFVY-K=GDZxq4uh94TcKQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/5] staging: rdma: hfi1: Remove
+ set_sbus_fast_mode() wrapper function
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-On Sun, 1 Nov 2015, Amitoj Kaur Chawla wrote:
+On Sun, Nov 1, 2015 at 2:36 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sun, 1 Nov 2015, Amitoj Kaur Chawla wrote:
+>
+>> On Sun, Nov 1, 2015 at 2:14 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> > On Sun, 1 Nov 2015, Amitoj Kaur Chawla wrote:
+>> >
+>> >> Drop set_sbus_fast_mode() wrapper function that can be replaced by
+>> >> a single line of code.
+>> >>
+>> >> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+>> >> ---
+>> >>  drivers/staging/rdma/hfi1/chip.h     |  1 -
+>> >>  drivers/staging/rdma/hfi1/firmware.c | 15 ++++++---------
+>> >>  drivers/staging/rdma/hfi1/pcie.c     |  3 ++-
+>> >>  3 files changed, 8 insertions(+), 11 deletions(-)
+>> >>
+>> >> diff --git a/drivers/staging/rdma/hfi1/chip.h b/drivers/staging/rdma/hfi1/chip.h
+>> >> index f89a432..092fc9d 100644
+>> >> --- a/drivers/staging/rdma/hfi1/chip.h
+>> >> +++ b/drivers/staging/rdma/hfi1/chip.h
+>> >> @@ -619,7 +619,6 @@ void sbus_request(struct hfi1_devdata *dd,
+>> >>                 u8 receiver_addr, u8 data_addr, u8 command, u32 data_in);
+>> >>  int sbus_request_slow(struct hfi1_devdata *dd,
+>> >>                     u8 receiver_addr, u8 data_addr, u8 command, u32 data_in);
+>> >> -void set_sbus_fast_mode(struct hfi1_devdata *dd);
+>> >>  void clear_sbus_fast_mode(struct hfi1_devdata *dd);
+>> >>  int hfi1_firmware_init(struct hfi1_devdata *dd);
+>> >>  int load_pcie_firmware(struct hfi1_devdata *dd);
+>> >> diff --git a/drivers/staging/rdma/hfi1/firmware.c b/drivers/staging/rdma/hfi1/firmware.c
+>> >> index 5c2f2ed..0ce9a16 100644
+>> >> --- a/drivers/staging/rdma/hfi1/firmware.c
+>> >> +++ b/drivers/staging/rdma/hfi1/firmware.c
+>> >> @@ -987,7 +987,8 @@ void fabric_serdes_reset(struct hfi1_devdata *dd)
+>> >>       ra = fabric_serdes_broadcast[dd->hfi1_id];
+>> >>
+>> >>       acquire_hw_mutex(dd);
+>> >> -     set_sbus_fast_mode(dd);
+>> >> +     write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
+>> >> +                             ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
+>> >>       /* place SerDes in reset and disable SPICO */
+>> >>       sbus_request(dd, ra, 0x07, WRITE_SBUS_RECEIVER, 0x00000011);
+>> >>       /* wait 100 refclk cycles @ 156.25MHz => 640ns */
+>> >> @@ -1214,12 +1215,6 @@ void release_hw_mutex(struct hfi1_devdata *dd)
+>> >>       write_csr(dd, ASIC_CFG_MUTEX, 0);
+>> >>  }
+>> >>
+>> >> -void set_sbus_fast_mode(struct hfi1_devdata *dd)
+>> >> -{
+>> >> -     write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
+>> >> -                             ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
+>> >> -}
+>> >> -
+>> >>  void clear_sbus_fast_mode(struct hfi1_devdata *dd)
+>> >
+>> > set_sbus_fast_mode seems to be the pair of clear_sbus_fast_mode just below
+>> > it, so it's not clear that it is a good idea to remove one and leave the
+>> > other.
+>> >
+>>
+>> clear_sbus_fast_mode() is not a wrapper function. So I didn't remove
+>> it. But if you think one change without the other is pointless then I
+>> can drop this.
+>
+> Pointless is not quite the right word.  I think that it hurts readability
+> to drop one without the other.  So I think it would be better to drop it.
+>
+> julia
 
-> On Sun, Nov 1, 2015 at 2:11 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
-> > On Sun, 1 Nov 2015, Amitoj Kaur Chawla wrote:
-> >
-> >> Drop wrapper function remap_receive_available_interrupt() that can be
-> >> replaced by a single line of code.
-> >>
-> >> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> >> ---
-> >>  drivers/staging/rdma/hfi1/chip.c | 8 +-------
-> >>  1 file changed, 1 insertion(+), 7 deletions(-)
-> >>
-> >> diff --git a/drivers/staging/rdma/hfi1/chip.c b/drivers/staging/rdma/hfi1/chip.c
-> >> index beac326d..a9c6abf 100644
-> >> --- a/drivers/staging/rdma/hfi1/chip.c
-> >> +++ b/drivers/staging/rdma/hfi1/chip.c
-> >> @@ -8749,12 +8749,6 @@ static void remap_sdma_interrupts(struct hfi1_devdata *dd,
-> >>               msix_intr);
-> >>  }
-> >>
-> >> -static void remap_receive_available_interrupt(struct hfi1_devdata *dd,
-> >> -                                           int rx, int msix_intr)
-> >> -{
-> >> -     remap_intr(dd, IS_RCVAVAIL_START + rx, msix_intr);
-> >> -}
-> >
-> > remap_intr is not a standard kernel function.  But perhaps one could argue
-> > that the constant name gives the same information as the function name, so
-> > the function is not needed.
-> >
-> > But this function is the neighbor of another very similar function that
-> > remaps three interrupts at once.  The two functions are also used in a
-> > very parallel way, at the end of successive if branches.  It seems strange
-> > to inline one function and not the other.
-> >
-> > julia
-> 
-> In this case, the function names are very similar and the wrapper just
-> add the macro IS_RCVAVAIL_START to the second argument, so the change
-> made sense to me.
+Okay. Will accordingly send v2 soon.
 
-Personally, I would find the lack of parallelism confusing.  
-But one could have an opinion either way on this one.
-
-julia
-
-> >
-> >>  static int request_intx_irq(struct hfi1_devdata *dd)
-> >>  {
-> >>       int ret;
-> >> @@ -8890,7 +8884,7 @@ static int request_msix_irqs(struct hfi1_devdata *dd)
-> >>                       snprintf(me->name, sizeof(me->name),
-> >>                               DRIVER_NAME"_%d kctxt%d", dd->unit, idx);
-> >>                       err_info = "receive context";
-> >> -                     remap_receive_available_interrupt(dd, idx, i);
-> >> +                     remap_intr(dd, IS_RCVAVAIL_START + idx, i);
-> >>               } else {
-> >>                       /* not in our expected range - complain, then
-> >>                          ignore it */
-> >> --
-> >> 1.9.1
-> >>
-> >> --
-> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/23ac38a01d5092053da227aaa0741b270125ceeb.1446366036.git.amitoj1606%40gmail.com.
-> >> For more options, visit https://groups.google.com/d/optout.
-> >>
-> 
-> 
-> 
-> -- 
-> Amitoj
-> 
+-- 
+Amitoj
 
