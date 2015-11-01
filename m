@@ -1,72 +1,137 @@
-X-GM-THRID: 6208461910524821504
-X-Received: by 10.182.165.37 with SMTP id yv5mr843081obb.36.1445520182458;
-        Thu, 22 Oct 2015 06:23:02 -0700 (PDT)
+X-GM-THRID: 6212138041611386880
+X-Received: by 10.112.164.1 with SMTP id ym1mr3324300lbb.6.1446376394847;
+        Sun, 01 Nov 2015 03:13:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.225.34 with SMTP id rh2ls1726821igc.34.canary; Thu, 22 Oct
- 2015 06:23:01 -0700 (PDT)
-X-Received: by 10.66.124.131 with SMTP id mi3mr12874470pab.32.1445520181678;
-        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id el2si1682445pbb.0.2015.10.22.06.23.01
+Received: by 10.25.87.137 with SMTP id l131ls368602lfb.80.gmail; Sun, 01 Nov
+ 2015 03:13:14 -0800 (PST)
+X-Received: by 10.112.166.40 with SMTP id zd8mr2696218lbb.21.1446376394229;
+        Sun, 01 Nov 2015 03:13:14 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 13si339585wml.2.2015.11.01.03.13.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Sun, 01 Nov 2015 03:13:14 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id z6so86898293pas.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=xe0h8EkOcY2E9tOwCJRej4cLFrtJJsQMl33u/4HZquY=;
-        b=kYWu/btxrAM0jCQjYNOp+6Qr+GcacM5YPcGQsfZIhpDGsAastHB+1mxZ8+QsZjvy5h
-         4tVRAoMWk1e44GHuZjmN1oQPKITSRb/K3+XwnfqsfwpRWfqSS2ej1oyFc4KJwqR7GAZ6
-         mY+FvvM27jf7RtNvE1S1Zy50r7mc3M2h7MlplfVzGSETs/6A7ZY2TeUIB9QJMda5kuG/
-         wLTmm4dL5wuvcFWbmV8VYUpjIZSKW8yFWdk5XoITDlnVE3EyH3WuanCu8GPM8C7UXuIk
-         FuiUNPwXw49XL7zdGZxI+D+PL8PDBogiYPdyPgMqHLsfvjo8FTLhHvljVa/1nCEq+uUh
-         I8ZQ==
-X-Received: by 10.68.139.100 with SMTP id qx4mr17317389pbb.149.1445520181554;
-        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id ug4sm14035443pac.11.2015.10.22.06.23.00
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 22 Oct 2015 06:23:01 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>,
-	devel@driverdev.osuosl.org
-Subject: [PATCH] Staging: lustre: lprocfs_status: Remove unused declaration
-Date: Thu, 22 Oct 2015 18:52:49 +0530
-Message-Id: <1445520169-7398-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.20,228,1444687200"; 
+   d="scan'208";a="185435878"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Nov 2015 12:12:56 +0100
+Date: Sun, 1 Nov 2015 12:12:55 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Burcin Akalin <brcnakalin@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: gdm72xx:Add space around
+ '<<'
+In-Reply-To: <1446376088-9909-1-git-send-email-brcnakalin@gmail.com>
+Message-ID: <alpine.DEB.2.02.1511011212140.2070@localhost6.localdomain6>
+References: <1446376088-9909-1-git-send-email-brcnakalin@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove declaration of function lprocfs_wr_timeouts from header file
-since it is not used
+On Sun, 1 Nov 2015, Burcin Akalin wrote:
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/lustre/lustre/include/lprocfs_status.h | 2 --
- 1 file changed, 2 deletions(-)
+> Add space around operator '<<'. Problem found using
+> checkpatch.pl
+> CHECK: spaces preferred around that '<<' (ctx:VxV)
 
-diff --git a/drivers/staging/lustre/lustre/include/lprocfs_status.h b/drivers/staging/lustre/lustre/include/lprocfs_status.h
-index 6e41129..f332351 100644
---- a/drivers/staging/lustre/lustre/include/lprocfs_status.h
-+++ b/drivers/staging/lustre/lustre/include/lprocfs_status.h
-@@ -594,8 +594,6 @@ int lprocfs_rd_connect_flags(struct seq_file *m, void *data);
- struct adaptive_timeout;
- int lprocfs_at_hist_helper(struct seq_file *m, struct adaptive_timeout *at);
- int lprocfs_rd_timeouts(struct seq_file *m, void *data);
--int lprocfs_wr_timeouts(struct file *file, const char __user *buffer,
--			unsigned long count, void *data);
- int lprocfs_wr_ping(struct file *file, const char __user *buffer,
- 		    size_t count, loff_t *off);
- int lprocfs_wr_import(struct file *file, const char __user *buffer,
--- 
-2.1.4
+I think that this patch would be on top of your previous patch.  You can't 
+do that until your previous patch is accepted.  If you want to add a new 
+change to the same code, you have to send the whole series again.
 
+julia
+
+> 
+> Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+> ---
+>  drivers/staging/gdm72xx/gdm_qos.c | 26 +++++++++++++-------------
+>  1 file changed, 13 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/staging/gdm72xx/gdm_qos.c b/drivers/staging/gdm72xx/gdm_qos.c
+> index 6c5fae5..2b4ff58 100644
+> --- a/drivers/staging/gdm72xx/gdm_qos.c
+> +++ b/drivers/staging/gdm72xx/gdm_qos.c
+> @@ -171,13 +171,13 @@ static int chk_ipv4_rule(struct gdm_wimax_csr_s *csr, u8 *stream, u8 *port)
+>  	}
+>  
+>  	if (csr->classifier_rule_en & PROTOCOLSRCPORTRANGE) {
+> -		i = ((port[0]<<8) & 0xff00) + port[1];
+> +		i = ((port[0] << 8) & 0xff00) + port[1];
+>  		if ((i < csr->srcport_lo) || (i > csr->srcport_hi))
+>  			return 1;
+>  	}
+>  
+>  	if (csr->classifier_rule_en & PROTOCOLDSTPORTRANGE) {
+> -		i = ((port[2]<<8) & 0xff00) + port[3];
+> +		i = ((port[2] << 8) & 0xff00) + port[3];
+>  		if ((i < csr->dstport_lo) || (i > csr->dstport_hi))
+>  			return 1;
+>  	}
+> @@ -342,9 +342,9 @@ void gdm_recv_qos_hci_packet(void *nic_ptr, u8 *buf, int size)
+>  	if (sub_cmd_evt == QOS_REPORT) {
+>  		spin_lock_irqsave(&qcb->qos_lock, flags);
+>  		for (i = 0; i < qcb->qos_list_cnt; i++) {
+> -			sfid = ((buf[(i*5) + 6]<<24) & 0xff000000);
+> -			sfid += ((buf[(i*5) + 7]<<16) & 0xff0000);
+> -			sfid += ((buf[(i*5) + 8]<<8) & 0xff00);
+> +			sfid = ((buf[(i*5) + 6] << 24) & 0xff000000);
+> +			sfid += ((buf[(i*5) + 7] << 16) & 0xff0000);
+> +			sfid += ((buf[(i*5) + 8] << 8) & 0xff00);
+>  			sfid += (buf[(i*5) + 9]);
+>  			index = get_csr(qcb, sfid, 0);
+>  			if (index == -1) {
+> @@ -363,9 +363,9 @@ void gdm_recv_qos_hci_packet(void *nic_ptr, u8 *buf, int size)
+>  
+>  	/* sub_cmd_evt == QOS_ADD || sub_cmd_evt == QOS_CHANG_DEL */
+>  	pos = 6;
+> -	sfid = ((buf[pos++]<<24) & 0xff000000);
+> -	sfid += ((buf[pos++]<<16) & 0xff0000);
+> -	sfid += ((buf[pos++]<<8) & 0xff00);
+> +	sfid = ((buf[pos++] << 24) & 0xff000000);
+> +	sfid += ((buf[pos++] << 16) & 0xff0000);
+> +	sfid += ((buf[pos++] << 8) & 0xff00);
+>  	sfid += (buf[pos++]);
+>  
+>  	index = get_csr(qcb, sfid, 1);
+> @@ -382,7 +382,7 @@ void gdm_recv_qos_hci_packet(void *nic_ptr, u8 *buf, int size)
+>  
+>  		spin_lock_irqsave(&qcb->qos_lock, flags);
+>  		qcb->csr[index].sfid = sfid;
+> -		qcb->csr[index].classifier_rule_en = ((buf[pos++]<<8) & 0xff00);
+> +		qcb->csr[index].classifier_rule_en = ((buf[pos++] << 8) & 0xff00);
+>  		qcb->csr[index].classifier_rule_en += buf[pos++];
+>  		if (qcb->csr[index].classifier_rule_en == 0)
+>  			qcb->qos_null_idx = index;
+> @@ -406,13 +406,13 @@ void gdm_recv_qos_hci_packet(void *nic_ptr, u8 *buf, int size)
+>  		qcb->csr[index].ipdst_addr[1] = buf[pos++];
+>  		qcb->csr[index].ipdst_addr[2] = buf[pos++];
+>  		qcb->csr[index].ipdst_addr[3] = buf[pos++];
+> -		qcb->csr[index].srcport_lo = ((buf[pos++]<<8) & 0xff00);
+> +		qcb->csr[index].srcport_lo = ((buf[pos++] << 8) & 0xff00);
+>  		qcb->csr[index].srcport_lo += buf[pos++];
+> -		qcb->csr[index].srcport_hi = ((buf[pos++]<<8) & 0xff00);
+> +		qcb->csr[index].srcport_hi = ((buf[pos++] << 8) & 0xff00);
+>  		qcb->csr[index].srcport_hi += buf[pos++];
+> -		qcb->csr[index].dstport_lo = ((buf[pos++]<<8) & 0xff00);
+> +		qcb->csr[index].dstport_lo = ((buf[pos++] << 8) & 0xff00);
+>  		qcb->csr[index].dstport_lo += buf[pos++];
+> -		qcb->csr[index].dstport_hi = ((buf[pos++]<<8) & 0xff00);
+> +		qcb->csr[index].dstport_hi = ((buf[pos++] << 8) & 0xff00);
+>  		qcb->csr[index].dstport_hi += buf[pos++];
+>  
+>  		qcb->qos_limit_size = 254 / qcb->qos_list_cnt;
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1446376088-9909-1-git-send-email-brcnakalin%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
