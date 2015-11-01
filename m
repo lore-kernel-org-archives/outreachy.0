@@ -1,142 +1,184 @@
 X-GM-THRID: 6212181078592978944
-X-Received: by 10.112.162.169 with SMTP id yb9mr3422002lbb.15.1446388715843;
-        Sun, 01 Nov 2015 06:38:35 -0800 (PST)
+X-Received: by 10.28.211.201 with SMTP id k192mr1393534wmg.3.1446388714212;
+        Sun, 01 Nov 2015 06:38:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.92.73 with SMTP id q70ls445790wmb.31.canary; Sun, 01 Nov
- 2015 06:38:35 -0800 (PST)
-X-Received: by 10.28.19.148 with SMTP id 142mr1396387wmt.4.1446388715494;
-        Sun, 01 Nov 2015 06:38:35 -0800 (PST)
+Received: by 10.25.87.137 with SMTP id l131ls376307lfb.80.gmail; Sun, 01 Nov
+ 2015 06:38:33 -0800 (PST)
+X-Received: by 10.112.166.40 with SMTP id zd8mr2797343lbb.21.1446388713648;
+        Sun, 01 Nov 2015 06:38:33 -0800 (PST)
 Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by gmr-mx.google.com with ESMTPS id t72si361292wme.0.2015.11.01.06.38.35
+Received: from mail-wi0-x231.google.com (mail-wi0-x231.google.com. [2a00:1450:400c:c05::231])
+        by gmr-mx.google.com with ESMTPS id l1si372621wmb.3.2015.11.01.06.38.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 06:38:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        Sun, 01 Nov 2015 06:38:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) client-ip=2a00:1450:400c:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::231 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by mail-wm0-x22e.google.com with SMTP id g8so42227676wme.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 06:38:35 -0800 (PST)
+Received: by mail-wi0-x231.google.com with SMTP id p11so37007429wij.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 06:38:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=9xjowZ+u06gs4SaoR8c2v44plUe66n37ynMJOWgKLa8=;
-        b=a+/VcT+7GSXwfAWlu0xLegU8yHg8wh6uo0O3kGmUUP/5VMPOG7qLmuZRtfOXqtPaal
-         tKIKAknVJAiySCfIPqeQqJtIAEBhd2Ga0OB5SzY4t7JKi/3abd4KQqiqfehWGn/uJYgf
-         Ta3g1W0eUo6ncO/6UB4IxKeRXC5HiHyY8vCL7DGMDQrWlShK3mcYO/MIo2NaSmd2G/bL
-         Ix5ah/tQA9dRKM6mSHvI0Uvk0k+KZExf/oKyxWFR0c0N1Jagko5melrrBWIKEJd6Lm/M
-         xXmGUVD7Zg6Y4wOVGzIibXQ+nKa/1aK82TExHS77xcw8A7R9bGoTaNAB19E048Xd8WlI
-         u1HA==
-X-Received: by 10.28.139.18 with SMTP id n18mr8969722wmd.63.1446388715407;
-        Sun, 01 Nov 2015 06:38:35 -0800 (PST)
+        bh=Bb3Ei/1rlzh8efczWLNgpXU3i/+Ch3H+oImKjhxQ/EA=;
+        b=U186nhHlwPcjnR50mK0UeMU/4GZDkwATZt0PCaWk2DntgLDpdM9vbbsO7O01RKrYSj
+         tlJ7p+reTZuf9Jd9826Thp986s6jD2Ybl2cbECMWZiAQ+r25VtvAAcKMlNHC/pv1WI7C
+         eEaZSKVLOdCxW7DpNAoNehMJ0i18GXmUsbRy3rBeLqd5/JG5kVdeIDFyprYNHZQqVHHK
+         5u3UawyhYn/kr4efk56Aaw+n8iLH6RJWIHsLlc11d9JYNqnVJyWBvoMAGeDxZ0bxHjTK
+         wWUma+gSVmLi9eTinWPUmG7ym+5Hm69gnq/W3bAXeFDley5WE68wC96rDIPshnEjQbqk
+         bsOQ==
+X-Received: by 10.194.116.167 with SMTP id jx7mr21517890wjb.4.1446388713541;
+        Sun, 01 Nov 2015 06:38:33 -0800 (PST)
 Return-Path: <ciorneiioana@gmail.com>
 Received: from localhost.localdomain ([141.85.114.141])
-        by smtp.gmail.com with ESMTPSA id 199sm13077625wml.22.2015.11.01.06.38.34
+        by smtp.gmail.com with ESMTPSA id 199sm13077625wml.22.2015.11.01.06.38.32
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Nov 2015 06:38:34 -0800 (PST)
+        Sun, 01 Nov 2015 06:38:33 -0800 (PST)
 From: Ioana Ciornei <ciorneiioana@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: arve@android.com,
 	riandrews@android.com,
 	Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH v2 3/5] staging: android: properly align function arguments
-Date: Sun,  1 Nov 2015 16:38:22 +0200
-Message-Id: <9141e37376e802d062ac5306e49197617fbd0930.1446388483.git.ciorneiioana@gmail.com>
+Subject: [PATCH v2 1/5] staging: android: replace explicit NULL comparison
+Date: Sun,  1 Nov 2015 16:38:20 +0200
+Message-Id: <e0854596f6fce2512ddfd9118a87003b36139350.1446388483.git.ciorneiioana@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1446388483.git.ciorneiioana@gmail.com>
 References: <cover.1446388483.git.ciorneiioana@gmail.com>
 In-Reply-To: <cover.1446388483.git.ciorneiioana@gmail.com>
 References: <cover.1446388483.git.ciorneiioana@gmail.com>
 
-Fix alingment issues by properly indenting function arguments
-in accordance with the kernel coding style.
+This patch replaces explicit NULL comparison with !
+operator in order to simplify the code
 
 Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
 ---
 Changes in v2:
-    - fix typos in the commit description
+    - nothing
 
- drivers/staging/android/lowmemorykiller.c |  4 ++--
- drivers/staging/android/sync.c            |  4 ++--
- drivers/staging/android/timed_gpio.c      | 10 +++++-----
- 3 files changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/android/ion/compat_ion.c |  6 +++---
+ drivers/staging/android/sync.c           | 18 +++++++++---------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/android/lowmemorykiller.c b/drivers/staging/android/lowmemorykiller.c
-index de65db7..8b5a4a8 100644
---- a/drivers/staging/android/lowmemorykiller.c
-+++ b/drivers/staging/android/lowmemorykiller.c
-@@ -105,8 +105,8 @@ static unsigned long lowmem_scan(struct shrinker *s, struct shrink_control *sc)
- 	}
+diff --git a/drivers/staging/android/ion/compat_ion.c b/drivers/staging/android/ion/compat_ion.c
+index a402fda..9a978d2 100644
+--- a/drivers/staging/android/ion/compat_ion.c
++++ b/drivers/staging/android/ion/compat_ion.c
+@@ -137,7 +137,7 @@ long compat_ion_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
  
- 	lowmem_print(3, "lowmem_scan %lu, %x, ofree %d %d, ma %hd\n",
--			sc->nr_to_scan, sc->gfp_mask, other_free,
--			other_file, min_score_adj);
-+		     sc->nr_to_scan, sc->gfp_mask, other_free,
-+		     other_file, min_score_adj);
+ 		data32 = compat_ptr(arg);
+ 		data = compat_alloc_user_space(sizeof(*data));
+-		if (data == NULL)
++		if (!data)
+ 			return -EFAULT;
  
- 	if (min_score_adj == OOM_SCORE_ADJ_MAX + 1) {
- 		lowmem_print(5, "lowmem_scan %lu, %x, return 0\n",
+ 		err = compat_get_ion_allocation_data(data32, data);
+@@ -156,7 +156,7 @@ long compat_ion_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ 
+ 		data32 = compat_ptr(arg);
+ 		data = compat_alloc_user_space(sizeof(*data));
+-		if (data == NULL)
++		if (!data)
+ 			return -EFAULT;
+ 
+ 		err = compat_get_ion_handle_data(data32, data);
+@@ -173,7 +173,7 @@ long compat_ion_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ 
+ 		data32 = compat_ptr(arg);
+ 		data = compat_alloc_user_space(sizeof(*data));
+-		if (data == NULL)
++		if (!data)
+ 			return -EFAULT;
+ 
+ 		err = compat_get_ion_custom_data(data32, data);
 diff --git a/drivers/staging/android/sync.c b/drivers/staging/android/sync.c
-index 5413f28..e0c1acb 100644
+index f83e00c..5413f28 100644
 --- a/drivers/staging/android/sync.c
 +++ b/drivers/staging/android/sync.c
-@@ -313,7 +313,7 @@ struct sync_fence *sync_fence_merge(const char *name,
- EXPORT_SYMBOL(sync_fence_merge);
+@@ -43,7 +43,7 @@ struct sync_timeline *sync_timeline_create(const struct sync_timeline_ops *ops,
+ 		return NULL;
  
- int sync_fence_wake_up_wq(wait_queue_t *curr, unsigned mode,
--				 int wake_flags, void *key)
-+			  int wake_flags, void *key)
+ 	obj = kzalloc(size, GFP_KERNEL);
+-	if (obj == NULL)
++	if (!obj)
+ 		return NULL;
+ 
+ 	kref_init(&obj->kref);
+@@ -130,7 +130,7 @@ struct sync_pt *sync_pt_create(struct sync_timeline *obj, int size)
+ 		return NULL;
+ 
+ 	pt = kzalloc(size, GFP_KERNEL);
+-	if (pt == NULL)
++	if (!pt)
+ 		return NULL;
+ 
+ 	spin_lock_irqsave(&obj->child_list_lock, flags);
+@@ -155,7 +155,7 @@ static struct sync_fence *sync_fence_alloc(int size, const char *name)
+ 	struct sync_fence *fence;
+ 
+ 	fence = kzalloc(size, GFP_KERNEL);
+-	if (fence == NULL)
++	if (!fence)
+ 		return NULL;
+ 
+ 	fence->file = anon_inode_getfile("sync_fence", &sync_fence_fops,
+@@ -193,7 +193,7 @@ struct sync_fence *sync_fence_create(const char *name, struct sync_pt *pt)
+ 	struct sync_fence *fence;
+ 
+ 	fence = sync_fence_alloc(offsetof(struct sync_fence, cbs[1]), name);
+-	if (fence == NULL)
++	if (!fence)
+ 		return NULL;
+ 
+ 	fence->num_fences = 1;
+@@ -215,7 +215,7 @@ struct sync_fence *sync_fence_fdget(int fd)
  {
- 	struct sync_fence_waiter *wait;
+ 	struct file *file = fget(fd);
  
-@@ -353,7 +353,7 @@ int sync_fence_wait_async(struct sync_fence *fence,
- EXPORT_SYMBOL(sync_fence_wait_async);
+-	if (file == NULL)
++	if (!file)
+ 		return NULL;
  
- int sync_fence_cancel_async(struct sync_fence *fence,
--			     struct sync_fence_waiter *waiter)
-+			    struct sync_fence_waiter *waiter)
- {
- 	unsigned long flags;
- 	int ret = 0;
-diff --git a/drivers/staging/android/timed_gpio.c b/drivers/staging/android/timed_gpio.c
-index ce11726..5246f42 100644
---- a/drivers/staging/android/timed_gpio.c
-+++ b/drivers/staging/android/timed_gpio.c
-@@ -76,8 +76,8 @@ static void gpio_enable(struct timed_output_dev *dev, int value)
- 			value = data->max_timeout;
+ 	if (file->f_op != &sync_fence_fops)
+@@ -262,7 +262,7 @@ struct sync_fence *sync_fence_merge(const char *name,
+ 	unsigned long size = offsetof(struct sync_fence, cbs[num_fences]);
  
- 		hrtimer_start(&data->timer,
--			ktime_set(value / 1000, (value % 1000) * 1000000),
--			HRTIMER_MODE_REL);
-+			      ktime_set(value / 1000, (value % 1000) * 1000000),
-+			      HRTIMER_MODE_REL);
+ 	fence = sync_fence_alloc(size, name);
+-	if (fence == NULL)
++	if (!fence)
+ 		return NULL;
+ 
+ 	atomic_set(&fence->status, num_fences);
+@@ -583,14 +583,14 @@ static long sync_fence_ioctl_merge(struct sync_fence *fence, unsigned long arg)
  	}
  
- 	spin_unlock_irqrestore(&data->lock, flags);
-@@ -94,8 +94,8 @@ static int timed_gpio_probe(struct platform_device *pdev)
- 		return -EBUSY;
+ 	fence2 = sync_fence_fdget(data.fd2);
+-	if (fence2 == NULL) {
++	if (!fence2) {
+ 		err = -ENOENT;
+ 		goto err_put_fd;
+ 	}
  
- 	gpio_data = devm_kzalloc(&pdev->dev,
--			sizeof(struct timed_gpio_data) * pdata->num_gpios,
--			GFP_KERNEL);
-+				 sizeof(*gpio_data) * pdata->num_gpios,
-+				 GFP_KERNEL);
- 	if (!gpio_data)
+ 	data.name[sizeof(data.name) - 1] = '\0';
+ 	fence3 = sync_fence_merge(data.name, fence, fence2);
+-	if (fence3 == NULL) {
++	if (!fence3) {
+ 		err = -ENOMEM;
+ 		goto err_put_fence2;
+ 	}
+@@ -666,7 +666,7 @@ static long sync_fence_ioctl_fence_info(struct sync_fence *fence,
+ 		size = 4096;
+ 
+ 	data = kzalloc(size, GFP_KERNEL);
+-	if (data == NULL)
++	if (!data)
  		return -ENOMEM;
  
-@@ -104,7 +104,7 @@ static int timed_gpio_probe(struct platform_device *pdev)
- 		gpio_dat = &gpio_data[i];
- 
- 		hrtimer_init(&gpio_dat->timer, CLOCK_MONOTONIC,
--				HRTIMER_MODE_REL);
-+			     HRTIMER_MODE_REL);
- 		gpio_dat->timer.function = gpio_timer_func;
- 		spin_lock_init(&gpio_dat->lock);
- 
+ 	strlcpy(data->name, fence->name, sizeof(data->name));
 -- 
 2.1.4
 
