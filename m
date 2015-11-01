@@ -1,49 +1,50 @@
 X-GM-THRID: 6212095586717401088
-X-Received: by 10.66.221.42 with SMTP id qb10mr13910518pac.35.1446366472277;
-        Sun, 01 Nov 2015 01:27:52 -0700 (PDT)
+X-Received: by 10.182.107.162 with SMTP id hd2mr14211767obb.29.1446366383750;
+        Sun, 01 Nov 2015 01:26:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.43.234 with SMTP id z10ls699372obl.91.gmail; Sun, 01 Nov
- 2015 01:27:51 -0700 (PDT)
-X-Received: by 10.182.22.200 with SMTP id g8mr14122101obf.0.1446366471937;
-        Sun, 01 Nov 2015 01:27:51 -0700 (PDT)
+Received: by 10.182.128.231 with SMTP id nr7ls669603obb.13.gmail; Sun, 01 Nov
+ 2015 01:26:23 -0700 (PDT)
+X-Received: by 10.182.232.135 with SMTP id to7mr14589577obc.44.1446366383447;
+        Sun, 01 Nov 2015 01:26:23 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id sm2si1353120pab.0.2015.11.01.01.27.51
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id fa8si1424465pab.1.2015.11.01.01.26.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 01:27:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Nov 2015 01:26:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com
-Received: by pasz6 with SMTP id z6so116134843pas.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 01:27:51 -0700 (PDT)
+Received: by pasz6 with SMTP id z6so116115049pas.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 01:26:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=cwcIiQd/xhRdP7GC0kLKoMDeFNkHYwYNpFm30wEChiA=;
-        b=JAW92Ga6auR/QQGAaYIDyH/Dd9NnojBkcaNYzlA9GpGSxEGhs/JNJ0agCefP9LzWEk
-         argNfBsRSVwtUyTTzBVDoaDSzQIar35l20yeoFzk0tkiWxeICZ2EH7w8meLjoDBLJjjL
-         jj3ChObhixD1BGaUn8cgcg2TFVjTl+lAi/TtIS+xagLmc5goEOtQc//HZfl2KG3iqJ9J
-         R1hzEabScQkkZLnQ35EKQ1X+P7PIP+np6bEA6yXNNt5nYdCA8wt9CUIcW4NKtBwUycSA
-         GWQLXmzaBi2n9oPbxpF0qlfglX5ceXTeNXZCeVh9JGWa4KE4/5FVuEU+Ng5srzeQ2g7j
-         0bTw==
-X-Received: by 10.68.174.1 with SMTP id bo1mr19104228pbc.110.1446366471765;
-        Sun, 01 Nov 2015 01:27:51 -0700 (PDT)
+        bh=yPRlWZPE6YeUSrBbc3v2LYknm9Y62U+VrE99er1Q+Ks=;
+        b=szjRZBP7IE0hfB4nur+Eq5evvrBvFej/AL6FfA7hoC6IsOW9l+4cc5xq/38kzNd3JC
+         rPtksCpNaeHHydd2oIF09GxtNjz082+6+2MfODMJlbmhgOAKFanqjSk3/YRXiJOBFk+g
+         FajSpor1crpcDjxia1dlqw1tRpTEpJY/7uCwJW3s6CA3ZjOTJ34Tp3h0Z7zECDeM9brX
+         0n0VSS7Z+Qp19MGHhP/hs8ClNi77VU9J+kYTfmqJX9VTvx8B5H7YaV6MVUBZoNItQf1a
+         AiQMGyzg65PXNdntZOWsV2E7CRHKpIDyCFLSzQp3t+kTtH5ZS9BinXqgHeImvyH81PiX
+         5GAw==
+X-Received: by 10.68.131.36 with SMTP id oj4mr19053132pbb.141.1446366383275;
+        Sun, 01 Nov 2015 01:26:23 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([182.68.108.132])
-        by smtp.gmail.com with ESMTPSA id qy7sm17495020pab.37.2015.11.01.01.27.50
+        by smtp.gmail.com with ESMTPSA id ff2sm17495450pac.14.2015.11.01.01.26.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 01 Nov 2015 01:27:51 -0700 (PDT)
-Date: Sun, 1 Nov 2015 13:57:47 +0530
+        Sun, 01 Nov 2015 01:26:22 -0700 (PDT)
+Date: Sun, 1 Nov 2015 13:56:19 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/5] staging: rdma: hfi1: chip: Remove wrapper function
-Message-ID: <23ac38a01d5092053da227aaa0741b270125ceeb.1446366036.git.amitoj1606@gmail.com>
+Subject: [PATCH 2/5] staging: rdma: hfi1: Remove set_sbus_fast_mode() wrapper
+ function
+Message-ID: <5cd4f403201b3e1c6b0f44429a5203b3447e2d27.1446366036.git.amitoj1606@gmail.com>
 References: <cover.1446366036.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -51,40 +52,89 @@ Content-Disposition: inline
 In-Reply-To: <cover.1446366036.git.amitoj1606@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Drop wrapper function remap_receive_available_interrupt() that can be
-replaced by a single line of code.
+Drop set_sbus_fast_mode() wrapper function that can be replaced by
+a single line of code.
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rdma/hfi1/chip.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ drivers/staging/rdma/hfi1/chip.h     |  1 -
+ drivers/staging/rdma/hfi1/firmware.c | 15 ++++++---------
+ drivers/staging/rdma/hfi1/pcie.c     |  3 ++-
+ 3 files changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/rdma/hfi1/chip.c b/drivers/staging/rdma/hfi1/chip.c
-index beac326d..a9c6abf 100644
---- a/drivers/staging/rdma/hfi1/chip.c
-+++ b/drivers/staging/rdma/hfi1/chip.c
-@@ -8749,12 +8749,6 @@ static void remap_sdma_interrupts(struct hfi1_devdata *dd,
- 		msix_intr);
+diff --git a/drivers/staging/rdma/hfi1/chip.h b/drivers/staging/rdma/hfi1/chip.h
+index f89a432..092fc9d 100644
+--- a/drivers/staging/rdma/hfi1/chip.h
++++ b/drivers/staging/rdma/hfi1/chip.h
+@@ -619,7 +619,6 @@ void sbus_request(struct hfi1_devdata *dd,
+ 		  u8 receiver_addr, u8 data_addr, u8 command, u32 data_in);
+ int sbus_request_slow(struct hfi1_devdata *dd,
+ 		      u8 receiver_addr, u8 data_addr, u8 command, u32 data_in);
+-void set_sbus_fast_mode(struct hfi1_devdata *dd);
+ void clear_sbus_fast_mode(struct hfi1_devdata *dd);
+ int hfi1_firmware_init(struct hfi1_devdata *dd);
+ int load_pcie_firmware(struct hfi1_devdata *dd);
+diff --git a/drivers/staging/rdma/hfi1/firmware.c b/drivers/staging/rdma/hfi1/firmware.c
+index 5c2f2ed..0ce9a16 100644
+--- a/drivers/staging/rdma/hfi1/firmware.c
++++ b/drivers/staging/rdma/hfi1/firmware.c
+@@ -987,7 +987,8 @@ void fabric_serdes_reset(struct hfi1_devdata *dd)
+ 	ra = fabric_serdes_broadcast[dd->hfi1_id];
+ 
+ 	acquire_hw_mutex(dd);
+-	set_sbus_fast_mode(dd);
++	write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
++				ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
+ 	/* place SerDes in reset and disable SPICO */
+ 	sbus_request(dd, ra, 0x07, WRITE_SBUS_RECEIVER, 0x00000011);
+ 	/* wait 100 refclk cycles @ 156.25MHz => 640ns */
+@@ -1214,12 +1215,6 @@ void release_hw_mutex(struct hfi1_devdata *dd)
+ 	write_csr(dd, ASIC_CFG_MUTEX, 0);
  }
  
--static void remap_receive_available_interrupt(struct hfi1_devdata *dd,
--					      int rx, int msix_intr)
+-void set_sbus_fast_mode(struct hfi1_devdata *dd)
 -{
--	remap_intr(dd, IS_RCVAVAIL_START + rx, msix_intr);
+-	write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
+-				ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
 -}
 -
- static int request_intx_irq(struct hfi1_devdata *dd)
+ void clear_sbus_fast_mode(struct hfi1_devdata *dd)
  {
- 	int ret;
-@@ -8890,7 +8884,7 @@ static int request_msix_irqs(struct hfi1_devdata *dd)
- 			snprintf(me->name, sizeof(me->name),
- 				DRIVER_NAME"_%d kctxt%d", dd->unit, idx);
- 			err_info = "receive context";
--			remap_receive_available_interrupt(dd, idx, i);
-+			remap_intr(dd, IS_RCVAVAIL_START + idx, i);
- 		} else {
- 			/* not in our expected range - complain, then
- 			   ignore it */
+ 	u64 reg, count = 0;
+@@ -1244,7 +1239,8 @@ int load_firmware(struct hfi1_devdata *dd)
+ 		if (ret)
+ 			return ret;
+ 
+-		set_sbus_fast_mode(dd);
++		write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
++				ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
+ 
+ 		/*
+ 		 * The SBus contains part of the fabric firmware and so must
+@@ -1583,7 +1579,8 @@ int load_pcie_firmware(struct hfi1_devdata *dd)
+ 	int ret = 0;
+ 
+ 	/* both firmware loads below use the SBus */
+-	set_sbus_fast_mode(dd);
++	write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
++				ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
+ 
+ 	if (fw_sbus_load) {
+ 		turn_off_spicos(dd, SPICO_SBUS);
+diff --git a/drivers/staging/rdma/hfi1/pcie.c b/drivers/staging/rdma/hfi1/pcie.c
+index e6773b3..10596b1 100644
+--- a/drivers/staging/rdma/hfi1/pcie.c
++++ b/drivers/staging/rdma/hfi1/pcie.c
+@@ -770,7 +770,8 @@ static void pcie_post_steps(struct hfi1_devdata *dd)
+ {
+ 	int i;
+ 
+-	set_sbus_fast_mode(dd);
++	write_csr(dd, ASIC_CFG_SBUS_EXECUTE,
++				ASIC_CFG_SBUS_EXECUTE_FAST_MODE_SMASK);
+ 	/*
+ 	 * Write to the PCIe PCSes to set the G3_LOCKED_NEXT bits to 1.
+ 	 * This avoids a spurious framing error that can otherwise be
 -- 
 1.9.1
 
