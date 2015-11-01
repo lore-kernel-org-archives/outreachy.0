@@ -1,90 +1,118 @@
-X-GM-THRID: 6250932396840976384
-X-Received: by 10.182.120.170 with SMTP id ld10mr8897393obb.30.1455408613107;
-        Sat, 13 Feb 2016 16:10:13 -0800 (PST)
+X-GM-THRID: 6212166539594956800
+X-Received: by 10.50.28.101 with SMTP id a5mr8070728igh.9.1446408506555;
+        Sun, 01 Nov 2015 12:08:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.37.196 with SMTP id l187ls1079541iol.30.gmail; Sat, 13 Feb
- 2016 16:10:12 -0800 (PST)
-X-Received: by 10.107.15.143 with SMTP id 15mr10389723iop.15.1455408612767;
-        Sat, 13 Feb 2016 16:10:12 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x22b.google.com (mail-qk0-x22b.google.com. [2607:f8b0:400d:c09::22b])
-        by gmr-mx.google.com with ESMTPS id q187si1604260ywf.4.2016.02.13.16.10.12
+Received: by 10.140.104.103 with SMTP id z94ls2048162qge.18.gmail; Sun, 01 Nov
+ 2015 12:08:25 -0800 (PST)
+X-Received: by 10.31.108.23 with SMTP id h23mr15773929vkc.4.1446408505872;
+        Sun, 01 Nov 2015 12:08:25 -0800 (PST)
+Return-Path: <ciorneiioana@gmail.com>
+Received: from mail-yk0-x236.google.com (mail-yk0-x236.google.com. [2607:f8b0:4002:c07::236])
+        by gmr-mx.google.com with ESMTPS id i140si1245838ywe.3.2015.11.01.12.08.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 16:10:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) client-ip=2607:f8b0:400d:c09::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 01 Nov 2015 12:08:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::236 as permitted sender) client-ip=2607:f8b0:4002:c07::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2607:f8b0:4002:c07::236 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x22b.google.com with SMTP id o6so44354653qkc.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 16:10:12 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-yk0-x236.google.com with SMTP id t191so121368530ykf.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 12:08:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=K0UMgRrveCnlMF3VJuY1UgZpDEAYyj5+qrCnJZ/tcMo=;
-        b=h4jDPRf8le/UmADP3X1LavqDB9+ceXE2eWKwrItw7PEc8FHA5JuELaIJ8FKWoGuQd+
-         G4W+yj9nnQ2kwPg8tkg9TjcaIsOQnOA5J1C7XpsQzUm7DcGblpcxMFAeq+oFZs316tn4
-         uNlRTHT3dccuu5bScsbttMwzdR1SEqa+rs7kApEbvJSBsSRAGj8zSmc7qtIDm/9g6O+1
-         ejAILYqFNXmEcTN7j5nDbfAxF5If+rx6mDAGvtgISV7Dmrsu45AU0DIZ861sPryoIeU5
-         I37fP3cIkSqusHhpEjeNVM2ZWE35zpiOvwujrZNbFhA7iG8JAr98hmqSVVdxXxFszhMT
-         GPxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=K0UMgRrveCnlMF3VJuY1UgZpDEAYyj5+qrCnJZ/tcMo=;
-        b=V+LOG2mYS2i1U7Mt3g7Pfm5alWcvcr4y7l+2AK67akN6ORduf4U51x5CIh0jSTP18f
-         xae0AH8MRf7dcwtZgjR4xhQ9DmiQuUvXK1yQC9nvLALQNF7/pgetSKG00qubIqyv2XJc
-         BWF94Mm8oqfY8F234G+Vg6dqUu2YslRdI35eW4lwX2vYonzAPyvdq+9PnOCf0GoNr6Ym
-         FfoeIfZEy4R5YZtIGEYPABk71gCIs80YOaHkiQiEgyeGpcXhJbTTTAWQ1+JOSd8xDBOD
-         GwbHF0EYQHj64bWsCSmfwIw+7hFz3dogvBSOob1C4p5VtAQJGTLWVX0w4RukmJ+ho1ka
-         88Cw==
-X-Gm-Message-State: AG10YOTE7gygHvxl9e9s9rr3FW4PadfZifit9CvxRRTcl535VIf0yF5pJ7Es9M9ssEUprw==
-X-Received: by 10.55.78.70 with SMTP id c67mr11245327qkb.37.1455408612635;
-        Sat, 13 Feb 2016 16:10:12 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
-        by smtp.gmail.com with ESMTPSA id n35sm8365650qgn.10.2016.02.13.16.10.11
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 16:10:12 -0800 (PST)
-Date: Sun, 14 Feb 2016 00:09:33 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Simplify code by eliminating else block
-Message-ID: <20160214050933.GA26308@janani-Inspiron-3521>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=/61//x9ZIF4kVJsNrLGmneG8lWw6XORS+0LgYCNPYyQ=;
+        b=SnGKIZQSQzZbaAI674RcWwLvxCDn5v302oNda7jcCeJ6qKRhdLrwZUgEhaa5TOaVqV
+         xZIwZfx3BRPG4TpLC+X/0gVhBS62tRs8/cN1lPxRJTx7JQy/+OtoB6t6xtsvi0d8YkF4
+         7tq7fnzqFmzu6m/DPGaCPeLp0tCgiVtVU4fwy2/bmJSBOviDAw9CWhpMGzdsY6pQnx2O
+         Jo+1mLO0tivpOnLdUzHp2drbDITcIxaX4W6EAiBBeul8keMaQ25YfSQU64PDonXCbI8W
+         8qEV1W36WiBzTA/UAKRAZ4kCHjeAmvKl33MNJTPllg1t9DqMihXTwO/m+HM12hLIrD6t
+         XXLQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.129.154.141 with SMTP id r135mr13574443ywg.195.1446408505766;
+ Sun, 01 Nov 2015 12:08:25 -0800 (PST)
+Received: by 10.37.107.66 with HTTP; Sun, 1 Nov 2015 12:08:25 -0800 (PST)
+In-Reply-To: <56365728.9020304@kernel.org>
+References: <1446382725-11765-1-git-send-email-ciorneiioana@gmail.com>
+	<56365728.9020304@kernel.org>
+Date: Sun, 1 Nov 2015 22:08:25 +0200
+Message-ID: <CAHWJYF=W__yY5iOK7Y_=B_tU5GwV2uFyS4913btpLAjae=Cu9A@mail.gmail.com>
+Subject: Re: [PATCH 1/2] iio: gyro: check sscanf return value
+From: Ioana Ciornei <ciorneiioana@gmail.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: linux-iio@vger.kernel.org, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, Lars-Peter Clausen <lars@metafoo.de>
+Content-Type: text/plain; charset=UTF-8
 
-Remove else block here as it is not useful after the return statement in the corresponding if block. This simplifies code. This issue was identified by checkpatch.
+On Sun, Nov 1, 2015 at 8:17 PM, Jonathan Cameron <jic23@kernel.org> wrote:
+> On 01/11/15 12:58, Ioana Ciornei wrote:
+>> This patch fixes the checkpatch warnings:
+>> WARNING: unchecked sscanf return value
+>>
+>> Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+> Hi Ioana,
+>
+> Couple of minor process points (the patches are fine!)
+>
+> You should have cc'd the driver author and generally also
+> the various listed reviewers in MAINTAINERS.  In this case
+> of of them is the driver author so possibly just pinging him
+> is the way to go.  In the case of Analog devices parts,
+> Lars-Peter is also the maintainer so it's all about as
+> easy as it gets in this case.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/wilc1000/host_interface.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Ok. From now on I will cc the maintainers and the reviewers.
+Sorry for the trouble.
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 472fd7f..fe27560 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -3355,10 +3355,9 @@ static s32 host_int_get_assoc_res_info(struct wilc_vif *vif,
- 		*pu32RcvdAssocRespInfoLen = 0;
- 		PRINT_ER("Failed to send association response config packet\n");
- 		return -EINVAL;
--	} else {
--		*pu32RcvdAssocRespInfoLen = wid.size;
- 	}
--
-+	
-+	*pu32RcvdAssocRespInfoLen = wid.size;
- 	return result;
- }
- 
+Ioana
+
+>
+> Lars, looks fine to me.  Your driver so please sanity check.
+> Clearly it's not a bug as the inputs are entirely controlled
+> by the driver code, but I think having a sanity check on
+> the return value is a good thing (from the point of view of
+> best practice).
+>
+> There is a second patch for some the IIO drivers that are your
+> problem as well - I'll let you pull that off the list as I'm
+> feeling lazy ;)
+>
+> I did have to check that sscanf never returns any more helpful
+> error codes, but unlike the glibc one it seems not.  What fun.
+>
+> Jonathan
+>> ---
+>>
+>> based on linux-iio/testing branch
+>>
+>>  drivers/iio/gyro/adis16136.c | 4 +++-
+>>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/iio/gyro/adis16136.c b/drivers/iio/gyro/adis16136.c
+>> index 26de876..bb09bff 100644
+>> --- a/drivers/iio/gyro/adis16136.c
+>> +++ b/drivers/iio/gyro/adis16136.c
+>> @@ -435,7 +435,9 @@ static int adis16136_initial_setup(struct iio_dev *indio_dev)
+>>       if (ret)
+>>               return ret;
+>>
+>> -     sscanf(indio_dev->name, "adis%u\n", &device_id);
+>> +     ret = sscanf(indio_dev->name, "adis%u\n", &device_id);
+>> +     if (ret != 1)
+>> +             return -EINVAL;
+>>
+>>       if (prod_id != device_id)
+>>               dev_warn(&indio_dev->dev, "Device ID(%u) and product ID(%u) do not match.",
+>>
+>
+
+
+
 -- 
-2.5.0
-
+Ioana Ciornei
+Facultatea de Automatica si Calculatoare, UPB
+Tel. 0753 861 668
 
