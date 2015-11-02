@@ -1,107 +1,110 @@
-X-GM-THRID: 9536368803840
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,6ece57de8a59d603,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.52.186.7 with SMTP id fg7mr73482311vdc.0.1426997414041;
-        Sat, 21 Mar 2015 21:10:14 -0700 (PDT)
+X-GM-THRID: 6212612362539630592
+X-Received: by 10.182.120.129 with SMTP id lc1mr19638570obb.30.1446486602426;
+        Mon, 02 Nov 2015 09:50:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.129.214 with SMTP id l83ls1683756ioi.33.gmail; Sat, 21 Mar
- 2015 21:10:13 -0700 (PDT)
-X-Received: by 10.66.66.196 with SMTP id h4mr95925990pat.5.1426997413760;
-        Sat, 21 Mar 2015 21:10:13 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x230.google.com (mail-pd0-x230.google.com. [2607:f8b0:400e:c02::230])
-        by gmr-mx.google.com with ESMTPS id pc4si1374673pac.0.2015.03.21.21.10.13
+Received: by 10.50.134.104 with SMTP id pj8ls886898igb.32.gmail; Mon, 02 Nov
+ 2015 09:50:02 -0800 (PST)
+X-Received: by 10.107.162.2 with SMTP id l2mr20694185ioe.26.1446486602050;
+        Mon, 02 Nov 2015 09:50:02 -0800 (PST)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
+        by gmr-mx.google.com with ESMTPS id iz5si1875281pbc.2.2015.11.02.09.50.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 21:10:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) client-ip=2607:f8b0:400e:c02::230;
+        Mon, 02 Nov 2015 09:50:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::230 as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x230.google.com with SMTP id cz9so150046974pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 21:10:13 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x231.google.com with SMTP id fh17so30674229pab.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Nov 2015 09:50:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=CsqK7MRKpYoj+rBBEXlYfyFDwnBDNBuAd/VsIs64qSA=;
-        b=k6UYDb09Admlhe8hp3BWmYxZWcLRrO7cecImBX/0c0QXdgIBgw0kZfrJpN+Vvlh9sz
-         i2sRFVP9XXoPBS9OsfGWXDR85J1XMoxcQdJcjku6IcYswR9+yk7fTVUAtxJOPlgEBlF8
-         IQv2LlTANe2Ox4TEjkxiE7g0bXumMCgFyjHzYDnrkR+vcwfrNub3bF9VAXANn1QLgtTw
-         ZKSQt4/L2I3hwFUN91XyHuERJaEqLKovZS+KRNiPeroQ2WreePnpPgg7i148iZ0HN2Ga
-         7qyEW7aIVyjOzli2cySdBB251CvaX70JHMnCa7oGWSjM6tRAsxXRoTj6xbxw2UHcA3VC
-         k5mQ==
-X-Received: by 10.68.227.195 with SMTP id sc3mr9419759pbc.64.1426997413638;
-        Sat, 21 Mar 2015 21:10:13 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.249.51])
-        by mx.google.com with ESMTPSA id ed5sm3275302pbd.19.2015.03.21.21.10.12
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=WBShtHc9zU5hCQeOC6wQlGIGAW2zv8W7ju7d99zVdx4=;
+        b=wwlEFAKy2zofaMMHEyj80HOnP/tGjnOtuXnV1tE8x+EcMSgGtNQUrXkK9VyQc6vFxl
+         D9xGfgzPhjfPvgxE/x1cKSG1PT5hPmi5/ycKLNPP4dHGquO6Io1B0nD3c0uxmhILMt/M
+         qRGsJH7B4syRoDRXoC/iFN8fL8sg79S9bRHW/0xymOB5r79YyKh8IhEe0oPkw1Ga80Md
+         WK191Hbvzuke386V8IpuBb8gl2GFmWDonJvlQgpQvZZtg9I9beXFZVcF4O3ngiRa72q2
+         qwGnCVX53zJ8Pr2nzir9pBdJraOPGC9LZB7GwuGMNwr7EohNN+2wdddqjyKvXQaY9jQo
+         7gag==
+X-Received: by 10.66.102.74 with SMTP id fm10mr28450068pab.140.1446486601955;
+        Mon, 02 Nov 2015 09:50:01 -0800 (PST)
+Return-Path: <shivanib134@gmail.com>
+Received: from ubuntu ([124.124.47.116])
+        by smtp.gmail.com with ESMTPSA id fe8sm25244948pab.40.2015.11.02.09.49.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 21:10:13 -0700 (PDT)
-Date: Sun, 22 Mar 2015 09:40:08 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Nov 2015 09:50:01 -0800 (PST)
+Date: Mon, 2 Nov 2015 23:19:55 +0530
+From: Shivani Bhardwaj <shivanib134@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [Outreachy Kernel][PATCH 3/5] Staging: sm750fb: fix switch-case
-Message-ID: <20150322041008.GA30118@amitoj-Inspiron-3542>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/3] Staging: lustre: linux-cpu: Remove unnecessary wrapper
+ function
+Message-ID: <cd753fa065ee2f65edd67f6f434ca409216245bc.1446486397.git.shivanib134@gmail.com>
+References: <cover.1446486397.git.shivanib134@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <cover.1446486397.git.shivanib134@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixes checkpatch.pl error by properly indenting code using tabs.
-ERROR: switch and case should be at the same indent
+Remove the function cfs_node_to_cpumask() and replace all its calls with
+the function it wrapped.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+ drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 5020280..0b6baae 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -154,21 +154,21 @@ void setMemoryClock(unsigned int frequency)
+diff --git a/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c b/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c
+index df6c049..58a4034 100644
+--- a/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c
++++ b/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c
+@@ -78,11 +78,6 @@ struct cfs_cpt_data {
  
- 	/* Set the corresponding divisor in the register. */
- 	ulReg = PEEK32(CURRENT_GATE);
--	switch(divisor) {
--            default:
--            case 1:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_1);
--                break;
--            case 2:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_2);
--                break;
--            case 3:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_3);
--                break;
--            case 4:
--                ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_4);
--                break;
--        }
-+	switch (divisor) {
-+	default:
-+	case 1:
-+		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_1);
-+		break;
-+	case 2:
-+		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_2);
-+		break;
-+	case 3:
-+		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_3);
-+		break;
-+	case 4:
-+		ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_4);
-+		break;
-+	}
+ static struct cfs_cpt_data	cpt_data;
  
-         setCurrentGate(ulReg);
-     }
+-static void cfs_node_to_cpumask(int node, cpumask_t *mask)
+-{
+-	cpumask_copy(mask, cpumask_of_node(node));
+-}
+-
+ void
+ cfs_cpt_table_free(struct cfs_cpt_table *cptab)
+ {
+@@ -414,7 +409,7 @@ cfs_cpt_set_node(struct cfs_cpt_table *cptab, int cpt, int node)
+ 	mutex_lock(&cpt_data.cpt_mutex);
+ 
+ 	mask = cpt_data.cpt_cpumask;
+-	cfs_node_to_cpumask(node, mask);
++	cpumask_copy(mask, cpumask_of_node(node));
+ 
+ 	rc = cfs_cpt_set_cpumask(cptab, cpt, mask);
+ 
+@@ -438,7 +433,7 @@ cfs_cpt_unset_node(struct cfs_cpt_table *cptab, int cpt, int node)
+ 	mutex_lock(&cpt_data.cpt_mutex);
+ 
+ 	mask = cpt_data.cpt_cpumask;
+-	cfs_node_to_cpumask(node, mask);
++	cpumask_copy(mask, cpumask_of_node(node));
+ 
+ 	cfs_cpt_unset_cpumask(cptab, cpt, mask);
+ 
+@@ -757,7 +752,7 @@ cfs_cpt_table_create(int ncpt)
+ 	}
+ 
+ 	for_each_online_node(i) {
+-		cfs_node_to_cpumask(i, mask);
++		cpumask_copy(mask, cpumask_of_node(i));
+ 
+ 		while (!cpumask_empty(mask)) {
+ 			struct cfs_cpu_partition *part;
 -- 
-1.9.1
+2.1.0
 
 
