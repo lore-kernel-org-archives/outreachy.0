@@ -1,74 +1,71 @@
-X-GM-THRID: 9315895214080
-X-Received: by 10.152.27.134 with SMTP id t6mr13355572lag.5.1426875652922;
-        Fri, 20 Mar 2015 11:20:52 -0700 (PDT)
+X-GM-THRID: 6210404372409483264
+X-Received: by 10.28.87.15 with SMTP id l15mr4046472wmb.1.1446593569664;
+        Tue, 03 Nov 2015 15:32:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.6.129 with SMTP id b1ls23217laa.69.gmail; Fri, 20 Mar 2015
- 11:20:52 -0700 (PDT)
-X-Received: by 10.112.162.135 with SMTP id ya7mr13190810lbb.14.1426875652383;
-        Fri, 20 Mar 2015 11:20:52 -0700 (PDT)
-Return-Path: <marianne@masu.dk>
-Received: from mail-lb0-f177.google.com (mail-lb0-f177.google.com. [209.85.217.177])
-        by gmr-mx.google.com with ESMTPS id wz2si443010lbb.0.2015.03.20.11.20.52
+Received: by 10.28.12.71 with SMTP id 68ls175297wmm.48.gmail; Tue, 03 Nov 2015
+ 15:32:49 -0800 (PST)
+X-Received: by 10.194.203.33 with SMTP id kn1mr6139406wjc.3.1446593569307;
+        Tue, 03 Nov 2015 15:32:49 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by gmr-mx.google.com with ESMTPS id g9si737361wmd.2.2015.11.03.15.32.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2015 11:20:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marianne@masu.dk designates 209.85.217.177 as permitted sender) client-ip=209.85.217.177;
+        Tue, 03 Nov 2015 15:32:49 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of marianne@masu.dk designates 209.85.217.177 as permitted sender) smtp.mail=marianne@masu.dk
-Received: by mail-lb0-f177.google.com with SMTP id rr9so16800355lbb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2015 11:20:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=5L4g5cgK1Ku8e72nZt0CAJK6rwnxRuS6zQf1OSo3YBY=;
-        b=NMkhu6lsKd7PDWg2g3UwZdP93T5kZXmIvSEliO90+RgvVv1hN2o1L3Xb8kQZGA/cF5
-         C51o6H2YHNyuR3pwiX+mkkGVTU8I2mPlVcIaYy703si5QsYKt/1Ag/8smN2zjqqtWEJp
-         pysKiBhRDz2drY2gg/zoAMnXgOCP6wAZYULdhMlxHEpZ6+GcBNy5Py1ChBFefHUUQG+6
-         p1gCk7IZAJnqfdJkR5JYLivAqGFLjqntvAPkl/qTkWDWBXGf5wgMS7RH3hfXuWfNqVlX
-         GZu9W/rtjQq+iOhDkkqGzRYNPAqJpcgY3ylyFCpMld+1MDLjqCBlKTu0xIgew5QGu16U
-         e6iQ==
-X-Gm-Message-State: ALoCoQnldMhUoGPddd/tKbGIvqsanOaM3FxWolfAVfgGw/arn28Mept6lkM6BYitWysFi5pOzBS3
-X-Received: by 10.152.28.233 with SMTP id e9mr73974201lah.3.1426875652214;
-        Fri, 20 Mar 2015 11:20:52 -0700 (PDT)
-Return-Path: <marianne@masu.dk>
-Received: from debianvm (x1-6-20-4e-7f-5c-75-ca.cpe.webspeed.dk. [80.162.217.84])
-        by mx.google.com with ESMTPSA id j6sm1080718laf.5.2015.03.20.11.20.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 20 Mar 2015 11:20:51 -0700 (PDT)
-Date: Fri, 20 Mar 2015 19:20:43 +0100
-From: Marianne Moeller Knudsen <marianne@masu.dk>
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue104) with ESMTPSA (Nemesis) id 0MPoeo-1ZpvaU1u9C-004yzC; Wed, 04 Nov
+ 2015 00:32:48 +0100
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Move misplaced open brace to previous line
-Message-ID: <20150320182043.GA2677@debianvm>
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] [PATCH] scsi: bfa: bfa_port: Remove struct timeval
+Date: Wed, 04 Nov 2015 00:32:47 +0100
+Message-ID: <3941115.s4qDOCKptR@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <3925576.zb40mlY0GR@wuerfel>
+References: <20151027190041.GA12697@amitoj-Inspiron-3542> <3925576.zb40mlY0GR@wuerfel>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:QF9a6iLlMJnooVb8t7E7T10sCXkfxm7BsXJN62LEI4mEYDDH8dq
+ tcAebvsojACYioc2LNVbw2mfrA0p8M7sRgbCemZF5e00l+bZY1Z+PgRJOksYAQyP1t6abX7
+ +Yczz3uFxmiudRj800d2Okd3zoOX8neN0pJ35LquieAUsQFgGIrbYA5Q038S3WX96je9Y5W
+ mGylXDpExLvZwhdGhUmoQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:MSYE8wPDKFo=:/j31Eb8+UOmB5arIMLnQfY
+ ZVW0E3D4/xl5PYprzp5lW0l2W7jqz0gyoFkuaN7duxZrUaKwQnLL7NzEVIDuOLjXPiOWprFnS
+ 9W5nNOIwqwi8kFfhyYAVLeE05ukjj74IrLHTdFVDfCU4wVvByQhfVP9+oGug62X83PiZYuXtP
+ cq5Wrc5oDrR5StG7bR4wgzN7kRPuTOwpK3hJG0TdzBuyMAC/GfPfMyJoq8XQUuzfdjgFb8BX7
+ KlRvyk0yBfuTPd8IxRCKgMQ8T61war0t2vSZqO1thi0JY8HnfeBxHlipJWv7d1GUmL9gXSpWf
+ o9Tcs1i8ls2GTFZOwt2L8CxZSfC0sVCzUjovmks5WGj18zdn/0reojPS+QX9NWUaZmYgZVmxe
+ uMlHE8pDyaswXhVWEzWBggO/evFkGqDxQ8m/2Mhbc3PIp3+I3P2hZilXGgE2TxcGRq5Dhm3Yb
+ /GfnQ7rz7QJZH7RSAvn0VXrDmjKVNKdy3RofqVvLUlSS0zyoMmV01ijVaYWr57pqR4NrHpBzk
+ mKxMFtc5NFoHN4ZPsAbRxZcrHz+kwLpGWWSF3pO5/JMai2dsWsOgRxS43/gEMRiHhJeOXkqFl
+ k4kZXJtFD8COBaQiSkv1nv0KrO18QDbA6niCIfoP76Khvn1MIetndUVlVo3fOIS5RTZIfd4XL
+ 7ACTzCPxfnRh1NIrYfvzvr0FAW6owFjaJDlCjAhkUkHRd1yB5GJZtrClKfc02AaFyKkRGhNCQ
+ Vyn7jSZi/eYXFwiR
 
-Move open brace { to same line as statement. Issue found by checkpatch.
+On Wednesday 04 November 2015 00:29:42 Arnd Bergmann wrote:
+> On Wednesday 28 October 2015 00:30:41 Amitoj Kaur Chawla wrote:
+> > 32 bit systems using 'struct timeval' will break in the year 2038, so 
+> > we modify the code appropriately. 
+> > 
+> > This patch replaces the use of struct timeval and do_gettimeofday() 
+> > with 64 bit ktime_get_real_seconds().
+> > 
+> > Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> 
+> This code looks like a copy of the bfa_svc.c file from your earlier patch,
+> and the same comments apply: Make sure that stats_reset_time has an
+> appropriate type, and convert to monotonic time.
+> 
 
-Signed-off-by: Marianne Moeller Knudsen <marianne@masu.dk>
----
- drivers/staging/sm750fb/ddk750_chip.c |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+To further clarify: when you change to using monotonic time, using a 32-bit
+variable to store the time is sufficient and you don't need to change
+the type, but you should still explain that in the patch description
+if you do it.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 33add64..0392020 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -118,8 +118,7 @@ void setChipClock(unsigned int frequency)
- 			return;
- #endif
- 
--    if (frequency != 0)
--    {
-+    if (frequency != 0) {
-         /*
-          * Set up PLL, a structure to hold the value to be set in clocks.
-          */
--- 
-1.7.10.4
-
+	Arnd
 
