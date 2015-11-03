@@ -1,149 +1,109 @@
-X-GM-THRID: 6211478013725376512
-X-Received: by 10.182.58.105 with SMTP id p9mr6624413obq.21.1446222423077;
-        Fri, 30 Oct 2015 09:27:03 -0700 (PDT)
+X-GM-THRID: 6212178129179377664
+X-Received: by 10.28.216.206 with SMTP id p197mr4048868wmg.3.1446594232297;
+        Tue, 03 Nov 2015 15:43:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.91.108 with SMTP id y99ls1276330qgd.35.gmail; Fri, 30 Oct
- 2015 09:27:02 -0700 (PDT)
-X-Received: by 10.140.236.65 with SMTP id h62mr6893166qhc.13.1446222422561;
-        Fri, 30 Oct 2015 09:27:02 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id iz5si699982pbc.2.2015.10.30.09.27.02
+Received: by 10.25.169.3 with SMTP id s3ls79132lfe.87.gmail; Tue, 03 Nov 2015
+ 15:43:51 -0800 (PST)
+X-Received: by 10.112.181.194 with SMTP id dy2mr4879432lbc.11.1446594231706;
+        Tue, 03 Nov 2015 15:43:51 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id m135si552wmb.0.2015.11.03.15.43.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2015 09:27:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 03 Nov 2015 15:43:51 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id fv9so81915044pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Oct 2015 09:27:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=tRC970Btq8NwgsaT7hBu8csWDFC2dUUBIT6ZJ0nzj9o=;
-        b=YZXo6X7ryY+lCGBewSRb4lBrxB8Lk8obfeXXhbjVIM/WA2tAMi0i0b/r6Qcx/ubPWX
-         iSq6HOanHnYZMDf0c1i1N0T+JXiAULQcc4If79sidAaKnQCOO+pWf0LQFB1YgNR95gm7
-         4pb0A0wn8kU4kqweXjVy2J3ClssKohaqpyYA1Etg4LQZtFwlaplu5DxSstZMDMU6ZOBI
-         /Foj5aVHd0vGvhNxGpqVxeZU9w5qNeXhw+fHZ8ZCIADmFtLHbQFGWw3f4XpeQkZdFkzt
-         uAlTIsFuXZkGjKwKtT2vOKCTIm8CVAE9rhiUgtT41+u+We3qLZ9CKfFmjvgKeqmKxpJJ
-         HYUQ==
-X-Received: by 10.66.243.225 with SMTP id xb1mr9771396pac.1.1446222422388;
-        Fri, 30 Oct 2015 09:27:02 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.182.136])
-        by smtp.gmail.com with ESMTPSA id dn4sm9104927pbd.0.2015.10.30.09.27.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 30 Oct 2015 09:27:02 -0700 (PDT)
-Date: Fri, 30 Oct 2015 21:56:58 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: lustre: llite: Add __user annotations
-Message-ID: <20151030162658.GA14714@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue001) with ESMTPSA (Nemesis) id 0MQZS8-1a1Qks2TKm-00TjW2; Wed, 04 Nov
+ 2015 00:43:50 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH] scsi: bfa: Remove struct timeval
+Date: Wed, 04 Nov 2015 00:43:49 +0100
+Message-ID: <5910087.jVgJraTBut@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151101134346.GA8108@amitoj-Inspiron-3542>
+References: <20151101134346.GA8108@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:q0LSnzJ1bjLcIt2kdOyoiQ6Ipf2waMKo9j7HIv2tpN1ZPZFoviV
+ Q0VVSwjAcxIoDyW7hS+BugD5m4lmTmtQaPvwSbJ1mu2231gjgGr8iEgh5DX65kanF+HZ1cN
+ G9K2qZBfIzPfbgz0SLr+mhu5JYKyh0XZ1OetxzWU8gBHgc590TeC+ipK4Ti556x7e/Elgpf
+ uGZdf8KLsViqDGKmsc+zg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:s+Tyrum4mIE=:FWyu3Q0WFiWfdPV91Pp87s
+ 1B+STu6wI/GUgj9VtwjJbrWZ9U/Nb+ajTgaOckh+8jq1Y2nHl0Vq1PVyGrF9F+aZeDJueHLRu
+ cWZwHoyz0tRSMI42ISt+11Ksgypo944qoox7CXtym4AK2663u5iSDZpYkM7kR0v3Tcv4VtI6I
+ rW8qcJ9QpfnsaFQMheIjEmnE/i7EQp6Bg4IA+363uJ3z33uyEEA+u7ALNp71rZ32ZY5U+Mfyw
+ UutqBsfao249vRQWeDVA0hoBBZvzhTD226EKku9jYW4Ff9y9qv+RrbzKLARKdIBJmLfae0Nyy
+ XxlXh8W/NHhx0Y7VMJjKNPcMtQx0YpB9UZcrDV5zm92wR4GXltyA9mkqKFfayDXOjvU9565WC
+ f0A0TLn9fpeoziwt03LS1gGIBEK1GWGsPNEsFcIXeNjlIEoijZreKylbShooBi0R3VTHX/4+E
+ h3nI/QZgAQFnxMuRIv8yfPiWHJGCsnMh8Du9VZp/Xch8z/fpUv8TSXpKseGq68nSF2z8/afB9
+ lmAJVmQUTcWWgcczw/u5us3LrFCkXXVgSscPugTKR4T1YwJwBemlQ+OkDqaUNx1X61xVdoDu/
+ F0S6tP3+og/nusadwQAJZpkliIOcLmf8lkZB8aSSREy9pDDoHu5R/VyeyxejK3eka0Low1ays
+ 0mkCUiq784K1pWfftT250FK5SNjsH7gnj8zBdWQp5gLZmiC/34f4iU8LhAiJd/PLiupNsUhr7
+ tER/h5njR9+4T0tm
 
-This patch fixes the following multiple sparse warnings by adding __user
-annotations:
+On Sunday 01 November 2015 19:13:46 Amitoj Kaur Chawla wrote:
+> 32 bit systems using 'struct timeval' will break in the year 2038, so
+> we modify the code appropriately.
+> 
+> This patch replaces the use of struct timeval and do_gettimeofday()
+> with ktime_get_real_seconds() which returns a 64 bit seconds value.
+> 
+> This patch also replaces u32 timestamp with u64 timestamp in
+> bfi_ioc_ctrl_req_s structure to store the 64 bit seconds value
+> returned by ktime_get_real_seconds()
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
 
-warning: incorrect type in argument 1 (different address spaces)
-expected void [noderef] <asn:1>*to got char *<noident>
+This one is also wrong, but for other reasons as the earlier
+patches:
 
-warning: incorrect type in argument 1 (different address spaces)
-expected void [noderef] <asn:1>*to got int *<noident>
+> @@ -1808,13 +1809,11 @@ static void
+>  bfa_ioc_send_enable(struct bfa_ioc_s *ioc)
+>  {
+>  	struct bfi_ioc_ctrl_req_s enable_req;
+> -	struct timeval tv;
+>  
+>  	bfi_h2i_set(enable_req.mh, BFI_MC_IOC, BFI_IOC_H2I_ENABLE_REQ,
+>  		    bfa_ioc_portid(ioc));
+>  	enable_req.clscode = cpu_to_be16(ioc->clscode);
+> -	do_gettimeofday(&tv);
+> -	enable_req.tv_sec = be32_to_cpu(tv.tv_sec);
+> +	enable_req.tv_sec = be64_to_cpu(ktime_get_real_seconds());
+>  	bfa_ioc_mbox_send(ioc, &enable_req, sizeof(struct bfi_ioc_ctrl_req_s));
+>  }
+>  
+> diff --git a/drivers/scsi/bfa/bfi.h b/drivers/scsi/bfa/bfi.h
+> index 9ef91f9..aaa68bc 100644
+> --- a/drivers/scsi/bfa/bfi.h
+> +++ b/drivers/scsi/bfa/bfi.h
+> @@ -454,7 +454,7 @@ struct bfi_ioc_ctrl_req_s {
+>  	struct bfi_mhdr_s	mh;
+>  	u16			clscode;
+>  	u16			rsvd;
+> -	u32		tv_sec;
+> +	u64			tv_sec;
+>  };
+>  #define bfi_ioc_enable_req_t struct bfi_ioc_ctrl_req_s;
+>  #define bfi_ioc_disable_req_t struct bfi_ioc_ctrl_req_s;
 
-warning: incorrect type in argument 1 (different address spaces)
-expected void [noderef] <asn:1>*to got void *<noident>
+Here, you are dealing with firmware data structure, so that gets interpreted
+by code running on the SCSI host, and changing the structure layout breaks
+the interface.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
-Changes in v2:
-        -Fixed commit message
+I would add a comment here that describes how and when the time will still
+overflow, and add a cast to (u32). Please also describe this in the
+patch description.
 
- drivers/staging/lustre/lustre/llite/file.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+You really don't need to list every single change you do in the changelog,
+but instead should describe what problems are with the original code and
+why your change is done this way.
 
-diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
-index 51b6bc5..112da6f 100644
---- a/drivers/staging/lustre/lustre/llite/file.c
-+++ b/drivers/staging/lustre/lustre/llite/file.c
-@@ -2245,7 +2245,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		struct file *file2;
- 		struct lustre_swap_layouts lsl;
- 
--		if (copy_from_user(&lsl, (char *)arg,
-+		if (copy_from_user(&lsl, (char __user *)arg,
- 				       sizeof(struct lustre_swap_layouts)))
- 			return -EFAULT;
- 
-@@ -2292,7 +2292,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 	case LL_IOC_FLUSHCTX:
- 		return ll_flush_ctx(inode);
- 	case LL_IOC_PATH2FID: {
--		if (copy_to_user((void *)arg, ll_inode2fid(inode),
-+		if (copy_to_user((void __user *)arg, ll_inode2fid(inode),
- 				 sizeof(struct lu_fid)))
- 			return -EFAULT;
- 
-@@ -2304,13 +2304,13 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		struct ioc_data_version	idv;
- 		int			rc;
- 
--		if (copy_from_user(&idv, (char *)arg, sizeof(idv)))
-+		if (copy_from_user(&idv, (char __user *)arg, sizeof(idv)))
- 			return -EFAULT;
- 
- 		rc = ll_data_version(inode, &idv.idv_version,
- 				!(idv.idv_flags & LL_DV_NOFLUSH));
- 
--		if (rc == 0 && copy_to_user((char *) arg, &idv, sizeof(idv)))
-+		if (rc == 0 && copy_to_user((char __user *) arg, &idv, sizeof(idv)))
- 			return -EFAULT;
- 
- 		return rc;
-@@ -2323,7 +2323,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		if (mdtidx < 0)
- 			return mdtidx;
- 
--		if (put_user((int)mdtidx, (int *)arg))
-+		if (put_user((int)mdtidx, (int __user *)arg))
- 			return -EFAULT;
- 
- 		return 0;
-@@ -2350,7 +2350,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		rc = obd_iocontrol(cmd, ll_i2mdexp(inode), sizeof(*op_data),
- 				   op_data, NULL);
- 
--		if (copy_to_user((void *)arg, hus, sizeof(*hus)))
-+		if (copy_to_user((void __user *)arg, hus, sizeof(*hus)))
- 			rc = -EFAULT;
- 
- 		ll_finish_md_op_data(op_data);
-@@ -2361,7 +2361,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		struct hsm_state_set	*hss;
- 		int			 rc;
- 
--		hss = memdup_user((char *)arg, sizeof(*hss));
-+		hss = memdup_user((char __user *)arg, sizeof(*hss));
- 		if (IS_ERR(hss))
- 			return PTR_ERR(hss);
- 
-@@ -2389,7 +2389,7 @@ ll_file_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		rc = obd_iocontrol(cmd, ll_i2mdexp(inode), sizeof(*op_data),
- 				   op_data, NULL);
- 
--		if (copy_to_user((char *)arg, hca, sizeof(*hca)))
-+		if (copy_to_user((char __user *)arg, hca, sizeof(*hca)))
- 			rc = -EFAULT;
- 
- 		ll_finish_md_op_data(op_data);
--- 
-1.9.1
-
+	Arnd
 
