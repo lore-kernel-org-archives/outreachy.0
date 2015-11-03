@@ -1,81 +1,76 @@
-X-GM-THRID: 6250664265920806912
-X-Received: by 10.129.51.2 with SMTP id z2mr5320883ywz.49.1455346184204;
-        Fri, 12 Feb 2016 22:49:44 -0800 (PST)
+X-GM-THRID: 6212180238047117312
+X-Received: by 10.28.170.203 with SMTP id t194mr4037778wme.1.1446594805072;
+        Tue, 03 Nov 2015 15:53:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.42.164 with SMTP id p4ls655945obl.13.gmail; Fri, 12 Feb
- 2016 22:49:42 -0800 (PST)
-X-Received: by 10.182.29.10 with SMTP id f10mr5540814obh.36.1455346182820;
-        Fri, 12 Feb 2016 22:49:42 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id ff2si1860438pad.2.2016.02.12.22.49.42
+Received: by 10.28.131.147 with SMTP id f141ls954691wmd.12.canary; Tue, 03 Nov
+ 2015 15:53:24 -0800 (PST)
+X-Received: by 10.28.173.83 with SMTP id w80mr4067373wme.0.1446594804738;
+        Tue, 03 Nov 2015 15:53:24 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
+        by gmr-mx.google.com with ESMTPS id g18si757737wmd.1.2015.11.03.15.53.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 22:49:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 03 Nov 2015 15:53:24 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id zv9so433511pab.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 22:49:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=1IgTdK1mqNA7nDPgi0JYLM8Ne3PxI9n1kbpHnvxxlAQ=;
-        b=V/1i1mWxdnuov9EOgRbx8S+ag+SDOXLFGT75Wv2dZZWzc6gCRi+G//r3G2cE35TkV6
-         Cge5HVe8c1gb+Cy3evQLh/w9/41e7uGFJpYPEHmQB7nMfTtCy5C78on280sPmAuOK5DH
-         uzuCJvMY366pTCK7E53mrZ6ffpTVsXKu5g3WThMVb60FcCUKNygMZ5DTfX1HfY6MkdbV
-         mAI3c5CctsgLQkoplIiqUatsmEHtrHD1BvwACiT26YEep6HrYOyVHCcBinVLYkYe19JJ
-         0FrBXMF9no7Z7Xc0msPP0WrWdUfduZ242r8DELbXEF7V8fAHgPiad4EtMVVwbZlVBXJw
-         plXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=1IgTdK1mqNA7nDPgi0JYLM8Ne3PxI9n1kbpHnvxxlAQ=;
-        b=gKiq2DzhmBv/piCBhzLkDVox8dDFSBbN9rYcEaD/cNqHU7ShZOTiKyBme3PQE+le9e
-         n7OTfPQUCxnuRasrWKjD0pQxxLhQ6yjU4J4SVmDrv4q31zfZa1AIolSSJvtY1yb0W9Pv
-         0oLphk+w5asSGbARohPniatbUs9zlUn5C9dk3ByjYpDu3YVv6lIVrJWH/ZICBkvdApyI
-         DYoDJgOKxE9/4uMSQl46psMio9pAhVE5RvMeeYvgbqESqB+uD/noT5LzuiaO22wbgewi
-         s9FSZEEeb4bsTeZxRUuYdyA5ukB8kvhwOiYV2kuYII7srZGoYhKwHwfXitiDOFF7il72
-         7b7Q==
-X-Gm-Message-State: AG10YOSBVJqqsvtlA3H76hTLjPxiQ5T+CkiB40+S1jIjXMx7L6MkL4AyyiWYmf08XmS1uA==
-X-Received: by 10.66.142.132 with SMTP id rw4mr7723930pab.26.1455346182682;
-        Fri, 12 Feb 2016 22:49:42 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-97.dhcp.embarqhsd.net. [67.232.66.97])
-        by smtp.gmail.com with ESMTPSA id z67sm23696001pfa.71.2016.02.12.22.49.42
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 22:49:42 -0800 (PST)
-Date: Fri, 12 Feb 2016 22:49:41 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] staging: wilc1000: remove cast on void pointers
-Message-ID: <cover.1455344328.git.amsfield22@gmail.com>
+       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue101) with ESMTPSA (Nemesis) id 0Lzb2g-1aY23l3SJ0-014gqF; Wed, 04 Nov
+ 2015 00:53:23 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH] scsi: bfa: bfa_cs: Remove struct timeval
+Date: Wed, 04 Nov 2015 00:53:23 +0100
+Message-ID: <363905772.VYOh50Umob@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151101135158.GA8158@amitoj-Inspiron-3542>
+References: <20151101135158.GA8158@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:AAAMXiCYHiWQ7uyYPSvQIavY5SGig5psTdKM6aP0ku1kbgOK4oR
+ DRliX/MiPKAXxURC1Rxbkizue4NbXymVDkQX/05GkMlFwVd1mzyqe2FwGd3i0oXZJHvkZ9C
+ ldt5gjgpWxzpDoXLkWIFpKVMK4h3XfiLYCztTCNpts4XHKGO0d4fzLk+U2lxzIqTzH+thFL
+ IgHgfPR0SppfsUtHKts9Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:rS2jdWuqCwQ=:RCw7Uc+DT7N7qR++vTByz9
+ 7H/YFIJlgTcrpz23KXbCJMADZ0iCQP6TYr3U+7oJ/jftXV/p+CXCvzC9JCp0L3LuFbVe3pWX0
+ rzvPbGknO90DXCzraUWl7jhW44KAe0JOcAcQ+mLYu3vBjr8R53jdoQJYLfV1eQRjxunqQ1nqt
+ FEvMorvVEcRtQB1eJUPxpXHsy/Yubvnhi09Ns2wIcXMAC8TzIy3GLVk7OXeVfY1BVh89rBlwV
+ yRr/6YhGe5WVkgR/6SwcUqywZX8N3uLg6A82LeTGOBk6b4O9gy0xWbS3QqC+q+hOHRy1tO+U7
+ 2iaT3EWPp2EYynaj1O7CgloLsJJd32tZCoKmsx536OH9N+4t9/BsrLfCXQk94FARA5AYRYrLb
+ HJuI2RWpSqEBT4HehXk3KTzXQ8ynDn5xhXbLpg371sd9vPFO/f3i0/wJrDbvQNqOqePTyr0p1
+ p4u1kO5xSBEVtflisCqCmflgRQ521SANf/tTXCpUg412UZMWfG+XqP+qW3JkD57VZvxxArSTy
+ fMy86V2Mp8Vv5h7QSRljuwNl1k9z/JrCWnNu5HUkE1VCq3NiP5+2CJ9pGICX/qCdJu3BRMz6G
+ SIsLOdaAt8kHGva8Gpgq30tTHio2it0bejtYgk9pj1TJ//x3POXCbXh34S6gl6I+ob/U8w+HM
+ la1J9OfU4TeBPy3kzrfgkXG5YCvDlu8eTFDSYc+dyEsAqQTru5wyYSqIyyrrzoVKhDgQi509+
+ lnKtjx2nwPKpj7DQ
 
-Patchset removes casts on void pointers in wilc1000.
-The patchset is separated by .c file. 
+On Sunday 01 November 2015 19:21:58 Amitoj Kaur Chawla wrote:
+> -#define BFA_TRC_TS(_trcm)                               \
+> -       ({                                              \
+> -               struct timeval tv;                      \
+> -                                                       \
+> -               do_gettimeofday(&tv);                   \
+> -               (tv.tv_sec*1000000+tv.tv_usec);         \
+> -       })
+> +#define BFA_TRC_TS(_trcm)      (ktime_get_real_ns() / NSEC_PER_USEC)
 
-Alison Schofield (4):
-  staging: wilc1000: host_interface: remove cast on void pointers
-  staging: wilc1000: linux_mon: remove cast on void pointer
-  staging: wilc1000: linux_wlan: remove cast on void pointers
-  staging: wilc1000: wilc_wfi_cfgoperations: remove cast on void
-    pointers
+This change is broken on 32-bit architectures, as you are doing a 64-bit
+integer division that we don't allow in the kernel. If you try to build
+the entire kernel for 32-bit, you will get a link error here.
 
- drivers/staging/wilc1000/host_interface.c         |  4 ++--
- drivers/staging/wilc1000/linux_mon.c              |  2 +-
- drivers/staging/wilc1000/linux_wlan.c             | 10 +++++-----
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 12 ++++++------
- 4 files changed, 14 insertions(+), 14 deletions(-)
+Also, you probably don't want to do the expensive division in a function
+that is called as often as this one. This probably needs some help
+from the driver maintainer, to answer how the timestamp is used, but
+using the original algorithm would at least make it no less efficient
+than it is today. Alternatively, using
 
--- 
-2.1.4
+	#define BFA_TRC_TS(_trcm)      (ktime_get_ns() >> 10)
 
+could give an approximation by doing a bit shift (division by 1024)
+instead of the division by 1000.
+
+	Arnd
 
