@@ -1,94 +1,75 @@
-X-GM-THRID: 6256312431836921856
-X-Received: by 10.66.163.4 with SMTP id ye4mr8713937pab.23.1456661250738;
-        Sun, 28 Feb 2016 04:07:30 -0800 (PST)
+X-GM-THRID: 6210130290572001280
+X-Received: by 10.112.184.170 with SMTP id ev10mr928086lbc.4.1446681034847;
+        Wed, 04 Nov 2015 15:50:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.21.47 with SMTP id 44ls1786254qgk.90.gmail; Sun, 28 Feb
- 2016 04:07:30 -0800 (PST)
-X-Received: by 10.13.227.133 with SMTP id m127mr8288937ywe.1.1456661250112;
-        Sun, 28 Feb 2016 04:07:30 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id yd9si2980672pab.1.2016.02.28.04.07.30
+Received: by 10.28.21.78 with SMTP id 75ls1391wmv.39.canary; Wed, 04 Nov 2015
+ 15:50:34 -0800 (PST)
+X-Received: by 10.28.138.83 with SMTP id m80mr5222161wmd.7.1446681034403;
+        Wed, 04 Nov 2015 15:50:34 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id t2si202142wme.1.2015.11.04.15.50.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 04:07:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Wed, 04 Nov 2015 15:50:34 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id yy13so76031378pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 04:07:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=gublbALpsnYXauwmIAGyjNe7Bdi0DYsO+ADz0zG+sCg=;
-        b=J8JBOmHcxmncbbT+xALUdHV/pwYphrTx1rXUygzxLGUKkduRdguh2bL+pnY7+xRwgI
-         9bvMfu2EoTYCAyVZuzziljc1g5DeX3/1rYoUuWHyzFoWH0nEAGrS5ar2x8YfTsj6bmwH
-         TvWwpIHMNFtEv4L8JErnf69iW9VMXtpjexf5zEXTmIkbqw0MbHxxbljBcwB84FBf6PGO
-         EejFbicBGazhKy5hg9X8V1hBBggBJVk6oGsPDiET/CLWas8MEuldIILisai7yTAEMLQU
-         NYiKxOsyfxzvruG6RmvbEdetLSMr4UQk2rThrdBcCQS+tRKiu+QhKDlaKzs5DK/oEHRX
-         z62g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=gublbALpsnYXauwmIAGyjNe7Bdi0DYsO+ADz0zG+sCg=;
-        b=MmDFfq30ja5SmBhfEVIoVkvdJIjQULvmuVFwEgBNwv0a8JOPOjZUdWPoBQxwy9qwVv
-         xRVByhCy/Al/h5yYr8yZX+X9XGJEfXML1wwAAoVNR91I/t/ADu5gMez4dwEbwZccSNjB
-         GyLe15rHWe8WI0D5RjhjXY1jK7307WPPF5fFO1qCLH7MGW7PXYS7hHoCbMh/s6JcubdG
-         POMeug6iXp39DMhomDcpf9XxXPNO0F9Dc4zWubZgOJOrqlAOF/UCvhDPgZ1WMIFBHbm6
-         igCVgNdyklW07m5SRf1IBLvhAqS+XMVyeXn9Gltkfj1iXs0Fz+kEjA23g50BKnHQUx0F
-         izhw==
-X-Gm-Message-State: AD7BkJJC7UywSvYUtkAeWk0lEytvwDElN7c7q8ilrYKSILHUREkEn+/5cxeKUnfnKxFOBg==
-X-Received: by 10.66.244.233 with SMTP id xj9mr14874245pac.19.1456661249952;
-        Sun, 28 Feb 2016 04:07:29 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id u84sm31080653pfa.57.2016.02.28.04.07.28
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 04:07:29 -0800 (PST)
-Date: Sun, 28 Feb 2016 17:34:41 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: Remove unused variables
-Message-ID: <20160228120441.GA16843@Karyakshetra>
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue003) with ESMTPSA (Nemesis) id 0MGmEX-1ZhDXF1rUX-00Dash; Thu, 05 Nov
+ 2015 00:50:32 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Deepa Dinamani <deepa.kernel@gmail.com>, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH] usb: misc: usbtest: Remove timeval usage
+Date: Thu, 05 Nov 2015 00:50:31 +0100
+Message-ID: <6462540.z8br1dO3uJ@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <1446679751-20876-1-git-send-email-deepa.kernel@gmail.com>
+References: <1446679751-20876-1-git-send-email-deepa.kernel@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:DtF5BWS/zwVheRjfg1myK3fWuVzg06mavA7E1SRa5ujwYsBqutu
+ RKRJKXCnyBxR2dGvAIzdz9786a5Z4TMUhbV5RNWY+ZLxt0BMoOoMf3p7wtwPLPlxVjkoiHS
+ ZOvhf3nTGL+h451azwj8txhePn8o0Pwp6lVUuXAAQh1VLoNH8hTdLy0AiEVO32TIfHQ8lVZ
+ Q7u3UmBHn3qE2mAyjMcLg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:ScQFuU3hB4k=:vFC8LGYsuvn3jB2adeuJc8
+ SxTeJj1ztWlkqcx2yn7vc87I6U9nKXlQGNiTe+Eqlm1nBfwPc4EOcgl5lFQfvgKw/IttAgsvE
+ 2qenfq2Wen4rbFFcfnRUXoN9oEpPobxKPCseuMRUCTMsrji1bf4Mlul6HIDiGNy7x52RFu7dR
+ 0ybj+AZoyhjSwDC9UqO0wyg5lnS/G9ZIRjfx8E4WfflWyALqW8MAaY8V7cyPOAxvx+cg/zFTA
+ rtKVHZy7PVbKE/rh0fk9sVetvmwbctqtRmaUaNo3BWy3z/kPb5GIoL2eYuDkqr7BBCyzBcyWV
+ m4onUVaAeqORnLP7obGL4hfPAElDmTAhGfgsLM493TM2R4G/r44/jWIflXoeTJKV2cDyLFnK/
+ BkSd7Gf08IO56wPLO1Qo4n7kotyjMya8ih1bOvT+itD0ZGKZxjsRgoWzJBoMiBnisAVZDt43D
+ nHM8r1EIx3VzeVb8QwBFz+6g/v81bQnHJjLMXi2YeHyDqWcJL44W23Un5IBo4VcJGLokEw52Q
+ 7fcZR/m2Cts7Q7RQ7O9N44VFwtps6WqdEm1AZYo0HJLHj1yBLxfkpfKMCDL5ku7nSdhQG4DWo
+ zZyL5C6zPUgt+JcwFtO8D+GdEPFsgKy97OTp/0KzXMumK9LkSBIStdx5mN7h+HB9QLC5aiYCi
+ 9bGLSZp0KqdWSSqbzmI1SDlOHFn0zkdkc5EdNtSZp0RlkhLn5tQfdm3HsPk5cPL3iwggZ/HO5
+ riGYeZ3MHoea8JFz
 
-The variable csr has not been used anywhere in the function
-sdma_dumpstate(). Hence, it has been removed.
+On Wednesday 04 November 2015 15:29:11 Deepa Dinamani wrote:
+> timeval is deprecated and not y2038 safe.  Its size also changes according
+> to 32 bit/ 64 bit compilation.  Replace it with 32 and 64 bit versions of
+> its individual fields, giving two ioctls with different code values.
+> The two ioctls are necessary to maintain the 32 bit and 64 bit userspace
+> compatibility with a 64/32 bit kernel.
+> 
+> Change unsigned to __u32 types for a definitive userspace interface.
+> This is in accordance with the psABI that the unsigned type is always
+> 32 bits.
+> 
+> Also use motonic timer instead of real time to ensure positive delta
+> values.
+> 
+> Refactor usbtest_ioctl for readability to isolate the handling of the
+> testing timing measurement.
+> 
+> The official testusb userspace tool can be changed in a separate patch
+> to reflect the __u32 changes as well. It can use the usbtest_param_32
+> struct, since 32 bit seconds is long enough for test durations.
+> 
+> Signed-off-by: Deepa Dinamani <deepa.kernel@gmail.com>
+> 
 
-This was done with Coccinelle:
-
-@@ type T; identifier i; constant c; @@
--T i;
-<... when != i
--i = c;
-...>
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rdma/hfi1/sdma.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/rdma/hfi1/sdma.c b/drivers/staging/rdma/hfi1/sdma.c
-index 9a15f1f..2b2af94 100644
---- a/drivers/staging/rdma/hfi1/sdma.c
-+++ b/drivers/staging/rdma/hfi1/sdma.c
-@@ -1769,7 +1769,6 @@ static void init_sdma_regs(
-
- void sdma_dumpstate(struct sdma_engine *sde)
- {
--	u64 csr;
- 	unsigned i;
-
- 	sdma_dumpstate_helper(SD(CTRL));
---
-2.1.4
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
