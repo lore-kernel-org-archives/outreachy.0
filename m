@@ -1,144 +1,91 @@
 X-GM-THRID: 6210359704363728896
-X-Received: by 10.28.211.201 with SMTP id k192mr4055225wmg.3.1446596049004;
-        Tue, 03 Nov 2015 16:14:09 -0800 (PST)
+X-Received: by 10.28.88.135 with SMTP id m129mr4061627wmb.4.1446595451368;
+        Tue, 03 Nov 2015 16:04:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.16.222 with SMTP id 91ls82583lfq.12.gmail; Tue, 03 Nov 2015
- 16:14:08 -0800 (PST)
-X-Received: by 10.112.184.170 with SMTP id ev10mr6223161lbc.4.1446596048397;
-        Tue, 03 Nov 2015 16:14:08 -0800 (PST)
+Received: by 10.28.136.143 with SMTP id k137ls975916wmd.28.canary; Tue, 03 Nov
+ 2015 16:04:10 -0800 (PST)
+X-Received: by 10.28.87.15 with SMTP id l15mr4065588wmb.1.1446595450851;
+        Tue, 03 Nov 2015 16:04:10 -0800 (PST)
 Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id l1si728045wmb.1.2015.11.03.16.14.08
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by gmr-mx.google.com with ESMTPS id l1si726491wmb.1.2015.11.03.16.04.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Nov 2015 16:14:08 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        Tue, 03 Nov 2015 16:04:10 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.24;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
 Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue005) with ESMTPSA (Nemesis) id 0MbtTu-1aCwiv1jq2-00JH2j; Wed, 04 Nov
- 2015 01:14:07 +0100
+ (mreue101) with ESMTPSA (Nemesis) id 0MUW15-1a2noa2FsZ-00RFh5; Wed, 04 Nov
+ 2015 01:04:07 +0100
 From: Arnd Bergmann <arnd@arndb.de>
 To: y2038@lists.linaro.org
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH 2/5] fs: nfsd: Replace time_t with u32 in nfsd4_lease
-Date: Wed, 04 Nov 2015 01:14:06 +0100
-Message-ID: <8412799.SPuinIILNH@wuerfel>
+Subject: Re: [Y2038] [PATCH 1/5] fs: nfsd: Replace time_t with u32 in boot_time
+Date: Wed, 04 Nov 2015 01:04:06 +0100
+Message-ID: <16034171.mcXgMm0kJL@wuerfel>
 User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <d860ec8de84b6ac84510505a1fef14c8ccc60a67.1445960986.git.ksenija.stanojevic@gmail.com>
-References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <d860ec8de84b6ac84510505a1fef14c8ccc60a67.1445960986.git.ksenija.stanojevic@gmail.com>
+In-Reply-To: <ff2558d603d7352f511a459783bd85a8ede3bd56.1445960986.git.ksenija.stanojevic@gmail.com>
+References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <ff2558d603d7352f511a459783bd85a8ede3bd56.1445960986.git.ksenija.stanojevic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:UuWFp/o+Q8ehin8KYYjF8tE96+vX7o0eoTRcrytF2W8uklasVKa
- zPdq8Bd7l4ADL6jpK9wk5AfBMDiRuh6WpriMYRjiW2zCrxjgmZhWuZr+TPuwCsEeOq2WEej
- l544Wr8bVFGMYGTzWJa0HwxYJTlrPaHxg7jgMyMR0pOMaySCuns88S77ZCTCWYLX1wHvwEo
- jDlk5e1LZA7Pj4cCVC3hw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:fo1r9QfGbSg=:7yEcGpkbLaK8mXCM40GZeH
- uf6/l1P/aMUTiKEKS0hriL5U4gOjwIev/gihjRgR53lVxp7LCguho9edAH98nIhBF7+gIipLC
- goUJz0sPQxUpDhjnJY548b9KPf2g6N+FIMBYytNYb2l7R6b62qEy0hgSFLluZeDMsZZCG+9KT
- o7rYjCZRUvr/sznVYw86yp53JiyE/YQ6182Eso8RTqU8uDHV5arvcH4zUAzWc08FQYKx7nyJS
- mOHzzTm73HzhkLG9zukEKpOMfMxRL7XjBzuD/YqeFYCqNRWm+D6p6/92rPzijCgrdzZOSPWsS
- f8Do5K944bP6v31xQPHJKSsz15YqfQwULORBOcz7JD9/1dYBelcj772x3SItL44Nq274i1NOH
- k6Y7FXniCYF1ox/V/2q2czFSbj49q1bAVXpKiXyYQQG8kTw8nDGXYDAtKj+ckWT47f2amginv
- reEFtIgeRD8no7YX1i9XMxkqUeYlkXEPXYl1EVV5j97aMAXZevO0Y2MxV9bIgETsN2lT8WXNe
- VIkGgoZTLTspzV64ss1+oGyG613uLn0InRRYkq+YKRnFOJQFI3UAyutojd+TkxNEPW8INWnIz
- l51uj+fxdXkYbPG0+lzSSUMaUj8GoF6v3bedPtAKY6PkMqyo+heiLkKx6Ko1bCoBk4ivEUD7C
- DhBlb3GXflTVj3oVAwubuthXPlhzCRPgMRlqg0WrttgSpeHw7k7/9kby3m55ReZtSPsn5FfJH
- W0v7qv073a6nFm7t
+X-Provags-ID: V03:K0:d6qDnCdLh0V1pDTxQJ838/3yCYZV4n5Rkvl2Xyn3u1i2JyNlXaB
+ MwMc8eOJDbrvWyXn1Y2Kil3tR6S3eFzEMa/yp333lgbvQV5/Z6/YsFMW6XYyxXArHYE92r6
+ 02XV9WDzBBQi0rp4dY9I0EqTmOsCgGarNQun4fSDb4IN1obEWp/fpwU/BAmsmFudL/mDMU2
+ TmJt/HzNH4R5586sMu6ug==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:vhusSNv+9Hg=:4mrkk+20mWl+VCfvuT5fYK
+ yZhEcwL+VdwMBjkA6DuLQkpY4rr6AAJ0tIErWLV5XG1Z5TxeLyVRIc2vN1f9qhLKbXHxpBG1n
+ QmxHKjYOuzsPNlaYv483czjEAtGu/9crTG823hRO/6DenQ5o26c6BYLkQr+ScILEBfYfHH7M/
+ xPj9B7bvGQruY/J8fItNVHisPwP51UsXPepg38HmZ17cBDmiXAV7Lg1NGh/0VmDVmc4Vt4zPe
+ IFc8bs8Dl8X6qtVBwcP9qdspfEuWdMMxPjubT6wdb7+Gc1hhEaFj/8iPDVHA/G5qxFnVvb8Mc
+ gh4Vigm29ndLJR1pxVx8jbWcDavb+1FM1zVSTzhRLhG8WMMijRiULHtY2t2IKjMvYoPBsmXPw
+ NcCotVnb3UmfBBXOlKNK2z0xWWv4Kfpcja8Zrj844qZsoY5xEWxH/0QsbjyEx+AKSgOHqGcRC
+ UVvTKIHWgOsM0TAg6hYXETub3cBJGQqW9PI2ZOo3ovMv2uGw5M+7QHpb8F/2qN++ZGo96xZyA
+ yTgL3/C3y3ogzCmF1c0sMDRoKni8aPr8xsNkRwPdKHBxI+CyVj2ew8O86D4OSSxtPqhaKKzf5
+ R+nPn8LM+a6hWczraD1XTyB8jEQY5STEi4iBhRYivn69COqbKad0x7fZYCzau4c1840SvNSez
+ /S7uqKKejtdy56F+wfj64FR6TvL7TpApfK7QCJ7PqJCINZZLePRuaDI2qkdRUgYoaSgGBx0uM
+ x/UzoUxRpIquV/xC
 
-On Tuesday 27 October 2015 09:09:35 Ksenija Stanojevic wrote:
+On Tuesday 27 October 2015 09:08:35 Ksenija Stanojevic wrote:
 > Replace time_t type and get_seconds function which are not y2038 safe on
 > 32-bit systems. Function ktime_get_seconds use monotonic instead of real
 > time and therefore will not cause overflow.
 > 
 > Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 
-You are missing an explanation about why the u32 type is used. The
-change to that type looks absolutely appropriate here, but it seems
-unrelated to what you write above.
+I don't think using monotonic time is safe here: 
 
-> diff --git a/fs/nfsd/netns.h b/fs/nfsd/netns.h
-> index d5cce15..85b114f 100644
-> --- a/fs/nfsd/netns.h
-> +++ b/fs/nfsd/netns.h
-> @@ -94,7 +94,7 @@ struct nfsd_net {
->  	bool in_grace;
->  	struct nfsd4_client_tracking_ops *client_tracking_ops;
->  
-> -	time_t nfsd4_lease;
-> +	u32 nfsd4_lease;
->  	time_t nfsd4_grace;
->  
->  	bool nfsd_net_up;
-> diff --git a/fs/nfsd/nfs4callback.c b/fs/nfsd/nfs4callback.c
-> index e7f50c4..8a177c6 100644
-> --- a/fs/nfsd/nfs4callback.c
-> +++ b/fs/nfsd/nfs4callback.c
-> @@ -681,7 +681,7 @@ static const struct rpc_program cb_program = {
->  static int max_cb_time(struct net *net)
->  {
->  	struct nfsd_net *nn = net_generic(net, nfsd_net_id);
-> -	return max(nn->nfsd4_lease/10, (time_t)1) * HZ;
-> +	return max(nn->nfsd4_lease/10, (u32)1) * HZ;
->  }
-
-coding style: it would be helpful to convert this to use max_t()
-instead of max() to avoid the cast.
-
->  static struct rpc_cred *callback_cred;
 > diff --git a/fs/nfsd/nfs4state.c b/fs/nfsd/nfs4state.c
-> index 8245236..4bceb878 100644
+> index 0f1d569..8245236 100644
 > --- a/fs/nfsd/nfs4state.c
 > +++ b/fs/nfsd/nfs4state.c
-> @@ -4332,8 +4332,8 @@ nfs4_laundromat(struct nfsd_net *nn)
->  	struct nfs4_delegation *dp;
->  	struct nfs4_ol_stateid *stp;
->  	struct list_head *pos, *next, reaplist;
-> -	time_t cutoff = get_seconds() - nn->nfsd4_lease;
-> -	time_t t, new_timeo = nn->nfsd4_lease;
-> +	u32 cutoff = ktime_get_seconds() - nn->nfsd4_lease;
-> +	u32 t, new_timeo = nn->nfsd4_lease;
->  
->  	dprintk("NFSD: laundromat service - starting\n");
->  	nfsd4_end_grace(nn);
+> @@ -1612,9 +1612,9 @@ STALE_CLIENTID(clientid_t *clid, struct nfsd_net *nn)
+>  	 * precisely 2^32 (about 136 years) before this one.  That seems
+>  	 * a safe assumption:
+>  	 */
+> -	if (clid->cl_boot == (u32)nn->boot_time)
+> +	if (clid->cl_boot == nn->boot_time)
+>  		return 0;
 
-The change to "cutoff" needs to be done together with the 'cl_time'
-change from patch 1, and all the users of that variable.
+It looks like clid->cl_boot comes from a machine on the other side
+of the network, and we need to ensure that the values are unique
+above all things.
 
-> @@ -4399,7 +4399,7 @@ nfs4_laundromat(struct nfsd_net *nn)
->  	}
->  	spin_unlock(&nn->client_lock);
->  
-> -	new_timeo = max_t(time_t, new_timeo, NFSD_LAUNDROMAT_MINTIMEOUT);
-> +	new_timeo = max_t(u32, new_timeo, NFSD_LAUNDROMAT_MINTIMEOUT);
->  	return new_timeo;
->  }
->  
-> diff --git a/fs/nfsd/nfsctl.c b/fs/nfsd/nfsctl.c
-> index 9690cb4..6e0cfd6 100644
-> --- a/fs/nfsd/nfsctl.c
-> +++ b/fs/nfsd/nfsctl.c
-> @@ -932,7 +932,7 @@ static ssize_t write_maxconn(struct file *file, char *buf, size_t size)
->  
->  #ifdef CONFIG_NFSD_V4
->  static ssize_t __nfsd4_write_time(struct file *file, char *buf, size_t size,
-> -				  time_t *time, struct nfsd_net *nn)
-> +				  u32 *time, struct nfsd_net *nn)
->  {
->  	char *mesg = buf;
->  	int rv, i;
-> @@ -964,7 +964,7 @@ static ssize_t __nfsd4_write_time(struct file *file, char *buf, size_t size,
->  }
->  
->  static ssize_t nfsd4_write_time(struct file *file, char *buf, size_t size,
-> -				time_t *time, struct nfsd_net *nn)
-> +				u32 *time, struct nfsd_net *nn)
->  {
->  	ssize_t rv;
+> --- a/fs/nfsd/state.h
+> +++ b/fs/nfsd/state.h
+> @@ -305,7 +305,7 @@ struct nfs4_client {
+>  #endif
+>  	struct xdr_netobj	cl_name; 	/* id generated by client */
+>  	nfs4_verifier		cl_verifier; 	/* generated by client */
+> -	time_t                  cl_time;        /* time of last lease renewal */
+> +	u32			cl_time;        /* time of last lease renewal */
+>  	struct sockaddr_storage	cl_addr; 	/* client ipaddress */
+>  	bool			cl_mach_cred;	/* SP4_MACH_CRED in force */
+>  	struct svc_cred		cl_cred; 	/* setclientid principal */
+> 
 
-This function is called for both nfsd4_lease and nfsd4_grace, so by changing
-only one of the two types, you generate a compiler warning.
+This change seems unrelated to the rest of this patch.
 
 	Arnd
 
