@@ -1,114 +1,117 @@
-X-GM-THRID: 6250414458663862272
-X-Received: by 10.107.7.200 with SMTP id g69mr2751792ioi.3.1455288021839;
-        Fri, 12 Feb 2016 06:40:21 -0800 (PST)
+X-GM-THRID: 6210537290712743936
+X-Received: by 10.112.144.105 with SMTP id sl9mr853392lbb.3.1446676002414;
+        Wed, 04 Nov 2015 14:26:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.241.101 with SMTP id wh5ls788323obc.3.gmail; Fri, 12 Feb
- 2016 06:40:21 -0800 (PST)
-X-Received: by 10.182.97.167 with SMTP id eb7mr1705980obb.16.1455288021561;
-        Fri, 12 Feb 2016 06:40:21 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id ff2si1465997pad.2.2016.02.12.06.40.21
+Received: by 10.28.92.138 with SMTP id q132ls436458wmb.25.gmail; Wed, 04 Nov
+ 2015 14:26:41 -0800 (PST)
+X-Received: by 10.28.216.206 with SMTP id p197mr1127571wmg.3.1446676001793;
+        Wed, 04 Nov 2015 14:26:41 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
+        by gmr-mx.google.com with ESMTPS id l1si193500wmb.3.2015.11.04.14.26.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 06:40:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Nov 2015 14:26:41 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id w128so3479570pfb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 06:40:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=aPAXVRS3XqyhR9IVExLYnoQWFUyZlXKv8MJAznOKXwU=;
-        b=biPbMQ7LiBC5YPUWBdQwXFrV8EibqxDusP6CfYwULytmNL/NfwLOA2YKQdsgWckiyN
-         JM05sZDQ73bApDGz4sR05ci7mVyjp1PPFn/fvB2YU0g5kQtrLdnag7+7FGCspFsnVdsb
-         cb7UBHud/zRHTB6zxZ3sg3FPWK9z13Dl+9Y1OqZeRcIhNJI/iQS47HkBl+giy5yVM8bc
-         T8Nb8/gvz6spnpnu1qKXLndjs5sielfVxDgbgUry/TWQHU0yrJ2oZrUNgHIjW+TRrtVp
-         pt4jTX4yi9GtouNq8nqXlQtN3zpc+MIWMNpG4XbdHaGkC97JzE0uAM9b7x+Wg+eTt7ke
-         uFIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=aPAXVRS3XqyhR9IVExLYnoQWFUyZlXKv8MJAznOKXwU=;
-        b=NdZsAlTUj1KdpyAzYuT8O72YjNVNhrqssydnwvDpH466ek+dkcFKkL69IFzBxOC81t
-         kw/iKx6w78IwIAClprkyV+TzUHptPjIuofQYsPvuKmgw64CbyJ70j72JHsDv35qanPv1
-         9ZLMV0hA2mUZ1EvTk4Dl9hfLnwh0JizV6Tz95EILOSlP0KApoOXwr0Srnx1yxsILYZ+6
-         UQIg+K6/QtY3vziYDKQX7dgEh3ePiwVg3lDiBTUIdzVR33Iz27fQCz0CIh5V+a/7pqln
-         Zm8wk/GzNvMJ64aTD34CtYxZ/2Q5N7EmWX5huvm4uFy7LfkahcT3OJnsb62uVzLNiCWc
-         4GKQ==
-X-Gm-Message-State: AG10YOSkt6XZimRbDfCcOMSwI2GBX/X43zOHm6e09EY9jJChffzuuhFbKWBnjHRwke2xIw==
-X-Received: by 10.98.1.85 with SMTP id 82mr2732705pfb.10.1455288021361;
-        Fri, 12 Feb 2016 06:40:21 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id tp3sm20059829pac.16.2016.02.12.06.40.20
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 06:40:20 -0800 (PST)
-Date: Fri, 12 Feb 2016 20:10:17 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/6] staging: rtl8192u: ieee80211: ieee80211_softmac: Replace
- MSECS with msecs_to_jiffies
-Message-ID: <20160212144017.GA1301@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue104) with ESMTPSA (Nemesis) id 0Lsi5p-1aa9VZ3fYX-012L63; Wed, 04 Nov
+ 2015 23:26:40 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH 1/2] scsi: 3w-9xxx: Remove use of struct timeval
+Date: Wed, 04 Nov 2015 23:26:39 +0100
+Message-ID: <5302705.jCLlGngFsR@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <ec04096c9bb3827a9f51f8fd43788b75db0a2198.1446003130.git.amitoj1606@gmail.com>
+References: <cover.1446003130.git.amitoj1606@gmail.com> <ec04096c9bb3827a9f51f8fd43788b75db0a2198.1446003130.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:vcfCHydBNkLPwgobzEAvAtZBdzlKodRYE7Bkk4UATmSeWBDcuxl
+ +WUsHekWZFvOEh0uD+uwSRPVST6lHT20faidHEENyd93LS/u8DnwcrerrYoLN13T9QtfADh
+ u9MEmWdvUyTzEZBnP2ULCYUet3DXSM32ZOS97U38d6yZnq4x6ml/wu6tbkbAiXnHO8W+fXX
+ Y6mcYFhQEPl2z0Ol6RMbw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Rn+RO/al2Go=:VnPrvKorkh0zZOI04Xmie8
+ cPSCPDa+Vytz4NrKHjSD7I6mn3qld65vxBPZISf9GYWAsedWwjs64WtaXYwmAs2INi1JZk8AY
+ I0t08mNHLxJQPZSxZusPut2mbZ6OgR/WByouAhhtMnnXRWK1i1zx7sRnsFJclSWn1TbjuCdT5
+ 0p+rvKAq4/phrzW3cgLBYCeWcVeEy4PAM/Rzh+vAFJbE1eVpUk9HxEtrWv1F0Pp9flUy1l0OI
+ IGOvd4ZbVxOGREX3ANixyfyPv7Pn9rVIW7cgikCyXYC5wL0Ol7Ek7h9eotLLE0FUYAaoSrLwH
+ AksISsR5yBhHJIWlAGtD2Z8RjRaDjUZv7ZbZ/9Nqq06s7T8iE9ZvjxZqbC79mDIx6ZuSrW9JH
+ y5aHjXZngjdI+DpILk6rfRbX+2PK2NCu2aywmluRuOCRhngKEDtKatHsogY9vKEplWuiLfjh8
+ XOYEi4bnQ51l/lLH155cOPFBu1z+/lTcJRCcMs2Ub07yp5rMnGSDrcsY0N9IyOIVaLXgvKg+K
+ 90Dduohba5o4KAyal1LGUVLX7WeG7mCNHkW4hjxiOet12AcigtT5MEYSWNIHLA3tN99SI82ht
+ Tw+/GrNHZ4goPcVfZzTvpPl9TEfv6M0yabbz6FtmPvwEifQot/IG7Xg2KGaEFexyxbAb0Q3bS
+ OGRilkqa/yBMg0g0M2t6/sOUIi5GqCaOTD36aXXPtApJem3vEPzm/buuPs6TXiEFSOX5wt0gk
+ T8676JWUxji+gPlg
 
-Replace driver specific macro MSECS with msecs_to_jiffies().
+On Wednesday 28 October 2015 09:10:58 Amitoj Kaur Chawla wrote:
+> This driver uses 'struct timeval' which we are trying to remove since
+> 32 bit time types will break in the year 2038.
+> 
+> This patch uses ktime_get() instead of do_gettimeofday() which returns
+> ktime_t type.
+> 
+> This patch also uses ktime_to_ms() to find current time in
+> milliseconds.
 
-This was found using the following Coccinelle semantic patch:
+It looks like you are doing two or three things in this patch, so it
+would be better to send multiple patches. This driver is a little harder
+to do than some of the other 'simple' ones I have listed in my table.
 
-//<smpl>
-@@
-expression e;
-@@
+> @@ -384,8 +383,8 @@ static void twa_aen_queue_event(TW_Device_Extension *tw_dev, TW_Command_Apache_H
+>  	memset(event, 0, sizeof(TW_Event));
+>  
+>  	event->severity = TW_SEV_OUT(header->status_block.severity__reserved);
+> -	do_gettimeofday(&time);
+> -	local_time = (u32)(time.tv_sec - (sys_tz.tz_minuteswest * 60));
+> +	local_time = (u32)(ktime_get_real_seconds() -
+> +						(sys_tz.tz_minuteswest * 60));
+>  	event->time_stamp_sec = local_time;
+>  	event->aen_code = aen;
+>  	event->retrieved = TW_AEN_NOT_RETRIEVED;
 
-- MSECS(e)
-+ msecs_to_jiffies(e)
-//</smpl>
+Unlike what you write in the description, you use ktime_get_real_seconds()
+rather than ktime_get().
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+time_stamp_sec is limited to 32 bits, and you handle this correctly, but
+you do not describe in the changelog what causes the limitation and
+what this means for the overflow.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index 21ee410..6d85648 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -380,7 +380,8 @@ static void ieee80211_send_beacon(struct ieee80211_device *ieee)
- 	if (ieee->beacon_txing && ieee->ieee_up) {
- //		if(!timer_pending(&ieee->beacon_timer))
- //			add_timer(&ieee->beacon_timer);
--		mod_timer(&ieee->beacon_timer,jiffies+(MSECS(ieee->current_network.beacon_interval-5)));
-+		mod_timer(&ieee->beacon_timer,
-+			  jiffies + msecs_to_jiffies(ieee->current_network.beacon_interval-5));
- 	}
- 	//spin_unlock_irqrestore(&ieee->beacon_lock,flags);
- }
-@@ -1735,10 +1736,12 @@ static short ieee80211_sta_ps_sleep(struct ieee80211_device *ieee, u32 *time_h,
- 	if(dtim & ((IEEE80211_DTIM_UCAST | IEEE80211_DTIM_MBCAST)& ieee->ps))
- 		return 2;
- 
--	if(!time_after(jiffies, ieee->dev->trans_start + MSECS(timeout)))
-+	if(!time_after(jiffies,
-+		       ieee->dev->trans_start + msecs_to_jiffies(timeout)))
- 		return 0;
- 
--	if(!time_after(jiffies, ieee->last_rx_ps_time + MSECS(timeout)))
-+	if(!time_after(jiffies,
-+		       ieee->last_rx_ps_time + msecs_to_jiffies(timeout)))
- 		return 0;
- 
- 	if((ieee->softmac_features & IEEE_SOFTMAC_SINGLE_QUEUE ) &&
--- 
-1.9.1
+> @@ -491,8 +489,8 @@ static void twa_aen_sync_time(TW_Device_Extension *tw_dev, int request_id)
+>  
+>  	/* Convert system time in UTC to local time seconds since last 
+>             Sunday 12:00AM */
+> -	do_gettimeofday(&utc);
+> -	local_time = (u32)(utc.tv_sec - (sys_tz.tz_minuteswest * 60));
+> +	local_time = (u32)(ktime_get_real_seconds() -
+> +						(sys_tz.tz_minuteswest * 60));
+>  	schedulertime = local_time - (3 * 86400);
+>  	schedulertime = cpu_to_le32(schedulertime % 604800);
 
+I think here you have the math wrong for the case that the 'u32' overflows.
+Either explain why that is harmless (if so), or use do_div() to get the
+modulo from the 64-bit seconds count.
+
+> @@ -832,8 +829,7 @@ static long twa_chrdev_ioctl(struct file *file, unsigned int cmd, unsigned long
+>  		break;
+>  	case TW_IOCTL_GET_LOCK:
+>  		tw_lock = (TW_Lock *)tw_ioctl->data_buffer;
+> -		do_gettimeofday(&current_time);
+> -		current_time_ms = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+> +		current_time_ms = ktime_to_ms(ktime_get());
+>  
+>  		if ((tw_lock->force_flag == 1) || (tw_dev->ioctl_sem_lock == 0) || (current_time_ms >= tw_dev->ioctl_msec)) {
+>  			tw_dev->ioctl_sem_lock = 1;
+> 
+
+The conversion looks good, but it seems there is a preexisting bug that
+happens every time the current_time_ms variable overflows, so the
+current time ends up being less than ioctl_msec. You could try to fix
+this using the time_before() function, when converting all the ms variables
+into 'unsigned long'.
+
+	Arnd
 
