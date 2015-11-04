@@ -1,88 +1,64 @@
-X-GM-THRID: 6250667330513141760
-X-Received: by 10.140.143.200 with SMTP id 191mr5355821qhp.3.1455346897086;
-        Fri, 12 Feb 2016 23:01:37 -0800 (PST)
+X-GM-THRID: 6210989178229882880
+X-Received: by 10.31.159.209 with SMTP id i200mr2919672vke.14.1446667820161;
+        Wed, 04 Nov 2015 12:10:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.166.5 with SMTP id p5ls1032462ioe.23.gmail; Fri, 12 Feb
- 2016 23:01:36 -0800 (PST)
-X-Received: by 10.107.164.208 with SMTP id d77mr6579589ioj.22.1455346896820;
-        Fri, 12 Feb 2016 23:01:36 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id tn7si1911444pac.1.2016.02.12.23.01.36
+Received: by 10.140.32.165 with SMTP id h34ls944093qgh.60.gmail; Wed, 04 Nov
+ 2015 12:10:18 -0800 (PST)
+X-Received: by 10.31.54.198 with SMTP id d189mr2939767vka.6.1446667818547;
+        Wed, 04 Nov 2015 12:10:18 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id sm2si316209pab.0.2015.11.04.12.10.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 23:01:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 04 Nov 2015 12:10:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id w128so4345052pfb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 23:01:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Nk3mFtzWo4tyKBAcoNRLs/G1GcEYXoZ2A25F0soKmeY=;
-        b=ay0TmYz1sqINUCt73TGraRh7SsFY89oy2haaRbGqny5ZwLcSHUz7ycTNHAVRnnDH1Y
-         In7OOUj9+522KL71+zjlSE/pEfbLUnUCmN/2pzmj2tENDtjYIiwVUbaSJmSfj63BDtK5
-         uVdmh7d8bxm9kECw5yDHghNnSvpwL1O/PL5DCNR5dvDNy7+LbjEGmdVQuIJwIpo6jXiO
-         kt8sddKkqvtmflVeIRybJlbi6pOMX37/5HjWr/MKi6xjgrbf9dm1UedREA/2g2gr9X5i
-         t1khyNZE+fhKW6ngc+0lELDnzSUlITBOueyDptPpmMWlnp5RpQxeHsC5vmlqyWxFegc6
-         iZFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Nk3mFtzWo4tyKBAcoNRLs/G1GcEYXoZ2A25F0soKmeY=;
-        b=JuG9b8qlvvau/oDDOVGxhmJ8NIBtwJ7kbebP2WnxpuL4A+lIcvmfDY80JscxEqIRq6
-         OYTlpjr32PnJHdGcom7h2mMER2NikP9ZEanvUFdHs+NDTrH7KYfC7Qk276nkrXMSJ5ic
-         Ft1uepPjKhOT4+Yiobd7OobeGDZprdL3UjByt7mPddeknbtwM7uW+YXykHnKsEeHPo5m
-         nIqL5vkfnUpzdelEuJptSYrma++MoELBU7sqLF4kkZoOi6LziMwwZlkqI4IOuC/0tprP
-         P7QZEnHHVkUjVbmXwLGGUXmzG/sfYxNNwe4kf2xWJhmDVsUC0V+CbsvGHID8Ew4i7M47
-         KXyg==
-X-Gm-Message-State: AG10YOR6hBBe6MQoWLgTAlXwNkCCPyxkesE3tkYhsLbmaK44b08HGBrn7PeriPSE6u07bw==
-X-Received: by 10.98.72.133 with SMTP id q5mr8088514pfi.166.1455346896655;
-        Fri, 12 Feb 2016 23:01:36 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id f12sm23778538pfd.87.2016.02.12.23.01.35
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 23:01:36 -0800 (PST)
-Date: Sat, 13 Feb 2016 12:31:33 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: rtl8192u: ieee80211: ieee80211_softmac: Replace
- driver specific macro msleep_interruptible_rsl
-Message-ID: <20160213070133.GA21052@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [104.135.10.71])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2D82A8A7;
+	Wed,  4 Nov 2015 20:10:18 +0000 (UTC)
+Date: Wed, 4 Nov 2015 12:10:17 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rts5208: Remove wrapper
+ function
+Message-ID: <20151104201017.GA15429@kroah.com>
+References: <20151029085003.GA13195@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20151029085003.GA13195@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace driver specific msleep_interruptible_rsl macro with direct
-call to msleep_interruptible.
+On Thu, Oct 29, 2015 at 02:20:03PM +0530, Amitoj Kaur Chawla wrote:
+> Drop wrapper function that can be replaced by a single line of code.
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/rts5208/rtsx_chip.c | 9 ++-------
+>  drivers/staging/rts5208/rtsx_chip.h | 1 -
+>  drivers/staging/rts5208/rtsx_scsi.c | 2 +-
+>  3 files changed, 3 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
+> index c0ce659..ca9f021 100644
+> --- a/drivers/staging/rts5208/rtsx_chip.c
+> +++ b/drivers/staging/rts5208/rtsx_chip.c
+> @@ -109,11 +109,6 @@ void rtsx_enable_bus_int(struct rtsx_chip *chip)
+>  	dev_dbg(rtsx_dev(chip), "RTSX_BIER: 0x%08x\n", reg);
+>  }
+>  
+> -void rtsx_disable_bus_int(struct rtsx_chip *chip)
+> -{
+> -	rtsx_writel(chip, RTSX_BIER, 0);
+> -}
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This is a "useful" function in that it does a specific thing, and makes
+the code easier to read, so please don't remove it.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index 6d85648..c1995f2 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -469,7 +469,7 @@ void ieee80211_softmac_scan_syncro(struct ieee80211_device *ieee)
- 		if (ieee->state >= IEEE80211_LINKED && ieee->sync_scan_hurryup)
- 			goto out;
- 
--		msleep_interruptible_rsl(IEEE80211_SOFTMAC_SCAN_TIME);
-+		msleep_interruptible(IEEE80211_SOFTMAC_SCAN_TIME);
- 
- 	}
- out:
--- 
-1.9.1
+thanks,
 
+greg k-h
 
