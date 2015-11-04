@@ -1,102 +1,67 @@
-X-GM-THRID: 6211061169360207872
-X-Received: by 10.182.18.66 with SMTP id u2mr1296090obd.1.1446125369502;
-        Thu, 29 Oct 2015 06:29:29 -0700 (PDT)
+X-GM-THRID: 6210788690269044736
+X-Received: by 10.194.176.2 with SMTP id ce2mr583701wjc.0.1446676465532;
+        Wed, 04 Nov 2015 14:34:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.128.9 with SMTP id b9ls279923iod.95.gmail; Thu, 29 Oct
- 2015 06:29:29 -0700 (PDT)
-X-Received: by 10.50.79.201 with SMTP id l9mr6977764igx.13.1446125369033;
-        Thu, 29 Oct 2015 06:29:29 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id sm2si174313pab.0.2015.10.29.06.29.28
+Received: by 10.28.144.6 with SMTP id s6ls1208759wmd.46.canary; Wed, 04 Nov
+ 2015 14:34:25 -0800 (PST)
+X-Received: by 10.28.170.75 with SMTP id t72mr1130633wme.5.1446676464999;
+        Wed, 04 Nov 2015 14:34:24 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
+        by gmr-mx.google.com with ESMTPS id l1si194550wmb.3.2015.11.04.14.34.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Oct 2015 06:29:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        Wed, 04 Nov 2015 14:34:24 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id z6so41286215pas.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 06:29:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=SeXER1z6hS7ZS4II3Zy46UnpgFggbGXxeO2Cpv9xdPE=;
-        b=ivR7tkZyS8D36SpWFPzPLKWQ+tz6pLG3Ucptj8N0en9JOLW0Am8XTcxF4Ogcu7RF13
-         ULEkuA3+yvz9XK8xc2ndBk061crKyh6UrEFwZ5LYi5rHHJGmOwjGmD/9p0fVmlrVdjSW
-         RKm376Xu3+YY8B5FH2uVbn3KqgiE1KFFSlgPG5uTm6F69O4rz9gCcasw9J7CjAoANR1m
-         wDDTjxUiHwjS3+wY7Y1qxZ4RNwZDAeyUla9w5j/y36I40RJJTlDSdTb3+rQJvvUoQynH
-         Ydu7HFVvpPl0/3/0e7xHzUFLYf1EXfmT3bIM4RECMU2sz9NHmcaF4bG+gPHLKIUiLErM
-         veFg==
-X-Received: by 10.66.123.72 with SMTP id ly8mr1966776pab.92.1446125368883;
-        Thu, 29 Oct 2015 06:29:28 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id zi1sm2534592pbc.10.2015.10.29.06.29.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Oct 2015 06:29:28 -0700 (PDT)
-Date: Thu, 29 Oct 2015 18:59:14 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue102) with ESMTPSA (Nemesis) id 0M250t-1aiMbj0JZ5-00u2Wo; Wed, 04 Nov
+ 2015 23:34:24 +0100
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: lustre: rpc: Drop unnecessary wrapper function
-Message-ID: <20151029132914.GA48018@ubuntu>
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] [PATCH] net: hamradio: baycom_ser_fdx: Replace timeval with timespec64
+Date: Wed, 04 Nov 2015 23:34:23 +0100
+Message-ID: <3748491.SKrsKsymZ5@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151028195202.GA1200@amitoj-Inspiron-3542>
+References: <20151028195202.GA1200@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:wAvc66WomAATiy+kHnn/wMNIrILuNaRjZXePVzMtb+Mv2kygbRO
+ r0em/dugNhfX9CQk45ykqRt60dLyyUvqi6qPjpvnN4qYjDe+yCjtO7M365xk/s+8lq4w9fl
+ 1LdiATetmQmtQB25zip1Z+uKGYzRfsWmjYsbPrG60n0fcOI9k0X1SYcv4f/kbGUny/g4iRU
+ SsU2gWEgKHWPdyntXfyHA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:FYcXS4AnYNs=:oZ38hdNkzio3gUGYb8gvSo
+ bxNaXuf6HSyQERf/v1BpFhWY9PLqS5jL3y+LUlk0Qz6/zxVOCnbYAHEuVKy9mL/siy3He0E/o
+ 1MDRWkzbdh/cDDetXyamld6tk8VYOH7UV/tjBT0nWhVFYHsGxZb3jyd2FfkKJ2cApPGC8b7Pr
+ gRiEn3lX9VO4pKN5GFP1qb+TYSP/XtgC/WBgitT3MZIesTIFAQP5tvex9Zhl+A+Q7yfVal1ct
+ 4VTbYXk+nP60m/tI1Fr/lSMJEqhRvtu+/kJU/LJvCMP+JGjf7qIdq5gm9S8oLYZ9SFDKlabQn
+ 0tTk1WyFCzBr28r9c4TZlgww6r/WowWR4FvOFQkn8kxh8PTSVzPI0MM4MlnRjfORyJWzQ+Kl5
+ GKH9qqpvkm0oxOAt6m39oR+G/avxdkMgYdPAVRp9P/Qr/BVds2utZcQf2Xe8r+ufUvOJCDf6m
+ frpiYjVLSxZlLTs84yt0G85oL7uOvDJTwE0DFIOcvlGeyP8a7L0xcy0PXgVZUGoIxGdJg6rIE
+ CV+jOjUlCfoBh5z1xQYAr5dvrAfPzJgZJmZtnnlTF89p/KFDfKuZpl57mNp+N/+Cl6fnEivN1
+ 0RmbaSjLUwfKbzE7gTZjBa9gXXZ2amGPSsp7IeAauBgXLM/HK2rcS+EPvy+b0Meis2kTWScvb
+ zk+yIcSMs9NQUgH2Y9BeHY5D9CkNeO1cCP20es/Wvkk6KYbqRFY0KK/Q/tumMn+67MDaB6wgI
+ C9lPUW9PCk9pZQsa
 
-Remove the function srpc_post_active_rqtbuf() and replace its only call
-with the function srpc_post_active_rdma() by adding appropriate parameters.
+On Thursday 29 October 2015 01:22:02 Amitoj Kaur Chawla wrote:
+> 32 bit systems using 'struct timeval' will break in the year 2038, so
+> we replace the code appropriately.
+> 
+> This patch replaces struct timeval with struct timespec64.
+> 
+> The patch also changes the code to use ktime_get_real_ts64() which returns a 'struct timespec64' instead of do_gettimeofday() which returns a 'struct timeval'
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
-Changes in v2:
-	-Remove an unnecessary typecast and fix commit message
-	accordingly
+The patch looks correct to me, but I'd suggest using monotonic time to
+make the driver more robust against 'settimeofday' calls. It would
+also be helpful to clarify in the description that the driver has
+no y2038 problem as it only uses the microsecond portion of
+timeval, not the seconds.
 
- drivers/staging/lustre/lnet/selftest/rpc.c | 17 +++++------------
- 1 file changed, 5 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/staging/lustre/lnet/selftest/rpc.c b/drivers/staging/lustre/lnet/selftest/rpc.c
-index 162f9d3..1efc754 100644
---- a/drivers/staging/lustre/lnet/selftest/rpc.c
-+++ b/drivers/staging/lustre/lnet/selftest/rpc.c
-@@ -445,15 +445,6 @@ srpc_post_active_rdma(int portal, __u64 matchbits, void *buf, int len,
- }
- 
- static int
--srpc_post_active_rqtbuf(lnet_process_id_t peer, int service, void *buf,
--			int len, lnet_handle_md_t *mdh, srpc_event_t *ev)
--{
--	return srpc_post_active_rdma(srpc_serv_portal(service), service,
--				     buf, len, LNET_MD_OP_PUT, peer,
--				     LNET_NID_ANY, mdh, ev);
--}
--
--static int
- srpc_post_passive_rqtbuf(int service, int local, void *buf, int len,
- 			 lnet_handle_md_t *mdh, srpc_event_t *ev)
- {
-@@ -798,9 +789,11 @@ srpc_send_request(srpc_client_rpc_t *rpc)
- 	ev->ev_data  = rpc;
- 	ev->ev_type  = SRPC_REQUEST_SENT;
- 
--	rc = srpc_post_active_rqtbuf(rpc->crpc_dest, rpc->crpc_service,
--				     &rpc->crpc_reqstmsg, sizeof(srpc_msg_t),
--				     &rpc->crpc_reqstmdh, ev);
-+	 rc = srpc_post_active_rdma(srpc_serv_portal(rpc->crpc_service),
-+				    rpc->crpc_service, &rpc->crpc_reqstmsg,
-+				    sizeof(srpc_msg_t), LNET_MD_OP_PUT,
-+				    rpc->crpc_dest, LNET_NID_ANY,
-+				    &rpc->crpc_reqstmdh, ev);
- 	if (rc != 0) {
- 		LASSERT(rc == -ENOMEM);
- 		ev->ev_fired = 1;  /* no more event expected */
--- 
-2.1.0
-
+	Arnd
 
