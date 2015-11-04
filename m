@@ -1,85 +1,97 @@
-X-GM-THRID: 6252990979298557952
-X-Received: by 10.28.47.140 with SMTP id v134mr1157011wmv.3.1455887914195;
-        Fri, 19 Feb 2016 05:18:34 -0800 (PST)
+X-GM-THRID: 6212627761290280960
+X-Received: by 10.112.123.17 with SMTP id lw17mr726084lbb.6.1446664535933;
+        Wed, 04 Nov 2015 11:15:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.167.131 with SMTP id q125ls41850lfe.69.gmail; Fri, 19 Feb
- 2016 05:18:33 -0800 (PST)
-X-Received: by 10.112.29.69 with SMTP id i5mr1757330lbh.15.1455887913585;
-        Fri, 19 Feb 2016 05:18:33 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
-        by gmr-mx.google.com with ESMTPS id e130si354959wme.2.2016.02.19.05.18.33
+Received: by 10.25.40.213 with SMTP id o204ls149075lfo.38.gmail; Wed, 04 Nov
+ 2015 11:15:35 -0800 (PST)
+X-Received: by 10.112.202.168 with SMTP id kj8mr713008lbc.23.1446664535183;
+        Wed, 04 Nov 2015 11:15:35 -0800 (PST)
+Return-Path: <shivanib134@gmail.com>
+Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
+        by gmr-mx.google.com with ESMTPS id 13si916318wml.2.2015.11.04.11.15.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 05:18:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Nov 2015 11:15:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shivanib134@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22b.google.com with SMTP id g62so67537503wme.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 05:18:33 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wm0-x22e.google.com with SMTP id l128so120968wml.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Nov 2015 11:15:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=b0XYLu6oKCp1TpVepcDna4w1bdVDOFYpHscuTfq/WaE=;
-        b=GcTOpT/6KjAIrnjZ5eCyoDeYWrh68f5lQjSsE4Jso8SiGQwpRAgmSXpJZupjFdIg3u
-         IwBHD2Ek6UAeuTlOCVvqdmCGi17d2x63y1yrbvWajYgl6HjqESGYKe/S4grnhQgJBg32
-         SnjFXauI1lRL4K+sCjfY4Ax6hwKoY909kSqk1RATl8Kd2JKLRKacRhFu0ZdYdu15lY1n
-         LdbUBs8yKh1LzsSynDliGo6cw+8d/EqqIn8H0JpGy8Gleegi1B0ZAUGa6PJPGROOIlfq
-         WycLY/6KUTH6BB78VUN8rQ7wzsnQNVS2eRASZlMPwOYw4JjrD+a/gEBwSttoVyNTzAOg
-         WmoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=b0XYLu6oKCp1TpVepcDna4w1bdVDOFYpHscuTfq/WaE=;
-        b=Ma1OKqEwjdjlB9uxMIuH9nZ+U/Oe9NFi8t+EvaWqIuN1nQK4ziQeYGbTGfg/v444dB
-         ofhWXR2wKXPg+3bY1bX7Ln/MV8oRrn5+ESQnC+Y2AX6AGZbpx8Mv0TYfM5nlMeMiYbJN
-         d64ZXBPblfhD0Dt8etw1yeZRbwr2WQP5EShcDSfE7c0y1L7W4Pe9802LKZJFgu6I1YZO
-         Wu1z2HpByh8omd/hmZhvVW1RXCULfd7D7nhNOdudC0Jw+6GhiVyccHH8R3RWRQ/FW7S0
-         Hjd59TvNW/ySK38fQ1jZX+SyLk7mF6fU+yFW0ePmTtYlqDJZCIWJBhR80Lb9F3/vTCWl
-         TbaQ==
-X-Gm-Message-State: AG10YOTwm9gvHkVdqKMByr4mR63keJysarzH7p2sGKbwN5lsw9YpM9RL638yHN4DTEJAig==
-X-Received: by 10.28.145.9 with SMTP id t9mr9633416wmd.54.1455887913343;
-        Fri, 19 Feb 2016 05:18:33 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([95.14.29.107])
-        by smtp.gmail.com with ESMTPSA id i2sm11210583wje.22.2016.02.19.05.18.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 05:18:32 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: wilc1000: Remove unnecessary else after return
-Date: Fri, 19 Feb 2016 15:18:25 +0200
-Message-Id: <1455887905-7002-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=nabWLgw7/8TN5rdTWXBSedmmEZ9Kq6d6pgCWa9Rb3HY=;
+        b=aojAv0ICRSDqVDf3aZH8IVazNCt9B7P5VenGoi0O8N+FewU2KXJ+f9IGKIeeVbjgWw
+         2d0FQQV342mTBj7uRpvQm0s7JJ/x6mnF3oG1wrKpqCknsB/Lk62ZazIamvPEWzG+Qvls
+         E2SnTf3st4+u9aVI8qG5tJlt9iBBa5qoqrXpuQ8pB3kkAF8oKXEWK0WfhyGyhYSppFGG
+         PdPR4epzHArczzfykawC/mFSvqfdbO9IWfl6JfZPeZ0DuF+yuGXaBxEw0JJtVyunRQgi
+         MK9QUCSn6rPDdJdFZcbCWu6bIJih2sQwyPJkq5J13/F8pGoI7tHgJM/HSU327Um9RyNP
+         w4yQ==
+MIME-Version: 1.0
+X-Received: by 10.28.132.13 with SMTP id g13mr26796621wmd.35.1446664535059;
+ Wed, 04 Nov 2015 11:15:35 -0800 (PST)
+Received: by 10.27.186.23 with HTTP; Wed, 4 Nov 2015 11:15:35 -0800 (PST)
+In-Reply-To: <20151104190225.GA26290@kroah.com>
+References: <cover.1446489978.git.shivanib134@gmail.com>
+	<3beed3bcb9ca96a4d504079d6aeaae4f28b43d52.1446489978.git.shivanib134@gmail.com>
+	<20151104190225.GA26290@kroah.com>
+Date: Thu, 5 Nov 2015 00:45:35 +0530
+Message-ID: <CAKHNQQGsqSY-bYHB+3Rh6KvvGXT2WiUwys1stVPGCbmyM2BVmw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/3] Staging: lustre: module: Replace
+ function calls
+From: Shivani Bhardwaj <shivanib134@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-This patch fixes checkpatch.pl warning in files of wilc1000
-WARNING: else is not generally useful after a break or return
+On Thu, Nov 5, 2015 at 12:32 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Tue, Nov 03, 2015 at 12:19:36AM +0530, Shivani Bhardwaj wrote:
+>> Replace the calls of function cfs_trace_free_string_buffer() with
+>> kfree() as the former function is not required.
+>>
+>> Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+>> ---
+>>  drivers/staging/lustre/lustre/libcfs/module.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/lustre/lustre/libcfs/module.c b/drivers/staging/lustre/lustre/libcfs/module.c
+>> index 50e8fd2..516a9e7 100644
+>> --- a/drivers/staging/lustre/lustre/libcfs/module.c
+>> +++ b/drivers/staging/lustre/lustre/libcfs/module.c
+>> @@ -392,7 +392,7 @@ static int __proc_dobitmasks(void *data, int write,
+>>       } else {
+>>               rc = cfs_trace_copyin_string(tmpstr, tmpstrlen, buffer, nob);
+>>               if (rc < 0) {
+>> -                     cfs_trace_free_string_buffer(tmpstr, tmpstrlen);
+>> +                     kfree(tmpstr);
+>>                       return rc;
+>>               }
+>>
+>> @@ -402,7 +402,7 @@ static int __proc_dobitmasks(void *data, int write,
+>>                       *mask |= D_EMERG;
+>>       }
+>>
+>> -     cfs_trace_free_string_buffer(tmpstr, tmpstrlen);
+>> +     kfree(tmpstr);
+>>       return rc;
+>>  }
+>>
+>
+> Don't you need this to be earlier in the series?  You just deleted the
+> function from the kernel in the first patch :(
+>
+> Never break the build for any patch in a series.  Please reorder and
+> resend.
+>
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/wilc1000/coreconfigurator.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I'm sorry for the mistake. I'm resending.
+Thank you
 
-diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
-index 544c12d..b0cefe1 100644
---- a/drivers/staging/wilc1000/coreconfigurator.c
-+++ b/drivers/staging/wilc1000/coreconfigurator.c
-@@ -939,9 +939,9 @@ s32 SendConfigPkt(u8 u8Mode, tstrWID *pstrWIDs,
- 	    gpstrWlanOps->wlan_cfg_get == NULL)	{
- 		PRINT_D(CORECONFIG_DBG, "Set and Get is still not initialized\n");
- 		return 1;
--	} else {
--		PRINT_D(CORECONFIG_DBG, "SET is initialized\n");
- 	}
-+		PRINT_D(CORECONFIG_DBG, "SET is initialized\n");
-+
- 	if (u8Mode == GET_CFG) {
- 		for (counter = 0; counter < u32WIDsCount; counter++) {
- 			PRINT_INFO(CORECONFIG_DBG, "Sending CFG packet [%d][%d]\n", !counter,
--- 
-1.9.1
-
+> thanks,
+>
+> greg k-h
 
