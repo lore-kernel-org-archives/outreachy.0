@@ -1,103 +1,83 @@
 X-GM-THRID: 6210359704363728896
-X-Received: by 10.194.176.2 with SMTP id ce2mr174825wjc.0.1446648254645;
-        Wed, 04 Nov 2015 06:44:14 -0800 (PST)
+X-Received: by 10.194.216.3 with SMTP id om3mr394344wjc.1.1446645424366;
+        Wed, 04 Nov 2015 05:57:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.174.196 with SMTP id x187ls346016wme.3.gmail; Wed, 04 Nov
- 2015 06:44:14 -0800 (PST)
-X-Received: by 10.28.55.135 with SMTP id e129mr720370wma.7.1446648254015;
-        Wed, 04 Nov 2015 06:44:14 -0800 (PST)
+Received: by 10.25.77.74 with SMTP id a71ls143860lfb.70.gmail; Wed, 04 Nov
+ 2015 05:57:03 -0800 (PST)
+X-Received: by 10.112.162.169 with SMTP id yb9mr395187lbb.15.1446645423511;
+        Wed, 04 Nov 2015 05:57:03 -0800 (PST)
 Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by gmr-mx.google.com with ESMTPS id t2si123807wme.1.2015.11.04.06.44.13
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
+        by gmr-mx.google.com with ESMTPS id s134si832323wmb.3.2015.11.04.05.57.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Nov 2015 06:44:13 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
+        Wed, 04 Nov 2015 05:57:03 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
 Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue004) with ESMTPSA (Nemesis) id 0LkkrY-1aUQVU3zi0-00aW7e; Wed, 04 Nov
- 2015 15:44:13 +0100
+ (mreue103) with ESMTPSA (Nemesis) id 0LkAig-1aQY9X3mBu-00c5tJ; Wed, 04 Nov
+ 2015 14:57:01 +0100
 From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija =?utf-8?B?U3Rhbm9qZXZpxIc=?= <ksenija.stanojevic@gmail.com>, y2038@lists.linaro.org
-Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH 1/5] fs: nfsd: Replace time_t with u32 in boot_time
-Date: Wed, 04 Nov 2015 15:44:12 +0100
-Message-ID: <8546847.yByvRe1hVG@wuerfel>
+To: y2038@lists.linaro.org
+Cc: Ksenija =?utf-8?B?U3Rhbm9qZXZpxIc=?= <ksenija.stanojevic@gmail.com>, outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Y2038] [PATCH 3/5] fs: nfsd: Replace time_t with u32 in nfsd4_grace
+Date: Wed, 04 Nov 2015 14:57:01 +0100
+Message-ID: <6242321.fS3rCd1QVI@wuerfel>
 User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <CAL7P5jLv9Ba0t+qKRe_0Nx3SrQZQbBgmvxYuK6t2z_7d=4HiAw@mail.gmail.com>
-References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <16034171.mcXgMm0kJL@wuerfel> <CAL7P5jLv9Ba0t+qKRe_0Nx3SrQZQbBgmvxYuK6t2z_7d=4HiAw@mail.gmail.com>
+In-Reply-To: <CAL7P5jJUV_0zRNQwBviCZMPDNtZuHONGL3WU+VX6fvk9MsYifA@mail.gmail.com>
+References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <5919340.GhJnFQNPk1@wuerfel> <CAL7P5jJUV_0zRNQwBviCZMPDNtZuHONGL3WU+VX6fvk9MsYifA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
-X-Provags-ID: V03:K0:8skhiS95Wr96gzdJvoHm3HosZohpIGEh2nh+AtNSxJQsLNgnZBi
- yF8XuqeHQvxYqyko6iPNOqKzzp4lGf2Utv86NyCzodCb76eWwkNdvRq3E1dKIde+axXgTHY
- hyEGqmYeLWnarmhbio6SqG3dT2m+gTJ66R6gJwj2o5qBZxdYFbhdmf0FY8i7iA9letcSQw8
- s5APXRbvOgly8tMRfVyYw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:IVv9H+0ihfg=:LkS2tdkXd2qxF0hsi4C42B
- lQI3fT/qlpxHbLYUO0Rw9HOg8wlRVF6uEzhIQUPqvwW8hoGDWN+yTNhjJ6BA1uo8gT5HunqcD
- flRWCNrIfr0abtmanaKGYJma1zmlsvREOfUdkc6Hkrm2eDCzHmWg6rhNPHH/q7d9X14+Jsq91
- 6Y8XYnYmUWufWCXt/uwSG5xzO5vNI7JLXAzFkaS7utyoTm/gGNr+YK1BjnNQxd+rUrpW9CP7C
- udguh7rbLIvdOMNTAYGzCZJ9boHKp75QxlFMNAGaDA4D5QfceE2HGZzwMV/FTRLb4rA+mL8JY
- kmKMp1yWSKPs/zdjGx9UU/7HhC1bIYJrBSlv7GsBMaq/UJPgyEKHRm6oZfNl8Sh0guW843y7l
- RTiFjgOWmJv1nINpqW2HN9YrDZr8mqpQUykQn2qXVKl3OUQ1wZXBsTyBGVJNqvBRDRmq/m/mU
- z5FpHMy7xOG04L//aIn83H3bodeHv2M8JrSwriNYa3wVBEIWn+5shnbnJcZNNyRL9dOgt3KPj
- R5JO0K+gSOFNavzi7yxj2dn+KVQ/pnorpwTIiwA3Ny6X9pwzHwPmoZvAvDrK6iEOXJiyQXh3q
- ALaN+ofuJCB8fS7KI1+w0oUO7nmvlfZpSxUDTHiUkgp1yfHTnDv/ERbCI68yODxWn9gv6Nu8e
- 7BbXbe2gTymy9E0e0uwyKigZUc9pTVrCM9RCWIw0D3u2ubGPoBssUJjUFBYvAfa3wYlkkq6EH
- QtzbcVLM+qNHGXtA
+X-Provags-ID: V03:K0:ElKKXdBy4K3tz76lS/zzBKOCT22GhuAYdFCzrhaLzHq/KcwxcMm
+ J7V1Y/9HCD4K0JOz2U52m8KrfTX5khpuf2hwa2Uvnjewz1m8Do1J2jL14Xw9iA3HHkG6QHx
+ TVruQv1dRAUoGe5AVh/YjiW8Wc/qX5jn9fhZLlILu48HunVewhZ30Cz2O2tKVJNVDH7gJtv
+ rSsEFAVJPHxSAK9t8Ho5w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:vbfizhUDzxc=:mebmZH/W7GFjHzWGOh77EM
+ 0//DhqanCangkMYoBbxfxgZ+t+1Z+q+qjaRg/pTe9AU9neJRAvQDDW2gpOX1QDxVtDUIpUEzt
+ g1oSk1ok1ixSzXq7cUkAj0iYX+Ynghh903JdEXlUqeaJroIlHLqfLGoSwWL6/bU5Vv8MZGuW1
+ 91SsRPJgNWKYJcv69oOD5oTVqI36yoSBjSTM+OedhjMX/ECVfjfbNBxgI1h4hI+mhtamkliQ5
+ mqM1oAaKkfVvI4yO0VtElLZbZEKooTz/LXNuYg6X+5uSJ7Qk2FZBTUjwla7mJcSHz0UF3Me/c
+ qMFdXnRVMAKsc8eCx3De6BtO2egn/VkzpFnhwGeOLoLzHD6bUon08vGn6GmSF/dd1UcPfAfxu
+ Jfiozw3voV6Xy2tOgd2tD9+7A2EtMgNZs+MxKUqQROfe46zsuCM48sgQfjoZhDfGo9Se7p4U0
+ D6HdAbyxDZXE3U69H2fr+HMEkbFAZ5qCGc+/QHTvsUdReRT+6w3rOEFBYPRBW8XCcbch9lqbW
+ F7QW8PESk7WWD2Z4SCFaEvudHRP/2hs4MiOlciC+6aBOs1OTlLB/B9mx0Ln7rxRRpWN8b9obZ
+ Sul9lF7ydWASegkdYBr6KiNzbtHaIsB0wj+ahdVQdiYTSlTtqHF0EcJv6et/E3yNhGG0XQ7yh
+ /TG4sCy/mKS+ropCFkWzhhsC+6Ml4q0wJRcfeYZ0QBK5WsnjR3YetGsk8yaUeqPhwTIHaSMMj
+ cVR6uouKHGvLhxAZ
 
-On Tuesday 03 November 2015 18:17:48 Ksenija Stanojevi=C4=87 wrote:
-> On Tue, Nov 3, 2015 at 4:04 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> > On Tuesday 27 October 2015 09:08:35 Ksenija Stanojevic wrote:
-> >> Replace time_t type and get_seconds function which are not y2038 s=
-afe on
-> >> 32-bit systems. Function ktime_get_seconds use monotonic instead o=
-f real
-> >> time and therefore will not cause overflow.
-> >>
-> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+On Tuesday 03 November 2015 18:27:53 Ksenija Stanojevi=C4=87 wrote:
 > >
-> > I don't think using monotonic time is safe here:
+> > You change the format string to print the time as hexadecimal. Is t=
+hat
+> > intentional? If there is a reason for doing it, explain it in the c=
+hangelog,
+> > otherwise leave it as "%d".
+> >
+> > The cast of SIMPLE_TRANSACTION_LIMIT to u32 looks misplaced as well=
+.
 >=20
-> I was under the impression that comment:
+> I got following warnings with original code and I was trying to fix t=
+hem:
+> include/linux/fs.h:2908:61: warning: format =E2=80=98%ld=E2=80=99 exp=
+ects argument of
+> type =E2=80=98long int=E2=80=99, but argument 4 has type =E2=80=98u32=
+=E2=80=99 [-Wformat=3D]
+>  #define SIMPLE_TRANSACTION_LIMIT (PAGE_SIZE - sizeof(struct
+> simple_transaction_argresp))
+>                                                              ^
+> fs/nfsd/nfsctl.c:963:24: note: in expansion of macro =E2=80=98SIMPLE_=
+TRANSACTION_LIMIT=E2=80=99
+>   return scnprintf(buf, SIMPLE_TRANSACTION_LIMIT, "%ld\n", *time);
 >=20
-> * We're assuming the clid was not given out from a boot
-> * precisely 2^32 (about 136 years) before this one.  That seems
-> * a safe assumption:
+> but I see now that changing %ld to %d works as well.
 >=20
-> is implying that monotonic time is used (should be used).
 
-You almost convinced me, and I just spent an hour trying to
-understand what is actually going on. I think I've got it now,
-and this is what happens:
-
-The NFS client sends a SETCLIENTID request to the server, which
-generates the clientid using boot_time and a unique (for this instance)=
-
-number, together these two make up a 'clientid_t'. This is sent
-back to the client in the response, and it gets encoded as part
-of nfsd4_encode_setclientid() in the line
-
-        p =3D xdr_encode_opaque_fixed(p, &scd->se_clientid, 8);
-
-The reason this does not show up when you grep for cl_boot is that
-xdr_encode_opaque_fixed just takes the number as set of eight bytes
-that are not meaningful to the client. The client then sends back
-the number to the server on other requests, e.g. in nfsd4_sessionid,
-and the server checks cl_boot to ensure that is the same number
-as boot_time, and this way it can tell whether the server has been
-rebooted while keeping the client session running.
-
-If you use monotonic times for generating boot_time, that means
-it could be the same after a reboot because the time to get
-from poweron to starting the NFS server is relatively deterministic.
-This however defeats the purpose of comparing the boot times.
-
-So you have to use real time here, but it is safe to truncate the
-time to the low 32 bits because the number is never used as the
-actual time, just as a token that is required to be unique
-for each time the server gets booted.
+Ok. I have no idea why gcc decided to mention "in expansion of macro
+=E2=80=98SIMPLE_TRANSACTION_LIMIT=E2=80=99" here, which is obviously co=
+nfusing as it
+has nothing to do with the actual change.
 
 =09Arnd
 
