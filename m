@@ -1,113 +1,109 @@
-X-GM-THRID: 6258991526241632256
-X-Received: by 10.140.159.7 with SMTP id f7mr13579457qhf.3.1457285025611;
-        Sun, 06 Mar 2016 09:23:45 -0800 (PST)
+X-GM-THRID: 6212524392435417088
+X-Received: by 10.66.121.225 with SMTP id ln1mr3076320pab.9.1446668266893;
+        Wed, 04 Nov 2015 12:17:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.38.69 with SMTP id m66ls763442iom.89.gmail; Sun, 06 Mar
- 2016 09:23:45 -0800 (PST)
-X-Received: by 10.107.135.209 with SMTP id r78mr13695771ioi.19.1457285025270;
-        Sun, 06 Mar 2016 09:23:45 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 12si2426859pfb.1.2016.03.06.09.23.45
+Received: by 10.182.29.37 with SMTP id g5ls443828obh.14.gmail; Wed, 04 Nov
+ 2015 12:17:46 -0800 (PST)
+X-Received: by 10.182.236.4 with SMTP id uq4mr3148388obc.3.1446668266548;
+        Wed, 04 Nov 2015 12:17:46 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x22f.google.com (mail-qg0-x22f.google.com. [2607:f8b0:400d:c04::22f])
+        by gmr-mx.google.com with ESMTPS id p4si164846ywc.6.2015.11.04.12.17.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 09:23:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Nov 2015 12:17:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) client-ip=2607:f8b0:400d:c04::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id x188so4399369pfb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 09:23:45 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qg0-x22f.google.com with SMTP id o38so50611290qge.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Nov 2015 12:17:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=VMZxZ8rQLEkTI+TYf2qThwlCUT84RecyRZVgcByk04E=;
-        b=HHq+XsU2BwOzhR7043PSBzfORwa0SbHulGV7M0drbwHfteUKO09+4MuGECBwEfLKrT
-         mcaXKtbs6pamNybDYs3aIFUsJDmpfeIK2s7WkL/NBfVz2/D4hdBnI5PXCPy7hYSnabIn
-         i0rwqK5V6LaJTOwAaquPTysbl8orgR0z5YYLcxMVc75kf4l8vlJf+Ne+cs/jiBwwjta2
-         RHW/c/qeVhwSUMJfZ5QWTzSlvr3d/c0jhMEz0d+nBcFx+UftE7K3+LhjA925bcc4gwmc
-         TLFhrFya5Ddi1pDQsBHP1/ix2rfwpg/lIQq50Yjwk6+jLzN4H8iGJCNrq3xeMg4PZOkN
-         aeQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=VMZxZ8rQLEkTI+TYf2qThwlCUT84RecyRZVgcByk04E=;
-        b=f0AjqWtGMYQvu2RBlPRGfI7hXu0XZ3Gk9jbyR59WUPPY84TPfyPN8yBOeySycrtmnV
-         65QzXvKyiMY3Kohgvzd+AjKfeFpdyMr3I6pob4zue30NYNiJkB1fXzFbrG+q1Pv4gsHY
-         dGYll06L31g74Q1xYAq3arPjFfgeD1JHsfsXk863J7noZwSBeQGf12qn6KsL7haysu7I
-         6bLQVfasTWjfvy4eqgV0I4dvDroY0Ka2Dnh+02J5JvoW25l+2ktrrmhEgYEtLwNs8nAx
-         eG/wejj3BvINjdTJKvQFksnTvNw35J/jwc0yaly9c4sRkzZKzeR2NqDLoGbhL2M0Ce9c
-         MX5A==
-X-Gm-Message-State: AD7BkJJiCmADloU4SpmLMsDHoApbEHeeGClWk5Pzg/XkjwZ42MtKHrPA1JFTpBqbXPmTDg==
-X-Received: by 10.98.44.73 with SMTP id s70mr27763348pfs.2.1457285025126;
-        Sun, 06 Mar 2016 09:23:45 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.154])
-        by smtp.gmail.com with ESMTPSA id vy6sm18819452pac.38.2016.03.06.09.23.43
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 09:23:44 -0800 (PST)
-Date: Sun, 6 Mar 2016 14:53:56 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: vt6655: Remove unnecessary blank lines.
-Message-ID: <20160306092356.GA2606@sandhya>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=VQ0c7VwMDtE+2/cKt4canl0buBygAuCEo+9A03Aw6ho=;
+        b=BtxXTYgikQO8aZ6+ydDSHibPR1l+x45o5hzIdq4PlNc9m0jBhzv8o667Bqqz8qR6Pd
+         WGfOD2V52u+cFX2C05u2PHCrCWrgmkDEt7D3iwHI70tRIH29BGulCrMMstd8emaQuaNq
+         CnCjc8Dme0xqTbQWlYiqjiuwTc7sYk2PoJbJlqWNr9n102PxdfSVnYH0bvuoNoGiY2j2
+         fL+nBNkr3WdWycUeQyVdgPJ9pWvA1gKDs6TwvUER4/Sz8a5fb5xzfZXzPk4aMogYb0Sm
+         6MtlHMl2rrlizVagzvb/LKvJJ7HbTQ17Sq4qPEdvBAkRiJaAOuiJ5WlkuOO0U2cdf3zE
+         8OZA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+X-Received: by 10.140.91.135 with SMTP id z7mr3592480qgd.91.1446668266342;
+ Wed, 04 Nov 2015 12:17:46 -0800 (PST)
+Received: by 10.140.98.117 with HTTP; Wed, 4 Nov 2015 12:17:46 -0800 (PST)
+In-Reply-To: <20151104200845.GA8713@kroah.com>
+References: <20151102120728.GA3650@amitoj-Inspiron-3542>
+	<20151104200845.GA8713@kroah.com>
+Date: Thu, 5 Nov 2015 01:47:46 +0530
+Message-ID: <CA+5yK5GMRmZvf2uitpL3e2c_PiXE10MvQij14qzY87XmW8qDbg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: rdma: amso1100: Drop
+ wrapper function
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove unnecessary blank lines.this problem is captured by checkpatch.pl script.
+On Thu, Nov 5, 2015 at 1:38 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Mon, Nov 02, 2015 at 05:37:28PM +0530, Amitoj Kaur Chawla wrote:
+> > This patch removes the c2_print_macaddr() wrapper function which calls
+> > the pr_debug standard kernel function only.
+> >
+> > c2_print_macaddr() has been replaced by directly calling pr_debug().
+> >
+> > Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> > ---
+> > Changes in v2:
+> >         -Corrected indentation
+> >         -Removed comment added in previous version
+> > Changes in v3:
+> >         -Corrected indentation
+> >
+> >  drivers/staging/rdma/amso1100/c2.c | 11 ++++-------
+> >  1 file changed, 4 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/staging/rdma/amso1100/c2.c b/drivers/staging/rdma/amso1100/c2.c
+> > index 7f1e794..6688349 100644
+> > --- a/drivers/staging/rdma/amso1100/c2.c
+> > +++ b/drivers/staging/rdma/amso1100/c2.c
+> > @@ -87,11 +87,6 @@ static struct pci_device_id c2_pci_table[] = {
+> >
+> >  MODULE_DEVICE_TABLE(pci, c2_pci_table);
+> >
+> > -static void c2_print_macaddr(struct net_device *netdev)
+> > -{
+> > -     pr_debug("%s: MAC %pM, IRQ %u\n", netdev->name, netdev->dev_addr, netdev->irq);
+> > -}
+> > -
+> >  static void c2_set_rxbufsize(struct c2_port *c2_port)
+> >  {
+> >       struct net_device *netdev = c2_port->netdev;
+> > @@ -908,7 +903,8 @@ static struct net_device *c2_devinit(struct c2_dev *c2dev,
+> >       /* Validate the MAC address */
+> >       if (!is_valid_ether_addr(netdev->dev_addr)) {
+> >               pr_debug("Invalid MAC Address\n");
+> > -             c2_print_macaddr(netdev);
+> > +             pr_debug("%s: MAC %pM, IRQ %u\n", netdev->name,
+> > +                             netdev->dev_addr, netdev->irq);
+> >               free_netdev(netdev);
+> >               return NULL;
+> >       }
+> > @@ -1142,7 +1138,8 @@ static int c2_probe(struct pci_dev *pcidev, const struct pci_device_id *ent)
+> >       }
+> >
+> >       /* Print out the MAC address */
+> > -     c2_print_macaddr(netdev);
+> > +     pr_debug("%s: MAC %pM, IRQ %u\n", netdev->name, netdev->dev_addr,
+> > +                     netdev->irq);
+>
+> You added trailing whitespace, which is not allowed :(
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
-Changes in v2:
-* No change.
-*Compile this patch to check nothing is broken.
+I'll fix this up and resend on the getmaintainer.pl provided ids.
 
- drivers/staging/vt6655/card.c | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index 6c1b973..3d33812 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -443,7 +443,6 @@ bool CARDbRadioPowerOff(struct vnt_private *priv)
- 		MACvWordRegBitsOff(priv->PortOffset, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE2);
- 		MACvWordRegBitsOff(priv->PortOffset, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
- 		break;
--
- 	}
- 
- 	MACvRegBitsOff(priv->PortOffset, MAC_REG_HOSTCR, HOSTCR_RXON);
-@@ -499,7 +498,6 @@ bool CARDbRadioPowerOn(struct vnt_private *priv)
- 		MACvWordRegBitsOn(priv->PortOffset, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE2 |
- 									    SOFTPWRCTL_SWPE3));
- 		break;
--
- 	}
- 
- 	priv->bRadioOff = false;
-@@ -812,7 +810,6 @@ bool CARDbIsOFDMinBasicRate(struct vnt_private *priv)
- 
- unsigned char CARDbyGetPktType(struct vnt_private *priv)
- {
--
- 	if (priv->byBBType == BB_TYPE_11A || priv->byBBType == BB_TYPE_11B)
- 		return (unsigned char)priv->byBBType;
- 	else if (CARDbIsOFDMinBasicRate((void *)priv))
-@@ -861,7 +858,6 @@ void CARDvSetLoopbackMode(struct vnt_private *priv, unsigned short wLoopbackMode
-  */
- bool CARDbSoftwareReset(struct vnt_private *priv)
- {
--
- 	/* reset MAC */
- 	if (!MACbSafeSoftwareReset(priv))
- 		return false;
 -- 
-1.8.3.4
-
+Amitoj
 
