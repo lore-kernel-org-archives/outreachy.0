@@ -1,81 +1,72 @@
-X-GM-THRID: 789825191936
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,304d4453e67f1b9,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.207.230 with SMTP id n66mr5421509yho.30.1424370903970;
-        Thu, 19 Feb 2015 10:35:03 -0800 (PST)
+X-GM-THRID: 6211822819926343680
+X-Received: by 10.50.17.106 with SMTP id n10mr22549859igd.6.1446668894439;
+        Wed, 04 Nov 2015 12:28:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.136.149 with SMTP id s21ls434893ioi.58.gmail; Thu, 19 Feb
- 2015 10:35:03 -0800 (PST)
-X-Received: by 10.42.240.11 with SMTP id ky11mr5978404icb.31.1424370903811;
-        Thu, 19 Feb 2015 10:35:03 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pa0-f47.google.com (mail-pa0-f47.google.com. [209.85.220.47])
-        by gmr-mx.google.com with ESMTPS id pc4si3004048pac.0.2015.02.19.10.35.03
+Received: by 10.50.62.20 with SMTP id u20ls539591igr.25.gmail; Wed, 04 Nov
+ 2015 12:28:14 -0800 (PST)
+X-Received: by 10.68.117.231 with SMTP id kh7mr2932880pbb.9.1446668894125;
+        Wed, 04 Nov 2015 12:28:14 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id sm2si324138pab.0.2015.11.04.12.28.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 10:35:03 -0800 (PST)
-Received-SPF: none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) client-ip=209.85.220.47;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Nov 2015 12:28:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=none (google.com: kdunne@mail.ccsf.edu does not designate permitted sender hosts) smtp.mail=kdunne@mail.ccsf.edu
-Received: by padfb1 with SMTP id fb1so1601491pad.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 10:35:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=LLYr3hSsGjuV4ksk1eoy+I2FPyRx8lnGuH5c7gyWkEE=;
-        b=jGp05AG/SVGF0Vld/jsxGjUwJBFpWK0PtiiOwgBM4XWPxoXCpNL1uaPw54pd9OIU2w
-         ATrlzNN0ygDQi86AYdbXbu79oKoYZ66Y94TllIEz9vztqGLmSP9a6pzEO4G9BaYKipx4
-         SQhGj8wkLkb875OATRlP5lMpYE8yZd9+OwYwCpfmkDpB3Xvla5tQCP3nc5FA2DRu2Zdg
-         NoVCc+Y7rqdziItFkExdcci0i0//F/g8LsXiwrgE4FtlgljZ6NbPIfX5jMPk7eD0ti1z
-         Kpp0iK8N+0IOurJMNBZGtuUvBbvtWuq0zcFHx3q3R31M0yCc7OIOa31TPrKUXKVNNh8w
-         vH3A==
-X-Gm-Message-State: ALoCoQkhbnY3iYnV14M7cK87qgu5ERjYtMSysaKx0hCC1r2GZxNM7csnK7YfwGaM+LRo4H/J3hwe
-X-Received: by 10.70.38.37 with SMTP id d5mr9944686pdk.120.1424370903642;
-        Thu, 19 Feb 2015 10:35:03 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 ([2601:9:8340:b6:4de2:180e:ccf2:60e5])
-        by mx.google.com with ESMTPSA id or4sm24493050pdb.66.2015.02.19.10.35.02
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Feb 2015 10:35:03 -0800 (PST)
-Date: Thu, 19 Feb 2015 10:35:02 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH V2] Staging: comedi: Update commit description
-Message-ID: <20150219183502.GA3123@katie-Inspiron-5748>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [104.135.10.71])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C19338A8;
+	Wed,  4 Nov 2015 20:28:13 +0000 (UTC)
+Date: Wed, 4 Nov 2015 12:28:13 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: rtl8712:
+ rtl871x_sta_mgt: Remove wrapper function
+Message-ID: <20151104202813.GA31382@kroah.com>
+References: <cover.1446302505.git.amitoj1606@gmail.com>
+ <50a3d739a35e00dc6c2b737b9fdc382aaa094ec8.1446302505.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <50a3d739a35e00dc6c2b737b9fdc382aaa094ec8.1446302505.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Multiple blank lines are to be avoided per linux kernel conventions.
+On Sat, Oct 31, 2015 at 08:16:27PM +0530, Amitoj Kaur Chawla wrote:
+> Remove wrapper function that can be replaced by a single line of code.
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/rtl8712/rtl871x_sta_mgt.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8712/rtl871x_sta_mgt.c b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+> index 6ae8cdc..a379b84 100644
+> --- a/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+> +++ b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+> @@ -89,16 +89,11 @@ static void mfree_all_stainfo(struct sta_priv *pstapriv)
+>  	spin_unlock_irqrestore(&pstapriv->sta_hash_lock, irqL);
+>  }
+>  
+> -
+> -static void mfree_sta_priv_lock(struct	sta_priv *pstapriv)
+> -{
+> -	 mfree_all_stainfo(pstapriv); /* be done before free sta_hash_lock */
+> -}
+> -
+>  u32 _r8712_free_sta_priv(struct sta_priv *pstapriv)
+>  {
+>  	if (pstapriv) {
+> -		mfree_sta_priv_lock(pstapriv);
+> +		/* be done before free sta_hash_lock */
+> +		mfree_all_stainfo(pstapriv); 
 
-This patch fixes the checkpatch.pl check:
-CHECK: Please don't use multiple blank lines
+You add trailing whitespace :(
 
-Deletes an extra blank line
+Always check your patches with checkpatch before sending them out.
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
----
- drivers/staging/netlogic/platform_net.c | 1 -
- 1 file changed, 1 deletion(-)
+thanks,
 
-diff --git a/drivers/staging/netlogic/platform_net.c b/drivers/staging/netlogic/platform_net.c
-index 77c3c35..0e1cc72 100644
---- a/drivers/staging/netlogic/platform_net.c
-+++ b/drivers/staging/netlogic/platform_net.c
-@@ -209,7 +209,6 @@ static void xlr_gmac_init(void)
- 		.gpio_addr	= NULL,
- 	};
- 
--
- 	static struct platform_device xlr_net_dev0 = {
- 		.name		= "xlr-net",
- 		.id		= 0,
--- 
-1.9.1
-
+greg k-h
 
