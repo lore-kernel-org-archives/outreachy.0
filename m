@@ -1,58 +1,67 @@
-X-GM-THRID: 6208392208366698496
-X-Received: by 10.107.132.77 with SMTP id g74mr12304464iod.10.1445503953555;
-        Thu, 22 Oct 2015 01:52:33 -0700 (PDT)
+X-GM-THRID: 6212059851141414912
+X-Received: by 10.50.62.49 with SMTP id v17mr22550674igr.1.1446668850902;
+        Wed, 04 Nov 2015 12:27:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.92.55 with SMTP id a52ls1466519qge.94.gmail; Thu, 22 Oct
- 2015 01:52:32 -0700 (PDT)
-X-Received: by 10.129.92.198 with SMTP id q189mr11932225ywb.40.1445503952756;
-        Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-io0-x233.google.com (mail-io0-x233.google.com. [2607:f8b0:4001:c06::233])
-        by gmr-mx.google.com with ESMTPS id hx4si1746705igb.0.2015.10.22.01.52.32
+Received: by 10.107.136.222 with SMTP id s91ls499052ioi.76.gmail; Wed, 04 Nov
+ 2015 12:27:30 -0800 (PST)
+X-Received: by 10.107.138.221 with SMTP id c90mr4293058ioj.9.1446668850527;
+        Wed, 04 Nov 2015 12:27:30 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id iz5si291732pbc.2.2015.11.04.12.27.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::233 as permitted sender) client-ip=2607:f8b0:4001:c06::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Nov 2015 12:27:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c06::233 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-io0-x233.google.com with SMTP id v82so84253471iod.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=vVP6eR3tDt2SIUosOE+K6F5ii3HRCMFdeaGz+vuBBx8=;
-        b=jWr7s4+rVOke48GwpQqG548kjhzzL8jlkSI9R40ki4nZM+oJNiYS2NpcXeKt2dR04W
-         UW+X4qX+CZu8G1VbQU/cqAuRb92hslL7wq+fFVFzg6WBLfRdkKOPNtE/9J3bU+jfISwO
-         BAKfogn0UuBTX//P0p01aOmXXzwi8GNEyLUH5Ng5LZZUBkyAOfaC5IpoYc/x7HYqd/qh
-         JcYbiUXFHghlpbtPaM0tYigH2R8jybfYS2LRNtAv0Z2zN5eIpDUNkrjml+OcIJMyrn7S
-         9NgWuPJGAwesajc9BsBkNkgl35j0rwTfmDXF+oQfZ4balNwa5Y09StSLdm12krrt0V2r
-         nU5A==
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [104.135.10.71])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1EBAA8A8;
+	Wed,  4 Nov 2015 20:27:30 +0000 (UTC)
+Date: Wed, 4 Nov 2015 12:27:29 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Shraddha Barke <shraddha.6596@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: fwserial: Remove wrapper
+ function fwtty_port_put
+Message-ID: <20151104202729.GA31218@kroah.com>
+References: <1446357881-2672-1-git-send-email-shraddha.6596@gmail.com>
+ <1446357881-2672-3-git-send-email-shraddha.6596@gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.107.151.195 with SMTP id z186mr17846540iod.8.1445503952629;
- Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
-Received: by 10.107.158.211 with HTTP; Thu, 22 Oct 2015 01:52:32 -0700 (PDT)
-Date: Thu, 22 Oct 2015 10:52:32 +0200
-Message-ID: <CAL7P5j+qabDCjT4mTjTh=rGjJXd=NzuZrAt-k=LVm287dUzr4w@mail.gmail.com>
-Subject: Staging driver cleanup project
-From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1446357881-2672-3-git-send-email-shraddha.6596@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi Greg,
+On Sun, Nov 01, 2015 at 11:34:41AM +0530, Shraddha Barke wrote:
+> Function fwtty_port_put can be replaced with direct calls to
+> kref_put. Thus drop the wrapper function.
+> 
+> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+> ---
+>  drivers/staging/fwserial/fwserial.c | 16 +++++-----------
+>  drivers/staging/fwserial/fwserial.h |  1 -
+>  2 files changed, 5 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+> index b3ea4bb..8f4c3c0 100644
+> --- a/drivers/staging/fwserial/fwserial.c
+> +++ b/drivers/staging/fwserial/fwserial.c
+> @@ -893,12 +893,6 @@ static void fwserial_destroy(struct kref *kref)
+>  	kfree(serial);
+>  }
+>  
+> -void fwtty_port_put(struct fwtty_port *port)
+> -{
+> -	kref_put(&port->serial->kref, fwserial_destroy);
+> -}
+> -EXPORT_SYMBOL(fwtty_port_put);
 
-I have a few questions concerning Staging driver cleanup project:
+This function is ok to have as it properly "hides" the implementation.
+But, it doesn't need to be exported, and should be made static, can you
+make that change instead?
 
-1. Which drivers in staging area can be considered for internship period?
-2. I noticed that TODO list of drivers are generally outdated, so  I'm
-interested
-    what could be the tasks to complete during the project?
-3. You mentioned : If possible, hardware will be provided for the code
-being worked on
-    What is the criteria for that? Does it matter where the intern lives?
+thanks,
 
-Thanks,
-Ksenija
+greg k-h
 
