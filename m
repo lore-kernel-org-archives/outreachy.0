@@ -1,82 +1,144 @@
 X-GM-THRID: 6210359704363728896
-X-Received: by 10.28.11.65 with SMTP id 62mr4074180wml.6.1446596232219;
-        Tue, 03 Nov 2015 16:17:12 -0800 (PST)
+X-Received: by 10.28.211.201 with SMTP id k192mr4055225wmg.3.1446596049004;
+        Tue, 03 Nov 2015 16:14:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.149.198 with SMTP id x189ls81916lfd.51.gmail; Tue, 03 Nov
- 2015 16:17:11 -0800 (PST)
-X-Received: by 10.112.138.66 with SMTP id qo2mr6233194lbb.2.1446596231534;
-        Tue, 03 Nov 2015 16:17:11 -0800 (PST)
+Received: by 10.25.16.222 with SMTP id 91ls82583lfq.12.gmail; Tue, 03 Nov 2015
+ 16:14:08 -0800 (PST)
+X-Received: by 10.112.184.170 with SMTP id ev10mr6223161lbc.4.1446596048397;
+        Tue, 03 Nov 2015 16:14:08 -0800 (PST)
 Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id l1si728511wmb.1.2015.11.03.16.17.11
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id l1si728045wmb.1.2015.11.03.16.14.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Nov 2015 16:17:11 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        Tue, 03 Nov 2015 16:14:08 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
 Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
- (mreue101) with ESMTPSA (Nemesis) id 0MYNd3-1ZxsWd2lBR-00V4ts; Wed, 04 Nov
- 2015 01:17:10 +0100
+ (mreue005) with ESMTPSA (Nemesis) id 0MbtTu-1aCwiv1jq2-00JH2j; Wed, 04 Nov
+ 2015 01:14:07 +0100
 From: Arnd Bergmann <arnd@arndb.de>
 To: y2038@lists.linaro.org
 Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Y2038] [PATCH 3/5] fs: nfsd: Replace time_t with u32 in nfsd4_grace
-Date: Wed, 04 Nov 2015 01:17:09 +0100
-Message-ID: <5919340.GhJnFQNPk1@wuerfel>
+Subject: Re: [Y2038] [PATCH 2/5] fs: nfsd: Replace time_t with u32 in nfsd4_lease
+Date: Wed, 04 Nov 2015 01:14:06 +0100
+Message-ID: <8412799.SPuinIILNH@wuerfel>
 User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <450ff5ca919b9c63b57d00d29f41024624c4cbed.1445960986.git.ksenija.stanojevic@gmail.com>
-References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <450ff5ca919b9c63b57d00d29f41024624c4cbed.1445960986.git.ksenija.stanojevic@gmail.com>
+In-Reply-To: <d860ec8de84b6ac84510505a1fef14c8ccc60a67.1445960986.git.ksenija.stanojevic@gmail.com>
+References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <d860ec8de84b6ac84510505a1fef14c8ccc60a67.1445960986.git.ksenija.stanojevic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:ji3Xlj2pNJY++wy089/kGUbDwbTCTC8gsHWNXOXZ1ZIFFwTQYDM
- CR3SdcyQz7j75v3ipv7kWyBnwbDO8uIJCq7yGF8fArg9fqelJoAdef2/YLKsMHvcbDFBk1C
- QAMAScVc8SEHQw2u7V8cJN7sCN/KZLBDUDhC0ZUitwg+7es7XgIKcb9Fb1+UQHP8vRm11qt
- K/CupCuqL3K5/QegnxwxQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:6uMZ80uVxuk=:M/sUfQ2/ImCzxXh2/gY20B
- O9kibzAS/PDKDeQxVfnNMHqueWwRzUsP6CHtbif4v2o1ZNEAA6GXSdZk0fGoS91WT5gplrS7C
- Qbd710iVmxn1v9JP5Irf5d6ANAxz9OLu3aqzpAIHe7RW+WosTkPMRLfNvEeMUx5pc5f2iV/9r
- tuGpcMj99LWxqjQ+F8l7liVSWCP0QKX6giwMMxzFb2bDp8JdsM00Yh193rn2eYyGijLYbim8d
- uzOj15417DOm9ZXx3iHlOW4drwjOmRf0FKlI4yKAa2IDjk9zU2YEklc7hRGUYNqiG/YLlSgKb
- VEn8JY+jxmFKJkHyTNIgPWxnezMWXc3Q6suzMAY5HTaVVQw40wHWiLeewIthbPJtpHrB/Daf5
- YbBO9iGX7M4euMSFX66E05wlF7zT0aH2XSVnV/p2PLTGRWDnOTOXVNT7qL62mepLFiYFnh74Q
- ubswa+XSGIbIn2zylstqg3SP1ZaimBD3ahXqOxYkRx4M4/d/oZ+M0dXs4ehO8G8o+orUhxCcS
- VudM0LyyRVK6ZR0nr3r2Sy6H6yc1LQTOyYkSnxix7O8Nke/OWQ7lj0XKhv5vbC9yLz9EshG5T
- Vmv9ULxGNI0LannuhbM844t5AqNB1a90dVic4zuMAvK2gEcAcGgauQQf3SLLrY7N0I5JBG6yg
- ngpNwrqJKbdflH8H2UhSOxjDrfYrOX5VZ/dKalQfIroQSPfylgzdljN5qDX5ksstHSNqBb5Yk
- E0EG23RoAzMObu9C
+X-Provags-ID: V03:K0:UuWFp/o+Q8ehin8KYYjF8tE96+vX7o0eoTRcrytF2W8uklasVKa
+ zPdq8Bd7l4ADL6jpK9wk5AfBMDiRuh6WpriMYRjiW2zCrxjgmZhWuZr+TPuwCsEeOq2WEej
+ l544Wr8bVFGMYGTzWJa0HwxYJTlrPaHxg7jgMyMR0pOMaySCuns88S77ZCTCWYLX1wHvwEo
+ jDlk5e1LZA7Pj4cCVC3hw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:fo1r9QfGbSg=:7yEcGpkbLaK8mXCM40GZeH
+ uf6/l1P/aMUTiKEKS0hriL5U4gOjwIev/gihjRgR53lVxp7LCguho9edAH98nIhBF7+gIipLC
+ goUJz0sPQxUpDhjnJY548b9KPf2g6N+FIMBYytNYb2l7R6b62qEy0hgSFLluZeDMsZZCG+9KT
+ o7rYjCZRUvr/sznVYw86yp53JiyE/YQ6182Eso8RTqU8uDHV5arvcH4zUAzWc08FQYKx7nyJS
+ mOHzzTm73HzhkLG9zukEKpOMfMxRL7XjBzuD/YqeFYCqNRWm+D6p6/92rPzijCgrdzZOSPWsS
+ f8Do5K944bP6v31xQPHJKSsz15YqfQwULORBOcz7JD9/1dYBelcj772x3SItL44Nq274i1NOH
+ k6Y7FXniCYF1ox/V/2q2czFSbj49q1bAVXpKiXyYQQG8kTw8nDGXYDAtKj+ckWT47f2amginv
+ reEFtIgeRD8no7YX1i9XMxkqUeYlkXEPXYl1EVV5j97aMAXZevO0Y2MxV9bIgETsN2lT8WXNe
+ VIkGgoZTLTspzV64ss1+oGyG613uLn0InRRYkq+YKRnFOJQFI3UAyutojd+TkxNEPW8INWnIz
+ l51uj+fxdXkYbPG0+lzSSUMaUj8GoF6v3bedPtAKY6PkMqyo+heiLkKx6Ko1bCoBk4ivEUD7C
+ DhBlb3GXflTVj3oVAwubuthXPlhzCRPgMRlqg0WrttgSpeHw7k7/9kby3m55ReZtSPsn5FfJH
+ W0v7qv073a6nFm7t
 
-On Tuesday 27 October 2015 09:10:45 Ksenija Stanojevic wrote:
+On Tuesday 27 October 2015 09:09:35 Ksenija Stanojevic wrote:
 > Replace time_t type and get_seconds function which are not y2038 safe on
 > 32-bit systems. Function ktime_get_seconds use monotonic instead of real
 > time and therefore will not cause overflow.
 > 
 > Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
 
-I think this patch needs to be folded into the patch that changes the
-type for nfsd4_lease, as mentioned there.
+You are missing an explanation about why the u32 type is used. The
+change to that type looks absolutely appropriate here, but it seems
+unrelated to what you write above.
 
->  	locks_start_grace(net, &nn->nfsd4_manager);
->  	nfsd4_client_tracking_init(net);
-> -	printk(KERN_INFO "NFSD: starting %ld-second grace period (net %p)\n",
-> +	printk(KERN_INFO "NFSD: starting %x-second grace period (net %p)\n",
->  	       nn->nfsd4_grace, net);
->  	queue_delayed_work(laundry_wq, &nn->laundromat_work, nn->nfsd4_grace * HZ);
-
+> diff --git a/fs/nfsd/netns.h b/fs/nfsd/netns.h
+> index d5cce15..85b114f 100644
+> --- a/fs/nfsd/netns.h
+> +++ b/fs/nfsd/netns.h
+> @@ -94,7 +94,7 @@ struct nfsd_net {
+>  	bool in_grace;
+>  	struct nfsd4_client_tracking_ops *client_tracking_ops;
 >  
-> -	return scnprintf(buf, SIMPLE_TRANSACTION_LIMIT, "%ld\n", *time);
-> +	return scnprintf(buf, (u32)SIMPLE_TRANSACTION_LIMIT, "%x\n", *time);
+> -	time_t nfsd4_lease;
+> +	u32 nfsd4_lease;
+>  	time_t nfsd4_grace;
+>  
+>  	bool nfsd_net_up;
+> diff --git a/fs/nfsd/nfs4callback.c b/fs/nfsd/nfs4callback.c
+> index e7f50c4..8a177c6 100644
+> --- a/fs/nfsd/nfs4callback.c
+> +++ b/fs/nfsd/nfs4callback.c
+> @@ -681,7 +681,7 @@ static const struct rpc_program cb_program = {
+>  static int max_cb_time(struct net *net)
+>  {
+>  	struct nfsd_net *nn = net_generic(net, nfsd_net_id);
+> -	return max(nn->nfsd4_lease/10, (time_t)1) * HZ;
+> +	return max(nn->nfsd4_lease/10, (u32)1) * HZ;
+>  }
+
+coding style: it would be helpful to convert this to use max_t()
+instead of max() to avoid the cast.
+
+>  static struct rpc_cred *callback_cred;
+> diff --git a/fs/nfsd/nfs4state.c b/fs/nfsd/nfs4state.c
+> index 8245236..4bceb878 100644
+> --- a/fs/nfsd/nfs4state.c
+> +++ b/fs/nfsd/nfs4state.c
+> @@ -4332,8 +4332,8 @@ nfs4_laundromat(struct nfsd_net *nn)
+>  	struct nfs4_delegation *dp;
+>  	struct nfs4_ol_stateid *stp;
+>  	struct list_head *pos, *next, reaplist;
+> -	time_t cutoff = get_seconds() - nn->nfsd4_lease;
+> -	time_t t, new_timeo = nn->nfsd4_lease;
+> +	u32 cutoff = ktime_get_seconds() - nn->nfsd4_lease;
+> +	u32 t, new_timeo = nn->nfsd4_lease;
+>  
+>  	dprintk("NFSD: laundromat service - starting\n");
+>  	nfsd4_end_grace(nn);
+
+The change to "cutoff" needs to be done together with the 'cl_time'
+change from patch 1, and all the users of that variable.
+
+> @@ -4399,7 +4399,7 @@ nfs4_laundromat(struct nfsd_net *nn)
+>  	}
+>  	spin_unlock(&nn->client_lock);
+>  
+> -	new_timeo = max_t(time_t, new_timeo, NFSD_LAUNDROMAT_MINTIMEOUT);
+> +	new_timeo = max_t(u32, new_timeo, NFSD_LAUNDROMAT_MINTIMEOUT);
+>  	return new_timeo;
+>  }
+>  
+> diff --git a/fs/nfsd/nfsctl.c b/fs/nfsd/nfsctl.c
+> index 9690cb4..6e0cfd6 100644
+> --- a/fs/nfsd/nfsctl.c
+> +++ b/fs/nfsd/nfsctl.c
+> @@ -932,7 +932,7 @@ static ssize_t write_maxconn(struct file *file, char *buf, size_t size)
+>  
+>  #ifdef CONFIG_NFSD_V4
+>  static ssize_t __nfsd4_write_time(struct file *file, char *buf, size_t size,
+> -				  time_t *time, struct nfsd_net *nn)
+> +				  u32 *time, struct nfsd_net *nn)
+>  {
+>  	char *mesg = buf;
+>  	int rv, i;
+> @@ -964,7 +964,7 @@ static ssize_t __nfsd4_write_time(struct file *file, char *buf, size_t size,
 >  }
 >  
 >  static ssize_t nfsd4_write_time(struct file *file, char *buf, size_t size,
-> 
+> -				time_t *time, struct nfsd_net *nn)
+> +				u32 *time, struct nfsd_net *nn)
+>  {
+>  	ssize_t rv;
 
-You change the format string to print the time as hexadecimal. Is that
-intentional? If there is a reason for doing it, explain it in the changelog,
-otherwise leave it as "%d".
-
-The cast of SIMPLE_TRANSACTION_LIMIT to u32 looks misplaced as well.
+This function is called for both nfsd4_lease and nfsd4_grace, so by changing
+only one of the two types, you generate a compiler warning.
 
 	Arnd
 
