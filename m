@@ -1,80 +1,77 @@
-X-GM-THRID: 6205438272605257728
-X-Received: by 10.66.124.131 with SMTP id mi3mr1867799pab.32.1444816187761;
-        Wed, 14 Oct 2015 02:49:47 -0700 (PDT)
+X-GM-THRID: 6211362438184435712
+X-Received: by 10.112.123.17 with SMTP id lw17mr883239lbb.6.1446678387924;
+        Wed, 04 Nov 2015 15:06:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.7.13 with SMTP id 13ls123171ioh.91.gmail; Wed, 14 Oct 2015
- 02:49:47 -0700 (PDT)
-X-Received: by 10.50.61.234 with SMTP id t10mr2319538igr.4.1444816187463;
-        Wed, 14 Oct 2015 02:49:47 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id el2si808708pbb.0.2015.10.14.02.49.47
+Received: by 10.25.27.130 with SMTP id b124ls183751lfb.26.gmail; Wed, 04 Nov
+ 2015 15:06:27 -0800 (PST)
+X-Received: by 10.112.162.169 with SMTP id yb9mr873329lbb.15.1446678387345;
+        Wed, 04 Nov 2015 15:06:27 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by gmr-mx.google.com with ESMTPS id t2si197409wme.1.2015.11.04.15.06.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 02:49:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Wed, 04 Nov 2015 15:06:27 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.131;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id p3so1927629pay.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 02:49:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=u6mkM1HHpSsTAFLJjR/AoWeWEREX7gpqESW7I9xXfv0=;
-        b=dClIZfUJBlsva11IsI/Kmdc/TboBGCe0nATj36bILOLcd/5CYSSlvCIb9XZDsrJzRN
-         92hJ4C8DMH7Mi2eJsx8VXo6bYwrTfUEdcfDWfb5/4oxLn/sm848h3j/6yw4SKDScdT5x
-         pM0dT49gf5eMt3izp7Ow8EsUVULM35WbJleeoFBtqZKCLgfyRplBirYBRxJovSCYBE5P
-         Blv29djcNVvS4HQd7OUkzUzL9B87e+hnmR2Tzcm0qpstFIdKAkad8j+ivQ7H1xLpab9T
-         0PsqSpg8ge1keR+bgyMz/33/yvSaiYeEcSdrNJLBaFSe3+Xcdh1zQ6oCUFhxykuZbz+l
-         mXCQ==
-X-Received: by 10.68.92.164 with SMTP id cn4mr2734291pbb.156.1444816187345;
-        Wed, 14 Oct 2015 02:49:47 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id ln10sm8625237pab.29.2015.10.14.02.49.43
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 02:49:46 -0700 (PDT)
-Date: Wed, 14 Oct 2015 15:19:29 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: rtl8723au: rtw_mlme_ext: Remove irrelevant test
- expression
-Message-ID: <20151014094929.GA3545@ubuntu>
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0Lvg2y-1aWa7i1dgy-017UKR; Thu, 05 Nov
+ 2015 00:06:26 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Y2038] [PATCH] char: mmtimer: Replace timespec with timespec64
+Date: Thu, 05 Nov 2015 00:06:17 +0100
+Message-ID: <3846828.Zb56WxhgZB@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151030085827.GA21224@amitoj-Inspiron-3542>
+References: <20151030085827.GA21224@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:edP4lP+PE4X6xQOiDmwCIo2V7yxSm67w8QyIeG3Y6pC/mJlE/na
+ xod/eMQ91u+hwr5LBjYoC9/Q+GdYzvHIMwaxiUM+ehsW+DpuanLiPaST9LeK0o2hpaVKI1P
+ 4DMSNIo57M926jFjpmyp0sT2v7UpZQBhh+3HrLcsR+OmddVvbM8fqzBa1hwEcrVA7iPjV0w
+ guDGemtKxjy6dvtera2fw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:p50pT3YkhtQ=:6YGDgNxXGJx/3YX0Yc7iY9
+ egs0MT2md5IDTPSekrfQUZIkMC3r/aSmFKjN9fije4BxiTM42yp35tWePhqjxUSLSG/ZG0AJr
+ 1PkbBSdRmC6eu0eOx4NMdnw5ZhfcCtsRid8YHdDrRKGyEAdzD2z6KEdloKYMmmxO5x/xeAt1C
+ ZnEUN2f+31ARnsEzbWuzgMqnoxDrxpYrq/qu0XILg1I6QMD6nv5y1Oe7RCH25IwaBTbwE0xQ1
+ +SEI89503oScu7dCriswoXSdvg+ie+kV/5PS7PFDDlKJ7zCNC6j/CqshK4MV9CqHMtUZRar6z
+ GuYDNsKGE4uldA/3r5P5wRLsijs4TCY85pvvzj6aglON4Uca0QCyEXNhxlfKkdbAd3Veqzh1G
+ dM3phM2mxQfoU3v8UuZIjxpLITx4SD3eLsj5zuqZU8Jasr0Jp1LEe+79O672jeBi6lMIf83QF
+ kdAu/RpbyYbMo53S3+O3y7kKBiTpKMAQbQGfuVVf32h8+LqX3297tL7MTBO97joQVIgAfWmfQ
+ 8z2/kfJkI7TekRUYZ4qPvqkIaFdWS/aJVcuEloPcGI797SWSWEXd9dkGvoRbwYyYvoT1QWK0n
+ cS+8Y6h7E5XT10c2LJpBL9kQjFQzagIg6sTumgZdedPxmTEl44bg2nglxacaDu2vyofjw8wgr
+ CPOMyZh8YVA4a+WKWQjeyy9RQkB6pynrlzaRkT/cv1X5d+/4OArsWKdnR3arcYuKIcoiPtNv/
+ clYk0ITLM5N92kO68xI7fgTkiVBT9rr9Dj6/XA==
 
-Logical and-ing of a struct and its member should be replaced by the
-member only as the struct has already been tested before for true value.
+On Friday 30 October 2015 14:28:28 Amitoj Kaur Chawla wrote:
+> 32 bit systems using struct timespec will overflow in y2038, so as
+> part of y2038 cleanup replace struct timespec with struct timespec64.
+> 
+> This patch replaces struct itimerspec with struct itimerspec64.
+> 
+> This patch also replaces getnstimeofday() and timespec_to_ns() with 
+> ktime_get_real_ns() to return the current time in nanoseconds.
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/char/mmtimer.c | 34 +++++++++++++++-------------------
+>  1 file changed, 15 insertions(+), 19 deletions(-)
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
-Changes in v2:
-	-Fix mistakes in commit message.
+My mistake, I miscategorized this driver as 'simple', it should not
+have been part of the Outreachy suggested topics.
 
- drivers/staging/rtl8723au/core/rtw_mlme_ext.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Baolin Wang has worked on converting struct k_clock in the past, but
+his patches are not upstream yet, so you could not have guessed this
+correctly what parts of this driver still need to be converted
+after his patch.
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-index fca22ba..d28f29a 100644
---- a/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723au/core/rtw_mlme_ext.c
-@@ -1715,7 +1715,7 @@ OnAssocReq23a(struct rtw_adapter *padapter, struct recv_frame *precv_frame)
- 	spin_unlock_bh(&pstapriv->asoc_list_lock);
- 
- 	/*  now the station is qualified to join our BSS... */
--	if (pstat && pstat->state & WIFI_FW_ASSOC_SUCCESS &&
-+	if (pstat->state & WIFI_FW_ASSOC_SUCCESS &&
- 	    status == WLAN_STATUS_SUCCESS) {
- 		/* 1 bss_cap_update & sta_info_update23a */
- 		bss_cap_update_on_sta_join23a(padapter, pstat);
--- 
-2.1.0
+Your patch by itself will not work, and will result in a broken
+build (or at least warnings), which you should have caught in compile
+testing.
 
+	Arnd
 
