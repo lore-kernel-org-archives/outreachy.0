@@ -1,153 +1,103 @@
 X-GM-THRID: 6210359704363728896
-X-Received: by 10.50.142.1 with SMTP id rs1mr2018697igb.0.1447130243590;
-        Mon, 09 Nov 2015 20:37:23 -0800 (PST)
+X-Received: by 10.194.176.2 with SMTP id ce2mr174825wjc.0.1446648254645;
+        Wed, 04 Nov 2015 06:44:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.29.37 with SMTP id g5ls1520952obh.14.gmail; Mon, 09 Nov
- 2015 20:37:23 -0800 (PST)
-X-Received: by 10.182.80.198 with SMTP id t6mr1306930obx.32.1447130243086;
-        Mon, 09 Nov 2015 20:37:23 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-ig0-x22c.google.com (mail-ig0-x22c.google.com. [2607:f8b0:4001:c05::22c])
-        by gmr-mx.google.com with ESMTPS id tg5si601895igb.2.2015.11.09.20.37.23
+Received: by 10.28.174.196 with SMTP id x187ls346016wme.3.gmail; Wed, 04 Nov
+ 2015 06:44:14 -0800 (PST)
+X-Received: by 10.28.55.135 with SMTP id e129mr720370wma.7.1446648254015;
+        Wed, 04 Nov 2015 06:44:14 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id t2si123807wme.1.2015.11.04.06.44.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Nov 2015 20:37:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::22c as permitted sender) client-ip=2607:f8b0:4001:c05::22c;
+        Wed, 04 Nov 2015 06:44:13 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:4001:c05::22c as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-ig0-x22c.google.com with SMTP id xm8so65669649igb.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Nov 2015 20:37:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=0LKAMI2JLrRrkpMEW0SFBn4oJQuzKKd3rJpFbTUQZkk=;
-        b=CuUfFELh5QdyxabqW5kFNxBMC1xv7rxDrGapaZmbYPOTkfZD33SgQTnuz/Dfac5yhP
-         ASrhz/RcyvPMHzuj4V86hQdUpN8IeOZexSs+15LQUgAO9ob6ikMGXNDCuZ6J0qrA1565
-         1ouVPbUp+/6qizS1BcXkWhbzW/Tsr2pV1Az90fsyfINPqeWJ4F565NkfX27pYgH2LA2X
-         yMcnNNqPBX050QohBoqQgjAbydl0bGP/yAuWmBDdyXj8q7dAdu+YZu2VwBqmNfLZqydE
-         keopQbbIzkU3AAMg0W2EZVYWSo1TetDFJH7fZRySxjpnmBzWVf5BnUbSk+40Z23quj27
-         Zz7Q==
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0LkkrY-1aUQVU3zi0-00aW7e; Wed, 04 Nov
+ 2015 15:44:13 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: outreachy-kernel@googlegroups.com
+Cc: Ksenija =?utf-8?B?U3Rhbm9qZXZpxIc=?= <ksenija.stanojevic@gmail.com>, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] Re: [Y2038] [PATCH 1/5] fs: nfsd: Replace time_t with u32 in boot_time
+Date: Wed, 04 Nov 2015 15:44:12 +0100
+Message-ID: <8546847.yByvRe1hVG@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <CAL7P5jLv9Ba0t+qKRe_0Nx3SrQZQbBgmvxYuK6t2z_7d=4HiAw@mail.gmail.com>
+References: <cover.1445960986.git.ksenija.stanojevic@gmail.com> <16034171.mcXgMm0kJL@wuerfel> <CAL7P5jLv9Ba0t+qKRe_0Nx3SrQZQbBgmvxYuK6t2z_7d=4HiAw@mail.gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.50.43.162 with SMTP id x2mr1828106igl.82.1447130242960; Mon,
- 09 Nov 2015 20:37:22 -0800 (PST)
-Received: by 10.107.149.205 with HTTP; Mon, 9 Nov 2015 20:37:22 -0800 (PST)
-In-Reply-To: <8412799.SPuinIILNH@wuerfel>
-References: <cover.1445960986.git.ksenija.stanojevic@gmail.com>
-	<d860ec8de84b6ac84510505a1fef14c8ccc60a67.1445960986.git.ksenija.stanojevic@gmail.com>
-	<8412799.SPuinIILNH@wuerfel>
-Date: Mon, 9 Nov 2015 20:37:22 -0800
-Message-ID: <CAL7P5jK=pbSvFURGN55TYUfbhPedOuNyi+Rm=wRKbxxuQdnU5Q@mail.gmail.com>
-Subject: Re: [Y2038] [PATCH 2/5] fs: nfsd: Replace time_t with u32 in nfsd4_lease
-From: =?UTF-8?Q?Ksenija_Stanojevi=C4=87?= <ksenija.stanojevic@gmail.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: y2038@lists.linaro.org, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+X-Provags-ID: V03:K0:8skhiS95Wr96gzdJvoHm3HosZohpIGEh2nh+AtNSxJQsLNgnZBi
+ yF8XuqeHQvxYqyko6iPNOqKzzp4lGf2Utv86NyCzodCb76eWwkNdvRq3E1dKIde+axXgTHY
+ hyEGqmYeLWnarmhbio6SqG3dT2m+gTJ66R6gJwj2o5qBZxdYFbhdmf0FY8i7iA9letcSQw8
+ s5APXRbvOgly8tMRfVyYw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:IVv9H+0ihfg=:LkS2tdkXd2qxF0hsi4C42B
+ lQI3fT/qlpxHbLYUO0Rw9HOg8wlRVF6uEzhIQUPqvwW8hoGDWN+yTNhjJ6BA1uo8gT5HunqcD
+ flRWCNrIfr0abtmanaKGYJma1zmlsvREOfUdkc6Hkrm2eDCzHmWg6rhNPHH/q7d9X14+Jsq91
+ 6Y8XYnYmUWufWCXt/uwSG5xzO5vNI7JLXAzFkaS7utyoTm/gGNr+YK1BjnNQxd+rUrpW9CP7C
+ udguh7rbLIvdOMNTAYGzCZJ9boHKp75QxlFMNAGaDA4D5QfceE2HGZzwMV/FTRLb4rA+mL8JY
+ kmKMp1yWSKPs/zdjGx9UU/7HhC1bIYJrBSlv7GsBMaq/UJPgyEKHRm6oZfNl8Sh0guW843y7l
+ RTiFjgOWmJv1nINpqW2HN9YrDZr8mqpQUykQn2qXVKl3OUQ1wZXBsTyBGVJNqvBRDRmq/m/mU
+ z5FpHMy7xOG04L//aIn83H3bodeHv2M8JrSwriNYa3wVBEIWn+5shnbnJcZNNyRL9dOgt3KPj
+ R5JO0K+gSOFNavzi7yxj2dn+KVQ/pnorpwTIiwA3Ny6X9pwzHwPmoZvAvDrK6iEOXJiyQXh3q
+ ALaN+ofuJCB8fS7KI1+w0oUO7nmvlfZpSxUDTHiUkgp1yfHTnDv/ERbCI68yODxWn9gv6Nu8e
+ 7BbXbe2gTymy9E0e0uwyKigZUc9pTVrCM9RCWIw0D3u2ubGPoBssUJjUFBYvAfa3wYlkkq6EH
+ QtzbcVLM+qNHGXtA
 
-On Tue, Nov 3, 2015 at 4:14 PM, Arnd Bergmann <arnd@arndb.de> wrote:
-> On Tuesday 27 October 2015 09:09:35 Ksenija Stanojevic wrote:
->> Replace time_t type and get_seconds function which are not y2038 safe on
->> 32-bit systems. Function ktime_get_seconds use monotonic instead of real
->> time and therefore will not cause overflow.
->>
->> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
->
-> You are missing an explanation about why the u32 type is used. The
-> change to that type looks absolutely appropriate here, but it seems
-> unrelated to what you write above.
+On Tuesday 03 November 2015 18:17:48 Ksenija Stanojevi=C4=87 wrote:
+> On Tue, Nov 3, 2015 at 4:04 PM, Arnd Bergmann <arnd@arndb.de> wrote:
+> > On Tuesday 27 October 2015 09:08:35 Ksenija Stanojevic wrote:
+> >> Replace time_t type and get_seconds function which are not y2038 s=
+afe on
+> >> 32-bit systems. Function ktime_get_seconds use monotonic instead o=
+f real
+> >> time and therefore will not cause overflow.
+> >>
+> >> Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+> >
+> > I don't think using monotonic time is safe here:
+>=20
+> I was under the impression that comment:
+>=20
+> * We're assuming the clid was not given out from a boot
+> * precisely 2^32 (about 136 years) before this one.  That seems
+> * a safe assumption:
+>=20
+> is implying that monotonic time is used (should be used).
 
-It' safe to assume that system will be rebooted in 136 years and 32-bit
-number is enough to store a monotonic time value.
+You almost convinced me, and I just spent an hour trying to
+understand what is actually going on. I think I've got it now,
+and this is what happens:
 
->> diff --git a/fs/nfsd/netns.h b/fs/nfsd/netns.h
->> index d5cce15..85b114f 100644
->> --- a/fs/nfsd/netns.h
->> +++ b/fs/nfsd/netns.h
->> @@ -94,7 +94,7 @@ struct nfsd_net {
->>       bool in_grace;
->>       struct nfsd4_client_tracking_ops *client_tracking_ops;
->>
->> -     time_t nfsd4_lease;
->> +     u32 nfsd4_lease;
->>       time_t nfsd4_grace;
->>
->>       bool nfsd_net_up;
->> diff --git a/fs/nfsd/nfs4callback.c b/fs/nfsd/nfs4callback.c
->> index e7f50c4..8a177c6 100644
->> --- a/fs/nfsd/nfs4callback.c
->> +++ b/fs/nfsd/nfs4callback.c
->> @@ -681,7 +681,7 @@ static const struct rpc_program cb_program = {
->>  static int max_cb_time(struct net *net)
->>  {
->>       struct nfsd_net *nn = net_generic(net, nfsd_net_id);
->> -     return max(nn->nfsd4_lease/10, (time_t)1) * HZ;
->> +     return max(nn->nfsd4_lease/10, (u32)1) * HZ;
->>  }
->
-> coding style: it would be helpful to convert this to use max_t()
-> instead of max() to avoid the cast.
->
->>  static struct rpc_cred *callback_cred;
->> diff --git a/fs/nfsd/nfs4state.c b/fs/nfsd/nfs4state.c
->> index 8245236..4bceb878 100644
->> --- a/fs/nfsd/nfs4state.c
->> +++ b/fs/nfsd/nfs4state.c
->> @@ -4332,8 +4332,8 @@ nfs4_laundromat(struct nfsd_net *nn)
->>       struct nfs4_delegation *dp;
->>       struct nfs4_ol_stateid *stp;
->>       struct list_head *pos, *next, reaplist;
->> -     time_t cutoff = get_seconds() - nn->nfsd4_lease;
->> -     time_t t, new_timeo = nn->nfsd4_lease;
->> +     u32 cutoff = ktime_get_seconds() - nn->nfsd4_lease;
->> +     u32 t, new_timeo = nn->nfsd4_lease;
->>
->>       dprintk("NFSD: laundromat service - starting\n");
->>       nfsd4_end_grace(nn);
->
-> The change to "cutoff" needs to be done together with the 'cl_time'
-> change from patch 1, and all the users of that variable.
+The NFS client sends a SETCLIENTID request to the server, which
+generates the clientid using boot_time and a unique (for this instance)=
 
-You commented in patch 1 that change to cl_time is unrelated to other
-changes in that patch. Should I make a new patch which changes cl_time
-and cutoff or do all those changes in patch 1?
+number, together these two make up a 'clientid_t'. This is sent
+back to the client in the response, and it gets encoded as part
+of nfsd4_encode_setclientid() in the line
 
->> @@ -4399,7 +4399,7 @@ nfs4_laundromat(struct nfsd_net *nn)
->>       }
->>       spin_unlock(&nn->client_lock);
->>
->> -     new_timeo = max_t(time_t, new_timeo, NFSD_LAUNDROMAT_MINTIMEOUT);
->> +     new_timeo = max_t(u32, new_timeo, NFSD_LAUNDROMAT_MINTIMEOUT);
->>       return new_timeo;
->>  }
->>
->> diff --git a/fs/nfsd/nfsctl.c b/fs/nfsd/nfsctl.c
->> index 9690cb4..6e0cfd6 100644
->> --- a/fs/nfsd/nfsctl.c
->> +++ b/fs/nfsd/nfsctl.c
->> @@ -932,7 +932,7 @@ static ssize_t write_maxconn(struct file *file, char *buf, size_t size)
->>
->>  #ifdef CONFIG_NFSD_V4
->>  static ssize_t __nfsd4_write_time(struct file *file, char *buf, size_t size,
->> -                               time_t *time, struct nfsd_net *nn)
->> +                               u32 *time, struct nfsd_net *nn)
->>  {
->>       char *mesg = buf;
->>       int rv, i;
->> @@ -964,7 +964,7 @@ static ssize_t __nfsd4_write_time(struct file *file, char *buf, size_t size,
->>  }
->>
->>  static ssize_t nfsd4_write_time(struct file *file, char *buf, size_t size,
->> -                             time_t *time, struct nfsd_net *nn)
->> +                             u32 *time, struct nfsd_net *nn)
->>  {
->>       ssize_t rv;
->
-> This function is called for both nfsd4_lease and nfsd4_grace, so by changing
-> only one of the two types, you generate a compiler warning.
+        p =3D xdr_encode_opaque_fixed(p, &scd->se_clientid, 8);
 
-Ok, so changes to nfsd4_lease and nfsd4_grace should be done in one patch?
+The reason this does not show up when you grep for cl_boot is that
+xdr_encode_opaque_fixed just takes the number as set of eight bytes
+that are not meaningful to the client. The client then sends back
+the number to the server on other requests, e.g. in nfsd4_sessionid,
+and the server checks cl_boot to ensure that is the same number
+as boot_time, and this way it can tell whether the server has been
+rebooted while keeping the client session running.
+
+If you use monotonic times for generating boot_time, that means
+it could be the same after a reboot because the time to get
+from poweron to starting the NFS server is relatively deterministic.
+This however defeats the purpose of comparing the boot times.
+
+So you have to use real time here, but it is safe to truncate the
+time to the low 32 bits because the number is never used as the
+actual time, just as a token that is required to be unique
+for each time the server gets booted.
+
+=09Arnd
 
