@@ -1,74 +1,71 @@
-X-GM-THRID: 9654834823168
-X-Received: by 10.152.4.229 with SMTP id n5mr14890091lan.1.1427054711972;
-        Sun, 22 Mar 2015 13:05:11 -0700 (PDT)
+X-GM-THRID: 6212189958377046016
+X-Received: by 10.68.249.98 with SMTP id yt2mr1474297pbc.12.1446616572385;
+        Tue, 03 Nov 2015 21:56:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.9.137 with SMTP id z9ls564867laa.15.gmail; Sun, 22 Mar
- 2015 13:05:11 -0700 (PDT)
-X-Received: by 10.152.87.141 with SMTP id ay13mr10800558lab.3.1427054711348;
-        Sun, 22 Mar 2015 13:05:11 -0700 (PDT)
-Return-Path: <marianne@masu.dk>
-Received: from mail-la0-f43.google.com (mail-la0-f43.google.com. [209.85.215.43])
-        by gmr-mx.google.com with ESMTPS id wz2si820178lbb.0.2015.03.22.13.05.11
+Received: by 10.182.246.106 with SMTP id xv10ls247413obc.11.gmail; Tue, 03 Nov
+ 2015 21:56:12 -0800 (PST)
+X-Received: by 10.182.52.226 with SMTP id w2mr27266036obo.40.1446616572073;
+        Tue, 03 Nov 2015 21:56:12 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id sm2si2739889pab.0.2015.11.03.21.56.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 13:05:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marianne@masu.dk designates 209.85.215.43 as permitted sender) client-ip=209.85.215.43;
+        Tue, 03 Nov 2015 21:56:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of marianne@masu.dk designates 209.85.215.43 as permitted sender) smtp.mail=marianne@masu.dk
-Received: by labon10 with SMTP id on10so19558382lab.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 13:05:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=qXxefU+BMRYEzy7XxR+8Aqizc/xBBtBqR28uIjMiGog=;
-        b=b+aHZx9mZeclWmN4JU7zQriTj9RitJkJ5F/7Auw5zHw/t/cXFT3uosg2l+FkVcTiKl
-         SeBVKnrLg4Y7eIJQ9FVi79Gh9pNeZ/43bJ3ezzevhluV9bwXhOFP20ishxPHc0l62FX1
-         DswDlfHt+rEOM6Gw1P/DqEhryDkwUfMtYrfNCooKvhoUKD9WuY8l2BTg8cTyTRNlMDR2
-         j0TxsyY6eq3ibbwrvSkCUK+zpe04fbnjCSTWL84dlEJiHcbk95SXavVuaXlT+Sm4VK+8
-         2v8TOT5yl8Mf/3bjH9Bb6soo9ouu8f1SEZTjJ9aidwZw+qttJk9NLHv2H/Nl+jIiYDTW
-         4v7g==
-X-Gm-Message-State: ALoCoQlRLqx74+wIHOsuZnduLaixDT1ve3Ho+D5K5ktPFBimVrtknQBaSUhtET0+jQ1sjxYYTPPg
-X-Received: by 10.112.173.41 with SMTP id bh9mr79869872lbc.107.1427054711130;
-        Sun, 22 Mar 2015 13:05:11 -0700 (PDT)
-Return-Path: <marianne@masu.dk>
-Received: from debianvm (x1-6-20-4e-7f-5c-75-ca.cpe.webspeed.dk. [80.162.217.84])
-        by mx.google.com with ESMTPSA id us1sm2194739lbc.1.2015.03.22.13.05.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 22 Mar 2015 13:05:10 -0700 (PDT)
-Date: Sun, 22 Mar 2015 21:05:02 +0100
-From: Marianne Moeller Knudsen <marianne@masu.dk>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Replace printk with pr_debug
-Message-ID: <20150322200502.GA7693@debianvm>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (64-21-211-131.static-ip.telepacific.net [64.21.211.131])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9EBB68DC;
+	Wed,  4 Nov 2015 05:56:11 +0000 (UTC)
+Date: Tue, 3 Nov 2015 19:41:23 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Anchal Jain <anchalj109@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: lnet: Remove an else
+ after an if-return
+Message-ID: <20151104034123.GC29832@kroah.com>
+References: <20151101142932.GA12081@anchal-VirtualBox>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20151101142932.GA12081@anchal-VirtualBox>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace printk without loglevel with pr_debug. Issue found by
-checkpatch.
+On Sun, Nov 01, 2015 at 07:59:32PM +0530, Anchal Jain wrote:
+> The original motivation of the patch was to remove an 
+> else after an if branch that ends in a return. This 
+> removal required the removal of a list of other things. 
+> That are needed to make the code either correct or 
+> acceptable to checkpatch, for example:removing a blank 
+> line, removing braces, etc.
+> 
+> Remove unnecessary use of else that required the
+> removal of corresponding braces. And then the
+> declaration of hash was movedup to the beginning of the
+> function is required, but the initialization was left
+> where it was. And it also required remove the blank
+> line and add some new lines before the if and below the
+> declaration of hash.
+> 
+> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> 
+> ---
+>  drivers/staging/lustre/lnet/lnet/lib-ptl.c | 16 +++++++---------
+>  1 file changed, 7 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lnet/lnet/lib-ptl.c b/drivers/staging/lustre/lnet/lnet/lib-ptl.c
+> index b4f573a..aec06f9 100644
+> --- a/drivers/staging/lustre/lnet/lnet/lib-ptl.c
+> +++ b/drivers/staging/lustre/lnet/lnet/lib-ptl.c
+> @@ -357,16 +357,14 @@ lnet_mt_match_head(struct lnet_match_table *mtable,
+>  		   lnet_process_id_t id, __u64 mbits)
+>  {
+>  	struct lnet_portal *ptl = the_lnet.ln_portals[mtable->mt_portal];
+> -
+> -	if (lnet_ptl_is_wildcard(ptl)) {
+> +	 unsigned long hash;
 
-Signed-off-by: Marianne Moeller Knudsen <marianne@masu.dk>
----
- drivers/staging/sm750fb/ddk750_display.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
-index c84196a..9f768a3 100644
---- a/drivers/staging/sm750fb/ddk750_display.c
-+++ b/drivers/staging/sm750fb/ddk750_display.c
-@@ -51,7 +51,7 @@ static void setDisplayControl(int ctrl,int dispState)
- 				POKE32(PANEL_DISPLAY_CTRL, ulDisplayCtrlReg);
- 			} while((PEEK32(PANEL_DISPLAY_CTRL) & ~ulReservedBits) !=
- 					(ulDisplayCtrlReg & ~ulReservedBits));
--			printk("Set Panel Plane enbit:after tried %d times\n",cnt);
-+			pr_debug("Set Panel Plane enbit:after tried %d times\n",cnt);
- 		}
- 		else
- 		{
--- 
-1.7.10.4
+Very odd indentation :(
 
 
