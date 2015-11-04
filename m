@@ -1,102 +1,77 @@
-X-GM-THRID: 6249350509260439552
-X-Received: by 10.129.103.69 with SMTP id b66mr23546930ywc.58.1455040301349;
-        Tue, 09 Feb 2016 09:51:41 -0800 (PST)
+X-GM-THRID: 6211892414504763392
+X-Received: by 10.50.129.103 with SMTP id nv7mr1266782igb.3.1446624534372;
+        Wed, 04 Nov 2015 00:08:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.242 with SMTP id i18ls913650igt.10.canary; Tue, 09 Feb
- 2016 09:51:40 -0800 (PST)
-X-Received: by 10.66.63.104 with SMTP id f8mr32716005pas.6.1455040300847;
-        Tue, 09 Feb 2016 09:51:40 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x236.google.com (mail-qg0-x236.google.com. [2607:f8b0:400d:c04::236])
-        by gmr-mx.google.com with ESMTPS id v197si2393227ywa.1.2016.02.09.09.51.40
+Received: by 10.140.21.228 with SMTP id 91ls637147qgl.15.gmail; Wed, 04 Nov
+ 2015 00:08:53 -0800 (PST)
+X-Received: by 10.140.226.78 with SMTP id w75mr141273qhb.9.1446624533867;
+        Wed, 04 Nov 2015 00:08:53 -0800 (PST)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id pe1si10432pac.2.2015.11.04.00.08.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 09:51:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) client-ip=2607:f8b0:400d:c04::236;
+        Wed, 04 Nov 2015 00:08:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x236.google.com with SMTP id b67so58629071qgb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 09:51:40 -0800 (PST)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-x235.google.com with SMTP id hx2so37964576pad.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Nov 2015 00:08:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=drwN73RrxQEo48cKNP07E9ucf5exadpmbF88tbTY5Jw=;
-        b=Okvwb9UoAwGCVcoD+dvB7Y1CANEBUJHCbkSYDliDgc/oFPcd2k/bIfywslMpaNgkai
-         dJyX6N1z1MlRquKpQ3mLm3hgivd8oI21mqoFkZlf0ed6Ff4Kfn2dAwMQ4lXbjnpiI8Si
-         VSIt+YUeVFdRTuoyhbsMlfIoMdqe/KepNXGNPgE+KyMNJopyI6YkFrQIDUBd6XxZ4Bzi
-         OqFxJBwvwOiCgR84zbplesrC8SSZ+/kwCdkYmdqGvlh29AmHVzPHlFsw0L88RmQ3SQHg
-         Vgr5D1ztYoUrweUUMOAQysPAWzPdxUGec+Fp4atru45ydnzkMmcOVSC1Z7bcGCqt0awY
-         OtWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=drwN73RrxQEo48cKNP07E9ucf5exadpmbF88tbTY5Jw=;
-        b=gNeDgd3YocneOEak5O9FlLcHA2dx35Sci0lcnIHSR5bKo23JcMSOwbbGH5/EE1rP4i
-         n85TwYrg+IAawbs3VPhCMiq36dGRDzXZjBSbiDuOxhNiDmOFWOY+R82aU9nY7pHLZlta
-         aKTMxFZDAaYD/fgDH9V0dZFCdAFoxoomQybuI5rLkHn2WWYM9VV1GC9jl/D4veFX1trz
-         ywk1HqHbccJHnGbj9UCEchXgcx4fIx0WYg7KIc8PTJo/S0TqE/m93GKulySZvDdpVKM/
-         kIxGVSAS9hpE9dxvW0E/qf5Aqh90uPHHgyeYN7c6PmzOW0IFArTbeZoUUTT0rMRiJmvn
-         Juug==
-X-Gm-Message-State: AG10YORBCF+ZiG/XAKbieUlkk22rB0SVEXhUQnKevGJgBDvpSyo7ho0POgYpVAY6OEL1ig==
-X-Received: by 10.140.216.212 with SMTP id m203mr32333731qhb.37.1455040300593;
-        Tue, 09 Feb 2016 09:51:40 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id f10sm12810495qhc.18.2016.02.09.09.51.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 09:51:40 -0800 (PST)
-Date: Tue, 9 Feb 2016 17:51:03 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: goldfish: Change form of NULL comparisons
-Message-ID: <20160209225103.GA11077@janani-Inspiron-3521>
+        h=date:from:to:cc:subject:in-reply-to:message-id:references
+         :user-agent:mime-version:content-type;
+        bh=GFRbBJmc18K36z/uj+IXij6NYz9cJdB09Eyvov7mBsw=;
+        b=qw/uwGlxHjOxfX6JAHEnenSw/eDKpKjJOb1zE/HzneWUg/70I+mtPnF7JpvztprHgU
+         5Qv+z1CY2luCJB7eudcFCzAqa7LF8zWT21KGMQv9pQVN0o8xtJJEUHyWKMpLR3kPu/aS
+         Z960xvS+yD5Qw+sO/x6ZQqYFkJ1u1qeN7WmLsr7GWbchQtbYvHTlDVrfTjeAJcrI7d7V
+         a15mx7Fxq4fG7T0oWOlGCaKF/yXRw4SNMCWFN8SlhEmNew8UmUZ/Ql75U+9Z/zu8jFI4
+         P0gOSMLXynJ+OD8Fbc/hBEP/Bzpuwijf3Ptz/RQcyFAkh37M3K+jFJu/mN5Ck6pJakDU
+         GHaA==
+X-Received: by 10.66.62.131 with SMTP id y3mr227264par.104.1446624533682;
+        Wed, 04 Nov 2015 00:08:53 -0800 (PST)
+Return-Path: <shraddha.6596@gmail.com>
+Received: from [10.4.9.105] ([103.225.100.51])
+        by smtp.gmail.com with ESMTPSA id po4sm306982pbb.64.2015.11.04.00.08.51
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Nov 2015 00:08:53 -0800 (PST)
+Date: Wed, 4 Nov 2015 13:38:43 +0530 (IST)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+X-X-Sender: root@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 2/2] Staging: lustre: lnet: Remove
+ typedef cfs_workitem_t
+In-Reply-To: <20151104034349.GA5244@kroah.com>
+Message-ID: <alpine.DEB.2.11.1511041337270.8650@shraddha-370R4E-370R4V-370R5E-3570RE-370R5V>
+References: <1446360698-9942-1-git-send-email-shraddha.6596@gmail.com> <1446360698-9942-3-git-send-email-shraddha.6596@gmail.com> <20151104034349.GA5244@kroah.com>
+User-Agent: Alpine 2.11 (DEB 23 2013-08-11)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
 
-Change null comparisons of the form x == NULL to !x. This was suggested
-by checkpatch.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/goldfish/goldfish_audio.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/goldfish/goldfish_audio.c b/drivers/staging/goldfish/goldfish_audio.c
-index f1e1838..364fdcd 100644
---- a/drivers/staging/goldfish/goldfish_audio.c
-+++ b/drivers/staging/goldfish/goldfish_audio.c
-@@ -280,12 +280,12 @@ static int goldfish_audio_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, data);
- 
- 	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (r == NULL) {
-+	if (!r) {
- 		dev_err(&pdev->dev, "platform_get_resource failed\n");
- 		return -ENODEV;
- 	}
- 	data->reg_base = devm_ioremap(&pdev->dev, r->start, PAGE_SIZE);
--	if (data->reg_base == NULL)
-+	if (!data->reg_base)
- 		return -ENOMEM;
- 
- 	data->irq = platform_get_irq(pdev, 0);
-@@ -295,7 +295,7 @@ static int goldfish_audio_probe(struct platform_device *pdev)
- 	}
- 	data->buffer_virt = dmam_alloc_coherent(&pdev->dev,
- 				COMBINED_BUFFER_SIZE, &buf_addr, GFP_KERNEL);
--	if (data->buffer_virt == NULL) {
-+	if (!data->buffer_virt) {
- 		dev_err(&pdev->dev, "allocate buffer failed\n");
- 		return -ENOMEM;
- 	}
--- 
-2.5.0
+On Tue, 3 Nov 2015, Greg KH wrote:
 
+> On Sun, Nov 01, 2015 at 12:21:38PM +0530, Shraddha Barke wrote:
+>> The Linux kernel coding style guidelines suggest not using typedefs
+>> for structure types. This patch gets rid of the typedef for
+>> cfs_workitem_t.
+>>
+>> Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+>> ---
+>> Changes in v2-
+>>  Fix alignment.
+>
+> Due to other changes from other developers, this patch doesn't apply
+> anymore :(
+
+Alright. I'll resend it based on latest staging-testing tree on the lustre 
+and drivers mailing lists
+
+Shraddha 
+>
 
