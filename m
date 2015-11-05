@@ -1,81 +1,65 @@
-X-GM-THRID: 6207450266150633472
-X-Received: by 10.129.108.212 with SMTP id h203mr8796400ywc.38.1445284640536;
-        Mon, 19 Oct 2015 12:57:20 -0700 (PDT)
+X-GM-THRID: 6209266424669536256
+X-Received: by 10.28.170.203 with SMTP id t194mr912891wme.1.1446749320619;
+        Thu, 05 Nov 2015 10:48:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.88.73 with SMTP id be9ls868174igb.28.canary; Mon, 19 Oct
- 2015 12:57:20 -0700 (PDT)
-X-Received: by 10.68.68.202 with SMTP id y10mr27573730pbt.0.1445284640112;
-        Mon, 19 Oct 2015 12:57:20 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id el2si3497869pbb.0.2015.10.19.12.57.20
+Received: by 10.25.5.205 with SMTP id 196ls35520lff.43.gmail; Thu, 05 Nov 2015
+ 10:48:39 -0800 (PST)
+X-Received: by 10.112.166.40 with SMTP id zd8mr1829425lbb.21.1446749319522;
+        Thu, 05 Nov 2015 10:48:39 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by gmr-mx.google.com with ESMTPS id t18si172402wme.0.2015.11.05.10.48.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Oct 2015 12:57:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 Nov 2015 10:48:39 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.187;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id z6so39093429pas.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2015 12:57:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Znw6r7rge0rYIhnJyzsblHQyDlIxovzYnkr+HPohrig=;
-        b=exMjvJzR5Jr5cdJkrh+tRh/VNcaqKBIsQL+4i1eN3pOKmJLap3IJmRYus2wPA7Upd3
-         JODiEh4uRa0XE6y2nlqrdzrx7PhONx7Ol5MUDo/CbwkY7c8AHxWN9XCYpCWsjpFv2RYJ
-         WYJ4I4cuWIyhSCzw1fUGW8mnTdGJ2nEtYtDDI1kFAU1KzbLbntCtoRyNW3rPXr6TffgE
-         uLSIG3s+g2zlZcTq/igxA7RP9IBll8/WyOv44HCAxd065KMaByNNOdFRPRp3lxAfYV/a
-         CsnmRcb6T7qodnChzn5nSXv9j3BRNqXLR516MLGyVhQAzMFiXPIZYmcFJQQLTp59sCKT
-         4vsg==
-X-Received: by 10.66.193.132 with SMTP id ho4mr24253837pac.110.1445284639997;
-        Mon, 19 Oct 2015 12:57:19 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id fb1sm38112607pab.9.2015.10.19.12.57.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 19 Oct 2015 12:57:19 -0700 (PDT)
-Date: Mon, 19 Oct 2015 12:57:18 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/5] staging: r8723au: fix multiple checkpatch issues
-Message-ID: <cover.1445282918.git.amsfield22@gmail.com>
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue004) with ESMTPSA (Nemesis) id 0LdIcX-1aKMcR2L9l-00iWdp; Thu, 05 Nov
+ 2015 19:48:38 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: Eva Rachel Retuya <eraretuya@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: mt29f_spinand: Replace udelay function with usleep_range
+Date: Thu, 05 Nov 2015 19:48:37 +0100
+Message-ID: <6220768.i1voOuvBYI@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151105181955.GA6328@Socrates-Mint>
+References: <1445707491-28304-1-git-send-email-eraretuya@gmail.com> <8309352.N5ZdtU6YYI@wuerfel> <20151105181955.GA6328@Socrates-Mint>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:Mbo3HsU/p4Zpsijg4yXlsUZ/c8TjQf0RSSV1O9N/UpG95+Lf9Oh
+ BfmB68PoYBvNCsIx5lmepgPemCQz8yfP5xXvkUCWWFJZrh5syBRZ0xiQjCphBLQ99D3YgyQ
+ nNp4oZMHE5cei7Vr20gZjknHJBUWZ/l56UuNfRQ3cS5ozSkJFm/ihMigMC7cmXQ2mBI3Thr
+ HqD0x+1Og0Hm3lL4TMo7Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:nR2+r0qdbqc=:ouCQXH0w3XBFDr9sgbnnrN
+ y+BYCQiSxwkTZLMZIS09iREekkt3l8/GZ6J/dyrth3L3E4EHnTfTJQ1IualRYIWN9TfxVXA98
+ 1DJOIM1Y2PpQcty2r0I9cy5NOno/QvjGdNg/jvTkYaaiVhs5O50AkWBKbjySOsneziip+xW4X
+ KzCmjSTa+NT+Ot0BDpallsj1rY3XakCEU0p9iKpsYtGTZkq6hu9XXmbrjAX4kJxM/h8MA+PAU
+ +cA9cxc9tqRiaU3/4+VVe+805srunTW1EVDdZBbjGomMej+uSPdv0wkALtgtIC6WJWYSo0Ayy
+ 7QwMhq5tGTzW10l01yC2ijHlCjvco6v0EFnL6zGB13hgMaVF7EzPZ6Xs2Tg6gO/40C/BHH8oW
+ Q1gb3V0YzeDlPclpDUCRWB56Xt3lWwZ32zP75kIVdSmBBiOYoGdKM6HcwdoyOfM5C3eNqdJY/
+ JWRGyGeAIkeXOT8+GqMnaURtq8VoWuC5RwxVqwBfvsgDNw4DsBV5p4dUYy01snKbTRPQm+HlD
+ MQ6PhDjBmyDFIIX1VKI/tAwvsYh0Fqu3VNz4NqAa+Eo5OH/Ao608FNULSBjTAWo71Ig2MkGbj
+ QiKIVSkUwDkrQTyUNhBnN5jMh4HCpcE+AAAtjGnmXo45pI1qcWPgUlQTk9UsgWMbU4cNiDcO2
+ +Dr3FGjzQu0xI/mjsBXGMQhjdiHTU7cVtw4MfJJDhmN5gWLSWGbow5zG8tSt+3om1JgMpMAb1
+ x9ulFSNjrZXHD0aQ
 
-This patchset addresses the last 26 checkpatch WARNINGs in file:
-drivers/staging/rtl8723au/core/rtw_cmd.c
+On Friday 06 November 2015 02:19:59 Eva Rachel Retuya wrote:
+> 
+> The change from udelay to usleep is a safe conversion because the
+> spinand_reset() calls spinand_cmd(). The return value of the latter
+> depends on the return value of spi_sync() which is a function that is
+> allowed to sleep therefore, I have confirmed that spinand_reset() is
+> not in atomic context.
+> 
+> I hope I got it right this time. Thank you for bringing this up.
+> 
 
-I'll call your attention to the "Line over 80 chars" cases:
+Yes, very good. FWIW, the wait_till_ready() function also sleeps
+when it calls cond_resched().
 
-I chose to address 'Line over 80 chars' because all but one could be
-resolved by cleaning up a single struct definition. [PATCH 1/5]
-
-The last one appeared to be due to excessively long function names
-as opposed to deep indentation/complex code requiring refactoring.
-See my notes below the --- in PATCH[5/5] for further info.
-
-alison
-
-
-Alison Schofield (5):
-  staging: r8723au: break parameter list at separators and align to open
-    braces
-  staging: r8723au: replace printk() with pr_err()
-  staging: r8723au: use kernel preferred style for block comments
-  staging: r8723au: move constant to right of comparison test
-  staging: r8723au: add & use local variable to simplify references
-
- drivers/staging/rtl8723au/core/rtw_cmd.c | 154 +++++++++++++++++++------------
- 1 file changed, 93 insertions(+), 61 deletions(-)
-
--- 
-2.1.4
-
+	Arnd
 
