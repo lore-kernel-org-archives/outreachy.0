@@ -1,78 +1,73 @@
-X-GM-THRID: 6208147011756097536
-X-Received: by 10.112.132.10 with SMTP id oq10mr2434612lbb.1.1445446864523;
-        Wed, 21 Oct 2015 10:01:04 -0700 (PDT)
+X-GM-THRID: 6208217817238470656
+X-Received: by 10.112.55.2 with SMTP id n2mr1624891lbp.9.1446734604606;
+        Thu, 05 Nov 2015 06:43:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.87.139 with SMTP id l133ls217111lfb.34.gmail; Wed, 21 Oct
- 2015 10:01:03 -0700 (PDT)
-X-Received: by 10.112.151.9 with SMTP id um9mr2449232lbb.19.1445446863932;
-        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22d.google.com (mail-wi0-x22d.google.com. [2a00:1450:400c:c05::22d])
-        by gmr-mx.google.com with ESMTPS id cm6si1048097wib.1.2015.10.21.10.01.03
+Received: by 10.25.30.197 with SMTP id e188ls255003lfe.35.gmail; Thu, 05 Nov
+ 2015 06:43:23 -0800 (PST)
+X-Received: by 10.112.149.7 with SMTP id tw7mr1598341lbb.10.1446734603882;
+        Thu, 05 Nov 2015 06:43:23 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id 13si1074410wml.2.2015.11.05.06.43.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) client-ip=2a00:1450:400c:c05::22d;
+        Thu, 05 Nov 2015 06:43:23 -0800 (PST)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22d as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22d.google.com with SMTP id p11so104660216wij.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=NI2uPr0vWBqQF/URn3kkg4Bq3SKov9/Oq8feZ85JirM=;
-        b=S30SnDGMT9Vk4Y1pfEGkLOuorMtpxGWpnzERjozY6jZXD3mrMUkm2a2WrdJnxgg2b/
-         hnBSwRKXSiDgeLQ+9PwY8a+OCoCggWCG8KMh59aQg3pKGbD7IavLWRk9DNyRzDFJ+T+l
-         YIgIFG6mWh4mW/cTM8mGzEV6Rrp/PaccF6bIugZjHH0d4LliNO5GNwi6Jyx/+6vs9Iqr
-         84+ieyUOKr6ag6paCM+wTJXtKMGmt3L9bMj6l8hhZsn+eofb/zOYgxeqDq09OoHQ+zol
-         ZunLXw5FAtzXNGm7LSwRHtzkDs3QGXSL9P1CJN4j7LF6s1Qt/t0l2nsxSx+ruM88YhZw
-         fyxw==
-X-Received: by 10.194.133.105 with SMTP id pb9mr13417548wjb.158.1445446863817;
-        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([141.85.225.204])
-        by smtp.gmail.com with ESMTPSA id x7sm24456745wia.10.2015.10.21.10.01.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Oct 2015 10:01:03 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH 0/3] Replace kmalloc with kmalloc_array
-Date: Wed, 21 Oct 2015 20:00:48 +0300
-Message-Id: <cover.1445379358.git.cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([134.3.118.24]) by mrelayeu.kundenserver.de
+ (mreue003) with ESMTPSA (Nemesis) id 0LcCDx-1aLgEe2hnh-00jcSs; Thu, 05 Nov
+ 2015 15:43:21 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: Stefan Richter <stefanr@s5r6.in-berlin.de>
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>, outreachy-kernel@googlegroups.com, linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org, y2038@lists.linaro.org
+Subject: Re: [Outreachy kernel] [PATCH v2] firewire: Replace timeval with timespec64
+Date: Thu, 05 Nov 2015 15:43:20 +0100
+Message-ID: <60126456.tuWtDFJgLx@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20151105143448.302d85e9@kant>
+References: <20151021223500.GA26701@amitoj-Inspiron-3542> <7551827.VsyUKdOpMQ@wuerfel> <20151105143448.302d85e9@kant>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:L6MlPke2VBsBvh/y69xa+MeZjsCV4Uj3g/DwiBTSst6YIxYOB6T
+ SRdE+QCBU7K4rCqccdQuEoUc3r8AnaGE/nfXji20or3DFOTqvpmjl7S1vQ4iLDGfnBI4Vl7
+ P+s61J10dU9cM2QAtOrisQhQLQ36Ne+UP8Cgp7Apc0OqMfkn64n1SfkNo47Nui+qYuSkUCu
+ xPzCWodnJ2tOAwSxm0DZA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:+AmL33G1z9o=:n1wVnxgQwDzXR5DGeQwYuf
+ 9sO5MiHVnhpSj91sZo8wSiBvThC5gIZBsTL7lbSSpED20PxpPgdRUcJaCKe8RbwmxVo50c9jr
+ 7saitBQ0Ah3FtZ+3cQuW0pm0qkwRGZ830YRCh51vv/b6AQllSMFjN2kMLaEs5j0AU94+5dX7J
+ 53hpaPxJRcS4JbHc9XMqWo060Qead+6HmVXYZp643sjsZdphaGOPBwdkYOrKHuusEmzT07+UH
+ fxTGnTHLCVCVFSAxvqC5hzNKiiFkjHir0nXo2Eiap3Wn1gA0rUUTLnpjQaywbZToq3sFfxPr3
+ 0z7a8teZ7gLiZ49UIIkDEMxABdG074RT6FfIDzPP0JrcDAr3nIgarkDhMxQ1RjSFPRZWelflt
+ 1tMhjVYxuIZ3bTf6XBgl4rSJNRFrlOvQ494jrVuaklXz94zBmgni7scDTtpil5zMsWUeBMuog
+ WUFlIqr8YAt88NDBSXwo1wKwUNK7BiFAVRXOXVjDUlk9ZPQbmuOylNMFLt3fAp5tFdUS38A3L
+ y3ll3T01g/WwqTh3/SgDQnrzd/lmgOkI06pZ/xxyXNLfPVVXRGizysS3dbU6grPRdHHe3yWFS
+ w5NTamjPbdnQuZlH99T/BylMe3rX7m0aJoLtXlX7KHgpidTvYmIFbtwu/vN2Dmb+yjCta7cHv
+ tk3/SWFXrAeI+61QGk1sjiy8anUWyHTC6aiOOypndYO/BxrukcjGeVN7htVc2xbh5JWg+OU+X
+ bRrvmJ6gWUZdrlNx
 
-Replace kmalloc with specialized function kmalloc_array
-when the size is a multiplication of:
-        number_of_elements * size_of_element
+On Thursday 05 November 2015 14:34:48 Stefan Richter wrote:
+> On Oct 22 Arnd Bergmann wrote:
+> > On Thursday 22 October 2015 04:05:00 Amitoj Kaur Chawla wrote:
+> > > 32 bit systems using 'struct timeval' will break in the year 2038, so
+> > > we replace the code appropriately. However, this driver is not broken
+> > > in 2038 since we are using only the microseconds portion of the
+> > > current time.
+> > > 
+> > > This patch replaces timeval with timespec64.
+> > > 
+> > > Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> > 
+> > Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+> > 
+> > (adding the y2038 mailing list as well)
+> 
+> Committed to linux1394.git.
+> Arnd, do you have special y2038 plans that make it desirable to have this
+> merged before v4.4?  Otherwise I would submit it for v4.5-rc1.
 
-Done with coccinelle:
-@replace@
-identifier a, b;
-expression e, f;
-@@
-(
-- a = kmalloc(e * f, b);
-+ a = kmalloc_array(e, f, b);
-)
+4.5-rc1 is fine.
 
-
-
-Cristina Moraru (3):
-  staging: rtl8712: Replace kmalloc with kmalloc_array
-  staging: octeon-usb: Replace kmalloc with kmalloc_array
-  staging: rdma: Replace kmalloc with kmalloc_array
-
- drivers/staging/octeon-usb/octeon-hcd.c     | 6 +++---
- drivers/staging/rdma/amso1100/c2_provider.c | 2 +-
- drivers/staging/rdma/ipath/ipath_verbs.c    | 4 ++--
- drivers/staging/rtl8712/rtl871x_mlme.c      | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
-
--- 
-1.9.1
-
+	Arnd
 
