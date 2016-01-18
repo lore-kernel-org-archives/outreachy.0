@@ -1,90 +1,48 @@
 X-GM-THRID: 6241048565443985408
-Date: Tue, 19 Jan 2016 09:27:13 -0800 (PST)
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <5faad4a1-a1fe-43b6-b96a-473b1d80f934@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.10.1601180953180.2520@hadrien>
-References: <alpine.DEB.2.10.1601180953180.2520@hadrien>
-Subject: Re: round 12
+X-Received: by 10.112.138.98 with SMTP id qp2mr2732492lbb.4.1453107354240;
+        Mon, 18 Jan 2016 00:55:54 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.25.23.160 with SMTP id 32ls415819lfx.63.gmail; Mon, 18 Jan
+ 2016 00:55:53 -0800 (PST)
+X-Received: by 10.112.54.202 with SMTP id l10mr2675785lbp.14.1453107353435;
+        Mon, 18 Jan 2016 00:55:53 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 5si400906wmm.2.2016.01.18.00.55.53
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Jan 2016 00:55:53 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,312,1449529200"; 
+   d="scan'208";a="197864474"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Jan 2016 09:55:53 +0100
+Date: Mon, 18 Jan 2016 09:55:34 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: outreachy-kernel@googlegroups.com
+Subject: round 12
+Message-ID: <alpine.DEB.2.10.1601180953180.2520@hadrien>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_128_1521964482.1453224433669"
-X-Google-Token: EPHj-bQFje6bLmDSBCQ0
-X-Google-IP: 72.231.208.13
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-------=_Part_128_1521964482.1453224433669
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_129_172044928.1453224433670"
+The application period for round 12 will be February 9 - March 22.  If you
+haven't been an intern before, please consider applying.  If you have been
+an intern before, please consider whether you know someone else who might
+like to apply :)
 
-------=_Part_129_172044928.1453224433670
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+The eligibility seems to be the same as in round 11:
 
+Currently, internships are open internationally to women (cis and trans),
+trans men, and genderqueer people. Additionally, they are open to
+residents and nationals of the United States of any gender who are
+Black/African American, Hispanic/Latin@, American Indian, Alaska Native,
+Native Hawaiian, or Pacific Islander.
 
+Please let me know if you have any questions.
 
-On Monday, 18 January 2016 03:55:54 UTC-5, Julia Lawall wrote:
->
-> The application period for round 12 will be February 9 - March 22.  If you 
-> haven't been an intern before, please consider applying.  If you have been 
-> an intern before, please consider whether you know someone else who might 
-> like to apply :) 
->
-> The eligibility seems to be the same as in round 11: 
->
-> Currently, internships are open internationally to women (cis and trans), 
-> trans men, and genderqueer people. Additionally, they are open to 
-> residents and nationals of the United States of any gender who are 
-> Black/African American, Hispanic/Latin@, American Indian, Alaska Native, 
-> Native Hawaiian, or Pacific Islander. 
->
-> Please let me know if you have any questions. 
->
-> Julia 
->
- 
-Hello, Julia!
-
-On this <http://kernelnewbies.org/OutreachyIntro> page, under Round 12 
-projects, I see only Coccinelle. Will more projects be updated in the 
-future or is Coccinelle the only one?
-
-Thanks!
-Janani
-
-------=_Part_129_172044928.1453224433670
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<br><br>On Monday, 18 January 2016 03:55:54 UTC-5, Julia Lawall  wrote:<blo=
-ckquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-=
-left: 1px #ccc solid;padding-left: 1ex;">The application period for round 1=
-2 will be February 9 - March 22. =C2=A0If you
-<br>haven&#39;t been an intern before, please consider applying. =C2=A0If y=
-ou have been
-<br>an intern before, please consider whether you know someone else who mig=
-ht
-<br>like to apply :)
-<br>
-<br>The eligibility seems to be the same as in round 11:
-<br>
-<br>Currently, internships are open internationally to women (cis and trans=
-),
-<br>trans men, and genderqueer people. Additionally, they are open to
-<br>residents and nationals of the United States of any gender who are
-<br>Black/African American, Hispanic/Latin@, American Indian, Alaska Native=
-,
-<br>Native Hawaiian, or Pacific Islander.
-<br>
-<br>Please let me know if you have any questions.
-<br>
-<br>Julia
-<br></blockquote><div>=C2=A0</div><div><div>Hello, Julia!</div><div><br></d=
-iv><div>On=C2=A0<a href=3D"http://kernelnewbies.org/OutreachyIntro" target=
-=3D"_blank" rel=3D"nofollow" style=3D"cursor: pointer;">this</a>=C2=A0page,=
- under Round 12 projects, I see only Coccinelle. Will more projects be upda=
-ted in the future or is Coccinelle the only one?</div><div><br></div><div>T=
-hanks!</div><div>Janani</div></div>
-------=_Part_129_172044928.1453224433670--
-
-------=_Part_128_1521964482.1453224433669--
+Julia
 
