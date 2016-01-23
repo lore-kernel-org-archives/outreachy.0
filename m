@@ -1,83 +1,113 @@
 X-GM-THRID: 6241048565443985408
-X-Received: by 10.107.2.19 with SMTP id 19mr1697982ioc.23.1453961786062;
-        Wed, 27 Jan 2016 22:16:26 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.37.135 with SMTP id l129ls668228iol.105.gmail; Wed, 27 Jan
- 2016 22:16:25 -0800 (PST)
-X-Received: by 10.50.18.100 with SMTP id v4mr1034240igd.1.1453961785563;
-        Wed, 27 Jan 2016 22:16:25 -0800 (PST)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id ui7si1334381pab.0.2016.01.27.22.16.25
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Jan 2016 22:16:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id x125so18314148pfb.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Jan 2016 22:16:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=YnB9cjcc1zcrPvelJkkQZieX9nL5K2CwR+dfPDQ/h9M=;
-        b=C2CNTmMKootNl82q+hyCme3/5JmGoHiNLADB6ptyJh5yo/dsJ9Bp9NLoMAHENCPYs0
-         QqWyM6nO7ZmJVz1tb9L6vYH+PX9N3N91+rsXpmLApnQeTgUmeacEKGPTuv8JTU3ySiBv
-         1ztZmL4Sr/XALsm/kV9wxYV9naxglD21h6y+Uo/7yJK8fZEoHaMtir70qpmqIkPt0H4f
-         hNKpOG/KvnFyvwkjuRpFBxmYqn1pF0espmW8hBsgttgeerONV/CNo5YRCMMVEPrcjJ1v
-         6Wqum1+ohj0Q0XQGjoj4C/uBAUcqu3Tw5YRbtsYCG8zoBi6Tmbfi491qt7W22HNzDiMr
-         yTDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-type:content-disposition:in-reply-to
-         :user-agent;
-        bh=YnB9cjcc1zcrPvelJkkQZieX9nL5K2CwR+dfPDQ/h9M=;
-        b=mQ9AKclH8ryKXzWR7EDwDGppMDwpxUWnaBtBw22tsqiYDKlTCkQJUIAL/RSOsoY4nS
-         vze3y4TaIgPE2SUMBS5sAYpTKjMgRTdiQRdoaGaVPhtbP3M/N1FDrnD6zLO5kI/Si0xJ
-         qbDITP9CZS88LOWCAHRGd/o99BtQdnlOQv25s1Rvvja1vQXa+/+YLImKSyJEUmZD9YmY
-         nI9B6pjKi/6AGad4BQIq+mZz7JxrrhGvC9DfqGDKfF1GFIMuUSv6RzD0y5aknh9zKYah
-         s1YuknuZX+RoU0KrFXpHWilk9GBn16i6foP/YLPiSqM2HdP2CLjQof9lC4wIqNHQryj6
-         vStQ==
-X-Gm-Message-State: AG10YOSadKapqomWv0MBJ66BnxXyTh3U46D891o1/FRZVeEloUz/5le02fvA4ubVD2vBIw==
-X-Received: by 10.98.65.148 with SMTP id g20mr2066574pfd.21.1453961785406;
-        Wed, 27 Jan 2016 22:16:25 -0800 (PST)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([183.82.228.136])
-        by smtp.gmail.com with ESMTPSA id s19sm13145023pfs.62.2016.01.27.22.16.23
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Jan 2016 22:16:24 -0800 (PST)
-Date: Thu, 28 Jan 2016 11:46:15 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Bhumika Goyal <bhumirks@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: round 12
-Message-ID: <20160128061615.GA9938@sudip-pc>
+Date: Fri, 22 Jan 2016 22:53:41 -0800 (PST)
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <6fccd19e-1551-46d1-8f6f-faa89ba6f614@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.10.1601180953180.2520@hadrien>
 References: <alpine.DEB.2.10.1601180953180.2520@hadrien>
- <54734a8f-1a51-4ef2-af5a-05219aaf800e@googlegroups.com>
+Subject: Re: round 12
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <54734a8f-1a51-4ef2-af5a-05219aaf800e@googlegroups.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_93_90672466.1453532021318"
+X-Google-Token: EPXGjLUF8WsvOGFePQY0
+X-Google-IP: 120.60.143.231
 
-On Tue, Jan 19, 2016 at 02:55:55AM -0800, Bhumika Goyal wrote:
-> Hey Julia, my name is Bhumika and I am very excited to be a part of 
-> Outreachy for the coming round.I started submitting patches a few days ago 
-> but I haven't received any acceptance yet. I have sent them to the 
-> maintainers and the mailing lists as well. Should I send them again or 
-> should I wait for a few days?
+------=_Part_93_90672466.1453532021318
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_94_1659208494.1453532021319"
 
-Looks like your bluetooth patch has been applied. And about your staging
-patches, please wait for 1 - 2 weeks more.
+------=_Part_94_1659208494.1453532021319
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-And just few things before the round starts.
-1) do not top post.
-2) do not send mime-formatted mails.
 
-regards
-sudip
+I am Sayli Karnik, an Outreachy aspirant for the upcoming Round 12 in May.I 
+would like to contribute to Linux Kernel as it would be a great learning 
+experience for me.I have started going through the tutorial at 
+kernelnewbies.org. 
+
+What should I start working on in order to contribute to Coccinelle?
+Please assist me to go further in this initiative.
+Many Thanks!
+On Monday, January 18, 2016 at 2:25:54 PM UTC+5:30, Julia Lawall wrote:
+>
+> The application period for round 12 will be February 9 - March 22.  If you 
+> haven't been an intern before, please consider applying.  If you have been 
+> an intern before, please consider whether you know someone else who might 
+> like to apply :) 
+>
+> The eligibility seems to be the same as in round 11: 
+>
+> Currently, internships are open internationally to women (cis and trans), 
+> trans men, and genderqueer people. Additionally, they are open to 
+> residents and nationals of the United States of any gender who are 
+> Black/African American, Hispanic/Latin@, American Indian, Alaska Native, 
+> Native Hawaiian, or Pacific Islander. 
+>
+> Please let me know if you have any questions. 
+>
+> Julia 
+>
+
+------=_Part_94_1659208494.1453532021319
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"adn ads" role=3D"listitem" style=3D"padd=
+ing-bottom: 20px; padding-left: 8px; border-left-width: 1px; border-left-st=
+yle: solid; border-left-color: transparent; font-family: arial, sans-serif;=
+ font-size: medium;"><div class=3D"gs" style=3D"margin-left: 44px;"><div id=
+=3D":1fs" class=3D"ii gt m1526d3cb0499e84b adP adO" style=3D"margin-top: 5p=
+x; margin-right: 15px; padding-bottom: 5px; font-size: 12.8px; direction: l=
+tr; position: relative;"><div id=3D":1fw" class=3D"a3s" style=3D"overflow: =
+hidden;"><div dir=3D"ltr"><div><span style=3D"font-size: 12.8px;">I am Sayl=
+i Karnik, an=C2=A0</span><span style=3D"font-size: 12.8px;">Outreachy</span=
+><span style=3D"font-size: 12.8px;">=C2=A0aspirant for the upcoming Round 1=
+2 in May.I would like to contribute to Linux Kernel as it would be a great =
+learning experience for me.I have started going through the tutorial at=C2=
+=A0</span><a href=3D"http://kernelnewbies.org/" target=3D"_blank" style=3D"=
+color: rgb(17, 85, 204); font-size: 12.8px;">kernelnewbies.org</a><span sty=
+le=3D"font-size: 12.8px;">.=C2=A0</span></div><div><span style=3D"font-size=
+: 12.8px;"><br></span></div><div><span style=3D"font-size: 12.8px;">What sh=
+ould I start working on in order to contribute to=C2=A0</span><span style=
+=3D"color: rgb(0, 0, 0); font-family: Arial, &#39;Lucida Grande&#39;, sans-=
+serif; font-size: 12px; line-height: 15px;">Coccinelle?</span></div><div><s=
+pan style=3D"font-size: 12.8px;">Please assist me to go further in this ini=
+tiative.</span><div style=3D"font-size: 12.8px;">Many Thanks!</div></div><d=
+iv class=3D"yj6qo"></div></div></div></div><div class=3D"hi" style=3D"width=
+: auto; border-bottom-left-radius: 1px; border-bottom-right-radius: 1px; ba=
+ckground: rgb(242, 242, 242);"></div></div><div class=3D"ajx" style=3D"clea=
+r: both;"></div></div><div class=3D"gA gt acV" style=3D"border-top-style: n=
+one; font-size: 12.8px; width: auto; border-bottom-left-radius: 0px; border=
+-bottom-right-radius: 0px; font-family: arial, sans-serif; background-image=
+: initial; background-attachment: initial; background-size: initial; backgr=
+ound-origin: initial; background-clip: initial; background-position: initia=
+l; background-repeat: initial;"><div class=3D"gB xu"></div></div>On Monday,=
+ January 18, 2016 at 2:25:54 PM UTC+5:30, Julia Lawall wrote:<blockquote cl=
+ass=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px =
+#ccc solid;padding-left: 1ex;">The application period for round 12 will be =
+February 9 - March 22. =C2=A0If you
+<br>haven&#39;t been an intern before, please consider applying. =C2=A0If y=
+ou have been
+<br>an intern before, please consider whether you know someone else who mig=
+ht
+<br>like to apply :)
+<br>
+<br>The eligibility seems to be the same as in round 11:
+<br>
+<br>Currently, internships are open internationally to women (cis and trans=
+),
+<br>trans men, and genderqueer people. Additionally, they are open to
+<br>residents and nationals of the United States of any gender who are
+<br>Black/African American, Hispanic/Latin@, American Indian, Alaska Native=
+,
+<br>Native Hawaiian, or Pacific Islander.
+<br>
+<br>Please let me know if you have any questions.
+<br>
+<br>Julia
+<br></blockquote></div>
+------=_Part_94_1659208494.1453532021319--
+
+------=_Part_93_90672466.1453532021318--
 
