@@ -1,111 +1,79 @@
-X-GM-THRID: 6212178129179377664
-X-Received: by 10.13.229.4 with SMTP id o4mr14295731ywe.36.1446385432675;
-        Sun, 01 Nov 2015 05:43:52 -0800 (PST)
+X-GM-THRID: 6230054810210533376
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.141.1.4 with SMTP id c4mr1159035qhd.2.1453962612556;
+        Wed, 27 Jan 2016 22:30:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.98.35 with SMTP id n32ls1943083qge.78.gmail; Sun, 01 Nov
- 2015 05:43:52 -0800 (PST)
-X-Received: by 10.129.116.136 with SMTP id p130mr11372890ywc.4.1446385432076;
-        Sun, 01 Nov 2015 05:43:52 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id iz5si1355890pbc.2.2015.11.01.05.43.52
+Received: by 10.50.157.103 with SMTP id wl7ls118448igb.37.canary; Wed, 27 Jan
+ 2016 22:30:12 -0800 (PST)
+X-Received: by 10.66.242.141 with SMTP id wq13mr1179131pac.8.1453962612174;
+        Wed, 27 Jan 2016 22:30:12 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
+        by gmr-mx.google.com with ESMTPS id u66si951153pfa.2.2016.01.27.22.30.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 05:43:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Wed, 27 Jan 2016 22:30:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id z6so120228984pas.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 05:43:52 -0800 (PST)
+Received: by mail-pf0-x229.google.com with SMTP id 65so18282270pfd.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Jan 2016 22:30:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ET9HIbL5KqcsP3ZNo6BFvwBrV0hgQBhINjulfAVU9Lw=;
-        b=QCQNwJqF1saFofYRuojC7t0P85XYeO/5ZOfJGHo73lEpaDYPVmsfKPSXXDyCPUNEWU
-         rLhcCr+H7FcObh1zXE1Gi6QxD4VriMbUpJfvr3aYNzRLM8pvXQtYEJ9kt9wVdXE1BWvx
-         u8QH2gmbLFvMQa+BHL6nO8b/ixNlnK6yOtFXShRVFJ2QJmM6nVFFY/+nBZEa6Ts6z9jO
-         PtWTyRyw17Vm6TwKhGqwAwnxYdq8zLvESxkXZ+ARNcdNRTE42pVf5vk+zI2JLbIxmjZZ
-         u1g0y9Pu9g1FhU1HokO5aUgyxnS3KJkFlTU9L/hmbSXqNmeqxCkvfpJQroAY2jTjcLdc
-         FnUw==
-X-Received: by 10.68.203.73 with SMTP id ko9mr20779236pbc.139.1446385431868;
-        Sun, 01 Nov 2015 05:43:51 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.108.132])
-        by smtp.gmail.com with ESMTPSA id mk5sm18707140pab.44.2015.11.01.05.43.50
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 01 Nov 2015 05:43:51 -0800 (PST)
-Date: Sun, 1 Nov 2015 19:13:46 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org
-Subject: [PATCH] scsi: bfa: Remove struct timeval
-Message-ID: <20151101134346.GA8108@amitoj-Inspiron-3542>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=9yHDpATI5BTb6GP+7uYxSV2tkJl0oAC1K1DKFAEJsJE=;
+        b=lMYMN93EXnEH5KUIzHtFTMR+5Q7n8EHhQVz+rJjitjAeYn9crqGcIbKJM+RDEgzz1o
+         AnVeOkrbezwW+CWbD75BDEAUcekRAlvw9fJ7XmKdBJJKyDKa/KW6VZeO9RpNLx52ydnP
+         sOqcYeVqw3B0zJ/KALtlDxl5eXfe5yJQ8dpseW3nJQpVyUo5ucbVxXcdfp+VEQSbcy41
+         xRVcgWSkhn1ccJuqzKNscAHfbiGiyppAje675CD7h5U2K8EsxYhr2Z9Lfa0mMSVmbVlb
+         OoUJMQ048fqWUMLFrEOvQP7f/s26kM0T7u0CJmZyd60C8hHBlShBaqjFExGH00TO0kbJ
+         eSjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=9yHDpATI5BTb6GP+7uYxSV2tkJl0oAC1K1DKFAEJsJE=;
+        b=JqNZEG0AHUBRmQMkTA/sBp2PBDKWreAqQsyIlOXa193sI+bQZmX/kO63elJfVJFWZ5
+         jKaCpb+Uanwzq5RZLuWIp9O81qQvR1FhgVm9OS9ISQNJ1OIxoc3hAiarnhfQir0xMsxW
+         un9mUXRh8tHdcgE201xeVyAVpAFvJg0Lr5cFGo71LVRls25p3QQquxToApgRpEX3opkT
+         VJE3mcTKl8IrjqdPx6VR5I1vma9Yp+ZrzpRDiM3jhnRBJgDbKvl7YNsQ+qat5lQ9Nber
+         Z6Re0FC2LRcrgNuvRajz7kw2uwNfEVGFrwdcHt16dfT4tJC9sRROwusQfPfow2UHSZ8d
+         wNRA==
+X-Gm-Message-State: AG10YOTk3q9MfjpI4MmRzq0i5d4wFOolR/G5VQHkn1NM+uq8u7CEblo92nIvzJZ+GAC2PA==
+X-Received: by 10.98.72.200 with SMTP id q69mr2061053pfi.159.1453962612054;
+        Wed, 27 Jan 2016 22:30:12 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([183.82.228.136])
+        by smtp.gmail.com with ESMTPSA id 68sm13254964pfa.78.2016.01.27.22.30.10
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 27 Jan 2016 22:30:11 -0800 (PST)
+Date: Thu, 28 Jan 2016 12:00:07 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Abhishek Naik <absnaik810@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Difficulties to install the kernel
+Message-ID: <20160128063007.GB9938@sudip-pc>
+References: <998e55bf-44ba-47e8-a832-62db5b09fc85@googlegroups.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <998e55bf-44ba-47e8-a832-62db5b09fc85@googlegroups.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-32 bit systems using 'struct timeval' will break in the year 2038, so
-we modify the code appropriately.
+On Sat, Dec 19, 2015 at 09:54:31AM -0800, Abhishek Naik wrote:
+> Hi,
+> 
+> I just downloaded the kernel source code and currently I am trying to 
+> install the same.  However, when I run the 'sudo make modules_install 
+> install' command, I get an error 'make: *** No rule to make target 
+> 'modules_install'.  Stop.'
 
-This patch replaces the use of struct timeval and do_gettimeofday()
-with ktime_get_real_seconds() which returns a 64 bit seconds value.
+you can find the steps at http://kernelnewbies.org/KernelBuild
 
-This patch also replaces u32 timestamp with u64 timestamp in
-bfi_ioc_ctrl_req_s structure to store the 64 bit seconds value
-returned by ktime_get_real_seconds()
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/scsi/bfa/bfa_ioc.c | 5 ++---
- drivers/scsi/bfa/bfi.h     | 2 +-
- 2 files changed, 3 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/scsi/bfa/bfa_ioc.c b/drivers/scsi/bfa/bfa_ioc.c
-index 98f7e8c..c52c3c3 100644
---- a/drivers/scsi/bfa/bfa_ioc.c
-+++ b/drivers/scsi/bfa/bfa_ioc.c
-@@ -15,6 +15,7 @@
-  * General Public License for more details.
-  */
- 
-+#include <linux/ktime.h>
- #include "bfad_drv.h"
- #include "bfad_im.h"
- #include "bfa_ioc.h"
-@@ -1808,13 +1809,11 @@ static void
- bfa_ioc_send_enable(struct bfa_ioc_s *ioc)
- {
- 	struct bfi_ioc_ctrl_req_s enable_req;
--	struct timeval tv;
- 
- 	bfi_h2i_set(enable_req.mh, BFI_MC_IOC, BFI_IOC_H2I_ENABLE_REQ,
- 		    bfa_ioc_portid(ioc));
- 	enable_req.clscode = cpu_to_be16(ioc->clscode);
--	do_gettimeofday(&tv);
--	enable_req.tv_sec = be32_to_cpu(tv.tv_sec);
-+	enable_req.tv_sec = be64_to_cpu(ktime_get_real_seconds());
- 	bfa_ioc_mbox_send(ioc, &enable_req, sizeof(struct bfi_ioc_ctrl_req_s));
- }
- 
-diff --git a/drivers/scsi/bfa/bfi.h b/drivers/scsi/bfa/bfi.h
-index 9ef91f9..aaa68bc 100644
---- a/drivers/scsi/bfa/bfi.h
-+++ b/drivers/scsi/bfa/bfi.h
-@@ -454,7 +454,7 @@ struct bfi_ioc_ctrl_req_s {
- 	struct bfi_mhdr_s	mh;
- 	u16			clscode;
- 	u16			rsvd;
--	u32		tv_sec;
-+	u64			tv_sec;
- };
- #define bfi_ioc_enable_req_t struct bfi_ioc_ctrl_req_s;
- #define bfi_ioc_disable_req_t struct bfi_ioc_ctrl_req_s;
--- 
-1.9.1
-
+regards
+sudip
 
