@@ -1,86 +1,94 @@
-X-GM-THRID: 6205157797691129856
-X-Received: by 10.50.79.234 with SMTP id m10mr17714430igx.5.1444750884370;
-        Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
+X-GM-THRID: 6208527977579282432
+X-Received: by 10.66.254.104 with SMTP id ah8mr26260383pad.16.1454909404978;
+        Sun, 07 Feb 2016 21:30:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.227 with SMTP id z3ls1456479igl.16.canary; Tue, 13 Oct
- 2015 08:41:24 -0700 (PDT)
-X-Received: by 10.50.134.199 with SMTP id pm7mr1342315igb.0.1444750884088;
-        Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id uv4si435120pac.0.2015.10.13.08.41.24
+Received: by 10.182.97.225 with SMTP id ed1ls1476910obb.76.gmail; Sun, 07 Feb
+ 2016 21:30:04 -0800 (PST)
+X-Received: by 10.182.135.169 with SMTP id pt9mr24447411obb.17.1454909403868;
+        Sun, 07 Feb 2016 21:30:03 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id 12si3737121pfb.1.2016.02.07.21.30.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 07 Feb 2016 21:30:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id ve7so24956314pab.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 08:41:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=NbkZTzpdZ5qNWASZG/YjwMttVWEMP/tDq42rPIPHq/U=;
-        b=H+APUm6S/eMq9i2bo5/Qw3RqRYcgGXK645oAdt4XaKuFssVuHYScn6pwdS1MDlTmkK
-         EevmWCAcUY7VW2jlRD4wkNdgSOwGyocokE50rzmIWLYUK/2RZNrp/xVw7Vw561nRx18G
-         lbce4bGwMpu4jagx1hPQqw+zyOrLGU3fKBy7MbjBC32S3VApGR2PlMmpzzSWDH51UxBK
-         GiA3OfQ7PQj6Yel6Ox6kyWiQSsI8zOk6scorRbGPHQO4jkC6uBpyJ1Lqv09Ye8C7Kfap
-         6SWtgOMnF33jdQLeM5c2JVOyj3uQLdKtcuPvQWh/xOXMz41I0xnyipSi65gwT3E9nm7v
-         Ifvg==
-X-Received: by 10.66.102.106 with SMTP id fn10mr41847234pab.156.1444750883966;
-        Tue, 13 Oct 2015 08:41:23 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id xm9sm4579917pbc.32.2015.10.13.08.41.22
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 08:41:23 -0700 (PDT)
-Date: Tue, 13 Oct 2015 21:11:13 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: unisys: visornic_main: Replace kzalloc with kcalloc
-Message-ID: <20151013154113.GA28785@ubuntu>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id D8B1F1028;
+	Mon,  8 Feb 2016 05:30:02 +0000 (UTC)
+Date: Sun, 7 Feb 2016 21:30:02 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, arnd@arndb.de,
+	y2038@lists.linaro.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] misc: ibmasm: Replace timeval with timespec64
+Message-ID: <20160208053002.GA26394@kroah.com>
+References: <20151023150749.GA13762@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20151023150749.GA13762@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Use kcalloc instead of kzalloc for allocation of array as it prevents
-integer overflow.
-Semantic patch used:
+On Fri, Oct 23, 2015 at 08:37:49PM +0530, Amitoj Kaur Chawla wrote:
+> This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
+> will not give current time beyond 2038.
+> 
+> The patch changes the code to use ktime_get_real_ts64() which returns
+> a 'struct timespec64' instead of do_gettimeofday() which returns a
+> 'struct timeval'
+> 
+> This patch also alters the format strings in sprintf() for now.tv_sec
+> and now.tv_nsec to incorporate 'long long' on 32 bit architectures and
+> leading zeroes respectively.
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+> Changes in v2:
+>         -change format string of now.tv_sec to '%llu'
+>         -change format string of now.tv_nsec to '%.08lu'
+> Changes in v3:
+>         -Replace tv_usec with tv_nsec, error made in v2
+>         -Build tested
+> 
+>  drivers/misc/ibmasm/ibmasm.h | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/misc/ibmasm/ibmasm.h b/drivers/misc/ibmasm/ibmasm.h
+> index 9b08344..82380ae 100644
+> --- a/drivers/misc/ibmasm/ibmasm.h
+> +++ b/drivers/misc/ibmasm/ibmasm.h
+> @@ -34,6 +34,7 @@
+>  #include <linux/kref.h>
+>  #include <linux/device.h>
+>  #include <linux/input.h>
+> +#include <linux/time64.h>
+>  
+>  /* Driver identification */
+>  #define DRIVER_NAME	"ibmasm"
+> @@ -53,9 +54,10 @@ extern int ibmasm_debug;
+>  
+>  static inline char *get_timestamp(char *buf)
+>  {
+> -	struct timeval now;
+> -	do_gettimeofday(&now);
+> -	sprintf(buf, "%lu.%lu", now.tv_sec, now.tv_usec);
+> +	struct timespec64 now;
+> +	ktime_get_real_ts64(&now);
+> +	sprintf(buf, "%llu.%.08lu", (long long)now.tv_sec, 
+> +					now.tv_nsec / NSEC_PER_USEC);
+>  	return buf;
+>  }
+>  
 
-@@
-expression E1,E2,E3;
-@@
+Always run your patches through checkpatch so that a maintainer doesn't
+have to be grumpy and tell you to fix up the obvious checkpatch issues
+in it...
 
-- kzalloc(E1*sizeof(E2),E3)
-+ kcalloc(E1,sizeof(E2),E3)
+thanks,
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/unisys/visornic/visornic_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/unisys/visornic/visornic_main.c b/drivers/staging/unisys/visornic/visornic_main.c
-index 85c9fec..6db74de 100644
---- a/drivers/staging/unisys/visornic/visornic_main.c
-+++ b/drivers/staging/unisys/visornic/visornic_main.c
-@@ -1797,8 +1797,8 @@ static int visornic_probe(struct visor_device *dev)
- 		goto cleanup_netdev;
- 	}
- 
--	devdata->rcvbuf = kzalloc(sizeof(struct sk_buff *) *
--				  devdata->num_rcv_bufs, GFP_KERNEL);
-+	devdata->rcvbuf = kcalloc(devdata->num_rcv_bufs,
-+				  sizeof(struct sk_buff *), GFP_KERNEL);
- 	if (!devdata->rcvbuf) {
- 		err = -ENOMEM;
- 		goto cleanup_rcvbuf;
--- 
-2.1.0
-
+greg k-h
 
