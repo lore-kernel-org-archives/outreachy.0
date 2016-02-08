@@ -1,90 +1,137 @@
-X-GM-THRID: 6256054516784824320
-X-Received: by 10.107.12.213 with SMTP id 82mr12168698iom.18.1456601199716;
-        Sat, 27 Feb 2016 11:26:39 -0800 (PST)
+X-GM-THRID: 6249043244665012224
+X-Received: by 10.112.17.37 with SMTP id l5mr3572393lbd.21.1454968760125;
+        Mon, 08 Feb 2016 13:59:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.28.70 with SMTP id z6ls822606obg.26.gmail; Sat, 27 Feb
- 2016 11:26:39 -0800 (PST)
-X-Received: by 10.182.227.137 with SMTP id sa9mr6724112obc.44.1456601199310;
-        Sat, 27 Feb 2016 11:26:39 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id yd9si2657661pab.1.2016.02.27.11.26.39
+Received: by 10.25.213.213 with SMTP id m204ls697741lfg.46.gmail; Mon, 08 Feb
+ 2016 13:59:19 -0800 (PST)
+X-Received: by 10.112.149.228 with SMTP id ud4mr412382lbb.18.1454968759489;
+        Mon, 08 Feb 2016 13:59:19 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c143si396322wmd.1.2016.02.08.13.59.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Feb 2016 11:26:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Mon, 08 Feb 2016 13:59:19 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q129so291309pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 27 Feb 2016 11:26:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Q3JYlyB07xAiDxZ28sRaSg25CvTICvkJCAy6a7asNk4=;
-        b=q7R1oahVv4etfV2o5ESZUdX7NM/bQPGwVUWfjIPYozmCC83XG9kuAW5uu55woBgF3/
-         s+JinfsnPFVd2FNobttNTB45o5iW3RBW92FrCPCGjAikCd0eMAdCJszsyJQPHy+3Wvga
-         co3DsN570TrTqqqErKH5gmj+QeNqTnz4HLAmx9uI/43OvUvGEU90lx06DNFKHAViLqqW
-         SxTVUmZAQVeQz/1ndwEK43NlYbByxEKU4yfM2g2ONcRWcHKWN6bNCGmDw5tiXR5uhzDl
-         qNhj7deGGcm78bkEG9OGLTBDYlKtZxJqEIk5gfyxzCcJfyZEcT6VZLrNaFQw/+7sEmxG
-         8Beg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Q3JYlyB07xAiDxZ28sRaSg25CvTICvkJCAy6a7asNk4=;
-        b=HL440V8jBcxQcsdCztrPGfRcnidXpxUBjZC5FvtZaciwIwKocbyv2r1AKih4phd0PH
-         BmI5FZ2KIqFOWCY9EnpSjKYgXkwLmpsy/LEJqvsNFZHUgerp/64QRcwyWvMnlN58yFt/
-         +4u8XZKb7LQkBUqWwTfqDey6FiSBwDo/TxhFxZ2KVxPMOytZ5ZT0QgYMSco6ZARBJqun
-         d1JYz/gLYZYeszL8ZHNywfdUl92c/PP+rVeaq5FpFlNRkdLHWwnhtZuf3cxrgtNs5Yfy
-         vz2gk1JJcyWiLr/esKvf85mGtLZAbxmOsjkwqA9QdvOVcb0LRtOl+GDmnxT+2Kpla4IL
-         cEYA==
-X-Gm-Message-State: AD7BkJJQY219yEInS11AtF76nwd3sOPC5gLjLQ1OSBFNhIKZP3lqmZBTm+gkNq9Wudtr4Q==
-X-Received: by 10.98.11.134 with SMTP id 6mr11419910pfl.109.1456601199111;
-        Sat, 27 Feb 2016 11:26:39 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.44])
-        by smtp.gmail.com with ESMTPSA id l24sm27681814pfb.73.2016.02.27.11.26.37
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 27 Feb 2016 11:26:38 -0800 (PST)
-Date: Sat, 27 Feb 2016 16:56:41 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,418,1449529200"; 
+   d="scan'208";a="163943581"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 08 Feb 2016 22:59:18 +0100
+Date: Mon, 8 Feb 2016 22:59:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] Staging: usb: Use PTR_ERR_OR_ZERO instead of
- if(IS_ERR(...)) + PTR_ERR.
-Message-ID: <20160227112641.GA5408@sandhya>
+cc: daniel.baluta@intel.com, pablo@netfilter.org, tj@kernel.org, 
+    gregkh@linuxfoundation.org
+Subject: Welcome to Linux Outreachy round 12
+Message-ID: <alpine.DEB.2.02.1602082255470.2060@localhost6.localdomain6>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Use PTR_ERR_OR_ZERO instead of if(IS_ERR(...)) + PTR_ERR.
+Greetings potential Linux kernel Outreachy interns!  Please read this
+*entire* email, even if you have applied in the past, as some things have
+changed for this application round.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/usb/phy/phy-qcom-8x16-usb.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/drivers/usb/phy/phy-qcom-8x16-usb.c b/drivers/usb/phy/phy-qcom-8x16-usb.c
-index 579587d..dc97abe 100644
---- a/drivers/usb/phy/phy-qcom-8x16-usb.c
-+++ b/drivers/usb/phy/phy-qcom-8x16-usb.c
-@@ -291,10 +291,7 @@ static int phy_8x16_read_devicetree(struct phy_8x16 *qphy)
- 
- 	qphy->switch_gpio = devm_gpiod_get_optional(dev, "switch",
- 						   GPIOD_OUT_LOW);
--	if (IS_ERR(qphy->switch_gpio))
--		return PTR_ERR(qphy->switch_gpio);
--
--	return 0;
-+	PTR_ERR_OR_ZERO(qphy->switch_gpio);
- }
- 
- static int phy_8x16_reboot_notify(struct notifier_block *this,
--- 
-1.8.3.4
+What is Outreachy?
+------------
 
+The next application round for Outreachy internships starts tomorrow, 
+February 9 and runs until March 22.  Outreachy interns are paid $5,500 to 
+work on a full-time internship with an open source mentor from May 23, 
+2016 to August 23, 2016.  Interns are also granted a $500 travel stipend 
+to go to any conference approved by their mentor that relates to their 
+project, within a year after the start of the internship.  Participants 
+are expected to have the internship work be a primary focus during the 
+internship dates and to spend 40 hours a week on it.
+
+Who can apply?
+--------------
+
+To qualify to apply for Outreachy, you must meet the following requirements:
+
+ * You must be over 18,
+ * You must be able to work full-time (40 hours per week) from May 23, 2016
+ * to August 23, 2016,
+ * You must be a woman (cis and trans), trans man, genderqueer person, or a
+   resident or national of the United States of any gender who is
+   Black/African American, Hispanic/Latin@, American Indian, Alaska Native,
+   Native Hawaiian, or Pacific Islander, and
+ * You cannot have participated as an intern in Outreachy or Google Summer
+   of Code before.
+
+What Outreachy projects can you apply to?
+-----------------------------------
+
+There will be several different open source projects participating in
+this round of Outreachy, and the full list will be officially announced
+tomorrow.
+
+https://wiki.gnome.org/Outreachy/2016/MayAugust#Participating_Organizations
+
+The Linux kernel currently has four projects listed on our wiki.
+
+http://kernelnewbies.org/OutreachyIntro
+
+
+How do I apply to the Linux kernel project?
+-------------------------------------------
+
+The application process for the Linux kernel project is outlined here:
+
+http://kernelnewbies.org/OutreachyApply
+
+Basically, applicants will need to walk through our tutorial for
+creating their first Linux kernel patch:
+
+http://kernelnewbies.org/Outreachyfirstpatch
+
+Applicants should also join the #outreachy IRC channel on irc.gnome.org, and
+the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble with
+IRC, please ask for help on this mailing list.
+
+To get started, you should have 10 patches accepted and 2 patch series, on
+the staging drivers, as outlined in above tutorial.  Once you have
+completed that, you should start working on the small tasks associated with
+the various projects.  The task lists for each mentor will be filled in
+over time and are linked from the OutreachyIntro page.
+
+*Before* you start on a task, please claim that task through this page:
+
+http://kernelnewbies.org/OutreachyTasks
+
+If you have applied before and/or already have some patches accepted into
+the Linux kernel, please contact me to discuss whether you should start
+with staging cleanup patches or move on directly to the small tasks.
+
+There is a tips section at the end of the tutorial to outline what
+behaviors we look for in potential Outreachy interns.  I hope this will
+give more insight into our selection process.
+
+http://kernelnewbies.org/Outreachyfirstpatch#tips
+
+We've also noticed that applicants (and even accepted interns!) aren't
+consistently using the email communication style preferred by the Linux
+kernel community.  This style can be as important as coding style to
+many community members, so please review the email style guidelines and
+attempt to follow them:
+
+http://kernelnewbies.org/Outreachyfirstpatch#head-9799d3ebaa1221875dfdb0a05c4063dc4eb474a1
+
+
+When can I apply?
+-----------------
+
+The application period for the Linux kernel project during Outreachy Round 12
+is February 9 to March 22.
+
+Good luck with your application!  If you have any questions, mentors
+will be available via IRC or this mailing list.  Do not hesitate to ask
+questions if you get stuck in the tutorial.
+
+Julia Lawall
+Linux Kernel Outreachy Coordinator
 
