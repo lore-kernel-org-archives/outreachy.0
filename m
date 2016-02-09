@@ -1,80 +1,89 @@
 X-GM-THRID: 6249299693524746240
-X-Received: by 10.28.48.88 with SMTP id w85mr645907wmw.5.1455031429317;
-        Tue, 09 Feb 2016 07:23:49 -0800 (PST)
+X-Received: by 10.50.50.208 with SMTP id e16mr4565005igo.12.1455030685030;
+        Tue, 09 Feb 2016 07:11:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.174.145 with SMTP id x139ls626266wme.10.gmail; Tue, 09 Feb
- 2016 07:23:47 -0800 (PST)
-X-Received: by 10.194.172.40 with SMTP id az8mr4126529wjc.3.1455031415680;
-        Tue, 09 Feb 2016 07:23:35 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id w128si558769wmd.0.2016.02.09.07.23.35
+Received: by 10.50.36.5 with SMTP id m5ls895580igj.32.gmail; Tue, 09 Feb 2016
+ 07:11:24 -0800 (PST)
+X-Received: by 10.66.100.201 with SMTP id fa9mr33732523pab.11.1455030684112;
+        Tue, 09 Feb 2016 07:11:24 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x244.google.com (mail-qg0-x244.google.com. [2607:f8b0:400d:c04::244])
+        by gmr-mx.google.com with ESMTPS id y131si2115587ywc.0.2016.02.09.07.11.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 07:23:35 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 09 Feb 2016 07:11:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) client-ip=2607:f8b0:400d:c04::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,421,1449529200"; 
-   d="scan'208";a="202310194"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 09 Feb 2016 16:23:35 +0100
-Date: Tue, 9 Feb 2016 16:23:33 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Janani Ravichandran <janani.rvchndrn@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: rdma: Use kcalloc instead
- of kzalloc
-In-Reply-To: <20160209201046.GA6794@janani-Inspiron-3521>
-Message-ID: <alpine.DEB.2.10.1602091622220.2578@hadrien>
-References: <20160209201046.GA6794@janani-Inspiron-3521>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qg0-x244.google.com with SMTP id y89so5773446qge.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 07:11:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=MqZCV1VWC4bJfRt/PqOiFdOW5gG5SGFqzid4Ijhi9Fs=;
+        b=qqDFu/WCp5Kr9AoOJXUStMbcAekp6omEbHk5euqCErvLbUzohaRhYFiEb1AqtiE3Z5
+         INj6yhi+L1jQuvGjYRQfrGa+8XkoMrY1/P88Awyo9/I+41sPxV8kdfkEERcq3Vv+zVMT
+         jhsfKAStrdDnfJhoIbBRkMz/K9OqfA/j04eRgzxq/rrPgwddpsdY2ikiZY6T137S8DpH
+         X7kAR97Si4X1uUxkxTb/k2RUv0RL+5HVX9EMEhJsii4VnlDDO2WARMoy7vYv70l3JOqu
+         RSWT1iZXuw0gg+MllY8LpzLlAsgdo7tp32oHxz+n3ZkTUnqyzPtTZx3tqEGhocx1tRCR
+         c5RA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=MqZCV1VWC4bJfRt/PqOiFdOW5gG5SGFqzid4Ijhi9Fs=;
+        b=bVS+n/LMIhCJN2XaRAmJIB1tyS58YpTA7cZutarpDwTCDuVKA8oXIq/s+SoNBzm0Cv
+         h6tETLSJVdCQ0EHquo0Iu6eSf5Rr4rtFVb9ZkzqzW8llS/PyGQqprLUT3S2KTFRJdtvN
+         6zt3O/XAx3mwX9zx7iU3BGz4hwol0lvMgyE2TpaK5nhdDLLOHJQq3/iPBS1IwCvrDHYs
+         qZ/wP0erTGkYZBpz4RJDwr68tBI93Eapf87ByiCzSgep4Abx6pFBtU1Ii/jYYN6brXRS
+         S+jacVOHMoiOSpo6stokv+GJ9Hm+yhupOWQGDFUWrag0XX1NA5DKCps5zuKZaFSyGJIb
+         amjw==
+X-Gm-Message-State: AG10YOQ4OsNZcRgVB3Bl67xhU5URY5/MqTJN7KwYMkyn4VDycSpeW5co1Es/bbln6VLFFA==
+X-Received: by 10.140.167.135 with SMTP id n129mr42422965qhn.73.1455030683882;
+        Tue, 09 Feb 2016 07:11:23 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id z190sm16037304qkz.16.2016.02.09.07.11.22
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Feb 2016 07:11:23 -0800 (PST)
+Date: Tue, 9 Feb 2016 15:10:46 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: rdma: Use kcalloc instead of kzalloc
+Message-ID: <20160209201046.GA6794@janani-Inspiron-3521>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tue, 9 Feb 2016, Janani Ravichandran wrote:
+Use kcalloc rather than kzalloc when multiplied with size to prevent
+integer overflows. This change also makes code nicer to read.
 
-> Use kcalloc rather than kzalloc when multiplied with size to prevent
-> integer overflows. This change also makes code nicer to read.
->
-> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
-> ---
-> Changes since v1:
->  * Removed unneeded parentheses around kzalloc's first parameter
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+Changes since v1:
+ * Removed unneeded parentheses around kzalloc's first parameter
+ drivers/staging/rdma/hfi1/efivar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-You don't have to send a v3 for this, but it would be nicer to put a blank
-line between this comment and the diffstat information.
+diff --git a/drivers/staging/rdma/hfi1/efivar.c b/drivers/staging/rdma/hfi1/efivar.c
+index feef163..b8711f3 100644
+--- a/drivers/staging/rdma/hfi1/efivar.c
++++ b/drivers/staging/rdma/hfi1/efivar.c
+@@ -83,7 +83,7 @@ static int read_efi_var(const char *name, unsigned long *size,
+ 	if (!efi_enabled(EFI_RUNTIME_SERVICES))
+ 		return -EOPNOTSUPP;
+ 
+-	uni_name = kcalloc((strlen(name) + 1), sizeof(efi_char16_t),
++	uni_name = kcalloc(strlen(name) + 1, sizeof(efi_char16_t),
+ 			   GFP_KERNEL);
+ 	temp_buffer = kzalloc(EFI_DATA_SIZE, GFP_KERNEL);
+ 
+-- 
+2.5.0
 
-I wonder though if GFP_KERNEL would now fit on the same line with the
-rest?
-
-julia
-
->  drivers/staging/rdma/hfi1/efivar.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rdma/hfi1/efivar.c b/drivers/staging/rdma/hfi1/efivar.c
-> index feef163..b8711f3 100644
-> --- a/drivers/staging/rdma/hfi1/efivar.c
-> +++ b/drivers/staging/rdma/hfi1/efivar.c
-> @@ -83,7 +83,7 @@ static int read_efi_var(const char *name, unsigned long *size,
->  	if (!efi_enabled(EFI_RUNTIME_SERVICES))
->  		return -EOPNOTSUPP;
->
-> -	uni_name = kcalloc((strlen(name) + 1), sizeof(efi_char16_t),
-> +	uni_name = kcalloc(strlen(name) + 1, sizeof(efi_char16_t),
->  			   GFP_KERNEL);
->  	temp_buffer = kzalloc(EFI_DATA_SIZE, GFP_KERNEL);
->
-> --
-> 2.5.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160209201046.GA6794%40janani-Inspiron-3521.
-> For more options, visit https://groups.google.com/d/optout.
->
 
