@@ -1,147 +1,109 @@
-X-GM-THRID: 6341635056758423552
-X-Received: by 10.194.96.177 with SMTP id dt17mr492375wjb.21.1476526972681;
-        Sat, 15 Oct 2016 03:22:52 -0700 (PDT)
+X-GM-THRID: 6249310689819623424
+X-Received: by 10.28.225.8 with SMTP id y8mr650108wmg.7.1455031770498;
+        Tue, 09 Feb 2016 07:29:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.168.206 with SMTP id r197ls358295wme.19.canary; Sat, 15 Oct
- 2016 03:22:52 -0700 (PDT)
-X-Received: by 10.28.207.135 with SMTP id f129mr110133wmg.7.1476526972178;
-        Sat, 15 Oct 2016 03:22:52 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id t63si123971wma.1.2016.10.15.03.22.52
+Received: by 10.25.210.16 with SMTP id j16ls711223lfg.52.gmail; Tue, 09 Feb
+ 2016 07:29:29 -0800 (PST)
+X-Received: by 10.112.125.99 with SMTP id mp3mr4067139lbb.3.1455031769778;
+        Tue, 09 Feb 2016 07:29:29 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
+        by gmr-mx.google.com with ESMTPS id w197si549453wmw.3.2016.02.09.07.29.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 03:22:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Tue, 09 Feb 2016 07:29:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id z189so1994017wmb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 03:22:52 -0700 (PDT)
+Received: by mail-wm0-x233.google.com with SMTP id g62so179116686wme.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 07:29:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=JcjPRWgtEapPhN9RV+TdfRja2pgxTPKDEzlATJtBA8U=;
-        b=ODss3DMdefvPbMeQAsMc9Grn+04auTF/BryXLMlREIyyYU2A929wkyI0FcWPYATu37
-         9/B009pAMdPpqOHl63znHG0YNE5ENV1+jMDFPbO0Fj0PxR1r+HqffuDJ/DTa7p/MMq89
-         rcY6PYsvgh2GPIesvIU+2aOwYU5culpj9Z1AwOb4spI5t0Q+tWb86ZRbGXayvHwhDB37
-         wb7PgaDGRq+mUfTbPZJYfV8CreMC+1wE88qbuSXriY8nICNjQzShHlGBU2n8xX11ylpE
-         BlyuOyjdYOpGF5Ill6VOENwu2nVRPYbLjuCTAGAYLco6Prwe2rUFFo0Hn5zCPhppOEYB
-         3sjg==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type:content-transfer-encoding;
+        bh=iExREUZSjES1jB1krrTeRc7rNPx5ixFqaGEGR4hCBzA=;
+        b=UDALygplA23+m/PN53Q14804JE3rove4TN6vYWIyg+gOyRBnxbsd2QEk7aTGubNzsB
+         VfbCCIdl8pVCos18iF+LdP3FgDbcOR1Q8cDove4YptgFcm60QPGS1i5vXAIYYoHKIAV0
+         zgH5XQ1QB172mL9KxB461Nvl7qdufyQZJb+yowWPITL1BMLHBbaf2AgCVLko9YJRtWQE
+         lDefiTtZS/P3HFpZpgpcUQsz/hSrk6DXNZvBIyK04Q0dqPAZ9DciEvus5/NjqvqkEMPw
+         MzL2tkRmTBMQvVpMQ/lb/4kOaXMgDB6WgW7h9f75ub6UkhFw9+kAF4v+yYqY4mNW+UFK
+         lryQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=JcjPRWgtEapPhN9RV+TdfRja2pgxTPKDEzlATJtBA8U=;
-        b=lCR7dklFxPw17Ni+xzS6anrIvUH1Ewngq/qiBjVZimUgJ0hfqvkYSX+iv5eKdj6hly
-         pA9Hq8ig1s/3Nmhx6WIc4D6JKjDiMQIbkTDDl8D0dCOpL7gFtU3hgSSO8UOaZRJWyBnX
-         W+0/jiq67P6+R8DfeLQBTDzxgrS9T7xKRmIAINIeECs0oeyu5lp6w3KGvV01WMjfaDZD
-         NBtxhdH5cT5/3YGrIWx9rS5mjeKFFeVumIRK9TDSBWEPpd+sP/6Oxs7TG9wKufaGAjd6
-         WLttlOMVW2IPLqPjbaqmigJq91jJlyGoG9hs4J0fs/5324GnlTnvFJ1dLDovz46QGU3D
-         wMHQ==
-X-Gm-Message-State: AA6/9Rm3gv1bpjf3wwpICj2ucryVsPwyTepW+zveWPz4F9oSBCxclVeZiXYpTBP5jwjPeg==
-X-Received: by 10.28.49.9 with SMTP id x9mr1426421wmx.105.1476526971757;
-        Sat, 15 Oct 2016 03:22:51 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id u77sm2774762wmd.18.2016.10.15.03.22.50
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 15 Oct 2016 03:22:50 -0700 (PDT)
-Date: Sat, 15 Oct 2016 13:22:49 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Sean Hefty <sean.hefty@intel.com>, Doug Ledford <dledford@redhat.com>,
-	Hal Rosenstock <hal.rosenstock@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] infiniband: core: No assignment in if statements
-Message-ID: <20161015102249.GA11314@domino-MS-16Y1>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type
+         :content-transfer-encoding;
+        bh=iExREUZSjES1jB1krrTeRc7rNPx5ixFqaGEGR4hCBzA=;
+        b=gpWs24nryk7xP9JBJBhbkDgh6+fW9NPz1MKGdf6Fk/31/1hehFuXJPL0LO7DfsluK/
+         toStmM/EkDjWT/MiVEU86J1ugYqO3/hPTqtF3G4RJQ0DXPWzUL2zuylnAx8dc4sy44/C
+         8n+wvBqXdTGo+X7QyXJmixlkcvSYBQj//XkxqF8SMu2+iJTRX60sEwt8STcl45/i7dxN
+         SB2weGK+mhYBwbwph7pqyYoYHh+Nof4r0PtHNuwuNfgouk7do9TLUV0UnY/FTBEyQ75H
+         leuFZov4mxzr+axc6S1+g3J2gYzaUTJ6XxXL7Vttnol7obGvD212mc3+fJ661X87VNTs
+         5faA==
+X-Gm-Message-State: AG10YOQJoxLm666u0W2z13lwthfXwFp6xAzLNGKYbzWPAHFBGiHm8qvX0bMxMYWHjJmuIBjLz/cmoVAh1itiaQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.194.95.40 with SMTP id dh8mr10003856wjb.94.1455031769560;
+ Tue, 09 Feb 2016 07:29:29 -0800 (PST)
+Received: by 10.194.222.165 with HTTP; Tue, 9 Feb 2016 07:29:29 -0800 (PST)
+In-Reply-To: <1455031021-3825-1-git-send-email-dilekuzulmez@gmail.com>
+References: <1455031021-3825-1-git-send-email-dilekuzulmez@gmail.com>
+Date: Tue, 9 Feb 2016 17:29:29 +0200
+Message-ID: <CAEnQRZC9W0SUzJ8w=gTMSN7D6O6Pq3jsR8GDi5JkTeNfKJy7Ug@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Add * on subsequent
+ lines in block comment
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Does the assignment before the statement  'if'.
+On Tue, Feb 9, 2016 at 5:17 PM, Dilek Uzulmez <dilekuzulmez@gmail.com> wrot=
+e:
+> From: Dilek =C3=9Cz=C3=BClmez <dilekuzulmez@gmail.com>
+>
+> This patch fixes the checkpatch.pl warning:
+> WARNING: Block comments use * on subsequent lines
+>
+> Signed-off-by: Dilek =C3=9Cz=C3=BClmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/rtl8712/hal_init.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712=
+/hal_init.c
+> index 0a1c631..5b8b689 100644
+> --- a/drivers/staging/rtl8712/hal_init.c
+> +++ b/drivers/staging/rtl8712/hal_init.c
+> @@ -297,7 +297,8 @@ static u8 rtl8712_dl_fw(struct _adapter *padapter)
+>
+>                 tmp8 =3D r8712_read8(padapter, 0x1025000A);
+>                 if (tmp8 & BIT(4)) /* When boot from EEPROM,
+> -                                   & FW need more time to read EEPROM */
+> +                                   * & FW need more time to read EEPROM
+> +                                   */
+Better move this comment one line above if(). This would fit in one line.
 
-Found with Coccinelle:
-@r1@
-identifier ptr;
-expression fn;
-statement S;
-@@
+>                         i =3D 60;
+>                 else                    /* boot from EFUSE */
+>                         i =3D 30;
+> @@ -331,7 +332,8 @@ uint rtl8712_hal_init(struct _adapter *padapter)
+>                     r8712_read32(padapter, RCR));
+>         val32 =3D r8712_read32(padapter, RCR);
+>         r8712_write32(padapter, RCR, (val32 | BIT(26))); /* Enable RX TCP
+> -                                                           Checksum offl=
+oad */
+> +                                                         * Checksum offl=
+oad
+> +                                                         */
+The same here.
 
--if ((ptr = fn)) S
-+ptr = fn;
-+if (ptr) S
+>         netdev_info(padapter->pnetdev, "2 RCR=3D0x%x\n",
+>                     r8712_read32(padapter, RCR));
+>         val32 =3D r8712_read32(padapter, RCR);
+> --
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/infiniband/core/addr.c | 3 ++-
- drivers/infiniband/core/cma.c  | 3 ++-
- drivers/infiniband/core/mad.c  | 9 ++++++---
- 3 files changed, 10 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/infiniband/core/addr.c b/drivers/infiniband/core/addr.c
-index 1374541..bc32ba1 100644
---- a/drivers/infiniband/core/addr.c
-+++ b/drivers/infiniband/core/addr.c
-@@ -445,7 +445,8 @@ static int addr6_resolve(struct sockaddr_in6 *src_in,
- 	fl6.flowi6_oif = addr->bound_dev_if;
- 
- 	dst = ip6_route_output(addr->net, NULL, &fl6);
--	if ((ret = dst->error))
-+	ret = dst->error;
-+	if (ret)
- 		goto put;
- 
- 	rt = (struct rt6_info *)dst;
-diff --git a/drivers/infiniband/core/cma.c b/drivers/infiniband/core/cma.c
-index 5f65a78..324ca48 100644
---- a/drivers/infiniband/core/cma.c
-+++ b/drivers/infiniband/core/cma.c
-@@ -383,7 +383,8 @@ static int cma_comp_exch(struct rdma_id_private *id_priv,
- 	int ret;
- 
- 	spin_lock_irqsave(&id_priv->lock, flags);
--	if ((ret = (id_priv->state == comp)))
-+	ret = (id_priv->state == comp);
-+	if (ret)
- 		id_priv->state = exch;
- 	spin_unlock_irqrestore(&id_priv->lock, flags);
- 	return ret;
-diff --git a/drivers/infiniband/core/mad.c b/drivers/infiniband/core/mad.c
-index 2d49228..76dee32 100644
---- a/drivers/infiniband/core/mad.c
-+++ b/drivers/infiniband/core/mad.c
-@@ -1466,13 +1466,15 @@ static int add_nonoui_reg_req(struct ib_mad_reg_req *mad_reg_req,
- 
- 		/* Allocate method table for this management class */
- 		method = &(*class)->method_table[mgmt_class];
--		if ((ret = allocate_method_table(method)))
-+		ret = allocate_method_table(method);
-+		if (ret)
- 			goto error2;
- 	} else {
- 		method = &(*class)->method_table[mgmt_class];
- 		if (!*method) {
- 			/* Allocate method table for this management class */
--			if ((ret = allocate_method_table(method)))
-+			ret = allocate_method_table(method);
-+			if (ret)
- 				goto error1;
- 		}
- 	}
-@@ -1561,7 +1563,8 @@ static int add_oui_reg_req(struct ib_mad_reg_req *mad_reg_req,
- 				vclass]->method_table[i];
- 			BUG_ON(*method);
- 			/* Allocate method table for this OUI */
--			if ((ret = allocate_method_table(method)))
-+			ret = allocate_method_table(method);
-+			if (ret)
- 				goto error3;
- 			memcpy((*vendor_table)->vendor_class[vclass]->oui[i],
- 			       mad_reg_req->oui, 3);
--- 
-2.7.4
-
+thanks,
+Daniel.
 
