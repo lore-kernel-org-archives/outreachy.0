@@ -1,85 +1,87 @@
 X-GM-THRID: 6249299693524746240
-X-Received: by 10.112.201.104 with SMTP id jz8mr4165457lbc.13.1455028585183;
-        Tue, 09 Feb 2016 06:36:25 -0800 (PST)
+X-Received: by 10.107.6.163 with SMTP id f35mr33515755ioi.25.1455028470704;
+        Tue, 09 Feb 2016 06:34:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.87.194 with SMTP id l185ls768044lfb.96.gmail; Tue, 09 Feb
- 2016 06:36:24 -0800 (PST)
-X-Received: by 10.112.219.138 with SMTP id po10mr4065559lbc.5.1455028584584;
-        Tue, 09 Feb 2016 06:36:24 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
-        by gmr-mx.google.com with ESMTPS id w128si550733wmd.0.2016.02.09.06.36.24
+Received: by 10.182.45.161 with SMTP id o1ls1888662obm.27.gmail; Tue, 09 Feb
+ 2016 06:34:30 -0800 (PST)
+X-Received: by 10.182.243.135 with SMTP id wy7mr31125404obc.8.1455028470338;
+        Tue, 09 Feb 2016 06:34:30 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qk0-x232.google.com (mail-qk0-x232.google.com. [2607:f8b0:400d:c09::232])
+        by gmr-mx.google.com with ESMTPS id v197si2315114ywa.1.2016.02.09.06.34.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 06:36:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
+        Tue, 09 Feb 2016 06:34:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender) client-ip=2607:f8b0:400d:c09::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22a.google.com with SMTP id g62so25638027wme.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 06:36:24 -0800 (PST)
+Received: by mail-qk0-x232.google.com with SMTP id s5so70768222qkd.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 06:34:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=5Ogg1WilQ+LMcyFT9XLM8Rs4Z7sSOoRuQtpm3FyVzc4=;
-        b=UZoRbh5/YSKmJdKNTqjvKIndSwLvI7f6LpVIZGuEXW2CpL+aruPvOAeM7imGTRCfo8
-         XuEqZ/lBCpru6Gzp3Ho3yWip886i2gqfoXkvV3ViL2zCJc5t//QBLnXnBzSZTKp2Eu//
-         e/6tNuvp6GqCURtqC9cX9p+SJpXaoxjVnAE6i56J0/4MquRxMrvjnwnJX6GztW63ALLw
-         d+28MhoAtLR1tq8gCsQ8N56EIpHzkAKNbvD4waar4f1LKs1SO2UGlcgvzbA580ifC/rF
-         dRGKpMcSxsh2YCCQhVDeGQ1YGINumvoHBR1CEXkbnhp7kpIL26BchT77+DlNrH+YIQP3
-         2xBg==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=dSoZ86GnAiDRHk3kQ7Emhg/UfMJ7RhFenGVpo13bd3Q=;
+        b=bZdWPwOKfIAQx8t6QKeO7ybRFNsWnxunDamzoEahHx9TN3s0cmCmEMTXImdZCRZKj/
+         HgBBrHLdvPqAKi27iWMlqQfzio/fe3iwBPOlfekEW6yNwb3tQeewMVqIBdhG0y8x+psW
+         HUqsL6NaFXnI6doHk7wCwCRSABL98vUVOYVVxs8thIr8Z1ANd48OagSs1VfzWzM9ZJ5w
+         j33DX3MhCD2vjmqyBbDh1xcIU2//YyBPUtSCI1b4F+/rGCPZpVj8rBVno3lAl4DcCvy1
+         eetxgvLEJkZ1CeMKuBuXINnCxCNdz4gDllStB6OLtiHzJFqxxfJPRKZ4E+PPfNdFHgFt
+         abMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=5Ogg1WilQ+LMcyFT9XLM8Rs4Z7sSOoRuQtpm3FyVzc4=;
-        b=A7tkJqUFES/jDZ5RsceCqySsol/34o08NPjuQ/3rt/lM+dxD0Tf47n4NEzTEAazW9s
-         6NjUz7Iv8/3GW4zXs4j7uIEIxv1x4/rPuaLuKk8kHAcFud2HQah9cW5nwLg+ElYhmAh1
-         I+bZ+JhqtMpy+aXhSiHG6iXTl3cdv8H+G/eZTO1RHczehaYGhgYK7HI4PyC6LiqPxlgn
-         nGGycW2ucc+4mYaGXxUFHRSQS4p1yCOgy58cMkZGXVGX5Z8Yg8DTt/DSHtXJWEIsOwsM
-         kkOFlq7+cwgqoLbw0ovmnlM/gvrvU740MfrozqDKFt1SgF3SaPaptUGTIfvMmJ5Ae4DB
-         7GxA==
-X-Gm-Message-State: AG10YOQ9f6u/Go4ocZjlLtlWsb8/GMqFfFTQxgrqKuq6I7nVWxWLg99L/45ExfBC8qTNlQEArAqU4XjThCTvEg==
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=dSoZ86GnAiDRHk3kQ7Emhg/UfMJ7RhFenGVpo13bd3Q=;
+        b=R44mZfVDUmI/pL3kDxsxtamku32ZFQVqlK1IsNvwOfWXZiR4cqZCn1V+fTFJADBrwe
+         eza/5/osWdfvFSHfbDMD5OjaB/T/ltQM3yXEX+kl9SgkonN3M/MSMtqfST65rx+a/7mV
+         DxvFuG3T/0U1CTPCnt4VJgWE5vqoacKyzeSeRn4nPptz2Sxvcv5R5B0x4zETGhBLZtFG
+         0qSNagDSmpgS/3mWpVrm58Eh2lAWGBoaoe4NuJ52mj00124JdlicwLMuf3DbppBNLKk6
+         x0lPJy9dtLdbNKLWnYAMD/oypah52+13eqGsYCPFW1KS7amkC9TRfqyTD2ajhMAR1sxd
+         UuMA==
+X-Gm-Message-State: AG10YOSYonUA30/dfMY5N9PAh5lBrmkHiJmufpKl/GsZgqZzogPsMAi2IF5uzPnvtladPA==
+X-Received: by 10.55.26.136 with SMTP id l8mr30779801qkh.103.1455028470187;
+        Tue, 09 Feb 2016 06:34:30 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id c17sm15875099qgd.29.2016.02.09.06.34.29
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Feb 2016 06:34:29 -0800 (PST)
+Date: Tue, 9 Feb 2016 14:33:53 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rdma: Use kcalloc instead of kzalloc
+Message-ID: <20160209193352.GA6417@janani-Inspiron-3521>
 MIME-Version: 1.0
-X-Received: by 10.194.88.195 with SMTP id bi3mr33122311wjb.34.1455028584459;
- Tue, 09 Feb 2016 06:36:24 -0800 (PST)
-Received: by 10.194.222.165 with HTTP; Tue, 9 Feb 2016 06:36:24 -0800 (PST)
-In-Reply-To: <20160209193352.GA6417@janani-Inspiron-3521>
-References: <20160209193352.GA6417@janani-Inspiron-3521>
-Date: Tue, 9 Feb 2016 16:36:24 +0200
-Message-ID: <CAEnQRZD=hq5UA0D72PkAjDV5Gr9MLuDcGKd7UCu6+071Z5X=cA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rdma: Use kcalloc instead of kzalloc
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Janani Ravichandran <janani.rvchndrn@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tue, Feb 9, 2016 at 9:33 PM, Janani Ravichandran
-<janani.rvchndrn@gmail.com> wrote:
-> Use kcalloc rather than kzalloc when multiplied with size to prevent
-> integer overflows. This change also makes code nicer to read.
->
-> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
-> ---
->  drivers/staging/rdma/hfi1/efivar.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rdma/hfi1/efivar.c b/drivers/staging/rdma/hfi1/efivar.c
-> index 7dc5bae..feef163 100644
-> --- a/drivers/staging/rdma/hfi1/efivar.c
-> +++ b/drivers/staging/rdma/hfi1/efivar.c
-> @@ -83,7 +83,7 @@ static int read_efi_var(const char *name, unsigned long *size,
->         if (!efi_enabled(EFI_RUNTIME_SERVICES))
->                 return -EOPNOTSUPP;
->
-> -       uni_name = kzalloc(sizeof(efi_char16_t) * (strlen(name) + 1),
-> +       uni_name = kcalloc((strlen(name) + 1), sizeof(efi_char16_t),
->                            GFP_KERNEL);
+Use kcalloc rather than kzalloc when multiplied with size to prevent
+integer overflows. This change also makes code nicer to read.
 
-there is no need for parenthesis around first parameter:
--> (strlen(name) + 1 ).
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+ drivers/staging/rdma/hfi1/efivar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->         temp_buffer = kzalloc(EFI_DATA_SIZE, GFP_KERNEL);
+diff --git a/drivers/staging/rdma/hfi1/efivar.c b/drivers/staging/rdma/hfi1/efivar.c
+index 7dc5bae..feef163 100644
+--- a/drivers/staging/rdma/hfi1/efivar.c
++++ b/drivers/staging/rdma/hfi1/efivar.c
+@@ -83,7 +83,7 @@ static int read_efi_var(const char *name, unsigned long *size,
+ 	if (!efi_enabled(EFI_RUNTIME_SERVICES))
+ 		return -EOPNOTSUPP;
+ 
+-	uni_name = kzalloc(sizeof(efi_char16_t) * (strlen(name) + 1),
++	uni_name = kcalloc((strlen(name) + 1), sizeof(efi_char16_t),
+ 			   GFP_KERNEL);
+ 	temp_buffer = kzalloc(EFI_DATA_SIZE, GFP_KERNEL);
+ 
+-- 
+2.5.0
+
 
