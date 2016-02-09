@@ -1,98 +1,87 @@
-X-GM-THRID: 6330498915146661888
-X-Received: by 10.157.63.161 with SMTP id r30mr5810458otc.24.1473934137090;
-        Thu, 15 Sep 2016 03:08:57 -0700 (PDT)
+X-GM-THRID: 6249238680974655488
+X-Received: by 10.112.137.102 with SMTP id qh6mr4068811lbb.9.1455021683613;
+        Tue, 09 Feb 2016 04:41:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.98.195 with SMTP id d186ls348662itc.15.gmail; Thu, 15 Sep
- 2016 03:08:53 -0700 (PDT)
-X-Received: by 10.98.100.3 with SMTP id y3mr5726420pfb.8.1473934133813;
-        Thu, 15 Sep 2016 03:08:53 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 142si2496371pfx.2.2016.09.15.03.08.53
+Received: by 10.28.93.212 with SMTP id r203ls583643wmb.30.canary; Tue, 09 Feb
+ 2016 04:41:23 -0800 (PST)
+X-Received: by 10.194.178.129 with SMTP id cy1mr3990135wjc.2.1455021683189;
+        Tue, 09 Feb 2016 04:41:23 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
+        by gmr-mx.google.com with ESMTPS id 5si661138wmm.2.2016.02.09.04.41.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 03:08:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 09 Feb 2016 04:41:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 21so611899pfy.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 03:08:53 -0700 (PDT)
+Received: by mail-wm0-x242.google.com with SMTP id g62so3198631wme.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 04:41:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=1xKhuoxnTscpbA2TFYJ4rh/NY+OdOlq2jEA7+PZvEU8=;
-        b=PBGw2JJSPGXeA5pHZRl5udde+TjZlTK2m6k7aYsC/hlpGook3lF+Xn3ulEJ4+TDyZO
-         diVC5dqMyehWhUW920fTj+5xfCKHQlO04vlmjFZrTd+hu0d15hui24pfBbM4xPBC4r5M
-         WubfBWS4giZTmwX2TOJ8wiRzJP6MB5ypMABLlm/qo/A6nnLhT08EhHBIU4BkUtPCce9x
-         YCLm3VLFISCtq3dhyOx7OBgACtO1Bwe64wF+vvEhddVJ2R9WcrZeI+BVAdRZ+VGabv0K
-         OJYbR+F4aGgxpeORh9pEm+YDAMsAt/HDxC5IRWBVRBdlch3SUTWdDDke7Ak+jclHc0qE
-         PbCQ==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=p/6sr3ldLrIOrikm3AVwwjRMmP77HDiJTaTEKDc0cb0=;
+        b=kGQzeBIITEQ1qb0pbheyn2QZPUWw5gc19cyIOuttjVjMskLoyKEne1q5HWCIH45/jb
+         1GNjJ1gS8rzB/8ses5yg8Op1zFwaz8t0hE0Hr30v17FkIAKy1QfMMDu5+642CAuL1xyx
+         2WelFKT0pI8GTC3gDF2wK6VB2cUyW1I6LXutaKfnJr14CyoE8YLwSq436kceSO0IScpL
+         kplWQGirtrhqCk/cw511a5MDZE2emaalObYibSO60QJCc7QDKUy4vi31VXb4kp5e7Mew
+         D7aM8i93XJ2w/gNI62L+KVP6uG1hEhuwa/SYa8QHL+sa8+zsdJGX6KrPK+vJMQfAfaRV
+         35sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=1xKhuoxnTscpbA2TFYJ4rh/NY+OdOlq2jEA7+PZvEU8=;
-        b=Yi7swQI02tgQtqv4l1ZoPve5Gc3vfGHRPZUFqSrwyCum1RRUXnAXVUKDT+ZBWGBUE4
-         0/SVtwmE9rZDqzCJYehvgc8NMVc81OAjptszrJiuzS5DTiJNPM+e8BWnBWAyLT7ams3E
-         OvZ53ar6+paMuiGG1Ea9LfR24osbk6k/+gJVuDVh4WLLodaUCSNmnaKy9MeIRSUwD6Lr
-         V+RB+QfhFM4HKm1pLVdaa/qIRDws2u583CWD7+GsVx34Xek8j1hod6NE/wVVTGPP6LyB
-         B2hFnq2GPRA9gtK1f/ENP/eZgkKlSCs2gGPzTEJixVVa0tynw/AKQs0F+iUW/X8UsBgk
-         NMdA==
-X-Gm-Message-State: AE9vXwMAfQcZvedcQ56XBH5JZTUgWml8Us8osDOmJbqxugQuS/c9G+Cz+smJ4qoRKmCLbw==
-X-Received: by 10.98.64.193 with SMTP id f62mr13045093pfd.141.1473934133662;
-        Thu, 15 Sep 2016 03:08:53 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.236.194])
-        by smtp.gmail.com with ESMTPSA id 3sm44051236pfz.33.2016.09.15.03.08.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 03:08:53 -0700 (PDT)
-Date: Thu, 15 Sep 2016 15:38:34 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=p/6sr3ldLrIOrikm3AVwwjRMmP77HDiJTaTEKDc0cb0=;
+        b=Cm5D1xvnkQ03VtSIsUOPhQK2jPAVSYNqyJdUsycNGZ1zZFqhfo0IrOoZo2cETxsOXN
+         W77ej1tN5YpJMImfG9tY72Ocbl9HqtkmQ4fqdOie2YpWLexDrLwmUKJMgFp3MFd6/0F5
+         ARuv5T0JeDsc8bOXx3cMvYlZJFiEIjEa1AjFrH5PiG8yM7MWYY0Zl6pVKO6WO1sJRni7
+         czNUfIskAbCZnazTBt7tTH1wLt3x13rtv/4PhQjX+LCQxlS7dCAodpvNZddvHFc8WPUt
+         OlHEE/atI20jZ6ESIV5l4u39eIYO7dPTiLT7dFYZp8QR5NOR2t0nJSn4/MF5vNSHSgvY
+         /hVw==
+X-Gm-Message-State: AG10YOSa76fd2fKiZfCFKLyvW71luBd4jCpDl6G8+4FxM0wFkdh0GQmH3+/uWKqt0EMi7A==
+X-Received: by 10.28.21.14 with SMTP id 14mr4492280wmv.39.1455021683070;
+        Tue, 09 Feb 2016 04:41:23 -0800 (PST)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from haneenVB ([109.171.130.212])
+        by smtp.gmail.com with ESMTPSA id q129sm17514625wmd.14.2016.02.09.04.41.21
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 09 Feb 2016 04:41:22 -0800 (PST)
+Date: Tue, 9 Feb 2016 14:59:23 +0300
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: wilc1000: Use sizeof type *pointer instead of
- sizeof type
-Message-ID: <20160915100834.GA5703@sayli-HP-15-Notebook-PC>
+Subject: [PATCH v2 1/2] Staging: rts5208: fix check for dma mapping error
+Message-ID: <20160209115923.GA28277@haneenVB>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch replaces sizeof type with sizeof type pointer as suggested by
-checkpatch.pl.
+use dma_mapping_error() instead of comapring the returned address with
+zero after dma_map_single().
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 ---
- drivers/staging/wilc1000/host_interface.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rts5208/rtsx_transport.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 78f524f..d0cb568 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -3329,7 +3329,7 @@ int wilc_init(struct net_device *dev, struct host_if_drv **hif_drv_handler)
+diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+index f27491e..0c9549b 100644
+--- a/drivers/staging/rts5208/rtsx_transport.c
++++ b/drivers/staging/rts5208/rtsx_transport.c
+@@ -653,7 +653,7 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
+ 		return -ENXIO;
  
- 	init_completion(&hif_wait_response);
+ 	addr = dma_map_single(&(rtsx->pci->dev), buf, len, dma_dir);
+-	if (!addr)
++	if (dma_mapping_error(&rtsx->pci->dev, addr))
+ 		return -ENOMEM;
  
--	hif_drv  = kzalloc(sizeof(struct host_if_drv), GFP_KERNEL);
-+	hif_drv  = kzalloc(sizeof(*hif_drv), GFP_KERNEL);
- 	if (!hif_drv) {
- 		result = -ENOMEM;
- 		goto _fail_;
-@@ -3878,7 +3878,7 @@ static void *host_int_ParseJoinBssParam(struct network_info *ptstrNetworkInfo)
- 	pu8IEs = ptstrNetworkInfo->ies;
- 	u16IEsLen = ptstrNetworkInfo->ies_len;
- 
--	pNewJoinBssParam = kzalloc(sizeof(struct join_bss_param), GFP_KERNEL);
-+	pNewJoinBssParam = kzalloc(sizeof(*pNewJoinBssParam), GFP_KERNEL);
- 	if (pNewJoinBssParam) {
- 		pNewJoinBssParam->dtim_period = ptstrNetworkInfo->dtim_period;
- 		pNewJoinBssParam->beacon_period = ptstrNetworkInfo->beacon_period;
+ 	if (card == SD_CARD)
 -- 
-2.7.4
+1.9.1
 
 
