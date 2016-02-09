@@ -1,79 +1,91 @@
 X-GM-THRID: 6249264575111233536
-X-Received: by 10.50.109.136 with SMTP id hs8mr3833505igb.12.1455020555387;
-        Tue, 09 Feb 2016 04:22:35 -0800 (PST)
+X-Received: by 10.129.58.16 with SMTP id h16mr31422375ywa.56.1455020293352;
+        Tue, 09 Feb 2016 04:18:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.83.200 with SMTP id j66ls3551119qgd.92.gmail; Tue, 09 Feb
- 2016 04:22:34 -0800 (PST)
-X-Received: by 10.129.82.76 with SMTP id g73mr34333207ywb.57.1455020554733;
-        Tue, 09 Feb 2016 04:22:34 -0800 (PST)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id u66si5236741pfa.2.2016.02.09.04.22.34
+Received: by 10.107.129.226 with SMTP id l95ls1868650ioi.95.gmail; Tue, 09 Feb
+ 2016 04:18:13 -0800 (PST)
+X-Received: by 10.66.141.102 with SMTP id rn6mr32802498pab.26.1455020292965;
+        Tue, 09 Feb 2016 04:18:12 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x22e.google.com (mail-qg0-x22e.google.com. [2607:f8b0:400d:c04::22e])
+        by gmr-mx.google.com with ESMTPS id y131si2061232ywc.0.2016.02.09.04.18.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 04:22:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        Tue, 09 Feb 2016 04:18:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) client-ip=2607:f8b0:400d:c04::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id c10so60335051pfc.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 04:22:34 -0800 (PST)
+Received: by mail-qg0-x22e.google.com with SMTP id b67so51616165qgb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 04:18:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=D86kcf5mWQojbxLLMz8u6UqokLg4VoshWWabtmvlVfg=;
-        b=dBFHuMRt8zoR8P4+0otDEKL49k4GhgeKAMe49f51naLy6D3WxEVUyIWYdXRE+7C9Rf
-         pTMsb5T8EQpRBZ/vEoNWBnKNhF/coj52FeK//H7lq0ce1fdfd1oVDa75+9+Fdrp6BdvY
-         nYlbT1RUcjKa6BqusFyMNcoMazlpSXun82CvJRjvh1iGfNI74j/VlvOxB69MRnu7SpNf
-         wUmIj0gvGn9eEkhmo9eaNQbmOeYykccm1uFr1GbkyH+p1V5J9HLETA4KBZjvQRGuIBUd
-         gi8WKLDOq6b1byil8XA4/zu+tBNJXpe1TWa3y2A/UhmoKoE9yF7eUloOgk+dSzcYyn0w
-         9mhw==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=nM8U62H8KZL/velktuXD5Z8ac623WgVYUwT+ytC83Ss=;
+        b=jYJbb1mIbbP9FywfVQbUK14OO11DtC+u0FrbNMHPLwuY05sTAf6IzhJ8B9MilQxT97
+         W+FpQBOMfsrn3gav0uW9n1dtSFHKbYUBML6WNCD0KKEbJIpMhxKL/dleZsEIs2ZWiDLM
+         Vjz6MKyA0Sya9GYSLdbS4njsfYdYNxIdOyrRLvISVpTiX9eIVKbv56iOetwKqtfWtLtq
+         w0e5WzaxTggubozNu1Fs+esPIKYtxuHfQcwt+iJIjsj9/FqP8ZoXBfqre8no7F1bMOKe
+         aEvGwyslRZSmbRL0SYYJwEJcmjsPNAVjPaB7GJQCwGquKGa8jU2Re2AmbusJrvrUJzlf
+         xivg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-type:content-disposition:in-reply-to
-         :user-agent;
-        bh=D86kcf5mWQojbxLLMz8u6UqokLg4VoshWWabtmvlVfg=;
-        b=f/ohvbu28oQQQNVhhlQ0y6Z7mbl/4INqN4TtI3XRa+DotNNi9TxT9u6GhD5oMvzx39
-         +2j/UXC/RyiF88J10SbV5a+5JL+kA9K2Grf7RtezGt42xLDoB9pW3wkL7H+6nDuxlVqu
-         PvpOE2XJC7bW/mWabfhjuojESf0kCx7lZdypwQ7UN/p3M55jK/YoiRrTku+UruDQk4Dt
-         oNLmJvPKW079bPAqsr8G6KuX2B907MR10VbecQmXmDVt0LL0JDNcQqtjdSVnin7SmdQq
-         53zxVcWb+bDVb3epZaqH9/5e5ya7h4KBs9ZBGo6R6Uxis8SdUuIdhekiouvlSYi5NJuk
-         K9bQ==
-X-Gm-Message-State: AG10YORK9J9kYoqqE8hQ4xxBHE1FdpMBvG8cu9457XLJfX/rQFhrw+AVmMifSx2dPHpeFw==
-X-Received: by 10.98.43.151 with SMTP id r145mr17675111pfr.4.1455020554569;
-        Tue, 09 Feb 2016 04:22:34 -0800 (PST)
-Return-Path: <sudipm.mukherjee@gmail.com>
-Received: from sudip-pc ([183.82.227.168])
-        by smtp.gmail.com with ESMTPSA id vy6sm37488233pac.38.2016.02.09.04.22.33
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 04:22:34 -0800 (PST)
-Date: Tue, 9 Feb 2016 17:52:26 +0530
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Janani Ravichandran <janani.rvchndrn@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: dgap: Merge two separate if
- conditions
-Message-ID: <20160209122226.GA13226@sudip-pc>
-References: <20160209171735.GA4048@janani-Inspiron-3521>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=nM8U62H8KZL/velktuXD5Z8ac623WgVYUwT+ytC83Ss=;
+        b=TXPUkjNyDWFlw0EYvi2kmlt773AgFC2zutGRwtwF70CLyxZyQGtBm2Gf1ykX2JTTmw
+         7l1TSjvKV/mdnVJYXq5/pqDVr2/D+s+6n3vx5y0cawRhKRefq6Gr/jTa0Kris25RJ42b
+         OHeyHMkBGxli/fJV/mA5k6Sfkdmd+qGKQOybbyh9DI7fvxm7cEfj5azGgO8kPqRXgnQY
+         /qietlzzTDwZmRMsqUgAu6QnghiyU7WH+vaXd5DA/Fciw3R9cnf2bMud6bnbw0Ft8V+D
+         A1ggeStOXw04oKFG7AvXX0cMH7hJ4lSN+yZmQm3nst3PslPHA6dIrAc460pnA9eHk31g
+         gNfQ==
+X-Gm-Message-State: AG10YOTbFeC+dgA+XKKrliJ5sVZb+AHgVlISRXhRfW2nDw91nBIaqEBuaDNsonRVvgawaw==
+X-Received: by 10.140.95.119 with SMTP id h110mr40991288qge.105.1455020292744;
+        Tue, 09 Feb 2016 04:18:12 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id a88sm3720492qkj.32.2016.02.09.04.18.12
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Feb 2016 04:18:12 -0800 (PST)
+Date: Tue, 9 Feb 2016 12:17:35 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: dgap: Merge two separate if conditions
+Message-ID: <20160209171735.GA4048@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160209171735.GA4048@janani-Inspiron-3521>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tue, Feb 09, 2016 at 12:17:35PM -0500, Janani Ravichandran wrote:
-> Merge two if conditions with the same statements to avoid code
-> duplication.
-> 
-> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
-> ---
->  drivers/staging/dgap/dgap.c | 6 +-----
+Merge two if conditions with the same statements to avoid code
+duplication.
 
-dgap is no longer in staging tree. Which tree are you using?
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+ drivers/staging/dgap/dgap.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-regards
-sudip
+diff --git a/drivers/staging/dgap/dgap.c b/drivers/staging/dgap/dgap.c
+index bad3551..d7eb879 100644
+--- a/drivers/staging/dgap/dgap.c
++++ b/drivers/staging/dgap/dgap.c
+@@ -2014,11 +2014,7 @@ static void dgap_poll_tasklet(unsigned long data)
+ 	if (bd->state == BOARD_READY) {
+ 		struct ev_t __iomem *eaddr;
+ 
+-		if (!bd->re_map_membase) {
+-			spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
+-			return;
+-		}
+-		if (!bd->re_map_port) {
++		if (!bd->re_map_membase || !bd->re_map_port) {
+ 			spin_unlock_irqrestore(&bd->bd_lock, lock_flags);
+ 			return;
+ 		}
+-- 
+2.5.0
+
 
