@@ -1,130 +1,134 @@
-X-GM-THRID: 10002918014976
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,3882c5572bb5485a,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.43.104.69 with SMTP id dl5mr35238590icc.20.1427389788759;
-        Thu, 26 Mar 2015 10:09:48 -0700 (PDT)
+X-GM-THRID: 6249278718968070144
+X-Received: by 10.107.130.28 with SMTP id e28mr34904955iod.34.1455023586674;
+        Tue, 09 Feb 2016 05:13:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.4.2 with SMTP id g2ls569872obg.44.gmail; Thu, 26 Mar 2015
- 10:09:47 -0700 (PDT)
-X-Received: by 10.182.65.37 with SMTP id u5mr17815645obs.27.1427389787394;
-        Thu, 26 Mar 2015 10:09:47 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-yk0-x229.google.com (mail-yk0-x229.google.com. [2607:f8b0:4002:c07::229])
-        by gmr-mx.google.com with ESMTPS id z1si761419qcn.2.2015.03.26.10.09.47
+Received: by 10.50.4.100 with SMTP id j4ls813912igj.38.gmail; Tue, 09 Feb 2016
+ 05:13:06 -0800 (PST)
+X-Received: by 10.66.189.102 with SMTP id gh6mr33628571pac.14.1455023586363;
+        Tue, 09 Feb 2016 05:13:06 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id u66si5257911pfa.2.2016.02.09.05.13.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Mar 2015 10:09:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:4002:c07::229 as permitted sender) client-ip=2607:f8b0:4002:c07::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Feb 2016 05:13:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 2607:f8b0:4002:c07::229 as permitted sender) smtp.mail=helen.fornazier@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yk0-x229.google.com with SMTP id l17so202136yke.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 10:09:47 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id yy13so91205804pab.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 05:13:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=7mTfnORl0rnkwGDZP+ecXaaXRm9h+z0VURo2kPUJqa8=;
-        b=jSzkDTm1dYmGXgtip5uN/C40MN+ajwqOBpYaqZiswiREH+Zp5JllrNGaA0KjIsj9ID
-         +dryZtD8NPjlxIv6TdpYZIDNR6Wj9WiEMY3D47RTuEVDyIvFSspgNd+sI/ws3HnaqVC5
-         7U64qnsfRnHoHyOzKU+b0dvKwM0MaPGBXNVxVIoiBlEKUEHb6xj+DqoUa1+Zewro/RAw
-         gBRcctq+Ve3AcMmE20JCGp44ej+7KK6mfFOWP6wgttmFPMNs3F/2fhDjNX/OIIf/lZmH
-         yE25xfge2J2HRMJWJoqopGde2Efxkiaot29xG9KUQWkIvQNFYktY7fVNIvyIbqXttgBr
-         v1hA==
-X-Received: by 10.55.53.85 with SMTP id c82mr31728111qka.45.1427389787285;
-        Thu, 26 Mar 2015 10:09:47 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from Cracker.wifi.univ-paris5.fr ([177.194.75.171])
-        by mx.google.com with ESMTPSA id o19sm3797905qkh.25.2015.03.26.10.09.45
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 26 Mar 2015 10:09:46 -0700 (PDT)
-From: Helen Fornazier <helen.fornazier@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=ZVNbP0jFR0pt37EMHoADqxAA3Dd6TlBw07N3uvhSrOg=;
+        b=ux8HLGwB0VW00f8BYTBAEmXlj53xFFIfe/TFcoxd8uVPuC6TpUliRMcHjJLyiFXlc/
+         pNHm7L0nT9S57//4S/C6sT/08iJE/gyoNSi+mdceOLB7yUZEw9OyNTl/THrPVFI/mjwX
+         NGLO3KJ2ixGlvmfEo3lD2aAUzGcP7TuB8hoMdbfzcRYJ264w12EcyGkhu7LTX63UMTi2
+         ZxOipjQEItamfXGJpQGV4e/N1z7hNAwn1GUmX4jCN4U58b7EJJomapAjr8OWdZqCncYH
+         hE6gdbSKXtMh0L84ldY178YkElo5fM/kau4bCfThCfmSpj+7U9xyLBEDHsF+y/A7/I8M
+         qe6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ZVNbP0jFR0pt37EMHoADqxAA3Dd6TlBw07N3uvhSrOg=;
+        b=cbuqTKmUp4ds1Tk/8KzEpON9W6cZll5FZk6q7eOsL3QVUDFB00Qsm06woMRwUIDOBz
+         cBlC2ucIV4SlJ//3FbIilgVkIwMkByntTj0Pg43UEqjN83qnksBMfetY9+uilDQgDfGu
+         iIFdW6CHhjpIKN1QT1gevGwvgCbBAHJtN/hjsn8PDRVG8N3u/w4HTAbX4C6MnqfPiXxp
+         IFcGrRJ6Z3j1UQRcrUASD0ADlOQm+KiCY7tqzJTBeTmEchUaXD89Sfwbt6pmzo8OYpQ5
+         XgwesXfmN7WJ3cx4A4IT8nru6mu39BBrJBg2heW4rASBvJJp/FFth15cuhp+YxI/lktm
+         0m3A==
+X-Gm-Message-State: AG10YOQ/ZNuuqhzyZjbMxFK2Fdlc+hgpq1x6vzpFXS8z3QowNGLo7XDmUcwD9RdpShzj+g==
+X-Received: by 10.67.7.129 with SMTP id dc1mr35098023pad.87.1455023586237;
+        Tue, 09 Feb 2016 05:13:06 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([106.215.176.229])
+        by smtp.gmail.com with ESMTPSA id v66sm45764704pfi.56.2016.02.09.05.13.01
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 09 Feb 2016 05:13:05 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Tue, 09 Feb 2016 18:42:54 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Helen Fornazier <helen.fornazier@gmail.com>
-Subject: [PATCH 4/8] staging: sm750fb: Add space before if statement
-Date: Thu, 26 Mar 2015 14:09:16 -0300
-Message-Id: <0dcbb19ccbcc7155decf8f606ab5efddc1b605c7.1427389602.git.helen.fornazier@gmail.com>
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: lustre: lnet: Remove explicit NULL comparision
+Date: Tue,  9 Feb 2016 18:42:53 +0530
+Message-Id: <1455023573-32172-1-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1427389602.git.helen.fornazier@gmail.com>
-References: <cover.1427389602.git.helen.fornazier@gmail.com>
-In-Reply-To: <cover.1427389602.git.helen.fornazier@gmail.com>
-References: <cover.1427389602.git.helen.fornazier@gmail.com>
 
-This patch fix the checkpatch.pl warning:
+Replaced explicit NULL comparision with its simplier form.
+Found using coccinelle:
 
-ERROR: space required before the open parenthesis '('
+@replace_rule@
+expression e;
+@@
 
-Signed-off-by: Helen Fornazier <helen.fornazier@gmail.com>
+-e == NULL
++ !e
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/lustre/lnet/lnet/lib-md.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 3d228f4..49e26bd 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -87,7 +87,7 @@ unsigned int getChipClock(void)
+diff --git a/drivers/staging/lustre/lnet/lnet/lib-md.c b/drivers/staging/lustre/lnet/lnet/lib-md.c
+index 758f5be..b3d8364 100644
+--- a/drivers/staging/lustre/lnet/lnet/lib-md.c
++++ b/drivers/staging/lustre/lnet/lnet/lib-md.c
+@@ -184,7 +184,7 @@ lnet_md_link(lnet_libmd_t *md, lnet_handle_eq_t eq_handle, int cpt)
+ 	if (!LNetHandleIsInvalid(eq_handle)) {
+ 		md->md_eq = lnet_handle2eq(&eq_handle);
+ 
+-		if (md->md_eq == NULL)
++		if (!md->md_eq)
+ 			return -ENOENT;
+ 
+ 		(*md->md_eq->eq_refs[cpt])++;
+@@ -221,7 +221,7 @@ lnet_md_deconstruct(lnet_libmd_t *lmd, lnet_md_t *umd)
+ static int
+ lnet_md_validate(lnet_md_t *umd)
  {
- 	pll_value_t pll;
- #if 1
--	if(getChipType() == SM750LE)
-+	if (getChipType() == SM750LE)
- 		return MHz(130);
- #endif
+-	if (umd->start == NULL && umd->length != 0) {
++	if (!umd->start && umd->length != 0) {
+ 		CERROR("MD start pointer can not be NULL with length %u\n",
+ 		       umd->length);
+ 		return -EINVAL;
+@@ -285,7 +285,7 @@ LNetMDAttach(lnet_handle_me_t meh, lnet_md_t umd,
+ 	}
  
-@@ -225,7 +225,7 @@ unsigned int ddk750_getVMSize(void)
- 	unsigned int data;
+ 	md = lnet_md_alloc(&umd);
+-	if (md == NULL)
++	if (!md)
+ 		return -ENOMEM;
  
- 	/* sm750le only use 64 mb memory*/
--	if(getChipType() == SM750LE)
-+	if (getChipType() == SM750LE)
- 		return MB(64);
+ 	rc = lnet_md_build(md, &umd, unlink);
+@@ -296,7 +296,7 @@ LNetMDAttach(lnet_handle_me_t meh, lnet_md_t umd,
+ 		goto failed;
  
- 	/* for 750,always use power mode0*/
-@@ -252,7 +252,7 @@ int ddk750_initHw(initchip_param_t * pInitParam)
- 	unsigned int ulReg;
- #if 0
- 	//move the code to map regiter function.
--	if(getChipType() == SM718) {
-+	if (getChipType() == SM718) {
- 		/* turn on big endian bit*/
- 		ulReg = PEEK32(0x74);
- 		/* now consider register definition in a big endian pattern*/
-@@ -272,7 +272,7 @@ int ddk750_initHw(initchip_param_t * pInitParam)
- 	ulReg = FIELD_SET(ulReg,CURRENT_GATE,LOCALMEM,ON);
- 	setCurrentGate(ulReg);
+ 	me = lnet_handle2me(&meh);
+-	if (me == NULL)
++	if (!me)
+ 		rc = -ENOENT;
+ 	else if (me->me_md != NULL)
+ 		rc = -EBUSY;
+@@ -362,7 +362,7 @@ LNetMDBind(lnet_md_t umd, lnet_unlink_t unlink, lnet_handle_md_t *handle)
+ 	}
  
--	if(getChipType() != SM750LE) {
-+	if (getChipType() != SM750LE) {
- 		/*	set panel pll and graphic mode via mmio_88 */
- 		ulReg = PEEK32(VGA_CONFIGURATION);
- 		ulReg = FIELD_SET(ulReg,VGA_CONFIGURATION,PLL,PANEL);
-@@ -444,7 +444,7 @@ unsigned int calcPllValue(unsigned int request_orig,pll_value_t *pll)
+ 	md = lnet_md_alloc(&umd);
+-	if (md == NULL)
++	if (!md)
+ 		return -ENOMEM;
  
- 	/* for MXCLK register , no POD provided, so need be treated differently	*/
+ 	rc = lnet_md_build(md, &umd, unlink);
+@@ -432,7 +432,7 @@ LNetMDUnlink(lnet_handle_md_t mdh)
+ 	lnet_res_lock(cpt);
  
--	if(pll->clockType != MXCLK_PLL) {
-+	if (pll->clockType != MXCLK_PLL) {
- 		xparm = &xparm_PIXEL[0];
- 		xcnt = sizeof(xparm_PIXEL)/sizeof(xparm_PIXEL[0]);
- 	} else {
-@@ -466,11 +466,11 @@ unsigned int calcPllValue(unsigned int request_orig,pll_value_t *pll)
- 			M += fl_quo * X / 10000;
- 			/* round step */
- 			M += (fl_quo*X % 10000)>5000?1:0;
--			if(M < 256 && M > 0) {
-+			if (M < 256 && M > 0) {
- 				unsigned int diff;
- 				tmpClock = pll->inputFreq *M / N / X;
- 				diff = absDiff(tmpClock,request_orig);
--				if(diff < miniDiff) {
-+				if (diff < miniDiff) {
- 					pll->M = M;
- 					pll->N = N;
- 					pll->OD = xparm[d].od;
+ 	md = lnet_handle2md(&mdh);
+-	if (md == NULL) {
++	if (!md) {
+ 		lnet_res_unlock(cpt);
+ 		return -ENOENT;
+ 	}
 -- 
 1.9.1
 
