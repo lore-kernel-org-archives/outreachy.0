@@ -1,67 +1,66 @@
 X-GM-THRID: 6249268328752218112
-X-Received: by 10.112.199.136 with SMTP id jk8mr4331419lbc.11.1455047792155;
-        Tue, 09 Feb 2016 11:56:32 -0800 (PST)
+X-Received: by 10.112.50.108 with SMTP id b12mr412800lbo.15.1455021167797;
+        Tue, 09 Feb 2016 04:32:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.4.13 with SMTP id 13ls7894wme.15.gmail; Tue, 09 Feb 2016
- 11:56:30 -0800 (PST)
-X-Received: by 10.28.225.8 with SMTP id y8mr826658wmg.7.1455047790411;
-        Tue, 09 Feb 2016 11:56:30 -0800 (PST)
+Received: by 10.28.46.199 with SMTP id u190ls589901wmu.49.gmail; Tue, 09 Feb
+ 2016 04:32:47 -0800 (PST)
+X-Received: by 10.194.201.234 with SMTP id kd10mr3987733wjc.6.1455021167234;
+        Tue, 09 Feb 2016 04:32:47 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id c140si507058wmh.0.2016.02.09.11.56.30
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id s132si573579wmd.1.2016.02.09.04.32.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 11:56:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Tue, 09 Feb 2016 04:32:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id c200so5443730wme.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 11:56:30 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id g62so3156631wme.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 04:32:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=1SVD7lRkOwvJEfFsHnrYEQRw3YixmxwG12yV3sjwUfU=;
-        b=XmoETfR5gZIZaJmVg0t/F8j75T30MzqtUgfkFTEv+2IfOY8Bc9Gz5mW7mDtIpMlTs9
-         fv57lIGZUpdHX3ypTE92loqzSo++c7e8sDLOiKigjpcxElpf5HV4ujdRptHPRWbri9oX
-         KBrIpj5I803pooG7wYLvKKtunEXE1eakIBeBPUmvkZsmT/n2D4wXUmWRmtlsJk7uC28G
-         ihDOsKYfzAJVpvEwL53dZcx0GUCxUVto1bY6aMyrP1cOYowlpaNJzpUbrZ7Ap73k0CBM
-         gyZkHwQF3h0g3DH04ZrlaPaoJWmjMi+YpyfHic91Wv0wzqCX5Ffkr1cLB0kEAx565f72
-         wKNQ==
+        bh=Kh0CQWZwN82s0UhWe4N0mPOZu4dHQfIhKiJ5uEswfkw=;
+        b=n6GbujCkJBlQ82PEnpKU+PM31FR8qBWQl1ilcIOihBAT6uS1n/yJypCeb3ZWHUZpX7
+         HOy3Lyxud/YPNXs6tEysb3ZTeA3N2nuIORx2SwsgD75rfM6hkQ+li2C/4U7JZOEf7nSW
+         OvmSrisHJimpRAAvv20is7plGhjzaoP2c6BHQDqAzTvFJ6KEwDrDQkO3wsV4hSNhUEsm
+         SpJQLdFL8ajMJ1ExL+stJdp9UbU7KchxhhTV4jokdxV1WBjneuRDJGLQA/iSg+z934dz
+         7UtrealUYxY9efMZcRlwxrN8Zlb2YWlxc6tD0uX73cQhU32lJNlbmu0vg0/qU7lk0pGt
+         R7VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=1SVD7lRkOwvJEfFsHnrYEQRw3YixmxwG12yV3sjwUfU=;
-        b=ESLdNwsxDx4eDtXoxgVtN9ek0G7r2lHZmHIOY4OeUiyEuDM/6Q4aNsKhzaBnL28CEJ
-         mI+83Lg6pFE513+v2N+PJvP20F0+GYgYDPMN/Dt2u3I6evDuELLVFGyzJfxeaN63+42Y
-         8qP/7kFS+6DHu8IoqJpXdhVon8AI85X0pMOV68Ei4F4fkL1/rNfqtJx5xUK0iB6a/90+
-         kkkDZN8UpBFl4aXafdWNgJGEivEEFOPzfkWwf7r2Fw+h/QemLthne9Zz8dHjRB6g5O71
-         KQ43VE03bcW0hmEQ8+8Jg1LOtgOtrojByTPnKBIlep8fr7O/cMVF6+2EVbr0viV7//BO
-         qx0Q==
-X-Gm-Message-State: AG10YOR6GLMCEXIqkR3M9438ntsHp3CibWJy02XhErQrkuEGbNYMR8nYPuxZEqoykRHCFQ==
-X-Received: by 10.28.125.77 with SMTP id y74mr6532935wmc.21.1455047790256;
-        Tue, 09 Feb 2016 11:56:30 -0800 (PST)
+        bh=Kh0CQWZwN82s0UhWe4N0mPOZu4dHQfIhKiJ5uEswfkw=;
+        b=W4SgytK8mcz8/BXy2hN/8m4z6r7MeOvpie+h7QbpQ/ipYBZvBiQOjFTeMz3yuNam1n
+         4ynUPOXaBUArnex2Urjz6kIwoU5j7LD5imMW7PWEENCBAfuWddOSAQQ9Yu+J3cBSBv62
+         hYO/UIjL66lHqcw6zfosBQBtZSh1JHVkeugkND+6/IduB5An+l+7qZ3pk3KKGZlTu+qf
+         abOC8oQS8B5ve0QwaGHHwMStBZ6s4JIyUcNAp4Nk2yer3bE35nS7FZpi11tesHU8FKcv
+         SQFP5TSOfI1SuE2A/CJzG8UcY9jgL52WHhGjEcjg3QlOb7diKxjs2rh9e8uj2c7COnqk
+         rt/A==
+X-Gm-Message-State: AG10YOTLTCsM946BYZXBvleBO0rWiM3N7Ch5dTV79Rju7RiQ6udUHibXsq2KAvVMtnwQDQ==
+X-Received: by 10.194.234.41 with SMTP id ub9mr33433951wjc.9.1455021167126;
+        Tue, 09 Feb 2016 04:32:47 -0800 (PST)
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneenVB ([109.171.130.235])
-        by smtp.gmail.com with ESMTPSA id u4sm36196393wjz.4.2016.02.09.11.56.28
+Received: from haneenVB ([109.171.130.212])
+        by smtp.gmail.com with ESMTPSA id c136sm17268091wmd.3.2016.02.09.04.32.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 11:56:29 -0800 (PST)
-Date: Tue, 9 Feb 2016 22:56:25 +0300
+        Tue, 09 Feb 2016 04:32:46 -0800 (PST)
+Date: Tue, 9 Feb 2016 14:50:46 +0300
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/2] add dma mapping error and remove parantheses
-Message-ID: <cover.1455047275.git.hamohammed.sa@gmail.com>
+Subject: [PATCH v2 0/2] add dma mapping error and remove parantheses
+Message-ID: <20160209115046.GA28219@haneenVB>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patchset fix check for dma mapping error, as well as removes
-unnecessary parantheses in the same scope. 
+This patchset fix check for dma mapping error, as well as removes unncessary parantheses in the same scope.
 
 Haneen Mohammed (2):
   Staging: rts5208: fix check for dma mapping error
