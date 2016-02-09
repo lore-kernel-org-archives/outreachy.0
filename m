@@ -1,103 +1,98 @@
-X-GM-THRID: 6669700273225596928
-X-Received: by 2002:a0c:9de5:: with SMTP id p37mr9473448qvf.50.1552910607757;
-        Mon, 18 Mar 2019 05:03:27 -0700 (PDT)
+X-GM-THRID: 6249137798348013568
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.194.110.233 with SMTP id id9mr4151746wjb.5.1455033434931;
+        Tue, 09 Feb 2016 07:57:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:58c4:: with SMTP id m187ls7212797qkb.7.gmail; Mon, 18
- Mar 2019 05:03:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQww6TZ/N4RQK0u/ILWAglNTPconz3potNuewvoBTFXXsiUQ/TaOcyzOye1kIEe6HhnPxH
-X-Received: by 2002:a37:b241:: with SMTP id b62mr9636418qkf.14.1552910606783;
-        Mon, 18 Mar 2019 05:03:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552910606; cv=none;
-        d=google.com; s=arc-20160816;
-        b=PiHHHXGsbWUKy3SrNhtjjioLxcatNtBevyML0JuzoIicGJHyggYs3jr4hk9YDl+Rsf
-         +YsSUjANdUKVjfyStFh3Zd1QvmSrV/8kmkcZKGfzJgm0nVhGR/CWLo1sQGL52sMbXvA+
-         tufFU1JTt5G+q7gQMpCnN6zYfB0qBSuX6LBxvtFuySzj0e4+EFzL1soKyzWVKKqmaP+Z
-         Sc9YMJhenZI93SpeSVCQQzQCPvGwFQAycPFP6AGYR5bba5EeuS6kt2C6EV5fz1Pg/LUA
-         fOHMvZBDfxUazeVJgK0H+0Z4ZUu8qCrG8oHLvFLq2vCn2MOwtp8Ko5GVtADSaUttu9uP
-         OaHA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+Cg7pQfmmKSiROPfrU2cywx9Oquy4Mx1Fc84HdQiaOo=;
-        b=mXLS0gD1NDrQZANqfk4TkxopIADfuzh+duE6X6dgpqfz5jeKtiZf/UkRgvxG4QOAJF
-         7qFXL6v2i8tA0Y6gsfDOu7ETdBEfgtyVzgYdvcKAiMUpgtFJoUz2KP+VzmTItuJ7tQ3h
-         iMp7K1qKk+f50NsxCl23ihTpmqbKaCLVBxpVSJbcrMfS8jXd36Wt8x1EG51iBvDupWMh
-         aBo2A03n3AM0mFkcX86Xrv7C41pPBzhdc6kU6d3nMf+E4FliRyVphs3vQrc2eBsT5taC
-         S3vs0sEUV24nG6Y3yFuQM7EYUufUECFV9nckMcdxVRhnfcx0RONkyJadzcyDirczqKmz
-         fa+g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i44sPMPh;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::536 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com. [2607:f8b0:4864:20::536])
-        by gmr-mx.google.com with ESMTPS id t17si56386qtq.0.2019.03.18.05.03.26
+Received: by 10.25.22.169 with SMTP id 41ls854348lfw.11.gmail; Tue, 09 Feb
+ 2016 07:57:14 -0800 (PST)
+X-Received: by 10.25.23.105 with SMTP id n102mr4143568lfi.9.1455033434384;
+        Tue, 09 Feb 2016 07:57:14 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x22f.google.com (mail-wm0-x22f.google.com. [2a00:1450:400c:c09::22f])
+        by gmr-mx.google.com with ESMTPS id w197si552956wmw.3.2016.02.09.07.57.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 05:03:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::536 as permitted sender) client-ip=2607:f8b0:4864:20::536;
+        Tue, 09 Feb 2016 07:57:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22f as permitted sender) client-ip=2a00:1450:400c:c09::22f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i44sPMPh;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::536 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x536.google.com with SMTP id i7so8009065pgq.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 05:03:26 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22f as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x22f.google.com with SMTP id p63so29162339wmp.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 07:57:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=+Cg7pQfmmKSiROPfrU2cywx9Oquy4Mx1Fc84HdQiaOo=;
-        b=i44sPMPhY4QBbSTiC3hczdck6+o5RaELKHOMQbh/VhwYqawKZ2jhLzw7rqZ1TDh/lt
-         1WuQ1PF5/ZLD8/3BU7OTt+YWbuNMGhBltif5hJ8ygneWxXosVtN9ZdwEo3OUDae0fy/b
-         58I9XMCc4q9I58bviyOoSlk3oW648BBTkXEI4QHL/zrCwS5jo7S4gyXQmTdozlL4w9Tu
-         EZtDQNiuuEPeiZBX5j3cWxtbyCpmj69i8tS54p4KLf8luMecBwCR2lS2gVnhBp+aTRNs
-         6I/3RVl9s6FLeMj0dDl2CEXrxQIiR0V+NrwKh0fuPCx99YneRCv8dnn0ddwsFe7KLpBr
-         aOlg==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=SWrMAHfPiF4ze+iGU6dxQWsM0692R0mOSC5P6c+ldRg=;
+        b=XOE0/SSoJkr+4SHkcHEE1SVzXNM3/TZ6pU5Qif8nRIoORcq1qZBfHtbpwjIUW2YL7c
+         362xJta2m0q/JfBzsUn0wdxQkhbUCCF8X+lZPA+zpVpO9rUlsShKQCwIgKlx+V47F2XZ
+         cy8C5jz0uu+wvkQhVohUs2f1hNJ3LsN2HV+OqdQxG+aCk0hx6ToEonVUHMkoVJ8+mwie
+         SszBoYnxbLW30RU067ctLhDb89DhNzi/8Xd3PIuFcEKBGwi/MAY6AwUzncb58uzUFKfb
+         v+MkUVpE2mDL8ZWyLc9MdTVib/y5gN5pgLUBRMHZU6ZKQi3TkJ46u4iEuTDtkbdpZdf/
+         /Hyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=+Cg7pQfmmKSiROPfrU2cywx9Oquy4Mx1Fc84HdQiaOo=;
-        b=GkUUEGE3DW8WiBllha22puGzNXpfzbni4L3uYPEHKjIwpeyXc4DMilKBXsN1VtDYvy
-         SLVABFSgt1n8sVKLpYlQz8X77Sj7CTIvCCWRHOvdaOIRDDnsb6HSugBXfboyPXHRuSkh
-         AFQen682GnI1y/U/YDNHBETvuw8vfa89sOj43r3lFCwGMrsKFpH8ocSIlkAapfpp5lQp
-         Y4OcKsF+6sRKvRH+dzWWliZPYUxf+3H/XTeGjuVW6nmia9nstovTlQKIAcdGPauHaLGe
-         sQlqsROp3FCAxBK92AZmuXghsyZuLP8c348+wCCrGhc3X9TbuCWWf8Roa4D+pkhijTDt
-         8XDA==
-X-Gm-Message-State: APjAAAWgLyaseJf5azOSa5I7i9Ld+cXvA12ROeNQBaWizDgkrhM0gLnb
-	kUTijGbL64pDI8UtRt777lk3/YvE
-X-Received: by 2002:a62:be02:: with SMTP id l2mr18875937pff.55.1552910605550;
-        Mon, 18 Mar 2019 05:03:25 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.125.144])
-        by smtp.gmail.com with ESMTPSA id g15sm16742560pfo.35.2019.03.18.05.03.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 18 Mar 2019 05:03:24 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: mt7621-mmc: remove blank line
-Date: Mon, 18 Mar 2019 17:33:02 +0530
-Message-Id: <1552910582-2749-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=SWrMAHfPiF4ze+iGU6dxQWsM0692R0mOSC5P6c+ldRg=;
+        b=NVjskZ2khBJaiP2pZEcSXp3f3t8X08IblJXwgeJ2eA6iqAY1n91QRAoI5sg7+1hZWj
+         qX79SR/sKLzIBw8vRhamVWSDgSDDr0fIzIOEISe/18fFo6U1k3bbN4mLQsi3tdxByZXz
+         +7WiC8+uwHWv7uewN1WMZI9qe4f5vH4i+RCJpWI35vIErjyBYoHsExyYkFtwEI+fEDob
+         Ss96qD8oyArpNiUnFcJHw7UQXUJdf37bn9NjnqiF09FQw8/BGOBk7QQYoglMvJvi7f4W
+         3aKRZzom+QGSKDpGpLoN+AQmgmwuy9s/rCX3wWMp96vAytuVgAG7Q/mYn+5AeaCACdjJ
+         xs3Q==
+X-Gm-Message-State: AG10YOTt5lxyBosmtcPa1/lfx/DgL9UvCoOy5c8m6NJZ7ZrIXGSVIJff+IDJbeRYZMHNeHtqQ7+bi6BjQwfqmw==
+MIME-Version: 1.0
+X-Received: by 10.28.187.198 with SMTP id l189mr6130993wmf.0.1455033434281;
+ Tue, 09 Feb 2016 07:57:14 -0800 (PST)
+Received: by 10.194.222.165 with HTTP; Tue, 9 Feb 2016 07:57:14 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602091655340.2578@hadrien>
+References: <ba8ae97e-c7c5-4383-bffc-a5eac3003e1d@googlegroups.com>
+	<2431688.NvBMsGsSsv@wuerfel>
+	<alpine.DEB.2.10.1602091649200.2578@hadrien>
+	<2414518.udrIPO2x22@wuerfel>
+	<alpine.DEB.2.10.1602091655340.2578@hadrien>
+Date: Tue, 9 Feb 2016 17:57:14 +0200
+Message-ID: <CAEnQRZBMaRXCuvV6h-LDo4bO4XyrEHPUuz5skfOBZS+aKXdgCQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Doubt regarding build warnings
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Arnd Bergmann <arnd@arndb.de>, outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-To avoid style issues, remove multiple blank lines.
+On Tue, Feb 9, 2016 at 5:55 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Tue, 9 Feb 2016, Arnd Bergmann wrote:
+>
+>> On Tuesday 09 February 2016 16:49:31 Julia Lawall wrote:
+>> > On Tue, 9 Feb 2016, Arnd Bergmann wrote:
+>> >
+>> > > On Tuesday 09 February 2016 16:18:55 Julia Lawall wrote:
+>> > > >     make M=drivers/staging: This seems to try to link the modules in a
+>> > > > previously build vmlinux file.
+>> > > >
+>> > > > Make path/ could be a reasonable choice for a localized change within a
+>> > > > single driver, or for a change localized to drivers staging. In any case,
+>> > > > as a minimum always check that compilation produces a .o file for every
+>> > > > file that your patch changes. If there is no .o file, you have not
+>> > > > compiled the file, and you need to look for other compiler options.
+>> > >
+>> > > Ok, sounds good. I've added a little bit more detail now:
+>> > >
+>> > > http://kernelnewbies.org/FirstKernelPatch?action=diff&rev2=25&rev1=24
+>> >
+>> > Thanks.  What is -sj2?
+>> >
+>> >
+>>
+>> -s is 'silent', -j2 is used to build on two threads in parallel rather than
+>> one. On second thought, I'll remove those again, as this prevents you
+>> from seeing which files get built.
+>
+> -j2 could be left, but one could also infer it from the rest.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/mt7621-mmc/dbg.c | 1 -
- 1 file changed, 1 deletion(-)
+I would also remove -j2, doesn't make any difference for building few modules.
+It can only confuse things.
 
-diff --git a/drivers/staging/mt7621-mmc/dbg.c b/drivers/staging/mt7621-mmc/dbg.c
-index c7c091f..6b59ac8 100644
---- a/drivers/staging/mt7621-mmc/dbg.c
-+++ b/drivers/staging/mt7621-mmc/dbg.c
-@@ -50,7 +50,6 @@
- #include "mt6575_sd.h"
- #include <linux/seq_file.h>
- 
--
- /* for debug zone */
- unsigned int sd_debug_zone[4] = {
- 	0,
--- 
-2.7.4
-
+Daniel.
 
