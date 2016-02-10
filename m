@@ -1,69 +1,66 @@
 X-GM-THRID: 6249577113411649536
-X-Received: by 10.107.168.139 with SMTP id e11mr12087006ioj.32.1455093834771;
-        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+X-Received: by 10.107.157.9 with SMTP id g9mr37868467ioe.26.1455093061293;
+        Wed, 10 Feb 2016 00:31:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.36.5 with SMTP id m5ls176070igj.32.gmail; Wed, 10 Feb 2016
- 00:43:54 -0800 (PST)
-X-Received: by 10.107.11.23 with SMTP id v23mr24468197ioi.13.1455093834409;
-        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+Received: by 10.182.19.229 with SMTP id i5ls123565obe.75.gmail; Wed, 10 Feb
+ 2016 00:30:59 -0800 (PST)
+X-Received: by 10.182.254.35 with SMTP id af3mr35474472obd.37.1455093059534;
+        Wed, 10 Feb 2016 00:30:59 -0800 (PST)
 Return-Path: <rakhish1994@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id u66si258041pfa.2.2016.02.10.00.43.54
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id tn7si241280pac.1.2016.02.10.00.30.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 10 Feb 2016 00:30:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
+       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 71so637743pfv.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+Received: by mail-pa0-x244.google.com with SMTP id fl4so592972pad.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 00:30:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=TLCEF1cHl/q1P3ZJo2fu/V+12A1p/9zORk6KW+vhnIY=;
-        b=QZXudniNBwSW39MFw2v55Al8c2g0DgyCqOJyDY54YWKXUDmMGBWFysBPDFYFD1nI39
-         UKV0EZI6HvesmbPT27nKa6LuWu1tLtQ/wwycNgkxsCdwvm3aZCMSKTNqFdxaQHBxgg+3
-         kouYGrvF+Y3sTxQOz1AcIsAZGBmQEvpACqmvTCE9jSJMKxhrTt7+A9O9Z2Vojr5Ed83E
-         5uMXIcK3qYyT0qFYVgxBgbxqkQcHDJyRinACJzdrmYVFIbtJZYd4skW/rDybWSLHr0wt
-         6mqPPN8JHYx7weQzFdI228WyGoYUNYvkxVwEH5red+/9cTMAeLEPyW+ne0wKrYMlF4Ny
-         zVLA==
+        bh=QbDdZsgeckWl7Tp1S2hPq8vjaZeGMtqcbcKmi4YL7Mg=;
+        b=oH/LhhFGvS8vKnP7ysKq1asR+67/V/wqlAhr7A3K3muk/fpBZnkgcoU1BA5HQAkxip
+         SGaGn4E2qc8+/iOja/rEofPqHG3Xw6ZvM3sCeZ/Zp8FNZmNGS17faLLtyOHsqqsq5s+5
+         9QMTxVz6ekCnhoppOlR2/3Lg66C3jFVgyD9pJXyMtoTrckqxfrfznK86B5h9VTOYxbTE
+         3XeaFWxZ+uXiKBoec2lPVy91zzRtD0XBwoMchls1SlR66ZzMyBuDksF/WQ5QANFP0zYH
+         36pT024S3az5UfbhoBI7xglE3EH/+FtdXBOTTvFBX6KErbUCYMzKo+7e+bNEdPYZ6zoq
+         Zr/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TLCEF1cHl/q1P3ZJo2fu/V+12A1p/9zORk6KW+vhnIY=;
-        b=VqC6Ffv23wowF/36/shJrCFu0NCjk6F4jncoSC5N3e7q6sdNhhDsn00IOcKMVIBgCe
-         5MnBoqdZrgyOzGbiG+jZwZtfHMsbJGh+34uRoa/XaUoe94VE2Ed/EZH8ls5aI7Xu87po
-         hlSJVKC4kG1GjUxnxOKYfMgwNDX5RGaBxLonyUKxS8gNGEJZdcktKawOD3JmFHX8lu0d
-         B/JoTyK2LNI4/EJLi4ijvk2R/QYAMv9ungtKfBP363P6YZqaOuTr4NzsKEpZV4ycv8vk
-         tgLVIVafv7qDggKxcI+TyVkzda41KVvU+ClSp1T6sgzh7EEfOk4zn2ObK/3VDIWBTxFP
-         LRPQ==
-X-Gm-Message-State: AG10YOSufsrk3cngm0Dsj+qaB5iNGmJi1ldHgal6JoAls42GZW6VxCgOKqwO2IWdX4Ry1w==
-X-Received: by 10.98.67.153 with SMTP id l25mr56780311pfi.111.1455093834303;
-        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+        bh=QbDdZsgeckWl7Tp1S2hPq8vjaZeGMtqcbcKmi4YL7Mg=;
+        b=AjN36PQbrR5DF4pVpwDj9QLYp1r/U9pjngJjXkKYAXPDxYWRa3pHt5zm3UL9Attc7H
+         UpqavVulzmy0b7isYAbM9qu1/AUdZ4uKEhkqxVxJkl7vbjzUCCrM+ebBiYZlBSa4ZHZZ
+         S1heA8Q45r9kA7/AQ90hhm3tuAS34tSl4MBC1vLK7njNvd0GhJKZjpZo2KCUhJBggou3
+         1E/EKBHdi9YMsTApSnrNp3zJImXrAqV3qxSr/JyQEBM3NTi0alvYXE6KnCV4ixyI2/IN
+         2gAQ5s4corB+blAKEJsuehImR2flfJ90IjfZUeZAv3hBOC/gXo3CdmkDQS+e3wg6U0f6
+         Q/6g==
+X-Gm-Message-State: AG10YORIjewPNS7HKEZhyubCqsrh4HNaeNMJPnfsBBeEi2iPIz0yBE7UtTGLL8D+eka5Gw==
+X-Received: by 10.67.15.2 with SMTP id fk2mr54968542pad.99.1455093059374;
+        Wed, 10 Feb 2016 00:30:59 -0800 (PST)
 Return-Path: <rakhish1994@gmail.com>
 Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id fl9sm3229293pab.30.2016.02.10.00.43.52
+        by smtp.gmail.com with ESMTPSA id z7sm3150446pfi.19.2016.02.10.00.30.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 10 Feb 2016 00:43:53 -0800 (PST)
+        Wed, 10 Feb 2016 00:30:58 -0800 (PST)
 From: Rakhi Sharma <rakhish1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: julia.lawall@lip6.fr,
 	daniel.baluta@gmail.com,
 	Rakhi Sharma <rakhish1994@gmail.com>
-Subject: [PATCH v3 2/2] staging: lustre: lov_pool: Fixed a return coding style warning.
-Date: Wed, 10 Feb 2016 14:13:47 +0530
-Message-Id: <1455093827-7930-1-git-send-email-rakhish1994@gmail.com>
+Subject: [PATCH v2 2/2] staging: lustre: lov_pool: Fixed a return coding style warning.
+Date: Wed, 10 Feb 2016 14:00:53 +0530
+Message-Id: <1455093053-7386-1-git-send-email-rakhish1994@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 Remove unusefull return at the end of void function.
 WARNING: void function return statements are not generally useful.
 
 Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
-
-Changes in v3:
-  shortened the subject line and make the discription more clear.
 ---
  drivers/staging/lustre/lustre/lov/lov_pool.c | 1 -
  1 file changed, 1 deletion(-)
