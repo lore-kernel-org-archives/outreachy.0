@@ -1,74 +1,155 @@
-X-GM-THRID: 3440504733696
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,cada1563c35b0518,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.80.35 with SMTP id o3mr3213740wix.0.1424898951208;
-        Wed, 25 Feb 2015 13:15:51 -0800 (PST)
+X-GM-THRID: 6249319551203278848
+X-Received: by 10.129.49.18 with SMTP id x18mr954980ywx.37.1455070579059;
+        Tue, 09 Feb 2016 18:16:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.20.8 with SMTP id j8ls364876lae.7.gmail; Wed, 25 Feb 2015
- 13:15:49 -0800 (PST)
-X-Received: by 10.152.28.137 with SMTP id b9mr798391lah.8.1424898949560;
-        Wed, 25 Feb 2015 13:15:49 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
-        by gmr-mx.google.com with ESMTPS id el6si1215665wib.2.2015.02.25.13.15.49
+Received: by 10.140.32.7 with SMTP id g7ls133310qgg.49.gmail; Tue, 09 Feb 2016
+ 18:16:18 -0800 (PST)
+X-Received: by 10.129.80.3 with SMTP id e3mr35005851ywb.23.1455070578503;
+        Tue, 09 Feb 2016 18:16:18 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ob0-x22b.google.com (mail-ob0-x22b.google.com. [2607:f8b0:4003:c01::22b])
+        by gmr-mx.google.com with ESMTPS id mu6si80951igb.1.2016.02.09.18.16.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Feb 2015 13:15:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Feb 2016 18:16:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22b as permitted sender) client-ip=2607:f8b0:4003:c01::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wggz12 with SMTP id z12so6332773wgg.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Feb 2015 13:15:49 -0800 (PST)
+Received: by mail-ob0-x22b.google.com with SMTP id wb13so8531129obb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 18:16:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=hDmng+xLjTgFtpLgKp4A/OxdjRLvSL2Hh9pen+eHfyw=;
-        b=gbA1H97ThkWkgdE85Fi3KA3oBsakOSPakSFmQ0/pFRalTsu/naWexszl2DFHOGWmrC
-         vXQuhacu+yAXmKUC5TyTYzwSPDVaMFpqNASN6CsRRP3IOI16Q09zhVMZrP5zXWb8hgvt
-         pfX+BzVnIAss1BN3qThKop8gxDgWw4CL0eZcGiFs4bSTQXpDV9W9Sc47uDBoHdPIivPk
-         BQCnbL+PHwwsyIazg7fWKQj6JaJemd/qESqB/JShJd1KtSfja+W2DwYvug4x+8FI6HXG
-         D/5XFDV3/EUai4Z68Hc7kxyQmaKtpfqBxMP2/WTn8nloJAMe30rLxTrYPE6Ffpy6cv6S
-         2P5A==
-X-Received: by 10.180.8.165 with SMTP id s5mr10254701wia.16.1424898949437;
-        Wed, 25 Feb 2015 13:15:49 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id kr5sm61554293wjc.1.2015.02.25.13.15.47
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 25 Feb 2015 13:15:48 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: Remove return in void function
-Date: Wed, 25 Feb 2015 23:15:05 +0200
-Message-Id: <1424898905-6290-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=SnAuC7c32ycu9G6lZJDyPHLwMJlWzVon0WcL/OA1KT4=;
+        b=n5gLNAEkHW5kSsN7TkQDV1RaA85UQ8bj0gg6zxdnos9WB4wxRg51jN3tiWTwgFDGHs
+         TLWflK+RS+ClQOSIdZRMOJGw7E16O5yIVlJtCtwn5/mfJ6xkyZiWyl0F3vQ2jB0jpIrv
+         uBWXbloxlfMrHhKDwtW9X9A8RyCOWkCt0jjB9y/3n3oaaTFcSV/SQkl3eC8XXcQPgb9z
+         PdNcw3pzmMKopzakJ+Bgx1A7jkN+hc4H/Lfezg0hWufixEH4Hq6Eh2lCo1xgFPwjZ/A1
+         z7Qxhn0F9dJ+bNrHf9G54tsJIms2suFSS8cnQ/OXhICqqh5ahWe+eU3huGP5Sq7u5d+A
+         mByg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=SnAuC7c32ycu9G6lZJDyPHLwMJlWzVon0WcL/OA1KT4=;
+        b=cPARo3c63KHw/+4T3/ZXKu4NSak01waToQUjTwwl607Vu3NalT68ramgVc+1uNaU1y
+         +r9uc8/Fz/0TiBsZI6cMbuXr4AjRKtpfYf6UVXXrTM8s7HkUmet0vzCG2m5i3a6oRQUA
+         58h6CSktysReB+jMdvN9Dkn63lD7IlT5VDD9mot9RpUTvgcZef0ywIZWmGIAmquiA+cr
+         yDzxT/gcuIK5ogX4+obeKuWumAbhF5ZlAnlFGqacHMJ7kusmmrTJfnnY09i7PU4m4yVH
+         yNIViT2eLnf2WxWzsg3w1K3goSXGMMdApGsF2diiDUzH/OBvwb4YAAhRLvyrXhKweRoH
+         OzlA==
+X-Gm-Message-State: AG10YOSTMYqBbIwFCvEwzVuSwQ4nhyPk91h8aF1gLoFl2oE9jb1QmAXs1pkLe5vIMZybtx/t9Cq9F8zv+YZPnw==
+MIME-Version: 1.0
+X-Received: by 10.60.233.193 with SMTP id ty1mr12212940oec.0.1455070578318;
+ Tue, 09 Feb 2016 18:16:18 -0800 (PST)
+Received: by 10.202.170.195 with HTTP; Tue, 9 Feb 2016 18:16:18 -0800 (PST)
+In-Reply-To: <20160210015245.GA19273@kroah.com>
+References: <20160209205055.GA8154@janani-Inspiron-3521>
+	<20160210015245.GA19273@kroah.com>
+Date: Tue, 9 Feb 2016 21:16:18 -0500
+Message-ID: <CANnt6XnmcvqmJuD-5V5u6O3nENmxe_3Ehsuak6T8mneejhg2mg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: Remove unneeded pointer
+ casts in function arguments
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a1136af70f1a6fb052b6104c5
 
-WARNING: void function return statements are not generally useful
-Remove return in void function. That was found by running checkpatch.
+--001a1136af70f1a6fb052b6104c5
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
----
- drivers/staging/rtl8723au/hal/hal_com.c | 1 -
- 1 file changed, 1 deletion(-)
+On Tue, Feb 9, 2016 at 8:52 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
 
-diff --git a/drivers/staging/rtl8723au/hal/hal_com.c b/drivers/staging/rtl8723au/hal/hal_com.c
-index bf4cae2..ce0516b 100644
---- a/drivers/staging/rtl8723au/hal/hal_com.c
-+++ b/drivers/staging/rtl8723au/hal/hal_com.c
-@@ -237,7 +237,6 @@ void HalSetBrateCfg23a(struct rtw_adapter *padapter, u8 *mBratesOS)
- 		/*  Ziv - Check */
- 	rtl8723au_write8(padapter, REG_INIRTS_RATE_SEL, rate_index);
- 
--	return;
- }
- 
- static void _OneOutPipeMapping(struct rtw_adapter *pAdapter)
--- 
-1.8.3.2
+> On Tue, Feb 09, 2016 at 03:50:56PM -0500, Janani Ravichandran wrote:
+> > Remove pointer casts in function arguments as they are not required.
+> > This patch removes all such casts found in the driver iio by the
+> > following coccinelle patch.
+> > @@
+> > type t;
+> > expression e;
+> > identifier f;
+> > @@
+> >
+> >   f(...,
+> > - (t *)
+> >   e,
+> >   ...)
+> >
+> > Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> > ---
+> >  drivers/staging/iio/accel/adis16240_core.c      |  2 +-
+> >  drivers/staging/iio/accel/lis3l02dq_core.c      |  4 ++--
+> >  drivers/staging/iio/accel/sca3000_core.c        |  2 +-
+> >  drivers/staging/iio/impedance-analyzer/ad5933.c | 12 ++++++------
+> >  drivers/staging/iio/light/tsl2583.c             |  4 ++--
+> >  drivers/staging/iio/light/tsl2x7x_core.c        |  8 ++++----
+> >  drivers/staging/iio/meter/ade7854-spi.c         |  4 ++--
+> >  drivers/staging/iio/resolver/ad2s1210.c         |  4 ++--
+> >  8 files changed, 20 insertions(+), 20 deletions(-)
+>
+> Please always test-build your patches, this one blows up the build by
+> adding a ton of warnings :(
+>
+I'm really sorry, I must have missed it. Will take care from next time.
 
+Thanks.
+Janani.
+
+--001a1136af70f1a6fb052b6104c5
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Tue, Feb 9, 2016 at 8:52 PM, Greg KH <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:gregkh@linuxfoundation.org" target=3D"_blank">gregkh@linuxfounda=
+tion.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span cl=
+ass=3D"">On Tue, Feb 09, 2016 at 03:50:56PM -0500, Janani Ravichandran wrot=
+e:<br>
+&gt; Remove pointer casts in function arguments as they are not required.<b=
+r>
+&gt; This patch removes all such casts found in the driver iio by the<br>
+&gt; following coccinelle patch.<br>
+&gt; @@<br>
+&gt; type t;<br>
+&gt; expression e;<br>
+&gt; identifier f;<br>
+&gt; @@<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0f(...,<br>
+&gt; - (t *)<br>
+&gt;=C2=A0 =C2=A0e,<br>
+&gt;=C2=A0 =C2=A0...)<br>
+&gt;<br>
+&gt; Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchnd=
+rn@gmail.com">janani.rvchndrn@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/iio/accel/adis16240_core.c=C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 2 +-<br>
+&gt;=C2=A0 drivers/staging/iio/accel/lis3l02dq_core.c=C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 4 ++--<br>
+&gt;=C2=A0 drivers/staging/iio/accel/sca3000_core.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 2 +-<br>
+&gt;=C2=A0 drivers/staging/iio/impedance-analyzer/ad5933.c | 12 ++++++-----=
+-<br>
+&gt;=C2=A0 drivers/staging/iio/light/tsl2583.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0|=C2=A0 4 ++--<br>
+&gt;=C2=A0 drivers/staging/iio/light/tsl2x7x_core.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 8 ++++----<br>
+&gt;=C2=A0 drivers/staging/iio/meter/ade7854-spi.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0|=C2=A0 4 ++--<br>
+&gt;=C2=A0 drivers/staging/iio/resolver/ad2s1210.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0|=C2=A0 4 ++--<br>
+&gt;=C2=A0 8 files changed, 20 insertions(+), 20 deletions(-)<br>
+<br>
+</span>Please always test-build your patches, this one blows up the build b=
+y<br>
+adding a ton of warnings :(<br></blockquote><div>I&#39;m really sorry, I mu=
+st have missed it. Will take care from next time.<br><br></div><div>Thanks.=
+<br></div><div>Janani.<br></div></div><br></div></div>
+
+--001a1136af70f1a6fb052b6104c5--
 
