@@ -1,125 +1,77 @@
-X-GM-THRID: 6205255404261212160
-X-Received: by 10.67.3.137 with SMTP id bw9mr31636312pad.4.1444773609717;
-        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
+X-GM-THRID: 6249536250396540928
+X-Received: by 10.107.7.200 with SMTP id g69mr39003144ioi.3.1455090681622;
+        Tue, 09 Feb 2016 23:51:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.155.19 with SMTP id d19ls1939470ioe.19.gmail; Tue, 13 Oct
- 2015 15:00:09 -0700 (PDT)
-X-Received: by 10.66.227.166 with SMTP id sb6mr30787148pac.0.1444773609345;
-        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id zg1si549505pbb.2.2015.10.13.15.00.09
+Received: by 10.182.196.105 with SMTP id il9ls109911obc.50.gmail; Tue, 09 Feb
+ 2016 23:51:21 -0800 (PST)
+X-Received: by 10.182.221.129 with SMTP id qe1mr36757819obc.7.1455090681286;
+        Tue, 09 Feb 2016 23:51:21 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x241.google.com (mail-qg0-x241.google.com. [2607:f8b0:400d:c04::241])
+        by gmr-mx.google.com with ESMTPS id y131si149500ywc.0.2016.02.09.23.51.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Tue, 09 Feb 2016 23:51:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::241 as permitted sender) client-ip=2607:f8b0:400d:c04::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::241 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id ex6so32747537pac.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
+Received: by mail-qg0-x241.google.com with SMTP id e61so794882qgf.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 23:51:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=JRAoA9E2cen2zYHLKI4wJxOTHyJ5HQSDqUfuAR6uBHs=;
-        b=THulnPqjAdeS+W6K+S0GmbmmvY1sVzFTwWoThwDWsYIPbWNemtuGaq40+P8hQRCIZu
-         ydaunuAEw0151Wo0G7uYnmiHpyuMAI0UaUE5JNNiZLfe9GB3UvNHA2UQBpz1k0wfeK5z
-         7jprLrdnxiRXdLaFQdD3TBoXU5mSUpwlrxIKHnhsqJ70FSW+0YzoUnjUsbi/5TZOeAGL
-         tA2acQ30zmuDg4+v6Jz35U+TaCY4myGr13FqMk9FjSwTRc09riasdi1cVk0VyVJ1Xa7L
-         ErrFtPRQyJzdguKCQle72jYLeHXC26zb6imcKa6bwUgCAZXIMpcNvE6K4vVqEBmlh3Hz
-         /shQ==
-X-Received: by 10.66.145.97 with SMTP id st1mr42332777pab.145.1444773609244;
-        Tue, 13 Oct 2015 15:00:09 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id x6sm5687643pbt.3.2015.10.13.15.00.06
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 15:00:08 -0700 (PDT)
-Date: Wed, 14 Oct 2015 03:29:58 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: wilc1000: host_interface: Remove unnecessary enum
-Message-ID: <20151013215958.GA14072@ubuntu>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=lgpPDmRPu0fXLSYxMfNVHAbOrZe55bdOGPJIhq8gIzk=;
+        b=cfpOKCIuY6qqmgAkZWXC/M1DttXb8/PIS1DLhJ83rH/d3ThVB38J6ATt+yf/XKNen1
+         w+dXgLth224oba2rtvVw1E2flvLklFOkUTw451C1DBandKwjZ3DZHGAU7zGCSpfZSWSQ
+         eTiEtvYiNs+02w4ybS92ojD4dJ5imEKPSPgaA8301bJwL0F1jZjO7ngNGxcMpSxjMDpu
+         RfnZLjvHNE936Yl2DSkS1qSievc1935GiLaZV9gEb7GFtLUu6iTLxT+TDAQSXmFXwZp9
+         pyKN8wv/S5SbNcWB11fktV4WOC6k/QGXIvwlCs5Ni/eD7qbOnF9ujRR0l9WVc+Cs5PaD
+         5DOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=lgpPDmRPu0fXLSYxMfNVHAbOrZe55bdOGPJIhq8gIzk=;
+        b=VEQZKE2rER4FRID6zcGDiFnM1Kr/0pPp6zUeUFuwTgkrwviaRe8Jdjn89Czg6iaZMI
+         CZMqHIb28orpxy3T6ZPt40H1lm114en2zcJdOAb0hCwPlhV+AP6JLRg1SNu6Nnlo/8sV
+         dnwGPN0Fm9eIUJtv7EMHXnU0EhYhW2L6sBjn0JLU0Xh1MWNTx829tpLbe9IK1qBmc84g
+         RlewibHn+RA3wENlA9ruanE3/rmnLRl2Z0Dp6zV91WeyjwK01Fj21n7ALmBeskd9SQLb
+         IGvGfZtfzQb0aXL7rYFK5Sr3j/5WRUiIknvJYmLxEGIYwYmqnnvPHRrajl0CwErZ6Y/T
+         3O2g==
+X-Gm-Message-State: AG10YORWvPkdS6ziL3NnGV8IrD10Xmplo1/pOPoMmnBeTT7zLD6z3NhDK2jwy+PKIGhzvUmx/QlCWvGGoyPgkg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.140.93.166 with SMTP id d35mr46205299qge.29.1455090681045;
+ Tue, 09 Feb 2016 23:51:21 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Tue, 9 Feb 2016 23:51:20 -0800 (PST)
+In-Reply-To: <20160210062927.GE374@sudip-pc>
+References: <20160210055217.GA4222@amitoj-Inspiron-3542>
+	<20160210062927.GE374@sudip-pc>
+Date: Wed, 10 Feb 2016 13:21:21 +0530
+Message-ID: <CA+5yK5HBq-GNTU_yCO401Cz8QABr6GxX+1fNYZgB+-kCmqB0vA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: gdm72xx: gdm_sdio: Replace
+ timeval with ktime_t
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Cc: y2038@lists.linaro.org, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-enum scan_conn_timer and its instances are never used anywhere
-in the code so, remove it.
-Semantic patch used:
+On Wed, Feb 10, 2016 at 11:59 AM, Sudip Mukherjee
+<sudipm.mukherjee@gmail.com> wrote:
+>
+> This will not apply as almost similar change has already been done by:
+> 2bc29a1abc5c ("staging: gdm72xx: Replace timeval with ktime_t")
+>
+> which tree are you using?
+>
+> regards
+> sudip
 
-@@
-type T;
-identifier i;
-constant C;
-position p != e.p;
-@@
+Sorry about this, I didn't rebase my tree. Done now.
 
-- T i@p;
-  <+... when != i
-- i = C;
-  ...+>
-
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/wilc1000/host_interface.c | 10 ----------
- 1 file changed, 10 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 04f3bc2..14c8abe 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -229,12 +229,6 @@ struct join_bss_param {
- 	u8 au8StartTime[4];
- };
- 
--enum scan_conn_timer {
--	SCAN_TIMER = 0,
--	CONNECT_TIMER	= 1,
--	SCAN_CONNECT_TIMER_FORCE_32BIT = 0xFFFFFFFF
--};
--
- static struct host_if_drv *wfidrv_list[NUM_CONCURRENT_IFC + 1];
- struct host_if_drv *terminated_handle;
- struct host_if_drv *gWFiDrvHandle;
-@@ -3584,7 +3578,6 @@ s32 host_int_set_join_req(struct host_if_drv *hif_drv, u8 *pu8bssid,
- {
- 	s32 s32Error = 0;
- 	struct host_if_msg msg;
--	enum scan_conn_timer enuScanConnTimer;
- 
- 	if (!hif_drv || pfConnectResult == NULL) {
- 		s32Error = -EFAULT;
-@@ -3636,7 +3629,6 @@ s32 host_int_set_join_req(struct host_if_drv *hif_drv, u8 *pu8bssid,
- 		return -EFAULT;
- 	}
- 
--	enuScanConnTimer = CONNECT_TIMER;
- 	hif_drv->hConnectTimer.data = (unsigned long)hif_drv;
- 	mod_timer(&hif_drv->hConnectTimer,
- 		  jiffies + msecs_to_jiffies(HOST_IF_CONNECT_TIMEOUT));
-@@ -4020,7 +4012,6 @@ s32 host_int_scan(struct host_if_drv *hif_drv, u8 u8ScanSource,
- {
- 	s32 s32Error = 0;
- 	struct host_if_msg msg;
--	enum scan_conn_timer enuScanConnTimer;
- 
- 	if (!hif_drv || ScanResult == NULL) {
- 		PRINT_ER("hif_drv or ScanResult = NULL\n");
-@@ -4058,7 +4049,6 @@ s32 host_int_scan(struct host_if_drv *hif_drv, u8 u8ScanSource,
- 		return -EINVAL;
- 	}
- 
--	enuScanConnTimer = SCAN_TIMER;
- 	PRINT_D(HOSTINF_DBG, ">> Starting the SCAN timer\n");
- 	hif_drv->hScanTimer.data = (unsigned long)hif_drv;
- 	mod_timer(&hif_drv->hScanTimer,
--- 
-2.1.0
-
+Thanks,
+Amitoj
 
