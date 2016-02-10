@@ -1,77 +1,52 @@
-X-GM-THRID: 6251387013409275904
-X-Received: by 10.50.40.2 with SMTP id t2mr272755igk.9.1455514462595;
-        Sun, 14 Feb 2016 21:34:22 -0800 (PST)
+X-GM-THRID: 6249315383712415744
+X-Received: by 10.182.221.129 with SMTP id qe1mr35785444obc.7.1455068852393;
+        Tue, 09 Feb 2016 17:47:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.73.129 with SMTP id l1ls664073igv.35.gmail; Sun, 14 Feb
- 2016 21:34:22 -0800 (PST)
-X-Received: by 10.50.102.40 with SMTP id fl8mr9521770igb.7.1455514462325;
-        Sun, 14 Feb 2016 21:34:22 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id ui7si3150414pab.0.2016.02.14.21.34.22
+Received: by 10.107.136.202 with SMTP id s71ls100738ioi.85.gmail; Tue, 09 Feb
+ 2016 17:47:32 -0800 (PST)
+X-Received: by 10.66.63.104 with SMTP id f8mr34607086pas.6.1455068851971;
+        Tue, 09 Feb 2016 17:47:31 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id 12si89689pfb.1.2016.02.09.17.47.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Feb 2016 21:34:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Tue, 09 Feb 2016 17:47:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id gc2so15243pab.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 21:34:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=bBkuIbUWwCysZASna7jc+PmGG1Jc04L42NMT1tgXho8=;
-        b=oM06kTgYpn183VIrWglXPS237NJek02PRTSzqdW30gM8GUQw4kTRCDrK9G7ATdRjNr
-         dT/eMrfoYj7sQeMGh22teuei2ZoyexMY0Y8EO6S6kHkdvNLHvJIrj7TpH6hmF5zask5q
-         cRnj1cccX5ZtTcceKabQaS4c2/xle03igCU+os++w0R5Mql+xxPPvIf8IGqaZlxRgmFZ
-         pMhi65dfDJpj52FU5zXvOIMjgFUk4SwHbi3TmM0rzhhFN9IPD/riJmywOe6sUSTCmIkH
-         7SaTi4zZqAIzZQkZswi4vrXeP24zKWMhx4ZRprFYL+oOmKoV/2Wic70DJ/8Hri5CxzCl
-         /3cA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bBkuIbUWwCysZASna7jc+PmGG1Jc04L42NMT1tgXho8=;
-        b=hKWTD+7k4sELmdvDjVeoWGkWyngdANAX0uuL/ktTsFfdf9daxm6WWaZRsqolkFLN0Z
-         CQHot1zNOzI2HLWXcAIUxtfSFEHQjiSpxi3dagSgL8+naQocn7iq1O3znAPHXtFze7cS
-         mMBHEsgAkX3j4Cyi+vTGT8o1ZnL6H/+dovK40Q9BA6Ws66BCTyc22Smll4WgimKe9b+f
-         NnQYyxF9ZfzhcxYgN+3L4mPJ1luY8khP7XJsy8qoFDY4MnzRLAvhn+HJLZiUC9l3me48
-         n6hULNUaQ0eQ0lGnafBha9y+Lz1XRQ4lKZ/67xBI1PaGNKoWALk33Ao2tSIQHqwWsszP
-         KruQ==
-X-Gm-Message-State: AG10YORybq2edmEHFnXIqRGTty85U9oDBiBhlDGa8Gd0qsfTEjpsdem4/fp4MWNNjkpTaA==
-X-Received: by 10.66.219.71 with SMTP id pm7mr20716594pac.137.1455514462200;
-        Sun, 14 Feb 2016 21:34:22 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([125.212.122.36])
-        by smtp.gmail.com with ESMTPSA id kw10sm35165352pab.0.2016.02.14.21.34.21
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 14 Feb 2016 21:34:21 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v2 0/2] staging: wilc1000: fix checkpatch errors
-Date: Mon, 15 Feb 2016 13:34:15 +0800
-Message-Id: <cover.1455513866.git.eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A50F9F28;
+	Wed, 10 Feb 2016 01:47:31 +0000 (UTC)
+Date: Tue, 9 Feb 2016 17:47:31 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Add spaces around
+ '+'
+Message-ID: <20160210014731.GA23508@kroah.com>
+References: <1455032114-4661-1-git-send-email-dilekuzulmez@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1455032114-4661-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Clean checkpatch errors found in wilc1000.
+On Tue, Feb 09, 2016 at 05:35:14PM +0200, Dilek Uzulmez wrote:
+> Add space around operator '+'. Problem found using
+> checkpatch.pl
+> CHECK: spaces preferred around that '+' (ctx:VxV)
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/rtl8712/hal_init.c | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
 
-Change in v2:
-* Split single patch into two separate patches of distinct change
+This change is already in my tree, make sure you always work against the
+linux-next, or even better, the staging.git tree, using the
+staging-testing branch.
 
-Eva Rachel Retuya (2):
-  staging: wilc1000: Remove whitespace checkpatch errors
-  staging: wilc1000: Remove initialization of static variables
+thanks,
 
- drivers/staging/wilc1000/host_interface.c         | 2 +-
- drivers/staging/wilc1000/linux_mon.c              | 2 +-
- drivers/staging/wilc1000/wilc_spi.c               | 9 ++++++---
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 4 ++--
- drivers/staging/wilc1000/wilc_wlan.c              | 2 +-
- 5 files changed, 11 insertions(+), 8 deletions(-)
-
--- 
-1.9.1
-
+greg k-h
 
