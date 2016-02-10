@@ -1,149 +1,105 @@
-X-GM-THRID: 6249291499959222272
-X-Received: by 10.31.15.11 with SMTP id 11mr32449453vkp.3.1455026562114;
-        Tue, 09 Feb 2016 06:02:42 -0800 (PST)
+X-GM-THRID: 6249681963932712960
+X-Received: by 10.25.154.129 with SMTP id c123mr4880114lfe.1.1455120162300;
+        Wed, 10 Feb 2016 08:02:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.135.37 with SMTP id j37ls2320116iod.32.gmail; Tue, 09 Feb
- 2016 06:02:41 -0800 (PST)
-X-Received: by 10.98.0.132 with SMTP id 126mr21119671pfa.2.1455026561618;
-        Tue, 09 Feb 2016 06:02:41 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x235.google.com (mail-qg0-x235.google.com. [2607:f8b0:400d:c04::235])
-        by gmr-mx.google.com with ESMTPS id g136si430761ywb.5.2016.02.09.06.02.41
+Received: by 10.28.194.4 with SMTP id s4ls788128wmf.54.canary; Wed, 10 Feb
+ 2016 08:02:41 -0800 (PST)
+X-Received: by 10.28.45.82 with SMTP id t79mr1419570wmt.2.1455120161713;
+        Wed, 10 Feb 2016 08:02:41 -0800 (PST)
+Return-Path: <aybuke.147@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id w197si148167wmw.3.2016.02.10.08.02.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 06:02:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::235 as permitted sender) client-ip=2607:f8b0:400d:c04::235;
+        Wed, 10 Feb 2016 08:02:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::235 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x235.google.com with SMTP id y89so66892719qge.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 06:02:41 -0800 (PST)
+Received: by mail-wm0-x241.google.com with SMTP id 128so5113861wmz.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 08:02:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=kJs/KfROzt+fH5P6DqwFcQ9HigcCRza/zW0BVPnorzw=;
-        b=r07EgMpL0YGmZpHtZEl8ZbLFVPJI8G5HIOY+6w4FMqu/fsKm2yluvAjsBszVk2TDpq
-         jP8hnE/f6Q969Oy9AQaF/7Q85gjkGOEEeGZYf7MAfZt1QhnQSePohXNtvhh6lYiFVUzc
-         YWitECzfQEjk9zQ28Wvf3FdBmpFKOr/wQmnpKbd4b2WfDbAQ4Q/e6jqePcuuflO42xTO
-         JMasXJDq9wugbLMcw0P5rbsSNGWsFhzLDSEDAa1uOwW7QIso1WgEuYt4CDDFHbL2eIGu
-         i06ab8ciMtguzciY90/UWRY6Qs8q809WKkoVGGBXRa3DsLGH8sS8M9K/F3rk3cYzbNdd
-         NbdA==
+        h=from:to:cc:subject:date:message-id;
+        bh=f6hcBrduTKSXPs8l2Gpe0/BjtFm5iLWBkM2lEJLx59M=;
+        b=Vsrg42+vnYTFRohTLkSiCiyCFrtBJlD/uM1ArTNsU1EqDkCTv8LAGiWP9jijYfpnMx
+         +zvBAjsAooZ9l0Xg0KpcGDs38icZqWx+8NEylRC+zGm04Rrbh9WBg6MT7e5Y6+yFDVbp
+         ejDNtvn6e0OTYkzGGjeI+bMcfhxg77Kj+1oMAEJNvI7pHmnpm2+fXnYs+V/OGdtqLMeQ
+         otR6sZrRKDJpPe0Ypn9m4IzqAOrLfakPLRGztQDfr8tMPAJC/mcDPRLLMB+4eIBNH67S
+         v++dcit1PPiNWkX2zcmSRPlx7vAVREsqUEarUUX+G3+kt/TiruBiW7resdgmQG4u6gGe
+         vBnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=kJs/KfROzt+fH5P6DqwFcQ9HigcCRza/zW0BVPnorzw=;
-        b=jRghw05jbsEjGCd1lzY6xcL7NwLN0aRkNHstwjnQNbPkH2V6t7nTdcXAkf0HVN5ahc
-         8x2Ma+1J+pJmHidv63NQOq8CjOnawFy0YhDYYTdqqjgCJkOPVZuhprG+jgpeKH7Iywqw
-         tPKOCr3jwCJH4WHb5GzLIRjQasy+DBwcO/KlSMbcz424pwSIZ8xIWWQjQWMGX4qUQIfy
-         oDbxirfU5tEETo6uR8+l4+alzoEgcjDKptDXnnn+WMDXhQkK6/EehW8qBtnhTro/6kHm
-         6gDfTm0Via81BtWOeOkuwW1oviq2xoc9Dc6ENalvuWpJ/XHRcm2f0c2W2btsLsZCCYtT
-         yxEA==
-X-Gm-Message-State: AG10YOTaLaNCW4qY8nyWikO4YkYAsTRLCx+7ewZTQq1JhN2KwcOeZIKsFeV6wgyHrhDvIg==
-X-Received: by 10.140.28.52 with SMTP id 49mr40819495qgy.36.1455026561421;
-        Tue, 09 Feb 2016 06:02:41 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id z132sm15906413qka.14.2016.02.09.06.02.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 06:02:40 -0800 (PST)
-Date: Tue, 9 Feb 2016 14:02:04 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=f6hcBrduTKSXPs8l2Gpe0/BjtFm5iLWBkM2lEJLx59M=;
+        b=l5p1SybXPEWk+a6v4MgIwBKGMUI3oCr6zaTRcdJseajzO2eDnIBJa964E7CCJA2d+b
+         c7OfABcfplycqjI287vRySFgGbGTitergKovNuV16ZeJRn74VMEHUa4eiE3ASbBFOD+i
+         mwKKsrPqaZ4ogfx/RoDigEElV9caAjwySGjBy14Cm8lPzH7FCTQ5CiHLQpl0EKB17ofS
+         JEcLkLoOkfu8ONtnfEWOn57BMzrejvLXqvWjIqEF0UNrAsBYZpnSiR7m5J5RcNKWGEVh
+         kIjidLSY/34pQilIEn9r3lpWZ/Nuzcl1wrRtWeSw6J0oa3C2CG2PoxiuifGcNEplFYUF
+         UUqw==
+X-Gm-Message-State: AG10YOQIO1ilNExhWysXyEf68uy+kd+z4rJkcyoBOwaysf0pjL6VavgaqXXxfv7gpRJIcA==
+X-Received: by 10.194.243.103 with SMTP id wx7mr44437236wjc.136.1455120160112;
+        Wed, 10 Feb 2016 08:02:40 -0800 (PST)
+Return-Path: <aybuke.147@gmail.com>
+Received: from localhost.localdomain ([81.215.143.77])
+        by smtp.gmail.com with ESMTPSA id w8sm3558174wjx.21.2016.02.10.08.02.38
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 10 Feb 2016 08:02:38 -0800 (PST)
+From: Aybuke Ozdemir <aybuke.147@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: unisys: Remove parentheses around right hand side
- of assignment
-Message-ID: <20160209190204.GA6095@janani-Inspiron-3521>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Aybuke Ozdemir <aybuke.147@gmail.com>
+Subject: [PATCH v2] Staging: comedi: Prefer using the BIT macro
+Date: Wed, 10 Feb 2016 18:02:25 +0200
+Message-Id: <1455120145-18000-1-git-send-email-aybuke.147@gmail.com>
+X-Mailer: git-send-email 2.1.4
 
-Remove parentheses on the right hand side of assignment as they are not
-needed. Semantic patch used:
+Replace all instances of bit shifting on 1 with the BIT(x) macro. In
+addition, convert other non-1 shift operations with the equivalent
+BIT(x) macro for uniformity. Issue pointed out by checkpatch.
 
-@@
-expression a, b, c, d;
-@@
+CHECK: Prefer using the BIT macro
 
-(
-  a = (c == d)
-|
-  a = 
-- (
-  b
-- )
-)
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
 ---
- drivers/staging/unisys/visorbus/visorchannel.c  | 4 ++--
- drivers/staging/unisys/visorhba/visorhba_main.c | 4 ++--
- drivers/staging/unisys/visornic/visornic_main.c | 4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
+Changes in v2:
+    - Added surname in From and Signed by part.
 
-diff --git a/drivers/staging/unisys/visorbus/visorchannel.c b/drivers/staging/unisys/visorbus/visorchannel.c
-index 891b8db..a80d72c 100644
---- a/drivers/staging/unisys/visorbus/visorchannel.c
-+++ b/drivers/staging/unisys/visorbus/visorchannel.c
-@@ -461,7 +461,7 @@ signalinsert_inner(struct visorchannel *channel, u32 queue, void *msg)
- 	if (!sig_read_header(channel, queue, &sig_hdr))
- 		return false;
+ drivers/staging/comedi/comedi.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
+index f0d1b15..9b7d0cb 100644
+--- a/drivers/staging/comedi/comedi.h
++++ b/drivers/staging/comedi/comedi.h
+@@ -72,12 +72,12 @@
+ #define CR_AREF(a)	(((a) >> 24) & 0x03)
  
--	sig_hdr.head = ((sig_hdr.head + 1) % sig_hdr.max_slots);
-+	sig_hdr.head = (sig_hdr.head + 1) % sig_hdr.max_slots;
- 	if (sig_hdr.head == sig_hdr.tail) {
- 		sig_hdr.num_overflows++;
- 		visorchannel_write(channel,
-@@ -521,7 +521,7 @@ visorchannel_signalqueue_slots_avail(struct visorchannel *channel, u32 queue)
- 	tail = sig_hdr.tail;
- 	if (head < tail)
- 		head = head + sig_hdr.max_slots;
--	slots_used = (head - tail);
-+	slots_used = head - tail;
- 	slots_avail = sig_hdr.max_signals - slots_used;
- 	return (int)slots_avail;
- }
-diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
-index 202bfab..5a78409 100644
---- a/drivers/staging/unisys/visorhba/visorhba_main.c
-+++ b/drivers/staging/unisys/visorhba/visorhba_main.c
-@@ -323,9 +323,9 @@ static int forward_taskmgmt_command(enum task_mgmt_types tasktype,
- 		goto err_del_scsipending_ent;
+ #define CR_FLAGS_MASK	0xfc000000
+-#define CR_ALT_FILTER	(1 << 26)
++#define CR_ALT_FILTER	BIT(26)
+ #define CR_DITHER	CR_ALT_FILTER
+ #define CR_DEGLITCH	CR_ALT_FILTER
+-#define CR_ALT_SOURCE	(1 << 27)
+-#define CR_EDGE		(1 << 30)
+-#define CR_INVERT	(1 << 31)
++#define CR_ALT_SOURCE	BIT(27)
++#define CR_EDGE		BIT(30)
++#define CR_INVERT	BIT(31)
  
- 	if (tasktype == TASK_MGMT_ABORT_TASK)
--		scsicmd->result = (DID_ABORT << 16);
-+		scsicmd->result = DID_ABORT << 16;
- 	else
--		scsicmd->result = (DID_RESET << 16);
-+		scsicmd->result = DID_RESET << 16;
+ #define AREF_GROUND	0x00	/* analog ref = analog ground */
+ #define AREF_COMMON	0x01	/* analog ref = analog common */
+@@ -510,7 +510,7 @@ struct comedi_bufinfo {
+ #define RANGE_LENGTH(b)		((b) & 0xffff)
  
- 	scsicmd->scsi_done(scsicmd);
+ #define RF_UNIT(flags)		((flags) & 0xff)
+-#define RF_EXTERNAL		(1 << 8)
++#define RF_EXTERNAL		BIT(8)
  
-diff --git a/drivers/staging/unisys/visornic/visornic_main.c b/drivers/staging/unisys/visornic/visornic_main.c
-index 9b3eb95..a6786ec 100644
---- a/drivers/staging/unisys/visornic/visornic_main.c
-+++ b/drivers/staging/unisys/visornic/visornic_main.c
-@@ -1029,7 +1029,7 @@ visornic_set_multi(struct net_device *netdev)
- 			cmdrsp->net.type = NET_RCV_PROMISC;
- 			cmdrsp->net.enbdis.context = netdev;
- 			cmdrsp->net.enbdis.enable =
--				(netdev->flags & IFF_PROMISC);
-+				netdev->flags & IFF_PROMISC;
- 			visorchannel_signalinsert(devdata->dev->visorchannel,
- 						  IOCHAN_TO_IOPART,
- 						  cmdrsp);
-@@ -1766,7 +1766,7 @@ static int visornic_probe(struct visor_device *dev)
- 	}
- 
- 	netdev->netdev_ops = &visornic_dev_ops;
--	netdev->watchdog_timeo = (5 * HZ);
-+	netdev->watchdog_timeo = 5 * HZ;
- 	SET_NETDEV_DEV(netdev, &dev->device);
- 
- 	/* Get MAC adddress from channel and read it into the device. */
+ #define UNIT_volt		0
+ #define UNIT_mA			1
 -- 
-2.5.0
+2.1.4
 
 
