@@ -1,147 +1,66 @@
-X-GM-THRID: 6249926489518637056
-X-Received: by 10.66.190.41 with SMTP id gn9mr42143214pac.0.1455174407049;
-        Wed, 10 Feb 2016 23:06:47 -0800 (PST)
+X-GM-THRID: 6249509204772519936
+X-Received: by 10.28.126.149 with SMTP id z143mr1054311wmc.4.1455089073543;
+        Tue, 09 Feb 2016 23:24:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.95.3 with SMTP id h3ls870855qge.77.gmail; Wed, 10 Feb 2016
- 23:06:46 -0800 (PST)
-X-Received: by 10.129.4.201 with SMTP id 192mr40908282ywe.15.1455174406465;
-        Wed, 10 Feb 2016 23:06:46 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id 79si944435pft.0.2016.02.10.23.06.46
+Received: by 10.28.137.68 with SMTP id l65ls89159wmd.8.gmail; Tue, 09 Feb 2016
+ 23:24:33 -0800 (PST)
+X-Received: by 10.28.158.216 with SMTP id h207mr1067482wme.4.1455089073186;
+        Tue, 09 Feb 2016 23:24:33 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h73si63697wme.0.2016.02.09.23.24.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Feb 2016 23:06:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Tue, 09 Feb 2016 23:24:33 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id yy13so24567836pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 23:06:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ZjixaONBYMGlHY8gaF4YrdEAgEztqketH2zbi71GSuE=;
-        b=OIfQRKxpFMWkRhlqqMmW4q9FmF6PEzGAz2Cl14qYeTTmQmpOBfkNTidJMOfOYMBcnR
-         1gAC5M0Hc1FoJ+FZS78iIdbciUEgS/E65fMId2CwIBBVyZLbCPQHIEp9VXJ9ZCgzlmY6
-         Iw8lk0PPV5AU2c3G23VcaxOlPp+sKYddJgE9FyTiqq9/BmaGUfu0a06CBgDfUSIFzCfn
-         RNbq4ZSxi8HwrqK4RlXUxuFnXaaY+S1R7HhBg8ajmmXw458/afn6BkKkq1KkW1z74ool
-         6zpgMxlvgO2CHLAjs9qeSs250YoWt0PuONhArxgK/G3VuOSaYNmfVXePkd2tJnJxP7rg
-         EgBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=ZjixaONBYMGlHY8gaF4YrdEAgEztqketH2zbi71GSuE=;
-        b=M3QBAFKV6CJozerdu1plJ3FalRK7un1Jp2XnnmLzPU2i5QoWsAjDpkhPEbaGRt2TCp
-         WzfMFvI3WUZqLr2DO+19Zpb9zldNFLFu7qR96AlS6zb2h7Pcj1J6ci2YqvCLKfKKUjkq
-         OppBetI8IiE78snu8UCp10DDlR5If1l8yZyWR1nKAOw1R8iY7jOz+BFu6XT0uDb2h8YH
-         NkhNnSV2UWbh0pYoYXXmTp9hubT/Atnxh6YWMPfAzzV8zBVHppBCGzXKoi86bybH4397
-         4P6gMAwr2B4pahjnHBU/H33E9/pk+6aBUj/bTJTR8j3QuL5ZHkXrVJ9bMI4X46E3yqBR
-         g4jg==
-X-Gm-Message-State: AG10YOSv+soFV++dWHNCnpSQm5aa5qCQYVI/ZMxh0QtoODygEaSbLZfCpRcc0sRYh5LOIA==
-X-Received: by 10.66.253.137 with SMTP id aa9mr64505010pad.139.1455174406317;
-        Wed, 10 Feb 2016 23:06:46 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-97.dhcp.embarqhsd.net. [67.232.66.97])
-        by smtp.gmail.com with ESMTPSA id ux2sm9668852pac.46.2016.02.10.23.06.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 10 Feb 2016 23:06:45 -0800 (PST)
-Date: Wed, 10 Feb 2016 23:06:45 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6656: replace explicit NULL comparison with !
- operator
-Message-ID: <20160211070636.GA16318@d830.WORKGROUP>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,425,1449529200"; 
+   d="scan'208";a="164141825"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 10 Feb 2016 08:24:32 +0100
+Date: Wed, 10 Feb 2016 08:24:31 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: Janani Ravichandran <janani.rvchndrn@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: slicoss: Align #define
+ constants
+In-Reply-To: <20160210061105.GA22525@kroah.com>
+Message-ID: <alpine.DEB.2.02.1602100824080.2050@localhost6.localdomain6>
+References: <20160210090650.GA3575@janani-Inspiron-3521> <cd332ec7-4bf6-4854-859d-3ab667383154@googlegroups.com> <20160210061105.GA22525@kroah.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Replace explicit NULL comparison with ! operator to simplify code.
+On Tue, 9 Feb 2016, Greg KH wrote:
 
-Found with Coccinelle:
-@@
-expression e;
-statement s0, s1;
-@@
+> On Tue, Feb 09, 2016 at 08:10:51PM -0800, Janani Ravichandran wrote:
+> > This is embarrassing. The alignment looked fine on vim. All the constants were
+> > in the
+> > same column. I don't understand why the alignment looks so bad in the patch.
+> > Can someone
+> > explain this? :/
+> 
+> What looks wrong to you now?  The patch looks good to me, please
+> explain, by quoting the lines you feel are not correct.
 
-if (
-(
-+ !
-e
-- == NULL
- || ...
-)
- ) s0 else s1
+The three context lines above the patch don't seem to be lined up with 
+each other.
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
- drivers/staging/vt6656/main_usb.c | 10 +++++-----
- drivers/staging/vt6656/usbpipe.c  |  2 +-
- 2 files changed, 6 insertions(+), 6 deletions(-)
+julia
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index a2f23ae..05f86ff 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -431,7 +431,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
- 	for (ii = 0; ii < priv->num_tx_context; ii++) {
- 		tx_context = kmalloc(sizeof(struct vnt_usb_send_context),
- 								GFP_KERNEL);
--		if (tx_context == NULL)
-+		if (!tx_context)
- 			goto free_tx;
- 
- 		priv->tx_context[ii] = tx_context;
-@@ -462,13 +462,13 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
- 
- 		/* allocate URBs */
- 		rcb->urb = usb_alloc_urb(0, GFP_ATOMIC);
--		if (rcb->urb == NULL) {
-+		if (!rcb->urb) {
- 			dev_err(&priv->usb->dev, "Failed to alloc rx urb\n");
- 			goto free_rx_tx;
- 		}
- 
- 		rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
--		if (rcb->skb == NULL)
-+		if (!rcb->skb)
- 			goto free_rx_tx;
- 
- 		rcb->in_use = false;
-@@ -479,13 +479,13 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
- 	}
- 
- 	priv->interrupt_urb = usb_alloc_urb(0, GFP_ATOMIC);
--	if (priv->interrupt_urb == NULL) {
-+	if (!priv->interrupt_urb) {
- 		dev_err(&priv->usb->dev, "Failed to alloc int urb\n");
- 		goto free_rx_tx;
- 	}
- 
- 	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
--	if (priv->int_buf.data_buf == NULL) {
-+	if (!priv->int_buf.data_buf) {
- 		usb_free_urb(priv->interrupt_urb);
- 		goto free_rx_tx;
- 	}
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index 351a99f..bec5baf 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -210,7 +210,7 @@ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb)
- 	struct urb *urb;
- 
- 	urb = rcb->urb;
--	if (rcb->skb == NULL) {
-+	if (!rcb->skb) {
- 		dev_dbg(&priv->usb->dev, "rcb->skb is null\n");
- 		return status;
- 	}
--- 
-2.1.4
-
+> 
+> thanks,
+> 
+> greg k-h
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160210061105.GA22525%40kroah.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
