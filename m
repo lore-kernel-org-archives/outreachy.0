@@ -1,76 +1,85 @@
-X-GM-THRID: 6203759305105080320
-X-Received: by 10.182.137.227 with SMTP id ql3mr12750623obb.32.1444425272513;
-        Fri, 09 Oct 2015 14:14:32 -0700 (PDT)
+X-GM-THRID: 6249738568007155712
+X-Received: by 10.25.18.227 with SMTP id 96mr750511lfs.4.1455136163491;
+        Wed, 10 Feb 2016 12:29:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.251.198 with SMTP id zm6ls735941obc.33.gmail; Fri, 09 Oct
- 2015 14:14:32 -0700 (PDT)
-X-Received: by 10.182.240.202 with SMTP id wc10mr13541894obc.9.1444425272013;
-        Fri, 09 Oct 2015 14:14:32 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id uv4si412141pac.0.2015.10.09.14.14.31
+Received: by 10.25.150.17 with SMTP id y17ls120541lfd.98.gmail; Wed, 10 Feb
+ 2016 12:29:22 -0800 (PST)
+X-Received: by 10.112.162.101 with SMTP id xz5mr5138035lbb.20.1455136162930;
+        Wed, 10 Feb 2016 12:29:22 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id w129si1084960wme.1.2016.02.10.12.29.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Wed, 10 Feb 2016 12:29:22 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id ve7so38026572pab.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=HsD6wGIJRr5h9EjtGXGoobdmyc9RYgBH9kAbeYBgD48=;
-        b=hKQG3h+r6SSxoZgg9nr/i/hL00a8boErqgmMOAKuLroX8aFw2JmyQvYAAbYnBeam+C
-         N0dG4YBpUluTd85x3NVoTPtG5i9l2bTKF+xoK/sle+HbgaMyJQpAM8v1PIZZd0pUFqvs
-         mFyCfcaXcuG0Cpu90AEJbeKIuKnCR6BTxlVxlx8R5Q22Ms1s8xOo9QPg/raKiTn+hBA5
-         cVesr2ihW5gOWITrcn6n1PGZjSDyZnrJjBx8maU/hznoMO5Su+fHJfxugEPgTTCUiTii
-         fhzxwYB4eSk7It8THtxklvqZiiTac4y+KI0MH3hJsdA0cpHbnaGkxtBMSpu910FXtbNm
-         44KQ==
-X-Received: by 10.68.69.17 with SMTP id a17mr17652159pbu.10.1444425271803;
-        Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.135.155])
-        by smtp.gmail.com with ESMTPSA id q8sm4204770pap.34.2015.10.09.14.14.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 09 Oct 2015 14:14:31 -0700 (PDT)
-Date: Sat, 10 Oct 2015 02:44:27 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Replace GFP_ATOMIC with GFP_KERNEL
-Message-ID: <20151009211427.GA29470@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,427,1449529200"; 
+   d="scan'208";a="164247498"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 10 Feb 2016 21:29:21 +0100
+Date: Wed, 10 Feb 2016 21:29:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Alison Schofield <amsfield22@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: compress return
+ logic into one line
+In-Reply-To: <20160210185723.GA15085@d830.WORKGROUP>
+Message-ID: <alpine.DEB.2.02.1602102129041.2075@localhost6.localdomain6>
+References: <20160210185723.GA15085@d830.WORKGROUP>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Replace GFP_ATOMIC with GFP_KERNEL since the function is calling
-sleeping functions.
+On Wed, 10 Feb 2016, Alison Schofield wrote:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8712/hal_init.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Simplify function return by merging assignment and return into
+> one command line. Remove (now) unused local variable.
+> 
+> Found using Coccinelle:
+> @@
+> expression e, ret;
+> @@
+> 
+> -ret =
+> +return
+> 	e;
+> -return ret;
+> 
+> Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 
-diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
-index 2031291..39ba658 100644
---- a/drivers/staging/rtl8712/hal_init.c
-+++ b/drivers/staging/rtl8712/hal_init.c
-@@ -177,7 +177,7 @@ static u8 rtl8712_dl_fw(struct _adapter *padapter)
- 		maxlen = (fwhdr.img_IMEM_size > fwhdr.img_SRAM_size) ?
- 			  fwhdr.img_IMEM_size : fwhdr.img_SRAM_size;
- 		maxlen += txdscp_sz;
--		ptmpchar = kmalloc(maxlen + FWBUFF_ALIGN_SZ, GFP_ATOMIC);
-+		ptmpchar = kmalloc(maxlen + FWBUFF_ALIGN_SZ, GFP_KERNEL);
- 		if (!ptmpchar)
- 			return ret;
- 
--- 
-1.9.1
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+> ---
+>  drivers/staging/speakup/i18n.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+> index 12f880e..8960079 100644
+> --- a/drivers/staging/speakup/i18n.c
+> +++ b/drivers/staging/speakup/i18n.c
+> @@ -393,10 +393,7 @@ static const  int num_groups = ARRAY_SIZE(all_groups);
+>  
+>  char *spk_msg_get(enum msg_index_t index)
+>  {
+> -	char *ch;
+> -
+> -	ch = speakup_msgs[index];
+> -	return ch;
+> +	return speakup_msgs[index];
+>  }
+>  
+>  /*
+> -- 
+> 2.1.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160210185723.GA15085%40d830.WORKGROUP.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
