@@ -1,112 +1,86 @@
-X-GM-THRID: 6339007630454816768
-X-Received: by 10.36.76.212 with SMTP id a203mr701563itb.18.1475915226685;
-        Sat, 08 Oct 2016 01:27:06 -0700 (PDT)
+X-GM-THRID: 6249577113411649536
+X-Received: by 10.107.168.139 with SMTP id e11mr12087006ioj.32.1455093834771;
+        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.34.81 with SMTP id o78ls2047189ito.6.gmail; Sat, 08 Oct
- 2016 01:27:05 -0700 (PDT)
-X-Received: by 10.36.46.134 with SMTP id i128mr725541ita.16.1475915225329;
-        Sat, 08 Oct 2016 01:27:05 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id um12si6408622pab.2.2016.10.08.01.27.05
+Received: by 10.50.36.5 with SMTP id m5ls176070igj.32.gmail; Wed, 10 Feb 2016
+ 00:43:54 -0800 (PST)
+X-Received: by 10.107.11.23 with SMTP id v23mr24468197ioi.13.1455093834409;
+        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+Return-Path: <rakhish1994@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id u66si258041pfa.2.2016.02.10.00.43.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 01:27:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id t25so4092500pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 01:27:05 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id 71so637743pfv.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 00:43:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=7s4Cijfjs7SIMKpHjfeKwuRLcMRDPoecHNjFcYVa9OU=;
-        b=Zk+svdTdwGPW079/A8FneDSD+AScsCaGHiFXgpec50b8Wu3iLBoGRaqVIPo6k3Ma+Q
-         w2Qut0lSFdhFxue2mkuNDcp5UCzhSwZQn4XYApHVROplwnMeu2gmhItxKM9natCnxZUv
-         +8+z4oBiTGSTS9IDVNRvg4RqMt+JMXTSCarcU5qa5X7oTdI5b8QXkUSFfYDGoIP087Hd
-         X8s7kbK46KPDuptW1oBnoYoL93bbci/JA0W7g7ex2YphwvLIeEZFod2fNrkzbRvR5z5P
-         E92IwBlDjG+zxAE3cz95cf7uiJ7uYQWzFuFKq/YdV4Tm3l3Emykbb6O0t0MVJwoARvI2
-         61OQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=TLCEF1cHl/q1P3ZJo2fu/V+12A1p/9zORk6KW+vhnIY=;
+        b=QZXudniNBwSW39MFw2v55Al8c2g0DgyCqOJyDY54YWKXUDmMGBWFysBPDFYFD1nI39
+         UKV0EZI6HvesmbPT27nKa6LuWu1tLtQ/wwycNgkxsCdwvm3aZCMSKTNqFdxaQHBxgg+3
+         kouYGrvF+Y3sTxQOz1AcIsAZGBmQEvpACqmvTCE9jSJMKxhrTt7+A9O9Z2Vojr5Ed83E
+         5uMXIcK3qYyT0qFYVgxBgbxqkQcHDJyRinACJzdrmYVFIbtJZYd4skW/rDybWSLHr0wt
+         6mqPPN8JHYx7weQzFdI228WyGoYUNYvkxVwEH5red+/9cTMAeLEPyW+ne0wKrYMlF4Ny
+         zVLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=7s4Cijfjs7SIMKpHjfeKwuRLcMRDPoecHNjFcYVa9OU=;
-        b=Nc9RjqsZ/eF1UZszgnJaeA5Nv3DBOBs5h7x+t05xjxoMdB1F+LSOudL3h2kkU6/TZ5
-         5Os1ecYrWSEg/hCHOrbklv5g+WLePE6tVCEH9ub15YVjq9xWjX4vVTRpc3KvBmN2jFvi
-         hqPmoYZdXjD5f8DLmUFT/9fREYkIYsVO1hwC9wLPjo52DokhoJRmI5ur07hV1pOFCDV8
-         xw67a7DpytTIHa0XKohUVw5Icht/JCZ4KUnhQ4lX0Gpf9O/z/4oN6NtmhLh/BuKgaJWI
-         /3EC+pC4KbuVyXrQz/uMNsX491zhLZtahAit/yEDyrjgP1KqsfqcKarog74LNEdOiYzv
-         Xr5w==
-X-Gm-Message-State: AA6/9RnaGTMQhohSKmzv/tTKsRMC+XE4pm/8jP4xGq5CZWVPXsTA2RjAL5Bj+NBbPc++oA==
-X-Received: by 10.99.237.69 with SMTP id m5mr744465pgk.113.1475915225128;
-        Sat, 08 Oct 2016 01:27:05 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([177.68.230.98])
-        by smtp.gmail.com with ESMTPSA id xo5sm29230711pab.13.2016.10.08.01.27.04
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 01:27:04 -0700 (PDT)
-Date: Sat, 8 Oct 2016 05:27:02 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH 09/13] staging: wlan-ng: renames hfa384x_AssocStatus to avoid
- camelcase
-Message-ID: <20161008082702.GA9162@spock>
-References: <cover.1475912465.git.juliana.orod@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1475912465.git.juliana.orod@gmail.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=TLCEF1cHl/q1P3ZJo2fu/V+12A1p/9zORk6KW+vhnIY=;
+        b=VqC6Ffv23wowF/36/shJrCFu0NCjk6F4jncoSC5N3e7q6sdNhhDsn00IOcKMVIBgCe
+         5MnBoqdZrgyOzGbiG+jZwZtfHMsbJGh+34uRoa/XaUoe94VE2Ed/EZH8ls5aI7Xu87po
+         hlSJVKC4kG1GjUxnxOKYfMgwNDX5RGaBxLonyUKxS8gNGEJZdcktKawOD3JmFHX8lu0d
+         B/JoTyK2LNI4/EJLi4ijvk2R/QYAMv9ungtKfBP363P6YZqaOuTr4NzsKEpZV4ycv8vk
+         tgLVIVafv7qDggKxcI+TyVkzda41KVvU+ClSp1T6sgzh7EEfOk4zn2ObK/3VDIWBTxFP
+         LRPQ==
+X-Gm-Message-State: AG10YOSufsrk3cngm0Dsj+qaB5iNGmJi1ldHgal6JoAls42GZW6VxCgOKqwO2IWdX4Ry1w==
+X-Received: by 10.98.67.153 with SMTP id l25mr56780311pfi.111.1455093834303;
+        Wed, 10 Feb 2016 00:43:54 -0800 (PST)
+Return-Path: <rakhish1994@gmail.com>
+Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
+        by smtp.gmail.com with ESMTPSA id fl9sm3229293pab.30.2016.02.10.00.43.52
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 10 Feb 2016 00:43:53 -0800 (PST)
+From: Rakhi Sharma <rakhish1994@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: julia.lawall@lip6.fr,
+	daniel.baluta@gmail.com,
+	Rakhi Sharma <rakhish1994@gmail.com>
+Subject: [PATCH v3 2/2] staging: lustre: lov_pool: Fixed a return coding style warning.
+Date: Wed, 10 Feb 2016 14:13:47 +0530
+Message-Id: <1455093827-7930-1-git-send-email-rakhish1994@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Renames the camelcased struct hfa384x_AssocStatus to hfa384x_assoc_status
-in order to fix a checkpatch warning.
+Remove unusefull return at the end of void function.
+WARNING: void function return statements are not generally useful.
 
-Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
+
+Changes in v3:
+  shortened the subject line and make the discription more clear.
 ---
- drivers/staging/wlan-ng/hfa384x.h   | 4 ++--
- drivers/staging/wlan-ng/prism2sta.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/lustre/lustre/lov/lov_pool.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 7b6b373..adbac69b 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -733,7 +733,7 @@ struct hfa384x_LinkStatus {
- #define HFA384x_ASSOCSTATUS_REASSOC	((u16)2)
- #define HFA384x_ASSOCSTATUS_AUTHFAIL	((u16)5)
+diff --git a/drivers/staging/lustre/lustre/lov/lov_pool.c b/drivers/staging/lustre/lustre/lov/lov_pool.c
+index bba37bf..34e0919 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_pool.c
++++ b/drivers/staging/lustre/lustre/lov/lov_pool.c
+@@ -247,7 +247,6 @@ static void pool_proc_stop(struct seq_file *s, void *v)
+ 		lov_pool_putref(iter->pool);
+ 		kfree(iter);
+ 	}
+-	return;
+ }
  
--struct hfa384x_AssocStatus {
-+struct hfa384x_assoc_status {
- 	u16 assocstatus;
- 	u8 sta_addr[ETH_ALEN];
- 	/* old_ap_addr is only valid if assocstatus == 2 */
-@@ -768,7 +768,7 @@ union hfa384x_infodata {
- 	struct hfa384x_ChInfoResult chinforesult;
- 	struct hfa384x_HScanResult hscanresult;
- 	struct hfa384x_LinkStatus linkstatus;
--	struct hfa384x_AssocStatus assocstatus;
-+	struct hfa384x_assoc_status assocstatus;
- 	struct hfa384x_AuthRequest authreq;
- 	struct hfa384x_PSUserCount psusercnt;
- 	struct hfa384x_KeyIDChanged keyidchanged;
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 900ae8c..b6aeb60 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1474,7 +1474,7 @@ static void prism2sta_inf_assocstatus(struct wlandevice *wlandev,
- 				      struct hfa384x_inf_frame *inf)
- {
- 	struct hfa384x *hw = wlandev->priv;
--	struct hfa384x_AssocStatus rec;
-+	struct hfa384x_assoc_status rec;
- 	int i;
- 
- 	memcpy(&rec, &inf->info.assocstatus, sizeof(rec));
+ static int pool_proc_show(struct seq_file *s, void *v)
 -- 
-2.10.0
+1.9.1
 
 
