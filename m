@@ -1,60 +1,60 @@
 X-GM-THRID: 6249584492196921344
-X-Received: by 10.129.72.199 with SMTP id v190mr43824689ywa.44.1455201580607;
-        Thu, 11 Feb 2016 06:39:40 -0800 (PST)
+X-Received: by 10.50.176.231 with SMTP id cl7mr8721174igc.0.1455099193013;
+        Wed, 10 Feb 2016 02:13:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.14.15 with SMTP id 15ls576350ioo.92.gmail; Thu, 11 Feb
- 2016 06:39:40 -0800 (PST)
-X-Received: by 10.50.73.102 with SMTP id k6mr15113864igv.4.1455201580130;
-        Thu, 11 Feb 2016 06:39:40 -0800 (PST)
+Received: by 10.107.185.5 with SMTP id j5ls172412iof.16.gmail; Wed, 10 Feb
+ 2016 02:13:12 -0800 (PST)
+X-Received: by 10.107.7.200 with SMTP id g69mr39443172ioi.3.1455099192667;
+        Wed, 10 Feb 2016 02:13:12 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
-        by gmr-mx.google.com with ESMTPS id u66si1043425pfa.2.2016.02.11.06.39.40
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id ui7si328221pab.0.2016.02.10.02.13.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 06:39:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
+        Wed, 10 Feb 2016 02:13:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22e.google.com with SMTP id c10so30866674pfc.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 06:39:40 -0800 (PST)
+Received: by mail-pa0-x242.google.com with SMTP id gc2so296213pab.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 02:13:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=uGfpa933RwHe8X/d44ykce22spczD0VtxvxNYg6Sx1E=;
-        b=nNTg2wCNHPMKcf/xZc5umVjZPkpD1oD2U6gSEk2e2Rw734fImQfP5/y7MyD7JFmlk/
-         5S1vRvyHyw3Ry+wyZUhg6UUcSqbbknkPnN++keSQoXtp5FBk/NTZbgVaitUOwgkKhADh
-         u1PUwxVfgwJ/2h3TbSWZx5KyYkYdYS1wC6U1vIa3Z7Bmcs6yyfHTMR6oh0lfhdEwerzG
-         V5ibQCaq39ljEvqvvcDaDDF0mxzwRB34HW24Bl2VNIHByTnfGUFL7CALBOsoR+xvAGKs
-         Z5VR2Lawb+i6q57P5QL1uiWsvz74awIcVwxtC0pFaF0Tx+gJaXaFkWr+vIcdwCF0se8I
-         B72w==
+        bh=LMO5IEngoyCxC5I1bBsp1WTCa1DtjnJiHM3DDcdHKdc=;
+        b=yHDhwDGCEX7Zdzb13jOEKVdEQCaxrbEy5v4YXgqwdcM+MYkAWyb8tE1D5lZps6GOsu
+         C4lnrEQxqj4lj5FGzu1jahjzzxzDCwXgAGPIkUXdPSmkILE4jMKYnJwrPr48DySAZ3EV
+         3+iqBpEnujJnaRZjO0r2VWKcdS4431JRDrxe3G30enhQ5a6mkYWJnRNcqcOTBakZoRl4
+         AfdusW/k4tqHjAqVfkdn9GJT1OXugfKhXvSW8OEZtZnfQktZ6oJ1F3vKazRzLaJR/AUz
+         96U/CE597S0cVLKwmVTkEjR7Be99QfrI0bfyNrFC7dYR8+UcturraASjl1kCXk+J7zJL
+         N1OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=uGfpa933RwHe8X/d44ykce22spczD0VtxvxNYg6Sx1E=;
-        b=VzRBX8q92FtuIx8TyWL2Hqh/yD+dPJvl5+jAVB8GBx/4NDdd2MXgWSLRS02edYopeW
-         6t4n42psT19YqMy2dNHL8Fy2+9fTU3nyvf9FgggYKkjto9dcVbD1g6uhv68vLBGzxrP7
-         nNNtgokyd4p7iG2zXjiRwgW+mYp+h+o8oONvRJ7YJ80h6vzlnu4HBFaLJ/El/tHhsUF7
-         sxR23Ct5N7fKIGom2rdyzHltfcrZx3YfOg8T/djr0HYKUq87L5fig+wVFOh+kWBk5/3J
-         ly6vMvt7dSmbjBGKnVpDqeuO4Wg4TaWOTm0iOWnVEVrdiUGqPnpM70QJeAGn1N4ZV/SS
-         pdJQ==
-X-Gm-Message-State: AG10YOSB7ozLinYKCPH5PaT0ODm42YTOAAnYvNknCrOJlphJrlVq9Kecoo4Tag0UICKPdA==
-X-Received: by 10.98.8.80 with SMTP id c77mr45078375pfd.42.1455201579984;
-        Thu, 11 Feb 2016 06:39:39 -0800 (PST)
+        bh=LMO5IEngoyCxC5I1bBsp1WTCa1DtjnJiHM3DDcdHKdc=;
+        b=mbIOCmOWB2321slXjsVWoNlBkuEn1escBIlnnniYFi6xqxBPL488tRaJ94284CHyl8
+         bFa6Ptp1ieyxRf3hjm87U5IKc6v9w+7PifVmwXygYHH9IceRYZ9ICUah99su77a/Bofe
+         FZW98Bpdju1nHYVpHW1TmP3mk4/+o3RX7iP3b8fMe98OdS/6F2+VOzmQvrvEe7J45UZn
+         bcjvwsiEVHiByvjkbXxDx6+5wBDRxVdVtTGu736KyRG5xiNmshelfqfdqEiTEdh2eeQU
+         0orkFoNvaxWRR4gJpDmoie/boLzrUwmtjXNVANKi20vpPEjbEp7XBGk9UAQ2wAMfVDlx
+         ktAA==
+X-Gm-Message-State: AG10YOQ7d5X5kZkq82deRJzPnolY2mw9hcBokAwR0kT6PMWWvIkMXaSHa0Cv78D0pz0q/w==
+X-Received: by 10.66.227.133 with SMTP id sa5mr57168853pac.36.1455099192521;
+        Wed, 10 Feb 2016 02:13:12 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id 67sm11251220pfi.2.2016.02.11.06.39.38
+Received: from localhost ([182.69.72.191])
+        by smtp.gmail.com with ESMTPSA id o73sm3958978pfa.37.2016.02.10.02.13.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Feb 2016 06:39:39 -0800 (PST)
-Date: Thu, 11 Feb 2016 20:09:36 +0530
+        Wed, 10 Feb 2016 02:13:12 -0800 (PST)
+Date: Wed, 10 Feb 2016 15:43:09 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 4/5] staging: comedi: drivers: dt282x: Merge if conditions
-Message-ID: <20160211143936.GA32724@amitoj-Inspiron-3542>
+Subject: [PATCH v2 4/5] staging: comedi: drivers: dt282x: Merge if conditions
+Message-ID: <20160210101309.GA29093@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -88,8 +88,6 @@ S
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
-Changes in v3:
-        -None
 Changes in v2:
         -While merging use !x || !y instead of !(x && y)
 
