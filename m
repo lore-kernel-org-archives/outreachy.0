@@ -1,131 +1,130 @@
-X-GM-THRID: 6945917032908980224
-X-Received: by 2002:a2e:b601:: with SMTP id r1mr3260145ljn.271.1617222333779;
-        Wed, 31 Mar 2021 13:25:33 -0700 (PDT)
+X-GM-THRID: 6249638056866873344
+X-Received: by 10.112.167.136 with SMTP id zo8mr4993823lbb.10.1455136563565;
+        Wed, 10 Feb 2016 12:36:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:e86:: with SMTP id 128ls2828294lfo.0.gmail; Wed, 31 Mar
- 2021 13:25:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHbIOIb+CI0jh8lCQmP0cCsfeWw008OYnncRaxL1DKcWZRN2viUnBkUz0npDxk38cd9UbM
-X-Received: by 2002:a19:f81a:: with SMTP id a26mr3114864lff.647.1617222332020;
-        Wed, 31 Mar 2021 13:25:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617222332; cv=none;
-        d=google.com; s=arc-20160816;
-        b=oPYky1IoTjycBaRhv1Ca6wW5/1SAtnn7ssAGwzeoYIPthIYF6SmoAhlYacJh1yQYqI
-         G5E5Kyj+n2Pph7YGl9BFtCTnWY5HXFUxrq4bxqANR4RQNjs44QXZq4YZOnwXOB+Ekg5r
-         c7mUjFjVErMvAXJE1oZJJa/rLU6sLuLsSYwBE6QWUAyotcstOu2RdoDRXZHCaybGEilD
-         Bcuy8nFw3QjzEFotuOWIodEC2ftAVA5DO9jYotVwUPg3AklKfzn9XzCS5yrvBoJ5dKFq
-         hdLT6PyirDbv7SjuUuZNE8hzhnWfWYVgkGUnOEOaz8La8PbTCVyE9nTOBZraWssaew1t
-         LzLQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:dkim-signature;
-        bh=Gi9OUsUoRxjAcioEAF4TQW9mJ2fTHnHNzeSFEtVk1Wk=;
-        b=stPke5EKJBW3YgHQosFhParfuHltKYM6vNTan7gjAAiDXLQUnsqkQxjEhheyh6e7PK
-         leNwbA1ltWDL4hKHHTEQnSZG63DG/RbOIahpd6d8Q2Tnho7I7XfgtxxcQiLzugwNSrTD
-         coMmULgHhGFwZS1LezKTBikjOX4F7OqBjSOiSGLvdPr+xc2wZ4cKO0tA1TKy8E1cPVDE
-         tC8MIq8GvasZs+VClB/pzybkm5lybrb6zqAYnvg9zP5KNql8gQdZmtLBoxFdlqhxO6np
-         8KqBINnl1CnifD8ttqMzOQXoMFkcJKvOCGJKo60sBvoG8iQUzk4STx31WgZYuJWpxDOF
-         yrUQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FhezNaAY;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com. [2a00:1450:4864:20::32e])
-        by gmr-mx.google.com with ESMTPS id v203si246373lfa.10.2021.03.31.13.25.32
+Received: by 10.25.139.8 with SMTP id n8ls126788lfd.45.gmail; Wed, 10 Feb 2016
+ 12:36:02 -0800 (PST)
+X-Received: by 10.112.137.102 with SMTP id qh6mr5212785lbb.9.1455136562952;
+        Wed, 10 Feb 2016 12:36:02 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id w197si192283wmw.3.2016.02.10.12.36.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Mar 2021 13:25:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) client-ip=2a00:1450:4864:20::32e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 10 Feb 2016 12:36:02 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FhezNaAY;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x32e.google.com with SMTP id t5-20020a1c77050000b029010e62cea9deso1789612wmi.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Mar 2021 13:25:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Gi9OUsUoRxjAcioEAF4TQW9mJ2fTHnHNzeSFEtVk1Wk=;
-        b=FhezNaAYqaHT6VhiYQCDNq6ndWAbOd8uPtZWcvln9/4Ha0ctMuPzJr32kuGiG1RJ1M
-         xWXaPh0XHlgJL3tHCQjhyzrRtx4R7n9If58CaT/jwZl1i+TRKFGtDcsbWB1YOPj3PD6A
-         xp6r51Wufdf2+DHOM/tdy1zE1W8IZCuMjUFNsqvNGxkLwrZEoepPsRR3MjXT+i1ztSRV
-         +N6O7vNuav8nphw+acRW8Zr1Uk16iIEu3YgcsxCRbeXhXaML4FW7Sg+7DA4hEIaZ8bA6
-         r/tWEjNWSuU4660KSi5eiN/0Hd4R7Nq5wcGz9Vi3Df9O6wNTvVFLJ/nBQxibjfQ0Rds7
-         KwRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Gi9OUsUoRxjAcioEAF4TQW9mJ2fTHnHNzeSFEtVk1Wk=;
-        b=Ts/UdZDnGKogFC+zWKoYZmeug5oVGyjJM4MlGwlfJ0b1uN7nQDIbf6QVkbXhGcdWLm
-         x3sAz+6XsG3XEa1vHj29ca4zXsXS7Ucg83Ta63n2uXb5IebCVvfCCaWuePykSJANANCa
-         ejML5cnDKh9H4PWOpOkiTY8Bzqxe7PRL5qUCj6V6+1mlwOxx5tmQpA3rBjpPVouOPVg3
-         3WH9ly3TCM+fn/2cwavIwnShdpnTkVtTQL1djo5ypwYLm63PeaQDyxvq63cePVL5hWlG
-         9Qg0OkIMwLv+tVOyZ1NFIRc8kVFw6AubZoWEWxznuI4otRdMv3ceiEx7HfXEdiV8aji7
-         C81g==
-X-Gm-Message-State: AOAM531LqsFJSt58goctFv2jGudutHzm+Duxl1vNxwCTr66zc0SptxLC
-	cCt7tvc9Jg8wJyCALAiLlME=
-X-Received: by 2002:a05:600c:4f94:: with SMTP id n20mr4701240wmq.18.1617222331572;
-        Wed, 31 Mar 2021 13:25:31 -0700 (PDT)
-Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:87e9:fdd6:2b7a:c720])
-        by smtp.gmail.com with ESMTPSA id u3sm6138637wrt.82.2021.03.31.13.25.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Mar 2021 13:25:31 -0700 (PDT)
-From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-To: hvaibhav.linux@gmail.com,
-	johan@kernel.org,
-	elder@kernel.org,
-	gregkh@linuxfoundation.org,
-	greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: greybus: arche-platform: Fix ending '(' warnings
-Date: Wed, 31 Mar 2021 21:24:45 +0100
-Message-Id: <20210331202445.108678-1-martinsdecarvalhobeatriz@gmail.com>
-X-Mailer: git-send-email 2.25.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,427,1449529200"; 
+   d="scan'208";a="164248005"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 10 Feb 2016 21:36:01 +0100
+Date: Wed, 10 Feb 2016 21:36:01 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: RAKHI SHARMA <rakhish1994@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] drivers: staging: rtl8712: Use
+ ether_addr_copy() over memcpy()
+In-Reply-To: <CAMnyiXu=swBQdGVc+dQ6sCuZ37d7XWi6bh+8Q_cyfRug6VpJkw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1602102134570.2075@localhost6.localdomain6>
+References: <1455107239-16386-1-git-send-email-rakhish1994@gmail.com> <alpine.DEB.2.10.1602101402170.3493@hadrien> <CAMnyiXu=swBQdGVc+dQ6sCuZ37d7XWi6bh+8Q_cyfRug6VpJkw@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-939813915-1455136562=:2075"
 
-Fix checkpatch check "CHECK: Lines should not end with a '('"
-in arche-platform.c:80 and arche-platform.c:184.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
----
- drivers/staging/greybus/arche-platform.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+--8323328-939813915-1455136562=:2075
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-index eebf0deb39f5..e374dfc0c92f 100644
---- a/drivers/staging/greybus/arche-platform.c
-+++ b/drivers/staging/greybus/arche-platform.c
-@@ -77,9 +77,8 @@ static void arche_platform_set_state(struct arche_platform_drvdata *arche_pdata,
- }
- 
- /* Requires arche_pdata->wake_lock is held by calling context */
--static void arche_platform_set_wake_detect_state(
--				struct arche_platform_drvdata *arche_pdata,
--				enum svc_wakedetect_state state)
-+static void arche_platform_set_wake_detect_state(struct arche_platform_drvdata *arche_pdata,
-+						 enum svc_wakedetect_state state)
- {
- 	arche_pdata->wake_detect_state = state;
- }
-@@ -181,9 +180,8 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
- 						WD_STATE_COLDBOOT_START) {
- 					arche_platform_set_wake_detect_state(arche_pdata,
- 									     WD_STATE_COLDBOOT_TRIG);
--					spin_unlock_irqrestore(
--						&arche_pdata->wake_lock,
--						flags);
-+					spin_unlock_irqrestore(&arche_pdata->wake_lock,
-+							       flags);
- 					return IRQ_WAKE_THREAD;
- 				}
- 			}
--- 
-2.25.1
+On Wed, 10 Feb 2016, RAKHI SHARMA wrote:
 
+> 
+> 
+> On Wed, Feb 10, 2016 at 6:32 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> 
+> 
+>       On Wed, 10 Feb 2016, Rakhi Sharma wrote:
+> 
+>       > Waring is removed by using ether_addr_copy() over memcpy().
+>       > WARNING: Prefer ether_addr_copy() over memcpy() if the
+>       Ethernet addresses are
+>       > __aligned(2)
+> 
+>       You need to show that the addresses concerned actually are
+>       aligned.
+> 
+>       julia
+> 
+> Hi, Will you please give me a little hint how I do this?
+
+Sorry, I meant to do that :)  There is a tool called pahole that you can 
+use for this purpose.  You can also search through the git logs for 
+ether_addr_copy to see how others have justified this change.
+
+julia
+
+>       > Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
+>       > ---
+>       >  drivers/staging/rtl8712/rtl871x_recv.c | 10 +++++-----
+>       >  1 file changed, 5 insertions(+), 5 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/rtl8712/rtl871x_recv.c
+>       b/drivers/staging/rtl8712/rtl871x_recv.c
+>       > index 4ff5301..2d5231a 100644
+>       > --- a/drivers/staging/rtl8712/rtl871x_recv.c
+>       > +++ b/drivers/staging/rtl8712/rtl871x_recv.c
+>       > @@ -358,11 +358,11 @@ static sint sta2sta_data_frame(struct
+>       _adapter *adapter,
+>       >                       sta_addr = pattrib->src;
+>       >               }
+>       >       } else if (check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
+>       > -             memcpy(pattrib->dst, GetAddr1Ptr(ptr),
+>       ETH_ALEN);
+>       > -             memcpy(pattrib->src, GetAddr2Ptr(ptr),
+>       ETH_ALEN);
+>       > -             memcpy(pattrib->bssid, GetAddr3Ptr(ptr),
+>       ETH_ALEN);
+>       > -             memcpy(pattrib->ra, pattrib->dst, ETH_ALEN);
+>       > -             memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
+>       > +             ether_addr_copy(pattrib->dst, GetAddr1Ptr(ptr));
+>       > +             ether_addr_copy(pattrib->src, GetAddr2Ptr(ptr));
+>       > +             ether_addr_copy(pattrib->bssid,
+>       GetAddr3Ptr(ptr));
+>       > +             ether_addr_copy(pattrib->ra, pattrib->dst);
+>       > +             ether_addr_copy(pattrib->ta, pattrib->src);
+>       >               sta_addr = mybssid;
+>       >       } else {
+>       >               ret  = _FAIL;
+>       > --
+>       > 1.9.1
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1455107239-16386-1-git-s
+> end-email-rakhish1994%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+> 
+> 
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAMnyiXu%3DswBQdGVc%2BdQ
+> 6sCuZ37d7XWi6bh%2B8Q_cyfRug6VpJkw%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+> 
+--8323328-939813915-1455136562=:2075--
 
