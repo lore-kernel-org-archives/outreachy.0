@@ -1,105 +1,97 @@
-X-GM-THRID: 6249672760626249728
-X-Received: by 10.194.21.99 with SMTP id u3mr4837206wje.0.1455115331340;
-        Wed, 10 Feb 2016 06:42:11 -0800 (PST)
+X-GM-THRID: 6249397284630429696
+X-Received: by 10.107.163.208 with SMTP id m199mr38631865ioe.30.1455092292123;
+        Wed, 10 Feb 2016 00:18:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.19.167 with SMTP id 39ls84651lft.88.gmail; Wed, 10 Feb 2016
- 06:42:10 -0800 (PST)
-X-Received: by 10.112.16.34 with SMTP id c2mr4823161lbd.19.1455115330542;
-        Wed, 10 Feb 2016 06:42:10 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
-        by gmr-mx.google.com with ESMTPS id 5si171073wmm.2.2016.02.10.06.42.10
+Received: by 10.182.106.225 with SMTP id gx1ls153825obb.18.gmail; Wed, 10 Feb
+ 2016 00:18:11 -0800 (PST)
+X-Received: by 10.182.79.134 with SMTP id j6mr36583544obx.4.1455092291559;
+        Wed, 10 Feb 2016 00:18:11 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
+        by gmr-mx.google.com with ESMTPS id 79si279608pft.0.2016.02.10.00.18.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Feb 2016 06:42:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
+        Wed, 10 Feb 2016 00:18:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x234.google.com with SMTP id g62so28931604wme.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 06:42:10 -0800 (PST)
+Received: by mail-pf0-x22a.google.com with SMTP id x65so8397662pfb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 00:18:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=o8FwTLjBj30/iDTmd5Jt3zzuFE7mIJtWxIG19xuY5Vs=;
-        b=cf8ITAzCrc7fB8ZtQBJgSRCEEB8eJNwCHVFHJdQWEA4rxhSkMeiAemVBmjpPIixjDN
-         O+VFNO3MGywAoAYWxvg+mDa6GI84oJiUeuayl0DT8bjWQrZOGQKdWj7hBH2RAd96Fk3/
-         /GDCRltpzcT+H6xOXj4QI1HXg9pbZQ/4pTbycDRVPh+AVk39n9KDBeDwUYoNQ5ZsIXwS
-         iD5k5nRlW4czxLEpIkZ8UXx6VRq1Fx1O9xAhnha8UNLSS/SZxXFgIqGuVOsc2B5AKUre
-         /wCwbgrY5XtO/L9kvnZxfFAUaTxY9kFZY4YfGUolqn71tcS0CwkoZzK/WuR3pCoXjzN1
-         dyfw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=A/cRJhAsweiKb8RCiPoP3tMu8Wogv55gXBFVS2EsWHQ=;
+        b=ENJtednx4uBLT55F7d8NA1/X9ga1lOMzHKN3RmI76jcrdUCLIImf3MLocls0wAHg3v
+         ExkMcNqcdgpJ5lRFFpzicnY/6ioCoKFG+cLQ8YuPmqsj4rpSD2FSqib7B7qbLw1noZKi
+         juXPsLgberQc/sj/bj+0Mc2zSCACBrefQ8xoeCeq1ErLCYojIpyfQ8F6TSeKnlcrJGTg
+         DNdSSPbBhKfA5eTvi+dXwahiJCLTKGjxRwwINB3CB9E2doEuB7iqARzyLrFVdpSdMPtd
+         H0f4mJz8YgflanKVz+H9deh0NblGZMCb3CTwp3jlBqe8hnNqFWi/AGjQo14/d8JUQdL+
+         h2Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=o8FwTLjBj30/iDTmd5Jt3zzuFE7mIJtWxIG19xuY5Vs=;
-        b=l2+6Nay61ftD/ED3Spj7asbcRPsmB6uzK5CROpQDF6sWgjgYkOkJXrpeqcXz1Sy5ZX
-         UyPmZ3Q8zylhqmakZ7Tg9eB3P+uXr7BnCFREyqJBov3b967aAtMvXUONZuvqTBJEOTP0
-         IMM+7Y02HiC4JvND0V8skaaPA/zXmZaxEZOhQyzsGqvVJ+qJjr2uNp6/tWFak0212rLt
-         IVO/UrRFthbLzPzIblHZdNmNJN/fT+oDxTwGPSTX8GhUPTLdMtq20noY+kNu9Ntje6vL
-         Y6uiKPGlSq47FgScvnlmapGUL7jgNGBBFZ0No7JtZTWIIukjhFew3AmpHLy05ji4Y0kd
-         GiAQ==
-X-Gm-Message-State: AG10YOTI5VmoTupo9u1/yINVgoKJei4fmkyfpt7vE1XXw7E3TvCmNHLuPRIYWXy0jvgP6Q==
-X-Received: by 10.28.174.72 with SMTP id x69mr11366347wme.68.1455115330381;
-        Wed, 10 Feb 2016 06:42:10 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.176.249.213])
-        by smtp.gmail.com with ESMTPSA id e194sm3740165wma.19.2016.02.10.06.42.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 10 Feb 2016 06:42:09 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: octeon: Use preferred kernel type
-Date: Wed, 10 Feb 2016 16:42:00 +0200
-Message-Id: <1455115320-3148-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=A/cRJhAsweiKb8RCiPoP3tMu8Wogv55gXBFVS2EsWHQ=;
+        b=iTmHm5s5h+PVlsIGLG+YfdsBb7wCpab+ixPDsuqKIQVpC8qcOlxAVYpuVCRTYhmrbT
+         5a8A+DP+SH8Hu0xXWA7LfekXFGtbzBRO8hV6MNNgrgT7qYt52tDweLARgRSZtntMgQqU
+         lSHnC/fAbF/SDO5+DlrydXKwvpfCsL9Ojz5B75Qy+MCw38tv1WA9Mmins1eUBF+uQU/F
+         +J2yf/4sIFPSMt1ycWnnLhlEOvM3p5++tPD3zZSpnic0Q39QRYARgSaYTs0GkPVowUO1
+         MYD8NxjTaktFidFsHphG+6ADdQaUIBOYaiQtnAnVEbDottspaZiKizCXVrcFpI8u/sEc
+         cH2A==
+X-Gm-Message-State: AG10YOTGmCCqTkljBnGUYbySlyjKjt0fGc4sqnLu5PMkDkyTHECKKfD6XcN42sLL2AUquw==
+X-Received: by 10.98.19.22 with SMTP id b22mr53808487pfj.17.1455092291413;
+        Wed, 10 Feb 2016 00:18:11 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([183.82.227.168])
+        by smtp.gmail.com with ESMTPSA id r68sm3033830pfb.51.2016.02.10.00.18.09
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 10 Feb 2016 00:18:10 -0800 (PST)
+Date: Wed, 10 Feb 2016 13:48:06 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: xgifb: Rename local
+ variable
+Message-ID: <20160210081806.GD24358@sudip-pc>
+References: <20160210033729.GA2677@janani-Inspiron-3521>
+ <alpine.DEB.2.02.1602100828060.2050@localhost6.localdomain6>
+ <20160210074242.GB24358@sudip-pc>
+ <CANnt6XmEPTr4W9fSq+Wnx+qcBP3PsPFKEoXL9NW4GCtFdE-9iw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANnt6XmEPTr4W9fSq+Wnx+qcBP3PsPFKEoXL9NW4GCtFdE-9iw@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch "int*_t" type instead of "s*" type was used.
-checkpatch.pl issue in octeon driver.
+On Wed, Feb 10, 2016 at 03:05:05AM -0500, Janani Ravichandran wrote:
+> > >
+> > > So this variable is only initialized, but never used?  If that is the
+> > > case, then a better solution would be to drop it.
+> > >
+> >
+> I was in fact debating between dropping it and renaming it but decided
+> on renaming it as I thought it might be used in the future, looking at the
+> if() check and the comment above it. Not sure if this was a good idea.
+> 
+> > > Or maybe it was not intended to introduce the local variable.  You might
+> > > want to see what you can find with git blame on the line that makes the
+> > > local declaration.
+> >
+> Sure, I will do that.
+> 
+> >
+> > If you remember in the last round of Outreachy also we had a similar
+> > discussion, I will see if I can find out that thread.
+> 
+> I'd love to see it, Sudip.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/octeon/ethernet-tx.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+https://groups.google.com/forum/#!searchin/outreachy-kernel/Staging$3A$20xgifb$3A$20XGI_main_26$3A$20Remove$20unused$20code/outreachy-kernel/fsXHgjdyx40/Omgja2r3CgAJ
 
-diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
-index 9e2116f..a9cfa93 100644
---- a/drivers/staging/octeon/ethernet-tx.c
-+++ b/drivers/staging/octeon/ethernet-tx.c
-@@ -58,9 +58,9 @@ static DECLARE_TASKLET(cvm_oct_tx_cleanup_tasklet, cvm_oct_tx_do_cleanup, 0);
- /* Maximum number of SKBs to try to free per xmit packet. */
- #define MAX_SKB_TO_FREE (MAX_OUT_QUEUE_DEPTH * 2)
- 
--static inline int32_t cvm_oct_adjust_skb_to_free(int32_t skb_to_free, int fau)
-+static inline s32 cvm_oct_adjust_skb_to_free(s32 skb_to_free, int fau)
- {
--	int32_t undo;
-+	s32 undo;
- 
- 	undo = skb_to_free > 0 ? MAX_SKB_TO_FREE : skb_to_free +
- 						   MAX_SKB_TO_FREE;
-@@ -83,7 +83,7 @@ static void cvm_oct_kick_tx_poll_watchdog(void)
- 
- static void cvm_oct_free_tx_skbs(struct net_device *dev)
- {
--	int32_t skb_to_free;
-+	s32 skb_to_free;
- 	int qos, queues_per_port;
- 	int total_freed = 0;
- 	int total_remaining = 0;
-@@ -150,8 +150,8 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
- 	enum {QUEUE_CORE, QUEUE_HW, QUEUE_DROP} queue_type;
- 	struct octeon_ethernet *priv = netdev_priv(dev);
- 	struct sk_buff *to_free_list;
--	int32_t skb_to_free;
--	int32_t buffers_to_free;
-+	s32 skb_to_free;
-+	s32 buffers_to_free;
- 	u32 total_to_clean;
- 	unsigned long flags;
- #if REUSE_SKBUFFS_WITHOUT_FREE
--- 
-1.9.1
-
+regards
+sudip
 
