@@ -1,132 +1,117 @@
 X-GM-THRID: 6249397284630429696
-X-Received: by 10.31.9.78 with SMTP id 75mr36469861vkj.9.1455091508102;
-        Wed, 10 Feb 2016 00:05:08 -0800 (PST)
+X-Received: by 10.107.168.139 with SMTP id e11mr11913063ioj.32.1455090167902;
+        Tue, 09 Feb 2016 23:42:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.81.145 with SMTP id f17ls222902qgd.27.gmail; Wed, 10 Feb
- 2016 00:05:05 -0800 (PST)
-X-Received: by 10.140.143.200 with SMTP id 191mr36478160qhp.3.1455091505939;
-        Wed, 10 Feb 2016 00:05:05 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ob0-x243.google.com (mail-ob0-x243.google.com. [2607:f8b0:4003:c01::243])
-        by gmr-mx.google.com with ESMTPS id c15si497888igm.1.2016.02.10.00.05.05
+Received: by 10.50.79.170 with SMTP id k10ls148522igx.9.canary; Tue, 09 Feb
+ 2016 23:42:47 -0800 (PST)
+X-Received: by 10.50.62.113 with SMTP id x17mr6665656igr.13.1455090167687;
+        Tue, 09 Feb 2016 23:42:47 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
+        by gmr-mx.google.com with ESMTPS id ui7si270754pab.0.2016.02.09.23.42.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Feb 2016 00:05:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::243 as permitted sender) client-ip=2607:f8b0:4003:c01::243;
+        Tue, 09 Feb 2016 23:42:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ob0-x243.google.com with SMTP id il1so1099951obb.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 00:05:05 -0800 (PST)
+Received: by mail-pf0-x230.google.com with SMTP id e127so7928633pfe.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 23:42:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=MwkTgqzPcOaIomr/a0o5yamdjWaJWI27yourosFuF4g=;
-        b=C4+vUi+eY0QC7vYMwBRjK8eO+gRbqFrt0fYwXCez/2hsb9Efa8xgKKdGx2WD/dqv+r
-         CnNireVe1gsBVA1E3QTT5NsxyPsvw6mql120SzcRhy+KiHJbSuMi3YjDUyYL8+veV17l
-         FCoH5gSO/SrNv4PmkeS15TLwJuQJ3B5jKV6VJVq8ADVeRNi5Y83rkKv9lvwSoftGlktP
-         9n7oPDsqexOvzYkqSqxcheA17ztZCZmpVp3arKgjEnL+B8YV4j3wgBnPGBfuCwvlg80e
-         EYeXp0xyvpg/+o+ldSBOILPTwQlUZjDdrVBh8QVdhVmBzMr+wCP2xPsH8C+PhDEnVZL0
-         68vQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=ZOUy/mctLx0GmwsfWQnaCe7BYRAw/R9xv2YmEb1yBHc=;
+        b=WEKNBmM9SJuZbnl/f39RXUU5RB1RcICvucOApmMJKPebx63z/ZfjmG9PLJHt+tTTJF
+         L6BaRuMMYBjyLT9PHAhiinbTfGECX/+ZdY9UC+yVU1vEs6+S3sAF1bnuOLlBjAMBmdYK
+         U/DT46QHDiPdNuI+njtPLJmfCRaIkEV49spj2IeZ2XLfVqdeZNgxzwp9j2Og6DmWkyJK
+         ELBl17dWm8g3E0yYx80K6nvGbzP1n8ufEFCpKOkyqvhLYJixvTG9KM8+TpfHxTwmmNwF
+         5p6TJR5m/njTymIDpIOVi2/u2zEJ5ixNTEAMPPF7TZGfkz/8z028YdpGK8/XaWBDk60s
+         JkrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=MwkTgqzPcOaIomr/a0o5yamdjWaJWI27yourosFuF4g=;
-        b=dDWZaw/A9gRxSeEE+uQDHWeVLsYmSAxmaXmAYQ4l4dAfa0fcjqhW2uMlVMa7zvUTem
-         VGowRplEeUCuiWRquQXvYQDs8D9VHJ4mwCc+6hVuJ/juAJ6iniNK783iwzBCUuGEe1KW
-         cMgrGnSi3LOzFBw62TOVL1Fn0Oop5ixyegs2kAKIlIiWOHR5mE7LfTagJJRRnYoxDqde
-         3psb2zRJhiKxHV0lC7mQJa8J7f6I4xmWHn6BHer3wnWchpvjgyzKtXSFXv5Duvx2rtK2
-         GxtRvRSruAiR0M4v2WBmpj10/K2AZrIStVJeVcpQeUGeYyg7sSJX0cxREJk8881PQwkE
-         a8bA==
-X-Gm-Message-State: AG10YOSoX5qCBH1QRqOI1ey9DHGLA81fYm0OyjaQMm/4/61Kyoats6Z01Q7jOgNcKeqVYYWKFihy1i8dIP8ERA==
-MIME-Version: 1.0
-X-Received: by 10.60.146.169 with SMTP id td9mr33977965oeb.32.1455091505726;
- Wed, 10 Feb 2016 00:05:05 -0800 (PST)
-Received: by 10.202.170.195 with HTTP; Wed, 10 Feb 2016 00:05:05 -0800 (PST)
-In-Reply-To: <20160210074242.GB24358@sudip-pc>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=ZOUy/mctLx0GmwsfWQnaCe7BYRAw/R9xv2YmEb1yBHc=;
+        b=fPYDxc5G68ZP/E0XCtW6CpzPPqwJI0hSFAoPts66wpGU8q+7X2ymkHMa8NXz4sFqA2
+         s5BMNIpTd/COOGtvEGwy8UJiGpCP6EMoLA5L4o1hX+rpZed+30br8zyS9ey/3nCiQTqZ
+         lxGGNhsh2+4LyHoJkZ45C97yibL2qKKg9r8aZNJsRxaeTQNyh99RR4NJdlkquKdJnIAa
+         oJKER1H789amghggFKggJ+iwbmIWYf+AcSlMURzoVWBJ8Y+UyP6zjiisOOtQRVh4heWS
+         +xtPuGvcANC5Lea828mZ4VTWspwy27Kqv4OAcETjJy3lmrGvP1LIihsSnunVZ/fKze8c
+         bjaw==
+X-Gm-Message-State: AG10YOQ9nmnbK1efHrLxRYjprD4oc/uxxCHe1R2fJ1YC6leHLabguMgFxtfSiPWz+fJINw==
+X-Received: by 10.98.70.80 with SMTP id t77mr56244199pfa.107.1455090167572;
+        Tue, 09 Feb 2016 23:42:47 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([183.82.227.168])
+        by smtp.gmail.com with ESMTPSA id lt14sm2726643pab.39.2016.02.09.23.42.45
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 09 Feb 2016 23:42:46 -0800 (PST)
+Date: Wed, 10 Feb 2016 13:12:42 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Janani Ravichandran <janani.rvchndrn@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: xgifb: Rename local
+ variable
+Message-ID: <20160210074242.GB24358@sudip-pc>
 References: <20160210033729.GA2677@janani-Inspiron-3521>
-	<alpine.DEB.2.02.1602100828060.2050@localhost6.localdomain6>
-	<20160210074242.GB24358@sudip-pc>
-Date: Wed, 10 Feb 2016 03:05:05 -0500
-Message-ID: <CANnt6XmEPTr4W9fSq+Wnx+qcBP3PsPFKEoXL9NW4GCtFdE-9iw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: xgifb: Rename local variable
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=047d7b45047a50a7ba052b65e4fc
+ <alpine.DEB.2.02.1602100828060.2050@localhost6.localdomain6>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.02.1602100828060.2050@localhost6.localdomain6>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
---047d7b45047a50a7ba052b65e4fc
-Content-Type: text/plain; charset=UTF-8
+On Wed, Feb 10, 2016 at 08:29:45AM +0100, Julia Lawall wrote:
+> 
+> 
+> On Tue, 9 Feb 2016, Janani Ravichandran wrote:
+> 
+> > As one of the global variables and a local variable share the same name,
+> > change the name of the local variable to avoid confusion.
+> > 
+> > Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> > ---
+> > Changes since v1:
+> >  * Changed the name of the variable to something more meaningful
+> > 
+> >  drivers/staging/xgifb/XGI_main_26.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
+> > index f11cea1..0091d8d 100644
+> > --- a/drivers/staging/xgifb/XGI_main_26.c
+> > +++ b/drivers/staging/xgifb/XGI_main_26.c
+> > @@ -1230,7 +1230,7 @@ static int XGIfb_check_var(struct fb_var_screeninfo *var, struct fb_info *info)
+> >  	unsigned int vtotal = 0;
+> >  	unsigned int drate = 0, hrate = 0;
+> >  	int found_mode = 0;
+> > -	int refresh_rate, search_idx;
+> > +	int local_refresh_rate, search_idx;
+> >  
+> >  	if ((var->vmode & FB_VMODE_MASK) == FB_VMODE_NONINTERLACED) {
+> >  		vtotal = var->upper_margin + var->yres + var->lower_margin
+> > @@ -1268,7 +1268,7 @@ static int XGIfb_check_var(struct fb_var_screeninfo *var, struct fb_info *info)
+> >  
+> >  	/* Calculation wrong for 1024x600 - force it to 60Hz */
+> >  	if ((var->xres == 1024) && (var->yres == 600))
+> > -		refresh_rate = 60;
+> > +		local_refresh_rate = 60;
+> 
+> So this variable is only initialized, but never used?  If that is the 
+> case, then a better solution would be to drop it.
+> 
+> Or maybe it was not intended to introduce the local variable.  You might 
+> want to see what you can find with git blame on the line that makes the 
+> local declaration.
 
-> >
-> > So this variable is only initialized, but never used?  If that is the
-> > case, then a better solution would be to drop it.
-> >
->
-I was in fact debating between dropping it and renaming it but decided
-on renaming it as I thought it might be used in the future, looking at the
-if() check and the comment above it. Not sure if this was a good idea.
+If you remember in the last round of Outreachy also we had a similar
+discussion, I will see if I can find out that thread.
 
-> > Or maybe it was not intended to introduce the local variable.  You might
-> > want to see what you can find with git blame on the line that makes the
-> > local declaration.
->
-Sure, I will do that.
-
->
-> If you remember in the last round of Outreachy also we had a similar
-> discussion, I will see if I can find out that thread.
-
-I'd love to see it, Sudip.
-
-Thanks,
-Janani.
-
->
-> regards
-> sudip
->
-
---047d7b45047a50a7ba052b65e4fc
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><div class=3D"gmail_quote">=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><div class=3D"HOEnZb"><div class=3D"h5">
-&gt;<br>
-&gt; So this variable is only initialized, but never used?=C2=A0 If that is=
- the<br>
-&gt; case, then a better solution would be to drop it.<br>
-&gt;<br></div></div></blockquote><div>I was in fact debating between droppi=
-ng it and renaming it but decided <br></div><div>on renaming it as I though=
-t it might be used in the future, looking at the<br></div><div>if() check a=
-nd the comment above it. Not sure if this was a good idea.=C2=A0 <br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><div class=3D"HOEnZb"><div class=3D"h5">
-&gt; Or maybe it was not intended to introduce the local variable.=C2=A0 Yo=
-u might<br>
-&gt; want to see what you can find with git blame on the line that makes th=
-e<br>
-&gt; local declaration.<br></div></div></blockquote><div>Sure, I will do th=
-at. <br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
-border-left:1px #ccc solid;padding-left:1ex"><div class=3D"HOEnZb"><div cla=
-ss=3D"h5">
-<br>
-</div></div>If you remember in the last round of Outreachy also we had a si=
-milar<br>
-discussion, I will see if I can find out that thread.=C2=A0</blockquote><di=
-v>I&#39;d love to see it, Sudip.<br><br></div><div>Thanks,<br></div><div>Ja=
-nani. <br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8e=
-x;border-left:1px #ccc solid;padding-left:1ex">
-<br>
-regards<br>
-<span class=3D"HOEnZb"><font color=3D"#888888">sudip<br>
-</font></span></blockquote></div><br></div></div>
-
---047d7b45047a50a7ba052b65e4fc--
+regards
+sudip
 
