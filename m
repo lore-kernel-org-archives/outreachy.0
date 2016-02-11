@@ -1,115 +1,189 @@
-X-GM-THRID: 6212186880400687104
-X-Received: by 10.140.232.148 with SMTP id d142mr14666147qhc.4.1446387469503;
-        Sun, 01 Nov 2015 06:17:49 -0800 (PST)
+X-GM-THRID: 6250087330161360896
+X-Received: by 10.51.17.34 with SMTP id gb2mr15890656igd.10.1455211855583;
+        Thu, 11 Feb 2016 09:30:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.27.39 with SMTP id q7ls610366igg.26.gmail; Sun, 01 Nov 2015
- 06:17:49 -0800 (PST)
-X-Received: by 10.66.255.70 with SMTP id ao6mr15132761pad.3.1446387469077;
-        Sun, 01 Nov 2015 06:17:49 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id sm2si1428849pab.0.2015.11.01.06.17.49
+Received: by 10.140.82.9 with SMTP id g9ls1349140qgd.40.gmail; Thu, 11 Feb
+ 2016 09:30:54 -0800 (PST)
+X-Received: by 10.129.159.131 with SMTP id w125mr17303721ywg.26.1455211854937;
+        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
+        by gmr-mx.google.com with ESMTPS id y131si673808ywc.0.2016.02.11.09.30.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 06:17:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id fv9so125748940pac.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 06:17:49 -0800 (PST)
+Received: by mail-qg0-x22b.google.com with SMTP id y89so43110886qge.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 09:30:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=FvHQEjJkwjkZlyAS/S4Ft+wmYb10pY9sDN6gQLGOWCg=;
-        b=sD4M5E+wTleN6y2QkfDeS5CBL6CnyXGa26oWdp9PPF30NFMiGete9pNhf4Z59nRJA3
-         jwVEWBc8K7lTjrAQZ4ZFuxseKeJ1KTk12z2lcrykenG8NUjv3lHIXnTCjJF+AhSho5EU
-         xY82p28gICa2hWeyd7KC8fY/zy8YDEf/BCEgzGFpL4fdBwO8g+mHnE0zSwmzdkPsVp4U
-         Bwr76+stIOKz8q6bgtTP5nUWAtJfbtySj4X3yJ/tCvHyghpep2Ve08KDW8qCvVo+tfq1
-         yIsEeuKLm5sHwS92Rtrectzp1gttR6n0Gc1JSWzvyf1cYAb28okYTYMPQOCpRdyFm3TY
-         nPUg==
-X-Received: by 10.66.190.104 with SMTP id gp8mr21313187pac.154.1446387468909;
-        Sun, 01 Nov 2015 06:17:48 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.108.132])
-        by smtp.gmail.com with ESMTPSA id ro3sm18734863pbc.69.2015.11.01.06.17.47
+        bh=Yz1dtWqwO6oz6vI9AxdyUhprBumBIOvtFTkrBH33HUk=;
+        b=EW9STZTaM18HMvIgtyz0QUWkU9jyB7mvq12xXRDbY7HqaX4U2QX7Wk5HprsUa4BdPi
+         ku/8EV8U6IG03/FAomtqQ8AYcfh81bX703V6Mn4LwLJp2sp7sufol3cJTgsg5ctNVwIu
+         55paREg5Ki9TfxV91SWP9vPU1YxRjcATru4nNq4cMssvQ2Tcu1GmMqx95QMM+1j8yEPC
+         TwuHiuCbflyfxeqWyQFymdCen9O/f0ld62QAkTTe5O8+zi00Qa+OUumPxkU87jIss146
+         Bh2F8s9AAlK8fNffLmhN8WdufxOVyMuwzZPy7TszR9FElnGhRW4WS14gRuJ4Mc8mG/gv
+         u3og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=Yz1dtWqwO6oz6vI9AxdyUhprBumBIOvtFTkrBH33HUk=;
+        b=WBPGTj5mQxSfKg+WkNl17VCUTXW0W34iOnckDM9P/hrMiQgInY6LShXUXEUfhA/XFi
+         b5ROOjP0wCY4LhxD+SsiSsIfVCVLcguJ61KQ3Vf1g8vuq1qBXhOASg9igzhShD09eHGg
+         6GUUkpQfdOHDFvTLlS7lk8y273RQcXmF8CV8dZ7WcFihAnhnEK7YtPE/6ddumX4saiai
+         e+tvr8ij5YTE38RAUOIwoy06IGq5bnf4CfFeac7Oti13G0feWe2muXY/FxRDQcM7WaC/
+         zXIJ+YmAXHGUFSYlDWS1DqaTCE7mYAvmDs6/GkjqwlvBel71LTbnVVZ+V/O3X42kJFUy
+         ubMQ==
+X-Gm-Message-State: AG10YORItCYZCg5Sb6uzgrz75ps44yzQ4QLntoQpPOnPa3sTCSsrMz/4BiwcKF+PPEj6QQ==
+X-Received: by 10.140.43.67 with SMTP id d61mr56512709qga.18.1455211854799;
+        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id 191sm3731265qhq.17.2016.02.11.09.30.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 01 Nov 2015 06:17:48 -0800 (PST)
-Date: Sun, 1 Nov 2015 19:47:44 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
+Date: Thu, 11 Feb 2016 17:30:16 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lnet: selftest: Remove extern specifier
-Message-ID: <20151101141744.GA19046@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: xgifb: Remove unneeded parentheses
+Message-ID: <20160211223016.GA4694@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Functions have the extern specifier by default, so extern keyword can be
-removed.
+Remove unneeded parentheses around the right hand side of assignments as
+they are not needed. Semantic patch:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+@@
+expression a, b, c;
+@@
+
+(
+  a = (b == c)
+|
+  a =
+- (
+  b
+- )
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/lustre/lnet/selftest/console.c   | 2 +-
- drivers/staging/lustre/lnet/selftest/framework.c | 8 ++++----
- drivers/staging/lustre/lnet/selftest/module.c    | 4 ++--
- 3 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/xgifb/XGI_main_26.c | 20 ++++++++++----------
+ drivers/staging/xgifb/vb_setmode.c  | 14 +++++++-------
+ 2 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/lustre/lnet/selftest/console.c b/drivers/staging/lustre/lnet/selftest/console.c
-index 024aaee..2b139c8 100644
---- a/drivers/staging/lustre/lnet/selftest/console.c
-+++ b/drivers/staging/lustre/lnet/selftest/console.c
-@@ -1984,7 +1984,7 @@ static void lstcon_init_acceptor_service(void)
- 	lstcon_acceptor_service.sv_wi_total = SFW_FRWK_WI_MAX;
- }
+diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
+index 3f20f91..733cd8e 100644
+--- a/drivers/staging/xgifb/XGI_main_26.c
++++ b/drivers/staging/xgifb/XGI_main_26.c
+@@ -655,26 +655,26 @@ static void XGIfb_pre_setmode(struct xgifb_video_info *xgifb_info)
  
--extern int lstcon_ioctl_entry(unsigned int cmd, struct libcfs_ioctl_data *data);
-+int lstcon_ioctl_entry(unsigned int cmd, struct libcfs_ioctl_data *data);
+ 	switch (xgifb_info->display2) {
+ 	case XGIFB_DISP_CRT:
+-		cr30 = (SIS_VB_OUTPUT_CRT2 | SIS_SIMULTANEOUS_VIEW_ENABLE);
++		cr30 = SIS_VB_OUTPUT_CRT2 | SIS_SIMULTANEOUS_VIEW_ENABLE;
+ 		cr31 |= SIS_DRIVER_MODE;
+ 		break;
+ 	case XGIFB_DISP_LCD:
+-		cr30 = (SIS_VB_OUTPUT_LCD | SIS_SIMULTANEOUS_VIEW_ENABLE);
++		cr30 = SIS_VB_OUTPUT_LCD | SIS_SIMULTANEOUS_VIEW_ENABLE;
+ 		cr31 |= SIS_DRIVER_MODE;
+ 		break;
+ 	case XGIFB_DISP_TV:
+ 		if (xgifb_info->TV_type == TVMODE_HIVISION)
+-			cr30 = (SIS_VB_OUTPUT_HIVISION
+-					| SIS_SIMULTANEOUS_VIEW_ENABLE);
++			cr30 = SIS_VB_OUTPUT_HIVISION
++					| SIS_SIMULTANEOUS_VIEW_ENABLE;
+ 		else if (xgifb_info->TV_plug == TVPLUG_SVIDEO)
+-			cr30 = (SIS_VB_OUTPUT_SVIDEO
+-					| SIS_SIMULTANEOUS_VIEW_ENABLE);
++			cr30 = SIS_VB_OUTPUT_SVIDEO
++					| SIS_SIMULTANEOUS_VIEW_ENABLE;
+ 		else if (xgifb_info->TV_plug == TVPLUG_COMPOSITE)
+-			cr30 = (SIS_VB_OUTPUT_COMPOSITE
+-					| SIS_SIMULTANEOUS_VIEW_ENABLE);
++			cr30 = SIS_VB_OUTPUT_COMPOSITE
++					| SIS_SIMULTANEOUS_VIEW_ENABLE;
+ 		else if (xgifb_info->TV_plug == TVPLUG_SCART)
+-			cr30 = (SIS_VB_OUTPUT_SCART
+-					| SIS_SIMULTANEOUS_VIEW_ENABLE);
++			cr30 = SIS_VB_OUTPUT_SCART
++					| SIS_SIMULTANEOUS_VIEW_ENABLE;
+ 		cr31 |= SIS_DRIVER_MODE;
  
- static DECLARE_IOCTL_HANDLER(lstcon_ioctl_handler, lstcon_ioctl_entry);
+ 		if (XGIfb_tvmode == 1 || xgifb_info->TV_type == TVMODE_PAL)
+diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
+index c886dd2..6903c81 100644
+--- a/drivers/staging/xgifb/vb_setmode.c
++++ b/drivers/staging/xgifb/vb_setmode.c
+@@ -1905,8 +1905,8 @@ static void XGI_GetVBInfo(unsigned short ModeIdIndex,
+ 	push <<= 8;
+ 	tempax = temp << 8;
+ 	tempbx = tempbx | tempax;
+-	temp = (SetCRT2ToDualEdge | SetCRT2ToYPbPr525750 | XGI_SetCRT2ToLCDA
+-		| SetInSlaveMode | DisableCRT2Display);
++	temp = SetCRT2ToDualEdge | SetCRT2ToYPbPr525750 | XGI_SetCRT2ToLCDA
++		| SetInSlaveMode | DisableCRT2Display;
+ 	temp = 0xFFFF ^ temp;
+ 	tempbx &= temp;
  
-diff --git a/drivers/staging/lustre/lnet/selftest/framework.c b/drivers/staging/lustre/lnet/selftest/framework.c
-index 177beaf..d4123f5 100644
---- a/drivers/staging/lustre/lnet/selftest/framework.c
-+++ b/drivers/staging/lustre/lnet/selftest/framework.c
-@@ -1625,13 +1625,13 @@ static srpc_service_t sfw_services[] = {
+@@ -2887,7 +2887,7 @@ static void XGI_SetGroup1(unsigned short ModeIdIndex,
+ 	xgifb_reg_set(pVBInfo->Part1Port, 0x0C, temp);
+ 	temp = tempcx & 0x00FF;
+ 	xgifb_reg_set(pVBInfo->Part1Port, 0x0D, temp);
+-	tempcx = (pVBInfo->VGAVT - 1);
++	tempcx = pVBInfo->VGAVT - 1;
+ 	temp = tempcx & 0x00FF;
  
- extern sfw_test_client_ops_t ping_test_client;
- extern srpc_service_t	ping_test_service;
--extern void ping_init_test_client(void);
--extern void ping_init_test_service(void);
-+void ping_init_test_client(void);
-+void ping_init_test_service(void);
+ 	xgifb_reg_set(pVBInfo->Part1Port, 0x0E, temp);
+@@ -2925,7 +2925,7 @@ static void XGI_SetGroup1(unsigned short ModeIdIndex,
+ 	temp = tempbx & 0x00FF;
+ 	xgifb_reg_set(pVBInfo->Part1Port, 0x10, temp);
+ 	temp = ((tempbx & 0xFF00) >> 8) << 4;
+-	temp = ((tempcx & 0x000F) | (temp));
++	temp = (tempcx & 0x000F) | (temp);
+ 	xgifb_reg_set(pVBInfo->Part1Port, 0x11, temp);
+ 	tempax = 0;
  
- extern sfw_test_client_ops_t brw_test_client;
- extern srpc_service_t	brw_test_service;
--extern void brw_init_test_client(void);
--extern void brw_init_test_service(void);
-+void brw_init_test_client(void);
-+void brw_init_test_service(void);
+@@ -4080,7 +4080,7 @@ static void XGI_SetGroup4(unsigned short ModeIdIndex,
+ 	tempcx |= 0x04000;
  
+ 	if (tempeax <= tempebx) {
+-		tempcx = (tempcx & (~0x4000));
++		tempcx = tempcx & (~0x4000);
+ 		tempeax = pVBInfo->VGAVDE;
+ 	} else {
+ 		tempeax -= tempebx;
+@@ -4130,7 +4130,7 @@ static void XGI_SetGroup4(unsigned short ModeIdIndex,
+ 		temp = (tempax & 0xFF00) >> 8;
+ 		temp = (temp & 0x0003) << 4;
+ 		xgifb_reg_set(pVBInfo->Part4Port, 0x1E, temp);
+-		temp = (tempax & 0x00FF);
++		temp = tempax & 0x00FF;
+ 		xgifb_reg_set(pVBInfo->Part4Port, 0x1D, temp);
  
- int
-diff --git a/drivers/staging/lustre/lnet/selftest/module.c b/drivers/staging/lustre/lnet/selftest/module.c
-index 09b8f46..ecaf1ad 100644
---- a/drivers/staging/lustre/lnet/selftest/module.c
-+++ b/drivers/staging/lustre/lnet/selftest/module.c
-@@ -47,8 +47,8 @@ enum {
- 	LST_INIT_CONSOLE
- };
- 
--extern int lstcon_console_init(void);
--extern int lstcon_console_fini(void);
-+int lstcon_console_init(void);
-+int lstcon_console_fini(void);
- 
- static int lst_init_step = LST_INIT_NONE;
- 
+ 		if (pVBInfo->VBInfo & (SetCRT2ToTV | SetCRT2ToHiVision)) {
+@@ -4932,7 +4932,7 @@ static void XGI_SetCRT2ModeRegs(struct vb_device_info *pVBInfo)
+ 			tempcl -= ModeVGA;
+ 			if (tempcl >= 0) {
+ 				/* BT Color */
+-				tempah = (0x008 >> tempcl);
++				tempah = 0x008 >> tempcl;
+ 				if (tempah == 0)
+ 					tempah = 1;
+ 				tempah |= 0x040;
 -- 
-1.9.1
+2.5.0
 
 
