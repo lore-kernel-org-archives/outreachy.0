@@ -1,112 +1,92 @@
 X-GM-THRID: 6249498218591158272
-X-Received: by 10.140.154.143 with SMTP id a137mr2703494qha.11.1455731991202;
-        Wed, 17 Feb 2016 09:59:51 -0800 (PST)
+X-Received: by 10.107.3.24 with SMTP id 24mr41666658iod.12.1455155067087;
+        Wed, 10 Feb 2016 17:44:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.132.15 with SMTP id g15ls2140190iod.50.gmail; Wed, 17 Feb
- 2016 09:59:50 -0800 (PST)
-X-Received: by 10.107.7.200 with SMTP id g69mr4320100ioi.3.1455731990894;
-        Wed, 17 Feb 2016 09:59:50 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from mail-qg0-x229.google.com (mail-qg0-x229.google.com. [2607:f8b0:400d:c04::229])
-        by gmr-mx.google.com with ESMTPS id q187si130566ywf.4.2016.02.17.09.59.50
+Received: by 10.107.7.146 with SMTP id g18ls420084ioi.0.gmail; Wed, 10 Feb
+ 2016 17:44:26 -0800 (PST)
+X-Received: by 10.66.100.201 with SMTP id fa9mr42066971pab.11.1455155066593;
+        Wed, 10 Feb 2016 17:44:26 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id g136si466620ywb.5.2016.02.10.17.44.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 09:59:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) client-ip=2607:f8b0:400d:c04::229;
+        Wed, 10 Feb 2016 17:44:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) smtp.mailfrom=jes.sorensen@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x229.google.com with SMTP id b67so17847660qgb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 09:59:50 -0800 (PST)
+Received: by mail-qk0-x243.google.com with SMTP id s5so1278803qkd.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 17:44:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:subject:to:references:cc:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=NxYyNdUor8M84WWe2WHCMYYig2AXLt37dQXfhPwl3yE=;
-        b=Y6PFvu0CfelyKUkOkwvdgQxILx5JBlji99VMCNAWEv6WtCVt17Ue1Gp68oT2u90B6j
-         G652mGKBW1gZoDqKJLPGRBiNbBuOfojYz0hheJP98w3q+bhcbHR9UVRZqdmYTc0dK8/H
-         dNCMY0fo49pvvQ9E5x9pwZje2ZdBuf22sJak2g8KmYkbOp7nNmgDVIjuI8076aE9HIan
-         k4MIH8sb8st+0QnYmMCa8MLBYzNRKC0kjLPaOzgDgi43BuRb7w7CdBpJMPq3LdcARIrH
-         cw8KKCH1sKwpZgDmg4foCUVNRqrpCjz1PWq6fT3ZG4FsSIO4Q4zRtkRWgkxiHb9tXgD4
-         OKDw==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=Pzg1wr/GG+YBwe3ZwCFk6F3f1btWJRjkp6ecKoh/ROE=;
+        b=yehQ43T1NDllkVztIVw7PiltDQA7fHvNKm3x6HmmeM69f1bCq+kPhgM+GvtmgoFC3y
+         JJbg9N7NlwrUXoO5jJMH3uN+hYYN1hJKsu1khO+3Hg8wOEVm37BgcFa2SKYWjDVgi5Au
+         joio8buMX/v7XCuduH6CD1giMxKMkLwE9nsOtc1iyl22FSfgPtmTj9hjBk5g54PazO/9
+         3l28Qt33TX1qc7onA8yABoXcrqA66wIxkqwZhO0GrilHv5LcRtu5pa+wkjtM3wQ/AX+U
+         nNbvNH2JtgUSWHrigK9Vy6LoR4PX5YUDF4+YpvYI2f+c79lE1yaiWLXpyzA0pjfOaqcS
+         yJiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:subject:to:references:cc:message-id:date
-         :user-agent:mime-version:in-reply-to:content-type
-         :content-transfer-encoding;
-        bh=NxYyNdUor8M84WWe2WHCMYYig2AXLt37dQXfhPwl3yE=;
-        b=RJl9M1RZBtRMv429BaVnMHIg5i1H+ETyIXxnx3EBZNqjsNpEVOG2tENFK0z9zMebcj
-         C7eadH3Rrzv74kA9ddeLhpuLJOUnSTQYe8Q69Ze2X9QiAue260q6wEhVLeEAlkWHgi/v
-         sEChS8vlrzaWyUYMhTH58z34O5yyHmzv9iH/srqeCcpU+3qlNcGezxte73jNYsX1x1EI
-         NLaakkDUIVP+s59RYdrlrAVIUin0TcJVqn7bes09k6YJGp2Ni8E5qe0NQTwXX7VkcDSp
-         ADL/p9OkYPr1wkavsaibRSzrcqAXn/58ItybvIwzUSh5P/Pk/cjrpF1uyHUTa9VCEKYE
-         XrUw==
-X-Gm-Message-State: AG10YOTv/ZL2mkp0NiY2Z+Wh+mj9YdZTHahn2z8zuxtTkEi8j7JpnsSUJivwNxqdrmoDFw==
-X-Received: by 10.140.43.180 with SMTP id e49mr3637449qga.66.1455731990728;
-        Wed, 17 Feb 2016 09:59:50 -0800 (PST)
-Return-Path: <jes.sorensen@gmail.com>
-Received: from [10.15.49.121] ([38.140.131.194])
-        by smtp.gmail.com with ESMTPSA id 38sm955666qkx.6.2016.02.17.09.59.50
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Wed, 17 Feb 2016 09:59:50 -0800 (PST)
-From: Jes Sorensen <jes.sorensen@gmail.com>
-X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: unisys: Modify boolean
- assignment
-To: Julia Lawall <julia.lawall@lip6.fr>,
- Janani Ravichandran <janani.rvchndrn@gmail.com>
-References: <20160210082412.GA2645@janani-Inspiron-3521>
- <alpine.DEB.2.02.1602100825150.2050@localhost6.localdomain6>
- <207e6b2c-07b0-48a8-a414-37c59ed7a3e6@googlegroups.com>
- <alpine.DEB.2.10.1602100954070.2486@hadrien>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-ID: <56C4B515.3020301@gmail.com>
-Date: Wed, 17 Feb 2016 12:59:49 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.5.0
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=Pzg1wr/GG+YBwe3ZwCFk6F3f1btWJRjkp6ecKoh/ROE=;
+        b=S/lWLaje5PXAAbujknL6MPv1oOWFUxkwwZ5YWrpuI7H7yma5oY7ZK1z9gzmPRrheLe
+         fEKRegja79iFE/IV71it1b1OUBTPCA8TXpxS/CS14mVjEi9f7rZwfEBUwpm8c/hPneuT
+         ojgeVc+hbi4Sh0PagPFWSaGuO+1UMApNLNJW27myjCGgUq4k65w6yWG4rvnEVWfVUiQH
+         A4YWZGE3p3Oi3GK73r6sd2c7WSGynqkHl2pvG5x0gjGQ/okRIlzdm+sRo4PQew71qjP8
+         k91RSXKhAeBNXWWDauUqS3zE4BDGX9Zo+6ij6xu3fU402XSVhBuMvdC+20pEfmkLlv7a
+         aOdA==
+X-Gm-Message-State: AG10YORqXGJzFPVK6BGIC07CdyyNQ4fwaLUBFcIzJ9YWVnzw5ti2aB3n03cKlWeqzusVaA==
+X-Received: by 10.55.207.217 with SMTP id v86mr52683613qkl.16.1455155066378;
+        Wed, 10 Feb 2016 17:44:26 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id y200sm2427878qka.48.2016.02.10.17.44.25
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 10 Feb 2016 17:44:25 -0800 (PST)
+Date: Thu, 11 Feb 2016 01:43:47 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: unisys: Modify boolean assignment
+Message-ID: <20160211064347.GA3667@janani-Inspiron-3521>
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.10.1602100954070.2486@hadrien>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On 02/10/16 03:54, Julia Lawall wrote:
-> 
-> 
-> On Tue, 9 Feb 2016, Janani Ravichandran wrote:
-> 
->>
->>
->> On Wednesday, 10 February 2016 02:26:38 UTC-5, Julia Lawall wrote:
->>       On Wed, 10 Feb 2016, Janani Ravichandran wrote:
->>
->>       > Boolean variables should be assigned true/false rather than
->>       1/0.
->>       > This patch makes such a correction.
->>
->>       A change like this should be made consistently, so it is a
->>       little
->>       surprising to see only one such change.  Is this the only place
->>       where the
->>       variable is initialized?  
->>
->> Within this file, this is the only instance of initialization of the
->> variable where 1 is
->>  used instead of true. All others use true/false. I sent this to resolve
->> that
->> inconsistency :)
->>       If so, you could say that.  if not, then you
->>       could explain that all of the other initialization places
->>       already have
->>       boolean values, in some way or another.
->>
->> Do I send a v2 explaining this?
-> 
-> I think it could be helpful.
+Boolean variables should be assigned true/false rather than 1/0.
+This patch makes a correction on such a variable which has boolean
+values assigned in all other places within the file.
 
-You also need to CC the driver author, not just the outreachy list.
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+Changes since v1:
+ * Modified commit description to include that there was only one
+  instance where the variable was set to 1 instead of true.
+   
+ drivers/staging/unisys/visorhba/visorhba_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Jes
-
+diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
+index 5a78409..e93bb1d 100644
+--- a/drivers/staging/unisys/visorhba/visorhba_main.c
++++ b/drivers/staging/unisys/visorhba/visorhba_main.c
+@@ -1062,7 +1062,7 @@ static int visorhba_resume(struct visor_device *dev,
+ 		return -EINVAL;
+ 
+ 	if (devdata->serverdown && !devdata->serverchangingstate)
+-		devdata->serverchangingstate = 1;
++		devdata->serverchangingstate = true;
+ 
+ 	visor_thread_start(&devdata->threadinfo, process_incoming_rsps,
+ 			   devdata, "vhba_incming");
+-- 
+2.5.0
 
 
