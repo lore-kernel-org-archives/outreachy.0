@@ -1,86 +1,101 @@
-X-GM-THRID: 6201124442892926976
-X-Received: by 10.112.130.41 with SMTP id ob9mr2868124lbb.17.1443811795831;
-        Fri, 02 Oct 2015 11:49:55 -0700 (PDT)
+X-GM-THRID: 6250074723420471296
+X-Received: by 10.50.56.19 with SMTP id w19mr15608102igp.13.1455208920737;
+        Thu, 11 Feb 2016 08:42:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.218.207 with SMTP id r198ls273968lfg.40.gmail; Fri, 02 Oct
- 2015 11:49:55 -0700 (PDT)
-X-Received: by 10.112.142.195 with SMTP id ry3mr2964886lbb.22.1443811795229;
-        Fri, 02 Oct 2015 11:49:55 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id hs5si8864wib.1.2015.10.02.11.49.55
+Received: by 10.182.87.4 with SMTP id t4ls611458obz.56.gmail; Thu, 11 Feb 2016
+ 08:42:00 -0800 (PST)
+X-Received: by 10.182.87.2 with SMTP id t2mr44036252obz.20.1455208920336;
+        Thu, 11 Feb 2016 08:42:00 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x230.google.com (mail-qg0-x230.google.com. [2607:f8b0:400d:c04::230])
+        by gmr-mx.google.com with ESMTPS id y131si658882ywc.0.2016.02.11.08.42.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Oct 2015 11:49:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 08:42:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::230 as permitted sender) client-ip=2607:f8b0:400d:c04::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.moraru09@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mailfrom=cristina.moraru09@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id ge5so45540619wic.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Oct 2015 11:49:55 -0700 (PDT)
+Received: by mail-qg0-x230.google.com with SMTP id b67so41982804qgb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 08:42:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=R/VeD039c+RfmMFJVukwoQ1YBd5i3f+hkqJBNV4q9pM=;
-        b=APeF24z40mTInrDSMhXlihBKDsT69iGWQH8O6fmqD1prETnq/t3EU2crZniNy1/W7X
-         gnevAng86YIRNj6J6Y61t0JMaKtM64aJpoW8ZhdvtkRDoyrZzdxuY/Y9BuOBHLmLxp1M
-         StxhY1dzlP6a454PFltcz7tV1FbtHMkTS0G52hohpbL3OFaeH21JUtyuBLeABjUT+T5H
-         UF1qVlCBFkRQIrkbMac2VUvK2o8PBof0UwQkvXxqag+IZt9/EObZLxbCQcZutYta5lh3
-         JJ8ZPxZOpeSpXqByQzRcJOo+3E6uMdtGx+yBiVzdIdFkuCKyGRDweFmqo9Ft1Om5sAba
-         8PBg==
-X-Received: by 10.194.77.4 with SMTP id o4mr20459125wjw.4.1443811795110;
-        Fri, 02 Oct 2015 11:49:55 -0700 (PDT)
-Return-Path: <cristina.moraru09@gmail.com>
-Received: from localhost.localdomain ([141.85.225.214])
-        by smtp.gmail.com with ESMTPSA id hx4sm12631590wjb.31.2015.10.02.11.49.54
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Oct 2015 11:49:54 -0700 (PDT)
-From: Cristina Moraru <cristina.moraru09@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=ZSzvHjbkpd9mVb3gB0mjqICmPLI0+gvr8op8JXXUp5U=;
+        b=eCLqQA3r81zvUZVR82h61YDBRn4b2+Kbljx/uDFcz8XaRfEDAhMmbLsdxl5DEIpHxi
+         yhxSpfeN8snY0aRpAe7ftrtM+Ju70oTJ9SBbLzqL0QLjVnfE6Gg2AZPgfUwhkOOsarKb
+         JyR310kYKPYuypP2YDlekKwiLKz/Xc+CIekSUK1Zk6hUI3CttJmnorK+eAk/6ibY37Zt
+         qQYrtKkEIkfd+bssoKNg609CVE1zCq88OJGaTTRkS4QkU0CxcEqjlrvQILgOhJ5ViHCB
+         m+dQg80Bkx8ZNSjc/GawwQ8pRCWYprLR+ILuNemCcZAcTdZVC6aSTJWMd6I0ALfYABVp
+         ab8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=ZSzvHjbkpd9mVb3gB0mjqICmPLI0+gvr8op8JXXUp5U=;
+        b=IEO5oE34AgU3oRqdUYtoPLulYhQ2NLBs/dzdYTCkcWG7Ktwpc/WmPeNG0xFf6ownS+
+         6aA9AqDPu8pcTfcgi8MzSzpoyMe90KhZSRCrD6cUqEwK1wQeQ7R3oHjdrpneYfNQPdRJ
+         QggdO5LNpdevsk2oQWHRawAVX+b0O+uMBD1d6zScd5G17LNUUMQu1XswT/AdiHT+Jn47
+         paRcNNh5AACCmhDo4JQxX81KjH7n77FAALpNXLo0TpvY/YmVpMowmrta5g/glmtm1ZKN
+         BJ1w3YUX/NNtoolQJrWPR+W1au4rdaw8BL9Kx8XWCXMQpMWg527OOD17TJJHz6ZbkA/g
+         N3Ag==
+X-Gm-Message-State: AG10YOSVcEXQLX++yiOShxxKoiM5Ua7h6Jst8xixRXX5KqMDdQgVV7I4NH/RRpHopA9WxA==
+X-Received: by 10.140.135.147 with SMTP id 141mr40217294qhh.74.1455208920154;
+        Thu, 11 Feb 2016 08:42:00 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id w140sm3629607qhb.37.2016.02.11.08.41.59
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 08:41:59 -0800 (PST)
+Date: Thu, 11 Feb 2016 16:41:21 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Cristina Moraru <cristina.moraru09@gmail.com>
-Subject: [PATCH] staging: octeon: Switch unnecessary /** to /*
-Date: Fri,  2 Oct 2015 21:49:45 +0300
-Message-Id: <1443811785-50375-1-git-send-email-cristina.moraru09@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: wilc1000: Remove unneeded parentheses in assignment
+Message-ID: <20160211214121.GA4385@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix kernel-doc comment used as regular comment.
-Fix 'cannot understand function prototype' Warning
+Remove parentheses around the right hand side of assignments. They are
+unnecessary.
+Semantic patch:
 
-Signed-off-by: Cristina Moraru <cristina.moraru09@gmail.com>
+@@
+expression a, b, c;
+@@
+
+(
+  a = (b == c)
+|
+  a = 
+- (
+  b 
+- )
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/octeon/ethernet.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/wilc1000/wilc_sdio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 87ab6c6..14eb4af 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -86,19 +86,19 @@ int rx_napi_weight = 32;
- module_param(rx_napi_weight, int, 0444);
- MODULE_PARM_DESC(rx_napi_weight, "The NAPI WEIGHT parameter.");
+diff --git a/drivers/staging/wilc1000/wilc_sdio.c b/drivers/staging/wilc1000/wilc_sdio.c
+index 7c20c8c..963875af 100644
+--- a/drivers/staging/wilc1000/wilc_sdio.c
++++ b/drivers/staging/wilc1000/wilc_sdio.c
+@@ -676,7 +676,7 @@ static int sdio_init(struct wilc *wilc, bool resume)
  
--/**
-+/*
-  * cvm_oct_poll_queue - Workqueue for polling operations.
-  */
- struct workqueue_struct *cvm_oct_poll_queue;
+ 	if (!resume) {
+ 		memset(&g_sdio, 0, sizeof(wilc_sdio_t));
+-		g_sdio.irq_gpio = (wilc->dev_irq_num);
++		g_sdio.irq_gpio = wilc->dev_irq_num;
+ 	}
  
--/**
-+/*
-  * cvm_oct_poll_queue_stopping - flag to indicate polling should stop.
-  *
-  * Set to one right before cvm_oct_poll_queue is destroyed.
-  */
- atomic_t cvm_oct_poll_queue_stopping = ATOMIC_INIT(0);
- 
--/**
-+/*
-  * Array of every ethernet device owned by this driver indexed by
-  * the ipd input port number.
-  */
+ 	/**
 -- 
-1.9.1
+2.5.0
 
 
