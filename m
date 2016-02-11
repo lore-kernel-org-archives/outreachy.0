@@ -1,69 +1,50 @@
-X-GM-THRID: 6211753081535725568
-X-Received: by 10.50.129.103 with SMTP id nv7mr2306763igb.3.1446286468457;
-        Sat, 31 Oct 2015 03:14:28 -0700 (PDT)
+X-GM-THRID: 6250031630980743168
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.129.72.199 with SMTP id v190mr43619916ywa.44.1455199105623;
+        Thu, 11 Feb 2016 05:58:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.80.40 with SMTP id o8ls210674obx.8.gmail; Sat, 31 Oct 2015
- 03:14:27 -0700 (PDT)
-X-Received: by 10.182.245.163 with SMTP id xp3mr9894370obc.19.1446286467974;
-        Sat, 31 Oct 2015 03:14:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id sm2si1052479pab.0.2015.10.31.03.14.27
+Received: by 10.140.84.18 with SMTP id k18ls1105494qgd.21.gmail; Thu, 11 Feb
+ 2016 05:58:25 -0800 (PST)
+X-Received: by 10.129.130.71 with SMTP id s68mr44059364ywf.29.1455199105011;
+        Thu, 11 Feb 2016 05:58:25 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id mu6si536147igb.1.2016.02.11.05.58.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 03:14:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Thu, 11 Feb 2016 05:58:24 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id fv9so101926076pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 03:14:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=3Scf4hc5cj9+rfzeOcprHyAvY9AiO9c0PoosMmnYvZs=;
-        b=BEfP5ds+jrbMWv2ACgTOdvg/TJMiJRJb1xJt2lbppe+q1ZE55YaGjZsoBQIDRQEnez
-         wfNRZonlBWeuTEXQTsDETDrECZ0ufYqq7Sg8TYCFuKeQNPcTpA7Z7YFX7063ntway9ew
-         vcXTT1/NvuZsi+ND/eNaxeYgNYeggtEbDmvEbH/6hcNixJyLD0zsfi3M/5HP0Pl/Ap2S
-         nyceofWUL560qEyunUGPS0ZvYf+ey+r4Mh03LKBGWyLYBvyyjjxcOlqzPZlIFVYE3ZjK
-         YGe7yTPNF7+noDv/Tpo4aBTtrkv8s3EwgRBrDApODhHYuWlOFr3ofz/JSAKLYnBGxDrc
-         b/ew==
-X-Received: by 10.68.178.131 with SMTP id cy3mr14157652pbc.125.1446286467668;
-        Sat, 31 Oct 2015 03:14:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.162.170.60])
-        by smtp.gmail.com with ESMTPSA id b6sm12954718pbu.90.2015.10.31.03.14.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 31 Oct 2015 03:14:27 -0700 (PDT)
-Date: Sat, 31 Oct 2015 15:44:22 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] staging: wlan-ng: Remove unnecessary code
-Message-ID: <cover.1446286289.git.amitoj1606@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,431,1449529200"; 
+   d="scan'208";a="164344143"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 14:58:22 +0100
+Date: Thu, 11 Feb 2016 14:58:20 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: MOHINI PANDE <m.mohinipande@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] IRC Channel not working
+In-Reply-To: <fb31bc98-39c4-4bcf-baa5-0778ecc111da@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1602111457120.2508@hadrien>
+References: <fb31bc98-39c4-4bcf-baa5-0778ecc111da@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patchset removes wrapper functions and unnecessary variable in
-wlan-ng.
+On Thu, 11 Feb 2016, MOHINI PANDE wrote:
 
-Amitoj Kaur Chawla (3):
-  staging: wlan-ng: Remove wrapper function
-  staging: wlan-ng: hfa384x_usb: Remove wrapper function
-  staging: wlan-ng: prism2mib: Remove unnecessary variable
+> I want the list of Linux Kernel Round 12 projects. I am unable to find it.
 
- drivers/staging/wlan-ng/hfa384x_usb.c | 34 +++-------------------------------
- drivers/staging/wlan-ng/prism2mgmt.h  |  1 -
- drivers/staging/wlan-ng/prism2mib.c   |  5 +----
- drivers/staging/wlan-ng/prism2sta.c   | 21 ---------------------
- 4 files changed, 4 insertions(+), 57 deletions(-)
+http://kernelnewbies.org/OutreachyIntro
 
--- 
-1.9.1
+> I tried IRC to ask this question. However it is not working. ( irc.gnome.org
+> with #opw and irc.oftc.net with #kernel-outreachy)
 
+Not working in what sense?  Someone else posted a message earlier today
+and I responded.  I don't see any messages since then.  Do you see some
+other people connected?
+
+julia
 
