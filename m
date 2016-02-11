@@ -1,140 +1,140 @@
-X-GM-THRID: 6402936544164839424
-X-Received: by 10.99.119.11 with SMTP id s11mr301997pgc.160.1490799836629;
-        Wed, 29 Mar 2017 08:03:56 -0700 (PDT)
+X-GM-THRID: 6249926489518637056
+X-Received: by 10.112.132.74 with SMTP id os10mr5969951lbb.22.1455220583875;
+        Thu, 11 Feb 2016 11:56:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.17.116 with SMTP id p49ls7442763otp.4.gmail; Wed, 29 Mar
- 2017 08:03:56 -0700 (PDT)
-X-Received: by 10.129.157.75 with SMTP id u72mr312754ywg.11.1490799836132;
-        Wed, 29 Mar 2017 08:03:56 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id s67si1104919pfs.4.2017.03.29.08.03.56
+Received: by 10.28.126.130 with SMTP id z124ls447175wmc.19.gmail; Thu, 11 Feb
+ 2016 11:56:23 -0800 (PST)
+X-Received: by 10.194.171.198 with SMTP id aw6mr5866638wjc.1.1455220583336;
+        Thu, 11 Feb 2016 11:56:23 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 141si180080wmy.2.2016.02.11.11.56.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 08:03:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 11 Feb 2016 11:56:23 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id o126so2191387pfb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 08:03:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/45tiwI0RlIm4n8OoljvepTR0WZcJ7uAHFOFRJoVUxg=;
-        b=OLFUoHHrSKR8tzss5ozlgIN2Aw+TUOMZPRu9Cz0g8Uw0yHL0ByzI6lhwX2coFkWFv1
-         5oJBPs+x5JY9pANElUVgB+5HhN2hrihXfdQ4OimDPWeXFaU349pFGef0RGND5XNd0kNg
-         WWfhhbSkMl2vyvCEJ5iQJ9MFX3U8yTLIP8w1Bxo9Q6FAESa1CqHM6vpTqfXXOktwsWHz
-         rupfS6HhhERQ1Z+WR7+KvNZw/JeEk+zW6p0kwDKICuKHg8n/1KHVd2bAI8l/ew+32Iw5
-         7O3wtValcS/4ooHYdsF6hIvqqvtbAqGmQWEi/0G8nqF+Bgu7v10r+2UoReQqHibB5R5r
-         GN3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/45tiwI0RlIm4n8OoljvepTR0WZcJ7uAHFOFRJoVUxg=;
-        b=tAeOCn5c2ADn85TEpUex9Aioh5aK3el+rXeJXxhvoo5/aUKFPHaeePOB5/tNaoxxEG
-         hCExHy4lmDvzgMvlq35yGJxdWj3IG/+JwuSK4I3U+EbU8IdIflSNLrFiOd3yunb8BBTr
-         KSBqMeGKH52Z3axm5+Z1bHm4pHizTEmcREg3ky2SCvKKRPqAQtOXseY+n7OR4iXAjfoR
-         pMjI2OBLxfRalKCGQ7eaEG7wh/cg+MkFDrLU5kuyfBZw7BX6CBOPOvL87A1qSKiuf+io
-         resHzKgzmPMQYOqFlR85CWzA8KAZnKsEeAyeF/nSh1tdwW0vGLAZdAUMivbkLWaejYz8
-         ZdSg==
-X-Gm-Message-State: AFeK/H0h+jQ9GPlVrL4TIyIDZudocm3OFV1OR8hBLfIBo6xbHCDzcj1QHw1C4VwyI9jtvQ==
-X-Received: by 10.84.138.193 with SMTP id 59mr1087487plp.167.1490799835819;
-        Wed, 29 Mar 2017 08:03:55 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id y186sm14211944pfg.52.2017.03.29.08.03.54
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 29 Mar 2017 08:03:54 -0700 (PDT)
-Date: Wed, 29 Mar 2017 20:33:51 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [RESEND PATCH] staging: media: omap4iss: Replace a bit shift by a
- use of BIT
-Message-ID: <20170329150351.GA3203@arushi-HP-Pavilion-Notebook>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,432,1449529200"; 
+   d="scan'208";a="164389341"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 20:56:22 +0100
+Date: Thu, 11 Feb 2016 20:56:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Alison Schofield <amsfield22@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6656: replace explicit
+ NULL comparison with ! operator
+In-Reply-To: <20160211194646.GA3257@d830.WORKGROUP>
+Message-ID: <alpine.DEB.2.02.1602112055060.2061@localhost6.localdomain6>
+References: <20160211070636.GA16318@d830.WORKGROUP> <alpine.DEB.2.10.1602110912590.2508@hadrien> <20160211194646.GA3257@d830.WORKGROUP>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch replaces bit shifting on 1 with the BIT(x) macro.
-This was done with coccinelle:
-@@
-constant c;
-@@
 
--1 << c
-+BIT(c)
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/media/omap4iss/iss_csi2.c    | 2 +-
- drivers/staging/media/omap4iss/iss_ipipe.c   | 2 +-
- drivers/staging/media/omap4iss/iss_ipipeif.c | 2 +-
- drivers/staging/media/omap4iss/iss_resizer.c | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+On Thu, 11 Feb 2016, Alison Schofield wrote:
 
-diff --git a/drivers/staging/media/omap4iss/iss_csi2.c b/drivers/staging/media/omap4iss/iss_csi2.c
-index f71d5f2f179f..f6acc541e8a2 100644
---- a/drivers/staging/media/omap4iss/iss_csi2.c
-+++ b/drivers/staging/media/omap4iss/iss_csi2.c
-@@ -1268,7 +1268,7 @@ static int csi2_init_entities(struct iss_csi2_device *csi2, const char *subname)
- 	snprintf(name, sizeof(name), "CSI2%s", subname);
- 	snprintf(sd->name, sizeof(sd->name), "OMAP4 ISS %s", name);
- 
--	sd->grp_id = 1 << 16;	/* group ID for iss subdevs */
-+	sd->grp_id = BIT(16);	/* group ID for iss subdevs */
- 	v4l2_set_subdevdata(sd, csi2);
- 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
- 
-diff --git a/drivers/staging/media/omap4iss/iss_ipipe.c b/drivers/staging/media/omap4iss/iss_ipipe.c
-index d38782e8e84c..d86ef8a031f2 100644
---- a/drivers/staging/media/omap4iss/iss_ipipe.c
-+++ b/drivers/staging/media/omap4iss/iss_ipipe.c
-@@ -508,7 +508,7 @@ static int ipipe_init_entities(struct iss_ipipe_device *ipipe)
- 	v4l2_subdev_init(sd, &ipipe_v4l2_ops);
- 	sd->internal_ops = &ipipe_v4l2_internal_ops;
- 	strlcpy(sd->name, "OMAP4 ISS ISP IPIPE", sizeof(sd->name));
--	sd->grp_id = 1 << 16;	/* group ID for iss subdevs */
-+	sd->grp_id = BIT(16);	/* group ID for iss subdevs */
- 	v4l2_set_subdevdata(sd, ipipe);
- 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
- 
-diff --git a/drivers/staging/media/omap4iss/iss_ipipeif.c b/drivers/staging/media/omap4iss/iss_ipipeif.c
-index 23de8330731d..cb88b2bd0d82 100644
---- a/drivers/staging/media/omap4iss/iss_ipipeif.c
-+++ b/drivers/staging/media/omap4iss/iss_ipipeif.c
-@@ -739,7 +739,7 @@ static int ipipeif_init_entities(struct iss_ipipeif_device *ipipeif)
- 	v4l2_subdev_init(sd, &ipipeif_v4l2_ops);
- 	sd->internal_ops = &ipipeif_v4l2_internal_ops;
- 	strlcpy(sd->name, "OMAP4 ISS ISP IPIPEIF", sizeof(sd->name));
--	sd->grp_id = 1 << 16;	/* group ID for iss subdevs */
-+	sd->grp_id = BIT(16);	/* group ID for iss subdevs */
- 	v4l2_set_subdevdata(sd, ipipeif);
- 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
- 
-diff --git a/drivers/staging/media/omap4iss/iss_resizer.c b/drivers/staging/media/omap4iss/iss_resizer.c
-index f1d352c711d5..4bbfa20b3c38 100644
---- a/drivers/staging/media/omap4iss/iss_resizer.c
-+++ b/drivers/staging/media/omap4iss/iss_resizer.c
-@@ -782,7 +782,7 @@ static int resizer_init_entities(struct iss_resizer_device *resizer)
- 	v4l2_subdev_init(sd, &resizer_v4l2_ops);
- 	sd->internal_ops = &resizer_v4l2_internal_ops;
- 	strlcpy(sd->name, "OMAP4 ISS ISP resizer", sizeof(sd->name));
--	sd->grp_id = 1 << 16;	/* group ID for iss subdevs */
-+	sd->grp_id = BIT(16);	/* group ID for iss subdevs */
- 	v4l2_set_subdevdata(sd, resizer);
- 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
- 
--- 
-2.11.0
+> On Thu, Feb 11, 2016 at 09:16:25AM +0100, Julia Lawall wrote:
+> 
+> ------ snip ------------
+> > 
+> > 
+> > > @@ -462,13 +462,13 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+> > >
+> > >  		/* allocate URBs */
+> > >  		rcb->urb = usb_alloc_urb(0, GFP_ATOMIC);
+> > > -		if (rcb->urb == NULL) {
+> > > +		if (!rcb->urb) {
+> > >  			dev_err(&priv->usb->dev, "Failed to alloc rx urb\n");
+> > >  			goto free_rx_tx;
+> > >  		}
+> > >
+> > >  		rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
+> > > -		if (rcb->skb == NULL)
+> > > +		if (!rcb->skb)
+> > >  			goto free_rx_tx;
+> > >
+> > >  		rcb->in_use = false;
+> > > @@ -479,13 +479,13 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+> > >  	}
+> > >
+> > >  	priv->interrupt_urb = usb_alloc_urb(0, GFP_ATOMIC);
+> > > -	if (priv->interrupt_urb == NULL) {
+> > > +	if (!priv->interrupt_urb) {
+> > >  		dev_err(&priv->usb->dev, "Failed to alloc int urb\n");
+> > >  		goto free_rx_tx;
+> > >  	}
+> > >
+> > >  	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
+> > 
+> > Nothing to do with your change, but there seems to be an inconsistncy
+> > here.  Why is one allocation done with GFP_KERNEL and the other done with
+> > GFP_ATOMIC?
+> > 
+> > GFP_ATOMIC is needed when the allocation is done with interrupts turned
+> > off, because otherwise kmalloc may block, in case of insufficient memory,
+> > and that could lead to a deadlock.
+> 
+> I see the inconsistent usage of GFP_KERNEL/ATOMIC.
+> 
+> vnt_alloc_bufs() can and should be consistent in usage of mem flags.
+> ie. the rules for usb_alloc_urb() are same as for kmalloc().  In this case
+> we are running in process context, are not in intr handler, nor holding
+> any spinlock.  I will submit a new patch for this.
+> 
+> Within vt6656 I also found that usbpipes.c also uses GFP_ATOMIC while
+> managing usb urbs, but that is within interrupt context and while holding
+> spinlock.  Not touching.
 
+OK
+
+> more below...
+> 
+> ............snip.............
+> 
+> > > diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+> > > index 351a99f..bec5baf 100644
+> > > --- a/drivers/staging/vt6656/usbpipe.c
+> > > +++ b/drivers/staging/vt6656/usbpipe.c
+> > > @@ -210,7 +210,7 @@ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb)
+> > >  	struct urb *urb;
+> > >
+> > >  	urb = rcb->urb;
+> > 
+> > Another issue is here.  It's a bit strange to initialize a local variable,
+> > and then decide that its value is invalid and then leave the function.
+> > The initialization could be moved up to the declaration (same degree of
+> > potential uselessness, but at least one less line), or moved after the
+> > test.
+> > 
+> > julia
+> 
+>  I can mv the init of urb to after the test of rcb->skb because
+>  no need to init it if we're exiting before using it. 
+> 
+> So:
+> 	int status = 0;
+> 	struct urb *urb;
+> 
+> 	urb = rcb->urb;   <<< MOVE THIS
+> 	if (!rcb->skb) {
+> 		dev_dbg(&priv->usb->dev, "rcb->skb is null\n");
+> 		return status;
+> 	}
+> 	 
+> 	urb = rcb->urb;   <<< TO HERE
+> 
+> Yes?	
+
+That's fine.
+
+> (I may hold onto this one a bit to include w other cleanup in same
+> driver.)
+
+Sure.  It's a minor issue in this case.
+
+julia
 
