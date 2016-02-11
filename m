@@ -1,81 +1,119 @@
 X-GM-THRID: 6250100054886973440
-X-Received: by 10.66.221.100 with SMTP id qd4mr24463pac.0.1455261367409;
-        Thu, 11 Feb 2016 23:16:07 -0800 (PST)
+X-Received: by 10.182.65.135 with SMTP id x7mr34991482obs.13.1455215475763;
+        Thu, 11 Feb 2016 10:31:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.30.181 with SMTP id d50ls1061230qgd.51.gmail; Thu, 11 Feb
- 2016 23:16:06 -0800 (PST)
-X-Received: by 10.31.11.75 with SMTP id 72mr21835vkl.2.1455261366901;
-        Thu, 11 Feb 2016 23:16:06 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qg0-x229.google.com (mail-qg0-x229.google.com. [2607:f8b0:400d:c04::229])
-        by gmr-mx.google.com with ESMTPS id l85si778491ywb.2.2016.02.11.23.16.06
+Received: by 10.50.61.175 with SMTP id q15ls548138igr.3.gmail; Thu, 11 Feb
+ 2016 10:31:15 -0800 (PST)
+X-Received: by 10.107.15.79 with SMTP id x76mr45053972ioi.31.1455215475198;
+        Thu, 11 Feb 2016 10:31:15 -0800 (PST)
+Return-Path: <htejun@gmail.com>
+Received: from mail-yw0-x229.google.com (mail-yw0-x229.google.com. [2607:f8b0:4002:c05::229])
+        by gmr-mx.google.com with ESMTPS id q187si724980ywf.4.2016.02.11.10.31.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 23:16:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) client-ip=2607:f8b0:400d:c04::229;
+        Thu, 11 Feb 2016 10:31:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c05::229 as permitted sender) client-ip=2607:f8b0:4002:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x229.google.com with SMTP id y9so56914794qgd.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 23:16:06 -0800 (PST)
+       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c05::229 as permitted sender) smtp.mailfrom=htejun@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-yw0-x229.google.com with SMTP id h129so46235688ywb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 10:31:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=Us6ggadcANhl4ccj2MpR5IpwppfdJVrmJi3sUqR1gh4=;
-        b=Jp+4ney6OQH8IZGa1wh3/X9xkV6GxSkLRmYx0oYk3ebV6yQBnxJBiP1G6obmumj9sD
-         b/exyktJ+upfVsWkYoTrFz5tZ3/vJMSm5Vh6PIfT4YO+vQ1DuqV80P7D+MbVn3EYJHfP
-         Y5zmD6RdSvFVT+koSEwmKRlF+F96YJhfH7UiHZHnWG907K1lQDGanOuvgzmnD2uZaSvU
-         RkDdMfWZiLNXPAj1YraGEeU7n0YzGu4XxUTcfo5Vy5J/QPXPh7xFBd3AhtAnawYwTAzK
-         nhvB2BLm2OkzTd5r1B2GJunc5OCU6t264HxhWmeS4rvtLbqEMkU/TJaUndG9UzzUiLe/
-         lcwA==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=UgN+mD5Es4siS0YgS2nWkl0bPPHlSZsP3210hQvt1A4=;
+        b=ZmdTDNtOPfLlTZjA/MI6DLbjyOgeBRgyhPTPfGxYF+3G8Hutx2fwhofphgOBEEe1os
+         xVznOIQPre/o3ELW2PLlJS7VSuBwLza7EYE3a2nWKl0xup5V8GIMjSnagDRC94l5ZBgA
+         w1LVL0nG9pmfOyomzYeetevmOIMf2CUpYlA2kK0YTx0Q6Ig9JtEzer7zDmmRlxzVn4iK
+         i+3AVo+BDhqw2LEW+daRUkZLrGxfcxrFEw+RfzPpyU3pkILojQdQqz5JnEIVBKtQlHRC
+         qhk4bWNw+EA6Mes3etqNxpz5WADJnAMf//TsmP5hVgCtUMWStDjFqK5bjGwvxraSoHV1
+         3P3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=Us6ggadcANhl4ccj2MpR5IpwppfdJVrmJi3sUqR1gh4=;
-        b=EOH99kWban0iE7P6VJ6USTYKHEkvNVhku3IEQ7MttNM6RV6DuyiThDAwNAOcbUvHzo
-         uMsY8FVcIVe6/jWMP+iwobBwCkpx5JsBcDfoIF3j53au2NQHPmJFmYidYeYpT7VS58o7
-         vOtljyY3C3ER9cnp3kn2oCcNXyy7Q6zMeafI9tpPeSswLCHaXOBUebV3jPt4MyZvHuDv
-         f391CUa7XKdJ1b2qqpda1w4qzn0MMGZJ4+lgTimyZLxFoEEoACcFzNFqsnS4CWGsSd4d
-         5P3+CtGkkNGjngZycmqi5fWJnXd1Js2CfBqDPZgRuVzcINvaAQ1I5Nb3oqsmbhj9AhMU
-         0LvA==
-X-Gm-Message-State: AG10YOTNYKKtLAV1ldnmqwkLIAbbforV6QqgA2PNbe9cgOpO2pjRXEziHhoNFJw3wIVIq2D/lrVrmkkmFQPXkQ==
-MIME-Version: 1.0
-X-Received: by 10.140.23.81 with SMTP id 75mr61151922qgo.35.1455261366714;
- Thu, 11 Feb 2016 23:16:06 -0800 (PST)
-Received: by 10.140.44.99 with HTTP; Thu, 11 Feb 2016 23:16:06 -0800 (PST)
-In-Reply-To: <20160211183113.GB3741@mtj.duckdns.org>
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-type:content-disposition
+         :in-reply-to:user-agent;
+        bh=UgN+mD5Es4siS0YgS2nWkl0bPPHlSZsP3210hQvt1A4=;
+        b=jAln+VtAanK8WJGRBaCweNcthuEuy3m0elXLx200UVTPITbiU6hvNz6GIEHyIxf6Ev
+         JaIOJcRAZk2AIWaPyajDaAkQ6DwvRIo+ZXqYr/kki0BOPZ18k1+sFQgVM5vobPl5GnXA
+         XyBGdEtiQecYDtdwEcI8xZ2mBtqCMFHiYcW9LKJ6cxxySTNOn5owx98/FfqgRr8BM1l3
+         Y0p+M5ilI/HfQ5hueWXnu8ZYLlZCfVocDV/33P8QUtaXb6yutiBIZPPjoXjOKp035r8C
+         a6RduHy1huxj2SuGeVw15OjjRDtTEfQwtQPmPOVw2ohYsMqc9PIOacAghz8Ox8Wa8jiy
+         fu6A==
+X-Gm-Message-State: AG10YOQ66HPByhxRMv8RNVd2xhiaWuwajzEYsktQalJYumbFmv+HGmnZDVz6+CjslOKbNA==
+X-Received: by 10.13.233.66 with SMTP id s63mr24475083ywe.36.1455215475086;
+        Thu, 11 Feb 2016 10:31:15 -0800 (PST)
+Return-Path: <htejun@gmail.com>
+Received: from localhost ([2620:10d:c091:200::8:abaa])
+        by smtp.gmail.com with ESMTPSA id u190sm7267237ywd.17.2016.02.11.10.31.14
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 10:31:14 -0800 (PST)
+Sender: Tejun Heo <htejun@gmail.com>
+Date: Thu, 11 Feb 2016 13:31:13 -0500
+From: Tejun Heo <tj@kernel.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: gdm724x: gdm_mux: Remove
+ create_workqueue()
+Message-ID: <20160211183113.GB3741@mtj.duckdns.org>
 References: <20160211182011.GA10882@amitoj-Inspiron-3542>
-	<20160211183113.GB3741@mtj.duckdns.org>
-Date: Fri, 12 Feb 2016 12:46:06 +0530
-Message-ID: <CA+5yK5EWjvLZS7v_kwNrXdZpxvmn+qJhXNXNwnMbd8WUNzOeVg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: gdm724x: gdm_mux: Remove create_workqueue()
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Tejun Heo <tj@kernel.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160211182011.GA10882@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Fri, Feb 12, 2016 at 12:01 AM, Tejun Heo <tj@kernel.org> wrote:
->
-> It'd be great if you can explain how the conversion is okay.
->
+Hello, Amitoj.
 
-Will do in v2. Thanks for elaborating on how I should write it.
+On Thu, Feb 11, 2016 at 11:50:11PM +0530, Amitoj Kaur Chawla wrote:
+> Remove deprecated create_workqueue() by using system_wq since we do
+> not require a dedicated workqueue here.
 
->> @@ -602,6 +600,8 @@ static int gdm_mux_suspend(struct usb_interface *intf, pm_message_t pm_msg)
->>       mux_dev = tty_dev->priv_dev;
->>       rx = &mux_dev->rx;
->>
->> +     flush_work(&mux_dev->work_rx.work);
->> +
->
-> If work_rx is self-requeueing, cancel_work_sync() would be the right
-> option here because flush_work() only guarantees that the current
-> pending or executing instance is finished.
+It'd be great if you can explain how the conversion is okay.
 
-How do I determine whether work_rx is self-requeueing or not?
+>  #define USB_DEVICE_CDC_DATA(vid, pid) \
+> @@ -275,7 +273,7 @@ static void gdm_mux_rcv_complete(struct urb *urb)
+>  		r->len = r->urb->actual_length;
+>  		spin_lock_irqsave(&rx->to_host_lock, flags);
+>  		list_add_tail(&r->to_host_list, &rx->to_host_list);
+> -		queue_work(mux_rx_wq, &mux_dev->work_rx.work);
+> +		schedule_work(&mux_dev->work_rx.work);
 
-Amitoj
+1. because there's one work item per mux_dev and different mux_devs
+   don't need to be ordered, increase of concurrency level by
+   switching to system_wq shouldn't break anything.
+
+> @@ -602,6 +600,8 @@ static int gdm_mux_suspend(struct usb_interface *intf, pm_message_t pm_msg)
+>  	mux_dev = tty_dev->priv_dev;
+>  	rx = &mux_dev->rx;
+>  
+> +	flush_work(&mux_dev->work_rx.work);
+> +
+
+If work_rx is self-requeueing, cancel_work_sync() would be the right
+option here because flush_work() only guarantees that the current
+pending or executing instance is finished.
+
+> @@ -672,11 +665,6 @@ static void __exit gdm_usb_mux_exit(void)
+>  {
+>  	unregister_lte_tty_driver();
+>  
+> -	if (mux_rx_wq) {
+> -		flush_workqueue(mux_rx_wq);
+> -		destroy_workqueue(mux_rx_wq);
+> -	}
+
+2. and because all devices are suspended, which shutsdown the work
+   item, before the driver can be unregistered, it's guaranteed that
+   no work item is in flight by the time exit path runs.
+
+JFYI, there's more info on the conversion in the following page.
+
+  http://kernelnewbies.org/Tejun_Heo
+
+Thanks.
+
+-- 
+tejun
 
