@@ -1,93 +1,104 @@
 X-GM-THRID: 6250070785112670208
-X-Received: by 10.129.41.70 with SMTP id p67mr20899311ywp.33.1455219439808;
-        Thu, 11 Feb 2016 11:37:19 -0800 (PST)
+X-Received: by 10.112.132.74 with SMTP id os10mr5958336lbb.22.1455218878377;
+        Thu, 11 Feb 2016 11:27:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.87.101 with SMTP id w5ls605763obz.33.gmail; Thu, 11 Feb
- 2016 11:37:19 -0800 (PST)
-X-Received: by 10.182.247.97 with SMTP id yd1mr45521581obc.9.1455219439384;
-        Thu, 11 Feb 2016 11:37:19 -0800 (PST)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id 12si1007978pfb.1.2016.02.11.11.37.19
+Received: by 10.28.53.129 with SMTP id c123ls433374wma.30.gmail; Thu, 11 Feb
+ 2016 11:27:57 -0800 (PST)
+X-Received: by 10.28.128.204 with SMTP id b195mr15374wmd.7.1455218877877;
+        Thu, 11 Feb 2016 11:27:57 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h126si32185wme.0.2016.02.11.11.27.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 11:37:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Thu, 11 Feb 2016 11:27:57 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 14DDE1022;
-	Thu, 11 Feb 2016 19:37:19 +0000 (UTC)
-Date: Thu, 11 Feb 2016 11:37:18 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Janani Ravichandran <janani.rvchndrn@gmail.com>,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,432,1449529200"; 
+   d="scan'208";a="164387452"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 20:27:57 +0100
+Date: Thu, 11 Feb 2016 20:27:56 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: goldfish: Remove unneeded
  parentheses in assignment
-Message-ID: <20160211193718.GA32329@kroah.com>
+In-Reply-To: <20160212002435.GA5778@janani-Inspiron-3521>
+Message-ID: <alpine.DEB.2.02.1602112027230.2061@localhost6.localdomain6>
 References: <20160212002435.GA5778@janani-Inspiron-3521>
- <alpine.DEB.2.02.1602112027230.2061@localhost6.localdomain6>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1602112027230.2061@localhost6.localdomain6>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Thu, Feb 11, 2016 at 08:27:56PM +0100, Julia Lawall wrote:
-> 
-> 
-> On Thu, 11 Feb 2016, Janani Ravichandran wrote:
-> 
-> > Remove parentheses around the right hand side of assignments as they are
-> > not needed. Semantic patch used:
-> > 
-> > @@
-> > expression a, b, c;
-> > @@
-> > 
-> > (
-> >   a = (b == c)
-> > |
-> >   a =
-> > - (
-> >   b
-> > - )
-> > )
-> > 
-> > Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
-> > ---
-> > Changes since v1:
-> >  *Lined up the expression on the right hand side in one of the
-> >  assignment statements modified.
-> >  
-> >  drivers/staging/goldfish/goldfish_audio.c | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/staging/goldfish/goldfish_audio.c b/drivers/staging/goldfish/goldfish_audio.c
-> > index f1e1838..eea7bbf 100644
-> > --- a/drivers/staging/goldfish/goldfish_audio.c
-> > +++ b/drivers/staging/goldfish/goldfish_audio.c
-> > @@ -122,7 +122,7 @@ static ssize_t goldfish_audio_read(struct file *fp, char __user *buf,
-> >  		return -ENODEV;
-> >  
-> >  	while (count > 0) {
-> > -		length = (count > READ_BUFFER_SIZE ? READ_BUFFER_SIZE : count);
-> > +		length = count > READ_BUFFER_SIZE ? READ_BUFFER_SIZE : count;
-> >  		AUDIO_WRITE(data, AUDIO_START_READ, length);
-> >  
-> >  		wait_event_interruptible(data->wait, data->buffer_status &
-> > @@ -197,8 +197,8 @@ static int goldfish_audio_open(struct inode *ip, struct file *fp)
-> >  
-> >  	if (atomic_inc_return(&open_count) == 1) {
-> >  		fp->private_data = audio_data;
-> > -		audio_data->buffer_status = (AUDIO_INT_WRITE_BUFFER_1_EMPTY |
-> > -					     AUDIO_INT_WRITE_BUFFER_2_EMPTY);
-> > +		audio_data->buffer_status = AUDIO_INT_WRITE_BUFFER_1_EMPTY |
-> > +					     AUDIO_INT_WRITE_BUFFER_2_EMPTY;
-> 
-> It looks like nothing changed?
 
-The ( ) are gone.
 
+On Thu, 11 Feb 2016, Janani Ravichandran wrote:
+
+> Remove parentheses around the right hand side of assignments as they are
+> not needed. Semantic patch used:
+> 
+> @@
+> expression a, b, c;
+> @@
+> 
+> (
+>   a = (b == c)
+> |
+>   a =
+> - (
+>   b
+> - )
+> )
+> 
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+> Changes since v1:
+>  *Lined up the expression on the right hand side in one of the
+>  assignment statements modified.
+>  
+>  drivers/staging/goldfish/goldfish_audio.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/goldfish/goldfish_audio.c b/drivers/staging/goldfish/goldfish_audio.c
+> index f1e1838..eea7bbf 100644
+> --- a/drivers/staging/goldfish/goldfish_audio.c
+> +++ b/drivers/staging/goldfish/goldfish_audio.c
+> @@ -122,7 +122,7 @@ static ssize_t goldfish_audio_read(struct file *fp, char __user *buf,
+>  		return -ENODEV;
+>  
+>  	while (count > 0) {
+> -		length = (count > READ_BUFFER_SIZE ? READ_BUFFER_SIZE : count);
+> +		length = count > READ_BUFFER_SIZE ? READ_BUFFER_SIZE : count;
+>  		AUDIO_WRITE(data, AUDIO_START_READ, length);
+>  
+>  		wait_event_interruptible(data->wait, data->buffer_status &
+> @@ -197,8 +197,8 @@ static int goldfish_audio_open(struct inode *ip, struct file *fp)
+>  
+>  	if (atomic_inc_return(&open_count) == 1) {
+>  		fp->private_data = audio_data;
+> -		audio_data->buffer_status = (AUDIO_INT_WRITE_BUFFER_1_EMPTY |
+> -					     AUDIO_INT_WRITE_BUFFER_2_EMPTY);
+> +		audio_data->buffer_status = AUDIO_INT_WRITE_BUFFER_1_EMPTY |
+> +					     AUDIO_INT_WRITE_BUFFER_2_EMPTY;
+
+It looks like nothing changed?
+
+julia
+
+>  		AUDIO_WRITE(audio_data, AUDIO_INT_ENABLE, AUDIO_INT_MASK);
+>  		return 0;
+>  	}
+> -- 
+> 2.5.0
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160212002435.GA5778%40janani-Inspiron-3521.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
