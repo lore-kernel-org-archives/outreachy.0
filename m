@@ -1,83 +1,70 @@
 X-GM-THRID: 6250021302893019136
-X-Received: by 10.107.11.222 with SMTP id 91mr44887344iol.7.1455206300891;
-        Thu, 11 Feb 2016 07:58:20 -0800 (PST)
+X-Received: by 10.25.210.201 with SMTP id j192mr5667448lfg.6.1455206036633;
+        Thu, 11 Feb 2016 07:53:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.168.225 with SMTP id e94ls593094ioj.3.gmail; Thu, 11 Feb
- 2016 07:58:20 -0800 (PST)
-X-Received: by 10.107.128.102 with SMTP id b99mr44920176iod.1.1455206300540;
-        Thu, 11 Feb 2016 07:58:20 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from mail-yk0-x233.google.com (mail-yk0-x233.google.com. [2607:f8b0:4002:c07::233])
-        by gmr-mx.google.com with ESMTPS id g136si667288ywb.5.2016.02.11.07.58.20
+Received: by 10.25.31.72 with SMTP id f69ls252425lff.31.gmail; Thu, 11 Feb
+ 2016 07:53:56 -0800 (PST)
+X-Received: by 10.112.168.201 with SMTP id zy9mr5651117lbb.23.1455206036038;
+        Thu, 11 Feb 2016 07:53:56 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 141si134933wmy.2.2016.02.11.07.53.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 07:58:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c07::233 as permitted sender) client-ip=2607:f8b0:4002:c07::233;
+        Thu, 11 Feb 2016 07:53:56 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c07::233 as permitted sender) smtp.mailfrom=htejun@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-yk0-x233.google.com with SMTP id r207so22517700ykd.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 07:58:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=kxoYmDbjPUmCKZ5cx1srpDrbEokQhVU9W93M8k5OMns=;
-        b=CyxeLugg9oTwgwHgbYK/D2urlngd4ocpxrqjwCemLP2BXrJp3PEDRwebc0cQsQq/8W
-         4qOIIm1tc9zA0VC/wuXqy5Rh5v3FGyLtucn+FMy2NUfh6cVKlfqUJfKy5D55akyWAEAs
-         OsimD52J45+qVlAFT+KPX3nCz2FbNJbgk4fPp7LEyFEXlO2TlqgSQip0xVgXzeZmFWbV
-         viYxsWeZstvlW48GlKIV0r0+KeaFMBzbCLORCu61B3zoOnm/k4btosBZAqI1KpR65AlX
-         uGBy0nI9QGyF1wP2mbR50sjvxoR3ZdjZ+HDyzX6voRiFiJNC9KoEm/XXJtaKtS+scbAu
-         XIXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-type:content-disposition
-         :in-reply-to:user-agent;
-        bh=kxoYmDbjPUmCKZ5cx1srpDrbEokQhVU9W93M8k5OMns=;
-        b=CIZGN2Zc9k3Vhf5cgqShHDJayjYiPehCNQ/sNGotUJc6d9TBdlBkn05LTQpsWPenOL
-         EEsNKHJFMd/FFIj0TavkunWcxY8qo7LscHwsAtiLMSo8eurwLybUkpl6Phz3kFt5/Qmo
-         5CkBHMtLv+6+wECzDIcgiT+/0CDFqt6HVyGlYmpOKUShhi6MAbXD2MrwZtsCFOSxelNL
-         vRoLxOvCxxrwPJCmxnDeol2Z+SlFfV2XDXnuusfl8OkuPLtnh2RZl/uMvZyEfvVR7Lgr
-         Hm37Pvj3p9pbM5VbqybPk3hiNJp3J2GSufsR62u0z0lPAUcfFf3oNpZvVCF+G3LoY3CF
-         t5NQ==
-X-Gm-Message-State: AG10YORa+w2P+JbJZKmlpGwfhEoWmTaGk0r9GhqdTR6yv+tZglp7mTDjySuornSh7IV2bg==
-X-Received: by 10.37.34.215 with SMTP id i206mr23978993ybi.175.1455206300387;
-        Thu, 11 Feb 2016 07:58:20 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from localhost ([2620:10d:c091:200::8:abaa])
-        by smtp.gmail.com with ESMTPSA id m188sm6798045ywe.46.2016.02.11.07.58.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 07:58:19 -0800 (PST)
-Sender: Tejun Heo <htejun@gmail.com>
-Date: Thu, 11 Feb 2016 10:58:19 -0500
-From: Tejun Heo <tj@kernel.org>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Aybuke Ozdemir <aybuke.147@gmail.com>,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,431,1449529200"; 
+   d="scan'208";a="202677807"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 16:53:52 +0100
+Date: Thu, 11 Feb 2016 16:53:49 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tejun Heo <tj@kernel.org>
+cc: Aybuke Ozdemir <aybuke.147@gmail.com>, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: usleep_range is
  preferred over udelay
-Message-ID: <20160211155819.GA3741@mtj.duckdns.org>
-References: <1455196470-4026-1-git-send-email-aybuke.147@gmail.com>
- <20160211155049.GZ3741@mtj.duckdns.org>
- <alpine.DEB.2.10.1602111653060.2508@hadrien>
+In-Reply-To: <20160211155049.GZ3741@mtj.duckdns.org>
+Message-ID: <alpine.DEB.2.10.1602111653060.2508@hadrien>
+References: <1455196470-4026-1-git-send-email-aybuke.147@gmail.com> <20160211155049.GZ3741@mtj.duckdns.org>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.10.1602111653060.2508@hadrien>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Hello, Julia.
 
-On Thu, Feb 11, 2016 at 04:53:49PM +0100, Julia Lawall wrote:
-> > Please don't forget to cc the original author or maintainer of the
-> > code being modified.
-> 
-> Actually, no, they should only write to the list.
 
-OIC, gotta go back and read the introduction more carefully.  Sorry
-about the confusion. :)
+On Thu, 11 Feb 2016, Tejun Heo wrote:
 
--- 
-tejun
+> Hello,
+>
+> On Thu, Feb 11, 2016 at 03:14:30PM +0200, Aybuke Ozdemir wrote:
+> > @@ -956,7 +956,7 @@ static void cls_flush_uart_read(struct channel_t *ch)
+> >  	 * Presumably, this is a bug in this UART.
+> >  	 */
+> >
+> > -	udelay(10);
+> > +	usleep_range(10, 100);
+> >  }
+>
+> So, one important difference between udelay() and usleep_range() is
+> that the former can be called from any context while the latter only
+> from a blockable context as it's asking to be scheduled away.  These
+> uart functions seem to be accessing hardware directly which usually
+> indicate that they need to be synchronized somehow.
+>
+> grepping for flush_uart_ shows that these function are called under a
+> channel_t->ch_lock spinlock, so this patch will end up triggering a
+> sanity check in the scheduler and leave the kernel in a buggy state
+> when the usleep_range()'s are called.
+>
+> Please don't forget to cc the original author or maintainer of the
+> code being modified.
+
+Actually, no, they should only write to the list.
+
+Thanks for the explanation otherwise.
+
+julia
 
