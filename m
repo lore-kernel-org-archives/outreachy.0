@@ -1,83 +1,137 @@
-X-GM-THRID: 6250871374774009856
-X-Received: by 10.107.157.9 with SMTP id g9mr9243608ioe.26.1455394405688;
-        Sat, 13 Feb 2016 12:13:25 -0800 (PST)
+X-GM-THRID: 6250064878859452416
+X-Received: by 10.28.158.216 with SMTP id h207mr2228890wme.4.1455206628161;
+        Thu, 11 Feb 2016 08:03:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.236.2 with SMTP id uq2ls1129089obc.11.gmail; Sat, 13 Feb
- 2016 12:13:24 -0800 (PST)
-X-Received: by 10.182.47.132 with SMTP id d4mr8556363obn.40.1455394404386;
-        Sat, 13 Feb 2016 12:13:24 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id ui7si2497154pab.0.2016.02.13.12.13.24
+Received: by 10.140.87.68 with SMTP id q62ls1063857qgd.95.gmail; Thu, 11 Feb
+ 2016 08:03:47 -0800 (PST)
+X-Received: by 10.31.11.75 with SMTP id 72mr43735340vkl.2.1455206627579;
+        Thu, 11 Feb 2016 08:03:47 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x230.google.com (mail-qg0-x230.google.com. [2607:f8b0:400d:c04::230])
+        by gmr-mx.google.com with ESMTPS id t198si681144ywe.3.2016.02.11.08.03.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 12:13:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Thu, 11 Feb 2016 08:03:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::230 as permitted sender) client-ip=2607:f8b0:400d:c04::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fl4so52222564pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 12:13:24 -0800 (PST)
+Received: by mail-qg0-x230.google.com with SMTP id y9so41147536qgd.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 08:03:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=RkABF1C4P6sjyYkQ6xt/qZwqAGp6fnUgRcH+nxWROS8=;
-        b=usaqFd2EheSsJtb5qzvivkHtiMdPpRutL0tAJrBoQJOdvhnx/DhU49XimLlhHehPI/
-         N+UiUpPAJY0D0NdKwuMDd34EEzdCaWqsdQvs4TD4mt53ArbA1rNb63XjEP32FmrXrsmE
-         UqQdLyCHgwu8mJQPsphFc8p0cW87UfhZtbm4cP59jvqa4CYC+bLnpMm1NoUc2bE15I8K
-         oVANsVKRVwENLAOCCI0hSCW87izmAXeE9O6bx8tCB594rwLoLJvCu7TCJ/YJPXpoj6q6
-         wPJAYVU8y4IzwkTwSeCQfCnOwQ9aMSw4F6k4MExExYcE+SNqxgG7zBq+MrrmPvqfENkh
-         20Lw==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=S62gENCPHIX6GnK2+jzMtCuIUz4qLDEE7a6+huTUb/U=;
+        b=vMrlSrYZPW/miDuK4i6Rhbr+z3lzX5vfsK1V+E3vsZ5qt0MxS6oXuRMQiAKAlj+jGy
+         ZqHViw/q4wiaDNtFC6g1UnKuMag6yHNa8ZjNKIHSyukXlE7k/wQMVZjI41dXveLUSjMi
+         KhnZzZqAbG+OWxEeq25pvmTwjomKZW2Tz62zk4jSq0VUn4q4gNqUXJ6VxNdEzrHbx+LE
+         MuXiqnHqLVqVLldKN9vuos3HZ0HOtJ96pNZqwHODC+iqZDpK4tqP/xMK0bq7n+g3G2/c
+         oCOccIqHlZSaA8XT/iJXYNOvmNE6Xt6vork+JCvfIme/rf/0wDlG0Q0ZjecoXgp/OHWx
+         4nSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=RkABF1C4P6sjyYkQ6xt/qZwqAGp6fnUgRcH+nxWROS8=;
-        b=ZBhRkSc3HXmTVgoqOuxROgXIO0pLo7Eg/ZTOJNF1ke7PyqFSpFxKyvHYlN7t2Bz8GG
-         8ekcXOXbbRz57vjF9XL3bsmgLM21APbq9Mc4WRjgp0PQhP2d9Ew3vo/zpo/unwVeCuOV
-         qQRUkw9JyYIOiY72lyr4NoZJviaUnpirkW1VscOXDhFH2nDzCTgNpaqS9n6T6Uz/ZOfQ
-         5kv5eU7/dfUm5ShSAqTHF+fQHsa09yIuSWoijZENkIfDWkzAeXPUuRcR3cx4nDz9BBdV
-         gJFATJ3bT/S3dj2sBZebVoA/PEQvXRQvpErcWxsgYKZlcUMhNA7VIohUdfMzC+SfW91h
-         LuJQ==
-X-Gm-Message-State: AG10YOSj7AvmlwychNOMt2UUaBe2YWP/i/0fIh/XCBM4aw6uByKWEMPdutrCXAg47oO5Xg==
-X-Received: by 10.66.144.134 with SMTP id sm6mr6836274pab.158.1455394404075;
-        Sat, 13 Feb 2016 12:13:24 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.169.217])
-        by smtp.gmail.com with ESMTPSA id k14sm27991899pfj.0.2016.02.13.12.13.19
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Feb 2016 12:13:23 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 01:42:58 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=S62gENCPHIX6GnK2+jzMtCuIUz4qLDEE7a6+huTUb/U=;
+        b=YAQdT7wrXTuILaMrkDOh0n4wGskRu0Ox2Glu5Jw7tQdptuMzsq/PVuW+7TXII1MrBT
+         X8yw1lI5Bty81+8IhqXllfyy84/cbWDb/l5aHaAUIRqbD0zcHktSXdPhX+dr1tS2PzXJ
+         K+eum7RpL11vwe9KQm5l6btb9tM4g9y+Y3jtgFzaJEnPesJrVq45YnxccMIUbYrOzne+
+         FWbfhIMXO3QHobUfVTV8O5DJpVOV+CdTw3lwtdD3vEKJpUWObrKgVhMT+z1ZukSg1uWt
+         mrvFeHyBBuAL1am+3ZNYC4rfZNpNmUypKzKm/WTlJz0ZV57IOn17nnZjbVOpATzzJqCz
+         wSnw==
+X-Gm-Message-State: AG10YOSDidyr16oCy+zgErNKwsgCv7s4WRUOvdlvihxA54lmrSVFBeuyRKTja+3B3Dnx6A==
+X-Received: by 10.140.240.87 with SMTP id l84mr60454295qhc.69.1455206627345;
+        Thu, 11 Feb 2016 08:03:47 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id d71sm2015700qhd.18.2016.02.11.08.03.46
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 08:03:46 -0800 (PST)
+Date: Thu, 11 Feb 2016 16:03:08 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: Remove unused macros
-Date: Sun, 14 Feb 2016 01:42:56 +0530
-Message-Id: <1455394376-2616-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: emxx_udc: Remove parentheses around the right hand
+ side of assignment
+Message-ID: <20160211210308.GA3996@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The macros PlatformAcquireSpinLock and PlatformReleaseSpinLock are not
-used anywhere so remove them. Used grep to find occurences.
+Remove parentheses around the right hand side of assignments as they are
+not needed. Semantic patch used:
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+@@
+expression a, b, c;
+@@
+
+(
+  a = (b == c)
+|
+  a =
+- (
+  b
+- )
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/emxx_udc/emxx_udc.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-index d46d1c7..33eabf4 100644
---- a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-+++ b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-@@ -80,8 +80,6 @@ if ((BTCoexDbgLevel == _bt_dbg_on_)) {\
- #define PlatformProcessHCICommands(...)
- #define PlatformTxBTQueuedPackets(...)
- #define PlatformIndicateBTACLData(...)	(RT_STATUS_SUCCESS)
--#define PlatformAcquireSpinLock(padapter, type)
--#define PlatformReleaseSpinLock(padapter, type)
+diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+index c408ee9..a1f624f 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.c
++++ b/drivers/staging/emxx_udc/emxx_udc.c
+@@ -271,21 +271,21 @@ static int _nbu2ss_ep_init(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
+ 		data = EPn_EN | EPn_BCLR | EPn_DIR0;
+ 		_nbu2ss_bitset(&udc->p_regs->EP_REGS[num].EP_CONTROL, data);
  
- #define GET_UNDECORATED_AVERAGE_RSSI(padapter)	\
- 			(GET_HAL_DATA(padapter)->dmpriv.EntryMinUndecoratedSmoothedPWDB)
+-		data = (EPn_ONAK | EPn_OSTL_EN | EPn_OSTL);
++		data = EPn_ONAK | EPn_OSTL_EN | EPn_OSTL;
+ 		_nbu2ss_bitclr(&udc->p_regs->EP_REGS[num].EP_CONTROL, data);
+ 
+-		data = (EPn_OUT_EN | EPn_OUT_END_EN);
++		data = EPn_OUT_EN | EPn_OUT_END_EN;
+ 		_nbu2ss_bitset(&udc->p_regs->EP_REGS[num].EP_INT_ENA, data);
+ 	} else {
+ 		/*---------------------------------------------------------*/
+ 		/* IN */
+-		data = (EPn_EN | EPn_BCLR | EPn_AUTO);
++		data = EPn_EN | EPn_BCLR | EPn_AUTO;
+ 		_nbu2ss_bitset(&udc->p_regs->EP_REGS[num].EP_CONTROL, data);
+ 
+-		data = (EPn_ISTL);
++		data = EPn_ISTL;
+ 		_nbu2ss_bitclr(&udc->p_regs->EP_REGS[num].EP_CONTROL, data);
+ 
+-		data = (EPn_IN_EN | EPn_IN_END_EN);
++		data = EPn_IN_EN | EPn_IN_END_EN;
+ 		_nbu2ss_bitset(&udc->p_regs->EP_REGS[num].EP_INT_ENA, data);
+ 	}
+ 
+@@ -460,7 +460,7 @@ static void _nbu2ss_ep_in_end(
+ 		if (length)
+ 			_nbu2ss_writel(&preg->EP_REGS[num].EP_WRITE, data32);
+ 
+-		data = (((((u32)length) << 5) & EPn_DW) | EPn_DEND);
++		data = ((((u32)length) << 5) & EPn_DW) | EPn_DEND;
+ 		_nbu2ss_bitset(&preg->EP_REGS[num].EP_CONTROL, data);
+ 
+ 		_nbu2ss_bitset(&preg->EP_REGS[num].EP_CONTROL, EPn_AUTO);
+@@ -844,7 +844,7 @@ static int _nbu2ss_out_dma(
+ 
+ 	/* Number of transfer packets */
+ 	mpkt = _nbu2ss_readl(&preg->EP_REGS[num].EP_PCKT_ADRS) & EPn_MPKT;
+-	dmacnt = (length / mpkt);
++	dmacnt = length / mpkt;
+ 	lmpkt = (length % mpkt) & ~(u32)0x03;
+ 
+ 	if (dmacnt > DMA_MAX_COUNT) {
 -- 
-1.9.1
+2.5.0
 
 
