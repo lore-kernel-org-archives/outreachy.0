@@ -1,25 +1,25 @@
 X-GM-THRID: 6249926489518637056
-X-Received: by 10.194.110.233 with SMTP id id9mr5350373wjb.5.1455178644007;
-        Thu, 11 Feb 2016 00:17:24 -0800 (PST)
+X-Received: by 10.28.128.204 with SMTP id b195mr1844956wmd.7.1455178611794;
+        Thu, 11 Feb 2016 00:16:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.55.139 with SMTP id e133ls313002wma.43.gmail; Thu, 11 Feb
- 2016 00:17:23 -0800 (PST)
-X-Received: by 10.194.20.170 with SMTP id o10mr5334284wje.4.1455178643643;
-        Thu, 11 Feb 2016 00:17:23 -0800 (PST)
+Received: by 10.28.59.86 with SMTP id i83ls1008593wma.27.canary; Thu, 11 Feb
+ 2016 00:16:51 -0800 (PST)
+X-Received: by 10.194.201.234 with SMTP id kd10mr5343948wjc.6.1455178611309;
+        Thu, 11 Feb 2016 00:16:51 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id w10si828842wmw.3.2016.02.11.00.17.23
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c143si226738wmd.1.2016.02.11.00.16.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 00:17:23 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 11 Feb 2016 00:16:51 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.22,429,1449529200"; 
-   d="scan'208";a="164291212"
+   d="scan'208";a="202589943"
 Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 09:17:23 +0100
-Date: Thu, 11 Feb 2016 09:17:21 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 09:16:27 +0100
+Date: Thu, 11 Feb 2016 09:16:25 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Alison Schofield <amsfield22@gmail.com>
@@ -27,7 +27,7 @@ cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: vt6656: replace explicit
  NULL comparison with ! operator
 In-Reply-To: <20160211070636.GA16318@d830.WORKGROUP>
-Message-ID: <alpine.DEB.2.10.1602110916320.2508@hadrien>
+Message-ID: <alpine.DEB.2.10.1602110912590.2508@hadrien>
 References: <20160211070636.GA16318@d830.WORKGROUP>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
@@ -55,9 +55,6 @@ On Wed, 10 Feb 2016, Alison Schofield wrote:
 >  ) s0 else s1
 >
 > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
 > ---
 >  drivers/staging/vt6656/main_usb.c | 10 +++++-----
 >  drivers/staging/vt6656/usbpipe.c  |  2 +-
@@ -103,6 +100,15 @@ Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 >  	}
 >
 >  	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
+
+Nothing to do with your change, but there seems to be an inconsistncy
+here.  Why is one allocation done with GFP_KERNEL and the other done with
+GFP_ATOMIC?
+
+GFP_ATOMIC is needed when the allocation is done with interrupts turned
+off, because otherwise kmalloc may block, in case of insufficient memory,
+and that could lead to a deadlock.
+
 > -	if (priv->int_buf.data_buf == NULL) {
 > +	if (!priv->int_buf.data_buf) {
 >  		usb_free_urb(priv->interrupt_urb);
@@ -116,6 +122,15 @@ Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 >  	struct urb *urb;
 >
 >  	urb = rcb->urb;
+
+Another issue is here.  It's a bit strange to initialize a local variable,
+and then decide that its value is invalid and then leave the function.
+The initialization could be moved up to the declaration (same degree of
+potential uselessness, but at least one less line), or moved after the
+test.
+
+julia
+
 > -	if (rcb->skb == NULL) {
 > +	if (!rcb->skb) {
 >  		dev_dbg(&priv->usb->dev, "rcb->skb is null\n");
