@@ -1,84 +1,84 @@
-X-GM-THRID: 6205578387969277952
-X-Received: by 10.182.89.129 with SMTP id bo1mr3967696obb.4.1444848810503;
-        Wed, 14 Oct 2015 11:53:30 -0700 (PDT)
+X-GM-THRID: 6249902768504438784
+X-Received: by 10.98.93.217 with SMTP id n86mr8725702pfj.11.1455170704287;
+        Wed, 10 Feb 2016 22:05:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.9.76 with SMTP id j73ls274589ioi.12.gmail; Wed, 14 Oct
- 2015 11:53:30 -0700 (PDT)
-X-Received: by 10.107.14.196 with SMTP id 187mr4478988ioo.24.1444848689163;
-        Wed, 14 Oct 2015 11:51:29 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id zg1si1066342pbb.2.2015.10.14.11.51.29
+Received: by 10.107.149.76 with SMTP id x73ls444429iod.8.gmail; Wed, 10 Feb
+ 2016 22:05:03 -0800 (PST)
+X-Received: by 10.50.57.17 with SMTP id e17mr13264710igq.11.1455170703883;
+        Wed, 10 Feb 2016 22:05:03 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id mu6si451486igb.1.2016.02.10.22.05.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 11:51:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        Wed, 10 Feb 2016 22:05:03 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id ur7so12694277pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 11:51:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=TCVN+ZZWnXd9QvR4kiSa3Eex31gd1sSOY+tpQrk1o4k=;
-        b=GbIlF3Oe7kr+SK+a1EX98Afzxdkysf43Ov+OKAERKk1TD/G/YELBTJTSDvSUCmBvv5
-         NkreIuKbX/VzWT5d/00nQJFVhy2sgyA4JgJURa4x8x9gOpPgXYft4akAIrqqxMSrZlOS
-         t5ObZr7rTwPakdu4sEkr2YF7Kqq2BDuOX+dnDKp1KOfXDVixlLtqp6NjjsaJxsnxesYm
-         jzJ/UT5I6dSgb3M+BDaEgxfBwk6/M0jDX8mqjBY+sPCEHfav7iONlxoenHxh+VB2reaK
-         1fC8yQ8bdYFtaIuXZp1ITULZ35bW4rrSdRC2ws3Ufyg8/hAXqyeNJU3tQFpOflP82O55
-         axUw==
-X-Received: by 10.66.217.138 with SMTP id oy10mr5047339pac.149.1444848689030;
-        Wed, 14 Oct 2015 11:51:29 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id ch3sm11008834pbb.18.2015.10.14.11.51.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 11:51:27 -0700 (PDT)
-Date: Thu, 15 Oct 2015 00:21:11 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: rf_cfg: Remove useless cast
-Message-ID: <20151014185111.GA29205@ubuntu>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,429,1449529200"; 
+   d="scan'208";a="164278453"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Feb 2016 07:04:58 +0100
+Date: Thu, 11 Feb 2016 07:04:57 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Alison Schofield <amsfield22@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: wilc1000: remove parentheses
+ on right hand side of assignment
+In-Reply-To: <20160211053430.GA8222@d830.WORKGROUP>
+Message-ID: <alpine.DEB.2.02.1602110704340.2047@localhost6.localdomain6>
+References: <20160211053430.GA8222@d830.WORKGROUP>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Type conversion of variables can be done by compiler implicitly so,
-explicit conversions should be removed.
-Semantic patch used:
-@@
-type T;
-T e;
-identifier x;
-@@
+On Wed, 10 Feb 2016, Alison Schofield wrote:
 
-* T x = (T)e;
+> Remove the unnecessary parens on right hand side of assignment.
+> 
+> Found using Coccinelle:
+> @@
+> identifier x;
+> expression e1, e2;
+> @@
+> - x = (e1 << e2)
+> + x = e1 << e2
+> 
+> Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/rtl8188eu/hal/rf_cfg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
-diff --git a/drivers/staging/rtl8188eu/hal/rf_cfg.c b/drivers/staging/rtl8188eu/hal/rf_cfg.c
-index 954cade..067649a 100644
---- a/drivers/staging/rtl8188eu/hal/rf_cfg.c
-+++ b/drivers/staging/rtl8188eu/hal/rf_cfg.c
-@@ -188,7 +188,7 @@ static void rtl8188e_config_rf_reg(struct adapter *adapt,
- 	u32 addr, u32 data)
- {
- 	u32 content = 0x1000; /*RF Content: radio_a_txt*/
--	u32 maskforphyset = (u32)(content & 0xE000);
-+	u32 maskforphyset = content & 0xE000;
- 
- 	rtl_rfreg_delay(adapt, RF90_PATH_A, addr | maskforphyset,
- 			RFREG_OFFSET_MASK,
--- 
-2.1.0
-
+> ---
+>  drivers/staging/wilc1000/wilc_wlan.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
+> index 98b21d4..c1da8f0 100644
+> --- a/drivers/staging/wilc1000/wilc_wlan.c
+> +++ b/drivers/staging/wilc1000/wilc_wlan.c
+> @@ -921,11 +921,11 @@ static void wilc_wlan_handle_isr_ext(struct wilc *wilc, u32 int_status)
+>  	int ret = 0;
+>  	struct rxq_entry_t *rqe;
+>  
+> -	size = ((int_status & 0x7fff) << 2);
+> +	size = (int_status & 0x7fff) << 2;
+>  
+>  	while (!size && retries < 10) {
+>  		wilc->hif_func->hif_read_size(wilc, &size);
+> -		size = ((size & 0x7fff) << 2);
+> +		size = (size & 0x7fff) << 2;
+>  		retries++;
+>  	}
+>  
+> -- 
+> 2.1.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160211053430.GA8222%40d830.WORKGROUP.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
