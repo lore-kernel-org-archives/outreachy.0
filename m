@@ -1,162 +1,101 @@
-X-GM-THRID: 6670698779080916992
-X-Received: by 2002:aca:3409:: with SMTP id b9mr542556oia.29.1553143090064;
-        Wed, 20 Mar 2019 21:38:10 -0700 (PDT)
+X-GM-THRID: 6250095097059213312
+X-Received: by 10.67.7.1 with SMTP id cy1mr16371711pad.31.1455213664701;
+        Thu, 11 Feb 2016 10:01:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:5dc1:: with SMTP id r184ls69622oib.5.gmail; Wed, 20 Mar
- 2019 21:38:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy5bCeVZ+I5E07ZDsrqszSzCESzw9nIoSFKZMdUYqOCKzgXybzTpclCUJ51aE9R1J082RAG
-X-Received: by 2002:aca:3409:: with SMTP id b9mr542542oia.29.1553143089166;
-        Wed, 20 Mar 2019 21:38:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553143089; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AhaSnMTECKasT44CnMWZqNqb3rsoF+h27GxkanmqUSFBmOO4t20Cuo73ywqNPUYR0I
-         a8JC4j6d6MjPrEx+LB2rDIQTA8jKsj/V7BA/0BVcLwqO9x7r0itsbH4subKbrMKzL/nh
-         mIQRv2V2gb3rQmcWdkKoRgJGGHAbIMy8GCFnQsZlgWcUIn4FNz0DenMqj2BOl//Aiahb
-         HEkKUHYFei+NDur1zgIHvaJr5hKBFf+lzSk/CStMeHjM1DOm5hPpzvmQbog3KL4PQBYk
-         1Oj2UgpZnwhQoa9iUmwyNsUKpRbHJ8QpCoqgObkL9fhjyLkhohyIRNKOVsfUZF5cw4uI
-         5wew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=2er+20jsKzYkwX3YD9+K74T9Z3r37JcX9BXX0kAxz84=;
-        b=kgDcdnUbjRXUChbNNbA98QFizzIXqDb4wMbqHVgRbK6dlOtvVm4WpvGnMoMpJC5PXR
-         fGs4s4rFfiowJ23M3ZC55o1uxvTQXxayhyx3yIICCzqzjoNQaRYPW0UGCKCXD45dGCaA
-         3eYTHvj1k2KhACqdPQFDJrcQgMsYVjJ0fNrDL2EUAUkI27v9lPzwjC32d1u8klDG9/wu
-         ElTZuIwqE7clsQvX6vTAl3pF7fyWmYcFi+PltucyU3Yxdgig8Ck9qKCSBNAJoRW0zBcU
-         lK4AGKg5xd42VaHLhONJ4VoGQWT4wEVZQSSW+qseyAqF905pmToS5rbcL8sOshfzfGch
-         QxTA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PZ0iXx0h;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id d128si194467oia.3.2019.03.20.21.38.09
+Received: by 10.107.135.37 with SMTP id j37ls665603iod.32.gmail; Thu, 11 Feb
+ 2016 10:01:04 -0800 (PST)
+X-Received: by 10.107.169.130 with SMTP id f2mr46306979ioj.10.1455213664387;
+        Thu, 11 Feb 2016 10:01:04 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qk0-x233.google.com (mail-qk0-x233.google.com. [2607:f8b0:400d:c09::233])
+        by gmr-mx.google.com with ESMTPS id v197si727988ywa.1.2016.02.11.10.01.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Mar 2019 21:38:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Thu, 11 Feb 2016 10:01:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::233 as permitted sender) client-ip=2607:f8b0:400d:c09::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PZ0iXx0h;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id g8so3399268pgf.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 21:38:09 -0700 (PDT)
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::233 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x233.google.com with SMTP id s68so21931668qkh.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 10:01:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=2er+20jsKzYkwX3YD9+K74T9Z3r37JcX9BXX0kAxz84=;
-        b=PZ0iXx0hdMqg7D1j220XN7S14UUtSqm8dAK9yCAuETJpqxTi5eKCl87HEkIrSE9/zK
-         EFzhtidKm5iTZrLLMeCkVdizBVhLafXqdGj9roDXzeTeJMdQeBkbjGrd4+vZk6lYxoWg
-         7vmmonAsdltcxezp6YO+UdHg1oZakk+kvgYNZ7GvURcDSQtPbrwpVgk+QW0XsHOqk3W/
-         wKYRBy7J47paVY17xDSjTNdECDL0yguxiyWDfvRxIutDHLOUlHlVd+iRXctfGt1bYvld
-         0nI3DSJZQ0i++sTyVoyow+K8ZxCQpZum0mHhaUWw4MO9jExlFtaec8N+W7OsmDqXPNPS
-         uaww==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=BOqlTWyZTXtpQXFlZr/2HWA7GZqva32Mt+xD8IaGJgs=;
+        b=g0ae+Lhk6Dx/zdMgKbn0jV8vpuUlIdeKeqWyIEGBhIJBcUhaOc9pnH8iKpTBNqyhak
+         yeQ4CvE9XnpXEpSY8ajI9p9BYzIxOiq4x/Q8E/CK6Pg+ix7Taaqxgbcq2b/Uzdwj//ZA
+         agEqOezecq/vVnehfmmQbqbmT09n2+fVT848BA/lAruz8XkRS+A9oKO/KQ/s7Ux1AaD6
+         BaBHwzF3ecz3rQd35IJLo5P6HTHK9Xg0zcnyohDXzVIRXwod1T12PuNEFYFTqTqoTYxP
+         527achcroUVBMdttkk/xY70pfT+R5pr2fex5S0aC/TWviHKDkGMKrmYKx2iom5nC++7F
+         7c5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=2er+20jsKzYkwX3YD9+K74T9Z3r37JcX9BXX0kAxz84=;
-        b=GOJbZQlaX3OUnGKsV4Yw+NZA7RBFORRcezKWdRy6P3L/cA+nNPXlQf2bL+8ixVWs5A
-         ndGb0fn/zfiRP61/vf7XDQyivvHrVMd4cVOPi6l1CN/HS/CZbfy0QSKTHspTrgq6F3a+
-         TvLJCptg7W0g7XNh9KP/d+C6G6z0SkeiqblGoHC73zr3H0buFqNsqXupyWBHoQBxZ3A0
-         +Gp28M4beFA56XhBKnF7HmOGhGVpkL6b9wyeb+gdL+HgBhZAUcc4Q37g5+oQkbDjMvY2
-         bNCG+Kl9inat5FworBWxW6zzay48nZBhghWKJCKYztxOLawyfML3tTyo7sZ0ASOEEk2F
-         JeLw==
-X-Gm-Message-State: APjAAAXq05O1Uk5VmMY7PrjrWBX8KEf/hxZvsUnxtTcDkbW9oD7TxYRP
-	EwERmk2MONgjaMIOrn3G52uQHuBY
-X-Received: by 2002:a63:cd10:: with SMTP id i16mr1529816pgg.90.1553143088204;
-        Wed, 20 Mar 2019 21:38:08 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.224.165])
-        by smtp.gmail.com with ESMTPSA id v1sm5297676pff.9.2019.03.20.21.38.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 20 Mar 2019 21:38:07 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=BOqlTWyZTXtpQXFlZr/2HWA7GZqva32Mt+xD8IaGJgs=;
+        b=kr+BS11iLg1QtzTc4AnL24I38/P+eC4jcNV3F1a9DNwe3Gel0VsLnfEzt6YSb4W64h
+         PJy+XPA4ymLJhs9YnhCmIfrYZncIVLWLrxjPvvldRbDq9Jjwsa+LSc2RWrTZKAgDU14R
+         XvU9jXfLYXoiRmuCnc5FlAXJl6BCMT1xVYxDO9/g0M2PZDazzu0sBWeYD9WUYxYc0tLU
+         /xGjJfOFFiZWNv/RSY1jqS11KvbkVWclMPNBBSMbZ+r5lm5U2c1ffeJyms1LvAlvuI/w
+         fpDILrAkwlnD/wO1+WpmeE6X1Xfvbzb2vLHV44eLdwwJwSF9LnIrsrEU9nliIvLLNByO
+         l44g==
+X-Gm-Message-State: AG10YORH1dyKlaPrZJz90ZrVyTXIzszReX4OOPqqlM787TeYyhlRdthyv7mVkpY1xCxS0g==
+X-Received: by 10.55.74.209 with SMTP id x200mr57362923qka.106.1455213664228;
+        Thu, 11 Feb 2016 10:01:04 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id t103sm3783573qgd.37.2016.02.11.10.01.03
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 10:01:03 -0800 (PST)
+Date: Thu, 11 Feb 2016 18:00:25 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: emxx_udc: lines should not end with parenthesis
-Date: Thu, 21 Mar 2019 10:07:50 +0530
-Message-Id: <1553143070-4067-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Subject: [PATCH] staging: fsl-mc: Remove unneeded parentheses
+Message-ID: <20160211230025.GA4949@janani-Inspiron-3521>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Adjust code to meet the style of “lines should not end with
-parenthesis”.
-In file named as drivers/staging/emxx_udc/emxx_udc.c
+Remove unneeded parentheses on the right hand side of assignment
+statements.
+Semantic patch:
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+@@
+expression a, b, c;
+@@
+
+(
+  a = (b == c)
+|
+  a = 
+- (
+  b
+- )
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/emxx_udc/emxx_udc.c | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
+ drivers/staging/fsl-mc/bus/dprc-driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index b960a21..743a519 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -459,22 +459,22 @@ static void _nbu2ss_dma_map_single(struct nbu2ss_udc *udc,
- 		if (req->unaligned) {
- 			req->req.dma = ep->phys_buf;
- 		} else {
--			req->req.dma = dma_map_single(
--				udc->gadget.dev.parent,
--				req->req.buf,
--				req->req.length,
--				(direct == USB_DIR_IN)
--				? DMA_TO_DEVICE : DMA_FROM_DEVICE);
-+			req->req.dma = dma_map_single(udc->gadget.dev.parent,
-+						      req->req.buf,
-+						      req->req.length,
-+						      (direct == USB_DIR_IN)
-+						      ? DMA_TO_DEVICE
-+						      : DMA_FROM_DEVICE);
- 		}
- 		req->mapped = 1;
- 	} else {
- 		if (!req->unaligned)
--			dma_sync_single_for_device(
--				udc->gadget.dev.parent,
--				req->req.dma,
--				req->req.length,
--				(direct == USB_DIR_IN)
--				? DMA_TO_DEVICE : DMA_FROM_DEVICE);
-+			dma_sync_single_for_device(udc->gadget.dev.parent,
-+						   req->req.dma,
-+						   req->req.length,
-+						   (direct == USB_DIR_IN)
-+						   ? DMA_TO_DEVICE
-+						   : DMA_FROM_DEVICE);
+diff --git a/drivers/staging/fsl-mc/bus/dprc-driver.c b/drivers/staging/fsl-mc/bus/dprc-driver.c
+index 52c6fce..9380ebc 100644
+--- a/drivers/staging/fsl-mc/bus/dprc-driver.c
++++ b/drivers/staging/fsl-mc/bus/dprc-driver.c
+@@ -129,7 +129,7 @@ static void check_plugged_state_change(struct fsl_mc_device *mc_dev,
+ {
+ 	int error;
+ 	u32 plugged_flag_at_mc =
+-			(obj_desc->state & DPRC_OBJ_STATE_PLUGGED);
++			obj_desc->state & DPRC_OBJ_STATE_PLUGGED;
  
- 		req->mapped = 0;
- 	}
-@@ -1414,8 +1414,8 @@ static inline int _nbu2ss_req_feature(struct nbu2ss_udc *udc, bool bset)
- 			if (selector == USB_ENDPOINT_HALT) {
- 				ep_adrs = wIndex & 0xFF;
- 				if (!bset) {
--					_nbu2ss_endpoint_toggle_reset(
--						udc, ep_adrs);
-+					_nbu2ss_endpoint_toggle_reset(udc,
-+								      ep_adrs);
- 				}
- 
- 				_nbu2ss_set_endpoint_stall(udc, ep_adrs, bset);
-@@ -2594,9 +2594,9 @@ static int nbu2ss_ep_queue(struct usb_ep *_ep,
- 
- 	if (req->unaligned) {
- 		if (!ep->virt_buf)
--			ep->virt_buf = dma_alloc_coherent(
--				NULL, PAGE_SIZE,
--				&ep->phys_buf, GFP_ATOMIC | GFP_DMA);
-+			ep->virt_buf = dma_alloc_coherent(NULL, PAGE_SIZE,
-+							  &ep->phys_buf,
-+							  GFP_ATOMIC | GFP_DMA);
- 		if (ep->epnum > 0)  {
- 			if (ep->direct == USB_DIR_IN)
- 				memcpy(ep->virt_buf, req->req.buf,
+ 	if (plugged_flag_at_mc !=
+ 	    (mc_dev->obj_desc.state & DPRC_OBJ_STATE_PLUGGED)) {
 -- 
-2.7.4
+2.5.0
 
 
