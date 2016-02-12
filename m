@@ -1,103 +1,111 @@
-X-GM-THRID: 6665132923205713920
-X-Received: by 2002:a17:902:6a3:: with SMTP id 32mr1530829plh.80.1551847188152;
-        Tue, 05 Mar 2019 20:39:48 -0800 (PST)
+X-GM-THRID: 6250301403759116288
+X-Received: by 10.182.240.226 with SMTP id wd2mr2840945obc.0.1455300307896;
+        Fri, 12 Feb 2016 10:05:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:8216:: with SMTP id x22ls387127pln.3.gmail; Tue, 05
- Mar 2019 20:39:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyavVuX1nCNWflTIublEbjvQzH8B2AdxvC2hRiL4ZdD3qIU9ixXL+zcTK5uOT+xSZVRSuEn
-X-Received: by 2002:a17:902:280b:: with SMTP id e11mr1505481plb.55.1551847187232;
-        Tue, 05 Mar 2019 20:39:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551847187; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UQmK3swj5X8ZecHqMUmZX9FCdzLUXUDiqbT5bu8C2umDYbcgM0F8Pnt+EFdd34A5u/
-         v9xoOmuOih6LYmngCvs4uWeGfeWrMf8k1dOsxMhK8A0Sq3aN6m7q4ANjqZeHQ6kMuMHX
-         tSCtRT/AJ4TFSSY8I0VLJ3q9HogcS8XIhaM9h0Hm7OldlZVXdOtyqarNMdWvWgF6vzSf
-         AeRuJqXKLGi1kggSFQT79zbADJ0WFCGcwuySednvdVHywVQQxddQxP2GE4CnCUV5UrOi
-         CyHrIGL6zyoooPnON465dxFNUcGhx0j/kCsSveSjlKIpon3Y53k/3HRlBDXUVCZ0quWe
-         27Kw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=eqBCzlFdjAao8chlO8R2iGHBwLECsv+k2U7lqxpruPk=;
-        b=sMd/21kAjYcDuSz/0vXH2lpIo85T8KKGdeJnxah+UtdwKRjyfPdE1hau22iRVwbk8u
-         YuCGUpIsTIw7Ug69V2SSBgCi3vyCkEDu4WVE0f22R+5W/Gdh2hx8Esl3AwgBfxqMlFyv
-         oEBw5pO76qV+tBaaGDSLaCkKeG9UcfMzEIqjo+Kk0bYtU95FXZfyTGY+yVVHXZmYX5kk
-         oYZxkUD2wmy9VSSdDNNSIqxLxjDJU4dgkHIFpzNyf77DaAskpRvOHnqCvPF4AQ+MIySQ
-         RjKuPcPiaeMstKqF+mrNNBF2JAHee+vzlPx58fOyn7DyP/xPfyH1a8OpkbgxYtbXB/8V
-         6bxQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Xee+vMnC;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id 197si41902pgc.1.2019.03.05.20.39.47
+Received: by 10.107.156.72 with SMTP id f69ls932065ioe.21.gmail; Fri, 12 Feb
+ 2016 10:05:07 -0800 (PST)
+X-Received: by 10.50.70.42 with SMTP id j10mr4737227igu.9.1455300307484;
+        Fri, 12 Feb 2016 10:05:07 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id tn7si1643159pac.1.2016.02.12.10.05.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 20:39:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Fri, 12 Feb 2016 10:05:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Xee+vMnC;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id v21so7480248pfm.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 20:39:47 -0800 (PST)
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x244.google.com with SMTP id fl4so4084038pad.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 10:05:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=eqBCzlFdjAao8chlO8R2iGHBwLECsv+k2U7lqxpruPk=;
-        b=Xee+vMnCclMf+1beM69Ol5Y3T2kd6N0edifYWxiQv9djskiLwX4etXclEv5GxlAG/2
-         JpIqFhUO6KQxLbCfNn4aclQ0CNR7uB4Bm24D7EtGXGndqSex6Ez6bhW1Y/SzXWlfFOia
-         eHiGXvg/DYvqqeeGmPdzyUmlt1Il6BMMzYG5xOFJ/sHyQjTHxD+jZhRRnoM8L/SAsjhB
-         GFb76g3JBRjcl+BxLkOSjm3GJOhXl0QBV+eTNhZ2ta1eY2TsTsOjdJ8Hldegpx8f3XWQ
-         J9aKtbYqlyoa7Yg4djeph6BWI8IdoHIxqeta1smqoc5ycJ1iO4Nm/+v/3xY+i8f2AKYB
-         OAuw==
+        d=gmail.com; s=20120113;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=nDhQ9dOmMt26HAxcU9V4qW4+1wNmgZmaQLCY+2JmVJE=;
+        b=OOnrofzsu7P5ruQqOIK3yLaJa92G1c3KcWevZDZHg3g/ebJH3o8T16kf0l+2KkG2DZ
+         a3SQjJyj9VHqc86fZEUMImABFYvy5mrQfBlZYoboDIEJRMo6RCN7JFytinMr6MsJOSzW
+         qoe2F96vg+i3OMj0O5xWtAo4vT4lqwzbok3l1ycuccG02NUgxxdJ206pmRFsMiQZsTn/
+         zCeLy3SJHFdjTAImlJnUS/3TAgeRrFsQupgwsjec7IoF+7EVX31t5VqtghW1R76wcZrM
+         7MA2xADq80Asr8wz+pv4HEBYW6qQFORpolxenVfI42T9SNNDr3+9n0PloaOVpML5qGJ8
+         fY4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=eqBCzlFdjAao8chlO8R2iGHBwLECsv+k2U7lqxpruPk=;
-        b=NVy60PXCNRkMKu9XQqjyzgfyAI8D+g6hRQY1swuWaUZGwZ53Qu+coT/6ViTzfhAFih
-         NQGrt/4iZFXnTu1PlLjr+p9eqBRAPuApdNVijQvHEAD0KWGfrLKv5roP61Wro5pJwcdU
-         5sPgYm8OUgBcMVXbuJdg4KCNyDc2WLBkMN/VtcX0Zul4AJyw3dC7YQtjD8/fwbbvbysy
-         jPGGzh9Hh0gBTLAUucfBIxRNT1vYBZpCCc47GvEvOoD4+NVp9nge/7nia85tCigpNT7R
-         nKvfW2edsLNfre/l4D+j9e5KMYX5psPUg4nd2UWabsIjzdDQg1wwI9tRCup18LSCNfZJ
-         mFxQ==
-X-Gm-Message-State: APjAAAVPDGLsu6lH0TLH33JwwRoY75gMbbo4ZKz4HOTjZ2vN6tUWNwa6
-	PA5agTDKdCArXj/16faxOUI=
-X-Received: by 2002:a65:4608:: with SMTP id v8mr4681578pgq.9.1551847186928;
-        Tue, 05 Mar 2019 20:39:46 -0800 (PST)
-Return-Path: <etsai042@gmail.com>
-Received: from debian ([2001:da8:d800:199:7e1:7347:f861:5837])
-        by smtp.gmail.com with ESMTPSA id g3sm803120pfo.125.2019.03.05.20.39.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 20:39:46 -0800 (PST)
-From: Wentao Cai <etsai042@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Wentao Cai <etsai042@gmail.com>
-Subject: [PATCH 1/4] Staging: most: dim2: Fix malformed SPDX-License-Identifier
-Date: Tue,  5 Mar 2019 20:39:38 -0800
-Message-Id: <20190306043941.6141-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+         :references;
+        bh=nDhQ9dOmMt26HAxcU9V4qW4+1wNmgZmaQLCY+2JmVJE=;
+        b=ZczfgAfmT0zNW5iSeELP8mnb2rfASGwIAMw0TcV7Z4smtUdFXADDs+ge/iWy9ydSP1
+         pY9BDQrXy0w2KkTlA9IeEs49lNqY4sP/BqmhkhB/oAoFxa9ZkwpZXKLk0T99OV9BCTbR
+         uzujZotnKHTqcocWFC+jwnn31Ke+H1k0f0kLp0vNMr07FLz67nJfs22VDuFRbKB7RwGg
+         91jCVYKNeF0IULMvG4RAs6xXUpsra56kLwsYL3NeuBT22ioF6R7dBstDUwNF7yW9oqat
+         T0cz9jZLPRYtpdx6B4OZFH+HmOvp+E6IjX/3CS6H8UPSirLPEKttGg+M/0MFXWBhq2pg
+         5j0A==
+X-Gm-Message-State: AG10YOQdJ3tamUoVro4GS5oW9YS/oA3A3IYXsG1DvoKz4hBN2oIbJG0Qy7MQv2gkJDgpAw==
+X-Received: by 10.66.102.106 with SMTP id fn10mr4174802pab.60.1455300307334;
+        Fri, 12 Feb 2016 10:05:07 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from localhost.localdomain (or-67-232-66-97.dhcp.embarqhsd.net. [67.232.66.97])
+        by smtp.gmail.com with ESMTPSA id p8sm20930382pfi.34.2016.02.12.10.05.06
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 12 Feb 2016 10:05:06 -0800 (PST)
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: vt6656: replace GFP_ATOMIC with GFP_KERNEL for urb allocation
+Date: Fri, 12 Feb 2016 10:05:01 -0800
+Message-Id: <1455300301-3351-1-git-send-email-amsfield22@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <20160212072127.GA14416@d830.WORKGROUP>
+References: <20160212072127.GA14416@d830.WORKGROUP>
 
-This patch fixes the checkpatch.pl warning:
-WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
+Replace GFP_ATOMIC with GFP_KERNEL during urb buffer allocation.
+This makes vnt_alloc_bufs() consistent in setting GFP_KERNEL during
+kmalloc() and usb_alloc_urb(). GFP_KERNEL is safe because we are in
+process context, not in an interrupt handler, nor holding any spinlock.
 
-Signed-off-by: Wentao Cai <etsai042@gmail.com>
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/most/dim2/errors.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v3:
+- changed 2 additional instances in same function
+- modified changelog
+Changes in v2:
+-  expanded abbreviations changelog
 
-diff --git a/drivers/staging/most/dim2/errors.h b/drivers/staging/most/dim2/errors.h
-index 3487510fbd2f..cbbdaaf5c52d 100644
---- a/drivers/staging/most/dim2/errors.h
-+++ b/drivers/staging/most/dim2/errors.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0+ */
- /*
-  * errors.h - Definitions of errors for DIM2 HAL API
-  * (MediaLB, Device Interface Macro IP, OS62420)
+
+ drivers/staging/vt6656/main_usb.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 05f86ff..f9afab7 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -439,7 +439,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+ 		tx_context->pkt_no = ii;
+ 
+ 		/* allocate URBs */
+-		tx_context->urb = usb_alloc_urb(0, GFP_ATOMIC);
++		tx_context->urb = usb_alloc_urb(0, GFP_KERNEL);
+ 		if (!tx_context->urb) {
+ 			dev_err(&priv->usb->dev, "alloc tx urb failed\n");
+ 			goto free_tx;
+@@ -461,7 +461,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+ 		rcb->priv = priv;
+ 
+ 		/* allocate URBs */
+-		rcb->urb = usb_alloc_urb(0, GFP_ATOMIC);
++		rcb->urb = usb_alloc_urb(0, GFP_KERNEL);
+ 		if (!rcb->urb) {
+ 			dev_err(&priv->usb->dev, "Failed to alloc rx urb\n");
+ 			goto free_rx_tx;
+@@ -478,7 +478,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+ 			goto free_rx_tx;
+ 	}
+ 
+-	priv->interrupt_urb = usb_alloc_urb(0, GFP_ATOMIC);
++	priv->interrupt_urb = usb_alloc_urb(0, GFP_KERNEL);
+ 	if (!priv->interrupt_urb) {
+ 		dev_err(&priv->usb->dev, "Failed to alloc int urb\n");
+ 		goto free_rx_tx;
 -- 
-2.11.0
+2.1.4
 
 
