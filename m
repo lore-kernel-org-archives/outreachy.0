@@ -1,146 +1,85 @@
 X-GM-THRID: 6250100054886973440
-X-Received: by 10.140.154.143 with SMTP id a137mr5044330qha.11.1455339667329;
-        Fri, 12 Feb 2016 21:01:07 -0800 (PST)
+X-Received: by 10.31.165.1 with SMTP id o1mr2081542vke.12.1455293249728;
+        Fri, 12 Feb 2016 08:07:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.42.66 with SMTP id b60ls2243416qga.56.gmail; Fri, 12 Feb
- 2016 21:01:06 -0800 (PST)
-X-Received: by 10.129.92.65 with SMTP id q62mr4953369ywb.19.1455339666560;
-        Fri, 12 Feb 2016 21:01:06 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id ui7si2175488pab.0.2016.02.12.21.01.06
+Received: by 10.107.161.6 with SMTP id k6ls800524ioe.87.gmail; Fri, 12 Feb
+ 2016 08:07:29 -0800 (PST)
+X-Received: by 10.50.183.39 with SMTP id ej7mr3090468igc.3.1455293249221;
+        Fri, 12 Feb 2016 08:07:29 -0800 (PST)
+Return-Path: <htejun@gmail.com>
+Received: from mail-yk0-x22f.google.com (mail-yk0-x22f.google.com. [2607:f8b0:4002:c07::22f])
+        by gmr-mx.google.com with ESMTPS id v197si1129936ywa.1.2016.02.12.08.07.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 21:01:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 12 Feb 2016 08:07:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c07::22f as permitted sender) client-ip=2607:f8b0:4002:c07::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 71so4829926pfv.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 21:01:06 -0800 (PST)
+       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c07::22f as permitted sender) smtp.mailfrom=htejun@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-yk0-x22f.google.com with SMTP id u9so35838181ykd.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 08:07:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=quozG8lIy8Uw3qS7QblOi5StFJD/NssrScm+ftBlMNs=;
-        b=I3HSmEfdXSD9iCsIJpDAvlLb8Bh19s+M6EFDJpp5so//hH8gq07VHJGpmqXnfHI0Vp
-         ANpjl5WO6bp/kYHDEh8napPLTx0smVroynUHJStY3e8cWv8HRoI9EJKAG8s1CU7Roqvt
-         IqYoEBsSPLrwuSyaAPAy/sVIvRLbAn2NgF2fN68xrIVGIqOkHDvht9FbjgF0bp6pfrHv
-         FLXqR7MiHVdRBiF0qMqGql0CguHf8GC63Xz2E8ucEckgNuh5LSEeU1CYLNOAxM+O/u6B
-         4W1Z8kQM+CCfo4YXr6pqXnHbimo4A+bbMk0f/1IS91hZyh8a1RFP41H8qmbcVlCwxltO
-         LCwg==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=hxo86KPG/9RF5uG5HhUa8weh07D5fg1veDw5lyxWZvQ=;
+        b=d2pPjH6NKwxlOs7G2jJmArX4CbwvWYm3kkXlK0PUHlc8VYzeZPiDsf6a+QtXvYCClu
+         Webm63i7TvmoKhu6bqSUn03Aiawn+FnMg5yfTPEkA00s4DXd7EQJYhcMthjr3KG+tRF3
+         +JhmentqikrujzFaBaEa6fk+1RxMOi9WC5xBu98XMzbiqMkgJgUV/+juzQQR5Bn2DxRG
+         T2Q/Y9nDKmAOfNmSwBLCFkNYUycF12wrD+0EpNbYAWvJe+oiN9XvsYsLqCPLZiy2OEAt
+         13yWjRCpMygugYRvAW/6bx8Tv1ogJF2x0Qu0i7bRPEjc7DXoOhYot/tEAgfjlT55dr/t
+         3i2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=quozG8lIy8Uw3qS7QblOi5StFJD/NssrScm+ftBlMNs=;
-        b=h9k5fnksIYz54dtYflXWy5RSKWbNzP8EP1dm6aGjLO8MJTCiK7z6mkHSPYk6e79zB2
-         Bt9bcln65Ejx6fumltEy+fxRPMdLpeh1YftiZ2t5mkS7xkRA39R7xcJqHejfSrfR6DAN
-         Mehq2Z2RgR/Ph2bCSV6geTJW9SELi1lG4rsX0JO/ZooK9jt58Z5dxw7ubslQUMAb4dPB
-         VbmlqStb6f1yZO7KLsomIDGPR1RR4UjYahusob7ciqe4XiPRXQBkrhU1KbXw5OLeATJv
-         aH8xMx0PSYzQEf4BaijXC6zzw3CrtsOViJZAk2JwxmEi60+StvdhRnjw5Li4+B3FmGMS
-         +WqA==
-X-Gm-Message-State: AG10YOTtWtl8vqSQ+YuSDA2C9IHsv0mCOeepMC1o1+XbhWGl1VUkLaxV+YXeSfHJHLpFtg==
-X-Received: by 10.98.19.205 with SMTP id 74mr7477544pft.31.1455339666343;
-        Fri, 12 Feb 2016 21:01:06 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.149.32])
-        by smtp.gmail.com with ESMTPSA id wt2sm22953519pac.48.2016.02.12.21.01.04
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 21:01:05 -0800 (PST)
-Date: Sat, 13 Feb 2016 10:31:02 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: gdm724x: gdm_mux: Remove create_workqueue()
-Message-ID: <20160213050102.GA10406@amitoj-Inspiron-3542>
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-type:content-disposition
+         :in-reply-to:user-agent;
+        bh=hxo86KPG/9RF5uG5HhUa8weh07D5fg1veDw5lyxWZvQ=;
+        b=Y1n6t6hX/5IIOqRd/hvx48R+hfDjxqdtGYyVa09hzbD6xra+SRkHP9uZtl4AOdcVbj
+         FVvuuIqWFzAkBW/ysB3Mt881rJNPq9CZo5mC2rnQWlPiYfgxkbOKHmYcdJ0KcxxLTQvm
+         HDcioCdXNNAa6TlMpEThdDQEjZmDtHPjzjyJKNLaKBx3dAW5Uuh6g2eSQMMmxaLe2MTZ
+         YNmB2kBHDDcun5mhnN9+/Zxp4GSOHgP4u/mHomfiaRX4dPnsvwzShSYUrqBcB3J4gz/a
+         B/KXtMvj5BSxWNIRQFc385QVqcFTXYNuax1c6ASmvWzG6NQ4z1/RkuWhkgwRj14mhyaU
+         hHiQ==
+X-Gm-Message-State: AG10YOQ2o5Up4eU7279kI0P8/q21yzkToNb5XmPQj+uqWrrgGZJh5tHMaEG9SpUiXiRSQA==
+X-Received: by 10.37.14.132 with SMTP id 126mr1440935ybo.69.1455293249081;
+        Fri, 12 Feb 2016 08:07:29 -0800 (PST)
+Return-Path: <htejun@gmail.com>
+Received: from localhost ([2620:10d:c091:200::a:8dab])
+        by smtp.gmail.com with ESMTPSA id o23sm10407870ywd.30.2016.02.12.08.07.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Feb 2016 08:07:28 -0800 (PST)
+Sender: Tejun Heo <htejun@gmail.com>
+Date: Fri, 12 Feb 2016 11:07:27 -0500
+From: Tejun Heo <tj@kernel.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: gdm724x: gdm_mux: Remove
+ create_workqueue()
+Message-ID: <20160212160727.GF3741@mtj.duckdns.org>
+References: <20160211182011.GA10882@amitoj-Inspiron-3542>
+ <20160211183113.GB3741@mtj.duckdns.org>
+ <CA+5yK5EWjvLZS7v_kwNrXdZpxvmn+qJhXNXNwnMbd8WUNzOeVg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <CA+5yK5EWjvLZS7v_kwNrXdZpxvmn+qJhXNXNwnMbd8WUNzOeVg@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-With concurrency managed workqueues, use of dedicated workqueues 
-can be replaced by using system_wq. Drop mux_rx_wq by using system_wq.
+Hello,
 
-Since there is only one work item per mux_dev and different mux_devs
-do not need to be ordered, increase of concurrency level by switching
-to system_wq should not break anything.
+On Fri, Feb 12, 2016 at 12:46:06PM +0530, Amitoj Kaur Chawla wrote:
+> > If work_rx is self-requeueing, cancel_work_sync() would be the right
+> > option here because flush_work() only guarantees that the current
+> > pending or executing instance is finished.
+> 
+> How do I determine whether work_rx is self-requeueing or not?
 
-cancel_work_sync() is used to ensure that work is not pending or
-executing on any CPU.
+By seeing whether the work function re-queues the work item it's
+running off of.
 
-Lastly, since all devices are suspended, which shutdowns the work item
-before the driver can be unregistered, it is guaranteed that no work
-item is pending or executing by the time exit path runs.
+Thanks.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
-Changes in v2:
-        -Use cancel_work_sync() instead of flush_work()
-        -Commit message modified
-
- drivers/staging/gdm724x/gdm_mux.c | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
-index 445f836..937010b 100644
---- a/drivers/staging/gdm724x/gdm_mux.c
-+++ b/drivers/staging/gdm724x/gdm_mux.c
-@@ -26,8 +26,6 @@
- 
- #include "gdm_mux.h"
- 
--static struct workqueue_struct *mux_rx_wq;
--
- static u16 packet_type[TTY_MAX_COUNT] = {0xF011, 0xF010};
- 
- #define USB_DEVICE_CDC_DATA(vid, pid) \
-@@ -275,7 +273,7 @@ static void gdm_mux_rcv_complete(struct urb *urb)
- 		r->len = r->urb->actual_length;
- 		spin_lock_irqsave(&rx->to_host_lock, flags);
- 		list_add_tail(&r->to_host_list, &rx->to_host_list);
--		queue_work(mux_rx_wq, &mux_dev->work_rx.work);
-+		schedule_work(&mux_dev->work_rx.work);
- 		spin_unlock_irqrestore(&rx->to_host_lock, flags);
- 	}
- }
-@@ -602,6 +600,8 @@ static int gdm_mux_suspend(struct usb_interface *intf, pm_message_t pm_msg)
- 	mux_dev = tty_dev->priv_dev;
- 	rx = &mux_dev->rx;
- 
-+	cancel_work_sync(&mux_dev->work_rx.work);
-+
- 	if (mux_dev->usb_state != PM_NORMAL) {
- 		dev_err(intf->usb_dev, "usb suspend - invalid state\n");
- 		return -1;
-@@ -656,13 +656,6 @@ static struct usb_driver gdm_mux_driver = {
- 
- static int __init gdm_usb_mux_init(void)
- {
--
--	mux_rx_wq = create_workqueue("mux_rx_wq");
--	if (!mux_rx_wq) {
--		pr_err("work queue create fail\n");
--		return -1;
--	}
--
- 	register_lte_tty_driver();
- 
- 	return usb_register(&gdm_mux_driver);
-@@ -672,11 +665,6 @@ static void __exit gdm_usb_mux_exit(void)
- {
- 	unregister_lte_tty_driver();
- 
--	if (mux_rx_wq) {
--		flush_workqueue(mux_rx_wq);
--		destroy_workqueue(mux_rx_wq);
--	}
--
- 	usb_deregister(&gdm_mux_driver);
- }
- 
 -- 
-1.9.1
-
+tejun
 
