@@ -1,72 +1,85 @@
-X-GM-THRID: 6212059851141414912
-X-Received: by 10.112.149.7 with SMTP id tw7mr3175905lbb.10.1446357893110;
-        Sat, 31 Oct 2015 23:04:53 -0700 (PDT)
+X-GM-THRID: 6249584519546929152
+X-Received: by 10.140.155.14 with SMTP id b14mr6000897qhb.5.1455248727702;
+        Thu, 11 Feb 2016 19:45:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.17.84 with SMTP id 81ls418082wmr.19.gmail; Sat, 31 Oct 2015
- 23:04:52 -0700 (PDT)
-X-Received: by 10.194.80.103 with SMTP id q7mr1428205wjx.1.1446357892561;
-        Sat, 31 Oct 2015 23:04:52 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
-        by gmr-mx.google.com with ESMTPS id s134si294675wmb.3.2015.10.31.23.04.52
+Received: by 10.182.81.225 with SMTP id d1ls710434oby.58.gmail; Thu, 11 Feb
+ 2016 19:45:27 -0800 (PST)
+X-Received: by 10.182.120.170 with SMTP id ld10mr46283744obb.30.1455248727388;
+        Thu, 11 Feb 2016 19:45:27 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id 12si1175667pfb.1.2016.02.11.19.45.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 23:04:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Feb 2016 19:45:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by wmec75 with SMTP id c75so37794196wme.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 23:04:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=tBsZNR0qC/XqlG3LGwb84Eq/6zGBcl7RQrDHVXLfBao=;
-        b=L8Wk6S2mAHT+CssH2SxoR0BK/cMv2TmxEmIM8n+LFSbyg5kdDOz8nKGxv7koZWozQe
-         4sKeYucyADaCzbtyZgyKL2xMYcWPko03vmuEnWvl/y+xv76ejXcTvPNsgcy1KD6H7ZPg
-         aLZzHxvARb1OhdwRQKjohucsLij1utoLloScgkehf7iWBwvRphyfXDJiyzEu36q9ENU2
-         oOpxI5GnxujkR+4c22XugdBWPBr1qtDUIbq6THL9oQEKSS4l+LSzihedGye76o8pTWjg
-         0Pme2UZEFOLvFFZ1BtNrcQ+TzQMrgeGHxjg37uO37FZ8lU3XEkUM/oBhAZ7k0NCvaVj2
-         IrCA==
-X-Received: by 10.28.11.205 with SMTP id 196mr6214040wml.83.1446357892461;
-        Sat, 31 Oct 2015 23:04:52 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id p2sm15447468wjb.21.2015.10.31.23.04.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 31 Oct 2015 23:04:51 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/2] Staging: fwserial: Remove unused functions
-Date: Sun,  1 Nov 2015 11:34:39 +0530
-Message-Id: <1446357881-2672-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150202.5635AB83.0013,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1EA5E102C;
+	Fri, 12 Feb 2016 03:45:27 +0000 (UTC)
+Date: Thu, 11 Feb 2016 19:45:26 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 6/6] staging: comedi: drivers: pcmuio:
+ Merge if conditions
+Message-ID: <20160212034526.GE12182@kroah.com>
+References: <20160210085942.GA14651@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160210085942.GA14651@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-These patches remove unused function and replace wrapper functions
-by direct call.
+On Wed, Feb 10, 2016 at 02:29:42PM +0530, Amitoj Kaur Chawla wrote:
+> Merge if conditions with the same statements.
+> 
+> Found using Coccinelle. The semantic patch used to find this is as
+> follows:
+> 
+> //<smpl>
+> @@
+> statement S;
+> expression e,x;
+> @@
+> 
+> * if(e)
+> (
+> { ... return ...; }
+> &
+> S
+> )
+> 
+> * if(x)
+> (
+> { ... return ...; }
+> &
+> S
+> )
+> //</smpl>
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers/pcmuio.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/drivers/pcmuio.c b/drivers/staging/comedi/drivers/pcmuio.c
+> index 7ea8130..d303b48 100644
+> --- a/drivers/staging/comedi/drivers/pcmuio.c
+> +++ b/drivers/staging/comedi/drivers/pcmuio.c
+> @@ -319,10 +319,7 @@ static void pcmuio_handle_intr_subdev(struct comedi_device *dev,
+>  
+>  	spin_lock_irqsave(&chip->spinlock, flags);
+>  
+> -	if (!chip->active)
+> -		goto done;
+> -
+> -	if (!(triggered & chip->enabled_mask))
+> +	if (!(chip->active && (triggered & chip->enabled_mask)))
+>  		goto done;
 
-Shraddha Barke (2):
-  Staging: fwserial: Remove unused fwtty_bind_console from header
-  Staging: fwserial: Remove wrapper function fwtty_port_put
+This is now harder to read, sorry, I don't like these at all.
 
- drivers/staging/fwserial/fwserial.c | 16 +++++-----------
- drivers/staging/fwserial/fwserial.h |  9 ---------
- 2 files changed, 5 insertions(+), 20 deletions(-)
-
--- 
-2.1.4
-
+greg k-h
 
