@@ -1,76 +1,49 @@
 X-GM-THRID: 6250295934225219584
-X-Received: by 10.66.100.135 with SMTP id ey7mr2410577pab.15.1455297799859;
-        Fri, 12 Feb 2016 09:23:19 -0800 (PST)
+X-Received: by 10.112.138.98 with SMTP id qp2mr1214lbb.4.1455261274902;
+        Thu, 11 Feb 2016 23:14:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.98 with SMTP id k89ls1876735qgk.69.gmail; Fri, 12 Feb
- 2016 09:23:19 -0800 (PST)
-X-Received: by 10.31.11.75 with SMTP id 72mr2487036vkl.2.1455297799108;
-        Fri, 12 Feb 2016 09:23:19 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from mail-yk0-x22a.google.com (mail-yk0-x22a.google.com. [2607:f8b0:4002:c07::22a])
-        by gmr-mx.google.com with ESMTPS id l85si917812ywb.2.2016.02.12.09.23.19
+Received: by 10.28.53.129 with SMTP id c123ls53371wma.30.gmail; Thu, 11 Feb
+ 2016 23:14:34 -0800 (PST)
+X-Received: by 10.28.128.204 with SMTP id b195mr263814wmd.7.1455261274444;
+        Thu, 11 Feb 2016 23:14:34 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w197si43717wmw.3.2016.02.11.23.14.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 09:23:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c07::22a as permitted sender) client-ip=2607:f8b0:4002:c07::22a;
+        Thu, 11 Feb 2016 23:14:34 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c07::22a as permitted sender) smtp.mailfrom=htejun@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-yk0-x22a.google.com with SMTP id u9so36828558ykd.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 09:23:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=Z8P/P10lFsnln1YZWDauzStW1C6Mx8tX8+41c+aeJOI=;
-        b=DT4wJuy+C5eLf7tECBjEmf7n3phJx4FlhQAuLAsl2ERwuLhgRIS8F4piT1bCRHl64D
-         GhhnebQw4yagoSq4zP0IZdl2mXCDHdeN+OTJiE8VQg6CCVNiZQ38a8nkGVsrll1yVmG+
-         TlsUlcrlYYHwLGyboPDEDy7vttPyon7siP6Z++X1bIWfjgaWadEyNFHmgE3xA4eiClAp
-         YOPQVtiNx7NPEiUWKaFEKe7SeSnmFEUx9lvGWW9Jp/JzOUlThu7w3GuSZBf5+IiUKyoP
-         2U0THEVoAF/SYkO4xxlEyEmqlsGcR0ivimjp4FbsXBEucG6T/utzbxnpEZYutVUbRJ9k
-         /1IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-type:content-disposition
-         :in-reply-to:user-agent;
-        bh=Z8P/P10lFsnln1YZWDauzStW1C6Mx8tX8+41c+aeJOI=;
-        b=RmNeM+PRZ0sr3nIUTbAFg+GCFXiUjFzDRP3HPvbriYu4Y/9QcHH6eLSKOCHYCbvSPD
-         OIgjuvdmTfR73ckd+V7v13a12KbqX5/G5geArZZDr+FUC22pwEKZ/OCy8rw3VH5EkNEw
-         5SSxGT2/Vcf7FxTNg4D+DlSlwrn0Y/ms3bsLBP0HQwu5X53qefhkoUgw6id9Bl9Zun90
-         wyLlDIKCsNihjCDfAKJx+RHHTygCLDafP1EvC1Pmd2RhWQM8CYo2PYg2DdLxZJA3bUzl
-         0Wf3HjqmHPmE4itZIuxSASUR446c8bsQW95iAUfTFwKDKyBu5Gg2BmaFPUzyhr8WcZDj
-         i8WQ==
-X-Gm-Message-State: AG10YOSiEyRJfA1BBriJoigMWLEWr6Cic6EDszvu5S32/TrOAOVvs21cT6O43dYl3UQ7/A==
-X-Received: by 10.37.64.214 with SMTP id n205mr1679415yba.43.1455297798978;
-        Fri, 12 Feb 2016 09:23:18 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from localhost ([2620:10d:c091:200::a:8dab])
-        by smtp.gmail.com with ESMTPSA id t76sm10630351ywe.47.2016.02.12.09.23.18
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 09:23:18 -0800 (PST)
-Sender: Tejun Heo <htejun@gmail.com>
-Date: Fri, 12 Feb 2016 12:23:17 -0500
-From: Tejun Heo <tj@kernel.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,435,1449529200"; 
+   d="scan'208";a="202764900"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Feb 2016 08:14:33 +0100
+Date: Fri, 12 Feb 2016 08:14:33 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
 To: Alison Schofield <amsfield22@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: vt6656: move local var init
  closer to usage
-Message-ID: <20160212172317.GL3741@mtj.duckdns.org>
-References: <20160212070014.GA13288@d830.WORKGROUP>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20160212070014.GA13288@d830.WORKGROUP>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Message-ID: <alpine.DEB.2.02.1602120814150.2055@localhost6.localdomain6>
+References: <20160212070014.GA13288@d830.WORKGROUP>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Hello, Alison.
 
-On Thu, Feb 11, 2016 at 11:00:22PM -0800, Alison Schofield wrote:
+
+On Thu, 11 Feb 2016, Alison Schofield wrote:
+
 > Move init of struct urb to after sk_buf is verified otherwise
 > the init is wasted if we exit early.
-> 
+>
 > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
 > ---
 >  drivers/staging/vt6656/usbpipe.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -93,17 +66,14 @@ On Thu, Feb 11, 2016 at 11:00:22PM -0800, Alison Schofield wrote:
 >  	usb_fill_bulk_urb(urb,
 >  			  priv->usb,
 >  			  usb_rcvbulkpipe(priv->usb, 2),
-
-I'd actually go the other way and do
-
-	struct urb *urb = rcb->urb;
-
-Compilers can easily optimize these orderings.  The focus should be on
-brevity and readability instead of micro optimizations which don't
-really yield anything.
-
-Thanks.
-
--- 
-tejun
+> -- 
+> 2.1.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160212070014.GA13288%40d830.WORKGROUP.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
