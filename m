@@ -1,106 +1,87 @@
 X-GM-THRID: 6250306033025024000
-X-Received: by 10.140.252.131 with SMTP id x125mr81992qhc.12.1455262793352;
-        Thu, 11 Feb 2016 23:39:53 -0800 (PST)
+X-Received: by 10.107.62.8 with SMTP id l8mr1075266ioa.11.1455262788338;
+        Thu, 11 Feb 2016 23:39:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.228 with SMTP id c91ls1638674qgf.37.gmail; Thu, 11 Feb
- 2016 23:39:51 -0800 (PST)
-X-Received: by 10.140.150.83 with SMTP id 80mr90760qhw.6.1455262791090;
-        Thu, 11 Feb 2016 23:39:51 -0800 (PST)
+Received: by 10.50.112.42 with SMTP id in10ls88531igb.13.canary; Thu, 11 Feb
+ 2016 23:39:48 -0800 (PST)
+X-Received: by 10.107.33.200 with SMTP id h191mr1108631ioh.9.1455262788108;
+        Thu, 11 Feb 2016 23:39:48 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id ui7si1611594pab.0.2016.02.11.23.39.51
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id u66si1466043pfa.2.2016.02.11.23.39.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 23:39:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 11 Feb 2016 23:39:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 71so3650025pfv.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 23:39:51 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id e127so3646659pfe.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 23:39:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=2IhgcsRkOrHuKd8PUVTw8gDS9xAlVGdJEfX0h3Ujzl8=;
-        b=s0RLQyeqV2wvjmQYz09oEbHf2SQCBn4gLZFyNjHvbngRhwVFnK91KQyyNoFj+2CFsf
-         w90ZTxyEvmjVdndAnyMaL46fJrkHRapeoEMZ0RDJ3u0+Jy6Gt+nHz8cbXq0BLwtlz1wA
-         AUVFOrC7vDi21CNmL+UzRInDnLrKT7mDCrmq9+oFfZ64pbmrO8u0AYFvJ0ghL6hJc1yV
-         uz34Sg0x2KkD/2pvHiDreIV7OgAwKRFREjpnusDpmQTAVLnllwlsnCs60AQ0+UKSUGs8
-         FIvlv8ctomI1KhkXMjzyAEmUSJaecJ9qqE4Ws2cGpiO9yPcGqn/FPeW8XBSy5sJeoCdX
-         vzbA==
+        bh=VzmesWpmdg2t7zjzdklBUv+OQjujEnAsB4TP6NXQQTo=;
+        b=jgXVkhkb5zqoHAfOpp30nc06ENGrHIqEJ/mYm9izs8/TmnJ8GvaTO2UissEMEo7wv3
+         1lOP42eyxkNaI58QkwJ3iZgSv9oNBCVhjqvSp5UytFeTu4kKzXhO5+SZXQHEIA2KGBXf
+         HHcjnv+T0KNSGsLwgqs4QFtnWrKOeixE0gdXpj8V8rHoNXMu1AfKnb44d+eV0iCATgdw
+         jjCVuNxcTeH6Zlev+jZ35vbRYN8xl3Vm1Ki9xqcVNGqOamjd/dO63+F4wJXZcDAxG4vp
+         350i2u9+eHpJBAvNYMmUwtwx9cubL+/MVwed9gXMiKaHxd1yeNRspLMfOvDGF9nPsg+w
+         O0bQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=2IhgcsRkOrHuKd8PUVTw8gDS9xAlVGdJEfX0h3Ujzl8=;
-        b=kVzeeenJ5fWWtbo2ZffcHkzohkfW/e4+6nYQXhQ7DewEurnliZLIl/50te5zlDpae+
-         OjRF8rKHmEubT+lm+WfXh+WobgxyzN/AGlkq5b5c2ZDfG4ctsqQrDgCjHR47CLiH7nGI
-         ZId22bUVfoWSMQu4vhYzGCigOVQIeWkrMInkJVGdcVsnzl3coS0DjSR2DkEQPmNs992F
-         7oSwrxVQhSsZJSgBiSHtq2OkqKkMcEVcur2GiXlMIZ8YUKHimZkW9f40ImdZDbwBu+k+
-         kosJptaoIQQ9l0oouRrGFF0eUFb+x0X1ML0/YyUfZfoUca0WUuHSAFVM4H4GyFvUQcnR
-         sHyQ==
-X-Gm-Message-State: AG10YOQ6EzigNtW8PwMLKCTMFxzT482Xeq0KA1F82feQsZTx9Y3uMtT6UspCbUCwm2d2fg==
-X-Received: by 10.98.15.135 with SMTP id 7mr127249pfp.142.1455262790963;
-        Thu, 11 Feb 2016 23:39:50 -0800 (PST)
+        bh=VzmesWpmdg2t7zjzdklBUv+OQjujEnAsB4TP6NXQQTo=;
+        b=TKkQFnapQR1D2gkvYaz7alx4On7bYuw4N5DeYetIOD/PWSGm/5rF3aCDmLmTSa1b/h
+         aXUWQUAjPiqr6mbXaiPMLNT7fFoALQj0uUrR0j7DcjnM2R4Vbh8CyrOxqWs0g3nrFBM0
+         gI29eQFFOV0gPi1d4Oa6h0N/xyKqXecSzOXc0HSjQg7nGsDkC3oaN8SQm4CyINPocsHS
+         FQasiOMqRKxHKTHEsD+HpcWE+c/q3Vf/DBdnGOThaE29LexqiAQwtEwBpnrUFNgaKnhJ
+         VVLc+xt/rnG6vZJhesBzSjCLm14yuyhSSDfZNV1HXfLPHvp2zVq9dUuVaTDLBJx9MtUV
+         jOew==
+X-Gm-Message-State: AG10YOQH59JPGqYVmMPkSpJKL6GsTDA30C4JPyEVljcbf96xGL5w37lKJPUQjDQMbluPmQ==
+X-Received: by 10.98.87.142 with SMTP id i14mr101715pfj.63.1455262788007;
+        Thu, 11 Feb 2016 23:39:48 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-Mint ([103.14.62.60])
-        by smtp.gmail.com with ESMTPSA id xu1sm17056238pab.31.2016.02.11.23.39.50
+        by smtp.gmail.com with ESMTPSA id xa9sm17047016pab.44.2016.02.11.23.39.47
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 11 Feb 2016 23:39:50 -0800 (PST)
+        Thu, 11 Feb 2016 23:39:47 -0800 (PST)
 From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v2 5/5] staging: fbtft: Remove the use of CamelCase
-Date: Fri, 12 Feb 2016 15:39:30 +0800
-Message-Id: <730971581af26a046e81704dc364a270aa028ab5.1455260992.git.eraretuya@gmail.com>
+Subject: [PATCH v2 4/5] staging: fbtft: Delete blank line after '{' brace
+Date: Fri, 12 Feb 2016 15:39:29 +0800
+Message-Id: <5920c8881ff0e5a8184ddf00439c84ec8e72ef55.1455260992.git.eraretuya@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1455260992.git.eraretuya@gmail.com>
 References: <cover.1455260992.git.eraretuya@gmail.com>
 In-Reply-To: <cover.1455260992.git.eraretuya@gmail.com>
 References: <cover.1455260992.git.eraretuya@gmail.com>
 
-Rename the macro defining constant ROWxCOL into ROW_X_COL to remove
-checkpatch check concerning use of CamelCase and to achieve better
-readability.
+Omit the whitespace after '{' brace as suggested by checkpatch.
 
-CHECK: Avoid CamelCase: <ROWxCOL>
+CHECK: Blank lines aren't necessary after an open brace '{'
 
 Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/fbtft/fb_ili9481.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/fbtft/fb_ili9481.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/staging/fbtft/fb_ili9481.c b/drivers/staging/fbtft/fb_ili9481.c
-index fb0e6c3..242adb3 100644
+index 6fa5e4c..fb0e6c3 100644
 --- a/drivers/staging/fbtft/fb_ili9481.c
 +++ b/drivers/staging/fbtft/fb_ili9481.c
-@@ -64,13 +64,13 @@ static void set_addr_win(struct fbtft_par *par, int xs, int ys, int xe, int ye)
+@@ -28,7 +28,6 @@
+ #define HEIGHT		480
  
- #define HFLIP 0x01
- #define VFLIP 0x02
--#define ROWxCOL 0x20
-+#define ROW_X_COL 0x20
- static int set_var(struct fbtft_par *par)
- {
- 	switch (par->info->var.rotate) {
- 	case 270:
- 		write_reg(par, MIPI_DCS_SET_ADDRESS_MODE,
--			  ROWxCOL | HFLIP | VFLIP | (par->bgr << 3));
-+			  ROW_X_COL | HFLIP | VFLIP | (par->bgr << 3));
- 		break;
- 	case 180:
- 		write_reg(par, MIPI_DCS_SET_ADDRESS_MODE,
-@@ -78,7 +78,7 @@ static int set_var(struct fbtft_par *par)
- 		break;
- 	case 90:
- 		write_reg(par, MIPI_DCS_SET_ADDRESS_MODE,
--			  ROWxCOL | (par->bgr << 3));
-+			  ROW_X_COL | (par->bgr << 3));
- 		break;
- 	default:
- 		write_reg(par, MIPI_DCS_SET_ADDRESS_MODE,
+ static int default_init_sequence[] = {
+-
+ 	/* SLP_OUT - Sleep out */
+ 	-1, MIPI_DCS_EXIT_SLEEP_MODE,
+ 	-2, 50,
 -- 
 1.9.1
 
