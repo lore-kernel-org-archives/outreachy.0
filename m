@@ -1,100 +1,70 @@
-X-GM-THRID: 6264891675025342464
-X-Received: by 10.182.91.9 with SMTP id ca9mr27767910obb.7.1458658761309;
-        Tue, 22 Mar 2016 07:59:21 -0700 (PDT)
+X-GM-THRID: 6249320811377721344
+X-Received: by 10.66.248.234 with SMTP id yp10mr45711067pac.10.1455248912751;
+        Thu, 11 Feb 2016 19:48:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.29.5 with SMTP id f5ls1210835igh.30.canary; Tue, 22 Mar
- 2016 07:59:20 -0700 (PDT)
-X-Received: by 10.107.131.230 with SMTP id n99mr27341843ioi.30.1458658760833;
-        Tue, 22 Mar 2016 07:59:20 -0700 (PDT)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x233.google.com (mail-pf0-x233.google.com. [2607:f8b0:400e:c00::233])
-        by gmr-mx.google.com with ESMTPS id tu5si4008262pab.2.2016.03.22.07.59.20
+Received: by 10.140.105.75 with SMTP id b69ls1250445qgf.53.gmail; Thu, 11 Feb
+ 2016 19:48:32 -0800 (PST)
+X-Received: by 10.140.136.135 with SMTP id 129mr46585336qhi.10.1455248912309;
+        Thu, 11 Feb 2016 19:48:32 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id tn7si1323287pac.1.2016.02.11.19.48.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Mar 2016 07:59:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) client-ip=2607:f8b0:400e:c00::233;
+        Thu, 11 Feb 2016 19:48:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x233.google.com with SMTP id u190so316014668pfb.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 22 Mar 2016 07:59:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=tnqfVANYWBc1C/I5gRwUIaWlGX2LPei7wy5NREXU7uk=;
-        b=NeZGrbcb4p91nbnUpkiNOXaaJ+ITYxuP9OZ86bDO1Kk5WMUGozMlmYTkZtaaR3wuln
-         GHjvH1neSejjStpKuvvVqA+99AVvUiRuQogWBMHDO2cHOvk1hDmOnPyHQMIhdmKmUvvA
-         jDeNRjmapkDuOxOLPq74qMQCUmhcw2NzjreD1yaoOdnVuhCiUVw7sDo/7xEjdW9wXsED
-         G5/FlIWOBeO4WhGzSxhaDNyzpDa706dt3e2bJJxQgcjezSUBA839zpgme46IuezfCMk2
-         aBSLEBfSSUs0HT08nmgg6i4fnbQdYC1FXE1zleMWMPJNkC2sDAsWbTjYmlEjR6oHwxXN
-         EFRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=tnqfVANYWBc1C/I5gRwUIaWlGX2LPei7wy5NREXU7uk=;
-        b=aSSFYwP8TLXTN1t904NMorjl4tzc8VmY2IhFc58Jb/mQOzhWqIIlGgg4RIT+FaHAu9
-         wqI8tLJp4IXmwAvDlUJZ6jvZ58TSNpRrNAVRzxCr4MrALUYDqU+Rdhtuf130Us3uyqNM
-         w7jj+XC5AsnlsMz1mZCHgMXan68xlZtZqCM7K9T/AWOmUUWYMpndkoIuSLzf/oW9DRgw
-         lbHAu29jLoZ33+Ne7DX8A3o8+ifpKUPU56w7tcW+0q6PkKVRKY6NPrjfiuS5b56ZnuUj
-         EvNXasgxuLp2yWCskHceNEcf4QN9XgAAxjft1ixuuZyr8xZDjPoEkOTdFUjHxWCcNB0T
-         vjcw==
-X-Gm-Message-State: AD7BkJIKYa4AJuKOzn6UqV8m0kYdr0sjcWVy32g27MTmClYB6CToAZ1k1H+PCWo8ql3r7A==
-X-Received: by 10.66.193.202 with SMTP id hq10mr53529698pac.6.1458658760398;
-        Tue, 22 Mar 2016 07:59:20 -0700 (PDT)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id n11sm49010917pfb.74.2016.03.22.07.59.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 22 Mar 2016 07:59:19 -0700 (PDT)
-Date: Tue, 22 Mar 2016 20:29:13 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: mlme_linux: Clean up tests if NULL
- returned on failure
-Message-ID: <20160322145913.GA5282@Karyakshetra>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id EDFBFF47;
+	Fri, 12 Feb 2016 03:48:31 +0000 (UTC)
+Date: Thu, 11 Feb 2016 19:48:31 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: xgifb: Use shorthand operator
+Message-ID: <20160212034831.GA23192@kroah.com>
+References: <1455033333-31657-1-git-send-email-bhumirks@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <1455033333-31657-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Some functions like kzalloc return NULL on failure.
-When NULL represents failure, !x is commonly used.
+On Tue, Feb 09, 2016 at 09:25:33PM +0530, Bhumika Goyal wrote:
+> Use shorthand operator for assignment statement to make code look cleaner.
+> Made a coccinelle script for this and did changes.
+> @@
+> identifier data;
+> constant x;
+> @@
+> 
+> (
+> - data = data + x
+> + data += x
+> |
+> - data = data - x
+> + data -= x
+> )
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/xgifb/vb_setmode.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
+> index de96da1..0daa661 100644
+> --- a/drivers/staging/xgifb/vb_setmode.c
+> +++ b/drivers/staging/xgifb/vb_setmode.c
+> @@ -289,7 +289,7 @@ static void XGI_SetCRT1Timing_H(struct vb_device_info *pVBInfo,
+>  
+>  	if (HwDeviceExtension->jChipType >= XG20) {
+>  		data = xgifb_reg_get(pVBInfo->P3d4, 0x04);
+> -		data = data - 1;
+> +		data -= 1;
 
-This was done using Coccinelle:
+Sorry, I'm not going to take these kinds of "cleanups" anymore, they
+aren't doing much...
 
-@@
-expression *e;
-identifier l1;
-@@
-
-e = \(kmalloc\|kzalloc\|kcalloc\|devm_kzalloc\)(...);
-...
-- e == NULL
-+ !e
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8712/mlme_linux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8712/mlme_linux.c b/drivers/staging/rtl8712/mlme_linux.c
-index e4e4bde..af7c4a4 100644
---- a/drivers/staging/rtl8712/mlme_linux.c
-+++ b/drivers/staging/rtl8712/mlme_linux.c
-@@ -153,7 +153,7 @@ void r8712_report_sec_ie(struct _adapter *adapter, u8 authmode, u8 *sec_ie)
- 	buff = NULL;
- 	if (authmode == _WPA_IE_ID_) {
- 		buff = kzalloc(IW_CUSTOM_MAX, GFP_ATOMIC);
--		if (buff == NULL)
-+		if (!buff)
- 			return;
- 		p = buff;
- 		p += sprintf(p, "ASSOCINFO(ReqIEs=");
---
-2.1.4
-
+greg k-h
 
