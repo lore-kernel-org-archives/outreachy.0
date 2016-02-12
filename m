@@ -1,130 +1,76 @@
-X-GM-THRID: 6255538315801395200
-X-Received: by 10.140.155.14 with SMTP id b14mr431500qhb.5.1456481012498;
-        Fri, 26 Feb 2016 02:03:32 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.25.175 with SMTP id 44ls966736qgt.1.gmail; Fri, 26 Feb
- 2016 02:03:31 -0800 (PST)
-X-Received: by 10.140.240.129 with SMTP id l123mr444241qhc.8.1456481011983;
-        Fri, 26 Feb 2016 02:03:31 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id ff2si1951043pad.2.2016.02.26.02.03.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 02:03:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q63so1128881pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 02:03:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=8OZvuoGVH8rSD6KKcR96p9q/w9zeLtEHKDryk00UL2s=;
-        b=ndWxPZb8AbSc6UIFKSlHu6VGpGdxIXXkt575YjKfN8/SSuaHQcMv7f4cbo31drSOGZ
-         x+fhQetqEr7h4E4sXMQqrc1sVXYC/UR6occUyZc0ZY3ERmcDyVzfkE/ajiRY/T2ZIkQu
-         4e+crzk63tLw2W1CL4IXxJdVTkt0HxpS6BI5loE69t5/POLXjfHmY/8GHlquN4EhuFV8
-         kcXNGBNr5K1j2MkoFIeq4h/mLb7JRneJLOxgaEfHuk0tiu8k63fCydlL1SAJJoDppo7/
-         Sfui9ewPsQhupA7z+qKJDYPAuJF9fLSbA7nL7VxraWtPRafIeszXhw/wEV35tCk3xrjR
-         hPig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=8OZvuoGVH8rSD6KKcR96p9q/w9zeLtEHKDryk00UL2s=;
-        b=kyq22gdel92Hc2S1Xi1Uy7XX/ELbT7aGWou37aPHuTqvCaE0o0pba9VK0eD737/Ngh
-         tO/B/56daDGQ/PwG2vhRbtSbs2vOyyZxwx4pV4Vg0UTCgvbE4s7M3GBzYtEZRHEWNINw
-         ushxFjSnkPbOOy/z2VGs5bKkL7aLLFojwuwkN1zVr4R4b9UY65TI/VWSqSbWvSF/JGYi
-         fsWy9l56kbFRHI6gsFV0jO9ew88cvDFkAWQD7q0wCr+J17YjbKh9SDG6P8aE8d1dfJJY
-         rTX9pkRpk/O3mPFWNy6yYMEWVaRE59UHvn1HRSUkqJ98ZN/y1KiSu5ZPhdAXmaTBJOCw
-         k8VA==
-X-Gm-Message-State: AD7BkJJ0b6NkRkJGOlMNORcjS7ftsXrF/IIvf3lnVNeIDweTn7uln9W5DrUB7Yk2rDafnw==
-X-Received: by 10.98.8.200 with SMTP id 69mr823973pfi.39.1456481011822;
-        Fri, 26 Feb 2016 02:03:31 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id tn5sm18143385pac.32.2016.02.26.02.03.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 02:03:31 -0800 (PST)
-Date: Fri, 26 Feb 2016 15:34:08 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: lustre: osc: Use list_for_each_entry
-Message-ID: <20160226100408.GA11156@Karyakshetra>
+X-GM-THRID: 6250067479758897152
+Date: Thu, 11 Feb 2016 20:03:33 -0800 (PST)
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: janani.rvchndrn@gmail.com
+Message-Id: <99540e60-f0a2-484a-a4f3-69fc9a34f297@googlegroups.com>
+In-Reply-To: <20160212033630.GA19873@kroah.com>
+References: <20160211211314.GA4118@janani-Inspiron-3521>
+ <20160212033630.GA19873@kroah.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: unisys: Remove unneeded
+ parentheses on the right hand side of assignment
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2573_823495157.1455249813761"
+X-Google-Token: EJWz9bUF8MTTi8BCr1c0
+X-Google-IP: 72.231.208.13
 
-In general, doubly linked lists are iterated  using list_empty
-and list_entry functions. But it can be better written using
-list_for_each_entry macro.
+------=_Part_2573_823495157.1455249813761
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2574_104750970.1455249813762"
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry and list_for_each_entry_safe(if list_del is
-used int the loop).
+------=_Part_2574_104750970.1455249813762
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-This was done with Coccinelle.
 
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
+>
+>
+> The subject you used was identical to the previous patch you sent, yet 
+> it modified different things, so I wouldn't be able to take this one. 
+>
+> Try putting the filename in the Subject: line if you do this again, 
+> something like: 
+>         Subject: [PATCH] staging: unisys: visorinput.c: Remove... 
+>
 
-T *I1;
-+ T *temp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, temp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
+Sure, I will do that next time.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- Changes in v2:
-	-Fixed typo "lusture" to "lustre" in the subject.
+Thanks,
+Janani. 
 
- drivers/staging/lustre/lustre/osc/osc_page.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+>
+>
+> thanks, 
+>
+> greg k-h 
+>
 
-diff --git a/drivers/staging/lustre/lustre/osc/osc_page.c b/drivers/staging/lustre/lustre/osc/osc_page.c
-index d11582a..f7153bc 100644
---- a/drivers/staging/lustre/lustre/osc/osc_page.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_page.c
-@@ -564,6 +564,7 @@ int osc_lru_shrink(struct client_obd *cli, int target)
- 	struct cl_object *clobj = NULL;
- 	struct cl_page **pvec;
- 	struct osc_page *opg;
-+	struct osc_page *temp;
- 	int maxscan = 0;
- 	int count = 0;
- 	int index = 0;
-@@ -583,14 +584,12 @@ int osc_lru_shrink(struct client_obd *cli, int target)
- 	client_obd_list_lock(&cli->cl_lru_list_lock);
- 	atomic_inc(&cli->cl_lru_shrinkers);
- 	maxscan = min(target << 1, atomic_read(&cli->cl_lru_in_list));
--	while (!list_empty(&cli->cl_lru_list)) {
-+	list_for_each_entry_safe(opg, temp, &cli->cl_lru_list, ops_lru) {
- 		struct cl_page *page;
+------=_Part_2574_104750970.1455249813762
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
- 		if (--maxscan < 0)
- 			break;
+<div dir=3D"ltr"><blockquote class=3D"gmail_quote" style=3D"margin: 0;margi=
+n-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><font color=
+=3D"#666666"><br>The subject you used was identical to the previous patch y=
+ou sent, yet
+<br>it modified different things, so I wouldn&#39;t be able to take this on=
+e.
+<br>
+<br>Try putting the filename in the Subject: line if you do this again,
+<br>something like:
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0Subject: [PATCH] stagin=
+g: unisys: visorinput.c: Remove...
+<br></font></blockquote><div><br></div><div>Sure, I will do that next time.=
+</div><div><br></div><div>Thanks,</div><div>Janani.=C2=A0</div><blockquote =
+class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1p=
+x #ccc solid;padding-left: 1ex;">
+<br>
+<font color=3D"#666666"><br>thanks,
+<br>
+<br>greg k-h
+</font><br></blockquote></div>
+------=_Part_2574_104750970.1455249813762--
 
--		opg = list_entry(cli->cl_lru_list.next, struct osc_page,
--				     ops_lru);
- 		page = cl_page_top(opg->ops_cl.cpl_page);
- 		if (cl_page_in_use_noref(page)) {
- 			list_move_tail(&opg->ops_lru, &cli->cl_lru_list);
---
-2.1.4
-
+------=_Part_2573_823495157.1455249813761--
 
