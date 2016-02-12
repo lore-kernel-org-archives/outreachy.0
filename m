@@ -1,64 +1,91 @@
-X-GM-THRID: 6475953327371714560
-X-Received: by 10.223.163.215 with SMTP id m23mr156823wrb.25.1507800381302;
-        Thu, 12 Oct 2017 02:26:21 -0700 (PDT)
+X-GM-THRID: 6249603259895382016
+X-Received: by 10.129.131.206 with SMTP id t197mr14154686ywf.50.1455248775523;
+        Thu, 11 Feb 2016 19:46:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.229.10 with SMTP id c10ls743688wmh.10.canary-gmail; Thu, 12
- Oct 2017 02:26:20 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCPFIQ0LYmLgBlqrKdzlthpaiujk9NXzBGGhVXe8Q6yFgnXfJDZiDaRJz3Yk/mk1RzkAkbv
-X-Received: by 10.223.151.213 with SMTP id t21mr167474wrb.12.1507800380514;
-        Thu, 12 Oct 2017 02:26:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507800380; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Dss+YBVNdLQAnWX7WfZZmv9xpC+TehxK+VLac9FmcCCM8i8Me5/zRVCDY0p/NjnR0l
-         HTYL5GMBJLoAW2vv4pOS0wNB0/ootZCvdvkjqVljjrggjZsB8Qjh9ZsDZXEMJ0juHhmG
-         AuWe2CcljrHWV6LKCVTldL9SoNa2Bnl2IKf1Pf5aevavi6UndIapuXDcm+HoYOEfJtp7
-         lsb0YTWvoAf4ysZRuHoDF8n0J18IVPmrV3Ib5bu2ha3mkyq5mFVLNuJFsYdcKI8kt8aP
-         lqys+jqP3lxS9diKeGRDaAuajzDDmb2Rs/ZWmMbc6clDh/4OfzwG0B/TO8fR+wUf0Q4w
-         fmsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date
-         :arc-authentication-results;
-        bh=EqGZH85nTyrJ6ilQdwNkWPtWCA/Ae3WhJpquWLXECt8=;
-        b=oRA5jpk8DnjTiNArDIf+IE8DxQ2IfAHyLDgDwAOWrszegAwVjYdyMCrhI7YB9H25s5
-         MpDkUnB7bEqQEbnb00tJ34nGGWEtWLHHYZMvdIZNqEvnEyw+XB92YsXITCcVtMrqtlFA
-         SoVZebTWHvR0Tg8/Zbw+l3NBmKd+nQECppLgnNMdd5h7Cd230VTnSHD4E/0B2ITOQotL
-         bLFFNs8yiFzxKxSsyiW6HC2m+U+qJ5J2ZK05Dh5OzPEKAO5flulBz2/s/y3Zb01oYnEz
-         V/nlIigPv/aLzTgNUQZ3qIdtXnHV3zmyAJ0Zjq98AzJswWK6KlxVhWEhCi+6VF5eABx0
-         pgxQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id l133si1870427wmb.3.2017.10.12.02.26.20
+Received: by 10.182.121.202 with SMTP id lm10ls768150obb.7.gmail; Thu, 11 Feb
+ 2016 19:46:15 -0800 (PST)
+X-Received: by 10.182.28.41 with SMTP id y9mr47088259obg.14.1455248775187;
+        Thu, 11 Feb 2016 19:46:15 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ui7si1532288pab.0.2016.02.11.19.46.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 02:26:20 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 11 Feb 2016 19:46:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.43,365,1503352800"; 
-   d="scan'208";a="240730880"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2017 11:26:17 +0200
-Date: Thu, 12 Oct 2017 11:26:15 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: applications
-Message-ID: <alpine.DEB.2.20.1710121047050.3239@hadrien>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id E50C01046;
+	Fri, 12 Feb 2016 03:46:14 +0000 (UTC)
+Date: Thu, 11 Feb 2016 19:46:14 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3 0/5] staging: comedi: Merge if
+ conditions
+Message-ID: <20160212034614.GF12182@kroah.com>
+References: <20160211143808.GA300@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160211143808.GA300@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-If you have not yet done so, please feel free to work on your
-applications:
+On Thu, Feb 11, 2016 at 08:08:08PM +0530, Amitoj Kaur Chawla wrote:
+> This patchset merges if conditions with the same statements using the
+> following Coccinelle script:
+> 
+> //<smpl>
+> @@
+> statement S;
+> expression e,x;
+> @@
+> 
+> * if(e)
+> (
+> { ... return ...; }
+> &
+> S
+> )
+> 
+> * if(x)
+> (
+> { ... return ...; }
+> &
+> S
+> )
+> //</smpl>
+> 
+> Amitoj Kaur Chawla (5):
+>   staging: comedi: drivers: comedi_8254: Merge if conditions
+>   staging: comedi: comedi_fops: Merge if conditions
+>   staging: comedi: range: Merge if conditions
+>   staging: comedi: drivers: dt282x: Merge if conditions
+>   staging: comedi: drivers: pcmuio: Merge if conditions
+> 
+> Changes in v3:
+>         -Removed extraneous parantheses in Patch 1/5 and 2/5
+> 
+> Changes in v2:
+>         -Patch 1/5 Merged if conditions instead of dropping them.
+>         -Patch 2/5 Merged Patch 2/6 and 3/6 of first version by not
+>          dropping if conditions and only merging them for the same
+>          file.
+>         -Patch 3/5 Removed unnecessary parentheses.
+>         -Patch 4/5 and 5/5 While merging use !x || !y instead of
+>          !(x && y)
+> 
+>  drivers/staging/comedi/comedi_fops.c         | 14 +++-----------
+>  drivers/staging/comedi/drivers/comedi_8254.c |  4 +---
+>  drivers/staging/comedi/drivers/dt282x.c      |  5 +----
+>  drivers/staging/comedi/drivers/pcmuio.c      |  5 +----
+>  drivers/staging/comedi/range.c               |  4 +---
+>  5 files changed, 7 insertions(+), 25 deletions(-)
 
-https://outreachy.gnome.org/
+Sorry I didn't see this version first.
 
-Note that it is not necessary to create a literary masterpiece.  We are
-really looking at the quality of your contributions, more than the quality
-of the application.  But the application does provide some background
-information that can be taken into account.
+I don't want to take these for the same reasons as before, sorry.
 
-julia
+greg k-h
 
