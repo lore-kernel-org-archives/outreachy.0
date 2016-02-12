@@ -1,96 +1,77 @@
-X-GM-THRID: 6249397284630429696
-X-Received: by 10.13.192.134 with SMTP id b128mr34870412ywd.43.1455051192848;
-        Tue, 09 Feb 2016 12:53:12 -0800 (PST)
+X-GM-THRID: 6249471421100064768
+X-Received: by 10.50.43.166 with SMTP id x6mr1434760igl.1.1455247710931;
+        Thu, 11 Feb 2016 19:28:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.42.164 with SMTP id p4ls1806257obl.13.gmail; Tue, 09 Feb
- 2016 12:53:11 -0800 (PST)
-X-Received: by 10.182.236.4 with SMTP id uq4mr35580681obc.3.1455051191838;
-        Tue, 09 Feb 2016 12:53:11 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x235.google.com (mail-qg0-x235.google.com. [2607:f8b0:400d:c04::235])
-        by gmr-mx.google.com with ESMTPS id w126si2320393ywe.6.2016.02.09.12.53.11
+Received: by 10.140.43.247 with SMTP id e110ls1253973qga.44.gmail; Thu, 11 Feb
+ 2016 19:28:30 -0800 (PST)
+X-Received: by 10.129.109.197 with SMTP id i188mr44692726ywc.8.1455247710206;
+        Thu, 11 Feb 2016 19:28:30 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id u66si1385525pfa.2.2016.02.11.19.28.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 12:53:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::235 as permitted sender) client-ip=2607:f8b0:400d:c04::235;
+        Thu, 11 Feb 2016 19:28:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::235 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x235.google.com with SMTP id y9so145619824qgd.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 12:53:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=7P+FqYLa4eTdywhKTxViKRh6+dBjPekrqUAJ+lbcGkw=;
-        b=pMpxhLi49nwXzbrokxcUUadiya9alEp+vaQ57bbbquioIhUzyUqJQUhtib7puMqP5W
-         Rh4bHdxSKaWnjTr/I5XVYZ8o2QiryfR9ixikqGA6LZsvEYJxGQib2ImF3KnQQRoeGTYN
-         XSja52BG/JPRSTJr5Atum4hv7iAi83QO2Ca9FvY6kz5oIWE7bQUnIzsMa6ojG3zcYqka
-         96dVPVwsSml/xX7gD1/V1mxkEWI6EdhE3DwCrZ4trKJYg8TjOTgfJHQty8Ypf70j2VGB
-         3nsXk/Ks0zwfsuTeUJm6AU4zI2d4z1UdzmXdpI2ZBrkjH5fIb7PBKGIMVZq44c4EQD6v
-         HtTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=7P+FqYLa4eTdywhKTxViKRh6+dBjPekrqUAJ+lbcGkw=;
-        b=KgcYjTqZeehrsz31xux/OtrcUCQpfe+K1htm1Djdei5VihjOPkouO8Mqvp/s6ouaKP
-         Btr7PXn/QRzHy1oO/AvjeUlhuEK7GjprWTwV/uiE4i8jPfRticjqv7p5oJ3eomMA6Nbk
-         pwLuG3yjeUJ2uIzvY7Kvt6Uol2/4+RRDKgv+bfm9bhglMraRY0LNQw60UKIQ4QMl0fcC
-         Mt3EAj4X1hiMCNKwqyPOA0mVwOr+Q9oneOfCWkp+Btvr8DUXmhgICAHiGNuwenZceUHK
-         xruXR6B7ROTBrYdBQC3G8s/WFfQJqLbdY1TJg1bOkL019PamIe6oIZFern1KjfGoXo3j
-         fsmg==
-X-Gm-Message-State: AG10YOTy6iH4lOT4iOFHLkq5fT9IrXLVY5Es6R2GU8oEQSphA/zuEztEukqRbrzCJstCfw==
-X-Received: by 10.140.151.4 with SMTP id 4mr45300308qhx.16.1455051191695;
-        Tue, 09 Feb 2016 12:53:11 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id v65sm16328671qhc.46.2016.02.09.12.53.10
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 12:53:11 -0800 (PST)
-Date: Tue, 9 Feb 2016 20:52:34 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: xgifb: Rename local variable
-Message-ID: <20160210015234.GA12338@janani-Inspiron-3521>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id DBF7DE63;
+	Fri, 12 Feb 2016 03:28:29 +0000 (UTC)
+Date: Thu, 11 Feb 2016 19:28:29 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: lustre: osc: Modify
+ right hand side of an assignment
+Message-ID: <20160212032829.GA27873@kroah.com>
+References: <20160210064015.GA4712@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20160210064015.GA4712@janani-Inspiron-3521>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-As one of the global variables and a local variable share the same name,
-change the name of the local variable to avoid confusion.
+On Wed, Feb 10, 2016 at 01:40:15AM -0500, Janani Ravichandran wrote:
+> This patch modifies an assignment of the form a = (a <op> b);
+> as: a <op>= b; where <op> is << or >>.
+> Coccinelle script used:
+> 
+> @@
+> identifier i;
+> expression e;
+> @@
+> 
+> - i = (i >> e);
+> + i >>= e;
+> 
+> @@
+> identifier i;
+> expression e;
+> @@
+> 
+> - i = (i << e);
+> + i <<= e;
+> 
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/osc/osc_request.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/xgifb/XGI_main_26.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+The subject line is very "odd", it doesn't say what you are doing.
+Well, it does, but it doesn't make much sense.
 
-diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
-index f11cea1..ad8aaa2 100644
---- a/drivers/staging/xgifb/XGI_main_26.c
-+++ b/drivers/staging/xgifb/XGI_main_26.c
-@@ -1230,7 +1230,7 @@ static int XGIfb_check_var(struct fb_var_screeninfo *var, struct fb_info *info)
- 	unsigned int vtotal = 0;
- 	unsigned int drate = 0, hrate = 0;
- 	int found_mode = 0;
--	int refresh_rate, search_idx;
-+	int ref_rate, search_idx;
- 
- 	if ((var->vmode & FB_VMODE_MASK) == FB_VMODE_NONINTERLACED) {
- 		vtotal = var->upper_margin + var->yres + var->lower_margin
-@@ -1268,7 +1268,7 @@ static int XGIfb_check_var(struct fb_var_screeninfo *var, struct fb_info *info)
- 
- 	/* Calculation wrong for 1024x600 - force it to 60Hz */
- 	if ((var->xres == 1024) && (var->yres == 600))
--		refresh_rate = 60;
-+		ref_rate = 60;
- 
- 	search_idx = 0;
- 	while ((XGIbios_mode[search_idx].mode_no != 0) &&
--- 
-2.5.0
+I understand the changes here, but why are you making them?  They aren't
+"fixing" anything, nor making the code "simpler" or "cleaner" or
+anything else.  We don't have any coding style rules that forces someone
+to write this type of expression only one way, and I don't want to start
+doing that either.  So I really don't want to accept patches like this.
 
+Yes, I know I already did, sorry, I'll stop that now.  There has to be
+lots of other "real" types of fixes / cleanups that you can do instead,
+this code needs a lot of work :)
+
+thanks,
+
+greg k-h
 
