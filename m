@@ -1,103 +1,121 @@
-X-GM-THRID: 6208908204263342080
-X-Received: by 10.66.228.100 with SMTP id sh4mr4236935pac.22.1445624093193;
-        Fri, 23 Oct 2015 11:14:53 -0700 (PDT)
+X-GM-THRID: 6250228823501045760
+X-Received: by 10.140.252.131 with SMTP id x125mr41420913qhc.12.1455254035805;
+        Thu, 11 Feb 2016 21:13:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.135 with SMTP id j7ls311022igx.17.gmail; Fri, 23 Oct
- 2015 11:14:52 -0700 (PDT)
-X-Received: by 10.66.169.104 with SMTP id ad8mr4244572pac.47.1445624092685;
-        Fri, 23 Oct 2015 11:14:52 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id pe1si2360699pac.2.2015.10.23.11.14.52
+Received: by 10.140.36.210 with SMTP id p76ls167459qgp.17.gmail; Thu, 11 Feb
+ 2016 21:13:55 -0800 (PST)
+X-Received: by 10.129.41.70 with SMTP id p67mr23008671ywp.33.1455254035070;
+        Thu, 11 Feb 2016 21:13:55 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id u66si1421843pfa.2.2016.02.11.21.13.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 11:14:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Thu, 11 Feb 2016 21:13:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id fv9so130166070pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 11:14:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=fC9DgJzr40IZPGMxpr5OsWqHUAyXRX1vs5swbutw6+Y=;
-        b=sLzjYK/overswumI3vbc2aqezghO9f2AlBWEF9Agdr+SxhwJVA9c/bDwni6PJwgCPC
-         YxGqkVaV6uhIkx1Rcc76Oz9y0U7JvgRHVLn/q15ZyRK7AzWWZ8kG3LwMcJ8E7VuXAW21
-         3xqYIxiGo+pCd3L74ndRWT7jtocYvnZfm+NKDnuH52UPzczDoAg2d1TzpOh+3m1yRduG
-         RDywZNNaGGH7x86HxdtwRAcjPJTswGS4+cjT28LCPYKm9CJC4jiQuhjNCj7un7qLSjc7
-         mZ7T3WjAIfZU4nq9dn5av2PyQI6oAXn6TP3BIyXD9f0KYP/PVIZgPFC5kb8i3+QtoJvM
-         2Hng==
-X-Received: by 10.69.17.136 with SMTP id ge8mr6326564pbd.119.1445624092504;
-        Fri, 23 Oct 2015 11:14:52 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.201.167])
-        by smtp.gmail.com with ESMTPSA id j16sm20147749pbq.23.2015.10.23.11.14.51
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 23 Oct 2015 11:14:52 -0700 (PDT)
-Date: Fri, 23 Oct 2015 23:44:48 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6656: Remove unnecessary braces and tab spacing
-Message-ID: <20151023181448.GA19008@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id ADCB7E9D;
+	Fri, 12 Feb 2016 05:13:54 +0000 (UTC)
+Date: Thu, 11 Feb 2016 21:13:54 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: RAKHI SHARMA <rakhish1994@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>,
+	Daniel Baluta <daniel.baluta@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/3] staging: rtl8712: Replace kmalloc
+ by kzalloc.
+Message-ID: <20160212051354.GA24591@kroah.com>
+References: <1455244786-6824-1-git-send-email-rakhish1994@gmail.com>
+ <20160212031015.GA9936@kroah.com>
+ <CAMnyiXvOgTT-cO1YHJJ3xx1Bvvi44JSV=82yAbu5sZg61R5fZg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAMnyiXvOgTT-cO1YHJJ3xx1Bvvi44JSV=82yAbu5sZg61R5fZg@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch removes unnecessary braces around if-else single statement
-blocks and unnecessary tab space aligning
+On Fri, Feb 12, 2016 at 10:03:47AM +0530, RAKHI SHARMA wrote:
+> On Fri, Feb 12, 2016 at 8:40 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> 
+>     On Fri, Feb 12, 2016 at 08:09:46AM +0530, Rakhi Sharma wrote:
+>     > Mainly the issue is that bool variables can have invalid values.
+>     > So as memory allocated with kmalloc() is essentially random, any struct
+>     > that contains bools, is allocated with kmalloc() and doesn't have the
+>     > bools explicitly set might have invalid values.
+>     > This is easily fixed by allocating it with kzalloc().
+>     >
+>     > Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
+>     > ---
+>     >� drivers/staging/rtl8712/rtl871x_io.c | 2 +-
+>     >� 1 file changed, 1 insertion(+), 1 deletion(-)
+>     >
+>     > diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/
+>     rtl8712/rtl871x_io.c
+>     > index fbbc635..2891b82 100644
+>     > --- a/drivers/staging/rtl8712/rtl871x_io.c
+>     > +++ b/drivers/staging/rtl8712/rtl871x_io.c
+>     > @@ -60,7 +60,7 @@ static uint _init_intf_hdl(struct _adapter *padapter,
+>     >� � � �set_intf_funs = &(r8712_usb_set_intf_funs);
+>     >� � � �set_intf_ops = &r8712_usb_set_intf_ops;
+>     >� � � �init_intf_priv = &r8712_usb_init_intf_priv;
+>     > -� � �pintf_priv = pintf_hdl->pintfpriv = kmalloc(sizeof(struct
+>     intf_priv),
+>     > +� � �pintf_priv = pintf_hdl->pintfpriv = kzalloc(sizeof(struct
+>     intf_priv),
+>     >� � � � � � � � � � � � � � � � � � � � � � � � � �GFP_ATOMIC);
+> 
+> 
+> Hi Greg,
+> 
+>     Why is this needed?� Don't do a zero-fill unless the code is
+>     expecting/wanting it.
+> 
+> 
+> Sure I will take care of it in future.
+> �
+> 
+>     � Are you sure that the fields don't already get
+>     set properly?� Is this a waste of time?
+> 
+> 
+> I was going through this file and found the kmalloc function I read the code
+> and thought
+> it need change, as it is always better to use kzalloc.
 
-Tool used is uncrustify.
+It is not always better to use kzalloc, otherwise we would just get rid
+of kmalloc and replace it with kzalloc, or change kmalloc to zero out
+all memory.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/vt6656/power.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+> May be it will usefull in future or may be not.
 
-diff --git a/drivers/staging/vt6656/power.c b/drivers/staging/vt6656/power.c
-index d5912d2..13afce2 100644
---- a/drivers/staging/vt6656/power.c
-+++ b/drivers/staging/vt6656/power.c
-@@ -59,10 +59,9 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
- 	/* set period of power up before TBTT */
- 	vnt_mac_write_word(priv, MAC_REG_PWBT, C_PWBT);
- 
--	if (priv->op_mode != NL80211_IFTYPE_ADHOC) {
-+	if (priv->op_mode != NL80211_IFTYPE_ADHOC)
- 		/* set AID */
- 		vnt_mac_write_word(priv, MAC_REG_AIDATIM, aid);
--	}
- 
- 	/* Warren:06-18-2004,the sequence must follow
- 	 * PSEN->AUTOSLEEP->GO2DOZE
-@@ -85,11 +84,10 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
- 
- 		/* first time set listen next beacon */
- 		vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_LNBCN);
--	} else {
-+	} else
- 
- 		/* always listen beacon */
- 		vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
--	}
- 
- 	dev_dbg(&priv->usb->dev,  "PS:Power Saving Mode Enable...\n");
- }
-@@ -109,7 +107,7 @@ void vnt_disable_power_saving(struct vnt_private *priv)
- 
- 	/* disable power saving hw function */
- 	vnt_control_out(priv, MESSAGE_TYPE_DISABLE_PS, 0,
--						0, 0, NULL);
-+	                0, 0, NULL);
- 
- 	/* clear AutoSleep */
- 	vnt_mac_reg_bits_off(priv, MAC_REG_PSCFG, PSCFG_AUTOSLEEP);
--- 
-1.9.1
+It has to be useful now to matter.
 
+> In my previous
+> contribution (before outreachy round), one of
+> maintainer
+> advise me to do this in case if I found it ok. and I really don't think this is
+> waste of time.
+> Please let me know if I am doing wrong :)
+> 
+> �
+> 
+>     We need a lot more information, you can't just blindly convert these
+>     calls, especially on "fast paths", like I think this might be.
+> 
+> 
+> Please let me know what information you need, I will try to deliver that :)
+
+What benifit does this code change cause?  Why is it needed?  What
+fields are not being set to zero that somehow could leak information
+before your change that your change fixes?  Why is zeroing out the
+memory better/faster/nicer/etc. now?
+
+In short you have to prove this is a fix, as it is, I can't see that
+here just yet.
+
+hope this helps,
+
+greg k-h
 
