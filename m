@@ -1,73 +1,70 @@
 X-GM-THRID: 6250414640766910464
-X-Received: by 10.50.66.146 with SMTP id f18mr1329724igt.8.1455338066741;
-        Fri, 12 Feb 2016 20:34:26 -0800 (PST)
+X-Received: by 10.129.71.85 with SMTP id u82mr1784020ywa.9.1455288063715;
+        Fri, 12 Feb 2016 06:41:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.22.5 with SMTP id 5ls2081765qgm.60.gmail; Fri, 12 Feb 2016
- 20:34:26 -0800 (PST)
-X-Received: by 10.129.51.2 with SMTP id z2mr4981047ywz.49.1455338066348;
-        Fri, 12 Feb 2016 20:34:26 -0800 (PST)
+Received: by 10.140.34.208 with SMTP id l74ls1758325qgl.47.gmail; Fri, 12 Feb
+ 2016 06:41:03 -0800 (PST)
+X-Received: by 10.13.248.4 with SMTP id i4mr1660378ywf.20.1455288063283;
+        Fri, 12 Feb 2016 06:41:03 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id tn7si1879821pac.1.2016.02.12.20.34.26
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id ui7si1782283pab.0.2016.02.12.06.41.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 20:34:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Fri, 12 Feb 2016 06:41:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id yy13so4600549pab.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 20:34:26 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id c10so4071909pfc.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 06:41:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=Zq+tE2X0KXYCRZ+O7y6rrrqBT6GzPl2Wn6DvVcj8g2A=;
-        b=blnEea4F0epjB2kK0ZhEJjYfrom0xMMkomGXiUXNdyzJUWzNi6rXn2xOX4L9A+LmET
-         q8bXc/IIi+mBCMdbMLnTjDFOb40MWwIGMLPHFqWgQwu6oyiK+P/VrWhG3f4me5IkzkWs
-         nAImAyzd+t4JbmJeIajHRLU31XjtkKpsW78JbmlvHLVWhesawmweG8uMCNNsyOqix16V
-         iRaNfqWu0FIMgOFqsWWa3tQIhmABBod4Sx+qsexEE9+yH+rIulPL6yAlU/DJpfwyJmqJ
-         qmAnPXGJKyU2cisJ+VsQqKicQIYvvcPSP+SVICb/jKAjyd3qTT3ez3zjfUppjolaKSN9
-         Xg9w==
+        bh=OTPf6yDKBQSZMQPneWYaK86yjKK+CP8nwnFGgUCei4k=;
+        b=JsTKqVnDuptx78/LHbHNnUB4JhAKuf8XLMEXwZwLcJedgZFDyynAi9Gvvs01eK9qv3
+         5z8p59RPNUmbiZHR6WMpIWyMl6GkgKokxhEXnbr9ghe/5osA2C2EAvrneJYqklZL/24f
+         /QcP88Ovzjwt7C4I0zY5ZlgEUsradpCxJxPQsWH8mlCaJ/M7X97NpVC3G5GWlyeCIP14
+         3XZLpyMhKlmlOWkjoIwM0ocCPFcbxAYibk44Lv8r+L5VUqtIBBxIFBpAdVFFlz66Soer
+         NKkIHZZ2E1t1VVv9ZpIGxyzyIwOTQewdLkN4OHRG1tO4BJipcjCBmgC3GBNO0Oyc+431
+         UX5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=Zq+tE2X0KXYCRZ+O7y6rrrqBT6GzPl2Wn6DvVcj8g2A=;
-        b=JBv7Hj0u8ln/9xfsxwdzXPTCPHL5O6pKlq4XaSfjFhjfhMvybOUl//2GFC1CpKjAOs
-         UR0BxepAVHzNnug6qvh82ksIsJe7n99qYDcvSe7W7Utk3hTifwZ5M8Cg/BI4viSYVlEF
-         X9Di1Z+i4pTnwbC8VOQxpeq/Iki6PjDldpyTuEGHAMR5+LQJiiGM3zgR0GZjmxK+2ahi
-         GO9INKrQdI/kng9HLKqIDj+dFT8BZEgUXT+Dks9GqPdUeKooiTvmFUUOi/N3gRrV5C6v
-         32ZL2EK8P2DLpbLH7PKSgGVNBdgKG0qIxFBb7gIybbtk00rJirHJuTHWJ7SqGGqilW5I
-         xcGA==
-X-Gm-Message-State: AG10YORtphtJzjDvIJXJb06IFDh9VaGK+s/VZjmlIlPf+B3P4qPa4Hl/3WO1t9CQLA11OQ==
-X-Received: by 10.66.191.104 with SMTP id gx8mr7244087pac.21.1455338066174;
-        Fri, 12 Feb 2016 20:34:26 -0800 (PST)
+        bh=OTPf6yDKBQSZMQPneWYaK86yjKK+CP8nwnFGgUCei4k=;
+        b=JDTZwxAO/0XDiOi3QTKwiv2LeRetDfEoUXmBx7TcWI1GItcMATirdhP0B7xdyp7lG0
+         +o6oNNU0k4MtgwOlzLDGxJejKa/2NAEzakqrthklZ3eEDATQmvgbgAGnx/e/nWtA32qM
+         LDh7fUDZkTan/smjzDIQ0tifw0rrDjDkWUYiE16pCcmjTEUYRYzr7juLxnCo/ZhklnFD
+         gxg+wl9gdBhgoU6Vy+9QehhFuGV5++AOfN2GbGOaay7lAOu8LzStBJ2JKArBSucEo9XC
+         +V9HTwO7+5dbFKiqwlVIvqlj4Cqjg2NpQkKcKDJOxbUa+V357WWDxiRR72hoJQySB0b5
+         9UJA==
+X-Gm-Message-State: AG10YOSA33AsIGknSVq9xWt6WkknIjuTxCbWVlH5VJpdotY8qHnawh8sm1XeYzvPx3WazA==
+X-Received: by 10.98.0.84 with SMTP id 81mr2632122pfa.67.1455288063128;
+        Fri, 12 Feb 2016 06:41:03 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.149.32])
-        by smtp.gmail.com with ESMTPSA id y11sm22754458pfa.85.2016.02.12.20.34.25
+Received: from localhost ([182.69.135.170])
+        by smtp.gmail.com with ESMTPSA id q8sm19987713pfa.70.2016.02.12.06.41.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 20:34:25 -0800 (PST)
-Date: Sat, 13 Feb 2016 10:04:23 +0530
+        Fri, 12 Feb 2016 06:41:02 -0800 (PST)
+Date: Fri, 12 Feb 2016 20:10:54 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 6/6] staging: rtl8192u: ieee80211: Remove MSECS macro
-Message-ID: <20160213043423.GA6239@amitoj-Inspiron-3542>
+Subject: [PATCH 6/6] staging: rtl8192u: ieee80211: Remove MSECS macro
+Message-ID: <20160212144054.GA1345@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
 Remove driver specific macro MSECS since all instances of this macro
-have been replaced by direct calls to msecs_to_jiffies().
+have been replaced by direct call to msecs_to_jiffies().
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
-Changes in v2:
-        -None
-
  drivers/staging/rtl8192u/ieee80211/ieee80211.h | 1 -
  1 file changed, 1 deletion(-)
 
