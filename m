@@ -1,131 +1,121 @@
-X-GM-THRID: 6950918029312
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,4f1aeb5db514fe54,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.142.1 with SMTP id rs1mr627379lbb.19.1425668168611;
-        Fri, 06 Mar 2015 10:56:08 -0800 (PST)
+X-GM-THRID: 6250414407945289728
+X-Received: by 10.50.87.7 with SMTP id t7mr1295433igz.11.1455338031336;
+        Fri, 12 Feb 2016 20:33:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.8.129 with SMTP id r1ls612762wia.43.canary; Fri, 06 Mar
- 2015 10:56:08 -0800 (PST)
-X-Received: by 10.180.87.166 with SMTP id az6mr5711559wib.1.1425668167999;
-        Fri, 06 Mar 2015 10:56:07 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x22c.google.com (mail-wi0-x22c.google.com. [2a00:1450:400c:c05::22c])
-        by gmr-mx.google.com with ESMTPS id i7si220630wif.0.2015.03.06.10.56.07
+Received: by 10.50.142.34 with SMTP id rt2ls356107igb.40.canary; Fri, 12 Feb
+ 2016 20:33:51 -0800 (PST)
+X-Received: by 10.98.8.15 with SMTP id c15mr4997351pfd.0.1455338031070;
+        Fri, 12 Feb 2016 20:33:51 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id tn7si1879692pac.1.2016.02.12.20.33.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 10:56:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) client-ip=2a00:1450:400c:c05::22c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Feb 2016 20:33:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::22c as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22c.google.com with SMTP id l15so5753539wiw.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Mar 2015 10:56:07 -0800 (PST)
+Received: by mail-pa0-x242.google.com with SMTP id zv9so319737pab.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 20:33:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=k8B5lW6dCfa7+kRxztUXsq0DSlK4Ml/Gpy4p55kabrc=;
-        b=SQEvjDUPk3yhLQnVzx74034NlCnv1xEOrRLr1pszhD10eGdBMtYjqbZlA2IEQfYZA+
-         entE4YlluOAPvSwpZ/JNNi7kNrYIQEIcdkTt3lVB6QX5xxiD6qvF6fXrJepM1QRyD7Pj
-         PGyqpA9aRESNSepYRyFcMHWHwjPcGRMfpQmYew0P2QMR/qbTtaYMd04tY0vy5qf/ohJJ
-         a2Twpb8GYC+ZMEjv1fJVSFuLJRcBJvgXQ2XbC+aslcqVXDIgWQme+oXHivcppwn96b/0
-         R15vit+r0sveVPlRS8ZLnYkGdxiKfbpJqqKOlheUg2uPaF/osEBnMYBuG/PTgItjcU/z
-         tzUg==
-X-Received: by 10.194.243.1 with SMTP id wu1mr32870170wjc.69.1425668167906;
-        Fri, 06 Mar 2015 10:56:07 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id dj5sm16121714wjb.28.2015.03.06.10.56.06
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Mar 2015 10:56:07 -0800 (PST)
-Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 1402C62672; Fri,  6 Mar 2015 21:56:05 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=mVJjcfGmLeWqkbaxALwzT7NLkvFkK/zvkNluY4Z2TT4=;
+        b=R5uZev5xs2Qt8X4EvrVDDATQWbnWgGHGIp3F7DDUH2Z4cfTG9e2XeQLggvHzUQO6wT
+         qYS7TacDXW/9GMlAEkTghzRJlh6SBhyoUdDbfihXRDwmqvuYz0Fk//sqVBQhrIaP1j0k
+         cDSrXUGXu1KIeh0BLvA3CR6maejXp224UC36Bj7MKNZzSKAamAO4AhJ5xZvANmiUJPFu
+         ApYstVbNsuY4R6dSuJp/Q49GseRMAHGqkGFEGB41KR8DrcKZFakIq0PrVKmQdksjtEU0
+         gLhXFTKdmK979Rav5J2WaqUGng0pZ04UeO+vRFNYKeYqhlTtON7JsYJvQyJbNGDuZ3fy
+         sqYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=mVJjcfGmLeWqkbaxALwzT7NLkvFkK/zvkNluY4Z2TT4=;
+        b=G7TdHyNANoesprkUYbCnwQ3qaUn0NcijQJL5Ooeq1wlo0tLytF4mfj9exquZ7DdkWY
+         Awd5yW8cmjxtKSAzEyxwgrkf39dBp3avgdPYt3ZdKVIw6tI24ln2/yoTZ5jBh5cYppAw
+         jDh2yXpNUiS6cZycZCg+NYHQ/nl+Yy9iQ5pkMzUk+o9ap4KIcAm+jSd+JfvTgeKFDJM+
+         SYobOz+KHIZIJ8DpQ1PTFzY9h4aLqIDz1Ggg/eh44PFgyd/OV+5ZLDaWpPqEehN6u0B2
+         aL9TdYD7uIQnuH/8sE6iQXiS9bPi6HujM/yctry0uGMSNhYBQU5r3ec/V7WbZvB5+BvP
+         encQ==
+X-Gm-Message-State: AG10YOQUdFUnSi0hSJ74mmn7TVuVyeBPZWpQgT+wT3Zwd0Trf7EpEAm86Cr0Cbh5JE1Vow==
+X-Received: by 10.66.141.44 with SMTP id rl12mr7433912pab.48.1455338030928;
+        Fri, 12 Feb 2016 20:33:50 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.176.149.32])
+        by smtp.gmail.com with ESMTPSA id 87sm16396544pfq.93.2016.02.12.20.33.49
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 12 Feb 2016 20:33:50 -0800 (PST)
+Date: Sat, 13 Feb 2016 10:03:47 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/8] Staging: clean dev_err logging when __func__ 2nd arg 
-Date: Fri,  6 Mar 2015 21:56:03 +0300
-Message-Id: <1425668163-27190-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v2 1/6] staging: rtl8192u: ieee80211: rtl819x_TSProc: Replace
+ MSECS with msecs_to_jiffies
+Message-ID: <20160213043346.GA6258@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch removes  __func__ from dev_err when __func__ is the second argument. dev_err includes information about: 
-(devcice, driver, specific instance of device, etc) in the log printout.
-This was done using Coccinelle, with the following semantic patch:
+Replace driver specific macro MSECS with msecs_to_jiffies().
 
+This was found using the following Coccinelle semantic patch:
 
-@a@
-expression E, R;
-expression  msg;
+//<smpl>
+@@
+expression e;
 @@
 
-dev_err(E, msg, __func__, R);
+- MSECS(e)
++ msecs_to_jiffies(e)
+//</smpl>
 
-@script:python b@
-e << a.msg;
-y;
-@@
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v2:
+        -None
 
+ drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-if(e.find("%s: ") == True):
-	m = e.replace("%s: ", "", 1);
-	coccinelle.y = m;
-elif(e.find("%s ") == True):
-	m = e.replace("%s ", "", 1);
-	coccinelle.y = m;
-elif(e.find("%s:") == True):
-	m = e.replace("%s:", "", 1);
-	coccinelle.y = m;
-else:
-	m = e.replace("%s", "",1);
-	coccinelle.y = m;
-
-	
-@c@
-expression a.E, a.msg, a.R;
-identifier  b.y;
-@@
-
-
-- dev_err(E, msg, __func__, R);
-+ dev_err(E, y, R);
-
-Haneen Mohammed (8):
-  Staging: fbtft: clean dev_err() logging
-  Staging: media: clean dev_err logging
-  Staging: gdm72xx: clean dev_err logging
-  Staging: comedi: clean dev_err logging
-  Staging: rts5208: clean dev_err logging
-  Staging: iio: clean dev_err logging
-  Staging: slicoss: clean dev_err logging
-  Staging: ste_rmi4: clean dev_err logging
-
- drivers/staging/comedi/drivers/ni_mio_common.c |  4 +--
- drivers/staging/comedi/drivers/usbduxsigma.c   | 26 +++++++++-----------
- drivers/staging/fbtft/fb_agm1264k-fl.c         | 16 ++++++------
- drivers/staging/fbtft/fb_pcd8544.c             |  3 ++-
- drivers/staging/fbtft/fb_ra8875.c              |  8 +++---
- drivers/staging/fbtft/fb_ssd1306.c             |  4 +--
- drivers/staging/fbtft/fb_ssd1331.c             |  6 +++--
- drivers/staging/fbtft/fb_tls8204.c             |  2 +-
- drivers/staging/fbtft/fb_uc1701.c              |  3 ++-
- drivers/staging/fbtft/fb_watterott.c           |  2 +-
- drivers/staging/fbtft/fbtft-bus.c              |  2 +-
- drivers/staging/fbtft/fbtft-core.c             |  5 ++--
- drivers/staging/fbtft/fbtft-io.c               |  7 +++---
- drivers/staging/gdm72xx/gdm_sdio.c             |  6 ++---
- drivers/staging/iio/light/isl29028.c           |  8 +++---
- drivers/staging/iio/light/tsl2x7x_core.c       | 34 +++++++++++---------------
- drivers/staging/media/lirc/lirc_imon.c         | 26 +++++++++-----------
- drivers/staging/media/lirc/lirc_sasem.c        | 18 ++++++--------
- drivers/staging/media/omap4iss/iss.c           | 16 ++++++------
- drivers/staging/media/omap4iss/iss_video.c     |  3 +--
- drivers/staging/rts5208/rtsx.c                 |  4 +--
- drivers/staging/slicoss/slicoss.c              |  9 +++----
- drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c  | 12 ++++-----
- 23 files changed, 102 insertions(+), 122 deletions(-)
-
+diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+index f33c743..36a165e 100644
+--- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
++++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+@@ -87,7 +87,8 @@ static void RxPktPendingTimeout(unsigned long data)
+ 	if(bPktInBuf && (pRxTs->RxTimeoutIndicateSeq==0xffff))
+ 	{
+ 		pRxTs->RxTimeoutIndicateSeq = pRxTs->RxIndicateSeq;
+-		mod_timer(&pRxTs->RxPktPendingTimer,  jiffies + MSECS(ieee->pHTInfo->RxReorderPendingTime));
++		mod_timer(&pRxTs->RxPktPendingTimer,
++			  jiffies + msecs_to_jiffies(ieee->pHTInfo->RxReorderPendingTime));
+ 	}
+ 	spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
+ 	//PlatformReleaseSpinLock(Adapter, RT_RX_SPINLOCK);
+@@ -212,7 +213,8 @@ static void AdmitTS(struct ieee80211_device *ieee,
+ 	del_timer_sync(&pTsCommonInfo->InactTimer);
+ 
+ 	if(InactTime!=0)
+-		mod_timer(&pTsCommonInfo->InactTimer, jiffies + MSECS(InactTime));
++		mod_timer(&pTsCommonInfo->InactTimer,
++			  jiffies + msecs_to_jiffies(InactTime));
+ }
+ 
+ 
+@@ -590,7 +592,8 @@ void TsStartAddBaProcess(struct ieee80211_device *ieee, PTX_TS_RECORD	pTxTS)
+ 		if(pTxTS->bAddBaReqDelayed)
+ 		{
+ 			IEEE80211_DEBUG(IEEE80211_DL_BA, "TsStartAddBaProcess(): Delayed Start ADDBA after 60 sec!!\n");
+-			mod_timer(&pTxTS->TsAddBaTimer, jiffies + MSECS(TS_ADDBA_DELAY));
++			mod_timer(&pTxTS->TsAddBaTimer,
++				  jiffies + msecs_to_jiffies(TS_ADDBA_DELAY));
+ 		}
+ 		else
+ 		{
 -- 
 1.9.1
 
