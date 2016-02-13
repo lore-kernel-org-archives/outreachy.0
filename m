@@ -1,73 +1,102 @@
-X-GM-THRID: 6210359704363728896
-X-Received: by 10.50.79.234 with SMTP id m10mr21359938igx.5.1445962047206;
-        Tue, 27 Oct 2015 09:07:27 -0700 (PDT)
+X-GM-THRID: 6250414331697037312
+X-Received: by 10.140.231.138 with SMTP id b132mr5009126qhc.0.1455338021960;
+        Fri, 12 Feb 2016 20:33:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.57.71 with SMTP id g7ls1186667igq.21.canary; Tue, 27 Oct
- 2015 09:07:26 -0700 (PDT)
-X-Received: by 10.107.153.146 with SMTP id b140mr28035486ioe.30.1445962046731;
-        Tue, 27 Oct 2015 09:07:26 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id pe1si4322733pac.2.2015.10.27.09.07.26
+Received: by 10.50.36.41 with SMTP id n9ls191455igj.32.canary; Fri, 12 Feb
+ 2016 20:33:41 -0800 (PST)
+X-Received: by 10.107.184.195 with SMTP id i186mr6005503iof.24.1455338021501;
+        Fri, 12 Feb 2016 20:33:41 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id ui7si2167515pab.0.2016.02.12.20.33.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 09:07:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Fri, 12 Feb 2016 20:33:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id z6so226176705pas.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Oct 2015 09:07:26 -0700 (PDT)
+Received: by mail-pa0-x244.google.com with SMTP id fl4so4589509pad.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 20:33:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=u07nFVGKAc/3KLmE5WEBB8IOrZQEjnXt9qV4L9k/gs4=;
-        b=r/34x7/ut4tL3WT4MZpHXl9sKzakjbhEdoYRPhj7CqREhZn1xjcgpkbjYKY48CVmtE
-         +4VrlsfqOqwvRx+Ck4z3MngbskU1p9Mng6KPdB//ZygUEWCvjCcqU6n6Tfa7r+mY8NdL
-         4aUoUN+bDw+kvlPAZljN/XJlU1+dLKRW+NoM2e6OL/UQ2xhaPOX9pe5BoBGb95BJujL7
-         nnpYVl+I7RgI9SuL1zQWrO3jNkWgmiveUY8eVZXa7XAWqXEmMmnY0F340iza+AjFaIkT
-         nOW94sF+eYIanOxa9SDEEI7sfZum1Tw+tk5iy6XbCOwjVsijIHWc1k/StejHIH8vUNjG
-         RGVQ==
-X-Received: by 10.67.8.101 with SMTP id dj5mr28417960pad.127.1445962046537;
-        Tue, 27 Oct 2015 09:07:26 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
-        by smtp.gmail.com with ESMTPSA id eg5sm40619561pac.30.2015.10.27.09.07.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 27 Oct 2015 09:07:25 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=ZDeY0eXErN4CvYogByAvf3/J1wyUhVQpntmiaKL457k=;
+        b=BLUJmCJgiSrptgjWNcqBnv+RWWM7Q+lsbeKsImzPBy5Ujre76EvpegbFD5zOJLzHzl
+         katrJ10AT7Fob0RdEZU0T8nE0YOxmCASC0tEzkMB862z0XT3AXi9U5UCMhWzqhyMeanv
+         Y4sbmg4DFixRY9QIiKfyIjPveqG5VZTjNPAqg9MfiYWQmyIoFQimznKvVpP6e6muPYU9
+         JMajILjDzQ6w5+Emur7G+M9+sG+AUnrl80v73EYLGrowVhlUeGeBHBBD9tzTogj31hla
+         slkO3Rya/CGQWasIGTVEoreHEhSHLp8AXYqoYF16yFPHLfqIjmoF2FBckxmP3XeoOnkH
+         yK4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=ZDeY0eXErN4CvYogByAvf3/J1wyUhVQpntmiaKL457k=;
+        b=lWw36JiXPCjrz73gTG76adBdP+zTfFEN3hF17J9vWxfhb084jFd/b1vZNnAJUONBkU
+         d3TA8cL4zrwTJ15j6gNqhXcU+rTG3cVLTJjDMfbxwzm3Syvp9CjDUE1CMFGYnerELxkZ
+         1QN3GdDz/Q5nP4HUTuF5HKy4MaDhHNLa+XS4wHf4gn+KPeFMyPl86gdD+P1IJwvzymAn
+         AoOhtFWEkbATeoEeUzA6b+L6F5wFnQs3ReBuFp3jpU159xuF5ZjjBmunOpDCCqnifHfM
+         nAb6tb/J33U+Q1Q7diabaZNC6pcetB4a4btVL4PEvnrcb7Ps03hnifMG0DcX08yIzhUw
+         7hDQ==
+X-Gm-Message-State: AG10YOQYcm/GwYAhsRRFTBy0fjD7cMrNHnvtfgQvctYaCJakWOgWeqrq6e/uUK5KHzRhvA==
+X-Received: by 10.66.255.39 with SMTP id an7mr1878474pad.2.1455338021305;
+        Fri, 12 Feb 2016 20:33:41 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.176.149.32])
+        by smtp.gmail.com with ESMTPSA id lq10sm22812879pab.36.2016.02.12.20.33.40
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 12 Feb 2016 20:33:40 -0800 (PST)
+Date: Sat, 13 Feb 2016 10:03:37 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org,
-	Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 0/5] fs: nfsd: Remove time_t
-Date: Tue, 27 Oct 2015 09:07:19 -0700
-Message-Id: <cover.1445960986.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v2 0/6] staging: rtl8192u: Remove MSECS macro and its
+ instances
+Message-ID: <20160213043337.GA6208@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Replace time_t with u32 in variables boot_time, nfsd4_lease,
-nfsd4_grace, dl_time, oo_time.
+This patchset removes MSECS macro from rtl8192u driver and all the
+instances by replacing MSECS with direct call to msecs_to_jiffies()
 
-Changes have not been made to variables that use inode timestamp
-or function seconds_since_boot, which aren't y2038 safe.
+The Coccinelle semantic patch used to make this change is as follows:
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+//<smpl>
+@@
+expression e;
+@@
 
-Ksenija Stanojevic (5):
-  fs: nfsd: Replace time_t with time64_t in boot_time
-  fs: nfsd: Replace time_t with u32 in nfsd4_lease
-  fs: nfsd: Replace time_t with u32 in nfsd4_grace
-  fs: nfsd: Replace time_t with u32 dl_time
-  fs: nfsd: Replace time_t with u32 oo_time
+- MSECS(e)
++ msecs_to_jiffies(e)
+//</smpl>
 
- fs/nfsd/netns.h        |  6 +++---
- fs/nfsd/nfs4callback.c |  2 +-
- fs/nfsd/nfs4recover.c  |  6 +++---
- fs/nfsd/nfs4state.c    | 20 ++++++++++----------
- fs/nfsd/nfsctl.c       |  6 +++---
- fs/nfsd/state.h        |  6 +++---
- 6 files changed, 23 insertions(+), 23 deletions(-)
+Amitoj Kaur Chawla (6):
+  staging: rtl8192u: ieee80211: rtl819x_TSProc: Replace MSECS with
+    msecs_to_jiffies
+  staging: rtl8192u: ieee80211: rtl819x_BAProc: Replace MSECS with
+    msecs_to_jiffies
+  staging: rtl8192u: ieee80211: ieee80211_softmac: Replace MSECS with
+    msecs_to_jiffies
+  staging: rtl8192u: ieee80211: ieee80211_rx: Replace MSECS with
+    msecs_to_jiffies
+  staging: rtl8192u: r8192U_dm: Replace MSECS with msecs_to_jiffies
+  staging: rtl8192u: ieee80211: Remove MSECS macro
+
+Changes in v2:
+        -In Patch 2/6 Remove extra line introduced in previous version.
+
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h         | 1 -
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c      | 3 ++-
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 9 ++++++---
+ drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c    | 2 +-
+ drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c    | 9 ++++++---
+ drivers/staging/rtl8192u/r8192U_dm.c                   | 9 ++++++---
+ 6 files changed, 21 insertions(+), 12 deletions(-)
 
 -- 
 1.9.1
