@@ -1,151 +1,146 @@
-X-GM-THRID: 3635562938368
-X-Received: by 10.194.11.70 with SMTP id o6mr1129265wjb.6.1424942803111;
-        Thu, 26 Feb 2015 01:26:43 -0800 (PST)
+X-GM-THRID: 6250100054886973440
+X-Received: by 10.140.154.143 with SMTP id a137mr5044330qha.11.1455339667329;
+        Fri, 12 Feb 2016 21:01:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.93.193 with SMTP id cw1ls54262wib.44.gmail; Thu, 26 Feb
- 2015 01:26:42 -0800 (PST)
-X-Received: by 10.180.101.101 with SMTP id ff5mr3534697wib.5.1424942802813;
-        Thu, 26 Feb 2015 01:26:42 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
-        by gmr-mx.google.com with ESMTPS id r6si82670wix.0.2015.02.26.01.26.42
+Received: by 10.140.42.66 with SMTP id b60ls2243416qga.56.gmail; Fri, 12 Feb
+ 2016 21:01:06 -0800 (PST)
+X-Received: by 10.129.92.65 with SMTP id q62mr4953369ywb.19.1455339666560;
+        Fri, 12 Feb 2016 21:01:06 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id ui7si2175488pab.0.2016.02.12.21.01.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 01:26:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Feb 2016 21:01:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22e.google.com with SMTP id w55so8763950wes.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 01:26:42 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id 71so4829926pfv.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 21:01:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=f93lsaIUMwehWKkprxowYJDNSpQK9faxffSFS0th9is=;
-        b=edoxlW2hMBIldjDUW1wUeM4HaXtgCVIZxstzWSLwyNkeNk8qS21q2F4OQm6P472MFf
-         FZAlLMyT8AY2+7XPtvMJ9556MxYwyMNWz9MrzLDrm+jfeHgdKizZ/vjKEMmBQDdZAR/7
-         9EmZzzAZgsWIbP4WAoURRSHrneus2WrmbX7s8YAtDzmI3nfsBY7ynFy0ysz5aiy1kt+1
-         yMozkWzAKocoQFag9OhBjXz+kgO8QDyn7Pu041q+ClDHQETOD5NCeKm+S9DXYqH6rJri
-         5EpxA1p2mXvL3YGkBehUQ15ESlTlQ5bw07m81GqBa1bp6fVaRNiJfkYpB3xJysKVrX04
-         c5ww==
-X-Received: by 10.194.122.38 with SMTP id lp6mr15222996wjb.24.1424942802732;
-        Thu, 26 Feb 2015 01:26:42 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([196.205.191.167])
-        by mx.google.com with ESMTPSA id y3sm497161wju.14.2015.02.26.01.26.41
+        bh=quozG8lIy8Uw3qS7QblOi5StFJD/NssrScm+ftBlMNs=;
+        b=I3HSmEfdXSD9iCsIJpDAvlLb8Bh19s+M6EFDJpp5so//hH8gq07VHJGpmqXnfHI0Vp
+         ANpjl5WO6bp/kYHDEh8napPLTx0smVroynUHJStY3e8cWv8HRoI9EJKAG8s1CU7Roqvt
+         IqYoEBsSPLrwuSyaAPAy/sVIvRLbAn2NgF2fN68xrIVGIqOkHDvht9FbjgF0bp6pfrHv
+         FLXqR7MiHVdRBiF0qMqGql0CguHf8GC63Xz2E8ucEckgNuh5LSEeU1CYLNOAxM+O/u6B
+         4W1Z8kQM+CCfo4YXr6pqXnHbimo4A+bbMk0f/1IS91hZyh8a1RFP41H8qmbcVlCwxltO
+         LCwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=quozG8lIy8Uw3qS7QblOi5StFJD/NssrScm+ftBlMNs=;
+        b=h9k5fnksIYz54dtYflXWy5RSKWbNzP8EP1dm6aGjLO8MJTCiK7z6mkHSPYk6e79zB2
+         Bt9bcln65Ejx6fumltEy+fxRPMdLpeh1YftiZ2t5mkS7xkRA39R7xcJqHejfSrfR6DAN
+         Mehq2Z2RgR/Ph2bCSV6geTJW9SELi1lG4rsX0JO/ZooK9jt58Z5dxw7ubslQUMAb4dPB
+         VbmlqStb6f1yZO7KLsomIDGPR1RR4UjYahusob7ciqe4XiPRXQBkrhU1KbXw5OLeATJv
+         aH8xMx0PSYzQEf4BaijXC6zzw3CrtsOViJZAk2JwxmEi60+StvdhRnjw5Li4+B3FmGMS
+         +WqA==
+X-Gm-Message-State: AG10YOTtWtl8vqSQ+YuSDA2C9IHsv0mCOeepMC1o1+XbhWGl1VUkLaxV+YXeSfHJHLpFtg==
+X-Received: by 10.98.19.205 with SMTP id 74mr7477544pft.31.1455339666343;
+        Fri, 12 Feb 2016 21:01:06 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.176.149.32])
+        by smtp.gmail.com with ESMTPSA id wt2sm22953519pac.48.2016.02.12.21.01.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 01:26:41 -0800 (PST)
-Date: Thu, 26 Feb 2015 11:26:30 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 12 Feb 2016 21:01:05 -0800 (PST)
+Date: Sat, 13 Feb 2016 10:31:02 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 00/24] rewrite the right hand side of an assignment
-Message-ID: <cover.1424942337.git.mahfouz.saif.elyazal@gmail.com>
+Subject: [PATCH v2] staging: gdm724x: gdm_mux: Remove create_workqueue()
+Message-ID: <20160213050102.GA10406@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patchset is concerned with rewriting the right hand side of an
-assignment for expressions of the form:
-a = (a <op> b);   
-to be:
-a <op>= b;
-where <op> = << | >>.
+With concurrency managed workqueues, use of dedicated workqueues 
+can be replaced by using system_wq. Drop mux_rx_wq by using system_wq.
 
-The set resolves the issue in the following staging drivers:
+Since there is only one work item per mux_dev and different mux_devs
+do not need to be ordered, increase of concurrency level by switching
+to system_wq should not break anything.
 
-comedi
-emxx_udc
-iio
-lustre
-media/davinci_vpfe
-rtl8188eu
-rtl8192e
-rtl8192u
-rtl8712
-rtl8723au
-xgifb
+cancel_work_sync() is used to ensure that work is not pending or
+executing on any CPU.
 
-The issue was detected and resolved using the following coccinelle
-script:
+Lastly, since all devices are suspended, which shutdowns the work item
+before the driver can be unregistered, it is guaranteed that no work
+item is pending or executing by the time exit path runs.
 
-@@
-identifier i;
-expression e;
-@@
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v2:
+        -Use cancel_work_sync() instead of flush_work()
+        -Commit message modified
 
--i = (i >> e);
-+i >>= e;
+ drivers/staging/gdm724x/gdm_mux.c | 18 +++---------------
+ 1 file changed, 3 insertions(+), 15 deletions(-)
 
-@@
-identifier i;
-expression e;
-@@
-
--i = (i << e);
-+i <<= e;
-
-Aya Mahfouz (24):
-  staging: xgifb: rewrite the right hand of an assignment
-  staging: rtl8723au: rewrite the right hand of an assignment
-  staging: rtl8723au: hal: rewrite the right hand of an assignment
-  staging: rtl8723au: hal: rewrite the right hand of an assignment
-  staging: rtl8723au: hal: rewrite the right hand of an assignment
-  staging: rtl8712: rewrite the right hand of an assignment
-  staging: rtl8712: rewrite the right hand of an assignment
-  staging: rtl8712: rewrite the right hand of an assignment
-  staging: rtl8712: rewrite the right hand of an assignment
-  staging: rtl8192u: rewrite the right hand of an assignment
-  staging: rtl8192u: rewrite the right hand side of an assignment
-  staging: rtl8192e: rewrite the right hand side of an assignment
-  staging: rtl8192e: rewrite the right hand side of an assignment
-  staging: rtl8188eu: rewrite the right hand side of an assignment
-  staging: rtl8188eu: rewrite the right hand side of an assignment
-  staging: rtl8188eu: rewrite the right hand side of an assignment
-  staging: rtl8188eu: rewrite the right hand side of an assignment
-  staging: davinci_vpfe: rewrite the right hand side of an assignment
-  staging: lustre: lov: rewrite the right hand side of an assignment
-  staging: lustre: lmv: rewrite the right hand side of an assignment
-  staging: lustre: libcfs: rewrite the right hand side of an assignment
-  staging: iio: Documentation: rewrite the right hand side of an
-    assignment
-  staging: emxx_udc: rewrite the right hand side of an assignment
-  staging: comedi: rewrite the right hand side of an assignment
-
- drivers/staging/comedi/drivers/rtd520.c            |   4 +-
- drivers/staging/emxx_udc/emxx_udc.c                |   4 +-
- drivers/staging/iio/Documentation/generic_buffer.c |   2 +-
- drivers/staging/lustre/lustre/libcfs/debug.c       |   2 +-
- drivers/staging/lustre/lustre/lmv/lmv_obd.c        |   2 +-
- drivers/staging/lustre/lustre/lov/lov_obd.c        |   2 +-
- drivers/staging/media/davinci_vpfe/dm365_ipipeif.c |   2 +-
- drivers/staging/rtl8188eu/core/rtw_security.c      |   4 +-
- .../staging/rtl8188eu/hal/Hal8188ERateAdaptive.c   |   2 +-
- drivers/staging/rtl8188eu/hal/rf_cfg.c             |   4 +-
- drivers/staging/rtl8188eu/hal/usb_halinit.c        |   2 +-
- drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c     |   4 +-
- drivers/staging/rtl8192e/rtl819x_HTProc.c          |   2 +-
- .../staging/rtl8192u/ieee80211/rtl819x_HTProc.c    |   2 +-
- drivers/staging/rtl8192u/r8192U_core.c             |   4 +-
- drivers/staging/rtl8712/rtl8712_cmd.c              |   2 +-
- drivers/staging/rtl8712/rtl8712_recv.c             |  10 +-
- drivers/staging/rtl8712/rtl871x_eeprom.c           |   4 +-
- drivers/staging/rtl8712/rtl871x_security.c         |   4 +-
- drivers/staging/rtl8723au/hal/HalHWImg8723A_BB.c   |   4 +-
- drivers/staging/rtl8723au/hal/HalHWImg8723A_MAC.c  |   4 +-
- drivers/staging/rtl8723au/hal/HalHWImg8723A_RF.c   |   4 +-
- drivers/staging/rtl8723au/hal/hal_com.c            |   2 +-
- drivers/staging/xgifb/vb_setmode.c                 | 140 ++++++++++-----------
- 24 files changed, 108 insertions(+), 108 deletions(-)
-
+diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
+index 445f836..937010b 100644
+--- a/drivers/staging/gdm724x/gdm_mux.c
++++ b/drivers/staging/gdm724x/gdm_mux.c
+@@ -26,8 +26,6 @@
+ 
+ #include "gdm_mux.h"
+ 
+-static struct workqueue_struct *mux_rx_wq;
+-
+ static u16 packet_type[TTY_MAX_COUNT] = {0xF011, 0xF010};
+ 
+ #define USB_DEVICE_CDC_DATA(vid, pid) \
+@@ -275,7 +273,7 @@ static void gdm_mux_rcv_complete(struct urb *urb)
+ 		r->len = r->urb->actual_length;
+ 		spin_lock_irqsave(&rx->to_host_lock, flags);
+ 		list_add_tail(&r->to_host_list, &rx->to_host_list);
+-		queue_work(mux_rx_wq, &mux_dev->work_rx.work);
++		schedule_work(&mux_dev->work_rx.work);
+ 		spin_unlock_irqrestore(&rx->to_host_lock, flags);
+ 	}
+ }
+@@ -602,6 +600,8 @@ static int gdm_mux_suspend(struct usb_interface *intf, pm_message_t pm_msg)
+ 	mux_dev = tty_dev->priv_dev;
+ 	rx = &mux_dev->rx;
+ 
++	cancel_work_sync(&mux_dev->work_rx.work);
++
+ 	if (mux_dev->usb_state != PM_NORMAL) {
+ 		dev_err(intf->usb_dev, "usb suspend - invalid state\n");
+ 		return -1;
+@@ -656,13 +656,6 @@ static struct usb_driver gdm_mux_driver = {
+ 
+ static int __init gdm_usb_mux_init(void)
+ {
+-
+-	mux_rx_wq = create_workqueue("mux_rx_wq");
+-	if (!mux_rx_wq) {
+-		pr_err("work queue create fail\n");
+-		return -1;
+-	}
+-
+ 	register_lte_tty_driver();
+ 
+ 	return usb_register(&gdm_mux_driver);
+@@ -672,11 +665,6 @@ static void __exit gdm_usb_mux_exit(void)
+ {
+ 	unregister_lte_tty_driver();
+ 
+-	if (mux_rx_wq) {
+-		flush_workqueue(mux_rx_wq);
+-		destroy_workqueue(mux_rx_wq);
+-	}
+-
+ 	usb_deregister(&gdm_mux_driver);
+ }
+ 
 -- 
-1.9.3
+1.9.1
 
-
--- 
-Kind Regards,
-Aya Saif El-yazal Mahfouz
 
