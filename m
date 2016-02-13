@@ -1,45 +1,60 @@
-X-GM-THRID: 6341223195573485568
-X-Received: by 10.98.149.142 with SMTP id c14mr2806027pfk.38.1476431078437;
-        Fri, 14 Oct 2016 00:44:38 -0700 (PDT)
+X-GM-THRID: 6250348913456316416
+X-Received: by 10.112.16.34 with SMTP id c2mr959187lbd.19.1455388712770;
+        Sat, 13 Feb 2016 10:38:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.185.86 with SMTP id k22ls318813iti.20.gmail; Fri, 14 Oct
- 2016 00:44:35 -0700 (PDT)
-X-Received: by 10.66.147.34 with SMTP id th2mr2635481pab.24.1476431075943;
-        Fri, 14 Oct 2016 00:44:35 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id um12si2863050pab.2.2016.10.14.00.44.35
+Received: by 10.25.31.72 with SMTP id f69ls482881lff.31.gmail; Sat, 13 Feb
+ 2016 10:38:32 -0800 (PST)
+X-Received: by 10.112.138.98 with SMTP id qp2mr984908lbb.4.1455388712219;
+        Sat, 13 Feb 2016 10:38:32 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h126si265397wme.0.2016.02.13.10.38.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Oct 2016 00:44:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sat, 13 Feb 2016 10:38:32 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 6DE062C;
-	Fri, 14 Oct 2016 07:44:35 +0000 (UTC)
-Date: Fri, 14 Oct 2016 09:44:44 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: outreachy-kernel@googlegroups.com
-Subject: Caught up on Outreachy patches yet-again
-Message-ID: <20161014074444.GA5870@kroah.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,441,1449529200"; 
+   d="scan'208";a="164598361"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Feb 2016 19:38:31 +0100
+Date: Sat, 13 Feb 2016 19:38:30 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: lustre: llite: Remove
+ NULL check before kfree
+In-Reply-To: <710bbc9f-1914-4b29-b135-a229028e47ca@googlegroups.com>
+Message-ID: <alpine.DEB.2.02.1602131938010.2068@localhost6.localdomain6>
+References: <1455272748-14400-1-git-send-email-bhumirks@gmail.com> <1455287874-18123-1-git-send-email-bhumirks@gmail.com> <alpine.DEB.2.10.1602121542530.2510@hadrien> <710bbc9f-1914-4b29-b135-a229028e47ca@googlegroups.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Hi all,
+On Fri, 12 Feb 2016, Bhumika Goyal wrote:
 
-I've now caught up on all submitted outreachy kernel patches, with the
-exception of a few iio patches that I think the iio maintainer will be
-reviewing and handling in a few days.
+> Thank you. Will surely keep in mind for future patches.
 
-If I have missed anything that anyone has submitted (i.e. you did not
-either get an email from my patch system saying the patch was applied,
-or an email from a reviewer saying something needed to be fixed), please
-consider the patch lost and resend it.
+It is nice to quote some of the message that you are responding to.  
+Otherwise, it is hard to follow the conversation.
 
-thanks,
+julia
 
-greg k-h
+> 
+> Thanks,
+> Bhumika
+> 
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/710bbc9f-1914-4b29-b135-
+> a229028e47ca%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+> 
 
