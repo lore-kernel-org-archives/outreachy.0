@@ -1,147 +1,95 @@
-X-GM-THRID: 6256332638894686208
-X-Received: by 10.140.167.7 with SMTP id n7mr9031620qhn.19.1456665955623;
-        Sun, 28 Feb 2016 05:25:55 -0800 (PST)
+X-GM-THRID: 6250694897245880320
+X-Received: by 10.129.159.131 with SMTP id w125mr5562818ywg.26.1455353316344;
+        Sat, 13 Feb 2016 00:48:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.69 with SMTP id d5ls321749igt.12.canary; Sun, 28 Feb
- 2016 05:25:55 -0800 (PST)
-X-Received: by 10.66.139.162 with SMTP id qz2mr8765435pab.1.1456665955307;
-        Sun, 28 Feb 2016 05:25:55 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x235.google.com (mail-ig0-x235.google.com. [2607:f8b0:4001:c05::235])
-        by gmr-mx.google.com with ESMTPS id p10si838934igg.1.2016.02.28.05.25.55
+Received: by 10.182.29.8 with SMTP id f8ls985247obh.55.gmail; Sat, 13 Feb 2016
+ 00:48:36 -0800 (PST)
+X-Received: by 10.182.255.203 with SMTP id as11mr5929752obd.49.1455353315986;
+        Sat, 13 Feb 2016 00:48:35 -0800 (PST)
+Return-Path: <rakhish1994@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id tn7si1935903pac.1.2016.02.13.00.48.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:25:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::235 as permitted sender) client-ip=2607:f8b0:4001:c05::235;
+        Sat, 13 Feb 2016 00:48:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::235 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x235.google.com with SMTP id hb3so59761675igb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:25:55 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id c10so5027035pfc.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 00:48:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0lVye/PTyKXGiOLuRefr9kS82Mf0zUt+IpGrN6Eh87k=;
-        b=MZtU4bx70ueh+Y7dVieSrwWqS3i0W4K5ftjDmOi1ICioLIr5vTI3x+2WdlQ1DSqMg6
-         E53NzadBVGX09xanAHJxcVLMEAC13qQbUNquDAJBkmGWNIVulkeWWaW3sjD6Ywg4ujyp
-         daZ+rce2RK3Gu6W/jQj8uvY9I3RBLoR8OazCnNck5/1dEnzOd8BGCWrGCjwqNGboTUC1
-         RH3/FcI3gV/l+OSN1T6amHl8hXD6+b89RBT3yr+iQdDveqLS6iGDzPMYX4O43Fic3bJY
-         CPYbxpEAntmdv+YmH1Zbvzh7R5cYvwiVa3Dp85Aq1q8Ut38FZ0aDJq4mi2vpT1wWTerB
-         meJA==
+        h=from:to:cc:subject:date:message-id;
+        bh=0UBpdy4qmtcmYOO6ksuPrPj5D283AyyjflBxWvXx018=;
+        b=JH+FJf+VK1Dops3B1gUOLBYMCi1hlqvrbvUOiFQNpUaCA2j0BjdVWu+KuQ+CyT1PO/
+         m4MoQQODtt73ZVwBNsHKWMaPd/OR9Y3GU2Ax96z9LwIdcqBdRrJH/tVOQYXpGdWND6oB
+         RypbRdkIh/53FbmGqEpx08lif3sdklFeEWg3Y9IDBBOKeD7rn26EcOwB9MWWT+6NTInX
+         loddd/n2uJhfGbLQbgLCxK1yNZIpyvow/ovs8bpW6uZnTNbxid045RMroEBDhCeA8PDF
+         +SyrRhtbHk+swtJmFqAet7OpaKyOmm49BNtCQxp4EUdPH+TGidn9a6Zxk5sp5OxIETTt
+         YxxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0lVye/PTyKXGiOLuRefr9kS82Mf0zUt+IpGrN6Eh87k=;
-        b=k4A0BdRpS3QSFuVjt8rEsKxwciUF7dKCchxli4fK/3kkMlxzwOyT6jzI6GBCKnE6yA
-         OVlgzBsDzOdh+3TRxASJPgS2H1/NDEU1KBIwpjeG22EfVL0AK0JHMQ9m+j/6OEJsXf9M
-         eBhrKbzob91zdnq0ONvCSmgwYr27DaM5xIGn703NMige1e9wi3G9KhiAQyjy4bwkmLUI
-         +jxu2mbvAV0O83uGmaKaUH40o/cppSI7mEsLzg/RFOpim32GtRw3m4paZL3d24rYBP8i
-         WJQlmPON15/r1dKyyCp8AeEpBCeMpYqroUk/6DLvxgj0pizhvf4L+D4F3e3CdkOmeKzO
-         j33A==
-X-Gm-Message-State: AD7BkJKhGUIrrujaEys3rWMZI/rjDW20QsufMAJgJ4Uot1bh87sPVRgAJnOeSru9YJuadw==
-X-Received: by 10.50.50.201 with SMTP id e9mr6098020igo.10.1456665955115;
-        Sun, 28 Feb 2016 05:25:55 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id qs10sm5038107igb.7.2016.02.28.05.25.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:25:54 -0800 (PST)
-Date: Sun, 28 Feb 2016 13:25:05 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=0UBpdy4qmtcmYOO6ksuPrPj5D283AyyjflBxWvXx018=;
+        b=EO9Y2MGLHhNaR7iyP0A7epeBBt2QtZRcwJwtEnnXsxslX5rcvj3xW/cW/J/bykfAr0
+         jFdmN8MA5Wg9cDiRoSqBwhJnff+4HKCC0EySesqz5wSa5AO8bcRSfPzIinWmTnDaPsEM
+         H3mb3ouT8Q2mkPK5R579Wn6M+3QWK7ZJVbV0JEwZSoMhtSJbpIAMwa+xnhCl+F+1aKM3
+         YPmUo/wK1VjYRSJSem6CVYWSB2kH5ngIM9c0y7IAVAzKZVm6ZIuUlbEY7dNct58nldOV
+         1vQE2A+dUbMdURGjNYtuZOuSwy1cuEQZgONwUw2LEZELbVZr0uassMsMgfOSdHQbjZAx
+         79+A==
+X-Gm-Message-State: AG10YOSQOBejPoiYYgWdwrtKrD8K3nJ8v1slfDDkAhGKwSNsMpPmsy/ocSu5eGCbOvAAMQ==
+X-Received: by 10.98.12.8 with SMTP id u8mr8443450pfi.36.1455353315835;
+        Sat, 13 Feb 2016 00:48:35 -0800 (PST)
+Return-Path: <rakhish1994@gmail.com>
+Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
+        by smtp.gmail.com with ESMTPSA id xv2sm24615250pab.10.2016.02.13.00.48.34
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 13 Feb 2016 00:48:35 -0800 (PST)
+From: Rakhi Sharma <rakhish1994@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723: core: rtw_recv.c: Replace container_of
- with list_entry
-Message-ID: <20160228182504.GA4738@janani-Inspiron-3521>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Rakhi Sharma <rakhish1994@gmail.com>
+Subject: [PATCH v2] Staging: wilc1000:Use __packed instead of __attribute__((packed))
+Date: Sat, 13 Feb 2016 14:18:18 +0530
+Message-Id: <1455353298-10863-1-git-send-email-rakhish1994@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Use list_entry() instead of container_of() with linkedlist nodes.
-Semantic patch used:
+This patch fixes the following warning: "__packed
+is preferred over __attribute__((packed))" as
+reported by checkpatch.pl.
+Fixed by replacing __attribute__((packed)) over __packed.
 
-@a exists@
-identifier var;
-struct list_head *ptr;
-@@
-  
-  var =
-- container_of
-+ list_entry
-  (ptr, ...);
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
 ---
- drivers/staging/rtl8723au/core/rtw_recv.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Changes in v2:
+  -Modify the subject and commit log.
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_recv.c b/drivers/staging/rtl8723au/core/rtw_recv.c
-index 0a7741c..7facf19 100644
---- a/drivers/staging/rtl8723au/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723au/core/rtw_recv.c
-@@ -117,7 +117,7 @@ struct recv_frame *rtw_alloc_recvframe23a(struct rtw_queue *pfree_recv_queue)
+ drivers/staging/wilc1000/linux_mon.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/linux_mon.c b/drivers/staging/wilc1000/linux_mon.c
+index e550027..284dfb0 100644
+--- a/drivers/staging/wilc1000/linux_mon.c
++++ b/drivers/staging/wilc1000/linux_mon.c
+@@ -15,14 +15,14 @@
+ struct wilc_wfi_radiotap_hdr {
+ 	struct ieee80211_radiotap_header hdr;
+ 	u8 rate;
+-} __attribute__((packed));
++} __packed;
  
- 		plist = phead->next;
+ struct wilc_wfi_radiotap_cb_hdr {
+ 	struct ieee80211_radiotap_header hdr;
+ 	u8 rate;
+ 	u8 dump;
+ 	u16 tx_flags;
+-} __attribute__((packed));
++} __packed;
  
--		pframe = container_of(plist, struct recv_frame, list);
-+		pframe = list_entry(plist, struct recv_frame, list);
+ static struct net_device *wilc_wfi_mon; /* global monitor netdev */
  
- 		list_del_init(&pframe->list);
- 		padapter = pframe->adapter;
-@@ -258,7 +258,7 @@ struct recv_buf *rtw_dequeue_recvbuf23a (struct rtw_queue *queue)
- 
- 		plist = phead->next;
- 
--		precvbuf = container_of(plist, struct recv_buf, list);
-+		precvbuf = list_entry(plist, struct recv_buf, list);
- 
- 		list_del_init(&precvbuf->list);
- 	}
-@@ -1089,9 +1089,9 @@ static int validate_recv_ctrl_frame(struct rtw_adapter *padapter,
- 			xmitframe_plist = xmitframe_phead->next;
- 
- 			if (!list_empty(xmitframe_phead)) {
--				pxmitframe = container_of(xmitframe_plist,
--							  struct xmit_frame,
--							  list);
-+				pxmitframe = list_entry(xmitframe_plist,
-+							struct xmit_frame,
-+							list);
- 
- 				xmitframe_plist = xmitframe_plist->next;
- 
-@@ -1555,7 +1555,7 @@ struct recv_frame *recvframe_defrag(struct rtw_adapter *adapter,
- 
- 	phead = get_list_head(defrag_q);
- 	plist = phead->next;
--	prframe = container_of(plist, struct recv_frame, list);
-+	prframe = list_entry(plist, struct recv_frame, list);
- 	list_del_init(&prframe->list);
- 	skb = prframe->pkt;
- 
-@@ -1882,7 +1882,7 @@ int recv_indicatepkts_in_order(struct rtw_adapter *padapter,
- 			return true;
- 		}
- 
--		prframe = container_of(plist, struct recv_frame, list);
-+		prframe = list_entry(plist, struct recv_frame, list);
- 		pattrib = &prframe->attrib;
- 		preorder_ctrl->indicate_seq = pattrib->seq_num;
- 	}
-@@ -1891,7 +1891,7 @@ int recv_indicatepkts_in_order(struct rtw_adapter *padapter,
- 	/*  Check if there is any packet need indicate. */
- 	while (!list_empty(phead)) {
- 
--		prframe = container_of(plist, struct recv_frame, list);
-+		prframe = list_entry(plist, struct recv_frame, list);
- 		pattrib = &prframe->attrib;
- 
- 		if (!SN_LESS(preorder_ctrl->indicate_seq, pattrib->seq_num)) {
 -- 
-2.5.0
+1.9.1
 
 
