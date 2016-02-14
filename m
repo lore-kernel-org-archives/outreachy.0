@@ -1,104 +1,93 @@
-X-GM-THRID: 6249681963932712960
-X-Received: by 10.112.201.104 with SMTP id jz8mr4953599lbc.13.1455117474394;
-        Wed, 10 Feb 2016 07:17:54 -0800 (PST)
+X-GM-THRID: 6250911562045849600
+X-Received: by 10.13.235.144 with SMTP id u138mr8788506ywe.21.1455403762739;
+        Sat, 13 Feb 2016 14:49:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.87.207 with SMTP id l198ls851387wmb.38.canary; Wed, 10 Feb
- 2016 07:17:53 -0800 (PST)
-X-Received: by 10.28.156.83 with SMTP id f80mr1381016wme.1.1455117473930;
-        Wed, 10 Feb 2016 07:17:53 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
-        by gmr-mx.google.com with ESMTPS id 5si182597wmm.2.2016.02.10.07.17.53
+Received: by 10.107.132.15 with SMTP id g15ls1162057iod.50.gmail; Sat, 13 Feb
+ 2016 14:49:22 -0800 (PST)
+X-Received: by 10.50.102.40 with SMTP id fl8mr4028770igb.7.1455403762441;
+        Sat, 13 Feb 2016 14:49:22 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x22a.google.com (mail-qg0-x22a.google.com. [2607:f8b0:400d:c04::22a])
+        by gmr-mx.google.com with ESMTPS id y131si1555744ywc.0.2016.02.13.14.49.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Feb 2016 07:17:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
+        Sat, 13 Feb 2016 14:49:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) client-ip=2607:f8b0:400d:c04::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x232.google.com with SMTP id c200so33421375wme.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 10 Feb 2016 07:17:53 -0800 (PST)
+Received: by mail-qg0-x22a.google.com with SMTP id b67so87728521qgb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 14:49:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=xNc1Jb1jO0hLlJrhoYKjBFTufrb8xybYsrm1OrIZZMI=;
-        b=w1QsuXhvSOx1P1PNjUyoMJQYVmxy/RTb88a3GtfVweBwHzuBILaLPkV0F8Jl8Ngc4q
-         S2HGGH+0r5pdzPTGOhegE7BAZ6+okuQsDUmmABhB6pdLON9P8qQ8rhhfCceSxlXK+zXo
-         ThhsIZYUxJymMxNLrPyYUVyrt/5CWZRa6qp/GptIft0hTFym+B6RpWvt9M6kS7WGhF7L
-         cBaYs+CahO4yOc9z0dMPU1TGCPO/LQuNsLHKgHX1SwHHfGJVKcbKVZS1LZr5fBMvPrv/
-         xPYANPoj9SqtEtCFHCF25+h3HovncyroOYagEmS+GIGoOQ/kknNRbFio4AuBP91IiebO
-         KVqQ==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=E73w+7LmZunumgpT63Pqz/48VaI9MlIRBb3rNNL0nLA=;
+        b=QXWNmiX+yhV/0TPcJ9Vd0LN3pum2oBYneLqHT8nuFJyHPobsQuU3dcxibJ42t8eORM
+         M75P9jsiMBShsM7u1LbtfrOk6mt31mvd9fB/h2ZAlfZuc2SdNPzIFMgs0d/OdGZtc8vG
+         n7TjMOEbU2PYdeJtUTgKd6i0ijQDmlKCHuW1FW0v8wRajWZn5rW9h1PxOgWGzr6W3U3d
+         hdAtD5Ze2mEnB/HkW6XcWCdKvwPeCgdrpqgs2G4OcLfCO65fHdUQuKMTgc96j0MYXc9h
+         MpQwMdERN9o8OebmQ+YRJZvLESTASIfiYYi07vDtjSXwLYzoohVNtLY5UCuHhJIE8WXP
+         okhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=xNc1Jb1jO0hLlJrhoYKjBFTufrb8xybYsrm1OrIZZMI=;
-        b=bRI7L2zt4ChshfOa5ZIfevo7/G5Jj6gn81omkqbmyGEePZXyacIWlVL6gCfGagrp/E
-         MAcQyGd45heNISwO7G6NF+FnXKNK7eMVWKdZZs2zkumlm8gsskrocZXVY5n2mvWqpjFv
-         KRRAhJyKG28xdneGvKPfd/OM6pQ7K73B+Tar1VYOJF2wBQNkl4fm9xoFsicOiUrZ8wrt
-         7r0TZOdQ85tZxCxDcUeVCoxOQbMMHVMSjHhuB2ygZery8DQsMx0jujyDws/H9Wwn9lFJ
-         xT9xgQfQXRA7/SdOM5J9f0d3sRH3MDdm3eF7a9KTvzcpnDqqtHywvjQ5pL7yofhp9MvT
-         IVZA==
-X-Gm-Message-State: AG10YOQ7gk4fjkCfpEI48WzXNjjpfAsFXqaXNWQiqE3FgLUKOL9EyMnqqtUGBM/8fO8aWA==
-X-Received: by 10.194.62.179 with SMTP id z19mr10356917wjr.96.1455117473796;
-        Wed, 10 Feb 2016 07:17:53 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from localhost.localdomain ([81.215.143.77])
-        by smtp.gmail.com with ESMTPSA id cb2sm3421366wjc.16.2016.02.10.07.17.52
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 10 Feb 2016 07:17:52 -0800 (PST)
-From: Aybuke Ozdemir <aybuke.147@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=E73w+7LmZunumgpT63Pqz/48VaI9MlIRBb3rNNL0nLA=;
+        b=c3tes5HlDn8nTwZFMgu6oqTMWnRM9EDWStqBE+O/DKrEkfQgOuQKKTHrmIM57sdc/n
+         JOPkXQi5PPkTAhvpUyGvq+tgtEdF18WTiuVPjDZ9CxROfU8PBCLR3DnJluThME7R9Ad8
+         nNNyetmoqSlq1f12RxrKBl0Vpdr9v6tUsspGAxPxO20WIiSyx0Ylkj12hL1kWuim8Kdi
+         K+92N04LClXorW6U0UO8jtPSVACRR/0ra6+tmZxxReZx/N68R4Kzk/EsuzerzqgPqjE3
+         zo4wBLOkNFZRiUbrYYhh02g75xLIUCZhxUFDCiGdlV2zp5ORKnHJmYjIcdww3khX36Ml
+         uXNw==
+X-Gm-Message-State: AG10YOT1OY4mniy+lTDg0jbmgLwBbv7BDPNU09n/Lt/HdFcuuHGOnN3PSwDLDdvu4BG4gw==
+X-Received: by 10.140.18.172 with SMTP id 41mr10930643qgf.7.1455403762312;
+        Sat, 13 Feb 2016 14:49:22 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
+        by smtp.gmail.com with ESMTPSA id o75sm8256996qgd.12.2016.02.13.14.49.21
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 14:49:21 -0800 (PST)
+Date: Sat, 13 Feb 2016 22:48:42 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: aybuke <aybuke.147@gmail.com>
-Subject: [PATCH] Staging: comedi: Prefer using the BIT macro
-Date: Wed, 10 Feb 2016 17:17:44 +0200
-Message-Id: <1455117464-17485-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 2.1.4
+Subject: [PATCH] staging: sm750fb: Eliminate commented out code
+Message-ID: <20160214034842.GA25081@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-From: aybuke <aybuke.147@gmail.com>
+This patch removes commented out code in the file.
 
-Replace all instances of bit shifting on 1 with the BIT(x) macro. In
-addition, convert other non-1 shift operations with the equivalent
-BIT(x) macro for uniformity. Issue pointed out by checkpatch.
-
-CHECK: Prefer using the BIT macro
-
-Signed-off-by: aybuke <aybuke.147@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/comedi/comedi.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/sm750fb/sm750_cursor.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
-index f0d1b15..9b7d0cb 100644
---- a/drivers/staging/comedi/comedi.h
-+++ b/drivers/staging/comedi/comedi.h
-@@ -72,12 +72,12 @@
- #define CR_AREF(a)	(((a) >> 24) & 0x03)
+diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
+index a8d3e96..8f599af 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.c
++++ b/drivers/staging/sm750fb/sm750_cursor.c
+@@ -115,15 +115,6 @@ void hw_cursor_setData(struct lynx_cursor *cursor,
+ 	pstart = cursor->vstart;
+ 	pbuffer = pstart;
  
- #define CR_FLAGS_MASK	0xfc000000
--#define CR_ALT_FILTER	(1 << 26)
-+#define CR_ALT_FILTER	BIT(26)
- #define CR_DITHER	CR_ALT_FILTER
- #define CR_DEGLITCH	CR_ALT_FILTER
--#define CR_ALT_SOURCE	(1 << 27)
--#define CR_EDGE		(1 << 30)
--#define CR_INVERT	(1 << 31)
-+#define CR_ALT_SOURCE	BIT(27)
-+#define CR_EDGE		BIT(30)
-+#define CR_INVERT	BIT(31)
- 
- #define AREF_GROUND	0x00	/* analog ref = analog ground */
- #define AREF_COMMON	0x01	/* analog ref = analog common */
-@@ -510,7 +510,7 @@ struct comedi_bufinfo {
- #define RANGE_LENGTH(b)		((b) & 0xffff)
- 
- #define RF_UNIT(flags)		((flags) & 0xff)
--#define RF_EXTERNAL		(1 << 8)
-+#define RF_EXTERNAL		BIT(8)
- 
- #define UNIT_volt		0
- #define UNIT_mA			1
+-/*
+-	if(odd &1){
+-		hw_cursor_setData2(cursor,rop,pcol,pmsk);
+-	}
+-	odd++;
+-	if(odd > 0xfffffff0)
+-		odd=0;
+-*/
+-
+ 	for (i = 0; i < count; i++) {
+ 		color = *pcol++;
+ 		mask = *pmsk++;
 -- 
-2.1.4
+2.5.0
 
 
