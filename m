@@ -1,111 +1,106 @@
-X-GM-THRID: 6206265644827017216
-X-Received: by 10.182.126.228 with SMTP id nb4mr13016407obb.19.1445008824645;
-        Fri, 16 Oct 2015 08:20:24 -0700 (PDT)
+X-GM-THRID: 6250921384778661888
+X-Received: by 10.50.57.17 with SMTP id e17mr5228722igq.11.1455406049387;
+        Sat, 13 Feb 2016 15:27:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.170.227 with SMTP id g96ls865265ioj.55.gmail; Fri, 16 Oct
- 2015 08:20:22 -0700 (PDT)
-X-Received: by 10.50.78.170 with SMTP id c10mr4643888igx.6.1445008822859;
-        Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id ce6si1521437pad.0.2015.10.16.08.20.22
+Received: by 10.50.61.175 with SMTP id q15ls452744igr.3.gmail; Sat, 13 Feb
+ 2016 15:27:29 -0800 (PST)
+X-Received: by 10.107.29.20 with SMTP id d20mr10245285iod.29.1455406049110;
+        Sat, 13 Feb 2016 15:27:29 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
+        by gmr-mx.google.com with ESMTPS id i133si1646693ywe.7.2016.02.13.15.27.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        Sat, 13 Feb 2016 15:27:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id cn9so8526801pad.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
+Received: by mail-qg0-x22b.google.com with SMTP id y9so88660906qgd.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 15:27:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=zjzCHEj3e9VOi+SwGmgx+i0rYCXAs3Yr5UBS1CjMfvI=;
-        b=QeXkC2qaf8FNqgxnANv+4/Ne1kDhh5dNIfwvYXZmVdZ77woWArFBIWAc1URoFVlwZL
-         WBmW+cZXAxydyETXu4WQFsSKaAWxbWwzJrVtGqwYGN+aSNXSm/rO+Sso2XiA4HKOIDhM
-         uWmtU4nE1J794Xzxd31o5/mtG3J1iJjgytVzvro1wQHpwRyGfv0rVxMSEG2tv1NWfCuX
-         rX7J9iBBfxo30VFdoIu1nclkr7UthC57bk8qAvuAdsj6590t8oJC0gRjzry5tVRstFsH
-         JhlMT8+Ce2RV3zBITuujVc8qBMqPgTmWL9LP518HbhV9boSyYIUNA/rwLo4GF7l92yTg
-         VTDQ==
-X-Received: by 10.66.219.162 with SMTP id pp2mr17126627pac.59.1445008822702;
-        Fri, 16 Oct 2015 08:20:22 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id es4sm21828255pbc.42.2015.10.16.08.20.20
+        bh=Pkg4Xzl0Ejx6Zg8PcVuz3+z6rh/rN8E/h3R1UvQeT90=;
+        b=JYLODtsvzpglfhvzdQ122uDnYvAyhV2p6DwZ5Jt50jpzL4MdHfdJBiDBpKv6oX21vd
+         xsQdWfh+9RfAVv3ozp5/MuNG7RL6gFNA5EtCU8kGt8Z0Cb5TCTJddRTwuxC2oMc6Eixh
+         o60QcTLqjtbKPvbgDHLfW2zIArsc38Y8aEaa1cc1/MGcHl3tF5aIOirENJqujCQGPQNM
+         bs9oqma1XKg24MITJcLk6FgHDViFX+kzLhA2U9WjH77uZ28Re2C/5czFfXC7f+tSUB0j
+         lIj6yQw933WjqZJIaGkbJmzU/ljWFEDDB6MCc+E6sWKsI7HQEWkzOPjS5ZQdipGdJjRZ
+         SvZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=Pkg4Xzl0Ejx6Zg8PcVuz3+z6rh/rN8E/h3R1UvQeT90=;
+        b=jMiJ663gnOPtpa734IQgCv8M20D4vFVZqPahZHs9eO5mCX06QOdvCmzQ5vZl0mhzRi
+         A/t1/XvejNRxEX0m2N1JgDnrFayqJB1KxhuMVEQtmUx57IFrgkT8UHCRpZ08YKxhJ6Ar
+         EkWF2XRX/UiHL0fCie1fd5VV8vfkcgFeOxEDr3HHWrkLRdQNBym6FI4cPe1yF5KjtTc9
+         zv08BBe8xALhtk5aoHfb2Wa5uq6c6i7kTnD1NNerweBwZH/8Nn5UctL6vozL60UVAHeQ
+         Yj4eP2A3mXeg4NdDzkJx3RyHVHoSdQYPxz7LuCxXwheyd2MLXYTbjfvFzO+pnrzsyqVQ
+         goCQ==
+X-Gm-Message-State: AG10YOT4d1s/VQVNm9ipK9ICI9syXfJ0C/n7dZK6UNjqtsUz/HBXIlXZaTDKJSkAJH57qA==
+X-Received: by 10.140.95.119 with SMTP id h110mr11246362qge.105.1455406048928;
+        Sat, 13 Feb 2016 15:27:28 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
+        by smtp.gmail.com with ESMTPSA id x62sm7230838qhc.42.2016.02.13.15.27.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 08:20:21 -0700 (PDT)
-Date: Fri, 16 Oct 2015 20:50:10 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 15:27:28 -0800 (PST)
+Date: Sat, 13 Feb 2016 23:26:49 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: iio: tsl2x7x_core: Remove unrequired parentheses
- from DIV_ROUND_UP
-Message-ID: <20151016152010.GA19210@ubuntu>
+Subject: [PATCH] staging: wilc1000: Eliminate spaces between function names
+ and open parentheses
+Message-ID: <20160214042649.GA25621@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove parentheses surrounding the first argument of the macro
-DIV_ROUND_UP as they are not required.
-Semantic patch used:
+Remove spaces between function names and open parentheses as they are
+unnecessary.
 
-@@
-expression e1,e2;
-@@
-DIV_ROUND_UP(
-- (
-  e1
-- )
-  ,e2)
-
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
-Changes in v2:
-	Improve semantic patch.
+ drivers/staging/wilc1000/linux_wlan_common.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
- drivers/staging/iio/light/tsl2x7x_core.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
-index 010e607..bf9627e 100644
---- a/drivers/staging/iio/light/tsl2x7x_core.c
-+++ b/drivers/staging/iio/light/tsl2x7x_core.c
-@@ -418,9 +418,9 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
- 	if (p->ratio == 0) {
- 		lux = 0;
- 	} else {
--		ch0lux = DIV_ROUND_UP((ch0 * p->ch0),
-+		ch0lux = DIV_ROUND_UP(ch0 * p->ch0,
- 			tsl2X7X_als_gainadj[chip->tsl2x7x_settings.als_gain]);
--		ch1lux = DIV_ROUND_UP((ch1 * p->ch1),
-+		ch1lux = DIV_ROUND_UP(ch1 * p->ch1,
- 			tsl2X7X_als_gainadj[chip->tsl2x7x_settings.als_gain]);
- 		lux = ch0lux - ch1lux;
- 	}
-@@ -1057,7 +1057,7 @@ static ssize_t tsl2x7x_als_persistence_store(struct device *dev,
- 	z = y * TSL2X7X_MIN_ITIME;
+diff --git a/drivers/staging/wilc1000/linux_wlan_common.h b/drivers/staging/wilc1000/linux_wlan_common.h
+index 44573e2..f325051 100644
+--- a/drivers/staging/wilc1000/linux_wlan_common.h
++++ b/drivers/staging/wilc1000/linux_wlan_common.h
+@@ -12,7 +12,7 @@ enum debug_region {
+ #define CFG80211_DBG            (1 << CFG80211_debug)
+ #define INIT_DBG                (1 << Init_debug)
  
- 	filter_delay =
--		DIV_ROUND_UP(((result.integer * 1000) + result.fract), z);
-+		DIV_ROUND_UP((result.integer * 1000) + result.fract, z);
+-#if defined (WILC_DEBUGFS)
++#if defined(WILC_DEBUGFS)
+ extern atomic_t WILC_REGION;
+ extern atomic_t WILC_DEBUG_LEVEL;
  
- 	chip->tsl2x7x_settings.persistence &= 0xF0;
- 	chip->tsl2x7x_settings.persistence |= (filter_delay & 0x0F);
-@@ -1103,7 +1103,7 @@ static ssize_t tsl2x7x_prox_persistence_store(struct device *dev,
- 	z = y * TSL2X7X_MIN_ITIME;
+@@ -105,7 +105,7 @@ extern atomic_t WILC_DEBUG_LEVEL;
  
- 	filter_delay =
--		DIV_ROUND_UP(((result.integer * 1000) + result.fract), z);
-+		DIV_ROUND_UP((result.integer * 1000) + result.fract, z);
+ #define WILC_MULTICAST_TABLE_SIZE	8
  
- 	chip->tsl2x7x_settings.persistence &= 0x0F;
- 	chip->tsl2x7x_settings.persistence |= ((filter_delay << 4) & 0xF0);
+-#if defined (BEAGLE_BOARD)
++#if defined(BEAGLE_BOARD)
+ 	#define SPI_CHANNEL	4
+ 
+ 	#if SPI_CHANNEL == 4
+@@ -118,7 +118,7 @@ extern atomic_t WILC_DEBUG_LEVEL;
+ #elif defined(PLAT_WMS8304)             /* rachel */
+ 	#define MODALIAS	"wilc_spi"
+ 	#define GPIO_NUM	139
+-#elif defined (PLAT_RKXXXX)
++#elif defined(PLAT_RKXXXX)
+  #define MODALIAS	"WILC_IRQ"
+  #define GPIO_NUM	RK30_PIN3_PD2 /* RK30_PIN3_PA1 */
+ /* RK30_PIN3_PD2 */
 -- 
-2.1.0
+2.5.0
 
 
