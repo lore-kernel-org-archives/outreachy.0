@@ -1,82 +1,113 @@
 X-GM-THRID: 6251014829496074240
-X-Received: by 10.182.120.106 with SMTP id lb10mr10162089obb.24.1455429885478;
-        Sat, 13 Feb 2016 22:04:45 -0800 (PST)
+X-Received: by 10.66.249.41 with SMTP id yr9mr5510640pac.37.1455427855522;
+        Sat, 13 Feb 2016 21:30:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.32.7 with SMTP id g7ls2451670qgg.49.gmail; Sat, 13 Feb
- 2016 22:04:44 -0800 (PST)
-X-Received: by 10.31.160.209 with SMTP id j200mr9942355vke.6.1455429884496;
-        Sat, 13 Feb 2016 22:04:44 -0800 (PST)
+Received: by 10.107.165.19 with SMTP id o19ls1287349ioe.53.gmail; Sat, 13 Feb
+ 2016 21:30:55 -0800 (PST)
+X-Received: by 10.66.63.104 with SMTP id f8mr10012333pas.4.1455427855116;
+        Sat, 13 Feb 2016 21:30:55 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id ui7si2683640pab.0.2016.02.13.22.04.44
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 79si2708330pft.0.2016.02.13.21.30.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 22:04:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Sat, 13 Feb 2016 21:30:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id q63so69597035pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 22:04:44 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id c10so5958511pfc.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 21:30:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=dmud9SCitQ8jQUkdTBy0Od6Wqc2lKjU4LO5zxinzBTQ=;
-        b=cnASeA/a7cjaYuTOWN8pR9AbtzeBAnqGmY9GfrMixCgETqrONEJJ3UBvaBhnyWm5TB
-         JjfZwnqVFyUzDNWNeHgHU4EXsY0Kj/TBMCyc4XuBnNDpZ0vJsfPdpIY7JMgWFGgIXZFY
-         WprqcLvYJeJb5IwaUAohFI/CabCnyUjCC32hBPUhEz4cXaopecdNoMNWOTDki8gGlJJ4
-         QK+uRwCwmoGcKwAJB3wsYPcCXjxEKgWMCG452nBs+X1tpkxkzlnPO6Cb7OW/D7AYAupa
-         x+qt+ubSt9x3Jp+n/R4wH8t7JpiBF9EHcjHCGGbgaLbu3pvHAEbz0jCtFrSuwsine8Mv
-         y5DQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=y9AbALcJXzw/xkELDKVtgeJI8i5dAoMQOqRtOTQnJeY=;
+        b=g/WmbOFajOGosiO2Zj8Do5UwAo8RDntoN0rwjgU2BhnfGASnOUTt5YUvi9Ao6Icdno
+         4OTffGTcAqL71xeA/TczSYAYamXa/GdT8WrfAovGcEVJ4gzHlkieGDL+OxVBXPs4+iYF
+         YyGb0hrI2/htQBpJMLIrsEJCuRSfzjDtdqo8VxuNSfqwIZIYNxGbu3eQcgSrGK7FNrw6
+         YSPBTANgk+60BpKEvaN5nWgwN2hpfkPRodh+Ent14DsqCBaubqQOl9lJARhZEoWPHASp
+         yu0YDnb+HUA3THTlge+Ow5grt6qZOfTNDjN7iAOg1onGA6g0wzdRCeZCEByL18Ib2A9D
+         iP8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=dmud9SCitQ8jQUkdTBy0Od6Wqc2lKjU4LO5zxinzBTQ=;
-        b=OLMg+r8BxlKwy2vksYD1/h1dbkIHQJx6BaVjEZg33tp4dXBoKOC34WGJ59HZldlAvh
-         BAvQWfL/JvJWv4vynduLhmQ9EfjokOCQBHLuoQFSc5ycK21yvTXLpc29weq68xFhIjjJ
-         oHL/Nz5kHqU/5Iv4bN/SUPdGzqCl3oa3vQOX5zI6QW+EplxDregDSBCUwDUObJ0oWwBg
-         FDAbiJ6/XuQl6pi+DYMjoz11FNNJ+1VaOywATM44aPF+zJBuy9fukapyA/1MeVP2JAar
-         jbQnxLFDa47jXP3viMXwwJ+XK/nlBrn85xm0diO0wFWWulNzM3GKTvQVztqH5ljV8y8i
-         3KYg==
-X-Gm-Message-State: AG10YORbfv+0DYStoAkV3Scq6TlyWuXw+Y1Yng8T3AGT4H2We/kz1IOrMxyj6gt92wA2xQ==
-X-Received: by 10.98.87.90 with SMTP id l87mr14398470pfb.70.1455429884306;
-        Sat, 13 Feb 2016 22:04:44 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=y9AbALcJXzw/xkELDKVtgeJI8i5dAoMQOqRtOTQnJeY=;
+        b=QPyaLP6xEj6xWHGXeZ8Xa0L8powlh111PG3Wx2GKoV+zsIsxamP0mLXulwUDGaq/Nq
+         MNNo3Z0qYWfQ/dduVa0Va0b7zuU5EZ3ZOcruyTzXL0jUy1mOZQMwav7mnl1+VBNGE+IS
+         63uwdIRPQW8eNwMK2nPXQTbQ81rOVxUgy6cM6qlxe2rzXCo9bRMrvDz7GgFUNxrcXkT2
+         Z88AzvhZpY4agfJzIwpjw+DpZFdgno1StTlcmTkoa6QBU9l1+WMbNXKsXDslZZcg6e7r
+         7Pl9nDB5dorTotQvL319YNBwUcrURUYLIJZML/RZzStLNu2zEJnpdhy7FI0BXvWBJi5R
+         lvAQ==
+X-Gm-Message-State: AG10YORRnyN5fmMWkdnqNdoXlLdtTOTmv+l/zYEh155iSSunj1xAOA8YQfXDbofRiHHS8Q==
+X-Received: by 10.98.11.217 with SMTP id 86mr14049969pfl.71.1455427854996;
+        Sat, 13 Feb 2016 21:30:54 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.135.55])
-        by smtp.gmail.com with ESMTPSA id fl9sm29688416pab.30.2016.02.13.22.04.40
+Received: from bhumirks@gmail.com ([106.215.130.221])
+        by smtp.gmail.com with ESMTPSA id tn5sm28471054pac.32.2016.02.13.21.30.45
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Feb 2016 22:04:43 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 11:34:34 +0530
+        Sat, 13 Feb 2016 21:30:54 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 11:00:36 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: Remove unused macros
-Date: Sun, 14 Feb 2016 11:34:23 +0530
-Message-Id: <1455429863-13223-1-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH 2/2] Staging: rtl8192u: Remove useless comments
+Date: Sun, 14 Feb 2016 10:59:50 +0530
+Message-Id: <1c51e655017371120ab353c5a7cb1e6f75df5af1.1455427132.git.bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1455427132.git.bhumirks@gmail.com>
+References: <cover.1455427132.git.bhumirks@gmail.com>
+In-Reply-To: <cover.1455427132.git.bhumirks@gmail.com>
+References: <cover.1455427132.git.bhumirks@gmail.com>
 
-The macros PlatformProcessHCICommands and PlatformTxBTQueuedPackets
-are not used anywhere in the kernel so remove them.
+Remove the commented out places where macros PlatformAcquireSpinLock and
+PlatformReleaseSpinLock are called as these macros are no longer used.
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-index 33eabf4..1688f66 100644
---- a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-+++ b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-@@ -77,8 +77,6 @@ if ((BTCoexDbgLevel == _bt_dbg_on_)) {\
+diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+index f33c743..2b182e1 100644
+--- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
++++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+@@ -35,9 +35,7 @@ static void RxPktPendingTimeout(unsigned long data)
+ 	u8 index = 0;
+ 	bool bPktInBuf = false;
  
- #define PlatformZeroMemory(ptr, sz)	memset(ptr, 0, sz)
+-
+ 	spin_lock_irqsave(&(ieee->reorder_spinlock), flags);
+-	//PlatformAcquireSpinLock(Adapter, RT_RX_SPINLOCK);
+ 	IEEE80211_DEBUG(IEEE80211_DL_REORDER,"==================>%s()\n",__func__);
+ 	if(pRxTs->RxTimeoutIndicateSeq != 0xffff)
+ 	{
+@@ -90,7 +88,6 @@ static void RxPktPendingTimeout(unsigned long data)
+ 		mod_timer(&pRxTs->RxPktPendingTimer,  jiffies + MSECS(ieee->pHTInfo->RxReorderPendingTime));
+ 	}
+ 	spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
+-	//PlatformReleaseSpinLock(Adapter, RT_RX_SPINLOCK);
+ }
  
--#define PlatformProcessHCICommands(...)
--#define PlatformTxBTQueuedPackets(...)
- #define PlatformIndicateBTACLData(...)	(RT_STATUS_SUCCESS)
+ /********************************************************************************************************************
+@@ -469,7 +466,6 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, PTS_COMMON_INFO pTs,
  
- #define GET_UNDECORATED_AVERAGE_RSSI(padapter)	\
+ 		while(!list_empty(&pRxTS->RxPendingPktList))
+ 		{
+-		//      PlatformAcquireSpinLock(Adapter, RT_RX_SPINLOCK);
+ 			spin_lock_irqsave(&(ieee->reorder_spinlock), flags);
+ 			//pRxReorderEntry = list_entry(&pRxTS->RxPendingPktList.prev,RX_REORDER_ENTRY,List);
+ 			pRxReorderEntry = (PRX_REORDER_ENTRY)list_entry(pRxTS->RxPendingPktList.prev,RX_REORDER_ENTRY,List);
+@@ -489,7 +485,6 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, PTS_COMMON_INFO pTs,
+ 				prxb = NULL;
+ 			}
+ 			list_add_tail(&pRxReorderEntry->List,&ieee->RxReorder_Unused_List);
+-			//PlatformReleaseSpinLock(Adapter, RT_RX_SPINLOCK);
+ 			spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
+ 		}
+ 
 -- 
 1.9.1
 
