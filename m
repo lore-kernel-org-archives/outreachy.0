@@ -1,87 +1,84 @@
-X-GM-THRID: 6254199733277949952
-X-Received: by 10.66.142.230 with SMTP id rz6mr9787522pab.31.1456169349688;
-        Mon, 22 Feb 2016 11:29:09 -0800 (PST)
+X-GM-THRID: 6251168394016456704
+X-Received: by 10.67.5.233 with SMTP id cp9mr10877203pad.43.1455463560869;
+        Sun, 14 Feb 2016 07:26:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.91.23 with SMTP id y23ls1714882qgd.35.gmail; Mon, 22 Feb
- 2016 11:29:09 -0800 (PST)
-X-Received: by 10.129.58.16 with SMTP id h16mr27933911ywa.56.1456169349203;
-        Mon, 22 Feb 2016 11:29:09 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id yd9si3287888pab.1.2016.02.22.11.29.09
+Received: by 10.50.32.104 with SMTP id h8ls583848igi.28.canary; Sun, 14 Feb
+ 2016 07:26:00 -0800 (PST)
+X-Received: by 10.66.246.193 with SMTP id xy1mr11596732pac.7.1455463560480;
+        Sun, 14 Feb 2016 07:26:00 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
+        by gmr-mx.google.com with ESMTPS id 79si2895596pft.0.2016.02.14.07.26.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 11:29:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Sun, 14 Feb 2016 07:26:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id ho8so98395644pac.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 11:29:09 -0800 (PST)
+Received: by mail-pf0-x231.google.com with SMTP id e127so73632716pfe.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 07:26:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=kJ7gAyCsZDX1lwvNkYT4C/qMeuDVFbThg4RuvoTsRZg=;
-        b=TQcSAL8zGmwA63mXfpfWxenPPa/IqN+y+nPS9WlZL2WFNMJxqft2zIOInBmYVkFTf4
-         G0CVoFnExCcutr/Q3GxAIJVjuLuH1TNblrGWkqf0X1nPYZWGVlfXl8cLuzyUZJwYoGqq
-         NDRrzkTfuFv9n2+a8WDOR6BJZr2jIXi92qWrWd2BwrFthMGTHwUoqy5mHiJoyqSV8uRX
-         dpuXYv0vjEtexW9n20GUZF8n0dG9nEQC96r05lpE7iuYMcjPFyxR36PqJS1YqkDE7Phw
-         u7GzcnYI/icXgYhMq1m7ainIsV0NROmJGwf5BqKRcp50horOmMgQkleMNL2XH72oaBqV
-         CzIQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=ebTxBxSkTd/uMoys4TH4c40+whNFILqoXrHNoXJVLww=;
+        b=kvPMS2A7z5FF9jB6gHhZ+0x4Aus3Zk4qEzikAeJKJqZHsAqL0URWwz6WQI1XE9z3RE
+         SQkynY7t3Rm6ctBu3OaHGumEgmvYs6Gh/2wucvr6uL5qu4O2vdrMDg7Q/pW4nM8Om1E5
+         KJuD8SyX6rhKhpFo6zLRzqWi758of3dBrqoKvDcFLmQru4yQuHjJwqYamPP8MgRpCMZO
+         CJHgg6uewcUUbffKuL0oGLHJdNN6kMja+hTfA7i5q6BAoME3G5/fEzQA185wSxm7v8Tr
+         1fcxfmFeWlWZCUJ6J1HuJVU/QwqA2R/7wlNNCKSTLBGUUN6xQNIh9TlQZY9b3y1+DlTP
+         ji0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=kJ7gAyCsZDX1lwvNkYT4C/qMeuDVFbThg4RuvoTsRZg=;
-        b=T4RkvHFi5t1XoCeCCC6lbf89vMYFCk6PiqrcyOIOpnmvcCIf8Hsbx1tLYEMkPgJ+3G
-         /39CUv7a7I4M0lexX/WzlYtDDJOTJOdQCFMwSOHXrMynH3QBRYaE0+r/wP0iEkDDdEPD
-         6uMoeZ+glDmmZcKdqyZexHxiKcQUbt5+vBzNmC1Ty5WE2T94Qm54O//IjOOpzZIEMi+5
-         DAZbVw+HcNWDfIVXG34nv4ElQ9bkcLEy+nQrTd156DEDvdX7EoYDHCQ7eqJMqQ6K/SWr
-         PDCdhmRP0B1Ml6p7MDtXl/wE3KVVNY7UG1J2PPD7hNIiNB7YXi1v7fR7XLgY+4OrLppT
-         rFvg==
-X-Gm-Message-State: AG10YOTMQQbyblphzkZalFKnrLDP+JT45yyrdxGG0yDoU91FLcISqnKUvkbfAm4BJdM8iA==
-X-Received: by 10.66.228.231 with SMTP id sl7mr6462831pac.30.1456169349027;
-        Mon, 22 Feb 2016 11:29:09 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.75])
-        by smtp.gmail.com with ESMTPSA id ud10sm38888739pab.27.2016.02.22.11.29.07
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ebTxBxSkTd/uMoys4TH4c40+whNFILqoXrHNoXJVLww=;
+        b=GYrFn51ml/rxN6IyQBQcFC17c9vJl9ZuXBO2gn0SKsloNnSqiVgEtC4zBWitl65BWq
+         EUBlnuiyMVDKDwMy7VfaA5iRJYEckPIwZyerBOsXF7KZq3sm+gmP9i5/AwIRXmV5er26
+         zGA+/92fwStb8bfOt8XgfuwHXkeISfoivJ5PDCjcb/e8Nf5tW17rBrflZeR8kmhYrTrg
+         QGOZCrFeiagD2o2GgaexuSY44GEHllTb4hjt7W3qlXOPBbOvAT1DhOFVnSBnrapuBv+S
+         yInG7NQmUaF2RNb0pOPNlXAR7iPlkPb5nnu+Y5YJJnubMWWzhWxYQaeW93IzGIayACDC
+         xNHw==
+X-Gm-Message-State: AG10YOQH8r//W5bSJ8Ys/CJFLHJwQStSXUrXPoPNjxF82E7mHQPQi5TDwivi04K2+RPr5A==
+X-Received: by 10.98.68.193 with SMTP id m62mr17074524pfi.130.1455463560372;
+        Sun, 14 Feb 2016 07:26:00 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([106.215.188.63])
+        by smtp.gmail.com with ESMTPSA id o90sm32257635pfi.17.2016.02.14.07.25.56
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 11:29:08 -0800 (PST)
-Date: Mon, 22 Feb 2016 16:59:06 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        Sun, 14 Feb 2016 07:25:59 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 20:55:46 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging:rtl8712: Avoid multiple assignments.
-Message-ID: <20160222112906.GA5412@sandhya>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: rtl8188eu: os_dep: Remove NULL test before rtw_free_netdev
+Date: Sun, 14 Feb 2016 20:54:03 +0530
+Message-Id: <1455463443-7945-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Avoid multiple assignments.This isssue is found by checkpatch.pl script.
+The function rtw_free_netdev test whether its argument is NULL and
+return immediately. So NULL test before this function is not needed.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/rtl8712/recv_linux.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/os_dep/usb_intf.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
-index 2f5460d..28a6360 100644
---- a/drivers/staging/rtl8712/recv_linux.c
-+++ b/drivers/staging/rtl8712/recv_linux.c
-@@ -44,7 +44,8 @@
- int r8712_os_recv_resource_alloc(struct _adapter *padapter,
- 				 union recv_frame *precvframe)
- {
--	precvframe->u.hdr.pkt_newalloc = precvframe->u.hdr.pkt = NULL;
-+	precvframe->u.hdr.pkt_newalloc = NULL;
-+	precvframe->u.hdr.pkt = NULL;
- 	return _SUCCESS;
+diff --git a/drivers/staging/rtl8188eu/os_dep/usb_intf.c b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
+index 01d50f7..6a68f17 100644
+--- a/drivers/staging/rtl8188eu/os_dep/usb_intf.c
++++ b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
+@@ -474,8 +474,7 @@ static void rtw_usb_if1_deinit(struct adapter *if1)
+ 	pr_debug("+r871xu_dev_remove, hw_init_completed=%d\n",
+ 		if1->hw_init_completed);
+ 	rtw_free_drv_sw(if1);
+-	if (pnetdev)
+-		rtw_free_netdev(pnetdev);
++	rtw_free_netdev(pnetdev);
  }
  
+ static int rtw_drv_init(struct usb_interface *pusb_intf, const struct usb_device_id *pdid)
 -- 
-1.8.3.4
+1.9.1
 
 
