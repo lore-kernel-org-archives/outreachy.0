@@ -1,159 +1,316 @@
-X-GM-THRID: 6470342242879930368
-X-Received: by 10.36.69.25 with SMTP id y25mr310426ita.46.1506493949162;
-        Tue, 26 Sep 2017 23:32:29 -0700 (PDT)
+X-GM-THRID: 6250898457474629632
+X-Received: by 10.129.134.135 with SMTP id w129mr11354521ywf.24.1455462684415;
+        Sun, 14 Feb 2016 07:11:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.188.207 with SMTP id m198ls261222vkf.21.gmail; Tue, 26 Sep
- 2017 23:32:28 -0700 (PDT)
-X-Received: by 10.31.83.193 with SMTP id h184mr161071vkb.23.1506493948233;
-        Tue, 26 Sep 2017 23:32:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506493948; cv=none;
-        d=google.com; s=arc-20160816;
-        b=lQGpIJlKGQYH7aKA3UoY5gIxrlKUcyId5SDd5fc9DOBKfphdmAsID9J32EZ9e9zdz2
-         qYAvnKKQ9DF1+UIiskwW7hTE9+7SRChpX0QzDVGW1YlG/EmD/sJBR/ywPmxrI/rGoVcL
-         LvwYOZFUNIuJ3NqTtdVhoEMq4mv0IWHVlYFfoJtl3Yq9pTHA7RpqjyoHTQ0ikA/y8ZDm
-         F+Ig9yueE2WGAX7OjoxFyhRjhMXIIm/r8mDrAsS5sxr/KeSUaxkJ/r9Hs4OgsfWi6QfG
-         CxXKh6eNPjFnPz/7ejIvoyyhbY0YskGl5WzGO9wvllpfwme07vM4g82KLL+OaJlvCSOU
-         GPOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=/OekZeAHhXmlYVkl5wskY6tdPEW+gmonECBDGfmQCxo=;
-        b=eRDA8inkd+0yHrJGYqhtFkXY0ZskqKj4Zb3lDzHccZMzfpxV5lACvzTxDOmk0jNlBV
-         eu8W7N8ljd4FfOOQQfG/ulzP0syAramdyOOWay3zwdswa0bDr4gxVdM3LbFNS2xxZTJf
-         aX1Yta/QI7YRE0KE63QD1kPT9F1Ngp+IPzfdP6dqGC9e1NFANaeiDZzpn1AT8hORmPce
-         4iP/Hj+ZcwDI6TioJB4zfXKpCGiA1k78uEDPHpliuMIACzKKgxcNBWWr0S4J/unovfKG
-         JU6MM4MRNwRIPqYP0vAGPo11A2oTCj4ah4BG+R4lChO87DceQMLnorpxjWfaZS6aogwn
-         fcZw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UkdOdHDd;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id d207si795786pfd.16.2017.09.26.23.32.28
+Received: by 10.182.153.70 with SMTP id ve6ls1211374obb.99.gmail; Sun, 14 Feb
+ 2016 07:11:22 -0800 (PST)
+X-Received: by 10.182.142.8 with SMTP id rs8mr11836308obb.33.1455462682857;
+        Sun, 14 Feb 2016 07:11:22 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ob0-x22e.google.com (mail-ob0-x22e.google.com. [2607:f8b0:4003:c01::22e])
+        by gmr-mx.google.com with ESMTPS id k15si732786igt.3.2016.02.14.07.11.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 23:32:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 14 Feb 2016 07:11:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22e as permitted sender) client-ip=2607:f8b0:4003:c01::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UkdOdHDd;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id m30so8159137pgn.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 23:32:28 -0700 (PDT)
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22e as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-x22e.google.com with SMTP id gc3so80933259obb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 07:11:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=/OekZeAHhXmlYVkl5wskY6tdPEW+gmonECBDGfmQCxo=;
-        b=UkdOdHDdZViVHRPbX1Sxy1SStj/cwNGRa3KIsQtNVoRIPrptaLfgbg+RRbs0PjHkkF
-         TESgN3yUQKHRqP24Rr/fdGpwOaKHRhX2R+hCxC67JWUB2fSUnThjLXtO5ty3fTpUY3X3
-         sifZ+n97ONvVHBqKCEB7MYQT87H1GnN5eZiPyeJ9VU5iv1nJdUFc48zUZZQBwYKJvIWR
-         o0LI7zF7LAwWETmnnJoEPd8802ZjPkP5eIJYdSWDDcrR2T2f/wEyKmkLab110SNbXrVd
-         fccY3rLvcgKp9YSKOVqUyxN6ZhBG+Od/0JTd2i71zPcvEhvZHSuE+BJwL2G/DE0gVyQI
-         VfNQ==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=aPyV8hesYkBxh7N720buUqAmGzLpSfqKR/7gV3IL7gk=;
+        b=o9pk5q5my1WZJ+SxNbFDhf1ZW9P0hjaNehETF5CYANkuvNy7gcgCNSq1FefrejJKBL
+         FLDGUm1PQEUHmtjIk+Xvt0KHortNxNZOuYcHSaCbxyhCehqqy4kPDH+eaK73WeZwHCc5
+         MrfpUATOWdd3nPEYLHl9LEN4ZTByP87tVrQesYhn9tsd717mvKFwpFxmAe0pK2K6wUaM
+         ymwL+LbJ+q91kVcnWmo1D7Onl7YLm9idM1JXnnfbkdePezAVnFA6qS+9xMpHbuFj6wzr
+         5Bjq7UrQgTWg+tuUtmzreccYdffSUEkV3bIq3RFrkJWXYodSli1FZ7YV78wnXl5JCaMw
+         pq5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/OekZeAHhXmlYVkl5wskY6tdPEW+gmonECBDGfmQCxo=;
-        b=C88UZBqDlFWeTrDFv+0PN5AQloNraeRXPG/nX9IBEX4bamZ+Id8lQJ+H+QdKcRCvgO
-         BcWj4xSK4sFDYmaygXRvbZMH/MFnVnTqbyOJB8UfPkxlLfn9JtY4qGDIbE+1f7sDl7Rf
-         jd4h9d46zVMoeLEg6CpUaVLDgpAyikSoSsZ7CM7qI7i0/8uYofvkN36x7LxGz/U1UcJR
-         fIkbsfOd/2fBQv3iNMqh3uYQVYqIvS3v2Oyidcw+tC8dJ6cWzus+Yh6k7Uz/v01U50lV
-         Su85qOZ+89TT57QlGxZbUNnIVlV/rJlUUUdOcwujtAUUxF7kC/QsrgLfz/oV6o27BwpG
-         2Zmw==
-X-Gm-Message-State: AHPjjUgDCknfQ3YpJ0QogL4yes4dKO5WgnCQ9oXR9DGhL5I70a452rbS
-	tolqx3IXhV3JPuOTVT+mm+o=
-X-Google-Smtp-Source: AOwi7QAoO1hAWjYDMVUglCgK4XQQqUNUMOOJGGVYLb1G6YBy3/QyMag3ffxDwvCPGdRh7MrkxyEG7g==
-X-Received: by 10.98.10.146 with SMTP id 18mr368870pfk.346.1506493947786;
-        Tue, 26 Sep 2017 23:32:27 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([47.31.2.166])
-        by smtp.gmail.com with ESMTPSA id l12sm23133301pgp.74.2017.09.26.23.32.25
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 26 Sep 2017 23:32:27 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	hennerich@blackfin.uclinux.org,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	lars@metafoo.de,
-	pmeerw@pmeerw.net,
-	linux-iio@vger.kernel.org
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v4] staging: iio: adc: ad7192: use driver private lock to protect hardware state changes
-Date: Wed, 27 Sep 2017 12:01:59 +0530
-Message-Id: <1506493919-3189-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=aPyV8hesYkBxh7N720buUqAmGzLpSfqKR/7gV3IL7gk=;
+        b=O70QfjgTUpa5yj5yqvvB52gJCaewSfrNUjWlhQwUzIXuuhFmNw8HtaHkdA2p7GuvFL
+         Cb+EZF2cuvc/5fRuO64j0kkoFn0Zmpcn5wBWlBs8uzXwlrL8bjlvnZQV50gTUGxazPZm
+         7tw6SvTV0+EBzDrG0soBLhrO3IOM0Uvxpe7Vhxv/XjK22NAocE0hU2Urh9+0a2LHXdhp
+         4PwoMzWWy1cIfiN7leB76jDJpG6lDvNz5DHBLMYsEN9lV/s/3P1ZE8TEI3g5QssdMBeo
+         7Bl2O+N758pvO5Bl3lDHQZF2A9Fb/qzdQ6VTH5/cHtWeh1yRpyuanOKNtvBTB0pF+dey
+         JLvw==
+X-Gm-Message-State: AG10YOSuXgB13Bb058l0R07qjZPuNYHoEEaMbQjpq3xm0jmv/JP+/jBfd4MNwBGj8xlFh0uNlj/KBzm0JjZSJw==
+MIME-Version: 1.0
+X-Received: by 10.182.133.4 with SMTP id oy4mr5125272obb.65.1455462682683;
+ Sun, 14 Feb 2016 07:11:22 -0800 (PST)
+Received: by 10.202.170.195 with HTTP; Sun, 14 Feb 2016 07:11:22 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.02.1602140837380.2039@localhost6.localdomain6>
+References: <20160214025751.GA24385@janani-Inspiron-3521>
+	<alpine.DEB.2.02.1602140837380.2039@localhost6.localdomain6>
+Date: Sun, 14 Feb 2016 10:11:22 -0500
+Message-ID: <CANnt6X=PC3kY0oEw6vB1BDCAuS_AT8Tsg=SCZPY833abpeNk2g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rts5208: Place constants on
+ the right side of comparisons
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=e89a8ff252582f6fa3052bbc50dd
 
-The IIO subsystem is redefining iio_dev->mlock to be used by
-the IIO core only for protecting device operating mode changes.
-ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+--e89a8ff252582f6fa3052bbc50dd
+Content-Type: text/plain; charset=UTF-8
 
-In this driver, mlock was being used to protect hardware state
-changes.  Replace it with a driver private lock.
+On Sun, Feb 14, 2016 at 2:39 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 
-Also, as there are state changes in the ad7192_ write_raw function, a lock
-is added to prevent the concurrent state changes.
+> On Sat, 13 Feb 2016, Janani Ravichandran wrote:
+>
+> > Constants should be placed on the right hand side of comparisons. This
+> > issue was identified by checkpatch.
+>
+> There is a semantic patch in the kernel that makes this change for you.
+> At the moment, it makes the change in some cases where it is not really
+> necessary, but when you have decided that it is necessary, it could be
+> safer to use the semantic patch than to do it by hand.
+>
+I will remember this the next time I make a similar change.
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
-changes in v4:
-	- added comment for mutex
-	- improved commit message
- drivers/staging/iio/adc/ad7192.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+Thanks!
 
-diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-index d11c6de..c1343ec 100644
---- a/drivers/staging/iio/adc/ad7192.c
-+++ b/drivers/staging/iio/adc/ad7192.c
-@@ -162,6 +162,7 @@ struct ad7192_state {
- 	u32				scale_avail[8][2];
- 	u8				gpocon;
- 	u8				devid;
-+	struct mutex			lock;	/* protect sensor state */
- 
- 	struct ad_sigma_delta		sd;
- };
-@@ -463,10 +464,10 @@ static int ad7192_read_raw(struct iio_dev *indio_dev,
- 	case IIO_CHAN_INFO_SCALE:
- 		switch (chan->type) {
- 		case IIO_VOLTAGE:
--			mutex_lock(&indio_dev->mlock);
-+			mutex_lock(&st->lock);
- 			*val = st->scale_avail[AD7192_CONF_GAIN(st->conf)][0];
- 			*val2 = st->scale_avail[AD7192_CONF_GAIN(st->conf)][1];
--			mutex_unlock(&indio_dev->mlock);
-+			mutex_unlock(&st->lock);
- 			return IIO_VAL_INT_PLUS_NANO;
- 		case IIO_TEMP:
- 			*val = 0;
-@@ -510,6 +511,7 @@ static int ad7192_write_raw(struct iio_dev *indio_dev,
- 	switch (mask) {
- 	case IIO_CHAN_INFO_SCALE:
- 		ret = -EINVAL;
-+		mutex_lock(&st->lock);
- 		for (i = 0; i < ARRAY_SIZE(st->scale_avail); i++)
- 			if (val2 == st->scale_avail[i][1]) {
- 				ret = 0;
-@@ -523,6 +525,7 @@ static int ad7192_write_raw(struct iio_dev *indio_dev,
- 				ad7192_calibrate_all(st);
- 				break;
- 			}
-+		mutex_unlock(&st->lock);
- 		break;
- 	case IIO_CHAN_INFO_SAMP_FREQ:
- 		if (!val) {
-@@ -634,6 +637,8 @@ static int ad7192_probe(struct spi_device *spi)
- 
- 	st = iio_priv(indio_dev);
- 
-+	mutex_init(&st->lock);
-+
- 	st->avdd = devm_regulator_get(&spi->dev, "avdd");
- 	if (IS_ERR(st->avdd))
- 		return PTR_ERR(st->avdd);
--- 
-2.7.4
+Janani.
 
+>
+> misc/compare_const_fl.cocci
+>
+> Nothing to change in the patch though.
+>
+> julia
+>
+> > Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> > ---
+> >  drivers/staging/rts5208/sd.c | 20 ++++++++++----------
+> >  1 file changed, 10 insertions(+), 10 deletions(-)
+> >
+> > diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+> > index d6c4982..244d589 100644
+> > --- a/drivers/staging/rts5208/sd.c
+> > +++ b/drivers/staging/rts5208/sd.c
+> > @@ -4260,10 +4260,10 @@ int sd_pass_thru_mode(struct scsi_cmnd *srb,
+> struct rtsx_chip *chip)
+> >               return TRANSPORT_FAILED;
+> >       }
+> >
+> > -     if ((0x53 != srb->cmnd[2]) || (0x44 != srb->cmnd[3]) ||
+> > -             (0x20 != srb->cmnd[4]) || (0x43 != srb->cmnd[5]) ||
+> > -             (0x61 != srb->cmnd[6]) || (0x72 != srb->cmnd[7]) ||
+> > -             (0x64 != srb->cmnd[8])) {
+> > +     if ((srb->cmnd[2] != 0x53) || (srb->cmnd[3] != 0x44) ||
+> > +             (srb->cmnd[4] != 0x20) || (srb->cmnd[5] != 0x43) ||
+> > +             (srb->cmnd[6] != 0x61) || (srb->cmnd[7] != 0x72) ||
+> > +             (srb->cmnd[8] != 0x64)) {
+> >               set_sense_type(chip, lun,
+> SENSE_TYPE_MEDIA_INVALID_CMD_FIELD);
+> >               rtsx_trace(chip);
+> >               return TRANSPORT_FAILED;
+> > @@ -4284,7 +4284,7 @@ int sd_pass_thru_mode(struct scsi_cmnd *srb,
+> struct rtsx_chip *chip)
+> >               return TRANSPORT_FAILED;
+> >       }
+> >
+> > -     buf[5] = (1 == CHK_SD(sd_card)) ?  0x01 : 0x02;
+> > +     buf[5] = (CHK_SD(sd_card) == 1) ? 0x01 : 0x02;
+> >       if (chip->card_wp & SD_CARD)
+> >               buf[5] |= 0x80;
+> >
+> > @@ -5176,10 +5176,10 @@ int sd_hw_rst(struct scsi_cmnd *srb, struct
+> rtsx_chip *chip)
+> >               return TRANSPORT_FAILED;
+> >       }
+> >
+> > -     if ((0x53 != srb->cmnd[2]) || (0x44 != srb->cmnd[3]) ||
+> > -             (0x20 != srb->cmnd[4]) || (0x43 != srb->cmnd[5]) ||
+> > -             (0x61 != srb->cmnd[6]) || (0x72 != srb->cmnd[7]) ||
+> > -             (0x64 != srb->cmnd[8])) {
+> > +     if ((srb->cmnd[2] != 0x53) || (srb->cmnd[3] != 0x44) ||
+> > +             (srb->cmnd[4] != 0x20) || (srb->cmnd[5] != 0x43) ||
+> > +             (srb->cmnd[6] != 0x61) || (srb->cmnd[7] != 0x72) ||
+> > +             (srb->cmnd[8] != 0x64)) {
+> >               set_sense_type(chip, lun,
+> SENSE_TYPE_MEDIA_INVALID_CMD_FIELD);
+> >               rtsx_trace(chip);
+> >               return TRANSPORT_FAILED;
+> > @@ -5188,7 +5188,7 @@ int sd_hw_rst(struct scsi_cmnd *srb, struct
+> rtsx_chip *chip)
+> >       switch (srb->cmnd[1] & 0x0F) {
+> >       case 0:
+> >  #ifdef SUPPORT_SD_LOCK
+> > -             if (0x64 == srb->cmnd[9])
+> > +             if (srb->cmnd[9] == 0x64)
+> >                       sd_card->sd_lock_status |= SD_SDR_RST;
+> >  #endif
+> >               retval = reset_sd_card(chip);
+> > --
+> > 2.5.0
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20160214025751.GA24385%40janani-Inspiron-3521
+> .
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+
+--e89a8ff252582f6fa3052bbc50dd
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Sun, Feb 14, 2016 at 2:39 AM, Julia Lawall <span dir=3D"ltr">&lt;<a =
+href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">julia.lawall@lip6.fr=
+</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">O=
+n Sat, 13 Feb 2016, Janani Ravichandran wrote:<br>
+<br>
+&gt; Constants should be placed on the right hand side of comparisons. This=
+<br>
+&gt; issue was identified by checkpatch.<br>
+<br>
+</span>There is a semantic patch in the kernel that makes this change for y=
+ou.<br>
+At the moment, it makes the change in some cases where it is not really<br>
+necessary, but when you have decided that it is necessary, it could be<br>
+safer to use the semantic patch than to do it by hand.<br></blockquote><div=
+>I will remember this the next time I make a similar change.<br><br></div><=
+div>Thanks!<br><br></div><div>Janani. <br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1=
+ex">
+<br>
+misc/compare_const_fl.cocci<br>
+<br>
+Nothing to change in the patch though.<br>
+<br>
+julia<br>
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+&gt; Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchnd=
+rn@gmail.com">janani.rvchndrn@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/rts5208/sd.c | 20 ++++++++++----------<br>
+&gt;=C2=A0 1 file changed, 10 insertions(+), 10 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd=
+.c<br>
+&gt; index d6c4982..244d589 100644<br>
+&gt; --- a/drivers/staging/rts5208/sd.c<br>
+&gt; +++ b/drivers/staging/rts5208/sd.c<br>
+&gt; @@ -4260,10 +4260,10 @@ int sd_pass_thru_mode(struct scsi_cmnd *srb, s=
+truct rtsx_chip *chip)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return TRANSPORT=
+_FAILED;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0if ((0x53 !=3D srb-&gt;cmnd[2]) || (0x44 !=3D srb=
+-&gt;cmnd[3]) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0x20 !=3D srb-&gt;cm=
+nd[4]) || (0x43 !=3D srb-&gt;cmnd[5]) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0x61 !=3D srb-&gt;cm=
+nd[6]) || (0x72 !=3D srb-&gt;cmnd[7]) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0x64 !=3D srb-&gt;cm=
+nd[8])) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0if ((srb-&gt;cmnd[2] !=3D 0x53) || (srb-&gt;cmnd[=
+3] !=3D 0x44) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(srb-&gt;cmnd[4] !=3D=
+ 0x20) || (srb-&gt;cmnd[5] !=3D 0x43) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(srb-&gt;cmnd[6] !=3D=
+ 0x61) || (srb-&gt;cmnd[7] !=3D 0x72) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(srb-&gt;cmnd[8] !=3D=
+ 0x64)) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0set_sense_type(c=
+hip, lun, SENSE_TYPE_MEDIA_INVALID_CMD_FIELD);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0rtsx_trace(chip)=
+;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return TRANSPORT=
+_FAILED;<br>
+&gt; @@ -4284,7 +4284,7 @@ int sd_pass_thru_mode(struct scsi_cmnd *srb, str=
+uct rtsx_chip *chip)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return TRANSPORT=
+_FAILED;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0buf[5] =3D (1 =3D=3D CHK_SD(sd_card)) ?=C2=A0 0x0=
+1 : 0x02;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0buf[5] =3D (CHK_SD(sd_card) =3D=3D 1) ? 0x01 : 0x=
+02;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (chip-&gt;card_wp &amp; SD_CARD)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0buf[5] |=3D 0x80=
+;<br>
+&gt;<br>
+&gt; @@ -5176,10 +5176,10 @@ int sd_hw_rst(struct scsi_cmnd *srb, struct rt=
+sx_chip *chip)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return TRANSPORT=
+_FAILED;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0if ((0x53 !=3D srb-&gt;cmnd[2]) || (0x44 !=3D srb=
+-&gt;cmnd[3]) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0x20 !=3D srb-&gt;cm=
+nd[4]) || (0x43 !=3D srb-&gt;cmnd[5]) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0x61 !=3D srb-&gt;cm=
+nd[6]) || (0x72 !=3D srb-&gt;cmnd[7]) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0x64 !=3D srb-&gt;cm=
+nd[8])) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0if ((srb-&gt;cmnd[2] !=3D 0x53) || (srb-&gt;cmnd[=
+3] !=3D 0x44) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(srb-&gt;cmnd[4] !=3D=
+ 0x20) || (srb-&gt;cmnd[5] !=3D 0x43) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(srb-&gt;cmnd[6] !=3D=
+ 0x61) || (srb-&gt;cmnd[7] !=3D 0x72) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(srb-&gt;cmnd[8] !=3D=
+ 0x64)) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0set_sense_type(c=
+hip, lun, SENSE_TYPE_MEDIA_INVALID_CMD_FIELD);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0rtsx_trace(chip)=
+;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return TRANSPORT=
+_FAILED;<br>
+&gt; @@ -5188,7 +5188,7 @@ int sd_hw_rst(struct scsi_cmnd *srb, struct rtsx=
+_chip *chip)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0switch (srb-&gt;cmnd[1] &amp; 0x0F) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0case 0:<br>
+&gt;=C2=A0 #ifdef SUPPORT_SD_LOCK<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (0x64 =3D=3D srb-&=
+gt;cmnd[9])<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (srb-&gt;cmnd[9] =
+=3D=3D 0x64)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0sd_card-&gt;sd_lock_status |=3D SD_SDR_RST;<br>
+&gt;=C2=A0 #endif<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0retval =3D reset=
+_sd_card(chip);<br>
+&gt; --<br>
+&gt; 2.5.0<br>
+&gt;<br>
+</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@googlegroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com">outreachy-kernel@googlegroups.com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20160214025751.GA24385%40janani-Inspiron-3=
+521" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid=
+/outreachy-kernel/20160214025751.GA24385%40janani-Inspiron-3521</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/optout</a=
+>.<br>
+&gt;<br>
+</font></span></blockquote></div><br></div></div>
+
+--e89a8ff252582f6fa3052bbc50dd--
 
