@@ -1,125 +1,88 @@
-X-GM-THRID: 6808264476634120192
-X-Received: by 2002:a05:6830:138e:: with SMTP id d14mr4138542otq.248.1585172600256;
-        Wed, 25 Mar 2020 14:43:20 -0700 (PDT)
+X-GM-THRID: 6250917174301425664
+X-Received: by 10.129.32.68 with SMTP id g65mr8589933ywg.3.1455405069416;
+        Sat, 13 Feb 2016 15:11:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:fd02:: with SMTP id b2ls1280743oii.2.gmail; Wed, 25 Mar
- 2020 14:43:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvCyw2szS9v7xW3c9ivzkU21/iJqycPOlZcTy1H0Uyamd3YiElOvQKNsnwqKXebcTQrOLXP
-X-Received: by 2002:aca:a98a:: with SMTP id s132mr4119719oie.75.1585172599088;
-        Wed, 25 Mar 2020 14:43:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585172599; cv=none;
-        d=google.com; s=arc-20160816;
-        b=v506ZFGEsGkxpD4QaUgccaP7K7DJpClpusFgCw+BWa6Dwf1W0dFfja9dboxjnODYaA
-         uzGkhdPVSoMcld1vatAXjMDm6ABG3v+cQSsbtfPiAmXM3JeqDxbAR9b4x0+NIR2NXKGA
-         b4/1iuKI4EiqPl52+TNJJbTf1FbzG8E720Llo+1f4MYJt6E2FtixK1c9RaHy9drSjSGh
-         v53SGx6pkTtfFx85Z4PlooEvuwNiDeOYJPOr7tX2CFv6EFmouh5zV2LAXfbQ0wUWOmxX
-         TKS5H9wdhnujfNhDimrRuGySYJvB34lm8MBye8GdWt7QdpnY8Kz3bNq/210rjiK/JwTL
-         MlWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=h0hI1ctK7evRWi0Tx3F+lFEp/ylOEoUVzXunsODTLdY=;
-        b=MJKLarb/bqG0PK6ULmdrqEUmu8n9LcCFAhpfVFGAoD6H1Qns5AH7hvibCg38R+shhE
-         m4VaWHCOnPjixAcyiyaL6UxHhLaIP2VBJYMfUFa86iXonLEFOdAZzmPB668SIYrbkL6N
-         GB3coXgxJmD4EiT1IQsczcirwt81nwVIW6UjhfpiFcq7EKBnuy1aT5BJK0vuzZpjg8dO
-         4mxmeq6/Cp9kW9RcomIcFUO7z+0LvPzJHDlq3QPUqx/Ne8i0SLTLDKdvN3Djvd+BmUik
-         FoLqYD81C7LOhKUNtxtWjXC8z8kircaK5Vl6YTnlCMFkIK8Myby21n8IHRWx5TUyMxrO
-         XLNg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K6CccuvD;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id d22si43570oti.1.2020.03.25.14.43.19
+Received: by 10.140.28.71 with SMTP id 65ls1827289qgy.28.gmail; Sat, 13 Feb
+ 2016 15:11:08 -0800 (PST)
+X-Received: by 10.140.233.20 with SMTP id e20mr8960480qhc.8.1455405068819;
+        Sat, 13 Feb 2016 15:11:08 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qk0-x232.google.com (mail-qk0-x232.google.com. [2607:f8b0:400d:c09::232])
+        by gmr-mx.google.com with ESMTPS id l85si1256851ywb.2.2016.02.13.15.11.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Mar 2020 14:43:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 15:11:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender) client-ip=2607:f8b0:400d:c09::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K6CccuvD;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id d17so1824600pgo.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 14:43:19 -0700 (PDT)
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x232.google.com with SMTP id x1so43849730qkc.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 15:11:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=h0hI1ctK7evRWi0Tx3F+lFEp/ylOEoUVzXunsODTLdY=;
-        b=K6CccuvDhDFg4uDguK3OiesQSTy4fN0R7L2ZKiBbN6KUB5W5JGjUjBeE8sAHEWaPX2
-         w/HSgNcZUtbTEQ28K1Q8MlNo5DaOd8AscgJK5B3m5OeehiuaHg1US+Hapq413+gXZgxD
-         pC/tsiWBNJEFkVFyevTpcfH7QZijl90PLmgGflSa8Fy7sXpNJtnKbfG++5ArAO6Rdaj+
-         gDFnjrinuJIrGqgR5G4NygPWvjK7+oq7x6gE9H1UhL0UfjtPwT5biCQ+bEhxPvjmMzzS
-         ZgkB+HD5/RSOurcjFBSUuP1KD5/ocn9MzxOEE4CNq1jVf5ZbdVHr3IrFWx1V8RBeCj3p
-         fpMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=h0hI1ctK7evRWi0Tx3F+lFEp/ylOEoUVzXunsODTLdY=;
-        b=aYBDQzvXrV/kObiiqcHziumG7kc7eApOpMb+aAP77JzDteazcEWkwI62QtzdcUYDbe
-         daFTVc76IWxir26qhnY0GvqAPIUXffWEvWRkLsYPrUQgywzaVLgySnf3nJHmduiTSQ3E
-         ankHTB0Zi/N42tR0tUWp45mBGeuHhZi/mz+63cDf5NispXk3OqRqxAucyPxAG5uF/9OV
-         Yo4onwZUleKfqc01P3s18z8Ho+sED99bwQJMt2imUuUy/61zKdPw5xoGMkikegdYFeRN
-         NM0UBda62y8rxmWcTlcbIDQYL4IXxPHZaq9V5dYyTWfnszWc2YTHxuPHinnq1XLaLAO3
-         fPTg==
-X-Gm-Message-State: ANhLgQ0TQMsHwg7AgdGIJ7QFT3F/ta4mEoTWPrFXN7yHJKgKQOd73IEB
-	FkXK1AFqr6vxliOBqddWaVd9VqbF4No=
-X-Received: by 2002:aa7:828e:: with SMTP id s14mr5336751pfm.15.1585172598186;
-        Wed, 25 Mar 2020 14:43:18 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from simran-Inspiron-5558 ([2409:4052:78f:bb47:8124:5e4b:ea06:7595])
-        by smtp.gmail.com with ESMTPSA id a19sm87724pfk.110.2020.03.25.14.43.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2020 14:43:17 -0700 (PDT)
-Date: Thu, 26 Mar 2020 03:13:12 +0530
-From: Simran Singhal <singhalsimran0@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: hal: Compress return logic
-Message-ID: <20200325214312.GA1936@simran-Inspiron-5558>
+        bh=L4Jyw99TNOd9prh6tm9pGFIYb3ZdCvDWwjkyOODunZk=;
+        b=uWDp/zw4KxcwSIad81axoq+0zSR1d4Ze8lTf5AkQIKX5Lt8H7e8+1bsHABgutLPW3C
+         Q5XSxFlshhfrnZHYRYPfg/o+hzOuG7mA+BIvh4GPOY40smpoez1A4J8vGXodreBwEr17
+         MP1sTJPeYSrPEPQgUQzpIsqBYuGzJ2RLXLjCfyXG0DbyxRiregk5jMukXl19wopn+Vkt
+         whpoCTDlnvF2Hs93YRa5jqbTWUINIe6Zw3X0o2c0uhf8AJggNw6HEnnqYBfmPK0vx4GL
+         yKOvXxV+YMdRQ3LbQ+okHRGfbcIdPhcYFMV4dEIkB79gCoM4u+IONp0QNo+bjuFOMrVr
+         EW2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=L4Jyw99TNOd9prh6tm9pGFIYb3ZdCvDWwjkyOODunZk=;
+        b=b3UJCNonhyU3ONi5/kfkH2ayPYXpT4wsIBhDYoo8uGhiqigMmRmgpRtIxgJbUHlBXF
+         UC9v64PxXuPUdJzDB2JUfNRAsw6GsUkiE8uMuE4398DaJRJ7+WO/wD+DWTI5nMjUMYUO
+         fEN2PfzpKKNe+hQYhh8zv4v0Bo7+2GQIvHAH4T4pSxKPHHQ85ZDZ3pn9LC7dJMO29aMo
+         g5jcpFRobn95uXlwRFbQXJB8j6bZ+vMaiJIzaIsczgvdaLLPpSvcWJRETT/HAFyWhHIH
+         mSQyP+ADoxb6w11FX9Icq8TUn9VWyj4tMOPTDEtFbytrtFqPsAb5pqWzIVYItLx5+Pyh
+         AUiw==
+X-Gm-Message-State: AG10YOQ83xE714lI3HJD9wmpsnHRV0E3mUqdl7uQC1Ye/x/qNvFZUQABwrFDkohnyhiy6A==
+X-Received: by 10.55.215.76 with SMTP id m73mr11120345qki.13.1455405068684;
+        Sat, 13 Feb 2016 15:11:08 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
+        by smtp.gmail.com with ESMTPSA id b201sm8208656qhb.48.2016.02.13.15.11.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 15:11:08 -0800 (PST)
+Date: Sat, 13 Feb 2016 23:10:29 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: wilc1000: Eliminate extraneous braces
+Message-ID: <20160214041029.GA25367@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Simplify function returns by merging assignment and return into
-one command line.
-Found with Coccinelle
+Get rid of extraneous braces enclosing single statement blocks.
 
-@@
-local idexpression ret;
-expression e;
-@@
-
--ret =
-+return
-     e;
--return ret;
-
-Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_com_phycfg.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/staging/wilc1000/wilc_debugfs.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
-index eb7de3617d83..767e2a784f78 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
-@@ -1498,9 +1498,7 @@ s8 PHY_GetTxPowerByRate(
- 		return value;
- 	}
+diff --git a/drivers/staging/wilc1000/wilc_debugfs.c b/drivers/staging/wilc1000/wilc_debugfs.c
+index c5c8cc9..8e7186b 100644
+--- a/drivers/staging/wilc1000/wilc_debugfs.c
++++ b/drivers/staging/wilc1000/wilc_debugfs.c
+@@ -98,9 +98,8 @@ static ssize_t wilc_debug_region_write(struct file *filp, const char __user *buf
+ 	if (count > sizeof(buffer))
+ 		return -EINVAL;
  
--	value = pHalData->TxPwrByRateOffset[Band][RFPath][TxNum][rateIndex];
--
--	return value;
-+	return pHalData->TxPwrByRateOffset[Band][RFPath][TxNum][rateIndex];
+-	if (copy_from_user(buffer, buf, count)) {
++	if (copy_from_user(buffer, buf, count))
+ 		return -EFAULT;
+-	}
  
- }
+ 	flag = buffer[0] - '0';
  
 -- 
-2.17.1
+2.5.0
 
 
