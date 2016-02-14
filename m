@@ -1,101 +1,76 @@
-X-GM-THRID: 6250067479758897152
-X-Received: by 10.50.13.69 with SMTP id f5mr15567549igc.7.1455207234771;
-        Thu, 11 Feb 2016 08:13:54 -0800 (PST)
+X-GM-THRID: 6250910328324882432
+X-Received: by 10.194.24.233 with SMTP id x9mr1055321wjf.0.1455466189055;
+        Sun, 14 Feb 2016 08:09:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.102.184 with SMTP id w53ls1112727qge.32.gmail; Thu, 11 Feb
- 2016 08:13:54 -0800 (PST)
-X-Received: by 10.129.84.6 with SMTP id i6mr43763107ywb.6.1455207234052;
-        Thu, 11 Feb 2016 08:13:54 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
-        by gmr-mx.google.com with ESMTPS id q187si676530ywf.4.2016.02.11.08.13.54
+Received: by 10.25.218.20 with SMTP id r20ls597289lfg.61.gmail; Sun, 14 Feb
+ 2016 08:09:48 -0800 (PST)
+X-Received: by 10.112.201.104 with SMTP id jz8mr1306833lbc.13.1455466188538;
+        Sun, 14 Feb 2016 08:09:48 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c143si362672wmd.1.2016.02.14.08.09.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 08:13:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
+        Sun, 14 Feb 2016 08:09:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22b.google.com with SMTP id y9so41541574qgd.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 08:13:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=G3Kh8pvmCqbd1Wk3k+xUSBBkfMiasEz1kF/DItrxCJQ=;
-        b=FNF1G/Wz02pXH2edpQ86q/K8CYsRIxHgNsJD7GIxMYDp4SP6SNuPf1Fjy2UC9YWIxe
-         Ge8QV8zn4uG8fm2rY8eWYE8S5VRp9x2C59Cdm9D+BGnvjw+jTn0CzoYQOCglsp7+nSau
-         vdQZQVAb2OTa4g4XebM5Osq0ZX7I7XNPZGKK+xcA2PsohAyR8fiBES0qtXqIwqvR5VqI
-         31beufBp6i70As2q10BtUKwT4ol1SPD9aqpZ+DN92EkSxyKS2u439w96FNkb/EXES1Cj
-         WWLQyQr7YFwWYZ3TNQXzlJfrMMT+LVKhfeoe5fAR99Rrs0TZH5lW+9RPbc1Z3pN1bciu
-         KeZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=G3Kh8pvmCqbd1Wk3k+xUSBBkfMiasEz1kF/DItrxCJQ=;
-        b=iTO2QLMf1f+YTfz5dmqhBq1IBYp/Ck4gfJiw6GctlukIkwd+KgQgsQZ3CHGmwTQyDB
-         e9IJnaNApFeC2Sgj8ErDaaox/1I4LnAsDJfqbYRtZ6iFbai0V+2mOcekHy9VmnpGJxt0
-         xICmLCNs0KEqp1FSSZN7pfLi4FOffVl6lVGoW3ES/pqRu1PgbEhxgS+/U32LuHiamXr2
-         RLffdvF3mvDBUvCG/WBL0jA4GeS2817Tky5b4VYDF4vKKJYPEA6DcWDVbk15oxNhnfmp
-         0pGHQBhIbpWSmgJf8WQ6juQIFr66Xv04ecpAXzlUaX6BsOn6Uku0RXoLN0u1z+9bnDli
-         nfnw==
-X-Gm-Message-State: AG10YORCoxqKVSRBu0dTRFutBr3zODWUoiI9DKkBq6oAJi0G3eXPHpWCS6TVxI4W3YLKFg==
-X-Received: by 10.140.31.225 with SMTP id f88mr37402415qgf.52.1455207233893;
-        Thu, 11 Feb 2016 08:13:53 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id o60sm3602939qge.34.2016.02.11.08.13.52
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 08:13:53 -0800 (PST)
-Date: Thu, 11 Feb 2016 16:13:14 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: unisys: Remove unneeded parentheses on the right
- hand side of assignment
-Message-ID: <20160211211314.GA4118@janani-Inspiron-3521>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,446,1449529200"; 
+   d="scan'208";a="203053632"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Feb 2016 17:09:48 +0100
+Date: Sun, 14 Feb 2016 17:09:47 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Parenthesize complex
+ values in macros
+In-Reply-To: <CANnt6X=xgYovBN0CW3j-MUW7iuaoaWRP3VPHO5m=jMx3=3rJKw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1602141709220.2066@localhost6.localdomain6>
+References: <20160214034355.GA24997@janani-Inspiron-3521> <alpine.DEB.2.02.1602140833030.2039@localhost6.localdomain6> <CANnt6X=xgYovBN0CW3j-MUW7iuaoaWRP3VPHO5m=jMx3=3rJKw@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-1759664687-1455466188=:2066"
 
-Remove parentheses around the right hand side of assignments as they are
-not needed. Semantic patch used:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-@@
-expression a, b, c;
-@@
+--8323328-1759664687-1455466188=:2066
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-(
-  a = (b == c)
-|
-  a = 
-- (
-  b
-- )
-)
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/unisys/visorinput/visorinput.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/unisys/visorinput/visorinput.c b/drivers/staging/unisys/visorinput/visorinput.c
-index 38d4d5b..b85dc21 100644
---- a/drivers/staging/unisys/visorinput/visorinput.c
-+++ b/drivers/staging/unisys/visorinput/visorinput.c
-@@ -468,7 +468,7 @@ handle_locking_key(struct input_dev *visorinput_dev,
- 		break;
- 	}
- 	if (led >= 0) {
--		int old_state = (test_bit(led, visorinput_dev->led) != 0);
-+		int old_state = test_bit(led, visorinput_dev->led) != 0;
- 
- 		if (old_state != desired_state) {
- 			input_report_key(visorinput_dev, keycode, 1);
--- 
-2.5.0
+On Sun, 14 Feb 2016, Janani Ravichandran wrote:
 
+> 
+> 
+> 
+> 
+> Are these used anywhere?  Grepping for a few of them didn't turn up
+> anything. 
+> 
+> No, Julia, these don't seem to be used anywhere. They are just defined.
+>  
+>       But maybe they provide useful information about the device that
+>       should be preserved.
+> 
+> True.
+>         
+> 
+>       In summary, I'm missing to see what kind of C
+>       expression has the form e1:e2, and I wonder if this is intended
+>       to be part
+>       of something else that will break when you add the parentheses.
+> 
+> 
+> I added the parentheses as checkpatch recognized it as a complex
+> expression and suggested the parentheses.
+> I might have made a mistake. In that case, please ignore this patch :)
+
+Checkpatch does not know all that much about the syntax of C.
+
+julia
+--8323328-1759664687-1455466188=:2066--
 
