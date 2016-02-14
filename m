@@ -1,94 +1,84 @@
 X-GM-THRID: 6250932396840976384
-X-Received: by 10.182.112.193 with SMTP id is1mr11489011obb.38.1455460070266;
-        Sun, 14 Feb 2016 06:27:50 -0800 (PST)
+X-Received: by 10.194.216.3 with SMTP id om3mr1102485wjc.7.1455433587833;
+        Sat, 13 Feb 2016 23:06:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.36.210 with SMTP id p76ls707709qgp.17.gmail; Sun, 14 Feb
- 2016 06:27:48 -0800 (PST)
-X-Received: by 10.31.174.2 with SMTP id x2mr11296881vke.13.1455460068645;
-        Sun, 14 Feb 2016 06:27:48 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
-        by gmr-mx.google.com with ESMTPS id g136si1737297ywb.5.2016.02.14.06.27.48
+Received: by 10.28.111.193 with SMTP id c62ls388209wmi.36.gmail; Sat, 13 Feb
+ 2016 23:06:27 -0800 (PST)
+X-Received: by 10.28.45.151 with SMTP id t145mr510094wmt.6.1455433587307;
+        Sat, 13 Feb 2016 23:06:27 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w197si393325wmw.3.2016.02.13.23.06.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Feb 2016 06:27:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
+        Sat, 13 Feb 2016 23:06:27 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x243.google.com with SMTP id s5so4560546qkd.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 06:27:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=/Owahj93d9IcQ5FUPzUWpM4UvSlJz/WllVq9oyS8nqk=;
-        b=hLA0d+ALojs3RjafxuOSbn/NxhfuwyARRLK8cPuuWJGvyFoaXEJY/gdRk20QAVfT9W
-         sg2Oql4c26pFNWBDDWFNAjWxhVzEqNE+bsdRO/AY+FMXve9m+c9KksjMZVMuhC+pCvvN
-         X6TM/Fd+N7i8J/JBCUhFYTpEqdf6cpkZ3LY4TwxP3X6T3opqdXKyx2/lsuF8TSyNP0qm
-         eGRtPcmaN02fkeM9udP8VxobDk3TGA8NPHVaccmdk5r56dJwIiIUzNYuPsNOaBF2uYSl
-         MS/Vfo9IEOvTS6eI2X/nLi1NCG9BVmGQWk/tLHZjccOcvR3kd/ZLBVgbCNEggXNmrGVv
-         JF0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=/Owahj93d9IcQ5FUPzUWpM4UvSlJz/WllVq9oyS8nqk=;
-        b=TL00ivXGwpnNMp1YE5ZGKI44gAHJaas02htL5D49Bd1yibsWjUbpF6o/5Df/So3FNY
-         5LQ0EqWKB9EZ2//lF/+nwLBEuTTzKPGZJjkmmZg/KuOXYiQLD7pbhxKd5Sqa4ZXojgMF
-         rXWqr0QRiYBkEFoApI0IxLy4MTmJmoKagcvne/zrJqdQqGvkjzlthFSvGdwQjETOv6QU
-         ZJyYu8lEgfJZDm6eQYf+7fp2CiQ6zghLsl0poZzdIFE39CK5fwc/nuCVejWEq0/zAGI1
-         dg5scof3oZi1WHH4/RODnCl1RdpFDcCnjy8rEzRBTQdl9Aruo4yGMQVfmtR6NQNaKlsn
-         07Kg==
-X-Gm-Message-State: AG10YORHhPEKc2d3pNJ3yTinsJcIJrRAL1NZdTz2b+C10e9KhFFfo2iPbsY6TY6WUCYmAw==
-X-Received: by 10.55.52.211 with SMTP id b202mr14690043qka.27.1455460068464;
-        Sun, 14 Feb 2016 06:27:48 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id w1sm3159575qha.3.2016.02.14.06.27.47
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Feb 2016 06:27:47 -0800 (PST)
-Date: Sun, 14 Feb 2016 14:27:07 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: wilc1000: Simplify code by eliminating else block
-Message-ID: <20160214192707.GA3092@janani-Inspiron-3521>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,444,1449529200"; 
+   d="scan'208";a="203012583"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Feb 2016 08:06:26 +0100
+Date: Sun, 14 Feb 2016 08:06:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: wilc1000: Simplify code
+ by eliminating else block
+In-Reply-To: <20160214051750.GA26350@janani-Inspiron-3521>
+Message-ID: <alpine.DEB.2.02.1602140806110.2039@localhost6.localdomain6>
+References: <20160214051750.GA26350@janani-Inspiron-3521>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove else block here as it is not useful after the return statement in
-the corresponding if block. This simplifies code. Issue identified by
-checkpatch.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
-Changes since v2:
- * Eliminated trailing white spaces.
 
- drivers/staging/wilc1000/host_interface.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Sun, 14 Feb 2016, Janani Ravichandran wrote:
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 472fd7f..c0e86e1 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -3355,10 +3355,9 @@ static s32 host_int_get_assoc_res_info(struct wilc_vif *vif,
- 		*pu32RcvdAssocRespInfoLen = 0;
- 		PRINT_ER("Failed to send association response config packet\n");
- 		return -EINVAL;
--	} else {
--		*pu32RcvdAssocRespInfoLen = wid.size;
- 	}
- 
-+	*pu32RcvdAssocRespInfoLen = wid.size;
- 	return result;
- }
- 
--- 
-2.5.0
+> Remove else block here as it is not useful after the return statement in 
+> the corresponding if block. This simplifies code. This issue was
+> identified by checkpatch.
+> 
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+> Changes since v1:
+>  * Modified commit decription to respect 80 char limit.
+> 
+>  drivers/staging/wilc1000/host_interface.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+> index 472fd7f..fe27560 100644
+> --- a/drivers/staging/wilc1000/host_interface.c
+> +++ b/drivers/staging/wilc1000/host_interface.c
+> @@ -3355,10 +3355,9 @@ static s32 host_int_get_assoc_res_info(struct wilc_vif *vif,
+>  		*pu32RcvdAssocRespInfoLen = 0;
+>  		PRINT_ER("Failed to send association response config packet\n");
+>  		return -EINVAL;
+> -	} else {
+> -		*pu32RcvdAssocRespInfoLen = wid.size;
+>  	}
+> -
+> +	
 
+You have added trailing whitespace here.
+
+julia
+
+> +	*pu32RcvdAssocRespInfoLen = wid.size;
+>  	return result;
+>  }
+>  
+> -- 
+> 2.5.0
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160214051750.GA26350%40janani-Inspiron-3521.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
