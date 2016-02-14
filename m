@@ -1,91 +1,88 @@
-X-GM-THRID: 6254148912517480448
-X-Received: by 10.13.230.148 with SMTP id p142mr26421326ywe.45.1456157516868;
-        Mon, 22 Feb 2016 08:11:56 -0800 (PST)
+X-GM-THRID: 6250928232324923392
+X-Received: by 10.31.154.65 with SMTP id c62mr9042070vke.8.1455407643405;
+        Sat, 13 Feb 2016 15:54:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.40.82 with SMTP id w76ls693555qgw.44.gmail; Mon, 22 Feb
- 2016 08:11:56 -0800 (PST)
-X-Received: by 10.140.101.242 with SMTP id u105mr203710qge.12.1456157516130;
-        Mon, 22 Feb 2016 08:11:56 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id 12si3178362pfb.1.2016.02.22.08.11.56
+Received: by 10.182.224.229 with SMTP id rf5ls1208259obc.22.gmail; Sat, 13 Feb
+ 2016 15:54:03 -0800 (PST)
+X-Received: by 10.182.87.2 with SMTP id t2mr9211651obz.20.1455407642996;
+        Sat, 13 Feb 2016 15:54:02 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qk0-x231.google.com (mail-qk0-x231.google.com. [2607:f8b0:400d:c09::231])
+        by gmr-mx.google.com with ESMTPS id g136si1585679ywb.5.2016.02.13.15.54.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 08:11:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Sat, 13 Feb 2016 15:54:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::231 as permitted sender) client-ip=2607:f8b0:400d:c09::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::231 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id e127so95072988pfe.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 08:11:56 -0800 (PST)
+Received: by mail-qk0-x231.google.com with SMTP id s5so44268228qkd.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 15:54:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=McAecvIVcc3gDayFjrt5aZHkpvR84WMCtqxmQXCbNoA=;
-        b=R21Ej0p29e4viT7L4valF7nLEGDGDTE6EDxr4BIjFboV5dBhQjovSQnTq6svyzr516
-         hzoVtwO1RW8le1WF9/SNOa0bn0yNvGmv1C+pJhNfY1ihPISZzD1n5ofu6xH6kGFdGkSs
-         2pDaQJS2vODMkfQRPKygo6Q9lK7HkdyuP4bZKpz2EHaRI4E4qU5n3lXxIfPMdXoD1vho
-         QeOVRte3voNszRl9BtdBUuwXRkbAkdoWmRNmlji1f0FYiIPhZj30uQIgj6fzP1TzrGAv
-         33EzNSbzWTHnFiTLJSqTHlvJkPtlP3ZkEK9jR6g+sAH3p6krcniBNUWCqaul9xOoenV9
-         /g1g==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=jp7WQD0EnAMZkAtGASKFqq2R8gkk/I74r8EAW4JSYcU=;
+        b=jg9YO4o5I5N943a9kXMhqOzgpl8MYOFyUfLljDwozL2S4acq+cKLqzj4tEFzqlMw4W
+         wIsWshNsyG9TAJL24abAmpuhbpyLHENPLCGnmk0kNOrsvfhAr5aWoFeUcUEyZYCXmBWi
+         qni0oW0RuSPVZv0NmgnOjrSl4hQR+o4oO8WUJV2VUdjW2UjNcS71LzmEQBLUNIbb+Pva
+         b72b3IjNjwaReMseGR3B9mJgWRIUh7mx6slUFIfVTP8ht8F22BFL8db2uaD2Qxc8D/3r
+         KcBIDdjlnupDC6dAgW7NjBilRGvFrTX05wa/KnSlCNIhJ6sfKFryiioZIOwIvFitYnB3
+         rCYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=McAecvIVcc3gDayFjrt5aZHkpvR84WMCtqxmQXCbNoA=;
-        b=jrzBrdYzjv2XyXVIH3RHfHOSQYgV8RbhI3LSHhbq7Ll74f1IQgWocqfjdg6zKFGEP/
-         0CZu1TDs7Dn++f4ris+6bUAlxpi8DnhEUj48N5bQTGOx33BAJmdQOtEps2M4duU/rzc3
-         VXItybBUU+X5PlV00dqygtr1FuFmnK7zbCljcz3VUdLwbLmoUhl1P9Ov0D/TA1MtYBQ0
-         /3XFwU+3P03OXM6jlFAo1BvdEL8fpwLABKyE2sdkKr/BQ8G5jmb6PkJLy26W9PvAelyI
-         fnYokPjtrRAdNwZdTJL6XZiudfxmJyywMRH4W3MOOM/9X4EimL0qLQ9iecahUcR3J7Lb
-         Ds/A==
-X-Gm-Message-State: AG10YOQcnELvzF48BEHoBL9WKdMq5pFFO5Op7a8U+SRUY9QP63aqhEX2dG1eHCtzUvZdVQ==
-X-Received: by 10.98.15.145 with SMTP id 17mr38600113pfp.19.1456157515939;
-        Mon, 22 Feb 2016 08:11:55 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id xu1sm38100788pab.31.2016.02.22.08.11.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 08:11:55 -0800 (PST)
-From: Rakhi Sharma <rakhish1994@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=jp7WQD0EnAMZkAtGASKFqq2R8gkk/I74r8EAW4JSYcU=;
+        b=d4h+EypQLiWrSydDNg5Mw6wr0F7CZxW4KoBS7ruNxzp6HjT0tjKI8Vke3Abmo+G23/
+         5sbial2RRVyoaUG9DbU13XUTqm41DTrE1Y7GX9GwEnYGMrErEumTrH+srQsAGKpwK7iC
+         O5kQdBYUeTw5d/MhRQKw0Q1hQGxVGJV4kIied4v81X9EHF2CMgjqk45hZcrqYZbt4HJR
+         UkxI3PBTwp+wrTLjNJ6uxa5KuI4krz2XTelOF3VlBQJWYWn+F9yHkc25DIBmfPVY4cxH
+         n+PM0ph6kzrfvJ00YqcR2NSVBd7rpg94JrcJlB9KvoZrVaI3pV0mWrfevny6qUW7VYjz
+         +Y4A==
+X-Gm-Message-State: AG10YOR35IV0on27koNH1quW7Mu6HrGuSUtVrpA/VTkxteu4uHaNOpXtt9FM8ezF7EiQ/g==
+X-Received: by 10.55.76.15 with SMTP id z15mr11291892qka.32.1455407642831;
+        Sat, 13 Feb 2016 15:54:02 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
+        by smtp.gmail.com with ESMTPSA id a66sm8360506qkb.20.2016.02.13.15.54.02
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 15:54:02 -0800 (PST)
+Date: Sat, 13 Feb 2016 23:53:23 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Rakhi Sharma <rakhish1994@gmail.com>
-Subject: [PATCH] staging: luster: lnet: return of an errno should be  negative.
-Date: Mon, 22 Feb 2016 21:41:46 +0530
-Message-Id: <1456157506-6590-1-git-send-email-rakhish1994@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: wilc1000: Remove useless return statement in a void
+ function
+Message-ID: <20160214045323.GA25999@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Return of an errno should typically be negative (ie: return -ENOENT)
-, as warning is generated by checkpatch.
+Remove the return statement at the end of the void function as it has
+no purpose.
 
-Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/lustre/lnet/lnet/lib-move.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/wilc1000/host_interface.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/lustre/lnet/lnet/lib-move.c b/drivers/staging/lustre/lnet/lnet/lib-move.c
-index fb8f7be0..018949b 100644
---- a/drivers/staging/lustre/lnet/lnet/lib-move.c
-+++ b/drivers/staging/lustre/lnet/lnet/lib-move.c
-@@ -1521,7 +1521,7 @@ lnet_parse_reply(lnet_ni_t *ni, lnet_msg_t *msg)
- 			       md->md_me->me_portal);
- 
- 		lnet_res_unlock(cpt);
--		return ENOENT;		  /* +ve: OK but no match */
-+		return -ENOENT;		  /* +ve: OK but no match */
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 5570707..472fd7f 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -3853,8 +3853,6 @@ void wilc_scan_complete_received(struct wilc *wilc, u8 *pu8Buffer,
+ 		if (result)
+ 			PRINT_ER("Error in sending message queue scan complete parameters: Error(%d)\n", result);
  	}
+-
+-	return;
+ }
  
- 	LASSERT(md->md_offset == 0);
-@@ -1536,7 +1536,7 @@ lnet_parse_reply(lnet_ni_t *ni, lnet_msg_t *msg)
- 			rlength, hdr->msg.reply.dst_wmd.wh_object_cookie,
- 			mlength);
- 		lnet_res_unlock(cpt);
--		return ENOENT;	  /* +ve: OK but no match */
-+		return -ENOENT;	  /* +ve: OK but no match */
- 	}
- 
- 	CDEBUG(D_NET, "%s: Reply from %s of length %d/%d into md %#llx\n",
+ int wilc_remain_on_channel(struct wilc_vif *vif, u32 session_id,
 -- 
-1.9.1
+2.5.0
 
 
