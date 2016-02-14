@@ -1,61 +1,61 @@
 X-GM-THRID: 6251161839379415040
-X-Received: by 10.50.164.134 with SMTP id yq6mr7756730igb.13.1455462093810;
-        Sun, 14 Feb 2016 07:01:33 -0800 (PST)
+X-Received: by 10.50.225.103 with SMTP id rj7mr2363825igc.1.1455462082419;
+        Sun, 14 Feb 2016 07:01:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.232 with SMTP id m8ls614176igx.33.canary; Sun, 14 Feb
- 2016 07:01:33 -0800 (PST)
-X-Received: by 10.66.101.4 with SMTP id fc4mr11164066pab.48.1455462093505;
-        Sun, 14 Feb 2016 07:01:33 -0800 (PST)
+Received: by 10.107.4.142 with SMTP id 136ls1294503ioe.10.gmail; Sun, 14 Feb
+ 2016 07:01:22 -0800 (PST)
+X-Received: by 10.98.68.194 with SMTP id m63mr11453602pfi.7.1455462082124;
+        Sun, 14 Feb 2016 07:01:22 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id tn7si2418588pac.1.2016.02.14.07.01.33
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id ui7si2842331pab.0.2016.02.14.07.01.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Feb 2016 07:01:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 14 Feb 2016 07:01:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id w128so5787735pfb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 07:01:33 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id c10so6380054pfc.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 07:01:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=2KtG0oX/PpWY7VbQNzKZBl0sFd/ANauZHszJq6BH21Q=;
-        b=VRsN6UrKw9zaxqyPwXQIiH4jpf6cIhRLw+XrmPNsISbE/L86PKlYd2dCu1zXxGyIbP
-         o8XPryCSLsBQaMCInv6OT0hxMsju4XXQ+0sRth4OCYJa3F4evCJW86g5Zyajz57Mo1dP
-         HcJAE+BFbzyyHhUXAa10AcJ3UDWgUmM3XpTSomzlL2ByOkSpOqHe8fGrblvn2lCdzpo2
-         RpfsHty+BD62W54dvKAebfCGgDDa4CugINNlQUWiNtLTZGWFQVpW0p6AGCbvtYCCLOTk
-         iGS7RmSgRUQDQj6P8mvKvNI6ghlm0tLvwF3KxBfptpV+vqqF8Tz2PkuFWFJ9ADJWn2gv
-         pe5w==
+        bh=WfZBmsK1otwwTdZ1g3oSLUaf4he1sFy1TOo8hvq0BBs=;
+        b=tuAHvDLjeDxr4nkJrD7G/wH5wFJ9UB2+E88oAw2IhkyZhuqMxGfB7i3ATPX6hseTT6
+         sV/hmUjIaOTVezFZGZktOz4sBkFm6Ad4A/YKYPuxTgvfgu156/sdeOOJLR88Vqf15mZV
+         d6eJ+AmPI0Gr1C/4biQw8IWsRbxq8ENM+VOWrRhOgakTEAGiIkcKwRd/onMkK8s2SsoI
+         kww2w3IQF3AH9YJn4oQ4AshcL7+4wD57fm+KWQpzsOnOGc8Oh2mGt0Sv17WGWeRTRSsa
+         N66BRksVvg7p5wxVAENic9NvwBLlytGxvk7dTWTXdkoQaqcHjf1TVJr4vs7i+tJwsiK7
+         E56A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=2KtG0oX/PpWY7VbQNzKZBl0sFd/ANauZHszJq6BH21Q=;
-        b=F3LOcA/p3dfsVitNZKFLPNVVTbEMLK6tw0O4SlN4sVEj4pGxtq0aGxf7WORI4bIUbx
-         vgsDPMPZ2DlbcHhTfMLm96hoGbxu1oz92T7HIORyH5w9yx4xJJX7Ap4x/Iy64fEqf7FS
-         yyJcbjEccM6IK8t6c0f5KVQIj5N5DG+8xA/EI1BE2H1YR2OpU2CoSeifOEvzhuvBcZjO
-         SPdgV5dqLei0Kk+qMgKqm6zoFfxeh59JjDpWRJLi3AZfPss2JhP2fcsjcPsek2ch8O1U
-         eKyhrF3ESWtdm8Q+mj/1AT1bPiokt6WJuVdFElKejwg83kzy6m46IbV47f1obT46KcEC
-         mJHA==
-X-Gm-Message-State: AG10YOQM1v0WhbsHPpM7bfePqnlGHJvSHS0jv6eYCWzF7Z+bPAWMjN4gy/rmdeTSMcAWpg==
-X-Received: by 10.98.70.80 with SMTP id t77mr16556089pfa.107.1455462093399;
-        Sun, 14 Feb 2016 07:01:33 -0800 (PST)
+        bh=WfZBmsK1otwwTdZ1g3oSLUaf4he1sFy1TOo8hvq0BBs=;
+        b=MHC6LYhY0riZDoEc8ytCPCUnd8ApO7j2MkwmAJUzIuI1K2+fFBpZ613uH6M4au0mPh
+         RyuVP6VzJUpn0IXZaesTKjt8ncMVXg8bLHiEDdswOBpMGIslvNl8scZGV3sak0m5/BAH
+         S5NvYO30GDKXw12zcV6SMokLr4FfQ/gEOLMAP6/CyoGB/WFPkcDdgx7Y0FSLNqHxW62u
+         omuouWJJp0MGXG6HyYUwGq4hd4UyTFFEvzM7jwh7JN6oJoyGJdsPjdXt9TMEPUbkwFVj
+         SNWhsz2FxX/32wORwzauIdwcmURw/NJM9sUhRemGk8VQfYjiFqbThVcqfi3D2gMVrhOj
+         ULrg==
+X-Gm-Message-State: AG10YOQqn5diA3yR5k0lsIWL0OJTGT4Tl2m9B24R2ZzHvsP2PeBYSBXukI7H9b7Wu2UzpQ==
+X-Received: by 10.98.66.75 with SMTP id p72mr17062847pfa.50.1455462082022;
+        Sun, 14 Feb 2016 07:01:22 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
 Received: from bhumirks@gmail.com ([223.176.137.116])
-        by smtp.gmail.com with ESMTPSA id mj1sm32189427pab.34.2016.02.14.07.01.30
+        by smtp.gmail.com with ESMTPSA id l62sm32144312pfj.7.2016.02.14.07.01.18
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 14 Feb 2016 07:01:32 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 20:31:24 +0530
+        Sun, 14 Feb 2016 07:01:21 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 20:31:12 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 2/2] Staging: rtl8188eu: core: Remove NULL test before vfree
-Date: Sun, 14 Feb 2016 20:30:23 +0530
-Message-Id: <0268938371b2973ed55cf58c884abc5b0ce6e2bb.1455461125.git.bhumirks@gmail.com>
+Subject: [PATCH 1/2] Staging: rtl8188eu: core: Remove NULL test before vfree
+Date: Sun, 14 Feb 2016 20:30:22 +0530
+Message-Id: <c2c521e2570272a1749cef362817e6231000530e.1455461125.git.bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1455461124.git.bhumirks@gmail.com>
 References: <cover.1455461124.git.bhumirks@gmail.com>
@@ -67,27 +67,23 @@ immediately. SO NULL test is not needed before vfree.
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_xmit.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-index d5ce1e2..2a419459 100644
---- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-@@ -247,11 +247,9 @@ void _rtw_free_xmit_priv(struct xmit_priv *pxmitpriv)
- 		pxmitbuf++;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+index 9c2e659..d9b9bf3 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+@@ -123,8 +123,7 @@ void rtw_free_mlme_priv(struct mlme_priv *pmlmepriv)
+ 	rtw_free_mlme_priv_ie_data(pmlmepriv);
+ 
+ 	if (pmlmepriv) {
+-		if (pmlmepriv->free_bss_buf)
+-			vfree(pmlmepriv->free_bss_buf);
++		vfree(pmlmepriv->free_bss_buf);
  	}
+ }
  
--	if (pxmitpriv->pallocated_frame_buf)
--		vfree(pxmitpriv->pallocated_frame_buf);
-+	vfree(pxmitpriv->pallocated_frame_buf);
- 
--	if (pxmitpriv->pallocated_xmitbuf)
--		vfree(pxmitpriv->pallocated_xmitbuf);
-+	vfree(pxmitpriv->pallocated_xmitbuf);
- 
- 	/*  free xmit extension buff */
- 	pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmit_extbuf;
 -- 
 1.9.1
 
