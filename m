@@ -1,148 +1,110 @@
-X-GM-THRID: 10511326380032
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,3582365e1fd9ea1d,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.68.134.66 with SMTP id pi2mr43639684pbb.9.1427811984803;
-        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
+X-GM-THRID: 6250914240431915008
+X-Received: by 10.182.56.233 with SMTP id d9mr8872845obq.2.1455404386803;
+        Sat, 13 Feb 2016 14:59:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.29.213 with SMTP id d204ls2012847iod.53.gmail; Tue, 31 Mar
- 2015 07:26:24 -0700 (PDT)
-X-Received: by 10.66.218.163 with SMTP id ph3mr41130279pac.46.1427811984530;
-        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x236.google.com (mail-pd0-x236.google.com. [2607:f8b0:400e:c02::236])
-        by gmr-mx.google.com with ESMTPS id oc12si1523854pdb.1.2015.03.31.07.26.24
+Received: by 10.140.86.102 with SMTP id o93ls2071976qgd.16.gmail; Sat, 13 Feb
+ 2016 14:59:46 -0800 (PST)
+X-Received: by 10.13.204.85 with SMTP id o82mr9213996ywd.51.1455404386103;
+        Sat, 13 Feb 2016 14:59:46 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qk0-x229.google.com (mail-qk0-x229.google.com. [2607:f8b0:400d:c09::229])
+        by gmr-mx.google.com with ESMTPS id w126si1405476ywe.6.2016.02.13.14.59.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) client-ip=2607:f8b0:400e:c02::236;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 14:59:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::229 as permitted sender) client-ip=2607:f8b0:400d:c09::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::236 as permitted sender) smtp.mail=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x236.google.com with SMTP id h5so10026859pdm.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
+Received: by mail-qk0-x229.google.com with SMTP id s68so44074373qkh.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 14:59:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=U2rKGZrmSRO0piHz0KHbT0mxHcKEzr1AHgLPmSlwXUM=;
-        b=t8iGa9ASMO6FnHiuLpUmK8Y9QLpr3NP1Ovd0CSdyYLOw3zShc/rvtHMhV1QIdgTA8Y
-         Q0XqxkacVIHVgn524sn/IcF6ZdLCamr7L1/s3+CL9MtLKlHPV+1ymS/5/ZpUxdlKRes/
-         KgdjmBWpRQSwFMvIOxdITf34CDsv4x8YE0JypM0n9Fn4FcF7goPl7q8cc0evXvxT7+4s
-         C56k4z1tVXV2yzfsqxSRh2rf8NmKeFRyBmhMLO1copJ/N3x+rksaWynFTlJmVBCHshmQ
-         Dwo+rlcm1HrIKyC1Lrp9o9FGiZvzfsyAwBv1KgHFbTaT2Ac1/ZujVdEo/5gtuZVeutv9
-         05VA==
-X-Received: by 10.68.238.200 with SMTP id vm8mr36513040pbc.15.1427811984402;
-        Tue, 31 Mar 2015 07:26:24 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.95.190])
-        by mx.google.com with ESMTPSA id fd5sm14142245pdb.67.2015.03.31.07.26.22
+        bh=R5HQB38QqyHUVYthjDd0XzOjMKtblGrDQviYgk041RM=;
+        b=zD6r6nqc5iWuOVMEcnyZxtNC64SWo/DGMUqPLk6qJH8UrV9smwQbbojn66Z9ie2UFn
+         /QS/Nvw/Qaqhl0WnHTRejmrho609LcSPP/4tJb7247m7LjNr9gw+9O14AMKvyYhig8Yf
+         nY0R/81oWxzHpnHDlNA9FfiUrI21X2WmNE3bAGkeXLF4+Q4UQGqjPRaaJysC4cdqhLrf
+         mlGvZ9PvUWBOl/s78Oel/0xxoV8qK+u/2i36iUmExQhUKlEy8aMSysaS3maXNHWMFA5Q
+         ToTo4rMe60Gsg4vGV0upndfbu/6oRdGrBFBZbHN033pStD5pfK3eH9ba40tenqhf9XHR
+         Rytw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=R5HQB38QqyHUVYthjDd0XzOjMKtblGrDQviYgk041RM=;
+        b=cnOd8IXyhkwwNReDX3BTq0IJyiqzZxR5raS+uzdk8yc74wYqwLhhnM0ut5YfqBNlcI
+         moO/IIiNE0561WC2NznCeyK99nXaSbntugA/sch+eSLLWhFoCCjN4cU3EoH0HiQyduAz
+         rLrb5LWW7ww+2n8077BUM7+3rJNNY4ZFKTz7I8xQLpCsH6eXbs/vQEUHAOaATgBVcQnI
+         BtiZqy+BEI6XXIOgMTOCKEDfqdCmaykL+clDnmuSyZIL14mU4t3jjBjll1KP37/u6YLo
+         zNQtPDfy8mbTldNbYTQuF7Xym1zrvYjKuw6k3WSa7DCb+U0mSDCZk7YSDA8wnppXA0Kp
+         iciw==
+X-Gm-Message-State: AG10YOQ4Rg5Tw/jmZLdmgEXu73qKkERtWejTuKvIdOYLGGYWeqJW7O7P4nU45LNwDTLv+g==
+X-Received: by 10.55.74.14 with SMTP id x14mr11204366qka.70.1455404385928;
+        Sat, 13 Feb 2016 14:59:45 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
+        by smtp.gmail.com with ESMTPSA id t103sm8261281qgd.37.2016.02.13.14.59.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 31 Mar 2015 07:26:23 -0700 (PDT)
-Date: Tue, 31 Mar 2015 19:56:19 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Feb 2016 14:59:45 -0800 (PST)
+Date: Sat, 13 Feb 2016 22:59:06 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sm750fb: Insert space before parenthesis
-Message-ID: <20150331142619.GA3793@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: sm750fb: Fix indentation of if...else statements
+Message-ID: <20160214035906.GA25208@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Inserted space before parenthesis '('. Problem found using
-checkpatch.pl
-ERROR: space required before the open parenthesis '('
+This patch clears the checkpatch warning about suspect code indent for
+conditional statements in the file.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/sm750fb/sm750_hw.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 93517d9..c506b5c 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -88,7 +88,7 @@ unsigned int getChipClock(void)
- {
- 	pll_value_t pll;
- #if 1
--	if(getChipType() == SM750LE)
-+	if (getChipType() == SM750LE)
- 		return MHz(130);
- #endif
+diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+index 2b1cb9a..01850bf 100644
+--- a/drivers/staging/sm750fb/sm750_hw.c
++++ b/drivers/staging/sm750fb/sm750_hw.c
+@@ -149,22 +149,21 @@ int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
+ 		/* Set up GPIO for software I2C to program DVI chip in the
+ 		   Xilinx SP605 board, in order to have video signal.
+ 		 */
+-	sm750_sw_i2c_init(0, 1);
++		sm750_sw_i2c_init(0, 1);
  
-@@ -151,7 +151,7 @@ void setMemoryClock(unsigned int frequency)
+-
+-	/* Customer may NOT use CH7301 DVI chip, which has to be
+-	   initialized differently.
+-	*/
+-	if (sm750_sw_i2c_read_reg(0xec, 0x4a) == 0x95) {
++		/* Customer may NOT use CH7301 DVI chip, which has to be
++		initialized differently.
++		*/
++		if (sm750_sw_i2c_read_reg(0xec, 0x4a) == 0x95) {
+ 		/* The following register values for CH7301 are from
+ 		   Chrontel app note and our experiment.
+ 		*/
+ 			pr_info("yes,CH7301 DVI chip found\n");
+-		sm750_sw_i2c_write_reg(0xec, 0x1d, 0x16);
+-		sm750_sw_i2c_write_reg(0xec, 0x21, 0x9);
+-		sm750_sw_i2c_write_reg(0xec, 0x49, 0xC0);
++			sm750_sw_i2c_write_reg(0xec, 0x1d, 0x16);
++			sm750_sw_i2c_write_reg(0xec, 0x21, 0x9);
++			sm750_sw_i2c_write_reg(0xec, 0x49, 0xC0);
+ 			pr_info("okay,CH7301 DVI chip setup done\n");
+-	}
++		}
+ 	}
  
- 		/* Set the corresponding divisor in the register. */
- 		ulReg = PEEK32(CURRENT_GATE);
--		switch(divisor) {
-+		switch (divisor) {
- 		default:
- 		case 1:
- 			ulReg = FIELD_SET(ulReg, CURRENT_GATE, M2XCLK, DIV_1);
-@@ -199,7 +199,7 @@ void setMasterClock(unsigned int frequency)
- 
- 		/* Set the corresponding divisor in the register. */
- 		ulReg = PEEK32(CURRENT_GATE);
--		switch(divisor) {
-+		switch (divisor) {
- 		default:
- 		case 3:
- 			ulReg = FIELD_SET(ulReg, CURRENT_GATE, MCLK, DIV_3);
-@@ -226,7 +226,7 @@ unsigned int ddk750_getVMSize(void)
- 	unsigned int data;
- 
- 	/* sm750le only use 64 mb memory*/
--	if(getChipType() == SM750LE)
-+	if (getChipType() == SM750LE)
- 		return MB(64);
- 
- 	/* for 750,always use power mode0*/
-@@ -253,7 +253,7 @@ int ddk750_initHw(initchip_param_t * pInitParam)
- 	unsigned int ulReg;
- #if 0
- 	/* move the code to map regiter function. */
--	if(getChipType() == SM718){
-+	if (getChipType() == SM718) {
- 		/* turn on big endian bit*/
- 		ulReg = PEEK32(0x74);
- 		/* now consider register definition in a big endian pattern*/
-@@ -273,7 +273,7 @@ int ddk750_initHw(initchip_param_t * pInitParam)
- 	ulReg = FIELD_SET(ulReg,CURRENT_GATE,LOCALMEM,ON);
- 	setCurrentGate(ulReg);
- 
--	if(getChipType() != SM750LE){
-+	if (getChipType() != SM750LE) {
- 		/*	set panel pll and graphic mode via mmio_88 */
- 		ulReg = PEEK32(VGA_CONFIGURATION);
- 		ulReg = FIELD_SET(ulReg,VGA_CONFIGURATION,PLL,PANEL);
-@@ -445,7 +445,7 @@ unsigned int calcPllValue(unsigned int request_orig,pll_value_t *pll)
- 
- 	/* for MXCLK register , no POD provided, so need be treated differently	*/
- 
--	if(pll->clockType != MXCLK_PLL){
-+	if (pll->clockType != MXCLK_PLL) {
- 		xparm = &xparm_PIXEL[0];
- 		xcnt = sizeof(xparm_PIXEL)/sizeof(xparm_PIXEL[0]);
- 	}else{
-@@ -468,11 +468,11 @@ unsigned int calcPllValue(unsigned int request_orig,pll_value_t *pll)
- 			M += fl_quo * X / 10000;
- 			/* round step */
- 			M += (fl_quo*X % 10000)>5000?1:0;
--			if(M < 256 && M > 0) {
-+			if (M < 256 && M > 0) {
- 				unsigned int diff;
- 				tmpClock = pll->inputFreq *M / N / X;
- 				diff = absDiff(tmpClock,request_orig);
--				if(diff < miniDiff)
-+				if (diff < miniDiff)
- 				{
- 					pll->M = M;
- 					pll->N = N;
+ 	/* init 2d engine */
 -- 
-1.9.1
+2.5.0
 
 
