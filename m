@@ -1,144 +1,94 @@
 X-GM-THRID: 6250932396840976384
-X-Received: by 10.66.150.68 with SMTP id ug4mr11424081pab.33.1455462785969;
-        Sun, 14 Feb 2016 07:13:05 -0800 (PST)
+X-Received: by 10.182.112.193 with SMTP id is1mr11489011obb.38.1455460070266;
+        Sun, 14 Feb 2016 06:27:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.158 with SMTP id 30ls1318551iop.100.gmail; Sun, 14 Feb
- 2016 07:13:05 -0800 (PST)
-X-Received: by 10.107.185.4 with SMTP id j4mr12854240iof.21.1455462785596;
-        Sun, 14 Feb 2016 07:13:05 -0800 (PST)
+Received: by 10.140.36.210 with SMTP id p76ls707709qgp.17.gmail; Sun, 14 Feb
+ 2016 06:27:48 -0800 (PST)
+X-Received: by 10.31.174.2 with SMTP id x2mr11296881vke.13.1455460068645;
+        Sun, 14 Feb 2016 06:27:48 -0800 (PST)
 Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ob0-x22a.google.com (mail-ob0-x22a.google.com. [2607:f8b0:4003:c01::22a])
-        by gmr-mx.google.com with ESMTPS id kr4si920104igb.0.2016.02.14.07.13.05
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id g136si1737297ywb.5.2016.02.14.06.27.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Feb 2016 07:13:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) client-ip=2607:f8b0:4003:c01::22a;
+        Sun, 14 Feb 2016 06:27:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ob0-x22a.google.com with SMTP id is5so180642746obc.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 07:13:05 -0800 (PST)
+Received: by mail-qk0-x243.google.com with SMTP id s5so4560546qkd.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 06:27:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=3NlBSZ3xvzBVHMNTG7hg4P6kUwD48cUAKIFc6XBN6Tw=;
-        b=LkOBPhyW6U8zBvResUqoiQFwl9NrVR9uxLp0fiylahFBBA/Zdag2r6uOABfmnGmgcF
-         0QkU6wQSR+SeUgvI2c4YNVuvPULlwpn9ErQKTN60VVznw/3rUNWVPB9UELfx8dpfZUYC
-         z2rIUx7NlJ5MlpxyEjUp53drGa3kZ376O/QF7pe/BqwNx9y3XJBWy5RNbR9+x4HhgD3q
-         nYvvcV9AQR/phgCOVUg6rhcaWSB0lB2yNA+eGeU26mK+KaaQrGwfQ6R5q0eY5YbSQ/E0
-         UBAVNbmHGICE6MP3Qr6AF6+e0oir9i/q03e/n8mvvkNR0MzDRlvL9gIgAxwWv4HqOCKF
-         Hamw==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=/Owahj93d9IcQ5FUPzUWpM4UvSlJz/WllVq9oyS8nqk=;
+        b=hLA0d+ALojs3RjafxuOSbn/NxhfuwyARRLK8cPuuWJGvyFoaXEJY/gdRk20QAVfT9W
+         sg2Oql4c26pFNWBDDWFNAjWxhVzEqNE+bsdRO/AY+FMXve9m+c9KksjMZVMuhC+pCvvN
+         X6TM/Fd+N7i8J/JBCUhFYTpEqdf6cpkZ3LY4TwxP3X6T3opqdXKyx2/lsuF8TSyNP0qm
+         eGRtPcmaN02fkeM9udP8VxobDk3TGA8NPHVaccmdk5r56dJwIiIUzNYuPsNOaBF2uYSl
+         MS/Vfo9IEOvTS6eI2X/nLi1NCG9BVmGQWk/tLHZjccOcvR3kd/ZLBVgbCNEggXNmrGVv
+         JF0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=3NlBSZ3xvzBVHMNTG7hg4P6kUwD48cUAKIFc6XBN6Tw=;
-        b=QLXUSH2oiWE/RkfamcV/aucKDkYO1vhXi8ud7UK2W9QIzB6ACvMAF+e7azJixCI0y+
-         4NJFWe3BFGiEAlhsDi1uivkw/CvrmucfMYewMXBIo0MhpwVS77s+Je3z3sTsGyU4AlpR
-         /jXb71xtNTjUp40IfEECb7HO7vf7jX8iQ3x+Mn04jwQlf7niKWurNw3y091yUZ63pq/2
-         04LJvY6jwABLyQMdLGPffY410NdDN2nKyzfndm1xpq+swVtEv0muxyGeSORzw66Sqi6n
-         CE+DO9dLwZOvli4TlXHtUzQhsYMvMLOPgQK9mc9/zmu83NNDNYgKc0kcrcdcIqk0k/q8
-         JSKA==
-X-Gm-Message-State: AG10YOT+3BBZQ4hnamltp9u0KeDS9OmoSS6blRJowuTWcgi10ER9TJ5PQJOUpEGcLwfm4Otkgftxk0ks2tqMeQ==
-MIME-Version: 1.0
-X-Received: by 10.202.170.212 with SMTP id t203mr7707812oie.92.1455462785377;
- Sun, 14 Feb 2016 07:13:05 -0800 (PST)
-Received: by 10.202.170.195 with HTTP; Sun, 14 Feb 2016 07:13:05 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.02.1602140806110.2039@localhost6.localdomain6>
-References: <20160214051750.GA26350@janani-Inspiron-3521>
-	<alpine.DEB.2.02.1602140806110.2039@localhost6.localdomain6>
-Date: Sun, 14 Feb 2016 10:13:05 -0500
-Message-ID: <CANnt6Xn2-YouvrWyL7bE_2j6o=NkGk3C0qJiV7vquy7tVqbgYg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: wilc1000: Simplify code by
- eliminating else block
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=/Owahj93d9IcQ5FUPzUWpM4UvSlJz/WllVq9oyS8nqk=;
+        b=TL00ivXGwpnNMp1YE5ZGKI44gAHJaas02htL5D49Bd1yibsWjUbpF6o/5Df/So3FNY
+         5LQ0EqWKB9EZ2//lF/+nwLBEuTTzKPGZJjkmmZg/KuOXYiQLD7pbhxKd5Sqa4ZXojgMF
+         rXWqr0QRiYBkEFoApI0IxLy4MTmJmoKagcvne/zrJqdQqGvkjzlthFSvGdwQjETOv6QU
+         ZJyYu8lEgfJZDm6eQYf+7fp2CiQ6zghLsl0poZzdIFE39CK5fwc/nuCVejWEq0/zAGI1
+         dg5scof3oZi1WHH4/RODnCl1RdpFDcCnjy8rEzRBTQdl9Aruo4yGMQVfmtR6NQNaKlsn
+         07Kg==
+X-Gm-Message-State: AG10YORHhPEKc2d3pNJ3yTinsJcIJrRAL1NZdTz2b+C10e9KhFFfo2iPbsY6TY6WUCYmAw==
+X-Received: by 10.55.52.211 with SMTP id b202mr14690043qka.27.1455460068464;
+        Sun, 14 Feb 2016 06:27:48 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id w1sm3159575qha.3.2016.02.14.06.27.47
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 14 Feb 2016 06:27:47 -0800 (PST)
+Date: Sun, 14 Feb 2016 14:27:07 -0500
 From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=001a113c356a4e7092052bbc5685
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: wilc1000: Simplify code by eliminating else block
+Message-ID: <20160214192707.GA3092@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---001a113c356a4e7092052bbc5685
-Content-Type: text/plain; charset=UTF-8
+Remove else block here as it is not useful after the return statement in
+the corresponding if block. This simplifies code. Issue identified by
+checkpatch.
 
-On Sun, Feb 14, 2016 at 2:06 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+Changes since v2:
+ * Eliminated trailing white spaces.
 
->
->
->
-> You have added trailing whitespace here.
->
+ drivers/staging/wilc1000/host_interface.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Sorry! V2 sent.
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 472fd7f..c0e86e1 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -3355,10 +3355,9 @@ static s32 host_int_get_assoc_res_info(struct wilc_vif *vif,
+ 		*pu32RcvdAssocRespInfoLen = 0;
+ 		PRINT_ER("Failed to send association response config packet\n");
+ 		return -EINVAL;
+-	} else {
+-		*pu32RcvdAssocRespInfoLen = wid.size;
+ 	}
+ 
++	*pu32RcvdAssocRespInfoLen = wid.size;
+ 	return result;
+ }
+ 
+-- 
+2.5.0
 
-Janani.
-
-
-> julia
->
-> > +     *pu32RcvdAssocRespInfoLen = wid.size;
-> >       return result;
-> >  }
-> >
-> > --
-> > 2.5.0
-> >
-> > --
-> > You received this message because you are subscribed to the Google
-> Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send
-> an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit
-> https://groups.google.com/d/msgid/outreachy-kernel/20160214051750.GA26350%40janani-Inspiron-3521
-> .
-> > For more options, visit https://groups.google.com/d/optout.
-> >
->
-
---001a113c356a4e7092052bbc5685
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
-te">On Sun, Feb 14, 2016 at 2:06 AM, Julia Lawall <span dir=3D"ltr">&lt;<a =
-href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">julia.lawall@lip6.fr=
-</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin=
-:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D""><=
-br>
-<br>
-<br>
-</span>You have added trailing whitespace here.<br></blockquote><div><br></=
-div><div>Sorry! V2 sent.<br><br></div><div>Janani. <br></div><div><br></div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1=
-px #ccc solid;padding-left:1ex">
-<br>
-julia<br>
-<div class=3D"HOEnZb"><div class=3D"h5"><br>
-&gt; +=C2=A0 =C2=A0 =C2=A0*pu32RcvdAssocRespInfoLen =3D wid.size;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return result;<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt; --<br>
-&gt; 2.5.0<br>
-&gt;<br>
-</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
-&gt; You received this message because you are subscribed to the Google Gro=
-ups &quot;outreachy-kernel&quot; group.<br>
-&gt; To unsubscribe from this group and stop receiving emails from it, send=
- an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
-com">outreachy-kernel+unsubscribe@googlegroups.com</a>.<br>
-&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
-l@googlegroups.com">outreachy-kernel@googlegroups.com</a>.<br>
-&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
-gle.com/d/msgid/outreachy-kernel/20160214051750.GA26350%40janani-Inspiron-3=
-521" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid=
-/outreachy-kernel/20160214051750.GA26350%40janani-Inspiron-3521</a>.<br>
-&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
- rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/optout</a=
->.<br>
-&gt;<br>
-</font></span></blockquote></div><br></div></div>
-
---001a113c356a4e7092052bbc5685--
 
