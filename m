@@ -1,117 +1,83 @@
-X-GM-THRID: 6205479417229082624
-X-Received: by 10.68.68.202 with SMTP id y10mr2359761pbt.0.1444825766296;
-        Wed, 14 Oct 2015 05:29:26 -0700 (PDT)
+X-GM-THRID: 6251584620419088384
+X-Received: by 10.107.15.79 with SMTP id x76mr17895801ioi.31.1455560471349;
+        Mon, 15 Feb 2016 10:21:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.14.194 with SMTP id 185ls182985ioo.0.gmail; Wed, 14 Oct
- 2015 05:29:25 -0700 (PDT)
-X-Received: by 10.66.163.102 with SMTP id yh6mr2358444pab.23.1444825765867;
-        Wed, 14 Oct 2015 05:29:25 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id el2si869100pbb.0.2015.10.14.05.29.25
+Received: by 10.140.81.106 with SMTP id e97ls2767208qgd.67.gmail; Mon, 15 Feb
+ 2016 10:21:10 -0800 (PST)
+X-Received: by 10.129.51.2 with SMTP id z2mr17294624ywz.49.1455560470480;
+        Mon, 15 Feb 2016 10:21:10 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id 12si2735208pfb.1.2016.02.15.10.21.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 05:29:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 15 Feb 2016 10:21:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id p3so5532766pay.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 05:29:25 -0700 (PDT)
+Received: by mail-pa0-x22e.google.com with SMTP id ho8so90299148pac.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 10:21:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=9qxYySqVwplOh4cJS4GKdUckyB/LDZV9WdAsbUNojhs=;
-        b=pO/oxgFcfcXI11bIuHcBhT5RajAnY/ojYHSJiP18TNbRq8SGztOv1RlYsl8/suFU5d
-         B4ksHSfeHeDU3RM07etzWFxB1sDguGldx7Nqvz1Uwnu9rirz0JzUDoAve9M4p8FuZ4zf
-         e2oVijfwZTnxurRz1A14ROjnuteYymt0cOMi+BUZa17QDjiqisGYtd4bJMZtYBH2aUXh
-         DJUW6VyxL2B+V46YqnO3uJsP6syVbwMpNGz45yAfyw97tmp9n2Gd8h7DeyXEYZWEeC2V
-         XEVDlF5b7GohGywg9rApsOY0hmt0vpEXFpTDx6jM3SleNXzk0xRtrHcBFxyanInVM5lE
-         KvFA==
-X-Received: by 10.68.104.66 with SMTP id gc2mr3418316pbb.21.1444825765786;
-        Wed, 14 Oct 2015 05:29:25 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id iu2sm7124902pbd.16.2015.10.14.05.29.23
+        bh=MAJh3cobbOMwSUPcaNu+iTTlMeCPQOdnoLspJrMGfZs=;
+        b=FjW/Sh2zlQyP9uUnWK1HEtEMsrbELSu/SZlQ1TcguoYxoDsCOS8Qbqs3/6UU9SBvjy
+         u2q40rhqP+tm/pKLzAsQsnPOawMe7W5NenhhhoeqfUMGNZC1AIr+vB1JZbY3ViJyoCAl
+         NhDZnY5giBpdT/VWir/HuT+j7vVosCZ7O28d571J1SxfZyPpSXU3nFLFGfmMR0vg+AQl
+         EOsrslzQlOhiUjHsKuquNGjtaJAMQpCGeRqexjuTW+/PXA0TqP6KA+le5wZYHDCzCJsf
+         gMM52LSlHDYIn3WmqaBB4TqbF4Be8gU65W9FfCp/XPA0sYaIA7991yB2zWgfCjeWaiJF
+         5tqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=MAJh3cobbOMwSUPcaNu+iTTlMeCPQOdnoLspJrMGfZs=;
+        b=Mw8BW+5kxolF+2B5E2p9o78tPQoTBm3QDHABpsUzMMwAVziK//Yx0A83w6TOReYf3K
+         FUCkGYlG80L1xy8Hwk6+2NEoauxH9PDoTdBDU5JZFChn4b0Mf226Ghavtrk/Mnwgx9To
+         Lg3QhT3uUqvaghni5GQvsnoCgNqg7TGhuKm+lkDZjXAcNVDb4O/jo5x0/Nkm/gg4Ta8e
+         p7XmRhLjQZmISTRtSG5mpxC2xbbcjW0Z92qShKOssmHu9Otu6IzEdx53k4V8dqbYHHzW
+         m8T19juu4yZq/z/JILYxC5nb/sCx7PYOKc9HWcNSkds01PJDoCZe0Kg1MMwEHoVeDwAY
+         AuLQ==
+X-Gm-Message-State: AG10YOS7Zf9g8wM8xMT0xYMhFABS7WyOB08xOoOfm1zg/oQnSRCmSwIeWb8bbsPRGE5JsQ==
+X-Received: by 10.66.101.36 with SMTP id fd4mr25731689pab.76.1455560470306;
+        Mon, 15 Feb 2016 10:21:10 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([171.48.60.250])
+        by smtp.gmail.com with ESMTPSA id xg9sm23939247pac.9.2016.02.15.10.21.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 05:29:24 -0700 (PDT)
-Date: Wed, 14 Oct 2015 17:59:15 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Mon, 15 Feb 2016 10:21:09 -0800 (PST)
+Date: Mon, 15 Feb 2016 23:51:06 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: rtl8712_xmit: Remove unnecessary cast
-Message-ID: <20151014122915.GA11874@ubuntu>
+Subject: [PATCH] staging: sm750fb: Remove inclusion of header file
+Message-ID: <20160215182106.GA3501@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Explicit typecasting of variables is not required and should be removed.
-Semantic patch used:
-@@
-type T;
-T e;
-identifier x;
-@@
+version.h header inclusion is not necessary as detected by
+versioncheck.
 
-* T x = (T)e;
-
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_xmit.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/sm750fb/sm750_hw.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-index 86206d3..9e50bbf 100644
---- a/drivers/staging/rtl8712/rtl8712_xmit.c
-+++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-@@ -96,7 +96,7 @@ static u32 get_ff_hwaddr(struct xmit_frame *pxmitframe)
- 	u32 addr = 0;
- 	struct pkt_attrib *pattrib = &pxmitframe->attrib;
- 	struct _adapter *padapter = pxmitframe->padapter;
--	struct dvobj_priv *pdvobj = (struct dvobj_priv *)&padapter->dvobjpriv;
-+	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
- 
- 	if (pxmitframe->frame_tag == TXAGG_FRAMETAG)
- 		addr = RTL8712_DMA_H2CCMD;
-@@ -237,7 +237,7 @@ void r8712_do_queue_select(struct _adapter *padapter,
- 			   struct pkt_attrib *pattrib)
- {
- 	unsigned int qsel = 0;
--	struct dvobj_priv *pdvobj = (struct dvobj_priv *)&padapter->dvobjpriv;
-+	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
- 
- 	if (pdvobj->nr_endpoint == 6)
- 		qsel = (unsigned int) pattrib->priority;
-@@ -374,8 +374,8 @@ u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
- 			struct xmit_frame *pxmitframe)
- {
- 	struct _adapter *padapter = pxmitframe->padapter;
--	struct dvobj_priv *pdvobj = (struct dvobj_priv *) &padapter->dvobjpriv;
--	struct tx_desc *ptxdesc = (struct tx_desc *)pxmitbuf->pbuf;
-+	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
-+	struct tx_desc *ptxdesc   = pxmitbuf->pbuf;
- 	struct cmd_hdr *pcmd_hdr = (struct cmd_hdr *)
- 		(pxmitbuf->pbuf + TXDESC_SIZE);
- 	u16 total_length = (u16) (ptxdesc->txdw0 & 0xffff);
-@@ -419,10 +419,10 @@ static void update_txdesc(struct xmit_frame *pxmitframe, uint *pmem, int sz)
- 	struct qos_priv *pqospriv = &pmlmepriv->qospriv;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
- 	struct pkt_attrib *pattrib = &pxmitframe->attrib;
--	struct tx_desc *ptxdesc = (struct tx_desc *)pmem;
--	struct dvobj_priv *pdvobj = (struct dvobj_priv *)&padapter->dvobjpriv;
-+	struct tx_desc *ptxdesc    = (struct tx_desc *)pmem;
-+	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
- #ifdef CONFIG_R8712_TX_AGGR
--	struct cmd_priv *pcmdpriv = (struct cmd_priv *)&padapter->cmdpriv;
-+	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
- #endif
- 	u8 blnSetTxDescOffset;
- 	sint bmcst = IS_MCAST(pattrib->ra);
+diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+index 01850bf..807d992 100644
+--- a/drivers/staging/sm750fb/sm750_hw.c
++++ b/drivers/staging/sm750fb/sm750_hw.c
+@@ -1,4 +1,3 @@
+-#include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+ #include <linux/errno.h>
 -- 
-2.1.0
+1.9.1
 
 
