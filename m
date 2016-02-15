@@ -1,95 +1,90 @@
 X-GM-THRID: 6251650339458514944
-X-Received: by 10.25.29.211 with SMTP id d202mr2607122lfd.7.1455632307978;
-        Tue, 16 Feb 2016 06:18:27 -0800 (PST)
+X-Received: by 10.112.125.99 with SMTP id mp3mr2124258lbb.3.1455576034910;
+        Mon, 15 Feb 2016 14:40:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.23.94 with SMTP id n91ls761567lfi.99.gmail; Tue, 16 Feb
- 2016 06:18:27 -0800 (PST)
-X-Received: by 10.25.18.227 with SMTP id 96mr2599362lfs.4.1455632307266;
-        Tue, 16 Feb 2016 06:18:27 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 141si898689wmy.2.2016.02.16.06.18.27
+Received: by 10.25.37.208 with SMTP id l199ls690658lfl.8.gmail; Mon, 15 Feb
+ 2016 14:40:34 -0800 (PST)
+X-Received: by 10.25.170.7 with SMTP id t7mr2142639lfe.2.1455576034411;
+        Mon, 15 Feb 2016 14:40:34 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id w128si642364wmd.0.2016.02.15.14.40.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 06:18:27 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 15 Feb 2016 14:40:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,455,1449529200"; 
-   d="scan'208";a="164921377"
-Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Feb 2016 15:18:25 +0100
-Date: Tue, 16 Feb 2016 15:18:23 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Laura Garcia Liebana <nevola@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 5/7] staging: netlogic: Fix comparison
- to NULL
-In-Reply-To: <ed3fe66bf2dfec6a6364deb07047a9955cfd3cfc.1455575263.git.nevola@gmail.com>
-Message-ID: <alpine.DEB.2.10.1602161517270.2685@hadrien>
-References: <cover.1455575263.git.nevola@gmail.com> <ed3fe66bf2dfec6a6364deb07047a9955cfd3cfc.1455575263.git.nevola@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=nevola@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x244.google.com with SMTP id a4so12782643wme.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 14:40:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=SBV1tNmwx7hwhtzZsh+KgaAGQtLUonGsWFLWwmnh37E=;
+        b=NjEEHjwmV3c5DJV3OALuzVsw5emelttDBjT6psK64gC1jOjYarSwUvHaWHhVlVisS0
+         05IgOkumKaF88uuid8eQ0Oht7s4wHMcZPNRagP2usoXHlYYercD32hDMifvR5J4ZzfuH
+         uYugFfZmY35gwGsVRSxRewAsAOwesOIk4wccv875VgOJQHjU7fd2kXdEoBKZlRLeFBkz
+         jB9+S5rVaN+k5R8UIigVgiFipo8S2/U/fSs/P+jz2z+jDW6pCRD8DYvVmXsZheMdcal2
+         EBQqoxzM83XkOO02p7/T5DAv55YLB0ks/XG5cyOUafXwYM4XvePszHo8F0Ri4psUWh4c
+         IykQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=SBV1tNmwx7hwhtzZsh+KgaAGQtLUonGsWFLWwmnh37E=;
+        b=iAQRc0J+GJR6b7QKAU1WfZ+nAkZXexuIv+hdhOoEN6k02W/0UGAxQXNpPmp2YBqSIx
+         JzcTVXUo/vJJdFa9A3w1MO83MO4bw0PMDXOdtjrxrZbo86zHcIO0To7aZ5xopHcJ/jxG
+         AFKR+Jqtz9ZXLmjIk5wHicPfskcifkDuvE9+UIMKCYmVdyB69n1FKA/u5sEXzSk5wSRQ
+         fgshwNQ8GhPbiCgW9FigEhtZZVzcrTU1pEHhdGx50lXSBuBVW2yTWC0AOBT/OnBu3uzI
+         hrq3O0XCp4BuD7JAMwYc3KZ9jUZtINMirckZqqL7wmyKe+gjAC8BtfiQt94BTm8vOxZj
+         fEZA==
+X-Gm-Message-State: AG10YORa8zWW7rK0VqgL3lawtWpax/fyA07K0r4fxNp+9rNgC95NjTo8azkwAPbUom5Ijw==
+X-Received: by 10.28.195.87 with SMTP id t84mr15795345wmf.41.1455576034311;
+        Mon, 15 Feb 2016 14:40:34 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
+        by smtp.gmail.com with ESMTPSA id t205sm17660689wmt.23.2016.02.15.14.40.33
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Mon, 15 Feb 2016 14:40:33 -0800 (PST)
+Date: Mon, 15 Feb 2016 23:40:31 +0100
+From: Laura Garcia Liebana <nevola@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 7/7] staging: netlogic: Fix indent for conditional statement
+Message-ID: <4643b604ee1c46df8115e9014d26ad284bed771a.1455575263.git.nevola@gmail.com>
+References: <cover.1455575263.git.nevola@gmail.com>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1455575263.git.nevola@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
+Insert code indent for conditional statements. Checkpatch detected this
+issue.
 
+Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+---
+ drivers/staging/netlogic/xlr_net.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Mon, 15 Feb 2016, Laura Garcia Liebana wrote:
+diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+index 58f7863..b9ecea0 100644
+--- a/drivers/staging/netlogic/xlr_net.c
++++ b/drivers/staging/netlogic/xlr_net.c
+@@ -326,7 +326,7 @@ static void xlr_hw_set_mac_addr(struct net_device *ndev)
+ 
+ 	if (priv->nd->phy_interface == PHY_INTERFACE_MODE_RGMII ||
+ 	    priv->nd->phy_interface == PHY_INTERFACE_MODE_SGMII)
+-	    xlr_reg_update(priv->base_addr, R_IPG_IFG, MAC_B2B_IPG, 0x7f);
++		xlr_reg_update(priv->base_addr, R_IPG_IFG, MAC_B2B_IPG, 0x7f);
+ }
+ 
+ static int xlr_net_set_mac_addr(struct net_device *ndev, void *data)
+-- 
+2.7.0
 
-> Avoid the use of comparison to NULL, use !<variable> instead. Checkpatch
-> detected these issues.
->
-> Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
-> ---
->  drivers/staging/netlogic/xlr_net.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-> index 4b72f03..c5df08e 100644
-> --- a/drivers/staging/netlogic/xlr_net.c
-> +++ b/drivers/staging/netlogic/xlr_net.c
-> @@ -146,7 +146,7 @@ static void xlr_net_fmn_handler(int bkt, int src_stnid, int size, int code,
->  		addr = addr - MAC_SKB_BACK_PTR_SIZE;
->  		skb = (struct sk_buff *)*(unsigned long *)addr;
->  		skb->dev = adapter->netdev[port];
-> -		if (skb->dev == NULL)
-> +		if (!skb->dev)
->  			return;
->  		ndev = skb->dev;
->  		priv = netdev_priv(ndev);
-> @@ -1037,7 +1037,7 @@ static int xlr_net_probe(struct platform_device *pdev)
->  		priv->nd = (struct xlr_net_data *)pdev->dev.platform_data;
->  		res = platform_get_resource(pdev, IORESOURCE_MEM, port);
-
-Actually, when this value is fed into devm_iormap_resource, you don't need
-the null test at all.
-
-julia
-
->
-> -		if (res == NULL) {
-> +		if (!res) {
->  			pr_err("No memory resource for MAC %d\n",
->  			       priv->port_id);
->  			err = -ENODEV;
-> @@ -1052,7 +1052,7 @@ static int xlr_net_probe(struct platform_device *pdev)
->  		adapter->netdev[port] = ndev;
->
->  		res = platform_get_resource(pdev, IORESOURCE_IRQ, port);
-> -		if (res == NULL) {
-> +		if (!res) {
->  			pr_err("No irq resource for MAC %d\n", priv->port_id);
->  			err = -ENODEV;
->  			goto err_gmac;
-> --
-> 2.7.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/ed3fe66bf2dfec6a6364deb07047a9955cfd3cfc.1455575263.git.nevola%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
