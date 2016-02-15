@@ -1,223 +1,212 @@
-X-GM-THRID: 6253357236964294656
-X-Received: by 10.129.132.3 with SMTP id u3mr18348277ywf.5.1455973190835;
-        Sat, 20 Feb 2016 04:59:50 -0800 (PST)
+X-GM-THRID: 6250911351266344960
+X-Received: by 10.182.33.42 with SMTP id o10mr8969468obi.12.1455509264646;
+        Sun, 14 Feb 2016 20:07:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.155.103 with SMTP id vv7ls159348igb.37.gmail; Sat, 20 Feb
- 2016 04:59:50 -0800 (PST)
-X-Received: by 10.66.221.100 with SMTP id qd4mr17475722pac.0.1455973190280;
-        Sat, 20 Feb 2016 04:59:50 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
-        by gmr-mx.google.com with ESMTPS id ff2si2340180pad.2.2016.02.20.04.59.50
+Received: by 10.107.8.90 with SMTP id 87ls1352443ioi.36.gmail; Sun, 14 Feb
+ 2016 20:07:44 -0800 (PST)
+X-Received: by 10.50.138.73 with SMTP id qo9mr4361983igb.6.1455509264200;
+        Sun, 14 Feb 2016 20:07:44 -0800 (PST)
+Return-Path: <thaissa.falbo@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by gmr-mx.google.com with ESMTPS id i133si1977051ywe.7.2016.02.14.20.07.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 04:59:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
+        Sun, 14 Feb 2016 20:07:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of thaissa.falbo@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of thaissa.falbo@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=thaissa.falbo@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x236.google.com with SMTP id q63so66531481pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 04:59:50 -0800 (PST)
+Received: by mail-qk0-x242.google.com with SMTP id q184so5011720qkb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 20:07:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=oHlUz9cddl/ad5j+agsrOx+qdejY7mazwK/JA4qy7Qk=;
-        b=xy04qXe4iKNoU7yY0CpFSW7LxZApVYOidLQscedEZuOSvC0cOTTqSwNQxez51BJV/o
-         4g8Y9VOozMA+sk+T6bIzu702ULgnPcxRBkPt8/sadOY0dZYaT0X1At4q4iH+oRtEV7s7
-         of9CVHzpRXQI7awpsOqKfwTLe6HwScwJMzGwjSwu6ecufcbNicUeFDyuPLVukMvDydGY
-         o3LyL8nKCZQPQ4xVp3Sd0Ti0fegLlqg7ANJOZWjCzQU93Q0IL2t2kUasxPzksAvJMEnz
-         2QbHm9MZxmG+K5S7w1u+RrzLXkb7yGqxn3TTvLQ7uyGWBo6NXPnO+JM9x+rqAe6SYldB
-         cKRw==
+        bh=eQqskU3XMQvynQknmSycHQqenqT8wkfbNY95OddsHLw=;
+        b=Ht83aspr/XtbgL5I6m3I0GTb0ifw04zZ1pSBuxdWluhvVf240l2TqnrqihAXxgYEgK
+         YX3vziAKNAo8XE30DTvvY4afMS8bsdpmtonojy2AfA3SxQ5hmb0Xjufy49l0g+9HLQhY
+         287xtM+eIANaBgMt14nqEiJwVU94P3gR0kEs7WiXoQeLmV2tAN65gwE7tSyye//fXafW
+         yFheygb+ZeJKPXeA2C/1mDYuSoxRLYVF3n9Ka0H5yUyn8mR18/iPtobPvfPD4UUZt3pI
+         N7oA0H/cAntVLG7/+PP4j3RE0FDln8ERidF94Jpgg83cp/nj8Ez4+KZC4zA/aJFPh7C0
+         DPUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=oHlUz9cddl/ad5j+agsrOx+qdejY7mazwK/JA4qy7Qk=;
-        b=DHD6q4zwHeeKcReVMPMwFpiN1uD4vM+70JnJBqFWG92a9R6KZJPfqVmNFCAYk60JTJ
-         TuYbSNrQ+AYsJubUdtFIyHjo/ud5UHmJ/1mrOB2KrxXODLQhHVm8kFXt0IrooXDgvnUe
-         4VyclYSZK8zaTGaZ2k0Fq2kW701RgLq9ZlaqYXPXw7jlQlQAWC0Jj/5dPU0lqqspd7vA
-         7uvC1T7JrjC9ZLTwuSrdpgEbjokqzXPYSQA7q1z05ZUtf5I2csmYfqedKex8qdEezIVw
-         yHAKjHGo+wlO2i31IbLMUbOibPkYzqQIyJ8CQnKzjAdmGV0pIqc5GxMuSTbG7PhWwcKQ
-         CwwA==
-X-Gm-Message-State: AG10YOQYA991amFc8tSj2ES2CYQrKUXxXXUMcQoKJSLEfwGTNsDjdhJ9Qi/bgew4AsVXww==
-X-Received: by 10.98.86.13 with SMTP id k13mr14871075pfb.28.1455973190153;
-        Sat, 20 Feb 2016 04:59:50 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 85sm24604732pfl.18.2016.02.20.04.59.49
+        bh=eQqskU3XMQvynQknmSycHQqenqT8wkfbNY95OddsHLw=;
+        b=FdOCUFJYadu6dyyYURprrzNUfz4WcabuaptodKC2snkC+xqlZy5iGApzBotremqW09
+         7dhGqGKI0+n4jD2ei+6jxSi+hRWiQaskvJKAbtVOUTvoZpH66k9n41wBkw9f4U4uB76Y
+         tjo4w8SF39EIJi0Cq7sUlEaeHXt0ER6XlAIC65HeQsvc5JxLiqxnzA3NsJtALdXFeeeZ
+         CLqdeOPQiZNUE1T191N9A9OfCwhHv7LM6Vpd545gHCgDg2QHC8q5rVSYsKy0ZnA8LVpV
+         //IfFVxh+r1Yt8SPH0Tzi8RFxTiJHCzjCRx5ylCyAtH9D+QY/2FOGjkXqivAe6y9OIl8
+         DuYw==
+X-Gm-Message-State: AG10YOSSyjJYi/Vhvoyp0WeUW617P64cZ1js3sYqbhMnQJgylgL45Ux5//e+5K5V64aXWA==
+X-Received: by 10.55.207.217 with SMTP id v86mr17930765qkl.16.1455509263966;
+        Sun, 14 Feb 2016 20:07:43 -0800 (PST)
+Return-Path: <thaissa.falbo@gmail.com>
+Received: from bb8 ([177.142.197.210])
+        by smtp.gmail.com with ESMTPSA id z82sm10376113qhd.26.2016.02.14.20.07.42
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 04:59:49 -0800 (PST)
-Date: Sat, 20 Feb 2016 18:30:21 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        Sun, 14 Feb 2016 20:07:43 -0800 (PST)
+Date: Mon, 15 Feb 2016 02:07:41 -0200
+From: Thaissa Falbo <thaissa.falbo@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: tj@kernel.org
-Subject: [PATCH 1/2] staging: rtl8192u: Use system_wq
-Message-ID: <20160220130021.GA3429@Karyakshetra>
+Subject: [PATCH v3] staging:media:davinci_vpfe: Fixed block comments
+ according to kernel coding style
+Message-ID: <20160215040741.GA3412@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-With conccurency managed workqueues, use of dedicated workqueues can
-be replaced by system_wq. Drop wq by using system_wq.
+Fixed block comments by following the checkpatch warnings
 
-There are multiple work items per priv_wq (viz. reset_wq, watch_dog,
-update_beacon_wq,initialgain_operate_wq,txpower_tracking_wq and qos_activate)
-and different priv_wqs need not be be ordered. Hence, concurrency  can be
-increased by switching to system_wq.
+WARNING: Block comments use * on subsequent lines
+WARNING: Block comments use a trailing */ on separate line
 
-All work items are sync canceled in  rtl8192_cancel_deferred_work so it is
-guaranteed that no work is in flight by the time exit path runs.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Thaissa Falbo <thaissa.falbo@gmail.com>
 ---
- drivers/staging/rtl8192u/r8192U.h      |  1 -
- drivers/staging/rtl8192u/r8192U_core.c | 15 +++++++--------
- drivers/staging/rtl8192u/r8192U_dm.c   |  6 +++---
- drivers/staging/rtl8192u/r819xU_phy.c  |  2 +-
- 4 files changed, 11 insertions(+), 13 deletions(-)
+Changes in v3:
+ - Moved version comments to the right place
 
-diff --git a/drivers/staging/rtl8192u/r8192U.h b/drivers/staging/rtl8192u/r8192U.h
-index ee1c722..25e6aa7 100644
---- a/drivers/staging/rtl8192u/r8192U.h
-+++ b/drivers/staging/rtl8192u/r8192U.h
-@@ -1090,7 +1090,6 @@ typedef struct r8192_priv {
- 	struct delayed_work rfpath_check_wq;
- 	struct delayed_work gpio_change_rf_wq;
- 	struct delayed_work initialgain_operate_wq;
--	struct workqueue_struct *priv_wq;
- } r8192_priv;
+ .../staging/media/davinci_vpfe/davinci_vpfe_user.h |  4 ++--
+ .../staging/media/davinci_vpfe/dm365_ipipe_hw.c    | 12 ++++++++----
+ .../staging/media/davinci_vpfe/dm365_ipipe_hw.h    |  7 ++++---
+ .../staging/media/davinci_vpfe/vpfe_mc_capture.c   |  6 ++++--
+ drivers/staging/media/davinci_vpfe/vpfe_video.c    | 22 +++++++++++++---------
+ 5 files changed, 31 insertions(+), 20 deletions(-)
 
- /* For rtl8187B */
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index 3c58963..cf92030 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -1962,7 +1962,7 @@ static int rtl8192_qos_handle_probe_response(struct r8192_priv *priv,
- 		     network->qos_data.param_count)) {
- 			network->qos_data.old_param_count =
- 				network->qos_data.param_count;
--			queue_work(priv->priv_wq, &priv->qos_activate);
-+			schedule_work(&priv->qos_activate);
- 			RT_TRACE(COMP_QOS,
- 				 "QoS parameters change call qos_activate\n");
- 		}
-@@ -1971,7 +1971,7 @@ static int rtl8192_qos_handle_probe_response(struct r8192_priv *priv,
- 		       &def_qos_parameters, size);
-
- 		if ((network->qos_data.active == 1) && (active_network == 1)) {
--			queue_work(priv->priv_wq, &priv->qos_activate);
-+			schedule_work(&priv->qos_activate);
- 			RT_TRACE(COMP_QOS,
- 				 "QoS was disabled call qos_activate\n");
- 		}
-@@ -1990,7 +1990,7 @@ static int rtl8192_handle_beacon(struct net_device *dev,
- 	struct r8192_priv *priv = ieee80211_priv(dev);
-
- 	rtl8192_qos_handle_probe_response(priv, 1, network);
--	queue_delayed_work(priv->priv_wq, &priv->update_beacon_wq, 0);
-+	schedule_delayed_work(&priv->update_beacon_wq, 0);
- 	return 0;
-
- }
-@@ -2042,7 +2042,7 @@ static int rtl8192_qos_association_resp(struct r8192_priv *priv,
- 		 network->flags,
- 		 priv->ieee80211->current_network.qos_data.active);
- 	if (set_qos_param == 1)
--		queue_work(priv->priv_wq, &priv->qos_activate);
-+		schedule_work(&priv->qos_activate);
-
-
- 	return 0;
-@@ -2387,7 +2387,6 @@ static void rtl8192_init_priv_task(struct net_device *dev)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
-
--	priv->priv_wq = create_workqueue(DRV_NAME);
-
- 	INIT_WORK(&priv->reset_wq, rtl8192_restart);
-
-@@ -3518,7 +3517,7 @@ static void watch_dog_timer_callback(unsigned long data)
- {
- 	struct r8192_priv *priv = ieee80211_priv((struct net_device *)data);
-
--	queue_delayed_work(priv->priv_wq, &priv->watch_dog_wq, 0);
-+	schedule_delayed_work(&priv->watch_dog_wq, 0);
- 	mod_timer(&priv->watch_dog_timer,
- 		  jiffies + msecs_to_jiffies(IEEE80211_WATCH_DOG_TIME));
- }
-@@ -5022,7 +5021,6 @@ fail2:
- 	kfree(priv->pFirmware);
- 	priv->pFirmware = NULL;
- 	rtl8192_usb_deleteendpoints(dev);
--	destroy_workqueue(priv->priv_wq);
- 	mdelay(10);
- fail:
- 	free_ieee80211(dev);
-@@ -5040,6 +5038,8 @@ static void rtl8192_cancel_deferred_work(struct r8192_priv *priv)
- 	cancel_work_sync(&priv->reset_wq);
- 	cancel_delayed_work(&priv->watch_dog_wq);
- 	cancel_delayed_work(&priv->update_beacon_wq);
-+	cancel_delayed_work(&priv->txpower_tracking_wq);
-+	cancel_delayed_work(&priv->initialgain_operate_wq);
- 	cancel_work_sync(&priv->qos_activate);
- }
-
-@@ -5060,7 +5060,6 @@ static void rtl8192_usb_disconnect(struct usb_interface *intf)
- 		kfree(priv->pFirmware);
- 		priv->pFirmware = NULL;
- 		rtl8192_usb_deleteendpoints(dev);
--		destroy_workqueue(priv->priv_wq);
- 		mdelay(10);
- 	}
- 	free_ieee80211(dev);
-diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-index d2e86b9..1493a70 100644
---- a/drivers/staging/rtl8192u/r8192U_dm.c
-+++ b/drivers/staging/rtl8192u/r8192U_dm.c
-@@ -1320,7 +1320,7 @@ static void dm_CheckTXPowerTracking_TSSI(struct net_device *dev)
- 	if (!priv->btxpower_tracking)
- 		return;
- 	if ((tx_power_track_counter % 30 == 0) && (tx_power_track_counter != 0))
--		queue_delayed_work(priv->priv_wq, &priv->txpower_tracking_wq, 0);
-+		schedule_delayed_work(&priv->txpower_tracking_wq, 0);
- 	tx_power_track_counter++;
- }
-
-@@ -1350,7 +1350,7 @@ static void dm_CheckTXPowerTracking_ThermalMeter(struct net_device *dev)
- 		return;
- 	}
- 	/*DbgPrint("Schedule TxPowerTrackingWorkItem\n");*/
--		queue_delayed_work(priv->priv_wq, &priv->txpower_tracking_wq, 0);
-+		schedule_delayed_work(&priv->txpower_tracking_wq, 0);
- 	TM_Trigger = 0;
- }
-
-@@ -2671,7 +2671,7 @@ static void dm_check_rx_path_selection(struct net_device *dev)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
-
--	queue_delayed_work(priv->priv_wq, &priv->rfpath_check_wq, 0);
-+	schedule_delayed_work(&priv->rfpath_check_wq, 0);
- }	/* dm_CheckRxRFPath */
-
- static void dm_init_fsync(struct net_device *dev)
-diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
-index 696df34..726c615 100644
---- a/drivers/staging/rtl8192u/r819xU_phy.c
-+++ b/drivers/staging/rtl8192u/r819xU_phy.c
-@@ -1678,7 +1678,7 @@ void InitialGain819xUsb(struct net_device *dev,	u8 Operation)
- 	priv->InitialGainOperateType = Operation;
-
- 	if (priv->up)
--		queue_delayed_work(priv->priv_wq, &priv->initialgain_operate_wq, 0);
-+		schedule_delayed_work(&priv->initialgain_operate_wq, 0);
- }
-
- void InitialGainOperateWorkItemCallBack(struct work_struct *work)
---
+diff --git a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+index 7b7e7b2..f4f35c9 100644
+--- a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
++++ b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+@@ -538,8 +538,8 @@ struct vpfe_isif_raw_config {
+ };
+ 
+ /**********************************************************************
+-      IPIPE API Structures
+-**********************************************************************/
++ *	IPIPE API Structures
++ **********************************************************************/
+ 
+ /* IPIPE module configurations */
+ 
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+index b1d5e23..0792fbd 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+@@ -682,8 +682,10 @@ ipipe_set_rgb2rgb_regs(void __iomem *base_addr, unsigned int id,
+ 	ipipe_clock_enable(base_addr);
+ 
+ 	if (id == IPIPE_RGB2RGB_2) {
+-		/* For second RGB module, gain integer is 3 bits instead
+-		of 4, offset has 11 bits insread of 13 */
++		/*
++		 * For second RGB module, gain integer is 3 bits instead
++		 * of 4, offset has 11 bits insread of 13
++		 */
+ 		offset = RGB2_MUL_BASE;
+ 		integ_mask = 0x7;
+ 		offset_mask = RGB2RGB_2_OFST_MASK;
+@@ -792,8 +794,10 @@ ipipe_set_3d_lut_regs(void __iomem *base_addr, void __iomem *isp5_base_addr,
+ 	/* valied table */
+ 	tbl = lut_3d->table;
+ 	for (i = 0; i < VPFE_IPIPE_MAX_SIZE_3D_LUT; i++) {
+-		/* Each entry has 0-9 (B), 10-19 (G) and
+-		20-29 R values */
++		/*
++		 * Each entry has 0-9 (B), 10-19 (G) and
++		 * 20-29 R values
++		 */
+ 		val = tbl[i].b & D3_LUT_ENTRY_MASK;
+ 		val |= (tbl[i].g & D3_LUT_ENTRY_MASK) <<
+ 			 D3_LUT_ENTRY_G_SHIFT;
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+index 2bf2f7a..7ee1572 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+@@ -278,9 +278,10 @@
+ /* Resizer Rescale Parameters */
+ #define RSZ_EN_A		0x58
+ #define RSZ_EN_B		0xe8
+-/* offset of the registers to be added with base register of
+-   either RSZ0 or RSZ1
+-*/
++/*
++ * offset of the registers to be added with base register of
++ * either RSZ0 or RSZ1
++ */
+ #define RSZ_MODE		0x4
+ #define RSZ_420			0x8
+ #define RSZ_I_VPS		0xc
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+index ec46f36..bf077f8 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
++++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+@@ -442,8 +442,10 @@ static int vpfe_register_entities(struct vpfe_device *vpfe_dev)
+ 
+ 	/* create links now, starting with external(i2c) entities */
+ 	for (i = 0; i < vpfe_dev->num_ext_subdevs; i++)
+-		/* if entity has no pads (ex: amplifier),
+-		   cant establish link */
++		/*
++		 * if entity has no pads (ex: amplifier),
++		 * cant establish link
++		 */
+ 		if (vpfe_dev->sd[i]->entity.num_pads) {
+ 			ret = media_create_pad_link(&vpfe_dev->sd[i]->entity,
+ 				0, &vpfe_dev->vpfe_isif.subdev.entity,
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.c b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+index 3ec7e65..933ad49 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_video.c
++++ b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+@@ -178,9 +178,10 @@ static int vpfe_update_pipe_state(struct vpfe_video_device *video)
+ 	if (ret)
+ 		return ret;
+ 
+-	/* Find out if there is any input video
+-	  if yes, it is single shot.
+-	*/
++	/*
++	 * Find out if there is any input video
++	 * if yes, it is single shot.
++	 */
+ 	if (pipe->input_num == 0) {
+ 		pipe->state = VPFE_PIPELINE_STREAM_CONTINUOUS;
+ 		ret = vpfe_update_current_ext_subdev(video);
+@@ -529,10 +530,11 @@ static int vpfe_release(struct file *file)
+ 	if (fh->io_allowed) {
+ 		if (video->started) {
+ 			vpfe_stop_capture(video);
+-			/* mark pipe state as stopped in vpfe_release(),
+-			   as app might call streamon() after streamoff()
+-			   in which case driver has to start streaming.
+-			*/
++			/*
++			 * mark pipe state as stopped in vpfe_release(),
++			 * as app might call streamon() after streamoff()
++			 * in which case driver has to start streaming.
++			 */
+ 			video->pipe.state = VPFE_PIPELINE_STREAM_STOPPED;
+ 			vb2_streamoff(&video->buffer_queue,
+ 				      video->buffer_queue.type);
+@@ -672,8 +674,10 @@ static int vpfe_enum_fmt(struct file *file, void  *priv,
+ 
+ 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_enum_fmt\n");
+ 
+-	/* since already subdev pad format is set,
+-	only one pixel format is available */
++	/*
++	 * since already subdev pad format is set,
++	 * only one pixel format is available
++	 */
+ 	if (fmt->index > 0) {
+ 		v4l2_err(&vpfe_dev->v4l2_dev, "Invalid index\n");
+ 		return -EINVAL;
+-- 
 2.1.4
 
 
