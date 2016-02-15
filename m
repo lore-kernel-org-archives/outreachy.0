@@ -1,61 +1,61 @@
 X-GM-THRID: 6251650339458514944
-X-Received: by 10.112.16.34 with SMTP id c2mr2153535lbd.19.1455575990142;
-        Mon, 15 Feb 2016 14:39:50 -0800 (PST)
+X-Received: by 10.112.130.42 with SMTP id ob10mr2163749lbb.2.1455575957725;
+        Mon, 15 Feb 2016 14:39:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.132.74 with SMTP id g71ls677825lfd.5.gmail; Mon, 15 Feb
- 2016 14:39:49 -0800 (PST)
-X-Received: by 10.112.130.42 with SMTP id ob10mr2163828lbb.2.1455575989624;
-        Mon, 15 Feb 2016 14:39:49 -0800 (PST)
+Received: by 10.25.20.35 with SMTP id k35ls643797lfi.77.gmail; Mon, 15 Feb
+ 2016 14:39:17 -0800 (PST)
+X-Received: by 10.112.138.98 with SMTP id qp2mr2203277lbb.4.1455575957166;
+        Mon, 15 Feb 2016 14:39:17 -0800 (PST)
 Return-Path: <nevola@gmail.com>
 Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id w128si642303wmd.0.2016.02.15.14.39.49
+        by gmr-mx.google.com with ESMTPS id w10si485511wmw.3.2016.02.15.14.39.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Feb 2016 14:39:49 -0800 (PST)
+        Mon, 15 Feb 2016 14:39:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id g62so17933794wme.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 14:39:49 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id c200so17925534wme.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 14:39:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=LwFzzjWyhg8CgvIO05Z3pbgXRap4T6bbHe24bIhsb4Y=;
-        b=Oh/fUQHg5yNg6w1tkcWABpZuq3lkuhf1wxgqmz7SyjO5x+Qmh/MrIsNnmiKPzBAVJw
-         G0agK0kCPDVzDYPzzZJV+DF6HsFRYrp2QSsLLDl9bjGLtrBN1Ml1oxRTHIw9DykX/0fH
-         ZPWvdf0zZTY4GpSSRx6bv6Na1PgBaNwYSCcXqETM7lCjOe86BRrx+nHtbQCulB3mgdh/
-         Uw+vp8E6mhuEaBtUVj2JDai3ZICTUyGzD9jp//6A2LapaUihwqeSjFsxZpgTZSziIGD9
-         ebgmt9Q9Tg34b7erNx3GtNhMqPWqeh9M+cnJt8fFRvR//ojq/jHRgPYDA6pbOb5OGutn
-         rDUw==
+        bh=FjbFkMZsAh9X7KTtX2G1r8qDtWA6xJ5xuUrUgLwMZCY=;
+        b=Jz4SU8GM/bynUJHoVe6TkrlDApBxuWWf+vfWERuTR4Xe3x7JjWBWlnUnEQUZTQ+vQ+
+         O/DvA5u3oqRA1UEB2oT430WHwSKXgqTpqk8On82PdzGHKoosVWwMV1zfeCyVY2aws2YU
+         zXZlXmoP+NuAFKvhSz05WHC7KcAgRi1mag/WZo/0kP8VimpdpfqHtRUt+jOQIV4pC+A8
+         Gdg2NIMhhlOLabuFg5nLH8j8vo/YsDTTQ9tzr5peg7AD1yJFn6LdKB10sH5T6W0sYGuI
+         6d+N88hH5QeLv5fBc62+QrACSjT3zTvTJot866eAc+e4Bvg2IjdjovifwaMVLmTVY2EV
+         0vTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-type:content-disposition:in-reply-to
          :user-agent;
-        bh=LwFzzjWyhg8CgvIO05Z3pbgXRap4T6bbHe24bIhsb4Y=;
-        b=QnSBj2UbNlp94dvUkk9Wy2rQ9nET1T82avuzfF5KaEpyhKWwpwrgl+xkacDq9Lmrs8
-         TGDhe/LEIpEbVOStVg6CAjaClXA4jl2iGIFK+uoKV5kdvGlPegiX3W0zunh7nOXdMqkO
-         Ts1tyrbgvDo+mFL7Cm16c+sRUXbhpskHQVgV77/Ud4za8FF51JTHgs4FIaR9KPEVoRu6
-         qJSA1a8Q+ur/GmFIwEe3MVSxMSVtPxzDblAvizeZrThIDU5zIAjQWj2P1qpupzOGIkNx
-         MzzkBhe1rwz7187aEF86ESft9vy94BesGeAr+IEPlCBPF3dsUPFVjYFErTyZ0XydHzFD
-         WpSQ==
-X-Gm-Message-State: AG10YOSaTDP5SQp+vUUDTLMNlVLOCJ8IjMt1rMbGqc2KxmAHX/Xfo8O5UH/Mt8cqjxBZoA==
-X-Received: by 10.194.76.211 with SMTP id m19mr22241677wjw.113.1455575989528;
-        Mon, 15 Feb 2016 14:39:49 -0800 (PST)
+        bh=FjbFkMZsAh9X7KTtX2G1r8qDtWA6xJ5xuUrUgLwMZCY=;
+        b=OD1lA9cyLStQLabbsU26KoAPg6ZTNya6BJJdfspPzzxCISCu+z5lxNRApXRNWAs7k+
+         mdTi/+lohbbB9QEvRNOiE4P1HdiAO6wwJUWCoFTpNmTx2tJicA5cHzXFn3F6OxDzOgQP
+         ECrLkam2TQwobIO9CEhBpzFV88bOa6TcR5UJJSmltaUxcgYHIbr+jrevQ0+DYoIwf/KD
+         wzSIMZ+4gyIeeFuYO6fSimqtdSLXqMVKRG2szPmQzD2ggh1ViI3YRuCoMDRpafeKqFUh
+         FKcME6G1efjPm7b8P6aPMEoqNS/pMirQU7RYATdY8MPLpEpPwJSU1A5EmgR2A8wTLAm6
+         saEA==
+X-Gm-Message-State: AG10YOTmWNu2bo677UJYxf93/tb23+Xpc/BWqbMDm3aLGH4uK16j4+95I3w3u3vXFtvlmg==
+X-Received: by 10.194.185.237 with SMTP id ff13mr20806334wjc.129.1455575957056;
+        Mon, 15 Feb 2016 14:39:17 -0800 (PST)
 Return-Path: <nevola@gmail.com>
 Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
-        by smtp.gmail.com with ESMTPSA id 192sm1729464wmw.0.2016.02.15.14.39.48
+        by smtp.gmail.com with ESMTPSA id e19sm17686467wmd.1.2016.02.15.14.39.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 14:39:48 -0800 (PST)
-Date: Mon, 15 Feb 2016 23:39:46 +0100
+        Mon, 15 Feb 2016 14:39:16 -0800 (PST)
+Date: Mon, 15 Feb 2016 23:39:14 +0100
 From: Laura Garcia Liebana <nevola@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/7] staging: netlogic: Insert spaces around operator
-Message-ID: <196f72cf5f96c68476eebfb19e4c9ee202948bd1.1455575263.git.nevola@gmail.com>
+Subject: [PATCH 5/7] staging: netlogic: Fix comparison to NULL
+Message-ID: <ed3fe66bf2dfec6a6364deb07047a9955cfd3cfc.1455575263.git.nevola@gmail.com>
 References: <cover.1455575263.git.nevola@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,36 +63,45 @@ Content-Disposition: inline
 In-Reply-To: <cover.1455575263.git.nevola@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Spaces preferred around that '/' (ctx:VxV). Checkpatch detected these
-issues.
+Avoid the use of comparison to NULL, use !<variable> instead. Checkpatch
+detected these issues.
 
 Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
 ---
- drivers/staging/netlogic/xlr_net.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/netlogic/xlr_net.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index c5df08e..58f7863 100644
+index 4b72f03..c5df08e 100644
 --- a/drivers/staging/netlogic/xlr_net.c
 +++ b/drivers/staging/netlogic/xlr_net.c
-@@ -206,7 +206,7 @@ static int xlr_net_fill_rx_ring(struct net_device *ndev)
- 	struct xlr_net_priv *priv = netdev_priv(ndev);
- 	int i;
+@@ -146,7 +146,7 @@ static void xlr_net_fmn_handler(int bkt, int src_stnid, int size, int code,
+ 		addr = addr - MAC_SKB_BACK_PTR_SIZE;
+ 		skb = (struct sk_buff *)*(unsigned long *)addr;
+ 		skb->dev = adapter->netdev[port];
+-		if (skb->dev == NULL)
++		if (!skb->dev)
+ 			return;
+ 		ndev = skb->dev;
+ 		priv = netdev_priv(ndev);
+@@ -1037,7 +1037,7 @@ static int xlr_net_probe(struct platform_device *pdev)
+ 		priv->nd = (struct xlr_net_data *)pdev->dev.platform_data;
+ 		res = platform_get_resource(pdev, IORESOURCE_MEM, port);
  
--	for (i = 0; i < MAX_FRIN_SPILL/4; i++) {
-+	for (i = 0; i < MAX_FRIN_SPILL / 4; i++) {
- 		skb_data = xlr_alloc_skb();
- 		if (!skb_data) {
- 			pr_err("SKB allocation failed\n");
-@@ -1023,7 +1023,7 @@ static int xlr_net_probe(struct platform_device *pdev)
- 	 * Each controller has 4 gmac ports, mapping each controller
- 	 * under one parent device, 4 gmac ports under one device.
- 	 */
--	for (port = 0; port < pdev->num_resources/2; port++) {
-+	for (port = 0; port < pdev->num_resources / 2; port++) {
- 		ndev = alloc_etherdev_mq(sizeof(struct xlr_net_priv), 32);
- 		if (!ndev) {
- 			pr_err("Allocation of Ethernet device failed\n");
+-		if (res == NULL) {
++		if (!res) {
+ 			pr_err("No memory resource for MAC %d\n",
+ 			       priv->port_id);
+ 			err = -ENODEV;
+@@ -1052,7 +1052,7 @@ static int xlr_net_probe(struct platform_device *pdev)
+ 		adapter->netdev[port] = ndev;
+ 
+ 		res = platform_get_resource(pdev, IORESOURCE_IRQ, port);
+-		if (res == NULL) {
++		if (!res) {
+ 			pr_err("No irq resource for MAC %d\n", priv->port_id);
+ 			err = -ENODEV;
+ 			goto err_gmac;
 -- 
 2.7.0
 
