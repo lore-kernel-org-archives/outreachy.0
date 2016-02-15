@@ -1,67 +1,67 @@
 X-GM-THRID: 6251518681798410240
-X-Received: by 10.141.3.134 with SMTP id f128mr16156590qhd.7.1455545673919;
-        Mon, 15 Feb 2016 06:14:33 -0800 (PST)
+X-Received: by 10.50.142.73 with SMTP id ru9mr12366640igb.8.1455545118389;
+        Mon, 15 Feb 2016 06:05:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.139 with SMTP id e11ls3323825qgf.48.gmail; Mon, 15 Feb
- 2016 06:14:33 -0800 (PST)
-X-Received: by 10.129.146.73 with SMTP id j70mr16020288ywg.25.1455545673234;
-        Mon, 15 Feb 2016 06:14:33 -0800 (PST)
+Received: by 10.182.118.132 with SMTP id km4ls579703obb.97.gmail; Mon, 15 Feb
+ 2016 06:05:17 -0800 (PST)
+X-Received: by 10.182.240.137 with SMTP id wa9mr5361280obc.16.1455545117841;
+        Mon, 15 Feb 2016 06:05:17 -0800 (PST)
 Return-Path: <anchalj109@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id yd9si189226pab.1.2016.02.15.06.14.33
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id ui7si3340594pab.0.2016.02.15.06.05.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Feb 2016 06:14:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Mon, 15 Feb 2016 06:05:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id fy10so47145285pac.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 06:14:33 -0800 (PST)
+Received: by mail-pa0-x22c.google.com with SMTP id ho8so87465396pac.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 06:05:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=3OUei1H6A/WZ6mzhlQZj456mxeIF3/EE8vH9cdCP5W8=;
-        b=dEGq5f9tzTYdauc7fcHcgmrAhVpqde7dHjkoaZOMRgwHKRnPVfVXp+g672MwxSnKw4
-         CsSii5e0lp+fpsocbv40CepQQC/U4kgvA3VYpdkMJf+VkdbVn/YWmxEn9XT7vhyVmAMy
-         XBZ7WuU2GJxrbHIIT9bsodhp/pVGsf/nC9VBqQumAsTDqpSyiPvt5V+0oAoRliydRzpb
-         81rbFKxBfz7dAi6xSJD9jvCQ2Oqb5Bri9qp9/i1B3AxP4WWqev6H3P/PfOL2URg4nWTj
-         DcKMeqEWuDx7kWshk1RrVWi/LMA9znxJ5qd5p+38bS3VunJv3h37LdZMvrvrw+XTs4Fd
-         4CVA==
+        bh=zcqVJizbtJUmXB7jIln9QuSvAEz7wConil0PMVB51YM=;
+        b=0ZC81iPBsKYhQcEeAdtFP9hNGD5ekYYur7bTQOwtKWaY5mh7DcySIf4iYKg4c6HN3R
+         +plXCOY8A5PU6sbZVVW1raBl48BE4ZTSjagGfS9WjXmFSFwv6Qc2o2+PRN7D9vNfYleD
+         udccGn9D7ASwJp+UyP3FQf7Ob/uWu+9crpU3I5Fl76zk3ryjw7+5vX/P1XQfV3m92JmA
+         MqBU4WeCBc8UV3pC5MiX6JU59bCfP+LhGC3B+8paN3JFiD1qTpWaP8HGVmdWB/TbmSRO
+         VSTHifUsAMwwV6xQxZYlBoZ7rMH8YR75djKWEe9UhmIYAZSoh7+ZGpnES4GH38EkffYm
+         55FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=3OUei1H6A/WZ6mzhlQZj456mxeIF3/EE8vH9cdCP5W8=;
-        b=bTWCxuSoddD1GCAH2AYOpBGMerwGgCl0baqP2ESuL7ncMc3e5zgOkvPFgUOrI/rqv/
-         A5eU/H57QaCzgfZQppOOGzF6wU7t0kYpSk5AyASTMjNHDPzV2rGkpN88+NJDMRZ2/OHu
-         H+LBCUnDkv/dJtK6Gna2ucErSl6wlCaJxTcfuVsTP9FWYfKExASfd7SwcI7iGsmbA7Zo
-         bnI6/XBODeKEnEkfimipcRQZGrlSp+8DQFHoVmIEbqjjwV2K64lBUGO6rgzclQZKh6x1
-         cHevAdDzYpxgrnNifADEynxTSpD/YNPmzukOgpCLeAmpohCJGJ92jeQCwqB5pzVsQFxs
-         MItw==
-X-Gm-Message-State: AG10YOT6ESIwVCvrKvRQ6Bwxyf2FP3hIdRiSBfq5KPZ+5Lo86E0lKuW1vaBaolLLAL+n6A==
-X-Received: by 10.66.189.165 with SMTP id gj5mr23656038pac.157.1455545673106;
-        Mon, 15 Feb 2016 06:14:33 -0800 (PST)
+        bh=zcqVJizbtJUmXB7jIln9QuSvAEz7wConil0PMVB51YM=;
+        b=UBmI1qzU83bV7JsVoAi0S8UabZSW7a1hkXyzN+LVvDsrcu50zPbDX9qU1TB/+idfEs
+         i8ZLWeMdEr+oh1ekUg+C/kqANajLS+9YeDOF1+ZJSMpmMOE7puiYP/7u7/VYwnEHqiVO
+         AcpcEVzK9bfuxyqO+pjPoNS5ukVN7fcCM2+HD5MgS4cWgQIiy0kmZG5uMMHSbo6nxuDo
+         k5dc+qW+BciQPI0/w1ePwrhNU55n7BUHXkXbCowtd4MFcp7bcAEI/UI83LCMkvVMdzzN
+         IsWlbhUfs7uzSHeE11FbQQslJ/tL48HWwFaGKiYrDWkOqm2ONqZrH+1C5xQ+cRIsOlTU
+         fKTg==
+X-Gm-Message-State: AG10YORUElwwuJ2bEyvNkPldSvVrBCgq5K0VNj80DuUTq2dd4SKqItx7eH/eKwzTtdAiqQ==
+X-Received: by 10.66.234.166 with SMTP id uf6mr23849363pac.122.1455545117697;
+        Mon, 15 Feb 2016 06:05:17 -0800 (PST)
 Return-Path: <anchalj109@gmail.com>
 Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id 195sm39027388pfa.5.2016.02.15.06.14.31
+        by smtp.gmail.com with ESMTPSA id m87sm18352600pfj.38.2016.02.15.06.05.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 06:14:32 -0800 (PST)
-Date: Mon, 15 Feb 2016 19:44:57 +0530
+        Mon, 15 Feb 2016 06:05:17 -0800 (PST)
+Date: Mon, 15 Feb 2016 19:35:41 +0530
 From: Anchal Jain <anchalj109@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Subject: [PATCH] staging: wilc1000: Fix "Possible unnecessary 'out of memory'
  message" checkpatch.pl warning
-Message-ID: <20160215141448.GA27532@life-desktop>
+Message-ID: <20160215140532.GA27352@life-desktop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Braces are not necessary for single statment block.
+Fix "Possible unnecessary 'out of memory' message" checkpatch.pl warning
 
 Signed-off-by: Anchal Jain <anchalj109@gmail.com>
 ---
