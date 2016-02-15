@@ -1,95 +1,88 @@
-X-GM-THRID: 6253421946292142080
-X-Received: by 10.182.199.70 with SMTP id ji6mr18134619obc.32.1455988256866;
-        Sat, 20 Feb 2016 09:10:56 -0800 (PST)
+X-GM-THRID: 6251307568261496832
+X-Received: by 10.31.47.131 with SMTP id v125mr13535605vkv.11.1455495964296;
+        Sun, 14 Feb 2016 16:26:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.134.161 with SMTP id q33ls422315ioi.13.gmail; Sat, 20 Feb
- 2016 09:10:56 -0800 (PST)
-X-Received: by 10.50.138.73 with SMTP id qo9mr2988520igb.6.1455988256372;
-        Sat, 20 Feb 2016 09:10:56 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id u66si2469071pfa.2.2016.02.20.09.10.56
+Received: by 10.140.32.137 with SMTP id h9ls1676902qgh.22.gmail; Sun, 14 Feb
+ 2016 16:26:03 -0800 (PST)
+X-Received: by 10.31.169.130 with SMTP id s124mr13542904vke.1.1455495963829;
+        Sun, 14 Feb 2016 16:26:03 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x22d.google.com (mail-qg0-x22d.google.com. [2607:f8b0:400d:c04::22d])
+        by gmr-mx.google.com with ESMTPS id g136si1867698ywb.5.2016.02.14.16.26.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 09:10:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        Sun, 14 Feb 2016 16:26:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) client-ip=2607:f8b0:400d:c04::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id fy10so67291753pac.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 09:10:56 -0800 (PST)
+Received: by mail-qg0-x22d.google.com with SMTP id y89so100846470qge.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 14 Feb 2016 16:26:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=zzcwSZ+cd3AaiX10xJo5fZms1JggGNWbE2C+eOKoWpY=;
-        b=MYXDr83Hw2JtIB37ZStvkhIi8BxOm8W7Z9299D7yV1k64zuburkBz2vdAyCXzZgm7s
-         XIbp1jOSJjNDvfiFGpQMnJhm34zMAPryPUd0FKcMwBPyzmXuGYWlM+j6V85+qYcizH9y
-         XCrCcJ9fB+5JBSnhRXlyAhl7JCo0NaTRquqOxrz8lzNJfzXL02aNRNHOrVZYDRk7fY6P
-         QUpu6ms0IHSi8VTR/T3K1284FnAF3cgodzymqvT/LsFLOCdQwhdf/xCkZ6zrphAGGwdr
-         daUcGdAaCTfg1t/ZYqiVyi5AmKSW8YU46bO2bFT5TtK13LlZw6lqbVr3zt4n1z5X1RJL
-         OuZA==
+        bh=EkBKJQ8ycxUCkf9xo22dUovn8AUJYSZdUS60Qi1T5ZQ=;
+        b=GnlDe5ENqsaP7DAKE7C3S4g1M7fCw2tyOqscrDoszeVUIIRArDCV2aeok1E5EdYCoJ
+         JKokOC8qlSMch6b8ACHnRvZIxEJRgxjziZuBqcrXYnMzHtF+BzaliWwdBmPIYgprIYLq
+         B3kCR4V6HUo0Ho5RKHrEuw2TROvQxOLahWK5a/SAl8l6n+AP6wnL7DBR4qAzgW8JdAJx
+         jqMKwoHoAMchVVxk8/s/B/OIqXgODeomxhHFkmg3Qj9u8QW6+6FYELr6WBNJXpw9Tj80
+         /tvsmVAs8Ol6Alv/RTztEMICDKr/4wyyljmAPeBDBeHhLSjEmauIWXWK3WoiC7oXJBZg
+         U9pQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=zzcwSZ+cd3AaiX10xJo5fZms1JggGNWbE2C+eOKoWpY=;
-        b=NTpZqaLkIHAZDs8Y+h+6PH5pK8bfOwTI6izYCcIbc/QKGlg4ehGmb+ygvupm9wgJTt
-         aX+/Y3ykW/rBSsG2KfJc/f9ACSgtiWzlelxwkmahjjml7f6THSk1LNn6hONqXYk5ES6m
-         fF8wxhivgaiqbqYctc8cwoI9BpG2Zq1/QV08LhGYXo/FFchr8xjixG08B8rPsItMVLbV
-         X+Ieo9P7An5SwijurNnA7KtsYFISf9XdKCSyE9IG9LCPT+EoBZ1Al25eM4/5bG6iDIKC
-         l8HQYY1yItg0SdVpIqU9DW7YQ3Pbjt7osthPI4cSAVs4UfFmkQeIG7hhAOPYMUGsv4pW
-         BqRA==
-X-Gm-Message-State: AG10YOSWldJbkRRvzpdgvcWnOfiPjsVKV3ySYwQB6N3jl7EvkpT02R6Y5/SmOUaXrwaHnA==
-X-Received: by 10.66.101.36 with SMTP id fd4mr26855407pab.76.1455988256213;
-        Sat, 20 Feb 2016 09:10:56 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.155])
-        by smtp.gmail.com with ESMTPSA id x13sm25707777pfa.72.2016.02.20.09.10.54
+        bh=EkBKJQ8ycxUCkf9xo22dUovn8AUJYSZdUS60Qi1T5ZQ=;
+        b=WU3kZyFxXwprPDH2wz6RCdxXYkHhfAjog+6vGIH3r4O9tivUJnycpNWVD+lF4iZjaI
+         lClMTr+yLQI2vyCcVRcWz4QrMzIziGVNWz5MnDtT3rbf/ddx2iamrXN+zaBWNfZLUV9E
+         4eT47zTtEzz6bWPI6BeNZLfgOqcUlX/BHAEzskEzfj8Nz6xlwxJ4l9jckx8KhSyKn2i9
+         hKo7dJRvMMfOwET6anGZJduHNZXrN/xWK3VeLSagDL7wxQzSNemvstr+PWOJhqyZdyJ5
+         YQ80itOb1uakCWH/qmBz4GXeV4zGulQBv4v5xjprSjspu09fpypoIWVLlZH5biURxC3m
+         NkQg==
+X-Gm-Message-State: AG10YOTMK7bEerMUDkVim4xiIhVIBRNRXYMF5JJhK3idH8KUlLsDgBK8PKSHLmyoIAy14A==
+X-Received: by 10.140.231.80 with SMTP id b77mr3607019qhc.56.1455495963697;
+        Sun, 14 Feb 2016 16:26:03 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 ([2620:cc:8000:1481:5635:30ff:fe6b:610b])
+        by smtp.gmail.com with ESMTPSA id 139sm10099811qho.2.2016.02.14.16.26.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 09:10:55 -0800 (PST)
-Date: Sat, 20 Feb 2016 14:40:36 +0530
-From: Sandhya <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 14 Feb 2016 16:26:03 -0800 (PST)
+Date: Mon, 15 Feb 2016 00:25:23 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH]: staging: wlan-ng: Convert explicit comparison to NULL to !x.
-Message-ID: <20160220091036.GA3362@sandhya>
+Subject: [PATCH] staging: vt6655: Fit function header on the same line
+Message-ID: <20160215052523.GA3265@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Convert explicit comparison to NULL to !x.
+Improve readability by fitting all parts of the function header on the same line.
 
-Signed-off-by: Sandhya <bankarsandhya512@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/wlan-ng/cfg80211.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/vt6655/rf.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 8c1e3f0..c59dd33 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -303,7 +303,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index 3df430b..ae10da2 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -612,9 +612,7 @@ static bool RFbAL2230SelectChannel(struct vnt_private *priv, unsigned char byCha
+  * Return Value: true if succeeded; false if failed.
+  *
+  */
+-bool RFbInit(
+-	struct vnt_private *priv
+-)
++bool RFbInit(struct vnt_private *priv)
+ {
+ 	bool ret = true;
  
- 	memset(sinfo, 0, sizeof(*sinfo));
- 
--	if ((wlandev == NULL) || (wlandev->msdstate != WLAN_MSD_RUNNING))
-+	if (!wlandev || (wlandev->msdstate != WLAN_MSD_RUNNING))
- 		return -EOPNOTSUPP;
- 
- 	/* build request message */
-@@ -312,7 +312,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
- 	quality.dbm.status = P80211ENUM_msgitem_status_data_ok;
- 
- 	/* send message to nsd */
--	if (wlandev->mlmerequest == NULL)
-+	if (!wlandev->mlmerequest)
- 		return -EOPNOTSUPP;
- 
- 	result = wlandev->mlmerequest(wlandev, (struct p80211msg *) &quality);
 -- 
-1.8.3.4
+2.5.0
 
 
