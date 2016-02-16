@@ -1,118 +1,102 @@
-X-GM-THRID: 6669413684549255168
-X-Received: by 2002:a81:8a46:: with SMTP id a67mr7121123ywg.26.1552843880937;
-        Sun, 17 Mar 2019 10:31:20 -0700 (PDT)
+X-GM-THRID: 6251470557563322368
+X-Received: by 10.129.92.65 with SMTP id q62mr19328340ywb.19.1455598909782;
+        Mon, 15 Feb 2016 21:01:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:9b8a:: with SMTP id s132ls2896910ywg.2.gmail; Sun, 17
- Mar 2019 10:31:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzTF2HKRWylHzkoSZ05GRxsIE36mLL+5D0S9xv0jH2+GeImOEYqIjk62g1TM4lUvz1HYEtS
-X-Received: by 2002:a81:a60c:: with SMTP id d12mr2482538ywh.3.1552843879868;
-        Sun, 17 Mar 2019 10:31:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552843879; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ErSjFeRjqTpvYoSZ6xGnOgD5ShuBT7KP1KRa0db0P/zcXNKSw4inY5ZeMHJrzRgCvU
-         SKLl/7B7AoVJ7VF+oKGU9DJ4EzG0ZBPE30uDP4i5dc5+6x4xILcylT4PEG2DuM4m1pQU
-         CGce17KAQFhfMSWj4lbBK+diUC2pLivpXeAXoActQza7Opq/g/SLJXelUPA4pM+c4qgC
-         fE+jumNs8M3Yha721dpJm5mX98RMJFOa1Pc/Jfd2TZdz1a+SNCt/eoYe0GjZ6e/Ti/nP
-         XZFuELYe4a497Y3DfbhDX+fKpGpx6+5pUjTTjqdan3yACzu3LSGhPLroBMJqILM0coRV
-         8VjA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lQeC/+9Tn6FRjCg4OVCFVRVQNcqddtwIfJ7wBtbtddc=;
-        b=GHkdVcbkWs7WBLFlaMDhEBOZgrmWwIbI0ajqyY96Wh8pH8c108EOD/s/X3/RW5PZ4R
-         3ezvQDOwRRPVg1ovy9oTXIzD3qOUyioUe+lM4ln5KYHItxKhw5pKoerEexzJ4bzJxNWE
-         WTWO/0mP+o9Q5guxZ8KF1bkIeveRJyz6g9nkc2w8IKcbzzB/TNiQaZuEkpkAy1D3ICn9
-         ELEav7CEibaxoPm+ug+o53nDCowHsNiegzp90EnQnon0Tr+zGGJaNHabOU6akcyfMD/b
-         SCG1jDRyjbgi+nel/pQktbiI/khwk05xa6dxgOepUOJJgmlpGV9nKajJy6ChbMVrVHhb
-         iqmQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CFwfNq0y;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id j16si313806ywa.2.2019.03.17.10.31.19
+Received: by 10.140.99.19 with SMTP id p19ls2085968qge.24.gmail; Mon, 15 Feb
+ 2016 21:01:49 -0800 (PST)
+X-Received: by 10.13.215.140 with SMTP id z134mr21168832ywd.7.1455598909121;
+        Mon, 15 Feb 2016 21:01:49 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-ob0-x22a.google.com (mail-ob0-x22a.google.com. [2607:f8b0:4003:c01::22a])
+        by gmr-mx.google.com with ESMTPS id kr4si1258842igb.0.2016.02.15.21.01.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 10:31:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Mon, 15 Feb 2016 21:01:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) client-ip=2607:f8b0:4003:c01::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CFwfNq0y;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id r124so9756326pgr.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 10:31:19 -0700 (PDT)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-x22a.google.com with SMTP id xk3so241287483obc.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 21:01:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=lQeC/+9Tn6FRjCg4OVCFVRVQNcqddtwIfJ7wBtbtddc=;
-        b=CFwfNq0y5OpW+RJhEJcFOPg5fR2nVt75F5BjTqWo12e9/j/pwFUFkllpK7aWxNAYKy
-         d+RTtK1gzhg6QXGH3hXFDHsNZZfbk1c0ZoDs3o4PxmolTTZRSWvD/hRyfm6Nqa11fge6
-         zcu6suvyHgYhVmIKSDG5auS4HOuhubClgpA1MdgiT30gdBo4fTWT+kEnxTtfpkCMx1lx
-         16iwdvFp1OlpgBEt4IWQ7unEkeWrpQ9fKAS1e3pWsyyiVjnAZ/fhfy9zDXVrPb3uD+C8
-         u66cYpWhKxcxhqtGwhm1OM6V4xFtQDsl2fkx7gerT/UFlhppdWoF5crT4mlymHt6p45o
-         7YGg==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=y0ojAM3aZQ4kv23xF1QyT8JlXRwR6kvqKWVGiq8wg0w=;
+        b=KbPuRzMSwcJM+PwRfWxwF8fHNUUhs2WpWGKeBBgdfXZz5Urt92SRy50+ViFbQdir15
+         QtutQGBRHqakW3FKNADvKJccPmMhXh496WQmqEXCJUJUZBeLeU5Qf9MnUiLSsC2o87E1
+         jb/q7mILp3LICWuB7jFQCo5TPwKyel1q3uYlE61NV1l8DNFv2kYFlxHcZQibRzR/x82C
+         H+6ZwE+R+gEKN2nEGj03gR+bo4kUH5zqJNlnLohyNNBuwYPCefPcQtIzibX4KjMDyoD7
+         eNlTuo5v2Tjb8/79ubOcWn/O+Wef5JCguDnI0brsTY9X8USj7PECh5zGbApaPRkNXyEA
+         5T4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=lQeC/+9Tn6FRjCg4OVCFVRVQNcqddtwIfJ7wBtbtddc=;
-        b=RXQpasABYDGq7sSiliaWUfmNRQH0z9UuoaoqHw4HSKHG3rCyPOvF3ZH4W7maVwykY+
-         T32CJsX1d37kpTE55+rWw02AyY/isRe2pWhZ9l+9tN0+Rp4dVstmMrkW8uSvrjlwqaiy
-         L1jILpfzRDew9Fnnhyh7b740dHAAekOz7uzHC++iYkDorm9gCcT+0iIQXWYWr5SZIDE7
-         qxb9xd6dJX5WXb5HSJ0ogw9wxmxTpcy6mkDxpbVYpko4g/Bsbg1EpIyYPeaeWGR8AWvn
-         H6qsAx6Qy2IRln6C0fnM3Wf0Ly6bM41UJoi7Q1ygioJ8EOrobViePOIFqNi6lDK/TwnC
-         5EzQ==
-X-Gm-Message-State: APjAAAUdp5410lU1OJYWfK+3hfCFclo5wuA5TrySwQ/JjzlKZgf/oow1
-	QmmUQ58cbxgMbc89Xd0yM1U=
-X-Received: by 2002:a62:5c4:: with SMTP id 187mr14853572pff.153.1552843879136;
-        Sun, 17 Mar 2019 10:31:19 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.8])
-        by smtp.googlemail.com with ESMTPSA id z12sm10370695pgv.0.2019.03.17.10.31.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 10:31:18 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: gasket: gasket_interuppt.c: Fix string split issue.
-Date: Sun, 17 Mar 2019 23:01:07 +0530
-Message-Id: <20190317173107.3814-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type;
+        bh=y0ojAM3aZQ4kv23xF1QyT8JlXRwR6kvqKWVGiq8wg0w=;
+        b=k0LVyXjcpPgBHm30ysVTFYyK24DPnjalwtw89zBAGHAlN1CNuGiuZYwn66i5PW3nG1
+         FLGYEFxqUJR9g4Jc+hAMpStzEIx8Mrxy6ggVbNIAvqHzWx5io8xOEwot4DVKnRtFRodZ
+         gpx1lCD7nxzNIGAfCkX+5U9ZZfeXK3XbgVrlLuZ82sZHjMyEiTYB1Ls95qzIxIDELM9f
+         jiGUdKaQ7IJUgA53p8EkQyrYObe8s/VooxjOrC8HAzaS6pUq7VCccgdHiDXWzoMEetP/
+         qPeHgLUjeqcRzfsrzZ83lZWzPY0BGqtOVXOlISB/7gfuUZa/7GPPO4yt9HUDMPmb5LZ0
+         +YGg==
+X-Gm-Message-State: AG10YOThEQSASiWMkP8hmTLI7t+YR9oyRDaiOLc9SgHDP/oGWfykRDoaL29VaZ3unWc/oatbxCgU1VA8FJ8oRg==
+MIME-Version: 1.0
+X-Received: by 10.202.196.208 with SMTP id u199mr14306843oif.71.1455598908969;
+ Mon, 15 Feb 2016 21:01:48 -0800 (PST)
+Received: by 10.157.40.238 with HTTP; Mon, 15 Feb 2016 21:01:48 -0800 (PST)
+In-Reply-To: <20160216044147.GA28814@kroah.com>
+References: <1455533899-17270-1-git-send-email-bhumirks@gmail.com>
+	<20160216044147.GA28814@kroah.com>
+Date: Tue, 16 Feb 2016 10:31:48 +0530
+Message-ID: <CAOH+1jH26AZHV3czfmcOQv-6+zdj0PbhpLBsFAYTBjR_hMxjNw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lmv: Remove unneeded do-while(0)
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Remove string " across the line.
-Issue found by checkpatch.pl semantic patch results for rtw_ap.c
+On Tue, Feb 16, 2016 at 10:11 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Mon, Feb 15, 2016 at 04:28:19PM +0530, Bhumika Goyal wrote:
+>> do {} while (0) wrapper in a single statement macro is unneeded.
+>
+> Are you sure?  You can easly break code by changing this.
+>
+>> Also its ok to keep empty #define here to avoid "statement with
+>> no effect" warning.
+>>
+>> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+>> ---
+>>  drivers/staging/lustre/lustre/lmv/lmv_obd.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+>> index 733222c..7a31bd6 100644
+>> --- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+>> +++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
+>> @@ -2147,7 +2147,7 @@ static void lmv_adjust_dirpages(struct page **pages, int ncfspgs, int nlupgs)
+>>       LASSERTF(nlupgs == 0, "left = %d", nlupgs);
+>>  }
+>>  #else
+>> -#define lmv_adjust_dirpages(pages, ncfspgs, nlupgs) do {} while (0)
+>> +#define lmv_adjust_dirpages(pages, ncfspgs, nlupgs)
+>
+> That's scary, please leave it alone, unless you audited all users of
+> this call?  Hint, think about if this call was used as the result of an
+> if() statement?
+>
+> thanks,
+>
+> greg k-h
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/gasket/gasket_interrupt.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ I found out is that if (PAGE_CACHE_SIZE > LU_PAGE_SIZE) then function
+lmv_adjust_dirpages is defined with void retun type and it does
+something. Otherwise it is defined as macro and does nothing. Also
+lmv_adjust_dirpages is called only once in entire kernel and its retun
+value is not stored anywhere which implies that the call is made to
+function lmv_adjust_dirpages and not the macro. So I guess the macro
+can be dropped as it is of no use.
 
-diff --git a/drivers/staging/gasket/gasket_interrupt.c b/drivers/staging/gasket/gasket_interrupt.c
-index ff61b782df30..da517c2990ea 100644
---- a/drivers/staging/gasket/gasket_interrupt.c
-+++ b/drivers/staging/gasket/gasket_interrupt.c
-@@ -97,8 +97,8 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
- 		 * modify-write and shift based on the packing index.
- 		 */
- 		dev_dbg(gasket_dev->dev,
--			"Setting up interrupt index %d with index 0x%llx and "
--			"packing %d\n",
-+			"Setting up interrupt index %d with index 0x%llx and
-+			packing %d\n",
- 			interrupt_data->interrupts[i].index,
- 			interrupt_data->interrupts[i].reg,
- 			interrupt_data->interrupts[i].packing);
-@@ -120,8 +120,8 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
- 				break;
- 			default:
- 				dev_dbg(gasket_dev->dev,
--					"Found interrupt description with "
--					"unknown enum %d\n",
-+					"Found interrupt description with
-+					unknown enum %d\n",
- 					interrupt_data->interrupts[i].packing);
- 				return;
- 			}
--- 
-2.17.1
-
+Thanks
+Bhumika
 
