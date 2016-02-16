@@ -1,89 +1,66 @@
-X-GM-THRID: 6252308314150928384
-X-Received: by 10.28.47.211 with SMTP id v202mr596135wmv.3.1455728969725;
-        Wed, 17 Feb 2016 09:09:29 -0800 (PST)
+X-GM-THRID: 6251884349314039808
+X-Received: by 10.112.157.164 with SMTP id wn4mr2547867lbb.5.1455630341847;
+        Tue, 16 Feb 2016 05:45:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.99.19 with SMTP id p19ls3056970qge.24.gmail; Wed, 17 Feb
- 2016 09:09:29 -0800 (PST)
-X-Received: by 10.129.25.212 with SMTP id 203mr2424510ywz.35.1455728969195;
-        Wed, 17 Feb 2016 09:09:29 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id 79si343555pft.0.2016.02.17.09.09.29
+Received: by 10.28.16.198 with SMTP id 189ls780720wmq.45.gmail; Tue, 16 Feb
+ 2016 05:45:41 -0800 (PST)
+X-Received: by 10.28.128.204 with SMTP id b195mr1958135wmd.7.1455630341172;
+        Tue, 16 Feb 2016 05:45:41 -0800 (PST)
+Return-Path: <arnd@arndb.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.73])
+        by gmr-mx.google.com with ESMTPS id w197si794745wmw.3.2016.02.16.05.45.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 09:09:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        Tue, 16 Feb 2016 05:45:41 -0800 (PST)
+Received-SPF: neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=217.72.192.73;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id c10so15047089pfc.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 09:09:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=UlUHVWbhHaTEq0I0y4fVCtq2ipAQxumCT/seD5li8Zs=;
-        b=fh2GLQ80O7ZRgNpBMVtirLZgHZY+m6qhJsu63iexKMv/eaYShVOsZDpCOjKMkyXYQX
-         bgV4I65YsMEP7uRnM31U9y6X1GLGRwAR273SPngAN1A02CV2ljE8kZDL7oV/mMD/9iK0
-         uoYTqqZM+rKhAlp+JQdFKqC0my7EYLzwTvDV6/5B7CdU7AjA/WcVUSilHWBMv9RPEhFg
-         5RKd18PtNg0ympu2ykdkic+gNVw9Aauer4uajdIDBMP3ILBJUCZzsFxN86RAcfDCyhaP
-         USnhVm+SJGepvbg5tcv5/tpa35UThDO6LzSZE+oeaedAWr+bXAZdqoQ8IpZ9i3NaGTgU
-         kW6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=UlUHVWbhHaTEq0I0y4fVCtq2ipAQxumCT/seD5li8Zs=;
-        b=h1xYKX2aw2Nos3Yc9phfNKRdODk6tGQi4/hm+rYTHmyWTbHnlCn8VRZ0/Fm/tj1d+r
-         IKKoEAufFuZltWm+9EgehuaS7+vDQqMxwe5bHDIiuTyaKWs+jxm4bMmiTzjb/Izj9IbI
-         I/vKSnYU5r4EDV5YK0q4KQ13enqQIgX8M4bUHyM6heNDmCZCE2DnK2KZ+1kXXnksZM7P
-         JtXvQsKTsH9TrAPbdv8G8OU9Co8yyMWJxGhUxBm1fIrXQRH3i0XXWUamfeyommiL1Drg
-         rWbYP2aUvjrwbtpFJ5cb2IsP5ezEUVnIdjEVM1ESrei1qJ/exUp5btiT8fzUYS4aeYAn
-         bwvg==
-X-Gm-Message-State: AG10YORHkk2YkF9opW2+NuEIcmX0HkP/KO1nwewox8KvkaXKv5t2RWK+sl/+WieUo89Lvw==
-X-Received: by 10.98.70.80 with SMTP id t77mr3564094pfa.107.1455728969029;
-        Wed, 17 Feb 2016 09:09:29 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-72-178.dhcp.embarqhsd.net. [67.232.72.178])
-        by smtp.gmail.com with ESMTPSA id v75sm4024764pfa.39.2016.02.17.09.09.28
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 09:09:28 -0800 (PST)
-Date: Wed, 17 Feb 2016 09:09:27 -0800
-From: Alison Schofield <amsfield22@gmail.com>
+       spf=neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
+Received: from wuerfel.localnet ([78.42.132.4]) by mrelayeu.kundenserver.de
+ (mreue103) with ESMTPSA (Nemesis) id 0MLRLO-1aV7yw0xwA-000ZLM; Tue, 16 Feb
+ 2016 14:45:40 +0100
+From: Arnd Bergmann <arnd@arndb.de>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6656: use 0 in test for successful urb status
-Message-ID: <20160217170915.GA4387@d830.WORKGROUP>
+Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: osc: osc_request: Declare local function and structure as static
+Date: Tue, 16 Feb 2016 14:45:39 +0100
+Message-ID: <3141763.faVHMgUmWB@wuerfel>
+User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
+In-Reply-To: <20160216134412.GA18001@amitoj-Inspiron-3542>
+References: <20160216134412.GA18001@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-Provags-ID: V03:K0:rgZuZ8+qHu7IaV+r0Bmw52cuNieAB/75se399FGjBDKrH0tMq3S
+ xAzqVtOer0EikPNcw9TO3YWeaB/T0BCMXX56QenmSripKTSLlUndYS4dcbxHFMEjrcaBZ0E
+ NBgqLhki01NT0LKmuID6F2w2NbsXyx8DcXJZjX9GEQvvVK0TE8Kz4JWglr10ZSjBFysPGqg
+ rnvv7oj/95RqAvvBMMwvg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:9hyDtKTybes=:6BX59W9Nh0PC8lx4DfGMNs
+ cxT9DyhbWehTTAZaopQkimL72qlPdShmh/n6l8lISi+5t0nWDcw0WcLuPcJlLkosgVIZnknqV
+ 04l4bOj+owhGnJyhGDiZQYfDcoUWx8mWfme/1oY5GUT6ASSpBmWEwRbH6uR3iib4cDuqjfNuZ
+ tkIRWx+fh9xf/LKrCW4KRBlP5seHzra6rHzLx28V26UzTrbwu7tIq7nSdRwfPc/3yikYYgxHb
+ xd/Ur6EJlJbkVRngvB3YVdPXRaLayaAyoXyiIghcsYZbUNrfsYuGTwGWfXPcEDLJC27jfSUyN
+ AQFWUItCbMp7+jWAUM1N02oVsPNa/FPwtBCUZ16SwlWnaoTTx8Bvt8m++c6d9j7Ef+et960nN
+ 5vCmxiqEQ5EffmcPdf2vJH13dqJETMyB2eAO7OgEUvpFpmJlNZiS/viX/yiAFzVQbGxI9UGQz
+ RD1oh8EPa4xbHffI58LVwaGE1IXCV3H+me9eK+TV8Zt2eK7P6VWhJ1uOBVMRTRdikXyfUMQfv
+ JJ05MoALTZEg9qf6vPOhU9ozgD9y15DkbRmEE1bYhPcmTF7LOymiyrGE39RnmX0ktJmXuD6B9
+ tDBcnAjzvQ3qZzmcMBc4IhiXvxOnh80ghWj5zfuXQTe+l/EcWU0Dgjk3xXDhU6IzgY3QopHLI
+ GfkwVIKPUV2OgSKuUtl4XHqfC9BqRkWfj6XBxh3My1l/O9GNWSiieB3Cnx5ygoyynyPQkkk5P
+ AZcf169X6zb8f3pW
 
-Replace STATUS_SUCCESS with 0 in urb->status test.
+On Tuesday 16 February 2016 19:14:12 Amitoj Kaur Chawla wrote:
+> Declare osc_cleanup() function and osc_obd_ops structure as static
+> since they are defined and called only in this file.
+> 
+> Removed osc_cleanup() function prototype since it wasn't required.
+> 
+> This fixes the following sparse warnings:
+> drivers/staging/lustre/lustre/osc/osc_request.c:3210:5: warning:
+> symbol 'osc_cleanup' was not declared. Should it be static?
+> drivers/staging/lustre/lustre/osc/osc_request.c:3259:16: warning:
+> symbol 'osc_obd_ops' was not declared. Should it be static?
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> 
 
-Successful usb status is simply 0.  STATUS_SUCCESS is defined
-for NDIS status in this driver, but was being misused in this case.
-
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
- drivers/staging/vt6656/usbpipe.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index f27eb9a..5551b4f 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -116,7 +116,7 @@ static void vnt_start_interrupt_urb_complete(struct urb *urb)
- 		break;
- 	}
- 
--	if (status != STATUS_SUCCESS) {
-+	if (status != 0) {
- 		priv->int_buf.in_use = false;
- 
- 		dev_dbg(&priv->usb->dev, "%s status = %d\n", __func__, status);
--- 
-2.1.4
-
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
 
