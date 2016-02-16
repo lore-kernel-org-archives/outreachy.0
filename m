@@ -1,78 +1,123 @@
-X-GM-THRID: 6805849851722465280
-X-Received: by 2002:a19:ee0f:: with SMTP id g15mr1540885lfb.213.1584610401518;
-        Thu, 19 Mar 2020 02:33:21 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:96:: with SMTP id 22ls387735ljq.0.gmail; Thu, 19
- Mar 2020 02:33:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtEBG40UCy/rQETbmRweaj6SUvNaO4KWixAsdUQL+6kiDi44P6un09rtJljLSO1igaXCugg
-X-Received: by 2002:a2e:9e16:: with SMTP id e22mr1693504ljk.220.1584610399848;
-        Thu, 19 Mar 2020 02:33:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584610399; cv=none;
-        d=google.com; s=arc-20160816;
-        b=K5GWrSwX6LtBhWO70F+5GF2x8UFzFmFHkx6bjYqCFy6w35QBBZJPItE+w+/rmONWS4
-         JhthG1ZzOb5n1GNowDEuIZSGigSneOpy1yqKYMU7AM0yi6qNUPcrVV8qXXSD8gP9qA37
-         JzZc58gBYmOjhAa+XI40aVhy+lY9/85PVrcuVo/N8+6tcpgxvEuqWWfZY12SIM2mRyzj
-         q8/fWT/TVxrtuVC62nN4Zex+glRWjWIKqGL1WAAIDXaiC0WyT1clDjGSyTlAICuyFb5c
-         4GBlol+aUM2HtoQJc+7GoBzZjMmzQpSBsfTl+Tpus6rnHA2awNbRcyABkXk3rwpmmmdx
-         vlXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=uZxH4IenKjwza2xEER797c75qq/PJPMb0sEg1Pf99us=;
-        b=GA45cfgxHUv4hXsqIcgEHdtYOCumVjD06hX9AzAvA8rNdJY+CQBq1Jn/gDNlEccQDZ
-         COquZdFAKeL28jux3LIUqrEbxVGWi6AjQJ93b+vqdHks6MiIlt12Brdo01QjIDXijY/u
-         OVlPhK+Akhin1XlawiAUaQ3/al3+AN8GHEsv4SgsRSkgAoL41qAuxjCE/1H0JO6Sk/2q
-         Q7UrUeZUkuaDR3M5DT4UJjDq7KivkPcLgyu1sxoHupG3OPeU7xO4HlRaJlXgJnpFaCNJ
-         Oz7uRtz18m6AdV8U1BezyP7GYIIUnPnbzm361+gN7H87JM0ds11N9+KVxLgBXZJOpSTW
-         FxBw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id v191si54211lfa.4.2020.03.19.02.33.19
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 02:33:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 26549 invoked from network); 19 Mar 2020 09:33:18 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 09:33:18 -0000
-Date: Thu, 19 Mar 2020 15:03:09 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Larry Finger <Larry.Finger@lwfinger.net>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [RESEND PATCH] staging: rtl8188eu: core: Correct a typo in a comment
-Message-ID: <20200319093301.GA2453@tulip.local>
+X-GM-THRID: 6251650812318056448
+Date: Tue, 16 Feb 2016 09:37:21 -0800 (PST)
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <2fc78700-519e-473d-88ae-d72588af042a@googlegroups.com>
+In-Reply-To: <CAKqL7ZVTpsw+=cNGUeMkwvxq3f1nkkXh=qyGpWHwDLiTWYwPRA@mail.gmail.com>
+References: <CAKqL7ZVTpsw+=cNGUeMkwvxq3f1nkkXh=qyGpWHwDLiTWYwPRA@mail.gmail.com>
+Subject: Re: Questions about the Application Process
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_176_743276035.1455644241304"
+X-Google-Token: ENG8jbYFdl34naPF39k0
+X-Google-IP: 72.231.208.13
 
-Correct a single typo in a comment.
-Misspelling found using checkpatch.pl.
+------=_Part_176_743276035.1455644241304
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_177_1771002991.1455644241304"
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
----
- drivers/staging/rtl8188eu/core/rtw_cmd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+------=_Part_177_1771002991.1455644241304
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_cmd.c b/drivers/staging/rtl8188eu/core/rtw_cmd.c
-index 815dfee11968..f69e9453ad45 100644
---- a/drivers/staging/rtl8188eu/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_cmd.c
-@@ -199,7 +199,7 @@ int rtw_cmd_thread(void *context)
- 				rtw_free_cmd_obj(pcmd);
- 			} else {
- 				/* todo: !!! fill rsp_buf to pcmd->rsp if (pcmd->rsp!= NULL) */
--				pcmd_callback(pcmd->padapter, pcmd);/* need conider that free cmd_obj in rtw_cmd_callback */
-+				pcmd_callback(pcmd->padapter, pcmd);/* need consider that free cmd_obj in rtw_cmd_callback */
- 			}
- 		} else {
- 			RT_TRACE(_module_rtl871x_cmd_c_, _drv_err_, ("%s: cmdcode = 0x%x callback not defined!\n", __func__, pcmd->cmdcode));
--- 
-2.20.1
 
+
+On Monday, 15 February 2016 17:38:02 UTC-5, Tha=C3=ADssa Falbo wrote:
+>
+> Hello,=20
+>
+> Hey Thaissa!
+=20
+
+> I have some questions about the application process.=20
+>
+> I already sent some patches, but haven't emailed any mentor yet.=20
+> Should I have already done it?=20
+> I liked 3 of the projects and don't know which one I'd like to choose.=20
+> Should I email the 3 of them?=20
+>
+
+Email all 3 and tell them about your interests. This is recommended.=20
+
+>
+> Also, about the OPW application, I can't find the application link for=20
+> round 12 on their website.=20
+>
+Application deadline is March 22nd AFAIK. So, maybe they'll open it later.=
+=20
+=20
+
+> I only found for round 11=20
+> (https://outreachy.gnome.org/?q=3Dprogram_home&prg=3D5). Where could I=20
+> find the application link for round 12?=20
+>
+
+I'm only a fellow applicant. All the info I've given in this email is based=
+=20
+on my
+understanding. Goodluck :) I hope we do well.
+
+Best,
+Janani.=20
+
+>
+>
+>
+> Thank you!=20
+>
+> Tha=C3=ADssa Falbo=20
+>
+
+------=_Part_177_1771002991.1455644241304
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Monday, 15 February 2016 17:38:02 UTC-5, Tha=C3=
+=ADssa Falbo  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
+rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hello,
+<br>
+<br></blockquote><div>Hey Thaissa!<br>=C2=A0<br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc so=
+lid;padding-left: 1ex;">I have some questions about the application process=
+.
+<br>
+<br>I already sent some patches, but haven&#39;t emailed any mentor yet.
+<br>Should I have already done it?
+<br>I liked 3 of the projects and don&#39;t know which one I&#39;d like to =
+choose.
+<br>Should I email the 3 of them?
+<br></blockquote><div><br>Email all 3 and tell them about your interests. T=
+his is recommended. <br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>Also, about the OPW application, I can&#39;t find the application link =
+for
+<br>round 12 on their website.
+<br></blockquote><div>Application deadline is March 22nd AFAIK. So, maybe t=
+hey&#39;ll open it later. <br></div><div>=C2=A0</div><blockquote class=3D"g=
+mail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc sol=
+id;padding-left: 1ex;">I only found for round 11
+<br>(<a href=3D"https://outreachy.gnome.org/?q=3Dprogram_home&amp;prg=3D5" =
+target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://=
+www.google.com/url?q\75https%3A%2F%2Foutreachy.gnome.org%2F%3Fq%3Dprogram_h=
+ome%26prg%3D5\46sa\75D\46sntz\0751\46usg\75AFQjCNG5WN2y5obmAYofgtM_YGsEQ3Rx=
+Ig&#39;;return true;" onclick=3D"this.href=3D&#39;https://www.google.com/ur=
+l?q\75https%3A%2F%2Foutreachy.gnome.org%2F%3Fq%3Dprogram_home%26prg%3D5\46s=
+a\75D\46sntz\0751\46usg\75AFQjCNG5WN2y5obmAYofgtM_YGsEQ3RxIg&#39;;return tr=
+ue;">https://outreachy.gnome.org/?<wbr>q=3Dprogram_home&amp;prg=3D5</a>). W=
+here could I
+<br>find the application link for round 12?
+<br></blockquote><div><br>I&#39;m only a fellow applicant. All the info I&#=
+39;ve given in this email is based on my<br>understanding. Goodluck :) I ho=
+pe we do well.<br><br>Best,<br>Janani. <br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;p=
+adding-left: 1ex;">
+<br>
+<br>
+<br>Thank you!
+<br>
+<br>Tha=C3=ADssa Falbo
+<br></blockquote></div>
+------=_Part_177_1771002991.1455644241304--
+
+------=_Part_176_743276035.1455644241304--
 
