@@ -1,117 +1,73 @@
 X-GM-THRID: 6251883453427482624
-X-Received: by 10.66.160.9 with SMTP id xg9mr21374568pab.38.1455630086523;
-        Tue, 16 Feb 2016 05:41:26 -0800 (PST)
+X-Received: by 10.66.249.41 with SMTP id yr9mr17549032pac.37.1455630048627;
+        Tue, 16 Feb 2016 05:40:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.240.233 with SMTP id wd9ls241583obc.66.gmail; Tue, 16 Feb
- 2016 05:41:25 -0800 (PST)
-X-Received: by 10.182.199.70 with SMTP id ji6mr21010453obc.32.1455630085134;
-        Tue, 16 Feb 2016 05:41:25 -0800 (PST)
+Received: by 10.107.6.101 with SMTP id 98ls1806726iog.31.gmail; Tue, 16 Feb
+ 2016 05:40:48 -0800 (PST)
+X-Received: by 10.50.13.69 with SMTP id f5mr17671942igc.7.1455630048281;
+        Tue, 16 Feb 2016 05:40:48 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22c.google.com (mail-pf0-x22c.google.com. [2607:f8b0:400e:c00::22c])
-        by gmr-mx.google.com with ESMTPS id yd9si691424pab.1.2016.02.16.05.41.25
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id ff2si3510826pad.2.2016.02.16.05.40.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 05:41:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) client-ip=2607:f8b0:400e:c00::22c;
+        Tue, 16 Feb 2016 05:40:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22c.google.com with SMTP id x65so105520966pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 05:41:25 -0800 (PST)
+Received: by mail-pa0-x22b.google.com with SMTP id ho8so105075698pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 05:40:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=Ui9mzyXcyNi5whngULNVjkl2gja2LnVpUEyRsNSnQvg=;
-        b=WarcyQl1TGteUp9VnpmXLhFSp34nqoAOgttNGaV2NEnw8EK9Df0hxQS4UFVa2KHDp3
-         LO3nd8JYLCEF5aiTvXm3Qo3G8Hufmuz2qhdpeMHX+HzeW6+iG7HjUPp/i9y4WtjRe8U6
-         hqtkWjXDe+HlbLq1EXtg5aPXSKWraQrDTvtOytMdTkYrI0VKx9L7g7VSN2KF3avgAafF
-         4wboN+OsTaedQb5ocucdmzQurbgrtU3MWUhC/Xsl17BJQcn8AHmiy4nps8rS1xttyjgc
-         g0xDOxDusWpV+l6wT0mIZIKZqeg1lIZjbbL3itTODnW2wSgo5MRobQj5RWEnKajUF/Vl
-         Yk8A==
+        h=from:to:cc:subject:date:message-id;
+        bh=xqZvZm8W+qzM0lufXWGOxoKV/PqJOml8A9Z9go+B37M=;
+        b=vw/sfRZNsXFyOA5QN7PcNwiv9y3HUB0P5MwNIAoRu2ThEJbVWvHYNYDzyJLQpoHCQa
+         0sySmLF5Bniec/yd2MSlRI0RDAklT1uBgnG2KHP1AlTTdjD2N/g7EAzWnVr67iETDgQR
+         KLaScTbalIiQp5LlVfVT7xGiND9ZHh6I/K50JOduNEpZ1AGZr6NAVZxPp8CFC5qGgM4R
+         o1PvahrVoNoP5fcH3UCH1Eh3Iu4RdiajpffgFYs0uv9+VxK/WYtaOlMJLLT6lTnDaRG/
+         tEtQKFd4BqcLBgkBV/cLwyKMzHGdH/o2gBjNNxAr3cg7BvZBpjKtBNzEdi+nI0/16Ol2
+         /f1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=Ui9mzyXcyNi5whngULNVjkl2gja2LnVpUEyRsNSnQvg=;
-        b=O+nOTh+nA7CTQ3GQhNLVrsj7uDaXW2owFvRm+syfKiQRoNKxsKDIYdbhrmX3cJRGcT
-         QGwTJDeAW3osfNJsQybWSFSxWUy2Pl29vwWSwSuCpmQxP06b2X9V2oZvexgySOoQf/4x
-         y1m5V71eovCwqRwpvlXC999qoq/lUyuDynNsVjZOUJrXTO8nil7cE01H7MgY2Q38e4bE
-         GyvMpudv/rwFtZrViu0JkBufrUGSpNLeZ0KOKHhIRAvCAQR+xAEWLf5NtUIrc++qNTV7
-         xdpWbk+82qpY9Q9gatbamZYIdb4p2binItEAFjvcyJ34YU341n4pwHQRrQQa9VPBSXJG
-         Ec2w==
-X-Gm-Message-State: AG10YOQSQKgdn+iU5X7Loy0LenvsxZ8b1elX9X8N7z+tmvJV/BXkOnbqjzIW/643bgvDvA==
-X-Received: by 10.98.14.149 with SMTP id 21mr30949912pfo.79.1455630085018;
-        Tue, 16 Feb 2016 05:41:25 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=xqZvZm8W+qzM0lufXWGOxoKV/PqJOml8A9Z9go+B37M=;
+        b=Je+YhyRn1lpYZIYYbeepPO5Yj92/8FQ/ESdUYJs+9HHMAwP7AfehAjx5BAPypdHEqf
+         3tED+FprGULSVpCkeFQtaO7z6Ej2fgjVIsbqXMj4hUgkBn9Nw0JAncdtzM2VhkoygTub
+         34U0MuFKQUQwZ/Kf4m5J+Qmg2WAau/7WeSTE+8/hLLtVaTRlqDlOLq7W5AAaLdcRfIqU
+         XkTZs+ciH86e21qJZODFdxnLgKh2DAd2PiSKFsYeRJfIJU2/G1TFMYN62EF4QanluTW9
+         uILFQ0pWJrDnJRJ/mg/nO25WvL/HgUXN469DA4Golb0fI7DANeYth7fkXQL45pMUA9BT
+         26+g==
+X-Gm-Message-State: AG10YOS8AVlp8Xx81PRmIhWyrB2iT9xQE8nnsQBtRCrgOeYr+5BSjp+0G72biXL/a0459g==
+X-Received: by 10.66.141.11 with SMTP id rk11mr31379195pab.75.1455630048156;
+        Tue, 16 Feb 2016 05:40:48 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
 Received: from bhumirks@gmail.com ([106.215.154.9])
-        by smtp.gmail.com with ESMTPSA id r80sm46073477pfi.9.2016.02.16.05.41.21
+        by smtp.gmail.com with ESMTPSA id lq10sm46112800pab.36.2016.02.16.05.40.43
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 05:41:24 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Tue, 16 Feb 2016 19:11:16 +0530
+        Tue, 16 Feb 2016 05:40:47 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Tue, 16 Feb 2016 19:10:37 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 1/4] Staging: wlan-ng: hfa384x_usb.c: Remove unused function
-Date: Tue, 16 Feb 2016 19:10:32 +0530
-Message-Id: <25e210070cd8fe7deb93e70641fa1f20d530b75a.1455629651.git.bhumirks@gmail.com>
+Subject: [PATCH 0/4] Staging: wlan-ng: Remove unused functions and prototypes
+Date: Tue, 16 Feb 2016 19:10:31 +0530
+Message-Id: <cover.1455629651.git.bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1455629651.git.bhumirks@gmail.com>
-References: <cover.1455629651.git.bhumirks@gmail.com>
-In-Reply-To: <cover.1455629651.git.bhumirks@gmail.com>
-References: <cover.1455629651.git.bhumirks@gmail.com>
 
-The function hfa384x_drvr_commtallies is not used anywhere in the kernel
-so remove it.
+The functions hfa384x_drvr_getconfig_async and hfa384x_drvr_commtallies are defined but they are not used anywhere in kernel so remove them. Also remove their prototypes from the header file.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x_usb.c | 31 -------------------------------
- 1 file changed, 31 deletions(-)
+Bhumika Goyal (4):
+  Staging: wlan-ng: hfa384x_usb.c: Remove unused function
+  Staging: wlan-ng: hfa384x.h: Remove function prototype
+  Staging: wlan-ng: Remove function hfa384x_drvr_getconfig_async
+  Staging: wlan-ng: Remove  prototype for hfa384x_drvr_getconfig_async
 
-diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index 682de77..7eda536 100644
---- a/drivers/staging/wlan-ng/hfa384x_usb.c
-+++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -1747,37 +1747,6 @@ done:
- }
- 
- /*----------------------------------------------------------------
--* hfa384x_drvr_commtallies
--*
--* Send a commtallies inquiry to the MAC.  Note that this is an async
--* call that will result in an info frame arriving sometime later.
--*
--* Arguments:
--*	hw		device structure
--*
--* Returns:
--*	zero		success.
--*
--* Side effects:
--*
--* Call context:
--*	process
------------------------------------------------------------------*/
--int hfa384x_drvr_commtallies(hfa384x_t *hw)
--{
--	hfa384x_metacmd_t cmd;
--
--	cmd.cmd = HFA384x_CMDCODE_INQ;
--	cmd.parm0 = HFA384x_IT_COMMTALLIES;
--	cmd.parm1 = 0;
--	cmd.parm2 = 0;
--
--	hfa384x_docmd_async(hw, &cmd, NULL, NULL, NULL);
--
--	return 0;
--}
--
--/*----------------------------------------------------------------
- * hfa384x_drvr_disable
- *
- * Issues the disable command to stop communications on one of
+ drivers/staging/wlan-ng/hfa384x.h     |  5 ---
+ drivers/staging/wlan-ng/hfa384x_usb.c | 66 -----------------------------------
+ 2 files changed, 71 deletions(-)
+
 -- 
 1.9.1
 
