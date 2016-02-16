@@ -1,117 +1,94 @@
-X-GM-THRID: 6256395525540544512
-X-Received: by 10.50.65.69 with SMTP id v5mr6852612igs.13.1456680597701;
-        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
+X-GM-THRID: 6251571233793507328
+X-Received: by 10.182.63.17 with SMTP id c17mr19355546obs.39.1455603507731;
+        Mon, 15 Feb 2016 22:18:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.32.104 with SMTP id h8ls323924igi.28.canary; Sun, 28 Feb
- 2016 09:29:57 -0800 (PST)
-X-Received: by 10.66.231.4 with SMTP id tc4mr9880982pac.14.1456680597449;
-        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x22a.google.com (mail-io0-x22a.google.com. [2607:f8b0:4001:c06::22a])
-        by gmr-mx.google.com with ESMTPS id im4si309481igb.2.2016.02.28.09.29.57
+Received: by 10.140.39.102 with SMTP id u93ls2711019qgu.45.gmail; Mon, 15 Feb
+ 2016 22:18:25 -0800 (PST)
+X-Received: by 10.13.213.208 with SMTP id x199mr20473979ywd.48.1455603505440;
+        Mon, 15 Feb 2016 22:18:25 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id 79si3824236pft.0.2016.02.15.22.18.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) client-ip=2607:f8b0:4001:c06::22a;
+        Mon, 15 Feb 2016 22:18:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of sudipm.mukherjee@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=sudipm.mukherjee@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x22a.google.com with SMTP id z135so166502624iof.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:29:57 -0800 (PST)
+Received: by mail-pa0-x236.google.com with SMTP id yy13so97559106pab.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 22:18:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=r87aBFPENG7B4jfvLg8mRY61yrnIewJIscHDKzUyYFY=;
-        b=KJvQX+/2vXYPQDBtaAl2MU9cbsKYq6wm+w3f49YJvnOkSm7aSKD2z7ARi0VV27OXe8
-         jqEV7fh+dzXaTT/5wDlf2xIBZRm+C6Tey2wAGx5vd/Mvdp8OTHrZtDuky5jo/XPmLtnr
-         k1KzeME5GrV/tArQvnlrx/2zcmATqEk1pJwHH5C+9SjQ+4M5gIYMmUU60vy/yeCGfA+3
-         0WKjem1FAIv8Jl6JYqJbu+D1c437L7AgvNZLSsg3rieoRpaDyN+/+0A8aSih6VkMKAA3
-         sbpgI1RLusnAG42vzpjG3z7Eriet4C3xNOUv5E46ptysIEA9uZ00Bce35KlD+sU2dLLl
-         eUNw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=rIlHgaqNMu64cVkmSzAs8dxDXJcE9dowOQVNGPmQX4Y=;
+        b=vPlB1d+2WzOvLkVJfJIavoLrKzp4Iw+QfeioXY/ocOIopIanC/6TTSFJn6GdnsSwLN
+         uDGE8U7QehV0+l12TEZoEzMTOn72+DVIVVPwEUtcFivUGS64Er3kQSo5EuWkbUACnC9F
+         uMZxtkEvfyT9jOujbdfC1DQkJp/uoMi9ezplqyhVcg6wVkCbxnqnXQ8nkhaBYCrCrn7q
+         gPckwk1IDynDMlzxABeJ1+1VfBouBwoZHfHATBbtRiH4h0x+xpTuaFaTlXyiUdPCzWsU
+         6ZUr1d0kmQA0zfpzEyYUdPmgwGe1yYecJ4pmLYycZSXJqIsbPSjn+JpkVPTa+Ck6KDtp
+         fDkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=r87aBFPENG7B4jfvLg8mRY61yrnIewJIscHDKzUyYFY=;
-        b=IparRhjfwQ/gJNICCaLqe9ap9V61il0ggNL8HfShSsdQoWjw/vAp2a3DtuYxTQBwoT
-         HWM6o13e7+0OuwK6tSYYlLYd5b5CUNaV4KvQdCiuQwqKQHtrsOxrGC5QTKmxGEvq2gFb
-         9r8tuQeVpbfSgCbzkd7iuHjLH8sEf0dUChRTNSgJKZCN4Re5rPm9drp5fXZYg9PSzWNi
-         K91xwGseGE153mLIxx5t4+r7YndC6WnhPv8oVAtTeCPs2ib6i3VF63Eq+Lr1RPp89Kg/
-         bgtZP5UiiKYW6YeaWc314rmmEjpLaNuU0w5eB5OtE0T45YmbYW85Co1qiiZB5M9ImLHw
-         hz5Q==
-X-Gm-Message-State: AG10YOTCRReZyRapYYpohc3axtPXLE9iKsRZCB6PbzFR/1Pm04fW1y84IsvJ4HNIryKFqg==
-X-Received: by 10.107.36.80 with SMTP id k77mr16094437iok.121.1456680597265;
-        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id dl1sm5347994igc.22.2016.02.28.09.29.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 09:29:56 -0800 (PST)
-Date: Sun, 28 Feb 2016 17:29:07 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lnet: Use list_for_each_entry()
-Message-ID: <20160228222906.GA8781@janani-Inspiron-3521>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=rIlHgaqNMu64cVkmSzAs8dxDXJcE9dowOQVNGPmQX4Y=;
+        b=VfLc3Szb7EwaqzJwwL1/u+OJdWyWz6jhysNeAABJo2YM5qPHccPzSa1G9Bxfi6wN01
+         +gkASaHzgmAXINGLF1xImzlmaD+xXY+3QbnOW+AH4dQ/pfY1AaqdHVljQhwINkKvgo95
+         IIGb/xNlx0UYPkowYp1TYkUZ14piGlZjKJ5bYuDWQKzyl+ISXVYEPe2tHjkoJ4N/6LDu
+         MnBbqLnjz7SDQ4wUBhP6ZUW9cfKqklEjBgrePC6TOyH20tsQvRJpdgIhx0ZEE2oIst7l
+         2CMJ4ExKvzLP9FEjUZcz1FuvRiNPaOemZxZi9jLfHSUBtxpiDGYv+ayhhkWONjtN+FTP
+         4uzw==
+X-Gm-Message-State: AG10YOR4rcufLjJbrqSyIkKYf8nre72yJc3qQvFZaxhDpmtAb4irpcaoTZsbbvMdxa5XvA==
+X-Received: by 10.67.8.2 with SMTP id dg2mr29569263pad.30.1455603505289;
+        Mon, 15 Feb 2016 22:18:25 -0800 (PST)
+Return-Path: <sudipm.mukherjee@gmail.com>
+Received: from sudip-pc ([49.206.207.31])
+        by smtp.gmail.com with ESMTPSA id ey2sm42730645pab.2.2016.02.15.22.18.23
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Mon, 15 Feb 2016 22:18:24 -0800 (PST)
+Date: Tue, 16 Feb 2016 11:48:15 +0530
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: llite: Remove
+ IS_ERR test
+Message-ID: <20160216061815.GA13906@sudip-pc>
+References: <20160215172909.GA24050@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20160215172909.GA24050@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Use list_for_each_entry() rather than a combination of list_for_each()
-and list_entry(). Also, remove variable pacer which becomes
-useless as a result of the transformation.
-Semantic patch used:
+On Mon, Feb 15, 2016 at 10:59:10PM +0530, Amitoj Kaur Chawla wrote:
+> Remove IS_ERR tests as ll_iget() function can return a ERR_PTR.
+> 
+> This patch also removes checkpatch warnings:
+> Comparison to NULL could be written "!root"
+> Comparison to NULL could be written "!inode"
+> 
+> Additionally, reinitialising root and inode to NULL has been removed
+> since they have already been tested for the same.
+> 
+> Lastly, in the first case, the goto has been removed since iput(root)
+> will return nothing for a NULL pointer.
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+> Changes in v2:
+>         -Remove IS_ERR test instead of replacing it with
+>          IS_ERR_OR_NULL
 
-@a@
-expression pos,  head;
-expression mem;
-type t;
-identifier var;
-iterator name list_for_each_entry, list_for_each;
-@@
+I think I missed the reviews in the v1 of your patch.
 
-- list_for_each(pos, head)
-+ list_for_each_entry(var, head, mem)
-  {
-   ... when != var
--  var = \(list_entry \| container_of\)(pos, t, mem);
-   ... when != pos
-  }
+ll_iget() returns inode or NULL, inode can be ERR_PTR(rc), so usually we
+should be checking for the error with IS_ERR_OR_NULL(). Why is IS_ERR()
+been removed? what am i missing here?
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/lustre/lnet/selftest/conrpc.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/lustre/lnet/selftest/conrpc.c b/drivers/staging/lustre/lnet/selftest/conrpc.c
-index b02a140..7e607f8 100644
---- a/drivers/staging/lustre/lnet/selftest/conrpc.c
-+++ b/drivers/staging/lustre/lnet/selftest/conrpc.c
-@@ -1332,7 +1332,6 @@ lstcon_rpc_cleanup_wait(void)
- {
- 	lstcon_rpc_trans_t *trans;
- 	lstcon_rpc_t *crpc;
--	struct list_head *pacer;
- 	struct list_head zlist;
- 
- 	/* Called with hold of global mutex */
-@@ -1340,10 +1339,8 @@ lstcon_rpc_cleanup_wait(void)
- 	LASSERT(console_session.ses_shutdown);
- 
- 	while (!list_empty(&console_session.ses_trans_list)) {
--		list_for_each(pacer, &console_session.ses_trans_list) {
--			trans = list_entry(pacer, lstcon_rpc_trans_t,
--					   tas_link);
--
-+		list_for_each_entry(trans, &console_session.ses_trans_list,
-+				    tas_link) {
- 			CDEBUG(D_NET, "Session closed, wakeup transaction %s\n",
- 			       lstcon_rpc_trans_name(trans->tas_opc));
- 
--- 
-2.5.0
-
+regards
+sudip
 
