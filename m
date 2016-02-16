@@ -1,99 +1,164 @@
 X-GM-THRID: 6251802816159940608
-X-Received: by 10.194.85.169 with SMTP id i9mr2340623wjz.4.1455612366863;
-        Tue, 16 Feb 2016 00:46:06 -0800 (PST)
+X-Received: by 10.66.63.68 with SMTP id e4mr18244609pas.40.1455611778294;
+        Tue, 16 Feb 2016 00:36:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.59.86 with SMTP id i83ls741063wma.27.canary; Tue, 16 Feb
- 2016 00:46:06 -0800 (PST)
-X-Received: by 10.28.45.151 with SMTP id t145mr1749397wmt.6.1455612366054;
-        Tue, 16 Feb 2016 00:46:06 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
-        by gmr-mx.google.com with ESMTPS id w10si525413wmw.3.2016.02.16.00.46.05
+Received: by 10.140.23.52 with SMTP id 49ls3106073qgo.79.gmail; Tue, 16 Feb
+ 2016 00:36:17 -0800 (PST)
+X-Received: by 10.13.204.85 with SMTP id o82mr21153948ywd.51.1455611777867;
+        Tue, 16 Feb 2016 00:36:17 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id 79si3875125pft.0.2016.02.16.00.36.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 00:46:05 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.126.133;
+        Tue, 16 Feb 2016 00:36:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([78.42.132.4]) by mrelayeu.kundenserver.de
- (mreue002) with ESMTPSA (Nemesis) id 0Lawjh-1a7VnY0ivh-00kfzf; Tue, 16 Feb
- 2016 09:46:05 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id fy10so60146057pac.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 00:36:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=tECKLYfv4/VfUPb+u5Z0zqLZRKtISn3oZG5+z9IQjNc=;
+        b=lpxXzfysTr/3Wr6yNGQpnywVXIUojsSYzq4s+2BPANQ7u1qKegGauF0enLzkWhp/ZF
+         X0n4TMsI4crhvfXd+jjrpVTBHTnqXRnIb60j1AB0O5xVJXlcalVQyPrZ0T79AWA/02AO
+         DHYMx0UpoLGdhybFv8RzNKmAxlCbOaUvY1JlDb8O+Iu1eoZ9TrNQL/oZ6tJvEwQ+ZW/y
+         34NLgoT9vDyxeD7z5VMzMBHt8gezuga0NJ4k1P4xXaN+gRhQ5wijd2b7/nvt8lBbKKbn
+         bKhzuBBG+r7vq2dGvt2Lw2WhZ07aSJq+6x5ODHTLRYD9WWT072Of337b4qtT1QAWPauy
+         kDzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=tECKLYfv4/VfUPb+u5Z0zqLZRKtISn3oZG5+z9IQjNc=;
+        b=SH3MtctT23+WgSrijIxnJHxjvzdEaoBn9TrGO4tZ3skFvuS/HYZ/Y9aj4QPFE9EcWe
+         zKNGVrolzjxPyd/YMESgoftLQjqD5DFku+OJYphQPoK9MIx7JEXYsuXJsdn8hNVl0ztn
+         vINDgk51lPkpAE7hXeuqlOTr/JdMPBn53Dh7EsCd8UPMD5wUOaSB9pb6eWlo39AwccpS
+         ALtnRtPQNYh7uj+6oqMQq8xFW2l30oOyZ+q1AsdZ7YXGiIWexg+6YRupxO79NnMZ9L5W
+         iq6XLnnRP7mMChyB1CnBlIhVHIUqqbDqseGvIikrVsHKjd7ZLT2YQzepzFKL2ifY3Wkq
+         SXvQ==
+X-Gm-Message-State: AG10YOSB3yeI2tAqKGazElhXhEoLerYY++Rh+MwohWhStiABKkVACorYUN84Tb9em1Wwbg==
+X-Received: by 10.66.142.200 with SMTP id ry8mr29735267pab.31.1455611777701;
+        Tue, 16 Feb 2016 00:36:17 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-72-178.dhcp.embarqhsd.net. [67.232.72.178])
+        by smtp.gmail.com with ESMTPSA id r65sm17138499pfa.27.2016.02.16.00.36.16
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 16 Feb 2016 00:36:17 -0800 (PST)
+Date: Tue, 16 Feb 2016 00:36:15 -0800
+From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Alison Schofield <amsfield22@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 2/3] staging: wilc1000: host_interface: replace semaphores with mutexes
-Date: Tue, 16 Feb 2016 09:46:04 +0100
-Message-ID: <2441828.Ytg91CRYb7@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <4f9af8d5cac2ccb9e81ef5908ef0b3b0cdec6145.1455609607.git.amsfield22@gmail.com>
-References: <cover.1455609607.git.amsfield22@gmail.com> <4f9af8d5cac2ccb9e81ef5908ef0b3b0cdec6145.1455609607.git.amsfield22@gmail.com>
+Subject: [PATCH 3/3] staging: wilc1000: host_interface: destroy mutexes at
+ init/deinit
+Message-ID: <5a7d37c2fb264592c0e6625645bf1cdc37417f32.1455609607.git.amsfield22@gmail.com>
+References: <cover.1455609607.git.amsfield22@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:dFn7ZZgr+hKisoGDKs33CT/Yx7wB40+cccGc5Wo1RxfD5zsxSuA
- FJAhnawoXxwiWalCYBIxFqtzVM+psCpN4QvE20ObRumkkha1bGP1Gr/X0xU7yM9tTBo0VWJ
- OxKUPLni2Z640Hxjp/vsgdsQs4U/VQY9JHs0+rWta9re07UoruDgvq9H7KhRvKvKuslEy40
- zp30t5GT0w874jvtlYJKw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:ZmXFC6yk/lE=:vqudg7afTae6bTZSeeVue2
- FWj+3ZA9O27S4zd1RQbTq0WGacF034aqyC1aXmOz8RyNzVWeNVwu/H5cY+Oyb3OsaJIfNNFYa
- 1uR8AEX1UrnhVItgicQwaXlWigLRqNE8PxPiQ4y0apRRVHVRuPdeHPxe3bqJgCgR45Rc63Y7q
- 2VXMDO0uiYXxJeWb1kmlCvQg46rv92scbxCYD3atJ3Bub4yR1Kr0045wC/ku7IGwZaGrCMiS5
- l+GSwmmNyv1C/JmHiPH+n5JyUk0zKnL8k6WFQ5BMHpLU0CRU8EyK19XXIh7YUFoboj8CGiSbV
- llE1Y7EkbNjqWjFNOKyUiknX2Bgf79letITznD679ZwoO25HS3Fb/q5YX2kFN09sHLPMDFMmm
- H3+UsSYxtInxJz2IDfjfkNNwWl9QOd7/swPpOKf3RuFSd/0Up2Kv90FLjcgOVQBbTlaGvdLhI
- qAnWgBYzzGyrLFiyZ7T7RN0SXMt8NjnzKvKKGPPj2bB6CTuDZEMunhwj/IqpSYlk0lx1TiEcR
- 45v4vWSGkM6rbt+X/C/ZyglCTvQs1Qf5bgLElk3bljVzlvOSfZiIwrughzUmMuvjgakAsX8Vc
- kfqL/DZYJyDnqevr+y+An072V2FXCBs4ZbA9aUmnCNvZv+biLax2mGGcFe/EGOYvLdlzNjt+5
- b1aSo2QWG4q/vAaCJGnA1tceIg+LtWV0nZ9UQag77zL9QjykXubXrdbAzTCppITWSS6XQ8ql8
- YQEMOvs1q9KRGbZe
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1455609607.git.amsfield22@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Tuesday 16 February 2016 00:31:42 Alison Schofield wrote:
-> Replace semaphores with mutexes in the host_interface driver.
-> 
-> This is a safe performance improvement because the usage model
-> meets the principle of ownership for mutexes: the thread that
-> locks is the same thread that unlocks.
-> 
-> Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+Use mutex_destroy() when driver initialization fails and during
+deinitialization.  Move the init of per client mutexes later in
+the init process to reduce the number of destroys needed on the
+failure path.
 
-Good stuff in general, but it's slightly hard to review because you do
-all at once. This might be more obvious if you did one patch per
-semaphore.
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+---
+ drivers/staging/wilc1000/host_interface.c | 36 ++++++++++++++++++++++---------
+ 1 file changed, 26 insertions(+), 10 deletions(-)
 
-Also, some of them look wrong:
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 45e6ed3..cf1716d 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -3602,8 +3602,6 @@ int wilc_init(struct net_device *dev, struct host_if_drv **hif_drv_handler)
+ 
+ 	scan_while_connected = false;
+ 
+-	mutex_init(&hif_mutex_wait_response);
+-
+ 	hif_drv  = kzalloc(sizeof(struct host_if_drv), GFP_KERNEL);
+ 	if (!hif_drv) {
+ 		result = -ENOMEM;
+@@ -3622,14 +3620,8 @@ int wilc_init(struct net_device *dev, struct host_if_drv **hif_drv_handler)
+ 		mutex_init(&hif_mutex_thread);
+ 		mutex_init(&hif_mutex_driver);
+ 		mutex_init(&hif_mutex_deinit);
+-	}
++		mutex_init(&hif_mutex_wait_response);
+ 
+-	mutex_init(&hif_drv->mutex_wep_key);
+-	mutex_init(&hif_drv->mutex_disconnect);
+-	mutex_init(&hif_drv->mutex_get_rssi);
+-	mutex_init(&hif_drv->mutex_inactive_time);
+-
+-	if (clients_count == 0)	{
+ 		result = wilc_mq_create(&hif_msg_q);
+ 
+ 		if (result < 0) {
+@@ -3654,7 +3646,12 @@ int wilc_init(struct net_device *dev, struct host_if_drv **hif_drv_handler)
+ 	setup_timer(&hif_drv->connect_timer, TimerCB_Connect, 0);
+ 	setup_timer(&hif_drv->remain_on_ch_timer, ListenTimerCB, 0);
+ 
++	mutex_init(&hif_drv->mutex_wep_key);
++	mutex_init(&hif_drv->mutex_disconnect);
++	mutex_init(&hif_drv->mutex_get_rssi);
++	mutex_init(&hif_drv->mutex_inactive_time);
+ 	mutex_init(&hif_drv->mutex_cfg_values);
++
+ 	mutex_lock(&hif_drv->mutex_cfg_values);
+ 
+ 	hif_drv->hif_state = HOST_IF_IDLE;
+@@ -3675,6 +3672,12 @@ int wilc_init(struct net_device *dev, struct host_if_drv **hif_drv_handler)
+ _fail_mq_:
+ 	wilc_mq_destroy(&hif_msg_q);
+ _fail_:
++	if (clients_count == 0) {
++		mutex_destroy(&hif_mutex_thread);
++		mutex_destroy(&hif_mutex_driver);
++		mutex_destroy(&hif_mutex_deinit);
++		mutex_destroy(&hif_mutex_wait_response);
++	}
+ 	return result;
+ }
+ 
+@@ -3723,15 +3726,28 @@ int wilc_deinit(struct wilc_vif *vif)
+ 			PRINT_ER("Error in sending deinit's message queue message function: Error(%d)\n", result);
+ 
+ 		mutex_lock(&hif_mutex_thread);
+-
+ 		wilc_mq_destroy(&hif_msg_q);
++		mutex_unlock(&hif_mutex_thread);
+ 	}
+ 
++	mutex_destroy(&hif_drv->mutex_wep_key);
++	mutex_destroy(&hif_drv->mutex_disconnect);
++	mutex_destroy(&hif_drv->mutex_get_rssi);
++	mutex_destroy(&hif_drv->mutex_inactive_time);
++	mutex_destroy(&hif_drv->mutex_cfg_values);
++
+ 	kfree(hif_drv);
+ 
+ 	clients_count--;
+ 	terminated_handle = NULL;
+ 	mutex_unlock(&hif_mutex_deinit);
++
++	if (clients_count == 0) {
++		mutex_destroy(&hif_mutex_thread);
++		mutex_destroy(&hif_mutex_driver);
++		mutex_destroy(&hif_mutex_deinit);
++		mutex_destroy(&hif_mutex_wait_response);
++	}
+ 	return result;
+ }
+ 
+-- 
+2.1.4
 
->  
->  	if (clients_count == 0)	{
-> -		sema_init(&hif_sema_thread, 0);
-> -		sema_init(&hif_sema_driver, 0);
-> -		sema_init(&hif_sema_deinit, 1);
-> +		mutex_init(&hif_mutex_thread);
-> +		mutex_init(&hif_mutex_driver);
-> +		mutex_init(&hif_mutex_deinit);
->  	}
->  
-> -	sema_init(&hif_drv->sem_test_key_block, 0);
-> -	sema_init(&hif_drv->sem_test_disconn_block, 0);
-> -	sema_init(&hif_drv->sem_get_rssi, 0);
-> -	sema_init(&hif_drv->sem_inactive_time, 0);
-> +	mutex_init(&hif_drv->mutex_wep_key);
-> +	mutex_init(&hif_drv->mutex_disconnect);
-> +	mutex_init(&hif_drv->mutex_get_rssi);
-> +	mutex_init(&hif_drv->mutex_inactive_time);
-
-Note that some of these are initialized to zero (locked), others are
-initialized to one (unlocked). When you have a semaphore that starts
-out as locked, you need to be extra careful to ensure the lock/unlock
-comes in pairs, as it equates a
-
-	mutex_init(&lock);
-	mutex_lock(&lock);
-
-and some of them might be unlocked elsewhere first. Looking at
-how some of these are used, I think there are some that get
-released in hostIFthread(), which is a kthread and taken in
-a function waiting for the kthread. Those should be converted
-to wait_for_completion() rather than a mutex.
-
-	Arnd
 
