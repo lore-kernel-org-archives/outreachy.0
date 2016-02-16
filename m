@@ -1,92 +1,146 @@
-X-GM-THRID: 6250905009785929728
-X-Received: by 10.107.128.102 with SMTP id b99mr9714025iod.1.1455402236876;
-        Sat, 13 Feb 2016 14:23:56 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.106.225 with SMTP id gx1ls1175196obb.18.gmail; Sat, 13 Feb
- 2016 14:23:56 -0800 (PST)
-X-Received: by 10.182.105.133 with SMTP id gm5mr2322703obb.41.1455402236475;
-        Sat, 13 Feb 2016 14:23:56 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x22c.google.com (mail-qg0-x22c.google.com. [2607:f8b0:400d:c04::22c])
-        by gmr-mx.google.com with ESMTPS id w126si1398162ywe.6.2016.02.13.14.23.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 14:23:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22c as permitted sender) client-ip=2607:f8b0:400d:c04::22c;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22c as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22c.google.com with SMTP id b67so87514373qgb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 14:23:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=StyPx0Uo2tXRbX0xmFDelEjx1fScbcIr0CQvnXPTFSQ=;
-        b=hLVIuQv/ogEe7q8LCecemvdW4m2KjTRo4wP1VycJSd56zypFsiMDjj8FZO0FZhXGQC
-         7JwyCFS0mLZKNY8dXbxOGEQjCDcM4HB7ivQZrwHt9qWIEFMaIrWodpQm8NK9h44UknV/
-         A16Pq+39ft41rs8z0NDbP7GB2bgk+RS7bifIouRCmtYdyGC2hJ32CQ+0BBfaIn7Iqwvy
-         e8ZWcEUFU3OU033WE2J62cZcFneu8JojoLGX7Ba03ngO5rDFiMev8RvO85OlJpu7Sji7
-         h60/BB1XZ8hvjTd65oTFsl+cG8RFDoaB7RT5YY8gnyyD/pG1ters27ZMepGMa3caord+
-         I4vA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=StyPx0Uo2tXRbX0xmFDelEjx1fScbcIr0CQvnXPTFSQ=;
-        b=gOiSloOkYCZMf6MJn4pgBABIOUPfgOGwFCqaV58SMvoWYOlyM2EG9SfM/Eb1BLtgIW
-         TYUndqkbXKxbxkPzzE5olRR5eX5s0lHGNtuLLreIqIaGYZPBbdQnEFyun5TFgzM7SfRP
-         95lUspOn/nPOpilGmAhch9z8+2248R3MtvnCFv9mXZY5gtNRxGFDI3602fr7LTay4du8
-         ruXctBngH/cF71/4mrfTBlVcx5+F701y8FCxbGDKnroEvMZIXjL7DTFkMmj40o1Z3nZ+
-         VqBGJul/d3zlzMUI2VCvu03EqeOHuL4pu02R/n4/lVeyJhduIHcqlWBQ1NUYcxwgQ/DZ
-         RVTg==
-X-Gm-Message-State: AG10YOSwiakfct+lVrlFyCunM51rfke1iPVxjr5z2VgadFpBUsTgP55efscau1HwnxOo6g==
-X-Received: by 10.140.101.201 with SMTP id u67mr11002143qge.33.1455402236315;
-        Sat, 13 Feb 2016 14:23:56 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 ([2620:cc:8000:212:5635:30ff:fe6b:610b])
-        by smtp.gmail.com with ESMTPSA id z82sm8184150qhd.26.2016.02.13.14.23.55
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 14:23:55 -0800 (PST)
-Date: Sat, 13 Feb 2016 22:23:17 -0500
+X-GM-THRID: 6251851704411619328
+Date: Tue, 16 Feb 2016 03:41:48 -0800 (PST)
 From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove unneeded braces in if...else
- statements
-Message-ID: <20160214032316.GA24736@janani-Inspiron-3521>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: linux-wireless@vger.kernel.org, devel@driverdev.osuosl.org
+Message-Id: <70b9a7cc-a1c7-4a7d-9a40-b71cbbdea99b@googlegroups.com>
+In-Reply-To: <20160216163652.GA10221@janani-Inspiron-3521>
+References: <20160216163652.GA10221@janani-Inspiron-3521>
+Subject: Re: [PATCH] staging: wilc1000: Remove trailing whitespace errors
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_4816_2070989938.1455622908276"
+X-Google-Token: EPyVjLYF1BNktQA61P00
+X-Google-IP: 72.231.208.13
 
-Remove unnecessary braces in if...else statements where both branches have a single statement each. 
+------=_Part_4816_2070989938.1455622908276
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4817_408377983.1455622908277"
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/sm750fb/ddk750_power.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+------=_Part_4817_408377983.1455622908277
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/sm750fb/ddk750_power.c b/drivers/staging/sm750fb/ddk750_power.c
-index ec1cac2..33e092e 100644
---- a/drivers/staging/sm750fb/ddk750_power.c
-+++ b/drivers/staging/sm750fb/ddk750_power.c
-@@ -106,11 +106,10 @@ void enable2DEngine(unsigned int enable)
- 	u32 gate;
- 
- 	gate = PEEK32(CURRENT_GATE);
--	if (enable) {
-+	if (enable) 
- 		gate |= (CURRENT_GATE_DE | CURRENT_GATE_CSC);
--	} else {
-+	 else 
- 		gate &= ~(CURRENT_GATE_DE | CURRENT_GATE_CSC);
--	}
- 
- 	setCurrentGate(gate);
- }
--- 
-2.5.0
 
+
+On Tuesday, 16 February 2016 06:37:36 UTC-5, Janani Ravichandran wrote:
+>
+> Remove trailing whitespace checkpatch errors. 
+>
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com> 
+> --- 
+>  drivers/staging/wilc1000/host_interface.c | 2 +- 
+>  drivers/staging/wilc1000/linux_mon.c      | 2 +- 
+>  2 files changed, 2 insertions(+), 2 deletions(-) 
+>
+> diff --git a/drivers/staging/wilc1000/host_interface.c 
+> b/drivers/staging/wilc1000/host_interface.c 
+> index d1eedfb..04337c7 100644 
+> --- a/drivers/staging/wilc1000/host_interface.c 
+> +++ b/drivers/staging/wilc1000/host_interface.c 
+> @@ -3352,7 +3352,7 @@ static s32 host_int_get_assoc_res_info(struct 
+> wilc_vif *vif, 
+>                  PRINT_ER("Failed to send association response config 
+> packet\n"); 
+>                  return -EINVAL; 
+>          } 
+> -         
+> + 
+>          *pu32RcvdAssocRespInfoLen = wid.size; 
+>          return result; 
+>  } 
+> diff --git a/drivers/staging/wilc1000/linux_mon.c 
+> b/drivers/staging/wilc1000/linux_mon.c 
+> index 21f35d7..9fcb497 100644 
+> --- a/drivers/staging/wilc1000/linux_mon.c 
+> +++ b/drivers/staging/wilc1000/linux_mon.c 
+> @@ -302,7 +302,7 @@ struct net_device *WILC_WFI_init_mon_interface(const 
+> char *name, struct net_devi 
+>          struct WILC_WFI_mon_priv *priv; 
+>   
+>          /*If monitor interface is already initialized, return it*/ 
+> -        if (wilc_wfi_mon) 
+> +        if (wilc_wfi_mon) 
+>                  return wilc_wfi_mon; 
+>   
+>          wilc_wfi_mon = alloc_etherdev(sizeof(struct WILC_WFI_mon_priv)); 
+> -- 
+>
+
+I see that someone else has sent a patch for the same issue. Please ignore 
+this.
+
+Janani. 
+
+> 2.5.0 
+>
+>
+------=_Part_4817_408377983.1455622908277
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tuesday, 16 February 2016 06:37:36 UTC-5, Janan=
+i Ravichandran  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
+margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Remove t=
+railing whitespace checkpatch errors.
+<br>
+<br>Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchndr=
+n@gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D=
+&#39;mailto:janani.rvchndrn@gmail.com&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;mailto:janani.rvchndrn@gmail.com&#39;;return true;">janani.rvchnd=
+rn@gmail.com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/wilc1000/<wbr>host_interface.c | 2 +-
+<br>=C2=A0drivers/staging/wilc1000/<wbr>linux_mon.c =C2=A0 =C2=A0 =C2=A0| 2=
+ +-
+<br>=C2=A02 files changed, 2 insertions(+), 2 deletions(-)
+<br>
+<br>diff --git a/drivers/staging/wilc1000/<wbr>host_interface.c b/drivers/s=
+taging/wilc1000/<wbr>host_interface.c
+<br>index d1eedfb..04337c7 100644
+<br>--- a/drivers/staging/wilc1000/<wbr>host_interface.c
+<br>+++ b/drivers/staging/wilc1000/<wbr>host_interface.c
+<br>@@ -3352,7 +3352,7 @@ static s32 host_int_get_assoc_res_info(<wbr>struc=
+t wilc_vif *vif,
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0PRINT_ER(&quot;<wbr>Failed to send associa=
+tion response config packet\n&quot;);
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return -EINVAL;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
+<br>+
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0*<wbr>pu32RcvdAss=
+ocRespInfoLen =3D wid.size;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return result;
+<br>=C2=A0}
+<br>diff --git a/drivers/staging/wilc1000/<wbr>linux_mon.c b/drivers/stagin=
+g/wilc1000/<wbr>linux_mon.c
+<br>index 21f35d7..9fcb497 100644
+<br>--- a/drivers/staging/wilc1000/<wbr>linux_mon.c
+<br>+++ b/drivers/staging/wilc1000/<wbr>linux_mon.c
+<br>@@ -302,7 +302,7 @@ struct net_device *WILC_WFI_init_mon_interface(<wbr=
+>const char *name, struct net_devi
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct WILC_WFI_m=
+on_priv *priv;
+<br>=C2=A0
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/*If monitor inte=
+rface is already initialized, return it*/
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (wilc_wfi_mon)=20
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (wilc_wfi_mon)
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return wilc_wfi_mon;
+<br>=C2=A0
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0wilc_wfi_mon =3D =
+alloc_etherdev(sizeof(struct WILC_WFI_mon_priv));
+<br>--=20
+<br></blockquote><div><br>I see that someone else has sent a patch for the =
+same issue. Please ignore this.<br><br>Janani. <br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;">2.5.0
+<br>
+<br></blockquote></div>
+------=_Part_4817_408377983.1455622908277--
+
+------=_Part_4816_2070989938.1455622908276--
 
