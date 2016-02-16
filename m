@@ -1,66 +1,117 @@
 X-GM-THRID: 6251884349314039808
-X-Received: by 10.112.157.164 with SMTP id wn4mr2547867lbb.5.1455630341847;
-        Tue, 16 Feb 2016 05:45:41 -0800 (PST)
+X-Received: by 10.140.136.135 with SMTP id 129mr21375019qhi.10.1455630257009;
+        Tue, 16 Feb 2016 05:44:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.16.198 with SMTP id 189ls780720wmq.45.gmail; Tue, 16 Feb
- 2016 05:45:41 -0800 (PST)
-X-Received: by 10.28.128.204 with SMTP id b195mr1958135wmd.7.1455630341172;
-        Tue, 16 Feb 2016 05:45:41 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.73])
-        by gmr-mx.google.com with ESMTPS id w197si794745wmw.3.2016.02.16.05.45.41
+Received: by 10.107.169.96 with SMTP id s93ls1733708ioe.86.gmail; Tue, 16 Feb
+ 2016 05:44:16 -0800 (PST)
+X-Received: by 10.98.1.85 with SMTP id 82mr21409078pfb.1.1455630256722;
+        Tue, 16 Feb 2016 05:44:16 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
+        by gmr-mx.google.com with ESMTPS id ff2si3512629pad.2.2016.02.16.05.44.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 05:45:41 -0800 (PST)
-Received-SPF: neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=217.72.192.73;
+        Tue, 16 Feb 2016 05:44:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([78.42.132.4]) by mrelayeu.kundenserver.de
- (mreue103) with ESMTPSA (Nemesis) id 0MLRLO-1aV7yw0xwA-000ZLM; Tue, 16 Feb
- 2016 14:45:40 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x231.google.com with SMTP id q63so105497513pfb.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 05:44:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=gfluUFX0lmMNohpuWblNNhEmURDkrUo5d5kCy/poTrs=;
+        b=Vk1ajhBhKvlhVD+ErObK1T+05y32DVJKOkaL11rj/hLsFTH/cJPnEldH0hWEn1WOpz
+         jX2hKfaiBCfKTPhvNj09K6hH/h+amUgS6oc4AdQUvKY+kEX46mlXWzjLQbBTGQPCl0md
+         88Wzv3Q58YioI1QZav5scF9ELpCNHZIeYIutcoJGBe8stvSn3O4dtKgsS5VNU59cb/NW
+         p9UN7f7j/9SUvrZtsRn8mwtyYGrmzBs1uGGPcFQngia5JQOgEEBqLByPklurtl673JQu
+         JFTrvjYAQjlnwtF6lWkanIL+f1aOSsU857vGdYx625QSGWTmlHlA1N8Nf3fUg/Tiz/1W
+         ZGbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=gfluUFX0lmMNohpuWblNNhEmURDkrUo5d5kCy/poTrs=;
+        b=SaPilJfevyy/WwY/VkiT90aFj3abDC3onduUfOWXD39DUm2ysfc2pLhZadsFvn9ezC
+         vCXgeae6eFaEeo8UCtpZS7EG1tJTAYjsiZ+anrzfCN9q5PuWob0wU7TqjPdJmCF6N6KP
+         iXFAyyt3prg/XfeGu4sBl1j9EzkGmOD4cDiLCnhx303FT2tQ9ngL7qUnLWlrqYLhazjZ
+         tc++FD4IuwCBNQOysgLs6VVLoiScp3uaGKPwWrmhF5F/tcRDyotHOL5enzAI4VcRaZyQ
+         ku7gUF6xnNnFHwqqnXroX8dEt3Kbw/0/XmUBPy4d4b6oT2V3SNTaixLNI//3KMqMqKUY
+         4ebg==
+X-Gm-Message-State: AG10YOQHOXdg1EN4tmz8sQlPnXj0n8SQ+n0ng9t3aTzPz75sOdBtZrguI7Sq+gf46RDePg==
+X-Received: by 10.98.73.149 with SMTP id r21mr31408881pfi.140.1455630256555;
+        Tue, 16 Feb 2016 05:44:16 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.135.170])
+        by smtp.gmail.com with ESMTPSA id n78sm46056609pfb.53.2016.02.16.05.44.15
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 16 Feb 2016 05:44:16 -0800 (PST)
+Date: Tue, 16 Feb 2016 19:14:12 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: osc: osc_request: Declare local function and structure as static
-Date: Tue, 16 Feb 2016 14:45:39 +0100
-Message-ID: <3141763.faVHMgUmWB@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20160216134412.GA18001@amitoj-Inspiron-3542>
-References: <20160216134412.GA18001@amitoj-Inspiron-3542>
+Subject: [PATCH v2] staging: lustre: osc: osc_request: Declare local function
+ and structure as static
+Message-ID: <20160216134412.GA18001@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:rgZuZ8+qHu7IaV+r0Bmw52cuNieAB/75se399FGjBDKrH0tMq3S
- xAzqVtOer0EikPNcw9TO3YWeaB/T0BCMXX56QenmSripKTSLlUndYS4dcbxHFMEjrcaBZ0E
- NBgqLhki01NT0LKmuID6F2w2NbsXyx8DcXJZjX9GEQvvVK0TE8Kz4JWglr10ZSjBFysPGqg
- rnvv7oj/95RqAvvBMMwvg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:9hyDtKTybes=:6BX59W9Nh0PC8lx4DfGMNs
- cxT9DyhbWehTTAZaopQkimL72qlPdShmh/n6l8lISi+5t0nWDcw0WcLuPcJlLkosgVIZnknqV
- 04l4bOj+owhGnJyhGDiZQYfDcoUWx8mWfme/1oY5GUT6ASSpBmWEwRbH6uR3iib4cDuqjfNuZ
- tkIRWx+fh9xf/LKrCW4KRBlP5seHzra6rHzLx28V26UzTrbwu7tIq7nSdRwfPc/3yikYYgxHb
- xd/Ur6EJlJbkVRngvB3YVdPXRaLayaAyoXyiIghcsYZbUNrfsYuGTwGWfXPcEDLJC27jfSUyN
- AQFWUItCbMp7+jWAUM1N02oVsPNa/FPwtBCUZ16SwlWnaoTTx8Bvt8m++c6d9j7Ef+et960nN
- 5vCmxiqEQ5EffmcPdf2vJH13dqJETMyB2eAO7OgEUvpFpmJlNZiS/viX/yiAFzVQbGxI9UGQz
- RD1oh8EPa4xbHffI58LVwaGE1IXCV3H+me9eK+TV8Zt2eK7P6VWhJ1uOBVMRTRdikXyfUMQfv
- JJ05MoALTZEg9qf6vPOhU9ozgD9y15DkbRmEE1bYhPcmTF7LOymiyrGE39RnmX0ktJmXuD6B9
- tDBcnAjzvQ3qZzmcMBc4IhiXvxOnh80ghWj5zfuXQTe+l/EcWU0Dgjk3xXDhU6IzgY3QopHLI
- GfkwVIKPUV2OgSKuUtl4XHqfC9BqRkWfj6XBxh3My1l/O9GNWSiieB3Cnx5ygoyynyPQkkk5P
- AZcf169X6zb8f3pW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tuesday 16 February 2016 19:14:12 Amitoj Kaur Chawla wrote:
-> Declare osc_cleanup() function and osc_obd_ops structure as static
-> since they are defined and called only in this file.
-> 
-> Removed osc_cleanup() function prototype since it wasn't required.
-> 
-> This fixes the following sparse warnings:
-> drivers/staging/lustre/lustre/osc/osc_request.c:3210:5: warning:
-> symbol 'osc_cleanup' was not declared. Should it be static?
-> drivers/staging/lustre/lustre/osc/osc_request.c:3259:16: warning:
-> symbol 'osc_obd_ops' was not declared. Should it be static?
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> 
+Declare osc_cleanup() function and osc_obd_ops structure as static
+since they are defined and called only in this file.
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+Removed osc_cleanup() function prototype since it wasn't required.
+
+This fixes the following sparse warnings:
+drivers/staging/lustre/lustre/osc/osc_request.c:3210:5: warning:
+symbol 'osc_cleanup' was not declared. Should it be static?
+drivers/staging/lustre/lustre/osc/osc_request.c:3259:16: warning:
+symbol 'osc_obd_ops' was not declared. Should it be static?
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v2:
+        -Modified subject
+        -Removed unnecessary function prototype
+
+ drivers/staging/lustre/lustre/osc/osc_request.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
+index 3ae00fc..b6df68d 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_request.c
++++ b/drivers/staging/lustre/lustre/osc/osc_request.c
+@@ -104,7 +104,6 @@ struct osc_enqueue_args {
+ static void osc_release_ppga(struct brw_page **ppga, u32 count);
+ static int brw_interpret(const struct lu_env *env,
+ 			 struct ptlrpc_request *req, void *data, int rc);
+-static int osc_cleanup(struct obd_device *obd);
+ 
+ /* Pack OSC object metadata for disk storage (LE byte order). */
+ static int osc_packmd(struct obd_export *exp, struct lov_mds_md **lmmp,
+@@ -3207,7 +3206,7 @@ static int osc_precleanup(struct obd_device *obd, enum obd_cleanup_stage stage)
+ 	return 0;
+ }
+ 
+-int osc_cleanup(struct obd_device *obd)
++static int osc_cleanup(struct obd_device *obd)
+ {
+ 	struct client_obd *cli = &obd->u.cli;
+ 	int rc;
+@@ -3256,7 +3255,7 @@ static int osc_process_config(struct obd_device *obd, u32 len, void *buf)
+ 	return osc_process_config_base(obd, buf);
+ }
+ 
+-struct obd_ops osc_obd_ops = {
++static struct obd_ops osc_obd_ops = {
+ 	.owner          = THIS_MODULE,
+ 	.setup          = osc_setup,
+ 	.precleanup     = osc_precleanup,
+-- 
+1.9.1
+
 
