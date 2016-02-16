@@ -1,89 +1,76 @@
-X-GM-THRID: 6331272586985472000
-X-Received: by 10.66.85.225 with SMTP id k1mr2288375paz.48.1474114271479;
-        Sat, 17 Sep 2016 05:11:11 -0700 (PDT)
+X-GM-THRID: 6251461618501156864
+X-Received: by 10.13.242.134 with SMTP id b128mr18786854ywf.28.1455596577183;
+        Mon, 15 Feb 2016 20:22:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.65 with SMTP id a62ls2365618ioj.12.gmail; Sat, 17 Sep
- 2016 05:11:09 -0700 (PDT)
-X-Received: by 10.98.193.129 with SMTP id i123mr1370924pfg.39.1474114269915;
-        Sat, 17 Sep 2016 05:11:09 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id z4si3415844pam.0.2016.09.17.05.11.09
+Received: by 10.50.66.208 with SMTP id h16ls1046000igt.36.canary; Mon, 15 Feb
+ 2016 20:22:56 -0800 (PST)
+X-Received: by 10.107.169.88 with SMTP id s85mr10718358ioe.30.1455596576823;
+        Mon, 15 Feb 2016 20:22:56 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-ob0-x231.google.com (mail-ob0-x231.google.com. [2607:f8b0:4003:c01::231])
+        by gmr-mx.google.com with ESMTPS id p10si1527709igg.1.2016.02.15.20.22.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 05:11:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Mon, 15 Feb 2016 20:22:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::231 as permitted sender) client-ip=2607:f8b0:4003:c01::231;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::231 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id pp5so4599420pac.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 05:11:09 -0700 (PDT)
+Received: by mail-ob0-x231.google.com with SMTP id xk3so240331604obc.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 20:22:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ahjZjonSdW9Ctpn9oCsGcDXIjVr6nnaxurwlNk+xyz4=;
-        b=b6i4MgDmyJirpJonyBcqKnTd4WiLSEHe9eR60s/7JbActwMAg9Ad02CpkIb6O7HR4X
-         iDf62IY8d48PaTq7wVh1C2dhTENFXniJqeywndo2cckLmk/AELKqzehqw+Nov6taDxSf
-         5yzvf0qX7kpDwJ8N766l349b9ixPUtp8TL+mP1uGzf+m8my9D1KE/IgkvmYbFzKyZ4pO
-         RzD9IwjfduWsW+71ZHAjWuk/SY584zAX+nyrX6n/1Tcd4vV7PkI9fk2d4VzBD4E1CzPi
-         j1l7dQ5DwQCjcLy8/PP7zxz1zS3/FXJNXqMsLqJ6+v3Zs0RkNzEAGky2UjpdDRpv4jAv
-         fPBA==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=C5F/r9g9i0DAs+wzUNd3uw+ilgRyyyT9dMbogC+GbWQ=;
+        b=clR6gaTEqg3pY+zj2Z6qZoXJv36qXWW2Qnq7l9hjdaJWxItwwlh8GXvlN5i3BL33Yu
+         gcze+Fya1azm9Cje4b6k+VEC2ZYsFXpe5/4QLzrX6V0OImu+EvjFdPIc5ArPnsBCxYUI
+         6zZ6WPCs6rTmKEMpZTeXAlEw7gfEHx28kGfYJ6rN51aEFym9AnDK27QCwWvWo3sV0xbN
+         Fli3zcd0TISXONEQW4wuz6n9WwQvEvbH20S/HjIsOFgbe8vUakIz2CG9e+aZ4XrORORn
+         23GNqV/kNbBT5hYJUBXZvEUr+21syQWxDiiVTp/5XEQJedsu5tdVdr1ZMsaQYPEM02Bo
+         6uTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ahjZjonSdW9Ctpn9oCsGcDXIjVr6nnaxurwlNk+xyz4=;
-        b=SFh0FKNst8HBuNfqHYqaF4RyOnWMe6WDfSaiasoaB9kYVa11idHdwsPnF/6gN+CTHQ
-         sfLfUBmtBZyABojLM10Fbb3tIgDimmRkQ8MruBd/is6jqkWZG+2T19Xszoua1DdIwmWV
-         m8XpHz0pRBu5ImCBnHY6K6Ul2qVdVncyKPWDQjPsXigK0+JSVQFu9a/vDY8S/ZIUY2D2
-         1SmVb7qp6k5KM5YzQknJcPMmox9mi3ZRPpFJadtuVGUkkDCIwxCU+zl8Y85KfUmLXX7N
-         6dT+qvM7GfLsx9k9fncxV8G0YFt5ryrvAT3pc+4ey2ETKiMbbBdMm63A6EaDDx7FO2Pl
-         n8gA==
-X-Gm-Message-State: AE9vXwNuQPbT0fsRAgUQrgrY7hE9HiUL4CJ1+8e1CB1o9HBb77683SHDb23LfgyLmhlSNQ==
-X-Received: by 10.66.224.101 with SMTP id rb5mr31254182pac.45.1474114269761;
-        Sat, 17 Sep 2016 05:11:09 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.172.239])
-        by smtp.gmail.com with ESMTPSA id p7sm11090638paa.3.2016.09.17.05.11.07
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Sep 2016 05:11:08 -0700 (PDT)
-Date: Sat, 17 Sep 2016 06:40:52 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: i4l: Do not initialise statics to 0.
-Message-ID: <20160917011052.GA14721@sandhya>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type;
+        bh=C5F/r9g9i0DAs+wzUNd3uw+ilgRyyyT9dMbogC+GbWQ=;
+        b=bVZoel9ia39YotUCMVIClqXw/sptPKz+HHC8CrEMXmDd6pwCDFyFwp5TmExlZ/7AFI
+         NfnQKRG4gLtNfdUOJqZoTz5KdjFmYNEip+JWTXyeBMyppO38WMZuUJVI22PvdXe3z5lW
+         KSuFcor71dhZ2EMBQGJ6iIGwVJlERJNCzz8GDdmbKMVdpXIAc9D2WDseNIT2ZfGP15WV
+         dzSwygK3eVWqWlqmlFdIYsaG7+T8gWCDtI430dj8i4drofN7Qf+h/e0rZ0aqsecm+YUG
+         CnCbkyyC9NpXMTU6kqHvHE/Rz5ktbloq9a2BweoMi+VCUhxj29y5Jkxl6VlvBuSGercj
+         nJWg==
+X-Gm-Message-State: AG10YOSY/eTjps4YL35MgkDWGgKD+uXVIY4ZwabFF8CQW6o2SJ4y1mfIhK+g777V7z+cXaKi//k53gzoALja0Q==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+X-Received: by 10.202.217.136 with SMTP id q130mr14709976oig.127.1455596576605;
+ Mon, 15 Feb 2016 20:22:56 -0800 (PST)
+Received: by 10.157.40.238 with HTTP; Mon, 15 Feb 2016 20:22:56 -0800 (PST)
+In-Reply-To: <20160216022855.GB25122@kroah.com>
+References: <1455531820-14913-1-git-send-email-bhumirks@gmail.com>
+	<20160216022855.GB25122@kroah.com>
+Date: Tue, 16 Feb 2016 09:52:56 +0530
+Message-ID: <CAOH+1jG1hAjB_NVh+euAADHBtrsVWKdEskqJjnKZsmO-wKs+iQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: include: Remove
+ do-while(0) from single statement macro
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Greg KH <greg@kroah.com>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Do not initialise statics to 0.
-static variable by default initialise to 0,so
-no need to explicite initialisation.
-This issue was found by checkpatch .
+On Tue, Feb 16, 2016 at 7:58 AM, Greg KH <greg@kroah.com> wrote:
+> On Mon, Feb 15, 2016 at 03:53:40PM +0530, Bhumika Goyal wrote:
+>> do-while(0) around single statement macro is unnedded so remove it.
+>
+> It doesn't hurt, right?  I'd just leave it, as it prevents any bad
+> side-affects from happening.
+>
+> thanks,
+>
+> greg k-h
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/i4l/act2000/module.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git a/drivers/staging/i4l/act2000/module.c b/drivers/staging/i4l/act2000/module.c
-index 68073d0..39a8940 100755
---- a/drivers/staging/i4l/act2000/module.c
-+++ b/drivers/staging/i4l/act2000/module.c
-@@ -28,7 +28,7 @@ static unsigned short act2000_isa_ports[] =
- static act2000_card *cards = (act2000_card *) NULL;
- 
- /* Parameters to be set by insmod */
--static int   act_bus  =  0;
-+static int   act_bus;
- static int   act_port = -1;  /* -1 = Autoprobe  */
- static int   act_irq  = -1;
- static char *act_id   = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
--- 
-1.7.1
-
+But here the statement will execute once with or without the do-while.
+So what is the need to keep do-while? This is my understanding so
+please let me know if I am wrong.
+Thanks,
+Bhumika
 
