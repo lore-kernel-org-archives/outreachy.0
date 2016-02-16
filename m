@@ -1,62 +1,92 @@
 X-GM-THRID: 6251854821494620160
-X-Received: by 10.112.130.42 with SMTP id ob10mr2489368lbb.2.1455623881912;
-        Tue, 16 Feb 2016 03:58:01 -0800 (PST)
+X-Received: by 10.107.152.10 with SMTP id a10mr22564684ioe.28.1455623382029;
+        Tue, 16 Feb 2016 03:49:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.144.77 with SMTP id s74ls811872lfd.91.gmail; Tue, 16 Feb
- 2016 03:58:01 -0800 (PST)
-X-Received: by 10.112.137.102 with SMTP id qh6mr2529684lbb.9.1455623881264;
-        Tue, 16 Feb 2016 03:58:01 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.13])
-        by gmr-mx.google.com with ESMTPS id e130si753663wme.2.2016.02.16.03.58.01
+Received: by 10.182.236.2 with SMTP id uq2ls1709731obc.11.gmail; Tue, 16 Feb
+ 2016 03:49:41 -0800 (PST)
+X-Received: by 10.182.254.35 with SMTP id af3mr20133554obd.37.1455623381681;
+        Tue, 16 Feb 2016 03:49:41 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
+        by gmr-mx.google.com with ESMTPS id 12si3072686pfb.1.2016.02.16.03.49.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 03:58:01 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.13;
+        Tue, 16 Feb 2016 03:49:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.13 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([78.42.132.4]) by mrelayeu.kundenserver.de
- (mreue103) with ESMTPSA (Nemesis) id 0MV2eD-1aUNk51sRZ-00YUch; Tue, 16 Feb
- 2016 12:58:00 +0100
-From: Arnd Bergmann <arnd@arndb.de>
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x231.google.com with SMTP id q63so104018260pfb.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 03:49:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=Kv2BlxyGTjlPT6Fl4Ai/DXTf0WHLCjf4AGb+bJvdDlA=;
+        b=B7fbgD/Ljva45ve8CNMwAddYYucgEhW4wfY2EgCW7hfqyst3YtcdzkMaD5RFYpN+na
+         iTg13/A9xyYMXuFcjsBDYu0fnO8s37TVUBGS4nChYklV4zF36N7fprhECm0PYp+mqwHW
+         HMEDfij4H9+QomOQl1nDoBQdzRQYPFlVXEmw0ZSEAfYsLm1q0f/diFNLjnSldUqCDOuQ
+         c9S7y2MVJJgVb6IIhNEyzUWDVrLGsGND99b9U7AzWRD/LmctlPtiFCx99fgwgLbmn6SA
+         i7vjePf0PBbKSr6ynj3mnN3dxUwODItq/Vi0/VUWUKr4HSFN3jLpG0IJU1X4oHQmCfg2
+         mO0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=Kv2BlxyGTjlPT6Fl4Ai/DXTf0WHLCjf4AGb+bJvdDlA=;
+        b=Fo2Uhqb48HZT7ZVQvagu19IXDE9MzC0BYRA196tQ2ObNtacwGSqzNHMVFk6a59pDS7
+         ok4JtyNQiKJ2Fbzjacn4ExrYpSeRs0pOLb/ii+Nfqy95BnNDTYl714AUd7eAi11j4uNK
+         VqMJkrwgOWI/OK5lVHrPfYyrFA9TwzPhJdRBAcKIVc+/KFleM8wcNf6XKa3TKVKNER9y
+         ftCjf/sQ00Zwm974y37ZMQFuvtaqA3lKs2bIJMHRMfc241r+0lVREh05UmvD8Xo7kDUn
+         i8O8zgsAnYpiZfajz3SyRROvvSczalBmmO6Gc7/gKiQV5NMuGoEks5Xa2EaMYiHeCBqL
+         m1ww==
+X-Gm-Message-State: AG10YOS+lboPff9W7gSKTIbaFZhyb8fz3ylebubP/TUgxuebRzt7k15FLf/6KodiB7nsyQ==
+X-Received: by 10.98.11.134 with SMTP id 6mr30751103pfl.109.1455623381471;
+        Tue, 16 Feb 2016 03:49:41 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.135.170])
+        by smtp.gmail.com with ESMTPSA id y15sm45311792pfi.16.2016.02.16.03.49.39
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 16 Feb 2016 03:49:40 -0800 (PST)
+Date: Tue, 16 Feb 2016 17:19:35 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: obdclass: obd_mount: Declare function as static
-Date: Tue, 16 Feb 2016 12:57:59 +0100
-Message-ID: <2821295.SDV1qGbQcd@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <20160216114934.GA15426@amitoj-Inspiron-3542>
-References: <20160216114934.GA15426@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: lustre: obdclass: obd_mount: Declare function as
+ static
+Message-ID: <20160216114934.GA15426@amitoj-Inspiron-3542>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:9ZBv8VwnkPqr1RGwFby2dnFyo8B7SBdA9YcvumGRAlgdMBqvzzp
- REGGtmsJohvKnHHXQBCsjpQ0yxohFB61lt23BJ6o2PnkNREoeZsiW+peLscBg6LcFi/i33Q
- bcLJ/BTTzKC4kw8QKXY5vCP8ig2a7Wwb6PHkK0VHxNDUSkqf3A2NWvYOeZooI1kkCvH9oHm
- tuDYifiybsWN2lI16cnkw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:ZUyLK/KvwiY=:WEJu8udJI+pnKGXbJsPr69
- Dti7dTUb8LYqaYfEC2Wru4qbxb2QyB3yEIYCTzxpMrsN9dPDWzR0p87qMWzf1t0l32ApYp4H6
- B/2VvmMYccNZPMFc1PzY1r1SLupZbN73vJJFjIQqkE2A7M4R65YavAoIGkY2YxfJYQM9Aqkff
- xHRa9tJBQNpZTfwEFA9NBnb/tzN2nu4VfiFncQ71zRQqhHx2NE36f1iDEXu+A9g81S5o95MbG
- cgt6FlMy1+FNticfRGZnt1Q+pTinxnkY4rnLvpSvY0gcYBp9UB5GBtLV93q0J/VA8w1rS2o3j
- zf/zs+k/rdu0JkIvTdNXbh39vHufUGRvutA20q6oOiZAc7djDUv7RX9ZAweiNy8p21zEpM198
- jWE2JOIUtt8ZEz0NN0FEW86TjS+JcCX4QdxvBebwU6ZkJTIwUhIH59QltsSw7MV1RfF76DgBo
- 5g+TDkkotzJshe/P7woyaMB7iNKfSGIe/NOh3DH6kH0MDSXIaQMfA0InwXCXVlMggijRcb9to
- so5/AiFukRFHPY971Il2puJZMIW+BHrVKqDEuEm9cfoe7rSEn6vV7LzLKnU2/akZf0hODNEZ7
- fuDd8qPHdt3zdpc5ilEPsvsNG4A7ohBPCsTxhC7HowE48OfiNS6gW9ekt/U1/ppOm1NlO1GOZ
- 5JKYiErLzv3pI3NltZh9QfM1XAf9EWQ+Za44oSK3/bcQrNPjWgw7LR/KLninOA5Gm33/6vyOv
- +Obdi2z5g4/F8/p9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tuesday 16 February 2016 17:19:35 Amitoj Kaur Chawla wrote:
-> Declare lustre_mount() function static since it is defined and called in this
-> file only.
-> 
-> This fixes the following sparse warning:
-> drivers/staging/lustre/lustre/obdclass/obd_mount.c:1169:15: warning:
-> symbol 'lustre_mount' was not declared. Should it be static?
-> 
-> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-> 
+Declare lustre_mount() function static since it is defined and called in this
+file only.
 
-Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+This fixes the following sparse warning:
+drivers/staging/lustre/lustre/obdclass/obd_mount.c:1169:15: warning:
+symbol 'lustre_mount' was not declared. Should it be static?
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/lustre/lustre/obdclass/obd_mount.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/lustre/lustre/obdclass/obd_mount.c b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
+index b5aa816..a486a96 100644
+--- a/drivers/staging/lustre/lustre/obdclass/obd_mount.c
++++ b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
+@@ -1166,7 +1166,7 @@ void lustre_register_kill_super_cb(void (*cfs)(struct super_block *sb))
+ EXPORT_SYMBOL(lustre_register_kill_super_cb);
+ 
+ /***************** FS registration ******************/
+-struct dentry *lustre_mount(struct file_system_type *fs_type, int flags,
++static struct dentry *lustre_mount(struct file_system_type *fs_type, int flags,
+ 				const char *devname, void *data)
+ {
+ 	struct lustre_mount_data2 lmd2 = {
+-- 
+1.9.1
+
 
