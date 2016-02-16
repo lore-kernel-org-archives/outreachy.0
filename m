@@ -1,97 +1,87 @@
-X-GM-THRID: 6254207218410848256
-X-Received: by 10.129.145.193 with SMTP id i184mr28642157ywg.32.1456171092954;
-        Mon, 22 Feb 2016 11:58:12 -0800 (PST)
+X-GM-THRID: 6251954379592564736
+X-Received: by 10.112.17.37 with SMTP id l5mr2760028lbd.21.1455647822695;
+        Tue, 16 Feb 2016 10:37:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.108.99 with SMTP id i90ls1822405qgf.46.gmail; Mon, 22 Feb
- 2016 11:58:12 -0800 (PST)
-X-Received: by 10.129.72.199 with SMTP id v190mr29237181ywa.44.1456171092476;
-        Mon, 22 Feb 2016 11:58:12 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id ui7si3356965pab.0.2016.02.22.11.58.12
+Received: by 10.28.210.147 with SMTP id j141ls850609wmg.40.canary; Tue, 16 Feb
+ 2016 10:37:02 -0800 (PST)
+X-Received: by 10.194.178.234 with SMTP id db10mr2796499wjc.6.1455647822114;
+        Tue, 16 Feb 2016 10:37:02 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
+        by gmr-mx.google.com with ESMTPS id e130si817082wme.2.2016.02.16.10.37.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 11:58:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        Tue, 16 Feb 2016 10:37:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id x65so97884977pfb.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 11:58:12 -0800 (PST)
+Received: by mail-wm0-x22a.google.com with SMTP id g62so165010213wme.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 10:37:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=02Azh/OSiwdiiMBX6RMPgRwi7g+GwTNwLutBNotZDtA=;
-        b=Ly1wtM61f567i9CLL1jPQPhXE8NGXpe/6N62qSTZk122VyoWDL4jXuzSLTJL9x/hJE
-         mgP8HhTEHQ7h6lkYJkxFTG7127Vc1QSCpQE/BGpj2UkM762kQgakJAP4yAgObeWAZ2vD
-         V71x2GXrUBn/H0zNHh6ti6xsM0Qkv04bb5t81lj2efzVoenwCUqvs2DUtnndu2Sy8B2W
-         sJUBj0YswbpZBLovi5P8RFVBvqvhWG149dWTzf9gsNSf8eDN2ak7xa1/hCGNoRkcWPmZ
-         k4rk1y872hY6ZqKhXVds6hu5dJ1iyZXB6Rqley/XQMhzjVgDbNnOY2y4Xo2b2/eGbu24
-         WKNw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=f4+aJCeB+23EZp6ljhsHYKKKHTPS4TAyR/PZdM4EjsM=;
+        b=TzvSltum1cz5GxE4hIE8worH/3rIQPnX+/2kNQcoSUSwohfKoAP6v5nmaa1tmEsfUi
+         Url0fzynYtP0/qMZ2zuVLss6OM1Dh8jcARL9OiuPFnW/E+Sm/AEsvNU03nSYvBEcJfCz
+         VeNLC0Rcn98x4hHMjIpXK74B3dL9BXdyufKt17iakTwPSjaucrplUG6upnF/slIvQytU
+         81BDE8Xt6wtsyzkxsSx4qpDrOhGrmNu5+LF/xMDgk6nWfK5Va78Pauwzq7VHM4vOlREu
+         SwUjxPj7abUNfTHnzY/ZSBq1LAyuV3toTc8lNZ4TiI/jkQJGNpNmbyFyxqc/U6vEElPX
+         rnBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=02Azh/OSiwdiiMBX6RMPgRwi7g+GwTNwLutBNotZDtA=;
-        b=HTMAknbzOQ9H/+ToMT33KNQLLYvOueVsejiIAuStnjcpqCE95FnrHOFwgQ1m2bGady
-         zEFBp09r2xR9ClCLwTqqKE0VNjwUy17qB9Er1+tKPw7qGXOOJ8Aubu5yw+8rCSAwO5/I
-         9n5g5HaCMH2QxnAkv4/ErELTdvLIwVxMGCgxZCkkgQCo1s8R1oVPqA3DFve4e19jDfed
-         5JjqZFVqqD1kqqJjQbNosEho6XDvJs8e3/OSxXPifLw2HCeQenLVTvEcFSQy2PJ4iHex
-         CBRCqyYnwDTx9Wb4HBX5fnEo34KicY2OR5ldhAMTyhUz5LuuK+s8aEXlZIOs6VdkYq5v
-         nuNA==
-X-Gm-Message-State: AG10YORQxLuf8UIqyB9ZgHFEEj/+Eqw5KbfG2kS15ADOGZCqD0SrOFbi0/Q3l1NrD4w9ow==
-X-Received: by 10.98.43.149 with SMTP id r143mr40259529pfr.7.1456171092264;
-        Mon, 22 Feb 2016 11:58:12 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id e20sm38801051pfd.4.2016.02.22.11.58.10
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition
+         :content-transfer-encoding:in-reply-to:user-agent;
+        bh=f4+aJCeB+23EZp6ljhsHYKKKHTPS4TAyR/PZdM4EjsM=;
+        b=aVIw2eQDA3z1Xwoqyl1N0OdvKi6Bt0aiL1QzJWTY87IA5F/t7mF/WdB/6kZV/+CR/S
+         K1J/xn9g7Y1S2lj4D5cxAff98I3IHcfEjkFuZ4Sjq1KtOHnJ/k857Tb/eMoPgIZh0a9M
+         l4loo3d9aX8drHK97jHyKNyYYqC89okShn6xh5mRxidlppEi5/YdloZMSIOrYZaCXsKB
+         il/+HwLTkEyQ477fLZLb2Kio0/wi027ZHfHeDzUf0jCzaAJkv8tWQMMkBcDj7xqVmaY5
+         64tsojPrmX8lWi8GdTfibDVHi9SmnbEVuw21zvneJlRZZfkpa7uH7iQ92tOI2xgPkFog
+         nEAw==
+X-Gm-Message-State: AG10YOQvjnMmJ4YRExBf9akwxYNqQKQhRcoOpmeGpabKnT4wpn4S8pQ75PNubgFJaC/HWw==
+X-Received: by 10.194.192.36 with SMTP id hd4mr20991451wjc.85.1455647822013;
+        Tue, 16 Feb 2016 10:37:02 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from sonyv ([91.126.73.162])
+        by smtp.gmail.com with ESMTPSA id i1sm31370730wjs.45.2016.02.16.10.37.01
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 11:58:11 -0800 (PST)
-Date: Tue, 23 Feb 2016 01:28:07 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: adc: spear_adc: Use devm_iio_device_register
-Message-ID: <20160222195807.GA12070@amitoj-Inspiron-3542>
+        Tue, 16 Feb 2016 10:37:01 -0800 (PST)
+Date: Tue, 16 Feb 2016 19:36:59 +0100
+From: Laura Garcia <nevola@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Presentation
+Message-ID: <20160216183658.GB9911@sonyv>
+References: <20160216181557.GA9911@sonyv>
+ <alpine.DEB.2.10.1602161317310.2685@hadrien>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <alpine.DEB.2.10.1602161317310.2685@hadrien>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Devm_ functions allocate memory that is released when a driver
-detaches. Replace iio_device_register with the resource-managed
-version devm_iio_device_register. Subsequently, remove
-iio_device_unregister from remove function of this driver.
+On Tue, Feb 16, 2016 at 01:17:44PM -0500, Julia Lawall wrote:
+> On Tue, 16 Feb 2016, Laura Garcia wrote:
+> 
+> > Hi list,
+> >
+> > My name is Laura Garc�a and I'm an Outreachy Round 12 applicant.
+> >
+> > I would like to apply for the nftables project with Pablo due to my network load balancing study. I've been looking for any task related with that project but the tasks URL link doesn't seem to be updated:
+> >
+> > http://kernelnewbies.org/OutreachyRound11
+> >
+> > Should I contact directly with the mentor?
+> 
+> Yes, please contact the mentor directly.
+> 
+> julia
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/iio/adc/spear_adc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/iio/adc/spear_adc.c b/drivers/staging/iio/adc/spear_adc.c
-index f2c0065..0a6d0d7 100644
---- a/drivers/staging/iio/adc/spear_adc.c
-+++ b/drivers/staging/iio/adc/spear_adc.c
-@@ -346,7 +346,7 @@ static int spear_adc_probe(struct platform_device *pdev)
- 	indio_dev->channels = spear_adc_iio_channels;
- 	indio_dev->num_channels = ARRAY_SIZE(spear_adc_iio_channels);
- 
--	ret = iio_device_register(indio_dev);
-+	ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
- 	if (ret)
- 		goto errout2;
- 
-@@ -366,7 +366,6 @@ static int spear_adc_remove(struct platform_device *pdev)
- 	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
- 	struct spear_adc_state *st = iio_priv(indio_dev);
- 
--	iio_device_unregister(indio_dev);
- 	clk_disable_unprepare(st->clk);
- 	iounmap(st->adc_base_spear6xx);
- 
--- 
-1.9.1
-
+Ok, thank you!
 
