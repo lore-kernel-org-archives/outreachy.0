@@ -1,132 +1,75 @@
 X-GM-THRID: 6251919067627651072
-Date: Wed, 17 Feb 2016 11:32:36 -0800 (PST)
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <ab395860-1f7c-4b6b-b98a-7239fceb0c25@googlegroups.com>
+X-Received: by 10.112.199.136 with SMTP id jk8mr2739783lbc.11.1455639969640;
+        Tue, 16 Feb 2016 08:26:09 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.25.168.5 with SMTP id r5ls809709lfe.29.gmail; Tue, 16 Feb 2016
+ 08:26:09 -0800 (PST)
+X-Received: by 10.112.162.101 with SMTP id xz5mr2742325lbb.20.1455639968998;
+        Tue, 16 Feb 2016 08:26:08 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s141si1094112wmd.1.2016.02.16.08.26.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Feb 2016 08:26:08 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,456,1449529200"; 
+   d="scan'208";a="203373670"
+Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Feb 2016 17:26:07 +0100
+Date: Tue, 16 Feb 2016 17:26:05 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: wilc1000: Use kmalloc_array
+ instead of kmalloc
 In-Reply-To: <20160216205817.GA16090@janani-Inspiron-3521>
+Message-ID: <alpine.DEB.2.10.1602161725170.2685@hadrien>
 References: <20160216205817.GA16090@janani-Inspiron-3521>
-Subject: Re: [PATCH] staging: wilc1000: Use kmalloc_array instead of kmalloc
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_600_849884905.1455737556531"
-X-Google-Token: ENSVk7YFdfixgnXKlwE0
-X-Google-IP: 2620:cc:8000:483:5635:30ff:fe6b:610b
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-------=_Part_600_849884905.1455737556531
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_601_389891560.1455737556532"
+On Tue, 16 Feb 2016, Janani Ravichandran wrote:
 
-------=_Part_601_389891560.1455737556532
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-
-
-On Tuesday, 16 February 2016 10:59:00 UTC-5, Janani Ravichandran wrote:
+> Use kmalloc_array instead of kmalloc for arrays to prevent integer
+> overflows.
 >
-> Use kmalloc_array instead of kmalloc for arrays to prevent integer 
-> overflows. 
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com> 
-> --- 
->  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +- 
->  1 file changed, 1 insertion(+), 1 deletion(-) 
+> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> index 81a2ee9..7554cd4 100644
+> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> @@ -664,7 +664,7 @@ static int scan(struct wiphy *wiphy, struct cfg80211_scan_request *request)
+>  		PRINT_D(CFG80211_DBG, "Number of SSIDs %d\n", request->n_ssids);
 >
-> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
-> b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
-> index 81a2ee9..7554cd4 100644 
-> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
-> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
-> @@ -664,7 +664,7 @@ static int scan(struct wiphy *wiphy, struct 
-> cfg80211_scan_request *request) 
->                  PRINT_D(CFG80211_DBG, "Number of SSIDs %d\n", 
-> request->n_ssids); 
->   
->                  if (request->n_ssids >= 1) { 
-> -                        strHiddenNetwork.net_info = 
-> kmalloc(request->n_ssids * sizeof(struct hidden_network), GFP_KERNEL); 
-> +                        strHiddenNetwork.net_info = 
-> kmalloc_array(request->n_ssids, sizeof(struct hidden_network), 
-> GFP_KERNEL); 
->                          strHiddenNetwork.n_ssids = request->n_ssids; 
->   
->   
-> -- 
->
+>  		if (request->n_ssids >= 1) {
+> -			strHiddenNetwork.net_info = kmalloc(request->n_ssids * sizeof(struct hidden_network), GFP_KERNEL);
+> +			strHiddenNetwork.net_info = kmalloc_array(request->n_ssids, sizeof(struct hidden_network), GFP_KERNEL);
 
-Greg, please ignore this patch as I've sent a patchset for the same issue 
-after considering Julia's suggestion. 
+It's really wide.  Maybe you could make a series and add some newlines in
+the second patch.
 
-Janani.
+julia
 
-> 2.5.0 
+>  			strHiddenNetwork.n_ssids = request->n_ssids;
 >
 >
-------=_Part_601_389891560.1455737556532
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><span style=3D"color: rgb(102, 102, 102);"><br><br>On Tues=
-day, 16 February 2016 10:59:00 UTC-5, Janani Ravichandran  wrote:</span><bl=
-ockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border=
--left: 1px #ccc solid;padding-left: 1ex;"><span style=3D"color: rgb(102, 10=
-2, 102);">Use kmalloc_array instead of kmalloc for arrays to prevent intege=
-r
-<br>overflows.
-<br>
-<br>Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchndr=
-n@gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D=
-&#39;mailto:janani.rvchndrn@gmail.com&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;mailto:janani.rvchndrn@gmail.com&#39;;return true;">janani.rvchnd=
-rn@gmail.com</a>&gt;
-<br>---
-<br>=C2=A0drivers/staging/wilc1000/</span><wbr><span style=3D"color: rgb(10=
-2, 102, 102);">wilc_wfi_cfgoperations.c | 2 +-
-<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>
-<br>diff --git a/drivers/staging/wilc1000/</span><wbr><span style=3D"color:=
- rgb(102, 102, 102);">wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/<=
-/span><wbr><span style=3D"color: rgb(102, 102, 102);">wilc_wfi_cfgoperation=
-s.c
-<br>index 81a2ee9..7554cd4 100644
-<br>--- a/drivers/staging/wilc1000/</span><wbr><span style=3D"color: rgb(10=
-2, 102, 102);">wilc_wfi_cfgoperations.c
-<br>+++ b/drivers/staging/wilc1000/</span><wbr><span style=3D"color: rgb(10=
-2, 102, 102);">wilc_wfi_cfgoperations.c
-<br>@@ -664,7 +664,7 @@ static int scan(struct wiphy *wiphy, struct cfg8021=
-1_scan_request *request)
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0PRINT_D(</span><wbr><span style=3D"color: =
-rgb(102, 102, 102);">CFG80211_DBG, &quot;Number of SSIDs %d\n&quot;, reques=
-t-&gt;n_ssids);
-<br>=C2=A0
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (request-&gt;n_ssids &gt;=3D 1) {
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-</span><wbr><span style=3D"color: rgb(102, 102, 102);">strHiddenNetwork.net=
-_info =3D kmalloc(request-&gt;n_ssids * sizeof(struct hidden_network), GFP_=
-KERNEL);
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-</span><wbr><span style=3D"color: rgb(102, 102, 102);">strHiddenNetwork.net=
-_info =3D kmalloc_array(request-&gt;n_</span><wbr><span style=3D"color: rgb=
-(102, 102, 102);">ssids, sizeof(struct hidden_network), GFP_KERNEL);
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0</span><wbr><span style=3D"color: rgb(102, 102, 102);">strHiddenNetwo=
-rk.n_ssids =3D request-&gt;n_ssids;
-<br>=C2=A0
-<br>=C2=A0
-<br>--=20
-</span><br></blockquote><div><br>Greg, please ignore this patch as I&#39;ve=
- sent a patchset for the same issue after considering Julia&#39;s suggestio=
-n. <br><br>Janani.<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
-in: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">2.=
-5.0
-<br>
-<br></blockquote></div>
-------=_Part_601_389891560.1455737556532--
-
-------=_Part_600_849884905.1455737556531--
+> --
+> 2.5.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160216205817.GA16090%40janani-Inspiron-3521.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
