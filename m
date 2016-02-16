@@ -1,75 +1,94 @@
-X-GM-THRID: 6252531554516467712
-X-Received: by 10.98.93.217 with SMTP id n86mr5585189pfj.11.1455780946038;
-        Wed, 17 Feb 2016 23:35:46 -0800 (PST)
+X-GM-THRID: 6251874501508726784
+X-Received: by 10.182.199.70 with SMTP id ji6mr20856892obc.32.1455627964554;
+        Tue, 16 Feb 2016 05:06:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.136.202 with SMTP id s71ls2344200ioi.85.gmail; Wed, 17 Feb
- 2016 23:35:45 -0800 (PST)
-X-Received: by 10.50.70.1 with SMTP id i1mr1608781igu.2.1455780945672;
-        Wed, 17 Feb 2016 23:35:45 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id 12si767891pfb.1.2016.02.17.23.35.45
+Received: by 10.50.43.234 with SMTP id z10ls1040599igl.1.gmail; Tue, 16 Feb
+ 2016 05:06:04 -0800 (PST)
+X-Received: by 10.66.139.138 with SMTP id qy10mr21149546pab.46.1455627964174;
+        Tue, 16 Feb 2016 05:06:04 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
+        by gmr-mx.google.com with ESMTPS id yd9si673158pab.1.2016.02.16.05.06.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 23:35:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Tue, 16 Feb 2016 05:06:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id y7so1672367paa.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 23:35:45 -0800 (PST)
+Received: by mail-pa0-x22e.google.com with SMTP id yy13so103173019pab.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 05:06:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=9olyBsK9MBlfzbSwcKxZNQWL9i1bAdutVzTl8nHPXTI=;
-        b=a96MQWEZmVQ8Lwgyq9dww2AmRyXJH61zpnU2Zia3KndEdDb8Zu2+2t0A0lnuJpk+Pg
-         MiFN6JrUSDrZ+829NE4TGzUhIafgaMfWygwvg8uan6WcOuulEiC2ZTWoI8y3FRi5Z3ay
-         fT++KbK5Uov5DvA9gV1mRynmJWrs+BXBr8KNjWJOSKqzPWvyNdJVeLJ/W/JPj2HSFCpx
-         cswMF5/UkNYVpz23xNCiqf0UC6XBaMqoESVZmlhgnV8AZX0Q4TCyhHfgrCj0fqcWe+H5
-         dZjWvILleTlwAncaL2dblw5hUP5BLuSmgaJ4FEQpZjU1UZzeZ97gTNrEoVN6+Q7vFKMm
-         HYyw==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=abMhx06D8blaS3f4OxdPFgJmNo4qpA35PI8yg0cC03g=;
+        b=dO5zDZ+YKPMlxrNvydCg5L6R8mb5Cc7h5JjcuZ6/8A9EMW5cydfdmXdd2JiBuv+7On
+         mHIdqdNRfzwS7yyelSTFKAPNp10/rPtDjF5yNR4h0CWvmz1smw7hH57o/4TApdT5j6af
+         QSGbdOdMKy48yKPpNs4RSiMKFKrpcalLVpv6C5Lgh6J2CrMv9nqy/RHns9zdSZp4cr1T
+         +MXqL2U7SGchXZcd3MwtZvb+3UFxuKTTAo9s8savckUPQccZUz5AmbZmsicKTCTKQUL5
+         Ah/lKuWpAArX4dWnzkkjjo9yEyxV94IUiFHqZ09T9zjdwoPjasuALuPFyIXfmTqJO+Sm
+         0HKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9olyBsK9MBlfzbSwcKxZNQWL9i1bAdutVzTl8nHPXTI=;
-        b=kj1veAQZfu4B12olAgU2zDVdmKFdYxnm7MPRx2/XEQUDPRLwbUQij6OGvlsxLHMl+Z
-         G1BO2fS68jzWD8kKorEjk3/h+NM4LAjeybSMHNO6sxfp/HY4ZDiV5OwzKtjYQGDolp++
-         TkwcJ98iACwaUTMIiYg4tOnf3Ve0/70aBpRzItIxb5jqQvU9ZFGZWn7xk5DnLVL/R1Ne
-         BlWo8v/mlBKcKiuMGEoASly/jQuOC9bPJKx7VLz44uNGCWPLFyul4cRs5EkyNCuyGWdx
-         f+sOePq/vsYx3mrmmx1fiNhDwWe/2taUH708pcIezNtkWRHtizSLPmOh0V16z7Lg/p5J
-         EsYA==
-X-Gm-Message-State: AG10YORAnw6EjtoZxWPNBYaEOrzTTYrWdZy58td6XIjxe5WcoP/rzvKQO6+LZw6jsjoUuw==
-X-Received: by 10.66.102.104 with SMTP id fn8mr8108976pab.129.1455780945551;
-        Wed, 17 Feb 2016 23:35:45 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([103.14.62.106])
-        by smtp.gmail.com with ESMTPSA id wh9sm7692424pab.8.2016.02.17.23.35.44
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 23:35:45 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=abMhx06D8blaS3f4OxdPFgJmNo4qpA35PI8yg0cC03g=;
+        b=FgpSI/Wn1j9ZXd1kIf59FZ2fhWUlIriCy/NrGSDpO5V3NfcvxffXRDk9ta+57T1+nC
+         mHGu7j/2o98wZT01BAxhjKeKX/CKp7P9eOoFcQ2alig1wkvvccPCl1nBmH/x888XF779
+         1u3qXjtIOladpwWSzrfqK6jfT0+f2czJheWnJBu32m5ot3SuS8ik8s7UY3OE3Zir0nk0
+         NQeH85L8jS/IkypjvVJuh4TZFWfjI1Ktkarbr9s4pEHEzciZo5mAOJmmA+52PNYZ8aTj
+         tunhE0Q1LKoGl/OX+DKM41BfvXmjNv1FF0xo/HlBLYCVunHTTDKF4rSqi17Njq17R1z8
+         hgXQ==
+X-Gm-Message-State: AG10YORm9YBdeCKNmZD7sL2OhOTCx6r7jtuTXfKBs18QOdKqfT2kpwmwP6xpzZ0PlvK/Uw==
+X-Received: by 10.66.248.168 with SMTP id yn8mr30852054pac.24.1455627964037;
+        Tue, 16 Feb 2016 05:06:04 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.135.170])
+        by smtp.gmail.com with ESMTPSA id 69sm45852793pfj.20.2016.02.16.05.06.02
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 16 Feb 2016 05:06:03 -0800 (PST)
+Date: Tue, 16 Feb 2016 18:36:00 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH 0/5] staging: iio: light: fix multiple checkpatch issues
-Date: Thu, 18 Feb 2016 15:35:35 +0800
-Message-Id: <cover.1455730714.git.eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: wilc1000: Remove unused function
+Message-ID: <20160216130600.GA5386@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Eliminate checkpatch checks and warnings in iio/light.
+Remove wilc_wlan_global_reset function since it is not used anywhere
+in this driver.
 
-Eva Rachel Retuya (5):
-  staging: iio: light: properly indent to match open parenthesis
-  staging: iio: light: omit space after a cast
-  staging: iio: light: fix block comments according to kernel coding
-    style
-  staging: iio: light: add space around '*"
-  staging: iio: light: fix multiple assignments in a single line
+This also silences the following sparse warning:
+drivers/staging/wilc1000/wilc_wlan.c:1120:6: warning: symbol
+'wilc_wlan_global_reset' was not declared. Should it be static?
 
- drivers/staging/iio/light/isl29018.c | 39 ++++++++-------
- drivers/staging/iio/light/isl29028.c | 27 ++++++-----
- drivers/staging/iio/light/tsl2583.c  | 92 ++++++++++++++++++++++--------------
- 3 files changed, 96 insertions(+), 62 deletions(-)
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/wilc1000/wilc_wlan.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
+diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
+index ef65e8e..c44b878 100644
+--- a/drivers/staging/wilc1000/wilc_wlan.c
++++ b/drivers/staging/wilc1000/wilc_wlan.c
+@@ -1117,12 +1117,6 @@ int wilc_wlan_start(struct wilc *wilc)
+ 	return (ret < 0) ? ret : 0;
+ }
+ 
+-void wilc_wlan_global_reset(struct wilc *wilc)
+-{
+-	acquire_bus(wilc, ACQUIRE_AND_WAKEUP);
+-	wilc->hif_func->hif_write_reg(wilc, WILC_GLB_RESET_0, 0x0);
+-	release_bus(wilc, RELEASE_ONLY);
+-}
+ int wilc_wlan_stop(struct wilc *wilc)
+ {
+ 	u32 reg = 0;
 -- 
 1.9.1
 
