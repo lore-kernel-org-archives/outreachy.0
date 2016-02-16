@@ -1,89 +1,102 @@
 X-GM-THRID: 6251802034906857472
-X-Received: by 10.66.231.4 with SMTP id tc4mr21075015pac.14.1455611097521;
-        Tue, 16 Feb 2016 00:24:57 -0800 (PST)
+X-Received: by 10.66.246.230 with SMTP id xz6mr20079012pac.29.1455611094286;
+        Tue, 16 Feb 2016 00:24:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.9 with SMTP id d9ls258850qgf.38.gmail; Tue, 16 Feb
- 2016 00:24:56 -0800 (PST)
-X-Received: by 10.129.51.2 with SMTP id z2mr20168775ywz.49.1455611096910;
-        Tue, 16 Feb 2016 00:24:56 -0800 (PST)
+Received: by 10.107.19.162 with SMTP id 34ls1758003iot.4.gmail; Tue, 16 Feb
+ 2016 00:24:53 -0800 (PST)
+X-Received: by 10.50.109.136 with SMTP id hs8mr16457033igb.12.1455611093935;
+        Tue, 16 Feb 2016 00:24:53 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id yd9si558906pab.1.2016.02.16.00.24.56
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id yd9si558718pab.1.2016.02.16.00.24.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 00:24:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Tue, 16 Feb 2016 00:24:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id fy10so59983499pac.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 00:24:56 -0800 (PST)
+Received: by mail-pa0-x230.google.com with SMTP id ho8so100735808pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 00:24:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=crc5hfCglEv/cKPwmd2inJna6m5cykD8cKsKs1g2N6Y=;
-        b=otbYAfRjjMk/URtRIW+lLpBXsjiORST0EvlBfHuK0AoAH1nuYnhY+pH7vPSZ1yUKLJ
-         r3002eWUAKkVWPb+nN7CR1hALDARXS3WfXNrMervEm3ZGP6oaLNwf6L9YEx78FfAxGfL
-         hRKSAq7iU/m1CG29AuvpXXnbTCp9KymjHxCsfQ2CpRSwjZ9AHVy68crMlX5jb3c0Eh5S
-         g7aV/Z5KWoV7hsAr566ZPF9OYJLIhgCl/LyfMijTnMLPjkZPyYcYTn9wl/fi86GblHlb
-         6lyc3/cHPgweRFgn+lpJgj6ZwN5nBOFju8h2aB7lQrhwFe4Oz31tuo20+WG9DWv3ymYu
-         28iw==
+        bh=N/1DGvrZIs5z25af5rrYMLo4S1Mm2XkPms/2lKVWSVY=;
+        b=kdm2Je8AS2GxRy/S00U1At5JwJQUaVGE5UM5ICDlMPIhuTQNPQRrfQfsgJYBFBI9Dn
+         auTFXcAd7WNpypUuAjvzRdRfqt+uMtEvZhUs5CqrTMdItdQHTDpeX0Cw5ZLhHoQkl8sV
+         7zQ9hvA/d1emKN1UhqVp4gfduInUQWLt++y1o2SF98UBMPEo1imPLrdEoIUjFKyUt4En
+         Kb/MWMSkDpEBiLYjv112+0uA1F0/kGY+srkILMblBJi/M2Ku8mXC9UFyhQ5aV7ZWJd2R
+         fAONrf29CPdw3w2IyFSNFawSPeZoov1uaASBoVIopVV6CKQRHHusnbp3lyhsO6tKEtfj
+         IDQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=crc5hfCglEv/cKPwmd2inJna6m5cykD8cKsKs1g2N6Y=;
-        b=h85eQyE7EqHeJVQltCyDzCJpBcN90h+Uh7/8urBGrlEV8UrK67pv/GqWUMw6dM0RRZ
-         POauuqmwtlaxYcilOjetQ+D2tI6ct6YKs+Aj/Pzf6lvqfDwS4vW826dSvpwc6mVPPv84
-         74CR5wzcNW7Y5zl+v3oQAQhA3WtJ7o4/+FC8zzSspNmty+XulKkg3KC/Fe1Y3ijQOIuJ
-         RXW0rYTgYIKUFglFBE+7NjUpYtfMzambwlw4GzMsSvBehY6xgFPZ6Jqg+bQLCnwfwSMR
-         4PugwQJadMM+o+U7vvRQy5jlKfiskupuKksDzvdLPcZXcyDfEs4lSP0DtKRuMytmTh5b
-         zVqA==
-X-Gm-Message-State: AG10YORPA8SOSi4RssobTqnkNVQUWrRzV0UQiLWDINK5Axrh4FIJ/0aLpqFQ0dyMFD6E8A==
-X-Received: by 10.66.147.164 with SMTP id tl4mr28581144pab.40.1455611096803;
-        Tue, 16 Feb 2016 00:24:56 -0800 (PST)
+        bh=N/1DGvrZIs5z25af5rrYMLo4S1Mm2XkPms/2lKVWSVY=;
+        b=j4uG2zW1pvmt/Kw55I2eQWf/mCGutWt6Pf5b0w9WwvusQv+zTbuVgAHGYzIVl5tiO0
+         wlaQ1hdgTRTCnbYXwLxTP5fhIMfGADO3XZwCi6En5NrPH3h3CL/Rh+VXD8WDglbZrI3g
+         /VVIb1lOMUltHl3HuUce0KUfbeQQnz/cnmGgp/Z50IVEIxS1AzMP0u0184ESAw8KvH1s
+         cRR7TK6Zl89HJEi/38f1gdVu40gi0pX38i9QHp2nawoAxm5MXbsNz3XmD3gTuz6qEdGG
+         SPBSalOMIAMkeC0ePE2nlORk7dqmNiuuULnVsUgu0cbESb5e8AJiqPDNHiosNA6FgGHW
+         S6dQ==
+X-Gm-Message-State: AG10YORIVtdKtPqG76lpYGxTkD6MF9GObuJcbT0Vu5NU+ec9ZMhL4RskGm3BGTX9ife6uQ==
+X-Received: by 10.66.190.168 with SMTP id gr8mr29406718pac.23.1455611093827;
+        Tue, 16 Feb 2016 00:24:53 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-Mint ([203.215.121.200])
-        by smtp.gmail.com with ESMTPSA id v29sm43713209pfa.31.2016.02.16.00.24.55
+        by smtp.gmail.com with ESMTPSA id ey2sm43771917pab.2.2016.02.16.00.24.52
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 00:24:56 -0800 (PST)
+        Tue, 16 Feb 2016 00:24:53 -0800 (PST)
 From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v3 2/2] staging: wilc1000: remove spaces around '->'
-Date: Tue, 16 Feb 2016 16:24:45 +0800
-Message-Id: <1426285ff43da73736223644afbcec39f4f2c81e.1455610768.git.eraretuya@gmail.com>
+Subject: [PATCH v3 1/2] staging: wilc1000: remove trailing whitespace
+Date: Tue, 16 Feb 2016 16:24:44 +0800
+Message-Id: <ac5a286cac1c5e73348c457e61a20f21dae086c6.1455610768.git.eraretuya@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1455610768.git.eraretuya@gmail.com>
 References: <cover.1455610768.git.eraretuya@gmail.com>
 In-Reply-To: <cover.1455610768.git.eraretuya@gmail.com>
 References: <cover.1455610768.git.eraretuya@gmail.com>
 
-Delete the space around '->' as it is prohibited and breaks the code.
-Checkpatch found this issue.
+Remove unnecessary whitespaces as pointed out by checkpatch:
 
-ERROR: spaces prohibited around that '->'
+ERROR: trailing whitespace
 
 Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/wilc1000/host_interface.c | 2 +-
+ drivers/staging/wilc1000/linux_mon.c      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index d4705b7..5649476 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -2126,7 +2126,7 @@ static int start_ap(struct wiphy *wiphy, struct net_device *dev,
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index d1eedfb..04337c7 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -3352,7 +3352,7 @@ static s32 host_int_get_assoc_res_info(struct wilc_vif *vif,
+ 		PRINT_ER("Failed to send association response config packet\n");
+ 		return -EINVAL;
+ 	}
+-	
++
+ 	*pu32RcvdAssocRespInfoLen = wid.size;
+ 	return result;
+ }
+diff --git a/drivers/staging/wilc1000/linux_mon.c b/drivers/staging/wilc1000/linux_mon.c
+index 21f35d7..9fcb497 100644
+--- a/drivers/staging/wilc1000/linux_mon.c
++++ b/drivers/staging/wilc1000/linux_mon.c
+@@ -302,7 +302,7 @@ struct net_device *WILC_WFI_init_mon_interface(const char *name, struct net_devi
+ 	struct WILC_WFI_mon_priv *priv;
  
- 	priv = wiphy_priv(wiphy);
- 	vif = netdev_priv(dev);
--	wl = vif ->wilc;
-+	wl = vif->wilc;
- 	PRINT_D(HOSTAPD_DBG, "Starting ap\n");
+ 	/*If monitor interface is already initialized, return it*/
+-	if (wilc_wfi_mon) 
++	if (wilc_wfi_mon)
+ 		return wilc_wfi_mon;
  
- 	PRINT_D(HOSTAPD_DBG, "Interval = %d\n DTIM period = %d\n Head length = %zu Tail length = %zu\n",
+ 	wilc_wfi_mon = alloc_etherdev(sizeof(struct WILC_WFI_mon_priv));
 -- 
 1.9.1
 
