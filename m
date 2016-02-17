@@ -1,189 +1,114 @@
-X-GM-THRID: 6250087330161360896
-X-Received: by 10.51.17.34 with SMTP id gb2mr15890656igd.10.1455211855583;
-        Thu, 11 Feb 2016 09:30:55 -0800 (PST)
+X-GM-THRID: 6250295934225219584
+X-Received: by 10.28.45.82 with SMTP id t79mr2357647wmt.2.1455670721466;
+        Tue, 16 Feb 2016 16:58:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.9 with SMTP id g9ls1349140qgd.40.gmail; Thu, 11 Feb
- 2016 09:30:54 -0800 (PST)
-X-Received: by 10.129.159.131 with SMTP id w125mr17303721ywg.26.1455211854937;
-        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
-        by gmr-mx.google.com with ESMTPS id y131si673808ywc.0.2016.02.11.09.30.54
+Received: by 10.28.30.145 with SMTP id e139ls698133wme.39.gmail; Tue, 16 Feb
+ 2016 16:58:40 -0800 (PST)
+X-Received: by 10.28.129.210 with SMTP id c201mr29015wmd.1.1455670717950;
+        Tue, 16 Feb 2016 16:58:37 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v197si765376wmv.1.2016.02.16.16.58.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
+        Tue, 16 Feb 2016 16:58:37 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22b.google.com with SMTP id y89so43110886qge.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 09:30:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Yz1dtWqwO6oz6vI9AxdyUhprBumBIOvtFTkrBH33HUk=;
-        b=EW9STZTaM18HMvIgtyz0QUWkU9jyB7mvq12xXRDbY7HqaX4U2QX7Wk5HprsUa4BdPi
-         ku/8EV8U6IG03/FAomtqQ8AYcfh81bX703V6Mn4LwLJp2sp7sufol3cJTgsg5ctNVwIu
-         55paREg5Ki9TfxV91SWP9vPU1YxRjcATru4nNq4cMssvQ2Tcu1GmMqx95QMM+1j8yEPC
-         TwuHiuCbflyfxeqWyQFymdCen9O/f0ld62QAkTTe5O8+zi00Qa+OUumPxkU87jIss146
-         Bh2F8s9AAlK8fNffLmhN8WdufxOVyMuwzZPy7TszR9FElnGhRW4WS14gRuJ4Mc8mG/gv
-         u3og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Yz1dtWqwO6oz6vI9AxdyUhprBumBIOvtFTkrBH33HUk=;
-        b=WBPGTj5mQxSfKg+WkNl17VCUTXW0W34iOnckDM9P/hrMiQgInY6LShXUXEUfhA/XFi
-         b5ROOjP0wCY4LhxD+SsiSsIfVCVLcguJ61KQ3Vf1g8vuq1qBXhOASg9igzhShD09eHGg
-         6GUUkpQfdOHDFvTLlS7lk8y273RQcXmF8CV8dZ7WcFihAnhnEK7YtPE/6ddumX4saiai
-         e+tvr8ij5YTE38RAUOIwoy06IGq5bnf4CfFeac7Oti13G0feWe2muXY/FxRDQcM7WaC/
-         zXIJ+YmAXHGUFSYlDWS1DqaTCE7mYAvmDs6/GkjqwlvBel71LTbnVVZ+V/O3X42kJFUy
-         ubMQ==
-X-Gm-Message-State: AG10YORItCYZCg5Sb6uzgrz75ps44yzQ4QLntoQpPOnPa3sTCSsrMz/4BiwcKF+PPEj6QQ==
-X-Received: by 10.140.43.67 with SMTP id d61mr56512709qga.18.1455211854799;
-        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id 191sm3731265qhq.17.2016.02.11.09.30.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 09:30:54 -0800 (PST)
-Date: Thu, 11 Feb 2016 17:30:16 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: xgifb: Remove unneeded parentheses
-Message-ID: <20160211223016.GA4694@janani-Inspiron-3521>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,457,1449529200"; 
+   d="scan'208";a="203415785"
+Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Feb 2016 01:58:37 +0100
+Date: Tue, 16 Feb 2016 19:58:34 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Alison Schofield <amsfield22@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: vt6656: move local var
+ init into declaration
+In-Reply-To: <20160216205854.GA3156@d830.WORKGROUP>
+Message-ID: <alpine.DEB.2.10.1602161958060.2690@hadrien>
+References: <20160212070014.GA13288@d830.WORKGROUP> <1455302683-5119-1-git-send-email-amsfield22@gmail.com> <alpine.DEB.2.10.1602121954390.2510@hadrien> <20160216205854.GA3156@d830.WORKGROUP>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove unneeded parentheses around the right hand side of assignments as
-they are not needed. Semantic patch:
 
-@@
-expression a, b, c;
-@@
 
-(
-  a = (b == c)
-|
-  a =
-- (
-  b
-- )
-)
+On Tue, 16 Feb 2016, Alison Schofield wrote:
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/xgifb/XGI_main_26.c | 20 ++++++++++----------
- drivers/staging/xgifb/vb_setmode.c  | 14 +++++++-------
- 2 files changed, 17 insertions(+), 17 deletions(-)
+> On Fri, Feb 12, 2016 at 07:58:05PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Fri, 12 Feb 2016, Alison Schofield wrote:
+> >
+> > > Improve readability by initializing local variables at declaration.
+> > >
+> > > In one instance, vnt_start_interrupt_urb_complete(), also use that
+> > > local variable in subsequent switch.
+> > >
+> > > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+> > > ---
+>
+> .............snip
+>
+> > >
+> > > diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+> > > index bec5baf..f27eb9a 100644
+> > > --- a/drivers/staging/vt6656/usbpipe.c
+> > > +++ b/drivers/staging/vt6656/usbpipe.c
+> > > @@ -101,9 +101,9 @@ void vnt_control_in_u8(struct vnt_private *priv, u8 reg, u8 reg_off, u8 *data)
+> > >  static void vnt_start_interrupt_urb_complete(struct urb *urb)
+> > >  {
+> > >  	struct vnt_private *priv = urb->context;
+> > > -	int status;
+> > > +	int status = urb->status;
+> > >
+> > > -	switch (urb->status) {
+> > > +	switch (status) {
+> > >  	case 0:
+> > >  	case -ETIMEDOUT:
+> > >  		break;
+> > > @@ -116,8 +116,6 @@ static void vnt_start_interrupt_urb_complete(struct urb *urb)
+> > >  		break;
+> > >  	}
+> > >
+> > > -	status = urb->status;
+> > > -
+> > >  	if (status != STATUS_SUCCESS) {
+> >
+> > Not related to this patch, but this test is very unlikeable.
+> > SUCCESS_STATUS is defined in the following (vt6656/device.h)
+> >
+> > enum {
+> >         STATUS_SUCCESS = 0,
+> >         STATUS_FAILURE,
+> >         STATUS_RESOURCES,
+> >         STATUS_PENDING,
+> > };
+> >
+> > This is not at all the same kind of value as -ETIMEDOUT, etc.  The urb
+> > status is something that is not set in this driver as well.  I guess is it
+> > set in the USB library, where STATUS_SUCCESS is not known.  So status
+> > should not be compared against this value.
+> >
+> > julia
+> >
+> I see that a "successful" urb status is simply 0 and the failures
+> are standard E* statuses.  This is evident directly above in the
+> switch, and I confirmed it in drivers/usb code samples.
+>
+> The STATUS_SUCCESS is used correctly elsewhere for NDIS status per it's
+> definition.
+>
+> I'll send a patch for this.
+>
+> When I do a subsequent patch like this, should I send it as a reply
+> here in this email thread, or post a new message? I'm not sure if it
+> would get buried in here since Greg has already taken the first patch?
 
-diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
-index 3f20f91..733cd8e 100644
---- a/drivers/staging/xgifb/XGI_main_26.c
-+++ b/drivers/staging/xgifb/XGI_main_26.c
-@@ -655,26 +655,26 @@ static void XGIfb_pre_setmode(struct xgifb_video_info *xgifb_info)
- 
- 	switch (xgifb_info->display2) {
- 	case XGIFB_DISP_CRT:
--		cr30 = (SIS_VB_OUTPUT_CRT2 | SIS_SIMULTANEOUS_VIEW_ENABLE);
-+		cr30 = SIS_VB_OUTPUT_CRT2 | SIS_SIMULTANEOUS_VIEW_ENABLE;
- 		cr31 |= SIS_DRIVER_MODE;
- 		break;
- 	case XGIFB_DISP_LCD:
--		cr30 = (SIS_VB_OUTPUT_LCD | SIS_SIMULTANEOUS_VIEW_ENABLE);
-+		cr30 = SIS_VB_OUTPUT_LCD | SIS_SIMULTANEOUS_VIEW_ENABLE;
- 		cr31 |= SIS_DRIVER_MODE;
- 		break;
- 	case XGIFB_DISP_TV:
- 		if (xgifb_info->TV_type == TVMODE_HIVISION)
--			cr30 = (SIS_VB_OUTPUT_HIVISION
--					| SIS_SIMULTANEOUS_VIEW_ENABLE);
-+			cr30 = SIS_VB_OUTPUT_HIVISION
-+					| SIS_SIMULTANEOUS_VIEW_ENABLE;
- 		else if (xgifb_info->TV_plug == TVPLUG_SVIDEO)
--			cr30 = (SIS_VB_OUTPUT_SVIDEO
--					| SIS_SIMULTANEOUS_VIEW_ENABLE);
-+			cr30 = SIS_VB_OUTPUT_SVIDEO
-+					| SIS_SIMULTANEOUS_VIEW_ENABLE;
- 		else if (xgifb_info->TV_plug == TVPLUG_COMPOSITE)
--			cr30 = (SIS_VB_OUTPUT_COMPOSITE
--					| SIS_SIMULTANEOUS_VIEW_ENABLE);
-+			cr30 = SIS_VB_OUTPUT_COMPOSITE
-+					| SIS_SIMULTANEOUS_VIEW_ENABLE;
- 		else if (xgifb_info->TV_plug == TVPLUG_SCART)
--			cr30 = (SIS_VB_OUTPUT_SCART
--					| SIS_SIMULTANEOUS_VIEW_ENABLE);
-+			cr30 = SIS_VB_OUTPUT_SCART
-+					| SIS_SIMULTANEOUS_VIEW_ENABLE;
- 		cr31 |= SIS_DRIVER_MODE;
- 
- 		if (XGIfb_tvmode == 1 || xgifb_info->TV_type == TVMODE_PAL)
-diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
-index c886dd2..6903c81 100644
---- a/drivers/staging/xgifb/vb_setmode.c
-+++ b/drivers/staging/xgifb/vb_setmode.c
-@@ -1905,8 +1905,8 @@ static void XGI_GetVBInfo(unsigned short ModeIdIndex,
- 	push <<= 8;
- 	tempax = temp << 8;
- 	tempbx = tempbx | tempax;
--	temp = (SetCRT2ToDualEdge | SetCRT2ToYPbPr525750 | XGI_SetCRT2ToLCDA
--		| SetInSlaveMode | DisableCRT2Display);
-+	temp = SetCRT2ToDualEdge | SetCRT2ToYPbPr525750 | XGI_SetCRT2ToLCDA
-+		| SetInSlaveMode | DisableCRT2Display;
- 	temp = 0xFFFF ^ temp;
- 	tempbx &= temp;
- 
-@@ -2887,7 +2887,7 @@ static void XGI_SetGroup1(unsigned short ModeIdIndex,
- 	xgifb_reg_set(pVBInfo->Part1Port, 0x0C, temp);
- 	temp = tempcx & 0x00FF;
- 	xgifb_reg_set(pVBInfo->Part1Port, 0x0D, temp);
--	tempcx = (pVBInfo->VGAVT - 1);
-+	tempcx = pVBInfo->VGAVT - 1;
- 	temp = tempcx & 0x00FF;
- 
- 	xgifb_reg_set(pVBInfo->Part1Port, 0x0E, temp);
-@@ -2925,7 +2925,7 @@ static void XGI_SetGroup1(unsigned short ModeIdIndex,
- 	temp = tempbx & 0x00FF;
- 	xgifb_reg_set(pVBInfo->Part1Port, 0x10, temp);
- 	temp = ((tempbx & 0xFF00) >> 8) << 4;
--	temp = ((tempcx & 0x000F) | (temp));
-+	temp = (tempcx & 0x000F) | (temp);
- 	xgifb_reg_set(pVBInfo->Part1Port, 0x11, temp);
- 	tempax = 0;
- 
-@@ -4080,7 +4080,7 @@ static void XGI_SetGroup4(unsigned short ModeIdIndex,
- 	tempcx |= 0x04000;
- 
- 	if (tempeax <= tempebx) {
--		tempcx = (tempcx & (~0x4000));
-+		tempcx = tempcx & (~0x4000);
- 		tempeax = pVBInfo->VGAVDE;
- 	} else {
- 		tempeax -= tempebx;
-@@ -4130,7 +4130,7 @@ static void XGI_SetGroup4(unsigned short ModeIdIndex,
- 		temp = (tempax & 0xFF00) >> 8;
- 		temp = (temp & 0x0003) << 4;
- 		xgifb_reg_set(pVBInfo->Part4Port, 0x1E, temp);
--		temp = (tempax & 0x00FF);
-+		temp = tempax & 0x00FF;
- 		xgifb_reg_set(pVBInfo->Part4Port, 0x1D, temp);
- 
- 		if (pVBInfo->VBInfo & (SetCRT2ToTV | SetCRT2ToHiVision)) {
-@@ -4932,7 +4932,7 @@ static void XGI_SetCRT2ModeRegs(struct vb_device_info *pVBInfo)
- 			tempcl -= ModeVGA;
- 			if (tempcl >= 0) {
- 				/* BT Color */
--				tempah = (0x008 >> tempcl);
-+				tempah = 0x008 >> tempcl;
- 				if (tempah == 0)
- 					tempah = 1;
- 				tempah |= 0x040;
--- 
-2.5.0
+If Greg already took the first patch, it could be better to start a new
+thread.
 
+julia
 
