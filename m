@@ -1,230 +1,78 @@
-X-GM-THRID: 6401434005655257088
-X-Received: by 10.99.54.79 with SMTP id d76mr4493317pga.148.1490449999797;
-        Sat, 25 Mar 2017 06:53:19 -0700 (PDT)
+X-GM-THRID: 6252226232544395264
+X-Received: by 10.107.152.10 with SMTP id a10mr2601313ioe.28.1455710995448;
+        Wed, 17 Feb 2016 04:09:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.48.4 with SMTP id w4ls2848458iow.34.gmail; Sat, 25 Mar
- 2017 06:53:18 -0700 (PDT)
-X-Received: by 10.107.11.35 with SMTP id v35mr4288094ioi.54.1490449998867;
-        Sat, 25 Mar 2017 06:53:18 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id 2si1044066pfz.1.2017.03.25.06.53.18
+Received: by 10.182.28.98 with SMTP id a2ls2276025obh.80.gmail; Wed, 17 Feb
+ 2016 04:09:55 -0800 (PST)
+X-Received: by 10.182.46.201 with SMTP id x9mr999497obm.43.1455710995149;
+        Wed, 17 Feb 2016 04:09:55 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x234.google.com (mail-qg0-x234.google.com. [2607:f8b0:400d:c04::234])
+        by gmr-mx.google.com with ESMTPS id v197si48635ywa.1.2016.02.17.04.09.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Mar 2017 06:53:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Wed, 17 Feb 2016 04:09:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::234 as permitted sender) client-ip=2607:f8b0:400d:c04::234;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 79so3005391pgf.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Mar 2017 06:53:18 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qg0-x234.google.com with SMTP id y9so9699963qgd.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 04:09:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MHF6uHrpFWNCdlun22Si0VxTxc6VTQh6tEU2PB2tmC4=;
-        b=X8+ONJg0a9DHfrtUG0WOwYXgM4/ZRMm65wIxAp+ovtwH9AaYYbXPA/Xk4tt85AO5M9
-         MH7N/DYp0nje90ReDn4ow2b1zLFSNMuXy0o8ZXa1KhxOoCNC2RoIVLdv4igHg2HVnxsW
-         RlPOl22av1zbW4Ye43eHXMufBqcHVaCJxa0AJKZLc1HpX9y+AJBrFLqxxEWqnIvSoVI/
-         sw3EaaoUeZFPVQo5059qMc9DnPLc9kjsnP9x1GBo2qwCQzDE7JT5Nc4bB0WZ4JDQzpGo
-         AhOAeJ6fKbr7XdXwv8MuaG9wiDmkq/FooyZR9cTTkmz9lXc42mDzFB/0cYc8geQ442kv
-         yRBw==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=LzGIrh3w5Cav3UABr94yiPJ0c8fh3tGeyIHNxwCnccU=;
+        b=b38PxhZPgBpqG6BHZakl+T0ZI7vqZTWARcJ9Sb5LqXloofTGJ6j9X0jAs1m4SvsahA
+         XkkGYnm/pmi2XMhhSUu1T3ibivcx2hWIHoal6EN+U3cBkSnrVJ2fuctNEnMiRT3u+15E
+         mgTBrxlu7MS4XjzgDrqrXu1SrDXzSXvVcYxoPJdMF4Xwm1QmNfXGGx/HnedwsYKH/Afh
+         ANjVIcn/IvZZDMay7qoTeEeadbw20ALONi8lKAiS1NB7oq9+IGNvMd7zZMvCctYw72ys
+         nkJhnK+3RuNxDES1XSxAoJkKcw5ghvzr2i7ARc3zpYB+6U2TeFOhQq9HDIdN7nPkDcZ+
+         NLhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MHF6uHrpFWNCdlun22Si0VxTxc6VTQh6tEU2PB2tmC4=;
-        b=uUsjUSTJX11kjtX2VcXzPc3lEOHHIgh9+dne19Z3IpOzHIBIpoRzOcXVyMmjcOQdN9
-         +AyDRsRhMmxeTNHiFQvsepXRkGY4Y8nlleajVqEtqvRNTxYhvJyRh1BfTNiB1EfDyDzi
-         qSAwSXQWZM4yU7h5N8n2AFHmmCkDliOTr9HQ8Nzi4lnccBi1AOLUuv9gUenOsLZrg3wX
-         RnLzS5jFhA+DBOoq/J5UBGU5aOqQYJZEB945We7wT6pBi7mMSHSdtijXdT6RP7RPNEtb
-         Htvh0Upz7be/qHo5tHy6tJih6tLapbqeZWR7sbzVVJaC9+fJPxpGkcJt7mkKCdSFVHGb
-         pT6Q==
-X-Gm-Message-State: AFeK/H2tGWmGdz/2zoxNhnRoVmwhu3F2dVkDtZpiJM5ji5ghjYevHepkMMqC7e0RoRXOqg==
-X-Received: by 10.98.33.155 with SMTP id o27mr15367718pfj.5.1490449998524;
-        Sat, 25 Mar 2017 06:53:18 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id l127sm10910830pga.7.2017.03.25.06.53.15
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Mar 2017 06:53:16 -0700 (PDT)
-Date: Sat, 25 Mar 2017 19:23:13 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: wensong@linux-vs.org
-Cc: Simon Horman <horms@verge.net.au>, Julian Anastasov <ja@ssi.bg>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
-	"David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org,
-	lvs-devel@vger.kernel.org, netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] net: netfilters: Remove extra parenthesis
-Message-ID: <20170325135313.GA10861@arushi-HP-Pavilion-Notebook>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=LzGIrh3w5Cav3UABr94yiPJ0c8fh3tGeyIHNxwCnccU=;
+        b=JDQ8EOr7OnfJploSJgx0p4MGYkHXSqerYRPa79CIDMwGHUVJqJJnGEIZWQy+BCJX8T
+         ZHFRZV/UxhskTqHPxmjfJDiEXcyZBgGpPc3rkxR2BAgvjnXcQG9f2LM8JJ3d8U6ID+CT
+         VIJ1jKHup+xtFtcKloNHWhAnRgOeP930D2Fq/hWGyivygsKfhNjxVDGZ6ymPc4D+o7WF
+         PztWltldtY+xtp4PsXppgkSGgGquLbLpUv79HgJufeanmPchzVFTii3Ph3hIOi8tlfbB
+         aifeeJd21cmqpkdTpgIUN4wnEQqMHYTcR5JT3iBCMJqpurv271XxkGZ+tnFS4nN4MWJ1
+         R/+w==
+X-Gm-Message-State: AG10YORXwnUMPYoCwFAmIEzEwlJgJjhHO9fxVI8voGhJhfb5Yir3qTbs93OiH393VlIfun5MquXFPTvd9eumcw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.140.167.135 with SMTP id n129mr1322666qhn.73.1455710994967;
+ Wed, 17 Feb 2016 04:09:54 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Wed, 17 Feb 2016 04:09:54 -0800 (PST)
+In-Reply-To: <CAK-LDbLg72-jAbGvBtLwAj3H4KOvTxtSUXEXrXFVvnUZdtaaTg@mail.gmail.com>
+References: <CAK-LDbLg72-jAbGvBtLwAj3H4KOvTxtSUXEXrXFVvnUZdtaaTg@mail.gmail.com>
+Date: Wed, 17 Feb 2016 17:39:54 +0530
+Message-ID: <CA+5yK5FCp9S_h+v2m8ApWMuex2d6M=kz20pm46F+FussTuZ9Tg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Red hat women in open source
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Vaishali Thakkar <vthakkar1994@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Rmoved parentheses on the right hand side of assignment, as they are
-not required. The following coccinelle script was used to fix this
-issue:
+On Wed, Feb 17, 2016 at 5:20 PM, Vaishali Thakkar
+<vthakkar1994@gmail.com> wrote:
+> Dear all,
+>
+> I have a great news to share with you all. Our very own Julia Lawall
+> is chosen as a finalist for the Women in Open Source Community Award!
+> Red hat women in open source award recognizes the important
+> contributions that women make to and in open source.
+>
 
-@@
-local idexpression id;
-expression e;
-@@
+This is awesome! Congrats Julia! Rooting for you to win :)
 
-id =
--(
-e
--)
+> Final selection is based on public voting round. And online voting is
+> open now[0]. So, please vote for her and lets make her win. :)
+>
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- net/netfilter/ipvs/ip_vs_proto_tcp.c   | 2 +-
- net/netfilter/nf_conntrack_netlink.c   | 8 ++++----
- net/netfilter/nf_conntrack_proto_tcp.c | 2 +-
- net/netfilter/nft_fib.c                | 2 +-
- net/netfilter/nft_set_bitmap.c         | 2 +-
- net/netfilter/x_tables.c               | 2 +-
- net/netfilter/xt_socket.c              | 8 ++++----
- 7 files changed, 13 insertions(+), 13 deletions(-)
+Voted!
 
-diff --git a/net/netfilter/ipvs/ip_vs_proto_tcp.c b/net/netfilter/ipvs/ip_vs_proto_tcp.c
-index 5117bcb7d2f0..9f2abda017c4 100644
---- a/net/netfilter/ipvs/ip_vs_proto_tcp.c
-+++ b/net/netfilter/ipvs/ip_vs_proto_tcp.c
-@@ -487,7 +487,7 @@ static struct tcp_states_t tcp_states_dos [] = {
- 
- static void tcp_timeout_change(struct ip_vs_proto_data *pd, int flags)
- {
--	int on = (flags & 1);		/* secure_tcp */
-+	int on = flags & 1;		/* secure_tcp */
- 
- 	/*
- 	** FIXME: change secure_tcp to independent sysctl var
-diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
-index 6806b5e73567..aa344c5868c5 100644
---- a/net/netfilter/nf_conntrack_netlink.c
-+++ b/net/netfilter/nf_conntrack_netlink.c
-@@ -467,7 +467,7 @@ ctnetlink_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
- 	struct nlattr *nest_parms;
- 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
- 
--	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_NEW);
-+	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_NEW;
- 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
- 	if (nlh == NULL)
- 		goto nlmsg_failure;
-@@ -1983,7 +1983,7 @@ ctnetlink_ct_stat_cpu_fill_info(struct sk_buff *skb, u32 portid, u32 seq,
- 	struct nfgenmsg *nfmsg;
- 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
- 
--	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS_CPU);
-+	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS_CPU;
- 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
- 	if (nlh == NULL)
- 		goto nlmsg_failure;
-@@ -2066,7 +2066,7 @@ ctnetlink_stat_ct_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
- 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
- 	unsigned int nr_conntracks = atomic_read(&net->ct.count);
- 
--	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS);
-+	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS;
- 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
- 	if (nlh == NULL)
- 		goto nlmsg_failure;
-@@ -3223,7 +3223,7 @@ ctnetlink_exp_stat_fill_info(struct sk_buff *skb, u32 portid, u32 seq, int cpu,
- 	struct nfgenmsg *nfmsg;
- 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
- 
--	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_EXP_GET_STATS_CPU);
-+	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_EXP_GET_STATS_CPU;
- 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
- 	if (nlh == NULL)
- 		goto nlmsg_failure;
-diff --git a/net/netfilter/nf_conntrack_proto_tcp.c b/net/netfilter/nf_conntrack_proto_tcp.c
-index b122e9dacfed..2e5e4a4d4778 100644
---- a/net/netfilter/nf_conntrack_proto_tcp.c
-+++ b/net/netfilter/nf_conntrack_proto_tcp.c
-@@ -789,7 +789,7 @@ static int tcp_error(struct net *net, struct nf_conn *tmpl,
- 	}
- 
- 	/* Check TCP flags. */
--	tcpflags = (tcp_flag_byte(th) & ~(TCPHDR_ECE|TCPHDR_CWR|TCPHDR_PSH));
-+	tcpflags = tcp_flag_byte(th) & ~(TCPHDR_ECE|TCPHDR_CWR|TCPHDR_PSH);
- 	if (!tcp_valid_flags[tcpflags]) {
- 		if (LOG_INVALID(net, IPPROTO_TCP))
- 			nf_log_packet(net, pf, 0, skb, NULL, NULL, NULL,
-diff --git a/net/netfilter/nft_fib.c b/net/netfilter/nft_fib.c
-index 29a4906adc27..c907c27b0374 100644
---- a/net/netfilter/nft_fib.c
-+++ b/net/netfilter/nft_fib.c
-@@ -35,7 +35,7 @@ int nft_fib_validate(const struct nft_ctx *ctx, const struct nft_expr *expr,
- 	switch (priv->result) {
- 	case NFT_FIB_RESULT_OIF: /* fallthrough */
- 	case NFT_FIB_RESULT_OIFNAME:
--		hooks = (1 << NF_INET_PRE_ROUTING);
-+		hooks = 1 << NF_INET_PRE_ROUTING;
- 		break;
- 	case NFT_FIB_RESULT_ADDRTYPE:
- 		if (priv->flags & NFTA_FIB_F_IIF)
-diff --git a/net/netfilter/nft_set_bitmap.c b/net/netfilter/nft_set_bitmap.c
-index 152d226552c1..09867146539e 100644
---- a/net/netfilter/nft_set_bitmap.c
-+++ b/net/netfilter/nft_set_bitmap.c
-@@ -47,7 +47,7 @@ struct nft_bitmap {
- 
- static inline void nft_bitmap_location(u32 key, u32 *idx, u32 *off)
- {
--	u32 k = (key << 1);
-+	u32 k = key << 1;
- 
- 	*idx = k / BITS_PER_BYTE;
- 	*off = k % BITS_PER_BYTE;
-diff --git a/net/netfilter/x_tables.c b/net/netfilter/x_tables.c
-index 14857afc9937..7a4a9beadedb 100644
---- a/net/netfilter/x_tables.c
-+++ b/net/netfilter/x_tables.c
-@@ -506,7 +506,7 @@ static int xt_check_entry_match(const char *match, const char *target,
- 			return -EINVAL;
- 
- 		length -= pos->u.match_size;
--		pos = ((void *)((char *)(pos) + (pos)->u.match_size));
-+		pos = (void *)((char *)(pos) + (pos)->u.match_size);
- 	} while (length > 0);
- 
- 	return 0;
-diff --git a/net/netfilter/xt_socket.c b/net/netfilter/xt_socket.c
-index 770bbec878f1..bf86e12808bd 100644
---- a/net/netfilter/xt_socket.c
-+++ b/net/netfilter/xt_socket.c
-@@ -65,9 +65,9 @@ socket_match(const struct sk_buff *skb, struct xt_action_param *par,
- 		/* Ignore sockets listening on INADDR_ANY,
- 		 * unless XT_SOCKET_NOWILDCARD is set
- 		 */
--		wildcard = (!(info->flags & XT_SOCKET_NOWILDCARD) &&
-+		wildcard = !(info->flags & XT_SOCKET_NOWILDCARD) &&
- 			    sk_fullsock(sk) &&
--			    inet_sk(sk)->inet_rcv_saddr == 0);
-+			    inet_sk(sk)->inet_rcv_saddr == 0;
- 
- 		/* Ignore non-transparent sockets,
- 		 * if XT_SOCKET_TRANSPARENT is used
-@@ -122,9 +122,9 @@ socket_mt6_v1_v2_v3(const struct sk_buff *skb, struct xt_action_param *par)
- 		/* Ignore sockets listening on INADDR_ANY
- 		 * unless XT_SOCKET_NOWILDCARD is set
- 		 */
--		wildcard = (!(info->flags & XT_SOCKET_NOWILDCARD) &&
-+		wildcard = !(info->flags & XT_SOCKET_NOWILDCARD) &&
- 			    sk_fullsock(sk) &&
--			    ipv6_addr_any(&sk->sk_v6_rcv_saddr));
-+			    ipv6_addr_any(&sk->sk_v6_rcv_saddr);
- 
- 		/* Ignore non-transparent sockets,
- 		 * if XT_SOCKET_TRANSPARENT is used
--- 
-2.11.0
-
+Amitoj
 
