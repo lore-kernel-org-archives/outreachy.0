@@ -1,86 +1,132 @@
-X-GM-THRID: 6256372514284371968
-X-Received: by 10.182.24.41 with SMTP id r9mr9431573obf.25.1456675239155;
-        Sun, 28 Feb 2016 08:00:39 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.65.202 with SMTP id z10ls949863obs.31.gmail; Sun, 28 Feb
- 2016 08:00:38 -0800 (PST)
-X-Received: by 10.182.75.196 with SMTP id e4mr4943385obw.36.1456675238881;
-        Sun, 28 Feb 2016 08:00:38 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id y20si1023810pfa.2.2016.02.28.08.00.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 08:00:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id bj10so8062395pad.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 08:00:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=hY8ICRINdWsN3kx0Oiwjy4i30UYLP+LksPuow7NoeYc=;
-        b=WBruUiZytYbdo9c5qLUJIGVRnrB+iP9z6IuFjhLsmEifEN4EBFBJ7V8DGymovsaicM
-         GiZxZZT3UM2xRu4l1w4SRg/RQIHJRpY7xwsC58QOblOaV4vB4naJsyrq6wulTLRIVktL
-         /JD/louAV7J51CjMmLfjDCiixhf6/Z208skwuvxA8ZdGLAcUBFynA/UwCtclGRHVvHz4
-         b83rg8dr4ha1I28tpruUlAtxb9Ef2PFhW91xxIFCR+poCNnCdSeSdZhvdwDdt2/Ac9zh
-         eRnIsKjse8DFrO4iBxtLKB1wJZxgHSNB0F3sR8/m15gKzSFHvY97XL3qxSuW4cm/P43W
-         o7yA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=hY8ICRINdWsN3kx0Oiwjy4i30UYLP+LksPuow7NoeYc=;
-        b=Ap9bmCvEWoLb56t1aZ0PXJgAFVIXfzVJbciU4zzfxzCcXKZWA7nPrvnGODkDDYM37H
-         XK68AWL8nRyGU2ke7KMCujgBVdYc7kn6ewsNFeFAgDRjs7r9Uv/9Z5YKkpzx0tvT6t5Y
-         l6GH4LaWysPOdqcAc3apjtXCbLjP+ump2qsK+8osVJK67y2kKzUmekYOxFzcZ68oBD69
-         XKnHxhrWrJSMML++HvGvPLF3WbA4HWVELXr6QNLlL7s2N+QdbVRrl+Pn0QahuZwPvE21
-         18i13jMG/fJrEXbDq2Ti4skRjj7KorYuj99u39jRyYsSwNaXKFd+5a9Iq6mlsgFL5gr1
-         rsyg==
-X-Gm-Message-State: AD7BkJInBdf8z/I6CA5yPDgO3brkN6X+X+yo6etmaNbRDIcgNlg442iT9Gd6aLw2JTjLzQ==
-X-Received: by 10.66.55.39 with SMTP id o7mr15969305pap.13.1456675238500;
-        Sun, 28 Feb 2016 08:00:38 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ll7sm32129871pab.6.2016.02.28.08.00.36
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 08:00:37 -0800 (PST)
-Date: Sun, 28 Feb 2016 21:27:49 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove Unused macro
-Message-ID: <20160228155749.GA17278@Karyakshetra>
+X-GM-THRID: 6251919067627651072
+Date: Wed, 17 Feb 2016 11:32:36 -0800 (PST)
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <ab395860-1f7c-4b6b-b98a-7239fceb0c25@googlegroups.com>
+In-Reply-To: <20160216205817.GA16090@janani-Inspiron-3521>
+References: <20160216205817.GA16090@janani-Inspiron-3521>
+Subject: Re: [PATCH] staging: wilc1000: Use kmalloc_array instead of kmalloc
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_600_849884905.1455737556531"
+X-Google-Token: ENSVk7YFdfixgnXKlwE0
+X-Google-IP: 2620:cc:8000:483:5635:30ff:fe6b:610b
 
-The macro PEEK32 is used nowhere in the file. Hence,removed.
+------=_Part_600_849884905.1455737556531
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_601_389891560.1455737556532"
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/sm750fb/sm750_cursor.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-index 2d348c6..d622d65 100644
---- a/drivers/staging/sm750fb/sm750_cursor.c
-+++ b/drivers/staging/sm750fb/sm750_cursor.c
-@@ -19,8 +19,6 @@
- #include "sm750_cursor.h"
+------=_Part_601_389891560.1455737556532
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
 
--#define PEEK32(addr) \
--readl(cursor->mmio + (addr))
 
- #define POKE32(addr, data) \
- writel((data), cursor->mmio + (addr))
---
-2.1.4
+On Tuesday, 16 February 2016 10:59:00 UTC-5, Janani Ravichandran wrote:
+>
+> Use kmalloc_array instead of kmalloc for arrays to prevent integer 
+> overflows. 
+>
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com> 
+> --- 
+>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +- 
+>  1 file changed, 1 insertion(+), 1 deletion(-) 
+>
+> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
+> b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
+> index 81a2ee9..7554cd4 100644 
+> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
+> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c 
+> @@ -664,7 +664,7 @@ static int scan(struct wiphy *wiphy, struct 
+> cfg80211_scan_request *request) 
+>                  PRINT_D(CFG80211_DBG, "Number of SSIDs %d\n", 
+> request->n_ssids); 
+>   
+>                  if (request->n_ssids >= 1) { 
+> -                        strHiddenNetwork.net_info = 
+> kmalloc(request->n_ssids * sizeof(struct hidden_network), GFP_KERNEL); 
+> +                        strHiddenNetwork.net_info = 
+> kmalloc_array(request->n_ssids, sizeof(struct hidden_network), 
+> GFP_KERNEL); 
+>                          strHiddenNetwork.n_ssids = request->n_ssids; 
+>   
+>   
+> -- 
+>
 
+Greg, please ignore this patch as I've sent a patchset for the same issue 
+after considering Julia's suggestion. 
+
+Janani.
+
+> 2.5.0 
+>
+>
+------=_Part_601_389891560.1455737556532
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><span style=3D"color: rgb(102, 102, 102);"><br><br>On Tues=
+day, 16 February 2016 10:59:00 UTC-5, Janani Ravichandran  wrote:</span><bl=
+ockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border=
+-left: 1px #ccc solid;padding-left: 1ex;"><span style=3D"color: rgb(102, 10=
+2, 102);">Use kmalloc_array instead of kmalloc for arrays to prevent intege=
+r
+<br>overflows.
+<br>
+<br>Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchndr=
+n@gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D=
+&#39;mailto:janani.rvchndrn@gmail.com&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;mailto:janani.rvchndrn@gmail.com&#39;;return true;">janani.rvchnd=
+rn@gmail.com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/wilc1000/</span><wbr><span style=3D"color: rgb(10=
+2, 102, 102);">wilc_wfi_cfgoperations.c | 2 +-
+<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+<br>
+<br>diff --git a/drivers/staging/wilc1000/</span><wbr><span style=3D"color:=
+ rgb(102, 102, 102);">wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/<=
+/span><wbr><span style=3D"color: rgb(102, 102, 102);">wilc_wfi_cfgoperation=
+s.c
+<br>index 81a2ee9..7554cd4 100644
+<br>--- a/drivers/staging/wilc1000/</span><wbr><span style=3D"color: rgb(10=
+2, 102, 102);">wilc_wfi_cfgoperations.c
+<br>+++ b/drivers/staging/wilc1000/</span><wbr><span style=3D"color: rgb(10=
+2, 102, 102);">wilc_wfi_cfgoperations.c
+<br>@@ -664,7 +664,7 @@ static int scan(struct wiphy *wiphy, struct cfg8021=
+1_scan_request *request)
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0PRINT_D(</span><wbr><span style=3D"color: =
+rgb(102, 102, 102);">CFG80211_DBG, &quot;Number of SSIDs %d\n&quot;, reques=
+t-&gt;n_ssids);
+<br>=C2=A0
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (request-&gt;n_ssids &gt;=3D 1) {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+</span><wbr><span style=3D"color: rgb(102, 102, 102);">strHiddenNetwork.net=
+_info =3D kmalloc(request-&gt;n_ssids * sizeof(struct hidden_network), GFP_=
+KERNEL);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+</span><wbr><span style=3D"color: rgb(102, 102, 102);">strHiddenNetwork.net=
+_info =3D kmalloc_array(request-&gt;n_</span><wbr><span style=3D"color: rgb=
+(102, 102, 102);">ssids, sizeof(struct hidden_network), GFP_KERNEL);
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0</span><wbr><span style=3D"color: rgb(102, 102, 102);">strHiddenNetwo=
+rk.n_ssids =3D request-&gt;n_ssids;
+<br>=C2=A0
+<br>=C2=A0
+<br>--=20
+</span><br></blockquote><div><br>Greg, please ignore this patch as I&#39;ve=
+ sent a patchset for the same issue after considering Julia&#39;s suggestio=
+n. <br><br>Janani.<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">2.=
+5.0
+<br>
+<br></blockquote></div>
+------=_Part_601_389891560.1455737556532--
+
+------=_Part_600_849884905.1455737556531--
 
