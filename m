@@ -1,108 +1,87 @@
-X-GM-THRID: 6253815100366389248
-X-Received: by 10.13.221.75 with SMTP id g72mr23938332ywe.34.1456079795015;
-        Sun, 21 Feb 2016 10:36:35 -0800 (PST)
+X-GM-THRID: 6251650339458514944
+X-Received: by 10.194.24.233 with SMTP id x9mr157784wjf.0.1455708654901;
+        Wed, 17 Feb 2016 03:30:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.169 with SMTP id x9ls370259igl.25.canary; Sun, 21 Feb
- 2016 10:36:34 -0800 (PST)
-X-Received: by 10.50.57.17 with SMTP id e17mr7918231igq.11.1456079794751;
-        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id ff2si2953065pad.2.2016.02.21.10.36.34
+Received: by 10.25.82.132 with SMTP id g126ls254412lfb.92.gmail; Wed, 17 Feb
+ 2016 03:30:53 -0800 (PST)
+X-Received: by 10.25.136.198 with SMTP id k189mr156678lfd.5.1455708653215;
+        Wed, 17 Feb 2016 03:30:53 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c143si112390wmd.1.2016.02.17.03.30.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Wed, 17 Feb 2016 03:30:53 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id fy10so78244505pac.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 10:36:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=f59AOrTEim1zt1XFqI7kmL61zJ1GiEJk5afWlNcMrms=;
-        b=EuPMbUqIacL+ficYimDytyUr9PquGjIJHdTSnnPSGYDBJ/vFrtOiVw0BX7QYDc2rwn
-         VxYHvwh2eT3+iSheEU4z1NnTBT4oUJACnYuSyFxtG6aAJ87gkq86A9BLchq/4GiM7BI+
-         y1Yq07invhQND23iU8grOCGuGGPqk2vO91JSG67ZdnnbcsWicXNL1+kTy+7TMNV8EhOW
-         gh7rEyghfNt0vtVVS54ZotUfONlQGJNB3BubrfdW1sDtf35hB7eh1vFaKf12eHvvPKAi
-         Gxcz6XWSV3ZzeNchCmvIq1sFi5ucV5G7ZCtRcKNB2UEPEVyzTfVoqGUO0I22lj6MOXDK
-         q/ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=f59AOrTEim1zt1XFqI7kmL61zJ1GiEJk5afWlNcMrms=;
-        b=byF7gsY5XSHgo+vmdUNwPL8p/jJcl1zxZIYiPWgII4XQK8Z+OAfm6VThd7zMF7aTCb
-         C/LN+oxbCDZHWEyZ9FT9Bg0PwFU+Nwk+UfFQaEVUwSxsJpe8b4ReYuqBHK+zlMOIr1p2
-         1GcAKLPti0hXFuat1WwmgaAb56GugDhNeqHc+kiLUybH41Z7d55Jhlq2pnoyO6zDMSI2
-         61twed2iFFqwMx4V7zGyQI/C17qaQkcsRNM568rmlo/WhOH7xp2/Pv65LJ38NIIxlWAS
-         bz5CW73sIL7GRyRy0vpZ3o6t1izJzuTqoxDgGotGW93z6qGO1CSautkVB93+/vR6izoD
-         yoiA==
-X-Gm-Message-State: AG10YORtW87pCVOEIEcvl9VarYf4tqo6t/MmEsQxkcWW758YIyJBkT3Xt7ppsJsAQfwotg==
-X-Received: by 10.66.124.226 with SMTP id ml2mr32698122pab.90.1456079794632;
-        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 76sm31291584pft.44.2016.02.21.10.36.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
-Date: Mon, 22 Feb 2016 00:07:07 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] staging: most: hdm-dim2: Use macro DIV_ROUND_UP
-Message-ID: <20160221183707.GA3444@Karyakshetra>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,460,1449529200"; 
+   d="scan'208";a="203483111"
+Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Feb 2016 12:30:51 +0100
+Date: Wed, 17 Feb 2016 06:30:49 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+cc: Laura Garcia Liebana <nevola@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 2/7] staging: netlogic: Remove
+ blank spaces after a cast
+In-Reply-To: <20160217053240.GC4073@sudip-pc>
+Message-ID: <alpine.DEB.2.10.1602170629580.2664@hadrien>
+References: <cover.1455661648.git.nevola@gmail.com> <d3ee83a0b5ee4adb0b7ba37995c1809284532197.1455661648.git.nevola@gmail.com> <20160217053240.GC4073@sudip-pc>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
-@@
-expression e1;
-expression e2;
-@@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/most/hdm-dim2/dim2_hal.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/most/hdm-dim2/dim2_hal.c b/drivers/staging/most/hdm-dim2/dim2_hal.c
-index 3c52450..03da89e 100644
---- a/drivers/staging/most/hdm-dim2/dim2_hal.c
-+++ b/drivers/staging/most/hdm-dim2/dim2_hal.c
-@@ -120,7 +120,7 @@ static int alloc_dbr(u16 size)
- 		return DBR_SIZE; /* out of memory */
+On Wed, 17 Feb 2016, Sudip Mukherjee wrote:
 
- 	for (i = 0; i < DBR_MAP_SIZE; i++) {
--		u32 const blocks = (size + DBR_BLOCK_SIZE - 1) / DBR_BLOCK_SIZE;
-+		u32 const blocks = DIV_ROUND_UP(size, DBR_BLOCK_SIZE);
- 		u32 mask = ~((~(u32)0) << blocks);
+> On Tue, Feb 16, 2016 at 11:36:31PM +0100, Laura Garcia Liebana wrote:
+> > Remove uneeded blank spaces after a cast. Checkpatch found these issues.
+> >
+> > Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+> > ---
+> > v2: Include parentheses for pointers, as Julia suggested
+> >
+> >  drivers/staging/netlogic/xlr_net.c | 10 +++++-----
+> >  1 file changed, 5 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+> > index 59fbaba..b89e3cb 100644
+> > --- a/drivers/staging/netlogic/xlr_net.c
+> > +++ b/drivers/staging/netlogic/xlr_net.c
+> > @@ -130,13 +130,13 @@ static void xlr_net_fmn_handler(int bkt, int src_stnid, int size, int code,
+> >  	struct xlr_net_priv *priv;
+> >  	u32 port, length;
+> >  	unsigned char *addr;
+> > -	struct xlr_adapter *adapter = (struct xlr_adapter *) arg;
+> > +	struct xlr_adapter *adapter = (struct xlr_adapter *)arg;
+> >
+> >  	length = (msg->msg0 >> 40) & 0x3fff;
+> >  	if (length == 0) {
+> >  		addr = bus_to_virt(msg->msg0 & 0xffffffffffULL);
+> >  		addr = addr - MAC_SKB_BACK_PTR_SIZE;
+> > -		skb = (struct sk_buff *) *(unsigned long *)addr;
+> > +		skb = (struct sk_buff *)(*)(unsigned long *)addr;
+>
+> I think a better choice might have been:
+> 	skb = (struct sk_buff *)(*(unsigned long *)addr);
 
- 		do {
-@@ -140,7 +140,7 @@ static int alloc_dbr(u16 size)
- static void free_dbr(int offs, int size)
- {
- 	int block_idx = offs / DBR_BLOCK_SIZE;
--	u32 const blocks = (size + DBR_BLOCK_SIZE - 1) / DBR_BLOCK_SIZE;
-+	u32 const blocks = DIV_ROUND_UP(size, DBR_BLOCK_SIZE);
- 	u32 mask = ~((~(u32)0) << blocks);
+Yes, this is what I had in mind.  I'm not sure that the current code would
+compile.  It looks sort of like a function pointer declaration...
 
- 	mask <<= block_idx % 32;
---
-2.1.4
+julia
 
+>
+> regards
+> sudip
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160217053240.GC4073%40sudip-pc.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
