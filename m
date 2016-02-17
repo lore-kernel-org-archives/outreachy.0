@@ -1,252 +1,109 @@
-X-GM-THRID: 150692954112
-X-Received: by 10.180.104.101 with SMTP id gd5mr1878079wib.6.1424191748437;
-        Tue, 17 Feb 2015 08:49:08 -0800 (PST)
+X-GM-THRID: 6251974012736372736
+X-Received: by 10.182.247.68 with SMTP id yc4mr16951743obc.34.1455684332248;
+        Tue, 16 Feb 2016 20:45:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.12.68 with SMTP id eo4ls875214wid.22.canary; Tue, 17 Feb
- 2015 08:49:08 -0800 (PST)
-X-Received: by 10.180.186.101 with SMTP id fj5mr118356wic.1.1424191748202;
-        Tue, 17 Feb 2015 08:49:08 -0800 (PST)
-Received: by 10.194.15.65 with SMTP id v1mswjc;
-        Tue, 17 Feb 2015 08:41:25 -0800 (PST)
-X-Received: by 10.112.144.130 with SMTP id sm2mr3537022lbb.9.1424191285271;
-        Tue, 17 Feb 2015 08:41:25 -0800 (PST)
-Return-Path: <ksenija@ksenija-aspire-v3-572>
-Received: from ksenija-Aspire-V3-572 (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by gmr-mx.google.com with ESMTPS id r6si4081837wix.0.2015.02.17.08.41.25
+Received: by 10.107.36.73 with SMTP id k70ls1964151iok.104.gmail; Tue, 16 Feb
+ 2016 20:45:31 -0800 (PST)
+X-Received: by 10.107.10.217 with SMTP id 86mr1050545iok.6.1455684331944;
+        Tue, 16 Feb 2016 20:45:31 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-io0-x232.google.com (mail-io0-x232.google.com. [2607:f8b0:4001:c06::232])
+        by gmr-mx.google.com with ESMTPS id k15si1499461igt.3.2016.02.16.20.45.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Feb 2015 08:41:25 -0800 (PST)
-Received-SPF: temperror (google.com: error in processing during lookup of ksenija@ksenija-aspire-v3-572: DNS timeout) client-ip=77.46.215.254;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Feb 2016 20:45:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4001:c06::232 as permitted sender) client-ip=2607:f8b0:4001:c06::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=temperror (google.com: error in processing during lookup of ksenija@ksenija-aspire-v3-572: DNS timeout) smtp.mail=ksenija@ksenija-aspire-v3-572;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from ksenija-Aspire-V3-572 (localhost [127.0.0.1])
-	by ksenija-Aspire-V3-572 (8.14.4/8.14.4/Debian-4.1ubuntu1) with ESMTP id t1HGfNLT025649;
-	Tue, 17 Feb 2015 17:41:23 +0100
-Received: (from ksenija@localhost)
-	by ksenija-Aspire-V3-572 (8.14.4/8.14.4/Submit) id t1HGfNI5025646;
-	Tue, 17 Feb 2015 17:41:23 +0100
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: media: vino: Replace printk and dprintk with dev_dbg()
-Date: Tue, 17 Feb 2015 17:40:21 +0100
-Message-Id: <1424191221-25574-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4001:c06::232 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-io0-x232.google.com with SMTP id z135so22791536iof.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 20:45:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=A2J/FpDkboLmO9oS/qJumCibBWtLHLVwK3PewoSTwLI=;
+        b=s7ArK0TC/qD9j3IdEjDaCfiyrDHaBoNXfcglnq1mzxnUyrYcC82O2gSIB9OVATiumy
+         1dQrLIEsFtyLkSR4OK/2ZcjSOOobetyvdiueas4laWQcNAnT4waORJq3fQuYgK7d+n2U
+         Ydw7AeK94gHrR/3JeaVUfQ5mxH8ZQ+qbbinWpPnSmBWw21xAi+ilbk60Ddk1e+vp+Oh7
+         iPYrG7LzabHSBsIKAipKpFK9Uq0UrIX5Fv6bSPml0xSCzUoaLFws+9PNilCDASZXKQZ9
+         bPYMNFTtb+MEMgOu23eAKcf4JWqZHs6owOE1JwJ21vsUxwqVX/CiNbrlVQbvg+Z7ECgs
+         Ld4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type;
+        bh=A2J/FpDkboLmO9oS/qJumCibBWtLHLVwK3PewoSTwLI=;
+        b=TBOlOWC0G3wXH6C80ODb+mMkAmtdnW+8UBywTQUkOVhpKejBqToIiH1vjNxH7MBgr6
+         iQACqYTqoFoe0WWYTJ93Y5Xh0hgl4l7KP6ftTyFwZn2Zg2sTQzd/kF8jNsuB+HncknkB
+         3415ayhiFFGlMr0Zv6axqbblfHrm+gk+lDm6OuqMbyvJ1n6/b75jY6VgZr1Vf/rDfqUp
+         VZbZAyxUqxjfECcjAGdLBY5/PUEjBnbzzMx7pcMxOpJ7FXlmQpRjzf8jvQmEg29ih35x
+         opSL2GFLzOXg3K4tARYshC7Nid3TvsaBwpy+R3hZJI827XqLUCnlTMTctWaHbBm+QpCE
+         9s6g==
+X-Gm-Message-State: AG10YOT3a6CHcKnw4L5ruAQYQPTC31Vq89U7HwfAzyWC9fI+GTpjGqabDkhoYVBOyQvPy+wCqrHVgijSb31VIw==
+MIME-Version: 1.0
+X-Received: by 10.60.227.74 with SMTP id ry10mr19510897oec.48.1455684331826;
+ Tue, 16 Feb 2016 20:45:31 -0800 (PST)
+Received: by 10.157.40.238 with HTTP; Tue, 16 Feb 2016 20:45:31 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602162000310.2690@hadrien>
+References: <1455651118-18615-1-git-send-email-bhumirks@gmail.com>
+	<alpine.DEB.2.10.1602162000310.2690@hadrien>
+Date: Wed, 17 Feb 2016 10:15:31 +0530
+Message-ID: <CAOH+1jF35M_3d-7RGCPrP3a5SQ-1amXRFYCG0kwLdTj7c1Cwag@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: lov: Pull assignments
+ out of function call
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Making variants of existing macros is against kernel coding style. This
-patch removes all definitions made by macro dprintk() and replaces them
-with dev_dbg()
----
- drivers/staging/media/vino/saa7191.c | 60 ++++++++++++++++--------------------
- 1 file changed, 26 insertions(+), 34 deletions(-)
+On Wed, Feb 17, 2016 at 6:30 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Wed, 17 Feb 2016, Bhumika Goyal wrote:
+>
+>> Assignments in function call arguments are undesirable. So pull such
+>> assignments out before function call.
+>> Made a coccinelle script to detect such cases:
+>> @@
+>> expression fn,b,d;
+>> @@
+>> * fn(...,d=b,...);
+>
+> The script looks fine now.
+>
+> julia
+>
+Thanks for the input Julia.
 
-diff --git a/drivers/staging/media/vino/saa7191.c b/drivers/staging/media/vino/saa7191.c
-index 087acab..01eea48 100644
---- a/drivers/staging/media/vino/saa7191.c
-+++ b/drivers/staging/media/vino/saa7191.c
-@@ -33,14 +33,6 @@ MODULE_AUTHOR("Mikael Nousiainen <tmnousia@cc.hut.fi>");
- MODULE_LICENSE("GPL");
- 
- 
--/* #define SAA7191_DEBUG */
--
--#ifdef SAA7191_DEBUG
--#define dprintk(x...) printk("SAA7191: " x);
--#else
--#define dprintk(x...)
--#endif
--
- #define SAA7191_SYNC_COUNT	30
- #define SAA7191_SYNC_DELAY	100	/* milliseconds */
- 
-@@ -116,7 +108,7 @@ static int saa7191_read_status(struct v4l2_subdev *sd, u8 *value)
- 
- 	ret = i2c_master_recv(client, value, 1);
- 	if (ret < 0) {
--		printk(KERN_ERR "SAA7191: saa7191_read_status(): read failed\n");
-+		dev_dbg(KERN_ERR "SAA7191: saa7191_read_status(): read failed\n");
- 		return ret;
- 	}
- 
-@@ -147,7 +139,7 @@ static int saa7191_write_block(struct v4l2_subdev *sd,
- 
- 	ret = i2c_master_send(client, data, length);
- 	if (ret < 0) {
--		printk(KERN_ERR "SAA7191: saa7191_write_block(): "
-+		dev_dbg(KERN_ERR "SAA7191: saa7191_write_block(): "
- 		       "write failed\n");
- 		return ret;
- 	}
-@@ -230,9 +222,9 @@ static int saa7191_s_std(struct v4l2_subdev *sd, v4l2_std_id norm)
- 
- 	decoder->norm = norm;
- 
--	dprintk("ctl3: %02x stdc: %02x chcv: %02x\n", ctl3,
-+	dev_dbg("ctl3: %02x stdc: %02x chcv: %02x\n", ctl3,
- 		stdc, chcv);
--	dprintk("norm: %llx\n", norm);
-+	dev_dbg("norm: %llx\n", norm);
- 
- 	return 0;
- }
-@@ -241,21 +233,21 @@ static int saa7191_wait_for_signal(struct v4l2_subdev *sd, u8 *status)
- {
- 	int i = 0;
- 
--	dprintk("Checking for signal...\n");
-+	dev_dbg("Checking for signal...\n");
- 
- 	for (i = 0; i < SAA7191_SYNC_COUNT; i++) {
- 		if (saa7191_read_status(sd, status))
- 			return -EIO;
- 
- 		if (((*status) & SAA7191_STATUS_HLCK) == 0) {
--			dprintk("Signal found\n");
-+			dev_dbg("Signal found\n");
- 			return 0;
- 		}
- 
- 		msleep(SAA7191_SYNC_DELAY);
- 	}
- 
--	dprintk("No signal\n");
-+	dev_dbg("No signal\n");
- 
- 	return -EBUSY;
- }
-@@ -269,7 +261,7 @@ static int saa7191_querystd(struct v4l2_subdev *sd, v4l2_std_id *norm)
- 	v4l2_std_id old_norm = decoder->norm;
- 	int err = 0;
- 
--	dprintk("SAA7191 extended signal auto-detection...\n");
-+	dev_dbg("SAA7191 extended signal auto-detection...\n");
- 
- 	*norm &= V4L2_STD_NTSC | V4L2_STD_PAL | V4L2_STD_SECAM;
- 	stdc &= ~SAA7191_STDC_SECS;
-@@ -301,13 +293,13 @@ static int saa7191_querystd(struct v4l2_subdev *sd, v4l2_std_id *norm)
- 
- 	if (status & SAA7191_STATUS_FIDT) {
- 		/* 60Hz signal -> NTSC */
--		dprintk("60Hz signal: NTSC\n");
-+		dev_dbg("60Hz signal: NTSC\n");
- 		*norm &= V4L2_STD_NTSC;
- 		return 0;
- 	}
- 
- 	/* 50Hz signal */
--	dprintk("50Hz signal: Trying PAL...\n");
-+	dev_dbg("50Hz signal: Trying PAL...\n");
- 
- 	/* try PAL first */
- 	err = saa7191_s_std(sd, V4L2_STD_PAL);
-@@ -322,19 +314,19 @@ static int saa7191_querystd(struct v4l2_subdev *sd, v4l2_std_id *norm)
- 
- 	/* not 50Hz ? */
- 	if (status & SAA7191_STATUS_FIDT) {
--		dprintk("No 50Hz signal\n");
-+		dev_dbg("No 50Hz signal\n");
- 		saa7191_s_std(sd, old_norm);
- 		*norm = V4L2_STD_UNKNOWN;
- 		return 0;
- 	}
- 
- 	if (status & SAA7191_STATUS_CODE) {
--		dprintk("PAL\n");
-+		dev_dbg("PAL\n");
- 		*norm &= V4L2_STD_PAL;
- 		return saa7191_s_std(sd, old_norm);
- 	}
- 
--	dprintk("No color detected with PAL - Trying SECAM...\n");
-+	dev_dbg("No color detected with PAL - Trying SECAM...\n");
- 
- 	/* no color detected ? -> try SECAM */
- 	err = saa7191_s_std(sd, V4L2_STD_SECAM);
-@@ -349,19 +341,19 @@ static int saa7191_querystd(struct v4l2_subdev *sd, v4l2_std_id *norm)
- 
- 	/* not 50Hz ? */
- 	if (status & SAA7191_STATUS_FIDT) {
--		dprintk("No 50Hz signal\n");
-+		dev_dbg("No 50Hz signal\n");
- 		*norm = V4L2_STD_UNKNOWN;
- 		goto out;
- 	}
- 
- 	if (status & SAA7191_STATUS_CODE) {
- 		/* Color detected -> SECAM */
--		dprintk("SECAM\n");
-+		dev_dbg("SECAM\n");
- 		*norm &= V4L2_STD_SECAM;
- 		return saa7191_s_std(sd, old_norm);
- 	}
- 
--	dprintk("No color detected with SECAM - Going back to PAL.\n");
-+	dev_dbg("No color detected with SECAM - Going back to PAL.\n");
- 	*norm = V4L2_STD_UNKNOWN;
- 
- out:
-@@ -372,30 +364,30 @@ static int saa7191_autodetect_norm(struct v4l2_subdev *sd)
- {
- 	u8 status;
- 
--	dprintk("SAA7191 signal auto-detection...\n");
-+	dev_dbg("SAA7191 signal auto-detection...\n");
- 
--	dprintk("Reading status...\n");
-+	dev_dbg("Reading status...\n");
- 
- 	if (saa7191_read_status(sd, &status))
- 		return -EIO;
- 
--	dprintk("Checking for signal...\n");
-+	dev_dbg("Checking for signal...\n");
- 
- 	/* no signal ? */
- 	if (status & SAA7191_STATUS_HLCK) {
--		dprintk("No signal\n");
-+		dev_dbg("No signal\n");
- 		return -EBUSY;
- 	}
- 
--	dprintk("Signal found\n");
-+	dev_dbg("Signal found\n");
- 
- 	if (status & SAA7191_STATUS_FIDT) {
- 		/* 60hz signal -> NTSC */
--		dprintk("NTSC\n");
-+		dev_dbg("NTSC\n");
- 		return saa7191_s_std(sd, V4L2_STD_NTSC);
- 	} else {
- 		/* 50hz signal -> PAL */
--		dprintk("PAL\n");
-+		dev_dbg("PAL\n");
- 		return saa7191_s_std(sd, V4L2_STD_PAL);
- 	}
- }
-@@ -606,18 +598,18 @@ static int saa7191_probe(struct i2c_client *client,
- 
- 	err = saa7191_write_block(sd, sizeof(initseq), initseq);
- 	if (err) {
--		printk(KERN_ERR "SAA7191 initialization failed\n");
-+		dev_dbg(KERN_ERR "SAA7191 initialization failed\n");
- 		return err;
- 	}
- 
--	printk(KERN_INFO "SAA7191 initialized\n");
-+	dev_dbg(KERN_INFO "SAA7191 initialized\n");
- 
- 	decoder->input = SAA7191_INPUT_COMPOSITE;
- 	decoder->norm = V4L2_STD_PAL;
- 
- 	err = saa7191_autodetect_norm(sd);
- 	if (err && (err != -EBUSY))
--		printk(KERN_ERR "SAA7191: Signal auto-detection failed\n");
-+		dev_dbg(KERN_ERR "SAA7191: Signal auto-detection failed\n");
- 
- 	return 0;
- }
--- 
-1.9.1
+Bhumika
 
+>>
+>> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+>> ---
+>>  drivers/staging/lustre/lustre/lov/lov_merge.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/lustre/lustre/lov/lov_merge.c b/drivers/staging/lustre/lustre/lov/lov_merge.c
+>> index 97115be..029cd4d 100644
+>> --- a/drivers/staging/lustre/lustre/lov/lov_merge.c
+>> +++ b/drivers/staging/lustre/lustre/lov/lov_merge.c
+>> @@ -129,7 +129,8 @@ int lov_adjust_kms(struct obd_export *exp, struct lov_stripe_md *lsm,
+>>                              "stripe %d KMS %sing %llu->%llu\n",
+>>                              stripe, kms > loi->loi_kms ? "increase":"shrink",
+>>                              loi->loi_kms, kms);
+>> -                     loi_kms_set(loi, loi->loi_lvb.lvb_size = kms);
+>> +                     loi->loi_lvb.lvb_size = kms;
+>> +                     loi_kms_set(loi, loi->loi_lvb.lvb_size);
+>>               }
+>>               return 0;
+>>       }
+>> --
+>> 1.9.1
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1455651118-18615-1-git-send-email-bhumirks%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
