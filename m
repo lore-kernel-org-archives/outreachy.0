@@ -1,153 +1,71 @@
-X-GM-THRID: 6340113860345724928
-X-Received: by 10.107.164.36 with SMTP id n36mr798212ioe.11.1476172789999;
-        Tue, 11 Oct 2016 00:59:49 -0700 (PDT)
+X-GM-THRID: 6251601192398356480
+X-Received: by 10.31.153.75 with SMTP id b72mr1448584vke.0.1455716532402;
+        Wed, 17 Feb 2016 05:42:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.185.86 with SMTP id k22ls436637iti.20.gmail; Tue, 11 Oct
- 2016 00:59:48 -0700 (PDT)
-X-Received: by 10.66.193.194 with SMTP id hq2mr542260pac.40.1476172788485;
-        Tue, 11 Oct 2016 00:59:48 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-lf0-x241.google.com (mail-lf0-x241.google.com. [2a00:1450:4010:c07::241])
-        by gmr-mx.google.com with ESMTPS id p131si368282vkf.1.2016.10.11.00.59.48
+Received: by 10.107.128.69 with SMTP id b66ls2245672iod.101.gmail; Wed, 17 Feb
+ 2016 05:42:11 -0800 (PST)
+X-Received: by 10.66.63.68 with SMTP id e4mr1401960pas.40.1455716531943;
+        Wed, 17 Feb 2016 05:42:11 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x232.google.com (mail-qg0-x232.google.com. [2607:f8b0:400d:c04::232])
+        by gmr-mx.google.com with ESMTPS id i133si55059ywe.7.2016.02.17.05.42.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Oct 2016 00:59:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) client-ip=2a00:1450:4010:c07::241;
+        Wed, 17 Feb 2016 05:42:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::232 as permitted sender) client-ip=2607:f8b0:400d:c04::232;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x241.google.com with SMTP id l131so2242879lfl.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 00:59:48 -0700 (PDT)
+Received: by mail-qg0-x232.google.com with SMTP id b67so11566430qgb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 05:42:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=xEGJvOmgym8W44PuunTfejg9sd4AmewPqBnKsoWt6Yk=;
-        b=s0IS4wBQFcjUHHn7bhO5ocZAfP6nNEMqwYpMR0KHNoQUSBUur8mQ4jcA+c/8Me1XqR
-         pIPEpNycpiGB9+fRXOYBDnggViLomalFwSdwDLMJZHAWmSelauuUdE6eOyY5xpbNyOmP
-         WQcf9T0EmxLAc/M7zTvVSMYStawOOdP6GaboL7ON3BaL6mw8vLRs/FZEOTIDhqe37UBl
-         FqtMYFDnohS5RBEQFEXpiddVCrHOLnISPJ9WnrViM901p5dGiMaXFE8cavZNgQ9+/B2f
-         sZyWm/WRgmmvKdR3hgg6QsRm69X7exrNct54FjhJd/eNZxpqXVY//bRnMEyt22vkx0Qu
-         coAg==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=HnWqofWtZcI71AVX0N5mhnUj0EP4wNOWh3cpdY6KdkE=;
+        b=hkpbg6XEJJtlfc1+65pAUk6/gkSK51XgSMBY2frhjP36qMqBy1xj6PFxIvq1VfMECx
+         7F46axA2dlB6oJ+CDrVZTpIlGB3++TOXSoLwdS1oVrpPwOsNaNd6ZmINKeQ9H0CXCiwC
+         S+eFanIFlgH+YIZ91ZgNb+kgyolRc8bpSUDBTX+IAXIbw7+I42a8Pmma9dmzo1bCahhX
+         Y+9JJoqQmysrE3V8A3hFMXMnBDSKx45/5/IHgNciMiAuzqHMruLohSorK+vZDAZPFEi2
+         ECxLHGd6QDYY/Avl3PFN7aOjIEoPnAgeufkM97SlIbtQZuBN2raP1hN1XLNiV48AkWS2
+         QBHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=xEGJvOmgym8W44PuunTfejg9sd4AmewPqBnKsoWt6Yk=;
-        b=UQn5s5Zu3ULcueyA166lJoN3/JrOA67hb/vGvDbxkDqqy3bpJgC/xyG01B46wC92VA
-         VYEBHpmuLTbExwE4p4WA7QVwdG3V0woIowXIkp2NSLTKwg9DMGcoTcH+m41t4I1deTin
-         LIbjCqbym4AkFJaV2299co4WdD6cEF7/2u6xeX2RDNo8CTwFas+Vym4+G5fBCY2jM5iY
-         8aQ5AGCnyBrAAyIiBPPyRwGA2rP6k96pXzEBfDE1zNTOrDh7CDfrRJPDN+LgOVQ5t7fm
-         Indl5MSNAaVHWAZ3uTusLyY88HI49xO0MC97ODttLJ2Q5PPIkT0wvwAit4NTAb6bHcNL
-         Aktg==
-X-Gm-Message-State: AA6/9Rm8JZBdJgbvGH2YLNWsn5tIiX+DFpKgxF+nUq9ZUOHZaJDywTq1wBJQNYBJ6WrF8g==
-X-Received: by 10.194.24.34 with SMTP id r2mr2998930wjf.111.1476172787728;
-        Tue, 11 Oct 2016 00:59:47 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id q8sm4240855wjj.7.2016.10.11.00.59.47
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 00:59:47 -0700 (PDT)
-Date: Tue, 11 Oct 2016 10:59:46 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: media: tw686x-kh: Fix comment block coding style
-Message-ID: <20161011075946.GA9559@domino-MS-16Y1>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=HnWqofWtZcI71AVX0N5mhnUj0EP4wNOWh3cpdY6KdkE=;
+        b=LZ69scGhiVi6yaiKH8VdQ+olvySTv2ZNxAsBUVWLBjCindgeTgPOMw3eVvQJSKXm/Q
+         ALs+nxkSQVs1WzmXsJ1ifSrVRR2z+0lva3c/Re3nu8Yo0miaR75C8LdHEVzuTQ7nrhLZ
+         ZFLZhdzcqLvZtJr69Z2iczqNatEUcl/xShpwIB5rmScHNsIOynFfMgIf/nsDOEerB9A2
+         FJdDabVlYepAwMUF1pHZHOQEhlstEazg875dGuP6kCyyxY/wyUVR5pYZC9cvf3mMCTmE
+         O6G9nez/I8KkwLdPE/CF9LPWofZC/Z++eWwr/JGKFoEr/exs8f+uSJFEasEosS15GQoN
+         dhjg==
+X-Gm-Message-State: AG10YOQenUuK/2U3Fh8sIV+BZjqAd4JL39WAYfymq4wlopu2DIxnBSpW4pMr5yWO7GnpHUXBvPBT9e+KQ3AvKQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.140.23.81 with SMTP id 75mr1881365qgo.35.1455716531758; Wed,
+ 17 Feb 2016 05:42:11 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Wed, 17 Feb 2016 05:42:11 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602170837170.2685@hadrien>
+References: <20160215192524.GA30333@amitoj-Inspiron-3542>
+	<alpine.DEB.2.10.1602170837170.2685@hadrien>
+Date: Wed, 17 Feb 2016 19:12:11 +0530
+Message-ID: <CA+5yK5Hp4jxusT2YinDhLkqQa=pH=XsyYSys4Y_knzd+f=02og@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rdma: hfi1: Replace kmalloc
+ and memcpy with kmemdup
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-This is a patch to the tw686x-kh-video.c file that fixes up a comment
-block warning, found by checkpatch.pl tool, by adding a * for each line
-of the comment block.
+On Wed, Feb 17, 2016 at 7:07 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+> No need to change, but in this situation you can also put:
+>
+> Generated-by: scripts/coccinelle/api/memdup.cocci
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/media/tw686x-kh/tw686x-kh-video.c | 48 +++++++++++++----------
- 1 file changed, 27 insertions(+), 21 deletions(-)
+Oh okay will take care in the future.
 
-diff --git a/drivers/staging/media/tw686x-kh/tw686x-kh-video.c b/drivers/staging/media/tw686x-kh/tw686x-kh-video.c
-index 9bf32ae..19cf31a 100644
---- a/drivers/staging/media/tw686x-kh/tw686x-kh-video.c
-+++ b/drivers/staging/media/tw686x-kh/tw686x-kh-video.c
-@@ -221,20 +221,20 @@ loop:
- 	vc->curr_bufs[n] = NULL;
- }
- 
--/* On TW6864 and TW6868, all channels share the pair of video DMA SG tables,
--   with 10-bit start_idx and end_idx determining start and end of frame buffer
--   for particular channel.
--   TW6868 with all its 8 channels would be problematic (only 127 SG entries per
--   channel) but we support only 4 channels on this chip anyway (the first
--   4 channels are driven with internal video decoder, the other 4 would require
--   an external TW286x part).
--
--   On TW6865 and TW6869, each channel has its own DMA SG table, with indexes
--   starting with 0. Both chips have complete sets of internal video decoders
--   (respectively 4 or 8-channel).
--
--   All chips have separate SG tables for two video frames. */
--
-+/*
-+ * On TW6864 and TW6868, all channels share the pair of video DMA SG tables
-+ * with 10-bit start_idx and end_idx determining start and end of frame buffer
-+ * for particular channel.
-+ * TW6868 with all its 8 channels would be problematic (only 127 SG entries per
-+ * channel) but we support only 4 channels on this chip anyway (the first
-+ * 4 channels are driven with internal video decoder, the other 4 would require
-+ * an external TW286x part).
-+ *
-+ * On TW6865 and TW6869, each channel has its own DMA SG table, with indexes
-+ * starting with 0. Both chips have complete sets of internal video decoders
-+ * (respectively 4 or 8-channel).
-+ * All chips have separate SG tables for two video frames.
-+ */
- static void setup_dma_cfg(struct tw686x_video_channel *vc)
- {
- 	unsigned int field_width = 704;
-@@ -477,8 +477,10 @@ static int tw686x_g_parm(struct file *file, void *priv,
- static int tw686x_enum_input(struct file *file, void *priv,
- 			     struct v4l2_input *inp)
- {
--	/* the chip has internal multiplexer, support can be added
--	   if the actual hw uses it */
-+	/*
-+	 * the chip has internal multiplexer, support can be added
-+	 * if the actual hw uses it
-+	 */
- 	if (inp->index)
- 		return -EINVAL;
- 
-@@ -675,16 +677,20 @@ int tw686x_kh_video_init(struct tw686x_dev *dev)
- 	/* setup required SG table sizes */
- 	for (n = 0; n < 2; n++)
- 		if (is_second_gen(dev)) {
--			/* TW 6865, TW6869 - each channel needs a pair of
--			   descriptor tables */
-+			/*
-+			 * TW 6865, TW6869 - each channel needs a pair of
-+			 * descriptor tables
-+			 */
- 			for (ch = 0; ch < max_channels(dev); ch++)
- 				dev->video_channels[ch].sg_tables[n].size =
- 					SG_TABLE_SIZE;
- 
- 		} else
--			/* TW 6864, TW6868 - we need to allocate a pair of
--			   descriptor tables, common for all channels.
--			   Each table will be bigger than 4 KB. */
-+			/*
-+			 * TW 6864, TW6868 - we need to allocate a pair of
-+			 * descriptor tables, common for all channels.
-+			 * Each table will be bigger than 4 KB.
-+			 */
- 			dev->video_channels[0].sg_tables[n].size =
- 				max_channels(dev) * SG_TABLE_SIZE;
- 
--- 
-2.7.4
-
+Thanks,
+Amitoj
 
