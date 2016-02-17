@@ -1,95 +1,110 @@
-X-GM-THRID: 6256392223774998528
-X-Received: by 10.107.16.87 with SMTP id y84mr15562565ioi.2.1456679828523;
-        Sun, 28 Feb 2016 09:17:08 -0800 (PST)
+X-GM-THRID: 6252308314150928384
+X-Received: by 10.50.61.132 with SMTP id p4mr24433225igr.0.1455731135971;
+        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.31.117 with SMTP id e108ls2080927qge.77.gmail; Sun, 28 Feb
- 2016 09:17:07 -0800 (PST)
-X-Received: by 10.140.95.38 with SMTP id h35mr26438740qge.3.1456679827846;
-        Sun, 28 Feb 2016 09:17:07 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id r75si1545064pfr.0.2016.02.28.09.17.07
+Received: by 10.140.109.70 with SMTP id k64ls3912512qgf.25.gmail; Wed, 17 Feb
+ 2016 09:45:35 -0800 (PST)
+X-Received: by 10.13.227.133 with SMTP id m127mr2531515ywe.1.1455731135449;
+        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
+        by gmr-mx.google.com with ESMTPS id 12si360702pfb.1.2016.02.17.09.45.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 09:17:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id w128so7628020pfb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:17:07 -0800 (PST)
+Received: by mail-pf0-x22d.google.com with SMTP id c10so15580377pfc.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 09:45:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=JG4mxJD/dOZRluYYC1l6yS8h9NROGX/hT7G3fsxMywQ=;
-        b=QHPq7jkn+4KwGJBCM+Yc/xMaklQ3sDedbwFM//4dUQNiSPSJuoI6T4HefJPr3E1T4M
-         Dx+95kULCH1u/ob4OZvpTYx5dc2qg1+I+ymLURjFweWY2rk+X111e4cl7QWwHbdBcho5
-         /A4xzUZepI6Nie1oZcpu9I9Nw/0F5SKF9arGH/jcbl3PSYhfUZgyow4bpnWBn3ehAYls
-         XQSF221D5ocA09zMy9lRnoCHFlNfBGXxA4qMW9aB92kgrVs4DU554uEEg14VTBksiDO2
-         vH5Qnu7U7Siou0cBmKCkilnc4yMlMP1F2Xiss+ZgmpGsT1enL51vUVbgMVC/44bPI4eD
-         cLIw==
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=6xp8tgI0eaj2Tl89NutNA26i+IvrNHOslrFMYXJpJ2g=;
+        b=h78XM4n7kHnqiEaBdImaMthKzrPZDcauBgpBUv9nMckA8Lj1Ao9c7RbJ/pC8nsy74D
+         AOohiLUt7mzwKERZCEqPmiFxczRHackkG0yOjZHCRkqW2ESZ8w/OcdJcl2kIforQpHbQ
+         eZcz6XDCZbD20KHgcjKUOVEwMZPlyx4hg4jxeDV95RXRBWh+v3yC2NOfLaUZMloYgymr
+         4qaVZqdy4Lvbip0+/tQDrk5gEKVT6liJnGDJ1aLnQlSl1SP6XVhYzlPeoyPYoUwb/KHo
+         BNNWpKArvwBTOelApl3h8slscHv6O5A8GBg+xTcjQLJbeqB/bQlLYL5wEHRlrCryyujp
+         gwcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=JG4mxJD/dOZRluYYC1l6yS8h9NROGX/hT7G3fsxMywQ=;
-        b=d/fp92fSw6Vymuad2SobWDXc9LqwUCnbfMYjGXzlPm7XcYYhiKlXLDGCVgGPAHVFPn
-         OweFKMyAh20qjToEFOxuugkaFlpazvmYt/mAwSy5YMRjHh2sdpH57mHoUe8pDOQ76yBd
-         MHroQTaTyrUGjqql2h/r1nGc5JvKQTwLdigmEkUpSx8jtijuovFtK4k9cOvHzinZUWJM
-         UYCCYsrC+GCGzVQ5fkWyPJglc33+DqOJNlkl5gmEnKedLPQKXlGMUKIudLFwH2+akfCS
-         cNsqed6XxHcYEJRtzvYMnuSuO054vfk1Xt6Ecrl5gNPQ9zL1r8pscL2hGAaodMbZ3i+d
-         FJLA==
-X-Gm-Message-State: AD7BkJKv9YQMRG+JZfp4xrixxFLyFqmnwTEzIsEXt8Raqf9KDe/wD3L6R89KPRE1DftdQg==
-X-Received: by 10.98.70.211 with SMTP id o80mr16495950pfi.124.1456679827636;
-        Sun, 28 Feb 2016 09:17:07 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.106])
-        by smtp.gmail.com with ESMTPSA id 70sm32353125pfs.78.2016.02.28.09.17.06
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 09:17:07 -0800 (PST)
-Date: Sun, 28 Feb 2016 14:46:56 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+         :references;
+        bh=6xp8tgI0eaj2Tl89NutNA26i+IvrNHOslrFMYXJpJ2g=;
+        b=TnJnZd100uJgw3WL9AElSvS9Vadr7BYiZumFEfngiE+WzJKnmfZX0FUSPapMiEF6ye
+         DW7qp3SFJdu4A0ryh3qVuOZFvqZS0FM9ZUygE2z/EnmNey12qP0sAX5FlLdeIphjZuEC
+         RMNeU3d+hchzW873KkyLMKM9OiYQTpUd2XS/VgBjZ549PkT5LNeoYNCmdbBP5FEvW897
+         Hp2qhKxGTGQL3kJqH1cUTy35K+t/YUAYoSqaSbgyi8Om8HA3pjaw0BdEcetPBciJ/qWx
+         krLIRAbYVTfKc1v2+ivo5eTfPewk2nzqWq5AJmzDGSFeDG44t0qAmetsY3JUmwRNWFAF
+         LJuA==
+X-Gm-Message-State: AG10YOS0wtD/ziIMIlx8XB8eL2MxvTmUP9WyefRc4lwhF2eHxSrShE43lxUWb+izweH+ow==
+X-Received: by 10.98.43.194 with SMTP id r185mr3945711pfr.24.1455731135288;
+        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from localhost.localdomain (or-67-232-72-178.dhcp.embarqhsd.net. [67.232.72.178])
+        by smtp.gmail.com with ESMTPSA id yl1sm4064463pac.35.2016.02.17.09.45.34
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 17 Feb 2016 09:45:34 -0800 (PST)
+From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] Staging: lustre: Remove int typecast of offsetof().
-Message-ID: <20160228091656.GA3606@sandhya>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Subject: [PATCH v2] staging: vt6656: simplify tests of successful urb status
+Date: Wed, 17 Feb 2016 09:45:28 -0800
+Message-Id: <1455731128-5315-1-git-send-email-amsfield22@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <20160217170915.GA4387@d830.WORKGROUP>
+References: <20160217170915.GA4387@d830.WORKGROUP>
 
-Remove int typecast of offsetof(). 
-As per below coccinelle rule:
+Use if (status) in tests for successful urb status.
 
-@@
-type T;
-expression E;
-@@
-- (int)(offsetof(T,E))
-+ offsetof(T,E)
- 
+This replaces (status != 0) and (status == STATUS_SUCCESS).
+(STATUS_SUCCESS is defined for NDIS status in this driver, but
+was being misused)
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+- replace if (status !=0) with if (status)
+- propogate change in two more instances
+- update commit msg & changelog
 
-diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.h b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.h
-index a176544..a60d72f 100644
---- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.h
-+++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.h
-@@ -283,7 +283,7 @@ typedef struct                             /* transmit packet */
- 	} tx_frags;
- } ksock_tx_t;
+ drivers/staging/vt6656/usbpipe.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+index f27eb9a..f546553 100644
+--- a/drivers/staging/vt6656/usbpipe.c
++++ b/drivers/staging/vt6656/usbpipe.c
+@@ -116,7 +116,7 @@ static void vnt_start_interrupt_urb_complete(struct urb *urb)
+ 		break;
+ 	}
  
--#define KSOCK_NOOP_TX_SIZE ((int)offsetof(ksock_tx_t, tx_frags.paged.kiov[0]))
-+#define KSOCK_NOOP_TX_SIZE (offsetof(ksock_tx_t, tx_frags.paged.kiov[0]))
+-	if (status != STATUS_SUCCESS) {
++	if (status) {
+ 		priv->int_buf.in_use = false;
  
- /* network zero copy callback descriptor embedded in ksock_tx_t */
+ 		dev_dbg(&priv->usb->dev, "%s status = %d\n", __func__, status);
+@@ -221,7 +221,7 @@ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb)
+ 			  rcb);
  
+ 	status = usb_submit_urb(urb, GFP_ATOMIC);
+-	if (status != 0) {
++	if (status) {
+ 		dev_dbg(&priv->usb->dev, "Submit Rx URB failed %d\n", status);
+ 		return STATUS_FAILURE;
+ 	}
+@@ -282,7 +282,7 @@ int vnt_tx_context(struct vnt_private *priv,
+ 			  context);
+ 
+ 	status = usb_submit_urb(urb, GFP_ATOMIC);
+-	if (status != 0) {
++	if (status) {
+ 		dev_dbg(&priv->usb->dev, "Submit Tx URB failed %d\n", status);
+ 
+ 		context->in_use = false;
 -- 
-1.8.3.4
+2.1.4
 
 
