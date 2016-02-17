@@ -1,110 +1,113 @@
 X-GM-THRID: 6252308314150928384
-X-Received: by 10.50.61.132 with SMTP id p4mr24433225igr.0.1455731135971;
-        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+X-Received: by 10.50.25.133 with SMTP id c5mr4030854igg.4.1455729793434;
+        Wed, 17 Feb 2016 09:23:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.109.70 with SMTP id k64ls3912512qgf.25.gmail; Wed, 17 Feb
- 2016 09:45:35 -0800 (PST)
-X-Received: by 10.13.227.133 with SMTP id m127mr2531515ywe.1.1455731135449;
-        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+Received: by 10.140.95.4 with SMTP id h4ls1585402qge.39.gmail; Wed, 17 Feb
+ 2016 09:23:12 -0800 (PST)
+X-Received: by 10.31.52.207 with SMTP id b198mr2516587vka.5.1455729792616;
+        Wed, 17 Feb 2016 09:23:12 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id 12si360702pfb.1.2016.02.17.09.45.35
+Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
+        by gmr-mx.google.com with ESMTPS id 79si354273pft.0.2016.02.17.09.23.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Wed, 17 Feb 2016 09:23:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id c10so15580377pfc.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+Received: by mail-pf0-x236.google.com with SMTP id q63so14786330pfb.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 09:23:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=6xp8tgI0eaj2Tl89NutNA26i+IvrNHOslrFMYXJpJ2g=;
-        b=h78XM4n7kHnqiEaBdImaMthKzrPZDcauBgpBUv9nMckA8Lj1Ao9c7RbJ/pC8nsy74D
-         AOohiLUt7mzwKERZCEqPmiFxczRHackkG0yOjZHCRkqW2ESZ8w/OcdJcl2kIforQpHbQ
-         eZcz6XDCZbD20KHgcjKUOVEwMZPlyx4hg4jxeDV95RXRBWh+v3yC2NOfLaUZMloYgymr
-         4qaVZqdy4Lvbip0+/tQDrk5gEKVT6liJnGDJ1aLnQlSl1SP6XVhYzlPeoyPYoUwb/KHo
-         BNNWpKArvwBTOelApl3h8slscHv6O5A8GBg+xTcjQLJbeqB/bQlLYL5wEHRlrCryyujp
-         gwcg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=J8wSvonHR6U0+z/7Px4Uk86qyK75CSpGFn1FMj/K5Zg=;
+        b=zXXbgE0zACt3KVls49TZzZH4aaq/cBAZJA9wuafmYLT402db67LC7nvsG4PO2Z/VV5
+         qLK0j2er0OHRj47rktRio1nlstkoM/hUkjaBrAeITeHFcwqj6HV3mGBe/VCCnS01lMCV
+         qLJJ72SH3EK3h6KLY8pFtKbu8kEHc3UGt4qdoECWUFcweShsfmVvmczBNphk8JNfMLRt
+         DkMiD0Jid1ko450/3KhEX7UIxG2lgkV+gtluoAcN9OI/1qEvaRApaObrOMPWC+cXbZmZ
+         ZBXRN7BvskptF22jFk+5rDAQJzwN4IGZLgXbvcS2yyuEYQFyPzVEvFBKoHz+2tZmQfFv
+         QZfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
-         :references;
-        bh=6xp8tgI0eaj2Tl89NutNA26i+IvrNHOslrFMYXJpJ2g=;
-        b=TnJnZd100uJgw3WL9AElSvS9Vadr7BYiZumFEfngiE+WzJKnmfZX0FUSPapMiEF6ye
-         DW7qp3SFJdu4A0ryh3qVuOZFvqZS0FM9ZUygE2z/EnmNey12qP0sAX5FlLdeIphjZuEC
-         RMNeU3d+hchzW873KkyLMKM9OiYQTpUd2XS/VgBjZ549PkT5LNeoYNCmdbBP5FEvW897
-         Hp2qhKxGTGQL3kJqH1cUTy35K+t/YUAYoSqaSbgyi8Om8HA3pjaw0BdEcetPBciJ/qWx
-         krLIRAbYVTfKc1v2+ivo5eTfPewk2nzqWq5AJmzDGSFeDG44t0qAmetsY3JUmwRNWFAF
-         LJuA==
-X-Gm-Message-State: AG10YOS0wtD/ziIMIlx8XB8eL2MxvTmUP9WyefRc4lwhF2eHxSrShE43lxUWb+izweH+ow==
-X-Received: by 10.98.43.194 with SMTP id r185mr3945711pfr.24.1455731135288;
-        Wed, 17 Feb 2016 09:45:35 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=J8wSvonHR6U0+z/7Px4Uk86qyK75CSpGFn1FMj/K5Zg=;
+        b=hJwoebn7zV6rRigVMe1/I67CY/F+q1EZ/ha0RUCFwY4aqnn3IxjJ07rpu5p1HSioeD
+         3efpf3WWIjWHCm6urFnNplsLC8mCfiVLyp0pJFgs00w3KAabThw3FMT3CqMEmd9DGEe5
+         /tU9PCRfQAmYE0q+E4PcBzMbgLLfImuSuCsBYGFqaZMt9ZwrS+5ENoQ/dInK/Ubk8Pgl
+         IGIBSftLd8/ISGul7Y1Q0izg0/yjCbxy/QH8tq3y9vuaF2Pi2To/zADL8jmrntLIL9WA
+         GjRxGQ6lQdYoPdJd81MEWGjAlmv8M5fn7QXaoJoUZdjJjWmQUAbI1SvAY31Uvqu+lQlw
+         ne8A==
+X-Gm-Message-State: AG10YOTRbiI83NHktiu9mFGQT3yA22jMxcCE6Pan/WouJugi0ZXQc60CZr47Z3K+WUMvfw==
+X-Received: by 10.98.13.216 with SMTP id 85mr3644463pfn.143.1455729792432;
+        Wed, 17 Feb 2016 09:23:12 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
-Received: from localhost.localdomain (or-67-232-72-178.dhcp.embarqhsd.net. [67.232.72.178])
-        by smtp.gmail.com with ESMTPSA id yl1sm4064463pac.35.2016.02.17.09.45.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 09:45:34 -0800 (PST)
+Received: from d830 (or-67-232-72-178.dhcp.embarqhsd.net. [67.232.72.178])
+        by smtp.gmail.com with ESMTPSA id yh5sm4061817pab.13.2016.02.17.09.23.11
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 17 Feb 2016 09:23:11 -0800 (PST)
+Date: Wed, 17 Feb 2016 09:23:10 -0800
 From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: vt6656: simplify tests of successful urb status
-Date: Wed, 17 Feb 2016 09:45:28 -0800
-Message-Id: <1455731128-5315-1-git-send-email-amsfield22@gmail.com>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <20160217170915.GA4387@d830.WORKGROUP>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6656: use 0 in test for
+ successful urb status
+Message-ID: <20160217172309.GA4412@d830.WORKGROUP>
 References: <20160217170915.GA4387@d830.WORKGROUP>
+ <alpine.DEB.2.10.1602171212530.4547@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.10.1602171212530.4547@hadrien>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use if (status) in tests for successful urb status.
+On Wed, Feb 17, 2016 at 12:13:18PM -0500, Julia Lawall wrote:
+> 
+> 
+> On Wed, 17 Feb 2016, Alison Schofield wrote:
+> 
+> > Replace STATUS_SUCCESS with 0 in urb->status test.
+> >
+> > Successful usb status is simply 0.  STATUS_SUCCESS is defined
+> > for NDIS status in this driver, but was being misused in this case.
+> 
+> Maybe if (status) would be more normal.
 
-This replaces (status != 0) and (status == STATUS_SUCCESS).
-(STATUS_SUCCESS is defined for NDIS status in this driver, but
-was being misused)
+got it..making it more normal, and propogating to one other instance in file.
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
-Changes in v2:
-- replace if (status !=0) with if (status)
-- propogate change in two more instances
-- update commit msg & changelog
-
- drivers/staging/vt6656/usbpipe.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index f27eb9a..f546553 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -116,7 +116,7 @@ static void vnt_start_interrupt_urb_complete(struct urb *urb)
- 		break;
- 	}
- 
--	if (status != STATUS_SUCCESS) {
-+	if (status) {
- 		priv->int_buf.in_use = false;
- 
- 		dev_dbg(&priv->usb->dev, "%s status = %d\n", __func__, status);
-@@ -221,7 +221,7 @@ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb)
- 			  rcb);
- 
- 	status = usb_submit_urb(urb, GFP_ATOMIC);
--	if (status != 0) {
-+	if (status) {
- 		dev_dbg(&priv->usb->dev, "Submit Rx URB failed %d\n", status);
- 		return STATUS_FAILURE;
- 	}
-@@ -282,7 +282,7 @@ int vnt_tx_context(struct vnt_private *priv,
- 			  context);
- 
- 	status = usb_submit_urb(urb, GFP_ATOMIC);
--	if (status != 0) {
-+	if (status) {
- 		dev_dbg(&priv->usb->dev, "Submit Tx URB failed %d\n", status);
- 
- 		context->in_use = false;
--- 
-2.1.4
-
+> 
+> julia
+> 
+> > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+> > ---
+> >  drivers/staging/vt6656/usbpipe.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+> > index f27eb9a..5551b4f 100644
+> > --- a/drivers/staging/vt6656/usbpipe.c
+> > +++ b/drivers/staging/vt6656/usbpipe.c
+> > @@ -116,7 +116,7 @@ static void vnt_start_interrupt_urb_complete(struct urb *urb)
+> >  		break;
+> >  	}
+> >
+> > -	if (status != STATUS_SUCCESS) {
+> > +	if (status != 0) {
+> >  		priv->int_buf.in_use = false;
+> >
+> >  		dev_dbg(&priv->usb->dev, "%s status = %d\n", __func__, status);
+> > --
+> > 2.1.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160217170915.GA4387%40d830.WORKGROUP.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
