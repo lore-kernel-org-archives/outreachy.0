@@ -1,166 +1,198 @@
-X-GM-THRID: 6256254448614506496
-X-Received: by 10.107.130.28 with SMTP id e28mr14214363iod.34.1456647750796;
-        Sun, 28 Feb 2016 00:22:30 -0800 (PST)
+X-GM-THRID: 6252303404941443072
+X-Received: by 10.107.152.10 with SMTP id a10mr3966942ioe.28.1455727848755;
+        Wed, 17 Feb 2016 08:50:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.87.229 with SMTP id bb5ls820876obb.54.gmail; Sun, 28 Feb
- 2016 00:22:29 -0800 (PST)
-X-Received: by 10.182.56.233 with SMTP id d9mr8100092obq.2.1456647749037;
-        Sun, 28 Feb 2016 00:22:29 -0800 (PST)
+Received: by 10.182.252.103 with SMTP id zr7ls456929obc.4.gmail; Wed, 17 Feb
+ 2016 08:50:48 -0800 (PST)
+X-Received: by 10.182.199.70 with SMTP id ji6mr2323037obc.32.1455727848440;
+        Wed, 17 Feb 2016 08:50:48 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id ff2si3183640pad.2.2016.02.28.00.22.28
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id yd9si317279pab.1.2016.02.17.08.50.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 00:22:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Wed, 17 Feb 2016 08:50:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id x65so76223227pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 00:22:28 -0800 (PST)
+Received: by mail-pf0-x232.google.com with SMTP id x65so14319297pfb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 08:50:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Xah1C+WXkOrNpnY09F4RJsb6n6icAi913f19EyJ1Xwo=;
-        b=H23CWyw6vCs4O/W2taMFGTe7ANrqRAME+hAr9z37bUtq04sV9qb3t2NtzvQYlQsRD7
-         vwzWXwlrYaGNFe1UY9QkBm/4KGPHagbEH4gkSjaGIkH52nkkjtxKiCLodOBuKQMRg4OM
-         aNjQOdFiTo5kCU9ilCPWk2HPZpMWEjJmdB4BLoHgYvz1/69FVRzcDr9tEr3TAwriBjdw
-         FLoYQqQTAXhRxX4WXeRvPADpq+0d0UC9fBPYoTTXNz7NzuWQn42jm15FVwClhh7k4Qh/
-         Xz0mfILU2eylGyLjdBrLaPMh/FG1Ur/xyvLzblaO/AmPl81TAW+zs4XYpwPUvcOFn0FK
-         DeCg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=ve2T3I8e590L4QyTfvwrvkOJhOch4FJyajSkNNDYsvQ=;
+        b=yJY4ookDq53YjgwYS9dhCdUgO0+k8qXhjSIY/9VAe+V0qqNkNw92rzGgGWrWtfeBAm
+         9+jPZYl57j/kfAKCACtV8dmRcg37tzoK6jo+Jy346yObdnXCzBlBFxoOhJ3vJ4uIZBO1
+         RgYVyXjL46QwuXuHBxSodNg244aVG/rn/cQifF+dk/1LnuP8z2pDjtYrF5aIVpgR+wFG
+         vYoEyqszZb0zP6lf6/c5v7cBk62993MYUPNEapLOq/4nSF2X+XEySK5ivyVDFXvKNzxk
+         yZiDfPiAPMowktULOn1P1G4cKqN0zJFodY3PABdUuZMQzwf5+ic8axMI5qAYmKFgoGsX
+         zHfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Xah1C+WXkOrNpnY09F4RJsb6n6icAi913f19EyJ1Xwo=;
-        b=FltQiReZzp2IOJYac92OJ3l8jpcDRb1vkf80qcMU21IIkDDoVPdxAqvaAApFCvNMar
-         vdy4P1OPFa4cK9kP+hepPVWgOtJFuhbSHDrmXDiISzHY3QM0sMYnBq0xT8uv8ptjfS/q
-         I1jRSkFUkpE1Uvne1uESCuBhzwxHMv722TZqlYW6B887fJ3ekEH5YyVRnmh0dv3mrGLe
-         F6Vsoshkbj2Ls11X6B2JUpAtTNrNQJfB9tNKShEcOFxJ7U5guVmYOOKHioJexjl/lBY5
-         zAikSfUwMLOjYMJ9TyNwsYGdygeIklLfiu0Nzi0f+jSXs+hmcIGcS3jUtopei657ZwD+
-         v5Ww==
-X-Gm-Message-State: AD7BkJK1nTCs95nvEpU0D5B8PyhCq21hhX5IGhPWLofCr9xbeskqvn/Wd3pMvstft5iK9Q==
-X-Received: by 10.98.43.149 with SMTP id r143mr13869533pfr.7.1456647748850;
-        Sun, 28 Feb 2016 00:22:28 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=ve2T3I8e590L4QyTfvwrvkOJhOch4FJyajSkNNDYsvQ=;
+        b=jWX1bffoCoIVaOsq8bDgR+2mf5Xl51JwI3KI2jMtQzCL2On2jw7SFlcVsLVtDOKXLY
+         /vBvqWnONJhqEuNh0lcB9IYRF+LENX4382Uplc2M7p6zP7A71e8AJD064o80Pqpxb3S7
+         MoE2HhluOkABftc8TbgJG6aOkpywC26Kbe5uG8qfXyoro0bRPEJJC2aZoBPd9JePkbQq
+         XNOUhiQ9pJIPnDP0nOc3rK8HLl/xPZt7vL5X35sEDpq7DHNo0H1xFpOyyF+ZPmjYlt7p
+         Qx/kxM2Hcpm8QxKQRsqk5PWc9kp3/PcBsnN1bD8CYEx8X467ASJX9uhnEpOEHke16R+S
+         D8NQ==
+X-Gm-Message-State: AG10YORgFgTxWNkTp8hIJSWk0O0fMZRvOnUq6L0BN67nHEWASTtx1uoHl+k9es58F5kRNw==
+X-Received: by 10.98.65.193 with SMTP id g62mr3488978pfd.148.1455727848272;
+        Wed, 17 Feb 2016 08:50:48 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.149.200])
-        by smtp.gmail.com with ESMTPSA id x13sm30037429pfa.72.2016.02.28.00.22.23
+Received: from bhumirks@gmail.com ([106.215.146.252])
+        by smtp.gmail.com with ESMTPSA id u64sm3881565pfa.86.2016.02.17.08.50.41
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 00:22:28 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 28 Feb 2016 13:52:17 +0530
+        Wed, 17 Feb 2016 08:50:47 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 17 Feb 2016 22:20:36 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: unisys: Remove function visorchannel_debug
-Date: Sun, 28 Feb 2016 13:52:15 +0530
-Message-Id: <1456647735-15584-1-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH v3 2/2] Staging: wlan-ng: Remove unused functions and prototypes
+Date: Wed, 17 Feb 2016 22:20:09 +0530
+Message-Id: <2cabe3cc47ce139f18b8cd4cf641c952f1fcbbc6.1455726533.git.bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1455726533.git.bhumirks@gmail.com>
+References: <cover.1455726533.git.bhumirks@gmail.com>
+In-Reply-To: <cover.1455726533.git.bhumirks@gmail.com>
+References: <cover.1455726533.git.bhumirks@gmail.com>
 
-The function visorchannel_debug is not used anywhere in the kernel so
-remove the function definition, prototype and the export symbol.
-Grepped to find the occurences.
+hfa384x_drvr_getconfig_async is not used anywhere in the kernel 
+so remove it. Also remove its prototype from the header file. Also 
+the function hfa384x_cb_rrid was only used by hfa384x_drvr_getconfig_async 
+so remove its definition and prototype as well.
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/unisys/include/visorbus.h      |  2 -
- drivers/staging/unisys/visorbus/visorchannel.c | 74 --------------------------
- 2 files changed, 76 deletions(-)
+Changes in v2:
+* Combine patches 3 and 4 of v1 in a single patch to remove both the
+  function and its prototype.
+Changes in v3:
+* Remove hfa384x_cb_rrid to avoid build warning.
 
-diff --git a/drivers/staging/unisys/include/visorbus.h b/drivers/staging/unisys/include/visorbus.h
-index 2a64a9c..2c3e99c 100644
---- a/drivers/staging/unisys/include/visorbus.h
-+++ b/drivers/staging/unisys/include/visorbus.h
-@@ -215,8 +215,6 @@ int visorchannel_set_clientpartition(struct visorchannel *channel,
- 				     u64 partition_handle);
- uuid_le visorchannel_get_uuid(struct visorchannel *channel);
- char *visorchannel_uuid_id(uuid_le *guid, char *s);
--void visorchannel_debug(struct visorchannel *channel, int num_queues,
--			struct seq_file *seq, u32 off);
- void __iomem *visorchannel_get_header(struct visorchannel *channel);
- 
- #define BUS_ROOT_DEVICE		UINT_MAX
-diff --git a/drivers/staging/unisys/visorbus/visorchannel.c b/drivers/staging/unisys/visorbus/visorchannel.c
-index a80d72c..8ce9cd9 100644
---- a/drivers/staging/unisys/visorbus/visorchannel.c
-+++ b/drivers/staging/unisys/visorbus/visorchannel.c
-@@ -562,77 +562,3 @@ sigqueue_debug(struct signal_queue_header *q, int which, struct seq_file *seq)
- 	seq_printf(seq, "   Tail               = %lu\n", (ulong)q->tail);
+ drivers/staging/wlan-ng/hfa384x.h     |  4 --
+ drivers/staging/wlan-ng/hfa384x_usb.c | 74 -----------------------------------
+ 2 files changed, 78 deletions(-)
+
+diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
+index 4fd3145..cec6d0b 100644
+--- a/drivers/staging/wlan-ng/hfa384x.h
++++ b/drivers/staging/wlan-ng/hfa384x.h
+@@ -1390,10 +1390,6 @@ static inline int hfa384x_drvr_setconfig16(hfa384x_t *hw, u16 rid, u16 val)
  }
  
--void
--visorchannel_debug(struct visorchannel *channel, int num_queues,
--		   struct seq_file *seq, u32 off)
+ int
+-hfa384x_drvr_getconfig_async(hfa384x_t *hw,
+-			     u16 rid, ctlx_usercb_t usercb, void *usercb_data);
+-
+-int
+ hfa384x_drvr_setconfig_async(hfa384x_t *hw,
+ 			     u16 rid,
+ 			     void *buf,
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index 7eda536..4e4b6e3 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -213,8 +213,6 @@ unlocked_usbctlx_cancel_async(hfa384x_t *hw, hfa384x_usbctlx_t *ctlx);
+ 
+ static void hfa384x_cb_status(hfa384x_t *hw, const hfa384x_usbctlx_t *ctlx);
+ 
+-static void hfa384x_cb_rrid(hfa384x_t *hw, const hfa384x_usbctlx_t *ctlx);
+-
+ static int
+ usbctlx_get_status(const hfa384x_usb_cmdresp_t *cmdresp,
+ 		   hfa384x_cmdresult_t *result);
+@@ -816,43 +814,6 @@ static void hfa384x_cb_status(hfa384x_t *hw, const hfa384x_usbctlx_t *ctlx)
+ 	}
+ }
+ 
+-/*----------------------------------------------------------------
+-* hfa384x_cb_rrid
+-*
+-* CTLX completion handler for async RRID type control exchanges.
+-*
+-* Note: If the handling is changed here, it should probably be
+-*       changed in dorrid as well.
+-*
+-* Arguments:
+-*	hw		hw struct
+-*	ctlx		completed CTLX
+-*
+-* Returns:
+-*	nothing
+-*
+-* Side effects:
+-*
+-* Call context:
+-*	interrupt
+-----------------------------------------------------------------*/
+-static void hfa384x_cb_rrid(hfa384x_t *hw, const hfa384x_usbctlx_t *ctlx)
 -{
--	u64 addr = 0;
--	ulong nbytes = 0, nbytes_region = 0;
--	struct channel_header hdr;
--	struct channel_header *phdr = &hdr;
--	int i = 0;
--	int errcode = 0;
+-	if (ctlx->usercb != NULL) {
+-		hfa384x_rridresult_t rridresult;
 -
--	if (!channel)
--		return;
--
--	addr = visorchannel_get_physaddr(channel);
--	nbytes_region = visorchannel_get_nbytes(channel);
--	errcode = visorchannel_read(channel, off,
--				    phdr, sizeof(struct channel_header));
--	if (errcode < 0) {
--		seq_printf(seq,
--			   "Read of channel header failed with errcode=%d)\n",
--			   errcode);
--		if (off == 0) {
--			phdr = &channel->chan_hdr;
--			seq_puts(seq, "(following data may be stale)\n");
+-		if (ctlx->state != CTLX_COMPLETE) {
+-			memset(&rridresult, 0, sizeof(rridresult));
+-			rridresult.rid = le16_to_cpu(ctlx->outbuf.rridreq.rid);
 -		} else {
--			return;
+-			usbctlx_get_rridresult(&ctlx->inbuf.rridresp,
+-					       &rridresult);
 -		}
--	}
--	nbytes = (ulong)(phdr->size);
--	seq_printf(seq, "--- Begin channel @0x%-16.16Lx for 0x%lx bytes (region=0x%lx bytes) ---\n",
--		   addr + off, nbytes, nbytes_region);
--	seq_printf(seq, "Type            = %pUL\n", &phdr->chtype);
--	seq_printf(seq, "ZoneGuid        = %pUL\n", &phdr->zone_uuid);
--	seq_printf(seq, "Signature       = 0x%-16.16Lx\n",
--		   (long long)phdr->signature);
--	seq_printf(seq, "LegacyState     = %lu\n", (ulong)phdr->legacy_state);
--	seq_printf(seq, "SrvState        = %lu\n", (ulong)phdr->srv_state);
--	seq_printf(seq, "CliStateBoot    = %lu\n", (ulong)phdr->cli_state_boot);
--	seq_printf(seq, "CliStateOS      = %lu\n", (ulong)phdr->cli_state_os);
--	seq_printf(seq, "HeaderSize      = %lu\n", (ulong)phdr->header_size);
--	seq_printf(seq, "Size            = %llu\n", (long long)phdr->size);
--	seq_printf(seq, "Features        = 0x%-16.16llx\n",
--		   (long long)phdr->features);
--	seq_printf(seq, "PartitionHandle = 0x%-16.16llx\n",
--		   (long long)phdr->partition_handle);
--	seq_printf(seq, "Handle          = 0x%-16.16llx\n",
--		   (long long)phdr->handle);
--	seq_printf(seq, "VersionId       = %lu\n", (ulong)phdr->version_id);
--	seq_printf(seq, "oChannelSpace   = %llu\n",
--		   (long long)phdr->ch_space_offset);
--	if ((phdr->ch_space_offset == 0) || (errcode < 0))
--		;
--	else
--		for (i = 0; i < num_queues; i++) {
--			struct signal_queue_header q;
 -
--			errcode = visorchannel_read(channel,
--						    off +
--						    phdr->ch_space_offset +
--						    (i * sizeof(q)),
--						    &q, sizeof(q));
--			if (errcode < 0) {
--				seq_printf(seq,
--					   "failed to read signal queue #%d from channel @0x%-16.16Lx errcode=%d\n",
--					   i, addr, errcode);
--				continue;
--			}
--			sigqueue_debug(&q, i, seq);
--		}
--	seq_printf(seq, "--- End   channel @0x%-16.16Lx for 0x%lx bytes ---\n",
--		   addr + off, nbytes);
+-		ctlx->usercb(hw, &rridresult, ctlx->usercb_data);
+-	}
 -}
--EXPORT_SYMBOL_GPL(visorchannel_debug);
+-
+ static inline int hfa384x_docmd_wait(hfa384x_t *hw, hfa384x_metacmd_t *cmd)
+ {
+ 	return hfa384x_docmd(hw, DOWAIT, cmd, NULL, NULL, NULL);
+@@ -2091,41 +2052,6 @@ int hfa384x_drvr_getconfig(hfa384x_t *hw, u16 rid, void *buf, u16 len)
+ }
+ 
+ /*----------------------------------------------------------------
+- * hfa384x_drvr_getconfig_async
+- *
+- * Performs the sequence necessary to perform an async read of
+- * of a config/info item.
+- *
+- * Arguments:
+- *       hw              device structure
+- *       rid             config/info record id (host order)
+- *       buf             host side record buffer.  Upon return it will
+- *                       contain the body portion of the record (minus the
+- *                       RID and len).
+- *       len             buffer length (in bytes, should match record length)
+- *       cbfn            caller supplied callback, called when the command
+- *                       is done (successful or not).
+- *       cbfndata        pointer to some caller supplied data that will be
+- *                       passed in as an argument to the cbfn.
+- *
+- * Returns:
+- *       nothing         the cbfn gets a status argument identifying if
+- *                       any errors occur.
+- * Side effects:
+- *       Queues an hfa384x_usbcmd_t for subsequent execution.
+- *
+- * Call context:
+- *       Any
+- ----------------------------------------------------------------*/
+-int
+-hfa384x_drvr_getconfig_async(hfa384x_t *hw,
+-			     u16 rid, ctlx_usercb_t usercb, void *usercb_data)
+-{
+-	return hfa384x_dorrid_async(hw, rid, NULL, 0,
+-				    hfa384x_cb_rrid, usercb, usercb_data);
+-}
+-
+-/*----------------------------------------------------------------
+  * hfa384x_drvr_setconfig_async
+  *
+  * Performs the sequence necessary to write a config/info item.
 -- 
 1.9.1
 
