@@ -1,103 +1,104 @@
 X-GM-THRID: 6252667491219144704
-X-Received: by 10.194.19.195 with SMTP id h3mr1711131wje.1.1455879802137;
-        Fri, 19 Feb 2016 03:03:22 -0800 (PST)
+X-Received: by 10.140.143.200 with SMTP id 191mr7739104qhp.3.1455812596203;
+        Thu, 18 Feb 2016 08:23:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.91.84 with SMTP id p81ls60658wmb.24.canary; Fri, 19 Feb
- 2016 03:03:21 -0800 (PST)
-X-Received: by 10.28.45.82 with SMTP id t79mr1068632wmt.2.1455879801402;
-        Fri, 19 Feb 2016 03:03:21 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by gmr-mx.google.com with ESMTPS id w128si330896wmd.0.2016.02.19.03.03.21
+Received: by 10.140.93.36 with SMTP id c33ls4474232qge.30.gmail; Thu, 18 Feb
+ 2016 08:23:14 -0800 (PST)
+X-Received: by 10.129.125.215 with SMTP id y206mr7578522ywc.54.1455812594684;
+        Thu, 18 Feb 2016 08:23:14 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x229.google.com (mail-ig0-x229.google.com. [2607:f8b0:4001:c05::229])
+        by gmr-mx.google.com with ESMTPS id k15si215337igt.3.2016.02.18.08.23.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 03:03:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        Thu, 18 Feb 2016 08:23:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::229 as permitted sender) client-ip=2607:f8b0:4001:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22e.google.com with SMTP id c200so67358730wme.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 03:03:21 -0800 (PST)
+Received: by mail-ig0-x229.google.com with SMTP id hb3so15932427igb.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 08:23:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=npV5k/kPswxiW8QU2pvNF1fFg6Ce1USZTwr/bDQ5+xA=;
-        b=RtD1/yKAfou9VuBY5g5/SB0M5UE0yI3HV3yNvUu9vOkS+Si9jE5oE5tkA0uuz8WYDg
-         oX+z3gEMXCN8pc4/rkdXmGVZXMDAarZbMNZxMtha3uvu6tNo/227PhqI8W/Mq9Hu4lpe
-         GhV3dHenwdI3do+55ori9YtmJawW6icOYwLxhX+3+J2w3QvUmiRXr3rcUBRtTj7Ve47v
-         6vhBfXPt03TFsTwtg0+VQJ6YKrqu4NZcuLPBulM3kRhjPqmzRlgJ1rVqs43JjVxgbhCJ
-         wv1nxgCD4YuAU8NzFwU72mdcu1KTCqGndM/2R6hlI2VDLOgajYKCCsfbgGSGSZLRLgR3
-         YMCA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Fcht7n1ZNfQc/B3fJTt0h6F1ENlIgQUMex1uwsVtez0=;
+        b=yXfP05VulmCj8a9l9XApYyK6gNR2vyBRUigSEjmXGHYC4tMdj2QOK5kKW+h3CUbOKV
+         GS5WQqoQhOB+ib9+QtvVHHES/hpHV/HONX8oy8ecFw5JitSIB3ZRmdGdeyN2Z/McmLPv
+         3R3faFG9Ka0pMiqI5ImNztPHiApP0R2JzmYp+x4N03AF4AnoIDgUeQE+uunXGzR4Fcnh
+         QCIU3Sf8Bnr9wBJ4qXTZigNFWIAIXKjrK+mu7wR6LlyjoMtbiMAquD7EImjAWmRIaIxF
+         2luVYfdu2rTc3V/iAomofV1E5j4g0iluskmtKR5yJ/KK4vd2R01VT51nC0VgCS8Dv6mJ
+         hNtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=npV5k/kPswxiW8QU2pvNF1fFg6Ce1USZTwr/bDQ5+xA=;
-        b=PPnYuBSpUpvxaVuf3/eZC3BhPb+0HPZr2Apr8o/wnVO7fug6YGZ7rRwHmlsVMUULhX
-         2K9mMsYOAPn+7kXnNDAGsH4cg2QqRlrKyn6ulhfz2CHsTe3Bn+XmO+0Q4aZUMWMSewAQ
-         VzGBFIfDcWzmDhWeqqMea1TSXWmsPhj3TmsUJTknXdoY/6sY+GW6x0Whey7abPIAfPWB
-         0CEZej06J5skHCibniTn+oBzDVp7t8OuWKHTw+3EFrpLhrezDJw8GYFy0c3Jvw9ADtqG
-         qs2ZZizUPE+3xt+xtoCGqhzRv0ZsDX1URZ/YZhBATj2hcGuQlIEcaiWNzywEAA9gXmPu
-         vBmg==
-X-Gm-Message-State: AG10YOTrFsrPtOWMkbCb7W0Z9COn984IfkiXZXqdYJtKMOE0gdwjOSyp62UHHJCTyozwfbmY2HMRSgwk5HK/Wg==
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Fcht7n1ZNfQc/B3fJTt0h6F1ENlIgQUMex1uwsVtez0=;
+        b=KvQTKkKYzMrAR88azVovIOeFWQhA/WTo9+7t5mRja+KLH0nuDw5L+/9HXO6R7/edZx
+         u4/meV5gIBK0dIFXG1g2Pq5l1QwTFTCi0sRBHxrzHUs85hgfs4tu7VTCacNmoPR1CiH1
+         id4N77Sapn73qIhrCKt1UrGkqKfh48wpf95htavEzxqayAA4Oxu6zsXLHhLUPKk5LLiZ
+         BAqe45xpQ2exwWUpkCNS4ydxmln8Dq31+zUcU+ANHXY87/QxYYEyXhKXdf4RinOXodWt
+         dTua4ZaHJCGGvQrd9TXszeUsDKVk8qhlyv3Ct0reKFrVxkYXYgdCCgxtTLWifBF+7VP0
+         6lEQ==
+X-Gm-Message-State: AG10YOT1RafXhHc8/fpsC/jsFOp8VfBHTdJSILONq13fQ0JQ2EeWIkYlX92Rp3UCU5/9uQ==
+X-Received: by 10.50.30.134 with SMTP id s6mr3955923igh.36.1455812594548;
+        Thu, 18 Feb 2016 08:23:14 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id v29sm3752127iov.11.2016.02.18.08.23.13
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 18 Feb 2016 08:23:14 -0800 (PST)
+Date: Thu, 18 Feb 2016 16:22:29 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: iio: accel: Remove unnecessary else after goto in
+ if block
+Message-ID: <20160218212229.GA6562@janani-Inspiron-3521>
 MIME-Version: 1.0
-X-Received: by 10.194.2.202 with SMTP id 10mr14157424wjw.94.1455879801284;
- Fri, 19 Feb 2016 03:03:21 -0800 (PST)
-Received: by 10.194.222.165 with HTTP; Fri, 19 Feb 2016 03:03:21 -0800 (PST)
-In-Reply-To: <20160218212229.GA6562@janani-Inspiron-3521>
-References: <20160218212229.GA6562@janani-Inspiron-3521>
-Date: Fri, 19 Feb 2016 13:03:21 +0200
-Message-ID: <CAEnQRZCUnE3kfCQS3iMHRJn_Y9juECuDLT=QtZNqnESd6A3e4A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: iio: accel: Remove
- unnecessary else after goto in if block
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Janani Ravichandran <janani.rvchndrn@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Thu, Feb 18, 2016 at 11:22 PM, Janani Ravichandran
-<janani.rvchndrn@gmail.com> wrote:
-> This patch removes the unnecessary else following an if block with a
-> goto statement.
->
-> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+This patch removes the unnecessary else following an if block with a
+goto statement.
 
-Acked-by: Daniel Baluta <daniel.baluta@intel.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+ drivers/staging/iio/accel/sca3000_core.c | 3 +--
+ drivers/staging/iio/accel/sca3000_ring.c | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-> ---
->  drivers/staging/iio/accel/sca3000_core.c | 3 +--
->  drivers/staging/iio/accel/sca3000_ring.c | 3 +--
->  2 files changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/iio/accel/sca3000_core.c b/drivers/staging/iio/accel/sca3000_core.c
-> index 02e930c..a8f533a 100644
-> --- a/drivers/staging/iio/accel/sca3000_core.c
-> +++ b/drivers/staging/iio/accel/sca3000_core.c
-> @@ -216,8 +216,7 @@ static int sca3000_read_ctrl_reg(struct sca3000_state *st,
->         ret = sca3000_read_data_short(st, SCA3000_REG_ADDR_CTRL_DATA, 1);
->         if (ret)
->                 goto error_ret;
-> -       else
-> -               return st->rx[0];
-> +       return st->rx[0];
->  error_ret:
->         return ret;
->  }
-> diff --git a/drivers/staging/iio/accel/sca3000_ring.c b/drivers/staging/iio/accel/sca3000_ring.c
-> index 1920dc60..d1cb9b9 100644
-> --- a/drivers/staging/iio/accel/sca3000_ring.c
-> +++ b/drivers/staging/iio/accel/sca3000_ring.c
-> @@ -99,8 +99,7 @@ static int sca3000_read_first_n_hw_rb(struct iio_buffer *r,
->         ret = sca3000_read_data_short(st, SCA3000_REG_ADDR_BUF_COUNT, 1);
->         if (ret)
->                 goto error_ret;
-> -       else
-> -               num_available = st->rx[0];
-> +       num_available = st->rx[0];
->         /*
->          * num_available is the total number of samples available
->          * i.e. number of time points * number of channels.
-> --
+diff --git a/drivers/staging/iio/accel/sca3000_core.c b/drivers/staging/iio/accel/sca3000_core.c
+index 02e930c..a8f533a 100644
+--- a/drivers/staging/iio/accel/sca3000_core.c
++++ b/drivers/staging/iio/accel/sca3000_core.c
+@@ -216,8 +216,7 @@ static int sca3000_read_ctrl_reg(struct sca3000_state *st,
+ 	ret = sca3000_read_data_short(st, SCA3000_REG_ADDR_CTRL_DATA, 1);
+ 	if (ret)
+ 		goto error_ret;
+-	else
+-		return st->rx[0];
++	return st->rx[0];
+ error_ret:
+ 	return ret;
+ }
+diff --git a/drivers/staging/iio/accel/sca3000_ring.c b/drivers/staging/iio/accel/sca3000_ring.c
+index 1920dc60..d1cb9b9 100644
+--- a/drivers/staging/iio/accel/sca3000_ring.c
++++ b/drivers/staging/iio/accel/sca3000_ring.c
+@@ -99,8 +99,7 @@ static int sca3000_read_first_n_hw_rb(struct iio_buffer *r,
+ 	ret = sca3000_read_data_short(st, SCA3000_REG_ADDR_BUF_COUNT, 1);
+ 	if (ret)
+ 		goto error_ret;
+-	else
+-		num_available = st->rx[0];
++	num_available = st->rx[0];
+ 	/*
+ 	 * num_available is the total number of samples available
+ 	 * i.e. number of time points * number of channels.
+-- 
+2.5.0
+
 
