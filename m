@@ -1,81 +1,122 @@
-X-GM-THRID: 6255628757507244032
-X-Received: by 10.182.230.107 with SMTP id sx11mr1641107obc.5.1456502070533;
-        Fri, 26 Feb 2016 07:54:30 -0800 (PST)
+X-GM-THRID: 6252681224499757056
+X-Received: by 10.66.141.36 with SMTP id rl4mr8299529pab.3.1455815794313;
+        Thu, 18 Feb 2016 09:16:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.230 with SMTP id i6ls503640igt.39.gmail; Fri, 26 Feb
- 2016 07:54:30 -0800 (PST)
-X-Received: by 10.66.163.4 with SMTP id ye4mr1587180pab.23.1456502070048;
-        Fri, 26 Feb 2016 07:54:30 -0800 (PST)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id yd9si1951181pab.1.2016.02.26.07.54.30
+Received: by 10.107.169.168 with SMTP id f40ls2468667ioj.83.gmail; Thu, 18 Feb
+ 2016 09:16:33 -0800 (PST)
+X-Received: by 10.66.55.4 with SMTP id n4mr7918486pap.22.1455815793822;
+        Thu, 18 Feb 2016 09:16:33 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x229.google.com (mail-ig0-x229.google.com. [2607:f8b0:4001:c05::229])
+        by gmr-mx.google.com with ESMTPS id s20si282345igr.2.2016.02.18.09.16.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 07:54:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 18 Feb 2016 09:16:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::229 as permitted sender) client-ip=2607:f8b0:4001:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id t66so597459pfb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 07:54:30 -0800 (PST)
+Received: by mail-ig0-x229.google.com with SMTP id y8so18770595igp.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 09:16:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=MD/AqdtyRtYIZQnnajgA0s4B1HJdAvreYozEIUztYUA=;
-        b=RosjYj27Bqe7O7FD9Oxj0fOE0ktYRXK/eXn514UUjBKpNhcGVujNvxGdEThJ6l+2nl
-         ftVKHR4Ia1lIpS2Xz5QMmm+uDM/noO43Q4J4WRD9GpazV+cGcIz6DfArvpKp/3zJq7F9
-         oCbDu7qtulNyAANOXCqL63R6D/QN4Km0SsN92UsS/0oqjtRtNyA0oAU3g4gyIKAF4JXB
-         nsau8nhci4AQP/5TrS/ORPCb5LlebDCPjgLsyCIn9NIHB0SrY5aqzcHrojgsjCevAKk4
-         nq6clEJ016yuahvHC3PVW7hRUG2AR4lji8BMzdO0mreTRLiM9LFVZIPZrA5oiKAYmEQp
-         WkKQ==
+        bh=y9vfvmBoGRcUq+12NzfxugS0ArE/XtGN9PuBkAIJsxU=;
+        b=UBcL/fsjiQPXUYsxSzXdyPToTe7vHg4bHHZa22gospAIwx0fabYsmomXDl7oJXTuvM
+         LJqBhBj5zwWII57c/yG6RhbTNPgpNpuXHIbAe3XtB/Tv/uL5dftgeGZIJ3Ck7COOBWaP
+         MfuAhq+F9EtUiOUikhdUnJcvfP3CWeQGygPq4x2KnKKRO1sPa6xXAvlAasdPALZo2Pui
+         FkRwvsfm8QYTK2BDegTPOTRbyjXxqDuJoPFg5U9XxbjI2mB1dhnKRTRBmnyoFXzXICeD
+         g5VegBCsNYsJCQAcaQemDWOffmBizfLTsr7fSpNu/faLS+dueCpSUU+30xiBXSiWc4/H
+         OVzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=MD/AqdtyRtYIZQnnajgA0s4B1HJdAvreYozEIUztYUA=;
-        b=dE+8PMldb5FBSdP/ZIw6wDvQjNbVnd5QPw2NeOnkuUGsUl4KFxnxCSFlco72u93CkL
-         6qJHNHUGH46AttMKKKVCoc2lHMB1Iffn19GykAAwAwrPU6LURgVgU14KdN5KTcvfHsIu
-         T6vYv6OFJRUBVkEDElnt5MSR1Qjb5kDhZLbeGt1RiIHzLrNvX26tXyMK3hHFUQwTP8gk
-         odbleRlZRjWTNiqJ2s17VZYrjL8yxAXjd+ZZ4omGptceX2OL37KN1LH1b28Vu1AMZZST
-         il5UrM6NecvnD+9QfgiEn9tYf771xhpNN3EAm4IusGea5Ovyq4dpUxgDyTXxHHOLZDT/
-         qEtg==
-X-Gm-Message-State: AD7BkJK+WYEe5EXH1D5NlOMOhibTbXoY8igDC3qhvTLm+xOXJvPrVU4vB8psJo8ZldQ5HA==
-X-Received: by 10.98.11.88 with SMTP id t85mr3061120pfi.98.1456502069902;
-        Fri, 26 Feb 2016 07:54:29 -0800 (PST)
-Return-Path: <aquannie@gmail.com>
-Received: from Toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id i23sm20297832pfj.68.2016.02.26.07.54.28
+        bh=y9vfvmBoGRcUq+12NzfxugS0ArE/XtGN9PuBkAIJsxU=;
+        b=RlhMqjBrL4RjKsW7vxOGi+BuKU5HM5ZTxxhTQ96D4RLnKeMWJ5Ef5EzIHDdazzCELN
+         n8/HxyYT68VLsJ6wlogRYMPlRz9pGYP3zlSrvTMPq8UeyFbl7pBK7lO7pQDgtF2oMJLU
+         ywthv+8VX91ZqyM+nw32vLv5j8nh8YmkTT40JAB/8wr+hfHKno5oimFjYCY5LLJBVhtX
+         Ykaa/KqydPVKkYckabRv/EvGRLsFyghyBmPuj+5IkVql8lCZe8u2kfwWKwM5hI0CkOE3
+         2bFttEjERixgqxOLgLmct9smUO7Yw5dWnDFSLDlGbxf/wBsk/iuF6HUC5U9UlWl90pLw
+         1hLQ==
+X-Gm-Message-State: AG10YORoQSPOtE6seibLkcAAz6GOha239+yketDb/yH136bPU3ygg8FLp3/IVF8L4ZkVkQ==
+X-Received: by 10.50.20.70 with SMTP id l6mr4674664ige.5.1455815793662;
+        Thu, 18 Feb 2016 09:16:33 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id k16sm1749218igf.0.2016.02.18.09.16.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 26 Feb 2016 07:54:29 -0800 (PST)
-Date: Fri, 26 Feb 2016 21:24:32 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 18 Feb 2016 09:16:33 -0800 (PST)
+Date: Thu, 18 Feb 2016 17:15:48 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] staging: dgnc: Fix warnings in dgnc driver
-Message-ID: <cover.1456501665.git.aquannie@gmail.com>
+Subject: [PATCH] staging: lustre: lustre: Remove unneeded else after goto
+Message-ID: <20160218221548.GA7534@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch-set fixes checkpatch.pl warnings in dgnc driver
+Remove unnecessary else following an if block with a goto statement.
 
-Rehas Sachdeva (4):
-  staging: dgnc: Add spaces around '|' and '<<'
-  staging: dgnc: Avoid multiple blank lines
-  staging: dgnc: Fix block comment style
-  staging: dgnc: Break line after boolean operator
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+---
+ drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c | 3 ++-
+ drivers/staging/lustre/lustre/lov/lov_obd.c            | 5 ++---
+ drivers/staging/lustre/lustre/lov/lov_pack.c           | 5 +++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
 
- drivers/staging/dgnc/dgnc_driver.h |  8 --------
- drivers/staging/dgnc/dgnc_neo.h    |  1 -
- drivers/staging/dgnc/dgnc_pci.h    |  1 -
- drivers/staging/dgnc/dgnc_tty.c    | 28 ++++++++++++----------------
- drivers/staging/dgnc/digi.h        | 32 ++++++++++++++++----------------
- 5 files changed, 28 insertions(+), 42 deletions(-)
-
+diff --git a/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c b/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c
+index e52afe3..e3c3854 100644
+--- a/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c
++++ b/drivers/staging/lustre/lustre/libcfs/linux/linux-cpu.c
+@@ -854,7 +854,8 @@ cfs_cpt_table_create_pattern(char *pattern)
+ 			if (*str != 0) {
+ 				CERROR("Invalid pattern %s\n", str);
+ 				goto failed;
+-			} else if (c != ncpt) {
++			}
++			if (c != ncpt) {
+ 				CERROR("expect %d partitions but found %d\n",
+ 				       ncpt, c);
+ 				goto failed;
+diff --git a/drivers/staging/lustre/lustre/lov/lov_obd.c b/drivers/staging/lustre/lustre/lov/lov_obd.c
+index d72c313..a9dda2a 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_obd.c
++++ b/drivers/staging/lustre/lustre/lov/lov_obd.c
+@@ -399,10 +399,9 @@ static int lov_set_osc_active(struct obd_device *obd, struct obd_uuid *uuid,
+ 			CDEBUG(D_INFO, "OSC %s already %sactive!\n",
+ 			       uuid->uuid, active ? "" : "in");
+ 			goto out;
+-		} else {
+-			CDEBUG(D_CONFIG, "Marking OSC %s %sactive\n",
+-			       obd_uuid2str(uuid), active ? "" : "in");
+ 		}
++		CDEBUG(D_CONFIG, "Marking OSC %s %sactive\n",
++		       obd_uuid2str(uuid), active ? "" : "in");
+ 
+ 		lov->lov_tgts[index]->ltd_active = active;
+ 		if (active) {
+diff --git a/drivers/staging/lustre/lustre/lov/lov_pack.c b/drivers/staging/lustre/lustre/lov/lov_pack.c
+index a78211f..4b35d65 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_pack.c
++++ b/drivers/staging/lustre/lustre/lov/lov_pack.c
+@@ -404,8 +404,9 @@ int lov_getstripe(struct obd_export *exp, struct lov_stripe_md *lsm,
+ 	if (copy_from_user(&lum, lump, lum_size)) {
+ 		rc = -EFAULT;
+ 		goto out_set;
+-	} else if ((lum.lmm_magic != LOV_USER_MAGIC) &&
+-		 (lum.lmm_magic != LOV_USER_MAGIC_V3)) {
++	}
++	if ((lum.lmm_magic != LOV_USER_MAGIC) &&
++	    (lum.lmm_magic != LOV_USER_MAGIC_V3)) {
+ 		rc = -EINVAL;
+ 		goto out_set;
+ 	}
 -- 
-2.1.4
+2.5.0
 
 
