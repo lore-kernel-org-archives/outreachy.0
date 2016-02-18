@@ -1,90 +1,101 @@
 X-GM-THRID: 6252641236847427584
-X-Received: by 10.182.240.137 with SMTP id wa9mr9118145obc.16.1456667078375;
-        Sun, 28 Feb 2016 05:44:38 -0800 (PST)
+X-Received: by 10.182.72.137 with SMTP id d9mr7288907obv.31.1455806544750;
+        Thu, 18 Feb 2016 06:42:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.78.133 with SMTP id b5ls290100igx.5.canary; Sun, 28 Feb
- 2016 05:44:38 -0800 (PST)
-X-Received: by 10.107.169.88 with SMTP id s85mr14721166ioe.30.1456667078078;
-        Sun, 28 Feb 2016 05:44:38 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from mail-ob0-x241.google.com (mail-ob0-x241.google.com. [2607:f8b0:4003:c01::241])
-        by gmr-mx.google.com with ESMTPS id nt4si753440igb.2.2016.02.28.05.44.37
+Received: by 10.182.28.98 with SMTP id a2ls2711091obh.80.gmail; Thu, 18 Feb
+ 2016 06:42:24 -0800 (PST)
+X-Received: by 10.182.24.199 with SMTP id w7mr7057402obf.48.1455806544132;
+        Thu, 18 Feb 2016 06:42:24 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id yd9si980326pab.1.2016.02.18.06.42.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:44:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) client-ip=2607:f8b0:4003:c01::241;
+        Thu, 18 Feb 2016 06:42:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) smtp.mailfrom=htejun@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-ob0-x241.google.com with SMTP id hc1so848283obb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:44:37 -0800 (PST)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22b.google.com with SMTP id ho8so32789004pac.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 06:42:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=jpwquoZg5S9oNCac6/Isw9eMlO/j50bN5XJJbw4BeA0=;
-        b=aRGMyOa6cMv+okj/dZd5GteW563AdvBA73FL4WME5SCKTYTL+i9NFl4AKo95g1VZfW
-         QQA6x8+1AX2NRqOP8YChup+JL9Fwa2mF74DMdN5eKAlvZzGIzS97pdp2otnLNHQuEgDy
-         AXNZ11dud8iAb79exuukCWnnPp9ARMVYSnJoJ8jboMriykoMlV6JSC51hcOyk0tfXMF3
-         cR4QHBA9SUfOOCiHiTWa1XPqKyM+snUd1YFZlJc2t8lixxV45R38V7ycwx5zdp61jIfR
-         0JiajEh5dYf8EEHngiz6rWBeCiv2gcue3/nV7SA/eo3FZxrqeBv42yri+EPm2U3XuJ/P
-         pVsQ==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=Mi8l3i0weNGSjeehjzYl6OjM9JQBncybNjiFxYuEBeQ=;
+        b=n7DMQlEoD+hJZmjXirVpgAEfC5uefmjkQk8xfwullKakcxQHT68POHWucTXXbiogtU
+         b12y0KAnja41RyInH/LW2VCqdavMesk/uUWmjXiu51QqXJIITkomVE2YZj0ZlxrNURvR
+         pmAJjqNJZf5zhjpImGEPMqg6wbe4VbFeEx6qlObfLrreAi/dMe74ldg1XXYIlCGpWz1Y
+         StFm5t9Tw2+Il+SNz5bgvHtI4Ut7x8A6bmqRCKI6yFJSm6GvXtuxcDY+9d4kYOd92sDg
+         AgNOR9GA6yG0t4jzMZHBl9hhqcSN058XFNqMsKbT69VIQXfxAodEzCzk2P24EpQN8VL0
+         /lHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=jpwquoZg5S9oNCac6/Isw9eMlO/j50bN5XJJbw4BeA0=;
-        b=QLuVGFDzKTgnzxX5YwUKKNOCxQ0H5wtOJnI7EjEy6gb2dgCl0vnLqGdxWLd3TFpYKK
-         EDYQqtoo8Rxp2FCf8PjydNiPXNSEP6Rru3Foc49dlqy3AsY31Hc0G/XbwjmVfpWl27vo
-         dAerV91q1II+umohEMgxD3aeydXfWRmfeuMR97nAhqQ6y2g35R3jn1BkOy5GgsE6WlH9
-         XazegdM7PiUP7jZ77/pH8y/IdcXKnYoBrBBx6fAAcr5SvyicxF0JG7SXc9j/Eql6eDa7
-         +ErF2HF6Diegwo19dAWNO+YEx9ryu7Pf8ha6ot8kBNqQ7TeNufOTK4++W7lpmMN0Okfv
-         W05g==
-X-Gm-Message-State: AD7BkJLJbEwlpIwgm9KpQ/P4q+LnMNBnEOIqf4+EcUURoBAY1SVRCjlNyP4En+bHZNf39w==
-X-Received: by 10.182.126.198 with SMTP id na6mr7997723obb.3.1456667077754;
-        Sun, 28 Feb 2016 05:44:37 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from localhost ([2602:306:b8cd:a0d0::2f])
-        by smtp.gmail.com with ESMTPSA id u193sm14684905oie.25.2016.02.28.05.44.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:44:37 -0800 (PST)
-Sender: Tejun Heo <htejun@gmail.com>
-Date: Sun, 28 Feb 2016 08:44:36 -0500
-From: Tejun Heo <tj@kernel.org>
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/4] staging: most: hdm-dim2: Use
- devm_* functions
-Message-ID: <20160228134436.GS3965@htj.duckdns.org>
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=Mi8l3i0weNGSjeehjzYl6OjM9JQBncybNjiFxYuEBeQ=;
+        b=OM/QmuB/IzuYeW8JZmCT9GPBkfh7JFJ2h8lpDFsa7Cf9hYozQlH34+kLBgAAfT2Bkf
+         OigZNVBcxo3dy1m0u5mSas0yyuUV4kiu6qeB31ot3Pd3DX4r8VZdHi30y4bZmYKEZ0Vh
+         acSxA6Nu1axr4VmpnIaHnh35QqgCEtzWR+/FNQkteJ13E8+xZzAHvmbPGqNbonvvD4NK
+         5G6HIZrco8ptvO756RlE4RBXVuwyCmefxECd757YUZD778aJF4en6NlhdI0iwE5ikZLW
+         8Qf4gwQ0LswfQJswVgaJY4WsJ/Cc/V8OCtlv28GApDNoXqrJMFBqCBQuel5LBYUlYLaw
+         qyug==
+X-Gm-Message-State: AG10YORlro8qxTYDfZkez4yL+huNFP8QnwYxRh0XT5+E6ShsbgzjHVfWfxnRWeJSz0K6MQ==
+X-Received: by 10.66.248.198 with SMTP id yo6mr10502040pac.54.1455806543928;
+        Thu, 18 Feb 2016 06:42:23 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.106.39])
+        by smtp.gmail.com with ESMTPSA id w89sm10934946pfi.13.2016.02.18.06.42.20
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Thu, 18 Feb 2016 06:42:23 -0800 (PST)
+Date: Thu, 18 Feb 2016 20:12:11 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 4/4] staging: most: hdm-dim2: Replace pr_err with dev_err
+Message-ID: <1dfe9795f9ef5c674c262cc7d05f34da181833be.1455803765.git.amitoj1606@gmail.com>
 References: <cover.1455803765.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1455803765.git.amitoj1606@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, Feb 18, 2016 at 08:11:16PM +0530, Amitoj Kaur Chawla wrote:
-> Devm_ functions allocate memory that is released when a driver
-> detaches. Replace kzalloc, ioremap and request_irq with their devm_*
-> counterparts in the probe function of a platform device which were
-> originally freed in the remove function.
-> 
-> Also, unnecessary labels have been removed, an unnecessary
-> platform_set_drvdata has been removed as well as switching from pr_err
-> to dev_err.
-> 
-> Amitoj Kaur Chawla (4):
->   staging: most: hdm-dim2: Replace kzalloc with devm_kzalloc
->   staging: most: hdm-dim2: Switch to devm_ioremap_resource()
->   staging: most: hdm-dim2: Replace request_irq with devm_request_irq
->   staging: most: hdm-dim2: Replace pr_err with dev_err
+Replace pr_err with dev_err when a appropriate device structure is
+present.
 
-For the patchset,
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/most/hdm-dim2/dim2_hdm.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Acked-by: Tejun Heo <tj@kernel.org>
-
-Thanks.
-
+diff --git a/drivers/staging/most/hdm-dim2/dim2_hdm.c b/drivers/staging/most/hdm-dim2/dim2_hdm.c
+index c9cc9c1..c736310 100644
+--- a/drivers/staging/most/hdm-dim2/dim2_hdm.c
++++ b/drivers/staging/most/hdm-dim2/dim2_hdm.c
+@@ -753,7 +753,7 @@ static int dim2_probe(struct platform_device *pdev)
+ 
+ 	ret = platform_get_irq(pdev, 0);
+ 	if (ret < 0) {
+-		pr_err("failed to get irq\n");
++		dev_err(&pdev->dev, "failed to get irq\n");
+ 		return -ENODEV;
+ 	}
+ 	dev->irq_ahb0 = ret;
+@@ -761,8 +761,8 @@ static int dim2_probe(struct platform_device *pdev)
+ 	ret = devm_request_irq(&pdev->dev, dev->irq_ahb0, dim2_ahb_isr, 0,
+ 			       "mlb_ahb0", dev);
+ 	if (ret) {
+-		pr_err("failed to request IRQ: %d, err: %d\n",
+-		       dev->irq_ahb0, ret);
++		dev_err(&pdev->dev, "failed to request IRQ: %d, err: %d\n",
++			dev->irq_ahb0, ret);
+ 		return ret;
+ 	}
+ #endif
 -- 
-tejun
+1.9.1
+
 
