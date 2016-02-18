@@ -1,67 +1,67 @@
 X-GM-THRID: 6252726867929858048
-X-Received: by 10.46.9.12 with SMTP id 12mr1411575ljj.10.1482104369051;
-        Sun, 18 Dec 2016 15:39:29 -0800 (PST)
+X-Received: by 10.28.47.140 with SMTP id v134mr730476wmv.3.1455826421401;
+        Thu, 18 Feb 2016 12:13:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.33.163 with SMTP id h35ls892773lji.46.gmail; Sun, 18 Dec
- 2016 15:39:28 -0800 (PST)
-X-Received: by 10.46.32.156 with SMTP id g28mr1311821lji.7.1482104368241;
-        Sun, 18 Dec 2016 15:39:28 -0800 (PST)
+Received: by 10.28.232.20 with SMTP id f20ls10869wmh.5.gmail; Thu, 18 Feb 2016
+ 12:13:40 -0800 (PST)
+X-Received: by 10.28.45.151 with SMTP id t145mr727132wmt.6.1455826420802;
+        Thu, 18 Feb 2016 12:13:40 -0800 (PST)
 Return-Path: <kamal.froj@gmail.com>
-Received: from mail-wj0-x244.google.com (mail-wj0-x244.google.com. [2a00:1450:400c:c01::244])
-        by gmr-mx.google.com with ESMTPS id s81si758784wmf.3.2016.12.18.15.39.28
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id e130si210489wme.2.2016.02.18.12.13.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Dec 2016 15:39:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of kamal.froj@gmail.com designates 2a00:1450:400c:c01::244 as permitted sender) client-ip=2a00:1450:400c:c01::244;
+        Thu, 18 Feb 2016 12:13:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of kamal.froj@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of kamal.froj@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=kamal.froj@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of kamal.froj@gmail.com designates 2a00:1450:400c:c01::244 as permitted sender) smtp.mailfrom=kamal.froj@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wj0-x244.google.com with SMTP id xy5so21502247wjc.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Dec 2016 15:39:28 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id b205so4800754wmb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 12:13:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to;
-        bh=U8RdrZ5NERrMPHGOEyqkBWuiD30NC0KDzg/pvOwCB60=;
-        b=uinwkbUU/cwnXuQEcWFf+nVN0fvqtLpuIn/a3s0EZCmdbRlSxSuaW8EP3kvmMiXEbK
-         yXR0uHkQ/5CKzW8M8Fjn03PL/rR5AKVuKVrKnNYDATiZ6X0ttIlt6bso+JzY+N9B91O4
-         VFe9cUI3mmpStLLYGZYG7PDH3yY+ugGtZzP+YLv9OWP1gbSS/tHGEQn5TKWNhHR3Bakm
-         JSh2hvLpqpsxdyXhcHRK58OUSi5pCNCIRuIo+xhkatpotb7hxnw89yKskk+DE7NWt/Cr
-         ek+kCG/D5GZgs4EEEe9aM59t/2c1iIWQVn8SJOB+TSMGncqUKXDMkACtdk5aLddk/ocq
-         xvrQ==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=Z7k1BdFFB0m/hJa37GBC90tMLB5TBBx0lp7FNSV4bmk=;
+        b=Fh8/ZGUc30m+quKDHVzx5DTB102K82j2/yUooT9lmfIK9dY39V+lTcYxl7XSxbg7SR
+         rXI3N7Kc/EIbx+mEb2NSK5V9L3/cAYcBelDSheeQHB46/VH0MxDB03C05ZzgvK3p2aGr
+         kS9oCjDbVxGYaQOj2xBPppaVubDM34lDfWtrNyEgLvn0nLVDmlbHZfCrK1gBRchdpyhk
+         tqDHQSAsQjEfndwZnEHgh5PERcyMali1SgToYsEmDCIsFWm/6x8WpkrgeuUYK37j/A6r
+         gMFpbvCUB7kQZlzFQH/Lo9mE7jW7OXGm17RPff5SqM1r8de4EgGMvPJgQpC5XuZ8L4qb
+         eJYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to;
-        bh=U8RdrZ5NERrMPHGOEyqkBWuiD30NC0KDzg/pvOwCB60=;
-        b=UFSMinAUCgcNpzr3Dwpcplk5kR/cYACHmotefaEH4AXidSdr7uivTmhwN1fs/WDQV+
-         ecN9zEnw1xZx+iqJo/H9iByRCBgEWAXmD7s948QAqIgrLw9e3ckT2nXT/H85212jb7nc
-         8TdRAM+kGMQh4cVfQOBiYdLn8oHo4K1SDpwJlJWS/PoQvHExbJrvUJotS0Q09/7FkA6Q
-         JGHkPEgnU3VxZeXJngVE2jPJ7JFLIEwX4mINp+YpOMQOqX1owS7RZ2h+qYf5yCAcH4On
-         VgVt2odMGNKJFQj3nFvbNm/o1FcVuFZ0RIINXVCfMQvedt9WYCXpChqiggamuxiuBw89
-         o7nA==
-X-Gm-Message-State: AIkVDXIEHhGrPHzLVHmIBFsXPgqok+t8nmuJVANxk+/rQ6Ukc/KjlOZMWlHPkKKD+iDkB1Ne9UMdATsCitafmg==
-X-Received: by 10.194.22.41 with SMTP id a9mr12944916wjf.30.1482097582224;
- Sun, 18 Dec 2016 13:46:22 -0800 (PST)
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=Z7k1BdFFB0m/hJa37GBC90tMLB5TBBx0lp7FNSV4bmk=;
+        b=IhbbGaYwXUsRz4KUTyyU41lYC5VbIVopVxbMcQlH0H1Q/tOvnHa72L6VwflwWbC067
+         QpJ1LVXDh0SSnSZnmVXAoLCYGMg7Ou0A3cp2UrhDwqFKyrxJi0ME4uYtufAVzlA16EhC
+         UCjdXsFB5VGtINZzOjgc7+ny7leb86Y0sH5600awd92y+Of/Lj9sHdzZ5nQQBIqdI1IN
+         336P2Cubgd3jLMejiApxtFAnARwVS2TOMpNuugstKp6gb+qxAkls77VWwbev0Cnfi/9C
+         d4gJV5k8CFHWd4na8R9/tbjDOHaeMivSfsl4UsB932hU277nMdgKO4BX1Uni2OppfYyJ
+         5/bQ==
+X-Gm-Message-State: AG10YOTde+QvM579zw4bcVZzAxpPLPafVZz6cbuPdkSW5oRink1eLogPLyi1V2yiwlEcUteFS4zG5dMGt/ODXg==
 MIME-Version: 1.0
-Received: by 10.194.34.170 with HTTP; Sun, 18 Dec 2016 13:46:20 -0800 (PST)
+X-Received: by 10.28.158.8 with SMTP id h8mr5346806wme.6.1455826420620; Thu,
+ 18 Feb 2016 12:13:40 -0800 (PST)
+Received: by 10.194.61.193 with HTTP; Thu, 18 Feb 2016 12:13:40 -0800 (PST)
 In-Reply-To: <CADm1dMNv0gTgx509t9OjP4gyGVRKjKNk9XCYaF3oO8bxnzNAFw@mail.gmail.com>
 References: <CADm1dMMeNa6DsCtB7LfWUOjGeMF8wtPiH=L5oe68POeiDCemtg@mail.gmail.com>
- <CADm1dMNv0gTgx509t9OjP4gyGVRKjKNk9XCYaF3oO8bxnzNAFw@mail.gmail.com>
-From: kamal a <kamal.froj@gmail.com>
-Date: Mon, 19 Dec 2016 00:46:20 +0300
-Message-ID: <CALNN6H4CnC0UFjyd_NTiX5jrtMTKPz_B4368E2qX1n0FmtjMkA@mail.gmail.com>
+	<CADm1dMNv0gTgx509t9OjP4gyGVRKjKNk9XCYaF3oO8bxnzNAFw@mail.gmail.com>
+Date: Thu, 18 Feb 2016 23:13:40 +0300
+Message-ID: <CALNN6H4JrhfRBKN0sDT7Db8oHj4HC6m+nNRQvrechiF-UJ2XeQ@mail.gmail.com>
 Subject: =?UTF-8?B?RndkOiBVcyBjb25ncmVzcyBoZWFyaW5nIG9mIG1hYW4gYWxzYWFuIE1vbmV5IGxhdW5kcg==?=
 	=?UTF-8?B?eSDZgti22YrYqSDYp9mE2YPZiNmG2LrYrNix2LMg2YTYutiz2YrZhCDYp9mE2KPZhdmI2KfZhCDZhNmE?=
 	=?UTF-8?B?2YXZhNmK2KfYr9mK2LEg2YXYudmGINin2YTYtdin2YbYuQ==?=
-To: bloggers_kg@googlegroups.com
-Content-Type: multipart/mixed; boundary=047d7b5d8695e99e470543f5bb73
+From: kamal a <kamal.froj@gmail.com>
+To: elmoslm@googlegroups.com
+Content-Type: multipart/mixed; boundary=001a114b3fdea8b0e1052c11008a
 Bcc: outreachy-kernel@googlegroups.com
 
---047d7b5d8695e99e470543f5bb73
-Content-Type: multipart/alternative; boundary=047d7b5d8695e99e420543f5bb71
+--001a114b3fdea8b0e1052c11008a
+Content-Type: multipart/alternative; boundary=001a114b3fdea8b0db052c110088
 
---047d7b5d8695e99e420543f5bb71
+--001a114b3fdea8b0db052c110088
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: base64
 
@@ -81,7 +81,7 @@ qSDYs9i52K8gINmI2YXYr9in2LHYsyDYs9i52K8g2KjYp9mE2YXZhti32YLYqSDYp9mE2LTYsdmC
 INio2YbZgyDYp9mI2KfZhCDYp9mE2KjYrdix2YrZhtmKKg0KDQoNCg0KKtmF2KrYsdis2YUg2KjY
 p9mE2YTYutipINin2YTYudix2KjZitipKg0KDQoNCg0KaHR0cDovL3d3dy55b3V0dWJlLmNvbS93
 YXRjaD92PW1JQk5uUXZoVThzDQo=
---047d7b5d8695e99e420543f5bb71
+--001a114b3fdea8b0db052c110088
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -294,7 +294,7 @@ font color=3D"#000000" face=3D"Times New Roman" size=3D"3">=C2=A0</font></p=
 </font><p align=3D"center" style=3D"margin:0cm 0cm 0pt;text-align:center"><=
 a href=3D"http://www.youtube.com/watch?v=3DmIBNnQvhU8s" target=3D"_blank"><=
 font color=3D"#0000ff" face=3D"Times New Roman" size=3D"3">http://www.youtu=
-be.com/watch?<wbr>v=3DmIBNnQvhU8s</font></a></p>
+be.com/watch?v=3DmIBNnQvhU8s</font></a></p>
 
 <font color=3D"#000000" face=3D"Times New Roman" size=3D"3">
 
@@ -310,8 +310,8 @@ font color=3D"#000000" face=3D"Times New Roman" size=3D"3">=C2=A0</font></p=
 </div><br></div>
 </div><br></div>
 
---047d7b5d8695e99e420543f5bb71--
---047d7b5d8695e99e470543f5bb73
+--001a114b3fdea8b0db052c110088--
+--001a114b3fdea8b0e1052c11008a
 Content-Type: image/jpeg; 
 	name="=?UTF-8?B?2YXYudmGINin2YTYtdin2YbYuSDZhdi5INij2K3YryDYudmE2YXYp9ihINin2YTYr9mK2YYuanBn?="
 Content-Disposition: attachment; 
@@ -444,5 +444,5 @@ v4CVVqf/AA4BYa6k1fHXKn88AGXTU6BWX7I4Dur3YCpPUn9WKXH60Su3VX+z5bIG1eDRq0vX68BH
 vSoWo6tn/Sy7j5M+ZUaBTzVoTQvnxoMBp3081fpFzmx/zDU1ih+BfbgHmL5kQN8rQzfKn5cNkuqp
 01pXAVbDr0HXXXXx6uNamtf6sB1tVc+NRXAGx/EO3AGT186L2N/DAcir78AGWuke3PAAmpROFKYB
 uvtfz9t92p4+zAH3/wD6sv8AgOAYd38zzx5VPN0rorwrU4D/2Q==
---047d7b5d8695e99e470543f5bb73--
+--001a114b3fdea8b0e1052c11008a--
 
