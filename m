@@ -1,90 +1,87 @@
 X-GM-THRID: 6252584121027002368
-X-Received: by 10.98.74.203 with SMTP id c72mr8961595pfj.8.1456666471541;
-        Sun, 28 Feb 2016 05:34:31 -0800 (PST)
+X-Received: by 10.13.223.140 with SMTP id i134mr6055344ywe.11.1455793205399;
+        Thu, 18 Feb 2016 03:00:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.108.5 with SMTP id hg5ls294293igb.41.gmail; Sun, 28 Feb
- 2016 05:34:31 -0800 (PST)
-X-Received: by 10.107.10.217 with SMTP id 86mr14406465iok.6.1456666471244;
-        Sun, 28 Feb 2016 05:34:31 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from mail-ob0-x241.google.com (mail-ob0-x241.google.com. [2607:f8b0:4003:c01::241])
-        by gmr-mx.google.com with ESMTPS id iq8si674904igb.0.2016.02.28.05.34.31
+Received: by 10.182.224.229 with SMTP id rf5ls2450969obc.22.gmail; Thu, 18 Feb
+ 2016 03:00:05 -0800 (PST)
+X-Received: by 10.182.236.34 with SMTP id ur2mr6176664obc.10.1455793205069;
+        Thu, 18 Feb 2016 03:00:05 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id 12si892740pfb.1.2016.02.18.03.00.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:34:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) client-ip=2607:f8b0:4003:c01::241;
+        Thu, 18 Feb 2016 03:00:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) smtp.mailfrom=htejun@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-ob0-x241.google.com with SMTP id wz1so8500172obc.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:34:31 -0800 (PST)
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x242.google.com with SMTP id y7so1868276paa.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 03:00:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=QHIgeufZvEmtJ9qJd4QCZIKh080K9ib+Kyba7ckghOg=;
-        b=h6i5Of5fjUB+7yOi66Pc2yeqFoyJXy25iNqts8MyUCOsgVbecP1WV5AFGb1vgkCXQq
-         lL+JwS3ZwnmKTaavEBP4bLaRydZGkDuX+YqLfl7Ng0ySMv1lhwsIuh8gHgbgTLIVQIIu
-         P3QJ/CBuxof1JnS2kPX3VIu+y6Us0OQ0SkB+WwJUrwRYDDerdk5jAv//j5WpPt+zJSez
-         sCYHRlZVJA6bXYBLm1iQxvk+Rnh0AwUljMj3Jj/cn/zKa+f8fLk1bKThuOcFgWszEq9A
-         R8nQaemfd8KDbRM7WuniZOIpshsycQFQ1vrT5sFs70DlorstlBEJAVCp8ttZBlUxZBpv
-         TWPw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=5dtv0i9XrtUDLmuKDNtBdearJ1ApYNoo7Oy1DDHCM9s=;
+        b=dWTHV2vi8/vkblCajF5zupJ1Ux0glIAJ0ygpoyfcleRBoIYwDwrCCb0YOGXBYLURne
+         CGGcDLcgf+I8iD0yc1GvUnY6jkq/EVgEMfGcVcnOYOHXQ9OsXejhID/iqG9U4slBfjqX
+         tXrmYTHyEV8YQzTXXPeaQJP5qyB6bi4Au46Tma2wPT7xqXhJfef/lXLYo9g1UT14pcVL
+         2nVOAXaNbgkOSGaEEKQoUwai6sjLdMR7vBNR3TC9UYBvWishBuhhrFuoPhD0LiqkqQ5w
+         XfhX5B0b9FtGKCZzYpD7NdHqQpzhuPVDL/U5byr5w/V7fpssytF4NyDMVtjIGWA2ZcJP
+         ZfKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=QHIgeufZvEmtJ9qJd4QCZIKh080K9ib+Kyba7ckghOg=;
-        b=fA12Nc5T1cwAZkg7jkue3FM8eT7jJH7DbL6wTT3ynfq0hryD2BPku/F3tQuBHt9OB0
-         uldp5h3YA3fEl0oA8Pqn5lCf1+HxWPdcN6vFAbVEUB4kUM141bbJg6QqKtDo5ikz4JUD
-         llGkVY4ZcD1xkYwcG0mVkJlb2gNuulCTDJWHKWmyfmJM786EqUifnXLwXiNxIUbSTm0U
-         IaBBiOWkaOtpYLaOWKCEYjgbJr0xQFBIiVwgRfMgMQ+rD84QDMixjzbsvwK21HpcJ/A1
-         cUpzyYyJ+w3ZbZQjkVdgWPWIVU+qqLhm6T4G9OYpNiotEm4no+Vne0OydKPdbnZyw1OS
-         7GRg==
-X-Gm-Message-State: AD7BkJJyGQsvnqBBCxNyykRwQLXmZDrtOzPs8WkSOP1UkfiDs+4mXE2jKywAVIyC7mop3g==
-X-Received: by 10.60.233.193 with SMTP id ty1mr8611629oec.0.1456666470938;
-        Sun, 28 Feb 2016 05:34:30 -0800 (PST)
-Return-Path: <htejun@gmail.com>
-Received: from localhost ([2602:306:b8cd:a0d0::2f])
-        by smtp.gmail.com with ESMTPSA id n6sm14737907obv.0.2016.02.28.05.34.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:34:30 -0800 (PST)
-Sender: Tejun Heo <htejun@gmail.com>
-Date: Sun, 28 Feb 2016 08:34:29 -0500
-From: Tejun Heo <tj@kernel.org>
-To: Eva Rachel Retuya <eraretuya@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/7] staging: iio: resolver: fix
- coding style issues
-Message-ID: <20160228133429.GQ3965@htj.duckdns.org>
-References: <1455793179-2674-1-git-send-email-eraretuya@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=5dtv0i9XrtUDLmuKDNtBdearJ1ApYNoo7Oy1DDHCM9s=;
+        b=mbAPjKJTLvj5wJkewNpREbaT2LdJftHngPZLpUapHojce0w5bU3QLjChi0bmkmVHIE
+         jYas+ATYaighfXbCE1IDmKs5zsdLSTtCWFemeneM3Za21nbkE4P5xj/KsTOY11HWy8kZ
+         jRLupydPDsMNGMSD6VeDSZpH8vF7d44T8nZTV7fZmZeTn0iFVa+W6+tCwkiFPTd3OOKc
+         JzBGYZ5H4Wil4cTsuBkP2QSRoVkJPUgg47ehVIp5BbA72zvn22B1Mejm97HT7EwpZrW8
+         rDwPSjz+7KDzFxP9jwKs+7JqrDaFSx/JwcTMzWY2KzYpAlSAYQu49cB4CnTeIMywl4Mg
+         FDdA==
+X-Gm-Message-State: AG10YOSfapp5xDAbeccIaL4G6C0rHiG1TsWQcwU9ROEw1hlCwRnTefYR1oIqB3k2+gXvNQ==
+X-Received: by 10.66.222.199 with SMTP id qo7mr9120524pac.38.1455793204955;
+        Thu, 18 Feb 2016 03:00:04 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([103.14.62.106])
+        by smtp.gmail.com with ESMTPSA id cq4sm9317865pad.28.2016.02.18.03.00.04
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 18 Feb 2016 03:00:04 -0800 (PST)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH 7/7] staging: iio: resolver: fix comparison to NULL
+Date: Thu, 18 Feb 2016 18:59:39 +0800
+Message-Id: <1455793179-2674-8-git-send-email-eraretuya@gmail.com>
+X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1455793179-2674-1-git-send-email-eraretuya@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <1455793179-2674-1-git-send-email-eraretuya@gmail.com>
 
-On Thu, Feb 18, 2016 at 06:59:32PM +0800, Eva Rachel Retuya wrote:
-> Address checkpatch checks on iio/resolver.
-> 
-> Eva Rachel Retuya (7):
->   staging: iio: resolver: align to match open parenthesis
->   staging: iio: resolver: add spaces around operators
->   staging: iio: resolver: use blank line after array declaration
->   staging: iio: resolver: add missing braces on if-else statements
->   staging: iio: resolver: delete space after a cast
->   staging: iio: resolver: remove unnecessary blank line
->   staging: iio: resolver: fix comparison to NULL
-> 
->  drivers/staging/iio/resolver/ad2s1200.c | 12 +++++-----
->  drivers/staging/iio/resolver/ad2s1210.c | 39 ++++++++++++++++++---------------
->  2 files changed, 27 insertions(+), 24 deletions(-)
+Remove comparison of spi->dev.platform_data to NULL by replacing it with
+'!spi->dev.platform_data' as checkpatch suggested:
 
-For the patchset,
+CHECK: Comparison to NULL could be written "!spi->dev.platform_data"
 
-Acked-by: Tejun Heo <tj@kernel.org>
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+---
+ drivers/staging/iio/resolver/ad2s1210.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks.
-
+diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
+index 477df95..6b99263 100644
+--- a/drivers/staging/iio/resolver/ad2s1210.c
++++ b/drivers/staging/iio/resolver/ad2s1210.c
+@@ -675,7 +675,7 @@ static int ad2s1210_probe(struct spi_device *spi)
+ 	struct ad2s1210_state *st;
+ 	int ret;
+ 
+-	if (spi->dev.platform_data == NULL)
++	if (!spi->dev.platform_data)
+ 		return -EINVAL;
+ 
+ 	indio_dev = devm_iio_device_alloc(&spi->dev, sizeof(*st));
 -- 
-tejun
+1.9.1
+
 
