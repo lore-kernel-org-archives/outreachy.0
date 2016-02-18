@@ -1,100 +1,86 @@
 X-GM-THRID: 6252584121027002368
-X-Received: by 10.129.3.69 with SMTP id 66mr6066498ywd.41.1455793197443;
-        Thu, 18 Feb 2016 02:59:57 -0800 (PST)
+X-Received: by 10.140.246.3 with SMTP id r3mr6295608qhc.2.1455793194621;
+        Thu, 18 Feb 2016 02:59:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.21.234 with SMTP id 97ls4895843qgl.23.gmail; Thu, 18 Feb
- 2016 02:59:56 -0800 (PST)
-X-Received: by 10.13.216.150 with SMTP id a144mr6113930ywe.52.1455793196806;
-        Thu, 18 Feb 2016 02:59:56 -0800 (PST)
+Received: by 10.140.99.18 with SMTP id p18ls4768144qge.86.gmail; Thu, 18 Feb
+ 2016 02:59:53 -0800 (PST)
+X-Received: by 10.31.151.21 with SMTP id z21mr6236142vkd.7.1455793193957;
+        Thu, 18 Feb 2016 02:59:53 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
 Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 12si892682pfb.1.2016.02.18.02.59.56
+        by gmr-mx.google.com with ESMTPS id 12si892682pfb.1.2016.02.18.02.59.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 02:59:56 -0800 (PST)
+        Thu, 18 Feb 2016 02:59:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Received: by mail-pa0-x241.google.com with SMTP id fl4so1860777pad.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 02:59:56 -0800 (PST)
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 02:59:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=p1n2H7LMDYWS2X4Ms7X4oz4VZTdM8/dEpFuvP8Jy8jo=;
-        b=SSh284QBt7Y5dKX88jZWIF5Zql4qUVx5CHKD4R1ZRVEas1Oqqg5ILDG1MkPki4kpHM
-         9uj2oQuVKMFn+ZdDzPhDruOady9FkHvbzTBy9KoF9+LRedwiNxjbcxnnulUy1PlmiGgM
-         1n+z32nJGjNYtMaIPgjZO0ntxxPXmJdFf7jkM1ODtisLqU+axonPY+I627pD33gRJQa6
-         F/7XbOZMqoK5YhZLiVbGrk+P/rSNhvwMy/n1KieFZAjXOyivTeIUw3K9mhEvOjn9ajOT
-         q8xTYWWJrt1RfwnVSg9yEvDXQyRxLxPQOC5Xy3LjaMlVTUMIb3Plp21t5HOzWugvYiM4
-         m9NA==
+        bh=OTDIEV3NclzXVyYgtaEXXNCtFDymUnJrbDT6N6kZ3rk=;
+        b=FowGnSK2QVFZxVvRfJhScSofD2xPhMgT1Nipjscut5bpaWizNe1md3TPS6UKABxLFW
+         BbEhyKGhJi6quOecXZ4vtuXmXhTsb2PP2HX9M7+wPVNMmp29Fm++Y58S60X0NRyllsmd
+         pHThYc/PgL+xIkOsW+osZROnCGDoA/gqBZLK6NDnfcCXeHlYlR7cIGzH9Wa+CbbiRR0H
+         0CMGmbMKgZraWokrCy3W/w4MhtKtrw26yPk9cuaOr2KDHmf52lEfuyFg1T/LhXolvmuL
+         IppJ2pZUz3qbHKlbbECMob50QLaB4omYrLEoDy9XKLPHKosT7Jdz6wGFSfZvgQXq6TE0
+         AfWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=p1n2H7LMDYWS2X4Ms7X4oz4VZTdM8/dEpFuvP8Jy8jo=;
-        b=IN/mWSIlv13Gn3DIqszCOv3VjbvX9USE0X/coT2jEY1fhMY7dWPADbtuZO753sm37l
-         +TU+CqdLmVhV16QDgbSxewvg9uCoiPqhOaWesiHxaIhjxzmVR/C9WT58GRd26lzX/AZR
-         NqdnFGsBoeGEFs8mPgfc/d12Jo1r8wPw7fMeqktyo465y/WoK/6OyhuzrMiagEfTex3y
-         RK2CXisF4F/D0TAFip1MtbTSeOzwRQM/Ps5hiTr3a+oKTIFWknqIlZvp1Ng3OwQU1fyG
-         wzDqMTiGNdWaOq+/PuNeaVuoq2ccQtqQcipeNp7tP3yqlma0RiPPTut2887I0ZU3JO6C
-         J0sA==
-X-Gm-Message-State: AG10YOQ5UingkQVqTnGgSnNqgM0kNhM7VcMIX2z23iF7rjS7n+O0xKHcD6NWZeeZB+dgFA==
-X-Received: by 10.66.190.168 with SMTP id gr8mr9031436pac.23.1455793196639;
-        Thu, 18 Feb 2016 02:59:56 -0800 (PST)
+        bh=OTDIEV3NclzXVyYgtaEXXNCtFDymUnJrbDT6N6kZ3rk=;
+        b=kokNo30lq121QbAyT+1XFPCEFKcVenKw7NFJJzr96nxWAdGXcHMWGxQij9Y+eMtOWA
+         ID/B7kb2GDkqYy5l+jnZjyO4i7I2AsoAi0AKwyKYvbVFJxn2Aw8s4XH3QxPKa3JmJrsR
+         mjot4hRxvDkWu5ozL+vjvwNZZiljUflmw9naKILqHG9fTdGHG0eqVa1aOrHWid4rJ95q
+         c/TR3D+BiZ0eYkekkgqpYvCpPqGXVgVDjjtsxqRnVJZqXKgrMe82zhLhlQqy6QGKQhqI
+         V5MNQSW2RLXn4pvDUay1LNKm76tbUxdCKnjpkGHcipzcMbhuX97Whvs0pKg/cjbLY0Rq
+         +uGg==
+X-Gm-Message-State: AG10YORdVxDw3Tp9BiUyaR0ezIecruXkHId872APtVXqw1Qw8d8IrPyb+nAbnHknoGYi8w==
+X-Received: by 10.66.189.165 with SMTP id gj5mr9132521pac.157.1455793193825;
+        Thu, 18 Feb 2016 02:59:53 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-Mint ([103.14.62.106])
-        by smtp.gmail.com with ESMTPSA id d22sm9402884pfj.32.2016.02.18.02.59.55
+        by smtp.gmail.com with ESMTPSA id s21sm9397445pfi.29.2016.02.18.02.59.52
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 02:59:56 -0800 (PST)
+        Thu, 18 Feb 2016 02:59:53 -0800 (PST)
 From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH 4/7] staging: iio: resolver: add missing braces on if-else statements
-Date: Thu, 18 Feb 2016 18:59:36 +0800
-Message-Id: <1455793179-2674-5-git-send-email-eraretuya@gmail.com>
+Subject: [PATCH 3/7] staging: iio: resolver: use blank line after array declaration
+Date: Thu, 18 Feb 2016 18:59:35 +0800
+Message-Id: <1455793179-2674-4-git-send-email-eraretuya@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1455793179-2674-1-git-send-email-eraretuya@gmail.com>
 References: <1455793179-2674-1-git-send-email-eraretuya@gmail.com>
 
-Add braces around the else clause to adhere to kernel coding style. This
-clears the following checkpatch issue:
+Add a blank line after array declaration. This clears the checkpatch
+check:
 
-CHECK: braces {} should be used on all arms of this statement
+CHECK: Please use a blank line after function/struct/union/enum
+declarations
 
 Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/iio/resolver/ad2s1210.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/iio/resolver/ad2s1210.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
-index 4cf5e41..563a01c 100644
+index f2a3463..4cf5e41 100644
 --- a/drivers/staging/iio/resolver/ad2s1210.c
 +++ b/drivers/staging/iio/resolver/ad2s1210.c
-@@ -319,9 +319,9 @@ static ssize_t ad2s1210_store_control(struct device *dev,
- 		data = ad2s1210_read_resolution_pin(st);
- 		if (data != st->resolution)
- 			dev_warn(dev, "ad2s1210: resolution settings not match\n");
--	} else
-+	} else {
- 		ad2s1210_set_resolution_pin(st);
--
-+	}
- 	ret = len;
- 	st->hysteresis = !!(data & AD2S1210_ENABLE_HYSTERESIS);
- 
-@@ -381,8 +381,9 @@ static ssize_t ad2s1210_store_resolution(struct device *dev,
- 		data = ad2s1210_read_resolution_pin(st);
- 		if (data != st->resolution)
- 			dev_warn(dev, "ad2s1210: resolution settings not match\n");
--	} else
-+	} else {
- 		ad2s1210_set_resolution_pin(st);
-+	}
- 	ret = len;
- error_ret:
- 	mutex_unlock(&st->lock);
+@@ -98,6 +98,7 @@ static const int ad2s1210_mode_vals[4][2] = {
+ 	[MOD_VEL] = { 0, 1 },
+ 	[MOD_CONFIG] = { 1, 0 },
+ };
++
+ static inline void ad2s1210_set_mode(enum ad2s1210_mode mode,
+ 				     struct ad2s1210_state *st)
+ {
 -- 
 1.9.1
 
