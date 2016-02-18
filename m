@@ -1,99 +1,87 @@
 X-GM-THRID: 6252531554516467712
-X-Received: by 10.67.1.165 with SMTP id bh5mr5656766pad.35.1455780961046;
-        Wed, 17 Feb 2016 23:36:01 -0800 (PST)
+X-Received: by 10.31.151.21 with SMTP id z21mr5578371vkd.7.1455780958072;
+        Wed, 17 Feb 2016 23:35:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.22.5 with SMTP id 5ls4906853qgm.60.gmail; Wed, 17 Feb 2016
- 23:36:00 -0800 (PST)
-X-Received: by 10.129.51.2 with SMTP id z2mr5573911ywz.49.1455780960621;
-        Wed, 17 Feb 2016 23:36:00 -0800 (PST)
+Received: by 10.50.62.46 with SMTP id v14ls93329igr.4.gmail; Wed, 17 Feb 2016
+ 23:35:57 -0800 (PST)
+X-Received: by 10.98.42.67 with SMTP id q64mr1707568pfq.9.1455780957738;
+        Wed, 17 Feb 2016 23:35:57 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 12si767854pfb.1.2016.02.17.23.36.00
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id 12si768436pfb.1.2016.02.17.23.35.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 23:36:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 17 Feb 2016 23:35:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id w128so1730868pfb.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 23:36:00 -0800 (PST)
+Received: by mail-pa0-x241.google.com with SMTP id a7so687813pax.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 23:35:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=RkcS7bahcq2q3eBidrB+azmaJER0owPmrIGyb6ZRyhE=;
-        b=ATtKOLFuxzDarxVwAim961zAk10NgI/a5ftnoaXgjeDaPbaX1je87SuPjX9sFPXIFA
-         X4PCmjqtsAIVj62SdtGJPJubUmQDtqG+zRQTDs8n/zGPSub4HVz44QRY/4cjtfMyRJ1m
-         fosxR04r2B/Tsm0FnVjjGixnvWvCsyNpi3pvT5tuz3jJLJl2dEEqn+kGbCET99HfEXuI
-         CmiGPeYN+A2bNent+wJMXOOFg/BFQ1dh20G4yVi+OhL5HCP99FFl4HMSiP8lsiMlapax
-         v1Gd45PwoNDMlHxF8AzBn+vwLjTSK0sL/8+o7+oANpvjU80vFPhMXL17dOOONo19h1iM
-         Jz3w==
+        bh=04J9my5FUYsqr77Hl0SXrspcGri+AJPyK+jtVqclN00=;
+        b=PFCnxvTJ1oqvUNIeMWZr0WrM/b9lSnZ/nN+4uuHSxnyl4w2Ob744TMu7iA120tOa9g
+         GyS8cC3SWCv/i3vlIxacAiCcYb/g3RhuMKO779WfBEC5Op0SePONCUg/Afp4+vazXwKq
+         ikVCNqsxpv07TQ2JqUgh3s0ANj5oiPCHT2wRx+R5dE4ooG5i6FmO6UYIMIHDLyotlsVz
+         ieiNHW6hJCChiIR0z9hkc5WpGtgwAataREh5NXR7pvViGO08vfRlbVSRlg17MW4fEefY
+         wOtFOfF/3dgs6oLMkARAKAuu4elQoDIRPPFMhycnTmNjImfRfU5Mw9MXgsKiNunzL9AT
+         MNmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=RkcS7bahcq2q3eBidrB+azmaJER0owPmrIGyb6ZRyhE=;
-        b=mqxVSmljpOqQwMNXDtOhfmNd87bpwWJxFn0gue7MDT+YlrkPynsRN0ppdh6GkwvRuq
-         X7tTWG1u9/zpgazy6EcQ8I7FIYPH/2dFHLRCca/ZgVy6QNilH09L+nPOqLRowDswf4mN
-         VzOxFnnZNjuhwEaHY1SaUA7MTxZJIBhXCfxkjICvwWKtdcN37NJKfdwPnxgvnzHWfzSp
-         cJxG9RMI8gPkCxSEMkOLCtQCWqMY/pNAZ4heuEjjOiB9DHormY1dxiuN/pChPaXGbz9Q
-         E8e9XBEqRPb34FBbU4EamHCmewU1BmXduX5uG2n1XLc0zKDyZmH3XYyPc5YxE9PfGare
-         I+tQ==
-X-Gm-Message-State: AG10YOQUwMc6OOqP/E5TszcUUzeT5XgnBg+P032EkTW80Scv6Lpf3HeZmlJvXggPbOwLlA==
-X-Received: by 10.98.67.153 with SMTP id l25mr8132709pfi.111.1455780960504;
-        Wed, 17 Feb 2016 23:36:00 -0800 (PST)
+        bh=04J9my5FUYsqr77Hl0SXrspcGri+AJPyK+jtVqclN00=;
+        b=kBPl20SUwa1iLW1bv9fAJnYoQGM+qs7+MCvVdpJ2Ox+tUleqwh2N6Os6KdipwZiC0+
+         nj0c+PGBquUnLnwywhroobpoPI2kWLw5Fin3k7ASl3h05S25JSgnExXQLSE2OqxGevZV
+         0ZpY9uFVI/prz9XJq/KCCRNSEZ/6sMSFue77uT6FUnyCBznLAN0If5Y14ENGC89So3Na
+         GDklDV2eHNoiheeO1Z3HO4xrxTarg2m1D0coZgMkQ+j9MyT2hliBRtfEufJ0ZjVFYuZD
+         wAg/Nf/uVDef6BOvmqeWrfLIO9Q3v0xrq20zqMHrVK8WavAaWc6Ukx1ZU8Cpce6A/t+s
+         nfiA==
+X-Gm-Message-State: AG10YOTLip6JhTAMWwM6cK9vmiPyUiWbzd0QIFgc2K2RtH0/2yPQ6xLmGTJMgGy2an7ejA==
+X-Received: by 10.66.121.10 with SMTP id lg10mr8034068pab.59.1455780957612;
+        Wed, 17 Feb 2016 23:35:57 -0800 (PST)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-Mint ([103.14.62.106])
-        by smtp.gmail.com with ESMTPSA id fl9sm7608514pab.30.2016.02.17.23.35.59
+        by smtp.gmail.com with ESMTPSA id d65sm7640787pfb.74.2016.02.17.23.35.56
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 23:36:00 -0800 (PST)
+        Wed, 17 Feb 2016 23:35:57 -0800 (PST)
 From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH 5/5] staging: iio: light: fix multiple assignments in a single line
-Date: Thu, 18 Feb 2016 15:35:40 +0800
-Message-Id: <aa152467c3b1fdef0a3e97b999c7801a94610a1e.1455730714.git.eraretuya@gmail.com>
+Subject: [PATCH 4/5] staging: iio: light: add space around '*"
+Date: Thu, 18 Feb 2016 15:35:39 +0800
+Message-Id: <aa13c3f675f3aac09cf285e8dcd8cbd746b8cc0e.1455730714.git.eraretuya@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1455730714.git.eraretuya@gmail.com>
 References: <cover.1455730714.git.eraretuya@gmail.com>
 In-Reply-To: <cover.1455730714.git.eraretuya@gmail.com>
 References: <cover.1455730714.git.eraretuya@gmail.com>
 
-Rewrite the multiple assignments to clear checkpatch check:
-
-CHECK: multiple assignments should be avoided
+Address checkpatch check pointing out the lack of space around the
+operator '*'.
 
 Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/iio/light/tsl2583.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/staging/iio/light/tsl2583.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/iio/light/tsl2583.c b/drivers/staging/iio/light/tsl2583.c
-index e970b3f..05b4ad4 100644
+index 5fc4110..e970b3f 100644
 --- a/drivers/staging/iio/light/tsl2583.c
 +++ b/drivers/staging/iio/light/tsl2583.c
-@@ -267,7 +267,8 @@ static int taos_get_lux(struct iio_dev *indio_dev)
+@@ -731,7 +731,7 @@ static ssize_t taos_luxtable_store(struct device *dev,
+ {
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct tsl2583_chip *chip = iio_priv(indio_dev);
+-	int value[ARRAY_SIZE(taos_device_lux)*3 + 1];
++	int value[ARRAY_SIZE(taos_device_lux) * 3 + 1];
+ 	int n;
  
- 	if (!ch0) {
- 		/* have no data, so return LAST VALUE */
--		ret = chip->als_cur_info.lux = 0;
-+		ret = 0;
-+		chip->als_cur_info.lux = 0;
- 		goto out_unlock;
- 	}
- 	/* calculate ratio */
-@@ -292,7 +293,8 @@ static int taos_get_lux(struct iio_dev *indio_dev)
- 	/* note: lux is 31 bit max at this point */
- 	if (ch1lux > ch0lux) {
- 		dev_dbg(&chip->client->dev, "No Data - Return last value\n");
--		ret = chip->als_cur_info.lux = 0;
-+		ret = 0;
-+		chip->als_cur_info.lux = 0;
- 		goto out_unlock;
- 	}
- 
+ 	get_options(buf, ARRAY_SIZE(value), value);
 -- 
 1.9.1
 
