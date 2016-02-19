@@ -1,230 +1,118 @@
 X-GM-THRID: 6252670942191812608
-X-Received: by 10.66.139.138 with SMTP id qy10mr12968011pab.46.1455895828742;
-        Fri, 19 Feb 2016 07:30:28 -0800 (PST)
+X-Received: by 10.28.129.210 with SMTP id c201mr1069442wmd.1.1455879999216;
+        Fri, 19 Feb 2016 03:06:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.32.130 with SMTP id g124ls188644iog.70.gmail; Fri, 19 Feb
- 2016 07:30:28 -0800 (PST)
-X-Received: by 10.66.119.197 with SMTP id kw5mr12614907pab.15.1455895828302;
-        Fri, 19 Feb 2016 07:30:28 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ob0-x22d.google.com (mail-ob0-x22d.google.com. [2607:f8b0:4003:c01::22d])
-        by gmr-mx.google.com with ESMTPS id s20si610340igr.2.2016.02.19.07.30.28
+Received: by 10.25.134.131 with SMTP id i125ls22915lfd.88.gmail; Fri, 19 Feb
+ 2016 03:06:38 -0800 (PST)
+X-Received: by 10.112.162.101 with SMTP id xz5mr1725066lbb.20.1455879998526;
+        Fri, 19 Feb 2016 03:06:38 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x231.google.com (mail-wm0-x231.google.com. [2a00:1450:400c:c09::231])
+        by gmr-mx.google.com with ESMTPS id s141si433693wmd.1.2016.02.19.03.06.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 07:30:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22d as permitted sender) client-ip=2607:f8b0:4003:c01::22d;
+        Fri, 19 Feb 2016 03:06:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::231 as permitted sender) client-ip=2a00:1450:400c:c09::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22d as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::231 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ob0-x22d.google.com with SMTP id xk3so112363553obc.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 07:30:28 -0800 (PST)
+Received: by mail-wm0-x231.google.com with SMTP id a4so65497267wme.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 03:06:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=LgEBqq7sgcMhAse9grzMvKub8W8WAItJFngNEFdkJ8E=;
-        b=uREio3cn3FTAS4p4kC07gxzRF/M+/TEg69yUP77IHaM8mUs+QHW5/Q2+tRZ2kSt5Sa
-         T2yoJjR4wYlRCx6B0co1wXVnESSusQ6KmfUq6yzoO+xFznpN2S5rfyI0nODEMXOguAfe
-         QGBF4jATzyoN6yQAFgbJBKPtA0QIbav2VhIKLB1TtwkaP8HCH82d+u17qenD+1F5efbR
-         mekauxMo5zC/DWF0pQG2UTvSLPmmVuk3nHvAa3B8A58F0L/1udh9c5hUMQ9fi08ShC/W
-         RpvSLGrM2oviKv3GXWxzsTL8P7hyjzA2miHknv3ZKSqwX5NjdTyUcf1xQkTigUEKdl85
-         3Yew==
+        bh=dmvZIckbPpJKaEoHqmrwUSivUJYS4hczGRtjlZ5zmCU=;
+        b=x1R1/W8ZMiwylT7lFpgbaTbIjCbf5I3/3qINeuq9piwsTzxxti9InvTWJAU/ol5Jz5
+         ImZFbmz0dbPpoNO25Lo7+VrJ3ZIMq1r9ndPq0tjghaLkJQfZGIGFvnQR0+C793swserR
+         Z4+DBBCjqbgiOl7bf91Inrpk6LlzH0rkJd1Kk5wRMq30PnPQxIHq13iCSXhAjO9PZWyM
+         KnlRL0P5SxJwDv8wsO2rHc+3LmSeQBsbhwjrkBQVUkOem7tXsvmq4v74DA5KhFWM7ykt
+         P4Nh50hYyB8IjBcjDfn8Z0+CUxlpIqDoGWn3vZroPX2TJI7pxLkg85ZqcHmizkBL08+V
+         MtwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:mime-version:in-reply-to:references:date
          :message-id:subject:from:to:cc:content-type;
-        bh=LgEBqq7sgcMhAse9grzMvKub8W8WAItJFngNEFdkJ8E=;
-        b=hxmxZ7g9yljCeklgEwsNuJFQYTYS/vf83g+a3XSTGAhuai0EkArdg4Q/WA/e23sMsh
-         PPki36sgKnAhHA35zsmS18QIJsKdxIqOCA1YOefwZ9cxi8gn7YAtpzE/F8KqK+LSOqDk
-         +CQI9I+W76P/V8ZeBE+GW0mXMbJ7Y+1rwomg43l5zVfNrmQymv6/NWPWNPZEz91loh0h
-         7KjvaS7OZyz/+20TnX+i/zd8Ed5KNmWghlc/jQzGK5ZTlckxzFePLK8iRJ98YJiXSTa4
-         uTriiXF5AqYWEQ8Jhpyh3wXwtAJlb/F1Zk1fQtEWQNalCgXMs9hiWIMPQdGpOdXcWnYi
-         nuGw==
-X-Gm-Message-State: AG10YOQXX02OGwUSY5gbMecesQTkZDxqfpYbPDuZlySP4uNU1mHtXSoYcXud4GEHWBHv6qgT7WWNxpRxWucEyg==
+        bh=dmvZIckbPpJKaEoHqmrwUSivUJYS4hczGRtjlZ5zmCU=;
+        b=UCF73+lI0kJNcs5REjGm1vtEfJhWwdpkjXLHbP8CNSMu8fI8SL1yjfN1obJ8ejkoMA
+         o7hJfbTjmpWxuNfCXH/R5vr20QH6wZmo8K8ftEOXU7HJCsNTFkCHiXCbtZe3pv/XwQuP
+         6V0Z/unopFiOkdQq6YB/jgGVivwWv5RPumEXrMyiweEyzzZTksNviW80dBLzAENkcBpM
+         4Zj8Bjs3dVDYNo0M0yju+hxzaOpDvIfu1rdYQ9u/HbUkmfkpemJJ7QnKQ3Yh9keLwXnj
+         I/lthsNmtfIldMNLNnEnWPLYcGl3ryNodTfQGGsilc6S58yt2mQ1GCRW+3x0uOdR/PgH
+         VxgQ==
+X-Gm-Message-State: AG10YOQ38sF5ITtFXb89QkErPyNvhyDMylZazTVToBbYgD+kn1sa9FvAo1uuJblpmd40b0+Njz6iaM7Cbx3UKA==
 MIME-Version: 1.0
-X-Received: by 10.182.133.4 with SMTP id oy4mr12045482obb.65.1455895828134;
- Fri, 19 Feb 2016 07:30:28 -0800 (PST)
-Received: by 10.202.200.211 with HTTP; Fri, 19 Feb 2016 07:30:27 -0800 (PST)
-Received: by 10.202.200.211 with HTTP; Fri, 19 Feb 2016 07:30:27 -0800 (PST)
-In-Reply-To: <CAEnQRZDAOZgagApcF+xaLeNVWJ8ruDh2R_pcWEmMrOBaA-ByNw@mail.gmail.com>
+X-Received: by 10.194.88.195 with SMTP id bi3mr12246114wjb.34.1455879998409;
+ Fri, 19 Feb 2016 03:06:38 -0800 (PST)
+Received: by 10.194.222.165 with HTTP; Fri, 19 Feb 2016 03:06:38 -0800 (PST)
+In-Reply-To: <20160218213554.GA6769@janani-Inspiron-3521>
 References: <20160218213554.GA6769@janani-Inspiron-3521>
-	<CAEnQRZDAOZgagApcF+xaLeNVWJ8ruDh2R_pcWEmMrOBaA-ByNw@mail.gmail.com>
-Date: Fri, 19 Feb 2016 10:30:27 -0500
-Message-ID: <CANnt6Xm760zJzQPmaD7QH_qYwBxWQ90W1w85=yiTLvXAKdo6eg@mail.gmail.com>
+Date: Fri, 19 Feb 2016 13:06:38 +0200
+Message-ID: <CAEnQRZDAOZgagApcF+xaLeNVWJ8ruDh2R_pcWEmMrOBaA-ByNw@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: iio: addac: Remove
  unnecessary else after return in if block
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: Daniel Baluta <daniel.baluta@gmail.com>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=e89a8ff25258aa7e82052c21299e
-
---e89a8ff25258aa7e82052c21299e
 Content-Type: text/plain; charset=UTF-8
 
-On Feb 19, 2016 6:06 AM, "Daniel Baluta" <daniel.baluta@gmail.com> wrote:
+On Thu, Feb 18, 2016 at 11:35 PM, Janani Ravichandran
+<janani.rvchndrn@gmail.com> wrote:
+> Else is unncessary when there is an return statement in the
+> corresponding if block. Remove else and refactor code.
+> Coccinelle patch used:
 >
-> On Thu, Feb 18, 2016 at 11:35 PM, Janani Ravichandran
-> <janani.rvchndrn@gmail.com> wrote:
-> > Else is unncessary when there is an return statement in the
-> > corresponding if block. Remove else and refactor code.
-> > Coccinelle patch used:
-> >
-> > @rule1@
-> > expression e1;
-> > @@
-> >
-> >         if (e1) { ... return ...; }
-> > -       else{
-> >                 ...
-> > -       }
-> >
-> >
-> > @rule2@
-> > expression e2;
-> > statement s1;
-> > @@
-> >
-> >         if(e2) { ... return ...; }
-> > -       else
-> >                 s1
-> >
-> > Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
-> > ---
-> >  drivers/staging/iio/addac/adt7316.c | 5 ++---
-> >  1 file changed, 2 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/staging/iio/addac/adt7316.c
-b/drivers/staging/iio/addac/adt7316.c
-> > index 3adc451..4a88a85 100644
-> > --- a/drivers/staging/iio/addac/adt7316.c
-> > +++ b/drivers/staging/iio/addac/adt7316.c
-> > @@ -465,8 +465,7 @@ static ssize_t adt7316_show_all_ad_channels(struct
-device *dev,
-> >                 return sprintf(buf, "0 - VDD\n1 - Internal
-Temperature\n"
-> >                                 "2 - External Temperature or AIN1\n"
-> >                                 "3 - AIN2\n4 - AIN3\n5 - AIN4\n");
-> > -       else
-> > -               return sprintf(buf, "0 - VDD\n1 - Internal
-Temperature\n"
-> > +       return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
-> >                                 "2 - External Temperature\n");
+> @rule1@
+> expression e1;
+> @@
 >
-> While touching this, you can also fix the alignment for the second line
-> CHECK: Alignment should match open parenthesis
+>         if (e1) { ... return ...; }
+> -       else{
+>                 ...
+> -       }
 >
+>
+> @rule2@
+> expression e2;
+> statement s1;
+> @@
+>
+>         if(e2) { ... return ...; }
+> -       else
+>                 s1
+>
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+>  drivers/staging/iio/addac/adt7316.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
+> index 3adc451..4a88a85 100644
+> --- a/drivers/staging/iio/addac/adt7316.c
+> +++ b/drivers/staging/iio/addac/adt7316.c
+> @@ -465,8 +465,7 @@ static ssize_t adt7316_show_all_ad_channels(struct device *dev,
+>                 return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
+>                                 "2 - External Temperature or AIN1\n"
+>                                 "3 - AIN2\n4 - AIN3\n5 - AIN4\n");
+> -       else
+> -               return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
+> +       return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
+>                                 "2 - External Temperature\n");
 
-Sure, Daniel. I will send a v2 for this. Thanks!
+While touching this, you can also fix the alignment for the second line
+CHECK: Alignment should match open parenthesis
 
-Janani.
-> >  }
-> >
-> > @@ -637,7 +636,7 @@ static ssize_t
-adt7316_show_da_high_resolution(struct device *dev,
-> >         if (chip->config3 & ADT7316_DA_HIGH_RESOLUTION) {
-> >                 if (chip->id == ID_ADT7316 || chip->id == ID_ADT7516)
-> >                         return sprintf(buf, "1 (12 bits)\n");
-> > -               else if (chip->id == ID_ADT7317 || chip->id ==
-ID_ADT7517)
-> > +               if (chip->id == ID_ADT7317 || chip->id == ID_ADT7517)
-> >                         return sprintf(buf, "1 (10 bits)\n");
-> >         }
-> >
-> > --
-
---e89a8ff25258aa7e82052c21299e
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-On Feb 19, 2016 6:06 AM, &quot;Daniel Baluta&quot; &lt;<a href=3D"mailto:da=
-niel.baluta@gmail.com">daniel.baluta@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Thu, Feb 18, 2016 at 11:35 PM, Janani Ravichandran<br>
-&gt; &lt;<a href=3D"mailto:janani.rvchndrn@gmail.com">janani.rvchndrn@gmail=
-.com</a>&gt; wrote:<br>
-&gt; &gt; Else is unncessary when there is an return statement in the<br>
-&gt; &gt; corresponding if block. Remove else and refactor code.<br>
-&gt; &gt; Coccinelle patch used:<br>
-&gt; &gt;<br>
-&gt; &gt; @rule1@<br>
-&gt; &gt; expression e1;<br>
-&gt; &gt; @@<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (e1) { ... return ...; }<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0else{<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0...<=
-br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; &gt;<br>
-&gt; &gt;<br>
-&gt; &gt; @rule2@<br>
-&gt; &gt; expression e2;<br>
-&gt; &gt; statement s1;<br>
-&gt; &gt; @@<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if(e2) { ... return ...; }<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0else<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s1<b=
-r>
-&gt; &gt;<br>
-&gt; &gt; Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.r=
-vchndrn@gmail.com">janani.rvchndrn@gmail.com</a>&gt;<br>
-&gt; &gt; ---<br>
-&gt; &gt;=C2=A0 drivers/staging/iio/addac/adt7316.c | 5 ++---<br>
-&gt; &gt;=C2=A0 1 file changed, 2 insertions(+), 3 deletions(-)<br>
-&gt; &gt;<br>
-&gt; &gt; diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/stagin=
-g/iio/addac/adt7316.c<br>
-&gt; &gt; index 3adc451..4a88a85 100644<br>
-&gt; &gt; --- a/drivers/staging/iio/addac/adt7316.c<br>
-&gt; &gt; +++ b/drivers/staging/iio/addac/adt7316.c<br>
-&gt; &gt; @@ -465,8 +465,7 @@ static ssize_t adt7316_show_all_ad_channels(s=
-truct device *dev,<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0retu=
-rn sprintf(buf, &quot;0 - VDD\n1 - Internal Temperature\n&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;2 - External Temp=
-erature or AIN1\n&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;3 - AIN2\n4 - AIN=
-3\n5 - AIN4\n&quot;);<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0else<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return sp=
-rintf(buf, &quot;0 - VDD\n1 - Internal Temperature\n&quot;<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0return sprintf(buf, &quot;0 - VDD\n1 =
-- Internal Temperature\n&quot;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;2 - External Temp=
-erature\n&quot;);<br>
-&gt;<br>
-&gt; While touching this, you can also fix the alignment for the second lin=
-e<br>
-&gt; CHECK: Alignment should match open parenthesis<br>
-&gt;</p>
-<p dir=3D"ltr">Sure, Daniel. I will send a v2 for this. Thanks!</p>
-<p dir=3D"ltr">Janani.<br>
-&gt; &gt;=C2=A0 }<br>
-&gt; &gt;<br>
-&gt; &gt; @@ -637,7 +636,7 @@ static ssize_t adt7316_show_da_high_resolutio=
-n(struct device *dev,<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (chip-&gt;config3 &amp; ADT73=
-16_DA_HIGH_RESOLUTION) {<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (=
-chip-&gt;id =3D=3D ID_ADT7316 || chip-&gt;id =3D=3D ID_ADT7516)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0return sprintf(buf, &quot;1 (12 bits)\n&quot;);<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0else if (=
-chip-&gt;id =3D=3D ID_ADT7317 || chip-&gt;id =3D=3D ID_ADT7517)<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (chip-=
-&gt;id =3D=3D ID_ADT7317 || chip-&gt;id =3D=3D ID_ADT7517)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0return sprintf(buf, &quot;1 (10 bits)\n&quot;);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; &gt;<br>
-&gt; &gt; --<br>
-</p>
-
---e89a8ff25258aa7e82052c21299e--
+>  }
+>
+> @@ -637,7 +636,7 @@ static ssize_t adt7316_show_da_high_resolution(struct device *dev,
+>         if (chip->config3 & ADT7316_DA_HIGH_RESOLUTION) {
+>                 if (chip->id == ID_ADT7316 || chip->id == ID_ADT7516)
+>                         return sprintf(buf, "1 (12 bits)\n");
+> -               else if (chip->id == ID_ADT7317 || chip->id == ID_ADT7517)
+> +               if (chip->id == ID_ADT7317 || chip->id == ID_ADT7517)
+>                         return sprintf(buf, "1 (10 bits)\n");
+>         }
+>
+> --
 
