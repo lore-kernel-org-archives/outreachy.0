@@ -1,214 +1,118 @@
-X-GM-THRID: 6252750007665950720
-X-Received: by 10.129.41.70 with SMTP id p67mr9294244ywp.33.1455831808409;
-        Thu, 18 Feb 2016 13:43:28 -0800 (PST)
+X-GM-THRID: 6252997552007806976
+X-Received: by 10.66.147.106 with SMTP id tj10mr12868037pab.30.1455889444845;
+        Fri, 19 Feb 2016 05:44:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.158.20 with SMTP id h20ls2279149ioe.98.gmail; Thu, 18 Feb
- 2016 13:43:28 -0800 (PST)
-X-Received: by 10.98.42.67 with SMTP id q64mr5389952pfq.9.1455831807990;
-        Thu, 18 Feb 2016 13:43:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id ff2si1286701pad.2.2016.02.18.13.43.27
+Received: by 10.182.73.199 with SMTP id n7ls68618obv.83.gmail; Fri, 19 Feb
+ 2016 05:44:04 -0800 (PST)
+X-Received: by 10.182.119.199 with SMTP id kw7mr12295702obb.15.1455889444454;
+        Fri, 19 Feb 2016 05:44:04 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id 12si1624026pfb.1.2016.02.19.05.44.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 13:43:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Fri, 19 Feb 2016 05:44:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id q63so38325937pfb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 13:43:27 -0800 (PST)
+Received: by mail-pa0-x230.google.com with SMTP id ho8so51946264pac.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 05:44:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Bny+PFFknos12EM/1ziaBfkWPg/V9K+6Hs/r8jIUWio=;
-        b=hTSTOv0iZm6yfP/QzkAp3kTsFdNNDIGhLtF8ko9K01KP6jeO8IfJS42emC3J7xmRs3
-         fHSjPf5Wl9xvVA9T1AMMSqpfrTlQxUHHLThzWJhFSglkMsyfqJk85qZiLTnybSbkyG2m
-         0yw8ujPYRz2KI+hTRvqZsWgq9IgeknMKRQPqnu2yFNh3zgawUWS36dfIGJf2e9d+YKFM
-         QUkT60xdPzKuZ3sKEQtmSin6RuUDXKQErynxXuNKqpQrF7KPQYOjFIKAYhq9suMQr1ti
-         e+YMYmR9AE+sXH5M4wSOQpusXMtWGB+euNWZMtrlZuHSqOJPCLbGVfVYI/PzsDPQDDow
-         qWWQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=U9ZqBd2AgU8MxQQMKYUOn8NZ4/u6wUN3vWwR4m6cpr0=;
+        b=kdpKm99H1URGUL6d1SiJhGOTgGNMe7GJN3OLmeytAiZSktGjbIL04QrB0+3vtjHo/B
+         beW3FW95JqdFTSEYohlDdYiOKvSoclbJsHcQ2sCklEnO3JErSG8r3h3CIyqAEZGXXfdZ
+         1hXj1jPMnaGV2e6Rpr860pxCHbwb9+DTv5q1RiX5Zz3IwwSY8LCN2LyLynHfnakjmoui
+         3Da6fgwIS97cN6G/ES+0PwM79tGXg3cG4ynITNYcKNOCvENATmevqA+Eppjf8PY6rOr6
+         2fB8LWyGSrhjmNOLRSovL8R63FTHdTImnonQYZTYvIC4IWM1zgO3SUgHQTH+WFi399hL
+         lsDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Bny+PFFknos12EM/1ziaBfkWPg/V9K+6Hs/r8jIUWio=;
-        b=Una803eE77eNqIqe0yX1lBnMIwlm708rhYjYGV/vMCc/AwJpB02o/5tKgzRxsWlHFt
-         078aGFDnhWb3D3sJDVBT7MQwtPqiB9yFgnXcElLK1nz0wWiMX4ZxDww/Cd+F+W9QZo2p
-         9aPwjlkYOuvY0qYSdcBlFJqR3oQSfV2setg1lpUgs9wmsp72+iw2eMyPiangjmBfeRur
-         4iCr6SHgRQe9M7F6HXDKHu0pG0GPBpeeJ9XSXo5tbclnITiudw13zCh/szWqEopebUFZ
-         z7jOoMuRsVu5a8U7lR0BQQTtXF91iqj+VbtenwH792Z/xsXmOWvuIyBAiTJA6Y8q8gLB
-         Gd9A==
-X-Gm-Message-State: AG10YOR+/LO3xI97qusecfdcylXV03DqZPRN8dTVz3xUmeL0/5/Jit8T6Mz8FGE36gSUCw==
-X-Received: by 10.98.2.197 with SMTP id 188mr13500252pfc.3.1455831807884;
-        Thu, 18 Feb 2016 13:43:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id i15sm12508389pfi.55.2016.02.18.13.43.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 13:43:27 -0800 (PST)
-Date: Fri, 19 Feb 2016 03:13:56 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=U9ZqBd2AgU8MxQQMKYUOn8NZ4/u6wUN3vWwR4m6cpr0=;
+        b=UY/n+W+tvjynTcNcD8bqs5isvshqX5aIMenmn6jGK/x3y0RbxSBiE0AuIJa+v7b1/m
+         BCzY6jlUT9CC6FGwBEu+Bcvcgja259YUCjvlrw2nM5kAGivHawbsjTTx7B2KHZPElK9b
+         4Cm0Y6DcKEsF+W8yjJKUFyboC8JFMNroVEvoHONe/5VX+xPO2u95IZlWHEIBjIWFJVSp
+         KHzLCQV/h0ypcJjKxInK3mqJrVdlaI9n51bVFHzgoOXDp9BJqYQbm8w9gLNPODGFks5D
+         vMdRELI8uPoiEYh6xsJHS2UO95rY3RxzyMmHl6Vw1cnEuNctOV2xNGY2sfpAcDs706jy
+         9RMg==
+X-Gm-Message-State: AG10YORim41i/LgZRdp59ut+ILe9PpqPG4qZbp+W6R+FTOQBPj7ieaWOI8u+2CTaoa7srw==
+X-Received: by 10.66.228.97 with SMTP id sh1mr11363508pac.77.1455889444291;
+        Fri, 19 Feb 2016 05:44:04 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([223.176.156.250])
+        by smtp.gmail.com with ESMTPSA id e20sm18105949pfd.4.2016.02.19.05.44.00
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 19 Feb 2016 05:44:03 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 19 Feb 2016 19:13:54 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Drop useless initialisation
-Message-ID: <20160218214356.GA8324@Karyakshetra>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: lustre: lnet: Remove and rename struct typedef lstcon_session_t
+Date: Fri, 19 Feb 2016 19:13:52 +0530
+Message-Id: <1455889432-10570-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Removed initialisation of a varible if it is immediately reassigned.
+This patch gets rid of struct typedef lstcon_session_t as it is not 
+suggested to use typdefs for structure types. Also drop '_t' from the name.
 
-Changes were made using Coccinelle.
-
-@@
-type T;
-constant C;
-expression e;
-identifier i;
-@@
-T i
-- = C
-;
-i = e;
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c | 8 ++++----
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c     | 2 +-
- drivers/staging/rtl8192e/rtl819x_BAProc.c      | 6 +++---
- drivers/staging/rtl8192e/rtllib_rx.c           | 2 +-
- drivers/staging/rtl8192e/rtllib_softmac.c      | 2 +-
- drivers/staging/rtl8192e/rtllib_softmac_wx.c   | 2 +-
- 6 files changed, 11 insertions(+), 11 deletions(-)
+ drivers/staging/lustre/lnet/selftest/console.c | 4 ++--
+ drivers/staging/lustre/lnet/selftest/console.h | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
-index e9c4f97..ba64a4f 100644
---- a/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
-@@ -680,7 +680,7 @@ static void _rtl92e_hwconfig(struct net_device *dev)
-
- 	rtl92e_writeb(dev, BW_OPMODE, regBwOpMode);
- 	{
--		u32 ratr_value = 0;
-+		u32 ratr_value;
-
- 		ratr_value = regRATR;
- 		if (priv->rf_type == RF_1T2R)
-@@ -1000,7 +1000,7 @@ void rtl92e_link_change(struct net_device *dev)
- 	_rtl92e_update_msr(dev);
-
- 	if (ieee->iw_mode == IW_MODE_INFRA || ieee->iw_mode == IW_MODE_ADHOC) {
--		u32 reg = 0;
-+		u32 reg;
-
- 		reg = rtl92e_readl(dev, RCR);
- 		if (priv->rtllib->state == RTLLIB_LINKED) {
-@@ -1186,7 +1186,7 @@ void  rtl92e_fill_tx_desc(struct net_device *dev, struct tx_desc *pdesc,
- 	struct r8192_priv *priv = rtllib_priv(dev);
- 	dma_addr_t mapping = pci_map_single(priv->pdev, skb->data, skb->len,
- 			 PCI_DMA_TODEVICE);
--	struct tx_fwinfo_8190pci *pTxFwInfo = NULL;
-+	struct tx_fwinfo_8190pci *pTxFwInfo;
-
- 	pTxFwInfo = (struct tx_fwinfo_8190pci *)skb->data;
- 	memset(pTxFwInfo, 0, sizeof(struct tx_fwinfo_8190pci));
-@@ -2235,7 +2235,7 @@ void rtl92e_disable_irq(struct net_device *dev)
-
- void rtl92e_clear_irq(struct net_device *dev)
- {
--	u32 tmp = 0;
-+	u32 tmp;
-
- 	tmp = rtl92e_readl(dev, ISR);
- 	rtl92e_writel(dev, ISR, tmp);
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-index ef03242..b6b714d 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-@@ -1875,7 +1875,7 @@ void rtl92e_dm_rf_pathcheck_wq(void *data)
- 				  struct r8192_priv,
- 				  rfpath_check_wq);
- 	struct net_device *dev = priv->rtllib->dev;
--	u8 rfpath = 0, i;
-+	u8 rfpath, i;
-
- 	rfpath = rtl92e_readb(dev, 0xc04);
-
-diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-index c04a020..c7fd1b1 100644
---- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-@@ -189,7 +189,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
- static void rtllib_send_ADDBAReq(struct rtllib_device *ieee, u8 *dst,
- 				 struct ba_record *pBA)
- {
--	struct sk_buff *skb = NULL;
-+	struct sk_buff *skb;
-
- 	skb = rtllib_ADDBA(ieee, dst, pBA, 0, ACT_ADDBAREQ);
-
-@@ -204,7 +204,7 @@ static void rtllib_send_ADDBAReq(struct rtllib_device *ieee, u8 *dst,
- static void rtllib_send_ADDBARsp(struct rtllib_device *ieee, u8 *dst,
- 				 struct ba_record *pBA, u16 StatusCode)
- {
--	struct sk_buff *skb = NULL;
-+	struct sk_buff *skb;
-
- 	skb = rtllib_ADDBA(ieee, dst, pBA, StatusCode, ACT_ADDBARSP);
- 	if (skb)
-@@ -217,7 +217,7 @@ static void rtllib_send_DELBA(struct rtllib_device *ieee, u8 *dst,
- 			      struct ba_record *pBA, enum tr_select TxRxSelect,
- 			      u16 ReasonCode)
- {
--	struct sk_buff *skb = NULL;
-+	struct sk_buff *skb;
-
- 	skb = rtllib_DELBA(ieee, dst, pBA, TxRxSelect, ReasonCode);
- 	if (skb)
-diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
-index 37343ec..af64bd3 100644
---- a/drivers/staging/rtl8192e/rtllib_rx.c
-+++ b/drivers/staging/rtl8192e/rtllib_rx.c
-@@ -905,7 +905,7 @@ static size_t rtllib_rx_get_hdrlen(struct rtllib_device *ieee,
- {
- 	struct rtllib_hdr_4addr *hdr = (struct rtllib_hdr_4addr *)skb->data;
- 	u16 fc = le16_to_cpu(hdr->frame_ctl);
--	size_t hdrlen = 0;
-+	size_t hdrlen;
-
- 	hdrlen = rtllib_get_hdrlen(fc);
- 	if (HTCCheck(ieee, skb->data)) {
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
-index 19c3bff..25b5b5e 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac.c
-@@ -776,7 +776,7 @@ inline struct sk_buff *rtllib_authentication_req(struct rtllib_network *beacon,
- {
- 	struct sk_buff *skb;
- 	struct rtllib_authentication *auth;
--	int  len = 0;
-+	int  len;
-
- 	len = sizeof(struct rtllib_authentication) + challengelen +
- 		     ieee->tx_headroom + 4;
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac_wx.c b/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-index 86f52ac..01a75bd 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-@@ -243,7 +243,7 @@ int rtllib_wx_get_rate(struct rtllib_device *ieee,
- 			     struct iw_request_info *info,
- 			     union iwreq_data *wrqu, char *extra)
- {
--	u32 tmp_rate = 0;
-+	u32 tmp_rate;
-
- 	tmp_rate = TxCountToDataRate(ieee,
- 				     ieee->softmac_stats.CurrentShowTxate);
---
-2.1.4
+diff --git a/drivers/staging/lustre/lnet/selftest/console.c b/drivers/staging/lustre/lnet/selftest/console.c
+index 54fb1ab..1385dc0 100644
+--- a/drivers/staging/lustre/lnet/selftest/console.c
++++ b/drivers/staging/lustre/lnet/selftest/console.c
+@@ -58,7 +58,7 @@ do {							\
+ 	(p)->nle_nnode++;				\
+ } while (0)
+ 
+-lstcon_session_t console_session;
++struct lstcon_session console_session;
+ 
+ static void
+ lstcon_node_get(lstcon_node_t *nd)
+@@ -1994,7 +1994,7 @@ lstcon_console_init(void)
+ 	int i;
+ 	int rc;
+ 
+-	memset(&console_session, 0, sizeof(lstcon_session_t));
++	memset(&console_session, 0, sizeof(struct lstcon_session));
+ 
+ 	console_session.ses_id		  = LST_INVALID_SID;
+ 	console_session.ses_state	  = LST_SESSION_NONE;
+diff --git a/drivers/staging/lustre/lnet/selftest/console.h b/drivers/staging/lustre/lnet/selftest/console.h
+index 5651b08..b7e14e4 100644
+--- a/drivers/staging/lustre/lnet/selftest/console.h
++++ b/drivers/staging/lustre/lnet/selftest/console.h
+@@ -135,7 +135,7 @@ typedef struct lstcon_test {
+ 
+ #define LST_CONSOLE_TIMEOUT 300	     /* default console timeout */
+ 
+-typedef struct {
++struct lstcon_session {
+ 	struct mutex        ses_mutex;        /* only 1 thread in session */
+ 	lst_sid_t           ses_id;           /* global session id */
+ 	int                 ses_key;          /* local session key */
+@@ -165,9 +165,9 @@ typedef struct {
+ 	spinlock_t          ses_rpc_lock;     /* serialize */
+ 	atomic_t            ses_rpc_counter;  /* # of initialized RPCs */
+ 	struct list_head    ses_rpc_freelist; /* idle console rpc */
+-} lstcon_session_t; /* session descriptor */
++}; /* session descriptor */
+ 
+-extern lstcon_session_t	 console_session;
++extern struct lstcon_session	 console_session;
+ 
+ static inline lstcon_trans_stat_t *
+ lstcon_trans_stat(void)
+-- 
+1.9.1
 
 
