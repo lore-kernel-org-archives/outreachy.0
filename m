@@ -1,60 +1,60 @@
 X-GM-THRID: 6252998244395122688
-X-Received: by 10.50.13.69 with SMTP id f5mr8402573igc.7.1455889669941;
-        Fri, 19 Feb 2016 05:47:49 -0800 (PST)
+X-Received: by 10.50.154.2 with SMTP id vk2mr6097382igb.9.1455889653506;
+        Fri, 19 Feb 2016 05:47:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.152.213 with SMTP id a204ls161930ioe.99.gmail; Fri, 19 Feb
- 2016 05:47:49 -0800 (PST)
-X-Received: by 10.107.11.222 with SMTP id 91mr13849066iol.7.1455889669658;
-        Fri, 19 Feb 2016 05:47:49 -0800 (PST)
+Received: by 10.182.19.132 with SMTP id f4ls100291obe.75.gmail; Fri, 19 Feb
+ 2016 05:47:33 -0800 (PST)
+X-Received: by 10.182.24.199 with SMTP id w7mr12227949obf.48.1455889653177;
+        Fri, 19 Feb 2016 05:47:33 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id 79si1602756pft.0.2016.02.19.05.47.49
+Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
+        by gmr-mx.google.com with ESMTPS id u66si1699581pfa.2.2016.02.19.05.47.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 05:47:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Fri, 19 Feb 2016 05:47:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id fl4so50755997pad.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 05:47:49 -0800 (PST)
+Received: by mail-pf0-x22d.google.com with SMTP id e127so51529763pfe.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 05:47:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=hntjUff9emncpe9WRai69yc5r12O2djMy1mO943gics=;
-        b=Ts/p1NLjpMN4TrB9ax8pzqzgbVyWGfBDksnEfVmX78+G9y6VTrCwNKHm5J9P33iPiE
-         orXtqDMivA4OVGrByfsHSdehQ1pRLiIVaMylKNGlEjPh6PSw65NZ6OekpMjLW/mgRFyB
-         T54dBhCCCVqKrUES/2FSeLZngsN+S7DYUmm1ylOpArCJFL2hHHQhiYqcMgDzESrHQcYR
-         5G5Ff7CgzkjCh8DB0KxoeJKycoCpG3y4/QT2MvLTDBaiyv2gSI1obCr3/ErLiFfWnNiL
-         fKSwnGwrmca3t9MjLOx65vX9hW9+nMOpeGBD67tEKrUJwlVV1NEkAh9vFf7O0rEgdqCP
-         plzQ==
+        bh=+g8aYkTAxjPSTdixX0JRrRmByvQCys0TZSjHhWMyVLA=;
+        b=Mwnw2xcHiNljqgI4Ga6TCwRltiXodFyAaaOyD/X/AaEKvySl3jPwqmpkNEiRUrMne6
+         NSnMZx431O2ZJkYGv+j2BGw9/sVDWg6tRjuZTa9NUqcjtVdvMQ1BPj1afkW42JZJjCNz
+         k+nJycikA49ytoIxEPgCTHX1Q0+dP8tVAae8GDreh5UhPznW/hcaNffz+WM6LIfr4nM4
+         ehJH7cMy7g+ouXJW4PdzfgY7uJrbmLkL3j70GMpVboSxHB3b0FX9DpuBnSKgTKUujnOL
+         sy1e56Gss4UHJOplIZgTa/i+yHm4av18JpkV9T1rXXtyhzCebhLDU2L+5qOhkjd/mMn7
+         tFEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=hntjUff9emncpe9WRai69yc5r12O2djMy1mO943gics=;
-        b=REDp90RS9TWDWAwfQ5hnknt32tW79PD3DwT2nFbiWghD5cXmJPCeRzar6BMJDvQPB0
-         tuR6Bu51PYV0Ox0h4r+W24mgy7sIAXaULscui2X6FZ5Xu4pr2dMS0MmHxQxXHzvsCYnh
-         N6NpTMb+HADZPM4gw9i4P7fPj/IIe3RvPQLVnJi8KRCvzi6z8LzJdZ2YLBpkCDnLKzZL
-         7smzzuPJ7fOC9VN7VuDYibIyfjcRcXEo/rdYKYppsBOjzAHN+adbhXid1N36+6sN4sPE
-         +ZyB4nzV0v63QWJ/TVr+bVT4vbbdCRJsW6iYT016ykRp7qmhxxy+YBMt85/21zihJvhR
-         nwdA==
-X-Gm-Message-State: AG10YOQfz52oECN3SVKbP99tbAXWTZcuLKycPvnwj/ZlNW0RxGHcdyx2vg07NqIbdVPpDg==
-X-Received: by 10.66.190.40 with SMTP id gn8mr18069714pac.64.1455889669549;
-        Fri, 19 Feb 2016 05:47:49 -0800 (PST)
+        bh=+g8aYkTAxjPSTdixX0JRrRmByvQCys0TZSjHhWMyVLA=;
+        b=LX2KXvr1dAcXCXQxOgf9bMNAasnfw9MRgRzZSPDpfaeDq8eKw4iwyzplYlLK7cDtU4
+         vTOs5Uxs18qgu4qbxlK/GTopVEZngYBmrhM3PLnSmKFPyiLig5FFBH20nMnMvW6KRCm5
+         tM1gTcNs5jHYsbSifXgHb9IMPvS5mVk6xC/G6hZuNCCobGh0yFoE5iteosI1BMUovG2L
+         XQ39F7gulD1gQltWfrfIRl86fa1rr+ORyNFRZgBCdTLi8OgnMrK2+mUuyazmp6zcD0T/
+         NxJAh8GdbOQcCI9LuBlyajFtJrTfTlvhN0s3x/Oli6dqHovQsdRKyVXJiAaxED6eAgXA
+         fl1w==
+X-Gm-Message-State: AG10YORRvvDza7pBSBDwhZGRL3BYgPKu5YYfRH8Pq2H7HslqC8dNLy7VcCx1uqJ3tiC+Gw==
+X-Received: by 10.98.65.206 with SMTP id g75mr18200731pfd.94.1455889653052;
+        Fri, 19 Feb 2016 05:47:33 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x1sm18073010pfi.42.2016.02.19.05.47.48
+        by smtp.gmail.com with ESMTPSA id 6sm18045003pfo.58.2016.02.19.05.47.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 05:47:49 -0800 (PST)
-Date: Fri, 19 Feb 2016 19:18:19 +0530
+        Fri, 19 Feb 2016 05:47:32 -0800 (PST)
+Date: Fri, 19 Feb 2016 19:18:03 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] staging: rtl8712: Place constants on the right side
-Message-ID: <20160219134819.GA20027@Karyakshetra>
+Subject: [PATCH 3/4] staging: rtl8712: Place constants on the right side
+Message-ID: <20160219134803.GA20012@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -66,49 +66,31 @@ misc/compare_const_fl.cocci
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_efuse.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8712/rtl871x_xmit.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_efuse.c b/drivers/staging/rtl8712/rtl8712_efuse.c
-index 76f60ba..2ae0ae6 100644
---- a/drivers/staging/rtl8712/rtl8712_efuse.c
-+++ b/drivers/staging/rtl8712/rtl8712_efuse.c
-@@ -85,7 +85,7 @@ static u8 efuse_one_byte_read(struct _adapter *padapter, u16 addr, u8 *data)
- 	       (r8712_read8(padapter, EFUSE_CTRL + 2) & 0xFC));
- 	r8712_write8(padapter, EFUSE_CTRL + 3, 0x72); /* read cmd */
- 	/* wait for complete */
--	while (!(0x80 & r8712_read8(padapter, EFUSE_CTRL + 3)) &&
-+	while (!(r8712_read8(padapter, EFUSE_CTRL + 3) & 0x80) &&
- 	       (tmpidx < 100))
- 		tmpidx++;
- 	if (tmpidx < 100) {
-@@ -109,7 +109,7 @@ static u8 efuse_one_byte_write(struct _adapter *padapter, u16 addr, u8 data)
- 	r8712_write8(padapter, EFUSE_CTRL, data); /* data */
- 	r8712_write8(padapter, EFUSE_CTRL + 3, 0xF2); /* write cmd */
- 	/* wait for complete */
--	while ((0x80 &  r8712_read8(padapter, EFUSE_CTRL + 3)) &&
-+	while ((r8712_read8(padapter, EFUSE_CTRL + 3) &  0x80) &&
- 	       (tmpidx < 100))
- 		tmpidx++;
- 	if (tmpidx < 100)
-@@ -131,7 +131,7 @@ static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
- 	r8712_write8(padapter, EFUSE_CTRL + 2, tmpv8);
- 	if (bRead) {
- 		r8712_write8(padapter, EFUSE_CTRL + 3,  0x72); /* read cmd */
--		while (!(0x80 & r8712_read8(padapter, EFUSE_CTRL + 3)) &&
-+		while (!(r8712_read8(padapter, EFUSE_CTRL + 3) & 0x80) &&
- 		       (tmpidx < 100))
- 			tmpidx++;
- 		if (tmpidx < 100) {
-@@ -144,7 +144,7 @@ static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
- 	} else {
- 		r8712_write8(padapter, EFUSE_CTRL, *data); /* data */
- 		r8712_write8(padapter, EFUSE_CTRL + 3, 0xF2); /* write cmd */
--		while ((0x80 & r8712_read8(padapter, EFUSE_CTRL + 3)) &&
-+		while ((r8712_read8(padapter, EFUSE_CTRL + 3) & 0x80) &&
- 		       (tmpidx < 100))
- 			tmpidx++;
- 		if (tmpidx < 100)
+diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+index 7089ebd..506136c 100644
+--- a/drivers/staging/rtl8712/rtl871x_xmit.c
++++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+@@ -241,7 +241,7 @@ sint r8712_update_attrib(struct _adapter *padapter, _pkt *pkt,
+ 	}
+ 	/* r8712_xmitframe_coalesce() overwrite this!*/
+ 	pattrib->pktlen = pktfile.pkt_len;
+-	if (ETH_P_IP == pattrib->ether_type) {
++	if (pattrib->ether_type == ETH_P_IP) {
+ 		/* The following is for DHCP and ARP packet, we use cck1M to
+ 		 * tx these packets and let LPS awake some time
+ 		 * to prevent DHCP protocol fail */
+@@ -250,7 +250,7 @@ sint r8712_update_attrib(struct _adapter *padapter, _pkt *pkt,
+ 		_r8712_pktfile_read(&pktfile, &tmp[0], 24);
+ 		pattrib->dhcp_pkt = 0;
+ 		if (pktfile.pkt_len > 282) {/*MINIMUM_DHCP_PACKET_SIZE)*/
+-			if (ETH_P_IP == pattrib->ether_type) {/* IP header*/
++			if (pattrib->ether_type == ETH_P_IP) {/* IP header*/
+ 				if (((tmp[21] == 68) && (tmp[23] == 67)) ||
+ 					((tmp[21] == 67) && (tmp[23] == 68))) {
+ 					/* 68 : UDP BOOTP client
 --
 2.1.4
 
