@@ -1,119 +1,79 @@
-X-GM-THRID: 6250819727244918784
-X-Received: by 10.98.1.85 with SMTP id 82mr7418851pfb.1.1455382380485;
-        Sat, 13 Feb 2016 08:53:00 -0800 (PST)
+X-GM-THRID: 6252990979298557952
+X-Received: by 10.28.47.211 with SMTP id v202mr28008wmv.3.1455939962040;
+        Fri, 19 Feb 2016 19:46:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.30.134 with SMTP id s6ls427860igh.19.canary; Sat, 13 Feb
- 2016 08:53:00 -0800 (PST)
-X-Received: by 10.50.13.101 with SMTP id g5mr3752522igc.6.1455382379995;
-        Sat, 13 Feb 2016 08:52:59 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qg0-x22c.google.com (mail-qg0-x22c.google.com. [2607:f8b0:400d:c04::22c])
-        by gmr-mx.google.com with ESMTPS id w126si1330490ywe.6.2016.02.13.08.52.59
+Received: by 10.25.10.10 with SMTP id 10ls135531lfk.43.gmail; Fri, 19 Feb 2016
+ 19:46:01 -0800 (PST)
+X-Received: by 10.112.170.7 with SMTP id ai7mr2204441lbc.1.1455939961289;
+        Fri, 19 Feb 2016 19:46:01 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id s141si644017wmd.1.2016.02.19.19.46.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 08:52:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22c as permitted sender) client-ip=2607:f8b0:400d:c04::22c;
+        Fri, 19 Feb 2016 19:46:01 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22c as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22c.google.com with SMTP id b67so84264612qgb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 08:52:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=FqXA4vCgrAA5ALY+X0hiQjswgz6PUZx8O4P5TEYFQA0=;
-        b=j9SZW/IyYtFGH3ywMNh2iz3qtaWNdSj35oFRoOPxqf9iXwT8Li9DHzeoDrUBx1jE/d
-         UdHn5OUN+46H9wxqIFbpYrYoF9G0NvH07s8+lUQsXy1ZtUZLNhxkN9Zi+Nc/INcNqwX1
-         swM0UsNylf0GMYybau7zZDUglMsrdG8itZf9VXhfW+8IMAe9gtHjcqzL/vJrciNB6hg8
-         ZhiBcKJvpqNJbCoIy0bP510walNMl6UfBK0cGqFKDyq6yfZ4Wk3Vm2susM8TaWn6Qgsq
-         CP4VJZPg9RvuIw7gsSwdrM26fAg3s6A9EjztEkKAajQas7eSXu9rdj2Et1/LzDXMlC3W
-         yRrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=FqXA4vCgrAA5ALY+X0hiQjswgz6PUZx8O4P5TEYFQA0=;
-        b=T+M2YXSsrrDKgaR63s0jgL/qgwmPLMpAFz/x1AItV0hI6LHC8SZhc5Jp2PjxHNjsJA
-         7wBskQlqBJpZcJVuRl7d2zDnDkChE1IfW1Z7Fsh8a4Vpcw7S80g1V3qYzTPsfeG+TjP3
-         hMPbNfHO6cZZ6G4Cqr1JYVA9Zx8GK100lj6CfJIPaMPvQsID3suuZYHe8ltOZBSjmbx5
-         VtoctULDUAPIWAAmP2IrfEoQsyrsYVlPSU91uMLZvFQiW8KIgyo33IipbrPJouDYjlUn
-         b27ASEx76aQweHoIES3BXzqNBWL4rFJCEk+Sv+jNRYDwPGajiRdnHZ5ztLmbqmfFS2iY
-         yuAQ==
-X-Gm-Message-State: AG10YOSJJE0hS1X22KFkXdpZqBBDkYpuHYSFHhD7XrFfeOnvE8x1LOMTUandkYOTV87gtw==
-X-Received: by 10.140.223.9 with SMTP id t9mr10209159qhb.65.1455382379821;
-        Sat, 13 Feb 2016 08:52:59 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id t72sm7805111qkl.11.2016.02.13.08.52.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 08:52:59 -0800 (PST)
-Date: Sat, 13 Feb 2016 16:52:20 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: xgifb: Fix comment style
-Message-ID: <20160213215220.GA22041@janani-Inspiron-3521>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,473,1449529200"; 
+   d="scan'208";a="165347905"
+Received: from unknown (HELO hadrien.lan) ([162.212.89.130])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2016 04:46:00 +0100
+Date: Fri, 19 Feb 2016 22:45:57 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: Remove unnecessary
+ else after return
+In-Reply-To: <1455887905-7002-1-git-send-email-dilekuzulmez@gmail.com>
+Message-ID: <alpine.DEB.2.10.1602192245160.2806@hadrien>
+References: <1455887905-7002-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix comments to use trailing */ on separate lines and * on subsequent
-lines.
+On Fri, 19 Feb 2016, Dilek Uzulmez wrote:
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/xgifb/vb_init.c | 20 +++++++++++---------
- 1 file changed, 11 insertions(+), 9 deletions(-)
+> This patch fixes checkpatch.pl warning in files of wilc1000
+> WARNING: else is not generally useful after a break or return
+>
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/wilc1000/coreconfigurator.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
+> index 544c12d..b0cefe1 100644
+> --- a/drivers/staging/wilc1000/coreconfigurator.c
+> +++ b/drivers/staging/wilc1000/coreconfigurator.c
+> @@ -939,9 +939,9 @@ s32 SendConfigPkt(u8 u8Mode, tstrWID *pstrWIDs,
+>  	    gpstrWlanOps->wlan_cfg_get == NULL)	{
+>  		PRINT_D(CORECONFIG_DBG, "Set and Get is still not initialized\n");
+>  		return 1;
+> -	} else {
+> -		PRINT_D(CORECONFIG_DBG, "SET is initialized\n");
+>  	}
+> +		PRINT_D(CORECONFIG_DBG, "SET is initialized\n");
+> +
 
-diff --git a/drivers/staging/xgifb/vb_init.c b/drivers/staging/xgifb/vb_init.c
-index 879a7e6..6d012bc 100644
---- a/drivers/staging/xgifb/vb_init.c
-+++ b/drivers/staging/xgifb/vb_init.c
-@@ -55,9 +55,10 @@ XGINew_GetXG20DRAMType(struct xgi_hw_device_info *HwDeviceExtension,
- 		xgifb_reg_or(pVBInfo->P3d4, 0x4A, 0x80); /* Enable GPIOH read */
- 		/* GPIOF 0:DVI 1:DVO */
- 		data = xgifb_reg_get(pVBInfo->P3d4, 0x48);
--		/* HOTPLUG_SUPPORT */
--		/* for current XG20 & XG21, GPIOH is floating, driver will
--		 * fix DDR temporarily */
-+		/* HOTPLUG_SUPPORT
-+		 * for current XG20 & XG21, GPIOH is floating, driver will
-+		 * fix DDR temporarily 
-+		 */
- 		/* DVI read GPIOH */
- 		data &= 0x01; /* 1=DDRII, 0=DDR */
- 		/* ~HOTPLUG_SUPPORT */
-@@ -354,7 +355,8 @@ static void XGINew_DDR2_DefaultRegister(
- 	unsigned long P3d4 = Port, P3c4 = Port - 0x10;
- 
- 	/* keep following setting sequence, each setting in
--	 * the same reg insert idle */
-+	 * the same reg insert idle
-+	 */
- 	xgifb_reg_set(P3d4, 0x82, 0x77);
- 	xgifb_reg_set(P3d4, 0x86, 0x00);
- 	xgifb_reg_get(P3d4, 0x86); /* Insert read command for delay */
-@@ -698,11 +700,11 @@ static void XGINew_CheckChannel(struct xgi_hw_device_info *HwDeviceExtension,
- 		break;
- 	case XG42:
- 		/*
--		 XG42 SR14 D[3] Reserve
--		 D[2] = 1, Dual Channel
--		 = 0, Single Channel
--
--		 It's Different from Other XG40 Series.
-+		 * XG42 SR14 D[3] Reserve
-+		 * D[2] = 1, Dual Channel
-+		 * = 0, Single Channel
-+		 *
-+		 * It's Different from Other XG40 Series.
- 		 */
- 		if (XGINew_CheckFrequence(pVBInfo) == 1) { /* DDRII, DDR2x */
- 			pVBInfo->ram_bus = 32; /* 32 bits */
--- 
-2.5.0
+If you drop the else, the PRINT_D should be less indented.  Also there is
+probably no need for a blank line.
 
+julia
+
+
+>  	if (u8Mode == GET_CFG) {
+>  		for (counter = 0; counter < u32WIDsCount; counter++) {
+>  			PRINT_INFO(CORECONFIG_DBG, "Sending CFG packet [%d][%d]\n", !counter,
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1455887905-7002-1-git-send-email-dilekuzulmez%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
