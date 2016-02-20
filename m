@@ -1,129 +1,74 @@
-X-GM-THRID: 6251514840674729984
-X-Received: by 10.129.88.135 with SMTP id m129mr15671490ywb.47.1455544224098;
-        Mon, 15 Feb 2016 05:50:24 -0800 (PST)
+X-GM-THRID: 6253096427237408768
+X-Received: by 10.28.45.151 with SMTP id t145mr29333wmt.6.1455940189085;
+        Fri, 19 Feb 2016 19:49:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.16.80 with SMTP id y77ls1506167ioi.81.gmail; Mon, 15 Feb
- 2016 05:50:23 -0800 (PST)
-X-Received: by 10.66.145.232 with SMTP id sx8mr15407877pab.13.1455544223727;
-        Mon, 15 Feb 2016 05:50:23 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id yd9si179683pab.1.2016.02.15.05.50.23
+Received: by 10.25.212.198 with SMTP id l189ls101376lfg.67.gmail; Fri, 19 Feb
+ 2016 19:49:48 -0800 (PST)
+X-Received: by 10.112.168.201 with SMTP id zy9mr2256904lbb.23.1455940188306;
+        Fri, 19 Feb 2016 19:49:48 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 141si603889wmy.2.2016.02.19.19.49.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Feb 2016 05:50:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Fri, 19 Feb 2016 19:49:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id fl4so74456241pad.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 05:50:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ArqZtyyQy/0LcnE4DYOXw/P2ndix+KSNzNvas03QTic=;
-        b=zqXBRIqNVZ8LdvnMPj7ACVgD2+H14VkQechC1GBWhwZzqwPt+oOuHcWXeNAluNBAUq
-         Ca4prm1dbYgMUUZ1AOHTIWOmHBzve8up+xp/Pbupe8MuewcXNXS0xrXIQ2a0nnEgRRya
-         YOoeChEIJXgMRdXZ+/awjXlXz0TOucGo2upDCbWPKJQjQ+Qpi1fXx9CxEKwvtYVhTNCK
-         kYvOOrJ6nNRi34nisMGLmz5bcIn4OEFOBAq+msdfZ+iv0biZ34WmDmtEhYJBDuCi5K2z
-         Jphqlh1H2cqGC2znk7nNnAe9ji6zyuC7euLvAG70OHhm1gKu0XyA9rdOEspwDeUqe+OS
-         kNkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=ArqZtyyQy/0LcnE4DYOXw/P2ndix+KSNzNvas03QTic=;
-        b=TZ0EnaSlZooR40iquKvy3xzL6AC2B2NZi121wY4mxeOq6lQD+nXiCPHSzyNVSKZyxd
-         FHhn6fN+LGu+6wWZLJK/6NRZhYj6GRwtyKnAj9MUx4A8d68aCcHIgY61+hYmrd3zWDsv
-         DHbJrkar20s5KUajzLbEFLm6+mje0NhRhRd/i1XOM30g/wecS4F9MsNf/NTausmlyHQ2
-         bUDA/QzhAimiXe56bsfG4dfOpOt44lpj2d8ylNajGbAsUlkWDydr2dgA7uJsSeuNsVJK
-         khNqziCnURzePoSapq+tPgeM+YZe4lAqdxVR44/ScZXjAOAzSD68wPGuOK4ooZpy/x2b
-         7TdQ==
-X-Gm-Message-State: AG10YOSReJS5H1AKvYv0ZkpiP9HQLDtnLHgOHWvxfSjTDIb0G1op5bgvds6A8FELALzunQ==
-X-Received: by 10.67.6.226 with SMTP id cx2mr23277935pad.93.1455544223591;
-        Mon, 15 Feb 2016 05:50:23 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id wh9sm38923850pab.8.2016.02.15.05.50.22
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 05:50:23 -0800 (PST)
-Date: Mon, 15 Feb 2016 19:20:47 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Remove an unnecessary else after break
-Message-ID: <20160215135039.GA25157@life-desktop>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,473,1449529200"; 
+   d="scan'208";a="203869194"
+Received: from unknown (HELO hadrien.lan) ([162.212.89.130])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2016 04:49:47 +0100
+Date: Fri, 19 Feb 2016 22:49:45 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH]Staging:tty:amiserial:Add space before
+ open parenthesis and fix indent warning.
+In-Reply-To: <20160219120741.GA5755@sandhya>
+Message-ID: <alpine.DEB.2.10.1602192248590.2806@hadrien>
+References: <20160219120741.GA5755@sandhya>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove else after a break. Because else is generally not useful after a break or return.
+You need a Signed-off-by line with your full name, and that should match
+the From line of your patch, which here seems t contain only your first
+name.
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
- drivers/staging/wilc1000/wilc_wlan.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+julia
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-index 21e79dc..397ad45 100644
---- a/drivers/staging/wilc1000/wilc_wlan.c
-+++ b/drivers/staging/wilc1000/wilc_wlan.c
-@@ -660,8 +660,7 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 
- 		if (i == 0)
- 			break;
--		else
--			vmm_table[i] = 0x0;
-+		vmm_table[i] = 0x0;
- 
- 		acquire_bus(wilc, ACQUIRE_AND_WAKEUP);
- 		counter = 0;
-@@ -674,7 +673,7 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 
- 			if ((reg & 0x1) == 0) {
- 				break;
--			} else {
-+			}
- 				counter++;
- 				if (counter > 200) {
- 					counter = 0;
-@@ -682,7 +681,7 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 						wilc, WILC_HOST_TX_CTRL, 0);
- 					break;
- 				}
--			}
-+
- 		} while (!wilc->quit);
- 
- 		if (!ret)
-@@ -710,9 +709,9 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				if ((reg >> 2) & 0x1) {
- 					entries = ((reg >> 3) & 0x3f);
- 					break;
--				} else {
--					release_bus(wilc, RELEASE_ALLOW_SLEEP);
- 				}
-+					release_bus(wilc, RELEASE_ALLOW_SLEEP);
-+
- 			} while (--timeout);
- 			if (timeout <= 0) {
- 				ret = wilc->hif_func->hif_write_reg(
-@@ -734,9 +733,9 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				if (!ret)
- 					break;
- 				break;
--			} else {
--				break;
- 			}
-+				break;
-+
- 		} while (1);
- 
- 		if (!ret)
--- 
-1.9.1
+On Fri, 19 Feb 2016, Sandhya wrote:
 
+> Add space before open parenthesis of "if" statement and fix indent warning.
+> The checkpatch.pl script reported  error and warning.
+>
+> diff --git a/drivers/tty/amiserial.c b/drivers/tty/amiserial.c
+> index 2caaf5a..9a5c584 100644
+> --- a/drivers/tty/amiserial.c
+> +++ b/drivers/tty/amiserial.c
+> @@ -262,10 +262,10 @@ static void receive_chars(struct serial_state *info)
+>  	custom.intreq = IF_RBF;
+>  	mb();
+>
+> -	if((serdatr & 0x1ff) == 0)
+> -	    status |= UART_LSR_BI;
+> -	if(serdatr & SDR_OVRUN)
+> -	    status |= UART_LSR_OE;
+> +	if ((serdatr & 0x1ff) == 0)
+> +		status |= UART_LSR_BI;
+> +	if (serdatr & SDR_OVRUN)
+> +		status |= UART_LSR_OE;
+>
+>  	ch = serdatr & 0xff;
+>  	icount->rx++;
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160219120741.GA5755%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
