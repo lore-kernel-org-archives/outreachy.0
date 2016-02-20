@@ -1,249 +1,290 @@
-X-GM-THRID: 6950248245847130112
-X-Received: by 2002:a9d:70cf:: with SMTP id w15mr24744914otj.283.1618230772026;
-        Mon, 12 Apr 2021 05:32:52 -0700 (PDT)
+X-GM-THRID: 6253387026836488192
+X-Received: by 10.182.92.226 with SMTP id cp2mr18981046obb.19.1455994473964;
+        Sat, 20 Feb 2016 10:54:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a4a:eb92:: with SMTP id d18ls1017030ooj.7.gmail; Mon, 12 Apr
- 2021 05:32:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3xbZihoGRVrWKVzGzvf6qjG9mmaSbfOwEZpCJeht6eezKs2y6S443VRfQ9bIHuQGTcwIx
-X-Received: by 2002:a4a:e643:: with SMTP id q3mr22965808oot.46.1618230771284;
-        Mon, 12 Apr 2021 05:32:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618230771; cv=none;
-        d=google.com; s=arc-20160816;
-        b=iH406h0HkVbTcjITmYhVGBKoOu4FT/hAUj3f7dvYeNzD81EPzu1cirhGGcsfV8nA0T
-         /SE9JdUbvVN1b14TzJq3XvaD+/b9wLqCij/bBnWgr7X+usJcvdr29dG7ctpoZ9vR+C6V
-         8lSONb6/jG3JprJ1ot6ovKCxLxD8grDubSLoSW/4isA8OfoBrAvG3cgJXDliKnazITxp
-         7nrSKTBVh4FOuvjDuUtglAnfa/R4jG8HU6Y2P0ZawifA0YJgwyx9VHsenbrLpYFdMpF+
-         2dPnxo8IZFd6N2LVBvQO52k39bRixodj1dWoCgKpBqhTCUSCv1t4xlAPeIPWs89lGMX4
-         Prtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=5phIbF0SJjc1xH9SRYu5fVVE6GnlEyVLJ25MTvQm6gk=;
-        b=qRpups9CPGXQowu7S7qTevgAVqW/mgHG+JkUaLld7TVKIRhDfFnV/ZKCiabD+0rvth
-         kXpmvDrlfLP8FNfK/+vxJBRbCD7og7wStDP3eodgn5Ey2S7x8PewIb87f1IzV+e0Azf7
-         Drr0o1aG57aMxnqYThTpu/bA1+wrFPHr6Q8uJMLhqdQnxCAn8QYyyUjcY7u+dRHDiG/0
-         2kQL1222tSWLCdZXn3g7LkjwN6zL3a3ju+Pyd27oNiA19XTWrCTe85JfqJQFHstpNyQf
-         +5youT/CtiFx8UBPBEegqPLpJlqNnVfZ94syY+dp0TYhCJjtmb8GUvpPOsTDY/b8L93Y
-         BNYQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RMkvkOHm;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f29 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qv1-xf29.google.com (mail-qv1-xf29.google.com. [2607:f8b0:4864:20::f29])
-        by gmr-mx.google.com with ESMTPS id u1si33557oif.3.2021.04.12.05.32.51
+Received: by 10.107.132.15 with SMTP id g15ls446605iod.50.gmail; Sat, 20 Feb
+ 2016 10:54:33 -0800 (PST)
+X-Received: by 10.66.136.71 with SMTP id py7mr19084710pab.7.1455994473401;
+        Sat, 20 Feb 2016 10:54:33 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-ob0-x22a.google.com (mail-ob0-x22a.google.com. [2607:f8b0:4003:c01::22a])
+        by gmr-mx.google.com with ESMTPS id ug8si1170822igb.3.2016.02.20.10.54.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 05:32:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f29 as permitted sender) client-ip=2607:f8b0:4864:20::f29;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 20 Feb 2016 10:54:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) client-ip=2607:f8b0:4003:c01::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RMkvkOHm;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f29 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qv1-xf29.google.com with SMTP id x27so6114332qvd.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:32:51 -0700 (PDT)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-x22a.google.com with SMTP id gc3so133919116obb.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 10:54:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=5phIbF0SJjc1xH9SRYu5fVVE6GnlEyVLJ25MTvQm6gk=;
-        b=RMkvkOHmjhdP17NNF9xXFBDWDRebXixHvYtL/zYG09ZsIpFem1DIF6bKoozhqZdD23
-         AE9dLc4KDSE8hxQBFDLOHi+Jt1h5Dck2uygvm2Q+uMZonR95B3gKv3WOCNLWDb7+I1IJ
-         GYZ/DDE+wdYpyeC+GvfTfy0vGsHQP2PnYNropr8WYrsJ2n5KAQZy0eSuUwZlbpgKgLYP
-         uz/tcrkrLmr41j3mKvGWx6ccgx5m4acSMhdsfZPWCzSn/MMQAtjMawdCc0Zo+hVCGxga
-         ruPy3vVhLt0+NVbwdZpdqT8c/T6s5R+T0QvClbj0cKgMnGyIH9acQakYln3kqajqrUft
-         8/Vg==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=W14X6SWRPrsZVt6lr/s7oT9X5Oy8fEXpwtHohBP4cUk=;
+        b=vNzbTEt0yZYJ1f3j+sCc3wXPj0vZmpBMnZifJCPs3DaEAYhxBQIVD4tOaC/+HsXQ6E
+         c1ZfXpyQ556UOiENzgKVZcx6EJqKkKEkvMGaiRjokemHlfE6EvW4qQzBmQR9lnQ0nET+
+         JgcXeNJUqb0pu86v98MxRKYYWE72py9KIAoRbWXEKK9ULMnh68xa1I+eKGC4mrBhIZ8P
+         /babfcQAhtUpdiItreRIj6raGqrRUNp7BYx+6+hpHRE62tYbjrGH4xxtjZnKM9jJfxcp
+         wbRW51U2Hd76pvqrYSPTJZ9qHsuzGFaRzJNZu5RINhC0+0Pf+/2V1+WAKmoPi4mBc32D
+         aiEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=5phIbF0SJjc1xH9SRYu5fVVE6GnlEyVLJ25MTvQm6gk=;
-        b=Oii0QqSP2f4B4xyrfVPTOBho0v4oLvJtatYPT0S4JlOan99TeOZOIosMWTaCCi29Jg
-         VsL8saHBBfX9qIabIFsCuQoTl2ud+6ml7Wgj8NFar2rS54CUOuRhYxj8Xlx0+/Zsj/ws
-         0SWvrpC0KR2nBaUSuqva4uNxs8wT9vRqmOtxX06Km+fdE/D53P0yilKOd1RtYqmb6tgz
-         NtU3uwah+W0FK/WKpxuNWh5l3IsdZnsfdwmXr3mTFnvS2/0NvJAAt4mFrreNq+dIqeF3
-         oZGKHyUV/IVnQnNrU8vwYa2ggheonAH5CC2XFqxYqqGRNoNqFgzam6kcbvAvfCEX0jHA
-         titQ==
-X-Gm-Message-State: AOAM530XnDXM7ot0OoIHRQw4WFLJqB3URHhPB/Buh7Sx6rEhRMeShaDb
-	2hjFKkAyOGyHrKznaTG65f072DjVI0Yqgw1x
-X-Received: by 2002:a05:6214:1470:: with SMTP id c16mr5841085qvy.60.1618230770882;
-        Mon, 12 Apr 2021 05:32:50 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([2001:1284:f016:a037:476a:dfcd:f18f:9ad5])
-        by smtp.gmail.com with ESMTPSA id i25sm7602148qka.38.2021.04.12.05.32.49
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Mon, 12 Apr 2021 05:32:50 -0700 (PDT)
-Date: Mon, 12 Apr 2021 09:32:47 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 4/4] Replace macro function by static
- inline function in file iss_resizer.c
-Message-ID: <5bcb30af75bd8639f8771587fdcca8827b0ae013.1618230425.git.alinesantanacordeiro@gmail.com>
-References: <cover.1618230425.git.alinesantanacordeiro@gmail.com>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=W14X6SWRPrsZVt6lr/s7oT9X5Oy8fEXpwtHohBP4cUk=;
+        b=bL9fSAA7tjB/cAlvZmPdjYO7IoHuexVoBzF6OVc6LJobUFlS/lCrFW2C3CxbV5DarE
+         jzxgksQKX18OJ+VWfjawBDpm9dOJdh+qO/jSn3nInfzwuI3a7ynoQqPFJpDm2mvv6gU4
+         Ht0NPx1QBVsiwWH4v2t5GVJ1FynUq16/3UUcL4Q2ZJz3V12yFJJsLJVGg1A/LgxlCEY0
+         AJxOCjwaYXqZyY2atceBc/SwxM3eBTlByyEe9tQR0jzpNh/LIDBIhHP9ezEU/evSaCnu
+         mq6lRBrFu16rKifjj46DSWkVAognMmo6nK9jWozzKtG08HaKjf6gPRhYrGGQRmXRBVZE
+         UH5A==
+X-Gm-Message-State: AG10YOQQi+9PaWl8CLUR16B9csmS5aowaj8x2muI6OktTYuYJgGeyB2GZMHKk+VXJNEkCuUo0Qrv7pQW33Dong==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1618230425.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.182.186.105 with SMTP id fj9mr16618018obc.17.1455994473173;
+ Sat, 20 Feb 2016 10:54:33 -0800 (PST)
+Received: by 10.157.40.238 with HTTP; Sat, 20 Feb 2016 10:54:33 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602201344120.2711@hadrien>
+References: <1455980111-15231-1-git-send-email-bhumirks@gmail.com>
+	<alpine.DEB.2.10.1602201014150.2706@hadrien>
+	<CAOH+1jEOeWM7pR2bsX3xPxJJUNueUo8T29ODXSkzmqo0n5PLbQ@mail.gmail.com>
+	<alpine.DEB.2.10.1602201344120.2711@hadrien>
+Date: Sun, 21 Feb 2016 00:24:33 +0530
+Message-ID: <CAOH+1jF6jkLkEG-ctiALhHShv1TKvctrrUZTdSsoANhu32Tcbg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: light: Remove __func__
+ from dev_err
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Replace macro function by static inline function.
-Issue suggested by Julia.
+On Sun, Feb 21, 2016 at 12:15 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sat, 20 Feb 2016, Bhumika Goyal wrote:
+>
+>> On Sat, Feb 20, 2016 at 8:44 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Sat, 20 Feb 2016, Bhumika Goyal wrote:
+>> >
+>> >> This patch removes __func__ argument from dev_err as dev_err includes
+>> >> the function name in the log printout, so there is no need to
+>> >> include it manually.
+>> >
+>> > No, it doesn't.  The function name should be left there if it is useful.
+>> >
+>> > julia
+>> >
+>>
+>> Ok Julia and thanks for the feedback . I thought that the function
+>> name is only useful for debugging and should not be
+>> displayed in normal module message.
+>> Also I have a doubt because I saw some of the patches sent by other
+>> developers where they have removed __func__ from dev_err so why is
+>> removing __func__ not helping here?
+>
+> Because those patches were actually not so desirable.  Sorry about it.
+>
+> If you think that the function name is not useful in this particular case,
+> then it's fine to drop it, but it's not a general pricuple that it is
+> never useful.
+>
+> julia
+>
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/omap4iss/iss_resizer.c | 126 ++++++++++++++-------------
- 1 file changed, 65 insertions(+), 61 deletions(-)
+Thanks for the feedback and I got your point now. Dropping the
+function name is not a good idea here .
 
-diff --git a/drivers/staging/media/omap4iss/iss_resizer.c b/drivers/staging/media/omap4iss/iss_resizer.c
-index 3b6875c..7d16bde 100644
---- a/drivers/staging/media/omap4iss/iss_resizer.c
-+++ b/drivers/staging/media/omap4iss/iss_resizer.c
-@@ -30,13 +30,17 @@ static const unsigned int resizer_fmts[] = {
-  *
-  * Also prints other debug information stored in the RESIZER module.
-  */
--#define RSZ_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###RSZ " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_RESIZER, RSZ_##name))
-+static inline rsz_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###RSZ " #name "=0x%08x\n",
-+		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_RESIZER, RSZ_##name));
-+}
- 
--#define RZA_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###RZA " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_RESIZER, RZA_##name))
-+static inline rza_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###RZA " #name "=0x%08x\n", 
-+		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_RESIZER, RZA_##name));
-+}
- 
- static void resizer_print_status(struct iss_resizer_device *resizer)
- {
-@@ -44,61 +48,61 @@ static void resizer_print_status(struct iss_resizer_device *resizer)
- 
- 	dev_dbg(iss->dev, "-------------RESIZER Register dump-------------\n");
- 
--	RSZ_PRINT_REGISTER(iss, SYSCONFIG);
--	RSZ_PRINT_REGISTER(iss, IN_FIFO_CTRL);
--	RSZ_PRINT_REGISTER(iss, FRACDIV);
--	RSZ_PRINT_REGISTER(iss, SRC_EN);
--	RSZ_PRINT_REGISTER(iss, SRC_MODE);
--	RSZ_PRINT_REGISTER(iss, SRC_FMT0);
--	RSZ_PRINT_REGISTER(iss, SRC_FMT1);
--	RSZ_PRINT_REGISTER(iss, SRC_VPS);
--	RSZ_PRINT_REGISTER(iss, SRC_VSZ);
--	RSZ_PRINT_REGISTER(iss, SRC_HPS);
--	RSZ_PRINT_REGISTER(iss, SRC_HSZ);
--	RSZ_PRINT_REGISTER(iss, DMA_RZA);
--	RSZ_PRINT_REGISTER(iss, DMA_RZB);
--	RSZ_PRINT_REGISTER(iss, DMA_STA);
--	RSZ_PRINT_REGISTER(iss, GCK_MMR);
--	RSZ_PRINT_REGISTER(iss, GCK_SDR);
--	RSZ_PRINT_REGISTER(iss, IRQ_RZA);
--	RSZ_PRINT_REGISTER(iss, IRQ_RZB);
--	RSZ_PRINT_REGISTER(iss, YUV_Y_MIN);
--	RSZ_PRINT_REGISTER(iss, YUV_Y_MAX);
--	RSZ_PRINT_REGISTER(iss, YUV_C_MIN);
--	RSZ_PRINT_REGISTER(iss, YUV_C_MAX);
--	RSZ_PRINT_REGISTER(iss, SEQ);
--
--	RZA_PRINT_REGISTER(iss, EN);
--	RZA_PRINT_REGISTER(iss, MODE);
--	RZA_PRINT_REGISTER(iss, 420);
--	RZA_PRINT_REGISTER(iss, I_VPS);
--	RZA_PRINT_REGISTER(iss, I_HPS);
--	RZA_PRINT_REGISTER(iss, O_VSZ);
--	RZA_PRINT_REGISTER(iss, O_HSZ);
--	RZA_PRINT_REGISTER(iss, V_PHS_Y);
--	RZA_PRINT_REGISTER(iss, V_PHS_C);
--	RZA_PRINT_REGISTER(iss, V_DIF);
--	RZA_PRINT_REGISTER(iss, V_TYP);
--	RZA_PRINT_REGISTER(iss, V_LPF);
--	RZA_PRINT_REGISTER(iss, H_PHS);
--	RZA_PRINT_REGISTER(iss, H_DIF);
--	RZA_PRINT_REGISTER(iss, H_TYP);
--	RZA_PRINT_REGISTER(iss, H_LPF);
--	RZA_PRINT_REGISTER(iss, DWN_EN);
--	RZA_PRINT_REGISTER(iss, SDR_Y_BAD_H);
--	RZA_PRINT_REGISTER(iss, SDR_Y_BAD_L);
--	RZA_PRINT_REGISTER(iss, SDR_Y_SAD_H);
--	RZA_PRINT_REGISTER(iss, SDR_Y_SAD_L);
--	RZA_PRINT_REGISTER(iss, SDR_Y_OFT);
--	RZA_PRINT_REGISTER(iss, SDR_Y_PTR_S);
--	RZA_PRINT_REGISTER(iss, SDR_Y_PTR_E);
--	RZA_PRINT_REGISTER(iss, SDR_C_BAD_H);
--	RZA_PRINT_REGISTER(iss, SDR_C_BAD_L);
--	RZA_PRINT_REGISTER(iss, SDR_C_SAD_H);
--	RZA_PRINT_REGISTER(iss, SDR_C_SAD_L);
--	RZA_PRINT_REGISTER(iss, SDR_C_OFT);
--	RZA_PRINT_REGISTER(iss, SDR_C_PTR_S);
--	RZA_PRINT_REGISTER(iss, SDR_C_PTR_E);
-+	rsz_print_register(iss, SYSCONFIG);
-+	rsz_print_register(iss, IN_FIFO_CTRL);
-+	rsz_print_register(iss, FRACDIV);
-+	rsz_print_register(iss, SRC_EN);
-+	rsz_print_register(iss, SRC_MODE);
-+	rsz_print_register(iss, SRC_FMT0);
-+	rsz_print_register(iss, SRC_FMT1);
-+	rsz_print_register(iss, SRC_VPS);
-+	rsz_print_register(iss, SRC_VSZ);
-+	rsz_print_register(iss, SRC_HPS);
-+	rsz_print_register(iss, SRC_HSZ);
-+	rsz_print_register(iss, DMA_RZA);
-+	rsz_print_register(iss, DMA_RZB);
-+	rsz_print_register(iss, DMA_STA);
-+	rsz_print_register(iss, GCK_MMR);
-+	rsz_print_register(iss, GCK_SDR);
-+	rsz_print_register(iss, IRQ_RZA);
-+	rsz_print_register(iss, IRQ_RZB);
-+	rsz_print_register(iss, YUV_Y_MIN);
-+	rsz_print_register(iss, YUV_Y_MAX);
-+	rsz_print_register(iss, YUV_C_MIN);
-+	rsz_print_register(iss, YUV_C_MAX);
-+	rsz_print_register(iss, SEQ);
-+
-+	rza_print_register(iss, EN);
-+	rza_print_register(iss, MODE);
-+	rza_print_register(iss, 420);
-+	rza_print_register(iss, I_VPS);
-+	rza_print_register(iss, I_HPS);
-+	rza_print_register(iss, O_VSZ);
-+	rza_print_register(iss, O_HSZ);
-+	rza_print_register(iss, V_PHS_Y);
-+	rza_print_register(iss, V_PHS_C);
-+	rza_print_register(iss, V_DIF);
-+	rza_print_register(iss, V_TYP);
-+	rza_print_register(iss, V_LPF);
-+	rza_print_register(iss, H_PHS);
-+	rza_print_register(iss, H_DIF);
-+	rza_print_register(iss, H_TYP);
-+	rza_print_register(iss, H_LPF);
-+	rza_print_register(iss, DWN_EN);
-+	rza_print_register(iss, SDR_Y_BAD_H);
-+	rza_print_register(iss, SDR_Y_BAD_L);
-+	rza_print_register(iss, SDR_Y_SAD_H);
-+	rza_print_register(iss, SDR_Y_SAD_L);
-+	rza_print_register(iss, SDR_Y_OFT);
-+	rza_print_register(iss, SDR_Y_PTR_S);
-+	rza_print_register(iss, SDR_Y_PTR_E);
-+	rza_print_register(iss, SDR_C_BAD_H);
-+	rza_print_register(iss, SDR_C_BAD_L);
-+	rza_print_register(iss, SDR_C_SAD_H);
-+	rza_print_register(iss, SDR_C_SAD_L);
-+	rza_print_register(iss, SDR_C_OFT);
-+	rza_print_register(iss, SDR_C_PTR_S);
-+	rza_print_register(iss, SDR_C_PTR_E);
- 
- 	dev_dbg(iss->dev, "-----------------------------------------------\n");
- }
--- 
-2.7.4
+Thanks
+Bhumika
 
+>>
+>> Thanks
+>> Bhumika
+>>
+>> >> Found using coccinelle:
+>> >>
+>> >> @a@
+>> >> expression E;
+>> >> expression  msg;
+>> >> @@
+>> >>
+>> >> dev_err(E, msg, __func__);
+>> >>
+>> >> @script:python b@
+>> >> e << a.msg;
+>> >> y;
+>> >> @@
+>> >>
+>> >> if(e.find("%s: ") == True):
+>> >>         m = e.replace("%s: ", "");
+>> >>         coccinelle.y = m;
+>> >> elif(e.find("%s ") == True):
+>> >>         m = e.replace("%s ", "");
+>> >>         coccinelle.y = m;
+>> >> else:
+>> >>         m = e.replace("%s", "");
+>> >>
+>> >> @c@
+>> >> expression a.E, a.msg;
+>> >> identifier  b.y;
+>> >> @@
+>> >>
+>> >> - dev_err(E, msg, __func__);
+>> >> + dev_err(E, y);
+>> >>
+>> >> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+>> >> ---
+>> >>  drivers/staging/iio/light/tsl2x7x_core.c | 38 +++++++++++---------------------
+>> >>  1 file changed, 13 insertions(+), 25 deletions(-)
+>> >>
+>> >> diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
+>> >> index 2a62718..348c9c2 100644
+>> >> --- a/drivers/staging/iio/light/tsl2x7x_core.c
+>> >> +++ b/drivers/staging/iio/light/tsl2x7x_core.c
+>> >> @@ -348,8 +348,7 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
+>> >>
+>> >>       if (chip->tsl2x7x_chip_status != TSL2X7X_CHIP_WORKING) {
+>> >>               /* device is not enabled */
+>> >> -             dev_err(&chip->client->dev, "%s: device is not enabled\n",
+>> >> -                             __func__);
+>> >> +             dev_err(&chip->client->dev, "device is not enabled\n");
+>> >>               ret = -EBUSY;
+>> >>               goto out_unlock;
+>> >>       }
+>> >> @@ -357,14 +356,12 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
+>> >>       ret = tsl2x7x_i2c_read(chip->client,
+>> >>               (TSL2X7X_CMD_REG | TSL2X7X_STATUS), &buf[0]);
+>> >>       if (ret < 0) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -                     "%s: Failed to read STATUS Reg\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "Failed to read STATUS Reg\n");
+>> >>               goto out_unlock;
+>> >>       }
+>> >>       /* is data new & valid */
+>> >>       if (!(buf[0] & TSL2X7X_STA_ADC_VALID)) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -                     "%s: data not valid yet\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "data not valid yet\n");
+>> >>               ret = chip->als_cur_info.lux; /* return LAST VALUE */
+>> >>               goto out_unlock;
+>> >>       }
+>> >> @@ -482,8 +479,7 @@ static int tsl2x7x_get_prox(struct iio_dev *indio_dev)
+>> >>       struct tsl2X7X_chip *chip = iio_priv(indio_dev);
+>> >>
+>> >>       if (mutex_trylock(&chip->prox_mutex) == 0) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -                     "%s: Can't get prox mutex\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "Can't get prox mutex\n");
+>> >>               return -EBUSY;
+>> >>       }
+>> >>
+>> >> @@ -586,8 +582,7 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
+>> >>       reg_val = i2c_smbus_read_byte(chip->client);
+>> >>       if ((reg_val & (TSL2X7X_CNTL_ADC_ENBL | TSL2X7X_CNTL_PWR_ON))
+>> >>               != (TSL2X7X_CNTL_ADC_ENBL | TSL2X7X_CNTL_PWR_ON)) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -                     "%s: failed: ADC not enabled\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "failed: ADC not enabled\n");
+>> >>               return -1;
+>> >>       }
+>> >>
+>> >> @@ -602,14 +597,13 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
+>> >>       reg_val = i2c_smbus_read_byte(chip->client);
+>> >>       if ((reg_val & TSL2X7X_STA_ADC_VALID) != TSL2X7X_STA_ADC_VALID) {
+>> >>               dev_err(&chip->client->dev,
+>> >> -                     "%s: failed: STATUS - ADC not valid.\n", __func__);
+>> >> +                     "failed: STATUS - ADC not valid.\n");
+>> >>               return -ENODATA;
+>> >>       }
+>> >>
+>> >>       lux_val = tsl2x7x_get_lux(indio_dev);
+>> >>       if (lux_val < 0) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -             "%s: failed to get lux\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "failed to get lux\n");
+>> >>               return lux_val;
+>> >>       }
+>> >>
+>> >> @@ -701,8 +695,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
+>> >>       ret = i2c_smbus_write_byte_data(chip->client,
+>> >>               TSL2X7X_CMD_REG | TSL2X7X_CNTRL, utmp);
+>> >>       if (ret < 0) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -                     "%s: failed on CNTRL reg.\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "failed on CNTRL reg.\n");
+>> >>               return ret;
+>> >>       }
+>> >>
+>> >> @@ -729,8 +722,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
+>> >>       ret = i2c_smbus_write_byte_data(chip->client,
+>> >>                       TSL2X7X_CMD_REG | TSL2X7X_CNTRL, utmp);
+>> >>       if (ret < 0) {
+>> >> -             dev_err(&chip->client->dev,
+>> >> -                     "%s: failed on 2nd CTRL reg.\n", __func__);
+>> >> +             dev_err(&chip->client->dev, "failed on 2nd CTRL reg.\n");
+>> >>               return ret;
+>> >>       }
+>> >>
+>> >> @@ -749,8 +741,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
+>> >>                       (TSL2X7X_CMD_REG | TSL2X7X_CNTRL), reg_val);
+>> >>               if (ret < 0)
+>> >>                       dev_err(&chip->client->dev,
+>> >> -                             "%s: failed in tsl2x7x_IOCTL_INT_SET.\n",
+>> >> -                             __func__);
+>> >> +                             "failed in tsl2x7x_IOCTL_INT_SET.\n");
+>> >>
+>> >>               /* Clear out any initial interrupts  */
+>> >>               ret = i2c_smbus_write_byte(chip->client,
+>> >> @@ -758,8 +749,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
+>> >>                       TSL2X7X_CMD_PROXALS_INT_CLR);
+>> >>               if (ret < 0) {
+>> >>                       dev_err(&chip->client->dev,
+>> >> -                             "%s: Failed to clear Int status\n",
+>> >> -                             __func__);
+>> >> +                             "Failed to clear Int status\n");
+>> >>               return ret;
+>> >>               }
+>> >>       }
+>> >> @@ -1919,8 +1909,7 @@ static int tsl2x7x_probe(struct i2c_client *clientp,
+>> >>                                               "TSL2X7X_event",
+>> >>                                               indio_dev);
+>> >>               if (ret) {
+>> >> -                     dev_err(&clientp->dev,
+>> >> -                             "%s: irq request failed", __func__);
+>> >> +                     dev_err(&clientp->dev, "irq request failed");
+>> >>                       return ret;
+>> >>               }
+>> >>       }
+>> >> @@ -1932,8 +1921,7 @@ static int tsl2x7x_probe(struct i2c_client *clientp,
+>> >>
+>> >>       ret = iio_device_register(indio_dev);
+>> >>       if (ret) {
+>> >> -             dev_err(&clientp->dev,
+>> >> -                     "%s: iio registration failed\n", __func__);
+>> >> +             dev_err(&clientp->dev, "iio registration failed\n");
+>> >>               return ret;
+>> >>       }
+>> >>
+>> >> --
+>> >> 1.9.1
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1455980111-15231-1-git-send-email-bhumirks%40gmail.com.
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >>
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAOH%2B1jEOeWM7pR2bsX3xPxJJUNueUo8T29ODXSkzmqo0n5PLbQ%40mail.gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
