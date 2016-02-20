@@ -1,108 +1,193 @@
-X-GM-THRID: 6253814684108980224
-X-Received: by 10.182.255.203 with SMTP id as11mr24548840obd.49.1456079698396;
-        Sun, 21 Feb 2016 10:34:58 -0800 (PST)
+X-GM-THRID: 6252743439403712512
+X-Received: by 10.112.135.234 with SMTP id pv10mr2217079lbb.24.1455941690967;
+        Fri, 19 Feb 2016 20:14:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.43.169 with SMTP id x9ls370077igl.25.canary; Sun, 21 Feb
- 2016 10:34:58 -0800 (PST)
-X-Received: by 10.50.112.232 with SMTP id it8mr7905697igb.9.1456079698132;
-        Sun, 21 Feb 2016 10:34:58 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
-        by gmr-mx.google.com with ESMTPS id u66si3016589pfa.2.2016.02.21.10.34.58
+Received: by 10.28.141.200 with SMTP id p191ls55219wmd.48.gmail; Fri, 19 Feb
+ 2016 20:14:50 -0800 (PST)
+X-Received: by 10.28.30.147 with SMTP id e141mr36970wme.0.1455941690428;
+        Fri, 19 Feb 2016 20:14:50 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w128si504872wmd.0.2016.02.19.20.14.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 10:34:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
+        Fri, 19 Feb 2016 20:14:50 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x229.google.com with SMTP id q63so79754520pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 10:34:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=nn+KOnPhJ8R88jiX8E12U0pp0CMcXJpmDhj/bgfIdAs=;
-        b=GGzmU+SBC4GnrlLu9wl9LT3YglCfccr6cHpSlHmSJxD3RSA2T9rQmXKVPqsOI7X52s
-         h1gmztZ1zjn0e3Rz76DMKasV3/yozRoKxy0KJ+dvlzRrmD1V3KpVkPGwurkaaFvHDcDh
-         wRxLyp3hf4is1cOZUMpwKWnCl9Mf9SodjcVf2Gr9LjDlt1b+2HVw2WaVV1VprPrC+4ZJ
-         wWufHC+jxRbQlUedl35tPAgvFpkppo65jZlwDxD5WSImjeXcai1Q5eTu4Z01iTTUjNK9
-         kOGeY4XPpU7E5KclRMCrZTKu8+zI0kJu3zkwkxdQSpzGaymCQSgw8efOLUTl9Tj/qt13
-         bB5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=nn+KOnPhJ8R88jiX8E12U0pp0CMcXJpmDhj/bgfIdAs=;
-        b=f2mTQIU4cflqZc1evFUbep8BYSqIlP1ZEv1CFmj5fiIMw2u0ZAxo+T8qP/bP2Lyzxs
-         BFJ32uy+QaWQxIymsvOsENLg7PFVL8qm3sGAHZhUd454kinRceV8iXPFPr2EihBzzKV+
-         7WBVwkTJRDPL57yB2VO4f8n0qxnXMggqPuZJwQrmvTqoO7XGUDJhKFyQpUCutg2x00An
-         59wFB3NLyoDdVcYp/rIOjPUz8lTltYQMrthgBiVBokD2H1GNBQyNBSws4+P+a9B6yzTf
-         W8pz8IK4nvesNzznRnHfVBLLLZ8T/hHlcDKa9iaiPLI2LSZCDrTXweCICP2aupwIrcha
-         UH2Q==
-X-Gm-Message-State: AG10YOR+EzrMG8u2BC1IlELYUI60DMa+C5fWGeM4Xhe5WWKFXbn0Ave6KlZDAzOXu5uUdQ==
-X-Received: by 10.98.42.150 with SMTP id q144mr27431238pfq.73.1456079698005;
-        Sun, 21 Feb 2016 10:34:58 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id dg1sm31501890pad.18.2016.02.21.10.34.57
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 10:34:57 -0800 (PST)
-Date: Mon, 22 Feb 2016 00:05:31 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: rtl8192e: Prefer using macro DIV_ROUND_UP
-Message-ID: <20160221183531.GA3400@Karyakshetra>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,473,1449529200"; 
+   d="scan'208";a="203870325"
+Received: from unknown (HELO hadrien.lan) ([162.212.89.130])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 20 Feb 2016 05:14:49 +0100
+Date: Fri, 19 Feb 2016 23:14:47 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Tha=EDssa_Falbo?= <thaissa.falbo@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: media: davinci_vpfe: remove
+ ret variable in switch statements
+In-Reply-To: <CAKqL7ZW0+C-GuoJgnJ-pX-8cWjEnBNVWF_64fw7OTHAne6DkgQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1602192313460.2806@hadrien>
+References: <1455830274-15956-1-git-send-email-thaissa.falbo@gmail.com> <alpine.DEB.2.10.1602182214340.2821@hadrien> <CAKqL7ZW0+C-GuoJgnJ-pX-8cWjEnBNVWF_64fw7OTHAne6DkgQ@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-211822808-1455941689=:2806"
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
-@@
-expression e1;
-expression e2;
-@@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+--8323329-211822808-1455941689=:2806
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-index 496de4f..bc45cf0 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-@@ -233,7 +233,7 @@ static int rtllib_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		ccmp_init_blocks(key->tfm, hdr, key->tx_pn, data_len,
- 				 b0, b, s0);
 
--		blocks = (data_len + AES_BLOCK_LEN - 1) / AES_BLOCK_LEN;
-+		blocks = DIV_ROUND_UP(data_len, AES_BLOCK_LEN);
- 		last = data_len % AES_BLOCK_LEN;
 
- 		for (i = 1; i <= blocks; i++) {
-@@ -319,7 +319,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		ccmp_init_blocks(key->tfm, hdr, pn, data_len, b0, a, b);
- 		xor_block(mic, b, CCMP_MIC_LEN);
+On Fri, 19 Feb 2016, Thaíssa Falbo wrote:
 
--		blocks = (data_len + AES_BLOCK_LEN - 1) / AES_BLOCK_LEN;
-+		blocks = DIV_ROUND_UP(data_len, AES_BLOCK_LEN);
- 		last = data_len % AES_BLOCK_LEN;
+> 2016-02-19 1:16 GMT-02:00 Julia Lawall <julia.lawall@lip6.fr>:
+> > On Thu, 18 Feb 2016, Thaissa Falbo wrote:
+> >
+> >> Remove ret variable in functions that used it to determine the return.
+> >> Simplified the return logic for these functions.
+> >>
+> >>
+> >> Found with Coccinelle script:
+> >>
+> >> @@
+> >> local idexpression ret;
+> >> expression c,d;
+> >> identifier label;
+> >> @@
+> >>
+> >> switch ( ... ) {
+> >> case label :
+> >> ...
+> >> - ret = c;
+> >> - break;
+> >> + return c;
+> >> ...
+> >> default:
+> >> ...
+> >> - ret = d;
+> >> + return d;
+> >> ...
+> >> }
+> >> ... when != ret
+> >> - return ret;
+> >
+> > Perhaps this is OK for this example, but it doesn't seem like a generlly
+> > useful rule.  There could be some cleanup code that is executed between
+> > the end of the switch and the return ret that is not getting executed.
+> >
+> >>
+> >> @@
+> >> type T; identifier i;
+> >> @@
+> >> - T i;
+> >> ... when != i
+> >>
+> >>
+> >>
+> >> Signed-off-by: Thaissa Falbo <thaissa.falbo@gmail.com>
+> >> ---
+> >>  drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 11 +++--------
+> >>  drivers/staging/media/davinci_vpfe/dm365_isif.c  | 11 +++--------
+> >>  2 files changed, 6 insertions(+), 16 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> >> index ac78ed2..ff47a8f3 100644
+> >> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> >> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> >> @@ -1350,21 +1350,16 @@ error:
+> >>   */
+> >>  static long ipipe_ioctl(struct v4l2_subdev *sd, unsigned int cmd, void *arg)
+> >>  {
+> >> -     int ret = 0;
+> >> -
+> >>       switch (cmd) {
+> >>       case VIDIOC_VPFE_IPIPE_S_CONFIG:
+> >> -             ret = ipipe_s_config(sd, arg);
+> >> -             break;
+> >> +             return ipipe_s_config(sd, arg);
+> >>
+> >>       case VIDIOC_VPFE_IPIPE_G_CONFIG:
+> >> -             ret = ipipe_g_config(sd, arg);
+> >> -             break;
+> >> +             return ipipe_g_config(sd, arg);
+> >>
+> >>       default:
+> >> -             ret = -ENOIOCTLCMD;
+> >> +             return -ENOIOCTLCMD;
+> >>       }
+> >> -     return ret;
+> >>  }
+> >>
+> >>  void vpfe_ipipe_enable(struct vpfe_device *vpfe_dev, int en)
+> >> diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> >> index cfad426..71d3314 100644
+> >> --- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> >> +++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> >> @@ -625,21 +625,16 @@ static int isif_set_params(struct v4l2_subdev *sd, void *params)
+> >>   */
+> >>  static long isif_ioctl(struct v4l2_subdev *sd, unsigned int cmd, void *arg)
+> >>  {
+> >> -     int ret;
+> >> -
+> >>       switch (cmd) {
+> >>       case VIDIOC_VPFE_ISIF_S_RAW_PARAMS:
+> >> -             ret = isif_set_params(sd, arg);
+> >> -             break;
+> >> +             return isif_set_params(sd, arg);
+> >>
+> >>       case VIDIOC_VPFE_ISIF_G_RAW_PARAMS:
+> >> -             ret = isif_get_params(sd, arg);
+> >> -             break;
+> >> +             return isif_get_params(sd, arg);
+> >>
+> >>       default:
+> >> -             ret = -ENOIOCTLCMD;
+> >> +             return -ENOIOCTLCMD;
+> >>       }
+> >> -     return ret;
+> >>  }
+> >>
+> >>  static void isif_config_gain_offset(struct vpfe_isif_device *isif)
+> >> --
+> >> 2.1.4
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1455830274-15956-1-git-send-email-thaissa.falbo%40gmail.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+> Hi!
+>
+> Yes, I was afraid of the coccinelle script not working for more
+> examples because there could be more handling of the ret variable. I
+> thought the line "... when != ret" would catch?
 
- 		for (i = 1; i <= blocks; i++) {
---
-2.1.4
 
+The error handling will probably not involve ret.  It may free something
+that has previousy been allocated.  The changes look ok, though, because
+there is nothing before the return.
+
+julia
+
+>
+> Anyways, is this patch ok?
+>
+>
+> Thaissa
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKqL7ZW0%2BC-GuoJgnJ-pX-8cWjEnBNVWF_64fw7OTHAne6DkgQ%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-211822808-1455941689=:2806--
 
