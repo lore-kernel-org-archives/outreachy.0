@@ -1,83 +1,228 @@
 X-GM-THRID: 6253357236964294656
-X-Received: by 10.50.142.73 with SMTP id ru9mr2060523igb.8.1455974122218;
-        Sat, 20 Feb 2016 05:15:22 -0800 (PST)
+X-Received: by 10.66.236.129 with SMTP id uu1mr17105342pac.18.1455973238949;
+        Sat, 20 Feb 2016 05:00:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.8.65 with SMTP id p1ls165587iga.4.canary; Sat, 20 Feb 2016
- 05:15:21 -0800 (PST)
-X-Received: by 10.107.15.143 with SMTP id 15mr19431213iop.15.1455974121929;
-        Sat, 20 Feb 2016 05:15:21 -0800 (PST)
+Received: by 10.50.66.230 with SMTP id i6ls19559igt.39.gmail; Sat, 20 Feb 2016
+ 05:00:38 -0800 (PST)
+X-Received: by 10.66.139.162 with SMTP id qz2mr15055210pab.1.1455973238617;
+        Sat, 20 Feb 2016 05:00:38 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
-        by gmr-mx.google.com with ESMTPS id ui7si2214217pab.0.2016.02.20.05.15.21
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id ff2si2340420pad.2.2016.02.20.05.00.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 05:15:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
+        Sat, 20 Feb 2016 05:00:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x229.google.com with SMTP id e127so66791310pfe.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 05:15:21 -0800 (PST)
+Received: by mail-pf0-x235.google.com with SMTP id c10so68609189pfc.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 05:00:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:cc:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=fH6g9BrMLKR3oxIDuihpafokX199/lDY2i2YwbIWbuY=;
-        b=lALNyUhkmh7cgTeVATbiJu3v8tkbrUVzeTQzP5VG3H8gOiJXT6j0+hOEgs6tlhVxe5
-         KdXt4v4TQPS0GYcTOo7OpvvTbmQ7boYH4EVswa2Cn/HTFbG5ZkLzZcu/vd/TK0JQ7XSw
-         X+PAVtiwurNRJOfNSQ2k/OgTdHl5oWMoKpFgo85juvZYEUCHoNjG70kIqmAc+NmU+MT8
-         JCC/dB8s66g4p2Jo7s5v5c32n3+i6Xt8bxDn3GJWeyDDAn85su1iMaOpvrojPyFGHZ34
-         dLBQbwALzxavpzlKKasU5yNdYvPXuMOmb7Nus2vNUV30B1fwVsB3rNM2oVxLDUrpSBya
-         K3cg==
+        bh=RCJ5DLbV0EJjpBxtWCnUwYJXrbbZwlWHXFi0ao5gy3A=;
+        b=U4ppHwPNtd/XhFwPMctZkhHHF5drbxcXhJn+Evb9Tuy+fnmjO4t4Y5J5qm1BNnJ4Bq
+         DG7q/LZD93m5giveJNasmStLW5TVTPFtTqEFR0gc8D/yFnCQd3mHY/url/N/t5h6aWK6
+         2+CE+yTyKz6s26sMvxubp4arFbRc5QFyxnxm+JPrx28xyPfthbFyTwzbvcpFQd1DSiEe
+         VuRe6I55bSZUOd+axxUGbUEQ7t4Y3pxWQ+yzila69iFkUUZpj6nqQqjVNXHXDYpFnCfX
+         WhPTNf4Dq2rovuvxZZCkKt0ZfVYk3rKvADqu+VUcBXIgV6wLMGKjmfBpco1YN+OasvyR
+         NeFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=fH6g9BrMLKR3oxIDuihpafokX199/lDY2i2YwbIWbuY=;
-        b=k+F4Wugsw21/kJM42XBTY5h/Q06l6D9Q/J94lU5TZsBdrxvKNSafWteFfpHEWZgvQm
-         dG2Tw0PFzs4gZv85/i1Ww/XeLMtMpAk+hb2MqtINcCrGWA4n/onyRJK5K9NZzFGvuW2l
-         Dwhopk2ata+Kaw0otOnSQkgl5HwS1bBknhWc2CZlXMzAmDsFIo+W5Fh7f/rq6enH6kTj
-         YBsfI8wpGsLmzhitXBJQLGYK2zMP7dkh1vN2OKJwjYuQJOwdnG7zGypIS02NcB6gHTRr
-         6QhoHbRuqfog5gWpNhhWqAu9jdMsGFUImqq39ylc8sCxRqa3LgmpcJy3n2ss5D/apkGR
-         QbMQ==
-X-Gm-Message-State: AG10YOR/GddJo0rEncLpriRCbr0zoSEO0fqdJ8ujP3Gc/+0AXT05w4C8dwKe631p8FPvYg==
-X-Received: by 10.98.31.21 with SMTP id f21mr24707624pff.134.1455974121810;
-        Sat, 20 Feb 2016 05:15:21 -0800 (PST)
+        bh=RCJ5DLbV0EJjpBxtWCnUwYJXrbbZwlWHXFi0ao5gy3A=;
+        b=HFORWOEOvtzqWVVBrX1B3ug9zt6+ldgTasGLcqzFtyP/9j/eVRYHatoTHyZlwfCA96
+         Q+HZWVbGFnHEaNng+JqhRs+PYDA8p6CdQoc6Wd7LmrlFp4xqEG3cP8AG85FuDb/t91IR
+         rV1V1R3+09L2ZDi79Y5+craJjomlLyhOz3VMjUsIzV17neuMkbQigQVRWOfGf7ZQlED+
+         Tuaur98KMDk+9nooxxx6CX1sF9mbG9KdM2dm6I+T3a5H4A2KHz+upEkt+laX0ZB9qgQ2
+         WexwfrekHs5qwBAVW5WoO3CJ62BSQaSuea4P8u+5aoGxKgPUxFek6ZrItwg3E+335Kns
+         85lA==
+X-Gm-Message-State: AG10YOTgOHEATwMezodgcYRdEu/3SuGtiRHbqpuZHiPqfT0YyDJhO0SjdewPi+J3EXb2+g==
+X-Received: by 10.98.9.219 with SMTP id 88mr25685687pfj.0.1455973238488;
+        Sat, 20 Feb 2016 05:00:38 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id bx1sm24807538pab.33.2016.02.20.05.15.20
-        for <outreachy-kernel@googlegroups.com>
+        by smtp.gmail.com with ESMTPSA id n78sm24552573pfb.53.2016.02.20.05.00.37
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 05:15:21 -0800 (PST)
-Date: Sat, 20 Feb 2016 18:45:52 +0530
+        Sat, 20 Feb 2016 05:00:37 -0800 (PST)
+Date: Sat, 20 Feb 2016 18:31:10 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: rtl8192u: Use system_wq
-Message-ID: <20160220131552.GA3543@Karyakshetra>
+Cc: tj@kernel.org
+Subject: [PATCH 2/2] staging: rtl8192u: Use system_wq
+Message-ID: <20160220130110.GA3446@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-
-This patchset removes create_workqueue() usages in rtl8192u.
 With conccurency managed workqueues, use of dedicated workqueues can
-be replaced with system_wq.
+be replaced with system_wq. Removed wq by using system_wq.
 
-Bhaktipriya Shridhar (2):
-  staging: rtl8192u: Use system_wq
-  staging: rtl8192u: Use system_wq
+There are multiple work items per wq (viz. softmac_scan_wq,
+associate_[retry/complete/procedure]_wq,start_ibss_wq and wx_sync_scan_wq)
+and different wqs need not be be ordered. Hence, concurrency  can be increased
+by switching to system_wq.
 
+Work items are cancelled in ieee80211_stop_protocol so it is
+guaranteed that no work is in flight by the time exit path runs.
+
+Some other work items are also cancelled in ieee80211_softmac_stop_scan(
+softmac_scan_wq) and rtl819x_ifsilentreset(associate_retry_wq).
+
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
  drivers/staging/rtl8192u/ieee80211/ieee80211.h      |  1 -
  .../staging/rtl8192u/ieee80211/ieee80211_softmac.c  | 21 +++++++++++----------
  .../rtl8192u/ieee80211/ieee80211_softmac_wx.c       |  2 +-
- drivers/staging/rtl8192u/r8192U.h                   |  1 -
- drivers/staging/rtl8192u/r8192U_core.c              | 17 ++++++++---------
- drivers/staging/rtl8192u/r8192U_dm.c                |  6 +++---
- drivers/staging/rtl8192u/r819xU_phy.c               |  2 +-
- 7 files changed, 24 insertions(+), 26 deletions(-)
+ drivers/staging/rtl8192u/r8192U_core.c              |  2 +-
+ 4 files changed, 13 insertions(+), 13 deletions(-)
 
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 68931e5..dc12d15d 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -1887,7 +1887,6 @@ struct ieee80211_device {
+ 	struct delayed_work associate_retry_wq;
+ 	 struct delayed_work start_ibss_wq;
+ 	struct work_struct wx_sync_scan_wq;
+-	struct workqueue_struct *wq;
+ 	// Qos related. Added by Annie, 2005-11-01.
+ 	//STA_QOS  StaQos;
+
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index 9bc5aac..620413d 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -515,7 +515,7 @@ static void ieee80211_softmac_scan_wq(struct work_struct *work)
+ 		ieee80211_send_probe_requests(ieee);
+
+
+-	queue_delayed_work(ieee->wq, &ieee->softmac_scan_wq, IEEE80211_SOFTMAC_SCAN_TIME);
++	schedule_delayed_work(&ieee->softmac_scan_wq, IEEE80211_SOFTMAC_SCAN_TIME);
+
+ 	up(&ieee->scan_sem);
+ 	return;
+@@ -614,7 +614,7 @@ static void ieee80211_start_scan(struct ieee80211_device *ieee)
+ 	if (ieee->softmac_features & IEEE_SOFTMAC_SCAN){
+ 		if (ieee->scanning == 0) {
+ 			ieee->scanning = 1;
+-			queue_delayed_work(ieee->wq, &ieee->softmac_scan_wq, 0);
++			schedule_delayed_work(&ieee->softmac_scan_wq, 0);
+ 		}
+ 	}else
+ 		ieee->start_scan(ieee->dev);
+@@ -1241,7 +1241,7 @@ void ieee80211_associate_abort(struct ieee80211_device *ieee)
+
+ 	ieee->state = IEEE80211_ASSOCIATING_RETRY;
+
+-	queue_delayed_work(ieee->wq, &ieee->associate_retry_wq, \
++	schedule_delayed_work(&ieee->associate_retry_wq, \
+ 			   IEEE80211_SOFTMAC_ASSOC_RETRY_TIME);
+
+ 	spin_unlock_irqrestore(&ieee->lock, flags);
+@@ -1382,7 +1382,7 @@ static void ieee80211_associate_complete(struct ieee80211_device *ieee)
+
+ 	ieee->state = IEEE80211_LINKED;
+ 	//ieee->UpdateHalRATRTableHandler(dev, ieee->dot11HTOperationalRateSet);
+-	queue_work(ieee->wq, &ieee->associate_complete_wq);
++	schedule_work(&ieee->associate_complete_wq);
+ }
+
+ static void ieee80211_associate_procedure_wq(struct work_struct *work)
+@@ -1483,7 +1483,7 @@ inline void ieee80211_softmac_new_net(struct ieee80211_device *ieee, struct ieee
+ 					}
+
+ 					ieee->state = IEEE80211_ASSOCIATING;
+-					queue_work(ieee->wq, &ieee->associate_procedure_wq);
++					schedule_work(&ieee->associate_procedure_wq);
+ 				}else{
+ 					if(ieee80211_is_54g(&ieee->current_network) &&
+ 						(ieee->modulation & IEEE80211_OFDM_MODULATION)){
+@@ -2044,7 +2044,7 @@ ieee80211_rx_frame_softmac(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 					"Association response status code 0x%x\n",
+ 					errcode);
+ 				if(ieee->AsocRetryCount < RT_ASOC_RETRY_LIMIT) {
+-					queue_work(ieee->wq, &ieee->associate_procedure_wq);
++					schedule_work(&ieee->associate_procedure_wq);
+ 				} else {
+ 					ieee80211_associate_abort(ieee);
+ 				}
+@@ -2100,7 +2100,7 @@ ieee80211_rx_frame_softmac(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 			notify_wx_assoc_event(ieee);
+ 			//HTSetConnectBwMode(ieee, HT_CHANNEL_WIDTH_20, HT_EXTCHNL_OFFSET_NO_EXT);
+ 			RemovePeerTS(ieee, header->addr2);
+-			queue_work(ieee->wq, &ieee->associate_procedure_wq);
++			schedule_work(&ieee->associate_procedure_wq);
+ 		}
+ 		break;
+ 	case IEEE80211_STYPE_MANAGE_ACT:
+@@ -2442,7 +2442,7 @@ static void ieee80211_start_ibss_wq(struct work_struct *work)
+
+ inline void ieee80211_start_ibss(struct ieee80211_device *ieee)
+ {
+-	queue_delayed_work(ieee->wq, &ieee->start_ibss_wq, 150);
++	schedule_delayed_work(&ieee->start_ibss_wq, 150);
+ }
+
+ /* this is called only in user context, with wx_sem held */
+@@ -2605,7 +2605,10 @@ void ieee80211_stop_protocol(struct ieee80211_device *ieee)
+ 	ieee80211_stop_send_beacons(ieee);
+ 	del_timer_sync(&ieee->associate_timer);
+ 	cancel_delayed_work(&ieee->associate_retry_wq);
++	cancel_delayed_work(&ieee->associate_complete_wq);
++	cancel_delayed_work(&ieee->associate_procedure_wq);
+ 	cancel_delayed_work(&ieee->start_ibss_wq);
++	cancel_delayed_work(&ieee->wx_sync_scan_wq);
+ 	ieee80211_stop_scan(ieee);
+
+ 	ieee80211_disassociate(ieee);
+@@ -2725,7 +2728,6 @@ void ieee80211_softmac_init(struct ieee80211_device *ieee)
+ 	setup_timer(&ieee->beacon_timer, ieee80211_send_beacon_cb,
+ 		    (unsigned long)ieee);
+
+-	ieee->wq = create_workqueue(DRV_NAME);
+
+ 	INIT_DELAYED_WORK(&ieee->start_ibss_wq, ieee80211_start_ibss_wq);
+ 	INIT_WORK(&ieee->associate_complete_wq, ieee80211_associate_complete_wq);
+@@ -2755,7 +2757,6 @@ void ieee80211_softmac_free(struct ieee80211_device *ieee)
+ 	del_timer_sync(&ieee->associate_timer);
+
+ 	cancel_delayed_work(&ieee->associate_retry_wq);
+-	destroy_workqueue(ieee->wq);
+
+ 	up(&ieee->wx_sem);
+ }
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
+index aad288a..bda1eef 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
+@@ -370,7 +370,7 @@ int ieee80211_wx_set_scan(struct ieee80211_device *ieee, struct iw_request_info
+ 	}
+
+ 	if (ieee->state == IEEE80211_LINKED) {
+-		queue_work(ieee->wq, &ieee->wx_sync_scan_wq);
++		schedule_work(&ieee->wx_sync_scan_wq);
+ 		/* intentionally forget to up sem */
+ 		return 0;
+ 	}
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index cf92030..19a9b7d 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -3385,7 +3385,7 @@ RESET_START:
+ 			ieee->set_chan(ieee->dev,
+ 				       ieee->current_network.channel);
+
+-			queue_work(ieee->wq, &ieee->associate_complete_wq);
++			schedule_work(&ieee->associate_complete_wq);
+
+ 		} else if (ieee->state == IEEE80211_LINKED &&
+ 			   ieee->iw_mode == IW_MODE_ADHOC) {
 --
 2.1.4
 
