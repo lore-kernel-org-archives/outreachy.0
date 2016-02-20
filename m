@@ -1,60 +1,60 @@
 X-GM-THRID: 6253324180362625024
-X-Received: by 10.25.138.84 with SMTP id m81mr790130lfd.5.1455968303388;
-        Sat, 20 Feb 2016 03:38:23 -0800 (PST)
+X-Received: by 10.25.18.227 with SMTP id 96mr2381516lfs.4.1455967024183;
+        Sat, 20 Feb 2016 03:17:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.63.211 with SMTP id m202ls103365wma.1.canary; Sat, 20 Feb
- 2016 03:38:22 -0800 (PST)
-X-Received: by 10.194.19.195 with SMTP id h3mr2393976wje.1.1455968302905;
-        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+Received: by 10.25.167.131 with SMTP id q125ls150990lfe.69.gmail; Sat, 20 Feb
+ 2016 03:17:03 -0800 (PST)
+X-Received: by 10.112.138.98 with SMTP id qp2mr2439924lbb.4.1455967023632;
+        Sat, 20 Feb 2016 03:17:03 -0800 (PST)
 Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
-        by gmr-mx.google.com with ESMTPS id w128si561195wmd.0.2016.02.20.03.38.22
+Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
+        by gmr-mx.google.com with ESMTPS id 141si673592wmy.2.2016.02.20.03.17.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
+        Sat, 20 Feb 2016 03:17:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=nevola@gmail.com;
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22c.google.com with SMTP id g62so103923648wme.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+Received: by mail-wm0-x234.google.com with SMTP id a4so102982262wme.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 03:17:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=hajrhhmftkhy6aLqwLKMe0OgYQrAnnSXk/A3dADd1ug=;
-        b=OupeV8EhFSrUzx/lfEZJs9ETIhju6Q4x6vBBWeWAYHAgGgps7lRE+e+buprbueEO4/
-         3kY1iL3NDtxSHKbFgoFT3/WIxyPMEUCuNhEfZt1QWNzGQ2XSE+yu71z21qSo/WIEmwMt
-         5H9h67REFjX9+/61kVwZp7i3Piog/O1IKjDHl4V8MFIeYYE1gDqqZRB5ubGi9J/qpjRa
-         yuZm3CGPlMJB/bKiGQmMkeK9g9VMxgHXSHEhFJftDgpRa3KAKGl6NnG5pDS3+kAq6kV+
-         uBWbgMKpdjDggivAxaEM7C5bOvA8ty7fkxZU2NL4PaxVQoX2mbPwmeyWfzqJ3t5IZawe
-         /ejg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=fppSWQ7vb9sO1OoL0Gl/YFraXY/Q1qox+A7ZNgVf2eo=;
+        b=iWzy/Hn3fLuUoWoikYqAMUisqlcTqgXwBaUjf7gozZA9G/OrImRvhoQwla59n3bH2C
+         bUSKhFbKv+Ur0/Gk7AYHoN8mi4CUGcezuVAujRSyXdtRFLdp7WyZUdiMxzJc2FDq0odk
+         Epkmk6IEz52QOXwUikL1fcL8vV0q2+eUHto6izH44EPcgHLYZ1ObNnYRxJjL5+bc2RqQ
+         WU9Yg5TcLhWMtDgI9p4lgUJd1BF7BoksKogd358cg7US8F3ETnsYBiIUdTNgEEqkMRpb
+         ahG7flL9Mp02lfQa3e0ylNcF8HS4ULK/aoIRpht1edNTpcIH2FCMe6mWKkCje85pUqHP
+         GD5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=hajrhhmftkhy6aLqwLKMe0OgYQrAnnSXk/A3dADd1ug=;
-        b=e0715wmM8RPyGi25i/LfLA5oH/K42WwlTs0rcDdK63Az8QtfkTZ9Lal/54NsKqkA75
-         7JvaYDKwZ5FjATTvNUJ38Vdi3Qumq0PK14lypsnofYf53l2LHPq2KJBXKFo7PBewB0sN
-         Ng7fHT5ZsuYI03YdXYgepBbihnBNq36/2kkLiJ+JLdc+FlGBjhmv/CPi/nwJJF8pmgeM
-         RdFyxSXTJKPWV5bYJRsDp5XgqaCazX/HmAZu5a8hYiKQZtMZufXq5C5ZXtx8jwOV2H6T
-         kV384O0ImdHHu6kfbrOpc0Nz06sNrUOnOM17oSmjQ2JH9Fei0l7DEOzwl4esqs291jRt
-         vDeA==
-X-Gm-Message-State: AG10YOSpBCli10cN8neMW8i/VVHL6bUlp9HUKWA4+CNyX6c0bEsVDBekEloUVFCD1KoMpA==
-X-Received: by 10.194.78.148 with SMTP id b20mr17886954wjx.71.1455968302782;
-        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+         :content-disposition:user-agent;
+        bh=fppSWQ7vb9sO1OoL0Gl/YFraXY/Q1qox+A7ZNgVf2eo=;
+        b=mDmWaMQmIlKPr1lmZqCy/Pu5uKeCjXz5H6zrkmf46F03Bgjm+vQh+K6GkeHGRsVBiO
+         MobL2G/82FDjSqwTWn5n2235HNMmFuM5hkr26F32bq2JTxL4XEeXq623vumemP669JsQ
+         eFxflFY9ic3yMQtYJZeZa8bNyRlTvcowYWdBcoLSdtdZQvv0o9bif6zccTIEPgo40PYN
+         JhQjEXldwU6rtJbucgZUwdZjWm8i/4rVev6O4oeJClZwd2pCw+uUW7qXtzcM91iiTSc1
+         g8vbzSvB2pjD4DEW8/PSFAj42G97LVgXTVfEwCl10dHTAUC5wj5JPnFaVPQZXeY+XFLT
+         RKNw==
+X-Gm-Message-State: AG10YORXHwPkq/4jvlmTuJLuEPYGQFFKx1QLBanGDPzdPp76BzAIJFf+Z3v5G32yWZwl/g==
+X-Received: by 10.28.48.19 with SMTP id w19mr2017041wmw.18.1455967023509;
+        Sat, 20 Feb 2016 03:17:03 -0800 (PST)
 Return-Path: <nevola@gmail.com>
 Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
-        by smtp.gmail.com with ESMTPSA id u9sm11761244wmd.4.2016.02.20.03.38.21
+        by smtp.gmail.com with ESMTPSA id m6sm7929511wje.21.2016.02.20.03.17.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
-Date: Sat, 20 Feb 2016 12:38:20 +0100
+        Sat, 20 Feb 2016 03:17:02 -0800 (PST)
+Date: Sat, 20 Feb 2016 12:17:00 +0100
 From: Laura Garcia Liebana <nevola@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: nvec: Fix alignment with the open parenthesis
-Message-ID: <20160220113817.GA6696@sonyv>
+Subject: [PATCH v2] staging: nvec: Fix alignment with the open parenthesis
+Message-ID: <20160220111657.GA5065@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -67,14 +67,12 @@ Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
 ---
 Changes in v2:
 	- Code indent should use tabs where possible
-Changes in v3:
-	- No space is necessary after a cast
 
  drivers/staging/nvec/nvec.c | 35 +++++++++++++++++++----------------
  1 file changed, 19 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index bdea8fa..c335ae2 100644
+index bdea8fa..fd0ab34 100644
 --- a/drivers/staging/nvec/nvec.c
 +++ b/drivers/staging/nvec/nvec.c
 @@ -148,7 +148,7 @@ static int nvec_status_notifier(struct notifier_block *nb,
@@ -127,8 +125,8 @@ index bdea8fa..c335ae2 100644
  		dev_err(nvec->dev, "RX incomplete: Expected %u bytes, got %u\n",
 -			   (uint) nvec_msg_size(nvec->rx),
 -			   (uint) nvec->rx->pos);
-+			(uint)nvec_msg_size(nvec->rx),
-+			(uint)nvec->rx->pos);
++			(uint) nvec_msg_size(nvec->rx),
++			(uint) nvec->rx->pos);
  
  		nvec_msg_free(nvec, nvec->rx);
  		nvec->state = 0;
