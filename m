@@ -1,100 +1,188 @@
-X-GM-THRID: 6253814508623495168
-X-Received: by 10.140.240.129 with SMTP id l123mr20411085qhc.8.1456079657546;
-        Sun, 21 Feb 2016 10:34:17 -0800 (PST)
+X-GM-THRID: 6253324180362625024
+X-Received: by 10.25.138.84 with SMTP id m81mr790130lfd.5.1455968303388;
+        Sat, 20 Feb 2016 03:38:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.41.85 with SMTP id y79ls1144611qgy.63.gmail; Sun, 21 Feb
- 2016 10:34:17 -0800 (PST)
-X-Received: by 10.129.88.135 with SMTP id m129mr22828460ywb.47.1456079657090;
-        Sun, 21 Feb 2016 10:34:17 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id 12si2709770pfb.1.2016.02.21.10.34.17
+Received: by 10.28.63.211 with SMTP id m202ls103365wma.1.canary; Sat, 20 Feb
+ 2016 03:38:22 -0800 (PST)
+X-Received: by 10.194.19.195 with SMTP id h3mr2393976wje.1.1455968302905;
+        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
+        by gmr-mx.google.com with ESMTPS id w128si561195wmd.0.2016.02.20.03.38.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 10:34:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id c10so82365258pfc.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 10:34:17 -0800 (PST)
+Received: by mail-wm0-x22c.google.com with SMTP id g62so103923648wme.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 03:38:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=c1PURI3ptHMo1Na1H6Ei7NWblRsJFc7c2xX2u25LQqs=;
-        b=nVmwpgD0UhVY2PB3yjxTGubJlCOB5pSLwFH1Xdft+DUEhjFkNUdy4SDON/AKG9UATm
-         x4ndnwgvHj9f3LkkajLLM0rns7H2YHT/1EMUQWCJgd6PGV6tXtL5qaD6vQBFYsR7hq7q
-         AsJnGcXEs6uzLwBE3dPySnF3k8722MABTHPFPfx04Bew+s3T6Sa7cHX555wX/rGyVIzE
-         Fp88AP5wweejFFxO8f0MDC5EltZOoJVDSSiQNWnLDmKOud4RYdvGuSgCz+ujhYiDtGbv
-         f2UvwTDWgKwsWBvrKOtKzmbN0SD4g+b9ivV6hqQFXLk7nlGqScs10Sqhfr1I7NH1+FvO
-         /Dow==
+        bh=hajrhhmftkhy6aLqwLKMe0OgYQrAnnSXk/A3dADd1ug=;
+        b=OupeV8EhFSrUzx/lfEZJs9ETIhju6Q4x6vBBWeWAYHAgGgps7lRE+e+buprbueEO4/
+         3kY1iL3NDtxSHKbFgoFT3/WIxyPMEUCuNhEfZt1QWNzGQ2XSE+yu71z21qSo/WIEmwMt
+         5H9h67REFjX9+/61kVwZp7i3Piog/O1IKjDHl4V8MFIeYYE1gDqqZRB5ubGi9J/qpjRa
+         yuZm3CGPlMJB/bKiGQmMkeK9g9VMxgHXSHEhFJftDgpRa3KAKGl6NnG5pDS3+kAq6kV+
+         uBWbgMKpdjDggivAxaEM7C5bOvA8ty7fkxZU2NL4PaxVQoX2mbPwmeyWfzqJ3t5IZawe
+         /ejg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=c1PURI3ptHMo1Na1H6Ei7NWblRsJFc7c2xX2u25LQqs=;
-        b=mHVsxrb1ahuFtmdNAljz3vDXzjW7sYaoAVyefYbosJMcKFIAiXuwZ7uRDAEhsyZRGK
-         iyjaGKcDhvf/Euk9h+1n4+yRGBKYCmkc5xoL4H3syNJb94tA7p6B/QzepZnNEnCT+ixj
-         OczDYq1S5sjm25M0+V7vcgC4D4A6PiibMZeTl9Gyn26SA8z10QLwzFT3CVhOOyY+p7EJ
-         /2t/X7XuHfRDoyb1XFgzTNVwH3r81dhR/Xi2p/AL9kgOyJ6xmkzi3dgh5Qw/B/XZ4ZQC
-         ojjtxxZKS2D79kLVDdpuSgh7ZwzsWPQJ2EmOm3QzJ4UVV9CYZUTH/KwUlxsDl8ybmEjb
-         GLMQ==
-X-Gm-Message-State: AG10YOTQcYN1FNl+r1h+UPfnUoQYtAiuKoBcwcJanQmGTq+U56P+pKN8suEyTxD8hh5tLQ==
-X-Received: by 10.98.67.149 with SMTP id l21mr32927545pfi.112.1456079656953;
-        Sun, 21 Feb 2016 10:34:16 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id y27sm31247057pfi.82.2016.02.21.10.34.16
+        bh=hajrhhmftkhy6aLqwLKMe0OgYQrAnnSXk/A3dADd1ug=;
+        b=e0715wmM8RPyGi25i/LfLA5oH/K42WwlTs0rcDdK63Az8QtfkTZ9Lal/54NsKqkA75
+         7JvaYDKwZ5FjATTvNUJ38Vdi3Qumq0PK14lypsnofYf53l2LHPq2KJBXKFo7PBewB0sN
+         Ng7fHT5ZsuYI03YdXYgepBbihnBNq36/2kkLiJ+JLdc+FlGBjhmv/CPi/nwJJF8pmgeM
+         RdFyxSXTJKPWV5bYJRsDp5XgqaCazX/HmAZu5a8hYiKQZtMZufXq5C5ZXtx8jwOV2H6T
+         kV384O0ImdHHu6kfbrOpc0Nz06sNrUOnOM17oSmjQ2JH9Fei0l7DEOzwl4esqs291jRt
+         vDeA==
+X-Gm-Message-State: AG10YOSpBCli10cN8neMW8i/VVHL6bUlp9HUKWA4+CNyX6c0bEsVDBekEloUVFCD1KoMpA==
+X-Received: by 10.194.78.148 with SMTP id b20mr17886954wjx.71.1455968302782;
+        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
+        by smtp.gmail.com with ESMTPSA id u9sm11761244wmd.4.2016.02.20.03.38.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 10:34:16 -0800 (PST)
-Date: Mon, 22 Feb 2016 00:04:50 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Sat, 20 Feb 2016 03:38:22 -0800 (PST)
+Date: Sat, 20 Feb 2016 12:38:20 +0100
+From: Laura Garcia Liebana <nevola@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/4] staging: rtl8723au: hal: Use macro DIV_ROUND_UP
-Message-ID: <20160221183449.GA3380@Karyakshetra>
+Subject: [PATCH v3] staging: nvec: Fix alignment with the open parenthesis
+Message-ID: <20160220113817.GA6696@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
-@@
-expression e1;
-expression e2;
-@@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
+Alignment should match open parenthesis. Checkpatch detected these
+issues.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
 ---
- drivers/staging/rtl8723au/hal/usb_halinit.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Changes in v2:
+	- Code indent should use tabs where possible
+Changes in v3:
+	- No space is necessary after a cast
 
-diff --git a/drivers/staging/rtl8723au/hal/usb_halinit.c b/drivers/staging/rtl8723au/hal/usb_halinit.c
-index 3c2d03e..fa47aeb 100644
---- a/drivers/staging/rtl8723au/hal/usb_halinit.c
-+++ b/drivers/staging/rtl8723au/hal/usb_halinit.c
-@@ -736,8 +736,7 @@ int rtl8723au_hal_init(struct rtw_adapter *Adapter)
+ drivers/staging/nvec/nvec.c | 35 +++++++++++++++++++----------------
+ 1 file changed, 19 insertions(+), 16 deletions(-)
 
- 	rtl8723a_InitHalDm(Adapter);
-
--	val8 = (WiFiNavUpperUs + HAL_8723A_NAV_UPPER_UNIT - 1) /
--		HAL_8723A_NAV_UPPER_UNIT;
-+	val8 = DIV_ROUND_UP(WiFiNavUpperUs, HAL_8723A_NAV_UPPER_UNIT);
- 	rtl8723au_write8(Adapter, REG_NAV_UPPER, val8);
-
- 	/*  2011/03/09 MH debug only, UMC-B cut pass 2500 S5 test, but we need to fin root cause. */
---
-2.1.4
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index bdea8fa..c335ae2 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -148,7 +148,7 @@ static int nvec_status_notifier(struct notifier_block *nb,
+ 
+ 	dev_warn(nvec->dev, "unhandled msg type %ld\n", event_type);
+ 	print_hex_dump(KERN_WARNING, "payload: ", DUMP_PREFIX_NONE, 16, 1,
+-		msg, msg[1] + 2, true);
++		       msg, msg[1] + 2, true);
+ 
+ 	return NOTIFY_OK;
+ }
+@@ -257,7 +257,7 @@ static void nvec_gpio_set_value(struct nvec_chip *nvec, int value)
+  * occurred, the nvec driver may print an error.
+  */
+ int nvec_write_async(struct nvec_chip *nvec, const unsigned char *data,
+-			short size)
++		     short size)
+ {
+ 	struct nvec_msg *msg;
+ 	unsigned long flags;
+@@ -313,10 +313,11 @@ int nvec_write_sync(struct nvec_chip *nvec,
+ 	}
+ 
+ 	dev_dbg(nvec->dev, "nvec_sync_write: 0x%04x\n",
+-					nvec->sync_write_pending);
++		nvec->sync_write_pending);
+ 	if (!(wait_for_completion_timeout(&nvec->sync_write,
+-				msecs_to_jiffies(2000)))) {
+-		dev_warn(nvec->dev, "timeout waiting for sync write to complete\n");
++					  msecs_to_jiffies(2000)))) {
++		dev_warn(nvec->dev,
++			 "timeout waiting for sync write to complete\n");
+ 		mutex_unlock(&nvec->sync_write_mutex);
+ 		return -ETIMEDOUT;
+ 	}
+@@ -422,8 +423,8 @@ static int parse_msg(struct nvec_chip *nvec, struct nvec_msg *msg)
+ 
+ 	if ((msg->data[0] >> 7) == 1 && (msg->data[0] & 0x0f) == 5)
+ 		print_hex_dump(KERN_WARNING, "ec system event ",
+-				DUMP_PREFIX_NONE, 16, 1, msg->data,
+-				msg->data[1] + 2, true);
++			       DUMP_PREFIX_NONE, 16, 1, msg->data,
++			       msg->data[1] + 2, true);
+ 
+ 	atomic_notifier_call_chain(&nvec->notifier_list, msg->data[0] & 0x8f,
+ 				   msg->data);
+@@ -493,8 +494,8 @@ static void nvec_rx_completed(struct nvec_chip *nvec)
+ {
+ 	if (nvec->rx->pos != nvec_msg_size(nvec->rx)) {
+ 		dev_err(nvec->dev, "RX incomplete: Expected %u bytes, got %u\n",
+-			   (uint) nvec_msg_size(nvec->rx),
+-			   (uint) nvec->rx->pos);
++			(uint)nvec_msg_size(nvec->rx),
++			(uint)nvec->rx->pos);
+ 
+ 		nvec_msg_free(nvec, nvec->rx);
+ 		nvec->state = 0;
+@@ -688,8 +689,8 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
+ 	if ((status & (RCVD | RNW)) == RCVD) {
+ 		if (received != nvec->i2c_addr)
+ 			dev_err(nvec->dev,
+-			"received address 0x%02x, expected 0x%02x\n",
+-			received, nvec->i2c_addr);
++				"received address 0x%02x, expected 0x%02x\n",
++				received, nvec->i2c_addr);
+ 		nvec->state = 1;
+ 	}
+ 
+@@ -778,7 +779,7 @@ static int nvec_i2c_parse_dt_pdata(struct nvec_chip *nvec)
+ 	}
+ 
+ 	if (of_property_read_u32(nvec->dev->of_node, "slave-addr",
+-				&nvec->i2c_addr)) {
++				 &nvec->i2c_addr)) {
+ 		dev_err(nvec->dev, "no i2c address specified");
+ 		return -ENODEV;
+ 	}
+@@ -854,14 +855,14 @@ static int tegra_nvec_probe(struct platform_device *pdev)
+ 	INIT_WORK(&nvec->tx_work, nvec_request_master);
+ 
+ 	err = devm_gpio_request_one(&pdev->dev, nvec->gpio, GPIOF_OUT_INIT_HIGH,
+-					"nvec gpio");
++				    "nvec gpio");
+ 	if (err < 0) {
+ 		dev_err(nvec->dev, "couldn't request gpio\n");
+ 		return -ENODEV;
+ 	}
+ 
+ 	err = devm_request_irq(&pdev->dev, nvec->irq, nvec_interrupt, 0,
+-				"nvec", nvec);
++			       "nvec", nvec);
+ 	if (err) {
+ 		dev_err(nvec->dev, "couldn't request irq\n");
+ 		return -ENODEV;
+@@ -883,8 +884,10 @@ static int tegra_nvec_probe(struct platform_device *pdev)
+ 	err = nvec_write_sync(nvec, get_firmware_version, 2, &msg);
+ 
+ 	if (!err) {
+-		dev_warn(nvec->dev, "ec firmware version %02x.%02x.%02x / %02x\n",
+-			msg->data[4], msg->data[5], msg->data[6], msg->data[7]);
++		dev_warn(nvec->dev,
++			 "ec firmware version %02x.%02x.%02x / %02x\n",
++			 msg->data[4], msg->data[5],
++			 msg->data[6], msg->data[7]);
+ 
+ 		nvec_msg_free(nvec, msg);
+ 	}
+-- 
+2.7.0
 
 
