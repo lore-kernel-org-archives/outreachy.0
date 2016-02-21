@@ -1,82 +1,120 @@
-X-GM-THRID: 6394405934540521472
-X-Received: by 10.107.181.129 with SMTP id e123mr6149176iof.17.1488813649983;
-        Mon, 06 Mar 2017 07:20:49 -0800 (PST)
+X-GM-THRID: 6253831974637535232
+X-Received: by 10.66.55.4 with SMTP id n4mr23495633pap.22.1456083723893;
+        Sun, 21 Feb 2016 11:42:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.145.4 with SMTP id t4ls2164867iod.44.gmail; Mon, 06 Mar
- 2017 07:20:49 -0800 (PST)
-X-Received: by 10.98.92.2 with SMTP id q2mr3943407pfb.21.1488813649038;
-        Mon, 06 Mar 2017 07:20:49 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 207si70104pfu.8.2017.03.06.07.20.49
+Received: by 10.50.150.74 with SMTP id ug10ls435822igb.42.gmail; Sun, 21 Feb
+ 2016 11:42:03 -0800 (PST)
+X-Received: by 10.107.9.213 with SMTP id 82mr6038686ioj.10.1456083723519;
+        Sun, 21 Feb 2016 11:42:03 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
+        by gmr-mx.google.com with ESMTPS id 79si2719035pft.0.2016.02.21.11.42.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 07:20:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sun, 21 Feb 2016 11:42:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 77so7299401pgc.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 07:20:49 -0800 (PST)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22b.google.com with SMTP id c10so82880868pfc.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 11:42:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=h/YPgX+iiWwWecGg4ocaGjRWbglSA1uPgN5JOxV+tI0=;
-        b=olgCkNAGTbm8pDiRnb5PfcBCjby8+odgUzdHIbwFTdn3o1CV+sY05493rxoenROMaw
-         uqUlPV7Is9mziZu/wCqZ2d75SzeFUMU2vycycsTmfw2CHQLTm5Ssn2R2SV93ANYFJ+H1
-         iyWVwrFechDfI7CcF5wic8zxyT3xxhCZCOEEXGoC9QQ6WJBVap8nJl80WOr2BImIu/sE
-         Z4nXSiDE/x3yfjKbzTPoYGUcntmi29PEI/WfqzNXzafgjYW6QdirPagqDAOzs4zsnIKe
-         JrQJLhtqmhsivLSepmvqzpmP6DccmzbYaQrBG3p0I94tdPx8PV0uZQSf/Q4+00f5Rr44
-         QyUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=h/YPgX+iiWwWecGg4ocaGjRWbglSA1uPgN5JOxV+tI0=;
-        b=o/AUGtTQaupo0FB95Y0PVUQbxoyHtuVnhHCNtfT5MIhPIi0itYAKCaTuzQR4IzDVC6
-         hUH04fkwTZs/n0uAORjy9TrqXIdIzD895UP1n/VIWLHOr8mJ7KDA2ygu8zIq5JnJDuoq
-         /TAubZ2QSKGBzqbPj98rBIF6UKe2GzlJlE3oBKf8pHX4qXhDbDq/5dyEfWxy2Gi3JA+P
-         tXoJbYXwRFjqkPhYW5fqUpCs8cAYbzXluyHtvyAJqEYmYMsgLxbEcBMVSxSj2xkkcgJa
-         q33Dd/Sd3vIDxrp1C6NJrR6XXir/G1jx82e84LXwRnNEaa9qym7aa9Bhm1ZMt+iSLQ8Y
-         5VaQ==
-X-Gm-Message-State: AMke39meWiWjWOuHVXw6hWSoCY29Ilf+9qgsXr7SetE0cP9331vBlmlQM1zB97DbemjGUA==
-X-Received: by 10.84.172.1 with SMTP id m1mr26717796plb.5.1488813648836;
-        Mon, 06 Mar 2017 07:20:48 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([106.51.134.163])
-        by smtp.gmail.com with ESMTPSA id c195sm40324205pfb.60.2017.03.06.07.20.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 07:20:48 -0800 (PST)
-Date: Mon, 6 Mar 2017 20:50:33 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: bcm2835-camera: remove function get_msg_context
-Message-ID: <cover.1488813479.git.aishpant@gmail.com>
+        bh=F58/7CaLNX1lRN2njxlWUyqEORZx/wyfcOnpc9m/Zq8=;
+        b=AH+UINkWlqwGqZD/m51pBHtYrFDlA/4H1hAxBvud0T3t2PJxq5GB1x2qk8XAQ1gz4i
+         j7aXm7jSkwtgOKLXBBp/HbK/R/1lT2WVVB0cLt5YRxwrhVgIrlYJlUOJEEseeBZXoYrw
+         cOroEQMIgJoAMCQxIAztIswFmstz4+cap47bpr2vHCEj9K5GmgI6t3sjtNjxphf76Op8
+         Z0VY0IAsDYNaOUgmEAmW9o5GDGUhVTWeV7qiC65e3z+82Siy6IEVGZjj5m8PD/bOVWHs
+         lWv9wKmqQ02HOIGCWhiwoC+lOFAly87cZgfsDBkvhu5gHC3FsJH//S/U+v8ZnxuDA5cv
+         8pPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=F58/7CaLNX1lRN2njxlWUyqEORZx/wyfcOnpc9m/Zq8=;
+        b=UCooknH6C1GY3hHCildIfVq/4rQHn0bIXjSU8rSvFEi1j7hS9kUkzJrAOMtm3Oyy7v
+         PncW/cyRETcqXpq5iaOAXxS/rYKU859tZLZ5nKtVT+cCbc3D8tlkiv4BXzGXcig0mP8m
+         wPRPW2XXvgp7G2L/mrVZfW5RGTd+QUrUxhfX5mUSkRpDzg8EOBEwHSweGZi3uhTyyGjo
+         FSVyEx/N/3nknU8asaCIBZJEJdtwza16BS5mqGRTpVackZHkjwZ/oZB/3p6Xe7Ed/Gzb
+         lwFXQJZ9rDocUTlbisojaQw0qy92kNAa6WkBTdUG1wMnUWTxnEmOyVFI4emsKsJmW66C
+         3ihQ==
+X-Gm-Message-State: AG10YORrg/31I9oSfErG18cx16XvLzQAt4RMi7oSIwsmfBqhze9QV/A6A6znKf10ZAVvgQ==
+X-Received: by 10.98.67.8 with SMTP id q8mr33132915pfa.133.1456083723376;
+        Sun, 21 Feb 2016 11:42:03 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id 1sm31549508pfm.10.2016.02.21.11.42.02
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 21 Feb 2016 11:42:02 -0800 (PST)
+Date: Mon, 22 Feb 2016 01:12:35 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: lusture: mgc: Bool tests do not need comparison
+Message-ID: <20160221194235.GA4683@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patchset safely replaces function get_msg_context with a memory
-allocation at the caller.
+Bool initializations should use true and false thus bool tests don't
+need an explicit comparison.
 
+This issue was found using the following Coccinelle script:
+@@
+bool x;
+symbol true;
+symbol false;
+@@
 
-Aishwarya Pant (2):
-  staging: bcm2835-camera: replace kmalloc and memset with kzalloc
-  staging: bcm2835-camera: remove redundant function get_msg_context
+(
+- x == true
++ x
+|
+- true == x
++ x
+|
+- x != true
++ !x
+|
+- true != x
++ !x
+|
+- x == false
++ !x
+|
+- false == x
++ !x
+|
+- x != false
++ x
+|
+- false != x
++ x
+)
 
- .../staging/vc04_services/bcm2835-camera/mmal-vchiq.c    | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ drivers/staging/lustre/lustre/mgc/mgc_request.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
--- 
-2.7.4
+diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+index 9764e57..e12ad39 100644
+--- a/drivers/staging/lustre/lustre/mgc/mgc_request.c
++++ b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+@@ -1378,7 +1378,7 @@ again:
+ 	eof = res->mcr_offset == res->mcr_size;
+
+ 	CDEBUG(D_INFO, "Latest version %lld, more %d.\n",
+-	       res->mcr_offset, eof == false);
++	       res->mcr_offset, !eof);
+
+ 	ealen = sptlrpc_cli_unwrap_bulk_read(req, req->rq_bulk, 0);
+ 	if (ealen < 0) {
+--
+2.1.4
 
 
