@@ -1,111 +1,91 @@
-X-GM-THRID: 6886423136117456896
-X-Received: by 2002:a2e:989a:: with SMTP id b26mr826670ljj.276.1603370331714;
-        Thu, 22 Oct 2020 05:38:51 -0700 (PDT)
+X-GM-THRID: 6253787292670885888
+X-Received: by 10.129.90.84 with SMTP id o81mr17493434ywb.37.1456073320639;
+        Sun, 21 Feb 2016 08:48:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:7313:: with SMTP id o19ls297190ljc.11.gmail; Thu, 22 Oct
- 2020 05:38:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjmcN8drl4R4G350zNUFbTQ0xWF5Ew0S1YqiHSl27uhV20aUZjz6/brUwk6Cm8uor8op7E
-X-Received: by 2002:a2e:97c5:: with SMTP id m5mr998991ljj.22.1603370329610;
-        Thu, 22 Oct 2020 05:38:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603370329; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qmsB9Anf+mo7/pOcLvk087o4qyf8N3b/hCKWs8zqaH64GX9i9kpf99yxPJKZ+GkpWu
-         TNAXKu/YuCwi+RMaSZvpxZjLR3+RfSHfCiHwoNVkQkduimnhG02rJB7UjoK7wfOMWUt5
-         orzQVS1dnJNrt8umlDJAqB/wU/VfjaIWUPTryvTecdaD2OZCB64hCOhv5UrvAby5wo7V
-         oDtXQc4O8Fg4kAEn1m6sHOV8R1vYVci9hwmNuAroxjDCPjPq0UQHD0bcTA9HIfD+ykTR
-         MlBAwhzR+HVBVkrn6YP3ooz0BAiIWsfTvgyL8GXv15JczL7BuQDhkHs+xYGsTzj9+jd2
-         XDHw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=oiRF2TVvC2JKxZjhWhHlnAiwNuh4ArQq7xIf42QtBeY=;
-        b=F4tSvqnLfPKgfYw31zsCx1RtOgEOtglX9Vj/Egdsi7v9rrv6cDdIUP2vODSbYCb/7A
-         epK7POtsynl98aVWpJ52n+/pAGsnZN+nU1NitXKagQmDNMhCqlQ46az2xJirtDMT78n3
-         XQAh1Bo5AJG1PYvWzp6K7X8bmx3VTWdhRA35iBb0q/HFjydKLl/GF8KMpMT7P/KFcnYa
-         tQ2vRC3mIr4j/XPrRXjrGFmszP9C9iJW28yQpT83e8oOml5KXTs1z2Li5Lku/rx0FNIX
-         DWKXot3lLF3KL6c71E/iNPuN0H2toiGuruggq/+SGQx67PzV7j7rjIH+v/g9LQCbavgI
-         KUnA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oeKXu2zW;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <eafanasova@gmail.com>
-Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
-        by gmr-mx.google.com with ESMTPS id e1si77475ljg.6.2020.10.22.05.38.49
+Received: by 10.140.99.19 with SMTP id p19ls1074990qge.24.gmail; Sun, 21 Feb
+ 2016 08:48:39 -0800 (PST)
+X-Received: by 10.129.92.65 with SMTP id q62mr22613764ywb.19.1456073319857;
+        Sun, 21 Feb 2016 08:48:39 -0800 (PST)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
+        by gmr-mx.google.com with ESMTPS id 79si2664982pft.0.2016.02.21.08.48.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 05:38:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 21 Feb 2016 08:48:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oeKXu2zW;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x241.google.com with SMTP id 23so1741672ljv.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 05:38:49 -0700 (PDT)
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22e.google.com with SMTP id c10so81555710pfc.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 08:48:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=oiRF2TVvC2JKxZjhWhHlnAiwNuh4ArQq7xIf42QtBeY=;
-        b=oeKXu2zWy4qLY/qcxmuPbxmk5RVDc95obP9hCD4UsUjpjM3NEg7y03p3nagoNOPC5y
-         dm8sYIQEMaETxUJUCsKxpgmgFcVVAxmy3Wv9DzHAZpQj8ljaf1fY1//ZMn4GkV7hMKWr
-         7R/xgpcyNChO5OE/BvDD8+KBGROtmK9d0yfg5gB6T8e2Wyqj8xmmrVFWLqrjcklvRoQm
-         FzWAgNPfUJjJw5AdbMRWE0b20sKD+vGS9b9ELNB7JKX/Hdeu1BJR76UokXN5pnTaZkeh
-         58jXMt3nLGtwf/DT+eXwL9DdElejtrrNt1oejo8M10B4XVUVdoSh5uO+S8NpjVNXnegP
-         MWdA==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=/DFC7od5HzlzmF+1E+dy6YcyRNRq7r5p8QddjYNQ2Hw=;
+        b=kZ3lKOYMc//DVOqtPwYRPDdC91J+0n2lSg0HlyKTK+SZnAn7A70e9WHhsVnl3yhULn
+         5R6XvInEvv52ZSS9qfYs2OuLnfa3LUY/lQdR1A5doyDr7Ooj6CBqWAavepMoQxu1Di2I
+         5S+z67jWJ7b3oGqfrVJ+kkON7jzg3LrsSU1bdjpR2SzQAPAXBNGs/HK5/a6EbhvBBvux
+         zF1zumR9MPYxUSjYyJay6sIiNT25AbVOTkX6NBoEpjZ1aqcrth2EPsg5IMThHubGdGHO
+         6gJgQ5GcrTHHS9zicAPwQhlj/B9ffYDIiqwSdvaX9KqKFI4X+YYradG4lBs6+L0MWLRO
+         kOgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=oiRF2TVvC2JKxZjhWhHlnAiwNuh4ArQq7xIf42QtBeY=;
-        b=hAPDyNp6reQy9F3+e8nQcNCoz2L/QixH/q5BMY75woD1rxo5b1UGhi4xp5Fwlr2wi1
-         2BWA5TUmT8RCGF0mr7x49Ef+bKRk0tNgoykrpXoOslLjJU05PWQmk2P7O67YcpHFqSkn
-         aItReaPJj9oyBCXjV8S2CS0DB/yXBrQ28MV0WnKlAoJ9pUFEpbcv/KjBE3e18/ZDpLM6
-         pAMUj6REZxNP000w4/Zf4EvEiLgtv1AyIOo4A0C4D5OqidA67zIO+KokHIMZHZ098zpu
-         qpB5fgbH83rzZrgQdQKAYoF51dUKjI4ZiRkKxWylPi0YaYauceL0WbFQ1U7DXcMzX237
-         QVag==
-X-Gm-Message-State: AOAM530RGt7EG91mjL/sVzLVnQNf4TeISjimaBVW7Zy56gs640nAqr0Q
-	rwgFuGa6yAVPX+NAO7tGrkU=
-X-Received: by 2002:a2e:b890:: with SMTP id r16mr859706ljp.7.1603370329378;
-        Thu, 22 Oct 2020 05:38:49 -0700 (PDT)
-Return-Path: <eafanasova@gmail.com>
-Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
-        by smtp.gmail.com with ESMTPSA id u26sm261631lfu.13.2020.10.22.05.38.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 05:38:48 -0700 (PDT)
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	outreachy-kernel@googlegroups.com,
-	Elena Afanasova <eafanasova@gmail.com>
-Subject: [PATCH] staging/rtl8192u/ieee80211: remove debugging line
-Date: Thu, 22 Oct 2020 05:35:45 -0700
-Message-Id: <20201022123545.4530-1-eafanasova@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=/DFC7od5HzlzmF+1E+dy6YcyRNRq7r5p8QddjYNQ2Hw=;
+        b=l8O706I22RBQzt028T0qeGql7FDpR/tOWbF2M+Gzg0LjzeAUv72qwIUjI7Ny1OOi8t
+         han3RRuUJlUqMQ9Es4wdFjViBtnrHuSb56T0vYysv1kfiPmRbWBnJ6jDXh20KzxbJ5Oi
+         qQ2sq0HOZq3Vbmg0zWiQvUX1Y8Pj/nwx191PhJ+bcgKJwtjH6b0FbNPMreZdcguPJFc1
+         5wEHuj9ybvRkUzJN+PsBlV3bxUAD9/eyaY3tcfL7q1YIt4mBjlsglJs4ef5ORz3qm+vz
+         9dCo+83R8OnnMuQ7WKXk1IqTqfeR0S3zRe+knp/nHT1Bw0CxYAJZg8oYAVzIQpehr/dc
+         qtyw==
+X-Gm-Message-State: AG10YOQ/+h+MyqJLSBEaIpfoo9uL/7mxTxUWW+V14IyzfL3D+PIKXU8rmC5R9cum2sTCEA==
+X-Received: by 10.98.16.69 with SMTP id y66mr32281484pfi.86.1456073319710;
+        Sun, 21 Feb 2016 08:48:39 -0800 (PST)
+Return-Path: <anchalj109@gmail.com>
+Received: from life-desktop ([182.73.140.109])
+        by smtp.gmail.com with ESMTPSA id 19sm30887451pfb.64.2016.02.21.08.48.38
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Sun, 21 Feb 2016 08:48:39 -0800 (PST)
+Date: Sun, 21 Feb 2016 22:19:05 +0530
+From: Anchal Jain <anchalj109@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: wilc1000: Check for quoted strings broken across
+ lines
+Message-ID: <20160221164855.GA4867@life-desktop>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove unnecessary debug line from rtl8192u_dot11d_init().
+checkpatch warn about quoted strings split across lines.
+So, convert multi-line string into a single line.
 
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+Signed-off-by: Anchal Jain <anchalj109@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/dot11d.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/wilc1000/wilc_spi.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/dot11d.c b/drivers/staging/rtl8192u/ieee80211/dot11d.c
-index f972edcde8a0..ddaf66fa0f93 100644
---- a/drivers/staging/rtl8192u/ieee80211/dot11d.c
-+++ b/drivers/staging/rtl8192u/ieee80211/dot11d.c
-@@ -14,8 +14,6 @@ void rtl8192u_dot11d_init(struct ieee80211_device *ieee)
- 	memset(dot11d_info->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
- 	memset(dot11d_info->max_tx_pwr_dbm_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
- 	RESET_CIE_WATCHDOG(ieee);
--
--	netdev_info(ieee->dev, "%s\n", __func__);
- }
- EXPORT_SYMBOL(rtl8192u_dot11d_init);
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index b55a0c3f..62ac8ee 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -443,8 +443,9 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 	/* } while(&rptr[1] <= &rb[len2]); */
  
+ 	if (rsp != cmd) {
+-		dev_err(&spi->dev, "Failed cmd response, cmd (%02x)"
+-			 ", resp (%02x)\n", cmd, rsp);
++		dev_err(&spi->dev,
++			"Failed cmd response, cmd (%02x), resp (%02x)\n",
++			cmd, rsp);
+ 		result = N_FAIL;
+ 		return result;
+ 	}
 -- 
-2.25.1
+1.9.1
 
 
