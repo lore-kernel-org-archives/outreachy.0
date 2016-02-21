@@ -1,81 +1,195 @@
-X-GM-THRID: 6211848110738505728
-X-Received: by 10.50.176.129 with SMTP id ci1mr3478741igc.12.1446308593137;
-        Sat, 31 Oct 2015 09:23:13 -0700 (PDT)
+X-GM-THRID: 6253707231891554304
+X-Received: by 10.25.170.7 with SMTP id t7mr2819835lfe.2.1456062900716;
+        Sun, 21 Feb 2016 05:55:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.138.76 with SMTP id qo12ls467730igb.10.canary; Sat, 31 Oct
- 2015 09:23:12 -0700 (PDT)
-X-Received: by 10.107.136.19 with SMTP id k19mr12301516iod.5.1446308592497;
-        Sat, 31 Oct 2015 09:23:12 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id vy6si1230391pbc.1.2015.10.31.09.23.12
+Received: by 10.25.83.13 with SMTP id h13ls250762lfb.51.gmail; Sun, 21 Feb
+ 2016 05:54:59 -0800 (PST)
+X-Received: by 10.112.168.201 with SMTP id zy9mr2820525lbb.23.1456062899951;
+        Sun, 21 Feb 2016 05:54:59 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e130si764732wme.2.2016.02.21.05.54.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 09:23:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 21 Feb 2016 05:54:59 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id z6so103255835pas.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 09:23:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=fWmb2ih5CC5rp4uSTAsYiCM6uUJEek/k/xEqNNd4iBg=;
-        b=JOAznwmxK0Izxgvk4/m94qbQr3T5dL9bxbYmkPw4y9rbf4QDoj6sUyx+bYGFPDwKqj
-         qUhBl5/N1pO2t7lpk6f/axvRM3OY8pLQj7p0Hp7PF+HY7wX4KFNFqGCq7NWykhUMxkt5
-         LBeoLXIvnfX3mkwPO5ZuoEYtcwNEEG3EZJEH+Y58MhKfKcT/jG6IykDnH/wO1H893n/x
-         nnMe7krx+EBmv62ynNWIFQkFCI1/1FcRP4MiXvhOjBAhp5BplF6EZGBkTXmb2QBCuKMn
-         kiEKWkyOak0diWnbhSllWNTHfr/jA6q2oOoDXDUJr6RxVIDgkqf8vqjihXyj6yAigyKz
-         UxBA==
-X-Received: by 10.68.179.101 with SMTP id df5mr15738731pbc.73.1446308592364;
-        Sat, 31 Oct 2015 09:23:12 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id xs2sm14635714pbb.75.2015.10.31.09.23.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 31 Oct 2015 09:23:11 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: wlan-ng: Remove unused function declaration
-Date: Sat, 31 Oct 2015 21:53:03 +0530
-Message-Id: <1446308583-3097-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150205.5634EAEF.003C,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,480,1449529200"; 
+   d="scan'208";a="165445161"
+Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2016 14:54:58 +0100
+Date: Sun, 21 Feb 2016 08:54:56 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: fbtft: Prefer using
+ kmalloc_array
+In-Reply-To: <CAFNHFT9kXBxJbFKapk+-mQNx2-pgnYqwfokM0-00Lqw0pk6Low@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1602210852300.4210@hadrien>
+References: <20160221113832.GA28242@Karyakshetra> <alpine.DEB.2.10.1602210722520.2782@hadrien> <CAFNHFT9kXBxJbFKapk+-mQNx2-pgnYqwfokM0-00Lqw0pk6Low@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1364832899-1456062899=:4210"
 
-Function p80211wext_event_associated has been declared but not used.
-Thus remove the declaration.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/wlan-ng/p80211netdev.h | 1 -
- 1 file changed, 1 deletion(-)
+--8323329-1364832899-1456062899=:4210
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/wlan-ng/p80211netdev.h b/drivers/staging/wlan-ng/p80211netdev.h
-index c547e1c..810ee68 100644
---- a/drivers/staging/wlan-ng/p80211netdev.h
-+++ b/drivers/staging/wlan-ng/p80211netdev.h
-@@ -141,7 +141,6 @@ typedef struct p80211_frmrx_t {
- struct iw_statistics *p80211wext_get_wireless_stats(netdevice_t *dev);
- /* wireless extensions' ioctls */
- extern struct iw_handler_def p80211wext_handler_def;
--int p80211wext_event_associated(struct wlandevice *wlandev, int assoc);
- 
- /* WEP stuff */
- #define NUM_WEPKEYS 4
--- 
-2.1.4
+On Sun, 21 Feb 2016, Bhaktipriya Shridhar wrote:
 
+> Hello Julia,
+>
+> Thank you for your feedback.  I'll send a v2 for this patch.
+> Do you recommend going for the following semantic patch?
+>
+>  It is preserving the format of the original file and is not introducing
+> any  80 character violations.
+>
+>
+> @@
+> expression e1, e2;
+> constant C;
+> type t;
+> @@
+> (
+> - kmalloc(
+> + kmalloc_array(
+> e1
+> - *
+> + ,
+> sizeof(e1), C)
+
+I think you mean e2 here?
+
+In general, the thing that you want to avoid transforming is the case
+where the non-sizeof expression is a constant.  So you can make a separate
+element of the disjunction, and put it at the beginning with no
+transformation annotation.  Coccinelle takes the elements of a
+disjunction in order, so if you have a pattern that comes early with no
+transformation on it, then no transformation will happen in that case.
+
+julia
+
+> |
+> - kmalloc(
+> + kmalloc_array(
+> e2
+> - *
+> + ,
+> sizeof(t), C)
+> |
+> - kmalloc(
+> + kmalloc_array(
+> - sizeof(e1)
+> - *
+> e2
+> + ,
+> + sizeof(e1)
+> , C)
+> |
+> - kmalloc(
+> + kmalloc_array(
+> - sizeof(e1)
+> - *
+> e2
+> + ,
+> + sizeof(t)
+> , C)
+> )
+>
+> On Sun, Feb 21, 2016 at 5:53 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>       On Sun, 21 Feb 2016, Bhaktipriya Shridhar wrote:
+>
+>       > Use kmalloc_array instead of kmalloc for arrays to prevent
+>       integer
+>       > overflows.
+>       > This was done using Coccinelle:
+>       > @@
+>       > expression e1, e2;
+>       > constant C;
+>       > type t;
+>       > @@
+>       > (
+>       > - kmalloc(sizeof(e1)*e2, C)
+>       > + kmalloc_array(e2, sizeof(e1), C)
+>       > |
+>       > - kmalloc(e2*sizeof(e1), C)
+>       > + kmalloc_array(e2, sizeof(e1), C)
+>       > |
+>       > - kmalloc(e2*sizeof(t), C)
+>       > + kmalloc_array(e2, sizeof(t), C)
+>       > |
+>       > - kmalloc(sizeof(t)*e2, C)
+>       > + kmalloc_array(e2, sizeof(t), C)
+>       > )
+>       >
+>       > Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+>       > ---
+>       >  drivers/staging/fbtft/fb_agm1264k-fl.c | 5 +++--
+>       >  1 file changed, 3 insertions(+), 2 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c
+>       b/drivers/staging/fbtft/fb_agm1264k-fl.c
+>       > index 2a50cf9..5fbfd50 100644
+>       > --- a/drivers/staging/fbtft/fb_agm1264k-fl.c
+>       > +++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+>       > @@ -272,8 +272,9 @@ static int write_vmem(struct fbtft_par
+>       *par, size_t offset, size_t len)
+>       >       int ret = 0;
+>       >
+>       >       /* buffer to convert RGB565 -> grayscale16 -> Dithered
+>       image 1bpp */
+>       > -     signed short *convert_buf = kmalloc(par->info->var.xres
+>       *
+>       > -             par->info->var.yres * sizeof(signed short),
+>       GFP_NOIO);
+>       > +     signed short *convert_buf =
+>       kmalloc_array(par->info->var.xres * par->info->var.yres,
+>       > +                                               sizeof(signed
+>       short),
+>       > +                                               GFP_NOIO);
+>
+>       You should adjust the output of Coccinelle so as to not
+>       introduce 80
+>       character violations.
+>
+>       julia
+>
+>       >
+>       >       if (!convert_buf)
+>       >               return -ENOMEM;
+>       > --
+>       > 2.1.4
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an email to
+>       outreachy-kernel+unsubscribe@googlegroups.com.
+>       > To post to this group, send email to
+>       outreachy-kernel@googlegroups.com.
+>       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20160221113832.GA28242%4
+>       0Karyakshetra.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAFNHFT9kXBxJbFKapk%2B-m
+> QNx2-pgnYqwfokM0-00Lqw0pk6Low%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1364832899-1456062899=:4210--
 
