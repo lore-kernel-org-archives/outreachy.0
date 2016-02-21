@@ -1,96 +1,108 @@
 X-GM-THRID: 6253706030519156736
-X-Received: by 10.112.189.104 with SMTP id gh8mr2747436lbc.12.1456057507777;
-        Sun, 21 Feb 2016 04:25:07 -0800 (PST)
+X-Received: by 10.107.12.99 with SMTP id w96mr23229327ioi.5.1456054400640;
+        Sun, 21 Feb 2016 03:33:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.21.70 with SMTP id l67ls247648lfi.3.gmail; Sun, 21 Feb 2016
- 04:25:07 -0800 (PST)
-X-Received: by 10.112.157.164 with SMTP id wn4mr2801114lbb.5.1456057507266;
-        Sun, 21 Feb 2016 04:25:07 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id c143si815330wmd.1.2016.02.21.04.25.07
+Received: by 10.50.108.20 with SMTP id hg20ls324275igb.39.canary; Sun, 21 Feb
+ 2016 03:33:20 -0800 (PST)
+X-Received: by 10.98.42.67 with SMTP id q64mr17815840pfq.9.1456054400367;
+        Sun, 21 Feb 2016 03:33:20 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id ff2si2795470pad.2.2016.02.21.03.33.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 04:25:07 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 21 Feb 2016 03:33:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,480,1449529200"; 
-   d="scan'208";a="165441102"
-Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2016 13:25:05 +0100
-Date: Sun, 21 Feb 2016 07:25:03 -0500 (EST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192u: Prefer using
- kmalloc_array
-In-Reply-To: <20160221113352.GA28141@Karyakshetra>
-Message-ID: <alpine.DEB.2.10.1602210724210.2782@hadrien>
-References: <20160221113352.GA28141@Karyakshetra>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22a.google.com with SMTP id fl4so75485182pad.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 03:33:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=gcGpAiZH2MKw9kU8+Ayl9ntymUh2EZ9xyLyO5b25+Bc=;
+        b=i02EZ9kjvdT1uMPyaY+Q8GDDTkwzwwMUn69nJAEAnvfK5PqEnZxIqYmYStHcf2hbl1
+         PEJqEzElMSekBQ8SdMI9OTAubnWj6FHnGbO3i64KyOCtTAJZ9J9W7+JuZ0Rex9oYdr1J
+         bbh+W4lKQsoSehdZ3Fjn5eGFg9WRdL13KSd8oPvOjs4m8oYOkYP/seJvO8Wi6cQ6MeOT
+         f7m9un52x9Eww50eL545Fv38MU6tu5h40Z4zb+jWva/8s//HZEE8n6fCoXVNTGesglaG
+         gOyasxXdOGM+fWuhR+bBu4M8BQ6nhZeYyZDo0zcIrUtDbzq9Rwm01av8fpmqaZI2qyE8
+         5t3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=gcGpAiZH2MKw9kU8+Ayl9ntymUh2EZ9xyLyO5b25+Bc=;
+        b=k4Vu1t/VDiX5EgBqeeJnbhse7uTecFi4fFePt7pPF3xoyWVjVp5yW5GqJnIwlfIIIP
+         7VLLGIZgf248wx7R1BLNuYSKv/VjCMkX4rlivC+kstPs3w2m5BLFkAI96y0m0RMOVGqO
+         7rZLILiMFKtGljmHaYF+X1vg6oAyHqEfwM3VGfLPMk1BpR67qmLylYtGe3Uh5C0h/U5H
+         osjGEOIooOo+EkB6YmKU3UoLdQ1xl8XYnF98MT/nyaGrkZ0sWWgLmOxmpuk/TuK2uvZU
+         6uiPH0dHR3ZecMVm4WEL8bgq+CJ3qLaKjNitPiE692NVAngYqJWPKIhN1lgcIojcbMM1
+         4W6A==
+X-Gm-Message-State: AG10YORjj6Wn0R9urh/MAdwyIcukgPj7Vbk77id/hFA0aaH66mRC1Bafds/pd7ckkpFZaw==
+X-Received: by 10.66.220.7 with SMTP id ps7mr30908846pac.58.1456054400254;
+        Sun, 21 Feb 2016 03:33:20 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id t87sm29625678pfa.14.2016.02.21.03.33.19
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 21 Feb 2016 03:33:19 -0800 (PST)
+Date: Sun, 21 Feb 2016 17:03:52 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8192u: Prefer using kmalloc_array
+Message-ID: <20160221113352.GA28141@Karyakshetra>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Sun, 21 Feb 2016, Bhaktipriya Shridhar wrote:
+Use kmalloc_array instead of kmalloc for arrays to prevent integer
+overflows.
+This was done using Coccinelle:
+@@
+expression e1, e2;
+constant C;
+type t;
+@@
+(
+- kmalloc(sizeof(e1)*e2, C)
++ kmalloc_array(e2, sizeof(e1), C)
+|
+- kmalloc(e2*sizeof(e1), C)
++ kmalloc_array(e2, sizeof(e1), C)
+|
+- kmalloc(e2*sizeof(t), C)
++ kmalloc_array(e2, sizeof(t), C)
+|
+- kmalloc(sizeof(t)*e2, C)
++ kmalloc_array(e2, sizeof(t), C)
+)
 
-> Use kmalloc_array instead of kmalloc for arrays to prevent integer
-> overflows.
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-No integer overflow is possible here, because the values involved are
-small constants.  Greg has preferred to keep kmalloc in this case.
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 3a93218..9d1b84c 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -1730,8 +1730,8 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
 
-julia
+-	priv->rx_urb = kmalloc(sizeof(struct urb *) * (MAX_RX_URB + 1),
+-			       GFP_KERNEL);
++	priv->rx_urb = kmalloc_array((MAX_RX_URB + 1), sizeof(struct urb *),
++				     GFP_KERNEL);
+ 	if (priv->rx_urb == NULL)
+ 		return -ENOMEM;
 
-> This was done using Coccinelle:
-> @@
-> expression e1, e2;
-> constant C;
-> type t;
-> @@
-> (
-> - kmalloc(sizeof(e1)*e2, C)
-> + kmalloc_array(e2, sizeof(e1), C)
-> |
-> - kmalloc(e2*sizeof(e1), C)
-> + kmalloc_array(e2, sizeof(e1), C)
-> |
-> - kmalloc(e2*sizeof(t), C)
-> + kmalloc_array(e2, sizeof(t), C)
-> |
-> - kmalloc(sizeof(t)*e2, C)
-> + kmalloc_array(e2, sizeof(t), C)
-> )
->
-> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_core.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-> index 3a93218..9d1b84c 100644
-> --- a/drivers/staging/rtl8192u/r8192U_core.c
-> +++ b/drivers/staging/rtl8192u/r8192U_core.c
-> @@ -1730,8 +1730,8 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
->  {
->  	struct r8192_priv *priv = ieee80211_priv(dev);
->
-> -	priv->rx_urb = kmalloc(sizeof(struct urb *) * (MAX_RX_URB + 1),
-> -			       GFP_KERNEL);
-> +	priv->rx_urb = kmalloc_array((MAX_RX_URB + 1), sizeof(struct urb *),
-> +				     GFP_KERNEL);
->  	if (priv->rx_urb == NULL)
->  		return -ENOMEM;
->
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160221113352.GA28141%40Karyakshetra.
-> For more options, visit https://groups.google.com/d/optout.
->
+--
+2.1.4
+
 
