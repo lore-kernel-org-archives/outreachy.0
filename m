@@ -1,150 +1,131 @@
-X-GM-THRID: 6252664504577949696
-X-Received: by 10.66.182.225 with SMTP id eh1mr7707507pac.24.1455811901972;
-        Thu, 18 Feb 2016 08:11:41 -0800 (PST)
+X-GM-THRID: 6252325247022792704
+X-Received: by 10.13.235.144 with SMTP id u138mr20262414ywe.21.1456031395185;
+        Sat, 20 Feb 2016 21:09:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.196 with SMTP id l4ls223514igx.43.canary; Thu, 18 Feb
- 2016 08:11:41 -0800 (PST)
-X-Received: by 10.107.138.211 with SMTP id c80mr9018618ioj.20.1455811901447;
-        Thu, 18 Feb 2016 08:11:41 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x229.google.com (mail-io0-x229.google.com. [2607:f8b0:4001:c06::229])
-        by gmr-mx.google.com with ESMTPS id mu6si222441igb.1.2016.02.18.08.11.41
+Received: by 10.140.105.228 with SMTP id c91ls1000268qgf.37.gmail; Sat, 20 Feb
+ 2016 21:09:54 -0800 (PST)
+X-Received: by 10.129.116.214 with SMTP id p205mr21636392ywc.55.1456031394413;
+        Sat, 20 Feb 2016 21:09:54 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-oi0-x230.google.com (mail-oi0-x230.google.com. [2607:f8b0:4003:c06::230])
+        by gmr-mx.google.com with ESMTPS id s20si1468334igr.2.2016.02.20.21.09.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 08:11:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::229 as permitted sender) client-ip=2607:f8b0:4001:c06::229;
+        Sat, 20 Feb 2016 21:09:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) client-ip=2607:f8b0:4003:c06::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x229.google.com with SMTP id z135so78923844iof.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 08:11:41 -0800 (PST)
+Received: by mail-oi0-x230.google.com with SMTP id j125so37151316oih.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 21:09:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=V3EIX5B/qVZg4G3xOcPdPMtMZhH2ssMWgSKkTNKT6jQ=;
-        b=J7xqEoxGCjVF7rPz2D9tlprmLkbS3WAqLFUNLzTuKSGsrHfzpPEy8/6l5qz8dRU/Oj
-         VfHSpd7amoz1sFbpqjYZSOwo2SSDZyHHWdetQQ+7nvYK/irvW5fnw6FItFczTuiQsVDp
-         dPSSPamQeSMRRCUFJv90tNlC5/VB3TjkM2BtKW9dqHrwhznvFQs6/WKueKbHo0p871HD
-         oIDskHotKGmpSSp0tEhEXG4nVRSozhIPXbSw03KcfElSVoWc7GI4kMVnnSoRtW+THFjL
-         HtxZqI4/I0gONGoC85NGifctpzUAAuqXZiEGbGdk7QKcPlba0UIfQ3ByRKgFbRh3xcAy
-         z/kw==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=ukgaQeooYe0audqxudfYhJb1SxU4tKFLLjTRx1tLXl4=;
+        b=Ivg70rkEtJ+66b+sFWvAUqmCgduIEbYucoDBOCpgt6DhzTPnO2dHW/5p7C+AIDxrOF
+         mcqeoKBJmX6T73Y6/f8cb4ru4Hc3x38f8HNA+R6lBZuHA2qYO9Tgsg/g89wj7KZeCPhY
+         KethLX+FgincNcDb/TDJHEbON8an7LQSXP7AeAQhyNKsUBqtpUcEX/XDbc2Gclq79Mza
+         GqtGOCgeMqmax+s/qbiqi1nQtr/odcC4RZ15RA0h7o/rGB/O0ikXomNFeIie9fB1OQeM
+         wgZcu/+7VRAQ9KJwy6lyaXBPwKR03G5aSLmG+2vz2eo/3Q4CS9O4OO61ILs+32+YNCuY
+         qcdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=V3EIX5B/qVZg4G3xOcPdPMtMZhH2ssMWgSKkTNKT6jQ=;
-        b=Eabog0rZrKkruaeexDJsQtYFLa3fBC3zrAlVMUmS36N3bnZzIYVFNgaQojfPpme+k1
-         HLQDKahejDe829PvaIQKJRcrWW9caOye9JSfDODJrlePP8vgePsTRVqmRHDYD54EH0oH
-         px3+agOG4E9EujsqoOdAjksIxy+3ZhVn9+okH3ZBFC7YUqmHYmr/3mtsfwHo+xsKCKvt
-         G3jjK+1AGcDEKy6s5dnNJ+D69Fz2afnqhCILOp+6onB3asamWSMZWcbvkQf3B40IGBpd
-         I82xbeLhcoL3fTegVuMYS/MnflKOO5F02M3CFTl948sM4fKmcbBRVmfelEhlIPco977g
-         a+Tw==
-X-Gm-Message-State: AG10YORRYQXziH6KglWwLWO0zbc+beCWL/1piz+GjBs+SvOLsGCqqi22lHAO6rn9HtjTGg==
-X-Received: by 10.107.153.200 with SMTP id b191mr9800544ioe.54.1455811901301;
-        Thu, 18 Feb 2016 08:11:41 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id hv3sm1583204igb.13.2016.02.18.08.11.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 08:11:40 -0800 (PST)
-Date: Thu, 18 Feb 2016 16:10:55 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: adc: Remove else after return in if statements
-Message-ID: <20160218211055.GA6343@janani-Inspiron-3521>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=ukgaQeooYe0audqxudfYhJb1SxU4tKFLLjTRx1tLXl4=;
+        b=WsTwOn6hu/PjJnJS3MSWFvMQ0pdZPfVa5mcS293/B/gpQvb7NywBXdzbgCn20a1txg
+         M4NKwsH3QrfFpBpR+GEMVJ9wnn+wIHRdGA1H8dJT0fYp2qeo5A+uGOzMwhTNo5KXC17I
+         N+oJa1zzvl5q3hdex+RGMAPNvKcWIE/Vdz+nSHKXz+QWPS5De5gy3cpkoeCSA7nZnMTv
+         NWRmJy2k/2bXYdBmCrdTfYBElhDRd5Pz2k0vOljJY1pTDONMsXoHq45WRsMF4QisUrQB
+         fdRRaj9im4v+BCCtgm6zMm9ov5b5+tyHiKfuDmZKI7lzZuiUy6BVk/3D3b7okfBj1np3
+         DKWg==
+X-Gm-Message-State: AG10YOSqm6gzHP7mEqmtYS8fT8FmAT/91SFzcvlDvQGnvj3zM0GWNEmbUTXd8b23ObOqnY4u/OH242ebKbEmfw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.202.193.10 with SMTP id r10mr17635904oif.126.1456031394128;
+ Sat, 20 Feb 2016 21:09:54 -0800 (PST)
+Received: by 10.157.40.238 with HTTP; Sat, 20 Feb 2016 21:09:54 -0800 (PST)
+In-Reply-To: <20160220232126.GA16317@kroah.com>
+References: <1455732899-17222-1-git-send-email-bhumirks@gmail.com>
+	<alpine.DEB.2.10.1602171837210.4547@hadrien>
+	<CAOH+1jE2Fc=0wGkj=PjTPtY6MK41YP6LxxRKP5DfEEKMXPENtQ@mail.gmail.com>
+	<CAOH+1jGB=EFPMTLiMYfem4dQ2QMR5p5PvsWz3=UJYW=8hQbYdw@mail.gmail.com>
+	<alpine.DEB.2.10.1602180517010.2685@hadrien>
+	<CAOH+1jHq_xXwXRQfXhjqxMw9WW2Pprese+fANi1LchRq=JSz8Q@mail.gmail.com>
+	<20160220232126.GA16317@kroah.com>
+Date: Sun, 21 Feb 2016 10:39:54 +0530
+Message-ID: <CAOH+1jEAaSruQiVtRf+jm2fEkc+akydT-6rNsx7j1WViN5LbvA@mail.gmail.com>
+Subject: Re: Fwd: [Outreachy kernel] [PATCH] Staging: comedi: drivers: Delete
+ double assignment
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-This patch fixes the checkpatch warning that else is not generally
-useful after a break or return.
-Coccinelle patch used:
+On Sun, Feb 21, 2016 at 4:51 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Thu, Feb 18, 2016 at 04:08:43PM +0530, Bhumika Goyal wrote:
+>> On Thu, Feb 18, 2016 at 3:47 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Thu, 18 Feb 2016, Bhumika Goyal wrote:
+>> >
+>> >> On Thu, Feb 18, 2016 at 5:09 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >> >
+>> >> >
+>> >> > On Wed, 17 Feb 2016, Bhumika Goyal wrote:
+>> >> >
+>> >> >> The two assignments here are identical so one can be removed.
+>> >> >> Found using coccinelle:
+>> >> >> @@
+>> >> >> expression i;
+>> >> >> @@
+>> >> >>
+>> >> >> *i = ...;
+>> >> >>  i = ...;
+>> >> >>
+>> >> >> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+>> >> >> ---
+>> >> >>  drivers/staging/comedi/drivers/dt2814.c | 1 -
+>> >> >>  1 file changed, 1 deletion(-)
+>> >> >>
+>> >> >> diff --git a/drivers/staging/comedi/drivers/dt2814.c b/drivers/staging/comedi/drivers/dt2814.c
+>> >> >> index 66705f9..e40ad56 100644
+>> >> >> --- a/drivers/staging/comedi/drivers/dt2814.c
+>> >> >> +++ b/drivers/staging/comedi/drivers/dt2814.c
+>> >> >> @@ -249,7 +249,6 @@ static int dt2814_attach(struct comedi_device *dev, struct comedi_devconfig *it)
+>> >> >>               return -EIO;
+>> >> >>       }
+>> >> >>       i = inb(dev->iobase + DT2814_DATA);
+>> >> >> -     i = inb(dev->iobase + DT2814_DATA);
+>> >> >
+>> >> > Inb reads from the device.  The first call may have a side effect.
+>> >> >
+>> >> > julia
+>> >> >
+>> >>
+>> >> Ok and here the reason might be that both calls are important because
+>> >> suppose the value is not read in first call it can be read in the
+>> >> second call?  Please correct me if I am wrong.
+>> >
+>> > I think that it is possible that reading a value from the device can cause
+>> > the device to perform some activity.
+>> >
+>> > julia
+>> >
+>>
+>> Ok got it.
+>
+> Also, sometimes hardware needs to be read multiple times in order for it
+> to work.  There's lots of code in the kernel to work around hardware
+> issues like this, as that's the job of the kernel.
+>
+> thanks,
+>
+> greg k-h
 
-@rule1@
-expression e1;
-@@
-	if(e1) { ... return ...; }
--	else{
-		...
--	}
+Thanks for explaining. Things are getting clear day by day :D.
 
-@rule2@
-expression e2;
-statement S1;
-@@
-
-	if(e2) { ... return ...; }
--	else
-		S1
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/iio/adc/ad7816.c    | 12 ++++++++----
- drivers/staging/iio/adc/spear_adc.c |  5 ++---
- 2 files changed, 10 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
-index 2226051..5a4fd84 100644
---- a/drivers/staging/iio/adc/ad7816.c
-+++ b/drivers/staging/iio/adc/ad7816.c
-@@ -182,11 +182,13 @@ static ssize_t ad7816_store_channel(struct device *dev,
- 		dev_err(&chip->spi_dev->dev, "Invalid channel id %lu for %s.\n",
- 			data, indio_dev->name);
- 		return -EINVAL;
--	} else if (strcmp(indio_dev->name, "ad7818") == 0 && data > 1) {
-+	}
-+	if (strcmp(indio_dev->name, "ad7818") == 0 && data > 1) {
- 		dev_err(&chip->spi_dev->dev,
- 			"Invalid channel id %lu for ad7818.\n", data);
- 		return -EINVAL;
--	} else if (strcmp(indio_dev->name, "ad7816") == 0 && data > 0) {
-+	}
-+	if (strcmp(indio_dev->name, "ad7816") == 0 && data > 0) {
- 		dev_err(&chip->spi_dev->dev,
- 			"Invalid channel id %lu for ad7816.\n", data);
- 		return -EINVAL;
-@@ -268,7 +270,8 @@ static ssize_t ad7816_show_oti(struct device *dev,
- 	if (chip->channel_id > AD7816_CS_MAX) {
- 		dev_err(dev, "Invalid oti channel id %d.\n", chip->channel_id);
- 		return -EINVAL;
--	} else if (chip->channel_id == 0) {
-+	}
-+	if (chip->channel_id == 0) {
- 		value = AD7816_BOUND_VALUE_MIN +
- 			(chip->oti_data[chip->channel_id] -
- 			AD7816_BOUND_VALUE_BASE);
-@@ -295,7 +298,8 @@ static inline ssize_t ad7816_set_oti(struct device *dev,
- 	if (chip->channel_id > AD7816_CS_MAX) {
- 		dev_err(dev, "Invalid oti channel id %d.\n", chip->channel_id);
- 		return -EINVAL;
--	} else if (chip->channel_id == 0) {
-+	}
-+	if (chip->channel_id == 0) {
- 		if (ret || value < AD7816_BOUND_VALUE_MIN ||
- 		    value > AD7816_BOUND_VALUE_MAX)
- 			return -EINVAL;
-diff --git a/drivers/staging/iio/adc/spear_adc.c b/drivers/staging/iio/adc/spear_adc.c
-index f2c0065..b60e572 100644
---- a/drivers/staging/iio/adc/spear_adc.c
-+++ b/drivers/staging/iio/adc/spear_adc.c
-@@ -118,10 +118,9 @@ static u32 spear_adc_get_average(struct spear_adc_state *st)
- 	if (of_device_is_compatible(st->np, "st,spear600-adc")) {
- 		return __raw_readl(&st->adc_base_spear6xx->average.msb) &
- 			SPEAR_ADC_DATA_MASK;
--	} else {
--		return __raw_readl(&st->adc_base_spear3xx->average) &
--			SPEAR_ADC_DATA_MASK;
- 	}
-+	return __raw_readl(&st->adc_base_spear3xx->average) &
-+			SPEAR_ADC_DATA_MASK;
- }
- 
- static void spear_adc_set_scanrate(struct spear_adc_state *st, u32 rate)
--- 
-2.5.0
-
+Thanks,
+Bhumika
 
