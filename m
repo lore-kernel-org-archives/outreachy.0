@@ -1,108 +1,94 @@
-X-GM-THRID: 6338728031934218240
-X-Received: by 10.13.224.129 with SMTP id j123mr4995305ywe.108.1475850127375;
-        Fri, 07 Oct 2016 07:22:07 -0700 (PDT)
+X-GM-THRID: 6252763365254365184
+X-Received: by 10.31.153.75 with SMTP id b72mr20165979vke.0.1456017127822;
+        Sat, 20 Feb 2016 17:12:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.46.25 with SMTP id q25ls5470868otb.2.gmail; Fri, 07 Oct
- 2016 07:22:07 -0700 (PDT)
-X-Received: by 10.157.33.7 with SMTP id i7mr4380606otb.96.1475850127011;
-        Fri, 07 Oct 2016 07:22:07 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 7si5888569par.0.2016.10.07.07.22.06
+Received: by 10.107.10.141 with SMTP id 13ls497562iok.51.gmail; Sat, 20 Feb
+ 2016 17:12:07 -0800 (PST)
+X-Received: by 10.107.152.10 with SMTP id a10mr22165248ioe.28.1456017127341;
+        Sat, 20 Feb 2016 17:12:07 -0800 (PST)
+Return-Path: <thaissa.falbo@gmail.com>
+Received: from mail-ig0-x230.google.com (mail-ig0-x230.google.com. [2607:f8b0:4001:c05::230])
+        by gmr-mx.google.com with ESMTPS id s20si1402634igr.2.2016.02.20.17.12.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Oct 2016 07:22:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 20 Feb 2016 17:12:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of thaissa.falbo@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) client-ip=2607:f8b0:4001:c05::230;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of thaissa.falbo@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) smtp.mailfrom=thaissa.falbo@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id t25so2941788pfg.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 07:22:06 -0700 (PDT)
+Received: by mail-ig0-x230.google.com with SMTP id 5so60496748igt.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 17:12:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=+k3XAI4wi9ZMr/gqqNxdF3sVZ5ilQpYct9blmYCdRgs=;
-        b=DTSSPMzOoyyHluoqjJOaVSd3PbkqNmErBgMd+MIgNGg5tf2AaN4ZQ4rBjuscWfWf4+
-         n6Y/K6G9VMRBSKxSVXJFEEZNSXNO0eavLhFvUJmWwYZfamSj7vzqF1rGfFPsxsqTn9gK
-         vsrgAvwZEm7L6qPT9WOumEivYuogpg15xLH9GcEnfQNG+91F7gV5iFgwoYzPhw08beZ5
-         9hnXBvKU3eFOE8EOb3Z1Oeff2/XWMy6lCDqE6cws0EuzLFu+FclDIcSvGo3+6dnQd4L9
-         YWSIfLvovSVHS9srSlsPTmFOyr1HW0dzC0kIExyaSoxTyNjFWwgh3OgVtsN5rP9BIlv2
-         2mlQ==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=Dwcr+94BioJvsCuBqGRKYE8bdS+jRYHs/VxvGkSCBjs=;
+        b=vXXUBd2nZCpTHvJsadniOEuap7EoHWTcKiA1ol5seBn/DnYp0w+25C8vqdw5TFfQ5j
+         9fFBZAgP4g6o4Rq+RFCk2l62qk5hQbVgEf3ruLDPaVp5+xLy7yih/o731xydUsPyCJx0
+         Nec0+hNRVdMDzk4ul7FbPTJxQFumYsmwiVVux7sTws9cVPvpAQ+FmhG+iSvLjRXWy5jJ
+         VcbvBbdG3pvkYsXXkb/de0o6HN6/OHixEWmvwuggNwX9H5ORhIhOoHysoZcOIgyDXKSB
+         7LLL/BziU8hpmmAfAr8vuwwtwBlY18qkuy9FPkSdP+A1iz5oiIsZ9MJmR2M0nl9E200n
+         86Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=+k3XAI4wi9ZMr/gqqNxdF3sVZ5ilQpYct9blmYCdRgs=;
-        b=WMCOs3XE+jLqHp59ShkfXq7rDbvzOVuLupJYwj+wy/cBk6SZxOMsfbHcErA7zlrQHV
-         0AkoXYlTAUePkO3hxmsQ9ka27kqloMiWlsm5i1hSUMZfmL5lbXslYrZ9GpMnwyZnW8U0
-         Ic+Z6eKuHdHgCFVWb2UlyhWtV2nLSGZZ5bR7vq3OXjW2f4ECIAipSQBPjKlQHM1e3ysg
-         l9zWw04KWYRbNOTv9LEPEDEjRW3SB7x2m0xMJebBX+3Tondhj+As6jj4P2nUSHzCZAmG
-         NhsRmwHUZZNo5stwYNgizJJ9gWhM7juee78weaBXKemB6Y1J4KqyEzzVaP8ALnVMw7dN
-         ZKAA==
-X-Gm-Message-State: AA6/9Rk0fk44ObIARjQ9cJOM7L0wdRVIFpZYPpvI0kV0RKbTz8FK+Wltq9zJCFIl03YBKA==
-X-Received: by 10.98.139.209 with SMTP id e78mr29449919pfl.100.1475850126404;
-        Fri, 07 Oct 2016 07:22:06 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([223.176.141.5])
-        by smtp.gmail.com with ESMTPSA id xn11sm31507796pac.38.2016.10.07.07.21.39
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Oct 2016 07:22:05 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Fri, 07 Oct 2016 19:51:30 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: fwserial: remove unused function fill_unplug_req
-Date: Fri,  7 Oct 2016 19:51:28 +0530
-Message-Id: <1475850088-14786-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=Dwcr+94BioJvsCuBqGRKYE8bdS+jRYHs/VxvGkSCBjs=;
+        b=Wz9Nyn2pIZZgYu3t89SPx0QJNffJip4XChau7wtlz2z6heAh9RJEZOXYxfiOTHAWuS
+         U/8yMdf/Fwxpj1hFaFhWBCok/JE7FPhoF2Xl/5yQiHQA0S5Vam19976uztAB4zF+DlK/
+         q3KlZxIkQSp/Y8BWK9KS7H8Tu3N7nOkZuS4s3x6C409c1t8FJGLb8EWszAGmqlcLfS2o
+         Sa5WQ3moq/T1zhiMGoYC/dcdSFaxRlNFHA31YneNeS0m+6WapqzfNvPHpKMzbG4MH2aW
+         Yhu5YyO6vv2EaZ7tB5BHiPyAdsuhrRqbFLKfCGIC8jTdh9jUEXlBQldKNjgi4YShzZ6O
+         emcg==
+X-Gm-Message-State: AG10YOTpSuBMahWubxjstVaTyZ+gBWpgYgpWIV+/fKl/bpBXUBRxsJrckqSoXeKEgJPpFLXnmFRQG20at4gHRA==
+MIME-Version: 1.0
+X-Received: by 10.50.28.72 with SMTP id z8mr726250igg.44.1456017127221; Sat,
+ 20 Feb 2016 17:12:07 -0800 (PST)
+Received: by 10.107.164.6 with HTTP; Sat, 20 Feb 2016 17:12:06 -0800 (PST)
+Received: by 10.107.164.6 with HTTP; Sat, 20 Feb 2016 17:12:06 -0800 (PST)
+In-Reply-To: <20160220225532.GA22835@kroah.com>
+References: <cover.1455834014.git.thaissa.falbo@gmail.com>
+	<0449c39d607e37397547a89f096d31f9ab65e7c1.1455834014.git.thaissa.falbo@gmail.com>
+	<20160220225532.GA22835@kroah.com>
+Date: Sat, 20 Feb 2016 23:12:06 -0200
+Message-ID: <CAKqL7ZXKeFnAARu0CyTgU4DYUgecO=82TuGEZm2_pktwnHXTqA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: media: davinci_vpfe:
+ remove ret variable of function
+From: =?UTF-8?Q?Tha=C3=ADssa_Falbo?= <thaissa.falbo@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=089e0158b242a7aff8052c3d67f1
 
-The function fill_unplug_req is not used anywhere in the kernel, so
-remove it. Done using Coccinelle.
+--089e0158b242a7aff8052c3d67f1
+Content-Type: text/plain; charset=UTF-8
 
-@r1@
-identifier func;
-type T;
-@@
-static T func(...)
-{
-...
-}
+Sorry, I'm gonna send a v2 on that! :)
+Em 20/02/2016 20:55, "Greg KH" <gregkh@linuxfoundation.org> escreveu:
 
-@r@
-identifier r1.func;
-@@
-func
+> On Thu, Feb 18, 2016 at 08:35:12PM -0200, Thaissa Falbo wrote:
+> > Signed-off-by: Thaissa Falbo <thaissa.falbo@gmail.com>
+>
+> I can't accept patches without any changelog text at all :(
+>
+>
 
-@delete depends on !r@
-identifier r1.func;
-type r1.T;
-@@
-- static T func(...){...}
+--089e0158b242a7aff8052c3d67f1
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/fwserial/fwserial.c | 6 ------
- 1 file changed, 6 deletions(-)
+<p dir=3D"ltr">Sorry, I&#39;m gonna send a v2 on that! :)</p>
+<div class=3D"gmail_quote">Em 20/02/2016 20:55, &quot;Greg KH&quot; &lt;<a =
+href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&g=
+t; escreveu:<br type=3D"attribution"><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On Thu,=
+ Feb 18, 2016 at 08:35:12PM -0200, Thaissa Falbo wrote:<br>
+&gt; Signed-off-by: Thaissa Falbo &lt;<a href=3D"mailto:thaissa.falbo@gmail=
+.com">thaissa.falbo@gmail.com</a>&gt;<br>
+<br>
+I can&#39;t accept patches without any changelog text at all :(<br>
+<br>
+</blockquote></div>
 
-diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-index 49c718b..41a49c8 100644
---- a/drivers/staging/fwserial/fwserial.c
-+++ b/drivers/staging/fwserial/fwserial.c
-@@ -1667,12 +1667,6 @@ static inline void fill_plug_rsp_nack(struct fwserial_mgmt_pkt *pkt)
- 	pkt->hdr.len = cpu_to_be16(mgmt_pkt_expected_len(pkt->hdr.code));
- }
- 
--static inline void fill_unplug_req(struct fwserial_mgmt_pkt *pkt)
--{
--	pkt->hdr.code = cpu_to_be16(FWSC_VIRT_CABLE_UNPLUG);
--	pkt->hdr.len = cpu_to_be16(mgmt_pkt_expected_len(pkt->hdr.code));
--}
--
- static inline void fill_unplug_rsp_nack(struct fwserial_mgmt_pkt *pkt)
- {
- 	pkt->hdr.code = cpu_to_be16(FWSC_VIRT_CABLE_UNPLUG_RSP | FWSC_RSP_NACK);
--- 
-1.9.1
-
+--089e0158b242a7aff8052c3d67f1--
 
