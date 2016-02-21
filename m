@@ -1,60 +1,60 @@
 X-GM-THRID: 6253815100366389248
-X-Received: by 10.182.58.36 with SMTP id n4mr25894711obq.1.1456144115559;
-        Mon, 22 Feb 2016 04:28:35 -0800 (PST)
+X-Received: by 10.13.221.75 with SMTP id g72mr23938332ywe.34.1456079795015;
+        Sun, 21 Feb 2016 10:36:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.95.43 with SMTP id h40ls1336630qge.39.gmail; Mon, 22 Feb
- 2016 04:28:34 -0800 (PST)
-X-Received: by 10.13.230.148 with SMTP id p142mr25464625ywe.45.1456144114132;
-        Mon, 22 Feb 2016 04:28:34 -0800 (PST)
+Received: by 10.50.43.169 with SMTP id x9ls370259igl.25.canary; Sun, 21 Feb
+ 2016 10:36:34 -0800 (PST)
+X-Received: by 10.50.57.17 with SMTP id e17mr7918231igq.11.1456079794751;
+        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id 12si3068584pfb.1.2016.02.22.04.28.34
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id ff2si2953065pad.2.2016.02.21.10.36.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 04:28:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id c10so95233563pfc.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 04:28:34 -0800 (PST)
+Received: by mail-pa0-x22f.google.com with SMTP id fy10so78244505pac.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 10:36:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=3xP4oa4V0gCfJNL2auJJkgIINtVZbMbsjCOLhUfwl1w=;
-        b=pcFmS43uET8KzqiJgrtiUp/BRsYjnRFz8vxNfYDQ2vLnhvZYwBX0dK93DjDa9oOT67
-         7ad9dN5vD/aD7OJvOGgA1icdwpmosjyuZEjQyXIQSZEn6m4sd1l/ZpOxWHrh99tDCfN/
-         Otj8MAeSWSjmDUBhzj9AM7+QDpX/wSBt6FcrhCZL106BZ2woMD0JMsHXTCpQaO9sC+DO
-         OM217DIkfc3/ag4cnBL+tJHWfGwr1rAQePT8diSaoGOz73zpoLlsMoKHXi4Br3bKqosZ
-         kQLYBMs5Jlz15qdzMWPvaFNCQN8r6MgzKinUbwqiMY6PTbTi6PvgNztIhG6N+J9YVmvB
-         RLPQ==
+        bh=f59AOrTEim1zt1XFqI7kmL61zJ1GiEJk5afWlNcMrms=;
+        b=EuPMbUqIacL+ficYimDytyUr9PquGjIJHdTSnnPSGYDBJ/vFrtOiVw0BX7QYDc2rwn
+         VxYHvwh2eT3+iSheEU4z1NnTBT4oUJACnYuSyFxtG6aAJ87gkq86A9BLchq/4GiM7BI+
+         y1Yq07invhQND23iU8grOCGuGGPqk2vO91JSG67ZdnnbcsWicXNL1+kTy+7TMNV8EhOW
+         gh7rEyghfNt0vtVVS54ZotUfONlQGJNB3BubrfdW1sDtf35hB7eh1vFaKf12eHvvPKAi
+         Gxcz6XWSV3ZzeNchCmvIq1sFi5ucV5G7ZCtRcKNB2UEPEVyzTfVoqGUO0I22lj6MOXDK
+         q/ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=3xP4oa4V0gCfJNL2auJJkgIINtVZbMbsjCOLhUfwl1w=;
-        b=H0XkTOctOVvSStGFgZVif40A8CQJdwr0a/jyfr+1iNUX0fUMGYbBce0hQdkRFA2hb1
-         ajU2PHNysspKEc6DIgKd+G6Rtw4O170P7+SC0fQ79dEVXOK+O+VVikGYadgzLCS7J5tR
-         0bSSMgWR8MzJIvtPinedjwrDtJ/XVHs2AfLbrB6gB8WSyNuiLTGUv+jSiZBaqFu4v1ff
-         I6C19xAVer8l5xvxwyxq072JwQXVKKpqz5N924rW4zgk/0+1BX9otdcZZyv9Y/f+SMbq
-         ylRUZls0LG8usaHp54FSQE/wpZYy34dPrKRfR38W5QaHcGnzycvsefhK5hqZFLUSOr5l
-         rrvw==
-X-Gm-Message-State: AG10YORnMZ5yORGyMlQxTjyAAaNtbnvu6dFBZPLhVhByqOLP/11CmjSz4wz+SSjGfCm+qQ==
-X-Received: by 10.98.73.149 with SMTP id r21mr37885258pfi.140.1456144113992;
-        Mon, 22 Feb 2016 04:28:33 -0800 (PST)
+        bh=f59AOrTEim1zt1XFqI7kmL61zJ1GiEJk5afWlNcMrms=;
+        b=byF7gsY5XSHgo+vmdUNwPL8p/jJcl1zxZIYiPWgII4XQK8Z+OAfm6VThd7zMF7aTCb
+         C/LN+oxbCDZHWEyZ9FT9Bg0PwFU+Nwk+UfFQaEVUwSxsJpe8b4ReYuqBHK+zlMOIr1p2
+         1GcAKLPti0hXFuat1WwmgaAb56GugDhNeqHc+kiLUybH41Z7d55Jhlq2pnoyO6zDMSI2
+         61twed2iFFqwMx4V7zGyQI/C17qaQkcsRNM568rmlo/WhOH7xp2/Pv65LJ38NIIxlWAS
+         bz5CW73sIL7GRyRy0vpZ3o6t1izJzuTqoxDgGotGW93z6qGO1CSautkVB93+/vR6izoD
+         yoiA==
+X-Gm-Message-State: AG10YORtW87pCVOEIEcvl9VarYf4tqo6t/MmEsQxkcWW758YIyJBkT3Xt7ppsJsAQfwotg==
+X-Received: by 10.66.124.226 with SMTP id ml2mr32698122pab.90.1456079794632;
+        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r62sm36675841pfr.26.2016.02.22.04.28.32
+        by smtp.gmail.com with ESMTPSA id 76sm31291584pft.44.2016.02.21.10.36.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 04:28:33 -0800 (PST)
-Date: Mon, 22 Feb 2016 17:59:06 +0530
+        Sun, 21 Feb 2016 10:36:34 -0800 (PST)
+Date: Mon, 22 Feb 2016 00:07:07 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 4/4] staging: most: hdm-dim2: Use macro DIV_ROUND_UP
-Message-ID: <20160222122906.GA16722@Karyakshetra>
+Subject: [PATCH 4/4] staging: most: hdm-dim2: Use macro DIV_ROUND_UP
+Message-ID: <20160221183707.GA3444@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -77,8 +77,6 @@ expression e2;
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- Changes in v2:
-   - None for this file.
  drivers/staging/most/hdm-dim2/dim2_hal.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
