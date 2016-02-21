@@ -1,107 +1,99 @@
-X-GM-THRID: 6251886520521719808
-X-Received: by 10.129.131.206 with SMTP id t197mr20591560ywf.50.1455630762577;
-        Tue, 16 Feb 2016 05:52:42 -0800 (PST)
+X-GM-THRID: 6253643257988775936
+X-Received: by 10.66.141.36 with SMTP id rl4mr21783973pab.3.1456039784762;
+        Sat, 20 Feb 2016 23:29:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.86.102 with SMTP id o93ls3146879qgd.16.gmail; Tue, 16 Feb
- 2016 05:52:42 -0800 (PST)
-X-Received: by 10.31.154.65 with SMTP id c62mr21493868vke.8.1455630762022;
-        Tue, 16 Feb 2016 05:52:42 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x236.google.com (mail-qk0-x236.google.com. [2607:f8b0:400d:c09::236])
-        by gmr-mx.google.com with ESMTPS id g136si2335343ywb.5.2016.02.16.05.52.41
+Received: by 10.140.82.233 with SMTP id h96ls1162351qgd.80.gmail; Sat, 20 Feb
+ 2016 23:29:43 -0800 (PST)
+X-Received: by 10.140.156.139 with SMTP id c133mr21126528qhc.4.1456039783962;
+        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id ui7si2538803pab.0.2016.02.20.23.29.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 05:52:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::236 as permitted sender) client-ip=2607:f8b0:400d:c09::236;
+        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::236 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x236.google.com with SMTP id x1so66351452qkc.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 05:52:41 -0800 (PST)
+Received: by mail-pf0-x235.google.com with SMTP id c10so77432539pfc.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 23:29:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=VE4mLnJpOBsPdHQKUvMPznhR2BSzkKiaJXvQa/c5z48=;
-        b=pkO2OxDwTQls+SGJMaIrOZHTQf8C/ofwo4P7Ty77Wqx66JA7b3pPr5LgBaNQ31GOKv
-         Gzhz+y9AdyzAWj+jrP390+nIiiPDhLMrbwdMjodnLElAr8pOT4bJkNH1jTzQBUMi+Zhq
-         HSICIvqDSUYWiTB55ZVLQP2bb7ukpV48cIEBbSqdv7cfEzocyxR1qhx3yujK30m2R3dn
-         ey1CqLoUUvnmgjW1KPTosPYQHk9qN5IDqw32/LIGdqEisI5FaSUmTg21g4VmHEIBG2im
-         SaMgHxJaxHXLD6kZy14F0EHo+OMb9x69gv4Xal0hFSN69+3z/kjfoxHKq8mT8nuZ2XE7
-         gXmA==
+        h=from:to:cc:subject:date:message-id;
+        bh=cEM+/CqZHBw0MQUuvZLS3jVelZ/UEv73L/ku+EtdVjE=;
+        b=pHm/B4s8iLoqggoLko+SAkm78TsZLPPfsY+Q+3thpvyydfMXNfSjavNyDSHkxBfA1V
+         X3K/5rdrt5yPO3T9URtIeNZliIUaJgGDoxY7xr/Pr/qiLG6DLPliHJ6OPqBHT8XzWBP5
+         93EmsGS5cGa7EChgUZrGwuICaM0uF3XechT/W1Zd5q4TTVITGz+x6ylKOJ5sjCjwmPVm
+         mu3Iz+sCY2T/EUNQLdYJnnQ8aBdISFHh5V8PgOrk/1s5l248LQBpDVUMgX1OjjxeAasY
+         YoGcnWL+WrpRE4HElaGI3oGoUul7Tct6bjPIEKhjIhel8h5WoFGWNtYHzJCbQ9knLThT
+         wjZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=VE4mLnJpOBsPdHQKUvMPznhR2BSzkKiaJXvQa/c5z48=;
-        b=dF6PUYc1Vos0+LZXLha+2I6wSU0jmZnxEBOVCD1PEvmWDMrsiBufebAh2GK1cOhvnZ
-         VZpzuVwExX49eO3Y1bWHYI1jD6IJY3PoHCx7Qji/D398RaY8PMyq2nf9feBZkDxUPcYD
-         YdmrsbhX/aofnzfmyOkt3j2VnKFTk/eZJCR5MvdOZUskSTGwKXSnxaJEz4eN1oCwtV49
-         W9Nw4vSE09CjoeTwxPjM0kQcu/70Zn3mANBAM3AIdlj0Slb/ol1jgXalNF5eexDmN7TS
-         Wcfly1XiaMYTjrsJb3HwkupVDpJhUgPYqxWUARTM7w1iBoBzDaWLqK4QF0m4nexxCwQ/
-         GSpw==
-X-Gm-Message-State: AG10YOTVD6XCm07ejaAxuuwKI923vM+xjzyW/qxoxHW3boWRoAse4PIuQx7u5EAURi6pIA==
-X-Received: by 10.55.82.70 with SMTP id g67mr27364145qkb.57.1455630761891;
-        Tue, 16 Feb 2016 05:52:41 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id l36sm298432qgd.29.2016.02.16.05.52.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 05:52:41 -0800 (PST)
-Date: Tue, 16 Feb 2016 13:52:00 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=cEM+/CqZHBw0MQUuvZLS3jVelZ/UEv73L/ku+EtdVjE=;
+        b=G5mQloQbQeLg0yz24F0aW5WX+9VgOV9TXtipUhVWP9iZOKBc8eFHEum/570SxsV3Oc
+         ACAz8/W0XKJ/1GbpPOCC7+bsP3cF8dD2phTADxevC3zVC02z2QFHjz1NbDLsXPX0TpD3
+         zdtvBZMobppes7wOtUvGrSDy2Kycejp/wM2O0j4zhRse59xZiSKB0MiCwot0wKru/nEy
+         2Qve1lwrWe6hzLKI0XDN6rXmeETMjYdhAmV/ZxyBTISPVO7S3E8pkdFOHpOb0UQd8JVO
+         lr2myOegnro+rc3uB6u5ddXoi2AcOlHONs3A+reYtgpVrVFgCF+94F8OaBDzZw+VGq+S
+         iuDQ==
+X-Gm-Message-State: AG10YOTapF2bHVs0wn+hN8XXm//UadbV5jwy3EE0S50Igaj9QXIRDfs5HcS7kKN9Y19mfQ==
+X-Received: by 10.98.0.148 with SMTP id 142mr29698250pfa.84.1456039783816;
+        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([203.215.121.9])
+        by smtp.gmail.com with ESMTPSA id v29sm28434807pfa.31.2016.02.20.23.29.42
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Modify tcp_process to return void rather
- than int
-Message-ID: <20160216185200.GA14853@janani-Inspiron-3521>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH] staging: most: compress return logic into one line
+Date: Sun, 21 Feb 2016 15:29:38 +0800
+Message-Id: <1456039778-23535-1-git-send-email-eraretuya@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-tcp_process() returns int, which is not used anywhere. So, change
-function header to return void instead of int and remove all uses of
-the local variable ret, which is used as a return variable in the function.
+Eliminate local variable 'ret' and modify return statement to contain
+the value being returned directly instead of assigning it first to 'ret'
+and returning this variable.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Coccinelle semantic patch used:
+@@ expression e, ret; @@
+-ret =
++return
+	e;
+-return ret;
+
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/wilc1000/wilc_wlan.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/staging/most/hdm-dim2/dim2_sysfs.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-index a396ac9..b980b03 100644
---- a/drivers/staging/wilc1000/wilc_wlan.c
-+++ b/drivers/staging/wilc1000/wilc_wlan.c
-@@ -207,9 +207,8 @@ static inline int add_tcp_pending_ack(u32 ack, u32 session_index,
- 	return 0;
- }
- 
--static inline int tcp_process(struct net_device *dev, struct txq_entry_t *tqe)
-+static inline void tcp_process(struct net_device *dev, struct txq_entry_t *tqe)
+diff --git a/drivers/staging/most/hdm-dim2/dim2_sysfs.c b/drivers/staging/most/hdm-dim2/dim2_sysfs.c
+index c5b10c7..2b28e4a 100644
+--- a/drivers/staging/most/hdm-dim2/dim2_sysfs.c
++++ b/drivers/staging/most/hdm-dim2/dim2_sysfs.c
+@@ -63,7 +63,6 @@ static ssize_t bus_kobj_attr_show(struct kobject *kobj, struct attribute *attr,
+ static ssize_t bus_kobj_attr_store(struct kobject *kobj, struct attribute *attr,
+ 				   const char *buf, size_t count)
  {
--	int ret;
- 	u8 *eth_hdr_ptr;
- 	u8 *buffer = tqe->buffer;
- 	unsigned short h_proto;
-@@ -267,14 +266,10 @@ static inline int tcp_process(struct net_device *dev, struct txq_entry_t *tqe)
- 				add_tcp_pending_ack(ack_no, i, tqe);
- 			}
+-	ssize_t ret;
+ 	struct medialb_bus *bus =
+ 		container_of(kobj, struct medialb_bus, kobj_group);
+ 	struct bus_attr *xattr = container_of(attr, struct bus_attr, attr);
+@@ -71,8 +70,7 @@ static ssize_t bus_kobj_attr_store(struct kobject *kobj, struct attribute *attr,
+ 	if (!xattr->store)
+ 		return -EIO;
  
--		} else {
--			ret = 0;
- 		}
--	} else {
--		ret = 0;
-+
- 	}
- 	spin_unlock_irqrestore(&wilc->txq_spinlock, flags);
+-	ret = xattr->store(bus, buf, count);
 -	return ret;
++	return xattr->store(bus, buf, count);
  }
  
- static int wilc_wlan_txq_filter_dup_tcp_ack(struct net_device *dev)
+ static struct sysfs_ops const bus_kobj_sysfs_ops = {
 -- 
-2.5.0
+1.9.1
 
 
