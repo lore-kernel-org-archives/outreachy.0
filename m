@@ -1,118 +1,143 @@
-X-GM-THRID: 6666325868481085440
-X-Received: by 2002:a17:902:45a5:: with SMTP id n34mr7303412pld.120.1552124942882;
-        Sat, 09 Mar 2019 01:49:02 -0800 (PST)
+X-GM-THRID: 6251859755441061888
+X-Received: by 10.107.135.209 with SMTP id r78mr21797740ioi.19.1456034692932;
+        Sat, 20 Feb 2016 22:04:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:1f03:: with SMTP id f3ls5266001pff.2.gmail; Sat, 09 Mar
- 2019 01:49:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzQVLXslTAnxiWw5iOiWmDWzQ1nYRE4fz2DxNcYfqeIGmMm2tW9AIMMe9m7T+lpk2wcByD6
-X-Received: by 2002:a65:52c5:: with SMTP id z5mr8850056pgp.71.1552124941003;
-        Sat, 09 Mar 2019 01:49:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552124940; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dGTa8oBcWutC3ySHrUzb5rhxbsZXrUHll06OHRALC8CZ59+JNdk/Dnim7Tv8Bv0dMx
-         wZf6oVQc50OG1gaTq3FObzFI6ch2b9TPpLbV9TFscVarQbzsVZinDBcnvjO2/osVfGVs
-         Bp6VStZfzXjjL9lNprT4mcSZN6Um0XUre30b0M59r9iWZEkYjfUQiuhlMYJBniDWhVN+
-         P1FCuDgErWPitvcaYfJ8z+x0sPsrnrOt/nRsbWZknZwa4ScXRnr+7mcCGjFE21Q35mJy
-         j4SYI6J2S4jY/ZrfRj18JE7BlJErzVOu/kEkoAOg/vmCht+ehVLGxbFXH/eRy8HnYdaw
-         mlhA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lbUNy5Csosz0f8cvX6nkk6k44OG+ahxMEcpGd6lCu9w=;
-        b=BB1JS2cMGVWSi6rRWUY0oMPKUDd/YXtezazx7tf9KSvbQzemjnFF8iOJ8rgHt/ZB0a
-         sRfY0Qmc9yko3PeU9USBgvHb510WaOB+M9o9yPF6GobbcLgjv+7aSAGq1uB1HeX013YH
-         i1lglxcgnaqDqoUa+0IKKwpMsgK8IO7G0asB6nZQACb/mGhOHt8DCJ3r1vh23jC4c6YF
-         gSRJIEf0Yx8xzJ57g1Hb7yY3MvvciL78WRMRQ6p7XZ0FDWUuEUJE15kc8iwVRYtwLqAK
-         yFD5QocSsZMRK3pnD8YLZebcWWUSqD7+mquyKT5EVYb912Znjf8Ne1CivqYMNuVHfQSo
-         aZ1A==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EzVo2KSY;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id q140si7501pgq.2.2019.03.09.01.49.00
+Received: by 10.107.151.213 with SMTP id z204ls476525iod.46.gmail; Sat, 20 Feb
+ 2016 22:04:52 -0800 (PST)
+X-Received: by 10.50.20.135 with SMTP id n7mr5388738ige.5.1456034692641;
+        Sat, 20 Feb 2016 22:04:52 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
+        by gmr-mx.google.com with ESMTPS id ff2si2683636pad.2.2016.02.20.22.04.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 01:49:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sat, 20 Feb 2016 22:04:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EzVo2KSY;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id q17so15986060pfh.10
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 01:49:00 -0800 (PST)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22b.google.com with SMTP id q63so74384102pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 22:04:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=lbUNy5Csosz0f8cvX6nkk6k44OG+ahxMEcpGd6lCu9w=;
-        b=EzVo2KSYlB+ZISnHG3TgXXXEXTqIQ+G+IsqklLQ+NylPqKNsBbg3hXwkey/b9y2ZYN
-         l5xwrWDYpoG7RM5IjYmH5ZvpV/ESr2hAmlBwaKclTnVrkqhT+MSRsCp0CGA6t3zHPqjD
-         vMZJ6duWo297ddImmV2YQWG268jwCTpYMhoba4KhQDejsOJOFamifPr0Zb5RHyb0eiBh
-         MVk/WPkeeJ/Wlr9Fcclnw/V48IgxazgdpLdWTOwvGSaBzUAqDZQy7bDYXlEaqWusdlKU
-         8AnXPuAYf3+Cz2KZMQlwOQNT3ugpNedEXAc4vOKRMGqqIJqlq2uNfTKixH5S+VdmKBQ0
-         xMCg==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=7ej0SpQtzobRDzIBFvdVkOnW3QkJdUGBBUUcWXsd/xg=;
+        b=y26abkKQWvgYjm6v5nXHZgRo01xwhWSfBJQMkTMd87qOPVPKZYNXs+wUXY7VsNn/DH
+         ZHeBXo2WuOSL/zGh0HsyAUlkYEyKoKRjvzcDf1GMYU+oQOHbFSs95L+Mdu7lmYyjB9c/
+         rkKy/qpCMOj401PFhidebcIgYSQ/0FrPQhraYDZlM88+htzRlBT8JkfXJoM/UDHf6VUm
+         oMAdj163S/YfHTsEO3/W8DnkDUFsceDOSuLZdfpzbSaLT89544NSUrz664dsUEZuf1+n
+         Z0ZssKIy6VsTbVAGjfSm8DYAZFnErbmyTIUbWd8nglqjtuRkfFIW/emq3w7F4lNCd8nU
+         wEDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=lbUNy5Csosz0f8cvX6nkk6k44OG+ahxMEcpGd6lCu9w=;
-        b=bRf2EYRzCTKfIDzvLRQmGQALziPPU7UxMJLlxmOqj3mvnp5EYxPY5gS0w9F/TNSuQP
-         CMI85plaYfPPhYwVrFLmpbWpTQnLPTxNdpQg0MMqgv7PvbK3KSho4nCyLd7d4IinGHFr
-         q+Tfz5nPnytXwMk5R93YMZ4ZF/s9jOto3Pio5icn9xtMviq/D41HaRhdLhWfDybO6RFk
-         TmGcyVGv/9jP9+MDFNPFVXl5uBi1AtUPBNG8+CAmIWHfEfAcU6Chyzbm5kB6rUY6a5XW
-         eJssKvN+uU4zKMA7X15N4m3KGbc5rivgYFHz3hIqj+qrnxXKcBsDsorRhdJf1242IKgP
-         WzkQ==
-X-Gm-Message-State: APjAAAW0jU1Z22ZCcngB9+bhE2h4KdlO9CmLfDlyh74MsW4G3lxcDOK+
-	2rmJfFe+zbToRNT3Szz1SLE=
-X-Received: by 2002:a17:902:3324:: with SMTP id a33mr22526937plc.302.1552124940650;
-        Sat, 09 Mar 2019 01:49:00 -0800 (PST)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([157.32.145.236])
-        by smtp.gmail.com with ESMTPSA id x1sm160651pge.73.2019.03.09.01.48.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 01:48:59 -0800 (PST)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: adham.abozaeid@microchip.com,
-	ajay.kathat@microchip.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH] staging: wilc1000: remove unnecessary variable result
-Date: Sat,  9 Mar 2019 15:18:40 +0530
-Message-Id: <20190309094840.38154-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=7ej0SpQtzobRDzIBFvdVkOnW3QkJdUGBBUUcWXsd/xg=;
+        b=JgTeGcJNBoQXWddmD8GKWdX3N0I9v20wiJAHv281sXF+vHB/fnBOwB9zzkocEYZ40b
+         5xMt5wfNU0VV9bYGqBArR0N+hcaCCaLGK/NyPVv5cYvHutFcuQsw7WqFJskkRyGY0xhS
+         74BnnscTMKuRIWGcO7xsVDN/39YqlxNHZC2sZJuY+WqRIFipWGyDEGlgX2nmvELsYZwy
+         bzIEETIL8CoUBbfs6eKj+oM1zfV1DIpzN6zjnds6C9DCesdd+aBgINYLcnK6FXBm2TxT
+         SJgVjyLJLk6kXsUzHLdBWJn+rmuATIcFP++BPJ+N6iVNPPGgXaebUMYTDX+8tFx8E+JE
+         XWkA==
+X-Gm-Message-State: AG10YOQGzWGzVzOOJJdVsVyaZNt7PcFlr2z9XvKV4AFRlZkOq5wSZ63H6K4RnrE11HWAKA==
+X-Received: by 10.98.17.92 with SMTP id z89mr29597452pfi.16.1456034692450;
+        Sat, 20 Feb 2016 22:04:52 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([171.48.49.90])
+        by smtp.gmail.com with ESMTPSA id c68sm11266409pfj.41.2016.02.20.22.04.51
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Sat, 20 Feb 2016 22:04:52 -0800 (PST)
+Date: Sun, 21 Feb 2016 11:34:48 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v4] staging: lustre: llite: Remove IS_ERR tests
+Message-ID: <20160221060448.GA16055@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove unnecessary local variable "result" and its assignments from
-function wilc_set_pmkid_info. Suggested by Coccinelle.
+ll_iget() has been modified to always return NULL in case of error and
+not a ERR_PTR.
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+Consequently, remove unnecessary IS_ERR tests as now ll_iget()
+function can never return a ERR_PTR.
+
+Additionally, reinitialising root and inode to NULL has been removed
+since they have already been tested for the same.
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/wilc1000/host_interface.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Changes in v4:
+        -Rebased patch
+Changes in v3:
+        -Modified ll_iget() to only return NULL in case of error
+Changes in v2:
+        -Remove IS_ERR test instead of replacing it with
+         IS_ERR_OR_NULL
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 4dd9a20f6a0b..962c5e6edd5e 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
- int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
- {
- 	struct wid wid;
--	int result;
+ drivers/staging/lustre/lustre/llite/llite_lib.c | 10 ++++------
+ drivers/staging/lustre/lustre/llite/namei.c     |  2 +-
+ 2 files changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
+index 4de085d..322a694 100644
+--- a/drivers/staging/lustre/lustre/llite/llite_lib.c
++++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
+@@ -493,7 +493,7 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
+ 	md_free_lustre_md(sbi->ll_md_exp, &lmd);
+ 	ptlrpc_req_finished(request);
  
- 	wid.id = WID_PMKID_INFO;
- 	wid.type = WID_STR;
- 	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
- 	wid.val = (u8 *)pmkid;
- 
--	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
-+	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
- 				      wilc_get_vif_idx(vif));
- 
--	return result;
- }
- 
- int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+-	if (IS_ERR_OR_NULL(root)) {
++	if (!(root)) {
+ 		if (lmd.lsm)
+ 			obd_free_memmd(sbi->ll_dt_exp, &lmd.lsm);
+ #ifdef CONFIG_FS_POSIX_ACL
+@@ -502,8 +502,7 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
+ 			lmd.posix_acl = NULL;
+ 		}
+ #endif
+-		err = IS_ERR(root) ? PTR_ERR(root) : -EBADF;
+-		root = NULL;
++		err = -EBADF;
+ 		CERROR("lustre_lite: bad iget4 for root\n");
+ 		goto out_root;
+ 	}
+@@ -1964,15 +1963,14 @@ int ll_prep_inode(struct inode **inode, struct ptlrpc_request *req,
+ 		*inode = ll_iget(sb, cl_fid_build_ino(&md.body->fid1,
+ 					     sbi->ll_flags & LL_SBI_32BIT_API),
+ 				 &md);
+-		if (IS_ERR_OR_NULL(*inode)) {
++		if (!inode) {
+ #ifdef CONFIG_FS_POSIX_ACL
+ 			if (md.posix_acl) {
+ 				posix_acl_release(md.posix_acl);
+ 				md.posix_acl = NULL;
+ 			}
+ #endif
+-			rc = IS_ERR(*inode) ? PTR_ERR(*inode) : -ENOMEM;
+-			*inode = NULL;
++			rc = -ENOMEM;
+ 			CERROR("new_inode -fatal: rc %d\n", rc);
+ 			goto out;
+ 		}
+diff --git a/drivers/staging/lustre/lustre/llite/namei.c b/drivers/staging/lustre/lustre/llite/namei.c
+index 7e62198..8ea63c8 100644
+--- a/drivers/staging/lustre/lustre/llite/namei.c
++++ b/drivers/staging/lustre/lustre/llite/namei.c
+@@ -127,7 +127,7 @@ struct inode *ll_iget(struct super_block *sb, ino_t hash,
+ 			}
+ 			if (rc != 0) {
+ 				iget_failed(inode);
+-				inode = ERR_PTR(rc);
++				inode = NULL;
+ 			} else
+ 				unlock_new_inode(inode);
+ 		} else if (!(inode->i_state & (I_FREEING | I_CLEAR)))
 -- 
-2.17.1
+1.9.1
 
 
