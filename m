@@ -1,84 +1,114 @@
-X-GM-THRID: 6256430192250585088
-X-Received: by 10.107.184.195 with SMTP id i186mr15766936iof.24.1456688668270;
-        Sun, 28 Feb 2016 11:44:28 -0800 (PST)
+X-GM-THRID: 6249498218591158272
+X-Received: by 10.67.1.165 with SMTP id bh5mr27172651pad.35.1456146461534;
+        Mon, 22 Feb 2016 05:07:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.41.85 with SMTP id y79ls2070856qgy.63.gmail; Sun, 28 Feb
- 2016 11:44:27 -0800 (PST)
-X-Received: by 10.140.87.55 with SMTP id q52mr27294151qgd.11.1456688667663;
-        Sun, 28 Feb 2016 11:44:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id ui7si3190998pab.0.2016.02.28.11.44.27
+Received: by 10.50.79.195 with SMTP id l3ls576569igx.6.gmail; Mon, 22 Feb 2016
+ 05:07:41 -0800 (PST)
+X-Received: by 10.50.23.113 with SMTP id l17mr7109290igf.13.1456146461141;
+        Mon, 22 Feb 2016 05:07:41 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from mail-qk0-x22b.google.com (mail-qk0-x22b.google.com. [2607:f8b0:400d:c09::22b])
+        by gmr-mx.google.com with ESMTPS id l85si1191643ywb.2.2016.02.22.05.07.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 11:44:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Mon, 22 Feb 2016 05:07:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) client-ip=2607:f8b0:400d:c09::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of jes.sorensen@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) smtp.mailfrom=jes.sorensen@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id y7so7457036paa.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 11:44:27 -0800 (PST)
+Received: by mail-qk0-x22b.google.com with SMTP id s68so54872583qkh.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 05:07:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=bFIjGYh/DjMyFlZ/QsDt5Z24mOzbdRYWDpn8/aec/AY=;
-        b=EAcAm1NFVeGJpWztFsDq7wJZ2Ntkwz6VdqmZ4VZX1Vy3eQgHLLNTBKLGWZV5j3QTl2
-         06JbivYWAYH98hGvarcqwYWe5Z0A3WcaVsdER2bjyx0y6/jXMGygJbdjKSh2utXU4QlT
-         ZkdipAwo9sv7kbHJNLvOWoUq41X59StRSUbah8vNT+AuGNDZjLD5+G/8LVNs9Segnd9C
-         8ipogmFRiA8n76SNIDUDiYLwVwUj5RkzMWBJoqH+e6KEj532CeiYfLlY5bqPB9hLHbCX
-         YNSspIBTlBfmOrfWCmS8kra6jDexpZ/ndwpOIO/qTBdLtfKfJbO+jRhqJkgJ/2oBQgLH
-         uOlg==
+        h=from:subject:to:references:cc:message-id:date:user-agent
+         :mime-version:in-reply-to:content-type:content-transfer-encoding;
+        bh=T70az11pG5Kv1ludQ8RHwoLPTd3roDNDo8l1KmVry4w=;
+        b=Lp4v1oscDC4HI3I0ofzl7rPVgSTkhJCi2861ZFJ7cFzkT1wljVOsjRyAGSdLS54IFb
+         SosZTXSyp3ZFqLQ+ZL1wEOJ8E/IgteNFV9lovwp5IwAEriC9LFkmg+P1Jv5B2e/qZ+QU
+         QmAw8/3oiUtEt6HxlBvM2/yQluf8hRA51rBjACE1MrzGEaIXTvIFf6esmvmudiIePW2b
+         b+le0YjEMTje3WjNtPPevnm2PBFM8DIReHPZxhWApcUs/Ya6Lvt0oZFX19WpkPZO5AZy
+         rNgL5m1NbAI+Xcx8Sp2mUU5tdlgDgLf5GPivFfhRtYcarTAO5aJjZMr/vxXGwr6BDxTs
+         cT/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=bFIjGYh/DjMyFlZ/QsDt5Z24mOzbdRYWDpn8/aec/AY=;
-        b=PMbdebci4CReGHzO1WU5TkzouidbXd5kBftCd4/4VStPNik5/4/qoow2JWP7tMpcxk
-         ZBtR8g3YnxM+b7Qd9wqtk2e+2k7by9n0Ycn71vapaMlBfT5E6mN/JMLjSjT684SoQDY+
-         Tp4EvCohHrL7KAE5kD5T1bDrQQgjkMz13XWGkp2AjEd2YEbn3k43G99keUwL9DMdrGPS
-         1qQ1/iT5/t0PJnhehqU+6YZ89eH+obXOG+s8GPCp3dfA0MzypdiPg5jcNicv/QuSwTxE
-         WxdVitepLIbsHkFydnLsl7KFio5eZPUrEadIIu9wihEjR3ItSDP/YQr9KhLG43CWr7xC
-         aauQ==
-X-Gm-Message-State: AD7BkJLXngHOVs971rBDJuxFuuCNzPXoIGaU3bP0QwGzBoBRO7rPM5tTUlEtNRR+BwaJIg==
-X-Received: by 10.66.233.131 with SMTP id tw3mr17355940pac.89.1456688667487;
-        Sun, 28 Feb 2016 11:44:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 74sm32794176pfs.33.2016.02.28.11.44.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 11:44:27 -0800 (PST)
-Date: Mon, 29 Feb 2016 01:11:39 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/6] Remove NULL test before vfree
-Message-ID: <20160228194139.GA1694@Karyakshetra>
+        h=x-gm-message-state:from:subject:to:references:cc:message-id:date
+         :user-agent:mime-version:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=T70az11pG5Kv1ludQ8RHwoLPTd3roDNDo8l1KmVry4w=;
+        b=mX7oZ306mPmFoyJPT1ZdSX4kApaWbcdVFYSyBtIZ/tIpP0uf/c4wx5D2nT5Gd7gny9
+         /RxlkHW4cnqCT9qxLds/AA6L4ABkz8Mzq6++aUibpIt1XyMtdYetMboA0xx/X13JLgki
+         m4HlMqGICa57CcwP8Du92hSD6ljJqEzzwf+8NLlVpTIkb5Im5CooUqZQdFKLj2KMGuHK
+         OCPnzPgqhEWs8ZNGhdrxuV+pxWH7sm4QbYgyOcKlR6Xa8FwSfw22XoDIwfKz+du/1bj5
+         EW05iUuw5+dZgyfScYyHZuw4lbFjq1V90NNqZkK45k8jQGzGwl8YED4OLFEr4Wqxwh5n
+         msUw==
+X-Gm-Message-State: AG10YORSWKfNVItKUqN11GADPcs2l28ww8FAj2VHhm9vjYxTDDmi80Fdja5NmyGkt/N79g==
+X-Received: by 10.55.78.207 with SMTP id c198mr33537380qkb.34.1456146460969;
+        Mon, 22 Feb 2016 05:07:40 -0800 (PST)
+Return-Path: <jes.sorensen@gmail.com>
+Received: from ?IPv6:2604:2000:1281:1b5:250:b6ff:fec0:39f5? ([2604:2000:1281:1b5:250:b6ff:fec0:39f5])
+        by smtp.gmail.com with ESMTPSA id w1sm10188745qha.3.2016.02.22.05.07.39
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 22 Feb 2016 05:07:39 -0800 (PST)
+From: Jes Sorensen <jes.sorensen@gmail.com>
+X-Google-Original-From: Jes Sorensen <Jes.Sorensen@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: unisys: Modify boolean
+ assignment
+To: Greg KH <gregkh@linuxfoundation.org>
+References: <20160210082412.GA2645@janani-Inspiron-3521>
+ <alpine.DEB.2.02.1602100825150.2050@localhost6.localdomain6>
+ <207e6b2c-07b0-48a8-a414-37c59ed7a3e6@googlegroups.com>
+ <alpine.DEB.2.10.1602100954070.2486@hadrien> <56C4B515.3020301@gmail.com>
+ <20160217180323.GA23677@kroah.com> <56C4B787.2030302@gmail.com>
+ <20160220233034.GA19538@kroah.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>,
+ Janani Ravichandran <janani.rvchndrn@gmail.com>,
+ outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-ID: <56CB081A.1030103@gmail.com>
+Date: Mon, 22 Feb 2016 08:07:38 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20160220233034.GA19538@kroah.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-This patch-set removes NULL tests before vfree.
+On 02/20/16 18:30, Greg KH wrote:
+> On Wed, Feb 17, 2016 at 01:10:15PM -0500, Jes Sorensen wrote:
+>> On 02/17/16 13:03, Greg KH wrote:
+>>> On Wed, Feb 17, 2016 at 12:59:49PM -0500, Jes Sorensen wrote:
+>>>> You also need to CC the driver author, not just the outreachy list.
+>>>
+>>> For the outreachy application process, the author doesn't need to be
+>>>  cc:ed, but they can be if the patch author wants to.
+>>
+>> If the patches are dropped and not pushed upstream, please ignore CC's,
+>> sure. If they are meant to go upstream, the author must be CC'ed.
+>>
+>> I for one find it really annoying and rude to have patches go into
+>> upstream for code I actively maintain, without being CC'ed on them.
+> 
+> That happens all the time, and is just the way things have always been
+> for kernel changes.  Maintainership isn't "absolute" ownership, you know
+> this :)
 
-Bhaktipriya Shridhar (6):
-  staging: rts5208: Remove NULL test before vfree
-  staging: rtl8192e: Remove NULL test before vfree
-  staging: rts5208: Remove NULL Test before vfree
-  staging: rtl8188eu: core: Remove NULL test before vfree
-  staging: rtl8188eu: core: Remove NULL Test before vfree
-  staging: rtl8188eu: os_dep: Remove NULL test before vfree
+Of course, however it's common courtesy to CC a maintainer. If the code
+has been untouched for a long time, sure, but if it's actively being
+developed that is a different story.
 
- drivers/staging/rtl8188eu/core/rtw_recv.c    |  3 +--
- drivers/staging/rtl8188eu/core/rtw_sta_mgt.c |  3 +--
- drivers/staging/rtl8188eu/os_dep/usb_intf.c  |  2 +-
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c |  6 ++---
- drivers/staging/rts5208/ms.c                 | 30 ++++++++---------------
- drivers/staging/rts5208/xd.c                 | 36 ++++++++++------------------
- 6 files changed, 27 insertions(+), 53 deletions(-)
+>> I know Unisys is trying to fix up their code, and knowing conflicting
+>> patches are in flight saves work.
+> 
+> These should all be trivial to work around, and really, if they were
+> trying to fix up their code, they would have already resolved "trivial"
+> changes like this a long time ago.
 
---
-2.1.4
+It really depends, checkpatch claims errors on a lot of things that
+aren't broken in the first place. It is also a question of what to fix
+first, real bugs or moving commas around. Either way, this is no excuse
+for not being courteous and CC'ing the maintainer on the changes.
+
+Jes
+
 
 
