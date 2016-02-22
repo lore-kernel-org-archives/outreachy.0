@@ -1,136 +1,134 @@
 X-GM-THRID: 6254007511915954176
-X-Received: by 10.112.157.164 with SMTP id wn4mr3272286lbb.5.1456137743278;
-        Mon, 22 Feb 2016 02:42:23 -0800 (PST)
+X-Received: by 10.182.79.134 with SMTP id j6mr25957797obx.4.1456124594708;
+        Sun, 21 Feb 2016 23:03:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.154.202 with SMTP id c193ls343517lfe.79.gmail; Mon, 22 Feb
- 2016 02:42:22 -0800 (PST)
-X-Received: by 10.112.162.101 with SMTP id xz5mr3276739lbb.20.1456137742471;
-        Mon, 22 Feb 2016 02:42:22 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id s141si1165507wmd.1.2016.02.22.02.42.22
+Received: by 10.140.17.33 with SMTP id 30ls1291017qgc.99.gmail; Sun, 21 Feb
+ 2016 23:03:12 -0800 (PST)
+X-Received: by 10.129.155.201 with SMTP id s192mr26503487ywg.4.1456124592760;
+        Sun, 21 Feb 2016 23:03:12 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x233.google.com (mail-pf0-x233.google.com. [2607:f8b0:400e:c00::233])
+        by gmr-mx.google.com with ESMTPS id ui7si2999955pab.0.2016.02.21.23.03.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 02:42:22 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 21 Feb 2016 23:03:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) client-ip=2607:f8b0:400e:c00::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,483,1449529200"; 
-   d="scan'208";a="204095361"
-Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2016 11:42:21 +0100
-Date: Mon, 22 Feb 2016 05:42:19 -0500 (EST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: lusture: lnet: Use
- list_for_each_entry
-In-Reply-To: <20160222070345.GA10232@Karyakshetra>
-Message-ID: <alpine.DEB.2.10.1602220534590.2685@hadrien>
-References: <20160222070345.GA10232@Karyakshetra>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x233.google.com with SMTP id x65so87889565pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 23:03:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=xdQRRTx6ofb341bwIO+eAjN25L+kt1TT6a0S/vouIwU=;
+        b=b2TTH5OVkUDARLFhQnqlaBDRf6v5OE4OM/a5lTIA+wE6Sod5JAtw2SnF2zdR9GFgsJ
+         +4eja/kp/5XhPLDj82+pOypAbe3og6RAw7b3yGgl7QCAWJLXB9ftntByLutxgTmnT2xp
+         jaJJ6uAh9u9FXMKYiy5EJgQwaDdNB2+clMujfEl1IiWWs9w4fFU9ylm4HQsjC05xVczV
+         TCIxWr7npa5ir+HmV1xEm4xchbY1Wti20zKoLE3yPIqlUH8dh7HiQ8N6b1JhMdlm+Bu6
+         S+vWhr1oFslC7PBygXzYHMkokVnE8CvduKVe4NiUIdtK/fTpNLeZYDQxolP8rH1M+pbv
+         Tozw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=xdQRRTx6ofb341bwIO+eAjN25L+kt1TT6a0S/vouIwU=;
+        b=B9vISUK7WeGDW8MvWLzIwwK0U1uCGYGNpADOHXEa5Ark2z8IhWC7EDMiniDXz6xsXY
+         22rxiZqDEp3EfNqGPPvFlcS/aPNdFcBCoSt0ke20iok1u1/6XHp4dT7AE/dNGDtzILKu
+         YJc0LTM2IJkg/nysy/qpyjue4pdZRQLn0wJeJrm66vGlgMuKkE9cJtUY05GCqLALkh5x
+         BC0eXZXA7iZuTrJY/ebwvwrBTOm9mk7exm+mcUwp1ONhVnGdeRxRirNpacjAsCuHSLsz
+         Dy+CNRx3qYNFU6sqCU/XKQ0iulbQHxVu55d7dDDsuQ4S2Hlt7jyQtyRtl12S1CX2nQt2
+         zZLg==
+X-Gm-Message-State: AG10YOQvaViXdYrEFJo4mW2Sz+lFjTrTMCm6GktO59qzzqrZO3pB+C8kWMJC8NRCgaAGxg==
+X-Received: by 10.98.7.219 with SMTP id 88mr35984358pfh.49.1456124592576;
+        Sun, 21 Feb 2016 23:03:12 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id to9sm34338989pab.3.2016.02.21.23.03.11
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 21 Feb 2016 23:03:12 -0800 (PST)
+Date: Mon, 22 Feb 2016 12:33:45 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: lusture: lnet: Use list_for_each_entry
+Message-ID: <20160222070345.GA10232@Karyakshetra>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
+In general, doubly linked lists are iterated  using list_empty
+and list_entry functions. But it can be better written using
+list_for_each_entry macro.
 
+This patch replaces the while loop containing list_empty and list_entry
+with list_for_each_entry and list_for_each_entry_safe(if list_del is
+used int the loop).
 
-On Mon, 22 Feb 2016, Bhaktipriya Shridhar wrote:
+This was done with Coccinelle.
 
-> In general, doubly linked lists are iterated  using list_empty
-> and list_entry functions. But it can be better written using
-> list_for_each_entry macro.
->
-> This patch replaces the while loop containing list_empty and list_entry
-> with list_for_each_entry and list_for_each_entry_safe(if list_del is
-> used int the loop).
->
-> This was done with Coccinelle.
->
-> @@
-> expression E1;
-> identifier I1, I2;
-> type T;
-> iterator name list_for_each_entry;
-> @@
->
-> - while (list_empty(&E1) == 0)
-> + list_for_each_entry (I1, &E1, I2)
-> {
-> 	...when != T *I1;
-> -	I1 = list_entry(E1.next, T, I2);
-> 	...when != list_del(...);
-> 	when != list_del_init(...);
+@@
+expression E1;
+identifier I1, I2;
+type T;
+iterator name list_for_each_entry;
+@@
 
-No need to change here, but it is nicer to line up the when's.
+- while (list_empty(&E1) == 0)
++ list_for_each_entry (I1, &E1, I2)
+{
+	...when != T *I1;
+-	I1 = list_entry(E1.next, T, I2);
+	...when != list_del(...);
+	when != list_del_init(...);
+}
 
-> }
->
-> @@
-> expression E1;
-> identifier I1, I2;
-> type T;
-> iterator name list_for_each_entry_safe;
-> @@
-> T *I1;
-> +  T *tmp;
-> ...
-> - while (list_empty(&E1) == 0)
-> + list_for_each_entry_safe (I1, tmp, &E1, I2)
-> {
-> 	...when != T *I1;
-> 	-	I1 = list_entry(E1.next, T, I2);
+@@
+expression E1;
+identifier I1, I2;
+type T;
+iterator name list_for_each_entry_safe;
+@@
+T *I1;
++  T *tmp;
+...
+- while (list_empty(&E1) == 0)
++ list_for_each_entry_safe (I1, tmp, &E1, I2)
+{
+	...when != T *I1;
+	-	I1 = list_entry(E1.next, T, I2);
+	...
+}
 
-The - line is too indented.
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-> 	...
-> }
+diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+index efb7169..976fd78 100644
+--- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
++++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+@@ -2354,13 +2354,12 @@ static inline void
+ ksocknal_flush_stale_txs(ksock_peer_t *peer)
+ {
+ 	ksock_tx_t *tx;
++	ksock_tx_t *tmp;
+ 	LIST_HEAD(stale_txs);
 
-Good job on the semantic patch.  Another possibility is converting
-list_for_each to list_for_each_entry.  Someone did quite a few of these
-recently, but there may still be some opportunities.  If you do find some
-opportunities, you may want to run make coccicheck on the result, because
-Coccinelle found a bunch of problems in the change that was done.  I think
-that the issue is that with list_for_each_entry, the variable containing
-the entry is invalid after the normal end of the loop (ie without break),
-while when one implements the same thing by hand, the variable would
-naturally end up pointing to the last element.
+ 	write_lock_bh(&ksocknal_data.ksnd_global_lock);
 
-julia
+-	while (!list_empty(&peer->ksnp_tx_queue)) {
+-		tx = list_entry(peer->ksnp_tx_queue.next, ksock_tx_t, tx_list);
+-
++	list_for_each_entry_safe(tx, tmp, &peer->ksnp_tx_queue, tx_list) {
+ 		if (!cfs_time_aftereq(cfs_time_current(),
+ 				      tx->tx_deadline))
+ 			break;
+--
+2.1.4
 
-> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-> ---
->  drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-> index efb7169..976fd78 100644
-> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-> @@ -2354,13 +2354,12 @@ static inline void
->  ksocknal_flush_stale_txs(ksock_peer_t *peer)
->  {
->  	ksock_tx_t *tx;
-> +	ksock_tx_t *tmp;
->  	LIST_HEAD(stale_txs);
->
->  	write_lock_bh(&ksocknal_data.ksnd_global_lock);
->
-> -	while (!list_empty(&peer->ksnp_tx_queue)) {
-> -		tx = list_entry(peer->ksnp_tx_queue.next, ksock_tx_t, tx_list);
-> -
-> +	list_for_each_entry_safe(tx, tmp, &peer->ksnp_tx_queue, tx_list) {
->  		if (!cfs_time_aftereq(cfs_time_current(),
->  				      tx->tx_deadline))
->  			break;
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160222070345.GA10232%40Karyakshetra.
-> For more options, visit https://groups.google.com/d/optout.
->
 
