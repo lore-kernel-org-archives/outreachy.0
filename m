@@ -1,88 +1,91 @@
 X-GM-THRID: 6254148912517480448
-X-Received: by 10.25.22.154 with SMTP id 26mr4230974lfw.3.1456243365306;
-        Tue, 23 Feb 2016 08:02:45 -0800 (PST)
+X-Received: by 10.13.230.148 with SMTP id p142mr26421326ywe.45.1456157516868;
+        Mon, 22 Feb 2016 08:11:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.11.145 with SMTP id 139ls671037wml.53.gmail; Tue, 23 Feb
- 2016 08:02:44 -0800 (PST)
-X-Received: by 10.28.6.14 with SMTP id 14mr2029129wmg.6.1456243364628;
-        Tue, 23 Feb 2016 08:02:44 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id s141si1466277wmd.1.2016.02.23.08.02.44
+Received: by 10.140.40.82 with SMTP id w76ls693555qgw.44.gmail; Mon, 22 Feb
+ 2016 08:11:56 -0800 (PST)
+X-Received: by 10.140.101.242 with SMTP id u105mr203710qge.12.1456157516130;
+        Mon, 22 Feb 2016 08:11:56 -0800 (PST)
+Return-Path: <rakhish1994@gmail.com>
+Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
+        by gmr-mx.google.com with ESMTPS id 12si3178362pfb.1.2016.02.22.08.11.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 08:02:44 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 22 Feb 2016 08:11:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,489,1449529200"; 
-   d="scan'208";a="204322404"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Feb 2016 17:02:43 +0100
-Date: Tue, 23 Feb 2016 17:02:37 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Rakhi Sharma <rakhish1994@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: luster: lnet: return of an
- errno should be negative.
-In-Reply-To: <1456157506-6590-1-git-send-email-rakhish1994@gmail.com>
-Message-ID: <alpine.DEB.2.02.1602231701560.2040@localhost6.localdomain6>
-References: <1456157506-6590-1-git-send-email-rakhish1994@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22b.google.com with SMTP id e127so95072988pfe.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 08:11:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=McAecvIVcc3gDayFjrt5aZHkpvR84WMCtqxmQXCbNoA=;
+        b=R21Ej0p29e4viT7L4valF7nLEGDGDTE6EDxr4BIjFboV5dBhQjovSQnTq6svyzr516
+         hzoVtwO1RW8le1WF9/SNOa0bn0yNvGmv1C+pJhNfY1ihPISZzD1n5ofu6xH6kGFdGkSs
+         2pDaQJS2vODMkfQRPKygo6Q9lK7HkdyuP4bZKpz2EHaRI4E4qU5n3lXxIfPMdXoD1vho
+         QeOVRte3voNszRl9BtdBUuwXRkbAkdoWmRNmlji1f0FYiIPhZj30uQIgj6fzP1TzrGAv
+         33EzNSbzWTHnFiTLJSqTHlvJkPtlP3ZkEK9jR6g+sAH3p6krcniBNUWCqaul9xOoenV9
+         /g1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=McAecvIVcc3gDayFjrt5aZHkpvR84WMCtqxmQXCbNoA=;
+        b=jrzBrdYzjv2XyXVIH3RHfHOSQYgV8RbhI3LSHhbq7Ll74f1IQgWocqfjdg6zKFGEP/
+         0CZu1TDs7Dn++f4ris+6bUAlxpi8DnhEUj48N5bQTGOx33BAJmdQOtEps2M4duU/rzc3
+         VXItybBUU+X5PlV00dqygtr1FuFmnK7zbCljcz3VUdLwbLmoUhl1P9Ov0D/TA1MtYBQ0
+         /3XFwU+3P03OXM6jlFAo1BvdEL8fpwLABKyE2sdkKr/BQ8G5jmb6PkJLy26W9PvAelyI
+         fnYokPjtrRAdNwZdTJL6XZiudfxmJyywMRH4W3MOOM/9X4EimL0qLQ9iecahUcR3J7Lb
+         Ds/A==
+X-Gm-Message-State: AG10YOQcnELvzF48BEHoBL9WKdMq5pFFO5Op7a8U+SRUY9QP63aqhEX2dG1eHCtzUvZdVQ==
+X-Received: by 10.98.15.145 with SMTP id 17mr38600113pfp.19.1456157515939;
+        Mon, 22 Feb 2016 08:11:55 -0800 (PST)
+Return-Path: <rakhish1994@gmail.com>
+Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
+        by smtp.gmail.com with ESMTPSA id xu1sm38100788pab.31.2016.02.22.08.11.54
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 22 Feb 2016 08:11:55 -0800 (PST)
+From: Rakhi Sharma <rakhish1994@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Rakhi Sharma <rakhish1994@gmail.com>
+Subject: [PATCH] staging: luster: lnet: return of an errno should be  negative.
+Date: Mon, 22 Feb 2016 21:41:46 +0530
+Message-Id: <1456157506-6590-1-git-send-email-rakhish1994@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
+Return of an errno should typically be negative (ie: return -ENOENT)
+, as warning is generated by checkpatch.
 
+Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
+---
+ drivers/staging/lustre/lnet/lnet/lib-move.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Mon, 22 Feb 2016, Rakhi Sharma wrote:
+diff --git a/drivers/staging/lustre/lnet/lnet/lib-move.c b/drivers/staging/lustre/lnet/lnet/lib-move.c
+index fb8f7be0..018949b 100644
+--- a/drivers/staging/lustre/lnet/lnet/lib-move.c
++++ b/drivers/staging/lustre/lnet/lnet/lib-move.c
+@@ -1521,7 +1521,7 @@ lnet_parse_reply(lnet_ni_t *ni, lnet_msg_t *msg)
+ 			       md->md_me->me_portal);
+ 
+ 		lnet_res_unlock(cpt);
+-		return ENOENT;		  /* +ve: OK but no match */
++		return -ENOENT;		  /* +ve: OK but no match */
+ 	}
+ 
+ 	LASSERT(md->md_offset == 0);
+@@ -1536,7 +1536,7 @@ lnet_parse_reply(lnet_ni_t *ni, lnet_msg_t *msg)
+ 			rlength, hdr->msg.reply.dst_wmd.wh_object_cookie,
+ 			mlength);
+ 		lnet_res_unlock(cpt);
+-		return ENOENT;	  /* +ve: OK but no match */
++		return -ENOENT;	  /* +ve: OK but no match */
+ 	}
+ 
+ 	CDEBUG(D_NET, "%s: Reply from %s of length %d/%d into md %#llx\n",
+-- 
+1.9.1
 
-> Return of an errno should typically be negative (ie: return -ENOENT)
-> , as warning is generated by checkpatch.
-
-The comma should be on the line before.
-
-Are you sure that that calling context is able to cope with a negative 
-value?  You commit message should explain why this is so.
-
-julia
-
-> 
-> Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
-> ---
->  drivers/staging/lustre/lnet/lnet/lib-move.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/lustre/lnet/lnet/lib-move.c b/drivers/staging/lustre/lnet/lnet/lib-move.c
-> index fb8f7be0..018949b 100644
-> --- a/drivers/staging/lustre/lnet/lnet/lib-move.c
-> +++ b/drivers/staging/lustre/lnet/lnet/lib-move.c
-> @@ -1521,7 +1521,7 @@ lnet_parse_reply(lnet_ni_t *ni, lnet_msg_t *msg)
->  			       md->md_me->me_portal);
->  
->  		lnet_res_unlock(cpt);
-> -		return ENOENT;		  /* +ve: OK but no match */
-> +		return -ENOENT;		  /* +ve: OK but no match */
->  	}
->  
->  	LASSERT(md->md_offset == 0);
-> @@ -1536,7 +1536,7 @@ lnet_parse_reply(lnet_ni_t *ni, lnet_msg_t *msg)
->  			rlength, hdr->msg.reply.dst_wmd.wh_object_cookie,
->  			mlength);
->  		lnet_res_unlock(cpt);
-> -		return ENOENT;	  /* +ve: OK but no match */
-> +		return -ENOENT;	  /* +ve: OK but no match */
->  	}
->  
->  	CDEBUG(D_NET, "%s: Reply from %s of length %d/%d into md %#llx\n",
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1456157506-6590-1-git-send-email-rakhish1994%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
