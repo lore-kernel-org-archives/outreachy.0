@@ -1,61 +1,61 @@
 X-GM-THRID: 6254064858167246848
-X-Received: by 10.50.50.138 with SMTP id c10mr10914923igo.3.1456138005326;
-        Mon, 22 Feb 2016 02:46:45 -0800 (PST)
+X-Received: by 10.66.148.69 with SMTP id tq5mr26760871pab.28.1456137994942;
+        Mon, 22 Feb 2016 02:46:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.31.133 with SMTP id f5ls1377519qgf.91.gmail; Mon, 22 Feb
- 2016 02:46:44 -0800 (PST)
-X-Received: by 10.140.231.138 with SMTP id b132mr26484982qhc.0.1456138004788;
-        Mon, 22 Feb 2016 02:46:44 -0800 (PST)
+Received: by 10.182.42.138 with SMTP id o10ls689056obl.42.gmail; Mon, 22 Feb
+ 2016 02:46:34 -0800 (PST)
+X-Received: by 10.182.246.130 with SMTP id xw2mr27174494obc.29.1456137994619;
+        Mon, 22 Feb 2016 02:46:34 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id 12si3028693pfb.1.2016.02.22.02.46.44
+Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
+        by gmr-mx.google.com with ESMTPS id 12si3028336pfb.1.2016.02.22.02.46.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 02:46:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Mon, 22 Feb 2016 02:46:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id yy13so89342473pab.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 02:46:44 -0800 (PST)
+Received: by mail-pf0-x229.google.com with SMTP id c10so93930672pfc.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 02:46:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=avUpJDVXnom+jaVrt3I5eTuyrQbNIRGGuP0YVjnFWbw=;
-        b=FAHtsX2YAn3lWm9OsEqNPWOAfg/r8FQ+P9BcQ4rwdSZ5zVbu+JNfmwZ+DsKEfzxJna
-         D9NXp/hvC9spbjZ2LGr0BzdwOOw6U6dJGGWGeQ4QxZaUAzroE88x8FBDskeGsvUbV3r+
-         l5zDaDbAS5xSpd19el72dD6UI37UJqnWVLjPjAynaCAZXdi3aeAY3ARkXfcNoqWqN3N3
-         BY3ddoLYXL/2tjcVytwILYfEQmhvJISROzhdAhji/pm+pUe0a683IbjqkSv1GXPHfhjt
-         njGZ/3KrmH8VS83k1Ko7ng19AYyFKoOjdlaF8vfmD4E8/IJije82pa3SFQWy6giUtafG
-         rtsw==
+        bh=bWdZwiqATFal1scbIh8sJvY7p5eFka8Ows81MHd1Auk=;
+        b=K7AESdjIL3an4ljHOKHIJWVMf8DfAolen3VBofyGTSy4LZJVa3OD+IDFRrIRuh4msp
+         EosYfMdUBD3o8x2USVPEXpj0UGtMellzpfMH/QfJ9n/vrM+oJd2kz89+3cooBusmcK8t
+         n/0kN/+szBXysrBYB7ayeoR7ayoyT7hrDXmrh+my7RXeqh66t7yDItqId7j2pDoryqP0
+         TPivl/KOaFtlisXrEKNRhosZ+HNW0s4eIVW0rbLzuIwCtYsQx8daMJvDACqRoKvfGsfD
+         Ey/7UWCDVO/nPdygfWGa/JfXiUZ+72AexCwHNFOs6aUks50kW7LsWKPC09Dd6ccilXw/
+         mEgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=avUpJDVXnom+jaVrt3I5eTuyrQbNIRGGuP0YVjnFWbw=;
-        b=HBSo4nFjckNVD0kjwfrdqmNdYErxQKft73d5GWOsjgdchJq2PUY3y8S8FH1ZMozWQj
-         FvPqgR5Jvj2hQ2XChxUAs2XSIHk6Yzh8RMF14GOPmRp01CUMJ/+JABzz811IdeWMNAoo
-         3t0NbA0mTtwthGmbQTRYyqKEgKYEq+JDvdYuhss1VC5b+MDT7sQZ9Htaqn+bSfUjJNLL
-         CHkvWyQq+qrSnbKQ/1vGRWY4tR+Sdyv/TPdgz4bjw4Ptint6shIB8ZcPiCAafZpL7gWY
-         jxprQPj6mVrnWkVVLWXrZAb2Z5gu2r87KS3A29iQ48Cm1J5yxsRVcXPDpImR/craHgIp
-         zczw==
-X-Gm-Message-State: AG10YOTJaKZrqNWi12HT0Kl90ErqU3MgvFcndyphovnWi7XNryXciZdAk7yeRuYLhrZRow==
-X-Received: by 10.66.234.166 with SMTP id uf6mr37157839pac.122.1456138004615;
-        Mon, 22 Feb 2016 02:46:44 -0800 (PST)
+        bh=bWdZwiqATFal1scbIh8sJvY7p5eFka8Ows81MHd1Auk=;
+        b=OF9Zvp0PyZJvQdGqjku5sovQXZQFI6AaZ93ysAfQXuUh5BYfeBEuvk+AW0+79LuZSe
+         VetjT5bWtxdkJTwDPXW+9kFB5O6hgOtColeaz7sjAut5iO4M0r+aNMJwiPc7FwdLFbxE
+         BSrjincXHBdCy+Tta/QQAnTN4E8PlATg0dOT2ZooGsFciJlzgQk1uCWM74eZBiF7FAJc
+         fxnGO/L7Tvao22Q8T4+Ir9LTrq1MUdtpQq5ewHP0vUKU97Fk9chD/UO/bF7GOohTd7FE
+         DvbSPR05YKoso3bghda7Z6rU6W9o8h/ojhbSSA6SYQo3tc95Hl//oWALcKSBstU27OjH
+         Qu+g==
+X-Gm-Message-State: AG10YOTDqAX4BSiGkAyPN0KkO7xC1L9lSAfoVgZP8wE5igiKaD6bAhG1uJDhDM5//QijWw==
+X-Received: by 10.98.75.10 with SMTP id y10mr37241438pfa.32.1456137994500;
+        Mon, 22 Feb 2016 02:46:34 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
 Received: from bhumirks@gmail.com ([106.215.155.110])
-        by smtp.gmail.com with ESMTPSA id q85sm35823220pfq.81.2016.02.22.02.46.41
+        by smtp.gmail.com with ESMTPSA id ko9sm1621244pab.37.2016.02.22.02.46.30
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 02:46:44 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Mon, 22 Feb 2016 16:16:35 +0530
+        Mon, 22 Feb 2016 02:46:33 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Mon, 22 Feb 2016 16:16:25 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 3/5] Staging: gdm724x: Use min_t instead of ternary operator
-Date: Mon, 22 Feb 2016 16:15:32 +0530
-Message-Id: <a87296c4ae355f87241302412c938fcebb2e5f9d.1456136671.git.bhumirks@gmail.com>
+Subject: [PATCH 2/5] Staging: rdma: Use macro min_t instead of ternary operator
+Date: Mon, 22 Feb 2016 16:15:31 +0530
+Message-Id: <eb48a324849c5f48c3c433892d503d56862d210c.1456136671.git.bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1456136671.git.bhumirks@gmail.com>
 References: <cover.1456136671.git.bhumirks@gmail.com>
@@ -82,22 +82,40 @@ T y;
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/gdm724x/gdm_mux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rdma/hfi1/pio_copy.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
-index 937010b..289d41a 100644
---- a/drivers/staging/gdm724x/gdm_mux.c
-+++ b/drivers/staging/gdm724x/gdm_mux.c
-@@ -433,7 +433,7 @@ static int gdm_mux_send_control(void *priv_dev, int request, int value,
- 	if (ret < 0)
- 		pr_err("usb_control_msg error: %d\n", ret);
+diff --git a/drivers/staging/rdma/hfi1/pio_copy.c b/drivers/staging/rdma/hfi1/pio_copy.c
+index ebb0baf..cd5b439 100644
+--- a/drivers/staging/rdma/hfi1/pio_copy.c
++++ b/drivers/staging/rdma/hfi1/pio_copy.c
+@@ -235,7 +235,7 @@ static inline void read_extra_bytes(struct pio_buf *pbuf,
+ 	while (nbytes) {
+ 		/* find the number of bytes in this u64 */
+ 		room = 8 - off;	/* this u64 has room for this many bytes */
+-		xbytes = nbytes > room ? room : nbytes;
++		xbytes = min_t(unsigned int, room, nbytes);
  
--	return ret < 0 ? ret : 0;
-+	return min_t(int, ret, 0);
- }
+ 		/*
+ 		 * shift down to zero lower bytes, shift up to zero upper
+@@ -565,7 +565,7 @@ static void mid_copy_mix(struct pio_buf *pbuf, const void *from, size_t nbytes)
+ 		/* calculate the end of data or end of block, whichever
+ 		   comes first */
+ 		send = pbuf->start + PIO_BLOCK_SIZE;
+-		xend = send < dend ? send : dend;
++		xend = min_t(void __iomem *, send, dend);
  
- static void release_usb(struct mux_dev *mux_dev)
+ 		/* shift up to SOP=1 space */
+ 		dest += SOP_DISTANCE;
+@@ -659,7 +659,7 @@ static void mid_copy_straight(struct pio_buf *pbuf,
+ 		/* calculate the end of data or end of block, whichever
+ 		   comes first */
+ 		send = pbuf->start + PIO_BLOCK_SIZE;
+-		xend = send < dend ? send : dend;
++		xend = min_t(void __iomem *, send, dend);
+ 
+ 		/* shift up to SOP=1 space */
+ 		dest += SOP_DISTANCE;
 -- 
 1.9.1
 
