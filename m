@@ -1,91 +1,191 @@
-X-GM-THRID: 6210026226543755264
-X-Received: by 10.13.202.13 with SMTP id m13mr29780373ywd.57.1445884403325;
-        Mon, 26 Oct 2015 11:33:23 -0700 (PDT)
+X-GM-THRID: 6254162869495005184
+X-Received: by 10.129.117.11 with SMTP id q11mr11144140ywc.3.1456160766120;
+        Mon, 22 Feb 2016 09:06:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.92.69 with SMTP id ck5ls987092igb.0.canary; Mon, 26 Oct
- 2015 11:33:22 -0700 (PDT)
-X-Received: by 10.107.26.84 with SMTP id a81mr30920567ioa.6.1445884402797;
-        Mon, 26 Oct 2015 11:33:22 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id vy6si3634011pbc.1.2015.10.26.11.33.22
+Received: by 10.50.43.226 with SMTP id z2ls681610igl.9.canary; Mon, 22 Feb
+ 2016 09:06:05 -0800 (PST)
+X-Received: by 10.107.134.68 with SMTP id i65mr28854755iod.33.1456160765727;
+        Mon, 22 Feb 2016 09:06:05 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-qg0-x229.google.com (mail-qg0-x229.google.com. [2607:f8b0:400d:c04::229])
+        by gmr-mx.google.com with ESMTPS id t198si1349402ywe.3.2016.02.22.09.06.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Oct 2015 11:33:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Mon, 22 Feb 2016 09:06:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) client-ip=2607:f8b0:400d:c04::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id fv9so204191417pac.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 11:33:22 -0700 (PDT)
+Received: by mail-qg0-x229.google.com with SMTP id b67so115920352qgb.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 09:06:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=rP49miZU5ScRKHfmJF2KW+D32iskGyPy2UPC03JnJ1o=;
-        b=yz1BID7I2J9OSkZkpdGnsq/ZBJ9btBfh+stbPjhnpXb9UrLpNozSXcQ394VYh2h0Um
-         V7csBEBiDoS8Q24w9YOFsoR6xw0y6SQd+iTi0/p9pI+n6PXqgZEYfrGt/EEV1D3PLA0s
-         Oa0Bh0buj2s8JPu+xjp9GgnH2sPUc05xW2wTaqARmOAFOFdIO3i5sRiM0cabuUlaLDKJ
-         limstiWBOR6MU64S/sAWk859YP7lRAQ46kk0OwInbH9wNCJU1dPI/ZYb0EzEUGXV7TGb
-         q7CBh6wDNP3luPOSh+Xxqy567SS+jn5k2VFesiYirAbklwpjof1qqa6F9tXhvobgm82D
-         a9tg==
-X-Received: by 10.68.182.34 with SMTP id eb2mr23241710pbc.87.1445884402602;
-        Mon, 26 Oct 2015 11:33:22 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.252.119])
-        by smtp.gmail.com with ESMTPSA id vl1sm35222322pbc.31.2015.10.26.11.33.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 26 Oct 2015 11:33:22 -0700 (PDT)
-Date: Tue, 27 Oct 2015 00:03:18 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove unneeded function
-Message-ID: <20151026183318.GA25808@amitoj-Inspiron-3542>
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=0um2LZg2Rrvwz0X9W3UgkNj/2yX12OtDbaaxc6v9zoU=;
+        b=m6g0xCWSZ5r1GC55CCLfhMbtDA7d/t38jqQT3pe7wVsE9rWsukgvBDsFzF2nW87rJX
+         /Mitnsd1m9MLkgc/oHlrnt+nvw3VlzWyhqRtwu+Eo4DvFv2KAztcDMVAyY4+R2q9QoXg
+         kGAn0snCy274fWFVkw6w40I5mTLfVfz+9XZIypka5wtmnh+y4awLH9g69xaJWJowidqE
+         PKshLElkAL8e3CSk+ue8e2Ku4mPN+9tdKKO35mD2bdBxCLQyrT0nh/76la6Tl9BzpgAt
+         JarKHRdwMgB8eYILjm7WqZCDkssbhvZ7j3eLLUfrcASXNjvFthqtg/p/e71mNhJJXJez
+         1P4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=0um2LZg2Rrvwz0X9W3UgkNj/2yX12OtDbaaxc6v9zoU=;
+        b=EtGmL/xFNwvCU8MNwszHjI9dgJyOY4mqHlb7D1vZ3UnTxR5B+7f51f/HQgAF9KQY31
+         C9MCNlV6yrLI+/VkIXy/VuNVy+PMr46UqB+TgrUVfJYHlYa0wD7d7dZoTjg4ujJBL2h4
+         STVZ92gul/mM3++7QsAOwNBLEkw+BzguvFJiMA3/C62OimoOkMEEMhWNfKveDqzIR7dz
+         ax5pj3zO/T82UvJ1WbWR1Gyrn8xyzVkmpj9tUTY9074EcIilrpLBCb3bUwfRX23cHSND
+         gHiL7M6Lmep9gRNGvrg793VM2/smEX9G0R6MQKXcko8uVTXt0sZtb8ZFOGp6RE/mPOWe
+         cDCg==
+X-Gm-Message-State: AG10YOTFTEv4paGTa9t9JrqJ89ZlhW1ieWudWoQvuhhIfw02dgA7MIyhoUZG8R3NzSJr459U0MC4DzsrFxyYLw==
+X-Received: by 10.140.44.5 with SMTP id f5mr36486443qga.37.1456160765581; Mon,
+ 22 Feb 2016 09:06:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.55.209.65 with HTTP; Mon, 22 Feb 2016 09:05:26 -0800 (PST)
+In-Reply-To: <20160219162922.GL13177@mtj.duckdns.org>
+References: <CAFNHFT8jZUnTth5m27sW-QxkVwfuC6GRJNKzrW2x=TsVPg4now@mail.gmail.com>
+ <20160219162922.GL13177@mtj.duckdns.org>
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Date: Mon, 22 Feb 2016 22:35:26 +0530
+Message-ID: <CAFNHFT8WD3qrNazGg5XmEFnK7L_9qh0Zmpg5P69x+nYQX+-ZTA@mail.gmail.com>
+Subject: Re: Reg: Outreachy workqueue tasks
+To: Tejun Heo <tj@kernel.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a1139fd582b3fc0052c5ed94a
 
-The function hw_sm750_getVMSize() had code that was replaceable by a single
-line. It was being called only once so replaced that call with the
-single line code and removed the extraneous function. 
+--001a1139fd582b3fc0052c5ed94a
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/sm750_hw.c | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
+Hello Tejun,
 
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index 92e194d..9ba94c3 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -72,7 +72,7 @@ int hw_sm750_map(struct lynx_share *share, struct pci_dev *pdev)
- 	 * size but not the actual size,use
- 	 * @hw_sm750_getVMSize function can be safe.
- 	 * */
--	share->vidmem_size = hw_sm750_getVMSize(share);
-+	share->vidmem_size = ddk750_getVMSize();
- 	pr_info("video memory phyAddr = %lx, size = %u bytes\n",
- 	share->vidmem_start, share->vidmem_size);
- 
-@@ -182,13 +182,6 @@ int hw_sm750_inithw(struct lynx_share *share, struct pci_dev *pdev)
- }
- 
- 
--resource_size_t hw_sm750_getVMSize(struct lynx_share *share)
--{
--	resource_size_t ret;
--
--	ret = ddk750_getVMSize();
--	return ret;
--}
- 
- int hw_sm750_output_setMode(struct lynxfb_output *output,
- 									struct fb_var_screeninfo *var, struct fb_fix_screeninfo *fix)
--- 
-1.9.1
+Thank you very much for your reply.  It really helped.
+I have completed the conversion of  create_workqueue() usages in
+drivers/staging/rtl8192u. Thank you for your guidance.
 
+I have also done the conversion of create_singlethread_workqueue() usages
+in drivers/staging/octeon/ethernet.c
+Please have a look.
+
+Thanks,
+Bhaktipriya
+
+On Fri, Feb 19, 2016 at 9:59 PM, Tejun Heo <tj@kernel.org> wrote:
+> Hello, Bhakti.
+>
+> Can you please cc the outreachy mailing list so that others can read
+> the thread too?  In fact, please reply to this message without pruning
+> the content w/ the ml cc'd.
+>
+> On Fri, Feb 19, 2016 at 05:40:08PM +0530, Bhakti Priya wrote:
+>> 1. How does one decide when to use the WQ_MEM_RECLAIM flag. I read that
+>> this flag needs to be used only if a wq processes work items which are
+used
+>> during memory reclaim. Should I look for null checks after a
+>> create_workqueue() usage?
+>
+> Are you familiar with the concepts of virtual memory, page cache and
+> swapping?  If not, I'd recommend studying the subject a bit.  Any
+> textbook on modern operating systems should contain a chapter on the
+> subject.  My mm friend recommends "understanding the linux kernel".
+>
+> In a nutshell, most of memory assigned to user applications is virtual
+> and reclaimable, so when the operating system needs more memory, it
+> reclaims them by ensuring that a copy of it can be recalled from
+> secondary storage and freeing it.
+>
+> Now, if something is used during the process of reclaiming memory, it
+> can't depend on further memory being available; otherwise, it wouldn't
+> be able to make forward progress.
+>
+>  1. No memory is left.
+>
+>  2. Memory reclaim starts and makes use of facility X.
+>
+>  3. Facility X needs to allocate more memory to make forward progress.
+>
+>  4. Go back to 1.  Oops.
+>
+> So, anything which may be used during memory reclaim can't depend on
+> more memory being available.  These are mostly things in the IO path
+> as most of reclaim is writing out dirty memory to secondary storage -
+> filesystem, block layer, device drivers for IO devices and so on.
+> Network path generally isn't.
+>
+>> 2. I read about the flags WQ_HIGHPRI, WQ_CPU_INTENSIVE in
+>> Documentation/workqueue.txt.  But I feel that more examples would help me
+>> understand the usage of such flags better. Could you please direct me to
+>> more examples that  would help me solve task 1.
+>
+> The best way to learn more about them would be grep'ing the source
+> tree for usage and see how they're being used.  There aren't many use
+> cases where the two flags should be used.  WQ_HIGHPRI is used for
+> things like hardware monitor driver which needs low latency from
+> scheduling to execution.  WQ_CPU_INTENSIVE is for things like IO
+> encryption which can consume large amount of CPU cycles.  I'm quite
+> doubtful that either would be needed to convert
+> create[_singlethread]_workqueue().
+>
+> Thanks!
+>
+> --
+> tejun
+
+--001a1139fd582b3fc0052c5ed94a
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello Tejun,<br><br>Thank you very much for your reply.=C2=
+=A0 It really helped.<br>I have completed the conversion of =C2=A0create_wo=
+rkqueue() usages in drivers/staging/rtl8192u. Thank you for your guidance.<=
+br><br>I have also done the conversion of create_singlethread_workqueue() u=
+sages in drivers/staging/octeon/ethernet.c<br>Please have a look.<br>=C2=A0=
+<br>Thanks,<br>Bhaktipriya<br><br>On Fri, Feb 19, 2016 at 9:59 PM, Tejun He=
+o &lt;<a href=3D"mailto:tj@kernel.org">tj@kernel.org</a>&gt; wrote:<br>&gt;=
+ Hello, Bhakti.<br>&gt;<br>&gt; Can you please cc the outreachy mailing lis=
+t so that others can read<br>&gt; the thread too?=C2=A0 In fact, please rep=
+ly to this message without pruning<br>&gt; the content w/ the ml cc&#39;d.<=
+br>&gt;<br>&gt; On Fri, Feb 19, 2016 at 05:40:08PM +0530, Bhakti Priya wrot=
+e:<br>&gt;&gt; 1. How does one decide when to use the WQ_MEM_RECLAIM flag. =
+I read that<br>&gt;&gt; this flag needs to be used only if a wq processes w=
+ork items which are used<br>&gt;&gt; during memory reclaim. Should I look f=
+or null checks after a<br>&gt;&gt; create_workqueue() usage?<br>&gt;<br>&gt=
+; Are you familiar with the concepts of virtual memory, page cache and<br>&=
+gt; swapping?=C2=A0 If not, I&#39;d recommend studying the subject a bit.=
+=C2=A0 Any<br>&gt; textbook on modern operating systems should contain a ch=
+apter on the<br>&gt; subject.=C2=A0 My mm friend recommends &quot;understan=
+ding the linux kernel&quot;.<br>&gt;<br>&gt; In a nutshell, most of memory =
+assigned to user applications is virtual<br>&gt; and reclaimable, so when t=
+he operating system needs more memory, it<br>&gt; reclaims them by ensuring=
+ that a copy of it can be recalled from<br>&gt; secondary storage and freei=
+ng it.<br>&gt;<br>&gt; Now, if something is used during the process of recl=
+aiming memory, it<br>&gt; can&#39;t depend on further memory being availabl=
+e; otherwise, it wouldn&#39;t<br>&gt; be able to make forward progress.<br>=
+&gt;<br>&gt; =C2=A01. No memory is left.<br>&gt;<br>&gt; =C2=A02. Memory re=
+claim starts and makes use of facility X.<br>&gt;<br>&gt; =C2=A03. Facility=
+ X needs to allocate more memory to make forward progress.<br>&gt;<br>&gt; =
+=C2=A04. Go back to 1.=C2=A0 Oops.<br>&gt;<br>&gt; So, anything which may b=
+e used during memory reclaim can&#39;t depend on<br>&gt; more memory being =
+available.=C2=A0 These are mostly things in the IO path<br>&gt; as most of =
+reclaim is writing out dirty memory to secondary storage -<br>&gt; filesyst=
+em, block layer, device drivers for IO devices and so on.<br>&gt; Network p=
+ath generally isn&#39;t.<br>&gt;<br>&gt;&gt; 2. I read about the flags WQ_H=
+IGHPRI, WQ_CPU_INTENSIVE in<br>&gt;&gt; Documentation/workqueue.txt.=C2=A0 =
+But I feel that more examples would help me<br>&gt;&gt; understand the usag=
+e of such flags better. Could you please direct me to<br>&gt;&gt; more exam=
+ples that =C2=A0would help me solve task 1.<br>&gt;<br>&gt; The best way to=
+ learn more about them would be grep&#39;ing the source<br>&gt; tree for us=
+age and see how they&#39;re being used.=C2=A0 There aren&#39;t many use<br>=
+&gt; cases where the two flags should be used.=C2=A0 WQ_HIGHPRI is used for=
+<br>&gt; things like hardware monitor driver which needs low latency from<b=
+r>&gt; scheduling to execution.=C2=A0 WQ_CPU_INTENSIVE is for things like I=
+O<br>&gt; encryption which can consume large amount of CPU cycles.=C2=A0 I&=
+#39;m quite<br>&gt; doubtful that either would be needed to convert<br>&gt;=
+ create[_singlethread]_workqueue().<br>&gt;<br>&gt; Thanks!<br>&gt;<br>&gt;=
+ --<br>&gt; tejun</div>
+
+--001a1139fd582b3fc0052c5ed94a--
 
