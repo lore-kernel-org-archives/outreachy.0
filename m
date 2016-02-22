@@ -1,93 +1,119 @@
 X-GM-THRID: 6253655179876368384
-X-Received: by 10.28.47.211 with SMTP id v202mr2175849wmv.3.1456261148354;
-        Tue, 23 Feb 2016 12:59:08 -0800 (PST)
+X-Received: by 10.112.150.105 with SMTP id uh9mr1423089lbb.17.1456101830555;
+        Sun, 21 Feb 2016 16:43:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.157.205 with SMTP id g196ls465190lfe.25.gmail; Tue, 23 Feb
- 2016 12:59:07 -0800 (PST)
-X-Received: by 10.112.173.6 with SMTP id bg6mr1785489lbc.0.1456261147641;
-        Tue, 23 Feb 2016 12:59:07 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x231.google.com (mail-wm0-x231.google.com. [2a00:1450:400c:c09::231])
-        by gmr-mx.google.com with ESMTPS id 141si5303wmy.2.2016.02.23.12.59.07
+Received: by 10.25.18.166 with SMTP id 38ls256911lfs.104.gmail; Sun, 21 Feb
+ 2016 16:43:49 -0800 (PST)
+X-Received: by 10.112.151.240 with SMTP id ut16mr3039252lbb.16.1456101829899;
+        Sun, 21 Feb 2016 16:43:49 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 141si984670wmy.2.2016.02.21.16.43.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 12:59:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::231 as permitted sender) client-ip=2a00:1450:400c:c09::231;
+        Sun, 21 Feb 2016 16:43:49 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::231 as permitted sender) smtp.mailfrom=nevola@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x231.google.com with SMTP id g62so242091120wme.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 12:59:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=CnL/5tNlxKBrs6/N8atAm8W1ktkNgNsIXL6+6h+g9n8=;
-        b=PAaYxvVtkIL/c2K8txqFXZQDMNnO9pUnAd83taNzfFMErz+/dn8QUzq3rhduerbfO4
-         POw8meFEwutXwj/jPvcWOR/qZcVArplomIFkz0p8wTZlEx/WUh1EQlf5WixxoI0EW1yK
-         f3dzg0asJe1+y8R4FgZFwRFlWB1cRFeftcVAi/IqcFFHDAjYo+/Jf5w2QtLj+heCj2u0
-         N0IjN4VqZmxF/TpuPCVUAJ2iFVV/Sl9F2UmF+cbMJhZznpYfhpxfcZpbVz0lsNbsAr3Q
-         WuMLY1QLcOsopxoMz//ItauDogc1zvpHQEkHDS0B9t3faQtV/hS5h5PuvgDlHDaBdDCj
-         5Y+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=CnL/5tNlxKBrs6/N8atAm8W1ktkNgNsIXL6+6h+g9n8=;
-        b=TC04VYw31NZmyXyjVC1lRXZMGBr3qnDuiLcJXpeOucnVcDqeSd1jnSsU12wi9+Fr7C
-         E9Xu1tYCpU5ke5BXypraR5OonCCzQYkv/STzRUBqibj/brYz3rdI6AcjeUJ4XaH97tPt
-         jprTzwB96dPgQK2sKAulqC4JtjHF4kQqxUp8YYAjcqh5477NozDnTUqauHIEhQ9S5LJB
-         xVHUHIuWEmsoqBEHMqiFexwZ88NKDWLC/7t6SbTs96p3XFH9HfIeCjhy+4/N56UfHp/q
-         91eTQ+4w5gdC34MOCUGCww3rilaKIfTY+qxzBozl0zfzUrrt7cm1Ia/S9S0wcZV8z1VM
-         lPUQ==
-X-Gm-Message-State: AG10YORcDQugPggyYuzdDbECTTwjHMi0NBOz4tade1strP0n8UXY1Wlqkxa6ZlFEc94aMw==
-X-Received: by 10.28.57.131 with SMTP id g125mr19335292wma.17.1456261147489;
-        Tue, 23 Feb 2016 12:59:07 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from sonyv (13.Red-2-136-25.dynamicIP.rima-tde.net. [2.136.25.13])
-        by smtp.gmail.com with ESMTPSA id ko2sm31468639wjc.9.2016.02.23.12.59.06
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 12:59:06 -0800 (PST)
-Date: Tue, 23 Feb 2016 21:59:04 +0100
-From: Laura Garcia Liebana <nevola@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: devel@linuxdriverproject.org, marvin24@gmx.de, jak@debian.org
-Subject: [PATCH v2] staging: nvec: Avoid the use of BUG_ON
-Message-ID: <20160223205858.GA2532@sonyv>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,483,1449529200"; 
+   d="scan'208";a="165477831"
+Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2016 01:43:48 +0100
+Date: Sun, 21 Feb 2016 19:43:45 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Laura Garcia <nevola@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: nvec: Avoid the use of
+ BUG_ON
+In-Reply-To: <20160221165141.GA2213@sonyv>
+Message-ID: <alpine.DEB.2.10.1602211942130.2512@hadrien>
+References: <20160221081553.GA4327@sonyv> <alpine.DEB.2.10.1602210730280.2782@hadrien> <20160221165141.GA2213@sonyv>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Prevent a kernel panic by avoiding the use of the BUG_ON macro.
-Checkpatch detected this issue.
 
-Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
----
-Changes in v2:
-	- According to Marc Dietrich, module creator, the WARN_ON macro is not needed as such cases shouldn't happen and they were introduced for debugging purposes.
 
- drivers/staging/nvec/nvec.c | 2 --
- 1 file changed, 2 deletions(-)
+On Sun, 21 Feb 2016, Laura Garcia wrote:
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index c335ae2..f6a1dbb 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -641,11 +641,9 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
- 			nvec_msg_free(nvec, nvec->rx);
- 			nvec->state = 3;
- 			nvec_tx_set(nvec);
--			BUG_ON(nvec->tx->size < 1);
- 			to_send = nvec->tx->data[0];
- 			nvec->tx->pos = 1;
- 		} else if (status == (I2C_SL_IRQ)) {
--			BUG_ON(nvec->rx == NULL);
- 			nvec->rx->data[1] = received;
- 			nvec->rx->pos = 2;
- 			nvec->state = 4;
--- 
-2.7.0
+> On Sun, Feb 21, 2016 at 07:31:12AM -0500, Julia Lawall wrote:
+> > On Sun, 21 Feb 2016, Laura Garcia Liebana wrote:
+> >
+> > > Prevent a kernel panic by avoiding the use of the BUG_ON macro and using the
+> > > WARN_ON macro instead. Checkpatch detected this issue.
+> >
+> > Why is nvec->state = 0; the right thing to do?  What will happen when the
+> > break is taken?
+> >
+> > julia
+> >
+> > > Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+> > > ---
+> > >  drivers/staging/nvec/nvec.c | 14 ++++++++++++--
+> > >  1 file changed, 12 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+> > > index c335ae2..3b5b94f 100644
+> > > --- a/drivers/staging/nvec/nvec.c
+> > > +++ b/drivers/staging/nvec/nvec.c
+> > > @@ -641,11 +641,21 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
+> > >  			nvec_msg_free(nvec, nvec->rx);
+> > >  			nvec->state = 3;
+> > >  			nvec_tx_set(nvec);
+> > > -			BUG_ON(nvec->tx->size < 1);
+> > > +			if (WARN_ON(nvec->tx->size < 1)) {
+> > > +				dev_err(nvec->dev,
+> > > +					"Invalid TX size\n");
+> > > +				nvec->state = 0;
+> > > +				break;
+> > > +			}
+> > >  			to_send = nvec->tx->data[0];
+> > >  			nvec->tx->pos = 1;
+> > >  		} else if (status == (I2C_SL_IRQ)) {
+> > > -			BUG_ON(nvec->rx == NULL);
+> > > +			if (WARN_ON(!nvec->rx)) {
+> > > +				dev_err(nvec->dev,
+> > > +					"Invalid RX\n");
+> > > +				nvec->state = 0;
+> > > +				break;
+> > > +			}
+> > >  			nvec->rx->data[1] = received;
+> > >  			nvec->rx->pos = 2;
+> > >  			nvec->state = 4;
+> > > --
+> > > 2.7.0
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160221081553.GA4327%40sonyv.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+> I got inspired by an earlier case, for example in case 1:
+>
+> nvec->rx = nvec_msg_alloc(nvec, NVEC_MSG_RX);
+> /* Should not happen in a normal world */
+> if (unlikely(!nvec->rx)) {
+>         nvec->state = 0;
+>         break;
+> }
+>
+> A similar case appears in the case 2 (same function):
+>
+> if (nvec->rx->data[0] != 0x01) {
+>         dev_err(nvec->dev,
+>                 "Read without prior read command\n");
+>         nvec->state = 0;
+>         break;
+> }
+>
+> Please let me know your thoughts about it.
 
+I don't know.  It seems risky.  I think that one would have to consult
+with the developers. I don't know if these particular problems can be
+survived.
+
+julia
 
