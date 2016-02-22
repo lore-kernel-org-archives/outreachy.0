@@ -1,105 +1,98 @@
-X-GM-THRID: 6803294715110227968
-X-Received: by 2002:adf:f490:: with SMTP id l16mr11273702wro.150.1584015487014;
-        Thu, 12 Mar 2020 05:18:07 -0700 (PDT)
+X-GM-THRID: 6254106980545200128
+X-Received: by 10.112.173.6 with SMTP id bg6mr735419lbc.0.1456147951410;
+        Mon, 22 Feb 2016 05:32:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:bd82:: with SMTP id n124ls2391370wmf.2.gmail; Thu, 12
- Mar 2020 05:18:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsJxQx5/xykjl6uOu0gEjGYDGjC2P0+Fz1s3rabafHFGlfa6tzUlziuu5L8Nc9kSkDiiy/q
-X-Received: by 2002:a1c:13:: with SMTP id 19mr4767829wma.183.1584015485493;
-        Thu, 12 Mar 2020 05:18:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584015485; cv=none;
-        d=google.com; s=arc-20160816;
-        b=pxOThi8taqbrXezTDb6hFx+saBhfM7oiUZjMc5Fsvv/dPUE61WB28q9c/ik0HLA9Qz
-         EV3+XNCMe3T7shwTSXTcvxHoBGIqCBYJpvI9vAUnpUX5fR+r3BpXJbIEbcKW70zhudyx
-         YO/dk0h0Lapw36lrPmnEygL5wb3QG6MEpAJ4FR6vQ0mRdMNtTI8jA1u+ay++SNsvVpT5
-         V/eL3iHNIp8ySk7GItDE/3549XhILazs1tGYoLRoerf+okqw82DmCXREqAxj4H/+9RGq
-         zORYANbSWDH2Eg4WP4IPH7TEu4RU1AJmoG08uU2meF16i4yZowdVBLCSqchvdvppk+4o
-         3feQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=axL5K4bggF4jf+hv+gIt4pU+eJtDLjjSfkkNYb+DXic=;
-        b=P+CyT/uzQ97lDtMgCAim0A8NVHJOtEMfh7vU+fz/vhN0v5sISsa88NR+Giq6B/urGy
-         rl24BXvnh0KNLtzij0Sq6LAazTrgwPJLeCHPierfppAGWhDoOocGlqtBqMuff+RQtFph
-         0m+UQqqCmGPELBQq+lPawn4T77i3rcPDzuJYEoQLRhieXTmp4452jVYkSLTXDEmV7u+o
-         dchZDDs2qntnw5kNXNFYD4F6VRYIzBfQKK/sw4r2eNXPPaRWypFuH/mh4nQslbIxPVZe
-         IIgQTGSVljWpofATtL/xgFTr1ssy9o/5iOHgTd+pIqKnV5MEfkHg1d9UhZgiwbGKVESY
-         LEsQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=cU650Mok;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id l17si313453wmg.0.2020.03.12.05.18.05
+Received: by 10.25.136.139 with SMTP id k133ls311370lfd.103.gmail; Mon, 22 Feb
+ 2016 05:32:30 -0800 (PST)
+X-Received: by 10.112.168.201 with SMTP id zy9mr3371187lbb.23.1456147950787;
+        Mon, 22 Feb 2016 05:32:30 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x22f.google.com (mail-wm0-x22f.google.com. [2a00:1450:400c:c09::22f])
+        by gmr-mx.google.com with ESMTPS id w10si907879wmw.3.2016.02.22.05.32.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Mar 2020 05:18:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 22 Feb 2016 05:32:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22f as permitted sender) client-ip=2a00:1450:400c:c09::22f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=cU650Mok;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wr1-x443.google.com with SMTP id x11so2389981wrv.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 05:18:05 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22f as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x22f.google.com with SMTP id g62so163621392wme.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 05:32:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=axL5K4bggF4jf+hv+gIt4pU+eJtDLjjSfkkNYb+DXic=;
-        b=cU650MokX2YqDfAyEiYlOLqoGykVRyZbj5nO/CNHwvxLmqi20AcdeJO5C9Cag/MOxA
-         1324uf2CZCKnBgmaOQgV9e1CU16GNchN0YnmMED/wu0NL5TGbypelQLJPDGbUt4aItge
-         VrWPZrV86oQCXMYeTOHOdvL048bloKI7Qi8pk=
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=LKpI1oCFrGUwD6Y9im+4CeNGdry0QmDyht8YARgxlFE=;
+        b=wop4KBFbQQYDmGLLiOH2CDh8y4HWYMkZfIuxPHsUCXiJZ0JW2IlTjl917OhbZixYQg
+         q4laSyThJae6teGZ2UE5ABYe9uaFE+l30sKKjmGGqY509qJE2RNYORi+K/QrjtJIaXW/
+         U1JZ4jDkilzQpn/zSPcQ2O1Oqd+cYOyy3665Fxs+x5KPtkk8jnHNTpg/gGwk0gEzXvzM
+         UFd1VTE1aRjER2mRi8dlWo4IEbXK1T8W+A/XxkILQFYiPtc1UZ3n5ptCY4a8vTPnwL/2
+         ad/kPEU8QHjIVIuSA8ra8gNHqCpXcMH9uFMe0NF4zUpMwamHA4VUpexWEtebR9MjQ+Bs
+         2ucg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=axL5K4bggF4jf+hv+gIt4pU+eJtDLjjSfkkNYb+DXic=;
-        b=ol+i5xGm9wHz6zyfVRoto1oXfKoHIAH2eI0QXHk9aajvS6tJT5mdSRGbfXviibaZLm
-         h10teSU/h7c03+wh2HZO3hk4gaoaYF1WMfpEHSA0CC7AWQbosVykA51iSKyI73U5+X22
-         8EvbeCEcGPsH7Zovhgzj5LQmLTVCn2SzuBjVghHzrDv4PcwHlbcBgFJL5/Gsav4RJnEL
-         NRlQLoBMlYiW9f6TwMRiFqq7yrynvtE/wNRpmJrfMDldCih6we+yKrGOtDRzuqvE52IB
-         Xy/47DAlXy1Y3EVobfY0dFQN3rptcxcOx7zdk79TRWsePK20ZO290irnAXngz8ndR4w1
-         zzog==
-X-Gm-Message-State: ANhLgQ0De/3UbGRAAmPZENlQh4SJ7CSQkHkoXBdOTiSKFw/4cm/C6IcK
-	ZEsDZ113anTAx132pd4whtm6K27w3QXcqg==
-X-Received: by 2002:a5d:67c3:: with SMTP id n3mr11051952wrw.156.1584015484943;
-        Thu, 12 Mar 2020 05:18:04 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id t193sm12873100wmt.14.2020.03.12.05.18.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Mar 2020 05:18:04 -0700 (PDT)
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Lourdes Pedrajas <lu@pplo.net>
-Subject: [PATCH] staging: ralink-gdma: ralink-gdma: change variable to a non-volatile
-Date: Thu, 12 Mar 2020 13:17:56 +0100
-Message-Id: <20200312121756.6799-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=LKpI1oCFrGUwD6Y9im+4CeNGdry0QmDyht8YARgxlFE=;
+        b=hG+ERPHfQNX0NwXpVXCLguNnzhLS6m8Q3FPlDE8o3911pusYe0Gz4EInffg0+UGMEv
+         VYFBtYxqq7mprtWvoRrOL+rJ6c+/LNnjOb1fFgnwnQ7G6lAZso7wwSFCoRyjJju2ZYza
+         FZ9A38kfeS52gpAXkq4Ay29aXUbHojlRa+RS2z8EQBcPUHXIA8vrjRAlfOBHEvtZH6Vx
+         Hwg4RSJhFv1aJOeqkMsCU+gS9MJhJjLaoeytGbWaJ7UJdniwazAY8pDOrwO1RbqAuFuM
+         yd9k830NjeQ8V84NLmH5+p4jflTnbENbJxrk8YGJRFFMinp1z68p8JZONxaRxD0Qp4p3
+         wpKw==
+X-Gm-Message-State: AG10YOQpL89a4JwN00yDfwwOrmHxznQVrkMoqBLBIcbjFDaTViIbUmStTEbr8WXttzdTu6takGglVAomO7h3mA==
+MIME-Version: 1.0
+X-Received: by 10.28.111.202 with SMTP id c71mr13192066wmi.77.1456147950652;
+ Mon, 22 Feb 2016 05:32:30 -0800 (PST)
+Received: by 10.194.222.165 with HTTP; Mon, 22 Feb 2016 05:32:30 -0800 (PST)
+In-Reply-To: <20160222132944.GA18018@Karyakshetra>
+References: <20160222132944.GA18018@Karyakshetra>
+Date: Mon, 22 Feb 2016 15:32:30 +0200
+Message-ID: <CAEnQRZD6=v7E-dOLxF4WGHVH+S7pTOoDj_2KGpwGmyF=4Z98_g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: Simplify return
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Change variable declaration volatile unsigned long chan_issued to
-unsigned long chan_issued
+On Mon, Feb 22, 2016 at 3:29 PM, Bhaktipriya Shridhar
+<bhaktipriya96@gmail.com> wrote:
+> Simplified the multiline check to a single return statement.
+>
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 
-Use of volatile is usually wrong: see Documentation/process/volatile-considered-harmful.rst
+Acked-by: Daniel Baluta <daniel.baluta@intel.com>
 
-Issue found with checkpatch.pl
-
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
- drivers/staging/ralink-gdma/ralink-gdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
-index eabf1093328e..8d1b81f720fd 100644
---- a/drivers/staging/ralink-gdma/ralink-gdma.c
-+++ b/drivers/staging/ralink-gdma/ralink-gdma.c
-@@ -122,7 +122,7 @@ struct gdma_dma_dev {
- 	struct gdma_data *data;
- 	void __iomem *base;
- 	struct tasklet_struct task;
--	volatile unsigned long chan_issued;
-+	unsigned long chan_issued;
- 	atomic_t cnt;
- 
- 	struct gdma_dmaengine_chan chan[];
--- 
-2.17.1
-
+> ---
+>  Changes in v2:
+>         - Removed if-else and replaced it with a single return statement
+>  drivers/staging/rtl8712/xmit_linux.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
+> index f8866d7..f708d95 100644
+> --- a/drivers/staging/rtl8712/xmit_linux.c
+> +++ b/drivers/staging/rtl8712/xmit_linux.c
+> @@ -70,10 +70,7 @@ uint _r8712_pktfile_read(struct pkt_file *pfile, u8 *rmem, uint rlen)
+>
+>  sint r8712_endofpktfile(struct pkt_file *pfile)
+>  {
+> -       if (pfile->pkt_len == 0)
+> -               return true;
+> -       else
+> -               return false;
+> +       return (pfile->pkt_len == 0);
+>  }
+>
+>
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160222132944.GA18018%40Karyakshetra.
+> For more options, visit https://groups.google.com/d/optout.
 
