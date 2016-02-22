@@ -1,152 +1,105 @@
-X-GM-THRID: 6256430660938891264
-X-Received: by 10.182.91.9 with SMTP id ca9mr10200827obb.7.1456688777804;
-        Sun, 28 Feb 2016 11:46:17 -0800 (PST)
+X-GM-THRID: 6254162077482483712
+X-Received: by 10.50.50.138 with SMTP id c10mr12477511igo.3.1456160582317;
+        Mon, 22 Feb 2016 09:03:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.39.146 with SMTP id v18ls2414843qgv.85.gmail; Sun, 28 Feb
- 2016 11:46:17 -0800 (PST)
-X-Received: by 10.140.20.204 with SMTP id 70mr27397622qgj.18.1456688777224;
-        Sun, 28 Feb 2016 11:46:17 -0800 (PST)
+Received: by 10.140.18.85 with SMTP id 79ls265034qge.15.gmail; Mon, 22 Feb
+ 2016 09:03:01 -0800 (PST)
+X-Received: by 10.13.226.84 with SMTP id l81mr27536503ywe.16.1456160581716;
+        Mon, 22 Feb 2016 09:03:01 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id y20si1096861pfa.2.2016.02.28.11.46.17
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id yd9si3211177pab.1.2016.02.22.09.03.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 11:46:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Mon, 22 Feb 2016 09:03:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 184so2005659pff.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 11:46:17 -0800 (PST)
+Received: by mail-pa0-x233.google.com with SMTP id fy10so93810647pac.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 09:03:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+UT0IgzzvJuD7w1Cc8TizlAA7i2Kfet58iJ6Zua7Vvo=;
-        b=OxRSzsg5g38El6eJeQ+RilKzcOLafeciE2IkTkNcUAxn2PPkhctaxWEeiu+lIf+Xxm
-         Mzu5/k2JsW9UoBKHw5SFbt82BSzGNDLJ1w8JabBRP/+4j5U0UsoJ5lMzkI0sbtS7CZVG
-         g516Bg3SGCmLuOMNpjOuFqPPZf0Ce1g8fGFaC40uZ64XtHo86DigJ4BH5M5LNugCfmVs
-         g4nptiGagCH7JMOEqdmM6G8MEcRBcxFV3j/ZKYtH4INqUtiBRxvpR646iurJTdKs5zPA
-         VonqL42RiGYDSN9ybySTMzNG90YbdloT13qR6h7t5Z77xmKMWkbh8XLbAn6NQWBAOaiY
-         qZ4w==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=Xfx4tW94jkZcBsHM6MXrZ3cVpAa1pebpc8mdcchcf/I=;
+        b=lEAA2BKq2XyvX5GtUu/byn/0wmCo54Q7mNFU4JXU4rocsvj1yBwzhfItUdSUr75Yap
+         q5cjjnTbpc9TuuoJNdONzAcFHGxtVP/SUdMIAIdrWaBkfd5uaPj1nt3HpnHB2X9OwUhf
+         EP6nb6MvHdJofPVwmq9ipOD9nZhj1uBB6Y1QveXhqHthgvnsnczoOInw82fO3gdnqnrU
+         XjQxzhUA27pv/SRyXl9PnmTEZJWScRe9GNXCLEndUqbpxNQRFbA5uBoZx8MWNjcsM6DL
+         Jo2dJtJBcCBO2P/Kz+HkTlpSqmi0jYavsUmAGGl0TETsMnv0Kp3J1mV0BXBMe++/9v6P
+         aEaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+UT0IgzzvJuD7w1Cc8TizlAA7i2Kfet58iJ6Zua7Vvo=;
-        b=A6bJHaT3L3hH20fIYtsOOWjJbWBOIYxWHG/+9RUN44NmjnLWZqruSxTlmSr5fCaGE5
-         5sJpIOAq3ItvuAoIiE3UX24UMC3V7+n3Emc+8z3cuXDa4gjs66qZjVTpwcC5lFQ2Gcjw
-         2sQuyZUY3fsmzRYFpcAc0bEBQYW3yQuBxbE4Ke/U+T9Ew1SbNwA1qVAHGpEIpPsUQ+Cw
-         7VVE2RwO/+otdg1DczdfND8hPnI/OdpboQTqNqQgjYaSqYT0XISn6rAADNh/Bxn/7w3x
-         VAsD05RDC+Z1VKdKGn4L+qpy6lr5Pwt8I075VEUj/LpgmwNmLklHrZ+R5U8Csn1QhxSe
-         etOA==
-X-Gm-Message-State: AD7BkJKQcfvcLwWGKw6lxsfSZ9H5W51ZGIv5HUAmijTzYQJf/GAbh38BhxwolNtRtIiptw==
-X-Received: by 10.98.10.86 with SMTP id s83mr17525839pfi.85.1456688777044;
-        Sun, 28 Feb 2016 11:46:17 -0800 (PST)
+         :content-type:content-disposition:user-agent;
+        bh=Xfx4tW94jkZcBsHM6MXrZ3cVpAa1pebpc8mdcchcf/I=;
+        b=W3sSMw2Q4cyUnsFfR/9nkYOXUvIj19N9OiSyRIcRbPIEQypUW5/op9N0jYJYFE0HxZ
+         kgdEd8bFJb+uD52+YB5MsTescVSJgphM/HFwILG9s3rMRek6+7lRgtvtyQH7ur6GWVSt
+         UgANiqdmWOOeeYQ9FrA/5tOBbPAfRE4ArU1gIRkrbzknPGkUQSioJTN43T8gzHgury/Y
+         OlruhOR78xG0fNNhcpI/+d3lsJ57eVfb1bHTnO13UfCApads/1Sp0M/1i1MrnpU9tsrF
+         4AHj02hS+5nYqKciHCDSDRZ65HeXu7K5OCvM9lvPSApn20hyX8OzMr2798aXq9hhQIVI
+         XJ+A==
+X-Gm-Message-State: AG10YORZ1D+YYNpgny6lE19JRefaMFJo4kjG35zQXIFXFHGBHZzCtJ2/gUMOQpI7YUrOgw==
+X-Received: by 10.66.139.137 with SMTP id qy9mr39639490pab.57.1456160581553;
+        Mon, 22 Feb 2016 09:03:01 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r5sm32870235pap.7.2016.02.28.11.46.16
+        by smtp.gmail.com with ESMTPSA id sm8sm38288656pac.43.2016.02.22.09.03.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 11:46:16 -0800 (PST)
-Date: Mon, 29 Feb 2016 01:13:29 +0530
+        Mon, 22 Feb 2016 09:03:01 -0800 (PST)
+Date: Mon, 22 Feb 2016 22:33:34 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/6] staging: rts5208: Remove NULL Test before vfree
-Message-ID: <20160228194329.GA1735@Karyakshetra>
+Subject: [PATCH] staging: rdma: hfi1: Compress return logic
+Message-ID: <20160222170333.GA26010@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-vfree frees the virtually continuous memory area starting at addr.
-If addr is NULL, no operation is performed. So NULL test is not needed
-before vfree.
+Simplified function return by merging assignment and return into
+one line.
 
-This was done using Coccinelle:
-
-@@
-expression x;
-@@
--if (x != NULL)
-    vfree(x);
+Found with Coccinelle.
 
 @@
-expression x;
+expression e;
+local idexpression ret;
 @@
+- ret =
++ return
+e;
+- return ret;
 
--if (x != NULL) {
-   vfree(x);
-   x = NULL;
--}
+@@ type T; identifier x; @@
+- T x;
+... when != x
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/rts5208/xd.c | 36 ++++++++++++------------------------
- 1 file changed, 12 insertions(+), 24 deletions(-)
+ drivers/staging/rdma/hfi1/user_pages.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
-index 10fea7b..b987f19 100644
---- a/drivers/staging/rts5208/xd.c
-+++ b/drivers/staging/rts5208/xd.c
-@@ -903,14 +903,10 @@ static inline void free_zone(struct zone_entry *zone)
- 	zone->set_index = 0;
- 	zone->get_index = 0;
- 	zone->unused_blk_cnt = 0;
--	if (zone->l2p_table) {
--		vfree(zone->l2p_table);
--		zone->l2p_table = NULL;
--	}
--	if (zone->free_table) {
--		vfree(zone->free_table);
--		zone->free_table = NULL;
--	}
-+	vfree(zone->l2p_table);
-+	zone->l2p_table = NULL;
-+	vfree(zone->free_table);
-+	zone->free_table = NULL;
+diff --git a/drivers/staging/rdma/hfi1/user_pages.c b/drivers/staging/rdma/hfi1/user_pages.c
+index 692de65..8ebfe9e 100644
+--- a/drivers/staging/rdma/hfi1/user_pages.c
++++ b/drivers/staging/rdma/hfi1/user_pages.c
+@@ -61,11 +61,7 @@
+ dma_addr_t hfi1_map_page(struct pci_dev *hwdev, struct page *page,
+ 			 unsigned long offset, size_t size, int direction)
+ {
+-	dma_addr_t phys;
+-
+-	phys = pci_map_page(hwdev, page, offset, size, direction);
+-
+-	return phys;
++	return pci_map_page(hwdev, page, offset, size, direction);
  }
 
- static void xd_set_unused_block(struct rtsx_chip *chip, u32 phy_blk)
-@@ -1588,14 +1584,10 @@ static int xd_build_l2p_tbl(struct rtsx_chip *chip, int zone_no)
- 	return STATUS_SUCCESS;
-
- Build_Fail:
--	if (zone->l2p_table) {
--		vfree(zone->l2p_table);
--		zone->l2p_table = NULL;
--	}
--	if (zone->free_table) {
--		vfree(zone->free_table);
--		zone->free_table = NULL;
--	}
-+	vfree(zone->l2p_table);
-+	zone->l2p_table = NULL;
-+	vfree(zone->free_table);
-+	zone->free_table = NULL;
-
- 	return STATUS_FAIL;
- }
-@@ -2251,14 +2243,10 @@ void xd_free_l2p_tbl(struct rtsx_chip *chip)
-
- 	if (xd_card->zone != NULL) {
- 		for (i = 0; i < xd_card->zone_cnt; i++) {
--			if (xd_card->zone[i].l2p_table != NULL) {
--				vfree(xd_card->zone[i].l2p_table);
--				xd_card->zone[i].l2p_table = NULL;
--			}
--			if (xd_card->zone[i].free_table != NULL) {
--				vfree(xd_card->zone[i].free_table);
--				xd_card->zone[i].free_table = NULL;
--			}
-+			vfree(xd_card->zone[i].l2p_table);
-+			xd_card->zone[i].l2p_table = NULL;
-+			vfree(xd_card->zone[i].free_table);
-+			xd_card->zone[i].free_table = NULL;
- 		}
- 		vfree(xd_card->zone);
- 		xd_card->zone = NULL;
+ int hfi1_acquire_user_pages(unsigned long vaddr, size_t npages, bool writable,
 --
 2.1.4
 
