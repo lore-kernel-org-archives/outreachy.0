@@ -1,136 +1,166 @@
-X-GM-THRID: 6208866043951054848
-X-Received: by 10.107.17.8 with SMTP id z8mr310609ioi.12.1445614277875;
-        Fri, 23 Oct 2015 08:31:17 -0700 (PDT)
+X-GM-THRID: 6254206698701979648
+X-Received: by 10.112.54.202 with SMTP id l10mr3678375lbp.14.1456170971958;
+        Mon, 22 Feb 2016 11:56:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.60.65 with SMTP id f1ls258571igr.26.gmail; Fri, 23 Oct 2015
- 08:31:17 -0700 (PDT)
-X-Received: by 10.68.195.197 with SMTP id ig5mr3927732pbc.4.1445614277509;
-        Fri, 23 Oct 2015 08:31:17 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id zg1si2321120pbb.2.2015.10.23.08.31.17
+Received: by 10.25.4.214 with SMTP id 205ls423562lfe.32.gmail; Mon, 22 Feb
+ 2016 11:56:10 -0800 (PST)
+X-Received: by 10.112.157.164 with SMTP id wn4mr3680882lbb.5.1456170970931;
+        Mon, 22 Feb 2016 11:56:10 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
+        by gmr-mx.google.com with ESMTPS id s141si1255619wmd.1.2016.02.22.11.56.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 08:31:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 22 Feb 2016 11:56:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id fv9so126676395pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 08:31:17 -0700 (PDT)
+Received: by mail-wm0-x232.google.com with SMTP id g62so179877443wme.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 11:56:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=lyRy4+yho/tlnUNgg94JhebFu4Je9/+lghnb9sKwu24=;
-        b=IDt2uYOZ4n7bHS/AueugTIftN+kU8hVwRsgHpiw19asnQuspqY8c5unuDFaNZ3U2QI
-         qYrdsT3fUelhYWxpj2s6bMWo4qc9mQwFcn5iTcg0/MCvwKQ7q9v5pgZuzPtKtiNC11Bn
-         4zXSObZJcl02iV4PG5/P5ecUV1CaWiUboH6KMHojsHobGM0boxf4oJT0WU3S8VyKbQAu
-         sQ4cGB57VL16hnbn9c0hYrysLQJZsOI5CrFb3hj7dhTedRz1xZ3LsC4FBPVnlKkq6uZA
-         wZ5ngfEQzi99MphZvEWpd5rUCZ7wVnpK6PFogHzHN9pycfFFovE+ZTgtGSgWdjwb5UE5
-         tvLQ==
-X-Received: by 10.66.218.129 with SMTP id pg1mr5569208pac.156.1445614277158;
-        Fri, 23 Oct 2015 08:31:17 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.5])
-        by smtp.gmail.com with ESMTPSA id er1sm9198402pbb.6.2015.10.23.08.31.16
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 23 Oct 2015 08:31:16 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
+        bh=PJ+tVIEcEy5NJKFB4QuuvfyBmtYPMGGjFnSh5jJI5bY=;
+        b=LHHW9MqELXIyStZofQGpaOSg8kAHduwg94mASKOCs6ijd5Glx1rN5LO8DiaErA9FqU
+         uEX1rLqgOWiqaF3gXChehIJ4tHLLsI+oOwzrFkQgx/pt80kUQ4U7KTL6PDoschzIvtFD
+         XfLkulse+NvgsPesFq17jpRDrGlZgpWhhWjt7pcwCRAHPBYY89nkP0yPflBOROwM7pSl
+         ICLP/0x51Pk1oFsjL0fna5u98/bfg++g3vgJgIfCY8kfrNKzWLZxQlNmyZsCobir+dvN
+         OH3fwyNF+C2hfE2xcBOyaGWhinxSveq8hClYjSe/+TDR965MUSshchFO+18/dYbA+jUx
+         EC5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=PJ+tVIEcEy5NJKFB4QuuvfyBmtYPMGGjFnSh5jJI5bY=;
+        b=HeHi262/tEVnaL8xxFi9hJzoy3wD45kzBvqRsLszz5XFjJeNmH1cgkdNVKDuRygJuA
+         AWN4ujJ7xgzUstnDXfLTr/9lQu4awFRr7vbThlcENKC1AGjeL8eIE+ogTdvUM+AsnZiC
+         ycLo9M9nIQPxYvT748QLykkE1YLjQBRS2nkl9cH+C4KUZqtrKnI3/13HsxucUJGZrGc1
+         ug9AV50U8l3oGSLfDO68UrTLmvDMnvfztdrSWQSqHVDu2zWJieTkwFT7rXo7eIniTht9
+         ri6uP0u/dZjimQWFnrGQU0X86NWDIfoqusJgB8welH/aNi8+wXASUoEDFHpxGA8xVcgJ
+         PL3Q==
+X-Gm-Message-State: AG10YORhGmxiEVGyD547zvBBoe9wc5aoS+V6sSzDQ4pOVuzwXWypVe2UkwPGyUrBLUpr2Q==
+X-Received: by 10.194.84.171 with SMTP id a11mr16151014wjz.91.1456170970761;
+        Mon, 22 Feb 2016 11:56:10 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.228.232])
+        by smtp.gmail.com with ESMTPSA id hm9sm26108518wjb.34.2016.02.22.11.56.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 22 Feb 2016 11:56:09 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] Staging: mt29f_spinand: Use preferred kernel type
-Date: Fri, 23 Oct 2015 23:31:08 +0800
-Message-Id: <1445614268-32236-1-git-send-email-eraretuya@gmail.com>
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: speakup: Add space around '|'
+Date: Mon, 22 Feb 2016 21:56:01 +0200
+Message-Id: <1456170961-4833-1-git-send-email-dilekuzulmez@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-Replace remaining instances of 'uint8_t' with 'u8' for consistency since
-'u8' and 'u16' are already being used in other parts of the code.
-Checkpatch pointed out this issue.
+Add space around operator '|'. Problem found using checkpatch.pl
+CHECK: spaces preferred around that '|' (ctx:VxV)
 
-CHECK: Prefer kernel type 'u8' over 'uint8_t'
-
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
 ---
- drivers/staging/mt29f_spinand/mt29f_spinand.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/speakup/kobjects.c | 54 +++++++++++++++++++-------------------
+ 1 file changed, 27 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-index 4165fb4..a8292a1 100644
---- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
-+++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-@@ -145,7 +145,7 @@ static int spinand_read_id(struct spi_device *spi_nand, u8 *id)
-  *    Once the status turns to be ready, the other status bits also are
-  *    valid status bits.
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index fdfeb42..528cbdc 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -862,66 +862,66 @@ static struct kobj_attribute version_attribute =
+ 	__ATTR_RO(version);
+ 
+ static struct kobj_attribute delimiters_attribute =
+-	__ATTR(delimiters, S_IWUSR|S_IRUGO, punc_show, punc_store);
++	__ATTR(delimiters, S_IWUSR | S_IRUGO, punc_show, punc_store);
+ static struct kobj_attribute ex_num_attribute =
+-	__ATTR(ex_num, S_IWUSR|S_IRUGO, punc_show, punc_store);
++	__ATTR(ex_num, S_IWUSR | S_IRUGO, punc_show, punc_store);
+ static struct kobj_attribute punc_all_attribute =
+-	__ATTR(punc_all, S_IWUSR|S_IRUGO, punc_show, punc_store);
++	__ATTR(punc_all, S_IWUSR | S_IRUGO, punc_show, punc_store);
+ static struct kobj_attribute punc_most_attribute =
+-	__ATTR(punc_most, S_IWUSR|S_IRUGO, punc_show, punc_store);
++	__ATTR(punc_most, S_IWUSR | S_IRUGO, punc_show, punc_store);
+ static struct kobj_attribute punc_some_attribute =
+-	__ATTR(punc_some, S_IWUSR|S_IRUGO, punc_show, punc_store);
++	__ATTR(punc_some, S_IWUSR | S_IRUGO, punc_show, punc_store);
+ static struct kobj_attribute repeats_attribute =
+-	__ATTR(repeats, S_IWUSR|S_IRUGO, punc_show, punc_store);
++	__ATTR(repeats, S_IWUSR | S_IRUGO, punc_show, punc_store);
+ 
+ static struct kobj_attribute attrib_bleep_attribute =
+-	__ATTR(attrib_bleep, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(attrib_bleep, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute bell_pos_attribute =
+-	__ATTR(bell_pos, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(bell_pos, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute bleep_time_attribute =
+-	__ATTR(bleep_time, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(bleep_time, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute bleeps_attribute =
+-	__ATTR(bleeps, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(bleeps, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute cursor_time_attribute =
+-	__ATTR(cursor_time, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(cursor_time, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute key_echo_attribute =
+-	__ATTR(key_echo, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(key_echo, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute no_interrupt_attribute =
+-	__ATTR(no_interrupt, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(no_interrupt, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute punc_level_attribute =
+-	__ATTR(punc_level, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(punc_level, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute reading_punc_attribute =
+-	__ATTR(reading_punc, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(reading_punc, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute say_control_attribute =
+-	__ATTR(say_control, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(say_control, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute say_word_ctl_attribute =
+-	__ATTR(say_word_ctl, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(say_word_ctl, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ static struct kobj_attribute spell_delay_attribute =
+-	__ATTR(spell_delay, S_IWUSR|S_IRUGO, spk_var_show, spk_var_store);
++	__ATTR(spell_delay, S_IWUSR | S_IRUGO, spk_var_show, spk_var_store);
+ 
+ /*
+  * These attributes are i18n related.
   */
--static int spinand_read_status(struct spi_device *spi_nand, uint8_t *status)
-+static int spinand_read_status(struct spi_device *spi_nand, u8 *status)
- {
- 	struct spinand_cmd cmd = {0};
- 	int ret;
-@@ -478,7 +478,7 @@ static int spinand_program_page(struct spi_device *spi_nand,
- {
- 	int retval;
- 	u8 status = 0;
--	uint8_t *wbuf;
-+	u8 *wbuf;
- #ifdef CONFIG_MTD_SPINAND_ONDIEECC
- 	unsigned int i, j;
+ static struct kobj_attribute announcements_attribute =
+-	__ATTR(announcements, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(announcements, S_IWUSR | S_IRUGO, message_show, message_store);
+ static struct kobj_attribute characters_attribute =
+-	__ATTR(characters, S_IWUSR|S_IRUGO, chars_chartab_show,
++	__ATTR(characters, S_IWUSR | S_IRUGO, chars_chartab_show,
+ 	       chars_chartab_store);
+ static struct kobj_attribute chartab_attribute =
+-	__ATTR(chartab, S_IWUSR|S_IRUGO, chars_chartab_show,
++	__ATTR(chartab, S_IWUSR | S_IRUGO, chars_chartab_show,
+ 	       chars_chartab_store);
+ static struct kobj_attribute ctl_keys_attribute =
+-	__ATTR(ctl_keys, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(ctl_keys, S_IWUSR | S_IRUGO, message_show, message_store);
+ static struct kobj_attribute colors_attribute =
+-	__ATTR(colors, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(colors, S_IWUSR | S_IRUGO, message_show, message_store);
+ static struct kobj_attribute formatted_attribute =
+-	__ATTR(formatted, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(formatted, S_IWUSR | S_IRUGO, message_show, message_store);
+ static struct kobj_attribute function_names_attribute =
+-	__ATTR(function_names, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(function_names, S_IWUSR | S_IRUGO, message_show, message_store);
+ static struct kobj_attribute key_names_attribute =
+-	__ATTR(key_names, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(key_names, S_IWUSR | S_IRUGO, message_show, message_store);
+ static struct kobj_attribute states_attribute =
+-	__ATTR(states, S_IWUSR|S_IRUGO, message_show, message_store);
++	__ATTR(states, S_IWUSR | S_IRUGO, message_show, message_store);
  
-@@ -613,9 +613,9 @@ static int spinand_erase_block(struct spi_device *spi_nand, u16 block_id)
- 
- #ifdef CONFIG_MTD_SPINAND_ONDIEECC
- static int spinand_write_page_hwecc(struct mtd_info *mtd,
--		struct nand_chip *chip, const uint8_t *buf, int oob_required)
-+		struct nand_chip *chip, const u8 *buf, int oob_required)
- {
--	const uint8_t *p = buf;
-+	const u8 *p = buf;
- 	int eccsize = chip->ecc.size;
- 	int eccsteps = chip->ecc.steps;
- 
-@@ -625,11 +625,11 @@ static int spinand_write_page_hwecc(struct mtd_info *mtd,
- }
- 
- static int spinand_read_page_hwecc(struct mtd_info *mtd, struct nand_chip *chip,
--		uint8_t *buf, int oob_required, int page)
-+		u8 *buf, int oob_required, int page)
- {
- 	int retval;
- 	u8 status;
--	uint8_t *p = buf;
-+	u8 *p = buf;
- 	int eccsize = chip->ecc.size;
- 	int eccsteps = chip->ecc.steps;
- 	struct spinand_info *info = (struct spinand_info *)chip->priv;
-@@ -667,7 +667,7 @@ static void spinand_select_chip(struct mtd_info *mtd, int dev)
- {
- }
- 
--static uint8_t spinand_read_byte(struct mtd_info *mtd)
-+static u8 spinand_read_byte(struct mtd_info *mtd)
- {
- 	struct spinand_state *state = mtd_to_state(mtd);
- 	u8 data;
-@@ -707,7 +707,7 @@ static int spinand_wait(struct mtd_info *mtd, struct nand_chip *chip)
- 	return 0;
- }
- 
--static void spinand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
-+static void spinand_write_buf(struct mtd_info *mtd, const u8 *buf, int len)
- {
- 	struct spinand_state *state = mtd_to_state(mtd);
- 
-@@ -715,7 +715,7 @@ static void spinand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
- 	state->buf_ptr += len;
- }
- 
--static void spinand_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
-+static void spinand_read_buf(struct mtd_info *mtd, u8 *buf, int len)
- {
- 	struct spinand_state *state = mtd_to_state(mtd);
- 
+ /*
+  * Create groups of attributes so that we can create and destroy them all
 -- 
 1.9.1
 
