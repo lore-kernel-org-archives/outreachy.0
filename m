@@ -1,119 +1,112 @@
-X-GM-THRID: 6254745992232435712
-X-Received: by 10.182.53.233 with SMTP id e9mr23290999obp.28.1456296535288;
-        Tue, 23 Feb 2016 22:48:55 -0800 (PST)
+X-GM-THRID: 6254021828724916224
+X-Received: by 10.140.253.198 with SMTP id y189mr25893501qhc.9.1456127927631;
+        Sun, 21 Feb 2016 23:58:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.142 with SMTP id u14ls1374506qge.82.gmail; Tue, 23 Feb
- 2016 22:48:53 -0800 (PST)
-X-Received: by 10.129.116.214 with SMTP id p205mr36908462ywc.55.1456296533616;
-        Tue, 23 Feb 2016 22:48:53 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id 79si221821pft.0.2016.02.23.22.48.53
+Received: by 10.107.4.2 with SMTP id 2ls41474ioe.10.gmail; Sun, 21 Feb 2016
+ 23:58:47 -0800 (PST)
+X-Received: by 10.67.30.161 with SMTP id kf1mr26167041pad.21.1456127927301;
+        Sun, 21 Feb 2016 23:58:47 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id ui7si3018666pab.0.2016.02.21.23.58.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 22:48:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Sun, 21 Feb 2016 23:58:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id e127so7440734pfe.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 22:48:53 -0800 (PST)
+Received: by mail-pa0-x22f.google.com with SMTP id ho8so89444878pac.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 23:58:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=xHDROOx3l3lXmuRK03lFupGE/thWyZ3DZ9R767HPyqQ=;
-        b=Kx9Oyi5WvoRyA1NZGchufWrogIdv3EaohUYc6d42E/7aIFK+3CIiwufozP4Rx49us4
-         4QudrPEeohuDSa9tD/qmh6iPQ9dCMZ1YHbhCZ23ryd/lKm8MLyuMFehxhNu/Xw+0qHCV
-         SswH8kMzzEMqsJb1AHozDct4H8AdZQiUX7GGAc4x63Pq5JVrafTp5IPItjfUH5Xgqj/e
-         rwufzD+o09WnfxnR28MQ1sWgMwmuZv6LFK2LnFUtMt10JBxYjdktjazAKwyUx6r6cDmi
-         IQ+nvWlkTrTGEkZrE4B2mmXvTWmeqW6k9y3Nz9GekkD2CltVmVjjC8Flcr6i7W1r+ikN
-         N6Pw==
+        bh=+VXh8Gn/zSueWYiCPZNj8j62UsKFmUcsk55PDH2K/R4=;
+        b=lohRZrUBjGeVKbCEfhOmvvz9ACgi4lYnOcXv4Nlar3fhj30YDDKI6s6LXNoeFgxPG2
+         v/8xW2G1aeWIaXV1sl2NOULoUlX6Hg8aM7pecFgT0Xt7moHz6/9rXjThzv440iliSalg
+         MJsLgW57l4eM58UHvoyoqBu/bvnHWnMWVcQs8bftbntGSRWOCunbArKogr0KXUgQmuaD
+         kMNz8HH9RZLS9df9tpNaAuhuczLrKkrzOu93/38xcEIj1favWSH6VpA6vEzHurdKBVl4
+         +vqjoZh3M2Cq5eUszJ4eo8sC42C+kJ52CdxL30pk/8QrmKsX/5nRKW7SpCnhS6RSIxl9
+         pC/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=xHDROOx3l3lXmuRK03lFupGE/thWyZ3DZ9R767HPyqQ=;
-        b=iXHYXOMtBbY5nTUQcZjvRoBUuRd9Ok/i7mb5jDjmdOh6vyl6og+/MT0mx5rTZ8438Z
-         /rGW2kAQ6FFQ0Gt6DwKCZifkPJCBtIKw7nUNf07sJMaI8rnBIb4D4cacBfyikci2l2ox
-         4iZSnJonZ28EhcNjr3HZ+K4kp3qq3GmMqc9/FBIuVysrvBXe5tHGzstjhiPNmY/pnDCs
-         vLurlaRUeQIYf91tnOZEmbRpZus5E0mC3LtTKW7OzXL4z6/u1zaFFHSsp5vRucyUL734
-         Ht9bXSbGoVXY4ti6U4+VP/wY8hXvSP5GE1jGpA71l0Fgi9XBxGTHWYc8IpvbvVjcEffp
-         UBFA==
-X-Gm-Message-State: AG10YOSV4tqdjbCEYmPouz8+IT9PXI/KeJq9D3QL9GbjEGZuAb0UK+vsTOrL6JYlnSAp0w==
-X-Received: by 10.98.67.67 with SMTP id q64mr52938964pfa.44.1456296533438;
-        Tue, 23 Feb 2016 22:48:53 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
-        by smtp.gmail.com with ESMTPSA id r87sm2116416pfa.61.2016.02.23.22.48.52
+        bh=+VXh8Gn/zSueWYiCPZNj8j62UsKFmUcsk55PDH2K/R4=;
+        b=gLnmzcQs+gDQpPZQtlHykl+oWDQons6esw6PdLL5egqMkLrjlw11kgKfzKTrVMBYx+
+         l9lrc+Y2yypkxzKS7unyiektfkQfU0Xq/PUyyzkiOtPhxInvNTBPuoDJR6CMJCZWUBAa
+         UENgjPQcaCaWNrUHH+w6sg7vRUUMh6k1aZnGa6iByVZHjnZlBrJwr4acQ+P2w0NFiy3S
+         XSX47Ug7bx1+wJeRLL7Zd5Z/PeVIKslJqVfJNSbyWIbfmW2SH7c1LuOYHBR56r6n1M8z
+         /AmZONu/N2vSa3iBe1FUdEnGabjv/0vnK+KGUyX9UxXLa8Mqiig8tpPL2bdpXWPJcNMe
+         keuA==
+X-Gm-Message-State: AG10YORGPmfayS94haPSc5lYn9EqxFkUlA9hKaXsKpfh2QhJbi7w3Xo+6TAx7vNPgcnCoQ==
+X-Received: by 10.67.6.10 with SMTP id cq10mr36330783pad.120.1456127927190;
+        Sun, 21 Feb 2016 23:58:47 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r5sm34767033pap.7.2016.02.21.23.58.46
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 22:48:52 -0800 (PST)
-Date: Tue, 23 Feb 2016 22:48:52 -0800
-From: Alison Schofield <amsfield22@gmail.com>
+        Sun, 21 Feb 2016 23:58:46 -0800 (PST)
+Date: Mon, 22 Feb 2016 13:29:20 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fbtft: replace ternary operator with min macro
-Message-ID: <20160224064843.GA17889@d830.WORKGROUP>
+Subject: [PATCH] staging: rdma: hfi1: Use setup_timer
+Message-ID: <20160222075920.GA11138@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use macro min() to get the minimum of two values for
-brevity and readability.
+The function setup_timer combines the initialization of a timer with the
+initialization of the timer's function and data fields.
 
-Found using Coccinelle:
-@ type T; T x; T y; @@
+The multiline code for timer initialization is now replaced with function
+setup_timer.
+
+This was done with Coccinelle.
+
+@@ expression e1, e2, e3; type T; @@
+- init_timer(&e1);
+...
 (
-- x < y ? x : y
-+ min(x,y)
+- e1.function = e2;
+...
+- e1.data = (T)e3;
++ setup_timer(&e1, e2, (T)e3);
 |
-- x > y ? x : y
-+ max(x,y)
+- e1.data = (T)e3;
+...
+- e1.function = e2;
++ setup_timer(&e1, e2, (T)e3);
+|
+- e1.function = e2;
++ setup_timer(&e1, e2, 0);
 )
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/fbtft/fb_ra8875.c | 2 +-
- drivers/staging/fbtft/fbtft-bus.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rdma/hfi1/verbs.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
-index b167c50..0585e0b 100644
---- a/drivers/staging/fbtft/fb_ra8875.c
-+++ b/drivers/staging/fbtft/fb_ra8875.c
-@@ -277,7 +277,7 @@ static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
- 		startbyte_size = 1;
- 
- 	while (remain) {
--		to_copy = remain > tx_array_size ? tx_array_size : remain;
-+		to_copy = min(tx_array_size, remain);
- 		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
- 			to_copy, remain - to_copy);
- 
-diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fbtft-bus.c
-index 58449ad8..b31f111 100644
---- a/drivers/staging/fbtft/fbtft-bus.c
-+++ b/drivers/staging/fbtft/fbtft-bus.c
-@@ -157,7 +157,7 @@ int fbtft_write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
- 	}
- 
- 	while (remain) {
--		to_copy = remain > tx_array_size ? tx_array_size : remain;
-+		to_copy = min(tx_array_size, remain);
- 		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
- 						to_copy, remain - to_copy);
- 
-@@ -201,7 +201,7 @@ int fbtft_write_vmem16_bus9(struct fbtft_par *par, size_t offset, size_t len)
- 	tx_array_size = par->txbuf.len / 2;
- 
- 	while (remain) {
--		to_copy = remain > tx_array_size ? tx_array_size : remain;
-+		to_copy = min(tx_array_size, remain);
- 		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
- 						to_copy, remain - to_copy);
- 
--- 
+diff --git a/drivers/staging/rdma/hfi1/verbs.c b/drivers/staging/rdma/hfi1/verbs.c
+index 09b8d41..1761686 100644
+--- a/drivers/staging/rdma/hfi1/verbs.c
++++ b/drivers/staging/rdma/hfi1/verbs.c
+@@ -1926,9 +1926,7 @@ int hfi1_register_ib_device(struct hfi1_devdata *dd)
+ 	spin_lock_init(&dev->n_qps_lock);
+ 	spin_lock_init(&dev->n_srqs_lock);
+ 	spin_lock_init(&dev->n_mcast_grps_lock);
+-	init_timer(&dev->mem_timer);
+-	dev->mem_timer.function = mem_timer;
+-	dev->mem_timer.data = (unsigned long) dev;
++	setup_timer(&dev->mem_timer, mem_timer, (unsigned long)dev);
+
+ 	/*
+ 	 * The top hfi1_lkey_table_size bits are used to index the
+--
 2.1.4
 
 
