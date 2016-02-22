@@ -1,97 +1,112 @@
-X-GM-THRID: 6253367182220066816
-X-Received: by 10.140.240.129 with SMTP id l123mr14562361qhc.8.1455975506285;
-        Sat, 20 Feb 2016 05:38:26 -0800 (PST)
+X-GM-THRID: 6253814918113394688
+X-Received: by 10.129.152.130 with SMTP id p124mr3102748ywg.24.1456144031797;
+        Mon, 22 Feb 2016 04:27:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.196.36 with SMTP id ij4ls398229obc.61.gmail; Sat, 20 Feb
- 2016 05:38:24 -0800 (PST)
-X-Received: by 10.182.56.233 with SMTP id d9mr17320945obq.2.1455975504896;
-        Sat, 20 Feb 2016 05:38:24 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id u66si2388226pfa.2.2016.02.20.05.38.24
+Received: by 10.140.21.84 with SMTP id 78ls1669710qgk.10.gmail; Mon, 22 Feb
+ 2016 04:27:10 -0800 (PST)
+X-Received: by 10.140.246.3 with SMTP id r3mr26827036qhc.2.1456144030147;
+        Mon, 22 Feb 2016 04:27:10 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id u66si3443800pfa.2.2016.02.22.04.27.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 05:38:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Mon, 22 Feb 2016 04:27:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id q63so66838463pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 05:38:24 -0800 (PST)
+Received: by mail-pa0-x230.google.com with SMTP id ho8so93041827pac.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 04:27:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=YDC+/ojO/2LCbXdAgdZeE+YBwgvQSa1SbDgK2ziVb6M=;
-        b=jt0zroRYz91mtA7/sChHSUIPrmzLUsM8jRHzi4P4KydzyqPnY2yWWdgq387YP/Sffq
-         gTxR+vr6Ag0JkyOy2QLEyTfVjvK5eQGxGZh+K1ZoTNp9sn1k0pGLh0HsekZgM/UYemR4
-         2QJgJC795vf6Ybkr1GeP2isKx2Y/tuoEefhqjWACFO7dw73drnicG0UzNdRDVzxefNyg
-         SUcE4dpjKdULcKESmIBB9YuQXlGSm983VAufHF/eKc0HqMwn5GQpZf4crlM8BxpUgoPS
-         lKzauCjoSrAUa80KSwItiVwXizrbzCgHgllRbWOpMKxviQLWKriWYkymzHkKpimxTj+k
-         LT7Q==
+        bh=c6x5V3g+DiZJUVsCy05NLbpkfI2Ow5apnfOQnUuHj/U=;
+        b=PNSNgiuce9VPt3ZNj1oDn4EBa1+ekC2HHG++xOEEGLgqgzAw7p1az9v5hZLdoSPVV3
+         scrM6xwTIk5wvJR+DmS25gVkgiEW++30hc3ICEF0XU+M0zmHqCjjuNzP3GSRVH76CIQB
+         07/w+juNxwj/H/JzV2PTBjYSDGt7Rb+wRGauPDXl0SCHBFCHrtvQU9zPO+/0X1ER+uVs
+         JGUjXdqGqcZx9bf9Ia9imUeWtxxBqxLMP74XkZYrupljvtU24jrk8YmXtcr6BOT2rRLH
+         mn9orF7y4gVcEnhIDv3QJmu+YdKJmKk+/EgdcDZIJQKAAOSsn457l23M+X7h/6jPzKJi
+         ejQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=YDC+/ojO/2LCbXdAgdZeE+YBwgvQSa1SbDgK2ziVb6M=;
-        b=DLZo2ECISICDjD124MlU1rnuvpS6Z7mSCqNb6e2slxUU5ob4vZHkmHcJjtO3yaHqtO
-         t1bhwRIAFFfSsJXCTYjECT0UNOrISqk5//xswm+TWl6po43OOthEf91qPL6cEgluUyXf
-         /fVItdHIx87yQ08Icq5zDxU35vZJ3egXeeofKEddBZsISa3Jnb76ctDb6/9w5gd7a7Vk
-         hXboamGXhl42ttiZIVmAmb8pQRcX2DjnUhj5PTUbStRHiCVjxjaLbOmldqcVOfwNBSr4
-         7R3dFUjLcBzF0tHz5QQUGzTvHKbvhEJGSypsgIbwdDPYP4hJtmZRJFjbkmSL86TaetaH
-         Df5Q==
-X-Gm-Message-State: AG10YOTiIbK8uTHKG3VkDimXQNQGJWbTa3NtG78AYpcriqD6tYY8EOCFe+eQPN4/J7ApTQ==
-X-Received: by 10.98.68.86 with SMTP id r83mr25552436pfa.12.1455975504679;
-        Sat, 20 Feb 2016 05:38:24 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.106.39])
-        by smtp.gmail.com with ESMTPSA id o184sm24794154pfo.36.2016.02.20.05.38.20
+        bh=c6x5V3g+DiZJUVsCy05NLbpkfI2Ow5apnfOQnUuHj/U=;
+        b=fMzlj8/1rJtIs+4j90U9MeUmfc+BoVTHb0hjWudp7AKByDyFUWrB09e7q2Zy5y/1+o
+         Abonkherl9vl3y8z+gA4y+qWzWmzi3m8xPnUIp5T8BxMqmegbu1xqGx01y/2tCtkJ1go
+         IgRdYGYjp1PhC28LoDsFULjQE8D/DnFi1PvE2IJ0a5WiZ1hU2QKB2pFwq2+OF3qJ+DAE
+         aIaFSLev5YNZcR7/yDpmX1cTjXU9xD1V4LUQiN9iUrikZC4ECC7C+gghknwsy6W3CdgA
+         Clcd1RpV84cm9nkv3lO5TMHD69OmqVib82SOGVY3F8SoDwvUuLjJ7Au8FZSdyD2dEYT6
+         gEEA==
+X-Gm-Message-State: AG10YOQgvZk1s7kvNQq5meUnquGQaW9OWV62Fu6wks7uShs2b3Luz2j4dYg8w1C92nF85Q==
+X-Received: by 10.66.235.129 with SMTP id um1mr37387488pac.17.1456144030009;
+        Mon, 22 Feb 2016 04:27:10 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id tp6sm36871775pab.25.2016.02.22.04.27.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 05:38:23 -0800 (PST)
-Date: Sat, 20 Feb 2016 19:08:02 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 22 Feb 2016 04:27:09 -0800 (PST)
+Date: Mon, 22 Feb 2016 17:57:42 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: Use offset_in_page macro
-Message-ID: <20160220133802.GA23298@amitoj-Inspiron-3542>
+Subject: [PATCH v2 3/4] staging: most: hdm-usb: Use macro DIV_ROUND_UP
+Message-ID: <20160222122742.GA16694@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use offset_in_page macro instead of (var & ~PAGE_MASK)
-
-The Coccinelle semantic patch used to make this change is as follows:
-// <smpl>
+The macro DIV_ROUND_UP performs the computation (((n) + (d) - 1) /(d)).
+It clarifies the divisor calculations. This occurence was detected using the
+coccinelle script:
 @@
-unsigned long p;
+expression e1;
+expression e2;
 @@
-- p & ~PAGE_MASK
-+ offset_in_page(p)
-// </smpl>
+(
+- ((e1) + e2 - 1) / (e2)
++ DIV_ROUND_UP(e1,e2)
+|
+- ((e1) + (e2 - 1))/ (e2)
++ DIV_ROUND_UP(e1,e2)
+)
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+The macro CEILING was dropped altogether and has been replaced with
+DIV_ROUND_UP.
+
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/rdma/hfi1/user_sdma.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Changes in v2:
+  - Removed macro CEILING & all its occurences.
+ drivers/staging/most/hdm-usb/hdm_usb.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rdma/hfi1/user_sdma.c b/drivers/staging/rdma/hfi1/user_sdma.c
-index 4f55950..feb2069 100644
---- a/drivers/staging/rdma/hfi1/user_sdma.c
-+++ b/drivers/staging/rdma/hfi1/user_sdma.c
-@@ -925,8 +925,8 @@ static int user_sdma_send_pkts(struct user_sdma_request *req, unsigned maxpkts)
- 			unsigned pageidx, len;
- 
- 			base = (unsigned long)iovec->iov.iov_base;
--			offset = ((base + iovec->offset + iov_offset) &
--				  ~PAGE_MASK);
-+			offset = offset_in_page(base + iovec->offset +
-+						iov_offset);
- 			pageidx = (((iovec->offset + iov_offset +
- 				     base) - (base & PAGE_MASK)) >> PAGE_SHIFT);
- 			len = offset + req->info.fragsize > PAGE_SIZE ?
--- 
-1.9.1
+diff --git a/drivers/staging/most/hdm-usb/hdm_usb.c b/drivers/staging/most/hdm-usb/hdm_usb.c
+index 3ee9e6f..9d5555d 100644
+--- a/drivers/staging/most/hdm-usb/hdm_usb.c
++++ b/drivers/staging/most/hdm-usb/hdm_usb.c
+@@ -40,7 +40,6 @@
+ #define MAX_SUFFIX_LEN		10
+ #define MAX_STRING_LEN		80
+ #define MAX_BUF_SIZE		0xFFFF
+-#define CEILING(x, y)		(((x) + (y) - 1) / (y))
+
+ #define USB_VENDOR_ID_SMSC	0x0424  /* VID: SMSC */
+ #define USB_DEV_ID_BRDG		0xC001  /* PID: USB Bridge */
+@@ -786,7 +785,7 @@ static int hdm_configure_channel(struct most_interface *iface, int channel,
+ 	temp_size += tail_space;
+
+ 	/* calculate extra length to comply w/ HW padding */
+-	conf->extra_len = (CEILING(temp_size, USB_MTU) * USB_MTU)
++	conf->extra_len = (DIV_ROUND_UP(temp_size, USB_MTU) * USB_MTU)
+ 			  - conf->buffer_size;
+ exit:
+ 	mdev->conf[channel] = *conf;
+--
+2.1.4
 
 
