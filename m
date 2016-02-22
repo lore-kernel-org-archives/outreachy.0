@@ -1,119 +1,96 @@
-X-GM-THRID: 6261663196843606016
-X-Received: by 10.194.236.230 with SMTP id ux6mr2461703wjc.4.1457907072802;
-        Sun, 13 Mar 2016 15:11:12 -0700 (PDT)
+X-GM-THRID: 6253849436134309888
+X-Received: by 10.28.172.194 with SMTP id v185mr1115212wme.5.1456145919309;
+        Mon, 22 Feb 2016 04:58:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.35.70 with SMTP id j67ls405877wmj.44.canary; Sun, 13 Mar
- 2016 15:11:12 -0700 (PDT)
-X-Received: by 10.28.153.70 with SMTP id b67mr1539228wme.2.1457907072392;
-        Sun, 13 Mar 2016 15:11:12 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
-        by gmr-mx.google.com with ESMTPS id s141si477348wmd.1.2016.03.13.15.11.12
+Received: by 10.28.12.149 with SMTP id 143ls403570wmm.46.gmail; Mon, 22 Feb
+ 2016 04:58:38 -0800 (PST)
+X-Received: by 10.28.48.88 with SMTP id w85mr1108046wmw.5.1456145918636;
+        Mon, 22 Feb 2016 04:58:38 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
+        by gmr-mx.google.com with ESMTPS id h73si761083wme.0.2016.02.22.04.58.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 15:11:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
+        Mon, 22 Feb 2016 04:58:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x235.google.com with SMTP id l68so84138792wml.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 15:11:12 -0700 (PDT)
+Received: by mail-wm0-x22a.google.com with SMTP id g62so161005041wme.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 04:58:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=5Jz4h99V7RJSNYYxm5y7CTFU+6UCrjz5nmy6N03HwFk=;
-        b=FhRhkC9rG+da2OglgZYKwqZUWzOIL+9HOT840C+Svwm2m/c0DI18HTUQv+E00bTC4N
-         VnsCINgWnuV0oiFWKWfjW1k3zYbTktvv1zIRP+vgZFk1foZCnMLwtQcdkJwOWYwaIYus
-         OuyK2qVggYuibdWTmcK2m2pk4g6s55ebMu1qeH/2rVuURIhfQY16Qnrtft7nOwlD/DwD
-         MgUqkhhGrBWF5DTCkMxUtn7vtG88gKI725Z2+hzkMYIPvTjTOIMZdlLkPc69mmO3f1kg
-         Rdp7RDU+NuLBXjZKN4DNXJy//Deu9PMQp/P9/oqsOhMb2R1TYJ6VsjH2QQuBYa+MLRrz
-         qMgA==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=QeV8yHZ+QW/svHEi5ZPC1EbNn7mPEBphDNLosehTYbA=;
+        b=ybIdL9aFarqo8ZDHhZAcMJAZmbRxYQfJ6I24aFEv3tjxLDrGnFa94FVUL6pg98aKFM
+         be6/L4ORWqlilrxOagOnNCAJ8q9s2JZGkCLH1hgn7i0WQVgvHBKS+e37+JsfcHx/OiJM
+         Krd900LvwrtQTJ7+X09XVV4oCy9mkHN5O5sVp67w7Vdifm95Fi6nRFk/hvHVud1DJmZu
+         CU7pCMh3cmU0TAMh8wNNh0eih+nJfFHKnRMayrmU3XUVzNQ/i2qXlSjhytKq0qVLrvql
+         O6rY+Al/xV1slqVSU/lbq2OupRLqD7F1762fwY3+iAOzw3ND4vyk0pmordRrsPjurh1U
+         lmhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=5Jz4h99V7RJSNYYxm5y7CTFU+6UCrjz5nmy6N03HwFk=;
-        b=gI2kYMFUnql7HGsgqzGsISU5hS3/iPH6vdBu32YsdEvVZs6RyZ2I7UdBXLHQUXaNBl
-         XZ0xcK2cwyORBvxtVntoK7m7n2NIawMJ0SRHxRBo+fPxuGbBbf9Xs9RhhSt09qSa1kdU
-         ZzIg6hQb+8iOZSDWczREc0klr1w1YzH5xnVcIYg0gI9LezH2kPYmIoidJSPgneUWh/v8
-         xf8afNVm5iIVsFNHHtdyayFrO9n5mvqH6C7LPMFTgILtrbmz8KpX86qQhjM8BeiTedgT
-         8lvZG5/TWGtGZBYv2vJvC9zAXwwLsM5PcOhi45vLVZ2VUuIbYFEstge10wzJRf3L060u
-         8cnA==
-X-Gm-Message-State: AD7BkJIdCBwkuQ6gTEDSfkYnS4p5wdyzXfPdHrTb6LOsDWLwmqI/COLuWt0eNoegUYkUVw==
-X-Received: by 10.28.1.199 with SMTP id 190mr5113983wmb.3.1457907072267;
-        Sun, 13 Mar 2016 15:11:12 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([95.12.73.44])
-        by smtp.gmail.com with ESMTPSA id z6sm13306862wme.9.2016.03.13.15.11.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 15:11:11 -0700 (PDT)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: olpc_dcon: Add space around '<<'
-Date: Mon, 14 Mar 2016 00:11:04 +0200
-Message-Id: <1457907064-6493-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=QeV8yHZ+QW/svHEi5ZPC1EbNn7mPEBphDNLosehTYbA=;
+        b=cah8zNgylyk4OXrkYl/UltIGS7KcWt1UcYMvYhoY8Seiay0Ok3EMs2/lrH8F2w7GRl
+         IJg0ZHkSdkFMyUyi+7V2UcvX53zAAv43vkjltHYz3/PObIzJXM0c+whW973InPjvZkD3
+         qDl5ZSFmxIgIm4TQP4yA3fk4Ksdkls8GHYG9aaRCttpo4bY3VC6vjjgXYBpRNhYqIQhK
+         TKdXg8q887yqC3RBkzFhx0jtgSGes6VfQK2T6qVTCXqgHukuUDFhvWLYSUenVbJHRMq9
+         BQo8xBqiUKbxAa3k1chXbA2flkWyEwq3n/t3Q9E5ToRi/I/DTyDlmhJdOFfupdkPOpBh
+         Fk0Q==
+X-Gm-Message-State: AG10YORIlQZfBGWoY8q/5u+VBPU3/dGI/Kb7uxAugr4TRhwP6EfIEwF2E0+ixwWt5j/OLmMdufruUR+y6snuBw==
+MIME-Version: 1.0
+X-Received: by 10.194.2.202 with SMTP id 10mr31399983wjw.94.1456145918513;
+ Mon, 22 Feb 2016 04:58:38 -0800 (PST)
+Received: by 10.194.222.165 with HTTP; Mon, 22 Feb 2016 04:58:38 -0800 (PST)
+In-Reply-To: <20160221205018.GA6525@Karyakshetra>
+References: <20160221205018.GA6525@Karyakshetra>
+Date: Mon, 22 Feb 2016 14:58:38 +0200
+Message-ID: <CAEnQRZB-LevSujcZxMhDDwxi7+tZyGXmgpmxPLEc989AT+132g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Drop else after return
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Add space around operator '<<'. Problem found using checkpatch.pl
-CHECK: spaces preferred around that '<<' (ctx:VxV)
+On Sun, Feb 21, 2016 at 10:50 PM, Bhaktipriya Shridhar
+<bhaktipriya96@gmail.com> wrote:
+> Remove unnecessary else when there is a return statement in the
+> corresponding if block.
+>
+> The following Coccinelle patch used:
+>
+> @@
+> expression e2;
+> statement s1;
+> @@
+> if(e2) { ... return ...; }
+> -else
+>          s1
+>
+> @@
+> expression e1;
+> @@
+> if (e1) { ... return ...; }
+> -else{
+>         ...
+> -}
+>
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> ---
+>  drivers/staging/rtl8712/xmit_linux.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
+> index f8866d7..adb51f0 100644
+> --- a/drivers/staging/rtl8712/xmit_linux.c
+> +++ b/drivers/staging/rtl8712/xmit_linux.c
+> @@ -72,8 +72,7 @@ sint r8712_endofpktfile(struct pkt_file *pfile)
+>  {
+>         if (pfile->pkt_len == 0)
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/olpc_dcon/olpc_dcon.h | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/staging/olpc_dcon/olpc_dcon.h b/drivers/staging/olpc_dcon/olpc_dcon.h
-index d06e19d..ca29ac9 100644
---- a/drivers/staging/olpc_dcon/olpc_dcon.h
-+++ b/drivers/staging/olpc_dcon/olpc_dcon.h
-@@ -9,18 +9,18 @@
- #define DCON_REG_ID		 0
- #define DCON_REG_MODE		 1
- 
--#define MODE_PASSTHRU	(1<<0)
--#define MODE_SLEEP	(1<<1)
--#define MODE_SLEEP_AUTO	(1<<2)
--#define MODE_BL_ENABLE	(1<<3)
--#define MODE_BLANK	(1<<4)
--#define MODE_CSWIZZLE	(1<<5)
--#define MODE_COL_AA	(1<<6)
--#define MODE_MONO_LUMA	(1<<7)
--#define MODE_SCAN_INT	(1<<8)
--#define MODE_CLOCKDIV	(1<<9)
--#define MODE_DEBUG	(1<<14)
--#define MODE_SELFTEST	(1<<15)
-+#define MODE_PASSTHRU	(1 << 0)
-+#define MODE_SLEEP	(1 << 1)
-+#define MODE_SLEEP_AUTO	(1 << 2)
-+#define MODE_BL_ENABLE	(1 << 3)
-+#define MODE_BLANK	(1 << 4)
-+#define MODE_CSWIZZLE	(1 << 5)
-+#define MODE_COL_AA	(1 << 6)
-+#define MODE_MONO_LUMA	(1 << 7)
-+#define MODE_SCAN_INT	(1 << 8)
-+#define MODE_CLOCKDIV	(1 << 9)
-+#define MODE_DEBUG	(1 << 14)
-+#define MODE_SELFTEST	(1 << 15)
- 
- #define DCON_REG_HRES		0x2
- #define DCON_REG_HTOTAL		0x3
-@@ -35,11 +35,11 @@
- #define DCON_REG_MEM_OPT_B	0x42
- 
- /* Load Delay Locked Loop (DLL) settings for clock delay */
--#define MEM_DLL_CLOCK_DELAY	(1<<0)
-+#define MEM_DLL_CLOCK_DELAY	(1 << 0)
- /* Memory controller power down function */
--#define MEM_POWER_DOWN		(1<<8)
-+#define MEM_POWER_DOWN		(1 << 8)
- /* Memory controller software reset */
--#define MEM_SOFT_RESET		(1<<0)
-+#define MEM_SOFT_RESET		(1 << 0)
- 
- /* Status values */
- 
--- 
-1.9.1
-
+Here we could just return pfile->pkt_len == 0;
 
