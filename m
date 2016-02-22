@@ -1,92 +1,215 @@
-X-GM-THRID: 6211220863007588352
-X-Received: by 10.28.173.83 with SMTP id w80mr3115wme.0.1446162551633;
-        Thu, 29 Oct 2015 16:49:11 -0700 (PDT)
+X-GM-THRID: 6254216690282790912
+X-Received: by 10.140.194.149 with SMTP id p143mr1757397qha.17.1456173297025;
+        Mon, 22 Feb 2016 12:34:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.14.83 with SMTP id 80ls4008wmo.23.gmail; Thu, 29 Oct 2015
- 16:49:11 -0700 (PDT)
-X-Received: by 10.28.170.75 with SMTP id t72mr1297715wme.5.1446162551158;
-        Thu, 29 Oct 2015 16:49:11 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
-        by gmr-mx.google.com with ESMTPS id g18si1565wmd.1.2015.10.29.16.49.11
+Received: by 10.182.28.70 with SMTP id z6ls869307obg.26.gmail; Mon, 22 Feb
+ 2016 12:34:56 -0800 (PST)
+X-Received: by 10.182.135.169 with SMTP id pt9mr27690751obb.17.1456173296558;
+        Mon, 22 Feb 2016 12:34:56 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
+        by gmr-mx.google.com with ESMTPS id yd9si3320315pab.1.2016.02.22.12.34.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Oct 2015 16:49:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 22 Feb 2016 12:34:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wm0-x232.google.com with SMTP id f134so361737wmf.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 16:49:11 -0700 (PDT)
+Received: by mail-pa0-x22b.google.com with SMTP id ho8so99245748pac.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 12:34:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=lfIF23djk1DD9ViZGKuSdLJX8yQt+ud7v8jMw/e3GoI=;
-        b=Vn2MlqlPNOraFCo244DNEJoyaVdSIf0/2dyy6Mktrt7qD97I3IKzFbm9q2AiEwzmQt
-         ROQuZJ5uM7sJDMD5TggKd+/g4KyLgOzHE21aFGQEWWAbuPwYDHi3Uc0U8GKl5e3VLMZU
-         wA6KlZHlu7xpp9aAfFjoDxm9WhEgcByzBgo6+B7nLKYnr1jGW9KpB5YI6IAie3BUploH
-         jkGc1T8NDw1dY5wILxLA5tgnQrjUFy59bB6XTbo9N01Av1FRyoFmw7twanL9l9WL7ZAf
-         vPLw4Q6B+8wJkzuYN8V7MQfJIaqP7PzUZ2YOjSpUcL4S9JyFNiK7D9j1tXmy5TyEMuIM
-         lBdw==
-X-Received: by 10.28.146.146 with SMTP id u140mr9485101wmd.85.1446162551022;
-        Thu, 29 Oct 2015 16:49:11 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from localhost.localdomain ([78.182.227.7])
-        by smtp.gmail.com with ESMTPSA id d81sm46767wma.16.2015.10.29.16.49.09
+        bh=MhfTE2gl3Aq7eeBVMQ/vCc4Wlxa7MCUvX5tuN8S2GuU=;
+        b=fNsVku1C7oN5b1nxa5KhLrFt3UhruaT/jSBsRIjreoiFeoiAjGD6VskLsnkHoTvsL0
+         nh5vXmBruxX3PyISTd670tlj9RDE7WOuThDciOjHdrbhW6S5ynEEnBimj4qMHQKeJdeZ
+         M6gIq++1LEbJU5NRgcKriHnJpZpyfYHcBqS89yDV8AAR3i/SYTtComCRNrOKOYqyrWgQ
+         vg+uunnMPOQ/5jNikN56yEOUU5OmK5+pNeR2X2CKpBuRYy1I4Yo4yaLC05NblnQN6EDc
+         ek+KK7kskhgeFr2eas685MaAJEq/EzWl1RuOrRXMfQdj8riC2dI4irt44rNLXsITj06C
+         4RQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=MhfTE2gl3Aq7eeBVMQ/vCc4Wlxa7MCUvX5tuN8S2GuU=;
+        b=ZJV8yD72yrSnkmxhiNTz0gpijGONXfTcHZtWw/+mchSKwNuiySHpiTvsdT3f0S7ZDS
+         Hae/b7MGBUIsumJzvsbFwVmQKuK4hTAFTnn6v7/IXdpBfoe2EkVFhGc6DNsUNgk+LigV
+         ykNchN3U3l0aE3rgiSOphlDa4RTXwk+xtKLRa08Sbsm1OIz4X+FHuJ4lQZ18dAJJKQiV
+         nHlE4ggOrIUZHyVlJ2FGETZFff5BBlFEY/oTmcD6P0KuwLmnjhuVK8rxT2izgFCX0z6e
+         C86BrdA3ULPDg7i9RGnMxG2HRq3p4mpCEYNLsa/CwuJZN90nEYbE1HdK4e94oXWo3vWG
+         Vjvw==
+X-Gm-Message-State: AG10YORB/uNdTMTFGnTwZK5SAWhSZ9ESAfL8gwdZGWJPH87MVFfeX6J2OFE+cPFWkRMU2Q==
+X-Received: by 10.66.167.145 with SMTP id zo17mr40565000pab.73.1456173296387;
+        Mon, 22 Feb 2016 12:34:56 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from localhost.localdomain (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
+        by smtp.gmail.com with ESMTPSA id ra1sm12710220pab.24.2016.02.22.12.34.55
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 29 Oct 2015 16:49:10 -0700 (PDT)
-From: Burcin Akalin <brcnakalin@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Burcin Akalin <brcnakalin@gmail.com>
-Subject: [PATCH 1/2] staging: nvec: Add space around '<<'
-Date: Fri, 30 Oct 2015 02:49:01 +0300
-Message-Id: <1446162542-1037-1-git-send-email-brcnakalin@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        Mon, 22 Feb 2016 12:34:56 -0800 (PST)
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	daniel.baluta@intel.com
+Cc: jic23@kernel.org,
+	lars@metafoo.de,
+	pmeerw@pmeerw.net,
+	linux-iio@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Subject: [RFC] staging: iio: isl29018: use regmap to retrieve struct device
+Date: Mon, 22 Feb 2016 12:34:32 -0800
+Message-Id: <1456173272-5217-1-git-send-email-amsfield22@gmail.com>
+X-Mailer: git-send-email 2.1.4
 
-Add space around operator '<<'. Problem found using
-checkpatch.pl
-CHECK: spaces preferred around that '<<' (ctx:VxV)
+Remove struct device from drivers global data and use regmap
+API to retrieve device info instead.
 
-Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+This replacement can be done for drivers that include regmap
+in their global data.
+
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/nvec/nvec.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/iio/light/isl29018.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 164634d..aab1c85 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -40,18 +40,18 @@
- #include "nvec.h"
+diff --git a/drivers/staging/iio/light/isl29018.c b/drivers/staging/iio/light/isl29018.c
+index 03dbfb6..76d9f74 100644
+--- a/drivers/staging/iio/light/isl29018.c
++++ b/drivers/staging/iio/light/isl29018.c
+@@ -100,7 +100,6 @@ static const struct isl29018_scale {
+ };
  
- #define I2C_CNFG			0x00
--#define I2C_CNFG_PACKET_MODE_EN		(1<<10)
--#define I2C_CNFG_NEW_MASTER_SFM		(1<<11)
-+#define I2C_CNFG_PACKET_MODE_EN		(1 << 10)
-+#define I2C_CNFG_NEW_MASTER_SFM		(1 << 11)
- #define I2C_CNFG_DEBOUNCE_CNT_SHIFT	12
+ struct isl29018_chip {
+-	struct device		*dev;
+ 	struct regmap		*regmap;
+ 	struct mutex		lock;
+ 	int			type;
+@@ -180,30 +179,31 @@ static int isl29018_read_sensor_input(struct isl29018_chip *chip, int mode)
+ 	int status;
+ 	unsigned int lsb;
+ 	unsigned int msb;
++	struct device *dev = regmap_get_device(chip->regmap);
  
- #define I2C_SL_CNFG		0x20
--#define I2C_SL_NEWSL		(1<<2)
--#define I2C_SL_NACK		(1<<1)
--#define I2C_SL_RESP		(1<<0)
--#define I2C_SL_IRQ		(1<<3)
--#define END_TRANS		(1<<4)
--#define RCVD			(1<<2)
--#define RNW			(1<<1)
-+#define I2C_SL_NEWSL		(1 << 2)
-+#define I2C_SL_NACK		(1 << 1)
-+#define I2C_SL_RESP		(1 << 0)
-+#define I2C_SL_IRQ		(1 << 3)
-+#define END_TRANS		(1 << 4)
-+#define RCVD			(1 << 2)
-+#define RNW			(1 << 1)
+ 	/* Set mode */
+ 	status = regmap_write(chip->regmap, ISL29018_REG_ADD_COMMAND1,
+ 			      mode << COMMMAND1_OPMODE_SHIFT);
+ 	if (status) {
+-		dev_err(chip->dev,
++		dev_err(dev,
+ 			"Error in setting operating mode err %d\n", status);
+ 		return status;
+ 	}
+ 	msleep(CONVERSION_TIME_MS);
+ 	status = regmap_read(chip->regmap, ISL29018_REG_ADD_DATA_LSB, &lsb);
+ 	if (status < 0) {
+-		dev_err(chip->dev,
++		dev_err(dev,
+ 			"Error in reading LSB DATA with err %d\n", status);
+ 		return status;
+ 	}
  
- #define I2C_SL_RCVD		0x24
- #define I2C_SL_STATUS		0x28
+ 	status = regmap_read(chip->regmap, ISL29018_REG_ADD_DATA_MSB, &msb);
+ 	if (status < 0) {
+-		dev_err(chip->dev,
++		dev_err(dev,
+ 			"Error in reading MSB DATA with error %d\n", status);
+ 		return status;
+ 	}
+-	dev_vdbg(chip->dev, "MSB 0x%x and LSB 0x%x\n", msb, lsb);
++	dev_vdbg(dev, "MSB 0x%x and LSB 0x%x\n", msb, lsb);
+ 
+ 	return (msb << 8) | lsb;
+ }
+@@ -246,13 +246,14 @@ static int isl29018_read_proximity_ir(struct isl29018_chip *chip, int scheme,
+ 	int status;
+ 	int prox_data = -1;
+ 	int ir_data = -1;
++	struct device *dev = regmap_get_device(chip->regmap);
+ 
+ 	/* Do proximity sensing with required scheme */
+ 	status = regmap_update_bits(chip->regmap, ISL29018_REG_ADD_COMMANDII,
+ 				    COMMANDII_SCHEME_MASK,
+ 				    scheme << COMMANDII_SCHEME_SHIFT);
+ 	if (status) {
+-		dev_err(chip->dev, "Error in setting operating mode\n");
++		dev_err(dev, "Error in setting operating mode\n");
+ 		return status;
+ 	}
+ 
+@@ -525,10 +526,11 @@ static int isl29035_detect(struct isl29018_chip *chip)
+ {
+ 	int status;
+ 	unsigned int id;
++	struct device *dev = regmap_get_device(chip->regmap);
+ 
+ 	status = regmap_read(chip->regmap, ISL29035_REG_DEVICE_ID, &id);
+ 	if (status < 0) {
+-		dev_err(chip->dev,
++		dev_err(dev,
+ 			"Error reading ID register with error %d\n",
+ 			status);
+ 		return status;
+@@ -553,6 +555,7 @@ enum {
+ static int isl29018_chip_init(struct isl29018_chip *chip)
+ {
+ 	int status;
++	struct device *dev = regmap_get_device(chip->regmap);
+ 
+ 	if (chip->type == isl29035) {
+ 		status = isl29035_detect(chip);
+@@ -582,7 +585,7 @@ static int isl29018_chip_init(struct isl29018_chip *chip)
+ 	 */
+ 	status = regmap_write(chip->regmap, ISL29018_REG_TEST, 0x0);
+ 	if (status < 0) {
+-		dev_err(chip->dev, "Failed to clear isl29018 TEST reg.(%d)\n",
++		dev_err(dev, "Failed to clear isl29018 TEST reg.(%d)\n",
+ 			status);
+ 		return status;
+ 	}
+@@ -593,7 +596,7 @@ static int isl29018_chip_init(struct isl29018_chip *chip)
+ 	 */
+ 	status = regmap_write(chip->regmap, ISL29018_REG_ADD_COMMAND1, 0);
+ 	if (status < 0) {
+-		dev_err(chip->dev, "Failed to clear isl29018 CMD1 reg.(%d)\n",
++		dev_err(dev, "Failed to clear isl29018 CMD1 reg.(%d)\n",
+ 			status);
+ 		return status;
+ 	}
+@@ -604,14 +607,14 @@ static int isl29018_chip_init(struct isl29018_chip *chip)
+ 	status = isl29018_set_scale(chip, chip->scale.scale,
+ 				    chip->scale.uscale);
+ 	if (status < 0) {
+-		dev_err(chip->dev, "Init of isl29018 fails\n");
++		dev_err(dev, "Init of isl29018 fails\n");
+ 		return status;
+ 	}
+ 
+ 	status = isl29018_set_integration_time(chip,
+ 			isl29018_int_utimes[chip->type][chip->int_time]);
+ 	if (status < 0) {
+-		dev_err(chip->dev, "Init of isl29018 fails\n");
++		dev_err(dev, "Init of isl29018 fails\n");
+ 		return status;
+ 	}
+ 
+@@ -728,7 +731,6 @@ static int isl29018_probe(struct i2c_client *client,
+ 	chip = iio_priv(indio_dev);
+ 
+ 	i2c_set_clientdata(client, indio_dev);
+-	chip->dev = &client->dev;
+ 
+ 	if (id) {
+ 		name = id->name;
+@@ -751,7 +753,7 @@ static int isl29018_probe(struct i2c_client *client,
+ 				chip_info_tbl[dev_id].regmap_cfg);
+ 	if (IS_ERR(chip->regmap)) {
+ 		err = PTR_ERR(chip->regmap);
+-		dev_err(chip->dev, "regmap initialization failed: %d\n", err);
++		dev_err(&client->dev, "regmap initialization fails: %d\n", err);
+ 		return err;
+ 	}
+ 
 -- 
-1.9.1
+2.1.4
 
 
