@@ -1,73 +1,95 @@
 X-GM-THRID: 6254092556531924992
-X-Received: by 10.140.181.198 with SMTP id c189mr819qha.24.1456144855207;
-        Mon, 22 Feb 2016 04:40:55 -0800 (PST)
+X-Received: by 10.112.130.42 with SMTP id ob10mr3346444lbb.2.1456144584253;
+        Mon, 22 Feb 2016 04:36:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.28.34 with SMTP id 31ls191825qgy.28.gmail; Mon, 22 Feb
- 2016 04:40:54 -0800 (PST)
-X-Received: by 10.140.240.129 with SMTP id l123mr22056qhc.8.1456144854574;
-        Mon, 22 Feb 2016 04:40:54 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qk0-x233.google.com (mail-qk0-x233.google.com. [2607:f8b0:400d:c09::233])
-        by gmr-mx.google.com with ESMTPS id w126si1263566ywe.6.2016.02.22.04.40.54
+Received: by 10.28.217.16 with SMTP id q16ls227398wmg.23.canary; Mon, 22 Feb
+ 2016 04:36:23 -0800 (PST)
+X-Received: by 10.28.48.88 with SMTP id w85mr1096109wmw.5.1456144583794;
+        Mon, 22 Feb 2016 04:36:23 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s141si1187891wmd.1.2016.02.22.04.36.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 04:40:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::233 as permitted sender) client-ip=2607:f8b0:400d:c09::233;
+        Mon, 22 Feb 2016 04:36:23 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x233.google.com with SMTP id s68so54645018qkh.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 04:40:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=CKP3pwPbLBdDfp09l+oSwtGHsgr+pKFdRe4q5MVt4tY=;
-        b=bvcs4RmR+CM9PkacSiyAvjJgbLhBP1wsRNjOsqdduNqkMDXA4eF1SrLeP5FOpEKRH2
-         6bAQ7zPeOv0X70Et/dqbE8i5K2Ljgh971Rlto7U0M7HJIyD3CqG+3db5WMRbJ8WI3SPz
-         1rYnsHify9dp6p4lvTNL8v+hHVks4CkTA/nIJVtGeVCz4VBtjNonC4ld1tocS5MmijxV
-         Gp+YU/sSzjudGfubxZqg7TLANuLYPs+AXezdTlR3UcxLQZWtD0ARxjx9qDutVFXx+Ynr
-         Al7f+G+SjQQHZ3eSRV1soPRGXJpjWOXNM21QAjAxgi1Wd5lHD5ZOPiJMBqA+XlLhriS2
-         hfjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=CKP3pwPbLBdDfp09l+oSwtGHsgr+pKFdRe4q5MVt4tY=;
-        b=WnXXK437xu2M2J5AM4WXAq/JAqHbLTyLToL37EzH8+43Z837TjPTFl73QHt1xRZItg
-         lUWiP+PTbRFsK2XxdBpa5xI2iNhooUfr7as50aPDN8Ldspg7eUtNOZunu5k0RLTgyq4W
-         MSFj6qIEa7Q72ebT77/bPWbn2jG5eFY1BKt98r8OOeQk84ElbvXJYRhVlkU9M0ruwB05
-         JY83BvkJf7hZCNZu3/OZCmfqvIFI3d8Trr30Pu6hS/ooasnDO5ma3McAR3rztJbvKO5F
-         xM9DXB/ZQO7d31TkrCTaGmC93rJIyprvdRCT5v2TP5ES7v+5NHuMsqw3EWUAQ/Df36pg
-         kMNQ==
-X-Gm-Message-State: AG10YOQiTx/xB3zhQHTqIdG6O+oa8PnMWpbaX4oS6vtzc9nEdJwHQ9eGjo2rIzfYDCzJ8mNFUSYdpKcYpvh30A==
-MIME-Version: 1.0
-X-Received: by 10.55.198.129 with SMTP id s1mr33466138qkl.18.1456144854406;
- Mon, 22 Feb 2016 04:40:54 -0800 (PST)
-Received: by 10.140.44.99 with HTTP; Mon, 22 Feb 2016 04:40:54 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.10.1602220735470.2532@hadrien>
-References: <20160222123259.GA24119@amitoj-Inspiron-3542>
-	<alpine.DEB.2.10.1602220735470.2532@hadrien>
-Date: Mon, 22 Feb 2016 18:10:54 +0530
-Message-ID: <CA+5yK5E1mFFcR6a4BKBa7Rq1UmpRUumiAiy7Wv53TD=Qe+PjdA@mail.gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,484,1449529200"; 
+   d="scan'208";a="204112458"
+Received: from 68-74-177-106.lightspeed.wepbfl.sbcglobal.net (HELO hadrien) ([68.74.177.106])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 22 Feb 2016 13:36:22 +0100
+Date: Mon, 22 Feb 2016 07:36:20 -0500 (EST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: obdclass: Replace
  simple_strtoul with kstrtoul
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20160222123259.GA24119@amitoj-Inspiron-3542>
+Message-ID: <alpine.DEB.2.10.1602220735470.2532@hadrien>
+References: <20160222123259.GA24119@amitoj-Inspiron-3542>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Mon, Feb 22, 2016 at 6:06 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
->>
->> -     tmp = simple_strtoul(dummy, &end, 0);
->> +     err = kstrtoul(dummy, 0, &tmp);
->
-> This doesn't look correct.  end is not being initialized any more.
->
-> julia
->
-Any other way I should go about it? Or I'll have to drop this?
+On Mon, 22 Feb 2016, Amitoj Kaur Chawla wrote:
 
-Amitoj
+> Replace obsolete simple_strtoul with kstrtoul.
+> The Coccinelle semantic patch used to make this change is as follows:
+>
+> // <smpl>
+> @@
+> unsigned long l;
+> expression e,f,g;
+> @@
+> - l = simple_strtoul(e, &f, g)
+> + kstrtoul(e, g, &l)
+> // </smpl>
+>
+> Additionally, since kstrtoul returns 0 on success and an error code on
+> failure, introduced `err` variable to store and return the error code.
+> This change was made by hand.
+>
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/obdclass/lprocfs_status.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+> index 16b1c70..0abf941 100644
+> --- a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+> +++ b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+> @@ -343,12 +343,15 @@ int lprocfs_wr_uint(struct file *file, const char __user *buffer,
+>  	unsigned *p = data;
+>  	char dummy[MAX_STRING_SIZE + 1], *end;
+>  	unsigned long tmp;
+> +	int err;
+>
+>  	dummy[MAX_STRING_SIZE] = '\0';
+>  	if (copy_from_user(dummy, buffer, MAX_STRING_SIZE))
+>  		return -EFAULT;
+>
+> -	tmp = simple_strtoul(dummy, &end, 0);
+> +	err = kstrtoul(dummy, 0, &tmp);
+
+This doesn't look correct.  end is not being initialized any more.
+
+julia
+
+> +	if (err)
+> +		return err;
+>  	if (dummy == end)
+>  		return -EINVAL;
+>
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160222123259.GA24119%40amitoj-Inspiron-3542.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
