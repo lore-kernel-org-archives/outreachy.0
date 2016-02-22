@@ -1,73 +1,92 @@
 X-GM-THRID: 6254101469498179584
-X-Received: by 10.140.222.72 with SMTP id s69mr817904qhb.15.1456213858080;
-        Mon, 22 Feb 2016 23:50:58 -0800 (PST)
+X-Received: by 10.194.84.40 with SMTP id v8mr3710186wjy.2.1456175624292;
+        Mon, 22 Feb 2016 13:13:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.20.232 with SMTP id q8ls1037583obe.50.gmail; Mon, 22 Feb
- 2016 23:50:57 -0800 (PST)
-X-Received: by 10.182.47.132 with SMTP id d4mr31165769obn.40.1456213857601;
-        Mon, 22 Feb 2016 23:50:57 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qg0-x22f.google.com (mail-qg0-x22f.google.com. [2607:f8b0:400d:c04::22f])
-        by gmr-mx.google.com with ESMTPS id g136si1623168ywb.5.2016.02.22.23.50.57
+Received: by 10.25.89.138 with SMTP id n132ls425926lfb.70.gmail; Mon, 22 Feb
+ 2016 13:13:43 -0800 (PST)
+X-Received: by 10.112.54.202 with SMTP id l10mr3728705lbp.14.1456175623692;
+        Mon, 22 Feb 2016 13:13:43 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id h126si702221wme.0.2016.02.22.13.13.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 23:50:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) client-ip=2607:f8b0:400d:c04::22f;
+        Mon, 22 Feb 2016 13:13:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22f.google.com with SMTP id y89so130384565qge.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 23:50:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=cH/ZhD79xLbM43XtiGPjk2hwfVXJAWud0BWM0vN0ug4=;
-        b=kNB0kKi6yDk7zp2oKXdrj1rThxweejfWU8hNFOTk6VZTIc5+k8nGgqD9TGwgs7MaX0
-         aCP11/dkdLzgO5vixA0Ujz61V/gstMUA8wP90SQIZafYkwh2aDlfakdf8wZHnfpmkO/6
-         mxaYZ02q6/EQYXX5r+DoNvRUowQ69WravdT75RbYYLPPD1JTBMF6+FkUJ0sUHnmidrQg
-         0Ab3s8ZiK/8/HHbSkIk8ler5HjAV0+4hp2WAoOzxo5ujeSKwydRtVP99nj3V5+GyWEqv
-         +VD41zcl2xf4OtqXlRhsz6nfk22BIW1MuS4w2rRD7wX951KwwQ2DIr2RzersGJg/hKX6
-         abtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=cH/ZhD79xLbM43XtiGPjk2hwfVXJAWud0BWM0vN0ug4=;
-        b=bQ6d8pq0KERAMcGZpoXlfyC2UOGEwEHY5MpNFvcH83yzLlZCxL478nEO8eG8FRKryL
-         x5UaAZOedX7bM7h9gDdxfyq9TNWlAMDMsmq+gv0kfAcc6oztgojh7fXKWugwjnCdw+Dr
-         JVWEw6G8XSB/fhmpUjmP3x6W+FQnUomvvmIVfVqwF36E/kAKL6eDOW+HqaShE4/hBwOD
-         nBXoMKXktKzfKY03zUkZd1WrTzCTMhjNKmTJ0uMVe/Q2DhUHwMhx6qSDnx9mxrrYsLqU
-         lHqn79/I2j0zSSt5G6wbXL5iWuKLihlxUS0BJSUa3qfpxafX/tbgtAmKBWugETrQBbdi
-         s4RA==
-X-Gm-Message-State: AG10YOQSUBsNAlMf29sKlbRdSg5/NsOBGERBXAqqb3WmGTN1kZoLnakvU8ePCk9sFgo4YS7c3/HUuhsI+nsaXQ==
-MIME-Version: 1.0
-X-Received: by 10.140.140.6 with SMTP id 6mr40674699qhm.29.1456213857456; Mon,
- 22 Feb 2016 23:50:57 -0800 (PST)
-Received: by 10.140.44.99 with HTTP; Mon, 22 Feb 2016 23:50:57 -0800 (PST)
-In-Reply-To: <20160222211342.GD5849@kroah.com>
-References: <20160222130735.GA26820@amitoj-Inspiron-3542>
-	<20160222211342.GD5849@kroah.com>
-Date: Tue, 23 Feb 2016 13:20:57 +0530
-Message-ID: <CA+5yK5F55-q9-z+i0b=QYSPMb+oLfmd7C-EYUWcmk6ykvrHduw@mail.gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 571C0C81;
+	Mon, 22 Feb 2016 21:13:42 +0000 (UTC)
+Date: Mon, 22 Feb 2016 13:13:42 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: obdclass: Replace
  simple_strtoul with kstrtoint
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Message-ID: <20160222211342.GD5849@kroah.com>
+References: <20160222130735.GA26820@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160222130735.GA26820@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Tue, Feb 23, 2016 at 2:43 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
-> max_t() is no longer needed here, right?  It can just be max().
->
-> same for the other use in this patch.
->
-> thanks,
->
-> greg k-h
+On Mon, Feb 22, 2016 at 06:37:36PM +0530, Amitoj Kaur Chawla wrote:
+> Replace obsolete simple_strtoul with kstrtoint.
+> This change was made with the help of the following Coccinelle
+> semantic patch:
+> 
+> // <smpl>
+> @@
+> expression e,g;
+> @@
+> (
+> * simple_strtoul(e, NULL, g)
+> |
+> * simple_strtol(e, NULL, g)
+> |
+> * simple_strtoull(e, NULL, g)
+> )
+> // </smpl>
+> 
+> Additionally, `err` and `val` variables were introduced to store error
+> code returned by kstrtoint and result of conversion on success
+> respectively.
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/obdclass/obd_mount.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/obdclass/obd_mount.c b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
+> index 5fa6ce6..29b513e 100644
+> --- a/drivers/staging/lustre/lustre/obdclass/obd_mount.c
+> +++ b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
+> @@ -900,6 +900,7 @@ static int lmd_parse(char *options, struct lustre_mount_data *lmd)
+>  	while (*s1) {
+>  		int clear = 0;
+>  		int time_min = OBD_RECOVERY_TIME_MIN;
+> +		int val, err;
+>  
+>  		/* Skip whitespace and extra commas */
+>  		while (*s1 == ' ' || *s1 == ',')
+> @@ -914,12 +915,16 @@ static int lmd_parse(char *options, struct lustre_mount_data *lmd)
+>  			lmd->lmd_flags |= LMD_FLG_ABORT_RECOV;
+>  			clear++;
+>  		} else if (strncmp(s1, "recovery_time_soft=", 19) == 0) {
+> -			lmd->lmd_recovery_time_soft = max_t(int,
+> -				simple_strtoul(s1 + 19, NULL, 10), time_min);
+> +			err = kstrtoint(s1 + 19, 10, &val);
+> +			if (err)
+> +				return err;
+> +			lmd->lmd_recovery_time_soft = max_t(int, val, time_min);
 
-I'll send a v2 with the above change incorporated.
+max_t() is no longer needed here, right?  It can just be max().
 
-Amitoj
+same for the other use in this patch.
+
+thanks,
+
+greg k-h
 
