@@ -1,127 +1,92 @@
-X-GM-THRID: 6259697708137709568
-X-Received: by 10.31.165.1 with SMTP id o1mr21049537vke.12.1457449446202;
-        Tue, 08 Mar 2016 07:04:06 -0800 (PST)
+X-GM-THRID: 6254491824007675904
+X-Received: by 10.66.124.200 with SMTP id mk8mr31354449pab.27.1456237357294;
+        Tue, 23 Feb 2016 06:22:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.245.202 with SMTP id xq10ls156186obc.17.gmail; Tue, 08 Mar
- 2016 07:04:05 -0800 (PST)
-X-Received: by 10.182.16.199 with SMTP id i7mr18711353obd.44.1457449445740;
-        Tue, 08 Mar 2016 07:04:05 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id ui7si576525pab.0.2016.03.08.07.04.05
+Received: by 10.50.30.101 with SMTP id r5ls898291igh.40.gmail; Tue, 23 Feb
+ 2016 06:22:36 -0800 (PST)
+X-Received: by 10.107.134.68 with SMTP id i65mr32811231iod.33.1456237356955;
+        Tue, 23 Feb 2016 06:22:36 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id ff2si4194127pad.2.2016.02.23.06.22.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 07:04:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        Tue, 23 Feb 2016 06:22:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id x188so14640885pfb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 07:04:05 -0800 (PST)
+Received: by mail-pa0-x22c.google.com with SMTP id ho8so114189753pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 06:22:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=nv/Uh+BgxC79qL/4KdkPs5aKLmNyE9w/pDKQp8JGbRs=;
-        b=OqO/xWCRs4PKQZdHl8zds/ddMmGFADPYbsy0UlLk9Sf+64qhBt1chm38St10DwlTWz
-         o7qiQifwhMouXqtuKjveeFJnlLxcSMQrZ656T0zemb7ANHXCKn6ulltvuTheO7M1DPwt
-         Ih4EQggjglSoS5jLqPEQIbKhK51Hg2MOZxks+dzntYdYGU1b/u/1SUUNx0KV8wB10rrW
-         bUJRTw31EYo+A1i9YVRsg2tmTaBm/7+zCm1JYtkL5MAcN/HDZBJqTxWeqgLBaPaYGtK3
-         knWWQWpl2sqyvQP02LX/0ZxPozzn9q4VO/wwlcKaN1SGJ8ItXiTynHIraGnZDnR9zf0Q
-         zTQA==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=vDQk6fP8dZqUAes5x46tDZMteNSMHBDYniVvYxCW32E=;
+        b=zwAJj696aTYWnZe1svoZ+TBFq6NZX6PSgHGB17oYWbCnSWxYSX5D69dnaNkLAVsUMv
+         fOOAVw+ufQxeUJA4YZUyYjcQl0xhw1EN/IgT9yJ9Z+e3yPlS7rK/Xndavz5kuWlk2kwT
+         zlZoPSJXsNLvLzqnCFTMr/QwLy6D4h9vBd9AdW6RX+ZynleU3x51jkiatVaUWz6M1KAJ
+         QHxjHFiYYpbGj5CajjtckruyxW3s3sKIcl3Cyz5WKDBoFNjmy4NNQLyvmluAgUGbO4y0
+         2QVAO6q4WeVuekD7LUCPf2jaVGdNgLr1FwpljdeO3tOfNdqghqbWIU65B2tO3Q/59FqH
+         W+FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=nv/Uh+BgxC79qL/4KdkPs5aKLmNyE9w/pDKQp8JGbRs=;
-        b=TuZ0C6Jx/adoSqKYf4fGkBFT6Jww1x2GothrNHfAZtPtjLBuigav0J7TZFBnuVxbJU
-         o7kZErFlhHlV7e6elC7SVRWJGO119rLuI0vPjgYXAjdP1E35JUpDURNbNosfNFzRCqP8
-         U655V5OixOfXG2w5kSDKFJmSu6AaWiYW5mex31tV+7fJOk7HyDk604W4EfWTRyRmFX1d
-         yFYlhomG1MYkgWMmF8gEQwmkcI4Er6aaCTFUR4SpdbndHuRdLLOnNRUovgpfqyNBybCP
-         +TrOnhEPNOA3xDtCre35j8pRzhYYaiPRla0/1rFO111eFn8nmC3X/i8j9VvODCt9HMod
-         vNKQ==
-X-Gm-Message-State: AD7BkJKAds8vQauLek5KpqvPd9muIDWAkB1DV8qr2Ud+jHd6MkSXtIK5dU4GksjCoSo4Mw==
-X-Received: by 10.98.71.210 with SMTP id p79mr42235388pfi.4.1457449445577;
-        Tue, 08 Mar 2016 07:04:05 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id vy6sm5713717pac.38.2016.03.08.07.04.04
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=vDQk6fP8dZqUAes5x46tDZMteNSMHBDYniVvYxCW32E=;
+        b=ao1Z6EfiNf0BEgB/rQeoV8yX36oZTp44qKCR5pkrM1vRDHsM2n9Ab0P5SCQNG+ALFX
+         t2XUNvRbDAbUbgw0223JD/DKukzWUAjQHnMmjHR6wMpUJvSyS0TLS4a/RApSEXWtZjtH
+         7ywartnppJ8DcqmIoDwd69SrZ6rSA+LoUqfFt7MPW4mMGsV/azCeqNv/mcGy5zIyHTfe
+         xzVyE1vOPW39Bn8tNi0gGWUGNey+j8z0HwS0Pu5RbFhD8llL1gUotlyj18UUkQjSQLmE
+         R16vhzqS6vWSibCEKpzTLrxmwnzRpaa3tWgKXl6RvTShmFcTm15jZMTggKw8ZENw/21K
+         fGWQ==
+X-Gm-Message-State: AG10YOS61cy2/Sc6EVqDQBGDv1IaM7nsFu+jdGt1PDFe95l/DXazu7fa6rU/5cYaoddiww==
+X-Received: by 10.66.102.37 with SMTP id fl5mr1592861pab.32.1456237356800;
+        Tue, 23 Feb 2016 06:22:36 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.106.39])
+        by smtp.gmail.com with ESMTPSA id fc8sm44909976pab.21.2016.02.23.06.22.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 07:04:05 -0800 (PST)
-Date: Tue, 8 Mar 2016 20:21:52 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 23 Feb 2016 06:22:36 -0800 (PST)
+Date: Tue, 23 Feb 2016 19:52:21 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: osc: Use list_for_each_entry_safe
-Message-ID: <20160308145152.GA31555@Karyakshetra>
+Subject: [PATCH v2 3/3] staging: lustre: libcfs: Remove comparison with zero
+Message-ID: <805d9fbc8b12dfbfe251a63bb4b72ad028ee9113.1456236436.git.amitoj1606@gmail.com>
+References: <cover.1456236436.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1456236436.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+Replace comparison with zero with ! operator.
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
-
-This was done with Coccinelle.
-
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
-
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/lustre/lustre/osc/osc_page.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Changes in v2:
+        -Divide one patch into a series.
 
-diff --git a/drivers/staging/lustre/lustre/osc/osc_page.c b/drivers/staging/lustre/lustre/osc/osc_page.c
-index 537107c..d720b1a 100644
---- a/drivers/staging/lustre/lustre/osc/osc_page.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_page.c
-@@ -563,6 +563,7 @@ int osc_lru_shrink(struct client_obd *cli, int target)
- 	struct cl_object *clobj = NULL;
- 	struct cl_page **pvec;
- 	struct osc_page *opg;
-+	struct osc_page *temp;
- 	int maxscan = 0;
- 	int count = 0;
- 	int index = 0;
-@@ -582,14 +583,12 @@ int osc_lru_shrink(struct client_obd *cli, int target)
- 	client_obd_list_lock(&cli->cl_lru_list_lock);
- 	atomic_inc(&cli->cl_lru_shrinkers);
- 	maxscan = min(target << 1, atomic_read(&cli->cl_lru_in_list));
--	while (!list_empty(&cli->cl_lru_list)) {
-+	list_for_each_entry_safe(opg, temp, &cli->cl_lru_list, ops_lru) {
- 		struct cl_page *page;
+ drivers/staging/lustre/lustre/libcfs/hash.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- 		if (--maxscan < 0)
- 			break;
-
--		opg = list_entry(cli->cl_lru_list.next, struct osc_page,
--				 ops_lru);
- 		page = cl_page_top(opg->ops_cl.cpl_page);
- 		if (cl_page_in_use_noref(page)) {
- 			list_move_tail(&opg->ops_lru, &cli->cl_lru_list);
---
-2.1.4
+diff --git a/drivers/staging/lustre/lustre/libcfs/hash.c b/drivers/staging/lustre/lustre/libcfs/hash.c
+index b9bdb67..a645f50 100644
+--- a/drivers/staging/lustre/lustre/libcfs/hash.c
++++ b/drivers/staging/lustre/lustre/libcfs/hash.c
+@@ -800,7 +800,7 @@ cfs_hash_bd_order(struct cfs_hash_bd *bd1, struct cfs_hash_bd *bd2)
+ 	}
+ 
+ 	rc = cfs_hash_bd_compare(bd1, bd2);
+-	if (rc == 0)
++	if (!rc)
+ 		bd2->bd_bucket = NULL;
+ 	else if (rc > 0)
+ 		swap(*bd1, *bd2); /* swab bd1 and bd2 */
+-- 
+1.9.1
 
 
