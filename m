@@ -1,80 +1,91 @@
-X-GM-THRID: 4455693025280
-X-Received: by 10.112.189.227 with SMTP id gl3mr2034868lbc.2.1425037963879;
-        Fri, 27 Feb 2015 03:52:43 -0800 (PST)
+X-GM-THRID: 6254572936145928192
+X-Received: by 10.129.72.199 with SMTP id v190mr33942298ywa.44.1456256242036;
+        Tue, 23 Feb 2016 11:37:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.29.201 with SMTP id m9ls159095lah.6.gmail; Fri, 27 Feb
- 2015 03:52:42 -0800 (PST)
-X-Received: by 10.112.144.130 with SMTP id sm2mr2026293lbb.9.1425037962383;
-        Fri, 27 Feb 2015 03:52:42 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wg0-x232.google.com (mail-wg0-x232.google.com. [2a00:1450:400c:c00::232])
-        by gmr-mx.google.com with ESMTPS id l8si137374wia.0.2015.02.27.03.52.42
+Received: by 10.182.248.168 with SMTP id yn8ls1142046obc.21.gmail; Tue, 23 Feb
+ 2016 11:37:20 -0800 (PST)
+X-Received: by 10.182.246.130 with SMTP id xw2mr34409316obc.29.1456256240690;
+        Tue, 23 Feb 2016 11:37:20 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
+        by gmr-mx.google.com with ESMTPS id 12si4028715pfb.1.2016.02.23.11.37.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 03:52:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) client-ip=2a00:1450:400c:c00::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 23 Feb 2016 11:37:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x232.google.com with SMTP id l2so19801349wgh.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 03:52:42 -0800 (PST)
+Received: by mail-pf0-x230.google.com with SMTP id c10so121201654pfc.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 11:37:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZisJlXdpeFtERVq/hQpTjdF5Qhekxf0wHPcnauO2mnU=;
-        b=VImiINT3WvNoLmEJXDW62FSCsj8a/4z56Mqxk/ECyDaQonld/ExoQ5ugvkuKK9khbK
-         e4aAs2NmGnTMKgBLPx/RFkpeoqPdCjIHSemOM5wv/qy8ZxriJ18B/TVY0GzdyTAKBXeC
-         mAlqB6/iQhY2xmly2dVqvcwxYEJYyTZZnXUsF9FbVo8YCHixI+lWIiEMc4EKCED3Urtc
-         xwSZemwJ50KfHW/hBMa/NeWgYm95h9+fFi+bDwdAKCczfHTtjZYP9BabR+0pfXOlxo3m
-         Z6c5iNrYQpyzdZNuG50NwHsYy8zs8m/v8O8kNtyeFk21ut3ozafZP+xnxCz9KCmX4nRv
-         MS0Q==
-X-Received: by 10.180.76.4 with SMTP id g4mr5614746wiw.43.1425037962275;
-        Fri, 27 Feb 2015 03:52:42 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.157.65])
-        by mx.google.com with ESMTPSA id m9sm2437205wiz.24.2015.02.27.03.52.40
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 27 Feb 2015 03:52:41 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=W6WLlAUHARW3l9NV5v2bV2EnL26r/XueZkuOO1Yr58s=;
+        b=Ubhc3BZhyA9L+j+RK3sbHB9HXx2DLqu4GKQZjst7XXHNFaurKHpC5jpffaWliKvGif
+         de9gUcUIIprRhaf/W5dzGWrp450h2mmgVKJPXGgAj2Q6NJ6P5XdjxtHJfX+D1yQNbnrD
+         q3RfJghqa3+Cu05IBWol/Q1GBg03dbpTTwT2h0SKANfAO+/77JZ+UmtBvQKOoYxw8P31
+         luUhwNIM7Lx59CDjyYZAXZh+lTUEPiOQGS0n6qcQuIVvG1D4yRE9UfvtcJQbU5RFDzNc
+         WzxQJlPWPKewz9gGSwVy/0qQL2vlKSj87qfxDGtUBv6dxvS3C0hxQ0l0hpsy8p5VD1sQ
+         ZF4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=W6WLlAUHARW3l9NV5v2bV2EnL26r/XueZkuOO1Yr58s=;
+        b=cDqzJdnviHhPPVzU8m0i0dcjp3VIvl/Z48hWsPksm2kquOK0o2VSvGWe7y5ctabxrd
+         SGMmxk+MK1sAV2qZ2eGBxV4B8pvjkY3fzCmWNf1VQv2MZqs2DPrrDc1O06vxVrYsdbNL
+         SCQWjKguGp9HUURL8zJLrmtHARLCPd1kStBHdgriOcpn91MplkcaNlMukUQK/W3eNWp1
+         AbUCfTwQNuFlZV7gC3g/e21FPby8xFipOtQubR8kd55zIXYNlHJvFJ1eBoq2w8QPt3NA
+         8WJwIW1Gs8N7s1r83gLKJeCUnXtiZ4oFdMyxQs3ZvSHmajCA8HdnxW+u8SG6FpLFA0NR
+         D7fw==
+X-Gm-Message-State: AG10YOSfnu+NOQ+mniK9N92Fn4udtT8BBrVD4xp97fBweDzkUleXHYrLg0M9dWzULfmrkw==
+X-Received: by 10.98.80.80 with SMTP id e77mr48757927pfb.126.1456256240526;
+        Tue, 23 Feb 2016 11:37:20 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.185])
+        by smtp.gmail.com with ESMTPSA id t12sm45942382pfa.54.2016.02.23.11.37.17
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 23 Feb 2016 11:37:20 -0800 (PST)
+Date: Tue, 23 Feb 2016 17:07:28 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: i2o: Fix "foo * bar" warning.
-Date: Fri, 27 Feb 2015 13:52:15 +0200
-Message-Id: <1425037935-14008-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v3] Staging: sm750fb: Remove leading and trailing whitespace.
+Message-ID: <20160223113727.GA2778@sandhya>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-This patch fixes these error messages found by checkpatch.pl:
-ERROR: "foo* bar" should be "foo *bar"
+Remove leading and trailing whitespace.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/i2o/debug.c | 4 ++--
+Changes in v3:
+*Corrected Commit message.
+ drivers/staging/sm750fb/ddk750_power.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/i2o/debug.c b/drivers/staging/i2o/debug.c
-index 7a16114..3e959a4 100644
---- a/drivers/staging/i2o/debug.c
-+++ b/drivers/staging/i2o/debug.c
-@@ -5,7 +5,7 @@
+diff --git a/drivers/staging/sm750fb/ddk750_power.c b/drivers/staging/sm750fb/ddk750_power.c
+index 33e092e..b3c3791 100644
+--- a/drivers/staging/sm750fb/ddk750_power.c
++++ b/drivers/staging/sm750fb/ddk750_power.c
+@@ -106,9 +106,9 @@ void enable2DEngine(unsigned int enable)
+ 	u32 gate;
  
- static void i2o_report_util_cmd(u8 cmd);
- static void i2o_report_exec_cmd(u8 cmd);
--static void i2o_report_fail_status(u8 req_status, u32 * msg);
-+static void i2o_report_fail_status(u8 req_status, u32 *msg);
- static void i2o_report_common_status(u8 req_status);
- static void i2o_report_common_dsc(u16 detailed_status);
+ 	gate = PEEK32(CURRENT_GATE);
+-	if (enable) 
++	if (enable)
+ 		gate |= (CURRENT_GATE_DE | CURRENT_GATE_CSC);
+-	 else 
++	else
+ 		gate &= ~(CURRENT_GATE_DE | CURRENT_GATE_CSC);
  
-@@ -66,7 +66,7 @@ void i2o_dump_message(struct i2o_message *m)
-  * Following fail status are common to all classes.
-  * The preserved message must be handled in the reply handler.
-  */
--static void i2o_report_fail_status(u8 req_status, u32 * msg)
-+static void i2o_report_fail_status(u8 req_status, u32 *msg)
- {
- 	static char *FAIL_STATUS[] = {
- 		"0x80",		/* not used */
+ 	setCurrentGate(gate);
 -- 
-1.9.1
+1.8.3.4
 
 
