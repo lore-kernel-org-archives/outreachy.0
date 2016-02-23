@@ -1,125 +1,73 @@
-X-GM-THRID: 6249320811377721344
-X-Received: by 10.107.136.23 with SMTP id k23mr23664126iod.23.1455033386775;
-        Tue, 09 Feb 2016 07:56:26 -0800 (PST)
+X-GM-THRID: 6254101469498179584
+X-Received: by 10.140.222.72 with SMTP id s69mr817904qhb.15.1456213858080;
+        Mon, 22 Feb 2016 23:50:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.43.116 with SMTP id d107ls2293558qga.20.gmail; Tue, 09 Feb
- 2016 07:56:25 -0800 (PST)
-X-Received: by 10.129.158.2 with SMTP id v2mr14961979ywg.42.1455033385918;
-        Tue, 09 Feb 2016 07:56:25 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x233.google.com (mail-pf0-x233.google.com. [2607:f8b0:400e:c00::233])
-        by gmr-mx.google.com with ESMTPS id u66si5340115pfa.2.2016.02.09.07.56.25
+Received: by 10.182.20.232 with SMTP id q8ls1037583obe.50.gmail; Mon, 22 Feb
+ 2016 23:50:57 -0800 (PST)
+X-Received: by 10.182.47.132 with SMTP id d4mr31165769obn.40.1456213857601;
+        Mon, 22 Feb 2016 23:50:57 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x22f.google.com (mail-qg0-x22f.google.com. [2607:f8b0:400d:c04::22f])
+        by gmr-mx.google.com with ESMTPS id g136si1623168ywb.5.2016.02.22.23.50.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Feb 2016 07:56:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) client-ip=2607:f8b0:400e:c00::233;
+        Mon, 22 Feb 2016 23:50:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) client-ip=2607:f8b0:400d:c04::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x233.google.com with SMTP id e127so34015075pfe.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 09 Feb 2016 07:56:25 -0800 (PST)
+Received: by mail-qg0-x22f.google.com with SMTP id y89so130384565qge.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 23:50:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=KCbo1N6eQsTqjjudQvvuISUwnqyY5E6L9sCnWTxYBos=;
-        b=fGH5BhA1O68xRNFzOUoq/4t/XCX56o9xF5ZjUEAc6qqwKRPGvo95j0h4KMWj+PFMsH
-         yNT5wAvX3mqDEllzn+YYrST871e8DAvKCMSUiMBbIx59AhpiiErIaOB4ah5pV/wxtcQH
-         7vdBhFg6DtwdzL08Dkz2sP6WTUfIfr67m50nX/i2c2f3F+rU7yK1ka8OCxFLRhYuzBb+
-         kzsKZEvloNDVmKfdEpUd6UmJhWs3nuS/S05bkPiXlp+c+xNHC6C9n/+bbGJNGRPy9eeT
-         DvoGNNj44Y3RyYI7NKQNCuismhu7lp5AIW7KIiC7DAeSpYJ/mSZirKnxuAMznyY2bEHy
-         rC7g==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=cH/ZhD79xLbM43XtiGPjk2hwfVXJAWud0BWM0vN0ug4=;
+        b=kNB0kKi6yDk7zp2oKXdrj1rThxweejfWU8hNFOTk6VZTIc5+k8nGgqD9TGwgs7MaX0
+         aCP11/dkdLzgO5vixA0Ujz61V/gstMUA8wP90SQIZafYkwh2aDlfakdf8wZHnfpmkO/6
+         mxaYZ02q6/EQYXX5r+DoNvRUowQ69WravdT75RbYYLPPD1JTBMF6+FkUJ0sUHnmidrQg
+         0Ab3s8ZiK/8/HHbSkIk8ler5HjAV0+4hp2WAoOzxo5ujeSKwydRtVP99nj3V5+GyWEqv
+         +VD41zcl2xf4OtqXlRhsz6nfk22BIW1MuS4w2rRD7wX951KwwQ2DIr2RzersGJg/hKX6
+         abtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KCbo1N6eQsTqjjudQvvuISUwnqyY5E6L9sCnWTxYBos=;
-        b=WkSF97GECZmJIajwyVunERzAsLm8bov7tNZDLxv9T22fB1wQPQWWSNUirPUjG1fsTA
-         8AXvKNyO+pQmQncU7b+qZDEtH/u5em50VWP34B73un181KSooqoiMto4+fPLEoAhd9xA
-         BZdaZLlAZNCXul3oUgKVrLCZ64U00S+eWFHKAGfXG4joQxjLPEevRyx9i7Ke9qaPKhn9
-         8FsQ48tSdjcgzicLW8n5MIqHE5HDXfKy64r3DRrJ9cY2L/W2G+0DoQbhvxfo1pnBxgnc
-         P+ZJnD6zAkI/0bJWuolqOw2mqfGKBHS9APAK/VP7DJewcjsWMf//2Mb+FiVScRICvHs1
-         6gfg==
-X-Gm-Message-State: AG10YORtIwrpSz4wnO6zcWY8/CBPwKuSVq8M7v1vlYMvDKEqK/s0deLK0oD7lFeyPdDSsA==
-X-Received: by 10.98.10.149 with SMTP id 21mr51109016pfk.75.1455033385737;
-        Tue, 09 Feb 2016 07:56:25 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.148.12])
-        by smtp.gmail.com with ESMTPSA id d8sm51686929pas.14.2016.02.09.07.56.21
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 07:56:25 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Tue, 09 Feb 2016 21:26:13 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: xgifb: Use shorthand operator
-Date: Tue,  9 Feb 2016 21:25:33 +0530
-Message-Id: <1455033333-31657-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=cH/ZhD79xLbM43XtiGPjk2hwfVXJAWud0BWM0vN0ug4=;
+        b=bQ6d8pq0KERAMcGZpoXlfyC2UOGEwEHY5MpNFvcH83yzLlZCxL478nEO8eG8FRKryL
+         x5UaAZOedX7bM7h9gDdxfyq9TNWlAMDMsmq+gv0kfAcc6oztgojh7fXKWugwjnCdw+Dr
+         JVWEw6G8XSB/fhmpUjmP3x6W+FQnUomvvmIVfVqwF36E/kAKL6eDOW+HqaShE4/hBwOD
+         nBXoMKXktKzfKY03zUkZd1WrTzCTMhjNKmTJ0uMVe/Q2DhUHwMhx6qSDnx9mxrrYsLqU
+         lHqn79/I2j0zSSt5G6wbXL5iWuKLihlxUS0BJSUa3qfpxafX/tbgtAmKBWugETrQBbdi
+         s4RA==
+X-Gm-Message-State: AG10YOQSUBsNAlMf29sKlbRdSg5/NsOBGERBXAqqb3WmGTN1kZoLnakvU8ePCk9sFgo4YS7c3/HUuhsI+nsaXQ==
+MIME-Version: 1.0
+X-Received: by 10.140.140.6 with SMTP id 6mr40674699qhm.29.1456213857456; Mon,
+ 22 Feb 2016 23:50:57 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Mon, 22 Feb 2016 23:50:57 -0800 (PST)
+In-Reply-To: <20160222211342.GD5849@kroah.com>
+References: <20160222130735.GA26820@amitoj-Inspiron-3542>
+	<20160222211342.GD5849@kroah.com>
+Date: Tue, 23 Feb 2016 13:20:57 +0530
+Message-ID: <CA+5yK5F55-q9-z+i0b=QYSPMb+oLfmd7C-EYUWcmk6ykvrHduw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: obdclass: Replace
+ simple_strtoul with kstrtoint
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Use shorthand operator for assignment statement to make code look cleaner.
-Made a coccinelle script for this and did changes.
-@@
-identifier data;
-constant x;
-@@
+On Tue, Feb 23, 2016 at 2:43 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> max_t() is no longer needed here, right?  It can just be max().
+>
+> same for the other use in this patch.
+>
+> thanks,
+>
+> greg k-h
 
-(
-- data = data + x
-+ data += x
-|
-- data = data - x
-+ data -= x
-)
+I'll send a v2 with the above change incorporated.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/xgifb/vb_setmode.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
-index de96da1..0daa661 100644
---- a/drivers/staging/xgifb/vb_setmode.c
-+++ b/drivers/staging/xgifb/vb_setmode.c
-@@ -289,7 +289,7 @@ static void XGI_SetCRT1Timing_H(struct vb_device_info *pVBInfo,
- 
- 	if (HwDeviceExtension->jChipType >= XG20) {
- 		data = xgifb_reg_get(pVBInfo->P3d4, 0x04);
--		data = data - 1;
-+		data -= 1;
- 		xgifb_reg_set(pVBInfo->P3d4, 0x04, data);
- 		data = xgifb_reg_get(pVBInfo->P3d4, 0x05);
- 		data1 = data;
-@@ -302,14 +302,14 @@ static void XGI_SetCRT1Timing_H(struct vb_device_info *pVBInfo,
- 			xgifb_reg_set(pVBInfo->P3c4, 0x0c, data);
- 			data = pushax;
- 		}
--		data = data - 1;
-+		data -= 1;
- 		data |= data1;
- 		xgifb_reg_set(pVBInfo->P3d4, 0x05, data);
- 		data = xgifb_reg_get(pVBInfo->P3c4, 0x0e);
- 		data >>= 5;
--		data = data + 3;
-+		data += 3;
- 		if (data > 7)
--			data = data - 7;
-+			data -= 7;
- 		data <<= 5;
- 		xgifb_reg_and_or(pVBInfo->P3c4, 0x0e, ~0xE0, data);
- 	}
-@@ -3394,9 +3394,9 @@ static void XGI_SetGroup2(unsigned short ModeNo, unsigned short ModeIdIndex,
- 	xgifb_reg_and_or(pVBInfo->Part2Port, 0x25, 0x0F, temp);
- 
- 	tempbx = push2;
--	tempbx = tempbx + 8;
-+	tempbx += 8;
- 	if (pVBInfo->VBInfo & SetCRT2ToHiVision) {
--		tempbx = tempbx - 4;
-+		tempbx -= 4;
- 		tempcx = tempbx;
- 	}
- 
--- 
-1.9.1
-
+Amitoj
 
