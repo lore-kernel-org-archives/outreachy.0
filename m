@@ -1,71 +1,85 @@
 X-GM-THRID: 6254552091181711360
-X-Received: by 10.107.8.216 with SMTP id h85mr35697443ioi.0.1456254224226;
-        Tue, 23 Feb 2016 11:03:44 -0800 (PST)
+X-Received: by 10.112.189.104 with SMTP id gh8mr4287289lbc.12.1456254078856;
+        Tue, 23 Feb 2016 11:01:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.150.19 with SMTP id y19ls1070037iod.105.gmail; Tue, 23 Feb
- 2016 11:03:43 -0800 (PST)
-X-Received: by 10.107.135.209 with SMTP id r78mr33952030ioi.19.1456254223893;
-        Tue, 23 Feb 2016 11:03:43 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qg0-x22a.google.com (mail-qg0-x22a.google.com. [2607:f8b0:400d:c04::22a])
-        by gmr-mx.google.com with ESMTPS id w126si1615346ywe.6.2016.02.23.11.03.43
+Received: by 10.25.166.138 with SMTP id p132ls390863lfe.23.gmail; Tue, 23 Feb
+ 2016 11:01:18 -0800 (PST)
+X-Received: by 10.25.154.129 with SMTP id c123mr4331303lfe.1.1456254078287;
+        Tue, 23 Feb 2016 11:01:18 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 141si1386260wmy.2.2016.02.23.11.01.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 11:03:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) client-ip=2607:f8b0:400d:c04::22a;
+        Tue, 23 Feb 2016 11:01:18 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x22a.google.com with SMTP id b67so144231299qgb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 11:03:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=+XbSSf3LhIomMTNpBwfQNnZm94TKiYdhWBAcslLqT4Q=;
-        b=YyKeKRBPzUV8ekJI9MXxostd5zNf2cRcXRYnUcu37hm8NHvrHxIdiXe4f10OihC1Mj
-         0ZC1szJsHKkYDoTsA+/m43A68dyXfujP1ZjV/7oJDJi5tLNR0u26cMQ0zfa3f0wXNeTs
-         fwKTwUlwPIBIZlB7hsd1m8ImOdE2VEzsn3IMFdepyC2GXuMATdWkUmjWeuP3Q90AkbvQ
-         RX9kjoqVOc40JnI2KI24OoM97ZOsn3m7rciaUZPZsqlmhdfzZDvE68MftnygIJ+XCG17
-         gk+WtJ/c5lLxh8F/cJ7YSD/e5fpiftXfpWE12YhYBO+kwVX+kh37sogXhNI+iCJqYHTa
-         Feew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=+XbSSf3LhIomMTNpBwfQNnZm94TKiYdhWBAcslLqT4Q=;
-        b=l2gNc/eTPUxUXGy4RPbfcFRCHT1EW4oIyJwBu5VaWZn3gUUx40U8bSZYKwriyKYmyK
-         3ML7qbJVeehND6eSVDaNNEzwwd0fomtalIbiOEQwAUIe3od6hWeQ1Hujgek5wu/63crQ
-         BYD72UnCbi+OUitDGlhZsdvb93omdGYYB2wYNCRwiZwIe/BFpQoBgCHc/HeD2N6eI1Au
-         +Kbd3GqNuGBWo/2bEevhlOZaXsDiUXfYTC1SFIGBeCqAzOX2retWMtDEbMLSEE46bpmE
-         04BF/tSRfvM/YhQzSznMsIjNTNZKWPIzyihl/Y6bX7QK8FisbWMbxuPhhGQkgEde9DCm
-         DQdA==
-X-Gm-Message-State: AG10YOSXi3RoJlHGhFrq5nH0PZT2iWOX1dlzXuarPqAlyfwHWkaEXrRrK5rQQXmapVDEFEIOiX+XFduO//rwSg==
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,490,1449529200"; 
+   d="scan'208";a="165744354"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Feb 2016 20:01:17 +0100
+Date: Tue, 23 Feb 2016 20:01:16 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adc: Use devm_ioremap_resource()
+ instead of of_iomap()
+In-Reply-To: <CA+5yK5HbDKJoRZYOa0PuJjAOuQt68yVM-=_aGR=C7im=E5Vo3g@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1602232000530.2040@localhost6.localdomain6>
+References: <20160223181623.GA20782@amitoj-Inspiron-3542> <alpine.DEB.2.02.1602231950320.2040@localhost6.localdomain6> <CA+5yK5HbDKJoRZYOa0PuJjAOuQt68yVM-=_aGR=C7im=E5Vo3g@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-X-Received: by 10.140.23.81 with SMTP id 75mr43475425qgo.35.1456254223684;
- Tue, 23 Feb 2016 11:03:43 -0800 (PST)
-Received: by 10.140.44.99 with HTTP; Tue, 23 Feb 2016 11:03:43 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.02.1602232000530.2040@localhost6.localdomain6>
-References: <20160223181623.GA20782@amitoj-Inspiron-3542>
-	<alpine.DEB.2.02.1602231950320.2040@localhost6.localdomain6>
-	<CA+5yK5HbDKJoRZYOa0PuJjAOuQt68yVM-=_aGR=C7im=E5Vo3g@mail.gmail.com>
-	<alpine.DEB.2.02.1602232000530.2040@localhost6.localdomain6>
-Date: Wed, 24 Feb 2016 00:33:43 +0530
-Message-ID: <CA+5yK5FFL0JV8t+XjOh-CsGj2EdngD7e-GKrYN24ZH99bn1KVg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adc: Use
- devm_ioremap_resource() instead of of_iomap()
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-697187721-1456254077=:2040"
 
-On Wed, Feb 24, 2016 at 12:31 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
->
-> The link for the two patches doesn't work for me.  Do you have the commit
-> ids?
-Commit ids c3f0dd38996d5f4e7c681099ba18cc1587155edb and
-b5f3b75d9d3b5526d973fc0bfee5680bdc6acf2a
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Amitoj
+--8323328-697187721-1456254077=:2040
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Wed, 24 Feb 2016, Amitoj Kaur Chawla wrote:
+
+> 
+> 
+> On Wed, Feb 24, 2016 at 12:22 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >> The adc driver uses of_iomap() which doesn't request the resource and
+> >> isn't device managed so error handling is needed. of_iomap() is mainly
+> >> used in cases where there is no driver or struct device so a switch to
+> >> devm_ functions is required.
+> >>
+> >> This patch switches to use devm_ioremap_resource() instead which
+> >> automatically requests the resource and is freed when the driver
+> >> detaches.
+> >
+> > The above doesn't explain sufficiently why the transformation is correct.
+> > You would have to look at the definitions of the functions involved, and
+> > show that in this case they do the same thing.  Do you have anoher patch
+> > that makes this transformation?  What kind of justification does it give?
+> >
+> > julia
+> 
+> I made the change based on these two patches and this discussion.
+
+The link for the two patches doesn't work for me.  Do you have the commit 
+ids?
+
+julia
+
+> 
+> Amitoj
+> 
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CA%2B5yK5HbDKJoRZYOa0PuJjAOuQt68yVM-%3D_aGR%3DC7im%3DE5Vo3g%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+> 
+--8323328-697187721-1456254077=:2040--
 
