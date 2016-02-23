@@ -1,126 +1,97 @@
-X-GM-THRID: 6261652924995207168
-X-Received: by 10.112.138.98 with SMTP id qp2mr2521372lbb.4.1457904680905;
-        Sun, 13 Mar 2016 14:31:20 -0700 (PDT)
+X-GM-THRID: 6254064858167246848
+X-Received: by 10.129.85.68 with SMTP id j65mr31944203ywb.57.1456198999776;
+        Mon, 22 Feb 2016 19:43:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.54.76 with SMTP id d73ls444867wma.21.canary; Sun, 13 Mar
- 2016 14:31:20 -0700 (PDT)
-X-Received: by 10.194.239.163 with SMTP id vt3mr2464514wjc.3.1457904680410;
-        Sun, 13 Mar 2016 14:31:20 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
-        by gmr-mx.google.com with ESMTPS id 71si423079wmp.0.2016.03.13.14.31.20
+Received: by 10.107.134.161 with SMTP id q33ls998077ioi.13.gmail; Mon, 22 Feb
+ 2016 19:43:19 -0800 (PST)
+X-Received: by 10.66.150.68 with SMTP id ug4mr29747503pab.33.1456198999227;
+        Mon, 22 Feb 2016 19:43:19 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-oi0-x22c.google.com (mail-oi0-x22c.google.com. [2607:f8b0:4003:c06::22c])
+        by gmr-mx.google.com with ESMTPS id nt4si1156488igb.2.2016.02.22.19.43.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 14:31:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
+        Mon, 22 Feb 2016 19:43:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c06::22c as permitted sender) client-ip=2607:f8b0:4003:c06::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c06::22c as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22b.google.com with SMTP id l68so83488175wml.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 14:31:20 -0700 (PDT)
+Received: by mail-oi0-x22c.google.com with SMTP id w5so69854684oie.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 19:43:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=yN/7Z4dewSFlk6q8CclaaNZIWeNYNxvRghqYIC0sRkk=;
-        b=CvCGFROt4aGXgU6E4VrGq5bQBEY51NqaFf2FJ5VigXLRyA8r8NifZANG95TLHqCn92
-         azOUOpDe4mBrzVwXitSFQWBxKnv80K5g1NbE6tn/fhbfoH9gjh7p8EG2Y29zPNaFT0ft
-         dLLWspo0LepTtyMnYWKDgUHk2klQ4AuQYv1IVLwm488THgXd3RiVIaQHxBBxtTRABKL+
-         NuGkjz4Ik5JD/BcaRIyebOF1KPm6ukb2aJJ4jPsg3ME3/bcTz7eGaTywCUoBipBThyDo
-         I/hMfwWPeoh3CyimGy/dwygzncb3FOOoG3fmXJUFU8fyDUIOuBylkQmDykPjiF0QIb8z
-         l5Lw==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=nl5Fk1Q2zkLHJwEu1C8d+IfTnKwxqnxufRJD/egD2pk=;
+        b=B8swkzVyrNUONzWsJqrOx2gCu4c8R9j+N3JY0XLFfCa4fxLXb8M8Q7SRAnKzYiACCG
+         EYSAB0axLJY0MjZ2mCQjI663MZVQDflamZAAmdY4GnHBSMsQOLbv+3eBVDOH/xqWRHY1
+         2BwP7a7+bd91DGmqda7U61Ya0qNCxWhu08+yA1mcwk6VCRHX8Xy7iId9FqSjxeJUroGR
+         a9qIsSzky/nfG+Ys3ZHZr2NDtq1wJf6PP8FWepYp1H/8BoHWTcwTSn49Cb79CZxYjHFx
+         9INfLXr1cF2M3wCB/ZHg7boRzfQ1KMn/1R9ng0M7e0ZUIGCifKTEhYMp1WeGUQzPRtHe
+         qX7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yN/7Z4dewSFlk6q8CclaaNZIWeNYNxvRghqYIC0sRkk=;
-        b=D88Iqj/3mh4jHemKzX5Au3ZEkL3NwwinGBtxFuJqAmyF167vk0n/j/mYcYdHLRvAps
-         94hko8YBKWto2mj33Az1t14D1hTXaTnGE22Lr0jF9fmq7IDrNr84guKZp43KbJXx3raj
-         T7x3UIQa4MGnJBYPhPZjvdcgvlDQ+NcaurxeatgzOGvCJFAM57XsDKizl0NXVn0LCx2i
-         CulM/WHsApjBLFiLenrxiavKUneLqbpXdUJU0HZya/4FsNrGuNqvHUhsjPYeOv54A1dN
-         xwffTX2cx5eN9jkaxpjE6bbAO7WsDBYYVi8kYAvWJLKRZpXgZ6rKwhgVy20N7kVAtO86
-         5+JQ==
-X-Gm-Message-State: AD7BkJIaziJFq8qu54pRi6FylVnh0WwihR7QHkUpQOCEeytOMhSrMfn+kJ1fQ2Eadri59Q==
-X-Received: by 10.28.91.83 with SMTP id p80mr15106506wmb.48.1457904680204;
-        Sun, 13 Mar 2016 14:31:20 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([95.12.73.44])
-        by smtp.gmail.com with ESMTPSA id k124sm13077858wmb.11.2016.03.13.14.31.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 14:31:19 -0700 (PDT)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: rts5208: Add space around '+'
-Date: Sun, 13 Mar 2016 23:31:08 +0200
-Message-Id: <1457904668-6120-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=nl5Fk1Q2zkLHJwEu1C8d+IfTnKwxqnxufRJD/egD2pk=;
+        b=As8lZ9RfNbJAee3OB7d9Hig0a6P6GEjcarQ/kQhvlaauliPkaxrj1uaSScRG0XOvOt
+         rZbycpkEecKI6xfJC04RYZluixdadC7gra8q/CRi2o3eM9WPFXUV00y/HZb2LFbuSv7r
+         DW2yh5x4PKgspKifD3PSoZzG2r6JkeT6V2w84AdzJWgXoT4rN5WpzhGVR0CFqu+4XYKS
+         33EL6Tb6F8GIf/r1oCw096B/TLeIzqrC1WvE+OgNMbRGbhcIFZ43+NHAgynW7Huz/sJE
+         beCXZoxyd5qkpuemGBORUOAZkW3o+zmojlvsF8BFWP45e3kKwL4E7+Gr6yGgTeaUqq/B
+         4PeA==
+X-Gm-Message-State: AG10YOT77SlULF0vWrGNltXMdVMbkRcvwknba+Ob6a+EmKIjMsG4OqRqTJXmt+zqFGC+38vuei5f22RJ53wohQ==
+MIME-Version: 1.0
+X-Received: by 10.202.196.208 with SMTP id u199mr24382195oif.71.1456198999083;
+ Mon, 22 Feb 2016 19:43:19 -0800 (PST)
+Received: by 10.157.40.238 with HTTP; Mon, 22 Feb 2016 19:43:19 -0800 (PST)
+In-Reply-To: <20160222211057.GA5849@kroah.com>
+References: <cover.1456136671.git.bhumirks@gmail.com>
+	<ae653a4fe839af60c62a545477d803c8b0866968.1456136671.git.bhumirks@gmail.com>
+	<20160222211057.GA5849@kroah.com>
+Date: Tue, 23 Feb 2016 09:13:19 +0530
+Message-ID: <CAOH+1jEEG8QGW9kZby=DRTYV5iXcy1xdFxegKcsTU1VbvBmhOw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 4/5] Staging: lustre: Use min_t or
+ max_t instead of ternary operator
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Add space around operator '+'. Problem found using checkpatch.pl
-CHECK: spaces preferred around that '+' (ctx:VxV)
+On Tue, Feb 23, 2016 at 2:40 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> On Mon, Feb 22, 2016 at 04:15:33PM +0530, Bhumika Goyal wrote:
+>> Replace ternary operators with macros min_t/max_t as they are
+>> shorter and thus increases code readability. Macro min_t return the minimum
+>> and min_t returns maximum of the two compared values.
+>> Made a semantic patch for changes:
+>>
+>> @@
+>> type T;
+>> T x;
+>> T y;
+>> @@
+>> (
+>> - x < y ? x : y
+>> + min_t(T,x,y)
+>> |
+>> - x > y ? x : y
+>> + max_t(T,x,y)
+>> )
+>
+> If they are the same type, why can't you just use min() and max()?  The
+> call to min_t() and max_t() seem a bit of an overkill as they do an
+> explicit cast for when the types of the two variables are not the same
+> type.
+>
+> So I'd prefer this patch to just be min() and max() if at all possible.
+>
+> thanks,
+>
+> greg k-h
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/rts5208/ms.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
-index 44d79ef..1481ef0 100644
---- a/drivers/staging/rts5208/ms.c
-+++ b/drivers/staging/rts5208/ms.c
-@@ -2693,7 +2691,7 @@ static int ms_build_l2p_tbl(struct rtsx_chip *chip, int seg_no)
- 		}
- 
- 		if ((log_blk < ms_start_idx[seg_no]) ||
--				(log_blk >= ms_start_idx[seg_no+1])) {
-+				(log_blk >= ms_start_idx[seg_no + 1])) {
- 			if (!(chip->card_wp & MS_CARD)) {
- 				retval = ms_erase_block(chip, phy_blk);
- 				if (retval != STATUS_SUCCESS)
-@@ -3842,7 +3840,7 @@ static int ms_rw_multi_sector(struct scsi_cmnd *srb, struct rtsx_chip *chip,
- 	start_page = (u8)(start_sector & ms_card->page_off);
- 
- 	for (seg_no = 0; seg_no < ARRAY_SIZE(ms_start_idx) - 1; seg_no++) {
--		if (log_blk < ms_start_idx[seg_no+1])
-+		if (log_blk < ms_start_idx[seg_no + 1])
- 			break;
- 	}
- 
-@@ -4274,7 +4272,7 @@ int mg_set_leaf_id(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 	memset(buf1, 0, 32);
- 	rtsx_stor_get_xfer_buf(buf2, min_t(int, 12, scsi_bufflen(srb)), srb);
- 	for (i = 0; i < 8; i++)
--		buf1[8+i] = buf2[4+i];
-+		buf1[8 + i] = buf2[4 + i];
- 
- 	retval = ms_write_bytes(chip, PRO_WRITE_SHORT_DATA, 32, WAIT_INT,
- 				buf1, 32);
-@@ -4409,10 +4407,10 @@ int mg_chg(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 	rtsx_stor_get_xfer_buf(buf, bufflen, srb);
- 
- 	for (i = 0; i < 8; i++)
--		buf[i] = buf[4+i];
-+		buf[i] = buf[4 + i];
- 
- 	for (i = 0; i < 24; i++)
--		buf[8+i] = 0;
-+		buf[8 + i] = 0;
- 
- 	retval = ms_write_bytes(chip, PRO_WRITE_SHORT_DATA,
- 				32, WAIT_INT, buf, 32);
-@@ -4521,10 +4519,10 @@ int mg_rsp(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 	rtsx_stor_get_xfer_buf(buf, bufflen, srb);
- 
- 	for (i = 0; i < 8; i++)
--		buf[i] = buf[4+i];
-+		buf[i] = buf[4 + i];
- 
- 	for (i = 0; i < 24; i++)
--		buf[8+i] = 0;
-+		buf[8 + i] = 0;
- 
- 	retval = ms_write_bytes(chip, PRO_WRITE_SHORT_DATA, 32, WAIT_INT,
- 				buf, 32);
--- 
-1.9.1
-
+Ok I got the point, I will use min() and max() and send a v2 for all
+the patches.
+Thanks
+Bhumika
 
