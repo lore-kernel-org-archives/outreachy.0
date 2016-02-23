@@ -1,110 +1,86 @@
-X-GM-THRID: 6254947752904491008
-X-Received: by 10.182.27.101 with SMTP id s5mr37616694obg.35.1456343511036;
-        Wed, 24 Feb 2016 11:51:51 -0800 (PST)
+X-GM-THRID: 6254586343072989184
+X-Received: by 10.129.3.69 with SMTP id 66mr32968688ywd.41.1456259364438;
+        Tue, 23 Feb 2016 12:29:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.95.43 with SMTP id h40ls2848654qge.39.gmail; Wed, 24 Feb
- 2016 11:51:50 -0800 (PST)
-X-Received: by 10.129.72.199 with SMTP id v190mr38746412ywa.44.1456343510554;
-        Wed, 24 Feb 2016 11:51:50 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id ui7si668057pab.0.2016.02.24.11.51.50
+Received: by 10.107.166.82 with SMTP id p79ls1226784ioe.23.gmail; Tue, 23 Feb
+ 2016 12:29:24 -0800 (PST)
+X-Received: by 10.66.218.8 with SMTP id pc8mr29991588pac.45.1456259364023;
+        Tue, 23 Feb 2016 12:29:24 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id ui7si4173151pab.0.2016.02.23.12.29.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 11:51:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Tue, 23 Feb 2016 12:29:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id fy10so18008205pac.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 11:51:50 -0800 (PST)
+Received: by mail-pa0-x230.google.com with SMTP id yy13so115854976pab.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 12:29:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=N/ZysTb4/WcBnequYsJ+M4rlUpdGebGbIyh44NMKBH4=;
-        b=d2fcc1D/2y2kKp+ZTaJh3332SubQJri47/vXYvlJYkkHcy0MyABefSIlWwt5y/HQYD
-         3PhExo7kFG83Cm7fYWxdjSrOnn/4vFJbOMw27eXZQEjsDRnrhxq7IAY0k8vxyo0LvhIv
-         f5iCo3zW1it3rEaz5iZXgPbw9UXBjqDFG0MWpj7rO+sJ04kncMtst//+3uez1k7kkpeW
-         FadkMLnnIL4qTJmfMfHl+ZpBJkhfb7nL+Gkz676NGPwOn/GO01FwUwLzm7dG2JO3ExO+
-         g0ZI2attz5B63mzUfA6NcbiGsRcSlAIaaP3ccfV/TL7ErqUAYs5YrdSvFHTdTbu8mHJ4
-         mcaw==
+        bh=zA5aykYt77e16VXwlfAKNKEjHLH5luDH/RtZaLKtY10=;
+        b=BYVB/odUjHoCvSLJdtl3y6pgAtrE3AdHtlyExdpSo4SabIdGbCOF6YL6kVIn/hUnoT
+         9uW/juysRLTDc9QbcRCVUGCcuKmr2aQCD6zjemf7HH9ioURKmlND5gWFexZjn28Xv17H
+         KN/Y+of+3TOtKY0+MbI9gVbhbsJdWpu0dfdTLRrlTnbt+TKGpldVMsLFiOPpUioeNzXd
+         zc77or+D0sfou31v62xk/Gwg0pS9ojUpcZqjSdIWmEHEBzokWcKAV/4l2qoL13FLsL17
+         2z3hBA0odMmafeB83d9dz2dhJGHTXvKe1tr/V0DwwbGYIW0nj5iT3ZHTb3FNInbr8rLy
+         /PgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=N/ZysTb4/WcBnequYsJ+M4rlUpdGebGbIyh44NMKBH4=;
-        b=dcxfSWK0hvt1OHk5jXs8xn5udZVG1av03lfVb/m6Vs8/sfvuxIf8eDZpWhDGW1X1ra
-         2SOdPb3diAqTucMnaDmGWFxTxGqLnVxcdn3cn67wrvPI6Ysyvst/xHuKVj4XuZhORtCB
-         AiXtvkG25L3kIrn7h12RJygK+iehXml7olFhQMFrkFjg97S6WLocfxDTeIjMk8IT5Lv7
-         dMWNPHScBBXeQgqre4k+pPRnW/XBZkmmdRczGpBr1Rut3xpJCQPH6FhoZUJz8HPcpW+V
-         ttXpS3Kc0gCVoYP0MVmp2Ic1NyWwFQhO9B87odDuxBeHpbdRZ/P+U81paftI/lGTBBEA
-         oymw==
-X-Gm-Message-State: AG10YOTvAEWhRrr/7+L27wWRUQ7pLmyQFrTPiUEBUuOzyBYrYzEdQGMxzPB6XY4GU6z7AA==
-X-Received: by 10.66.146.100 with SMTP id tb4mr55310298pab.99.1456343510358;
-        Wed, 24 Feb 2016 11:51:50 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ta2sm6865028pab.42.2016.02.24.11.51.48
+        bh=zA5aykYt77e16VXwlfAKNKEjHLH5luDH/RtZaLKtY10=;
+        b=b+WRFGUwbLau5oeOEGHtgxdjemwnJBtR/AMgQblgOx5yUKZ/Zglb9l0hqaJRGSUSBY
+         dKl1TVnf8awm7IRRQqACwVZAJbsbZT4KXAyJJkDFbA0qw9jJ1c/VhGk7m3ZiP5qHREvl
+         nJ9odsUlENsCweTBlk45KrL69gkQfSjpSqCWxcTGDafCGgTtocw7D3Xup2wtfzr5EbbP
+         MZJR1TPRl2bHLCqfHoYMDn1YQ6C2ZE/6c6R48itP7jdGUc4t9AHJl10vdbQntALNpD4L
+         DXlrZJ9g1f/L4yX2Mg6M2mHSK9YsT4/GH27qr4G/lpF97iBcZxSP+2HlFeeskUk/QYSe
+         dJXA==
+X-Gm-Message-State: AG10YOTrux4IUZhRkTYmLYrDp72uwTZ9K8TgyrWN8yVewWI1rJKzudNEAntjRxHBYoebpg==
+X-Received: by 10.66.222.199 with SMTP id qo7mr49118015pac.38.1456259363902;
+        Tue, 23 Feb 2016 12:29:23 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.185])
+        by smtp.gmail.com with ESMTPSA id ll7sm40788566pab.6.2016.02.23.12.29.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 11:51:49 -0800 (PST)
-Date: Thu, 25 Feb 2016 01:22:24 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 23 Feb 2016 12:29:23 -0800 (PST)
+Date: Tue, 23 Feb 2016 17:59:30 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: Fix return type
-Message-ID: <20160224195224.GA21237@Karyakshetra>
+Subject: [PATCH 2/3] Staging: gs_fpgaboot: Use space around '+'.
+Message-ID: <20160223122930.GA3000@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-This function can return negative values (-ENODEV). Hence its type has
-been replaced from unsigned int to signed int.
+Use space around '+'.This issue is found by checkpatch.pl script.
 
-The only occurrence of this function is in structure file_operations
-snoop_file_ops as .poll = hfi1_snoop_poll
-
-This was done using Coccinelle.
-
-@@ identifier f; constant C;@@
-unsigned int f (...){
-<+...
-* return -C;
-...+>
-}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/rdma/hfi1/diag.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/staging/gs_fpgaboot/gs_fpgaboot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rdma/hfi1/diag.c b/drivers/staging/rdma/hfi1/diag.c
-index e41159f..bc0fb0b 100644
---- a/drivers/staging/rdma/hfi1/diag.c
-+++ b/drivers/staging/rdma/hfi1/diag.c
-@@ -206,8 +206,7 @@ static ssize_t hfi1_snoop_read(struct file *fp, char __user *data,
- static ssize_t hfi1_snoop_write(struct file *fp, const char __user *data,
- 				size_t count, loff_t *off);
- static long hfi1_ioctl(struct file *fp, unsigned int cmd, unsigned long arg);
--static unsigned int hfi1_snoop_poll(struct file *fp,
--				    struct poll_table_struct *wait);
-+static int hfi1_snoop_poll(struct file *fp, struct poll_table_struct *wait);
- static int hfi1_snoop_release(struct inode *in, struct file *fp);
-
- struct hfi1_packet_filter_command {
-@@ -790,8 +789,7 @@ static int hfi1_snoop_release(struct inode *in, struct file *fp)
- 	return 0;
- }
-
--static unsigned int hfi1_snoop_poll(struct file *fp,
--				    struct poll_table_struct *wait)
-+static int hfi1_snoop_poll(struct file *fp, struct poll_table_struct *wait)
- {
- 	int ret = 0;
- 	unsigned long flags = 0;
---
-2.1.4
+diff --git a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
+index 53c3301..8f2ffa8 100644
+--- a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
++++ b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
+@@ -222,7 +222,7 @@ static int gs_download_image(struct fpgaimage *fimage, enum wbus bus_bytes)
+ 	pr_info("device init done\n");
+ 
+ 	for (i = 0; i < size; i += bus_bytes)
+-		xl_shift_bytes_out(bus_bytes, bitdata+i);
++		xl_shift_bytes_out(bus_bytes, bitdata + i);
+ 
+ 	pr_info("program done\n");
+ 
+-- 
+1.8.3.4
 
 
