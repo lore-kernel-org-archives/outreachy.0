@@ -1,78 +1,82 @@
 X-GM-THRID: 6254547919446212608
-X-Received: by 10.66.193.225 with SMTP id hr1mr44097477pac.34.1456468716273;
-        Thu, 25 Feb 2016 22:38:36 -0800 (PST)
+X-Received: by 10.194.84.40 with SMTP id v8mr4312519wjy.2.1456250417818;
+        Tue, 23 Feb 2016 10:00:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.73.199 with SMTP id n7ls414253igv.11.canary; Thu, 25 Feb
- 2016 22:38:35 -0800 (PST)
-X-Received: by 10.107.10.217 with SMTP id 86mr5569459iok.6.1456468715784;
-        Thu, 25 Feb 2016 22:38:35 -0800 (PST)
-Return-Path: <bounce-md_30481620.56cff2eb.v1-29ba1ed8b7224f9498832983f38e7cd2@mandrillapp.com>
-Received: from mail12.wdc04.mandrillapp.com (mail12.wdc04.mandrillapp.com. [205.201.139.12])
-        by gmr-mx.google.com with ESMTPS id t198si742433ywe.3.2016.02.25.22.38.35
+Received: by 10.28.141.200 with SMTP id p191ls678785wmd.48.gmail; Tue, 23 Feb
+ 2016 10:00:17 -0800 (PST)
+X-Received: by 10.28.48.88 with SMTP id w85mr2087676wmw.5.1456250417285;
+        Tue, 23 Feb 2016 10:00:17 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
+        by gmr-mx.google.com with ESMTPS id s141si1489591wmd.1.2016.02.23.10.00.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 22:38:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of bounce-md_30481620.56cff2eb.v1-29ba1ed8b7224f9498832983f38e7cd2@mandrillapp.com designates 205.201.139.12 as permitted sender) client-ip=205.201.139.12;
+        Tue, 23 Feb 2016 10:00:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bounce-md_30481620.56cff2eb.v1-29ba1ed8b7224f9498832983f38e7cd2@mandrillapp.com designates 205.201.139.12 as permitted sender) smtp.mailfrom=bounce-md_30481620.56cff2eb.v1-29ba1ed8b7224f9498832983f38e7cd2@mandrillapp.com;
-       dkim=pass header.i=@linuxfoundation.org;
-       dkim=pass header.i=@mandrillapp.com
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
- h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
- bh=tfclDglviOJ40ti5BVcxY9aHOAs=;
- b=lIwMHO77E73d40ueZIFYt4BqCzE5oQN5da97b+WqhwWaYr/mf/oeRiLWzlwKVF4dY+SFKspiXmLy
-   i3EYre3WnjU9ytPPXpZuUqiRGmrxptF4yRiVNrOVxcdKG8JkqLpn1roItOgM0Su2DMkt5wKMi/H3
-   bMHMdnlOQX6z74rG3TY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
- b=SAIz/n5tDeVbZSWwssMHzCc4H48TenC6p3SWtAIXg36hU8DXjZuCOGv2aS07j76oCPPwqcVI3SoF
-   sZ+geO0+yPZ2V4mM6AcQqevQ03VECfwq5HpcvQNQK3oprHk4gSmV44e0gxvcP0ikIVilUflu1l9p
-   oM4UTaDzbP7jyAFMfuA=;
-Received: from pmta05.wdc01.mailchimp.com (127.0.0.1) by mail12.wdc04.mandrillapp.com id hpvpem1jvjgo for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 06:38:35 +0000 (envelope-from <bounce-md_30481620.56cff2eb.v1-29ba1ed8b7224f9498832983f38e7cd2@mandrillapp.com>)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
- i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456468715; h=From : 
- Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
- MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
- Subject : Date : X-Mandrill-User : List-Unsubscribe; 
- bh=M5Jqrmj66wQsZNlqqyaJskQTWgnQsUJMlN1c/dZhjWU=; 
- b=T6QTbmY93ygkZI3QGoNgKyJ2mselY+d6h1Bj9iO2PMRVdpbUKQjOyCIQ0H7gsSP8m2+OJL
- at07fT+/zMLU73AZ7tlBnJF0UNQwDLQDj+gQPaA/5KUC82sm3CZhDjr9tZqp7czNJvOwGu0X
- oR0NltgJ62M53Y8XrBOyyLUWAqJGw=
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: octeon: Add space around '+'
-Return-Path: <bounce-md_30481620.56cff2eb.v1-29ba1ed8b7224f9498832983f38e7cd2@mandrillapp.com>
-Received: from [50.170.35.168] by mandrillapp.com id 29ba1ed8b7224f9498832983f38e7cd2; Fri, 26 Feb 2016 06:38:35 +0000
-To: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Cc: <outreachy-kernel@googlegroups.com>
-Message-Id: <20160226063834.GA19753@kroah.com>
-References: <1456250408-19142-1-git-send-email-dilekuzulmez@gmail.com>
-In-Reply-To: <1456250408-19142-1-git-send-email-dilekuzulmez@gmail.com>
-X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
-X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.29ba1ed8b7224f9498832983f38e7cd2
-X-Mandrill-User: md_30481620
-Date: Fri, 26 Feb 2016 06:38:35 +0000
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x22e.google.com with SMTP id g62so5517104wme.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 10:00:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=W+atlbItMPxoi+xza4ZKkUCfCsiQ3Tc8BAvCFUMaDqk=;
+        b=iDTnWOZSDYLDcwkASLuxwxKZ/HPJ4x8tToGSVvWeh8aVujohu7ekf87kGhE+jr1nFz
+         zXkEWAefgjnPiJIhgx3nk/MtT5vZxEck7G/oL29lcwx6n2vYuxWrZbv8rU5zorntXBc6
+         gZJ6iZjbQKRq91l1v9cCKZ0FqLIllfgHXyRGSkBRvWKb/nPdc10AGwR9zLH0rnMQd2BP
+         ZLuM0wF7A/E0dxBPX8wMbbxzQKFb2NEmIzadE6UiNPeuTmletZujigW1YIgPTPZamXV6
+         +tN6+4ncPq7g5wgnXrwKKoXNUZhJST92Aig3zmqivcfuMliukeprVTARzX5Nx/x90S3Z
+         dJiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=W+atlbItMPxoi+xza4ZKkUCfCsiQ3Tc8BAvCFUMaDqk=;
+        b=aFkv8WrWrT+rq3n+ZsoAIrRvaswiXjWcPYXX6ffe4LnX4dGQhWoPVNyW+QM7JiQ8fz
+         KXeUsoDgZRyTuyb46gO3vnS2PDpqqB6vpxDaZ7M1K3V1gt8+ZLH73zfnti0aCXelUKjS
+         8gTPT+Fg3qhJMxMIUNcksF8RZhjAww0BeSBXzVkJgQQjN4NtsEiZdACrxeuijuyxwXRE
+         5Sv3Aw+3R9s+ujbgCwC4/EGYQXF/V4teVimeb/ALMEJFmf7Wf0mpIc+ko4ZRrmIfPq43
+         BsGUha2kqQpb6jMtVWYYeDgpQvneD3oS3W8uwxVLwpYPabdiAJq6c+8v+SNXROdmxYou
+         K9qg==
+X-Gm-Message-State: AG10YORBQXz8vdVHtvH3ms9nV0HCyaERT/090gMQaFUp6eA1vevevoZ5+FUDhIA6/pTYeg==
+X-Received: by 10.194.187.240 with SMTP id fv16mr41066785wjc.53.1456250417124;
+        Tue, 23 Feb 2016 10:00:17 -0800 (PST)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.228.232])
+        by smtp.gmail.com with ESMTPSA id fv6sm27278321wjc.12.2016.02.23.10.00.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 23 Feb 2016 10:00:16 -0800 (PST)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: octeon: Add space around '+'
+Date: Tue, 23 Feb 2016 20:00:08 +0200
+Message-Id: <1456250408-19142-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Tue, Feb 23, 2016 at 08:00:08PM +0200, Dilek Uzulmez wrote:
-> Add space around operator '+'. Problem found using checkpatch.pl
-> CHECK: spaces preferred around that '+' (ctx:VxV)
-> 
-> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
-> ---
->  drivers/staging/octeon/ethernet-defines.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/octeon/ethernet-defines.h b/drivers/staging/octeon/ethernet-defines.h
-> index f92e0c4..d683348 100644
-> --- a/drivers/staging/octeon/ethernet-defines.h
-> +++ b/drivers/staging/octeon/ethernet-defines.h
-> @@ -40,7 +40,7 @@
->  #define FAU_TOTAL_TX_TO_CLEAN (CVMX_FAU_REG_END - sizeof(uint32_t))
->  #define FAU_NUM_PACKET_BUFFERS_TO_FREE (FAU_TOTAL_TX_TO_CLEAN - sizeof(uint32_t))
->  
-> -#define TOTAL_NUMBER_OF_PORTS       (CVMX_PIP_NUM_INPUT_PORTS+1)
-> +#define TOTAL_NUMBER_OF_PORTS       (CVMX_PIP_NUM_INPUT_PORTS + 1)
+Add space around operator '+'. Problem found using checkpatch.pl
+CHECK: spaces preferred around that '+' (ctx:VxV)
 
-Patch does not apply to my tree :(
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+---
+ drivers/staging/octeon/ethernet-defines.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/octeon/ethernet-defines.h b/drivers/staging/octeon/ethernet-defines.h
+index f92e0c4..d683348 100644
+--- a/drivers/staging/octeon/ethernet-defines.h
++++ b/drivers/staging/octeon/ethernet-defines.h
+@@ -40,7 +40,7 @@
+ #define FAU_TOTAL_TX_TO_CLEAN (CVMX_FAU_REG_END - sizeof(uint32_t))
+ #define FAU_NUM_PACKET_BUFFERS_TO_FREE (FAU_TOTAL_TX_TO_CLEAN - sizeof(uint32_t))
+ 
+-#define TOTAL_NUMBER_OF_PORTS       (CVMX_PIP_NUM_INPUT_PORTS+1)
++#define TOTAL_NUMBER_OF_PORTS       (CVMX_PIP_NUM_INPUT_PORTS + 1)
+ 
+ 
+ #endif /* __ETHERNET_DEFINES_H__ */
+-- 
+1.9.1
+
 
