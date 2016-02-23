@@ -1,78 +1,114 @@
-X-GM-THRID: 6209555630081966080
-X-Received: by 10.182.236.225 with SMTP id ux1mr24640363obc.2.1445774834807;
-        Sun, 25 Oct 2015 05:07:14 -0700 (PDT)
+X-GM-THRID: 6254491784398766080
+X-Received: by 10.140.95.38 with SMTP id h35mr6241007qge.3.1456263778701;
+        Tue, 23 Feb 2016 13:42:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.95.5 with SMTP id h5ls2888522qge.77.gmail; Sun, 25 Oct
- 2015 05:07:14 -0700 (PDT)
-X-Received: by 10.13.216.14 with SMTP id a14mr24446793ywe.8.1445774833954;
-        Sun, 25 Oct 2015 05:07:13 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id zg1si3119774pbb.2.2015.10.25.05.07.13
+Received: by 10.50.79.232 with SMTP id m8ls1026229igx.33.canary; Tue, 23 Feb
+ 2016 13:42:58 -0800 (PST)
+X-Received: by 10.107.132.73 with SMTP id g70mr35631096iod.4.1456263778360;
+        Tue, 23 Feb 2016 13:42:58 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
+        by gmr-mx.google.com with ESMTPS id yd9si4097465pab.1.2016.02.23.13.42.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Oct 2015 05:07:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Tue, 23 Feb 2016 13:42:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id fa8so4875699pac.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2015 05:07:13 -0700 (PDT)
+Received: by mail-pa0-x235.google.com with SMTP id ho8so120037432pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 13:42:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=AtTHPrkLK6NTn8PH3fDvNN0BOuVy5pM6icV6ooxf0rM=;
-        b=ULrCQdS7HdSvvg0EmkHly2TWY3Rcguwkd/h7z1piGatX0ikXP2fzyRhRSfRGuvTmPf
-         n6zLcYoxdqSOAlURZyoNcpDEr+HVTjcoWOe+1uvAqJzy5b6riaQ+TTKtChBQVG8iP+NQ
-         DyucGboyt3e4sYAOE86bek9zeRugiOuXTqW719hj4/qYdAJSY5qVC3b6if/WBNAJoOwQ
-         Wi2joDjurCQ+kSIBs6G51Paoq1zccAVfS8EsBtWkBu0W4m2FmTRxKY9ULNUY4ektuk27
-         EHixwLm/9yONVKaQcmWm8PbaXXJSg0JkcbC1YYTeybKATIhdsY9EJrOi61VjZclmRbRL
-         8Xvw==
-X-Received: by 10.68.88.165 with SMTP id bh5mr16687269pbb.160.1445774833822;
-        Sun, 25 Oct 2015 05:07:13 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id sn9sm28505944pac.16.2015.10.25.05.07.07
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=RZzGh+mw3YlL2OsD5+O1elnkab7ZndDk4AmAntxn9uc=;
+        b=0NDN/Th9IbZAJMR5PxYTwzlFGENyYTU+0Q26t3pfi2WXYq5+kdnVWOvH8KnkN3eqXm
+         1TnSLkvApdK6VTVdAJQs2VXWYTTJyih39gW24Z3KBxzpVkMP28fvBHQl8M62njBnDpK/
+         StdLtZr9Y1XNNlE2/M07mxGNvVpIKXFC2k5YpnJib9WW/vB3DYCC8bsQPjUiblEedkHR
+         rT5Vl93RocArcLhVaEVXJrA5RdVzJnVuKQc9NBQ9ZMoVmGRPZxYa7QVZIslnb7BUTImS
+         CcPr8CDUUPM5chJN5EiBRD1Q4cX/VwXJxKslQptI5cLatOdMlEp81n+JfJkc98tlBwpt
+         hWWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=RZzGh+mw3YlL2OsD5+O1elnkab7ZndDk4AmAntxn9uc=;
+        b=CX2zfmPWwhkzB8ZHRg5qENvWJiss1KqoxWYwoGkgkGQLaRtuc77gw7yoxulgxmcVKR
+         fyXY90QuXLru9MVOOxpRWg+pZ8dvCp3f/zgvevysJvcgLa8el18OoqDapU50urY0Hq4v
+         m2aWa3D6Cu8LvCtdxFQBAKH6iWfekStqWA5vblXYrLbg+jjYu3wcEP99UuDd62tYcTPS
+         CfPHeAZaDlvz1c1I+vaNrrGtL1RZcHgQETSJ645gqkwIbuqH70rizxrgQPU+vwkZQ/eZ
+         UhciWTjq8+1uSv2JsBKMt0jXGs6+uNCUvvZbaRm3+UDkGufTZmrC9KKoMgjp24MIeFuh
+         xosQ==
+X-Gm-Message-State: AG10YOTp0uF17NZzBc31dhDrxRWPWqXrToxT+Clso3eZ+PV5jCCBGHL60/4ZxI+c3bYQpg==
+X-Received: by 10.66.139.234 with SMTP id rb10mr49084685pab.82.1456263778138;
+        Tue, 23 Feb 2016 13:42:58 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.176.170.221])
+        by smtp.gmail.com with ESMTPSA id 82sm46186538pfn.89.2016.02.23.13.42.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 25 Oct 2015 05:07:13 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/4] Staging: lustre: Remove unused code 
-Date: Sun, 25 Oct 2015 17:36:56 +0530
-Message-Id: <1445774820-9184-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150209.562CC5EF.004C,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 23 Feb 2016 13:42:57 -0800 (PST)
+Date: Wed, 24 Feb 2016 03:12:47 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 1/3] staging: lustre: libcfs: Use swap() in
+ cfs_hash_bd_order()
+Message-ID: <3004cc9bddb9b5d09ffed23fbc1ce6a525023320.1456263289.git.amitoj1606@gmail.com>
+References: <cover.1456263289.git.amitoj1606@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1456263289.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-These patches remove unused header file, function definition 
-and declarations and EXPORT_SYMBOL for static function
+Use swap() function instead of using a temporary variable for swapping
+two variables.
 
-Shraddha Barke (4):
-  Staging: lustre: include: Remove unused obd_cache.h file
-  Staging: lustre: lustre_log: Remove unused functions
-  Staging: lustre: ptlrpc: Remove EXPORT_SYMBOL for
-    sptlrpc_rule_set_expand
-  Staging: lustre: lprocfs_status: Remove unused declaration
+The Coccinelle semantic patch used to make this change is as follows:
+//<smpl>
+@@
+type T;
+T a,b,c;
+@@
+- a = b;
+- b = c;
+- c = a;
++ swap(b, c);
+//<smpl>
 
- .../staging/lustre/lustre/include/lprocfs_status.h |  2 -
- drivers/staging/lustre/lustre/include/lustre_log.h | 89 ----------------------
- drivers/staging/lustre/lustre/include/obd_cache.h  | 38 ---------
- drivers/staging/lustre/lustre/ptlrpc/sec_config.c  |  1 -
- 4 files changed, 130 deletions(-)
- delete mode 100644 drivers/staging/lustre/lustre/include/obd_cache.h
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v3:
+        -Corrected spelling in comment
+Changes in v2:
+        -Divided one patch into a series
 
+ drivers/staging/lustre/lustre/libcfs/hash.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/libcfs/hash.c b/drivers/staging/lustre/lustre/libcfs/hash.c
+index 5e2afe4..8e6f9ac 100644
+--- a/drivers/staging/lustre/lustre/libcfs/hash.c
++++ b/drivers/staging/lustre/lustre/libcfs/hash.c
+@@ -803,12 +803,8 @@ cfs_hash_bd_order(struct cfs_hash_bd *bd1, struct cfs_hash_bd *bd2)
+ 	if (rc == 0) {
+ 		bd2->bd_bucket = NULL;
+ 
+-	} else if (rc > 0) { /* swab bd1 and bd2 */
+-		struct cfs_hash_bd tmp;
+-
+-		tmp = *bd2;
+-		*bd2 = *bd1;
+-		*bd1 = tmp;
++	} else if (rc > 0) {
++		swap(*bd1, *bd2); /* swap bd1 and bd2 */
+ 	}
+ }
+ 
 -- 
-2.1.4
+1.9.1
 
 
