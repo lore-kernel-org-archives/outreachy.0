@@ -1,80 +1,101 @@
 X-GM-THRID: 6254501970986401792
-X-Received: by 10.98.43.132 with SMTP id r126mr32477965pfr.5.1456245554230;
-        Tue, 23 Feb 2016 08:39:14 -0800 (PST)
+X-Received: by 10.66.220.67 with SMTP id pu3mr32435560pac.19.1456242305579;
+        Tue, 23 Feb 2016 07:45:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.29.136 with SMTP id b8ls2325083qgb.96.gmail; Tue, 23 Feb
- 2016 08:39:12 -0800 (PST)
-X-Received: by 10.140.41.69 with SMTP id y63mr5011186qgy.26.1456245552513;
-        Tue, 23 Feb 2016 08:39:12 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qk0-x22b.google.com (mail-qk0-x22b.google.com. [2607:f8b0:400d:c09::22b])
-        by gmr-mx.google.com with ESMTPS id g136si1721270ywb.5.2016.02.23.08.39.12
+Received: by 10.140.29.53 with SMTP id a50ls2109200qga.11.gmail; Tue, 23 Feb
+ 2016 07:45:04 -0800 (PST)
+X-Received: by 10.140.140.18 with SMTP id 18mr5158289qhm.26.1456242304737;
+        Tue, 23 Feb 2016 07:45:04 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id ug8si2172408igb.3.2016.02.23.07.45.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 08:39:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) client-ip=2607:f8b0:400d:c09::22b;
+        Tue, 23 Feb 2016 07:45:04 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x22b.google.com with SMTP id s5so70100164qkd.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 08:39:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=ZmTL1TiFNz7LMqDU9c5E+mRMDbGXZMlrgIzsiZDC9BI=;
-        b=QDqQuL0vRcf+eS9xiEtEO8P90YAW9Vahp0HIe3yFqFYuM+gXDt041uIgj/rRexbvK2
-         krbUwDVev0G123mna+9mekWoHDmO2a1GVIEv+iY5spYeq7sbERNDf7c0plA9L9jNCjX4
-         2TaN3fcovuAgD4HJNdZ0rmY4WZHRxhA5J7o4Yu5OtEWwGzpfY968E6JOto/DuuMcmMb2
-         JlytBpBH6YXiaZomJWBpPrqzdCdRon3SBm6rdTkG6y+DS3GphqaFwP9PlgjsfLDJNAcM
-         WaMWLlxxsnvHmIgWN4jjIQXaJC91E4idFn3cZMvdDG4pCPPadgzVt68pqegWbrOy8cVG
-         F3Dg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc:content-type;
-        bh=ZmTL1TiFNz7LMqDU9c5E+mRMDbGXZMlrgIzsiZDC9BI=;
-        b=BU0LraY9FeVKUPTbVr1HPzzlTuioDVYoyMq86t4+Ulv4LxOVWOOs0U9b2CZ+3WxeUs
-         bUgR+K1dYI8e3YVScdhYB7xM4ZZ2oQ+z4bL2vsCesZ44zJQddBwiqNDrmKv5WYGR75wH
-         MhnMpFLskLwZLe7R2uzj1QQQa/x8QTpT/HPOjXBm5CdMkdCAdrRsfL8gIChNfp78JAxP
-         gZFv50cWgpEmOywsbWx82ahRu35HCg6/qeUXYeJbW1io4mfDSo5nYFonwdpqyS7ZhLy9
-         6Sj/MNMr+6KxFsn9KjBMNvPs73Q8MvERkcV1MkeLbzakHmZwSpYjhB4tVFea2L03jY92
-         IgQQ==
-X-Gm-Message-State: AG10YOQmeaTlQEd5QUg8DhdqNNu7Wu87HZqaZPT9O7WK9Q0/JKAGArSBRzsEQkBUNvfeg8tJkemXIHv1I4HjIQ==
-MIME-Version: 1.0
-X-Received: by 10.55.71.143 with SMTP id u137mr42893384qka.1.1456245552336;
- Tue, 23 Feb 2016 08:39:12 -0800 (PST)
-Received: by 10.140.44.99 with HTTP; Tue, 23 Feb 2016 08:39:12 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.02.1602231644340.2040@localhost6.localdomain6>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,489,1449529200"; 
+   d="scan'208";a="165722246"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Feb 2016 16:45:02 +0100
+Date: Tue, 23 Feb 2016 16:45:01 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: netlogic: Simplify use of
+ devm_ioremap_resource
+In-Reply-To: <20160223150151.GA11902@amitoj-Inspiron-3542>
+Message-ID: <alpine.DEB.2.02.1602231644340.2040@localhost6.localdomain6>
 References: <20160223150151.GA11902@amitoj-Inspiron-3542>
-	<alpine.DEB.2.02.1602231644340.2040@localhost6.localdomain6>
-Date: Tue, 23 Feb 2016 22:09:12 +0530
-Message-ID: <CA+5yK5Fzjb+QAVs0iLgevdwEPdULkC_tSx3+C_d0aG+AU_C=mA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: netlogic: Simplify use of devm_ioremap_resource
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Tue, Feb 23, 2016 at 9:15 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
->
->
-> On Tue, 23 Feb 2016, Amitoj Kaur Chawla wrote:
->
->> Remove unneeded error handling on the result of a call to
->> platform_get_resource when the value is passed to
->> devm_ioremap_resource.
->>
->> Move the call to platform_get_resource adjacent to the call to
->> devm_ioremap_resource to make the connection between them more clear.
->
-> You didn't do anything for the latter.  It was already in the right place.
->
-> julia
->
-Yes, the deletion automatically made it adjacent. I'll revise the
-message and send v2.
 
-Amitoj
+
+On Tue, 23 Feb 2016, Amitoj Kaur Chawla wrote:
+
+> Remove unneeded error handling on the result of a call to
+> platform_get_resource when the value is passed to
+> devm_ioremap_resource.
+> 
+> Move the call to platform_get_resource adjacent to the call to
+> devm_ioremap_resource to make the connection between them more clear.
+
+You didn't do anything for the latter.  It was already in the right place.
+
+julia
+
+> The Coccinelle semantic patch that makes this change is as follows:
+> 
+> // <smpl>
+> @@
+> expression pdev,res,n,e,e1;
+> expression ret != 0;
+> identifier l;
+> @@
+> 
+> - res = platform_get_resource(pdev, IORESOURCE_MEM, n);
+>   ... when != res
+> - if (res == NULL) { ... \(goto l;\|return ret;\) }
+>   ... when != res
+> + res = platform_get_resource(pdev, IORESOURCE_MEM, n);
+>   e = devm_ioremap_resource(e1, res);
+> // </smpl>
+> 
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/netlogic/xlr_net.c | 7 -------
+>  1 file changed, 7 deletions(-)
+> 
+> diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+> index 0015847..3a6de47 100644
+> --- a/drivers/staging/netlogic/xlr_net.c
+> +++ b/drivers/staging/netlogic/xlr_net.c
+> @@ -1038,13 +1038,6 @@ static int xlr_net_probe(struct platform_device *pdev)
+>  		priv->port_id = (pdev->id * 4) + port;
+>  		priv->nd = (struct xlr_net_data *)pdev->dev.platform_data;
+>  		res = platform_get_resource(pdev, IORESOURCE_MEM, port);
+> -
+> -		if (res == NULL) {
+> -			pr_err("No memory resource for MAC %d\n",
+> -			       priv->port_id);
+> -			err = -ENODEV;
+> -			goto err_gmac;
+> -		}
+>  		priv->base_addr = devm_ioremap_resource(&pdev->dev, res);
+>  		if (IS_ERR(priv->base_addr)) {
+>  			err = PTR_ERR(priv->base_addr);
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160223150151.GA11902%40amitoj-Inspiron-3542.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
