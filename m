@@ -1,105 +1,110 @@
-X-GM-THRID: 6254956437313683456
-X-Received: by 10.31.165.1 with SMTP id o1mr38254906vke.12.1456345533852;
-        Wed, 24 Feb 2016 12:25:33 -0800 (PST)
+X-GM-THRID: 6254801452291588096
+X-Received: by 10.28.45.82 with SMTP id t79mr2500614wmt.2.1456310689116;
+        Wed, 24 Feb 2016 02:44:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.20.232 with SMTP id q8ls1529937obe.50.gmail; Wed, 24 Feb
- 2016 12:25:33 -0800 (PST)
-X-Received: by 10.182.246.130 with SMTP id xw2mr39487907obc.29.1456345533543;
-        Wed, 24 Feb 2016 12:25:33 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id 79si700277pft.0.2016.02.24.12.25.33
+Received: by 10.25.145.149 with SMTP id t143ls481403lfd.105.gmail; Wed, 24 Feb
+ 2016 02:44:48 -0800 (PST)
+X-Received: by 10.112.168.201 with SMTP id zy9mr4725449lbb.23.1456310688525;
+        Wed, 24 Feb 2016 02:44:48 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c143si121181wmd.1.2016.02.24.02.44.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 12:25:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Wed, 24 Feb 2016 02:44:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id a7so193883pax.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 12:25:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=XFfOyvdtIAnB+VsJ0NNvucQPWCkQ6xN7/cisM6VsWsQ=;
-        b=hOwQvEvl9kKCWAoT1/3XgGC4it+I3bQ8kNtxDQgKNBkgq+CO7C253+RLV1u88mD+L1
-         yevlT6unXi4+X+bgQz2um+Mzu/hZ9hHwIBIehctk570wOYZPVy36OyqJNGyz5ggL4fzd
-         rA6OdCa0pVTqgKbkpRNmGbV7w/Z9AOvbfK21oL94um7wvIbhDAq9qBl4Z7rcBIj3U2bO
-         KJiiytm3De2GpQOW4p+QJycSJ1qxVENduH1fU8zl2kQlByS31eASBNoKA5ED5vS9Zytz
-         NXkNY4p0k6+1F7suORTNbFshunZQfxoSD5QzjHgTeGFqtjEbO1kOqngyFyMvdL3nOF73
-         C5yg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=XFfOyvdtIAnB+VsJ0NNvucQPWCkQ6xN7/cisM6VsWsQ=;
-        b=j/OCcncFDJeuClOzHwvOYX6lbPrRL0kHUnzYRNC9rAZJ2we9WSV+z5iQqzyXXa81Zv
-         xEyn+BkNphhZlYHA2a2WDKCKqBq/FjX06pNpkKAm9TkwYfj4oQgWGQfvi3UqiuM7NhGB
-         BOTlmsOLTnWpifR+Q0Y2wI8U3ELr3Q50nRr1c17zk9/Ps6V7mCIAMHEYsojCTsdilJNg
-         uZrp8KsO/uagZ74Tl2xadyZqIBs7hCI+YbJVcNuvFr4lbJpB6B3xqA866cJsDgh+M546
-         7OeGXFVW/eaGXsIh4hB5raoFhhrUBOw3ZK479joj9CgtQoDj9RN1wBcNFUIDPSAqjUdY
-         cpXQ==
-X-Gm-Message-State: AG10YOS2P/VVNYffiJ0inOCXweBZhglFJUHsl4tSgjot1ozQaEKI6F0IFOH1F7X7GWZE+w==
-X-Received: by 10.66.146.196 with SMTP id te4mr57473098pab.125.1456345533385;
-        Wed, 24 Feb 2016 12:25:33 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id fk10sm6962849pab.33.2016.02.24.12.25.32
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 12:25:32 -0800 (PST)
-Date: Thu, 25 Feb 2016 01:56:08 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/8] staging: unisys: visorbus: Remove useless return
- variables
-Message-ID: <20160224202608.GA22951@Karyakshetra>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,493,1449529200"; 
+   d="scan'208";a="165809796"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2016 11:44:33 +0100
+Date: Wed, 24 Feb 2016 11:44:32 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723au: Clean up tests
+ if NULL returned on failure
+In-Reply-To: <1456309437-7356-1-git-send-email-bhumirks@gmail.com>
+Message-ID: <alpine.DEB.2.02.1602241143500.2149@localhost6.localdomain6>
+References: <1456309437-7356-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch removes unnecessary return variables and compresses the
-return logic.
-The coccinelle script that finds and fixes this issue is:
-@@ type T; identifier i,f; constant C; @@
-- T i;
-...when != i
-when strict
-( return -C;
-|
-- i =
-+ return
-f(...);
-- return i;
-)
+On Wed, 24 Feb 2016, Bhumika Goyal wrote:
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/unisys/visorbus/visorbus_main.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> Some functions like kmalloc/usb_alloc_urb returns Null as their return
+> value on failure. !x is generally preferred over x==NULL or NULL==x. So 
+> make use of !x if the value returned on failure by these functions is NULL.
+> Done using coccinelle:
+> 
+> @@
+> expression e;
+> statement S;
+> @@
+> e = \(kmalloc\|devm_kzalloc\|kmalloc_array
+>      \|devm_ioremap\|usb_alloc_urb\|alloc_netdev\)(...);
+> - if(e==NULL)
+> + if(!e)
+>   S
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c | 4 ++--
+>  drivers/staging/rtl8723au/os_dep/xmit_linux.c     | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c b/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+> index e3dc889..71d0549 100644
+> --- a/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+> +++ b/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+> @@ -399,7 +399,7 @@ hal_ReadEFuse_WiFi(struct rtw_adapter *padapter,
+>  	}
+>  
+>  	efuseTbl = kmalloc(EFUSE_MAP_LEN_8723A, GFP_KERNEL);
+> -	if (efuseTbl == NULL) {
+> +	if (!efuseTbl) {
+>  		DBG_8723A("%s: alloc efuseTbl fail!\n", __func__);
 
-diff --git a/drivers/staging/unisys/visorbus/visorbus_main.c b/drivers/staging/unisys/visorbus/visorbus_main.c
-index a301385..1542206 100644
---- a/drivers/staging/unisys/visorbus/visorbus_main.c
-+++ b/drivers/staging/unisys/visorbus/visorbus_main.c
-@@ -701,12 +701,10 @@ DRIVER_ATTR_version(struct device_driver *xdrv, char *buf)
- static int
- register_driver_attributes(struct visor_driver *drv)
- {
--	int rc;
- 	struct driver_attribute version =
- 	    __ATTR(version, S_IRUGO, DRIVER_ATTR_version, NULL);
- 	drv->version_attr = version;
--	rc = driver_create_file(&drv->driver, &drv->version_attr);
--	return rc;
-+	return driver_create_file(&drv->driver, &drv->version_attr);
- }
+Unrelated to the change you are doing, kmalloc generates a complete 
+backtrace on failure, so there is no need for these debug messages.
 
- static void
---
-2.1.4
+julia
 
+>  		return;
+>  	}
+> @@ -491,7 +491,7 @@ hal_ReadEFuse_BT(struct rtw_adapter *padapter,
+>  	}
+>  
+>  	efuseTbl = kmalloc(EFUSE_BT_MAP_LEN, GFP_KERNEL);
+> -	if (efuseTbl == NULL) {
+> +	if (!efuseTbl) {
+>  		DBG_8723A("%s: efuseTbl malloc fail!\n", __func__);
+>  		return;
+>  	}
+> diff --git a/drivers/staging/rtl8723au/os_dep/xmit_linux.c b/drivers/staging/rtl8723au/os_dep/xmit_linux.c
+> index 9a14074..64be72a 100644
+> --- a/drivers/staging/rtl8723au/os_dep/xmit_linux.c
+> +++ b/drivers/staging/rtl8723au/os_dep/xmit_linux.c
+> @@ -37,7 +37,7 @@ int rtw_os_xmit_resource_alloc23a(struct rtw_adapter *padapter,
+>  
+>  	for (i = 0; i < 8; i++) {
+>  		pxmitbuf->pxmit_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
+> -		if (pxmitbuf->pxmit_urb[i] == NULL) {
+> +		if (!pxmitbuf->pxmit_urb[i]) {
+>  			DBG_8723A("pxmitbuf->pxmit_urb[i]==NULL");
+>  			return _FAIL;
+>  		}
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1456309437-7356-1-git-send-email-bhumirks%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
