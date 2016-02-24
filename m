@@ -1,108 +1,101 @@
-X-GM-THRID: 6264579651276898304
-X-Received: by 10.13.217.204 with SMTP id b195mr24543712ywe.26.1458586112834;
-        Mon, 21 Mar 2016 11:48:32 -0700 (PDT)
+X-GM-THRID: 6254799821931020288
+X-Received: by 10.25.17.25 with SMTP id g25mr2410752lfi.8.1456310718904;
+        Wed, 24 Feb 2016 02:45:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.142.97 with SMTP id rv1ls1107157igb.12.gmail; Mon, 21 Mar
- 2016 11:48:32 -0700 (PDT)
-X-Received: by 10.66.249.41 with SMTP id yr9mr25111250pac.37.1458586112265;
-        Mon, 21 Mar 2016 11:48:32 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id h69si3566215pfj.0.2016.03.21.11.48.32
+Received: by 10.28.215.1 with SMTP id o1ls50799wmg.20.gmail; Wed, 24 Feb 2016
+ 02:45:18 -0800 (PST)
+X-Received: by 10.194.85.169 with SMTP id i9mr4728861wjz.4.1456310718471;
+        Wed, 24 Feb 2016 02:45:18 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v197si1192350wmv.1.2016.02.24.02.45.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Mar 2016 11:48:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 24 Feb 2016 02:45:18 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id u190so31626895pfb.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 21 Mar 2016 11:48:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ENDCPZ9uW9K2doON/ORQXzI3nYsgPhqZTjHoBPZYTcc=;
-        b=W1x5vl6+wwFXDkfIeNc8ScjI22hCYfFlq+wyiNhoJvUquLDu3WrhzUBFWSNA5ecTrv
-         i4ifsoanqgrOM+SYnpRQTATQUbM2sIlTSihXcFEE0WA0zqIVPHSaMhuSYuWtXvJKECv3
-         P6Q6W49Pkj06u4VmAZRiwT4nUZSBgx8VLh6M/a0VdE627Rn/znRYn0tbx6UNToM77Y4b
-         WkN83dEwpspltGR4u+wC8x1YroBrWQ4z/PwgsGIcG+v/FgcJ4uC3nsz4KYt+feNyzU5P
-         OFTtHyhCrnqDpKjv8oRkA5jv3/eSC7Lg07n2onmniWOVdod7G776LYI9yp9bnCXUEgtJ
-         6aXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ENDCPZ9uW9K2doON/ORQXzI3nYsgPhqZTjHoBPZYTcc=;
-        b=Gfeiz7ZNENtRLrcqAXc13zphdifpiT4uazxNvn/enZHxH0XFb/4LxcsBU/TEnZJteg
-         vXMNR5D8AGZpMYNOWvEMDLakFFNSS1/Do1er2xF1V1+pNm/kk0RQUQMX4xnL+hdGtTJR
-         6AjEMhfrqJopzaaSUoZbYErkiXRuBQNSKr3KhWEkYu2SBOg2My1qRa1jeaQH4O4b2HKj
-         QvkNPmwSQxZ3Y0I3xwBXTcA+21pxki9TzdmcHcyXqAIQjoYEmilWwMESShgN/Z/eyL43
-         tKmSe2MjOXxqcq2ONNVDo0/zXWEhK6sR3CDmbYBLfJVfPt+bpu8rKuwcLKDi8IEJp/69
-         YLCg==
-X-Gm-Message-State: AD7BkJJb2+JafFCz+BnHCOKVjSLMduXXGPjApjHj0lJpO8xvQsQH/20q5bNVD67L4VsL0g==
-X-Received: by 10.98.13.132 with SMTP id 4mr47642400pfn.122.1458586112139;
-        Mon, 21 Mar 2016 11:48:32 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.46])
-        by smtp.gmail.com with ESMTPSA id uh1sm42463911pab.26.2016.03.21.11.48.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Mar 2016 11:48:31 -0700 (PDT)
-Date: Mon, 21 Mar 2016 17:19:44 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: iio: ad5933: Remove unnecessary space after cast.
-Message-ID: <20160321114944.GA3398@sandhya>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,493,1449529200"; 
+   d="scan'208";a="204425917"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2016 11:45:18 +0100
+Date: Wed, 24 Feb 2016 11:45:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Clean up tests if
+ NULL returned on failure
+In-Reply-To: <1456309055-6392-1-git-send-email-bhumirks@gmail.com>
+Message-ID: <alpine.DEB.2.02.1602241144590.2149@localhost6.localdomain6>
+References: <1456309055-6392-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove unnecessary space after cast.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/iio/impedance-analyzer/ad5933.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/impedance-analyzer/ad5933.c b/drivers/staging/iio/impedance-analyzer/ad5933.c
-index d1218d8..b29d155 100644
---- a/drivers/staging/iio/impedance-analyzer/ad5933.c
-+++ b/drivers/staging/iio/impedance-analyzer/ad5933.c
-@@ -307,10 +307,10 @@ static ssize_t ad5933_show_frequency(struct device *dev,
- 
- 	freqreg = be32_to_cpu(dat.d32) & 0xFFFFFF;
- 
--	freqreg = (u64) freqreg * (u64) (st->mclk_hz / 4);
-+	freqreg = (u64)freqreg * (u64)(st->mclk_hz / 4);
- 	do_div(freqreg, 1 << 27);
- 
--	return sprintf(buf, "%d\n", (int) freqreg);
-+	return sprintf(buf, "%d\n", (int)freqreg);
- }
- 
- static ssize_t ad5933_store_frequency(struct device *dev,
-@@ -358,7 +358,7 @@ static ssize_t ad5933_show(struct device *dev,
- 	int ret = 0, len = 0;
- 
- 	mutex_lock(&indio_dev->mlock);
--	switch ((u32) this_attr->address) {
-+	switch ((u32)this_attr->address) {
- 	case AD5933_OUT_RANGE:
- 		len = sprintf(buf, "%u\n",
- 			      st->range_avail[(st->ctrl_hb >> 1) & 0x3]);
-@@ -409,7 +409,7 @@ static ssize_t ad5933_store(struct device *dev,
- 	}
- 
- 	mutex_lock(&indio_dev->mlock);
--	switch ((u32) this_attr->address) {
-+	switch ((u32)this_attr->address) {
- 	case AD5933_OUT_RANGE:
- 		for (i = 0; i < 4; i++)
- 			if (val == st->range_avail[i]) {
--- 
-1.8.3.4
+On Wed, 24 Feb 2016, Bhumika Goyal wrote:
 
+> Some functions return Null as their return value on failure. !x is 
+> generally preferred over x==NULL or NULL==x. So make use of !x if 
+> the value returned on failure is NULL.
+> Done using coccinelle:
+> @@
+> expression e;
+> statement S;
+> @@
+> e = \(kmalloc\|devm_kzalloc\|kmalloc_array
+>      \|devm_ioremap\|usb_alloc_urb\|alloc_netdev\)(...);
+> - if(e==NULL)
+> + if(!e)
+>   S
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 2 +-
+>  drivers/staging/rtl8192u/r8192U_core.c            | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> index 9dfde07..879c413 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> @@ -1289,7 +1289,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+>  	payload = skb->data + hdrlen;
+>  	//ethertype = (payload[6] << 8) | payload[7];
+>  	rxb = kmalloc(sizeof(struct ieee80211_rxb), GFP_ATOMIC);
+> -	if (rxb == NULL)
+> +	if (!rxb)
+>  	{
+>  		IEEE80211_DEBUG(IEEE80211_DL_ERR,"%s(): kmalloc rxb error\n",__func__);
+
+As in the previous case, this message is not needed.
+
+julia
+
+>  		goto rx_dropped;
+> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+> index 3a93218..849a95e 100644
+> --- a/drivers/staging/rtl8192u/r8192U_core.c
+> +++ b/drivers/staging/rtl8192u/r8192U_core.c
+> @@ -1732,7 +1732,7 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
+>  
+>  	priv->rx_urb = kmalloc(sizeof(struct urb *) * (MAX_RX_URB + 1),
+>  			       GFP_KERNEL);
+> -	if (priv->rx_urb == NULL)
+> +	if (!priv->rx_urb)
+>  		return -ENOMEM;
+>  
+>  #ifndef JACKSON_NEW_RX
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1456309055-6392-1-git-send-email-bhumirks%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
