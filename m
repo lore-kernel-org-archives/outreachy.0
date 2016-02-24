@@ -1,100 +1,104 @@
-X-GM-THRID: 6208922267806597120
-X-Received: by 10.66.142.138 with SMTP id rw10mr1442132pab.0.1445627368319;
-        Fri, 23 Oct 2015 12:09:28 -0700 (PDT)
+X-GM-THRID: 6254854084926373888
+X-Received: by 10.140.104.72 with SMTP id z66mr9029735qge.22.1456321702096;
+        Wed, 24 Feb 2016 05:48:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.29.52 with SMTP id g20ls296225igh.23.gmail; Fri, 23 Oct
- 2015 12:09:27 -0700 (PDT)
-X-Received: by 10.50.66.230 with SMTP id i6mr3905796igt.10.1445627367779;
-        Fri, 23 Oct 2015 12:09:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id fa8si2438990pab.1.2015.10.23.12.09.27
+Received: by 10.140.41.85 with SMTP id y79ls2949651qgy.63.gmail; Wed, 24 Feb
+ 2016 05:48:21 -0800 (PST)
+X-Received: by 10.140.30.99 with SMTP id c90mr8967188qgc.2.1456321701498;
+        Wed, 24 Feb 2016 05:48:21 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id ff2si416133pad.2.2016.02.24.05.48.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 12:09:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Wed, 24 Feb 2016 05:48:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id fv9so131282671pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 12:09:27 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id y7so936744paa.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 05:48:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=KqlOHr1z0q44AFrlyRWDuGqLc7C7QF+LbHqC2JqbJ+c=;
-        b=TEGG7HlzNYVEW3s9hVrMMLcdiWhbRYZjZiaF/LvUpOksyWEK8niRxiUVMRpd517Ojc
-         hRBtvucLLnf5Gh14Rm+8iGKgZW7/AIe1rqg49qP1MIK/hlLRSEyH019xrapS79FgiC1w
-         u+DxpZ7erievvWWRdtvmHMRZy5NafBmgcEj+yertegXxrxWdT8W77ZqRyCotRzxmn24Y
-         KogZlxuTtgm1c45Qhlnr2WxaPdx0mPKAnevXgu1arCs06KleiLh1+vNrRDxAD19TOnIg
-         x+CmWfcLw9TaM6mX8mPwXaN2upkXFj5n2zeGTTWWYpHRyUIDenr1WPC2jaTeP2h81MgK
-         fbVQ==
-X-Received: by 10.68.211.132 with SMTP id nc4mr6937877pbc.16.1445627367596;
-        Fri, 23 Oct 2015 12:09:27 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.138.208])
-        by smtp.gmail.com with ESMTPSA id ah2sm20343889pad.10.2015.10.23.12.09.26
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 23 Oct 2015 12:09:27 -0700 (PDT)
-Date: Sat, 24 Oct 2015 00:39:22 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        bh=XPrM914G81+9mHkmmcTH4x3NcYYIoSnXDKH8QdMgF3s=;
+        b=D9/sMBU5DI+UP6dhdW4KHNmpDV/XNrP9ivuv3CZndg6gJ4fqI+JcVOkv47v7jFv1eR
+         l/GJqFJ1XuZsAoIgGF4ZuhUEVyIPK0o6lA1bczzX1tMtYG5sSB+cJ8zyD3lxt7KvbXmS
+         S+hpxdlND4ExMXY5HiIWHTxqfcZvONd+/dA+tG0IGjVKj0KKiIdUu4Wha+t/urWYLrxM
+         P+EkE77S8olAlchx7GikeWTfx+I5VrBNbYFhN3RpuP2JPaNAXCiTpoom8DLOI5mE9CaV
+         Z7bqMIvW4qWfZx0s8s24W9mZB0hSOmBIfTfz3epTISQ7Ui9K2eb0NbjnM3+wHYXVVSw7
+         kGww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=XPrM914G81+9mHkmmcTH4x3NcYYIoSnXDKH8QdMgF3s=;
+        b=eJ1xXBHI8EhNp1zFskD2KQmN4ZYesZOA7VUjB96HMljpequPBLFRil8YXIeUzPE4Ab
+         taahq8EdOQ7/u3s3bL79lvMXXLv7Bbb/RFcNRtjEQEIarPhxo2NOEQR84jAbsDrtuSZC
+         QJITUOUPCEdbVp6T7uvnlHo53hVJn3rtTcLrBDbBhIHMYWBg/8AIxFrauJbo0KJ2P7Zu
+         Ay2Pc7jRd+uydx3R/mSM58hIOU2xeZ8P6wig99EPeX1t+YWyeS9x9cGznYj2VuAFwK0g
+         7RMqYnysicRZIkrfQTjlg/SnGoTSHHe7lZXjxvrSMzBIWyWIEkJKdwNUvGS8nzN783hp
+         HP1g==
+X-Gm-Message-State: AG10YORmd2+hlTTjgOYHRxo11P69MSYabw4BUnhLBntO+SBrjlysX7tX3fcR2l6sLa3cuQ==
+X-Received: by 10.66.167.237 with SMTP id zr13mr55425717pab.85.1456321701325;
+        Wed, 24 Feb 2016 05:48:21 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.154])
+        by smtp.gmail.com with ESMTPSA id qh8sm5331541pac.40.2016.02.24.05.48.19
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 24 Feb 2016 05:48:20 -0800 (PST)
+Date: Wed, 24 Feb 2016 11:17:49 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org
-Subject: [PATCH] char: ipmi: ipmi_ssif: Replace timeval with timespec64
-Message-ID: <20151023190922.GA32154@amitoj-Inspiron-3542>
+Subject: [PATCH] Staging: slicoss: Use !x instead of x == NULL.
+Message-ID: <20160224054659.GA3980@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-This patch replaces timeval with timespec64 as 32 bit 'struct timeval'
-will not give current time beyond 2038.
+Use !x instead of x == NULL.This patch is found by checkpatch.pl script.
 
-The patch changes the code to use ktime_get_real_ts64() which returns
-a 'struct timespec64' instead of do_gettimeofday() which returns a
-'struct timeval'
-
-This patch also alters the format strings in pr_info() for now.tv_sec
-and now.tv_nsec to incorporate 'long long' on 32 bit architectures and
-leading zeroes respectively.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/char/ipmi/ipmi_ssif.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/staging/slicoss/slicoss.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/char/ipmi/ipmi_ssif.c b/drivers/char/ipmi/ipmi_ssif.c
-index 877205d..926add4 100644
---- a/drivers/char/ipmi/ipmi_ssif.c
-+++ b/drivers/char/ipmi/ipmi_ssif.c
-@@ -52,6 +52,7 @@
- #include <linux/kthread.h>
- #include <linux/acpi.h>
- #include <linux/ctype.h>
-+#include <linux/time64.h>
+diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
+index ea6b7b5..ed1c067 100644
+--- a/drivers/staging/slicoss/slicoss.c
++++ b/drivers/staging/slicoss/slicoss.c
+@@ -1807,7 +1807,7 @@ static int slic_mcast_add_list(struct adapter *adapter, char *address)
  
- #define PFX "ipmi_ssif: "
- #define DEVICE_NAME "ipmi_ssif"
-@@ -1041,12 +1042,12 @@ static void sender(void                *send_info,
- 	start_next_msg(ssif_info, flags);
+ 	/* Doesn't already exist.  Allocate a structure to hold it */
+ 	mcaddr = kmalloc(sizeof(*mcaddr), GFP_ATOMIC);
+-	if (mcaddr == NULL)
++	if (!mcaddr)
+ 		return 1;
  
- 	if (ssif_info->ssif_debug & SSIF_DEBUG_TIMING) {
--		struct timeval t;
-+		struct timespec64 t;
+ 	ether_addr_copy(mcaddr->address, address);
+@@ -1888,7 +1888,7 @@ static void slic_xmit_fail(struct adapter *adapter,
+ {
+ 	if (adapter->xmitq_full)
+ 		netif_stop_queue(adapter->netdev);
+-	if ((cmd == NULL) && (status <= XMIT_FAIL_HOSTCMD_FAIL)) {
++	if (!cmd && (status <= XMIT_FAIL_HOSTCMD_FAIL)) {
+ 		switch (status) {
+ 		case XMIT_FAIL_LINK_STATE:
+ 			dev_err(&adapter->netdev->dev,
+@@ -2999,7 +2999,7 @@ static u32 slic_card_locate(struct adapter *adapter)
+ 	/* Initialize a new card structure if need be */
+ 	if (card_hostid == SLIC_HOSTID_DEFAULT) {
+ 		card = kzalloc(sizeof(struct sliccard), GFP_KERNEL);
+-		if (card == NULL)
++		if (!card)
+ 			return -ENOMEM;
  
--		do_gettimeofday(&t);
--		pr_info("**Enqueue %02x %02x: %ld.%6.6ld\n",
-+		ktime_get_real_ts64(&t);
-+		pr_info("**Enqueue %02x %02x: %lld.%6.06ld\n",
- 		       msg->data[0], msg->data[1],
--		       (long) t.tv_sec, (long) t.tv_usec);
-+		       (long long) t.tv_sec, (long) t.tv_nsec / NSEC_PER_USEC);
- 	}
- }
- 
+ 		card->next = slic_global.slic_card;
 -- 
-1.9.1
+1.8.3.4
 
 
