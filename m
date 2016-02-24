@@ -1,175 +1,98 @@
-X-GM-THRID: 6254199111711457280
-X-Received: by 10.140.95.38 with SMTP id h35mr1058278qge.3.1456169204586;
-        Mon, 22 Feb 2016 11:26:44 -0800 (PST)
+X-GM-THRID: 6254904699120517120
+X-Received: by 10.129.101.66 with SMTP id z63mr36997343ywb.14.1456333487741;
+        Wed, 24 Feb 2016 09:04:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.60.167 with SMTP id i7ls931129obr.15.gmail; Mon, 22 Feb
- 2016 11:26:44 -0800 (PST)
-X-Received: by 10.182.105.133 with SMTP id gm5mr27670241obb.41.1456169204072;
-        Mon, 22 Feb 2016 11:26:44 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
+Received: by 10.107.184.69 with SMTP id i66ls145043iof.3.gmail; Wed, 24 Feb
+ 2016 09:04:47 -0800 (PST)
+X-Received: by 10.50.20.135 with SMTP id n7mr21865292ige.5.1456333487393;
+        Wed, 24 Feb 2016 09:04:47 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
 Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id 12si3281714pfb.1.2016.02.22.11.26.44
+        by gmr-mx.google.com with ESMTPS id u66si551664pfa.2.2016.02.24.09.04.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 11:26:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        Wed, 24 Feb 2016 09:04:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id yy13so95758821pab.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 11:26:44 -0800 (PST)
+Received: by mail-pa0-x233.google.com with SMTP id fy10so15584688pac.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 09:04:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=j7Ow+Ly+ooLMgjP/JGN5Y05qlZGx+qVf9kZu/PC8N5s=;
-        b=Tp6/W/1amIjKgs+oaxQYjjqGUBYtQBv9UzP6QjQMeC+c7qF4iEGATV8toCefKABqjc
-         gcFrck+GFmYwrWghzBPcu20pmSWRjGbxXzCNy1pCZf6VCiCrnAa7NZ8aIPDsiYbAS6Rx
-         XJLaBavHYfvL8Y7wHauBVRVdBj3irahm6uA847EAJ6AbS9NV1ht2S7aXi9aQWb8Vk5ON
-         L1nwqT1wHSL6h7lM5/eI7Fyumxk7+PK/IfsNoZEQtfqv0W9eGx4Qem16UwqaLrRepynH
-         SP3jBmRBHYlLnuURu+FV5rscLBFE7X4veQn/XDmEdZM5QHB1Li7lSFV1S/ByygQXm3j0
-         AsWQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=A3Aq/Neih6azhKUhDT0K4v6OsDHsZ9z6Exygw2kPJ4w=;
+        b=difeQ9e3gN48c1BvfmOVz5ynexhQdIk8AifspJ29AzuMmvBUVjUp7frQaWv/b9xTRV
+         46327W5GUH4oCv0EgLEBuUnle3hM4IUIdfd03eonaMvHIOyJfBG7TME7zqdi+MGHMVpk
+         PuawKG4s7NYQdVNbS8psH2mYUmB/X9kJZWNMHjyZnF3e5zo5NYAwtXGhm/DUu/djMKkA
+         eSYGtzLE4a65Rj+UM9FyLC69p4v7gVw33EaWXg5oe+Fown4WdWBF4b5P9LBstdAtQBPL
+         boGdR/PiyTeyuiyOQpWxSE4yFOZmmp4oiSDf1ksq2ny/5Y89R98QM6RHyOBAif5OtCbB
+         kd4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=j7Ow+Ly+ooLMgjP/JGN5Y05qlZGx+qVf9kZu/PC8N5s=;
-        b=arJxQsz2tyATAa7MDFrBw92WX14jGnECCKB+S9VVuOqUQ2XUg4hMBsIgsPOk7qrdOx
-         xRucxaIVOZyg8yeyz1jEV4nOhJR618L6k64piMvz0TbFGyYqHR1bKR0cGvQC4rnefYAq
-         NOrFLhhIXROQph1KWjMmKuwmPsusdmKEXH50KcrICtsFVLWEXTMLLEKnvE8OQAhGCeOF
-         4T8pFPm6VWCb7Bcj6CmnLC8lwNmc6YhY5h3Umw+SBrDMny0daIzg0Z1Rah03P67kTBN2
-         cJrugs7iL8iTPfdCyjcTjrQ6ohJ44jmYFp4GgEVjaor9m5a8pcW4tQJXkdgnT7ONbC2A
-         q14A==
-X-Gm-Message-State: AG10YOTZaS8N9QCTVkXp0tTD4ALMv5rJZJ9ld6PGtfRxWo9kMuxjMS5Q/4h2dzLVDPUHcg==
-X-Received: by 10.67.3.163 with SMTP id bx3mr39862004pad.97.1456169203883;
-        Mon, 22 Feb 2016 11:26:43 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id q85sm38610417pfq.81.2016.02.22.11.26.42
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 11:26:43 -0800 (PST)
-Date: Tue, 23 Feb 2016 00:56:39 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=A3Aq/Neih6azhKUhDT0K4v6OsDHsZ9z6Exygw2kPJ4w=;
+        b=NkrVpXxYkqcLWhhm/7z4FxBxn08cV8KNa8UtQ4RT1uJ1Pc+4sP9Vdo1smE0S7hKKRK
+         UtdnuZo2aBJOZEPdhnhoYVGMi40Jn2hXt4eQQoglxUlNaAgjqUh5N6pNo5UhiLvUHmMN
+         Ck0ab9s4Vt+NNipEnYiPH3oxeU9Ao7eWptVoGmuqbyryql6rrKpomnByAyHHHNy9+gAh
+         sfOxgkKQLhH+5eiY0t+OqykXqn+nsEXJy2xznBpd2BeBctJOcRARcDycvC8KedzWMiPl
+         +Xd6KR6Ht7+xN0gGI9u3wteKS84Jap0Hj1nabg8BbuLhI52RPHKAzdc5zWyO+BYcOcXX
+         fd3w==
+X-Gm-Message-State: AG10YOTEgnPJGD/SOJlsmyR1uOxiPEITiC48r/i3Tm5mpNDcnNkblYlm2hW8tZWJ2iBmEw==
+X-Received: by 10.66.186.14 with SMTP id fg14mr56397536pac.102.1456333487181;
+        Wed, 24 Feb 2016 09:04:47 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([223.176.129.85])
+        by smtp.gmail.com with ESMTPSA id u64sm6306330pfa.86.2016.02.24.09.04.43
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 24 Feb 2016 09:04:46 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 24 Feb 2016 22:34:33 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: comedi: drivers: gsc_hpdi: Remove use of deprecated
- pci API
-Message-ID: <20160222192639.GA3502@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: rtl8723au: Remove debug messages
+Date: Wed, 24 Feb 2016 22:34:31 +0530
+Message-Id: <1456333471-6185-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Replace pci_[alloc|free]_consistent occurences with
-dma_[alloc|free]_coherent.
+As kmalloc generates a backtrace on failure so there is no need of these
+debug messages when kmalloc fails. Also remove unwanted {} around if block
+after removal of these messages.
 
-The Coccinelle semantic patch that was used to make some of these
-changes is as follows:
-@deprecated@
-idexpression id;
-position p;
-@@
-
-(
-  pci_dma_supported@p ( id, ...)
-|
-  pci_alloc_consistent@p ( id, ...)
-)
-
-@bad1@
-idexpression id;
-position deprecated.p;
-@@
-...when != &id->dev
-   when != pci_get_drvdata ( id )
-   when != pci_enable_device ( id )
-(
-  pci_dma_supported@p ( id, ...)
-|
-  pci_alloc_consistent@p ( id, ...)
-)
-
-@depends on !bad1@
-idexpression id;
-expression direction;
-position deprecated.p;
-@@
-
-(
-- pci_dma_supported@p ( id,
-+ dma_supported ( &id->dev,
-...
-+ , GFP_ATOMIC
-  )
-|
-- pci_alloc_consistent@p ( id,
-+ dma_alloc_coherent ( &id->dev,
-...
-+ , GFP_ATOMIC
-  )
-)
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/comedi/drivers/gsc_hpdi.c | 32 ++++++++++++++++---------------
- 1 file changed, 17 insertions(+), 15 deletions(-)
+ drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/gsc_hpdi.c b/drivers/staging/comedi/drivers/gsc_hpdi.c
-index 46ca5d9..956756a 100644
---- a/drivers/staging/comedi/drivers/gsc_hpdi.c
-+++ b/drivers/staging/comedi/drivers/gsc_hpdi.c
-@@ -499,18 +499,18 @@ static void gsc_hpdi_free_dma(struct comedi_device *dev)
- 	/* free pci dma buffers */
- 	for (i = 0; i < NUM_DMA_BUFFERS; i++) {
- 		if (devpriv->dio_buffer[i])
--			pci_free_consistent(pcidev,
--					    DMA_BUFFER_SIZE,
--					    devpriv->dio_buffer[i],
--					    devpriv->dio_buffer_phys_addr[i]);
-+			dma_free_coherent(&pcidev->dev,
-+					  DMA_BUFFER_SIZE,
-+					  devpriv->dio_buffer[i],
-+					  devpriv->dio_buffer_phys_addr[i]);
+diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c b/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+index 71d0549..e81301f 100644
+--- a/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
++++ b/drivers/staging/rtl8723au/hal/rtl8723a_hal_init.c
+@@ -399,10 +399,8 @@ hal_ReadEFuse_WiFi(struct rtw_adapter *padapter,
  	}
- 	/* free dma descriptors */
- 	if (devpriv->dma_desc)
--		pci_free_consistent(pcidev,
--				    sizeof(struct plx_dma_desc) *
--				    NUM_DMA_DESCRIPTORS,
--				    devpriv->dma_desc,
--				    devpriv->dma_desc_phys_addr);
-+		dma_free_coherent(&pcidev->dev,
-+				  sizeof(struct plx_dma_desc) *
-+				  NUM_DMA_DESCRIPTORS,
-+				  devpriv->dma_desc,
-+				  devpriv->dma_desc_phys_addr);
- }
  
- static int gsc_hpdi_init(struct comedi_device *dev)
-@@ -630,14 +630,16 @@ static int gsc_hpdi_auto_attach(struct comedi_device *dev,
- 	/* allocate pci dma buffers */
- 	for (i = 0; i < NUM_DMA_BUFFERS; i++) {
- 		devpriv->dio_buffer[i] =
--		    pci_alloc_consistent(pcidev, DMA_BUFFER_SIZE,
--					 &devpriv->dio_buffer_phys_addr[i]);
-+		    dma_alloc_coherent(&pcidev->dev, DMA_BUFFER_SIZE,
-+				       &devpriv->dio_buffer_phys_addr[i],
-+				       GFP_ATOMIC);
+ 	efuseTbl = kmalloc(EFUSE_MAP_LEN_8723A, GFP_KERNEL);
+-	if (!efuseTbl) {
+-		DBG_8723A("%s: alloc efuseTbl fail!\n", __func__);
++	if (!efuseTbl)
+ 		return;
+-	}
+ 	/*  0xff will be efuse default value instead of 0x00. */
+ 	memset(efuseTbl, 0xFF, EFUSE_MAP_LEN_8723A);
+ 
+@@ -491,10 +489,8 @@ hal_ReadEFuse_BT(struct rtw_adapter *padapter,
  	}
- 	/* allocate dma descriptors */
--	devpriv->dma_desc = pci_alloc_consistent(pcidev,
--						 sizeof(struct plx_dma_desc) *
--						 NUM_DMA_DESCRIPTORS,
--						 &devpriv->dma_desc_phys_addr);
-+	devpriv->dma_desc = dma_alloc_coherent(&pcidev->dev,
-+					       sizeof(struct plx_dma_desc) *
-+					       NUM_DMA_DESCRIPTORS,
-+					       &devpriv->dma_desc_phys_addr,
-+					       GFP_ATOMIC);
- 	if (devpriv->dma_desc_phys_addr & 0xf) {
- 		dev_warn(dev->class_dev,
- 			 " dma descriptors not quad-word aligned (bug)\n");
+ 
+ 	efuseTbl = kmalloc(EFUSE_BT_MAP_LEN, GFP_KERNEL);
+-	if (!efuseTbl) {
+-		DBG_8723A("%s: efuseTbl malloc fail!\n", __func__);
++	if (!efuseTbl)
+ 		return;
+-	}
+ 	/*  0xff will be efuse default value instead of 0x00. */
+ 	memset(efuseTbl, 0xFF, EFUSE_BT_MAP_LEN);
+ 
 -- 
 1.9.1
 
