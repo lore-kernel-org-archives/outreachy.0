@@ -1,152 +1,120 @@
-X-GM-THRID: 6253307267835232256
-X-Received: by 10.50.112.232 with SMTP id it8mr1334447igb.9.1455961556821;
-        Sat, 20 Feb 2016 01:45:56 -0800 (PST)
+X-GM-THRID: 6254745992232435712
+X-Received: by 10.31.9.78 with SMTP id 75mr37424721vkj.9.1456334426141;
+        Wed, 24 Feb 2016 09:20:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.52 with SMTP id 49ls546064qgo.79.gmail; Sat, 20 Feb
- 2016 01:45:55 -0800 (PST)
-X-Received: by 10.140.136.135 with SMTP id 129mr16770785qhi.10.1455961555159;
-        Sat, 20 Feb 2016 01:45:55 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id 79si2122159pft.0.2016.02.20.01.45.55
+Received: by 10.140.43.116 with SMTP id d107ls3027280qga.20.gmail; Wed, 24 Feb
+ 2016 09:20:25 -0800 (PST)
+X-Received: by 10.129.41.70 with SMTP id p67mr37176189ywp.33.1456334425351;
+        Wed, 24 Feb 2016 09:20:25 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id ff2si569277pad.2.2016.02.24.09.20.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 01:45:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        Wed, 24 Feb 2016 09:20:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id fl4so63891510pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 01:45:55 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id c10so1265317pfc.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 09:20:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=lwDImhXXvXT9U+KXZx4BBvX1Hkplb5KBVqS1utp3bnk=;
-        b=IWVNcsN9YEYAkMSrnhkkOSnuRqBOhBR12a0FaW9sHbSJNZvIN9dQsY65/dNfl8BHb9
-         zIPoCdUDGNCtPv3dp3XWiK4bht0YQ1YCLf1Lr3M5RkZ7+twoviFv4YLlzj24Tvl4rhex
-         SaY99h5BMPOnkMx2n0TMUb5Ln52Hmv8FZAPcVsKvYdNLufEimngwNGStcZJUeDK31Dxa
-         dMVvmnocW/TnMAn7FgyeUVagbB/vomuEcCfSH16igsLLPxqkYV9XYYglfERNzBCGZCzX
-         uQUbhiDpYwiU+DjNkI/2U4xecLOaR46AFeGb/dy+/MnAX6XBPgEPOkfAcBP2tIbeuykA
-         Ofcw==
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=Vh3jdlkdHbR6Z9yjfOWpGB3uzg/KAOCVkCFzQPmZxTw=;
+        b=jmRdmUegGr83MmhUJ4OopSqs5aOo7idQvdWc/aFuVVehykJT0LXefdrO40J8Rp6/FA
+         X/xHCsZfADQWSTfVxPdZu0w4yfSgRQrXem4zLpQQ91uwseDcihWDmZlsY8hdJkyykKJH
+         BhYPGc8PteaJsF2je7xjjc5vP3PSWxsDelnYXxq8EJFpXOH2VTS/Yt1yomevgxVa48Ak
+         tfQ3HY4cxyVc6WMFN7cMd4hPxsbP8YjoXBIfCyAM5D1xcDXOioZ3JoYWwT9c+yKVyqLR
+         bCEWkv3keG1ZX31mGFIqrrD6OG/NpSMS8QPBxqsn1qL054KS7gGddAkkdAyRSMmcC6fE
+         Fy8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=lwDImhXXvXT9U+KXZx4BBvX1Hkplb5KBVqS1utp3bnk=;
-        b=bfjk4palr7w6LUdUTbcIKH2QzHPGbQsVT9LS//2XrNxJV7dq3KikKBd3bW03XicL2c
-         HcNbd7IT/bFP+257AwTv70seiTeuhbRnFa/vvlPPDNiINEp2i8wT7HrsaKkkN3Xyp7ei
-         ktEKW+XauIQpy4yf9GazMLm7JMoAD9k70UU7l6U6CkII9AlM/bGsjVZmebB36ggbfoh3
-         qxufJn3KcCXPeze69XgDjmMQmmsLhLqGT26ZAFDmfSU+2WAqyjuwlp6TFf6yVY9uQnoL
-         k2+4+WNFtOuv7sgJ3msnX9GQEAzJNfonIxmX++kwqKMDs54F726iu7IGdJUJXpPmG+0k
-         /OCQ==
-X-Gm-Message-State: AG10YOTCPFE9dRxnW/kiWn3AcxiZnFx/F+8uI2Z2U0cl8c1l5QNYUo3//zEa2geaRBZ3/w==
-X-Received: by 10.66.244.194 with SMTP id xi2mr24161252pac.139.1455961554933;
-        Sat, 20 Feb 2016 01:45:54 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.106.39])
-        by smtp.gmail.com with ESMTPSA id w89sm23295462pfi.13.2016.02.20.01.45.50
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 01:45:54 -0800 (PST)
-Date: Sat, 20 Feb 2016 15:15:38 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+         :references;
+        bh=Vh3jdlkdHbR6Z9yjfOWpGB3uzg/KAOCVkCFzQPmZxTw=;
+        b=h4h+Ec4VPmJ2s9FMUImEaD4hg8N4Rqg24XuOF69zuXNLJUSnjuqQ3zE7FmdeynMGN0
+         zsRejQxQBnCRRGll0oc62Rs6JwAZKLwtDDFqqmr3dOO50Ol5qpdBFIy7phhfx8yIQuac
+         oUZuteg2HJSIC8FlGZbjQsd2A9T6YHcF9D5F4gUoib0rX7J59/MhlXIsrZgfl+6SSWpL
+         OuDiuJS9fisHpc41TlTtCbCTUQOBjAPcRY5yZvNNaXy78rpVvXCjciTPB+uToq/GjkzT
+         EvgryMbT6PmfGh+s1SPRlK/ziSrqATxncYcwVJrEa+x/8yaQ7QmukhlTKRXOZyJYzt7R
+         XH6g==
+X-Gm-Message-State: AG10YOTYOIteyc57NBbhnjeh0mj1l6W+H2+j67mqZB0WIZDS8F85cLts9GlAXypF/upnWg==
+X-Received: by 10.98.80.206 with SMTP id g75mr56542960pfj.127.1456334425146;
+        Wed, 24 Feb 2016 09:20:25 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from localhost.localdomain (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
+        by smtp.gmail.com with ESMTPSA id to9sm6417866pab.3.2016.02.24.09.20.24
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 24 Feb 2016 09:20:24 -0800 (PST)
+From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: tj@kernel.org
-Subject: [PATCH] staging: most: hdm-usb: Remove create_workqueue()
-Message-ID: <20160220094538.GA15446@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Subject: [PATCH v2] staging: fbtft: replace ternary operator with min macro
+Date: Wed, 24 Feb 2016 09:20:17 -0800
+Message-Id: <1456334417-2213-1-git-send-email-amsfield22@gmail.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <20160224064843.GA17889@d830.WORKGROUP>
+References: <20160224064843.GA17889@d830.WORKGROUP>
 
-With concurrency managed workqueues, use of dedicated workqueues can
-be replaced by using system_wq. Drop schedule_usb_work by using
-system_wq.
+Use macro min() to get the minimum of two values for
+brevity and readability.
 
-Since there is only one work item per buf_anchor and most_dev and they
-do not need to be ordered, increase of concurrency by switching to
-system_wq should not break anything.
+Found using Coccinelle:
+@@ type T; T x; T y; @@
+(
+- x < y ? x : y
++ min(x,y)
+|
+- x > y ? x : y
++ max(x,y)
+)
 
-Both work items are sync canceled before the driver can be
-unregistered, to ensure no work item is pending or executing on any 
-CPU by the time exit path is in flight.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/most/hdm-usb/hdm_usb.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
+Change in v2:
+- corrected Coccinelle script
 
-diff --git a/drivers/staging/most/hdm-usb/hdm_usb.c b/drivers/staging/most/hdm-usb/hdm_usb.c
-index 41690f8..3ee9e6f 100644
---- a/drivers/staging/most/hdm-usb/hdm_usb.c
-+++ b/drivers/staging/most/hdm-usb/hdm_usb.c
-@@ -137,7 +137,6 @@ struct most_dev {
- #define to_mdev(d) container_of(d, struct most_dev, iface)
- #define to_mdev_from_work(w) container_of(w, struct most_dev, poll_work_obj)
+ drivers/staging/fbtft/fb_ra8875.c | 2 +-
+ drivers/staging/fbtft/fbtft-bus.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
+index b167c50..0585e0b 100644
+--- a/drivers/staging/fbtft/fb_ra8875.c
++++ b/drivers/staging/fbtft/fb_ra8875.c
+@@ -277,7 +277,7 @@ static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
+ 		startbyte_size = 1;
  
--static struct workqueue_struct *schedule_usb_work;
- static void wq_clear_halt(struct work_struct *wq_obj);
- static void wq_netinfo(struct work_struct *wq_obj);
+ 	while (remain) {
+-		to_copy = remain > tx_array_size ? tx_array_size : remain;
++		to_copy = min(tx_array_size, remain);
+ 		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
+ 			to_copy, remain - to_copy);
  
-@@ -226,6 +225,8 @@ static void free_anchored_buffers(struct most_dev *mdev, unsigned int channel)
- 		kfree(anchor);
+diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fbtft-bus.c
+index 58449ad8..b31f111 100644
+--- a/drivers/staging/fbtft/fbtft-bus.c
++++ b/drivers/staging/fbtft/fbtft-bus.c
+@@ -157,7 +157,7 @@ int fbtft_write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
  	}
- 	spin_unlock_irqrestore(&mdev->anchor_list_lock[channel], flags);
-+
-+	cancel_work_sync(&anchor->clear_work_obj);
- }
  
- /**
-@@ -411,7 +412,7 @@ static void hdm_write_completion(struct urb *urb)
- 			mbo->status = MBO_E_INVAL;
- 			usb_unlink_urb(urb);
- 			INIT_WORK(&anchor->clear_work_obj, wq_clear_halt);
--			queue_work(schedule_usb_work, &anchor->clear_work_obj);
-+			schedule_work(&anchor->clear_work_obj);
- 			return;
- 		case -ENODEV:
- 		case -EPROTO:
-@@ -575,7 +576,7 @@ static void hdm_read_completion(struct urb *urb)
- 			mbo->status = MBO_E_INVAL;
- 			usb_unlink_urb(urb);
- 			INIT_WORK(&anchor->clear_work_obj, wq_clear_halt);
--			queue_work(schedule_usb_work, &anchor->clear_work_obj);
-+			schedule_work(&anchor->clear_work_obj);
- 			return;
- 		case -ENODEV:
- 		case -EPROTO:
-@@ -872,7 +873,7 @@ static void link_stat_timer_handler(unsigned long data)
- {
- 	struct most_dev *mdev = (struct most_dev *)data;
+ 	while (remain) {
+-		to_copy = remain > tx_array_size ? tx_array_size : remain;
++		to_copy = min(tx_array_size, remain);
+ 		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
+ 						to_copy, remain - to_copy);
  
--	queue_work(schedule_usb_work, &mdev->poll_work_obj);
-+	schedule_work(&mdev->poll_work_obj);
- 	mdev->link_stat_timer.expires = jiffies + (2 * HZ);
- 	add_timer(&mdev->link_stat_timer);
- }
-@@ -1415,19 +1416,13 @@ static int __init hdm_usb_init(void)
- 		pr_err("could not register hdm_usb driver\n");
- 		return -EIO;
- 	}
--	schedule_usb_work = create_workqueue("hdmu_work");
--	if (!schedule_usb_work) {
--		pr_err("could not create workqueue\n");
--		usb_deregister(&hdm_usb);
--		return -ENOMEM;
--	}
-+
- 	return 0;
- }
+@@ -201,7 +201,7 @@ int fbtft_write_vmem16_bus9(struct fbtft_par *par, size_t offset, size_t len)
+ 	tx_array_size = par->txbuf.len / 2;
  
- static void __exit hdm_usb_exit(void)
- {
- 	pr_info("hdm_usb_exit()\n");
--	destroy_workqueue(schedule_usb_work);
- 	usb_deregister(&hdm_usb);
- }
+ 	while (remain) {
+-		to_copy = remain > tx_array_size ? tx_array_size : remain;
++		to_copy = min(tx_array_size, remain);
+ 		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
+ 						to_copy, remain - to_copy);
  
 -- 
-1.9.1
+2.1.4
 
 
