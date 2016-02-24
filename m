@@ -1,111 +1,76 @@
-X-GM-THRID: 6250350811445985280
-X-Received: by 10.50.56.19 with SMTP id w19mr2674769igp.13.1455273202038;
-        Fri, 12 Feb 2016 02:33:22 -0800 (PST)
+X-GM-THRID: 6254932511038636032
+X-Received: by 10.182.105.133 with SMTP id gm5mr36626075obb.41.1456339962584;
+        Wed, 24 Feb 2016 10:52:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.75 with SMTP id b69ls1352636qgf.53.gmail; Fri, 12 Feb
- 2016 02:33:21 -0800 (PST)
-X-Received: by 10.13.238.130 with SMTP id x124mr635060ywe.53.1455273201618;
-        Fri, 12 Feb 2016 02:33:21 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id u66si1526879pfa.2.2016.02.12.02.33.21
+Received: by 10.140.41.134 with SMTP id z6ls2103027qgz.32.gmail; Wed, 24 Feb
+ 2016 10:52:42 -0800 (PST)
+X-Received: by 10.13.192.134 with SMTP id b128mr38265974ywd.43.1456339962022;
+        Wed, 24 Feb 2016 10:52:42 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id yd9si605540pab.1.2016.02.24.10.52.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 02:33:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        Wed, 24 Feb 2016 10:52:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of rakhish1994@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=rakhish1994@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id q63so45686628pfb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 02:33:21 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id w128so1436269pfb.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 10:52:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=MPCvOFnwvz3NO5ghUb3/6sLTdqJnlUoa5R6AEH4V/GQ=;
-        b=b3OUvczRfD6GMUsIPLmKvfmR8ff7HzVNv9w/AoQf67enS6QI6eWIihY4c4Tt4vrHOD
-         XrOAVIrWdqfZu5eVlDaf6KQL2c1NYTZHcE+ZlZMzVjp8NG/NJy+dj2AOwBpILeXZAxZ2
-         DFj07d9ALxSreOO6iOutmX7vQ/6NY6vjGsE+X3PY9D90cLCQ5HupEhvoJOLLgI9vt73H
-         5lkNEUjwn/sc74y3C5IJyyMZRIsIRvXATKyS1uBDk/xId7iWj1MhSOHkLG62qYAncuGh
-         hcWd0k1OSmpE0AClsnNu755suny5pEZ6p4Dy+DzB4vx8dsNX7yIuc/QsaiaIvyjLYVH+
-         jkmA==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=2/PcXCEa+WKgXNl+ys3hqnyBaAOCEWdx1SaQhEwxb00=;
+        b=WZmWRdxpvvrGUYrBxJ7PtEXDwED3qaI6A+Dn8JVI5mY9i03HA9rPYUpJlD+PRy+8Rf
+         g14m7ZmckpJhrW3cfTfvv59cQ9584xnezC2cEgulLHuRbsgwV8f38xzvcxiQ8FpDO57q
+         yZ1etWVJQiBAb9ji77Qs5DyCntLnmlqp68fHviftUMjDx6IY+23Y6su6SkoQYcE0N9Pu
+         MgIm8Pi/bDVXJzE5eFqnyJ9eFIupjV0Z739FBS1+/ad9KDuDylT8OTOOUT/Kt8ttf2pk
+         S6IZWDyxAnDkKKj+ta7gyjTKmPQhUWTgOiqJ9K98qsnCURz0x843tqgaFALMFlPJR6GO
+         sQQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=MPCvOFnwvz3NO5ghUb3/6sLTdqJnlUoa5R6AEH4V/GQ=;
-        b=b6h/ZGqRV1HO6VAk/2NyDR245UabsJcchP8VeFAmAblRd9if/zlZGu3BRR04DDs5ku
-         FU5oBFBAyLNkOP6DFwzIsWniAlOTA18v/8b9DrO8p3+mMORCohbpVVwY2bh1PD7A8mH8
-         BVoZvec/LepyFkpL7bpeW6wToVQIOrwVaZakqbANhePi6M1oFOzuCuQV1bIRZ9LTYyrF
-         A+xH4KjOqvR58h0FP8cidKWcGLX/F9XrnDLUUSX+tqqs5mcJBQacgCuTbnwtkztK8lRw
-         fI3/CAs4rVcpS34vC9X057GR1lYdudUYpueO9U2xTOYhxYdu/4ileQc+OrVZTi0YN6ij
-         h78A==
-X-Gm-Message-State: AG10YOQf74CpnMk1OY1idebGkLzKUBL1TNHaAqAsD5YeZHa1z0plpYF/m2hm5oYd5YhcIw==
-X-Received: by 10.98.87.90 with SMTP id l87mr1041490pfb.70.1455273201367;
-        Fri, 12 Feb 2016 02:33:21 -0800 (PST)
-Return-Path: <rakhish1994@gmail.com>
-Received: from rakhi-Inspiron-3542.4.2.2.2 ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id 17sm18373028pfp.96.2016.02.12.02.33.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 02:33:20 -0800 (PST)
-From: Rakhi Sharma <rakhish1994@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=2/PcXCEa+WKgXNl+ys3hqnyBaAOCEWdx1SaQhEwxb00=;
+        b=asxCduchcw5KeZloWUEdy9EW4nsUpFBdEQNxRhB3yfwX5CT48Dta/IxeqaTxTge4CS
+         +IlWsMG/FmPHUZAFg2eoknHAGVxkaPdIJG92VlhJqnyC8zEbsDhwEm4COC4z+qPUnLLO
+         9ODQKyluqdHOhuyq8h/11p9j/pD/xo+FJGJqf2pJmciotIQZB2F3xsF+ZXbQBlPZ+YgJ
+         XM53ynCr7tjPQLQkiWZXLu2TEbANDNYneAeTKNbWwjnlcL1b/VUiqf8lV/Sgm+GOWL2x
+         gHrhQfzOk5yp3WxQxfLVpUj4WAa+HBm3R4K3slgiArB3ITh8YgCxr9yGjdP5FWC19Z49
+         Jypg==
+X-Gm-Message-State: AG10YORneuHEMNR4o5EgRyIwdj3MlkYiF+XTdRuDB0UpVTrdN/pdJgEHciZxb7BC6zMg7g==
+X-Received: by 10.98.11.134 with SMTP id 6mr57695888pfl.109.1456339961838;
+        Wed, 24 Feb 2016 10:52:41 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.176])
+        by smtp.gmail.com with ESMTPSA id n78sm6713139pfb.53.2016.02.24.10.52.40
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 24 Feb 2016 10:52:41 -0800 (PST)
+Date: Wed, 24 Feb 2016 16:22:38 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: julia.lawall@lip6.fr,
-	daniel.baluta@gmail.com,
-	Rakhi Sharma <rakhish1994@gmail.com>
-Subject: [PATCH 4/4] staging: rtl8712: Fixed a comparision coding style warning.
-Date: Fri, 12 Feb 2016 16:03:14 +0530
-Message-Id: <1455273194-15848-1-git-send-email-rakhish1994@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH 0/3] Staging: gs_fpgaboot: Fix coding style issues.
+Message-ID: <cover.1456308083.git.bankarsandhya512@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-WARNING: Comparisons should place the constant on the right side of the test
-Fixed this warning by placing the constant on right side.
+Fix coding style issues.
 
-Signed-off-by: Rakhi Sharma <rakhish1994@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_efuse.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Sandhya Bankar (3):
+  Staging: gs_fpgaboot: Fix alignment to match open parenthesis
+  Staging: gs_fpgaboot: Use space around '+'.
+  Staging: gs_fpgaboot: Remove unnecessary blank lines.
 
-diff --git a/drivers/staging/rtl8712/rtl8712_efuse.c b/drivers/staging/rtl8712/rtl8712_efuse.c
-index eaa93fb..76f60ba 100644
---- a/drivers/staging/rtl8712/rtl8712_efuse.c
-+++ b/drivers/staging/rtl8712/rtl8712_efuse.c
-@@ -161,7 +161,7 @@ static u8 efuse_is_empty(struct _adapter *padapter, u8 *empty)
- 
- 	/* read one byte to check if E-Fuse is empty */
- 	if (efuse_one_byte_rw(padapter, true, 0, &value)) {
--		if (0xFF == value)
-+		if (value == 0xFF)
- 			*empty = true;
- 		else
- 			*empty = false;
-@@ -345,7 +345,7 @@ static u8 fix_header(struct _adapter *padapter, u8 header, u16 header_addr)
- 				ret = false;
- 			} else if (pkt.data[i * 2] != value) {
- 				ret = false;
--				if (0xFF == value) /* write again */
-+				if (value == 0xFF) /* write again */
- 					efuse_one_byte_write(padapter, addr,
- 							pkt.data[i * 2]);
- 			}
-@@ -353,7 +353,7 @@ static u8 fix_header(struct _adapter *padapter, u8 header, u16 header_addr)
- 				ret = false;
- 			} else if (pkt.data[i * 2 + 1] != value) {
- 				ret = false;
--				if (0xFF == value) /* write again */
-+				if (value == 0xFF) /* write again */
- 					efuse_one_byte_write(padapter, addr + 1,
- 							     pkt.data[i * 2 +
- 								      1]);
-@@ -420,7 +420,7 @@ u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
- 		}
- 		/* write header fail */
- 		bResult = false;
--		if (0xFF == efuse_data)
-+		if (efuse_data == 0xFF)
- 			return bResult; /* nothing damaged. */
- 		/* call rescue procedure */
- 		if (!fix_header(padapter, efuse_data, efuse_addr))
+ drivers/staging/gs_fpgaboot/gs_fpgaboot.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
 -- 
-1.9.1
+1.8.3.4
 
 
