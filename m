@@ -1,61 +1,60 @@
 X-GM-THRID: 6254957032933163008
-X-Received: by 10.129.71.85 with SMTP id u82mr43542943ywa.9.1456401849401;
-        Thu, 25 Feb 2016 04:04:09 -0800 (PST)
+X-Received: by 10.182.72.137 with SMTP id d9mr38466207obv.31.1456345672259;
+        Wed, 24 Feb 2016 12:27:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.22.10 with SMTP id 10ls269041qgm.23.gmail; Thu, 25 Feb
- 2016 04:04:08 -0800 (PST)
-X-Received: by 10.140.98.197 with SMTP id o63mr13458067qge.9.1456401848977;
-        Thu, 25 Feb 2016 04:04:08 -0800 (PST)
+Received: by 10.182.38.133 with SMTP id g5ls1447405obk.43.gmail; Wed, 24 Feb
+ 2016 12:27:51 -0800 (PST)
+X-Received: by 10.182.112.193 with SMTP id is1mr38733375obb.38.1456345671879;
+        Wed, 24 Feb 2016 12:27:51 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id u66si1218016pfa.2.2016.02.25.04.04.08
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id u66si707792pfa.2.2016.02.24.12.27.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 04:04:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Wed, 24 Feb 2016 12:27:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id yy13so2600491pab.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 04:04:08 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id w128so1582910pfb.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 12:27:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=XcRyTbqMxFbwmExuOQL9KdKVRUOEwTDm9EIxIu0lCqk=;
-        b=qRArW1IAPqI7qBtYayfr2nH9y+F+3kJZuZzAWCuGLDBNV2w21FmDYG0wFkm+0hXGlo
-         biBNn6dxiKlDCbrAODzBRiYhHXr46KFXJmCpu8pa5niSzR+9ekdb348yTISRf9O4eR4S
-         epkIIwnHZQbeLBNlQdqqLRCPnnuX/nR7gcge67gNyBmynxy7qjWXak7aNtQSqlUsWtBR
-         3lmfMixehfje2q3I6VbIMta3ZIVOLK1evG8gSJzHmTJSoJrcuu6qA/b/6plKc8Q4fMj1
-         kQbW42k0lykGUHq4VwfFXWCaCvcWl4oJJmrOQzPVwWq1XtETWk3gwT5SgNMQVOZ2rLy4
-         yT/w==
+        bh=89yJ0E+i7DcCevjmAouawQbjcxU9OECtM+s1hh3v5UU=;
+        b=ScHgIYhJqev3Jdwgm+iZM3VmBJgHXYCCWbglLQdtx3jImhWmwadS5G3VRcQPd9WRn2
+         qyhCzP6BN5Ct44M2sUOMp9mJChqXp8+u/inDOHcWEIWdoZnbhBgdBBKLaM6iTybYmvqt
+         Hf2h0BeFOK66Tno4JlhEovjn6fHbDMz7PoCkCYyHmO0FE+EhLZRD4L6U2JuJJJZc49Ci
+         xw+/8I0qBcKGTPQXKzpRKh5uFVZoSq8rI++ZYVsX8hKc8Q8pxIywL/MdXyVORu+yaFIE
+         KhDq7iJnakuVdjzzQzi6eJXiAanqaaSoiKl2XKlINFMYG1qP/tAIJu00gO0kCP6ErHD0
+         DJDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=XcRyTbqMxFbwmExuOQL9KdKVRUOEwTDm9EIxIu0lCqk=;
-        b=gzkcSSg9mbvzLU1Y7Ak1hOo+7uO5a0ZRQp5trJz7cXR/sWdOV2XhRBf0HO1Ym+nZfc
-         hifcB8AtjXg8PQcPRuH1zmbsTbFpxD/0Yx1DfETASYqaYP1bAhK8FSPaV5LLgDQ3T8mY
-         gzEdVg9DpcEDmv5dFWtiD5j2XIXjYC0j8bpezt1JzG4tmtoiJpPIMHZo8TW7wkcv7qN2
-         YMe3w+pKX6ZDVs0MT/8crUCwxwucqhNQEWtFul9dlBEBiFI7ilwjsI/0pb515U73z3Iw
-         PGmGy9gCRvO5BEqKCPD+uPU/HBPcBL57XEKleHhRGhDW0jLndhh2S5rxgcxzZ9GSJU59
-         eoRQ==
-X-Gm-Message-State: AG10YOT0kxGvxUMIDsM3T/8TRHgZRmmcbzJB4nxopZx/kTOl4MiHrsVlyD7szZFooe2hbw==
-X-Received: by 10.66.218.196 with SMTP id pi4mr62140938pac.147.1456401848613;
-        Thu, 25 Feb 2016 04:04:08 -0800 (PST)
+        bh=89yJ0E+i7DcCevjmAouawQbjcxU9OECtM+s1hh3v5UU=;
+        b=TkDT53bQ7aLbuV4pN/RPPoot3NOvYpxNjclaXoguz4PcRnlNzGITjdERBagmFIiKU4
+         AOEvxUL9flpMCoCAQ0qZXo0WD/lG5AgSEeodJ7RaKxmfi01UUg2qQoxei7piS4wdNYAu
+         G72lNww7W1Vj0OrRPVTw3W4SdktZzoCMVgYDOTo7ra98+ryWSwYKFbG0HsMW+BHgcYds
+         +fh8Chbw3cqMJmrPwBxC5ITsBsp7mGxbH6FLFk6uI1CWyYtigNfu2/ZNC3/PZvbqlfNZ
+         POGKzE1qUvLNjcyoEfqmVvHbg6siSVp6n9Ky5JuxM6MDwh81irblLY+FZxWbfASrs6Ui
+         OZ7Q==
+X-Gm-Message-State: AG10YOQ90f9aRVpkMwk0Me2VK2RBoNJgKiButibvTgZsnHwD/wpbZDSZXg0iCRQKim0xDA==
+X-Received: by 10.98.72.24 with SMTP id v24mr56946483pfa.15.1456345671672;
+        Wed, 24 Feb 2016 12:27:51 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id d65sm11899297pfb.74.2016.02.25.04.04.07
+        by smtp.gmail.com with ESMTPSA id ra1sm6985583pab.24.2016.02.24.12.27.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 04:04:08 -0800 (PST)
-Date: Thu, 25 Feb 2016 17:34:43 +0530
+        Wed, 24 Feb 2016 12:27:51 -0800 (PST)
+Date: Thu, 25 Feb 2016 01:58:26 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 7/8] staging: rtl8723au: hal: Remove useless return
- variables
-Message-ID: <20160225120443.GA5640@Karyakshetra>
+Subject: [PATCH 7/8] staging: rtl8723au: hal: Remove useless return variables
+Message-ID: <20160224202826.GA23015@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -78,9 +77,6 @@ f(...);
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- Changes in v2:
-	-No change
-
  drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 16 +++-------------
  1 file changed, 3 insertions(+), 13 deletions(-)
 
