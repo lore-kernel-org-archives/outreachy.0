@@ -1,57 +1,71 @@
 X-GM-THRID: 6254787480164237312
-X-Received: by 10.112.54.202 with SMTP id l10mr4701847lbp.14.1456307468965;
-        Wed, 24 Feb 2016 01:51:08 -0800 (PST)
+X-Received: by 10.129.72.199 with SMTP id v190mr36347465ywa.44.1456306194229;
+        Wed, 24 Feb 2016 01:29:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.24.30 with SMTP id o30ls543327lfi.94.gmail; Wed, 24 Feb
- 2016 01:51:08 -0800 (PST)
-X-Received: by 10.112.200.68 with SMTP id jq4mr3754502lbc.3.1456307468117;
-        Wed, 24 Feb 2016 01:51:08 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id w10si1279535wmw.3.2016.02.24.01.51.07
+Received: by 10.182.104.164 with SMTP id gf4ls1297697obb.73.gmail; Wed, 24 Feb
+ 2016 01:29:53 -0800 (PST)
+X-Received: by 10.182.24.41 with SMTP id r9mr35524513obf.25.1456306193653;
+        Wed, 24 Feb 2016 01:29:53 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id ui7si296978pab.0.2016.02.24.01.29.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 01:51:08 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Wed, 24 Feb 2016 01:29:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,493,1449529200"; 
-   d="scan'208";a="165801276"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2016 10:51:07 +0100
-Date: Wed, 24 Feb 2016 10:51:06 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Eva Rachel Retuya <eraretuya@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [KERNEL NEWBIES ACCESS] EvaRachelRetuya
-In-Reply-To: <20160224092949.GA24547@Socrates-Mint>
-Message-ID: <alpine.DEB.2.02.1602241051000.2149@localhost6.localdomain6>
-References: <20160224092949.GA24547@Socrates-Mint>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x229.google.com with SMTP id ho8so10023220pac.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 01:29:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mail-followup-to:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=ZVjTWKZwjdyJSCQACWlbdtUg2PYPGAcqo7uhJovoIko=;
+        b=DUkqxs71TzXUz+rqj8ZzBNumlv7nNL3bS0hsN3pEh+iOKaytB6SwicBwe4hqKahUvH
+         U4fa79dQqeAF/bo4GByVLVf7HUNhgRF6VJzt1XKJCLCVRwpr+vxGJPY26g7Mvk8wRNPk
+         u6j+a6FVyDuFdeu4ZZgTmZHafTzGmmT+aW8NbNBR1eqFeHckBY2yQEQLV5oeXXnN67Tf
+         BauTwrvOumOOBR3zcdfIK+wcEGMijCw/aRNG634P6zVn3QpK+v5/e/+zHEfFdUJrrzkp
+         qbci4f75GGO3zzG7Ss88QUEW5Sn8xnjjNslCOPJ7jDjMUckr1fAQ7qEZ6QxboVJh62sQ
+         NHnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mail-followup-to
+         :mime-version:content-type:content-disposition:user-agent;
+        bh=ZVjTWKZwjdyJSCQACWlbdtUg2PYPGAcqo7uhJovoIko=;
+        b=A64OXrV3xiGN0dOJIHrynuimzUJg1YkU7Tgy6e16dxmf0cpO+wmO3bKFIC8iXubgoU
+         JiYkf9aZID2QyNaQ6LzMkEdQrfMFIbw38D/FF9DZlXiRXL/37Z/qj3dN6et0pQbqC3Fu
+         luNbY9CODrldMxmuRae+/y6ABsA9RYI+Y3sh4HJPa8Rau0Aivcpew7cGKMOPw71V993F
+         JrIPiH4Q2FE28UYbiiL4wlJyiu3S6rjDWH99AqcQf4+n6E7ojQsO6bZ/rsOOYi2aYCwC
+         hnhR9eAhbsFv82MHSLW5Cc72qNdQiQcgmW11B3otegQlq5+hefSuFt2xwi7hZ/YXv4Ih
+         JNPw==
+X-Gm-Message-State: AG10YOTzz/YfRvtwoC9OCnlW71vOkuY/q/c9/AXbNFZg+4Uarx1LKtaobhKtHoHXP2X90A==
+X-Received: by 10.66.253.169 with SMTP id ab9mr53859322pad.62.1456306193508;
+        Wed, 24 Feb 2016 01:29:53 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([125.212.122.184])
+        by smtp.gmail.com with ESMTPSA id y68sm3466737pfi.6.2016.02.24.01.29.52
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 24 Feb 2016 01:29:53 -0800 (PST)
+Date: Wed, 24 Feb 2016 17:29:50 +0800
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [KERNEL NEWBIES ACCESS] EvaRachelRetuya
+Message-ID: <20160224092949.GA24547@Socrates-Mint>
+Mail-Followup-To: outreachy-kernel@googlegroups.com
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Wed, 24 Feb 2016, Eva Rachel Retuya wrote:
+Good day,
 
-> Good day,
-> 
-> I would like to ask for edit privileges on my account so that I could
-> claim task/s.
+I would like to ask for edit privileges on my account so that I could
+claim task/s.
 
-Done.
-
-julia
-
-> 
-> Thank you,
-> Eva
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160224092949.GA24547%40Socrates-Mint.
-> For more options, visit https://groups.google.com/d/optout.
-> 
+Thank you,
+Eva
 
