@@ -1,91 +1,209 @@
-X-GM-THRID: 6251461618501156864
-X-Received: by 10.31.165.1 with SMTP id o1mr15244485vke.12.1455531832168;
-        Mon, 15 Feb 2016 02:23:52 -0800 (PST)
+X-GM-THRID: 6254805477248466944
+X-Received: by 10.25.15.161 with SMTP id 33mr4716485lfp.0.1456310598354;
+        Wed, 24 Feb 2016 02:43:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.19.132 with SMTP id f4ls638594obe.75.gmail; Mon, 15 Feb
- 2016 02:23:51 -0800 (PST)
-X-Received: by 10.182.118.169 with SMTP id kn9mr14219813obb.11.1455531831670;
-        Mon, 15 Feb 2016 02:23:51 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id ff2si2826974pad.2.2016.02.15.02.23.51
+Received: by 10.25.8.204 with SMTP id 195ls540230lfi.75.gmail; Wed, 24 Feb
+ 2016 02:43:17 -0800 (PST)
+X-Received: by 10.25.29.211 with SMTP id d202mr4708055lfd.7.1456310597717;
+        Wed, 24 Feb 2016 02:43:17 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v197si1192064wmv.1.2016.02.24.02.43.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Feb 2016 02:23:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Wed, 24 Feb 2016 02:43:17 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id yy13so83878980pab.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 02:23:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=u63Z/e+Q0504xILg9HQQfIKHYrWzDmhbzZipH/yF1JU=;
-        b=oEI8ZDPMOw2muSQtvaRmOmdstbxIxJ4b0M7K0QtsfwmpwbV4n0KjdhOsbFNYYQJYgI
-         RCfwSpwQ2rhqN57EEXQKnkiy3lPyRY97ka4ggAlAcvhUW0o81aiDjn91trwq/b0OJxvG
-         J7LcT1IFOtQDuQoljnLbOtlBITiDvJm7Ygwr3ns3aXz1/gxBhrR2dnJ2dhwr2G9m2X7G
-         GlC/xO4vcU8NG3Ik8x2G87KKNgJ3/QPkZr0yF2UQAY5vkaNKsugTvR8X8Z+IpXashzZx
-         Q1nuBmtb/QmsAZHxVQv65zHQAW7g8GAI3JzkT6XcCGtlNQ8Kg0LTmwvJJJxRB3IhdkVz
-         kVAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=u63Z/e+Q0504xILg9HQQfIKHYrWzDmhbzZipH/yF1JU=;
-        b=i2rhttxgDAALvbknCGn5oS7b1Nwk2jr9+Kz+xgZ96Dd0c4cQjHyLA1F9psZ1vb3Fgr
-         fHmVEGqAddkqSCfT0sgV5V4hZzdrmQWOjIrOoQZqFUsME7U25naZKsjUrR+/zuJOAEiT
-         +FGQ1E9/inqusz1bfVyM+oKH/SudSyRAuoIXMAax/YEm24hMzhIn24HjfGyBHfipEg+h
-         bEguToS6n8xgYuOQ3+lTp3lqVyMWCzBhWB/dxmutU38tzoYlbb6V4hpkAzJ5P4sh9xvu
-         4Te4KCoNE+i6ulU3wc4VtM6bbVXZg6xAgs+u2fSf8OXAvXRobsr/xorZ+FXTQNNw3VFL
-         hczw==
-X-Gm-Message-State: AG10YOQC4L4Kyk5hD+5jvhUzi+ChinoTJq8oPlFgaW1I2Bdiw8Vt6x8HDpBgg8rIkTtxeg==
-X-Received: by 10.66.124.131 with SMTP id mi3mr22031627pab.7.1455531831526;
-        Mon, 15 Feb 2016 02:23:51 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.149.176])
-        by smtp.gmail.com with ESMTPSA id yx4sm37489384pac.5.2016.02.15.02.23.47
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 02:23:50 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Mon, 15 Feb 2016 15:53:41 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: lustre: include: Remove do-while(0) from single statement macro
-Date: Mon, 15 Feb 2016 15:53:40 +0530
-Message-Id: <1455531820-14913-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,493,1449529200"; 
+   d="scan'208";a="204425505"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Feb 2016 11:43:17 +0100
+Date: Wed, 24 Feb 2016 11:43:16 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Clean up tests if
+ NULL returned on failure
+In-Reply-To: <1456310371-7930-1-git-send-email-bhumirks@gmail.com>
+Message-ID: <alpine.DEB.2.02.1602241142430.2149@localhost6.localdomain6>
+References: <1456310371-7930-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-do-while(0) around single statement macro is unnedded so remove it.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/lustre/lustre/include/lustre_dlm.h | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/include/lustre_dlm.h b/drivers/staging/lustre/lustre/include/lustre_dlm.h
-index 9b319f1..455f9ce 100644
---- a/drivers/staging/lustre/lustre/include/lustre_dlm.h
-+++ b/drivers/staging/lustre/lustre/include/lustre_dlm.h
-@@ -1206,13 +1206,11 @@ void ldlm_resource_dump(int level, struct ldlm_resource *);
- int ldlm_lock_change_resource(struct ldlm_namespace *, struct ldlm_lock *,
- 			      const struct ldlm_res_id *);
- 
--#define LDLM_RESOURCE_ADDREF(res) do {				  \
--	lu_ref_add_atomic(&(res)->lr_reference, __func__, current);  \
--} while (0)
-+#define LDLM_RESOURCE_ADDREF(res)			  \
-+	lu_ref_add_atomic(&(res)->lr_reference, __func__, current)  \
- 
--#define LDLM_RESOURCE_DELREF(res) do {				  \
--	lu_ref_del(&(res)->lr_reference, __func__, current);	  \
--} while (0)
-+#define LDLM_RESOURCE_DELREF(res)				  \
-+	lu_ref_del(&(res)->lr_reference, __func__, current)	  \
- 
- /* ldlm_request.c */
- /** \defgroup ldlm_local_ast Default AST handlers for local locks
--- 
-1.9.1
+On Wed, 24 Feb 2016, Bhumika Goyal wrote:
 
+> Some functions like kmalloc/usb_alloc_urb/kmalloc_array returns NULL as
+> their return value on failure. !x is generally preferred over x==NULL
+> or NULL==x so make use of !x if the value returned on failure
+> by these functions is NULL.
+> Done using coccinelle:
+> 
+> @@
+> expression e;
+> statement S;
+> @@
+> e = \(kmalloc\|devm_kzalloc\|kmalloc_array
+>      \|devm_ioremap\|usb_alloc_urb\|alloc_netdev\)(...);
+> - if(e==NULL)
+> + if(!e)
+>   S
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/rtl8712/recv_linux.c      | 2 +-
+>  drivers/staging/rtl8712/rtl871x_io.c      | 2 +-
+>  drivers/staging/rtl8712/rtl871x_mlme.c    | 6 +++---
+>  drivers/staging/rtl8712/rtl871x_mp.c      | 4 ++--
+>  drivers/staging/rtl8712/rtl871x_sta_mgt.c | 2 +-
+>  drivers/staging/rtl8712/rtl871x_xmit.c    | 8 ++++----
+>  6 files changed, 12 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
+> index 2f5460d..be970ef 100644
+> --- a/drivers/staging/rtl8712/recv_linux.c
+> +++ b/drivers/staging/rtl8712/recv_linux.c
+> @@ -56,7 +56,7 @@ int r8712_os_recvbuf_resource_alloc(struct _adapter *padapter,
+>  
+>  	precvbuf->irp_pending = false;
+>  	precvbuf->purb = usb_alloc_urb(0, GFP_KERNEL);
+> -	if (precvbuf->purb == NULL)
+> +	if (!precvbuf->purb)
+>  		res = _FAIL;
+
+Unrelated to the change you are making, would it be possible to remove 
+these uses of _FAIL and replace them by standard error values?
+
+julia
+
+>  	precvbuf->pskb = NULL;
+>  	precvbuf->reuse = false;
+> diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/rtl8712/rtl871x_io.c
+> index fbbc635..3a10940 100644
+> --- a/drivers/staging/rtl8712/rtl871x_io.c
+> +++ b/drivers/staging/rtl8712/rtl871x_io.c
+> @@ -113,7 +113,7 @@ uint r8712_alloc_io_queue(struct _adapter *adapter)
+>  	struct io_req *pio_req;
+>  
+>  	pio_queue = kmalloc(sizeof(*pio_queue), GFP_ATOMIC);
+> -	if (pio_queue == NULL)
+> +	if (!pio_queue)
+>  		goto alloc_io_queue_fail;
+>  	INIT_LIST_HEAD(&pio_queue->free_ioreqs);
+>  	INIT_LIST_HEAD(&pio_queue->processing);
+> diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+> index 1b022db..14a780e 100644
+> --- a/drivers/staging/rtl8712/rtl871x_mlme.c
+> +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+> @@ -64,7 +64,7 @@ static sint _init_mlme_priv(struct _adapter *padapter)
+>  	memset(&pmlmepriv->assoc_ssid, 0, sizeof(struct ndis_802_11_ssid));
+>  	pbuf = kmalloc_array(MAX_BSS_CNT, sizeof(struct wlan_network),
+>  			     GFP_ATOMIC);
+> -	if (pbuf == NULL)
+> +	if (!pbuf)
+>  		return _FAIL;
+>  	pmlmepriv->free_bss_buf = pbuf;
+>  	pnetwork = (struct wlan_network *)pbuf;
+> @@ -1202,7 +1202,7 @@ sint r8712_set_auth(struct _adapter *adapter,
+>  	struct setauth_parm *psetauthparm;
+>  
+>  	pcmd = kmalloc(sizeof(*pcmd), GFP_ATOMIC);
+> -	if (pcmd == NULL)
+> +	if (!pcmd)
+>  		return _FAIL;
+>  
+>  	psetauthparm = kzalloc(sizeof(*psetauthparm), GFP_ATOMIC);
+> @@ -1232,7 +1232,7 @@ sint r8712_set_key(struct _adapter *adapter,
+>  	sint ret = _SUCCESS;
+>  
+>  	pcmd = kmalloc(sizeof(*pcmd), GFP_ATOMIC);
+> -	if (pcmd == NULL)
+> +	if (!pcmd)
+>  		return _FAIL;
+>  	psetkeyparm = kzalloc(sizeof(*psetkeyparm), GFP_ATOMIC);
+>  	if (psetkeyparm == NULL) {
+> diff --git a/drivers/staging/rtl8712/rtl871x_mp.c b/drivers/staging/rtl8712/rtl871x_mp.c
+> index 44da4fe..9b5a4e7 100644
+> --- a/drivers/staging/rtl8712/rtl871x_mp.c
+> +++ b/drivers/staging/rtl8712/rtl871x_mp.c
+> @@ -281,10 +281,10 @@ void r8712_SetChannel(struct _adapter *pAdapter)
+>  	u16 code = GEN_CMD_CODE(_SetChannel);
+>  
+>  	pcmd = kmalloc(sizeof(*pcmd), GFP_ATOMIC);
+> -	if (pcmd == NULL)
+> +	if (!pcmd)
+>  		return;
+>  	pparm = kmalloc(sizeof(*pparm), GFP_ATOMIC);
+> -	if (pparm == NULL) {
+> +	if (!pparm) {
+>  		kfree(pcmd);
+>  		return;
+>  	}
+> diff --git a/drivers/staging/rtl8712/rtl871x_sta_mgt.c b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+> index 3fe45b6..e90c00d 100644
+> --- a/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+> +++ b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+> @@ -53,7 +53,7 @@ u32 _r8712_init_sta_priv(struct	sta_priv *pstapriv)
+>  
+>  	pstapriv->pallocated_stainfo_buf = kmalloc(sizeof(struct sta_info) *
+>  						   NUM_STA + 4, GFP_ATOMIC);
+> -	if (pstapriv->pallocated_stainfo_buf == NULL)
+> +	if (!pstapriv->pallocated_stainfo_buf)
+>  		return _FAIL;
+>  	pstapriv->pstainfo_buf = pstapriv->pallocated_stainfo_buf + 4 -
+>  		((addr_t)(pstapriv->pallocated_stainfo_buf) & 3);
+> diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+> index 7089ebd..8e455f0 100644
+> --- a/drivers/staging/rtl8712/rtl871x_xmit.c
+> +++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+> @@ -89,7 +89,7 @@ sint _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
+>  	*/
+>  	pxmitpriv->pallocated_frame_buf = kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4,
+>  						  GFP_ATOMIC);
+> -	if (pxmitpriv->pallocated_frame_buf == NULL) {
+> +	if (!pxmitpriv->pallocated_frame_buf) {
+>  		pxmitpriv->pxmit_frame_buf = NULL;
+>  		return _FAIL;
+>  	}
+> @@ -128,7 +128,7 @@ sint _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
+>  	_init_queue(&pxmitpriv->pending_xmitbuf_queue);
+>  	pxmitpriv->pallocated_xmitbuf = kmalloc(NR_XMITBUFF * sizeof(struct xmit_buf) + 4,
+>  						GFP_ATOMIC);
+> -	if (pxmitpriv->pallocated_xmitbuf  == NULL)
+> +	if (!pxmitpriv->pallocated_xmitbuf)
+>  		return _FAIL;
+>  	pxmitpriv->pxmitbuf = pxmitpriv->pallocated_xmitbuf + 4 -
+>  			      ((addr_t)(pxmitpriv->pallocated_xmitbuf) & 3);
+> @@ -137,7 +137,7 @@ sint _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
+>  		INIT_LIST_HEAD(&pxmitbuf->list);
+>  		pxmitbuf->pallocated_buf = kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ,
+>  						   GFP_ATOMIC);
+> -		if (pxmitbuf->pallocated_buf == NULL)
+> +		if (!pxmitbuf->pallocated_buf)
+>  			return _FAIL;
+>  		pxmitbuf->pbuf = pxmitbuf->pallocated_buf + XMITBUF_ALIGN_SZ -
+>  				 ((addr_t) (pxmitbuf->pallocated_buf) &
+> @@ -943,7 +943,7 @@ static void alloc_hwxmits(struct _adapter *padapter)
+>  	pxmitpriv->hwxmit_entry = HWXMIT_ENTRY;
+>  	pxmitpriv->hwxmits = kmalloc_array(pxmitpriv->hwxmit_entry,
+>  				sizeof(struct hw_xmit), GFP_ATOMIC);
+> -	if (pxmitpriv->hwxmits == NULL)
+> +	if (!pxmitpriv->hwxmits)
+>  		return;
+>  	hwxmits = pxmitpriv->hwxmits;
+>  	if (pxmitpriv->hwxmit_entry == 5) {
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1456310371-7930-1-git-send-email-bhumirks%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
