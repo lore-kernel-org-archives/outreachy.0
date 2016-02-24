@@ -1,103 +1,86 @@
-X-GM-THRID: 6254956279141236736
-X-Received: by 10.66.146.231 with SMTP id tf7mr37793791pab.6.1456345496240;
-        Wed, 24 Feb 2016 12:24:56 -0800 (PST)
+X-GM-THRID: 6254738247714340864
+X-Received: by 10.182.254.35 with SMTP id af3mr34192335obd.37.1456294732490;
+        Tue, 23 Feb 2016 22:18:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.9 with SMTP id d9ls2889566qgf.38.gmail; Wed, 24 Feb
- 2016 12:24:55 -0800 (PST)
-X-Received: by 10.129.108.3 with SMTP id h3mr39210747ywc.31.1456345495676;
-        Wed, 24 Feb 2016 12:24:55 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id u66si706044pfa.2.2016.02.24.12.24.55
+Received: by 10.140.23.52 with SMTP id 49ls2540627qgo.79.gmail; Tue, 23 Feb
+ 2016 22:18:51 -0800 (PST)
+X-Received: by 10.141.0.9 with SMTP id b9mr8208463qhd.16.1456294731719;
+        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id yd9si189857pab.1.2016.02.23.22.18.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 12:24:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id c10so1588070pfc.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 12:24:55 -0800 (PST)
+Received: by mail-pf0-x235.google.com with SMTP id x65so7052541pfb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 22:18:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=PSrPZnMDQlAzrQdyVHSqrRPFI8yy7mqHg6Zi0gj325A=;
-        b=cSAFKk2j3DcZ9t0aM3/QOSn3Kxqa/PNbc3IWYLD9nvkixalxeMDC2NpmboyMVpwN1b
-         saxsWEU3xTyCQX70eGMQWxj5NmqoURmSP97SpDrADh59OSMUxOqXl6JL1c673O6s7tmZ
-         xzjZZ6+QCxt6CV+8iC3KL3+0bi1mLQMpI64f0dcQeoT5yCoPBpK4GHf4tfwVcVQoiFDL
-         UXX5iUKg90AO7Wn5Z8/HJDsMlp4Rmm6Qbe3ratqxvnZO5cPsm2L3cH9zGkCy2XTIR4O+
-         tz9U9/LC+KuzMJucZ6PTN2XsjpnWavMILd7EkzDv5TGkPncEXOwsyDND7+CovDw5oWP6
-         LOoA==
+        bh=MtLjF3RT5DG0/XBj0nD2m12v8upYc4+Y69Hq+I0yAxs=;
+        b=knlQnQCF9eG0S06PKjHQDPrUuAO6feQis3Wku8wBJT0cTk6V9ktZHmbHGXVFNoLwMK
+         90mz0zMNh5hVtc7RgGg46M6dV0sOkmdC8Q8Ro0cRgPk5asdj3SjAMzsQP5ZcOt08BbcR
+         qb4YRe7+ivK32ULaU8iuQj1DK+s9mkaAiIw5oCUzeozXS7r40vZoUQw9fowjYo4wpzYc
+         osy66eY0HQEWiuCtFZeHnFDhXMUQA4C9jR1Qi50Mbaejfv6hd05BvUFcd3d2kH7z6T0+
+         aEf478r2fk2C+wmH1oMESNrKiDLlIB2qqRiK/ADLxmp9/71JCbkrMx4F6kBIKGwP+Lmp
+         RFSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-type:content-disposition:user-agent;
-        bh=PSrPZnMDQlAzrQdyVHSqrRPFI8yy7mqHg6Zi0gj325A=;
-        b=l5Bnh/oGNipa1SxCL6wuFrP52bxptFK//3AnAfhETYt84nKn9H4TyEHoXt+JbBO29P
-         y0988un2j68RMHgjZOx1VgZne/19UsJLd1EaUoZQDhoY0onp8hF6XgpdNNK+hIhjoUv7
-         2Wm11w8i+Vv5C63+MulwUlwigZiqdVMQsQOmemMryTHAfQxFhtx/BkFecv2gX9kB+6GI
-         4IHj25faf8tnBA7MxDo8HbpBuZkI3iYqCiY7tL4ROL50EW62R2810VocmtNF8u/kZmZb
-         d2C8vnhO9HdP+XYVy1SQRq+r7iaBR3sUx6HqCySCRjrAcE3HHtkxvNoupJHAbMz0ege9
-         M21w==
-X-Gm-Message-State: AG10YOS29aSEC2nqt3iYayZnnrGK3OZUgBd2UZs8JbZM7yoeWCZD82D2B9dcfk0p+tutgA==
-X-Received: by 10.98.2.21 with SMTP id 21mr57668355pfc.11.1456345495475;
-        Wed, 24 Feb 2016 12:24:55 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id kw10sm7001238pab.0.2016.02.24.12.24.54
-        for <outreachy-kernel@googlegroups.com>
+        bh=MtLjF3RT5DG0/XBj0nD2m12v8upYc4+Y69Hq+I0yAxs=;
+        b=lmtVL3HFEfLLwsQ1SGKuFhf+PYa59hwwDMYzixibfeBuF6TznWXK9fUcZ/zJpUfWsn
+         fjO0eV5PFcvWKp00QGDROrePaLdbFG/Ybvny8ygVFHn+yC5dRscUGbWAt+aTe6f1SJue
+         OJ4aBL2BhXWl8LuGelhFkwt78yjqxXIoFhPu4zCfr1smcm20PYs5MBYNIhq3r2K41PyX
+         sVRXvOaWm1deE3zBKUoQqQ3DIGE28zGVcCJfyDUJZI14XhUtx6VDvW/68Q1HUVnYzhxv
+         Kf2TybQpNZLE3WgLd7CSNGj8qGOLAOBz+4rBWOjDeUdZBFCOaq2mjI3x/vgE+1XIvfNo
+         WNEQ==
+X-Gm-Message-State: AG10YOQieJxJZuYLVSGKofe1f/m/ZgqNU1SfEk6dpipUbEtdWLLuob5EUl5y2XP+x879Hg==
+X-Received: by 10.98.16.86 with SMTP id y83mr51759629pfi.45.1456294731529;
+        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
+        by smtp.gmail.com with ESMTPSA id e1sm1893853pas.1.2016.02.23.22.18.51
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 12:24:55 -0800 (PST)
-Date: Thu, 25 Feb 2016 01:55:30 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
+Date: Tue, 23 Feb 2016 22:18:50 -0800
+From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/8] staging: android: ion: hisilicon: Remove useless return
- variables
-Message-ID: <20160224202530.GA22936@Karyakshetra>
+Subject: [PATCH] staging: iio: adt7316: remove useless initialization
+Message-ID: <20160224061843.GA12334@d830.WORKGROUP>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes unnecessary return variables and compresses the
-return logic.
-The coccinelle script that finds and fixes this issue is:
-@@ type T; identifier i,f; constant C; @@
-- T i;
-...when != i
-when strict
-( return -C;
-|
-- i =
-+ return
-f(...);
-- return i;
-)
+Remove the initialization of a variable that is immediately
+reassigned.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/android/ion/hisilicon/hi6220_ion.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/staging/iio/addac/adt7316-i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/android/ion/hisilicon/hi6220_ion.c b/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-index e3c07b2..fe9f0fd 100644
---- a/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-+++ b/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-@@ -214,10 +214,7 @@ static struct platform_driver hi6220_ion_driver = {
-
- static int __init hi6220_ion_init(void)
+diff --git a/drivers/staging/iio/addac/adt7316-i2c.c b/drivers/staging/iio/addac/adt7316-i2c.c
+index 78fe0b5..0ccf192 100644
+--- a/drivers/staging/iio/addac/adt7316-i2c.c
++++ b/drivers/staging/iio/addac/adt7316-i2c.c
+@@ -21,7 +21,7 @@
+ static int adt7316_i2c_read(void *client, u8 reg, u8 *data)
  {
--	int ret;
--
--	ret = platform_driver_register(&hi6220_ion_driver);
--	return ret;
-+	return platform_driver_register(&hi6220_ion_driver);
- }
-
- subsys_initcall(hi6220_ion_init);
---
+ 	struct i2c_client *cl = client;
+-	int ret = 0;
++	int ret;
+ 
+ 	ret = i2c_smbus_write_byte(cl, reg);
+ 	if (ret < 0) {
+-- 
 2.1.4
 
 
