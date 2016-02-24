@@ -1,82 +1,101 @@
-X-GM-THRID: 6263480963249995776
-X-Received: by 10.66.65.135 with SMTP id x7mr3516995pas.39.1458330304400;
-        Fri, 18 Mar 2016 12:45:04 -0700 (PDT)
+X-GM-THRID: 6253655179876368384
+X-Received: by 10.112.189.104 with SMTP id gh8mr4951366lbc.12.1456333872859;
+        Wed, 24 Feb 2016 09:11:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.155.42 with SMTP id vt10ls369203igb.37.gmail; Fri, 18 Mar
- 2016 12:45:04 -0700 (PDT)
-X-Received: by 10.66.147.133 with SMTP id tk5mr12433523pab.8.1458330303974;
-        Fri, 18 Mar 2016 12:45:03 -0700 (PDT)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x233.google.com (mail-pf0-x233.google.com. [2607:f8b0:400e:c00::233])
-        by gmr-mx.google.com with ESMTPS id tu5si1986001pab.2.2016.03.18.12.45.03
+Received: by 10.25.132.74 with SMTP id g71ls655763lfd.5.gmail; Wed, 24 Feb
+ 2016 09:11:12 -0800 (PST)
+X-Received: by 10.112.158.138 with SMTP id wu10mr1961560lbb.11.1456333872322;
+        Wed, 24 Feb 2016 09:11:12 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id v197si1249377wmv.1.2016.02.24.09.11.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 18 Mar 2016 12:45:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) client-ip=2607:f8b0:400e:c00::233;
+        Wed, 24 Feb 2016 09:11:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x233.google.com with SMTP id x3so180304787pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 12:45:03 -0700 (PDT)
+Received: by mail-wm0-x241.google.com with SMTP id a4so3901693wme.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 09:11:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=bfKqc3CMIAXeybst7N8d4Ri10Lm/VOjo1iJt2TUXOb0=;
-        b=GH+/AMgFSyDdWck8+5wOAAOyzw8FszEw/1E7Oz8+ke/vzbI5ftAaggQ+ibwn7SgBNY
-         PJWx+QuMQsZRPnIOAiAOqkGjvUY+47X7rhzT4JIzWWOEgHQa1JnI0ho/a+Ok/2Qd5Y7l
-         OtPMjjqe1WKRHZkMuqDJdBnrbTAzpEK3iuC19EkwTjxPkP+U6HxqHdE8afuULrRZClcq
-         vGauqowymG/v62W02GusEufxPC+4U3vulQf3lGUqEs1Tt5YBLoJAyBdgjPb2HZSAPmK9
-         fR2O1Jpe1FxBfI0+R9Qd8d67wrHhFAhvFDkHb0eC8nMjHtGVdcfmUbWEJH5ylx6hR3uf
-         Qq8Q==
+        bh=9l4GKzI4PgG1c4F+i0saUE1PCK6kFGwzeWPudWU4U+o=;
+        b=R+cMXcjhaNpXVKWfnKU7KuQqpjbJgRcZtYfzCj4SZqwmS+24UHsZz7Wh7PkrEXr6/a
+         xEq9a1L+EMzPVYhhRRpmAfiqkGoHfJBPbtdHu6LJxy+n5mKPbARSGsrQfnbkXuRkM/KI
+         TFdvgjCNqmwzCK8e9OwSsccXcGvEqKp2nZii88eLIPzSJHy6roRhcBSsxqB9SpO1SOS9
+         c0qFdJgRDtcOaH/qYlx35fM+7mvT3vksPb62XhSgDmNaOkPu/GyXP2LHwJvYZS3ClNJp
+         N3kubHPjxz6OGG+4y1tJMgYEEeSNnL1RyMwfHF6lLBMnoPX7/OahOpZ08lkgT13eqtM5
+         GxIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=bfKqc3CMIAXeybst7N8d4Ri10Lm/VOjo1iJt2TUXOb0=;
-        b=huz/FBFtHtC7K1aDUPWJap9kwLCa3oDgc5nMHHS15qFMqTX1+VlGy//+ryJRPaPSch
-         QikCCY4DFMZXrfugyiHm13fUmwvV+P7lXMWdRrap5xvhWYCE82y/4S/W0gSdbcAOV1xN
-         xZSdzlDx87ql05VFyEHphpmEgDDOmQqtRnflfmLuojJy6f/pwxfn1uHWhUFq242z7Vu5
-         yj2r+jnqrMPAxBA3q2HzlNzKjonjklm9C8n0it0mfgs2OaJSHRFMRTpExITdlXglDZ6Q
-         f58Rsb+FvUZReMOeiydjiePvvBu0D02kUkcuowtNXpKQBJo8qs8flx0xiEuAtXrkiNWq
-         bARQ==
-X-Gm-Message-State: AD7BkJL1NCBE3Fg2B72ZDsUb1UvabMrXLeeK/CyrlPIQhxOBonrmVRAJ6u360Qw29Kd1SQ==
-X-Received: by 10.98.9.92 with SMTP id e89mr26383008pfd.34.1458330302332;
-        Fri, 18 Mar 2016 12:45:02 -0700 (PDT)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id l4sm7828172pfi.73.2016.03.18.12.45.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 18 Mar 2016 12:45:01 -0700 (PDT)
-Date: Sat, 19 Mar 2016 01:14:57 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Convert macros to static inline functions
-Message-ID: <cover.1458330202.git.bhaktipriya96@gmail.com>
+        bh=9l4GKzI4PgG1c4F+i0saUE1PCK6kFGwzeWPudWU4U+o=;
+        b=lJzyZR1ODSxcYo9g15TzCVba3HVe5GNQJlXZJLsLkkYqCN1X9ZS2fZNys2Fihha2Yz
+         RPktWQNBS0Vpr8iJQtusdPhH2zX52ZsLcZzPJABdA2aUZfkKhFOAMNGE4YQm46NZHc7z
+         SYX0dS8mcy8o2Vn5OJWTiMSPp6j7AVnWJbWXPrsN1oKBE4KZYgOTZF0fnnv0/3K+kDSr
+         PvgerCbauNM5/a1SDTdbbXwOdkKzlt7Cc9z/1k330Filey3KPC9aUw1xC8BVKq6BDNow
+         xIIM5Sz7dvPjH3S6i43JbEsD/DcIJG37WIlrQuqGDDOg8XznbZ2oPbNiRCF5xrwxt4p2
+         xtMw==
+X-Gm-Message-State: AG10YOQlAZe8jkAv+SFeqHjTxPEwb6VJtoWwaIJmssqNqZmldpyvED9jw7i1+lBDfcEaCQ==
+X-Received: by 10.28.17.198 with SMTP id 189mr24787387wmr.47.1456333872154;
+        Wed, 24 Feb 2016 09:11:12 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from sonyv ([213.143.50.70])
+        by smtp.gmail.com with ESMTPSA id ys9sm3906368wjc.35.2016.02.24.09.11.10
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 24 Feb 2016 09:11:11 -0800 (PST)
+Date: Wed, 24 Feb 2016 18:11:07 +0100
+From: Laura Garcia Liebana <nevola@gmail.com>
+To: outreachy-kernel@googlegroups.com, devel@linuxdriverproject.org
+Subject: [PATCH v4] staging: nvec: Avoid the use of BUG_ON
+Message-ID: <20160224171103.GA3822@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Convert macros CLK_CONFIG and GAT_CONFIG into static inline
-functions as static inline functions are preferred over macros. This
-change is possible since the arguments at all call sites have the same
-type. Also, both the macros have same type of arguments and return
-values. They have been renamed in lowecase.
+Prevent a kernel panic by avoiding the use of the BUG_ON macro.
+Checkpatch detected this issue.
 
-Bhaktipriya Shridhar (2):
-  staging: comedi: drivers: amplc_pci224: Convert macros to static
-    inline functions
-  staging: comedi: drivers: amplc_pci230: Convert macros to static
-    inline functions
+The BUG_ON macro is not needed as such cases shouldn't happen and they
+were introduced for debugging purposes.
 
- drivers/staging/comedi/drivers/amplc_pci224.c | 16 ++++++-----
- drivers/staging/comedi/drivers/amplc_pci230.c | 38 +++++++++++++++------------
- 2 files changed, 31 insertions(+), 23 deletions(-)
+Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+---
+Changes in v2:
+	- Remove the BUG_ON macro used in the module, as Marc Dietrich suggested.
 
---
-2.1.4
+Changes in v3:
+	- Include detailed commit message according to the reason of the macro removal, as Fabio Estevam suggested.
+
+Changes in v4:
+	- Commit message adjustment in order to avoid the WARN_ON macro which is not used, as Julia suggested.
+
+ drivers/staging/nvec/nvec.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index c335ae2..f6a1dbb 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -641,11 +641,9 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
+ 			nvec_msg_free(nvec, nvec->rx);
+ 			nvec->state = 3;
+ 			nvec_tx_set(nvec);
+-			BUG_ON(nvec->tx->size < 1);
+ 			to_send = nvec->tx->data[0];
+ 			nvec->tx->pos = 1;
+ 		} else if (status == (I2C_SL_IRQ)) {
+-			BUG_ON(nvec->rx == NULL);
+ 			nvec->rx->data[1] = received;
+ 			nvec->rx->pos = 2;
+ 			nvec->state = 4;
+-- 
+2.7.0
 
 
