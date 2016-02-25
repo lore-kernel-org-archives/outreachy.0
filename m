@@ -1,83 +1,114 @@
-X-GM-THRID: 9490543935488
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,8bbd6d04c601b280,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.207.230 with SMTP id n66mr94378971yho.30.1426985509939;
-        Sat, 21 Mar 2015 17:51:49 -0700 (PDT)
+X-GM-THRID: 6255221801010331648
+X-Received: by 10.182.87.2 with SMTP id t2mr41309060obz.20.1456407318092;
+        Thu, 25 Feb 2016 05:35:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.89.48 with SMTP id u45ls2045955qgd.58.gmail; Sat, 21 Mar
- 2015 17:51:49 -0700 (PDT)
-X-Received: by 10.236.201.110 with SMTP id a74mr18280345yho.45.1426985509715;
-        Sat, 21 Mar 2015 17:51:49 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id gu4si1335430pac.1.2015.03.21.17.51.49
+Received: by 10.140.41.85 with SMTP id y79ls396078qgy.63.gmail; Thu, 25 Feb
+ 2016 05:35:17 -0800 (PST)
+X-Received: by 10.13.215.140 with SMTP id z134mr43659687ywd.7.1456407317360;
+        Thu, 25 Feb 2016 05:35:17 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x22b.google.com (mail-ig0-x22b.google.com. [2607:f8b0:4001:c05::22b])
+        by gmr-mx.google.com with ESMTPS id iq8si230540igb.0.2016.02.25.05.35.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 17:51:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 05:35:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::22b as permitted sender) client-ip=2607:f8b0:4001:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pacwe9 with SMTP id we9so149654507pac.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 17:51:49 -0700 (PDT)
+Received: by mail-ig0-x22b.google.com with SMTP id y8so13329780igp.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 05:35:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HdHLogWIyAaNc+JtVTSp2iyMWViNwFX7w1YYoQwjcjw=;
+        b=FPLWNdsBIjMV+bbVwUTGMa5o3aRcsLCdYeD94wOv39Ag0pqRM0bJXFugx2rVp6zvzN
+         Ev3o5DIRDTBC7O4lPuXQ0XCPxda1BUWk1a+aTDWTp2o4yHeXZsd499I4slokJVXBrnY6
+         d9hcK+DEVOGY+UBsfQvDq45QERgNUdrQUQxpM7pCZ9TPMVO7+EixoOBMPVrb1PK9/ByP
+         3MIY++IHLVn+ep99/JtfOZx1UqJyHLmNcOAlMR3FZwJlTuhSfA2PjVDZQFDDmytPRWgt
+         12eV+KXD2Nl6+NE3MYFGxG3TLNGeflF/sZESZq8u2bpLUZPaIgS7biad/Js4u/qQQ54k
+         HGNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=D/LspMawtKFmwde4LM8soGctEc7D9EKqzc7lvmq5y2M=;
-        b=P/HpuKItFEBJtfH53S+jg/6Pps227tTnZgY0baurDJ6GT8b2TElcq20Gx7rhOdAxTQ
-         CJpxlHoXKW4hYdocTLp4WM+qe+CjlITfKPNl5AXjwQpanNDF9IQMGrni0CYsmG7sudHP
-         +UmLfwjxfaRD8MG874bfnyFotaEkGEFA1CG+CbkyF8qwh4deuWNQyGZJ9/gepTfBeuAm
-         TD5TCC4OO43dNVL+Q7zPBhPUgiSaU9sanHDSlZxC69EVyGTeZlHBYNrLRc7366fCkAFP
-         23AzaWEmzT+EobgDUcm9x+WdCwGd9UkXdU77MP4id3D4s5bbBbNIyRtQJaBMWljoLuE7
-         B9Pg==
-X-Received: by 10.70.140.67 with SMTP id re3mr90425326pdb.19.1426985509572;
-        Sat, 21 Mar 2015 17:51:49 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id x4sm12696523pas.40.2015.03.21.17.51.47
+        bh=HdHLogWIyAaNc+JtVTSp2iyMWViNwFX7w1YYoQwjcjw=;
+        b=SN0D7+5D7FDriM4s+DF1J3ppy97p7L1swTgGEraA7xBPZ5BLkv33EAWc+CB0sZV75w
+         i3Kczrepcbww9gv5fydt5v+kzGpS9y3M/Ec7d4D6QndtBOJIOofEWfwvk/wgIGK/Vxyn
+         Fdg1ErTpN50eXQzh/2ncU9ZqVDTPnVxpWwMsPlukf0mbPVhFluvxe94RAlYsodOo7l7N
+         7P0ku8i7jyLwAqFXjdGbfljrDi+CG4Rs7QjFiRf85R79xj2/D8hENbwjz/tyZJm1w0jU
+         9Wg6DNKlOetoMkmJKUTsA2skqlUvp+3SUSLqeKPR7uJ7pmSqc78uqTHJxJliGGhLM7EY
+         ghqA==
+X-Gm-Message-State: AG10YOTmCy2SdGGeqRzmZTZzJ67er3cTwPh/+jn/3CX42Cm+xNAyDwCLCVwODS3YBYoAWQ==
+X-Received: by 10.50.32.2 with SMTP id e2mr2859949igi.73.1456407317150;
+        Thu, 25 Feb 2016 05:35:17 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id s38sm3231812ioe.33.2016.02.25.05.35.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 17:51:48 -0700 (PDT)
-Date: Sun, 22 Mar 2015 06:19:47 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 05:35:16 -0800 (PST)
+Date: Thu, 25 Feb 2016 13:34:28 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 01/10] Staging: rtl8712: Fix incorrect assignment type in
- ieee80211.c
-Message-ID: <5f860bc9d9ff4bd82c61c4bbe7a80b88d1176847.1426983594.git.vatikaharlalka@gmail.com>
+Subject: [PATCH] staging: fbtft: fbtft-bus.c: Drop unneeded void pointer cast
+Message-ID: <20160225183428.GA6010@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix Sparse warning due to incorrect assignment type in ieee80211.c :
+Remove unneeded cast on the void pointer par->txbuf.buf .
+Semantic patch used:
 
-drivers/staging/rtl8712/ieee80211.c:182:20: warning: incorrect type in assignment
-drivers/staging/rtl8712/ieee80211.c:182:20: expected unsigned short
-drivers/staging/rtl8712/ieee80211.c:182:20: got restricted __le16
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+(
+  *((T *)e)
+|
+  ((T *)x) [...]
+|
+  ((T *)x)->f
+|
+- (T *)
+  e
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8712/ieee80211.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/fbtft/fbtft-bus.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/ieee80211.c b/drivers/staging/rtl8712/ieee80211.c
-index 5786808..d75a7b0 100644
---- a/drivers/staging/rtl8712/ieee80211.c
-+++ b/drivers/staging/rtl8712/ieee80211.c
-@@ -179,7 +179,7 @@ int r8712_generate_ie(struct registry_priv *pregistrypriv)
- 	sz += 8;
- 	ie += sz;
- 	/*beacon interval : 2bytes*/
--	*(u16 *)ie = cpu_to_le16((u16)pdev_network->Configuration.BeaconPeriod);
-+	*(u16 *)ie = (u16)pdev_network->Configuration.BeaconPeriod;
- 	sz += 2;
- 	ie += 2;
- 	/*capability info*/
+diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fbtft-bus.c
+index 58449ad8..303be8e 100644
+--- a/drivers/staging/fbtft/fbtft-bus.c
++++ b/drivers/staging/fbtft/fbtft-bus.c
+@@ -125,7 +125,7 @@ EXPORT_SYMBOL(fbtft_write_reg8_bus9);
+ int fbtft_write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
+ {
+ 	u16 *vmem16;
+-	u16 *txbuf16 = (u16 *)par->txbuf.buf;
++	u16 *txbuf16 = par->txbuf.buf;
+ 	size_t remain;
+ 	size_t to_copy;
+ 	size_t tx_array_size;
+@@ -150,7 +150,7 @@ int fbtft_write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
+ 	tx_array_size = par->txbuf.len / 2;
+ 
+ 	if (par->startbyte) {
+-		txbuf16 = (u16 *)(par->txbuf.buf + 1);
++		txbuf16 = par->txbuf.buf + 1;
+ 		tx_array_size -= 2;
+ 		*(u8 *)(par->txbuf.buf) = par->startbyte | 0x2;
+ 		startbyte_size = 1;
 -- 
-1.9.1
+2.5.0
 
 
