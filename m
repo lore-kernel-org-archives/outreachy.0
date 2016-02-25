@@ -1,62 +1,62 @@
 X-GM-THRID: 6255098629488377856
-X-Received: by 10.129.79.21 with SMTP id d21mr40711838ywb.46.1456378684863;
-        Wed, 24 Feb 2016 21:38:04 -0800 (PST)
+X-Received: by 10.50.30.226 with SMTP id v2mr1109589igh.2.1456378674662;
+        Wed, 24 Feb 2016 21:37:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.33.134 with SMTP id j6ls195969qgj.88.gmail; Wed, 24 Feb
- 2016 21:38:04 -0800 (PST)
-X-Received: by 10.129.83.85 with SMTP id h82mr40548328ywb.18.1456378684299;
-        Wed, 24 Feb 2016 21:38:04 -0800 (PST)
+Received: by 10.50.67.69 with SMTP id l5ls108729igt.30.canary; Wed, 24 Feb
+ 2016 21:37:54 -0800 (PST)
+X-Received: by 10.66.193.225 with SMTP id hr1mr39556608pac.34.1456378674235;
+        Wed, 24 Feb 2016 21:37:54 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id yd9si940410pab.1.2016.02.24.21.38.04
+Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
+        by gmr-mx.google.com with ESMTPS id yd9si939769pab.1.2016.02.24.21.37.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 21:38:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Wed, 24 Feb 2016 21:37:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fy10so25924764pac.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 21:38:04 -0800 (PST)
+Received: by mail-pf0-x230.google.com with SMTP id c10so27387536pfc.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 21:37:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=b9FWOOHQWA01FphkyheXuoxrc5ElLbtVQNt87o9RwrA=;
-        b=qeguNlb/QPJkH4ZmMPISifIvrWd1SVkURy0/4ZwvzkJ6+KzujtZc0bHJw69LZUaNQu
-         fgQ6kLhpr/uudAGFkveLOCF4mWy9s5hsLwpienTkTc8svkRMRkTlvoSBvil8qdP18t17
-         rnOTEVML+9Wmg3JCvamwenMH0waBjWkIJqw3ZLp6mRSm8yn065wfF05ALYZKEazq4SDj
-         1OSs/troLF2Mz9UxQGQqJcM3Scc56YRerVzWb0sv550LtnzxjiIilanvKNtSbM393+dT
-         yAUKO2Ib1jG1oZVjmWHyHEuBL3us/mFtOvno3zCp5gkorO7X3t75fuUZSHBmELt/dcZO
-         UvRw==
+        bh=hLxYMlS/0S3WTj0yK4bHM4ogjst+oGijiixd8+y51bM=;
+        b=jbJttmoQb2ZJ3zCwM/tzhHC4D7HRsB2nApJb8Q2+90y57/ypwIdIP73ilxHDpBZ2eV
+         5MAKG/4RBFxo6AWOj98U5/jWFdQD7Jlr6uKtukwuQq8z9BXT66thnncwKoyGN5oCOjee
+         bNMCPsPZW+t5ONiV1XRaX7/rFb5GO/EFAm6xMDQc5KcnrQLkg+olhHJVV9gWHHTK5uUw
+         SG487AHBwTW2tfWqOI/0HL7Jz0Ou4/Hx827LeOgs/rCGhavLouqGRb9FwqMR1AxeOoAq
+         2X4MUeLPOOq4TEZw6MCC7uqzNpMLVBUrpo7UB1CWmR0j9z4vVm44aNbLSVSnL8Jubjxi
+         FRww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-type:content-disposition:in-reply-to
          :user-agent;
-        bh=b9FWOOHQWA01FphkyheXuoxrc5ElLbtVQNt87o9RwrA=;
-        b=LdokzNKiXX66BlvPOvp62IT9t08HFlCiCsStRq4qLg9Iknc9JOmE2sCeu7imXHFBrN
-         fFNm7yNw9JLaS5zylMyINrsc3yAK0t1pm8JF6Xo61Fv7wYis3PNjz5FChtX1hWoPL3ZY
-         qaHuYDPm3Dfs3IYUtgkYiMSKw/NaFoEioS88PCa2TVPnqejDpJp0Kbc70vAS5BwKDVTP
-         nXsQVEnQUVKA58h5WqfyP0mh4wIUs+2PqgePoJQ+R7h8/zSrxgEy9l7H5qj2sVnl8Rh5
-         1xStT8U6A1jzlETxIwouRpQ4EbTFaX9bSAKuXrE942cQOPkToi0qBVLGowARXfqa7F7Z
-         EZiQ==
-X-Gm-Message-State: AG10YOTMjdpGyp6kMO5W3RUB9rIAwluocVUxxJF0JxCvvkTzmNvVtKJNHOZk0JM5bsCotA==
-X-Received: by 10.66.248.168 with SMTP id yn8mr60419255pac.24.1456378684087;
-        Wed, 24 Feb 2016 21:38:04 -0800 (PST)
+        bh=hLxYMlS/0S3WTj0yK4bHM4ogjst+oGijiixd8+y51bM=;
+        b=HnWoThNlKsqPz5K3kOENK5sJcbzDHyqqDo2qJwEVpFZP9ia8epwHO+xMCAwyEs1jIU
+         Gw4lk5XISasTkQdLC0qNy4DIKsWBqTH1en/SrUDR1KZk6M9tFeceWnZ6d2pYVo01ioXS
+         D65vw1T54J0QnPgs7C7byDeLAV4iyUJFJXP0qvgoQ12OKPf3ro6CxPS1LQVq71zTbFYs
+         WEZ5zAkh3mhKE9KgY9jm8hbs2x2+qznWiU8tJlo2diQMNHsd73vxrNqMCqOm2eKWiO/i
+         mXf8u4+BBpxOFDVog83i6PZ/X+0HNiBa4Q1R8Ud+ejWdzqjIwbzizIWgqnXRZAKEcTcC
+         zkbQ==
+X-Gm-Message-State: AG10YOQ01o70AiXrEE7O3nuoPRt6nrFSye+ripcKIB8CXUHiW2uPuv9iXYUFxruhalLQRw==
+X-Received: by 10.98.93.155 with SMTP id n27mr60255202pfj.88.1456378674078;
+        Wed, 24 Feb 2016 21:37:54 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([122.176.175.16])
-        by smtp.gmail.com with ESMTPSA id s197sm8801614pfs.62.2016.02.24.21.38.02
+        by smtp.gmail.com with ESMTPSA id x1sm8811500pfi.42.2016.02.24.21.37.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 21:38:03 -0800 (PST)
-Date: Thu, 25 Feb 2016 11:07:59 +0530
+        Wed, 24 Feb 2016 21:37:53 -0800 (PST)
+Date: Thu, 25 Feb 2016 11:07:47 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/6] staging: unisys: visorbus: Remove unnecessary
- dev_set_drvdata()
-Message-ID: <9e2250fd4578831883f2efdff4bbf6b08a065ea8.1456377485.git.amitoj1606@gmail.com>
+Subject: [PATCH 3/6] staging: media: omap4iss: Remove unnecessary
+ platform_set_drvdata()
+Message-ID: <54abe0f6f03578e3d82793f0e5c0349562772eee.1456377485.git.amitoj1606@gmail.com>
 References: <cover.1456377485.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -64,7 +64,7 @@ Content-Disposition: inline
 In-Reply-To: <cover.1456377485.git.amitoj1606@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Unnecessary dev_set_drvdata() has been removed since the driver
+Unnecessary platform_set_drvdata() has been removed since the driver
 core clears the driver data to NULL after device release or on
 probe failure. There is no need to manually clear the device
 driver data to NULL.
@@ -72,28 +72,29 @@ driver data to NULL.
 The Coccinelle semantic patch used to make this change is as follows:
 //<smpl>
 @@
-struct device *dev;
+struct platform_device *pdev;
 @@
-- dev_set_drvdata(dev, NULL);
+- platform_set_drvdata(pdev, NULL);
 //</smpl>
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/unisys/visorbus/visorbus_main.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/media/omap4iss/iss.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/unisys/visorbus/visorbus_main.c b/drivers/staging/unisys/visorbus/visorbus_main.c
-index a301385..ec8ff85 100644
---- a/drivers/staging/unisys/visorbus/visorbus_main.c
-+++ b/drivers/staging/unisys/visorbus/visorbus_main.c
-@@ -221,7 +221,6 @@ visorbus_release_busdevice(struct device *xdev)
- {
- 	struct visor_device *dev = dev_get_drvdata(xdev);
+diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+index 30b473c..dea67d9 100644
+--- a/drivers/staging/media/omap4iss/iss.c
++++ b/drivers/staging/media/omap4iss/iss.c
+@@ -1527,8 +1527,6 @@ error_modules:
+ error_iss:
+ 	omap4iss_put(iss);
+ error:
+-	platform_set_drvdata(pdev, NULL);
+-
+ 	mutex_destroy(&iss->iss_mutex);
  
--	dev_set_drvdata(xdev, NULL);
- 	kfree(dev);
- }
- 
+ 	return ret;
 -- 
 1.9.1
 
