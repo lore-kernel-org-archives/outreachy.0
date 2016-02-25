@@ -1,133 +1,105 @@
-X-GM-THRID: 6257451974694797312
-X-Received: by 10.182.29.129 with SMTP id k1mr20813388obh.23.1456926570621;
-        Wed, 02 Mar 2016 05:49:30 -0800 (PST)
+X-GM-THRID: 6255248390839336960
+X-Received: by 10.66.102.8 with SMTP id fk8mr42493268pab.44.1456413509235;
+        Thu, 25 Feb 2016 07:18:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.6.101 with SMTP id 98ls2063668iog.31.gmail; Wed, 02 Mar
- 2016 05:49:29 -0800 (PST)
-X-Received: by 10.66.246.170 with SMTP id xx10mr1923080pac.13.1456926569799;
-        Wed, 02 Mar 2016 05:49:29 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x22c.google.com (mail-pf0-x22c.google.com. [2607:f8b0:400e:c00::22c])
-        by gmr-mx.google.com with ESMTPS id 12si5330117pfb.1.2016.03.02.05.49.29
+Received: by 10.140.86.102 with SMTP id o93ls437194qgd.16.gmail; Thu, 25 Feb
+ 2016 07:18:27 -0800 (PST)
+X-Received: by 10.31.154.65 with SMTP id c62mr41477851vke.8.1456413507505;
+        Thu, 25 Feb 2016 07:18:27 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x231.google.com (mail-io0-x231.google.com. [2607:f8b0:4001:c06::231])
+        by gmr-mx.google.com with ESMTPS id p10si294431igg.1.2016.02.25.07.18.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 05:49:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) client-ip=2607:f8b0:400e:c00::22c;
+        Thu, 25 Feb 2016 07:18:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::231 as permitted sender) client-ip=2607:f8b0:4001:c06::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::231 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22c.google.com with SMTP id 4so55928386pfd.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 02 Mar 2016 05:49:29 -0800 (PST)
+Received: by mail-io0-x231.google.com with SMTP id 9so85899261iom.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 07:18:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=UPCHBV7x3X0h2cR//X5fcvbiiUK5wMpeu/h6nr/MjdY=;
-        b=W7rnTFtYXJoYavC4Mx7rEHVtdKfqT3J6uIltl4HpAGrA1Pd54d9vM7ya+OgRJC1xFc
-         QMkerKapy8eHSAlvCeXVWbpk8Xs476nubs51ABQhA17RWhT6+oAKggVexdxzgoRPNU77
-         kGq7NtTBHGOEkei1jfFumk2J9EGmxdKo1btDQZ3WykSOi4yoWIiRA16yRkALGpzSNZse
-         gM4qPIEdJdYTXApJki3zQ3GF/wwLhpaRAwwf56awroFhy6PKa/SYdZvssewfCdi3BSMr
-         Eqse9IQGaHv21XnDL+sqNQZh/MDqFo77MnH7LxvXG/hqSXRufF38ziCBOcumvgnQKP8r
-         GkQA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Olh3oZwqafRgqvjAjSaeCJVxy5vWxIQpM9G4zKYt88c=;
+        b=WsfLz0ePTSyeuyKd+2yCnmK4CkFPM6a97o1lmmZeu61u+msuzMPspdAPGzwb3elxn2
+         z6KY+Jh0v4YbTbQTfzL7veH23P4gUe/LyiQ3EGuz57VWsusv5BSUFLQSSMN80NWl1l3F
+         bZ/fufwJzt8oESHPShUPcq+u4mxbg8oxZSh0hqaMxwpHM6vC+mWNGtO8x4q90aKC+mtn
+         qmK5Ug5xzoIWdGu5VmFlF3G9GFn3D5p4yYUzliYKktke/IASlzhC0FpL7RpGJfy5AzqQ
+         LyWLFaiGz6jWUI8CkRyXsqgO12qrP7UeOgmisGkFPwxWfNocsWu+FIUwKVVTFHtT61TJ
+         WH+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=UPCHBV7x3X0h2cR//X5fcvbiiUK5wMpeu/h6nr/MjdY=;
-        b=huxQw7kB7zYMMD+3ylYlkeFxLJTVQvxneknjv34jqwebGQjbK/VDK3WVtMjfJgKXtb
-         1v675DhqdHRIEe2Qy4i3BVwkM9dgxNz9wUkoXWOx0e7FugvQFkhUyaApscY4VzsWwdYd
-         JIx2BAw/l06trfo3TEzeOjE3pw9ZbC/sDnWQlfgfYFCX5d5jrF8d+dZS8dmWNLEIdbip
-         Cvfl6VzZxHXjzAYIHCHaWPlHlsbIxiQuoz4L8c7+lYGMMxOTb6rSMkNw+6hT3/PhHzKt
-         CVxZ4/aDD13bMlv3p8FUm+CEKoMSKmWdcyrpMQwXT6zjiIxDcVpS/fpg11eKyH9u7mOl
-         JqRA==
-X-Gm-Message-State: AD7BkJIWDM3OhQTkKJ9Rw20mGn63AAsxzlYoyFb1Q970rnqLseCd2I8o1W7DCqOams5OBg==
-X-Received: by 10.98.74.144 with SMTP id c16mr38418581pfj.129.1456926569671;
-        Wed, 02 Mar 2016 05:49:29 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.172])
-        by smtp.gmail.com with ESMTPSA id p9sm38551566pfj.67.2016.03.02.05.49.28
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 02 Mar 2016 05:49:29 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Olh3oZwqafRgqvjAjSaeCJVxy5vWxIQpM9G4zKYt88c=;
+        b=Z+9u/geHJ1+SmSEgfTkaRkwZzXkeRMbsQE2n1RFOyJitYC3lcjxQTMRQwWoTNN7Wev
+         1B92QmcJERh+LVozHbNUMkZ6J6KgOQJsl3rbqZNkqYUs13oM1YVQ6yRwxu1AhF8NhfmZ
+         NK/zvI8iiapR8TplX/VWrXAkDzyCUfpT8hkQeZRw1OZUyGec9ta+LmKz0PyZ7JK/9UnP
+         EhJkZ1v0THhFfvmYWoiH6w9p2++fMUzpvxhVo2QX6GOt3qshLcmAMKf1/4vF5WEDfcnT
+         El30UW05XGblynBe8PeUMo7oUeolwrFUTZYvlM63fIMh3dc2juOlWc5T46Ird0eXKZWw
+         JpzA==
+X-Gm-Message-State: AG10YOR+aD0uMUwE53JqJ9+JJ6SW0B7TKyhvd3bm1WQ6yDlR9toszQHnVf0BgAoFC5NrnA==
+X-Received: by 10.107.8.158 with SMTP id h30mr3497342ioi.93.1456413507319;
+        Thu, 25 Feb 2016 07:18:27 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id a127sm3409505ioe.10.2016.02.25.07.18.26
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 07:18:26 -0800 (PST)
+Date: Thu, 25 Feb 2016 15:17:38 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] staging: gdm72xx: drop wrapper function 'netlink_exit'
-Date: Wed,  2 Mar 2016 21:49:21 +0800
-Message-Id: <1456926561-29543-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: nvec: nvec.c: Drop void pointer cast
+Message-ID: <20160225201738.GA8306@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove 'netlink_exit' and place a direct call to
-'netlink_kernel_release' since this is used only once. Coccinelle
-semantic patch used to apply the change:
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-@remove_prototype@
-@@
--void netlink_exit(...);
-
-@remove_def@
-@@
-
--void netlink_exit(...)
--{
-- 	netlink_kernel_release(...);
--}
-
-@remove_call@
-expression arg;
+@r@
+expression x;
+void *e;
+type T;
+identifier f;
 @@
 
--netlink_exit(
-+netlink_kernel_release(
-			arg);
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+|   
+  ((T *)x)->f
+| 
+- (T *) 
+  e
+)
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/gdm72xx/gdm_wimax.c | 2 +-
- drivers/staging/gdm72xx/netlink_k.c | 5 -----
- drivers/staging/gdm72xx/netlink_k.h | 1 -
- 3 files changed, 1 insertion(+), 7 deletions(-)
+ drivers/staging/nvec/nvec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/gdm72xx/gdm_wimax.c b/drivers/staging/gdm72xx/gdm_wimax.c
-index 2ee6a39..9554a51 100644
---- a/drivers/staging/gdm72xx/gdm_wimax.c
-+++ b/drivers/staging/gdm72xx/gdm_wimax.c
-@@ -176,7 +176,7 @@ static void gdm_wimax_event_exit(void)
- 		}
- 
- 		spin_unlock_irqrestore(&wm_event.evt_lock, flags);
--		netlink_exit(wm_event.sock);
-+		netlink_kernel_release(wm_event.sock);
- 		wm_event.sock = NULL;
- 	}
- }
-diff --git a/drivers/staging/gdm72xx/netlink_k.c b/drivers/staging/gdm72xx/netlink_k.c
-index 783770b..097fdfb 100644
---- a/drivers/staging/gdm72xx/netlink_k.c
-+++ b/drivers/staging/gdm72xx/netlink_k.c
-@@ -108,11 +108,6 @@ struct sock *netlink_init(int unit, void (*cb)(struct net_device *dev, u16 type,
- 	return sock;
- }
- 
--void netlink_exit(struct sock *sock)
--{
--	netlink_kernel_release(sock);
--}
--
- int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len)
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index c335ae2..52d1363 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -141,7 +141,7 @@ static int nvec_status_notifier(struct notifier_block *nb,
  {
- 	static u32 seq;
-diff --git a/drivers/staging/gdm72xx/netlink_k.h b/drivers/staging/gdm72xx/netlink_k.h
-index 1fe7198..ca8514b 100644
---- a/drivers/staging/gdm72xx/netlink_k.h
-+++ b/drivers/staging/gdm72xx/netlink_k.h
-@@ -19,7 +19,6 @@
+ 	struct nvec_chip *nvec = container_of(nb, struct nvec_chip,
+ 						nvec_status_notifier);
+-	unsigned char *msg = (unsigned char *)data;
++	unsigned char *msg = data;
  
- struct sock *netlink_init(int unit, void (*cb)(struct net_device *dev, u16 type,
- 					       void *msg, int len));
--void netlink_exit(struct sock *sock);
- int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len);
- 
- #endif /* __GDM72XX_NETLINK_K_H__ */
+ 	if (event_type != NVEC_CNTL)
+ 		return NOTIFY_DONE;
 -- 
-1.9.1
+2.5.0
 
 
