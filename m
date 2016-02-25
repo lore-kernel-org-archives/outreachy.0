@@ -1,89 +1,82 @@
-X-GM-THRID: 6252907967708921856
-X-Received: by 10.66.231.4 with SMTP id tc4mr11704298pac.14.1455868586674;
-        Thu, 18 Feb 2016 23:56:26 -0800 (PST)
+X-GM-THRID: 6255226926229618688
+X-Received: by 10.66.163.97 with SMTP id yh1mr6459650pab.11.1456409105114;
+        Thu, 25 Feb 2016 06:05:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.42.66 with SMTP id b60ls22071qga.56.gmail; Thu, 18 Feb
- 2016 23:56:25 -0800 (PST)
-X-Received: by 10.31.9.78 with SMTP id 75mr11155854vkj.9.1455868585511;
-        Thu, 18 Feb 2016 23:56:25 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id ff2si1537921pad.2.2016.02.18.23.56.25
+Received: by 10.140.29.53 with SMTP id a50ls335413qga.11.gmail; Thu, 25 Feb
+ 2016 06:05:04 -0800 (PST)
+X-Received: by 10.129.159.131 with SMTP id w125mr40484193ywg.26.1456409104696;
+        Thu, 25 Feb 2016 06:05:04 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x22a.google.com (mail-qg0-x22a.google.com. [2607:f8b0:400d:c04::22a])
+        by gmr-mx.google.com with ESMTPS id q187si495455ywf.4.2016.02.25.06.05.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 23:56:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        Thu, 25 Feb 2016 06:05:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) client-ip=2607:f8b0:400d:c04::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22a as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id c10so48254011pfc.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 23:56:25 -0800 (PST)
+Received: by mail-qg0-x22a.google.com with SMTP id y89so40139259qge.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:05:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=LJbcUMxt2ISI8/9BHXMNFPsVrOJtlb/2zM2smAkJneg=;
-        b=s5DjSzKyiWoTvA3bjkLiDB+1DsThbf1p04j8GGrdCdC3qyzR4p7h6pKwJqBKSqRW0a
-         ubeVuXp/MKKLqcr1lavl6wq+uPE7WLkpRbXpmrlb/vXuqxkTAebzvBMucKyutSnPDz+M
-         OUx2FDQ4oQFYiNoBo9UYQ2gMULxp6B7n7X5RBYiJvNK5QDURG2g44vSRd0HbQFWhqaVq
-         vxN4W5IIqCg2xDOIJGsW5pKhQ142qTH3/OpDvxjajpHnQBtTKWxD3OX2DpLGmciKEb+a
-         oM9wNxIPk+VZWtCa48cNsbIgxmCk1c8UQ13JgLC4tnA2NNcaRYIhi7Plii1WNV/xtEtr
-         F8Sw==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=RZdJh/0/Up6wC6LfsSZ/jwh5YwLjbL+JYmm+MJcS1z8=;
+        b=IpkEx1MIERSGs5mRa0ugLz3T7h67rb8y7xigCPaVF7GK8YZA/hQjMFBSzL8SYCW3nz
+         fqcAQ51CyCmhWJCBUSaj630nfIzIwU3i82uis+Np/vJZbe9P549kzNmZo6toPsqqbQn2
+         /mlSD0lagau2KK9LB1L5trmhbdlb+ZHd6gEIiwf0kW/ITMOfTo9NFZYGV02Y22LnHRlh
+         j3RQL43/386cT8K2P46gt8DqIwXKLSdXTNmy/GZ5T+vUKR5m69P4FibahAdf6CLiZ5E2
+         pFgmBysTk3zkevHIv9hZ+9vH7Gruzvu9ejMxP9yk1DDTWBfevsvDgrAAt7TIR6gnq9zu
+         Zu4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=LJbcUMxt2ISI8/9BHXMNFPsVrOJtlb/2zM2smAkJneg=;
-        b=k59WA5X9LOsigSCWsjqm3EftN/NfH9LlZmlKDVclJwsDOQVxA4kZjB6IUFvMMeT5oO
-         Jf7r6cKyrY11kX8FjUyLAqgrF7S455ASmaP1nxYbg/DUGA9j5obK//EiASkCUU6RKCNu
-         hwmzSThUQ9ommCupvxO0nsh82XTMOdwiFk3yaigartdbu4BLW7mxGYB9GycpZqnUndO4
-         JfP3OSbS4NIv46qvuzDf8Uzgtn03cIDbQA3IXVnQzCyHUBHhdkj/gO/fPDS/7ycEQXhQ
-         9UMeOcyadL7owhoyb9qpmaJTsU5jA1/7hyhAd4Z9lFfr1ODGKkiyRexUXn9IG/I7hkD0
-         /e2w==
-X-Gm-Message-State: AG10YOTmdNertmIN1gEQZzO42eIVcHI9SCD+6o/IryBeL9KIXA+UxLN3SlJkekbB6FydVQ==
-X-Received: by 10.98.86.13 with SMTP id k13mr6110019pfb.28.1455868585345;
-        Thu, 18 Feb 2016 23:56:25 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id dg1sm15516936pad.18.2016.02.18.23.56.24
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 23:56:24 -0800 (PST)
-Date: Fri, 19 Feb 2016 13:26:54 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: tj@kernel.org
-Subject: [PATCH] staging: octeon: Use alloc_ordered_workqueue
-Message-ID: <20160219075654.GA12205@Karyakshetra>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc:content-type;
+        bh=RZdJh/0/Up6wC6LfsSZ/jwh5YwLjbL+JYmm+MJcS1z8=;
+        b=HIIIs7+pFaZyr9aKpFGFrfFwt59aDaLZPG3lipwN4tBV3SiM4EnaOW+HAfhoa8Yb5p
+         r2zBkdmdFDhdLoGwJvXqovXL+hfH55mfsZydavixWMRtn789rOnTF1lfKE1F9+/tNtG1
+         eq2tIEWecMHs9DR6iUx2Z/HoLjF4DizkW1oppk7EJ03Zw4tmKlDuJEEJl7hTcgkANlEL
+         WpaVyCv7iXJMmockO8hHm19JGqd7bH5qgaJmEhYa9eR/YIvO3AxmiAlmz95XWA9FUb7v
+         qWQZw4oFDX6lkefmckIyUCWVXU+qN+ZRgp/6QLaAijr++/ot3n6a2UVOCsGZQI2NP7tG
+         Uk8A==
+X-Gm-Message-State: AG10YOSBUtc3iGyG/pbTeMd6Yb9PjCUSW32RIM81Qy1TIl5+UH2P52YgS4lp47AaMSlD6IubbLP77FIkUJx+mQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.140.143.134 with SMTP id 128mr25330905qhp.25.1456409104516;
+ Thu, 25 Feb 2016 06:05:04 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Thu, 25 Feb 2016 06:05:04 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602251455550.2708@hadrien>
+References: <20160225135504.GA25593@amitoj-Inspiron-3542>
+	<alpine.DEB.2.10.1602251455550.2708@hadrien>
+Date: Thu, 25 Feb 2016 19:35:04 +0530
+Message-ID: <CA+5yK5G_H2ZvOZ2cXmOJwVmguxnN+tdnSk=gJ+A=4fasfwwfJA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: android: ion: tegra: Use
+ devm_kcalloc instead of devm_kzalloc
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Replaced create_singlethread_workqueue() with alloc_ordered_workqueue() with
-WQ_MEM_RECLAIM set, so it creates a workqueue which executes work items
-one at a time in the queueing order and is guaranteed to make forward
-progress under memory pressure.
+On Thu, Feb 25, 2016 at 7:26 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>>       idev = ion_device_create(NULL);
+>>       if (IS_ERR_OR_NULL(idev))
+>
+> Here's another IS_ERR_OR_NULL.  You could look into whether it is really
+> necessary.
+>
+> julia
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/octeon/ethernet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ion_device_create() function returns an ERR_PTR in two cases, one on
+failure of kzalloc() and the other if it fails to register the device
+i.e. failure of misc_register(). Other than that it is returning a
+ion_device pointer which can be NULL.
 
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 8d239e2..6ee7fce 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -677,7 +677,7 @@ static int cvm_oct_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
+I think we can make the change since the return type of
+ion_device_create() is a structure which should return NULL on failure
+ideally.
 
--	cvm_oct_poll_queue = create_singlethread_workqueue("octeon-ethernet");
-+	cvm_oct_poll_queue = alloc_ordered_workqueue("octeon-ethernet",WQ_MEM_RECLAIM);
- 	if (!cvm_oct_poll_queue) {
- 		pr_err("octeon-ethernet: Cannot create workqueue");
- 		return -ENOMEM;
---
-2.1.4
+What do you think? Should I go for making the change?
 
+Amitoj
 
