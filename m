@@ -1,125 +1,154 @@
 X-GM-THRID: 6255196435658047488
-X-Received: by 10.13.242.134 with SMTP id b128mr39140253ywf.28.1456401435925;
-        Thu, 25 Feb 2016 03:57:15 -0800 (PST)
+X-Received: by 10.182.247.68 with SMTP id yc4mr41143362obc.34.1456401425001;
+        Thu, 25 Feb 2016 03:57:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.120.101 with SMTP id lb5ls195236obb.51.gmail; Thu, 25 Feb
- 2016 03:57:15 -0800 (PST)
-X-Received: by 10.182.33.42 with SMTP id o10mr40030434obi.12.1456401435500;
-        Thu, 25 Feb 2016 03:57:15 -0800 (PST)
+Received: by 10.182.128.231 with SMTP id nr7ls146442obb.41.gmail; Thu, 25 Feb
+ 2016 03:57:04 -0800 (PST)
+X-Received: by 10.182.247.68 with SMTP id yc4mr41143328obc.34.1456401424678;
+        Thu, 25 Feb 2016 03:57:04 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
 Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id ff2si1227663pad.2.2016.02.25.03.57.15
+        by gmr-mx.google.com with ESMTPS id ui7si1167068pab.0.2016.02.25.03.57.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 03:57:15 -0800 (PST)
+        Thu, 25 Feb 2016 03:57:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id e127so2705389pfe.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 03:57:15 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id c10so2708796pfc.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 03:57:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=JRCTVo8eCseDeuuhg40+1n5Bhqi49Rbbtb0f173K2D0=;
-        b=OHxEaALccw4oBmVirx6SoLeXawj/wKMhd9mMhWgELtvWq7cSFBHG/jONy0gRcbBMA4
-         BbVNheczEz9xueAQeo7/+cMqDfC+Q3LocAY8R6fOE/IMdJJeD0IRDOPN6W1JG34QvE2M
-         2zzxcpnp5GWmyKgAoUm91iDxOUIxdZP0cnDzEs66NPh6aIkamMTlnnVrTzdd2aqs5sd/
-         F91IlVdcDeOuScw88QbQfGZlyzrGYlR+opyMt2r9aa6uIJx7SLAYJBAmKsv50xDsMrEr
-         3qJHNcQ5cE2hv/BrWLwjXjQKbZzyXWUzXNe8ElHb73lOYwU+ZBPOdxpfjI87B9Lmrck3
-         kMsQ==
+        bh=nI9MXlpAYwIh3FM35EUfkkqEz/aARqu3VWI6/trYEAg=;
+        b=GbGXFVSwxEHEDKkcITf7oLZZumqj6BzFIGQNnr14WETKr9YaB9bgz25d/ic1/3cwMq
+         wnYnBCTG2onKBIEP9Ej2jCKI7uqAe1hwBbMtkTjHGGOmSwmLWR0NBSf6RMbRvJXxHZcj
+         c7XBC0TjyP2bm/ZK9wcfRd953ohr5ApPdPw1Q1nbrolKeDgwj0yysqxjV96PyixlDaiz
+         Iu0Ku8r7bg3TYmODPL3KbdYKuYsDQsBltGASQUktaoi/OmFTmwVEM2Xl8qwOv45th2rw
+         OfCCnG9IPNG2hc0q9QLzBNgmno0t6W83D2uBOoVW6nGPgjVAg0dwFenbrAJcmWLNEJAj
+         9+Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=JRCTVo8eCseDeuuhg40+1n5Bhqi49Rbbtb0f173K2D0=;
-        b=lAmU8OwmXXPJbY+kRMdwDqwc1YlzvzJ6uTpHHP4S+MR8tMclSTQM244FZQ++Qzp81/
-         +KgmaU3NKfvgAN1YfWe8Z28FX4IjWXgNH031e5LdoA8cy7YNwkJuLjqkaVoWwTHzJG5U
-         pxwOYUP5bGy/4ylnKDw4PNIsbhebKwg0DSMkkrntZPmUEv70ZoEcLLMLrftPrk9eolCi
-         0PcJtuEOumcw4DbpGMsb11WcUr/XCSNHLy1YcxxFvi8kfVwTfhqzGUxWrHsY/OCx3LtE
-         oH8pcM8+CeGnNdt0OI45sKgX4uQa/cn+PZ1he5KvCVt9YZOrYXoe1VCQk8bJePmPSA85
-         740w==
-X-Gm-Message-State: AG10YOSUB+7hAILjBy8NdIVTwhbGyTqy+FsHHkNc1bthr5vcW8LXnYpC75PUoTe7FSe9IA==
-X-Received: by 10.98.16.85 with SMTP id y82mr61704852pfi.90.1456401435342;
-        Thu, 25 Feb 2016 03:57:15 -0800 (PST)
+        bh=nI9MXlpAYwIh3FM35EUfkkqEz/aARqu3VWI6/trYEAg=;
+        b=F94tjlMoaoyXC0wUZ9FB+kLU42ejFsfWIVcRY3xPhOfciQSr4zkgV0rfd/PPcaOdNu
+         EcL7BD/RCzCNLkQAijPeWgGdxM1hBma4ZxegnLhC0uSbXm+zmGaoDLK7Ru77fRLq9JVU
+         6orzdqvLzGbcuO3r/NZ9fue6gebDjRay9FxAJEbS5qDRCBuu4dLy+kHET39jTtcjRwom
+         Znk8uUD+jGGoB45k+MrbmZCX1THjLgqG9gu9t8p28YxieIBry2OmM6Ucz8qmvVR8dUtN
+         r6/5CbOkLPREtKhntovdx40fl7QQS74wEHsF7vaKDalBpJchIw+G+uU3yeOFS8EpgR94
+         65ng==
+X-Gm-Message-State: AG10YOREelyrZ27vZb0MeBITIslue4trJ1I+WQSNQ4jv+zDVHrWftsoO3a+lYHSwdQ0jtQ==
+X-Received: by 10.98.12.8 with SMTP id u8mr61807856pfi.36.1456401424515;
+        Thu, 25 Feb 2016 03:57:04 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
 Received: from bhumirks@gmail.com ([106.215.170.98])
-        by smtp.gmail.com with ESMTPSA id d65sm11847981pfb.74.2016.02.25.03.57.10
+        by smtp.gmail.com with ESMTPSA id y15sm11871059pfi.16.2016.02.25.03.56.58
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 03:57:14 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Thu, 25 Feb 2016 17:27:05 +0530
+        Thu, 25 Feb 2016 03:57:03 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Thu, 25 Feb 2016 17:26:53 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 2/3] Staging: rdma: Remove wrapper clear_rcvctrl
-Date: Thu, 25 Feb 2016 17:25:57 +0530
-Message-Id: <971c22f741c945f31f650275e4fe6d51192b7787.1456390351.git.bhumirks@gmail.com>
+Subject: [PATCH 1/3] Staging: rdma: Remove wrapper function add_rcvctrl 
+Date: Thu, 25 Feb 2016 17:25:56 +0530
+Message-Id: <581e22ed76e3c6333ebe0f4dc6a8277931be3880.1456390351.git.bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1456390351.git.bhumirks@gmail.com>
 References: <cover.1456390351.git.bhumirks@gmail.com>
 In-Reply-To: <cover.1456390351.git.bhumirks@gmail.com>
 References: <cover.1456390351.git.bhumirks@gmail.com>
 
-The function clear_rcvctrl can be replaced by direct call to
-adjust_rcvctrl. So drop the wrapper function.
+The function add_rcvctrl can be replaced with direct call to
+adjuct_rcvtrl. Thus, drop the wrapper function.
 Done using coccinelle:
 
 @@
-expression dd,clear;
+expression e,f;
 @@
-- clear_rcvctrl(dd,clear);
-+ adjust_rcvctrl(dd, 0, clear);
+- add_rcvctrl(e,f);
++ adjust_rcvctrl(e,f, 0);
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/rdma/hfi1/chip.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/staging/rdma/hfi1/chip.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/rdma/hfi1/chip.c b/drivers/staging/rdma/hfi1/chip.c
-index 371f948..7969dcb 100644
+index 02ba78f..371f948 100644
 --- a/drivers/staging/rdma/hfi1/chip.c
 +++ b/drivers/staging/rdma/hfi1/chip.c
 @@ -6371,11 +6371,6 @@ static void adjust_rcvctrl(struct hfi1_devdata *dd, u64 add, u64 clear)
  	spin_unlock_irqrestore(&dd->rcvctrl_lock, flags);
  }
  
--static inline void clear_rcvctrl(struct hfi1_devdata *dd, u64 clear)
+-static inline void add_rcvctrl(struct hfi1_devdata *dd, u64 add)
 -{
--	adjust_rcvctrl(dd, 0, clear);
+-	adjust_rcvctrl(dd, add, 0);
 -}
 -
- /*
-  * Called from all interrupt handlers to start handling an SPC freeze.
-  */
-@@ -6458,7 +6453,7 @@ static void rxe_freeze(struct hfi1_devdata *dd)
- 	int i;
+ static inline void clear_rcvctrl(struct hfi1_devdata *dd, u64 clear)
+ {
+ 	adjust_rcvctrl(dd, 0, clear);
+@@ -6485,7 +6480,7 @@ static void rxe_kernel_unfreeze(struct hfi1_devdata *dd)
+ 		hfi1_rcvctrl(dd, HFI1_RCVCTRL_CTXT_ENB, i);
  
- 	/* disable port */
--	clear_rcvctrl(dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
-+	adjust_rcvctrl(dd, 0, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
- 
- 	/* disable all receive contexts */
- 	for (i = 0; i < dd->num_rcv_contexts; i++)
-@@ -6629,7 +6624,7 @@ void handle_link_down(struct work_struct *work)
- 	reset_neighbor_info(ppd);
- 
- 	/* disable the port */
--	clear_rcvctrl(ppd->dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
-+	adjust_rcvctrl(ppd->dd, 0, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
- 
- 	/* If there is no cable attached, turn the DC off. Otherwise,
- 	 * start the link bring up. */
-@@ -9159,7 +9154,7 @@ void hfi1_quiet_serdes(struct hfi1_pportdata *ppd)
- 	set_link_state(ppd, HLS_DN_OFFLINE);
- 
- 	/* disable the port */
--	clear_rcvctrl(dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
-+	adjust_rcvctrl(dd, 0, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
+ 	/* enable port */
+-	add_rcvctrl(dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
++	adjust_rcvctrl(dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK, 0);
  }
  
- static inline int init_cpu_counters(struct hfi1_devdata *dd)
+ /*
+@@ -9119,7 +9114,7 @@ int bringup_serdes(struct hfi1_pportdata *ppd)
+ 	int ret;
+ 
+ 	if (HFI1_CAP_IS_KSET(EXTENDED_PSN))
+-		add_rcvctrl(dd, RCV_CTRL_RCV_EXTENDED_PSN_ENABLE_SMASK);
++		adjust_rcvctrl(dd, RCV_CTRL_RCV_EXTENDED_PSN_ENABLE_SMASK, 0);
+ 
+ 	guid = ppd->guid;
+ 	if (!guid) {
+@@ -9814,7 +9809,7 @@ int set_link_state(struct hfi1_pportdata *ppd, u32 state)
+ 					OPA_LINKINIT_REASON_LINKUP;
+ 
+ 			/* enable the port */
+-			add_rcvctrl(dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK);
++			adjust_rcvctrl(dd, RCV_CTRL_RCV_PORT_ENABLE_SMASK, 0);
+ 
+ 			handle_linkup_change(dd, 1);
+ 		}
+@@ -12568,7 +12563,7 @@ static void set_partition_keys(struct hfi1_pportdata *ppd)
+ 	}
+ 
+ 	/* Always enable HW pkeys check when pkeys table is set */
+-	add_rcvctrl(dd, RCV_CTRL_RCV_PARTITION_KEY_ENABLE_SMASK);
++	adjust_rcvctrl(dd, RCV_CTRL_RCV_PARTITION_KEY_ENABLE_SMASK, 0);
+ }
+ 
+ /*
+@@ -13304,8 +13299,8 @@ static void init_qpmap_table(struct hfi1_devdata *dd,
+ 	if (i % 8)
+ 		write_csr(dd, regno, reg);
+ 
+-	add_rcvctrl(dd, RCV_CTRL_RCV_QP_MAP_ENABLE_SMASK
+-			| RCV_CTRL_RCV_BYPASS_ENABLE_SMASK);
++	adjust_rcvctrl(dd, RCV_CTRL_RCV_QP_MAP_ENABLE_SMASK
++			   | RCV_CTRL_RCV_BYPASS_ENABLE_SMASK, 0);
+ }
+ 
+ /**
+@@ -13402,7 +13397,7 @@ static void init_qos(struct hfi1_devdata *dd, u32 first_ctxt)
+ 		LRH_SC_MASK << RCV_RSM_MATCH_MASK2_SHIFT |
+ 		LRH_SC_VALUE << RCV_RSM_MATCH_VALUE2_SHIFT);
+ 	/* Enable RSM */
+-	add_rcvctrl(dd, RCV_CTRL_RCV_RSM_ENABLE_SMASK);
++	adjust_rcvctrl(dd, RCV_CTRL_RCV_RSM_ENABLE_SMASK, 0);
+ 	kfree(rsmmap);
+ 	/* map everything else to first context */
+ 	init_qpmap_table(dd, FIRST_KERNEL_KCTXT, MIN_KERNEL_KCTXTS - 1);
 -- 
 1.9.1
 
