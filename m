@@ -1,66 +1,112 @@
 X-GM-THRID: 6255196435658047488
-X-Received: by 10.112.168.201 with SMTP id zy9mr5604203lbb.23.1456409951525;
-        Thu, 25 Feb 2016 06:19:11 -0800 (PST)
+X-Received: by 10.25.18.227 with SMTP id 96mr5514598lfs.4.1456404562911;
+        Thu, 25 Feb 2016 04:49:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.43.67 with SMTP id r64ls84684lfr.10.gmail; Thu, 25 Feb 2016
- 06:19:10 -0800 (PST)
-X-Received: by 10.112.129.65 with SMTP id nu1mr5687087lbb.18.1456409950798;
-        Thu, 25 Feb 2016 06:19:10 -0800 (PST)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.10])
-        by gmr-mx.google.com with ESMTPS id w128si137294wmd.0.2016.02.25.06.19.10
+Received: by 10.28.211.17 with SMTP id k17ls132947wmg.48.canary; Thu, 25 Feb
+ 2016 04:49:22 -0800 (PST)
+X-Received: by 10.28.30.147 with SMTP id e141mr347001wme.0.1456404562452;
+        Thu, 25 Feb 2016 04:49:22 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 141si126704wmy.2.2016.02.25.04.49.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:19:10 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=212.227.17.10;
+        Thu, 25 Feb 2016 04:49:22 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 212.227.17.10 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([78.42.132.4]) by mrelayeu.kundenserver.de
- (mreue104) with ESMTPSA (Nemesis) id 0LiUpQ-1ZwZfN2jrI-00cfKM; Thu, 25 Feb
- 2016 15:19:09 +0100
-From: Arnd Bergmann <arnd@arndb.de>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/3] Staging: rdma: Remove wrapper functions
-Date: Thu, 25 Feb 2016 15:19:09 +0100
-Message-ID: <3462200.DanSUfdRtD@wuerfel>
-User-Agent: KMail/4.11.5 (Linux/3.16.0-10-generic; KDE/4.11.5; x86_64; ; )
-In-Reply-To: <cover.1456390351.git.bhumirks@gmail.com>
-References: <cover.1456390351.git.bhumirks@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,498,1449529200"; 
+   d="scan'208";a="165955292"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 25 Feb 2016 13:49:21 +0100
+Date: Thu, 25 Feb 2016 13:49:19 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/3] Staging: rdma: Remove wrapper
+ sdma_start_hw_clean_up
+In-Reply-To: <a065f9a17e7716720dbf0505dfdbfeaed90b234f.1456390351.git.bhumirks@gmail.com>
+Message-ID: <alpine.DEB.2.10.1602251348380.2708@hadrien>
+References: <cover.1456390351.git.bhumirks@gmail.com> <a065f9a17e7716720dbf0505dfdbfeaed90b234f.1456390351.git.bhumirks@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:+fIAXbcTOBAnZ+Z1eILSQyXMPmivyp63ApHDL73nZB0vZRh7pCp
- gaQY/V6Z4cGPBgDt3TIMTiSmrZ2oZOwvDZU64E0f37EgsYWJ5/wy2hkQxI25GRlpjz9p65t
- 5Pp/Aub3NCrxpdd7EUd3xBW9/+UOK8+nlZYkmOepfbvv7iyvEEvaSDaNq3yfR4byq6RQuTx
- HnVqxtCzEAQReGdEQgI6A==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:vLAcSxal7cI=:U+DWNHfThWBCGSFZTY/OF+
- j3MM8vzN3ECELf8NTHHmdMFnRam2U/eIjf0/Ymggh5/mFSKyF3ER2vXpTnC6muoM6WmnPfatY
- NogEFHovPgvykf8vSI7aaDD0lc8X/RANXzNVblpFSq92esgTvXhc2lNCGCISwp5+8TuNivuPe
- xZN7OocPMzbAPtq7GYMykhD0GjhaE7bg5qtZOXjrOOfhKUGVzLZlOew/LirMUWD7w28a/mmq0
- fnD3mTIBu9Jlz8NadLfH4hYgF6IV6j/I14/HnNWNIpN6P4IEfGVJpULLcXO+kPvS4MzaIYVlr
- HppAv6FlaOOKdRcRbIMa6X7rv7tvrjyESYk9/zLMdpAvxGq9uoPo1Q5buSc1vHohfLyOE64tS
- aznF9/j/wEny42rrSJImVtli4vZBuawXk4QbOmXkBxLPG8ExirX6IVM2Syx/LwPjD5cuiBQAo
- cE2DBOInD4BuFjKW+WAHlWQY6/REhtnfUVP4XUIcwYC1bQMXN7rwWIqXA0yRS3WLNcnUHqkLf
- mZbRohTPU7rd9LrlhDZsa7/GDoWsqG3yZcqT1YSppGNhBKbLaHHYiHIo7ocl26dO6zaDAJQTz
- hXUY/UQU9IVIzuPOj0wGF0CT9k327/iQ+Sb8r0+1MxmbtqD39XTG0UWZe7Vo3/xWxei/E8lYf
- qsosSpgjdYYdIMPZHcXQeslqhdsgOrjhHvWNIp/I2lFzMoYD+2eiTbFUY8mCHvAtkgkwigeir
- QCROWsRJGOvAUHM0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Thursday 25 February 2016 17:25:55 Bhumika Goyal wrote:
-> The functions add_rcvctrl, clear_rcvctrl, sdma_start_hw_clean_up can be 
-> replaced with direct calls to the functions they wrapped. Thus remove the 
-> wrapper functions and replace their calls with the functions they wrapped.
-> Changes are done using coccinelle semantic patches.
->  
-> Bhumika Goyal (3):
->   Staging: rdma: Remove wrapper function add_rcvctrl
->   Staging: rdma: Remove wrapper clear_rcvctrl
->   Staging: rdma: Remove wrapper sdma_start_hw_clean_up
+On Thu, 25 Feb 2016, Bhumika Goyal wrote:
 
-These are all in a grey area. I'd personally suggest doing the third
-patch only, but not the first two that remove what seems to be
-a useful abstraction.
+> The function sdma_start_hw_clean_up can be replaced with direct call to
+> tasklet_hi_schedule. So drop the function definition and prototype of
+> sdma_start_hw_clean_up and replace the calls with tasklet_hi_schedule.
+> Done using coccinelle:
+>
+> @@
+> expression e;
+> @@
+> - sdma_start_hw_clean_up(e);
+> + tasklet_hi_schedule(&sde->sdma_hw_clean_up_task);
 
-	Arnd
+I think that the metavariable should be called sde, not e.  You want to
+propagate the argument from one call to the other.
+
+julia
+
+>
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/rdma/hfi1/sdma.c | 10 ++--------
+>  1 file changed, 2 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/rdma/hfi1/sdma.c b/drivers/staging/rdma/hfi1/sdma.c
+> index 9a15f1f..d833a00 100644
+> --- a/drivers/staging/rdma/hfi1/sdma.c
+> +++ b/drivers/staging/rdma/hfi1/sdma.c
+> @@ -235,7 +235,6 @@ static void sdma_get(struct sdma_state *);
+>  static void sdma_hw_clean_up_task(unsigned long);
+>  static void sdma_put(struct sdma_state *);
+>  static void sdma_set_state(struct sdma_engine *, enum sdma_states);
+> -static void sdma_start_hw_clean_up(struct sdma_engine *);
+>  static void sdma_sw_clean_up_task(unsigned long);
+>  static void sdma_sendctrl(struct sdma_engine *, unsigned);
+>  static void init_sdma_regs(struct sdma_engine *, u32, uint);
+> @@ -670,11 +669,6 @@ static void sdma_sw_tear_down(struct sdma_engine *sde)
+>  	wake_up_interruptible(&sde->dd->sdma_unfreeze_wq);
+>  }
+>
+> -static void sdma_start_hw_clean_up(struct sdma_engine *sde)
+> -{
+> -	tasklet_hi_schedule(&sde->sdma_hw_clean_up_task);
+> -}
+> -
+>  static void sdma_set_state(struct sdma_engine *sde,
+>  	enum sdma_states next_state)
+>  {
+> @@ -2293,7 +2287,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>  		case sdma_event_e15_hw_halt_done:
+>  			sdma_set_state(sde,
+>  				sdma_state_s15_hw_start_up_clean_wait);
+> -			sdma_start_hw_clean_up(sde);
+> +			tasklet_hi_schedule(&sde->sdma_hw_clean_up_task);
+>  			break;
+>  		case sdma_event_e25_hw_clean_up_done:
+>  			break;
+> @@ -2422,7 +2416,7 @@ static void __sdma_process_event(struct sdma_engine *sde,
+>  			break;
+>  		case sdma_event_e40_sw_cleaned:
+>  			sdma_set_state(sde, sdma_state_s40_hw_clean_up_wait);
+> -			sdma_start_hw_clean_up(sde);
+> +			tasklet_hi_schedule(&sde->sdma_hw_clean_up_task);
+>  			break;
+>  		case sdma_event_e50_hw_cleaned:
+>  			break;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a065f9a17e7716720dbf0505dfdbfeaed90b234f.1456390351.git.bhumirks%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
