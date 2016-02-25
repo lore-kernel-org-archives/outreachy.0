@@ -1,60 +1,60 @@
 X-GM-THRID: 6254955929257639936
-X-Received: by 10.140.221.146 with SMTP id r140mr313858qhb.20.1456477858193;
-        Fri, 26 Feb 2016 01:10:58 -0800 (PST)
+X-Received: by 10.107.8.216 with SMTP id h85mr2121439ioi.0.1456401017590;
+        Thu, 25 Feb 2016 03:50:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.8.90 with SMTP id 87ls628042ioi.36.gmail; Fri, 26 Feb 2016
- 01:10:57 -0800 (PST)
-X-Received: by 10.66.142.164 with SMTP id rx4mr322828pab.2.1456477857886;
-        Fri, 26 Feb 2016 01:10:57 -0800 (PST)
+Received: by 10.140.106.9 with SMTP id d9ls345998qgf.38.gmail; Thu, 25 Feb
+ 2016 03:50:15 -0800 (PST)
+X-Received: by 10.140.96.35 with SMTP id j32mr12767612qge.6.1456401015788;
+        Thu, 25 Feb 2016 03:50:15 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 12si1784554pfb.1.2016.02.26.01.10.57
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 79si1179171pft.0.2016.02.25.03.50.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 01:10:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Thu, 25 Feb 2016 03:50:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id a7so2875453pax.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 01:10:57 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id 71so2704924pfv.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 03:50:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=d0It7xNZIHssroyZHF0Q4V65kCG62plieCdoxkxRZls=;
-        b=wJRHQfAR1Yp4GFDi7zzf/f9gTRQdUW2Om+JbmUTje7dgTrmSnJAMVg9QWI2scxLufO
-         6qgaw3DknTOLH8zP445sT8+1YpeUm4WX6klT2U0bJmurxPEiWhXRRiC6Jd4cLXe6jgmH
-         OH23J31/hYH409FiyN9sO2VAsnLiR2ieaaq1tLdNC68fiBl7uN4T6B63sj1gTqpqlUat
-         pPXSZSP2SNCX3EacFAqsQ54WUfckLcqJ0ScvWBWaQA/YIkAA6wGsUHPgVodfE4nbVdoa
-         wX9E/BR2pK6UIPZm+e/SkAdUPCn/nblBIyWOYR8+EetT3UUzR00gc75mca6lzdChA4cl
-         d2cg==
+        h=date:from:to:subject:message-id:mime-version:content-type
+         :content-disposition:user-agent;
+        bh=QjSfoNfFlng6PIgfZF59AZd/cxDdxcW2Sf4rMVhNiNo=;
+        b=yU6aV4hVkwu48btXF3xORqSOb/GdcvUPmsFqDx4EfPVPla7u3g/xphtdlEQe98yEuA
+         kqhy+kyLvTc9aHznNpOg8gToROGV0BwXRaalq6mY+R7bIqsDfU2ZJhYjQSqLAzNHMoFQ
+         1X4nvl9kDUKvErcnlEhZWwppqTW7WP93ovNdoIY6zpVWOWiUyEdbyPcQndvLoJP+xCYq
+         CQuhraYWxQHvRF5TedmSn0kxMQqUOJ0nIXU8+9sc6dng9CXDbGp8k6jKFCuBta4Nl2R8
+         pR2qwjn1jQUI9Catk6WSYidSApNYeibYrdlNl9N301bG7lNLXnmIC9rndv7DrODSmq5x
+         kMmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=d0It7xNZIHssroyZHF0Q4V65kCG62plieCdoxkxRZls=;
-        b=X1saS+pLWrTQVzIScqP0MZAo+Ku3ckDup96taGZS5MbRm17pJuFvgwwWVIR9WDQ0HT
-         lOOSWe92mG25pLYOcb+fu4PG0AkJeIjvE1jmnKJ+iBpwi6G3KdVYiJi0PY8QugrY4/8/
-         zIFypWgF1ryEuASXYrpOo2rNGPjkgSYeGHWoZ4l3lVV/5/yPdm1QF+aaeCW0REar7/nQ
-         jv2yy3KhsgXNCTH857m8JfBBr/byZ7fx0dC/baXgTCxKQc2JaCcFwJ+PxsThDMsA9lDr
-         MplYuZkMLxG9zMaIp4lKzRC0R96BNZVMz1B72TuLJnAHWqSbZ4163SyMGrIn7gL2tosF
-         heHw==
-X-Gm-Message-State: AD7BkJLrL/wR1DRIaWVAyq47MfmrsQupDH2FVja3W0C3L//c+jBOiB4qVhjg99d6gYGnSA==
-X-Received: by 10.66.63.104 with SMTP id f8mr517294pas.109.1456477857742;
-        Fri, 26 Feb 2016 01:10:57 -0800 (PST)
+         :content-type:content-disposition:user-agent;
+        bh=QjSfoNfFlng6PIgfZF59AZd/cxDdxcW2Sf4rMVhNiNo=;
+        b=NXlVZw7CTGOTbtYjL/t5hKMI8NV9tGomXahOem5JswenN9Cs4EtFRKL9vc/Wp/QX2O
+         K1Otf2bxhuswZ895zmDCfdDg1+R2M7V1KWWi65J/mZ0Wx/Y3K7m9Q1E611ZehCoubcUE
+         GCB0/0MNhe+Gx/HQhh/58KmveEX5Svs4dj5jwgb0GLiW/NzNiKVdvSxiNeyN1SCkLU2x
+         dWS6QV+1wn+Nli3hshMa9APbpbcx67/BqW3S+qp3TIa2Rff83pzzWocnVOLRS/0JK99b
+         wNhBTdfDTJ93qtBJYV2h54uDG0y5lO4IanqOJU4F+7JaOObgYUNNb0hu0jkJHfqsuY5b
+         z98A==
+X-Gm-Message-State: AG10YOS+9gz1wrXL87ntryYi7FxLPGSlGaINSnN+zeN0r7u+QJSOC6A3YdGJ9FBWHfoPQQ==
+X-Received: by 10.98.19.205 with SMTP id 74mr62299021pft.31.1456401015523;
+        Thu, 25 Feb 2016 03:50:15 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e20sm17718981pfd.4.2016.02.26.01.10.56
+        by smtp.gmail.com with ESMTPSA id k14sm11835573pfj.0.2016.02.25.03.50.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 01:10:57 -0800 (PST)
-Date: Fri, 26 Feb 2016 14:41:34 +0530
+        Thu, 25 Feb 2016 03:50:15 -0800 (PST)
+Date: Thu, 25 Feb 2016 17:20:50 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/8] Remove useless return variables
-Message-ID: <20160226091133.GA9015@Karyakshetra>
+Subject: [PATCH v2 0/8] Remove useless return variables
+Message-ID: <20160225115050.GA5247@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -71,7 +71,7 @@ Bhaktipriya Shridhar (8):
   staging: rtl8188eu: core: Remove useless return variables
   staging: wilc1000: Remove useless return variables
   staging: rtl8723au: hal: Remove useless return variables
-  staging: lustre: ptlrpc: Remove useless return variables
+  staging: lusture: ptlrpc: Remove useless return variables
 
  drivers/staging/android/ion/hisilicon/hi6220_ion.c  |  5 +----
  drivers/staging/lustre/lustre/ptlrpc/client.c       |  5 +----
