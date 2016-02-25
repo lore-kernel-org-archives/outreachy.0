@@ -1,95 +1,117 @@
 X-GM-THRID: 6254945718130180096
-X-Received: by 10.129.88.135 with SMTP id m129mr15216419ywb.47.1456804074390;
-        Mon, 29 Feb 2016 19:47:54 -0800 (PST)
+X-Received: by 10.140.102.163 with SMTP id w32mr14942942qge.10.1456424776904;
+        Thu, 25 Feb 2016 10:26:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.131.22 with SMTP id f22ls1583781iod.62.gmail; Mon, 29 Feb
- 2016 19:47:53 -0800 (PST)
-X-Received: by 10.107.184.195 with SMTP id i186mr21300264iof.24.1456804073849;
-        Mon, 29 Feb 2016 19:47:53 -0800 (PST)
+Received: by 10.140.41.85 with SMTP id y79ls574628qgy.63.gmail; Thu, 25 Feb
+ 2016 10:26:16 -0800 (PST)
+X-Received: by 10.140.27.180 with SMTP id 49mr14934036qgx.19.1456424776271;
+        Thu, 25 Feb 2016 10:26:16 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id 12si4126507pfb.1.2016.02.29.19.47.53
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id 79si1430964pft.0.2016.02.25.10.26.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Feb 2016 19:47:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Thu, 25 Feb 2016 10:26:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id yy13so103688962pab.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 29 Feb 2016 19:47:53 -0800 (PST)
+Received: by mail-pa0-x22d.google.com with SMTP id fl4so36146536pad.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 10:26:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=dqy4UhR1m391E9Ra2PLkUUCQfvm87MKWgSPhlS4UFVo=;
-        b=VlYLaBrglDu8GZKR7f/Txnazc75v3hCJsnfOtLf5tDUUFdGKK0KgtU5rKglpJlFUKr
-         HSzoN6VeocTYSlwPsiVfNbk+jJGS5Ra6nD+a58+gcACwPWInzR+KWTNh33i+F5UCBPpo
-         poHUmczxlaUGRTFISxLP6gICiO1D/NHP1rJ6+4oOh+RYp43ggwJozA6nBEZyMK+PQMB3
-         2azS4GLmKogxehqKNFSAMJY/Pi5ATao37z1gkXElb4Fa1hvNWJLcvvIPhBPuNzJ7L3qs
-         SxLUASsV8M4CTRaBOrD+fxKZmi9mpK1QCJwGsVKaLrlwbiAMd6jDE9j21BwOiQJ0ZEh9
-         mwqA==
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=fXCxeccZlnewQjPcTX7Fx55sCd/Cwu0xo9+aEQTb/Zo=;
+        b=nT6xeN0A7u/GGpawZPtrRWnVpCwXkE7hJF8udG5MLDuVFJekbWoCLmyTuD9xpTowYw
+         NqVTLc0QjYEzwonIrBF93DwqAJa4E80BhBJLdNgYDaaSGYX2b0ZhQUv5j2JZ1w7LqhPF
+         qHemJmx5ETrQI88szRZu+ly7CVr5aVTOfCXW0LBDKHOxHRJoor7QGw7Hmh/8OBBsB6uB
+         D96HCXX4AgUU5psCSMFvVmqZ1je00G4v5+lTmrYE1JiRUMlJqZSec6Qht78GoRMgPWIu
+         JOXfnhYoZiKS92/H/UrmL2e0nQ4lUbKtvcyR2mxe+pK9YNvQSTm8ljLdg2DQBQLC6APD
+         bnVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=dqy4UhR1m391E9Ra2PLkUUCQfvm87MKWgSPhlS4UFVo=;
-        b=e52EltKckCl+RZIYl6RDDx+1AAnzzGLLX/ZyaQR+iGy4RZeZe0D3dBUDa4uhM2vqRZ
-         TXzISFCOZ8xnpII8CsQ0+gDS0w52swFz57wUEoXRXjtYS58LwK1yD33NyYdO3torpxri
-         GEWeama7TNPQ/ZIuK1Va14mhA+5PE8o+2RQStcyQ01+r9ib/xX9z+d9ITLtcSWk2Tizh
-         f0cGWfBbQbPGLnTNoXsVSzO2fvH+cpxMsomZ0jK4+WanDkqctypX3KXK8CIfC5/yfNg6
-         MeValn0eC9wO8NvjLZ98IybdI/d1K2/jGTVkEZQE/V1w5o5pE28Ex9WzVjx/SjQAi1BK
-         IbWQ==
-X-Gm-Message-State: AD7BkJJgSZC+x0LyTKX4sfsykA4vz99i1D85sjKHC8OHRVoQWmEViznnqt8b052F5Nk5/g==
-X-Received: by 10.67.7.197 with SMTP id de5mr27389282pad.105.1456804073661;
-        Mon, 29 Feb 2016 19:47:53 -0800 (PST)
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=fXCxeccZlnewQjPcTX7Fx55sCd/Cwu0xo9+aEQTb/Zo=;
+        b=cpRLXleS5lHoP886tQ1ZK40qQNTlCdMcfyqbVabHXmDttu3VFDTbLzY5opHVyaiTyn
+         9OwvKL7o3h7tV4+VVQcXxMZFVsGMdzC2ADfsu2rGLME9WuZYWLeaSaKeTwfw7FwcoaHy
+         eJ3fI5/EqGj0Ar8DMFZPhrJOfWQIX4oeJL/fV9rhhOzCdq5qmBQaDfi6BIGpJLcTuH4Z
+         d4gsJ2zTZyo3FJsxnrAl7EHyiRIXn+mu5VZG4NnWnbp3Q8L7j0bXKNYjt5sf4UUdDpbv
+         PPGhY0Dj7QI/K3cX8eanrVU7MaLdpYY1XEABfO90wUuJR7LnB/VsGOb0L39hNm/4nbDg
+         YpmA==
+X-Gm-Message-State: AG10YOSyhZuYJ6DxP5T6W0/3+4FCf/q1NJqri6mgdWTbRGgazi76pijLbDk5yh7MlFZMYw==
+X-Received: by 10.66.233.131 with SMTP id tw3mr66032927pac.89.1456424776054;
+        Thu, 25 Feb 2016 10:26:16 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-71-235.dhcp.embarqhsd.net. [67.232.71.235])
-        by smtp.gmail.com with ESMTPSA id yj1sm41347209pac.16.2016.02.29.19.47.52
+Received: from d830 (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
+        by smtp.gmail.com with ESMTPSA id ta2sm13790738pab.42.2016.02.25.10.26.14
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 29 Feb 2016 19:47:53 -0800 (PST)
-Date: Mon, 29 Feb 2016 19:47:51 -0800
+        Thu, 25 Feb 2016 10:26:15 -0800 (PST)
+Date: Thu, 25 Feb 2016 10:26:13 -0800
 From: Alison Schofield <amsfield22@gmail.com>
 To: Daniel Baluta <daniel.baluta@intel.com>
 Cc: outreachy-kernel@googlegroups.com
 Subject: Re: IIO Coding Task 2 ?
-Message-ID: <20160301034750.GA2401@d830.WORKGROUP>
+Message-ID: <20160225182612.GA2359@d830.WORKGROUP>
 References: <20160224194352.GA3122@d830.WORKGROUP>
  <56CEB5B4.5060605@intel.com>
  <56CEC19C.1010300@intel.com>
- <20160225182612.GA2359@d830.WORKGROUP>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160225182612.GA2359@d830.WORKGROUP>
+In-Reply-To: <56CEC19C.1010300@intel.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-.........................snip...................
-> > >
->t > >We will make this in two steps:
-> > >
-> > >* introduce API
-> > >* find a place where locking is not done
-> > >* use new API
-> > >
-> > >After IIO maintainer says this is OK:
-> > >* update all places with the new API.
-> > >
-> > >thanks,
-> > >Daniel.
+On Thu, Feb 25, 2016 at 10:55:56AM +0200, Daniel Baluta wrote:
+> <resending answer due to outreachy-kernel delivery failure>
 > 
-> Thanks for the directon.  I am working on that first step.
-> alisons
-> > 
-Hi Daniel,
-I'm ready to send out the RFC PATCH, but I wasn't able to meet
-one of your requests.  I did not find a place where the locking
-was not done. The 'sample' is one where mlock was used with
-iio_buffer_enabled. I think it illustrates the API well because
-it clearly shows the before/after that would occur in other drivers.
-Send it? 
-Thanks,
-alisons
+> On 25.02.2016 10:05, Daniel Baluta wrote:
+> >
+> >
+> >On 24.02.2016 21:43, Alison Schofield wrote:
+> >>Daniel,
+> >>
+> >>I'm working on IIO coding task #2.
+> >>
+> >>In 'auditing IIO device state updates to locking' I believe that
+> >>in addition to "Updates to state changes must always take mlock",
+> >>any checks of device state must also take mlock.  And that is,
+> >>what you are asking us to do in this task.
+> >>(iio_buffer_enabled is checking device state, not setting)
+> >>
+> >>Basically, anywhere iio_dev->currentmode is set|checked use mlock.
+> >>
+> >>Right track?
+> >Correct.
+> >
+> >>For this task, I'm not clear on why we are doing RFC.  In practice,
+> >>mlock is used very consistently for protecting device state.
+> >>Can you clarify the controversial aspect?
+> >As agreed on this thread:
+> >http://www.spinics.net/lists/linux-iio/msg18540.html
+> >we will try to propose some API like:
+> >
+> >/iio_device_claim_direct_mode //iio_device_release_direct_mode/
+> >
+> >which will try to make code easier to read and hide the inner details of
+> >taking/releasing mlock.
+> >
+> >We will make this in two steps:
+> >
+> >* introduce API
+> >* find a place where locking is not done
+> >* use new API
+> >
+> >After IIO maintainer says this is OK:
+> >* update all places with the new API.
+> >
+> >thanks,
+> >Daniel.
 
+Thanks for the directon.  I am working on that first step.
+alisons
+> 
 
