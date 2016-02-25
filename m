@@ -1,56 +1,56 @@
 X-GM-THRID: 6254962790992183296
-X-Received: by 10.129.72.199 with SMTP id v190mr41245740ywa.44.1456396366058;
-        Thu, 25 Feb 2016 02:32:46 -0800 (PST)
+X-Received: by 10.66.221.100 with SMTP id qd4mr40637687pac.0.1456396197969;
+        Thu, 25 Feb 2016 02:29:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.106.133 with SMTP id gu5ls169810obb.16.gmail; Thu, 25 Feb
- 2016 02:32:45 -0800 (PST)
-X-Received: by 10.182.53.233 with SMTP id e9mr28519443obp.28.1456396365715;
-        Thu, 25 Feb 2016 02:32:45 -0800 (PST)
+Received: by 10.50.225.105 with SMTP id rj9ls175239igc.31.canary; Thu, 25 Feb
+ 2016 02:29:57 -0800 (PST)
+X-Received: by 10.107.11.23 with SMTP id v23mr1774925ioi.13.1456396197485;
+        Thu, 25 Feb 2016 02:29:57 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
-        by gmr-mx.google.com with ESMTPS id w126si445207ywe.6.2016.02.25.02.32.45
+Received: from mail-qg0-x22e.google.com (mail-qg0-x22e.google.com. [2607:f8b0:400d:c04::22e])
+        by gmr-mx.google.com with ESMTPS id i133si483681ywe.7.2016.02.25.02.29.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 02:32:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
+        Thu, 25 Feb 2016 02:29:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) client-ip=2607:f8b0:400d:c04::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x244.google.com with SMTP id u128so1536757qkh.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 02:32:45 -0800 (PST)
+Received: by mail-qg0-x22e.google.com with SMTP id b35so36250548qge.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 02:29:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc:content-type;
-        bh=SDtMQrJw6HwtcaE3WS8+cWXV1fzA5KmpMyWcArAGMzI=;
-        b=J0n2TbbCXN9ipmBB0D17+1n7LH2GUperVJiCk8scjjzCnBNVPXA86pMQ1SBARN4n65
-         HEvLL2ta+zfMPNVTOsFhcbaNi0nN9+0s4V8EhjNVcSjar+8bx6ZJeTQm3p7gpseCdH4L
-         1iFbPvWbTEcX1OkGhKHYGcKVF1MbP3uHvn+Rd5pPSVc6v2GptAsuU3+9yxN8QMP/vihx
-         C1BuaAHXD4Ra/SJK4u/cFGVlJMuNxcPI3XBW8cXlpE2GCB2u7EaHrbyKuxsgy67lvgAu
-         rVTkmefTopL9mJiMZQwhi2GAERzpRXh1XPuTeJ79LnOv4XbpDzwa+bi51mK1jA520VuH
-         EKLw==
+        bh=0afXO+aJBwfuQ0deOJYTwmvjGaoKbQPywx0X2a8D1qs=;
+        b=YAFiNis4Pc4tZJ7HpZDI+A5Yu+OHKKBFH2/4600ny11x6V+8KV2I8LGBh9/2RdIvat
+         c/RvQOGLWpdcZuOujtx6GO5A4kWqiXg47snuGy4RY/LSw9oFpP18XkHKwCwRWp9N7Yd9
+         m35d9NmJTld8n5VSo5qPG07WkJ09yYn+EyqSlsFMIvaTHa7TWBZFX2oVn3T0h/SeoDYp
+         11qJxGyE36qv9kO6Ymu9Rs+F2Y23BrpD6vm9yr076bza2U9LKGhFv3Hjsv7X3zwHv1Dp
+         nxQIweK4chdB3FPQG3CgtJ0Ed7GGmSb0J79tfvyDuWlW0mw004Cli3sj1LcmBh3yHlYw
+         rRGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc:content-type;
-        bh=SDtMQrJw6HwtcaE3WS8+cWXV1fzA5KmpMyWcArAGMzI=;
-        b=guFgUVkMzfByL8L9ZteaiWoISjNdf2WZCP/RPraKxP/VHl5MjK7W1kpC+V+znwpbrk
-         qd5CNq5e9c9Vhq39SvyJtx5fSFhSLOyivrTF01UewwtrfELUH59cNaOQbJ0wzVDKVTCH
-         RDmdFHcmgTMEjMiethXvu4mMy3ZAdK4U7cAF9f1Q6qoG6a7iJDm6YE/xsUbtOlZbGhg5
-         Pvu72gyYmLTsQjDU3Dr8CbMkLC6igGgGms4u1qOiOzttx3qqWclIr+Q3/A28PviPNiEN
-         zUdUB34ZOlN2yR8LnI+vd3g2MqWDpRPpoNvHkLMAeWTR7YfGshKiSKrmBFrc9J/UWzR5
-         TbVA==
-X-Gm-Message-State: AG10YORSBHXl6WAN+ICM66Q2wiJnWqdVpN/owk6dFHN8hkB9ISwbOzW9B2c3SOSo5ZO/zBYadg+wwyp9iJ455w==
-X-Received: by 10.55.81.2 with SMTP id f2mr54942570qkb.87.1456396365481; Thu,
- 25 Feb 2016 02:32:45 -0800 (PST)
+        bh=0afXO+aJBwfuQ0deOJYTwmvjGaoKbQPywx0X2a8D1qs=;
+        b=EJsLDaTMoGD2yxa1ktDz+tB/5w5UlVSOsVGkhKByEPWR5f0sXLk+C3vUO1QhOCDsDM
+         clNNT14CFlHV7HL4iIwefhbBM7vOpIlb87cUeJpFPkxbowWHLilzvbtflrDS/uI1sq/q
+         qxfAB03W6du8YxaxN/RWQhEirxbHWDW6HVmuPGwmZAgNNWo5/sr/gTI9g3VxlT+aEz++
+         xr6PA6Vo5pkwxjfvafg8RPNjbc4Kylbf1Rx8WjR2OSFwqKUXVb6cVBUWcUp1WXfKx8EY
+         fC+lQKqIqZDRMaQtdXFOB0V9l57Qop4ojkylm1BsVhBdFVZf5JbeusbO812FmwrrO2ce
+         XiZA==
+X-Gm-Message-State: AG10YORlJvSqe4n4WXoG13bwH8VPS2tJsl6dNt3ZHC83CMlmYo2pM5fW6a8mB3lOIoT9+Sj4KfS2LweovfA3xA==
+X-Received: by 10.140.134.144 with SMTP id 138mr58592794qhg.63.1456396197250;
+ Thu, 25 Feb 2016 02:29:57 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.55.217.215 with HTTP; Thu, 25 Feb 2016 02:32:06 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.10.1602251126240.2708@hadrien>
-References: <20160225102505.GA27359@Karyakshetra> <alpine.DEB.2.10.1602251126240.2708@hadrien>
+Received: by 10.55.217.215 with HTTP; Thu, 25 Feb 2016 02:29:17 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602251117160.2708@hadrien>
+References: <20160225101549.GA27308@Karyakshetra> <alpine.DEB.2.10.1602251117160.2708@hadrien>
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-Date: Thu, 25 Feb 2016 16:02:06 +0530
-Message-ID: <CAFNHFT8TSVXcJsE2XUJJCoaTbPjcUZUJcYR9JKVUHahL1MHgPQ@mail.gmail.com>
+Date: Thu, 25 Feb 2016 15:59:17 +0530
+Message-ID: <CAFNHFT_Gg==Q+7q4Ou1MwuN7PxvGYLHKrv=TeawgoLaxVWhTxw@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: Make return of 0 explicit
 To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
@@ -58,8 +58,7 @@ Content-Type: text/plain; charset=UTF-8
 
 Hello Julia,
 
-
-On Thu, Feb 25, 2016 at 3:57 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+On Thu, Feb 25, 2016 at 3:47 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 > On Thu, 25 Feb 2016, Bhaktipriya Shridhar wrote:
 >
 >> Delete unnecessary local variable whose value is always 0 and
@@ -92,22 +91,18 @@ On Thu, Feb 25, 2016 at 3:57 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 >>
 >> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 >> ---
->>  Changes in v2:
->>  -Changed Coccinelle script to remove all occurrences of the variable
->>  and replace every return associated with the variable with return 0
 >
-> Since you have made a change, it would be v3.
->
-> It is also nice to leave a blank line after the message, so that it can be
-> seen more easily.
->
-> julia
+> Good job on the semantic patch, but you didn't explain v2.
 
-
-Sure. Will send in a v3 with the suggested changes incorporated.
+Thank you for your guidance.  Sorry, it slipped from my mind. I have
+sent v2 with the explanation.
+Please have a look.
 
 Thanks,
 Bhaktipriya
+
+>
+> julia
 >
 >>  drivers/staging/rtl8712/xmit_linux.c | 8 ++------
 >>  1 file changed, 2 insertions(+), 6 deletions(-)
@@ -157,7 +152,7 @@ Bhaktipriya
 >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 >> To post to this group, send email to outreachy-kernel@googlegroups.com.
->> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160225102505.GA27359%40Karyakshetra.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160225101549.GA27308%40Karyakshetra.
 >> For more options, visit https://groups.google.com/d/optout.
 >>
 
