@@ -1,110 +1,216 @@
-X-GM-THRID: 6667435589118197760
-X-Received: by 2002:a63:2024:: with SMTP id g36mr3546591pgg.87.1552383319169;
-        Tue, 12 Mar 2019 02:35:19 -0700 (PDT)
+X-GM-THRID: 6255258611058999296
+X-Received: by 10.129.79.21 with SMTP id d21mr43002807ywb.46.1456421641244;
+        Thu, 25 Feb 2016 09:34:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:cb48:: with SMTP id m8ls4672941pgi.12.gmail; Tue, 12 Mar
- 2019 02:35:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzjw1W208GpWBvNdyV4cRw0qbndFhufUkxcpSCt5UxA3tQianOFiJBum/RMJUYzROYRzbwF
-X-Received: by 2002:a65:63d5:: with SMTP id n21mr13823295pgv.97.1552383318431;
-        Tue, 12 Mar 2019 02:35:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552383318; cv=none;
-        d=google.com; s=arc-20160816;
-        b=SsuQTp2U2aEBMyUoJMPdPis5DJZP5u7dSmZeKS9PTx2ryXX20lhdZ0xvu6EsJ5d3r0
-         f+LKyB/ftF05hPCASb6xxY2Fcv9JlIJeRanf0Z5E6CM4fk8x6+xdvpNmjb8XEvCT7Es5
-         y16b80xxT4dorfFrap+TlneXzH3AbZTyIRjfJjgk6/nYI4RsiV6pt/Hqgv3P/7T2PzSi
-         jantCZTSypbn002+m1hmGeYp4uKFit5SqBPCdLKFAeyMDxScKVkyI+DORNd6HaCozFbY
-         m8R9SBXo5Jm84Bp/XnTuDysquyapm2W5e3BLm0Hp9SvKVRWjD4+lsrqXYOVCZH2/nm4f
-         PkAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0QukRrqdVEOHFDDWrLSyBECuZjmX2ZN9Bq0kPvHrybM=;
-        b=kidxLJRntWZY55lHJdbKa7dRWytafrq4j2m3SsGW1Q/03cj9mNGwllswq0+b9nAGkD
-         LYGLNzyWLVxqIOZDKVUrgZ/cub8bk9sj3f3rs/IMiEl/g4odG/euMO5Tn+imdkXZbX4K
-         3xZ+TTTqG3DJC+FjFh0+dTo9eG1lzYWBuvS51273Be8FzCT/BMRU+fp9poMhw+wQi9oW
-         5I/1VzfF401lP9nL7W611+omEj4Rk4XCWFN6OiUtjTSUdd03HljoW/AMfr8fy02HRDiT
-         TpqgKYQgruBDvUF00JgGlzdeBz2MDbdMrHKPZ20SL3eUsJDBHXuPReV2s9U786EoF0ED
-         EEYQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U1I2jK48;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com. [2607:f8b0:4864:20::42b])
-        by gmr-mx.google.com with ESMTPS id j8si381741plk.3.2019.03.12.02.35.18
+Received: by 10.140.109.70 with SMTP id k64ls494549qgf.25.gmail; Thu, 25 Feb
+ 2016 09:34:00 -0800 (PST)
+X-Received: by 10.140.134.134 with SMTP id 128mr14841764qhg.29.1456421640667;
+        Thu, 25 Feb 2016 09:34:00 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id ff2si1459636pad.2.2016.02.25.09.34.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 02:35:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) client-ip=2607:f8b0:4864:20::42b;
+        Thu, 25 Feb 2016 09:34:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U1I2jK48;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42b.google.com with SMTP id d25so1390225pfn.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 12 Mar 2019 02:35:18 -0700 (PDT)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id e127so3185078pfe.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 09:34:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=0QukRrqdVEOHFDDWrLSyBECuZjmX2ZN9Bq0kPvHrybM=;
-        b=U1I2jK48eUUb7imoHma5gRjWhBBfIHJkq4236NLdDyTHxWLqB2pkuvsnUUEeNBvAMy
-         eRNZk8ZwghflbweyE9+Zg6QSqwkPpCzIj8CaQmPDdxjKDaTLJU8ipFwEKaKE2mhcqRrg
-         /ojF9iAfIwlkqPHiy67g4pBHhn8QdM8lscSI/3/+PUw5zYwx4+g6LG0CaBGYI/m/PL5q
-         AyOfxshxh0KR+4cBLr3SCul7z8IfeMU09PpWfRjllWS7hsSn3njqjQbLF0FN1bOE7hmp
-         1lDL495sCV/VNOmzctZrko1gdPBihdUSpW2yg/fxsb+uCOXKz3KIlmrGApHqjHLgygYQ
-         kDWw==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=+d/syaPNRJxMKD+Rln0Za4aOEfFAXums2IvLOTxYS8c=;
+        b=i+FxMk4LovWSR1hjcvtxOElYo2Xgc9vuf24s7NSApnI7LbxMhlJ/AZ3/EOxGCQ3Gue
+         lzPpbXkWUC6ud3b5HuFnENWc01Q6G0CNipYxqtXKfgpCmSd568qBAd2TrFicgrvF+CX5
+         q6Oy9w7nlJJH5wRithpEEnzvDVjZwlazuRq/BdKZldJma8NdPE6RlHe+SlK9elI5aCLB
+         Dcih+IZrhox9FsROcER7RDj8ofFgUsg90yykq3t5EofBUMBNlGMrbTKoZQu+wMjB4lsO
+         ucmFonfMMHV+9XHjV0+HsHGVzWaW+aWpTtsIs7qHvAH21L5qOWeZoOj4YiLkBB5n+QAC
+         iHXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=0QukRrqdVEOHFDDWrLSyBECuZjmX2ZN9Bq0kPvHrybM=;
-        b=Az382Vg3ffKPz2YbznG4m88314TGEd6oTP1lT1j4qg5nVTlrd6/5RnIUy4Q74qhuPx
-         9iJJS5peeIZvQD1ojAeBONh0pYELoO0tLIx2cpJP6wTozl9Ho4jjr8yd+qF6IQT1Aj1x
-         Dhiiw6i9R0MkKtf7bDtGVOW1Yhv0H8OAlZhcwMxlciGTPM7/qyMszz6Weh5HPCpAVMq8
-         GQpoqh4e1fdbs7hZZY22Jupli0zy/X1nX4zAOSb1++7Xcxq/jMACBGUJ7vXeoV6ozO5H
-         vXbUVKtIcVsXMxcRFZxDXFovCkVHXrL/oAw4pjZlBa1mPc+kYED0KfFe+Ru+E2CXXlDx
-         TGdQ==
-X-Gm-Message-State: APjAAAXtFXOpgKaWb34xYt9/5fu52ZwxkkP8dL2pqi4vr2Eigc1MsP+j
-	UOs24FncH/A6mEub2UYvJ+8=
-X-Received: by 2002:a17:902:968a:: with SMTP id n10mr39196348plp.283.1552383317935;
-        Tue, 12 Mar 2019 02:35:17 -0700 (PDT)
-Return-Path: <etsai042@gmail.com>
-Received: from localhost (199.138.240.35.bc.googleusercontent.com. [35.240.138.199])
-        by smtp.gmail.com with ESMTPSA id a24sm11084822pfo.160.2019.03.12.02.35.17
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2019 02:35:17 -0700 (PDT)
-From: Wentao Cai <etsai042@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Wentao Cai <etsai042@gmail.com>
-Subject: [PATCH] Staging: netlogic: Remove unnecessary 'out of memory' message
-Date: Tue, 12 Mar 2019 02:35:11 -0700
-Message-Id: <20190312093511.3789-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=+d/syaPNRJxMKD+Rln0Za4aOEfFAXums2IvLOTxYS8c=;
+        b=aQVg2Xu9qiQO6bWl7rFSIpEvir6Rv54MQUc+f+kwtkmGI1q8tL24vk8tlWLVQQNVl3
+         dKEN79ss5tYDR1NURDOyLtV/3Kfr6tSntwos44TPguOFMVS4HOokymXiP3fl2ukwF6/e
+         0OUeB7t7j632UZlshuNJGCplFzupvj4G5W5tOL7Ye23Q5JddDh0XzSAloPoA7bc+KKoC
+         1ugJzhoOWx19C6F8jbFcc1RVcQIbVj8dhp2xT7RIbaXwXW5nlgYNs/TgThkCtLZtg2Tu
+         mBOIGG3Lojq0AgAQQ//sH49TnXKrl5NOob/dYBXLIlabq1DmIVFywTpDgCqLC4moisdw
+         D25A==
+X-Gm-Message-State: AG10YOSCuPhkyu2T0MrfB6cVv0DAVhBgUvoiPo2d7GA4Xr7ps3qI1PNXYWr5RP1SySrzag==
+X-Received: by 10.98.75.79 with SMTP id y76mr55849185pfa.147.1456421640477;
+        Thu, 25 Feb 2016 09:34:00 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([106.215.131.237])
+        by smtp.gmail.com with ESMTPSA id l62sm13643507pfj.7.2016.02.25.09.33.54
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 25 Feb 2016 09:33:59 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Thu, 25 Feb 2016 23:03:48 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH v2] Staging: lustre: lov: Use list_for_each_entry instead of list_for_each
+Date: Thu, 25 Feb 2016 23:03:47 +0530
+Message-Id: <1456421627-9339-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1456415872-7808-1-git-send-email-bhumirks@gmail.com>
+References: <1456415872-7808-1-git-send-email-bhumirks@gmail.com>
 
-Remove unnecessary 'out of memory' message to silence checkpatch.pl
-warning:
-WARNING: Possible unnecessary 'out of memory' message
+Use list_for_each_entry instead of list_for_each and list_entry as it
+simplifies the code. Done using coccinelle:
 
-Signed-off-by: Wentao Cai <etsai042@gmail.com>
+@@
+type T,T2;
+identifier I1,I2;
+expression e1,e2;
+iterator name list_for_each_entry;
+iterator name list_for_each;
+@@
+
+- T *I1;
+...
+- list_for_each(I1,e1)
++ list_for_each_entry(I2,e1,e2)
+{
+...when!=T *I1;
+- I2=list_entry(I1,T2,e2);
+...
+}
+...when!=I2;
+
+@@
+type T,T2,T3;
+identifier I1,I2,I3;
+expression e1,e2;
+@@
+
+- T *I1;
++ T3 *I3;
+...
+- list_for_each(I1,e1)
++ list_for_each_entry(I3,e1,e2)
+{
+...when!=T *I1;
+- T3 *I3=list_entry(I1,T2,e2);
+...
+}
+...when!=I3;
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/netlogic/xlr_net.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Changes in v2:
+* Change semantic patch to check for any occurrence of req outside the list_for_each_entry loop.
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 8554fcf4321b..10f14a5cf490 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -185,10 +185,8 @@ static int xlr_net_fill_rx_ring(struct net_device *ndev)
+ drivers/staging/lustre/lustre/lov/lov_obd.c     | 19 ++++---------------
+ drivers/staging/lustre/lustre/lov/lov_request.c |  5 +----
+ 2 files changed, 5 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/lov/lov_obd.c b/drivers/staging/lustre/lustre/lov/lov_obd.c
+index dcaa5a1..1ce7341 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_obd.c
++++ b/drivers/staging/lustre/lustre/lov/lov_obd.c
+@@ -1064,7 +1064,6 @@ static int lov_destroy(const struct lu_env *env, struct obd_export *exp,
+ 	struct lov_request_set *set;
+ 	struct obd_info oinfo;
+ 	struct lov_request *req;
+-	struct list_head *pos;
+ 	struct lov_obd *lov;
+ 	int rc = 0, err = 0;
  
- 	for (i = 0; i < MAX_FRIN_SPILL / 4; i++) {
- 		skb_data = xlr_alloc_skb();
--		if (!skb_data) {
--			netdev_err(ndev, "SKB allocation failed\n");
-+		if (!skb_data)
- 			return -ENOMEM;
--		}
- 		send_to_rfr_fifo(priv, skb_data);
+@@ -1084,9 +1083,7 @@ static int lov_destroy(const struct lu_env *env, struct obd_export *exp,
+ 	if (rc)
+ 		goto out;
+ 
+-	list_for_each(pos, &set->set_list) {
+-		req = list_entry(pos, struct lov_request, rq_link);
+-
++	list_for_each_entry(req, &set->set_list, rq_link) {
+ 		if (oa->o_valid & OBD_MD_FLCOOKIE)
+ 			oti->oti_logcookies = set->set_cookies + req->rq_stripe;
+ 
+@@ -1131,7 +1128,6 @@ static int lov_getattr_async(struct obd_export *exp, struct obd_info *oinfo,
+ {
+ 	struct lov_request_set *lovset;
+ 	struct lov_obd *lov;
+-	struct list_head *pos;
+ 	struct lov_request *req;
+ 	int rc = 0, err;
+ 
+@@ -1151,9 +1147,7 @@ static int lov_getattr_async(struct obd_export *exp, struct obd_info *oinfo,
+ 	       POSTID(&oinfo->oi_md->lsm_oi), oinfo->oi_md->lsm_stripe_count,
+ 	       oinfo->oi_md->lsm_stripe_size);
+ 
+-	list_for_each(pos, &lovset->set_list) {
+-		req = list_entry(pos, struct lov_request, rq_link);
+-
++	list_for_each_entry(req, &lovset->set_list, rq_link) {
+ 		CDEBUG(D_INFO, "objid " DOSTID "[%d] has subobj " DOSTID " at idx%u\n",
+ 		       POSTID(&oinfo->oi_oa->o_oi), req->rq_stripe,
+ 		       POSTID(&req->rq_oi.oi_oa->o_oi), req->rq_idx);
+@@ -1204,7 +1198,6 @@ static int lov_setattr_async(struct obd_export *exp, struct obd_info *oinfo,
+ {
+ 	struct lov_request_set *set;
+ 	struct lov_request *req;
+-	struct list_head *pos;
+ 	struct lov_obd *lov;
+ 	int rc = 0;
+ 
+@@ -1228,9 +1221,7 @@ static int lov_setattr_async(struct obd_export *exp, struct obd_info *oinfo,
+ 	       oinfo->oi_md->lsm_stripe_count,
+ 	       oinfo->oi_md->lsm_stripe_size);
+ 
+-	list_for_each(pos, &set->set_list) {
+-		req = list_entry(pos, struct lov_request, rq_link);
+-
++	list_for_each_entry(req, &set->set_list, rq_link) {
+ 		if (oinfo->oi_oa->o_valid & OBD_MD_FLCOOKIE)
+ 			oti->oti_logcookies = set->set_cookies + req->rq_stripe;
+ 
+@@ -1324,7 +1315,6 @@ static int lov_statfs_async(struct obd_export *exp, struct obd_info *oinfo,
+ 	struct obd_device      *obd = class_exp2obd(exp);
+ 	struct lov_request_set *set;
+ 	struct lov_request *req;
+-	struct list_head *pos;
+ 	struct lov_obd *lov;
+ 	int rc = 0;
+ 
+@@ -1335,8 +1325,7 @@ static int lov_statfs_async(struct obd_export *exp, struct obd_info *oinfo,
+ 	if (rc)
+ 		return rc;
+ 
+-	list_for_each(pos, &set->set_list) {
+-		req = list_entry(pos, struct lov_request, rq_link);
++	list_for_each_entry(req, &set->set_list, rq_link) {
+ 		rc = obd_statfs_async(lov->lov_tgts[req->rq_idx]->ltd_exp,
+ 				      &req->rq_oi, max_age, rqset);
+ 		if (rc)
+diff --git a/drivers/staging/lustre/lustre/lov/lov_request.c b/drivers/staging/lustre/lustre/lov/lov_request.c
+index 6c5ae05..34c26ec 100644
+--- a/drivers/staging/lustre/lustre/lov/lov_request.c
++++ b/drivers/staging/lustre/lustre/lov/lov_request.c
+@@ -190,7 +190,6 @@ out:
+ 
+ static int common_attr_done(struct lov_request_set *set)
+ {
+-	struct list_head *pos;
+ 	struct lov_request *req;
+ 	struct obdo *tmp_oa;
+ 	int rc = 0, attrset = 0;
+@@ -207,9 +206,7 @@ static int common_attr_done(struct lov_request_set *set)
+ 		goto out;
  	}
- 	netdev_info(ndev, "Rx ring setup done\n");
+ 
+-	list_for_each(pos, &set->set_list) {
+-		req = list_entry(pos, struct lov_request, rq_link);
+-
++	list_for_each_entry(req, &set->set_list, rq_link) {
+ 		if (!req->rq_complete || req->rq_rc)
+ 			continue;
+ 		if (req->rq_oi.oi_oa->o_valid == 0)   /* inactive stripe */
 -- 
-2.11.0
+1.9.1
 
 
