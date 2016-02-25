@@ -1,105 +1,103 @@
-X-GM-THRID: 6255230789033656320
-X-Received: by 10.129.80.3 with SMTP id e3mr40735488ywb.23.1456409410968;
-        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
+X-GM-THRID: 6255174168530124800
+X-Received: by 10.112.138.98 with SMTP id qp2mr5605102lbb.4.1456396596375;
+        Thu, 25 Feb 2016 02:36:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.30.130 with SMTP id e124ls394668ioe.17.gmail; Thu, 25 Feb
- 2016 06:10:10 -0800 (PST)
-X-Received: by 10.107.18.216 with SMTP id 85mr2607437ios.16.1456409410706;
-        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x231.google.com (mail-io0-x231.google.com. [2607:f8b0:4001:c06::231])
-        by gmr-mx.google.com with ESMTPS id iq8si241728igb.0.2016.02.25.06.10.10
+Received: by 10.25.83.13 with SMTP id h13ls61889lfb.51.gmail; Thu, 25 Feb 2016
+ 02:36:35 -0800 (PST)
+X-Received: by 10.112.150.105 with SMTP id uh9mr3826400lbb.17.1456396595853;
+        Thu, 25 Feb 2016 02:36:35 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 141si108024wmy.2.2016.02.25.02.36.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::231 as permitted sender) client-ip=2607:f8b0:4001:c06::231;
+        Thu, 25 Feb 2016 02:36:35 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::231 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x231.google.com with SMTP id 9so83610577iom.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:10:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=igwE0O1XYXytuv5+8dzCXr1Bbgs6UQii274TWjWXKS8=;
-        b=k7rB7VaBAN2ORNVX/68bKVO5a38eBtKYNqyOGmOkTzqlOjdtpF71hmyd6adzt3upZV
-         8GYFbxuCiZaABEVqRiUg7KmH+jDH8frle+ZT/djVlQjAR3tDyZ4R5q9MkZpD6HwGf6CP
-         xIh0rNpM0/Cp1th67K0eVSXrEdBlwwCRsEeyGt7TEm98m8dvk6WoUtB8z2lzbRXeEW5a
-         WO2ld3dkFr+vUcMGQp3y/YHW0loZNGr/dnu1GeXxoDmyZT2Qiadhn1we4ZtEIFuAHvXV
-         aU0rGbLGoo4VALvijojuv6/Rp35lURMYACtXYYJSxUTWs7Tloh6Jofodbm+L2G1+8ADf
-         6RIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=igwE0O1XYXytuv5+8dzCXr1Bbgs6UQii274TWjWXKS8=;
-        b=WT33uYeL/KcvFxspsvaalkwyTBTQnTu8dOVeAW0PyHc4cx6/NdbinLyMuvc5F+SevI
-         jO8jNT3P1LrFbysGhe82gFFiBmft9jcvnfgB/tVixFlvqEp8QZfGQ3jAECEqsBccizaJ
-         Mr2bjKq1RcHV1BGUKpULxJyBn0o/F6idfuMq9frupH3aomMoyrPuNMYK9DD3HsfTScd8
-         NeHKFxwhCjYB+btPXtEN9DsnzMm17WEGCfHRidW6DH3b8VYdcrdJtwygN5EtRpqyqj/T
-         r/ZkyR+8G0aGyMpXzrd3jZxuOECd4xHcAnDaiC5IPviNwJRT7zfF3q1WaIfW1heIoMBG
-         w9ZA==
-X-Gm-Message-State: AG10YOSO6EzdhlNBgApOER5QY8tG+g6Jn0je2562E1lGtgpSLzUwIgoaG/CW8RMmfbsOYA==
-X-Received: by 10.107.36.80 with SMTP id k77mr3099970iok.121.1456409410553;
-        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id c79sm3294266iod.5.2016.02.25.06.10.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
-Date: Thu, 25 Feb 2016 14:09:22 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: netlogic: Drop unneeded void pointer cast
-Message-ID: <20160225190922.GA6795@janani-Inspiron-3521>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,498,1449529200"; 
+   d="scan'208";a="165937267"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 25 Feb 2016 11:36:35 +0100
+Date: Thu, 25 Feb 2016 11:36:33 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: "pooja.shamili" <poojashamili@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: gdm72x: Adding spaces before
+ and after '*'
+In-Reply-To: <20160225103007.GA702@localhost>
+Message-ID: <alpine.DEB.2.10.1602251131530.2708@hadrien>
+References: <20160225103007.GA702@localhost>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Void pointers need not be cast to other pointer types.
-Semantic patch used:
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
 
-(
-  *((T *)e)
-| 
-  ((T *)x) [...]
-| 
-  ((T *)x)->f
-| 
-- (T *)
-  e
-)
+On Thu, 25 Feb 2016, pooja.shamili wrote:
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/netlogic/xlr_net.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch fixes the checkpatch.pl error: Spaces preferred around the
+> '*'
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 0015847..ec5b8e0 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -130,7 +130,7 @@ static void xlr_net_fmn_handler(int bkt, int src_stnid, int size, int code,
- 	struct xlr_net_priv *priv;
- 	u32 port, length;
- 	unsigned char *addr;
--	struct xlr_adapter *adapter = (struct xlr_adapter *)arg;
-+	struct xlr_adapter *adapter = arg;
- 
- 	length = (msg->msg0 >> 40) & 0x3fff;
- 	if (length == 0) {
--- 
-2.5.0
+It is better to write the commit message in the imperative.  This tends to
+be more concise, while also making it clear what is done. See
+http://kernelnewbies.org/PatchPhilosophy
 
+In this case, you donn't have much to say, so perhaps the current commit
+message is OK.  But in the subject, it would be better to say "Add" rather
+than "Adding".
+
+julia
+
+>
+> Signed-off-by: pooja.shamili <poojashamili@gmail.com>
+> ---
+>  drivers/staging/gdm724x/gdm_mux.h | 4 ++--
+>  drivers/staging/gdm724x/gdm_usb.h | 6 +++---
+>  2 files changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/gdm724x/gdm_mux.h b/drivers/staging/gdm724x/gdm_mux.h
+> index 3d50383..0871b8f 100644
+> --- a/drivers/staging/gdm724x/gdm_mux.h
+> +++ b/drivers/staging/gdm724x/gdm_mux.h
+> @@ -27,8 +27,8 @@
+>
+>  #define START_FLAG 0xA512485A
+>  #define MUX_HEADER_SIZE 14
+> -#define MUX_TX_MAX_SIZE (1024*10)
+> -#define MUX_RX_MAX_SIZE (1024*30)
+> +#define MUX_TX_MAX_SIZE (1024 * 10)
+> +#define MUX_RX_MAX_SIZE (1024 * 30)
+>  #define AT_PKT_TYPE 0xF011
+>  #define DM_PKT_TYPE 0xF010
+>
+> diff --git a/drivers/staging/gdm724x/gdm_usb.h b/drivers/staging/gdm724x/gdm_usb.h
+> index e6486e7..ffb3d99 100644
+> --- a/drivers/staging/gdm724x/gdm_usb.h
+> +++ b/drivers/staging/gdm724x/gdm_usb.h
+> @@ -26,10 +26,10 @@
+>  #define PM_SUSPEND 1
+>  #define AUTO_SUSPEND_TIMER 5000 /* ms */
+>
+> -#define RX_BUF_SIZE		(1024*32)
+> -#define TX_BUF_SIZE		(1024*32)
+> +#define RX_BUF_SIZE		(1024 * 32)
+> +#define TX_BUF_SIZE		(1024 * 32)
+>  #define SDU_BUF_SIZE	2048
+> -#define MAX_SDU_SIZE	(1024*30)
+> +#define MAX_SDU_SIZE	(1024 * 30)
+>  #define MAX_PACKET_IN_MULTI_SDU	256
+>
+>  #define VID_GCT			0x1076
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160225103007.GA702%40localhost.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
