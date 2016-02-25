@@ -1,102 +1,105 @@
-X-GM-THRID: 6256047762619498496
-X-Received: by 10.140.30.99 with SMTP id c90mr23122372qgc.2.1456599627969;
-        Sat, 27 Feb 2016 11:00:27 -0800 (PST)
+X-GM-THRID: 6255234161639948288
+X-Received: by 10.50.154.2 with SMTP id vk2mr2727127igb.9.1456410196174;
+        Thu, 25 Feb 2016 06:23:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.73.199 with SMTP id n7ls172287igv.11.canary; Sat, 27 Feb
- 2016 11:00:27 -0800 (PST)
-X-Received: by 10.66.150.68 with SMTP id ug4mr6254933pab.33.1456599627253;
-        Sat, 27 Feb 2016 11:00:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id y20si552883pfa.2.2016.02.27.11.00.27
+Received: by 10.50.183.7 with SMTP id ei7ls215861igc.16.gmail; Thu, 25 Feb
+ 2016 06:23:15 -0800 (PST)
+X-Received: by 10.66.148.4 with SMTP id to4mr39566880pab.8.1456410195892;
+        Thu, 25 Feb 2016 06:23:15 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x236.google.com (mail-ig0-x236.google.com. [2607:f8b0:4001:c05::236])
+        by gmr-mx.google.com with ESMTPS id c15si239259igm.1.2016.02.25.06.23.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Feb 2016 11:00:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Thu, 25 Feb 2016 06:23:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::236 as permitted sender) client-ip=2607:f8b0:4001:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::236 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id a7so4898863pax.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 27 Feb 2016 11:00:27 -0800 (PST)
+Received: by mail-ig0-x236.google.com with SMTP id z8so14319242ige.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:23:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=l6s6pzrctmUQHnZO34+WiiXHCixbKmElFB5c2ggDQ9A=;
-        b=Eox4lGrTTEmav45ChUmur3s23vRXwAsIdKsnYRqjAmb6HyB67vlWP+/jT5AET6atLo
-         Zjxt+Iv3O16kFUYgpDx9YHBvwi5NU+KoCsD4IIDVxJq25wXPr61dAJhGzWBh5u3icjd3
-         wbHr923lpJshF9HCCbFUTAWaaeDJNlk3ZJMsGoz9FXGM7wP6bfjsOqzGUvrp1L0AyiLO
-         0+shdOXcKv6pNbEciXj87xRcuaKsxMVWv3oS8L8+qw/HqpHFhfYZj8RqzQNQ74TkOyd9
-         zmWgfEgORE5Sx/cY7oPnsr4Og0zaxfwy2Ld/lvhy896gAtyfr8MmtOH8w8HEW5nbf26A
-         Ht+w==
+        bh=iReSO77uT5/FXwm4SdRke3EGfmBIToVgaY5MDe2hKwg=;
+        b=Z0CipB8s5gMcyXF6eyqS77kxQ/LvBD7YGiCxLwQHsZnzPLVI4lF7qoISWJbQWLnRKm
+         yJqPxsC7W0Uq/dN2ZoSQS/hZI5EbhLGhKf7JtqBvVSqKTpaQzxmk658YDGrOSXCZlL4q
+         PfigCkh20Boifhxm+vWwYKbtvz2a+1waaaNoe916WjnAzZKNOvxrNxv8ujOEkxoOCarW
+         3KVZ6Lg91NXir2f9iIhGFbnvScTSmY8D/jTcgESu1vbRosm7GkYdosRdTkpgrSIJx44+
+         HNrcOpnJFvmsnm1h0nR5KVBmeFaoOBoCLOtBVCL1FYzYJo0PCcmJM3HXPaCghFzKJ/Oe
+         nY8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=l6s6pzrctmUQHnZO34+WiiXHCixbKmElFB5c2ggDQ9A=;
-        b=jspUSxshiHMqCIEDRfYyLL07aoGp59nwQjO3bzA4Ojqyr9A8mN1U1CmQQmZA+gMtGu
-         XR3+DMxzqXoSRQuhAlKU6bNj8zRMefrFahC6hPd3X+TTEJm64/qqYypxnz8foZY4BF/D
-         ST3toOIUcV6XeZ6riyHxQ0ZnTx7m5pE8Sa1kW7Z1nkOGlidLHKQ8grpBIW5TV/+Kz6Lo
-         q2NQLnDHEQxjboD5/qMb23gA+3R5AZZfasA5H6RjjMpZQWxig2u7KoWT2eq8TjBkRDP4
-         hN+maB8fUo9+NwcvaqVuOcOaygdg7j70U3lg0NpSd+oINDbu+1Oq9vH4JZ7HjD6C9Rt+
-         zcmg==
-X-Gm-Message-State: AD7BkJKwie2QHin1iEZdAUdOX2TdGnW/jxWQs44n8ZZ6K3L4JGmC+z54Am5wahbiEsPrHQ==
-X-Received: by 10.66.192.195 with SMTP id hi3mr11073876pac.149.1456599627125;
-        Sat, 27 Feb 2016 11:00:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id n28sm27639077pfa.45.2016.02.27.11.00.26
+        bh=iReSO77uT5/FXwm4SdRke3EGfmBIToVgaY5MDe2hKwg=;
+        b=kIKNQ1zN6vpVqEL63uyQeJ8z1U3HKrpINVP/MdONdPDA4fhbaRgxa28MT7RfObDWGe
+         /hAJUNall7Jb5ynSd1ua+LiyTkdbLO4jgpc9GoF+izecy/G+fSt6hxO41bfTylRNKTqA
+         xF3dRYzF2ZAaMiAQ82X6Q0tnM6DkpveUAu+IRQVw2tjccgnyaKYkVa6O+3xOT/qzp0J2
+         7lCV0ebHr8TTKDZGSVIgpgUTdLWxAUdXB46v1W6muiqjGwYgIFlGdMcM/ud8XGj8+rLv
+         2yhztt1EMAEmV8KG+gx1Rzt0QqkvQezku5z9b3sIaBZ177GmW/A23004Xb3SiHIl7KnL
+         Wz3g==
+X-Gm-Message-State: AG10YOTIvS8PstKK++L2YINzjNNJMSGeO6eGNFKRBcb6WipkDI9YTf9JB7DhFyhBQihvwg==
+X-Received: by 10.50.124.42 with SMTP id mf10mr3253843igb.79.1456410195703;
+        Thu, 25 Feb 2016 06:23:15 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id f14sm3307887ioi.20.2016.02.25.06.23.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 27 Feb 2016 11:00:26 -0800 (PST)
-Date: Sun, 28 Feb 2016 00:27:38 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 06:23:15 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:22:27 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: lustre: ptlrpc: Prefer using macro DIV_ROUND_UP
-Message-ID: <20160227185738.GA3482@Karyakshetra>
+Subject: [PATCH] staging: wlan-ng: prism2mgmt.c: Drop void pointer cast
+Message-ID: <20160225192227.GA7061@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
+Void pointers don't need to be cast to other pointer types.
+Semantic patch used:
+
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
 @@
-expression e1;
-expression e2;
-@@
+
 (
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
 )
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- Changes in v2:
-	-Fixed typo "lusture" to "lustre" in the subject
-
- drivers/staging/lustre/lustre/ptlrpc/niobuf.c | 2 +-
+ drivers/staging/wlan-ng/prism2mgmt.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/niobuf.c b/drivers/staging/lustre/lustre/ptlrpc/niobuf.c
-index 47f53b4..9f8111a 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/niobuf.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/niobuf.c
-@@ -160,7 +160,7 @@ static int ptlrpc_register_bulk(struct ptlrpc_request *req)
- 		 "registered: %d  rq_xid: %llu bd_last_xid: %llu\n",
- 		 desc->bd_registered, xid, desc->bd_last_xid);
-
--	total_md = (desc->bd_iov_count + LNET_MAX_IOV - 1) / LNET_MAX_IOV;
-+	total_md = DIV_ROUND_UP(desc->bd_iov_count, LNET_MAX_IOV);
- 	desc->bd_registered = 1;
- 	desc->bd_last_xid = xid;
- 	desc->bd_md_count = total_md;
---
-2.1.4
+diff --git a/drivers/staging/wlan-ng/prism2mgmt.c b/drivers/staging/wlan-ng/prism2mgmt.c
+index 013a624..d8ed9a0 100644
+--- a/drivers/staging/wlan-ng/prism2mgmt.c
++++ b/drivers/staging/wlan-ng/prism2mgmt.c
+@@ -375,7 +375,7 @@ int prism2mgmt_scan_results(wlandevice_t *wlandev, void *msgp)
+ 
+ 	int count;
+ 
+-	req = (struct p80211msg_dot11req_scan_results *) msgp;
++	req = msgp;
+ 
+ 	req->resultcode.status = P80211ENUM_msgitem_status_data_ok;
+ 
+-- 
+2.5.0
 
 
