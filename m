@@ -1,120 +1,232 @@
-X-GM-THRID: 6255862679722786816
-X-Received: by 10.140.95.38 with SMTP id h35mr21041462qge.3.1456556534812;
-        Fri, 26 Feb 2016 23:02:14 -0800 (PST)
+X-GM-THRID: 6255237134905507840
+X-Received: by 10.31.174.2 with SMTP id x2mr41286821vke.13.1456410888859;
+        Thu, 25 Feb 2016 06:34:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.17.149 with SMTP id 21ls1496185qgd.55.gmail; Fri, 26 Feb
- 2016 23:02:13 -0800 (PST)
-X-Received: by 10.129.85.68 with SMTP id j65mr4483830ywb.57.1456556533225;
-        Fri, 26 Feb 2016 23:02:13 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id ui7si2421656pab.0.2016.02.26.23.02.13
+Received: by 10.182.28.70 with SMTP id z6ls201046obg.26.gmail; Thu, 25 Feb
+ 2016 06:34:48 -0800 (PST)
+X-Received: by 10.182.227.137 with SMTP id sa9mr43357341obc.44.1456410888508;
+        Thu, 25 Feb 2016 06:34:48 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x234.google.com (mail-io0-x234.google.com. [2607:f8b0:4001:c06::234])
+        by gmr-mx.google.com with ESMTPS id c15si242986igm.1.2016.02.25.06.34.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 23:02:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Thu, 25 Feb 2016 06:34:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::234 as permitted sender) client-ip=2607:f8b0:4001:c06::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::234 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id yy13so5586217pab.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 23:02:13 -0800 (PST)
+Received: by mail-io0-x234.google.com with SMTP id g203so89607996iof.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:34:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=yQ3gwzPTIkfqYyCMKj8CpjhnYg9NroBu6GmU23pRshU=;
-        b=ZCyruVrhTuzJMeGDMH9x5GvW5J0yto0ce0M/NJz9MaKvzk81FdFoBPKXkj/LIMgEhz
-         I6fhymdVhaJr/8PuzOekJgaXU4RVm+dh4gI5+Eg7hynixalulsuN0KzaS3P3iMgw1UZu
-         5YZq5S9zFUyTO/f+F0VBCRU+O2Nd80hrvwPZVJxXWV2a9fjYWPNn6chJjpFDUnCaAEDx
-         zlddYk3z63KTNdkP/pqdpQaawpPK6n8nXw+sZjlYPKesaOw+XaQ9///xUQpO4WdhJzxu
-         WedviIl/HecFhL4dEdIfUT/zTsjA/4HAhP0BHB00ZaQMYOGUt9wLD1C9OHHHwrUeMeen
-         YiOQ==
+        bh=/XV04nP5ckPSSKwxXugwvbY1DbpQUrm0giHb4CysueU=;
+        b=AQmRjf1x6t7jYPgkI0ZgDZdpEwvJ8QwcSK3iFhvD3jxL374xfITSWkiEfQwH05xvUA
+         j8H9NiBF3lMPgKhSL6tT2eLcbKYSVtaMcbV4fiZQFNMhhJ6hdzyKKWUA+eCvVCPJ+f9P
+         CzyRupBf3TLWeZshje7s4vG/bSGsu18juCDJ80yZxtXUusUs59T7NklW/u+ohQbvi9ar
+         9+d2OxUvOvLeYSqueOAUFO7che5kM+J0RGzPcsX4E7lLQMv9TR59AwM20F3hS1vMnfeY
+         gGxUrucSBl3XAWdPPktEOHwnVXy5AXoFVi7GQUow3FMJzE6W2WIFRQGH4WB9TQxZfjgt
+         mq7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=yQ3gwzPTIkfqYyCMKj8CpjhnYg9NroBu6GmU23pRshU=;
-        b=cJMmYovPhDhWeMQDVMELS2VmhGXZCVrdqVWEr+5SEAE98WyNIWZ18dkWWnULFHSg06
-         mbsu0jqusxyPywZUrW46pWWEGz4RMqAYV10sxAOtZHfywrIb6Jv/vVdIWJfQi4H5rKe0
-         9pLxY5oWJKVge1uem5DG3Y3ZR0EVV7PJzfkgM9mcVq7aTpnXFXmL9YTImsHDU7MGFVax
-         tCzejDdpfZO+THfYClEgIWCt6cPK22vcOmCf85m1oxab/8GKVq++LsOZ2v+bsaTiKPpV
-         G3ROExr+HV0jIlKw/iOTnbSUycJoyMUth4NQ3tWSynV1lWpCUgfOizJ5AipXhaWGOlmR
-         fGfg==
-X-Gm-Message-State: AD7BkJJjNeg04Q3V2Mp9/d7EeEsciR78nVGaI5at/zsl8gIrWv0SDkSXPhfbNycHL3QZ/A==
-X-Received: by 10.66.118.198 with SMTP id ko6mr7673537pab.11.1456556533010;
-        Fri, 26 Feb 2016 23:02:13 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ti6sm23687896pab.4.2016.02.26.23.02.12
+        bh=/XV04nP5ckPSSKwxXugwvbY1DbpQUrm0giHb4CysueU=;
+        b=IzHyXAQ0fhxB9NQ2YbtJa7LUbK26risAeCFkN6NdeEa26TSKeqrKqsTA1xtjoiwPHY
+         HVL0dEEhc0/m1T/jL+8HOCGKzTaGAvWwgyrnU3qBaZufspUtgpexpInMDkbPcj57Kysg
+         VXLKorvISr1KgSMOShCotc59H046mi/kzEX6s6jdK6x0uY8QEthNDW38pSnRWGZ+0dxW
+         Ti3xpaoiyXXwo0wwQb1bMh831zoADKYSVFW+dAhMion/yXhlOTsc47SheVLaY0mHCUwP
+         Hb48MfFQKO9k5nTBPnYewmRP0E3SZHWVnBSoz19J6JntsZYVBnkpZHLVArebMw4/yCsa
+         MLBg==
+X-Gm-Message-State: AG10YOS82ZOM3fIfO2+xQveIJl6P1CAtRGLE4j2DZHpIRr04W78z9ks5MpQbIWoamr+dVA==
+X-Received: by 10.107.131.24 with SMTP id f24mr3083009iod.191.1456410888265;
+        Thu, 25 Feb 2016 06:34:48 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id dl1sm1339486igc.22.2016.02.25.06.34.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 23:02:12 -0800 (PST)
-Date: Sat, 27 Feb 2016 12:31:50 +0530
-From: "pooja.shamili" <poojashamili@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 06:34:47 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:33:59 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: rtl8192e: Clean up tests on the results of
- functions that return NULL on failure.
-Message-ID: <20160227070150.GA18032@localhost>
+Subject: [PATCH] staging: wlan-ng: prism2sta.c: Drop unneeded void pointer
+ cast
+Message-ID: <20160225193359.GA7212@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Functions returning NULL as a return value on failure can be tested for
-as !x, NULL == x or x == NULL. As !x is commonly used, all the tests
-need to be modified to use !x for a consistent coding style. In this
-patch, the function kzalloc is considered.
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-Coccinelle is used to achieve this, the semantic patch being:
-
-@@
-expression E;
-statement S;
+@r@
+expression x;
+void *e;
+type T;
+identifier f;
 @@
 
-E = kzalloc(...);
-
-if (
 (
-+	!
-	E
--	== NULL
-|
-+	!
--	NULL ==
-	E
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
 )
- ) S
 
-Signed-off-by: pooja.shamili <poojashamili@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_wx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/wlan-ng/prism2sta.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 84e6272..8060410 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -373,7 +373,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 		/* take WEP into use */
- 		new_crypt = kzalloc(sizeof(struct lib80211_crypt_data),
- 				    GFP_KERNEL);
--		if (new_crypt == NULL)
-+		if (!new_crypt)
- 			return -ENOMEM;
- 		new_crypt->ops = lib80211_get_crypto_ops("R-WEP");
- 		if (!new_crypt->ops) {
-@@ -618,7 +618,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
- 		lib80211_crypt_delayed_deinit(&ieee->crypt_info, crypt);
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index 131223a..8741aa6 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -242,7 +242,7 @@ static int prism2sta_txframe(wlandevice_t *wlandev, struct sk_buff *skb,
+ 			     union p80211_hdr *p80211_hdr,
+ 			     struct p80211_metawep *p80211_wep)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
  
- 		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
--		if (new_crypt == NULL) {
-+		if (!new_crypt) {
- 			ret = -ENOMEM;
- 			goto done;
- 		}
+ 	/* If necessary, set the 802.11 WEP bit */
+ 	if ((wlandev->hostwep & (HOSTWEP_PRIVACYINVOKED | HOSTWEP_ENCRYPT)) ==
+@@ -279,7 +279,7 @@ static int prism2sta_txframe(wlandevice_t *wlandev, struct sk_buff *skb,
+  */
+ static int prism2sta_mlmerequest(wlandevice_t *wlandev, struct p80211msg *msg)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 
+ 	int result = 0;
+ 
+@@ -409,7 +409,7 @@ static int prism2sta_mlmerequest(wlandevice_t *wlandev, struct p80211msg *msg)
+  */
+ u32 prism2sta_ifstate(wlandevice_t *wlandev, u32 ifstate)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	u32 result;
+ 
+ 	result = P80211ENUM_resultcode_implementation_failure;
+@@ -583,7 +583,7 @@ u32 prism2sta_ifstate(wlandevice_t *wlandev, u32 ifstate)
+ static int prism2sta_getcardinfo(wlandevice_t *wlandev)
+ {
+ 	int result = 0;
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	u16 temp;
+ 	u8 snum[HFA384x_RID_NICSERIALNUMBER_LEN];
+ 
+@@ -911,7 +911,7 @@ done:
+  */
+ static int prism2sta_globalsetup(wlandevice_t *wlandev)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 
+ 	/* Set the maximum frame size */
+ 	return hfa384x_drvr_setconfig16(hw, HFA384x_RID_CNFMAXDATALEN,
+@@ -921,7 +921,7 @@ static int prism2sta_globalsetup(wlandevice_t *wlandev)
+ static int prism2sta_setmulticast(wlandevice_t *wlandev, netdevice_t *dev)
+ {
+ 	int result = 0;
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 
+ 	u16 promisc;
+ 
+@@ -985,7 +985,7 @@ static void prism2sta_inf_handover(wlandevice_t *wlandev,
+ static void prism2sta_inf_tallies(wlandevice_t *wlandev,
+ 				  hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	u16 *src16;
+ 	u32 *dst;
+ 	u32 *src32;
+@@ -1032,7 +1032,7 @@ static void prism2sta_inf_scanresults(wlandevice_t *wlandev,
+ 				      hfa384x_InfFrame_t *inf)
+ {
+ 
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	int nbss;
+ 	hfa384x_ScanResult_t *sr = &(inf->info.scanresult);
+ 	int i;
+@@ -1087,7 +1087,7 @@ static void prism2sta_inf_scanresults(wlandevice_t *wlandev,
+ static void prism2sta_inf_hostscanresults(wlandevice_t *wlandev,
+ 					  hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	int nbss;
+ 
+ 	nbss = (inf->framelen - 3) / 32;
+@@ -1128,7 +1128,7 @@ static void prism2sta_inf_hostscanresults(wlandevice_t *wlandev,
+ static void prism2sta_inf_chinforesults(wlandevice_t *wlandev,
+ 					hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	unsigned int i, n;
+ 
+ 	hw->channel_info.results.scanchannels =
+@@ -1441,7 +1441,7 @@ void prism2sta_processing_defer(struct work_struct *data)
+ static void prism2sta_inf_linkstatus(wlandevice_t *wlandev,
+ 				     hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 
+ 	hw->link_status_new = le16_to_cpu(inf->info.linkstatus.linkstatus);
+ 
+@@ -1469,7 +1469,7 @@ static void prism2sta_inf_linkstatus(wlandevice_t *wlandev,
+ static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
+ 				      hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	hfa384x_AssocStatus_t rec;
+ 	int i;
+ 
+@@ -1530,7 +1530,7 @@ static void prism2sta_inf_assocstatus(wlandevice_t *wlandev,
+ static void prism2sta_inf_authreq(wlandevice_t *wlandev,
+ 				  hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	struct sk_buff *skb;
+ 
+ 	skb = dev_alloc_skb(sizeof(*inf));
+@@ -1545,7 +1545,7 @@ static void prism2sta_inf_authreq(wlandevice_t *wlandev,
+ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+ 					hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 	hfa384x_authenticateStation_data_t rec;
+ 
+ 	int i, added, result, cnt;
+@@ -1719,7 +1719,7 @@ static void prism2sta_inf_authreq_defer(wlandevice_t *wlandev,
+ static void prism2sta_inf_psusercnt(wlandevice_t *wlandev,
+ 				    hfa384x_InfFrame_t *inf)
+ {
+-	hfa384x_t *hw = (hfa384x_t *) wlandev->priv;
++	hfa384x_t *hw = wlandev->priv;
+ 
+ 	hw->psusercount = le16_to_cpu(inf->info.psusercnt.usercnt);
+ }
 -- 
-2.1.4
+2.5.0
 
 
