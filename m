@@ -1,128 +1,114 @@
-X-GM-THRID: 6255366153272557568
-X-Received: by 10.98.33.209 with SMTP id o78mr18579331pfj.6.1456865948495;
-        Tue, 01 Mar 2016 12:59:08 -0800 (PST)
+X-GM-THRID: 6255241548273811456
+X-Received: by 10.129.108.3 with SMTP id h3mr42458382ywc.31.1456411915337;
+        Thu, 25 Feb 2016 06:51:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.28.34 with SMTP id 31ls681274qgy.28.gmail; Tue, 01 Mar
- 2016 12:59:07 -0800 (PST)
-X-Received: by 10.140.143.200 with SMTP id 191mr18455269qhp.3.1456865947970;
-        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id y20si2699618pfa.2.2016.03.01.12.59.07
+Received: by 10.140.103.240 with SMTP id y103ls388042qge.59.gmail; Thu, 25 Feb
+ 2016 06:51:54 -0800 (PST)
+X-Received: by 10.13.221.75 with SMTP id g72mr42485852ywe.34.1456411914726;
+        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x231.google.com (mail-ig0-x231.google.com. [2607:f8b0:4001:c05::231])
+        by gmr-mx.google.com with ESMTPS id i9si242960igg.1.2016.02.25.06.51.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::231 as permitted sender) client-ip=2607:f8b0:4001:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::231 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id w128so74786760pfb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 12:59:07 -0800 (PST)
+Received: by mail-ig0-x231.google.com with SMTP id y8so14964997igp.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:51:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=oiDudABv8JnFEmzbuMvjzL4EVwq113m501ltkPCyj4A=;
-        b=K/j5XaFD27blznPyHRoja71bmk0h0ZA8TYC1ing8MH2ac+F7jPY1f2U0RcdL5H+c7+
-         2KCPWxc0abpetAdJax3whdd2xWKlVoRdcRpKTJcFwUdk+muWQeYjVVnF+NKLuX21/46O
-         uY8pqamUS/w/DNKTxhN+Hcs/htceFhaVZLPds5QzBPKxG+tTBfzcB+bZifDXJl1JJG3R
-         z0fBrEdk/vO314v+eMpim01lf9K7YYFwinoXoJCI22mDBQhhxcRMmLjAIMv5NXKhSz7F
-         YHmIot57QjuB+TqUlm5T8/h1zqDD9sE+wvc7GKFO/CVlDFP0zWCXn0wLbAgrFmZNh4JJ
-         Igvw==
+        bh=l3Dpdz1qbjipySUnjRn6FxwCxOKubu5TkZOZweh1CKo=;
+        b=Mclf1OAYCkg3y0dYAJHp5x8/Gn1/hAE/f5e5YKiYEnjGNKFz9mEOcwaLAbV/q/u3yY
+         fhCucpSmD6cly37gyP6eRykN4GFVSZArlPHfOTooVmHwYoXlz7nYTnj0MCr/BZb8P0Rb
+         4GCCNgbhlIOybfACBKUW5OIhwhNPkBOXoMOxPYd+WL0vBkgLnCkN+EHUU9GSOL+0BxgH
+         Suenyw5KK8wkF+8nxrfbbnNjU57tJs9BYqaWt8Z23C2jvm/fKl6i3gDYhqBFL9U7xTSr
+         2k22H1P7fDMLXFBQ0HGgaf1A4O/GHrR+s+zo1ZwTQKmjbqU1EKEps09rQ2hcL/jukXpd
+         GKbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=oiDudABv8JnFEmzbuMvjzL4EVwq113m501ltkPCyj4A=;
-        b=V360Wjk//x6/bswCTYQdL2FRNTJY1jBR+dI1OedozlboqCRlkbAHUKcuFsg39JLHsf
-         PbJmyWNd5BmRZILijsd7dNrSysNnAtFmvqHiZia1mwB70qT4lZKp3YZwmnyC9aAu5MqB
-         E5+FWmwgx6jf901jcTlbFQmEn6m/qtRDeVnzG5jEGLlklYpOXDoVHZgI07gk6azuPOPm
-         pHK8vLfag+CboA4u0tmZkD/k+WhTx0QXGnM6HeiHzPBBJsWpATtRzNQj4stpi26uT1+d
-         GfSDnFGHbAOr2cZXO8TkQm2FrCHOP1wlRM7LWQx/z21SR1KQci0op2fEKuQIJ15oDh6p
-         XfRQ==
-X-Gm-Message-State: AD7BkJJerz9hqIhSIphE/L4KX+CMXvlcCnzwAmxtjj+m2XB84ryzVbuICDm507We22asKg==
-X-Received: by 10.98.18.8 with SMTP id a8mr33620759pfj.41.1456865947784;
-        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r62sm7712970pfb.39.2016.03.01.12.59.06
+        bh=l3Dpdz1qbjipySUnjRn6FxwCxOKubu5TkZOZweh1CKo=;
+        b=kKkh3SOZ1Q5KTClB5b5wcOks04y+gc5jKjBMMEAJwOxNtPiGBx99q0Oxqq9Y2Vfnlg
+         5s62TSsTwbgNnecnD6eJuRj+cfUUhPsTlcWF82aN2XrVmIsBRQ4poLN/FJPTKwJWsYrL
+         jQ4BXrxa0EnTbInrw352+dnn82Scc8176hU6Cm4vWLIFH+WUmHUm513F/ueOjA3Zi+4q
+         5EGREAlqRhbQJuuGqgD2h24SlIE89f4tjG6k0dXJdH4vQ6JROrgwVxZ0Jf8b2JTG2tv3
+         2gMlMANooIVwx/meKG+UMOiwjXQJsGkVTllRrbmw7MyVhBUY+EAF0MnSoRkhqQ1fNsOa
+         sgjA==
+X-Gm-Message-State: AG10YOQTsT+W6oKmPAnMPQDec3MVxlDMSg4iVu7zJkOdh+8DbuZmgHg0CSyPp8pGEiitlg==
+X-Received: by 10.50.108.112 with SMTP id hj16mr2706400igb.35.1456411914543;
+        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id c79sm3357546iod.5.2016.02.25.06.51.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
-Date: Wed, 2 Mar 2016 02:28:39 +0530
-From: "pooja.shamili" <poojashamili@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:51:06 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Remove the unnecessary parantheses
-Message-ID: <20160301205839.GA14661@localhost>
+Subject: [PATCH] staging: mt29f_spinand: Drop void pointer cast
+Message-ID: <20160225195106.GA7642@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The unnecessary parantheses on the right side of assignments were removed,
-as in most cases (expect for ==, >=, <=, !=), they are futile.
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-This was done using Coccinelle, the semantic patch being:
-
+@r@
+expression x;
+void *e;
+type T;
+identifier f;
 @@
-expression E1,E2,E3;
-binary operator bin_op = {==,>=,<=,!=};
-@@
 
-E1 =
 (
-  (
-   E2 bin_op E3
-  )
-|
--(
-E2
--)
+  *((T *)e)
+| 
+  ((T *)x) [...]
+|   
+  ((T *)x)->f
+| 
+- (T *) 
+  e
 )
-;
 
-Signed-off-by: pooja.shamili <poojashamili@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mp.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/mt29f_spinand/mt29f_spinand.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mp.c b/drivers/staging/rtl8712/rtl871x_mp.c
-index 44da4fe..c80d59c 100644
---- a/drivers/staging/rtl8712/rtl871x_mp.c
-+++ b/drivers/staging/rtl8712/rtl871x_mp.c
-@@ -235,7 +235,7 @@ static u8 set_bb_reg(struct _adapter *pAdapter,
- 	if (bitmask != bMaskDWord) {
- 		org_value = r8712_bb_reg_read(pAdapter, offset);
- 		bit_shift = bitshift(bitmask);
--		new_value = ((org_value & (~bitmask)) | (value << bit_shift));
-+		new_value = (org_value & (~bitmask)) | (value << bit_shift);
- 	} else {
- 		new_value = value;
- 	}
-@@ -260,7 +260,7 @@ static u8 set_rf_reg(struct _adapter *pAdapter, u8 path, u8 offset, u32 bitmask,
- 	if (bitmask != bMaskDWord) {
- 		org_value = r8712_rf_reg_read(pAdapter, path, offset);
- 		bit_shift = bitshift(bitmask);
--		new_value = ((org_value & (~bitmask)) | (value << bit_shift));
-+		new_value = (org_value & (~bitmask)) | (value << bit_shift);
- 	} else {
- 		new_value = value;
- 	}
-@@ -327,10 +327,10 @@ void r8712_SetTxAGCOffset(struct _adapter *pAdapter, u32 ulTxAGCOffset)
+diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+index 75fe61c..aa0170e 100644
+--- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
++++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+@@ -33,7 +33,7 @@ static inline struct spinand_state *mtd_to_state(struct mtd_info *mtd)
  {
- 	u32 TxAGCOffset_B, TxAGCOffset_C, TxAGCOffset_D, tmpAGC;
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
+ 	struct spinand_info *info = nand_get_controller_data(chip);
+-	struct spinand_state *state = (struct spinand_state *)info->priv;
++	struct spinand_state *state = info->priv;
  
--	TxAGCOffset_B = (ulTxAGCOffset & 0x000000ff);
-+	TxAGCOffset_B = ulTxAGCOffset & 0x000000ff;
- 	TxAGCOffset_C = (ulTxAGCOffset & 0x0000ff00) >> 8;
- 	TxAGCOffset_D = (ulTxAGCOffset & 0x00ff0000) >> 16;
--	tmpAGC = (TxAGCOffset_D << 8 | TxAGCOffset_C << 4 | TxAGCOffset_B);
-+	tmpAGC = TxAGCOffset_D << 8 | TxAGCOffset_C << 4 | TxAGCOffset_B;
- 	set_bb_reg(pAdapter, rFPGA0_TxGainStage,
- 			(bXBTxAGC | bXCTxAGC | bXDTxAGC), tmpAGC);
+ 	return state;
  }
+@@ -749,7 +749,7 @@ static void spinand_cmdfunc(struct mtd_info *mtd, unsigned int command,
+ {
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
+ 	struct spinand_info *info = nand_get_controller_data(chip);
+-	struct spinand_state *state = (struct spinand_state *)info->priv;
++	struct spinand_state *state = info->priv;
+ 
+ 	switch (command) {
+ 	/*
 -- 
-2.1.4
+2.5.0
 
 
