@@ -1,86 +1,105 @@
-X-GM-THRID: 6253728944685580288
-X-Received: by 10.107.135.93 with SMTP id j90mr17485463iod.27.1456059735926;
-        Sun, 21 Feb 2016 05:02:15 -0800 (PST)
+X-GM-THRID: 6255242949785812992
+X-Received: by 10.31.52.207 with SMTP id b198mr41401399vka.5.1456412242545;
+        Thu, 25 Feb 2016 06:57:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.91.137 with SMTP id z9ls1056929qgd.75.gmail; Sun, 21 Feb
- 2016 05:02:15 -0800 (PST)
-X-Received: by 10.129.132.3 with SMTP id u3mr23235353ywf.5.1456059735182;
-        Sun, 21 Feb 2016 05:02:15 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id ff2si2826103pad.2.2016.02.21.05.02.15
+Received: by 10.50.178.180 with SMTP id cz20ls215070igc.25.gmail; Thu, 25 Feb
+ 2016 06:57:22 -0800 (PST)
+X-Received: by 10.66.232.41 with SMTP id tl9mr2329128pac.35.1456412242155;
+        Thu, 25 Feb 2016 06:57:22 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x22a.google.com (mail-io0-x22a.google.com. [2607:f8b0:4001:c06::22a])
+        by gmr-mx.google.com with ESMTPS id xh11si255562igb.0.2016.02.25.06.57.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 05:02:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Thu, 25 Feb 2016 06:57:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) client-ip=2607:f8b0:4001:c06::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id yy13so75942663pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 05:02:15 -0800 (PST)
+Received: by mail-io0-x22a.google.com with SMTP id g203so90213997iof.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:57:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Js/qPVS13UXJFuk1kisfnindVCL2jbR7UfWCPRLxwfI=;
-        b=pHIRVD6vsQ6JM6kYygf9WidVvw6cu/x21eeRL6d4yySJFeebJyCRGH79zSA/eSvVUu
-         BMM/qb+fm455ogbU7Fl3+zXXxsipD3IQv821UvCGdh7DGZTnxqZo+WcM7lIF4wBzJ17O
-         eeOhGiqr9zmEiTUqgY87UFz4j1RvF10I7+4MuUMz/e7+7kwa3n5ZloctgzNJw/Sj6kpw
-         tyv4a12gJ4DtWeau8hSkeo5pJZy6WncLeQ30YabDkV2mxtScd3V/Q+5e5g0L5jBbadb2
-         yV+O0wBIKTO06bNk3HKXLNltoANbMHSzgw7paZSfFDij0QICz0G1Y3UPpxrWTh2jwt3U
-         5tLw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=D6Krd265GJPHWMhCCz8jcgLq5zDyGrjs2FT43496B+Y=;
+        b=cLIQeVFUAMQ6BcmfMPIMDkzqLheA+fpw0Wu33m9eyFpfZzpvMcgDQEKOX7htVuVsu5
+         GtTrxRMLCWJtHZEsBREEhO6oKgTt6tPwOSqpLLNVW7Jx8vcM2qQ4IRwXQA2qAVwX4I8u
+         sAozhZbqdgwfSVZWsa2h2BYysgxCf0vz4IabDrLHjKs1KKalesG1mk8FZwq/fFm2TEuB
+         vIlVkLkI8jd8pG9YiV8xbLd54bhJSyqHKzAI0QSdwEVQNNFL6Rrwd1RJkJR6+A0gD9as
+         Psc/7sUr62m+toRiUnJxVyqaLCfSAHaqiIdAsUpyT2fauniEzvZTxnCbAe5eP2QxTWWZ
+         m0Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Js/qPVS13UXJFuk1kisfnindVCL2jbR7UfWCPRLxwfI=;
-        b=J1StgsfmVnGCxTc/nspjE5ECnFq7553XwpAHedSOHwqBkd4HDwwUaKWWWsTVwTMWxN
-         AEfuC47V6YKTDSOWDtct5OeruRiit+/A7HPFLC8CUz6itltut9fk0bmW0+hWLGkpHgQJ
-         Wpr/vtrHjSHVqD8CvobcSHv8ROdJV9W2hMTfY1jXdlLXSN9bzraGTARg6O8+YtURyJCY
-         IwAfWNkHhTIdQlQL/azQcG88b6xNHOPI92I0wKF9KVDf6e8O6gwZpIU34tctY9xhfGy5
-         mRbKyUgf+UpiZiZSKGgLFFEtTMVy3xQJvsEsGXkqOr7AKQGwVFvQMf4d7UkQsotsepRA
-         t6yA==
-X-Gm-Message-State: AG10YOT3cYDAENZogp6ZpiBEIwMaBYpoIvEPT/uwQlxmAIGBqm1PqavmRh2ozWrqxyY2cg==
-X-Received: by 10.67.6.10 with SMTP id cq10mr31129602pad.120.1456059735030;
-        Sun, 21 Feb 2016 05:02:15 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.31])
-        by smtp.gmail.com with ESMTPSA id fc8sm30182500pab.21.2016.02.21.05.02.13
+         :content-disposition:user-agent;
+        bh=D6Krd265GJPHWMhCCz8jcgLq5zDyGrjs2FT43496B+Y=;
+        b=H+aysHxm9edb9OWtGKyLbMbkkT19sCg7ONHgJ7b0OOmAUh/eN+G20EJ5OqoQkeOfJu
+         9BDASobQzCm+TFSfYt6NL8vQBOlN3649U7xndNl/RkMBPtxrBa10ayW+o8bz9uJBqv7W
+         pTHUEP5IDHzd+NtQ2KBM/3K6d56wHOavKwchY4ErxAyJlpMgvrGIUhwBi8zcf0YUGpta
+         6Dq8vUFLjE3Seq95AleXwXDZIb3zDo8N7XpNW8jA7fqiZQiQARU4/7/pVAH40QluntcD
+         jL5+wt55QL5WwAoEAbxA3EWg1C66P262NKeV21IgVBWcGfTBYN+JvSJc5nU/NrWueaIX
+         PUhw==
+X-Gm-Message-State: AG10YOQeZfcFXpo6j3FKch3gNYIaoNjpxHVNQOyU+UREhk5V57lXkTq3IW+rusM6D+xrfQ==
+X-Received: by 10.107.9.106 with SMTP id j103mr3337458ioi.104.1456412241996;
+        Thu, 25 Feb 2016 06:57:21 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id j1sm1367345ige.19.2016.02.25.06.57.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 05:02:14 -0800 (PST)
-Date: Sun, 21 Feb 2016 10:32:05 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 06:57:21 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:56:33 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: most: Do not print message if kzalloc() failed.
-Message-ID: <20160221050205.GA3014@sandhya>
+Subject: [PATCH] staging: rtl8192e: Drop cast on void pointer
+Message-ID: <20160225195633.GA7856@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Do not print message if kzalloc() failed.
-kzalloc() has its own messages. So no need to add extra one. 
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+@r@
+expression x;
+void *e;
+type T;
+identifier f;
+@@
+
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+|   
+  ((T *)x)->f
+| 
+- (T *) 
+  e
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/most/mostcore/core.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/most/mostcore/core.c b/drivers/staging/most/mostcore/core.c
-index 322ee01..7c619fe 100644
---- a/drivers/staging/most/mostcore/core.c
-+++ b/drivers/staging/most/mostcore/core.c
-@@ -1259,7 +1259,6 @@ static int arm_mbo_chain(struct most_c_obj *c, int dir,
- 	for (i = 0; i < c->cfg.num_buffers; i++) {
- 		mbo = kzalloc(sizeof(*mbo), GFP_KERNEL);
- 		if (!mbo) {
--			pr_info("WARN: Allocation of MBO failed.\n");
- 			retval = i;
- 			goto _exit;
- 		}
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+index 0b06482..aeb0df5 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+@@ -2402,7 +2402,7 @@ out:
+ 
+ static irqreturn_t _rtl92e_irq(int irq, void *netdev)
+ {
+-	struct net_device *dev = (struct net_device *) netdev;
++	struct net_device *dev = netdev;
+ 	struct r8192_priv *priv = rtllib_priv(dev);
+ 	unsigned long flags;
+ 	u32 inta;
 -- 
-1.8.3.4
+2.5.0
 
 
