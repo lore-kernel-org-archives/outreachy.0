@@ -1,116 +1,102 @@
-X-GM-THRID: 6389629700764860416
-X-Received: by 10.157.60.11 with SMTP id q11mr8299641otc.3.1487701595997;
-        Tue, 21 Feb 2017 10:26:35 -0800 (PST)
+X-GM-THRID: 6255218137152618496
+X-Received: by 10.107.16.87 with SMTP id y84mr2389730ioi.2.1456406465730;
+        Thu, 25 Feb 2016 05:21:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.63.11 with SMTP id m11ls12986749otc.20.gmail; Tue, 21 Feb
- 2017 10:26:35 -0800 (PST)
-X-Received: by 10.129.70.133 with SMTP id t127mr10143036ywa.146.1487701595585;
-        Tue, 21 Feb 2017 10:26:35 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id u12si3387886pfd.3.2017.02.21.10.26.35
+Received: by 10.140.84.243 with SMTP id l106ls398891qgd.43.gmail; Thu, 25 Feb
+ 2016 05:21:05 -0800 (PST)
+X-Received: by 10.140.102.69 with SMTP id v63mr13733413qge.14.1456406465151;
+        Thu, 25 Feb 2016 05:21:05 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id u66si1263377pfa.2.2016.02.25.05.21.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 10:26:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Thu, 25 Feb 2016 05:21:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 1so12238417pgz.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Feb 2017 10:26:35 -0800 (PST)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x234.google.com with SMTP id ho8so33131096pac.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 05:21:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=mZPDidN1Hg7GRRNHCodmC7xlOWIA0oXWkAES6qYoig4=;
-        b=fQb+3pjRrZC1XtyLCK6L/NAYLkxR52bos7jCiKumL4danRF+ll7QnSJ1p0xnvGlJTc
-         sOfp+CfzR5EgxuAlM+pVk5Ag7PEURTNL9IcNHVXEKYSxi4A/CZVKaNOr0LuClPMdd05h
-         pXqVzz3GW6wp1777Ti/sO16SLFCJtOpD8n8OYMVj2dkaPg6SEid47OF5p1KnKQrRC0x8
-         RQbAlQHKW2iANrOUbksHomGJqbMUybZUjCNUOBEcze0l8QcAcoiDGOC5JqfJojh6cRu6
-         OtYnfh0u7sGK8/ZbrbfzOqQkJ8yLdegPECRKEIfZUXIDxouoQqveue5/Gd5WuNtqTd4I
-         mOPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-type
          :content-disposition:user-agent;
-        bh=mZPDidN1Hg7GRRNHCodmC7xlOWIA0oXWkAES6qYoig4=;
-        b=a3ZlMa72SpK06ZGz//ZK4ujhARH3Prb+kQVP7M4hYXbbRKZlcGvPYAworpI3QazRNc
-         Cyaej1N5fXBX1CREHK9f+HchRAj2vwmaSd5DFUowt7v3Gl5BndP7q/zqaiQacJP6hirE
-         9THq3/MlESKMa/k3XNaFYrZ44B7+T1lw+yfRQLQ+ANiTZphppOf/rWNv9DmVltcpG59F
-         VxncrzvXyKCG1Kw2KEAdoGBUKbuY8vy/011mp2TATADfnghhaqpXNURUInok/PXURBQ1
-         kIM51bdDqdl9Rk+eBqZzvIVMOfvxH4fsVq6XlpnA7VvBbLjMZd0GpisyMfH5Lu7TbAbS
-         bLvA==
-X-Gm-Message-State: AMke39kw4Li+C0TjGDuFmiy1FYB7p82fPhH0jtsXd5XwluBcNH/B6BjBUZOLw+1rWqfFgg==
-X-Received: by 10.98.210.3 with SMTP id c3mr34738506pfg.7.1487701595350;
-        Tue, 21 Feb 2017 10:26:35 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id c2sm42364101pfl.61.2017.02.21.10.26.32
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 10:26:33 -0800 (PST)
-Date: Tue, 21 Feb 2017 23:58:26 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: abbotti@mev.co.uk
-Cc: hsweeten@visionengravers.com, gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/6] staging: comedi: Using macro DIV_ROUND_UP
-Message-ID: <20170221182826.GA31819@singhal-Inspiron-5558>
+        bh=sqGb5OpXeeCYXPr4iRQHVj4bVqCf3zoUusni1tOQRdc=;
+        b=ZW6qq2WUACeUjIu/UbB3Vbi7AmUiIP9qd9cTN5N+zYdlmEWUqkVGqbJq3iFuREKxKn
+         KIwHSXzuDiSjBsgkKnyJ4S6vRHgwi0bKh1SgOjvW51Lmnr+rOurxuAmJY2dPq2tQ0cjc
+         c1buxpnBM0esNZ8S++ihocvrmmyRGFYBPg4E0plbQ/WL0JSJ6K0TOTCgPy4bhP+eK8Fq
+         x3MYAlWgCm7aVAt4qiZ/REApeMyV+hIUi6CUPnGSWmtT+zEII+LsZ3AMkL7Cd4uE0F/0
+         UHWAKVkt970bBHxhIoQQTB8DNyJ6aySO34WP6msF8zwTbdbDdwqipCGRH6OpC9gJtXOn
+         Eqow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=sqGb5OpXeeCYXPr4iRQHVj4bVqCf3zoUusni1tOQRdc=;
+        b=Y6Cuyqh/l9zK/IClTbH+zR9v3ldflYdLOHeqgkFf81Fmam1VQdwkDobCz6eh5SREWT
+         8GdMEAHMUA1z9D2vFcNokAlyS3rsquI+yNYaTttMUR/FbbH2/Yidm2e2ZMHTC2ypSY9L
+         CIilFPBD/cHfBtC7VrU8vzqFUqy/CW8ebE6Jj6UUcdQGOOufVuIdZkMiF/AyTJGcSnu8
+         K6B2DK+a91glFj/U4O7d7UPvGk9qGolsNowzv+gL+Ef+BjXK9609cnXtIIE3ZglItrPG
+         /2se/1UeF8ds8rGrpeyl8BJ/8E9lzeJKHGrvqV3jgtBmK4IePncXbVyVA+M7dlxp183S
+         RwZw==
+X-Gm-Message-State: AG10YOT8c/h0zGll0rdE7rm6A4IeZPKGB6K1Kr9GYZT0AmfjVsyjGvKl5ZF8OFSFSkrn0w==
+X-Received: by 10.66.222.101 with SMTP id ql5mr63113535pac.144.1456406464918;
+        Thu, 25 Feb 2016 05:21:04 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.179.114])
+        by smtp.gmail.com with ESMTPSA id r68sm12416796pfb.51.2016.02.25.05.21.03
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Thu, 25 Feb 2016 05:21:04 -0800 (PST)
+Date: Thu, 25 Feb 2016 18:50:58 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: fbtft: Use devm_kcalloc instead of devm_kzalloc
+Message-ID: <20160225132058.GA21212@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The macro DIV_ROUND_UP performs the computation (((n) + (d) - 1) /(d)).
-It clarifies the divisor calculations. This occurence was detected using
-the coccinelle script:
+Replace devm_kzalloc with devm_kcalloc to ensure there are no integer
+overflows from the multiplication of a number * sizeof
 
+The following Coccinelle semantic patch was used to make this change:
+//<smpl>
 @@
-expression e1;
-expression e2;
+expression dev,E1,E2,E3,E4;
 @@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+- devm_kzalloc(dev,E1*E2*sizeof(E3),E4)
++ devm_kcalloc(dev,E1*E2,sizeof(E3),E4)
+//</smpl>
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/comedi/drivers/addi_apci_3xxx.c | 2 +-
- drivers/staging/comedi/drivers/cb_pcidas64.c    | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/fbtft/fbtft-core.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/addi_apci_3xxx.c b/drivers/staging/comedi/drivers/addi_apci_3xxx.c
-index b6af3eb..82c2211 100644
---- a/drivers/staging/comedi/drivers/addi_apci_3xxx.c
-+++ b/drivers/staging/comedi/drivers/addi_apci_3xxx.c
-@@ -502,7 +502,7 @@ static int apci3xxx_ai_ns_to_timer(struct comedi_device *dev,
- 			timer = *ns / base;
- 			break;
- 		case CMDF_ROUND_UP:
--			timer = (*ns + base - 1) / base;
-+			timer = DIV_ROUND_UP(*ns, base);
- 			break;
- 		}
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 574c148..0c1a77c 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -736,8 +736,11 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
+ 		goto alloc_fail;
  
-diff --git a/drivers/staging/comedi/drivers/cb_pcidas64.c b/drivers/staging/comedi/drivers/cb_pcidas64.c
-index efbf277..3b98193 100644
---- a/drivers/staging/comedi/drivers/cb_pcidas64.c
-+++ b/drivers/staging/comedi/drivers/cb_pcidas64.c
-@@ -2007,7 +2007,7 @@ static unsigned int get_divisor(unsigned int ns, unsigned int flags)
- 
- 	switch (flags & CMDF_ROUND_MASK) {
- 	case CMDF_ROUND_UP:
--		divisor = (ns + TIMER_BASE - 1) / TIMER_BASE;
-+		divisor = DIV_ROUND_UP(ns, TIMER_BASE);
- 		break;
- 	case CMDF_ROUND_DOWN:
- 		divisor = ns / TIMER_BASE;
+ 	if (display->gamma_num && display->gamma_len) {
+-		gamma_curves = devm_kzalloc(dev, display->gamma_num * display->gamma_len * sizeof(gamma_curves[0]),
+-						GFP_KERNEL);
++		gamma_curves = devm_kcalloc(dev,
++					    display->gamma_num *
++					    display->gamma_len,
++					    sizeof(gamma_curves[0]),
++					    GFP_KERNEL);
+ 		if (!gamma_curves)
+ 			goto alloc_fail;
+ 	}
 -- 
-2.7.4
+1.9.1
 
 
