@@ -1,126 +1,105 @@
-X-GM-THRID: 6259692740218454016
-X-Received: by 10.140.88.139 with SMTP id t11mr16585233qgd.21.1457448289540;
-        Tue, 08 Mar 2016 06:44:49 -0800 (PST)
+X-GM-THRID: 6255230789033656320
+X-Received: by 10.129.80.3 with SMTP id e3mr40735488ywb.23.1456409410968;
+        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.83.230 with SMTP id j93ls419006qgd.64.gmail; Tue, 08 Mar
- 2016 06:44:48 -0800 (PST)
-X-Received: by 10.129.154.16 with SMTP id r16mr2297360ywg.39.1457448288913;
-        Tue, 08 Mar 2016 06:44:48 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id y20si526639pfa.2.2016.03.08.06.44.48
+Received: by 10.107.30.130 with SMTP id e124ls394668ioe.17.gmail; Thu, 25 Feb
+ 2016 06:10:10 -0800 (PST)
+X-Received: by 10.107.18.216 with SMTP id 85mr2607437ios.16.1456409410706;
+        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x231.google.com (mail-io0-x231.google.com. [2607:f8b0:4001:c06::231])
+        by gmr-mx.google.com with ESMTPS id iq8si241728igb.0.2016.02.25.06.10.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 06:44:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::231 as permitted sender) client-ip=2607:f8b0:4001:c06::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::231 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 184so1378433pff.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 06:44:48 -0800 (PST)
+Received: by mail-io0-x231.google.com with SMTP id 9so83610577iom.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:10:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=wNjgb06FN8E4bPTZk3eADNgIyGV1XpUeUPS+IRgaEWw=;
-        b=hA8P8OaeLyI9Gu2KGMDOxTZcUvGj2500RR4olI43TQ1nRkIjHC8n987Eo8/iDyJd7C
-         M1W5DXai9oEVdzga94+VveD6ApcCyhk2LibF9/VmQhcRHTEiKyE3cFo0nN863CzErJOv
-         HizEOCzo9G4rsrRkXuU6cXFLIyUhtwryOeNetjjzlef0T1HpEc5I0Tzs1kyPIgoy5a7R
-         MXdW7Emrb/bpPrxhBNZa/p5V/bCka/3gTjfX20oG/MXHUN9Ijs2lh+b7BJgh8Dp87++i
-         7PIVK7767BrN7sdexXb/q8x+oydsC3d15NSXk3UOvsAu60K76B4tQC1cOfrGbgFmTtb4
-         YjhQ==
+        bh=igwE0O1XYXytuv5+8dzCXr1Bbgs6UQii274TWjWXKS8=;
+        b=k7rB7VaBAN2ORNVX/68bKVO5a38eBtKYNqyOGmOkTzqlOjdtpF71hmyd6adzt3upZV
+         8GYFbxuCiZaABEVqRiUg7KmH+jDH8frle+ZT/djVlQjAR3tDyZ4R5q9MkZpD6HwGf6CP
+         xIh0rNpM0/Cp1th67K0eVSXrEdBlwwCRsEeyGt7TEm98m8dvk6WoUtB8z2lzbRXeEW5a
+         WO2ld3dkFr+vUcMGQp3y/YHW0loZNGr/dnu1GeXxoDmyZT2Qiadhn1we4ZtEIFuAHvXV
+         aU0rGbLGoo4VALvijojuv6/Rp35lURMYACtXYYJSxUTWs7Tloh6Jofodbm+L2G1+8ADf
+         6RIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=wNjgb06FN8E4bPTZk3eADNgIyGV1XpUeUPS+IRgaEWw=;
-        b=HlITvib9ROsUPfMsfAHahbDfS1FgZKn/2eguVL4+mnpGDM9A4ZpsSikB+eEKXXviao
-         uY/6KWbY28MIJJg9cUd6bFjwb+cVc7g2Y4NHrEsXYSeITn7ExPb4zB29MekOi/atE6fn
-         NsuCLojUwoLoHAElWFwPgwKudV3p48vptwQmyOyOXiAMNEEbDDlESxwmobzRtDmFqNjv
-         wMmhBtWTe4CbaVpr67rNSbSksquk/I5A6bnqEaJ0zR/d1oHh21HAHZm7Hj1IrI6HNoVU
-         4BBs0J8FxBLyNQ2ZtLVrTHHjUG7/MFCq1GLECuthvtb3GeU5J4rZevHfAIPkLeTdr2MC
-         TFOQ==
-X-Gm-Message-State: AD7BkJKaWuXQcGLE0eLT1P/8LEk2dV9cT+v2D2AbrnNug0pKNpHSBZRPI0q/4Vc1l6pcwQ==
-X-Received: by 10.98.18.195 with SMTP id 64mr32144121pfs.131.1457448288735;
-        Tue, 08 Mar 2016 06:44:48 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id qy7sm5620090pab.34.2016.03.08.06.44.47
+        bh=igwE0O1XYXytuv5+8dzCXr1Bbgs6UQii274TWjWXKS8=;
+        b=WT33uYeL/KcvFxspsvaalkwyTBTQnTu8dOVeAW0PyHc4cx6/NdbinLyMuvc5F+SevI
+         jO8jNT3P1LrFbysGhe82gFFiBmft9jcvnfgB/tVixFlvqEp8QZfGQ3jAECEqsBccizaJ
+         Mr2bjKq1RcHV1BGUKpULxJyBn0o/F6idfuMq9frupH3aomMoyrPuNMYK9DD3HsfTScd8
+         NeHKFxwhCjYB+btPXtEN9DsnzMm17WEGCfHRidW6DH3b8VYdcrdJtwygN5EtRpqyqj/T
+         r/ZkyR+8G0aGyMpXzrd3jZxuOECd4xHcAnDaiC5IPviNwJRT7zfF3q1WaIfW1heIoMBG
+         w9ZA==
+X-Gm-Message-State: AG10YOSO6EzdhlNBgApOER5QY8tG+g6Jn0je2562E1lGtgpSLzUwIgoaG/CW8RMmfbsOYA==
+X-Received: by 10.107.36.80 with SMTP id k77mr3099970iok.121.1456409410553;
+        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id c79sm3294266iod.5.2016.02.25.06.10.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 06:44:48 -0800 (PST)
-Date: Tue, 8 Mar 2016 20:02:34 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 06:10:10 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:09:22 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: lustre: lnet: config: Use
- list_for_each_entry_safe
-Message-ID: <20160308143234.GA31172@Karyakshetra>
+Subject: [PATCH] staging: netlogic: Drop unneeded void pointer cast
+Message-ID: <20160225190922.GA6795@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
-
-This was done with Coccinelle.
-
-@@
-expression E1;
-identifier I1, I2;
+@r@
+expression x;
+void* e;
 type T;
-iterator name list_for_each_entry_safe;
+identifier f;
 @@
 
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
+)
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- Changes in v2:
-	-Modified subject to avoid conflicts with other patches
+ drivers/staging/netlogic/xlr_net.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/lustre/lnet/lnet/config.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/lustre/lnet/lnet/config.c b/drivers/staging/lustre/lnet/lnet/config.c
-index e71eea71..449069c 100644
---- a/drivers/staging/lustre/lnet/lnet/config.c
-+++ b/drivers/staging/lustre/lnet/lnet/config.c
-@@ -1020,6 +1020,7 @@ lnet_match_networks(char **networksp, char *ip2nets, __u32 *ipaddrs, int nip)
- 	struct list_head *t;
- 	struct list_head *t2;
- 	struct lnet_text_buf *tb;
-+	struct lnet_text_buf *temp;
- 	struct lnet_text_buf *tb2;
- 	__u32 net1;
- 	__u32 net2;
-@@ -1042,9 +1043,7 @@ lnet_match_networks(char **networksp, char *ip2nets, __u32 *ipaddrs, int nip)
- 	len = 0;
- 	rc = 0;
-
--	while (!list_empty(&raw_entries)) {
--		tb = list_entry(raw_entries.next, struct lnet_text_buf,
--				ltb_list);
-+	list_for_each_entry_safe(tb, temp, &raw_entries, ltb_list) {
- 		strncpy(source, tb->ltb_text, sizeof(source));
- 		source[sizeof(source) - 1] = '\0';
-
---
-2.1.4
+diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+index 0015847..ec5b8e0 100644
+--- a/drivers/staging/netlogic/xlr_net.c
++++ b/drivers/staging/netlogic/xlr_net.c
+@@ -130,7 +130,7 @@ static void xlr_net_fmn_handler(int bkt, int src_stnid, int size, int code,
+ 	struct xlr_net_priv *priv;
+ 	u32 port, length;
+ 	unsigned char *addr;
+-	struct xlr_adapter *adapter = (struct xlr_adapter *)arg;
++	struct xlr_adapter *adapter = arg;
+ 
+ 	length = (msg->msg0 >> 40) & 0x3fff;
+ 	if (length == 0) {
+-- 
+2.5.0
 
 
