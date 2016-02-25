@@ -1,96 +1,147 @@
-X-GM-THRID: 6205067017523822592
-X-Received: by 10.182.128.101 with SMTP id nn5mr28004067obb.31.1444729747058;
-        Tue, 13 Oct 2015 02:49:07 -0700 (PDT)
+X-GM-THRID: 6255207810462646272
+X-Received: by 10.66.63.104 with SMTP id f8mr41610727pas.4.1456405187995;
+        Thu, 25 Feb 2016 04:59:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.94.7 with SMTP id f7ls2901452qge.39.gmail; Tue, 13 Oct
- 2015 02:49:06 -0700 (PDT)
-X-Received: by 10.31.162.16 with SMTP id l16mr27932074vke.5.1444729746451;
-        Tue, 13 Oct 2015 02:49:06 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id uv4si266320pac.0.2015.10.13.02.49.06
+Received: by 10.140.46.73 with SMTP id j67ls317911qga.13.gmail; Thu, 25 Feb
+ 2016 04:59:47 -0800 (PST)
+X-Received: by 10.140.101.242 with SMTP id u105mr13657835qge.12.1456405187349;
+        Thu, 25 Feb 2016 04:59:47 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-qg0-x233.google.com (mail-qg0-x233.google.com. [2607:f8b0:400d:c04::233])
+        by gmr-mx.google.com with ESMTPS id l85si425850ywb.2.2016.02.25.04.59.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 02:49:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 04:59:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) client-ip=2607:f8b0:400d:c04::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id ex6so16774114pac.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 02:49:06 -0700 (PDT)
+Received: by mail-qg0-x233.google.com with SMTP id b35so38663936qge.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 04:59:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=qhc+ixBSWH+FLwpBhO+Eu4AYTeklPX+i6SNyF6K6Myc=;
-        b=s8sRsX+qk8xHz9YkyWYMnu2SKalOKXHy9j619sU4YTaGcG9he9aKEl+Ly7qGWipL5o
-         9dLs3HE6urVwu29HgMXZpX9lXVrg7UgykKf9lHwvtPc21NiDz5S5ce1cx/Qt6m+chwWm
-         Sp5EX394rZGGttLxEtrClUV7Hlr8u8tJvFp2lW+dpusw0Q0gU3/8ru3d2lBGUwsoaMY8
-         lo71S8WIUVtcoZ8RWH/o8GYnMz3ytcU3HMeXfDHHie8Fmi2/T1+i1JxjwKXbAqftQaOX
-         96JUUCD91MzM7l4Ha383pUPyUB0OdM0RLP8DYB8AOpYLhbFPmDj5Ij9rUKgMMp5zrbPB
-         q5FA==
-X-Received: by 10.68.230.6 with SMTP id su6mr8962875pbc.80.1444729746318;
-        Tue, 13 Oct 2015 02:49:06 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id ez2sm2843761pbb.5.2015.10.13.02.48.55
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 02:49:05 -0700 (PDT)
-Date: Tue, 13 Oct 2015 15:18:38 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: wilc1000: wilc_wfi_cfgoperations: Remove unused code
-Message-ID: <20151013094837.GA4291@ubuntu>
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=cBpd7zMwiZAVu/kL19HoIXK8Dqk/jzbfj0wurPyZzHE=;
+        b=CgX/wI/lfrCoUAMdiUKbjpY7aOCLBaSzawEIwOEYkGptR28JPFi4oqrWkTYF1RUmNu
+         r6RDqQvOPInyQJ1EnmZ5yKKAAsFLbSk26Ge29Vc5lTvZkbWhq1XPpEeFzFi2HBnaYm+0
+         K3TTi6JPwY8B/zdAbU1p5KXT6mQbA6Obhp4fatH15t6A6+/nn5ChAGOXzEiSCs16qCJh
+         2XhYsrO11lv7nn0QiD97c0qCNfVQU4J8QvI2vGX+ycjdvUjQT7PrYBTiVFCKqmelqKFz
+         /dA68Q6IvEt+KtnnzOoHmQGP1rylneswG5okXrW5AWetnePPwu0wyTZNpHXE+XDVZhZs
+         P0hA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=cBpd7zMwiZAVu/kL19HoIXK8Dqk/jzbfj0wurPyZzHE=;
+        b=YuCV/GuHwnIqKYHGHOnRf1qutQYsGvbG3f/UUyPwbg28CWA7jFG2gRSX6Oqo/GXsMh
+         ZTQRCyo3y+tW4OKQP7rGujPXEa6yXp6oq9vxFaEVLrRlUCKG4JD838J9IXfjmLv/Tzhk
+         r43dk50mayUIDVEA6cjbIgLnfgaN6exCk3UThR0qNmhCfUZRy5wUk/fka+CnO22CCmCt
+         mjxu1bBhMPflXViH/yGL05v5QunZEo4+yl8FUKWW/6C9U/f3VWjErRzjkP+MN8s50BrH
+         SbYJeyrKk27+q1deVzugrfQCTSyWe3QJ0iy6pmM9kqGJasuNXGxLZLiq0+PO5B6GHu96
+         eEzg==
+X-Gm-Message-State: AG10YOSD8JbVhmtRpDeq6SXLDBXb99Uk6PBAfVRcB0DKdfXg+gthm7O/Eento99YEkpyTC4Ip+FhGfNUu5uGVA==
+X-Received: by 10.140.106.11 with SMTP id d11mr55487069qgf.80.1456405187176;
+ Thu, 25 Feb 2016 04:59:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Received: by 10.55.217.215 with HTTP; Thu, 25 Feb 2016 04:59:07 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602251347320.2708@hadrien>
+References: <20160225124135.GA7636@Karyakshetra> <alpine.DEB.2.10.1602251347320.2708@hadrien>
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Date: Thu, 25 Feb 2016 18:29:07 +0530
+Message-ID: <CAFNHFT9sNPZsxqW+SXKxpyjyp-dNYQBBbO1BTjxwSTBydyRdQw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core: Remove casts
+ of pointer to same type
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove the declaration, initialization and statement having a
-variable that is not used anywhere in the code.
-Semantic patch used:
+On Thu, Feb 25, 2016 at 6:17 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Thu, 25 Feb 2016, Bhaktipriya Shridhar wrote:
+>
+>> Casting a pointer to a pointer of the same type is unnecessary, so remove
+>> these unnecessary casts.
+>>
+>> This was done with Coccinelle:
+>>
+>> @@
+>> type T;
+>> T *ptr;
+>> @@
+>> - (T *)ptr
+>> + ptr
+>
+> Good idea :)
+>
+> julia
 
-@@
-type T;
-identifier i;
-constant C;
-position p != e.p;
-@@
+Thanks! :D
 
-- T i@p;
-  <+... when != i
-- i = C;
-  ...+>
-
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 6472777..d2e6f55 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -1764,7 +1764,6 @@ static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
- {
- 
- 	u32 i;
--	u8 flag = 0;
- 	s32 s32Error = 0;
- 
- 	struct wilc_priv *priv = wiphy_priv(wiphy);
-@@ -1777,7 +1776,6 @@ static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
- 			/*If bssid is found, reset the values*/
- 			PRINT_D(CFG80211_DBG, "Reseting PMKID values\n");
- 			memset(&priv->pmkid_list.pmkidlist[i], 0, sizeof(struct host_if_pmkid));
--			flag = PMKID_FOUND;
- 			break;
- 		}
- 	}
--- 
-2.1.0
-
+>
+>>
+>> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+>> ---
+>>  drivers/staging/rtl8188eu/core/rtw_recv.c | 10 +++++-----
+>>  1 file changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> index 40b7a30..d3c9ded 100644
+>> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> @@ -141,7 +141,7 @@ struct recv_frame *_rtw_alloc_recvframe(struct __queue *pfree_recv_queue)
+>>               }
+>>       }
+>>
+>> -     return (struct recv_frame *)hdr;
+>> +     return hdr;
+>>  }
+>>
+>>  struct recv_frame *rtw_alloc_recvframe(struct __queue *pfree_recv_queue)
+>> @@ -240,7 +240,7 @@ void rtw_free_recvframe_queue(struct __queue *pframequeue,  struct __queue *pfre
+>>
+>>               plist = plist->next;
+>>
+>> -             rtw_free_recvframe((struct recv_frame *)hdr, pfree_recv_queue);
+>> +             rtw_free_recvframe(hdr, pfree_recv_queue);
+>>       }
+>>
+>>       spin_unlock(&pframequeue->lock);
+>> @@ -1417,7 +1417,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
+>>       phead = get_list_head(defrag_q);
+>>       plist = phead->next;
+>>       pfhdr = container_of(plist, struct recv_frame, list);
+>> -     prframe = (struct recv_frame *)pfhdr;
+>> +     prframe = pfhdr;
+>>       list_del_init(&(prframe->list));
+>>
+>>       if (curfragnum != pfhdr->attrib.frag_num) {
+>> @@ -1437,7 +1437,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
+>>
+>>       while (phead != plist) {
+>>               pnfhdr = container_of(plist, struct recv_frame, list);
+>> -             pnextrframe = (struct recv_frame *)pnfhdr;
+>> +             pnextrframe = pnfhdr;
+>>
+>>               /* check the fragment sequence  (2nd ~n fragment frame) */
+>>
+>> @@ -1780,7 +1780,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
+>>       /*  Check if there is any packet need indicate. */
+>>       while (!list_empty(phead)) {
+>>               prhdr = container_of(plist, struct recv_frame, list);
+>> -             prframe = (struct recv_frame *)prhdr;
+>> +             prframe = prhdr;
+>>               pattrib = &prframe->attrib;
+>>
+>>               if (!SN_LESS(preorder_ctrl->indicate_seq, pattrib->seq_num)) {
+>> --
+>> 2.1.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160225124135.GA7636%40Karyakshetra.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
