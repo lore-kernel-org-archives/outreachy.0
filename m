@@ -1,91 +1,119 @@
-X-GM-THRID: 6257172217354780672
-X-Received: by 10.31.15.11 with SMTP id 11mr18317841vkp.3.1456861434621;
-        Tue, 01 Mar 2016 11:43:54 -0800 (PST)
+X-GM-THRID: 6255332457317400576
+X-Received: by 10.28.45.82 with SMTP id t79mr76115wmt.2.1456433694309;
+        Thu, 25 Feb 2016 12:54:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.243.136 with SMTP id wy8ls57738obc.47.gmail; Tue, 01 Mar
- 2016 11:43:52 -0800 (PST)
-X-Received: by 10.182.135.169 with SMTP id pt9mr17479823obb.17.1456861432285;
-        Tue, 01 Mar 2016 11:43:52 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id 12si4713056pfb.1.2016.03.01.11.43.52
+Received: by 10.25.206.208 with SMTP id e199ls142799lfg.109.gmail; Thu, 25 Feb
+ 2016 12:54:53 -0800 (PST)
+X-Received: by 10.112.130.42 with SMTP id ob10mr5857072lbb.2.1456433693267;
+        Thu, 25 Feb 2016 12:54:53 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h73si1563wme.0.2016.02.25.12.54.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 11:43:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        Thu, 25 Feb 2016 12:54:53 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id 124so56741079pfg.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 11:43:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=NozvaKPaeV1H/+/RoVSn3UeJiYKQ43paDhNv/NoFaqI=;
-        b=Lnheq5a1U5XeUchw9bIS7MhhWkk0axLOD6Ro0DU3b7KrBOc3Efq4ltV0B10vwpmuRw
-         ACH3wBZjmqXqMFDrHa3r6xwXjFJ7kJHAy+sRxDdaMAZSIRfZHIFxSoVVC91wctkhd5/R
-         ht3JjgOuK/iM+kPSg5XahodBs6jEUCcsrc13yM49qjFaAAfdKLD+bqoym6SktIWQ+Xmq
-         m3aacFXL/b/WiKhdwLyQTg1PZQ/CtksY89759n+IQEEKTnz0TznWUQCKpDzmv9Yl7tHB
-         Hqul+oFl6m4pSsG6qNJbrbdkky7alCkPOae4jlJmleCLvM5SJrBnjJb+IWA2eyoF6stH
-         vMNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=NozvaKPaeV1H/+/RoVSn3UeJiYKQ43paDhNv/NoFaqI=;
-        b=FrYSdH3YPDY61c37YkjHVkNKKbDI78/tixv6rGDEzndSLjWmBCkDpjs8DZM76y61Ah
-         LN92mHYn/DdXSpq1cn5iKdDYx2dRac+wHBN7pBe876/eHIj+MDrlwH4gx+rHaHEx2u8d
-         OX+pY5fmbDEJo422FfuS5Rsun4UckjgqqsBuVDB8XblBsR5MaDsA3UyA8S+y15grxMWj
-         MR8bzP9hly6hnOWSitlj81xHGYMJ82fqvkrLmnT7DWGz0U0RimK1hhNpYGPmVxHTTpa7
-         PXWFecKIJfYlS2pF1k4+EtwDmhImvrdfkYYxucMBECoSkUHyNPswTy5kiON/Dw402IPf
-         topg==
-X-Gm-Message-State: AD7BkJL/Qiwb4gDGjWQge0DmQLww58NbO95uHEI/oYAAv++1hC3g6sz3gfJKaKjLn2mAQw==
-X-Received: by 10.98.33.131 with SMTP id o3mr32678968pfj.97.1456861432138;
-        Tue, 01 Mar 2016 11:43:52 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([223.176.159.79])
-        by smtp.gmail.com with ESMTPSA id f8sm27398934pfj.49.2016.03.01.11.43.48
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 11:43:51 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 02 Mar 2016 01:13:42 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: gdm724x: Replace random_ether_addr with eth_random_addr
-Date: Wed,  2 Mar 2016 01:13:22 +0530
-Message-Id: <1456861402-7486-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,498,1449529200"; 
+   d="scan'208";a="166010735"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 25 Feb 2016 21:54:52 +0100
+Date: Thu, 25 Feb 2016 21:54:51 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Rehas Sachdeva <aquannie@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: Break line after
+ boolean operator
+In-Reply-To: <20160225204443.GA29868@Toblerone>
+Message-ID: <alpine.DEB.2.02.1602252153340.2038@localhost6.localdomain6>
+References: <20160225204443.GA29868@Toblerone>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The macro random_ether_addr is calling the function eth_random_addr.
-Therefore, the call to random_ether_addr can be replaced with
-eth_random_addr.
-Done using coccinelle:
 
-@@
-expression addr;
-@@
-- random_ether_addr(addr);
-+ eth_random_addr(addr);
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/gdm724x/gdm_lte.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, 26 Feb 2016, Rehas Sachdeva wrote:
 
-diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
-index 44163e4..49695bb 100644
---- a/drivers/staging/gdm724x/gdm_lte.c
-+++ b/drivers/staging/gdm724x/gdm_lte.c
-@@ -855,7 +855,7 @@ static void form_mac_address(u8 *dev_addr, u8 *nic_src, u8 *nic_dest,
- 	/* Create random nic src and copy the first
- 	 * 3 bytes to be the same as dev_addr
- 	 */
--	random_ether_addr(nic_src);
-+	eth_random_addr(nic_src);
- 	memcpy(nic_src, dev_addr, 3);
- 
- 	/* Copy the nic_dest from dev_addr*/
--- 
-1.9.1
+> The preferred way to break up long math lines is to break after
+> an arthimetic or boolean operator.
+> This patch fixes the checkpatch.pl warning:
+> Logical continuations should be on the previous line.
+> 
+> Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+> ---
+>  drivers/staging/dgnc/dgnc_neo.c | 12 +++++++-----
+>  drivers/staging/dgnc/dgnc_tty.c |  4 ++--
+>  2 files changed, 9 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
+> index ee3155b..b68b758 100644
+> --- a/drivers/staging/dgnc/dgnc_neo.c
+> +++ b/drivers/staging/dgnc/dgnc_neo.c
+> @@ -351,8 +351,8 @@ static inline void neo_clear_break(struct channel_t *ch, int force)
+>  
+>  	/* Turn break off, and unset some variables */
+>  	if (ch->ch_flags & CH_BREAK_SENDING) {
+> -		if (time_after_eq(jiffies, ch->ch_stop_sending_break)
+> -		    || force) {
+> +		if (time_after_eq(jiffies, ch->ch_stop_sending_break) ||
+> +		    force) {
 
+Actually, this doesn't look so nice to me, probably because force is so 
+short.
+
+>  			unsigned char temp = readb(&ch->ch_neo_uart->lcr);
+>  
+>  			writeb((temp & ~UART_LCR_SBC), &ch->ch_neo_uart->lcr);
+> @@ -1783,9 +1783,11 @@ static void neo_vpd(struct dgnc_board *brd)
+>  		brd->vpd[(i * 2) + 1] = (a >> 8) & 0xff;
+>  	}
+>  
+> -	if  (((brd->vpd[0x08] != 0x82)	   /* long resource name tag */
+> -		&&  (brd->vpd[0x10] != 0x82))   /* long resource name tag (PCI-66 files)*/
+> -		||  (brd->vpd[0x7F] != 0x78)) { /* small resource end tag */
+> +	if (((brd->vpd[0x08] != 0x82) && /* long resource name tag */
+> +	    (brd->vpd[0x10] != 0x82)) || /* long resource name tag
+> +					  *  (PCI-66 files)
+> +					  */
+> +	    (brd->vpd[0x7F] != 0x78)) {  /* small resource end tag */
+
+This one doesn't either.  Maybe there could be a single line comment, 
+above the tested expression.
+
+>  
+>  		memset(brd->vpd, '\0', NEO_VPD_IMAGESIZE);
+>  	} else {
+> diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
+> index 8a7508a..320ef25 100644
+> --- a/drivers/staging/dgnc/dgnc_tty.c
+> +++ b/drivers/staging/dgnc/dgnc_tty.c
+> @@ -1800,8 +1800,8 @@ static int dgnc_tty_write(struct tty_struct *tty,
+>  	}
+>  
+>  	/* Update printer buffer empty time. */
+> -	if ((un->un_type == DGNC_PRINT) && (ch->ch_digi.digi_maxcps > 0)
+> -	    && (ch->ch_digi.digi_bufsize > 0)) {
+> +	if ((un->un_type == DGNC_PRINT) && (ch->ch_digi.digi_maxcps > 0) &&
+> +	    (ch->ch_digi.digi_bufsize > 0)) {
+>  		ch->ch_cpstime += (HZ * count) / ch->ch_digi.digi_maxcps;
+
+This one looks fine.
+
+julia
+
+>  	}
+>  
+> -- 
+> 2.1.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160225204443.GA29868%40Toblerone.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
