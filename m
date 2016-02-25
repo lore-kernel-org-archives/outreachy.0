@@ -1,60 +1,60 @@
 X-GM-THRID: 6255228217759629312
-X-Received: by 10.50.150.98 with SMTP id uh2mr2685983igb.2.1456409025756;
-        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
+X-Received: by 10.66.102.8 with SMTP id fk8mr42177740pab.44.1456408949364;
+        Thu, 25 Feb 2016 06:02:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.91.137 with SMTP id z9ls429061qgd.75.gmail; Thu, 25 Feb
- 2016 06:03:45 -0800 (PST)
-X-Received: by 10.129.158.2 with SMTP id v2mr41379182ywg.42.1456409025229;
-        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
+Received: by 10.140.41.134 with SMTP id z6ls376085qgz.32.gmail; Thu, 25 Feb
+ 2016 06:02:28 -0800 (PST)
+X-Received: by 10.140.201.75 with SMTP id w72mr14285555qha.1.1456408948773;
+        Thu, 25 Feb 2016 06:02:28 -0800 (PST)
 Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x243.google.com (mail-ig0-x243.google.com. [2607:f8b0:4001:c05::243])
-        by gmr-mx.google.com with ESMTPS id iq8si239364igb.0.2016.02.25.06.03.45
+Received: from mail-ig0-x242.google.com (mail-ig0-x242.google.com. [2607:f8b0:4001:c05::242])
+        by gmr-mx.google.com with ESMTPS id c8si240906igv.2.2016.02.25.06.02.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) client-ip=2607:f8b0:4001:c05::243;
+        Thu, 25 Feb 2016 06:02:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::242 as permitted sender) client-ip=2607:f8b0:4001:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::242 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x243.google.com with SMTP id xg9so1098960igb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:03:45 -0800 (PST)
+Received: by mail-ig0-x242.google.com with SMTP id hb3so1089829igb.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:02:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=hrf9bIiSnKmJ3ay3MgUCzJFTja4C/9HJ8F0rzsrVqLs=;
-        b=iU2yCXDho26E3r8ufs7XX+CqnomYQWPCR4m5qEj8h3SrjsNNwSz4val8yZSAw/+Cqa
-         B0aFHDtAERJnB4/w4+sHGCwYA0A0gQh6ZnAEnpw1z8Qysv/0yPNutRAZr9KfWQWEqhqj
-         h16Ze5bwZA8v3oe8bKN7L4Xf8FL3Y9d7VmD1a4ColqYTZlu9TvSNaXyEHFNuf06u6O8G
-         s6FFrkwWNPlWrgAsu0Oa6nC/bX5d0L34EOZ1SiylhTMYxxQUa8Eqi6F1ouTTA+F2giS7
-         4vHZB2omWNo/Cau8yJVBrsDeui0FDpQXo57iQbSQqjfjH55lh9GvL7ENtFc9oUcrzYdw
-         fTZg==
+        bh=mJekFkpf/BSKrm1ZzFqvG4I8koTMtsQl4s+1Si0Tch4=;
+        b=HV78G9XDZFniE/R+oDcEQtp73EC3UouAgtGG8mhUKf0sh1pf5i9uNKYpXzRj3uSMXZ
+         kspQZXz6ivct8dK7qF9huBFq+gXRJuOkZ6BD9CYUix3Ve0Bs2LriWEhkNT+DY6ADZ2Zb
+         v1cP9MrP0Y1eQsRupyaLftBMUm6q6874EJi6D930cscsTQmmhHbxnLpSWNPQY4xXN+nA
+         lEKMmETFKEc9JRoJvbyPkx909AdkkcOn3xyTCmMg9JP+qcbKPXcrmKxfU0klUtU4G95m
+         NTut/h81frJC0AK/d7oBQ1MtBHt3kmOA81In5sr9x4gJdqwmDaiI7ADGU7Vy4gF7HSou
+         246w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=hrf9bIiSnKmJ3ay3MgUCzJFTja4C/9HJ8F0rzsrVqLs=;
-        b=i9Lk7iRq0moMk3i/XzOIBo8yCksTPsY+Jo9KNifnFF0JY7PdBA8wRFz7ls9I4uIVHw
-         Jr5u2sU0rM5oGR5E9gnat/QFVdjsLDQHtr5rcHMFSYAmg8VUXdUmgNxXpgT+efs+/MzJ
-         mazTvKFVK08ucGAEJDiCr3WIgMSxt4JA6dMKA883RrwdXD6T5zpgcj8VKROC6iLXSUJR
-         uAKqwr1UWdSNF9CEVQLG8V8S49GUGOPU+ePCa1cF2LK1enAqylOvKscLL3SRABf3Ic8i
-         Y99NujLBf5ys6M/yXaB/EDVgLyTKSHyl8OQeGtY1lpwUxtP2BUS1pznGFoQCIge35k7p
-         S7Vw==
-X-Gm-Message-State: AG10YOSj8tp1kV7/mRAMvd5cVSdfdlyRS6cC9xjVu1NxyIdvx9cRUX971KjQW59o9hM5vw==
-X-Received: by 10.50.138.3 with SMTP id qm3mr2031676igb.46.1456409025033;
-        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
+        bh=mJekFkpf/BSKrm1ZzFqvG4I8koTMtsQl4s+1Si0Tch4=;
+        b=kT6ocLOhbc4OEKyx0VRpBtXJpNo5vNFP7aaIz2TyCPBBfXNldrnv17WrA7Z/vihQ4u
+         W7MYJp9ASvUsc/hx5ZuG46yc9kV/pWUKfTsWARx1WAc/0VH5RfRudcmUQGpBiA4hnAk8
+         oc0q7qybaV/4GrPnsa3jR1zWvuaqi0RBO1sskqcicRCYkcUCtMM7QXETTYh8epVQ/OPn
+         yB8Yd7bA/+knSHWIoEJiGMVTR7Q0+YJViUbfTFjVaJp9i3qj2ao+QjZyfO+phrE28nTF
+         fL9LI+5/Uua1GS1E04yQ2ZAHxnQy05YnDt8dT05hFJ1aOBZKzuMoblcJtSwLa59Iyxei
+         nPeA==
+X-Gm-Message-State: AG10YOS+wYu6Dt8S1vIWgnsGzDRU7Q/NTlghTz6i+9IPkDkyN8Qw6Edwdq8MEQWSLcbfwA==
+X-Received: by 10.50.78.200 with SMTP id d8mr3013936igx.61.1456408948529;
+        Thu, 25 Feb 2016 06:02:28 -0800 (PST)
 Return-Path: <janani.rvchndrn@gmail.com>
 Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id t2sm1307135igs.3.2016.02.25.06.03.43
+        by smtp.gmail.com with ESMTPSA id s38sm3275404ioe.33.2016.02.25.06.02.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:03:44 -0800 (PST)
-Date: Thu, 25 Feb 2016 14:02:56 -0500
+        Thu, 25 Feb 2016 06:02:28 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:01:40 -0500
 From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rtl8723au: core: Remove CamelCase
-Message-ID: <e89a5e29b70620dbd80342261fefee41eee3b9c7.1456426552.git.janani.rvchndrn@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8723au: core: Drop unneeded pointer cast
+Message-ID: <8a7ae3776012cf0e62b3190a59366926a1f24d9c.1456426552.git.janani.rvchndrn@gmail.com>
 References: <cover.1456426552.git.janani.rvchndrn@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -62,26 +62,42 @@ Content-Disposition: inline
 In-Reply-To: <cover.1456426552.git.janani.rvchndrn@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove CamelCase on the variable FunctionContext.
+Void pointers don't need to be cast to other pointer types.
+Semantic patch used:
+
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
+
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
+)
 
 Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8723au/core/rtw_security.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_security.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8723au/core/rtw_security.c b/drivers/staging/rtl8723au/core/rtw_security.c
-index 9d2a013..411d138 100644
+index 038b57b..9d2a013 100644
 --- a/drivers/staging/rtl8723au/core/rtw_security.c
 +++ b/drivers/staging/rtl8723au/core/rtw_security.c
-@@ -1617,9 +1617,9 @@ exit:
- 	return res;
- }
+@@ -1619,7 +1619,7 @@ exit:
  
--void rtw_use_tkipkey_handler23a(void *FunctionContext)
-+void rtw_use_tkipkey_handler23a(void *function_context)
+ void rtw_use_tkipkey_handler23a(void *FunctionContext)
  {
--	struct rtw_adapter *padapter = FunctionContext;
-+	struct rtw_adapter *padapter = function_context;
+-	struct rtw_adapter *padapter = (struct rtw_adapter *)FunctionContext;
++	struct rtw_adapter *padapter = FunctionContext;
  
  	RT_TRACE(_module_rtl871x_security_c_, _drv_err_,
  		 "^^^%s ^^^\n", __func__);
