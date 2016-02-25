@@ -1,124 +1,90 @@
-X-GM-THRID: 6256383631195897856
-X-Received: by 10.66.193.225 with SMTP id hr1mr9427017pac.34.1456677827381;
-        Sun, 28 Feb 2016 08:43:47 -0800 (PST)
+X-GM-THRID: 6255228217759629312
+X-Received: by 10.50.150.98 with SMTP id uh2mr2685983igb.2.1456409025756;
+        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.152.3 with SMTP id a3ls1096129ioe.104.gmail; Sun, 28 Feb
- 2016 08:43:46 -0800 (PST)
-X-Received: by 10.107.10.217 with SMTP id 86mr14991913iok.6.1456677826936;
-        Sun, 28 Feb 2016 08:43:46 -0800 (PST)
+Received: by 10.140.91.137 with SMTP id z9ls429061qgd.75.gmail; Thu, 25 Feb
+ 2016 06:03:45 -0800 (PST)
+X-Received: by 10.129.158.2 with SMTP id v2mr41379182ywg.42.1456409025229;
+        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
 Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x230.google.com (mail-io0-x230.google.com. [2607:f8b0:4001:c06::230])
-        by gmr-mx.google.com with ESMTPS id iq8si703178igb.0.2016.02.28.08.43.46
+Received: from mail-ig0-x243.google.com (mail-ig0-x243.google.com. [2607:f8b0:4001:c05::243])
+        by gmr-mx.google.com with ESMTPS id iq8si239364igb.0.2016.02.25.06.03.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 08:43:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::230 as permitted sender) client-ip=2607:f8b0:4001:c06::230;
+        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) client-ip=2607:f8b0:4001:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x230.google.com with SMTP id g203so165154719iof.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 08:43:46 -0800 (PST)
+Received: by mail-ig0-x243.google.com with SMTP id xg9so1098960igb.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:03:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Owxi+Yv5rPKFDM0Znd7IQ8ncf+ed7qTzCk8WKSTrZjI=;
-        b=JuS90v0kl/1KcT3ioa8oLIFfbRJ5z1zhHEMXtFLyTYAPLuviQN/XWyYrJAezwWfTOK
-         BAvysO2pa3kHG15FBo6pDWT2Qy2gsj2Ka8Hcd5cOAgnDWHUqc56hxb/n/bkQRU5AAjsz
-         78x4YmMDmCS9i8U0Djpdm+mE9qK61mt3HqTpJzDipLbf9mRbFufrY1URowOO8mfYPy8K
-         5V81OrWZ2amYl4ptLiNpunTX4rB8tgf2fUhyeiAhc0gRlzQI60V/YV5GCoffd6/KS40a
-         zLEZiKqidof23rjEiNNc0hvhXspcfjFPonuPMSoMh5ypfc6Ngu7CusvS638k34/zGXuR
-         DrzA==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=hrf9bIiSnKmJ3ay3MgUCzJFTja4C/9HJ8F0rzsrVqLs=;
+        b=iU2yCXDho26E3r8ufs7XX+CqnomYQWPCR4m5qEj8h3SrjsNNwSz4val8yZSAw/+Cqa
+         B0aFHDtAERJnB4/w4+sHGCwYA0A0gQh6ZnAEnpw1z8Qysv/0yPNutRAZr9KfWQWEqhqj
+         h16Ze5bwZA8v3oe8bKN7L4Xf8FL3Y9d7VmD1a4ColqYTZlu9TvSNaXyEHFNuf06u6O8G
+         s6FFrkwWNPlWrgAsu0Oa6nC/bX5d0L34EOZ1SiylhTMYxxQUa8Eqi6F1ouTTA+F2giS7
+         4vHZB2omWNo/Cau8yJVBrsDeui0FDpQXo57iQbSQqjfjH55lh9GvL7ENtFc9oUcrzYdw
+         fTZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Owxi+Yv5rPKFDM0Znd7IQ8ncf+ed7qTzCk8WKSTrZjI=;
-        b=OjPmPOzNoQ+X7MX0b6ceOelRmWBys0zPSrENcscKIcogLrbXqtWwIrHKulRYOCgLOn
-         C0BUcnhQOLSfRFGp1keFB79BvJJdJvlaDOhOVTIvtu30/Sy5btCE5LrUtgBWgyGKTaMT
-         ENsTKHcm+3+7IUYVfnGwi+OEpV9fxEg0NnPm9BdfcoMDOqHnf+qlDqRs+YrQtysZwmqN
-         UdRrEoOkIpZmjXnPzqOh5OAEpqzSZ8WbfhGnDSmaOYI+38GZ/SgY29SOle/Z1pE1EP9T
-         VkUQA+xykdMwK5fR2pYwOYJtK2Tg2X7JXmGAHXYw3zyFFww4FkIL6OcfYT2i/8KEaznJ
-         W45A==
-X-Gm-Message-State: AG10YOQ8oMdffFDlbgYySFaWNLcG8UOv4WpXp13ldEoajESDVemM/iKAV2ZJ2XtvqqFuFQ==
-X-Received: by 10.107.34.201 with SMTP id i192mr16430899ioi.161.1456677826788;
-        Sun, 28 Feb 2016 08:43:46 -0800 (PST)
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=hrf9bIiSnKmJ3ay3MgUCzJFTja4C/9HJ8F0rzsrVqLs=;
+        b=i9Lk7iRq0moMk3i/XzOIBo8yCksTPsY+Jo9KNifnFF0JY7PdBA8wRFz7ls9I4uIVHw
+         Jr5u2sU0rM5oGR5E9gnat/QFVdjsLDQHtr5rcHMFSYAmg8VUXdUmgNxXpgT+efs+/MzJ
+         mazTvKFVK08ucGAEJDiCr3WIgMSxt4JA6dMKA883RrwdXD6T5zpgcj8VKROC6iLXSUJR
+         uAKqwr1UWdSNF9CEVQLG8V8S49GUGOPU+ePCa1cF2LK1enAqylOvKscLL3SRABf3Ic8i
+         Y99NujLBf5ys6M/yXaB/EDVgLyTKSHyl8OQeGtY1lpwUxtP2BUS1pznGFoQCIge35k7p
+         S7Vw==
+X-Gm-Message-State: AG10YOSj8tp1kV7/mRAMvd5cVSdfdlyRS6cC9xjVu1NxyIdvx9cRUX971KjQW59o9hM5vw==
+X-Received: by 10.50.138.3 with SMTP id qm3mr2031676igb.46.1456409025033;
+        Thu, 25 Feb 2016 06:03:45 -0800 (PST)
 Return-Path: <janani.rvchndrn@gmail.com>
 Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id n3sm5279558igr.17.2016.02.28.08.43.46
+        by smtp.gmail.com with ESMTPSA id t2sm1307135igs.3.2016.02.25.06.03.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 08:43:46 -0800 (PST)
-Date: Sun, 28 Feb 2016 16:42:56 -0500
+        Thu, 25 Feb 2016 06:03:44 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:02:56 -0500
 From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lustre: ldlm: ldlm_lock.c: Use
- list_for_each_entry()
-Message-ID: <20160228214256.GA8171@janani-Inspiron-3521>
+Subject: [PATCH 2/2] staging: rtl8723au: core: Remove CamelCase
+Message-ID: <e89a5e29b70620dbd80342261fefee41eee3b9c7.1456426552.git.janani.rvchndrn@gmail.com>
+References: <cover.1456426552.git.janani.rvchndrn@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1456426552.git.janani.rvchndrn@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use list_for_each_entry() rather than a combination of list_for_each()
-and list_entry(). Also, remove variable tmp which becomes useless
-as a result.
-Semantic patch used:
-
-@a@
-expression pos, head;
-expression mem;
-type t;
-identifier var;
-iterator name list_for_each_entry, list_for_each;
-@@
-
-- list_for_each(pos, head)
-+ list_for_each_entry(var, head, mem)
-  {
-   ... when != var
--  var = \(list_entry \| container_of\)(pos, t, mem);
-   ... when != pos
-  }
+Remove CamelCase on the variable FunctionContext.
 
 Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/lustre/lustre/ldlm/ldlm_lock.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723au/core/rtw_security.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-index 98975ef..010ae02 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-@@ -884,11 +884,9 @@ static void search_granted_lock(struct list_head *queue,
- 				struct ldlm_lock *req,
- 				struct sl_insert_point *prev)
+diff --git a/drivers/staging/rtl8723au/core/rtw_security.c b/drivers/staging/rtl8723au/core/rtw_security.c
+index 9d2a013..411d138 100644
+--- a/drivers/staging/rtl8723au/core/rtw_security.c
++++ b/drivers/staging/rtl8723au/core/rtw_security.c
+@@ -1617,9 +1617,9 @@ exit:
+ 	return res;
+ }
+ 
+-void rtw_use_tkipkey_handler23a(void *FunctionContext)
++void rtw_use_tkipkey_handler23a(void *function_context)
  {
--	struct list_head *tmp;
- 	struct ldlm_lock *lock, *mode_end, *policy_end;
+-	struct rtw_adapter *padapter = FunctionContext;
++	struct rtw_adapter *padapter = function_context;
  
--	list_for_each(tmp, queue) {
--		lock = list_entry(tmp, struct ldlm_lock, l_res_link);
-+	list_for_each_entry(lock, queue, l_res_link) {
- 
- 		mode_end = list_entry(lock->l_sl_mode.prev,
- 					  struct ldlm_lock, l_sl_mode);
-@@ -1053,13 +1051,10 @@ static struct ldlm_lock *search_queue(struct list_head *queue,
- 				      __u64 flags, int unref)
- {
- 	struct ldlm_lock *lock;
--	struct list_head       *tmp;
- 
--	list_for_each(tmp, queue) {
-+	list_for_each_entry(lock, queue, l_res_link) {
- 		enum ldlm_mode match;
- 
--		lock = list_entry(tmp, struct ldlm_lock, l_res_link);
--
- 		if (lock == old_lock)
- 			break;
- 
+ 	RT_TRACE(_module_rtl871x_security_c_, _drv_err_,
+ 		 "^^^%s ^^^\n", __func__);
 -- 
 2.5.0
 
