@@ -1,61 +1,61 @@
 X-GM-THRID: 6255098629488377856
-X-Received: by 10.182.105.133 with SMTP id gm5mr38521047obb.41.1456378705827;
-        Wed, 24 Feb 2016 21:38:25 -0800 (PST)
+X-Received: by 10.182.46.201 with SMTP id x9mr39794733obm.43.1456378693571;
+        Wed, 24 Feb 2016 21:38:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.248.226 with SMTP id yp2ls83749obc.38.gmail; Wed, 24 Feb
- 2016 21:38:25 -0800 (PST)
-X-Received: by 10.182.254.35 with SMTP id af3mr38615295obd.37.1456378705543;
-        Wed, 24 Feb 2016 21:38:25 -0800 (PST)
+Received: by 10.107.46.11 with SMTP id i11ls301478ioo.72.gmail; Wed, 24 Feb
+ 2016 21:38:13 -0800 (PST)
+X-Received: by 10.66.146.193 with SMTP id te1mr39251654pab.17.1456378693345;
+        Wed, 24 Feb 2016 21:38:13 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id yd9si940035pab.1.2016.02.24.21.38.25
+Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
+        by gmr-mx.google.com with ESMTPS id ui7si978407pab.0.2016.02.24.21.38.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 21:38:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Wed, 24 Feb 2016 21:38:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id fl4so25983912pad.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 21:38:25 -0800 (PST)
+Received: by mail-pf0-x22e.google.com with SMTP id q63so26491882pfb.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 21:38:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=IXkwMyzNh9mgWT/LKng3fx2FxZZU7SENv/VsgPNsv0g=;
-        b=dlZo6wl7+OXvbjUeAaBxvJXr6qw/aD1YmAkHD6Y5Az3pPn8gw7I/m3c8t3Bzj6M1AU
-         3oalPqS2W24HUAegina0CAjhFVUFIiaNhCF7sE2AHlbGmb33bM3LDx4f1bquQmqpHSQq
-         Rz0y5w0/RQNjXbl6OGAIm4c2mnbBpQnjn4+tbTnOdxna62u/HM2kNHbsR1MGLLGeGM9H
-         ivDYhw7fAriyDN+bhFbeNVIf/s4Ts7qItRmcV45By6jwUhHTGUlnqSCgejqc9uiUStNP
-         G5bhyswlpqQsXvYk8kx4QOVDuWzBSzS7wyD1iFj4zOoVuTFopFLNl1hnfut2B/0jkF42
-         +gRA==
+        bh=R+nONSC7YWAcVD8mBPIJPkZT5zwQyx/e5sDbo7aGYYg=;
+        b=Yod44wzFsx50GhYQYGqZOXhesP/Og1DalTWRpvIaQ4stxc0//Dd80hTMm9B0P/C3Mr
+         5zVWO8MksDPVJ5Tz37+v3Yoj7dZG8hjVIIochX1KWK7MQy/rQh/QkgFzvGxm4A+ZUTwp
+         wrrJ0JJCvlKzHRLCFOP7/E6TC7Rccl6gsn8o1F+HZGE2BSmbBkuKV/JD/m57jSsikxyL
+         cElBT3n/l/oVjpfa5C8TbuFQ2qqaLVjtR71XZ8BfS4+u+8NEPN4IV13K2y3PPQ97P7SU
+         3Dwn0b+t726oUNV6dotMkU6gYHH5wMbnciu5CLjjGhjUCL8fkPMebrbLmVpzvFR1tuaV
+         /fWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-type:content-disposition:in-reply-to
          :user-agent;
-        bh=IXkwMyzNh9mgWT/LKng3fx2FxZZU7SENv/VsgPNsv0g=;
-        b=aNlEtkk476sZxWV8ESbxRwzwvtRyu6C0EKDDU3DcW/DMTo4CMlLXl3roQ/ev86GCw1
-         X9JXsDzzLDveufMgSRVilXAw5ojg1bPRoGauuX958D1yAHsRirlpYJ/IzZJ+hbNQqiHW
-         CBG0zPPJySOqTr2ib4MuSqBQMGNrPFpIvuCUCGdoSqMFaEtoC/Lf1IYteEuSW110x3JQ
-         8Jyzi0XnbnVFCmL27o5Y0INRwk2alznJk/CRyOuX2wUQNwv76cE+CnR6/s21xM7nUPlo
-         apM9wE2NsNt2/ejRHKCB3KfPLxVuHeYWSI/QTZfAIBjlozDibo/VDWunewRUi2fZemWJ
-         fysA==
-X-Gm-Message-State: AG10YOS9WW6MOyYPAbROf0V2EJl1JwpFtsE1nLUug4DO/k5DOuk9mnervOvtRMLUZYH92Q==
-X-Received: by 10.66.252.73 with SMTP id zq9mr60000905pac.16.1456378705357;
-        Wed, 24 Feb 2016 21:38:25 -0800 (PST)
+        bh=R+nONSC7YWAcVD8mBPIJPkZT5zwQyx/e5sDbo7aGYYg=;
+        b=Bz0J4w3RcWP1NzhAH5LGP16jNBp5Vpcz01aK2Lrspug5TzcNfuIwBFM4D5S/MFBknT
+         tw0nJF94iU+mrilHVLfWGR1OtRGijEo6jONWEuJYst1wmAMs17RhBWJXgyIq9fOj8bLE
+         W1gONbVSOMJ0X+gTU0T63X/o0Rd0iJqor+h/OL/QBKg8jDpxad+js4lB3e1vsvyQ/nej
+         gRvUBss6xeavQR6OmRNJTpIuRM7UwKBsQOMrvN3ES8ntdL2cTR8kXZQ5OR5r1j30B9m5
+         1DI3wWrQmcM8sQ4fA3RnjLlyLZptmpnlI2M2iXCg5kmQsn4AIgi7io+It5GKmnrKlLEW
+         k2uQ==
+X-Gm-Message-State: AG10YORuA6akhPygXWmT8Hx2SPQgNIH7Tqvs1O6GC3ra0YDSiKRg0UZnhZ9EGT74vlP+Qg==
+X-Received: by 10.98.72.77 with SMTP id v74mr60387905pfa.33.1456378693163;
+        Wed, 24 Feb 2016 21:38:13 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
 Received: from localhost ([122.176.175.16])
-        by smtp.gmail.com with ESMTPSA id 87sm8787514pfq.93.2016.02.24.21.38.24
+        by smtp.gmail.com with ESMTPSA id ta2sm8792489pab.42.2016.02.24.21.38.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 21:38:24 -0800 (PST)
-Date: Thu, 25 Feb 2016 11:08:20 +0530
+        Wed, 24 Feb 2016 21:38:12 -0800 (PST)
+Date: Thu, 25 Feb 2016 11:08:09 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/6] staging: rts5208: Remove unnecessary pci_set_drvdata()
-Message-ID: <fe5fb673ab07e82be78ad39ff53d5da896891827.1456377485.git.amitoj1606@gmail.com>
+Subject: [PATCH 5/6] staging: rdma: hfi1: Remove unnecessary pci_set_drvdata()
+Message-ID: <af3688e7a073df98f29f989938be332865ab0dd7.1456377485.git.amitoj1606@gmail.com>
 References: <cover.1456377485.git.amitoj1606@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -78,22 +78,22 @@ struct pci_dev *pci;
 
 Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/rts5208/rtsx.c | 2 --
+ drivers/staging/rdma/hfi1/pcie.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
-index 7882193..b231946 100644
---- a/drivers/staging/rts5208/rtsx.c
-+++ b/drivers/staging/rts5208/rtsx.c
-@@ -1001,8 +1001,6 @@ static void rtsx_remove(struct pci_dev *pci)
- 
- 	quiesce_and_remove_host(dev);
- 	release_everything(dev);
+diff --git a/drivers/staging/rdma/hfi1/pcie.c b/drivers/staging/rdma/hfi1/pcie.c
+index b2f553d8..47ca631 100644
+--- a/drivers/staging/rdma/hfi1/pcie.c
++++ b/drivers/staging/rdma/hfi1/pcie.c
+@@ -247,8 +247,6 @@ void hfi1_pcie_ddcleanup(struct hfi1_devdata *dd)
+ 		iounmap(dd->rcvarray_wc);
+ 	if (dd->piobase)
+ 		iounmap(dd->piobase);
 -
--	pci_set_drvdata(pci, NULL);
+-	pci_set_drvdata(dd->pcidev, NULL);
  }
  
- /* PCI IDs */
+ /*
 -- 
 1.9.1
 
