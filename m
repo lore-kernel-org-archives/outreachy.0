@@ -1,136 +1,141 @@
-X-GM-THRID: 6672747924702625792
-X-Received: by 2002:a62:56d1:: with SMTP id h78mr180099pfj.100.1553620194861;
-        Tue, 26 Mar 2019 10:09:54 -0700 (PDT)
+X-GM-THRID: 6255232975470854144
+X-Received: by 10.66.221.100 with SMTP id qd4mr41384175pac.0.1456409919680;
+        Thu, 25 Feb 2016 06:18:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e393:: with SMTP id ch19ls6047018plb.2.gmail; Tue,
- 26 Mar 2019 10:09:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzUNobzfPu0k0H4v5MWSaC9Zroe0XfxxqLF0dIgpuvi2ssSXc04NASrtA0WIKRdhofQax4Q
-X-Received: by 2002:a17:902:e20d:: with SMTP id ce13mr286411plb.100.1553620193946;
-        Tue, 26 Mar 2019 10:09:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553620193; cv=none;
-        d=google.com; s=arc-20160816;
-        b=VMcg8HFQhbuPOQeKLMflsIDFI4nmZ2arNd4KUpTi79xJSxHiTYe/prrPchayfOy4vU
-         pAmPkRnWIJuLj7wJNO7ZCAhDGlarZTixjitcqoXsYzjttEqZZUAo97JjoDCILercL/3j
-         boKf2S1UPhxHSK2ucmZha77hK4D8tlyMgpy9zshV9tAbvuQtifYj4VEA7iomlNTEfO38
-         uqhzbKHASY9x6/qXdg+6wFPMy9lTulxgTllqZrtuJCZDWgUCht0/DawM5uKq7M6+ZdoZ
-         YuZvCk/kX0WP5Q9B4DEWyuiVFzmmhaMXmXGJkTzEPTf9xXaZRLCs3r8ldO07g8Wr6oMz
-         SnrA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=D2MOUROL/Ie/3gkI56lc3zDc7ZNuSOYd726itl/FbKk=;
-        b=OZ51Z5kF1MwKm/VAj1HPGXMkbvs+WKPRRQ0hCENygSxsyxTjsitbgrgNRTmAH/9iF8
-         VJwOUUEZk5hjtQMcCmLtNfrnrorYgszaPYnU+kArpEL5+HoeA5FUzl+KV7AqmQbOj2xJ
-         1w5n0+WAx6qpea+0S0M0e6a4X43V9oJ1wot1FsMbp16c5fAJ0k2w1e3DSP8gh9j2cz8w
-         lb0p7MjWBsS0GVAU1d6DXGO1BfoL5Ad5o86uZ9GYwV9z8Xv+cvOFAP9wMv2pLue1BD5q
-         OGQYfBJAEEEuB/ZTaVG0v8p9dbgtNLWZRPzLtpmGpG63wtTbg5mJkTOhLH3j9fAqC3a9
-         ORgw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="e4qL0UL/";
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id h2si843888plk.2.2019.03.26.10.09.53
+Received: by 10.140.108.139 with SMTP id j11ls451568qgf.54.gmail; Thu, 25 Feb
+ 2016 06:18:39 -0800 (PST)
+X-Received: by 10.129.51.2 with SMTP id z2mr41091072ywz.49.1456409919097;
+        Thu, 25 Feb 2016 06:18:39 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x232.google.com (mail-io0-x232.google.com. [2607:f8b0:4001:c06::232])
+        by gmr-mx.google.com with ESMTPS id k15si211208igt.3.2016.02.25.06.18.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Mar 2019 10:09:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Thu, 25 Feb 2016 06:18:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::232 as permitted sender) client-ip=2607:f8b0:4001:c06::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="e4qL0UL/";
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id r124so8553980pgr.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Mar 2019 10:09:53 -0700 (PDT)
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::232 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-io0-x232.google.com with SMTP id l127so88998829iof.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:18:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=D2MOUROL/Ie/3gkI56lc3zDc7ZNuSOYd726itl/FbKk=;
-        b=e4qL0UL/VCiaIpdH4Xs0JMDJXprmX6lXVrhOQenyn3SbACNM4z5IJP0sYHGLEJ75o7
-         7VqPSXHef4bD/ZEYU1Pd4Y/CHQgK2zpKqnXAn+e5DRy+ibCka7gX8a/AxxowkemCRbG5
-         GFAdZc3LhWK9ut14vAJO8AdBqokQ9d7toV5nem9OiOm1sYq+TwgZiuccbaIL9FwEoenx
-         ZuCk7YMRnuC8jrrKQRWqdTjgdwdVBD0mp1wnXLdv+vxYcOVVDmmxw5K6bCsCyqrgZVhI
-         CXhy2jz5bi+nF3/icVDMIgOruklfxtrtqdbTn6yFvGJBZbh21uufRivc3yusWjWBvojS
-         Iveg==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=sD3qs6fs9WgcrWZa1ILd61HOs9rBshmVCJJIMXEjnyY=;
+        b=QADra1/aoWIJbzmiRaD2MVHUJf//+8PqeWyhsU/p5Ly2R1ZEZlhDxdBAQE0nIPfSdV
+         GsF3YDOPqoIP7LGcJFFaPN1VgBOUd/dji9q4f78yz/O2rw0Pr7xyaVOSF1uStAr9/P1W
+         D3otGY01ha8BXMG24qOalcb3Jcjpn0iWWP9ewxNT5vPvyFuCFpuSqwum3eV/vNGgjL1Y
+         0rcmJ2yGFSlAwJqej22iG6zK10zqERLKgSaGtF0F1Hf6eccHzoWzyLCUR4l0Vsg+cL42
+         wfhwcpgxeZeL7VycSdsXILtzdpj32CQSxDtXmmSNUPCfjXUSgKT83nKkfVcCH45z1WjS
+         GIPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=D2MOUROL/Ie/3gkI56lc3zDc7ZNuSOYd726itl/FbKk=;
-        b=NYsgHBCB+Bo3T4/74IgItW5b59YMHDaUd09/EyuAckWGZ+WhAzhQ/3UxP6xkhMorVy
-         U6hJ/GYN+PfkpLYELgidsjgo/Usvm30FCyR14Iib83nf3FP9s/YUsRlT8eYY35hWo0+5
-         yvZ0CETDT1l9vqY1Sj3eS/yd58tlP9x6oxGBErGM5gqKs/46EvNWb0MyClIPGWznxV1/
-         BVVQSPJa/emeC6Dfl+ZikrdZuQcaix3WzhmCBBHcELI6ZEZoVcSFayXSC0RKQjEEMGQN
-         nSSizLrYZS1lImKnxoUXAuSipSUD97ZUY/nQLejQyLQ+z3MpXOl4FAuAcr+79sS4j0qT
-         wCwg==
-X-Gm-Message-State: APjAAAXN6E5PRp7xEmQfQBWXZOf2Pqqxo5Z37dyriQ+tiO7BIzUyR8QT
-	8JOm+5Pm84IK87x3E8/+Eip3J9DROmQ=
-X-Received: by 2002:a62:4214:: with SMTP id p20mr31725188pfa.204.1553620193613;
-        Tue, 26 Mar 2019 10:09:53 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.14])
-        by smtp.googlemail.com with ESMTPSA id b63sm25119436pfj.54.2019.03.26.10.09.51
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=sD3qs6fs9WgcrWZa1ILd61HOs9rBshmVCJJIMXEjnyY=;
+        b=INseZUdgJ8yRXCpAgsg3eKGtq5wcqn98baefrZ4M11hKwV7EcLfqhcuReSCmInLgtd
+         QfcFiCHaaFi8o0HH59SIMGen0+J3/siyOAEPiiiMfk8jU8WY/HxBWnDIY5txREYTb95o
+         8iJwz8lPMBa2pE3e+Ee8M3OaV5KC0W+qB7wto9MPkNG6nt7BzYqj24HnzrES3BlRhdKF
+         fDS5VdRT2MLb5z5UBpxmvNsZ7JcEliuJJGdcPBn4MCv7lq1Ew8uYbfJKjqP+r5KPGA5i
+         Z/Hzy+Yt5MmUp3Zf2zW4UywEgjAhumolGd2wqcwH8YlBr3UbFt/nvysyM6mx+ngeM+Ze
+         pktw==
+X-Gm-Message-State: AG10YOTQturk+5BcQVSb3s57QYbAUFit6ZDsarLFnz/k0B48obiJZkAxLN47niwBIEQpAw==
+X-Received: by 10.107.12.152 with SMTP id 24mr3732336iom.152.1456409918896;
+        Thu, 25 Feb 2016 06:18:38 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id n1sm1301007ige.19.2016.02.25.06.18.38
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Mar 2019 10:09:52 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192u: Remove typedef for struct.
-Date: Tue, 26 Mar 2019 22:39:42 +0530
-Message-Id: <20190326170942.19974-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Thu, 25 Feb 2016 06:18:38 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:17:50 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: wlan-ng: prism2mib.c: Drop void pointer cast
+Message-ID: <20160225191750.GA6975@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Challenge suggested by coccinelle.
+Void pointers don't need to be cast to other pointer types.
+Semantic patch used:
 
-Linux kernel coding style guidelines suggest not using typedefs for
-structure.
-The following Coccinelle semantic patch detects the cases for struct
-type:
-
-@tn@
-identifier i;
-type td;
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
 @@
 
--typedef
- struct i { ... }
--td
- ;
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
+)
 
-@@
-type tn.td;
-identifier tn.i;
-@@
-
--td
-+ struct i
-
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/wlan-ng/prism2mib.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index 8aa536d79900..48b5088e1fef 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -296,7 +296,7 @@ struct cb_desc {
- #define ieee80211_wx_get_encode_ext	ieee80211_wx_get_encode_ext_rsl
+diff --git a/drivers/staging/wlan-ng/prism2mib.c b/drivers/staging/wlan-ng/prism2mib.c
+index 5f3c7ea..fe914b1 100644
+--- a/drivers/staging/wlan-ng/prism2mib.c
++++ b/drivers/staging/wlan-ng/prism2mib.c
+@@ -428,7 +428,7 @@ static int prism2mib_uint32(struct mibrec *mib,
+ 			    struct p80211msg_dot11req_mibset *msg, void *data)
+ {
+ 	int result;
+-	u32 *uint32 = (u32 *) data;
++	u32 *uint32 = data;
+ 	u8 bytebuf[MIB_TMP_MAXLEN];
+ 	u16 *wordbuf = (u16 *) bytebuf;
  
+@@ -475,7 +475,7 @@ static int prism2mib_flag(struct mibrec *mib,
+ 			  struct p80211msg_dot11req_mibset *msg, void *data)
+ {
+ 	int result;
+-	u32 *uint32 = (u32 *) data;
++	u32 *uint32 = data;
+ 	u8 bytebuf[MIB_TMP_MAXLEN];
+ 	u16 *wordbuf = (u16 *) bytebuf;
+ 	u32 flags;
+@@ -533,7 +533,7 @@ static int prism2mib_wepdefaultkey(struct mibrec *mib,
+ 				   void *data)
+ {
+ 	int result;
+-	p80211pstrd_t *pstr = (p80211pstrd_t *) data;
++	p80211pstrd_t *pstr = data;
+ 	u8 bytebuf[MIB_TMP_MAXLEN];
+ 	u16 len;
  
--typedef struct ieee_param {
-+struct ieee_param {
- 	u32 cmd;
- 	u8 sta_addr[ETH_ALEN];
- 	union {
-@@ -323,7 +323,7 @@ typedef struct ieee_param {
- 			u8 key[0];
- 		} crypt;
- 	} u;
--} ieee_param;
-+};
+@@ -660,7 +660,7 @@ static int prism2mib_fragmentationthreshold(struct mibrec *mib,
+ 					    struct p80211msg_dot11req_mibset *msg,
+ 					    void *data)
+ {
+-	u32 *uint32 = (u32 *) data;
++	u32 *uint32 = data;
  
+ 	if (!isget)
+ 		if ((*uint32) % 2) {
+@@ -705,7 +705,7 @@ static int prism2mib_priv(struct mibrec *mib,
+ 			  hfa384x_t *hw,
+ 			  struct p80211msg_dot11req_mibset *msg, void *data)
+ {
+-	p80211pstrd_t *pstr = (p80211pstrd_t *) data;
++	p80211pstrd_t *pstr = data;
  
- // linux under 2.6.9 release may not support it, so modify it for common use
+ 	switch (mib->did) {
+ 	case DIDmib_lnx_lnxConfigTable_lnxRSNAIE:{
 -- 
-2.17.1
+2.5.0
 
 
