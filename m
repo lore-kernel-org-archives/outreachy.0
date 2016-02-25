@@ -1,86 +1,105 @@
-X-GM-THRID: 6254738247714340864
-X-Received: by 10.182.254.35 with SMTP id af3mr34192335obd.37.1456294732490;
-        Tue, 23 Feb 2016 22:18:52 -0800 (PST)
+X-GM-THRID: 6255231832735875072
+X-Received: by 10.98.74.81 with SMTP id x78mr41207869pfa.8.1456409653900;
+        Thu, 25 Feb 2016 06:14:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.52 with SMTP id 49ls2540627qgo.79.gmail; Tue, 23 Feb
- 2016 22:18:51 -0800 (PST)
-X-Received: by 10.141.0.9 with SMTP id b9mr8208463qhd.16.1456294731719;
-        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id yd9si189857pab.1.2016.02.23.22.18.51
+Received: by 10.140.94.194 with SMTP id g60ls427542qge.52.gmail; Thu, 25 Feb
+ 2016 06:14:13 -0800 (PST)
+X-Received: by 10.31.15.11 with SMTP id 11mr41273032vkp.3.1456409653222;
+        Thu, 25 Feb 2016 06:14:13 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x22c.google.com (mail-ig0-x22c.google.com. [2607:f8b0:4001:c05::22c])
+        by gmr-mx.google.com with ESMTPS id ph8si269695igb.0.2016.02.25.06.14.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Thu, 25 Feb 2016 06:14:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::22c as permitted sender) client-ip=2607:f8b0:4001:c05::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::22c as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id x65so7052541pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 22:18:51 -0800 (PST)
+Received: by mail-ig0-x22c.google.com with SMTP id z8so14108306ige.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:14:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=MtLjF3RT5DG0/XBj0nD2m12v8upYc4+Y69Hq+I0yAxs=;
-        b=knlQnQCF9eG0S06PKjHQDPrUuAO6feQis3Wku8wBJT0cTk6V9ktZHmbHGXVFNoLwMK
-         90mz0zMNh5hVtc7RgGg46M6dV0sOkmdC8Q8Ro0cRgPk5asdj3SjAMzsQP5ZcOt08BbcR
-         qb4YRe7+ivK32ULaU8iuQj1DK+s9mkaAiIw5oCUzeozXS7r40vZoUQw9fowjYo4wpzYc
-         osy66eY0HQEWiuCtFZeHnFDhXMUQA4C9jR1Qi50Mbaejfv6hd05BvUFcd3d2kH7z6T0+
-         aEf478r2fk2C+wmH1oMESNrKiDLlIB2qqRiK/ADLxmp9/71JCbkrMx4F6kBIKGwP+Lmp
-         RFSw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=SgLL2aRgybWVGRYQwdAs01UssIMx3PYCXRif7WG/Nlo=;
+        b=PYMiynLX8uZYBo3lTDtxzT4nUqgYy9uIUl4UPuJX3ElN7TkbRBtO+YXUeE1RAB8AP6
+         ZHJimjfjvyEII5yTxV/yPlxeyhEa2tIJ2jCgnJGcRfzPWRlj7a/o9RVxvoS3U3jXhO6F
+         8tgH7fOYkbbwgeD3oukatSuutKmwCiLsskKFh4SQCbi005bZf9hf0HKBUMCdLKCKUTUV
+         fE8i7JF2tG2mebmIqfAv1bohYCcNMx1KC8H/xGL/Ac4k+Ms7VqS8mXp7yPiYgP6+GWAd
+         IQt+hwtyGhC9kV/tk7SdRiVlv6R3BURnjB5cMRA2zVZHwVhmRfiSFmxldfgekQo689Lq
+         vFvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=MtLjF3RT5DG0/XBj0nD2m12v8upYc4+Y69Hq+I0yAxs=;
-        b=lmtVL3HFEfLLwsQ1SGKuFhf+PYa59hwwDMYzixibfeBuF6TznWXK9fUcZ/zJpUfWsn
-         fjO0eV5PFcvWKp00QGDROrePaLdbFG/Ybvny8ygVFHn+yC5dRscUGbWAt+aTe6f1SJue
-         OJ4aBL2BhXWl8LuGelhFkwt78yjqxXIoFhPu4zCfr1smcm20PYs5MBYNIhq3r2K41PyX
-         sVRXvOaWm1deE3zBKUoQqQ3DIGE28zGVcCJfyDUJZI14XhUtx6VDvW/68Q1HUVnYzhxv
-         Kf2TybQpNZLE3WgLd7CSNGj8qGOLAOBz+4rBWOjDeUdZBFCOaq2mjI3x/vgE+1XIvfNo
-         WNEQ==
-X-Gm-Message-State: AG10YOQieJxJZuYLVSGKofe1f/m/ZgqNU1SfEk6dpipUbEtdWLLuob5EUl5y2XP+x879Hg==
-X-Received: by 10.98.16.86 with SMTP id y83mr51759629pfi.45.1456294731529;
-        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
-        by smtp.gmail.com with ESMTPSA id e1sm1893853pas.1.2016.02.23.22.18.51
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 22:18:51 -0800 (PST)
-Date: Tue, 23 Feb 2016 22:18:50 -0800
-From: Alison Schofield <amsfield22@gmail.com>
+         :content-disposition:user-agent;
+        bh=SgLL2aRgybWVGRYQwdAs01UssIMx3PYCXRif7WG/Nlo=;
+        b=O2aBZYKaQcQWP8frs6BHL9fmhp4+qTZkoQcuiW28pf9/g28+ec92WEcdqMyqH6b5ve
+         oKt93A3jHx0A2kUal6uNzPpbXRXFDWrVMyyNj59kL3O31QrA5CRAGYOBzuDUypTddG7A
+         sNDiZHlf/GMn9/HQ/OPCYQtWAj5S0djSbfhXgig4+mRLXidqiOWcRUqzRp0LPwmC17vp
+         k4wjdFpeF2uMEYiuKtXyRYuzBvQuA2vjt22XqOnkXygPoWKrWPn/TAtYa4CJWMg76iAg
+         YVykw1GcfHGPRPnWCFOh3XoUX95DFAMVhqwnUza8Se7KM7t/J5e1TAHEVtOsjnmLGZYX
+         k1KA==
+X-Gm-Message-State: AG10YOTAw1FI83SM55IGoRcNdHV0TMf9mKZ6FAEy8mbw8DuQMpymYlzGKxBkYGJ+VbTlCw==
+X-Received: by 10.50.137.35 with SMTP id qf3mr3378930igb.92.1456409653060;
+        Thu, 25 Feb 2016 06:14:13 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id xb7sm1304151igb.21.2016.02.25.06.14.12
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 06:14:12 -0800 (PST)
+Date: Thu, 25 Feb 2016 14:13:24 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: adt7316: remove useless initialization
-Message-ID: <20160224061843.GA12334@d830.WORKGROUP>
+Subject: [PATCH] staging: wlan-ng: Drop void pointer cast
+Message-ID: <20160225191324.GA6909@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove the initialization of a variable that is immediately
-reassigned.
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
+
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/iio/addac/adt7316-i2c.c | 2 +-
+ drivers/staging/wlan-ng/prism2mib.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/iio/addac/adt7316-i2c.c b/drivers/staging/iio/addac/adt7316-i2c.c
-index 78fe0b5..0ccf192 100644
---- a/drivers/staging/iio/addac/adt7316-i2c.c
-+++ b/drivers/staging/iio/addac/adt7316-i2c.c
-@@ -21,7 +21,7 @@
- static int adt7316_i2c_read(void *client, u8 reg, u8 *data)
+diff --git a/drivers/staging/wlan-ng/prism2mib.c b/drivers/staging/wlan-ng/prism2mib.c
+index e1b2e47..5f3c7ea 100644
+--- a/drivers/staging/wlan-ng/prism2mib.c
++++ b/drivers/staging/wlan-ng/prism2mib.c
+@@ -379,7 +379,7 @@ static int prism2mib_bytearea2pstr(struct mibrec *mib,
+ 				   void *data)
  {
- 	struct i2c_client *cl = client;
--	int ret = 0;
-+	int ret;
+ 	int result;
+-	p80211pstrd_t *pstr = (p80211pstrd_t *) data;
++	p80211pstrd_t *pstr = data;
+ 	u8 bytebuf[MIB_TMP_MAXLEN];
  
- 	ret = i2c_smbus_write_byte(cl, reg);
- 	if (ret < 0) {
+ 	if (isget) {
 -- 
-2.1.4
+2.5.0
 
 
