@@ -1,108 +1,107 @@
-X-GM-THRID: 6255174168530124800
-X-Received: by 10.129.116.214 with SMTP id p205mr42377466ywc.55.1456396227856;
-        Thu, 25 Feb 2016 02:30:27 -0800 (PST)
+X-GM-THRID: 6255224416958939136
+X-Received: by 10.129.74.195 with SMTP id x186mr41193764ywa.36.1456407927574;
+        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.23.229 with SMTP id 92ls344767qgp.65.gmail; Thu, 25 Feb
- 2016 02:30:27 -0800 (PST)
-X-Received: by 10.129.152.130 with SMTP id p124mr16692809ywg.24.1456396227312;
-        Thu, 25 Feb 2016 02:30:27 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id ui7si1127804pab.0.2016.02.25.02.30.27
+Received: by 10.50.66.211 with SMTP id h19ls203105igt.9.gmail; Thu, 25 Feb
+ 2016 05:45:27 -0800 (PST)
+X-Received: by 10.66.231.4 with SMTP id tc4mr42565007pac.14.1456407927214;
+        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x234.google.com (mail-io0-x234.google.com. [2607:f8b0:4001:c06::234])
+        by gmr-mx.google.com with ESMTPS id c8si235937igv.2.2016.02.25.05.45.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 02:30:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::234 as permitted sender) client-ip=2607:f8b0:4001:c06::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::234 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id fl4so30128327pad.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 02:30:27 -0800 (PST)
+Received: by mail-io0-x234.google.com with SMTP id l127so87958518iof.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 05:45:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=7KNYdZX5lLfiEqL29lHE8IJtE09cwBSagqMhO2gAYAY=;
-        b=CKpYnm8apPRNF38uK92pkF0EgUUeTajC7HZcjQbJzStJPILB6wnzCEDKmiw1IrG3oN
-         gHt20tAG8+Vo7+JRR6nkFj9Yo+jL6Q1ePp01es/bBtHWffY8TQycAy4KCShMgvRqmKCE
-         bYqkRFPVq4FTyu3tCiBGsE7y22RxCZB8QIrbAhzd4A27wcIGaxy2XTnCSVl6xpSFU9Qk
-         9vquOcNvcKec5srISIgCJpyQk59YRFlmMcW17jhecFSPLrjf4+OcgQNUsZKg3N3Fh/Rj
-         C2YyyHWxpqsvEFdDew2qgnNokqge3YoK9QHgI0N5fdd5lr+elOs9YLC965wfcZleokn0
-         KuYQ==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=4n7Ow6cfKjdReK9kCUKg0j+SmIxrtg6f6dozMUqf0TQ=;
+        b=Q3nBmxLhAS9WXPqTG1G5je1fFu+jtvPCesOGoeNZf8KCPcFCm3de2PFKmYg7C/YcYA
+         apWoeACmrCy8yJoMqg1P6ed6f9eA8TCf/VKto9sx9Eh35NMtpu1opDGefK3yy3VYYmY7
+         t7Pprzpa8IWSAlN5R1nl9Er1gmx27VHm+xMlWnEfbi2ChjtVj7I4soq9Fn2L/71/cfw0
+         dsXMfwjedKVJu44c2ZRlGrjKfD9gm56JMgZ7ixEkrP5thgcr+vD7B66AZo5ZIPNdSa0Z
+         dSpV7rMHE+nt2XBJncJQXPHQi2A8dLIMzcmwksdtjvNgVP49zAhZlv+lyw+Iq9sFd2XQ
+         ynHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=7KNYdZX5lLfiEqL29lHE8IJtE09cwBSagqMhO2gAYAY=;
-        b=ZAH0e2mRhM3aXgvsYsnpstfZIrCh65qAZG0k+mrOJfVCdW1ocDTYJj6BMbn+4+O2oz
-         GKR6ECcfhDeVAZTLPfJm/ahcUUwx6WsS9193bzQd9losPPJeEhpt5yF9aF8kYzTGTMYx
-         vqWhSCq2U56X0aUBLNVHTyXeypeuWc91vE5EKFa3PZRmH0+qMe4gcW0C4Vhf+tjd75jd
-         CzDqMnNhIPDhTBX3JiT4NlkZYhEmr/5wd88SmebWW7w0VSJzspaJh5bt/RVra0YivwEp
-         WtX06NNCwlvwLQ+FVb9U4lVBHUxFkgxwmNKod8yr+EuZUhJWeqU0dFALyUE3L7W6h0Up
-         v4bg==
-X-Gm-Message-State: AG10YOTgyu308zDLaOXspohDd7EiBDAjyT5w9wBaxiBSEevIsPA/Pd8DrDI22SE9oShWUw==
-X-Received: by 10.66.145.232 with SMTP id sx8mr62066728pab.148.1456396227153;
-        Thu, 25 Feb 2016 02:30:27 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id l24sm11178341pfb.73.2016.02.25.02.30.26
+         :content-disposition:user-agent;
+        bh=4n7Ow6cfKjdReK9kCUKg0j+SmIxrtg6f6dozMUqf0TQ=;
+        b=TUo3LWVhDnCT8zVDjtNCX0Z4R9v3wVn5lX3uiZen5YyQ28sKVw2/hDRIzRZ0Aw/hsK
+         UAaVOXe1A/MOpU1CFRIve8ftgiEeO9YWf6lb0+pWmZoJlhD0P7GJNZNUKlHKlcpr3t5F
+         FydYyeM0UaRx/mmGDj5bSRSa2661ljeggiVa9gdHPOIc4dUbwUm2bzMnlFUdCRjbWk+K
+         8gWNr1Ilq6+yilDqwMZqQYhKqhOm8yCUNSgXcCWOlaeSbq6lKT4GApJSQQsjrURV9osp
+         p9P3zwzot3EkuI1zm+pSbWhYnjNZ5rgFElh2eCYakLVXRcC35XyPVT13GpDBVlMUKLNZ
+         6ZIg==
+X-Gm-Message-State: AG10YORAg57PvmOaGqv2CqPNE+LRUUKU3VwrKIfzsL7dl+l4uQ4tmbFAl3e6s+c2BAeEZw==
+X-Received: by 10.107.154.80 with SMTP id c77mr3095406ioe.162.1456407927049;
+        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id 8sm3251580ioe.8.2016.02.25.05.45.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 02:30:26 -0800 (PST)
-Date: Thu, 25 Feb 2016 16:00:07 +0530
-From: "pooja.shamili" <poojashamili@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 05:45:26 -0800 (PST)
+Date: Thu, 25 Feb 2016 13:44:39 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: gdm72x: Adding spaces before and after '*'
-Message-ID: <20160225103007.GA702@localhost>
+Subject: [PATCH] staging: fbtft: fb_uc1611.c: Drop void pointer cast
+Message-ID: <20160225184439.GA6229@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the checkpatch.pl error: Spaces preferred around the
-'*'
+Void pointers need not be cast to other pointer types.
+Semantic patch used:
 
-Signed-off-by: pooja.shamili <poojashamili@gmail.com>
+@r@
+expression x;
+void* e;
+type T;
+identifier f;
+@@
+
+(
+  *((T *)e)
+| 
+  ((T *)x) [...]
+| 
+  ((T *)x)->f
+| 
+- (T *)
+  e
+)
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/gdm724x/gdm_mux.h | 4 ++--
- drivers/staging/gdm724x/gdm_usb.h | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/fbtft/fb_uc1611.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/gdm724x/gdm_mux.h b/drivers/staging/gdm724x/gdm_mux.h
-index 3d50383..0871b8f 100644
---- a/drivers/staging/gdm724x/gdm_mux.h
-+++ b/drivers/staging/gdm724x/gdm_mux.h
-@@ -27,8 +27,8 @@
- 
- #define START_FLAG 0xA512485A
- #define MUX_HEADER_SIZE 14
--#define MUX_TX_MAX_SIZE (1024*10)
--#define MUX_RX_MAX_SIZE (1024*30)
-+#define MUX_TX_MAX_SIZE (1024 * 10)
-+#define MUX_RX_MAX_SIZE (1024 * 30)
- #define AT_PKT_TYPE 0xF011
- #define DM_PKT_TYPE 0xF010
- 
-diff --git a/drivers/staging/gdm724x/gdm_usb.h b/drivers/staging/gdm724x/gdm_usb.h
-index e6486e7..ffb3d99 100644
---- a/drivers/staging/gdm724x/gdm_usb.h
-+++ b/drivers/staging/gdm724x/gdm_usb.h
-@@ -26,10 +26,10 @@
- #define PM_SUSPEND 1
- #define AUTO_SUSPEND_TIMER 5000 /* ms */
- 
--#define RX_BUF_SIZE		(1024*32)
--#define TX_BUF_SIZE		(1024*32)
-+#define RX_BUF_SIZE		(1024 * 32)
-+#define TX_BUF_SIZE		(1024 * 32)
- #define SDU_BUF_SIZE	2048
--#define MAX_SDU_SIZE	(1024*30)
-+#define MAX_SDU_SIZE	(1024 * 30)
- #define MAX_PACKET_IN_MULTI_SDU	256
- 
- #define VID_GCT			0x1076
+diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
+index 4e82814..e87401a 100644
+--- a/drivers/staging/fbtft/fb_uc1611.c
++++ b/drivers/staging/fbtft/fb_uc1611.c
+@@ -222,8 +222,8 @@ static int set_var(struct fbtft_par *par)
+ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ {
+ 	u8 *vmem8 = (u8 *)(par->info->screen_buffer);
+-	u8 *buf8 = (u8 *)(par->txbuf.buf);
+-	u16 *buf16 = (u16 *)(par->txbuf.buf);
++	u8 *buf8 = par->txbuf.buf;
++	u16 *buf16 = par->txbuf.buf;
+ 	int line_length = par->info->fix.line_length;
+ 	int y_start = (offset / line_length);
+ 	int y_end = (offset + len - 1) / line_length;
 -- 
-2.1.4
+2.5.0
 
 
