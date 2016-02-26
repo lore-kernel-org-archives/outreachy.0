@@ -1,83 +1,108 @@
 X-GM-THRID: 6254955929257639936
-X-Received: by 10.50.13.101 with SMTP id g5mr1458029igc.6.1456479437026;
-        Fri, 26 Feb 2016 01:37:17 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.83.100 with SMTP id i91ls1091003qgd.66.gmail; Fri, 26 Feb
- 2016 01:37:16 -0800 (PST)
-X-Received: by 10.129.71.85 with SMTP id u82mr386602ywa.9.1456479436602;
-        Fri, 26 Feb 2016 01:37:16 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id r75si264694pfr.0.2016.02.26.01.37.16
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 01:37:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id fl4so4231609pad.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 01:37:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=lnHNPxYgD1w91sSCaisQtUcjcaaqcRdFxhn8TAqmyYw=;
-        b=JHRGTkcs6nsP86SSEujRWWqgMrpj4qMpTxNSGHrUkok5XOKZR0N/8yiy2crscS7i5m
-         JEjUxXJKab1/UJ3Y7LD7h+TmLzYAzDgyGummzsZdzf+Unr8JfdHjtz1zf/HhB/vUVupg
-         T4LVE7giB8/oadThYsiXMMdatBxwT9VeWg0tgbXO8bO+MymOoHi5p+LOqZ9Js3uvhEBf
-         rRv0gmXabDrRfBLHfmiLXooDNeU3yQpJJ++VyWhtIUZVjiVK41VGdytHSUQI6n+HnhG/
-         +7mU1rWFfBvX1nGpfAzc6app4LpHu3X1GMjoca4s7RVpGi6x0dzSMccBJ5QnSHuBrsZY
-         ARUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=lnHNPxYgD1w91sSCaisQtUcjcaaqcRdFxhn8TAqmyYw=;
-        b=bWyTZADue4l+ACRZsAr+XNB/rbT1alhcan/NhvbV1sGaLvmwEoCY01v4zFkhk+ay7Q
-         za36XX1ikV0lVd8/Ki2WkxBmMFO6E/g/HxEONiBlm2ETxMyzF3Ghl63wQDJMCvcAyaYr
-         fw9MnWK03IlpEGx8EE9uyL17/gF99qTbK7ewXwCrnLwpHyHqbypbLWAswFc4S390KCrU
-         VOnEe0KWHX5CFYuBK8PEmSCtb9XE8o9Y9f370Ptsgjh4DzTNh+UVQPR95ZWg5czySGuU
-         iq81yqAR+pW9g0QyD6zlaLRW3NodNAc2fjWGNA2Bm12YTo9Gjr6pcV/zbKU3QCk3HYOY
-         Mgnw==
-X-Gm-Message-State: AD7BkJIbXq9tK2c7Pf9gYDZzhCi2fI2ysfkWEv+Z0TS6ZLQgNBZlSZxpfJPjNhOp0eXbdA==
-X-Received: by 10.66.252.100 with SMTP id zr4mr635985pac.111.1456479436440;
-        Fri, 26 Feb 2016 01:37:16 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e1sm17963051pas.1.2016.02.26.01.37.15
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 01:37:15 -0800 (PST)
-Date: Fri, 26 Feb 2016 15:07:47 +0530
+Date: Fri, 26 Feb 2016 01:25:54 -0800 (PST)
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 0/5] Remove useless return variables
-Message-ID: <20160226093747.GA10229@Karyakshetra>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <e68da6de-9ef8-485b-b504-4a5aba63e846@googlegroups.com>
+In-Reply-To: <20160226091133.GA9015@Karyakshetra>
+References: <20160226091133.GA9015@Karyakshetra>
+Subject: Re: [PATCH v3 0/8] Remove useless return variables
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_579_991676333.1456478754544"
+X-Google-Token: EKK0wLYF6SJ8lqpfmUM0
+X-Google-IP: 14.139.82.6
 
-This patch-set removes unnecessary return variables and compresses the
-return logic.
+------=_Part_579_991676333.1456478754544
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_580_1633533531.1456478754544"
 
-Bhaktipriya Shridhar (5):
-  staging: android: ion: hisilicon: Remove useless return variables
-  staging: rtl8188eu: os_dep: Remove useless return variables
-  staging: rtl8188eu: core: Remove useless return variables
-  staging: rtl8723au: hal: Remove useless return variables
-  staging: lustre: ptlrpc: Remove useless return variables
+------=_Part_580_1633533531.1456478754544
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
- drivers/staging/android/ion/hisilicon/hi6220_ion.c  |  5 +----
- drivers/staging/lustre/lustre/ptlrpc/client.c       |  5 +----
- drivers/staging/rtl8188eu/core/rtw_sta_mgt.c        |  4 +---
- drivers/staging/rtl8188eu/os_dep/osdep_service.c    |  5 +----
- drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 16 +++-------------
- 5 files changed, 7 insertions(+), 28 deletions(-)
+Please ignore v3. Some patches have already been applied. Hence, sending in 
+v4 with
+with only the relevant patches.
 
---
-2.1.4
+Thanks,
+Bhaktipriya
 
+On Friday, February 26, 2016 at 2:40:58 PM UTC+5:30, Bhaktipriya Shridhar 
+wrote:
+>
+> This patch-set removes unnecessary return variables and compresses the 
+> return logic. 
+>
+> Bhaktipriya Shridhar (8): 
+>   staging: rdma: hfi1: Remove useless return variables 
+>   staging: android: ion: hisilicon: Remove useless return variables 
+>   staging: unisys: visorbus: Remove useless return variables 
+>   staging: rtl8188eu: os_dep: Remove useless return variables 
+>   staging: rtl8188eu: core: Remove useless return variables 
+>   staging: wilc1000: Remove useless return variables 
+>   staging: rtl8723au: hal: Remove useless return variables 
+>   staging: lustre: ptlrpc: Remove useless return variables 
+>
+>  drivers/staging/android/ion/hisilicon/hi6220_ion.c  |  5 +---- 
+>  drivers/staging/lustre/lustre/ptlrpc/client.c       |  5 +---- 
+>  drivers/staging/rdma/hfi1/chip.c                    |  5 +---- 
+>  drivers/staging/rtl8188eu/core/rtw_sta_mgt.c        |  4 +--- 
+>  drivers/staging/rtl8188eu/os_dep/osdep_service.c    |  5 +---- 
+>  drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 16 +++------------- 
+>  drivers/staging/unisys/visorbus/visorbus_main.c     |  4 +--- 
+>  drivers/staging/wilc1000/wilc_wlan.c                |  6 +----- 
+>  8 files changed, 10 insertions(+), 40 deletions(-) 
+>
+> -- 
+> 2.1.4 
+>
+>
+------=_Part_580_1633533531.1456478754544
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Please ignore v3. Some patches have already been applied. =
+Hence, sending in v4 with<br>with only the relevant patches.<br><br>Thanks,=
+<br>Bhaktipriya<br><br>On Friday, February 26, 2016 at 2:40:58 PM UTC+5:30,=
+ Bhaktipriya Shridhar wrote:<blockquote class=3D"gmail_quote" style=3D"marg=
+in: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Th=
+is patch-set removes unnecessary return variables and compresses the
+<br>return logic.
+<br>
+<br>Bhaktipriya Shridhar (8):
+<br>=C2=A0 staging: rdma: hfi1: Remove useless return variables
+<br>=C2=A0 staging: android: ion: hisilicon: Remove useless return variable=
+s
+<br>=C2=A0 staging: unisys: visorbus: Remove useless return variables
+<br>=C2=A0 staging: rtl8188eu: os_dep: Remove useless return variables
+<br>=C2=A0 staging: rtl8188eu: core: Remove useless return variables
+<br>=C2=A0 staging: wilc1000: Remove useless return variables
+<br>=C2=A0 staging: rtl8723au: hal: Remove useless return variables
+<br>=C2=A0 staging: lustre: ptlrpc: Remove useless return variables
+<br>
+<br>=C2=A0drivers/staging/android/ion/<wbr>hisilicon/hi6220_ion.c =C2=A0| =
+=C2=A05 +----
+<br>=C2=A0drivers/staging/lustre/<wbr>lustre/ptlrpc/client.c =C2=A0 =C2=A0 =
+=C2=A0 | =C2=A05 +----
+<br>=C2=A0drivers/staging/rdma/hfi1/<wbr>chip.c =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=A05 +----
+<br>=C2=A0drivers/staging/rtl8188eu/<wbr>core/rtw_sta_mgt.c =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0| =C2=A04 +---
+<br>=C2=A0drivers/staging/rtl8188eu/os_<wbr>dep/osdep_service.c =C2=A0 =C2=
+=A0| =C2=A05 +----
+<br>=C2=A0drivers/staging/rtl8723au/<wbr>hal/rtl8723a_bt-coexist.c | 16 +++=
+-------------
+<br>=C2=A0drivers/staging/unisys/<wbr>visorbus/visorbus_main.c =C2=A0 =C2=
+=A0 | =C2=A04 +---
+<br>=C2=A0drivers/staging/wilc1000/<wbr>wilc_wlan.c =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=A06 +-----
+<br>=C2=A08 files changed, 10 insertions(+), 40 deletions(-)
+<br>
+<br>--
+<br>2.1.4
+<br>
+<br></blockquote></div>
+------=_Part_580_1633533531.1456478754544--
+
+------=_Part_579_991676333.1456478754544--
 
