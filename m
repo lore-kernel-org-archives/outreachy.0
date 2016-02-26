@@ -1,65 +1,65 @@
 X-GM-THRID: 6255472984804294656
-X-Received: by 10.13.216.150 with SMTP id a144mr43354827ywe.52.1456466149873;
-        Thu, 25 Feb 2016 21:55:49 -0800 (PST)
+X-Received: by 10.66.122.101 with SMTP id lr5mr22111125pab.3.1456466111660;
+        Thu, 25 Feb 2016 21:55:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.30.101 with SMTP id r5ls423254igh.40.gmail; Thu, 25 Feb
- 2016 21:55:49 -0800 (PST)
-X-Received: by 10.66.136.71 with SMTP id py7mr44662464pab.7.1456466149560;
-        Thu, 25 Feb 2016 21:55:49 -0800 (PST)
+Received: by 10.50.83.73 with SMTP id o9ls399264igy.5.gmail; Thu, 25 Feb 2016
+ 21:55:11 -0800 (PST)
+X-Received: by 10.107.8.216 with SMTP id h85mr5730901ioi.0.1456466111283;
+        Thu, 25 Feb 2016 21:55:11 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id ff2si1856118pad.2.2016.02.25.21.55.49
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id r75si192265pfr.0.2016.02.25.21.55.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 21:55:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Thu, 25 Feb 2016 21:55:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id fl4so3961913pad.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 21:55:49 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id w128so4131747pfb.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 21:55:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=jMQAB8guyTzXmpwuyLsS7SJjZUuhSuphCPdkKRgQpgg=;
-        b=spABDIxm/hwv5SPd9NC2hGgyORi/WuCmGq8tWhBpZcgIh8FQX/jFqDvAB/5V1rj0Uh
-         XCVULG1ILGdejW5LXa7HsOj+7aHP5zq6BWmSajFjYtLVgVtYN9iEgkl6cKlXU/IBKtN4
-         mND9yCog8AVBwAD7HIueeIWiwC4NxrgQk/AnovUYkCGK8ZIgW8Dy7O6auZIprESlxnKD
-         uah/IbZ8/CkekFreN7CUzfro8DtGQGM2QCQwM5F0cRske5vw7m+bCy3J792m4A8EIR2i
-         p82JbmyGVZRwh9CHTzAJpWxKmRzLKgJ/IfbKpOl/POYmCiC2GytccbDPys/5XfuedJ5q
-         N+ZQ==
+        bh=7sCtHGU7+QbPvNxwRQV24JYT7iGmzkgNEXMQremHAqU=;
+        b=W0SQ/tMy/Ys2emhAPGgFUY88LceXv9e4eQbRX3vD5zTrmsLGMiA2rgMvGt/93Jok1U
+         js4FE3vSuCtjzEzGQaUSDJRaxBGD0vJwJbUdDEzx+IQqgdwaFZwUkLtKrzDb6ROAetM2
+         d2UZEIJ6dswGr0hlBLilzG115ncoEDLich9NhWjhSZ9/RCjgJOxLScndW9yQrV5w1OOv
+         8GklKMsS4jjZiM9KHywAO3nw6IcC1XHtOD+jIYMi7lvPrc02M8y2XOiqm0qyZXs85dPf
+         2+5x9stEDmCPxg59mi4d3jRGZAZ8Tmw6EkQerJ4NU6mdkV8ut2gSuz+s25lzFfMqt41m
+         pmvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
          :references;
-        bh=jMQAB8guyTzXmpwuyLsS7SJjZUuhSuphCPdkKRgQpgg=;
-        b=XyHIBFbL7g4h25eHElFFGoaNm9x1VEuMdK+vEC3f8Sgt+vn8VhUHuIT2Wq9wfmpzNb
-         wAm1U8dZI3ZHXP9v9x8YM7fnE7Vk0NWKoUgmzAtydwIj5DI2Mzmp9+z0h7VcQdCXKZzG
-         yp0LjAn0V0rAGNcF2F/pdBERj0DuEXJwTyxMJ7Dcmc0yQxCrgTO9MeuaGGBst36zFt8s
-         jWjQGzSv8bmcZQ0oHYnUxYv791rHKxCeU/GLMAaWBLCKsOLl+qGiSWiPyXb4EoVnN7dC
-         UOsXp3U1t4rhBCVjXmXsFzNlpyTuqdrXMO7itwxe+IRLyY2TVTaKsMC2uqcKpcG1IusJ
-         B6ew==
-X-Gm-Message-State: AG10YOR2zHHxGo2NbEsFp255qJiSGDPrFi4g2KDzwLgxg97v7jjQIpk1aWMUnxUo8e3ALg==
-X-Received: by 10.66.233.131 with SMTP id tw3mr69910946pac.89.1456466149416;
-        Thu, 25 Feb 2016 21:55:49 -0800 (PST)
+        bh=7sCtHGU7+QbPvNxwRQV24JYT7iGmzkgNEXMQremHAqU=;
+        b=AMMXiKn8mT58NXRyFLHSqkChpPVOF1EPIxaxCs76d31g8DWiS0jqZsduXKKSIk5esw
+         3kXLMu3+vxBLvt/U9Orf951wa3lH1epHIvdLXO+7UZ8s6X17YWa2s3Ul6WNrIvxRjo2+
+         pEtIv+pQ4aVftKangQI9sYXWMUMa9hI5VPsnUbEQxXiaVKqYTjaXTpyRjTWzhDwWK0G1
+         AyPOkbbwCy7OU3geqgXuP6rl+6a2/Ydm6kAQXLMTX7p63n1kajgTLTyeLypvtQeoMF5F
+         EPd9YJA+8TjVtAC3BGxmyZsnD1FW/KwqLYG7zoPtbi/WpNJNATg7SOXO0P3QB/A3+hKu
+         cuEw==
+X-Gm-Message-State: AG10YOTPjKaueZQ7RJ//5R5Lp2rSi/S90Db28WEcSN2XK5hZt7r7Zr589MHk7X1SdAnQyw==
+X-Received: by 10.98.9.27 with SMTP id e27mr69019618pfd.59.1456466111125;
+        Thu, 25 Feb 2016 21:55:11 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
 Received: from localhost.localdomain (or-67-232-71-177.dhcp.embarqhsd.net. [67.232.71.177])
-        by smtp.gmail.com with ESMTPSA id n13sm16140222pfi.3.2016.02.25.21.55.48
+        by smtp.gmail.com with ESMTPSA id l24sm16092161pfb.73.2016.02.25.21.55.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 21:55:49 -0800 (PST)
+        Thu, 25 Feb 2016 21:55:10 -0800 (PST)
 From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/6] staging: wilc1000: remove code for HOST_IF_GET_LINKSPEED
-Date: Thu, 25 Feb 2016 21:55:44 -0800
-Message-Id: <507f75237e525d52c376cc515f0a57f7d1aa1257.1456464955.git.amsfield22@gmail.com>
+Subject: [PATCH 3/6] staging: wilc1000: remove code for HOST_IF_MSG_GET_CHNL
+Date: Thu, 25 Feb 2016 21:55:06 -0800
+Message-Id: <d70cbcbcd72862c1c62101649b9456e6ec050a9e.1456464955.git.amsfield22@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1456464955.git.amsfield22@gmail.com>
 References: <cover.1456464955.git.amsfield22@gmail.com>
 
 The function that sent this message id was previously removed.
 Finish the cleanup by removing the call to the message handler,
-the message handler, the #define, and the link_speed var.
+the message handler, the #define, and the channel var.
 
 Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
@@ -67,64 +67,64 @@ Signed-off-by: Alison Schofield <amsfield22@gmail.com>
  1 file changed, 27 deletions(-)
 
 diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index bdb3c7e..a772fde 100644
+index 4099982..bdb3c7e 100644
 --- a/drivers/staging/wilc1000/host_interface.c
 +++ b/drivers/staging/wilc1000/host_interface.c
-@@ -32,7 +32,6 @@
- #define HOST_IF_MSG_REMAIN_ON_CHAN              20
- #define HOST_IF_MSG_REGISTER_FRAME              21
- #define HOST_IF_MSG_LISTEN_TIMER_FIRED          22
--#define HOST_IF_MSG_GET_LINKSPEED               23
- #define HOST_IF_MSG_SET_WFIDRV_HANDLER          24
- #define HOST_IF_MSG_GET_MAC_ADDRESS             26
- #define HOST_IF_MSG_SET_OPERATION_MODE          27
-@@ -250,7 +249,6 @@ static u8 rcv_assoc_resp[MAX_ASSOC_RESP_FRAME_SIZE];
- static bool scan_while_connected;
+@@ -20,7 +20,6 @@
+ #define HOST_IF_MSG_SET_CHANNEL                 7
+ #define HOST_IF_MSG_DISCONNECT                  8
+ #define HOST_IF_MSG_GET_RSSI                    9
+-#define HOST_IF_MSG_GET_CHNL                    10
+ #define HOST_IF_MSG_ADD_BEACON                  11
+ #define HOST_IF_MSG_DEL_BEACON                  12
+ #define HOST_IF_MSG_ADD_STATION                 13
+@@ -252,7 +251,6 @@ static bool scan_while_connected;
  
  static s8 rssi;
--static s8 link_speed;
+ static s8 link_speed;
+-static u8 ch_no;
  static u8 set_ip[2][4];
  static u8 get_ip[2][4];
  static u32 inactive_time;
-@@ -1948,27 +1946,6 @@ static void Handle_GetRssi(struct wilc_vif *vif)
- 	up(&vif->hif_drv->sem_get_rssi);
+@@ -1930,27 +1928,6 @@ void wilc_resolve_disconnect_aberration(struct wilc_vif *vif)
+ 		wilc_disconnect(vif, 1);
  }
  
--static void Handle_GetLinkspeed(struct wilc_vif *vif)
+-static s32 Handle_GetChnl(struct wilc_vif *vif)
 -{
 -	s32 result = 0;
 -	struct wid wid;
 -
--	link_speed = 0;
--
--	wid.id = (u16)WID_LINKSPEED;
+-	wid.id = (u16)WID_CURRENT_CHANNEL;
 -	wid.type = WID_CHAR;
--	wid.val = &link_speed;
+-	wid.val = (s8 *)&ch_no;
 -	wid.size = sizeof(char);
 -
 -	result = wilc_send_config_pkt(vif, GET_CFG, &wid, 1,
 -				      wilc_get_vif_idx(vif));
+-
 -	if (result) {
--		netdev_err(vif->ndev, "Failed to get LINKSPEED value\n");
+-		netdev_err(vif->ndev, "Failed to get channel number\n");
 -		result = -EFAULT;
 -	}
 -
+-	return result;
 -}
 -
- static s32 Handle_GetStatistics(struct wilc_vif *vif,
- 				struct rf_info *pstrStatistics)
+ static void Handle_GetRssi(struct wilc_vif *vif)
  {
-@@ -2657,10 +2634,6 @@ static int hostIFthread(void *pvArg)
- 			Handle_GetRssi(msg.vif);
+ 	s32 result = 0;
+@@ -2689,10 +2666,6 @@ static int hostIFthread(void *pvArg)
+ 					     (struct rf_info *)msg.body.data);
  			break;
  
--		case HOST_IF_MSG_GET_LINKSPEED:
--			Handle_GetLinkspeed(msg.vif);
+-		case HOST_IF_MSG_GET_CHNL:
+-			Handle_GetChnl(msg.vif);
 -			break;
 -
- 		case HOST_IF_MSG_GET_STATISTICS:
- 			Handle_GetStatistics(msg.vif,
- 					     (struct rf_info *)msg.body.data);
+ 		case HOST_IF_MSG_ADD_BEACON:
+ 			Handle_AddBeacon(msg.vif, &msg.body.beacon_info);
+ 			break;
 -- 
 2.1.4
 
