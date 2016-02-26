@@ -1,76 +1,108 @@
-X-GM-THRID: 6255228217759629312
-X-Received: by 10.66.136.71 with SMTP id py7mr41570733pab.7.1456408812333;
-        Thu, 25 Feb 2016 06:00:12 -0800 (PST)
+X-GM-THRID: 6254956091327643648
+X-Received: by 10.31.9.78 with SMTP id 75mr295380vkj.9.1456478012494;
+        Fri, 26 Feb 2016 01:13:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.102.133 with SMTP id w5ls360440qge.29.gmail; Thu, 25 Feb
- 2016 06:00:11 -0800 (PST)
-X-Received: by 10.140.18.239 with SMTP id 102mr13614068qgf.28.1456408811856;
-        Thu, 25 Feb 2016 06:00:11 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x244.google.com (mail-io0-x244.google.com. [2607:f8b0:4001:c06::244])
-        by gmr-mx.google.com with ESMTPS id i9si225229igg.1.2016.02.25.06.00.11
+Received: by 10.107.16.208 with SMTP id 77ls720670ioq.71.gmail; Fri, 26 Feb
+ 2016 01:13:32 -0800 (PST)
+X-Received: by 10.66.148.69 with SMTP id tq5mr314455pab.28.1456478012217;
+        Fri, 26 Feb 2016 01:13:32 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id ui7si1825108pab.0.2016.02.26.01.13.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:00:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::244 as permitted sender) client-ip=2607:f8b0:4001:c06::244;
+        Fri, 26 Feb 2016 01:13:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::244 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x244.google.com with SMTP id l127so5667202iof.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:00:11 -0800 (PST)
+Received: by mail-pa0-x244.google.com with SMTP id yy13so4200023pab.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 01:13:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=8yv0K3yu1aK9D3HBh7XisKg1S3r5sC6+aKPIXJwR4ds=;
-        b=K5tSUkJOkq1JjObn/UlvB8Jjjqkx50NeIDi+tZfSpzAjUhDDh3wYfTinoK0bm3WA4Q
-         vOE5RQovKTyJ4PPF6liFOSqA2yekawgkgKyVoULcUXi2O8Jwm0vRIM7/9VYHYPXr1cFz
-         y0oPU7o42ER9jnn/G1dEUObFOleNeJbuBKXTam14vfaVbbxOJUenDQ/QAzcW2N9n+fbM
-         5AbI3pmjLpdqc/bNrTfgD/KkYV1VkMqTHn4eZmEgj4J92XNbdZ6S0KSs94R8IHpSzFK+
-         j1H2M8lXkHDHLOsDqSt5HkRlCPeGVTsBjHANuEMEd3d8RdVLMr4TY5qzX6wBqJzfpwDN
-         2/uA==
+        bh=0yExgio1LBuzsEYKWkNg83t1Y3Hz2zSCb2+whS6qKxk=;
+        b=TgpotLzFUUkPZjY0wlR2PXmQCKcvxZ8LHoYnNtGxhgKjK4RbLobcngG/LoTWmjX9X6
+         l0deXx22hLQNyAQavIgkdKChU9LCpr9tZZKiHb4RKvw/uQWaA94yzq+7PT2PPUX/UK5N
+         nEacP2HF85IFwuYF0ZW/RNdmLOzMy5I4cPR+ySnbt7OsEKwEOfQNC8pVNhgAq/jbU2Tw
+         xh9jwzV3/IKtTrPVJaWWuVAJxc68fNj8j+RWn4JSstQ7GBKc8oM5xkraZoKT0Z3/Kdpr
+         yQ0MHTFhLF1GezQjIKNnchqVgkUFByQBSpWT6PZWGOxua2fUPUvo1R2Vvxmgm2hiYb+t
+         /KBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=8yv0K3yu1aK9D3HBh7XisKg1S3r5sC6+aKPIXJwR4ds=;
-        b=RAkB7EqmI1BKB7zhBCQhuzIdWz42TpqB8aVNxaaY1iX3/NmJEvaLF8Biqtcr1IrN83
-         okZPUzhyWtMjX9Jn+PMlurxH7XjGFbcdwRdnNRkzxW/BPpbkmB7ms0IhTgVh5WVmFsHS
-         TFeLSpq4jKqD2mjgDEbPQc0zpdiU0et6mmiBBi0xazyQfDpANgMLDTTn3JF/zPQ9H1zn
-         PMbkLbdLsdhAb8T+VIMIwZd4W99cMYNi/Mn98CWuUU7wBgpI7/3e0+qs4jSLH7KJf+DC
-         Hx4ikqCnesxDuM4W0wRFZWpJLzldFnxihUMhyBKs+sw5AMjryMTo9+d2C1B06HzJuj89
-         Prdw==
-X-Gm-Message-State: AG10YOTQP+BZR3ZDKrApZtD0dxMWVca4uKtdPn7FFyj/dAwOZ0ZGtmQfAaGBHAwFWjxcJg==
-X-Received: by 10.107.157.70 with SMTP id g67mr2821052ioe.38.1456408811666;
-        Thu, 25 Feb 2016 06:00:11 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id 90sm3277984iod.12.2016.02.25.06.00.10
+        bh=0yExgio1LBuzsEYKWkNg83t1Y3Hz2zSCb2+whS6qKxk=;
+        b=mnHNb7tb8sPLPKwsD22gwrXryRLOqIWd3NR+l2eTXuFppPtoRLYbeoLTNPBECKzL+d
+         O1Ospn0Twp0iItebjrPMxJh7ZfIFsQ879A7dNcMaxS6Rw/kf6meXfbQPbAlbzvOxtZPT
+         ONr4JkE9cKvqt48hBoBbQUC9ZpycxluAaqP7A+bjVH5NVFfYJQptX0yntw7tGF39N5O8
+         kxW9PmFcgEPeFVXSlbj3pwYbk4B+qJ/56UvhV5A8aTRzVERpJG9SX4Nkb6ixclAbDk7m
+         MeZylKf9ovbKRBTrvE2vSpvwNLHHU1BZ+uGadPVfyTYoGz4sLnFVie7jUlVrIQMYZ5nC
+         kINA==
+X-Gm-Message-State: AD7BkJJZyLvTGmmHRzg4bUfnIAwJeRmFZUrjy347elrjneOly/+wE67K9dfhnF5EXJVKnQ==
+X-Received: by 10.66.119.202 with SMTP id kw10mr584352pab.110.1456478012089;
+        Fri, 26 Feb 2016 01:13:32 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id ll7sm17755877pab.6.2016.02.26.01.13.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:00:11 -0800 (PST)
-Date: Thu, 25 Feb 2016 13:59:23 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 26 Feb 2016 01:13:31 -0800 (PST)
+Date: Fri, 26 Feb 2016 14:44:08 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Drop pointer cast and remove CamelCase
-Message-ID: <cover.1456426552.git.janani.rvchndrn@gmail.com>
+Subject: [PATCH v3 1/8] staging: rdma: hfi1: Remove useless return variables
+Message-ID: <20160226091408.GA9032@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patchset drops cast on a void pointer and removes CamelCase
-on the name of the pointer variable
+This patch removes unnecessary return variables and compresses the
+return logic.
 
-Janani Ravichandran (2):
-  staging: rtl8723au: core: Drop unneeded pointer cast
-  staging: rtl8723au: core: Remove camelcasing
+The coccinelle script that finds and fixes this issue is:
 
- drivers/staging/rtl8723au/core/rtw_security.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+@@ type T; identifier i,f; constant C; @@
+- T i;
+...when != i
+when strict
+( return -C;
+|
+- i =
++ return
+f(...);
+- return i;
+)
 
--- 
-2.5.0
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ Changes in v3:
+	-No change
+
+ drivers/staging/rdma/hfi1/chip.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rdma/hfi1/chip.c b/drivers/staging/rdma/hfi1/chip.c
+index 02ba78f..46a1830 100644
+--- a/drivers/staging/rdma/hfi1/chip.c
++++ b/drivers/staging/rdma/hfi1/chip.c
+@@ -1250,11 +1250,8 @@ CNTR_ELEM(#name, \
+
+ u64 read_csr(const struct hfi1_devdata *dd, u32 offset)
+ {
+-	u64 val;
+-
+ 	if (dd->flags & HFI1_PRESENT) {
+-		val = readq((void __iomem *)dd->kregbase + offset);
+-		return val;
++		return readq((void __iomem *)dd->kregbase + offset);
+ 	}
+ 	return -1;
+ }
+--
+2.1.4
 
 
