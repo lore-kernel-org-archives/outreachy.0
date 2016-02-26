@@ -1,144 +1,76 @@
 X-GM-THRID: 6255482024290680832
-X-Received: by 10.140.29.183 with SMTP id b52mr16445316qgb.8.1456470759936;
-        Thu, 25 Feb 2016 23:12:39 -0800 (PST)
+X-Received: by 10.107.169.88 with SMTP id s85mr5667938ioe.30.1456469033846;
+        Thu, 25 Feb 2016 22:43:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.22.10 with SMTP id 10ls832136qgm.23.gmail; Thu, 25 Feb
- 2016 23:12:38 -0800 (PST)
-X-Received: by 10.140.153.23 with SMTP id 23mr19507qhz.18.1456470758770;
-        Thu, 25 Feb 2016 23:12:38 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id ui7si1784808pab.0.2016.02.25.23.12.38
+Received: by 10.107.160.11 with SMTP id j11ls657386ioe.60.gmail; Thu, 25 Feb
+ 2016 22:43:53 -0800 (PST)
+X-Received: by 10.98.89.132 with SMTP id k4mr44347465pfj.4.1456469033565;
+        Thu, 25 Feb 2016 22:43:53 -0800 (PST)
+Return-Path: <bounce-md_30481620.56cff429.v1-fb315c43a14e46f29a9f70644da6f0e8@mandrillapp.com>
+Received: from mail12.wdc04.mandrillapp.com (mail12.wdc04.mandrillapp.com. [205.201.139.12])
+        by gmr-mx.google.com with ESMTPS id v197si791238ywa.1.2016.02.25.22.43.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 23:12:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Thu, 25 Feb 2016 22:43:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56cff429.v1-fb315c43a14e46f29a9f70644da6f0e8@mandrillapp.com designates 205.201.139.12 as permitted sender) client-ip=205.201.139.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id q63so47327838pfb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 23:12:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=mM5a4rtI/amPv+IInPROO94ydMlR5kCqkRNxDjTnCp8=;
-        b=KFTrtcnJn+PywKqvANVQ4DMWpGhejrXaLZDjdpjstq+3EP7C0uaGpeSfT8EYnciDwt
-         v3sQA8t1QqL0205/gDzk8Xr4UtD6ljimRo2Bz9IagZVKpLDIOFD41LdACOjHoyPmJCbN
-         FMyE0+XKX9Kl4qX1ZeWgVwKOQ+YASvsCPJRxOu3yfvtkcHcAzl6pP3KGYUHnoETqi+sw
-         /cPC5Y7Y2brgT6VNmviOCHCtyCwRPgSL/fw/qNgRpjPfXEZC5w9RBfAFe6ISRSXHR7et
-         UwdL4uxEgCRPBPK8OvDjogjFok0heB+pgcnVKUdXfYjKqtUoqh28Qgdo8songimcYlOo
-         lwKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=mM5a4rtI/amPv+IInPROO94ydMlR5kCqkRNxDjTnCp8=;
-        b=mjDZlXroHd4acugMyWi7KPPzajofwu/E7sMNgutruKRT7jSnof5k7ZVIWrE+13kJuF
-         wfP971E7cuC9tYnlL/mcUN45LwwzBDWMmQCzbSs/7Nw7v6ZvXEkb2L+PtADvWbv0H5Mg
-         313uJ+3ARstHFOQiiEWG3b5AhZcDPXZO79EWXjGEknS+OrabUaWlPgGsqeCgpNe+N0TT
-         muXWB15vwzWOcyn7cnRgMJhLuSg0Kt6JCutdoUQaD7bQsWSUtMvNz6VUAbo5B2IiAes7
-         RJhiUQPRtCrSOjO4G3BKbKfl/rkgGcTUOhzwHI+dkGBQ8/Fauntn2xra7KPesR0Jcrqr
-         n9gg==
-X-Gm-Message-State: AD7BkJIz07qR7ZjQ4eZaiXp1E0OzlZLUAMBGRg1U6qCVka9FKK+wgCQJFcG11kXlkXe1dQ==
-X-Received: by 10.98.31.221 with SMTP id l90mr39533pfj.92.1456470758602;
-        Thu, 25 Feb 2016 23:12:38 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([223.176.133.245])
-        by smtp.gmail.com with ESMTPSA id c68sm16755536pfj.41.2016.02.25.23.12.34
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 23:12:37 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 26 Feb 2016 12:42:28 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [RESEND PATCH] Staging: comedi: Use DIV_ROUND_CLOSEST
-Date: Fri, 26 Feb 2016 12:42:26 +0530
-Message-Id: <1456470746-19844-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1456467894-14246-1-git-send-email-bhumirks@gmail.com>
+       spf=pass (google.com: domain of bounce-md_30481620.56cff429.v1-fb315c43a14e46f29a9f70644da6f0e8@mandrillapp.com designates 205.201.139.12 as permitted sender) smtp.mailfrom=bounce-md_30481620.56cff429.v1-fb315c43a14e46f29a9f70644da6f0e8@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=RDfYANhN/u3GRO03CJcw3tnWHBE=;
+ b=D9RnhE03eRxzsoi1As2eV7S1yNd2Sk8Ykwyz4UOu/mUyOrn8VPD3LOYYVenVk7gYPrfxPISrbegr
+   0IQ9M6FJG80MO5AN/n+n/QAYlEmDHJ1KHeIP9j4Sq6Lrh/0WYTv+vmmLw7AdC5VoZmQUOxbGFzE8
+   vP7SJwQtM7eGkbZ6eHI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
+ b=pVH2o3BFUXnW1mpNP+EDJtHkQ9IFt1SoSEits50Er4MWsMZ6uEz6C/lWSrlpa8quAxiui7dAPfwn
+   TT/59NYx99Jbs15I4A6avwBeEgCp/cL2foXs7Wz7I/P4+5zR2HBksnh1izpLRrmspIuA6fDVAGNI
+   yGv9TstzIt6eFtSQwBs=;
+Received: from pmta05.wdc01.mailchimp.com (127.0.0.1) by mail12.wdc04.mandrillapp.com id hpvq2i1jvjgj for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 06:43:53 +0000 (envelope-from <bounce-md_30481620.56cff429.v1-fb315c43a14e46f29a9f70644da6f0e8@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456469033; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=WyusP//B9zuQcrDatIBo0Cs7BNah8tD4burKg2NHNtg=; 
+ b=XeAdGOb5ml/U5Ez9cIaov7P23ZJL/5ooGBg44Q2eBpJ3VgEfQaTzndUkjQFvw8L2GYXXKp
+ nbK/1kr+fYf+tTPkKBuJiGGk4WW3eCmB15cb9jYEbyDNU6ObxaCAEh+7XoJq5pYSXyuSbavq
+ 4V49C4yxy4MSCvCPofEg0NCPE1wrk=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: comedi: Use DIV_ROUND_CLOSEST
+Return-Path: <bounce-md_30481620.56cff429.v1-fb315c43a14e46f29a9f70644da6f0e8@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id fb315c43a14e46f29a9f70644da6f0e8; Fri, 26 Feb 2016 06:43:53 +0000
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160226064352.GA11521@kroah.com>
 References: <1456467894-14246-1-git-send-email-bhumirks@gmail.com>
+In-Reply-To: <1456467894-14246-1-git-send-email-bhumirks@gmail.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.fb315c43a14e46f29a9f70644da6f0e8
+X-Mandrill-User: md_30481620
+Date: Fri, 26 Feb 2016 06:43:53 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-The macro DIV_ROUND_CLOSEST performs the computation (x + d/2)/d and
-makes the code more readable.
-Done using coccinelle:
+On Fri, Feb 26, 2016 at 11:54:54AM +0530, Bhumika Goyal wrote:
+> The macro DIV_ROUND_CLOSEST performs the computation (x + d/2)/d and
+> makes the code more readable.
+> Done using coccinelle:
+> 
+> @@
+> expression x,divisor;
+> @@
+> - (((x) + ((divisor) / 2)) / (divisor))
+> + DIV_ROUND_CLOSEST(x,divisor)
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers/ni_mio_common.c | 18 +++++++-----------
+>  1 file changed, 7 insertions(+), 11 deletions(-)
 
-@@
-expression x,divisor;
-@@
-- (((x) + ((divisor) / 2)) / (divisor))
-+ DIV_ROUND_CLOSEST(x,divisor)
+Why did you sent this out twice?
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/comedi/drivers/ni_mio_common.c | 18 +++++++-----------
- 1 file changed, 7 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
-index 1c2abb3..0df293a 100644
---- a/drivers/staging/comedi/drivers/ni_mio_common.c
-+++ b/drivers/staging/comedi/drivers/ni_mio_common.c
-@@ -2052,7 +2052,7 @@ static int ni_ns_to_timer(const struct comedi_device *dev, unsigned nanosec,
- 	switch (flags & CMDF_ROUND_MASK) {
- 	case CMDF_ROUND_NEAREST:
- 	default:
--		divider = (nanosec + devpriv->clock_ns / 2) / devpriv->clock_ns;
-+		divider = DIV_ROUND_CLOSEST(nanosec, devpriv->clock_ns);
- 		break;
- 	case CMDF_ROUND_DOWN:
- 		divider = (nanosec) / devpriv->clock_ns;
-@@ -4234,8 +4234,7 @@ static int ni_m_series_pwm_config(struct comedi_device *dev,
- 		switch (data[1]) {
- 		case CMDF_ROUND_NEAREST:
- 			up_count =
--			    (data[2] +
--			     devpriv->clock_ns / 2) / devpriv->clock_ns;
-+			    DIV_ROUND_CLOSEST(data[2], devpriv->clock_ns);
- 			break;
- 		case CMDF_ROUND_DOWN:
- 			up_count = data[2] / devpriv->clock_ns;
-@@ -4251,8 +4250,7 @@ static int ni_m_series_pwm_config(struct comedi_device *dev,
- 		switch (data[3]) {
- 		case CMDF_ROUND_NEAREST:
- 			down_count =
--			    (data[4] +
--			     devpriv->clock_ns / 2) / devpriv->clock_ns;
-+			    DIV_ROUND_CLOSEST(data[4], devpriv->clock_ns);
- 			break;
- 		case CMDF_ROUND_DOWN:
- 			down_count = data[4] / devpriv->clock_ns;
-@@ -4298,8 +4296,7 @@ static int ni_6143_pwm_config(struct comedi_device *dev,
- 		switch (data[1]) {
- 		case CMDF_ROUND_NEAREST:
- 			up_count =
--			    (data[2] +
--			     devpriv->clock_ns / 2) / devpriv->clock_ns;
-+			    DIV_ROUND_CLOSEST(data[2], devpriv->clock_ns);
- 			break;
- 		case CMDF_ROUND_DOWN:
- 			up_count = data[2] / devpriv->clock_ns;
-@@ -4315,8 +4312,7 @@ static int ni_6143_pwm_config(struct comedi_device *dev,
- 		switch (data[3]) {
- 		case CMDF_ROUND_NEAREST:
- 			down_count =
--			    (data[4] +
--			     devpriv->clock_ns / 2) / devpriv->clock_ns;
-+			    DIV_ROUND_CLOSEST(data[4], devpriv->clock_ns);
- 			break;
- 		case CMDF_ROUND_DOWN:
- 			down_count = data[4] / devpriv->clock_ns;
-@@ -4919,8 +4915,8 @@ static int ni_mseries_get_pll_parameters(unsigned reference_period_ns,
- 	*freq_divider = best_div;
- 	*freq_multiplier = best_mult;
- 	*actual_period_ns =
--	    (best_period_picosec * fudge_factor_80_to_20Mhz +
--	     (pico_per_nano / 2)) / pico_per_nano;
-+	    DIV_ROUND_CLOSEST(best_period_picosec * fudge_factor_80_to_20Mhz,
-+			      pico_per_nano);
- 	return 0;
- }
- 
--- 
-1.9.1
-
+Please resend it just once :)
 
