@@ -1,91 +1,106 @@
-X-GM-THRID: 6331640360325873664
-X-Received: by 10.13.236.209 with SMTP id v200mr13358783ywe.49.1474199900971;
-        Sun, 18 Sep 2016 04:58:20 -0700 (PDT)
+X-GM-THRID: 6254956616259469312
+X-Received: by 10.182.28.41 with SMTP id y9mr394245obg.14.1456479584076;
+        Fri, 26 Feb 2016 01:39:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.117 with SMTP id p108ls8810799ota.42.gmail; Sun, 18 Sep
- 2016 04:58:20 -0700 (PDT)
-X-Received: by 10.157.41.182 with SMTP id n51mr2867768otb.69.1474199900636;
-        Sun, 18 Sep 2016 04:58:20 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id z4si3935428pam.0.2016.09.18.04.58.20
+Received: by 10.140.81.106 with SMTP id e97ls842707qgd.67.gmail; Fri, 26 Feb
+ 2016 01:39:42 -0800 (PST)
+X-Received: by 10.129.158.2 with SMTP id v2mr383730ywg.42.1456479582542;
+        Fri, 26 Feb 2016 01:39:42 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id u66si1943461pfa.2.2016.02.26.01.39.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 04:58:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 26 Feb 2016 01:39:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 21so4417838pfy.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 04:58:20 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id w128so4415147pfb.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 01:39:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=x+xchGVQLWDPUXo8wr9ZAAnr54Z+FR0ap6oUZJV7FvQ=;
-        b=VmRQZx26oZA70FCM/pweCWrIsbovYPyq4uVynaZ6AJkQJkgXv/UEOSjmjTI7releQT
-         20K5v07P0pcdAIIXRnbm2k3Yfisj2RMEUIO1X1xjcpiD2uu4I6k0a/ADb4mBSVdny+yz
-         ff2RUEqnpGwJc0MizxzjRlvgZzn1Zz81Fz++/y7dWSHA/xUGyNsB81GmIucoBbk9LVDV
-         IW/gV0vMcM6E98YqaHItKh1Bs9fHTr/6XLWXsOEy9uqrDNNQVzs5Ux4++tM7PCrFBsrT
-         oU0ZrkM+G/UoqOr53cixhqpmnynqKvPqVkSumiwDKEc3l6lcAg9lB8nlH9mrzpAHy17E
-         aMxA==
+        bh=8jD0xTs8iNGOQ0CBEVRUgMeSk55UYkGTwABs/xYW+Qw=;
+        b=UxNpMTTJkMV/j+eY9ojrFPch8CYxST/b7+oTsFTAldHua64G5Z0oTV9aWyzBZ1G5yS
+         mc91hh6NTHvG9kX4EjtjnA9+3Z2Twsfe/gL0NsMD5sUEkjWjM/i6aePQcQf2UyaeMeff
+         2rCtDLP/XYke8YwqNriSkOfwnAdn0liwtUR6u+iGT21XL+HTkWdwoi4H77cvoh6inBzF
+         xkOttj+YV7hnWUw+zH+PKw8HU9m8USiEq0SK+bb/IOoE28iOWnTh5MQCjWGKkUBuXFcS
+         d36s+u8ctdH4IKQ53N7vR/xL+5lJHpgkWSg9p1qQO37zP4RztT6o7jRoGoUkP3npZe2a
+         L1Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=x+xchGVQLWDPUXo8wr9ZAAnr54Z+FR0ap6oUZJV7FvQ=;
-        b=K9cF4EiWk/yUdSpnU4wq+LAcfRY0SdcMbkvkv/8eSvd1SdCcycM0+tx5zNvOZ6Hj7S
-         UdFypCS1p9z4LGm9Pl/8RHhv1f9EJJSlh61oJKeAI92dg2BjP5T88TBOc8owETZNYa3r
-         Cq3HGxPzEevVUkrOEwVUNHwiBBpa93bI5r0nmwdsc1HrrsfVIy2F4nqM7/LNWdSNW3Sh
-         ck1F9mc2i/KFfNmoLA8MvQBJ5veDB6wQwrBalXpaHE1CwOuU0jQo39PA4eLeYo2GvJim
-         ir1gqNtZXRthbu68dU9lORxa8R8zBUSUQDKEH1MqA+lQlu3HY+s4ws41Fj63fwA+IVTY
-         y2vg==
-X-Gm-Message-State: AE9vXwPjdQayonjfBYm/sA/DEr+6e39FJn2Zz4rDR+S5pmHvjmcrAkJO1I1f2L0QCsPUhg==
-X-Received: by 10.98.53.65 with SMTP id c62mr38288799pfa.66.1474199900453;
-        Sun, 18 Sep 2016 04:58:20 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.173.54])
-        by smtp.gmail.com with ESMTPSA id r66sm7441831pfb.54.2016.09.18.04.58.17
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 04:58:19 -0700 (PDT)
-Date: Sun, 18 Sep 2016 06:27:18 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        bh=8jD0xTs8iNGOQ0CBEVRUgMeSk55UYkGTwABs/xYW+Qw=;
+        b=RwjJpC+JGJm6cDk52IY8ztwjggpMsk8gmrvQzIw/MJqFa4Om7WWumdtiOXJHe1sIAJ
+         J1X/KYX3Ad9SOgLjUcWK+3pCmPz6Wqg+7jhxBxiDE9ZKcYwtaCyrNnbStSH154CGyPcC
+         Iji58W4BzBAw5wSMOqncgvjN/D8ZvMtrctUlUjOTFmZCeTgbkmgG8bjSajE+i0ebSKdE
+         ifC/mwCyRBKxE7vprdu9+LC/hEvk5xkZAm0vPznR7v3bUP+v85B7dB6sPYiyjHEXjBK1
+         0HT3+knLKeMVmRK4FGdNWsR8feGZpU3QArUV7tkAxLOaKoJeFD8c7DbtXn3kDlZlR4Y5
+         fgMA==
+X-Gm-Message-State: AD7BkJL1NY/1oDED5RoduJZdNd8gwkz1z8JNI8DdEnsSwkt9VUhXaXULHOjUH1M0FCkH5Q==
+X-Received: by 10.98.86.91 with SMTP id k88mr526810pfb.78.1456479582363;
+        Fri, 26 Feb 2016 01:39:42 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id ss5sm17974601pab.15.2016.02.26.01.39.40
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 26 Feb 2016 01:39:42 -0800 (PST)
+Date: Fri, 26 Feb 2016 15:10:18 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH v2 0/2] Staging: Remove exceptional & on function name.
-Message-ID: <cover.1474159150.git.bankarsandhya512@gmail.com>
+Subject: [PATCH v4 2/5] staging: rtl8188eu: os_dep: Remove useless return
+ variables
+Message-ID: <20160226094018.GA10589@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-A function name is already a pointer, and does not need &.
-This changes are made by below coccinelle script:
+This patch removes unnecessary return variables and compresses the
+return logic.
+The coccinelle script that finds and fixes this issue is:
+@@ type T; identifier i,f; constant C; @@
+- T i;
+...when != i
+when strict
+( return -C;
+|
+- i =
++ return
+f(...);
+- return i;
+)
 
-// <smpl>
-@r@
-identifier f;
-@@
-f(...) { ... }
-@@
-identifier r.f;
-@@
-- &f
-+ f
-// </smpl>
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ Changes in v4:
+	-No change
 
-Changes in v2:
-* Correcting the commit message.
-* Correcting the file permission issue.
+ drivers/staging/rtl8188eu/os_dep/osdep_service.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Sandhya Bankar (2):
-  Staging: lustre: file: Remove exceptional & on function name.
-  Staging: lustre: namei: Remove exceptional & on function name.
+diff --git a/drivers/staging/rtl8188eu/os_dep/osdep_service.c b/drivers/staging/rtl8188eu/os_dep/osdep_service.c
+index d87b547..5a90ef6 100644
+--- a/drivers/staging/rtl8188eu/os_dep/osdep_service.c
++++ b/drivers/staging/rtl8188eu/os_dep/osdep_service.c
+@@ -41,10 +41,7 @@ inline int RTW_STATUS_CODE(int error_code)
 
- drivers/staging/lustre/lustre/llite/file.c  |    2 +-
- drivers/staging/lustre/lustre/llite/namei.c |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ u8 *_rtw_malloc(u32 sz)
+ {
+-	u8	*pbuf = NULL;
+-
+-	pbuf = kmalloc(sz, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+-	return pbuf;
++	return kmalloc(sz, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+ }
+
+ void *rtw_malloc2d(int h, int w, int size)
+--
+2.1.4
 
 
