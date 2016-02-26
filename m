@@ -1,92 +1,149 @@
-X-GM-THRID: 6398529056591052800
-X-Received: by 10.46.80.79 with SMTP id v15mr318272ljd.27.1489773638777;
-        Fri, 17 Mar 2017 11:00:38 -0700 (PDT)
+X-GM-THRID: 6255572920637063168
+X-Received: by 10.66.221.100 with SMTP id qd4mr823491pac.0.1456489069054;
+        Fri, 26 Feb 2016 04:17:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.81.66 with SMTP id b2ls740018lje.40.gmail; Fri, 17 Mar 2017
- 11:00:38 -0700 (PDT)
-X-Received: by 10.25.202.9 with SMTP id a9mr1452190lfg.3.1489773638238;
-        Fri, 17 Mar 2017 11:00:38 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id n128si194369wmf.2.2017.03.17.11.00.38
+Received: by 10.182.65.97 with SMTP id w1ls443944obs.79.gmail; Fri, 26 Feb
+ 2016 04:17:48 -0800 (PST)
+X-Received: by 10.182.227.137 with SMTP id sa9mr863499obc.44.1456489068732;
+        Fri, 26 Feb 2016 04:17:48 -0800 (PST)
+Return-Path: <aquannie@gmail.com>
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id yd9si1839888pab.1.2016.02.26.04.17.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Mar 2017 11:00:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Fri, 26 Feb 2016 04:17:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id z133so4487941wmb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 17 Mar 2017 11:00:38 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22c.google.com with SMTP id fl4so50454737pad.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 04:17:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=fgDOULvsfXsVBKSiuhn1QMFayQz8N4siHuqxP0QrXWM=;
-        b=cqFwZvv3DeQmLOm/smu17n29HldjX5cCpH4nWrpLDq253o3CkVjOUvipP9rXNxAaeY
-         W4QugEsCZxfHTwD3eM2TeX5IiSo8WAIqulQrHnEVoT/RHA+Cr24K5z0hSqQlZS5UGSId
-         BWQDQpJSpzexVCFlx/2jvZbYuplOyInx78HkGa3Pph7fH4tQVnrOw0o3JmB1Mkcx2J7m
-         ldPvDiv+dc3+E08XXXupjF3A9G9wBxwbCTEg1ZcUcx+rXKxd9zis5uYBk2QMP9yaw4Rg
-         mJj3jeNMBr/mF+NvwHLkMEys5Ej+xtK4omRFe23RYo6Qkar+IOYCGZ54x+y9YNVSowTO
-         CIxg==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=nHGBWdsM+rhMMle/dgRCK4URM2x4+AFEvUUNKY4v2eI=;
+        b=ahf0eFZcvWUZRoeTbI1u4Pn24ovcrV/6HVyaw0zRv/G3ZyKWqEUthcHnO6C3cgOilJ
+         hbMo36OV+i6C8gqLdw0tlmUfA9QX6QHkH7FStCLG9OAkVnvnccDraPLMEr5/olHneiOf
+         G8YJBXwcu7PLMMn8Q68pdzLrVq5xP2kchewPVZYHUBR0KDDs//2cbcsCU8fc5Hkt5YT0
+         7Y2E//VkNEcAjkJ8LDlLcmxFcFUjL7cNo6CjZaDj5gRWQAXO93HRo7VCvcaVPfhimDXt
+         g/R1LD+OOfUh5/2dY8kU/ZJhzk790i5D4J4Q5KmqtYCgtb6eEaHJQHqjoTXVFXPErhyI
+         GkRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=fgDOULvsfXsVBKSiuhn1QMFayQz8N4siHuqxP0QrXWM=;
-        b=dPRfcT1gcqJnX5Ndh6nQHqCgTfCcTZQiTgI8o30/VuoL8BTIe1qcWFDpZYiaKyg5RU
-         X1iGJasoytFUYUKqwtt+GQ7iMLi1mXCm+Ha0mEpB2sstZjg29bcBSs/IiHLoHGkRTl+U
-         WPzXD7SP567x6ID1VtszzAkuxHl8AWAAI5gzHvlG8oI/4v4lBRprllPdg68Byh7LtDj5
-         HeHYoX64Trd6+feI7GXh0wkqMP3M4jTz4uP/bpQUyDn+mLlDoQCQQIKwfhUerljxsLca
-         gW27lofdD4N30SZOr0ftIughzgVcU7354ZH8SpAqK4+CJ4epvZY2CLY2BohYDM/mkqkT
-         YO+w==
-X-Gm-Message-State: AFeK/H2o1YrWvotygMnE4331ethPBnAPFvcMlnCZ8kVLskxYc6Qpq7Oxzi+NleWJtW4lxg==
-X-Received: by 10.28.194.7 with SMTP id s7mr3975962wmf.34.1489773638019;
-        Fri, 17 Mar 2017 11:00:38 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:d9ac:2cee:7395:ff69])
-        by smtp.gmail.com with ESMTPSA id c17sm6957237wre.30.2017.03.17.11.00.36
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 17 Mar 2017 11:00:36 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: corbet@lwn.net,
-	linux-doc@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] Documentation: mmc: mmc-dev-attrs.txt: Fix typos
-Date: Fri, 17 Mar 2017 20:00:34 +0200
-Message-Id: <20170317180034.13894-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=nHGBWdsM+rhMMle/dgRCK4URM2x4+AFEvUUNKY4v2eI=;
+        b=EehE/320NdzLBQD61FP4hExS/RwkAQZ4hzYIXfHQcZ2NaHFm9RMhbCFKRMKbaxh8Et
+         /JaKoLW6if6vt416c5XZH01rTVKREqV1a9vSSkY+kUGo6gficmEkl9nC3KCOPXikbtcF
+         SoCoHnyOXP+tVKnDHL8TgWAEUlxlG3NR95m3Vp2FfJT8rODAs1X8fOoX9PllrdE4f7rs
+         Pl84kHjfJmBMutc5mKwCduwVXzGNoF2VxJeekv0cK5L3cPIZanMwWCLKCRYLs7uUGK4h
+         /xXwlhvp+tnBXH0QlmEVMifCoEcs8HbUc7Ij9sTvPD1cxFt/6o43iPXs/XDK73jCmujt
+         +U8g==
+X-Gm-Message-State: AD7BkJLY5SDv8apL6QWkAZ6tS13f0w9JBsdVON3+P/G9455BpJ25X1N6qYIp1lWkCOlHJw==
+X-Received: by 10.66.100.196 with SMTP id fa4mr1572244pab.37.1456489068518;
+        Fri, 26 Feb 2016 04:17:48 -0800 (PST)
+Return-Path: <aquannie@gmail.com>
+Received: from Toblerone ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id i13sm19111394pfi.95.2016.02.26.04.17.46
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 26 Feb 2016 04:17:47 -0800 (PST)
+Date: Fri, 26 Feb 2016 17:47:51 +0530
+From: Rehas Sachdeva <aquannie@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: xgifb: Avoid multiple blank lines
+Message-ID: <20160226121751.GA13975@Toblerone>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix typos in mmc-dev-attrs.txt to make documentation clear.
+This patch removes the checkpatch.pl warnings regarding multiple blank
+lines as single blank line is the preferred coding style.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 ---
- Documentation/mmc/mmc-dev-attrs.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/xgifb/vb_def.h     | 1 -
+ drivers/staging/xgifb/vb_setmode.c | 1 -
+ drivers/staging/xgifb/vb_struct.h  | 2 --
+ drivers/staging/xgifb/vb_table.h   | 3 ---
+ 4 files changed, 7 deletions(-)
 
-diff --git a/Documentation/mmc/mmc-dev-attrs.txt b/Documentation/mmc/mmc-dev-attrs.txt
-index 404a0e9..2caff30 100644
---- a/Documentation/mmc/mmc-dev-attrs.txt
-+++ b/Documentation/mmc/mmc-dev-attrs.txt
-@@ -13,7 +13,7 @@ SD and MMC Device Attributes
+diff --git a/drivers/staging/xgifb/vb_def.h b/drivers/staging/xgifb/vb_def.h
+index d9524a2..94e2e3c 100644
+--- a/drivers/staging/xgifb/vb_def.h
++++ b/drivers/staging/xgifb/vb_def.h
+@@ -228,7 +228,6 @@
+ #define RES1280x960x85       0x46
+ #define RES1280x960x120      0x47
  
- All attributes are read-only.
+-
+ #define XG27_CR8F 0x0C
+ #define XG27_SR36 0x30
+ #define XG27_SR40 0x04
+diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
+index 2078d57..f97c77d 100644
+--- a/drivers/staging/xgifb/vb_setmode.c
++++ b/drivers/staging/xgifb/vb_setmode.c
+@@ -5067,7 +5067,6 @@ reg_and_or:
+ 	}
+ }
  
--	cid			Card Identifaction Register
-+	cid			Card Identification Register
- 	csd			Card Specific Data Register
- 	scr			SD Card Configuration Register (SD only)
- 	date			Manufacturing Date (from CID Register)
-@@ -71,6 +71,6 @@ Note on Erase Size and Preferred Erase Size:
- 	"preferred_erase_size" is in bytes.
+-
+ void XGI_UnLockCRT2(struct vb_device_info *pVBInfo)
+ {
+ 	xgifb_reg_and_or(pVBInfo->Part1Port, 0x2f, 0xFF, 0x01);
+diff --git a/drivers/staging/xgifb/vb_struct.h b/drivers/staging/xgifb/vb_struct.h
+index 0d27594..2fd1a59 100644
+--- a/drivers/staging/xgifb/vb_struct.h
++++ b/drivers/staging/xgifb/vb_struct.h
+@@ -65,7 +65,6 @@ struct XGI330_TVDataTablStruct {
+ 	struct SiS_TVData const *DATAPTR;
+ };
  
- Note on raw_rpmb_size_mult:
--	"raw_rpmb_size_mult" is a mutliple of 128kB block.
-+	"raw_rpmb_size_mult" is a multiple of 128kB block.
- 	RPMB size in byte is calculated by using the following equation:
- 	RPMB partition size = 128kB x raw_rpmb_size_mult
+-
+ struct XGI_TimingHStruct {
+ 	unsigned char data[8];
+ };
+@@ -117,7 +116,6 @@ struct XGI_CRT1TableStruct {
+ 	unsigned char CR[16];
+ };
+ 
+-
+ struct XGI301C_Tap4TimingStruct {
+ 	unsigned short DE;
+ 	unsigned char  Reg[64];   /* C0-FF */
+diff --git a/drivers/staging/xgifb/vb_table.h b/drivers/staging/xgifb/vb_table.h
+index f17e5b9..45f2c99 100644
+--- a/drivers/staging/xgifb/vb_table.h
++++ b/drivers/staging/xgifb/vb_table.h
+@@ -1140,7 +1140,6 @@ static const struct SiS_LVDSData XGI_LVDS1024x768Data_1[] = {
+ 	{1344, 806, 1344, 806}	/* 06 (512x384,1024x768) */
+ };
+ 
+-
+ static const struct SiS_LVDSData XGI_LVDS1024x768Data_2[] = {
+ 	{1344, 806, 1344, 806},
+ 	{1344, 806, 1344, 806},
+@@ -1228,7 +1227,6 @@ static const struct SiS_LVDSData XGI_LVDS1024x768Data_1x75[] = {
+ 	{1312, 800, 1312, 800}, /* 06 (512x384,1024x768) */
+ };
+ 
+-
+ static const struct SiS_LVDSData XGI_LVDS1024x768Data_2x75[] = {
+ 	{1312, 800, 1312, 800}, /* ; 00 (320x200,320x400,640x200,640x400) */
+ 	{1312, 800, 1312, 800}, /* ; 01 (320x350,640x350) */
+@@ -2314,7 +2312,6 @@ static const unsigned char TVAntiFlickList[] = {/* NTSCAntiFlicker */
+ 	0x00  /* ; 1 new anti-flicker ? */
+ };
+ 
+-
+ static const unsigned char TVEdgeList[] = {
+ 	0x00, /* ; 0 NTSC No Edge enhance */
+ 	0x04, /* ; 1 NTSC Adaptive Edge enhance */
 -- 
-2.9.3
+2.1.4
 
 
