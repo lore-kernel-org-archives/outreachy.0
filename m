@@ -1,109 +1,82 @@
-X-GM-THRID: 8019664437248
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,57f44540107a3e92,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.52.166.77 with SMTP id ze13mr46325878vdb.9.1426220562772;
-        Thu, 12 Mar 2015 21:22:42 -0700 (PDT)
+X-GM-THRID: 6253755627257987072
+X-Received: by 10.107.167.148 with SMTP id q142mr5620022ioe.17.1456467400075;
+        Thu, 25 Feb 2016 22:16:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.125.133 with SMTP id mq5ls626563obb.50.gmail; Thu, 12 Mar
- 2015 21:22:42 -0700 (PDT)
-X-Received: by 10.182.126.12 with SMTP id mu12mr49898266obb.13.1426220562540;
-        Thu, 12 Mar 2015 21:22:42 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id ri9si162843pdb.1.2015.03.12.21.22.42
+Received: by 10.140.92.100 with SMTP id a91ls514842qge.72.gmail; Thu, 25 Feb
+ 2016 22:16:39 -0800 (PST)
+X-Received: by 10.13.234.77 with SMTP id t74mr44865580ywe.12.1456467399643;
+        Thu, 25 Feb 2016 22:16:39 -0800 (PST)
+Return-Path: <bounce-md_30481620.56cfedc7.v1-72f055b2aca6492189ea8fb0e56e1f9a@mandrillapp.com>
+Received: from mail12.wdc04.mandrillapp.com (mail12.wdc04.mandrillapp.com. [205.201.139.12])
+        by gmr-mx.google.com with ESMTPS id v197si787079ywa.1.2016.02.25.22.16.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2015 21:22:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Feb 2016 22:16:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56cfedc7.v1-72f055b2aca6492189ea8fb0e56e1f9a@mandrillapp.com designates 205.201.139.12 as permitted sender) client-ip=205.201.139.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pabli10 with SMTP id li10so26246934pab.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2015 21:22:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=7AOE6Cm2gA6YT313h9TnDyJao89IE52L0ZR8T58lBNY=;
-        b=EGqqlc5CQ4A8nO3K6M46dqlhclxW/sAqqNJd1H4faNGTtMYWfry4xvHvWdAeB12iO5
-         yCNXn7ohPTlwKGSc6+457ceOrhOMySbKlLuxZ2IMEdJuSdYu4ddw3HVRFPyPyTTwNB8/
-         20OYuh9/qorCVjkWZijWaxIimBnEqCCB8u8R7dmYd59AJYzD9/5cabnkn8CPIP4pv0KU
-         grWb7m8z2tyaZ+Now8NBzZlOh/MG5g0NHg2z6294MEXOm+82t3Et2B4Qf9dgTrAcMhSn
-         C19Fdi6lZq9/quimZTTEDViX3TS0omN5rddWJQifiph/HwVWt/GOO1vCy9Z1e2Gay5S4
-         03nQ==
-X-Received: by 10.66.124.227 with SMTP id ml3mr98857406pab.28.1426220562408;
-        Thu, 12 Mar 2015 21:22:42 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id cz10sm984130pdb.9.2015.03.12.21.22.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 12 Mar 2015 21:22:41 -0700 (PDT)
-Date: Fri, 13 Mar 2015 09:50:53 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: fbtbt: Removed unneeded print messages
-Message-ID: <20150313042053.GA3146@akanksha>
+       spf=pass (google.com: domain of bounce-md_30481620.56cfedc7.v1-72f055b2aca6492189ea8fb0e56e1f9a@mandrillapp.com designates 205.201.139.12 as permitted sender) smtp.mailfrom=bounce-md_30481620.56cfedc7.v1-72f055b2aca6492189ea8fb0e56e1f9a@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=DWG0NB4t2Q1NSaMSy1IHeK3C5Ew=;
+ b=FzZyQ0UOe4qUsYhf3uW1NEcr2GJW6lQqH2LsgmDHAPG0x+hzOYj3YmwnuLb0MisbtC4sJ8ghNk44
+   EgvO5BBLSs3KSaS27pIi7zQbeyUDwvEkybTwk78i0nU+l1knCZbVTXrg/EeOVwZ8vxy5qeYOusDN
+   Rz4z5CdhgkCjjCi+9FU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
+ b=cwPe+UzSt26zvKlplyY0/L+oHkVyz+AOcVwQ7NjKAvFSruLr0Mkgrv+POZBrptRzM7GvrRQFwAls
+   /ywt87ZSn2LCrfBWom3jE5TIsZTpK2iiwUAn68DfGY751p9X59uOd4D+7uWrq/hLl9hPxXGPcZG2
+   1xFoDeT7IPYirRxe22w=;
+Received: from pmta05.wdc01.mailchimp.com (127.0.0.1) by mail12.wdc04.mandrillapp.com id hpvmse1jvjgt for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 06:16:39 +0000 (envelope-from <bounce-md_30481620.56cfedc7.v1-72f055b2aca6492189ea8fb0e56e1f9a@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456467399; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=3FK0sUDuZ6R/yiTIArmVgxIOGAAPSCdO2eD0ThmGZfw=; 
+ b=CWkE8C4Lo19b4VNB5TxM/Oz951WZQEnFEEx391py9tYwASO5AshRqVj59/A0GREjy9MPNJ
+ BFNc5uk0FgzOTjXCH8uobUlcgYx/H1kLweKkhkY14qfJ33j1Asjt0fa0ALuJ66swUAkgm5TX
+ 2wHFWg4EB77OtnREzuijRKBniS9Dc=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: lustre: libcfs: Remove unneeded NULL check
+Return-Path: <bounce-md_30481620.56cfedc7.v1-72f055b2aca6492189ea8fb0e56e1f9a@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id 72f055b2aca6492189ea8fb0e56e1f9a; Fri, 26 Feb 2016 06:16:39 +0000
+To: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160226061638.GA22046@kroah.com>
+References: <20160221194459.GA28798@janani-Inspiron-3521>
+In-Reply-To: <20160221194459.GA28798@janani-Inspiron-3521>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.72f055b2aca6492189ea8fb0e56e1f9a
+X-Mandrill-User: md_30481620
+Date: Fri, 26 Feb 2016 06:16:39 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-These print messages are removed as only indicate entry
-into the function or print the arguments but not any 
-potential errors.
+On Sun, Feb 21, 2016 at 02:44:59PM -0500, Janani Ravichandran wrote:
+> Remove NULL check before debugfs_remove_recursive as it is not needed.
+> Generated-by: scripts/coccinelle/free/ifnullfree.cocci
+> 
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/libcfs/module.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/libcfs/module.c b/drivers/staging/lustre/lustre/libcfs/module.c
+> index 611607a..a2723a6 100644
+> --- a/drivers/staging/lustre/lustre/libcfs/module.c
+> +++ b/drivers/staging/lustre/lustre/libcfs/module.c
+> @@ -559,8 +559,7 @@ EXPORT_SYMBOL_GPL(lustre_insert_debugfs);
+>  
+>  static void lustre_remove_debugfs(void)
+>  {
+> -	if (lnet_debugfs_root != NULL)
+> -		debugfs_remove_recursive(lnet_debugfs_root);
+> +	debugfs_remove_recursive(lnet_debugfs_root);
+>  
+>  	lnet_debugfs_root = NULL;
+>  }
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/fbtft/fb_agm1264k-fl.c | 10 ----------
- 1 file changed, 10 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-index acf5acb..9c41cc9 100644
---- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-+++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-@@ -75,8 +75,6 @@ static int init_display(struct fbtft_par *par)
- {
- 	u8 i;
- 
--	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "%s()\n", __func__);
--
- 	par->fbtftops.reset(par);
- 
- 	for (i = 0; i < 2; ++i) {
-@@ -245,10 +243,6 @@ static void set_addr_win(struct fbtft_par *par, int xs, int ys, int xe, int ye)
- 	addr_win.ys_page = ys / 8;
- 	addr_win.xe = xe;
- 	addr_win.ye_page = ye / 8;
--
--	fbtft_par_dbg(DEBUG_SET_ADDR_WIN, par,
--		"%s(xs=%d, ys_page=%d, xe=%d, ye_page=%d)\n", __func__,
--		addr_win.xs, addr_win.ys_page, addr_win.xe, addr_win.ye_page);
- }
- 
- static void
-@@ -284,7 +278,6 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 	/* buffer to convert RGB565 -> grayscale16 -> Ditherd image 1bpp */
- 	s16 *convert_buf = kmalloc(par->info->var.xres *
- 		par->info->var.yres * sizeof(signed short), GFP_NOIO);
--	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "%s()\n", __func__);
- 
- 	/* converting to grayscale16 */
- 	for (x = 0; x < par->info->var.xres; ++x)
-@@ -412,9 +405,6 @@ static int write(struct fbtft_par *par, void *buf, size_t len)
- {
- 	u8 i, data;
- 
--	fbtft_par_dbg_hex(DEBUG_WRITE, par, par->info->device, u8, buf, len,
--		"%s(len=%d): ", __func__, len);
--
- 	gpio_set_value(par->RW, 0); /* set write mode */
- 
- 	while (len--) {
--- 
-1.9.1
-
+Didn't someone already send this in?  This doesn't apply :(
 
