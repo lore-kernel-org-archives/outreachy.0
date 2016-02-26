@@ -1,60 +1,60 @@
 X-GM-THRID: 6255628757507244032
-X-Received: by 10.129.92.65 with SMTP id q62mr1603749ywb.19.1456502233537;
-        Fri, 26 Feb 2016 07:57:13 -0800 (PST)
+X-Received: by 10.140.20.204 with SMTP id 70mr18837510qgj.18.1456502201757;
+        Fri, 26 Feb 2016 07:56:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.86.167 with SMTP id p36ls1073537qgd.93.gmail; Fri, 26 Feb
- 2016 07:57:13 -0800 (PST)
-X-Received: by 10.13.202.79 with SMTP id m76mr1622297ywd.10.1456502233142;
-        Fri, 26 Feb 2016 07:57:13 -0800 (PST)
+Received: by 10.50.43.169 with SMTP id x9ls553152igl.25.canary; Fri, 26 Feb
+ 2016 07:56:41 -0800 (PST)
+X-Received: by 10.107.135.209 with SMTP id r78mr7175432ioi.19.1456502201456;
+        Fri, 26 Feb 2016 07:56:41 -0800 (PST)
 Return-Path: <aquannie@gmail.com>
 Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id 12si1973447pfb.1.2016.02.26.07.57.13
+        by gmr-mx.google.com with ESMTPS id 12si1973447pfb.1.2016.02.26.07.56.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 07:57:13 -0800 (PST)
+        Fri, 26 Feb 2016 07:56:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Received: by mail-pa0-x244.google.com with SMTP id a7so3336748pax.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 07:57:13 -0800 (PST)
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 07:56:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=GUAx9ecSjxfUxsqpSkgKVCp/UezrLfgCJwRAUNhcoPM=;
-        b=etFcrPS1qqvk0lvIn24/WFYrHNQJkSJxp7tZXG9GUScsze2gh0fWAreh/S6FDl5cgq
-         IivrxvFH2O7LJYvfBV5FBEYV4sS6QsiZavTgfp2eKeYOMTFAMMGsxfh6XkQe8y/pPtkZ
-         fWDtiMwMGcYV1rjUfWu9J+Y6q4/qltYLyN6zoOuLAKmMHtpxO1d2n/GP+yEfI8X64WuC
-         8NVc13uBaRKv5zYDs785pmgP/kNIdBe1vZXQ/cwEzqgUE1XOJRyDN8YoJlSwWFeTSHxW
-         Sszm3q+ooG0lDwBcU3t2pd3VGTuHqq9qmQWPmfzb7Tgx1ELbnRA0oAuK49jc/O1d74yy
-         X6fQ==
+        bh=49LvRGPJzaV/frcIY1P1w+iA5WsHIPKghSnOu4xS/Vk=;
+        b=luPGB4yVxbnLQNElOAnujGXOxgMw7j6w7J6xpE9KeUn2zfHv6jJgBy8OxGul+OGlDp
+         pl46UUM+SBK8jIB2CjBIztft7M1z+ZyptW7p92Jr/QJ40zU6E/HLx6uSw3FKuPNcYjTI
+         KU180NCiD0stBXZoSiXAFZzcDXjCv+CpVS9eMOpxRvTn632VLQO9ztpW2iXLq6El5BrJ
+         9noF9U+si/kUuNoRYcARff3LRbO57N0/N0FQDNc2xLmydWpLK5jPHxk+Wz+HCMlQxapt
+         oJTu46pDO3lhaR9VHkaglugVXhv2WSJYE+N0BLnUJex84feATf8YVwAzLuiULJeRRqrz
+         oN6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=GUAx9ecSjxfUxsqpSkgKVCp/UezrLfgCJwRAUNhcoPM=;
-        b=kk9YxAVANNFkZoYQqJZ8ODa7WJPhsaW6/UExQlVU4yY7yn6bLHgQQ8ELCc6NLb4f75
-         syOCxvj8R1ruVAZV79RzaFp2IcVLqQfIboYHmjXV6fnum2kqCFyVslv53beXQe/RfPuV
-         mL56JDA0ZqFgQl6bOyvaFzeb2Xd/ryN76jq47BCowhz96vquvyX5cTqca92mN9+NtOIS
-         2Y2UJy2lmZhZ0CJuAtGJ6FWKz2rSrFzEWKFwr6zv7l1MkdqQ7mx6weyiaFVoKYzmu9bH
-         ad/rfe29rzAcadsvQxBt+G3MwE2jIHwGfp00mEdR95SgHDYc+EuXyt0F9Ckmk+FIaoO0
-         fhqA==
-X-Gm-Message-State: AD7BkJIAn9fmHW5LcQL4FsNCQz0Xs8bZfhpCDRzSvRAXipD+w6Y1bMo11bOR4Rdik8ZVXw==
-X-Received: by 10.66.171.169 with SMTP id av9mr3109573pac.36.1456502232951;
-        Fri, 26 Feb 2016 07:57:12 -0800 (PST)
+        bh=49LvRGPJzaV/frcIY1P1w+iA5WsHIPKghSnOu4xS/Vk=;
+        b=OzRINk2f00LBWmCaeLiUL0c32IIEVnMSo5la8UO7WrD7Pj2TUSNEOpkvR4FGFH9YqQ
+         uRjTvhsANnwYx4eM13u+27sn0iy3dW6GU/atNkK7kgF0ErhXkE3f/s2BllR0gtCz4AsM
+         Xx6pttbEP3GOIORO3Xa418EFCl0q1AWQrgdZk9H+cu/riNmntoU3QUvFghsPaPrhQPx+
+         y9qF5a+v0cqP95ABB2hbndmvL7U93S4QKQp82x4qfJSWoKOuhqADCE+0IFgnzprId3qT
+         sfTObgYE04uxB0QyP5AQfRCOqDue0NgIbNBsnxtlXeLGq0971OXyv49Vth1zeweuwHcT
+         vJyg==
+X-Gm-Message-State: AD7BkJLRYr7cC9ctWhoM4Dyl1T2IjZ27uB7zM2ZHnqGLphB0I9ia3qWsY7OpF9IJhffgRQ==
+X-Received: by 10.66.138.74 with SMTP id qo10mr3013372pab.140.1456502201268;
+        Fri, 26 Feb 2016 07:56:41 -0800 (PST)
 Return-Path: <aquannie@gmail.com>
 Received: from Toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id cs14sm20373458pac.10.2016.02.26.07.57.11
+        by smtp.gmail.com with ESMTPSA id u5sm20341689pfi.15.2016.02.26.07.56.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 26 Feb 2016 07:57:12 -0800 (PST)
-Date: Fri, 26 Feb 2016 21:27:16 +0530
+        Fri, 26 Feb 2016 07:56:40 -0800 (PST)
+Date: Fri, 26 Feb 2016 21:26:43 +0530
 From: Rehas Sachdeva <aquannie@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: dgnc: Avoid multiple blank lines
-Message-ID: <079079e1ebd663896dc912f6e106b49fe85e1c86.1456501665.git.aquannie@gmail.com>
+Subject: [PATCH 1/4] staging: dgnc: Add spaces around '|' and '<<'
+Message-ID: <3d1e7c8381513e89616ab562a777776bbb697f3f.1456501665.git.aquannie@gmail.com>
 References: <cover.1456501665.git.aquannie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -62,108 +62,121 @@ Content-Disposition: inline
 In-Reply-To: <cover.1456501665.git.aquannie@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the checkpatch.pl warnings regarding multiple blank
-lines as single blank line is the preferred coding style.
+One space on either side of binary and ternary operators is preferred.
+This patch fixes the related checkpatch.pl warnings.
 
 Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_driver.h | 8 --------
- drivers/staging/dgnc/dgnc_neo.h    | 1 -
- drivers/staging/dgnc/dgnc_pci.h    | 1 -
- 3 files changed, 10 deletions(-)
+ drivers/staging/dgnc/dgnc_tty.c | 12 ++++++------
+ drivers/staging/dgnc/digi.h     | 32 ++++++++++++++++----------------
+ 2 files changed, 22 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
-index ce7cd9b..e4be81b 100644
---- a/drivers/staging/dgnc/dgnc_driver.h
-+++ b/drivers/staging/dgnc/dgnc_driver.h
-@@ -88,7 +88,6 @@
- #define   _POSIX_VDISABLE '\0'
+diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
+index b79eab0..df1d00b 100644
+--- a/drivers/staging/dgnc/dgnc_tty.c
++++ b/drivers/staging/dgnc/dgnc_tty.c
+@@ -2520,12 +2520,12 @@ static void dgnc_tty_flush_buffer(struct tty_struct *tty)
+ 	/* Flush UARTs transmit FIFO */
+ 	ch->ch_bd->bd_ops->flush_uart_write(ch);
+ 
+-	if (ch->ch_tun.un_flags & (UN_LOW|UN_EMPTY)) {
+-		ch->ch_tun.un_flags &= ~(UN_LOW|UN_EMPTY);
++	if (ch->ch_tun.un_flags & (UN_LOW | UN_EMPTY)) {
++		ch->ch_tun.un_flags &= ~(UN_LOW | UN_EMPTY);
+ 		wake_up_interruptible(&ch->ch_tun.un_flags_wait);
+ 	}
+-	if (ch->ch_pun.un_flags & (UN_LOW|UN_EMPTY)) {
+-		ch->ch_pun.un_flags &= ~(UN_LOW|UN_EMPTY);
++	if (ch->ch_pun.un_flags & (UN_LOW | UN_EMPTY)) {
++		ch->ch_pun.un_flags &= ~(UN_LOW | UN_EMPTY);
+ 		wake_up_interruptible(&ch->ch_pun.un_flags_wait);
+ 	}
+ 
+@@ -2719,13 +2719,13 @@ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
+ 
+ 				if (ch->ch_tun.un_flags & (UN_LOW|UN_EMPTY)) {
+ 					ch->ch_tun.un_flags &=
+-						~(UN_LOW|UN_EMPTY);
++						~(UN_LOW | UN_EMPTY);
+ 					wake_up_interruptible(&ch->ch_tun.un_flags_wait);
+ 				}
+ 
+ 				if (ch->ch_pun.un_flags & (UN_LOW|UN_EMPTY)) {
+ 					ch->ch_pun.un_flags &=
+-						~(UN_LOW|UN_EMPTY);
++						~(UN_LOW | UN_EMPTY);
+ 					wake_up_interruptible(&ch->ch_pun.un_flags_wait);
+ 				}
+ 			}
+diff --git a/drivers/staging/dgnc/digi.h b/drivers/staging/dgnc/digi.h
+index cf9dcae..523a2d3 100644
+--- a/drivers/staging/dgnc/digi.h
++++ b/drivers/staging/dgnc/digi.h
+@@ -31,21 +31,21 @@
  #endif
  
--
- /*
-  * All the possible states the driver can be while being loaded.
-  */
-@@ -106,7 +105,6 @@ enum {
- 	BOARD_READY
+ #if !defined(TIOCMSET)
+-#define	TIOCMSET	(('d'<<8) | 252)	/* set modem ctrl state	*/
+-#define	TIOCMGET	(('d'<<8) | 253)	/* set modem ctrl state	*/
++#define	TIOCMSET	(('d' << 8) | 252)	/* set modem ctrl state	*/
++#define	TIOCMGET	(('d' << 8) | 253)	/* set modem ctrl state	*/
+ #endif
+ 
+ #if !defined(TIOCMBIC)
+-#define	TIOCMBIC	(('d'<<8) | 254)	/* set modem ctrl state */
+-#define	TIOCMBIS	(('d'<<8) | 255)	/* set modem ctrl state */
++#define	TIOCMBIC	(('d' << 8) | 254)	/* set modem ctrl state */
++#define	TIOCMBIS	(('d' << 8) | 255)	/* set modem ctrl state */
+ #endif
+ 
+-#define DIGI_GETA	(('e'<<8) | 94)		/* Read params		*/
+-#define DIGI_SETA	(('e'<<8) | 95)		/* Set params		*/
+-#define DIGI_SETAW	(('e'<<8) | 96)		/* Drain & set params	*/
+-#define DIGI_SETAF	(('e'<<8) | 97)		/* Drain, flush & set params */
+-#define DIGI_GET_NI_INFO (('d'<<8) | 250) /* Non-intelligent state info */
+-#define DIGI_LOOPBACK (('d'<<8) | 252) /*
++#define DIGI_GETA	(('e' << 8) | 94)	/* Read params		*/
++#define DIGI_SETA	(('e' << 8) | 95)	/* Set params		*/
++#define DIGI_SETAW	(('e' << 8) | 96)	/* Drain & set params	*/
++#define DIGI_SETAF	(('e' << 8) | 97)	/* Drain, flush & set params */
++#define DIGI_GET_NI_INFO (('d' << 8) | 250) /* Non-intelligent state info */
++#define DIGI_LOOPBACK (('d' << 8) | 252) /*
+ 					* Enable/disable UART
+ 					* internal loopback
+ 					*/
+@@ -85,7 +85,7 @@ struct digi_dinfo {
+ 	char		dinfo_version[16];	/* driver version       */
  };
  
--
- /*************************************************************************
-  *
-  * Structures and closely related defines.
-@@ -145,7 +143,6 @@ struct board_ops {
-  ************************************************************************/
- #define BD_IS_PCI_EXPRESS     0x0001	  /* Is a PCI Express board */
+-#define	DIGI_GETDD	(('d'<<8) | 248)	/* get driver info      */
++#define	DIGI_GETDD	(('d' << 8) | 248)	/* get driver info      */
  
--
- /*
-  *	Per-board information
-  */
-@@ -241,7 +238,6 @@ struct dgnc_board {
- 
+ /************************************************************************
+  * Structure used with ioctl commands for per-board information
+@@ -105,7 +105,7 @@ struct digi_info {
+ 	char		info_reserved[7];	/* for future expansion    */
  };
  
--
- /************************************************************************
-  * Unit flag definitions for un_flags.
-  ************************************************************************/
-@@ -277,7 +273,6 @@ struct un_t {
- 	struct device *un_sysfs;
- };
+-#define	DIGI_GETBD	(('d'<<8) | 249)	/* get board info          */
++#define	DIGI_GETBD	(('d' << 8) | 249)	/* get board info          */
  
--
- /************************************************************************
-  * Device flag definitions for ch_flags.
-  ************************************************************************/
-@@ -300,7 +295,6 @@ struct un_t {
- #define CH_FORCED_STOP  0x20000		/* Output is forcibly stopped	*/
- #define CH_FORCED_STOPI 0x40000		/* Input is forcibly stopped	*/
+ struct digi_getbuffer /* Struct for holding buffer use counts */
+ {
+@@ -133,10 +133,10 @@ struct digi_getcounter {
+ #define DIGI_SETCUSTOMBAUD _IOW('e', 106, int)	/* Set integer baud rate */
+ #define DIGI_GETCUSTOMBAUD _IOR('e', 107, int)	/* Get integer baud rate */
  
--
- /* Our Read/Error/Write queue sizes */
- #define RQUEUEMASK	0x1FFF		/* 8 K - 1 */
- #define EQUEUEMASK	0x1FFF		/* 8 K - 1 */
-@@ -309,7 +303,6 @@ struct un_t {
- #define EQUEUESIZE	RQUEUESIZE
- #define WQUEUESIZE	(WQUEUEMASK + 1)
+-#define DIGI_REALPORT_GETBUFFERS (('e'<<8) | 108)
+-#define DIGI_REALPORT_SENDIMMEDIATE (('e'<<8) | 109)
+-#define DIGI_REALPORT_GETCOUNTERS (('e'<<8) | 110)
+-#define DIGI_REALPORT_GETEVENTS (('e'<<8) | 111)
++#define DIGI_REALPORT_GETBUFFERS (('e' << 8) | 108)
++#define DIGI_REALPORT_SENDIMMEDIATE (('e' << 8) | 109)
++#define DIGI_REALPORT_GETCOUNTERS (('e' << 8) | 110)
++#define DIGI_REALPORT_GETEVENTS (('e' << 8) | 111)
  
--
- /************************************************************************
-  * Channel information structure.
-  ************************************************************************/
-@@ -397,7 +390,6 @@ struct channel_t {
- 	ulong		ch_intr_tx;	/* Count of interrupts */
- 	ulong		ch_intr_rx;	/* Count of interrupts */
- 
--
- 	/* /proc/<board>/<channel> entries */
- 	struct proc_dir_entry *proc_entry_pointer;
- 	struct dgnc_proc_entry *dgnc_channel_table;
-diff --git a/drivers/staging/dgnc/dgnc_neo.h b/drivers/staging/dgnc/dgnc_neo.h
-index c528df5..abddd48 100644
---- a/drivers/staging/dgnc/dgnc_neo.h
-+++ b/drivers/staging/dgnc/dgnc_neo.h
-@@ -65,7 +65,6 @@ struct neo_uart_struct {
- #define NEO_EEDO  0x80		/* Data Out is an Input Pin */
- #define NEO_EEREG 0x8E		/* offset to EEPROM control reg */
- 
--
- #define NEO_VPD_IMAGESIZE 0x40	/* size of image to read from EEPROM in words */
- #define NEO_VPD_IMAGEBYTES (NEO_VPD_IMAGESIZE * 2)
- 
-diff --git a/drivers/staging/dgnc/dgnc_pci.h b/drivers/staging/dgnc/dgnc_pci.h
-index 617d40d..4e170c4 100644
---- a/drivers/staging/dgnc/dgnc_pci.h
-+++ b/drivers/staging/dgnc/dgnc_pci.h
-@@ -59,7 +59,6 @@
- #define PCI_DEVICE_NEO_EXPRESS_8RJ45_PCI_NAME	"Neo 8 PCI Express RJ45"
- #define PCI_DEVICE_NEO_EXPRESS_4_IBM_PCI_NAME	"Neo 4 PCI Express IBM"
- 
--
- /* Size of Memory and I/O for PCI (4 K) */
- #define PCI_RAM_SIZE				0x1000
- 
+ #define EV_OPU 0x0001 /* !<Output paused by client */
+ #define EV_OPS 0x0002 /* !<Output paused by reqular sw flowctrl */
 -- 
 2.1.4
 
