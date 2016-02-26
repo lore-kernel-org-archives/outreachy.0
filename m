@@ -1,68 +1,67 @@
 X-GM-THRID: 6254513741412433920
-X-Received: by 10.107.184.195 with SMTP id i186mr6171672iof.24.1456481097352;
-        Fri, 26 Feb 2016 02:04:57 -0800 (PST)
+X-Received: by 10.66.148.4 with SMTP id to4mr451945pab.8.1456481086257;
+        Fri, 26 Feb 2016 02:04:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.18.85 with SMTP id 79ls1062918qge.15.gmail; Fri, 26 Feb
- 2016 02:04:56 -0800 (PST)
-X-Received: by 10.129.146.73 with SMTP id j70mr424080ywg.25.1456481096839;
-        Fri, 26 Feb 2016 02:04:56 -0800 (PST)
+Received: by 10.140.80.139 with SMTP id c11ls877013qgd.84.gmail; Fri, 26 Feb
+ 2016 02:04:45 -0800 (PST)
+X-Received: by 10.31.168.130 with SMTP id r124mr448973vke.10.1456481085799;
+        Fri, 26 Feb 2016 02:04:45 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id yd9si1780780pab.1.2016.02.26.02.04.56
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id ff2si1951973pad.2.2016.02.26.02.04.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 02:04:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 26 Feb 2016 02:04:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id e127so4449818pfe.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 02:04:56 -0800 (PST)
+Received: by mail-pa0-x242.google.com with SMTP id a7so2944067pax.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 02:04:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=QU62xJ2rR3VsVAO3oX7AuGVMjALGtUEZHypuhxUnFsI=;
-        b=OIAb+FP4VfgBRXRQy6+B8Q4AoSikcyGJ/ujJf5W59TY09nfeQmUJKCCwOVustn9eri
-         t/0HcfP+BBmFCv0ABEFCy04C9eHSPp8F980eES3M5wEpCk+OEsdiCEaMgeT+Ba3kb7mx
-         s1fRtVmtlxcEir567r8UFuQjJvnkuj/tIITvs8M3UuO4s7rVdRbwRJm89rtAcqVapBKe
-         02G6IS75fPLvI2Mr3FZwwRmY40UhnZROcy4q5dvjdBcv+eQgqfWNwzUmd87bcHDJLo4c
-         /xiW1Wf4rhk8KsNkbYEqXWi6ydZ2OpaQMfgFeQyRyNFqEPPMgeHU88d7DJdAW4Gjb7zZ
-         Hl7w==
+        bh=T2lfrtxRZd/2XyXNRvfg/ZEAk8hABmhmY1pAGZ/xLX4=;
+        b=cCGBusaP9+/FfhP+mn2fii5ZGMDQBuQ7hyeFLYTgvdCPFDzQx7DqjHuLn4hDb+YPNp
+         KLzsrrK3T54FaFrN2pRkEC46/kmhipkZNLm9B1WEraAHbPSaPPfg6SP5mLtj7iy2LrNf
+         FX1jLW/AF/E22ZtWAbYUxerT/nht5/X8WDEDPuVnhhTaMQOA4TR4AXCjJeRZupWz4Elx
+         rcdSk/MfLCv3OmjtwlRmI1/NlYE9TFV19QN3saa466UY8n+UQmZ2fonPNvMpH1l8grWB
+         cavDdJu1tx9XQm2x8nG6zwYuXZ+8aBJmg4hZdWVkM+qLs8Xq7ir2hlQ9Ihvkjn/VZ18L
+         aRiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=QU62xJ2rR3VsVAO3oX7AuGVMjALGtUEZHypuhxUnFsI=;
-        b=SBMabs2S+XJSb5MuQv05djU7+YRpbC4DuolHW0rsCIQugIfGY41NnVjT+h9osfwKRM
-         2lp5x03at7i4MKWxGR0ElKZFazJpQNM2+C6UokLkOagL7N3rFwjH+gbSQGAbPW9u1QXr
-         UdpOPUyCRYxmWlFDHW8UJOaZfRZ3eR6zlU/AZ4nmtB1SZR6Mhc9+/KcisLb4QVYLCIQX
-         B93Uw5jQhxco18UVvO5eypKlEWSGlrczR0M7z0YO7QOcCQhlUOjsLIY1aqbevYSC9TMg
-         +InsKSXBxnqV5Csk3jIMaHlEIDZf7QX3DxSjvkw+zGTx+uVhkxexuZC28OE05s2yh+dV
-         MmRg==
-X-Gm-Message-State: AD7BkJKASQvmEJw4FAuSOi8K/YpfPUD72eMJ87VRDqZ4aTdpw0V+4t5Z9c6pygo4imU53Q==
-X-Received: by 10.98.9.219 with SMTP id 88mr907096pfj.0.1456481096652;
-        Fri, 26 Feb 2016 02:04:56 -0800 (PST)
+        bh=T2lfrtxRZd/2XyXNRvfg/ZEAk8hABmhmY1pAGZ/xLX4=;
+        b=RQBxkAW7NdueETNyv/MRCMs1cmpe6TKBmaqt1qm9fiAj1lao2PzweqAXjJvdDkXzui
+         4TMPvmgbhW2m0U0t8F43wyQcMOkMqfRWAM4RMp/wAxvY/MkF+BxYYu4CDEt9FtmoeA0g
+         vrT9Ia58fkAsUC8M+Ji00zcEAhRyEBBliLIT2yDbkwH4UNKsQ86QyeCW3laTH1RaKuCp
+         uImGo651K9w+/PgdP7jvRIoSemcQ1x0NrmDUDR1JkSFMij0YilBVmMty7PhfPUad0sxR
+         x27+xIomvmyiryeqisTq6ziJ1YLxIxdvGanP5wmAhuzAmtkwN5ocpqdOPM0XUeXAZ+X6
+         iNnQ==
+X-Gm-Message-State: AD7BkJKbpmDdMkFMGNAbPM/2Lsq8HyZXFJdDTI5QwzYADcbD0X/XteF55dat2KOxN94h0w==
+X-Received: by 10.66.65.109 with SMTP id w13mr828327pas.142.1456481085590;
+        Fri, 26 Feb 2016 02:04:45 -0800 (PST)
 Return-Path: <bhumirks@gmail.com>
 Received: from bhumirks@gmail.com ([223.176.139.245])
-        by smtp.gmail.com with ESMTPSA id dg1sm18157943pad.18.2016.02.26.02.04.51
+        by smtp.gmail.com with ESMTPSA id l24sm18109724pfb.73.2016.02.26.02.04.41
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 02:04:56 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 26 Feb 2016 15:34:46 +0530
+        Fri, 26 Feb 2016 02:04:44 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 26 Feb 2016 15:34:35 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH v3 1/5] Staging: rtl8723au: Use min macro instead of ternary operator
-Date: Fri, 26 Feb 2016 15:34:30 +0530
-Message-Id: <1456481074-9898-2-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH v3 0/5] Staging: Replace ternary operators with macros min/max
+Date: Fri, 26 Feb 2016 15:34:29 +0530
+Message-Id: <1456481074-9898-1-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1456481074-9898-1-git-send-email-bhumirks@gmail.com>
+In-Reply-To: <cover.1456241358.git.bhumirks@gmail.com>
 References: <cover.1456241358.git.bhumirks@gmail.com>
- <1456481074-9898-1-git-send-email-bhumirks@gmail.com>
 
-This patch replaces ternary operator with macro min as it shorter and
-thus increases code readability. Macro min return the minimum of the
-two compared values.
+This patchset replaces ternary operators with macros min/max as
+they are shorter and thus increases code readability. Macro min returns
+the minimum and macro max returns maximum  of the two compared values.
 Made a semantic patch for changes:
 
 @@
@@ -78,84 +77,28 @@ T y;
 + max(x,y)
 )
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
 Changes in v2:
-Use min() instead of min_t() as the values passed in the macro are of
-same type.
+* Use min()/max() instead of min_t()/max_t() as the values passed in the
+  macros are of same type. 
 Changes in v3:
 * No change.
- 
-drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-index 6868392..cf0daa1 100644
---- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-@@ -542,7 +542,7 @@ static int rtw_cfg80211_ap_set_encryption(struct net_device *dev, u8 key_index,
- 				memcpy(psecuritypriv->
- 				       dot118021XGrpKey[key_index].skey,
- 				       keyparms->key,
--				       (key_len > 16 ? 16 : key_len));
-+				       (min(16, key_len)));
- 
- 				/* set mic key */
- 				memcpy(psecuritypriv->
-@@ -564,7 +564,7 @@ static int rtw_cfg80211_ap_set_encryption(struct net_device *dev, u8 key_index,
- 				memcpy(psecuritypriv->
- 				       dot118021XGrpKey[key_index].skey,
- 				       keyparms->key,
--				       (key_len > 16 ? 16 : key_len));
-+				       (min(16, key_len)));
- 			} else {
- 				DBG_8723A("%s, set group_key, none\n",
- 					  __func__);
-@@ -602,7 +602,7 @@ static int rtw_cfg80211_ap_set_encryption(struct net_device *dev, u8 key_index,
- 		if (set_tx == 1) {
- 			/* pairwise key */
- 			memcpy(psta->dot118021x_UncstKey.skey,
--			       keyparms->key, (key_len > 16 ? 16 : key_len));
-+			       keyparms->key, (min(16, key_len)));
- 
- 			if (keyparms->cipher == WLAN_CIPHER_SUITE_WEP40 ||
- 			    keyparms->cipher == WLAN_CIPHER_SUITE_WEP104) {
-@@ -660,7 +660,7 @@ static int rtw_cfg80211_ap_set_encryption(struct net_device *dev, u8 key_index,
- 				memcpy(psecuritypriv->
- 				       dot118021XGrpKey[key_index].skey,
- 				       keyparms->key,
--				       (key_len > 16 ? 16 : key_len));
-+				       (min(16, key_len)));
- 
- 				/* set mic key */
- 				memcpy(psecuritypriv->
-@@ -678,7 +678,7 @@ static int rtw_cfg80211_ap_set_encryption(struct net_device *dev, u8 key_index,
- 				memcpy(psecuritypriv->
- 				       dot118021XGrpKey[key_index].skey,
- 				       keyparms->key,
--				       (key_len > 16 ? 16 : key_len));
-+				       (min(16, key_len)));
- 			} else {
- 				psecuritypriv->dot118021XGrpPrivacy = 0;
- 			}
-@@ -788,7 +788,7 @@ static int rtw_cfg80211_set_encryption(struct net_device *dev, u8 key_index,
- 
- 					memcpy(psta->dot118021x_UncstKey.skey,
- 					       keyparms->key,
--					       (key_len > 16 ? 16 : key_len));
-+					       (min(16, key_len)));
- 
- 					if (keyparms->cipher ==
- 					    WLAN_CIPHER_SUITE_TKIP) {
-@@ -811,7 +811,7 @@ static int rtw_cfg80211_set_encryption(struct net_device *dev, u8 key_index,
- 					memcpy(padapter->securitypriv.
- 					       dot118021XGrpKey[key_index].skey,
- 					       keyparms->key,
--					       (key_len > 16 ? 16 : key_len));
-+					       (min(16, key_len)));
- 					memcpy(padapter->securitypriv.
- 					       dot118021XGrptxmickey[key_index].
- 					       skey, &keyparms->key[16], 8);
+Bhumika Goyal (5):
+  Staging: rtl8723au: Use min macro instead of ternary operator
+  Staging: rdma: Use min macro instead of ternary operator
+  Staging: gdm724x: Use min instead of ternary operator
+  Staging: lustre: Use min or max instead of ternary operator
+  Staging: rts5208: Use min instead of ternary operator
+
+ drivers/staging/gdm724x/gdm_mux.c                   |  2 +-
+ drivers/staging/lustre/lustre/include/lustre_disk.h |  6 ++----
+ drivers/staging/lustre/lustre/osc/osc_request.c     |  2 +-
+ drivers/staging/lustre/lustre/ptlrpc/events.c       |  2 +-
+ drivers/staging/rdma/hfi1/pio_copy.c                |  6 +++---
+ drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c   | 14 +++++++-------
+ drivers/staging/rts5208/sd.c                        |  4 ++--
+ 7 files changed, 17 insertions(+), 19 deletions(-)
+
 -- 
 1.9.1
 
