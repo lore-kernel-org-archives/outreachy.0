@@ -1,92 +1,64 @@
 X-GM-THRID: 6256058221461504000
-X-Received: by 10.107.157.10 with SMTP id g10mr12592341ioe.28.1456604667935;
-        Sat, 27 Feb 2016 12:24:27 -0800 (PST)
+X-Received: by 10.112.158.138 with SMTP id wu10mr824659lbb.11.1456602151153;
+        Sat, 27 Feb 2016 11:42:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.241.10 with SMTP id we10ls825756obc.77.gmail; Sat, 27 Feb
- 2016 12:24:27 -0800 (PST)
-X-Received: by 10.182.245.131 with SMTP id xo3mr6924155obc.49.1456604667507;
-        Sat, 27 Feb 2016 12:24:27 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id ui7si2735509pab.0.2016.02.27.12.24.27
+Received: by 10.28.63.193 with SMTP id m184ls111089wma.3.gmail; Sat, 27 Feb
+ 2016 11:42:30 -0800 (PST)
+X-Received: by 10.28.46.129 with SMTP id u123mr474wmu.0.1456602150678;
+        Sat, 27 Feb 2016 11:42:30 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c140si40961wmh.1.2016.02.27.11.42.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Feb 2016 12:24:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Sat, 27 Feb 2016 11:42:30 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id yy13so6293916pab.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 27 Feb 2016 12:24:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=D2H02N0Xwkhvf0N1Lx8xW+lqbtPVwpXP+ypyi5VcD5E=;
-        b=PuQcgXgVqAOXa+vR1X9UU9g9RogARwztGlOL/inFXbXrn9hqsksZCGVeFOfF0q9lIM
-         EIqVasYqrnQZQF1A5jrk64UX0u2VEBa1IJhg5Q73sN2JSdNS9jKFbNWuQhZ4+AIfBdWD
-         DsaC9d/auXTUCBfi9oBFYF3lQnWMK2Q5ntjBYZ1KnUE26ggLe2QA8XKVG971pi4/p7zd
-         UpVJuSzGAKpharFdXEhyfbaj91Qo0pTZnmXfXqvkhuUcLG3wgZD+nnLNQjXqAJPPZ/AT
-         D9QU/v5DEhEyRU5h/P84f7DxFcl+QlU54q9oYLwnS/6irUo7iPhCG4AMoIeSwpZ0J9Ma
-         q6fQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=D2H02N0Xwkhvf0N1Lx8xW+lqbtPVwpXP+ypyi5VcD5E=;
-        b=Qsp0F2dV69nD3TrynUdZQX1mFH7x+QqBfKxmmEhp8gws1pCz30+a7p1HF6mG9Gkt3a
-         obVwWxjo2mOiMH6pW5uetBmia3jTtboehLAsa9TxfzoHjdHDQW3O0izARbsy5GpQeX/C
-         YMWLkSIViZQ4FlhHbkTHseMdVQVcWPV5rAg+rp+6brKVn0/mRluvMnjpXWBwV1V7quxL
-         50V8T18D1dGelLaqnxYQ2CrL+KkXcj1xnnzJlqPwwxrfN5PAcPZLcTuYkkvSQu9FcVJy
-         hHDl7lEmYT31VNHK0b+TgBtY/szKsWEKITy7q/ALD505CKmtvvusP76OgHOl5Q1fsm5y
-         GntA==
-X-Gm-Message-State: AD7BkJJNSQYFXs6lc/daKe66I6emwiiPHpjBFUNh8CiLovX3/UDSx7GQga9KW5QpuVOusQ==
-X-Received: by 10.66.146.100 with SMTP id tb4mr10985968pab.99.1456604667333;
-        Sat, 27 Feb 2016 12:24:27 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.44])
-        by smtp.gmail.com with ESMTPSA id q2sm4233154pfq.88.2016.02.27.12.24.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 27 Feb 2016 12:24:26 -0800 (PST)
-Date: Sat, 27 Feb 2016 17:54:29 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/2] Staging: usb: gadget: Use PTR_ERR_OR_ZERO instead of
- if(IS_ERR(...)) + PTR_ERR.
-Message-ID: <20160227122429.GA5723@sandhya>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,510,1449529200"; 
+   d="scan'208";a="204889751"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Feb 2016 20:42:30 +0100
+Date: Sat, 27 Feb 2016 20:42:29 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: usb: gadget: Use
+ PTR_ERR_OR_ZERO instead of if(IS_ERR(...)) + PTR_ERR.
+In-Reply-To: <20160227114105.GA5524@sandhya>
+Message-ID: <alpine.DEB.2.02.1602272042110.2060@localhost6.localdomain6>
+References: <20160227114105.GA5524@sandhya>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Use PTR_ERR_OR_ZERO instead of if(IS_ERR(...)) + PTR_ERR.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
-changes in v2:
-* Add missing return.
- drivers/usb/gadget/udc/at91_udc.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/usb/gadget/udc/at91_udc.c b/drivers/usb/gadget/udc/at91_udc.c
-index d0d1894..87f6f52 100644
---- a/drivers/usb/gadget/udc/at91_udc.c
-+++ b/drivers/usb/gadget/udc/at91_udc.c
-@@ -1726,10 +1726,8 @@ static int at91sam9261_udc_init(struct at91_udc *udc)
- 
- 	udc->matrix = syscon_regmap_lookup_by_phandle(udc->pdev->dev.of_node,
- 						      "atmel,matrix");
--	if (IS_ERR(udc->matrix))
--		return PTR_ERR(udc->matrix);
- 
--	return 0;
-+	return PTR_ERR_OR_ZERO(udc->matrix);
- }
- 
- static void at91sam9261_udc_pullup(struct at91_udc *udc, int is_on)
--- 
-1.8.3.4
+On Sat, 27 Feb 2016, Sandhya Bankar wrote:
 
+> Use PTR_ERR_OR_ZERO instead of if(IS_ERR(...)) + PTR_ERR. 
+> 
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/usb/gadget/udc/at91_udc.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/drivers/usb/gadget/udc/at91_udc.c b/drivers/usb/gadget/udc/at91_udc.c
+> index d0d1894..52851ad 100644
+> --- a/drivers/usb/gadget/udc/at91_udc.c
+> +++ b/drivers/usb/gadget/udc/at91_udc.c
+> @@ -1726,10 +1726,7 @@ static int at91sam9261_udc_init(struct at91_udc *udc)
+>  
+>  	udc->matrix = syscon_regmap_lookup_by_phandle(udc->pdev->dev.of_node,
+>  						      "atmel,matrix");
+> -	if (IS_ERR(udc->matrix))
+> -		return PTR_ERR(udc->matrix);
+> -
+> -	return 0;
+> +	PTR_ERR_OR_ZERO(udc->matrix);
+
+Same problem here.  You need a return.
+
+julia
 
