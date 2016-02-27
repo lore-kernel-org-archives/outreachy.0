@@ -1,61 +1,61 @@
 X-GM-THRID: 6255862679722786816
-X-Received: by 10.50.85.37 with SMTP id e5mr5836938igz.12.1457255942145;
-        Sun, 06 Mar 2016 01:19:02 -0800 (PST)
+X-Received: by 10.140.95.38 with SMTP id h35mr21041462qge.3.1456556534812;
+        Fri, 26 Feb 2016 23:02:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.128.10 with SMTP id b10ls295540iod.101.gmail; Sun, 06 Mar
- 2016 01:19:01 -0800 (PST)
-X-Received: by 10.66.63.68 with SMTP id e4mr12127931pas.40.1457255941840;
-        Sun, 06 Mar 2016 01:19:01 -0800 (PST)
+Received: by 10.140.17.149 with SMTP id 21ls1496185qgd.55.gmail; Fri, 26 Feb
+ 2016 23:02:13 -0800 (PST)
+X-Received: by 10.129.85.68 with SMTP id j65mr4483830ywb.57.1456556533225;
+        Fri, 26 Feb 2016 23:02:13 -0800 (PST)
 Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id ui7si2378174pab.0.2016.03.06.01.19.01
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id ui7si2421656pab.0.2016.02.26.23.02.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 01:19:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 26 Feb 2016 23:02:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id x188so3909288pfb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 01:19:01 -0800 (PST)
+Received: by mail-pa0-x242.google.com with SMTP id yy13so5586217pab.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 23:02:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=X5M/SCDQYFeJbkBJVO9L8NaUUEP4D5sEnCvWcnAHUCU=;
-        b=jMeVWihb1naCOiLK5DbC73yx0XC56cKDgJ8QfcQcK0J3Ci+yIsMaYPYnV+3vmQS5h7
-         oJyAJVFYIVQ5SqGWDbBezkWSDuwcCezLIoQpQiC/VETYbYqOr7wgGt9bBdlriz8ca4Gy
-         2GRJe+yHx3NmSGMLTziuLR4v+ZtsY9M6OoTTkRA+D2Yro+dwj1PXt6+p2kV7xCPMPLts
-         5aoLVfkvenk1i/vbzxT2PLgZqYJnOvDG8dy2kXXcpxUiMRQqLTIfpk8Dckv4J/5yQlE9
-         5oIBX8A/hjZdlUjRWwm5MAPVimQ3usNWOS5fC7i8RopWvmrS2Nfk27vCQt2oZK53Lifj
-         GxtQ==
+        bh=yQ3gwzPTIkfqYyCMKj8CpjhnYg9NroBu6GmU23pRshU=;
+        b=ZCyruVrhTuzJMeGDMH9x5GvW5J0yto0ce0M/NJz9MaKvzk81FdFoBPKXkj/LIMgEhz
+         I6fhymdVhaJr/8PuzOekJgaXU4RVm+dh4gI5+Eg7hynixalulsuN0KzaS3P3iMgw1UZu
+         5YZq5S9zFUyTO/f+F0VBCRU+O2Nd80hrvwPZVJxXWV2a9fjYWPNn6chJjpFDUnCaAEDx
+         zlddYk3z63KTNdkP/pqdpQaawpPK6n8nXw+sZjlYPKesaOw+XaQ9///xUQpO4WdhJzxu
+         WedviIl/HecFhL4dEdIfUT/zTsjA/4HAhP0BHB00ZaQMYOGUt9wLD1C9OHHHwrUeMeen
+         YiOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=X5M/SCDQYFeJbkBJVO9L8NaUUEP4D5sEnCvWcnAHUCU=;
-        b=XeM6euIe8DbwQd+e4a8WUE8Fxy40aHpn1ckA8iIHduJJVwSqXDBQcAzQFvrFWw/q3x
-         Bbt4++pxLiib3qZbuCjuJUux8b0Dc45wdbQjr6NuJse7bCK0td8QOY4zbDFPVxfYQ3Jj
-         nfE+HOw0W2oIfkXwTvEbpVM7VCe0YD1PUUaWuVfNxpltYWGdUwDJvWEAK5VOFRR5HS/L
-         DH2+Ip8fbyxsDUhr722I5V/hvdBYWksHBjrfhE8QyT3JNdfu5oFeGk9aR3YpdNo+v/T/
-         zx9uVjonX1CEXYh1baQHC0rdgSQ730QAIvDVvLMSd0/PBJe+b2NDONsF50Qx6CbI1ZcT
-         deVQ==
-X-Gm-Message-State: AD7BkJIn7gD8GjcHXBtW0LRpdnmKe12jag2fZi7gn5dcUqms0cI1FGVSiFz7yOKVrmAKRA==
-X-Received: by 10.98.18.195 with SMTP id 64mr14994616pfs.131.1457255941683;
-        Sun, 06 Mar 2016 01:19:01 -0800 (PST)
+        bh=yQ3gwzPTIkfqYyCMKj8CpjhnYg9NroBu6GmU23pRshU=;
+        b=cJMmYovPhDhWeMQDVMELS2VmhGXZCVrdqVWEr+5SEAE98WyNIWZ18dkWWnULFHSg06
+         mbsu0jqusxyPywZUrW46pWWEGz4RMqAYV10sxAOtZHfywrIb6Jv/vVdIWJfQi4H5rKe0
+         9pLxY5oWJKVge1uem5DG3Y3ZR0EVV7PJzfkgM9mcVq7aTpnXFXmL9YTImsHDU7MGFVax
+         tCzejDdpfZO+THfYClEgIWCt6cPK22vcOmCf85m1oxab/8GKVq++LsOZ2v+bsaTiKPpV
+         G3ROExr+HV0jIlKw/iOTnbSUycJoyMUth4NQ3tWSynV1lWpCUgfOizJ5AipXhaWGOlmR
+         fGfg==
+X-Gm-Message-State: AD7BkJJjNeg04Q3V2Mp9/d7EeEsciR78nVGaI5at/zsl8gIrWv0SDkSXPhfbNycHL3QZ/A==
+X-Received: by 10.66.118.198 with SMTP id ko6mr7673537pab.11.1456556533010;
+        Fri, 26 Feb 2016 23:02:13 -0800 (PST)
 Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([103.224.159.11])
-        by smtp.gmail.com with ESMTPSA id y27sm16753653pfi.82.2016.03.06.01.19.00
+Received: from pooja-Inspiron-3537 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id ti6sm23687896pab.4.2016.02.26.23.02.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 01:19:01 -0800 (PST)
-Date: Sun, 6 Mar 2016 14:48:58 +0530
-From: G Pooja Shamili <poojashamili@gmail.com>
+        Fri, 26 Feb 2016 23:02:12 -0800 (PST)
+Date: Sat, 27 Feb 2016 12:31:50 +0530
+From: "pooja.shamili" <poojashamili@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Subject: [PATCH v2] staging: rtl8192e: Clean up tests on the results of
  functions that return NULL on failure.
-Message-ID: <20160306091858.GA31543@localhost>
+Message-ID: <20160227070150.GA18032@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -87,12 +87,8 @@ if (
 )
  ) S
 
-Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
+Signed-off-by: pooja.shamili <poojashamili@gmail.com>
 ---
-Changes from Version 1:
-	    * Changed the name in the From: and Signed-off-by: to full
-name.	    
-
  drivers/staging/rtl8192e/rtllib_wx.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
