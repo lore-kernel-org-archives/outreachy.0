@@ -1,108 +1,164 @@
-X-GM-THRID: 6253685194266509312
-X-Received: by 10.129.130.71 with SMTP id s68mr21872895ywf.29.1456049548682;
-        Sun, 21 Feb 2016 02:12:28 -0800 (PST)
+X-GM-THRID: 6255614868842348544
+X-Received: by 10.66.139.162 with SMTP id qz2mr4288773pab.1.1456560198376;
+        Sat, 27 Feb 2016 00:03:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.170.35 with SMTP id t35ls548753ioe.37.gmail; Sun, 21 Feb
- 2016 02:12:28 -0800 (PST)
-X-Received: by 10.50.61.100 with SMTP id o4mr6052042igr.10.1456049548353;
-        Sun, 21 Feb 2016 02:12:28 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22b.google.com (mail-pa0-x22b.google.com. [2607:f8b0:400e:c03::22b])
-        by gmr-mx.google.com with ESMTPS id 12si2549084pfb.1.2016.02.21.02.12.28
+Received: by 10.107.154.146 with SMTP id c140ls917265ioe.76.gmail; Sat, 27 Feb
+ 2016 00:03:17 -0800 (PST)
+X-Received: by 10.107.185.4 with SMTP id j4mr10277117iof.21.1456560197605;
+        Sat, 27 Feb 2016 00:03:17 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x236.google.com (mail-qg0-x236.google.com. [2607:f8b0:400d:c04::236])
+        by gmr-mx.google.com with ESMTPS id t198si1017206ywe.3.2016.02.27.00.03.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 02:12:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) client-ip=2607:f8b0:400e:c03::22b;
+        Sat, 27 Feb 2016 00:03:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) client-ip=2607:f8b0:400d:c04::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22b as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::236 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22b.google.com with SMTP id yy13so74800495pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 02:12:28 -0800 (PST)
+Received: by mail-qg0-x236.google.com with SMTP id y89so82446008qge.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 27 Feb 2016 00:03:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ajcNPHP8q2k/Knq9s26NS0LAhT3aMVPWOrqfxxBp+A4=;
-        b=QbWby08zhtMxhz9lQIBvb68kCcZuRXlAUu7kc3jZNe+duFP1rYsJiF5mWp5fAurPmG
-         rYgI5fJykXI9xxaU0HQzDkt6Zv8E7TX+RX/yWQUmY9cUDe9u83vYBU9471pHfdFujNuW
-         m6XrCJTPe4lz1oC6QOkJiBsiW+QLxY2wpZetCWigmq4HDVB/9/enN7FjOCVJ9bDn0gMr
-         6j8CkLvAbOPVXorLf5gzXvAFtDsw8XyFDHBVD+baFsLi5cACBqBu7Z8GmpvNBR6QjM5n
-         N9au52a4ESX4t3da+O+cRxbTWWPtLLbwZpee+CtrhUam5h4/0+y3frqdO6sOdytg6cvA
-         5/UA==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=+PGGT0r5qfBCyUEkleVXAODS0l4IgTGsqbLSqB2KISY=;
+        b=iqxgXleMyEpZfiaADA4iU9cHUoNCH8k+cTWwtpkAdZlHpXiJZusThYUeD/izfq2pJV
+         XwC2K/96a1hLgmluERx3hHsNeJzupBfw3G8HBOvXNbF07W23ipQZtr1SEDz1AzCnF4ib
+         tFbU94xY97zAHo78WbdYUJGrODxw5OOHnIz//lkQZnZvMk0aMBI7+xnF4jp2tpBKnU+J
+         afmGf+SNLnijmi/DmDQWPJ4HqijQazTj0Y4UghekpQjqA9xG5PKj/42YdyjmtS+Xoua+
+         hx/qf9W1dp8pfWmLPnoK9JqrWcQmjtGhXUA5sG4CSn6oaZjMNrJOuqZivtZIH8AlgDM1
+         JFSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=ajcNPHP8q2k/Knq9s26NS0LAhT3aMVPWOrqfxxBp+A4=;
-        b=cklc/1BugSkY+2ZtR+wcWXWL0lvhJ3PE7WbMWi5Ks/zQCd53974R3mJ+0WtDSNZTLW
-         4rd5cyCBmua7pPLLuSqz0GjgxbC8D1CTLthV//WDbVG0gWUKkQMRlIGjOTmec4P0Vc48
-         2jTqXrNTGzs2vhJwgEpnSMqj2Z5ZeqNrvkZmZenTinftiW6+Zzdq8T86h063SK4p4cAv
-         kT8GPKMhGpHN+ciVnEIrhVNdQHqtgRy8frDmu+mWf0mN8GM6ZhGP66BtrOIUSJzB49Mi
-         6iYQTI4y3VKNw/aRqRW6WN004UT6IsHpHdUyLsagW6GzODwDrtI84b78nlgXseoFgfaw
-         qVUw==
-X-Gm-Message-State: AG10YOTIY712S51d847eB82DmxRZ/DruopCqRu8LzFw0Ql5RQfcy81DgxmO02ejypJVwfA==
-X-Received: by 10.66.97.101 with SMTP id dz5mr21048500pab.61.1456049548224;
-        Sun, 21 Feb 2016 02:12:28 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w12sm29144527pfa.79.2016.02.21.02.12.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 02:12:27 -0800 (PST)
-Date: Sun, 21 Feb 2016 15:43:00 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192u: ieee80211: Use macro DIV_ROUND_UP
-Message-ID: <20160221101300.GA26117@Karyakshetra>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=+PGGT0r5qfBCyUEkleVXAODS0l4IgTGsqbLSqB2KISY=;
+        b=Gq2MT/Z0kX+s3OkkQ5suB2xU/UCWC5Wkz6u5jx/rb6JWmQWu1FrI3aC0MkNmyXjEhi
+         qDoWupKsZQr5AFnvAkA2K589VTZhDsozz67wDP1LbLfAl7waAmPJaYIgxsJlcy/J93j1
+         uL3aLIWND1HxaqQVukCKx3YFPZWYMcIMEDWuxVmCWFbyjrkOI3mcxhRNG4gmxWuuJfga
+         nVhHhkqfReYRNPLG8nNDKbmXh9mEBNnPnK7W9JP7kDCCaBs2t9hneOHG+lZ1y8plSpv6
+         iOtlyqeFYGsHFsLdXiwHyxOqNX6cuFBKhp3D6IpwLCPyh/T6uYtekT8CsPAUkNB1b7F6
+         W1qA==
+X-Gm-Message-State: AD7BkJKnA4SDhd+HkUMwJxHo3wytgToyKpd/pJX6vO372c+DMrdOwIdsOJlKvuD39znMOjjff0UOYeb1v+mCBg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.140.167.135 with SMTP id n129mr7115325qhn.73.1456560197315;
+ Sat, 27 Feb 2016 00:03:17 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Sat, 27 Feb 2016 00:03:17 -0800 (PST)
+In-Reply-To: <20160226150029.GA32277@amitoj-Inspiron-3542>
+References: <20160226150029.GA32277@amitoj-Inspiron-3542>
+Date: Sat, 27 Feb 2016 13:33:17 +0530
+Message-ID: <CA+5yK5GOvuzj5SnHqpLzo5fM78N96jtCxA2qSWtSbmETLrOmSA@mail.gmail.com>
+Subject: Re: [PATCH] staging: media: davinci_vpfe: Replace kzalloc with devm_kzalloc
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
-@@
-expression e1;
-expression e2;
-@@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
+On Fri, Feb 26, 2016 at 8:30 PM, Amitoj Kaur Chawla
+<amitoj1606@gmail.com> wrote:
+> Replace data allocated by kzalloc to managed data allocated by
+> devm_kzalloc. Remove unnecessary kzfree.
+>
+> Also remove a goto by replacing it with returns and dropping the
+> unnecessary label.
+>
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  .../staging/media/davinci_vpfe/vpfe_mc_capture.c   | 22 +++++++---------------
+>  1 file changed, 7 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> index bf077f8..5852a6b 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> @@ -579,22 +579,20 @@ static int vpfe_probe(struct platform_device *pdev)
+>         struct resource *res1;
+>         int ret = -ENOMEM;
+>
+> -       vpfe_dev = kzalloc(sizeof(*vpfe_dev), GFP_KERNEL);
+> +       vpfe_dev = devm_kzalloc(&pdev->dev, sizeof(*vpfe_dev), GFP_KERNEL);
+>         if (!vpfe_dev)
+>                 return ret;
+>
+>         if (pdev->dev.platform_data == NULL) {
+>                 v4l2_err(pdev->dev.driver, "Unable to get vpfe config\n");
+> -               ret = -ENOENT;
+> -               goto probe_free_dev_mem;
+> +               return -ENOENT;
+>         }
+>
+>         vpfe_dev->cfg = pdev->dev.platform_data;
+>         if (vpfe_dev->cfg->card_name == NULL ||
+>                         vpfe_dev->cfg->sub_devs == NULL) {
+>                 v4l2_err(pdev->dev.driver, "null ptr in vpfe_cfg\n");
+> -               ret = -ENOENT;
+> -               goto probe_free_dev_mem;
+> +               return -ENOENT;
+>         }
+>
+>         /* Get VINT0 irq resource */
+> @@ -602,8 +600,7 @@ static int vpfe_probe(struct platform_device *pdev)
+>         if (!res1) {
+>                 v4l2_err(pdev->dev.driver,
+>                          "Unable to get interrupt for VINT0\n");
+> -               ret = -ENOENT;
+> -               goto probe_free_dev_mem;
+> +               return -ENOENT;
+>         }
+>         vpfe_dev->ccdc_irq0 = res1->start;
+>
+> @@ -612,8 +609,7 @@ static int vpfe_probe(struct platform_device *pdev)
+>         if (!res1) {
+>                 v4l2_err(pdev->dev.driver,
+>                          "Unable to get interrupt for VINT1\n");
+> -               ret = -ENOENT;
+> -               goto probe_free_dev_mem;
+> +               return -ENOENT;
+>         }
+>         vpfe_dev->ccdc_irq1 = res1->start;
+>
+> @@ -622,8 +618,7 @@ static int vpfe_probe(struct platform_device *pdev)
+>         if (!res1) {
+>                 v4l2_err(pdev->dev.driver,
+>                          "Unable to get interrupt for DMA\n");
+> -               ret = -ENOENT;
+> -               goto probe_free_dev_mem;
+> +               return -ENOENT;
+>         }
+>         vpfe_dev->imp_dma_irq = res1->start;
+>
+> @@ -632,7 +627,7 @@ static int vpfe_probe(struct platform_device *pdev)
+>         /* enable vpss clocks */
+>         ret = vpfe_enable_clock(vpfe_dev);
+>         if (ret)
+> -               goto probe_free_dev_mem;
+> +               return ret;
+>
+>         ret = vpfe_initialize_modules(vpfe_dev, pdev);
+>         if (ret)
+> @@ -680,8 +675,6 @@ probe_out_entities_cleanup:
+>         vpfe_cleanup_modules(vpfe_dev, pdev);
+>  probe_disable_clock:
+>         vpfe_disable_clock(vpfe_dev);
+> -probe_free_dev_mem:
+> -       kzfree(vpfe_dev);
+>
+>         return ret;
+>  }
+> @@ -702,7 +695,6 @@ static int vpfe_remove(struct platform_device *pdev)
+>         v4l2_device_unregister(&vpfe_dev->v4l2_dev);
+>         media_device_unregister(&vpfe_dev->media_dev);
+>         vpfe_disable_clock(vpfe_dev);
+> -       kzfree(vpfe_dev);
+>
+>         return 0;
+>  }
+> --
+> 1.9.1
+>
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This patch is incorrect and should not be taken.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-index 27ce481..2dc25cc 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-@@ -242,7 +242,7 @@ static int ieee80211_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
-
- 		ccmp_init_blocks(key->tfm, hdr, key->tx_pn, data_len, b0, b, s0);
-
--		blocks = (data_len + AES_BLOCK_LEN - 1) / AES_BLOCK_LEN;
-+		blocks = DIV_ROUND_UP(data_len, AES_BLOCK_LEN);
- 		last = data_len % AES_BLOCK_LEN;
-
- 		for (i = 1; i <= blocks; i++) {
-@@ -331,7 +331,7 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		ccmp_init_blocks(key->tfm, hdr, pn, data_len, b0, a, b);
- 		xor_block(mic, b, CCMP_MIC_LEN);
-
--		blocks = (data_len + AES_BLOCK_LEN - 1) / AES_BLOCK_LEN;
-+		blocks = DIV_ROUND_UP(data_len, AES_BLOCK_LEN);
- 		last = data_len % AES_BLOCK_LEN;
-
- 		for (i = 1; i <= blocks; i++) {
---
-2.1.4
-
+Sorry for the inconvenience,
+Amitoj
 
