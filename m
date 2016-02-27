@@ -1,130 +1,155 @@
-X-GM-THRID: 10547305119744
-X-Received: by 10.66.155.9 with SMTP id vs9mr48113523pab.20.1427851826662;
-        Tue, 31 Mar 2015 18:30:26 -0700 (PDT)
+X-GM-THRID: 6255537432818614272
+X-Received: by 10.182.125.132 with SMTP id mq4mr6291713obb.22.1456594794112;
+        Sat, 27 Feb 2016 09:39:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.38.148 with SMTP id t20ls41007qgt.98.gmail; Tue, 31 Mar
- 2015 18:30:26 -0700 (PDT)
-X-Received: by 10.52.137.141 with SMTP id qi13mr20659225vdb.5.1427851826421;
-        Tue, 31 Mar 2015 18:30:26 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id iw3si39898pbd.1.2015.03.31.18.30.26
+Received: by 10.140.93.13 with SMTP id c13ls1777325qge.68.gmail; Sat, 27 Feb
+ 2016 09:39:52 -0800 (PST)
+X-Received: by 10.13.236.84 with SMTP id v81mr6056831ywe.2.1456594792909;
+        Sat, 27 Feb 2016 09:39:52 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-qg0-x244.google.com (mail-qg0-x244.google.com. [2607:f8b0:400d:c04::244])
+        by gmr-mx.google.com with ESMTPS id q187si1129949ywf.4.2016.02.27.09.39.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2015 18:30:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 27 Feb 2016 09:39:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) client-ip=2607:f8b0:400d:c04::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mail=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id gg7so36322281pac.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 18:30:26 -0700 (PDT)
+Received: by mail-qg0-x244.google.com with SMTP id y89so7846063qge.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 27 Feb 2016 09:39:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=t8GUP2lJeNHCMFlw5fDuMQU87ixVvUUDzr3l+7Re74o=;
-        b=eE0iSIA7yfcMaoezC63PAD0KNlzc3/4qcHPCMyfz8FqwTu/cKKCfblcJiiEZGtH9I6
-         w9ShxhG+oZ18h3YRaUsLR8/SNlzkfYwYrAqqZ1Z6A7dvLShzuI6h2O0Rn1Aage0qoOlQ
-         FyFlD1GJOptar4l99npp4nKtPQ5Z+WkxQ2ox/C2MKVgbyakEALEmcGtxlgAMANDmGgc6
-         AbbZjCILB4XTPySvKO+ICy1gZwdqOKkOEgmfFyv0lVK/HEk59nV+TwV7m1RYpDBb+Eb4
-         3JnlNxtE9rLwFUduqEj1ZBoCH3TcGRNG6bJHVGSFMFjG+4YedUGK98ES2y94xuS/3jPM
-         ayOQ==
-X-Received: by 10.66.55.104 with SMTP id r8mr71691706pap.75.1427851826217;
-        Tue, 31 Mar 2015 18:30:26 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.169.87])
-        by mx.google.com with ESMTPSA id xj1sm183451pbb.92.2015.03.31.18.30.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 31 Mar 2015 18:30:25 -0700 (PDT)
-Date: Wed, 1 Apr 2015 07:00:21 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8712: Remove useless zero-testing pointer typed
- value
-Message-ID: <20150401013021.GA32049@amitoj-Inspiron-3542>
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=1atYwO7f1yKjX0c30BEXU07syz0r8UHExVlL6+ITU6c=;
+        b=1HDyd+xEJq+DwnxBn+IQl5Rd+TvJ1MwhtFOGlRV2O8zs2zBQlI1H49CdCOFTV47TCm
+         iYhp6Yx5Y7OuXD0oiKjRRqh2shZ8wKwmF39kvcLZ+1lEkVxKDrddiew2vNRCoirL5JUV
+         xzWs50jV6yub8CCnnTrSN7ZX4+X3FvzLznOYtJxR82LH505gbv++6eYoUi3KF7MYm8nC
+         iNGsdmvv4/5eoFoNXopAAZyoITWUKnVif8n93ePDLr/3MUcBnEhbHJOd3OmeqAbSm+gj
+         xxo3lqt2UXVqx77WbZ7jcH6Oypk2IyFuSjRhr3bYFYaM/SjWu8UW8bWX312RJN1KODDO
+         IQGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=1atYwO7f1yKjX0c30BEXU07syz0r8UHExVlL6+ITU6c=;
+        b=ONO7FYrU8iAm6VUVlqFi4xAzLMa0NFUKJlJC+lVonedJzBunoHg+fzHYjdFNFxM3R/
+         ksBNewImAJYinhKDiYfcd6/qiBZMQbNv5ldqDYFd4AjfaTKi2MDvKN76f4Gm1sm0Wzfv
+         LfTOXlFdOrMRLhV5zQDnK2eCMxmIRWBw6816j2XlEMvGHB5M0+YuO3rYcjE1aVIFM5kd
+         7p3YA1FI49x4wg4bESO4Ynar/nAPeLqwZgkhdZTptGBqzlXCZdmtTY8Bs9YTGZNc5Ute
+         pfVcxMhd07X/5efM0e1HvNz1l/mf3SfS/Z4skfAWkr/ftPJw+80bJwfT/oDUC0e7EIlK
+         kQJw==
+X-Gm-Message-State: AD7BkJKhk6OrWgxmozNl5ZZ2apeovUpEgPJt2kcXXmJ8tti8tLTPs5+X3tdLvIhS7KeUrxAVeffcilPS7oqF2w==
+X-Received: by 10.140.134.144 with SMTP id 138mr10198530qhg.63.1456594792678;
+ Sat, 27 Feb 2016 09:39:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.55.217.215 with HTTP; Sat, 27 Feb 2016 09:39:13 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1602261101330.2614@hadrien>
+References: <20160226100041.GA11042@Karyakshetra> <alpine.DEB.2.10.1602261101330.2614@hadrien>
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Date: Sat, 27 Feb 2016 23:09:13 +0530
+Message-ID: <CAFNHFT8VRLL_pUXDU88fwysEbfbjppzraHVEjbw-UY=_sd53rA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: lnet: Use list_for_each_entry
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Removes variable comparison with 0 by using !. Done using following
-coccinelle script.
+Hello Julia,
 
-@ disable is_zero,isnt_zero @
-expression *E;
-expression E1,f;
-@@
+I'll send in a v3 with a changed commit message.
 
-E = f(...)
-<...
-(
-- E == 0
-+ !E
-|
-- E != 0
-+ E
-|
-- 0 == E
-+ !E
-|
-- 0 != E
-+ E
-)
-...>
-?E = E1
+Thanks,
+Bhaktipriya
 
-@ disable is_zero,isnt_zero @
-expression *E;
-@@
-
-(
-  E ==
-- 0
-+ NULL
-|
-  E !=
-- 0
-+ NULL
-|
-- 0
-+ NULL
-  == E
-|
-- 0
-+ NULL
-  != E
-)
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_pwrctrl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl871x_pwrctrl.c b/drivers/staging/rtl8712/rtl871x_pwrctrl.c
-index aaa5844..32d5a4a 100644
---- a/drivers/staging/rtl8712/rtl871x_pwrctrl.c
-+++ b/drivers/staging/rtl8712/rtl871x_pwrctrl.c
-@@ -41,7 +41,7 @@ void r8712_set_rpwm(struct _adapter *padapter, u8 val8)
- 	struct pwrctrl_priv *pwrpriv = &padapter->pwrctrlpriv;
- 
- 	if (pwrpriv->rpwm == val8) {
--		if (pwrpriv->rpwm_retry == 0)
-+		if (pwrpriv->rpwm_retry)
- 			return;
- 	}
- 	if ((padapter->bDriverStopped == true) ||
-@@ -235,7 +235,7 @@ void r8712_unregister_cmd_alive(struct _adapter *padapter)
- 	unregister_task_alive(pwrctrl, CMD_ALIVE);
- 	if ((pwrctrl->cpwm > PS_STATE_S2) &&
- 	   (pwrctrl->pwr_mode > PS_MODE_ACTIVE)) {
--		if ((pwrctrl->alives == 0) &&
-+		if ((pwrctrl->alives) &&
- 		    (check_fwstate(&padapter->mlmepriv,
- 		     _FW_UNDER_LINKING) != true)) {
- 			r8712_set_rpwm(padapter, PS_STATE_S0);
--- 
-1.9.1
-
+On Fri, Feb 26, 2016 at 3:36 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+> On Fri, 26 Feb 2016, Bhaktipriya Shridhar wrote:
+>
+>> In general, doubly linked lists are iterated  using list_empty
+>> and list_entry functions.
+>
+> It's a little bit fussy, but this is not true.  I had neer seen this
+> pattern before you found it.  So I don't think that it is the general
+> case.  Currently there are over 2000 uses of list_for_each_entry.
+>
+> Also the subject and this part of the commit message mention
+> list_for_each_entry, but actually you are using list_for_each_entry_safe.
+> And list_for_each_entry_safe is the only thing that makes sense when there
+> is a list_empty test on the loop, because for the list to be empty, you
+> have to remove things from it, and if you remove things from it, you need
+> to use list_for_each_entry_safe.
+>
+> Note that when you reach the "end" of a doubly linked list, you actually
+> reach the beginning, not a NULL element like for a singly linked list, so
+> reaching the end of the list does not make list_empty true.
+>
+> julia
+>
+>> But it can be better written using
+>> list_for_each_entry macro.
+>>
+>> This patch replaces the while loop containing list_empty and list_entry
+>> with list_for_each_entry and list_for_each_entry_safe(if list_del is
+>> used int the loop).
+>>
+>> This was done with Coccinelle.
+>>
+>> @@
+>> expression E1;
+>> identifier I1, I2;
+>> type T;
+>> iterator name list_for_each_entry_safe;
+>> @@
+>>
+>> T *I1;
+>> + T *temp;
+>> ...
+>> - while (list_empty(&E1) == 0)
+>> + list_for_each_entry_safe (I1, temp, &E1, I2)
+>> {
+>> ...when != T *I1;
+>> - I1 = list_entry(E1.next, T, I2);
+>> ...
+>> }
+>>
+>> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+>> ---
+>>  Changes in v2:
+>>       -Fixed typo "lusture" to "lustre" in the subject.
+>>
+>>  drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c | 5 ++---
+>>  1 file changed, 2 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+>> index efb7169..8c1d50a7 100644
+>> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+>> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+>> @@ -2354,13 +2354,12 @@ static inline void
+>>  ksocknal_flush_stale_txs(ksock_peer_t *peer)
+>>  {
+>>       ksock_tx_t *tx;
+>> +     ksock_tx_t *temp;
+>>       LIST_HEAD(stale_txs);
+>>
+>>       write_lock_bh(&ksocknal_data.ksnd_global_lock);
+>>
+>> -     while (!list_empty(&peer->ksnp_tx_queue)) {
+>> -             tx = list_entry(peer->ksnp_tx_queue.next, ksock_tx_t, tx_list);
+>> -
+>> +     list_for_each_entry_safe(tx, temp, &peer->ksnp_tx_queue, tx_list) {
+>>               if (!cfs_time_aftereq(cfs_time_current(),
+>>                                     tx->tx_deadline))
+>>                       break;
+>> --
+>> 2.1.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160226100041.GA11042%40Karyakshetra.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
