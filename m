@@ -1,121 +1,122 @@
-X-GM-THRID: 6950525312871432192
-X-Received: by 2002:a63:3244:: with SMTP id y65mr31853308pgy.197.1618295282272;
-        Mon, 12 Apr 2021 23:28:02 -0700 (PDT)
+X-GM-THRID: 6256430806188687360
+X-Received: by 10.140.147.139 with SMTP id 133mr10123658qht.21.1456691529196;
+        Sun, 28 Feb 2016 12:32:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:c70c:: with SMTP id o12ls1121545pjt.3.canary-gmail;
- Mon, 12 Apr 2021 23:28:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0ovxk+FkQ1fezOZ/LCOcmMN+RgSOB+sWJV3NXVu+lfn9TqlOrz1i/ZL58l+PbMnKf4AX1
-X-Received: by 2002:a17:902:d2ce:b029:eb:364:a2a0 with SMTP id n14-20020a170902d2ceb02900eb0364a2a0mr7864162plc.0.1618295281146;
-        Mon, 12 Apr 2021 23:28:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618295281; cv=none;
-        d=google.com; s=arc-20160816;
-        b=GtGxgAA/tC0cx5xFtUnCoBH2ZCiQSS+n3NIDAgb3jGet807Wry30/Bj2hux/bVDX8c
-         GmLzLxazeGBtsAYW91KAiTZcyELus5TgfxVijpie4Ok7Ud050SmMclFqYB8tZ0IhnT7f
-         aOQEqqunB91293h6R7lnDErWmHSyBzTyW3jibRK3ptFMYAEvcq50oIlYvmlAsCW1DthB
-         qoLt2CfiiUBRTPksTUzwD1CmudTlkYZpQl0WApvPi4N9foYiNPs8ozH9lhKxRsmmmOY6
-         NJ8dwbUD9C3y96uy/FaP/i8HRpEtvCqhjsvQRRCnKh9ux1K8z5VbjPwcEIWHHkzeg3yY
-         QYCQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Nt0fDmT0/sSLx8SXvP12vsQxR8HIersO+xhC1jo5rA0=;
-        b=v+e4iG50sBNMvja59yDG5K4yIVATQVAA4VwjFSJD4diCftBrbGgY+GYI9Eh6Armnek
-         tBEy87pVWiNH97AMpNud0tigHvet8u9Tb5lVEKDHyrgTnoeEdfSNtofWgFT+fuzPXUiW
-         GQKdM5tMJJNrO3KACwZAxeJL3NjOBNfzqUU+MjcnpkwDVVQFbvhFw4PKC1GW61K2D3Gc
-         XAWXbyV+Cpng1z84d+RlrfKtLV3CgkPihIbvDhew7pFZM9Pa6eWpxsJDI/TXsHjHmf86
-         L7QGoktgL6h3bieHJ4qywGwiPBqbBQMZd+zdA0/xKUVXwxCri95Sm6UJLfjHOvIH+TWf
-         JVKA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sl3xokFP;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pg1-x52b.google.com (mail-pg1-x52b.google.com. [2607:f8b0:4864:20::52b])
-        by gmr-mx.google.com with ESMTPS id p2si835929pli.3.2021.04.12.23.28.01
+Received: by 10.140.105.75 with SMTP id b69ls2057975qgf.53.gmail; Sun, 28 Feb
+ 2016 12:32:08 -0800 (PST)
+X-Received: by 10.13.238.130 with SMTP id x124mr10647618ywe.53.1456691528519;
+        Sun, 28 Feb 2016 12:32:08 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id y20si1117285pfa.2.2016.02.28.12.32.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 23:28:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52b as permitted sender) client-ip=2607:f8b0:4864:20::52b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 12:32:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sl3xokFP;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52b.google.com with SMTP id y32so11191260pga.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 23:28:01 -0700 (PDT)
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id 184so2047577pff.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 12:32:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=Nt0fDmT0/sSLx8SXvP12vsQxR8HIersO+xhC1jo5rA0=;
-        b=sl3xokFPsQ3gEUalWsbT9Ivb31ReDXvXvicMwxDLicpI0mmNTLYl7/XtErj73GTIRf
-         ch/dywOrBxbpxRaRBd9P1UBWjOOs8LgY8RNdAPGAx9aL/Fq5p8C2EDEu1+Z8Zbk64YoO
-         cVNrscOHZLiO7J0NhQHadASxDipAD8+0tENdsS2eeTVBpBJRNzleWehCIgAA5JQU03xU
-         drDdaJz+IGntTjxCD9arxBgTTgExiw/uQuSqlo2kf7l8BsRWYvtroYt+qHfMc8iEvEko
-         RIEwaGxTFo0IPbdDIbHq3Q0tHsf3/K2nTpxzi3Jb0e8ZKKqgo2ELv6QDRFrPy39QK3iP
-         soDw==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=KQp+tVAT7yoHv1i3Tp7uxi2aFHGignAXhkkOgNOp03I=;
+        b=YLEYb0aa5Bfkj8tiM0iQLTrZ0qTlwbQRVOshuWRTV58WnlxK1T+ZK5KBhoKtAnbXf9
+         eUbfO0l7Pi1K2AE4VgDh/Z7zXT98+jAt/CEeqGD1wXj+aRJOIzUTfYob3Y2Yyvt7vWbG
+         Hd50uIlT3c10Zt7cgvjez0MPTttHYekChlsoTKnUB4T8blvb0POcN6lKXCfG7eit4I3A
+         6icI5El0EftMXETpxSYAzAoHfxPaDV91cAc9MdCCyugyFwc4RPJxzgXc/2oPfq1FBaie
+         xYeGH5Pi3uTEv/11Ik56/YiaHeYNd9CSNV/HsN42109cmRkDDt/nZt1WW6gb8FxcJqIC
+         2xYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=Nt0fDmT0/sSLx8SXvP12vsQxR8HIersO+xhC1jo5rA0=;
-        b=uNnpn+MLBUNJFIEQIR6NykiOSBvH+A2praGjbqeeCFUYIC1hoPsSseqGni5Qoj9LBF
-         4U71jYQ5QpsftPVttqwW2Dh5Qw5DTfJ9TzKHS1j6yK1cJ5ndb1Ak7fOWN8+4681X6FS+
-         rPPTsidS4dvV6pYJbBmCufe0q9kZlTXfKoTCJ00tKYiqrThpplIQV3Pag0eLXrI0Sfd7
-         xeaCxLnqdonXPOrdcSgafgfePJGFwMoDLaRs3Knod3Mdr9onRSDqDlTOIItCw39eCrTL
-         UDhCqh1UlUfbXbX0YT7+kkvggPkFkxlB9y+DnTds6fcopg6H0cCRG52huJKYEakiMKKf
-         c+cA==
-X-Gm-Message-State: AOAM531kgboUEC4EgIbl5/r5Jq+WoZkY0pV/SGhTor2Ccn1TwFi9IHVX
-	zgEXZhxFugQpNyzSbfyIPwk=
-X-Received: by 2002:a63:fe12:: with SMTP id p18mr30877410pgh.425.1618295280741;
-        Mon, 12 Apr 2021 23:28:00 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id f65sm13461382pgc.19.2021.04.12.23.27.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 23:28:00 -0700 (PDT)
-Date: Tue, 13 Apr 2021 11:57:52 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: narmstrong@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
-	khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	linux-amlogic@lists.infradead.org, mitali_s@me.iitr.ac.in
-Subject: Subject: [PATCH v2] staging: media: meson: vdec: declare u32 as
- static const appropriately
-Message-ID: <YHU56OM+C2zY34VP@kali>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=KQp+tVAT7yoHv1i3Tp7uxi2aFHGignAXhkkOgNOp03I=;
+        b=b/HrqwrrrCdFWVofU1RWWtFMbevcSeFb4sSuRHnMy7fXbWiegsx9H6D0dZXFTYF4SJ
+         zIXaIonAm90IEiWT9dyaXtuIC975Y+iWqFNaSBNQxBOVEfz/lU89I+R+uzRtw6Vgx6/7
+         P8TYoeSTE9u/RLRf1apNi7dgncIwPS3kbhJ/NJIzl54qUhaubRDPQ/x36eZ1ztLq/pSU
+         ue5DPCcekz44gCqlOHBxos9v9Uk3fyF4P3SEFp2xaRfGAIa913avLf/xVimpPECYAtZY
+         Qoxukq+PQR78ur4J29bAu07BoFyLgWXis9lKFkrJIsaICglK3Ljnui0f5bhYLWCkdAYO
+         Bq+g==
+X-Gm-Message-State: AD7BkJKKMpbsML3d1ibnZtVvp7N7R58J6IchOpbEBCxdHipnBsc0X/USM6iGD5rHTzGLhA==
+X-Received: by 10.98.64.4 with SMTP id n4mr17453531pfa.58.1456691528333;
+        Sun, 28 Feb 2016 12:32:08 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r62sm32881748pfr.26.2016.02.28.12.32.07
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 12:32:07 -0800 (PST)
+Date: Mon, 29 Feb 2016 01:59:20 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 2/4] staging: rtl8188eu: core: Remove NULL test before
+ vfree
+Message-ID: <20160228202920.GA2616@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Declared 32 bit unsigned int as static constant inside a function
-appropriately.
+vfree frees the virtually continuous memory area starting at addr.
+If addr is NULL, no operation is performed. So NULL test is not needed
+before vfree.
 
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+This was done using Coccinelle:
+
+@@
+expression x;
+@@
+-if (x != NULL)
+    vfree(x);
+
+@@
+expression x;
+@@
+
+-if (x != NULL) {
+vfree(x);
+x = NULL;
+-}
+
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
+ drivers/staging/rtl8188eu/core/rtw_recv.c    | 3 +--
+ drivers/staging/rtl8188eu/core/rtw_sta_mgt.c | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-Changes from v1:- Rectified the mistake by declaring u32 as static const
-properly.
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index 40b7a30..e5a6427 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -116,8 +116,7 @@ void _rtw_free_recv_priv(struct recv_priv *precvpriv)
 
- drivers/staging/media/meson/vdec/codec_h264.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ 	rtw_free_uc_swdec_pending_queue(padapter);
 
-diff --git a/drivers/staging/media/meson/vdec/codec_h264.c b/drivers/staging/media/meson/vdec/codec_h264.c
-index ea86e9e1c447..80141b89a9f6 100644
---- a/drivers/staging/media/meson/vdec/codec_h264.c
-+++ b/drivers/staging/media/meson/vdec/codec_h264.c
-@@ -287,8 +287,8 @@ static void codec_h264_resume(struct amvdec_session *sess)
- 	struct amvdec_core *core = sess->core;
- 	struct codec_h264 *h264 = sess->priv;
- 	u32 mb_width, mb_height, mb_total;
--	static const u32[] canvas3 = { ANCO_CANVAS_ADDR, 0 };
--	static const u32[] canvas4 = { 24, 0 };
-+	static const u32 canvas3[] = { ANCO_CANVAS_ADDR, 0 };
-+	static const u32 canvas4[] = { 24, 0 };
- 
- 	amvdec_set_canvases(sess, canvas3, canvas4);
- 
--- 
-2.30.2
+-	if (precvpriv->pallocated_frame_buf)
+-		vfree(precvpriv->pallocated_frame_buf);
++	vfree(precvpriv->pallocated_frame_buf);
+
+ 	rtw_hal_free_recv_priv(padapter);
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c b/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c
+index ce655b6..c1abd5e 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c
++++ b/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c
+@@ -172,8 +172,7 @@ u32	_rtw_free_sta_priv(struct	sta_priv *pstapriv)
+ 		spin_unlock_bh(&pstapriv->sta_hash_lock);
+ 		/*===============================*/
+
+-		if (pstapriv->pallocated_stainfo_buf)
+-			vfree(pstapriv->pallocated_stainfo_buf);
++		vfree(pstapriv->pallocated_stainfo_buf);
+ 	}
+
+ 	return _SUCCESS;
+--
+2.1.4
 
 
