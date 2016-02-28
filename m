@@ -1,105 +1,147 @@
-X-GM-THRID: 6675324763723792384
-X-Received: by 2002:a65:6652:: with SMTP id z18mr1158974pgv.75.1554220161930;
-        Tue, 02 Apr 2019 08:49:21 -0700 (PDT)
+X-GM-THRID: 6256394426333003776
+X-Received: by 10.66.232.41 with SMTP id tl9mr10072900pac.35.1456689492630;
+        Sun, 28 Feb 2016 11:58:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a65:534c:: with SMTP id w12ls5309758pgr.8.gmail; Tue, 02 Apr
- 2019 08:49:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzFm9oJewrJHAQ6t2CUhnbmoEg/o0TthE2/YBh1asTUxWCULHrnnSFWddXaK/FCczfY8OEw
-X-Received: by 2002:a62:1a44:: with SMTP id a65mr935365pfa.103.1554220161011;
-        Tue, 02 Apr 2019 08:49:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554220161; cv=none;
-        d=google.com; s=arc-20160816;
-        b=daUatJ6mLKz5pPKsJvBcwns6DKHM/+E5CAdfNztczAnR5ySY9S7iBL3WHoOZnIODpo
-         Bbg82YO/cMtjmaXA46aUeAcWisSePYJVpdVtnd3JIe8eAIC8mDLtUfFuGjZsvOyv5ah4
-         HsU01dyQ0ZF3uCsyckUusL3c+oskivqYwawcFcTutVcu9mk0KfMdlAuALP8lFb5zkINL
-         b1lfGRmix1VZ8aESRFuqsHO1e6h7MUG5ynnCX2VG7eYZ1dlRUaQkGlQcg7uNfx4EZl3w
-         zzBZM/mYVw3d+O5jlGgRfIysoYkeq6HR1KJSsd9gNNgrF2WIIwZa/vj0NSczdJukSBIY
-         clhA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Z6k81cvbA/NMlh8Nb/R6nj/8E5bBOUVUbesTaMgDYnI=;
-        b=wDAd92XA4rX5YtmqK2t+x1Fl97JqK6M9gdzVCq28WJN2Pwm6/EEZaD+N2CdogTvvzf
-         poQ1RNIWIaPU+eZJhMNL+4fInZKMekVkrF7rrUkMMj/5jVNJ1JvsjTwlrfR4OkCFpBbM
-         rZraprRx98T1xaJ8VMFzb8OKd3qvvg9LJOTEtpt6LUswx/t6DKtTwHi58Nv5bzyIno0n
-         70qYTRVEi57i3kkyOBc4215WtXlir96W3uBhy/O6IrC3yVzyZjF+DumsdJRlgXeew0Uf
-         KJE1JWliTSyedRMOEjCBtzn4jFt+OT7zrwHKdS3BS/h8YuGlc4UtTg6c6wJBoc8LRPqA
-         Fcpg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=j+89akEz;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id 141si835362pgb.1.2019.04.02.08.49.21
+Received: by 10.140.96.112 with SMTP id j103ls2259561qge.57.gmail; Sun, 28 Feb
+ 2016 11:58:11 -0800 (PST)
+X-Received: by 10.140.252.131 with SMTP id x125mr2110264qhc.12.1456689491915;
+        Sun, 28 Feb 2016 11:58:11 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id 12si3206215pfb.1.2016.02.28.11.58.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 08:49:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Sun, 28 Feb 2016 11:58:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=j+89akEz;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id 10so6589447pfo.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 08:49:20 -0700 (PDT)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x242.google.com with SMTP id a7so6117799pax.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 11:58:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=Z6k81cvbA/NMlh8Nb/R6nj/8E5bBOUVUbesTaMgDYnI=;
-        b=j+89akEzX3CYLzOuuo/jT/iBJBTf7zl8is3q5HtJFOIJ90fiCNs3d4EAdZtvovV3oy
-         EbVfXzq3FPbhXgAvCzOOgvXaNOXla0UPF/UUjZza6lqtg7MuHgFpKjpEy91aQs9UMbNQ
-         NtbnoYmDyFf2EH6ZPXoKTCier7B9hk6nxtvo6SiGH+77t/qaID8U2Q5pd+0iT0tb1UMZ
-         p2+u+9C7Bqisrosg5JObaQY04xy3IJ8XQa0Nob2zOgb65i0ILqcZ9tDAkDiG886U/j9S
-         q9azGoh4AHF2YcM+pZ+WqKGDxsuP9Cx/sxONALE+eH8ZNBhSJSYN+Yc/PPrvXiC/SS5L
-         JB2A==
+        bh=azK+KG4Sh+Dl8/f21e78N/FkpnN6BuBaU9tMPgDMI2M=;
+        b=i1KGagsnbZ0jXs34YaA4wlRvnFxXv+MDQLZ0udCKbzPFnv6mXVAsohvF4EiD/lA2RQ
+         yJBRabBDaGL38tZ9hZ/ZtwMV4mXKrQcVMA6ldq8imz6AkWdPtPRdh3N6XSCJtRvoihxo
+         n/NMf49dQQxUgDW6JSkDc8eMwEhVMbDBsd5nFAG0Gk7KTZtXqLBUuH32CeSmZWtSb1Rk
+         bHHor1q5UgazRtydd+i+6VdyDlEKKxpnYXgGv/6DmysQ50bd5i2nvOxMcaiiHmlLXWIK
+         c/KZqiixTtwPhjmj6XrC1M5mMoBJw7EflJP08dqNhRAGfZ1hbN6kFcP51QyaFsbi8XED
+         SqJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
+        d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Z6k81cvbA/NMlh8Nb/R6nj/8E5bBOUVUbesTaMgDYnI=;
-        b=aEHRbmY81eMOUvXut6QZSEeexdW82EN7gZF4wLQSrmdEtJ9ICq8FcF5oNvCfkeIgG3
-         WEt6YrcWU+yOLi9WAgFj4jCebbcEVnyEefoAepJAviC0iX4TFlSwaP2ZUtz/kIdTazUL
-         byR8ZiM6pvrcSykXm/XnGiYWreiVULe9oiDVITSTo+pxr4gyoeqoegqVG8kIfduWB+87
-         2ph7SY8nf8s5IOBboMVl8HPOXc/olI3qMwdB9Ac5TDPCVNBjcDfT39vIcja9pNAHJSRi
-         SvMSPeNlmm9aang6d+wlI2QxNFxyl/MyphhxfT8ZQjjuZnUAtvL8iknfuWegXXnnwCC9
-         TBcQ==
-X-Gm-Message-State: APjAAAWM0a3tv9ycm1sSsVbZN33UOC8DbL7es84ZmmazrytlBS0TeEgn
-	Caw3ld0rpviXSIekfjuBpkcXKHaP
-X-Received: by 2002:a62:6504:: with SMTP id z4mr34840809pfb.202.1554220160342;
-        Tue, 02 Apr 2019 08:49:20 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id r3sm39586500pgb.82.2019.04.02.08.49.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 08:49:19 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+        bh=azK+KG4Sh+Dl8/f21e78N/FkpnN6BuBaU9tMPgDMI2M=;
+        b=hjUynKDy9MMeO21B9zRd0iXwtKxyNCP0sBuNEHst7s9u+LmCuAjvNBAJ/kS9g9nmxT
+         E7re6KVpThzJ7dlNc9fI2EaUsWXqNiIcNQuKg8MxQP7/VNBmSQ4bPrJTKZYLTYStomsk
+         GE7K1Y8N44kus1WfMhxTaXQRrRcA5x2yDUUo0Ff1ysYWlctEVpe0KoV4XVeoSA0G6DWD
+         Yzrx+XzJL2AUOm0B9fgFN5tgEV8NT1XAbilMjaPT72c5sXx+b7BIa4umr089bHkt+gPx
+         goenLuCjBHhXhu0Aou2OI3gl7h7izxWXEuOAmeQ+pqIHagwoqVS7R3zB7+ev3QmazZr/
+         syEA==
+X-Gm-Message-State: AD7BkJIG8Ztxve7fgU6JrIAPn2+YB/reMjAED1UAvnf1s2HYcAIrUjRwWk/UZnWTmJ2WVA==
+X-Received: by 10.66.55.6 with SMTP id n6mr17383670pap.35.1456689491566;
+        Sun, 28 Feb 2016 11:58:11 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([106.215.134.212])
+        by smtp.gmail.com with ESMTPSA id ko9sm32879998pab.37.2016.02.28.11.58.07
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 11:58:11 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Mon, 29 Feb 2016 01:28:02 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: iio: adc: ad7816.c: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 21:19:04 +0530
-Message-Id: <1554220144-13374-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH v2] Staging: rtl8723au: Remove print statements and debug messages
+Date: Mon, 29 Feb 2016 01:27:59 +0530
+Message-Id: <1456689479-10273-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Challenge suggested by coccinelle.
-Prefer using BIT and replace bit shifting with the BIT(x) macro.
+The  memory allocation functions generates a call stack containing
+all the context information on failure, so print statements and debug
+messages can be removed on failure of these functions. Also remove
+unwanted {} around if block after removal of these messages.
+Done using coccinelle:
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+@@
+expression e,e1,e2;
+identifier x;
+@@
+e=\(kmalloc\|kmalloc_array\|kzalloc\|
+   devm_kzalloc\)(...);
+...when!=e=e1
+if(!e)
+-{
+- \(printk\|DBG_8723A\|pr_err\|CERROR\|DBG_88E\)(...);
+(
+goto x;
+|
+return e2;
+|
+return;
+)
+-}
+
+@@
+expression e,e1;
+@@
+e=\(kmalloc\|kmalloc_array\|kzalloc\|
+   devm_kzalloc\)(...);
+...when!=e=e1
+if(!e){
+...
+- \(DBG_8723A\|printk\|pr_err\|CERROR\|DBG_88E\)(...);
+...
+}
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/iio/adc/ad7816.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+* Improve the semantic patch by including ... before the print statement.
 
-diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
-index ee50e72..73952b8 100644
---- a/drivers/staging/iio/adc/ad7816.c
-+++ b/drivers/staging/iio/adc/ad7816.c
-@@ -231,7 +231,7 @@ static ssize_t ad7816_show_value(struct device *dev,
- 		value = (s8)((data >> AD7816_TEMP_FLOAT_OFFSET) - 103);
- 		data &= AD7816_TEMP_FLOAT_MASK;
- 		if (value < 0)
--			data = (1 << AD7816_TEMP_FLOAT_OFFSET) - data;
-+			data = BIT(AD7816_TEMP_FLOAT_OFFSET) - data;
- 		return sprintf(buf, "%d.%.2d\n", value, data * 25);
+ drivers/staging/rtl8723au/hal/usb_ops_linux.c     | 6 +-----
+ drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 3 ---
+ 2 files changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/drivers/staging/rtl8723au/hal/usb_ops_linux.c b/drivers/staging/rtl8723au/hal/usb_ops_linux.c
+index 371e6b3..5c81ff4 100644
+--- a/drivers/staging/rtl8723au/hal/usb_ops_linux.c
++++ b/drivers/staging/rtl8723au/hal/usb_ops_linux.c
+@@ -256,12 +256,8 @@ static void usb_read_interrupt_complete(struct urb *purb)
+ 				c2w = kmalloc(sizeof(struct evt_work),
+ 						GFP_ATOMIC);
+ 
+-				if (!c2w) {
+-					printk(KERN_WARNING "%s: unable to "
+-					       "allocate work buffer\n",
+-					       __func__);
++				if (!c2w)
+ 					goto urb_submit;
+-				}
+ 
+ 				c2w->adapter = padapter;
+ 				INIT_WORK(&c2w->work, rtw_evt_work);
+diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
+index cf0daa1..722d5f5 100644
+--- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
+@@ -2608,8 +2608,6 @@ static int rtw_cfg80211_add_monitor_if(struct rtw_adapter *padapter, char *name,
+ 	/*  wdev */
+ 	mon_wdev = kzalloc(sizeof(struct wireless_dev), GFP_KERNEL);
+ 	if (!mon_wdev) {
+-		DBG_8723A("%s(%s): allocate mon_wdev fail\n", __func__,
+-			  padapter->pnetdev->name);
+ 		ret = -ENOMEM;
+ 		goto out;
  	}
- 	return sprintf(buf, "%u\n", data);
+@@ -3260,7 +3258,6 @@ int rtw_wdev_alloc(struct rtw_adapter *padapter, struct device *dev)
+ 	/*  wdev */
+ 	wdev = kzalloc(sizeof(struct wireless_dev), GFP_KERNEL);
+ 	if (!wdev) {
+-		DBG_8723A("Couldn't allocate wireless device\n");
+ 		ret = -ENOMEM;
+ 		goto free_wiphy;
+ 	}
 -- 
-2.7.4
+1.9.1
 
 
