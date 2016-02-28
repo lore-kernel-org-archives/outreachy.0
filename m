@@ -1,82 +1,134 @@
-X-GM-THRID: 6253356994381479936
-X-Received: by 10.98.89.132 with SMTP id k4mr17379189pfj.4.1455973133202;
-        Sat, 20 Feb 2016 04:58:53 -0800 (PST)
+X-GM-THRID: 6256411228025913344
+X-Received: by 10.31.154.65 with SMTP id c62mr9843619vke.8.1456684253512;
+        Sun, 28 Feb 2016 10:30:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.8.65 with SMTP id p1ls163651iga.4.canary; Sat, 20 Feb 2016
- 04:58:52 -0800 (PST)
-X-Received: by 10.107.15.143 with SMTP id 15mr19345458iop.15.1455973132838;
-        Sat, 20 Feb 2016 04:58:52 -0800 (PST)
+Received: by 10.107.13.212 with SMTP id 203ls1053022ion.98.gmail; Sun, 28 Feb
+ 2016 10:30:52 -0800 (PST)
+X-Received: by 10.98.93.217 with SMTP id n86mr9835850pfj.11.1456684252494;
+        Sun, 28 Feb 2016 10:30:52 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id yd9si2174841pab.1.2016.02.20.04.58.52
+        by gmr-mx.google.com with ESMTPS id yd9si3122665pab.1.2016.02.28.10.30.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 04:58:52 -0800 (PST)
+        Sun, 28 Feb 2016 10:30:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id yy13so65389516pab.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 04:58:52 -0800 (PST)
+Received: by mail-pa0-x235.google.com with SMTP id fl4so78826548pad.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 10:30:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=FNshAJgACmxd5OstfCvwTIdBeVjAy8jNUozjnkKWNFY=;
-        b=PDpAEpK9geNFfxbS2RQ5GwMv5Y6frxdnS1pfcCKjCPySn8jndWtkwtQYjiBxVXk3Qf
-         wgTQ+uGfXVK1fsDvOzUvNRvesNTtwPuqJ91EC/NYNAP1V41Saxy547DX+2LFbS98gQgA
-         6e7MNY4gMZQ4mF86OeNLwf0AHHxLyjJxtnTN3MqAE3OoV7+0bFKC6yt0OZ44h2ffrxZC
-         cWTClAGwP3LqDR9Sa7eY/+U0liAmA9/Dv6Ps9xLCGK+T7MiIIOAklB4eMnpB/oA64h9f
-         4MKuOSwQgqBst6Adt1s6Zxlw4A5R90sOHZObCvpYO4vuKCy2iYX+nL71KF41zKalQRgz
-         aVwg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=MBxhjVgcgKukIqThM6VpO4bryxrczrasS5v+DKlSlMQ=;
+        b=s9oUMZ7GObYxpJzo3NgzFYtepU4D1t/WMLm6OXtZYm1wDW9/vtJFS8h32pLcyaNUoS
+         0134VaJi6HWd5RUm+UqYBpmukuOqA+Yop4bZSaotjAsp/5oBHQXkjyCyp2SQFmEIFPbb
+         US370kbfVEr1E32pXOkU/iOM9/wgl1c2FGIiYtG+DGZnY3F/kWsxtBVAK0N0kGSVjPmK
+         qORdMYy3pwaV1HcftUF7jf2+4dLKPP9rI9Y8a7pj5enIgaYXcgrOkjVo0qXTFvOeCiPn
+         F6rYH7VxCp7SadS5/dGmHdexG9oHP+EVCrDMfvtd/5joA+L73Jt6DzAixWR0fhGdLjWR
+         QZRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=FNshAJgACmxd5OstfCvwTIdBeVjAy8jNUozjnkKWNFY=;
-        b=HH9PmJJsdpGrV3fuovs/yZPlyaaJlNGIavdwHThycSTFUgI+s8tc8ngGzvYGR7TrhW
-         Y25PmFbS2/OQP6sXxI587cpE7+pXY5KbduxFvGot62Z9DKnDjes86DoW2dC84xqLwhOv
-         zW6CfKAv4nIaH3SucDPMZCl0sXbMQrXHc/eMIdigtaokjE2YZeCkqknwEWHWRF4ANKX0
-         gEjWnyqz9J1mysaHdx5bwaU9jVIJ9E2X9YDzUdZWIpHrf+2M0Af/EHlvGKJLUFC/G6/j
-         ZCUGABL3ilXVDxEQbGJc7XZBOm6G1Qsjj/tpqkyr6uPc5PUnO46Is6nG8ZI7F7rsO00J
-         LHag==
-X-Gm-Message-State: AG10YOR2DVSyCWUA8IgP2wk7EgCk6j/+zHA/3S18vKILT2uwXcYL9YM9EZkTH5o+mfxzEg==
-X-Received: by 10.66.145.194 with SMTP id sw2mr24990945pab.69.1455973132682;
-        Sat, 20 Feb 2016 04:58:52 -0800 (PST)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=MBxhjVgcgKukIqThM6VpO4bryxrczrasS5v+DKlSlMQ=;
+        b=GbID4+WME77MC83QD0ZTIKf0kZrgIIx3zMf1AiqLJeovOZ7z6uhmpGcRJjoAZzvH0K
+         skfCX+2H4tqXbQB+wH2HepcxjaxLZHhjCJ+T82VERA5MgdmjN6cG2PSEHF5euzBKUm1G
+         ODJLWJRaWP+0hWxLIbqfgBV7ymnKFFVBPNJUdMXEVyUiRRTdG4htH+7oi/l+2m83tTt7
+         dxnUnFdcfws1qNuM62x+xpsyUals+husXnBR5QlbxGewNorAmvfq9yHNEIziLOolmRKA
+         gB0Ma3n0tWPa8m/dTKZR9HfZnln8KPKNwkpBIHvamZ/hqFnBSG1yMxSzFgGv+azPpWVf
+         w7wQ==
+X-Gm-Message-State: AD7BkJJ/9z3t/u+7rK+6+HBpnbxM/rDEoVImXP1WMmbeW3Yx57cxmZMbnoL6b4EnkAwDCA==
+X-Received: by 10.66.193.202 with SMTP id hq10mr16654389pac.6.1456684252301;
+        Sun, 28 Feb 2016 10:30:52 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x13sm24507233pfa.72.2016.02.20.04.58.51
+        by smtp.gmail.com with ESMTPSA id q2sm8985664pfq.88.2016.02.28.10.30.51
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 04:58:52 -0800 (PST)
-Date: Sat, 20 Feb 2016 18:29:24 +0530
+        Sun, 28 Feb 2016 10:30:51 -0800 (PST)
+Date: Sun, 28 Feb 2016 23:58:05 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: tj@kernel.org
-Subject: [PATCH 0/2] Use system_wq
-Message-ID: <20160220125924.GA3389@Karyakshetra>
+Subject: [PATCH] staging: fsl-mc: bus: Eliminate double function call
+Message-ID: <20160228182805.GA30160@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patchset removes create_workqueue() usages in rtl8192u.
-With conccurency managed workqueues, use of dedicated workqueues can
-be replaced with system_wq.
+A call to irq_find_matching_host was already made and the result
+has been stored in mc_msi_domain. mc_msi_domain is again reassigned
+using the same function call which is redundant.
 
-Bhaktipriya Shridhar (2):
-  staging: rtl8192u: Use system_wq
-  staging: rtl8192u: Use system_wq
+irq_find_matching_host returns/locates a domain for a given fwnode.
+The domain is identified using device node and bus_token(if several
+domains have same device node but different purposes they can be
+distinguished using bus-specific token).
+http://www.bricktou.com/include/linux/irqdomain_irq_find_matching_host_en.html
 
- drivers/staging/rtl8192u/ieee80211/ieee80211.h      |  1 -
- .../staging/rtl8192u/ieee80211/ieee80211_softmac.c  | 21 +++++++++++----------
- .../rtl8192u/ieee80211/ieee80211_softmac_wx.c       |  2 +-
- drivers/staging/rtl8192u/r8192U.h                   |  1 -
- drivers/staging/rtl8192u/r8192U_core.c              | 17 ++++++++---------
- drivers/staging/rtl8192u/r8192U_dm.c                |  6 +++---
- drivers/staging/rtl8192u/r819xU_phy.c               |  2 +-
- 7 files changed, 24 insertions(+), 26 deletions(-)
+Also, of_property_read_bool finds and reads a boolean from a property
+device node from which the property value is to be read. It doesn't
+alter the device node.
+http://lists.infradead.org/pipermail/linux-arm-kernel/2012-February/083698.html
 
+Since, both  the function calls have the same device node and bus_token,
+the return values shall be the same. Hence, the second call has been
+removed.
+
+This was done using Coccinelle:
+
+@r@
+idexpression *x;
+identifier f;
+position p1,p2;
+@@
+
+x@p1 = f(...)
+... when != x
+(
+x@p2 = f(...)
+)
+
+@script:python@
+p1 << r.p1;
+p2 << r.p2;
+@@
+
+if (p1[0].line == p2[0].line):
+  cocci.include_match(False)
+
+@@
+idexpression *x;
+identifier f;
+position r.p1,r.p2;
+@@
+
+*x@p1 = f(...)
+...
+*x@p2 = f(...)
+
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ drivers/staging/fsl-mc/bus/irq-gic-v3-its-fsl-mc-msi.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/staging/fsl-mc/bus/irq-gic-v3-its-fsl-mc-msi.c b/drivers/staging/fsl-mc/bus/irq-gic-v3-its-fsl-mc-msi.c
+index 4e8e822..720e2b0 100644
+--- a/drivers/staging/fsl-mc/bus/irq-gic-v3-its-fsl-mc-msi.c
++++ b/drivers/staging/fsl-mc/bus/irq-gic-v3-its-fsl-mc-msi.c
+@@ -118,8 +118,6 @@ void its_fsl_mc_msi_cleanup(void)
+ 		if (!of_property_read_bool(np, "msi-controller"))
+ 			continue;
+
+-		mc_msi_domain = irq_find_matching_host(np,
+-						       DOMAIN_BUS_FSL_MC_MSI);
+ 		if (mc_msi_domain &&
+ 		    mc_msi_domain->host_data == &its_fsl_mc_msi_domain_info)
+ 			irq_domain_remove(mc_msi_domain);
 --
 2.1.4
 
