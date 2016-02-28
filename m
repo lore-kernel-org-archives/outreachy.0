@@ -1,91 +1,111 @@
-X-GM-THRID: 9527712808960
-X-Received: by 10.50.109.202 with SMTP id hu10mr6163997igb.4.1426994999181;
-        Sat, 21 Mar 2015 20:29:59 -0700 (PDT)
+X-GM-THRID: 6256374617143771136
+X-Received: by 10.98.67.142 with SMTP id l14mr6561468pfi.13.1456675729817;
+        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.233 with SMTP id h96ls520331qgd.89.gmail; Sat, 21 Mar
- 2015 20:29:59 -0700 (PDT)
-X-Received: by 10.52.164.66 with SMTP id yo2mr30223546vdb.2.1426994999005;
-        Sat, 21 Mar 2015 20:29:59 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x22e.google.com (mail-pd0-x22e.google.com. [2607:f8b0:400e:c02::22e])
-        by gmr-mx.google.com with ESMTPS id ri9si1226277pdb.1.2015.03.21.20.29.58
+Received: by 10.107.132.15 with SMTP id g15ls1104326iod.50.gmail; Sun, 28 Feb
+ 2016 08:08:49 -0800 (PST)
+X-Received: by 10.66.124.200 with SMTP id mk8mr9284513pab.27.1456675729403;
+        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x229.google.com (mail-io0-x229.google.com. [2607:f8b0:4001:c06::229])
+        by gmr-mx.google.com with ESMTPS id p10si867347igg.1.2016.02.28.08.08.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 20:29:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) client-ip=2607:f8b0:400e:c02::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::229 as permitted sender) client-ip=2607:f8b0:4001:c06::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::22e as permitted sender) smtp.mail=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::229 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22e.google.com with SMTP id ni2so149587207pdb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 20:29:58 -0700 (PDT)
+Received: by mail-io0-x229.google.com with SMTP id 9so160771277iom.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 08:08:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=7T56vLJgoELIEqheIUkfq3oOcMRCYbxdgpSK0WAhydY=;
+        b=fCuFH5FxDym0uE0qd/LeCZeunmAXIfVbAdz9SqN8a71BSLdsejgBzv1mEncFXoDA1Q
+         Rz9iH5FBnL3tf4mb6Nhr6o56dTaO0oXQeD3YO/38McMaMQtuTW4rAkrr8rzOIUwZ8kNP
+         dnpg0CU4E94WKcLxAaFD5mfOzQ7DdNUEPB7KGJsmwr60lr9wSZfz66R0IGQ55zhiI19T
+         3I1acSXeJLMGLCzMxcgLUN11fZ1qUUmjLvYr3CTzji/bi7UvcP+vCHA6dMoikG6jJ783
+         ORi9PrGkdKw+aooCIyVSxfMNDkMtz/Z36vgDjOUv7MeEVG6owF8GjvzdVnfa6e9vYVCm
+         X5pA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=iqQCEZzsAfGo/6KeBH8qlsHk/aQRmv72ofdKc+Hw/3w=;
-        b=XjOAjyrIlxJaxyoaQKQIOTcTpNlembVq8t+qXyKQzOkuPELc7pARq0TllxlUC/8+Gw
-         FRGBQb9tosWDyECGA41F8TlN7gMszNDrAxm4wnw7uD8XYt+enB1bjLzCvZCn/LW+mcBM
-         i4xf96hyz64kxFeDXqqcvsunuiz9o6jRuhgDQ10BoCxx06mABwWtfsEtsV8KWFc2jDEo
-         l1iebf1JqvrHOrD6b0cK+vttO/doYMrVWtWADGh0D3kH6ydSy3pW1HRsbsE9ez+GYq2t
-         tbkk/d9HX3wDxwH7ichV7VDKN36LMIpAcJrzrenrB6U0ZJ24KfbUQwaU6AkJXcKOZJ4B
-         v7fw==
-X-Received: by 10.68.193.66 with SMTP id hm2mr9191695pbc.14.1426994998858;
-        Sat, 21 Mar 2015 20:29:58 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.249.51])
-        by mx.google.com with ESMTPSA id y14sm12918327pdl.3.2015.03.21.20.29.57
+        bh=7T56vLJgoELIEqheIUkfq3oOcMRCYbxdgpSK0WAhydY=;
+        b=j3KEP8MfUfTAR2BbzOHYuQ5bM1fnZXddH/59nGHgZfuqrD7szA2j3MYM86vr/nWLgo
+         njIK7kzHLD1J5uSu10gqZFmNxYKOfzEbfRI0ArMuGwMgv/O3zwA7dupo9Dx+EVJNatHT
+         ROcQUjw8AJEnocZkN2T2PuMPTRFR7lrr8JubzeipUSzuArPzbseF2cYdeQ75m+/7/jfX
+         qKeCYeSp8AiuktERbHAiR7dYWQ5LuBOKJ9woBkzbOn2sICDOjw814nylWPnzqugCKQ8M
+         i/81Oz4LXhNBD1HZJf427y7TlWikCMQcKxJDXq+g7iQHDYqbjnZme96nacihRIX2zR0Z
+         6v6g==
+X-Gm-Message-State: AG10YOTZ/2ivjuSRJrTuh05NZOeyfl5MtwObV4eawfdxbZ9mpaBKf37ThtajT1d61aGvjw==
+X-Received: by 10.107.152.142 with SMTP id a136mr16525482ioe.84.1456675729243;
+        Sun, 28 Feb 2016 08:08:49 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id 90sm9241997iod.12.2016.02.28.08.08.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 20:29:58 -0700 (PDT)
-Date: Sun, 22 Mar 2015 08:59:54 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 08:08:48 -0800 (PST)
+Date: Sun, 28 Feb 2016 16:07:59 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 1/5] Staging: sm750fb: Remove spaces before
- lines
-Message-ID: <20150322032954.GA29921@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: lustre: lustre: osc: Use list_for_each_entry_safe()
+Message-ID: <20160228210759.GA7689@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fixes checkpatch.pl warning by using tabs instead of spaces.
-WARNING: please, no spaces at the start of a line.
+Use list_for_each_entry_safe() rather than a combination of list_for_each()
+and list_entry(). Also remove the variable l which becomes useless after
+the transformation. 
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Semantic patch used:
+
+@a@
+expression pos, n, head;
+expression mem;
+type t;
+identifier var;
+iterator name list_for_each_entry_safe, list_for_each_safe;
+@@
+
+- list_for_each_safe(pos, n, head)
++ list_for_each_entry_safe(var, n, head, mem)
+  {
+   ... when != var
+-  var = \(list_entry \| container_of\)(pos, t, mem);
+   ... when != pos
+  }
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/lustre/lustre/osc/osc_cache.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 9105c0e..b1fbccf 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -137,17 +137,17 @@ void setChipClock(unsigned int frequency)
- 
- void setMemoryClock(unsigned int frequency)
+diff --git a/drivers/staging/lustre/lustre/osc/osc_cache.c b/drivers/staging/lustre/lustre/osc/osc_cache.c
+index c6623c1..6c3fc6f 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_cache.c
++++ b/drivers/staging/lustre/lustre/osc/osc_cache.c
+@@ -1624,11 +1624,10 @@ out:
+ /* caller must hold loi_list_lock */
+ void osc_wake_cache_waiters(struct client_obd *cli)
  {
--    unsigned int ulReg, divisor;
-+	unsigned int ulReg, divisor;
-  #if 1
- 	/* Cheok_0509: For SM750LE, the memory clock is fixed. Nothing to set. */
- 	if (getChipType() == SM750LE)
- 		return;
- #endif
--    if (frequency != 0) {
--        /* Set the frequency to the maximum frequency that the DDR Memory can take
--           which is 336MHz. */
--        if (frequency > MHz(336))
--            frequency = MHz(336);
-+	if (frequency != 0) {
-+		/* Set the frequency to the maximum frequency that the DDR
-+		Memory can take which is 336MHz. */
-+	if (frequency > MHz(336))
-+		frequency = MHz(336);
+-	struct list_head *l, *tmp;
++	struct list_head *tmp;
+ 	struct osc_cache_waiter *ocw;
  
-         /* Calculate the divisor */
-         divisor = (unsigned int) roundedDiv(getChipClock(), frequency);
+-	list_for_each_safe(l, tmp, &cli->cl_cache_waiters) {
+-		ocw = list_entry(l, struct osc_cache_waiter, ocw_entry);
++	list_for_each_entry_safe(ocw, tmp, &cli->cl_cache_waiters, ocw_entry) {
+ 		list_del_init(&ocw->ocw_entry);
+ 
+ 		ocw->ocw_rc = -EDQUOT;
 -- 
-1.9.1
+2.5.0
 
 
