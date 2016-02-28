@@ -1,60 +1,60 @@
 X-GM-THRID: 6256430491232108544
-X-Received: by 10.13.230.148 with SMTP id p142mr9744216ywe.45.1456690972578;
-        Sun, 28 Feb 2016 12:22:52 -0800 (PST)
+X-Received: by 10.182.137.193 with SMTP id qk1mr9644805obb.50.1456688738925;
+        Sun, 28 Feb 2016 11:45:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.104.13 with SMTP id z13ls1951712qge.36.gmail; Sun, 28 Feb
- 2016 12:22:52 -0800 (PST)
-X-Received: by 10.13.213.208 with SMTP id x199mr10395175ywd.48.1456690972209;
-        Sun, 28 Feb 2016 12:22:52 -0800 (PST)
+Received: by 10.182.48.232 with SMTP id p8ls1006896obn.1.gmail; Sun, 28 Feb
+ 2016 11:45:38 -0800 (PST)
+X-Received: by 10.182.22.48 with SMTP id a16mr10320577obf.29.1456688738603;
+        Sun, 28 Feb 2016 11:45:38 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id ui7si3208510pab.0.2016.02.28.12.22.52
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id ui7si3191465pab.0.2016.02.28.11.45.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 12:22:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sun, 28 Feb 2016 11:45:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id fl4so7468138pad.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 12:22:52 -0800 (PST)
+Received: by mail-pa0-x241.google.com with SMTP id yy13so7432729pab.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 11:45:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
         bh=pT7HCD/IYzTQySxbiKYKWc8euSUR/l7oFUNDew/zeK8=;
-        b=09M3DCnp8h7ykmts5drOA+neubLy9uW+O0ulj1Mo6+lXPNE5nvzpj145Bn/2XKX2TJ
-         lZ8RIVSOetnCJVrcjqwQkDKza1HjLwliVLiFW2AxJAYsoMDfyka/D3TzHjn1Xck4M2Z8
-         TOWTVitvEg+rkk6ciW3gu4Pj42fP+U2I2bO/bfo9rbEPiTWL+x0+Zf3xsKUsEvwWZ34J
-         1oY9xE67LEPRlHRERI7sC4ed4V4TrNQak1tqfWHWjYW1U7Blci3B/Rje7yF7rGsU8t9B
-         or1dmRfnEtxFEKGOgdpKnvUi5AoBE534U6OvpOehioYFSfexdQbBt1f2UCbfRh+W1mAM
-         u25w==
+        b=HjZsHh92HZGCrlMf/Co8gFJNVR1vnaoLx2ZCDW20BBJ+i6yToRll0S+ZgCKlqtYX8S
+         QCe5dgI+HVmhNcOI7L4REmZwJbfpZ94fKFu7IfHd1QQSavcdvw67SPQqvjf+uQn/GPKg
+         4Lg121XPA/e8g5vJT1JZBvMxuNWw2MAFlJAuuLFzTXkU2xHEp9ZggVu+5TpSBl5T700z
+         TcMQ4rQDJ3o0wwgv6a6j+i2x6iADLiYrFWyVMp6o+jp9LT/9JKO/6hSt/0thlev3ZWRH
+         YQY1KVNgBy3FYpcgAmTC8ko+bx6yuyQtW8nc1CFyrfsuy9h3JYQrLzdi79KETR7YFgHw
+         h0sQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
         bh=pT7HCD/IYzTQySxbiKYKWc8euSUR/l7oFUNDew/zeK8=;
-        b=ZEQGMSuQK6986Nc9HfBW3KJyxxZ63OKq6Wb0PfmQdDctU9zz6mUdNPC2iOWX4NULHB
-         IdCvQS2qWBQQvTqWr5FiPzYzuCTD2t8vXE8GpOwfwnB+gDySTSeHiOS8wfKZc5L6DPvu
-         rx4aAnKKCjhbrugmlU2ysbzMywjcwWKcARNRmBx6wfENihIC5dHfOc1I7zd71O69ERHg
-         IV35N0e2Vj9UARdiuJofkF9FSKvstKJj7J3XVAPO+R8KovHFvgRYT7NDAnOdhLwctQqE
-         3+HzmVVCkfqdNM7vNCoP3bnwpThhoirqXHJwINqVroS+ECXeWD24/IIsVx5zWjFFXZzb
-         g6bQ==
-X-Gm-Message-State: AD7BkJKOo4VvoXV7AZSweJRe1HJYbJ59ACUAE3ozKWGVnCarBrPGFJcEjeZVY6cFuNRegg==
-X-Received: by 10.66.222.41 with SMTP id qj9mr9318331pac.136.1456690972043;
-        Sun, 28 Feb 2016 12:22:52 -0800 (PST)
+        b=kIMEPNHe+BHa2S84rBXuUv/a7911VTQcQNrRjFfdaIBdzaZvwK1FqHyCFjJIWT8mWV
+         QBvycml+/IYu8STWB+/Eh66E2vHN0FgbIZXa1EeombEORoSUeLgJ1zG88hVTJgMijTT6
+         lwmHNvqDI5LEhxsCeZGiGENvkyZit+TwU8j3Qaj9Uk6+u8xNOocY8ZReAvAfArXvvw3g
+         OfRxbKxaZCOaYYBRsXtw+wn4iuGdHFBCcBpsbbJXja/ojd1B8vTigu5JVNSnHisqkFvN
+         YTYct9r/iriOkW4RPwxNRCr/xDT3+Q5XiZHWaCLnHKGpzj8qkfkhgbIE9T5kspmqpUw/
+         xekA==
+X-Gm-Message-State: AD7BkJKy6ZZ+SSQwYh8vs29jVLfj/qAHiJvNvShKNLA9DaEwqmJFy701E9yHnEPWz0rPrA==
+X-Received: by 10.66.225.177 with SMTP id rl17mr17181968pac.46.1456688738434;
+        Sun, 28 Feb 2016 11:45:38 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id sm8sm32920832pac.43.2016.02.28.12.22.51
+        by smtp.gmail.com with ESMTPSA id 79sm32788780pfq.65.2016.02.28.11.45.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 12:22:51 -0800 (PST)
-Date: Mon, 29 Feb 2016 01:50:04 +0530
+        Sun, 28 Feb 2016 11:45:37 -0800 (PST)
+Date: Mon, 29 Feb 2016 01:12:50 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 4/4] staging: rtl8192e: Remove NULL test before vfree
-Message-ID: <20160228202004.GA2378@Karyakshetra>
+Subject: [PATCH 2/6] staging: rtl8192e: Remove NULL test before vfree
+Message-ID: <20160228194250.GA1723@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -77,8 +77,8 @@ expression x;
 @@
 
 -if (x != NULL) {
-   vfree(x);
-   x = NULL;
+    vfree(x);
+    x = NULL;
 -}
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
