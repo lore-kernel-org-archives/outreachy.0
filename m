@@ -1,116 +1,147 @@
-X-GM-THRID: 6391810462293426176
-X-Received: by 10.13.233.70 with SMTP id s67mr7050289ywe.24.1488209344295;
-        Mon, 27 Feb 2017 07:29:04 -0800 (PST)
+X-GM-THRID: 6256394552037343232
+X-Received: by 10.31.15.11 with SMTP id 11mr10027529vkp.3.1456688701074;
+        Sun, 28 Feb 2016 11:45:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.8.210 with SMTP id 76ls186602otf.33.gmail; Mon, 27 Feb
- 2017 07:29:03 -0800 (PST)
-X-Received: by 10.129.107.134 with SMTP id g128mr6778436ywc.139.1488209343843;
-        Mon, 27 Feb 2017 07:29:03 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id h130si3156650pfe.1.2017.02.27.07.29.03
+Received: by 10.140.85.113 with SMTP id m104ls367729qgd.24.gmail; Sun, 28 Feb
+ 2016 11:45:00 -0800 (PST)
+X-Received: by 10.13.215.140 with SMTP id z134mr10542547ywd.7.1456688700671;
+        Sun, 28 Feb 2016 11:45:00 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id ui7si3190998pab.0.2016.02.28.11.45.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 07:29:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 28 Feb 2016 11:45:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id x17so1381594pgi.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 07:29:03 -0800 (PST)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x243.google.com with SMTP id y7so7457036paa.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 11:45:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=r3WatTtxZoeiIVcdfefA14u/3TLIFYP+iAQ+xrlVQjE=;
-        b=oJDmLXI3wXmYT/L+hn9bbI5pUP759XTZZSeBep0IErKIzIHm8OO/WIrsu121S3YjqX
-         efEaenwfgFQM283cqz4ujIfnH4N9kvfkyxs76EKzFlQiBbU67yHZMhtREtOrSZG1jpug
-         gG6uBjHHnryO/L+oIn+KGPpvv2fHExIdTCuwilsRPFhE8dSodkKP7PpW1JZCZlAeKMwt
-         NfhIv9hP3L9z992lDvJeJ2aB7ApJdHC1NS4jhj09Ol4Uz0BahMR4dLDlZMPR1UjhPDC3
-         i+DOvVAK1COyniks2UVOBZEY9ga+dfYx+gPjacqtdSSOILSeV0LHn9nZDN5AN+C/0jaQ
-         ChgQ==
+        bh=7Zh5jGHq/llHW9wwb6A1XG1JS5D3A78OfUpN0lusWs8=;
+        b=w2j0o9ZNYxhuRQKUc8N1cbJ53nEdI1jX5/yzonlm/abVA6/u+qHbNVi4+eHssOdnAr
+         fil6zKhW+Nc0FsY3tupAquHRMp9cWivm1NaTUse+i94vt4ESeIka8OTqooit5bGdpPvI
+         4ppRQXmLNEtiDEdquhP2oc/zoRZXPuFcUQV54oEKRdGJIOlBbl6cbHOotvv9Fvd4Hfo7
+         sJh1n21tw9DRJBaWBUcg/aXV7Z6ubLg5ldnKnFjLlsUq8yrNznnU4nJRVWVuB0ATB764
+         krNMbeEwHImzZ9Bf8ioevPLzfnu1Zmf5xx+d7Npvdj7S5sxxBCYf8Wil0s6jnptQVBy0
+         vEhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
+        d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=r3WatTtxZoeiIVcdfefA14u/3TLIFYP+iAQ+xrlVQjE=;
-        b=buYRMtNYtMjyF6GFqoM2OwTU39nl/aK870iGBmNjYPiAXxXpwEov73haPNgan/yN80
-         3pnMka6vrIn5wRFY+ALBfWxzoxXTQ5jYmoCaoZWyVVxSz4aWWCJEV9BTVciWmWiF7VOd
-         5WWzwtaKKMvvof9ipY8bqzrpGFAsuIMaAX7YD8nul3YG3V/8k3fSqpRN98TUixJAJ4qI
-         xvW4eJT3QkJiH84NAUpt3DfuDS6vpE58jRXiD3WTpoLacWEiuahZp+3Mx5bxeZelUdQJ
-         gfEKpty0eXwy1kyUAKrKsIQAJIt4E9Ebu9ZF4IRPBLhOL2lCin2kbo6GNiyOmxPHyEKy
-         Ae0g==
-X-Gm-Message-State: AMke39k/itmX2ZFZolYtGlPfiAiNQjh5HXMqN/BqhXECXZwUQtxJwMlCdnKOD8Kdmrxv/w==
-X-Received: by 10.98.102.129 with SMTP id s1mr21448698pfj.26.1488209343530;
-        Mon, 27 Feb 2017 07:29:03 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id n63sm20274928pfk.64.2017.02.27.07.29.02
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 27 Feb 2017 07:29:03 -0800 (PST)
-From: Sreya Mittal <sreyamittal5@gmail.com>
+        bh=7Zh5jGHq/llHW9wwb6A1XG1JS5D3A78OfUpN0lusWs8=;
+        b=S1CTSA8qFgQYUKta6bR4ZAdwCFZkXHTrHFGzgs8M8iCTPJjgZO4OztmS9BD79REQvh
+         B2LRN5eu99uBNKSj6bfy3KWM3T6fb8FcKyDjGDSmEIGihXOo4Jg3iWJDK0XRKE8FuJhP
+         uEjpsI1hrzVXDgpPHjaTTsXWO+lg2RIZp3DXl1FDEHm1yL+5VO8WnzgwfYZxO9OEV8Lp
+         4Kbc+/yXHOw40sgDd1oFLHYcBnJOu99IRbEgsNEYQ9+ZRsgN5EqnttHoDbkmra5334p8
+         kU/XAV42syoYm5TEJT8lzAz7UBSASle7aquO/1qSM7Lt+Xd8kzgeYWShbYh9P7mSrTai
+         T7BQ==
+X-Gm-Message-State: AD7BkJKCrDYxSC18If2c6q0eQnP/ptBAr3zxXVNZEgORB9OdKEvyaNug/UD3i/xedYIOGQ==
+X-Received: by 10.66.220.162 with SMTP id px2mr17422798pac.15.1456688700454;
+        Sun, 28 Feb 2016 11:45:00 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([106.215.134.212])
+        by smtp.gmail.com with ESMTPSA id l62sm32834800pfj.7.2016.02.28.11.44.56
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 11:44:59 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Mon, 29 Feb 2016 01:14:50 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Sreya Mittal <sreyamittal5@gmail.com>,
-	William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/2 v2] staging: speakup: Clean up parentheses
-Date: Mon, 27 Feb 2017 20:58:51 +0530
-Message-Id: <20170227152851.20146-1-sreyamittal5@gmail.com>
-X-Mailer: git-send-email 2.9.3
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH v2] Staging: lustre: Remove print statement on function failure
+Date: Mon, 29 Feb 2016 01:14:33 +0530
+Message-Id: <1456688673-9254-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Align next line of print statements
-to the right of open parentheses and
-remove extra parentheses.
+The  memory allocation functions generates a call stack containing
+all the context information on failure, so print statements can be
+removed on failure of these functions. Also remove
+unwanted {} around if block after removal of these statements.
+Done using coccinelle:
 
-Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
+@@
+expression e,e1,e2;
+identifier x;
+@@
+e=\(kmalloc\|kmalloc_array\|kzalloc\|
+   devm_kzalloc\)(...);
+...when!=e=e1
+if(!e)
+-{
+- \(printk\|DBG_8723A\|pr_err\|CERROR\|DBG_88E\)(...);
+(
+goto x;
+|
+return e2;
+|
+return;
+)
+-}
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
-
 Changes in v2:
-*Remove unnecessary parentheses
+* Improve the semantic patch and use special case in this case as there
+  are only two stataments in if condition.
 
- drivers/staging/speakup/keyhelp.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/lustre/lustre/libcfs/linux/linux-crypto.c | 4 +---
+ drivers/staging/lustre/lustre/obdclass/llog.c             | 4 +---
+ drivers/staging/lustre/lustre/obdecho/echo_client.c       | 5 +----
+ 3 files changed, 3 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
-index ce94cb1..c373762 100644
---- a/drivers/staging/speakup/keyhelp.c
-+++ b/drivers/staging/speakup/keyhelp.c
-@@ -115,9 +115,9 @@ static void say_key(int key)
- 		if (state & masks[i])
- 			synth_printf(" %s", spk_msg_get(MSG_STATES_START + i));
- 	}
--	if ((key > 0) && (key <= num_key_names))
-+	if (key > 0 && key <= num_key_names)
- 		synth_printf(" %s\n",
--				spk_msg_get(MSG_KEYNAMES_START + (key - 1)));
-+			     spk_msg_get(MSG_KEYNAMES_START + (key - 1)));
- }
+diff --git a/drivers/staging/lustre/lustre/libcfs/linux/linux-crypto.c b/drivers/staging/lustre/lustre/libcfs/linux/linux-crypto.c
+index ec75801..1d2f70f 100644
+--- a/drivers/staging/lustre/lustre/libcfs/linux/linux-crypto.c
++++ b/drivers/staging/lustre/lustre/libcfs/linux/linux-crypto.c
+@@ -251,10 +251,8 @@ static int cfs_crypto_test_hashes(void)
+ 	unsigned int	    data_len = 1 * 128 * 1024;
  
- static int help_init(void)
-@@ -164,7 +164,7 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
- 		cur_item = letter_offsets[ch - 'a'];
- 	} else if (type == KT_CUR) {
- 		if (ch == 0
--		    && (MSG_FUNCNAMES_START + cur_item + 1) <=
-+		    && MSG_FUNCNAMES_START + cur_item + 1 <=
- 		    MSG_FUNCNAMES_END)
- 			cur_item++;
- 		else if (ch == 3 && cur_item > 0)
-@@ -180,9 +180,9 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
- 		return 1;
- 	} else {
- 		name = NULL;
--		if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
-+		if (type != KT_SPKUP && key > 0 && key <= num_key_names) {
- 			synth_printf("%s\n",
--				spk_msg_get(MSG_KEYNAMES_START + key - 1));
-+				     spk_msg_get(MSG_KEYNAMES_START + key - 1));
- 			return 1;
- 		}
- 		for (i = 0; funcvals[i] != 0 && !name; i++) {
+ 	data = kmalloc(data_len, 0);
+-	if (!data) {
+-		CERROR("Failed to allocate mem\n");
++	if (!data)
+ 		return -ENOMEM;
+-	}
+ 
+ 	for (j = 0; j < data_len; j++)
+ 		data[j] = j & 0xff;
+diff --git a/drivers/staging/lustre/lustre/obdclass/llog.c b/drivers/staging/lustre/lustre/obdclass/llog.c
+index f7ee605..992573e 100644
+--- a/drivers/staging/lustre/lustre/obdclass/llog.c
++++ b/drivers/staging/lustre/lustre/obdclass/llog.c
+@@ -365,10 +365,8 @@ int llog_process_or_fork(const struct lu_env *env,
+ 	int		      rc;
+ 
+ 	lpi = kzalloc(sizeof(*lpi), GFP_NOFS);
+-	if (!lpi) {
+-		CERROR("cannot alloc pointer\n");
++	if (!lpi)
+ 		return -ENOMEM;
+-	}
+ 	lpi->lpi_loghandle = loghandle;
+ 	lpi->lpi_cb	= cb;
+ 	lpi->lpi_cbdata    = data;
+diff --git a/drivers/staging/lustre/lustre/obdecho/echo_client.c b/drivers/staging/lustre/lustre/obdecho/echo_client.c
+index 2b13aa2..1d4b3a9 100644
+--- a/drivers/staging/lustre/lustre/obdecho/echo_client.c
++++ b/drivers/staging/lustre/lustre/obdecho/echo_client.c
+@@ -1766,11 +1766,8 @@ static int echo_client_setup(const struct lu_env *env,
+ 	ec->ec_unique = 0;
+ 
+ 	ocd = kzalloc(sizeof(*ocd), GFP_NOFS);
+-	if (!ocd) {
+-		CERROR("Can't alloc ocd connecting to %s\n",
+-		       lustre_cfg_string(lcfg, 1));
++	if (!ocd)
+ 		return -ENOMEM;
+-	}
+ 
+ 	ocd->ocd_connect_flags = OBD_CONNECT_VERSION | OBD_CONNECT_REQPORTAL |
+ 				 OBD_CONNECT_BRW_SIZE |
 -- 
-2.9.3
+1.9.1
 
 
