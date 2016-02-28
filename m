@@ -1,205 +1,111 @@
-X-GM-THRID: 6256392971161174016
-X-Received: by 10.182.40.193 with SMTP id z1mr9438593obk.15.1456680002536;
-        Sun, 28 Feb 2016 09:20:02 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.43.201 with SMTP id e67ls2181291qga.50.gmail; Sun, 28 Feb
- 2016 09:20:02 -0800 (PST)
-X-Received: by 10.13.215.140 with SMTP id z134mr10170375ywd.7.1456680002147;
-        Sun, 28 Feb 2016 09:20:02 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id y20si1049315pfa.2.2016.02.28.09.20.02
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 09:20:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id y7so7338041paa.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:20:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=u08bTTp2J1SRtFvodzqb+GsfIi1liHT5982z1GBpIUY=;
-        b=ioJK/bkJEzQBKN+w9aR8Vs1BT97/YkgDeif5l7p1Xa3AgRwrJG+UkKHRL1+XHYgheU
-         SjPAgKHqy4Jdzw/le9kLzqkWA9fX/eQRQsVaU6qrDkHW3l0crJ2sAIj51RSMCy1RkK3F
-         9SiYT4xf07mtweS43qUBZnAm4GG8qd8MnyeLu8Op7JFc8/pJK9dX34RpMI0QeyKHaHuX
-         sVtfJEQnvJRCuMgQq43GWZTeuQ/uvY3nbPezs/jH4bxYXTnV/JKv/ksQ5Uf5EsuShcqN
-         5p7B5dSY86tYJiWFg0PblngKX2HxY3FuNB/tKnavhSCkIZNb1PQAs/J4dtb1TaXJcapH
-         KP3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=u08bTTp2J1SRtFvodzqb+GsfIi1liHT5982z1GBpIUY=;
-        b=fboZXgCYZtC9p+OkCMzCG7esh9+xV+ni2Ehqzw+th/rT+9sosaI0ZAf0bGDAssyewD
-         T5p9ZSsPY7rYGw3b/sr+LNiv+pUF5uaTskOEhHODIaO5HrRAICKPF8MUGXnFayWUZh/f
-         jjvun/wl244JdinGrLzZwkm5onUEYdidfDT18MjW+srRvXUWnHQIEhN9xduueOwNSALx
-         TKQG3590KMhgKcaRnUA8qGRstjee5i98RRfhh7oAOVSjIoP10bAA7UljWGN/eJCrMgHQ
-         b5xeqd51c4TMDYEBSpvVqMRxHNCTQtDGN9q7eN/UxegaV4hh+D7lZbTEpG8aeBHx+PMW
-         Z5uw==
-X-Gm-Message-State: AD7BkJK461KyBfDSDAsDW3qF8rxFfLbZttSbdxbu9AyUgj1F4FHE+TXIoPiCAhqXNoOjMw==
-X-Received: by 10.66.190.168 with SMTP id gr8mr16908140pac.23.1456680001936;
-        Sun, 28 Feb 2016 09:20:01 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.106])
-        by smtp.gmail.com with ESMTPSA id f65sm4279998pfd.47.2016.02.28.09.20.00
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 09:20:01 -0800 (PST)
-Date: Sun, 28 Feb 2016 14:50:07 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] Staging: lustre: lnet: Remove int typecast of offsetof().
-Message-ID: <20160228092006.GA3627@sandhya>
+X-GM-THRID: 6256054516784824320
+Date: Sun, 28 Feb 2016 01:09:53 -0800 (PST)
+From: sandhya bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <ca3f6ce0-ac74-4496-baa0-2d982d4434e9@googlegroups.com>
+In-Reply-To: <20160227112641.GA5408@sandhya>
+References: <20160227112641.GA5408@sandhya>
+Subject: Re: [PATCH 1/2] Staging: usb: Use PTR_ERR_OR_ZERO instead of
+ if(IS_ERR(...)) + PTR_ERR.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2633_2110816683.1456650593759"
+X-Google-Token: EOHyyrYFyi75jMPsx640
+X-Google-IP: 59.161.35.134
 
-Remove int typecast of offsetof(). 
-As per below coccinelle rule:
+------=_Part_2633_2110816683.1456650593759
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2634_966798064.1456650593760"
 
-@@
-type T;
-expression E;
-@@
+------=_Part_2634_966798064.1456650593760
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-- (int)(offsetof(T,E))
-+ offsetof(T,E) 
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/lustre/lnet/lnet/api-ni.c | 54 +++++++++++++++----------------
- 1 file changed, 27 insertions(+), 27 deletions(-)
+Please ignore this patchset. I was not in  driver/staging.
 
-diff --git a/drivers/staging/lustre/lnet/lnet/api-ni.c b/drivers/staging/lustre/lnet/lnet/api-ni.c
-index 3ecc96a..c3fe782 100644
---- a/drivers/staging/lustre/lnet/lnet/api-ni.c
-+++ b/drivers/staging/lustre/lnet/lnet/api-ni.c
-@@ -197,75 +197,75 @@ static void lnet_assert_wire_constants(void)
- 	CLASSERT((int)sizeof(lnet_handle_wire_t) == 16);
- 	CLASSERT((int)offsetof(lnet_handle_wire_t, wh_interface_cookie) == 0);
- 	CLASSERT((int)sizeof(((lnet_handle_wire_t *)0)->wh_interface_cookie) == 8);
--	CLASSERT((int)offsetof(lnet_handle_wire_t, wh_object_cookie) == 8);
-+	CLASSERT(offsetof(lnet_handle_wire_t, wh_object_cookie) == 8);
- 	CLASSERT((int)sizeof(((lnet_handle_wire_t *)0)->wh_object_cookie) == 8);
- 
- 	/* Checks for struct lnet_magicversion_t */
- 	CLASSERT((int)sizeof(lnet_magicversion_t) == 8);
- 	CLASSERT((int)offsetof(lnet_magicversion_t, magic) == 0);
- 	CLASSERT((int)sizeof(((lnet_magicversion_t *)0)->magic) == 4);
--	CLASSERT((int)offsetof(lnet_magicversion_t, version_major) == 4);
-+	CLASSERT(offsetof(lnet_magicversion_t, version_major) == 4);
- 	CLASSERT((int)sizeof(((lnet_magicversion_t *)0)->version_major) == 2);
--	CLASSERT((int)offsetof(lnet_magicversion_t, version_minor) == 6);
-+	CLASSERT(offsetof(lnet_magicversion_t, version_minor) == 6);
- 	CLASSERT((int)sizeof(((lnet_magicversion_t *)0)->version_minor) == 2);
- 
- 	/* Checks for struct lnet_hdr_t */
- 	CLASSERT((int)sizeof(lnet_hdr_t) == 72);
- 	CLASSERT((int)offsetof(lnet_hdr_t, dest_nid) == 0);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->dest_nid) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, src_nid) == 8);
-+	CLASSERT(offsetof(lnet_hdr_t, src_nid) == 8);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->src_nid) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, dest_pid) == 16);
-+	CLASSERT(offsetof(lnet_hdr_t, dest_pid) == 16);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->dest_pid) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, src_pid) == 20);
-+	CLASSERT(offsetof(lnet_hdr_t, src_pid) == 20);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->src_pid) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, type) == 24);
-+	CLASSERT(offsetof(lnet_hdr_t, type) == 24);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->type) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, payload_length) == 28);
-+	CLASSERT(offsetof(lnet_hdr_t, payload_length) == 28);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->payload_length) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg) == 32);
-+	CLASSERT(offsetof(lnet_hdr_t, msg) == 32);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg) == 40);
- 
- 	/* Ack */
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.ack.dst_wmd) == 32);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.ack.dst_wmd) == 32);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.ack.dst_wmd) == 16);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.ack.match_bits) == 48);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.ack.match_bits) == 48);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.ack.match_bits) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.ack.mlength) == 56);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.ack.mlength) == 56);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.ack.mlength) == 4);
- 
- 	/* Put */
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.put.ack_wmd) == 32);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.put.ack_wmd) == 32);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.put.ack_wmd) == 16);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.put.match_bits) == 48);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.put.match_bits) == 48);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.put.match_bits) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.put.hdr_data) == 56);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.put.hdr_data) == 56);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.put.hdr_data) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.put.ptl_index) == 64);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.put.ptl_index) == 64);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.put.ptl_index) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.put.offset) == 68);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.put.offset) == 68);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.put.offset) == 4);
- 
- 	/* Get */
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.get.return_wmd) == 32);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.get.return_wmd) == 32);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.get.return_wmd) == 16);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.get.match_bits) == 48);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.get.match_bits) == 48);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.get.match_bits) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.get.ptl_index) == 56);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.get.ptl_index) == 56);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.get.ptl_index) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.get.src_offset) == 60);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.get.src_offset) == 60);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.get.src_offset) == 4);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.get.sink_length) == 64);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.get.sink_length) == 64);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.get.sink_length) == 4);
- 
- 	/* Reply */
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.reply.dst_wmd) == 32);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.reply.dst_wmd) == 32);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.reply.dst_wmd) == 16);
- 
- 	/* Hello */
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.hello.incarnation) == 32);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.hello.incarnation) == 32);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.hello.incarnation) == 8);
--	CLASSERT((int)offsetof(lnet_hdr_t, msg.hello.type) == 40);
-+	CLASSERT(offsetof(lnet_hdr_t, msg.hello.type) == 40);
- 	CLASSERT((int)sizeof(((lnet_hdr_t *)0)->msg.hello.type) == 4);
- }
- 
-@@ -2266,7 +2266,7 @@ static int lnet_ping(lnet_process_id_t id, int timeout_ms,
- 
- 	if (nob < offsetof(lnet_ping_info_t, pi_ni[0])) {
- 		CERROR("%s: Short reply %d(%d min)\n", libcfs_id2str(id),
--		       nob, (int)offsetof(lnet_ping_info_t, pi_ni[0]));
-+		       nob, offsetof(lnet_ping_info_t, pi_ni[0]));
- 		goto out_1;
- 	}
- 
-@@ -2275,7 +2275,7 @@ static int lnet_ping(lnet_process_id_t id, int timeout_ms,
- 
- 	if (nob < offsetof(lnet_ping_info_t, pi_ni[n_ids])) {
- 		CERROR("%s: Short reply %d(%d expected)\n", libcfs_id2str(id),
--		       nob, (int)offsetof(lnet_ping_info_t, pi_ni[n_ids]));
-+		       nob, offsetof(lnet_ping_info_t, pi_ni[n_ids]));
- 		goto out_1;
- 	}
- 
--- 
-1.8.3.4
 
+On Sunday, February 28, 2016 at 12:56:39 AM UTC+5:30, sandhya bankar wrote:
+>
+> Use PTR_ERR_OR_ZERO instead of if(IS_ERR(...)) + PTR_ERR. 
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com> 
+> --- 
+>  drivers/usb/phy/phy-qcom-8x16-usb.c | 5 +---- t
+>  1 file changed, 1 insertion(+), 4 deletions(-) 
+>
+> diff --git a/drivers/usb/phy/phy-qcom-8x16-usb.c 
+> b/drivers/usb/phy/phy-qcom-8x16-usb.c 
+> index 579587d..dc97abe 100644 
+> --- a/drivers/usb/phy/phy-qcom-8x16-usb.c 
+> +++ b/drivers/usb/phy/phy-qcom-8x16-usb.c 
+> @@ -291,10 +291,7 @@ static int phy_8x16_read_devicetree(struct phy_8x16 
+> *qphy) 
+>   
+>          qphy->switch_gpio = devm_gpiod_get_optional(dev, "switch", 
+>                                                     GPIOD_OUT_LOW); 
+> -        if (IS_ERR(qphy->switch_gpio)) 
+> -                return PTR_ERR(qphy->switch_gpio); 
+> - 
+> -        return 0; 
+> +        PTR_ERR_OR_ZERO(qphy->switch_gpio); 
+>  } 
+>   
+>  static int phy_8x16_reboot_notify(struct notifier_block *this, 
+> -- 
+> 1.8.3.4 
+>
+>
+------=_Part_2634_966798064.1456650593760
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br>Please ignore this patchset. I was not in=C2=A0 driver=
+/staging.<br><br><br>On Sunday, February 28, 2016 at 12:56:39 AM UTC+5:30, =
+sandhya bankar wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Use PTR_E=
+RR_OR_ZERO instead of if(IS_ERR(...)) + PTR_ERR.
+<br>
+<br>Signed-off-by: Sandhya Bankar &lt;<a href=3D"mailto:bankarsandhya512@gm=
+ail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39=
+;mailto:bankarsandhya512@gmail.com&#39;;return true;" onclick=3D"this.href=
+=3D&#39;mailto:bankarsandhya512@gmail.com&#39;;return true;">bankarsandhya5=
+12@gmail.com</a>&gt;
+<br>---
+<br>=C2=A0drivers/usb/phy/phy-qcom-<wbr>8x16-usb.c | 5 +----
+t<br>=C2=A01 file changed, 1 insertion(+), 4 deletions(-)
+<br>
+<br>diff --git a/drivers/usb/phy/phy-qcom-<wbr>8x16-usb.c b/drivers/usb/phy=
+/phy-qcom-<wbr>8x16-usb.c
+<br>index 579587d..dc97abe 100644
+<br>--- a/drivers/usb/phy/phy-qcom-<wbr>8x16-usb.c
+<br>+++ b/drivers/usb/phy/phy-qcom-<wbr>8x16-usb.c
+<br>@@ -291,10 +291,7 @@ static int phy_8x16_read_devicetree(<wbr>struct ph=
+y_8x16 *qphy)
+<br>=C2=A0
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qphy-&gt;switch_g=
+pio =3D devm_gpiod_get_optional(dev, &quot;switch&quot;,
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 =C2=A0 GPIOD_OUT_LOW);
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (IS_ERR(qphy-&gt;sw=
+itch_gpio))
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0return PTR_ERR(qphy-&gt;switch_gpio);
+<br>-
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0PTR_ERR_OR_ZERO(qphy-<=
+wbr>&gt;switch_gpio);
+<br>=C2=A0}
+<br>=C2=A0
+<br>=C2=A0static int phy_8x16_reboot_notify(struct notifier_block *this,
+<br>--=20
+<br>1.8.3.4
+<br>
+<br></blockquote></div>
+------=_Part_2634_966798064.1456650593760--
+
+------=_Part_2633_2110816683.1456650593759--
 
