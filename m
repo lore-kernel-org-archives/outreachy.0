@@ -1,60 +1,60 @@
 X-GM-THRID: 6256042901730492416
-X-Received: by 10.140.29.75 with SMTP id a69mr26261382qga.0.1456666971743;
-        Sun, 28 Feb 2016 05:42:51 -0800 (PST)
+X-Received: by 10.129.51.2 with SMTP id z2mr8899558ywz.49.1456666432806;
+        Sun, 28 Feb 2016 05:33:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.87.229 with SMTP id bb5ls848036obb.54.gmail; Sun, 28 Feb
- 2016 05:42:51 -0800 (PST)
-X-Received: by 10.182.19.164 with SMTP id g4mr8956466obe.42.1456666971487;
-        Sun, 28 Feb 2016 05:42:51 -0800 (PST)
+Received: by 10.140.97.139 with SMTP id m11ls2216785qge.62.gmail; Sun, 28 Feb
+ 2016 05:33:52 -0800 (PST)
+X-Received: by 10.31.174.2 with SMTP id x2mr8928344vke.13.1456666432410;
+        Sun, 28 Feb 2016 05:33:52 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id y20si970292pfa.2.2016.02.28.05.42.51
+Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
+        by gmr-mx.google.com with ESMTPS id 12si3076928pfb.1.2016.02.28.05.33.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:42:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Sun, 28 Feb 2016 05:33:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id yy13so76689480pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:42:51 -0800 (PST)
+Received: by mail-pa0-x22c.google.com with SMTP id bj10so6993031pad.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:33:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=0v8Qxl0u44b4Hb5SWvbTbaICjIm+yMcXinhptIbFk9A=;
-        b=JCnWBuOLwgzRU1biz39f6EKBJ1wfvO55ZQ6Yq6b3V9Jgq1EUFjqASq03kXw02BWq4v
-         mgG29wNrjVshU7E3cVVpITIJnFO93EZPlSwPwjcu1yHZ8dlt+iTb1ozYFcjs1sm9Z+EL
-         xYzzm7jfz/kiAEfssgbH42eu+kE6JM200V8eY6LLrJUc2HuJs8idxTo62OhDTpMha6Ve
-         VxCzS2RxbdyxJxN9+gyOZo5rhMkqavKlJS4n3ooTeRgcUkku+ilLL9KnvdqgcbWAMRhf
-         uoffIFKSHAiXgfJE47N6J1KR/hTKAty1QEh624WKJ7ezWs3JZpUOJc9Jx9hLVYweZ/Lg
-         Np2A==
+        bh=23SZ8moPVuKYfIZfdarpL9g1CzW0nFJlf8RawHMfGHs=;
+        b=MG8DNazKOHLVoaS9NDSMlg0Dr2bFGZaDSyg08Dlobq2Oyx93xfApf3az9NfYljvZsT
+         fUVHE7kruATtRDXu08IKJ6y1o18exXcskUGtMfO/i+hMdNLXwYEjnrRp5fVumKC/MaqC
+         +KOySBIf0hTgRG6wZXfGguIdyNGVe/yZ+uAdF2vs2pXxNFpIhv1etV68wEUwOCIOgYPd
+         ClzWKlMerq6G9u+IpcKBpObHH1pkguCgPDKslTIF4nMNTFXAIU0+nKzcqYZaZQ49PsNq
+         Ofth5HOENFv4q/wEKxHfWoSvPaBNSubu0k5SGrVpwy0FU4SpVRqAdCthVjpjhTWNfuXx
+         yVdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=0v8Qxl0u44b4Hb5SWvbTbaICjIm+yMcXinhptIbFk9A=;
-        b=XTeFG34mUaB9piMO9K0jYpVI/DxF0SQ9PKH0FFzTVYTBRGdQPy3z/NdBESAZCNM4Tg
-         SqJHhbdLmtQs398+i2yCL2VOcUhnV05jYs5bY6BMfspebuaHzmXIdExJkceK71QPbs15
-         1n1v34xt9tNnJ6C6ElGsR0d4LVuwW9KuemKx0VEqXgGt+yh8Y/aX//K/CDsrtMwNeJk2
-         UkatU8fzOMrIuR8IPEYz3TarjDNCJ9w32nzrSrGFh8307ldAQNl6bUZI78DHizYxfyqa
-         MuuJEjieEN2Msn6jc1rj3lXZL7xG44O6/sJHu01wkLA1EaTWu6SBS1modRZsdQGCbnsW
-         meqA==
-X-Gm-Message-State: AD7BkJKc6PFyWriU/OdwQskAPPZ7zoOi2OEYkExz0ssqdNrXwxiZHJQbcwUhReLT1BfGLw==
-X-Received: by 10.66.222.199 with SMTP id qo7mr15543470pac.38.1456666971308;
-        Sun, 28 Feb 2016 05:42:51 -0800 (PST)
+        bh=23SZ8moPVuKYfIZfdarpL9g1CzW0nFJlf8RawHMfGHs=;
+        b=PkvO7HSbpA0Xq9P2AD8IRgMulu0zJStNO9iHvdxHkuaYf9Mpf5UYAJFBI0Rq4lBlqo
+         dzPmfqeOoOhOI4oGvhuIP1qe40H4MZ1/aVWahBLroq42D4j8oc3AHxUaP4exJc3QpoYS
+         P9xZhKGBQqH0eQ1kEsE1lT/8EVbFJXK7E9Fm8hcoOnW9lB8L8cqAH0WwH6yj4xQaXgJC
+         6NXgL8lyLcjYe4JE3sJ1civ1AKFeNiUrVhUnpBhNkIczK9/PgsxwZL41h9VWOaKAdV4c
+         FcQonX79zdxaFveHHYvSYKCIl8S+qkoVlJUxkipz+LkKut53ZP23Mna+QfXT2yOf+vPx
+         bRBw==
+X-Gm-Message-State: AD7BkJJapU2QDEoO10DeYV+qrJTKMnrohodrM2tZOGE6hvJoHAG+Z+OsmippaTjdGizpig==
+X-Received: by 10.66.190.131 with SMTP id gq3mr15290480pac.42.1456666432203;
+        Sun, 28 Feb 2016 05:33:52 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id p8sm31496432pfi.34.2016.02.28.05.42.50
+        by smtp.gmail.com with ESMTPSA id 17sm31459370pfp.96.2016.02.28.05.33.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 05:42:50 -0800 (PST)
-Date: Sun, 28 Feb 2016 19:10:03 +0530
+        Sun, 28 Feb 2016 05:33:51 -0800 (PST)
+Date: Sun, 28 Feb 2016 19:01:03 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Subject: [PATCH] staging: lustre: lnet: Use list_for_each_entry_safe
-Message-ID: <20160228134003.GA18773@Karyakshetra>
+Message-ID: <20160228133103.GA18517@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -90,52 +90,31 @@ T *I1;
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/lustre/lnet/lnet/api-ni.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/staging/lustre/lnet/lnet/config.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/lnet/lnet/api-ni.c b/drivers/staging/lustre/lnet/lnet/api-ni.c
-index 3ecc96a..e688c79 100644
---- a/drivers/staging/lustre/lnet/lnet/api-ni.c
-+++ b/drivers/staging/lustre/lnet/lnet/api-ni.c
-@@ -1084,18 +1084,17 @@ lnet_clear_zombies_nis_locked(void)
- 	int i;
- 	int islo;
- 	lnet_ni_t *ni;
-+	lnet_ni_t *temp;
+diff --git a/drivers/staging/lustre/lnet/lnet/config.c b/drivers/staging/lustre/lnet/lnet/config.c
+index 8c80625..a9445c8 100644
+--- a/drivers/staging/lustre/lnet/lnet/config.c
++++ b/drivers/staging/lustre/lnet/lnet/config.c
+@@ -1016,6 +1016,7 @@ lnet_match_networks(char **networksp, char *ip2nets, __u32 *ipaddrs, int nip)
+ 	struct list_head *t;
+ 	struct list_head *t2;
+ 	struct lnet_text_buf *tb;
++	struct lnet_text_buf *temp;
+ 	struct lnet_text_buf *tb2;
+ 	__u32 net1;
+ 	__u32 net2;
+@@ -1038,9 +1039,7 @@ lnet_match_networks(char **networksp, char *ip2nets, __u32 *ipaddrs, int nip)
+ 	len = 0;
+ 	rc = 0;
 
- 	/*
- 	 * Now wait for the NI's I just nuked to show up on ln_zombie_nis
- 	 * and shut them down in guaranteed thread context
- 	 */
- 	i = 2;
--	while (!list_empty(&the_lnet.ln_nis_zombie)) {
-+	list_for_each_entry_safe(ni, temp, &the_lnet.ln_nis_zombie, ni_list) {
- 		int *ref;
- 		int j;
-
--		ni = list_entry(the_lnet.ln_nis_zombie.next,
--				lnet_ni_t, ni_list);
- 		list_del_init(&ni->ni_list);
- 		cfs_percpt_for_each(ref, j, ni->ni_refs) {
- 			if (!*ref)
-@@ -1145,6 +1144,7 @@ static void
- lnet_shutdown_lndnis(void)
- {
- 	lnet_ni_t *ni;
-+	lnet_ni_t *temp;
- 	int i;
-
- 	/* NB called holding the global mutex */
-@@ -1158,9 +1158,7 @@ lnet_shutdown_lndnis(void)
- 	the_lnet.ln_shutdown = 1;	/* flag shutdown */
-
- 	/* Unlink NIs from the global table */
--	while (!list_empty(&the_lnet.ln_nis)) {
--		ni = list_entry(the_lnet.ln_nis.next,
--				lnet_ni_t, ni_list);
-+	list_for_each_entry_safe(ni, temp, &the_lnet.ln_nis, ni_list) {
- 		lnet_ni_unlink_locked(ni);
- 	}
+-	while (!list_empty(&raw_entries)) {
+-		tb = list_entry(raw_entries.next, struct lnet_text_buf,
+-				ltb_list);
++	list_for_each_entry_safe(tb, temp, &raw_entries, ltb_list) {
+ 		strncpy(source, tb->ltb_text, sizeof(source));
+ 		source[sizeof(source) - 1] = '\0';
 
 --
 2.1.4
