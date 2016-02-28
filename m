@@ -1,83 +1,94 @@
 X-GM-THRID: 6256312431836921856
-X-Received: by 10.28.126.149 with SMTP id z143mr587881wmc.4.1456662897902;
-        Sun, 28 Feb 2016 04:34:57 -0800 (PST)
+X-Received: by 10.66.163.4 with SMTP id ye4mr8713937pab.23.1456661250738;
+        Sun, 28 Feb 2016 04:07:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.184.130 with SMTP id i124ls188231wmf.0.canary; Sun, 28 Feb
- 2016 04:34:57 -0800 (PST)
-X-Received: by 10.28.47.140 with SMTP id v134mr585703wmv.3.1456662897487;
-        Sun, 28 Feb 2016 04:34:57 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id h73si326417wme.0.2016.02.28.04.34.57
+Received: by 10.140.21.47 with SMTP id 44ls1786254qgk.90.gmail; Sun, 28 Feb
+ 2016 04:07:30 -0800 (PST)
+X-Received: by 10.13.227.133 with SMTP id m127mr8288937ywe.1.1456661250112;
+        Sun, 28 Feb 2016 04:07:30 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
+        by gmr-mx.google.com with ESMTPS id yd9si2980672pab.1.2016.02.28.04.07.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 04:34:57 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 28 Feb 2016 04:07:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,514,1449529200"; 
-   d="scan'208";a="166230617"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Feb 2016 13:34:56 +0100
-Date: Sun, 28 Feb 2016 13:34:56 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rdma: hfi1: Remove unused
- variables
-In-Reply-To: <20160228120441.GA16843@Karyakshetra>
-Message-ID: <alpine.DEB.2.02.1602281333400.2147@localhost6.localdomain6>
-References: <20160228120441.GA16843@Karyakshetra>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x229.google.com with SMTP id yy13so76031378pab.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 04:07:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=gublbALpsnYXauwmIAGyjNe7Bdi0DYsO+ADz0zG+sCg=;
+        b=J8JBOmHcxmncbbT+xALUdHV/pwYphrTx1rXUygzxLGUKkduRdguh2bL+pnY7+xRwgI
+         9bvMfu2EoTYCAyVZuzziljc1g5DeX3/1rYoUuWHyzFoWH0nEAGrS5ar2x8YfTsj6bmwH
+         TvWwpIHMNFtEv4L8JErnf69iW9VMXtpjexf5zEXTmIkbqw0MbHxxbljBcwB84FBf6PGO
+         EejFbicBGazhKy5hg9X8V1hBBggBJVk6oGsPDiET/CLWas8MEuldIILisai7yTAEMLQU
+         NYiKxOsyfxzvruG6RmvbEdetLSMr4UQk2rThrdBcCQS+tRKiu+QhKDlaKzs5DK/oEHRX
+         z62g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=gublbALpsnYXauwmIAGyjNe7Bdi0DYsO+ADz0zG+sCg=;
+        b=MmDFfq30ja5SmBhfEVIoVkvdJIjQULvmuVFwEgBNwv0a8JOPOjZUdWPoBQxwy9qwVv
+         xRVByhCy/Al/h5yYr8yZX+X9XGJEfXML1wwAAoVNR91I/t/ADu5gMez4dwEbwZccSNjB
+         GyLe15rHWe8WI0D5RjhjXY1jK7307WPPF5fFO1qCLH7MGW7PXYS7hHoCbMh/s6JcubdG
+         POMeug6iXp39DMhomDcpf9XxXPNO0F9Dc4zWubZgOJOrqlAOF/UCvhDPgZ1WMIFBHbm6
+         igCVgNdyklW07m5SRf1IBLvhAqS+XMVyeXn9Gltkfj1iXs0Fz+kEjA23g50BKnHQUx0F
+         izhw==
+X-Gm-Message-State: AD7BkJJC7UywSvYUtkAeWk0lEytvwDElN7c7q8ilrYKSILHUREkEn+/5cxeKUnfnKxFOBg==
+X-Received: by 10.66.244.233 with SMTP id xj9mr14874245pac.19.1456661249952;
+        Sun, 28 Feb 2016 04:07:29 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id u84sm31080653pfa.57.2016.02.28.04.07.28
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 04:07:29 -0800 (PST)
+Date: Sun, 28 Feb 2016 17:34:41 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rdma: hfi1: Remove unused variables
+Message-ID: <20160228120441.GA16843@Karyakshetra>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Sun, 28 Feb 2016, Bhaktipriya Shridhar wrote:
+The variable csr has not been used anywhere in the function
+sdma_dumpstate(). Hence, it has been removed.
 
-> The variable csr has not been used anywhere in the function
-> sdma_dumpstate(). Hence, it has been removed.
-> 
-> This was done with Coccinelle:
-> 
-> @@ type T; identifier i; constant c; @@
-> -T i;
-> <... when != i
-> -i = c;
-> ...>
-> 
-> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-> ---
->  drivers/staging/rdma/hfi1/sdma.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rdma/hfi1/sdma.c b/drivers/staging/rdma/hfi1/sdma.c
-> index 9a15f1f..2b2af94 100644
-> --- a/drivers/staging/rdma/hfi1/sdma.c
-> +++ b/drivers/staging/rdma/hfi1/sdma.c
-> @@ -1769,7 +1769,6 @@ static void init_sdma_regs(
-> 
->  void sdma_dumpstate(struct sdma_engine *sde)
->  {
-> -	u64 csr;
->  	unsigned i;
-> 
->  	sdma_dumpstate_helper(SD(CTRL));
+This was done with Coccinelle:
 
-Are you absolutely sure that you have compiled this code?  Note that this 
-code is under an ifdef, so just having compiled the file may not be good 
-enough.
+@@ type T; identifier i; constant c; @@
+-T i;
+<... when != i
+-i = c;
+...>
 
-julia
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ drivers/staging/rdma/hfi1/sdma.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> --
-> 2.1.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160228120441.GA16843%40Karyakshetra.
-> For more options, visit https://groups.google.com/d/optout.
-> 
+diff --git a/drivers/staging/rdma/hfi1/sdma.c b/drivers/staging/rdma/hfi1/sdma.c
+index 9a15f1f..2b2af94 100644
+--- a/drivers/staging/rdma/hfi1/sdma.c
++++ b/drivers/staging/rdma/hfi1/sdma.c
+@@ -1769,7 +1769,6 @@ static void init_sdma_regs(
+
+ void sdma_dumpstate(struct sdma_engine *sde)
+ {
+-	u64 csr;
+ 	unsigned i;
+
+ 	sdma_dumpstate_helper(SD(CTRL));
+--
+2.1.4
+
 
