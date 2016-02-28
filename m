@@ -1,99 +1,172 @@
-X-GM-THRID: 6331726524790603776
-X-Received: by 10.129.53.73 with SMTP id c70mr1553748ywa.0.1474219962255;
-        Sun, 18 Sep 2016 10:32:42 -0700 (PDT)
+X-GM-THRID: 6256360130232713216
+X-Received: by 10.98.76.83 with SMTP id z80mr5121221pfa.4.1456673396934;
+        Sun, 28 Feb 2016 07:29:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.141.77 with SMTP id p74ls3136417iod.9.gmail; Sun, 18 Sep
- 2016 10:32:40 -0700 (PDT)
-X-Received: by 10.66.85.104 with SMTP id g8mr13611616paz.33.1474219960729;
-        Sun, 18 Sep 2016 10:32:40 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id h124si5719080pfe.0.2016.09.18.10.32.40
+Received: by 10.140.104.13 with SMTP id z13ls1883061qge.36.gmail; Sun, 28 Feb
+ 2016 07:29:56 -0800 (PST)
+X-Received: by 10.129.41.70 with SMTP id p67mr9298254ywp.33.1456673396146;
+        Sun, 28 Feb 2016 07:29:56 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ob0-x22a.google.com (mail-ob0-x22a.google.com. [2607:f8b0:4003:c01::22a])
+        by gmr-mx.google.com with ESMTPS id im4si294927igb.2.2016.02.28.07.29.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 10:32:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sun, 28 Feb 2016 07:29:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) client-ip=2607:f8b0:4003:c01::22a;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c01::22a as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id vz6so5852303pab.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 10:32:40 -0700 (PDT)
+Received: by mail-ob0-x22a.google.com with SMTP id ts10so115271384obc.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 07:29:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Ewqbbd6LyFtZAm2hzomY0DkyXMvEVO0MRohOiNUnF40=;
-        b=kXkujz8ZgHaSkdZxdtCBVHWL7HyQM5PmHvfQWguoDijOsjbjoJ2+gLg4Uo1DBUwv6r
-         ZwXHaZCOawrfumHN9rdyHuA3VnW9GGbLH0uxyEHVWEbAg8xtynqTaDI9BPojq3Q4uPOf
-         caJyA3uLIswXbzHAoQQ72oP/b0DFb1JAHn76C1D/Pl0T5fdHGq/R35kSrDSztwtBJi35
-         Ol0mkQadhtTxLI0bvGb9Z1BnMfg8906HfP+3WQW1973Jzwj6ZRuo8BFdtQDSr3q4CnJY
-         20jZnmtcrQoh+I5IqlbTAtNOClnI4Dv1DXUH7eceuhhiIET3JDt+v/BdcM7YCJFodAz1
-         SdaQ==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=Hwl+xuThDrUMLgN/yqAnEkeStFGJJMcnl2daH5SBa9w=;
+        b=cz3y/fqVFSBlxKwV4GTKD/HT45OPDyZmdCRXaFOiKlHoecrKOETn9hCGguwGz9Pdpk
+         0wayLdrMcha4bCz1sx/efzk2rnQ9e53Koh3zllZfIw/AaN1zcZRLyapX1H+MJlvSaVpX
+         2W8oI+P9nUl+bfVsv9omu9rCrLbH3NyetpmJy+syUxnRIyB0g2iehJwZqY3xf+/6y0ay
+         1ub+89Lqe5yaiqzq0uGRCku5djmkrdZ4+VYD67RNcWMvNJIkRm9B4LYVVdmKylQEdIRg
+         eWjz3S3EZxDiRY+ZbNkgelTCCbRSZZs5jtkcmtnmu+/4RH0ZfobiA9c0Pji/lGmjHyDO
+         Omzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Ewqbbd6LyFtZAm2hzomY0DkyXMvEVO0MRohOiNUnF40=;
-        b=LUvhQEczhcohDggf3InUJ8Uoho3T00cFeJ3PMvGuMWeXPH3lA5d4KMYHoBEZS33RFi
-         3cKMfi4R0K8SeD39jjCIben+Kht0OHXMzZdLHi9tu9d4rV/P6AKabuYhlSLiTPetTURI
-         YU66X2D4pI4pEAv+UNPIjdFvW2b4QwEXWq0nkbVQhm+q9gS+nTx1Q/NhhPR12NPPBo0d
-         Q+9olAbEfUJZjM23o/N4WoYDMJCxUQSD+tw34ix/Zkx6TUz16+Myk7VChFuV1i9LfwJa
-         N0FlLidkQeZCN7pburhl5+w3ddSVjGyT5TOF9TldCJB/4gAY5xqKQBdzflgMIJY/lBLx
-         RVdg==
-X-Gm-Message-State: AE9vXwOlVKm+1MvqABwzY+DMaL2ngMDWWOqggwtLTstsh4L2VGqg0MTKqkRcBnXenVx5NA==
-X-Received: by 10.66.88.227 with SMTP id bj3mr40775854pab.113.1474219960395;
-        Sun, 18 Sep 2016 10:32:40 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([182.77.93.227])
-        by smtp.gmail.com with ESMTPSA id hs7sm25595873pad.24.2016.09.18.10.32.38
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 10:32:39 -0700 (PDT)
-Date: Sun, 18 Sep 2016 23:02:33 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v2] Staging: octeon: Add missing of_node_put after calling
- of_parse_phandle.
-Message-ID: <20160918173233.GA4349@sandhya>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=Hwl+xuThDrUMLgN/yqAnEkeStFGJJMcnl2daH5SBa9w=;
+        b=U8kXwdTZZFm0hAw39UYD45YTkYwU+qSC4yWCbgckjsw+CXZj/GDyhJVI08jk5njyTN
+         0l44uPwp3qLdT/vQcxLDUNX55j/fyk3s6FDYJ3CqTwkgpz70k/x5t5ictMWccg4v+bpA
+         uwtlCrHMCyYY7rGDmw7VuzbEettt7aLvqoDGbatRBBv9LrEp5hFHS/tbGlfWNEMx4EWD
+         BLzlqTkXXvtM6WsJB5th6eKekEVPLHRIhUbqhISTUUpypbHkdYCSIvZOtsapGhsEGHe5
+         tU1IjrqG3hNYRZlE+uQm1Ju6TuKHE1BnAE/b0bQwjpTyX0SiRdJmc+3lEHsHtGhVP//l
+         jZcw==
+X-Gm-Message-State: AD7BkJJ37+WJGAFkax/6T42CFcbAHJ+Wz/9UYLOby9NJfl40RESUjTpnLVRq730h6c5AtIb+mk2lPaI2ScSsWQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+X-Received: by 10.60.135.98 with SMTP id pr2mr8758546oeb.65.1456673395931;
+ Sun, 28 Feb 2016 07:29:55 -0800 (PST)
+Received: by 10.202.200.211 with HTTP; Sun, 28 Feb 2016 07:29:55 -0800 (PST)
+In-Reply-To: <20160228201146.GA6657@janani-Inspiron-3521>
+References: <20160228201146.GA6657@janani-Inspiron-3521>
+Date: Sun, 28 Feb 2016 10:29:55 -0500
+Message-ID: <CANnt6X=SS8NVKFCq3Ffj-Pgux7T4PnHO_q1Y2cPe0j=9MuxdAQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: rdma: hfi1: Use list_for_each_entry_safe()
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=047d7b41792151836f052cd634c0
 
-of_node_put needs to be called when the device node which is got
-from of_parse_phandle is no longer used.
-This patch is found by below coccinelle script:
+--047d7b41792151836f052cd634c0
+Content-Type: text/plain; charset=UTF-8
 
-@@
-expression e,e1,e2;
-@@
-*e = of_parse_phandle(...)
-... when != of_node_put(e)
-    when != true e == NULL
-    when != e2 = e
-e = e1
+On Sun, Feb 28, 2016 at 3:11 PM, Janani Ravichandran <
+janani.rvchndrn@gmail.com> wrote:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
-Changes in v2:
-* Correcting the commit message.
- drivers/staging/octeon/ethernet-mdio.c |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+> Use list_for_each_entry_safe() rather than a combination of
+> list_for_each_safe() and list_entry()
+>
+> Semantic patch used:
+>
+> @a@
+> expression pos, n, head;
+> expression mem;
+> type t;
+> identifier var;
+> iterator name list_for_each_entry_safe, list_for_each_safe;
+> @@
+>
+> - list_for_each_safe(pos, n, head)
+> + list_for_each_entry_safe(var, n, head, mem)
+>   {
+>    ... when != var
+> -  var = \(list_entry \| container_of\)(pos, t, mem);
+>    ... when any
+>   }
+>
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+>  drivers/staging/rdma/hfi1/diag.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rdma/hfi1/diag.c
+> b/drivers/staging/rdma/hfi1/diag.c
+> index e41159f..411cdee 100644
+> --- a/drivers/staging/rdma/hfi1/diag.c
+> +++ b/drivers/staging/rdma/hfi1/diag.c
+> @@ -304,8 +304,7 @@ static void drain_snoop_list(struct list_head *queue)
+>         struct list_head *pos, *q;
+>         struct snoop_packet *packet;
+>
+> -       list_for_each_safe(pos, q, queue) {
+> -               packet = list_entry(pos, struct snoop_packet, list);
+> +       list_for_each_entry_safe(packet, q, queue, list) {
+>                 list_del(pos);
+>                 kfree(packet);
+>         }
+> --
+> 2.5.0
+>
+> This is a mistake here. Please ignore this. Sorry.
 
-diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
-index 1fde9c8..691e4a5 100644
---- a/drivers/staging/octeon/ethernet-mdio.c
-+++ b/drivers/staging/octeon/ethernet-mdio.c
-@@ -168,6 +168,7 @@ int cvm_oct_phy_setup_device(struct net_device *dev)
- 
- 	phydev = of_phy_connect(dev, phy_node, cvm_oct_adjust_link, 0,
- 				PHY_INTERFACE_MODE_GMII);
-+	of_node_put(phy_node);
- 
- 	if (!phydev)
- 		return -ENODEV;
--- 
-1.7.1
+Janani.
 
+--047d7b41792151836f052cd634c0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Sun, Feb 28, 2016 at 3:11 PM, Janani Ravichandran <span dir=3D"ltr">=
+&lt;<a href=3D"mailto:janani.rvchndrn@gmail.com" target=3D"_blank">janani.r=
+vchndrn@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote=
+" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">U=
+se list_for_each_entry_safe() rather than a combination of<br>
+list_for_each_safe() and list_entry()<br>
+<br>
+Semantic patch used:<br>
+<br>
+@a@<br>
+expression pos, n, head;<br>
+expression mem;<br>
+type t;<br>
+identifier var;<br>
+iterator name list_for_each_entry_safe, list_for_each_safe;<br>
+@@<br>
+<br>
+- list_for_each_safe(pos, n, head)<br>
++ list_for_each_entry_safe(var, n, head, mem)<br>
+=C2=A0 {<br>
+=C2=A0 =C2=A0... when !=3D var<br>
+-=C2=A0 var =3D \(list_entry \| container_of\)(pos, t, mem);<br>
+=C2=A0 =C2=A0... when any<br>
+=C2=A0 }<br>
+<br>
+Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchndrn@gm=
+ail.com">janani.rvchndrn@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/rdma/hfi1/diag.c | 3 +--<br>
+=C2=A01 file changed, 1 insertion(+), 2 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/rdma/hfi1/diag.c b/drivers/staging/rdma/hfi1/d=
+iag.c<br>
+index e41159f..411cdee 100644<br>
+--- a/drivers/staging/rdma/hfi1/diag.c<br>
++++ b/drivers/staging/rdma/hfi1/diag.c<br>
+@@ -304,8 +304,7 @@ static void drain_snoop_list(struct list_head *queue)<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct list_head *pos, *q;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct snoop_packet *packet;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0list_for_each_safe(pos, q, queue) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0packet =3D list_ent=
+ry(pos, struct snoop_packet, list);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0list_for_each_entry_safe(packet, q, queue, list=
+) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 list_del(pos);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kfree(packet);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<span class=3D"HOEnZb"><font color=3D"#888888">--<br>
+2.5.0<br>
+<br></font></span></blockquote><div>This is a mistake here. Please ignore t=
+his. Sorry.</div><div><br></div><div>Janani.=C2=A0</div></div><br></div></d=
+iv>
+
+--047d7b41792151836f052cd634c0--
 
