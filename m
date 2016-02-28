@@ -1,105 +1,117 @@
-X-GM-THRID: 6330852738662924288
-X-Received: by 10.200.37.77 with SMTP id 13mr10006848qtn.10.1474016518069;
-        Fri, 16 Sep 2016 02:01:58 -0700 (PDT)
+X-GM-THRID: 6256395525540544512
+X-Received: by 10.50.65.69 with SMTP id v5mr6852612igs.13.1456680597701;
+        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.47.193 with SMTP id b1ls5174820otd.19.gmail; Fri, 16 Sep
- 2016 02:01:57 -0700 (PDT)
-X-Received: by 10.129.105.6 with SMTP id e6mr9431358ywc.8.1474016517716;
-        Fri, 16 Sep 2016 02:01:57 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 7si2294175pfw.1.2016.09.16.02.01.57
+Received: by 10.50.32.104 with SMTP id h8ls323924igi.28.canary; Sun, 28 Feb
+ 2016 09:29:57 -0800 (PST)
+X-Received: by 10.66.231.4 with SMTP id tc4mr9880982pac.14.1456680597449;
+        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x22a.google.com (mail-io0-x22a.google.com. [2607:f8b0:4001:c06::22a])
+        by gmr-mx.google.com with ESMTPS id im4si309481igb.2.2016.02.28.09.29.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Sep 2016 02:01:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) client-ip=2607:f8b0:4001:c06::22a;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q2so720895pfj.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Sep 2016 02:01:57 -0700 (PDT)
+Received: by mail-io0-x22a.google.com with SMTP id z135so166502624iof.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:29:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=9cYJ0wp3tSyUWNLAQefF8g4Z1WXgy1raqP8Jg9/egBE=;
-        b=o8CqAsyJ1/LdoGQxef22H8QUwWigHflx1/N9HHsvghljw2JD6ZDCen2ASEoKSprFXZ
-         nUKc8EW6d22h6GhoiCkMCCy6eChsZrpQOhAL9Z6YWazDQMDfVqd1iLueYCCAzP5ciMv5
-         EufPyeIwNiZQ72r4OAN4tyCGMvQRjSTso5T0zkTYUtXTQ7NPoyXy12qhBRErkf7duUUs
-         A+81rT92b5PhLvxosEQszTG+7va1ZwZZOcbiwUuJ1N52y9BudNgcdZvDqTu0hwcf8HBo
-         0/0kn8Ei34SkPs4XeVhi54z++9vFyXQbbbx8FXe7LUxq+K6SZ4b0BN71xyXzRJtSi+zc
-         4LZA==
+        bh=r87aBFPENG7B4jfvLg8mRY61yrnIewJIscHDKzUyYFY=;
+        b=KJvQX+/2vXYPQDBtaAl2MU9cbsKYq6wm+w3f49YJvnOkSm7aSKD2z7ARi0VV27OXe8
+         jqEV7fh+dzXaTT/5wDlf2xIBZRm+C6Tey2wAGx5vd/Mvdp8OTHrZtDuky5jo/XPmLtnr
+         k1KzeME5GrV/tArQvnlrx/2zcmATqEk1pJwHH5C+9SjQ+4M5gIYMmUU60vy/yeCGfA+3
+         0WKjem1FAIv8Jl6JYqJbu+D1c437L7AgvNZLSsg3rieoRpaDyN+/+0A8aSih6VkMKAA3
+         sbpgI1RLusnAG42vzpjG3z7Eriet4C3xNOUv5E46ptysIEA9uZ00Bce35KlD+sU2dLLl
+         eUNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=9cYJ0wp3tSyUWNLAQefF8g4Z1WXgy1raqP8Jg9/egBE=;
-        b=ZJiUlIGKhS1ZeJUVDIrZRVvNXpQUy8Lb3tTu2pQgJXR8ZWjZR8AEKWXDL8agRkG4IV
-         0fWUpze81sAVfyZd6AOWD2fUQCtMQLFF5IaMVAFf5n/gFrn6O2GNAq3uOwVgnwgoSVZ1
-         YliSY/2IkIh0OLHXgST4LC01knYC3+O2pC4gtlDjbK7w+0ITGSHJwbt4/GwlqM222ebe
-         s2ZD5NyPq82LznS06NXLHVBMjCF/7QQCgaejwHYtcoiiBIwH0zTDlPhf9pFmYTT3HYyt
-         Ao9PP+vnOOFG6PVO3r5xdU+Hsgm2NEYcu0rPGITvHhzr5D1g18k7VU2t0s5G4fwIOQW8
-         st0A==
-X-Gm-Message-State: AE9vXwPshyu1gqAdMBKOnQg9ElOFXJ70OcQpYAh0kqxrTO7RRr2Cifzry0wijaKWN+pBXQ==
-X-Received: by 10.98.80.136 with SMTP id g8mr7651242pfj.185.1474016517298;
-        Fri, 16 Sep 2016 02:01:57 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([182.70.17.88])
-        by smtp.gmail.com with ESMTPSA id o5sm50478088pfb.9.2016.09.16.02.01.54
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Sep 2016 02:01:56 -0700 (PDT)
-Date: Fri, 16 Sep 2016 14:32:32 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        bh=r87aBFPENG7B4jfvLg8mRY61yrnIewJIscHDKzUyYFY=;
+        b=IparRhjfwQ/gJNICCaLqe9ap9V61il0ggNL8HfShSsdQoWjw/vAp2a3DtuYxTQBwoT
+         HWM6o13e7+0OuwK6tSYYlLYd5b5CUNaV4KvQdCiuQwqKQHtrsOxrGC5QTKmxGEvq2gFb
+         9r8tuQeVpbfSgCbzkd7iuHjLH8sEf0dUChRTNSgJKZCN4Re5rPm9drp5fXZYg9PSzWNi
+         K91xwGseGE153mLIxx5t4+r7YndC6WnhPv8oVAtTeCPs2ib6i3VF63Eq+Lr1RPp89Kg/
+         bgtZP5UiiKYW6YeaWc314rmmEjpLaNuU0w5eB5OtE0T45YmbYW85Co1qiiZB5M9ImLHw
+         hz5Q==
+X-Gm-Message-State: AG10YOTCRReZyRapYYpohc3axtPXLE9iKsRZCB6PbzFR/1Pm04fW1y84IsvJ4HNIryKFqg==
+X-Received: by 10.107.36.80 with SMTP id k77mr16094437iok.121.1456680597265;
+        Sun, 28 Feb 2016 09:29:57 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id dl1sm5347994igc.22.2016.02.28.09.29.56
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 09:29:56 -0800 (PST)
+Date: Sun, 28 Feb 2016 17:29:07 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: thomas.petazzoni@free-electrons.com, noralf@tronnes.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: fbtft: Use !x instead of x == NULL.
-Message-ID: <20160916090231.GA3940@sandhya>
+Subject: [PATCH] staging: lustre: lnet: Use list_for_each_entry()
+Message-ID: <20160228222906.GA8781@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use !x instead of x == NULL.
-This issue was found by checkpatch.
+Use list_for_each_entry() rather than a combination of list_for_each()
+and list_entry(). Also, remove variable pacer which becomes
+useless as a result of the transformation.
+Semantic patch used:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+@a@
+expression pos,  head;
+expression mem;
+type t;
+identifier var;
+iterator name list_for_each_entry, list_for_each;
+@@
+
+- list_for_each(pos, head)
++ list_for_each_entry(var, head, mem)
+  {
+   ... when != var
+-  var = \(list_entry \| container_of\)(pos, t, mem);
+   ... when != pos
+  }
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/fbtft/fbtft_device.c |    6 +++---
- 1 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/lustre/lnet/selftest/conrpc.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fbtft_device.c b/drivers/staging/fbtft/fbtft_device.c
-index 924abd3..e921183 100755
---- a/drivers/staging/fbtft/fbtft_device.c
-+++ b/drivers/staging/fbtft/fbtft_device.c
-@@ -1401,7 +1401,7 @@ static int __init fbtft_device_init(void)
- 	long val;
- 	int ret = 0;
+diff --git a/drivers/staging/lustre/lnet/selftest/conrpc.c b/drivers/staging/lustre/lnet/selftest/conrpc.c
+index b02a140..7e607f8 100644
+--- a/drivers/staging/lustre/lnet/selftest/conrpc.c
++++ b/drivers/staging/lustre/lnet/selftest/conrpc.c
+@@ -1332,7 +1332,6 @@ lstcon_rpc_cleanup_wait(void)
+ {
+ 	lstcon_rpc_trans_t *trans;
+ 	lstcon_rpc_t *crpc;
+-	struct list_head *pacer;
+ 	struct list_head zlist;
  
--	if (name == NULL) {
-+	if (!name) {
- #ifdef MODULE
- 		pr_err("missing module parameter: 'name'\n");
- 		return -EINVAL;
-@@ -1418,14 +1418,14 @@ static int __init fbtft_device_init(void)
+ 	/* Called with hold of global mutex */
+@@ -1340,10 +1339,8 @@ lstcon_rpc_cleanup_wait(void)
+ 	LASSERT(console_session.ses_shutdown);
  
- 	/* parse module parameter: gpios */
- 	while ((p_gpio = strsep(&gpios, ","))) {
--		if (strchr(p_gpio, ':') == NULL) {
-+		if (!strchr(p_gpio, ':')) {
- 			pr_err("error: missing ':' in gpios parameter: %s\n",
- 			       p_gpio);
- 			return -EINVAL;
- 		}
- 		p_num = p_gpio;
- 		p_name = strsep(&p_num, ":");
--		if (p_name == NULL || p_num == NULL) {
-+		if (!p_name || !p_num) {
- 			pr_err("something bad happened parsing gpios parameter: %s\n",
- 			       p_gpio);
- 			return -EINVAL;
+ 	while (!list_empty(&console_session.ses_trans_list)) {
+-		list_for_each(pacer, &console_session.ses_trans_list) {
+-			trans = list_entry(pacer, lstcon_rpc_trans_t,
+-					   tas_link);
+-
++		list_for_each_entry(trans, &console_session.ses_trans_list,
++				    tas_link) {
+ 			CDEBUG(D_NET, "Session closed, wakeup transaction %s\n",
+ 			       lstcon_rpc_trans_name(trans->tas_opc));
+ 
 -- 
-1.7.1
+2.5.0
 
 
