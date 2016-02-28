@@ -1,87 +1,119 @@
-X-GM-THRID: 6253750869458681856
-X-Received: by 10.50.183.39 with SMTP id ej7mr6877192igc.3.1456064840644;
-        Sun, 21 Feb 2016 06:27:20 -0800 (PST)
+X-GM-THRID: 6256350272839221248
+X-Received: by 10.140.101.242 with SMTP id u105mr27092567qge.12.1456682109936;
+        Sun, 28 Feb 2016 09:55:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.24.225 with SMTP id x1ls524770obf.81.gmail; Sun, 21 Feb
- 2016 06:27:20 -0800 (PST)
-X-Received: by 10.182.33.42 with SMTP id o10mr21964444obi.12.1456064840348;
-        Sun, 21 Feb 2016 06:27:20 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
-        by gmr-mx.google.com with ESMTPS id 12si2627228pfb.1.2016.02.21.06.27.20
+Received: by 10.50.66.230 with SMTP id i6ls302724igt.39.gmail; Sun, 28 Feb
+ 2016 09:55:09 -0800 (PST)
+X-Received: by 10.98.42.67 with SMTP id q64mr9744570pfq.9.1456682109657;
+        Sun, 28 Feb 2016 09:55:09 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-ig0-x243.google.com (mail-ig0-x243.google.com. [2607:f8b0:4001:c05::243])
+        by gmr-mx.google.com with ESMTPS id p10si885678igg.1.2016.02.28.09.55.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 06:27:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
+        Sun, 28 Feb 2016 09:55:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) client-ip=2607:f8b0:4001:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::243 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22e.google.com with SMTP id q63so77950838pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 06:27:20 -0800 (PST)
+Received: by mail-ig0-x243.google.com with SMTP id sv7so7489433igc.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:55:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=VrqSXO2d02I+KPsoviVva/zz5GsQmfbmEIP0kYUP118=;
-        b=js3/CsKrBwYuyOR8VFA9Ylaw2yIf4WvwFaKGuNsPbuFFtLPgkBbeIHghpnEEdDgt9W
-         MDmHBnhlURMaJAtdTYcc562fjULaJWV+w2kw3cIZYoMnnnqHcgqc3CqnZWw/8Pt3nZjV
-         vROqFwg5GLXvqNf9B7k4fYA50oyo6zwHGYAzqM6E6biEmAXXQxRCY1pdk8192xpmvDk5
-         e/JAl/lFD4pTSSDskkRrCtmvI57cHoMG+Y2XhQpgke+MPbgdFcsRwjxLV010uXh14lLb
-         aW2LorlU5YH7lJa1Oo8Y8EQuWdwKYUQyHT8WOGB/1kUsrLsY0rs9a98K0hkpAnK3HIlt
-         oFcw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=L1SRqKDYH0/q9pGE7xmNCasrOuMO7eg17BYU9OseSbk=;
+        b=wofLSWra2VbbEoj5pXpoS4XsireEEt+D+JYEslEkDC6JYwX6rPUiC8qt5wphLYzC5x
+         gHl5h7jB3kS7wAzhbruZPn6vFAdgoVLpUvrNxExbq3T9DgLFHvjqRK4111oxqwZfMgYZ
+         Ytfx4Vh37CGUVFt9ZNjOEjlkec4XbCMdUeNYJSP2X0zo7K4AUO/QH13aJB4zBKXcyiP7
+         nsYsaiFzKBCvk69942qqP/307EwBt5wCqGD8WyXJBi5IJCMBU+NpuKtOUk1IHGjkCbya
+         LYmJ0C7SUXCfH6Szxi0hmbutiTVL3FlaDCwBW1hjAprhncuIAI0pEJk45fenYqE/g3we
+         PvAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=VrqSXO2d02I+KPsoviVva/zz5GsQmfbmEIP0kYUP118=;
-        b=epWlcHQZw4S+3xkgiSCW6ckMCK2E2AnzphKItExrmrdt2tD/rjqhTIP/iRYofJWgt8
-         CGN/3XeyY1el6c6+TxXQZE/24BS8wy1XiLqqC+S5LYEMaP5r6+Rbio2X+6/v8rcCd2zY
-         y5KfctMwMGV+AjFWyTwa2GoSZ4DAv1UCqQSknXGQ9tz5YxuSao9trIGDQu2B49HgGfMV
-         c9UeF8Onk6ZOluxRsn95yg1WcgG5+dKfUryBGNN4o63lLeI3qf2JgsnJcU0VMEoO9Z+/
-         CiyxpnZTyGrDs5lj3G2TEojCPkhsHtFxGhEfD6eY7QwFFzJYpICv5EDwkGh4xQxq1f8j
-         NSvg==
-X-Gm-Message-State: AG10YOQvNsf6oo1BeEQEGMYVltXySBIvi2fdD3iMsOYpySgXd+qJ0KUzzI2IinkgXwH+Hg==
-X-Received: by 10.98.0.148 with SMTP id 142mr31498763pfa.84.1456064840206;
-        Sun, 21 Feb 2016 06:27:20 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.31])
-        by smtp.gmail.com with ESMTPSA id yh5sm30572352pab.13.2016.02.21.06.27.18
+         :content-disposition:user-agent;
+        bh=L1SRqKDYH0/q9pGE7xmNCasrOuMO7eg17BYU9OseSbk=;
+        b=h/wq0nGzaJZh3tEJX0fLLtG/QQHloJy9zgi1dX6E8ahieDaWZgmBh54xuPE6Ncr+MY
+         1ekN4vRLjPyxQ3Z8qGBGvydCBES9aCoxk16dV9lclvAXHUG57O0/geCT8xYhRQXxNgsu
+         XOpyJ4Yy+g1/kypuI5USXc+QTMlCbjqDQ2MlT6Pk/k3/sP/WYI9aXYOdps9Yv2BQzpCr
+         1C+XUlcMbvq/kJZe6i2lw3xo9oPrFtrMxgFgwNZENLlVfmBtqegLa6NmGIxYMZqg2Hvs
+         QQe4qNke0ZA35s6R3ZQv60KmCTwxF9GiAJSDFjb0nO3TU7WQ7buv72ClLyFSEgSLbaLA
+         eb8A==
+X-Gm-Message-State: AD7BkJKVYa0guZ+FMu+mdCWXioSxoFbCrXEHEaJyuQ4A4s2+GK92MM2uxRxqZkIMPJIVtQ==
+X-Received: by 10.50.8.42 with SMTP id o10mr1066850iga.59.1456682109449;
+        Sun, 28 Feb 2016 09:55:09 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id j10sm5382143igx.15.2016.02.28.09.55.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 06:27:19 -0800 (PST)
-Date: Sun, 21 Feb 2016 11:57:04 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 09:55:08 -0800 (PST)
+Date: Sun, 28 Feb 2016 17:54:01 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: Replace comparision  "page != NULL" to
- "page"
-Message-ID: <20160221062704.GA3416@sandhya>
+Subject: [PATCH v2] staging: rtl8723au: os_dep: Use list_for_each_entry_safe()
+Message-ID: <20160228225401.GA9879@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Replace comparision  "page != NULL" to "page"
+Use list_for_each_entry_safe() rather than a combination of
+list_for_each_safe() and container_of(). Also, remove variable plist
+which becomes useless as a result.
+Semantic patch used:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+@a@
+expression pos, n, head;
+expression mem;
+type t;
+identifier var;
+iterator name list_for_each_entry_safe, list_for_each_safe;
+@@
+
+- list_for_each_safe(pos, n, head)
++ list_for_each_entry_safe(var, n, head, mem)
+  {
+   ... when != var
+-  var = \(list_entry \| container_of\)(pos, t, mem);
+   ... when != pos
+  }
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/lustre/lustre/obdclass/cl_page.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v1:
+  *Removed variable plist.
+  *Changed semantic patch.
 
-diff --git a/drivers/staging/lustre/lustre/obdclass/cl_page.c b/drivers/staging/lustre/lustre/obdclass/cl_page.c
-index 61f28eb..88ee72b 100644
---- a/drivers/staging/lustre/lustre/obdclass/cl_page.c
-+++ b/drivers/staging/lustre/lustre/obdclass/cl_page.c
-@@ -284,7 +284,7 @@ static struct cl_page *cl_page_alloc(const struct lu_env *env,
- 	struct lu_object_header *head;
+ drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
+index 908b84c..b4bcaa8 100644
+--- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
+@@ -1945,7 +1945,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 				struct cfg80211_connect_params *sme)
+ {
+ 	int ret = 0;
+-	struct list_head *phead, *plist, *ptmp;
++	struct list_head *phead, *ptmp;
+ 	struct wlan_network *pnetwork = NULL;
+ 	/* u8 matched_by_bssid = false; */
+ 	/* u8 matched_by_ssid = false; */
+@@ -1994,8 +1994,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
  
- 	page = kzalloc(cl_object_header(o)->coh_page_bufsize, GFP_NOFS);
--	if (page != NULL) {
-+	if (page) {
- 		int result = 0;
+ 	phead = get_list_head(queue);
  
- 		atomic_set(&page->cp_ref, 1);
+-	list_for_each_safe(plist, ptmp, phead) {
+-		pnetwork = container_of(plist, struct wlan_network, list);
++	list_for_each_entry_safe(pnetwork, ptmp, phead, list) {
+ 
+ 		if (sme->bssid) {
+ 			if (!ether_addr_equal(pnetwork->network.MacAddress,
 -- 
-1.8.3.4
+2.5.0
 
 
