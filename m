@@ -1,81 +1,82 @@
-X-GM-THRID: 6330206452247953408
-X-Received: by 10.157.40.151 with SMTP id s23mr2268828ota.39.1473866042492;
-        Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
+X-GM-THRID: 6256430192250585088
+X-Received: by 10.66.193.131 with SMTP id ho3mr10205308pac.42.1456691449075;
+        Sun, 28 Feb 2016 12:30:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.20.137 with SMTP id d9ls1257921ote.26.gmail; Wed, 14 Sep
- 2016 08:14:02 -0700 (PDT)
-X-Received: by 10.157.45.54 with SMTP id v51mr2310499ota.45.1473866042114;
-        Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id h124si1297492pfe.0.2016.09.14.08.14.02
+Received: by 10.140.29.136 with SMTP id b8ls802336qgb.96.gmail; Sun, 28 Feb
+ 2016 12:30:48 -0800 (PST)
+X-Received: by 10.140.217.17 with SMTP id n17mr10201142qhb.30.1456691448264;
+        Sun, 28 Feb 2016 12:30:48 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id 12si3219996pfb.1.2016.02.28.12.30.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sun, 28 Feb 2016 12:30:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id oz2so865861pac.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id t66so3540392pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 12:30:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=WNDsOVc3qIkWPLn3Y10LGc6MtZ+jQvCzxlwLxG3rj34=;
-        b=ROVdvzGA/6NbAWJf4D1vhHeyZasO579312zlkqcM7DtKZCVyB2WMubosCurm2jl/rt
-         ZNTxy/X1Lat0Ci3E4LAl3roSea0XNbWmgev2kDJSEDnHGzUvGw9J4odvbZTuChgeLi3C
-         NKAy8T1zX5k90N0CIxJpFZ+TwyvJjC+nak7qYBEwN19aW4HjM36w98KH+8zTo5ZQ8SNW
-         jpUjBVWXGRxIk3UaRIk/foQ7UH77xomZmVe4rBJofaNHhEmNCcOrDFp1/Hjx9riz9SxS
-         S4A9zhv3M9BzEmh4SEC9CHZtiTR3JsEk89K2mj3aO4TxLSjVvTAsAX/Xmtnt5rQGvLzL
-         zCbw==
+        bh=P5a7xoiR4VtURAH+gqFAIkOpw32MktYQyKwwd6TXWXE=;
+        b=dzhy0jnR3bZoO+gn2q9yoiH+iCherUwAfmbiFl2ESaboPN6SZeMpYEti/RVxlnrodR
+         gYWI0zFVRb6HHUFNgpHLKvIhTYaKsqRqgGtCGik9Rp4eaFVaTOXB7xK2T1c6CkVsgTym
+         CmNid/wIPRZfFTTGA/aPJtzeZ9iNnu2WLE9UhyC6qFYp763zWARfd5Xay/MrH38L17+v
+         PUfuzgbWBGexWwnHgmHvc5Ce7xk5PK173jWTM+CA2+DArbgJeQkm6Tm3c+vngClIkc25
+         nIhCczfjhYlDWWmHGyNNPdBtmuQ+EeK40J2PGcN1FQJId6U9JHgtZLSG+2nV1KiMyQps
+         2AWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=WNDsOVc3qIkWPLn3Y10LGc6MtZ+jQvCzxlwLxG3rj34=;
-        b=I43qocTYFOdnfGPuPSTWwUJjdY5jwbXlpbRRMPgvSNO8+D2s9qxryblmdpZBavMFSK
-         e8QFssy2bcur9b/Y6baTogNz/Ew2PiNdK2QsmcDK2f4j6eYyVt8HkDTehUHIvsFjTSZP
-         /El0VDrEGlh7wWe12naIRL0eGmwi7qSUGdbw+Q3HLYO1TJSDfC8gZ+Lszbld+Byi5HY/
-         dWFcvvy3xPTAWpBIE0sVHXrSrtF0CoVi8hGA6u4Qhxf03RFUgxLeHZEUuKg5MFSDSOB0
-         5OMVlloL3dbpBHwoQQ+ppcgSc9P+x3GIC5wt91ncrdNfHiLFneeOGMMcwQuY1/FOUzjy
-         /2NA==
-X-Gm-Message-State: AE9vXwPhDVQJ2lHvWzFoVNjLSdiys057qsckMwfxbVjr2ss0z9OL0b2BcafnPtK+k7/5SA==
-X-Received: by 10.66.185.232 with SMTP id ff8mr5444566pac.12.1473866041716;
-        Wed, 14 Sep 2016 08:14:01 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.22])
-        by smtp.gmail.com with ESMTPSA id 70sm6176285pfn.46.2016.09.14.08.13.59
+        bh=P5a7xoiR4VtURAH+gqFAIkOpw32MktYQyKwwd6TXWXE=;
+        b=iXRar+VOyDrDMpP6DlTf2kjG1HLok69u/YIs9nqwuonYxGMNRb4COsNk6NFii2CKak
+         9Ao/IePnH0gsw35+HFaVYrvxcNbWcrZZ3jWNzzAIdI/yrwG8tSfu8yNqZn3+MvNkfOf9
+         +m07OEZYvAr2jZd5L/xR9G/2eVytGDQLsL+aB6uCkThXXOwGus5vQWGfvPuBSTF8ZFqJ
+         En2XNoJFIeGS5CqutLH5lyM3tA5yHo7FUG48gblFK5CMcc9PGTOtbXLulfy9DrGpl6zo
+         b0s2duGD5XbebSFkP5HE6uz6inX5zQ844ys7FSuT3nEVQu8H9lOCWIohNJdI5ORLpKPH
+         9jTA==
+X-Gm-Message-State: AD7BkJLR3MfL34KhhsPStBxieGR5lCVa6CHpcvtjOmpylL8enLzYZ99zyLRwGz7s3PMTpg==
+X-Received: by 10.98.9.219 with SMTP id 88mr17896995pfj.0.1456691447904;
+        Sun, 28 Feb 2016 12:30:47 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id u64sm32894133pfa.86.2016.02.28.12.30.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 08:14:01 -0700 (PDT)
-Date: Wed, 14 Sep 2016 20:43:50 +0530
-From: Anchal Jain <anchalj109@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 12:30:47 -0800 (PST)
+Date: Mon, 29 Feb 2016 01:58:00 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] Fix multiple warnings
-Message-ID: <20160914151342.GA9765@life-desktop>
+Subject: [PATCH v3 0/4]  Remove NULL test before vfree
+Message-ID: <20160228202800.GA2588@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-/tmp/0001-drivers-bluetooth-bfusb-Line-over-80-characters-in-c.patch
-/tmp/0002-drivers-bluetooth-bfusb-Line-over-80-characters-in-f.patch
-/tmp/0003-drivers-bluetooth-bfusb-Line-over-80-characters-in-s.patch
+This patch-set removes NULL test before vfree
 
+Bhaktipriya Shridhar (4):
+  staging: rts5208: Remove NULL test before vfree
+  staging: rtl8188eu: core: Remove NULL test before vfree
+  staging: rtl8188eu: os_dep: Remove NULL test before vfree
+  staging: rtl8192e: Remove NULL test before vfree
 
-Anchal Jain (3):
-  drivers: bluetooth: bfusb: Line over 80 characters in conditional
-    stataments
-  drivers: bluetooth: bfusb Line over 80 characters in function
-  drivers: bluetooth: bfusb: Line over 80 characters in statments
+ drivers/staging/rtl8188eu/core/rtw_recv.c    |  3 +--
+ drivers/staging/rtl8188eu/core/rtw_sta_mgt.c |  3 +--
+ drivers/staging/rtl8188eu/os_dep/usb_intf.c  |  2 +-
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c |  6 ++---
+ drivers/staging/rts5208/ms.c                 | 30 ++++++++---------------
+ drivers/staging/rts5208/xd.c                 | 36 ++++++++++------------------
+ 6 files changed, 27 insertions(+), 53 deletions(-)
 
- drivers/bluetooth/bfusb.c | 39 ++++++++++++++++++++++++++-------------
- 1 file changed, 26 insertions(+), 13 deletions(-)
-
--- 
-1.9.1
+--
+2.1.4
 
 
