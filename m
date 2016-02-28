@@ -1,103 +1,113 @@
-X-GM-THRID: 6949336424403435520
-X-Received: by 2002:a02:c8d4:: with SMTP id q20mr17338239jao.90.1618018472158;
-        Fri, 09 Apr 2021 18:34:32 -0700 (PDT)
+X-GM-THRID: 6256312431836921856
+X-Received: by 10.112.158.138 with SMTP id wu10mr1103455lbb.11.1456672347907;
+        Sun, 28 Feb 2016 07:12:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:f009:: with SMTP id w9ls1763968ioc.11.gmail; Fri, 09 Apr
- 2021 18:34:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOhaEuyD/1AVbF3SFYtBXeVxSjsudSxDr6SJTYgD+jQCZoYC+YxLmbifvxCxVR+uN4cPz4
-X-Received: by 2002:a5d:8d12:: with SMTP id p18mr14159759ioj.31.1618018471404;
-        Fri, 09 Apr 2021 18:34:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618018471; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0Yovl4A5g/VkQVMN8ENNDWDbspbzIoy+1XgFnMgCAPBc0CfnaVxT+54MQV9qQzJYeW
-         tTDxHMmjcAuLUYtvBrG9/p9wWx6IyPadVf2eVT0nBLEQwAgzoPx1k4pbS7Cc41ThyOAQ
-         VEl7h0E9cVl82ZNnRg3vQRNOL5wMNQod2QFVQRYeWncDl7UhPqiJyQ/RAdG7ZKTguQ63
-         v/6YlARFKShqc+XpugWn/sVZW6ybMgncjquU18xZBhSJJ6mD1CE5mofOzyC8cf1o4Myq
-         HzQCA4HQuxXM5FtzkkvOepvLk8GTUVYvBpacZKQE14OpFtNQ1FFCIiX8CuRykpp6Jr6r
-         QPyw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Wsw3laNKp4K1pOr1JmqRCZTS7mmbPQQcq1XguLZwJWk=;
-        b=njTQpfc9U4RgQkaohxwK6ttG7q/tbk6gx+NbcSP6bX9Bcn6pbJJBooFh5rc+geUQY4
-         OT1w0dUsUXpd9QGmVk7/q5WOJi0zxE1ExFMCEXW4Aiw30cq0H/cJmzdogJsmMii3vZY6
-         PHxKm+U49hb/EoSaE/PFKHEsifnlnRTraU6utDkhUNpy0vclS58+dVr3WcPXEfMVx0lO
-         F8owRkzgJdaiYCp3PfEAkCy2VmAgprXw7kqieAn/yHGJzfk0CiNVf0bpkbT6ODwVw+rf
-         /s3dTC32FoV90c2k1VGBUTwOJ/6QCNgxN57B0/2/9CnyffpYo99kMHVLhKHL5uNTCrRM
-         y/sg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mPl5ou5U;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pg1-x535.google.com (mail-pg1-x535.google.com. [2607:f8b0:4864:20::535])
-        by gmr-mx.google.com with ESMTPS id x7si183605iow.2.2021.04.09.18.34.31
+Received: by 10.25.141.206 with SMTP id p197ls353152lfd.44.gmail; Sun, 28 Feb
+ 2016 07:12:27 -0800 (PST)
+X-Received: by 10.112.138.98 with SMTP id qp2mr1165082lbb.4.1456672347080;
+        Sun, 28 Feb 2016 07:12:27 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id w197si466218wmw.3.2016.02.28.07.12.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Apr 2021 18:34:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) client-ip=2607:f8b0:4864:20::535;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 07:12:27 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mPl5ou5U;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x535.google.com with SMTP id t22so5201115pgu.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 18:34:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=Wsw3laNKp4K1pOr1JmqRCZTS7mmbPQQcq1XguLZwJWk=;
-        b=mPl5ou5UDi5gzboKS8ESlunB9Caylq8iYe9f7S8SqpJIPLD6c/nmaPw8xccBUo4m6N
-         cC1+DwpUg+98fmJlDR0TwsDVU4AVJBw7KFPd5Aj5SJvplHRM5uQ8UmuZ/JJoQcDJGby1
-         UCwdZE6snEEXhQc590gMigbKKc8hi6vvH/RqgEpYUa5QzggXv/ENL2PB9IAhF3+SB5/i
-         0N49haiU3Dyrh5juc4xdgfM5HZL8U7gZUUsDuzjKEb+/R9mcT3HyL0COxDPEQAQ3KH4m
-         bXwZvCN/g7cgRaaqigirMy4DZPQMPCadrDeQ3S9b0WM6+avpMJQsbtwRxq38OhAhRvXM
-         AN6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=Wsw3laNKp4K1pOr1JmqRCZTS7mmbPQQcq1XguLZwJWk=;
-        b=JL0hFBMs6oHapejn3lCiFLtYW2dqbEEAwoR4mzawcqjrPP/0Usps4/1ROHzqqmZSG9
-         Z4kUuhTeUEzVRaSqgQNCQJLzJ3EXorVin2JiQHFPCN58qVhcxflP/IwH2XKwKWX17vw7
-         Eltqd9sSp779OcQLi6y5hJhp9XFdfdCeyZDeAjsdvhL066xqjKPmtIdmkwC43JnMWzdh
-         9fw+JmAe77UC//cZ3VQSWjvHaOoNTrrRawo4KNxzt4iVFCQ3c/kla7acg27KChiuZB+S
-         x82Q6Oxdu9RHf31jLi0lawRmAlASF6RuQff9TZUi0JbUAzfWqi4WCqVZysVtXNM8t0D0
-         gkZQ==
-X-Gm-Message-State: AOAM5314MsIWLq3gm/9FUPgtr9mcM1RMJHXOShKov7oCe+UGGgApJRDG
-	PbkASM7syhN8UfuURLYM6TIZXHa5KunBFw==
-X-Received: by 2002:aa7:98c9:0:b029:242:18fc:562d with SMTP id e9-20020aa798c90000b029024218fc562dmr14420057pfm.39.1618018470710;
-        Fri, 09 Apr 2021 18:34:30 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id u14sm3179714pji.15.2021.04.09.18.34.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Apr 2021 18:34:30 -0700 (PDT)
-Date: Sat, 10 Apr 2021 07:04:23 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH 0/6] staging: rtl8192e: cleanup patchset for style issues
-Message-ID: <YHEAnyO11wgp5PNZ@kali>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,515,1449529200"; 
+   d="scan'208";a="166238123"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Feb 2016 16:12:26 +0100
+Date: Sun, 28 Feb 2016 16:12:25 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rdma: hfi1: Remove unused
+ variables
+In-Reply-To: <CAFNHFT-62UL2y6ywK3LCba_YeogBUst+Sj=p4=zCEsk1YY4+Mg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1602281611010.2147@localhost6.localdomain6>
+References: <20160228120441.GA16843@Karyakshetra> <alpine.DEB.2.02.1602281333400.2147@localhost6.localdomain6> <CAFNHFT-62UL2y6ywK3LCba_YeogBUst+Sj=p4=zCEsk1YY4+Mg@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patches fix the cleanup style issues.
 
-Mitali Borkar (6):
-  staging: rtl8192e: add spaces around binary operators
-  staging: rtl8192e: remove unnecessary blank line before brace
-  staging: rtl8192e: remove unncessary blank line after brace
-  staging: rtl8192e: matched alignment with open parenthesis
-  staging: rtl8192e: removed multiple blank lines
-  staging: rtl8192e: align statements properly
 
- drivers/staging/rtl8192e/rtl819x_HTProc.c | 43 +++++++++--------------
- drivers/staging/rtl8192e/rtl819x_TSProc.c | 28 +++++++--------
- 2 files changed, 29 insertions(+), 42 deletions(-)
+On Sun, 28 Feb 2016, Bhaktipriya Shridhar wrote:
 
--- 
-2.30.2
+> Hello Julia,
+> 
+> Yes, I have compiled this with the kernel code. It compiled successfully.
 
+OK, maybe you don't have the right compilation options.  Because if you 
+look a few lines below the code in this patch, you will see calls to 
+sdma_dumpstate_helper0 and sdma_dumpstate_helper2, which are defined right 
+above the function and use csr.
+
+csr looks like a register name, which made me suspicious.
+
+julia
+
+> 
+> Thanks,
+> Bhaktipriya
+> 
+> On Sun, Feb 28, 2016 at 6:04 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> > On Sun, 28 Feb 2016, Bhaktipriya Shridhar wrote:
+> >
+> >> The variable csr has not been used anywhere in the function
+> >> sdma_dumpstate(). Hence, it has been removed.
+> >>
+> >> This was done with Coccinelle:
+> >>
+> >> @@ type T; identifier i; constant c; @@
+> >> -T i;
+> >> <... when != i
+> >> -i = c;
+> >> ...>
+> >>
+> >> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> >> ---
+> >>  drivers/staging/rdma/hfi1/sdma.c | 1 -
+> >>  1 file changed, 1 deletion(-)
+> >>
+> >> diff --git a/drivers/staging/rdma/hfi1/sdma.c b/drivers/staging/rdma/hfi1/sdma.c
+> >> index 9a15f1f..2b2af94 100644
+> >> --- a/drivers/staging/rdma/hfi1/sdma.c
+> >> +++ b/drivers/staging/rdma/hfi1/sdma.c
+> >> @@ -1769,7 +1769,6 @@ static void init_sdma_regs(
+> >>
+> >>  void sdma_dumpstate(struct sdma_engine *sde)
+> >>  {
+> >> -     u64 csr;
+> >>       unsigned i;
+> >>
+> >>       sdma_dumpstate_helper(SD(CTRL));
+> >
+> > Are you absolutely sure that you have compiled this code?  Note that this
+> > code is under an ifdef, so just having compiled the file may not be good
+> > enough.
+> >
+> > julia
+> >
+> >> --
+> >> 2.1.4
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160228120441.GA16843%40Karyakshetra.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAFNHFT-62UL2y6ywK3LCba_YeogBUst%2BSj%3Dp4%3DzCEsk1YY4%2BMg%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
