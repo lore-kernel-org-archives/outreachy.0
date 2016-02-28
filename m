@@ -1,192 +1,201 @@
-X-GM-THRID: 6391534013492756480
-X-Received: by 10.98.160.25 with SMTP id r25mr1736981pfe.25.1488144978421;
-        Sun, 26 Feb 2017 13:36:18 -0800 (PST)
+X-GM-THRID: 6256356270602715136
+X-Received: by 10.107.10.217 with SMTP id 86mr14745240iok.6.1456672944119;
+        Sun, 28 Feb 2016 07:22:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.71 with SMTP id j68ls1713470ita.12.canary-gmail; Sun, 26
- Feb 2017 13:36:17 -0800 (PST)
-X-Received: by 10.107.22.4 with SMTP id 4mr4778972iow.61.1488144977651;
-        Sun, 26 Feb 2017 13:36:17 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id c123si2519828pfa.4.2017.02.26.13.36.17
+Received: by 10.107.34.74 with SMTP id i71ls29153ioi.96.gmail; Sun, 28 Feb
+ 2016 07:22:23 -0800 (PST)
+X-Received: by 10.98.0.132 with SMTP id 126mr9302713pfa.2.1456672943764;
+        Sun, 28 Feb 2016 07:22:23 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-oi0-x230.google.com (mail-oi0-x230.google.com. [2607:f8b0:4003:c06::230])
+        by gmr-mx.google.com with ESMTPS id nt4si769745igb.2.2016.02.28.07.22.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 13:36:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 28 Feb 2016 07:22:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) client-ip=2607:f8b0:4003:c06::230;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so1771036pgy.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 13:36:17 -0800 (PST)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-oi0-x230.google.com with SMTP id d205so7727485oia.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 07:22:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=jF/kyaqT1E05NnirARhiOEecEnRh3mpkL/mLePMMefI=;
-        b=B7E99Unqus9rcqXH8dilavEOz9QKC8PUSDYMQOfWrMbfDM7jIarTotmQvdmorJlhrk
-         utpuU99SdHuSGyuiCLdeS8i1nf7tmYfVYp504Br60YMeNiCO8vMpT7Q/O9kX8io5r1nv
-         simqmblAx5b1jmQ4pVAeBgaC1EvgmB9NikVDsqhyMJFTJbEv0aDvxS8Bc6xdD+0xE1dF
-         QFZCyHuVlQSTL1tTb8dHuX9Pg2dbyag5b5TxWQSjrcq9AWNaZ/IN11GHEkbhz0/vy3rz
-         BRorf4WlV7FFF9F6YofZMljK6wg1/BgWrVPpRRbPUPUzLfg9+rPraG/u/L8tRsZ9frKm
-         l2ug==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=xYxxRDoUosxbQ+UTdtg+etxiuj3BzK8uD+UBb5intrg=;
+        b=KhF+NgJQYTeilEvqXJipOwpA7sAw00bKNA0G09PuUuE8+aAl2rP/PcQZkPEkAwcprB
+         Uip8cJnkZ2n19Bd4YnJoWPPTwxud7c7fm15sLt4WmfuRoHePX60m4XhvlYUYxHjql1ny
+         3R37Ruvwk0XeMnZ9RcuhjhAiu+6i09a2R6UjtIhWBXVKXC13344tyL2Qtc6DKBwfqR1f
+         Me+KVcaj8fNtoPES7EK6bgkg160KeXRhcjbJGkj+YEteyZuBXiTIPFE4RUaaC+08H7fZ
+         OVo5TzkC7SFVlQdq/U4x7HCuA5X9/HDO795rp6n6Llp7HaNJEN0ZbIHzuAW+7T2dBcN4
+         EIfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=jF/kyaqT1E05NnirARhiOEecEnRh3mpkL/mLePMMefI=;
-        b=JAWOdselJC1DnT8hrAkinyijjYAtPBLpMCE6hjPC0mlLYfHvSWy04+2bhMIbqzz0W6
-         EXhAqTe4OysXjPjluDw/ih79eXdDVZVbq8sNBly0WtIT7I/OLJFKXdhxOSnrfKSjEIkr
-         yYBmbeKkRHArxXR4BkYmzHy8lWi2CMxyEZLBkY5MUxVAp+dW9AnquV++99rw+ODFMr41
-         hv9vkyn86v1LRHcJChGw+HQKV9ArIwjr0URdGSrfqK6iSwpnpWjzGVa10zroxvLBaCkH
-         AO56wRiZdSKgUWKimq8BoKOI5gazqRJj06oCaZGUbTTPM6sbLwSihNlk2HaRceb5RA+/
-         jpYQ==
-X-Gm-Message-State: AMke39nGC73nqkbgQ3MZglRLfnLu1voxWPFDs/TBN1wu+XiPYM93XYEWnIElE0A7C94KtA==
-X-Received: by 10.98.33.129 with SMTP id o1mr16827976pfj.5.1488144977142;
-        Sun, 26 Feb 2017 13:36:17 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.187.13])
-        by smtp.gmail.com with ESMTPSA id q73sm12633613pfa.129.2017.02.26.13.36.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 13:36:16 -0800 (PST)
-Date: Mon, 27 Feb 2017 03:05:57 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org
-Subject: [PATCH] staging: iio: ad7192: Move contents of header file to source
- file
-Message-ID: <20170226213557.GA4483@sayli-HP-15-Notebook-PC>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=xYxxRDoUosxbQ+UTdtg+etxiuj3BzK8uD+UBb5intrg=;
+        b=eyiupu/6XLk5Y7l4sS+dYiD6g3b4NEbMrHieVDurDDs0xTaShmKulN5SvA0qMuJ3em
+         nNAAURS076XDGe9YeWJYdVfml+RRcjHx3REFD1hu8V5WpECiQfKte0SIdbACSn6mD5MN
+         0/3V9FuSlIGlpFV114N97EBq29ZK+xdN3KS8N7s1x1OcNr1LoIRT4rCn/h8OT9QOT+/6
+         Zj03t6wNBDk9QexP4eKg3l+onnSxA0MAIZXPwHh3ZlP3Xr1XxS1nzKfAAY8ScTDemk+1
+         xIpJTRsC382DWM/67CteczKq9Ty5SJoRcR9QEBWINeQUXDTVxKdQkqBIT5ENdl7j0e06
+         H/vw==
+X-Gm-Message-State: AD7BkJJs0QgdgZa1FRG2M4GIPmTqgjkzr1/gtOZmclEsGXxvvjvT25iagnpfY93Cgmc5m/nHjb3vzMcXU0bpLw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.202.206.66 with SMTP id e63mr8062626oig.88.1456672943557;
+ Sun, 28 Feb 2016 07:22:23 -0800 (PST)
+Received: by 10.202.200.211 with HTTP; Sun, 28 Feb 2016 07:22:23 -0800 (PST)
+In-Reply-To: <20160228195646.GA6457@janani-Inspiron-3521>
+References: <20160228195646.GA6457@janani-Inspiron-3521>
+Date: Sun, 28 Feb 2016 10:22:23 -0500
+Message-ID: <CANnt6Xkdb=_6_1hj4+5tSZ6mtUAQrLgvUjSjwsi+V2kKnPqEcQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8192u: Prefer list_for_each_entry()
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a113d395c5ad51e052cd61914
 
-The contents of the header file are used only by this single
-source file. Move content into .c and delete .h.
+--001a113d395c5ad51e052cd61914
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/iio/adc/ad7192.c | 38 ++++++++++++++++++++++++++++++--
- drivers/staging/iio/adc/ad7192.h | 47 ----------------------------------------
- 2 files changed, 36 insertions(+), 49 deletions(-)
- delete mode 100644 drivers/staging/iio/adc/ad7192.h
+On Sun, Feb 28, 2016 at 2:56 PM, Janani Ravichandran <
+janani.rvchndrn@gmail.com> wrote:
 
-diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-index 1fb68c0..a13e79d 100644
---- a/drivers/staging/iio/adc/ad7192.c
-+++ b/drivers/staging/iio/adc/ad7192.c
-@@ -25,8 +25,6 @@
- #include <linux/iio/triggered_buffer.h>
- #include <linux/iio/adc/ad_sigma_delta.h>
- 
--#include "ad7192.h"
--
- /* Registers */
- #define AD7192_REG_COMM		0 /* Communications Register (WO, 8-bit) */
- #define AD7192_REG_STAT		0 /* Status Register	     (RO, 8-bit) */
-@@ -166,6 +164,42 @@ struct ad7192_state {
- 	struct ad_sigma_delta		sd;
- };
- 
-+/*
-+ * TODO: struct ad7192_platform_data needs to go into include/linux/iio
-+ */
-+
-+/**
-+ * struct ad7192_platform_data - platform/board specific information
-+ * @vref_mv:		the external reference voltage in millivolt
-+ * @clock_source_sel:	[0..3]
-+ *			0 External 4.92 MHz clock connected from MCLK1 to MCLK2
-+ *			1 External Clock applied to MCLK2
-+ *			2 Internal 4.92 MHz Clock not available at the MCLK2 pin
-+ *			3 Internal 4.92 MHz Clock available at the MCLK2 pin
-+ * @ext_clk_Hz:		the external clock frequency in Hz, if not set
-+ *			the driver uses the internal clock (16.776 MHz)
-+ * @refin2_en:		REFIN1/REFIN2 Reference Select (AD7190/2 only)
-+ * @rej60_en:		50/60Hz notch filter enable
-+ * @sinc3_en:		SINC3 filter enable (default SINC4)
-+ * @chop_en:		CHOP mode enable
-+ * @buf_en:		buffered input mode enable
-+ * @unipolar_en:	unipolar mode enable
-+ * @burnout_curr_en:	constant current generators on AIN(+|-) enable
-+ */
-+
-+struct ad7192_platform_data {
-+	u16		vref_mv;
-+	u8		clock_source_sel;
-+	u32		ext_clk_hz;
-+	bool		refin2_en;
-+	bool		rej60_en;
-+	bool		sinc3_en;
-+	bool		chop_en;
-+	bool		buf_en;
-+	bool		unipolar_en;
-+	bool		burnout_curr_en;
-+};
-+
- static struct ad7192_state *ad_sigma_delta_to_ad7192(struct ad_sigma_delta *sd)
- {
- 	return container_of(sd, struct ad7192_state, sd);
-diff --git a/drivers/staging/iio/adc/ad7192.h b/drivers/staging/iio/adc/ad7192.h
-deleted file mode 100644
-index 7433a43..0000000
---- a/drivers/staging/iio/adc/ad7192.h
-+++ /dev/null
-@@ -1,47 +0,0 @@
--/*
-- * AD7190 AD7192 AD7195 SPI ADC driver
-- *
-- * Copyright 2011 Analog Devices Inc.
-- *
-- * Licensed under the GPL-2.
-- */
--#ifndef IIO_ADC_AD7192_H_
--#define IIO_ADC_AD7192_H_
--
--/*
-- * TODO: struct ad7192_platform_data needs to go into include/linux/iio
-- */
--
--/**
-- * struct ad7192_platform_data - platform/board specific information
-- * @vref_mv:		the external reference voltage in millivolt
-- * @clock_source_sel:	[0..3]
-- *			0 External 4.92 MHz clock connected from MCLK1 to MCLK2
-- *			1 External Clock applied to MCLK2
-- *			2 Internal 4.92 MHz Clock not available at the MCLK2 pin
-- *			3 Internal 4.92 MHz Clock available at the MCLK2 pin
-- * @ext_clk_Hz:		the external clock frequency in Hz, if not set
-- *			the driver uses the internal clock (16.776 MHz)
-- * @refin2_en:		REFIN1/REFIN2 Reference Select (AD7190/2 only)
-- * @rej60_en:		50/60Hz notch filter enable
-- * @sinc3_en:		SINC3 filter enable (default SINC4)
-- * @chop_en:		CHOP mode enable
-- * @buf_en:		buffered input mode enable
-- * @unipolar_en:	unipolar mode enable
-- * @burnout_curr_en:	constant current generators on AIN(+|-) enable
-- */
--
--struct ad7192_platform_data {
--	u16		vref_mv;
--	u8		clock_source_sel;
--	u32		ext_clk_hz;
--	bool		refin2_en;
--	bool		rej60_en;
--	bool		sinc3_en;
--	bool		chop_en;
--	bool		buf_en;
--	bool		unipolar_en;
--	bool		burnout_curr_en;
--};
--
--#endif /* IIO_ADC_AD7192_H_ */
--- 
-2.7.4
+> Use list_for_each_entry rather than a combination of list_for_each and
+> list_entry().
+>
+> Semantic patch used:
+>
+> @a@
+> expression pos, n, head;
+> expression mem;
+> type t;
+> identifier var;
+> iterator name list_for_each_entry, list_for_each_entry_safe;
+> iterator name list_for_each, list_for_each_safe;
+> @@
+>
+> (
+> - list_for_each(pos, head)
+> + list_for_each_entry(var, head, mem)
+>   {
+>    ... when != var
+> -  var = \(list_entry \| container_of\)(pos, t, mem);
+>    ... when any
+>   }
+> |
+> - list_for_each_safe(pos, n, head)
+> + list_for_each_entry_safe(var, n, head, mem)
+>   {
+>    ... when != var
+> -  var = \(list_entry \| container_of\)(pos, t, mem);
+>    ... when any
+>   }
+> )
+>
+> Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> index 9dfde07..7d1edb3 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> @@ -452,8 +452,7 @@ static int is_duplicate_packet(struct ieee80211_device
+> *ieee,
+>                 u8 *mac = header->addr2;
+>                 int index = mac[5] % IEEE_IBSS_MAC_HASH_SIZE;
+>
+> -               list_for_each(p, &ieee->ibss_mac_hash[index]) {
+> -                       entry = list_entry(p, struct ieee_ibss_seq, list);
+> +               list_for_each_entry(entry, &ieee->ibss_mac_hash[index],
+> list) {
+>                         if (!memcmp(entry->mac, mac, ETH_ALEN))
+>                                 break;
+>                 }
+> --
+> 2.5.0
+>
 
+There is an error in this patch. Please ignore this. Sorry.
+
+Janani.
+
+--001a113d395c5ad51e052cd61914
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Sun, Feb 28, 2016 at 2:56 PM, Janani Ravichandran <span dir=3D"ltr">=
+&lt;<a href=3D"mailto:janani.rvchndrn@gmail.com" target=3D"_blank">janani.r=
+vchndrn@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote=
+" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">U=
+se list_for_each_entry rather than a combination of list_for_each and<br>
+list_entry().<br>
+<br>
+Semantic patch used:<br>
+<br>
+@a@<br>
+expression pos, n, head;<br>
+expression mem;<br>
+type t;<br>
+identifier var;<br>
+iterator name list_for_each_entry, list_for_each_entry_safe;<br>
+iterator name list_for_each, list_for_each_safe;<br>
+@@<br>
+<br>
+(<br>
+- list_for_each(pos, head)<br>
++ list_for_each_entry(var, head, mem)<br>
+=C2=A0 {<br>
+=C2=A0 =C2=A0... when !=3D var<br>
+-=C2=A0 var =3D \(list_entry \| container_of\)(pos, t, mem);<br>
+=C2=A0 =C2=A0... when any<br>
+=C2=A0 }<br>
+|<br>
+- list_for_each_safe(pos, n, head)<br>
++ list_for_each_entry_safe(var, n, head, mem)<br>
+=C2=A0 {<br>
+=C2=A0 =C2=A0... when !=3D var<br>
+-=C2=A0 var =3D \(list_entry \| container_of\)(pos, t, mem);<br>
+=C2=A0 =C2=A0... when any<br>
+=C2=A0 }<br>
+)<br>
+<br>
+Signed-off-by: Janani Ravichandran &lt;<a href=3D"mailto:janani.rvchndrn@gm=
+ail.com">janani.rvchndrn@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 3 +--<br>
+=C2=A01 file changed, 1 insertion(+), 2 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/st=
+aging/rtl8192u/ieee80211/ieee80211_rx.c<br>
+index 9dfde07..7d1edb3 100644<br>
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c<br>
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c<br>
+@@ -452,8 +452,7 @@ static int is_duplicate_packet(struct ieee80211_device =
+*ieee,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 u8 *mac =3D header-=
+&gt;addr2;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 int index =3D mac[5=
+] % IEEE_IBSS_MAC_HASH_SIZE;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0list_for_each(p, &a=
+mp;ieee-&gt;ibss_mac_hash[index]) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0entry =3D list_entry(p, struct ieee_ibss_seq, list);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0list_for_each_entry=
+(entry, &amp;ieee-&gt;ibss_mac_hash[index], list) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 if (!memcmp(entry-&gt;mac, mac, ETH_ALEN))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<span class=3D"HOEnZb"><font color=3D"#888888">--<br>
+2.5.0<br></font></span></blockquote><div><br></div><div>There is an error i=
+n this patch. Please ignore this. Sorry.</div><div><br></div><div>Janani.=
+=C2=A0</div></div><br></div></div>
+
+--001a113d395c5ad51e052cd61914--
 
