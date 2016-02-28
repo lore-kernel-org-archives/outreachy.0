@@ -1,79 +1,90 @@
-X-GM-THRID: 6211892414504763392
-X-Received: by 10.28.87.15 with SMTP id l15mr838915wmb.1.1446318909439;
-        Sat, 31 Oct 2015 12:15:09 -0700 (PDT)
+X-GM-THRID: 6252641236847427584
+X-Received: by 10.182.240.137 with SMTP id wa9mr9118145obc.16.1456667078375;
+        Sun, 28 Feb 2016 05:44:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.9.149 with SMTP id 143ls345118wmj.7.canary; Sat, 31 Oct
- 2015 12:15:09 -0700 (PDT)
-X-Received: by 10.194.248.131 with SMTP id ym3mr2926602wjc.7.1446318909119;
-        Sat, 31 Oct 2015 12:15:09 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-wm0-x22a.google.com (mail-wm0-x22a.google.com. [2a00:1450:400c:c09::22a])
-        by gmr-mx.google.com with ESMTPS id m135si271510wmb.0.2015.10.31.12.15.09
+Received: by 10.50.78.133 with SMTP id b5ls290100igx.5.canary; Sun, 28 Feb
+ 2016 05:44:38 -0800 (PST)
+X-Received: by 10.107.169.88 with SMTP id s85mr14721166ioe.30.1456667078078;
+        Sun, 28 Feb 2016 05:44:38 -0800 (PST)
+Return-Path: <htejun@gmail.com>
+Received: from mail-ob0-x241.google.com (mail-ob0-x241.google.com. [2607:f8b0:4003:c01::241])
+        by gmr-mx.google.com with ESMTPS id nt4si753440igb.2.2016.02.28.05.44.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 31 Oct 2015 12:15:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) client-ip=2a00:1450:400c:c09::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 05:44:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) client-ip=2607:f8b0:4003:c01::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2a00:1450:400c:c09::22a as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) smtp.mailfrom=htejun@gmail.com;
        dkim=pass header.i=@gmail.com
-Received: by wmll128 with SMTP id l128so33710341wml.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2015 12:15:09 -0700 (PDT)
+Received: by mail-ob0-x241.google.com with SMTP id hc1so848283obb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:44:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=M/v4IaJkH5fhqAETE0fSZyx1EcgQ77V9vjPbW6lrnjM=;
-        b=1ImIIVozhuLaUoUHiwXWORcLQzFmEs32JV3vXFEAcKnIOw1fiO2lAjP3U5eDeHGt9V
-         a8aaofYOZ7Cd8md46pc3Muf2cXMN9TDFsvAdkA5ZRt4jtV+FSVulb+C21yR0JB2/1vQT
-         QBPSSA1p3VqpSYQFsD7Iv6j/47SbgOS9zO6YC5gNZsl2gA6e79DtfggVkFRwQ/lsC+Xr
-         cZcURo0SoTQwwsOubtsoi6aMSPhW1rGUI2Eqo81CLi2NsGOS6f0bQHiRAuQ3fvX2OCjZ
-         DvRpgWcYQrwNN+ibT2c8T2FcNEpOqO6pQZNrA1OZlHemQoUu/4fPHo/l/WWMm6fl5WUd
-         QANQ==
-X-Received: by 10.28.140.208 with SMTP id o199mr5113913wmd.58.1446318909010;
-        Sat, 31 Oct 2015 12:15:09 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id q1sm13390585wje.39.2015.10.31.12.15.05
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 31 Oct 2015 12:15:08 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/2] Staging: lnet: Remove typedefs
-Date: Sun,  1 Nov 2015 00:44:56 +0530
-Message-Id: <1446318898-27986-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150207.5635133B.0051,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=jpwquoZg5S9oNCac6/Isw9eMlO/j50bN5XJJbw4BeA0=;
+        b=aRGMyOa6cMv+okj/dZd5GteW563AdvBA73FL4WME5SCKTYTL+i9NFl4AKo95g1VZfW
+         QQA6x8+1AX2NRqOP8YChup+JL9Fwa2mF74DMdN5eKAlvZzGIzS97pdp2otnLNHQuEgDy
+         AXNZ11dud8iAb79exuukCWnnPp9ARMVYSnJoJ8jboMriykoMlV6JSC51hcOyk0tfXMF3
+         cR4QHBA9SUfOOCiHiTWa1XPqKyM+snUd1YFZlJc2t8lixxV45R38V7ycwx5zdp61jIfR
+         0JiajEh5dYf8EEHngiz6rWBeCiv2gcue3/nV7SA/eo3FZxrqeBv42yri+EPm2U3XuJ/P
+         pVsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=jpwquoZg5S9oNCac6/Isw9eMlO/j50bN5XJJbw4BeA0=;
+        b=QLuVGFDzKTgnzxX5YwUKKNOCxQ0H5wtOJnI7EjEy6gb2dgCl0vnLqGdxWLd3TFpYKK
+         EDYQqtoo8Rxp2FCf8PjydNiPXNSEP6Rru3Foc49dlqy3AsY31Hc0G/XbwjmVfpWl27vo
+         dAerV91q1II+umohEMgxD3aeydXfWRmfeuMR97nAhqQ6y2g35R3jn1BkOy5GgsE6WlH9
+         XazegdM7PiUP7jZ77/pH8y/IdcXKnYoBrBBx6fAAcr5SvyicxF0JG7SXc9j/Eql6eDa7
+         +ErF2HF6Diegwo19dAWNO+YEx9ryu7Pf8ha6ot8kBNqQ7TeNufOTK4++W7lpmMN0Okfv
+         W05g==
+X-Gm-Message-State: AD7BkJLJbEwlpIwgm9KpQ/P4q+LnMNBnEOIqf4+EcUURoBAY1SVRCjlNyP4En+bHZNf39w==
+X-Received: by 10.182.126.198 with SMTP id na6mr7997723obb.3.1456667077754;
+        Sun, 28 Feb 2016 05:44:37 -0800 (PST)
+Return-Path: <htejun@gmail.com>
+Received: from localhost ([2602:306:b8cd:a0d0::2f])
+        by smtp.gmail.com with ESMTPSA id u193sm14684905oie.25.2016.02.28.05.44.36
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 05:44:37 -0800 (PST)
+Sender: Tejun Heo <htejun@gmail.com>
+Date: Sun, 28 Feb 2016 08:44:36 -0500
+From: Tejun Heo <tj@kernel.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/4] staging: most: hdm-dim2: Use
+ devm_* functions
+Message-ID: <20160228134436.GS3965@htj.duckdns.org>
+References: <cover.1455803765.git.amitoj1606@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1455803765.git.amitoj1606@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-These patches remove typedefs as linux kernel coding style guidelines
-suggest not using typdefs for structure types
+On Thu, Feb 18, 2016 at 08:11:16PM +0530, Amitoj Kaur Chawla wrote:
+> Devm_ functions allocate memory that is released when a driver
+> detaches. Replace kzalloc, ioremap and request_irq with their devm_*
+> counterparts in the probe function of a platform device which were
+> originally freed in the remove function.
+> 
+> Also, unnecessary labels have been removed, an unnecessary
+> platform_set_drvdata has been removed as well as switching from pr_err
+> to dev_err.
+> 
+> Amitoj Kaur Chawla (4):
+>   staging: most: hdm-dim2: Replace kzalloc with devm_kzalloc
+>   staging: most: hdm-dim2: Switch to devm_ioremap_resource()
+>   staging: most: hdm-dim2: Replace request_irq with devm_request_irq
+>   staging: most: hdm-dim2: Replace pr_err with dev_err
 
-Shraddha Barke (2):
-  Staging: lustre: lnet: Remove typedef srpc_server_rpc_t
-  Staging: lustre: lnet: Remove typedef cfs_workitem_t
+For the patchset,
 
- .../staging/lustre/include/linux/libcfs/libcfs_hash.h |  4 ++--
- .../lustre/include/linux/libcfs/libcfs_workitem.h     | 12 ++++++------
- drivers/staging/lustre/lnet/selftest/brw_test.c       |  4 ++--
- drivers/staging/lustre/lnet/selftest/console.c        |  2 +-
- drivers/staging/lustre/lnet/selftest/framework.c      |  8 ++++----
- drivers/staging/lustre/lnet/selftest/rpc.c            |  6 +++---
- drivers/staging/lustre/lnet/selftest/selftest.h       | 19 ++++++++++---------
- drivers/staging/lustre/lustre/libcfs/hash.c           |  6 +++---
- drivers/staging/lustre/lustre/libcfs/workitem.c       | 10 +++++-----
- 9 files changed, 36 insertions(+), 35 deletions(-)
+Acked-by: Tejun Heo <tj@kernel.org>
+
+Thanks.
 
 -- 
-2.1.4
-
+tejun
 
