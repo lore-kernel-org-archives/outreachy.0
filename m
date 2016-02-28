@@ -1,91 +1,75 @@
-X-GM-THRID: 6257548049124425728
-X-Received: by 10.13.242.134 with SMTP id b128mr21919072ywf.28.1456948939666;
-        Wed, 02 Mar 2016 12:02:19 -0800 (PST)
+X-GM-THRID: 6256431526237437952
+X-Received: by 10.112.168.201 with SMTP id zy9mr1190966lbb.23.1456689145209;
+        Sun, 28 Feb 2016 11:52:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.3.85 with SMTP id 82ls593203iod.2.gmail; Wed, 02 Mar 2016
- 12:02:19 -0800 (PST)
-X-Received: by 10.50.154.2 with SMTP id vk2mr1333038igb.9.1456948939129;
-        Wed, 02 Mar 2016 12:02:19 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id 12si5599999pfb.1.2016.03.02.12.02.19
+Received: by 10.25.135.11 with SMTP id j11ls330404lfd.74.gmail; Sun, 28 Feb
+ 2016 11:52:24 -0800 (PST)
+X-Received: by 10.25.90.85 with SMTP id o82mr328110lfb.10.1456689144693;
+        Sun, 28 Feb 2016 11:52:24 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c140si204996wmh.1.2016.02.28.11.52.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 12:02:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Sun, 28 Feb 2016 11:52:24 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id a9so16683179pat.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 02 Mar 2016 12:02:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=TyC6VGV6uT0Njb0WC18u3lsIh2B7mK1Wl08Cb4iAQrU=;
-        b=MfteLIxq9Wx1aw8z+X6sNkyBNPjwbthKNC4u5N39XE5xXGPlBCrOx44ofdja69W7ip
-         gXpV5a2RQm/DWA+0AYbeuL96QOEg6bzdyV3O1HLgHRCt9S/64O+cHgFgpZQXrhpNxfpR
-         UiYsajudFuSIRvrexmoXAYHqDJ+5kKvmuEFDMZBvf1BxpnTeWh6Yf7XvjTlEF1Xv5PgN
-         lvG8a2o3fvi+zizTL9g1U442DijFWmSjS8nLb3WWTDtaO4j5fdUVTPUQUb2ORBHTn186
-         UB+6V055Rhv6fYXMPm3ag9mk9TSNeeKakH2uYyGV42scxa6jFTPRi1ufFrOIApFTPHZL
-         roiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=TyC6VGV6uT0Njb0WC18u3lsIh2B7mK1Wl08Cb4iAQrU=;
-        b=i7k9/zJgd8pj49Npsk6Dh000gg9qNPoEh8iMsjzzrbTOq5o0vJbwO8r+8oz/+7n5+O
-         EMvRMgsP+a5UubHm/T45Mq9p5VJ5unvlfSccTgF9ZcyQ4FJoxlO2ZU3Vpf+SdaQyEXsK
-         N611gHTrbuQjCGXCpLNuduKVg0Zq6zEy71sv2D/5VUDs26lKunsyjhBEN9rmTzb3mlHE
-         4B9cAu0kkK6YdEPkapDsztYgQIhPKu/FoIPLVIk3I7frTSaf2xu8UkTVd+vbaWQCDBwj
-         iCqNHT3TeQNhorxMRAWf8xMY2qg/JKB0Dg03JVmQ3Qf0/OC4nGe+K+HpeqP+Ay8qYsgD
-         CW2w==
-X-Gm-Message-State: AD7BkJKQxcQqDnJc+zfwYu/LEbNmBWYQQoKHXKr2zRyGccPfzlW4yh5JYmBvjn7R21h2ug==
-X-Received: by 10.66.226.238 with SMTP id rv14mr41346861pac.41.1456948938858;
-        Wed, 02 Mar 2016 12:02:18 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.195.191])
-        by smtp.gmail.com with ESMTPSA id x88sm54911994pfi.66.2016.03.02.12.02.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Mar 2016 12:02:18 -0800 (PST)
-Date: Thu, 3 Mar 2016 01:32:14 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: llite: Remove unnecessary test in if
- condition
-Message-ID: <20160302200213.GA16098@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,516,1449529200"; 
+   d="scan'208";a="166251515"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Feb 2016 20:52:23 +0100
+Date: Sun, 28 Feb 2016 20:52:22 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] Staging: slicoss: Use
+ ether_addr_equal_64bits() insted of ether_addr_equal().
+In-Reply-To: <20160228114943.GA4709@sandhya>
+Message-ID: <alpine.DEB.2.02.1602282052050.2075@localhost6.localdomain6>
+References: <20160228114943.GA4709@sandhya>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove unnecessary test on `rc` variable since it has already been
-tested previously.
-Fixes following smatch warning:
-drivers/staging/lustre/lustre/llite/llite_lib.c:1331 ll_setattr_raw()
-warn: we tested 'rc' before and it was 'false'
+On Sun, 28 Feb 2016, Sandhya Bankar wrote:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/lustre/lustre/llite/llite_lib.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Use ether_addr_equal_64bits() insted of ether_addr_equal().
 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index b2e8475..f251803 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -1328,7 +1328,7 @@ int ll_setattr_raw(struct dentry *dentry, struct iattr *attr, bool hsm_import)
- 	}
- 
- 	/* RPC to MDT is sent, cancel data modification flag */
--	if (rc == 0 && (op_data->op_bias & MDS_DATA_MODIFIED)) {
-+	if (op_data->op_bias & MDS_DATA_MODIFIED) {
- 		spin_lock(&lli->lli_lock);
- 		lli->lli_flags &= ~LLIF_DATA_MODIFIED;
- 		spin_unlock(&lli->lli_lock);
--- 
-1.9.1
+Explain why this is correct and a good idea.
 
+julia
+
+> 
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/slicoss/slicoss.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
+> index ed1c067..b2a162a 100644
+> --- a/drivers/staging/slicoss/slicoss.c
+> +++ b/drivers/staging/slicoss/slicoss.c
+> @@ -773,8 +773,8 @@ static bool slic_mac_filter(struct adapter *adapter,
+>  			struct mcast_address *mcaddr = adapter->mcastaddrs;
+>  
+>  			while (mcaddr) {
+> -				if (ether_addr_equal(mcaddr->address,
+> -						     ether_frame->ether_dhost)) {
+> +				if (ether_addr_equal_64bits(mcaddr->address,
+> +						ether_frame->ether_dhost)) {
+>  					adapter->rcv_multicasts++;
+>  					netdev->stats.multicast++;
+>  					return true;
+> -- 
+> 1.8.3.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160228114943.GA4709%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
