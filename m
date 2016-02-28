@@ -1,99 +1,121 @@
-X-GM-THRID: 6255856161067630592
-X-Received: by 10.31.154.65 with SMTP id c62mr4180538vke.8.1456555016095;
-        Fri, 26 Feb 2016 22:36:56 -0800 (PST)
+X-GM-THRID: 6256396302413725696
+X-Received: by 10.140.240.129 with SMTP id l123mr9478978qhc.8.1456681677393;
+        Sun, 28 Feb 2016 09:47:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.112.42 with SMTP id in10ls64430igb.13.canary; Fri, 26 Feb
- 2016 22:36:55 -0800 (PST)
-X-Received: by 10.66.220.67 with SMTP id pu3mr4137575pac.19.1456555015585;
-        Fri, 26 Feb 2016 22:36:55 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id y20si226447pfa.2.2016.02.26.22.36.55
+Received: by 10.50.225.71 with SMTP id ri7ls358647igc.14.canary; Sun, 28 Feb
+ 2016 09:47:57 -0800 (PST)
+X-Received: by 10.107.164.208 with SMTP id d77mr15847511ioj.22.1456681677151;
+        Sun, 28 Feb 2016 09:47:57 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-oi0-x232.google.com (mail-oi0-x232.google.com. [2607:f8b0:4003:c06::232])
+        by gmr-mx.google.com with ESMTPS id xh11si760758igb.0.2016.02.28.09.47.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 22:36:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Sun, 28 Feb 2016 09:47:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c06::232 as permitted sender) client-ip=2607:f8b0:4003:c06::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c06::232 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id fl4so62477663pad.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 22:36:55 -0800 (PST)
+Received: by mail-oi0-x232.google.com with SMTP id m82so91315502oif.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:47:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=gmtrEg2bq0ycJC/r5oIfb5vKAJVoAc0hAcmlL3fbN18=;
-        b=dbbtZXs0JZe9Yf2agCZ4TfPwLlU0FKBHtS502zeItYKVWYIUZor2FUazw9RBGsl1FR
-         RVUSYk744dE7I47N5tucMs4CbOhfcr4XYZzvmgBlZR6pCok7W41zuyuAg94+NfbN56cP
-         F4jGgfTdxucJCVrWwzAU5rPoLwX7OO0xOQGItDylOEZvUNCu6xbnXAePHrD+g4RCyj79
-         UP5x4Oy1HOhMG9Krdcn5kscQ4oJiwfdJcIMGjSvvnPhBArVDC5+jNxSrg5payVoPGkoK
-         1E131+Fjryi6LtEgnURD1gyLTqjJfa+rUq4iUsrwdAioglew+hDsnCkbsBWSIXU2shfd
-         IwtA==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=04VM0rMMcG83bZ4pOQovNXLJqF0thR0ENb5AQQn8XbE=;
+        b=Yqy/JIbaYTJZm2JLG5z17CmAfab5+ZbgJ7ScYWe6xta+wvWFGveGJDswAFOBOczo0d
+         nWgCjA6EPQf/3AabYtaThT3YOzefaeY4AkIiLMaaZH2Me/nO/4CYR5duHWzZFWeO5RpL
+         qsy9AJuqkgafQ9A0DqaANRHqF8lhV3s0eUXZK3ltOtQTdZLHhgaZbkuIQnhmu+zSir10
+         vMM4qr7JTZBRTufSpPhNqoO8ZijFVUVWsCTM8ZgpeAbkwv0slr7ZEy9iMfuPXIZvREAJ
+         dbd7hJy9d4XcnJSuFKm+FdMTW+3CFF5rNnYKOa1Nju0raZM250KI26aKVZgZK3ss3QlL
+         J9Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=gmtrEg2bq0ycJC/r5oIfb5vKAJVoAc0hAcmlL3fbN18=;
-        b=Al8zUs8dibj4lIAf/boQer66NPYyCDKTdKIKvVCtvGK33p0D58Wkvlh8r5ZpqV32LF
-         Eg8jNhhMFHhj9j0z3kC+Q7ni4doCaaiKxBMAjrgqhEqVgnhSHxo+65a68j9rdZEtmDVv
-         a5Qge9weMA6L2no+xB58Al8VUKx7G8mDvvFaWuvJRPEZiyxKFN9GDYYX5bED2ubDuws4
-         teYXbYMuepYX0um4MYeynYT9xGlI3/M4rt1yV6dUowTyaZglxXFNMGx6dfXMypzkysRX
-         305q8hdoaC51XTLNWreiqtfUuFY1TAli4QtuL8LRNjtybkT11do5I3S7VnxGx9HEEERx
-         DC+A==
-X-Gm-Message-State: AD7BkJL/0jX0LS/4mA634yBTJoNy9e2XdyIoUstQlKBbJ/AIAQZw20nVXFTCBZDXgOcGIA==
-X-Received: by 10.66.102.104 with SMTP id fn8mr7526738pab.129.1456555015435;
-        Fri, 26 Feb 2016 22:36:55 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id cq4sm23467387pad.28.2016.02.26.22.36.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 22:36:54 -0800 (PST)
-Date: Sat, 27 Feb 2016 12:06:31 +0530
-From: "pooja.shamili" <poojashamili@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Clean up the tests on the results of
- functions that return NULL on failure.
-Message-ID: <20160227063631.GA16337@localhost>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=04VM0rMMcG83bZ4pOQovNXLJqF0thR0ENb5AQQn8XbE=;
+        b=TnCLijvgq9xVVEKtV59hG/Y0lW36LeKIWzE0YwkXEVq4A9vDzhbKlW6E3v6LFbmZBp
+         FVvmAZEix/e8RnRjrAnF9SUoFn6IEhTim0aHUqdjDdZbd6WO9IGpzk4snQ4e2KZeGt7o
+         AKaNRNB4BQk7WuBPcx79tCFpSseLYTC9XB/Xa10/kbbmWTauBWfjnrAIhB9zaoaheStU
+         W6rJ5OVOniAy0bdQKQAycvJZss3JKSsSMHy+4Yn1gCufx+GFN+Ey0mNsN+FYBW1YwQzG
+         /A2CyA6ECqyLIv+2Pb2oocAmjcZTSicRl/Ouqgy0Ghbj+KiWGIh4nkjtpC8/ui9s3Xpl
+         YONg==
+X-Gm-Message-State: AD7BkJJcr/w4hU77s8n4whArWUtJwDLW2A5TPpod26PHNPCRDRHoKGILFpw4s1mnd6niyWH+sHjn/czngDtfyA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.202.77.81 with SMTP id a78mr3524107oib.71.1456681676978;
+ Sun, 28 Feb 2016 09:47:56 -0800 (PST)
+Received: by 10.157.40.174 with HTTP; Sun, 28 Feb 2016 09:47:56 -0800 (PST)
+In-Reply-To: <CAOH+1jF=uzS7sgVm=h6ghrHh_BJFkaRbJQttfS5Y2iYxwc5xWg@mail.gmail.com>
+References: <1456680767-435-1-git-send-email-bhumirks@gmail.com>
+	<alpine.DEB.2.02.1602281838340.2147@localhost6.localdomain6>
+	<CAOH+1jF=uzS7sgVm=h6ghrHh_BJFkaRbJQttfS5Y2iYxwc5xWg@mail.gmail.com>
+Date: Sun, 28 Feb 2016 23:17:56 +0530
+Message-ID: <CAOH+1jHsFSOS47wsX1H7z6tRxPPsPVeNM8R6-qB_VwcpRkr_iQ@mail.gmail.com>
+Subject: Fwd: [Outreachy kernel] [PATCH] Staging: gdm724x: Remove print
+ statement on failure
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-Functions returning NULL as a return value on failure can be tested for
-as !x, NULL == x or x == NULL. As !x is commonly used, all the tests
-need to be modified to use !x for a consistent coding style. In this
-patch, the function kzalloc is considered.
+On Sun, Feb 28, 2016 at 11:11 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Sun, 28 Feb 2016, Bhumika Goyal wrote:
+>
+>> The  memory allocation functions generates a call stack containing
+>> all the context information on failure, so print statements can be
+>> removed on failure of these functions.
+>> Done using coccinelle:
+>>
+>> @@
+>> expression e;
+>> @@
+>>
+>> e=\(kmalloc\|kmalloc\|kmalloc_array\|alloc_netdev\|kzalloc\|
+>>    devm_kzalloc\|devm_ioremap\)(...);
+>> ...
+>> if(!e){
+>> - \(DBG_8723A\|printk\|pr_err\|CERROR\|DBG_88E\)(...);
+>> ...when any
+>> }
+>>
+>> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+>> ---
+>>  drivers/staging/gdm724x/gdm_lte.c | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
+>> index 98570c6..44163e4 100644
+>> --- a/drivers/staging/gdm724x/gdm_lte.c
+>> +++ b/drivers/staging/gdm724x/gdm_lte.c
+>> @@ -890,7 +890,6 @@ int register_lte_device(struct phy_dev *phy_dev,
+>>               net = alloc_netdev(sizeof(struct nic), pdn_dev_name,
+>>                                  NET_NAME_UNKNOWN, ether_setup);
+>>               if (!net) {
+>> -                     pr_err("alloc_netdev failed\n");
+>
+> Actually, if you unfold the definition a bit, alloc_netdev can fail for
+> reasons other than kmalloc failure.  So alloc_netdev should not be in the
+> list.  Likewise for (devm_)ioremap.  It's not for all allocation functions
+> where the message is superfluous, but only those based on kmalloc.
+>
+> julia
+>
 
-Signed-off-by: pooja.shamili <poojashamili@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_wx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Ok I got the point and I will keep the patch limited to only kmalloc
+based functions. I will drop this patch.
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 84e6272..8060410 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -373,7 +373,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 		/* take WEP into use */
- 		new_crypt = kzalloc(sizeof(struct lib80211_crypt_data),
- 				    GFP_KERNEL);
--		if (new_crypt == NULL)
-+		if (!new_crypt)
- 			return -ENOMEM;
- 		new_crypt->ops = lib80211_get_crypto_ops("R-WEP");
- 		if (!new_crypt->ops) {
-@@ -618,7 +618,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
- 		lib80211_crypt_delayed_deinit(&ieee->crypt_info, crypt);
- 
- 		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
--		if (new_crypt == NULL) {
-+		if (!new_crypt) {
- 			ret = -ENOMEM;
- 			goto done;
- 		}
--- 
-2.1.4
-
+Thanks,
+Bhumika
+>>                       ret = -ENOMEM;
+>>                       goto err;
+>>               }
+>> --
+>> 1.9.1
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1456680767-435-1-git-send-email-bhumirks%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
