@@ -1,148 +1,97 @@
-X-GM-THRID: 6254213518182055936
-X-Received: by 10.107.11.222 with SMTP id 91mr30115195iol.7.1456172558171;
-        Mon, 22 Feb 2016 12:22:38 -0800 (PST)
+X-GM-THRID: 6256316019335233536
+X-Received: by 10.13.227.133 with SMTP id m127mr8324252ywe.1.1456662085638;
+        Sun, 28 Feb 2016 04:21:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.39.166 with SMTP id v35ls1556628qgv.59.gmail; Mon, 22 Feb
- 2016 12:22:37 -0800 (PST)
-X-Received: by 10.140.240.129 with SMTP id l123mr1658948qhc.8.1456172557590;
-        Mon, 22 Feb 2016 12:22:37 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id 12si3309738pfb.1.2016.02.22.12.22.37
+Received: by 10.140.38.5 with SMTP id s5ls2103330qgs.19.gmail; Sun, 28 Feb
+ 2016 04:21:24 -0800 (PST)
+X-Received: by 10.140.29.183 with SMTP id b52mr24934403qgb.8.1456662084804;
+        Sun, 28 Feb 2016 04:21:24 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
+        by gmr-mx.google.com with ESMTPS id y20si923472pfa.2.2016.02.28.04.21.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 12:22:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Sun, 28 Feb 2016 04:21:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fy10so96376179pac.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 12:22:37 -0800 (PST)
+Received: by mail-pa0-x230.google.com with SMTP id yy13so76125767pab.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 04:21:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=S5CxK9pRsiv3QdBHM9jEpRMUnIKKe7YT6FRcO5PhMIg=;
-        b=AMK1HDIMHEWSJd8IRFIqTqKovSlrEUaG5uls+OMmV0kGMoBYXfc7s+mjgA8u82X35D
-         J6NKM1GgOud2uW7rTwts2T7u7zaNm1h/PYeFdh/LV7FeAVmZTNdlve0kgZDLZi/KH7n9
-         LUbN1uuPUf8XmFujoZdv36zP4fqia5DQYkOQelUDTmDsPzS5j0rm/+4hlFe8U7uJolaA
-         xWOZcTLMcLSZwZ3pjV2xf62r4BCIMT51mBFTQEvEr2RwiECD30cwA5u0epnZy/oSg75K
-         plfbu3rRK41wuUuWV+TdGRpUiXkLsNTjvCRHhBVUR/JXzUb1XYI/rirjVPGr2kymG3et
-         loIw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=8BsylZw+giBQX9esP4M+6nqfCcDS55l77j6YHzhawqs=;
+        b=ZU7FOBqW2TUAgU+hIMV/u6XLbeZGxmTEZizu0D1aHr+bDK3JuO0HnG1R4ZUfUCf2Cj
+         tx5gkISRMeQ38V+zOce9mdG2GJk6R3PEoSOEsLANwB1vVnqsrmOCZGN6zyg3o0qahFPS
+         6f2F072lVPshSQ693FQYUtrofYBkMMrI1Fm6JYSBeETMV1CQ4MJK9yrTRvDAz4J7s8Vg
+         8WWS8d2KdaWmt+FbGpKWYypP4hA/OCVg4gFGiEDwz3uxnFPbsHhKdvU63ijwNR1fufRH
+         0DlPESUDu+bE43BJV3SuAqeu8I2i8XVNV1SHZozSoxtpPSBPYIcPnH7cGkbJRCPGRA+p
+         DJUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=S5CxK9pRsiv3QdBHM9jEpRMUnIKKe7YT6FRcO5PhMIg=;
-        b=U9b9cRNxJNq71JjxR9xxWKSm7v1+M5XteeQOS2YwsomnPe0rrlqQ0F6g39rYrlEi99
-         64MwHteMmTZ8HGAWvnGiUfOH9NkZBgjkDxmTGx4E5qLhZme3d0vtGkoHpZOPTzEii5Tf
-         +v9gZJyUH/ulH/2jgojE6Ef3BKTeAV1iofvS/V/BJQiSlpfvqnhUFZuH9GeneVNb/Kd1
-         CjYzPI/SwT/fv+IhPfV2Q+V7EmSTwC4IdMUTbZrAyC7cagpAYGC51F7xt/M8/t1eTXkm
-         k0wxx3odKlWTwu/L/B+HCINd3QS6/JngMIPzILciIxAAh7TerqiSAv9kC6dNCRkwKJ2c
-         Ehiw==
-X-Gm-Message-State: AG10YOSdg6vDMV5sEKZVbNv8DpbyTNp5q1V4qUGrWBVn1A7RoMTrLcGJtcdo6coMoemzjQ==
-X-Received: by 10.66.193.226 with SMTP id hr2mr40608130pac.20.1456172557395;
-        Mon, 22 Feb 2016 12:22:37 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id 82sm38740229pfn.89.2016.02.22.12.22.36
+         :content-disposition:user-agent;
+        bh=8BsylZw+giBQX9esP4M+6nqfCcDS55l77j6YHzhawqs=;
+        b=dCR10pptQ6NLSq+LXVY9LRDOBF18wd92ykMnPyDOoZfBZ4pN6o+PCMF96zQQ1EIFcC
+         lRje+554+GJ9PpSXpsbSItGsIlqJTBKn/T8QL5aefizhxaltLuUDJPpjp1V/c8goqZ9Z
+         /3FgZnE8OnWRlfuZ2C31TPqhsl1RQc2CY3sAOZYedTb/dnN9CRuazWkNYY2brTSUdFSD
+         POeBbtF2eFWV+aEomHqss3tmVpjQJxdEXXMZbn7nDFpwVm8G060RnfjAXI0JGKK/rrmE
+         9htl19tLsJIvcvEVWi5VVGdQTli++/rxAkq2ZJusA0O/7gSXGVUYIR8OwrmLSQMmCKM7
+         F8jw==
+X-Gm-Message-State: AD7BkJLfS9TzA4NhD9dW9bLkOhpNRekO5NEDktvND+OOSMHXUDcRNkRuQvvE54Ge0v0tNw==
+X-Received: by 10.66.139.137 with SMTP id qy9mr14920897pab.57.1456662084596;
+        Sun, 28 Feb 2016 04:21:24 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id t12sm31157294pfa.54.2016.02.28.04.21.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 12:22:36 -0800 (PST)
-Date: Tue, 23 Feb 2016 01:52:33 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 04:21:24 -0800 (PST)
+Date: Sun, 28 Feb 2016 17:48:36 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vme: devices: Replace kzalloc with devm_kzalloc
-Message-ID: <20160222202233.GA21774@amitoj-Inspiron-3542>
+Subject: [PATCH] staging: rtl8192u: ieee80211: Remove unused variables
+Message-ID: <20160228121836.GA17019@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Devm_ functions allocate memory that is released when a driver
-detaches. Replace kzalloc with devm_kzalloc and remove corresponding
-kfrees from probe and remove functions of a platform
-device.
+The pointer *skb2 is declared 'globally' inside  ifdef NOT_YET.
+It's used nowhere in the directory.
+Another pointer *skb2 is declared 'locally', again inside another ifdef NOT_YET
+in the function ieee80211_rx_frame_mgmt.
+Hence, skb2 stays unused and has been removed.
 
-Also, unnecessary labels have been removed.
+This was done using Coccinelle:
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+@@ type T; identifier i; constant c; @@
+-T i;
+<... when != i
+-i = c;
+...>
+
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/vme/devices/vme_pio2_core.c | 24 ++++++------------------
- 1 file changed, 6 insertions(+), 18 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/vme/devices/vme_pio2_core.c b/drivers/staging/vme/devices/vme_pio2_core.c
-index 4f3cdbc..28a4568 100644
---- a/drivers/staging/vme/devices/vme_pio2_core.c
-+++ b/drivers/staging/vme/devices/vme_pio2_core.c
-@@ -215,11 +215,9 @@ static int pio2_probe(struct vme_dev *vdev)
- 	u8 reg;
- 	int vec;
- 
--	card = kzalloc(sizeof(*card), GFP_KERNEL);
--	if (!card) {
--		retval = -ENOMEM;
--		goto err_struct;
--	}
-+	card = devm_kzalloc(&vdev->dev, sizeof(*card), GFP_KERNEL);
-+	if (!card)
-+		return -ENOMEM;
- 
- 	card->id = vdev->num;
- 	card->bus = bus[card->id];
-@@ -232,8 +230,7 @@ static int pio2_probe(struct vme_dev *vdev)
- 	for (i = 0; i < PIO2_VARIANT_LENGTH; i++) {
- 		if (!isdigit(card->variant[i])) {
- 			dev_err(&card->vdev->dev, "Variant invalid\n");
--			retval = -EINVAL;
--			goto err_variant;
-+			return -EINVAL;
- 		}
- 	}
- 
-@@ -244,8 +241,7 @@ static int pio2_probe(struct vme_dev *vdev)
- 	if (card->irq_vector & ~PIO2_VME_VECTOR_MASK) {
- 		dev_err(&card->vdev->dev,
- 			"Invalid VME IRQ Vector, vector must not use lower 4 bits\n");
--		retval = -EINVAL;
--		goto err_vector;
-+		return -EINVAL;
- 	}
- 
- 	/*
-@@ -284,8 +280,7 @@ static int pio2_probe(struct vme_dev *vdev)
- 	if (!card->window) {
- 		dev_err(&card->vdev->dev,
- 			"Unable to assign VME master resource\n");
--		retval = -EIO;
--		goto err_window;
-+		return -EIO;
- 	}
- 
- 	retval = vme_master_set(card->window, 1, card->base, 0x10000, VME_A24,
-@@ -430,11 +425,6 @@ err_read:
- 	vme_master_set(card->window, 0, 0, 0, VME_A16, 0, VME_D16);
- err_set:
- 	vme_master_free(card->window);
--err_window:
--err_vector:
--err_variant:
--	kfree(card);
--err_struct:
- 	return retval;
- }
- 
-@@ -466,8 +456,6 @@ static int pio2_remove(struct vme_dev *vdev)
- 
- 	vme_master_free(card->window);
- 
--	kfree(card);
--
- 	return 0;
- }
- 
--- 
-1.9.1
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index 9dfde07..7808897 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -909,7 +909,6 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 	//added by amy for reorder
+ #ifdef NOT_YET
+ 	struct net_device *wds = NULL;
+-	struct sk_buff *skb2 = NULL;
+ 	struct net_device *wds = NULL;
+ 	int from_assoc_ap = 0;
+ 	void *sta = NULL;
+--
+2.1.4
 
 
