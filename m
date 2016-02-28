@@ -1,89 +1,99 @@
-X-GM-THRID: 6254179536245620736
-X-Received: by 10.66.146.231 with SMTP id tf7mr27906343pab.6.1456164646038;
-        Mon, 22 Feb 2016 10:10:46 -0800 (PST)
+X-GM-THRID: 6256344010151952384
+X-Received: by 10.182.24.199 with SMTP id w7mr8857692obf.48.1456668602792;
+        Sun, 28 Feb 2016 06:10:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.9 with SMTP id d9ls1521553qgf.38.gmail; Mon, 22 Feb
- 2016 10:10:45 -0800 (PST)
-X-Received: by 10.140.96.35 with SMTP id j32mr721128qge.6.1456164645374;
-        Mon, 22 Feb 2016 10:10:45 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id ui7si3298468pab.0.2016.02.22.10.10.45
+Received: by 10.107.34.74 with SMTP id i71ls19697ioi.96.gmail; Sun, 28 Feb
+ 2016 06:10:02 -0800 (PST)
+X-Received: by 10.98.0.132 with SMTP id 126mr9076398pfa.2.1456668602366;
+        Sun, 28 Feb 2016 06:10:02 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-io0-x22b.google.com (mail-io0-x22b.google.com. [2607:f8b0:4001:c06::22b])
+        by gmr-mx.google.com with ESMTPS id iq8si681138igb.0.2016.02.28.06.10.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 10:10:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Sun, 28 Feb 2016 06:10:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22b as permitted sender) client-ip=2607:f8b0:4001:c06::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22b as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id c10so99625012pfc.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 10:10:45 -0800 (PST)
+Received: by mail-io0-x22b.google.com with SMTP id 9so159209495iom.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 06:10:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=lETl2J8WXOLmX5fw33Da6tckWtbBp68dddCiLuXDHdw=;
-        b=qy/YaoYsLhpCZ1IB9RZVlsGeFPQcLbyDJvXaJeDoT6luM8I8kTyVxXcEpJbRusIeIV
-         DwJn0KhRVj7qn1/cxaHBGouT5PnT9LBzzwfr7L69PauySbC34zxb3A7VNAPA4nkUM63w
-         WejMlu+c3zVrcFDlikBP7ZrthH6t07yf0IRJMt3MX4UtZdBHitPS8Ql/UdWDzqpIORQb
-         0DWawiwuEdBysHjQGbhwgAr8/mUlq5A0IHAq5ChSycPhc+Y7brT7tLaPjCiF5U3c5eA2
-         T0/LpSIrEb7V5DhxDHsyXnAnelbCmRqZGZeX6UimzOmnVcwiK56A1Pr+NTZzk2Q380lD
-         GP6w==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=+N/q6+3wpefmMsNEcQDF+AIEmozXl19F0O1/izNQFws=;
+        b=vLvf/rnG09N9KZcf/aCty/NR+GEd9wJwgMe4lTk1mUJMv8g8gBnt4S61onDPmvRAaK
+         dDYE93TurGYgqxNhZmMDsbK7q8yY0VI68fDP8ESFcWxTro2UDtjU5ArkwX3fKFfvoa5P
+         LIfuWnHZfNyFxOVaayax8UOKr1EbXsbLMrg87LCfV1jgb86w71FyChAVW96TED1Sx1gj
+         5rbOVyPYhcv4ZI0TQXFT5f0EIM/Z54oviLgAigqVKj1RZ7LrVVmYy0r17unHA4Dc7JTB
+         C4iPK2JOvgxZr0XcmxlInbrUZb+R5xcCKEGNTRx7y5qrt/lvulF8lcjbg8fuDf+ewzzO
+         zSsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=lETl2J8WXOLmX5fw33Da6tckWtbBp68dddCiLuXDHdw=;
-        b=L1HCgzpHGodeQx3+AHubUWduyyl6tbHq9t6PRfi3IfTxSt0YdhrTF1Ov8u3/s08GMH
-         ctywK/6h99aM+V91BiyV51RV5f4S2bjd+QrfKNbA5QW18Ss8JbnRGFrp7xHWngs9mm3U
-         3JLWMLHsCSar3LQeWocFtQS5MiBNMVlRjE5C4XdPHTCw/WnSVBtJ6l3G7ZbRrwGi1nnQ
-         Zk/zaoQsUxJz5DYmZeIq5xj7cL1whD1/v21Na4a3CKHBIuuwQrHh1fnwKqejHSI4zkdT
-         l2De4LWYjGOUf36WhjG2i+Ur+ga7TJ8SfAYx2f7LTfNS+zlCjjJ9/oubUV7MX9rk/MTe
-         4YuQ==
-X-Gm-Message-State: AG10YOTa/C9gSwvNIw6K7+CW/9kxugFVv0cx7qHP4+DZbUX3K3vuwSjEXNfER5p6YwaRPA==
-X-Received: by 10.98.80.80 with SMTP id e77mr40047085pfb.126.1456164645140;
-        Mon, 22 Feb 2016 10:10:45 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.75])
-        by smtp.gmail.com with ESMTPSA id 144sm38355329pfa.83.2016.02.22.10.10.43
+         :content-disposition:user-agent;
+        bh=+N/q6+3wpefmMsNEcQDF+AIEmozXl19F0O1/izNQFws=;
+        b=ICWsWG43TvdwbUgCRfoS+RuRtmFYSScyTWyL776Wuf6jlxch7tggAui/3UHhhWA/CH
+         bBi3nb7yMPdyJSz72XLvXc+2ThMrXdHeer6s8nAKY7Cnp0ynkuXY9eoTfsCjwd7YkKua
+         nUfMRMsmawhzlAQ8I1B/92SeMWp3FYNzo+8VVeZgUOs5U4D+AsD1ZafUUmt11NI2OPfC
+         gmOsoWmFBMDtmiCbmpDg6OOvJUU7sTyAjrWwcLdyWSs1uIQXD6/ZYKLEVLpXdRnriVn1
+         hO8+oyK98kkOrLFQBwHZLGDuE6urE1wEVdiOnidjq17d59QopneuKnJCXltzPB1YvU6Z
+         bBSw==
+X-Gm-Message-State: AG10YOSCRtpj1EqteDl5Dqe1DeeWUKZYDACjLGCxZb2ewVcfi9Bsnl0FubGB6CbmyF0c/w==
+X-Received: by 10.107.130.89 with SMTP id e86mr15185171iod.23.1456668602194;
+        Sun, 28 Feb 2016 06:10:02 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id h131sm9144440ioe.7.2016.02.28.06.10.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 10:10:44 -0800 (PST)
-Date: Mon, 22 Feb 2016 15:40:51 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 28 Feb 2016 06:10:01 -0800 (PST)
+Date: Sun, 28 Feb 2016 14:09:12 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sm750fb: Remove trailing whitespace.
-Message-ID: <20160222100856.GA5026@sandhya>
+Subject: [PATCH] staging: lustre: lnet: Use list_entry() rather than
+ container_of()
+Message-ID: <20160228190912.GA5429@janani-Inspiron-3521>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove trailing whitespace.This error is detected by checkpatch.pl script.
+Use list_entry() rather than container_of() for nodes of doubly linked 
+lists.
+Semantic patch used:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+@a exists@
+identifier var;
+struct list_head *ptr;
+@@
+
+  var =
+- container_of
++ list_entry
+  (ptr, ...);
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_power.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_power.c b/drivers/staging/sm750fb/ddk750_power.c
-index 33e092e..f34b15d 100644
---- a/drivers/staging/sm750fb/ddk750_power.c
-+++ b/drivers/staging/sm750fb/ddk750_power.c
-@@ -106,9 +106,9 @@ void enable2DEngine(unsigned int enable)
- 	u32 gate;
+diff --git a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c
+index 0608431..866e2bf 100644
+--- a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c
++++ b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c
+@@ -113,7 +113,7 @@ kiblnd_get_idle_tx(lnet_ni_t *ni, lnet_nid_t target)
+ 	node = kiblnd_pool_alloc_node(&tps->tps_poolset);
+ 	if (!node)
+ 		return NULL;
+-	tx = container_of(node, kib_tx_t, tx_list);
++	tx = list_entry(node, kib_tx_t, tx_list);
  
- 	gate = PEEK32(CURRENT_GATE);
--	if (enable) 
-+	if (enable)
- 		gate |= (CURRENT_GATE_DE | CURRENT_GATE_CSC);
--	 else 
-+	 else
- 		gate &= ~(CURRENT_GATE_DE | CURRENT_GATE_CSC);
- 
- 	setCurrentGate(gate);
+ 	LASSERT(!tx->tx_nwrq);
+ 	LASSERT(!tx->tx_queued);
 -- 
-1.8.3.4
+2.5.0
 
 
