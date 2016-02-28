@@ -1,60 +1,60 @@
 X-GM-THRID: 6256430343748845568
-X-Received: by 10.50.97.105 with SMTP id dz9mr7465823igb.8.1456691492670;
-        Sun, 28 Feb 2016 12:31:32 -0800 (PST)
+X-Received: by 10.129.58.16 with SMTP id h16mr9964063ywa.56.1456690847194;
+        Sun, 28 Feb 2016 12:20:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.153.111 with SMTP id vf15ls328341igb.7.gmail; Sun, 28 Feb
- 2016 12:31:32 -0800 (PST)
-X-Received: by 10.66.182.225 with SMTP id eh1mr10319938pac.24.1456691492246;
-        Sun, 28 Feb 2016 12:31:32 -0800 (PST)
+Received: by 10.182.80.8 with SMTP id n8ls1009035obx.52.gmail; Sun, 28 Feb
+ 2016 12:20:46 -0800 (PST)
+X-Received: by 10.182.72.137 with SMTP id d9mr10340046obv.31.1456690846869;
+        Sun, 28 Feb 2016 12:20:46 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id ui7si3211233pab.0.2016.02.28.12.31.32
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id r75si1593293pfr.0.2016.02.28.12.20.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 12:31:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sun, 28 Feb 2016 12:20:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id a7so6146525pax.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 12:31:32 -0800 (PST)
+Received: by mail-pa0-x242.google.com with SMTP id fl4so7466451pad.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 12:20:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
         bh=b/V0Odl/OdVnBtwmfBHLpGp9w7EYOg8gWF/2fVyfylM=;
-        b=LXf46yyypDYZckpbJxw12l+5WRIeUbP1peibx1g2CU4ah+tHV11pdIp2bvn/ufcPaP
-         3MtU3ANcMJE7sRb/Jl4PzZs4Mddfwoh4cVYk6APfuQlQ/Q5A1CSt85aCZfLMR3vkDdXb
-         apgxa4CPHBt7DceblrrclZcUJPmISTjDQMf71+ktVkTyNl5HNHtTbe9Ca1f019b0qS8H
-         sTGhDKaf1k3qhFYCmcS3/QRtEiZB3XtVFMzMeNU/lcCMF4KDmW9X8SGjj5JowVX0MJRS
-         5kORxGVFg+fEP0tj4XsW33yp8QEx6erekZuEL2dDPX3b6qX+bHPSVFJIdZXttx2Q7W0S
-         pVgA==
+        b=eEzVq6ctz/aUyncIoXBaHQi/2aRBgFfKTeEqFow1TO6GJWVpw/ngDH3/bv/mpBU9se
+         sq89VpgUsNVI4ZUtfvJOo3+20ZZmNuRHILs8aC02vBFL0ROYv/9dz8DrW2yAafYIljJn
+         4wVm+z8LCxok5cvRYt7K5LxLt9vlmvXtuvcQ9mRp8nceL9fMqhz6mc9IvNeXDdjACrnb
+         QN1zAdDiBlF/v9JLghK+f2suKS9r/NMEeB7/RYKaXQgwIEiNyoq8zwqm/0ewxNiCPtel
+         fSw+T6fiZIV5m6ZO7dVuTdx7Rf5MReLIJHkaY/oY06VrAxCqoWrYC0i3JHmbvdNAAZ7c
+         X2xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
         bh=b/V0Odl/OdVnBtwmfBHLpGp9w7EYOg8gWF/2fVyfylM=;
-        b=SNmGAcaZsKq39/o+CrlGsCYCV2glu9ZUJCdIlN5bAcrw0V3FlWysz8hzcADM4Yxj66
-         LbrQuZMkGxuEf5Xa9EPHQtisIkl5YDAwUOXLLza1tgmsCGnU/Xy+DAw43UOuUIwA6p7i
-         8Z5N0r/eNY8zCePc66YFO8FWZ8Bixnm/fe4jAL2eZTQVWHUthqLMk9dO41C6L7gTWFdB
-         cRaZjtMh+QxyEFKCqR0lda+o3tOipK4RPrOVzWGL8bQ5WqEyYWmF37xL0OvavlSFbtXQ
-         u11lQgX+WGYyiftttR15oojTLzQyUi8nmJ/cMvFgzqBKb5SlV0qHdot1FC2fvn9PMaVj
-         mCLg==
-X-Gm-Message-State: AD7BkJJrYBbCjstzL7HKYDkXIRH8vHVn9JgqEpF8AmLOzGkbD5Md8FWB0ecGceHsYS104A==
-X-Received: by 10.66.174.199 with SMTP id bu7mr17386010pac.34.1456691492093;
-        Sun, 28 Feb 2016 12:31:32 -0800 (PST)
+        b=gwlPqQL1hkMHy87kxtAyualV1906yZIj2Q6vLG0USXQW1jU0ljUz5dl8yE4MFvXAgi
+         CDRjTvUuj4/n2AvBbDXKssACfM35A330HWZVmBTfXjCm8CYnJWtok2uJ8ze8hyfaAu6n
+         9R6ho5/Exb2iWgqdcakKJRrsumcN6sOF7YusTorDHtRhO3pAS3ygJcR5FC+6n2GtCoYJ
+         yVaCHDrjVaeSkwExof3QVmEHNaG2EK4FEHjJUCaxbHEukxYU3GWZKlsKCWw+nmbeGeAh
+         eZpR8iJvinujvE4s4f/2lU5cI5EZdUbJ+qgqf6qaedn1pAPiClxia4ExxwmZV7nCDnpi
+         HOfQ==
+X-Gm-Message-State: AD7BkJKljt2wpv5hOmNmkDm+a7VH9UU9Un/HE7YAe+l82qofPKkdp2FjFsT2KGnnNZpHUA==
+X-Received: by 10.67.6.72 with SMTP id cs8mr17530187pad.138.1456690846707;
+        Sun, 28 Feb 2016 12:20:46 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id k65sm32905031pfb.30.2016.02.28.12.31.30
+        by smtp.gmail.com with ESMTPSA id k65sm32882226pfb.30.2016.02.28.12.20.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 12:31:31 -0800 (PST)
-Date: Mon, 29 Feb 2016 01:58:44 +0530
+        Sun, 28 Feb 2016 12:20:46 -0800 (PST)
+Date: Mon, 29 Feb 2016 01:47:59 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 1/4] staging: rts5208: Remove NULL test before vfree
-Message-ID: <20160228202844.GA2604@Karyakshetra>
+Subject: [PATCH v2 1/4] staging: rts5208: Remove NULL test before vfree
+Message-ID: <20160228201759.GA2313@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
