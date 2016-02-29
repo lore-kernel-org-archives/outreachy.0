@@ -1,131 +1,99 @@
-X-GM-THRID: 66295169024
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,43fd668db975e554,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.64.171 with SMTP id p11mr3174760lbs.12.1424124099326;
-        Mon, 16 Feb 2015 14:01:39 -0800 (PST)
+X-GM-THRID: 6256670345142468608
+X-Received: by 10.28.48.88 with SMTP id w85mr1062641wmw.5.1456745560391;
+        Mon, 29 Feb 2016 03:32:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.221.41 with SMTP id qb9ls864444wic.16.canary; Mon, 16 Feb
- 2015 14:01:39 -0800 (PST)
-X-Received: by 10.194.142.174 with SMTP id rx14mr3199752wjb.4.1424124098965;
-        Mon, 16 Feb 2015 14:01:38 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id cl5si8345921wib.3.2015.02.16.14.01.38
+Received: by 10.25.170.74 with SMTP id t71ls509325lfe.20.gmail; Mon, 29 Feb
+ 2016 03:32:39 -0800 (PST)
+X-Received: by 10.112.132.97 with SMTP id ot1mr1483799lbb.10.1456745559628;
+        Mon, 29 Feb 2016 03:32:39 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x231.google.com (mail-wm0-x231.google.com. [2a00:1450:400c:c09::231])
+        by gmr-mx.google.com with ESMTPS id w128si540577wmd.0.2016.02.29.03.32.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Mon, 16 Feb 2015 14:01:38 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 29 Feb 2016 03:32:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::231 as permitted sender) client-ip=2a00:1450:400c:c09::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,590,1418079600"; 
-   d="scan'208";a="122018999"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Feb 2015 23:01:26 +0100
-Date: Mon, 16 Feb 2015 23:01:25 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: outreachy-kernel@googlegroups.com
-Subject: Welcome
-Message-ID: <alpine.DEB.2.02.1502162301000.2062@localhost6.localdomain6>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::231 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x231.google.com with SMTP id n186so44329952wmn.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 29 Feb 2016 03:32:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc;
+        bh=tjOOZ6xfSuenjgKedKpXhz/k3XBU8pIOiJ2ktddTpps=;
+        b=CTRP75MoK5QziTWR4QQaCiXtJudvtXrDlPJFaS/XjNFAhd8iyUJgJwOkB7MONmkzqN
+         0udbZ7m4X0qN9H6vYJ8x9T70QnhqMDtC7AHyQqbSAAp1IwY86Ho/olWgoUr0h+srfjJM
+         qfWZGtp5foNjT4jvmabIDYpgFv960szqJPFKhAhsk+xtD2b9bqGyyeKDr0B57J268s+R
+         GS3fBjK7dSgdvEZO8Ch1+NbXG1ICJD8uKrX/oLjAhxGsPDBJ0WBMocDJonIEfFO6Ho1Y
+         khHNoD+wCOaxAOytBg+YPYS9/4rl+uj9z3W5TY9p0cuTw/Ff2LCpeQ74nvLTjPOAVQh9
+         FakA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc;
+        bh=tjOOZ6xfSuenjgKedKpXhz/k3XBU8pIOiJ2ktddTpps=;
+        b=dYvCdw6g4riXyKZg/0Om26x8dOico+YVOMI+yDYpUlj04KegD3IQ6ldbt9Jg/zWcEW
+         IfCdbofeW+xHDPctGntDbbjdrtzzWTPDx/t+U+m7TpJ0JQ/0FUMTHVstifmeWyEhGmyH
+         ru+eWHvKDdsCerR1MNOaa0JlQSIbuwjepv4U9tO4ynIAm+r6Z6ITZChkbKR5J9dzLKC8
+         jsxk5HG2F5qhUjM74cnDxStsKQFzxI/EDY+yWANV9VHQBHErlVBhbHTtSciGZRx1c0bH
+         k80ee86mYHL4VaiyWY0/nL72yp1FqmVmhjlU5iuzb0v+jT1GTsppKlKD3xymksZ+G3Ri
+         IcHg==
+X-Gm-Message-State: AD7BkJLrIaa3annDHr4cgVvWxkAUJQntsYgYfye5YcKlAy6MP0sDt5eVAhrCGSuHzVIShR+3XIowAbHMK7I+kg==
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-Received: by 10.194.123.102 with SMTP id lz6mr16275426wjb.2.1456745559484;
+ Mon, 29 Feb 2016 03:32:39 -0800 (PST)
+Received: by 10.194.222.165 with HTTP; Mon, 29 Feb 2016 03:32:39 -0800 (PST)
+In-Reply-To: <20160229111620.GA9474@domino-MS-16Y1>
+References: <20160229111620.GA9474@domino-MS-16Y1>
+Date: Mon, 29 Feb 2016 13:32:39 +0200
+Message-ID: <CAEnQRZC=e5vL8dXG9H5aZf05VcemsA8EmgYzx4h89U3sZjwH=g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging:wilc1000:coreconfigurator.h
+ Remove an unnecessary typedef keyword
+From: Daniel Baluta <daniel.baluta@gmail.com>
+To: Muraru Mihaela <mihaela.muraru21@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Greetings potential Linux kernel Outreachy interns!  Please read this
-*entire* email, even if you have applied in the past, as some things have
-changed for this application round.
+On Mon, Feb 29, 2016 at 1:16 PM, Muraru Mihaela
+<mihaela.muraru21@gmail.com> wrote:
+> This patch fixes these warning messages found by checkpatch.pl:
+> WARNING: do not add new typedefs
+>
+> Signed-off-by: Muraru Mihaela <mihaela.muraru21@gmail.com>
+> ---
+>  drivers/staging/wilc1000/coreconfigurator.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+> index 63eca24..1e1892f 100644
+> --- a/drivers/staging/wilc1000/coreconfigurator.h
+> +++ b/drivers/staging/wilc1000/coreconfigurator.h
+> @@ -50,7 +50,7 @@
+>  #define MAKE_WORD16(lsb, msb) ((((u16)(msb) << 8) & 0xFF00) | (lsb))
+>  #define MAKE_WORD32(lsw, msw) ((((u32)(msw) << 16) & 0xFFFF0000) | (lsw))
+>
+> -typedef enum {
+> +enum {
+>         SUCCESSFUL_STATUSCODE    = 0,
+>         UNSPEC_FAIL              = 1,
+>         UNSUP_CAP                = 10,
+> @@ -70,7 +70,7 @@ typedef enum {
+>         CONNECT_STS_FORCE_16_BIT = 0xFFFF
+>  } tenuConnectSts;
+>
+> -typedef struct {
+> +struct {
+>         u8 u8Full;
+>         u8 u8Index;
+>         s8 as8RSSI[NUM_RSSI];
 
+Also, please re-compile the code before sending a patch :)
 
-What is Outreachy?
-------------
+Have a look at http://kernelnewbies.org/Outreachyfirstpatch in the section:
+"Compiling only part of the kernel".
 
-The next application round for Outreachy internships starts tomorrow,
-February 17.  Outreachy interns are paid $5,500 to work on a full-time
-internship with an open source mentor from May 25, 2015 to August 25, 2015.
-Interns are also granted a $500 travel stipend to go to any conference
-approved by their mentor that relates to their project.
-
-
-Who can apply?
---------------
-
-To qualify to apply for Outreachy, you must meet the following requirements:
-
- * You must be over 18,
- * You must be able to work full-time (40 hours per week) from May 25, 2015
- * to August 25, 2015,
- * You must be a woman (cis or trans), or a gender queer, gender free, or
-   gender fluid individual, or an alumni of the Ascend Project, and
- * You cannot have participated in Outreachy or Google Summer of Code before.
-
-
-What Outreachy projects can you apply to?
------------------------------------
-
-There will be several different open source projects participating in
-this round of Outreachy, and the full list will be officially announced
-tomorrow.
-
-https://wiki.gnome.org/Outreachy/2015/MayAugust#Participating_Organizations
-
-It's no secret that the Linux kernel project is participating again,
-since we already have five projects listed on our wiki.
-
-http://kernelnewbies.org/OutreachyIntro
-
-
-How do I apply to the Linux kernel project?
--------------------------------------------
-
-The application process for the Linux kernel project is outlined here:
-
-http://kernelnewbies.org/OutreachyApply
-
-Basically, applicants will need to walk through our tutorial for
-creating their first Linux kernel patch:
-
-http://kernelnewbies.org/Outreachyfirstpatch
-
-Applicants should also join the #opw IRC channel on irc.gnome.org, and
-the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble with
-IRC, please ask for help on this mailing list.
-
-As in the last Outreachy round, we are encouraging applicants (once they
-have completed a number of Staging driver cleanup patches) to complete some
-small tasks outlined by the mentors.  The task lists for each mentor are
-linked from the OutreachyIntro page.
-
-*Before* you start on a task, please claim that task through this page:
-
-http://kernelnewbies.org/OutreachyTasks
-
-There is a tips section at the end of the tutorial to outline what
-behaviors we look for in potential Outreachy interns.  I hope this will
-give more insight into our selection process.
-
-http://kernelnewbies.org/Outreachyfirstpatch#tips
-
-We've also noticed that applicants (and even accepted interns!) aren't
-consistently using the email communication style preferred by the Linux
-kernel community.  This style can be as important as coding style to
-many community members, so please review the email style guidelines and
-attempt to follow them:
-
-http://kernelnewbies.org/Outreachyfirstpatch#head-9799d3ebaa1221875dfdb0a05c4063dc4eb474a1
-
-
-When can I apply?
------------------
-
-The application period for the Linux kernel project during Outreachy Round 10
-is February 17 to March 24.
-
-Good luck with your application!  If you have any questions, mentors
-will be available via IRC or this mailing list.  Do not hesitate to ask
-questions if you get stuck in the tutorial.
-
-Julia Lawall
-Linux Kernel Outreachy Coordinator
+Daniel.
 
