@@ -1,96 +1,96 @@
-X-GM-THRID: 6253354583322525696
-X-Received: by 10.182.246.130 with SMTP id xw2mr17855380obc.29.1455972572465;
-        Sat, 20 Feb 2016 04:49:32 -0800 (PST)
+X-GM-THRID: 6254207218410848256
+X-Received: by 10.67.30.161 with SMTP id kf1mr11828268pad.21.1456729381039;
+        Sun, 28 Feb 2016 23:03:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.118.165 with SMTP id kn5ls356875obb.18.gmail; Sat, 20 Feb
- 2016 04:49:32 -0800 (PST)
-X-Received: by 10.182.118.169 with SMTP id kn9mr17589750obb.11.1455972572125;
-        Sat, 20 Feb 2016 04:49:32 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id ff2si2337086pad.2.2016.02.20.04.49.32
+Received: by 10.140.95.43 with SMTP id h40ls2199398qge.39.gmail; Sun, 28 Feb
+ 2016 23:03:00 -0800 (PST)
+X-Received: by 10.129.72.199 with SMTP id v190mr11921894ywa.44.1456729380519;
+        Sun, 28 Feb 2016 23:03:00 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x231.google.com (mail-qg0-x231.google.com. [2607:f8b0:400d:c04::231])
+        by gmr-mx.google.com with ESMTPS id x5si560541ywb.2.2016.02.28.23.03.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 04:49:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Sun, 28 Feb 2016 23:03:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::231 as permitted sender) client-ip=2607:f8b0:400d:c04::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id ho8so67010169pac.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 04:49:32 -0800 (PST)
+Received: by mail-qg0-x231.google.com with SMTP id y9so110351519qgd.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 23:03:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=jlsSuoGdUCaf1tT25nHoNOCzkIRlacb3bQ1HJhx4Gtk=;
-        b=MCUD/DRkD5Ntxx6U15HpBs5o3hzBfV+TPX1u1pRdsHWsXFIBU62LWGqBu/IkRpKvYb
-         C+vWvws4n6PykEAIv5s2TxvNTCdF4eFTOg4MZL9nMI6Mg5HSqcxukhPrHUsjATtlxGJ+
-         aiU+X9DKeiPMPe9pdfTEfloPCgxXTEqIIyxEaokR1DHLN80mf4uw4c1uFClL6D7dArQR
-         xIgQt9XsWu6rKlIqjgC30bD+DAgcJulqM3zdFNsqaGZ4YFHxEdENMm+oHTuajnfiGaBq
-         avtkpTAckZWpRHrM/CCnvBEn4ssXyPlrf8xE+OSHmIFXeUmrVsD5Szz5EYGOUtkxAWWc
-         njQQ==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=gt+yVQkseu1uDj2nZURsNeUUoEwv6M+TRdUBAzQFIUA=;
+        b=C4APAz5NSQsWNw67MXM5KYAejUp21HkP9+1cgIenDx+QUTGtzLboVQ6JT3HjzgZP28
+         btQfbbtPoQTDfxwymMrok3GTZhF5pWc+6KewvZA1I/eKS513XLi8dEW1khzbQOw/RDcC
+         J+TBSOI+G8GmDcTvqQVLIU3r72zwkdiMa2XufbJFucu5m/QnByTIO5hDKrU9kNFuXH7Z
+         tdqyvWtDDVoxBPnjKsmaGgIDXgzdh2mawo7kNkdrS79pdg8fABz3fyl7bLnRQWzLp0w2
+         dOi890scmr8Nh26PsqC+Bo7ZBhPY41htJCBqCTQsz+P3S09aUyLC8GeH36euGMTvoRb6
+         5Tfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=jlsSuoGdUCaf1tT25nHoNOCzkIRlacb3bQ1HJhx4Gtk=;
-        b=bhctIrslUqZjsA6NzBbD/Kh7xWvx5veC/s7KScMyWm+vkJT00yyTbXRwkFJS83gaWs
-         Ow4O/I6GgePYLML1jXzOLqJXur3lkoRP6bTjmAAhFdBlvUHwAdd8jQBMsxB1/0xC2dQ9
-         C2UvkCzyv4+W+l0gjVLgwWtFboOYyuBxDbMJvXcD8iyqz19ZuQLxNgMDotGLWix1aZJP
-         o4WBeM36V0Bbcs4C6ulM26qCP/OsnLiqf539jzCsQH50hCYcCOkacyEzrQM/biAn6q0K
-         Iq8YOuv3tJ4WsB4GEUfnZcY5A0PoxNp47fOStA2y24JWaSmoW4XG6duJT/83SrqT2nO1
-         xowQ==
-X-Gm-Message-State: AG10YOT72v2GmUb1n+9zZBa96m6yhiM+LC4LVn8UHk+b0C5eVBuxfTdIClhaSAaz+XMFMg==
-X-Received: by 10.66.160.7 with SMTP id xg7mr24859817pab.10.1455972571965;
-        Sat, 20 Feb 2016 04:49:31 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.39])
-        by smtp.gmail.com with ESMTPSA id p8sm24519946pfi.34.2016.02.20.04.49.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 04:49:31 -0800 (PST)
-Date: Sat, 20 Feb 2016 10:19:33 +0530
-From: Sandhya <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH]: staging: wlan-ng: Remove unnecessary NULL check before
- returning error.
-Message-ID: <20160220044933.GA10427@sandhya>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=gt+yVQkseu1uDj2nZURsNeUUoEwv6M+TRdUBAzQFIUA=;
+        b=Y2Aajh+FiOd994Mb3P3mz5EQD7SMQJ36iHk14+oTnqmmpv8Iq+TuJJOxhC7DipJr9i
+         1qrHEstNG4Vny8PBP33Wf/Nr0bL6xsdJ/lecWSg7JIyQuk2h2ghtlzJrAB8zUyazCB5W
+         ETyEdkFmXHpsckU4OB8C14/fina5zXP9NlEvhv9KGwWJfW3eI30whASAcsCGdaj8G2kZ
+         GU6eHvxBupAswdqvCdxM2mJZU1Or2oSUHcsrcwEu3PWBc+Hhjb4lE5Ar3I8xixQ3AZ/c
+         vKDmH/N/7I/wwmrVy7lKWzR2HifoJiQt7r2alo5xF+gcPHAB9ic6sQPs3T89Gn8TWpIN
+         FsJw==
+X-Gm-Message-State: AD7BkJJ0C/oyPOG8heLrBlf+wQklVqJhu3Ij/nlc9JFjtGwd+/CRdxCjr8Z28YLsoFe/jIxIdym/Eziq9ydGzg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+X-Received: by 10.140.233.85 with SMTP id e82mr17502066qhc.86.1456729380275;
+ Sun, 28 Feb 2016 23:03:00 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Sun, 28 Feb 2016 23:03:00 -0800 (PST)
+In-Reply-To: <20160222195807.GA12070@amitoj-Inspiron-3542>
+References: <20160222195807.GA12070@amitoj-Inspiron-3542>
+Date: Mon, 29 Feb 2016 12:33:00 +0530
+Message-ID: <CA+5yK5FQ_PXZ1gBAhEtFBLTyJhaHfU9OCB5FENtsNs0LneF=jQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: iio: adc: spear_adc: Use devm_iio_device_register
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove unnecessary NULL check before returning error.
+On Tue, Feb 23, 2016 at 1:28 AM, Amitoj Kaur Chawla
+<amitoj1606@gmail.com> wrote:
+> Devm_ functions allocate memory that is released when a driver
+> detaches. Replace iio_device_register with the resource-managed
+> version devm_iio_device_register. Subsequently, remove
+> iio_device_unregister from remove function of this driver.
+>
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
+>  drivers/staging/iio/adc/spear_adc.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/iio/adc/spear_adc.c b/drivers/staging/iio/adc/spear_adc.c
+> index f2c0065..0a6d0d7 100644
+> --- a/drivers/staging/iio/adc/spear_adc.c
+> +++ b/drivers/staging/iio/adc/spear_adc.c
+> @@ -346,7 +346,7 @@ static int spear_adc_probe(struct platform_device *pdev)
+>         indio_dev->channels = spear_adc_iio_channels;
+>         indio_dev->num_channels = ARRAY_SIZE(spear_adc_iio_channels);
+>
+> -       ret = iio_device_register(indio_dev);
+> +       ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
+>         if (ret)
+>                 goto errout2;
+>
+> @@ -366,7 +366,6 @@ static int spear_adc_remove(struct platform_device *pdev)
+>         struct iio_dev *indio_dev = platform_get_drvdata(pdev);
+>         struct spear_adc_state *st = iio_priv(indio_dev);
+>
+> -       iio_device_unregister(indio_dev);
+>         clk_disable_unprepare(st->clk);
+>         iounmap(st->adc_base_spear6xx);
+>
+> --
+> 1.9.1
+>
+This patch is incorrect and should be dropped.
 
-Signed-off-by: Sandhya <bankarsandhya512@gmail.com>
----
- drivers/staging/wlan-ng/cfg80211.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 8c1e3f0..c59dd33 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -303,7 +303,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
- 
- 	memset(sinfo, 0, sizeof(*sinfo));
- 
--	if ((wlandev == NULL) || (wlandev->msdstate != WLAN_MSD_RUNNING))
-+	if (!wlandev || (wlandev->msdstate != WLAN_MSD_RUNNING))
- 		return -EOPNOTSUPP;
- 
- 	/* build request message */
-@@ -312,7 +312,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
- 	quality.dbm.status = P80211ENUM_msgitem_status_data_ok;
- 
- 	/* send message to nsd */
--	if (wlandev->mlmerequest == NULL)
-+	if (!wlandev->mlmerequest)
- 		return -EOPNOTSUPP;
- 
- 	result = wlandev->mlmerequest(wlandev, (struct p80211msg *) &quality);
--- 
-1.8.3.4
-
+Amitoj
 
