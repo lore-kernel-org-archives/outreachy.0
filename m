@@ -1,112 +1,149 @@
-X-GM-THRID: 6255259573485043712
-X-Received: by 10.98.68.194 with SMTP id m63mr41630565pfi.7.1456416112504;
-        Thu, 25 Feb 2016 08:01:52 -0800 (PST)
+X-GM-THRID: 6256613003892883456
+X-Received: by 10.107.44.67 with SMTP id s64mr17940054ios.29.1456731232046;
+        Sun, 28 Feb 2016 23:33:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.10.97 with SMTP id u94ls459189ioi.22.gmail; Thu, 25 Feb
- 2016 08:01:52 -0800 (PST)
-X-Received: by 10.98.89.132 with SMTP id k4mr41641590pfj.4.1456416112175;
-        Thu, 25 Feb 2016 08:01:52 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 12si1272143pfb.1.2016.02.25.08.01.52
+Received: by 10.140.84.243 with SMTP id l106ls2490875qgd.43.gmail; Sun, 28 Feb
+ 2016 23:33:51 -0800 (PST)
+X-Received: by 10.140.41.69 with SMTP id y63mr28706737qgy.26.1456731231476;
+        Sun, 28 Feb 2016 23:33:51 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id 12si3500731pfb.1.2016.02.28.23.33.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 08:01:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sun, 28 Feb 2016 23:33:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id c10so3024273pfc.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 08:01:52 -0800 (PST)
+Received: by mail-pa0-x241.google.com with SMTP id yy13so8185573pab.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 23:33:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=nMo8dMXtI4Tp0eCIvYFXQb3qt61y3kGwlOpWDw5kWaw=;
-        b=KR8uc+MlvwdEz3Cjof046Jssl8IM32TNhfJZkMm7YV01T3VxYZNoKBCzPD2FjZDwvB
-         Y8ueAlY7OWNELaip9kIfLqAzBARwQ1QmP+2o1EYlFLKge/fI5apXW4dw0R1DcVV7MV8z
-         dYG6Nr3jRzC3HMfQSRJrLxg8QxJMAL/d7IXYKKYUGnxzZsa1ZqWlcxmhokNjD6Jt1Gfp
-         7d8K7s4W1kQV/HVZZ3KJtKACHNoQFLZ28Y0lCSLiGLW/Akt5T09zt5PFj716s5DV7hvs
-         /FXNjVjlGBJyjqju54lUOTbBVhkipwzmlMw/32IXrxwYGUPK3Ey/k27dXdFe3uynWryg
-         Rdxg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=mnIS4pMd60+byYdBbymM+DdYwXKH0zCe1ssFrDOdGbc=;
+        b=Uk5iYamBRlL7aGrvUd2wb4WxnzJVHEvL9cfhS241xDAmYwrgrgHBn69vt8+3PHNC83
+         WN3JsVoHGBUz6XCGwq9buDOfj3mkiNXDaySxKnKNz5bfpf6Gor5NIqVQ+D4VIHqwzU4F
+         ktW+hBr8gNxQsWjjI9pT75Uc/4PccJoakRiTVzsf/bXJQL0rlhtXsL8Yw8oZOrw6ypIo
+         p5B5IFwtnB15Fj9MIcsOu6/bFRygN/xDWkjKbvzpGhk+QcPnAonbQfWM45c5h4cf7rZR
+         Zm7Ddu5O+GQcekU66/TMHlirJUBR+UyxG24OO2BUOksk/8K4vpMP8Bbn4N4esiNlLeQz
+         qCOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=nMo8dMXtI4Tp0eCIvYFXQb3qt61y3kGwlOpWDw5kWaw=;
-        b=BnpULRomXAd/wv8hO/3ZC0cuva7XhE0ZnXNBk2SZZekYRgxCInQNIiTbwNYDy8iyvT
-         YsapGympRkfzPaPAqcIiuWfxfIAwrw1Wjx0cjZjOFtetLJkWpPUbuETvY7pizQfe1FMv
-         trgTssl2RfGnV2I9cAYdJacqpiSUq5fy/NBES62lniovz2yaGQFQTCRhEUUBgOx0u6t5
-         oQEtLOkYAsZ9ZZiKABmj2g2RCqgAj8AEDRto6KVIWidSw7muPJ7gF8W9ynIMK5/MlrFw
-         /eLhrfhPKSjSmBvro9YqKpOx2wz84/ep/6AlfbGA7vXb4sSggXvpD2rkNRoPHSrIqvp1
-         vxdg==
-X-Gm-Message-State: AG10YOQpA5P9mtU20gVx62MIqCWcyo1DJ/bLUIMuh9NqAF+26CZzG9dw5Mgq8wkBBcXuAg==
-X-Received: by 10.98.93.205 with SMTP id n74mr63722020pfj.99.1456416112060;
-        Thu, 25 Feb 2016 08:01:52 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 6sm13229849pfo.58.2016.02.25.08.01.50
+         :content-disposition:user-agent;
+        bh=mnIS4pMd60+byYdBbymM+DdYwXKH0zCe1ssFrDOdGbc=;
+        b=eQin8uMdI9JpL1aLmxEgw7qexytU61N3xb6qDimVLk9S4mzaiPsTnOq8qXJ7t99X8U
+         fGf7BrYrx+J6N6Kt29hwncApKPNs7FCloqutesDWJOOZu/VacZECs07UUVuv0kJ9UVQZ
+         wo85/0dGuJ5Gc/cpOGD4C+ZMrAEF4c9PVGcA5l0kpgN6RXYwHNjRAjZik5ZO1fd8aU0w
+         +7AAB2pdfBRjeTQfSUJ/5/ZOGVFZKhkZoVBD35YCxR4bwRhAmjU225K36HXkXiYao/Qk
+         waRCPgz+6VeZmZCiShEuR4WfS2z2H32lVoC8RImNscOjP3S7RgWdKyLa1HOJz7D91DAK
+         WYoA==
+X-Gm-Message-State: AD7BkJLEANND+yO3fum0I/iX7DBVkratAy/gf4dolm3Xhs7NJkI7q9qNOfi3rtqNZc4QWQ==
+X-Received: by 10.66.222.129 with SMTP id qm1mr20209342pac.22.1456731231246;
+        Sun, 28 Feb 2016 23:33:51 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.179.114])
+        by smtp.gmail.com with ESMTPSA id z67sm35519756pfa.71.2016.02.28.23.33.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 08:01:51 -0800 (PST)
-Date: Thu, 25 Feb 2016 21:31:30 +0530
-From: "pooja.shamili" <poojashamili@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Sun, 28 Feb 2016 23:33:50 -0800 (PST)
+Date: Mon, 29 Feb 2016 13:03:46 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: gdm72x: Add spaces before and after '*'
-Message-ID: <20160225160130.GA8646@localhost>
+Subject: [PATCH v2] staging: iio: adc: Replace of_iomap() with
+ devm_ioremap_resource()
+Message-ID: <20160229073346.GA18683@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch.pl error:
-CHECK: spaces preferred around that '*'
+The adc driver uses of_iomap() which doesn't request the resource and
+isn't device managed so error handling is needed. of_iomap() is mainly
+used in cases where there is no driver or struct device so a switch to
+devm_ functions is required.
 
-Signed-off-by: pooja.shamili <poojashamili@gmail.com>
+This patch switches to use devm_ioremap_resource() instead which
+automatically requests the resource and is freed when the driver
+detaches.
+
+Removed the error handling to unmap I/O registers i.e.
+iounmap() in probe and remove functions of this driver and
+consequently removed an unnecessary label.
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
+Changes in v2:
+        -Rebased patch
 
-Changes since v1:
-	* Changed the commit message to the present tense
+ drivers/staging/iio/adc/spear_adc.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
- drivers/staging/gdm724x/gdm_mux.h | 4 ++--
- drivers/staging/gdm724x/gdm_usb.h | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/gdm724x/gdm_mux.h b/drivers/staging/gdm724x/gdm_mux.h
-index 3d50383..0871b8f 100644
---- a/drivers/staging/gdm724x/gdm_mux.h
-+++ b/drivers/staging/gdm724x/gdm_mux.h
-@@ -27,8 +27,8 @@
+diff --git a/drivers/staging/iio/adc/spear_adc.c b/drivers/staging/iio/adc/spear_adc.c
+index f2c0065..5dd61f6 100644
+--- a/drivers/staging/iio/adc/spear_adc.c
++++ b/drivers/staging/iio/adc/spear_adc.c
+@@ -262,6 +262,7 @@ static int spear_adc_probe(struct platform_device *pdev)
+ 	struct device_node *np = pdev->dev.of_node;
+ 	struct device *dev = &pdev->dev;
+ 	struct spear_adc_state *st;
++	struct resource *res;
+ 	struct iio_dev *indio_dev = NULL;
+ 	int ret = -ENODEV;
+ 	int irq;
+@@ -280,24 +281,24 @@ static int spear_adc_probe(struct platform_device *pdev)
+ 	 * (e.g. SPEAr3xx). Let's provide two register base addresses
+ 	 * to support multi-arch kernels.
+ 	 */
+-	st->adc_base_spear6xx = of_iomap(np, 0);
+-	if (!st->adc_base_spear6xx) {
+-		dev_err(dev, "failed mapping memory\n");
+-		return -ENOMEM;
+-	}
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	st->adc_base_spear6xx = devm_ioremap_resource(&pdev->dev, res);
++	if (IS_ERR(st->adc_base_spear6xx))
++		return PTR_ERR(st->adc_base_spear6xx);
++
+ 	st->adc_base_spear3xx =
+ 		(struct adc_regs_spear3xx __iomem *)st->adc_base_spear6xx;
  
- #define START_FLAG 0xA512485A
- #define MUX_HEADER_SIZE 14
--#define MUX_TX_MAX_SIZE (1024*10)
--#define MUX_RX_MAX_SIZE (1024*30)
-+#define MUX_TX_MAX_SIZE (1024 * 10)
-+#define MUX_RX_MAX_SIZE (1024 * 30)
- #define AT_PKT_TYPE 0xF011
- #define DM_PKT_TYPE 0xF010
+ 	st->clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(st->clk)) {
+ 		dev_err(dev, "failed getting clock\n");
+-		goto errout1;
++		return PTR_ERR(st->clk);
+ 	}
  
-diff --git a/drivers/staging/gdm724x/gdm_usb.h b/drivers/staging/gdm724x/gdm_usb.h
-index e6486e7..ffb3d99 100644
---- a/drivers/staging/gdm724x/gdm_usb.h
-+++ b/drivers/staging/gdm724x/gdm_usb.h
-@@ -26,10 +26,10 @@
- #define PM_SUSPEND 1
- #define AUTO_SUSPEND_TIMER 5000 /* ms */
+ 	ret = clk_prepare_enable(st->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed enabling clock\n");
+-		goto errout1;
++		return ret;
+ 	}
  
--#define RX_BUF_SIZE		(1024*32)
--#define TX_BUF_SIZE		(1024*32)
-+#define RX_BUF_SIZE		(1024 * 32)
-+#define TX_BUF_SIZE		(1024 * 32)
- #define SDU_BUF_SIZE	2048
--#define MAX_SDU_SIZE	(1024*30)
-+#define MAX_SDU_SIZE	(1024 * 30)
- #define MAX_PACKET_IN_MULTI_SDU	256
+ 	irq = platform_get_irq(pdev, 0);
+@@ -356,8 +357,6 @@ static int spear_adc_probe(struct platform_device *pdev)
  
- #define VID_GCT			0x1076
+ errout2:
+ 	clk_disable_unprepare(st->clk);
+-errout1:
+-	iounmap(st->adc_base_spear6xx);
+ 	return ret;
+ }
+ 
+@@ -368,7 +367,6 @@ static int spear_adc_remove(struct platform_device *pdev)
+ 
+ 	iio_device_unregister(indio_dev);
+ 	clk_disable_unprepare(st->clk);
+-	iounmap(st->adc_base_spear6xx);
+ 
+ 	return 0;
+ }
 -- 
-2.1.4
+1.9.1
 
 
