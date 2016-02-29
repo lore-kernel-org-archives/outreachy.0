@@ -1,111 +1,130 @@
 X-GM-THRID: 6256792083376373760
-X-Received: by 10.112.189.104 with SMTP id gh8mr2195442lbc.12.1456832022334;
-        Tue, 01 Mar 2016 03:33:42 -0800 (PST)
+X-Received: by 10.112.168.201 with SMTP id zy9mr1889341lbb.23.1456781711128;
+        Mon, 29 Feb 2016 13:35:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.54.30 with SMTP id d30ls131649wma.10.canary; Tue, 01 Mar
- 2016 03:33:41 -0800 (PST)
-X-Received: by 10.194.92.232 with SMTP id cp8mr377867wjb.6.1456832021582;
-        Tue, 01 Mar 2016 03:33:41 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id w10si766099wmw.3.2016.03.01.03.33.41
+Received: by 10.25.16.75 with SMTP id f72ls300175lfi.12.gmail; Mon, 29 Feb
+ 2016 13:35:10 -0800 (PST)
+X-Received: by 10.25.160.207 with SMTP id j198mr658886lfe.4.1456781710415;
+        Mon, 29 Feb 2016 13:35:10 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v68si205007wmd.1.2016.02.29.13.35.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 03:33:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Mon, 29 Feb 2016 13:35:10 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id n186so3605762wmn.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 03:33:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc;
-        bh=fa4XUaNkWZJ9LZ/aMP/v7f768a3jc6jV9LuA2IzaPw4=;
-        b=KxOtNXo5E/oPpCoiGKM8umBuTcntSqAUCXQnyQBBfvn311Ci9NJti5WoehvwLKMbTi
-         FwqDpi9wjo+ZYOZ63GlMNKq8uG2snFNAN1ULVnxLQsjDia0RCcJ4OBw0RDDjB669Bj8g
-         qg0Mlm905M1PC+DSiM0ta02ZjLhz8Xzh0REKRQo/NcXM2szcQgunf3k221VlaJcNTQzD
-         /qjmaMRXS6Qp+dIEfRmAiPOtrrZ9K3ezhHkN8oyzertLahRvTQ5pclUoOZzklLV4SWjl
-         5vMb/MqmlugcJf4dPO5XVyQDS06UBKNBEjpwDi0wPmoxAZ1/jwfyxGwoQb35rBokeBSP
-         2gEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc;
-        bh=fa4XUaNkWZJ9LZ/aMP/v7f768a3jc6jV9LuA2IzaPw4=;
-        b=BR/Smo5/XEg7bSfB978Srip37zc7qKsqIqxDbO4D7NFycTktN6DZVZy8X9CnhZgsMT
-         FZgSqi5ah79rfd530/cOz8L6BkKEWdkXLJdiZ5978G7t90ywZVent8/FpnkxoqFL1kBx
-         YKCoGKCatiiFAwmPtN6mY63xL59/oLqDoOjC0Z/yKEx0w659fXAz8qEEZ8DPSwtM9VEy
-         FQfszOErzxgpOowBGo/eHXvOEbGzaP9WUMsOKwJfVTPjyiUapjRSceeKgMOEYyknADvL
-         H0SM8C/PvOXr+mJVKzhBhrFQcUTJ666XOHUbvqSJUg8L/9CE5UfI4snZOUCFPvlVYBS4
-         FMog==
-X-Gm-Message-State: AD7BkJIWVW3h9zT36IkC98t/tTF9gEoS7UeT2k4XHqw2yRP67ISbWBquUUlGaHRL0RU8OdfKF/JfR63Rymi1kg==
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,521,1449529200"; 
+   d="scan'208";a="205125342"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Feb 2016 22:35:09 +0100
+Date: Mon, 29 Feb 2016 22:35:09 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: sandhya bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/5] Staging: Remove unnecessary
+ goto.
+In-Reply-To: <CAA3ASzmojvs8HDo2SZ168NDCsJjU84yL1YYw==a0FDL_3PAnNA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.02.1602292233200.2256@localhost6.localdomain6>
+References: <cover.1456743650.git.bankarsandhya512@gmail.com> <alpine.DEB.2.10.1602292011080.2600@hadrien> <CAA3ASzmojvs8HDo2SZ168NDCsJjU84yL1YYw==a0FDL_3PAnNA@mail.gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-X-Received: by 10.28.187.138 with SMTP id l132mr3498010wmf.0.1456832021432;
- Tue, 01 Mar 2016 03:33:41 -0800 (PST)
-Received: by 10.194.222.165 with HTTP; Tue, 1 Mar 2016 03:33:41 -0800 (PST)
-In-Reply-To: <e6834a1d697b021ff535558e0f20d3518b15bc26.1456743650.git.bankarsandhya512@gmail.com>
-References: <cover.1456743650.git.bankarsandhya512@gmail.com>
-	<e6834a1d697b021ff535558e0f20d3518b15bc26.1456743650.git.bankarsandhya512@gmail.com>
-Date: Tue, 1 Mar 2016 13:33:41 +0200
-Message-ID: <CAEnQRZDA0wkV=P42qSaGYtoOSpwXBPHK9_a1DY6oDjKZCwvirA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 3/5] Staging: iio: ade7758_core: Remove
- unnecessary goto.
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Sandhya Bankar <bankarsandhya512@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-2129685325-1456781710=:2256"
 
-On Mon, Feb 29, 2016 at 1:23 PM, Sandhya Bankar
-<bankarsandhya512@gmail.com> wrote:
-> Remove unnecessary goto.
-> Used below semantic patch to detect the unnecessary goto:
-> @r@
-> expression ret;
-> identifier f,l;
-> statement S;
-> position p;
-> @@
->
-> (
-> if (<+...f(...)...+>) S
-> |
-> if@p (...) return ret;
-> return ret;
-> |
-> if@p (...) goto l;
-> l:
-> return ret;
-> )
->
-> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
-> ---
->  drivers/staging/iio/meter/ade7758_core.c | 2 --
->  1 file changed, 2 deletions(-)
->
-> diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
-> index 0db23e4..32792d0 100644
-> --- a/drivers/staging/iio/meter/ade7758_core.c
-> +++ b/drivers/staging/iio/meter/ade7758_core.c
-> @@ -432,8 +432,6 @@ int ade7758_set_irq(struct device *dev, bool enable)
->                 irqen &= ~BIT(16);
->
->         ret = ade7758_spi_write_reg_24(dev, ADE7758_MASK, irqen);
-> -       if (ret)
-> -               goto error_ret;
->
->  error_ret:
->         return ret;
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Here you can just return ade7758_spi_write_reg_24(...). Also you can completely
-remove the goto label by modifying the code at the beginning of the
-function as follows:
+--8323328-2129685325-1456781710=:2256
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-        ret = ade7758_spi_read_reg_24(dev, ADE7758_MASK, &irqen);
-        if (ret)
-             return ret;
 
-Daniel.
+
+On Tue, 1 Mar 2016, sandhya bankar wrote:
+
+> I have used this semantic patch to detect the unnecessary goto.
+
+A semantic patch that doesn't contain any annotations or script code 
+doesn't do anything.  In the code that you have, there are a number of 
+cases, but one doesn't know if you are checking for all of them or only 
+some of them.  You can use * to indicate the cases that you are searching 
+for, if you don't have a specific transformation to propose.
+
+julia
+
+> 
+> On Tue, Mar 1, 2016 at 12:41 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> 
+> 
+>       On Mon, 29 Feb 2016, Sandhya Bankar wrote:
+> 
+>       > Remove unnecessary goto.
+>       > Semantic patch:
+>       > @r@
+>       > expression ret;
+>       > identifier f,l;
+>       > statement S;
+>       > position p;
+>       > @@
+>       >
+>       > (
+>       > if (<+...f(...)...+>) S
+>       > |
+>       > if@p (...) return ret;
+>       > return ret;
+>       > |
+>       > if@p (...) goto l;
+>       > l:
+>       > return ret;
+>       > )
+> 
+>       The semantic patch doesn't remove (or add) anything?
+> 
+>       julia
+> 
+>       >
+>       > Sandhya Bankar (5):
+>       >   Staging: media: Remove Unnecessary goto.
+>       >   Staging: iio: ade7854: Remove unnecessary goto.
+>       >   Staging: iio: ade7758_core: Remove unnecessary goto.
+>       >   Staging: iio: ade7754: Remove unnecessary goto.
+>       >   Staging: gdm72xx: Remove unnecessary goto.
+>       >
+>       >  drivers/staging/gdm72xx/usb_boot.c            | 3 +--
+>       >  drivers/staging/iio/meter/ade7754.c           | 2 --
+>       >  drivers/staging/iio/meter/ade7758_core.c      | 2 --
+>       >  drivers/staging/iio/meter/ade7854.c           | 2 --
+>       >  drivers/staging/media/bcm2048/radio-bcm2048.c | 2 --
+>       >  5 files changed, 1 insertion(+), 10 deletions(-)
+>       >
+>       > --
+>       > 1.8.3.4
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/cover.1456743650.git.ban
+> karsandhya512%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+> 
+> 
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAA3ASzmojvs8HDo2SZ168ND
+> CsJjU84yL1YYw%3D%3Da0FDL_3PAnNA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
+> 
+--8323328-2129685325-1456781710=:2256--
 
