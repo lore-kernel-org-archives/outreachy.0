@@ -1,116 +1,95 @@
-X-GM-THRID: 6754520121946931200
-X-Received: by 2002:a25:df43:: with SMTP id w64mr12215645ybg.123.1572659267571;
-        Fri, 01 Nov 2019 18:47:47 -0700 (PDT)
+X-GM-THRID: 6257157996417122304
+X-Received: by 10.182.19.230 with SMTP id i6mr4773650obe.42.1456858123381;
+        Tue, 01 Mar 2016 10:48:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:5986:: with SMTP id n128ls1217301ywb.7.gmail; Fri, 01
- Nov 2019 18:47:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzIHEsJhaUh9Hpu0VEYFvpycS1uGYnu7dH08sqUbEaNaAXaQEEb4VeUN7IOO7flYRg7psja
-X-Received: by 2002:a81:3986:: with SMTP id g128mr11181055ywa.487.1572659266281;
-        Fri, 01 Nov 2019 18:47:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572659266; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Xfd0q/2iQrBf1N+GM7ZdxUetsUDPTVsDicXV/XZIzNyTiMfTMR1JPU9n1KvNyh/0ed
-         mtiJVddyosVRsWpWNRvwYgqNxsR3HfpfeaQl3tFflQUa2d715XwQCSKZw+Qjfnt6yEP+
-         7YPT85Sgyl06wKl/PabLOyFKmwzzu4JLiX2ck9hJ2owqJ/s0EIDy9Px78qUbmSJMy1xr
-         gp5OE9o+SZlMqmaUX2+swv4LE3MW/8D0cNmHhcPnPVlmTjkzEHMTmWptlxZrkLK+Sm5q
-         oNO6cuJHmmyxkvqm3cg5Mj2MtUbgIUo/9oA4wKMCj7XhKWuvZP6rQiW8nKie5EGmzh24
-         Q4ow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:mail-followup-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=shVJvoSfUFQwFR1T1/ckU6MQ0yREb84qK29dexN6WDE=;
-        b=tfnrcsTVcFAbJpDP7OJVZrzHum+WLe8ZM3CNz2Nt66X2P6bxlg9SItyfXfWTK+qU0w
-         mUCWKvMnERSmSDXtsxU/MxXIZx9l6Q8AFrOdPTq3wKyIS/rfj92pPeoULrJHgMB86dZs
-         ZiuDrH/hVbruGXE7NuGQxUqJ/YdXRRHnb2mh4x1mc8e9b0zkAL8G6+PI22IoaS3CDvDz
-         PHkyM2foXiw0fegpZjTQ5bxXAqmRm3pEyZ3NKvh4E8fGfcnGjDExLdm9C4beZdb4sQ0I
-         WvIKdCajCLLyEOP6XbVac12mqELu68KMXhkXYe2UkRwIb93vwO1M+sJXG1JKxBHMQORL
-         YOEw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=t10QmKM7;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id u3si551941ywf.4.2019.11.01.18.47.46
+Received: by 10.140.107.11 with SMTP id g11ls1115797qgf.2.gmail; Tue, 01 Mar
+ 2016 10:48:42 -0800 (PST)
+X-Received: by 10.140.102.163 with SMTP id w32mr35574876qge.10.1456858122646;
+        Tue, 01 Mar 2016 10:48:42 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id ui7si4605687pab.0.2016.03.01.10.48.42
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 18:47:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Mar 2016 10:48:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=t10QmKM7;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id x6so5093512pln.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 18:47:46 -0700 (PDT)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id fl4so116874272pad.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 10:48:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition;
-        bh=shVJvoSfUFQwFR1T1/ckU6MQ0yREb84qK29dexN6WDE=;
-        b=t10QmKM7a/msGJ/dC8yq9B0nQ/i5gf6TFRzjHMVoe8gu/XtCQzJ5qLopdXvz2NS1mW
-         lWtIluBikN0N44oPULQhCGVQJo5ZPr1i78e66JDD/kjmBBU0W1qq4rp2Kvmvj8rNO1yw
-         FtJeT38f37lQeDzwnQT+jHuJCRIoAteYYacElsBYu6XqBN+EWhIPyQaQsPhoZwxqvhyQ
-         EqpaSRx9L8LYJ15x71CgeElSZSyBf0foVk69VHVsJnPH2FYNtawOzsoi132aU4bjpsSK
-         UA1+IIS6SXGWxicVCwDqqKBi1/6O2pHsps/JjbZ5ZaxwwNCfY9Fr0yz39GausDLgz99I
-         UOaw==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=drjgXcKm8mYK8QZ2/eOgSJhlj+vBIiNEHMJpVnvROok=;
+        b=Us3gHtDd+ANWSrOs616yoc6tr1XaSx+0hthO/xnm4VPlcBgiiHFr2RuUDnRYSWQPxJ
+         G5S4+qUkviHkUZMSM7zCoyIgT4h73UGDYRMhlh1AgvML6VQnaqUXopm31BI3UpRvHIqT
+         vcuH5RvPoPZuWEie7gj1S38VMlJXW4LX5ylq/M4AIL19m51uOCERPVL8nZnK2T+LwSql
+         4P6vqdo2PFYhgbkYKMaSYU4wEMVErPWf+X3/Bq8eYvFBrTyRzmZlxPWg4pMocU7rUu9F
+         xTUpUcxW9Mksdq2c/zSpOZ0AAB4bInCd9WYzs1XqFURw5ZBsNgaTx/AgbOPqCa25ybAk
+         +YZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition;
-        bh=shVJvoSfUFQwFR1T1/ckU6MQ0yREb84qK29dexN6WDE=;
-        b=QrRyRgTrpEnpFUHRFPIBzBxdWp75PtMX2itEGrNNsVkOoW5HaLZOtNdRzuYG9NKLRD
-         rRNpuoqsjHtTSn7w4/AU0Ovbtg7+aMuqmR9TxLVwm5+k0aebAsyaw54pd7dlXOm1kmrh
-         ULztHXcIazn8mKN/FYjIzZV3oOP+DNSJl5sSRT4aJ96jfmWf1i9U773+guc6SG0x6Wld
-         X9imMAkn8MvLrablBJK8DgivMFwnCUOIL/HIguVO+WYR/3G009jZ3AqpjvjkDebknkTu
-         9HMuD0zfPdE/ozsuzCCMjZ80Sg7szxRhjeN4GjvL97mlUkdOQ9ZFzq+uSv5BxeuBg3Xb
-         0tuQ==
-X-Gm-Message-State: APjAAAU/JcTQkWwVzcylom2ed5IB1orJeCKjR/NrSgiv+GYdh086SOtK
-	tTkOo6tQBAckni0qf/G5QmV4I5F9nekaSQ==
-X-Received: by 2002:a17:902:6a89:: with SMTP id n9mr15309402plk.278.1572659265507;
-        Fri, 01 Nov 2019 18:47:45 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com ([104.216.216.194])
-        by smtp.gmail.com with ESMTPSA id w62sm8870731pfb.15.2019.11.01.18.47.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 18:47:44 -0700 (PDT)
-Date: Fri, 1 Nov 2019 20:47:42 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH V2] media: staging/intel-ipu3: Fix assignment warning
-Message-ID: <20191102014741.bjt23bzuz6coijgo@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=drjgXcKm8mYK8QZ2/eOgSJhlj+vBIiNEHMJpVnvROok=;
+        b=PykTfoKsW93UelsQE6iTUZqjuyszDQg6w0SxS5MpDI/vAKPUUihr5av4eHnUTPH0Rg
+         KtNDGIcxtPdFfV0P9h0EIa2loL4PQAMMlySk8Qb3gavYl5UWO9Nd5qdQfNhBbBWVOi/I
+         Uh3vNVM1YFx1HJ+okkh825mbboU12P8qx5y0P8pN0LCyliT2Sd4kUWrIpGTzu41YoI8e
+         31ed1nQawtYqCyxsJTvQ5nSQoo8uzlyeNHn8MwIGipcJpzMi9l6tFRyQFdtCTTqnEZ6i
+         qVFcF+vklwZSs7//aJe8mvBagljG5xfEZOPsDj4YDX9rL4s0MvFXvAt2oRanb+ADzkuV
+         p6Mw==
+X-Gm-Message-State: AD7BkJKeQHwr7P6YzX7S7PZKmndb668s7+zQKa4PLByj6jmmcsjjaWhyApeEhJ6bnALltA==
+X-Received: by 10.66.189.165 with SMTP id gj5mr32370623pac.157.1456858122449;
+        Tue, 01 Mar 2016 10:48:42 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([223.176.159.79])
+        by smtp.gmail.com with ESMTPSA id k14sm47266059pfj.0.2016.03.01.10.48.38
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 01 Mar 2016 10:48:41 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 02 Mar 2016 00:18:32 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: rtl8192u: Replace memset with eth_broadcast_addr
+Date: Wed,  2 Mar 2016 00:18:31 +0530
+Message-Id: <1456858111-3272-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patch fixes a warning by replacing the integer value with
-a boolean.
-Issue found by Coccinelle.
+Use eth_broadcast_addr to assign the broadcast address to the given
+address array instead of memset when the second argument is a broacast
+address 0xff. ETH_ALEN is a macro with value 6, so 6 is treated as
+ETH_ALEN if it is the third argument of memset.
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+Done using coccinelle.
+@@
+expression e;
+@@
+- memset(e,\(0xff\|0xFF\|255\),\(ETH_ALEN\|6\));
++ eth_broadcast_addr(e);
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
-Changes in V2:
-	- Edit the commit message and description.
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/media/ipu3/ipu3-css.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/ipu3/ipu3-css.c b/drivers/staging/media/ipu3/ipu3-css.c
-index fd1ed84c400c..f36de501edc6 100644
---- a/drivers/staging/media/ipu3/ipu3-css.c
-+++ b/drivers/staging/media/ipu3/ipu3-css.c
-@@ -1450,7 +1450,7 @@ bool imgu_css_pipe_queue_empty(struct imgu_css *css, unsigned int pipe)
- bool imgu_css_queue_empty(struct imgu_css *css)
- {
- 	unsigned int pipe;
--	bool ret = 0;
-+	bool ret = false;
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index f8041f9..2fbbf35 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -342,9 +342,9 @@ inline struct sk_buff *ieee80211_probe_req(struct ieee80211_device *ieee)
+ 	req->header.frame_ctl = cpu_to_le16(IEEE80211_STYPE_PROBE_REQ);
+ 	req->header.duration_id = 0; /* FIXME: is this OK? */
  
- 	for (pipe = 0; pipe < IMGU_MAX_PIPE_NUM; pipe++)
- 		ret &= imgu_css_pipe_queue_empty(css, pipe);
+-	memset(req->header.addr1, 0xff, ETH_ALEN);
++	eth_broadcast_addr(req->header.addr1);
+ 	memcpy(req->header.addr2, ieee->dev->dev_addr, ETH_ALEN);
+-	memset(req->header.addr3, 0xff, ETH_ALEN);
++	eth_broadcast_addr(req->header.addr3);
+ 
+ 	tag = (u8 *) skb_put(skb,len+2+rate_len);
+ 
 -- 
-2.20.1
+1.9.1
 
 
