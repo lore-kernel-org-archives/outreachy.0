@@ -1,160 +1,101 @@
-X-GM-THRID: 6208876911170420736
-X-Received: by 10.129.84.198 with SMTP id i189mr17841776ywb.32.1445616807081;
-        Fri, 23 Oct 2015 09:13:27 -0700 (PDT)
+X-GM-THRID: 6254894706255200256
+X-Received: by 10.182.199.70 with SMTP id ji6mr17509550obc.32.1456853964834;
+        Tue, 01 Mar 2016 09:39:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.122.97 with SMTP id lr1ls245393igb.17.canary; Fri, 23 Oct
- 2015 09:13:26 -0700 (PDT)
-X-Received: by 10.67.7.35 with SMTP id cz3mr17607277pad.40.1445616806623;
-        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id sm2si990877pab.0.2015.10.23.09.13.26
+Received: by 10.140.28.134 with SMTP id 6ls238306qgz.70.gmail; Tue, 01 Mar
+ 2016 09:39:23 -0800 (PST)
+X-Received: by 10.129.117.11 with SMTP id q11mr17070975ywc.3.1456853963942;
+        Tue, 01 Mar 2016 09:39:23 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x233.google.com (mail-qg0-x233.google.com. [2607:f8b0:400d:c04::233])
+        by gmr-mx.google.com with ESMTPS id v197si1983917ywa.1.2016.03.01.09.39.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Mar 2016 09:39:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) client-ip=2607:f8b0:400d:c04::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id hk11so122173776pad.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
+Received: by mail-qg0-x233.google.com with SMTP id d32so91704976qgd.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 09:39:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Gk/VhvG2bGDYcxyLL6lRc5Y1JtcbK0nskAq6awZJo7c=;
-        b=ZGZASdjKYeCpUjh3GsvRFXq3M6H1661F39SiNlvpJTx5/w84405vH1ifM6OQLT4/x/
-         P+mJ2ln05ATW4kckuJNN0vJYIVLCiIMGNRZxqMzS6kq1PAyBMc72t85gh4022Tlb8gGO
-         MG7UU/w2XxEmbo+F308oKywXyesSnst5W7YMgFIEbD6UI8o/e3yADTkV0Dtdr9nXS9ZV
-         RW5Iwh1GdS4u74owycTJVNQu3vhk2zSooDYSU/k48u1Wk5seJCglLRNyBgTjzZn3+IqL
-         TtJit1yThcXHuZInlUmVWcbVleA3TdZqojcLD6tLgIkfoWYFNhggrEbfW48cmNpwtmTM
-         g6KQ==
-X-Received: by 10.69.10.163 with SMTP id eb3mr5999881pbd.162.1445616806512;
-        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.5])
-        by smtp.gmail.com with ESMTPSA id yq2sm19749657pbb.39.2015.10.23.09.13.25
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 23 Oct 2015 09:13:26 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v2] Staging: mt29f_spinand: Use preferred kernel types
-Date: Sat, 24 Oct 2015 00:13:19 +0800
-Message-Id: <1445616799-27018-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc;
+        bh=VNJ/2Z6gfwVdl2JhpOsGRMIyJMQMWogs0durboK9knA=;
+        b=uR9dw1PF8WNZ45A4P9dMytNy7kK3W0ZoG/AuBTi/kQ+Pf8toDHIungWnCGRuq33jrO
+         zt+z/zMk04F/hz5XcbXlIicShxK3cXnI79wcF950kpOZz/a4MMP7GSt8RlpeMIeryypo
+         ya9kOvMdBINN0bqTYMOTkJG92jU1BiMfp6tXo8ajXt4XwirtyYpaud2gk/Tl0LvnyW7E
+         7n9PUORehq7tfII6leLeUz2HF/PUrpy0PekxAGd9DYvuwM6NeRndfo8Qr0Uv+SXKAh1Q
+         wc/F4SWC1tQpwW5CXUAwONH6iNX39QKVIxWtWvCt7IkTeRdqDA5Wye1GtfbapGlgB3vh
+         c85g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc;
+        bh=VNJ/2Z6gfwVdl2JhpOsGRMIyJMQMWogs0durboK9knA=;
+        b=adekocqsCPDb+hNcvHpm18/w8rkVZUiT/xXDd0MbpsstWYBKjxVSKecpFq4B8GWa+R
+         VCmDzgDh45HMPlYbwFfc38bj//dZKukjFvi7kbAYMVQ1nmXUzXMYpyi4JN6bAqpttxYO
+         Yjh0eLSmENlo3/s62bn+1/oKR0GA4CWQGsZVgA919vxGaCYx9LIIlb6zQlnf0/Y0cg3J
+         n7l+Mlkh4YxotP7pccFKv9K/npp7iVVLh34kMTTBCLz6j3x2ldrGMynYTyhMdAIloeT9
+         2H/JjV567+ws1efAs4y0vnjH+og95kFuTuIluN9nKvbghen2QvSzCQcBjGvyXCMNu9ct
+         O2Wg==
+X-Gm-Message-State: AD7BkJIoGVTQZ2khahFRdqCPwyHjdfPOhievlNJUAx4YQXe9+bRRwpxrPQo8sbQLKC5KXfbM/2UiNftCnlgBJw==
+MIME-Version: 1.0
+X-Received: by 10.140.140.196 with SMTP id 187mr28562055qhm.29.1456853963731;
+ Tue, 01 Mar 2016 09:39:23 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Tue, 1 Mar 2016 09:39:23 -0800 (PST)
+In-Reply-To: <20160301172111.GA19740@Karyakshetra>
+References: <20160301172111.GA19740@Karyakshetra>
+Date: Tue, 1 Mar 2016 23:09:23 +0530
+Message-ID: <CA+5yK5Fiph39gQUiJb4=wVsEH=Q7n50raTv2FQfQnp_61zq8rg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: wlan-ng: Remove unnecessary macro
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a1137379cff7c66052d003e86
 
-Replace remaining instances of 'uint8_t' with 'u8' for consistency since
-'u8' and 'u16' are already being used in other parts of the code.
+--001a1137379cff7c66052d003e86
+Content-Type: text/plain; charset=UTF-8
 
-Replace also 'uint32_t' with 'u32' on the header file.
-Checkpatch pointed out this issue.
+On Tue, Mar 1, 2016 at 10:51 PM, Bhaktipriya Shridhar <
+bhaktipriya96@gmail.com> wrote:
+> Replaced occurences of SUBMIT_URB with usb_submit_urb.
+>
+> This was detected using Coccinelle:
+>
+> @@
+> identifier a;
+> identifier b;
+> @@
+>
+> *#define a(...) b(...)
+>
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> ---
+Hi Bhaktipriya,
 
-CHECK: Prefer kernel type 'u8' over 'uint8_t'
-CHECK: Prefer kernel type 'u32' over 'uint32_t'
+I've already sent a patch for this, see it here.
+<https://groups.google.com/forum/#!topic/outreachy-kernel/g34QmWuTOis>
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
-Changes in v2:
- * Reflect type change on mt29f_spinand.h
- * Update commit message
+Amitoj
 
- drivers/staging/mt29f_spinand/mt29f_spinand.c | 18 +++++++++---------
- drivers/staging/mt29f_spinand/mt29f_spinand.h |  4 ++--
- 2 files changed, 11 insertions(+), 11 deletions(-)
+--001a1137379cff7c66052d003e86
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-index 4165fb4..a8292a1 100644
---- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
-+++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-@@ -145,7 +145,7 @@ static int spinand_read_id(struct spi_device *spi_nand, u8 *id)
-  *    Once the status turns to be ready, the other status bits also are
-  *    valid status bits.
-  */
--static int spinand_read_status(struct spi_device *spi_nand, uint8_t *status)
-+static int spinand_read_status(struct spi_device *spi_nand, u8 *status)
- {
- 	struct spinand_cmd cmd = {0};
- 	int ret;
-@@ -478,7 +478,7 @@ static int spinand_program_page(struct spi_device *spi_nand,
- {
- 	int retval;
- 	u8 status = 0;
--	uint8_t *wbuf;
-+	u8 *wbuf;
- #ifdef CONFIG_MTD_SPINAND_ONDIEECC
- 	unsigned int i, j;
- 
-@@ -613,9 +613,9 @@ static int spinand_erase_block(struct spi_device *spi_nand, u16 block_id)
- 
- #ifdef CONFIG_MTD_SPINAND_ONDIEECC
- static int spinand_write_page_hwecc(struct mtd_info *mtd,
--		struct nand_chip *chip, const uint8_t *buf, int oob_required)
-+		struct nand_chip *chip, const u8 *buf, int oob_required)
- {
--	const uint8_t *p = buf;
-+	const u8 *p = buf;
- 	int eccsize = chip->ecc.size;
- 	int eccsteps = chip->ecc.steps;
- 
-@@ -625,11 +625,11 @@ static int spinand_write_page_hwecc(struct mtd_info *mtd,
- }
- 
- static int spinand_read_page_hwecc(struct mtd_info *mtd, struct nand_chip *chip,
--		uint8_t *buf, int oob_required, int page)
-+		u8 *buf, int oob_required, int page)
- {
- 	int retval;
- 	u8 status;
--	uint8_t *p = buf;
-+	u8 *p = buf;
- 	int eccsize = chip->ecc.size;
- 	int eccsteps = chip->ecc.steps;
- 	struct spinand_info *info = (struct spinand_info *)chip->priv;
-@@ -667,7 +667,7 @@ static void spinand_select_chip(struct mtd_info *mtd, int dev)
- {
- }
- 
--static uint8_t spinand_read_byte(struct mtd_info *mtd)
-+static u8 spinand_read_byte(struct mtd_info *mtd)
- {
- 	struct spinand_state *state = mtd_to_state(mtd);
- 	u8 data;
-@@ -707,7 +707,7 @@ static int spinand_wait(struct mtd_info *mtd, struct nand_chip *chip)
- 	return 0;
- }
- 
--static void spinand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
-+static void spinand_write_buf(struct mtd_info *mtd, const u8 *buf, int len)
- {
- 	struct spinand_state *state = mtd_to_state(mtd);
- 
-@@ -715,7 +715,7 @@ static void spinand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
- 	state->buf_ptr += len;
- }
- 
--static void spinand_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
-+static void spinand_read_buf(struct mtd_info *mtd, u8 *buf, int len)
- {
- 	struct spinand_state *state = mtd_to_state(mtd);
- 
-diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.h b/drivers/staging/mt29f_spinand/mt29f_spinand.h
-index 6c8e413..fe6c15a 100644
---- a/drivers/staging/mt29f_spinand/mt29f_spinand.h
-+++ b/drivers/staging/mt29f_spinand/mt29f_spinand.h
-@@ -84,8 +84,8 @@ struct spinand_info {
- };
- 
- struct spinand_state {
--	uint32_t	col;
--	uint32_t	row;
-+	u32	col;
-+	u32	row;
- 	int		buf_ptr;
- 	u8		*buf;
- };
--- 
-1.9.1
+<div dir=3D"ltr"><br><br>On Tue, Mar 1, 2016 at 10:51 PM, Bhaktipriya Shrid=
+har &lt;<a href=3D"mailto:bhaktipriya96@gmail.com">bhaktipriya96@gmail.com<=
+/a>&gt; wrote:<br>&gt; Replaced occurences of SUBMIT_URB with usb_submit_ur=
+b.<br>&gt;<br>&gt; This was detected using Coccinelle:<br>&gt;<br>&gt; @@<b=
+r>&gt; identifier a;<br>&gt; identifier b;<br>&gt; @@<br>&gt;<br>&gt; *#def=
+ine a(...) b(...)<br>&gt;<br>&gt; Signed-off-by: Bhaktipriya Shridhar &lt;<=
+a href=3D"mailto:bhaktipriya96@gmail.com">bhaktipriya96@gmail.com</a>&gt;<b=
+r>&gt; ---<br>Hi Bhaktipriya,<div><br></div><div>I&#39;ve already sent a pa=
+tch for this, see it=C2=A0<a href=3D"https://groups.google.com/forum/#!topi=
+c/outreachy-kernel/g34QmWuTOis">here.</a></div><div><br></div><div>Amitoj</=
+div></div>
 
+--001a1137379cff7c66052d003e86--
 
