@@ -1,101 +1,99 @@
 X-GM-THRID: 6256792083376373760
-X-Received: by 10.194.92.232 with SMTP id cp8mr1170043wjb.6.1456921657707;
-        Wed, 02 Mar 2016 04:27:37 -0800 (PST)
+X-Received: by 10.66.145.232 with SMTP id sx8mr17875865pab.13.1456865740618;
+        Tue, 01 Mar 2016 12:55:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.182.66 with SMTP id g63ls372192wmf.29.canary; Wed, 02 Mar
- 2016 04:27:37 -0800 (PST)
-X-Received: by 10.28.48.87 with SMTP id w84mr534971wmw.2.1456921657225;
-        Wed, 02 Mar 2016 04:27:37 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
-        by gmr-mx.google.com with ESMTPS id c140si187240wmh.1.2016.03.02.04.27.37
+Received: by 10.50.78.200 with SMTP id d8ls335584igx.35.gmail; Tue, 01 Mar
+ 2016 12:55:40 -0800 (PST)
+X-Received: by 10.66.102.106 with SMTP id fn10mr18302894pab.36.1456865740167;
+        Tue, 01 Mar 2016 12:55:40 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id y20si2698677pfa.2.2016.03.01.12.55.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 04:27:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
+        Tue, 01 Mar 2016 12:55:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22b.google.com with SMTP id l68so74164676wml.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 02 Mar 2016 04:27:37 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id w128so11545152pfb.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 12:55:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc;
-        bh=lXVLrsRr7kW8rsIt9iGYLg8sz8i3WYe9luBqMaAXPb0=;
-        b=NmruIR/zUgzE4JjSlb7LrebOhEamZm524lelupCIWvlQjSTeV2Z/Y0lI1uKFBoPe6h
-         ZXiiy3LxEjF6iV9wQAW5hLkpGCyGy9YZlo4cJhe3ed5PeoYHSZSOptfXYJyRrp8Tw60y
-         e7yFck0JF3MN6tQXZy1MlnETaXaKgT1SEOr277xX6zThdqkCxm3xfuCxSxzD514kPYA5
-         viGH10liJ5Lk82pde/Q/F6tn9fGZAV6ciosRKLH9yLCv3A8me4CpMduzb8JnvXx8tVNh
-         R8Xr41oon/dXrkrJLNiduBhkCnzSGphw1TFGZ8k9cG07c/InvfHYM+3GZT5Lxr1oETTq
-         TVcw==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=oMEmdidcHvGzkMFQ6UNI9u6nrnrnQTKGdu4vZaYA4sQ=;
+        b=XgMGysNejR1jx2QQm5CQVF2qqrwyZNfVvUwcTGrj++SAAk7yRuejlRPL39l603+iEv
+         FMPer9uuR8b2RIicGnWKeZ0lChCS+/sZ0pTwSGClgo6q1P8TkSRUqn7U2dufBOwaZM96
+         +rGUj22CrEjacDO5sLdA8QhYmEp4fpsNdVSYI6tZGGF8O7+YBAijTyFB9aANtCvj7bzQ
+         jUpVk20WWq7fKUlmrBeTx84lhp1FwjPMs86DRVAmaCnRTgel7zk7fRC6dztpj4pyLH8F
+         ahZuoVqWNBBsiSejhs3Yn3cnK9o1CfUNF78FyNPrUEiKq2eQdBg90fh45MXENfL/bHQC
+         xomg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc;
-        bh=lXVLrsRr7kW8rsIt9iGYLg8sz8i3WYe9luBqMaAXPb0=;
-        b=C+t5pk0LghVOiUA8Lzj9u/8VkUERTxGCsgHbqVzyIHu7IMmWOe+Ywr+n6Dth8IOTwv
-         MxVsxOmY+vbIyI+8Vi68prIMFqx/2ooejYGH4dMPv7G7EarSSR6AvPAi3h5TakNSwn52
-         2o6SyHkXgr4qhDabAPykL/J/LkHzQbCUbzkTNdN5/PMaDuUIH3ffTSdbVz2au3htZftY
-         OEwcTON7pSsKOAVGguDVfLqtQLK4dNgDHPxrXCvqeW3tCS4hLBc8pO/NLWSL4JJ3uNUv
-         0j+It+i/C9yC1NzR9QMkBGNNFloBDUTji8fAJSdPYIC8FFBpuXFeS1+uynpHFR1upY/b
-         Q7hQ==
-X-Gm-Message-State: AD7BkJIzvR/UD7T/iX8Q3+jgBk+v1rgoifT3ra4MRAhAQW3X02ImZG8qm+HQfcCAsxk7pETl0oFkC51QCILXYw==
-MIME-Version: 1.0
-X-Received: by 10.194.2.202 with SMTP id 10mr29693788wjw.94.1456921657062;
- Wed, 02 Mar 2016 04:27:37 -0800 (PST)
-Received: by 10.194.222.165 with HTTP; Wed, 2 Mar 2016 04:27:36 -0800 (PST)
-In-Reply-To: <102b866d53918941b55224ed6fd482505cb14538.1456835561.git.bankarsandhya512@gmail.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=oMEmdidcHvGzkMFQ6UNI9u6nrnrnQTKGdu4vZaYA4sQ=;
+        b=hcC5+nxAdx6+8syjoARm7VjO7w+N1JWSnpCeymKUfkTcrtplcIrIkD3/VikEQ1hRQu
+         OQpgEp73rgWUTz7ZUg29q6N5E9pJDR6WWPridCM8BCxkbFcoQfGL2Fc8CCDcodK2q1PD
+         e7AWwI4HpcspM8WaIjwESYdnpFKtIEeDlsJ+//fssX5jbYKqyThN/PptAQxqiO+z8dRk
+         mTvpkFs8x+8kWqTy7n7nvkzqxYJe9AY3Lx2u5qGs8Ne0KFvYRPIIuRtkUrC7TJE50eXY
+         wu3rK4ty/IAS2lm/2VzOFHTJ1Qzs+4UG2NPRq3/z6uctdryqFVUChXb+K53Cc1rPci/a
+         2p+g==
+X-Gm-Message-State: AD7BkJKxssNvTPJOauAoZIzyAEjeI4gPZtkT6Do7RyQXhqG+9iWAJkbUC4KvHC5eM48VcQ==
+X-Received: by 10.98.14.156 with SMTP id 28mr24203788pfo.1.1456865740044;
+        Tue, 01 Mar 2016 12:55:40 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.97])
+        by smtp.gmail.com with ESMTPSA id w12sm47545388pfa.79.2016.03.01.12.55.38
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 01 Mar 2016 12:55:39 -0800 (PST)
+Date: Tue, 1 Mar 2016 18:25:46 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 5/5] Staging: media: Remove unnecessary goto.
+Message-ID: <49853de534d4affd48d8a78e8f62dd04a3b67853.1456835561.git.bankarsandhya512@gmail.com>
 References: <cover.1456835561.git.bankarsandhya512@gmail.com>
-	<102b866d53918941b55224ed6fd482505cb14538.1456835561.git.bankarsandhya512@gmail.com>
-Date: Wed, 2 Mar 2016 14:27:36 +0200
-Message-ID: <CAEnQRZByhyS9JMHH=MP9XGwQLJhHgFWe7omgQwxDZXSeeiS3QA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 3/5] Staging: iio: ade7758_core:
- Remove unnecessary goto.
-From: Daniel Baluta <daniel.baluta@gmail.com>
-To: Sandhya Bankar <bankarsandhya512@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1456835561.git.bankarsandhya512@gmail.com>
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-On Tue, Mar 1, 2016 at 2:51 PM, Sandhya Bankar
-<bankarsandhya512@gmail.com> wrote:
-> Remove unnecessary goto.
->
-> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
-> ---
->  drivers/staging/iio/meter/ade7758_core.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
-> index 0db23e4..40f5afa 100644
-> --- a/drivers/staging/iio/meter/ade7758_core.c
-> +++ b/drivers/staging/iio/meter/ade7758_core.c
-> @@ -423,7 +423,7 @@ int ade7758_set_irq(struct device *dev, bool enable)
->
->         ret = ade7758_spi_read_reg_24(dev, ADE7758_MASK, &irqen);
->         if (ret)
-> -               goto error_ret;
-> +               return ret;
->
->         if (enable)
->                 irqen |= BIT(16); /* Enables an interrupt when a data is
-> @@ -432,10 +432,7 @@ int ade7758_set_irq(struct device *dev, bool enable)
->                 irqen &= ~BIT(16);
->
->         ret = ade7758_spi_write_reg_24(dev, ADE7758_MASK, irqen);
-Here you can directly do:
+Remove unnecessary goto.
 
-              return ade7758_spi_write_reg_24(dev, ADE7758_MASK, irqen);
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+---
+ drivers/staging/media/bcm2048/radio-bcm2048.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-I think I didn't explain it very well first time :D.
+diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
+index 8fdf0ac..abf330f 100644
+--- a/drivers/staging/media/bcm2048/radio-bcm2048.c
++++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
+@@ -1828,17 +1828,14 @@ static int bcm2048_deinit(struct bcm2048_device *bdev)
+ 
+ 	err = bcm2048_set_audio_route(bdev, 0);
+ 	if (err < 0)
+-		goto exit;
++		return err;
+ 
+ 	err = bcm2048_set_dac_output(bdev, 0);
+ 	if (err < 0)
+-		goto exit;
++		return err;
+ 
+ 	err = bcm2048_set_power_state(bdev, BCM2048_POWER_OFF);
+-	if (err < 0)
+-		goto exit;
+ 
+-exit:
+ 	return err;
+ }
+ 
+-- 
+1.8.3.4
 
-> -       if (ret)
-> -               goto error_ret;
->
-> -error_ret:
->         return ret;
->  }
-
-Daniel.
 
