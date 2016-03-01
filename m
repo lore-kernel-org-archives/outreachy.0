@@ -1,98 +1,86 @@
-X-GM-THRID: 847410888704
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,585d716e84a6542a,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.199.69 with SMTP id ji5mr818606lbc.0.1424374422249;
-        Thu, 19 Feb 2015 11:33:42 -0800 (PST)
+X-GM-THRID: 6257139324842672128
+X-Received: by 10.66.122.101 with SMTP id lr5mr18255341pab.3.1456853776382;
+        Tue, 01 Mar 2016 09:36:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.204.134 with SMTP id ky6ls24428lac.76.gmail; Thu, 19 Feb
- 2015 11:33:41 -0800 (PST)
-X-Received: by 10.112.171.37 with SMTP id ar5mr819606lbc.16.1424374421868;
-        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x243.google.com (mail-wi0-x243.google.com. [2a00:1450:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id i7si6473797wif.0.2015.02.19.11.33.41
+Received: by 10.107.138.194 with SMTP id c63ls1738957ioj.109.gmail; Tue, 01
+ Mar 2016 09:36:16 -0800 (PST)
+X-Received: by 10.66.147.106 with SMTP id tj10mr18032812pab.30.1456853776108;
+        Tue, 01 Mar 2016 09:36:16 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id ff2si4911638pad.2.2016.03.01.09.36.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) client-ip=2a00:1450:400c:c05::243;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Mar 2016 09:36:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::243 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x243.google.com with SMTP id bs8so4122916wib.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 11:33:41 -0800 (PST)
+Received: by mail-pa0-x22a.google.com with SMTP id fl4so115809733pad.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 09:36:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=2MbLweq096/IpNueuJCYTiPje5CuDKjw97KT+E5DetU=;
-        b=WG09jHlX2Lkrark/ruGzzmQLBScABBRjfh/wlOoSukR2xWpBLxFoLICIBBrJ0t8RBW
-         sPT2S9GJAmLhjRkyFzhO7JV3iiMmC+js8kWMWa6Ya4gxSXaRiag6ib/zTjJVAquytXfQ
-         oAQpBAC6OvGvvjd5vGM0AMyOqsGXIaXCGfFS7tO8ku7tBzG6iKSuW35SUkMc0HJ/4sh9
-         +U0moKZf6oUoQzUIC4mh+sL043du8hfqkzHBz15M81p2N6wQyk/37LR6Sz50e4kadu2f
-         fpBbkpaGSPiB5E0kerms8JbGoobHRzjQkl9kvj/Ws3wv6PS+16piMpksGSzRMaoFSgSA
-         2jfA==
-X-Received: by 10.194.156.133 with SMTP id we5mr12321320wjb.37.1424374421762;
-        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id m4sm5570585wik.20.2015.02.19.11.33.39
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 11:33:41 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=t0z2JpSKu4u+FRKPAstCC8kbmKyCFIv4yIkTZDdpQdQ=;
+        b=RIw50g6HQJcD9WtH3R8bUwhwNA/9HzlNl23UEiBCUmydnu7P5LCbSJRBcrC4fF03C6
+         +ncejCjgYB+PB3ZMkOlKXY8F2ubOmnCdZ3hVsjs7RT9zhqn5It38TXVYUxHprt8b5l2o
+         5ySLB9EqcdXVZtCXpDYlPQuGNU3NV7ZGqxOOSq5EZWcT2dqXnfN7+NIwu1kVSlOv3ra9
+         EEuzPukXkn41jcYqLb9RNMdhbrRmhEXIIPTMVIMNGILsI44vbbEODKVyqNoFu20LhL79
+         eU+KSX4mHH4cpqexwO/u2Q1fMaNfuRIZl9FpOU8fMmAhRvEoupY6ZKdM0aVBWWzi9A66
+         V7uA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=t0z2JpSKu4u+FRKPAstCC8kbmKyCFIv4yIkTZDdpQdQ=;
+        b=JIRh8jIiC0k52tCigve8HKoNndvqEC4ceyhXAUeSvaq5lm0ZRVNXhUF5cO6n9S7Uut
+         LfPeyrAcfNcEuIwg0YHRlYFVXAeUuH79tEx/rywdQe6FQdeqTP79UQZIbD8UsK5lhveQ
+         7gxR6xK3GNgkTRwUds0g/SApWPhfQ9MZKrKGG+dfs219xjt1UF8unqBzqITk7Bm/gMfA
+         PLsh7lcRmuDz0hVrD8FwO2crDvccOLYyUomjDUmtUIwedJD/9Oiy8Kv+r77GG8nDSDWj
+         E8qU7F8yba2woa9EeK9MjMpQzciU7jm5U6gIcvpEMq7cTkNmoge7eALLkDx3zjVUoPIr
+         6B6g==
+X-Gm-Message-State: AD7BkJKxHLc1yfHSV3cFvCtIaypb9E+GDtPtLlXmQYjlZ8jC5TKrkepR7ID6+VUrYBhydQ==
+X-Received: by 10.66.147.164 with SMTP id tl4mr30982563pab.40.1456853775981;
+        Tue, 01 Mar 2016 09:36:15 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id w20sm11908365pfi.31.2016.03.01.09.36.14
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 01 Mar 2016 09:36:15 -0800 (PST)
+Date: Tue, 1 Mar 2016 23:03:30 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH 8/8] Staging: drivers: dma: ste_dma40: fix blank line warning
-Date: Thu, 19 Feb 2015 21:33:30 +0200
-Message-Id: <1424374410-28940-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: rtl8723au: hal: Remove Unused macro
+Message-ID: <20160301173330.GA21348@Karyakshetra>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-WARNING: Missing a blank line after declarations
-checkpatch.pl warning in ste_dm40.c
+PlatformIndicateBTACLData is an unused macro. Hence, removed.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/dma/ste_dma40.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
-index 57dfe05..e4b823d 100644
---- a/drivers/dma/ste_dma40.c
-+++ b/drivers/dma/ste_dma40.c
-@@ -1410,6 +1410,7 @@ static u32 d40_residue(struct d40_chan *d40c)
- 			>> D40_MEM_LCSP2_ECNT_POS;
- 	else {
- 		u32 val = readl(chan_base(d40c) + D40_CHAN_REG_SDELT);
-+
- 		num_elt = (val & D40_SREG_ELEM_PHY_ECNT_MASK)
- 			  >> D40_SREG_ELEM_PHY_ECNT_POS;
- 	}
-@@ -1758,6 +1759,7 @@ static bool d40_alloc_mask_set(struct d40_phy_res *phy,
- 			       bool *first_user)
- {
- 	unsigned long flags;
-+
- 	spin_lock_irqsave(&phy->lock, flags);
- 
- 	*first_user = ((phy->allocated_src | phy->allocated_dst)
-@@ -1893,6 +1895,7 @@ static int d40_allocate_channel(struct d40_chan *d40c, bool *first_phy_user)
- 		} else
- 			for (j = 0; j < d40c->base->num_phy_chans; j += 8) {
- 				int phy_num = j  + event_group * 2;
-+
- 				for (i = phy_num; i < phy_num + 2; i++) {
- 					if (d40_alloc_mask_set(&phys[i],
- 							       is_src,
-@@ -2411,6 +2414,7 @@ static int d40_alloc_chan_resources(struct dma_chan *chan)
- 	struct d40_chan *d40c =
- 		container_of(chan, struct d40_chan, chan);
- 	bool is_free_phy;
-+
- 	spin_lock_irqsave(&d40c->lock, flags);
- 
- 	dma_cookie_init(chan);
--- 
-1.9.1
+diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
+index 1688f66..e6aec7f 100644
+--- a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
++++ b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
+@@ -77,8 +77,6 @@ if ((BTCoexDbgLevel == _bt_dbg_on_)) {\
+
+ #define PlatformZeroMemory(ptr, sz)	memset(ptr, 0, sz)
+
+-#define PlatformIndicateBTACLData(...)	(RT_STATUS_SUCCESS)
+-
+ #define GET_UNDECORATED_AVERAGE_RSSI(padapter)	\
+ 			(GET_HAL_DATA(padapter)->dmpriv.EntryMinUndecoratedSmoothedPWDB)
+ #define RT_RF_CHANGE_SOURCE u32
+--
+2.1.4
 
 
