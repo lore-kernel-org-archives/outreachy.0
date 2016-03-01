@@ -1,122 +1,73 @@
-X-GM-THRID: 6338829541865160704
-X-Received: by 10.28.209.12 with SMTP id i12mr33029wmg.14.1475873762424;
-        Fri, 07 Oct 2016 13:56:02 -0700 (PDT)
+X-GM-THRID: 6254945718130180096
+X-Received: by 10.140.40.239 with SMTP id x102mr33314597qgx.23.1456825238530;
+        Tue, 01 Mar 2016 01:40:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.33.218 with SMTP id h87ls546454lji.4.gmail; Fri, 07 Oct
- 2016 13:56:01 -0700 (PDT)
-X-Received: by 10.46.69.69 with SMTP id s66mr1423413lja.1.1475873761399;
-        Fri, 07 Oct 2016 13:56:01 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id a126si213785wmd.1.2016.10.07.13.56.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Oct 2016 13:56:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+Received: by 10.140.91.23 with SMTP id y23ls3596153qgd.35.gmail; Tue, 01 Mar
+ 2016 01:40:37 -0800 (PST)
+X-Received: by 10.13.232.195 with SMTP id r186mr16031663ywe.30.1456825237685;
+        Tue, 01 Mar 2016 01:40:37 -0800 (PST)
+Return-Path: <daniel.baluta@intel.com>
+Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
+        by gmr-mx.google.com with ESMTP id yd9si4184770pab.1.2016.03.01.01.40.37
+        for <outreachy-kernel@googlegroups.com>;
+        Tue, 01 Mar 2016 01:40:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id f193so4587598wmg.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 13:56:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0o2/KZZITTif4KyCF0teWfyokkHAb+xiEEyiVZDxrfY=;
-        b=Z3nvxWFZsH7Zj79m+jV6Xd6qBaeS0WlNIzMjL3BDRo3tXh233UXA+7OhGTp7sd1vVP
-         9BV3JIIbQN1uzZRzs0xdRfKhNpOcoNWC8GldbZO0tG1spcM6XDw6wRcIawTJ/7EfgeOF
-         X+eQNmAjxWtcZ8B53BJH6thwP7Jy65qg9lr6xn1Ezhj0eGug7+x8vxUnytxpef8qzo0c
-         i0dsREoD20GEY0dgUFfDBaHIe42BwcOKeKkTfBmBZNB7fEoSwD9nqoOPV5Q1qwqe+nUE
-         Ds5c19EeQauiocUmjl31ZDkunja941I43Ics8xaj8KbgfyxpV/ijSHqNtbaOJl4KanaD
-         UAIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0o2/KZZITTif4KyCF0teWfyokkHAb+xiEEyiVZDxrfY=;
-        b=e5x9GNiP2xPw5AFLiLf0Dyg41v5i6lEG3dfoRjAkG2Nzut+gzHqSGCb9AeJiJpvE+J
-         KT+7rHbRyINrLgvMlwy17P/QjC1f1Aaj3I9oHlwFkKpTSVtCQ8GxZg7J72Q3bR6hf3Ut
-         8gkPgkOJ0PzMK54IfwGCBcFf3ymSBn4rrzgy2u1JemLpft3315U6Ga8vznu1r/8uDZoV
-         PSdonPBHHecl/IkedD8wNjF5KDFmr2DMCW8MmyB0W30CXjbp8B06ES+A87cJ+3VdsHhV
-         4L5vP1v184cBJQ+HDNExhT50Xw64jxir0AKVxYJ0/CN+9NpznCr1KpvPJyW65l/CgGX3
-         4PIA==
-X-Gm-Message-State: AA6/9RneJgdBNDoZ8BJNmOlvmtMqFhV8EwKyrvJhYVTv4eCkK71K2FHm1+iNebFYT9YfBA==
-X-Received: by 10.28.113.16 with SMTP id m16mr416413wmc.29.1475873760955;
-        Fri, 07 Oct 2016 13:56:00 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id 4sm4742989wmu.2.2016.10.07.13.56.00
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 07 Oct 2016 13:56:00 -0700 (PDT)
-Date: Fri, 7 Oct 2016 23:55:59 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of daniel.baluta@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=daniel.baluta@intel.com
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by orsmga103.jf.intel.com with ESMTP; 01 Mar 2016 01:40:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.22,522,1449561600"; 
+   d="scan'208";a="57473065"
+Received: from dbaluta.rb.intel.com (HELO [10.237.104.86]) ([10.237.104.86])
+  by fmsmga004.fm.intel.com with ESMTP; 01 Mar 2016 01:40:34 -0800
+Subject: Re: IIO Coding Task 2 ?
+To: Alison Schofield <amsfield22@gmail.com>
+References: <20160224194352.GA3122@d830.WORKGROUP>
+ <56CEB5B4.5060605@intel.com> <56CEC19C.1010300@intel.com>
+ <20160225182612.GA2359@d830.WORKGROUP> <20160301034750.GA2401@d830.WORKGROUP>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: ks7010: Replace printk with netdev_*
-Message-ID: <20161007205559.GA11103@domino-MS-16Y1>
+From: Daniel Baluta <daniel.baluta@intel.com>
+Message-ID: <56D56438.8000607@intel.com>
+Date: Tue, 1 Mar 2016 11:43:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20160301034750.GA2401@d830.WORKGROUP>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 
-This is a patch to ks_hostif.c file that fixes up a checkpatch.pl
 
-WARNING: Prefer [subsystem eg: netdev]_info([subsystem]dev, ... then
-dev_info(dev, ... then pr_info(... to printk(KERN_INFO ...
 
-For netdev devices netdev_info and netdev_warn is preferred over
-printk(KERN_INFO/WARN..).
+On 01.03.2016 05:47, Alison Schofield wrote:
+> .........................snip...................
+>> t > >We will make this in two steps:
+>>>> * introduce API
+>>>> * find a place where locking is not done
+>>>> * use new API
+>>>>
+>>>> After IIO maintainer says this is OK:
+>>>> * update all places with the new API.
+>>>>
+>>>> thanks,
+>>>> Daniel.
+>> Thanks for the directon.  I am working on that first step.
+>> alisons
+> Hi Daniel,
+> I'm ready to send out the RFC PATCH, but I wasn't able to meet
+> one of your requests.  I did not find a place where the locking
+> was not done. The 'sample' is one where mlock was used with
+> iio_buffer_enabled. I think it illustrates the API well because
+> it clearly shows the before/after that would occur in other drivers.
+> Send it?
+> Thanks,
+> alisons
+>
+Yes please :). Send the patches as RFC's, don't forget to Cc linux-iio 
+mailing list.
+Also, you can expand your searches to drivers/iio/.
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/ks7010/ks_hostif.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index c57ca58..8798b63 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -476,8 +476,7 @@ void hostif_data_indication(struct ks_wlan_private *priv)
- 			skb->dev->last_rx = jiffies;
- 			netif_rx(skb);
- 		} else {
--			printk(KERN_WARNING
--			       "ks_wlan: Memory squeeze, dropping packet.\n");
-+			netdev_warn(skb->dev, "ks_wlan: Memory squeeze, dropping packet.\n");
- 			priv->nstats.rx_dropped++;
- 		}
- 		break;
-@@ -511,8 +510,7 @@ void hostif_data_indication(struct ks_wlan_private *priv)
- 			skb->dev->last_rx = jiffies;
- 			netif_rx(skb);
- 		} else {
--			printk(KERN_WARNING
--			       "ks_wlan: Memory squeeze, dropping packet.\n");
-+			netdev_warn(skb->dev, "ks_wlan: Memory squeeze, dropping packet.\n");
- 			priv->nstats.rx_dropped++;
- 		}
- 		break;
-@@ -560,8 +558,7 @@ void hostif_mib_get_confirm(struct ks_wlan_private *priv)
- 		dev->dev_addr[5] = priv->eth_addr[5];
- 		dev->dev_addr[6] = 0x00;
- 		dev->dev_addr[7] = 0x00;
--		printk(KERN_INFO
--		       "ks_wlan: MAC ADDRESS = %02x:%02x:%02x:%02x:%02x:%02x\n",
-+		netdev_info(dev, "ks_wlan: MAC ADDRESS = %02x:%02x:%02x:%02x:%02x:%02x\n",
- 		       priv->eth_addr[0], priv->eth_addr[1], priv->eth_addr[2],
- 		       priv->eth_addr[3], priv->eth_addr[4], priv->eth_addr[5]);
- 		break;
-@@ -571,7 +568,7 @@ void hostif_mib_get_confirm(struct ks_wlan_private *priv)
- 		priv->version_size = priv->rx_size;
- 		memcpy(priv->firmware_version, priv->rxp, priv->rx_size);
- 		priv->firmware_version[priv->rx_size] = '\0';
--		printk(KERN_INFO "ks_wlan: firmware ver. = %s\n",
-+		netdev_info(dev, "ks_wlan: firmware ver. = %s\n",
- 		       priv->firmware_version);
- 		hostif_sme_enqueue(priv, SME_GET_PRODUCT_VERSION);
- 		/* wake_up_interruptible_all(&priv->confirm_wait); */
--- 
-2.7.4
+thanks,
+Daniel.
 
 
