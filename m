@@ -1,89 +1,76 @@
 X-GM-THRID: 6257131864000036864
-X-Received: by 10.98.93.217 with SMTP id n86mr17755336pfj.11.1456852576604;
-        Tue, 01 Mar 2016 09:16:16 -0800 (PST)
+X-Received: by 10.112.138.98 with SMTP id qp2mr2650093lbb.4.1456852571685;
+        Tue, 01 Mar 2016 09:16:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.41.97 with SMTP id e1ls261675igl.29.gmail; Tue, 01 Mar 2016
- 09:16:16 -0800 (PST)
-X-Received: by 10.50.154.2 with SMTP id vk2mr118307igb.9.1456852576280;
-        Tue, 01 Mar 2016 09:16:16 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id r75si2880811pfr.0.2016.03.01.09.16.16
+Received: by 10.28.10.209 with SMTP id 200ls206327wmk.18.gmail; Tue, 01 Mar
+ 2016 09:16:11 -0800 (PST)
+X-Received: by 10.28.47.140 with SMTP id v134mr22539wmv.3.1456852571165;
+        Tue, 01 Mar 2016 09:16:11 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s141si43439wmd.1.2016.03.01.09.16.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 09:16:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 01 Mar 2016 09:16:11 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 184so5473775pff.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 09:16:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=x9vv3WNaBGA1U2pNONx2S8l7sLxgRdagGJWNq1U/79c=;
-        b=blB78g/woL0T4aSXSJeQcuZD35c3WLBSca0w2AXY+MJ9HLeXFS5HW8Npq05+2mYd7d
-         xMq4b6Ik2w6k43314itEZ7PfGiwAYzFucNJruD/DxjfnixPqkRnhtRSXoNaaVv1bBkkk
-         uua+RliK2Mbzuv9H76vfkUarrjwtv1AZ2EXzfCQpMIwt/YVwFrq++lVXgAZ8EvPELrG0
-         CdM6szqazNqUd3t/EE+tBA5V4j4/8XLNFhYj/o5BpHQza+qpBber3q0oI/UklFxddGUU
-         aDMOO4lHQv/TEnSfH40MeFuop5D6PAzfZLvucojAHOyWB64NtF4a8Y9+tphxt/xdnsQe
-         6ujg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=x9vv3WNaBGA1U2pNONx2S8l7sLxgRdagGJWNq1U/79c=;
-        b=asNxbPCN5fg6ugFTroD1NXU84uUIXdPglSt3ChLu2AqBLPN86IaqP5pUf6CA1GTT9o
-         YcV7KQUYE6v+/7FjCTTmFcPLYL/e5iwPGc4toWorIG76fg9J9s0LCkWup0h3k7DAdT2L
-         ES5sT8mMGoDrg5/DXjKG0Lyo4ltBpP32FZHlm2/ThC36RZ27ObcyjqZKLq4sNfVjK4ds
-         8y1vj9ResxBuuXNQqVPUgZC9HK2xWE1P0P1Eqa6bCR0RwvdXeZI4Joi6XTBvYh2nRwVO
-         WCeYn1KJV4p+M4OZfS/qJWNiHgLYkEV3TO97gkIYUfvMILGPAk3rtV5jNyDCl2YEyOPa
-         8zZQ==
-X-Gm-Message-State: AD7BkJJfg2ImfTf7vOTXpnaWqjvyFSZTntBUoq+WS9F3WvmTvr2hq74VGBJMovrvG848CA==
-X-Received: by 10.98.16.85 with SMTP id y82mr31617236pfi.90.1456852576088;
-        Tue, 01 Mar 2016 09:16:16 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.66])
-        by smtp.gmail.com with ESMTPSA id d81sm46845583pfj.77.2016.03.01.09.16.13
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 09:16:15 -0800 (PST)
-Date: Tue, 1 Mar 2016 14:45:53 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] Staging: wlan-ng: Do not print message if kzalloc()
- failed.
-Message-ID: <c1f3a285ea9232c3f2f0e0d80a6de50c5942eb3c.1456822984.git.bankarsandhya512@gmail.com>
-References: <cover.1456822984.git.bankarsandhya512@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,524,1449529200"; 
+   d="scan'208";a="205297416"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Mar 2016 18:16:10 +0100
+Date: Tue, 1 Mar 2016 18:16:05 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/4] Staging: lustre: Do not print
+ message if kzalloc() failed.
+In-Reply-To: <a9225769650e278d513f73c69521c9a52d20808f.1456822984.git.bankarsandhya512@gmail.com>
+Message-ID: <alpine.DEB.2.10.1603011815520.2624@hadrien>
+References: <cover.1456822984.git.bankarsandhya512@gmail.com> <a9225769650e278d513f73c69521c9a52d20808f.1456822984.git.bankarsandhya512@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1456822984.git.bankarsandhya512@gmail.com>
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Do not print message if kzalloc() failed.
-kzalloc() has its own messages. So no need to add extra one.
+On Tue, 1 Mar 2016, Sandhya Bankar wrote:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/wlan-ng/prism2sta.c | 1 -
- 1 file changed, 1 deletion(-)
+> Do not print message if kzalloc() failed.
+> kzalloc() has its own messages. So no need to add extra one.
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/llite/llite_lib.c | 4 ----
+>  1 file changed, 4 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
+> index 1f3e8e8..c7b0729 100644
+> --- a/drivers/staging/lustre/lustre/llite/llite_lib.c
+> +++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
+> @@ -1938,10 +1938,6 @@ void ll_open_cleanup(struct super_block *sb, struct ptlrpc_request *open_req)
+>  	body = req_capsule_server_get(&open_req->rq_pill, &RMF_MDT_BODY);
+>  	op_data = kzalloc(sizeof(*op_data), GFP_NOFS);
+>  	if (!op_data) {
+> -		CWARN("%s: cannot allocate op_data to release open handle for "
+> -		      DFID "\n",
+> -		      ll_get_fsname(sb, NULL, 0), PFID(&body->fid1));
+> -
+>  		return;
 
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 131223a..e245732 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1886,7 +1886,6 @@ static wlandevice_t *create_wlan(void)
- 	hw = kzalloc(sizeof(hfa384x_t), GFP_KERNEL);
- 
- 	if (!wlandev || !hw) {
--		pr_err("%s: Memory allocation failure.\n", dev_info);
- 		kfree(wlandev);
- 		kfree(hw);
- 		return NULL;
--- 
-1.8.3.4
+Same problem.
 
+julia
+
+>  	}
+>
+> --
+> 1.8.3.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a9225769650e278d513f73c69521c9a52d20808f.1456822984.git.bankarsandhya512%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
