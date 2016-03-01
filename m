@@ -1,66 +1,66 @@
 X-GM-THRID: 6255366153272557568
-X-Received: by 10.50.109.136 with SMTP id hs8mr5818838igb.12.1457255593346;
-        Sun, 06 Mar 2016 01:13:13 -0800 (PST)
+X-Received: by 10.98.33.209 with SMTP id o78mr18579331pfj.6.1456865948495;
+        Tue, 01 Mar 2016 12:59:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.36.210 with SMTP id p76ls1328555qgp.17.gmail; Sun, 06 Mar
- 2016 01:13:12 -0800 (PST)
-X-Received: by 10.140.99.106 with SMTP id p97mr12559068qge.13.1457255592805;
-        Sun, 06 Mar 2016 01:13:12 -0800 (PST)
+Received: by 10.140.28.34 with SMTP id 31ls681274qgy.28.gmail; Tue, 01 Mar
+ 2016 12:59:07 -0800 (PST)
+X-Received: by 10.140.143.200 with SMTP id 191mr18455269qhp.3.1456865947970;
+        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
 Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id ui7si2376972pab.0.2016.03.06.01.13.12
+Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
+        by gmr-mx.google.com with ESMTPS id y20si2699618pfa.2.2016.03.01.12.59.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 01:13:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 184so6074986pff.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 01:13:12 -0800 (PST)
+Received: by mail-pf0-x22f.google.com with SMTP id w128so74786760pfb.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 12:59:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=K+oPg/ktUoVd0L6IdFm3gjKCcVaCixDUmAOd03HPByI=;
-        b=Ejgm2G/yZMs0WrESVo7jlFf5Io+RPPxa4OkSqA42ln0mZUqt2f1ESdZxk7ExOGyTOB
-         0mhyS6ahlBNNMmDwLhBW2T9V0OPuz/yzh6mrYOahmKFg1Jrv/YxNMKV2oSfn3fvWtbgg
-         xaSgALTqqB9bLfGYocnbiHD78foAYV44RDwAACbDsFKTQkfUlsWllVbXlC/nI5P/V50k
-         iHqXIvJ742ACR75XkOpUIafJguTs8lE3VSgm5OOJt3rfpAmgut09uHbHor/FR2BLIQh8
-         wyENATXyiXxd/L8ggn+f7uOFx4DjH5dQ4NiryrP+EzkzLTmz2kOm6JHHb7YBbJ9OHNS8
-         JZpw==
+        bh=oiDudABv8JnFEmzbuMvjzL4EVwq113m501ltkPCyj4A=;
+        b=K/j5XaFD27blznPyHRoja71bmk0h0ZA8TYC1ing8MH2ac+F7jPY1f2U0RcdL5H+c7+
+         2KCPWxc0abpetAdJax3whdd2xWKlVoRdcRpKTJcFwUdk+muWQeYjVVnF+NKLuX21/46O
+         uY8pqamUS/w/DNKTxhN+Hcs/htceFhaVZLPds5QzBPKxG+tTBfzcB+bZifDXJl1JJG3R
+         z0fBrEdk/vO314v+eMpim01lf9K7YYFwinoXoJCI22mDBQhhxcRMmLjAIMv5NXKhSz7F
+         YHmIot57QjuB+TqUlm5T8/h1zqDD9sE+wvc7GKFO/CVlDFP0zWCXn0wLbAgrFmZNh4JJ
+         Igvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=K+oPg/ktUoVd0L6IdFm3gjKCcVaCixDUmAOd03HPByI=;
-        b=VQGaYGdxNFPK9tCGRTfvOPq2h4e63UDnLlk/xucRaS8xjUuke+4iuiZG5kp1ydJfAQ
-         g1MJ4B9lgcv/7KViCX4MLgbVJawYxW3DOvLjYgZ5vdcXI45JU3p2Rs315XPaIoPnGqRW
-         EQWmyYMDBkN6PwR0KDv9pO896YR90RmyqXZOPjYNbLo2FaHVAkvowBnFWbs//+tQexOP
-         7+KS6jvH5O4CErIZrCA+3a3tLbc0P+YBmfXrf+aUAghrOXyB0l7kRrOFfuwRr0CM+yNz
-         PWgDFTqYIJ6Vlzkoec35UckQEQFgi55+rBZPhaGHJBIamIRe6t1SYncK34EVe9qn/Xyz
-         9K2w==
-X-Gm-Message-State: AD7BkJKjmqnsDQ7XBYKbXLaDZ6YXSpJZa1InNHwR2ufy1iM+bRygT2I8KQlWPT9n3ra+FA==
-X-Received: by 10.98.80.206 with SMTP id g75mr25064120pfj.127.1457255592642;
-        Sun, 06 Mar 2016 01:13:12 -0800 (PST)
+        bh=oiDudABv8JnFEmzbuMvjzL4EVwq113m501ltkPCyj4A=;
+        b=V360Wjk//x6/bswCTYQdL2FRNTJY1jBR+dI1OedozlboqCRlkbAHUKcuFsg39JLHsf
+         PbJmyWNd5BmRZILijsd7dNrSysNnAtFmvqHiZia1mwB70qT4lZKp3YZwmnyC9aAu5MqB
+         E5+FWmwgx6jf901jcTlbFQmEn6m/qtRDeVnzG5jEGLlklYpOXDoVHZgI07gk6azuPOPm
+         pHK8vLfag+CboA4u0tmZkD/k+WhTx0QXGnM6HeiHzPBBJsWpATtRzNQj4stpi26uT1+d
+         GfSDnFGHbAOr2cZXO8TkQm2FrCHOP1wlRM7LWQx/z21SR1KQci0op2fEKuQIJ15oDh6p
+         XfRQ==
+X-Gm-Message-State: AD7BkJJerz9hqIhSIphE/L4KX+CMXvlcCnzwAmxtjj+m2XB84ryzVbuICDm507We22asKg==
+X-Received: by 10.98.18.8 with SMTP id a8mr33620759pfj.41.1456865947784;
+        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
 Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([103.224.159.11])
-        by smtp.gmail.com with ESMTPSA id i1sm16765524pfj.17.2016.03.06.01.13.11
+Received: from pooja-Inspiron-3537 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r62sm7712970pfb.39.2016.03.01.12.59.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 01:13:12 -0800 (PST)
-Date: Sun, 6 Mar 2016 14:43:09 +0530
-From: G Pooja Shamili <poojashamili@gmail.com>
+        Tue, 01 Mar 2016 12:59:07 -0800 (PST)
+Date: Wed, 2 Mar 2016 02:28:39 +0530
+From: "pooja.shamili" <poojashamili@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: rtl8712: Remove the unnecessary parantheses
-Message-ID: <20160306091309.GA30726@localhost>
+Subject: [PATCH] staging: rtl8712: Remove the unnecessary parantheses
+Message-ID: <20160301205839.GA14661@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The unnecessary parantheses on the right side of assignments were remove
+The unnecessary parantheses on the right side of assignments were removed,
 as in most cases (expect for ==, >=, <=, !=), they are futile.
 
 This was done using Coccinelle, the semantic patch being:
@@ -72,11 +72,9 @@ binary operator bin_op = {==,>=,<=,!=};
 
 E1 =
 (
--(
-+(
-E2 bin_op E3
--)
-+)
+  (
+   E2 bin_op E3
+  )
 |
 -(
 E2
@@ -84,39 +82,46 @@ E2
 )
 ;
 
-Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
+Signed-off-by: pooja.shamili <poojashamili@gmail.com>
 ---
-Changes from Version 1:
-	    * Changed the name in the From: and Signed-off-by: to full
-name.
-	    
- drivers/staging/rtl8712/rtl871x_mlme.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8712/rtl871x_mp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 1b022db..604ef58 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -1285,7 +1285,7 @@ sint r8712_set_key(struct _adapter *adapter,
+diff --git a/drivers/staging/rtl8712/rtl871x_mp.c b/drivers/staging/rtl8712/rtl871x_mp.c
+index 44da4fe..c80d59c 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp.c
++++ b/drivers/staging/rtl8712/rtl871x_mp.c
+@@ -235,7 +235,7 @@ static u8 set_bb_reg(struct _adapter *pAdapter,
+ 	if (bitmask != bMaskDWord) {
+ 		org_value = r8712_bb_reg_read(pAdapter, offset);
+ 		bit_shift = bitshift(bitmask);
+-		new_value = ((org_value & (~bitmask)) | (value << bit_shift));
++		new_value = (org_value & (~bitmask)) | (value << bit_shift);
+ 	} else {
+ 		new_value = value;
  	}
- 	pcmd->cmdcode = _SetKey_CMD_;
- 	pcmd->parmbuf = (u8 *)psetkeyparm;
--	pcmd->cmdsz =  (sizeof(struct setkey_parm));
-+	pcmd->cmdsz =  sizeof(struct setkey_parm);
- 	pcmd->rsp = NULL;
- 	pcmd->rspsz = 0;
- 	INIT_LIST_HEAD(&pcmd->list);
-@@ -1748,8 +1748,8 @@ static void update_ht_cap(struct _adapter *padapter, u8 *pie, uint ie_len)
- 				sizeof(struct NDIS_802_11_FIXED_IEs));
- 	if (p && len > 0) {
- 		pht_capie = (struct ieee80211_ht_cap *)(p + 2);
--		max_ampdu_sz = (pht_capie->ampdu_params_info &
--				IEEE80211_HT_CAP_AMPDU_FACTOR);
-+		max_ampdu_sz = pht_capie->ampdu_params_info &
-+				IEEE80211_HT_CAP_AMPDU_FACTOR;
- 		/* max_ampdu_sz (kbytes); */
- 		max_ampdu_sz = 1 << (max_ampdu_sz + 3);
- 		phtpriv->rx_ampdu_maxlen = max_ampdu_sz;
+@@ -260,7 +260,7 @@ static u8 set_rf_reg(struct _adapter *pAdapter, u8 path, u8 offset, u32 bitmask,
+ 	if (bitmask != bMaskDWord) {
+ 		org_value = r8712_rf_reg_read(pAdapter, path, offset);
+ 		bit_shift = bitshift(bitmask);
+-		new_value = ((org_value & (~bitmask)) | (value << bit_shift));
++		new_value = (org_value & (~bitmask)) | (value << bit_shift);
+ 	} else {
+ 		new_value = value;
+ 	}
+@@ -327,10 +327,10 @@ void r8712_SetTxAGCOffset(struct _adapter *pAdapter, u32 ulTxAGCOffset)
+ {
+ 	u32 TxAGCOffset_B, TxAGCOffset_C, TxAGCOffset_D, tmpAGC;
+ 
+-	TxAGCOffset_B = (ulTxAGCOffset & 0x000000ff);
++	TxAGCOffset_B = ulTxAGCOffset & 0x000000ff;
+ 	TxAGCOffset_C = (ulTxAGCOffset & 0x0000ff00) >> 8;
+ 	TxAGCOffset_D = (ulTxAGCOffset & 0x00ff0000) >> 16;
+-	tmpAGC = (TxAGCOffset_D << 8 | TxAGCOffset_C << 4 | TxAGCOffset_B);
++	tmpAGC = TxAGCOffset_D << 8 | TxAGCOffset_C << 4 | TxAGCOffset_B;
+ 	set_bb_reg(pAdapter, rFPGA0_TxGainStage,
+ 			(bXBTxAGC | bXCTxAGC | bXDTxAGC), tmpAGC);
+ }
 -- 
 2.1.4
 
