@@ -1,125 +1,180 @@
 X-GM-THRID: 6256792083376373760
-X-Received: by 10.25.88.211 with SMTP id m202mr2431202lfb.8.1456857027125;
-        Tue, 01 Mar 2016 10:30:27 -0800 (PST)
+X-Received: by 10.129.130.71 with SMTP id s68mr18302354ywf.29.1456856536796;
+        Tue, 01 Mar 2016 10:22:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.173.205 with SMTP id w196ls215263wme.47.canary; Tue, 01 Mar
- 2016 10:30:26 -0800 (PST)
-X-Received: by 10.28.226.132 with SMTP id z126mr78097wmg.2.1456857026509;
-        Tue, 01 Mar 2016 10:30:26 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id w197si23522wmw.3.2016.03.01.10.30.26
+Received: by 10.140.42.131 with SMTP id c3ls2788797qga.60.gmail; Tue, 01 Mar
+ 2016 10:22:16 -0800 (PST)
+X-Received: by 10.129.73.215 with SMTP id w206mr18300260ywa.6.1456856535995;
+        Tue, 01 Mar 2016 10:22:15 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-ob0-x241.google.com (mail-ob0-x241.google.com. [2607:f8b0:4003:c01::241])
+        by gmr-mx.google.com with ESMTPS id uw3si31499igb.1.2016.03.01.10.22.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 10:30:26 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 01 Mar 2016 10:22:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) client-ip=2607:f8b0:4003:c01::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.22,524,1449529200"; 
-   d="scan'208";a="205306500"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Mar 2016 19:30:26 +0100
-Date: Tue, 1 Mar 2016 19:30:20 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: sandhya bankar <bankarsandhya512@gmail.com>
-cc: outreachy-kernel@googlegroups.com, Daniel Baluta <Daniel.baluta@gmail.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH 3/5] Staging: iio: ade7758_core:
- Remove unnecessary goto.
-In-Reply-To: <CAA3ASzkQGGZ9bzG5jNykQ-9rjHSvZP-hp0chad_LLPS-XFcLew@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1603011929140.2624@hadrien>
-References: <CAA3ASzkQGGZ9bzG5jNykQ-9rjHSvZP-hp0chad_LLPS-XFcLew@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:4003:c01::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-x241.google.com with SMTP id wz1so13101409obc.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 10:22:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:reply-to:date:message-id:subject:from:to;
+        bh=QJLMmxpZdJ4WnvFs3L/K2pT0KlT5dr1g8hqHez1YEAY=;
+        b=xi1ZsvFo+RxVdFYwxdmbAcdZnuBpYKO3S1CfOrhOnIwNF0SiarfmFN8cVdJh/GHvnu
+         /4elseSDIN46CJb3EvxxjrE1934Nplohl9SMWr34SeR1kvFKEaQlkCzCWb0/7Uv9X0hI
+         qcWg5YfOMUVUJ0zpr1nyrgTa48ewRNjOBfeTaHnYtCn3z86EACTQ7mUSe1NFbjnc6fLu
+         Cf/eQP7M32hT5b8xvkQ1o7TtBSRyumnkA/XZ49HE/k9PCSEXqS5klDwg9IMiUYQ9bWKT
+         EOMRV65fZtGgeQQJ+Bo4MMv69geJdLESi6iynCfEaVUctoj8ksAHx799dRNqh7o7Ru91
+         Q3yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:reply-to:date:message-id:subject
+         :from:to;
+        bh=QJLMmxpZdJ4WnvFs3L/K2pT0KlT5dr1g8hqHez1YEAY=;
+        b=E8tkjt3OKhbXbKug25QG13FxY5IxDasMsDEyWzJ+ahPWN4KkWQf9ePvWqfmSb6WBaf
+         KdlYL57B27QhgWssFGBJp5JRwycQmcoRayCCGLWX4SQBVFqBTglx93WplMqY8Y6eJpBN
+         /yIdsuzC8m8FUkvnu7QcTOr3+sMpzXDOQvzGrLENrOeWF+KNTNXRQcpxqCwZlBxsXKyB
+         UKzFHvRnmRo3US1SL6tQTkSj942koyrDok7Lt8dVRpVW/cemEBgg0YmYOpH6zLXbvbKR
+         he4VVkcMB4WGuyIvlBG4nrF4zlDYsqDzt5QvEanRvPHenRrgLjwATju9Q2NZUVp7T9Wo
+         Shfw==
+X-Gm-Message-State: AD7BkJI9a+wc+32fXBXQxjWVBMSqBHpmwk/l6B9wuhFVglavmTHuPwxc+X5qewWeLbHJkaX4/04fDXfGS00MUA==
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1497758217-1456857020=:2624"
+X-Received: by 10.60.101.199 with SMTP id fi7mr17232648oeb.20.1456856535767;
+ Tue, 01 Mar 2016 10:22:15 -0800 (PST)
+Received: by 10.157.47.239 with HTTP; Tue, 1 Mar 2016 10:22:15 -0800 (PST)
+Reply-To: bankarsandhya512@gmail.com
+Date: Tue, 1 Mar 2016 23:52:15 +0530
+Message-ID: <CAA3ASzkQGGZ9bzG5jNykQ-9rjHSvZP-hp0chad_LLPS-XFcLew@mail.gmail.com>
+Subject: Re: [PATCH 3/5] Staging: iio: ade7758_core: Remove unnecessary goto.
+From: sandhya bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com, Daniel Baluta <Daniel.baluta@gmail.com>
+Content-Type: multipart/alternative; boundary=089e0111beb04dbd83052d00d83c
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+--089e0111beb04dbd83052d00d83c
+Content-Type: text/plain; charset=UTF-8
 
---8323329-1497758217-1456857020=:2624
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Hello,
+    If We remove  all occurrence of goto then next code below the goto,
+will execute even if error come.
+So what exactly i have to change?
 
-On Tue, 1 Mar 2016, sandhya bankar wrote:
 
-> Hello,
->     If We remove  all occurrence of goto then next code below the goto, will
-> execute even if error come.
-> So what exactly i have to change?
+Thanks
+Sandhya
 
-As Daniel suggested, if you change the first goto to just return ret,
-which is allowed by the Linux kernel coding style, then you don't need the
-ending label at all, because there will be no more jump to it.  This will
-simplify the code a lot.
 
-julia
+Thanks
+Sandhya
 
+On Mon, Feb 29, 2016 at 4:53 PM, Sandhya Bankar <bankarsandhya512@gmail.com>
+wrote:
+
+> Remove unnecessary goto.
+> Used below semantic patch to detect the unnecessary goto:
+> @r@
+> expression ret;
+> identifier f,l;
+> statement S;
+> position p;
+> @@
 >
+> (
+> if (<+...f(...)...+>) S
+> |
+> if@p (...) return ret;
+> return ret;
+> |
+> if@p (...) goto l;
+> l:
+> return ret;
+> )
 >
-> Thanks
-> Sandhya
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/iio/meter/ade7758_core.c | 2 --
+>  1 file changed, 2 deletions(-)
 >
+> diff --git a/drivers/staging/iio/meter/ade7758_core.c
+> b/drivers/staging/iio/meter/ade7758_core.c
+> index 0db23e4..32792d0 100644
+> --- a/drivers/staging/iio/meter/ade7758_core.c
+> +++ b/drivers/staging/iio/meter/ade7758_core.c
+> @@ -432,8 +432,6 @@ int ade7758_set_irq(struct device *dev, bool enable)
+>                 irqen &= ~BIT(16);
 >
-> Thanks
-> Sandhya
+>         ret = ade7758_spi_write_reg_24(dev, ADE7758_MASK, irqen);
+> -       if (ret)
+> -               goto error_ret;
 >
-> On Mon, Feb 29, 2016 at 4:53 PM, Sandhya Bankar <bankarsandhya512@gmail.com>
-> wrote:
->       Remove unnecessary goto.
->       Used below semantic patch to detect the unnecessary goto:
->       @r@
->       expression ret;
->       identifier f,l;
->       statement S;
->       position p;
->       @@
->
->       (
->       if (<+...f(...)...+>) S
->       |
->       if@p (...) return ret;
->       return ret;
->       |
->       if@p (...) goto l;
->       l:
->       return ret;
->       )
->
->       Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
->       ---
->        drivers/staging/iio/meter/ade7758_core.c | 2 --
->        1 file changed, 2 deletions(-)
->
->       diff --git a/drivers/staging/iio/meter/ade7758_core.c
->       b/drivers/staging/iio/meter/ade7758_core.c
->       index 0db23e4..32792d0 100644
->       --- a/drivers/staging/iio/meter/ade7758_core.c
->       +++ b/drivers/staging/iio/meter/ade7758_core.c
->       @@ -432,8 +432,6 @@ int ade7758_set_irq(struct device *dev, bool
->       enable)
->                       irqen &= ~BIT(16);
->
->               ret = ade7758_spi_write_reg_24(dev, ADE7758_MASK,
->       irqen);
->       -       if (ret)
->       -               goto error_ret;
->
->        error_ret:
->               return ret;
->       --
->       1.8.3.4
->
->
+>  error_ret:
+>         return ret;
 > --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAA3ASzkQGGZ9bzG5jNykQ-9
-> rjHSvZP-hp0chad_LLPS-XFcLew%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+> 1.8.3.4
 >
 >
---8323329-1497758217-1456857020=:2624--
+
+--089e0111beb04dbd83052d00d83c
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div>Hello,<br>=C2=A0=C2=A0=C2=A0 If We remove=C2=A0 =
+all occurrence of goto then next code below the goto, will execute even if =
+error come.<br>So what exactly i have to change?<br><br><br>Thanks<br>Sandh=
+ya<br><br><br></div>Thanks<br></div>Sandhya<br><div class=3D"gmail_extra"><=
+br><div class=3D"gmail_quote">On Mon, Feb 29, 2016 at 4:53 PM, Sandhya Bank=
+ar <span dir=3D"ltr">&lt;<a href=3D"mailto:bankarsandhya512@gmail.com" targ=
+et=3D"_blank">bankarsandhya512@gmail.com</a>&gt;</span> wrote:<br><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
+solid rgb(204,204,204);padding-left:1ex">Remove unnecessary goto.<br>
+Used below semantic patch to detect the unnecessary goto:<br>
+@r@<br>
+expression ret;<br>
+identifier f,l;<br>
+statement S;<br>
+position p;<br>
+@@<br>
+<br>
+(<br>
+if (&lt;+...f(...)...+&gt;) S<br>
+|<br>
+if@p (...) return ret;<br>
+return ret;<br>
+|<br>
+if@p (...) goto l;<br>
+l:<br>
+return ret;<br>
+)<br>
+<br>
+Signed-off-by: Sandhya Bankar &lt;<a href=3D"mailto:bankarsandhya512@gmail.=
+com">bankarsandhya512@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/iio/meter/ade7758_core.c | 2 --<br>
+=C2=A01 file changed, 2 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio=
+/meter/ade7758_core.c<br>
+index 0db23e4..32792d0 100644<br>
+--- a/drivers/staging/iio/meter/ade7758_core.c<br>
++++ b/drivers/staging/iio/meter/ade7758_core.c<br>
+@@ -432,8 +432,6 @@ int ade7758_set_irq(struct device *dev, bool enable)<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 irqen &amp;=3D ~BIT=
+(16);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D ade7758_spi_write_reg_24(dev, ADE7758_M=
+ASK, irqen);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0if (ret)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto error_ret;<br>
+<br>
+=C2=A0error_ret:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return ret;<br>
+<span class=3D""><font color=3D"#888888">--<br>
+1.8.3.4<br>
+<br>
+</font></span></blockquote></div><br></div></div>
+
+--089e0111beb04dbd83052d00d83c--
 
