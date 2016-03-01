@@ -1,85 +1,148 @@
-X-GM-THRID: 6252303404941443072
-X-Received: by 10.182.120.106 with SMTP id lb10mr2439711obb.24.1455727826500;
-        Wed, 17 Feb 2016 08:50:26 -0800 (PST)
+X-GM-THRID: 6257098330259587072
+X-Received: by 10.25.160.207 with SMTP id j198mr1227766lfe.4.1456846464084;
+        Tue, 01 Mar 2016 07:34:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.169.96 with SMTP id s93ls2091741ioe.86.gmail; Wed, 17 Feb
- 2016 08:50:26 -0800 (PST)
-X-Received: by 10.107.167.148 with SMTP id q142mr3865039ioe.17.1455727826163;
-        Wed, 17 Feb 2016 08:50:26 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id yd9si316908pab.1.2016.02.17.08.50.26
+Received: by 10.25.43.20 with SMTP id r20ls640921lfr.93.gmail; Tue, 01 Mar
+ 2016 07:34:23 -0800 (PST)
+X-Received: by 10.112.155.8 with SMTP id vs8mr2533486lbb.13.1456846463459;
+        Tue, 01 Mar 2016 07:34:23 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v68si347162wmd.1.2016.03.01.07.34.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 08:50:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        Tue, 01 Mar 2016 07:34:23 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id e127so14289542pfe.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 08:50:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=5f52Y6Qgi4cTYhhVt8O0EDEcWGsf31QkjTFlbMXQyz4=;
-        b=oarMkqZ6x9LtEwinHtV6ooRnruxvdQNOrMWjz0AiVosY6SXYlZkrKX8rv3/5HoeN5c
-         2f4NTepKXaDsxGGvDs+jGn0uOlH2+Boh9ZWC5+ubXYdpsKqc5bIGbrsHJ90UK2zoiEsF
-         OpdLxkNmukMrpFqslbzIh2MTW+xGdhAaqSYCT3TBPJOGomtolIz8wZz3xMMx2Q748ZVQ
-         y5z7RaTbdkI0Nzx2Se4DF/3lMabbNIf19RzyPt2zBzjgLU/Fi1OomLe1EWWB2nGXhpX8
-         zJ4T/NCZVi9IHhFxext9wurDRRPfrgxqxTBP9bAvzvoGgpVH5KmdtIydnKRODU8iQWKW
-         nqsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=5f52Y6Qgi4cTYhhVt8O0EDEcWGsf31QkjTFlbMXQyz4=;
-        b=eCY5XuNscm7vg98UaAlTDEazKvAbiBHX1t+V1sWRO+uXbkAJzyUDRVrKzPr/ninT5I
-         MCodHoC7k9iYDBcIjF1cRIFC4N2nbXIUPkzB8Yhsy4q22GsZx6g81VinR5Krr0IYSTDK
-         0I5euGUsAk4g51qBzUSQZgSmOVSIeckjIfrfA+iVTTl7Rs+Z3Rlw4r3DGRzd7zdBCbMU
-         /GQd/S5OvgFUnT+VAurlqf1aO5YDYnp+O3I6WWKZKAT6CT2GopIb4Q3gYuHWGzwqN4ja
-         UcPfcz7xKB5YM3xEvEsPkFDYeBzaA5+DPKNcwpJmBc2ltnNjZLv6Y5g7nFqctIthMVSZ
-         Zu0g==
-X-Gm-Message-State: AG10YOQFw0x1D05p2YqqG40UdCEbhD0+2ePiYqQ1VMF+0oXpHuteP1X7n1kN+Kag415yyA==
-X-Received: by 10.98.74.202 with SMTP id c71mr3499247pfj.25.1455727826058;
-        Wed, 17 Feb 2016 08:50:26 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.146.252])
-        by smtp.gmail.com with ESMTPSA id c9sm3872868pfd.90.2016.02.17.08.50.22
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 08:50:25 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 17 Feb 2016 22:20:10 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH v3 0/2] Staging: wlan-ng: Remove unused functions.
-Date: Wed, 17 Feb 2016 22:20:07 +0530
-Message-Id: <cover.1455726533.git.bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,523,1449529200"; 
+   d="scan'208";a="205277327"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Mar 2016 16:34:23 +0100
+Date: Tue, 1 Mar 2016 16:34:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192e: Use kzalloc instead
+ of kmalloc and memset
+In-Reply-To: <CAOH+1jEACWU7f8PkFp0vpagn4NiEFygp7BgBcd6zjLSG0gBemw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1603011633170.2624@hadrien>
+References: <1456844212-29057-1-git-send-email-bhumirks@gmail.com> <alpine.DEB.2.10.1603011601100.2624@hadrien> <CAOH+1jG58L8Mjg2bO3t48bMoCJgR0=Di-sbHi0vj7DCWqOBbqw@mail.gmail.com> <alpine.DEB.2.10.1603011615480.2624@hadrien>
+ <CAOH+1jEACWU7f8PkFp0vpagn4NiEFygp7BgBcd6zjLSG0gBemw@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The functions hfa384x_drvr_commtallies and hfa384x_drvr_getconfig_async  
-are not used anywhere in the kernel so remove it. Also remove the prototypes 
-from the header file. Also remove function hfa384x_cb_rrid and its prototype 
-as it was only used by hfa384x_drvr_getconfig_async.
 
-Changes in v2:
-* Combine patches 1 and 2 of v1 in a single patch to remove function
-  hfa384x_drvr_commtallies and its prototype.
-* Combine patches 3 and 4 of v1 in a single patch to remove function
-  hfa384x_drvr_getconfig_async and its prototype . 
 
-Changes in v3:
-* Remove function hfa384x_cb_rrid and its prototype as it was only used
-  by hfa384x_drvr_getconfig_async.
+On Tue, 1 Mar 2016, Bhumika Goyal wrote:
 
-Bhumika Goyal (2):
-  Staging: wlan-ng: Remove function hfa384x_drvr_commtallies
-  Staging: wlan-ng: Remove unused functions and prototypes
+> On Tue, Mar 1, 2016 at 8:47 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> > On Tue, 1 Mar 2016, Bhumika Goyal wrote:
+> >
+> >> On Tue, Mar 1, 2016 at 8:31 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >> > On Tue, 1 Mar 2016, Bhumika Goyal wrote:
+> >> >
+> >> >> The code in this patch allocates some memory and then clears it. The
+> >> >> function kzalloc does the both so replace kmalloc and memset with
+> >> >> kzalloc.
+> >> >> Done using coccinelle:
+> >> >>
+> >> >> @@
+> >> >> expression e,e1,e2;
+> >> >> @@
+> >> >> - e=kmalloc(e1,e2);
+> >> >> + e=kzalloc(e1,e2);
+> >> >> if(!e)
+> >> >>   return NULL;
+> >> >> ...
+> >> >> - memset(e,...);
+> >> >>
+> >> >> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> >> >> ---
+> >> >>  drivers/staging/rtl8192e/rtllib_tx.c | 3 +--
+> >> >>  1 file changed, 1 insertion(+), 2 deletions(-)
+> >> >>
+> >> >> diff --git a/drivers/staging/rtl8192e/rtllib_tx.c b/drivers/staging/rtl8192e/rtllib_tx.c
+> >> >> index 58fc70e..1642f29 100644
+> >> >> --- a/drivers/staging/rtl8192e/rtllib_tx.c
+> >> >> +++ b/drivers/staging/rtl8192e/rtllib_tx.c
+> >> >> @@ -221,12 +221,11 @@ static struct rtllib_txb *rtllib_alloc_txb(int nr_frags, int txb_size,
+> >> >>       struct rtllib_txb *txb;
+> >> >>       int i;
+> >> >>
+> >> >> -     txb = kmalloc(sizeof(struct rtllib_txb) + (sizeof(u8 *) * nr_frags),
+> >> >> +     txb = kzalloc(sizeof(struct rtllib_txb) + (sizeof(u8 *) * nr_frags),
+> >> >>                     gfp_mask);
+> >> >>       if (!txb)
+> >> >>               return NULL;
+> >> >>
+> >> >> -     memset(txb, 0, sizeof(struct rtllib_txb));
+> >> >
+> >> > The sizes are not the same.  I don't know if this is a performance issue.
+> >> >
+> >>
+> >> By sizes do you mean the size of memory allocated by kmalloc and
+> >> kzalloc?  I think this won't be an issue when the second argument is
+> >> GFP_KERNEL.
+> >
+> > The size that is allocated is A + B.
+> > The size that is zeroed is only A.
+> >
+> > In your code, the size that is zeroed is A + B.  Since B contains a
+> > multiplication, that might be much bigger.  In at least some contexts
+> > zeroing takes time.
+> >
+> > julia
+> >
+>
+> Thanks for explaining. I will find issues where the size allocated and
+> zeroed is only A .
 
- drivers/staging/wlan-ng/hfa384x.h     |  4 --
- drivers/staging/wlan-ng/hfa384x_usb.c | 74 -----------------------------------
- 2 files changed, 78 deletions(-)
+I'm not sure that there is anything to do here.  It s perfectly legitimate
+to zero less than the full allocated data, as long as no fields of the
+allocated data are then used uninitialized.
 
--- 
-1.9.1
+julia
 
+>
+> Thanks,
+> Bhumika
+> >>
+> >> Thanks,
+> >> Bhumika
+> >> > julia
+> >> >
+> >> >>       txb->nr_frags = nr_frags;
+> >> >>       txb->frag_size = cpu_to_le16(txb_size);
+> >> >>
+> >> >> --
+> >> >> 1.9.1
+> >> >>
+> >> >> --
+> >> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1456844212-29057-1-git-send-email-bhumirks%40gmail.com.
+> >> >> For more options, visit https://groups.google.com/d/optout.
+> >> >>
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAOH%2B1jG58L8Mjg2bO3t48bMoCJgR0%3DDi-sbHi0vj7DCWqOBbqw%40mail.gmail.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAOH%2B1jEACWU7f8PkFp0vpagn4NiEFygp7BgBcd6zjLSG0gBemw%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
