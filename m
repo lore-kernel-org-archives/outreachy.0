@@ -1,68 +1,87 @@
-X-GM-THRID: 6212181078592978944
-X-Received: by 10.112.149.7 with SMTP id tw7mr3407141lbb.10.1446386119667;
-        Sun, 01 Nov 2015 05:55:19 -0800 (PST)
+X-GM-THRID: 6256392971161174016
+X-Received: by 10.66.63.68 with SMTP id e4mr21996396pas.40.1456944487173;
+        Wed, 02 Mar 2016 10:48:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.9.149 with SMTP id 143ls440054wmj.7.canary; Sun, 01 Nov
- 2015 05:55:19 -0800 (PST)
-X-Received: by 10.194.2.146 with SMTP id 18mr3485368wju.0.1446386119276;
-        Sun, 01 Nov 2015 05:55:19 -0800 (PST)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
-        by gmr-mx.google.com with ESMTPS id s134si336594wmb.3.2015.11.01.05.55.19
+Received: by 10.140.100.214 with SMTP id s80ls4508853qge.94.gmail; Wed, 02 Mar
+ 2016 10:48:06 -0800 (PST)
+X-Received: by 10.13.223.140 with SMTP id i134mr21697662ywe.11.1456944486670;
+        Wed, 02 Mar 2016 10:48:06 -0800 (PST)
+Return-Path: <bounce-md_30481620.56d73566.v1-82fe7b9f2bcf4ec0abcd2da14739f511@mandrillapp.com>
+Received: from mail177-1.suw61.mandrillapp.com (mail177-1.suw61.mandrillapp.com. [198.2.177.1])
+        by gmr-mx.google.com with ESMTPS id w126si2129071ywe.6.2016.03.02.10.48.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 05:55:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
+        Wed, 02 Mar 2016 10:48:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56d73566.v1-82fe7b9f2bcf4ec0abcd2da14739f511@mandrillapp.com designates 198.2.177.1 as permitted sender) client-ip=198.2.177.1;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wm0-x232.google.com with SMTP id f134so41678981wmf.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 05:55:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=hNviarXfZ68EIAfEfL/5X5XObakbH3Ql4YOItFaY6nE=;
-        b=nmtF/EFTGsVymCgfqkc6UFor29cDf+CFHGgajQhl2SCkgu13U4wt9CSiLejiY0y2A3
-         Qu7r8geTGn8cQjg9vE+hnwMWpAfCHyRNqu1LPYrlxQP7+cS80WmbvylbcCHwaz1Voww7
-         uYBaC9H3HqQ3wB3k+jjWheN3mIjapmVRLNegeSBmMYUYR1fIRF5JnKm8uVasCYWqThlM
-         xNmKOhpwo9QQ+wAJYGNcTuxrJkSx8tzVKN99IZWXGqvZxcvckSGNcLRtBn0Y+uXzDH4P
-         q3OH2VvzJ1g3f7VxivurSHalFQQ/SWEh8uoj8fzI8fyHAPfE3Sn9vReGcMmNORQqqUo5
-         pw0A==
-X-Received: by 10.28.144.10 with SMTP id s10mr8492410wmd.23.1446386119192;
-        Sun, 01 Nov 2015 05:55:19 -0800 (PST)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain ([141.85.114.141])
-        by smtp.gmail.com with ESMTPSA id u126sm12968830wmd.3.2015.11.01.05.55.18
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Nov 2015 05:55:18 -0800 (PST)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: arve@android.com,
-	riandrews@android.com,
-	Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH 0/5] staging: android: fix multiple checkpatch issues
-Date: Sun,  1 Nov 2015 15:55:06 +0200
-Message-Id: <cover.1446385932.git.ciorneiioana@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       spf=pass (google.com: domain of bounce-md_30481620.56d73566.v1-82fe7b9f2bcf4ec0abcd2da14739f511@mandrillapp.com designates 198.2.177.1 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d73566.v1-82fe7b9f2bcf4ec0abcd2da14739f511@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=+KeytGw4HKpeCbnhrNCNVwYC0B0=;
+ b=giffxM2KjYhOW/xkO0do7swPnlxcmXXyDPuexzohBZxLjxPWtwJ+XMhEVDWyTHm4j/pBxReJ8LBv
+   sCoz9GCM/pnHgQO1WnlFLQ2L9B2eAYxXG2WUbVVC5BL0wU2VVGeQrdlOltg9ZnZKODsiRpF5qy12
+   f+n4bXzlZoUrWO9D/jo=
+Received: from pmta06.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail177-1.suw61.mandrillapp.com id hqsqmc22rtk5 for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:48:06 +0000 (envelope-from <bounce-md_30481620.56d73566.v1-82fe7b9f2bcf4ec0abcd2da14739f511@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944486; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=bkPQa/tULx4bp+j6oErGkSYMIU0g0TjHskahHhaTCW0=; 
+ b=mrrcklKU8UOFcbZSxxptMRPZGtSMVm1Rn+MRbfXjNoXDmU/Ijl08KQE4rG/dNWWQzoya44
+ 4KK/9kUEC/F4r8c7YUrdCQcsV77DF7o5dbmT3H7EsGUYy140o7CubVdQRvZlHO1zevujEvgU
+ wl9dd67NirBiuAX/hLXzy8o6vvHF4=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: lnet: Remove int typecast of offsetof().
+Return-Path: <bounce-md_30481620.56d73566.v1-82fe7b9f2bcf4ec0abcd2da14739f511@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id 82fe7b9f2bcf4ec0abcd2da14739f511; Wed, 02 Mar 2016 18:48:06 +0000
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160302033711.GB20937@kroah.com>
+References: <20160228092006.GA3627@sandhya>
+In-Reply-To: <20160228092006.GA3627@sandhya>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.82fe7b9f2bcf4ec0abcd2da14739f511
+X-Mandrill-User: md_30481620
+Date: Wed, 02 Mar 2016 18:48:06 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This patchset fixes multiple checkpatch.pl issues.
+On Sun, Feb 28, 2016 at 02:50:07PM +0530, Sandhya Bankar wrote:
+> Remove int typecast of offsetof(). 
+> As per below coccinelle rule:
+> 
+> @@
+> type T;
+> expression E;
+> @@
+> 
+> - (int)(offsetof(T,E))
+> + offsetof(T,E) 
+> 
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/lustre/lnet/lnet/api-ni.c | 54 +++++++++++++++----------------
+>  1 file changed, 27 insertions(+), 27 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lnet/lnet/api-ni.c b/drivers/staging/lustre/lnet/lnet/api-ni.c
+> index 3ecc96a..c3fe782 100644
+> --- a/drivers/staging/lustre/lnet/lnet/api-ni.c
+> +++ b/drivers/staging/lustre/lnet/lnet/api-ni.c
+> @@ -197,75 +197,75 @@ static void lnet_assert_wire_constants(void)
+>  	CLASSERT((int)sizeof(lnet_handle_wire_t) == 16);
+>  	CLASSERT((int)offsetof(lnet_handle_wire_t, wh_interface_cookie) == 0);
+>  	CLASSERT((int)sizeof(((lnet_handle_wire_t *)0)->wh_interface_cookie) == 8);
+> -	CLASSERT((int)offsetof(lnet_handle_wire_t, wh_object_cookie) == 8);
+> +	CLASSERT(offsetof(lnet_handle_wire_t, wh_object_cookie) == 8);
+>  	CLASSERT((int)sizeof(((lnet_handle_wire_t *)0)->wh_object_cookie) == 8);
 
-Ioana Ciornei (5):
-  staging: android: replace explicit NULL comparison
-  staging: android: replace uint32_t with u32
-  staging: android: properly align function arguments
-  staging: android: remove multiple blank lines
-  staging: android: add comment to spinlock_t definition
+Why did you only change 1 of them here and not all instances?
 
- drivers/staging/android/ion/compat_ion.c  |  6 +++---
- drivers/staging/android/lowmemorykiller.c |  6 +++---
- drivers/staging/android/sync.c            | 22 +++++++++++-----------
- drivers/staging/android/timed_gpio.c      | 13 ++++++-------
- 4 files changed, 23 insertions(+), 24 deletions(-)
+thanks,
 
--- 
-2.1.4
-
+greg k-h
 
