@@ -1,78 +1,62 @@
-X-GM-THRID: 6256436509149233152
-X-Received: by 10.50.50.138 with SMTP id c10mr7340521igo.3.1456690139328;
-        Sun, 28 Feb 2016 12:08:59 -0800 (PST)
+X-GM-THRID: 6257136391143030784
+X-Received: by 10.182.87.2 with SMTP id t2mr22737697obz.20.1456944608241;
+        Wed, 02 Mar 2016 10:50:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.228 with SMTP id c91ls2130678qgf.37.gmail; Sun, 28 Feb
- 2016 12:08:58 -0800 (PST)
-X-Received: by 10.140.201.75 with SMTP id w72mr10319857qha.1.1456690138835;
-        Sun, 28 Feb 2016 12:08:58 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id ff2si3449465pad.2.2016.02.28.12.08.58
+Received: by 10.140.83.100 with SMTP id i91ls4378373qgd.66.gmail; Wed, 02 Mar
+ 2016 10:50:07 -0800 (PST)
+X-Received: by 10.13.192.134 with SMTP id b128mr22597103ywd.43.1456944607623;
+        Wed, 02 Mar 2016 10:50:07 -0800 (PST)
+Return-Path: <bounce-md_30481620.56d735df.v1-fb3dcbd3c3c54a09837fbb138657da22@mandrillapp.com>
+Received: from mail333.us4.mandrillapp.com (mail333.us4.mandrillapp.com. [205.201.137.77])
+        by gmr-mx.google.com with ESMTPS id i133si2395792ywe.7.2016.03.02.10.50.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 12:08:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Wed, 02 Mar 2016 10:50:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56d735df.v1-fb3dcbd3c3c54a09837fbb138657da22@mandrillapp.com designates 205.201.137.77 as permitted sender) client-ip=205.201.137.77;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id y7so7477346paa.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 12:08:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=YG/QeN4TJzxQX8BFUQJg04/jx9y1CKyl4pqflF2aRfc=;
-        b=KpzlJXEUU80j39/TG9bQni3+6jr2mgOkvdVNqqry+jvSDpz8JeGqq6r0Hp8mG82v+M
-         UQ8czVHsV59frjKmad6A6WCV14eKnLxAzEmftixdDyirz+FQX/NPlmfjvA8iZPcFvC5I
-         K/lIfI/d53wl2zdQm8DfdEOnxXPzzYHdlK59xLOy/aWtPed+SAuRWitmnrJOuXtWfrww
-         HyclIAQ+3cPY7G7Qj0tXrWRlmptWjP4fk+vj5TN6NbP+a3moQpiMSurCP14xR4NNNTZy
-         AS9tObDL+mhFyCjCIs0rDIbkVo8uyMfFaAfCzDCypbOSMbAv4X9P3lHaXGcqMsv4CPrF
-         jjfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=YG/QeN4TJzxQX8BFUQJg04/jx9y1CKyl4pqflF2aRfc=;
-        b=jGr9fbS005/s+NqOARhAtoBEgY9jX9AouvV1uxsEN8Amhpn5LpotKVOQUjKtLEjrfg
-         pNSuTbigcoVa3TTW7ShQ0ThdxzNr2feabEQ6idQwf5HLqVBKFOZLrUWOPghBkj7vqAlA
-         pKDG7y8rk1SWSwvTbq/hSQO6Fc7aN40LJyqvBR9oOQd8g26+/71GAYLKfAtrChL0/G2p
-         V/2VlYYuNR5OkOKCN4gikCWMpm4Oi8PyTsXxO7ijyMTEYtqN2ROC5KMsbUt+RljnrE3S
-         8DB0IVb78vW5y0//5gqhp/xudsQSTABsSJXuXsl7nqC06MJ4XTYE6Y2RKmgVZ7NKiaZf
-         V9Fg==
-X-Gm-Message-State: AD7BkJI6Vyjsa+aNH138XnCyvLtu/IibCWjrQQj6P0vr/U1sahwVsfzQttip5LrF6odhgg==
-X-Received: by 10.66.193.202 with SMTP id hq10mr17049319pac.6.1456690138583;
-        Sun, 28 Feb 2016 12:08:58 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.168])
-        by smtp.gmail.com with ESMTPSA id 1sm32869371pfm.10.2016.02.28.12.08.57
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 12:08:58 -0800 (PST)
-Date: Sun, 28 Feb 2016 17:39:04 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Staging: Use ether_addr_equal_64bits() insted of
- ether_addr_equal().
-Message-ID: <cover.1456660509.git.bankarsandhya512@gmail.com>
+       spf=pass (google.com: domain of bounce-md_30481620.56d735df.v1-fb3dcbd3c3c54a09837fbb138657da22@mandrillapp.com designates 205.201.137.77 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d735df.v1-fb3dcbd3c3c54a09837fbb138657da22@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=TViU1H9QR17s7GY66fH7/RcB/ik=;
+ b=b8LkEPouVRK4vtvSHFGCfg0lVCCM6Ni15BjVYsWCUzQ1gLWGqb3RbY0hi5lv7DL/wrXI12auM4kx
+   o6izWXDvfhSPJwGkF2/A9/n2rSwPkcR7OQOoVDcBahnjXHP7IZvIK2Nq8x9MyrNB2j0dAlBGfHke
+   RUDkwIEHt5CA6MzQY1E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
+ b=cU5G2k3H/RO1TKEwgqQ9DEZ/J4PUtTxFLFYnuY10N4Qc3QrUQXH471ThN8Iwk1EOeiznfpVhNLaw
+   7dkSsElZioxgWkvazvR9+lQZNI0aXSIYnmPW3EyrPP+kZTveLBsy+Q/2Q6+kIKdsI5EqDib4iuUU
+   z9RvDF7gIT4IxX8J2tQ=;
+Received: from pmta03.dal05.mailchimp.com (127.0.0.1) by mail333.us4.mandrillapp.com id hqsqtu174no3 for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:50:07 +0000 (envelope-from <bounce-md_30481620.56d735df.v1-fb3dcbd3c3c54a09837fbb138657da22@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944607; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=WNphQ7aVSM+C3us7/sF606KL/AziKoPFEJmnG22k6ak=; 
+ b=KvZ7p2Ia9NMm2x5dnTQzez9oHgMKupzAOxbm0hxkTvvIchCoAEQx6iWB9NLW4BB8H/YUc0
+ d9TFJ9CJM479Uk/+WlbASll4Sgvh6R7sIbMuTAWATGmGUbyab8vhGzpuC8ZHbzbBk7qA3Zs3
+ cJdfBpH9LWiKE7ETbb8U/TSZGT0hI=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: mdc: Remove unused macro
+Return-Path: <bounce-md_30481620.56d735df.v1-fb3dcbd3c3c54a09837fbb138657da22@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id fb3dcbd3c3c54a09837fbb138657da22; Wed, 02 Mar 2016 18:50:07 +0000
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160302033435.GA20937@kroah.com>
+References: <20160301172205.GA19758@Karyakshetra>
+In-Reply-To: <20160301172205.GA19758@Karyakshetra>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.fb3dcbd3c3c54a09837fbb138657da22
+X-Mandrill-User: md_30481620
+Date: Wed, 02 Mar 2016 18:50:07 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Use ether_addr_equal_64bits() insted of ether_addr_equal().
-ether_addr_equal_64bits() is more efficient than ether_addr_equal(), and can be used when each argument is an array within a structure.
+On Tue, Mar 01, 2016 at 10:52:05PM +0530, Bhaktipriya Shridhar wrote:
+> The macro mdc_unpack_acl(req, md) is not used anywhere. Hence, removed
+> it.
 
-Sandhya Bankar (2):
-  [PATCH 1/2] Staging: slicoss: Use ether_addr_equal_64bits() insted of ether_addr_equal().
-  [PATCH 2/2] Staging: rtl8192e: Use ether_addr_equal_64bits() instead of ether_addr_equal().
-
- drivers/staging/rtl8192e/rtllib_softmac.c | 5 +++--
- drivers/staging/slicoss/slicoss.c         | 4 ++--
- 2 files changed, 5 insertions(+), 4 deletions(-)
-
--- 
-1.8.3.4
-
+It's used, in this very file, please be more careful.
 
