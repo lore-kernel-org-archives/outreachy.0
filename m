@@ -1,115 +1,74 @@
-X-GM-THRID: 6807590102219358208
-X-Received: by 2002:a63:fc52:: with SMTP id r18mr23786986pgk.96.1585015585493;
-        Mon, 23 Mar 2020 19:06:25 -0700 (PDT)
+X-GM-THRID: 6256254448614506496
+X-Received: by 10.31.165.1 with SMTP id o1mr22309790vke.12.1456944533792;
+        Wed, 02 Mar 2016 10:48:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ff18:: with SMTP id f24ls2983205plj.0.gmail; Mon, 23
- Mar 2020 19:06:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vslU7qGohaY83s2RnZoIglOkzMMwUapf5/ErOdDjYNEXSosqH4WgfvfBjGpscIKt6J2IV5K
-X-Received: by 2002:a17:90a:ad45:: with SMTP id w5mr2463658pjv.179.1585015583730;
-        Mon, 23 Mar 2020 19:06:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585015583; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0yHP24EKFLxVNJNwnt8eEBqHxP2FJqoP/kV7zUGT8jJXMi54vI6KXdFmZwgGeidJzs
-         0eYSptiD5R7DzlVvg56M5TqxNFSvy7vtsjXBFMEnNgcXZgi3cIDL7Y2FGzRwHBb+nmGo
-         6LRNWgPIit7o5WXYO/20RFaFQeJjAhfQ8zsrQsJY2bB4V/bNRxSACxuaCW+/n/2bjR/5
-         w4xWarY8xeAMEARpCClz9oMU8/csnE5JkL3fybK9dM3K9LdfGH4eghtQ9jtbzHWNsETm
-         dNgAC5p9ou052MuUC325D2Eh+BBcqYPYaCvcoMiuFZGcQ55pl37ueotFPlM7WHJKnZV9
-         Tg5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=7/UkINl6/x/Py8RXNOzg53SeihqoeHjXkSRM9yJezXM=;
-        b=MiaMOTK2zEhWQLj8v0yjC2ND0J8t96cpSz7UNqUBd3frgnhvwRlpjCHsFUGKAW8gkg
-         h5z4IEgE5Kij2FbLLJK9+7d1p5M55ycWdrlABqQq94O7TrdoMOug8c8bBMktKG8xqxfS
-         mGKqJCjHEG1phM0OwVnH6e8t3raTVu0ae8JmL//mID9cwpLNqVrwPOuuvok/yZq32l5p
-         rUlWg4Hzz02oXqY59SkbWn/PvceaKiERIcz8dH/IdGLwyk+jB9Z60bzvIUBEU8nV4w3l
-         H8guzszH+2XSVv/Vh9Sv8ejSPSy+7WNRF5A3uE52Q8WULErjmBN6LGdCSug+bONqZjpt
-         V9ZQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lNSA8SPC;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <briana.oursler@gmail.com>
-Received: from mail-pj1-x1043.google.com (mail-pj1-x1043.google.com. [2607:f8b0:4864:20::1043])
-        by gmr-mx.google.com with ESMTPS id y1si31835pjv.2.2020.03.23.19.06.23
+Received: by 10.140.92.80 with SMTP id a74ls889130qge.72.gmail; Wed, 02 Mar
+ 2016 10:48:52 -0800 (PST)
+X-Received: by 10.13.234.77 with SMTP id t74mr22363546ywe.12.1456944532969;
+        Wed, 02 Mar 2016 10:48:52 -0800 (PST)
+Return-Path: <bounce-md_30481620.56d73594.v1-e238d6a625434b138422e2e016fb51d7@mandrillapp.com>
+Received: from mail333.us4.mandrillapp.com (mail333.us4.mandrillapp.com. [205.201.137.77])
+        by gmr-mx.google.com with ESMTPS id v197si2401782ywa.1.2016.03.02.10.48.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Mar 2020 19:06:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) client-ip=2607:f8b0:4864:20::1043;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 02 Mar 2016 10:48:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56d73594.v1-e238d6a625434b138422e2e016fb51d7@mandrillapp.com designates 205.201.137.77 as permitted sender) client-ip=205.201.137.77;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lNSA8SPC;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1043.google.com with SMTP id m15so712429pje.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2020 19:06:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7/UkINl6/x/Py8RXNOzg53SeihqoeHjXkSRM9yJezXM=;
-        b=lNSA8SPCnJFNog4S99rNtBTvSGnluTnoL+7TAHT2VdoRnBYEPQw1qbE5q3LQcRdhFb
-         pczGXRDENNJQKH5j92DDXc4Bwn5aWB7WqIEnJ4HTUS+e5fcVDL8oo+B4nsrSxtki9nP3
-         rjk8pRW26Ko5zj9iRzDtFE0w8MYzEZyOWTuCZ11RYm1TDE8rr/cgZqQHMQxIJ+e0jm9O
-         jUjeWpvTn0A3DoMxY7zfcL+4tM9o7HSoLyjRvAoFJmuGneh7rILeuQdmG/EI8QY6IMc1
-         KP39x3SJrFguOrajrt8keIQZQTKCuR62f+7jLoxSabWeFwy7ehJv4J/NUb95Wgt3Gzut
-         c4vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7/UkINl6/x/Py8RXNOzg53SeihqoeHjXkSRM9yJezXM=;
-        b=Sv+KEWoDzKJ7LbsHhIAE3UXRIbTbiGhKKrPWOsXrZmbSgmJkwgNCwkbub8XyyS8sDW
-         mz+mES/yhw8/2icffYjWo2e7zjnJv5C2xkXcJrpwU0Jy7kt/7dzslMsZK9KMImb/oodZ
-         P3sUYw4b9yCTGjr4gm04fiRILwLSRgJWoAZIHbOjaYvJVdZG1QotX+kIlO17nCC0nLgN
-         YtK/6VVoON1P/k1qj/HsvpKqBwFi/MWbEkAnKNt7AmE2KPNiW6PSNQKO/HQp1Ye0FNsa
-         nsUfcCkmken0anmNs3RnOHkvPXKpk3Vhp7x4lSuMtXmIHMcpMmfr2e3iZ5kGIuu8bjFt
-         4RAw==
-X-Gm-Message-State: ANhLgQ1fidAVaV1LgVhyALAgjy2LW5xBHPf7nr2c1EaxkxBnk7VBTJv3
-	ph9Imk4cAB3haiyc/zOutIfWayzNZpatEw==
-X-Received: by 2002:a17:90a:fb41:: with SMTP id iq1mr2422564pjb.89.1585015583351;
-        Mon, 23 Mar 2020 19:06:23 -0700 (PDT)
-Return-Path: <briana.oursler@gmail.com>
-Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
-        by smtp.gmail.com with ESMTPSA id i20sm6667024pfd.89.2020.03.23.19.06.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Mar 2020 19:06:22 -0700 (PDT)
-From: Briana Oursler <briana.oursler@gmail.com>
-To: gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	outreachy-kernel@googlegroups.com
-Cc: Briana Oursler <briana.oursler@gmail.com>
-Subject: [PATCH] staging: vt6655: Break up function call with long line.
-Date: Mon, 23 Mar 2020 19:06:19 -0700
-Message-Id: <20200324020619.73702-1-briana.oursler@gmail.com>
-X-Mailer: git-send-email 2.24.1
+       spf=pass (google.com: domain of bounce-md_30481620.56d73594.v1-e238d6a625434b138422e2e016fb51d7@mandrillapp.com designates 205.201.137.77 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d73594.v1-e238d6a625434b138422e2e016fb51d7@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=LnaLDl8V0yKN0UnAlMrmtcnOJLc=;
+ b=qM1xwDIuiKI/56CH9K0bfercLzKeC++4Gu1noWJshKR53wX5k4zFFKkbKvQallHC5Mz6ABTe0bvQ
+   xgDD0l82sBEpRHD1J5lsH3XBhUJVREtyJMyAspHKIXcbG0T5Rb0839AlNfOX4bbtfxSgMW3+6fuC
+   s90M4HUxQHehzeTua54=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
+ b=BqNfVxRjOhAWi6QQt1ab2MmhuDKM0Ym7shwk7gW0kdhk0Y2aypVzwjaSnYlkicaYuAIDgswhQ17S
+   JKcEmub4bpJA6PmLCc4uHxzGr0nfCT9NtnS+AjsVylOpepaJfx+XhfhSVf6+8F8VM4kPzK2fej0w
+   41fuTrz5WM+9TaKZFmA=;
+Received: from pmta03.dal05.mailchimp.com (127.0.0.1) by mail333.us4.mandrillapp.com id hqsqp8174noh for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:48:52 +0000 (envelope-from <bounce-md_30481620.56d73594.v1-e238d6a625434b138422e2e016fb51d7@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944532; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=fv1YG+5VEFZnmBFjIUNi779pYAYNFRrTqnGd6K/F2Fg=; 
+ b=aSCOqrPswp2nZTldo6llYUqaglbgIP4GRvmX5ac31FnZkVMOSJhCXpg09SQjo30ogaGWXh
+ 6Tmkc8ytb2wtspabwOgEIxeUr6RKv1/xcAOGG2SnygIyTWQ6kkG9KRChX/e8a7E2ROrKyedB
+ oVp86bLVW4HeqmSvxFEBA1ccZ+tL4=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: unisys: Remove function visorchannel_debug
+Return-Path: <bounce-md_30481620.56d73594.v1-e238d6a625434b138422e2e016fb51d7@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id e238d6a625434b138422e2e016fb51d7; Wed, 02 Mar 2016 18:48:52 +0000
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160302031537.GA7921@kroah.com>
+References: <1456647735-15584-1-git-send-email-bhumirks@gmail.com>
+In-Reply-To: <1456647735-15584-1-git-send-email-bhumirks@gmail.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.e238d6a625434b138422e2e016fb51d7
+X-Mandrill-User: md_30481620
+Date: Wed, 02 Mar 2016 18:48:52 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Update matches style found elsewhere in file.
-Issue found by checkpatch: line over 80 characters.
+On Sun, Feb 28, 2016 at 01:52:15PM +0530, Bhumika Goyal wrote:
+> The function visorchannel_debug is not used anywhere in the kernel so
+> remove the function definition, prototype and the export symbol.
+> Grepped to find the occurences.
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/unisys/include/visorbus.h      |  2 -
+>  drivers/staging/unisys/visorbus/visorchannel.c | 74 --------------------------
+>  2 files changed, 76 deletions(-)
 
-Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
----
- drivers/staging/vt6655/device_main.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+This patch adds a build warning to the build, so I can't take it.
+Please fix that up :(
 
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index 0442f71494b2..b28f3b28849b 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -443,7 +443,10 @@ static bool device_init_rings(struct vnt_private *priv)
- 
- 	/*allocate all RD/TD rings a single pool*/
- 	vir_pool = dma_alloc_coherent(&priv->pcid->dev,
--				      priv->opts.rx_descs0 * sizeof(struct vnt_rx_desc) + priv->opts.rx_descs1 * sizeof(struct vnt_rx_desc) + priv->opts.tx_descs[0] * sizeof(struct vnt_tx_desc) + priv->opts.tx_descs[1] * sizeof(struct vnt_tx_desc),
-+				      priv->opts.rx_descs0 * sizeof(struct vnt_rx_desc)
-+				      + priv->opts.rx_descs1 * sizeof(struct vnt_rx_desc)
-+				      + priv->opts.tx_descs[0] * sizeof(struct vnt_tx_desc)
-+				      + priv->opts.tx_descs[1] * sizeof(struct vnt_tx_desc),
- 				      &priv->pool_dma, GFP_ATOMIC);
- 	if (!vir_pool) {
- 		dev_err(&priv->pcid->dev, "allocate desc dma memory failed\n");
--- 
-2.24.1
+thanks,
 
+greg k-h
 
