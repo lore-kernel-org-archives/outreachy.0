@@ -1,230 +1,122 @@
-X-GM-THRID: 6263413935995617280
-X-Received: by 10.129.39.146 with SMTP id n140mr11788558ywn.22.1458314698587;
-        Fri, 18 Mar 2016 08:24:58 -0700 (PDT)
+X-GM-THRID: 6255535710113103872
+X-Received: by 10.66.139.138 with SMTP id qy10mr22271049pab.46.1456944538397;
+        Wed, 02 Mar 2016 10:48:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.93.165 with SMTP id d34ls2627359qge.89.gmail; Fri, 18 Mar
- 2016 08:24:57 -0700 (PDT)
-X-Received: by 10.140.20.204 with SMTP id 70mr12076611qgj.18.1458314697816;
-        Fri, 18 Mar 2016 08:24:57 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id y20si2198568pfa.2.2016.03.18.08.24.57
+Received: by 10.140.31.133 with SMTP id f5ls4211083qgf.91.gmail; Wed, 02 Mar
+ 2016 10:48:57 -0800 (PST)
+X-Received: by 10.140.88.139 with SMTP id t11mr4006600qgd.21.1456944537718;
+        Wed, 02 Mar 2016 10:48:57 -0800 (PST)
+Return-Path: <bounce-md_30481620.56d73599.v1-151ae8dec33241efbb2c6302b89b0b7c@mandrillapp.com>
+Received: from mail333.us4.mandrillapp.com (mail333.us4.mandrillapp.com. [205.201.137.77])
+        by gmr-mx.google.com with ESMTPS id w126si2129257ywe.6.2016.03.02.10.48.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 18 Mar 2016 08:24:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 02 Mar 2016 10:48:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56d73599.v1-151ae8dec33241efbb2c6302b89b0b7c@mandrillapp.com designates 205.201.137.77 as permitted sender) client-ip=205.201.137.77;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id x3so17415456pfb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 08:24:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=EOllCZrDxxfcBGCzvP0NcazIGBZmp7C4bjuPPZWOesk=;
-        b=T2QIahRYyp7MoXC3XzaV8mPEHOor2a30WpEVWTtLMJiX9dMwrnD1/NOBA8fdRPabvg
-         LZ3UsUW71ZUMdP8+O2MKBsE25uNQWGM6MmZWTH+rtyHtuh7UaWWNWDVpyKnAAu1MiTY1
-         M+ZRIIyHQ+qWS5Y+BrgOFquEU3F90jRxDjUNvpETUNqYLzTw/OksKK4uaLK0FDEOERKi
-         SVwpOp5Xyb4pNR1XgTMA1PsXmXy+h4+Ec8HbPzf2tHNfjH1CtjKPWe66/IWOVJ2J53pV
-         szBatMerF2enm04c995J8U/z3kApGtUaHEamCa+J6o8+N1aGBV4SmpM+j4AR4g6Pu+ah
-         h3NQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=EOllCZrDxxfcBGCzvP0NcazIGBZmp7C4bjuPPZWOesk=;
-        b=RKmwDlVk9dem860sDhggBCpE4jNz3g+Pufcl/tB1prStJjHrRsqveNttX7qAPGCMmu
-         pDsMweArj8uziP00XJw8PWWmpEP2+XLSIIjw59uXjU1A6yyuQlXH/zjEqFHVbtqw5moy
-         SZO6UfPAh2wb5pN2Dmw+07MddDRMwgiRrKwkBWzFLJ6MJOmHi+74VsEJLU+zdo29AokZ
-         QU5Q63ZD1G4/hJHLnDye28PhWk9JjyNP9nEelN+EH0UEGcipoCS8FI++M5a2Bdf7J2VV
-         2AQ1pD/cOWJZ0ajsIk6NSa2/yaKKtySWpmsC29S92TNLJI9J5Wle4u46A3z+Kg3AKutB
-         jBYg==
-X-Gm-Message-State: AD7BkJLTvVrfHkOINZXM/FaUT5aANM87IWStUHIR4trquzlIFkW6TV52ScrMWG7RZ3Zj1A==
-X-Received: by 10.98.18.1 with SMTP id a1mr2900670pfj.39.1458314697575;
-        Fri, 18 Mar 2016 08:24:57 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.148])
-        by smtp.gmail.com with ESMTPSA id l4sm6797552pfi.73.2016.03.18.08.24.55
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 18 Mar 2016 08:24:57 -0700 (PDT)
-Date: Fri, 18 Mar 2016 13:56:00 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: emxx_udc: emxx_udc: Add space around operator.
-Message-ID: <20160318082600.GA5285@sandhya>
+       spf=pass (google.com: domain of bounce-md_30481620.56d73599.v1-151ae8dec33241efbb2c6302b89b0b7c@mandrillapp.com designates 205.201.137.77 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d73599.v1-151ae8dec33241efbb2c6302b89b0b7c@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=na8Zhmkv4wZQKHS4I4DJlE6ChKs=;
+ b=RNVM1sIdCIdgqPsW4yGXY2vxj0RlkhlqdR8PzbpWCU9x5fRKGoGUiluL9dnaLHXvbI1/AtF4xEN9
+   oUjx8ynzw5L47bJPpbL+o/3Hss+8e3SzGOaFJpdpvv5Eg48dOCbggG86mi43a6T3UdG6VcMs3Sr9
+   0lJ0pg0gxi6oMXjORqs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
+ b=NZdbI6Av9QfiJN0blAKZBUFyXCjpjKdZaIOm5wWJE2b7bM6LCOyeEqv0LfjKpIEvzW0ky6/tG5bx
+   GPkQlXiFc21bfQXM3czhHIOZGFg6OvZHZbOUAupBUbZiS38aHoWSMsF8QfUN8RORHbFQqlTJ7hbI
+   VA3Xf/kV1zfcuR0hfZc=;
+Received: from pmta03.dal05.mailchimp.com (127.0.0.1) by mail333.us4.mandrillapp.com id hqsqpi174nob for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:48:57 +0000 (envelope-from <bounce-md_30481620.56d73599.v1-151ae8dec33241efbb2c6302b89b0b7c@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944537; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=KtYoYURDPif8gR5qQcSve22klTR2SyQDgOyr2ZL4WIM=; 
+ b=BkTUYhv2U6oyw14jE4oLJBYQTVm4+M4tJY6Jqm/jGzmD3c7jBLfYixB+jZcOtk0dSA+OS/
+ rUq7dP064LguzLT0TloaJib2yytBoeVv0AzowXHsYHhg7HSTTPEmMIUprSx/qwixTl5IA2hA
+ At+w/+hduL9o7Cqd590zb1PXP6ZU8=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: libcfs: Prefer kmalloc_array over kmalloc
+Return-Path: <bounce-md_30481620.56d73599.v1-151ae8dec33241efbb2c6302b89b0b7c@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id 151ae8dec33241efbb2c6302b89b0b7c; Wed, 02 Mar 2016 18:48:57 +0000
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160302033322.GA20889@kroah.com>
+References: <20160226095401.GA10888@Karyakshetra>
+In-Reply-To: <20160226095401.GA10888@Karyakshetra>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.151ae8dec33241efbb2c6302b89b0b7c
+X-Mandrill-User: md_30481620
+Date: Wed, 02 Mar 2016 18:48:57 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Add space around operator.This patch is found by checkpatch.pl script.
+On Fri, Feb 26, 2016 at 03:24:01PM +0530, Bhaktipriya Shridhar wrote:
+> Use kmalloc_array instead of kmalloc for arrays to prevent integer
+> overflows.
+> This was done using Coccinelle:
+> 
+> @@
+> expression e1, e2;
+> constant C;
+> type t;
+> @@
+> (
+> - kmalloc(
+> + kmalloc_array(
+> e2
+> - *
+> + ,
+> sizeof(e1), C)
+> |
+> - kmalloc(
+> + kmalloc_array(
+> e1
+> - *
+> + ,
+> sizeof(t), C)
+> |
+> - kmalloc(
+> + kmalloc_array(
+> - sizeof(e1)
+> - *
+> e2
+> + ,
+> + sizeof(e1)
+> , C)
+> |
+> - kmalloc(
+> + kmalloc_array(
+> - sizeof(t)
+> - *
+> e1
+> + ,
+> + sizeof(t)
+> , C)
+> )
+> 
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> ---
+>  Changes in v2:
+> 	-Fixed type lusture to lustre in subject.
+> 
+>  drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c b/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c
+> index 91c2ae8..b78f6e5 100644
+> --- a/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c
+> +++ b/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c
+> @@ -61,8 +61,9 @@ int cfs_tracefile_init_arch(void)
+>  	memset(cfs_trace_data, 0, sizeof(cfs_trace_data));
+>  	for (i = 0; i < CFS_TCD_TYPE_MAX; i++) {
+>  		cfs_trace_data[i] =
+> -			kmalloc(sizeof(union cfs_trace_data_union) *
+> -				num_possible_cpus(), GFP_KERNEL);
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/emxx_udc/emxx_udc.h | 40 ++++++++++++++++++-------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
-index 4a2cc38..39769e3 100644
---- a/drivers/staging/emxx_udc/emxx_udc.h
-+++ b/drivers/staging/emxx_udc/emxx_udc.h
-@@ -97,7 +97,7 @@
- #define BIT30		0x40000000
- #define BIT31		0x80000000
- 
--#define TEST_FORCE_ENABLE		(BIT18+BIT16)
-+#define TEST_FORCE_ENABLE		(BIT18 + BIT16)
- 
- #define INT_SEL				BIT10
- #define CONSTFS				BIT09
-@@ -125,15 +125,15 @@
- /*------- (0x0008) USB Address Register */
- #define USB_ADDR			0x007F0000
- #define SOF_STATUS			BIT15
--#define UFRAME				(BIT14+BIT13+BIT12)
-+#define UFRAME				(BIT14 + BIT13 + BIT12)
- #define FRAME				0x000007FF
- 
- #define USB_ADRS_SHIFT			16
- 
- /*------- (0x000C) UTMI Characteristic 1 Register */
--#define SQUSET				(BIT07+BIT06+BIT05+BIT04)
-+#define SQUSET				(BIT07 + BIT06 + BIT05 + BIT04)
- 
--#define USB_SQUSET			(BIT06+BIT05+BIT04)
-+#define USB_SQUSET			(BIT06 + BIT05 + BIT04)
- 
- /*------- (0x0010) TEST Control Register */
- #define FORCEHS				BIT02
-@@ -196,7 +196,7 @@
- #define RSUM_EN				BIT01
- 
- #define USB_INT_EN_BIT	\
--	(EP0_EN|SPEED_MODE_EN|USB_RST_EN|SPND_EN|RSUM_EN)
-+	(EP0_EN | SPEED_MODE_EN | USB_RST_EN | SPND_EN | RSUM_EN)
- 
- /*------- (0x0028) EP0 Control Register */
- #define EP0_STGSEL			BIT18
-@@ -205,9 +205,9 @@
- #define EP0_PIDCLR			BIT09
- #define EP0_BCLR			BIT08
- #define EP0_DEND			BIT07
--#define EP0_DW				(BIT06+BIT05)
-+#define EP0_DW				(BIT06 + BIT05)
- #define EP0_DW4				0
--#define EP0_DW3				(BIT06+BIT05)
-+#define EP0_DW3				(BIT06 + BIT05)
- #define EP0_DW2				BIT06
- #define EP0_DW1				BIT05
- 
-@@ -238,7 +238,7 @@
- #define STG_START_INT			BIT01
- #define SETUP_INT			BIT00
- 
--#define EP0_STATUS_RW_BIT	(BIT16|BIT15|BIT11|0xFF)
-+#define EP0_STATUS_RW_BIT	(BIT16 | BIT15 | BIT11 | 0xFF)
- 
- /*------- (0x0030) EP0 Interrupt Enable Register */
- #define EP0_PERR_NAK_EN			BIT16
-@@ -256,7 +256,7 @@
- #define SETUP_EN			BIT00
- 
- #define EP0_INT_EN_BIT	\
--	(EP0_OUT_OR_EN|EP0_OUT_EN|EP0_IN_EN|STG_END_EN|SETUP_EN)
-+	(EP0_OUT_OR_EN | EP0_OUT_EN | EP0_IN_EN | STG_END_EN | SETUP_EN)
- 
- /*------- (0x0034) EP0 Length Register */
- #define EP0_LDATA			0x0000007F
-@@ -270,7 +270,7 @@
- #define EPn_BUF_SINGLE			BIT30
- 
- #define EPn_DIR0			BIT26
--#define EPn_MODE			(BIT25+BIT24)
-+#define EPn_MODE			(BIT25 + BIT24)
- #define EPn_BULK			0
- #define EPn_INTERRUPT			BIT24
- #define EPn_ISO				BIT25
-@@ -283,9 +283,9 @@
- #define EPn_BCLR			BIT09
- #define EPn_CBCLR			BIT08
- #define EPn_DEND			BIT07
--#define EPn_DW				(BIT06+BIT05)
-+#define EPn_DW				(BIT06 + BIT05)
- #define EPn_DW4				0
--#define EPn_DW3				(BIT06+BIT05)
-+#define EPn_DW3				(BIT06 + BIT05)
- #define EPn_DW2				BIT06
- #define EPn_DW1				BIT05
- 
-@@ -324,7 +324,7 @@
- #define EPn_IN_EMPTY			BIT00		/* R */
- 
- #define EPn_INT_EN	\
--	(EPn_OUT_END_INT|EPn_OUT_INT|EPn_IN_END_INT|EPn_IN_INT)
-+	(EPn_OUT_END_INT | EPn_OUT_INT | EPn_IN_END_INT | EPn_IN_INT)
- 
- /*------- (0x0048:) EPn Interrupt Enable Register */
- #define EPn_OUT_END_EN			BIT23		/* RW */
-@@ -368,7 +368,7 @@
- #define ARBITER_CTR			BIT31		/* RW */
- #define MCYCLE_RST			BIT12		/* RW */
- 
--#define ENDIAN_CTR			(BIT09+BIT08)	/* RW */
-+#define ENDIAN_CTR			(BIT09 + BIT08)	/* RW */
- #define ENDIAN_BYTE_SWAP		BIT09
- #define ENDIAN_HALF_WORD_SWAP		ENDIAN_CTR
- 
-@@ -376,7 +376,7 @@
- #define HTRANS_MODE			BIT04		/* RW */
- 
- #define WBURST_TYPE			BIT02		/* RW */
--#define BURST_TYPE			(BIT01+BIT00)	/* RW */
-+#define BURST_TYPE			(BIT01 + BIT00)	/* RW */
- #define BURST_MAX_16			0
- #define BURST_MAX_8			BIT00
- #define BURST_MAX_4			BIT01
-@@ -412,7 +412,7 @@
- #define EPC_RST				BIT00		/* RW */
- 
- /*------- (0x1014) USBF_EPTEST Register */
--#define LINESTATE			(BIT09+BIT08)	/* R */
-+#define LINESTATE			(BIT09 + BIT08)	/* R */
- #define DM_LEVEL			BIT09		/* R */
- #define DP_LEVEL			BIT08		/* R */
- 
-@@ -485,7 +485,7 @@ struct fc_regs {
- 
- 	struct ep_regs EP_REGS[REG_EP_NUM];	/* Endpoint Register */
- 
--	u8 Reserved220[0x1000-0x220];	/* (0x0220:0x0FFF) Reserved */
-+	u8 Reserved220[0x1000 - 0x220];	/* (0x0220:0x0FFF) Reserved */
- 
- 	u32 AHBSCTR;			/* (0x1000) AHBSCTR */
- 	u32 AHBMCTR;			/* (0x1004) AHBMCTR */
-@@ -494,16 +494,16 @@ struct fc_regs {
- 	u32 EPCTR;			/* (0x1010) EPCTR */
- 	u32 USBF_EPTEST;		/* (0x1014) USBF_EPTEST */
- 
--	u8 Reserved1018[0x20-0x18];	/* (0x1018:0x101F) Reserved */
-+	u8 Reserved1018[0x20 - 0x18];	/* (0x1018:0x101F) Reserved */
- 
- 	u32 USBSSVER;			/* (0x1020) USBSSVER */
- 	u32 USBSSCONF;			/* (0x1024) USBSSCONF */
- 
--	u8 Reserved1028[0x110-0x28];	/* (0x1028:0x110F) Reserved */
-+	u8 Reserved1028[0x110 - 0x28];	/* (0x1028:0x110F) Reserved */
- 
- 	struct ep_dcr EP_DCR[REG_EP_NUM];	/* */
- 
--	u8 Reserved1200[0x1000-0x200];	/* Reserved */
-+	u8 Reserved1200[0x1000 - 0x200];	/* Reserved */
- } __aligned(32);
- 
- #define EP0_PACKETSIZE			64
--- 
-1.8.3.4
-
+We know this can't overflow, it's a static number at build time, so this
+change isn't needed.
 
