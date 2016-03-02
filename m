@@ -1,54 +1,36 @@
 X-GM-THRID: 6256035827033309184
-X-Received: by 10.13.219.80 with SMTP id d77mr22672629ywe.39.1456944542023;
-        Wed, 02 Mar 2016 10:49:02 -0800 (PST)
+X-Received: by 10.28.15.82 with SMTP id 79mr121855wmp.3.1456935940819;
+        Wed, 02 Mar 2016 08:25:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.103.240 with SMTP id y103ls3865734qge.59.gmail; Wed, 02
- Mar 2016 10:49:01 -0800 (PST)
-X-Received: by 10.140.242.214 with SMTP id n205mr22594793qhc.14.1456944541377;
-        Wed, 02 Mar 2016 10:49:01 -0800 (PST)
-Return-Path: <bounce-md_30481620.56d7359c.v1-e758264f12764125ab73801330e93f66@mandrillapp.com>
-Received: from mail177-1.suw61.mandrillapp.com (mail177-1.suw61.mandrillapp.com. [198.2.177.1])
-        by gmr-mx.google.com with ESMTPS id v197si2401810ywa.1.2016.03.02.10.49.01
+Received: by 10.25.16.75 with SMTP id f72ls544862lfi.12.gmail; Wed, 02 Mar
+ 2016 08:25:40 -0800 (PST)
+X-Received: by 10.112.205.164 with SMTP id lh4mr3131896lbc.6.1456935940304;
+        Wed, 02 Mar 2016 08:25:40 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id z75si45348wmz.2.2016.03.02.08.25.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 10:49:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of bounce-md_30481620.56d7359c.v1-e758264f12764125ab73801330e93f66@mandrillapp.com designates 198.2.177.1 as permitted sender) client-ip=198.2.177.1;
+        Wed, 02 Mar 2016 08:25:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bounce-md_30481620.56d7359c.v1-e758264f12764125ab73801330e93f66@mandrillapp.com designates 198.2.177.1 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d7359c.v1-e758264f12764125ab73801330e93f66@mandrillapp.com;
-       dkim=pass header.i=@linuxfoundation.org;
-       dkim=pass header.i=@mandrillapp.com
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
- h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
- bh=UeX82DjE86hyFIl1sHbO9k7wl48=;
- b=UEDVoyUb2kqX85TnjxfSugPzC85N7L9ly5F4B2X2+5AIBqW9BwCoWRo6BfZlM2vTPYfJKGKOb8oE
-   Or7bR+VW7jmViQLv3pcCGqs8J2nJnV1DB6JZzvg9xjT6dPpjEwl1nEqzR75+Jdkcfk57c0tnn2e9
-   lorEjPct6iIO24YM/F0=
-Received: from pmta06.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail177-1.suw61.mandrillapp.com id hqsqpq22rtks for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:49:01 +0000 (envelope-from <bounce-md_30481620.56d7359c.v1-e758264f12764125ab73801330e93f66@mandrillapp.com>)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
- i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944540; h=From : 
- Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
- MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
- Subject : Date : X-Mandrill-User : List-Unsubscribe; 
- bh=TD9VELhxRv0VkGKvKd/dysD145pzwSySka1feijCi6w=; 
- b=efQNVwCpacDvHlSQIlaxdy4+WUtXqW78JX9Tmkq7QsXTluulPXEG1zh+v6mFq4FtOV64jx
- 3OVIHh9V41VY3ARSBrvMn53IwjgjbiURcSnes9tYnfBaSI4MvraKMiiZNdq4PzOoo1xtLHkO
- DfDQTYsOPoyTiEh+dFmW3pA6TWnhA=
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id EDC8EDBA;
+	Wed,  2 Mar 2016 16:25:38 +0000 (UTC)
+Date: Wed, 2 Mar 2016 08:25:38 -0800
 From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: lnet: Replace typedef with struct
-Return-Path: <bounce-md_30481620.56d7359c.v1-e758264f12764125ab73801330e93f66@mandrillapp.com>
-Received: from [50.170.35.168] by mandrillapp.com id e758264f12764125ab73801330e93f66; Wed, 02 Mar 2016 18:49:00 +0000
 To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-Cc: <outreachy-kernel@googlegroups.com>
-Message-Id: <20160302032747.GA7744@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: lnet: Replace
+ typedef with struct
+Message-ID: <20160302162538.GG987@kroah.com>
 References: <20160227181118.GA28603@Karyakshetra>
-In-Reply-To: <20160227181118.GA28603@Karyakshetra>
-X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
-X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.e758264f12764125ab73801330e93f66
-X-Mandrill-User: md_30481620
-Date: Wed, 02 Mar 2016 18:49:00 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160227181118.GA28603@Karyakshetra>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
 On Sat, Feb 27, 2016 at 11:41:18PM +0530, Bhaktipriya Shridhar wrote:
 > As per the Linux kernel coding style guidelines, using typedef for a structure
@@ -108,4 +90,5 @@ On Sat, Feb 27, 2016 at 11:41:18PM +0530, Bhaktipriya Shridhar wrote:
 > +struct lst_ping_data_t {
 
 Don't put "_t" at the end of a typedef :(
+
 
