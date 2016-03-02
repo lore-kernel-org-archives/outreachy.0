@@ -1,58 +1,36 @@
 X-GM-THRID: 6256045581066567680
-X-Received: by 10.182.53.233 with SMTP id e9mr22417159obp.28.1456944534475;
-        Wed, 02 Mar 2016 10:48:54 -0800 (PST)
+X-Received: by 10.25.31.81 with SMTP id f78mr1722016lff.7.1456935942801;
+        Wed, 02 Mar 2016 08:25:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.94.194 with SMTP id g60ls3988261qge.52.gmail; Wed, 02 Mar
- 2016 10:48:53 -0800 (PST)
-X-Received: by 10.140.88.139 with SMTP id t11mr4006423qgd.21.1456944533772;
-        Wed, 02 Mar 2016 10:48:53 -0800 (PST)
-Return-Path: <bounce-md_30481620.56d73595.v1-a76a24574c1947938fb478d4d4e42703@mandrillapp.com>
-Received: from mail333.us4.mandrillapp.com (mail333.us4.mandrillapp.com. [205.201.137.77])
-        by gmr-mx.google.com with ESMTPS id g136si2149110ywb.5.2016.03.02.10.48.53
+Received: by 10.28.20.8 with SMTP id 8ls441585wmu.5.gmail; Wed, 02 Mar 2016
+ 08:25:42 -0800 (PST)
+X-Received: by 10.28.63.19 with SMTP id m19mr130571wma.0.1456935942431;
+        Wed, 02 Mar 2016 08:25:42 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id c140si250100wmh.1.2016.03.02.08.25.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 10:48:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of bounce-md_30481620.56d73595.v1-a76a24574c1947938fb478d4d4e42703@mandrillapp.com designates 205.201.137.77 as permitted sender) client-ip=205.201.137.77;
+        Wed, 02 Mar 2016 08:25:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bounce-md_30481620.56d73595.v1-a76a24574c1947938fb478d4d4e42703@mandrillapp.com designates 205.201.137.77 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d73595.v1-a76a24574c1947938fb478d4d4e42703@mandrillapp.com;
-       dkim=pass header.i=@linuxfoundation.org;
-       dkim=pass header.i=@mandrillapp.com
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
- h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
- bh=Fz5DXSg9lQvUzxXF7XpLCYo6Ln8=;
- b=RnZ9Wfhwa/cNDAFV5LvO9c3GU5QnhGzMpYVoGZnbnFdKQyNreFLy6OQo5NmRwWRMQPV02UC71erG
-   fA66mKQCx6FflLynkCQdYSuQZPmHnagq1h4FWm4i0Rs6llG5jNCMCjMStowdQ1zhXLGG5Kcjl9SJ
-   dZu154LtMeJPxj5FUU8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
- b=ZQXH3cto1tcfae+eibuvBRlYdCnEWlIt9m7OD1CCjf4eueeHelQpS5Usmv/2NVT4kRjtzZD9h4Eb
-   iq9zPdUtLh2YxeAewNjxzF/ZJmqygU4w2tNGPZVQ5S6WvGdFqvUwoiBq1VKnSge6zogXveoPZmsV
-   +4dLfrY2AAXgKsTUYEQ=;
-Received: from pmta03.dal05.mailchimp.com (127.0.0.1) by mail333.us4.mandrillapp.com id hqsqpa174noj for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:48:53 +0000 (envelope-from <bounce-md_30481620.56d73595.v1-a76a24574c1947938fb478d4d4e42703@mandrillapp.com>)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
- i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944533; h=From : 
- Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
- MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
- Subject : Date : X-Mandrill-User : List-Unsubscribe; 
- bh=D4oxisk7ihsNV1xUle7+LVRrQVB7sSB1W/5Q1s7Xssc=; 
- b=LO7RJHYQOHK5HAw5EmIdXWKGDMfAyhMZrWHDE2pO+uxu2zVqGAfohZZrxxhqm0jDL37xT3
- uplFFedlnLJuBWX6DbYXBJrmkenOYfW/H/19FegWBB1hEyIKaeQ6vMLrujEcRYpSoO4MqKwf
- W3jX9GlzS8b4vgigbDSDtjAUAhDpY=
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 1B223DBA;
+	Wed,  2 Mar 2016 16:25:41 +0000 (UTC)
+Date: Wed, 2 Mar 2016 08:25:40 -0800
 From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: mgc: Bool tests do not need comparison
-Return-Path: <bounce-md_30481620.56d73595.v1-a76a24574c1947938fb478d4d4e42703@mandrillapp.com>
-Received: from [50.170.35.168] by mandrillapp.com id a76a24574c1947938fb478d4d4e42703; Wed, 02 Mar 2016 18:48:53 +0000
 To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-Cc: <outreachy-kernel@googlegroups.com>
-Message-Id: <20160302032952.GA14645@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: lustre: mgc: Bool tests
+ do not need comparison
+Message-ID: <20160302162540.GH987@kroah.com>
 References: <20160227184909.GA2991@Karyakshetra>
-In-Reply-To: <20160227184909.GA2991@Karyakshetra>
-X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
-X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.a76a24574c1947938fb478d4d4e42703
-X-Mandrill-User: md_30481620
-Date: Wed, 02 Mar 2016 18:48:53 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160227184909.GA2991@Karyakshetra>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
 On Sun, Feb 28, 2016 at 12:19:09AM +0530, Bhaktipriya Shridhar wrote:
 > Bool initializations should use true and false thus bool tests don't
