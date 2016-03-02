@@ -1,125 +1,92 @@
 X-GM-THRID: 6256340731045085184
-X-Received: by 10.98.42.67 with SMTP id q64mr20854581pfq.9.1457446502628;
-        Tue, 08 Mar 2016 06:15:02 -0800 (PST)
+X-Received: by 10.107.132.73 with SMTP id g70mr28356464iod.4.1456944530369;
+        Wed, 02 Mar 2016 10:48:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.19.162 with SMTP id g2ls158129obe.63.gmail; Tue, 08 Mar
- 2016 06:15:02 -0800 (PST)
-X-Received: by 10.182.53.233 with SMTP id e9mr21014578obp.28.1457446502122;
-        Tue, 08 Mar 2016 06:15:02 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id y20si501417pfa.2.2016.03.08.06.15.02
+Received: by 10.140.104.13 with SMTP id z13ls3837017qge.36.gmail; Wed, 02 Mar
+ 2016 10:48:49 -0800 (PST)
+X-Received: by 10.129.41.70 with SMTP id p67mr22387904ywp.33.1456944529715;
+        Wed, 02 Mar 2016 10:48:49 -0800 (PST)
+Return-Path: <bounce-md_30481620.56d73591.v1-4e9f522662dc45e7bb3635edb9e64113@mandrillapp.com>
+Received: from mail333.us4.mandrillapp.com (mail333.us4.mandrillapp.com. [205.201.137.77])
+        by gmr-mx.google.com with ESMTPS id w126si2129233ywe.6.2016.03.02.10.48.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 06:15:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Wed, 02 Mar 2016 10:48:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30481620.56d73591.v1-4e9f522662dc45e7bb3635edb9e64113@mandrillapp.com designates 205.201.137.77 as permitted sender) client-ip=205.201.137.77;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id hj7so1254898pac.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 06:15:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=oud56U+ghvjmTQ5NoXadaNNjMhi3HWGaOUw5fryTd58=;
-        b=0ogHOSiSZDSQvt8RU48N/BLwAyEgu5lJxDTxJSlqcNNd77ty3ZhNxMJZGHp2Gmw879
-         uWNKgN3fM9hTSpELbUxIikqC7ekggkH1eoKWj3NPZlAQgzyKVAwAZHhI/bNbgYrL6N2c
-         j4hCa20ZPQnbQxZF1PzLd6srNVEJGhcmRh8VlUbu/LAQgwJvOBhy9bmkP2ver3MFpYm+
-         okAgKQeUrDGpnnLY8cevB6re6vNCNOgl11oICca2gzJzTRnLpNVzPx5UOX0ittIeltsN
-         dQfVmZTJwkyYtOfYCWydy6Cn5P3BRt/HCkLvLRFQQYemot+/j6/RUl/NvQ7ee6oIh/0S
-         XT5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=oud56U+ghvjmTQ5NoXadaNNjMhi3HWGaOUw5fryTd58=;
-        b=Naqwfs1CcM2NuNOmvAuRW38LN2DFHpNJScGOYJ0r3iRwP4YtCdZekaE3vJ7arALnJs
-         HyFKXR3XjEhRXmlKdKz3t9Xd6kSDUknEiV0jgfCIdWYvwXDVuaus2+qx+HQ5OAklHCB5
-         PK6Y81f5Sx0YlOdDL6L/VS67VGn4WjGMyZywnRWqcFue8dK1z3dmo8JYxQ6D6LUWAHN7
-         fmtbdNdrtAfCSHO6axPt+/IENEo1mrysm2fwbDlvrX8W8a5smzDAes+d419FE7KksVhl
-         XsCHNld+16xumS7p98oi2IUV1DGSk55mMdT6PJ8aTs89YosB7OB6WXqppRfD3Kd5WdHt
-         5LFA==
-X-Gm-Message-State: AD7BkJK1UfFBbtiVgbM2UrsZvMu/Ag4tiROl3KPnwkpEgBIa4BiToHYQw4jLYkaDhPuU/Q==
-X-Received: by 10.66.248.168 with SMTP id yn8mr41726796pac.24.1457446501957;
-        Tue, 08 Mar 2016 06:15:01 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 27sm5435260pfo.58.2016.03.08.06.15.00
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 06:15:01 -0800 (PST)
-Date: Tue, 8 Mar 2016 19:32:48 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: lustre: obdclass: Use list_for_each_entry_safe
-Message-ID: <20160308140248.GA29844@Karyakshetra>
+       spf=pass (google.com: domain of bounce-md_30481620.56d73591.v1-4e9f522662dc45e7bb3635edb9e64113@mandrillapp.com designates 205.201.137.77 as permitted sender) smtp.mailfrom=bounce-md_30481620.56d73591.v1-4e9f522662dc45e7bb3635edb9e64113@mandrillapp.com;
+       dkim=pass header.i=@linuxfoundation.org;
+       dkim=pass header.i=@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mandrill; d=linuxfoundation.org;
+ h=From:Subject:To:Cc:Message-Id:References:In-Reply-To:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=gregkh@linuxfoundation.org;
+ bh=il07HjB01uIkMwko/UY95XRIg9E=;
+ b=UnPqb9f5FQQJ6rz26gdGMPqE323cDeETZ5Zc58G2lytdmPQZxYCwv9Y9Kn8ABEJg0nbe93TMI24l
+   XZL0+1sKx86pEm/RVYjJdGt0+WD0fK1sTXnnkjhJwJk1KaHjP5mOseIozTpJwdObxmOKouIS/C4t
+   ApVOVd97nW6LMoo1JDk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mandrill; d=linuxfoundation.org;
+ b=ELBHTuPM35npg5yoVapxPlivQiyvwauxEVNcfJwBPfhgc1sFbNb6ZzgNJtEKCU+eIIKMxTMskV8q
+   1JvLN2OgsZrEgh5sTh4bE5zgsGio8jeRWCRZTxHJAgqJIx/CTiBnQOagvoYxhnLoUImLWe8uXE4f
+   XrSnGjg7STFt/Q9y2dM=;
+Received: from pmta03.dal05.mailchimp.com (127.0.0.1) by mail333.us4.mandrillapp.com id hqsqp2174nor for <outreachy-kernel@googlegroups.com>; Wed, 2 Mar 2016 18:48:49 +0000 (envelope-from <bounce-md_30481620.56d73591.v1-4e9f522662dc45e7bb3635edb9e64113@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1456944529; h=From : 
+ Subject : To : Cc : Message-Id : References : In-Reply-To : Date : 
+ MIME-Version : Content-Type : Content-Transfer-Encoding : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=N3gW9BAVVeOiTndaO4Unz0nkjUWGjqnrvUkK/vQ+UOw=; 
+ b=GZ5AYyVZEFQX465M6S05PFuSU3obq20QcSdti4H7swKaelHiNr6Gu6oCyKql6FKg2mxchK
+ ve6xQ2Y38+68/xkyFFUN/1RZ0bdQ8uofH79fZtBZYCsvFCxPoL+xG2Oh9Mnx6iiQlXwxRG2G
+ QkLQuYn6p5H/W4HennqnZ+J121COY=
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: obdclass: Use list_for_each_entry_safe
+Return-Path: <bounce-md_30481620.56d73591.v1-4e9f522662dc45e7bb3635edb9e64113@mandrillapp.com>
+Received: from [50.170.35.168] by mandrillapp.com id 4e9f522662dc45e7bb3635edb9e64113; Wed, 02 Mar 2016 18:48:49 +0000
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: <outreachy-kernel@googlegroups.com>
+Message-Id: <20160302032430.GA29474@kroah.com>
+References: <20160228135431.GA18987@Karyakshetra>
+In-Reply-To: <20160228135431.GA18987@Karyakshetra>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30481620.4e9f522662dc45e7bb3635edb9e64113
+X-Mandrill-User: md_30481620
+Date: Wed, 02 Mar 2016 18:48:49 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+On Sun, Feb 28, 2016 at 07:24:31PM +0530, Bhaktipriya Shridhar wrote:
+> Doubly linked lists which are  iterated  using list_empty
+> and list_entry macros have been replaced with list_for_each_entry_safe
+> macro.
+> This makes the iteration simpler and more readable.
+> 
+> This patch replaces the while loop containing list_empty and list_entry
+> with list_for_each_entry_safe.
+> 
+> This was done with Coccinelle.
+> 
+> @@
+> expression E1;
+> identifier I1, I2;
+> type T;
+> iterator name list_for_each_entry_safe;
+> @@
+> 
+> T *I1;
+> + T *tmp;
+> ...
+> - while (list_empty(&E1) == 0)
+> + list_for_each_entry_safe (I1, tmp, &E1, I2)
+> {
+> ...when != T *I1;
+> - I1 = list_entry(E1.next, T, I2);
+> ...
+> }
+> 
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/obdclass/lustre_peer.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
-
-This was done with Coccinelle.
-
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
-
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- Changes in v2:
-	-No change
-
- drivers/staging/lustre/lustre/obdclass/lustre_peer.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/obdclass/lustre_peer.c b/drivers/staging/lustre/lustre/obdclass/lustre_peer.c
-index 5c38c83..5f81246 100644
---- a/drivers/staging/lustre/lustre/obdclass/lustre_peer.c
-+++ b/drivers/staging/lustre/lustre/obdclass/lustre_peer.c
-@@ -150,6 +150,7 @@ int class_del_uuid(const char *uuid)
- {
- 	LIST_HEAD(deathrow);
- 	struct uuid_nid_data *data;
-+	struct uuid_nid_data *temp;
-
- 	spin_lock(&g_uuid_lock);
- 	if (uuid) {
-@@ -171,9 +172,7 @@ int class_del_uuid(const char *uuid)
- 		return -EINVAL;
- 	}
-
--	while (!list_empty(&deathrow)) {
--		data = list_entry(deathrow.next, struct uuid_nid_data,
--				  un_list);
-+	list_for_each_entry_safe(data, temp, &deathrow, un_list) {
- 		list_del(&data->un_list);
-
- 		CDEBUG(D_INFO, "del uuid %s %s/%d\n",
---
-2.1.4
-
+Does not apply to the tree :(
 
