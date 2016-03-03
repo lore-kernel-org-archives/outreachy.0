@@ -1,97 +1,133 @@
 X-GM-THRID: 6257896431456092160
-X-Received: by 10.182.91.9 with SMTP id ca9mr4093054obb.7.1457054771871;
-        Thu, 03 Mar 2016 17:26:11 -0800 (PST)
+X-Received: by 10.194.62.69 with SMTP id w5mr637955wjr.5.1457034856164;
+        Thu, 03 Mar 2016 11:54:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.150.19 with SMTP id y19ls71372iod.105.gmail; Thu, 03 Mar
- 2016 17:26:11 -0800 (PST)
-X-Received: by 10.66.160.9 with SMTP id xg9mr4007594pab.38.1457054771372;
-        Thu, 03 Mar 2016 17:26:11 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x22c.google.com (mail-pf0-x22c.google.com. [2607:f8b0:400e:c00::22c])
-        by gmr-mx.google.com with ESMTPS id y20si468913pfa.2.2016.03.03.17.26.11
+Received: by 10.28.48.145 with SMTP id w139ls5352wmw.29.gmail; Thu, 03 Mar
+ 2016 11:54:14 -0800 (PST)
+X-Received: by 10.194.84.40 with SMTP id v8mr640949wjy.2.1457034854124;
+        Thu, 03 Mar 2016 11:54:14 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 71si175670wmp.0.2016.03.03.11.54.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Mar 2016 17:26:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) client-ip=2607:f8b0:400e:c00::22c;
+        Thu, 03 Mar 2016 11:54:14 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22c.google.com with SMTP id 4so25162148pfd.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 03 Mar 2016 17:26:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=u+ujKI0rMSKte4IsZNZQDy3fYsO8eoOI29/VGmOuORE=;
-        b=ccmuKP9MI5EPqcm68aVzzjE/WxEbaUvMkZAVTO2fheHAt+gA8qsL/VCVTckTRkPiun
-         y+qZv5RMY1ao30lJDXHATHuIrQCUt8wudmtV8iBj8i0cKbBMOH62D8VuCIHtXNr3M+Gq
-         wwoaAfbFAXseCW9IWkh2dtBQTrX+W7FFaYFxdLbqoiI2HFJexsFPdyi+hkGwF8FCv9qk
-         9f8m+RMaY8jaRLhIji+CvEDy41Kki595/A4/YGwnrmXKU3hfl6ki5eWb2Yp0H+wy9Kw9
-         T3SvLNchpMMrMYnBM/f7Cgkp+/GSeXL5F2FXoQAgTJqRx+f+j5MJjnD4s9+/08rC9Mly
-         lNZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
-         :references;
-        bh=u+ujKI0rMSKte4IsZNZQDy3fYsO8eoOI29/VGmOuORE=;
-        b=bvNEZ/KgThx+04pFKUIZY6hQvB7lSAQQm12Fs0InlCoYmCG0A0e+n3pkD0XLG7VL88
-         WP1xAOslfr9pXKTGrnczQ9YE4PcZtJlFUKcF9oQQePrC81NY7B+3ZUQqXqxXb6R5xNNz
-         zCqiD+DJhFl4LQ3vujhTYBMP96FcCnETjasCuepgd8M3GT+4lh3rAyFErntYRGa6GD67
-         rygi74CSU1QcUUgrgmpyxHPzGuM9OTqJRdqJIGYq2wB+kcX7N/8+HVyPlDvS38sPz/DY
-         dLE+BDm3359hvff9SCF7ktySU15020lU3KFlGzG1GG+gbms9NAcM23UojN/mSbe5vgnv
-         /5rg==
-X-Gm-Message-State: AD7BkJL2qIaXTAFOCl4sb8SodRljIDTt/9pyjNvY9uDZaKMzQObKkNW8NXElM7GawpxEbg==
-X-Received: by 10.98.16.70 with SMTP id y67mr8193310pfi.166.1457054771197;
-        Thu, 03 Mar 2016 17:26:11 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from localhost.localdomain (or-67-232-68-68.dhcp.embarqhsd.net. [67.232.68.68])
-        by smtp.gmail.com with ESMTPSA id 9sm915437pft.44.2016.03.03.17.26.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 03 Mar 2016 17:26:10 -0800 (PST)
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: fbtft: Do not use same argument more than once in bit operation.
-Date: Thu,  3 Mar 2016 17:26:02 -0800
-Message-Id: <1457054762-3682-1-git-send-email-amsfield22@gmail.com>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <alpine.DEB.2.02.1603032053480.2061@localhost6.localdomain6>
-References: <alpine.DEB.2.02.1603032053480.2061@localhost6.localdomain6>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,533,1449529200"; 
+   d="scan'208";a="166839868"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 03 Mar 2016 20:54:12 +0100
+Date: Thu, 3 Mar 2016 20:54:11 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: fbtft: Do not use same
+ argument more than once in bit operation.
+In-Reply-To: <20160303103355.GA5375@sandhya>
+Message-ID: <alpine.DEB.2.02.1603032053480.2061@localhost6.localdomain6>
+References: <20160303103355.GA5375@sandhya>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The reason may be that author is trying to
-to explicitly reflect the register settings.
 
-Considering this code...
 
-static int init_display(struct fbtft_par *par)
-{
-.................snip........................
+On Thu, 3 Mar 2016, Sandhya Bankar wrote:
 
-	/* Set temperature compensation */
-        write_reg(par, 0x24 | (temp & 0x03));
+> Do not use same argument more than once in bit operation.
 
-        /* Set panel loading */
-        write_reg(par, 0x28 | (load & 0x03));
+These look so useless that there could be a reason for them.
 
-        /* Set pump control */
-        write_reg(par, 0x2C | (pump & 0x03));
+julia
 
-        /* Set inverse display */
-        write_reg(par, 0xA6 | (0x01 & 0x01));
-
-        /* Set 4-bit grayscale mode */
-        write_reg(par, 0xD0 | (0x02 & 0x03));
-
-In the first 3 commands temp,load,pump are vars &'d with a mask.
-In the last 2 commands 0x01 and 0x02 are hardcoded values &'d with a mask.
-Sometimes that hardcoded value just happens to be the same as its mask.
-I might even guess that this author knew it was redundant, but
-that the compiler would reduce all of that for him anyway.
-
-you can see the register definitions here if you want to get to
-very bottom of this ;)
-http://lcdhype.condense.de/index.php?act=Attach&type=post&id=6112&index=0
-
-I wonder if it is better to define all those hardcode values for even
-more clarity.
-
+> 
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/fbtft/fb_uc1611.c | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
+> index 4e82814..bffe694 100644
+> --- a/drivers/staging/fbtft/fb_uc1611.c
+> +++ b/drivers/staging/fbtft/fb_uc1611.c
+> @@ -100,7 +100,7 @@ static int init_display(struct fbtft_par *par)
+>  	write_reg(par, 0x2C | (pump & 0x03));
+>  
+>  	/* Set inverse display */
+> -	write_reg(par, 0xA6 | (0x01 & 0x01));
+> +	write_reg(par, 0xA6 | 0x01);
+>  
+>  	/* Set 4-bit grayscale mode */
+>  	write_reg(par, 0xD0 | (0x02 & 0x03));
+> @@ -166,8 +166,8 @@ static int set_var(struct fbtft_par *par)
+>  		/* Set RAM address control */
+>  		write_reg(par, 0x88
+>  			| (0x0 & 0x1) << 2 /* Increment positively */
+> -			| (0x1 & 0x1) << 1 /* Increment page first */
+> -			| (0x1 & 0x1));    /* Wrap around (default) */
+> +			| (0x1 << 1) /* Increment page first */
+> +			| 0x1);    /* Wrap around (default) */
+>  
+>  		/* Set LCD mapping */
+>  		write_reg(par, 0xC0
+> @@ -180,11 +180,11 @@ static int set_var(struct fbtft_par *par)
+>  		write_reg(par, 0x88
+>  			| (0x0 & 0x1) << 2 /* Increment positively */
+>  			| (0x0 & 0x1) << 1 /* Increment column first */
+> -			| (0x1 & 0x1));    /* Wrap around (default) */
+> +			| 0x1);    /* Wrap around (default) */
+>  
+>  		/* Set LCD mapping */
+>  		write_reg(par, 0xC0
+> -			| (0x1 & 0x1) << 2 /* Mirror Y ON */
+> +			| (0x1 << 2) /* Mirror Y ON */
+>  			| (0x0 & 0x1) << 1 /* Mirror X OFF */
+>  			| (0x0 & 0x1));    /* MS nibble last (default) */
+>  		break;
+> @@ -192,13 +192,13 @@ static int set_var(struct fbtft_par *par)
+>  		/* Set RAM address control */
+>  		write_reg(par, 0x88
+>  			| (0x0 & 0x1) << 2 /* Increment positively */
+> -			| (0x1 & 0x1) << 1 /* Increment page first */
+> -			| (0x1 & 0x1));    /* Wrap around (default) */
+> +			| (0x1 << 1) /* Increment page first */
+> +			| 0x1);    /* Wrap around (default) */
+>  
+>  		/* Set LCD mapping */
+>  		write_reg(par, 0xC0
+> -			| (0x1 & 0x1) << 2 /* Mirror Y ON */
+> -			| (0x1 & 0x1) << 1 /* Mirror X ON */
+> +			| (0x1 << 2) /* Mirror Y ON */
+> +			| (0x1 << 1) /* Mirror X ON */
+>  			| (0x0 & 0x1));    /* MS nibble last (default) */
+>  		break;
+>  	default:
+> @@ -206,12 +206,12 @@ static int set_var(struct fbtft_par *par)
+>  		write_reg(par, 0x88
+>  			| (0x0 & 0x1) << 2 /* Increment positively */
+>  			| (0x0 & 0x1) << 1 /* Increment column first */
+> -			| (0x1 & 0x1));    /* Wrap around (default) */
+> +			| 0x1);    /* Wrap around (default) */
+>  
+>  		/* Set LCD mapping */
+>  		write_reg(par, 0xC0
+>  			| (0x0 & 0x1) << 2 /* Mirror Y OFF */
+> -			| (0x1 & 0x1) << 1 /* Mirror X ON */
+> +			| (0x1 << 1) /* Mirror X ON */
+>  			| (0x0 & 0x1));    /* MS nibble last (default) */
+>  		break;
+>  	}
+> -- 
+> 1.8.3.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160303103355.GA5375%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
