@@ -1,72 +1,130 @@
-X-GM-THRID: 6209878523959574528
-X-Received: by 10.112.173.170 with SMTP id bl10mr8044213lbc.7.1445850013191;
-        Mon, 26 Oct 2015 02:00:13 -0700 (PDT)
+X-GM-THRID: 6258243445600550912
+X-Received: by 10.140.27.180 with SMTP id 49mr6585839qgx.19.1457110849719;
+        Fri, 04 Mar 2016 09:00:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.145.73 with SMTP id t70ls85459lfd.107.gmail; Mon, 26 Oct
- 2015 02:00:12 -0700 (PDT)
-X-Received: by 10.112.132.10 with SMTP id oq10mr7917308lbb.1.1445850012396;
-        Mon, 26 Oct 2015 02:00:12 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id cm6si667061wib.1.2015.10.26.02.00.12
+Received: by 10.182.130.229 with SMTP id oh5ls218569obb.74.gmail; Fri, 04 Mar
+ 2016 09:00:49 -0800 (PST)
+X-Received: by 10.182.220.132 with SMTP id pw4mr6556733obc.4.1457110849023;
+        Fri, 04 Mar 2016 09:00:49 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
+        by gmr-mx.google.com with ESMTPS id ui7si1542127pab.0.2016.03.04.09.00.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Oct 2015 02:00:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 04 Mar 2016 09:00:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id ll6so101686854wic.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2015 02:00:12 -0700 (PDT)
+Received: by mail-pf0-x22b.google.com with SMTP id x188so14556392pfb.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 09:00:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=RZFu9L4EYyDPCzmgJLbFs3NXXXaims+Lie0chTvmyN0=;
-        b=D9FnPGhOeqosXbI5mMduABNNSdZCAnXx6V1ZPQ6ljWBOXGEdt4lYC3MmX2yJ8kpoUX
-         gERSWfVY0R68WvjqX0o4+B8NgzPIbyT8fZJyQkPVKWLIXEtRlu93V2rakSWZH9a+TFCd
-         aZXqn9UpIbYk0fWljD2LKzWB34YD3MZ0o3D5w0dgD41os8wQ1A5Bunvq93hGPHkojtVw
-         sv7HSuS0No8v0eLcfuUl12c7zKfWqHbtZ2IuA5WrN9YKiFWmoOmp7tgbhwLcPb+iE1cJ
-         tDy2updWgqck5NVWfC2gBTC0cYJhCvPmDWIiK2fSte3kFgsheel+XtEC4i834hDuZtJ1
-         QXuQ==
-X-Received: by 10.194.77.146 with SMTP id s18mr22947406wjw.122.1445850012186;
-        Mon, 26 Oct 2015 02:00:12 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from kripton.comu.edu.tr ([193.255.97.44])
-        by smtp.gmail.com with ESMTPSA id p4sm13056944wia.15.2015.10.26.02.00.11
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 26 Oct 2015 02:00:11 -0700 (PDT)
-From: Burcin Akalin <brcnakalin@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=TZsU+BpzLwW9na6L8q4Mff5T64Se7jRjSbdQiLiLiyc=;
+        b=UhECXcuUuQFSDbEiatVDUQWFBYXPwuFbt2bXZ4GRCzb+PP5V+gJhUIV6UTG8tJfMnD
+         pF+5YqLtZ5Byt57FdldpJhq7ALrKZuzDQDatvClSYrWAsAZUyHyNSyLpHwO2FyQNpEEU
+         zWKIsNekUmwxDve5VmwSn0l2p1qoTlA65mILBBEiYd28x66Eg7+tDJqhNGn1UaE2A7UD
+         H1WbXWh8o99AVuTC+9Ajh3V4Q8sEOZrH2dpVzZSzzn5sVJsumL7ZeT1aVRCyahYUrwJe
+         0Ayno6QLJStpuLhqVgA7u8neIALhxpqGjETODx50vokW06SscsDveJdbBmWT32Q7WjgJ
+         rJeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=TZsU+BpzLwW9na6L8q4Mff5T64Se7jRjSbdQiLiLiyc=;
+        b=VVx5CjxgphG2a0AbKbzLY4Ocj50IjQLWgHnFrdFupEHAeuX8QXQUKG8CIBBPZXemjC
+         8rZupRYsjyZOkXF69xvQlTGn30Lt0hQhvdMzkZcB3qPkWL35rhL+JcepyCBGpSIucOcx
+         DTuuAcLwCNZFAZCzEbqHuPuthiEaRNeEGdhVzPzjMXVyTqAqNh+E6fSeGxDMEn/+hqeb
+         c24H0DU+q4y0dq77yUxxvIhzaohYA5L+Q/Nn0xp9t+ry/JjE3xdnDYHmQZVrv8NOrs4e
+         eq2+I2xxP01PkpEvRFyK8NEifF+uSluDeuM3Tg3srjDHZd51C1hyBkyamWkiOItF/Yrs
+         dILQ==
+X-Gm-Message-State: AD7BkJJ0FQAsWNHGyjW4d2eJTl9oDbTRBQSriUrbIYD2ySXLfZlyuzw9Y8kqAjDB+/2isw==
+X-Received: by 10.98.75.138 with SMTP id d10mr13762868pfj.108.1457110848798;
+        Fri, 04 Mar 2016 09:00:48 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.77.50.199])
+        by smtp.gmail.com with ESMTPSA id g85sm6776875pfj.13.2016.03.04.09.00.46
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 04 Mar 2016 09:00:47 -0800 (PST)
+Date: Fri, 4 Mar 2016 22:30:43 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Burcin Akalin <brcnakalin@gmail.com>
-Subject: [PATCH 1/2] staging: vt6656: Add space around '|'
-Date: Mon, 26 Oct 2015 12:00:03 +0300
-Message-Id: <1445850004-6885-1-git-send-email-brcnakalin@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: rdma: hfi1: Replace ALIGN with PAGE_ALIGN
+Message-ID: <20160304170043.GA24655@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Add space around operator '|'. Problem found using
-checkpatch.pl
-CHECK: spaces preferred around that '|' (ctx:VxV)
+mm.h contains a helper function PAGE_ALIGN which aligns the pointer
+to the page boundary instead of using ALIGN(expression, PAGE_SIZE)
 
-Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
+This change was made with the help of the following Coccinelle
+semantic patch:
+//<smpl>
+@@
+expression e;
+symbol PAGE_SIZE;
+@@
+(
+- ALIGN(e, PAGE_SIZE)
++ PAGE_ALIGN(e)
+|
+- IS_ALIGNED(e, PAGE_SIZE)
++ PAGE_ALIGNED(e)
+)
+//</smpl>
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/vt6656/card.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rdma/hfi1/init.c      | 8 ++++----
+ drivers/staging/rdma/hfi1/user_sdma.c | 3 +--
+ 2 files changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index a215563..1301fbf 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -82,7 +82,7 @@ void vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
- 					connection_channel, 0, 0, NULL);
+diff --git a/drivers/staging/rdma/hfi1/init.c b/drivers/staging/rdma/hfi1/init.c
+index 3107103..02df291 100644
+--- a/drivers/staging/rdma/hfi1/init.c
++++ b/drivers/staging/rdma/hfi1/init.c
+@@ -735,8 +735,8 @@ int hfi1_init(struct hfi1_devdata *dd, int reinit)
+ 		ret = lastfail;
  
- 	vnt_control_out_u8(priv, MESSAGE_REQUEST_MACREG, MAC_REG_CHANNEL,
--		(u8)(connection_channel|0x80));
-+		(u8)(connection_channel | 0x80));
- }
+ 	/* Allocate enough memory for user event notification. */
+-	len = ALIGN(dd->chip_rcv_contexts * HFI1_MAX_SHARED_CTXTS *
+-		    sizeof(*dd->events), PAGE_SIZE);
++	len = PAGE_ALIGN(dd->chip_rcv_contexts * HFI1_MAX_SHARED_CTXTS *
++			 sizeof(*dd->events));
+ 	dd->events = vmalloc_user(len);
+ 	if (!dd->events)
+ 		dd_dev_err(dd, "Failed to allocate user events page\n");
+@@ -1505,8 +1505,8 @@ int hfi1_create_rcvhdrq(struct hfi1_devdata *dd, struct hfi1_ctxtdata *rcd)
+ 		 * rcvhdrqentsize is in DWs, so we have to convert to bytes
+ 		 * (* sizeof(u32)).
+ 		 */
+-		amt = ALIGN(rcd->rcvhdrq_cnt * rcd->rcvhdrqentsize *
+-			    sizeof(u32), PAGE_SIZE);
++		amt = PAGE_ALIGN(rcd->rcvhdrq_cnt * rcd->rcvhdrqentsize *
++				 sizeof(u32));
  
- /*
+ 		gfp_flags = (rcd->ctxt >= dd->first_user_ctxt) ?
+ 			GFP_USER : GFP_KERNEL;
+diff --git a/drivers/staging/rdma/hfi1/user_sdma.c b/drivers/staging/rdma/hfi1/user_sdma.c
+index 2f48419..8699b22 100644
+--- a/drivers/staging/rdma/hfi1/user_sdma.c
++++ b/drivers/staging/rdma/hfi1/user_sdma.c
+@@ -413,8 +413,7 @@ int hfi1_user_sdma_alloc_queues(struct hfi1_ctxtdata *uctxt, struct file *fp)
+ 	if (!cq)
+ 		goto cq_nomem;
+ 
+-	memsize = ALIGN(sizeof(*cq->comps) * hfi1_sdma_comp_ring_size,
+-			PAGE_SIZE);
++	memsize = PAGE_ALIGN(sizeof(*cq->comps) * hfi1_sdma_comp_ring_size);
+ 	cq->comps = vmalloc_user(memsize);
+ 	if (!cq->comps)
+ 		goto cq_comps_nomem;
 -- 
 1.9.1
 
