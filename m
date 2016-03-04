@@ -1,106 +1,153 @@
-X-GM-THRID: 6212524392435417088
-X-Received: by 10.50.30.37 with SMTP id p5mr10673778igh.11.1446466053206;
-        Mon, 02 Nov 2015 04:07:33 -0800 (PST)
+X-GM-THRID: 6258193007234777088
+X-Received: by 10.182.112.193 with SMTP id is1mr5842326obb.38.1457099105725;
+        Fri, 04 Mar 2016 05:45:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.26.72 with SMTP id a69ls1285733ioa.108.gmail; Mon, 02 Nov
- 2015 04:07:32 -0800 (PST)
-X-Received: by 10.107.162.2 with SMTP id l2mr19334710ioe.26.1446466052867;
-        Mon, 02 Nov 2015 04:07:32 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id el2si1964259pbb.0.2015.11.02.04.07.32
+Received: by 10.50.153.111 with SMTP id vf15ls220525igb.7.gmail; Fri, 04 Mar
+ 2016 05:45:05 -0800 (PST)
+X-Received: by 10.66.228.102 with SMTP id sh6mr5718138pac.12.1457099104965;
+        Fri, 04 Mar 2016 05:45:04 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
+        by gmr-mx.google.com with ESMTPS id y20si1317783pfa.2.2016.03.04.05.45.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Nov 2015 04:07:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 04 Mar 2016 05:45:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id z6so147589549pas.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Nov 2015 04:07:32 -0800 (PST)
+Received: by mail-pf0-x230.google.com with SMTP id 124so35956499pfg.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 05:45:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=05ST3NVFz/yY7bGcuHcjrVvG8D8d5J0CK2XoiLF7qCU=;
-        b=vCnB25yrw/RcXUWcdfrKSwIqYcE7QKWvyA2ePfXQNFI3DoaeVfCN2AN3VeXNahKXHC
-         ohFhiAMHvaKjme1uNrrb9KZZFbIbd4Wmk8QunjKk97h82hHhA45g0e3xc5MuVtqRtrS3
-         KzPun2kbsxS33hvq3/zZSmbFZrKq/hpcuxkExis6zXARz6jyg0sbL+u8ad5qYlRPDPWv
-         APSK5DAo67Hfk2BGVMFNJD36K9eZf0jk2Q6LckOnD6Ttm4IkA4ZZejL4T/mLJuCZFpBn
-         vEf6nqCbjhnvTIzqGGMaJpHbHMciOooGAo0+jCDXOpObF7fgzpJNBHZ/pyzeHctuES7x
-         lM7g==
-X-Received: by 10.68.139.65 with SMTP id qw1mr22029821pbb.34.1446466052515;
-        Mon, 02 Nov 2015 04:07:32 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.183.199])
-        by smtp.gmail.com with ESMTPSA id qd5sm23699325pbc.73.2015.11.02.04.07.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Mon, 02 Nov 2015 04:07:31 -0800 (PST)
-Date: Mon, 2 Nov 2015 17:37:28 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        h=from:to:cc:subject:date:message-id;
+        bh=7DGhUTwshfyszgT8/GxCUo8LxW+D49CIor/i1gYdB8Q=;
+        b=gwYjoUd66CME6eU4fN88xd4Sf6ikKToG+lmlxztT4jPWySPArR0yS2kUSSuiT8r/n0
+         t+L3vJipHnLioXVj2ELAUseyQoV2TT9ri7LIQ096zgRkWg8s1ah4Vb8+Dn/ClM6ZPh34
+         FPJQr5EU8qQ79Fxxk7eRzmQMGb1S3KZlDNzUxLgseomYLFLRqQHTBeidkn7vUdTh6p3Q
+         JxZ42Z4y06mQ1W3wfluqB4/wYnf8XZutW30gmwDcLw2ijV+7o31/CWj5cS4e3H0WWgEh
+         xD7l0FHb4tnsRY0dFZLibdmlfTIOfQxDGQJFPefLuj95dU+oyr9b321LqItCm9StX5SQ
+         eAMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7DGhUTwshfyszgT8/GxCUo8LxW+D49CIor/i1gYdB8Q=;
+        b=fYjk7BPN5hOPQvSSXvw4PFAVIQGeDmyynGYkaIB8wanUuJy2fCESAyPHlu/2UL1fUS
+         e9rEp1knDot+YysmYGzyWkn95UxSghvokUuQSnLlb2QmfNbrn08NyrQK7qHVPL1zHkxc
+         gOmsgTvclH3DTUN8IoJ5HSUqj9ikCWK4MXqYhMnOhdCg1L1Ob8HFJd9FVcvN25CIINgc
+         XN/KHP+RKwiyAYmdzDlnYTFoFHpPDJ9G1VUAtbjQshRHB4FXKjaSUk+5iw+kJfxbXQsk
+         yB8pqJBke3ZVrqPx9TYGIZQfNUbm6MazBD8X/osfE+rNGlAZGlLyk7i33Y+nnfQrCYwq
+         smEQ==
+X-Gm-Message-State: AD7BkJJaqPsh4KVLd5jUqojYpZbu1GnL8fMC1LEWLj55QxiZ+EaP51zYyjxlJT+dJFqO3A==
+X-Received: by 10.98.67.92 with SMTP id q89mr12122196pfa.137.1457099104793;
+        Fri, 04 Mar 2016 05:45:04 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([223.176.129.22])
+        by smtp.gmail.com with ESMTPSA id e1sm5853096pas.1.2016.03.04.05.44.59
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 04 Mar 2016 05:45:04 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 04 Mar 2016 19:14:53 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: rdma: amso1100: Drop wrapper function
-Message-ID: <20151102120728.GA3650@amitoj-Inspiron-3542>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: fsl-mc: Replace pr_debug with dev_dbg
+Date: Fri,  4 Mar 2016 19:14:52 +0530
+Message-Id: <1457099092-3160-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-This patch removes the c2_print_macaddr() wrapper function which calls
-the pr_debug standard kernel function only.
+This patch replaces pr_debug calls with dev_dbg when the device structure
+is available as dev_* prints identifying information about the struct
+device.
+Done using coccinelle:
 
-c2_print_macaddr() has been replaced by directly calling pr_debug().
+@r exists@
+identifier f, s;
+identifier x;
+position p;
+@@
+f(...,struct s *x,...) {
+<+...
+when != x == NULL
+\(pr_err@p\|pr_debug@p\|pr_info\)(...);
+...+>
+}
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+@r2@
+identifier fld2;
+identifier r.s;
+@@
+
+struct s {
+        ...
+        struct device *fld2;
+        ...
+};
+
+@@
+identifier r.x,r2.fld2;
+position r.p;
+@@
+
+(
+-pr_err@p
++dev_err
+   (
++ &x->fld2,
+...)
+|
+- pr_debug@p
++ dev_dbg
+   (
++ &x->fld2,
+...)
+|
+- pr_info@p
++ dev_info
+   (
++ &x->fld2,
+...)
+)
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
-Changes in v2:
-        -Corrected indentation
-        -Removed comment added in previous version
-Changes in v3:
-        -Corrected indentation
+ drivers/staging/fsl-mc/bus/mc-sys.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
- drivers/staging/rdma/amso1100/c2.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/rdma/amso1100/c2.c b/drivers/staging/rdma/amso1100/c2.c
-index 7f1e794..6688349 100644
---- a/drivers/staging/rdma/amso1100/c2.c
-+++ b/drivers/staging/rdma/amso1100/c2.c
-@@ -87,11 +87,6 @@ static struct pci_device_id c2_pci_table[] = {
+diff --git a/drivers/staging/fsl-mc/bus/mc-sys.c b/drivers/staging/fsl-mc/bus/mc-sys.c
+index 6e14892..8101c46 100644
+--- a/drivers/staging/fsl-mc/bus/mc-sys.c
++++ b/drivers/staging/fsl-mc/bus/mc-sys.c
+@@ -328,7 +328,8 @@ static int mc_polling_wait_preemptible(struct fsl_mc_io *mc_io,
+ 			     MC_CMD_COMPLETION_POLLING_MAX_SLEEP_USECS);
  
- MODULE_DEVICE_TABLE(pci, c2_pci_table);
+ 		if (time_after_eq(jiffies, jiffies_until_timeout)) {
+-			pr_debug("MC command timed out (portal: %#llx, obj handle: %#x, command: %#x)\n",
++			dev_dbg(&mc_io->dev,
++				"MC command timed out (portal: %#llx, obj handle: %#x, command: %#x)\n",
+ 				 mc_io->portal_phys_addr,
+ 				 (unsigned int)
+ 					MC_CMD_HDR_READ_TOKEN(cmd->header),
+@@ -369,7 +370,8 @@ static int mc_polling_wait_atomic(struct fsl_mc_io *mc_io,
+ 		udelay(MC_CMD_COMPLETION_POLLING_MAX_SLEEP_USECS);
+ 		timeout_usecs -= MC_CMD_COMPLETION_POLLING_MAX_SLEEP_USECS;
+ 		if (timeout_usecs == 0) {
+-			pr_debug("MC command timed out (portal: %#llx, obj handle: %#x, command: %#x)\n",
++			dev_dbg(&mc_io->dev,
++				"MC command timed out (portal: %#llx, obj handle: %#x, command: %#x)\n",
+ 				 mc_io->portal_phys_addr,
+ 				 (unsigned int)
+ 					MC_CMD_HDR_READ_TOKEN(cmd->header),
+@@ -424,7 +426,8 @@ int mc_send_command(struct fsl_mc_io *mc_io, struct mc_command *cmd)
+ 		goto common_exit;
  
--static void c2_print_macaddr(struct net_device *netdev)
--{
--	pr_debug("%s: MAC %pM, IRQ %u\n", netdev->name, netdev->dev_addr, netdev->irq);
--}
--
- static void c2_set_rxbufsize(struct c2_port *c2_port)
- {
- 	struct net_device *netdev = c2_port->netdev;
-@@ -908,7 +903,8 @@ static struct net_device *c2_devinit(struct c2_dev *c2dev,
- 	/* Validate the MAC address */
- 	if (!is_valid_ether_addr(netdev->dev_addr)) {
- 		pr_debug("Invalid MAC Address\n");
--		c2_print_macaddr(netdev);
-+		pr_debug("%s: MAC %pM, IRQ %u\n", netdev->name,
-+				netdev->dev_addr, netdev->irq);
- 		free_netdev(netdev);
- 		return NULL;
- 	}
-@@ -1142,7 +1138,8 @@ static int c2_probe(struct pci_dev *pcidev, const struct pci_device_id *ent)
- 	}
- 
- 	/* Print out the MAC address */
--	c2_print_macaddr(netdev);
-+	pr_debug("%s: MAC %pM, IRQ %u\n", netdev->name, netdev->dev_addr, 
-+			netdev->irq);
- 
- 	ret = c2_rnic_init(c2dev);
- 	if (ret) {
+ 	if (status != MC_CMD_STATUS_OK) {
+-		pr_debug("MC command failed: portal: %#llx, obj handle: %#x, command: %#x, status: %s (%#x)\n",
++		dev_dbg(&mc_io->dev,
++			"MC command failed: portal: %#llx, obj handle: %#x, command: %#x, status: %s (%#x)\n",
+ 			 mc_io->portal_phys_addr,
+ 			 (unsigned int)MC_CMD_HDR_READ_TOKEN(cmd->header),
+ 			 (unsigned int)MC_CMD_HDR_READ_CMDID(cmd->header),
 -- 
 1.9.1
 
