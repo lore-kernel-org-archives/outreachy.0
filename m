@@ -1,107 +1,141 @@
-X-GM-THRID: 6437751500856885248
-X-Received: by 10.99.114.29 with SMTP id n29mr92972pgc.106.1498905825754;
-        Sat, 01 Jul 2017 03:43:45 -0700 (PDT)
+X-GM-THRID: 6258193285963055104
+X-Received: by 10.50.61.100 with SMTP id o4mr3496630igr.10.1457099170524;
+        Fri, 04 Mar 2016 05:46:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.100 with SMTP id x97ls4229865ioi.9.gmail; Sat, 01 Jul
- 2017 03:43:44 -0700 (PDT)
-X-Received: by 10.31.160.197 with SMTP id j188mr13736896vke.10.1498905824918;
-        Sat, 01 Jul 2017 03:43:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1498905824; cv=none;
-        d=google.com; s=arc-20160816;
-        b=mFMHAlSLSYA1j617bUaY+tlEqXZ/SNzdWY2M1UNsRArSD9HvRbyLPCEPv9I7x0N1Bd
-         zcFF6rzwIwjk5kixLXPxhngM00ptPto0VyN8FO2bVzbkirgdxBRr8VFMCcJ6LqhWPiKD
-         E9O3XF7vZb9KhsENp46kAkqL59qWqsDWSl0k6m0d/LHxDfvFbnpNl+ILnx5q+xwLhbt2
-         BfD7o0cswsN3IRBpU9Ln3lkWHsCCQE30LOX7LF3TsxOc4cS8aHYEIuan1/XduaQ613Jf
-         HgVrdz8F0D5kL4Ew/CWnxveh8JrfPHxFYr5kJ4ucdVAn7zQjd3iY2xwXElo3xfZdRkWA
-         orvQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=/I6OcN9MZu/OFuBB3LizJ1gtU8fn3UNvjrjsYEVYOU8=;
-        b=OXq7ZyxGEoWNtSWxTs1gsfa4A/CBOeIKGY5dXqDJywVQsFG9/W+nm4E0l3SEvIORln
-         1WKEIXcYAKirnv8UbJH4iiiLswEFu55c5LB2Qmvnu/Ov40xvQgzPfEtCEMgrLou3LXL6
-         QGPdda44dw7O3ICEDY/6RCR/dt6Xv69uXA4JmfvYXfwaJmeDRCnbX5nUEezQFGPcAA83
-         qXJnEdrarH7BXKQgtVHIDEwX/cdNoCy7yfN8v8m1tuFRNxsrQTrym99Hj9yqjC+e9yHG
-         GHRyW70cv/BgliqjJM/lU7epB2qk/FzQEhB1TmD79iQLTq9YJ1CpTBpTSJVLIcbkQW1U
-         OClQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=hs5SeLGV;
-       spf=pass (google.com: domain of salonibhartia1996@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=salonibhartia1996@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <salonibhartia1996@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id 82si2116125pfi.11.2017.07.01.03.43.44
+Received: by 10.140.39.111 with SMTP id u102ls303744qgu.45.gmail; Fri, 04 Mar
+ 2016 05:46:09 -0800 (PST)
+X-Received: by 10.31.160.209 with SMTP id j200mr5787819vke.6.1457099169601;
+        Fri, 04 Mar 2016 05:46:09 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
+        by gmr-mx.google.com with ESMTPS id yd9si1292259pab.1.2016.03.04.05.46.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Jul 2017 03:43:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salonibhartia1996@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Fri, 04 Mar 2016 05:46:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.b=hs5SeLGV;
-       spf=pass (google.com: domain of salonibhartia1996@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=salonibhartia1996@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id u36so17957031pgn.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 01 Jul 2017 03:43:44 -0700 (PDT)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22b.google.com with SMTP id x188so12105905pfb.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 05:46:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/I6OcN9MZu/OFuBB3LizJ1gtU8fn3UNvjrjsYEVYOU8=;
-        b=hs5SeLGVamt8zjQpj73bdV/JYyuZcFSWWd2eEMGufHxTKgkovadFOWRc+epgU4Mpwf
-         ebPPGxKxp43gyFMogMOCRSst3fxN89ZYxxto8c2z89RM1r7SoAuFVfRXxjl2ICPfSIQW
-         oR7mOk3JwrzY4r3/BCxIJki/jSsECJBwo0dXt4aZhhdNHuuDZHKgQi5qfg2yD2H57KJW
-         rc1QYP+q6lDOwb7fCoHALv7ujViTRuuyYRALawqtUVJ9BnICLmoFMbfvgBv3pYFsAfgQ
-         s15Qz8ELG2m2ZLLcfywo1LRQWKnKLCDi967GXwEbTlqgfz6Z5kvBEi1jJ06XCKKKWdp/
-         4nAw==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=oqfUtYipQopjZIIdfB2cZn+xU5t+jZWzdxlPgnGNUDU=;
+        b=C1ATdXEra3TIiVs2WzOrrp0XB7uamHp27/pUL5UJd/h6hcIwuG9+PmC61BnEhuf19O
+         Q5O8MFzPJllJIz56mEhjq5S8eWVekBmnNtdITYba5jGy/AKNl74R4bw1o+RZ1uejsj9a
+         6MlMarMi0xszP2aBcABEWBcmrS5SR5wRVDRbHdWv5iK2IHUbgYqg+DNsn89txTQtH1V6
+         blHJxcrAxKUQ6vw1HayENJoPLy6yfdx1uhxXaQabdiZ9sSNbsm1gmkxIH47CLPEVv2e6
+         FsyuqnE2Xd1wQaXRknalJH0skK4+KhDUaGG5Mi8sseBIo3pZ6ZgUf4iCncVqibLL4EFa
+         kjIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/I6OcN9MZu/OFuBB3LizJ1gtU8fn3UNvjrjsYEVYOU8=;
-        b=D3r1k0H87X9ie9fydyLMmSSAmMFnd06KpoTLAEk9yZPpJiQDyuC8iNFnRt8OZROYEV
-         nt3EQk4rT7VaCMaUNjsfa9iV1y+5LrbT5tzZ7Y1IhGPrqcEYaTXkPzcxZdJz+QubIZcb
-         qPQid9t3+Rp2249g58uY8hZArJ7AnsWa9xhJy1Ap77DHyS46b1QqvnQXGdmQ25tPKV5g
-         7SeEqkeM5b1YyiFEEu4Y7pv0CI3XSyTEPncgXVJdB9mjrl9nkRVcOb7+y7eI7rwiQ6/w
-         XlQDCU14q1BiNjqt+q6cdWhJvdasU1pyq+/Fc8Da0Kdy/9z/cCWmEDb4TrirjcwRMeD7
-         F+pQ==
-X-Gm-Message-State: AIVw110ENVntr8k7xgamc2mxAc/3dsqN8S/HhUXGmxasRuitDSZS0Mvg
-	7UFXQDeKGu5xhVi3hj0R0Q==
-X-Received: by 10.99.23.100 with SMTP id 36mr205283pgx.118.1498905824218;
-        Sat, 01 Jul 2017 03:43:44 -0700 (PDT)
-Return-Path: <salonibhartia1996@gmail.com>
-Received: from mmps-mmps-5558 ([2405:204:31ae:6411:1443:1231:8dd2:ade0])
-        by smtp.gmail.com with ESMTPSA id s9sm28245064pfe.67.2017.07.01.03.43.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Jul 2017 03:43:43 -0700 (PDT)
-Date: Sat, 1 Jul 2017 16:13:34 +0530
-From: saloni1996 <salonibhartia1996@gmail.com>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=oqfUtYipQopjZIIdfB2cZn+xU5t+jZWzdxlPgnGNUDU=;
+        b=dALd9YNfd2Gv/x3/lUu3I7piaTdLLZIMJzN0sxVuP+12tFvn8gA/TkbV4eJQsRoFLB
+         WQPbQVtStwqw358o5JI/8oMYeW/orsRbvzJYWm9WcsMq01y/XNE0KtQGP/DxI6dOUGKT
+         ATOq7Q8oI7Jd1gJsmoVu9Y9+6vdIf6pRkG/9BXFhYi9+srw4Is6sDsmkgDLsvVlbn9L1
+         IEtZ/p0bq8BCAp4X/T2UE5oNFuS8biSz+SNBOxM8GvlH4oTBe82a5ERNluMbGMsmD1az
+         8/YcBS+gA0iqd6AaZCShkSbobpUkg44Ysdd+zvUV+8t9nQ0cGV1f9T5HQgX+Ndvg+3Cv
+         zy9A==
+X-Gm-Message-State: AD7BkJJcr4MH+BCL3Tq+tZ5Ae24ILyokh/dYvzH1ymDBYKf4L6VHbDtNtgAWbNEARui+BQ==
+X-Received: by 10.98.93.2 with SMTP id r2mr12253307pfb.64.1457099169423;
+        Fri, 04 Mar 2016 05:46:09 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([223.176.129.22])
+        by smtp.gmail.com with ESMTPSA id q2sm5803879pfq.88.2016.03.04.05.46.04
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 04 Mar 2016 05:46:08 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 04 Mar 2016 19:15:58 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging : rtl8188eu: Fix Camel Case warning
-Message-ID: <20170701104334.GA24233@mmps-mmps-5558>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: fsl-mc: Replace pr_err with dev_err
+Date: Fri,  4 Mar 2016 19:15:55 +0530
+Message-Id: <1457099155-3208-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Remove Camel Case warning found using checkpatch.pl
+This patch replaces pr_err calls with dev_err when the device structure
+is available as dev_* prints identifying information about the struct device.
+Done using coccinelle:
+
+@r exists@
+identifier f, s;
+identifier x;
+position p;
+@@
+f(...,struct s *x,...) {
+<+...
+when != x == NULL
+\(pr_err@p\|pr_debug@p\|pr_info\)(...);
+...+>
+}
+
+@r2@
+identifier fld2;
+identifier r.s;
+@@
+
+struct s {
+        ...
+        struct device *fld2;
+        ...
+};
+
+@@
+identifier r.x,r2.fld2;
+position r.p;
+@@
+
+(
+-pr_err@p
++dev_err
+   (
++ &x->fld2,
+...)
+|
+- pr_debug@p
++ dev_dbg
+   (
++ &x->fld2,
+...)
+|
+- pr_info@p
++ dev_info
+   (
++ &x->fld2,
+...)
+)
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_ap.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/fsl-mc/bus/mc-bus.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index 647a922d79d1..6c63a9bbb876 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ap.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -90,7 +90,7 @@ static void update_BCNTIM(struct adapter *padapter)
+diff --git a/drivers/staging/fsl-mc/bus/mc-bus.c b/drivers/staging/fsl-mc/bus/mc-bus.c
+index 5958e0f..9f77c37b 100644
+--- a/drivers/staging/fsl-mc/bus/mc-bus.c
++++ b/drivers/staging/fsl-mc/bus/mc-bus.c
+@@ -260,14 +260,15 @@ static int get_dprc_icid(struct fsl_mc_io *mc_io,
  
- 		/* calculate head_len */
- 		offset = _FIXED_IE_LENGTH_;
--		offset += pnetwork_mlmeext->Ssid.SsidLength + 2;
-+		offset += pnetwork_mlmeext->ssid.ssidlength + 2;
+ 	error = dprc_open(mc_io, 0, container_id, &dprc_handle);
+ 	if (error < 0) {
+-		pr_err("dprc_open() failed: %d\n", error);
++		dev_err(&mc_io->dev, "dprc_open() failed: %d\n", error);
+ 		return error;
+ 	}
  
- 		/*  get supported rates len */
- 		p = rtw_get_ie(pie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_,
+ 	memset(&attr, 0, sizeof(attr));
+ 	error = dprc_get_attributes(mc_io, 0, dprc_handle, &attr);
+ 	if (error < 0) {
+-		pr_err("dprc_get_attributes() failed: %d\n", error);
++		dev_err(&mc_io->dev, "dprc_get_attributes() failed: %d\n",
++			error);
+ 		goto common_cleanup;
+ 	}
+ 
 -- 
-2.13.0
+1.9.1
 
 
