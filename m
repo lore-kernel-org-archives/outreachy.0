@@ -1,96 +1,113 @@
-X-GM-THRID: 6207045610887970816
-X-Received: by 10.182.128.101 with SMTP id nn5mr22576597obb.31.1445190424352;
-        Sun, 18 Oct 2015 10:47:04 -0700 (PDT)
+X-GM-THRID: 6258247119145009152
+X-Received: by 10.50.112.232 with SMTP id it8mr2479igb.9.1457111704794;
+        Fri, 04 Mar 2016 09:15:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.109.170 with SMTP id ht10ls646386igb.20.canary; Sun, 18 Oct
- 2015 10:47:03 -0700 (PDT)
-X-Received: by 10.66.144.164 with SMTP id sn4mr23618651pab.9.1445190423827;
-        Sun, 18 Oct 2015 10:47:03 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id el2si2952994pbb.0.2015.10.18.10.47.03
+Received: by 10.50.41.97 with SMTP id e1ls268087igl.29.gmail; Fri, 04 Mar 2016
+ 09:15:04 -0800 (PST)
+X-Received: by 10.107.16.87 with SMTP id y84mr7019367ioi.2.1457111704405;
+        Fri, 04 Mar 2016 09:15:04 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
+        by gmr-mx.google.com with ESMTPS id 12si1534466pfb.1.2016.03.04.09.15.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 10:47:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 04 Mar 2016 09:15:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id hk11so5804050pad.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2015 10:47:03 -0700 (PDT)
+Received: by mail-pa0-x233.google.com with SMTP id fi3so35959634pac.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 09:15:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Vz7/2wa2M4FyheCSf3VqQN3b0wsybYpQNUnko89nNEY=;
+        b=rGvRgt+h8AMwDLszrLPH6tzvkPtelOsKUlCZlkH3xlcr99vKVqkNYbf/lt3EokusM7
+         DOco0dJ/x2ydvWXAUoUopEVe9jM276XUGTNfggWQPglqsw0RRzXph0UWRW5AqazdGLez
+         Yqq7bFUVamaYDwwTsvSPGLdrpAWDR5MIxkJbTybGocxzA22DVyk6XU9lN966ZQD0S+XJ
+         40C12J8Ho6Zu3Zm6EXKICl4BJJGnpROZJcMgB5yU45f4v+p7FKzso1IvT6HOmQ7SZ54Z
+         RQP63ICIJA+xkgSpYzh1NMbBG3ZPn2ftL1FxXnzqSJ157xfYJNub65rYH5esNZcasFkb
+         KMpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=PtM+KFUc4jezdCg+oA6mkJkWejPcnikGzFHPzCPhYnU=;
-        b=YUyJZ6F29vMXKrisnHXwid69tDjSrRoroO96vLtgOwxWsyZBA4b67w9o1iEYGldOXw
-         c+v9NAfcPObKP2ELk4w3RZe76f2W9Iho1Cng/MQY4FfnYEK7bXDBhvn8Z2ojlnAgHZvj
-         59fCpLVRCvD0Xj06HX0LuCcoeM1MFFFYFeS/lUUvog/8B9FXx65gJE+G3shvoiVjfHN1
-         Cl5FeiGbGDuQ0XO1u8mZqzVLx23Jln1OrtIlJ3RTozXQ2wRIXvml9cq1Y/bRCNSn8nDc
-         6bMA0Z4/29QUeF97z/+l8u/neg+62QwNFJdph2HPKI03UCq8ZEosvr9qVnMgSSURP7yi
-         QwfQ==
-X-Received: by 10.68.90.34 with SMTP id bt2mr29671608pbb.145.1445190423684;
-        Sun, 18 Oct 2015 10:47:03 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id pc8sm31923376pbc.27.2015.10.18.10.47.00
+        bh=Vz7/2wa2M4FyheCSf3VqQN3b0wsybYpQNUnko89nNEY=;
+        b=fyxDAsQpNXo1KB+Nmv21jWZNW5qO/xPI4s4N9jC8HSgmw+eZW/uBkqScfcosr2IWXD
+         c6HlJVEDtiknEOPbMjWGwxarDt+aqygOSr5ar8p4epuTi2o2DVMZ33LWRGb+JTSRnM1p
+         qtBBXLiINZeJV0pMbWSxvotZmI3c4jrQ4w1S26FPEVpkbMnakbqUfvTriFG/no/s6g65
+         xql5XcoHbW0l4R+BBfr1DUbDjF0wEUL63CDequCTmsEUDB8oWLIxuig5B9jmMiZRWCFf
+         Hxg4RDGaSIjaChkv3fitVkPUgcK/VUJr5qj+Cqwba7qMZYUrKfLfhQuntKIisEnMSleo
+         JKng==
+X-Gm-Message-State: AD7BkJKJCKvWbEAsp4pJUWxPZd24PZJ8a58s/oTk5xt7+hWuS/Od9g9e3zk0kQSMAG1LGg==
+X-Received: by 10.66.193.161 with SMTP id hp1mr13693738pac.9.1457111704209;
+        Fri, 04 Mar 2016 09:15:04 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.77.50.199])
+        by smtp.gmail.com with ESMTPSA id yj1sm6833104pac.16.2016.03.04.09.15.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Oct 2015 10:47:02 -0700 (PDT)
-Date: Sun, 18 Oct 2015 23:16:45 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 04 Mar 2016 09:15:03 -0800 (PST)
+Date: Fri, 4 Mar 2016 22:45:00 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: lustre: lcommon_misc: Correct block comment style
-Message-ID: <20151018174645.GA33087@ubuntu>
+Subject: [PATCH] staging: rdma: hfi1: file_ops: Replace ALIGN with PAGE_ALIGN
+Message-ID: <20160304171459.GA28765@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Alignment of block comments should be correct.
-Fix checkpatch WARNING: Block comments use a trailing */ on a separate
-line
+mm.h contains a helper function PAGE_ALIGN which aligns the pointer
+to the page boundary instead of using ALIGN(expression, PAGE_SIZE)
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
+This change was made with the help of the following Coccinelle
+semantic patch:
+//<smpl>
+@@
+expression e;
+symbol PAGE_SIZE;
+@@
+(
+- ALIGN(e, PAGE_SIZE)
++ PAGE_ALIGN(e)
+|
+- IS_ALIGNED(e, PAGE_SIZE)
++ PAGE_ALIGNED(e)
+)
+//</smpl>
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/lustre/lustre/lclient/lcommon_misc.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ drivers/staging/rdma/hfi1/file_ops.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/lclient/lcommon_misc.c b/drivers/staging/lustre/lustre/lclient/lcommon_misc.c
-index 8389a0e..8458a62 100644
---- a/drivers/staging/lustre/lustre/lclient/lcommon_misc.c
-+++ b/drivers/staging/lustre/lustre/lclient/lcommon_misc.c
-@@ -45,10 +45,12 @@
- 
- #include "../include/lustre_lite.h"
- 
--/* Initialize the default and maximum LOV EA and cookie sizes.  This allows
-+/*
-+ * Initialize the default and maximum LOV EA and cookie sizes.  This allows
-  * us to make MDS RPCs with large enough reply buffers to hold the
-  * maximum-sized (= maximum striped) EA and cookie without having to
-- * calculate this (via a call into the LOV + OSCs) each time we make an RPC. */
-+ * calculate this (via a call into the LOV + OSCs) each time we make an RPC.
-+ */
- int cl_init_ea_size(struct obd_export *md_exp, struct obd_export *dt_exp)
- {
- 	struct lov_stripe_md lsm = { .lsm_magic = LOV_MAGIC_V3 };
-@@ -73,8 +75,10 @@ int cl_init_ea_size(struct obd_export *md_exp, struct obd_export *dt_exp)
- 
- 	cookiesize = stripes * sizeof(struct llog_cookie);
- 
--	/* default cookiesize is 0 because from 2.4 server doesn't send
--	 * llog cookies to client. */
-+	/*
-+	 * default cookiesize is 0 because from 2.4 server doesn't send
-+	 * llog cookies to client.
-+	 */
- 	CDEBUG(D_HA,
- 	       "updating def/max_easize: %d/%d def/max_cookiesize: 0/%d\n",
- 	       def_easize, easize, cookiesize);
+diff --git a/drivers/staging/rdma/hfi1/file_ops.c b/drivers/staging/rdma/hfi1/file_ops.c
+index d57d549..8b911e8 100644
+--- a/drivers/staging/rdma/hfi1/file_ops.c
++++ b/drivers/staging/rdma/hfi1/file_ops.c
+@@ -487,8 +487,7 @@ static int hfi1_file_mmap(struct file *fp, struct vm_area_struct *vma)
+ 		 * Map only the amount allocated to the context, not the
+ 		 * entire available context's PIO space.
+ 		 */
+-		memlen = ALIGN(uctxt->sc->credits * PIO_BLOCK_SIZE,
+-			       PAGE_SIZE);
++		memlen = PAGE_ALIGN(uctxt->sc->credits * PIO_BLOCK_SIZE);
+ 		flags &= ~VM_MAYREAD;
+ 		flags |= VM_DONTCOPY | VM_DONTEXPAND;
+ 		vma->vm_page_prot = pgprot_writecombine(vma->vm_page_prot);
+@@ -638,7 +637,7 @@ static int hfi1_file_mmap(struct file *fp, struct vm_area_struct *vma)
+ 			goto done;
+ 		}
+ 		memaddr = (u64)cq->comps;
+-		memlen = ALIGN(sizeof(*cq->comps) * cq->nentries, PAGE_SIZE);
++		memlen = PAGE_ALIGN(sizeof(*cq->comps) * cq->nentries);
+ 		flags |= VM_IO | VM_DONTEXPAND;
+ 		vmf = 1;
+ 		break;
 -- 
-2.1.0
+1.9.1
 
 
