@@ -1,91 +1,75 @@
 X-GM-THRID: 6258476989674422272
-X-Received: by 10.66.147.106 with SMTP id tj10mr13545886pab.30.1457276715211;
-        Sun, 06 Mar 2016 07:05:15 -0800 (PST)
+X-Received: by 10.28.189.130 with SMTP id n124mr320684wmf.4.1457166380035;
+        Sat, 05 Mar 2016 00:26:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.208 with SMTP id l74ls1303365qgl.47.gmail; Sun, 06 Mar
- 2016 07:05:14 -0800 (PST)
-X-Received: by 10.31.165.1 with SMTP id o1mr13229730vke.12.1457276714500;
-        Sun, 06 Mar 2016 07:05:14 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id ff2si2578683pad.2.2016.03.06.07.05.14
+Received: by 10.28.210.147 with SMTP id j141ls323839wmg.40.canary; Sat, 05 Mar
+ 2016 00:26:19 -0800 (PST)
+X-Received: by 10.28.146.70 with SMTP id u67mr313064wmd.4.1457166379552;
+        Sat, 05 Mar 2016 00:26:19 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c140si103644wmh.1.2016.03.05.00.26.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 07:05:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Sat, 05 Mar 2016 00:26:19 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id hj7so6159505pac.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 07:05:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=yXPEzvN/weUrqZvgiIsrFK1ZHs5+N201E+04pcmU5uM=;
-        b=ckg2+qpQxTpEXFnLXfGiayvkp7/d06d+ida+SXCh6tsN8nafQsFzLA9Wfi/OPYib8S
-         aqQLEFxbdQXWcfVA8TRUeifLT2e8qmTbz9ZlPFjyUhxxwVeZLvAMLDXNljPzJcpx+O7e
-         gzfU6F5TKbiY4TDJiRa6ErrRkomGnM4T1Np0Mpr4je1OI0H/gXf3j7M/beqmWYF9EejD
-         hwoiZF7nEDcJdojFP5XU+6QM3eCmXdNx+3Y+ofZnZHKMCkz5sIb9oj1o+ZCTeZvzuqoY
-         otjaCUslsWjpuqrccgh5OmBCWYUq+1Ff5bM/C+wxZmiHPXd0WMDEaBNeGq1bunKsPkNn
-         PGmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=yXPEzvN/weUrqZvgiIsrFK1ZHs5+N201E+04pcmU5uM=;
-        b=MmMLsb9tr7esMqjZrW7BB89AVH5PTNSN6BUHQ1S6XL9TFd46XQupa1VcaIf7yksyqa
-         QxqOpOVHJhluIBQ4QL+9XJ1RBvIZ8bJ4l+/ku6DjjMTaRnwLYp7FADxfWqU+LRbV6FC4
-         0yAj0RMAi2+OF3s3Po+qYRmT2Jd89s0dpMo1OD0eI4/8NTHV4Z0R6yhfs4I3aEgIlPq9
-         ivxxxU3gMJA2tgfUNKFxWxdE9BTDoTTtS+B8qxzTMq3EYOvZjtiIPremfJtlFENaOsXM
-         /zRCGgJWCo0BP0ZXeK0rFQh1nwB5RZQp9+Tm4FS/nNCmM21xNZWYoelMj4RZ+Ve2zLYj
-         XPwA==
-X-Gm-Message-State: AD7BkJL1Xll8RNerTD2tCmUEbQryuMh1nXPOYbKd5O2fL3eEPlFQLB+Myeu0kOav5fmy6w==
-X-Received: by 10.66.250.199 with SMTP id ze7mr27064942pac.103.1457276714310;
-        Sun, 06 Mar 2016 07:05:14 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.154])
-        by smtp.gmail.com with ESMTPSA id h19sm18302800pfh.43.2016.03.06.07.05.12
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 07:05:13 -0800 (PST)
-Date: Sun, 6 Mar 2016 12:35:29 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: comedi: Use predefined macro offset_in_page()
- instead of (addr & ~PAGE_MASK).
-Message-ID: <20160306070529.GA31233@sandhya>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.22,540,1449529200"; 
+   d="scan'208";a="206009402"
+Received: from 155.212.120.153.west.global.crust-r.net (HELO hadrien.local) ([153.120.212.155])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 05 Mar 2016 09:26:17 +0100
+Date: Sat, 5 Mar 2016 09:26:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: comedi: Use predefined macro
+ offset_in_page() instead of (addr & ~PAGE_MASK).
+In-Reply-To: <20160305000721.GA3072@sandhya>
+Message-ID: <alpine.DEB.2.10.1603050926020.2822@hadrien>
+References: <20160305000721.GA3072@sandhya>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Use predefined macro offset_in_page() instead of (addr & ~PAGE_MASK).
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
-Changes in v2:
-* No change.
-*Compile this patch to check nothing is broken.
 
- drivers/staging/comedi/comedi_fops.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Sat, 5 Mar 2016, Sandhya Bankar wrote:
 
-diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-index d1cf6a1..7c7b477 100644
---- a/drivers/staging/comedi/comedi_fops.c
-+++ b/drivers/staging/comedi/comedi_fops.c
-@@ -2224,7 +2224,7 @@ static int comedi_mmap(struct file *file, struct vm_area_struct *vma)
- 		retval = -EFAULT;
- 		goto done;
- 	}
--	if (size & (~PAGE_MASK)) {
-+	if (offset_in_page(size)) {
- 		retval = -EFAULT;
- 		goto done;
- 	}
--- 
-1.8.3.4
+> Use predefined macro offset_in_page() instead of (addr & ~PAGE_MASK).
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/comedi/comedi_fops.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+> index d1cf6a1..7c7b477 100644
+> --- a/drivers/staging/comedi/comedi_fops.c
+> +++ b/drivers/staging/comedi/comedi_fops.c
+> @@ -2224,7 +2224,7 @@ static int comedi_mmap(struct file *file, struct vm_area_struct *vma)
+>  		retval = -EFAULT;
+>  		goto done;
+>  	}
+> -	if (size & (~PAGE_MASK)) {
+> +	if (offset_in_page(size)) {
 
+Much nicer :)
+
+julia
+
+>  		retval = -EFAULT;
+>  		goto done;
+>  	}
+> --
+> 1.8.3.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160305000721.GA3072%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
