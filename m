@@ -1,115 +1,77 @@
 X-GM-THRID: 6258546120721432576
-X-Received: by 10.66.236.129 with SMTP id uu1mr11328142pac.18.1457226912067;
-        Sat, 05 Mar 2016 17:15:12 -0800 (PST)
+X-Received: by 10.31.169.130 with SMTP id s124mr9461646vke.1.1457182651742;
+        Sat, 05 Mar 2016 04:57:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.108.20 with SMTP id hg20ls701472igb.39.canary; Sat, 05 Mar
- 2016 17:15:11 -0800 (PST)
-X-Received: by 10.98.42.67 with SMTP id q64mr11500631pfq.9.1457226911777;
-        Sat, 05 Mar 2016 17:15:11 -0800 (PST)
+Received: by 10.140.43.227 with SMTP id e90ls484363qga.74.gmail; Sat, 05 Mar
+ 2016 04:57:31 -0800 (PST)
+X-Received: by 10.140.101.242 with SMTP id u105mr9637684qge.12.1457182651162;
+        Sat, 05 Mar 2016 04:57:31 -0800 (PST)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 12si2192209pfb.1.2016.03.05.17.15.11
+Received: from mail-qg0-x22e.google.com (mail-qg0-x22e.google.com. [2607:f8b0:400d:c04::22e])
+        by gmr-mx.google.com with ESMTPS id y131si562983ywc.0.2016.03.05.04.57.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 05 Mar 2016 17:15:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 05 Mar 2016 04:57:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) client-ip=2607:f8b0:400d:c04::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 63so5605375pfe.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 17:15:11 -0800 (PST)
+Received: by mail-qg0-x22e.google.com with SMTP id u110so64282922qge.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 04:57:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=JHZ8AmLQ35XR2wVo/E/0+8NufWTbSiLObABa4TQZQvI=;
-        b=pUQ8YAhlfyAmseV5ovuM3XB4GP879GzpaanKC/bXzsTkHoT2LS//Se7uIXDTN+p16g
-         MT/efte8zgR5ZMDoSYowCsQLFwyjG4guyTdIsbjV4u2cYiEx9zliH2SMOMIogDQQvOvq
-         bN+k9UaB9bsxpmxXGg8K3VSvX1yIwtR+U/mlujY2umIO9lSe5BlFqi0sYEP0EamKnxUd
-         6ZOQeRdlws1POMd97GPsYPiWgqPmHpmkdM9IIVG4w0gTrah6oB6Yh4wB8ppD0WvxDuDL
-         dyabyVmxfdNrE/w6c8fvMjuFuVRoE2V1z0CBAMXo7UMhT1pe9835RpvAMmSlxtwCPCxJ
-         mqhA==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc;
+        bh=wN7TKFoSpzHpGSV3Z9HS3FzEVvX1Nln+sWiC97h5J7E=;
+        b=UP8NE8Iyc9N1WySWJ2vAV7DUHE83Pa9r5vIqiEouQY4Fd66jWLsSMsx8tHXc5pd5wi
+         ncGJdam0hgI47VnLBrJTL6Jcp21w+7M0Idq993k+aFvAoFDTdQ3EKKxtgl9ZPiHeHc97
+         1EwzAhfRp4sFy7lzL1UP4RHJvSvCTez7KPsmPowLka3wX3nsWiB6rNXnOq0tzVMQsU5E
+         xkhg5b93vAUFG27ko2BimAQLzhuvxItAb2BpJTKH+Cx/9TM+uL0ZEg4V3egZPk7Z6P8R
+         kB2tWLdyasbcnZ8YL92DnBw+rp5vR9kGP3UK4W/Ni+zXJD+Gl+WbctoXCD6cSLJY7GwL
+         BmDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=JHZ8AmLQ35XR2wVo/E/0+8NufWTbSiLObABa4TQZQvI=;
-        b=ILN0AewwnXAKvxBR+VIlh/3lmqTNEvNvDu1i2DjSw23ZBWvApAMbbZc6vdIF5fLYKT
-         kF6Bhg9jvefCY2erXaM53HirbW6zRrDWVDFiJfcBkA65o0U4X1vcvOlgmtnZjIFsIi1n
-         NlhfmdDIC0Jk/lQyedQmN93/OdQO6tcsh/5JX5yvuaGLNWdLY8AlY/cmkwPtNR5zhCIv
-         E199lkoUfY9p/83C1BlvJyOK+sH1/cHPFk9WYpSauRgBkUr/RDtnSdcV3pvTlIMl7Isw
-         fym3R5QIHqijQmZ/X8cGa8ceX4nIbw6Xm3N5uSgy8doLBfFPvR55RV2dr+p3467TvSwj
-         bDjw==
-X-Gm-Message-State: AD7BkJJ/xqy+r+/r3MPLkWjJLMKryAuBMRE5AhIdi5D24C3hw7GmynQAv2qoteB+pQ4hhQ==
-X-Received: by 10.98.42.211 with SMTP id q202mr9389578pfq.13.1457226911590;
-        Sat, 05 Mar 2016 17:15:11 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.77.50.199])
-        by smtp.gmail.com with ESMTPSA id ko9sm14835409pab.37.2016.03.05.17.15.10
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 05 Mar 2016 17:15:11 -0800 (PST)
-Date: Sun, 6 Mar 2016 06:45:07 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: speakup: Replace del_timer with del_timer_sync
-Message-ID: <20160306011506.GA24139@amitoj-Inspiron-3542>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc;
+        bh=wN7TKFoSpzHpGSV3Z9HS3FzEVvX1Nln+sWiC97h5J7E=;
+        b=O18sC0NjNoxmHwphfxxxrKHX8/dSMvaTTSlGNVUkDOeWDwR1eZrobEico1byEteTGx
+         AIbtvDSKYe3rr300guums40N7xeXiCJoQZSN9ZMun8mQMgW6VxkZwmyxazY4JFhe5gxs
+         c3DsQLAMWUZqbmzTyQA9ZMZyDXkDT6Ve3mi7waEE7T0+yMhcNJcCTxWZSDqi/TZ8B4O6
+         ldyboXJNht/2arlxutwPqccWLnKFtAvheTkaO32QH3VvMdna89ptaUl6pTksXN2R6o+j
+         /0LZITpek3SwtGiLZcebNhWYLqJHU2VHM63Fg403G2Wtkod1L9t5IZ/jaiblFXpxgzxy
+         2rKA==
+X-Gm-Message-State: AD7BkJJKrc95y5M/k29mvgpyQCI3bnW67G/CX+PNEYMLrBE+8m6uXOyhij31j4bmlkzD6cxxWxliI+9FBHX6xw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.140.93.166 with SMTP id d35mr16353613qge.29.1457182650969;
+ Sat, 05 Mar 2016 04:57:30 -0800 (PST)
+Received: by 10.140.44.99 with HTTP; Sat, 5 Mar 2016 04:57:30 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.10.1603052137020.2670@hadrien>
+References: <20160305123517.GA11630@amitoj-Inspiron-3542>
+	<alpine.DEB.2.10.1603052137020.2670@hadrien>
+Date: Sat, 5 Mar 2016 18:27:30 +0530
+Message-ID: <CA+5yK5F8Ng3KaiAFVHzYHobC=ZDj=LDOOwc-efX72FNwjEv43g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Replace del_timer
+ with del_timer_sync
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Use del_timer_sync to ensure timer is stopped on all CPUs before
-the driver exists and the timer should not run when the module is
-being removed. Since the timer is not called from an interrupt 
-context, this change is safe and will not cause deadlock.
+On Sat, Mar 5, 2016 at 6:07 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Sat, 5 Mar 2016, Amitoj Kaur Chawla wrote:
+>
+>> Use del_timer_sync to ensure timer is stopped on all CPUs before
+>> the driver exists.
+>
+> I think that you need to give more information about the need for this.
+> When would the change not be needed, for example?
+>
+> julia
+>
 
-The Coccinelle semantic patch used to make this change is as
-follows:
-// <smpl>
-@r@
-declarer name module_exit;
-identifier ex;
-@@
+Mention the fact that the timer is not called from a interrupt context
+so it is safe to switch to del_timer_sync?
 
-module_exit(ex);
-
-@@
-identifier r.ex;
-@@
-
-ex(...) {
-  <...
-- del_timer
-+ del_timer_sync
-    (...)
-  ...>
-}
-// </smpl>
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
-Changes in v2:
-        -Modified commit message
-
- drivers/staging/speakup/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index a87224c..a22fb07 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -2274,7 +2274,7 @@ static void __exit speakup_exit(void)
- 	unregister_vt_notifier(&vt_notifier_block);
- 	speakup_unregister_devsynth();
- 	speakup_cancel_paste();
--	del_timer(&cursor_timer);
-+	del_timer_sync(&cursor_timer);
- 	kthread_stop(speakup_task);
- 	speakup_task = NULL;
- 	mutex_lock(&spk_mutex);
--- 
-1.9.1
-
+Amitoj
 
