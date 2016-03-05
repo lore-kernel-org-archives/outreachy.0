@@ -1,78 +1,86 @@
-X-GM-THRID: 6264514475504697344
-X-Received: by 10.140.95.38 with SMTP id h35mr23140925qge.3.1458570937868;
-        Mon, 21 Mar 2016 07:35:37 -0700 (PDT)
+X-GM-THRID: 6258552787158695936
+X-Received: by 10.28.158.2 with SMTP id h2mr237705wme.0.1457182873862;
+        Sat, 05 Mar 2016 05:01:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.29.194 with SMTP id m2ls1697278obh.0.gmail; Mon, 21 Mar
- 2016 07:35:37 -0700 (PDT)
-X-Received: by 10.182.27.101 with SMTP id s5mr23046458obg.35.1458570937328;
-        Mon, 21 Mar 2016 07:35:37 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 12si3438451pfb.1.2016.03.21.07.35.37
+Received: by 10.25.162.1 with SMTP id l1ls185816lfe.107.gmail; Sat, 05 Mar
+ 2016 05:01:12 -0800 (PST)
+X-Received: by 10.25.165.148 with SMTP id o142mr1706941lfe.8.1457182872611;
+        Sat, 05 Mar 2016 05:01:12 -0800 (PST)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id c140si142853wmh.1.2016.03.05.05.01.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Mar 2016 07:35:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 05 Mar 2016 05:01:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id q129so30772530pfb.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 21 Mar 2016 07:35:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MWDXWSMbPREMJmcO1BKC/FHmoKQ8TNPTfBuk+ox2grM=;
-        b=AaUkLXGoIDz4ZjZm3AH/1RxWZ3oagZQ1ZRwH3LUwtGabAasEZc5Zyy256YSKm3ytbY
-         Q5GITt5BZIzmWSH4Z1navfdll+emf7H3SRbP7ZqqB0gwrbqkcqTp1C5R99VI2WSYWy95
-         YsBbtRAOIxkaGiXdvD1XhXmQ1gBilYFhnmMz/zQtpjsZbgRgDQDl/wkih+TDTEnc54fR
-         0ngHr9DUTH8w/+l25fZzj/Cp4H2ybaiteLprkRsMFh9hMUGeEsiVrcvBNbSzNHeQnqx+
-         74YxNpxVcP3ahJMun4GBgL64wAEMQ1zYgbU/Kp4mGsHGqd4P3A6e7iSRda59bMgTV56k
-         D7cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MWDXWSMbPREMJmcO1BKC/FHmoKQ8TNPTfBuk+ox2grM=;
-        b=g5wWUBcsOQ3Zle7+RddoZy8io4GhjjJTYMJRot+jyv3wXwBm0WbcqCuycPS+Zcmv5c
-         jN5+Ny5wuMaTs2ITpr2KqNCHHk5XkblUQ2VaSB5l7JawOtIJKNgewuaeV6oM0l4fP4Lo
-         e4h5LbSGdHH6skK0YI8bKgPh0CZhnlayYZdQ14f4qxq8PR2M8NadZWkhjN3Xi8fDHhRL
-         py8kw4u9QIFq7hR8zQ7E7wffEIBdNKW72dsAFhoeSu/iEXJMQvUdDY8M/gzV2hExxYhB
-         96/DRHXMPW37W2DzqpB8GCm3subz4ndr09ywl8jM9VTVz5eJBk4O+/nFKHvca6JpTK9S
-         xhjg==
-X-Gm-Message-State: AD7BkJIQzQ4KDPzzlkvK1HeAvoFGqIB2g6yCGgutLvEWhCjwKEwVsmArX68v5JG8Ne60Bg==
-X-Received: by 10.66.102.37 with SMTP id fl5mr45797056pab.32.1458570937177;
-        Mon, 21 Mar 2016 07:35:37 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.219])
-        by smtp.gmail.com with ESMTPSA id m87sm41283677pfj.38.2016.03.21.07.35.35
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Mar 2016 07:35:36 -0700 (PDT)
-Date: Mon, 21 Mar 2016 13:06:22 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id DD0E54B9ED
+	for <outreachy-kernel@googlegroups.com>; Sat,  5 Mar 2016 14:01:11 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id CF1A1DA385
+	for <outreachy-kernel@googlegroups.com>; Sat,  5 Mar 2016 14:01:11 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id C423EDA8FB; Sat,  5 Mar 2016 14:01:11 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US,SPF_HELO_FAIL,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 7627DDA385
+	for <outreachy-kernel@googlegroups.com>; Sat,  5 Mar 2016 14:01:09 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Sat, 05 Mar 2016 14:01:09 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 12941 invoked from network); 5 Mar 2016 14:01:09 +0100
+Received: from 77.166.216.87.static.jazztel.es (HELO us.es) (1984lsi@87.216.166.77)
+  by mail.us.es with AES128-SHA encrypted SMTP; 5 Mar 2016 14:01:09 +0100
+Date: Sat, 5 Mar 2016 14:01:08 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] Staging: iio: Fix coding style issues.
-Message-ID: <cover.1458545206.git.bankarsandhya512@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>,
+	Shivani Bhardwaj <shivanib134@gmail.com>
+Subject: nftables project in this Linux kernel Outreachy round
+Message-ID: <20160305130108.GA2973@salvia>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Fix coding style issues.These issues are detected by checkpatch.pl script.
+Hi,
 
-Sandhya Bankar (4):
-  Staging: iio: ade7758_core: Fix open parentheses alignment issues.
-  Staging: iio: ade7758_core: Remove unnecessary blank line.
-  Staging: iio: ade7758: Use a blank line after function/struct declarations.
-  Staging: iio: ade7758: Fix open parentheses alignment issues.
+In case you want to apply for the nftables subproject in this
+Outreachy round, you can send us (partial) iptables-translation
+patches for the following match extensions:
 
- drivers/staging/iio/meter/ade7758.h      | 16 ++++---
- drivers/staging/iio/meter/ade7758_core.c | 74 +++++++++++---------------------
- 2 files changed, 35 insertions(+), 55 deletions(-)
+* icmp
+* icmp6
+* rt
 
--- 
-1.8.3.4
+Shivani (previous Outreach intern) made a great job and she documented
+what is already translated and what need to be translated here:
 
+http://wiki.nftables.org/wiki-nftables/index.php/List_of_available_translations_via_iptables-translate_tool
+
+Providing a translation from iptables to nftables is relatively easy.
+The following link provides an example for the tcp match:
+
+http://git.netfilter.org/iptables/commit/?id=0afd957f6bc03b17fac8824e50b2e0fbd3d6f153
+
+The idea is to add a new .xlate function for that iptables extension,
+this function takes the extension structure and print it in text in
+nft format.
+
+To provide a translation you have to understand a bit how both
+iptables and nft work, to learn more you can visit our wiki page:
+
+http://wiki.nftables.org
+
+For iptables, you can check Oskar Andreasson's iptables documentation.
+
+Thanks.
 
