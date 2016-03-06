@@ -1,124 +1,135 @@
-X-GM-THRID: 6254903561319088128
-X-Received: by 10.129.108.3 with SMTP id h3mr38315007ywc.31.1456333222559;
-        Wed, 24 Feb 2016 09:00:22 -0800 (PST)
+X-GM-THRID: 6255366153272557568
+X-Received: by 10.66.150.68 with SMTP id ug4mr12214859pab.33.1457257354081;
+        Sun, 06 Mar 2016 01:42:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.103.102 with SMTP id fv6ls135894igb.43.gmail; Wed, 24 Feb
- 2016 09:00:22 -0800 (PST)
-X-Received: by 10.66.142.230 with SMTP id rz6mr18545044pab.31.1456333222126;
-        Wed, 24 Feb 2016 09:00:22 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id 12si506677pfb.1.2016.02.24.09.00.22
+Received: by 10.182.22.116 with SMTP id c20ls620769obf.62.gmail; Sun, 06 Mar
+ 2016 01:42:33 -0800 (PST)
+X-Received: by 10.182.22.48 with SMTP id a16mr12715513obf.29.1457257353716;
+        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+Return-Path: <poojashamili@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id yd9si2241091pab.1.2016.03.06.01.42.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 09:00:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id yy13so15481455pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 09:00:22 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id x188so3932029pfb.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 01:42:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=AzjOeS1bKfmFAzJ+bMpCbMDH0yAfQWWCc2OLrrHEFO4=;
-        b=yYT8tU4Sr9qJBemhc69GQoYUhhsMwUhFc/MdcoDAQ9T9gpzLfgYmP1pK3kbqZjDIv6
-         IYKL0jRCu5+8RPJvB5Jde5vlBnQuv/IfuoW8e5pxCmKZVbODaBYpsG5vfjpoLTjdccNx
-         nWZ89iI7v6+jS3aAQk3YKJN5K4biJe2m9da9w6qI5sVDQ8bL5jZbDmc6fOw/Tm/1leen
-         0qq/7TGWpGKDQsSs0xEhFndSwSPWwpWulzf3Fbfq+EhHptRldxVjGY2lb8issc2jx6KV
-         0gAE2j2jjkn6FSPzOLmZLFlbVHiAAYpR7rw9CEUl/KnPniIwgoh4GrsZKNm29X3jARRj
-         BREw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=1PiPHAI0PYH/UzqZeouM0ptdfzO68pV+Mr0P9w8M2ek=;
+        b=lN6OYeFenWTYEkQjosTNMytoJrFblfi+DO7XwvOmVHKozcthxhWZjeN1VeXT7gVF7+
+         GlIay4MBVdFoeKM8cyu7JMUwjPw9rZQu3JOu5hcO265KctWN1j6DA7nVLUJixoZJjcIj
+         PNgk8OHfNVcr8YrSpt2Gwdtzz6xB9oZakvcLQEuAxcAmILyJINKNlr4l8+So4wEn6UEj
+         d5bWRx+FwbXz3feV77msYSkQzvamO1blXzAgwOMl+wCUDkYjcQ+LjK+aXOAKj5LmRUCB
+         Xd/PPbYILL9BMBzGB1ALGhn2Uh3Y3FyzDQVONaJh7/Htxo107dICaaRaHh9cxlLVkut7
+         Y+pQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=AzjOeS1bKfmFAzJ+bMpCbMDH0yAfQWWCc2OLrrHEFO4=;
-        b=KPy94XwjvI6yVMPiXwpMLx5lnlvgl+wMB7T4XPwk7b/QHFFSByQHpNQ6yQ3ujUwaxU
-         OGLI9qRChlwDbFrZK5ZVw/25JsDuqG8vxtxH8WsV2/NqWvpFmaU8ixEj9DQDTKrQy5ke
-         gPSu0tVH10yMlvRoBe5M62dTkn3G9mGG0nA6XZFpWEFro7riG/Bg3KKoeeEca0lHVsU9
-         QITG+6/B563CgzPyYV3zH7xR2413UHSWZScslORrwVDHr9GJYtiHs6ZatjjHrWYW15z0
-         2zpN78e1VWlBXJMTpSCLTkA7OFWLzdbz7Q6A7G4YxyA9VLQLSDpZVPnbFKUfE4/ya2rH
-         fspg==
-X-Gm-Message-State: AG10YOTP9eCDf4KtAazbxYWSvqGMvLPY4dDN8vDIqopJBfF5GyV2ghOuqO1QLYOoreVidg==
-X-Received: by 10.67.3.67 with SMTP id bu3mr4387380pad.39.1456333221932;
-        Wed, 24 Feb 2016 09:00:21 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id ac1sm6289931pad.41.2016.02.24.09.00.19
+         :content-disposition:user-agent;
+        bh=1PiPHAI0PYH/UzqZeouM0ptdfzO68pV+Mr0P9w8M2ek=;
+        b=BtdVA4x020b3EeqvDPeqvfQRDe2v1OUwehQ0sentLDgessg3lF75LlRgtyJZx5msgi
+         hN5AcQe+ItbKlpBkQ0J3B7Qr7oOSGnP0vNShi4nZiKEvDZ4t2mJzfeSSUSpCCkQ6DolQ
+         3cHqrxHEal9mn9m24bDtaB0EbwWkFUBY3AaY++tXWMa8Ly3MZR+cG72q8xJLxohiG1S4
+         2uIoaBLc6KRvImZer+ZRBfNWFbEFOCEP3Q/FCJCKoovTCAbWXEteKjZS8SzHevhFPDSO
+         wAJKVaPzhzGRAKVahKN44C4zE6KqoGl26V/zYWGOTTcomyYMVhb6ag6mVF2kaKsyt+6N
+         hKCg==
+X-Gm-Message-State: AD7BkJLP09XfzKfG16zc+bIUb+1mUwKbO0O31oXaF0rQcYRZrf3u/LI7dKoe62M97uD/Sw==
+X-Received: by 10.98.75.212 with SMTP id d81mr25385873pfj.148.1457257353528;
+        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+Return-Path: <poojashamili@gmail.com>
+Received: from pooja-Inspiron-3537 ([103.224.159.11])
+        by smtp.gmail.com with ESMTPSA id 67sm16917908pfi.2.2016.03.06.01.42.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 09:00:21 -0800 (PST)
-Date: Wed, 24 Feb 2016 22:30:15 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+Date: Sun, 6 Mar 2016 15:12:30 +0530
+From: G Pooja Shamili <poojashamili@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove parentheses from return arguments
-Message-ID: <20160224170014.GA7049@amitoj-Inspiron-3542>
+Subject: [PATCH v3] staging: rtl8712: Remove the unnecessary parantheses
+Message-ID: <20160306094230.GA657@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove unnecessary parentheses from return arguments.
+The unnecessary parantheses on the right side of assignments were removed,
+as in most cases (expect for ==, >=, <=, !=), they are futile.
 
-The Coccinelle semantic patch that makes this change is as follows:
+This was done using Coccinelle, the semantic patch being:
 
-// <smpl>
 @@
-identifier i;
-constant c;
+expression E1,E2,E3;
+binary operator bin_op = {==,>=,<=,!=};
 @@
 
-return
-- (
-    \(i\|-i\|i(...)\|c\)
-- )
-  ;
-// </smpl>
+E1 =
+(
+  (
+   E2 bin_op E3
+  )
+|
+-(
+E2
+-)
+)
+;
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_hwi2c.c  | 4 ++--
- drivers/staging/sm750fb/ddk750_sii164.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Changes from Version 2:
+	* Modified the code to remove redundancy of removing and adding
+	the parenthesis
 
-diff --git a/drivers/staging/sm750fb/ddk750_hwi2c.c b/drivers/staging/sm750fb/ddk750_hwi2c.c
-index 231c021..39c3e1c 100644
---- a/drivers/staging/sm750fb/ddk750_hwi2c.c
-+++ b/drivers/staging/sm750fb/ddk750_hwi2c.c
-@@ -63,7 +63,7 @@ static long hw_i2c_wait_tx_done(void)
- 		timeout--;
- 
- 	if (timeout == 0)
--		return (-1);
-+		return -1;
- 
- 	return 0;
- }
-@@ -248,7 +248,7 @@ int sm750_hw_i2c_write_reg(
- 	if (hw_i2c_write_data(addr, 2, value) == 2)
- 		return 0;
- 
--	return (-1);
-+	return -1;
- }
- 
- #endif
-diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-index 9fd6afb..67f36e7 100644
---- a/drivers/staging/sm750fb/ddk750_sii164.c
-+++ b/drivers/staging/sm750fb/ddk750_sii164.c
-@@ -236,7 +236,7 @@ long sii164InitChip(
+Changes from Version 1:
+	* Changed the name in the From: and Signed-off-by: to full name.
+
+ drivers/staging/rtl8712/rtl871x_mp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rtl8712/rtl871x_mp.c b/drivers/staging/rtl8712/rtl871x_mp.c
+index 44da4fe..c80d59c 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp.c
++++ b/drivers/staging/rtl8712/rtl871x_mp.c
+@@ -235,7 +235,7 @@ static u8 set_bb_reg(struct _adapter *pAdapter,
+ 	if (bitmask != bMaskDWord) {
+ 		org_value = r8712_bb_reg_read(pAdapter, offset);
+ 		bit_shift = bitshift(bitmask);
+-		new_value = ((org_value & (~bitmask)) | (value << bit_shift));
++		new_value = (org_value & (~bitmask)) | (value << bit_shift);
+ 	} else {
+ 		new_value = value;
  	}
+@@ -260,7 +260,7 @@ static u8 set_rf_reg(struct _adapter *pAdapter, u8 path, u8 offset, u32 bitmask,
+ 	if (bitmask != bMaskDWord) {
+ 		org_value = r8712_rf_reg_read(pAdapter, path, offset);
+ 		bit_shift = bitshift(bitmask);
+-		new_value = ((org_value & (~bitmask)) | (value << bit_shift));
++		new_value = (org_value & (~bitmask)) | (value << bit_shift);
+ 	} else {
+ 		new_value = value;
+ 	}
+@@ -327,10 +327,10 @@ void r8712_SetTxAGCOffset(struct _adapter *pAdapter, u32 ulTxAGCOffset)
+ {
+ 	u32 TxAGCOffset_B, TxAGCOffset_C, TxAGCOffset_D, tmpAGC;
  
- 	/* Return -1 if initialization fails. */
--	return (-1);
-+	return -1;
+-	TxAGCOffset_B = (ulTxAGCOffset & 0x000000ff);
++	TxAGCOffset_B = ulTxAGCOffset & 0x000000ff;
+ 	TxAGCOffset_C = (ulTxAGCOffset & 0x0000ff00) >> 8;
+ 	TxAGCOffset_D = (ulTxAGCOffset & 0x00ff0000) >> 16;
+-	tmpAGC = (TxAGCOffset_D << 8 | TxAGCOffset_C << 4 | TxAGCOffset_B);
++	tmpAGC = TxAGCOffset_D << 8 | TxAGCOffset_C << 4 | TxAGCOffset_B;
+ 	set_bb_reg(pAdapter, rFPGA0_TxGainStage,
+ 			(bXBTxAGC | bXCTxAGC | bXDTxAGC), tmpAGC);
  }
- 
- 
 -- 
-1.9.1
+2.1.4
 
 
