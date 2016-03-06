@@ -1,85 +1,91 @@
-X-GM-THRID: 6397785232436625408
-X-Received: by 10.46.83.7 with SMTP id h7mr736294ljb.24.1489600453510;
-        Wed, 15 Mar 2017 10:54:13 -0700 (PDT)
+X-GM-THRID: 6258266145196867584
+X-Received: by 10.182.91.9 with SMTP id ca9mr13402267obb.7.1457277191230;
+        Sun, 06 Mar 2016 07:13:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.22.71 with SMTP id 7ls309570ljw.6.gmail; Wed, 15 Mar 2017
- 10:54:12 -0700 (PDT)
-X-Received: by 10.46.20.16 with SMTP id u16mr734651ljd.23.1489600452485;
-        Wed, 15 Mar 2017 10:54:12 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id b186si426294wme.1.2017.03.15.10.54.12
+Received: by 10.50.142.97 with SMTP id rv1ls714341igb.12.gmail; Sun, 06 Mar
+ 2016 07:13:10 -0800 (PST)
+X-Received: by 10.107.159.82 with SMTP id i79mr11359461ioe.32.1457277190892;
+        Sun, 06 Mar 2016 07:13:10 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id r75si2462021pfr.0.2016.03.06.07.13.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Mar 2017 10:54:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Sun, 06 Mar 2016 07:13:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id g10so2962003wrg.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 10:54:12 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id x188so4267074pfb.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 07:13:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=8Sw551/4tHVz/DiAUlWh6wrIyRhO2uISo/gmunBqujs=;
-        b=PGLBorvkIEDl5+pv5tkifeQHNiXYL/2l4Cgu35BaRufTwO4uPyBlQLl2ZMEMbQHlAr
-         aGWzaKepnTzFCTGdaClHqF+3VSJKgg7LSnyONzU75cFua2qbgmHR2I9bQk6cvjS7iJaD
-         TSUawGOA1QiqS0nwPaaQ+bJcF+AVlOVLhCD5dvcji0AN5ErwYdainKV7i0MLayHLScey
-         +a+0o/3RO7mWmPkArJE8e1L86QYJbXzkSj9D2clL3ZYPGDK7gbQyS3QqJNh5U84kwVve
-         f7kSLKb7vA9B7tgU2eUMEtjvJo4Qs5LQCPFvWhr59ItnBWLJXxSdKyK0K/JBMenptXp7
-         vwHQ==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=XFlsNVF9/12hVZ8CNphJ464OWxo8QT6umdyWIuj363Y=;
+        b=ljhvKajMlv4s3mVpcaLew8uWsSXhpbFIRWi5ltbP2McGpVynag+sj+SumhjYLRIuaD
+         nx1GwRHhhXGkq4nY4VwOQwJKYGauovbvl+BKJiBairlcJ9A9/sP9A/B6MpF3qQgarD5Y
+         gJE+uRGUtMHgBggmnrOK6johrH4bdfYOUS8E/o5dgFAn/wXRXFnLSkapZVZOuubGuikl
+         UtEuKBvS6WW4Mis9oVC39a5BF0sh2pEdsnz1pji+960PshWEsSQWTskaljSEDIp8+lnt
+         i9xy1PtXckMFlVA0fzEOUau89TUc64Tx+Xua8bqy4QJBpRvjmgWqcB2PE0D++MLsEj24
+         TBXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=8Sw551/4tHVz/DiAUlWh6wrIyRhO2uISo/gmunBqujs=;
-        b=feJBQ+V2GfFweJgES1APq63Bd742OhFyjEW97h0j+H9S06h8Uxm5iSIg+W8zY68nFg
-         84S2bIKBAK9pZwI0fjw93e9Ung4I9HRDRKObXoXgpxKyfBl72tY6wtumAFMXi7Rv1hGt
-         UlifNbtwzDAkeMdYKa3H60QT0b4gB2taB49Aw7shv8sW+D0FjIrIXuuFd/QobWCAsm+I
-         twyTQQTg+9rCUkhA7h6b4DlV5fBULmaoMQEkURB8h9qYRUhRTHhcag3MUzCf3rfkE/M/
-         lQWQiPwIHfDdbRH32Q4+CXyPm3Xl/a/vLWNyu7kR++yKKsUyl6NfCmg0e0h6LpvQ3pYM
-         2z3Q==
-X-Gm-Message-State: AFeK/H1EQsppLHVmzv9LUzVYs6zu+etxXDgkTapF2hzwI1gyXQg0JXxq2GAi3zzqBqvphA==
-X-Received: by 10.223.153.39 with SMTP id x36mr4291128wrb.64.1489600452209;
-        Wed, 15 Mar 2017 10:54:12 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:3132:88fa:c554:dae8])
-        by smtp.gmail.com with ESMTPSA id s26sm3171546wra.66.2017.03.15.10.54.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 15 Mar 2017 10:54:11 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: corbet@lwn.net,
-	outreachy-kernel@googlegroups.com,
-	linux-doc@vger.kernel.org
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] Documentation: Fix typos
-Date: Wed, 15 Mar 2017 19:54:07 +0200
-Message-Id: <20170315175407.3913-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=XFlsNVF9/12hVZ8CNphJ464OWxo8QT6umdyWIuj363Y=;
+        b=Sw2WatrhvrQuH64I9kAHa7kZ+kDzafjch0c0LFljSVQ5UQxfGIlTuclpsNqTr2Oji2
+         ls4h4j6VYzFIZPWK2jS6Al6b7w2NCkjiwN4FweGw3V2aafA6O2agBJoQA8J5ebd8BwZ7
+         P86SC4r1ZNUc40XGHjQr9EKglxqoqsqOvhNjY2ppGn6mKyjbMLlFZG9ZbO36hPlSQQyZ
+         iifqS+oAIp40VrtUJmhBSLuGbD8X/IdKi/Upl1NaA2N0/MGDEQv5F35AWhdo1e+OzCi8
+         gL2vFn1J7SnUY0w+qh9DfE0zF9X8cJgyEl5XmBZeqvob//Fz4q0YY3FGflvnopM8ymWk
+         766w==
+X-Gm-Message-State: AD7BkJKpmSdh289yr6HJB7H4Qn2Awnc2HOYi06zH9elsIfbpFgZgDSWRV3girWa9SHFi9w==
+X-Received: by 10.98.9.27 with SMTP id e27mr27009651pfd.59.1457277190745;
+        Sun, 06 Mar 2016 07:13:10 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.154])
+        by smtp.gmail.com with ESMTPSA id p79sm13933990pfi.61.2016.03.06.07.13.02
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 06 Mar 2016 07:13:10 -0800 (PST)
+Date: Sun, 6 Mar 2016 12:43:27 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] Staging: vt6655: Remove & from function name.
+Message-ID: <20160306071327.GA31568@sandhya>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Fix typos in vfio-mediated-device.txt to make documentation
-grammatically correct.
+Remove & from function name,when function name passed as an argument to another function.
+Function name is used as pointer without &.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- Documentation/vfio-mediated-device.txt | 2 +-
+Changes in v2:
+* No change.
+*Compile this patch to check nothing is broken.
+
+ drivers/staging/vt6655/device_main.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/vfio-mediated-device.txt b/Documentation/vfio-mediated-device.txt
-index d226c7a..acae6c0 100644
---- a/Documentation/vfio-mediated-device.txt
-+++ b/Documentation/vfio-mediated-device.txt
-@@ -380,7 +380,7 @@ card.
-    /dev/ttyS1, UART: 16550A, Port: 0xc150, IRQ: 10
-    /dev/ttyS2, UART: 16550A, Port: 0xc158, IRQ: 10
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index 8a1ed62..c3eea07 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -1171,7 +1171,7 @@ static int vnt_start(struct ieee80211_hw *hw)
+ 	if (!device_init_rings(priv))
+ 		return -ENOMEM;
  
--6. Using a minicom or any terminal enulation program, open port /dev/ttyS1 or
-+6. Using a minicom or any terminal emulation program, open port /dev/ttyS1 or
-    /dev/ttyS2 with hardware flow control disabled.
- 
- 7. Type data on the minicom terminal or send data to the terminal emulation
+-	ret = request_irq(priv->pcid->irq, &vnt_interrupt,
++	ret = request_irq(priv->pcid->irq, vnt_interrupt,
+ 			  IRQF_SHARED, "vt6655", priv);
+ 	if (ret) {
+ 		dev_dbg(&priv->pcid->dev, "failed to start irq\n");
 -- 
-2.9.3
+1.8.3.4
 
 
