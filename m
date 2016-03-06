@@ -1,152 +1,150 @@
-X-GM-THRID: 6399195765741191168
-X-Received: by 10.129.182.11 with SMTP id u11mr12050416ywh.149.1489928869761;
-        Sun, 19 Mar 2017 06:07:49 -0700 (PDT)
+X-GM-THRID: 6258590629737005056
+X-Received: by 10.107.135.209 with SMTP id r78mr12006681ioi.19.1457241627703;
+        Sat, 05 Mar 2016 21:20:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.56.232 with SMTP id k37ls11760806ote.15.gmail; Sun, 19 Mar
- 2017 06:07:49 -0700 (PDT)
-X-Received: by 10.13.245.67 with SMTP id e64mr12932134ywf.127.1489928869431;
-        Sun, 19 Mar 2017 06:07:49 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 2si2225086pfx.8.2017.03.19.06.07.49
+Received: by 10.140.101.142 with SMTP id u14ls1106252qge.82.gmail; Sat, 05 Mar
+ 2016 21:20:27 -0800 (PST)
+X-Received: by 10.129.78.78 with SMTP id c75mr3532242ywb.30.1457241627022;
+        Sat, 05 Mar 2016 21:20:27 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 12si2244653pfb.1.2016.03.05.21.20.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 06:07:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 05 Mar 2016 21:20:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 79so7253608pgf.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 06:07:49 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id 63so5841970pfe.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 21:20:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=CXrI0Uj+HcrOiy9ZX3Phyn49A679Hg5LyKl0lBQvu7I=;
-        b=OM5gIa9f2r7JSryWo/un5JuPLY0LOYrVWxszA7O5vCsyehgnaGlBlGWyArhaNzYEdh
-         cZznTvbGD/r8Hd3mLYZyf/42DqZ1fOv/UOj/jPnewG/dP96DBrYWJZw70fhA40Shrv+j
-         rupvzmCiIv+r2YTadxhXRiE+Xc8U0ePVfDO9qS0GVQ/8hM4R4LnypobnjtWHnLNCn7AV
-         boLkDzm3RzQoLthD25PoGuS9WtL6KbUVx6nT96Y6fK6qo12MWm863U06a+R6mQsg861i
-         swMlYaOG2DCkJIsI52oo3UvMn2JFn2+NYC19Vt8+w1oWJfPc65J1KHVrSqO09QmctZ+c
-         5kDQ==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=7sULkpw/WKFQSkbL29fM+oAkKpRxEK5sVpcx2dEfIZk=;
+        b=IUEfOpe69X4Qx58ms+RrAjhTv1tkUglFcYLL9/Yg/9Le9oFVEtYD/PciQ+TG6SPJAN
+         U+I8ZJnPGGNGZpyuR64OjrPoLl/vP+rGQP3/JieIRMJSaulhlXFQk7qt3qea0mnZIop8
+         zxwwE7MO2DgzQiRmelpSrquyyId6FTpoEAKTPspj1PSLVkdrJGa6rAXgxe16ZxJnBtn+
+         1dVwoYcGKxJkR/c2P3MdQDelWgma9koaEjJMbXru8oAgd6Eh9l8AqPn9fDJ8iHsF5+qe
+         XygZHmA4Tw3wOUNn7QiN/O4LB4D3HzWhHQlYQUiJ8XKKCF+Bx9QU73eTnKqjcA8EBnbV
+         Lf4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=CXrI0Uj+HcrOiy9ZX3Phyn49A679Hg5LyKl0lBQvu7I=;
-        b=NWk3bNls6HPLRNK56KXdmioE66AFl3AbhKgxnqSy+7k6ffTffJsfpimgX7xAXt9qR4
-         9RRFZpMKvdODYv/G+NCDKfPuHd1F+83jarKqWGhMxxR4LmUSAgRq4Xlnbr46xBd0ieZz
-         56sUUR48kkuDu4u1TvFnevpFRn8ks11ABCobJ3l/q8EoGnR+bDFeINn4BTJKgl1etzmS
-         oOQ3yaZOhr3NGmkmjwlWyz9ex4qg+D8Fs/Uf35ByRaPpVQNVzj0t1epAequXn3weP7GV
-         xOvAY8gkhBKgmjlP20dlbli7OXlZG77XVS+/6bLuELkEk/FyzQOAD+sfBAuGNJRT5SPi
-         aiQg==
-X-Gm-Message-State: AFeK/H0N55OF1yRDXFnm9WO1P5lZUkh3z68n4Bp4+zhcEJMxPFR1YQwQMj1YPRI2ZZC1Qg==
-X-Received: by 10.84.231.193 with SMTP id g1mr20615145pln.1.1489928869150;
-        Sun, 19 Mar 2017 06:07:49 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id v186sm27406363pgv.44.2017.03.19.06.07.46
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7sULkpw/WKFQSkbL29fM+oAkKpRxEK5sVpcx2dEfIZk=;
+        b=cCWgRiqRAjv7wB44I+kKpHQf0ZWyMswLzFa6aJXYDw8goq3zj4uXSfTX3HlZI93+M1
+         NJp178Ilm11MnSLN2b27YqZLcuA68YohoGabm7eVQH45egL8xoM7PyCprjOfK5BN5GQ1
+         FlWwOpJS/up07ZwFve5c0FR34SHEa+tXmJz2l10jGfVh93i3UQYmP3ikTLWyBBdzwS+k
+         OIftHrFKE/nnH1Z4op07xCZgI+escrRvihgKLyebrfrZBUPmsWfVHP88P9ioxCCF/X1p
+         /L0Wen4Pti0ew9QCTFm1cOxq4WAgO1msla8ILYlG0dAy9gqyZ/qAuUbtTGAUl4wiLZan
+         9NmQ==
+X-Gm-Message-State: AD7BkJJ4Bwykj9U8iMz2KtKwZgWCLXMtbMZYZ6dcQ3l0XhaUu+M6NpfAuobuTve/ozWxjw==
+X-Received: by 10.98.8.74 with SMTP id c71mr24485165pfd.155.1457241626863;
+        Sat, 05 Mar 2016 21:20:26 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([203.215.120.141])
+        by smtp.gmail.com with ESMTPSA id cq9sm15623755pac.26.2016.03.05.21.20.25
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Mar 2017 06:07:47 -0700 (PDT)
-Date: Sun, 19 Mar 2017 18:37:44 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: sudipm.mukherjee@gmail.com
-Cc: Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: sm750fb: Code readability is improved
-Message-ID: <20170319130744.GA24605@arushi-HP-Pavilion-Notebook>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        Sat, 05 Mar 2016 21:20:26 -0800 (PST)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH v2] staging: sm750fb: convert pr_err() to dev_err()
+Date: Sun,  6 Mar 2016 13:20:21 +0800
+Message-Id: <1457241621-11080-1-git-send-email-eraretuya@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-New variables are added to make the code more readable.
+Replace pr_err() calls with respective dev_err() counterpart.
+Change is safe since pdev is not NULL, this was identified by hand.
+Semantic patch used to detect and apply the transformation:
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+@r exists@
+identifier f,s,i;
+position p;
+@@
+
+f(...,struct s *i,...) {
+  <+...
+  pr_err@p(...)
+  ...+>
+}
+
+@s@
+identifier r.s, dev;
+@@
+
+struct s {
+	...
+	struct device dev;
+	...
+};
+
+@t@
+identifier r.i, s.dev;
+expression fmt;
+position r.p;
+@@
+
+- pr_err@p(
++ dev_err(&i->dev,
+			fmt, ...);
+
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- changes in v3
- -try to make the code much more readable.
- 
- drivers/staging/sm750fb/ddk750_mode.c | 61 ++++++++++++++++++++---------------
- 1 file changed, 35 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-index eea5aef2956f..5f18ce4d10de 100644
---- a/drivers/staging/sm750fb/ddk750_mode.c
-+++ b/drivers/staging/sm750fb/ddk750_mode.c
-@@ -81,33 +81,42 @@ static int programModeRegisters(mode_parameter_t *pModeParam, struct pll_value *
- 	if (pll->clockType == SECONDARY_PLL) {
- 		/* programe secondary pixel clock */
- 		poke32(CRT_PLL_CTRL, sm750_format_pll_reg(pll));
--		poke32(CRT_HORIZONTAL_TOTAL,
--		       (((pModeParam->horizontal_total - 1) <<
--			 CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
--			CRT_HORIZONTAL_TOTAL_TOTAL_MASK) |
--		       ((pModeParam->horizontal_display_end - 1) &
--			CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK));
--
--		poke32(CRT_HORIZONTAL_SYNC,
--		       ((pModeParam->horizontal_sync_width <<
--			 CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) &
--			CRT_HORIZONTAL_SYNC_WIDTH_MASK) |
--		       ((pModeParam->horizontal_sync_start - 1) &
--			CRT_HORIZONTAL_SYNC_START_MASK));
+Change in v2:
+* update commit message stating that pdev is not NULL and that it was identified by hand
+
+ drivers/staging/sm750fb/sm750.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index 59c7455..7275cdb 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -418,14 +418,17 @@ static int lynxfb_suspend(struct pci_dev *pdev, pm_message_t mesg)
  
--		poke32(CRT_VERTICAL_TOTAL,
--		       (((pModeParam->vertical_total - 1) <<
--			 CRT_VERTICAL_TOTAL_TOTAL_SHIFT) &
--			CRT_VERTICAL_TOTAL_TOTAL_MASK) |
--		       ((pModeParam->vertical_display_end - 1) &
--			CRT_VERTICAL_TOTAL_DISPLAY_END_MASK));
--
--		poke32(CRT_VERTICAL_SYNC,
--		       ((pModeParam->vertical_sync_height <<
--			 CRT_VERTICAL_SYNC_HEIGHT_SHIFT) &
--			CRT_VERTICAL_SYNC_HEIGHT_MASK) |
--		       ((pModeParam->vertical_sync_start - 1) &
--			CRT_VERTICAL_SYNC_START_MASK));
-+		unsigned int a = (pModeParam->horizontal_total - 1) <<
-+				CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT;
-+		unsigned int b = a & CRT_HORIZONTAL_TOTAL_TOTAL_MASK;
-+		unsigned int c = (pModeParam->horizontal_display_end - 1) &
-+				CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK;
-+		unsigned int temp = b | c;
-+
-+		poke32(CRT_HORIZONTAL_TOTAL, temp);
-+
-+		unsigned int a = (pModeParam->horizontal_sync_width <<
-+				CRT_HORIZONTAL_SYNC_WIDTH_SHIFT);
-+		unsigned int b = a & CRT_HORIZONTAL_SYNC_WIDTH_MASK;
-+		unsigned int c = (pModeParam->horizontal_sync_start - 1) &
-+				CRT_HORIZONTAL_SYNC_START_MASK;
-+		unsigned int temp = b | c;
-+
-+		poke32(CRT_HORIZONTAL_SYNC, temp);
-+
-+		unsigned int a = (pModeParam->vertical_total - 1) <<
-+				CRT_VERTICAL_TOTAL_TOTAL_SHIFT;
-+		unsigned int b = a & CRT_VERTICAL_TOTAL_TOTAL_MASK;
-+		unsigned int c = (pModeParam->vertical_display_end - 1) &
-+				CRT_VERTICAL_TOTAL_DISPLAY_END_MASK;
-+		unsigned int temp = b | c;
-+
-+		poke32(CRT_VERTICAL_TOTAL, temp);
-+
-+		unsigned int a = pModeParam->vertical_sync_height <<
-+				CRT_VERTICAL_SYNC_HEIGHT_SHIFT;
-+		unsigned int b = a & CRT_VERTICAL_SYNC_HEIGHT_MASK;
-+		unsigned int c = (pModeParam->vertical_sync_start - 1) &
-+				CRT_VERTICAL_SYNC_START_MASK;
-+		unsigned int temp = b | c;
-+
-+		poke32(CRT_VERTICAL_SYNC, temp);
+ 		ret = pci_save_state(pdev);
+ 		if (ret) {
+-			pr_err("error:%d occurred in pci_save_state\n", ret);
++			dev_err(&pdev->dev,
++				"error:%d occurred in pci_save_state\n", ret);
+ 			return ret;
+ 		}
  
- 		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
- 		if (pModeParam->vertical_sync_polarity)
+ 		pci_disable_device(pdev);
+ 		ret = pci_set_power_state(pdev, pci_choose_state(pdev, mesg));
+ 		if (ret) {
+-			pr_err("error:%d occurred in pci_set_power_state\n", ret);
++			dev_err(&pdev->dev,
++				"error:%d occurred in pci_set_power_state\n",
++				ret);
+ 			return ret;
+ 		}
+ 	}
+@@ -453,7 +456,8 @@ static int lynxfb_resume(struct pci_dev *pdev)
+ 
+ 	ret = pci_set_power_state(pdev, PCI_D0);
+ 	if (ret) {
+-		pr_err("error:%d occurred in pci_set_power_state\n", ret);
++		dev_err(&pdev->dev,
++			"error:%d occurred in pci_set_power_state\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -461,7 +465,9 @@ static int lynxfb_resume(struct pci_dev *pdev)
+ 		pci_restore_state(pdev);
+ 		ret = pci_enable_device(pdev);
+ 		if (ret) {
+-			pr_err("error:%d occurred in pci_enable_device\n", ret);
++			dev_err(&pdev->dev,
++				"error:%d occurred in pci_enable_device\n",
++				ret);
+ 			return ret;
+ 		}
+ 		pci_set_master(pdev);
 -- 
-2.11.0
+1.9.1
 
 
