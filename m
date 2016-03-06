@@ -1,109 +1,139 @@
-X-GM-THRID: 6671889180677636096
-X-Received: by 2002:a24:420a:: with SMTP id i10mr4449899itb.164.1553420252710;
-        Sun, 24 Mar 2019 02:37:32 -0700 (PDT)
+X-GM-THRID: 6258741670150406144
+X-Received: by 10.129.146.73 with SMTP id j70mr11313377ywg.25.1457226851649;
+        Sat, 05 Mar 2016 17:14:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:90d:: with SMTP id 13ls3840849itm.2.canary-gmail; Sun,
- 24 Mar 2019 02:37:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyn+cH//sBVMQXW2ryULS/Qdpq9WwlO6Dk716jaMOzb1CpnsK8QojMFt3EjZk+2nY8xtPBO
-X-Received: by 2002:a24:6514:: with SMTP id u20mr3217528itb.177.1553420251824;
-        Sun, 24 Mar 2019 02:37:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553420251; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rs5DUXoPc5THxuFz9d6aNdjpkMkkaGuobmuYs/zXmdlsutd8jxvBH8OXCgS4rJyM5W
-         L58ohEPAz9+f7c/V0BMPikSBAm25GkmDBBZ8DgHbEKveFN+yCsIWirStjAZvhfq7o4uX
-         TXI4q5BbzDc2OOxvKpnyccXrpNvki9T78hG3pHRelsaw5whVULL4Dt/DxnPzoKSwxn7Z
-         zbs3uukEFQRZA1mchGmYw4SyQlgRaydpdQIdUnUd/k6GJV+7WfzQ1N0z53ENJn0YRjPR
-         p8ZNcpzotX7SjrtnVGMit3knaMejgm56OVBgmaTtxbjHUxM3p5Y8QI64Ghc/8vdCAVcL
-         TxyQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=Qaem7ncWomAm3UhYJm9co0wMpTqOZ+jGynzHjI6At40=;
-        b=RaNg2fS1LVZuYrrV+PjlnlesRChmuwOuD2CcV5vQO3LEHPOBNDgaXN8pIuulwHKYuV
-         oEjCQpw5ZK0lRbmROzccy0NqzUtUJ+jCj3O8oJynE/AzC8XTsHdy2ld3XNOZYTowtHIC
-         7LKW6NnCeQDzvkxXO0qTqGHqCrBxpuNkgCj1OoAf8WQ3Fysh9DICz7tdYJs79ErTyCFs
-         6wj5YTa+Ni5E099Q++ZdEh1sTUNxRKdfwsIZKEEqulFOYVPyQC+mQRwefUPAZPuyeyEX
-         4EDDD8P3kdWr14ITZcIC7Bjdl4B2/hcMMGk4YsKBl7mvlKh/4RKYuxoAfHYJ/0fwYcSe
-         aTLQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oYGKB3aX;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <anushkacharu9@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id x26si660962iog.4.2019.03.24.02.37.31
+Received: by 10.50.127.177 with SMTP id nh17ls57781igb.21.canary; Sat, 05 Mar
+ 2016 17:14:11 -0800 (PST)
+X-Received: by 10.107.167.148 with SMTP id q142mr11931895ioe.17.1457226851300;
+        Sat, 05 Mar 2016 17:14:11 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from mail-qg0-x22f.google.com (mail-qg0-x22f.google.com. [2607:f8b0:400d:c04::22f])
+        by gmr-mx.google.com with ESMTPS id s129si104530ywb.5.2016.03.05.17.14.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Mar 2019 02:37:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Sat, 05 Mar 2016 17:14:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) client-ip=2607:f8b0:400d:c04::22f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oYGKB3aX;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id t21so4371908pfe.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 24 Mar 2019 02:37:31 -0700 (PDT)
+       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c04::22f as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qg0-x22f.google.com with SMTP id y89so72164238qge.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 17:14:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Qaem7ncWomAm3UhYJm9co0wMpTqOZ+jGynzHjI6At40=;
-        b=oYGKB3aXrc3d8dCtjxG759vna1Y50wt8SMmuo5EAnmYL7LUJj5HdvktfHWdO5Aes48
-         vrJkv891AhObIHfZfJYqkYC2wKbjj20sWTPOHRWjiiVq+GCc4IKr7nRJ7X9wKT2vjZ9v
-         2bAVm1kJ5VjerEdyclNF5RrLUZsfS721dnUpP8HevrQUQRFkJ0wBufl42wKUzPSB/3IX
-         cfwBPJY0N0HNC7IfqpWxfQv88vigSu3eNZxM+wqDJ6zXrETdUGaNB3wJhPZVuMrc/7pI
-         ep9rJQNzkyCnL1swfmSLZf5HJiJ4SSBdGrlYOwBSs+5lBOs5e+e4kjz0lc8KmLAv0jCK
-         9uVg==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=JYDBFmyssLv2+bIICgNNHwl3u4US6SaBeXa+yze6jBs=;
+        b=NvOs9XvZPsIEucHw0F7bC5wGqXbJgDSMcuLahwpPSBbusuLcImmqe9R3gFe5ZswENV
+         bznO3wrkB1VOggGZHzf93sUcP4eeYhGxxrdfRbHzmMfXbiIwY2eP6fbGzpfLxpJ31KUY
+         joUHaIg7UnfNgzE7HdkCdNiPfwX6lUANA3+u9zSYByH460sszzBrTncHWsRFdanyGvZ+
+         dcsUazBJXejL0LXXO+byd4P3uLZ6b4u1alGq5xJhmPxbjnu+FGVo8FDEcZ/21ov8lMmO
+         oKLRsRHFGEnL4oRKm+tg/XFBQzmhkxePCXiEsrM+ZIzQXF8wFd8F4z8J1muegmXTwBSF
+         YC8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=Qaem7ncWomAm3UhYJm9co0wMpTqOZ+jGynzHjI6At40=;
-        b=kT71Dz5E8CL/Kspy8K8+6/XaEH+y48lP4VlEhfGmFb4src1iJrzFPIw5if4BxSu9Qi
-         gq5DsZFOtHLtVbgPYVyVKyynRTr6LbysxsQvQ7YXMh652iNKfOi2wkya/gHSNTCe33Ot
-         oevkMqPsr+j3RweaSbL46KAicjwMU+mZUL1Dbx8xSc+Eflsa6WLoMBmr56zmVyohbYTB
-         GEuB9EYaIgSHl9Zp8/o83YFbhOAqXq4o8qkDTLiv5Ns17iJlrt2TmaY/t9rPGpmg3sub
-         1qKJZ4/Qp1W2fv0mytaRILJthiHdiqrrbliSxOcciodiD2qwfpd01KdiQldztBUQvllw
-         2kjw==
-X-Gm-Message-State: APjAAAVTiuNKGboGRF0e0TCRetFkrMRUm59Fhld1brrmcxgZTz7wBgGO
-	/2D1mxKHiZ4plX4LUcLT/YY=
-X-Received: by 2002:a63:94:: with SMTP id 142mr17737366pga.277.1553420251164;
-        Sun, 24 Mar 2019 02:37:31 -0700 (PDT)
-Return-Path: <anushkacharu9@gmail.com>
-Received: from localhost.localdomain ([42.110.155.238])
-        by smtp.gmail.com with ESMTPSA id w123sm18540851pfw.72.2019.03.24.02.37.28
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=JYDBFmyssLv2+bIICgNNHwl3u4US6SaBeXa+yze6jBs=;
+        b=dOFWeZWD/C9vRGYTWvShhySVO1kMqQSitnS6Y96mnB1ussyBOr+BcjLBvQQ147dxDU
+         q+JjlfECdGxa89SetyufW3CLIjWp9MbLgdEQRfXSqM72yT+A1CLyCHlqevz+SnMx+DGp
+         434YKFrWHdjZFpdPE98AmHapH5dOvhYLdmXuHAsrO961nqM3Q2dw6nnz+2cg+8xdohGc
+         5yvCzVf+VBtSf4EIZBa3/BJAGLvU+IGL8VRQSW8QQ4oJs7UUQncaD3BWReXWFadFg7NH
+         9pSaaj18iLmzA9/pbIyHXK4ijG5gCLcTty1y9bXXZ1snb3b/0rxrR8m0LoLsIqeGJp8D
+         De7w==
+X-Gm-Message-State: AD7BkJJnnZfiW4Odkt4YxEu8ty4FCQXlynovaTPHetbRhawXKGF9xmo4xZFo4S9WoDAtJw==
+X-Received: by 10.140.81.51 with SMTP id e48mr19763389qgd.27.1457226851103;
+        Sat, 05 Mar 2016 17:14:11 -0800 (PST)
+Return-Path: <janani.rvchndrn@gmail.com>
+Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
+        by smtp.gmail.com with ESMTPSA id j7sm5031198qgd.2.2016.03.05.17.14.10
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Mar 2019 02:37:30 -0700 (PDT)
-From: anushkacharu9@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Anushka Shukla <anushkacharu9@gmail.com>
-Subject: [PATCH] staging: vt6656: card.h: fix the comment style
-Date: Sun, 24 Mar 2019 15:07:06 +0530
-Message-Id: <20190324093706.16308-1-anushkacharu9@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <anushkacharu9@gmail.com>
-References: <anushkacharu9@gmail.com>
+        Sat, 05 Mar 2016 17:14:10 -0800 (PST)
+Date: Sat, 5 Mar 2016 20:13:14 -0500
+From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] extensions: libip6t_rt.c: Add translation to nft
+Message-ID: <20160306011314.GA32269@janani-Inspiron-3521>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-From: Anushka Shukla <anushkacharu9@gmail.com>
+Add translation for --rt-type, --rt-segsleft and --rt-len.
 
--Fix the comment style
--Replace '//' by '*/' to follow linux kernel coding style
+Examples:
 
-Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
+$ sudo ip6tables-translate -A INPUT -m rt --rt-type 0 -j DROP
+nft add rule ip6 filter INPUT rt type 0 counter drop
+
+$ sudo ip6tables-translate -A INPUT -m rt ! --rt-len 22 -j DROP
+nft add rule ip6 filter INPUT rt hdrlength != 22 counter drop
+
+$ sudo ip6tables-translate -A INPUT -m rt --rt-type 26 -j ACCEPT
+nft add rule ip6 filter INOUT rt seg-left 26 counter accept
+
+The xlate function returns 0 for other options.
+
+Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
 ---
- drivers/staging/vt6656/card.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ extensions/libip6t_rt.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/drivers/staging/vt6656/card.h b/drivers/staging/vt6656/card.h
-index 0a91d9ba4688..75cd340c0cce 100644
---- a/drivers/staging/vt6656/card.h
-+++ b/drivers/staging/vt6656/card.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0+
-+/* SPDX-License-Identifier: GPL-2.0+ */
- /*
-  * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
-  * All rights reserved.
+diff --git a/extensions/libip6t_rt.c b/extensions/libip6t_rt.c
+index cada779..59adfad 100644
+--- a/extensions/libip6t_rt.c
++++ b/extensions/libip6t_rt.c
+@@ -245,6 +245,40 @@ static void rt_save(const void *ip, const struct xt_entry_match *match)
+ 
+ }
+ 
++static int rt_xlate(const struct xt_entry_match *match, struct xt_xlate *xl,
++		    int numeric)
++{
++	const struct ip6t_rt *rtinfo = (struct ip6t_rt *)match->data;
++
++	if (rtinfo->flags & IP6T_RT_TYP) {
++		xt_xlate_add(xl, "rt type%s %u ",
++			     (rtinfo->invflags & IP6T_RT_INV_TYP) ? " !=" : "",
++			      rtinfo->rt_type);
++	}
++
++	if (!(rtinfo->segsleft[0] == 0 && rtinfo->segsleft[1] == 0xFFFFFFFF)) {
++		xt_xlate_add(xl, "rt seg-left%s ",
++			     (rtinfo->invflags & IP6T_RT_INV_SGS) ? " !=" : "");
++
++		if (rtinfo->segsleft[0] != rtinfo->segsleft[1])
++			xt_xlate_add(xl, "%u-%u ", rtinfo->segsleft[0],
++					rtinfo->segsleft[1]);
++		else
++			xt_xlate_add(xl, "%u ", rtinfo->segsleft[0]);
++	}
++
++	if (rtinfo->flags & IP6T_RT_LEN) {
++		xt_xlate_add(xl, "rt hdrlength%s %u ",
++			     (rtinfo->invflags & IP6T_RT_INV_LEN) ? " !=" : "",
++			      rtinfo->hdrlen);
++	}
++
++	if (rtinfo->flags & (IP6T_RT_RES | IP6T_RT_FST | IP6T_RT_FST_NSTRICT))
++		return 0;
++
++	return 1;
++}
++
+ static struct xtables_match rt_mt6_reg = {
+ 	.name		= "rt",
+ 	.version	= XTABLES_VERSION,
+@@ -257,6 +291,7 @@ static struct xtables_match rt_mt6_reg = {
+ 	.print		= rt_print,
+ 	.save		= rt_save,
+ 	.x6_options	= rt_opts,
++	.xlate		= rt_xlate,
+ };
+ 
+ void
 -- 
-2.17.1
+2.7.0
 
 
