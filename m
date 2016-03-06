@@ -1,99 +1,91 @@
-X-GM-THRID: 6260133962299998208
-X-Received: by 10.182.230.107 with SMTP id sx11mr26159399obc.5.1457551019523;
-        Wed, 09 Mar 2016 11:16:59 -0800 (PST)
+X-GM-THRID: 6259001811935428608
+X-Received: by 10.129.153.84 with SMTP id q81mr9459347ywg.58.1457287420956;
+        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.17.33 with SMTP id 30ls1324927qgc.99.gmail; Wed, 09 Mar
- 2016 11:16:59 -0800 (PST)
-X-Received: by 10.140.31.102 with SMTP id e93mr4718627qge.27.1457551019047;
-        Wed, 09 Mar 2016 11:16:59 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id tu5si3543pab.2.2016.03.09.11.16.58
+Received: by 10.50.30.166 with SMTP id t6ls725232igh.20.canary; Sun, 06 Mar
+ 2016 10:03:40 -0800 (PST)
+X-Received: by 10.50.154.2 with SMTP id vk2mr7213064igb.9.1457287420579;
+        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id 12si2438040pfb.1.2016.03.06.10.03.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Mar 2016 11:16:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id u190so18742771pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 09 Mar 2016 11:16:58 -0800 (PST)
+Received: by mail-pa0-x243.google.com with SMTP id hj7so6334044pac.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 10:03:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=gL5eEt70c/yF/ckMDfbBFNrUjXQri4V6/qEIYynC+0U=;
-        b=cAsZOra733e5rz/tVZRfLhJ5ZXxiKeI4tU0/ELPEJ/QYQ17xgXM+xpbkjqF42YvtUO
-         TZQenDF8yPoZAo2pXWAvzOoB11fIIuMWco0sxZWp3q+fHNtZocIsCHhTYTf7S9kG5R6V
-         G1r5qIqlmr8oeoIX2oQw0O9Lrr+yILFjgPD63yfIMaJEwjfZCebUzqcSAfCM2/RmakrT
-         BVUewTncY00OYyqd4dvcmh2zpD3zUyWtoPEMfvJk9ZQGJ/RoakwIKBLwnSLHZLahpNX6
-         yMzuP47koQMa3MX3lJyr40f2vFxrT27G3SwtmtZkZxg7LgGvRu1h9vS3JsjOcZznCXiq
-         7TLA==
+        bh=oZ7GFF8+82EYdvWBrUatnRKuEPyCb8vooCC6M18FQ1U=;
+        b=XuRnfd1dFEX4tVIvIblZ4CyHyTD1xe089lvRsUwJEJ+aIjv5hhQ/kwPjJWu7ZfrQ1A
+         JRif44apAUjN5cNpNpzkkaX/LgB8mnd+Q6/ocZ2/9CClAyOmY29WOgz9hB9td9f1I9Uk
+         JOpGsc2ucYW9ZtKvNwcMAs3/zUFpdZbiv49Kh8tH32/jtKXc0wDEosphq0gU+clnMO2e
+         5CZkIljUuaum9skjvexniL7YWl3ULCSmpp+SWC10RkH2UfEwPzFOLODLwNljObhbjGZV
+         Mz5gUNNNTboFApZKPtY/JnEm9EKInJoK+T2vl9gXQg/8zbLts9FHSsxCRUu7xye3l2EE
+         usiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=gL5eEt70c/yF/ckMDfbBFNrUjXQri4V6/qEIYynC+0U=;
-        b=C6dQDAT3EPjRxCUr2RPJpJJrUkBOHSZjnuYaoQXqwoHbievIa5we0F2Dk+qbZ8JBwE
-         E2+IrSckAtJECtlTV7oLqNPQO7WLHjSkgbpAyYAEuCgk2MJ3tW4JBzATKPsFMLMtaH4/
-         TJjzGh3wr8u+8WY9sFE665nqOzkqPa+ic33g4gzL9YA6rXap0/DObVpmuG5kkCUFdWof
-         H9JFKCeylf+vqLeqlxW8rL9957M81QwGuYG83+KM0mvYE3XB/N2QoWbKrXsURD5u61Mj
-         veSbtocxr+eN7nJJA8DQ2ToNz6qguFXk3f1GcT9WMbQF2QuLxy48Z4pP/I3EwrCxlx1b
-         iqfg==
-X-Gm-Message-State: AD7BkJIN3sfaIUjgO6M3y+MVSVbOtxs0H0Vkkowvth+pggTIG8YrCaTyWU6pTtE//2E3Nw==
-X-Received: by 10.98.15.135 with SMTP id 7mr52283305pfp.142.1457551018885;
-        Wed, 09 Mar 2016 11:16:58 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id d81sm15712pfj.77.2016.03.09.11.16.57
+        bh=oZ7GFF8+82EYdvWBrUatnRKuEPyCb8vooCC6M18FQ1U=;
+        b=UKw9yBE4TMBLVM/19Ub/XuLi4PFtdRdaJP0NgMqBUmqOJrjGg7HgcxfV8VQjvRDgCe
+         shdnro0yKvJwZzQ9IAEGa7pHwf2kedxgbAuLAyCf1UBMwozEFIhu8asVqi1mAWdcrrtl
+         0Di35EQHb9Rg1y/6OPV7GC9fFh4uahajqr6ZH0YVQhvLFBxe0iI7gL1ZKlHuheRZ7urF
+         6UFZzKX2cE19qwAY9ooh4PgaHg6NqooDc6surAR8iCLKyVZOpiKP1H3oWyXVFd4ARUkN
+         0QkY295F2f3HpI3B47P/9Xpqrl+MsfkfOWqgqRVBx0KOExsHGwwnDnW1CSes4rsb4AIv
+         7xXw==
+X-Gm-Message-State: AD7BkJIGnCXS68nfCmCg8BlkE10LoJG6kWHdTFS3UAwL5hNkjpTJSBDrGJq/vt71IyBKOw==
+X-Received: by 10.66.246.234 with SMTP id xz10mr27732585pac.49.1457287420397;
+        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.154])
+        by smtp.gmail.com with ESMTPSA id f66sm18989934pff.8.2016.03.06.10.03.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 09 Mar 2016 11:16:58 -0800 (PST)
-Date: Thu, 10 Mar 2016 00:34:44 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+Date: Sun, 6 Mar 2016 15:33:31 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: comedi: ni_pcidio.c: Prefer using macro DIV_ROUND_UP
-Message-ID: <20160309190443.GA16831@Karyakshetra>
+Subject: [PATCH v2] Staging: rtl8712: Avoid multiple assignments.
+Message-ID: <20160306100235.GA3971@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-The macro DIV_ROUND_UP performs the computation
-(((n) + (d) - 1) /(d)). It clarifies the divisor calculations.
-This was done using the coccinelle script:
-@@
-expression e1;
-expression e2;
-@@
-(
-- ((e1) + e2 - 1) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-|
-- ((e1) + (e2 - 1)) / (e2)
-+ DIV_ROUND_UP(e1,e2)
-)
+Avoid multiple assignments.This isssue is found by checkpatch.pl script.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/comedi/drivers/ni_pcidio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+* No change.
+*Compile this patch to check nothing is broken.
 
-diff --git a/drivers/staging/comedi/drivers/ni_pcidio.c b/drivers/staging/comedi/drivers/ni_pcidio.c
-index 67b9f22..7112c3f 100644
---- a/drivers/staging/comedi/drivers/ni_pcidio.c
-+++ b/drivers/staging/comedi/drivers/ni_pcidio.c
-@@ -531,7 +531,7 @@ static int ni_pcidio_ns_to_timer(int *nanosec, unsigned int flags)
- 		divider = (*nanosec) / base;
- 		break;
- 	case CMDF_ROUND_UP:
--		divider = (*nanosec + base - 1) / base;
-+		divider = DIV_ROUND_UP(*nanosec, base);
- 		break;
- 	}
+ drivers/staging/rtl8712/recv_linux.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
---
-2.1.4
+diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
+index 2f5460d..28a6360 100644
+--- a/drivers/staging/rtl8712/recv_linux.c
++++ b/drivers/staging/rtl8712/recv_linux.c
+@@ -44,7 +44,8 @@
+ int r8712_os_recv_resource_alloc(struct _adapter *padapter,
+ 				 union recv_frame *precvframe)
+ {
+-	precvframe->u.hdr.pkt_newalloc = precvframe->u.hdr.pkt = NULL;
++	precvframe->u.hdr.pkt_newalloc = NULL;
++	precvframe->u.hdr.pkt = NULL;
+ 	return _SUCCESS;
+ }
+ 
+-- 
+1.8.3.4
 
 
