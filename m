@@ -1,90 +1,93 @@
-X-GM-THRID: 6330241382632914944
-X-Received: by 10.98.24.146 with SMTP id 140mr1139120pfy.3.1473874175522;
-        Wed, 14 Sep 2016 10:29:35 -0700 (PDT)
+X-GM-THRID: 6258995026896879616
+X-Received: by 10.107.166.7 with SMTP id p7mr14475563ioe.0.1457285840786;
+        Sun, 06 Mar 2016 09:37:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.3.83 with SMTP id e80ls515521ite.0.gmail; Wed, 14 Sep 2016
- 10:29:34 -0700 (PDT)
-X-Received: by 10.98.23.88 with SMTP id 85mr1008066pfx.5.1473874174699;
-        Wed, 14 Sep 2016 10:29:34 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id 142si1438791pfx.2.2016.09.14.10.29.34
+Received: by 10.140.94.34 with SMTP id f31ls1279948qge.76.gmail; Sun, 06 Mar
+ 2016 09:37:20 -0800 (PST)
+X-Received: by 10.140.31.102 with SMTP id e93mr13715411qge.27.1457285840091;
+        Sun, 06 Mar 2016 09:37:20 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id ff2si2626808pad.2.2016.03.06.09.37.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 10:29:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Sun, 06 Mar 2016 09:37:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id vz6so1012592pab.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 10:29:34 -0700 (PDT)
+Received: by mail-pa0-x241.google.com with SMTP id hj7so6307880pac.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 09:37:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=Tsfr31hWbYiEDmWQjx23JbvoUGED1j6k1tLH/BMaQQc=;
-        b=VEKxTJxiukxa9xraXDzP/pncVuoS/oUuPZ2VulLf/8aJpwjhO8XMDwWSL0/qW12cQG
-         C0T2zcI+qnHxe7hfu7j7gmsD3HJxw8I1RMpSHL14ziAuK2RuQq6wOQCr6eoZQJopg21w
-         Mr1wkYrTIA8CEA/42dvJ8jkvQEQOZqPU1v7E+KJozr00BO0WgCuOFIpbZ+SX1gHjPITq
-         rtQiRUxpUEsj4cokoHbhlGQ0kwgQXhPz88PQMHksTBp+kf2zRPIACoj+V6U9vvt0Mp9x
-         29j3noenYl8eocdx6ruNoAC5QxtSFAfVZVMUzHK7chH2i7cwDJrkGtWIw892gxdL8tTX
-         fNdg==
+        bh=IBNRhlRuMGiMArqt9Guo+mNYBU6ShFI369No57DZvy8=;
+        b=UpJCzpxHGa0LJW5EoLth0uojEWMeN+auSbC8vUhk/fJkRnuSdSSa0yNNFujkSll0OA
+         NZzPTQuJBNHQErFFQcXhIBGYxRFw2gZtBXCChiA88K1lAUTyKbch90LZhPptaFh3BwlW
+         rvyU+rgBrxmEf760utyIr/iorFYol0YLSo/4O1QV3+KPmE83KETFkeX6S8qrIGuMMSUc
+         0SifZFPKdL22QZ33OBQQbVXPeL67A5Tbis1yBw2Aam1Q90ZhknBWh6CjaUz7iCJtGPg/
+         Zzazdj00FwZA26BKYvvh4XimmaNYLoPgWRlJT97nhQGyjRU6t4dOcuWTS5fNUHwWKcHU
+         w1xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=Tsfr31hWbYiEDmWQjx23JbvoUGED1j6k1tLH/BMaQQc=;
-        b=YTeSaD4gFVXh5p1XJyGU7Oz5Y3TZtKlO7nFk6o/888kTacOWCHuoNecJUjTCw9Dah3
-         S8OHJa6UWGqUb2r9gypnSAMu9KifflXEOa2/QAEQQB3EmyXgnymG5NLsZxpZ8lub0KBu
-         G/DrZn+UJ+gjl5V5OxzRtbY7grqTdCP2ZYa2/oa1u9fK/+V2NSlbdNgp/gIVTljPbAN8
-         CxW6iXjTnVynVfAMF4JMJFJubnRyYJBvk3nOpfGaYfPZYYbwji+v2TK4JsaDe/CCUEZQ
-         JQXEknnMT5NyAEfTXqXxlOxMGMrmCT08fUI65cSmFueZDw569wSXpiE73m5o4HnpD3Q0
-         nvfQ==
-X-Gm-Message-State: AE9vXwNj4YBIDIGI25H92npj4bW/y5JwUNFBgI+yJtA0XWu1KCxfd63H/BrgTy+QwNs7bA==
-X-Received: by 10.66.67.51 with SMTP id k19mr6529828pat.55.1473874174302;
-        Wed, 14 Sep 2016 10:29:34 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ps2sm6932751pab.10.2016.09.14.10.29.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 10:29:33 -0700 (PDT)
-Date: Wed, 14 Sep 2016 22:59:24 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
+        bh=IBNRhlRuMGiMArqt9Guo+mNYBU6ShFI369No57DZvy8=;
+        b=Dh5r7Yzctmf5zQ5lJMzMIOnlyqa0/ILIis/8sa7EazL8J94bJwqrVSxlPgbDT/fzZA
+         7CSD/ue3C7tsKm5sETyDTHwxQfEqH9vAJQvU98mRqxmb3y7+ZdVSc4H+B0XeKSyw33a/
+         em0KSBeVFizezwWDjIn3KNe4gpx2FbzniAhHH6c+qVtEof6NOe3jGbQ/bz9anV2bOkfi
+         O9knBMwgRmZiyHDARoykbagzTcMREDh3VNt7D9jst/aW1bkM2ZOdtgZXupv39qJ2l/bU
+         q3jqo1G7506YEzfTgdumKjKCwgXG0FV0Xz//P4AHn5BVWiJFzlUxk5FWkgDk1IEpo2CR
+         ORlQ==
+X-Gm-Message-State: AD7BkJLAQaO0XvoBIrlXy978ub/G9XoBMsNU5P5IyUq5YG0ussJBvKV8OpxazFQGw2uE4g==
+X-Received: by 10.66.144.134 with SMTP id sm6mr27762868pab.158.1457285839919;
+        Sun, 06 Mar 2016 09:37:19 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.154])
+        by smtp.gmail.com with ESMTPSA id ud8sm18914507pac.11.2016.03.06.09.37.18
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 06 Mar 2016 09:37:19 -0800 (PST)
+Date: Sun, 6 Mar 2016 15:07:44 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: iio: accel: Fix indentation
-Message-ID: <20160914172924.GA27415@toblerone>
+Subject: [PATCH v4] Staging: sm750fb: Remove leading and trailing whitespace.
+Message-ID: <20160306093744.GA3595@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-This patch fixes the checkpatch.pl warning:
-WARNING: Statements should start on a tabstop
+Remove leading and trailing whitespace.
 
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/iio/accel/sca3000_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v4:
+* No change.
+*Compile this patch to check nothing is broken.
 
-diff --git a/drivers/staging/iio/accel/sca3000_core.c b/drivers/staging/iio/accel/sca3000_core.c
-index b5625f5..61f3241 100644
---- a/drivers/staging/iio/accel/sca3000_core.c
-+++ b/drivers/staging/iio/accel/sca3000_core.c
-@@ -412,7 +412,7 @@ static const struct iio_event_spec sca3000_event = {
- 		},						\
- 		.event_spec = &sca3000_event,			\
- 		.num_event_specs = 1,				\
--	 }
-+	}
+ drivers/staging/sm750fb/ddk750_power.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_power.c b/drivers/staging/sm750fb/ddk750_power.c
+index 33e092e..b3c3791 100644
+--- a/drivers/staging/sm750fb/ddk750_power.c
++++ b/drivers/staging/sm750fb/ddk750_power.c
+@@ -106,9 +106,9 @@ void enable2DEngine(unsigned int enable)
+ 	u32 gate;
  
- static const struct iio_chan_spec sca3000_channels[] = {
- 	SCA3000_CHAN(0, IIO_MOD_X),
+ 	gate = PEEK32(CURRENT_GATE);
+-	if (enable) 
++	if (enable)
+ 		gate |= (CURRENT_GATE_DE | CURRENT_GATE_CSC);
+-	 else 
++	else
+ 		gate &= ~(CURRENT_GATE_DE | CURRENT_GATE_CSC);
+ 
+ 	setCurrentGate(gate);
 -- 
-2.7.4
+1.8.3.4
 
 
