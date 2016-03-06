@@ -1,60 +1,60 @@
 X-GM-THRID: 6255366153272557568
-X-Received: by 10.66.150.68 with SMTP id ug4mr12214859pab.33.1457257354081;
-        Sun, 06 Mar 2016 01:42:34 -0800 (PST)
+X-Received: by 10.66.147.133 with SMTP id tk5mr221737pab.8.1457256968117;
+        Sun, 06 Mar 2016 01:36:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.22.116 with SMTP id c20ls620769obf.62.gmail; Sun, 06 Mar
- 2016 01:42:33 -0800 (PST)
-X-Received: by 10.182.22.48 with SMTP id a16mr12715513obf.29.1457257353716;
-        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+Received: by 10.140.19.8 with SMTP id 8ls1240359qgg.12.gmail; Sun, 06 Mar 2016
+ 01:36:07 -0800 (PST)
+X-Received: by 10.140.147.139 with SMTP id 133mr12262880qht.21.1457256967246;
+        Sun, 06 Mar 2016 01:36:07 -0800 (PST)
 Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id yd9si2241091pab.1.2016.03.06.01.42.33
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id ui7si2382422pab.0.2016.03.06.01.36.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sun, 06 Mar 2016 01:36:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id x188so3932029pfb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+Received: by mail-pa0-x242.google.com with SMTP id fl4so5824508pad.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 01:36:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=1PiPHAI0PYH/UzqZeouM0ptdfzO68pV+Mr0P9w8M2ek=;
-        b=lN6OYeFenWTYEkQjosTNMytoJrFblfi+DO7XwvOmVHKozcthxhWZjeN1VeXT7gVF7+
-         GlIay4MBVdFoeKM8cyu7JMUwjPw9rZQu3JOu5hcO265KctWN1j6DA7nVLUJixoZJjcIj
-         PNgk8OHfNVcr8YrSpt2Gwdtzz6xB9oZakvcLQEuAxcAmILyJINKNlr4l8+So4wEn6UEj
-         d5bWRx+FwbXz3feV77msYSkQzvamO1blXzAgwOMl+wCUDkYjcQ+LjK+aXOAKj5LmRUCB
-         Xd/PPbYILL9BMBzGB1ALGhn2Uh3Y3FyzDQVONaJh7/Htxo107dICaaRaHh9cxlLVkut7
-         Y+pQ==
+        bh=vamBEfMxXw6rtG3m+UbjN38Iqg5ZQ2HTR3dBxP5Xxi8=;
+        b=i7Hh4iX1gO6Oga+cdI4amZQ55Za3K6ClO6D2T7bxQnpPeMDpkzzj15Y2VWWxePzRvL
+         zdK10U4sQz0xKkSwm5o+YirmcreGOzbPWfBk2OtH9GuSoAdz7AnlDq1x8D1lCLNqakkV
+         yxcAb5Haqq7DzneMGsTUKxceApmjmnAeHX9GFJ1ohCyPot4/sEO2Yx2MIUX6bcTCUAdW
+         XZL+fvuE44lXdJfad3snSdpdxeXGAaOJyxR5+5KiPWsyUWWeUku2Px87Mz/QnGzWG9Qv
+         BpQXCkMWPuxGHnzzOHVVHd/wFOQjTLpKV9cS+Bt1WCiaxQbgEc/oGEgZYA328aTxpw7+
+         v4HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=1PiPHAI0PYH/UzqZeouM0ptdfzO68pV+Mr0P9w8M2ek=;
-        b=BtdVA4x020b3EeqvDPeqvfQRDe2v1OUwehQ0sentLDgessg3lF75LlRgtyJZx5msgi
-         hN5AcQe+ItbKlpBkQ0J3B7Qr7oOSGnP0vNShi4nZiKEvDZ4t2mJzfeSSUSpCCkQ6DolQ
-         3cHqrxHEal9mn9m24bDtaB0EbwWkFUBY3AaY++tXWMa8Ly3MZR+cG72q8xJLxohiG1S4
-         2uIoaBLc6KRvImZer+ZRBfNWFbEFOCEP3Q/FCJCKoovTCAbWXEteKjZS8SzHevhFPDSO
-         wAJKVaPzhzGRAKVahKN44C4zE6KqoGl26V/zYWGOTTcomyYMVhb6ag6mVF2kaKsyt+6N
-         hKCg==
-X-Gm-Message-State: AD7BkJLP09XfzKfG16zc+bIUb+1mUwKbO0O31oXaF0rQcYRZrf3u/LI7dKoe62M97uD/Sw==
-X-Received: by 10.98.75.212 with SMTP id d81mr25385873pfj.148.1457257353528;
-        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
+        bh=vamBEfMxXw6rtG3m+UbjN38Iqg5ZQ2HTR3dBxP5Xxi8=;
+        b=CSUC+yQVoyRqcc0YAdrGu07T61BqxcfJ9SdI4OKcV9f8lZTMiXB88Xfge8K3gePYM4
+         YhYW6bmdI7yVfjHCY0ACWy7Pq/5ty0eeC3LQh/l22EPFmaO0hBPpUXb3PaWSyp1f9h1a
+         IgisbE/VKSql/23UTyDKE2DnFIRRAxMqwwW0H6tjKVQOUBw5irEM2R78BGkXNtt3cc0J
+         cbxkeGx5551n//K7z6VGO8g3J3wIS/JnjxkNbBnAYg3NAiNUEimwJH9cPwMNnjjnbb9S
+         FmRWqwhd0OqLpxr1PtOz6v4IxzOKoMS+LvnEI/TxXRxU/CBJXR2eCUk2tPKWrBeNvhTH
+         N1yg==
+X-Gm-Message-State: AD7BkJIjJLbPHqL0NHDOq9cVgtRR7563+JYNjdt2k2xcDleYKb4y2muTYZsaRI8aNWGJAg==
+X-Received: by 10.66.251.162 with SMTP id zl2mr25770597pac.116.1457256967051;
+        Sun, 06 Mar 2016 01:36:07 -0800 (PST)
 Return-Path: <poojashamili@gmail.com>
 Received: from pooja-Inspiron-3537 ([103.224.159.11])
-        by smtp.gmail.com with ESMTPSA id 67sm16917908pfi.2.2016.03.06.01.42.32
+        by smtp.gmail.com with ESMTPSA id 85sm16867898pfl.18.2016.03.06.01.36.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 01:42:33 -0800 (PST)
-Date: Sun, 6 Mar 2016 15:12:30 +0530
+        Sun, 06 Mar 2016 01:36:06 -0800 (PST)
+Date: Sun, 6 Mar 2016 15:06:03 +0530
 From: G Pooja Shamili <poojashamili@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Subject: [PATCH v3] staging: rtl8712: Remove the unnecessary parantheses
-Message-ID: <20160306094230.GA657@localhost>
+Message-ID: <20160306093603.GA32358@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -85,11 +85,11 @@ E2
 Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
 ---
 Changes from Version 2:
-	* Modified the code to remove redundancy of removing and adding
-	the parenthesis
-
+	    * Changed the name in the From: and Signed-off-by: to full
+	    name.
 Changes from Version 1:
-	* Changed the name in the From: and Signed-off-by: to full name.
+	    * Changed the code to remove the redundancy of removing the
+	    brackets and adding them again.
 
  drivers/staging/rtl8712/rtl871x_mp.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
