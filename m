@@ -1,61 +1,61 @@
 X-GM-THRID: 6257131864000036864
-X-Received: by 10.31.160.209 with SMTP id j200mr18112715vke.6.1457382132588;
-        Mon, 07 Mar 2016 12:22:12 -0800 (PST)
+X-Received: by 10.50.13.101 with SMTP id g5mr11573913igc.6.1457381871883;
+        Mon, 07 Mar 2016 12:17:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.134.215 with SMTP id q84ls9739ioi.13.gmail; Mon, 07 Mar
- 2016 12:22:12 -0800 (PST)
-X-Received: by 10.107.167.148 with SMTP id q142mr18557157ioe.17.1457382132268;
-        Mon, 07 Mar 2016 12:22:12 -0800 (PST)
+Received: by 10.182.28.98 with SMTP id a2ls887404obh.80.gmail; Mon, 07 Mar
+ 2016 12:17:51 -0800 (PST)
+X-Received: by 10.182.112.193 with SMTP id is1mr18227955obb.38.1457381871454;
+        Mon, 07 Mar 2016 12:17:51 -0800 (PST)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id ff2si3435043pad.2.2016.03.07.12.22.12
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id ff2si3431917pad.2.2016.03.07.12.17.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 07 Mar 2016 12:22:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Mon, 07 Mar 2016 12:17:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id fl4so8280119pad.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 07 Mar 2016 12:22:12 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id 184so8656493pff.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 07 Mar 2016 12:17:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=x9vv3WNaBGA1U2pNONx2S8l7sLxgRdagGJWNq1U/79c=;
-        b=zw3yplgCvGAqno3kIUzZfRB8fdyWJA2kGCEjQaez902gUXR8MSRjRaVDF95uRkj6BF
-         UmvwCca+Ku5KMqPtf7jIZ3YNHfQ0GLM06XyF+FV6ZVvs4C1ohVlD3MrMs4JYceNdkK+t
-         vEJvYSVy/smVtQR7+FN3omh/Shh5/ntbCkPNpbR/+SHNmgOs6Ez7CuJsbblqEX/RjkUg
-         NMutIDYqnyWGACecVvqegjwVe35OfoxgFe5p3T5vajmouz0AYRyUqbWP2+9fFrrVm3qU
-         YhyqDZ0dOMevZRa2p/0pHBP96N0+XKTkgCgMAsdZdiYzR4FpSlk92OU04yu5zxnelmzd
-         fyrw==
+        bh=bnr9QjWFXKWeUXREc1sB5DZ3O+bSM7D8eG5qQg/7KkQ=;
+        b=DeN+mzv12rYG6FcROoIKrvyekVVjg1d1j0I3NzZ1DyVXBZEYOMZfKDMwPb843z8FWI
+         teTCqJzoUMw+Mc9PHhykpEYPZo5J0QSZ1Egq0MMvGpT/xxGHmQ1Vm82lRLfygCWA/8kO
+         Mq/eVecC5n22Nz6N4rIDyBSbtKD/NNcCG0pE9FDvC+jpSPq4DXpMDQtl6buugw556Izi
+         sQU11AAF6jx/gLitYzxfo5JcXO5QoifnEZ57bL50QiWVeqX9+/0onaqSw5iwpY0XZjR1
+         WC2c5TougXMbA20siMuhiR0Ok2NvTmk2Ov5SLQ4wK4HLYkrBKYER9cjK5QzQPYGUd8z9
+         1kVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=x9vv3WNaBGA1U2pNONx2S8l7sLxgRdagGJWNq1U/79c=;
-        b=TA9CohZROqX6zsqna4mox/qyIwVWJOAWd4R4vhl63TLdxZI9CdqC385LCRw7DxpUIu
-         pewiZbuihUIluIi9+3WScX70UbEorZ3MJ7c3pLFyFrdxUrtiVhELBdy+27z6f9rV9lJY
-         92oHIUuRYWyU3ocDvmntosfFwDupVwUdJ8sswgaLKDXp3DD6iGfdG+7X3dwC/4zxwilN
-         7zQ3rm6iDb/TviF8Md/McZK7SVMZ4cYaaRLEDHkP3qkB89JJxYcn5j+ybj9m2arfxHcA
-         nyBlsgT0qVAbiL8VgdzVJXYt8/mSIM1g28fzgGpELBrjI+HwXw12MdVtQfDT47R6U8tD
-         zd3w==
-X-Gm-Message-State: AD7BkJIvJwo8U8bfA9xsXTG/eEKJYyPwtdAti7mJ6jW0NrACojJDnU1XGf23NS5ci+JCEA==
-X-Received: by 10.66.234.166 with SMTP id uf6mr36159813pac.122.1457382132111;
-        Mon, 07 Mar 2016 12:22:12 -0800 (PST)
+        bh=bnr9QjWFXKWeUXREc1sB5DZ3O+bSM7D8eG5qQg/7KkQ=;
+        b=RgEYXScsZXfRaRWyjmwVO5pzitbGWMhh0C8AKsXal2cl4PkaHlWEk5MALCKIOGWup9
+         9iheYPF6SXNu2HrjKRMd4L0IJtfXNfc+hSGFPFzt0bmk7PviLVGB/0N0t87vgqKqUYji
+         uuX5eHlOH2SwxTmOPdLF99x5mCX7kjYU9G6gTMt3UHrfnabgj/7pKEbT7O9mDDAsawS2
+         K/+1HOPLRw2/HTm9pXaAdEHT8mdpHK4P1yDlc9Ijakzv1hvyKenJ/uMlEv130OXcSYzp
+         7FRsWGhC8bhMhEp/C93+6pBobFnNVacr+CPrfEtNjlpeIHAG0fdc0ewvy6AVLKEndTLa
+         isAQ==
+X-Gm-Message-State: AD7BkJKhkGeqUvVcRcKs2nZeDVLznZjzHCKHOMvPR0sTn4/cadYZF0ecO6M93To/QYR7FA==
+X-Received: by 10.98.16.69 with SMTP id y66mr36086645pfi.86.1457381871266;
+        Mon, 07 Mar 2016 12:17:51 -0800 (PST)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from sandhya ([59.161.35.136])
-        by smtp.gmail.com with ESMTPSA id q85sm25934743pfq.81.2016.03.07.12.22.09
+        by smtp.gmail.com with ESMTPSA id n19sm17792956pfi.53.2016.03.07.12.17.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Mar 2016 12:22:11 -0800 (PST)
-Date: Mon, 7 Mar 2016 17:52:37 +0530
+        Mon, 07 Mar 2016 12:17:50 -0800 (PST)
+Date: Mon, 7 Mar 2016 17:48:16 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/3] Staging: wlan-ng: Do not print message if kzalloc()
- failed.
-Message-ID: <ab1fdc272217ab1b9778b678e1e279ed6813a163.1457351977.git.bankarsandhya512@gmail.com>
+Subject: [PATCH 2/3] Staging: rtl8188eu: rtw_efuse: Do not print message if
+ kzalloc() failed.
+Message-ID: <20160307121816.GA7205@sandhya>
 References: <cover.1457351977.git.bankarsandhya512@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -68,21 +68,25 @@ kzalloc() has its own messages. So no need to add extra one.
 
 Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/wlan-ng/prism2sta.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rtl8188eu/core/rtw_efuse.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 131223a..e245732 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1886,7 +1886,6 @@ static wlandevice_t *create_wlan(void)
- 	hw = kzalloc(sizeof(hfa384x_t), GFP_KERNEL);
+diff --git a/drivers/staging/rtl8188eu/core/rtw_efuse.c b/drivers/staging/rtl8188eu/core/rtw_efuse.c
+index fd8cf47..cca42e5 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_efuse.c
++++ b/drivers/staging/rtl8188eu/core/rtw_efuse.c
+@@ -104,10 +104,8 @@ efuse_phymap_to_logical(u8 *phymap, u16 _offset, u16 _size_byte, u8  *pbuf)
+ 	u8 u1temp = 0;
  
- 	if (!wlandev || !hw) {
--		pr_err("%s: Memory allocation failure.\n", dev_info);
- 		kfree(wlandev);
- 		kfree(hw);
- 		return NULL;
+ 	efuseTbl = kzalloc(EFUSE_MAP_LEN_88E, GFP_KERNEL);
+-	if (efuseTbl == NULL) {
+-		DBG_88E("%s: alloc efuseTbl fail!\n", __func__);
++	if (!efuseTbl)
+ 		return;
+-	}
+ 
+ 	eFuseWord = (u16 **)rtw_malloc2d(EFUSE_MAX_SECTION_88E, EFUSE_MAX_WORD_UNIT, sizeof(u16));
+ 	if (eFuseWord == NULL) {
 -- 
 1.8.3.4
 
