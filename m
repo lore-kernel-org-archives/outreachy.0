@@ -1,174 +1,128 @@
-X-GM-THRID: 6260938484867923968
-X-Received: by 10.66.122.101 with SMTP id lr5mr9328094pab.3.1457738337022;
-        Fri, 11 Mar 2016 15:18:57 -0800 (PST)
+X-GM-THRID: 6259225563968307200
+X-Received: by 10.28.6.14 with SMTP id 14mr1165803wmg.6.1457339516971;
+        Mon, 07 Mar 2016 00:31:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.25.200 with SMTP id 191ls1488212ioz.19.gmail; Fri, 11 Mar
- 2016 15:18:56 -0800 (PST)
-X-Received: by 10.66.220.67 with SMTP id pu3mr9101463pac.19.1457738336426;
-        Fri, 11 Mar 2016 15:18:56 -0800 (PST)
-Return-Path: <bangashipra@gmail.com>
-Received: from mail-ig0-x22e.google.com (mail-ig0-x22e.google.com. [2607:f8b0:4001:c05::22e])
-        by gmr-mx.google.com with ESMTPS id iq8si268786igb.0.2016.03.11.15.18.56
+Received: by 10.28.52.199 with SMTP id b190ls606628wma.28.canary; Mon, 07 Mar
+ 2016 00:31:56 -0800 (PST)
+X-Received: by 10.28.194.212 with SMTP id s203mr750721wmf.3.1457339516360;
+        Mon, 07 Mar 2016 00:31:56 -0800 (PST)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
+        by gmr-mx.google.com with ESMTPS id 71si512979wmp.0.2016.03.07.00.31.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Mar 2016 15:18:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of bangashipra@gmail.com designates 2607:f8b0:4001:c05::22e as permitted sender) client-ip=2607:f8b0:4001:c05::22e;
+        Mon, 07 Mar 2016 00:31:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bangashipra@gmail.com designates 2607:f8b0:4001:c05::22e as permitted sender) smtp.mailfrom=bangashipra@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x22e.google.com with SMTP id av4so23914970igc.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 15:18:56 -0800 (PST)
+Received: by mail-wm0-x22c.google.com with SMTP id p65so60603366wmp.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 07 Mar 2016 00:31:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=XQl3Z77QXr8qegQQhXUfueqckxOH2cdhXzatHxqr+MY=;
-        b=ni+ctXrMBIBq82aXqViwoRL49+hqw3ZrBYqf+JUovQYLSkZNdI9EQ9oQAooei7L7jN
-         1S0hopjMGanPRZjHv5Bp8pQEpin/QGgaZ5uTveBRpue8ik1azGMTdce1NyFajkxX/K2O
-         OmF+xkSRfPSBL2HaUTIxUjD7XMp43o0fYV0v5KRmMdCbFaVwhbqRxIKt9J61yrRoSL/A
-         yujBRUrxkyHucPmU6NLrzxaGclLVZ6tk0orW6Ik6LEWtp9RwwMkPDa098F0NCkHubPA8
-         LhzHiyCCq7AP4ln/QbyDzvE74KcUGYnj8Nz+L1amQa1WWN4YlG0vZJQbLuNADr3QgJjk
-         6sTA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=5zB1WAo5QZDNltuMkQeUUdQqisCmCjHOLMQa8kIeWFs=;
+        b=bHofTYZIrt3qSxQODKQKh55VMdpGSBRd7oBojv7Ck1wtMCal/94+mXoFtbM42FpQNm
+         y8QK68eh3dti8KnNRFrXda5N+QPOCsfIZTkPvnFZXVPjCk0S8iKtO7oNrUpune69uMOg
+         hkb64kHidusGGAiho4Xtk8dSldJeMUaH93D5MEvafx0KKG62ADKNdnCL3TT2p/Ev6oLm
+         SZr0/YakZ+78C5B7iL5tfuB/dTyW6Ym/ENB4a4UPgRSKOgmH+/4nmFqisNU06EBgx5MO
+         AFgrT6mwoIYJaQPiDivNS+gSCR5GTYrjKfBNnUEkI15c3euukoFws9FNoFssuKFfQ9G7
+         +OQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=XQl3Z77QXr8qegQQhXUfueqckxOH2cdhXzatHxqr+MY=;
-        b=f1eizxrNDWyvTAbUzq7smn/y+nNeQhAdvdsY5A7b2CBfDhzb9BGRJembOq3jv5FK3U
-         wW/tztpmbKDiOa6WH6jOMkqwFWL5LenhcivX71kTX/Jf/aL2I9BGZAq1FFhhm9os3FHp
-         WLK5As58FXoauBKVPAbsAROVVqV3kVFWXfYqnJj/QQf/QqklGCr8kt03/Yg2gJWxkyX2
-         fyH28yoNOpA6efVm7iFpLGl0cHp/A+gEVAf6rCVxxt2S6DbuXoy+6XDJf1ZYzW0CyuKr
-         mzUc3XWccbt6WnuCyTOEX5bIPg2f3ygOcjo8M/5H62QzyMBKHOOVaYuLbhSH9KO/p847
-         /v/g==
-X-Gm-Message-State: AD7BkJJjXuRFC3DsqeTymFe6G54y52kxvVs5L7llA4FECQE1z3JDDaarqgZbieQukjhsg9ZDKO+8EX72qQAphg==
-X-Received: by 10.50.25.229 with SMTP id f5mr6711567igg.17.1457738336191; Fri,
- 11 Mar 2016 15:18:56 -0800 (PST)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=5zB1WAo5QZDNltuMkQeUUdQqisCmCjHOLMQa8kIeWFs=;
+        b=VVt4JB94VIvtnmzmgMO/kJ7bxj3vXwQxswmdXddNvFklMHenifwH9F70BbpzZAwZLd
+         NvFuv/zXh99M7K9aDbwFVUKo9OunFQkKj7Amt8z6BeDW/bC5AV6P3hk91IKLNx4eGKe9
+         JhWlh6uYieqzf9++6QKvK98Ro2E8G8e1apWloJzJVZ3dnW+rFcVsyhe3v68jy+sIE3TV
+         VbgjehQnwzlmB5p7rhHt3yCTldd38TdMxnHurZr8ucxHT/eWm83mnwx/lDBIe9mpNy1Q
+         zykDY2XeaB12UovdD0B3BfrEf39UC1KWPiVbpQ6tNXHAaztH3XF99IBhlYjYXnhLp1tC
+         UBjw==
+X-Gm-Message-State: AD7BkJIUWfNdRKu5ZpN4gE+wfhkyMdVON2ndIWo9Is9SFZQ6ProAmQdCtY2cTnaq5lnRww==
+X-Received: by 10.28.60.84 with SMTP id j81mr11714269wma.91.1457339516202;
+        Mon, 07 Mar 2016 00:31:56 -0800 (PST)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from fireworks ([84.117.92.113])
+        by smtp.gmail.com with ESMTPSA id gt7sm16710369wjc.1.2016.03.07.00.31.54
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 07 Mar 2016 00:31:54 -0800 (PST)
+Date: Mon, 7 Mar 2016 10:31:54 +0200
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: iio: Fixed block comments warning
+Message-ID: <20160307083154.GA5274@fireworks>
 MIME-Version: 1.0
-References: <CAG=SUoTdcn7kX9bUDD1dZbhSZgwWjULBVkSxzcoxOthsquh_9A@mail.gmail.com>
- <20160214170525.GD3965@htj.duckdns.org> <CAG=SUoS5YU9HO15LVTZWatrF=AS=FAYiWMehiEyHUOhNPfGocQ@mail.gmail.com>
- <20160215181743.GF3965@htj.duckdns.org>
-In-Reply-To: <20160215181743.GF3965@htj.duckdns.org>
-From: Shipra Banga <bangashipra@gmail.com>
-Date: Fri, 11 Mar 2016 23:18:46 +0000
-Message-ID: <CAG=SUoQ3c_9OwgRwPL3vqdFDDW+eSnah7tEKDjN8_Pda=oQS1w@mail.gmail.com>
-Subject: Re: Contributing to Linux Kernel
-To: Tejun Heo <tj@kernel.org>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/mixed; boundary=047d7bd7655cb58843052dce27e1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---047d7bd7655cb58843052dce27e1
-Content-Type: multipart/alternative; boundary=047d7bd7655cb5883c052dce27df
+Fixed the following warning:
+WARNING: Block comments use a trailing */ on a separate line
 
---047d7bd7655cb5883c052dce27df
-Content-Type: text/plain; charset=UTF-8
+Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
+---
+ drivers/staging/iio/accel/lis3l02dq.h | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-Hello Tejun,
+diff --git a/drivers/staging/iio/accel/lis3l02dq.h b/drivers/staging/iio/accel/lis3l02dq.h
+index 3f24c62..6bd3d4d 100644
+--- a/drivers/staging/iio/accel/lis3l02dq.h
++++ b/drivers/staging/iio/accel/lis3l02dq.h
+@@ -67,7 +67,8 @@
+ #define LIS3L02DQ_REG_CTRL_2_THREE_WIRE_SPI_MODE	0x02
+ 
+ /* Data alignment, default is 12 bit right justified
+- * - option for 16 bit left justified */
++ * - option for 16 bit left justified
++ */
+ #define LIS3L02DQ_REG_CTRL_2_DATA_ALIGNMENT_16_BIT_LEFT_JUSTIFIED	0x01
+ 
+ /* Interrupt related stuff */
+@@ -77,7 +78,8 @@
+ #define LIS3L02DQ_REG_WAKE_UP_CFG_BOOLEAN_AND		0x80
+ 
+ /* Latch interrupt request,
+- * if on ack must be given by reading the ack register */
++ * if on ack must be given by reading the ack register
++ */
+ #define LIS3L02DQ_REG_WAKE_UP_CFG_LATCH_SRC		0x40
+ 
+ /* Z Interrupt on High (above threshold) */
+@@ -94,7 +96,8 @@
+ #define LIS3L02DQ_REG_WAKE_UP_CFG_INTERRUPT_X_LOW 0x01
+ 
+ /* Register that gives description of what caused interrupt
+- * - latched if set in CFG_ADDRES */
++ * - latched if set in CFG_ADDRES
++ */
+ #define LIS3L02DQ_REG_WAKE_UP_SRC_ADDR			0x24
+ /* top bit ignored */
+ /* Interrupt Active */
+@@ -123,7 +126,8 @@
+ #define LIS3L02DQ_REG_STATUS_X_NEW_DATA			0x01
+ 
+ /* The accelerometer readings - low and high bytes.
+- * Form of high byte dependent on justification set in ctrl reg */
++ * Form of high byte dependent on justification set in ctrl reg
++ */
+ #define LIS3L02DQ_REG_OUT_X_L_ADDR			0x28
+ #define LIS3L02DQ_REG_OUT_X_H_ADDR			0x29
+ #define LIS3L02DQ_REG_OUT_Y_L_ADDR			0x2A
+@@ -132,7 +136,8 @@
+ #define LIS3L02DQ_REG_OUT_Z_H_ADDR			0x2D
+ 
+ /* Threshold values for all axes and both above and below thresholds
+- * - i.e. there is only one value */
++ * - i.e. there is only one value
++ */
+ #define LIS3L02DQ_REG_THS_L_ADDR			0x2E
+ #define LIS3L02DQ_REG_THS_H_ADDR			0x2F
+ 
+-- 
+2.5.0
 
-I wrote the attached module code in order to check behaviour of workqueues.
-It creates a workqueue , which I can view in my process log.
-Also, I went  through the flags I can set on my queue from
-https://www.kernel.org/doc/Documentation/workqueue.txt .
-However, I wanted to ask how to check and debug the behaviour of queues
-created set with different flags. Should I be creating sample work_structs
-and assigning them to the queues?
-
-Thanks!
-Regards
-Shipra
-
-
-
-On Mon, Feb 15, 2016 at 11:47 PM Tejun Heo <tj@kernel.org> wrote:
-
-> Hello, Shipra.
->
-> Hmmm... can you please cc outreachy mailing list when replying?
-> Having these sorts of discussions on the mailing list is useful as it
-> can also help other people having similar questions.
->
-> On Sun, Feb 14, 2016 at 10:41:24PM +0000, Shipra Banga wrote:
-> > I was experimenting with adding new modules to the kernel and had a few
-> > doubts. Where should I have this new test module to check behavior of
-> work
-> > queue. Also, can I install this module as a part of my existing compiled
-> > kernel which I am running on my laptop right now ?
-> > How should I go about doing this?
->
-> You can just create an external module which is built independent of
-> the kernel source tree.  Please refer to the following doc.
->
->   https://www.kernel.org/doc/Documentation/kbuild/modules.txt
->
-> Thanks.
->
-> --
-> tejun
->
-
---047d7bd7655cb5883c052dce27df
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello Tejun,<div><br></div><div>I wrote the attached modul=
-e code in order to check behaviour of workqueues. It creates a workqueue , =
-which I can view in my process log.</div><div>Also, I went =C2=A0through th=
-e flags I can set on my queue from=C2=A0<a href=3D"https://www.kernel.org/d=
-oc/Documentation/workqueue.txt">https://www.kernel.org/doc/Documentation/wo=
-rkqueue.txt</a>=C2=A0.=C2=A0</div><div>However, I wanted to ask how to chec=
-k and debug the behaviour of queues created set with different flags. Shoul=
-d I be creating sample work_structs and assigning them to the queues?</div>=
-<div><br></div><div>Thanks!</div><div>Regards</div><div>Shipra</div><div><d=
-iv><br></div><div><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
->On Mon, Feb 15, 2016 at 11:47 PM Tejun Heo &lt;<a href=3D"mailto:tj@kernel=
-.org">tj@kernel.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">=
-Hello, Shipra.<br>
-<br>
-Hmmm... can you please cc outreachy mailing list when replying?<br>
-Having these sorts of discussions on the mailing list is useful as it<br>
-can also help other people having similar questions.<br>
-<br>
-On Sun, Feb 14, 2016 at 10:41:24PM +0000, Shipra Banga wrote:<br>
-&gt; I was experimenting with adding new modules to the kernel and had a fe=
-w<br>
-&gt; doubts. Where should I have this new test module to check behavior of =
-work<br>
-&gt; queue. Also, can I install this module as a part of my existing compil=
-ed<br>
-&gt; kernel which I am running on my laptop right now ?<br>
-&gt; How should I go about doing this?<br>
-<br>
-You can just create an external module which is built independent of<br>
-the kernel source tree.=C2=A0 Please refer to the following doc.<br>
-<br>
-=C2=A0 <a href=3D"https://www.kernel.org/doc/Documentation/kbuild/modules.t=
-xt" rel=3D"noreferrer" target=3D"_blank">https://www.kernel.org/doc/Documen=
-tation/kbuild/modules.txt</a><br>
-<br>
-Thanks.<br>
-<br>
---<br>
-tejun<br>
-</blockquote></div></div></div>
-
---047d7bd7655cb5883c052dce27df--
---047d7bd7655cb58843052dce27e1
-Content-Type: text/x-csrc; charset=US-ASCII; name="hello-1.c"
-Content-Disposition: attachment; filename="hello-1.c"
-Content-Transfer-Encoding: base64
-Content-ID: <15367f6d8b14741926b1>
-X-Attachment-Id: 15367f6d8b14741926b1
-
-LyogS2VybmVsIFByb2dyYW1taW5nICovCgojaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+ICAvKiBO
-ZWVkZWQgYnkgYWxsIG1vZHVsZXMgKi8KI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPiAgLyogTmVl
-ZGVkIGZvciBLRVJOX0FMRVJUICovCgpzdGF0aWMgaW50IGhlbGxvX2luaXQodm9pZCkKewogICBz
-dHJ1Y3Qgd29ya19zdHJ1Y3QgcG9saWN5OwogICBwcmludGsoS0VSTl9BTEVSVCAiPDE+SGVsbG8g
-d29ybGQgMS5cbiIpOwogICBzdHJ1Y3Qgd29ya3F1ZXVlX3N0cnVjdCAqdHJpYWxfd3E7CiAgIHRy
-aWFsX3dxID0gY3JlYXRlX3dvcmtxdWV1ZSgiZXZlbnRuYW1lIik7IC8vIEFkZCBmbGFncyBoZXJl
-IQogICBwcmludGsoS0VSTl9BTEVSVCAiQ3JlYXRpbmcgYSB3b3JrZXIgcXVldWUuIFxuIik7CiAg
-IHJldHVybiAwOwp9CgoKc3RhdGljIHZvaWQgaGVsbG9fZXhpdCh2b2lkKQp7CiAgcHJpbnRrKEtF
-Uk5fQUxFUlQgIkdvb2RieWUgd29ybGQgMS5cbiIpOwp9ICAKCm1vZHVsZV9pbml0KGhlbGxvX2lu
-aXQpOwptb2R1bGVfZXhpdChoZWxsb19leGl0KTsKCk1PRFVMRV9MSUNFTlNFKCJHUEwiKTsKCg==
---047d7bd7655cb58843052dce27e1--
 
