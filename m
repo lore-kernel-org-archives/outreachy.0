@@ -1,100 +1,95 @@
-X-GM-THRID: 6330208455336394752
-X-Received: by 10.129.5.216 with SMTP id 207mr2403779ywf.6.1473866509027;
-        Wed, 14 Sep 2016 08:21:49 -0700 (PDT)
+X-GM-THRID: 6259411533129842688
+X-Received: by 10.182.246.73 with SMTP id xu9mr9968230obc.4.1457382816600;
+        Mon, 07 Mar 2016 12:33:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.41.71 with SMTP id d65ls1290311otb.16.gmail; Wed, 14 Sep
- 2016 08:21:48 -0700 (PDT)
-X-Received: by 10.237.36.19 with SMTP id r19mr2390533qtc.14.1473866508643;
-        Wed, 14 Sep 2016 08:21:48 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 142si1317419pfx.2.2016.09.14.08.21.48
+Received: by 10.50.62.46 with SMTP id v14ls9084igr.4.gmail; Mon, 07 Mar 2016
+ 12:33:36 -0800 (PST)
+X-Received: by 10.50.112.232 with SMTP id it8mr11561697igb.9.1457382816064;
+        Mon, 07 Mar 2016 12:33:36 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id y20si3347283pfa.2.2016.03.07.12.33.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 08:21:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Mon, 07 Mar 2016 12:33:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id z84so925292pfi.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 08:21:48 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id fl4so8292442pad.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 07 Mar 2016 12:33:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=dHCXRsF8ZlM4pw/CoHO3X/zZP97qaXlre+1baLVt+0w=;
-        b=RZgQMwswOJx9p3HgLdE6M1NrReqIvvBRABj19PDUiEpZiU0R/xPxGR6JTVGkhsBJsx
-         wNfxlIH3vYaz7Uz0pygygr3wFmkQ0mecnB5ozApSt1B/8Q5GTeFiFgU2bxeXorFWGcg1
-         kbKbA7yzxC3x77YV54E7IDe1e2Eh2sE1QpmkbQQ5xhcqSaCxHW5uZINzJX7Ax9SKgxee
-         j8KiYyk3MIYe7YUcpplRa5+xSbyNO31U+mfYz4eCNZDmAS8IXuy6HFoCTB1I6u8ZfzBT
-         WT+mzujTOLwApdSAH5nqxDptAx380tGVizsaGudUsbZadXYW5vPhFNWkXDQWCCOm7lh7
-         vcDA==
+        bh=Yw9B1zjUbN9+4z0VogsuB0HxiScBTtnynsjcGrsPeHk=;
+        b=wewi1kUJoRZ+4d3gWd9Z9sgQyQ2JKE6erwKtlnLLmY3QFrcXSfrSHSmO4SWngVBVx3
+         TOOcMr7QNLJcGM+tJBWyee6S5cOp+qO3WkMszznO86GOI7/K/qIe5ISK9Cw21cvqB0Zb
+         DJdkQ6tAC/J9QljUGET5/XS10PCECPItnpBic9gjFQ5agEDWRsLsAQi1T57qj5belotK
+         WKDSNRFOU9oVk18EFwGB0oEvyfdRczK1J4G2Yau+mAEnEG7wk//EiANDY8SsuxO36FRq
+         BS0vPin7RjacR3vKXsyGuUYU6QL9CZo1BjgvzYmYcx9roa38fqrBDnZLJXpDGTi1qjqi
+         bZpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=dHCXRsF8ZlM4pw/CoHO3X/zZP97qaXlre+1baLVt+0w=;
-        b=OAXuiC6tBFLdyYLsoXR85fgVM3HsVU9ySYTBiLn/OPidK58/Mf/MfPHDTkJdTPaD/V
-         Jo1se3AnfY6yMVxSXFg4E1mOvNgbvrSiWDAKP10h/68WbVe2YKrZMiHYVNLnopzGCEox
-         QyQzcKy/AbF8zrSkED3e4zwRxNMPItGjJ3/H6pdfLYjo6EshZacS2/sUi8W43WTX4llj
-         GohlPWNS4wVh6cgx4i2NM4ZNwgdvu8uXrpvnpxPNNX0qjuXsoyz+fo/EI/3f6gcOp3RP
-         i/fLVc39gdVUavkJDRGENRhfx359JPXAOlaOSYqEKaIBSgA5l4inHY3ZtD/jAIWeJ87n
-         p0+Q==
-X-Gm-Message-State: AE9vXwO6hErTuR5hGli6swCWfj7+gS9eYJZRxpCFBnXfIOGQddc08WxcvWBtxJN0VfrzSA==
-X-Received: by 10.98.219.196 with SMTP id f187mr5432315pfg.39.1473866508446;
-        Wed, 14 Sep 2016 08:21:48 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.22])
-        by smtp.gmail.com with ESMTPSA id h67sm10319098pfg.32.2016.09.14.08.21.46
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 08:21:47 -0700 (PDT)
-Date: Wed, 14 Sep 2016 20:51:37 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: johan.hedberg@gmail.com
-Cc: outreachy-kernel@googlegroups.com, gustavo@padovan.org
-Subject: [PATCH 2/3] drivers: bluetooth: bfusb Line over 80 characters in
- function
-Message-ID: <20160914152128.GA9889@life-desktop>
+        bh=Yw9B1zjUbN9+4z0VogsuB0HxiScBTtnynsjcGrsPeHk=;
+        b=hSN7YUpZdZH7CXufvEaTPYNHq7PZj0EFaNf4xEyy+lMn2X6ddHPpYQETiOSPGUwhd1
+         iQDIQ2gjA7poz4iSvLn1EWMh00a12uzbT4H0imB45el6EBvfQ+5Coc5/sBnxLGAs4ZdO
+         EutqFhSpqbTQjCdMrBDH4/AwgR1FhesY9J3TBFCtvwJCJgQKJ2AQ7OlONc02a+hV9mgz
+         obmtwiMJrxPuqigVjgxfsn0D+uZsWjvAv7KVqyim/jqepVrNms1KAj1ewjd+7rZRbBlo
+         9e6xV3Rvi0IcJc9MAvSHzoh35S96tqwnKqgotwZVQUQdNbqekjxf2UsEJxYm9rvH/8kv
+         Ka2g==
+X-Gm-Message-State: AD7BkJKQT0uNZF+7WVF/whdy32xtMV58XDoXLARsHq9qgbx07QOpV6e8s1N3eVE0oCgzvw==
+X-Received: by 10.66.218.225 with SMTP id pj1mr35766482pac.83.1457382815878;
+        Mon, 07 Mar 2016 12:33:35 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.136])
+        by smtp.gmail.com with ESMTPSA id x64sm25966739pfa.72.2016.03.07.12.33.31
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 07 Mar 2016 12:33:35 -0800 (PST)
+Date: Mon, 7 Mar 2016 18:03:58 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8188eu: Use !x instead of x==NULL.
+Message-ID: <20160307123358.GA7644@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-This patch remove the warning of checkpatch.pl Line over 80 characters.
-to remove this warning break the function argument list into small chunks.
+Use !x instead of x==NULL.
 
-
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/bluetooth/bfusb.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_efuse.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/bluetooth/bfusb.c b/drivers/bluetooth/bfusb.c
-index 1c2e16d..9ae179e 100644
---- a/drivers/bluetooth/bfusb.c
-+++ b/drivers/bluetooth/bfusb.c
-@@ -257,7 +257,8 @@ static int bfusb_rx_submit(struct bfusb_data *data, struct urb *urb)
- 	return err;
- }
+diff --git a/drivers/staging/rtl8188eu/core/rtw_efuse.c b/drivers/staging/rtl8188eu/core/rtw_efuse.c
+index cca42e5..19f11d0 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_efuse.c
++++ b/drivers/staging/rtl8188eu/core/rtw_efuse.c
+@@ -108,7 +108,7 @@ efuse_phymap_to_logical(u8 *phymap, u16 _offset, u16 _size_byte, u8  *pbuf)
+ 		return;
  
--static inline int bfusb_recv_block(struct bfusb_data *data, int hdr, unsigned char *buf, int len)
-+static inline int bfusb_recv_block(struct bfusb_data *data, int hdr,
-+				    unsigned char *buf, int len)
- {
- 	BT_DBG("bfusb %p hdr 0x%02x data %p len %d", data, hdr, buf, len);
+ 	eFuseWord = (u16 **)rtw_malloc2d(EFUSE_MAX_SECTION_88E, EFUSE_MAX_WORD_UNIT, sizeof(u16));
+-	if (eFuseWord == NULL) {
++	if (!eFuseWord) {
+ 		DBG_88E("%s: alloc eFuseWord fail!\n", __func__);
+ 		goto eFuseWord_failed;
+ 	}
+@@ -493,7 +493,7 @@ int Efuse_PgPacketRead(struct adapter *pAdapter, u8 offset, u8 *data)
  
-@@ -620,7 +621,8 @@ error:
- 	return err;
- }
+ 	EFUSE_GetEfuseDefinition(pAdapter, EFUSE_WIFI, TYPE_EFUSE_MAX_SECTION, (void *)&max_section);
  
--static int bfusb_probe(struct usb_interface *intf, const struct usb_device_id *id)
-+static int bfusb_probe(struct usb_interface *intf,
-+		       const struct usb_device_id *id)
- {
- 	const struct firmware *firmware;
- 	struct usb_device *udev = interface_to_usbdev(intf);
+-	if (data == NULL)
++	if (!data)
+ 		return false;
+ 	if (offset > max_section)
+ 		return false;
 -- 
-1.9.1
+1.8.3.4
 
 
