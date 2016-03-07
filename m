@@ -1,107 +1,91 @@
-X-GM-THRID: 6754760383787958272
-X-Received: by 2002:adf:8527:: with SMTP id 36mr15308092wrh.144.1572715207137;
-        Sat, 02 Nov 2019 10:20:07 -0700 (PDT)
+X-GM-THRID: 6256304454696435712
+X-Received: by 10.182.120.106 with SMTP id lb10mr18216145obb.24.1457376344005;
+        Mon, 07 Mar 2016 10:45:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:e8cc:: with SMTP id k12ls10182199wrn.9.gmail; Sat, 02
- Nov 2019 10:20:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxMRRq01UiOK/IdZwU5/lCzybKDLakKli/v56PFde40u9W1wRjIblGGLslSSKa8P1tLxQ7m
-X-Received: by 2002:a05:6000:1601:: with SMTP id u1mr15658270wrb.214.1572715205939;
-        Sat, 02 Nov 2019 10:20:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572715205; cv=none;
-        d=google.com; s=arc-20160816;
-        b=RXFRH3Tlqvihh0xMYn4ZgNSnuwp4/1sQUJ7cq+YULyjoRwZ4IV5zpeqcNYdAdPtal7
-         NrNRhgbDhtjg2+/NsVlSI4RT+qHUTauqOyymYJucCtwlHhePv019oxrQkERjT0FRrvvo
-         KKMIeKo/OCNXrZZxWYi6UbBnnrWXc3tH3rCS/5qdMwQwcyvIkALxPOv/3mKnYJ7Pnji4
-         XHDWwPCm2lDs59t6hHDay0O1ruuRKh1CY65DyKnEHkVYXktLFaXkDEmAdofGocfQGco1
-         aWuEpnLCr3A1bIDJ6GIgePiHoSPKGB4Ax6XBlLEqU9ChX3qtQLEqSkYpM6+UsFU563et
-         z75A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=1qIFrGSARHFoyOlIwz35OMs69rVxVVWPPvXtZzMurUA=;
-        b=IxCyl3jAWJnfaYXSuySYBjbh78GusueKMimQuesJitm+BD4WGrWI22q4BUXfq0ITWb
-         fyUlv4payKwNqUEDjXBkxeRZFyZNpiNOC3FVgv4GbpFr6hkAfvF4FpH5szGFrzFxjqHI
-         xZqj1//oqkwXNgf7OGNZgATlV05psBMhdlPO/JdycQAwt74EoZsTqn6EnSkRbWDYXKW1
-         dsPyG1HCiju7LaNY3gDCPc68Mcra85NfqqMsdECJLrNCACmcYWt9k5cacP1AE0i8VnU3
-         JVLd1L6GToQ3SP2y2OwoTZaqJ3tAwZTHWb6Tecfczn1/g2JlSwX+lsfk93PSxP9Dcdn1
-         9ttw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LcNwpWqk;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id q3si671611wrp.5.2019.11.02.10.20.05
+Received: by 10.140.92.203 with SMTP id b69ls1932632qge.5.gmail; Mon, 07 Mar
+ 2016 10:45:43 -0800 (PST)
+X-Received: by 10.13.238.130 with SMTP id x124mr18452366ywe.53.1457376343230;
+        Mon, 07 Mar 2016 10:45:43 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id y20si3285650pfa.2.2016.03.07.10.45.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 02 Nov 2019 10:20:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 07 Mar 2016 10:45:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LcNwpWqk;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id p4so12664386wrm.8
-        for <outreachy-kernel@googlegroups.com>; Sat, 02 Nov 2019 10:20:05 -0700 (PDT)
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x241.google.com with SMTP id 1so2520204pal.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 07 Mar 2016 10:45:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=1qIFrGSARHFoyOlIwz35OMs69rVxVVWPPvXtZzMurUA=;
-        b=LcNwpWqkRiskRIFEzSCAOjzgpLI8kyk7skDt0SOBcsrC8TYjdwArZRmbZLzSRPX+tf
-         YrTt2CNtwNSskOeFLmieyASVJz0ATfuvCxs5l8VphYMTOsMg4dyDKa1Lo0Sae+UPFbvM
-         zO8Bt+FOwbhllURwuTsXXP9LWOxmautVkuY7NIZF+ziBCVNkZUfxBNxlQhrDpofiv1bd
-         2YLohCD6SLX0fzKFmD5euUqeYibD90bpPVmXR1QLdXnCYm0SQpEi3D/AA/MnbDYaO3Nj
-         +XnYHmiybR9h/R6QAEn0m4t39pl+5LChhXfYuHNDKBk/b6ECgImoHLeGJVcNpnLOODRA
-         mhGA==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=xnlenjJKTUWBRWYLFjmSzNOgPYWfmezUlVIDepJCr+4=;
+        b=eallR6x+M9PLKZmbwwofSl9BwRrsDYzHxJJ3tOUvUJxwvZlKTDFvJbbo6TesKFmIpZ
+         dKIHh6rBPCDjZlNkOAou695ZwNcen1kA2K/3VoFLVwWhDdCQ+NJ1t4yg4Dxf36ouu7aJ
+         jEv6IzP5CV7LhBjJApzosfKxe3/IGnHNlw65Yzihky127zxkLDeqDAk7q5rF+SYKos65
+         nkbExvkXz3NI8C6nsbl2I0x2g104eUR/ss9w1reqpL5eR+BM3EYbyUxj/38sdAUHaMjz
+         1y4uPMf+GONpH47wWmvdLxjWn83m3lKKbYaIPKgCM+GtRPFeLcKRga3VRJTTbldZ7qhp
+         yzfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=1qIFrGSARHFoyOlIwz35OMs69rVxVVWPPvXtZzMurUA=;
-        b=dZNhXebiHpdTpDNAp4GBUKQlds6Sdi//D/wvIQmAyyJpbRlKyX2YZlS8H1rieqQ9GT
-         2RZFxJnFcqDgwkykqksoKeyJzBC4NUFzBwzWfqZmAmJPLleNrxBZYjOYDSpXf72A6aMX
-         MhEW6YgR8p26c6FSG4pK5DkY6oDHkTpXB5T8E4yNZP4AcBqFFOByjPqEWzF5c5SwX/Yc
-         WUGIRnHDrxrWq0GWWqI7HW/lCOI+6Nc5R8qCr1H0MjZUMPEPY1vh6D8LQS526FDVyxfB
-         8QgLkn5xXLMI/idgFQ7cd9qnj26OYV2HUBuWPM3BlY5ntYqv2TCS9lj+r/1WuX8DnPtD
-         iQvg==
-X-Gm-Message-State: APjAAAUlWAoN+cgLv91Ph4Bo4+emQb5f01WJwiJKVNgtxjD0ieIROrkB
-	WDx07j2MLlWWJKyxf16LWeezPm1J/PKr
-X-Received: by 2002:a5d:526a:: with SMTP id l10mr12734035wrc.72.1572715205331;
-        Sat, 02 Nov 2019 10:20:05 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id r3sm23504042wre.29.2019.11.02.10.20.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Nov 2019 10:20:04 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=xnlenjJKTUWBRWYLFjmSzNOgPYWfmezUlVIDepJCr+4=;
+        b=D+D6ulZBRH6z5tIy+UXyB6VeEh0+GmKdGD0cj1oV6SGL8xgCUXCfE03VaIl5e9S8QM
+         aAQTbrmG/QPH8X7y8AG093CQtIYvidErP8v3rce6gpPB21G7asMrEH6F0c7p2G36nQar
+         LQmM1eABzXc9+EFtXX2+qL7jw6gIaYIIvp4htrcZSJ+bgcVYqQTc0H4E6Y6tVjHal5Mj
+         q/XRRvFhbiX79PF+2u5RaaoyRoe/9jEaOLzbWBvd7mITCBvLbFK0tRr/IzNe5MoHqKAY
+         255TFTru6RSVm7ESM2p1dlNnmbyEhpHJvDrVWdT1jTLv11Afm/Hp2fRtuAz/wdN4llH8
+         G9eg==
+X-Gm-Message-State: AD7BkJKkgmZFKZEog0Yjir1oi2ZK/HYB/2aqs65vbSsGFM0ldtXIw5R+XE8VLoLWBvDFYg==
+X-Received: by 10.66.142.168 with SMTP id rx8mr35653160pab.14.1457376343047;
+        Mon, 07 Mar 2016 10:45:43 -0800 (PST)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.28])
+        by smtp.gmail.com with ESMTPSA id n28sm25693500pfa.45.2016.03.07.10.45.41
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 07 Mar 2016 10:45:42 -0800 (PST)
+Date: Mon, 7 Mar 2016 16:15:59 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	julia.lawall@lip6.fr,
-	Boqun.Feng@microsoft.com,
-	jerome.pouiller@silabs.com,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH v2 0/2] staging: wfx: cleanups
-Date: Sat,  2 Nov 2019 17:19:48 +0000
-Message-Id: <20191102171950.24950-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+Subject: [PATCH v3] Staging: wlan-ng: Handle error condition.
+Message-ID: <20160307104559.GA3306@sandhya>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Changes since v2
-- includes previously sent into a patch series as per suggestion
-- merge 2 patches solving same issues into a single one. 
-- improve on log message : used replace instead of fixing as per 
-  coccinnelle recommendation.
+Handle error condition.
 
-Jules Irenge (2):
-  staging: wfx: fix warning of using plain integer
-  staging: wfx: replace integer assignment to bool value
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+---
+Changes in v3:
+Change in commit message.
 
- drivers/staging/wfx/queue.c | 4 ++--
- drivers/staging/wfx/sta.c   | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/wlan-ng/prism2fw.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
+diff --git a/drivers/staging/wlan-ng/prism2fw.c b/drivers/staging/wlan-ng/prism2fw.c
+index 8fc80df..35fd5fb 100644
+--- a/drivers/staging/wlan-ng/prism2fw.c
++++ b/drivers/staging/wlan-ng/prism2fw.c
+@@ -333,6 +333,10 @@ static int prism2_fwapply(const struct ihex_binrec *rfptr,
+ 
+ 	/* Make the image chunks */
+ 	result = mkimage(fchunk, &nfchunks);
++	if (result) {
++		netdev_err(wlandev->netdev, "Failed to make image chunk.\n");
++		return 1;
++	}
+ 
+ 	/* Do any plugging */
+ 	result = plugimage(fchunk, nfchunks, s3plug, ns3plug, &pda);
 -- 
-2.21.0
+1.8.3.4
 
 
