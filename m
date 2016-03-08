@@ -1,154 +1,154 @@
 X-GM-THRID: 6258660898055913472
-X-Received: by 10.25.210.201 with SMTP id j192mr606661lfg.6.1457626329187;
-        Thu, 10 Mar 2016 08:12:09 -0800 (PST)
+X-Received: by 10.112.54.202 with SMTP id l10mr2271750lbp.14.1457434436212;
+        Tue, 08 Mar 2016 02:53:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.131.203 with SMTP id f194ls318631lfd.77.gmail; Thu, 10 Mar
- 2016 08:12:08 -0800 (PST)
-X-Received: by 10.112.26.74 with SMTP id j10mr618251lbg.18.1457626328097;
-        Thu, 10 Mar 2016 08:12:08 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
-        by gmr-mx.google.com with ESMTPS id g81si164668wmi.3.2016.03.10.08.12.08
+Received: by 10.25.155.68 with SMTP id d65ls62955lfe.34.gmail; Tue, 08 Mar
+ 2016 02:53:55 -0800 (PST)
+X-Received: by 10.25.32.144 with SMTP id g138mr3395686lfg.0.1457434435337;
+        Tue, 08 Mar 2016 02:53:55 -0800 (PST)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id z75si751814wmz.2.2016.03.08.02.53.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Mar 2016 08:12:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
+        Tue, 08 Mar 2016 02:53:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=nevola@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22c.google.com with SMTP id l68so35215912wml.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 08:12:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=3FUfOntlGdjyYutxmqaSro3+aK4/j+R3PhZezMn2Sro=;
-        b=llPb3Nny//L6Gng0Z/3EPwfA/LHW473kZdtcmgVSsopuUJBZxlIAq6dNwqM/fOEhN3
-         +HdryOXLVSTbfGP31w3/3UXffIO7YvY2hUljtSqIqDhpM6jA8biTxhI8yuUaDyH1+0fR
-         C1Oe/mMDDHuGrjmty2LafOTCxuKk4ivSwR3ijlS+/TisJF/kPaD18oTWhFUU7ayg3bTf
-         1oBZ8+3e/BAluk1cqxC3dQZmhs0IkVCbsh2SrKbbpK6iY1RLe5HEFqDLJd5p1cD+9+dw
-         IpwqPGTjI/m1X6SptWK/6zjKIs143zRl8DeSx+ad6tvHm41Q4Kb0UrABhz281/+9FzTl
-         WQfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=3FUfOntlGdjyYutxmqaSro3+aK4/j+R3PhZezMn2Sro=;
-        b=mQmlRRuD4PzeJhP6ylYK6MCeelau6ycZ6XQp1N0DIuG+Yf/0MPPJK8AeJMSQ2/kIEe
-         YwfyHD/WN9vnVAK65+CMYegNZesViZCR1hXaQn2j1St2gTdG0TN9wntZ9VLSNS3hsL7/
-         LSv+Wf6daEXKsRKNT35Xmy7Ai2Z7QTKP2OJA5ApXdY8YX9lyI1d99sgOnv61DRt2MOLp
-         vnQqBam7KhVZvbFDW7bupFWcXcP4IZGGdDsWlj3rhUlUOLBjuoBZOfSHQuwFJptHjgJE
-         1HQuqKpL3KkDF2K+HbaVcz765QgamZK6j1l4TXWB1ZzxIrdonWJtp+YRw8ekzKrUpnJ4
-         tyZw==
-X-Gm-Message-State: AD7BkJJHjJ5WqLq59XDyxWAIiYcPUP13yqt94whaRxi1PelquNIXS1wMltIcWRPHSSHdMA==
-X-Received: by 10.194.209.204 with SMTP id mo12mr5118754wjc.69.1457626327855;
-        Thu, 10 Mar 2016 08:12:07 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from sonyv ([91.126.73.162])
-        by smtp.gmail.com with ESMTPSA id h1sm3481715wme.8.2016.03.10.08.12.06
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Mar 2016 08:12:07 -0800 (PST)
-Date: Thu, 10 Mar 2016 17:12:04 +0100
-From: Laura Garcia Liebana <nevola@gmail.com>
-To: netfilter-devel@vger.kernel.org
-Cc: shivanib134@gmail.com, pablo@netfilter.org,
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 95E6C7414
+	for <outreachy-kernel@googlegroups.com>; Tue,  8 Mar 2016 11:53:54 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 70972DA3A4
+	for <outreachy-kernel@googlegroups.com>; Tue,  8 Mar 2016 11:53:54 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 876F1DA8FA; Tue,  8 Mar 2016 11:53:48 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id BA34BDA3B2
+	for <outreachy-kernel@googlegroups.com>; Tue,  8 Mar 2016 11:53:46 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Tue, 08 Mar 2016 11:53:46 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 24459 invoked from network); 8 Mar 2016 11:53:46 +0100
+Received: from barqueta.lsi.us.es (HELO us.es) (1984lsi@150.214.188.150)
+  by mail.us.es with AES128-SHA encrypted SMTP; 8 Mar 2016 11:53:46 +0100
+Date: Tue, 8 Mar 2016 11:53:46 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Laura Garcia Liebana <nevola@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, shivanib134@gmail.com,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCHv4] extensions: libipt_icmp: Add translation to nft
-Message-ID: <20160310161201.GA9569@sonyv>
+Subject: Re: [PATCHv3] extensions: libipt_icmp: Add translation to nft
+Message-ID: <20160308105346.GB4008@salvia>
+References: <20160307212141.GA10594@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20160307212141.GA10594@sonyv>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Add translation for icmp to nftables. Not supported types in nftables
-are: any, network-unreachable, host-unreachable, protocol-unreachable,
-port-unreachable, fragmentation-needed, source-route-failed,
-network-unknown, host-unknown, network-prohibited, host-prohibited,
-TOS-network-unreachable, TOS-host-unreachable, communication-prohibited,
-host-precedence-violation, precedence-cutoff, network-redirect,
-host-redirect, TOS-network-redirect, TOS-host-redirect,
-router-advertisement, router-solicitation, ttl-zero-during-transit,
-ttl-zero-during-reassembly, ip-header-bad and required-option-missing.
+On Mon, Mar 07, 2016 at 10:21:44PM +0100, Laura Garcia Liebana wrote:
+> Add translation for icmp to nftables. Not supported types in nftables
 
-Examples:
+These are actually icmp codes that we don't support yet, right?
 
-$ sudo iptables-translate -t filter -A INPUT -m icmp --icmp-type echo-reply -j ACCEPT
-nft add rule ip filter INPUT icmp type echo-reply counter accept
+> are: any, network-unreachable, host-unreachable, protocol-unreachable,
+> port-unreachable, fragmentation-needed, source-route-failed,
+> network-unknown, host-unknown, network-prohibited, host-prohibited,
+> TOS-network-unreachable, TOS-host-unreachable, communication-prohibited,
+> host-precedence-violation, precedence-cutoff, network-redirect,
+> host-redirect, TOS-network-redirect, TOS-host-redirect,
+> router-advertisement, router-solicitation, ttl-zero-during-transit,
+> ttl-zero-during-reassembly, ip-header-bad and required-option-missing.
+> 
+> Examples:
+> 
+> $ sudo iptables-translate -t filter -A INPUT -m icmp --icmp-type echo-reply -j LOG
+> nft add rule ip filter INPUT icmp type echo-reply counter log level warn
+> 
+> $ sudo iptables-translate -t filter -A INPUT -m icmp --icmp-type 3 -j LOG
+> nft add rule ip filter INPUT icmp type destination-unreachable counter log level warn
+> 
+> $ sudo iptables-translate -t filter -A INPUT -m icmp ! --icmp-type 3 -j LOG
+> nft add rule ip filter INPUT icmp type != destination-unreachable counter log level warn
+> 
+> Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+> ---
+> v2:
+> 	- Detection of not supported types in nftables, as Shivani suggested.
+> v3:
+> 	- Fix array iteration protection.
+> 
+>  extensions/libipt_icmp.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 48 insertions(+), 1 deletion(-)
+> 
+> diff --git a/extensions/libipt_icmp.c b/extensions/libipt_icmp.c
+> index 666e7da..2c8be87 100644
+> --- a/extensions/libipt_icmp.c
+> +++ b/extensions/libipt_icmp.c
+> @@ -218,7 +218,7 @@ static void print_icmptype(uint8_t type,
+>  }
+>  
+>  static void icmp_print(const void *ip, const struct xt_entry_match *match,
+> -                       int numeric)
+> +		       int numeric)
 
-$ sudo iptables-translate -t filter -A INPUT -m icmp --icmp-type 3 -j ACCEPT
-nft add rule ip filter INPUT icmp type destination-unreachable counter accept
+I think this change doesn't below this patch.
 
-$ sudo iptables-translate -t filter -A INPUT -m icmp ! --icmp-type 3 -j ACCEPT
-nft add rule ip filter INPUT icmp type != destination-unreachable counter accept
+>  {
+>  	const struct ipt_icmp *icmp = (struct ipt_icmp *)match->data;
+>  
+> @@ -249,6 +249,52 @@ static void icmp_save(const void *ip, const struct xt_entry_match *match)
+>  	}
+>  }
+>  
+> +static unsigned int type_xlate_print(struct xt_xlate *xl, unsigned int icmptype,
+> +			     unsigned int code_min, unsigned int code_max)
+                       ^^^^^^
 
-Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
----
-v2:
-	- Detection of not supported types in nftables, as Shivani suggested.
-v3:
-	- Fix array iteration protection.
-v4:
-	- icmp types router-advertisement and router-solicitation already supported in nft.
+This should be aligned with the line above:
 
- extensions/libipt_icmp.c | 36 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+static unsigned int type_xlate_print(struct xt_xlate *xl, unsigned int icmptype,
+                                     unsigned int code_min,
+                                     unsigned int code_max)
 
-diff --git a/extensions/libipt_icmp.c b/extensions/libipt_icmp.c
-index 666e7da..cc8e732 100644
---- a/extensions/libipt_icmp.c
-+++ b/extensions/libipt_icmp.c
-@@ -249,6 +249,41 @@ static void icmp_save(const void *ip, const struct xt_entry_match *match)
- 	}
- }
- 
-+static unsigned int type_xlate_print(struct xt_xlate *xl, unsigned int icmptype,
-+				     unsigned int code_min,
-+				     unsigned int code_max)
-+{
-+	unsigned int i;
-+
-+	if (code_min != code_max && icmptype != 0xFF) {
-+		for (i = 0; i < ARRAY_SIZE(icmp_codes); ++i)
-+			if (icmp_codes[i].type == icmptype &&
-+			    icmp_codes[i].code_min == code_min &&
-+			    icmp_codes[i].code_max == code_max) {
-+				xt_xlate_add(xl, icmp_codes[i].name);
-+				return 1;
-+			}
-+	}
-+
-+	return 0;
-+}
-+
-+static int icmp_xlate(const struct xt_entry_match *match, struct xt_xlate *xl,
-+		      int numeric)
-+{
-+	const struct ipt_icmp *info = (struct ipt_icmp *)match->data;
-+
-+	xt_xlate_add(xl, "icmp type%s ",
-+		     (info->invflags & IPT_ICMP_INV) ? " !=" : "");
-+
-+	if (!type_xlate_print(xl, info->type, info->code[0], info->code[1]))
-+		return 0;
-+
-+	xt_xlate_add(xl, " ");
-+
-+	return 1;
-+}
-+
- static struct xtables_match icmp_mt_reg = {
- 	.name		= "icmp",
- 	.version	= XTABLES_VERSION,
-@@ -261,6 +296,7 @@ static struct xtables_match icmp_mt_reg = {
- 	.save		= icmp_save,
- 	.x6_parse	= icmp_parse,
- 	.x6_options	= icmp_opts,
-+	.xlate		= icmp_xlate,
- };
- 
- void _init(void)
--- 
-2.7.0
+> +{
+> +	unsigned int i;
+> +
+> +	if (code_min == code_max)
+> +		return 0;
+> +
+> +	switch (icmptype) {
+> +	case 0xFF:
 
+You can skip the 0xff case by adding nothing.
+
+> +	case 9:
+> +	case 10:
+
+You can send me a two-liner for this for nft, so we don't need this I
+think.
+
+> +		return 0;
+> +	default:
+> +		for (i = 0; i < ARRAY_SIZE(icmp_codes); ++i)
+> +			if (icmp_codes[i].type == icmptype &&
+> +			    icmp_codes[i].code_min == code_min &&
+> +			    icmp_codes[i].code_max == code_max)
+> +				break;
+> +
+> +		if (i != ARRAY_SIZE(icmp_codes))
+> +			xt_xlate_add(xl, icmp_codes[i].name);
+> +		else
+> +			return 0;
+> +	}
+> +
+> +	return 1;
+> +}
 
