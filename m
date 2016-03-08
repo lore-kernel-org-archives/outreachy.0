@@ -1,76 +1,128 @@
-X-GM-THRID: 6251940862989697024
-X-Received: by 10.129.109.197 with SMTP id i188mr21571348ywc.8.1455643415341;
-        Tue, 16 Feb 2016 09:23:35 -0800 (PST)
+X-GM-THRID: 6258648860254535680
+X-Received: by 10.28.7.133 with SMTP id 127mr1917849wmh.2.1457434293214;
+        Tue, 08 Mar 2016 02:51:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.17.11 with SMTP id z11ls1956030ioi.54.gmail; Tue, 16 Feb
- 2016 09:23:34 -0800 (PST)
-X-Received: by 10.50.79.161 with SMTP id k1mr18762753igx.5.1455643414607;
-        Tue, 16 Feb 2016 09:23:34 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x22f.google.com (mail-io0-x22f.google.com. [2607:f8b0:4001:c06::22f])
-        by gmr-mx.google.com with ESMTPS id xh11si1054737igb.0.2016.02.16.09.23.34
+Received: by 10.25.141.206 with SMTP id p197ls51865lfd.44.gmail; Tue, 08 Mar
+ 2016 02:51:32 -0800 (PST)
+X-Received: by 10.112.142.42 with SMTP id rt10mr278120lbb.13.1457434292129;
+        Tue, 08 Mar 2016 02:51:32 -0800 (PST)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id v68si91152wmd.1.2016.03.08.02.51.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 09:23:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22f as permitted sender) client-ip=2607:f8b0:4001:c06::22f;
+        Tue, 08 Mar 2016 02:51:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22f as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x22f.google.com with SMTP id 9so201707881iom.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 09:23:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=J8HiImorRyWEgJ+/zS3DDPov6441sDn90ci27BmHJOM=;
-        b=DG8eLhr5X/BccepQocNr5sF9+lNxveGUCN/FXPfg4JTHpFk4bS+dP+neRmsCQFwe8N
-         N1+poa1sIZvmW22Z6BoJiPG7d6Lfk2AdTH6Q2v8AkRHhYnmux9JG5weP33HhNrbiZg8J
-         GfwzzulD6cd4dDNSjLkAhQrLGu1MryIKkGGzLV/fq7fa+SpqcEOBb0Ore+ungB6XF+gq
-         OvdKHOHzjqTVd0K27Q5dISmeQVTONjCvYoedkuFPx2AfoKiaVY+vo4bhu5EfCmeaMOFB
-         ItTDGmuQz9/S0/VjCL++28hoUWHFTgJ+I6qR0aG3FJlcx27rdOqfBxGyk8w96wuaggdj
-         bfbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=J8HiImorRyWEgJ+/zS3DDPov6441sDn90ci27BmHJOM=;
-        b=C4TRUmVTR4QdrwzLDLhVKPFI0B7jneH//8+iEiDkUJ/BqSS/I5wFin8sNGTeEDmvR1
-         UHrh1Jag5fwiiAJzgC09sULT3RgA8as9DuO1uSJa2euy6rlHxwBP6qbwQgLPy28Zf9Am
-         nN7EyUJwsGBdOHzUn2hAPuGtiLuOdeUlSYHmw/QLDrwXWFFW+6Mep/sHn2h1dVnuxtiR
-         pZTEdpAbcvS7KV2JvoVilN/o4XLI970PxibtkPOyk7zUkCZF4qolxQDtQdD10zWJB5qC
-         ZnbGlwJvl5Kfkgm/0aDe3kF0eWW26rZUg5KDja38vAS3B8XXhE/WrVcTAndF6ao6oWD1
-         i1tg==
-X-Gm-Message-State: AG10YOSwZg2zunfCY7gQqFiSjJjZ3ey9Tzlm4V570op5FlocNlD2QntvAEulOjpYVCDZzQ==
-X-Received: by 10.107.137.100 with SMTP id l97mr27577634iod.110.1455643414449;
-        Tue, 16 Feb 2016 09:23:34 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id f14sm14271312ioi.20.2016.02.16.09.23.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 09:23:33 -0800 (PST)
-Date: Tue, 16 Feb 2016 17:22:51 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Change kmalloc to kmalloc_array and rearrange statement
-Message-ID: <cover.1455661012.git.janani.rvchndrn@gmail.com>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 8D0038432
+	for <outreachy-kernel@googlegroups.com>; Tue,  8 Mar 2016 11:51:31 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 7C5F8DA8FB
+	for <outreachy-kernel@googlegroups.com>; Tue,  8 Mar 2016 11:51:31 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 712B1DA384; Tue,  8 Mar 2016 11:51:31 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 02DD2DA38A
+	for <outreachy-kernel@googlegroups.com>; Tue,  8 Mar 2016 11:51:29 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Tue, 08 Mar 2016 11:51:29 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 18679 invoked from network); 8 Mar 2016 11:51:28 +0100
+Received: from barqueta.lsi.us.es (HELO us.es) (1984lsi@150.214.188.150)
+  by mail.us.es with AES128-SHA encrypted SMTP; 8 Mar 2016 11:51:28 +0100
+Date: Tue, 8 Mar 2016 11:51:29 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Laura Garcia Liebana <nevola@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, shivanib134@gmail.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCHv3] extensions: libip6t_icmp6: Add translation to nft
+Message-ID: <20160308105129.GA4008@salvia>
+References: <20160307212252.GA10639@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20160307212252.GA10639@sonyv>
 User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-This patchset changes a call to kmalloc to kmalloc_array and splits
-the statement across multiple lines to respect the 80 char per line limit.
+Hi Laura,
 
-Janani Ravichandran (2):
-  staging: wilc1000: Use kmalloc_array instead of kmalloc
-  staging: wilc1000: Rearrange statement to respect 80 char limit
+On Mon, Mar 07, 2016 at 10:22:55PM +0100, Laura Garcia Liebana wrote:
+> Add translation for icmpv6 to nftables. Not supported types in nftables
+> are: no-route, communication-prohibited, beyond-scope,
+> address-unreachable, port-unreachable, failed-policy, reject-route,
+> ttl-zero-during-transit, ttl-zero-during-reassembly, bad-header,
+> unknown-header-type and unknown-option.
+> 
+> Examples:
+> 
+> $ ip6tables-translate -t filter -A INPUT -m icmp6 --icmpv6-type 1 -j LOG
+> nft add rule ip6 filter INPUT icmpv6 type destination-unreachable counter log level warn
+> 
+> $ ip6tables-translate -t filter -A INPUT -m icmp6 --icmpv6-type neighbour-advertisement -j LOG
+> nft add rule ip6 filter INPUT icmpv6 type nd-neighbor-advert counter log level warn
+> 
+> $ ip6tables-translate -t filter -A INPUT -m icmp6 ! --icmpv6-type packet-too-big -j LOG
+> nft add rule ip6 filter INPUT icmpv6 type != packet-too-big counter log level warn
 
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Not related to your patches, I just noticed this:
 
--- 
-2.5.0
+        log level warn
 
+Could you send a patch to remove the "level warn" thing? The default
+logging level is already warning in nft so better if we don't display
+this.
+
+BTW, applied with one minor glitch below.
+
+> Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+> ---
+> v2:
+> 	- Detection of not supported types in nftables, as Shivani suggested.
+> v3:
+> 	- Generalize the source code, as Pablo suggested.
+> 
+>  extensions/libip6t_icmp6.c | 65 ++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 65 insertions(+)
+> 
+> diff --git a/extensions/libip6t_icmp6.c b/extensions/libip6t_icmp6.c
+> index e183ce6..08eca99 100644
+> --- a/extensions/libip6t_icmp6.c
+> +++ b/extensions/libip6t_icmp6.c
+> @@ -4,6 +4,9 @@
+>  #include <xtables.h>
+>  #include <limits.h> /* INT_MAX in ip6_tables.h */
+>  #include <linux/netfilter_ipv6/ip6_tables.h>
+> +#include <netinet/icmp6.h>
+> +
+> +#define XT_ICMPV6_TYPE(type)	(type - ND_ROUTER_SOLICIT)
+>  
+>  enum {
+>  	O_ICMPV6_TYPE = 0,
+> @@ -15,6 +18,14 @@ struct icmpv6_names {
+>  	uint8_t code_min, code_max;
+>  };
+>  
+> +static const char *icmp6_type_xlate_array[] = {
+> +	[XT_ICMPV6_TYPE(ND_ROUTER_SOLICIT)]	= "nd-router-solicit",
+> +	[XT_ICMPV6_TYPE(ND_ROUTER_ADVERT)]	= "nd-router-advert",
+> +	[XT_ICMPV6_TYPE(ND_NEIGHBOR_SOLICIT)]	= "nd-neighbor-solicit",
+> +	[XT_ICMPV6_TYPE(ND_NEIGHBOR_ADVERT)]	= "nd-neighbor-advert",
+> +	[XT_ICMPV6_TYPE(ND_REDIRECT)]		= "nd-redirect",
+> +};
+
+Next time move these definitions to where they are used. I prefer to
+get these where we use them, the closer we have the context to read
+the code, the less you have to scroll up and down (thus change visual
+context). This time, I made this manual change myself here.
+
+Thanks.
 
