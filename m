@@ -1,61 +1,60 @@
 X-GM-THRID: 6259712613604655104
-X-Received: by 10.66.65.168 with SMTP id y8mr178323pas.10.1457726644761;
-        Fri, 11 Mar 2016 12:04:04 -0800 (PST)
+X-Received: by 10.13.203.135 with SMTP id n129mr113439ywd.46.1457452916926;
+        Tue, 08 Mar 2016 08:01:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.129.73 with SMTP id nu9ls221175igb.15.gmail; Fri, 11 Mar
- 2016 12:04:04 -0800 (PST)
-X-Received: by 10.66.146.194 with SMTP id te2mr8321685pab.17.1457726644357;
-        Fri, 11 Mar 2016 12:04:04 -0800 (PST)
+Received: by 10.182.24.6 with SMTP id q6ls192735obf.94.gmail; Tue, 08 Mar 2016
+ 08:01:56 -0800 (PST)
+X-Received: by 10.182.47.132 with SMTP id d4mr21594399obn.40.1457452916205;
+        Tue, 08 Mar 2016 08:01:56 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id tu5si1258103pab.2.2016.03.11.12.04.04
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id y20si587233pfa.2.2016.03.08.08.01.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Mar 2016 12:04:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 08 Mar 2016 08:01:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id n5so2927304pfn.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 12:04:04 -0800 (PST)
+Received: by mail-pf0-x235.google.com with SMTP id 124so15763823pfg.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 08:01:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=SVAHsQvjjYhAjys9YZan16DRh5UrUlJ1R4oJgQ8CRZU=;
-        b=TeW1OCL8nh9KTIs/JhijLdJHZGbTxtunZW6urFBwvewD3Ws6nzOOLQKvTL6PrXRRpf
-         iU8MG/RG53Zp2yHzjFCLtmDr6UO5vcudCvPBGG57SDQHs2Trmj8+y8WY65eM0x5LmHDH
-         2W7lXoFQRW8coC/UKz7XJCjLOnbYaP2PnLr2fdyZ1dTTnljuBm9B8KmrcLc+KHlvA+PB
-         pHSUlCvz8ZYHtt8aFFq6NKoiCqgbqgC7cuRaS2qRQ0/gEziqEMOCJV5FDC7RnfZ6tsED
-         jBrGJVutqIqOvHRo9164h7YewekO7+ZllLJTL3FP8LYPft1q7RA1sSXVHs25V2a+WBsk
-         qM5Q==
+        bh=hFxcdU/RN3E34PzJY4mEL5OAlSjOyJ5vRx/mEWoR6KE=;
+        b=0ms2CWR5EW9AxpT99B2z2EfgyXp0vUR9nmIjOROErq254nmjiQV0M7txPzaLgu6Oez
+         ghZDSML9Ya3aNKHXBSInLAAhak31KbGChZ6DhPehwP8sBBs1TV5LtUaN9TkMnbsiWXFN
+         OJHP6TasKnBL4xZ/8cvc18HkZah5KcI4D/dB0O1HO5BF3cHZs9OrWZPBfaTq/S0CNqB8
+         JdyCvLXIYP7Amm/stteyuqh9i6SOIDaOZdR94h482q6fCu6+MxeUxDIRUDe64kuEnHYd
+         bKHWX7qQPSIWw4l1NjIcpoyqUfHdiHItA8DbZhairHPA624YXKTuIuBy4Im552JhbEF1
+         BjTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=SVAHsQvjjYhAjys9YZan16DRh5UrUlJ1R4oJgQ8CRZU=;
-        b=JZ2ZuDvfb0Lz/riqphkIg2zDr1StcBYCZajSWdjrzX1X3MVMrWWEzWeJ1sQbcCikwO
-         jZophHhN84NcdYycikaHTnA0m9v6KXhS72dX9sVJb3khY5bKsLDW6d2rYB6R9mnI42e3
-         3zag8RRm4bLKg+QEExrdboryeBevz8gz1Amia8hLtxDQYN+R94fd/i91YPJ5peyMOvOS
-         PWzHaaB14cGop6F50qG5Kdms96uoZZvl8H060qFHK8qFQMAVo/TIXaUR4vdHXnVx1ACi
-         HRbXxju1p0fV1E569mDn0f2jJ1zGakNjzyqGnGXb7CaR8UY7AT+TQmpi20nMiruYRDye
-         GNPw==
-X-Gm-Message-State: AD7BkJJXDtdPXbA7774qi/jeXcHnSKKAXcgM/F9evcpUUv1kcdX4st12ZgAOoBTg/Ew+mQ==
-X-Received: by 10.98.71.92 with SMTP id u89mr10735121pfa.100.1457726644207;
-        Fri, 11 Mar 2016 12:04:04 -0800 (PST)
+        bh=hFxcdU/RN3E34PzJY4mEL5OAlSjOyJ5vRx/mEWoR6KE=;
+        b=drY//Yy1JpEIzfGe/R191rNiWcRa6OWxIFWvesAKpJvPzbc6RsFqUV8ydaTPK02YfK
+         pVZ6XWIbZBKxU7HrqA5xBUMitqT6uIQOhR8oOdeb2kWOZFSlP4onDuMyDqITXyx7gC+r
+         n9FxjjKjmt+Ta6qm98srRhwpinaB4560A+rPQIHL+5k9/vrSw0WCcaJE7nc3nS/XTujI
+         1ns9Q+AN+5RJqxIi2PVSCKmHkzHfcx5Uym3pDdh+vZK4zqkR1Skj5bKe2Epz74vavXyW
+         d+33uBq+QXtFT8AdRIQkWj7+vau3k7yzA7qrTQhNgIVisOTtANkgBa+VMVVgiVqLTb+p
+         mEdA==
+X-Gm-Message-State: AD7BkJJnYwOFsUDn+g9XYqiAgeu6M1QACd49D+PySeflFM7wnYeEmlOcvTbDbRHnNyvOWQ==
+X-Received: by 10.98.0.71 with SMTP id 68mr43177477pfa.156.1457452915954;
+        Tue, 08 Mar 2016 08:01:55 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id fn3sm14852729pab.20.2016.03.11.12.04.03
+        by smtp.gmail.com with ESMTPSA id x18sm5972730pfi.42.2016.03.08.08.01.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 12:04:03 -0800 (PST)
-Date: Sat, 12 Mar 2016 01:33:46 +0530
+        Tue, 08 Mar 2016 08:01:55 -0800 (PST)
+Date: Tue, 8 Mar 2016 21:19:40 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 06/13] staging: lustre: lnet: peer: Use
- list_for_each_entry_safe
-Message-ID: <20160311200346.GA2972@Karyakshetra>
+Subject: [PATCH] staging: lustre: lnet: peer: Use list_for_each_entry_safe
+Message-ID: <20160308154940.GA32430@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -91,10 +90,6 @@ T *I1;
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- Changes in v3:
-         -Combined all "Use list_for_each_entry" lustre patches into a
-	  patch-set
-
  drivers/staging/lustre/lnet/lnet/peer.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
