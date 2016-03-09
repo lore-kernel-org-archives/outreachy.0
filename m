@@ -1,77 +1,133 @@
-X-GM-THRID: 6254600890861223936
-X-Received: by 10.107.184.195 with SMTP id i186mr35291725iof.24.1456262751948;
-        Tue, 23 Feb 2016 13:25:51 -0800 (PST)
+X-GM-THRID: 6260100746941825024
+X-Received: by 10.129.39.146 with SMTP id n140mr2096633ywn.22.1457546915452;
+        Wed, 09 Mar 2016 10:08:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.16.208 with SMTP id 77ls1291863ioq.71.gmail; Tue, 23 Feb
- 2016 13:25:51 -0800 (PST)
-X-Received: by 10.107.184.195 with SMTP id i186mr35291710iof.24.1456262751640;
-        Tue, 23 Feb 2016 13:25:51 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id u66si4627688pfa.2.2016.02.23.13.25.51
+Received: by 10.140.31.180 with SMTP id f49ls1314542qgf.91.gmail; Wed, 09 Mar
+ 2016 10:08:34 -0800 (PST)
+X-Received: by 10.13.232.201 with SMTP id r192mr4481284ywe.52.1457546914848;
+        Wed, 09 Mar 2016 10:08:34 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-ob0-x231.google.com (mail-ob0-x231.google.com. [2607:f8b0:4003:c01::231])
+        by gmr-mx.google.com with ESMTPS id p10si1950508igg.1.2016.03.09.10.08.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 13:25:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Wed, 09 Mar 2016 10:08:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::231 as permitted sender) client-ip=2607:f8b0:4003:c01::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:4003:c01::231 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id ho8so119824939pac.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 13:25:51 -0800 (PST)
+Received: by mail-ob0-x231.google.com with SMTP id m7so55033407obh.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 09 Mar 2016 10:08:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=uTAlAbNe+D9SkZfOXJbAYKp3njz59sAyxOtCTsykFWw=;
-        b=RSK0D08qB6RDKUVHDjENblfWRkiMSh2sJ+O10Gd6TKUSWV41yLFTw2G/tr+HxfdoSK
-         nE4uNIz6uStH1h2zuHpsEwiDwtLi7+qik4ZJ0r8QUvH/U4lOrFlEWiOcSMJd0VjdTduQ
-         NbRbJ/NK8moLE3k/HDLezXxRIPJGUdoyaLGNwJOGdBKyXpVm+BDqU7v7kSwSAfOv4GHy
-         rUqqnRyuev+UkVuSaY/0NXBLV3Wp49MzePCYTadIG2EtJLztELY89pg9I+VocaUfMGZA
-         0LnwMix+T0O6a94j6NX04hOlIW2rftIOLNLu9F/4EWQeVyEjEQ7HBnWCtRkELj+f8TYX
-         6BJg==
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc;
+        bh=TnNWfEpB/Er3mExmKupmIdOiqVDOwleRtpXbJpDh6ho=;
+        b=RTifgt5Prr5MBa7rQM/1+hBn//lK2DO3ZbRsO2ZAG2zYTdurbny7LEdlAW3x9taDWx
+         9k1zao3n6ZYES6fgIWlWXkcZU/mDJzHDgjVurtZAmwV3A23sXPeY3i4uVlrsgV/Jw3vu
+         G8UpXS2ma5BJMYAfoNPDtjD/fqbY9rHOFK9FpRnzss7jyFycLFOGIpWsVEhMD6m/otmT
+         3xuMSj2Pyx22TEsFqA0cdZ79u4kjp4e+Og24E1MLy93bivZtvLsj33PWTT/DFZs+jB7M
+         BbYd+F6vL8JsTSCq9WZaQVe4qjW98HWRvQ6VcTeHuKsSSA1ponKnlIHWBOE5cZF16VM+
+         9ukw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=uTAlAbNe+D9SkZfOXJbAYKp3njz59sAyxOtCTsykFWw=;
-        b=kc/rKMJXMgG5zc6945YNKIpZAwnXn+nkSmjsASFRyoZc4Caq1RAkZdfzeiogmYHoUl
-         eHHugrGj2XhqUV76JMZpGOis8mW8+vEXwnj04AX4fUquH7EMEtfTKX1mbU+9D/q/87zp
-         pVQNp5pmw1hf9NPCSkTq5RGmPOfRqzKXumBEGnYZBO1UF31TQ4G7R0Y0CM0O+kgdoSX3
-         ETgVdDrkL8D9hGgwEwDIrDQHpfvgutT2G3Ru7uuWCwvcgtqYOjka4N0HLvsQyxHXOovN
-         r8y7ztLLk+U2TjMy/tXIVxp2xRt7ZS9Qu/8AaFzVUpQNGEjfd3hQmmUomkIBIjCBwfRI
-         G9Mg==
-X-Gm-Message-State: AG10YOQbMhwTCAJ3QtMUDbL8w+224YKggxDZtWC4c+mdPjXRba+aI0T1BP9lX3TDgPKLpQ==
-X-Received: by 10.66.254.168 with SMTP id aj8mr49814850pad.18.1456262751475;
-        Tue, 23 Feb 2016 13:25:51 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id c68sm29525844pfj.41.2016.02.23.13.25.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 13:25:50 -0800 (PST)
-Date: Wed, 24 Feb 2016 02:56:25 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Drop Useless Initialization
-Message-ID: <20160223212625.GA24192@Karyakshetra>
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:cc;
+        bh=TnNWfEpB/Er3mExmKupmIdOiqVDOwleRtpXbJpDh6ho=;
+        b=eNInkJ3l3GoE4VuZHWoe4BqpGsfM4tIxq0qnlt2GH0XRQUPIvvsv7LRly57boHYimf
+         ZD+BCJgpFVJLTG5b5DFekIrd2ECk0VIU1gTAa1z6Urj91wXNo7x6KCEM9/GIPDq3XvuX
+         c2vpTHMMNhjwTVsESrxtvZz3SXXP5Ir/FBIBTHNb2FhoKvHNJ9KxytDkdWiRPYpt96ND
+         FJ59NxNRKxu+WJfD151jWXQMnM8IUS4XuuX3M5Sm9W2u2g5ENUZUF0658dmNkkpk0WD8
+         iXkKy/XO0iLky99vKk3WBjvbGCyQda5+wfMXupHDsNWjyiKVfhJWLEdPjiz+hZyg2WYP
+         61RA==
+X-Gm-Message-State: AD7BkJJ1Q79ULTpwBNOzZxLkpriQlbKQGE/rhbxCGwHVfnj05boiBgTP7/KAhU2uPJY1z0jPxn8f66B7ljtwEQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.182.196.37 with SMTP id ij5mr21886314obc.24.1457546914587;
+ Wed, 09 Mar 2016 10:08:34 -0800 (PST)
+Received: by 10.157.7.137 with HTTP; Wed, 9 Mar 2016 10:08:34 -0800 (PST)
+In-Reply-To: <20160309172840.GA10642@salvia>
+References: <1457539133-6410-1-git-send-email-bhumirks@gmail.com>
+	<20160309165258.GA1040@salvia>
+	<CAOH+1jFQ=yk2oNmAPuT80CmSaq6-5p9b01WQJrn=x66_c7OggA@mail.gmail.com>
+	<20160309172840.GA10642@salvia>
+Date: Wed, 9 Mar 2016 23:38:34 +0530
+Message-ID: <CAOH+1jE9axK_Mu_rJJ4qQe4BDENOGd2Cm_z4zPm7goHB61tRoQ@mail.gmail.com>
+Subject: Re: [PATCH] extensions: libxt_CONNMARK.c: Add translation to nft
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: Pablo Neira Ayuso <pablo@netfilter.org>
+Cc: outreachy-kernel@googlegroups.com, 
+	Shivani Bhardwaj <shivanib134@gmail.com>, netfilter@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
 
-This patchset removes useless initialization of variables
-if they are reassigned immediately
+On Wed, Mar 9, 2016 at 10:58 PM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
+> On Wed, Mar 09, 2016 at 10:42:13PM +0530, Bhumika Goyal wrote:
+>> On Wed, Mar 9, 2016 at 10:22 PM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
+>> > On Wed, Mar 09, 2016 at 09:28:53PM +0530, Bhumika Goyal wrote:
+>> >> Add translation for target CONNMARK to nftables.
+>> >>
+>> >> Examples:
+>> >>
+>> >> $ sudo iptables-translate -t mangle -A PREROUTING -p tcp  --dport 80 -j CONNMARK --save-mark
+>> >> nft add rule ip mangle PREROUTING tcp dport 80 counter mark save nfmask 0xffffffff ctmask 0xffffffff
+>> >>
+>> >> $ sudo iptables-translate -t mangle -A PREROUTING -p tcp --dport 80 -j CONNMARK --restore-mark --mask 12
+>> >> nft add rule ip mangle PREROUTING tcp dport 80 counter mark restore nfmask 0xc ctmask 0xc
+>> >>
+>> >> $ sudo iptables-translate -t mangle -A PREROUTING -p tcp --dport 22 -j CONNMARK --set-mark 2
+>> >> nft add rule ip mangle PREROUTING tcp dport 22 counter mark set 0x2/0xffffffff
+>> >>
+>> >> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+>> >> ---
+>> >>  extensions/libxt_CONNMARK.c | 28 ++++++++++++++++++++++++++++
+>> >>  1 file changed, 28 insertions(+)
+>> >>
+>> >> diff --git a/extensions/libxt_CONNMARK.c b/extensions/libxt_CONNMARK.c
+>> >> index 42cf207..e2dbf8d 100644
+>> >> --- a/extensions/libxt_CONNMARK.c
+>> >> +++ b/extensions/libxt_CONNMARK.c
+>> >> @@ -347,6 +347,32 @@ connmark_tg_save(const void *ip, const struct xt_entry_target *target)
+>> >>       }
+>> >>  }
+>> >>
+>> >> +static int
+>> >> +connmark_tg_xlate(const struct xt_entry_target *target,
+>> >> +               struct xt_xlate *xl, int numeric)
+>> >> +{
+>> >> +     const struct xt_connmark_tginfo1 *info = (const void *)target->data;
+>> >> +
+>> >> +     switch (info->mode) {
+>> >> +     case XT_CONNMARK_SET:
+>> >> +             xt_xlate_add(xl, "mark set 0x%x/0x%x", info->ctmark, info->ctmask);
+>> >> +             break;
+>> >> +     case XT_CONNMARK_SAVE:
+>> >> +             xt_xlate_add(xl,"mark save nfmask 0x%x ctmask 0x%x",
+>> >> +                          info->nfmask, info->ctmask);
+>> >> +             break;
+>> >> +     case XT_CONNMARK_RESTORE:
+>> >> +             xt_xlate_add(xl,"mark restore nfmask 0x%x ctmask 0x%x",
+>> >> +                          info->nfmask, info->ctmask);
+>> >
+>> > This translation is not correct.
+>> >
+>>
+>> Thanks for the feedback. Could you please tell me the mistake as I am
+>> not able to figure out my mistake?
+>
+> You have to test your translations, to make sure they work fine with
+> nft:
+>
+> # nft add rule filter PREROUTING nft add rule ip mangle PREROUTING tcp dport 80 counter mark restore nfmask 0xc ctmask 0xc
+> <cmdline>:1:32-34: Error: syntax error, unexpected add
+> add rule filter PREROUTING nft add rule ip mangle PREROUTING tcp dport
+> 80 counter mark restore nfmask 0xc ctmask 0xc
+>                                ^^^
+>
+> This syntax is not correct. Please, have a look at the wiki and
+> investigate how to translate this. Thanks.
 
-Bhaktipriya Shridhar (2):
-  staging: rtl8188eu: hal: Drop Useless Initialization
-  staging: rtl8192u: ieee802111: Drop Useless Initialization
+Ok. I will read more on the wiki and then try to correct it.
 
- drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c      | 4 ++--
- drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
---
-2.1.4
-
+Thanks,
+Bhumika
 
