@@ -1,53 +1,53 @@
 X-GM-THRID: 6257160535052124160
-X-Received: by 10.141.0.9 with SMTP id b9mr4847251qhd.16.1457551849512;
-        Wed, 09 Mar 2016 11:30:49 -0800 (PST)
+X-Received: by 10.107.198.150 with SMTP id w144mr597970iof.9.1457551818369;
+        Wed, 09 Mar 2016 11:30:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.142 with SMTP id u14ls1214848qge.82.gmail; Wed, 09 Mar
- 2016 11:30:49 -0800 (PST)
-X-Received: by 10.140.42.43 with SMTP id b40mr4835632qga.9.1457551849090;
-        Wed, 09 Mar 2016 11:30:49 -0800 (PST)
+Received: by 10.107.155.75 with SMTP id d72ls708053ioe.43.gmail; Wed, 09 Mar
+ 2016 11:30:18 -0800 (PST)
+X-Received: by 10.107.43.147 with SMTP id r141mr588492ior.15.1457551818000;
+        Wed, 09 Mar 2016 11:30:18 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id sf5si18302pac.1.2016.03.09.11.30.49
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id r75si19746pfr.0.2016.03.09.11.30.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Mar 2016 11:30:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 09 Mar 2016 11:30:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 184so4237343pff.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 09 Mar 2016 11:30:49 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id 129so1655160pfw.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 09 Mar 2016 11:30:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=P4Vj1kwDJi0iKNnpOYegqphc27FxYNRBvnxnDm8B1Ws=;
-        b=d4gkzlXEO1T2RyEcNsvPHbO10F/V80XLZkLtPmSoOiv0QKiILtUhoV/YAcUO0wq2yc
-         IXd77N6IeBre/o56bpVItUaTBkBk4/YRguCAFUo7ckXN81ZNGqng4RD5EfBaSmj1j4mC
-         EWz6KpECQg6A1PIDQPGQTu88tXxQtnIDS4dqtt6InuvJWWQu2DaZ+IMsRkqDUxFVYsVN
-         av49iEo0wExEHxIIv2CtCHSjyFQeN+Kw5/NeDAU14wrbi9/3X9voYlW3ly+E2R5qT86b
-         zxD/zNiIXmcJ/zSGanXApWhk+jgksY1uQVtj6x/xnIe+zzQc9TLNd4B1AobvNYrbmv3S
-         RqZw==
+        bh=xVVLs2h+1MH2R7n8MJ+oBxmgNFi57AidJLh+ckQquQY=;
+        b=eTnvmreqLV7mp2AVsR4mHEZP0rjla/yvs9eCFEaz9eMLDhkiaYNQZEqycqMpwtzL/y
+         693+Sr7vwoqt5jd2rAGa+HZx36+vOcPF60PJffJLsIyqO7K6aF9u2HmkZTZkdX7qsiwg
+         b5Jx4Nf8zHyMdd3EHgYIl7zLrG0nKuklPVwycG7y6g4LtifUUC39iw5YyBa/u73wji3f
+         /EhcrzsKDH2fMApAo9mZ6A38mEoMcL7jvPxLF2IaNGntX+dnoKzCi32nXQBOSSpob52N
+         fIFVwt7UcdJIJKI2JmzodsScYDDACcddfwxosQGkFE4qAVO09conI3M1HJ9bfVY78e4p
+         J6/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=P4Vj1kwDJi0iKNnpOYegqphc27FxYNRBvnxnDm8B1Ws=;
-        b=FKuKfHEMxsEHamAco0X9u6cCsofbjow1+jJ1/dE+14mSex82RWzHJKGyRghpmJf52X
-         4bEKgtMU3sD+s5TZBkVVX9MfLJdT2yF9c7QA2mIqth97E39/wgeDsgt66TzXpa4hpYYS
-         f+c1Y/nV8gim6OVDQjsAUZzI07S3xBm9oohf4Fx2mBjsXcvRrBjaalVqRNDhUGC1g/E6
-         C9nlF2COrPK5TW8O9MIEBdrvBEyvpgnSbaYx+E9Cx0R2OKI3j9CeOSlxqaOPp9uouYse
-         WYnwG+f7O1gA/4mAnt4bG4kvXjHiDrkKQg1dDBv9A7KmRHKOkHlaQmWos/Vkwl9dfeFu
-         pHEg==
-X-Gm-Message-State: AD7BkJIISn+xuKu0T+VbASsDGEHvbZx5xf/yey+B2ZUHtbn2UrYSKCAtUTGm3jNo1oEbyQ==
-X-Received: by 10.98.80.10 with SMTP id e10mr52533441pfb.141.1457551848870;
-        Wed, 09 Mar 2016 11:30:48 -0800 (PST)
+        bh=xVVLs2h+1MH2R7n8MJ+oBxmgNFi57AidJLh+ckQquQY=;
+        b=OkZS3obtrw/41fwm/85ErqehdHp8qM8aTb2mpzlHD7zDaP+L9sCZDJdiM548gxd+aS
+         BKuH5gWpNhnfVzbPx/UFRW/scpLp6AGw2XFaFWhcz7LSSvmdbegjhOPhzth+oY5ObOPA
+         DKnIvryvQU4JHisww//4p2Okg57IbXEPaYGMg6xmtdXjZnm1aVoq09I3Bg9BMr1JaYTE
+         TDKyqppjrdSTmpzxhs7LwsaYsBG06cauPCbD7S9DucfQLx7EAWTGkGcV4h8jhkE6hDFX
+         svmpJ38vjtnq73Di+EZJF/baMBG7c2ilxLs1n3IN6lV3r3EtCelQcRjwotEwZj1bUmY/
+         /LYQ==
+X-Gm-Message-State: AD7BkJKOMkq7vvdZy1TZL4zlXqxwOz2LUC2eRKBtmYEX0n7Ow3E8CGm16WQWGuTKSSG6jw==
+X-Received: by 10.98.68.209 with SMTP id m78mr34936603pfi.153.1457551817835;
+        Wed, 09 Mar 2016 11:30:17 -0800 (PST)
 Return-Path: <amsfield22@gmail.com>
 Received: from localhost.localdomain (or-67-232-71-44.dhcp.embarqhsd.net. [67.232.71.44])
-        by smtp.gmail.com with ESMTPSA id i1sm90032pfj.17.2016.03.09.11.30.47
+        by smtp.gmail.com with ESMTPSA id o7sm76230pfa.37.2016.03.09.11.30.16
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 09 Mar 2016 11:30:48 -0800 (PST)
+        Wed, 09 Mar 2016 11:30:17 -0800 (PST)
 From: Alison Schofield <amsfield22@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: jic23@kernel.org,
@@ -59,94 +59,106 @@ Cc: jic23@kernel.org,
 	Michael.Hennerich@analog.com,
 	gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [RFC PATCH v2 2/2] staging: iio: ad7192: use iio_device_{claim|release}_direct_mode()
-Date: Wed,  9 Mar 2016 11:30:43 -0800
-Message-Id: <dd3f346d97cfb11f4d18e44eb67309c889639ba7.1457549841.git.amsfield22@gmail.com>
+Subject: [RFC PATCH v2 1/2] iio: core: implement iio_device_{claim|release}_direct_mode()
+Date: Wed,  9 Mar 2016 11:30:12 -0800
+Message-Id: <a9ed1d7bec5e0692bfd6b0e897d408fc265d4be8.1457549841.git.amsfield22@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1457549841.git.amsfield22@gmail.com>
 References: <cover.1457549841.git.amsfield22@gmail.com>
 
-Replace the code that guarantees the device stays in direct mode with
-iio_device_{claim|release}_direct_mode() which does same.
+It is often the case that the driver wants to be sure a device stays
+in direct mode while it is executing a task or series of tasks.  To
+accomplish this today, the driver performs this sequence: 1) take the
+device state lock, 2) verify it is not in a buffered mode, 3) execute
+some tasks, and 4) release that lock.
+
+This patch introduces a pair of helper functions that simplify these
+steps and make it more semantically expressive.
+
+iio_device_claim_direct_mode()
+        If the device is not in any buffered mode it is guaranteed
+        to stay that way until iio_release_direct_mode() is called.
+
+iio_device_release_direct_mode()
+        Release the claim. Device is no longer guaranteed to stay
+        in direct mode.
 
 Signed-off-by: Alison Schofield <amsfield22@gmail.com>
 ---
- drivers/staging/iio/adc/ad7192.c | 24 +++++++++---------------
- 1 file changed, 9 insertions(+), 15 deletions(-)
+ drivers/iio/industrialio-core.c | 39 +++++++++++++++++++++++++++++++++++++++
+ include/linux/iio/iio.h         |  2 ++
+ 2 files changed, 41 insertions(+)
 
-diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-index f843f19..94a2e06 100644
---- a/drivers/staging/iio/adc/ad7192.c
-+++ b/drivers/staging/iio/adc/ad7192.c
-@@ -349,11 +349,9 @@ static ssize_t ad7192_write_frequency(struct device *dev,
- 	if (lval == 0)
- 		return -EINVAL;
- 
--	mutex_lock(&indio_dev->mlock);
--	if (iio_buffer_enabled(indio_dev)) {
--		mutex_unlock(&indio_dev->mlock);
-+	ret = iio_device_claim_direct_mode(indio_dev);
-+	if (ret)
- 		return -EBUSY;
--	}
- 
- 	div = st->mclk / (lval * st->f_order * 1024);
- 	if (div < 1 || div > 1023) {
-@@ -366,7 +364,7 @@ static ssize_t ad7192_write_frequency(struct device *dev,
- 	ad_sd_write_reg(&st->sd, AD7192_REG_MODE, 3, st->mode);
- 
- out:
--	mutex_unlock(&indio_dev->mlock);
-+	iio_device_release_direct_mode(indio_dev);
- 
- 	return ret ? ret : len;
+diff --git a/drivers/iio/industrialio-core.c b/drivers/iio/industrialio-core.c
+index 70cb7eb..2e768bc 100644
+--- a/drivers/iio/industrialio-core.c
++++ b/drivers/iio/industrialio-core.c
+@@ -25,6 +25,7 @@
+ #include <linux/slab.h>
+ #include <linux/anon_inodes.h>
+ #include <linux/debugfs.h>
++#include <linux/mutex.h>
+ #include <linux/iio/iio.h>
+ #include "iio_core.h"
+ #include "iio_core_trigger.h"
+@@ -1375,6 +1376,44 @@ void devm_iio_device_unregister(struct device *dev, struct iio_dev *indio_dev)
  }
-@@ -434,11 +432,9 @@ static ssize_t ad7192_set(struct device *dev,
- 	if (ret < 0)
- 		return ret;
+ EXPORT_SYMBOL_GPL(devm_iio_device_unregister);
  
--	mutex_lock(&indio_dev->mlock);
--	if (iio_buffer_enabled(indio_dev)) {
--		mutex_unlock(&indio_dev->mlock);
-+	ret = iio_device_claim_direct_mode(indio_dev);
-+	if (ret)
- 		return -EBUSY;
--	}
++/**
++ * iio_device_claim_direct_mode - Keep device in direct mode
++ * @indio_dev:	the iio_dev associated with the device
++ *
++ * If the device is in direct mode it is guaranteed to stay
++ * that way until iio_device_release_direct_mode() is called.
++ *
++ * Use with iio_device_release_direct_mode()
++ *
++ * Returns: 0 on success, -EBUSY on failure
++ */
++int iio_device_claim_direct_mode(struct iio_dev *indio_dev)
++{
++	mutex_lock(&indio_dev->mlock);
++
++	if (iio_buffer_enabled(indio_dev)) {
++		mutex_unlock(&indio_dev->mlock);
++		return -EBUSY;
++	}
++	return 0;
++}
++EXPORT_SYMBOL_GPL(iio_device_claim_direct_mode);
++
++/**
++ * iio_device_release_direct_mode - releases claim on direct mode
++ * @indio_dev:	the iio_dev associated with the device
++ *
++ * Release the claim. Device is no longer guaranteed to stay
++ * in direct mode.
++ *
++ * Use with iio_device_claim_direct_mode()
++ */
++void iio_device_release_direct_mode(struct iio_dev *indio_dev)
++{
++	mutex_unlock(&indio_dev->mlock);
++}
++EXPORT_SYMBOL_GPL(iio_device_release_direct_mode);
++
+ subsys_initcall(iio_init);
+ module_exit(iio_exit);
  
- 	switch ((u32)this_attr->address) {
- 	case AD7192_REG_GPOCON:
-@@ -461,7 +457,7 @@ static ssize_t ad7192_set(struct device *dev,
- 		ret = -EINVAL;
- 	}
+diff --git a/include/linux/iio/iio.h b/include/linux/iio/iio.h
+index b2b1677..0b2773a 100644
+--- a/include/linux/iio/iio.h
++++ b/include/linux/iio/iio.h
+@@ -527,6 +527,8 @@ void iio_device_unregister(struct iio_dev *indio_dev);
+ int devm_iio_device_register(struct device *dev, struct iio_dev *indio_dev);
+ void devm_iio_device_unregister(struct device *dev, struct iio_dev *indio_dev);
+ int iio_push_event(struct iio_dev *indio_dev, u64 ev_code, s64 timestamp);
++int iio_device_claim_direct_mode(struct iio_dev *indio_dev);
++void iio_device_release_direct_mode(struct iio_dev *indio_dev);
  
--	mutex_unlock(&indio_dev->mlock);
-+	iio_device_release_direct_mode(indio_dev);
+ extern struct bus_type iio_bus_type;
  
- 	return ret ? ret : len;
- }
-@@ -555,11 +551,9 @@ static int ad7192_write_raw(struct iio_dev *indio_dev,
- 	int ret, i;
- 	unsigned int tmp;
- 
--	mutex_lock(&indio_dev->mlock);
--	if (iio_buffer_enabled(indio_dev)) {
--		mutex_unlock(&indio_dev->mlock);
-+	ret = iio_device_claim_direct_mode(indio_dev);
-+	if (ret)
- 		return -EBUSY;
--	}
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_SCALE:
-@@ -582,7 +576,7 @@ static int ad7192_write_raw(struct iio_dev *indio_dev,
- 		ret = -EINVAL;
- 	}
- 
--	mutex_unlock(&indio_dev->mlock);
-+	iio_device_release_direct_mode(indio_dev);
- 
- 	return ret;
- }
 -- 
 2.1.4
 
