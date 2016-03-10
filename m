@@ -1,109 +1,87 @@
-X-GM-THRID: 5271474667520
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b251f69e5d11924f,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.236.228.106 with SMTP id e100mr18933736yhq.21.1425162506537;
-        Sat, 28 Feb 2015 14:28:26 -0800 (PST)
+X-GM-THRID: 6260471380300529664
+X-Received: by 10.112.145.225 with SMTP id sx1mr25445lbb.23.1457652970158;
+        Thu, 10 Mar 2016 15:36:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.163 with SMTP id k3ls521984igx.13.gmail; Sat, 28 Feb
- 2015 14:28:26 -0800 (PST)
-X-Received: by 10.66.140.66 with SMTP id re2mr19539434pab.29.1425162506013;
-        Sat, 28 Feb 2015 14:28:26 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pd0-x232.google.com (mail-pd0-x232.google.com. [2607:f8b0:400e:c02::232])
-        by gmr-mx.google.com with ESMTPS id nt14si939470pab.2.2015.02.28.14.28.26
+Received: by 10.25.91.82 with SMTP id p79ls359269lfb.76.gmail; Thu, 10 Mar
+ 2016 15:36:09 -0800 (PST)
+X-Received: by 10.112.17.37 with SMTP id l5mr868312lbd.21.1457652969347;
+        Thu, 10 Mar 2016 15:36:09 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c7si30713wmf.2.2016.03.10.15.36.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 14:28:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::232 as permitted sender) client-ip=2607:f8b0:400e:c02::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Mar 2016 15:36:09 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c02::232 as permitted sender) smtp.mail=navyasri.tech@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x232.google.com with SMTP id nh10so6035151pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 14:28:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=X0+kCkE06XWXKEEunbup0vx0GiJivSKTA5bmP2y8xxM=;
-        b=ZjlwX2ob7yS0tFI4pbDPMDGs+CCVDkut3wd5/faD+dw7/k7jXylZe9wvDdCjsdn9O9
-         VGlyf0k/40AN95EBUjHrQCvIDJME1PjH27UVcTp43q/cymQood/ZB4N+unrdamzHZIrr
-         qGb5blhL2yKjRLH7N7LdonMbEuUwm0NKfuO3ZTK/mZsazUtZmdetEBSkYQYBP1xfXNhe
-         qOK8MVCjqjLbjFX8aDUUnH8hT5QKE+KToIlTFYT3RG+KF0H6Zld11AuJbfznhihNWU2I
-         yI1M6zMDS1dvWerlsjYtx29kuzINYgk+RFDqjdGBs5cFW7ubTCaiBaoqKw01ntYLGJYC
-         Hqhg==
-X-Received: by 10.66.97.7 with SMTP id dw7mr35166232pab.56.1425162505907;
-        Sat, 28 Feb 2015 14:28:25 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from nizamkari ([61.16.142.166])
-        by mx.google.com with ESMTPSA id c2sm7748627pdi.25.2015.02.28.14.28.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 28 Feb 2015 14:28:25 -0800 (PST)
-Date: Sun, 1 Mar 2015 03:59:39 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: Use kasprintf.
-Message-ID: <20150228222939.GA6046@localhost>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,317,1454972400"; 
+   d="scan'208";a="168086740"
+Received: from unknown (HELO hadrien.local) ([150.100.253.2])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 11 Mar 2016 00:36:07 +0100
+Date: Fri, 11 Mar 2016 08:35:59 +0900 (JST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: os_dep: Remove
+ unnecessary else after return
+In-Reply-To: <20160310165407.GA18825@Karyakshetra>
+Message-ID: <alpine.DEB.2.10.1603110835350.4048@hadrien>
+References: <20160310165407.GA18825@Karyakshetra>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch uses kasprintf as it combines kmalloc and
-sprintf, and takes care of the size calculation itself.
 
-The semantic patch that makes this change is as follows:
 
-// <smpl>
-@@
-expression a,flag;
-expression list args;
-statement S;
-@@
+On Thu, 10 Mar 2016, Bhaktipriya Shridhar wrote:
 
-  a =
--  \(kmalloc\|kzalloc\)(...,flag)
-+  kasprintf(flag,args)
-  <... when != a
-  if (a == NULL || ...) S
-  ...>
-- sprintf(a,args);
+> This patch fixes the checkpatch warning that else is not generally
+> useful after a break or return.
+>
+> This was done using Coccinelle:
+> @@
+> expression e2;
+> statement s1;
+> @@
+> if(e2) { ... return ...; }
+> -else
+>          s1
+>
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/os_dep/osdep_service.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/os_dep/osdep_service.c b/drivers/staging/rtl8188eu/os_dep/osdep_service.c
+> index d87b547..854524d 100644
+> --- a/drivers/staging/rtl8188eu/os_dep/osdep_service.c
+> +++ b/drivers/staging/rtl8188eu/os_dep/osdep_service.c
+> @@ -67,8 +67,7 @@ u32 _rtw_down_sema(struct semaphore *sema)
+>  {
+>  	if (down_interruptible(sema))
+>  		return _FAIL;
+> -	else
+> -		return _SUCCESS;
+> +	return _SUCCESS;
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
- drivers/staging/lustre/lustre/llite/llite_lib.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+It would really be nice to use more standard error return codes. (Not
+related to this patch of course).
 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index 0c1b583..52daba9 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -978,19 +978,17 @@ int ll_fill_super(struct super_block *sb, struct vfsmount *mnt)
- 	CDEBUG(D_CONFIG, "Found profile %s: mdc=%s osc=%s\n", profilenm,
- 	       lprof->lp_md, lprof->lp_dt);
- 
--	dt = kzalloc(strlen(lprof->lp_dt) + instlen + 2, GFP_NOFS);
-+	dt = kasprintf(strlen(lprof->lp_dt) + instlen + 2, GFP_NOFS);
- 	if (!dt) {
- 		err = -ENOMEM;
- 		goto out_free;
- 	}
--	sprintf(dt, "%s-%p", lprof->lp_dt, cfg->cfg_instance);
- 
--	md = kzalloc(strlen(lprof->lp_md) + instlen + 2, GFP_NOFS);
-+	md = kasprintf(strlen(lprof->lp_md) + instlen + 2, GFP_NOFS);
- 	if (!md) {
- 		err = -ENOMEM;
- 		goto out_free;
- 	}
--	sprintf(md, "%s-%p", lprof->lp_md, cfg->cfg_instance);
- 
- 	/* connections, registrations, sb setup */
- 	err = client_common_fill_super(sb, md, dt, mnt);
--- 
-1.9.1
+julia
 
+>  }
+>
+>  void	_rtw_init_queue(struct __queue *pqueue)
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160310165407.GA18825%40Karyakshetra.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
