@@ -1,120 +1,129 @@
-X-GM-THRID: 6401063525476728832
-X-Received: by 10.200.1.5 with SMTP id e5mr2469751qtg.11.1490363740432;
-        Fri, 24 Mar 2017 06:55:40 -0700 (PDT)
+X-GM-THRID: 6260475959722377216
+X-Received: by 10.31.52.207 with SMTP id b198mr3430594vka.5.1457630647291;
+        Thu, 10 Mar 2016 09:24:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.163 with SMTP id 35ls2190119ios.37.gmail; Fri, 24 Mar
- 2017 06:55:39 -0700 (PDT)
-X-Received: by 10.99.96.196 with SMTP id u187mr2712568pgb.151.1490363739532;
-        Fri, 24 Mar 2017 06:55:39 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id y203si532717pfb.0.2017.03.24.06.55.39
+Received: by 10.140.100.214 with SMTP id s80ls2052009qge.94.gmail; Thu, 10 Mar
+ 2016 09:24:06 -0800 (PST)
+X-Received: by 10.140.31.102 with SMTP id e93mr3417530qge.27.1457630646792;
+        Thu, 10 Mar 2016 09:24:06 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id 12si698829pfb.1.2016.03.10.09.24.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Mar 2017 06:55:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Thu, 10 Mar 2016 09:24:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id w20so647784pgc.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 24 Mar 2017 06:55:39 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x232.google.com with SMTP id n5so35418800pfn.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 09:24:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=4NHHamOd5J/OH4tFB34HErTJA+oFXgP2e6XYORS1pJ0=;
-        b=P4KewlKGdy3ofLRLo3BWJq1SkprCINzNqcsqJrZDaBml9znD8i4c5Gts1Yd6pWgAT5
-         dAIsIwWMjT2li97gr1JMT+tVqp2H420gC0J+48HFbHT0hTTWwsCfZ9AJbkmrSDn43NFk
-         5222DliHcJIHrb637J8ooDkDoWRIB3ENL3pWMy+EzQawWMoba8EqwEnYeRpxfWJY3vLz
-         TJxCFVKWCyrkRkY/eqo5U2DhP/Y9dLjdqh4qQjZ2V0RNYmkmEhpEKWw19UF1hZIebPDI
-         b46OW+s+ZMEkOeXnrmIthrpSuokmWfqtCgRvr5+wodV4JubhgmEjSo1gM1pfXFA+kmym
-         I6XQ==
+        bh=F9GMZDem6All5fu4yhIUdZ7O8eP6KEibaDf1KlAySVg=;
+        b=C/dDzhUs3nHM7x4yrSSQGf4UEPu95g5x6iCOHmulanWzPl6e21zmSYdFoo8T2TMm/H
+         UoBknszLKEPOPttJCo0yP3qGuS+JWtjkxKYKXkALtUntSFB5x5UPeJiUtKE3caoL9+aa
+         t21iDd5/3nrUswEB1XTiPtZWFUcW6Sz+QaX3c5FdPBdJY4mCN7gzSJABROQ+nWLEiuQJ
+         4oKmEQvQWz8yLB0lMZ30POdflu2lBfwiyPt8j5J5l047VHRSHQevP8Tdt9u7TaISkYyO
+         cCGjpD4KXLq8hvTimW3GPVhtebCwiYQ2yzDXgB4yiyL2cJYeV9PSrOFfvjS3/QFES/sO
+         68TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=4NHHamOd5J/OH4tFB34HErTJA+oFXgP2e6XYORS1pJ0=;
-        b=eYtgj9CnkT2PVmTAdFcAiJTQgnEeVVq/QUFvNfGdI+aGUsFj5vc3ZHJWEKi3pHn2t8
-         GVLcu83Hzkposquw2/nV9lAat857hpQcWvdc7zLR4SdpZJNItTOerarIs4HsMvfF07L0
-         jDGO3YHNtrJXthRSf6TLH754SLUvkxXUYcJaOrIJM3ClrvPODKZ9ygSMomhQsbKbHxAC
-         m/NuV70SUEhX1bhNAGPNAfTMoppGd1+ermo+eUkHF4ufapaiv7Xr42oyzEHz2LK125i8
-         y3WwHTM/mcqn1+m2wDe6A3zxT8uhfuzrCBgStf2glSrmpp8RFjttL86CtxNxhvzF5iLj
-         M4MQ==
-X-Gm-Message-State: AFeK/H30qV4s0Zs/dhvEgdEWH6Ij+wKshuA0nW2VLbPlpqvDnSVkxa5uC18cONLb1/xTXA==
-X-Received: by 10.84.234.2 with SMTP id m2mr11221550plk.169.1490363739356;
-        Fri, 24 Mar 2017 06:55:39 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id c204sm5043191pfc.92.2017.03.24.06.55.37
+        bh=F9GMZDem6All5fu4yhIUdZ7O8eP6KEibaDf1KlAySVg=;
+        b=JU8znUNAs+8BeUYzXjJR2oKxkljTAqPA99oFa8ddGJr9B0qhBOtAY4HZMMVOdE3tXq
+         OhAxV4pcUQi7WaQaMkjgqr1C6qzF6DhdxzdHExMe9jVRDzOruMNeq09p2xvi+XOmGzTS
+         SdJJJtYXhpHOGpI19n8Bs8O5g9LEw8yeuVTfHM0wKK9bRZb2sfVJG+Q+nzKvTDeY/1em
+         9zKFIqTIM7u8wc0QRe6wFyz/3Monn48uIvMs0Rlf2QCmZD+iApoiPCIbJngB8jAy3l9A
+         RyKXXkfKWs7hiVj1axWwbIm7AASIuYs10Aedmi/YsraEHNgbX03lIephsx81DguTwfMo
+         nMMg==
+X-Gm-Message-State: AD7BkJLw71SEDTMCspSxbFq5qdk4e+wFX9SHDkc+0lyO3kB2rQl/v3a2ujAxpg3AU7Hfcg==
+X-Received: by 10.98.89.22 with SMTP id n22mr6630365pfb.55.1457630646593;
+        Thu, 10 Mar 2016 09:24:06 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id 17sm6928881pfs.40.2016.03.10.09.24.05
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 24 Mar 2017 06:55:38 -0700 (PDT)
-Date: Fri, 24 Mar 2017 19:25:33 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: lars@metafoo.de
-Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: Remove extra Parenthesis.
-Message-ID: <20170324135533.GA5346@arushi-HP-Pavilion-Notebook>
+        Thu, 10 Mar 2016 09:24:06 -0800 (PST)
+Date: Thu, 10 Mar 2016 22:41:53 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: iio: addac: Remove unnecessary else after return
+Message-ID: <20160310171153.GA19386@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove the extra parenthesis remove the checkpatch issue.
+This patch fixes the checkpatch warning that else is not generally
+useful after a break or return.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+This was done using Coccinelle:
+@@
+expression e2;
+statement s1;
+@@
+if(e2) { ... return ...; }
+-else
+         s1
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/iio/cdc/ad7746.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/iio/addac/adt7316.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
-index 033a41fd9bee..b4afc12f827f 100644
---- a/drivers/staging/iio/cdc/ad7746.c
-+++ b/drivers/staging/iio/cdc/ad7746.c
-@@ -50,10 +50,10 @@
- #define AD7746_STATUS_RDYCAP		BIT(0)
- 
- /* Capacitive Channel Setup Register Bit Designations (AD7746_REG_CAP_SETUP) */
--#define AD7746_CAPSETUP_CAPEN		(BIT(7))
--#define AD7746_CAPSETUP_CIN2		(BIT(6)) /* AD7746 only */
--#define AD7746_CAPSETUP_CAPDIFF		(BIT(5))
--#define AD7746_CAPSETUP_CACHOP		(BIT(0))
-+#define AD7746_CAPSETUP_CAPEN		BIT(7)
-+#define AD7746_CAPSETUP_CIN2		BIT(6) /* AD7746 only */
-+#define AD7746_CAPSETUP_CAPDIFF		BIT(5)
-+#define AD7746_CAPSETUP_CACHOP		BIT(0)
- 
- /* Voltage/Temperature Setup Register Bit Designations (AD7746_REG_VT_SETUP) */
- #define AD7746_VTSETUP_VTEN		(1 << 7)
-@@ -61,9 +61,9 @@
- #define AD7746_VTSETUP_VTMD_EXT_TEMP	(1 << 5)
- #define AD7746_VTSETUP_VTMD_VDD_MON	(2 << 5)
- #define AD7746_VTSETUP_VTMD_EXT_VIN	(3 << 5)
--#define AD7746_VTSETUP_EXTREF		(BIT(4))
--#define AD7746_VTSETUP_VTSHORT		(BIT(1))
--#define AD7746_VTSETUP_VTCHOP		(BIT(0))
-+#define AD7746_VTSETUP_EXTREF		BIT(4)
-+#define AD7746_VTSETUP_VTSHORT		BIT(1)
-+#define AD7746_VTSETUP_VTCHOP		BIT(0)
- 
- /* Excitation Setup Register Bit Designations (AD7746_REG_EXC_SETUP) */
- #define AD7746_EXCSETUP_CLKCTRL		BIT(7)
-@@ -87,7 +87,7 @@
- #define AD7746_CONF_MODE_GAIN_CAL	(6 << 0)
- 
- /* CAPDAC Register Bit Designations (AD7746_REG_CAPDACx) */
--#define AD7746_CAPDAC_DACEN		(BIT(7))
-+#define AD7746_CAPDAC_DACEN		BIT(7)
- #define AD7746_CAPDAC_DACP(x)		((x) & 0x7F)
- 
- /*
--- 
-2.11.0
+diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
+index 3adc451..a10e7d8 100644
+--- a/drivers/staging/iio/addac/adt7316.c
++++ b/drivers/staging/iio/addac/adt7316.c
+@@ -465,9 +465,8 @@ static ssize_t adt7316_show_all_ad_channels(struct device *dev,
+ 		return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
+ 				"2 - External Temperature or AIN1\n"
+ 				"3 - AIN2\n4 - AIN3\n5 - AIN4\n");
+-	else
+-		return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
+-				"2 - External Temperature\n");
++	return sprintf(buf, "0 - VDD\n1 - Internal Temperature\n"
++			"2 - External Temperature\n");
+ }
+
+ static IIO_DEVICE_ATTR(all_ad_channels, S_IRUGO,
+@@ -637,7 +636,7 @@ static ssize_t adt7316_show_da_high_resolution(struct device *dev,
+ 	if (chip->config3 & ADT7316_DA_HIGH_RESOLUTION) {
+ 		if (chip->id == ID_ADT7316 || chip->id == ID_ADT7516)
+ 			return sprintf(buf, "1 (12 bits)\n");
+-		else if (chip->id == ID_ADT7317 || chip->id == ID_ADT7517)
++		if (chip->id == ID_ADT7317 || chip->id == ID_ADT7517)
+ 			return sprintf(buf, "1 (10 bits)\n");
+ 	}
+
+@@ -919,8 +918,7 @@ static ssize_t adt7316_show_all_DAC_update_modes(struct device *dev,
+ 				"1 - auto at MSB DAC AB and CD writing\n"
+ 				"2 - auto at MSB DAC ABCD writing\n"
+ 				"3 - manual\n");
+-	else
+-		return sprintf(buf, "manual\n");
++	return sprintf(buf, "manual\n");
+ }
+
+ static IIO_DEVICE_ATTR(all_DAC_update_modes, S_IRUGO,
+@@ -1068,9 +1066,8 @@ static ssize_t adt7316_show_DAC_internal_Vref(struct device *dev,
+ 		return sprintf(buf, "0x%x\n",
+ 			(chip->dac_config & ADT7516_DAC_IN_VREF_MASK) >>
+ 			ADT7516_DAC_IN_VREF_OFFSET);
+-	else
+-		return sprintf(buf, "%d\n",
+-			!!(chip->dac_config & ADT7316_DAC_IN_VREF));
++	return sprintf(buf, "%d\n",
++		       !!(chip->dac_config & ADT7316_DAC_IN_VREF));
+ }
+
+ static ssize_t adt7316_store_DAC_internal_Vref(struct device *dev,
+--
+2.1.4
 
 
