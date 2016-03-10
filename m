@@ -1,96 +1,64 @@
-X-GM-THRID: 6261788098456190976
-X-Received: by 10.107.3.193 with SMTP id e62mr16721075ioi.19.1457936153396;
-        Sun, 13 Mar 2016 23:15:53 -0700 (PDT)
+X-GM-THRID: 6260127828626374656
+X-Received: by 10.28.24.14 with SMTP id 14mr334380wmy.1.1457608570612;
+        Thu, 10 Mar 2016 03:16:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.103.8 with SMTP id fs8ls737669igb.26.gmail; Sun, 13 Mar
- 2016 23:15:53 -0700 (PDT)
-X-Received: by 10.67.30.161 with SMTP id kf1mr17134711pad.21.1457936153127;
-        Sun, 13 Mar 2016 23:15:53 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id ui7si3052004pab.0.2016.03.13.23.15.53
+Received: by 10.28.46.14 with SMTP id u14ls124843wmu.22.canary; Thu, 10 Mar
+ 2016 03:16:10 -0800 (PST)
+X-Received: by 10.194.19.195 with SMTP id h3mr340433wje.1.1457608569997;
+        Thu, 10 Mar 2016 03:16:09 -0800 (PST)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id f75si77987wme.3.2016.03.10.03.16.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 23:15:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        Thu, 10 Mar 2016 03:16:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id u190so99688337pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 23:15:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=tPooUE+UCwkw3nNm0IrSAwZabPhr/i2v0Xgm0J21r5o=;
-        b=T/UMtbMqwbKc7vqK1oN5rRuT2X3LIrUdSFnOhwNi12t00YEeHcYH2vqUW2DH/Dp2aS
-         BHWN0p1viGs/xM90gkMOQpAQ74Tn0lDVxBvveQF0JXTiEJUJcHhw+jN5MMqjS2Jc3i14
-         hdl2pInQfgIs2va1PGnfwAwdw2M8oF8M+WZZXGzdR4OtVtod5aAh+Y32MNkDXntYpkNe
-         cwhxOum4jfpk56FcWX9K9Vn0YC0wjvhqb0I+rUtIzbP1yuDIkl2Zt6yLhIbJTd1Rr8GG
-         TD7wybLON6Rj1D/votCDutqFrEsr75bkqjIDETPYyeXCZnLdtbJBqM/6dPFQHxl3PJRV
-         Qtvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=tPooUE+UCwkw3nNm0IrSAwZabPhr/i2v0Xgm0J21r5o=;
-        b=KnRHjmlBBV9lCim4X9O1zHIcQRCNj/fryrOt68kqI3BS6jlZ2gH9qJzNoVpR9u8tq1
-         TzsikksoEonMo4Y5UfVEyfpeCkkFobGnZ9QIYzWPwyAOJJUTigIFBvaxSGratAoKcZfY
-         f3m9pDoa4qMaykai/hpvmTtbUK4KfG8OJ/GfKOUDDJ/mdYgyQFzjY5migdHKmttNoCP4
-         1ZLGPkvgX93fZgbYLu0WAFRmpd1NVp4+olmPoAfsV3N+n5fc58O3U9d3Y1XckZHB/PHX
-         sgTTYbCl8S/bQw4XWXc4XEtqQlYVY8IRfiDvGwbo+VIVB4itspqXLsQuHH0rtKm0ztyH
-         /lTg==
-X-Gm-Message-State: AD7BkJLXq6bNn7JVwx+Bua6hFGN05Q7jVfK4vKk5Fap7IUVRsR/SwTM2BQvvSe6FvcdZpg==
-X-Received: by 10.98.71.91 with SMTP id u88mr27597302pfa.161.1457936152991;
-        Sun, 13 Mar 2016 23:15:52 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-71-44.dhcp.embarqhsd.net. [67.232.71.44])
-        by smtp.gmail.com with ESMTPSA id 16sm29029675pfk.28.2016.03.13.23.15.51
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 23:15:52 -0700 (PDT)
-Date: Sun, 13 Mar 2016 23:15:51 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: io-trig-bfin-timer: use dev_get_platdata()
-Message-ID: <20160314061544.GA6641@d830.WORKGROUP>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id A8638C9ED0
+	for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 12:16:09 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 9BDBEDA380
+	for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 12:16:09 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 9127EDA38B; Thu, 10 Mar 2016 12:16:09 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id B24ABDA386
+	for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 12:16:07 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Thu, 10 Mar 2016 12:16:07 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 733 invoked from network); 10 Mar 2016 12:16:07 +0100
+Received: from barqueta.lsi.us.es (HELO us.es) (1984lsi@150.214.188.150)
+  by mail.us.es with AES128-SHA encrypted SMTP; 10 Mar 2016 12:16:07 +0100
+Date: Thu, 10 Mar 2016 12:16:08 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Laura Garcia Liebana <nevola@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH nft] proto: Add router advertisement and solicitation
+ icmp types
+Message-ID: <20160310111608.GA8823@salvia>
+References: <20160309185304.GA13575@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20160309185304.GA13575@sonyv>
 User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Use dev_get_platdata() for retrieving the platform data instead of
-accessing dev->platform_data directly. Move the assignment out of
-the declaration (avoid lines over 80 char and put it close to
-usage).
+On Wed, Mar 09, 2016 at 07:53:07PM +0100, Laura Garcia Liebana wrote:
+> Enable support for router-advertisement and router-solicitation icmp types in nft.
+> 
+> Example:
+> $ sudo nft add rule ip filter input icmp type router-advertisement counter accept
+> $ sudo nft add rule ip filter input icmp type router-solicitation counter accept
 
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
- drivers/staging/iio/trigger/iio-trig-bfin-timer.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-index 035dd45..8667334 100644
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-+++ b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-@@ -178,7 +178,7 @@ static const struct iio_trigger_ops iio_bfin_tmr_trigger_ops = {
- 
- static int iio_bfin_tmr_trigger_probe(struct platform_device *pdev)
- {
--	struct iio_bfin_timer_trigger_pdata *pdata = pdev->dev.platform_data;
-+	struct iio_bfin_timer_trigger_pdata *pdata;
- 	struct bfin_tmr_state *st;
- 	unsigned int config;
- 	int ret;
-@@ -221,6 +221,7 @@ static int iio_bfin_tmr_trigger_probe(struct platform_device *pdev)
- 
- 	config = PWM_OUT | PERIOD_CNT | IRQ_ENA;
- 
-+	pdata =	dev_get_platdata(&pdev->dev);
- 	if (pdata && pdata->output_enable) {
- 		unsigned long long val;
- 
--- 
-2.1.4
-
+Applied, thanks Laura.
 
