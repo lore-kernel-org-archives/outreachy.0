@@ -1,61 +1,61 @@
 X-GM-THRID: 6258660898055913472
-X-Received: by 10.112.210.129 with SMTP id mu1mr596117lbc.3.1457626670438;
-        Thu, 10 Mar 2016 08:17:50 -0800 (PST)
+X-Received: by 10.25.210.201 with SMTP id j192mr606661lfg.6.1457626329187;
+        Thu, 10 Mar 2016 08:12:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.157.205 with SMTP id g196ls332482lfe.25.gmail; Thu, 10 Mar
- 2016 08:17:49 -0800 (PST)
-X-Received: by 10.25.32.144 with SMTP id g138mr608247lfg.0.1457626669913;
-        Thu, 10 Mar 2016 08:17:49 -0800 (PST)
+Received: by 10.25.131.203 with SMTP id f194ls318631lfd.77.gmail; Thu, 10 Mar
+ 2016 08:12:08 -0800 (PST)
+X-Received: by 10.112.26.74 with SMTP id j10mr618251lbg.18.1457626328097;
+        Thu, 10 Mar 2016 08:12:08 -0800 (PST)
 Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
-        by gmr-mx.google.com with ESMTPS id c140si180342wmh.1.2016.03.10.08.17.49
+Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
+        by gmr-mx.google.com with ESMTPS id g81si164668wmi.3.2016.03.10.08.12.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Mar 2016 08:17:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
+        Thu, 10 Mar 2016 08:12:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=nevola@gmail.com;
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22b.google.com with SMTP id l68so37529426wml.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 08:17:49 -0800 (PST)
+Received: by mail-wm0-x22c.google.com with SMTP id l68so35215912wml.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 08:12:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=95unpWignueZ4LhKO4UDfj5cLz4vyMtESBb0VYILgvY=;
-        b=0Tnh1tWRGg+WHNFiG1X6xOIBZPXyOqp8cknxEZcB+qCyLEmVLM9EHNFvphCmwScNgv
-         ulSg1S6PbhHJE883eymPUA4VRPoRVowVeKhVioy4ByajT4i/WJ0sYHMT6d2+cAEn4YOo
-         gXTQENF5c6ssVrngM70bvuKRgk8Arp0c/lFMr+QuUACX44VxBDHFpgmc86tCGvu7v139
-         6jLdMoUEYaqFp4cm8YicgXuaLfL1cY97/pRTl6wpKrh93dX+wCfdd86ltWNP9/7jiyDv
-         wUQyHsegU/Uc3r3Rplb6tf6ryO9ZGHUMf21txHH8EDrAbtTRMkLEGRIYz/oC5fHYjDIE
-         Izjw==
+        bh=3FUfOntlGdjyYutxmqaSro3+aK4/j+R3PhZezMn2Sro=;
+        b=llPb3Nny//L6Gng0Z/3EPwfA/LHW473kZdtcmgVSsopuUJBZxlIAq6dNwqM/fOEhN3
+         +HdryOXLVSTbfGP31w3/3UXffIO7YvY2hUljtSqIqDhpM6jA8biTxhI8yuUaDyH1+0fR
+         C1Oe/mMDDHuGrjmty2LafOTCxuKk4ivSwR3ijlS+/TisJF/kPaD18oTWhFUU7ayg3bTf
+         1oBZ8+3e/BAluk1cqxC3dQZmhs0IkVCbsh2SrKbbpK6iY1RLe5HEFqDLJd5p1cD+9+dw
+         IpwqPGTjI/m1X6SptWK/6zjKIs143zRl8DeSx+ad6tvHm41Q4Kb0UrABhz281/+9FzTl
+         WQfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=95unpWignueZ4LhKO4UDfj5cLz4vyMtESBb0VYILgvY=;
-        b=AmYzFvH650u2LEJ3uDA6iiymLf+ZBmZuXP8GjozVcNrTbC3LXa0o05Mbiu9I+GAHu7
-         Ve0uGnTQCCofCIf3isHbkLHur7xxjyYnTTpGYfs/31ipsgAY/41wVQ+Dd6sonScjK5cp
-         /Iv9429LYUrQcLr2bC9j5e8sFifOpz5vYrgxvjkbTeAnfUNothrybTAKo6vLOBUmzbf1
-         pyRKtsfLaa0bwlmNqL6Xvd6OjhyPgb1buiub7P/lJHYtbg6L308mLwOP9wzZbOj8fcvc
-         Av4BXhGHjxuU6g5ifffcRyDQs/9xToxGX4fQ7YU8iGf/r/wPVtSB8eeOkdnR/CsjOukJ
-         u93Q==
-X-Gm-Message-State: AD7BkJJGFdxpKUHR1AIdxpUI5JPHKfdRRNJuaRweo6KuV8XNTVlAd+0hm7CeVu76fkxvJw==
-X-Received: by 10.28.50.133 with SMTP id y127mr4820094wmy.4.1457626669711;
-        Thu, 10 Mar 2016 08:17:49 -0800 (PST)
+        bh=3FUfOntlGdjyYutxmqaSro3+aK4/j+R3PhZezMn2Sro=;
+        b=mQmlRRuD4PzeJhP6ylYK6MCeelau6ycZ6XQp1N0DIuG+Yf/0MPPJK8AeJMSQ2/kIEe
+         YwfyHD/WN9vnVAK65+CMYegNZesViZCR1hXaQn2j1St2gTdG0TN9wntZ9VLSNS3hsL7/
+         LSv+Wf6daEXKsRKNT35Xmy7Ai2Z7QTKP2OJA5ApXdY8YX9lyI1d99sgOnv61DRt2MOLp
+         vnQqBam7KhVZvbFDW7bupFWcXcP4IZGGdDsWlj3rhUlUOLBjuoBZOfSHQuwFJptHjgJE
+         1HQuqKpL3KkDF2K+HbaVcz765QgamZK6j1l4TXWB1ZzxIrdonWJtp+YRw8ekzKrUpnJ4
+         tyZw==
+X-Gm-Message-State: AD7BkJJHjJ5WqLq59XDyxWAIiYcPUP13yqt94whaRxi1PelquNIXS1wMltIcWRPHSSHdMA==
+X-Received: by 10.194.209.204 with SMTP id mo12mr5118754wjc.69.1457626327855;
+        Thu, 10 Mar 2016 08:12:07 -0800 (PST)
 Return-Path: <nevola@gmail.com>
 Received: from sonyv ([91.126.73.162])
-        by smtp.gmail.com with ESMTPSA id w133sm4246754wmd.3.2016.03.10.08.17.48
+        by smtp.gmail.com with ESMTPSA id h1sm3481715wme.8.2016.03.10.08.12.06
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Mar 2016 08:17:48 -0800 (PST)
-Date: Thu, 10 Mar 2016 17:17:46 +0100
+        Thu, 10 Mar 2016 08:12:07 -0800 (PST)
+Date: Thu, 10 Mar 2016 17:12:04 +0100
 From: Laura Garcia Liebana <nevola@gmail.com>
 To: netfilter-devel@vger.kernel.org
 Cc: shivanib134@gmail.com, pablo@netfilter.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCHv5] extensions: libipt_icmp: Add translation to nft
-Message-ID: <20160310161743.GA9997@sonyv>
+Subject: [PATCHv4] extensions: libipt_icmp: Add translation to nft
+Message-ID: <20160310161201.GA9569@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -68,7 +68,8 @@ network-unknown, host-unknown, network-prohibited, host-prohibited,
 TOS-network-unreachable, TOS-host-unreachable, communication-prohibited,
 host-precedence-violation, precedence-cutoff, network-redirect,
 host-redirect, TOS-network-redirect, TOS-host-redirect,
-ttl-zero-during-transit, ttl-zero-during-reassembly, ip-header-bad and required-option-missing.
+router-advertisement, router-solicitation, ttl-zero-during-transit,
+ttl-zero-during-reassembly, ip-header-bad and required-option-missing.
 
 Examples:
 
@@ -89,8 +90,6 @@ v3:
 	- Fix array iteration protection.
 v4:
 	- icmp types router-advertisement and router-solicitation already supported in nft.
-v5:
-	- Update commit message with the correct not supported codes.
 
  extensions/libipt_icmp.c | 36 ++++++++++++++++++++++++++++++++++++
  1 file changed, 36 insertions(+)
