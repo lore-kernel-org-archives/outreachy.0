@@ -1,95 +1,88 @@
-X-GM-THRID: 6251601192398356480
-X-Received: by 10.66.159.167 with SMTP id xd7mr17800065pab.5.1455564329162;
-        Mon, 15 Feb 2016 11:25:29 -0800 (PST)
+X-GM-THRID: 6260489275457929216
+X-Received: by 10.28.148.150 with SMTP id w144mr730071wmd.7.1457635079281;
+        Thu, 10 Mar 2016 10:37:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.136.209 with SMTP id s78ls1533596ioi.84.gmail; Mon, 15 Feb
- 2016 11:25:28 -0800 (PST)
-X-Received: by 10.107.135.209 with SMTP id r78mr18187147ioi.19.1455564328636;
-        Mon, 15 Feb 2016 11:25:28 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id yd9si306653pab.1.2016.02.15.11.25.28
+Received: by 10.28.229.198 with SMTP id c189ls211465wmh.12.gmail; Thu, 10 Mar
+ 2016 10:37:58 -0800 (PST)
+X-Received: by 10.28.232.155 with SMTP id f27mr734451wmi.0.1457635078814;
+        Thu, 10 Mar 2016 10:37:58 -0800 (PST)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id c140si204832wmh.1.2016.03.10.10.37.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Feb 2016 11:25:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        Thu, 10 Mar 2016 10:37:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id c10so93337059pfc.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Feb 2016 11:25:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=6E9fH6KTiHuN1YIPNetJ/hITd7U5m34muayu1UuxXC8=;
-        b=LmPm1h7daSCrEU6ZOGhpX2UJKBkQlZzbzth95MPndH9c2RFHmgbsGfjy0U15K7KUXf
-         O6ZrsGULojhc6IN+LLZhwZ6XnBrDLyY55s96JpH1g5T1Et/fDAvLEvcuvzqXw+OkRCwn
-         6g94ARF+2qoTaNA8Hfw4EXe4PeJQBdDXWmII1qgYxssYlqs4MS4CMKuHb095ZHiXjEGy
-         DiTwlI9nuiDeDDlnCHfIGbv2fjwQWp/4RqgfN1NQnZM0UjnGt1DhyBWFq+Ug2xgLH0SH
-         2yJ3ixjzROHZ0EbW///mKO3oecg+dCmgaTgcsh5le85nt6aijtpR8MkdAjftHM3qkJmf
-         RQyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=6E9fH6KTiHuN1YIPNetJ/hITd7U5m34muayu1UuxXC8=;
-        b=ekdBFz4cN8VP/ecYr6XgRSHs9XMTf9BT7/1EcNnpWvTTBcvYlU7RDeY6m60/rveY3C
-         jG6dmvRrdMEfT0EdjbtXiheRAtjYv+0f1KzTgGROJcRnq5emTMtaYIT+bo8G1lBb1R5h
-         gMoVCGGY+DsiCN69Ff5pydHmyUgSShT7SDPA+8YOMi00u1WUX+Lm95y/8Z2BICa9e7kk
-         5mFvZXsAZxwSt7gif3F5mMN4yQF1VPEjFnmN0VJ3CSTGCrHQxjNQZ7LxZJ7tvHrCAqkn
-         HfDRiC3OlFB7Xdl1e5fpGoKcnjJsYnf7ZsfFQUTEKwzjjkB2bKMWhgjTkBIynwgiQZ8x
-         FCSw==
-X-Gm-Message-State: AG10YOT7Xp+aW01J7SMlFlbT91/bhOiBUQ7hoMP3IiSkq482Mlasyag5BXZD13xLUT0UCw==
-X-Received: by 10.98.87.141 with SMTP id i13mr25705518pfj.72.1455564328444;
-        Mon, 15 Feb 2016 11:25:28 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([171.48.60.250])
-        by smtp.gmail.com with ESMTPSA id 1sm40321581pfm.10.2016.02.15.11.25.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 11:25:27 -0800 (PST)
-Date: Tue, 16 Feb 2016 00:55:25 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: Replace kmalloc and memcpy with kmemdup
-Message-ID: <20160215192524.GA30333@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 6DABCC9ED3
+	for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 19:37:58 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 5C652DA385
+	for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 19:37:58 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 50F58DA380; Thu, 10 Mar 2016 19:37:58 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 666C6DA8FB
+	for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 19:37:56 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Thu, 10 Mar 2016 19:37:56 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 4109 invoked from network); 10 Mar 2016 19:37:56 +0100
+Received: from barqueta.lsi.us.es (HELO us.es) (1984lsi@150.214.188.150)
+  by mail.us.es with AES128-SHA encrypted SMTP; 10 Mar 2016 19:37:56 +0100
+Date: Thu, 10 Mar 2016 19:37:57 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+Cc: Laura Garcia Liebana <nevola@gmail.com>,
+	Netfilter Development Mailing list <netfilter-devel@vger.kernel.org>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH] extensions: libipt_LOG: Avoid to print the default log
+ level in the translation
+Message-ID: <20160310183757.GB10249@salvia>
+References: <20160310181537.GA16699@sonyv>
+ <CAKHNQQGPvSmQP9R3omAuo1hbnOHPrsWhxkmsB7npxKM97v++Fw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <CAKHNQQGPvSmQP9R3omAuo1hbnOHPrsWhxkmsB7npxKM97v++Fw@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Replace kmalloc and memcpy with kmemdup. Found using Coccinelle.
+On Fri, Mar 11, 2016 at 12:02:25AM +0530, Shivani Bhardwaj wrote:
+> On Thu, Mar 10, 2016 at 11:45 PM, Laura Garcia Liebana <nevola@gmail.com> wrote:
+> > Avoid to print the log level in the translation when the level is the
+> > default value.
+> >
+> > Example:
+> >
+> > $ sudo iptables-translate -t filter -A INPUT -m icmp ! --icmp-type 10 -j LOG
+> > nft add rule ip filter INPUT icmp type != router-solicitation counter log
+> >
+> 
+> Looks good. Don't forget to send a patch for libip6t_LOG too.
 
-The semantic patch used to make this change can be found here:
-scripts/coccinelle/api/memdup.cocci
+Yes please, send a patch for libip6t_LOG too.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rdma/hfi1/efivar.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+> Same is the case with reject as well. When I did the translations, I
+> left its default nature intact.
+> $ sudo ip6tables-translate -A FORWARD -p TCP --dport 22 -j REJECT
+> nft add rule ip6 filter FORWARD tcp dport 22 counter reject with
+> icmpv6 type port-unreachable
+> 
+> Pablo, should this be corrected too?
 
-diff --git a/drivers/staging/rdma/hfi1/efivar.c b/drivers/staging/rdma/hfi1/efivar.c
-index e569f9f..47dfe25 100644
---- a/drivers/staging/rdma/hfi1/efivar.c
-+++ b/drivers/staging/rdma/hfi1/efivar.c
-@@ -127,13 +127,12 @@ static int read_efi_var(const char *name, unsigned long *size,
- 	 * temporary buffer.  Now allocate a correctly sized
- 	 * buffer.
- 	 */
--	data = kmalloc(temp_size, GFP_KERNEL);
-+	data = kmemdup(temp_buffer, temp_size, GFP_KERNEL);
- 	if (!data) {
- 		ret = -ENOMEM;
- 		goto fail;
- 	}
- 
--	memcpy(data, temp_buffer, temp_size);
- 	*size = temp_size;
- 	*return_data = data;
- 
--- 
-1.9.1
+It would be good to translate this to the more compact syntax, if
+possible.
 
+> Laura, may be you can send more patches depending on his response.
+
+Yes please. Thanks for commenting on this Shivani.
 
