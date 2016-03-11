@@ -1,81 +1,55 @@
-X-GM-THRID: 6202672545102036992
-X-Received: by 10.112.181.10 with SMTP id ds10mr5799313lbc.3.1444172241318;
-        Tue, 06 Oct 2015 15:57:21 -0700 (PDT)
+X-GM-THRID: 6258974741183332352
+X-Received: by 10.50.85.37 with SMTP id e5mr3661251igz.12.1457731986727;
+        Fri, 11 Mar 2016 13:33:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.18.93 with SMTP id h90ls7lfi.9.gmail; Tue, 06 Oct 2015
- 15:57:17 -0700 (PDT)
-X-Received: by 10.112.26.212 with SMTP id n20mr7041826lbg.2.1444172237684;
-        Tue, 06 Oct 2015 15:57:17 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x233.google.com (mail-wi0-x233.google.com. [2a00:1450:400c:c05::233])
-        by gmr-mx.google.com with ESMTPS id c7si659107wiy.3.2015.10.06.15.57.17
+Received: by 10.140.42.182 with SMTP id c51ls2958255qga.60.gmail; Fri, 11 Mar
+ 2016 13:33:06 -0800 (PST)
+X-Received: by 10.140.233.69 with SMTP id e66mr8526407qhc.6.1457731986169;
+        Fri, 11 Mar 2016 13:33:06 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id h69si534495pfj.0.2016.03.11.13.33.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Oct 2015 15:57:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) client-ip=2a00:1450:400c:c05::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 Mar 2016 13:33:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::233 as permitted sender) smtp.mailfrom=ciorneiioana@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x233.google.com with SMTP id fx3so3770727wic.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Oct 2015 15:57:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=vI1MqN7LNRA++/7ppf5soP9MD/25yaNExdSjCG9wkPU=;
-        b=J8yGURyy/rjV7CNGdT9PJ1KQRcflXIeq1tqrA1CTkSWN4LvgplbaRcKmD3Duh1Zo33
-         +z7fyK3AYHFjsbAgsbWCMgs9Ou1CpCCYivBEP6ZUAoGbDkhw/MzQ5miWkZ1h3ajPx6/0
-         n4vJbzvL1ay1NYO6ga6rJfj3Ndig/X8eBNouBTGqefjGPK3p58o49fqcrVBMMDYglVTW
-         RfxEE/u3I7FpcIW9oE+QaA1LeO4r2AQFIBiUE/2q2jFm3SFzLXd2vJOJ5V4nr5uLUFps
-         sQF7J7Ak/F+LTvQ2cegE7JxYvPum6sb1wuy2StuFqY+hNCT/E9V461KA6TOevByIgmCR
-         MwcA==
-X-Received: by 10.194.58.177 with SMTP id s17mr46680717wjq.102.1444172237581;
-        Tue, 06 Oct 2015 15:57:17 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by smtp.gmail.com with ESMTPSA id cv4sm35261421wjc.17.2015.10.06.15.57.16
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 06 Oct 2015 15:57:16 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH 00/10] staging: iio: adc: fix multiple checkpatch issues
-Date: Wed,  7 Oct 2015 01:57:00 +0300
-Message-Id: <cover.1444172065.git.ciorneiioana@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id DACC5C2F;
+	Fri, 11 Mar 2016 21:33:05 +0000 (UTC)
+Date: Fri, 11 Mar 2016 13:33:05 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: dgnc: Add block comments
+ /* and */ on a separate line in dgnc_tty.c.
+Message-ID: <20160311213305.GB19992@kroah.com>
+References: <20160306081850.GA1185@sandhya>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160306081850.GA1185@sandhya>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patchset fixes multiple checkpatch issues.
-Patch 2/10 introduces some lines over 800 characters, thus some other checkpatch
-warnings, but the readability of the entire core is improved by aligning the
-arguments and the parameters of the functions to match the open bracket.
+On Sun, Mar 06, 2016 at 01:48:50PM +0530, Sandhya Bankar wrote:
+> Add block comments /* and */ on a separate line. The warning is reported by checkpatch.pl.
+> 
+> The preferred style for long (multi-line) comments is:
+> /*
+>  *
+>  *
+>  */
+> 
+> 
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+> Changes in v2:
+> * No change.
+> *Compile this patch to check nothing is broken.
+> 
+>  drivers/staging/dgnc/dgnc_tty.c | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
 
-Ioana Ciornei (10):
-  staging: iio: adc: use kernel types u32 and u64
-  staging: iio: adc: properly indent to match open paranthesis
-  staging: iio: adc: remove explicit comparison to NULL
-  staging: iio: adc: remove space after cast
-  staging: iio: adc: add spaces around binary operators
-  staging: iio: adc: add blank line after declarations
-  staging: iio: adc: remove multiple blank lines
-  staging: iio: adc: remove the use of CamelCase
-  staging: iio: adc: use BIT macro
-  staging: iio: adc: properly indent block comments
-
- drivers/staging/iio/adc/ad7192.c      |  93 +++++++++--------
- drivers/staging/iio/adc/ad7192.h      |   2 +-
- drivers/staging/iio/adc/ad7280a.c     | 186 +++++++++++++++++-----------------
- drivers/staging/iio/adc/ad7606_core.c |  21 ++--
- drivers/staging/iio/adc/ad7606_par.c  |  15 +--
- drivers/staging/iio/adc/ad7606_spi.c  |   5 +-
- drivers/staging/iio/adc/ad7780.c      |   9 +-
- drivers/staging/iio/adc/ad7816.c      |  53 +++++-----
- drivers/staging/iio/adc/lpc32xx_adc.c |  20 ++--
- drivers/staging/iio/adc/mxs-lradc.c   | 170 +++++++++++++++----------------
- drivers/staging/iio/adc/spear_adc.c   |   4 +-
- 11 files changed, 292 insertions(+), 286 deletions(-)
-
--- 
-2.1.4
-
+Doesn't apply to my tree :(
 
