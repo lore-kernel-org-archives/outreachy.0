@@ -1,102 +1,45 @@
-X-GM-THRID: 6253641012020772864
-X-Received: by 10.129.90.84 with SMTP id o81mr15647913ywb.37.1456039262680;
-        Sat, 20 Feb 2016 23:21:02 -0800 (PST)
+X-GM-THRID: 6254256942088192000
+X-Received: by 10.182.28.41 with SMTP id y9mr8880950obg.14.1457730672981;
+        Fri, 11 Mar 2016 13:11:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.224.229 with SMTP id rf5ls553594obc.22.gmail; Sat, 20 Feb
- 2016 23:21:02 -0800 (PST)
-X-Received: by 10.182.199.70 with SMTP id ji6mr20696779obc.32.1456039262311;
-        Sat, 20 Feb 2016 23:21:02 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id 12si2498444pfb.1.2016.02.20.23.21.02
+Received: by 10.140.86.102 with SMTP id o93ls2574428qgd.16.gmail; Fri, 11 Mar
+ 2016 13:11:12 -0800 (PST)
+X-Received: by 10.140.104.72 with SMTP id z66mr8812272qge.22.1457730672513;
+        Fri, 11 Mar 2016 13:11:12 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ui7si1638952pab.0.2016.03.11.13.11.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 23:21:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Fri, 11 Mar 2016 13:11:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id c10so77366590pfc.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 23:21:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=dWP+F9RO8Ln0LzvEeDZHqUX0WL/nwwm0ZXCFTY4PHs8=;
-        b=P5IWyrcyHEt9a1aohOyVCP2e20K5yZ/5TvRetGawQyNVC7qACmp5YXvc46/cvLmvmJ
-         E9CtaIJbsii7L4B+/FhVc10lxTbZbECCeEkZn+Ezzx/es3eWxgXDTrP4+FwwBHq6PMM7
-         UKUzCkFaGswbXjmbxlRXzL29El9JNIN2emcHT2fSyPGSdyQcqWsFad/ysIab0sONxmhF
-         nfit1ftQ8OG5sC8yQnGxmeMkGoVHbGZFirNClncc0NmMbBswDdvdnLAaeGib0RtkbAII
-         YLAUCBnWu/QRToyxT5bLvlo3fvFg5TU2HnpfazAWHgxlskVl27jfc3PTxSjW3/3HJb00
-         fwjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=dWP+F9RO8Ln0LzvEeDZHqUX0WL/nwwm0ZXCFTY4PHs8=;
-        b=jylMC0+UUclw4/uGlEHnoj8ibgHRy4deXs0XNj9ngc6FuNpQi+QuWN1OXR/+GJbyyp
-         EgCAxUt5n7Vkj7xFOG9PttgeyRk9yWZ9eYk2Ck5Q+tDuLJQlmu6e3V53tiJYBor05dhe
-         mCVF0Qzg3lxRdHb9e0O1vkqlXJiJ3dPz2KHczglCmvTi1DFskLHbDZGmpvBCl9XPJJ7a
-         D9lgOYy3G4JfbeU1R5V3rJpQDgFC+5TFPV0a/V6DJvW+E57tRtcE7EAzl9/preohkgwZ
-         80hyCY70FcghY36JKQuDroxfdkREVEYYHdf6K7NkuoDmnN/cDqBoaRuwhY9TRGsqnSjj
-         tvtw==
-X-Gm-Message-State: AG10YOQiglR70oxas487K5G+Byqs5WY3TsDa/MXM7S5VLm2Ok5D2jXazWIvDmAWA6kHFpg==
-X-Received: by 10.98.14.146 with SMTP id 18mr29761914pfo.35.1456039262153;
-        Sat, 20 Feb 2016 23:21:02 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ti6sm12726353pab.4.2016.02.20.23.21.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 23:21:01 -0800 (PST)
-Date: Sun, 21 Feb 2016 12:51:32 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Remove cast on void pointer
-Message-ID: <20160221072132.GA14788@Karyakshetra>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 28518C46;
+	Fri, 11 Mar 2016 21:11:12 +0000 (UTC)
+Date: Fri, 11 Mar 2016 13:11:11 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: Remove space after
+ cast
+Message-ID: <20160311211111.GA13096@kroah.com>
+References: <1456182661-6726-1-git-send-email-dilekuzulmez@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <1456182661-6726-1-git-send-email-dilekuzulmez@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The following Coccinelle script was used to detect this:
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T *)x)->f
-|
-- (T *)
-  e
-)
+On Tue, Feb 23, 2016 at 01:11:01AM +0200, Dilek Uzulmez wrote:
+> Remove unnecessary space after cast. Problem found using checkpatch.pl
+> CHECK: No space is necessary after a cast
+> 
+> Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_chip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_cmd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
-index 86a9089..50f4002 100644
---- a/drivers/staging/rtl8712/rtl8712_cmd.c
-+++ b/drivers/staging/rtl8712/rtl8712_cmd.c
-@@ -317,7 +317,7 @@ int r8712_cmd_thread(void *context)
- 	unsigned int cmdsz, wr_sz, *pcmdbuf;
- 	struct tx_desc *pdesc;
- 	void (*pcmd_callback)(struct _adapter *dev, struct cmd_obj *pcmd);
--	struct _adapter *padapter = (struct _adapter *)context;
-+	struct _adapter *padapter = context;
- 	struct	cmd_priv	*pcmdpriv = &(padapter->cmdpriv);
-
- 	allow_signal(SIGTERM);
---
-2.1.4
-
+Doesn't apply to my tree :(
 
