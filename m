@@ -1,41 +1,75 @@
-X-GM-THRID: 6329440536904073216
-X-Received: by 10.46.0.14 with SMTP id 14mr2623626lja.8.1473687714348;
-        Mon, 12 Sep 2016 06:41:54 -0700 (PDT)
+X-GM-THRID: 6255862679722786816
+X-Received: by 10.129.145.130 with SMTP id i124mr7662557ywg.8.1457717133488;
+        Fri, 11 Mar 2016 09:25:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.230.214 with SMTP id e83ls1369940wmi.0.gmail; Mon, 12 Sep
- 2016 06:41:53 -0700 (PDT)
-X-Received: by 10.28.43.129 with SMTP id r123mr1727917wmr.6.1473687713161;
-        Mon, 12 Sep 2016 06:41:53 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p199si1015558wmd.1.2016.09.12.06.41.53
+Received: by 10.140.91.137 with SMTP id z9ls2844875qgd.75.gmail; Fri, 11 Mar
+ 2016 09:25:32 -0800 (PST)
+X-Received: by 10.129.132.16 with SMTP id u16mr7844745ywf.32.1457717132862;
+        Fri, 11 Mar 2016 09:25:32 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id sf5si1526369pac.1.2016.03.11.09.25.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 06:41:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 11 Mar 2016 09:25:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,322,1470693600"; 
-   d="scan'208";a="236128879"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 15:41:52 +0200
-Date: Mon, 12 Sep 2016 15:41:52 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: get_maintainer
-Message-ID: <alpine.DEB.2.10.1609121540390.29099@hadrien>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9064BD1A;
+	Fri, 11 Mar 2016 17:25:32 +0000 (UTC)
+Date: Fri, 11 Mar 2016 09:25:32 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: G Pooja Shamili <poojashamili@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8192e: Clean up tests
+ on the results of functions that return NULL on failure.
+Message-ID: <20160311172532.GA19547@kroah.com>
+References: <20160306091858.GA31543@localhost>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160306091858.GA31543@localhost>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hello,
+On Sun, Mar 06, 2016 at 02:48:58PM +0530, G Pooja Shamili wrote:
+> Functions returning NULL as a return value on failure can be tested for
+> as !x, NULL == x or x == NULL. As !x is commonly used, all the tests
+> need to be modified to use !x for a consistent coding style. In this
+> patch, the function kzalloc is considered.
+> 
+> Coccinelle is used to achieve this, the semantic patch being:
+> 
+> @@
+> expression E;
+> statement S;
+> @@
+> 
+> E = kzalloc(...);
+> 
+> if (
+> (
+> +	!
+> 	E
+> -	== NULL
+> |
+> +	!
+> -	NULL ==
+> 	E
+> )
+>  ) S
+> 
+> Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
+> ---
+> Changes from Version 1:
+> 	    * Changed the name in the From: and Signed-off-by: to full
+> name.	    
 
-I have updated the command line for get_maintainer to avoid returning
-mailing lists.  Now it should return just the name(s) of the
-maintainer(s).  See
+You sent me 2 patches with pretty much the identical subject line, yet
+they all did 3 different things.  Please fix up and resend as a patch
+series.
 
-https://kernelnewbies.org/FirstKernelPatch#submit_a_patch
+thanks,
 
-julia
+greg k-h
 
