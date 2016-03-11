@@ -1,118 +1,126 @@
-X-GM-THRID: 6257460833513635840
-X-Received: by 10.98.0.132 with SMTP id 126mr21327488pfa.2.1456928633811;
-        Wed, 02 Mar 2016 06:23:53 -0800 (PST)
+X-GM-THRID: 6260890294895509504
+X-Received: by 10.182.236.34 with SMTP id ur2mr8504284obc.10.1457727117779;
+        Fri, 11 Mar 2016 12:11:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.39.206 with SMTP id n197ls2123990ion.52.gmail; Wed, 02 Mar
- 2016 06:23:53 -0800 (PST)
-X-Received: by 10.50.87.7 with SMTP id t7mr110887igz.11.1456928633300;
-        Wed, 02 Mar 2016 06:23:53 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id yd9si5227360pab.1.2016.03.02.06.23.53
+Received: by 10.140.97.139 with SMTP id m11ls2670592qge.62.gmail; Fri, 11 Mar
+ 2016 12:11:56 -0800 (PST)
+X-Received: by 10.140.97.244 with SMTP id m107mr8580859qge.20.1457727116675;
+        Fri, 11 Mar 2016 12:11:56 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id y20si1501796pfa.2.2016.03.11.12.11.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 06:23:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        Fri, 11 Mar 2016 12:11:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x232.google.com with SMTP id 4so56387439pfd.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 02 Mar 2016 06:23:53 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id q129so8103433pfb.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 12:11:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=wxcN9TA5Gv/qVOaLocXFc4w3ojefV2MxquIKhIkZBa0=;
-        b=GHSLFQmgFTYYzZnhd4hkwgjifYObwOazK/NxDJHwUfphHmwqw4yLcZDu1F91/FyJS5
-         day02wNLBehu2Ts8WVOeNF2c6JgKB8ZmktyF3qmrFL/OT1fNuSNT0PccpaRR/DYzfoWH
-         nIMh3K7C6l1K2ZTJiOilAaqkzk19lm16/bk0VFdJfl7EsDbsI5T+8wGnYq0UJaf4lxoe
-         CUcblKUkViBgFWeogzd+cdjlU2Ph72KAlTW7BYifM1+kcwwL6SENgZFheiXABN4TcZQ/
-         f3qK5j+dSfLbNZoh4QbXyR1U9HDSAbt8K3LanAmqpBjRGl+fqpzx2sZy4shc0Vl7vTSi
-         yPNg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=eN9bV4r3C269wUEDmrfUYhE8zxHESmci1XErhbC3aTU=;
+        b=L+DTbXvhMgo/jOnTEMwTVjgnQPonpcrFF2B8+61tPKJqyRo68soIyPhhtq0z4b+OTz
+         RLNFJFk1RgiYhlBKdVZBN/xfPLA4JxIjDDXh4f7jDz2yI2zjHYm9uB6tGi/6b3ztivfY
+         MnQdoXr9qZloA/4CCNhiN/bgHdFyGsyX2TenZRV4xg89cMfiacOxROpft3xsKT1C63ic
+         3vK3JfKERWB6XCGllLltvtNCoaPENUbBTd1CHSxjyDnjZNuvD1gD9Ed+kvNzHlQ+/rdO
+         PxSMm+94DSlF2j56qFR9Pzk4jYad/2x57cpbd+wNU8E2D03JecIjtjLeBZaBNkzSnkOg
+         GGVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=wxcN9TA5Gv/qVOaLocXFc4w3ojefV2MxquIKhIkZBa0=;
-        b=MzDieTxzxdbocUnNNEW0Lee4fDprZJoqq+plxOk9uA7P5yewG+byv5hGrZin01J+25
-         OQ1Oe45DeoyuKYxUYtT9tIWs2D1snrl/ZAlsJ9RrZuHRj5sWymA7ALzrk+uVjh1ix8IQ
-         NFsrtGjrCgI28mWXi7+3LOKJCD/TV/IL5triwcVFs96ZsxUNlOIpfU/BzGMZierW8WFz
-         cxYHmVMaeKBX04XTGVpL8KqpQwyDxqTKRgK+gICzqUQ+B7fjw6Lx6dsKPwD1vH0KKMat
-         oALFOvFAqmCK9jNQM0RHZrdGeo+BTtoQ8wSyYTe34TaIiogVv+B4Qg12NY3KJEJil8iF
-         XfeQ==
-X-Gm-Message-State: AD7BkJJl4dnkmLtW29415feegTlDB60ZpYeVVai6j0/ubIdvp3rjK7E0UrQ4OJ/ooWTQhA==
-X-Received: by 10.98.33.28 with SMTP id h28mr35073372pfh.54.1456928633150;
-        Wed, 02 Mar 2016 06:23:53 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.172])
-        by smtp.gmail.com with ESMTPSA id 144sm53499129pfa.83.2016.03.02.06.23.51
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=eN9bV4r3C269wUEDmrfUYhE8zxHESmci1XErhbC3aTU=;
+        b=Oq6bWmatYiDlVKr+PE0LH/6+HFf6PvB1rxs996wrALQdbpu2T43q/83ZGl5bDT1jSd
+         tPCyXWAPI3IwOd1szxsLlyJ/yLhQfzDPbXizzdoPQFQgAMZ7xDZ58n0MRUiuwvboosAa
+         xwJV5fOuqKPDFtzMIp+buXp28pZJhvdLjPZvBVa5r4/SnNTa7oFy6OcrgCUNQJNqtM6T
+         vUVqAF7zEi20jD7Kbe8b0O9Ty89bb48QKwH2+w5S0RROxBL2EadftRnJbLSuJzbzlFev
+         lIwEPWy1Myqgc0VHiE1cJV3LyuR9KAAZtHnAUte6NC2ZUfNHlgAM3+6DsK6kH/36wJ4e
+         OpHQ==
+X-Gm-Message-State: AD7BkJJ1VJm9UOMpP75z+IPi+bM4Phht7rtQnuxYSoQTUAR1PnOhmrgMGVTu4187NQ+rEA==
+X-Received: by 10.98.65.82 with SMTP id o79mr10680470pfa.115.1457727116489;
+        Fri, 11 Mar 2016 12:11:56 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id cq4sm14863322pad.28.2016.03.11.12.11.55
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 02 Mar 2016 06:23:52 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
+        Fri, 11 Mar 2016 12:11:56 -0800 (PST)
+Date: Sat, 12 Mar 2016 01:41:38 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] staging: gs_fpgaboot: drop wrapper function 'finish_driver'
-Date: Wed,  2 Mar 2016 22:23:46 +0800
-Message-Id: <1456928626-1975-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v3 13/13] staging: lustre: lnet: o2iblnd: Use
+ list_for_each_entry_safe
+Message-ID: <20160311201138.GA3082@Karyakshetra>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove the function 'finish_driver' since a direct call to
-platform_device_unregister() is intuitive enough to signify the original
-intention of the function being removed. Coccinelle semantic patch used to
-detect this:
+Doubly linked lists which are  iterated  using list_empty
+and list_entry macros have been replaced with list_for_each_entry_safe
+macro.
+This makes the iteration simpler and more readable.
+
+This patch replaces the while loop containing list_empty and list_entry
+with list_for_each_entry_safe.
+
+This was done with Coccinelle.
 
 @@
-identifier wrapper, func;
+expression E1;
+identifier I1, I2;
 type T;
+iterator name list_for_each_entry_safe;
 @@
 
-*T wrapper(...)
+T *I1;
++ T *tmp;
+...
+- while (list_empty(&E1) == 0)
++ list_for_each_entry_safe (I1, tmp, &E1, I2)
 {
-(
-	return func(...);
-|
-	func(...);
-)
+...when != T *I1;
+- I1 = list_entry(E1.next, T, I2);
+...
 }
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/gs_fpgaboot/gs_fpgaboot.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ Changes in v3:
+	-Combined all "Use list_for_each_entry" lustre patches into a
+	 patch-set
 
-diff --git a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
-index fe3a6bc..7b7c978 100644
---- a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
-+++ b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
-@@ -281,11 +281,6 @@ static int init_driver(void)
- 	return PTR_ERR_OR_ZERO(firmware_pdev);
- }
- 
--static void finish_driver(void)
--{
--	platform_device_unregister(firmware_pdev);
--}
--
- static int gs_fpgaboot(void)
- {
- 	int err;
-@@ -370,14 +365,14 @@ static int __init gs_fpgaboot_init(void)
- 	return 0;
- 
- errout:
--	finish_driver();
-+	platform_device_unregister(firmware_pdev);
- 
- 	return err;
- }
- 
- static void __exit gs_fpgaboot_exit(void)
- {
--	finish_driver();
-+	platform_device_unregister(firmware_pdev);
- 	pr_info("FPGA image download module removed\n");
- }
- 
--- 
-1.9.1
+ drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c
+index 79051c0..2323e8d 100644
+--- a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c
++++ b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c
+@@ -3157,6 +3157,7 @@ kiblnd_check_conns(int idx)
+ 	struct list_head *ptmp;
+ 	kib_peer_t *peer;
+ 	kib_conn_t *conn;
++	kib_conn_t *temp;
+ 	kib_conn_t *tmp;
+ 	struct list_head *ctmp;
+ 	unsigned long flags;
+@@ -3225,8 +3226,7 @@ kiblnd_check_conns(int idx)
+ 	 * NOOP, but there were no non-blocking tx descs
+ 	 * free to do it last time...
+ 	 */
+-	while (!list_empty(&checksends)) {
+-		conn = list_entry(checksends.next, kib_conn_t, ibc_connd_list);
++	list_for_each_entry_safe(conn, temp, &checksends, ibc_connd_list) {
+ 		list_del(&conn->ibc_connd_list);
+ 		kiblnd_check_sends(conn);
+ 		kiblnd_conn_decref(conn);
+--
+2.1.4
 
 
