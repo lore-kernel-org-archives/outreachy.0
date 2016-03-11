@@ -1,92 +1,91 @@
-X-GM-THRID: 6264735070503829504
-X-Received: by 10.112.209.6 with SMTP id mi6mr4015831lbc.15.1458622298379;
-        Mon, 21 Mar 2016 21:51:38 -0700 (PDT)
+X-GM-THRID: 6260799618552954880
+X-Received: by 10.129.89.198 with SMTP id n189mr7109111ywb.10.1457706004738;
+        Fri, 11 Mar 2016 06:20:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.152.136 with SMTP id a130ls834175lfe.33.gmail; Mon, 21 Mar
- 2016 21:51:37 -0700 (PDT)
-X-Received: by 10.112.236.37 with SMTP id ur5mr4153821lbc.0.1458622297784;
-        Mon, 21 Mar 2016 21:51:37 -0700 (PDT)
-Return-Path: <sveta.orlik.code@gmail.com>
-Received: from mail-lb0-x242.google.com (mail-lb0-x242.google.com. [2a00:1450:4010:c04::242])
-        by gmr-mx.google.com with ESMTPS id ai9si1208194lbc.2.2016.03.21.21.51.37
+Received: by 10.140.81.145 with SMTP id f17ls2351938qgd.27.gmail; Fri, 11 Mar
+ 2016 06:20:04 -0800 (PST)
+X-Received: by 10.13.217.204 with SMTP id b195mr7112086ywe.26.1457706004161;
+        Fri, 11 Mar 2016 06:20:04 -0800 (PST)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
+        by gmr-mx.google.com with ESMTPS id h69si280566pfj.0.2016.03.11.06.20.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Mar 2016 21:51:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c04::242 as permitted sender) client-ip=2a00:1450:4010:c04::242;
+        Fri, 11 Mar 2016 06:20:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c04::242 as permitted sender) smtp.mailfrom=sveta.orlik.code@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lb0-x242.google.com with SMTP id sx8so8284127lbb.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 21 Mar 2016 21:51:37 -0700 (PDT)
+Received: by mail-pa0-x234.google.com with SMTP id fl4so98910324pad.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 06:20:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=+hBe4tKyTind/mQngarjD/q5kLuc4qHy296Vun2USoo=;
-        b=wnXDj0KfxOPOZaoASb4dgUcCZhoO/uPGQ97iOzgi9KtzumbDyiWs6m4vyoX6helVdw
-         A/VpsUltYTMOnXmLEJJ/DB9Exdf3Rvt4zohog4bgusZrgzJS3IrvjD1q9KNt6+xjTv2i
-         hKxv8adT0zLEaKEiMZuqggu0StNpj/ZmOgT1mFrXLm53Q4Df0/WQDrXIRzNPaGrlJouu
-         hTYr0zq6/huuSKJHbJmNXFkrJomWYunTULnyeZcVwtDmq4ysQInzkobQTXBEoggFD+Ul
-         29SUzSd4J0oLmlM2hjRej/fy3fWHdgJ4KOjGLZFTyicNUmaA96G+lV2NqCp6Bpedrlgn
-         Dx/w==
+        bh=2Zyz+1uBckRsahZNaqe1aKeQhhUmhEy22Ese+1F/fl8=;
+        b=JTijo1c+PmSw/o/E4QAP44sRZHX/ziESISQ+C7oz7/7y06Dc1XGMFhUQOv1ky53rWP
+         8+a0gWz1tUgfEIqf6wl4vHcvOcN+4bVcJFPmJ0ssom363L9q5nS/8y7PZLep8ZzROIMj
+         6NdaZZmTwy1PiP6J6dIsw1G4d/epSLmj8Byh2RzNInSbD35zAM541u9N9OWgVmNf+c/J
+         oa0Z6/jjhcP9Tbzck9a92h86T6SQqoU/X2YhorcxbgxDmLNkOafgJyIWVSJpCb+vHg71
+         bSXRn9M4TUxFumoBO5s6q9KcXXB2uDYMG4I+5Jl0fnm0Q/cWKcpETCKTzn2a7BfU++cl
+         WaIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=+hBe4tKyTind/mQngarjD/q5kLuc4qHy296Vun2USoo=;
-        b=fS4HXJQmAZB8LayZCv8LVedqDLMEE9MicTwifDfMZK4bkftZ15FCWdIMSjDNJvnCt8
-         PFsyO5+nq0ltktLfiP6TKsWtJ+hk1aDC598efgh1+t344Pb8dMtjCEnyO/dApBxWjxK8
-         xB7XERBgKnhrU+yUCvs/S9SnAKgs9NB2gv59k7iI5Dl7L23L+3DQsbNPDlM2KSc/V7DZ
-         a4H4vaOzxzKQzqEl5uuaI1VrpI1B+f1tWVo7poZwcDyIGJ5eSOZH8ik/J6EhzSJjp3gF
-         8QHy5VMuu5TWqU8eJ3PgcSsUr/yFmcd2hYjZzv6g1T30nzdl1ZrIlsn8XDfnIpUyQgCU
-         UQ2g==
-X-Gm-Message-State: AD7BkJIMuazvOGtMXi0rS9jJYjNwCffgIO2tvk2jS5Dh2EuRX51p3iEjnRQhUe9SwbAjjg==
-X-Received: by 10.112.201.133 with SMTP id ka5mr12303518lbc.1.1458622297649;
-        Mon, 21 Mar 2016 21:51:37 -0700 (PDT)
-Return-Path: <sveta.orlik.code@gmail.com>
-Received: from pal-comp (broadband-46-242-29-57.nationalcablenetworks.ru. [46.242.29.57])
-        by smtp.gmail.com with ESMTPSA id d11sm4975992lfe.1.2016.03.21.21.51.36
+        bh=2Zyz+1uBckRsahZNaqe1aKeQhhUmhEy22Ese+1F/fl8=;
+        b=NElJAhAdJ2HsfbRj2NOXs4bn79DNf2KDNNjzyJHpcOkwFLFCiEitRxwrgIHZpjZLB0
+         FytdlZMNM8NQysTqsZBuuMpuvpbaIKb6j8yzJPnb+pXgBchIUNcYUGSrdIGbvOsKbA7F
+         f6RWhmVZdqwiwRl3FK7+C/alCpWLtlK5LwcEAWxtM7yXuEDsCZr6lqnAqGzIWc0nGbTy
+         k+v3w4coCtZPuY3dJxiNMt88AhEYPmesz+2o+qoKyshQMwtqqItfYQsAEcfBG4OEf/RY
+         a7EtBemPbLslhYRM8vraTBMnLX3p6V5aQNd3GP6es4TOpMuFTfZIazVWiDoiiW5qHs9g
+         69uw==
+X-Gm-Message-State: AD7BkJK5tQWGXhYHWXNfjcb7gGj27fzaHHOpuU/k6LNw1MmII14xopoSRc5QkOyCuCJzrg==
+X-Received: by 10.66.122.100 with SMTP id lr4mr15166483pab.99.1457706003901;
+        Fri, 11 Mar 2016 06:20:03 -0800 (PST)
+Return-Path: <anchalj109@gmail.com>
+Received: from life-desktop ([182.73.140.109])
+        by smtp.gmail.com with ESMTPSA id z68sm13419719pfi.19.2016.03.11.06.20.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 21 Mar 2016 21:51:36 -0700 (PDT)
-Date: Tue, 22 Mar 2016 07:51:36 +0300
-From: Svetlana Orlik <sveta.orlik.code@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 11 Mar 2016 06:20:03 -0800 (PST)
+Date: Fri, 11 Mar 2016 19:49:50 +0530
+From: Anchal Jain <anchalj109@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] Staging: iio: ad9832: Replace 'unsigned' with 'unsigned
- int'
-Message-ID: <20160322045135.GA18790@pal-comp>
+Subject: [PATCH] staging: wilc1000: Possible unnecessary 'out of memory'
+ message
+Message-ID: <20160311141942.GA5599@life-desktop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Replace 'unsigned' with 'unsigned int' to avoid checkpatch.pl warning.
+Remove unnnecessary debug message.
+Problem detected by checkpatch.
 
-Signed-off-by: Svetlana Orlik <sveta.orlik.code@gmail.com>
+Signed-off-by: Anchal Jain <anchalj109@gmail.com>
 ---
-Changes in v3:
-  -Correct 'iio:' in subject line.
-  -Re-commit patch using full name 'Svetlana Orlik'.
-  
+ drivers/staging/wilc1000/wilc_wlan.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
- drivers/staging/iio/frequency/ad9832.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/iio/frequency/ad9832.c b/drivers/staging/iio/frequency/ad9832.c
-index 18b27a1..358400b 100644
---- a/drivers/staging/iio/frequency/ad9832.c
-+++ b/drivers/staging/iio/frequency/ad9832.c
-@@ -31,7 +31,7 @@ static unsigned long ad9832_calc_freqreg(unsigned long mclk, unsigned long fout)
- }
+diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
+index a670cb7..fd938fb 100644
+--- a/drivers/staging/wilc1000/wilc_wlan.c
++++ b/drivers/staging/wilc1000/wilc_wlan.c
+@@ -320,10 +320,8 @@ static int wilc_wlan_txq_add_cfg_pkt(struct wilc_vif *vif, u8 *buffer,
+ 	}
  
- static int ad9832_write_frequency(struct ad9832_state *st,
--				  unsigned addr, unsigned long fout)
-+				  unsigned int addr, unsigned long fout)
- {
- 	unsigned long regval;
+ 	tqe = kmalloc(sizeof(*tqe), GFP_ATOMIC);
+-	if (!tqe) {
+-		netdev_err(vif->ndev, "Failed to allocate memory\n");
++	if (!tqe)
+ 		return 0;
+-	}
  
+ 	tqe->type = WILC_CFG_PKT;
+ 	tqe->buffer = buffer;
 -- 
-2.5.0
+1.9.1
 
 
