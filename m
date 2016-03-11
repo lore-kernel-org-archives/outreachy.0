@@ -1,96 +1,128 @@
-X-GM-THRID: 6254584557690945536
-X-Received: by 10.182.255.203 with SMTP id as11mr35254850obd.49.1456258948065;
-        Tue, 23 Feb 2016 12:22:28 -0800 (PST)
+X-GM-THRID: 6254188564975714304
+X-Received: by 10.182.246.73 with SMTP id xu9mr8759418obc.4.1457728589377;
+        Fri, 11 Mar 2016 12:36:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.91.137 with SMTP id z9ls2614558qgd.75.gmail; Tue, 23 Feb
- 2016 12:22:27 -0800 (PST)
-X-Received: by 10.13.223.140 with SMTP id i134mr32270072ywe.11.1456258947475;
-        Tue, 23 Feb 2016 12:22:27 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id ff2si4448613pad.2.2016.02.23.12.22.27
+Received: by 10.107.186.10 with SMTP id k10ls1328234iof.46.gmail; Fri, 11 Mar
+ 2016 12:36:28 -0800 (PST)
+X-Received: by 10.107.148.84 with SMTP id w81mr8440058iod.20.1457728588891;
+        Fri, 11 Mar 2016 12:36:28 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id tu5si1271939pab.2.2016.03.11.12.36.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 12:22:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Fri, 11 Mar 2016 12:36:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id yy13so115763112pab.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 12:22:27 -0800 (PST)
+Received: by mail-pa0-x243.google.com with SMTP id q6so9313173pav.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 12:36:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=/SLrNpu9Gehp4N8GFEKcboVWD8MNDzFctxkRGc4G+/c=;
-        b=WN/T7i72n95zfrjIIwjDXyLe/DhnujzGfce4X/klaUZVKYZhdS2pZbHjloLU7/eYLt
-         eWrw/MTC9PcRuBpAl7UCNhLz7fpofCTPRTFRhB/ldKrsx7fh3gXdZle7hH3UeHC1XPBc
-         3CSxp02qqfx13Zphg0JnokV0SHrLxXjBKlf5/XovBGWI/81sowVgvCsAi7TLBLXnQeLf
-         y8VoK2oxcWb3VLR7AwkWXCfoqT4rSZYeFdkGnL8f3aEa7Npr2ulFpTJlbxqtFX0+HuS1
-         SHInHma0zzcJYOg1KAUsHLSHoaAI+Nzm+ilknm4wn2v5EZu2GC5IbV7igaxBIuwQropz
-         /tgg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=YwBjkRQCz+iGpsIbpUk1GuGhvcOcdXJxoLX2tnZjmPs=;
+        b=TyInR7F9XrzhM4UMgE5gtD4xvf3uc1jz7x29JIvxV/+d0NARrSmr6OfrEXeiCLMkwq
+         HOkIvgPscfFwNJCUuvhVtR0GSw799L+gX7wosISWIp2ldutMNKqCXQoOPPTy2nL3h6Po
+         J5cMClQw+PQVD1IV5RyG/vDOMm4ev7eYzfSeWOuTuFNOB4GspQkm0Nn4ObO0JnWR7MRa
+         iDCuNV/Ya3fRPJuvxE8oy6F0funzgbw+bpW6dEWstzIpZ+FtX0wfSU5NO2tS8GPwGk1p
+         YrQURbxllg/ikOKc2l0rrpky8jRxZ0nMpqERxquKFHPm3ZPJOg7+1kmkBBZGvNdYL6Yg
+         Hdow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=/SLrNpu9Gehp4N8GFEKcboVWD8MNDzFctxkRGc4G+/c=;
-        b=Bij0/HmtBntZ4Se5v7X06H2dteeIgiDTW1in5R/D9b9khEhUgdaEQRFJJukeQ2WpCM
-         JDvwjy9pBPGqH89fCfG0KmyPTNsYzpCoygUza6Q8NKwoqaoQ/ZP2gvETEAU563KVRQN/
-         sPZQk6P2zXET4QylLF9uJAzyjThmd6apWu1uA37Vinoeo8xTgmiD/J8l1d6HyAZ8AaRk
-         UAduz3N3oAb1SOiicIO+PeyU2vCxGMUPH/gmu8e/DpiMsrlJGea/Z9xWSQaR0KpuGbd0
-         4zrijs+mY8ZcUZUz9DwrdBPpD4qtf87EsOgZVRJocpkNZvs5ZR+4XERpwWKEFNioNc2Z
-         F7Ww==
-X-Gm-Message-State: AG10YOTgh88XYD4H+2tp6o0+YQjKh5xNOvJAvhAeMVS9q/5SDWG08DdF3eWHfjBTIsUkKQ==
-X-Received: by 10.67.24.104 with SMTP id ih8mr49224898pad.124.1456258947302;
-        Tue, 23 Feb 2016 12:22:27 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.185])
-        by smtp.gmail.com with ESMTPSA id d8sm46344180pas.14.2016.02.23.12.22.25
+         :content-disposition:user-agent;
+        bh=YwBjkRQCz+iGpsIbpUk1GuGhvcOcdXJxoLX2tnZjmPs=;
+        b=kX1xxHt1YL9kL6EZ9emvd/oXNRtZxEI6k5KCgpPYfOukgbWshBZ7Yr3KrFvU4jiNA2
+         E9ZPFW6FEgRSdngZ9srIgUA4AiWF9k0e2/+7z7u4IiBBF0q9yg+x9CKKgIHjO5Fp7Zr0
+         uvNGm1BHCSJCwqVAMuYx9GHMg35Byiqi7nMP6nsNBp3Fdyw2y0nxvUne29UFzyx6yWfS
+         AI+RpegR7ErFMTIZqbbZwZ4fnqGdxSgL4rscX8sPKfV/ohrpecyYciXBG6nUF+oRPeAQ
+         PYi5nbluhuJ3jLRDHAzVWAIpcajBXGeFNti5tlzN2zcBPv8pYKDjovndN6dgSDtqqW5M
+         8AIA==
+X-Gm-Message-State: AD7BkJK+CzSbysB8ZzZhZH8en6XiNFt5BfgOPL/UJvjwkZRqmyF0F4OkhzRC8QyhQnNzvw==
+X-Received: by 10.66.124.226 with SMTP id ml2mr18787858pab.90.1457728588655;
+        Fri, 11 Mar 2016 12:36:28 -0800 (PST)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([171.50.160.208])
+        by smtp.gmail.com with ESMTPSA id p5sm14883172pfi.94.2016.03.11.12.36.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 12:22:26 -0800 (PST)
-Date: Tue, 23 Feb 2016 17:52:34 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 11 Mar 2016 12:36:27 -0800 (PST)
+Date: Sat, 12 Mar 2016 02:06:24 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] Staging: gs_fpgaboot: Fix alignment to match open
- parenthesis
-Message-ID: <20160223122234.GA2965@sandhya>
+Subject: [PATCH v3] staging: rts5208: Replace pci_enable_device with
+ pcim_enable_device
+Message-ID: <20160311203624.GA27072@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Fix alignment to match open parenthesis.
+Devm_ functions allocate memory that is automatically freed when
+a driver detaches.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Replace pci_enable_device with pcim_enable_device. Remove unnecessary
+pci_disable_device and pci_release_regions from probe and remove
+functions in rts5208 driver since pcim_enable_device contains a call
+to pcim_release which contains calls to both pci_disable_device and 
+pci_release_regions.
+
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
 ---
- drivers/staging/gs_fpgaboot/gs_fpgaboot.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v3:
+        -Removed unnecessary modifications in shutdown and resume
+         functions for pcim_enable_device
+        -Modified commit message
+Changes in v2:
+        -Removal of pci_set_drvdata sent in a later patch series.
 
-diff --git a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
-index fe3a6bc..53c3301 100644
---- a/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
-+++ b/drivers/staging/gs_fpgaboot/gs_fpgaboot.c
-@@ -201,7 +201,7 @@ static int gs_download_image(struct fpgaimage *fimage, enum wbus bus_bytes)
- #endif /* DEBUG_FPGA */
- 	if (!xl_supported_prog_bus_width(bus_bytes)) {
- 		pr_err("unsupported program bus width %d\n",
--				bus_bytes);
-+		       bus_bytes);
- 		return -1;
+ drivers/staging/rts5208/rtsx.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
+index 5ebaf8c..25d095a 100644
+--- a/drivers/staging/rts5208/rtsx.c
++++ b/drivers/staging/rts5208/rtsx.c
+@@ -656,9 +656,6 @@ static void rtsx_release_resources(struct rtsx_dev *dev)
+ 	if (dev->remap_addr)
+ 		iounmap(dev->remap_addr);
+ 
+-	pci_disable_device(dev->pci);
+-	pci_release_regions(dev->pci);
+-
+ 	rtsx_release_chip(dev->chip);
+ 	kfree(dev->chip);
+ }
+@@ -850,7 +847,7 @@ static int rtsx_probe(struct pci_dev *pci,
+ 
+ 	dev_dbg(&pci->dev, "Realtek PCI-E card reader detected\n");
+ 
+-	err = pci_enable_device(pci);
++	err = pcim_enable_device(pci);
+ 	if (err < 0) {
+ 		dev_err(&pci->dev, "PCI enable device failed!\n");
+ 		return err;
+@@ -860,7 +857,6 @@ static int rtsx_probe(struct pci_dev *pci,
+ 	if (err < 0) {
+ 		dev_err(&pci->dev, "PCI request regions for %s failed!\n",
+ 			CR_DRIVER_NAME);
+-		pci_disable_device(pci);
+ 		return err;
  	}
  
-@@ -277,7 +277,7 @@ static int gs_set_download_method(struct fpgaimage *fimage)
- static int init_driver(void)
- {
- 	firmware_pdev = platform_device_register_simple("fpgaboot", -1,
--							 NULL, 0);
-+							NULL, 0);
- 	return PTR_ERR_OR_ZERO(firmware_pdev);
- }
+@@ -871,8 +867,6 @@ static int rtsx_probe(struct pci_dev *pci,
+ 	host = scsi_host_alloc(&rtsx_host_template, sizeof(*dev));
+ 	if (!host) {
+ 		dev_err(&pci->dev, "Unable to allocate the scsi host\n");
+-		pci_release_regions(pci);
+-		pci_disable_device(pci);
+ 		return -ENOMEM;
+ 	}
  
 -- 
-1.8.3.4
+1.9.1
 
 
