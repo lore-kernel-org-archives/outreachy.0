@@ -1,103 +1,112 @@
-X-GM-THRID: 6263057020003287040
-X-Received: by 10.31.169.130 with SMTP id s124mr7738212vke.1.1458231597554;
-        Thu, 17 Mar 2016 09:19:57 -0700 (PDT)
+X-GM-THRID: 6257874125297025024
+X-Received: by 10.66.63.104 with SMTP id f8mr9325120pas.4.1457740749386;
+        Fri, 11 Mar 2016 15:59:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.40.105 with SMTP id w96ls284054qgw.66.gmail; Thu, 17 Mar
- 2016 09:19:56 -0700 (PDT)
-X-Received: by 10.140.174.65 with SMTP id u62mr7849880qhu.15.1458231596712;
-        Thu, 17 Mar 2016 09:19:56 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id ui7si1459246pab.0.2016.03.17.09.19.56
+Received: by 10.140.35.208 with SMTP id n74ls2994733qgn.63.gmail; Fri, 11 Mar
+ 2016 15:59:08 -0800 (PST)
+X-Received: by 10.140.240.11 with SMTP id l11mr9341575qhc.11.1457740748880;
+        Fri, 11 Mar 2016 15:59:08 -0800 (PST)
+Return-Path: <poojashamili@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id ui7si1708238pab.0.2016.03.11.15.59.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Mar 2016 09:19:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 11 Mar 2016 15:59:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id q129so12001469pfb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 09:19:56 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id q6so9543655pav.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 15:59:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=UwaS1hjL4oFaDObw/blB/2vGhUIO32qxbcHHOwk8wTM=;
-        b=G+7azLR8D1N6W6Wb9uLlPY1CX+eUS7ZZharJuV/h1nte6tfLlu0IGWFq0IRxGjIPwp
-         oqjqfIBZ60JKZfz6oV8O6W4iuEeomlL6ngIT9v+Iam7kkKlY6WhrCCNZHvzjT6W9m5xv
-         etDJEAkDxLJSVT6FBp4zEBcR4X/6OFafPHCZ1oN9aZhw/GDqY95QrPVlQBlu6mYdi3xJ
-         NPiwDa5lPtR1+YzgxJr/uwHzwXP1f0RRdohhzthEv2eQjL3u+19EqZi4yuAHWYEXS6Fp
-         JClWiaw9TzWEmUHP0yQs8uk2ozg8c3zqf5IiSWM2TrIJjJamOuYpPKK/bOtFt1f+dO5i
-         mtvw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=t47e7BgFDFo3N6CQzd6AfZ8CK35TkkkC3DhqE4KPZR8=;
+        b=Apx7xLhoFpbMBaCbSyQmvfhtKwXItyo9TrVjqpyWEr2fzJGsPZejZjKGrxJF26lRus
+         90hBtsRbG/6LlspQWVMya1Se5KmCNldHsld8KdrG6oZ7NSdpxUA1b743N7bXzfeaqwIQ
+         hxqt1EdUBSikXCNYWRnoCW7/SZ89z7ZfvZRO2+OpBDuu9NraTeIWfb3FXFeLvqQD6pkg
+         MA6uyTrfgQlLg3L5OwDiCFXrXeRL8q9pt5rE3TmXytQOrfR/LdfGA1opRv+i8LKCp8E8
+         3KsNAAe3QTyTQ6J77r9+xGUM6sVDjS76/Vp1evuao2HHz/4hBEI1/LfbGt2CCds7ANb2
+         criQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=UwaS1hjL4oFaDObw/blB/2vGhUIO32qxbcHHOwk8wTM=;
-        b=SBbnrs5G7s1MWIHAUiP4B4LJwPL0Xqr8cBqs6bH3YSB6Alsd87gFCCLGyiDSfBqtHt
-         JbOUVsLWviwz2up9aJFY0vziWuDZJWHiCySH9df5GMYla2byZ0GR+2uYzkM85j8co33n
-         DajLb3wDeTMiK+oeODHIISQ0/tqmpFRH2i25BnnqP6NbM94vZ7r2Xkd/ZsuQjlgOhQVr
-         QLjK5dKG1wm6+JEC6mgH12WoHidIkFnxB1cSSBN8Pg4HfYlgZ//Lwf3saBg/Z+bjhz3r
-         ZEA7dcvC39/J5PMLjyOmgkbBa+OBTmGYXr1AtdIQMDgY2Jbv6BYXi+eNdc1DGnz8G4hU
-         fcfg==
-X-Gm-Message-State: AD7BkJJdD3bxyuCOPcmnjWjFkU94L1eGlemxJTf0aA/M3XzetACj+Ig9DJ7494P+N2DsBQ==
-X-Received: by 10.66.120.202 with SMTP id le10mr16053861pab.155.1458231596456;
-        Thu, 17 Mar 2016 09:19:56 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.126])
-        by smtp.gmail.com with ESMTPSA id k88sm14507981pfj.0.2016.03.17.09.19.55
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=t47e7BgFDFo3N6CQzd6AfZ8CK35TkkkC3DhqE4KPZR8=;
+        b=TxLeHM//HkFidYJI/txJrXZd+lGkPsHlv6FWgbOSPLDajdKBfH+c9w0EKJCB1ytxL+
+         9SBYUD0Q8k3BpDM+N/kZ4rP4cLMMqy+ByfkgL0/t8gTClP9zF7r7n+41ilZdVcRugOJU
+         K3o70HnlwAIYKKxJT8F0VqqR9cGMV8vlxwZvdux9D14iKLqkF0d3LHFylGSQ0N16jp8M
+         CmOFfXCJzDzF48FMzg/M9LdDsttIkQsnggWoGGDRCGBpsfDLDEKM7uUkFm+DGnESJnGH
+         n/g/mporVLdXkQOfKdJuWFxBB/APD5sxvJUN0bkC6eMtc/BaDvH2gD6qrwkvNgC3aOvx
+         Tl3Q==
+X-Gm-Message-State: AD7BkJLZHnY8q2eGEdhHvVJNCrgx5TwFlXAOlrJ5pj8vxFN5xuHoZqGV7gXw9ylASb0r+g==
+X-Received: by 10.66.246.234 with SMTP id xz10mr19711681pac.49.1457740748675;
+        Fri, 11 Mar 2016 15:59:08 -0800 (PST)
+Return-Path: <poojashamili@gmail.com>
+Received: from pooja-Inspiron-3537 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id u2sm1275040pfi.26.2016.03.11.15.59.07
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 17 Mar 2016 09:19:55 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
+        Fri, 11 Mar 2016 15:59:08 -0800 (PST)
+Date: Sat, 12 Mar 2016 05:28:54 +0530
+From: G Pooja Shamili <poojashamili@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: johannes.berg@intel.com,
-	emmanuel.grumbach@intel.com,
-	linuxwifi@intel.com,
-	kvalo@codeaurora.org,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	tj@kernel.org,
-	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v2] iwlwifi: dvm: use alloc_ordered_workqueue()
-Date: Fri, 18 Mar 2016 00:19:21 +0800
-Message-Id: <1458231561-13184-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH v3] staging: mt29f_spinand: Replacing pr_info with dev_info
+ after the call to devm_kzalloc
+Message-ID: <20160311235854.GA1139@localhost>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Use alloc_ordered_workqueue() to allocate the workqueue instead of
-create_singlethread_workqueue() since the latter is deprecated and is scheduled
-for removal.
+The function devm_kzalloc has a first argument of type struct device *.
+This is the type of argument required by printing functions such as
+dev_info, dev_err, etc. Thus, functions like pr_info should not normally
+be used after a call to devm_kzalloc. Thus, all pr_info occurances are
+replaced with dev_info function calls.
 
-There are work items doing related operations that shouldn't be swapped when
-queued in a certain order hence preserve the strict execution ordering of a
-single threaded (ST) workqueue by switching to alloc_ordered_workqueue().
+This was done using Coccinelle, the patch being:
+@@
+expression E1,E2;
+expression list args;
+@@
 
-WQ_MEM_RECLAIM flag is not needed since the worker is not supposed to free
-memory.
+E1 = devm_kzalloc(E2, ...);
+<...
+- pr_info(
++ dev_info(E2,
+args);
+...>
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
 ---
-Changes in v2:
-* switch from alloc_workqueue() to alloc_ordered_workqueue()
-* remove unneeded flags: WQ_MEM_RECLAIM and WQ_HIGHPRI
-* update commit message to reflect change
+Changes from Version 2:
+            * Changed the title from pr_err to pr_info and dev_err to
+	dev_info
+Changes from Version 1:
+	    * Changed the name in the From: and Signed-off-by: to full
+	name.
 
- drivers/net/wireless/intel/iwlwifi/dvm/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/mt29f_spinand/mt29f_spinand.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/intel/iwlwifi/dvm/main.c b/drivers/net/wireless/intel/iwlwifi/dvm/main.c
-index f62c2d7..14396d8 100644
---- a/drivers/net/wireless/intel/iwlwifi/dvm/main.c
-+++ b/drivers/net/wireless/intel/iwlwifi/dvm/main.c
-@@ -1071,7 +1071,7 @@ static void iwl_bg_restart(struct work_struct *data)
+diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+index aa0170e..9d47c5d 100644
+--- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
++++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
+@@ -893,7 +893,8 @@ static int spinand_probe(struct spi_device *spi_nand)
+ #else
+ 	chip->ecc.mode	= NAND_ECC_SOFT;
+ 	if (spinand_disable_ecc(spi_nand) < 0)
+-		pr_info("%s: disable ecc failed!\n", __func__);
++		dev_info(&spi_nand->dev, "%s: disable ecc failed!\n",
++			 __func__);
+ #endif
  
- static void iwl_setup_deferred_work(struct iwl_priv *priv)
- {
--	priv->workqueue = create_singlethread_workqueue(DRV_NAME);
-+	priv->workqueue = alloc_ordered_workqueue(DRV_NAME, 0);
- 
- 	INIT_WORK(&priv->restart, iwl_bg_restart);
- 	INIT_WORK(&priv->beacon_update, iwl_bg_beacon_update);
+ 	nand_set_flash_node(chip, spi_nand->dev.of_node);
 -- 
-1.9.1
+2.1.4
 
 
