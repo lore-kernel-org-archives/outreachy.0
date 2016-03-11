@@ -1,60 +1,61 @@
-X-GM-THRID: 6259688133176066048
-X-Received: by 10.50.20.135 with SMTP id n7mr14343387ige.5.1457447217084;
-        Tue, 08 Mar 2016 06:26:57 -0800 (PST)
+X-GM-THRID: 6259699399543226368
+X-Received: by 10.140.150.210 with SMTP id 201mr8528450qhw.28.1457726935259;
+        Fri, 11 Mar 2016 12:08:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.58.20 with SMTP id m20ls160741obq.20.gmail; Tue, 08 Mar
- 2016 06:26:56 -0800 (PST)
-X-Received: by 10.182.106.11 with SMTP id gq11mr21086204obb.45.1457447216660;
-        Tue, 08 Mar 2016 06:26:56 -0800 (PST)
+Received: by 10.182.104.67 with SMTP id gc3ls1105592obb.76.gmail; Fri, 11 Mar
+ 2016 12:08:54 -0800 (PST)
+X-Received: by 10.182.120.106 with SMTP id lb10mr8794846obb.24.1457726934937;
+        Fri, 11 Mar 2016 12:08:54 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
-        by gmr-mx.google.com with ESMTPS id r75si509984pfr.0.2016.03.08.06.26.56
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id h69si490544pfj.0.2016.03.11.12.08.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 06:26:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
+        Fri, 11 Mar 2016 12:08:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x236.google.com with SMTP id 129so14052199pfw.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 06:26:56 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id u190so4874843pfb.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 12:08:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=oUUk0wdUd/wsq5Qlm7YIO6AU0j5GGSiXc39cOWTDhog=;
-        b=Qa9cRZWJ5P2BgRa1QP3B//N4aslCqt8cQJSIETG3HwNsyv4BxxN5fLK1ko0EcGibq1
-         VQpzhhWjjjMzUJHHjOYKPbTPDqJMAkJu7wjPdvi8F/UlhCxIQGmowD+S07LXuLqSH9yf
-         s2J0WdeL+yWtnFcvD30HM4CXIMNJukS05BvpWfkfaYb00WFfZnBN4eU+8qsiPz0+XIg6
-         RFufu7H/aEo8cRqTOA200TodxDfhIKhD0yzBO7WgHQojbVFwRpmCzzjVUL6rM1i64Tc+
-         Y/zDyoCHlDiEbOa/FipKcP3mGDQddyDmJDjM2+PHSpObeQ5FI9VOYXshGVa0YV6necLX
-         kG8g==
+        bh=rKXBJCs4wc+PwIbr+VS4Omwbet8Q80ZYBLdOfBiTcjc=;
+        b=iHr4Hyx1HnogaG9ttJi/Vjxoqpqm0+eWfv2DCe3Uf0N4+iQIV92tssFOKrb7JrNHP5
+         gWMHvRGNvmKTsguCWRH/xHwduVGOZunzAfNC0ng4iZU/yxz1Xtq/xBvazV+nQc1LwP7d
+         JQ1pqVb86iFOjRBgYP9Y+/Ep1sIT9j5BPuxIK6u6xstdd1a98pR57q1D8iPtnWgo0lIO
+         SQDXFHaS61pu+AOudeMb0ybBxujVVTiO6b+ZJ56W0XEshmPiSV44rKMlKg86K0iLnNUy
+         9FgRuwGGPTaw84lf9+XGVIU93QmiWmfTVtZXoBQkTXgkfIVYC7tAk1luSM+5q7BAVFn7
+         jqnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=oUUk0wdUd/wsq5Qlm7YIO6AU0j5GGSiXc39cOWTDhog=;
-        b=NEq5NUhauJLt5gqgKBifInm1Upli9nR54QABSJI4wDf4uUTzADwWTxlwjG9DnldYsT
-         7RH3CRr9MhMcBw3ekuFNKy2VG9LOWm14Pe7z2XCTf3NkA14p7Rbi3N1KrTzySAD+NCGb
-         bzPV6gcnKCD8P2PidebjKZiiJ1DIX8wYzpo6UescUsfYD5EbEWgeg688LGJbyuQbEu9q
-         ETXNgmxWL2YqG+TkgvpgKjC8DPWM23+dOO2Agj3/dCyWpcVrrEeWrVgIlVA5Y874rgTG
-         1B/4U0B0q0ZCz9/2BAXz2NZyPmk8i75WHVfcy6Brzri8/ciDQ4FfMfO2boOYlpMYpo8E
-         neIQ==
-X-Gm-Message-State: AD7BkJLhwmTrgIRmprw78YaNsbmgJi2OfsJ/l6cwLtei/dfH2HR0kzM6jGedOTMFj9DW1w==
-X-Received: by 10.98.17.74 with SMTP id z71mr16157626pfi.30.1457447216491;
-        Tue, 08 Mar 2016 06:26:56 -0800 (PST)
+        bh=rKXBJCs4wc+PwIbr+VS4Omwbet8Q80ZYBLdOfBiTcjc=;
+        b=Wb2G+UE4VMOwNGdLG10zeQQGYkGNk154tYLLx2dOrq4c1gM0bTyjEPfji3pgt4rhxo
+         YKhFIGvK5o7vL4TRJgKwKEdFpyZautLJCuNTDOXfUDibBGcuw5tvWmF1dBJ6xHgTSC4S
+         NvOaNit+yjjpdLTB6dHS1luUa1EzgrwFhVwmjJA+jOJxXqXsTXOPjSclJIqlfGjyAHLB
+         hGZULl9ymsegks8AASULP5uL30yyTUWwZl2BocqfUdgMEaPKrsQ4ICZj+4TkDD33KLmL
+         W2YzixGAvb4dpFJoxoDj5mHWdOE15X7SAODMx2reQtkKass4vAkTDBXdguWTLb72G+yy
+         u0Pg==
+X-Gm-Message-State: AD7BkJIl4cuvRx9Z29dNggGxjZQSeAATEdETCnCvV0N/uWHsGWYvtEYEF5hYuWMxCT3LSQ==
+X-Received: by 10.98.64.202 with SMTP id f71mr10765583pfd.113.1457726934751;
+        Fri, 11 Mar 2016 12:08:54 -0800 (PST)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id n19sm5498646pfi.53.2016.03.08.06.26.55
+        by smtp.gmail.com with ESMTPSA id f66sm14880800pff.8.2016.03.11.12.08.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 06:26:56 -0800 (PST)
-Date: Tue, 8 Mar 2016 19:44:43 +0530
+        Fri, 11 Mar 2016 12:08:54 -0800 (PST)
+Date: Sat, 12 Mar 2016 01:38:37 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lnet: conrpc: Use list_for_each_entry_safe
-Message-ID: <20160308141443.GA30399@Karyakshetra>
+Subject: [PATCH v3 10/13] staging: lustre: libcfs: Use
+ list_for_each_entry_safe
+Message-ID: <20160311200836.GA3037@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -90,31 +91,35 @@ T *I1;
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/lustre/lnet/selftest/conrpc.c | 5 ++---
+ Changes in v3:
+	-Combined all "Use list_for_each_entry" lustre patches into a
+	 patch-set
+
+ drivers/staging/lustre/lnet/libcfs/workitem.c | 5 ++---
  1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/lnet/selftest/conrpc.c b/drivers/staging/lustre/lnet/selftest/conrpc.c
-index 8a67f89..9a88203 100644
---- a/drivers/staging/lustre/lnet/selftest/conrpc.c
-+++ b/drivers/staging/lustre/lnet/selftest/conrpc.c
-@@ -1336,6 +1336,7 @@ lstcon_rpc_cleanup_wait(void)
+diff --git a/drivers/staging/lustre/lnet/libcfs/workitem.c b/drivers/staging/lustre/lnet/libcfs/workitem.c
+index f2ebed8..c72fe00 100644
+--- a/drivers/staging/lustre/lnet/libcfs/workitem.c
++++ b/drivers/staging/lustre/lnet/libcfs/workitem.c
+@@ -436,6 +436,7 @@ void
+ cfs_wi_shutdown(void)
  {
- 	lstcon_rpc_trans_t *trans;
- 	lstcon_rpc_t *crpc;
-+	lstcon_rpc_t *temp;
- 	struct list_head *pacer;
- 	struct list_head zlist;
+ 	struct cfs_wi_sched	*sched;
++	struct cfs_wi_sched *temp;
 
-@@ -1375,9 +1376,7 @@ lstcon_rpc_cleanup_wait(void)
-
- 	spin_unlock(&console_session.ses_rpc_lock);
-
--	while (!list_empty(&zlist)) {
--		crpc = list_entry(zlist.next, lstcon_rpc_t, crp_link);
--
-+	list_for_each_entry_safe(crpc, temp, &zlist, crp_link) {
- 		list_del(&crpc->crp_link);
- 		LIBCFS_FREE(crpc, sizeof(lstcon_rpc_t));
+ 	spin_lock(&cfs_wi_data.wi_glock);
+ 	cfs_wi_data.wi_stopping = 1;
+@@ -458,9 +459,7 @@ cfs_wi_shutdown(void)
+ 		}
+ 		spin_unlock(&cfs_wi_data.wi_glock);
+ 	}
+-	while (!list_empty(&cfs_wi_data.wi_scheds)) {
+-		sched = list_entry(cfs_wi_data.wi_scheds.next,
+-				   struct cfs_wi_sched, ws_list);
++	list_for_each_entry_safe(sched, temp, &cfs_wi_data.wi_scheds, ws_list) {
+ 		list_del(&sched->ws_list);
+ 		LIBCFS_FREE(sched, sizeof(*sched));
  	}
 --
 2.1.4
