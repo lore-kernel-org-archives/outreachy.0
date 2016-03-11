@@ -1,123 +1,104 @@
-X-GM-THRID: 6264295591908474880
-X-Received: by 10.182.75.196 with SMTP id e4mr21622064obw.36.1458519974872;
-        Sun, 20 Mar 2016 17:26:14 -0700 (PDT)
+X-GM-THRID: 6260686017839235072
+X-Received: by 10.66.163.4 with SMTP id ye4mr5854499pab.23.1457679592554;
+        Thu, 10 Mar 2016 22:59:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.163.13 with SMTP id m13ls1780644ioe.49.gmail; Sun, 20 Mar
- 2016 17:26:14 -0700 (PDT)
-X-Received: by 10.50.20.135 with SMTP id n7mr9165435ige.5.1458519974327;
-        Sun, 20 Mar 2016 17:26:14 -0700 (PDT)
-Return-Path: <lesliebklein@gmail.com>
-Received: from mail-qk0-x230.google.com (mail-qk0-x230.google.com. [2607:f8b0:400d:c09::230])
-        by gmr-mx.google.com with ESMTPS id q187si1641929ywf.4.2016.03.20.17.26.14
+Received: by 10.50.61.137 with SMTP id p9ls60460igr.28.gmail; Thu, 10 Mar 2016
+ 22:59:52 -0800 (PST)
+X-Received: by 10.66.147.106 with SMTP id tj10mr5921442pab.30.1457679592304;
+        Thu, 10 Mar 2016 22:59:52 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id y20si1040298pfa.2.2016.03.10.22.59.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Mar 2016 17:26:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lesliebklein@gmail.com designates 2607:f8b0:400d:c09::230 as permitted sender) client-ip=2607:f8b0:400d:c09::230;
+        Thu, 10 Mar 2016 22:59:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of lesliebklein@gmail.com designates 2607:f8b0:400d:c09::230 as permitted sender) smtp.mailfrom=lesliebklein@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x230.google.com with SMTP id s68so71106909qkh.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 20 Mar 2016 17:26:14 -0700 (PDT)
+Received: by mail-pa0-x241.google.com with SMTP id fl4so7344664pad.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 22:59:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HtqjLYmPHcSUGKdQATGiz38ys4VtKjSJwmcU4me06XU=;
-        b=pOvgknhos1VwA6mkBxLyEZZjI8936PEQmlShMgkZNbf/YEtctZoqWUpHgjYBBNALNI
-         /FyQijLvEL3+kfJceW6rIlG8cQzAyyzz4qOUcKFR4Ptg3rZASkIgfyJ5xPPq/zFiwm9f
-         XJ8JQsmaClOsGUJ8BuuBdnvTfU4fCPDloiMz5mCpMcU5JpbZNzFpMuPwQWjhgr+VXDbh
-         AXOI7/cBHpTJwKNr7QPBuxnvTIFFt7a4awKSjRqwlyq1E0gMUZ2D6a+kjt2/xAiapW+8
-         k+alsCCWngZtNmdE9FZfRnxBuYS6dD73x0gvpHj5HSqxl+/3MYGALMDzfE9A5fT4L1Ia
-         Wi3A==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=WydzxgTFh5N6dXC+xQSCYscK1JihbVws0vLa+r3NbxQ=;
+        b=H8CuRR4ii3xwD11gGI4ckWdJQIZRlRx0VpgLWq65k+Y2x6PgDT461m8Mde8MhERBQe
+         DwEDJLah092ESh2Mponm0TqUylJBZ8NZ/qmmol2H68IogN9/81hCy8YIPmOgMb3/hhdE
+         Co0oO+akvi5UXsU6rom3tz4ymONLBROQoLQ9ofyC8YB+EmReA0DI34vTwdBp4hmyqZUx
+         BfMbwQZkLt3CBXZjdG8wPpCB+3/ixwtZgqHwAXLA3NbSALyPnw/QT8pDtyP0OK5NPp2S
+         2+5HzpOVAh5ue4uB1p9VnKCLyLKM8/QfXfMZyds3oUmgano70m5f2WLe7t1JaUqfwaaw
+         y5RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HtqjLYmPHcSUGKdQATGiz38ys4VtKjSJwmcU4me06XU=;
-        b=FcnayEk9j3FdN441hPj9KK/iIU3rOA06ebxvypxxptjMmqS3on7NqQwOaq3M5AxwM+
-         r3Vfa1WO2wnto2XUiWg9FUcXSNeHrkAmmJSZBPWu2XbdS8k4ICEdc1wGmk8+x9c+6rek
-         yMSWaWZoSgIhzb+ocPzPZX1FiK3eYXHZk7hVfBE17N93+hLfRSeHIposGfQhIHCC0Aex
-         wagRxqS2Nv4+AN+UoTrlYd0sBar2rhhrW/UwkiIN0hSGvt7uMPSbz3VkYB6rA/NhnS7f
-         dsmaWU8aF5WPddUmZHb6gV+tayHxZbRiV5PSbBS/hhYrP3kEaLNv0RGvNZ8Dz7fdnWRN
-         fIxg==
-X-Gm-Message-State: AD7BkJKsRGeJ49GMYUAXiyX+VhHYh10hNmOpDMuVHxkOuT9+MOPTqNWHkcHYvZbDYAKMRA==
-X-Received: by 10.55.27.30 with SMTP id b30mr36916238qkb.53.1458519974042;
-        Sun, 20 Mar 2016 17:26:14 -0700 (PDT)
-Return-Path: <lesliebklein@gmail.com>
-Received: from lbklein-Lemur (c-24-0-90-100.hsd1.nj.comcast.net. [24.0.90.100])
-        by smtp.gmail.com with ESMTPSA id d64sm11098443qgd.9.2016.03.20.17.26.13
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 20 Mar 2016 17:26:13 -0700 (PDT)
-Date: Sun, 20 Mar 2016 20:26:12 -0400
-From: Leslie Klein <lesliebklein@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=WydzxgTFh5N6dXC+xQSCYscK1JihbVws0vLa+r3NbxQ=;
+        b=W26egDk84qyyLKToXgi+k0He9fTkgYUwBeFD+LrA5CDcDvptLH3+LgmbE2SnLrRrMt
+         rDm7K7iyIRKzZDhoJzmu4atwF7Gn+aZecykRA0hxBX8v4z5ciQM5SXL+NDUfW7m5qlAE
+         5+4q6R7dt5oZBSZ4QwuCFWX7DiP+ybnh1v6ApSpK63a52jIFAuk4uuPe8KyL4QKr/IiQ
+         OjeOaICF20igLN0U8GF5YCarmbWcv0VCnHEtpIxdZkQ9vFYSDxaua8J5l60Qz9NpjJwl
+         xmhkS164GyHaZc2sr6vhvsbbqy6m9O9r59tYYCVSglxqmXt987ChoJUUdV8W/oqkO/G3
+         rBJg==
+X-Gm-Message-State: AD7BkJI5I5zXOoL2nK3UI/tdyPvtvLY1OfmZN6Ojx/jCQFFyz3hWwzDk2V+NX0Qqb1YT1A==
+X-Received: by 10.66.235.129 with SMTP id um1mr10066886pac.17.1457679592175;
+        Thu, 10 Mar 2016 22:59:52 -0800 (PST)
+Return-Path: <bhumirks@gmail.com>
+Received: from bhumirks@gmail.com ([106.215.187.211])
+        by smtp.gmail.com with ESMTPSA id qh8sm10103257pac.40.2016.03.10.22.59.46
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 10 Mar 2016 22:59:51 -0800 (PST)
+Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 11 Mar 2016 12:29:42 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: comedi: comedi_buf: Replace 'unsigned' with
- 'unsigned int'
-Message-ID: <20160321002612.GA9328@lbklein-Lemur>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH 3/3] taging: rtl8723au: Remove empty function odm_Init_RSSIForDM23a
+Date: Fri, 11 Mar 2016 12:28:51 +0530
+Message-Id: <c0833dc65439bb2756b15bbd9400bbe4973ee2d8.1457679000.git.bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1457679000.git.bhumirks@gmail.com>
+References: <cover.1457679000.git.bhumirks@gmail.com>
+In-Reply-To: <cover.1457679000.git.bhumirks@gmail.com>
+References: <cover.1457679000.git.bhumirks@gmail.com>
 
-Fix checkpatch warning:
-Prefer 'unsigned int' to bare use of 'unsigned'
-in file comedi_buf.c
+The function odm_Init_RSSIForDM23a is empty and therefore there is no use 
+of keeping it. Also, remove its prototype.
 
-Signed-off-by: Leslie Klein <lesliebklein@gmail.com>
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/comedi/comedi_buf.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8723au/hal/odm_HWConfig.c     | 4 ----
+ drivers/staging/rtl8723au/include/odm_HWConfig.h | 2 --
+ 2 files changed, 6 deletions(-)
 
-diff --git a/drivers/staging/comedi/comedi_buf.c b/drivers/staging/comedi/comedi_buf.c
-index 90c2801..c7d7682 100644
---- a/drivers/staging/comedi/comedi_buf.c
-+++ b/drivers/staging/comedi/comedi_buf.c
-@@ -80,14 +80,14 @@ static void __comedi_buf_free(struct comedi_device *dev,
+diff --git a/drivers/staging/rtl8723au/hal/odm_HWConfig.c b/drivers/staging/rtl8723au/hal/odm_HWConfig.c
+index 7b9799e..0562f61 100644
+--- a/drivers/staging/rtl8723au/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723au/hal/odm_HWConfig.c
+@@ -270,10 +270,6 @@ static void odm_RxPhyStatus92CSeries_Parsing(struct dm_odm_t *pDM_Odm,
+ 	}
+ }
  
- static void __comedi_buf_alloc(struct comedi_device *dev,
- 			       struct comedi_subdevice *s,
--			       unsigned n_pages)
-+			       unsigned int n_pages)
- {
- 	struct comedi_async *async = s->async;
- 	struct page **pages = NULL;
- 	struct comedi_buf_map *bm;
- 	struct comedi_buf_page *buf;
- 	unsigned long flags;
--	unsigned i;
-+	unsigned int i;
+-void odm_Init_RSSIForDM23a(struct dm_odm_t *pDM_Odm)
+-{
+-}
+-
+ static void odm_Process_RSSIForDM(struct dm_odm_t *pDM_Odm,
+ 				  struct phy_info *pPhyInfo,
+ 				  struct odm_packet_info *pPktinfo)
+diff --git a/drivers/staging/rtl8723au/include/odm_HWConfig.h b/drivers/staging/rtl8723au/include/odm_HWConfig.h
+index ce7abe7..c748d5f 100644
+--- a/drivers/staging/rtl8723au/include/odm_HWConfig.h
++++ b/drivers/staging/rtl8723au/include/odm_HWConfig.h
+@@ -142,8 +142,6 @@ struct phy_status_rpt_8195 {
+ };
  
- 	if (!IS_ENABLED(CONFIG_HAS_DMA) && s->async_dma_dir != DMA_NONE) {
- 		dev_err(dev->class_dev,
-@@ -208,7 +208,7 @@ int comedi_buf_alloc(struct comedi_device *dev, struct comedi_subdevice *s,
  
- 	/* allocate new buffer */
- 	if (new_size) {
--		unsigned n_pages = new_size >> PAGE_SHIFT;
-+		unsigned int n_pages = new_size >> PAGE_SHIFT;
- 
- 		__comedi_buf_alloc(dev, s, n_pages);
- 
-@@ -302,7 +302,7 @@ static unsigned int comedi_buf_munge(struct comedi_subdevice *s,
- {
- 	struct comedi_async *async = s->async;
- 	unsigned int count = 0;
--	const unsigned num_sample_bytes = comedi_bytes_per_sample(s);
-+	const unsigned int num_sample_bytes = comedi_bytes_per_sample(s);
- 
- 	if (!s->munge || (async->cmd.flags & CMDF_RAWDATA)) {
- 		async->munge_count += num_bytes;
-@@ -395,7 +395,7 @@ EXPORT_SYMBOL_GPL(comedi_buf_write_free);
- unsigned int comedi_buf_read_n_available(struct comedi_subdevice *s)
- {
- 	struct comedi_async *async = s->async;
--	unsigned num_bytes;
-+	unsigned int num_bytes;
- 
- 	if (!async)
- 		return 0;
+-void odm_Init_RSSIForDM23a(struct dm_odm_t *pDM_Odm);
+-
+ void
+ ODM_PhyStatusQuery23a(
+ 	struct dm_odm_t *pDM_Odm,
 -- 
 1.9.1
 
