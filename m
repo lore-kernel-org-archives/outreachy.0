@@ -1,74 +1,78 @@
-X-GM-THRID: 6251014829496074240
-X-Received: by 10.50.70.42 with SMTP id j10mr6125110igu.9.1455427806906;
-        Sat, 13 Feb 2016 21:30:06 -0800 (PST)
+X-GM-THRID: 6257097986909667328
+X-Received: by 10.129.156.8 with SMTP id t8mr7881360ywg.25.1457719281369;
+        Fri, 11 Mar 2016 10:01:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.41.85 with SMTP id y79ls1487256qgy.63.gmail; Sat, 13 Feb
- 2016 21:30:06 -0800 (PST)
-X-Received: by 10.31.47.131 with SMTP id v125mr9825935vkv.11.1455427806318;
-        Sat, 13 Feb 2016 21:30:06 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id ff2si2281873pad.2.2016.02.13.21.30.06
+Received: by 10.107.168.25 with SMTP id r25ls1254852ioe.88.gmail; Fri, 11 Mar
+ 2016 10:01:20 -0800 (PST)
+X-Received: by 10.66.160.9 with SMTP id xg9mr7979289pab.38.1457719280796;
+        Fri, 11 Mar 2016 10:01:20 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id ui7si1530460pab.0.2016.03.11.10.01.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 21:30:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Fri, 11 Mar 2016 10:01:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id gc2so478338pab.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 21:30:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=DIuLLNHIJi8vB28nBH+9fLUAQSjsgCfn+l0ljgWdHJc=;
-        b=poU/mjBf3i6nKIuiu6akCY1+QnB8FSK79SbEVuhRB+NyLljuG4uCl+ZjDH/Hmfa5+p
-         5jGcwTSGIxaZe193zW+vkU5NBsXH7IuIusHlaYdHlrCMfvTrzQ7NyBAPqXpZcWOMwkRY
-         nJ2yfGqFS2JjvnA3bBtL5cuWXAz3HdNuNn2mwJKkvzpJ0TUd0y/c143TCcfEXB7xAY7K
-         tdjcHkf08kO3HzgdLCLgNOVgIctljQM0a1DwyI6tVuubAEnp0d9xHfMriDubJZlxVc3C
-         6NE2nnIAGmH7iPLRNb3y/+7weCYAmQDIBgAs6D0NpACiJpDhb0M3TakONDFi7yiXhcyN
-         sYjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=DIuLLNHIJi8vB28nBH+9fLUAQSjsgCfn+l0ljgWdHJc=;
-        b=EFKKnNbruRZu4U2ZLmZAMX7RJzLVEuipyc9O9Eqyv3Ci7Hdu775z8Xf+FOx2BvSUAx
-         KAQWl9exI5a33wl8MnvmeMbXX8N4CnPVjvaOFOlPNhsobdMr3gFwsT/g8xKA4EV+tbek
-         qpw2/Api/QIM0ZB/hLqxI2D7BrACeT3JkQN1dHqNJK8YbYK0eBbqrhV/aHRGJh0D6D7o
-         dOMkV8mPbnd1sQ9vYFeVZ8KAMdx6uX9kdYtgzTDdr9Mm2RfcyIuu8U40cLcbKR9CGLay
-         qDiWcvbIxHL0MKZzETl1wmj+/3UHoGNCgxszFnRfbdhDJc+/JM+eIt8EeepBjm+ANMUg
-         JMrQ==
-X-Gm-Message-State: AG10YOTQKDN53CN2VMWaC3d8onNVgiXQDJ18nE++rnGF5NY0OIxMSVRBxV/PswHuLRA4uQ==
-X-Received: by 10.66.100.196 with SMTP id fa4mr14259485pab.37.1455427806157;
-        Sat, 13 Feb 2016 21:30:06 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.130.221])
-        by smtp.gmail.com with ESMTPSA id tp6sm29552709pab.25.2016.02.13.21.30.01
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Feb 2016 21:30:05 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 14 Feb 2016 10:59:52 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 0/2] Remove unused macros
-Date: Sun, 14 Feb 2016 10:59:48 +0530
-Message-Id: <cover.1455427132.git.bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 6BE99CCD;
+	Fri, 11 Mar 2016 18:01:20 +0000 (UTC)
+Date: Fri, 11 Mar 2016 10:01:20 -0800
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Use kzalloc
+ instead of kmalloc and memset
+Message-ID: <20160311180120.GA14824@kroah.com>
+References: <1456844139-29008-1-git-send-email-bhumirks@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1456844139-29008-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patchset remove PlatformAcquireSpinLock and PlatformReleaseSpinLock 
-macros as they are not used anywhere. Also remove the commented places 
-where these macros were used. Used grep to find occurences.
+On Tue, Mar 01, 2016 at 08:25:39PM +0530, Bhumika Goyal wrote:
+> The code in this patch allocates some memory and then clears it. The
+> function kzalloc does the both so replace kmalloc and memset with
+> kzalloc. Also sizeof(struct ieee80211_txb) can be written as
+> sizeof(*txb) as txb is a pointer of type struct ieee80211_txb.
+> Done using coccinelle:
+> 
+> @@
+> expression e,e1,e2;
+> @@
+> - e=kmalloc(e1,e2);
+> + e=kzalloc(e1,e2);
+> if(!e)
+>   return NULL;
+> ...
+> - memset(e,...);
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> index 1ab0aea..8662137 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> @@ -242,13 +242,11 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
+>  {
+>  	struct ieee80211_txb *txb;
+>  	int i;
+> -	txb = kmalloc(
+> -		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
+> -		gfp_mask);
+> +	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags),
+> +		      gfp_mask);
 
-Bhumika Goyal (2):
-  Staging: rtl8723au: Remove unused macros
-  Staging: rtl8192u: Remove useless comments
+This no longer needs to be line-wrapped, right?
 
- drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c | 5 -----
- drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 2 --
- 2 files changed, 7 deletions(-)
+Please fix.
 
--- 
-1.9.1
+thanks,
 
+greg k-h
 
