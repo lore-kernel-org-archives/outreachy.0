@@ -1,109 +1,167 @@
-X-GM-THRID: 6254866266888077312
-X-Received: by 10.182.199.70 with SMTP id ji6mr36091537obc.32.1456324538697;
-        Wed, 24 Feb 2016 06:35:38 -0800 (PST)
+X-GM-THRID: 6256120108487278592
+X-Received: by 10.28.6.14 with SMTP id 14mr1043229wmg.6.1457796934358;
+        Sat, 12 Mar 2016 07:35:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.96.112 with SMTP id j103ls2989817qge.57.gmail; Wed, 24 Feb
- 2016 06:35:38 -0800 (PST)
-X-Received: by 10.129.83.85 with SMTP id h82mr37449650ywb.18.1456324538133;
-        Wed, 24 Feb 2016 06:35:38 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id yd9si419789pab.1.2016.02.24.06.35.38
+Received: by 10.28.57.65 with SMTP id g62ls289512wma.32.canary; Sat, 12 Mar
+ 2016 07:35:33 -0800 (PST)
+X-Received: by 10.28.7.133 with SMTP id 127mr1056057wmh.2.1457796933705;
+        Sat, 12 Mar 2016 07:35:33 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
+        by gmr-mx.google.com with ESMTPS id g81si293310wmi.3.2016.03.12.07.35.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 06:35:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 12 Mar 2016 07:35:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=nevola@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id c10so1031773pfc.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 06:35:38 -0800 (PST)
+Received: by mail-wm0-x232.google.com with SMTP id l68so51795403wml.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 07:35:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=x1iZhsinUWS/I5T/XDDDqdUCuZLVQB5BHRA+Bw3EnUE=;
-        b=BabG2g/JmUxkvcBzm0w4kImLPV2saQwQdfRQ7UGKKulUywkmOlVwY1fFQakXKzQPHr
-         F0bbGg2BDr6LYH6lQIMR/rlHkz5VGlI2ZkL1RF4Gw6+VcHC1Fl36GGQer33Gqn1Ex9s1
-         XyVZCOljdCaHmZfnfzWdUF47LJKrcZjUtaE298s907CC8jyjOS0jbXXqwr0Oa2QAH/Rz
-         OiXEYUsDP5aavXUiLCr9j6srHJPejJTKkvZlOgLD3zrcMNY79/iv+oTjzrCxINbqCXlo
-         hCqLLf0cz6eF9jL7KM30PPeakU6lwe+NQgQn3hZj4iYY2yRwVfgB+LgRPmMxZrtxx65B
-         55/A==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=/h/Myn5yEIlA4Hbr1Z3aYGCvlgniUkJi5pDimwnnO8E=;
+        b=t1R7QvHEoMdjk3GK8okJmSVogi725EKauyLI7cdqJwKIZO/tUGm1l0xKEplRfzteY5
+         8U8CreSG2uDRwgR7X2diN6gdk5RO9pKiQxGCHj/1FgEO4x0XAk0j6L4Nc9t6jnNvDM3l
+         NI3DlffMhqX0T09fm5/L9sVOzeNPx1LMGc4aS5v6kqOHFltQKQeZ4paxBWBvFQRHLLLF
+         DrAbncObrypUOXrCE3rIZGY84iRAf3GdqpC9NS0wuvff2h9YMc+RGo1wGOe8TMY4EOiq
+         xHw5W294Pi7lf85MHQPCnhNVGNLFFvMj2EyJm3Lpwhb2otL3horLXsyE2rUbVCokN8nd
+         QkRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=x1iZhsinUWS/I5T/XDDDqdUCuZLVQB5BHRA+Bw3EnUE=;
-        b=GqmvmLDTCGtrlVhTD6UIN3/WuHHqkp7o76zY6Zj6EYdQtJh1lYbQ2HcjPEw78BzlqA
-         7OdUdYsvoDDi/VhIFmSs5b7CVWZBWU7TXY8ErFd9kB5tZxk9FEppgA70VLhywDul7BIC
-         UDYR20uJEXdwvl9CZlwVkp6IhHxLyOzVc27R5JQvYbZOyLbBPQ0ujkJ7OHNkBjK8+lcI
-         kyjX+knmo+sIYW5BDnzqYVvyj2v67bZzhIa7qgOj94Jcdf/qB1puGVUFkjZILuWc0SGO
-         ADRHqRFb+/EHA0n4LQnW5gOQqp/FTgmjYGQHDm/kj0Zl0yp+QOeW6bz8vAF7347G/vA/
-         PFWQ==
-X-Gm-Message-State: AG10YOThOEbdDZGUQ04intGFt2Xog/tNi10bC/qJ9/Lw/+Ec2IabY2MUjqwlEIe5T348VA==
-X-Received: by 10.98.0.71 with SMTP id 68mr55348480pfa.156.1456324537771;
-        Wed, 24 Feb 2016 06:35:37 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.154])
-        by smtp.gmail.com with ESMTPSA id y27sm5592689pfi.82.2016.02.24.06.35.36
+         :content-disposition:user-agent;
+        bh=/h/Myn5yEIlA4Hbr1Z3aYGCvlgniUkJi5pDimwnnO8E=;
+        b=mUKaIIokvfVV0jvOIbs8JjW3HUWFJyvyi7J67CjT3lJBDTmg4h+qnPrTvACfQr1q8h
+         ahx2kwlmeLv5QChNLW4XqFasJtZBkrPHO87n1oUksIWhd/KfYmfeasA04UwO4I1CgRaG
+         0KM8JX3lgtBMGSbGSsJeXZ6WxGiALINX2f+gLf3rTvUtd7q7UEmzjl9mvMufxu6mMO/D
+         jCtX7SyZvwP/DNJq9YTdY+1m2D89Pfbxub3x/Bs8sdEOCMqfx1inu9HQCMwh1pVg6ria
+         H4JmT0LjW6yuKEpM5nnt52dsg6IkD/od8IYVuZ6qnIAFOk3cspmg//q4E7S980U0j/69
+         71QA==
+X-Gm-Message-State: AD7BkJJUS76It87IFM2Jc++wUBmPEe8qsaQKAnhtoL53ZMTasiUjPbvNt3ee4FgfMUL6pw==
+X-Received: by 10.194.113.38 with SMTP id iv6mr15363729wjb.126.1457796933518;
+        Sat, 12 Mar 2016 07:35:33 -0800 (PST)
+Return-Path: <nevola@gmail.com>
+Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
+        by smtp.gmail.com with ESMTPSA id d2sm13597447wjf.28.2016.03.12.07.35.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 06:35:37 -0800 (PST)
-Date: Wed, 24 Feb 2016 12:05:33 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Sat, 12 Mar 2016 07:35:32 -0800 (PST)
+Date: Sat, 12 Mar 2016 16:35:30 +0100
+From: Laura Garcia Liebana <nevola@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: gdm72xx: Use space around '*' operator.
-Message-ID: <20160224063327.GA4348@sandhya>
+Subject: [PATCHv2] staging: octeon: Fix alignment with open parenthesis
+Message-ID: <20160312153527.GA3367@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Use space around '*' operator.This patch is suggested by checkpatch.pl script.
+Alignment should match open parenthesis. Checkpatch detected these
+issues.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
 ---
- drivers/staging/gdm72xx/gdm_qos.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+v2:
+	- The first patch failed to apply.
 
-diff --git a/drivers/staging/gdm72xx/gdm_qos.c b/drivers/staging/gdm72xx/gdm_qos.c
-index 8c99f91..9fc476f 100644
---- a/drivers/staging/gdm72xx/gdm_qos.c
-+++ b/drivers/staging/gdm72xx/gdm_qos.c
-@@ -261,7 +261,7 @@ int gdm_qos_send_hci_pkt(struct sk_buff *skb, struct net_device *dev)
- 	struct list_head send_list;
- 	int ret = 0;
+ drivers/staging/octeon/ethernet-rx.c | 7 ++++---
+ drivers/staging/octeon/ethernet-rx.h | 2 +-
+ drivers/staging/octeon/ethernet-tx.c | 5 +++--
+ drivers/staging/octeon/ethernet.c    | 4 ++--
+ 4 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
+index b6993b0..a10fe3a 100644
+--- a/drivers/staging/octeon/ethernet-rx.c
++++ b/drivers/staging/octeon/ethernet-rx.c
+@@ -172,12 +172,13 @@ static int cvm_oct_napi_poll(struct napi_struct *napi, int budget)
+ 	if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+ 		old_group_mask = cvmx_read_csr(CVMX_SSO_PPX_GRP_MSK(coreid));
+ 		cvmx_write_csr(CVMX_SSO_PPX_GRP_MSK(coreid),
+-				1ull << pow_receive_group);
++			       1ull << pow_receive_group);
+ 		cvmx_read_csr(CVMX_SSO_PPX_GRP_MSK(coreid)); /* Flush */
+ 	} else {
+ 		old_group_mask = cvmx_read_csr(CVMX_POW_PP_GRP_MSKX(coreid));
+ 		cvmx_write_csr(CVMX_POW_PP_GRP_MSKX(coreid),
+-			(old_group_mask & ~0xFFFFull) | 1 << pow_receive_group);
++			       (old_group_mask & ~0xFFFFull) |
++			       1 << pow_receive_group);
+ 	}
  
--	tcph = (struct tcphdr *)iph + iph->ihl*4;
-+	tcph = (struct tcphdr *)iph + iph->ihl * 4;
- 
- 	if (ethh->h_proto == cpu_to_be16(ETH_P_IP)) {
- 		if (qcb->qos_list_cnt && !qos_free_list.cnt) {
-@@ -342,17 +342,17 @@ void gdm_recv_qos_hci_packet(void *nic_ptr, u8 *buf, int size)
- 	if (sub_cmd_evt == QOS_REPORT) {
- 		spin_lock_irqsave(&qcb->qos_lock, flags);
- 		for (i = 0; i < qcb->qos_list_cnt; i++) {
--			sfid = ((buf[(i*5) + 6] << 24) & 0xff000000);
--			sfid += ((buf[(i*5) + 7] << 16) & 0xff0000);
--			sfid += ((buf[(i*5) + 8] << 8) & 0xff00);
--			sfid += (buf[(i*5) + 9]);
-+			sfid = ((buf[(i * 5) + 6] << 24) & 0xff000000);
-+			sfid += ((buf[(i * 5) + 7] << 16) & 0xff0000);
-+			sfid += ((buf[(i * 5) + 8] << 8) & 0xff00);
-+			sfid += (buf[(i * 5) + 9]);
- 			index = get_csr(qcb, sfid, 0);
- 			if (index == -1) {
- 				spin_unlock_irqrestore(&qcb->qos_lock, flags);
- 				netdev_err(nic->netdev, "QoS ERROR: No SF\n");
- 				return;
- 			}
--			qcb->csr[index].qos_buf_count = buf[(i*5) + 10];
-+			qcb->csr[index].qos_buf_count = buf[(i * 5) + 10];
+ 	if (USE_ASYNC_IOBDMA) {
+@@ -374,7 +375,7 @@ static int cvm_oct_napi_poll(struct napi_struct *napi, int budget)
+ 			 * doesn't exist.
+ 			 */
+ 			printk_ratelimited("Port %d not controlled by Linux, packet dropped\n",
+-				   port);
++					   port);
+ 			dev_kfree_skb_irq(skb);
  		}
+ 		/*
+diff --git a/drivers/staging/octeon/ethernet-rx.h b/drivers/staging/octeon/ethernet-rx.h
+index a5973fd..315a63d 100644
+--- a/drivers/staging/octeon/ethernet-rx.h
++++ b/drivers/staging/octeon/ethernet-rx.h
+@@ -30,7 +30,7 @@ static inline void cvm_oct_rx_refill_pool(int fill_threshold)
+ 						 number_to_free);
+ 		if (num_freed != number_to_free) {
+ 			cvmx_fau_atomic_add32(FAU_NUM_PACKET_BUFFERS_TO_FREE,
+-					number_to_free - num_freed);
++					      number_to_free - num_freed);
+ 		}
+ 	}
+ }
+diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
+index 93f6558..6b4c208 100644
+--- a/drivers/staging/octeon/ethernet-tx.c
++++ b/drivers/staging/octeon/ethernet-tx.c
+@@ -220,7 +220,8 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+ 					priv->fau + qos * 4, MAX_SKB_TO_FREE);
+ 			}
+ 			skb_to_free = cvm_oct_adjust_skb_to_free(skb_to_free,
+-							priv->fau + qos * 4);
++								 priv->fau +
++								 qos * 4);
+ 			spin_lock_irqsave(&priv->tx_free_list[qos].lock, flags);
+ 			goto skip_xmit;
+ 		}
+@@ -402,7 +403,7 @@ dont_put_skbuff_in_hw:
+ 	}
  
- 		extract_qos_list(nic, &send_list);
+ 	skb_to_free = cvm_oct_adjust_skb_to_free(skb_to_free,
+-						priv->fau + qos * 4);
++						 priv->fau + qos * 4);
+ 
+ 	/*
+ 	 * If we're sending faster than the receive can free them then
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 271e1b8..e9cd5f2 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -635,7 +635,7 @@ static struct device_node *cvm_oct_of_get_child(
+ }
+ 
+ static struct device_node *cvm_oct_node_for_port(struct device_node *pip,
+-							int interface, int port)
++						 int interface, int port)
+ {
+ 	struct device_node *ni, *np;
+ 
+@@ -815,7 +815,7 @@ static int cvm_oct_probe(struct platform_device *pdev)
+ 				free_netdev(dev);
+ 			} else if (register_netdev(dev) < 0) {
+ 				pr_err("Failed to register ethernet device for interface %d, port %d\n",
+-					 interface, priv->port);
++				       interface, priv->port);
+ 				free_netdev(dev);
+ 			} else {
+ 				cvm_oct_device[priv->port] = dev;
 -- 
-1.8.3.4
+2.7.0
 
 
