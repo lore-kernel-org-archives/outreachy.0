@@ -1,116 +1,90 @@
-X-GM-THRID: 6258875941838127104
-X-Received: by 10.107.162.2 with SMTP id l2mr12533938ioe.14.1457258114120;
-        Sun, 06 Mar 2016 01:55:14 -0800 (PST)
+X-GM-THRID: 6261077782348955648
+X-Received: by 10.98.70.152 with SMTP id o24mr7362871pfi.6.1457770786296;
+        Sat, 12 Mar 2016 00:19:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.25.175 with SMTP id 44ls559880qgt.1.gmail; Sun, 06 Mar
- 2016 01:55:12 -0800 (PST)
-X-Received: by 10.140.252.131 with SMTP id x125mr12653478qhc.12.1457258112416;
-        Sun, 06 Mar 2016 01:55:12 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id r75si2377227pfr.0.2016.03.06.01.55.12
+Received: by 10.50.85.101 with SMTP id g5ls327230igz.2.gmail; Sat, 12 Mar 2016
+ 00:19:45 -0800 (PST)
+X-Received: by 10.107.128.217 with SMTP id k86mr10124475ioi.12.1457770785951;
+        Sat, 12 Mar 2016 00:19:45 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id ui7si1890648pab.0.2016.03.12.00.19.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 01:55:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 12 Mar 2016 00:19:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id q129so6101401pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 01:55:12 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id n5so3647748pfn.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 00:19:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=48sXC+aooCElUsqzJNo5Mrtdba+54A1JW6igrcoMIRE=;
-        b=vzAAy/q7AgLi17lHFs2mk98iqbE+jcywi6Osdqkpx+ubR3depey3Ktfc/CQlMX97HB
-         fR5eay6VsyLQabyPRITaNcxcpCRXp4YGjl5Ot+YjV5V8utDLAoNvijnG9dKVkPKXQ0tq
-         bREvETltAC5hbyyc07Nc8DfP9LMMTPIaoaygXC6JMwpSmWlWZuOIemZyx4rPc6gvWUji
-         Fwh1X578yFo77lQgm57Ee9Nyox0QlZRmWJR4gbLDv42CaZtLLpWYEmDUV9XhCFbU2+Y3
-         xOgDDewVlJzsoTnaB74VAX4W4mKF68wZN23o2rxYumONDFfpRbTb/r8fC8vuFxseOGxm
-         ea2g==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=w94nOIiDdrHMlT/7Zfr+fJ2x6cyVt/8zXLCNx/faY8k=;
+        b=Fr+WSPay8bjV1DmM7Uivq0RjHS7b6oY+vbu2tx+Y999GbYb1zK1SUfNUGXEw6pcuNY
+         +W4kQkJ+rSY3QpidD/RKZBLdP6n6Wl5qZSHrAdttzBXNdh4YQXXUt/IcN8fVgJQ0Hx3V
+         usYub6xqeA96kKJID2kmxMImL1UCXo6dk+NDPsRjfhHJkOJ1tMp+/GIB66bGLME+ieqs
+         sDlAUiYosb8D4rug6Rws+EVK02aPJ4LswdEM0VhH7zRceSAP9/T7lqPBqrs8CXEHQM1f
+         S97gEHartDOYhmlX39N/33IFmbePjYfd0ie4Td1OqNOTeJzEBdvXcM3by0Rga7KBr7u/
+         aFXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=48sXC+aooCElUsqzJNo5Mrtdba+54A1JW6igrcoMIRE=;
-        b=DxZLiQgqls/DxnCem5AJ9WJBUAUgf5j2B59n9+I/bPt6rOfMZlQszxlbDIWCz1OfCU
-         T96S2RfpBOC1fwjqR3ZoiqYbA91qhredz7Vl0TXf+cXu4bMFV+SqJ2IWCezyp2Ru8BCQ
-         9BDoygegqd7mx8DitBc1BSk1lo+oq/UFo7fUSahvvWHWUyHBTJXztyNqpH1JYMWt2ZtR
-         4AY7MBLXx5KHSWqpKnrrr5XkkvWPbFZdnjdMNTXiQmZeSqemEjTNE5oVr5dzybTwmMnO
-         8TOKhTs63FTfPj5pLxo2rpOO6GCsQSP2OXuHdUaBUO1U0+jWYJw0NrJZtTf0LjiVSL4/
-         8pEA==
-X-Gm-Message-State: AD7BkJLj5cIBh31p5OATK5ep5RLj63DmyGMci/XBvIEFERolLQ2TO+kY/BE6zZ/Nh1VlXQ==
-X-Received: by 10.98.19.215 with SMTP id 84mr25381934pft.22.1457258112248;
-        Sun, 06 Mar 2016 01:55:12 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([103.224.159.11])
-        by smtp.gmail.com with ESMTPSA id q2sm16920845pfq.88.2016.03.06.01.55.11
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=w94nOIiDdrHMlT/7Zfr+fJ2x6cyVt/8zXLCNx/faY8k=;
+        b=lcYVUoteW4kOdqaKnoGQPKk3DUqGFa/tWrHOxXIccEIafV+qm8FO1xqLzkZNZjnLOR
+         jzh2TPDWC9DaWa9igoQR8k3YKexDCiRbdYFynmcLVHKdEyKAoMCxy6PyTdCksB6fb5Xi
+         SbpFwn8WhRmgJSpaNVEZwAhp5ZwHO4eMrjTeCGgsvxnP+RrEubO0ct6Uoch8mMyiUBqu
+         0rlZz3HBndUlRf+m2ZmDX9a7N/sI+bbuGEAGYGRKqyRc7sUi4mk/DkWbpw1706g41CT1
+         b6999WGMw3ZgvjGOVe89nQMz0/lRE9hp5eeCtR4zV1k+dYPmMFP1VCkVBnZHstadd6SR
+         q+/Q==
+X-Gm-Message-State: AD7BkJI0JyeZAXm1kkY1jHD2O6AfJ1wrKwr30LFobKCjmJuPxmW7C+yZMu+DcyWMqCNRkg==
+X-Received: by 10.98.14.67 with SMTP id w64mr14267480pfi.154.1457770785820;
+        Sat, 12 Mar 2016 00:19:45 -0800 (PST)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-Mint ([203.215.120.81])
+        by smtp.gmail.com with ESMTPSA id ll7sm17964120pab.6.2016.03.12.00.19.44
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 01:55:11 -0800 (PST)
-Date: Sun, 6 Mar 2016 15:25:01 +0530
-From: G Pooja Shamili <poojashamili@gmail.com>
+        Sat, 12 Mar 2016 00:19:45 -0800 (PST)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: rtl8192e: Clean up the tests on results of
- functions which return NULL on failure
-Message-ID: <20160306095501.GA1958@localhost>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH v2 5/5] staging: iio: tsl2x7x_core: add blank line after struct declaration
+Date: Sat, 12 Mar 2016 16:19:24 +0800
+Message-Id: <4488fdb7454dc87e2df96ede59b6c45be47a2d96.1457769810.git.eraretuya@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1457769810.git.eraretuya@gmail.com>
+References: <cover.1457769810.git.eraretuya@gmail.com>
+In-Reply-To: <cover.1457769810.git.eraretuya@gmail.com>
+References: <cover.1457769810.git.eraretuya@gmail.com>
 
-Functions returning NULL as a return value on failure can be tested for
-as !x, NULL == x or x == NULL. As !x is commonly used, all the tests
-need to be modified to use !x for a consistent coding style. In this
-patch, the function kzalloc is considered.
+Add the missing blank line after struct declaration. Checkpatch found
+this issue.
 
-Coccinelle is used to achieve this, the semantic patch being:
+CHECK: Please use a blank line after function/struct/union/enum
+declarations
 
-@@
-expression E;
-statement S;
-@@
-
-E = kzalloc(...);
-
-if (
-(
-+	!
-	E
--	== NULL
-|
-+	!
--	NULL ==
-	E
-)
- ) S
-
-Signed-off-by: G Pooja Shamili <poojashamili@gmail.com>
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
-Changes from Version 1:
-	    * Changed the name in the From: and Signed-off-by: to full
-	     name.
+ drivers/staging/iio/light/tsl2x7x_core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-index 496de4f..5b893e4 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-@@ -63,7 +63,7 @@ static void *rtllib_ccmp_init(int key_idx)
- 	struct rtllib_ccmp_data *priv;
- 
- 	priv = kzalloc(sizeof(*priv), GFP_ATOMIC);
--	if (priv == NULL)
-+	if (!priv)
- 		goto fail;
- 	priv->key_idx = key_idx;
- 
+diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
+index a72bb29..d553c8e 100644
+--- a/drivers/staging/iio/light/tsl2x7x_core.c
++++ b/drivers/staging/iio/light/tsl2x7x_core.c
+@@ -1646,6 +1646,7 @@ static struct attribute *tsl2X7X_ALS_event_attrs[] = {
+ 	&dev_attr_in_intensity0_thresh_period.attr,
+ 	NULL,
+ };
++
+ static struct attribute *tsl2X7X_PRX_event_attrs[] = {
+ 	&dev_attr_in_proximity0_thresh_period.attr,
+ 	NULL,
 -- 
-2.1.4
+1.9.1
 
 
