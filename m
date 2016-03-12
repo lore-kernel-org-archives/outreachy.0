@@ -1,81 +1,94 @@
 X-GM-THRID: 6261235815090749440
-X-Received: by 10.28.194.212 with SMTP id s203mr1214036wmf.3.1457841062674;
-        Sat, 12 Mar 2016 19:51:02 -0800 (PST)
+X-Received: by 10.98.14.21 with SMTP id w21mr8993593pfi.7.1457807564916;
+        Sat, 12 Mar 2016 10:32:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.152.136 with SMTP id a130ls649358lfe.33.gmail; Sat, 12 Mar
- 2016 19:51:02 -0800 (PST)
-X-Received: by 10.25.136.134 with SMTP id k128mr2142230lfd.5.1457841062147;
-        Sat, 12 Mar 2016 19:51:02 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id 185si370376wml.0.2016.03.12.19.51.02
+Received: by 10.107.136.16 with SMTP id k16ls1378239iod.108.gmail; Sat, 12 Mar
+ 2016 10:32:44 -0800 (PST)
+X-Received: by 10.107.40.134 with SMTP id o128mr11861197ioo.7.1457807564201;
+        Sat, 12 Mar 2016 10:32:44 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
+        by gmr-mx.google.com with ESMTPS id h69si998328pfj.0.2016.03.12.10.32.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 12 Mar 2016 19:51:02 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 12 Mar 2016 10:32:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.24,328,1454972400"; 
-   d="scan'208";a="207447329"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2016 04:51:01 +0100
-Date: Sun, 13 Mar 2016 04:51:00 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@localhost6.localdomain6
-To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-cc: outreachy-kernel@googlegroups.com, tj@kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: usb_intf: Remove
- flush_scheduled_work()
-In-Reply-To: <20160312183227.GA17219@Karyakshetra>
-Message-ID: <alpine.DEB.2.02.1603130450470.2069@localhost6.localdomain6>
-References: <20160312183227.GA17219@Karyakshetra>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22f.google.com with SMTP id x3so12587901pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 10:32:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=otdqk2hVpWD/tyjsZG5zGUQvBn9Fvggm5iDLPQA68Jo=;
+        b=eGwNrfqkZ5om+/eArz3WIjzCWIkLQnze/3dBiEsZ84z7MLcBWUit8d6lgLoWzn427s
+         dFdBTr79NFOtUqmm/FNHhfwzr6X9jVwqdSu6AAg8i7aRuZKgVUYjJ1pO17iG43P3VZBH
+         tgzFukntkr5sAlrZBKYlMdV48ogcMoj9tfieJbrxvOtNTkxZcXuKHNOTRz5x4ftFM1EV
+         FtuSuMIaFWwaQA+rngUUV99/fHIbI8bVcp1zldYMUi/HaPbNFoOxI4tjCTO46eP1ref3
+         kM8TpvCBayis0Wq0/3Fctfz3nXcOkBxJiZi7jtGEDqXiaOPCHp81Wrh7Zcf9NOE39RTq
+         +iVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=otdqk2hVpWD/tyjsZG5zGUQvBn9Fvggm5iDLPQA68Jo=;
+        b=jK2UT6sVxkwhZMLzQBSUDWC4GvBM0kRaAuSTK2SXe360s71oHLzzt2mrbBt91b+um0
+         GhQVy1CwlO84rCla1bJMYKt2bsCkzOPJ5eBi1rKiQJIp+bsF9EnvH2Bq+uDBZ5DDQjTa
+         +Apk9N99kNwk7VoPWSYHITFGnad4XPU5wDB+tIMEQKg8A5S0Br5hJ29exicFcMYeYX2B
+         1tFbCnlESOZ+o+6DATmRrqTMdHazu6Rv0SOnfDXPES31lTUsHdiihOJkuwerATXvstj0
+         ym6CAgkAfFhfvbhSG12XuA5mT19aUy3iSOzZOFq+3KnFmKWRv1N8AioIhXXJbk0V8bN8
+         I7Qw==
+X-Gm-Message-State: AD7BkJJsqWjaFJS/rrJUQAKE9/n8y8BeqMO/y388j0PlCi/2bCJg70h3zHNxBgJIDxXLEA==
+X-Received: by 10.98.18.195 with SMTP id 64mr17443389pfs.131.1457807564018;
+        Sat, 12 Mar 2016 10:32:44 -0800 (PST)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id g23sm21272593pfg.35.2016.03.12.10.32.42
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 12 Mar 2016 10:32:43 -0800 (PST)
+Date: Sun, 13 Mar 2016 00:02:27 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: tj@kernel.org
+Subject: [PATCH] staging: rtl8712: usb_intf:  Remove flush_scheduled_work()
+Message-ID: <20160312183227.GA17219@Karyakshetra>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
+flush_scheduled_work() flushes out all work items in system_wq.
+Since one doesn't know what could be running there, flushinf work items
+individually is preferred.
 
+Since there are finite number of work items to be flushed,(viz
+pwrpriv->SetPSModeWorkItem,pwrpriv->SetPSModeWorkItem,pLed->BlinkWorkItem)
+instead of flushing system_wq, each work item is separately flushed.
 
-On Sun, 13 Mar 2016, Bhaktipriya Shridhar wrote:
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+---
+ drivers/staging/rtl8712/usb_intf.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> flush_scheduled_work() flushes out all work items in system_wq.
-> Since one doesn't know what could be running there, flushinf work items
+diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
+index c1a0ca49..32c5798 100644
+--- a/drivers/staging/rtl8712/usb_intf.c
++++ b/drivers/staging/rtl8712/usb_intf.c
+@@ -627,7 +627,9 @@ static void r871xu_dev_remove(struct usb_interface *pusb_intf)
+ 		if (drvpriv.drv_registered)
+ 			padapter->bSurpriseRemoved = true;
+ 		unregister_netdev(pnetdev); /* will call netdev_close() */
+-		flush_scheduled_work();
++		cancel_delayed_work(&pwrpriv->SetPSModeWorkItem);
++		cancel_delayed_work(&pwrpriv->rpwm_workitem);
++		cancel_delayed_work(&pLed->BlinkWorkItem);
+ 		udelay(1);
+ 		/* Stop driver mlme relation timer */
+ 		r8712_stop_drv_timers(padapter);
+--
+2.1.4
 
-flushinf -> flushing
-
-> individually is preferred.
-> 
-> Since there are finite number of work items to be flushed,(viz
-> pwrpriv->SetPSModeWorkItem,pwrpriv->SetPSModeWorkItem,pLed->BlinkWorkItem)
-> instead of flushing system_wq, each work item is separately flushed.
-> 
-> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-> ---
->  drivers/staging/rtl8712/usb_intf.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-> index c1a0ca49..32c5798 100644
-> --- a/drivers/staging/rtl8712/usb_intf.c
-> +++ b/drivers/staging/rtl8712/usb_intf.c
-> @@ -627,7 +627,9 @@ static void r871xu_dev_remove(struct usb_interface *pusb_intf)
->  		if (drvpriv.drv_registered)
->  			padapter->bSurpriseRemoved = true;
->  		unregister_netdev(pnetdev); /* will call netdev_close() */
-> -		flush_scheduled_work();
-> +		cancel_delayed_work(&pwrpriv->SetPSModeWorkItem);
-> +		cancel_delayed_work(&pwrpriv->rpwm_workitem);
-> +		cancel_delayed_work(&pLed->BlinkWorkItem);
->  		udelay(1);
->  		/* Stop driver mlme relation timer */
->  		r8712_stop_drv_timers(padapter);
-> --
-> 2.1.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160312183227.GA17219%40Karyakshetra.
-> For more options, visit https://groups.google.com/d/optout.
-> 
 
