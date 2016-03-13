@@ -1,77 +1,114 @@
 X-GM-THRID: 6261499450444742656
-X-Received: by 10.107.157.10 with SMTP id g10mr14925130ioe.28.1457879112045;
-        Sun, 13 Mar 2016 07:25:12 -0700 (PDT)
+X-Received: by 10.112.142.42 with SMTP id rt10mr2325328lbb.13.1457869573174;
+        Sun, 13 Mar 2016 04:46:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.85.135 with SMTP id n7ls3848931qgd.10.gmail; Sun, 13 Mar
- 2016 07:25:11 -0700 (PDT)
-X-Received: by 10.129.39.146 with SMTP id n140mr14087106ywn.22.1457879111336;
-        Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id y20si2478974pfa.2.2016.03.13.07.25.11
+Received: by 10.28.35.70 with SMTP id j67ls354902wmj.44.canary; Sun, 13 Mar
+ 2016 04:46:12 -0700 (PDT)
+X-Received: by 10.194.84.40 with SMTP id v8mr2282696wjy.2.1457869572664;
+        Sun, 13 Mar 2016 04:46:12 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h187si343908wme.0.2016.03.13.04.46.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Sun, 13 Mar 2016 04:46:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id x3so23284127pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=L1/QQTjFyAHGqlHwiXhTCXSyNkrIJS6hIcOYXaIz5c0=;
-        b=nlD9mka7I6xe2WRFT/z+yg4CX0F1+fM0NProebJ2JFUJzqwskhU9CXlD7lb4b2atbn
-         M2eI18Xu9EJcKP3gR2X0XTxUreXzIq+2lHRXvFUXlK8W/oBizjm07wjTUMWFwJTHjFm0
-         B/tSPYKoKpyY8EochWLyKwugg3Dsx4OkfiidPU3MHvXxNr31zov/dE1x0LRZPr7pP2sf
-         XUk+fDu995IDdxndxIaaR9U5wpgSvrSHkvhzb+GwTiR2Pvt7SCPGdiv9FQQNLQuPYLKx
-         m7c9g39aycPUxfL1K1uKp0TKyLNYbiOvON8HExm0rX+33015WzOfPJuVUJddXcfqeSCt
-         JEFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=L1/QQTjFyAHGqlHwiXhTCXSyNkrIJS6hIcOYXaIz5c0=;
-        b=RMWGtPRrnmcH3bO1rDxTjsaoaciCqaSBI2C3EihofQx69hTG42S41qrmHb2wJk07Lz
-         grrFYSFtr3pG2E6I6IbxLsdyGcKIGV70SwNSUowL2qQuKHwV6nsUwtz062eQ2CyCpZGu
-         GknCe9XsEn+SAAJJeDUgTmqZ9RgA1zzah9Pa/JpaRkBNxlVAKJn7BuorvTr22az16C8u
-         zktmzkCIYY7C6FnWEUwhjBc+HleFXdqIQ20xjfWiCqJipkZRU/BFsm3hBIWEn8wX53ZM
-         jrBhivTFy+OswvV7H5kn62BtP1GnCWnled9GgOv5akhFpdkz3O1+G2toqq+zS8goEzf9
-         g7Zg==
-X-Gm-Message-State: AD7BkJL0YKV9A25kMhXr6ukPSki5z8D3RQOdDlJ4+IpaehgIH4fGNiTwayBZ3h8R1mJ2CA==
-X-Received: by 10.98.33.74 with SMTP id h71mr22284596pfh.157.1457879111164;
-        Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id yx4sm25662656pac.5.2016.03.13.07.25.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 07:25:10 -0700 (PDT)
-Date: Sun, 13 Mar 2016 19:55:00 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/2] Fix multiple warnings
-Message-ID: <cover.1457878893.git.anchalj109@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,330,1454972400"; 
+   d="scan'208";a="207486413"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2016 12:46:09 +0100
+Date: Sun, 13 Mar 2016 12:46:08 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Anchal Jain <anchalj109@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: drivers: Fix lines over
+ 80 characters
+In-Reply-To: <55e6d749e6540164f7e206c1eb7ddc17b30fa292.1457868804.git.anchalj109@gmail.com>
+Message-ID: <alpine.DEB.2.02.1603131245390.2069@localhost6.localdomain6>
+References: <cover.1457868804.git.anchalj109@gmail.com> <55e6d749e6540164f7e206c1eb7ddc17b30fa292.1457868804.git.anchalj109@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patchset updates the wilc1000 driver in order to fix several
-checkpatch issues detected in the source code.
 
-Anchal Jain (2):
-  staging: wilc1000: Remove camel case in variable names.
-  staging: drivers: Fix lines over 80 characters
 
- drivers/staging/wilc1000/linux_mon.c | 24 ++++++++++++++----------
- 1 file changed, 14 insertions(+), 10 deletions(-)
+On Sun, 13 Mar 2016, Anchal Jain wrote:
 
--- 
-1.9.1
+> Break lines so that they do not exceed 80
+> characters. Problem found using checkpatch.
+> 
+> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> ---
+>  drivers/staging/wilc1000/linux_mon.c | 18 +++++++++++-------
+>  1 file changed, 11 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/wilc1000/linux_mon.c b/drivers/staging/wilc1000/linux_mon.c
+> index fd25116..0d79a61 100644
+> --- a/drivers/staging/wilc1000/linux_mon.c
+> +++ b/drivers/staging/wilc1000/linux_mon.c
+> @@ -59,9 +59,10 @@ void WILC_WFI_monitor_rx(u8 *buff, u32 size)
+>  
+>  	/* Get WILC header */
+>  	memcpy(&header, (buff - HOST_HDR_OFFSET), HOST_HDR_OFFSET);
+> -
+> -	/* The packet offset field conain info about what type of managment frame */
+> -	/* we are dealing with and ack status */
+> +	/*
+> +	 * The packet offset field contains info about what type of management
+> +	 * the frame we are dealing with and ack status
+> +	 */
+>  	pkt_offset = GET_PKT_OFFSET(header);
+>  
+>  	if (pkt_offset & IS_MANAGMEMENT_CALLBACK) {
+> @@ -105,7 +106,7 @@ void WILC_WFI_monitor_rx(u8 *buff, u32 size)
+>  		hdr->hdr.it_version = 0; /* PKTHDR_RADIOTAP_VERSION; */
+>  		hdr->hdr.it_len = cpu_to_le16(sizeof(struct wilc_wfi_radiotap_hdr));
+>  		hdr->hdr.it_present = cpu_to_le32
+> -				(1 << IEEE80211_RADIOTAP_RATE);                   /* | */
+> +				(1 << IEEE80211_RADIOTAP_RATE); /* | */
+>  		hdr->rate = 5; /* txrate->bitrate / 5; */
+>  	}
+>  
+> @@ -127,8 +128,10 @@ struct tx_complete_mon_data {
+>  static void mgmt_tx_complete(void *priv, int status)
+>  {
+>  	struct tx_complete_mon_data *pv_data = priv;
+> -
+> -	/* incase of fully hosting mode, the freeing will be done in response to the cfg packet */
+> +	/*
+> +	 * in case of fully hosting mode, the freeing will be done
+> +	 * in response to the cfg packet
+> +	 */
+>  	kfree(pv_data->buff);
+>  
+>  	kfree(pv_data);
+> @@ -255,7 +258,8 @@ static const struct net_device_ops wilc_wfi_netdev_ops = {
+>   *  @date	12 JUL 2012
+>   *  @version	1.0
+>   */
+> -struct net_device *WILC_WFI_init_mon_interface(const char *name, struct net_device *real_dev)
+> +struct net_device *WILC_WFI_init_mon_interface(const char *name, struct net_device
+> +									*real_dev)
 
+The lines here are still over 80 characters.  checkpatch should have 
+complained.
+
+julia
+
+>  {
+>  	u32 ret = 0;
+>  	struct WILC_WFI_mon_priv *priv;
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/55e6d749e6540164f7e206c1eb7ddc17b30fa292.1457868804.git.anchalj109%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
