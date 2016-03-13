@@ -1,61 +1,61 @@
 X-GM-THRID: 6261584556721176576
-X-Received: by 10.107.150.133 with SMTP id y127mr15543346iod.34.1457890954029;
-        Sun, 13 Mar 2016 10:42:34 -0700 (PDT)
+X-Received: by 10.13.230.75 with SMTP id p72mr14711745ywe.45.1457890937464;
+        Sun, 13 Mar 2016 10:42:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.31.72 with SMTP id e66ls3894957qge.51.gmail; Sun, 13 Mar
- 2016 10:42:33 -0700 (PDT)
-X-Received: by 10.13.248.4 with SMTP id i4mr15091954ywf.20.1457890953492;
-        Sun, 13 Mar 2016 10:42:33 -0700 (PDT)
+Received: by 10.50.83.73 with SMTP id o9ls608144igy.5.gmail; Sun, 13 Mar 2016
+ 10:42:17 -0700 (PDT)
+X-Received: by 10.50.65.69 with SMTP id v5mr10008839igs.13.1457890937112;
+        Sun, 13 Mar 2016 10:42:17 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qg0-x244.google.com (mail-qg0-x244.google.com. [2607:f8b0:400d:c04::244])
-        by gmr-mx.google.com with ESMTPS id y131si1160767ywc.0.2016.03.13.10.42.33
+Received: from mail-qg0-x243.google.com (mail-qg0-x243.google.com. [2607:f8b0:400d:c04::243])
+        by gmr-mx.google.com with ESMTPS id i133si1019247ywe.7.2016.03.13.10.42.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 10:42:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) client-ip=2607:f8b0:400d:c04::244;
+        Sun, 13 Mar 2016 10:42:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::243 as permitted sender) client-ip=2607:f8b0:400d:c04::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::243 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x244.google.com with SMTP id t4so10776894qge.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 10:42:33 -0700 (PDT)
+Received: by mail-qg0-x243.google.com with SMTP id 14so10783332qgg.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 10:42:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=KcghdCHbaULttiGWgviN/wkJwTaeLIuVd+ldA7suOhc=;
-        b=Wnju2CgRy9JudrA21stWIk6uM3DNAi22ae5zx4xDbgUHEC+u6onjoN1VJsKlEi6n81
-         oZRW6D/GAiGgjbVlQPPLYORXJpZAa7FHWZ5FP+RMXsciSRC/tF1zVpDq+TavhHMp6pVg
-         tgNk2XfmpJFH9rgwD/O8MuYuoV8yWZU/ogsiGX4frDRZ468iPW54y77rA6xots4wxlJH
-         sVLd2ViC4kTbhbmpn+wkpe25QN5gyHcUERwBol2fSuyGPOcPXBViOPCek3wEIcSSpHl7
-         DvGCJfptAkmdL5L61xD4NG5N/rhEOIq79k0STEBhLRyubaU5Gobo/FkXw4iMohZ6UY2L
-         VClg==
+        bh=Aj3BCarGOT6C13FC0Pwf6kv3jco7BT1++oH4Q3l4cdY=;
+        b=ei4QMD5266OQu37rUugIna/PaTIdueqbqg38ck41VIU8kyWd/+lgflonUbwvRmP3as
+         QpRTa6xWxSPA/sCb/fkWYIugbYzS6sQZpY8efOoJInHFXCRdaDhH0kFCZE8etCW0Pls4
+         boOmUIo+HkXm2yI8cufEd0WBovEkfjruKMk5K90drb5OWdizVWbiAzPHZj3pP9oGmALd
+         /lTDy11ZT+jIxLc4tDpVS+jGofB6J5Qy+0lnwlFq5gRybbcjafx37COCfwzSaODf8kfI
+         Tp+SD1O6S5IwpTofYJFDHQAmCBgA7lTuw7bFaQHIlNV8rSEdx5KkCzk3bEmI1QLgcrJJ
+         4xNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=KcghdCHbaULttiGWgviN/wkJwTaeLIuVd+ldA7suOhc=;
-        b=UByyYN6RcdiTNlxoJeD6riy4u6CQwkg0n7D7PXS8vnr9Nh0HOsOQ31l4btb7a2RNBw
-         9MFXDqHNXu39PE1m0jmZJNt+IrPceZySaiGXhw0CXTxwsCs7vnAeCfc4KSTgLAcinVNJ
-         IjXu07aCSdOYynYD68Y8E35TQfL0C9dRZ/qVxmroj8UcR2ryOJWeEP544Vl0HMJqTB4j
-         ob158EmVWTPxCi+hPekpx4h6F6e7TpFhQRHZ7qXKcPnWpusUxTqHXU3tIpZTNbEbQF5x
-         I4J1kNUD5H5W5LKQvcna9RHS8BUnFvgIcDyfOzHzX3qc5nN6phr1+6ig3mwhmc16yl9t
-         UQXg==
-X-Gm-Message-State: AD7BkJKbuKLKk/Oze0tryN51+MiFWh6daj5xzasxeON6Qnd4xfBeQvQg09zxNg0kM645OA==
-X-Received: by 10.140.107.182 with SMTP id h51mr25022331qgf.53.1457890953194;
-        Sun, 13 Mar 2016 10:42:33 -0700 (PDT)
+        bh=Aj3BCarGOT6C13FC0Pwf6kv3jco7BT1++oH4Q3l4cdY=;
+        b=PTrIZes8e6M0qMRwMzludjyiVvYD3qJxZHIhZRc1tgQJPrnyt0cpLwKZuVXdPsSFMT
+         WhJf8IzCX8sXuw4UTiW5E6VyKfvxLKsIOr6NhfPnTtxfJfgIMU/Zpf0BZUJn9u9qapGf
+         wBVVSbWB8a3UP+ws444BGuUp7dwg9N9hzPF6Qt405Z570DrSgsWbKLLEZQJtM3U5uSlj
+         7LW77GEMau53De6pWUme9a4odN1aQWsAzwbi/kcI2LwO8o/l7ITWWLeMBhhmcPl8k44Y
+         sfnpxKV98lmYnQEULdRgiRbvwY8JoHUKLrgUkgQTD6il7nl11BRPhaDKyT5q8V7Zr9js
+         80Fg==
+X-Gm-Message-State: AD7BkJJgY5l9gHRfiACqW9JoxmzwXDqLHe4jfqufVb7Grmj9gJaFR18xgd6/SF/mN1fDFA==
+X-Received: by 10.140.97.202 with SMTP id m68mr24972655qge.102.1457890936791;
+        Sun, 13 Mar 2016 10:42:16 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
 Received: from spock ([2804:14d:ac80:19e9:b6b6:76ff:fe71:ca4b])
-        by smtp.gmail.com with ESMTPSA id s9sm8575878qks.42.2016.03.13.10.42.32
+        by smtp.gmail.com with ESMTPSA id h64sm8499533qgh.39.2016.03.13.10.42.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 10:42:32 -0700 (PDT)
-Date: Sun, 13 Mar 2016 14:42:30 -0300
+        Sun, 13 Mar 2016 10:42:16 -0700 (PDT)
+Date: Sun, 13 Mar 2016 14:42:13 -0300
 From: Juliana Rodrigues <juliana.orod@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 4/8] staging: dgnc: renames PrintName variable to avoid
- camelcase
-Message-ID: <ed58b2b7a35fa0edc9504e5c0b06e4cb6590b4a5.1457890698.git.juliana.orod@gmail.com>
+Subject: [PATCH v2 3/8] staging: dgnc: fixed multiple line over 80 characters
+ warning
+Message-ID: <a7633646502f8a4c6d05aca486077fd85620846a.1457890698.git.juliana.orod@gmail.com>
 References: <cover.1457890698.git.juliana.orod@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,48 +63,86 @@ Content-Disposition: inline
 In-Reply-To: <cover.1457890698.git.juliana.orod@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch fixes a checkpatch issue by
-renaming PrintName variable to print_name,
-avoiding camelcase.
-
-CHECK: Avoid CamelCase: <PrintName>
-+       char            PrintName[200];
+This patch fixes formatting for multiple lines that
+caused checkpatch.pl warnings.
 
 Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_driver.h | 2 +-
- drivers/staging/dgnc/dgnc_tty.c    | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/dgnc/dgnc_tty.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
-index b826e53..513a5ac 100644
---- a/drivers/staging/dgnc/dgnc_driver.h
-+++ b/drivers/staging/dgnc/dgnc_driver.h
-@@ -208,7 +208,7 @@ struct dgnc_board {
- 	struct tty_driver	serial_driver;
- 	char		serial_name[200];
- 	struct tty_driver	PrintDriver;
--	char		PrintName[200];
-+	char		print_name[200];
- 
- 	bool		dgnc_Major_Serial_Registered;
- 	bool		dgnc_Major_TransparentPrint_Registered;
 diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
-index 285a724..8a68fd8 100644
+index 2fe0d8c..285a724 100644
 --- a/drivers/staging/dgnc/dgnc_tty.c
 +++ b/drivers/staging/dgnc/dgnc_tty.c
-@@ -236,9 +236,9 @@ int dgnc_tty_register(struct dgnc_board *brd)
- 	 * we are when we get into the dgnc_tty_open() routine.
- 	 */
- 	brd->PrintDriver.magic = TTY_DRIVER_MAGIC;
--	snprintf(brd->PrintName, MAXTTYNAMELEN, "pr_dgnc_%d_", brd->boardnum);
-+	snprintf(brd->print_name, MAXTTYNAMELEN, "pr_dgnc_%d_", brd->boardnum);
+@@ -180,7 +180,8 @@ int dgnc_tty_register(struct dgnc_board *brd)
  
--	brd->PrintDriver.name = brd->PrintName;
-+	brd->PrintDriver.name = brd->print_name;
- 	brd->PrintDriver.name_base = 0;
- 	brd->PrintDriver.major = brd->serial_driver.major;
- 	brd->PrintDriver.minor_start = 0x80;
+ 	brd->serial_driver.magic = TTY_DRIVER_MAGIC;
+ 
+-	snprintf(brd->serial_name, MAXTTYNAMELEN, "tty_dgnc_%d_", brd->boardnum);
++	snprintf(brd->serial_name, MAXTTYNAMELEN, "tty_dgnc_%d_",
++		 brd->boardnum);
+ 
+ 	brd->serial_driver.name = brd->serial_name;
+ 	brd->serial_driver.name_base = 0;
+@@ -936,7 +937,8 @@ void dgnc_wakeup_writes(struct channel_t *ch)
+ 		if ((ch->ch_tun.un_tty->flags & (1 << TTY_DO_WRITE_WAKEUP)) &&
+ 		    ch->ch_tun.un_tty->ldisc->ops->write_wakeup) {
+ 			spin_unlock_irqrestore(&ch->ch_lock, flags);
+-			ch->ch_tun.un_tty->ldisc->ops->write_wakeup(ch->ch_tun.un_tty);
++			ch->ch_tun.un_tty->ldisc->ops->
++			    write_wakeup(ch->ch_tun.un_tty);
+ 			spin_lock_irqsave(&ch->ch_lock, flags);
+ 		}
+ 
+@@ -957,7 +959,8 @@ void dgnc_wakeup_writes(struct channel_t *ch)
+ 				 */
+ 				if (ch->ch_digi.digi_flags & DIGI_RTS_TOGGLE) {
+ 					ch->ch_mostat &= ~(UART_MCR_RTS);
+-					ch->ch_bd->bd_ops->assert_modem_signals(ch);
++					ch->ch_bd->bd_ops->
++					    assert_modem_signals(ch);
+ 				}
+ 
+ 				/*
+@@ -966,7 +969,8 @@ void dgnc_wakeup_writes(struct channel_t *ch)
+ 				 */
+ 				if (ch->ch_digi.digi_flags & DIGI_DTR_TOGGLE) {
+ 					ch->ch_mostat &= ~(UART_MCR_DTR);
+-					ch->ch_bd->bd_ops->assert_modem_signals(ch);
++					ch->ch_bd->bd_ops->
++					    assert_modem_signals(ch);
+ 				}
+ 			}
+ 		}
+@@ -978,7 +982,8 @@ void dgnc_wakeup_writes(struct channel_t *ch)
+ 		if ((ch->ch_pun.un_tty->flags & (1 << TTY_DO_WRITE_WAKEUP)) &&
+ 		    ch->ch_pun.un_tty->ldisc->ops->write_wakeup) {
+ 			spin_unlock_irqrestore(&ch->ch_lock, flags);
+-			ch->ch_pun.un_tty->ldisc->ops->write_wakeup(ch->ch_pun.un_tty);
++			ch->ch_pun.un_tty->ldisc->ops->
++			    write_wakeup(ch->ch_pun.un_tty);
+ 			spin_lock_irqsave(&ch->ch_lock, flags);
+ 		}
+ 
+@@ -2720,13 +2725,15 @@ static int dgnc_tty_ioctl(struct tty_struct *tty, unsigned int cmd,
+ 				if (ch->ch_tun.un_flags & (UN_LOW|UN_EMPTY)) {
+ 					ch->ch_tun.un_flags &=
+ 						~(UN_LOW|UN_EMPTY);
+-					wake_up_interruptible(&ch->ch_tun.un_flags_wait);
++					wake_up_interruptible(&ch->
++					   ch_tun.un_flags_wait);
+ 				}
+ 
+ 				if (ch->ch_pun.un_flags & (UN_LOW|UN_EMPTY)) {
+ 					ch->ch_pun.un_flags &=
+ 						~(UN_LOW|UN_EMPTY);
+-					wake_up_interruptible(&ch->ch_pun.un_flags_wait);
++					wake_up_interruptible(&ch->
++					   ch_pun.un_flags_wait);
+ 				}
+ 			}
+ 		}
 -- 
 2.7.2
 
