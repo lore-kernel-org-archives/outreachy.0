@@ -1,105 +1,76 @@
 X-GM-THRID: 6261499450444742656
-X-Received: by 10.13.235.144 with SMTP id u138mr14464177ywe.21.1457879220172;
-        Sun, 13 Mar 2016 07:27:00 -0700 (PDT)
+X-Received: by 10.107.157.10 with SMTP id g10mr14925130ioe.28.1457879112045;
+        Sun, 13 Mar 2016 07:25:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.133.14 with SMTP id h14ls1228405iod.78.gmail; Sun, 13 Mar
- 2016 07:26:59 -0700 (PDT)
-X-Received: by 10.66.124.200 with SMTP id mk8mr14485589pab.27.1457879219854;
-        Sun, 13 Mar 2016 07:26:59 -0700 (PDT)
+Received: by 10.140.85.135 with SMTP id n7ls3848931qgd.10.gmail; Sun, 13 Mar
+ 2016 07:25:11 -0700 (PDT)
+X-Received: by 10.129.39.146 with SMTP id n140mr14087106ywn.22.1457879111336;
+        Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
 Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id sf5si2635608pac.1.2016.03.13.07.26.59
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id y20si2478974pfa.2.2016.03.13.07.25.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 07:26:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id n5so78608398pfn.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 07:26:59 -0700 (PDT)
+Received: by mail-pf0-x235.google.com with SMTP id x3so23284127pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=ywPxRcBzbiptCqFPlcPKczH5lva4rAJDtUu08emgE6Y=;
-        b=s6ula9tQfkbQ+DtyDuARqcLpzlXx0t2XF7EG612wYbbMN3VGDdAO7pVshNLKvZ6iyc
-         qRmVa1TG1ljghQGGi3Th9p6/cGZdZ4iz+y8WyGULTT99cvrndyoxmdt+L53lMbHPU6Q7
-         Y2Kk9Q1uF+JyD4en0AU/xJ4szmdCldrd7fcybT2A69UEc7XFBgNzw1AwrXxfrUrL9O9G
-         N0C1J2UOGHlKKz1OfTljaxkVsai3fbe9FpA+5eSXKIXi8NcPOXkSxPHZamAb8ibixmlc
-         o/xMhg4f7FpJffSPOlS8Ozv/+sVlTFBQz8MfzK65K2KRDY9PqmsmxMvCmkBFFl97V+Qc
-         h6Fg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=L1/QQTjFyAHGqlHwiXhTCXSyNkrIJS6hIcOYXaIz5c0=;
+        b=nlD9mka7I6xe2WRFT/z+yg4CX0F1+fM0NProebJ2JFUJzqwskhU9CXlD7lb4b2atbn
+         M2eI18Xu9EJcKP3gR2X0XTxUreXzIq+2lHRXvFUXlK8W/oBizjm07wjTUMWFwJTHjFm0
+         B/tSPYKoKpyY8EochWLyKwugg3Dsx4OkfiidPU3MHvXxNr31zov/dE1x0LRZPr7pP2sf
+         XUk+fDu995IDdxndxIaaR9U5wpgSvrSHkvhzb+GwTiR2Pvt7SCPGdiv9FQQNLQuPYLKx
+         m7c9g39aycPUxfL1K1uKp0TKyLNYbiOvON8HExm0rX+33015WzOfPJuVUJddXcfqeSCt
+         JEFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=ywPxRcBzbiptCqFPlcPKczH5lva4rAJDtUu08emgE6Y=;
-        b=f2MSB1e2qt7quXLavzTl4qz8nSGihuEFlMhEzzn+/dkUd0XujFcmx4apjGlzm6wq3L
-         ucYMOAc0hJpf9RhqOwyZXOzNHQvw7o19Exd5oaoVbN0KcVooYunzoV6vZra3BYanE4DC
-         /5Vn9c3YRvw1YYRxq3gxSIRXXh4sqlzFm2ArlI76zcD5wbS/KRPlKaCxknZFSipjtU44
-         MNPtXXEu6Zd12SEVSt2jSAc83HNjIBYrDidR0KWrGhcJiTJErVfRsYo9/Rzm+0W+rhcM
-         WLKQecvAP11qS5Hgf5Bl/c0I24Jb5NXlgdEvsp/u0Izg2B99HTgNBJbdr2VcRFGqa8Vh
-         HwOg==
-X-Gm-Message-State: AD7BkJLL/sxpb2loYOTwk87sbOcGCL1pUrn31q6AKwqaRVVNzgyS0XRs1Y0cBeeMaGl4oA==
-X-Received: by 10.98.67.67 with SMTP id q64mr23059686pfa.44.1457879219744;
-        Sun, 13 Mar 2016 07:26:59 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=L1/QQTjFyAHGqlHwiXhTCXSyNkrIJS6hIcOYXaIz5c0=;
+        b=RMWGtPRrnmcH3bO1rDxTjsaoaciCqaSBI2C3EihofQx69hTG42S41qrmHb2wJk07Lz
+         grrFYSFtr3pG2E6I6IbxLsdyGcKIGV70SwNSUowL2qQuKHwV6nsUwtz062eQ2CyCpZGu
+         GknCe9XsEn+SAAJJeDUgTmqZ9RgA1zzah9Pa/JpaRkBNxlVAKJn7BuorvTr22az16C8u
+         zktmzkCIYY7C6FnWEUwhjBc+HleFXdqIQ20xjfWiCqJipkZRU/BFsm3hBIWEn8wX53ZM
+         jrBhivTFy+OswvV7H5kn62BtP1GnCWnled9GgOv5akhFpdkz3O1+G2toqq+zS8goEzf9
+         g7Zg==
+X-Gm-Message-State: AD7BkJL0YKV9A25kMhXr6ukPSki5z8D3RQOdDlJ4+IpaehgIH4fGNiTwayBZ3h8R1mJ2CA==
+X-Received: by 10.98.33.74 with SMTP id h71mr22284596pfh.157.1457879111164;
+        Sun, 13 Mar 2016 07:25:11 -0700 (PDT)
 Return-Path: <anchalj109@gmail.com>
 Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id e1sm25652076pas.1.2016.03.13.07.26.56
+        by smtp.gmail.com with ESMTPSA id yx4sm25662656pac.5.2016.03.13.07.25.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 07:26:59 -0700 (PDT)
-Date: Sun, 13 Mar 2016 19:56:44 +0530
+        Sun, 13 Mar 2016 07:25:10 -0700 (PDT)
+Date: Sun, 13 Mar 2016 19:55:00 +0530
 From: Anchal Jain <anchalj109@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/2] staging: wilc1000: Remove camel case in variable
- names.
-Message-ID: <54565b086bac8ca4e67a4b9eed2957d8dd20ebbf.1457878893.git.anchalj109@gmail.com>
-References: <cover.1457878893.git.anchalj109@gmail.com>
+Subject: [PATCH v2 0/2] Fix multiple warnings
+Message-ID: <cover.1457878893.git.anchalj109@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1457878893.git.anchalj109@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove a check detect by checkpatch.pl
+This patchset updates the wilc1000 driver in order to fix several
+checkpatch issues detected in the source code.
 
-CHECK: Avoid CamelCase: <srcAdd>
+Anchal Jain (2):
+  staging: wilc1000: Remove camel case in variable names.
+  staging: drivers: Fix lines over 80 characters
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
- drivers/staging/wilc1000/linux_mon.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/wilc1000/linux_mon.c | 24 ++++++++++++++----------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/linux_mon.c b/drivers/staging/wilc1000/linux_mon.c
-index 7d9e5de..fd25116 100644
---- a/drivers/staging/wilc1000/linux_mon.c
-+++ b/drivers/staging/wilc1000/linux_mon.c
-@@ -24,7 +24,7 @@ struct wilc_wfi_radiotap_cb_hdr {
- 
- static struct net_device *wilc_wfi_mon; /* global monitor netdev */
- 
--static u8 srcAdd[6];
-+static u8 srcadd[6];
- static u8 bssid[6];
- static u8 broadcast[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
- /**
-@@ -225,11 +225,11 @@ static netdev_tx_t WILC_WFI_mon_xmit(struct sk_buff *skb,
- 	skb->dev = mon_priv->real_ndev;
- 
- 	/* Identify if Ethernet or MAC header (data or mgmt) */
--	memcpy(srcAdd, &skb->data[10], 6);
-+	memcpy(srcadd, &skb->data[10], 6);
- 	memcpy(bssid, &skb->data[16], 6);
- 	/* if source address and bssid fields are equal>>Mac header */
- 	/*send it to mgmt frames handler */
--	if (!(memcmp(srcAdd, bssid, 6))) {
-+	if (!(memcmp(srcadd, bssid, 6))) {
- 		ret = mon_mgmt_tx(mon_priv->real_ndev, skb->data, skb->len);
- 		if (ret)
- 			netdev_err(dev, "fail to mgmt tx\n");
 -- 
 1.9.1
 
