@@ -1,109 +1,82 @@
-X-GM-THRID: 6255240003773792256
-X-Received: by 10.13.248.4 with SMTP id i4mr40881395ywf.20.1456411556766;
-        Thu, 25 Feb 2016 06:45:56 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.31.117 with SMTP id e108ls417496qge.77.gmail; Thu, 25 Feb
- 2016 06:45:56 -0800 (PST)
-X-Received: by 10.140.19.4 with SMTP id 4mr13782779qgg.29.1456411556279;
-        Thu, 25 Feb 2016 06:45:56 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id yd9si1224733pab.1.2016.02.25.06.45.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:45:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id x65so33901971pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:45:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=yVoR1ahyA704ARUgJxtc9tX9Itadv2+JhswXqf4jO4o=;
-        b=oHlL6reX3YHUMjMtmQXTOQksZwYaaMwVK1vvaBDcrrMcInOGEWn4obpBMHddy1TC7B
-         +J5/CLcQVYm84DbFjsJSp+GoiqBjN7Hqx+mXxKSxvBn4b8zEdAxk9lUWlbSRx8jBCQO7
-         u28kzqxum14JeQTV8RrUlksqzLuqzwpTK+fptOte9OyITxceFYw5SjHe8QH7j9cRzxmL
-         CD4IvQ+eFpcUNVtZhXiZs12vyeqAFntxYjPA/pLcL6BSDgpJhgi1wgjd7zrh3MEFlmVQ
-         cCwmXBiu796aLQjMueZbSrd+sT66FZ1q7LvRtjHgrMJtfCixy2Hw6mI6G7UQO0ZjCa0O
-         ePcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=yVoR1ahyA704ARUgJxtc9tX9Itadv2+JhswXqf4jO4o=;
-        b=Uj5HEP/3541uoF+xZtIbUPjeHkZ60B4LzEuq6cWLb3UOIGKu6+qsG5H5vLON0QS6Y2
-         4tG98ohXwRzOC8Gch0G/30vO2B1xdZkdEMTTxdGcobfUQt1e3bHfON0PZGOvM1CYDy85
-         t0ZIb00Bv5xBoga6UVy2h24X3kzOaudpfEIkL5PUK3xpVqb247q3OeZ9v0emleY1Obn3
-         FdX4gnOO4bB2WgD2tf8zgpR9EmuM+KaUtzmSt9Hosgpg8vmGy+D7Uk03WbcVmWh6uLAF
-         HnQ40y7Iu3wdPALCYKDrE+DjT+P54RCxzB49gr08bjFn27Qmc2ne6uuMjcK2Kzlyekz/
-         Y+5Q==
-X-Gm-Message-State: AG10YOS1Q6PyYGlSihcofz8tejtj1TLYyQKEsh7C9cpoxDOQuuJYBkaMA7CAJYSDYa/v7Q==
-X-Received: by 10.98.64.4 with SMTP id n4mr63099685pfa.58.1456411556041;
-        Thu, 25 Feb 2016 06:45:56 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.179.114])
-        by smtp.gmail.com with ESMTPSA id 1sm12895803pfm.10.2016.02.25.06.45.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 06:45:55 -0800 (PST)
-Date: Thu, 25 Feb 2016 20:15:50 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fsl-mc: bus: Use devm_kcalloc instead of
- devm_kzalloc
-Message-ID: <20160225144550.GA30383@amitoj-Inspiron-3542>
+X-GM-THRID: 6261299365460049920
+Date: Sat, 12 Mar 2016 16:55:59 -0800 (PST)
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: juliana.orod@gmail.com
+Message-Id: <b90cd50e-068e-4030-9404-1877c9ee46de@googlegroups.com>
+In-Reply-To: <20160313002923.GC4420@kroah.com>
+References: <20160312223913.GA17803@spock>
+ <20160313002923.GC4420@kroah.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: android: binder: fixed
+ checkpatch warning
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1860_1114114005.1457830559930"
+X-Google-Token: EJ_1krcFfHBUHrU9skI0
+X-Google-IP: 191.191.241.196
 
-Replace devm_kzalloc with devm_kcalloc to ensure there are no integer
-overflows from the multiplication of a number * sizeof.
+------=_Part_1860_1114114005.1457830559930
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1861_1180062477.1457830559930"
 
-The following Coccinelle semantic patch was used to make this change:
-//<smpl>
-@@
-expression dev,E1,E2,E3;
-@@
-- devm_kzalloc(dev,E1*sizeof(E2),E3)
-+ devm_kcalloc(dev,E1,sizeof(E2),E3)
-//</smpl>
+------=_Part_1861_1180062477.1457830559930
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/fsl-mc/bus/mc-allocator.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+oh sorry, i didnt know ):=20
 
-diff --git a/drivers/staging/fsl-mc/bus/mc-allocator.c b/drivers/staging/fsl-mc/bus/mc-allocator.c
-index 86f8543..f3d34be 100644
---- a/drivers/staging/fsl-mc/bus/mc-allocator.c
-+++ b/drivers/staging/fsl-mc/bus/mc-allocator.c
-@@ -491,9 +491,8 @@ int fsl_mc_populate_irq_pool(struct fsl_mc_bus *mc_bus,
- 	if (error < 0)
- 		return error;
- 
--	irq_resources = devm_kzalloc(&mc_bus_dev->dev,
--				     sizeof(*irq_resources) * irq_count,
--				     GFP_KERNEL);
-+	irq_resources = devm_kcalloc(&mc_bus_dev->dev, irq_count,
-+				     sizeof(*irq_resources), GFP_KERNEL);
- 	if (!irq_resources) {
- 		error = -ENOMEM;
- 		goto cleanup_msi_irqs;
-@@ -596,7 +595,7 @@ int __must_check fsl_mc_allocate_irqs(struct fsl_mc_device *mc_dev)
- 		return -ENOSPC;
- 	}
- 
--	irqs = devm_kzalloc(&mc_dev->dev, irq_count * sizeof(irqs[0]),
-+	irqs = devm_kcalloc(&mc_dev->dev, irq_count, sizeof(irqs[0]),
- 			    GFP_KERNEL);
- 	if (!irqs)
- 		return -ENOMEM;
--- 
-1.9.1
+Em s=C3=A1bado, 12 de mar=C3=A7o de 2016 21:45:24 UTC-3, gregkh escreveu:
+>
+> On Sat, Mar 12, 2016 at 07:39:13PM -0300, Juliana Rodrigues wrote:=20
+> > A comment was not properly formatted, causing warnings when running=20
+> checkpatch.pl.=20
+> >=20
+> > Signed-off-by: Juliana Rodrigues <julian...@gmail.com <javascript:>>=20
+> > ---=20
+> >  drivers/android/binder.c | 10 ++++++----=20
+>
+> I can't take outreachy patches for anything outside of drivers/staging/=
+=20
+> why are you making changes in drivers/android?=20
+>
+> sorry,=20
+>
+> greg k-h=20
+>
 
+------=_Part_1861_1180062477.1457830559930
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">oh sorry, i didnt know ):=C2=A0<br><br>Em s=C3=A1bado, 12 =
+de mar=C3=A7o de 2016 21:45:24 UTC-3, gregkh  escreveu:<blockquote class=3D=
+"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc s=
+olid;padding-left: 1ex;">On Sat, Mar 12, 2016 at 07:39:13PM -0300, Juliana =
+Rodrigues wrote:
+<br>&gt; A comment was not properly formatted, causing warnings when runnin=
+g <a href=3D"http://checkpatch.pl" target=3D"_blank" rel=3D"nofollow" onmou=
+sedown=3D"this.href=3D&#39;http://www.google.com/url?q\75http%3A%2F%2Fcheck=
+patch.pl\46sa\75D\46sntz\0751\46usg\75AFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#3=
+9;;return true;" onclick=3D"this.href=3D&#39;http://www.google.com/url?q\75=
+http%3A%2F%2Fcheckpatch.pl\46sa\75D\46sntz\0751\46usg\75AFQjCNGoRgUgHq29dhm=
+k72L974NI3_mFug&#39;;return true;">checkpatch.pl</a>.
+<br>&gt;=20
+<br>&gt; Signed-off-by: Juliana Rodrigues &lt;<a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"cVBwxf7QCgAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">julian...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/android/binder.c | 10 ++++++----
+<br>
+<br>I can&#39;t take outreachy patches for anything outside of drivers/stag=
+ing/
+<br>why are you making changes in drivers/android?
+<br>
+<br>sorry,
+<br>
+<br>greg k-h
+<br></blockquote></div>
+------=_Part_1861_1180062477.1457830559930--
+
+------=_Part_1860_1114114005.1457830559930--
 
