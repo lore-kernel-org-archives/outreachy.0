@@ -1,61 +1,61 @@
 X-GM-THRID: 6261499450444742656
-X-Received: by 10.66.246.170 with SMTP id xx10mr13708973pac.13.1457869118842;
-        Sun, 13 Mar 2016 04:38:38 -0700 (PDT)
+X-Received: by 10.50.65.69 with SMTP id v5mr8964473igs.13.1457868955941;
+        Sun, 13 Mar 2016 04:35:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.7.71 with SMTP id h7ls611747iga.16.canary; Sun, 13 Mar 2016
- 04:38:38 -0700 (PDT)
-X-Received: by 10.107.16.34 with SMTP id y34mr14268895ioi.4.1457869118553;
-        Sun, 13 Mar 2016 04:38:38 -0700 (PDT)
+Received: by 10.107.157.134 with SMTP id g128ls1716319ioe.45.gmail; Sun, 13
+ Mar 2016 04:35:55 -0700 (PDT)
+X-Received: by 10.98.42.67 with SMTP id q64mr11243071pfq.9.1457868955710;
+        Sun, 13 Mar 2016 04:35:55 -0700 (PDT)
 Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id y20si2409355pfa.2.2016.03.13.04.38.38
+Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
+        by gmr-mx.google.com with ESMTPS id ui7si2564073pab.0.2016.03.13.04.35.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 04:38:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        Sun, 13 Mar 2016 04:35:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id x3so21871939pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 04:38:38 -0700 (PDT)
+Received: by mail-pa0-x22a.google.com with SMTP id tt10so135612506pab.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 04:35:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=hxM1OC9Jo2Om2agjf8K0QTZq7YX2JpoJ4SYfR2FQn8I=;
-        b=FksCNUOnPvPqrcUZNFIFqtK9aQ6ld6WGrJHKp7b0EPerZhoeZwR1mxUPAjhUYjbBJS
-         qMBT97rjrp31k8EmGYkq5WfkmI2270ophoiSK5VEN92lXFeE63xG509TJmDit98h6awu
-         Y98lG3cJg/gwul0k3CIFr84h9Cj5Ff4HR2Kf0zkOtTptT4S7wOg2qYJrVUw1hPTG4Zwp
-         QIU35DXBvuqxq0RZSqvwcS0rw1jKt9v2vrrv3eYn1HXtATE3TG02dFyeCnqk5w2yQ1Nh
-         N7+a2BKPH32205CwpViVEdeQsZYVb7glO8qC2y66cx+I0Gv0uUWjXA5mYLCkePp+EkQ8
-         Zn6A==
+        bh=ywPxRcBzbiptCqFPlcPKczH5lva4rAJDtUu08emgE6Y=;
+        b=xpAaJFWCoUayM17TzKZI6J6jpRMf3uKvvi3JFQuXBXQbWjahGfFbzRBw2s3XvOpxgf
+         TAKddEcyjzb1MZ9YAhjLgSgtBtiq+6HRWYinQPu3BlL3nyNOJUHvBQor55gd2ZlOLrBY
+         ErNI6uy+2fl5G6RYOAqSmamenylJuBz5c0GTbsyt4y3KpUgXlrCcTE7HOmiljFdtzJt+
+         UqKNHilaXPn8ujkmDJmugH0fSZri6Kp0GkK4Zlw13Uc9fI1on6Zi/hPpwTVuV+EkFGbN
+         reXqQ7RkTiq+XShfa9p8H8SWhDFDNCxdg/N8apthfGP+95yE/D8Mo02in/6ZRokk0939
+         PCpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=hxM1OC9Jo2Om2agjf8K0QTZq7YX2JpoJ4SYfR2FQn8I=;
-        b=a+he5FkfznND7JiqHLFuaNGsnsfThBYVrlH5iCTq6D9btpp0uzRgDFovwVSPIMq2+r
-         n/IxZBERfTjMzuD9EV5TSCb1RKXIua3qj0aXG9406Jl7iROlB09aKrsdZkeRApr77hVk
-         85aneOR5BaScCIgAP3XUTtXoJ9gL+ZpPhXT0siKSLaTsJ1SCiZ3JMxS8+6ElAy6NEASd
-         Cqa6LUQFFBY/iwvtIK41EcA/DnuHRaWgbgMKEoowu0K+XYJSIZNCeXLOd8S5uVEfT13L
-         qUX/3A7FciDTcHe2wkOw0qXMLCPXrHXdLr/6fjCj4s9aqoV6tr+JaZvN42qJJwTuLMv+
-         0EPQ==
-X-Gm-Message-State: AD7BkJIY1eBELhUGoHf9aQfGxW5KbAHXbIC5f/kKvTr3n6AfOBUJOzSCE1Z/k6IvFDu3fA==
-X-Received: by 10.98.42.211 with SMTP id q202mr21512960pfq.13.1457869118391;
-        Sun, 13 Mar 2016 04:38:38 -0700 (PDT)
+        bh=ywPxRcBzbiptCqFPlcPKczH5lva4rAJDtUu08emgE6Y=;
+        b=Lm/3D0s6FylAPastL0eMzYZrZq5VtaRtSSYVn2flartUT6W3m4qnvK0IM9JU8tEF9W
+         9YPDBE95zsy3t+YQSecW38jl+zKOhEOpp93XazQCsE17kvWwwIjcWo2/jcWH4kXo1Lva
+         hOrwvnaPyZogJXI8/Fnfv1jVehl94v9LhfDq9Li/FCh7pFSHQS3PK5dQmL8lWn/JhhAm
+         1JpX7cz/C3LRwQ/fyxLa/SLszg6yRS/0ZTbEtDwrj1kbDbSr5tp6Ag9jqtaqZ4HJL/zx
+         c2soD4K9vKKH2wdMzhPyUPQk6EWvGJBWWpe9LDozvNYITbuOOsK67Lo1rRKqLLzYayWr
+         n61A==
+X-Gm-Message-State: AD7BkJKUgyosXiN/TmOhmgz0MYI7GBJDPnZtBBHxYo5z2s+UBzvy3sOLs+TBYHp7nXWmsg==
+X-Received: by 10.67.5.68 with SMTP id ck4mr29316821pad.3.1457868955588;
+        Sun, 13 Mar 2016 04:35:55 -0700 (PDT)
 Return-Path: <anchalj109@gmail.com>
 Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id c9sm24827589pfd.90.2016.03.13.04.37.57
+        by smtp.gmail.com with ESMTPSA id e87sm24852220pfb.76.2016.03.13.04.35.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 04:38:37 -0700 (PDT)
-Date: Sun, 13 Mar 2016 17:07:50 +0530
+        Sun, 13 Mar 2016 04:35:55 -0700 (PDT)
+Date: Sun, 13 Mar 2016 17:05:47 +0530
 From: Anchal Jain <anchalj109@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: drivers: Fix lines over 80 characters
-Message-ID: <55e6d749e6540164f7e206c1eb7ddc17b30fa292.1457868804.git.anchalj109@gmail.com>
+Subject: [PATCH 1/2] staging: wilc1000: Remove camel case in variable names.
+Message-ID: <54565b086bac8ca4e67a4b9eed2957d8dd20ebbf.1457868804.git.anchalj109@gmail.com>
 References: <cover.1457868804.git.anchalj109@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,64 +63,42 @@ Content-Disposition: inline
 In-Reply-To: <cover.1457868804.git.anchalj109@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Break lines so that they do not exceed 80
-characters. Problem found using checkpatch.
+Remove a check detect by checkpatch.pl
+
+CHECK: Avoid CamelCase: <srcAdd>
 
 Signed-off-by: Anchal Jain <anchalj109@gmail.com>
 ---
- drivers/staging/wilc1000/linux_mon.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
+ drivers/staging/wilc1000/linux_mon.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/wilc1000/linux_mon.c b/drivers/staging/wilc1000/linux_mon.c
-index fd25116..0d79a61 100644
+index 7d9e5de..fd25116 100644
 --- a/drivers/staging/wilc1000/linux_mon.c
 +++ b/drivers/staging/wilc1000/linux_mon.c
-@@ -59,9 +59,10 @@ void WILC_WFI_monitor_rx(u8 *buff, u32 size)
+@@ -24,7 +24,7 @@ struct wilc_wfi_radiotap_cb_hdr {
  
- 	/* Get WILC header */
- 	memcpy(&header, (buff - HOST_HDR_OFFSET), HOST_HDR_OFFSET);
--
--	/* The packet offset field conain info about what type of managment frame */
--	/* we are dealing with and ack status */
-+	/*
-+	 * The packet offset field contains info about what type of management
-+	 * the frame we are dealing with and ack status
-+	 */
- 	pkt_offset = GET_PKT_OFFSET(header);
+ static struct net_device *wilc_wfi_mon; /* global monitor netdev */
  
- 	if (pkt_offset & IS_MANAGMEMENT_CALLBACK) {
-@@ -105,7 +106,7 @@ void WILC_WFI_monitor_rx(u8 *buff, u32 size)
- 		hdr->hdr.it_version = 0; /* PKTHDR_RADIOTAP_VERSION; */
- 		hdr->hdr.it_len = cpu_to_le16(sizeof(struct wilc_wfi_radiotap_hdr));
- 		hdr->hdr.it_present = cpu_to_le32
--				(1 << IEEE80211_RADIOTAP_RATE);                   /* | */
-+				(1 << IEEE80211_RADIOTAP_RATE); /* | */
- 		hdr->rate = 5; /* txrate->bitrate / 5; */
- 	}
+-static u8 srcAdd[6];
++static u8 srcadd[6];
+ static u8 bssid[6];
+ static u8 broadcast[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+ /**
+@@ -225,11 +225,11 @@ static netdev_tx_t WILC_WFI_mon_xmit(struct sk_buff *skb,
+ 	skb->dev = mon_priv->real_ndev;
  
-@@ -127,8 +128,10 @@ struct tx_complete_mon_data {
- static void mgmt_tx_complete(void *priv, int status)
- {
- 	struct tx_complete_mon_data *pv_data = priv;
--
--	/* incase of fully hosting mode, the freeing will be done in response to the cfg packet */
-+	/*
-+	 * in case of fully hosting mode, the freeing will be done
-+	 * in response to the cfg packet
-+	 */
- 	kfree(pv_data->buff);
- 
- 	kfree(pv_data);
-@@ -255,7 +258,8 @@ static const struct net_device_ops wilc_wfi_netdev_ops = {
-  *  @date	12 JUL 2012
-  *  @version	1.0
-  */
--struct net_device *WILC_WFI_init_mon_interface(const char *name, struct net_device *real_dev)
-+struct net_device *WILC_WFI_init_mon_interface(const char *name, struct net_device
-+									*real_dev)
- {
- 	u32 ret = 0;
- 	struct WILC_WFI_mon_priv *priv;
+ 	/* Identify if Ethernet or MAC header (data or mgmt) */
+-	memcpy(srcAdd, &skb->data[10], 6);
++	memcpy(srcadd, &skb->data[10], 6);
+ 	memcpy(bssid, &skb->data[16], 6);
+ 	/* if source address and bssid fields are equal>>Mac header */
+ 	/*send it to mgmt frames handler */
+-	if (!(memcmp(srcAdd, bssid, 6))) {
++	if (!(memcmp(srcadd, bssid, 6))) {
+ 		ret = mon_mgmt_tx(mon_priv->real_ndev, skb->data, skb->len);
+ 		if (ret)
+ 			netdev_err(dev, "fail to mgmt tx\n");
 -- 
 1.9.1
 
