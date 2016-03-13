@@ -1,69 +1,121 @@
-X-GM-THRID: 6203907014219792384
-X-Received: by 10.182.106.228 with SMTP id gx4mr14315716obb.34.1444459663596;
-        Fri, 09 Oct 2015 23:47:43 -0700 (PDT)
+X-GM-THRID: 6261344132026859520
+X-Received: by 10.66.55.74 with SMTP id q10mr12994850pap.12.1457842419928;
+        Sat, 12 Mar 2016 20:13:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.199.73 with SMTP id ji9ls858900obc.45.gmail; Fri, 09 Oct
- 2015 23:47:42 -0700 (PDT)
-X-Received: by 10.182.128.101 with SMTP id nn5mr14420088obb.31.1444459662211;
-        Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id pe1si560709pac.2.2015.10.09.23.47.42
+Received: by 10.50.79.197 with SMTP id l5ls495811igx.31.gmail; Sat, 12 Mar
+ 2016 20:13:39 -0800 (PST)
+X-Received: by 10.107.11.104 with SMTP id v101mr13183960ioi.13.1457842419120;
+        Sat, 12 Mar 2016 20:13:39 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h69si1158754pfj.0.2016.03.12.20.13.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Sat, 12 Mar 2016 20:13:38 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id hy16so106225832pad.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=uGgNspwQGPIoxxUSzDxJgshcSXK4PngAn3bTTLAogaw=;
-        b=mYhNt9F4yUdHtmat4bniiIFcv6coU33wgBUoBZ5l+y/dmMhOFtkNMZcHRuLcay7tqg
-         NNClmos4YXBC6et6+GJlZkoDnIEanPYmaDKXIuwenvPh/EiS8ILOj8sukEd/6TuAXD3E
-         LHlkfvT1Nk69ARSm3WUNPYKe6wWG0MZX6xX4jkgnkHO1R8B3JdRXnt7ZS4MjFb1sHVfl
-         aq2U0dKXTHtDb1ZYXqfUvDT0uwjBzhz9voCImjtvzIooI4lJeUBBlygSZhdPcen2g9Fp
-         7+NHMbWV68H1uG/pU5RtPe/Y+4XrTXm0X68X6JYS/0CjY/cC1KekRydkbnsafSqa0Pkz
-         zMQg==
-X-Received: by 10.66.191.131 with SMTP id gy3mr20135733pac.113.1444459662084;
-        Fri, 09 Oct 2015 23:47:42 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id xa4sm6177756pac.28.2015.10.09.23.47.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Oct 2015 23:47:41 -0700 (PDT)
-Date: Sat, 10 Oct 2015 12:17:27 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] Fixed coding style issues
-Message-ID: <cover.1444459442.git.shivanib134@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,328,1454972400"; 
+   d="scan'208";a="207448641"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2016 05:13:36 +0100
+Date: Sun, 13 Mar 2016 05:13:35 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Juliana Rodrigues <juliana.orod@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: fixed spaces before
+ and after "|" in dgnc_cls.c
+In-Reply-To: <1457842288.12864.0.camel@gmail.com>
+Message-ID: <alpine.DEB.2.02.1603130512270.2069@localhost6.localdomain6>
+References: <20160313013258.GA17143@spock>  <alpine.DEB.2.02.1603130440130.2069@localhost6.localdomain6> <1457842288.12864.0.camel@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-1037181802-1457842416=:2069"
 
-Fixed warnings and errors generated by checkpatch about 
-missing/extra characters.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-After applying this patch, 1 error and 2 warnings don't show up
-in the file.
+--8323328-1037181802-1457842416=:2069
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Shivani Bhardwaj (2):
-  Staging: vt6655: rxtx: Removed unnecessary space character
-  Staging: vt6655: rxtx: Removed unnecessary parentheses
 
- drivers/staging/vt6655/rxtx.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
--- 
-2.1.0
+On Sun, 13 Mar 2016, Juliana Rodrigues wrote:
 
+> Em Dom, 2016-03-13 às 04:40 +0100, Julia Lawall escreveu:
+> > 
+> > On Sat, 12 Mar 2016, Juliana Rodrigues wrote:
+> > 
+> > > This patch fixes the following issue while maintains 80 characters
+> > per line:
+> > > 
+> > > CHECK: spaces preferred around that '|' (ctx:VxV)
+> > > +      
+> > writeb((UART_FCR_ENABLE_FIFO|UART_FCR_CLEAR_RCVR|UART_FCR_CLEAR_XMIT)
+> > ,
+> > > 
+> > > Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+> > > ---
+> > >  drivers/staging/dgnc/dgnc_cls.c | 6 ++++--
+> > >  1 file changed, 4 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/dgnc/dgnc_cls.c
+> > b/drivers/staging/dgnc/dgnc_cls.c
+> > > index 51db98b..6e1e475 100644
+> > > --- a/drivers/staging/dgnc/dgnc_cls.c
+> > > +++ b/drivers/staging/dgnc/dgnc_cls.c
+> > > @@ -1168,8 +1168,10 @@ static void cls_uart_init(struct channel_t
+> > *ch)
+> > >       /* Clear out UART and FIFO */
+> > >       readb(&ch->ch_cls_uart->txrx);
+> > >  
+> > >
+> > -     writeb((UART_FCR_ENABLE_FIFO|UART_FCR_CLEAR_RCVR|UART_FCR_CLEAR
+> > _XMIT),
+> > > -            &ch->ch_cls_uart->isr_fcr);
+> > > +     writeb((UART_FCR_ENABLE_FIFO |
+> > > +             UART_FCR_CLEAR_RCVR  |
+> > > +             UART_FCR_CLEAR_XMIT),
+> > 
+> > It doesn't fit on one line any more?  Note that the () around the
+> > first 
+> > argument are not necessary either, if that would help to get it to
+> > fit 
+> > into one line.
+> > 
+> > julia
+> > 
+> > > +             &ch->ch_cls_uart->isr_fcr);
+> > >       udelay(10);
+> > >  
+> > >       ch->ch_flags |= (CH_FIFO_ENABLED | CH_TX_FIFO_EMPTY |
+> > CH_TX_FIFO_LWM);
+> > > -- 
+> > > 2.7.2
+> > > 
+> > > -- 
+> > > You received this message because you are subscribed to the Google
+> > Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it,
+> > send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.
+> > com.
+> > > To view this discussion on the web visit https://groups.google.com/
+> > d/msgid/outreachy-kernel/20160313013258.GA17143%40spock.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > > 
+> 
+> Thanks, Julia. I'll take a look. :)
+
+While you don't want to top post, it would be helpful to respond directly 
+under the relevant text, so one doesn't have to hunt for the actual 
+message.
+
+Sorry to be so picky, but there are a lot of small details to make the 
+precess efficient.
+
+julia
+--8323328-1037181802-1457842416=:2069--
 
