@@ -1,38 +1,40 @@
 X-GM-THRID: 6261514369469775872
-X-Received: by 10.182.103.138 with SMTP id fw10mr25439302obb.47.1458593999851;
-        Mon, 21 Mar 2016 13:59:59 -0700 (PDT)
+X-Received: by 10.112.45.139 with SMTP id n11mr2241097lbm.17.1457873071733;
+        Sun, 13 Mar 2016 05:44:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.40.196 with SMTP id o187ls1900118ioo.94.gmail; Mon, 21 Mar
- 2016 13:59:59 -0700 (PDT)
-X-Received: by 10.107.15.89 with SMTP id x86mr1488217ioi.17.1458593999473;
-        Mon, 21 Mar 2016 13:59:59 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id y20si4214664pfa.2.2016.03.21.13.59.59
+Received: by 10.25.4.202 with SMTP id 193ls615225lfe.5.gmail; Sun, 13 Mar 2016
+ 05:44:31 -0700 (PDT)
+X-Received: by 10.25.165.148 with SMTP id o142mr2278235lfe.8.1457873071093;
+        Sun, 13 Mar 2016 05:44:31 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id g81si417227wmi.3.2016.03.13.05.44.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Mar 2016 13:59:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sun, 13 Mar 2016 05:44:31 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-138-182-192.hsd1.ma.comcast.net [50.138.182.192])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 02CC02C;
-	Mon, 21 Mar 2016 20:59:58 +0000 (UTC)
-Date: Mon, 21 Mar 2016 16:59:57 -0400
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,331,1454972400"; 
+   d="scan'208";a="168417521"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2016 13:44:30 +0100
+Date: Sun, 13 Mar 2016 13:44:29 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
 To: Juliana Rodrigues <juliana.orod@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: dgnc: replaced udelay
  with usleep_range
-Message-ID: <20160321205957.GA9749@kroah.com>
-References: <20160313123337.GA10274@spock>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20160313123337.GA10274@spock>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Message-ID: <alpine.DEB.2.02.1603131344110.2069@localhost6.localdomain6>
+References: <20160313123337.GA10274@spock>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Sun, Mar 13, 2016 at 09:33:37AM -0300, Juliana Rodrigues wrote:
+On Sun, 13 Mar 2016, Juliana Rodrigues wrote:
+
 > This patch replaces udelay with usleep_range fixing
 > a checkpatch.pl issue:
 > 
@@ -58,5 +60,21 @@ On Sun, Mar 13, 2016 at 09:33:37AM -0300, Juliana Rodrigues wrote:
 > -	usleep_range(10000, 11000);
 > +	usleep_range(10, 20);
 
-Your subject does not match this patch :(
+It still doesn't say why you chose this value.
+
+julia
+
+>  }
+>  
+>  static void cls_copy_data_from_queue_to_uart(struct channel_t *ch)
+> -- 
+> 2.7.2
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160313123337.GA10274%40spock.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
