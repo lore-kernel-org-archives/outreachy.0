@@ -1,61 +1,61 @@
 X-GM-THRID: 6261584556721176576
-X-Received: by 10.182.16.199 with SMTP id i7mr15770118obd.44.1457888923478;
-        Sun, 13 Mar 2016 10:08:43 -0700 (PDT)
+X-Received: by 10.50.85.37 with SMTP id e5mr9949897igz.12.1457888899720;
+        Sun, 13 Mar 2016 10:08:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.32.137 with SMTP id h9ls3808540qgh.22.gmail; Sun, 13 Mar
- 2016 10:08:42 -0700 (PDT)
-X-Received: by 10.140.102.163 with SMTP id w32mr15287642qge.10.1457888922959;
-        Sun, 13 Mar 2016 10:08:42 -0700 (PDT)
+Received: by 10.107.131.166 with SMTP id n38ls1285796ioi.67.gmail; Sun, 13 Mar
+ 2016 10:08:19 -0700 (PDT)
+X-Received: by 10.66.193.225 with SMTP id hr1mr15055867pac.34.1457888899421;
+        Sun, 13 Mar 2016 10:08:19 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qg0-x241.google.com (mail-qg0-x241.google.com. [2607:f8b0:400d:c04::241])
-        by gmr-mx.google.com with ESMTPS id y131si1153716ywc.0.2016.03.13.10.08.42
+Received: from mail-qg0-x244.google.com (mail-qg0-x244.google.com. [2607:f8b0:400d:c04::244])
+        by gmr-mx.google.com with ESMTPS id w69si1091556ywa.3.2016.03.13.10.08.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 10:08:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::241 as permitted sender) client-ip=2607:f8b0:400d:c04::241;
+        Sun, 13 Mar 2016 10:08:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) client-ip=2607:f8b0:400d:c04::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::241 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x241.google.com with SMTP id y89so10720910qge.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 10:08:42 -0700 (PDT)
+Received: by mail-qg0-x244.google.com with SMTP id 14so10735436qgg.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 10:08:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=V5FviZ1GYdIm5MxfxpF7vbIAu1kQr3pu4hqy624u+js=;
-        b=tf4e6AgXZRPKZ2wzxKOCiCQ7SbIWLxVQjo/JV10T+gOvx+Zrhq7Mwd1hpnfI3HO8us
-         +yJEL3s0B1xln9TVlI/P1U/SbsbDjoytzqU1C9WkbQjqsh0b4nKrtw7TgmXgdZR5mQ6S
-         lxJI/LsMi7B+dciYbouMGnu8WBkbB8roQBuJp+WQq3L7Br/uFG1OBnoUdaL8UkrHWFZe
-         Im045crueQOLDkHJXxsvrdywNbgSpkuGFp56HTz2VavXNaBhWGo18D+Hd2Xmdbk7Vo4C
-         wJqtWD04FJSqiYCK1G5JB07OXSiSIaOi0qv1hOYyFSdNEnWDC6Ks8KVG0dXD6FlQ+mSw
-         Zikw==
+        bh=KcghdCHbaULttiGWgviN/wkJwTaeLIuVd+ldA7suOhc=;
+        b=1HCdwLSD7T/0Om1tz6DZ5gdR++W39WQvzGeiSZiIbxKVwE0ZD19CJphGjsw/Hrm47z
+         rvOjb65tIowzPxbM1NTvf8Q24dACIpC+qp7ueG+CGRqwghPlvRzU57ZS6n8+HVtwAXIK
+         1wpIWC0Fgs2MbrUDUcbgzmAbAhfXqV/QjwrZy133PdksGpbzInWfcnRzwOV9rdY0G8a1
+         1Ue4exVwhDW2lrX5ZimGMlDyDOYaLvylVA6zD+prmjmuQjm3NHSjvOPJKgHT3amEfHbs
+         wTNs+GuDQln336z/lh8FHV8PNArgzr71PIzm4cd2ooQf3B5ynCbO9j604J2DfNdtqVts
+         A1bQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=V5FviZ1GYdIm5MxfxpF7vbIAu1kQr3pu4hqy624u+js=;
-        b=BOM4kvFRee22PeRuXDA173x3H8EO8tJzxxanZI690G74YS0XLrZJcMz27h06NWHTlC
-         HmTnOSTuNe5eEQAZsiTC8EBRMjEsaZP/g1nO6uX5ZTmkEHQaswQyAef3SHLO5FwiD5bU
-         USOk1+SjAL5uPUzLj6KGh/6Et3BiLjVu4PzpQpzz+UQT39JsQ5IDSNT6dOJAtM2ncpSq
-         MakZa2pcN/oeiELXeiJH12J/yTYACLS/GMJQL9vcK2sLovzTxJNWbpPkpEcxuTZu/+kU
-         rjSFCPKns0WzmmamBPafUzBscQZe4M9tsPP4RkRoXqAeCzM5SmXm6imByk7jJdupgaa2
-         Wu/g==
-X-Gm-Message-State: AD7BkJKN6sDpagrqf6XWUeTKGzRs5laPBF2MZuANATL0AvsE3usu3wWBVco3J8+vH4GFFA==
-X-Received: by 10.140.92.180 with SMTP id b49mr25015079qge.81.1457888922618;
-        Sun, 13 Mar 2016 10:08:42 -0700 (PDT)
+        bh=KcghdCHbaULttiGWgviN/wkJwTaeLIuVd+ldA7suOhc=;
+        b=K0AcAtPK9UITFuF+kHe+e+FkYUr1nKQ1237aVR4rfb3sgqjHVmMNOrqRTrYZr3zIVN
+         nqQd/pxqy4mVO57XFWGHQxopbfoIOi6JufWJo4IcM98m4mKzppW3mG0O6yHBX0gBCRCX
+         5QmkWmpepVQdvyRsQ6c4kJ14cVam9sUE/Lbwig1f1uuBWogedN8kd3eiHPVBTviMmzij
+         xnYePG5tQrE6Awle8DV3n2he4Mlk2UaWSkcL722AK+eQu5eannLkhgPGoqOSvkhTNP2d
+         aUxL3+lu1zmyqF+XGwydNh8eJu5Me8p7jaH9KhdmSaaFhR0Y1KFeT03OrSP75VUfggxF
+         m1bQ==
+X-Gm-Message-State: AD7BkJJ5N9vkSmTNfKq5HhvKx/2psrcFHHbR3TwRJst6OMQfKtBW7DtIKkuiSFWNwQy/KQ==
+X-Received: by 10.140.225.6 with SMTP id v6mr26830674qhb.0.1457888899007;
+        Sun, 13 Mar 2016 10:08:19 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
 Received: from spock ([2804:14d:ac80:19e9:b6b6:76ff:fe71:ca4b])
-        by smtp.gmail.com with ESMTPSA id c7sm8505758qkb.38.2016.03.13.10.08.41
+        by smtp.gmail.com with ESMTPSA id s104sm8469463qgs.22.2016.03.13.10.08.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 10:08:42 -0700 (PDT)
-Date: Sun, 13 Mar 2016 14:08:39 -0300
+        Sun, 13 Mar 2016 10:08:18 -0700 (PDT)
+Date: Sun, 13 Mar 2016 14:08:15 -0300
 From: Juliana Rodrigues <juliana.orod@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 5/8] staging: dgnc: renames PrintDriver variable to avoid
+Subject: [PATCH 4/8] staging: dgnc: renames PrintName variable to avoid
  camelcase
-Message-ID: <2d3b5060f39a1ba72989ba586c5abc1378c71253.1457888423.git.juliana.orod@gmail.com>
+Message-ID: <ed58b2b7a35fa0edc9504e5c0b06e4cb6590b4a5.1457888423.git.juliana.orod@gmail.com>
 References: <cover.1457888423.git.juliana.orod@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,155 +63,48 @@ Content-Disposition: inline
 In-Reply-To: <cover.1457888423.git.juliana.orod@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch fixes checkpatch issues by renaming
-PrintDriver variable to avoid camelcase.
+This patch fixes a checkpatch issue by
+renaming PrintName variable to print_name,
+avoiding camelcase.
 
-CHECK: Avoid CamelCase: <PrintDriver>
-+       struct tty_driver       PrintDriver;
+CHECK: Avoid CamelCase: <PrintName>
++       char            PrintName[200];
 
 Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_driver.h |  2 +-
- drivers/staging/dgnc/dgnc_tty.c    | 58 +++++++++++++++++++-------------------
- 2 files changed, 30 insertions(+), 30 deletions(-)
+ drivers/staging/dgnc/dgnc_driver.h | 2 +-
+ drivers/staging/dgnc/dgnc_tty.c    | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
-index 513a5ac..5bb69da 100644
+index b826e53..513a5ac 100644
 --- a/drivers/staging/dgnc/dgnc_driver.h
 +++ b/drivers/staging/dgnc/dgnc_driver.h
-@@ -207,7 +207,7 @@ struct dgnc_board {
- 
+@@ -208,7 +208,7 @@ struct dgnc_board {
  	struct tty_driver	serial_driver;
  	char		serial_name[200];
--	struct tty_driver	PrintDriver;
-+	struct tty_driver	print_driver;
- 	char		print_name[200];
+ 	struct tty_driver	PrintDriver;
+-	char		PrintName[200];
++	char		print_name[200];
  
  	bool		dgnc_Major_Serial_Registered;
+ 	bool		dgnc_Major_TransparentPrint_Registered;
 diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
-index 8a68fd8..b79566a 100644
+index 285a724..8a68fd8 100644
 --- a/drivers/staging/dgnc/dgnc_tty.c
 +++ b/drivers/staging/dgnc/dgnc_tty.c
-@@ -235,19 +235,19 @@ int dgnc_tty_register(struct dgnc_board *brd)
- 	 * again, separately so we don't get the LD confused about what major
+@@ -236,9 +236,9 @@ int dgnc_tty_register(struct dgnc_board *brd)
  	 * we are when we get into the dgnc_tty_open() routine.
  	 */
--	brd->PrintDriver.magic = TTY_DRIVER_MAGIC;
-+	brd->print_driver.magic = TTY_DRIVER_MAGIC;
- 	snprintf(brd->print_name, MAXTTYNAMELEN, "pr_dgnc_%d_", brd->boardnum);
+ 	brd->PrintDriver.magic = TTY_DRIVER_MAGIC;
+-	snprintf(brd->PrintName, MAXTTYNAMELEN, "pr_dgnc_%d_", brd->boardnum);
++	snprintf(brd->print_name, MAXTTYNAMELEN, "pr_dgnc_%d_", brd->boardnum);
  
--	brd->PrintDriver.name = brd->print_name;
--	brd->PrintDriver.name_base = 0;
--	brd->PrintDriver.major = brd->serial_driver.major;
--	brd->PrintDriver.minor_start = 0x80;
--	brd->PrintDriver.num = brd->maxports;
--	brd->PrintDriver.type = TTY_DRIVER_TYPE_SERIAL;
--	brd->PrintDriver.subtype = SERIAL_TYPE_NORMAL;
--	brd->PrintDriver.init_termios = DgncDefaultTermios;
--	brd->PrintDriver.driver_name = DRVSTR;
--	brd->PrintDriver.flags = (TTY_DRIVER_REAL_RAW |
-+	brd->print_driver.name = brd->print_name;
-+	brd->print_driver.name_base = 0;
-+	brd->print_driver.major = brd->serial_driver.major;
-+	brd->print_driver.minor_start = 0x80;
-+	brd->print_driver.num = brd->maxports;
-+	brd->print_driver.type = TTY_DRIVER_TYPE_SERIAL;
-+	brd->print_driver.subtype = SERIAL_TYPE_NORMAL;
-+	brd->print_driver.init_termios = DgncDefaultTermios;
-+	brd->print_driver.driver_name = DRVSTR;
-+	brd->print_driver.flags = (TTY_DRIVER_REAL_RAW |
- 				  TTY_DRIVER_DYNAMIC_DEV |
- 				  TTY_DRIVER_HARDWARE_BREAK);
- 
-@@ -256,27 +256,27 @@ int dgnc_tty_register(struct dgnc_board *brd)
- 	 * tty_struct's and termios's.  Must be separated from
- 	 * the Serial Driver so we don't get confused
- 	 */
--	brd->PrintDriver.ttys = kcalloc(brd->maxports,
--					sizeof(*brd->PrintDriver.ttys),
-+	brd->print_driver.ttys = kcalloc(brd->maxports,
-+					sizeof(*brd->print_driver.ttys),
- 					GFP_KERNEL);
--	if (!brd->PrintDriver.ttys)
-+	if (!brd->print_driver.ttys)
- 		return -ENOMEM;
--	kref_init(&brd->PrintDriver.kref);
--	brd->PrintDriver.termios = kcalloc(brd->maxports,
--					   sizeof(*brd->PrintDriver.termios),
-+	kref_init(&brd->print_driver.kref);
-+	brd->print_driver.termios = kcalloc(brd->maxports,
-+					   sizeof(*brd->print_driver.termios),
- 					   GFP_KERNEL);
--	if (!brd->PrintDriver.termios)
-+	if (!brd->print_driver.termios)
- 		return -ENOMEM;
- 
- 	/*
- 	 * Entry points for driver.  Called by the kernel from
- 	 * tty_io.c and n_tty.c.
- 	 */
--	tty_set_operations(&brd->PrintDriver, &dgnc_tty_ops);
-+	tty_set_operations(&brd->print_driver, &dgnc_tty_ops);
- 
- 	if (!brd->dgnc_Major_TransparentPrint_Registered) {
- 		/* Register Transparent Print devices */
--		rc = tty_register_driver(&brd->PrintDriver);
-+		rc = tty_register_driver(&brd->print_driver);
- 		if (rc < 0) {
- 			dev_dbg(&brd->pdev->dev,
- 				"Can't register Transparent Print device(%d)\n",
-@@ -288,7 +288,7 @@ int dgnc_tty_register(struct dgnc_board *brd)
- 
- 	dgnc_BoardsByMajor[brd->serial_driver.major] = brd;
- 	brd->dgnc_Serial_Major = brd->serial_driver.major;
--	brd->dgnc_TransparentPrint_Major = brd->PrintDriver.major;
-+	brd->dgnc_TransparentPrint_Major = brd->print_driver.major;
- 
- 	return rc;
- }
-@@ -370,7 +370,7 @@ int dgnc_tty_init(struct dgnc_board *brd)
- 			ch->ch_tun.un_sysfs = classp;
- 			dgnc_create_tty_sysfs(&ch->ch_tun, classp);
- 
--			classp = tty_register_device(&brd->PrintDriver, i,
-+			classp = tty_register_device(&brd->print_driver, i,
- 						     &ch->ch_bd->pdev->dev);
- 			ch->ch_pun.un_sysfs = classp;
- 			dgnc_create_tty_sysfs(&ch->ch_pun, classp);
-@@ -422,15 +422,15 @@ void dgnc_tty_uninit(struct dgnc_board *brd)
- 	}
- 
- 	if (brd->dgnc_Major_TransparentPrint_Registered) {
--		dgnc_BoardsByMajor[brd->PrintDriver.major] = NULL;
-+		dgnc_BoardsByMajor[brd->print_driver.major] = NULL;
- 		brd->dgnc_TransparentPrint_Major = 0;
- 		for (i = 0; i < brd->nasync; i++) {
- 			if (brd->channels[i])
- 				dgnc_remove_tty_sysfs(brd->channels[i]->
- 						      ch_pun.un_sysfs);
--			tty_unregister_device(&brd->PrintDriver, i);
-+			tty_unregister_device(&brd->print_driver, i);
- 		}
--		tty_unregister_driver(&brd->PrintDriver);
-+		tty_unregister_driver(&brd->print_driver);
- 		brd->dgnc_Major_TransparentPrint_Registered = false;
- 	}
- 
-@@ -438,10 +438,10 @@ void dgnc_tty_uninit(struct dgnc_board *brd)
- 	brd->serial_driver.ttys = NULL;
- 	kfree(brd->serial_driver.termios);
- 	brd->serial_driver.termios = NULL;
--	kfree(brd->PrintDriver.ttys);
--	brd->PrintDriver.ttys = NULL;
--	kfree(brd->PrintDriver.termios);
--	brd->PrintDriver.termios = NULL;
-+	kfree(brd->print_driver.ttys);
-+	brd->print_driver.ttys = NULL;
-+	kfree(brd->print_driver.termios);
-+	brd->print_driver.termios = NULL;
- }
- 
- /*=======================================================================
+-	brd->PrintDriver.name = brd->PrintName;
++	brd->PrintDriver.name = brd->print_name;
+ 	brd->PrintDriver.name_base = 0;
+ 	brd->PrintDriver.major = brd->serial_driver.major;
+ 	brd->PrintDriver.minor_start = 0x80;
 -- 
 2.7.2
 
