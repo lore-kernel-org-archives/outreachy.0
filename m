@@ -1,97 +1,119 @@
-X-GM-THRID: 6397563110488539136
-X-Received: by 10.129.115.197 with SMTP id o188mr641274ywc.114.1489548736594;
-        Tue, 14 Mar 2017 20:32:16 -0700 (PDT)
+X-GM-THRID: 6261600967580450816
+X-Received: by 10.140.29.183 with SMTP id b52mr14932754qgb.8.1457892583618;
+        Sun, 13 Mar 2016 11:09:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.63.218 with SMTP id i26ls1203373ote.48.gmail; Tue, 14 Mar
- 2017 20:32:16 -0700 (PDT)
-X-Received: by 10.157.56.251 with SMTP id k56mr527076ote.28.1489548735982;
-        Tue, 14 Mar 2017 20:32:15 -0700 (PDT)
-Return-Path: <tahia.khan@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by gmr-mx.google.com with SMTPS id v64sor8844ioi.1.1969.12.31.16.00.00
+Received: by 10.140.96.230 with SMTP id k93ls3625509qge.78.gmail; Sun, 13 Mar
+ 2016 11:09:43 -0700 (PDT)
+X-Received: by 10.31.9.78 with SMTP id 75mr15264135vkj.9.1457892583029;
+        Sun, 13 Mar 2016 11:09:43 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-qk0-x231.google.com (mail-qk0-x231.google.com. [2607:f8b0:400d:c09::231])
+        by gmr-mx.google.com with ESMTPS id k13si947683ywe.1.2016.03.13.11.09.43
         for <outreachy-kernel@googlegroups.com>
-        (Google Transport Security);
-        Tue, 14 Mar 2017 20:32:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tahia.khan@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 13 Mar 2016 11:09:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::231 as permitted sender) client-ip=2607:f8b0:400d:c09::231;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::231 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of tahia.khan@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=tahia.khan@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x231.google.com with SMTP id o6so67159120qkc.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 11:09:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=DiknY/5ktBZ9+A7Ph2ejJ14dUry/5/Oxn8yQ7kkY+1s=;
-        b=BF9tJkZwkcdgbRBcZHZ3TvYycU5/nByOBpQ3ofB5UzG/2x+lNsGWb0j/WBU+TrvtHk
-         6M8YB6UM0RPsDwi7f1AelNVVluMyf2HhN9r5QrEMO0h7Z9pSp6N9IAYHr0THWTR3fzt5
-         Xim5BsSa1xuR4XsOeZb1O5H9wmXoL5RffZQcixqc2Z4kSqmfy2BIebXwpq3j71th9pZY
-         ec8wukyMNux0BraMqCGWYTLDoobutb7B1fitcdK//kz9j39xxiHTqXQFonOvLEJUUBpP
-         6aLPgJrO+Lbs/STh1PCvHT7zv06btZZt0mPEiEHHphrFrKU16ffp4nFgJkjkR36Wer/M
-         R7LQ==
+        bh=sxKgTtzIS7RNzheYjSqpibAvldqw5XbVrKvQ0YFNuL0=;
+        b=fdNQr9g8URdzYhaOmC/8sy1Yjk9mKZIBthrRG1OMU7gYqEGAiIPAw9NztsqOw0Stm2
+         S53xEJgU54xlzJQW2QsK55qgCHDB4YdW5yG47C1pYVOdlj2/qSTycWGvsqlt97fk6c3w
+         qzQ3OAM7obJbq9Gjf2H0xQ0G12MwQIHVXjYhBVeM4fvsSxZ5yIK8TiVRGnlabTjp0z0I
+         5yqWCKAvFhEaJ4K+lvBq/VeO6JwaMgGqO23fSV5+sfI4zTwblxJZuBwunyo+IEYDH9X1
+         V7gtvVXbdxG74jdH+FN2E7J5wtECaZ5uyAAkVW7hAsiicc1h/YBLf7v40Wa7N2QjQe97
+         oxUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
+        d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=DiknY/5ktBZ9+A7Ph2ejJ14dUry/5/Oxn8yQ7kkY+1s=;
-        b=OXY3d0Pg675mAm5I6BVlwJQD0yOaXTfthH6Z9lDYI6usXFYJ65vKhUDvbzc9x9XfmH
-         N1neTM9iInkmU0QuTvxQAiUTVs2G/IVKGXkKGNzp8a69Ykl6T2zpNMiLMMDEuYsMbfoz
-         sciH7Ddt4xboJuR003NvNpGumYrID5W8kGLLD6lXGwBG7F3oPm8ILnGnE3ku2yoryq+S
-         dYEyiBDrBasdCpkLZ9JBOTGMalwsi/rbL9OkPKQbI01DKVZGVradRmKAjQISgngYCAm2
-         xmKJhE/TY1Kr7rKKQHt/oFrF7DwjEHkxxEme/A72SFyeFUpQBdo1nzGo4mCfpnUOUsYP
-         vLWQ==
-X-Gm-Message-State: AFeK/H3u9JQ1j6Qtf9wvlu9Fsh7J8OGUPzB87VUdUUT4m4m1u7BeZLu6VXiISEP33EE+ow==
-X-Received: by 10.107.41.212 with SMTP id p203mr3365151iop.13.1489548735781;
-        Tue, 14 Mar 2017 20:32:15 -0700 (PDT)
-Return-Path: <tahia.khan@gmail.com>
-Received: from coolbox (24-212-136-169.cable.teksavvy.com. [24.212.136.169])
-        by smtp.gmail.com with ESMTPSA id m125sm944637iom.38.2017.03.14.20.32.14
+        bh=sxKgTtzIS7RNzheYjSqpibAvldqw5XbVrKvQ0YFNuL0=;
+        b=faFvYpi3aBvjS2CUQemyuleSIM5X+XdM9wLkbPKJ7sYZ1b92mLTeMhN6tyHK0yHU6t
+         HRD1pR9Ks7KxnUljyZgJtOq+TfjBQOlGpBh5IPhQSIxfBwoHLWJDg6+iWXKYpvq4l5LS
+         CnB+SXiZaGhjIq7kAoCAngTg9/Qs4dSoxeB0sQtZL9qJIOMz1Z2UGc/U0R7cPXGgp1yz
+         2xer1pzvnRVlaZfB/+00Cm6ivbxpCdASQeotza10ecpyGzkMKc3UFFViRZ954tzeEDE5
+         iKYkVEAE426v8j5BfkRYFokS/MopLviesgpQaygEU3fXMB7ftoYmHQBL9OAk8HjnnrAQ
+         zBPA==
+X-Gm-Message-State: AD7BkJKYOfxW64Xu6M6FERiIDdXy86NpuBix5gSD37mBfo2hZfqH8Q5pzeD+fdEaMgF5YA==
+X-Received: by 10.55.71.76 with SMTP id u73mr25738878qka.6.1457892582728;
+        Sun, 13 Mar 2016 11:09:42 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([191.191.241.196])
+        by smtp.gmail.com with ESMTPSA id 64sm8537704qhf.40.2016.03.13.11.09.41
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 14 Mar 2017 20:32:14 -0700 (PDT)
-Date: Tue, 14 Mar 2017 23:32:13 -0400
-From: Tahia Khan <tahia.khan@gmail.com>
-To: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: sm750fb: Removes unused variable from
- sm750_hw_copyarea
-Message-ID: <20170315033213.GA20913@coolbox>
+        Sun, 13 Mar 2016 11:09:42 -0700 (PDT)
+Date: Sun, 13 Mar 2016 15:07:30 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8712: hal_init.c: fix comment block code style
+Message-ID: <20160313180730.GA2240@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Removes unused variable opSign from sm750_hw_copyarea. Identified
-using coccinelle script 'unused.cocci'.
+This patch fixes several warnings caused by
+malformed comments on hal_init.c and found by
+checkpatch.pl.
 
-Signed-off-by: Tahia Khan <tahia.khan@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/sm750fb/sm750_accel.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/rtl8712/hal_init.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-index 6db9b90..6be86e4 100644
---- a/drivers/staging/sm750fb/sm750_accel.c
-+++ b/drivers/staging/sm750fb/sm750_accel.c
-@@ -144,11 +144,9 @@ unsigned int height, /* width and height of rectangle in pixel value */
- unsigned int rop2)   /* ROP value */
- {
- 	unsigned int nDirection, de_ctrl;
--	int opSign;
+diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
+index 8008efe..37fe0a4 100644
+--- a/drivers/staging/rtl8712/hal_init.c
++++ b/drivers/staging/rtl8712/hal_init.c
+@@ -297,7 +297,8 @@ static u8 rtl8712_dl_fw(struct _adapter *padapter)
  
- 	nDirection = LEFT_TO_RIGHT;
- 	/* Direction of ROP2 operation: 1 = Left to Right, (-1) = Right to Left */
--	opSign = 1;
- 	de_ctrl = 0;
- 
- 	/* If source and destination are the same surface, need to check for overlay cases */
-@@ -212,7 +210,6 @@ unsigned int rop2)   /* ROP value */
- 		sy += height - 1;
- 		dx += width - 1;
- 		dy += height - 1;
--		opSign = -1;
- 	}
- 
- 	/*
+ 		tmp8 = r8712_read8(padapter, 0x1025000A);
+ 		if (tmp8 & BIT(4)) /* When boot from EEPROM,
+-				    & FW need more time to read EEPROM */
++				    * & FW need more time to read EEPROM
++				    */
+ 			i = 60;
+ 		else			/* boot from EFUSE */
+ 			i = 30;
+@@ -332,7 +333,8 @@ uint rtl8712_hal_init(struct _adapter *padapter)
+ 		    r8712_read32(padapter, RCR));
+ 	val32 = r8712_read32(padapter, RCR);
+ 	r8712_write32(padapter, RCR, (val32 | BIT(26))); /* Enable RX TCP
+-							    Checksum offload */
++							  * Checksum offload
++							  */
+ 	netdev_info(padapter->pnetdev, "2 RCR=0x%x\n",
+ 		    r8712_read32(padapter, RCR));
+ 	val32 = r8712_read32(padapter, RCR);
+@@ -346,7 +348,8 @@ uint rtl8712_hal_init(struct _adapter *padapter)
+ 	r8712_write8(padapter, 0x102500BD, r8712_read8(padapter, 0x102500BD) |
+ 	       BIT(7)); /* enable usb rx aggregation */
+ 	r8712_write8(padapter, 0x102500D9, 1); /* TH=1 => means that invalidate
+-						*  usb rx aggregation */
++						*  usb rx aggregation
++						*/
+ 	r8712_write8(padapter, 0x1025FE5B, 0x04); /* 1.7ms/4 */
+ 	/* Fix the RX FIFO issue(USB error) */
+ 	r8712_write8(padapter, 0x1025fe5C, r8712_read8(padapter, 0x1025fe5C)
+@@ -367,7 +370,8 @@ uint rtl8712_hal_deinit(struct _adapter *padapter)
+ 	r8712_write8(padapter, SYS_FUNC_EN + 1, 0x70);
+ 	r8712_write8(padapter, PMC_FSM, 0x06);  /* Enable Loader Data Keep */
+ 	r8712_write8(padapter, SYS_ISO_CTRL, 0xF9); /* Isolation signals from
+-						     * CORE, PLL */
++						     * CORE, PLL
++						     */
+ 	r8712_write8(padapter, SYS_ISO_CTRL + 1, 0xe8); /* Enable EFUSE 1.2V */
+ 	r8712_write8(padapter, AFE_PLL_CTRL, 0x00); /* Disable AFE PLL. */
+ 	r8712_write8(padapter, LDOA15_CTRL, 0x54);  /* Disable A15V */
 -- 
-2.7.4
+2.7.2
 
 
