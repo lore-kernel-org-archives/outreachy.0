@@ -1,90 +1,84 @@
-X-GM-THRID: 6259001811935428608
-X-Received: by 10.129.153.84 with SMTP id q81mr9459347ywg.58.1457287420956;
-        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+X-GM-THRID: 6261616748172148736
+X-Received: by 10.66.146.231 with SMTP id tf7mr15435026pab.6.1457896257994;
+        Sun, 13 Mar 2016 12:10:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.30.166 with SMTP id t6ls725232igh.20.canary; Sun, 06 Mar
- 2016 10:03:40 -0800 (PST)
-X-Received: by 10.50.154.2 with SMTP id vk2mr7213064igb.9.1457287420579;
-        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+Received: by 10.140.82.42 with SMTP id g39ls3676730qgd.50.gmail; Sun, 13 Mar
+ 2016 12:10:57 -0700 (PDT)
+X-Received: by 10.140.27.180 with SMTP id 49mr15715833qgx.19.1457896257309;
+        Sun, 13 Mar 2016 12:10:57 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id 12si2438040pfb.1.2016.03.06.10.03.40
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id h69si1479346pfj.0.2016.03.13.12.10.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Sun, 13 Mar 2016 12:10:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id hj7so6334044pac.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id u190so8037171pfb.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 12:10:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=oZ7GFF8+82EYdvWBrUatnRKuEPyCb8vooCC6M18FQ1U=;
-        b=XuRnfd1dFEX4tVIvIblZ4CyHyTD1xe089lvRsUwJEJ+aIjv5hhQ/kwPjJWu7ZfrQ1A
-         JRif44apAUjN5cNpNpzkkaX/LgB8mnd+Q6/ocZ2/9CClAyOmY29WOgz9hB9td9f1I9Uk
-         JOpGsc2ucYW9ZtKvNwcMAs3/zUFpdZbiv49Kh8tH32/jtKXc0wDEosphq0gU+clnMO2e
-         5CZkIljUuaum9skjvexniL7YWl3ULCSmpp+SWC10RkH2UfEwPzFOLODLwNljObhbjGZV
-         Mz5gUNNNTboFApZKPtY/JnEm9EKInJoK+T2vl9gXQg/8zbLts9FHSsxCRUu7xye3l2EE
-         usiQ==
+        bh=5OTQmjvz1nLxyeGY3Orw5dHNya7xK8djND92GtiqwpU=;
+        b=qVxvAgOL9LPdDW8pZW1DU34ngPWYU5nDFY6Xv5B774u+J4xuP+ZeAuD6hFuJ5znE3p
+         mxgG2qhAPl24bJuzFoYSZVltdw9Tp0lwEwQI8CYsFGJwYudHaP+QP5ccrLRwkXg/um86
+         Pf8MgtPunCD/sHzzeDL/Psc1061/yMknh6bbOyNvrYwi2g3e4cCao+mFVU2p00uQFF8Z
+         VfnMm7fWgo5PMY+wpqoz2flt8h08dgVaz8MLFGj/oSfYU1O2UgqgsrAkCyPBf6RdR7iv
+         U/afHdyUI7s7ELAgE+OkyvUY4LuiXAD6Pqjrk5TJjtAILcrXHo9eU+arahrS9V3F3OYs
+         etfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=oZ7GFF8+82EYdvWBrUatnRKuEPyCb8vooCC6M18FQ1U=;
-        b=UKw9yBE4TMBLVM/19Ub/XuLi4PFtdRdaJP0NgMqBUmqOJrjGg7HgcxfV8VQjvRDgCe
-         shdnro0yKvJwZzQ9IAEGa7pHwf2kedxgbAuLAyCf1UBMwozEFIhu8asVqi1mAWdcrrtl
-         0Di35EQHb9Rg1y/6OPV7GC9fFh4uahajqr6ZH0YVQhvLFBxe0iI7gL1ZKlHuheRZ7urF
-         6UFZzKX2cE19qwAY9ooh4PgaHg6NqooDc6surAR8iCLKyVZOpiKP1H3oWyXVFd4ARUkN
-         0QkY295F2f3HpI3B47P/9Xpqrl+MsfkfOWqgqRVBx0KOExsHGwwnDnW1CSes4rsb4AIv
-         7xXw==
-X-Gm-Message-State: AD7BkJIGnCXS68nfCmCg8BlkE10LoJG6kWHdTFS3UAwL5hNkjpTJSBDrGJq/vt71IyBKOw==
-X-Received: by 10.66.246.234 with SMTP id xz10mr27732585pac.49.1457287420397;
-        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
+        bh=5OTQmjvz1nLxyeGY3Orw5dHNya7xK8djND92GtiqwpU=;
+        b=kodCcFAWKCnj4yjj8K5IHr2IAIefW9P045wTL+C0QfZJ0QkKO7UuekjSvC7Dmfq583
+         GfT9j/rWh1uB0dZVnHV38jEMyKwY7JXMRZqXHv880mrpIJzWUbKduGa2Jx9u+lJDV1f2
+         745x+bz9Rb+dtRcDihgwSK4plLmo6nWVQyg+OYEmOULx41r5FkKUmYx/LJeEIjnqgJfS
+         jJHbNVkPhHzJxGB9+zKNcAADnX7J0gebQjq44jyoPGoMjks8Si79qCWUWK1dtKTB9coE
+         3AtgJkH383P6Hd8vH3CTeWd3+7t/4LfFDw1aQG3Qt97fHXNTZMK9aE/PzhbvIm4lw8+k
+         8awg==
+X-Gm-Message-State: AD7BkJJLT0Ri9D9bbFq0K1RuFmUOAvQcTTM0DkDqmOsAPPQ6mKwJrMSj2jgnKcYYOYMOKw==
+X-Received: by 10.98.11.205 with SMTP id 74mr24223687pfl.98.1457896257136;
+        Sun, 13 Mar 2016 12:10:57 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.154])
-        by smtp.gmail.com with ESMTPSA id f66sm18989934pff.8.2016.03.06.10.03.38
+Received: from sandhya ([59.161.35.34])
+        by smtp.gmail.com with ESMTPSA id qy7sm26701013pab.34.2016.03.13.12.10.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 10:03:40 -0800 (PST)
-Date: Sun, 6 Mar 2016 15:33:31 +0530
+        Sun, 13 Mar 2016 12:10:56 -0700 (PDT)
+Date: Sun, 13 Mar 2016 16:41:23 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: rtl8712: Avoid multiple assignments.
-Message-ID: <20160306100235.GA3971@sandhya>
+Subject: [PATCH] Staging: gs_fpgaboot: Replace 'int32_t' with 'int'.
+Message-ID: <20160313111123.GA7622@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Avoid multiple assignments.This isssue is found by checkpatch.pl script.
+Replace 'int32_t' with 'int'.
 
 Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
-Changes in v2:
-* No change.
-*Compile this patch to check nothing is broken.
+ drivers/staging/gs_fpgaboot/gs_fpgaboot.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/rtl8712/recv_linux.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
-index 2f5460d..28a6360 100644
---- a/drivers/staging/rtl8712/recv_linux.c
-+++ b/drivers/staging/rtl8712/recv_linux.c
-@@ -44,7 +44,8 @@
- int r8712_os_recv_resource_alloc(struct _adapter *padapter,
- 				 union recv_frame *precvframe)
- {
--	precvframe->u.hdr.pkt_newalloc = precvframe->u.hdr.pkt = NULL;
-+	precvframe->u.hdr.pkt_newalloc = NULL;
-+	precvframe->u.hdr.pkt = NULL;
- 	return _SUCCESS;
- }
- 
+diff --git a/drivers/staging/gs_fpgaboot/gs_fpgaboot.h b/drivers/staging/gs_fpgaboot/gs_fpgaboot.h
+index f41f4cc..8cc3255 100644
+--- a/drivers/staging/gs_fpgaboot/gs_fpgaboot.h
++++ b/drivers/staging/gs_fpgaboot/gs_fpgaboot.h
+@@ -51,6 +51,6 @@ struct fpgaimage {
+ 	char	part[MAX_STR];
+ 	char	date[MAX_STR];
+ 	char	time[MAX_STR];
+-	int32_t	lendata;
++	int	lendata;
+ 	char	*fpgadata;
+ };
 -- 
 1.8.3.4
 
