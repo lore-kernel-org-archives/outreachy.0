@@ -1,102 +1,162 @@
-X-GM-THRID: 6252706345988915200
-X-Received: by 10.182.79.134 with SMTP id j6mr8554989obx.4.1455821643158;
-        Thu, 18 Feb 2016 10:54:03 -0800 (PST)
+X-GM-THRID: 6261606464880640000
+X-Received: by 10.140.100.197 with SMTP id s63mr15149966qge.4.1457893863539;
+        Sun, 13 Mar 2016 11:31:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.97.139 with SMTP id m11ls5643699qge.62.gmail; Thu, 18 Feb
- 2016 10:54:02 -0800 (PST)
-X-Received: by 10.129.102.215 with SMTP id a206mr8832191ywc.40.1455821642489;
-        Thu, 18 Feb 2016 10:54:02 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id 79si1153565pft.0.2016.02.18.10.54.02
+Received: by 10.182.58.20 with SMTP id m20ls1300615obq.20.gmail; Sun, 13 Mar
+ 2016 11:31:02 -0700 (PDT)
+X-Received: by 10.182.240.137 with SMTP id wa9mr15505359obc.16.1457893861997;
+        Sun, 13 Mar 2016 11:31:01 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-qg0-x22b.google.com (mail-qg0-x22b.google.com. [2607:f8b0:400d:c04::22b])
+        by gmr-mx.google.com with ESMTPS id i133si1027422ywe.7.2016.03.13.11.31.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 10:54:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Sun, 13 Mar 2016 11:31:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) client-ip=2607:f8b0:400d:c04::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::22b as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id e127so36055959pfe.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 10:54:02 -0800 (PST)
+Received: by mail-qg0-x22b.google.com with SMTP id u110so137566618qge.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 11:31:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=2uQHkfSSzGqRTYfeAXCw5xCPJTrqwKklcy70Ez6dFxM=;
-        b=FNB+ZzqjhiTbiy2UFbVpdcZNn2sXR00JYtXdw7VoYsxQcTQlrmuGVIS1F3zbS5F/Oo
-         sM2h6aODpE8dvZSY9RoMlnOs9HY2ltXLNlqfLFBRos1tBuXyEi/11YUQ4h668XnQ6V4N
-         xcjQoGYLdGGsdbpJIut8T79XWgXmTluhWVKiZxpBtvH56xl32T8VEDBdeOeXccAFLu4/
-         wG6g05jOo7CaiJ11otqqE+F9nM88CIC2hcBaBR8oho83tBphlVLUoV4VpisQVR0XzbBV
-         YhjUz5E5kq+8une49jVj7yfV4vnyOUfpEjBNRcj451xuc8oJf2lRFwqT9lEOitm9W28U
-         2N/w==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=A5N6s/1UMvHCw8Pc3QY38bhffidTz8FyKGmpPloo1PY=;
+        b=w8cGZnmKoqJLO+3w1a6UTZMGc8cUp1yZUHA0F0o6s88Rv5qO4yEcLk5smRzPPKkZNK
+         rdSfknJTskyIy2YNTAw1Go4SiC/WidALOZJHGhEK7vsro5qmqwMDpcyWUKd7xFMxJNDQ
+         NoTMHJ67EINJnscvtfbLG2ZeLMTwF9c92OrNypCxUY4Jzv24nhuDvG1LlvYtiS8tLT8e
+         qfeahzYWdyyT2AVMh6AhZYwL7ulhXN2spkmEQQRk4njcoYkfDcCNz+N4UMJmLlgKYEgG
+         q7KhX0W/tm2ybOzHrMkcfxn531iWA/zVxW8mbG494FkBc9r1Jytf9ZgvJMY/faeQgQzf
+         kEpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=2uQHkfSSzGqRTYfeAXCw5xCPJTrqwKklcy70Ez6dFxM=;
-        b=S3u7NHNjFXzSIq1AXa+PxHWc5Sti309XucTGPG1LIYGz7AOXshfo2Ezx1h/gTmj8wl
-         1rfGuS76McD6xK1Isd3e2x1/SP1ueXHd+dODchsa53EVaQS05leTGFdY/csAdIP6xYrd
-         KI/QK5ge06t2dVUeTjDwohtJnNXK/u0mDcr6ZdPsPCxbO3E9ieHZnLZU6IinARsNatLk
-         wDXh5v58IF4hG62r3m5SiAbgsWnUaCNIDtAysO/LTxP5rVZSw/Fx/U+8mgKZS73qvjun
-         dA9ollA++0vgzSZme6ghZfkrNfqmf+VFIhdkpWqYHkkxaLPoZjw1726+a/iGK/1aBnAR
-         O9kQ==
-X-Gm-Message-State: AG10YOSxMqRfRJSR+MAoMGAxqp4p2UMrgYp1AgwbynyQMMxWRkhqlJaaIPaDHUFa3gbf7g==
-X-Received: by 10.98.64.4 with SMTP id n4mr12362115pfa.58.1455821642305;
-        Thu, 18 Feb 2016 10:54:02 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id by3sm11922961pab.39.2016.02.18.10.54.00
+         :content-disposition:user-agent;
+        bh=A5N6s/1UMvHCw8Pc3QY38bhffidTz8FyKGmpPloo1PY=;
+        b=POSW7/V1u4NwI0ZnMi9JaBWoixlQLnWTRQqrNWn92OoEinStH07jyy7fs4LjS20oI4
+         MZS641htIOC0aQkzDRAvt+G2UHP3mOv0Z+zMSagX/LUZPDcez/sPbsy5zjJQCJgOaBPT
+         +838gOR3MESbfhJcNF7XvVD86lG/Nx3Ed6FnjMjscIEGCvgeSIvzMcswVlL/ZVK8TiWc
+         eikW56TbA0BKDdQyaDbDyMGfO1QsjY2TgAuynfe0OamOQgUjhDHnEOq0NWi6Xf8d8U9V
+         Cvg2yz1dWOeo834Wp9lII2heWJf3g2vgvtb0tmQyi7MWi9DF5Gz6f2/bbmuX39M5yxON
+         TOBA==
+X-Gm-Message-State: AD7BkJJs3jvg5VXTo3FISz9l0viZxg5PEdRvYCtWeOjowrVNQjKK/smwyby0SicvAdB2cw==
+X-Received: by 10.140.230.207 with SMTP id a198mr27039168qhc.94.1457893861667;
+        Sun, 13 Mar 2016 11:31:01 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([191.191.241.196])
+        by smtp.gmail.com with ESMTPSA id p104sm8604889qgp.20.2016.03.13.11.31.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 10:54:01 -0800 (PST)
-Date: Fri, 19 Feb 2016 00:24:30 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        Sun, 13 Mar 2016 11:31:01 -0700 (PDT)
+Date: Sun, 13 Mar 2016 15:30:57 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Replace explicit NULL comparison
-Message-ID: <20160218185430.GA3067@Karyakshetra>
+Subject: [PATCH] staging: rtl8712: rtl8712_cmd.c: fixed comparison to null
+Message-ID: <20160313183057.GA10781@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace explicit NULL comparison with ! operator.
-Found with Coccinelle.
+This patch fixes multiple "comparison to NULL"
+checkpatch.pl issues:
 
-@@
-expression e;
-@@
-- e == NULL
-+ !e
+CHECK: Comparison to NULL could be written "!pcmd"
++               if (pcmd == NULL)
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/rtl8712/xmit_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/rtl8712_cmd.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
-index d398183..f8866d7 100644
---- a/drivers/staging/rtl8712/xmit_linux.c
-+++ b/drivers/staging/rtl8712/xmit_linux.c
-@@ -131,7 +131,7 @@ int r8712_xmit_resource_alloc(struct _adapter *padapter,
-
- 	for (i = 0; i < 8; i++) {
- 		pxmitbuf->pxmit_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
--		if (pxmitbuf->pxmit_urb[i] == NULL) {
-+		if (!pxmitbuf->pxmit_urb[i]) {
- 			netdev_err(padapter->pnetdev, "pxmitbuf->pxmit_urb[i] == NULL\n");
- 			return _FAIL;
- 		}
-@@ -171,7 +171,7 @@ int r8712_xmit_entry(_pkt *pkt, struct  net_device *pnetdev)
- 		goto _xmit_entry_drop;
- 	}
- 	pxmitframe = r8712_alloc_xmitframe(pxmitpriv);
--	if (pxmitframe == NULL) {
-+	if (!pxmitframe) {
- 		ret = 0;
- 		goto _xmit_entry_drop;
- 	}
---
-2.1.4
+diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
+index 50f4002..13c0183 100644
+--- a/drivers/staging/rtl8712/rtl8712_cmd.c
++++ b/drivers/staging/rtl8712/rtl8712_cmd.c
+@@ -135,7 +135,7 @@ static u8 read_macreg_hdl(struct _adapter *padapter, u8 *pbuf)
+ 
+ 	/*  invoke cmd->callback function */
+ 	pcmd_callback = cmd_callback[pcmd->cmdcode].callback;
+-	if (pcmd_callback == NULL)
++	if (!pcmd_callback)
+ 		r8712_free_cmd_obj(pcmd);
+ 	else
+ 		pcmd_callback(padapter, pcmd);
+@@ -149,7 +149,7 @@ static u8 write_macreg_hdl(struct _adapter *padapter, u8 *pbuf)
+ 
+ 	/*  invoke cmd->callback function */
+ 	pcmd_callback = cmd_callback[pcmd->cmdcode].callback;
+-	if (pcmd_callback == NULL)
++	if (!pcmd_callback)
+ 		r8712_free_cmd_obj(pcmd);
+ 	else
+ 		pcmd_callback(padapter, pcmd);
+@@ -165,7 +165,7 @@ static u8 read_bbreg_hdl(struct _adapter *padapter, u8 *pbuf)
+ 	if (pcmd->rsp && pcmd->rspsz > 0)
+ 		memcpy(pcmd->rsp, (u8 *)&val, pcmd->rspsz);
+ 	pcmd_callback = cmd_callback[pcmd->cmdcode].callback;
+-	if (pcmd_callback == NULL)
++	if (!pcmd_callback)
+ 		r8712_free_cmd_obj(pcmd);
+ 	else
+ 		pcmd_callback(padapter, pcmd);
+@@ -178,7 +178,7 @@ static u8 write_bbreg_hdl(struct _adapter *padapter, u8 *pbuf)
+ 	struct cmd_obj *pcmd  = (struct cmd_obj *)pbuf;
+ 
+ 	pcmd_callback = cmd_callback[pcmd->cmdcode].callback;
+-	if (pcmd_callback == NULL)
++	if (!pcmd_callback)
+ 		r8712_free_cmd_obj(pcmd);
+ 	else
+ 		pcmd_callback(padapter, pcmd);
+@@ -194,7 +194,7 @@ static u8 read_rfreg_hdl(struct _adapter *padapter, u8 *pbuf)
+ 	if (pcmd->rsp && pcmd->rspsz > 0)
+ 		memcpy(pcmd->rsp, (u8 *)&val, pcmd->rspsz);
+ 	pcmd_callback = cmd_callback[pcmd->cmdcode].callback;
+-	if (pcmd_callback == NULL)
++	if (!pcmd_callback)
+ 		r8712_free_cmd_obj(pcmd);
+ 	else
+ 		pcmd_callback(padapter, pcmd);
+@@ -207,7 +207,7 @@ static u8 write_rfreg_hdl(struct _adapter *padapter, u8 *pbuf)
+ 	struct cmd_obj *pcmd  = (struct cmd_obj *)pbuf;
+ 
+ 	pcmd_callback = cmd_callback[pcmd->cmdcode].callback;
+-	if (pcmd_callback == NULL)
++	if (!pcmd_callback)
+ 		r8712_free_cmd_obj(pcmd);
+ 	else
+ 		pcmd_callback(padapter, pcmd);
+@@ -227,7 +227,7 @@ static struct cmd_obj *cmd_hdl_filter(struct _adapter *padapter,
+ {
+ 	struct cmd_obj *pcmd_r;
+ 
+-	if (pcmd == NULL)
++	if (!pcmd)
+ 		return pcmd;
+ 	pcmd_r = NULL;
+ 
+@@ -416,7 +416,7 @@ _next:
+ 	/* free all cmd_obj resources */
+ 	do {
+ 		pcmd = r8712_dequeue_cmd(&(pcmdpriv->cmd_queue));
+-		if (pcmd == NULL)
++		if (!pcmd)
+ 			break;
+ 		r8712_free_cmd_obj(pcmd);
+ 	} while (1);
+@@ -431,7 +431,7 @@ void r8712_event_handle(struct _adapter *padapter, uint *peventbuf)
+ 	void (*event_callback)(struct _adapter *dev, u8 *pbuf);
+ 	struct	evt_priv *pevt_priv = &(padapter->evtpriv);
+ 
+-	if (peventbuf == NULL)
++	if (!peventbuf)
+ 		goto _abort_event_;
+ 	evt_sz = (u16)(le32_to_cpu(*peventbuf) & 0xffff);
+ 	evt_seq = (u8)((le32_to_cpu(*peventbuf) >> 24) & 0x7f);
+-- 
+2.7.2
 
 
