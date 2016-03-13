@@ -1,87 +1,77 @@
 X-GM-THRID: 6261584556721176576
-X-Received: by 10.66.136.71 with SMTP id py7mr15177512pab.7.1457890851318;
-        Sun, 13 Mar 2016 10:40:51 -0700 (PDT)
+X-Received: by 10.28.189.130 with SMTP id n124mr1471896wmf.4.1457890130597;
+        Sun, 13 Mar 2016 10:28:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.76.3 with SMTP id g3ls1567711obw.60.gmail; Sun, 13 Mar
- 2016 10:40:50 -0700 (PDT)
-X-Received: by 10.182.28.41 with SMTP id y9mr15430427obg.14.1457890850905;
-        Sun, 13 Mar 2016 10:40:50 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
-        by gmr-mx.google.com with ESMTPS id i133si1018987ywe.7.2016.03.13.10.40.50
+Received: by 10.28.11.133 with SMTP id 127ls431421wml.45.canary; Sun, 13 Mar
+ 2016 10:28:50 -0700 (PDT)
+X-Received: by 10.194.84.40 with SMTP id v8mr2399666wjy.2.1457890130031;
+        Sun, 13 Mar 2016 10:28:50 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v68si436665wmd.1.2016.03.13.10.28.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 10:40:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
+        Sun, 13 Mar 2016 10:28:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x244.google.com with SMTP id q184so5411931qkb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 10:40:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=X9MxBRreI/F2rEbl/OGtL6gi29plcoMrPmvGLCRr4lc=;
-        b=iDJUAA73MzS4A3LoWoGXV3jacWEznU1W0G0zRG83eU+CIyf6hWZu1IJ9dP/clP/Glw
-         3cqXNNyMRP7DTSvmzqxGoPkTzdXqZvhKugzJC/eZy4bRya4G/5RLZQBTVXF6gRhPXnN9
-         5z9MEBrm2Cv9Cdu6isUFW3viQWb6HMo5ZhcYNvXWB21AslV/CgK5xFJoCKBZv3ljJE1E
-         AMaBzV4pIxn8s364Ybb8mL7gXD0Z52dcQ3/NK7xEuuDXnv1xIesSBTuEIjr0nndUotOj
-         RvJrkr6dz4W9ggITip0hna4dUr6/OJ4AWmcYDBLBBmOVQ3FpDYk9OeA2UJSqMR5XA5tz
-         CCkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=X9MxBRreI/F2rEbl/OGtL6gi29plcoMrPmvGLCRr4lc=;
-        b=aAMNky2jIxa9t+BMM0OHidReyMAXEO/lgJSJ1zMtY7e+1R4t86daV+pZQyGFOqoIxR
-         Urt5LAzKng+wvH+grccEOgEkiqXlVjyeeH9Id7J99eKl4/SFDzPFFP9qXbdb3yAfoCHL
-         8uM+TdSYbpwKhq3oKVolawd9SaguZqbPrl7ICbK7ayNRFfiqs46lN62Xy64FTiFRzock
-         OgspNnv/pg39jKyyvwabbmRvA8s6dXVbPP3hoWqN9e468tvkRsji1GwkNYPTEH0hOl42
-         eGTtQLU2F/+qLOaXnkhpavsRvKVAtHslVTW9nTxMefEh0bZXgtPrDF99qLU1misfouNY
-         cKLw==
-X-Gm-Message-State: AD7BkJIZ0VG0VPBdn6hgpPdzIA7+KWd9ibxDP9P58gPv4za6sdUOKkxVNcirWBGYdZxl2Q==
-X-Received: by 10.55.72.198 with SMTP id v189mr25360580qka.33.1457890850586;
-        Sun, 13 Mar 2016 10:40:50 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([2804:14d:ac80:19e9:b6b6:76ff:fe71:ca4b])
-        by smtp.gmail.com with ESMTPSA id 139sm8488724qhh.33.2016.03.13.10.40.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 10:40:50 -0700 (PDT)
-Date: Sun, 13 Mar 2016 14:40:47 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/8] staging: dgnc: fixes multiple coding style issues
-Message-ID: <cover.1457890698.git.juliana.orod@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,332,1454972400"; 
+   d="scan'208";a="168437165"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Mar 2016 18:28:49 +0100
+Date: Sun, 13 Mar 2016 18:28:48 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Juliana Rodrigues <juliana.orod@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 8/8] staging: dgnc: renames TtyRefCnt
+ variable to avoid camelcase
+In-Reply-To: <64e3b81be7b8fd1ffcc9bfe1b565972a7dabc018.1457888423.git.juliana.orod@gmail.com>
+Message-ID: <alpine.DEB.2.02.1603131828390.2064@localhost6.localdomain6>
+References: <cover.1457888423.git.juliana.orod@gmail.com> <64e3b81be7b8fd1ffcc9bfe1b565972a7dabc018.1457888423.git.juliana.orod@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch aims to fix multiple checkpatch.pl issues and 
-warnings in dgnc driver, mostly on dgnc_driver.h and 
-dgnc_tty.c files. 
+On Sun, 13 Mar 2016, Juliana Rodrigues wrote:
 
-Changes in v2:
-  - Fixed typo 
+> This patch renames TtyRefCnt variable in dgnc_driver.h
+> in order to fix a camelcase checkpatch issue:
+> 
+> HECK: Avoid CamelCase: <TtyRefCnt>
 
-Juliana Rodrigues (8):
-  staging: dgnc: renamed SerialDriver to avoid camelcase
-  staging: dgnc: renamed SerialName to avoid camelcase
-  staging: dgnc: fixed multiple line over 80 characters warning
-  staging: dgnc: renames PrintName variable to avoid camelcase
-  staging: dgnc: renames PrintDriver variable to avoid camelcase
-  staging: dgnc: renames dgnc_Serial_Major variable to avoid camelcase
-  staging: dgnc: renames dgnc variable to avoid camelcase
-  staging: dgnc: renames TtyRefCnt variable to avoid camelcase
+The C disappeared.
 
- drivers/staging/dgnc/dgnc_driver.h |  14 ++--
- drivers/staging/dgnc/dgnc_tty.c    | 151 +++++++++++++++++++------------------
- 2 files changed, 86 insertions(+), 79 deletions(-)
+julia
 
--- 
-2.7.2
-
+> +       uint            TtyRefCnt;
+> 
+> Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+> ---
+>  drivers/staging/dgnc/dgnc_driver.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+> index f18d40a..a37e16b 100644
+> --- a/drivers/staging/dgnc/dgnc_driver.h
+> +++ b/drivers/staging/dgnc/dgnc_driver.h
+> @@ -216,7 +216,7 @@ struct dgnc_board {
+>  	uint		dgnc_serial_major;
+>  	uint		dgnc_transparent_print_major;
+>  
+> -	uint		TtyRefCnt;
+> +	uint		tty_ref_cnt;
+>  
+>  	u16		dpatype;	/* The board "type",
+>  					 * as defined by DPA
+> -- 
+> 2.7.2
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/64e3b81be7b8fd1ffcc9bfe1b565972a7dabc018.1457888423.git.juliana.orod%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
