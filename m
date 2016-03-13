@@ -1,121 +1,116 @@
-X-GM-THRID: 6259688797986881536
-X-Received: by 10.182.16.199 with SMTP id i7mr18575610obd.44.1457447371901;
-        Tue, 08 Mar 2016 06:29:31 -0800 (PST)
+X-GM-THRID: 6261397198909472768
+X-Received: by 10.66.122.101 with SMTP id lr5mr13643334pab.3.1457845344073;
+        Sat, 12 Mar 2016 21:02:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.22.202 with SMTP id 68ls374411qgn.3.gmail; Tue, 08 Mar
- 2016 06:29:31 -0800 (PST)
-X-Received: by 10.140.99.106 with SMTP id p97mr21231973qge.13.1457447371421;
-        Tue, 08 Mar 2016 06:29:31 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id yd9si505758pab.1.2016.03.08.06.29.31
+Received: by 10.140.33.162 with SMTP id j31ls3610340qgj.88.gmail; Sat, 12 Mar
+ 2016 21:02:23 -0800 (PST)
+X-Received: by 10.141.7.2 with SMTP id j2mr1591048qhd.10.1457845343240;
+        Sat, 12 Mar 2016 21:02:23 -0800 (PST)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-qg0-x22d.google.com (mail-qg0-x22d.google.com. [2607:f8b0:400d:c04::22d])
+        by gmr-mx.google.com with ESMTPS id w69si989413ywa.3.2016.03.12.21.02.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 06:29:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Sat, 12 Mar 2016 21:02:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) client-ip=2607:f8b0:400d:c04::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::22d as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id fy10so13764649pac.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 06:29:31 -0800 (PST)
+Received: by mail-qg0-x22d.google.com with SMTP id y89so129943143qge.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 21:02:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=TS4U8eKvl38KVXX8/kavJlv21B5tHqW/jd3RBjsk4Eg=;
-        b=ltbq7t7OdTnwnju5MDXBvgic0bUK+YThiRb6Lqq7/XEY7be0G27ywgF//7oYsEpFJw
-         m7ZQr8x3Ex3nc1+pbTld7qAsSHNS0q8/BTmimhiuogiv+QGw2gLx5Myjh4DniJRgUuOL
-         PpoOYe+xqOr3hp3phZO+uwbotP+W/rmTPer4m/sogyJNJ+w/ZEUrhWZIMbynmreA1nec
-         l2CMV4y77TJLESNE9MtDCmrEohFzdJ46gN4jwpAfT6fgYKsv1PPvaxPFgpgvqVK4yi/s
-         ghZjegMBcGcCi5q4Z1Sf3bY/v+nZDPn9mWlf3R8nlikm8/9igsfzCWnGcwgb3oofNLoT
-         dlwg==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=DsCCJ5PL6q4THnunLUqaPvWwcag2PfO7oKDwJ3G0QmY=;
+        b=vrJRThYOtHqWAacE+zGGgYrTF5RtS5FgixwrcH/299iDHPcA7vmD++S02OtGo2D4fN
+         xpC81Jvi9DkDrXG26uwN2mQvppA2Ak7HuxcL9va9nE65EAahn1lYsqO85Jz6NyPkX2h3
+         FpMs7Es1ibBP4yJtim6WWy1cG9Jwafy50n7pTS6htfTMcFfgQNzlqvfCPhIMuLHDwxsC
+         0NZ5LdNbRjdTuGWWT0B/+3z/sX2zBX8otx6IQwkDNrduU03JqqLG6F9DpBraiMaBSceh
+         aqDcnaFWu+HN2skYXqNdL7YhffdugYD/mJ8k7opIKpw4kChN/0OSaBdcUQM1LLD6dGM5
+         Ducw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=TS4U8eKvl38KVXX8/kavJlv21B5tHqW/jd3RBjsk4Eg=;
-        b=VL9yGqAKV5Q1KOcxCVusCIdK6wN5eSnloEe5tv3t8mAzrsWvsTLtd6hSF4JRy9txM0
-         X6ouxjkFqMctkS0JvS+3GLQiL22vJZ+iyM1yRFDLldOJA86CIgdQqV7LflmDaC6q5TLL
-         Nv9uTrh1KLXY6x0oEqg6F2Z8rwjvEGZ6rDJnC9QDRkDTtO2+0uuVzfaa4dovegaTwW7s
-         zQkYmPWfbVuN/MMdWPaIkScLtNuz/1IsVWNfhLe48NMldQU92FxUY36jMkAQsaWNqVkP
-         1jQbnfRufiQ2TmBzEhXgD0uGXZ9TUupCSJ+MouEkgqMhCYQIJbguBPzaeSDECcnzc7fS
-         8EIA==
-X-Gm-Message-State: AD7BkJLlv03dxK9qKlDDv5zwQYefOuBOj6iO6v6JrlyTKHqZpQ2j9rmKpWCFlN9K3xiK1Q==
-X-Received: by 10.66.190.131 with SMTP id gq3mr41644391pac.42.1457447371246;
-        Tue, 08 Mar 2016 06:29:31 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r65sm5525275pfa.27.2016.03.08.06.29.25
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=DsCCJ5PL6q4THnunLUqaPvWwcag2PfO7oKDwJ3G0QmY=;
+        b=gPUrdQwC2Lma0LhDA9EnWXjM/w9/Djt9qTMZxAlzBqvzMsaIP6lbZ52RbRgBQrsLxL
+         dPopqGDJODkexHG9syIqsZ4MD3cFcCshr9jj9P6aafkZmdzAOOZI4p5Q8sN+KqIXSYur
+         cVvEQT0SsPyT1LIE2brywBt8E1AAJDGxPfeTA897ECW+IWSjE/gWriI8rp3YCI53CkLE
+         DSKmL9uyN+4VsntWXMXy1rFWkRsG+dov+NP4Iez7ZGH8ORCq+FvphvObrmff6pzd4ydo
+         6QiowrE1wj33p0tdlm1yBs16ohqHX7c4M3hJ1rvsXiu+p3g6IJdJ2ZrlGiPpLVd6trei
+         qhwg==
+X-Gm-Message-State: AD7BkJKUmDAgj4Oj0bPBiadNm/B/Aqc43oZGxbgqIxBmAUfMYvIbIQPR8UL7+iP88HX5XQ==
+X-Received: by 10.140.93.247 with SMTP id d110mr21769971qge.28.1457845342894;
+        Sat, 12 Mar 2016 21:02:22 -0800 (PST)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([191.191.241.196])
+        by smtp.gmail.com with ESMTPSA id 123sm7478262qhu.22.2016.03.12.21.02.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 06:29:25 -0800 (PST)
-Date: Tue, 8 Mar 2016 19:47:13 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        Sat, 12 Mar 2016 21:02:22 -0800 (PST)
+Date: Sun, 13 Mar 2016 02:02:17 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lnet: router:  Use list_for_each_entry_safe
-Message-ID: <20160308141713.GA30447@Karyakshetra>
+Subject: [PATCH v2 2/2] staging: dgnc: fixed variable call
+Message-ID: <6934e05075713df777373675e2c8263d7f0a4808.1457844581.git.juliana.orod@gmail.com>
+References: <cover.1457844581.git.juliana.orod@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1457844581.git.juliana.orod@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+This patch fixes dgnc_major_transparent_print_registered
+in dgnc_tty.c that was previously camelcased.
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
-
-This was done with Coccinelle.
-
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
-
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/lustre/lnet/lnet/router.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/dgnc/dgnc_tty.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/lustre/lnet/lnet/router.c b/drivers/staging/lustre/lnet/lnet/router.c
-index 6a44601..61459cf 100644
---- a/drivers/staging/lustre/lnet/lnet/router.c
-+++ b/drivers/staging/lustre/lnet/lnet/router.c
-@@ -1352,6 +1352,7 @@ lnet_rtrpool_free_bufs(lnet_rtrbufpool_t *rbp, int cpt)
- 	int npages = rbp->rbp_npages;
- 	struct list_head tmp;
- 	lnet_rtrbuf_t *rb;
-+	lnet_rtrbuf_t *temp;
-
- 	if (!rbp->rbp_nbuffers) /* not initialized or already freed */
- 		return;
-@@ -1368,8 +1369,7 @@ lnet_rtrpool_free_bufs(lnet_rtrbufpool_t *rbp, int cpt)
- 	lnet_net_unlock(cpt);
-
- 	/* Free buffers on the free list. */
--	while (!list_empty(&tmp)) {
--		rb = list_entry(tmp.next, lnet_rtrbuf_t, rb_list);
-+	list_for_each_entry_safe(rb, temp, &tmp, rb_list) {
- 		list_del(&rb->rb_list);
- 		lnet_destroy_rtrbuf(rb, npages);
+diff --git a/drivers/staging/dgnc/dgnc_tty.c b/drivers/staging/dgnc/dgnc_tty.c
+index c723fab..da2c7ed 100644
+--- a/drivers/staging/dgnc/dgnc_tty.c
++++ b/drivers/staging/dgnc/dgnc_tty.c
+@@ -273,7 +273,7 @@ int dgnc_tty_register(struct dgnc_board *brd)
+ 	 */
+ 	tty_set_operations(&brd->PrintDriver, &dgnc_tty_ops);
+ 
+-	if (!brd->dgnc_Major_TransparentPrint_Registered) {
++	if (!brd->dgnc_major_transparent_print_registered) {
+ 		/* Register Transparent Print devices */
+ 		rc = tty_register_driver(&brd->PrintDriver);
+ 		if (rc < 0) {
+@@ -282,7 +282,7 @@ int dgnc_tty_register(struct dgnc_board *brd)
+ 				rc);
+ 			return rc;
+ 		}
+-		brd->dgnc_Major_TransparentPrint_Registered = true;
++		brd->dgnc_major_transparent_print_registered = true;
  	}
---
-2.1.4
+ 
+ 	dgnc_BoardsByMajor[brd->SerialDriver.major] = brd;
+@@ -420,7 +420,7 @@ void dgnc_tty_uninit(struct dgnc_board *brd)
+ 		brd->dgnc_major_serial_registered = false;
+ 	}
+ 
+-	if (brd->dgnc_Major_TransparentPrint_Registered) {
++	if (brd->dgnc_major_transparent_print_registered) {
+ 		dgnc_BoardsByMajor[brd->PrintDriver.major] = NULL;
+ 		brd->dgnc_TransparentPrint_Major = 0;
+ 		for (i = 0; i < brd->nasync; i++) {
+@@ -430,7 +430,7 @@ void dgnc_tty_uninit(struct dgnc_board *brd)
+ 			tty_unregister_device(&brd->PrintDriver, i);
+ 		}
+ 		tty_unregister_driver(&brd->PrintDriver);
+-		brd->dgnc_Major_TransparentPrint_Registered = false;
++		brd->dgnc_major_transparent_print_registered = false;
+ 	}
+ 
+ 	kfree(brd->SerialDriver.ttys);
+-- 
+2.7.2
 
 
