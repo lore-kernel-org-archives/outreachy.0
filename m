@@ -1,71 +1,63 @@
 X-GM-THRID: 6261863495109705728
-X-Gmail-Labels: Topic type: DISCUSSION
-X-Received: by 10.140.154.1 with SMTP id a1mr18877809qha.14.1457970283112;
-        Mon, 14 Mar 2016 08:44:43 -0700 (PDT)
+X-Received: by 10.28.232.155 with SMTP id f27mr1869907wmi.0.1457954218642;
+        Mon, 14 Mar 2016 04:16:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.98 with SMTP id k89ls4048026qgk.69.gmail; Mon, 14 Mar
- 2016 08:44:41 -0700 (PDT)
-X-Received: by 10.31.11.75 with SMTP id 72mr18653069vkl.2.1457970281349;
-        Mon, 14 Mar 2016 08:44:41 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id tu5si2622188pab.2.2016.03.14.08.44.41
+Received: by 10.28.23.149 with SMTP id 143ls532931wmx.16.canary; Mon, 14 Mar
+ 2016 04:16:58 -0700 (PDT)
+X-Received: by 10.194.19.195 with SMTP id h3mr2795333wje.1.1457954218118;
+        Mon, 14 Mar 2016 04:16:58 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h187si484646wme.0.2016.03.14.04.16.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Mar 2016 08:44:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Mon, 14 Mar 2016 04:16:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-170-35-168.hsd1.wa.comcast.net [50.170.35.168])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B5C63C19;
-	Mon, 14 Mar 2016 15:44:40 +0000 (UTC)
-Date: Mon, 14 Mar 2016 08:44:40 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: tejaswini allikanti <tejaswini.allikanti@gmail.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,335,1454972400"; 
+   d="scan'208";a="207632566"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Mar 2016 12:16:57 +0100
+Date: Mon, 14 Mar 2016 12:16:58 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: tejaswini allikanti <tejaswini.allikanti@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Unable to clone Git Repository
-Message-ID: <20160314154440.GA10573@kroah.com>
+In-Reply-To: <0f7561c0-b6ef-4179-9f5e-f2ee3d2d53f8@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1603141210450.2688@hadrien>
 References: <0f7561c0-b6ef-4179-9f5e-f2ee3d2d53f8@googlegroups.com>
- <alpine.DEB.2.10.1603141210450.2688@hadrien>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.10.1603141210450.2688@hadrien>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Mon, Mar 14, 2016 at 12:16:58PM +0100, Julia Lawall wrote:
-> 
-> 
-> On Mon, 14 Mar 2016, tejaswini allikanti wrote:
-> 
-> > Heyy
-> > I am unable to clone the Greg Kroah-Hartman's staging tree repository.It is
-> > showing the error 'unable to connect to git.kernel.org' although i am
-> > connected to the internet
-> > please look into the matter ASAP
-> 
-> What command did you use?  I just tried
-> 
-> git clone git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-> 
-> and had no problem.  The problem may be on your side.
-> 
-> Maybe you will have more luck with the following:
-> 
-> git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging
-> 
-> I'm not sure that it is up to date, though.  On the web page
-> 
-> https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging/
-> 
-> if I click on staging-testing, I get a patch dated March 2 and committed
-> March 5, while I have more recent patches from git.kernel.org
 
-googlesource.com seems to be out of sync right now, I'd rely on
-git.kernel.org if at all possible.
 
-thanks,
+On Mon, 14 Mar 2016, tejaswini allikanti wrote:
 
-greg k-h
+> Heyy
+> I am unable to clone the Greg Kroah-Hartman's staging tree repository.It is
+> showing the error 'unable to connect to git.kernel.org' although i am
+> connected to the internet
+> please look into the matter ASAP
+
+What command did you use?  I just tried
+
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+
+and had no problem.  The problem may be on your side.
+
+Maybe you will have more luck with the following:
+
+git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging
+
+I'm not sure that it is up to date, though.  On the web page
+
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging/
+
+if I click on staging-testing, I get a patch dated March 2 and committed
+March 5, while I have more recent patches from git.kernel.org
+
+julia
 
