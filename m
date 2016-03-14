@@ -1,97 +1,89 @@
-X-GM-THRID: 6260470424532942848
-X-Received: by 10.66.55.74 with SMTP id q10mr3277969pap.12.1457629358048;
-        Thu, 10 Mar 2016 09:02:38 -0800 (PST)
+X-GM-THRID: 6261874986123788288
+X-Received: by 10.66.236.199 with SMTP id uw7mr17826219pac.47.1457956383615;
+        Mon, 14 Mar 2016 04:53:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.143.40 with SMTP id sb8ls142892igb.4.canary; Thu, 10 Mar
- 2016 09:02:37 -0800 (PST)
-X-Received: by 10.107.167.148 with SMTP id q142mr3369291ioe.17.1457629357335;
-        Thu, 10 Mar 2016 09:02:37 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id 12si681745pfb.1.2016.03.10.09.02.37
+Received: by 10.50.7.71 with SMTP id h7ls876278iga.16.canary; Mon, 14 Mar 2016
+ 04:53:03 -0700 (PDT)
+X-Received: by 10.66.102.8 with SMTP id fk8mr17963410pab.44.1457956383193;
+        Mon, 14 Mar 2016 04:53:03 -0700 (PDT)
+Return-Path: <heenasirwani@gmail.com>
+Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
+        by gmr-mx.google.com with ESMTPS id ui7si3201941pab.0.2016.03.14.04.53.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Mar 2016 09:02:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Mon, 14 Mar 2016 04:53:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of heenasirwani@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
+       spf=pass (google.com: domain of heenasirwani@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=heenasirwani@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id fl4so71197369pad.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Mar 2016 09:02:37 -0800 (PST)
+Received: by mail-pf0-x231.google.com with SMTP id x3so41050598pfb.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 14 Mar 2016 04:53:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=NF51Thwf91ZbQznHzhCKtoCJUmjfmsXK4zxG9oxNDFU=;
-        b=Mq2URnx6cOj/nw6ic6YGnOV2gWdQm+wEddPQeSO013Ck2DuYadTsrCapTPie0t60Jt
-         E7cG8EAQpN7ph/N7t2QhbGNFeb8msa1t/p2VOUfBJFg47FYT9GBlfppZYLgSSzgZ3ird
-         5a7mfwaibk135RinrTWBkU5TkRy/1kWXpAcI8iaKzSKqevUkgs3r/RaqxfL5VGse7/zz
-         RNTbF2QnYrl0tUZVTbblGpFq8PCrWmUz5JUAcL0m4VSkb95RG+PfnQXP68WrmcouEUG6
-         kOJZJ6GH0dfh6QSH4nd5MmUOyBnR4mBCbj1nQSnQF9Nf7luju9Q16eNuAUIfJ9xSw1mR
-         zAnQ==
+        bh=yxr0PY9Jxi0fA0QGGGX/L2qAdDYPQIm6STAVOP2kxts=;
+        b=GwrOJToCeEAmrlkAHxOj33Rd0GAoxSM7BsRCoN3nfE5xuQciCIA/Z4GzM78u4/Mr9d
+         bELpUGmRd9FWYSOiDRgdldazUJmynSJLZQIR+aJmpSpNv5OwQLgzulIs0kuaf/l7vcKz
+         GwphOID+9TO6LNacEdWgizO/ETbO0qZQ/dZg3LkVkRkOlmAk7nsIGuvfGytPgSmWxg2y
+         DCyXreaVtX9FhGfmWLbXIlVb3CMKGlnEF5z0mojYwAbu8B0r4tlsF3eyLMj/2BNc66vK
+         RPXAVthFSJlTIaK0wqrzDW4bMqZdu0S7mNVF6buJmqNVZn4heB/1WmfJh1pH1nKm6R9T
+         N7vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=NF51Thwf91ZbQznHzhCKtoCJUmjfmsXK4zxG9oxNDFU=;
-        b=RuRlGRXQ0MqncdTsUM9Eou8WhzPmyJ6k1fW3yCMqWWR+jKwfuSCUHPxLV3c59TofjS
-         NLuhd6irvlAxq70Cg5wYJueu+/4868BTQMi4edWkKoP95v2jy8J/pyxxoicMwjwOpx9X
-         9Ro53AA5mCwOQ5j+dP4V4tjBjCkD4vWZgj5+70m8exTzie+6MZGIyvZG0EaiGIwkUUr+
-         FU/kKZjMuwTgeLiQa7hT2kLrzfk7n8RHd1DG89fiFNr1/Q7Rf8ZW6DPmowIyjsV8tSFD
-         HdIXoNPdQe6HVXm5gSdtEvh/HpKqGpdgiDMMlW64Lrn6vo82NZIXHpe8ObxZHHZQE0Q8
-         xGNg==
-X-Gm-Message-State: AD7BkJL+ErAtaiCTf/aFMOAZa7povnAHLpbeig/u57/76r1TRtLWMdMM8E+y708RgnoP9Q==
-X-Received: by 10.66.66.108 with SMTP id e12mr6453604pat.33.1457629357168;
-        Thu, 10 Mar 2016 09:02:37 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 3sm6824018pfn.59.2016.03.10.09.02.36
+        bh=yxr0PY9Jxi0fA0QGGGX/L2qAdDYPQIm6STAVOP2kxts=;
+        b=BqqkHCSqFXGh/Ju3WytVUSxLECb1w2XVdJxrh3lnUnY9+HRYkFTgQxbtnQAH/8tPSa
+         YNQ5WhBS5ppdREy9LbcbMLUJwS3tdIwtZWMWQCtzvI8ODrWg63rQOYg7AFiL/1ujQQo3
+         xPbxxBzNTcNuyfgpCCTCiLJ53TLn4FfVGL7vDv1gQmhAPOFbck8c67HkmjBndv/5lotu
+         XWBXkX30Z690ilHG7wJiazDBgZyx88iUV+X8MiKnmDUfl7NfUdssYxhqcz/KJ9nf6WvC
+         74uOs04iubBfCPs6M9iVxBu8FKk4aaphQNveYQY93DnxOmTuHhZJcbPqIYlBc8NIye4Q
+         mhVQ==
+X-Gm-Message-State: AD7BkJLg7IDs2chi8YnGHvSPUWI/DdyliVqgq585oi1sbSocWBd5ZK4DAChNbnSUC07BsQ==
+X-Received: by 10.98.12.154 with SMTP id 26mr29418838pfm.20.1457956383064;
+        Mon, 14 Mar 2016 04:53:03 -0700 (PDT)
+Return-Path: <heenasirwani@gmail.com>
+Received: from heena ([114.143.194.190])
+        by smtp.gmail.com with ESMTPSA id ah10sm31795828pad.23.2016.03.14.04.53.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 10 Mar 2016 09:02:36 -0800 (PST)
-Date: Thu, 10 Mar 2016 22:20:25 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        Mon, 14 Mar 2016 04:53:02 -0700 (PDT)
+Date: Mon, 14 Mar 2016 17:23:00 +0530
+From: Heena Sirwani <heenasirwani@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Remove unnecessary else after return
-Message-ID: <20160310165025.GA18715@Karyakshetra>
+Subject: [PATCH] staging: media: omap4iss: Match alignment with open
+ parenthesis.
+Message-ID: <20160314115259.GA10739@heena>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch fixes the checkpatch warning that else is not generally
-useful after a break or return.
+The following patch fixes the following checkpatch.pl warning:
 
-This was done using Coccinelle:
-@@
-expression e2;
-statement s1;
-@@
-if(e2) { ... return ...; }
--else
-         s1
+CHECK: Alignment should match open parenthesis
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Heena Sirwani <heenasirwani@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mlme.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/media/omap4iss/iss.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 1b022db..b6aa04d 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -468,8 +468,7 @@ static int is_desired_network(struct _adapter *adapter,
- 		    pnetwork->network.IELength, wps_ie,
- 		    &wps_ielen))
- 			return true;
--		else
--			return false;
-+		return false;
+diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+index dea67d9..9e3cdb0 100644
+--- a/drivers/staging/media/omap4iss/iss.c
++++ b/drivers/staging/media/omap4iss/iss.c
+@@ -1274,7 +1274,7 @@ static int iss_register_entities(struct iss_device *iss)
+ 		}
+ 
+ 		ret = media_create_pad_link(&sensor->entity, 0, input, pad,
+-					       flags);
++					    flags);
+ 		if (ret < 0)
+ 			goto done;
  	}
- 	if ((psecuritypriv->PrivacyAlgrthm != _NO_PRIVACY_) &&
- 		    (pnetwork->network.Privacy == 0))
---
-2.1.4
+-- 
+1.9.1
 
 
