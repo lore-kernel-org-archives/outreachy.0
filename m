@@ -1,104 +1,369 @@
-X-GM-THRID: 6802257334372401152
-X-Received: by 2002:ac2:5198:: with SMTP id u24mr10281996lfi.137.1583773953769;
-        Mon, 09 Mar 2020 10:12:33 -0700 (PDT)
+X-GM-THRID: 6262353320713650176
+X-Received: by 10.25.154.129 with SMTP id c123mr51371lfe.1.1458081810271;
+        Tue, 15 Mar 2016 15:43:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8647:: with SMTP id i7ls1912801ljj.11.gmail; Mon, 09 Mar
- 2020 10:12:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vteVKpXadFq7ywKAmoOkZujY2RchGXRMVldz87F/OY1rCry2FNoIMbO/H2INzamEQn0694s
-X-Received: by 2002:a2e:9e19:: with SMTP id e25mr10607469ljk.179.1583773952456;
-        Mon, 09 Mar 2020 10:12:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583773952; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wWivRNQBObeHU1A4V43cUx7qHAe5FWISMmTMdHCrNGlWxAhlvMM7YIf1q1Z9tOtx93
-         ixEryf6ipd4SI2IbyW3+Ivjk9QoBu3xHmVDSA1MYlPg7p6ifzxF516u0bUDFRhWz8U4F
-         k8xrJF4n4CtcFE8oEWTsvWowWhHUMOIuCPJBn9BgGxciuGCdUu1VeeA6AIhssraz2I8P
-         2+XEqzzay7mZ7yyRN8cLcXmae0hmvPD0OUUagmH0/To/IT0Vriij3DUn3btYSq3Lv0cx
-         5ygNn2iHa61g9lKuqqiIqND/81TwxHbcYtbTwpIxShmbbDW0nlpRoVJNdLUL/hBJPPIp
-         yhLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1WqUU7MXlSk/kVuhLVwaxMSZHEpygGtldCxSzvaTZKE=;
-        b=QuWLcwjSPVh9+FGuJWXXTK2jX7WAnfxpnC9QQnUksfSPXGsQbdIzBz9Dt5cYEugdNi
-         2IYoX+VuuSouWpRvCQVWMhnt0UCQWuf/0X/2/oVtVA3jIlM516ZiVYx/+jdEJBsk7ZRh
-         9Gv+1kBmHuad1+n6yvTSVHph7bWx7zmXdTHS20yVsVwY2CiUgBb+u1I1lnFEahnMoWu4
-         B/gwcaejOwJ9LwIAM2DKT2sITOZ4Ep0q8lHVuMVUJOAcZFDxA9cfTuREswsGHko4dEF1
-         NxmlfU2YBsP/JaZ+begeKa4SyiObuEXViV1OmDlz+kFn0PG6B4cq1+W6ihWfOvy6Kus9
-         1Ydg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b="S/gLNJne";
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id r6si584115ljk.1.2020.03.09.10.12.32
+Received: by 10.25.20.26 with SMTP id k26ls112949lfi.80.gmail; Tue, 15 Mar
+ 2016 15:43:29 -0700 (PDT)
+X-Received: by 10.25.160.207 with SMTP id j198mr54004lfe.4.1458081809510;
+        Tue, 15 Mar 2016 15:43:29 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c140si1022634wmh.1.2016.03.15.15.43.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Mar 2020 10:12:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 15 Mar 2016 15:43:29 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b="S/gLNJne";
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wr1-x443.google.com with SMTP id m9so3220296wro.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 10:12:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=1WqUU7MXlSk/kVuhLVwaxMSZHEpygGtldCxSzvaTZKE=;
-        b=S/gLNJne4PHhCsZMPLQi2rZVAhkgt1yA8vnsBtx3kpiHSyQQZqAkHd6iq/w05FKbHH
-         HSIwyrSXvRJcirCL9oL2ypdahkVlCeO9ZoPPfeIDO7i0E0GDHi1BKaYfAxuO2uGqRrV+
-         2BImTB4jc45LyJP6YhXul5S1HeTlhGh+gIzQk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=1WqUU7MXlSk/kVuhLVwaxMSZHEpygGtldCxSzvaTZKE=;
-        b=dUcKR8XG7utagNCFkXBgR7SRxhQdkyvO35qWD6a71nW1kEP+fYSnGdOOWqpEscWbBg
-         ISgL6i5wbC6mJYjm6G6HAC3yRL0WwWnxby/v9+ZfxEr/pSyiaJhxsgFuyFhmRXl31jVs
-         J/xImRKlJeqMhXiL1S3OMtOsiAHJHa4t+pqiZYCsqAI00gmlfSRETdSFuljsuKKVpIzv
-         fW6HTfelSXNg6pA4HJKOpIo6lSj8QUvQ6hbwaxPo2vb0X9umEX5k0+BkYVlE3q3cS8kU
-         1MEkHeQNpiH8+KD9ljNAcsImfT6HiEHRU7l2SyNMo9eEtV10rnUJsVTG8vTntJsrgszc
-         sXeg==
-X-Gm-Message-State: ANhLgQ0qGvkIHMcuCHvDg+RXi0swOvgX/oDair71zkpEXpwPcXevr9OE
-	tYThkWKnHyD3ftG2uMkbFdDLOYD7YLYrBQ==
-X-Received: by 2002:a5d:4711:: with SMTP id y17mr18898249wrq.358.1583773951621;
-        Mon, 09 Mar 2020 10:12:31 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id j20sm201425wmj.46.2020.03.09.10.12.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Mar 2020 10:12:31 -0700 (PDT)
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	perex@perex.cz
-Subject: [PATCH] staging: hp: hp100.c: remove commented out code
-Date: Mon,  9 Mar 2020 18:12:24 +0100
-Message-Id: <20200309171224.5131-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,341,1454972400"; 
+   d="scan'208";a="168829786"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Mar 2016 23:43:28 +0100
+Date: Tue, 15 Mar 2016 23:43:27 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Alison Schofield <amsfield22@gmail.com>
+cc: Jonathan Cameron <jic23@kernel.org>, outreachy-kernel@googlegroups.com, 
+    linux-iio@vger.kernel.org
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: iio: isl29028: use regmap
+ to retrieve struct device
+In-Reply-To: <20160315223830.GA2120@d830.WORKGROUP>
+Message-ID: <alpine.DEB.2.02.1603152342340.2088@localhost6.localdomain6>
+References: <20160315184903.GA14115@d830.WORKGROUP> <56E88BFB.1050307@kernel.org> <20160315223830.GA2120@d830.WORKGROUP>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove unused code.
 
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
- drivers/staging/hp/hp100.c | 6 ------
- 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index e2f0b58e5dfd..b89c4dcf53f5 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -511,12 +511,6 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
- 	 *   0x2260 -> EISA HP, BusMaster (Shasta Chip)
- 	 */
- 
--#if 0
--	local_mode = 0x2270;
--	hp100_outw(0xfefe, OPTION_LSW);
--	hp100_outw(local_mode | HP100_SET_LB | HP100_SET_HB, OPTION_LSW);
--#endif
--
- 	/* hp100_mode value maybe used in future by another card */
- 	local_mode = hp100_mode;
- 	if (local_mode < 1 || local_mode > 4)
--- 
-2.17.1
+On Tue, 15 Mar 2016, Alison Schofield wrote:
 
+> On Tue, Mar 15, 2016 at 10:26:03PM +0000, Jonathan Cameron wrote:
+> > On 15/03/16 18:49, Alison Schofield wrote:
+> > > Driver includes struct regmap and struct device in its global data.
+> > > Remove the struct device and use regmap API to retrieve device info.
+> > > 
+> > > Simplified version of Coccinelle semantic patch used:
+> > > 
+> > > @ a @
+> > > identifier drvdata, r;
+> > > position p;
+> > > @@
+> > >   struct drvdata@p {
+> > >   ...
+> > >   struct regmap *r;
+> > >   ...
+> > >   };
+> > > 
+> > > @ b @
+> > > identifier a.drvdata, d;
+> > > position a.p;
+> > > @@
+> > >   struct drvdata@p {
+> > >   ...
+> > > - struct device *d;
+> > >   ...
+> > >   };
+> > > 
+> > > @ passed depends on b @
+> > > identifier a.drvdata, a.r, b.d, i, f;
+> > > @@
+> > >   f (..., struct drvdata *i ,...) {
+> > > + struct device *dev = regmap_get_device(i->r);
+> > >    <+...
+> > > -	   i->d
+> > > +	   dev
+> > >    ...+>
+> > >   }
+> > > 
+> > > Signed-off-by: Alison Schofield <amsfield22@gmail.com>
+> > A good little patch, but there are probably a few formatting cleanups
+> > that should be associated with it.  It results in shortening a few lines
+> > to the point that 'I think' (have counted wrong before!) that the whole
+> > functional call will now fit on one line.
+
+Indeed, Coccinelle tries hard (not always succeessfully) to add newlines 
+to make things fit into 80 characters, but makes no effprt at all to 
+do the opposite...
+
+julia
+
+> > 
+> > Those want to be done in here as well but will be a case of editing the
+> > result of the script to do it.  A lot of patches are a hybrid of automated
+> > and manual edits for exactly this reason.
+> > 
+> > I've fixed up the two cases I found and applied.  An annoying number 81 characters!
+> > 
+> > Pushed out as testing for the autobuilders to play with it.
+> > 
+> > Thanks,
+> > 
+> > Jonathan
+> 
+> Thanks Jonathan.  I see what you mean and will watch for it in future
+> patches. Do you want me to proof this and send a v2?
+> 
+> 
+> 
+> > > ---
+> > >  drivers/staging/iio/light/isl29028.c | 53 ++++++++++++++++++++----------------
+> > >  1 file changed, 30 insertions(+), 23 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/iio/light/isl29028.c b/drivers/staging/iio/light/isl29028.c
+> > > index 6e2ba45..0ef96e6 100644
+> > > --- a/drivers/staging/iio/light/isl29028.c
+> > > +++ b/drivers/staging/iio/light/isl29028.c
+> > > @@ -69,7 +69,6 @@ enum als_ir_mode {
+> > >  };
+> > >  
+> > >  struct isl29028_chip {
+> > > -	struct device		*dev;
+> > >  	struct mutex		lock;
+> > >  	struct regmap		*regmap;
+> > >  
+> > > @@ -166,20 +165,21 @@ static int isl29028_set_als_ir_mode(struct isl29028_chip *chip,
+> > >  
+> > >  static int isl29028_read_als_ir(struct isl29028_chip *chip, int *als_ir)
+> > >  {
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	unsigned int lsb;
+> > >  	unsigned int msb;
+> > >  	int ret;
+> > >  
+> > >  	ret = regmap_read(chip->regmap, ISL29028_REG_ALSIR_L, &lsb);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev,
+> > > +		dev_err(dev,
+> > >  			"Error in reading register ALSIR_L err %d\n", ret);
+> > >  		return ret;
+> > >  	}
+> > >  
+> > >  	ret = regmap_read(chip->regmap, ISL29028_REG_ALSIR_U, &msb);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev,
+> > > +		dev_err(dev,
+> > >  			"Error in reading register ALSIR_U err %d\n", ret);
+> > >  		return ret;
+> > >  	}
+> > > @@ -190,12 +190,13 @@ static int isl29028_read_als_ir(struct isl29028_chip *chip, int *als_ir)
+> > >  
+> > >  static int isl29028_read_proxim(struct isl29028_chip *chip, int *prox)
+> > >  {
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	unsigned int data;
+> > >  	int ret;
+> > >  
+> > >  	ret = regmap_read(chip->regmap, ISL29028_REG_PROX_DATA, &data);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "Error in reading register %d, error %d\n",
+> > > +		dev_err(dev, "Error in reading register %d, error %d\n",
+> > >  			ISL29028_REG_PROX_DATA, ret);
+> > >  		return ret;
+> > >  	}
+> > > @@ -218,13 +219,14 @@ static int isl29028_proxim_get(struct isl29028_chip *chip, int *prox_data)
+> > >  
+> > >  static int isl29028_als_get(struct isl29028_chip *chip, int *als_data)
+> > >  {
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	int ret;
+> > >  	int als_ir_data;
+> > >  
+> > >  	if (chip->als_ir_mode != MODE_ALS) {
+> > >  		ret = isl29028_set_als_ir_mode(chip, MODE_ALS);
+> > >  		if (ret < 0) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"Error in enabling ALS mode err %d\n", ret);
+> > >  			return ret;
+> > >  		}
+> > > @@ -251,12 +253,13 @@ static int isl29028_als_get(struct isl29028_chip *chip, int *als_data)
+> > >  
+> > >  static int isl29028_ir_get(struct isl29028_chip *chip, int *ir_data)
+> > >  {
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	int ret;
+> > >  
+> > >  	if (chip->als_ir_mode != MODE_IR) {
+> > >  		ret = isl29028_set_als_ir_mode(chip, MODE_IR);
+> > >  		if (ret < 0) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"Error in enabling IR mode err %d\n", ret);
+> > >  			return ret;
+> > >  		}
+> > > @@ -271,25 +274,26 @@ static int isl29028_write_raw(struct iio_dev *indio_dev,
+> > >  			      int val, int val2, long mask)
+> > >  {
+> > >  	struct isl29028_chip *chip = iio_priv(indio_dev);
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	int ret = -EINVAL;
+> > >  
+> > >  	mutex_lock(&chip->lock);
+> > >  	switch (chan->type) {
+> > >  	case IIO_PROXIMITY:
+> > >  		if (mask != IIO_CHAN_INFO_SAMP_FREQ) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"proximity: mask value 0x%08lx not supported\n",
+> > >  				mask);
+> > >  			break;
+> > >  		}
+> > >  		if (val < 1 || val > 100) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"Samp_freq %d is not in range[1:100]\n", val);
+> > >  			break;
+> > >  		}
+> > >  		ret = isl29028_set_proxim_sampling(chip, val);
+> > >  		if (ret < 0) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"Setting proximity samp_freq fail, err %d\n",
+> > >  				ret);
+> > >  			break;
+> > > @@ -299,19 +303,19 @@ static int isl29028_write_raw(struct iio_dev *indio_dev,
+> > >  
+> > >  	case IIO_LIGHT:
+> > >  		if (mask != IIO_CHAN_INFO_SCALE) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"light: mask value 0x%08lx not supported\n",
+> > >  				mask);
+> > >  			break;
+> > >  		}
+> > >  		if ((val != 125) && (val != 2000)) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"lux scale %d is invalid [125, 2000]\n", val);
+> > >  			break;
+> > >  		}
+> > >  		ret = isl29028_set_als_scale(chip, val);
+> > >  		if (ret < 0) {
+> > > -			dev_err(chip->dev,
+> > > +			dev_err(dev,
+> > >  				"Setting lux scale fail with error %d\n", ret);
+> > >  			break;
+> > >  		}
+> > > @@ -319,7 +323,7 @@ static int isl29028_write_raw(struct iio_dev *indio_dev,
+> > >  		break;
+> > >  
+> > >  	default:
+> > > -		dev_err(chip->dev, "Unsupported channel type\n");
+> > > +		dev_err(dev, "Unsupported channel type\n");
+> > >  		break;
+> > >  	}
+> > >  	mutex_unlock(&chip->lock);
+> > > @@ -331,6 +335,7 @@ static int isl29028_read_raw(struct iio_dev *indio_dev,
+> > >  			     int *val, int *val2, long mask)
+> > >  {
+> > >  	struct isl29028_chip *chip = iio_priv(indio_dev);
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	int ret = -EINVAL;
+> > >  
+> > >  	mutex_lock(&chip->lock);
+> > > @@ -370,7 +375,7 @@ static int isl29028_read_raw(struct iio_dev *indio_dev,
+> > >  		break;
+> > >  
+> > >  	default:
+> > > -		dev_err(chip->dev, "mask value 0x%08lx not supported\n", mask);
+> > > +		dev_err(dev, "mask value 0x%08lx not supported\n", mask);
+> > >  		break;
+> > >  	}
+> > >  	mutex_unlock(&chip->lock);
+> > > @@ -417,6 +422,7 @@ static const struct iio_info isl29028_info = {
+> > >  
+> > >  static int isl29028_chip_init(struct isl29028_chip *chip)
+> > >  {
+> > > +	struct device *dev = regmap_get_device(chip->regmap);
+> > >  	int ret;
+> > >  
+> > >  	chip->enable_prox  = false;
+> > > @@ -426,34 +432,34 @@ static int isl29028_chip_init(struct isl29028_chip *chip)
+> > >  
+> > >  	ret = regmap_write(chip->regmap, ISL29028_REG_TEST1_MODE, 0x0);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "%s(): write to reg %d failed, err = %d\n",
+> > > +		dev_err(dev, "%s(): write to reg %d failed, err = %d\n",
+> > >  			__func__, ISL29028_REG_TEST1_MODE, ret);
+> > >  		return ret;
+> > >  	}
+> > >  	ret = regmap_write(chip->regmap, ISL29028_REG_TEST2_MODE, 0x0);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "%s(): write to reg %d failed, err = %d\n",
+> > > +		dev_err(dev, "%s(): write to reg %d failed, err = %d\n",
+> > >  			__func__, ISL29028_REG_TEST2_MODE, ret);
+> > >  		return ret;
+> > >  	}
+> > >  
+> > >  	ret = regmap_write(chip->regmap, ISL29028_REG_CONFIGURE, 0x0);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "%s(): write to reg %d failed, err = %d\n",
+> > > +		dev_err(dev, "%s(): write to reg %d failed, err = %d\n",
+> > >  			__func__, ISL29028_REG_CONFIGURE, ret);
+> > >  		return ret;
+> > >  	}
+> > >  
+> > >  	ret = isl29028_set_proxim_sampling(chip, chip->prox_sampling);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "setting the proximity, err = %d\n",
+> > > +		dev_err(dev, "setting the proximity, err = %d\n",
+> > >  			ret);
+> > >  		return ret;
+> > >  	}
+> > >  
+> > >  	ret = isl29028_set_als_scale(chip, chip->lux_scale);
+> > >  	if (ret < 0)
+> > > -		dev_err(chip->dev,
+> > > +		dev_err(dev,
+> > >  			"setting als scale failed, err = %d\n", ret);
+> > There are a few cases in here that I 'think' will now fit on one line
+> > due to shortening from chip->dev to dev in the dev_err calls.
+> > 
+> > Would be nice to do this in this patch.
+> > >  	return ret;
+> > >  }
+> > > @@ -496,19 +502,19 @@ static int isl29028_probe(struct i2c_client *client,
+> > >  	chip = iio_priv(indio_dev);
+> > >  
+> > >  	i2c_set_clientdata(client, indio_dev);
+> > > -	chip->dev = &client->dev;
+> > >  	mutex_init(&chip->lock);
+> > >  
+> > >  	chip->regmap = devm_regmap_init_i2c(client, &isl29028_regmap_config);
+> > >  	if (IS_ERR(chip->regmap)) {
+> > >  		ret = PTR_ERR(chip->regmap);
+> > > -		dev_err(chip->dev, "regmap initialization failed: %d\n", ret);
+> > > +		dev_err(&client->dev, "regmap initialization failed: %d\n",
+> > > +			ret);
+> > >  		return ret;
+> > >  	}
+> > >  
+> > >  	ret = isl29028_chip_init(chip);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "chip initialization failed: %d\n", ret);
+> > > +		dev_err(&client->dev, "chip initialization failed: %d\n", ret);
+> > >  		return ret;
+> > >  	}
+> > >  
+> > > @@ -520,7 +526,8 @@ static int isl29028_probe(struct i2c_client *client,
+> > >  	indio_dev->modes = INDIO_DIRECT_MODE;
+> > >  	ret = devm_iio_device_register(indio_dev->dev.parent, indio_dev);
+> > >  	if (ret < 0) {
+> > > -		dev_err(chip->dev, "iio registration fails with error %d\n",
+> > > +		dev_err(&client->dev,
+> > > +			"iio registration fails with error %d\n",
+> > >  			ret);
+> > >  		return ret;
+> > >  	}
+> > > 
+> > 
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160315223830.GA2120%40d830.WORKGROUP.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
