@@ -1,86 +1,95 @@
 X-GM-THRID: 6262296437961261056
-X-Received: by 10.66.244.171 with SMTP id xh11mr3171334pac.32.1458139856220;
-        Wed, 16 Mar 2016 07:50:56 -0700 (PDT)
+X-Received: by 10.140.150.210 with SMTP id 201mr22760574qhw.28.1458054510941;
+        Tue, 15 Mar 2016 08:08:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.38.69 with SMTP id m66ls493916iom.89.gmail; Wed, 16 Mar
- 2016 07:50:55 -0700 (PDT)
-X-Received: by 10.107.166.7 with SMTP id p7mr3100456ioe.0.1458139855427;
-        Wed, 16 Mar 2016 07:50:55 -0700 (PDT)
-Return-Path: <htejun@gmail.com>
+Received: by 10.140.43.227 with SMTP id e90ls295525qga.74.gmail; Tue, 15 Mar
+ 2016 08:08:30 -0700 (PDT)
+X-Received: by 10.13.223.211 with SMTP id i202mr23289699ywe.4.1458054510119;
+        Tue, 15 Mar 2016 08:08:30 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
 Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
-        by gmr-mx.google.com with ESMTPS id y20si552857pfa.2.2016.03.16.07.50.55
+        by gmr-mx.google.com with ESMTPS id y20si4026733pfa.2.2016.03.15.08.08.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Mar 2016 07:50:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
+        Tue, 15 Mar 2016 08:08:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=htejun@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pf0-x236.google.com with SMTP id u190so77923848pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 16 Mar 2016 07:50:55 -0700 (PDT)
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x236.google.com with SMTP id 124so32459513pfg.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 15 Mar 2016 08:08:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=27gBvBqeIgFZNP3HC8sWfSsYi3Ywc1ewbgoKoLJr8/s=;
-        b=izo9pTcl913jIGJP4DFYnrLdz0xPx7dBYrdeq+s8zEvxk5Th6i8Af7bAJMadUKJSpg
-         KrC0g1G2JdD9NliTF1izmYphZp/dcsodXbOFpea1dobtrL4SkAa4UeCnnIhn5LzIyGw/
-         yOn/8DpyI9MApbbpOZPFOvMzMStS5ZX788c0nLOkGJQhE8JDQrmAQC08hlW0fpYUeWmX
-         5HsyryUuvVr/0hNzLCNfHEJ/OWavoCkwz9SEYQ/+xsofU+F49rr0FdJalCHO+5ZoPRKc
-         upYk4jqAIR8Nt+yzs2qqXeISMSn5Ql0gVvr4fhOLJDAF4J2KdydPpymWCyXLSsRng52Z
-         mPtA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HqxFBlx3rA29Ny6ZLodRRB1Y7Enhh9ygzEY5J4wE8vA=;
+        b=J0S6rAWBS4KuK8tmMjgIMyRcYgPd7ybAYn8R9khUez87LN2mTkZsXkDtCWjpVuKe61
+         5mIS9t6w8TlCvLszfyDjJemRxbFRTWXVSzOh52gveIfSWY0t3Y1AqA+1pVYWaf/AmIoV
+         EW+/yONGlAybCKnUA3QRu4n7ACFat2Mrf7dVBE99w6VNYibh978qVoFuPnchdaZlL3rM
+         bkJdVjPjBIwc2clE8F6ErTaFWiY6N1b00UTs+7ZPvY9CxMeU31hLTsmNfxY1i1TNu1DK
+         lzZsbVeXu5E6hpYxLkEjbx8gvs6s+EfPmOKo9squEaMv/WaroxPx8M97iZUSxZFN+XFD
+         p9eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=27gBvBqeIgFZNP3HC8sWfSsYi3Ywc1ewbgoKoLJr8/s=;
-        b=QE2ugdYv5AJknROZdXBxPO/7PBnwqSMMyprOXzGEkbOcd1hZIfU133DPq4xb2XIzMV
-         SrE/Mf0trEO8RsHS98hmEq89UgS1WcVdTzWEVHz7ovsomUj2s0/wR9UIorYHWGB9Qt+h
-         EBoek3CJF6T7Pd9Yzm3Ce/FmfQ/HlIkPwe3Hxb1ZPYosyGQkplnuQuLO46HUPK1v8ykp
-         7ncWWmINGxQ/asQSiU6b0ZRTKxpFXuEk1cc60UiHRfd+zMqoLS+1AkONmDyZ6I9J6R9u
-         Fx0va3QqixdHCXK5881cm4lAvXVHcU7vvuffuo7bDriSYvRBRHJGXsqTqBBQQ05IvJa5
-         1PVg==
-X-Gm-Message-State: AD7BkJIfX/7tQV4Dex+xSz50TSrIvRRHZ8l5kEgd5NjxlHFHtD1QBeKeVM+QW2KcyRXNlA==
-X-Received: by 10.66.244.233 with SMTP id xj9mr6654809pac.19.1458139855279;
-        Wed, 16 Mar 2016 07:50:55 -0700 (PDT)
-Return-Path: <htejun@gmail.com>
-Received: from localhost ([166.170.37.216])
-        by smtp.gmail.com with ESMTPSA id ml5sm6355554pab.2.2016.03.16.07.50.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Mar 2016 07:50:54 -0700 (PDT)
-Sender: Tejun Heo <htejun@gmail.com>
-Date: Wed, 16 Mar 2016 07:50:53 -0700
-From: Tejun Heo <tj@kernel.org>
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] can: mcp251x: Replace
- create_freezable_workqueue with alloc_workqueue
-Message-ID: <20160316145053.GE6980@mtj.duckdns.org>
-References: <20160315150824.GA2858@amitoj-Inspiron-3542>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=HqxFBlx3rA29Ny6ZLodRRB1Y7Enhh9ygzEY5J4wE8vA=;
+        b=emGLebi75vCzCYI1oY8a4hWqhpGdBLhROXu62iONqlqGHkywMt7drSJmBFTvMiK2CE
+         ZqLF4liX/Btm9u5WkgLf2fK/Z5sUPHKSgXJwnVf8M/qW0OiYKGVV+9bZIvhq3bUhg8EI
+         6lGkPYRHyRNbkpCwDraEo+CNE47gp2WnD13HBVkupKwY4agHLZlLCmgo2FJvmPSGr1M8
+         TbSTldAWxHteXDHtKsjnBrd7hW5hAWW1fn1c3ERBdM3gEpj+8mFp0SxYpyunS9IVnrQk
+         Fegj7u0uxusPn1j6ZpUvxL3UbIGpQatX9x7XwikHrmuJ+3COYLqOb5FHEvQ2p9B+zs8Q
+         DZ5Q==
+X-Gm-Message-State: AD7BkJJi2fncIkyKaAdnKeVVjGoutYAI/tbuwYnDyOutxd+TH7UbhvfQ513+5n+a8Y9shA==
+X-Received: by 10.66.66.108 with SMTP id e12mr47016471pat.33.1458054509879;
+        Tue, 15 Mar 2016 08:08:29 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([182.69.9.248])
+        by smtp.gmail.com with ESMTPSA id xn8sm40479393pab.15.2016.03.15.08.08.28
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 15 Mar 2016 08:08:29 -0700 (PDT)
+Date: Tue, 15 Mar 2016 20:38:24 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: tj@kernel.org
+Subject: [PATCH] can: mcp251x: Replace create_freezable_workqueue with
+ alloc_workqueue
+Message-ID: <20160315150824.GA2858@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160315150824.GA2858@amitoj-Inspiron-3542>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Hello, Amitoj.
+Replace scheduled to be removed create_freezable_workqueue with
+alloc_workqueue.
 
-On Tue, Mar 15, 2016 at 08:38:24PM +0530, Amitoj Kaur Chawla wrote:
-> Replace scheduled to be removed create_freezable_workqueue with
-> alloc_workqueue.
-> 
-> priv->wq should be explicitly set as freezable to ensure it is frozen
-> in the suspend sequence and work items are drained so that no new work
-> item starts execution until thawed. Thus, use of WQ_FREEZABLE flag here 
-> is required.
-> 
-> The order of execution is not important so set @max_active as 0.
+priv->wq should be explicitly set as freezable to ensure it is frozen
+in the suspend sequence and work items are drained so that no new work
+item starts execution until thawed. Thus, use of WQ_FREEZABLE flag here 
+is required.
 
-Can you please mention why it's okay to drop the WQ_MEM_RECLAIM part?
-Otherwise, it looks good to me.
+The order of execution is not important so set @max_active as 0.
 
-Thanks!
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/net/can/spi/mcp251x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/net/can/spi/mcp251x.c b/drivers/net/can/spi/mcp251x.c
+index 575790e..58b6e41 100644
+--- a/drivers/net/can/spi/mcp251x.c
++++ b/drivers/net/can/spi/mcp251x.c
+@@ -961,7 +961,7 @@ static int mcp251x_open(struct net_device *net)
+ 		goto open_unlock;
+ 	}
+ 
+-	priv->wq = create_freezable_workqueue("mcp251x_wq");
++	priv->wq = alloc_workqueue("mcp251x_wq", WQ_FREEZABLE, 0);
+ 	INIT_WORK(&priv->tx_work, mcp251x_tx_work_handler);
+ 	INIT_WORK(&priv->restart_work, mcp251x_restart_work_handler);
+ 
 -- 
-tejun
+1.9.1
+
 
