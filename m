@@ -1,103 +1,89 @@
 X-GM-THRID: 6261219545555402752
-X-Received: by 10.28.46.73 with SMTP id u70mr883wmu.1.1458167044732;
-        Wed, 16 Mar 2016 15:24:04 -0700 (PDT)
+X-Received: by 10.194.119.66 with SMTP id ks2mr3302626wjb.6.1458001446752;
+        Mon, 14 Mar 2016 17:24:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.47.77 with SMTP id v74ls418523wmv.6.gmail; Wed, 16 Mar 2016
- 15:24:03 -0700 (PDT)
-X-Received: by 10.28.47.11 with SMTP id v11mr4005989wmv.0.1458167043550;
-        Wed, 16 Mar 2016 15:24:03 -0700 (PDT)
-Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
-        by gmr-mx.google.com with ESMTPS id 185si231387wml.0.2016.03.16.15.24.03
+Received: by 10.28.184.197 with SMTP id i188ls34070wmf.27.gmail; Mon, 14 Mar
+ 2016 17:24:06 -0700 (PDT)
+X-Received: by 10.28.170.65 with SMTP id t62mr2387255wme.6.1458001446253;
+        Mon, 14 Mar 2016 17:24:06 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id c140si799639wmh.1.2016.03.14.17.24.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Mar 2016 15:24:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
+        Mon, 14 Mar 2016 17:24:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=nevola@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x233.google.com with SMTP id l68so1708357wml.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 16 Mar 2016 15:24:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=SvGKf5uYsv1ofRTdtbDmIi5Mjq0AK4oysnVCXsUEKYc=;
-        b=B9BwksfoNPF7qyGDRzWLX45LRmeUKtn0QMYryI426tVc9AZSL/beQNa5VWFh0OFvKy
-         IVjy1op3sveW0iSPizkAMwb1ZbktQEnJAZ2QzC1g1J+VO3ACFml6Da4NS8sbSVo77c5c
-         Oq7nUH4BrWHdbP0tkMn19upLpdDvpfJjZ0d1KiUKvQmOIpH7jdWsYVfZQv8kZerUEyoK
-         WsDw5KJlSYHYraX5OpqZi2nSBA9/xPwZBf6AGZl2A9mduo/he8X8NZyxrwN1XK3Y032L
-         4/JekhEwH6H2ywEqYwPzeWG5fH+QvBQFdHuHNRMLN2m3E1DMYlfDDUyI1XZbnngb8vud
-         0kvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=SvGKf5uYsv1ofRTdtbDmIi5Mjq0AK4oysnVCXsUEKYc=;
-        b=UeWd4NX5Ljde9OleOtQ2UFRmofocpELzLYSxFPnP3DICxUh+6Qm7XaYdBmsr4KGXwb
-         fQryWhEJxtCqFI5HrTjBOqEasikw0/bI8nQMTJ06Pwn/tpB6QK8AvOHv822+xZw+EAm2
-         47tNCvLvg7GzLsV9Ds4P9o5NoroMYFe8JugN8ArQ+w5GgUSiUh6pYJ1M5QGDqCywrF9l
-         TeEDIuf9Uk//oOcfi+YTK1xxBtVHBgu2W4MmiKKtj22j1bydAXPdySAhc34vSN4vF+Oi
-         TkineZnYkdk+yZ26tX4EvJXQK4gD35N9NghJI4BHXQLHPIrIjefgVJXiW8hePRk8iL75
-         WMGg==
-X-Gm-Message-State: AD7BkJInx8O/6Q6QBVq9gIeo2bGEkYtE11geKiNTX+yNsz3bLTDjq9yZw31O3V49AkwW7A==
-X-Received: by 10.194.83.134 with SMTP id q6mr6153882wjy.131.1458167043420;
-        Wed, 16 Mar 2016 15:24:03 -0700 (PDT)
-Return-Path: <nevola@gmail.com>
-Received: from sonyv (151.red-79-150-198.dynamicip.rima-tde.net. [79.150.198.151])
-        by smtp.gmail.com with ESMTPSA id e25sm27395079wmi.21.2016.03.16.15.24.02
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Mar 2016 15:24:02 -0700 (PDT)
-Date: Wed, 16 Mar 2016 23:24:00 +0100
-From: Laura Garcia Liebana <nevola@gmail.com>
-To: netfilter-devel@vger.kernel.org
-Cc: shivanib134@gmail.com, pablo@netfilter.org,
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id C9AD8114F43
+	for <outreachy-kernel@googlegroups.com>; Tue, 15 Mar 2016 01:24:05 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id BB9B5DA8F7
+	for <outreachy-kernel@googlegroups.com>; Tue, 15 Mar 2016 01:24:05 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id B0F96DA383; Tue, 15 Mar 2016 01:24:05 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US,SPF_HELO_FAIL,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 6BD1DDA8F9
+	for <outreachy-kernel@googlegroups.com>; Tue, 15 Mar 2016 01:24:03 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Tue, 15 Mar 2016 01:24:03 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 29703 invoked from network); 15 Mar 2016 01:24:03 +0100
+Received: from 77.166.216.87.static.jazztel.es (HELO us.es) (1984lsi@87.216.166.77)
+  by mail.us.es with AES128-SHA encrypted SMTP; 15 Mar 2016 01:24:03 +0100
+Date: Tue, 15 Mar 2016 01:24:02 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Laura Garcia Liebana <nevola@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, shivanib134@gmail.com,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCHv2] extensions: libipt_REJECT: Avoid to print the default
+Subject: Re: [PATCH] extensions: libipt_REJECT: Avoid to print the default
  reject with value in the translation
-Message-ID: <20160316222358.GA5106@sonyv>
+Message-ID: <20160315002402.GA9588@salvia>
+References: <20160312172929.GA15987@sonyv>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20160312172929.GA15987@sonyv>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Avoid to print the reject with value in the translation when the value is the default.
+On Sat, Mar 12, 2016 at 06:29:32PM +0100, Laura Garcia Liebana wrote:
+> Avoid to print the reject with value in the translation when the value is the default.
+> 
+> Before this patch:
+> 
+> $ sudo iptables-translate -A FORWARD -p TCP --dport 22 -j REJECT
+> nft add rule ip filter FORWARD tcp dport 22 counter reject with icmp type port-unreachable
+> 
+> After this patch:
+> 
+> $ sudo iptables-translate -A FORWARD -p TCP --dport 22 -j REJECT
+> nft add rule ip filter FORWARD tcp dport 22 counter reject
+> 
+> Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+> ---
+>  extensions/libipt_REJECT.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/extensions/libipt_REJECT.c b/extensions/libipt_REJECT.c
+> index 4148776..0e9b7d7 100644
+> --- a/extensions/libipt_REJECT.c
+> +++ b/extensions/libipt_REJECT.c
+> @@ -17,6 +17,8 @@
+>  #define IPT_ICMP_ADMIN_PROHIBITED	IPT_TCP_RESET + 1
+>  #endif
+>  
+> +#define DEFAULT_REJECT_WITH	IPT_ICMP_PORT_UNREACHABLE
 
-Before this patch:
+This code is rather easy to read so I'd suggest no need to add this
+new definition, instead use IPT_ICMP_PORT_UNREACHABLE.
 
-$ sudo iptables-translate -A FORWARD -p TCP --dport 22 -j REJECT
-nft add rule ip filter FORWARD tcp dport 22 counter reject with icmp type port-unreachable
-
-After this patch:
-
-$ sudo iptables-translate -A FORWARD -p TCP --dport 22 -j REJECT
-nft add rule ip filter FORWARD tcp dport 22 counter reject
-
-Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
----
-v2:
-	- Fix default constant, as Pablo suggested.
-
- extensions/libipt_REJECT.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/extensions/libipt_REJECT.c b/extensions/libipt_REJECT.c
-index 4148776..c211da9 100644
---- a/extensions/libipt_REJECT.c
-+++ b/extensions/libipt_REJECT.c
-@@ -171,7 +171,9 @@ static int REJECT_xlate(const void *ip, const struct xt_entry_target *target,
- 			break;
- 	}
- 
--	if (reject->with == IPT_TCP_RESET)
-+	if (reject->with == IPT_ICMP_PORT_UNREACHABLE)
-+		xt_xlate_add(xl, "reject");
-+	else if (reject->with == IPT_TCP_RESET)
- 		xt_xlate_add(xl, "reject with %s",
- 			   reject_table_xlate[i].name);
- 	else
--- 
-2.7.0
-
+Thanks.
 
