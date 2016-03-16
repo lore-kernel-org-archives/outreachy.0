@@ -1,75 +1,88 @@
 X-GM-THRID: 6261235815090749440
-X-Received: by 10.182.63.17 with SMTP id c17mr25638311obs.49.1458593432394;
-        Mon, 21 Mar 2016 13:50:32 -0700 (PDT)
+X-Received: by 10.13.232.201 with SMTP id r192mr3112389ywe.52.1458140591162;
+        Wed, 16 Mar 2016 08:03:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.49.6 with SMTP id q6ls893246ign.8.canary; Mon, 21 Mar 2016
- 13:50:32 -0700 (PDT)
-X-Received: by 10.66.101.4 with SMTP id fc4mr24194686pab.48.1458593432019;
-        Mon, 21 Mar 2016 13:50:32 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id y20si4208312pfa.2.2016.03.21.13.50.31
+Received: by 10.107.160.11 with SMTP id j11ls494094ioe.60.gmail; Wed, 16 Mar
+ 2016 08:03:10 -0700 (PDT)
+X-Received: by 10.66.146.10 with SMTP id sy10mr3175477pab.24.1458140590406;
+        Wed, 16 Mar 2016 08:03:10 -0700 (PDT)
+Return-Path: <htejun@gmail.com>
+Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
+        by gmr-mx.google.com with ESMTPS id y20si557740pfa.2.2016.03.16.08.03.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 21 Mar 2016 13:50:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Wed, 16 Mar 2016 08:03:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (c-50-138-182-192.hsd1.ma.comcast.net [50.138.182.192])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 8A2D574;
-	Mon, 21 Mar 2016 20:50:31 +0000 (UTC)
-Date: Mon, 21 Mar 2016 16:50:30 -0400
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=htejun@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pf0-x22a.google.com with SMTP id n5so78145819pfn.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 16 Mar 2016 08:03:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=We2aFXuCXwQeFp4rjzCLqNjAACR/GC2N6EwkC6tsySE=;
+        b=wHMc3USiNfiy7DbAeUj/WmVnJBg3cHGNsz1yMCVKIaoDmgYuRq/lVa1YeNMfCWc8e3
+         nUXDXkDI3txc0z1/jsHxlbrLLdGfGpfe3V/CsR2VHdwH8LdKpl8VVlHoY/lV/7mRqMLl
+         pXjzlsf30Ja8ROjsa1vqV0IPiR6o2EB7T6cQU8+qgt5i7zWJoGfnVNBiTRlQvvQy96Ed
+         VYtN6jcsreDxcB2Dfa/zBYmCTISk5EHxqB4lY36msTZVw1N/R9WBZ6yWvzBqok9XP/Ed
+         JWx1W3hnWpBLGjk1Ffgusqucg7fM45/8WvAPxF2m+DttAz8oZyZ0LpyyFzdvREBaR6fk
+         fDVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=We2aFXuCXwQeFp4rjzCLqNjAACR/GC2N6EwkC6tsySE=;
+        b=IaxuqJfbUoNJ+W2/kBITN8rGkx+fWSTbWPXnl6VnqQJF5GPGPG6MzvDb9/ZUnWH4kv
+         Sz2dfnPG+z3ed2x6+rIONqZBsfojTaliOBn1aXjpBrOO8MTYe3E9KB7Mq5HtvGwKDeX6
+         IuromkIyrMwF4ENUBsHpCKMWHURrXHfm7Ezp9reQ2cZAzATOQCfE7YaJx8OzJfpN0a+d
+         LUlhHEJYCYFV/fGE8rDxTgVkffQiE8Kq86e1JAHV3wo4MQalErKJFWMVI1Q097ozVorJ
+         mZP1Ly8kMhId/dgLhDKSjZux2F8x/p4wXFN9V0ycbbn9jNzkSRyAPlji/Bnmg567vyMj
+         gfjQ==
+X-Gm-Message-State: AD7BkJK6Jx9w7bO6H2b6Sbm6ZYhaRDIq37TcKDikCx7kJz25ko6fMC4mClCPFxf9Jj7wjw==
+X-Received: by 10.67.14.6 with SMTP id fc6mr6463690pad.55.1458140590169;
+        Wed, 16 Mar 2016 08:03:10 -0700 (PDT)
+Return-Path: <htejun@gmail.com>
+Received: from localhost ([166.170.37.216])
+        by smtp.gmail.com with ESMTPSA id n28sm6401053pfa.45.2016.03.16.08.03.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Mar 2016 08:03:09 -0700 (PDT)
+Sender: Tejun Heo <htejun@gmail.com>
+Date: Wed, 16 Mar 2016 08:03:07 -0700
+From: Tejun Heo <tj@kernel.org>
 To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: usb_intf: Remove
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: usb_intf:  Remove
  flush_scheduled_work()
-Message-ID: <20160321205030.GA4922@kroah.com>
-References: <20160313072516.GA22863@Karyakshetra>
+Message-ID: <20160316150307.GH6980@mtj.duckdns.org>
+References: <20160312183227.GA17219@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160313072516.GA22863@Karyakshetra>
+In-Reply-To: <20160312183227.GA17219@Karyakshetra>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sun, Mar 13, 2016 at 12:55:16PM +0530, Bhaktipriya Shridhar wrote:
+Hello, Bhaktipriya.
+
+On Sun, Mar 13, 2016 at 12:02:27AM +0530, Bhaktipriya Shridhar wrote:
 > flush_scheduled_work() flushes out all work items in system_wq.
-> Since one doesn't know what could be running there, flushing work items
+> Since one doesn't know what could be running there, flushinf work items
 > individually is preferred.
-> 
+
+And flush_scheduled_work() is deprecated as its behavior is
+unpredictable and it makes system_wq less useful.
+
 > Since there are finite number of work items to be flushed,(viz
 > pwrpriv->SetPSModeWorkItem,pwrpriv->SetPSModeWorkItem,pLed->BlinkWorkItem)
 > instead of flushing system_wq, each work item is separately flushed.
 > 
 > Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-> Acked-by: Tejun Heo <tj@kernel.org>
-> ---
->  Changes in v2:
-> 	-Fixed typo in commit message.
-> 
->  drivers/staging/rtl8712/usb_intf.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-> index c1a0ca49..32c5798 100644
-> --- a/drivers/staging/rtl8712/usb_intf.c
-> +++ b/drivers/staging/rtl8712/usb_intf.c
-> @@ -627,7 +627,9 @@ static void r871xu_dev_remove(struct usb_interface *pusb_intf)
->  		if (drvpriv.drv_registered)
->  			padapter->bSurpriseRemoved = true;
->  		unregister_netdev(pnetdev); /* will call netdev_close() */
-> -		flush_scheduled_work();
-> +		cancel_delayed_work(&pwrpriv->SetPSModeWorkItem);
-> +		cancel_delayed_work(&pwrpriv->rpwm_workitem);
-> +		cancel_delayed_work(&pLed->BlinkWorkItem);
->  		udelay(1);
->  		/* Stop driver mlme relation timer */
->  		r8712_stop_drv_timers(padapter);
-> --
-> 2.1.4
 
-This patch does not even build!
+Acked-by: Tejun Heo <tj@kernel.org>
 
-Please always test build your patches, to not do so makes maintainers
-very grumpy...
+Thanks a lot!
+
+-- 
+tejun
 
