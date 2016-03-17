@@ -1,128 +1,71 @@
-X-GM-THRID: 6258587617477001216
-X-Received: by 10.13.226.84 with SMTP id l81mr9713633ywe.16.1457190983587;
-        Sat, 05 Mar 2016 07:16:23 -0800 (PST)
+X-GM-THRID: 6261219545555402752
+X-Received: by 10.112.212.68 with SMTP id ni4mr1454232lbc.12.1458229616412;
+        Thu, 17 Mar 2016 08:46:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.160.11 with SMTP id j11ls518477ioe.60.gmail; Sat, 05 Mar
- 2016 07:16:23 -0800 (PST)
-X-Received: by 10.66.220.67 with SMTP id pu3mr9965881pac.19.1457190982972;
-        Sat, 05 Mar 2016 07:16:22 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
-        by gmr-mx.google.com with ESMTPS id ff2si2151758pad.2.2016.03.05.07.16.22
+Received: by 10.25.21.74 with SMTP id l71ls382294lfi.59.gmail; Thu, 17 Mar
+ 2016 08:46:55 -0700 (PDT)
+X-Received: by 10.112.13.40 with SMTP id e8mr1452171lbc.24.1458229615873;
+        Thu, 17 Mar 2016 08:46:55 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id c140si1415242wmh.1.2016.03.17.08.46.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 05 Mar 2016 07:16:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
+        Thu, 17 Mar 2016 08:46:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x229.google.com with SMTP id x188so29098467pfb.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 07:16:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZbHbZf6hFzhpAkzKAuEYyKfdMJyMmkT+BELzE73c+Ds=;
-        b=p9VoRw5gOITEWfwtaaXXbdQKkmnRV+vwnHW8Ba5Ux6hBahibyOmb6meuxjs/1P1MeA
-         6vw8+4mLN2E1uFa+y00bH3UIw+/MH31xF72fP8aWae8Zcs25+GN51dlZMXRrLPm+kD+V
-         by6fxZd5/TmdbRpBHQzEoyOPfvO1LKbau1+lELe1abuZfVoicjo1UtV78BUKlYL+uJHT
-         D472q+dLfLGxcexiyPaycnva6neyzXA5vVwXWsP8DBKe0ltosEZazQImB0L7uBBGt/+G
-         e8LlTkx/XxejtPmjBvvuoUFQvQwj+d8tPM78+WIkyF/BopszelVvFjMllEm/ZedXpDQF
-         sw6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ZbHbZf6hFzhpAkzKAuEYyKfdMJyMmkT+BELzE73c+Ds=;
-        b=ICd81Ba1OPD5A0qSMkjhoYF5cDGjnU0RqSI0UfRjgAd4NdJfanNpopATpFwY60fvkU
-         NHhqp7eovFtYNJMOR3PxOpEf5a2mYXbUTDR8OmJR7iDiUIX0q5jtVhMXHIlHlZKF0vYv
-         9UKaCUfNXecAAq10FaAKvMnXZbe1EkTVY4RhSyx133XohXQn4r9KJt67V6DFkI2YZ9vV
-         CY4ep1ij5XoyxwlWfzvdp3RLGlCDpyDcfGZtXE6utXXPRGGjQvGGJVd4Jgyrju/tKwav
-         myQKXKoN9E9N+nbliPrMvjGEusBcz4hx64WH070AW+VpcPBETOfWRxrdba99d3b+I6dv
-         NXjw==
-X-Gm-Message-State: AD7BkJKhMgUQFIFP32d984sDmi4c2X5AhDsIKLd6Mnv7sQpISl/pXtjCRfb/Ixmdr/5HCg==
-X-Received: by 10.98.12.8 with SMTP id u8mr20535775pfi.36.1457190982837;
-        Sat, 05 Mar 2016 07:16:22 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.160])
-        by smtp.gmail.com with ESMTPSA id 9sm13114665pft.44.2016.03.05.07.16.21
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 05 Mar 2016 07:16:22 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] staging: unisys: visorinput: convert pr_err() to dev_err()
-Date: Sat,  5 Mar 2016 23:16:17 +0800
-Message-Id: <1457190977-8149-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 7BEDD13C0E3
+	for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 16:46:55 +0100 (CET)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 6E32FDA390
+	for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 16:46:55 +0100 (CET)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 63B18DA38C; Thu, 17 Mar 2016 16:46:55 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-103.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 12D2DDA398
+	for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 16:46:53 +0100 (CET)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/522/antivirus1-rhel7.int);
+ Thu, 17 Mar 2016 16:46:53 +0100 (CET)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/522/antivirus1-rhel7.int)
+Received: (qmail 19301 invoked from network); 17 Mar 2016 16:46:52 +0100
+Received: from barqueta.lsi.us.es (HELO us.es) (1984lsi@150.214.188.150)
+  by mail.us.es with AES128-SHA encrypted SMTP; 17 Mar 2016 16:46:52 +0100
+Date: Thu, 17 Mar 2016 16:46:48 +0100
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Laura Garcia Liebana <nevola@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, shivanib134@gmail.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCHv2] extensions: libipt_REJECT: Avoid to print the default
+ reject with value in the translation
+Message-ID: <20160317154648.GC10673@salvia>
+References: <20160316222358.GA5106@sonyv>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160316222358.GA5106@sonyv>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Replace pr_err() calls with respective dev_err() counterpart.
-Semantic patch used to detect and apply the transformation:
+On Wed, Mar 16, 2016 at 11:24:00PM +0100, Laura Garcia Liebana wrote:
+> Avoid to print the reject with value in the translation when the value is the default.
+> 
+> Before this patch:
+> 
+> $ sudo iptables-translate -A FORWARD -p TCP --dport 22 -j REJECT
+> nft add rule ip filter FORWARD tcp dport 22 counter reject with icmp type port-unreachable
+> 
+> After this patch:
+> 
+> $ sudo iptables-translate -A FORWARD -p TCP --dport 22 -j REJECT
+> nft add rule ip filter FORWARD tcp dport 22 counter reject
 
-@r exists@
-identifier f,s,i;
-position p;
-@@
-
-f(...,struct s *i,...) {
-  <+...
-  pr_err@p(...)
-  ...+>
-}
-
-@s@
-identifier r.s, dev;
-@@
-
-struct s {
-	...
-	struct device dev;
-	...
-};
-
-@t@
-identifier r.i, s.dev;
-expression fmt;
-position r.p;
-@@
-
-- pr_err@p(
-+ dev_err(&i->dev,
-			fmt, ...);
-
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
- drivers/staging/unisys/visorinput/visorinput.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/unisys/visorinput/visorinput.c b/drivers/staging/unisys/visorinput/visorinput.c
-index 38d4d5b..13c0316 100644
---- a/drivers/staging/unisys/visorinput/visorinput.c
-+++ b/drivers/staging/unisys/visorinput/visorinput.c
-@@ -222,8 +222,9 @@ static int visorinput_open(struct input_dev *visorinput_dev)
- 	struct visorinput_devdata *devdata = input_get_drvdata(visorinput_dev);
- 
- 	if (!devdata) {
--		pr_err("%s input_get_drvdata(%p) returned NULL\n",
--		       __func__, visorinput_dev);
-+		dev_err(&visorinput_dev->dev,
-+			"%s input_get_drvdata(%p) returned NULL\n",
-+			__func__, visorinput_dev);
- 		return -EINVAL;
- 	}
- 	dev_dbg(&visorinput_dev->dev, "%s opened\n", __func__);
-@@ -236,8 +237,9 @@ static void visorinput_close(struct input_dev *visorinput_dev)
- 	struct visorinput_devdata *devdata = input_get_drvdata(visorinput_dev);
- 
- 	if (!devdata) {
--		pr_err("%s input_get_drvdata(%p) returned NULL\n",
--		       __func__, visorinput_dev);
-+		dev_err(&visorinput_dev->dev,
-+			"%s input_get_drvdata(%p) returned NULL\n",
-+			__func__, visorinput_dev);
- 		return;
- 	}
- 	dev_dbg(&visorinput_dev->dev, "%s closed\n", __func__);
--- 
-1.9.1
-
+Applied this too, thanks.
 
