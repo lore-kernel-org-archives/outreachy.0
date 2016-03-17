@@ -1,60 +1,60 @@
 X-GM-THRID: 6263088426063495168
-X-Received: by 10.129.154.16 with SMTP id r16mr8266133ywg.39.1458239180968;
-        Thu, 17 Mar 2016 11:26:20 -0700 (PDT)
+X-Received: by 10.13.234.87 with SMTP id t84mr8044353ywe.11.1458239104046;
+        Thu, 17 Mar 2016 11:25:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.7.197 with SMTP id g66ls900613ioi.0.gmail; Thu, 17 Mar
- 2016 11:26:20 -0700 (PDT)
-X-Received: by 10.107.12.212 with SMTP id 81mr8211495iom.18.1458239180518;
-        Thu, 17 Mar 2016 11:26:20 -0700 (PDT)
+Received: by 10.140.35.208 with SMTP id n74ls1947050qgn.63.gmail; Thu, 17 Mar
+ 2016 11:25:03 -0700 (PDT)
+X-Received: by 10.140.27.180 with SMTP id 49mr8319587qgx.19.1458239103545;
+        Thu, 17 Mar 2016 11:25:03 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id tu5si1259730pab.2.2016.03.17.11.26.20
+        by gmr-mx.google.com with ESMTPS id sf5si1517526pac.1.2016.03.17.11.25.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Mar 2016 11:26:20 -0700 (PDT)
+        Thu, 17 Mar 2016 11:25:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id x3so12372268pfb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 11:26:20 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id n5so12352009pfn.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 11:25:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=dVvLneVRnoZt9DAuvpgLz1iVhrs5eiclWMmXn7/Sw+I=;
-        b=vBR+yzzyBzqy1ol6WoPYNIuEIfOJV8yog2/5yms4bW3bEcNwTiJqov7zG2WQH5DPM8
-         VjqWM6UkcnLfgiGWJw5BXtX67pTPGuYBeqKEm7Q1Ks6ldRR9reCB7XsbKyveub3PVgeM
-         QPzRGDWuzZLcqbPJA+Lz00IeCoupon8zYQNbTLcxHUG4tejiUXVPiRp/Aj3yE5oh9Svm
-         NWDy/jiOe8OVNBOdOlNELbgC4qG3whtU5JdYFLdUHOZr4tUqud1kcjBhks7I3LwcOca+
-         IobOkTuDzjKXwH7or0f5lNLkCR6oGZaDmIbzaiMCnCgoqqEChcFEA2d+tR47kMs+gpTo
-         IlVQ==
+        bh=MzD3PK150za7lfqGeuKQbC7uCgCCsl7H4JlrICj4nY8=;
+        b=hc+yLMj3lZaQkgHrjD+r+2aJugcNsmW8KG5qdhgUiXrmHEGx3cyUAExTFW1ghaXE9I
+         fu9SZ7JEfcuh8K1gppbnO6Yf/RYw8QdGqBXzQHStvoAAtx9UVlQPbf4h1VuFMFn19IZo
+         I14O2IHJO5JdDuGuXoDHbbURlhGq6fYqim+VTsIJTEgc1AnLaxxNMnLWVNXRD5RldbEA
+         yn7Rzv6OOWhiCZ5OnKVd7PmXq2lEBzueu337HuT2r6P/umzxDYk9YE2y3lqCsUyJ6XXr
+         OKuw5Ks8wh2dqntp8K4DcZB0bNSq2swqMYLozktb8qPqb/yMRTGThJKIOtS60m8jIuZL
+         PAlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=dVvLneVRnoZt9DAuvpgLz1iVhrs5eiclWMmXn7/Sw+I=;
-        b=K916Dh6oJsX8cXGuDT8nhgB1HnAIjFF0KTJlSnL/U7NlPfuubktm472pta1Dp9OC1i
-         JQWOn8g4disHBjQoDfwDJcgCFW+2vg4ywQTofQ4Pdh7Dt/71Z0NG2mLP3T0+CfDQxj8i
-         P45Pn1nDVmsldgTVds1ZzdWU0aOheoxQdDaGx8I6+0Atcvr0l/fEzmyOpUDX4CwKmolD
-         arEZgj/k+SsHHiClRw+7kAr8BgCu4CczQZaaAA9lwqh4C/ZdKU039PqqnxnxXj8d2221
-         4s+IqCPnkXTnkYaiYpvRYLShNC7qqGrSBAFwPNCIrX1XqSA8/0gTJRkIMnPe65T0lcG8
-         cdWA==
-X-Gm-Message-State: AD7BkJJcxRVzDqK+JoeTexO4y/dEOQmcJScw9OHvO4lzv6SXJpHTH1Yh3tWnFudwKk+6Hw==
-X-Received: by 10.98.66.75 with SMTP id p72mr17336776pfa.50.1458239180364;
-        Thu, 17 Mar 2016 11:26:20 -0700 (PDT)
+        bh=MzD3PK150za7lfqGeuKQbC7uCgCCsl7H4JlrICj4nY8=;
+        b=BoS+lQFazI3z/PN6NExaqrH2gVW6Hb1ub6h4/owy9TrrqoQ+3f4gNDhxdWsJAW5bll
+         Q0gZyBcUawpxSl+7ME8DQo47ye1UpG0rkrxPM431iMHwwoMAjrtaIzGVypiGfwg3iqKx
+         gBaUgiRTlkq5Z9w/CSYSdWYBL/wsF+RpXQqSMuA6Tgzwh3EVZs0Ue+6qFp1MIvt2+cyR
+         uTmvFYUh76B//crLjFjOsvhgwe4jOhZUZPIQAsF+RJgallk6z5R7G/CiNgtNw4WkUPOP
+         fT4t9KhOiBv1sAXkaTV+R1cyCI43Oeaoux6RFIEPDyhbsBFz0dWmO1TyG8dhz2xEJQSc
+         8K3w==
+X-Gm-Message-State: AD7BkJKz9BP02cgk0QnKmG95RDuou8UlZizdK5sEijg9xOsLRRqHMntNGblnUHQ+Xld3AQ==
+X-Received: by 10.67.4.69 with SMTP id cc5mr17096730pad.11.1458239103382;
+        Thu, 17 Mar 2016 11:25:03 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from sandhya ([59.161.35.0])
-        by smtp.gmail.com with ESMTPSA id yl1sm14998427pac.35.2016.03.17.11.26.18
+        by smtp.gmail.com with ESMTPSA id n28sm15020042pfa.45.2016.03.17.11.25.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Mar 2016 11:26:19 -0700 (PDT)
-Date: Thu, 17 Mar 2016 16:57:23 +0530
+        Thu, 17 Mar 2016 11:25:02 -0700 (PDT)
+Date: Thu, 17 Mar 2016 16:55:56 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] Staging: i4l: Use !x instead of x == NULL.
-Message-ID: <c24859a45083909ee11d40e8dadffc323c238b3a.1458213062.git.bankarsandhya512@gmail.com>
+Subject: [PATCH 1/4] Staging: i4l: Add paranthesis to complex macro.
+Message-ID: <8ea64620333b0c695ab3e67bbfd2949d2a071f2e.1458213062.git.bankarsandhya512@gmail.com>
 References: <cover.1458213061.git.bankarsandhya512@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -62,26 +62,26 @@ Content-Disposition: inline
 In-Reply-To: <cover.1458213061.git.bankarsandhya512@gmail.com>
 User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Use !x instead of x == NULL.
+Add paranthesis to complex macro.
 
 Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/i4l/pcbit/edss1.c | 2 +-
+ drivers/staging/i4l/pcbit/layer2.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/i4l/pcbit/edss1.c b/drivers/staging/i4l/pcbit/edss1.c
-index b2262ba..e72c164 100644
---- a/drivers/staging/i4l/pcbit/edss1.c
-+++ b/drivers/staging/i4l/pcbit/edss1.c
-@@ -254,7 +254,7 @@ static void pcbit_fsm_timer(unsigned long data)
+diff --git a/drivers/staging/i4l/pcbit/layer2.h b/drivers/staging/i4l/pcbit/layer2.h
+index be1327b..6b9063e 100644
+--- a/drivers/staging/i4l/pcbit/layer2.h
++++ b/drivers/staging/i4l/pcbit/layer2.h
+@@ -109,7 +109,7 @@
+ #define SCHED_READ    0x01
+ #define SCHED_WRITE   0x02
  
- 	dev = chan2dev(chan);
+-#define SET_RUN_TIMEOUT 2 * HZ /* 2 seconds */
++#define SET_RUN_TIMEOUT (2 * HZ) /* 2 seconds */
  
--	if (dev == NULL) {
-+	if (!dev) {
- 		printk(KERN_WARNING "pcbit: timer for unknown device\n");
- 		return;
- 	}
+ struct frame_buf {
+ 	ulong msg;
 -- 
 1.8.3.4
 
