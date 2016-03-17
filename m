@@ -1,87 +1,102 @@
 X-GM-THRID: 6262288829369024512
-X-Received: by 10.66.181.7 with SMTP id ds7mr6391841pac.35.1458848498865;
-        Thu, 24 Mar 2016 12:41:38 -0700 (PDT)
+X-Received: by 10.107.184.67 with SMTP id i64mr7357323iof.24.1458227065385;
+        Thu, 17 Mar 2016 08:04:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.84 with SMTP id n20ls342317otd.10.gmail; Thu, 24 Mar
- 2016 12:41:38 -0700 (PDT)
-X-Received: by 10.182.28.41 with SMTP id y9mr6489142obg.14.1458848498312;
-        Thu, 24 Mar 2016 12:41:38 -0700 (PDT)
-Return-Path: <htejun@gmail.com>
-Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
-        by gmr-mx.google.com with ESMTPS id s129si840922ywb.5.2016.03.24.12.41.38
+Received: by 10.140.34.98 with SMTP id k89ls1739113qgk.69.gmail; Thu, 17 Mar
+ 2016 08:04:24 -0700 (PDT)
+X-Received: by 10.140.217.17 with SMTP id n17mr7387671qhb.30.1458227064402;
+        Thu, 17 Mar 2016 08:04:24 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id h69si1338910pfj.0.2016.03.17.08.04.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 Mar 2016 12:41:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
+        Thu, 17 Mar 2016 08:04:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=htejun@gmail.com
-Received: by mail-yw0-x242.google.com with SMTP id f6so6701407ywa.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 24 Mar 2016 12:41:38 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id q129so11715311pfb.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 17 Mar 2016 08:04:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=sv7CVfK4QsxOfgrUxxaZ2T5sf/Xe+prC8UBfPhCVjnM=;
-        b=D5bL9vAgBn8m7zcJFrJOUPTWBl2IXmGdixFUpbWBRhiLj22IaQ0gclVzu5NKyLoCWt
-         i7tKX62Jnh1kxG4tcIsiacLsyYvtXli2eXmr9krkLeQj0+G56YftzldqBeGap8SI7lN8
-         3XMTMGDkKgauDm6TMoj3rGSU9pjRLuQ8E0ulYdP/Na3Yae6jotPubCBSvvuSYfBZIBbe
-         eQpjY2zb6VQkovqedtihBjA4ppNqw0uM0jRnuUiXLBbD7yeGfHO5IW5eYZL083qdhSGx
-         CtX+I8uIzbPW/MAi9bZVATvdlDNWETlPQ6Xm4Xv7LmB0EXzpfr0+Kax9MhJZ0reLUxtH
-         zj0Q==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=xaO1pOlaoA18qC8TmogbGMb6g/oJOMA1JcE1eM2SiRA=;
+        b=SYZ0MhNvhn3S2+iWRD4K7JDTPojMXfvYDrMIuaKuDUyPslIy7r8lMNNZg1t4jgN+dh
+         NkhTDnIWmPI8LNL/WBR2uHJJtScveyAHNMdeUGJBmALWvrz75v3awYUW+LBAqK7nORl9
+         Ht1ZmIDNb6zI268jxEacUYI1XRh1Lfq5es3dw5c309AKxFyfRxLfxjn4DauVnYUisOOB
+         M9PqGXB4Zw2xriyM5c7NRUp2PRLYg7JngcUWso1dIhQMDQC6m8qNIA3ooNrHXcQ27Uu0
+         Dlgr8ek2ymy8IjYM/C7f97nhyEGmtelVXiSd8Pl9fWxWSDnApwSEqgnNw0duEr7RnNPf
+         FEYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=sv7CVfK4QsxOfgrUxxaZ2T5sf/Xe+prC8UBfPhCVjnM=;
-        b=h8g4woAIMvJ7l7zOZ5HiinQ3JqpsQszM7YDUt/AJGYGIBtxJ7ulonaYNEPWIvpj9k4
-         GoCmNs5w2UTwnsl9bjJeF98OngAbE479c98N+QZ5+GbKxLf3k/9JRajD/w3YAn/0l62n
-         zDQNEIwENcJoGdp6ZPO58WWmwG03uD12iFPUMlYOpVsnKpvKtRDGE5GuXf6D2SbK1rrl
-         P5+GOtMUDlzdWbLxxEEtoQBDJ95yDsQajk9lMXpu7zCE08Y7ygcMuCysMRIEzOVI/O3z
-         /kNmAseZcvHPNeSs5iw4sL7oZfhCsU64fGRGH9TU00X/QLVGoRYfJb8LhfS8NZXD1X3D
-         dG2Q==
-X-Gm-Message-State: AD7BkJKXek5kgDSi7uph+CrtZxVZjW1qYJWGIRKvoHaLUHPeJwEQxhrVcYmLJOprI79IZA==
-X-Received: by 10.129.39.216 with SMTP id n207mr5336013ywn.260.1458848498181;
-        Thu, 24 Mar 2016 12:41:38 -0700 (PDT)
-Return-Path: <htejun@gmail.com>
-Received: from localhost ([2620:10d:c091:200::7:1aee])
-        by smtp.gmail.com with ESMTPSA id e62sm5393412ywb.26.2016.03.24.12.41.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 Mar 2016 12:41:37 -0700 (PDT)
-Sender: Tejun Heo <htejun@gmail.com>
-Date: Thu, 24 Mar 2016 15:41:36 -0400
-From: Tejun Heo <tj@kernel.org>
-To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] qlge: Replace
- create_singlethread_workqueue with alloc_ordered_workqueue
-Message-ID: <20160324194136.GD7822@mtj.duckdns.org>
-References: <20160317150417.GA8085@amitoj-Inspiron-3542>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=xaO1pOlaoA18qC8TmogbGMb6g/oJOMA1JcE1eM2SiRA=;
+        b=cGIO4E1Ruzg+0dDl4lQzDBK0Jf2L8BOGI0kM1FTrsn215CBP6r60sNoSZuPHsWk9I/
+         5EElQcQLtJTmri3TfQ/Vf+RhLqjZ/bvQVdDG69dDH1/PvxUOLmyZupZQ5eNecGPp2sdO
+         C4LvUHmqVImNsRAPHTEDhHCQTJXZHxc5yMf3pUmWt1S2msXoNTFYqk6Vh2/JS8u5rCES
+         mHZ8Cl3WmG63825ofUbVwJIba1F9dktXx6touQZEdH6U1FNtn7ZGCvKXh/LLHmFSUvji
+         YLbnqElBN89DUhKYIms7J4X+ZQbQGWGdehIhOaB/hAbMpV+sJ8Jbl1NWOJgnWnjQUP3G
+         bhUw==
+X-Gm-Message-State: AD7BkJJ+slHrFVFRYZx5jTgysipfaJGZx8JhMQj0J+BL+KMgm2XhaYeomTM5sGUFVup9Dg==
+X-Received: by 10.66.62.131 with SMTP id y3mr11846836par.58.1458227064185;
+        Thu, 17 Mar 2016 08:04:24 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.162.162.14])
+        by smtp.gmail.com with ESMTPSA id f65sm14109203pfd.47.2016.03.17.08.04.22
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Thu, 17 Mar 2016 08:04:23 -0700 (PDT)
+Date: Thu, 17 Mar 2016 20:34:17 +0530
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: tj@kernel.org
+Subject: [PATCH v2] qlge: Replace create_singlethread_workqueue with
+ alloc_ordered_workqueue
+Message-ID: <20160317150417.GA8085@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160317150417.GA8085@amitoj-Inspiron-3542>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Hello,
+Replace deprecated create_singlethread_workqueue with
+alloc_ordered_workqueue.
 
-On Thu, Mar 17, 2016 at 08:34:17PM +0530, Amitoj Kaur Chawla wrote:
-> Replace deprecated create_singlethread_workqueue with
-> alloc_ordered_workqueue.
-> 
-> Work items include getting tx/rx frame sizes, resetting MPI processor,
-> setting asic recovery bit so ordering seems necessary as only one work
-> item should be in queue/executing at any given time, hence the use of
-> alloc_ordered_workqueue.
-> 
-> WQ_MEM_RECLAIM flag has not been set since this driver doesn't seem to
-> sit in memory reclaim path.
+Work items include getting tx/rx frame sizes, resetting MPI processor,
+setting asic recovery bit so ordering seems necessary as only one work
+item should be in queue/executing at any given time, hence the use of
+alloc_ordered_workqueue.
 
-So, apparently, people do put ethernet devices on memory reclaim path,
-so let's add back WQ_MEM_RECLAIM.
+WQ_MEM_RECLAIM flag has not been set since this driver doesn't seem to
+sit in memory reclaim path.
 
-Thanks!
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+Changes in v2:
+        -Removed WQ_MEM_RECLAIM flag
 
+Not sure if the assumption of requiring ordering of work items 
+is correct.
+
+ drivers/net/ethernet/qlogic/qlge/qlge_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/qlogic/qlge/qlge_main.c b/drivers/net/ethernet/qlogic/qlge/qlge_main.c
+index 9979764..3dc268e 100644
+--- a/drivers/net/ethernet/qlogic/qlge/qlge_main.c
++++ b/drivers/net/ethernet/qlogic/qlge/qlge_main.c
+@@ -4676,7 +4676,7 @@ static int ql_init_device(struct pci_dev *pdev, struct net_device *ndev,
+ 	/*
+ 	 * Set up the operating parameters.
+ 	 */
+-	qdev->workqueue = create_singlethread_workqueue(ndev->name);
++	qdev->workqueue = alloc_ordered_workqueue(ndev->name, 0);
+ 	INIT_DELAYED_WORK(&qdev->asic_reset_work, ql_asic_reset_work);
+ 	INIT_DELAYED_WORK(&qdev->mpi_reset_work, ql_mpi_reset_work);
+ 	INIT_DELAYED_WORK(&qdev->mpi_work, ql_mpi_work);
 -- 
-tejun
+1.9.1
+
 
