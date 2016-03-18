@@ -1,86 +1,94 @@
 X-GM-THRID: 6263377185768210432
-X-Received: by 10.50.23.68 with SMTP id k4mr424884igf.10.1458321138956;
-        Fri, 18 Mar 2016 10:12:18 -0700 (PDT)
+X-Received: by 10.129.154.16 with SMTP id r16mr11445850ywg.39.1458306141641;
+        Fri, 18 Mar 2016 06:02:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.138.158 with SMTP id c30ls1165287ioj.109.gmail; Fri, 18
- Mar 2016 10:12:18 -0700 (PDT)
-X-Received: by 10.107.135.101 with SMTP id j98mr12434247iod.2.1458321138455;
-        Fri, 18 Mar 2016 10:12:18 -0700 (PDT)
+Received: by 10.140.105.228 with SMTP id c91ls2412382qgf.37.gmail; Fri, 18 Mar
+ 2016 06:02:21 -0700 (PDT)
+X-Received: by 10.129.83.85 with SMTP id h82mr5399505ywb.18.1458306140987;
+        Fri, 18 Mar 2016 06:02:20 -0700 (PDT)
 Return-Path: <amitoj1606@gmail.com>
-Received: from mail-qg0-x233.google.com (mail-qg0-x233.google.com. [2607:f8b0:400d:c04::233])
-        by gmr-mx.google.com with ESMTPS id w126si907898ywe.6.2016.03.18.10.12.18
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id 12si1830234pfb.1.2016.03.18.06.02.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 18 Mar 2016 10:12:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) client-ip=2607:f8b0:400d:c04::233;
+        Fri, 18 Mar 2016 06:02:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::233 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x233.google.com with SMTP id y89so106028208qge.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 10:12:18 -0700 (PDT)
+Received: by mail-pf0-x232.google.com with SMTP id 4so36536992pfd.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 06:02:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc;
-        bh=VFfQg8JWvBRaDxF6roPAlmv1YLHHq9Ha2LDGG7L62KA=;
-        b=Px716mtNv8tT5rCwcWXZMbfu8kxL1jxjYOVmkDXGxDHarj2SD1ZMub2GAqoO7oZEwm
-         5UBQw5++/EaZrw/lVxUUjVw7biG3mHqo403HGWvimjSKLYb5akCbim2yjpNUdw6gH2Jc
-         oYx6UvvnABmwgBSRLwZKaj6ArPxMHeh6ghm9q+vzFsTnlkULI90gl9u8tOHIyYY3CTyn
-         qVeFMjivHFnYpAHPBilVv66jNlrxE0GmK0O+ldYWZLGB0m4pAEb2fdzsFzwaL/aVhSks
-         IxIAZ0mdUviXzQXBwcmNg45vjWD1purjVm/7DGB6lGA7RBpUbkZfUP5fXmXXVv2C1K1x
-         B/4Q==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=iRqm82myq3pudUFbELj3MjMW1xDX5c2X3tACk+c4K4k=;
+        b=BnhXVVBKm9AZRAtawPXIcFB52l/MhGMCxx4CNjV39BCqgDmQRA9h6f+5l52Er8y1QQ
+         LkJkNd8U51nspJInwupJzi2TRIS3x6sYAIUDVR/xQDKuCREYXyn0UzjFZ95IRyuatGLb
+         JU+h8Yk2h300xEcJ+aEecd4lP9OYPECBt1cqw0ewrrnY4+s7CrLdXFrLucwrh82NlKEf
+         mAGDuHLb6rVqqCApzZWyEKoxZXXtXoGuds7fH6WJQkOsbIT5aJZ05hawkp02Wu72QD81
+         5s9hFPYTQeMOtK8UvkUI9fphG/nv2H+KSj0jIlKWvShnuhgDxJdb+UGTVcJyNvM38He+
+         MoFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:date
-         :message-id:subject:from:to:cc;
-        bh=VFfQg8JWvBRaDxF6roPAlmv1YLHHq9Ha2LDGG7L62KA=;
-        b=mqSq3xRqhjOdnhAK0vzJDkiN8i0mGbv0HlnhU8lLQzoFOYWmdT5wjEbrzhDt7/L0xr
-         7MjPEePDs8lG3Im2TtZdllKhv1mscYXqhq03nk4ALEPtZL7+xvQiYHDAZncTLaL9NKCR
-         Sw8HxKPogvtt1fbk5n0E9YUha7DQptoGZPTAUQSCbBrKLfwv/CI9PfsEgWdOfxfcoI57
-         /y0/cXGeSxkz2jJ7p2RUb/z/jjVVMN3X5ptCdj5f9eH7+UJ5pmPY3eq6knPLSAyOn+uJ
-         mpcqI+pNy5KNok3lukEwDABE5L5KsJlDduT78si1Gm/o65T327BKvK0oTLllA1vq4vXU
-         w+Ig==
-X-Gm-Message-State: AD7BkJKc5sm4UeRT1Iq+6eBNDIx7+/uwDHD0I4Tq+KEEGdTmzkilW9FTRxEDv/XAj7KwUjDY13SKWIeGl03twg==
-MIME-Version: 1.0
-X-Received: by 10.140.233.85 with SMTP id e82mr23905877qhc.86.1458321138171;
- Fri, 18 Mar 2016 10:12:18 -0700 (PDT)
-Received: by 10.140.44.99 with HTTP; Fri, 18 Mar 2016 10:12:18 -0700 (PDT)
-In-Reply-To: <20160318141409.GA2555@arch.fritz.box>
-References: <20160318130215.GA24475@amitoj-Inspiron-3542>
-	<20160318141409.GA2555@arch.fritz.box>
-Date: Fri, 18 Mar 2016 22:42:18 +0530
-Message-ID: <CA+5yK5H2u6TYyM889uE3TfVjSzzcVS_8qkrrYap-up3BBuxwsQ@mail.gmail.com>
-Subject: Re: [PATCH] staging: most: hdm-dim2: Remove possible dereference error
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=iRqm82myq3pudUFbELj3MjMW1xDX5c2X3tACk+c4K4k=;
+        b=hSvH26MwOeSReYe5Xdk1lOaaqevReLS7HxZVX6KFO9gIFu5dD9ZF5Oj2fQihxSxxDK
+         mRHijfIlLH3Uaa0R05HfR+WTDYXPEHVgpYrd3YQFEJohwKCb7LlbASI5+YJ4Pe2Un+k/
+         DPOC2e9EsY+bOPXqeUZdyuRgJfIPBxtXmGcSslubHrOZwIgH5qTJOyggAW5UM6Wp/ik+
+         wGdni+E43jpmBEnY1I6ee4O6aZL6t/LA5cD6Q/4I8jFQwxM7xpuLMSMNfjfuMo1ObBYq
+         rn3bMaMdaO2EWUUiZ5ET3mPH9NXN5kGvz87Q7OcrHdHJDn/RLmvKJfpdIayPIeQ78vSi
+         v0lQ==
+X-Gm-Message-State: AD7BkJIdzTfwmWgLf2ZIje7SPYM3mTp2wAJFU2qt2m36myffMFc4PC/sZAkSU0nmO2XsxQ==
+X-Received: by 10.66.142.132 with SMTP id rw4mr23083096pab.26.1458306140767;
+        Fri, 18 Mar 2016 06:02:20 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from localhost ([122.162.162.14])
+        by smtp.gmail.com with ESMTPSA id y21sm20978176pfa.85.2016.03.18.06.02.19
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 18 Mar 2016 06:02:20 -0700 (PDT)
+Date: Fri, 18 Mar 2016 18:32:15 +0530
 From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: Andrey Shvetsov <andrey.shvetsov.ml@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-	Dan Carpenter <dan.carpenter@oracle.com>, devel@driverdev.osuosl.org
-Content-Type: text/plain; charset=UTF-8
+To: outreachy-kernel@googlegroups.com, dan.carpenter@oracle.com
+Cc: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: most: hdm-dim2: Remove possible dereference error
+Message-ID: <20160318130215.GA24475@amitoj-Inspiron-3542>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, Mar 18, 2016 at 7:44 PM, Andrey Shvetsov
-<andrey.shvetsov.ml@gmail.com> wrote:
-> On Fri, Mar 18, 2016 at 06:32:15PM +0530, Amitoj Kaur Chawla wrote:
->> Commit 3eced21a5afb ("staging: most: hdm-dim2: Replace request_irq
->> with devm_request_irq") introduced the following static checker
->> warning:
->> drivers/staging/most/hdm-dim2/dim2_hdm.c:841 dim2_probe()
->> error: 'dev->netinfo_task' dereferencing possible ERR_PTR()
->>
->> Remove the warning by returning PTR_ERR immediately rather than
->> storing in a variable and returning at the end of the function
->> since we do not need to free anything.
-> This patch is not about a warning.
->
-> This patch fixes the bug introduced in the previous patch that has
-> changed the control flow so that the error code returned by the
-> kthread_run was overwritten by the "ret = dim2_sysfs_probe" below.
->
-> regards
-> andy
+Commit 3eced21a5afb ("staging: most: hdm-dim2: Replace request_irq
+with devm_request_irq") introduced the following static checker
+warning:
+drivers/staging/most/hdm-dim2/dim2_hdm.c:841 dim2_probe()
+error: 'dev->netinfo_task' dereferencing possible ERR_PTR()
 
-I'll revise the commit message and resend.
+Remove the warning by returning PTR_ERR immediately rather than 
+storing in a variable and returning at the end of the function
+since we do not need to free anything.
 
-Thanks,
-Amitoj
+Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+---
+ drivers/staging/most/hdm-dim2/dim2_hdm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/most/hdm-dim2/dim2_hdm.c b/drivers/staging/most/hdm-dim2/dim2_hdm.c
+index 0dc86ad..a364495 100644
+--- a/drivers/staging/most/hdm-dim2/dim2_hdm.c
++++ b/drivers/staging/most/hdm-dim2/dim2_hdm.c
+@@ -771,7 +771,7 @@ static int dim2_probe(struct platform_device *pdev)
+ 	dev->netinfo_task = kthread_run(&deliver_netinfo_thread, (void *)dev,
+ 					"dim2_netinfo");
+ 	if (IS_ERR(dev->netinfo_task))
+-		ret = PTR_ERR(dev->netinfo_task);
++		return PTR_ERR(dev->netinfo_task);
+ 
+ 	for (i = 0; i < DMA_CHANNELS; i++) {
+ 		struct most_channel_capability *cap = dev->capabilities + i;
+-- 
+1.9.1
+
 
