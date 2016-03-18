@@ -1,85 +1,86 @@
-X-GM-THRID: 6262249474194669568
-X-Received: by 10.107.162.2 with SMTP id l2mr21657646ioe.14.1458043575784;
-        Tue, 15 Mar 2016 05:06:15 -0700 (PDT)
+X-GM-THRID: 6263341710126874624
+X-Received: by 10.66.139.138 with SMTP id qy10mr10943245pab.46.1458297881540;
+        Fri, 18 Mar 2016 03:44:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.233 with SMTP id h96ls261586qgd.80.gmail; Tue, 15 Mar
- 2016 05:06:15 -0700 (PDT)
-X-Received: by 10.140.39.229 with SMTP id v92mr22111252qgv.25.1458043575086;
-        Tue, 15 Mar 2016 05:06:15 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id sf5si4081710pac.1.2016.03.15.05.06.15
+Received: by 10.50.59.211 with SMTP id b19ls261537igr.34.canary; Fri, 18 Mar
+ 2016 03:44:41 -0700 (PDT)
+X-Received: by 10.50.142.66 with SMTP id ru2mr29765502igb.8.1458297881178;
+        Fri, 18 Mar 2016 03:44:41 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id sf5si1986445pac.1.2016.03.18.03.44.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Mar 2016 05:06:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Fri, 18 Mar 2016 03:44:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id u190so26511557pfb.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 15 Mar 2016 05:06:15 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id u190so15877158pfb.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 03:44:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=i5h8jzg0PISF1bfEmo9H2DrghPnWRj18xuSCj95X9nM=;
-        b=muT4V3Qx8Q8ltJmHmIOvt5wjd2eBQbLwqp0qnZWjsWEyRJofuUMjkIvxLpSdoFzyb/
-         xjrjJt9NcBr56dN3iLn2Gs6ADatRYxYtSfdqN/L0jPFUJKIpJmw2Df0IPWN7NxmBBWEd
-         dfdY/CvVnFS1ukoRd6o74awNekt59WgM8VRo2HfrkoYUwV6g3hVbdrQeqgrXRS5QKbBr
-         SuOGMI0iKM7MlbpePe4NCd3ExbqK1uF6Hj5vzFf0DIjuQFleigt1jV+oXfbOJ+Nm11iF
-         H5pk5aExEQd6+QK2zgqOnTlY3bL1IVo4KWfTk4XQh5vX3HYjXdKX1rU2/7/I4UWIwdAV
-         p8Ug==
+        bh=kO8+/bQGHkc33JuodkkP4YozTOs5pWefUz+fVhlHqn8=;
+        b=YEqYYESelSPEaHsS/Vj9I/RmVtFr92Scfuubt/nLPJekyxWZz9KB2hLiiaQOlJwl6p
+         J4+p/Lqy4mNNIT5hmY0BJHvkyCf9mYr/XdTGVyCzHEqj1xCG0mW+u2g0PEgfqCCzvQuK
+         q2345SLFAkQhQtd39tortMDms1SuQlNgc6RcbG6Vhdg3xxXh47AfOjDIC+S+zmlAqhSI
+         kzNgDjtM1yEciYUGdpZdkOHlWSM2Ezq7Gqurvn1mPUNS/jFXssA//z/rvgu3xHlLx0u4
+         BupBaCtAzMDvPSweXjycEKAxg2vT6Lw8f942+XQEcKSznpQUqIbQA6beBDkLPZdZBpxe
+         bCdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=i5h8jzg0PISF1bfEmo9H2DrghPnWRj18xuSCj95X9nM=;
-        b=KY4L+/00kJ12bjinV8cLtTTUcC/RRtHJFH8onR04v9av/rET4YlbN/U54fTU1Eq1Qv
-         86i1irDtxU8fKDAWp19+BPxNXgl41d+c5pm5VGbsnO0EvRT1M9FeiCJfzM0ryAafGj92
-         NFX7mifEHPVXsVkXyXJ+ObP44Kt8bOlkSZYY8rmKpx3u360V4xnJuMndyGVURsRWeeI8
-         3lLBoT5KP+4nq4ENFERl5gmbzaTdS1qniC5jgbtPzFo1qowzZJimGmZ0gc/r7E7xBt9d
-         7eDuYYsDj3H7XpmkgfA442QRLekBJXSAko0BJa57ej/TkW171O4AHWB1wn0gMKQzyCIr
-         U8ZQ==
-X-Gm-Message-State: AD7BkJIyJACVK6bZS0OOJ5aeNs086+tbLia8+1an2CfZEOuK+Jauu88vBwzVBzYALnq7qQ==
-X-Received: by 10.66.193.161 with SMTP id hp1mr46031317pac.9.1458043574891;
-        Tue, 15 Mar 2016 05:06:14 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id wb7sm39398055pab.3.2016.03.15.05.06.13
+        bh=kO8+/bQGHkc33JuodkkP4YozTOs5pWefUz+fVhlHqn8=;
+        b=lFafhvukyVct8x2NNwQCnuj/toV3RRfz+Qn2Mlyq74keEvbr25AK6pFCNf2eiwajZS
+         AL8brqvNXFQuNw9k9WcWdNrd3WzXqE1Fh6Rbkrh9JJvQ6x0xtCkZfQFL6JK2QwXaR8Jh
+         sii2hq79xNIzvi+VjzSTz0WzlUnEB5WUCM8bxzcWD2VzciszKmDWw4oUKBVJbRUBpnx3
+         oNjyhNvWIXwojZ0Gks/scnRzgPch5MaUv3etdLx8vB4QUiqkyrqSPusyhXRv8nWI45En
+         nmP2ZaE2V0qoUB6UUN4eCunG9lXkNFY1jUubqmDXkVckC/2HxLdO3cp2BNrjpKzPqcft
+         +jAA==
+X-Gm-Message-State: AD7BkJJ/GSi2JgJpmvx1z+v5xNXd6dqFpC9gVRlLrHlNjfW7uvFVP1znSAz6GMcyUPmvbQ==
+X-Received: by 10.66.237.1 with SMTP id uy1mr22889737pac.114.1458297881010;
+        Fri, 18 Mar 2016 03:44:41 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.148])
+        by smtp.gmail.com with ESMTPSA id u21sm19578726pfa.60.2016.03.18.03.44.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Mar 2016 05:06:14 -0700 (PDT)
-Date: Tue, 15 Mar 2016 17:36:03 +0530
-From: Anchal Jain <anchalj109@gmail.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 18 Mar 2016 03:44:40 -0700 (PDT)
+Date: Fri, 18 Mar 2016 09:15:45 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: nvec: Remove a blank line before a  parenthesis '}'
-Message-ID: <20160315120552.GA3570@life-desktop>
+Subject: [PATCH] Staging: rtl8192u: Remove unnecessary semicolon.
+Message-ID: <20160318034545.GA3941@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Blank lines aren't necessary before a close brace '}'
+Remove unnecessary semicolon.This issue is found by coccinelle script.
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/nvec/nvec_paz00.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rtl8192u/r8190_rtl8256.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/nvec/nvec_paz00.c b/drivers/staging/nvec/nvec_paz00.c
-index cddbfd2..51dbeeb 100644
---- a/drivers/staging/nvec/nvec_paz00.c
-+++ b/drivers/staging/nvec/nvec_paz00.c
-@@ -41,7 +41,6 @@ static void nvec_led_brightness_set(struct led_classdev *led_cdev,
- 	nvec_write_async(led->nvec, buf, sizeof(buf));
+diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
+index 5c3bb3b..d733fb2 100644
+--- a/drivers/staging/rtl8192u/r8190_rtl8256.c
++++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
+@@ -194,7 +194,7 @@ void phy_RF8256_Config_ParaFile(struct net_device *dev)
+ 			break;
+ 		}
  
- 	led->cdev.brightness = value;
--
- }
- 
- static int nvec_paz00_probe(struct platform_device *pdev)
+-		/*----Restore RFENV control type----*/;
++		/*----Restore RFENV control type----*/
+ 		switch (eRFPath) {
+ 		case RF90_PATH_A:
+ 		case RF90_PATH_C:
 -- 
-1.9.1
+1.8.3.4
 
 
