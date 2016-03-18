@@ -1,78 +1,116 @@
-X-GM-THRID: 6803941009110597632
-X-Received: by 2002:adf:9c8d:: with SMTP id d13mr22356212wre.6.1584165964763;
-        Fri, 13 Mar 2020 23:06:04 -0700 (PDT)
+X-GM-THRID: 6263344417274331136
+X-Received: by 10.66.122.101 with SMTP id lr5mr11238747pab.3.1458298512046;
+        Fri, 18 Mar 2016 03:55:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:4441:: with SMTP id x1ls6027643wrr.4.gmail; Fri, 13 Mar
- 2020 23:06:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtMaxEv4G9NDrbOjS18emlOrqw9CQzLOxjzkugkv53t2+xQY7rBjJ+4qHt3zHaXUq/U7ccD
-X-Received: by 2002:adf:f289:: with SMTP id k9mr16023969wro.220.1584165963415;
-        Fri, 13 Mar 2020 23:06:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584165963; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Z6LvEnGcg8a1gat28cM+2EU5yJ9/AC07E5jOfF9VhXbMd7VZ8LPaMtQDDSNy3i2Gk1
-         1b+1rK62RiayHoVHk+KBYVm0YA6ed3/Uu1YgBphc9KpUj6hkGwTBUNbwKuc84xMJoiRw
-         i/kZLiOkvR7qsV3bJt7ck3gfHaB5O+lET8HxbwEzdB7U1LzcivLtTa/uP5uTxt0GcGkW
-         Txc1BWpZREHXQyC17qtMMAvgRWIdMMnTeNSkefWNSY1hAcaELO/Wk8xQ+YEJL4ViXg7N
-         0J0Bij7cO9VzSw4AagPTcqKPCHEP+VuP43F13iKXdwx95BglqmTBA+wNKw6EfF0gQfwq
-         2kZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=IrMXk9lh/oX+AYJC+NJj++Fb4ItXN40wTV8BImUfs0I=;
-        b=Cteu0F2xmAtpC3BDqnHJnGjsLZIYfAJlMm4UUONZXnNkD2IiuR+/Qkjk32/GGebBXw
-         olQZAd4oLvZRj1Vv6TdO2TNc5WVEPGmtcNJ8B8iidTdGC9yB5TOMmaXwa6aPeg0yQsGj
-         n6jEKo5l1Mrlh0AjbM6E9+wE3GRGiNcihqw6FMy6PrFTkFjUuXVKzeolBbcQhfU8YGoi
-         sYlm/zIQeAEtt/4a2WXO8IqCYeIPIY1VVwoNx/YvBJh/Z78pieZZQYpF26vcZWvhvEyS
-         VEP6UU1xvrikGRklEWW8ZbTQq5ilKs0HEX3QIUcZqLE68zZqvSPVxfCYJlFoGE/sZHuf
-         +0nA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id o194si682213wme.2.2020.03.13.23.06.03
-        for <outreachy-kernel@googlegroups.com>;
-        Fri, 13 Mar 2020 23:06:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+Received: by 10.50.127.177 with SMTP id nh17ls248121igb.21.canary; Fri, 18 Mar
+ 2016 03:55:11 -0700 (PDT)
+X-Received: by 10.66.216.100 with SMTP id op4mr11419009pac.9.1458298511734;
+        Fri, 18 Mar 2016 03:55:11 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
+        by gmr-mx.google.com with ESMTPS id sf5si1989728pac.1.2016.03.18.03.55.11
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 Mar 2016 03:55:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 1651 invoked from network); 14 Mar 2020 06:06:02 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.242.88.46)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 14 Mar 2020 06:06:02 -0000
-Date: Sat, 14 Mar 2020 11:35:56 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: rts5208: Fix long line in C func call argument
-Message-ID: <20200314060539.GA2709@tulip.local>
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x236.google.com with SMTP id n5so162726497pfn.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 03:55:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=WyEDGPT3Um37nT6uwxbkjJouWogO7uhTR76f83Qfjgs=;
+        b=nJ8b8VS5ulvNNxAkeUdM/Hyd9N/85rNljHb2GTxFSJmrwCZuoqyz6Zt3whW1sz7mz9
+         3lxFy6pjmTgX4XC6W2PnzelZgCeWBGBSs84c78ddS5oQlMx0kUfW/CMpzGJTyRPU15FM
+         0/ZGa6rDlC9k71FN0pqTuC27KRpRKN3Q8t4ntTcriM7LRbmP+K/I9PgEoSMVbn7Gyce5
+         KcQRUKAHTPefF0fl5ZY5mD6Wc8SSbFznlihtFi8yUXCGjPtTxVXVfeMjwvPelhwZexzt
+         bKYFN5KP9COp9qqNNuwovaF7Uv/KMcGjFqg78xi/Y5i/11yHamvybyNv40m98IhdeRdF
+         JQtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=WyEDGPT3Um37nT6uwxbkjJouWogO7uhTR76f83Qfjgs=;
+        b=Elek7moh97U7BjasWUOZ/4KZ5CY7f5mbnQ+g5o2IYlrqfisqO61oAZUSpuLmTnMs2s
+         TVbaDG1i69p5fHFhQU8TVWT30lWkCqPXq0CaI6aGQjEWO9tK8TEw9CaXpIG/7xnkuXHv
+         IdJj9Rk3boj0k/lrpMDs1RAwpSIwFgEmVncwZ1oKc/Y9HG/lqvhgbwBzE//+hvhvDNma
+         gRkDBYhu0ZDDp+WBttZ5xP2T2v1D7NjT8jX+N6dsj3av+avpT8/dW19xq5qOq+FbhUpT
+         AqmTFu1TAC2qovsHpKdsTFzxQpnfc8KzvvZUl/0HjTqBLAtYHtQVI7czjtL2oSK/7qEO
+         rdkA==
+X-Gm-Message-State: AD7BkJI8tehcxi/5QHvDvMtZvTPWJFOP6+5BVTEq9VXebe/TDb0qM5pu4bd9pyywy8/PEQ==
+X-Received: by 10.98.80.78 with SMTP id e75mr22734664pfb.147.1458298511576;
+        Fri, 18 Mar 2016 03:55:11 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.148])
+        by smtp.gmail.com with ESMTPSA id v3sm19053548pfa.67.2016.03.18.03.55.09
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 18 Mar 2016 03:55:11 -0700 (PDT)
+Date: Fri, 18 Mar 2016 09:26:02 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8723au: rtl8723a_rf6052: Remove unnecessary
+ semicolon.
+Message-ID: <20160318035602.GA3988@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-A simple fix of long line in C function call argument.
-Found using checkpatch.pl.
+Remove unnecessary semicolon.
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
+Coccinelle sementic patch as follows:
+@r_case@
+position p;
+@@
+switch (...)
+{
+case ...: ...;@p
+}
+
+@r_default@
+position p;
+@@
+switch (...)
+{
+default: ...;@p
+}
+
+@r1@
+statement S;
+position p1;
+position p != {r_case.p, r_default.p};
+identifier label;
+@@
+(
+label:;
+|
+S@p1;@p
+)
+
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/rts5208/rtsx_chip.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/rtl8723au/hal/rtl8723a_rf6052.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
-index 17c4131f5f62..c6f9375468eb 100644
---- a/drivers/staging/rts5208/rtsx_chip.c
-+++ b/drivers/staging/rts5208/rtsx_chip.c
-@@ -940,7 +940,8 @@ static void rtsx_monitor_aspm_config(struct rtsx_chip *chip)
- 		if (maybe_support_aspm)
- 			chip->aspm_l0s_l1_en = 0x03;
+diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_rf6052.c b/drivers/staging/rtl8723au/hal/rtl8723a_rf6052.c
+index ce0d8d8..24c0ff3 100644
+--- a/drivers/staging/rtl8723au/hal/rtl8723a_rf6052.c
++++ b/drivers/staging/rtl8723au/hal/rtl8723a_rf6052.c
+@@ -465,7 +465,7 @@ static int phy_RF6052_Config_ParaFile(struct rtw_adapter *Adapter)
+ 			break;
+ 		}
  
--		dev_dbg(rtsx_dev(chip), "aspm_level[0] = 0x%02x, aspm_level[1] = 0x%02x\n",
-+		dev_dbg(rtsx_dev(chip),
-+			"aspm_level[0] = 0x%02x, aspm_level[1] = 0x%02x\n",
- 			chip->aspm_level[0], chip->aspm_level[1]);
- 
- 		if (chip->aspm_l0s_l1_en) {
+-		/*----Restore RFENV control type----*/;
++		/*----Restore RFENV control type----*/
+ 		switch (eRFPath) {
+ 		case RF_PATH_A:
+ 			PHY_SetBBReg(Adapter, pPhyReg->rfintfs,
 -- 
-2.20.1
+1.8.3.4
 
 
