@@ -1,103 +1,95 @@
-X-GM-THRID: 6399916000486096896
-X-Received: by 10.129.62.40 with SMTP id l40mr16822147ywa.67.1490096561162;
-        Tue, 21 Mar 2017 04:42:41 -0700 (PDT)
+X-GM-THRID: 6263333928440954880
+X-Received: by 10.107.148.84 with SMTP id w81mr10642659iod.20.1458296069768;
+        Fri, 18 Mar 2016 03:14:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.2.76 with SMTP id 73ls2717085itu.13.gmail; Tue, 21 Mar 2017
- 04:42:40 -0700 (PDT)
-X-Received: by 10.99.152.68 with SMTP id l4mr4365430pgo.84.1490096560414;
-        Tue, 21 Mar 2017 04:42:40 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id a3si3336108pfb.2.2017.03.21.04.42.40
+Received: by 10.50.57.51 with SMTP id f19ls248920igq.41.gmail; Fri, 18 Mar
+ 2016 03:14:29 -0700 (PDT)
+X-Received: by 10.50.23.68 with SMTP id k4mr11490800igf.10.1458296069289;
+        Fri, 18 Mar 2016 03:14:29 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
+        by gmr-mx.google.com with ESMTPS id tu5si1644687pab.2.2016.03.18.03.14.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 04:42:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Fri, 18 Mar 2016 03:14:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 79so16067351pgf.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 04:42:40 -0700 (PDT)
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x229.google.com with SMTP id 4so30612410pfd.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 03:14:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=DCY6pB9xWL6Cnc7OtHhPAYX1BAL68a9SF6bomiJh7hU=;
-        b=gLUNutvUqZVJJVZt67WtAdFWnqFQjdIFnOXxP9HDaEccSDaAGIoiwl7QSei9bLy0ZH
-         zHpcflknNTa4D9Hool2m9j+b9Kfs7HKYGBXLTng9z09COdihFfqeSUFrFfiKQ6tMKKGL
-         1/JOLhTz/bX09XungGdex7e7TRn9zff3GFFbK4vOVjh5C2mYYGDjzzrvehhbizaEyFQS
-         jM4ImsyLVlpA7vi4mcB5fm5fP5ywKL0ood3vLJMyHPgUjrH0Yo7z1tTxoksulpZN/Dn+
-         IA5Yr3A0G/BQ/GxInfWoiJD7Jh1TY47p9x4QMO//WCyeTRw22OWJ1lbNhLDg+ME+yM71
-         So7A==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=54XSjG3OO29aZh3DCGjSoLUYLOZytF03/Vp9InRu0zw=;
+        b=y4SbigsdLgf9g5lnoHVRx7wEsZyNfeB58P2zQQSrrgoTQIrsVtBGq9E7DlrgyB+eJu
+         9MNz5Zo0Rz7YjO4StMIxGwcgmmR4PsOjNpcY9o1+d+RtohNNYekvsJn/Zhm5s7HWAB7a
+         DOfOjJyuzWgWFgkDRnUx5J2o5S+zMPf5DtEFXHbaX0cG/oRLWm0ZDYRuw470b++9MKaF
+         6Gzoi/aL17KoJk0At8eMDtiEhVjTh3e6itHBnax6u5K+gjgR3d3a7fKHy81NpFwEpOZ+
+         s0V6t8Lz1e2N/OnggwnSEP911mJm4Cpfm5X1FEhftnzA47jb/ZpJnPL5JA1GE1t09L6h
+         n0fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=DCY6pB9xWL6Cnc7OtHhPAYX1BAL68a9SF6bomiJh7hU=;
-        b=j4c/CdRjXpxjg/DykVmvCrZ20VJoD59XVzilqnIRf/9vigyKl4GXyA4nsk9/FgtYiU
-         N9NcGtt3G3Pr5ABAQVlURHCfBceCJROO97ZMUJxUX6515RgAz3BjtBQmi4fxt5U9Lw+Y
-         unoiUjnKBw/AQaUIG/EvC6FRVuhr25B8587nVERSUYYmaZytZZecaayP355t/aGKYzHr
-         UBh1qe4lhZ5fuBRbgm4rXFGYeNzWV+bI72BplCelKSaA+8Aw9ofJQRc+HZa+TcbaM+U3
-         7S308XOBPLMQW5hIwHUNdtRpCBazTnQdwCTqe72Zj3el+yZE3Lq/Qo0RCpTlqZZQqr19
-         KY/g==
-X-Gm-Message-State: AFeK/H2mIGmususyGIDyfjkNc8TIpo5elHJHUX6yljrM9o0Oeyd38xoOLC8WGoQQ+Vugww==
-X-Received: by 10.84.137.169 with SMTP id 38mr48004019pln.125.1490096560242;
-        Tue, 21 Mar 2017 04:42:40 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id t82sm5308728pgb.13.2017.03.21.04.42.38
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 04:42:38 -0700 (PDT)
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: w.d.hubbs@gmail.com
-Cc: chris@the-brannons.com,
-	outreachy-kernel@googlegroups.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	speakup@linux-speakup.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [RESEND PATCH 00/11] staging:speakup: Multiple Checkpatch issues.
-Date: Tue, 21 Mar 2017 17:12:24 +0530
-Message-Id: <20170321114235.1638-1-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=54XSjG3OO29aZh3DCGjSoLUYLOZytF03/Vp9InRu0zw=;
+        b=bCXZLNIFtrQ3PoCT7A0Y92sovW3/h4zA0Aqg10ffaTnpVTX+gmG+rsqDSMqhbDBUoe
+         ionbgoywR94kSKuH/orWpl1S1gTPcmmGGv47zW9Cqu6MGCYLhY6SedehbGyxfveckdwL
+         M1XSLJOUmNEJRi5yDnEbxjQBj9oFD/NkGTvVUB+qWMFuKVhtMI6voEccQN+UmTZCq/CH
+         +ue5bUb3fpf4QsOSHZEXKOT45m394L2PvHvOcpYr1n/XsCgmqk+Bu84uo6eF4zH/L8xv
+         +LAG5e86QzYyF+E6ud0hXfTnDGzSAz9f8AVPUoChJW+RPwgvuFfzgei29FtXRJhRAeGq
+         oODQ==
+X-Gm-Message-State: AD7BkJIgBH9UBl2DCmRL6tOOXswP24GbipE2ADHyADLQuvlg/fONCYU+9WK1iZPO8eSmkA==
+X-Received: by 10.98.7.153 with SMTP id 25mr22506086pfh.38.1458296069107;
+        Fri, 18 Mar 2016 03:14:29 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.148])
+        by smtp.gmail.com with ESMTPSA id p85sm13891940pfj.16.2016.03.18.03.14.15
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 18 Mar 2016 03:14:28 -0700 (PDT)
+Date: Fri, 18 Mar 2016 08:45:08 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: i4l: pcbit: drv: Remove unnecessary semicolon.
+Message-ID: <20160318031507.GA3740@sandhya>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Improve readability by fixing multiple checkpatch.pl
-issues in speakup driver.
+Remove unnecessary semicolon.This issue is detected by coccinelle script.
 
-Arushi Singhal (11):
-  staging: speakup: Moved logical to previous line.
-  staging: speakup: Remove multiple assignments
-  staging: speakup: Simplify "NULL" comparisons
-  staging: speakup: fixes braces {} should be used on all arms of this
-    statement
-  staging: speakup: Remove multiple assignments
-  staging: speakup: Moved OR operator to previous line.
-  staging: speakup: spaces preferred around operator
-  staging: speakup: Removed Unnecessary parentheses.
-  staging: speakup: Simplify the NULL comparisons
-  staging: speakup: Match alignment with open parenthesis.
-  staging: speakup: Fix alignment with parenthesis.
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+---
+ drivers/staging/i4l/pcbit/drv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/speakup/fakekey.c        |   2 +-
- drivers/staging/speakup/kobjects.c       |   2 +-
- drivers/staging/speakup/main.c           | 110 +++++++++++++++++--------------
- drivers/staging/speakup/selection.c      |   4 +-
- drivers/staging/speakup/serialio.c       |   2 +-
- drivers/staging/speakup/speakup.h        |  12 ++--
- drivers/staging/speakup/speakup_acntpc.c |   8 +--
- drivers/staging/speakup/speakup_apollo.c |   2 +-
- drivers/staging/speakup/speakup_decext.c |  10 +--
- drivers/staging/speakup/speakup_decpc.c  |  26 ++++----
- drivers/staging/speakup/speakup_dectlk.c |   6 +-
- drivers/staging/speakup/speakup_dtlk.c   |   2 +-
- drivers/staging/speakup/speakup_keypc.c  |   6 +-
- drivers/staging/speakup/speakup_ltlk.c   |   2 +-
- drivers/staging/speakup/varhandlers.c    |  18 ++---
- 15 files changed, 114 insertions(+), 98 deletions(-)
-
+diff --git a/drivers/staging/i4l/pcbit/drv.c b/drivers/staging/i4l/pcbit/drv.c
+index c1b6f88..69478d9 100644
+--- a/drivers/staging/i4l/pcbit/drv.c
++++ b/drivers/staging/i4l/pcbit/drv.c
+@@ -284,7 +284,7 @@ static int pcbit_command(isdn_ctrl *ctl)
+ 	default:
+ 		printk(KERN_DEBUG "pcbit_command: unknown command\n");
+ 		break;
+-	};
++	}
+ 
+ 	return 0;
+ }
+@@ -968,7 +968,7 @@ static int pcbit_ioctl(isdn_ctrl *ctl)
+ 	default:
+ 		printk("error: unknown ioctl\n");
+ 		break;
+-	};
++	}
+ 	return 0;
+ }
+ 
 -- 
-2.11.0
+1.8.3.4
 
 
