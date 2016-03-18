@@ -1,107 +1,94 @@
 X-GM-THRID: 6263057020003287040
-X-Received: by 10.107.165.213 with SMTP id o204mr14477818ioe.10.1458364555179;
-        Fri, 18 Mar 2016 22:15:55 -0700 (PDT)
+X-Received: by 10.13.194.67 with SMTP id e64mr12874942ywd.17.1458334067638;
+        Fri, 18 Mar 2016 13:47:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.165.161 with SMTP id yz1ls1071445obb.49.gmail; Fri, 18 Mar
- 2016 22:15:54 -0700 (PDT)
-X-Received: by 10.182.65.135 with SMTP id x7mr14923387obs.13.1458364554525;
-        Fri, 18 Mar 2016 22:15:54 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id sf5si2607345pac.1.2016.03.18.22.15.54
+Received: by 10.182.226.170 with SMTP id rt10ls982210obc.57.gmail; Fri, 18 Mar
+ 2016 13:47:47 -0700 (PDT)
+X-Received: by 10.182.196.101 with SMTP id il5mr12922311obc.26.1458334067133;
+        Fri, 18 Mar 2016 13:47:47 -0700 (PDT)
+Return-Path: <htejun@gmail.com>
+Received: from mail-qk0-x241.google.com (mail-qk0-x241.google.com. [2607:f8b0:400d:c09::241])
+        by gmr-mx.google.com with ESMTPS id q187si976608ywf.4.2016.03.18.13.47.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 18 Mar 2016 22:15:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 18 Mar 2016 13:47:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) client-ip=2607:f8b0:400d:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id q129so20417149pfb.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 22:15:54 -0700 (PDT)
+       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=htejun@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qk0-x241.google.com with SMTP id u128so4139521qkh.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 18 Mar 2016 13:47:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=6GXS2UUYPljqQClqakU4VSVKud9Vbufp+3EYbVZdM+M=;
-        b=m8tD6BQP5RXycu2Zsw0qNmzYTxcFoSgOXlJ/1sTiG4rYYXJSh29KG/3CFh8T/MvOQS
-         3uwyxYwnTXCD3fVsyQEHpHKc6L31DQeJsFP9e/eiewqYq+sGmsJBwIAlckxiVkWCIxjP
-         CAP2cAoonnVA2N3KxshgDxVIUHb7hKSrj6nEufUoUFxub6WZIdEvn89kgyW86EWzRFuc
-         WmpKNcXARAqrO8sr/UdXTA4U90laVBAXvhNjcQAwXmGGNSZyKmUPJg25dYLRIxyMZRIw
-         nz5TqWifvhDWUz4U4sKdchpHiHvPFjOggaQGAOmc4DEwV40qxRDMZJPo3k3a/ulVbHRi
-         NKew==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=TGvvomfAEWCtPkPbAfVzKI7lxw5fhGEeJBqdgaPN7PQ=;
+        b=m45/3iSsfGVG5A+vNE1wv6TLr6pAInhqhlzuH6PMMmJlTFO8Ra2Al7zS57s1mx2jnN
+         mhSmzUUUs/pzO83x01OtySE62QPeRJHCty50mtAGdxaK1vt87dpa2MNA7XyIO4lFs4BQ
+         Lf3K+RTi4NxZXr9PZ8rri6aRBg3QGHwEEnzlsNkPQBGhsYRjcjt9C6tFwnJK4nt7sIuh
+         Z95Qpb4/RD3AAahuxhf+r9yNYhVtQ7SpC2twR8krMTxfutvDPKhsTIZzmA2LT5s1EzqH
+         lQXG0wWoPyPWy5ebobXnsuKGf0u0c5E0Ggw9JQC3yX9J/tSkFvrQmKRid2Orrt53M2Pn
+         rmWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=6GXS2UUYPljqQClqakU4VSVKud9Vbufp+3EYbVZdM+M=;
-        b=VONayUIWwPYw92OeS46TNVsgZOKBdljPU5+Hl5/qnmV7fLWtm/A9Ndjgo/LlWy6ykf
-         3yYe1a1Z7UQLFDS8Jz64ycFXofoXzvw2CzWQcCxYekOwFamzfjS3bvBN4Ro8pGaYml8x
-         4q6u4QMaP6J86QxDu4ufOWYiXMGT3LMv4RwIoHCRatwPH+FyJamfLw9SUcBuvzo/xpsP
-         IksLGpqVeILx4P7XFXQK/XfgeqV7ppxDNyYbLttnLBF7sg9pYWAwjUcvm2m+j1BvkHVu
-         kez+FHfV52WoPTRY7eYKcsR3MylWcc8tnJmnYxOH2hn7lZQFgREGJvcovG6SFdEbJmRR
-         UWjQ==
-X-Gm-Message-State: AD7BkJLxEArUI/7x+z9QXbNfo8TvHmoZzbzUPuPuTiJYZqGUOKfg1Yh9vHLvMEcw4hE0oA==
-X-Received: by 10.66.100.196 with SMTP id fa4mr29072066pab.37.1458364554353;
-        Fri, 18 Mar 2016 22:15:54 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([103.14.62.124])
-        by smtp.gmail.com with ESMTPSA id ux2sm24702115pac.46.2016.03.18.22.15.53
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 18 Mar 2016 22:15:53 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: johannes.berg@intel.com,
-	emmanuel.grumbach@intel.com,
-	linuxwifi@intel.com,
-	kvalo@codeaurora.org,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	tj@kernel.org,
-	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v3] iwlwifi: dvm: use alloc_ordered_workqueue()
-Date: Sat, 19 Mar 2016 13:15:47 +0800
-Message-Id: <1458364547-11621-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=TGvvomfAEWCtPkPbAfVzKI7lxw5fhGEeJBqdgaPN7PQ=;
+        b=m0pPlNdhUOiPIyd65I8xft6omXpoPEjqfircdiHHphYJuVSFFuVS66II5zQDH2G2g7
+         vZYCO1ovQNe3QhRtFGh32HcUT5RgBeYeQQiGCep0Ow8CEoBtEBW6N78hPtBoKWQ8i519
+         ipxf6mexKzh4eTsuSAYsiLewg1aT2lY0dKkLwSjtoA78ne80o1BFjLAQ1Me7CSXqi1r0
+         7mRBQ/mM8U0zA29JVH4Mu4I7XeWxZ7U2+KUUroFMZAEvj6M46JgEFeRs5gP5ZtdrnzQ9
+         uYnDTwQWOUV7unm6T28cPLSF05c3u+PnDIf35NgyTHqSuMspBEjs1cRxZeHywzlPUhKD
+         7BWg==
+X-Gm-Message-State: AD7BkJLWnswN49q/674Yfpf982QxXhFlCmNYkx3SzTMzUZnbW26Z9gBS6s/k4Lzy4qF5LQ==
+X-Received: by 10.55.21.85 with SMTP id f82mr24857326qkh.40.1458334066823;
+        Fri, 18 Mar 2016 13:47:46 -0700 (PDT)
+Return-Path: <htejun@gmail.com>
+Received: from localhost (mobile-166-172-061-006.mycingular.net. [166.172.61.6])
+        by smtp.gmail.com with ESMTPSA id 107sm6768421qge.16.2016.03.18.13.47.45
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 Mar 2016 13:47:46 -0700 (PDT)
+Sender: Tejun Heo <htejun@gmail.com>
+Date: Fri, 18 Mar 2016 16:47:44 -0400
+From: Tejun Heo <tj@kernel.org>
+To: Eva Rachel Retuya <eraretuya@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, johannes.berg@intel.com,
+	emmanuel.grumbach@intel.com, linuxwifi@intel.com,
+	kvalo@codeaurora.org, linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v2] iwlwifi: dvm: use
+ alloc_ordered_workqueue()
+Message-ID: <20160318204744.GN20028@mtj.duckdns.org>
+References: <1458231561-13184-1-git-send-email-eraretuya@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1458231561-13184-1-git-send-email-eraretuya@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Use alloc_ordered_workqueue() to allocate the workqueue instead of
-create_singlethread_workqueue() since the latter is deprecated and is scheduled
-for removal.
+On Fri, Mar 18, 2016 at 12:19:21AM +0800, Eva Rachel Retuya wrote:
+> Use alloc_ordered_workqueue() to allocate the workqueue instead of
+> create_singlethread_workqueue() since the latter is deprecated and is scheduled
+> for removal.
+> 
+> There are work items doing related operations that shouldn't be swapped when
+> queued in a certain order hence preserve the strict execution ordering of a
+> single threaded (ST) workqueue by switching to alloc_ordered_workqueue().
+> 
+> WQ_MEM_RECLAIM flag is not needed since the worker is not supposed to free
+> memory.
 
-There are work items doing related operations that shouldn't be swapped when
-queued in a certain order hence preserve the strict execution ordering of a
-single threaded (ST) workqueue by switching to alloc_ordered_workqueue().
+I think "not depended during memory reclaim" probalby is a better way
+to describe it.
 
-WQ_MEM_RECLAIM flag is not needed since the worker is not depended
-during memory reclaim.
+> Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
-Acked-by: Tejun Heo <tj@kernel.org>
----
-Changes in v3:
-* revise commit message about WQ_MEM_RECLAIM
-* add 'Acked-by:' from previous feedback
-Changes in v2:
-* switch from alloc_workqueue() to alloc_ordered_workqueue()
-* remove unneeded flags: WQ_MEM_RECLAIM and WQ_HIGHPRI
-* update commit message to reflect change
+But other than that,
 
- drivers/net/wireless/intel/iwlwifi/dvm/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Acked-by: Tejun Heo <tj@kernel.org>
 
-diff --git a/drivers/net/wireless/intel/iwlwifi/dvm/main.c b/drivers/net/wireless/intel/iwlwifi/dvm/main.c
-index f62c2d7..14396d8 100644
---- a/drivers/net/wireless/intel/iwlwifi/dvm/main.c
-+++ b/drivers/net/wireless/intel/iwlwifi/dvm/main.c
-@@ -1071,7 +1071,7 @@ static void iwl_bg_restart(struct work_struct *data)
- 
- static void iwl_setup_deferred_work(struct iwl_priv *priv)
- {
--	priv->workqueue = create_singlethread_workqueue(DRV_NAME);
-+	priv->workqueue = alloc_ordered_workqueue(DRV_NAME, 0);
- 
- 	INIT_WORK(&priv->restart, iwl_bg_restart);
- 	INIT_WORK(&priv->beacon_update, iwl_bg_beacon_update);
+Thanks.
+
 -- 
-1.9.1
-
+tejun
 
