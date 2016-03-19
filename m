@@ -1,113 +1,89 @@
-X-GM-THRID: 6667559870599790592
-X-Received: by 2002:a62:4747:: with SMTP id u68mr14881869pfa.45.1552412256261;
-        Tue, 12 Mar 2019 10:37:36 -0700 (PDT)
+X-GM-THRID: 6263794851974742016
+X-Received: by 10.66.147.133 with SMTP id tk5mr15453278pab.8.1458403387648;
+        Sat, 19 Mar 2016 09:03:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e393:: with SMTP id ch19ls11034932plb.2.gmail; Tue,
- 12 Mar 2019 10:37:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwVyjYzCdLlz9yhrsSJ28no8L46iFraViekv9cnvCIvyxoVs/GrVY+ISiU4E2rv640DJXPJ
-X-Received: by 2002:a17:902:1024:: with SMTP id b33mr12497685pla.73.1552412255494;
-        Tue, 12 Mar 2019 10:37:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552412255; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qy3QDXI5uxDWfL9v3rhKnSzpeI3O9vheSiDujodD1IUM+wR1cFUqPha6sRcevOPX+b
-         r+az7IcYDyTFJCkkUtx76sXP+ygp4qhv7NOmuwnb+KczZEI6/zXvnw6oKR0H2c2qt+1A
-         z59GR6S5gXDj7pfgh9il5TActkX3bL1kB5ifyX2/fJSnW9NXI8AYs8GZNT8cTxvihvqv
-         LvK8kSb74rBMUD63oPQsq50I9Jfy9V2cMZDLaPREz2PxZntyAis61Wx0+34jfTYFcJkc
-         P9t9NrLTvG9tFQa6HDzOZGgE+6HF20ypjHar3nE1g0U+UhfvQO1kDr/xTJvqynP1L79v
-         7sWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LXGY4E+i8t9SgIu38KpXy7kziOkXn4KfUCd26ouNIuM=;
-        b=dsyyVZ1fPMKI4ZGIMJxtwU9w6IfVdjqE5qAJBw6lN5/WaOF0q7zPQtN+LNdJf3jR+Q
-         H+aY6U7Apwaxc4SnlRpkks9i/yVqY+NSSfZ0IvoCL+Sjte5wCyNWFDN5asQ0/miOlc3T
-         AM/9Tn+/m+aUhsACcjY0lniTS3/3NrDTKlKHv0YwzOXiTv3jC5bsP1czyGiSpENMUSrP
-         N4wXx0G/IMNnefh0QXhWflCCqCJMnCNdRMyxRXWwOemX14oZ6ITNy5FBNQtbE1VyQe4e
-         XJoqij0jNZUSIQKLx/tyQiyYGCLBcku6jNWYSBuFig1lBQZqvvbDqVJVd/bSm/SWps/Q
-         8eWQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jHAWNNic;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x230.google.com (mail-oi1-x230.google.com. [2607:f8b0:4864:20::230])
-        by gmr-mx.google.com with ESMTPS id j8si451074plk.3.2019.03.12.10.37.35
+Received: by 10.140.89.73 with SMTP id u67ls3180490qgd.85.gmail; Sat, 19 Mar
+ 2016 09:03:07 -0700 (PDT)
+X-Received: by 10.129.27.3 with SMTP id b3mr16316627ywb.0.1458403387049;
+        Sat, 19 Mar 2016 09:03:07 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id tu5si2367203pab.2.2016.03.19.09.03.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 10:37:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) client-ip=2607:f8b0:4864:20::230;
+        Sat, 19 Mar 2016 09:03:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jHAWNNic;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x230.google.com with SMTP id w66so2805568oia.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 12 Mar 2019 10:37:35 -0700 (PDT)
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id u190so22116963pfb.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 19 Mar 2016 09:03:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=LXGY4E+i8t9SgIu38KpXy7kziOkXn4KfUCd26ouNIuM=;
-        b=jHAWNNic1NftTQTF3NKehBPOxZLcEOmqnmMrH3YnPB9ioqixilBnapdqcoAZZIuHVW
-         cLwKKalKOXEednlsv3MVboXuVT1YoM2QtRy4TZq97z9WRjmQpN7wAbDyUdHJ5o656QIt
-         fZDVWqK1SKPhI7ZGUjmWBFxQT1rtGQhHEpnSBO9LKypR0ed7fQM7mCn09cbPvuAJ5Fka
-         isybdxuvF9+9uzc1u8uUSMP1+3UjarXpz6ZqFZfcKVM3GQCmnhwETBdoolsdjSTu2mDm
-         r78hPYOKpiqCxOqtefiqkLzDQvQaDIPgtIAN2R0vQY1X3J89BEy2EXm83jguIbnHCSLy
-         6Gfw==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=ax/Qs5sJ83KbdUy4beRiJP4Rl/PTshqgZMXty1dm0PY=;
+        b=hvcJjDSw4Up0cGT/yNu3hRc/e34JGcfiLNdvR1iD3Ur5ieWfsP6n6slgPsQFqKNmBA
+         KnriuRQLoKuJvuBzo8wv7CYUXK7867tZvu/IQ/ei201VB+k/BIO5V0PYXRMECQFyZSdH
+         b3X79YN0KUB4Ys6ytIASOwbx2B+wlpaoqS+MIkQs8u7v7CfwJ8SybiiqDnBXqKOWu8YC
+         Xu8Bqt4J3fF07m1s8X8ZpFiSQb/yuOzTBMV5CzdPFWPhfctWrFgA6kHOvN8vCc6lnx91
+         5v4U4PVE1nT9I1D9hA3qzgOVh+vfgbk1AptX4jZv7JtICLgP6EQQv18EQjub+2l/SxNZ
+         pRNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=LXGY4E+i8t9SgIu38KpXy7kziOkXn4KfUCd26ouNIuM=;
-        b=kIZKGmRj0sLw0Y4bZhcdSQb/PFR+5NzW+yU1rL8Mr9lgIBsVE05xn2mPFZjzVkngyS
-         6cx3VoSPyH7Gxrl/XLeNtrSeFAUHWF969/CSOc1g/ka56yJ39o0T6XAKYsywUyIEOtVn
-         5ouxVV4qfbAh7ajO+QFq/PwB9/45KNKLFj21y+4UjeNCDT4IZkSKUdA3aiwrbzouGjW3
-         1coTyG+NfXBnfqN5sntNFdoXscfZ5KrnmKhMz73AwMI4V2SkmDl8RZvAjiU+T9o8URMh
-         cyXobBVhxgsS/3Pv+nCuKDn+hgqUUr2ldPEfw3elLIcayhgs9isVz62pPV2KH3FoAR1L
-         D/mQ==
-X-Gm-Message-State: APjAAAVXSnuvFamTjVn9097Cb9fQj52pb/mdo+pC7Wbyr5iWs+PJ/cIz
-	5bDO55OIh/nt0rxFZoP9KUg=
-X-Received: by 2002:aca:c482:: with SMTP id u124mr2327725oif.95.1552412254859;
-        Tue, 12 Mar 2019 10:37:34 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:432c:9838:e357:690:7f06])
-        by smtp.gmail.com with ESMTPSA id z3sm1191266otp.31.2019.03.12.10.37.33
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2019 10:37:34 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: speakup: Remove an unnecessary initialization in function
-Date: Tue, 12 Mar 2019 12:37:30 -0500
-Message-Id: <20190312173730.23281-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=ax/Qs5sJ83KbdUy4beRiJP4Rl/PTshqgZMXty1dm0PY=;
+        b=PYEWGCalTsh7pWV2jcxLIGJOjIFevFrauXvM5oIZVdG6e0zpQQSkHLXYujRDmGhB2S
+         FMrsUsYIz9t7nSRdoLkj1eEsvhMeDk6eXe9E6b0/cZfth8hgwjxWeTDqJepFJow1bjFz
+         0oe9OiAhWnX5h4d2NVXV+IgjeCLl643APezC+zBcqQxTF74iaDK/tH9FiHnRJ1liA+hl
+         l5SWmv4eAx4sNVj85VLGMSsvTY570FeOa0zB54cqeazjWjy1d2TwrzKw/bHBPp/M0tbE
+         xcYoHQSRoM0sbQG6nN3eIG2O0tDN20w6mNhSI7s9V1j/RcYH+hKK2SQ4D4iRgoEsWKgZ
+         mRBA==
+X-Gm-Message-State: AD7BkJJ464/TYRMdu1k6+6RWSe7M7yqln8UuN5BWzaEVu79TP8rRfSAmrTpZHtvqDpWIzA==
+X-Received: by 10.66.140.70 with SMTP id re6mr32387661pab.100.1458403386873;
+        Sat, 19 Mar 2016 09:03:06 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.86])
+        by smtp.gmail.com with ESMTPSA id ql1sm28992884pac.24.2016.03.19.09.03.05
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 19 Mar 2016 09:03:06 -0700 (PDT)
+Date: Sat, 19 Mar 2016 14:33:56 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/4] Staging: rtl8188eu: Hal8188ERateAdaptive: Remove NULL
+ comparison.
+Message-ID: <320492677a8d1729404ea6a5bc6bcecc41190e97.1458376695.git.bankarsandhya512@gmail.com>
+References: <cover.1458376695.git.bankarsandhya512@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1458376695.git.bankarsandhya512@gmail.com>
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Remove an unnecessary initialization of local variable dt_stat in function.
-Issue suggested by Coccinelle using ret.cocci.
+Remove NULL comparison.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/speakup/speakup_decpc.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
-index 459ee0c0bd57..3ad49bb93829 100644
---- a/drivers/staging/speakup/speakup_decpc.c
-+++ b/drivers/staging/speakup/speakup_decpc.c
-@@ -233,9 +233,8 @@ static struct spk_synth synth_dec_pc = {
+diff --git a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+index a108e80..201c15b 100644
+--- a/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
++++ b/drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c
+@@ -557,7 +557,7 @@ int ODM_RAInfo_Init(struct odm_dm_struct *dm_odm, u8 macid)
+ 	u8 WirelessMode = 0xFF; /* invalid value */
+ 	u8 max_rate_idx = 0x13; /* MCS7 */
  
- static int dt_getstatus(void)
- {
--	dt_stat = inb_p(speakup_info.port_tts) |
--		 (inb_p(speakup_info.port_tts + 1) << 8);
--	return dt_stat;
-+	return inb_p(speakup_info.port_tts) |
-+	       (inb_p(speakup_info.port_tts + 1) << 8);
- }
+-	if (dm_odm->pWirelessMode != NULL)
++	if (dm_odm->pWirelessMode)
+ 		WirelessMode = *(dm_odm->pWirelessMode);
  
- static void dt_sendcmd(u_int cmd)
+ 	if (WirelessMode != 0xFF) {
 -- 
-2.17.1
+1.8.3.4
 
 
