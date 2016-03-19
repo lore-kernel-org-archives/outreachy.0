@@ -1,82 +1,71 @@
 X-GM-THRID: 6263794151847886848
-X-Received: by 10.140.98.179 with SMTP id o48mr16721951qge.15.1458409199560;
-        Sat, 19 Mar 2016 10:39:59 -0700 (PDT)
+X-Received: by 10.112.136.35 with SMTP id px3mr2771232lbb.8.1458406803451;
+        Sat, 19 Mar 2016 10:00:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.20.214 with SMTP id 80ls3013434qgj.83.gmail; Sat, 19 Mar
- 2016 10:39:58 -0700 (PDT)
-X-Received: by 10.129.52.17 with SMTP id b17mr16270746ywa.15.1458409198884;
-        Sat, 19 Mar 2016 10:39:58 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id h69si2641941pfj.0.2016.03.19.10.39.58
+Received: by 10.25.205.202 with SMTP id d193ls657204lfg.2.gmail; Sat, 19 Mar
+ 2016 10:00:02 -0700 (PDT)
+X-Received: by 10.112.170.42 with SMTP id aj10mr2772868lbc.1.1458406802917;
+        Sat, 19 Mar 2016 10:00:02 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id f75si104884wme.3.2016.03.19.10.00.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 19 Mar 2016 10:39:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 19 Mar 2016 10:00:02 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id q129so22777612pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 19 Mar 2016 10:39:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+IePxdIqbUfz9EVqSLIDQFerMYYUs0EhJLuyD6b4CgM=;
-        b=YS1NUz8kwMSGa7D2N1LjQNh6rcfBoVhF4SPW17QJydRmE3hE+RtHp01N2dwTozEfLi
-         9gp4s/5uhIeY2og9rsK+g2elXQIbZKhXpIcNQI6UQasXgZJRckj98Bno1LfoiOEW6AhX
-         NHYsMIG9qWhTssiOgu4ELWA25QfWhTtsCSYlQGO3vChNC3Veyxd3QEbXm9QFwY+wizY1
-         vw469yQEZDXpj2dQajKrJwWDhzJH4vZiZhm18f7k7q7rtLaL+jz2w57MYb4B6zIzwTLZ
-         V5GZcyHTDZJj4UH9E/W70k4vrBIm1phOPDudw4ji2hj0zcOAz+7xAhA9dNSMQCMrQHrn
-         xYNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+IePxdIqbUfz9EVqSLIDQFerMYYUs0EhJLuyD6b4CgM=;
-        b=krC29rvEredALXHOO41L5qPzLrxVj8YE/fgaJUcOcEQvaWP58A7TJ4xGe0s4095dFE
-         nODrqBt+mXMI85Q79KfS4CjedEUWKaKW4RvfGiWCbKKw7fAQhm9Fad6xgk4f0Wh4FGsa
-         JlV8xfZFml/VMRQiQb+uiA8XNcdZELNB/3RNiAVS/DMQ7UrJVB/33ZXLSqHoqWGah07O
-         XBaXD0otEKST3gzlFc4k55N6yoM5qVUzjOFe4yvI/QUZJ+8Uh2GyQ/XeOirYuQvR9tpN
-         Yj20jCMoFnzA9paLlQYNfSnCyOuRiMkAzOlr5Wq7AcvoJpmS2BM47i+98lvFYTrw8oyF
-         KsUg==
-X-Gm-Message-State: AD7BkJKI2NZ21fQvSlqZBDCwBLeBfRpeFNyiIo1sk/9FwGv/cB/RyvJ4GvBlbWb8cpB7OA==
-X-Received: by 10.66.164.39 with SMTP id yn7mr32969192pab.107.1458409198666;
-        Sat, 19 Mar 2016 10:39:58 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.86])
-        by smtp.gmail.com with ESMTPSA id v14sm29417563pas.10.2016.03.19.10.39.57
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 19 Mar 2016 10:39:58 -0700 (PDT)
-Date: Sat, 19 Mar 2016 16:11:06 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/4] Staging: rtl8188eu: Remove NULL comparision.
-Message-ID: <cover.1458382380.git.bankarsandhya512@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,361,1454972400"; 
+   d="scan'208";a="208907920"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Mar 2016 18:00:02 +0100
+Date: Sat, 19 Mar 2016 18:00:01 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 0/4] Staging: rtl8188eu: Remove
+ NULL comparision.
+In-Reply-To: <cover.1458376695.git.bankarsandhya512@gmail.com>
+Message-ID: <alpine.DEB.2.02.1603191759130.2259@localhost6.localdomain6>
+References: <cover.1458376695.git.bankarsandhya512@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove NULL comparision.This issues is detected by checkpatch.pl script.
-changes in v3:
-*correcting the heading.
+On Sat, 19 Mar 2016, Sandhya Bankar wrote:
 
-Sandhya Bankar (4):
-  Staging: rtl8188eu: Hal8188ERateAdaptive: Use x instead of x != NULL.
-  Staging: rtl8188eu: hal_intf: Use x instead of x != NULL.
-  Staging: rtl8188eu: rtl8188e_rxdesc: Use !x instead of x == NULL.
-  Staging: rtl8188eu: usb_halinit: Use !x instead of x == NULL.
+> Remove NULL comparision.This patch is found by checkpatch.pl script.
+> Changes in v2:
+> *Correcting the heading.
+> 
+> Sandhya Bankar (4):
+>   Staging: rtl8188eu: Remove NULL comparision.
+>   Staging: rtl8188eu: Remove NULL comparision.
+>   Staging: rtl8188eu: Use !x instead of x == NULL.
+>   Staging: rtl8188eu: Use !x instead of x == NULL.
 
- drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c | 2 +-
- drivers/staging/rtl8188eu/hal/hal_intf.c             | 2 +-
- drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c      | 2 +-
- drivers/staging/rtl8188eu/hal/usb_halinit.c          | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+Theer are repeated subject lines here, which is going to cause problems.  
+You could use the file name, without the .c, to differentiate between 
+them.
 
--- 
-1.8.3.4
+julia
 
+> 
+>  drivers/staging/rtl8188eu/hal/Hal8188ERateAdaptive.c | 2 +-
+>  drivers/staging/rtl8188eu/hal/hal_intf.c             | 2 +-
+>  drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c      | 2 +-
+>  drivers/staging/rtl8188eu/hal/usb_halinit.c          | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> -- 
+> 1.8.3.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1458376695.git.bankarsandhya512%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
