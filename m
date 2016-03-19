@@ -1,107 +1,78 @@
-X-GM-THRID: 6338861029933449216
-X-Received: by 10.194.172.131 with SMTP id bc3mr1441514wjc.19.1475881093956;
-        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
+X-GM-THRID: 6263795726367588352
+X-Received: by 10.28.153.70 with SMTP id b67mr550989wme.2.1458406734583;
+        Sat, 19 Mar 2016 09:58:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.71.16 with SMTP id u16ls1045716wma.12.gmail; Fri, 07 Oct
- 2016 15:58:13 -0700 (PDT)
-X-Received: by 10.194.96.177 with SMTP id dt17mr13056wjb.21.1475881093332;
-        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id 82si263584wmg.3.2016.10.07.15.58.13
+Received: by 10.25.89.20 with SMTP id n20ls205167lfb.82.gmail; Sat, 19 Mar
+ 2016 09:58:53 -0700 (PDT)
+X-Received: by 10.25.28.67 with SMTP id c64mr514341lfc.8.1458406733715;
+        Sat, 19 Mar 2016 09:58:53 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id s141si145664wmd.1.2016.03.19.09.58.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Sat, 19 Mar 2016 09:58:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id i130so4912854wmg.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=aiY0+NWLLwP33FUkGVxc9yjOYq4zuCiVJ5ExRXiXUmw=;
-        b=HP6EapO9jBiv/UsI6Zr1jn8Gp2Si1RkvkUriCfJp9CJARQhA5/GaYGB918PeHCMKAl
-         LNlnBUlq0RwETwK2D+YMRhIXdzGI5BcXEj5ViHxhBD9FcnYLJytkRrNkU3RE23MoZR85
-         1VoiFOpEUSCb1vpBK1ndM2K1vkVBHaQmnuuaKsZtYB4/EdzykFskLSSVvUSs+M3FujHO
-         mXlJG35cRB/weOJfoMgC4IVOoCRLQCSBp7qprPKNCn85RsmJW3X+SfRPRBVfb+MmG3OI
-         94BOjJUwgKG+2GmCDoR4JQA0NzuV0vZqPvYHVidaEF7FcLqTPIIeMRDbNU6ZAwg8rosX
-         RHbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=aiY0+NWLLwP33FUkGVxc9yjOYq4zuCiVJ5ExRXiXUmw=;
-        b=MyIxL7/Kadlx2q8aHl0w4S4T2J0WRUkB2B9rkOMpUb0Hxqr0MkAY/W376EHhBS0FmA
-         GiWU1jpZOwrSquKoPcpwWVHuzitRq0SherhHilJ3embbBPqrm6cSAxSDaNNKgjGZGTw/
-         0HWOGuJWzO4snR4DFx67QtUqyUaoBKc1ESA50Q2Xsgk2W0UVKpKa+oN5kMw2yjSqLmhd
-         4PtJyf/B2Xtvksa3UxlhmtLVLj3Pg3/afFoRywGr75KAK0VOCHM+NDoKT1anCR6GqwfI
-         OWdEGpwonZMEL1VerLvilHF+ReESQHFxA0e8j5MZAS9M2Hw11Td9Zd0UAC2velANp0TY
-         5TdQ==
-X-Gm-Message-State: AA6/9RkCuyc5Ouk2Kpo2HUYqJgw0zay2x4GI5+9xjUDWsyvkPS518K6E8SuwPSHsMhUZuQ==
-X-Received: by 10.28.164.130 with SMTP id n124mr651570wme.105.1475881093135;
-        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id qa7sm21827537wjc.39.2016.10.07.15.58.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 07 Oct 2016 15:58:12 -0700 (PDT)
-Date: Sat, 8 Oct 2016 01:58:11 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: ks7010: __packed instedad of __attribute__((packed))
-Message-ID: <20161007225811.GA25180@domino-MS-16Y1>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.24,361,1454972400"; 
+   d="scan'208";a="169669592"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Mar 2016 17:58:52 +0100
+Date: Sat, 19 Mar 2016 17:58:52 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@localhost6.localdomain6
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 2/4] Staging: rtl8188eu: Use !x
+ instead of x == NULL.
+In-Reply-To: <08dbf910fd604fdfd258b82d2ca8e53621f9c6f8.1458376695.git.bankarsandhya512@gmail.com>
+Message-ID: <alpine.DEB.2.02.1603191758280.2259@localhost6.localdomain6>
+References: <cover.1458376695.git.bankarsandhya512@gmail.com> <08dbf910fd604fdfd258b82d2ca8e53621f9c6f8.1458376695.git.bankarsandhya512@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix a issue found by  checkpatch.pl tool:
 
-"WARNING: __packed is preferred over __attribute__((packed))".
 
-Replace  __attribute__((packed)) with __packed.
+On Sat, 19 Mar 2016, Sandhya Bankar wrote:
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/ks7010/ks_hostif.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+> Use !x instead of x == NULL.
 
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index 5ae013b..924b902 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -1938,12 +1938,12 @@ void hostif_sme_set_wep(struct ks_wlan_private *priv, int type)
- struct wpa_suite_t {
- 	unsigned short size;
- 	unsigned char suite[4][CIPHER_ID_LEN];
--} __attribute__ ((packed));
-+} __packed;
- 
- struct rsn_mode_t {
- 	uint32_t rsn_mode;
- 	uint16_t rsn_capability;
--} __attribute__ ((packed));
-+} __packed;
- 
- static
- void hostif_sme_set_rsn(struct ks_wlan_private *priv, int type)
-@@ -2418,8 +2418,8 @@ void hostif_sme_set_pmksa(struct ks_wlan_private *priv)
- 		struct {
- 			uint8_t bssid[ETH_ALEN];
- 			uint8_t pmkid[IW_PMKID_LEN];
--		} __attribute__ ((packed)) list[PMK_LIST_MAX];
--	} __attribute__ ((packed)) pmkcache;
-+		} __packed list[PMK_LIST_MAX];
-+	} __packed pmkcache;
- 	struct pmk_t *pmk;
- 	struct list_head *ptr;
- 	int i;
--- 
-2.7.4
+There is a != test here.
 
+julia
+
+> 
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+> Changes in v2:
+> *Correcting the heading.
+> 
+>  drivers/staging/rtl8188eu/hal/hal_intf.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/hal/hal_intf.c b/drivers/staging/rtl8188eu/hal/hal_intf.c
+> index 85c17ef..fb7bacb 100644
+> --- a/drivers/staging/rtl8188eu/hal/hal_intf.c
+> +++ b/drivers/staging/rtl8188eu/hal/hal_intf.c
+> @@ -186,7 +186,7 @@ s32 rtw_hal_mgnt_xmit(struct adapter *adapt, struct xmit_frame *pmgntframe)
+>  
+>  s32 rtw_hal_init_xmit_priv(struct adapter *adapt)
+>  {
+> -	if (adapt->HalFunc.init_xmit_priv != NULL)
+> +	if (adapt->HalFunc.init_xmit_priv)
+>  		return adapt->HalFunc.init_xmit_priv(adapt);
+>  	return _FAIL;
+>  }
+> -- 
+> 1.8.3.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/08dbf910fd604fdfd258b82d2ca8e53621f9c6f8.1458376695.git.bankarsandhya512%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+> 
 
