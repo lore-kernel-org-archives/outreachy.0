@@ -1,61 +1,61 @@
 X-GM-THRID: 6264236778940530688
-X-Received: by 10.140.150.210 with SMTP id 201mr20491034qhw.28.1458506360335;
-        Sun, 20 Mar 2016 13:39:20 -0700 (PDT)
+X-Received: by 10.31.157.213 with SMTP id g204mr20577911vke.14.1458506318832;
+        Sun, 20 Mar 2016 13:38:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.37.71 with SMTP id q65ls3669555qgq.92.gmail; Sun, 20 Mar
- 2016 13:39:19 -0700 (PDT)
-X-Received: by 10.129.39.146 with SMTP id n140mr20270291ywn.22.1458506359978;
-        Sun, 20 Mar 2016 13:39:19 -0700 (PDT)
+Received: by 10.182.171.71 with SMTP id as7ls1368676obc.69.gmail; Sun, 20 Mar
+ 2016 13:38:38 -0700 (PDT)
+X-Received: by 10.182.148.227 with SMTP id tv3mr20346005obb.30.1458506318531;
+        Sun, 20 Mar 2016 13:38:38 -0700 (PDT)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id tu5si2761016pab.2.2016.03.20.13.39.19
+        by gmr-mx.google.com with ESMTPS id sf5si3463082pac.1.2016.03.20.13.38.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Mar 2016 13:39:19 -0700 (PDT)
+        Sun, 20 Mar 2016 13:38:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id q129so27110974pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 20 Mar 2016 13:39:19 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id n5so26625793pfn.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 20 Mar 2016 13:38:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=nhF6s0+khZHpAZOkFuD8w2ZXEr1HeERtHJpLarM01tU=;
-        b=vViwxeqW7F4mXNI2KozKYJ5BPBJVewrPxUGuyLzdQkycN578j517aGLxkL4dGosJIp
-         9c5VUSVOMhkIH83veKWsawryN2TayA9paPeMKfU3IHWMPn6xn/wo0VqMVYJw2V0SIXtT
-         VE9a4iMf8ee1+/WB9qOfuoIOm6q5N5rPmhMTnOSDGQbe+jyMhBnpqsc/xj9eyUDk6x6c
-         9of0b4vDNQFnW6WMbNnowHCK/tDMjAX0AgzFmSr7Jh9N2tV2iKMZIPeKcH8UDrBXj2iV
-         k+b/StADTsgh3BzIqVdiSWTI35xyut6I0CLkrA3BnhEaIJd/IDN/fJu5YIL2ZZj5rGvF
-         mGkw==
+        bh=j2mCJ4WoXjWxFl9f97ZF2y4/Feqvzuk30bSW6QgFj6Y=;
+        b=Pt/M+4g5AFFeZqII3flUrkm/8mmYn3Q1nWuiSQJ/4hij0q5qFe/tTmPaqlCbZ5x0f+
+         WR0dgXSwjRhCDmxVqA2DsDrWPu+gqIZ8mXzY3yhhKXMjpsYDYqZYZ5ewg0ohLqyDGDRv
+         bkl9adw6D9svNY5sLmfETqvV4AFbkWujm187Dqp10FpLDwgm8/I3xrGlnWJtSN8wFBb+
+         lVhZ4SCUouthf4pXXUluKAl1lht7Y+5BhHd9jFhUel18L3bW3BuJ4rBe58YIfpAA/yJZ
+         9ngiaGtPxDEN5gke3/rng2R/IM4SmnKdHjJz4GbTYehnyaK8Zzx0tl2jFqtOtyMkihFR
+         b6bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=nhF6s0+khZHpAZOkFuD8w2ZXEr1HeERtHJpLarM01tU=;
-        b=Y0/1TGW/pLw9rXFLJ/8I7La+nKEkEJ7naAGioiTZPwWTrwfqoYEwx0jgHtO6ns12xX
-         pt6mlHJoUtvsIs6rh9inisAtMJ9XG4ln2X7UjaCXiM0fl0YhejQMigl8GlkRcudKw5r/
-         adlFHC9QLt9VP7leihV5f8JMAqjEa14A+enBkwvYKE1ZxXf+8GtJT4UGw4udIpA1vgOf
-         fMn8zNLZ9pOShGXZQMj7RNQDAnr9yzbTlxiGfEOsRu6uk4WKk6V5ZEFuFkoOylKRfSpK
-         sgRIeiqyIXlYdWRXMUSxbJmzZfCth3tZ/1BGGnrbUgv4o4wS5f/W2kErCLRz3/J04Ber
-         EURw==
-X-Gm-Message-State: AD7BkJIsv7kX5eIHL1/JCsQ/M8+gunatsDsJlEHGWnesWlAcLlLepv7ehJ321MPFsKXnnw==
-X-Received: by 10.67.6.72 with SMTP id cs8mr39826651pad.138.1458506359797;
-        Sun, 20 Mar 2016 13:39:19 -0700 (PDT)
+        bh=j2mCJ4WoXjWxFl9f97ZF2y4/Feqvzuk30bSW6QgFj6Y=;
+        b=jHYpvPQNyo3Zkn5n96oTIEB2hrmPOvRh0m2F/zDT962KXJtJ7ozO4ou+YaNgTKB+F9
+         PNDy7Ey1hVNWiXPBepkjanugX5RjaHvaTE/dqcQEJ38uu+hnPTIZmXQzLTE5DORwBKQE
+         ye/ivE9QMCeBvHofXzxL+CYK/V0zGxdYYn6COd9/N1xX/xYwBWbSfW9hvvo/Ff/lBhd2
+         tmSMAyx27y26Fe205SQME0Ijs0beCaSNIvax8Po3DwLGmVRzESZfIuS3whaqQYoEx7/8
+         lM16UtPpdRyRATfnek1oo8MkUlSKUUxDWwWIG3lVhsoXKPuKrKPyJKXrDyVWl4h8T0HD
+         4gtw==
+X-Gm-Message-State: AD7BkJJ6Z1U1sOryFf0tZ6If+Bnme8Jot4bGePsN+Ht3lTTidQcFTh3jgfwNSOG5DzFI+w==
+X-Received: by 10.98.10.25 with SMTP id s25mr39713410pfi.158.1458506318375;
+        Sun, 20 Mar 2016 13:38:38 -0700 (PDT)
 Return-Path: <bhaktipriya96@gmail.com>
 Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id k65sm35287812pfb.30.2016.03.20.13.39.18
+        by smtp.gmail.com with ESMTPSA id m87sm35273496pfj.38.2016.03.20.13.38.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 20 Mar 2016 13:39:19 -0700 (PDT)
-Date: Mon, 21 Mar 2016 02:09:17 +0530
+        Sun, 20 Mar 2016 13:38:37 -0700 (PDT)
+Date: Mon, 21 Mar 2016 02:08:36 +0530
 From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: rtl8712: rtl871x_mlme: Clean up tests if NULL
+Subject: [PATCH 1/4] staging: rtl8712: usb_ops_linux: Clean up tests if NULL
  returned on failure
-Message-ID: <25004936d602ad5a76f4edaa2f62b61007e290d8.1458506158.git.bhaktipriya96@gmail.com>
+Message-ID: <c0613911b7c45128dc8cd869b7bdc24a3a733653.1458506158.git.bhaktipriya96@gmail.com>
 References: <cover.1458506158.git.bhaktipriya96@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -80,31 +80,22 @@ e = \(kmalloc\|kzalloc\|kcalloc\|devm_kzalloc\)(...);
 
 Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mlme.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/usb_ops_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 62d4ae8..f8b1c89 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -1205,7 +1205,7 @@ sint r8712_set_auth(struct _adapter *adapter,
- 		return _FAIL;
+diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
+index 454cdf6..6f12345 100644
+--- a/drivers/staging/rtl8712/usb_ops_linux.c
++++ b/drivers/staging/rtl8712/usb_ops_linux.c
+@@ -504,7 +504,7 @@ int r8712_usbctrl_vendorreq(struct intf_priv *pintfpriv, u8 request, u16 value,
+ 	u8 *palloc_buf, *pIo_buf;
 
- 	psetauthparm = kzalloc(sizeof(*psetauthparm), GFP_ATOMIC);
--	if (psetauthparm == NULL) {
-+	if (!psetauthparm) {
- 		kfree(pcmd);
- 		return _FAIL;
- 	}
-@@ -1234,7 +1234,7 @@ sint r8712_set_key(struct _adapter *adapter,
- 	if (!pcmd)
- 		return _FAIL;
- 	psetkeyparm = kzalloc(sizeof(*psetkeyparm), GFP_ATOMIC);
--	if (psetkeyparm == NULL) {
-+	if (!psetkeyparm) {
- 		ret = _FAIL;
- 		goto err_free_cmd;
- 	}
+ 	palloc_buf = kmalloc((u32)len + 16, GFP_ATOMIC);
+-	if (palloc_buf == NULL)
++	if (!palloc_buf)
+ 		return -ENOMEM;
+ 	pIo_buf = palloc_buf + 16 - ((addr_t)(palloc_buf) & 0x0f);
+ 	if (requesttype == 0x01) {
 --
 2.1.4
 
