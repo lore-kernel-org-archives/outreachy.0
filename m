@@ -1,80 +1,100 @@
-X-GM-THRID: 5595816001536
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,283d475c7b646f20,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.130.70 with SMTP id oc6mr3384462lbb.13.1425244700133;
-        Sun, 01 Mar 2015 13:18:20 -0800 (PST)
+X-GM-THRID: 6264225267449856000
+X-Received: by 10.98.64.141 with SMTP id f13mr20431690pfd.3.1458503601205;
+        Sun, 20 Mar 2016 12:53:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.246.38 with SMTP id xt6ls333114lac.102.gmail; Sun, 01 Mar
- 2015 13:18:19 -0800 (PST)
-X-Received: by 10.112.214.234 with SMTP id od10mr3277459lbc.3.1425244699597;
-        Sun, 01 Mar 2015 13:18:19 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wi0-x232.google.com (mail-wi0-x232.google.com. [2a00:1450:400c:c05::232])
-        by gmr-mx.google.com with ESMTPS id i7si548113wif.0.2015.03.01.13.18.19
+Received: by 10.50.93.72 with SMTP id cs8ls786621igb.29.canary; Sun, 20 Mar
+ 2016 12:53:20 -0700 (PDT)
+X-Received: by 10.50.87.7 with SMTP id t7mr8448489igz.11.1458503600666;
+        Sun, 20 Mar 2016 12:53:20 -0700 (PDT)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id sf5si3446741pac.1.2016.03.20.12.53.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 13:18:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) client-ip=2a00:1450:400c:c05::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 20 Mar 2016 12:53:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c05::232 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x232.google.com with SMTP id h11so10752479wiw.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 13:18:19 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id x3so26554072pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 20 Mar 2016 12:53:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=F3uPqivxnNsZut8urnYTK12MD4ffVEM2MY3sTMm+Pdo=;
-        b=MOKYulH9+MEnDfwbX1nsTfSWfKf8CZw9fvJG4o64J7+M66llL7XuwOBSKkRCGQvWZw
-         JC2MB/gUufG3DrbLMfZNIYN5BXDjDA7ehtflsFE0cfwnj+hFXnazbKWOg2HERcUKdcR/
-         S0FztDVDOprP09banzwOM7RD4EcTV/vcKiOI6ocSffMN8bUvQyWDf5L81QmECiBbAkta
-         kLNFJuKAPGe+HaD2L9nDYBxoT3SoK3URSEab2QqfxuFt3MYJXNjJu2MITC8Zic0Ji6K+
-         LjB8PMAdPFM82g2lJrornlJ0VxiqGfZPYwW4WwziNGOwpg/KJTsk28vd7Utmj4bSo8JD
-         iEig==
-X-Received: by 10.194.172.35 with SMTP id az3mr53042398wjc.43.1425244699490;
-        Sun, 01 Mar 2015 13:18:19 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneensa-VirtualBox ([79.170.55.43])
-        by mx.google.com with ESMTPSA id k1sm16351608wjn.9.2015.03.01.13.18.18
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 13:18:18 -0800 (PST)
-Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 7A0596339E; Mon,  2 Mar 2015 00:18:14 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Nt3gOcBMLrwsMePNh0okquzj2BH0dqOvvuVtn50VX5A=;
+        b=HeGaCrgrY8dLPwQN2r2+58HnZIihdHYyuCmkuKLeB45XprbRmyaFIoProFtwSa2Yzr
+         /3DKWTe3P3iBkj4kItIWBcu+zbxOx2g9+5ATMOJEL+ilmiegMXZjSNG61HYx3MRVxXNR
+         EmJBklYBuF7LMZMCGI0M1uDcCKpNU6q92e3CSDngF6yyOlay3CDNXNdB1HiAoFf6ZdIC
+         RYIOVwqlxw88re12DIoMros7GKyE88AWDHrkdIsld7D88nI4pmUJXP5qqr7P/1zUnc1v
+         cR5hN3nU4fpjd20JZh5DacfVzSDQ/jQZj4YGgxig4hlAMoOvAlkAuZ/z8k8myl2T88lV
+         up5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Nt3gOcBMLrwsMePNh0okquzj2BH0dqOvvuVtn50VX5A=;
+        b=LfqNH6QdM0YvPqcKek9xq0TMT1nRl4xPg1vwaBlai98YZLnwVT9bKVQkujPuObDF+T
+         2Hhxz5b+EPwtfAkyMq7/2KyRzfcz5nAfGzlNmY88OSB8IusR3IAnh7OUch/RR6/9jIlM
+         MgUP6rYkHBPRRWH1IjEgQMGu3p56OUsgv/qx0EEYj31mTcI8OW1M7AjB0DDtdRl9wjbe
+         FXfA1U+fjtel64f3VNFCvowmV7/uafQl4RIXV1FXMa58JG9VH+mTr5pA05rnspuj61oq
+         h4FXLNMysOaEUj/5f7S2u179UaLzepIrP66HLCCR7UaYMWvcQcBscEEpea6DdtFAnISD
+         U8KQ==
+X-Gm-Message-State: AD7BkJI9b5TVVrGS8cPyS/I+tHlAnGX4XAapruhjf0HiWYVBxpbLVvjW+P6eE24KbY0a1Q==
+X-Received: by 10.66.102.104 with SMTP id fn8mr40230904pab.129.1458503600487;
+        Sun, 20 Mar 2016 12:53:20 -0700 (PDT)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id fa3sm35148037pab.45.2016.03.20.12.53.19
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 20 Mar 2016 12:53:20 -0700 (PDT)
+Date: Mon, 21 Mar 2016 01:23:17 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH] Staging: emxx_udc: Remove argument test from function
-Date: Mon,  2 Mar 2015 00:18:13 +0300
-Message-Id: <1425244693-8713-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Subject: [PATCH] staging: rtl8712: os_intfs: Change form of NULL comparisons
+Message-ID: <20160320195317.GA15521@Karyakshetra>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes the test statement for an argument to  _nbu2ss_pullup function,
-for it can't be null due to previous derefrences when its called.
+Change null comparisons of the form x == NULL to !x.
+This was done using Coccinelle.
+@@ expression e;
+@@
+- e == NULL
++ !e
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/emxx_udc/emxx_udc.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/staging/rtl8712/os_intfs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index 0bfd268..b2a89a6 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -2257,11 +2257,6 @@ static int _nbu2ss_pullup(struct nbu2ss_udc *udc, int is_on)
- {
- 	u32	reg_dt;
- 
--	if (!udc) {
--		pr_err("udc: %s, bad param\n", __func__);
--		return -EINVAL;
--	}
--
- 	if (udc->vbus_active == 0)
- 		return -ESHUTDOWN;
- 
--- 
-1.9.1
+diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
+index ab19112..57211f7 100644
+--- a/drivers/staging/rtl8712/os_intfs.c
++++ b/drivers/staging/rtl8712/os_intfs.c
+@@ -389,7 +389,7 @@ static int netdev_open(struct net_device *pnetdev)
+ 		padapter->bup = true;
+ 		if (rtl871x_hal_init(padapter) != _SUCCESS)
+ 			goto netdev_open_error;
+-		if (r8712_initmac == NULL)
++		if (!r8712_initmac)
+ 			/* Use the mac address stored in the Efuse */
+ 			memcpy(pnetdev->dev_addr,
+ 				padapter->eeprompriv.mac_addr, ETH_ALEN);
+@@ -413,7 +413,7 @@ static int netdev_open(struct net_device *pnetdev)
+ 		}
+ 		if (start_drv_threads(padapter) != _SUCCESS)
+ 			goto netdev_open_error;
+-		if (padapter->dvobjpriv.inirp_init == NULL)
++		if (!padapter->dvobjpriv.inirp_init)
+ 			goto netdev_open_error;
+ 		else
+ 			padapter->dvobjpriv.inirp_init(padapter);
+--
+2.1.4
 
 
