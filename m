@@ -1,88 +1,90 @@
 X-GM-THRID: 6264136808663089152
-X-Received: by 10.66.216.100 with SMTP id op4mr20078511pac.9.1458483099588;
-        Sun, 20 Mar 2016 07:11:39 -0700 (PDT)
+X-Received: by 10.66.231.4 with SMTP id tc4mr19879344pac.14.1458483005590;
+        Sun, 20 Mar 2016 07:10:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.35.213 with SMTP id j204ls1465975ioj.42.gmail; Sun, 20 Mar
- 2016 07:11:39 -0700 (PDT)
-X-Received: by 10.66.139.229 with SMTP id rb5mr19218992pab.22.1458483099258;
-        Sun, 20 Mar 2016 07:11:39 -0700 (PDT)
+Received: by 10.50.27.105 with SMTP id s9ls805200igg.0.canary; Sun, 20 Mar
+ 2016 07:10:04 -0700 (PDT)
+X-Received: by 10.50.112.232 with SMTP id it8mr7339162igb.9.1458483004871;
+        Sun, 20 Mar 2016 07:10:04 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 12si2919828pfb.1.2016.03.20.07.11.39
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id tu5si2665396pab.2.2016.03.20.07.10.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Mar 2016 07:11:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sun, 20 Mar 2016 07:10:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id q129so25920725pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 20 Mar 2016 07:11:39 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id q129so25916556pfb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 20 Mar 2016 07:10:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=QHePvJa0i4LiAuvXfguFTA5jHRXuocjHqlynP37kj5o=;
-        b=qIg9FtM/LIuBQ1+xOyryditQRyf1YoF8Dy7lJl8QamvOagxKjPylUp31KJ+nFhPWUl
-         O8ctL1Wk1sO+Q3Oy5XekTj+GQORnE+r5CckcAdELOQlS50v/NXLgpLCA+eLvIYiuPNVs
-         +1oNL2ppEhKlvmC7Uq1nuB+avKTeDt0p7Y0X6mAlqC1GQcdxsATuH2UkUNrgpCJY41rf
-         YnT2bNMnIeiZGor+MqfdC3aJyl2KelqMISG7GO7DhKdSvZe/gLGXKbVfg31T7X93/Yv0
-         cStSSizpNLtlRWSsAjsp5YCtB6eNPTY0WXIlZ4INdORcHOA+m60CCpGP+yktZJViglx4
-         GNKA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=kALxd9lgp4M0YjbBnk1gQ7+C6DPJIimIPIawX62CC7s=;
+        b=mpdwVUFAo8xgTBXFxQ6J4LyPDpAuWlwE8ynap7xTxrhGfDP47fere+v7ByvBmwdrLu
+         A+7YX6I4CnGDOqMy7wypVZSynxuuw/gjrcY2se/eAJ+1Q0Sb1Pkq/LfHhAw16KF36CJe
+         P0jY21JTxonwyf8OSCVm/43vDCncoUZ7MCPskD8W0REPtwTwNMVgb0M0akC1xoatFh00
+         XzWXBXju7+8caM77zPkHqYYggWxBGb1MzQ/jA5KkznDWjnmm7pVUgvcqwr1vGqbBOmtU
+         CKGveQ8GLBUmUXlBv+lsybapKGGgdw5Mpoo1CisLftuxQV3Sfe68H76WP39VdooacW4Y
+         oytw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=QHePvJa0i4LiAuvXfguFTA5jHRXuocjHqlynP37kj5o=;
-        b=B857h3pOBpTEI81j0gZlZIw7GjWw1oPBEErL5rpBDGPlbjHYqRU32n4kMcxcFNSa2+
-         /ABJEweK91Nrw70rtQchXsW0vYctVk9HTLEMGYZFoJEgL9Jgh75Sbkj919C4UZjLoeZl
-         B//UXdcZWy2EcWAbp9kLWtRHvqWhET1kvzGruqXV2S1LixtgTleP6seaDH8D1Kg1ZAdy
-         NrBX1WGHAC82pwN/evf9tU4NEnuXb6bvWjnVe3KJqEBOjYJvjZiWw8NTKmWlbxXzTJZU
-         G75aQds9WvCQJ1RHr59+4M684YFz4ErK34WmQ+ZXTZp4NgKQtMhB6xbjM+3udUpDtQS8
-         CCZg==
-X-Gm-Message-State: AD7BkJLl1QkdV8bcwvxbkAz2TKGjm6ODALm4zkOWwteZm19lBUKuMGxuexECUcvHzMUaFg==
-X-Received: by 10.66.253.193 with SMTP id ac1mr38314229pad.121.1458483099113;
-        Sun, 20 Mar 2016 07:11:39 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=kALxd9lgp4M0YjbBnk1gQ7+C6DPJIimIPIawX62CC7s=;
+        b=Dm9lDM9gXRCTii6oCbL9Z3rGeq9RlCAEjL59oeej/EEewiEboeW+Kw0jnsAX8MZ9NN
+         B1+kluiRhG7m+A/WFsaKFZVZ9vz+9iT4tkGfNofXKMOragS+Sp2MpuDrIWOwmYq8vHHw
+         obPmN2d/R4uIZmxWIgd6qQfUhOzTsw+FAGBzQXP+QejMxZcCvZXscrC5UpE1OZPc7M/7
+         IaVB+Ck84DeJ6IxDBEn4V4NfGHOBhm/cMrfQOyfcW2LcuCND/7PQPw5Qfg1HotLUgUCV
+         U2hugLBGbdS5Xm7kmr67FJmX7S0XG0zp+o7j9t10KvSlJLHaYQpWI7eckwYvQb/hqdZZ
+         +cog==
+X-Gm-Message-State: AD7BkJK3stN1B1xHF3SG9jUydD3vm6TdadLwNmybOVFonbToqFgewJwTM6ez5YNkIFdpeA==
+X-Received: by 10.98.65.82 with SMTP id o79mr37640099pfa.115.1458483004707;
+        Sun, 20 Mar 2016 07:10:04 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from sandhya ([59.161.35.99])
-        by smtp.gmail.com with ESMTPSA id r5sm33927100pap.7.2016.03.20.07.11.37
+        by smtp.gmail.com with ESMTPSA id 19sm33868665pfp.66.2016.03.20.07.10.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 20 Mar 2016 07:11:38 -0700 (PDT)
-Date: Sun, 20 Mar 2016 12:42:49 +0530
+        Sun, 20 Mar 2016 07:10:04 -0700 (PDT)
+Date: Sun, 20 Mar 2016 12:41:14 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] Staging: rtl8188eu: rtw_efuse: Correct the argument of
- sizeof().
-Message-ID: <f5ebff148478b21732288113ef1505f2a6d48a42.1458454678.git.bankarsandhya512@gmail.com>
-References: <cover.1458454678.git.bankarsandhya512@gmail.com>
+Subject: [PATCH 0/3] Staging: Correct the argument of sizeof().
+Message-ID: <cover.1458454678.git.bankarsandhya512@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1458454678.git.bankarsandhya512@gmail.com>
 User-Agent: Mutt/1.5.20 (2009-12-10)
 
 Correct the argument of sizeof().
+Used below coccinelle semantic patch:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_efuse.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+@disable sizeof_type_expr@ 
+type T;
+T **x;
+@@
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_efuse.c b/drivers/staging/rtl8188eu/core/rtw_efuse.c
-index 19f11d0..cd64045 100644
---- a/drivers/staging/rtl8188eu/core/rtw_efuse.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_efuse.c
-@@ -107,7 +107,7 @@ efuse_phymap_to_logical(u8 *phymap, u16 _offset, u16 _size_byte, u8  *pbuf)
- 	if (!efuseTbl)
- 		return;
- 
--	eFuseWord = (u16 **)rtw_malloc2d(EFUSE_MAX_SECTION_88E, EFUSE_MAX_WORD_UNIT, sizeof(u16));
-+	eFuseWord = (u16 **)rtw_malloc2d(EFUSE_MAX_SECTION_88E, EFUSE_MAX_WORD_UNIT, sizeof(*eFuseWord));
- 	if (!eFuseWord) {
- 		DBG_88E("%s: alloc eFuseWord fail!\n", __func__);
- 		goto eFuseWord_failed;
+  x = 
+  <+...sizeof(
+- T   
++ *x
+  )...+>
+
+
+Sandhya Bankar (3):
+  Staging: rtl8188eu: rtw_efuse: Correct the argument of sizeof().
+  Staging: lustre: rpc: Correct the argument of sizeof().
+  Staging: lustre: o2iblnd: Correct the argument of sizeof().
+
+ drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c | 4 ++--
+ drivers/staging/lustre/lnet/selftest/rpc.c          | 2 +-
+ drivers/staging/rtl8188eu/core/rtw_efuse.c          | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
 -- 
 1.8.3.4
 
