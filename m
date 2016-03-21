@@ -1,86 +1,75 @@
-X-GM-THRID: 6257480922194509824
-X-Received: by 10.66.171.167 with SMTP id av7mr10837181pac.17.1456933310624;
-        Wed, 02 Mar 2016 07:41:50 -0800 (PST)
+X-GM-THRID: 6261235815090749440
+X-Received: by 10.182.63.17 with SMTP id c17mr25638311obs.49.1458593432394;
+        Mon, 21 Mar 2016 13:50:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.92.69 with SMTP id ck5ls585619igb.23.canary; Wed, 02 Mar
- 2016 07:41:49 -0800 (PST)
-X-Received: by 10.107.7.200 with SMTP id g69mr28000533ioi.3.1456933309692;
-        Wed, 02 Mar 2016 07:41:49 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id ui7si5343805pab.0.2016.03.02.07.41.49
+Received: by 10.50.49.6 with SMTP id q6ls893246ign.8.canary; Mon, 21 Mar 2016
+ 13:50:32 -0700 (PDT)
+X-Received: by 10.66.101.4 with SMTP id fc4mr24194686pab.48.1458593432019;
+        Mon, 21 Mar 2016 13:50:32 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id y20si4208312pfa.2.2016.03.21.13.50.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 02 Mar 2016 07:41:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Mon, 21 Mar 2016 13:50:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id 124so74143795pfg.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 02 Mar 2016 07:41:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=vKGXQFpBSR47jslRUBew8Njo7kJC8mdrvfskq06z5yg=;
-        b=ATT5CO+2dHq2fmYRdyZLdsti9zyV6ukQ4++81DVVZnB3RiJwa7qoqrRWsvjJ6B9ZNm
-         GoCbv2pl6tFbpqVxQQVzEFa3rou/pJHDEWVUVaijA0/k1E0JX7JjwSeFLyDr5bRo6jeI
-         GQBoAH9uedNjMsftvynkNWHnyXG5ctyqwgKTpR82voPV7+0yrsqcH2UYhltCT6Mann/M
-         nEEMGe2VvYDIRNC/nBLsqqQnzQStuKKnSTbG6gxQtILIM0nN7MW214qIDTveHOI8z67O
-         3mI16MKiB/IOnPAPsYqBV9zr8hDO4o3HjpkRtioSW3e7K4mCKOT2PUL0en1CqbpM1fq5
-         qaJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=vKGXQFpBSR47jslRUBew8Njo7kJC8mdrvfskq06z5yg=;
-        b=hoCy9AJiSBRRpBntdXsic934+2wVhPICI5VUz6V0bTKMqiNrm2CqBIhl8PHgmGCZoY
-         XJxnMwVyTzhBO+f4Rf23HqdwsBk9BFrF/TjPRVA8mGSCHcrXufapALrYbZaPaYSLiqRp
-         2q0uSi0+vkBJ9VAMFZMccWkaOKzNO2nGU1nV0lgiIOQywp8SlkyKjLi1gUR+gbyc7kUo
-         WODCm77tB5JrkRu3q6AipdYMW9DFxI5ZMpmWuFttovnmnZBG9M2M6+Q7k2kq1nX3RO8w
-         Hswxy5Qayvv0E7UlWiiwurbRF5wLFVkeGddYjA0DWgneLLNigWNBCIx/7jTlW8cXj95F
-         61iQ==
-X-Gm-Message-State: AD7BkJKvfRapUdP6ifSJTW/osCVjCtCpjjPaR13W35jlsGNYxv5BW1gtZeEI59yBaK88pA==
-X-Received: by 10.98.16.69 with SMTP id y66mr39573235pfi.86.1456933309541;
-        Wed, 02 Mar 2016 07:41:49 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id h19sm11939368pfh.43.2016.03.02.07.41.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Mar 2016 07:41:49 -0800 (PST)
-Date: Wed, 2 Mar 2016 21:12:19 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Remove a whitespace before parenthesis
-Message-ID: <20160302154200.GA2599@life-desktop>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (c-50-138-182-192.hsd1.ma.comcast.net [50.138.182.192])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 8A2D574;
+	Mon, 21 Mar 2016 20:50:31 +0000 (UTC)
+Date: Mon, 21 Mar 2016 16:50:30 -0400
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: usb_intf: Remove
+ flush_scheduled_work()
+Message-ID: <20160321205030.GA4922@kroah.com>
+References: <20160313072516.GA22863@Karyakshetra>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20160313072516.GA22863@Karyakshetra>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove a whitespace before parenthesis "("
+On Sun, Mar 13, 2016 at 12:55:16PM +0530, Bhaktipriya Shridhar wrote:
+> flush_scheduled_work() flushes out all work items in system_wq.
+> Since one doesn't know what could be running there, flushing work items
+> individually is preferred.
+> 
+> Since there are finite number of work items to be flushed,(viz
+> pwrpriv->SetPSModeWorkItem,pwrpriv->SetPSModeWorkItem,pLed->BlinkWorkItem)
+> instead of flushing system_wq, each work item is separately flushed.
+> 
+> Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+> Acked-by: Tejun Heo <tj@kernel.org>
+> ---
+>  Changes in v2:
+> 	-Fixed typo in commit message.
+> 
+>  drivers/staging/rtl8712/usb_intf.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
+> index c1a0ca49..32c5798 100644
+> --- a/drivers/staging/rtl8712/usb_intf.c
+> +++ b/drivers/staging/rtl8712/usb_intf.c
+> @@ -627,7 +627,9 @@ static void r871xu_dev_remove(struct usb_interface *pusb_intf)
+>  		if (drvpriv.drv_registered)
+>  			padapter->bSurpriseRemoved = true;
+>  		unregister_netdev(pnetdev); /* will call netdev_close() */
+> -		flush_scheduled_work();
+> +		cancel_delayed_work(&pwrpriv->SetPSModeWorkItem);
+> +		cancel_delayed_work(&pwrpriv->rpwm_workitem);
+> +		cancel_delayed_work(&pLed->BlinkWorkItem);
+>  		udelay(1);
+>  		/* Stop driver mlme relation timer */
+>  		r8712_stop_drv_timers(padapter);
+> --
+> 2.1.4
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This patch does not even build!
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 378c350..d41834b 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -1442,7 +1442,7 @@ static void WILC_WFI_CfgParseTxAction(u8 *buf, u32 len, bool bOperChan, u8 iftyp
- 	}
- }
- 
--void WILC_WFI_p2p_rx (struct net_device *dev, u8 *buff, u32 size)
-+void WILC_WFI_p2p_rx(struct net_device *dev, u8 *buff, u32 size)
- {
- 	struct wilc_priv *priv;
- 	u32 header, pkt_offset;
--- 
-1.9.1
-
+Please always test build your patches, to not do so makes maintainers
+very grumpy...
 
