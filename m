@@ -1,105 +1,88 @@
-X-GM-THRID: 6257874125297025024
-X-Received: by 10.182.250.201 with SMTP id ze9mr2508224obc.0.1457024860697;
-        Thu, 03 Mar 2016 09:07:40 -0800 (PST)
+X-GM-THRID: 6264608921971851264
+X-Received: by 10.140.25.227 with SMTP id 90mr24919915qgt.17.1458593139436;
+        Mon, 21 Mar 2016 13:45:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.79.71 with SMTP id h7ls2304575obx.2.gmail; Thu, 03 Mar
- 2016 09:07:40 -0800 (PST)
-X-Received: by 10.182.148.227 with SMTP id tv3mr2363926obb.30.1457024860180;
-        Thu, 03 Mar 2016 09:07:40 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
-        by gmr-mx.google.com with ESMTPS id yd9si6058516pab.1.2016.03.03.09.07.40
+Received: by 10.140.32.2 with SMTP id g2ls2454559qgg.28.gmail; Mon, 21 Mar
+ 2016 13:45:38 -0700 (PDT)
+X-Received: by 10.129.145.130 with SMTP id i124mr23871387ywg.8.1458593138821;
+        Mon, 21 Mar 2016 13:45:38 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 12si3711725pfb.1.2016.03.21.13.45.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Mar 2016 09:07:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
+        Mon, 21 Mar 2016 13:45:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of poojashamili@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=poojashamili@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x236.google.com with SMTP id 63so17980286pfe.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 03 Mar 2016 09:07:40 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id q129so32581597pfb.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 21 Mar 2016 13:45:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0lpm6oGyde5Squk/uCqhSn8hcIa5O5uHCZTo957zw14=;
-        b=XRYh5BGyVAic/8CPLH7JhHNY6KT6mx9A24cfZatLOizTmxWQ6Rc1ZBLDFTSpQiIAUZ
-         epVM9q+ChTLaMtv93ZoSwuLFl3nvB1bFEuiXYgSxrDMYZLBVoMwNOgUJMOqEse43FTNS
-         IdV/JqkwkpKXfuhXpQpACUURHh6iI2RUGXJHKxoEh6yKAyuC5DkpDUjdgtiNMKevky63
-         D/SeWmsa+3RQMCGpxXuRoDvkJ8aIMZPSaRsttfH+3+Rp2CVhT3/ve/pYya3ridm0XzII
-         yO0UGmYibAPoiTXwGqY/uEBcH3H8av2D1XGrNrE81SjrID7iwYUdXAjPfwW4P1FNJdxa
-         DH3w==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=CLYqoJFVEOYUoa9I9XbCbO6Z59U6LauGPap6CKSgogw=;
+        b=Vstye8tlXDfjkWSsxLeVYceA80YDqbwFBWBJGhAUVQuhxSXt28VRtM/IIoUkvvu/Tx
+         uVad2mHIJz4YkmsMOZpom02dg3M9HbrZ3w/shJIPotyTik738ghC0gKTbY+MIwHWyXtD
+         M5tftfjTUFm76va5R+eRxRObVP3nknJH2W2qIAqiVmi9VqSxVEt5YLLfZcv5SaQZmYSS
+         4vrSMh5kuDFK3XOeRtmTnLmiTYibeBJYKasWZoYpVd5NbF8WTucRP+Mqm7A9V1V1klV1
+         IqdYBgUtYeh9GPoQPV7Lk6c1ftlg8kbobenO3yDFU7v6HZ2MZMD9l7buRaR9OpzXGiCF
+         wQQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0lpm6oGyde5Squk/uCqhSn8hcIa5O5uHCZTo957zw14=;
-        b=IxUx3iQxOwCKNcCAgwz0ldBRLPFRGEaR0tjGAnmZ3/F+9nlVd2t+20qjiBff0/EXwn
-         lXVOjW44YUTe+lQ+vxwhZMKwPrM7APvYETDCldCIjmZQHUJElYebyM1uNGlx+JtbtDAG
-         pDDpzbIln/avWpRp73NkHw8HCyC2Yj2unuuGZwurA8puy5FHANbQG6jQpoVM3O4y7as+
-         czhe2w09fUt2Q2m5u2Q70+BAHFp6HfHatYSEeYPeccBXNJ9ZZ59Vxpq5yUWJ9beaIbtM
-         KvGRHP9/lUT+sf+mkpGgpnF8lT512adTzfXgE4WTzj9ZA5ehID1HU4lJiBv4b6gQ31Uy
-         rwVQ==
-X-Gm-Message-State: AD7BkJLaGGJmOxvwTztaHFnQDkNDZIgFtDDoRhrytYqVWtxWlTKDJ0GGvijnkJrSnwF4TA==
-X-Received: by 10.98.68.73 with SMTP id r70mr5210105pfa.136.1457024860007;
-        Thu, 03 Mar 2016 09:07:40 -0800 (PST)
-Return-Path: <poojashamili@gmail.com>
-Received: from pooja-Inspiron-3537 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id yl1sm61927356pac.35.2016.03.03.09.07.38
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=CLYqoJFVEOYUoa9I9XbCbO6Z59U6LauGPap6CKSgogw=;
+        b=SCklNjH5vApmRQB+Df1hy7UkN0yVgnph52kmkKPMHqOANlspuacxuaytWnkYZ+xugq
+         P6/stUF85QTd3eCcj/Cwf5NIaqEVQuV9YE6nNGR3qDWeZFc6d46weDTgBka1JZRsUY3Z
+         HTqy2f9rXbDJrqixheZy1HMu6Xjrzrh/8T3ibmvVRh/+Q/J+BtE+dzq2EDpIb/+rMVoR
+         eZvLr08nwaEy78ZsXaEEHzl18r/+TQZK6CDSmNyqhJ5YQgrToED9EDlZNlt8mN7v376q
+         mC0EN1KBZ6HoYSkvGIGsg1CsrqVXuoODplYCDHG5mi1M6CIZY0wK0OmVYdH9Tk8GdNLU
+         waxQ==
+X-Gm-Message-State: AD7BkJI0Tu9kBn/9wu6XSn6iLSKGmkGBsErMHDk11igHItSnyvCP7yPaQ3ZjzrCSdvv22w==
+X-Received: by 10.66.249.228 with SMTP id yx4mr19809671pac.29.1458593138480;
+        Mon, 21 Mar 2016 13:45:38 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([59.161.35.46])
+        by smtp.gmail.com with ESMTPSA id h19sm42751058pfh.43.2016.03.21.13.45.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 03 Mar 2016 09:07:39 -0800 (PST)
-Date: Thu, 3 Mar 2016 22:37:35 +0530
-From: "pooja.shamili" <poojashamili@gmail.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 21 Mar 2016 13:45:37 -0700 (PDT)
+Date: Mon, 21 Mar 2016 19:16:48 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: mt29f_spinand: Replacing pr_info with dev_info
- after the call to devm_kzalloc
-Message-ID: <20160303170735.GA3773@localhost>
+Subject: [PATCH 2/2] Staging: lustre: socklnd: Remove return statement from
+ void function.
+Message-ID: <dc969a985f29e980355fc5bb907176c04bb5029b.1458567188.git.bankarsandhya512@gmail.com>
+References: <cover.1458567188.git.bankarsandhya512@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1458567188.git.bankarsandhya512@gmail.com>
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-The function devm_kzalloc has a first argument of type struct device *.
-This is the type of argument required by printing functions such as
-dev_info, dev_err, etc. Thus, functions like pr_info should not normally
-be used after a call to devm_kzalloc. Thus, all pr_info occurances are
-replaced with dev_info function calls.
+Remove return statement from void function.
 
-This was done using Coccinelle, the patch being:
-@@
-expression E1,E2;
-expression list args;
-@@
-
-E1 = devm_kzalloc(E2, ...);
-<...
-- pr_info(
-+ dev_info(E2,
-args);
-...>
-
-Signed-off-by: pooja.shamili <poojashamili@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/mt29f_spinand/mt29f_spinand.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-index 75fe61c..791e36f 100644
---- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
-+++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-@@ -893,7 +893,8 @@ static int spinand_probe(struct spi_device *spi_nand)
- #else
- 	chip->ecc.mode	= NAND_ECC_SOFT;
- 	if (spinand_disable_ecc(spi_nand) < 0)
--		pr_info("%s: disable ecc failed!\n", __func__);
-+		dev_info(&spi_nand->dev, "%s: disable ecc failed!\n",
-+			 __func__);
- #endif
+diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+index cca7b2f..406c0e7 100644
+--- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
++++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
+@@ -2582,7 +2582,6 @@ ksocknal_debug_peerhash(lnet_ni_t *ni)
+ 	}
  
- 	nand_set_flash_node(chip, spi_nand->dev.of_node);
+ 	read_unlock(&ksocknal_data.ksnd_global_lock);
+-	return;
+ }
+ 
+ void
 -- 
-2.1.4
+1.8.3.4
 
 
