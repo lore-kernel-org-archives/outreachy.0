@@ -1,60 +1,60 @@
 X-GM-THRID: 6264893373939712000
-X-Received: by 10.194.121.197 with SMTP id lm5mr3388758wjb.2.1458659434360;
-        Tue, 22 Mar 2016 08:10:34 -0700 (PDT)
+X-Received: by 10.25.160.207 with SMTP id j198mr4518409lfe.4.1458659394877;
+        Tue, 22 Mar 2016 08:09:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.57.65 with SMTP id g62ls898458wma.32.canary; Tue, 22 Mar
- 2016 08:10:34 -0700 (PDT)
-X-Received: by 10.194.121.197 with SMTP id lm5mr3388755wjb.2.1458659434006;
-        Tue, 22 Mar 2016 08:10:34 -0700 (PDT)
+Received: by 10.25.167.131 with SMTP id q125ls898937lfe.69.gmail; Tue, 22 Mar
+ 2016 08:09:54 -0700 (PDT)
+X-Received: by 10.112.138.98 with SMTP id qp2mr4659102lbb.4.1458659394293;
+        Tue, 22 Mar 2016 08:09:54 -0700 (PDT)
 Return-Path: <sveta.orlik.code@gmail.com>
 Received: from mail-lb0-x243.google.com (mail-lb0-x243.google.com. [2a00:1450:4010:c04::243])
-        by gmr-mx.google.com with ESMTPS id ph10si1053672lbb.0.2016.03.22.08.10.33
+        by gmr-mx.google.com with ESMTPS id ph10si1053672lbb.0.2016.03.22.08.09.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Mar 2016 08:10:33 -0700 (PDT)
+        Tue, 22 Mar 2016 08:09:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c04::243 as permitted sender) client-ip=2a00:1450:4010:c04::243;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c04::243 as permitted sender) smtp.mailfrom=sveta.orlik.code@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Received: by mail-lb0-x243.google.com with SMTP id bc4so15239280lbc.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 22 Mar 2016 08:10:33 -0700 (PDT)
+        for <outreachy-kernel@googlegroups.com>; Tue, 22 Mar 2016 08:09:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=6usFePvWq2JE6QAYKE7rhjKTFNQNjHIZVyMQF0h5haI=;
-        b=i6eCBK/KJE1gaUFlVCqphmJyeIKp9sUlMvwDcMyLpK3LNOyhVeaxDFYWtNJlkoUFj5
-         B90uUNlR9KIV32RozYTsTJ50+VvKNhDNjyNQucEtsSvvtRpV13wCRaGZZyKlnqDnwCQZ
-         u85zo6/ax1YPEzkBcJNUIWTVZMBbXHHFkeWaL3D4igurzQvgX4AH0vGJOxlfSSy6loN2
-         yFNJAzLSs2dJ2zdixXE5z7f172dIoFBqOiYwJkf2drt1xNy7mKod5tmrmphHeSG/Ds+8
-         f1t130eqFgrhPLU7KrLgEtUb3bdi1JA7JY9WV0dFfFB5k+iLy7yXmd8MJSyTMsv/Ndq1
-         qBiQ==
+        bh=3UP2QIABfCF6Wb7zQCPAF53NjLLUH+rv0IXsNqy/i7c=;
+        b=zkRTsiYz/qlD78fSBasqc2n4/um+/mIrpLbgtRrt+RIQHmLhlfue5EMlkqYqMTDnab
+         EVtkpHYowkfEi8RHljE9eb7pkAgA0m8tbcZLOShaBskq1GJXMksM4cHvZQFoANP1puKa
+         Uv1b3K8Iz9TUerMMMAlH0Q/u2oZ86V7s0Q5f0JoF68ofzSd5i++qK3bMZ2IYo3akvzhY
+         4ewXz3Tzhq+mV6Z0oyoTaTAPE73zBK/46Yj32klVoBTapofqE16iefRW6ntCWUAivufW
+         OtUanmko6ixACU8qjUE641BxcwseyMoOk3sgwD+6owKbB11W2dJJdZ2RMJhKmhFVAAnF
+         i0ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=6usFePvWq2JE6QAYKE7rhjKTFNQNjHIZVyMQF0h5haI=;
-        b=Nqf+Qv6R7InfYLEhuy+LfbJEtNGQcXFzDiTe+0ddLyuGu8xo34Xaz6IbY1SgwScYPJ
-         zo220j3jLk1GMXtRWZ/5jolIJpS1UJVtGpaSS0sQmGtE4fRgthuI4kuBvj2yYGp2swc2
-         KLoHo/CTNsYRACChRBF+epv83yE1JGLX2vZjuFEIroc6nf4VXVRae+MVYwC+zV7z8K2S
-         uYPQirkJgT61Oz7IAlCSu7LI9QXZx/BA+k5212WoYE66j/jcWqgWozHB0UzoqI+EAgBr
-         aHkBiRb8XlZ676EeCVhbQpbIo5BIpsTCtWpQgJ4A6WapUnAeMCe020hR1/XzNdtJ156W
-         F4Ag==
-X-Gm-Message-State: AD7BkJIbHV2sXiov2GPQWrbdCOVy/UDPwSnyPvGCkWjitRNEDRmh4AXRMcs86/CnEqytdQ==
-X-Received: by 10.25.17.65 with SMTP id g62mr11600512lfi.52.1458659433827;
-        Tue, 22 Mar 2016 08:10:33 -0700 (PDT)
+        bh=3UP2QIABfCF6Wb7zQCPAF53NjLLUH+rv0IXsNqy/i7c=;
+        b=PWIGeWPNvhibnV8L45e1vIBMkwd/cwCPDuqiOEhcLgAqtWESbgiQhXRBY7kB/YOW6d
+         DUH3UjJEdy/3zbo3NZqSUAh+YVZd40Sfxhsz/T0dq5vmWpRDgcLFdUucdpCmUeFdV8pH
+         QiS5LZOlcVBDO1IgFAQkqFLMBlO4xjx4Eab5m3cFcacxiW3er224L8vN/1zibJNGCJXZ
+         XNWErUluB8n2NropNjSFOo22ukShN/RswZXxywQxIY769gxjp/TyTyiZcjLDVHA0HmrE
+         IC3ZDDeQelTWHqXnHv9wQlg+fjMw4V5yt9F/Sf7++SYp5UQKMJDRndyUw4DI/4WGBBlb
+         DdOA==
+X-Gm-Message-State: AD7BkJI/bxwXor+zW9dE68WHw/oxjk+wntNCo/GZAxFV5yx+9hUlU8XI05rVWWatDydsuw==
+X-Received: by 10.112.25.99 with SMTP id b3mr13134281lbg.11.1458659394153;
+        Tue, 22 Mar 2016 08:09:54 -0700 (PDT)
 Return-Path: <sveta.orlik.code@gmail.com>
 Received: from pal-comp (broadband-46-242-29-57.nationalcablenetworks.ru. [46.242.29.57])
-        by smtp.gmail.com with ESMTPSA id mz2sm4043774lbb.18.2016.03.22.08.10.33
+        by smtp.gmail.com with ESMTPSA id do4sm5321977lbc.35.2016.03.22.08.09.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 22 Mar 2016 08:10:33 -0700 (PDT)
-Date: Tue, 22 Mar 2016 18:10:32 +0300
+        Tue, 22 Mar 2016 08:09:53 -0700 (PDT)
+Date: Tue, 22 Mar 2016 18:09:53 +0300
 From: Svetlana Orlik <sveta.orlik.code@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/6] staging: iio: accel: adis16240: Improve readability
-Message-ID: <87908b236c404d5fe9db13e2f05b22af205a0d1a.1458656756.git.sveta.orlik.code@gmail.com>
+Subject: [PATCH 5/6] staging: iio: accel: adis16220: Improve readability
+Message-ID: <ebe8194b49b189295c5e435b8bf44936fea7d182.1458656756.git.sveta.orlik.code@gmail.com>
 References: <cover.1458656755.git.sveta.orlik.code@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -69,174 +69,173 @@ Separate section title comments with blank lines.
 
 Signed-off-by: Svetlana Orlik <sveta.orlik.code@gmail.com>
 ---
- drivers/staging/iio/accel/adis16240.h | 50 +++++++++++++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
+ drivers/staging/iio/accel/adis16220.h | 48 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-diff --git a/drivers/staging/iio/accel/adis16240.h b/drivers/staging/iio/accel/adis16240.h
-index 66b5ad2..b2cb37b 100644
---- a/drivers/staging/iio/accel/adis16240.h
-+++ b/drivers/staging/iio/accel/adis16240.h
-@@ -5,110 +5,160 @@
+diff --git a/drivers/staging/iio/accel/adis16220.h b/drivers/staging/iio/accel/adis16220.h
+index eab8633..31a1268 100644
+--- a/drivers/staging/iio/accel/adis16220.h
++++ b/drivers/staging/iio/accel/adis16220.h
+@@ -7,111 +7,159 @@
  
  /* Flash memory write count */
- #define ADIS16240_FLASH_CNT      0x00
+ #define ADIS16220_FLASH_CNT     0x00
 +
- /* Output, power supply */
- #define ADIS16240_SUPPLY_OUT     0x02
+ /* Control, acceleration offset adjustment control */
+ #define ADIS16220_ACCL_NULL     0x02
 +
- /* Output, x-axis accelerometer */
- #define ADIS16240_XACCL_OUT      0x04
+ /* Control, AIN1 offset adjustment control */
+ #define ADIS16220_AIN1_NULL     0x04
 +
- /* Output, y-axis accelerometer */
- #define ADIS16240_YACCL_OUT      0x06
+ /* Control, AIN2 offset adjustment control */
+ #define ADIS16220_AIN2_NULL     0x06
 +
- /* Output, z-axis accelerometer */
- #define ADIS16240_ZACCL_OUT      0x08
+ /* Output, power supply during capture */
+ #define ADIS16220_CAPT_SUPPLY   0x0A
 +
- /* Output, auxiliary ADC input */
- #define ADIS16240_AUX_ADC        0x0A
+ /* Output, temperature during capture */
+ #define ADIS16220_CAPT_TEMP     0x0C
 +
- /* Output, temperature */
- #define ADIS16240_TEMP_OUT       0x0C
+ /* Output, peak acceleration during capture */
+ #define ADIS16220_CAPT_PEAKA    0x0E
 +
- /* Output, x-axis acceleration peak */
- #define ADIS16240_XPEAK_OUT      0x0E
+ /* Output, peak AIN1 level during capture */
+ #define ADIS16220_CAPT_PEAK1    0x10
 +
- /* Output, y-axis acceleration peak */
- #define ADIS16240_YPEAK_OUT      0x10
+ /* Output, peak AIN2 level during capture */
+ #define ADIS16220_CAPT_PEAK2    0x12
 +
- /* Output, z-axis acceleration peak */
- #define ADIS16240_ZPEAK_OUT      0x12
+ /* Output, capture buffer for acceleration */
+ #define ADIS16220_CAPT_BUFA     0x14
 +
- /* Output, sum-of-squares acceleration peak */
- #define ADIS16240_XYZPEAK_OUT    0x14
+ /* Output, capture buffer for AIN1 */
+ #define ADIS16220_CAPT_BUF1     0x16
 +
- /* Output, Capture Buffer 1, X and Y acceleration */
- #define ADIS16240_CAPT_BUF1      0x16
+ /* Output, capture buffer for AIN2 */
+ #define ADIS16220_CAPT_BUF2     0x18
 +
- /* Output, Capture Buffer 2, Z acceleration */
- #define ADIS16240_CAPT_BUF2      0x18
+ /* Control, capture buffer address pointer */
+ #define ADIS16220_CAPT_PNTR     0x1A
 +
- /* Diagnostic, error flags */
- #define ADIS16240_DIAG_STAT      0x1A
+ /* Control, capture control register */
+ #define ADIS16220_CAPT_CTRL     0x1C
 +
- /* Diagnostic, event counter */
- #define ADIS16240_EVNT_CNTR      0x1C
+ /* Control, capture period (automatic mode) */
+ #define ADIS16220_CAPT_PRD      0x1E
 +
- /* Diagnostic, check sum value from firmware test */
- #define ADIS16240_CHK_SUM        0x1E
+ /* Control, Alarm A, acceleration peak threshold */
+ #define ADIS16220_ALM_MAGA      0x20
 +
- /* Calibration, x-axis acceleration offset adjustment */
- #define ADIS16240_XACCL_OFF      0x20
+ /* Control, Alarm 1, AIN1 peak threshold */
+ #define ADIS16220_ALM_MAG1      0x22
 +
- /* Calibration, y-axis acceleration offset adjustment */
- #define ADIS16240_YACCL_OFF      0x22
+ /* Control, Alarm 2, AIN2 peak threshold */
+ #define ADIS16220_ALM_MAG2      0x24
 +
- /* Calibration, z-axis acceleration offset adjustment */
- #define ADIS16240_ZACCL_OFF      0x24
+ /* Control, Alarm S, peak threshold */
+ #define ADIS16220_ALM_MAGS      0x26
 +
- /* Clock, hour and minute */
- #define ADIS16240_CLK_TIME       0x2E
+ /* Control, alarm configuration register */
+ #define ADIS16220_ALM_CTRL      0x28
 +
- /* Clock, month and day */
- #define ADIS16240_CLK_DATE       0x30
+ /* Control, general I/O configuration */
+ #define ADIS16220_GPIO_CTRL     0x32
 +
- /* Clock, year */
- #define ADIS16240_CLK_YEAR       0x32
+ /* Control, self-test control, AIN configuration */
+ #define ADIS16220_MSC_CTRL      0x34
 +
- /* Wake-up setting, hour and minute */
- #define ADIS16240_WAKE_TIME      0x34
+ /* Control, digital I/O configuration */
+ #define ADIS16220_DIO_CTRL      0x36
 +
- /* Wake-up setting, month and day */
- #define ADIS16240_WAKE_DATE      0x36
+ /* Control, filter configuration */
+ #define ADIS16220_AVG_CNT       0x38
 +
- /* Alarm 1 amplitude threshold */
- #define ADIS16240_ALM_MAG1       0x38
+ /* Status, system status */
+ #define ADIS16220_DIAG_STAT     0x3C
 +
- /* Alarm 2 amplitude threshold */
- #define ADIS16240_ALM_MAG2       0x3A
+ /* Control, system commands */
+ #define ADIS16220_GLOB_CMD      0x3E
 +
- /* Alarm control */
- #define ADIS16240_ALM_CTRL       0x3C
+ /* Status, self-test response */
+ #define ADIS16220_ST_DELTA      0x40
 +
- /* Capture, external trigger control */
- #define ADIS16240_XTRIG_CTRL     0x3E
+ /* Lot Identification Code 1 */
+ #define ADIS16220_LOT_ID1       0x52
 +
- /* Capture, address pointer */
- #define ADIS16240_CAPT_PNTR      0x40
+ /* Lot Identification Code 2 */
+ #define ADIS16220_LOT_ID2       0x54
 +
- /* Capture, configuration and control */
- #define ADIS16240_CAPT_CTRL      0x42
+ /* Product identifier; convert to decimal = 16220 */
+ #define ADIS16220_PROD_ID       0x56
 +
- /* General-purpose digital input/output control */
- #define ADIS16240_GPIO_CTRL      0x44
-+
- /* Miscellaneous control */
- #define ADIS16240_MSC_CTRL       0x46
-+
- /* Internal sample period (rate) control */
- #define ADIS16240_SMPL_PRD       0x48
-+
- /* System command */
- #define ADIS16240_GLOB_CMD       0x4A
+ /* Serial number */
+ #define ADIS16220_SERIAL_NUM    0x58
+ 
+ #define ADIS16220_CAPTURE_SIZE  2048
  
  /* MSC_CTRL */
 +
- /* Enables sum-of-squares output (XYZPEAK_OUT) */
- #define ADIS16240_MSC_CTRL_XYZPEAK_OUT_EN	BIT(15)
+ #define ADIS16220_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+ #define ADIS16220_MSC_CTRL_POWER_SUP_COM_AIN1	BIT(1)
+ #define ADIS16220_MSC_CTRL_POWER_SUP_COM_AIN2	BIT(0)
+ 
+ /* DIO_CTRL */
 +
- /* Enables peak tracking output (XPEAK_OUT, YPEAK_OUT, and ZPEAK_OUT) */
- #define ADIS16240_MSC_CTRL_X_Y_ZPEAK_OUT_EN	BIT(14)
-+
- /* Self-test enable: 1 = apply electrostatic force, 0 = disabled */
- #define ADIS16240_MSC_CTRL_SELF_TEST_EN	        BIT(8)
-+
- /* Data-ready enable: 1 = enabled, 0 = disabled */
- #define ADIS16240_MSC_CTRL_DATA_RDY_EN	        BIT(2)
-+
- /* Data-ready polarity: 1 = active high, 0 = active low */
- #define ADIS16240_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
-+
- /* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
- #define ADIS16240_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
+ #define ADIS16220_MSC_CTRL_DIO2_BUSY_IND     (BIT(5) | BIT(4))
+ #define ADIS16220_MSC_CTRL_DIO1_BUSY_IND     (BIT(3) | BIT(2))
+ #define ADIS16220_MSC_CTRL_DIO2_ACT_HIGH     BIT(1)
+ #define ADIS16220_MSC_CTRL_DIO1_ACT_HIGH     BIT(0)
  
  /* DIAG_STAT */
 +
- /* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
- #define ADIS16240_DIAG_STAT_ALARM2      BIT(9)
+ /* AIN2 sample > ALM_MAG2 */
+ #define ADIS16220_DIAG_STAT_ALM_MAG2    BIT(14)
 +
- /* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
- #define ADIS16240_DIAG_STAT_ALARM1      BIT(8)
+ /* AIN1 sample > ALM_MAG1 */
+ #define ADIS16220_DIAG_STAT_ALM_MAG1    BIT(13)
 +
- /* Capture buffer full: 1 = capture buffer is full */
- #define ADIS16240_DIAG_STAT_CPT_BUF_FUL BIT(7)
+ /* Acceleration sample > ALM_MAGA */
+ #define ADIS16220_DIAG_STAT_ALM_MAGA    BIT(12)
 +
- /* Flash test, checksum flag: 1 = mismatch, 0 = match */
- #define ADIS16240_DIAG_STAT_CHKSUM      BIT(6)
+ /* Error condition programmed into ALM_MAGS[11:0] and ALM_CTRL[5:4] is true */
+ #define ADIS16220_DIAG_STAT_ALM_MAGS    BIT(11)
 +
- /* Power-on, self-test flag: 1 = failure, 0 = pass */
- #define ADIS16240_DIAG_STAT_PWRON_FAIL_BIT  5
+ /* |Peak value in AIN2 data capture| > ALM_MAG2 */
+ #define ADIS16220_DIAG_STAT_PEAK_AIN2   BIT(10)
 +
- /* Power-on self-test: 1 = in-progress, 0 = complete */
- #define ADIS16240_DIAG_STAT_PWRON_BUSY  BIT(4)
+ /* |Peak value in AIN1 data capture| > ALM_MAG1 */
+ #define ADIS16220_DIAG_STAT_PEAK_AIN1   BIT(9)
++
+ /* |Peak value in acceleration data capture| > ALM_MAGA */
+ #define ADIS16220_DIAG_STAT_PEAK_ACCEL  BIT(8)
++
+ /* Data ready, capture complete */
+ #define ADIS16220_DIAG_STAT_DATA_RDY    BIT(7)
++
+ #define ADIS16220_DIAG_STAT_FLASH_CHK	BIT(6)
++
+ #define ADIS16220_DIAG_STAT_SELF_TEST	BIT(5)
++
+ /* Capture period violation/interruption */
+ #define ADIS16220_DIAG_STAT_VIOLATION_BIT	4
 +
  /* SPI communications failure */
- #define ADIS16240_DIAG_STAT_SPI_FAIL_BIT	3
+ #define ADIS16220_DIAG_STAT_SPI_FAIL_BIT	3
 +
  /* Flash update failure */
- #define ADIS16240_DIAG_STAT_FLASH_UPT_BIT	2
+ #define ADIS16220_DIAG_STAT_FLASH_UPT_BIT	2
 +
  /* Power supply above 3.625 V */
- #define ADIS16240_DIAG_STAT_POWER_HIGH_BIT	1
+ #define ADIS16220_DIAG_STAT_POWER_HIGH_BIT	1
 +
-  /* Power supply below 3.15 V */
- #define ADIS16240_DIAG_STAT_POWER_LOW_BIT	0
+ /* Power supply below 3.15 V */
+ #define ADIS16220_DIAG_STAT_POWER_LOW_BIT	0
  
  /* GLOB_CMD */
 +
- #define ADIS16240_GLOB_CMD_RESUME	BIT(8)
- #define ADIS16240_GLOB_CMD_SW_RESET	BIT(7)
- #define ADIS16240_GLOB_CMD_STANDBY	BIT(2)
+ #define ADIS16220_GLOB_CMD_SW_RESET	BIT(7)
+ #define ADIS16220_GLOB_CMD_SELF_TEST	BIT(2)
+ #define ADIS16220_GLOB_CMD_PWR_DOWN	BIT(1)
 -- 
 2.5.0
 
