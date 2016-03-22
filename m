@@ -1,161 +1,189 @@
-X-GM-THRID: 6330315387682422784
-X-Received: by 10.36.213.138 with SMTP id a132mr7288876itg.10.1473891406546;
-        Wed, 14 Sep 2016 15:16:46 -0700 (PDT)
+X-GM-THRID: 6264891272837726208
+X-Received: by 10.66.141.74 with SMTP id rm10mr28532629pab.16.1458658667393;
+        Tue, 22 Mar 2016 07:57:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.103.86 with SMTP id u83ls11574itc.20.gmail; Wed, 14 Sep
- 2016 15:16:46 -0700 (PDT)
-X-Received: by 10.107.150.133 with SMTP id y127mr4297713iod.7.1473891406148;
-        Wed, 14 Sep 2016 15:16:46 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
-        by gmr-mx.google.com with ESMTPS id w124si58972ywc.4.2016.09.14.15.16.46
+Received: by 10.140.35.208 with SMTP id n74ls4554364qgn.63.gmail; Tue, 22 Mar
+ 2016 07:57:46 -0700 (PDT)
+X-Received: by 10.140.87.55 with SMTP id q52mr27735682qgd.11.1458658666912;
+        Tue, 22 Mar 2016 07:57:46 -0700 (PDT)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
+        by gmr-mx.google.com with ESMTPS id sf5si5012460pac.1.2016.03.22.07.57.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 15:16:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
+        Tue, 22 Mar 2016 07:57:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
 Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x242.google.com with SMTP id z143so2068284qka.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 15:16:46 -0700 (PDT)
+Received: by mail-pf0-x236.google.com with SMTP id n5so314446888pfn.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 22 Mar 2016 07:57:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=Jq+fgZZk6b86nWTMzrA0M94i+EhV8vmlG8DbNuqsZEM=;
-        b=CK/3EGLnrcIGWlCvkXati+DV4XzcFO01PXxDAogp0VdCazhVlaiez2ZSOudbv5boZm
-         PYIf9aoWTYtrt/aT/MtLB53/Bt0CjKkBowDfR+v3OOhSkZgP5QlzC3vZ0zW6JVwSrBIz
-         0KrOKLwAY7h5VF501CQ+CwGseZ+n8Nn9wr1wU7W7axSzWUtkTBmwcEwWeHFL225DRFrx
-         lp0ojbDtWytiHqrMEzQvSD6E8k1jCbDgXM7zYP9/+NNkmirkacTzgdjF28gOLD2FhqT9
-         YNbtZE7JpYslw8jSTjJCC9brqJNw/OThKvFZ1CpIPheuqpcwyio6Prvha3u52DTo3tNK
-         1MLQ==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=0ph/l6FTNkfYs0RTOo3O7ANbQQBWto+YplA5QXsoL1s=;
+        b=jEwdwia2Em9S2W59M9Tu0AozroXyKLAgrfTnmF0f4vPJTTteIWLFUGrstd0q+uIUE9
+         Kpy7bJC7bruwWB/0uwixT3XYd/X59mMFmPEYQWQ8Ez5S4tiJL6fzv9zGmuYFROiguzyT
+         XU9hBT0gvGCplDuuI3SfRAz13j/GmYuAjXpEXAJGa3Ly0MbPhE4xJ3x5D1Y0JEmB3DP5
+         qpWV/ZEC9LD3jp1ONYMDXD+PoVV+l6k7ztwOwCgUA608ejyqdGlSjZ2Kr84Y/bxBU6Gw
+         4AOKVnTWvgjMi1a5crrtfuEKL4yqpoGxcAb6+AwA4Wv2+i1GjaYxvu+zEXDeLfqqHPNa
+         xWpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=Jq+fgZZk6b86nWTMzrA0M94i+EhV8vmlG8DbNuqsZEM=;
-        b=OMZ658TcdNMveTxCtdgyVaH7qkf8/OSa6ITExVixr79kBgbzX3dVNCj6GXY4vEmfkf
-         EmCAtF5X3uBIRl5MGm+8z1vCQINmYnVWCOyNAibbpzDjRw7skVwMA+bP+/0+6Y37rfI6
-         P5sRkgGgdddogn0O2CtfPbw9jZNAdhlDvVBIoe11FAv323Vf+MiNXfe9WjyVLHPENhLn
-         XmeNa/kYUqmpo3CE/tOuPbkIYMd42c9CtDLw7z7sL9ZZMdlCJPuIaUZ6lM6ibv5Qzjny
-         z5+I7oRHmD02aOFD9JstaNB7gqEK5Z8FpDuRzDAa6cGTLNT9mJ9pTW3zh/c2m4P6IPuY
-         ROQA==
-X-Gm-Message-State: AE9vXwNIXXntSyas8DBy4fdL+llOZMuroII+zH8MGGs3yA/ro6LkahAIbYWY0fNLVYepGsTWjHAXhVjKFuSRsw==
-X-Received: by 10.55.105.130 with SMTP id e124mr6482094qkc.183.1473891405934;
- Wed, 14 Sep 2016 15:16:45 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=0ph/l6FTNkfYs0RTOo3O7ANbQQBWto+YplA5QXsoL1s=;
+        b=N1mOYp+ij8tHsspRMWu9vbqgMHO29vhmyjSDQZ8GXe12kXXFYqkZl1s7xt/pMhvrzt
+         nO5K9+bdTvjP7n1osFJCweJ0Ddzbb0xT/D3QFHigANsPzmzL+vcF9R9brZ89muo3rFGx
+         DC6BLVJz+z6JQXRg9J87MKCyZqVFJxFGIr+DJ8RQmstBIDTwEoABWCt5Lu8TZe/IFNL+
+         dZVncyiYnORwmdekbo+4EOso41eszKHBBtCNvRzjyYKQxfwiovomX1lPr8lR8//oGoSY
+         A9R/Bkacm9HqlPNwQOkORhTHiRviX2JK9uewq0QBZ/BiaytAQXMQu16tpl2+SniDYpxg
+         YDjQ==
+X-Gm-Message-State: AD7BkJKBuYc5mxGIPL0CTj96uMf5f+h7zXd3p+siqaync6kHS4WX8VqEns8HcpyKIr/R8Q==
+X-Received: by 10.98.34.28 with SMTP id i28mr53918211pfi.160.1458658666710;
+        Tue, 22 Mar 2016 07:57:46 -0700 (PDT)
+Return-Path: <bhaktipriya96@gmail.com>
+Received: from Karyakshetra ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id zu10sm49079053pab.31.2016.03.22.07.57.45
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 22 Mar 2016 07:57:46 -0700 (PDT)
+Date: Tue, 22 Mar 2016 20:27:39 +0530
+From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8188eu: rtw_mlme_ext: Clean up tests if NULL
+ returned on failure
+Message-ID: <20160322145739.GA5249@Karyakshetra>
 MIME-Version: 1.0
-Received: by 10.237.41.97 with HTTP; Wed, 14 Sep 2016 15:16:25 -0700 (PDT)
-From: Namrata A Shettar <namrataashettar@gmail.com>
-Date: Thu, 15 Sep 2016 03:46:25 +0530
-Message-ID: <CAFrQyDHhpXVeYyQGb=kwRp=4ToJw-9i6Y2KiwxVTb=21Wtxb9Q@mail.gmail.com>
-Subject: [PATCH 3/6] staging: vt6656: main_usb: Replace data type declaration
- with variable of same type
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
-	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
-	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
-	Wolfram Sang <wsa-dev@sang-engineering.com>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=001a114fdde2b03a06053c7f1529
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---001a114fdde2b03a06053c7f1529
-Content-Type: text/plain; charset=UTF-8
+Some functions like kzalloc return NULL on failure.
+When NULL represents failure, !x is commonly used.
 
-This patch fixes checkpatch issue:
--Replacing sizeof(struct vnt_usb_send_context) with sizeof(*tx_context)
--Replacing sizeof(struct vnt_rcb) with sizeof(*priv->rcb[ii])
-The replacements are of the type they are replaced with hence size
-remains same.
+This was done using Coccinelle:
 
-Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+@@
+expression *e;
+identifier l1;
+@@
+
+e = \(kmalloc\|kzalloc\|kcalloc\|devm_kzalloc\)(...);
+...
+- e == NULL
++ !e
+
+Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
 ---
- drivers/staging/vt6656/main_usb.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/vt6656/main_usb.c
-b/drivers/staging/vt6656/main_usb.c
-index d79f07f..c03f023 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -429,7 +429,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
-        int ii;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 86108d4..439c035 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -4289,12 +4289,12 @@ void report_survey_event(struct adapter *padapter,
 
-        for (ii = 0; ii < priv->num_tx_context; ii++) {
--               tx_context = kmalloc(sizeof(struct vnt_usb_send_context),
-+               tx_context = kmalloc(sizeof(*tx_context),
-                                                                GFP_KERNEL);
-                if (!tx_context)
-                        goto free_tx;
-@@ -447,7 +447,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
-        }
 
-        for (ii = 0; ii < priv->num_rcb; ii++) {
--               priv->rcb[ii] = kzalloc(sizeof(struct vnt_rcb), GFP_KERNEL);
-+               priv->rcb[ii] = kzalloc(sizeof(*priv->rcb[ii]), GFP_KERNEL);
-                if (!priv->rcb[ii]) {
-                        dev_err(&priv->usb->dev,
-                                        "failed to allocate rcb no %d\n",
-ii);
+ 	pcmd_obj = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+-	if (pcmd_obj == NULL)
++	if (!pcmd_obj)
+ 		return;
 
+ 	cmdsz = sizeof(struct survey_event) + sizeof(struct C2HEvent_Header);
+ 	pevtcmd = kzalloc(cmdsz, GFP_ATOMIC);
+-	if (pevtcmd == NULL) {
++	if (!pevtcmd) {
+ 		kfree(pcmd_obj);
+ 		return;
+ 	}
+@@ -4341,12 +4341,12 @@ void report_surveydone_event(struct adapter *padapter)
+ 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+ 	pcmd_obj = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+-	if (pcmd_obj == NULL)
++	if (!pcmd_obj)
+ 		return;
+
+ 	cmdsz = sizeof(struct surveydone_event) + sizeof(struct C2HEvent_Header);
+ 	pevtcmd = kzalloc(cmdsz, GFP_KERNEL);
+-	if (pevtcmd == NULL) {
++	if (!pevtcmd) {
+ 		kfree(pcmd_obj);
+ 		return;
+ 	}
+@@ -4387,12 +4387,12 @@ void report_join_res(struct adapter *padapter, int res)
+ 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+ 	pcmd_obj = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+-	if (pcmd_obj == NULL)
++	if (!pcmd_obj)
+ 		return;
+
+ 	cmdsz = sizeof(struct joinbss_event) + sizeof(struct C2HEvent_Header);
+ 	pevtcmd = kzalloc(cmdsz, GFP_ATOMIC);
+-	if (pevtcmd == NULL) {
++	if (!pevtcmd) {
+ 		kfree(pcmd_obj);
+ 		return;
+ 	}
+@@ -4440,12 +4440,12 @@ void report_del_sta_event(struct adapter *padapter, unsigned char *MacAddr, unsi
+ 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+ 	pcmd_obj = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+-	if (pcmd_obj == NULL)
++	if (!pcmd_obj)
+ 		return;
+
+ 	cmdsz = sizeof(struct stadel_event) + sizeof(struct C2HEvent_Header);
+ 	pevtcmd = kzalloc(cmdsz, GFP_KERNEL);
+-	if (pevtcmd == NULL) {
++	if (!pevtcmd) {
+ 		kfree(pcmd_obj);
+ 		return;
+ 	}
+@@ -4495,12 +4495,12 @@ void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr, int
+ 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+ 	pcmd_obj = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+-	if (pcmd_obj == NULL)
++	if (!pcmd_obj)
+ 		return;
+
+ 	cmdsz = sizeof(struct stassoc_event) + sizeof(struct C2HEvent_Header);
+ 	pevtcmd = kzalloc(cmdsz, GFP_KERNEL);
+-	if (pevtcmd == NULL) {
++	if (!pevtcmd) {
+ 		kfree(pcmd_obj);
+ 		return;
+ 	}
+@@ -4911,11 +4911,11 @@ void survey_timer_hdl(unsigned long data)
+ 		}
+
+ 		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+-		if (ph2c == NULL)
++		if (!ph2c)
+ 			goto exit_survey_timer_hdl;
+
+ 		psurveyPara = kzalloc(sizeof(struct sitesurvey_parm), GFP_ATOMIC);
+-		if (psurveyPara == NULL) {
++		if (!psurveyPara) {
+ 			kfree(ph2c);
+ 			goto exit_survey_timer_hdl;
+ 		}
+@@ -5479,7 +5479,7 @@ u8 set_tx_beacon_cmd(struct adapter *padapter)
+
+
+ 	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+-	if (ph2c == NULL) {
++	if (!ph2c) {
+ 		res = _FAIL;
+ 		goto exit;
+ 	}
 --
-2.7.4
+2.1.4
 
---001a114fdde2b03a06053c7f1529
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">This patch fixes checkpatch issue:<br>
--Replacing sizeof(struct vnt_usb_send_context) with sizeof(*tx_context)<br>
--Replacing sizeof(struct vnt_rcb) with sizeof(*priv-&gt;rcb[ii])<br>
-The replacements are of the type they are replaced with hence size<br>
-remains same.<br>
-<br>
-Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashettar@gmai=
-l.com" target=3D"_blank">namrataashettar@gmail.com</a>&gt;<br>
----<br>
-=C2=A0drivers/staging/vt6656/main_u<wbr>sb.c | 4 ++--<br>
-=C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/drivers/staging/vt6656/main_<wbr>usb.c b/drivers/staging/vt665=
-6/main_<wbr>usb.c<br>
-index d79f07f..c03f023 100644<br>
---- a/drivers/staging/vt6656/main_<wbr>usb.c<br>
-+++ b/drivers/staging/vt6656/main_<wbr>usb.c<br>
-@@ -429,7 +429,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 int ii;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (ii =3D 0; ii &lt; priv-&gt;num_tx_context;=
- ii++) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tx_context =3D kmal=
-loc(sizeof(struct vnt_usb_send_context),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tx_context =3D kmal=
-loc(sizeof(*tx_context),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 GFP_KERNEL);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!tx_context)<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 goto free_tx;<br>
-@@ -447,7 +447,7 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (ii =3D 0; ii &lt; priv-&gt;num_rcb; ii++) =
-{<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;rcb[ii] =
-=3D kzalloc(sizeof(struct vnt_rcb), GFP_KERNEL);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0priv-&gt;rcb[ii] =
-=3D kzalloc(sizeof(*priv-&gt;rcb[ii])<wbr>, GFP_KERNEL);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!priv-&gt;rcb[i=
-i]) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 dev_err(&amp;priv-&gt;usb-&gt;dev,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;fa=
-iled to allocate rcb no %d\n&quot;, ii);<br><br><span><font color=3D"#88888=
-8">--<br>
-2.7.4</font></span><br></div>
-
---001a114fdde2b03a06053c7f1529--
 
