@@ -1,81 +1,104 @@
-X-GM-THRID: 6212117467213332480
-X-Received: by 10.31.3.23 with SMTP id 23mr13829549vkd.13.1446371308426;
-        Sun, 01 Nov 2015 01:48:28 -0800 (PST)
+X-GM-THRID: 6264881295944318976
+X-Received: by 10.129.76.201 with SMTP id z192mr22119748ywa.58.1458657333801;
+        Tue, 22 Mar 2016 07:35:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.26 with SMTP id x26ls819690ioi.31.gmail; Sun, 01 Nov
- 2015 01:48:28 -0800 (PST)
-X-Received: by 10.68.194.202 with SMTP id hy10mr13733877pbc.13.1446371308161;
-        Sun, 01 Nov 2015 01:48:28 -0800 (PST)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id iz5si1306405pbc.2.2015.11.01.01.48.28
+Received: by 10.140.109.135 with SMTP id l7ls3413862qgf.87.gmail; Tue, 22 Mar
+ 2016 07:35:33 -0700 (PDT)
+X-Received: by 10.140.94.117 with SMTP id f108mr27707681qge.0.1458657333038;
+        Tue, 22 Mar 2016 07:35:33 -0700 (PDT)
+Return-Path: <amitoj1606@gmail.com>
+Received: from mail-qg0-x22e.google.com (mail-qg0-x22e.google.com. [2607:f8b0:400d:c04::22e])
+        by gmr-mx.google.com with ESMTPS id uf6si24825867igb.0.2016.03.22.07.35.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 01:48:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Mar 2016 07:35:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) client-ip=2607:f8b0:400d:c04::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
+       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400d:c04::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
+       dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by padhy1 with SMTP id hy1so111176842pad.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Nov 2015 01:48:28 -0800 (PST)
+Received: by mail-qg0-x22e.google.com with SMTP id w104so179531053qge.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 22 Mar 2016 07:35:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=VX6c0ZRqJIbpe1Xsf4NrnM6HDRfM0VRGN5qr/mrraa4=;
-        b=dv3hKFUTaeonob6bHmNIjqCZXc5ol0cLgtu1J+1CNatQ4MkTlouAXiomIzYwFTcjdU
-         0xfUip87DlAT3GgaKBv7xL6YlSNSdX/hot0vbBs+JJeJ2Ln0n5BdmBJMPmZY2u7ptpxM
-         GYiqdMIMwcny2P2j6D0vgJFu2xzx3bqGZtFXNtgLQX2TGDP3IIDxmoftsWMmmtvHR34W
-         o2/0V0tGBEzrLKqD3AkworTNgL4zVTSElEz3fiRDVlo5rm7M2w1/J5+Qiv78wP8dG60W
-         ERcQYmdiEpQTSiJ1FH0y8wjHu9RAJ6ZXQNbw2ouzTxl2NQnzYURYKLhTdgTxq/0hcMno
-         i74A==
-X-Received: by 10.68.211.165 with SMTP id nd5mr19633194pbc.100.1446371308034;
-        Sun, 01 Nov 2015 01:48:28 -0800 (PST)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id of1sm17806628pbc.11.2015.11.01.01.48.25
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2015 01:48:27 -0800 (PST)
-Date: Sun, 1 Nov 2015 15:18:22 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: ldlm_lockd: Remove unused function
-Message-ID: <20151101094822.GA38698@ubuntu>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to;
+        bh=S+Dnz5WcUuVtV9odr8VikbMbkgfV9NZ5rJ2kRjG6gzg=;
+        b=VFcf2fddn6pKt4FTiGGgIC+q2Z15SCKsQoCcm2UN14pd3+hJgsVLJ9NVQjwBjxVoaW
+         tHGrF4oPZo6mnwKeV1hS+GMGx9gdLqoWSJuu/8qs8uA4CjzL6Zv5yz5W00aJYSt1k0Ui
+         vHNXc6wUSYkvsa6R2raYPsZA3+aOIazeR5ehWwnYALFiSAxD8qgAE9IL73FoLdHdfMs3
+         2SiXgyn8eTtG/tKvdQUZGxYHmGJ3MFoCiZPJGJJix3CvnQLJAPu1ScyoGT2rxEDlNwyW
+         fBF+2AIRO+ClaLsOsamjXlMNKZBGFJDPY+zyeqmm0ug1IUGdAjXykb+116IXdrZOEk2n
+         E7eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to;
+        bh=S+Dnz5WcUuVtV9odr8VikbMbkgfV9NZ5rJ2kRjG6gzg=;
+        b=AIZAzQyXGxssvGjldrAnvPVebtg5I++/8+FBULFePsBh96CUNkI0U735evlJwdNfrb
+         925kinKCJ7bQY2T1vKY9HW1MKVsnw5XIOg9efybt/+2hVT7ZBTSe0tYoLFurulOUdO65
+         /rsz4smW5jF3waJMWOZ2eJpJcIgb2mRM5Q6AGY7bQ88oMS6w5rrmch+Njf51PKnqAm04
+         Tr9Fq72ETrkwT6k9Iqo7FU4hGoqqmdUWkXYy/le3H4FaeubAmg6EUuW0OHehW2aKNqEA
+         tN7aGsHO+Con21QHZiMYWRiD5XrrXbS+SV57SdIsxRCwmxhI4ehmQ2B1T96oJq54/KF4
+         2KIg==
+X-Gm-Message-State: AD7BkJJG/155DMoM/AX48hbhpBiVqlKuZLicVRbVPIQM7Zo05DiFnbAQ5Drt6wQakKQURwA3uhJklHLLWOmURA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.140.95.117 with SMTP id h108mr47184413qge.65.1458657332733;
+ Tue, 22 Mar 2016 07:35:32 -0700 (PDT)
+Received: by 10.140.108.33 with HTTP; Tue, 22 Mar 2016 07:35:32 -0700 (PDT)
+In-Reply-To: <20160322141859.GA14592@amitoj-Inspiron-3542>
+References: <20160322141859.GA14592@amitoj-Inspiron-3542>
+Date: Tue, 22 Mar 2016 20:05:32 +0530
+Message-ID: <CA+5yK5HCq1UobKzvEbOBod=5By9tyCL65GqgSDw7mQgw8KAAxA@mail.gmail.com>
+Subject: Re: [PATCH] staging: media: omap1: Replace clk_get with devm_clk_get
+From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove the function cancel_unused_locks_before_replay_show() as it is
-not called anywhere.
+On Tue, Mar 22, 2016 at 7:48 PM, Amitoj Kaur Chawla
+<amitoj1606@gmail.com> wrote:
+> devm_clk_get allocated resources get released when a driver detaches.
+> Replace clk_get with devm_clk_get and remove corresponding data
+> releasing function clk_put from probe and remove functions of a
+> platform device. Also remove an unnecessary label.
+>
+> This change was made with the help of the following Coccinelle
+> semantic patch:
+> @platform@
+> identifier p, probefn, removefn;
+> @@
+> struct platform_driver p = {
+>   .probe = probefn,
+>   .remove = removefn,
+> };
+>
+> @prb@
+> identifier platform.probefn, pdev;
+> expression e;
+> @@
+> probefn(struct platform_device *pdev, ...) {
+>   ...
+>   e =
+> - clk_get
+> + devm_clk_get
+>   (...);
+>    ...
+> ?- clk_put(...);
+>   ...
+> }
+> @remove depends on prb@
+> identifier platform.removefn;
+> @@
+> removefn(...) {
+> ...
+> ?- clk_put(...);
+> ...
+> }
+>
+> Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+> ---
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c | 7 -------
- 1 file changed, 7 deletions(-)
+Please ignore this. Will be resending this in a patch series.
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-index ca11511..3af0a73 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-@@ -873,13 +873,6 @@ EXPORT_SYMBOL(ldlm_put_ref);
- 
- extern unsigned int ldlm_cancel_unused_locks_before_replay;
- 
--static ssize_t cancel_unused_locks_before_replay_show(struct kobject *kobj,
--						      struct attribute *attr,
--						      char *buf)
--{
--	return sprintf(buf, "%d\n", ldlm_cancel_unused_locks_before_replay);
--}
--
- static ssize_t cancel_unused_locks_before_replay_store(struct kobject *kobj,
- 						       struct attribute *attr,
- 						       const char *buffer,
--- 
-2.1.0
-
+Thanks,
+Amitoj
 
