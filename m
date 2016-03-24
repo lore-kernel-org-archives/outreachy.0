@@ -1,89 +1,86 @@
-X-GM-THRID: 6254955929257639936
-X-Received: by 10.31.165.1 with SMTP id o1mr38246439vke.12.1456345415585;
-        Wed, 24 Feb 2016 12:23:35 -0800 (PST)
+X-GM-THRID: 6262296437961261056
+X-Received: by 10.176.1.141 with SMTP id 13mr6377181ual.9.1458848546666;
+        Thu, 24 Mar 2016 12:42:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.165 with SMTP id g5ls198817igt.28.gmail; Wed, 24 Feb
- 2016 12:23:34 -0800 (PST)
-X-Received: by 10.50.43.234 with SMTP id z10mr11597672igl.4.1456345414804;
-        Wed, 24 Feb 2016 12:23:34 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id ff2si710234pad.2.2016.02.24.12.23.34
+Received: by 10.140.92.33 with SMTP id a30ls1060287qge.72.gmail; Thu, 24 Mar
+ 2016 12:42:25 -0700 (PDT)
+X-Received: by 10.140.96.100 with SMTP id j91mr6185328qge.6.1458848545974;
+        Thu, 24 Mar 2016 12:42:25 -0700 (PDT)
+Return-Path: <htejun@gmail.com>
+Received: from mail-yw0-x243.google.com (mail-yw0-x243.google.com. [2607:f8b0:4002:c05::243])
+        by gmr-mx.google.com with ESMTPS id w69si761910ywa.3.2016.03.24.12.42.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 12:23:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 24 Mar 2016 12:42:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) client-ip=2607:f8b0:4002:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id e127so1584376pfe.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 12:23:34 -0800 (PST)
+       spf=pass (google.com: domain of htejun@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) smtp.mailfrom=htejun@gmail.com
+Received: by mail-yw0-x243.google.com with SMTP id f6so6704277ywa.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 24 Mar 2016 12:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=QjSfoNfFlng6PIgfZF59AZd/cxDdxcW2Sf4rMVhNiNo=;
-        b=Hyz1J0/xbX6+t+2ctd4RsD750XfvFbw4dd8l15vCfJ7L45a/YEUgCaqzwpaEZBN6tV
-         pc0MTZVgFYPZFE6JbogR2dtgWMbqNheAqKAiC8dSXy5lrKj8EKNGE2XCxEn4qZv6hAwr
-         6yOEcpVQvvi72IAR04qrF+wz97ErLEm2tixysmdSVurw0/AWV/BoZHVvkmq01HJefIyd
-         blzhLhT7/tBr7mVihezuvZueyvCqPGIU9qYo6QFb2q3YMajCTQkG29FQ0BNhhyt8GkYJ
-         pyRe0fmnOryY4/JA7Q8JFGfiyRd6FZJMnur3hfDpMX/fxBoIwyEhB5df03vpOaYhJD6w
-         TLbQ==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=mlPauygosqWtmrZhBy5P3vMQD2QKibbsCT8N6vY41TE=;
+        b=JWk0EKJj3uZEertg2oEn1qryFlUbpv/ST4Y0gU5gBFSQJ1116XeHeN7PEEmwCMP95a
+         30kX52intNa1x2HcfH+IF4yMm1d8GOJjYF3/peviJ8IseCiEC2sdXROnu2whGmjK2sEp
+         32DB5DuCZGY9MQLow8KwSyI16QPrcyO3xGv2KZPYYKCCa77KkwRkWO2Xvovx+kAWbkzq
+         h8V0nKKUZBhLUlYDGdIzkbUPtRDZEIbJnthUJbbZM/vxLsvJlU38oUsOz9vZIoiFfViS
+         0wMo5hMSC8mEVBsSVUJ6zY+j5wF6pJsPmk+V/wqwH9sqaNokY3TrMIFbDXGKwNMtQDHB
+         hg0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=QjSfoNfFlng6PIgfZF59AZd/cxDdxcW2Sf4rMVhNiNo=;
-        b=YlVpoXMN93Mt4ZFm25k9Le9bGaU0lNEdcUd31uBYWrPxcmbZ1IC4iXnZ9V900Elt3M
-         D9ztHVhMP9xneEPMtOe4PP5ekgRUR9rHb4U6+x1eXrko8iVqIvNm7A/luxQop0l41K3F
-         BXvFkxg9bIPCp53c0TdDp6Z08QyQHIylY4Uo4A+DMUmpgkHepvr70b/E3kyvNAksHpAN
-         QtQRV5DB02KtBJjoKMBqYSQDzvmQgplA2V2KdO1hxj1ynC+3n85zxp8L/jHbzgXyDzcS
-         Kgd8NIod1HBBbElKQuxD/Uv6AapjEtWubw++HhRMguXyEmSv0xN+Qt85QK1/CWHAb4cc
-         1Fng==
-X-Gm-Message-State: AG10YOR91gmr0FU5MLAe1Yt6M/a1s4bUa/vIbnNei8zzTbKjjjhPdtfH9iiyHxZT9K/eew==
-X-Received: by 10.98.72.215 with SMTP id q84mr57537040pfi.152.1456345414598;
-        Wed, 24 Feb 2016 12:23:34 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ud8sm6986337pac.11.2016.02.24.12.23.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 12:23:33 -0800 (PST)
-Date: Thu, 25 Feb 2016 01:54:08 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/8] Remove useless return variables
-Message-ID: <20160224202408.GA22908@Karyakshetra>
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=mlPauygosqWtmrZhBy5P3vMQD2QKibbsCT8N6vY41TE=;
+        b=m6fmqIK229g+CUFEkhDoG+w3VpxA2c3QAbAn0g02wIEVvgy2QsdMg2HCX6iIy6G58N
+         vgYRg/tefR9MyC1HVj8bi5ok+D2ojcCExGVrQDRZcWIg1Wyhi+LnEHyeAScbsVVAV8h2
+         EYvyAM0Ot4/ZJKXM/r5ZR74HvKWZDF6TMqTajtz9K9Jvb6HL9rJxUYXpIBtc6tETpshK
+         nm0IW00iw+vGx0n4B8L439w/anpU7JpxB7yua+gxrVMo4ZLwuvTNfAqF65quvR/00+Js
+         IwBuDBqwgQTh4AkyD3rRu0QHpRJsgi9Gef//07/YN/Rae4Cg9/ptlsWiUOp9LmtH7Ohy
+         JKuw==
+X-Gm-Message-State: AD7BkJKuc6BLK3PWDDKxl/x6Zoi0Y2HQfjBk5a7eCJC072nxXbD3NUE3iMfnoALh2Baysg==
+X-Received: by 10.129.55.134 with SMTP id e128mr6007573ywa.277.1458848545835;
+        Thu, 24 Mar 2016 12:42:25 -0700 (PDT)
+Return-Path: <htejun@gmail.com>
+Received: from localhost ([2620:10d:c091:200::7:1aee])
+        by smtp.gmail.com with ESMTPSA id o85sm5389943ywd.37.2016.03.24.12.42.25
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 Mar 2016 12:42:25 -0700 (PDT)
+Sender: Tejun Heo <htejun@gmail.com>
+Date: Thu, 24 Mar 2016 15:42:24 -0400
+From: Tejun Heo <tj@kernel.org>
+To: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] can: mcp251x: Replace
+ create_freezable_workqueue with alloc_workqueue
+Message-ID: <20160324194224.GE7822@mtj.duckdns.org>
+References: <20160317141641.GA5080@amitoj-Inspiron-3542>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20160317141641.GA5080@amitoj-Inspiron-3542>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch-set removes unnecessary return variables and compresses the
-return logic.
+Hello,
 
-Bhaktipriya Shridhar (8):
-  staging: rdma: hfi1: Remove useless return variables
-  staging: android: ion: hisilicon: Remove useless return variables
-  staging: unisys: visorbus: Remove useless return variables
-  staging: rtl8188eu: os_dep: Remove useless return variables
-  staging: rtl8188eu: core: Remove useless return variables
-  staging: wilc1000: Remove useless return variables
-  staging: rtl8723au: hal: Remove useless return variables
-  staging: lusture: ptlrpc: Remove useless return variables
+On Thu, Mar 17, 2016 at 07:46:41PM +0530, Amitoj Kaur Chawla wrote:
+> Replace scheduled to be removed create_freezable_workqueue with
+> alloc_workqueue.
+> 
+> priv->wq should be explicitly set as freezable to ensure it is frozen
+> in the suspend sequence and work items are drained so that no new work
+> item starts execution until thawed. Thus, use of WQ_FREEZABLE flag
+> here is required.
+> 
+> WQ_MEM_RECLAIM flag has not been set here since this driver doesn't
+> seem to sit in the memory reclaim path.
 
- drivers/staging/android/ion/hisilicon/hi6220_ion.c  |  5 +----
- drivers/staging/lustre/lustre/ptlrpc/client.c       |  5 +----
- drivers/staging/rdma/hfi1/chip.c                    |  5 +----
- drivers/staging/rtl8188eu/core/rtw_sta_mgt.c        |  4 +---
- drivers/staging/rtl8188eu/os_dep/osdep_service.c    |  5 +----
- drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 16 +++-------------
- drivers/staging/unisys/visorbus/visorbus_main.c     |  4 +---
- drivers/staging/wilc1000/wilc_wlan.c                |  6 +-----
- 8 files changed, 10 insertions(+), 40 deletions(-)
+Ditto with WQ_MEM_RECLAIM.
 
---
-2.1.4
+Thanks.
 
+-- 
+tejun
 
