@@ -1,77 +1,99 @@
-X-GM-THRID: 6394099314586550272
-X-Received: by 10.46.76.17 with SMTP id z17mr1859549lja.13.1488742259174;
-        Sun, 05 Mar 2017 11:30:59 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.69.198 with SMTP id s189ls1385916lja.6.gmail; Sun, 05 Mar
- 2017 11:30:58 -0800 (PST)
-X-Received: by 10.25.104.21 with SMTP id d21mr1542018lfc.31.1488742258505;
-        Sun, 05 Mar 2017 11:30:58 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id f7si798105wmg.3.2017.03.05.11.30.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 11:30:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id u108so15344947wrb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 11:30:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=CSoJhpdTAZ098IWmIvkqpWulfKCQrsuJXvOxKwmSjkc=;
-        b=THgRmecPUZFUpj3cMmhaDBFYGO1T2OXoP5QCsZPJNchrZNIV5ZuobCtr8znbztZALr
-         eZ8reREKEbLMXjqCUFZW1DG+3sQecKuuq+sA56HSzELyTV2pe6Di/QGatsTSaIHUd3iY
-         VoSdAhTX45AtPimr1E4pzc4kP9ZW8S8bS8Q7dWFWvRo5B5F47eZsVjqwuLsW5jh9cKRE
-         9zoEXMajmKmtFweCDNnOFNfAnFVF0XwBbKatgVPMIpO0G5CPiUX39k8iZiq61aAKZbiE
-         miup6+ShUKYEdW9BJJCFvcl3ztW5D2VzR8EjbcamnEjkiVrSskggbnrDeZ/qULgfRcUD
-         VDWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=CSoJhpdTAZ098IWmIvkqpWulfKCQrsuJXvOxKwmSjkc=;
-        b=Lr/bg22vnZgy6rxjbGD+VWZNvuDPOJXOh3rZZqiufGTEN8/PcboXk0hPugcK3qbJLF
-         fYbANDqdjQxnBZPLidRGK0scPUooYXPRtii0FyX60hBQ2cYOlukgSNofzHNbaOun1n8C
-         Q350Lj9v9yxqfwrc35+otyy0u5Qo9SUJPbpJBhFs0aw9jn07F/RjdHRWpJbTt4SuBkOs
-         gJRJAaRjLom3MY3LbvGBRdwTKdDNB8fKKzdb/IFDLYWQ16XCL9ZShN6Y8utovKXzgiOX
-         V1KNpf/ZRgIhXn8ewIvXVAixunQYr9UGGN/IbwQnA6bx8vhmO12tjFhwOQp7q9GtqXfo
-         lYxg==
-X-Gm-Message-State: AMke39lCiJLgvaB5EbOcZY6W5zL0g0gGPmS8YM60f4VRkXRwnuTKImM+TqX2ODUJCBRJog==
-X-Received: by 10.223.134.157 with SMTP id 29mr10833962wrx.33.1488742258295;
-        Sun, 05 Mar 2017 11:30:58 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8170:1398:c85a:3772:cb0c:b839])
-        by smtp.gmail.com with ESMTPSA id x1sm23891984wrd.63.2017.03.05.11.30.56
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 05 Mar 2017 11:30:57 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 0/3] Fix multiple checkpath.pl issues
-Date: Sun,  5 Mar 2017 21:30:44 +0200
-Message-Id: <20170305193044.19389-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+X-GM-THRID: 6311696550049349632
+X-Gmail-Labels: Topic type: DISCUSSION
+Date: Mon, 1 Aug 2016 10:13:47 -0700 (PDT)
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <6e8fc6fd-92a5-4c6a-b797-cebd04f10e8d@googlegroups.com>
+In-Reply-To: <64c3385b-6ee7-44ac-bb17-e265d5f9ade8@googlegroups.com>
+References: <64c3385b-6ee7-44ac-bb17-e265d5f9ade8@googlegroups.com>
+Subject: Re: commiting the .git/hooks/pre-commit and testing the changes on
+ the updated e1000_main.c
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1278_1165877058.1470071627777"
+X-Google-Token: EMuG_rwFBl4V1ipGlE80
+X-Google-IP: 182.58.218.178
 
-Fixed multiple checkpath.pl issues in speakup driver to improve code readability.
+------=_Part_1278_1165877058.1470071627777
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1279_391380785.1470071627777"
 
-Tamara Diaconita (3):
-  staging:speakup:keyhelp.c: Add spaces to align
-  staging:speakup:keyhelp.c Fix 'if' continuation
-  staging:speakup:keyhelp.c: Remove unnecessary else
+------=_Part_1279_391380785.1470071627777
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
- drivers/staging/speakup/keyhelp.c | 54 +++++++++++++++++++--------------------
- 1 file changed, 26 insertions(+), 28 deletions(-)
 
--- 
-2.9.3
 
+On Tuesday, July 26, 2016 at 11:36:10 PM UTC+5:30, courage angeh wrote:
+>
+> I am a newbie... just start recently preparing for the out reach program 
+> in December.... i started at: 
+> https://kernelnewbies.org/Outreachyfirstpatch but i have a number of 
+> difficulties:
+> 1. After editx... ,  recompiling my driver, installing the changes and 
+> rebooting my linux system . I tested the changes but i didn't find the 
+> message " I can modify the Linux kernel!".... i contacted the irc 
+> channel:#kernel-outreachy but i seemed not to exist.
+> 2. i went ahead to creating the .git/hooks/pre-commit but when i try 
+> staging and commiting the file i get the respective errors:
+>
+> error: Invalid path '.git/hooks/pre-commit'
+> error: unable to add .git/hooks/pre-commit to index
+> fatal: adding files failed
+>
+> and
+>
+> error: pathspec 'First patch' did not match any file(s) known to git.
+>
+> please some one help me out???
+>
+>
+>  Hey I too am a newbie, I added the printk statement by following 
+kernelnewbies.org, i then ran the following:
+1.make 'make drivers/net/ethernet/intel/e1000/
+2.sudo make install drivers/net/ethernet/intel/e1000/
+
+On rebooting I got FATAL: Could not load 
+/lib/modules/4.5.0-rc3+/modules.dep: No such file or directory.
+Is there somewhere that I might be going wrong?
+Did your steps differ from mine? If yes, please let me know what you did 
+differently.
+Thanks!
+
+------=_Part_1279_391380785.1470071627777
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tuesday, July 26, 2016 at 11:36:10 PM UTC+5:30,=
+ courage angeh wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=
+=3D"ltr">I am a newbie... just start recently preparing for the out reach p=
+rogram in December.... i started at: <a href=3D"https://kernelnewbies.org/O=
+utreachyfirstpatch" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.=
+href=3D&#39;https://www.google.com/url?q\x3dhttps%3A%2F%2Fkernelnewbies.org=
+%2FOutreachyfirstpatch\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEARR3yHMZoXv=
+OaBsXxPWzyoOSw9Q&#39;;return true;" onclick=3D"this.href=3D&#39;https://www=
+.google.com/url?q\x3dhttps%3A%2F%2Fkernelnewbies.org%2FOutreachyfirstpatch\=
+x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEARR3yHMZoXvOaBsXxPWzyoOSw9Q&#39;;r=
+eturn true;">https://kernelnewbies.org/<wbr>Outreachyfirstpatch</a> but i h=
+ave a number of difficulties:<br>1. After editx... ,=C2=A0 recompiling my d=
+river, installing the changes and rebooting my linux system . I tested the =
+changes but i didn&#39;t find the message &quot; I can modify the Linux ker=
+nel!&quot;.... i contacted the irc channel:#kernel-outreachy but i seemed n=
+ot to exist.<br>2. i went ahead to creating the .git/hooks/pre-commit but w=
+hen i try staging and commiting the file i get the respective errors:<br><b=
+r><pre>error: Invalid path &#39;.git/hooks/pre-commit&#39;<br>error: unable=
+ to add .git/hooks/pre-commit to index<br>fatal: adding files failed<br><br=
+>and<br><br>error: pathspec &#39;First patch&#39; did not match any file(s)=
+ known to git.<br><br>please some one help me out???<br></pre><br></div></b=
+lockquote><div>=C2=A0Hey I too am a newbie, I added the printk statement by=
+ following kernelnewbies.org, i then ran the following:<br>1.make &#39;make=
+ drivers/net/ethernet/intel/e1000/<br>2.sudo make install drivers/net/ether=
+net/intel/e1000/<br><br>On rebooting I got FATAL: Could not load /lib/modul=
+es/4.5.0-rc3+/modules.dep: No such file or directory.<br>Is there somewhere=
+ that I might be going wrong?<br>Did your steps differ from mine? If yes, p=
+lease let me know what you did differently.<br>Thanks!<br></div></div>
+------=_Part_1279_391380785.1470071627777--
+
+------=_Part_1278_1165877058.1470071627777--
 
