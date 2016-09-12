@@ -1,100 +1,84 @@
 X-GM-THRID: 6329492802868609024
-Date: Mon, 12 Sep 2016 10:31:39 -0700 (PDT)
-From: Namrata A Shettar <namrataashettar@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <a1d35405-1ff2-4642-a8da-533adbc6da70@googlegroups.com>
+X-Received: by 10.46.9.5 with SMTP id 5mr623145ljj.0.1473700014189;
+        Mon, 12 Sep 2016 10:06:54 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.25.32.69 with SMTP id g66ls422247lfg.8.gmail; Mon, 12 Sep 2016
+ 10:06:53 -0700 (PDT)
+X-Received: by 10.25.152.10 with SMTP id a10mr2875930lfe.4.1473700013684;
+        Mon, 12 Sep 2016 10:06:53 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b1si89352wmg.0.2016.09.12.10.06.53
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Sep 2016 10:06:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,323,1470693600"; 
+   d="scan'208";a="192888174"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 19:06:53 +0200
+Date: Mon, 12 Sep 2016 19:06:52 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: comedi_pcmcia: Fixes
+ multiple blank lines issue
 In-Reply-To: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609121906281.29099@hadrien>
 References: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com>
-Subject: Re: [PATCH] staging: comedi: comedi_pcmcia: Fixes multiple blank
- lines issue
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_26_2053789670.1473701499132"
-X-Google-Token: EPvM274F720HSiGWi240
-X-Google-IP: 103.225.101.21
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-750045508-1473700012=:29099"
 
-------=_Part_26_2053789670.1473701499132
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_27_369989571.1473701499132"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-------=_Part_27_369989571.1473701499132
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+--8323329-750045508-1473700012=:29099
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-There was an issue in getting the maintainer's list.Sorted now and sent it 
-to the maintainers.
+On Mon, 12 Sep 2016, Namrata A Shettar wrote:
 
-Thanks,
-Namrata
-
-On Monday, September 12, 2016 at 10:34:43 PM UTC+5:30, Namrata A Shettar 
-wrote:
->
 > This patch fixes the checkpatch.pl issue:
 > -Please don't use multiple blank lines
+
+This is fine, but I guess there is a maintainer for this file?
+
+julia
+
 >
 > Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 > ---
->  drivers/staging/comedi/comedi_pcmcia.c | 1 -
->  1 file changed, 1 deletion(-)
+>  drivers/staging/comedi/comedi_pcmcia.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/drivers/staging/comedi/comedi_pcmcia.c 
+> diff --git a/drivers/staging/comedi/comedi_pcmcia.c
 > b/drivers/staging/comedi/comedi_pcmcia.c
 > index d7072a5..ec8a0ad 100644
 > --- a/drivers/staging/comedi/comedi_pcmcia.c
 > +++ b/drivers/staging/comedi/comedi_pcmcia.c
 > @@ -18,7 +18,6 @@
 >
->  #include <linux/module.h>
->  #include <linux/kernel.h>
+>  #include <linux/module.h>
+>  #include <linux/kernel.h>
 > -
->  #include "comedi_pcmcia.h"
+>  #include "comedi_pcmcia.h"
 >
->  /**
+>  /**
 >
-
-------=_Part_27_369989571.1473701499132
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">There was an issue in getting the maintainer&#39;s list.So=
-rted now and sent it to the maintainers.<br><br>Thanks,<br>Namrata<br><br>O=
-n Monday, September 12, 2016 at 10:34:43 PM UTC+5:30, Namrata A Shettar wro=
-te:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;=
-border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr">This patch=
- fixes the <a href=3D"http://checkpatch.pl" rel=3D"nofollow" target=3D"_bla=
-nk" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%=
-2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72=
-L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&#39;http://www.goog=
-le.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x=
-3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">checkpatch.pl</a> i=
-ssue:<br>
--Please don&#39;t use multiple blank lines<br>
-<br>
-Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashettar@gmai=
-l.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;m=
-ailto:namrataashettar@gmail.com&#39;;return true;" onclick=3D"this.href=3D&=
-#39;mailto:namrataashettar@gmail.com&#39;;return true;">namrataashettar@gma=
-il.com</a>&gt;<br>
----<br>
-=C2=A0drivers/staging/comedi/<wbr>comedi_pcmcia.c | 1 -<br>
-=C2=A01 file changed, 1 deletion(-)<br>
-<br>
-diff --git a/drivers/staging/comedi/<wbr>comedi_pcmcia.c b/drivers/staging/=
-comedi/<wbr>comedi_pcmcia.c<br>
-index d7072a5..ec8a0ad 100644<br>
---- a/drivers/staging/comedi/<wbr>comedi_pcmcia.c<br>
-+++ b/drivers/staging/comedi/<wbr>comedi_pcmcia.c<br>
-@@ -18,7 +18,6 @@<br>
-<br>
-=C2=A0#include &lt;linux/module.h&gt;<br>
-=C2=A0#include &lt;linux/kernel.h&gt;<br>
--<br>
-=C2=A0#include &quot;comedi_pcmcia.h&quot;<br>
-<br>
-=C2=A0/**</div>
-</blockquote></div>
-------=_Part_27_369989571.1473701499132--
-
-------=_Part_26_2053789670.1473701499132--
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAFrQyDEjFOCD2WZmVWedeRc
+> asU_48CmaTpOCKT3QJWbRB5zFgQ%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-750045508-1473700012=:29099--
 
