@@ -1,52 +1,72 @@
 X-GM-THRID: 6329385396003143680
-X-Received: by 10.98.205.131 with SMTP id o125mr14991487pfg.12.1473675886902;
-        Mon, 12 Sep 2016 03:24:46 -0700 (PDT)
+X-Received: by 10.28.206.138 with SMTP id e132mr1540941wmg.5.1473675441608;
+        Mon, 12 Sep 2016 03:17:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.38 with SMTP id n35ls10930875ota.27.gmail; Mon, 12 Sep
- 2016 03:24:46 -0700 (PDT)
-X-Received: by 10.129.105.6 with SMTP id e6mr14135953ywc.8.1473675886241;
-        Mon, 12 Sep 2016 03:24:46 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id 142si2288531pfx.2.2016.09.12.03.24.46
+Received: by 10.28.198.79 with SMTP id w76ls448439wmf.1.canary; Mon, 12 Sep
+ 2016 03:17:20 -0700 (PDT)
+X-Received: by 10.28.193.198 with SMTP id r189mr1550470wmf.7.1473675440987;
+        Mon, 12 Sep 2016 03:17:20 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id b1si248844wmg.0.2016.09.12.03.17.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 03:24:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Mon, 12 Sep 2016 03:17:20 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 552E694A;
-	Mon, 12 Sep 2016 10:24:45 +0000 (UTC)
-Date: Mon, 12 Sep 2016 12:24:50 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,322,1470693600"; 
+   d="scan'208";a="236093866"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 12:17:20 +0200
+Date: Mon, 12 Sep 2016 12:17:20 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Rehas Sachdeva <aquannie@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: emxx_udc: Remove unnecessary
  blank line
-Message-ID: <20160912102450.GA13329@kroah.com>
-References: <20160912100728.GA4810@toblerone>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20160912100728.GA4810@toblerone>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+Message-ID: <alpine.DEB.2.10.1609121216100.3049@hadrien>
+References: <20160912100728.GA4810@toblerone>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Mon, Sep 12, 2016 at 03:37:37PM +0530, Rehas Sachdeva wrote:
+
+
+On Mon, 12 Sep 2016, Rehas Sachdeva wrote:
+
 > This patch fixes the checkpatch.pl warning:
 > Blank lines aren't necessary before a close brace '}'
-> 
+>
 > Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 > ---
 >  drivers/staging/emxx_udc/emxx_udc.c | 1 -
 >  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+> index f4d9000..f6233ec 100644
+> --- a/drivers/staging/emxx_udc/emxx_udc.c
+> +++ b/drivers/staging/emxx_udc/emxx_udc.c
+> @@ -131,7 +131,6 @@ static void _nbu2ss_dump_register(struct nbu2ss_udc *udc)
+>  		reg_data =  _nbu2ss_readl(
+>  			(u32 *)IO_ADDRESS(USB_BASE_ADDRESS + i + 12));
+>  		dev_dbg(&udc->dev, " %08x\n", (int)reg_data);
+> -
+>  	}
+>
+>  	spin_lock(&udc->lock);
 
-Nice job, but you forgot to also cc: the maintainer of this file.
+This looks like a good start :)
 
-Oh, that's me, hm, nevermind...
+For this round, however, you should also submit the patch to the
+maintainers of the file, as described here:
 
-now applied, nice work as the first submitted patch of the application
-process, and also the first accepted one into the kernel tree :)
+https://kernelnewbies.org/FirstKernelPatch#submit_a_patch
 
-greg k-h
+The tutorial was just updated with this information yesterday, so you may
+have missed it, if you got started before.
+
+julia
 
