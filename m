@@ -1,95 +1,99 @@
 X-GM-THRID: 6329492802868609024
-X-Received: by 10.66.226.10 with SMTP id ro10mr788829pac.29.1473776509951;
-        Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.54.199 with SMTP id l190ls539388itl.2.gmail; Tue, 13 Sep
- 2016 07:21:49 -0700 (PDT)
-X-Received: by 10.107.169.66 with SMTP id s63mr845321ioe.16.1473776509118;
-        Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
-Received: by 10.55.11.136 with SMTP id 130msqkl;
-        Mon, 12 Sep 2016 22:19:01 -0700 (PDT)
-X-Received: by 10.25.152.10 with SMTP id a10mr3235650lfe.4.1473743941405;
-        Mon, 12 Sep 2016 22:19:01 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 185si265364wmr.2.2016.09.12.22.19.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 22:19:01 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,326,1470693600"; 
-   d="scan'208";a="192920259"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 07:18:35 +0200
-Date: Tue, 13 Sep 2016 07:18:34 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Namrata A Shettar <namrataashettar@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH] staging: comedi: comedi_pcmcia:
- Fixes multiple blank lines issue
-In-Reply-To: <617c0bbf-3f68-4fd4-b435-b73e7665b5bb@googlegroups.com>
-Message-ID: <alpine.DEB.2.10.1609130718190.3330@hadrien>
-References: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com> <617c0bbf-3f68-4fd4-b435-b73e7665b5bb@googlegroups.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Date: Mon, 12 Sep 2016 12:08:30 -0700 (PDT)
+From: Namrata A Shettar <namrataashettar@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <617c0bbf-3f68-4fd4-b435-b73e7665b5bb@googlegroups.com>
+In-Reply-To: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com>
+References: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: comedi: comedi_pcmcia: Fixes multiple blank
+ lines issue
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1078738766-1473743915=:3330"
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_973_1862120202.1473707310463"
+X-Google-Token: EK76274FEbXW7wXMldI0
+X-Google-IP: 103.225.101.21
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+------=_Part_973_1862120202.1473707310463
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_974_2037643998.1473707310463"
 
---8323329-1078738766-1473743915=:3330
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+------=_Part_974_2037643998.1473707310463
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-On Mon, 12 Sep 2016, Namrata A Shettar wrote:
+Yes,a mistake in naming the issue, an uneccessary blank line would have 
+been apt.
+Sorry,for the inconvenience,
+Namrata
 
-> Yes,a mistake in naming the issue, an uneccessary blank line would have been
-> apt.
-> Sorry,for the inconvenience,
+On Monday, September 12, 2016 at 10:34:43 PM UTC+5:30, Namrata A Shettar 
+wrote:
+>
+> This patch fixes the checkpatch.pl issue:
+> -Please don't use multiple blank lines
+>
+> Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+> ---
+>  drivers/staging/comedi/comedi_pcmcia.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/comedi/comedi_pcmcia.c 
+> b/drivers/staging/comedi/comedi_pcmcia.c
+> index d7072a5..ec8a0ad 100644
+> --- a/drivers/staging/comedi/comedi_pcmcia.c
+> +++ b/drivers/staging/comedi/comedi_pcmcia.c
+> @@ -18,7 +18,6 @@
+>
+>  #include <linux/module.h>
+>  #include <linux/kernel.h>
+> -
+>  #include "comedi_pcmcia.h"
+>
+>  /**
+>
 
-You should send a v2 with the correction.
+------=_Part_974_2037643998.1473707310463
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-julia
+<div dir=3D"ltr">Yes,a mistake in naming the issue, an uneccessary blank li=
+ne would have been apt.<br>Sorry,for the inconvenience,<br>Namrata<br><br>O=
+n Monday, September 12, 2016 at 10:34:43 PM UTC+5:30, Namrata A Shettar wro=
+te:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;=
+border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr">This patch=
+ fixes the <a href=3D"http://checkpatch.pl" rel=3D"nofollow" target=3D"_bla=
+nk" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%=
+2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72=
+L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&#39;http://www.goog=
+le.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x=
+3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">checkpatch.pl</a> i=
+ssue:<br>
+-Please don&#39;t use multiple blank lines<br>
+<br>
+Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashettar@gmai=
+l.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;m=
+ailto:namrataashettar@gmail.com&#39;;return true;" onclick=3D"this.href=3D&=
+#39;mailto:namrataashettar@gmail.com&#39;;return true;">namrataashettar@gma=
+il.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/comedi/<wbr>comedi_pcmcia.c | 1 -<br>
+=C2=A01 file changed, 1 deletion(-)<br>
+<br>
+diff --git a/drivers/staging/comedi/<wbr>comedi_pcmcia.c b/drivers/staging/=
+comedi/<wbr>comedi_pcmcia.c<br>
+index d7072a5..ec8a0ad 100644<br>
+--- a/drivers/staging/comedi/<wbr>comedi_pcmcia.c<br>
++++ b/drivers/staging/comedi/<wbr>comedi_pcmcia.c<br>
+@@ -18,7 +18,6 @@<br>
+<br>
+=C2=A0#include &lt;linux/module.h&gt;<br>
+=C2=A0#include &lt;linux/kernel.h&gt;<br>
+-<br>
+=C2=A0#include &quot;comedi_pcmcia.h&quot;<br>
+<br>
+=C2=A0/**</div>
+</blockquote></div>
+------=_Part_974_2037643998.1473707310463--
 
-> Namrata
->
-> On Monday, September 12, 2016 at 10:34:43 PM UTC+5:30, Namrata A Shettar
-> wrote:
->       This patch fixes the checkpatch.pl issue:
->       -Please don't use multiple blank lines
->
->       Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
->       ---
->        drivers/staging/comedi/comedi_pcmcia.c | 1 -
->        1 file changed, 1 deletion(-)
->
->       diff --git a/drivers/staging/comedi/comedi_pcmcia.c
->       b/drivers/staging/comedi/comedi_pcmcia.c
->       index d7072a5..ec8a0ad 100644
->       --- a/drivers/staging/comedi/comedi_pcmcia.c
->       +++ b/drivers/staging/comedi/comedi_pcmcia.c
->       @@ -18,7 +18,6 @@
->
->        #include <linux/module.h>
->        #include <linux/kernel.h>
->       -
->        #include "comedi_pcmcia.h"
->
->        /**
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/617c0bbf-3f68-4fd4-b435-
-> b73e7665b5bb%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-1078738766-1473743915=:3330--
+------=_Part_973_1862120202.1473707310463--
 
