@@ -1,108 +1,278 @@
-X-GM-THRID: 6331749364355039232
-X-Received: by 10.200.51.76 with SMTP id u12mr3187552qta.63.1474225279974;
-        Sun, 18 Sep 2016 12:01:19 -0700 (PDT)
+X-GM-THRID: 6329491627472584704
+X-Received: by 10.157.56.142 with SMTP id p14mr20472312otc.4.1473776510310;
+        Tue, 13 Sep 2016 07:21:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.4.81 with SMTP id 75ls8889666otc.6.gmail; Sun, 18 Sep 2016
- 12:01:19 -0700 (PDT)
-X-Received: by 10.237.45.195 with SMTP id i61mr2850150qtd.20.1474225279640;
-        Sun, 18 Sep 2016 12:01:19 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id z4si4097665pam.0.2016.09.18.12.01.19
+Received: by 10.107.158.193 with SMTP id h184ls175765ioe.33.gmail; Tue, 13 Sep
+ 2016 07:21:49 -0700 (PDT)
+X-Received: by 10.66.226.10 with SMTP id ro10mr788769pac.29.1473776509138;
+        Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
+Received: by 10.55.67.132 with SMTP id q126msqka;
+        Mon, 12 Sep 2016 10:34:47 -0700 (PDT)
+X-Received: by 10.25.43.76 with SMTP id r73mr2082615lfr.9.1473701687597;
+        Mon, 12 Sep 2016 10:34:47 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b1si97761wmg.0.2016.09.12.10.34.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 12:01:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Mon, 12 Sep 2016 10:34:47 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id my20so2910124pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 12:01:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=nAh5LrrRA9TjgU0DkcV2UCkLIl8P3Fvj/a/J9rs7I0c=;
-        b=TZG6RO/xfXb+fC0XhD6XBCxaj1hWbaH0I1NeBjSSOaLsT+5LEZg3Jsv+OdN2MuMQrC
-         Csou462liA5t1PkBeCc+W2boxm13hMTP53W+pKs6eqtMxZgV+flivOFpDQqHXT9autKw
-         F9LNUxDAYW9DyfvrFi2yNfH4pm4udR743I10hiqaLlyFqH7/VvIbG3MCghm5iKFEMVJe
-         1ZYJDo+7AQy1y62jAx1Y4d9u8E5s/lcltdhgIhLKYLgaM+rvTZhVd3vYPJTPZ86dmydc
-         T96QNyFXYhl3TJ9EAVRhaOE+H+hTMOFNljhoVWwNKkWh05fb14ap1Jnq7YMfNmd7LuqW
-         jCng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=nAh5LrrRA9TjgU0DkcV2UCkLIl8P3Fvj/a/J9rs7I0c=;
-        b=LZGuvU06CXkBjWrtxyYEY5Rm9Um7LUh+hiqFSF3REk3MOiwF0fBKI5fDw786xeDH9a
-         7OmRrF8QJtHyFSnvM5xuj35ZPsTniy1wIHB4RA/Iu/hFBeZLCu4hU/nlUF0tdpVcI1vD
-         0BMDg9IQNY4Cpu/03j3xweKOmFAb4jhlWnk1yxy/ptK9v/iqI81FSb+e7vjrv96bClKn
-         iWJJHyCq+AlqzaWG9dKx1ROlKNWw0F7uaoI0wSnu5O8SvAq9G8AKmbzZ4cX6HJbpKBGO
-         Iul3fvFUCuGaqVkaPA/qi9znsYkk9HrIx8SA2dP52WbE7cmU2/U84uoM0Hl0MK1n6bcY
-         E2hw==
-X-Gm-Message-State: AE9vXwP6QlKQV6f6WQEoRHpblzAoDP/BD8m0kZA6jDOHSWQWDXYfe60o3Exgw8eZROMruQ==
-X-Received: by 10.66.134.51 with SMTP id ph19mr41152394pab.30.1474225279244;
-        Sun, 18 Sep 2016 12:01:19 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([182.77.93.227])
-        by smtp.gmail.com with ESMTPSA id f124sm238571pfg.7.2016.09.18.12.01.17
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 12:01:18 -0700 (PDT)
-Date: Mon, 19 Sep 2016 00:31:12 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: i4l: Remove unused variable
-Message-ID: <20160918190112.GA4845@sandhya>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,323,1470693600"; 
+   d="scan'208";a="192890113"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 19:34:47 +0200
+Date: Mon, 12 Sep 2016 19:34:45 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: shaily15297@yahoo.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: remove unnecessary
+ spaces and tabs
+In-Reply-To: <d7d78534-5a89-4684-ac4a-7fe1cb561f57@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1609121932450.29099@hadrien>
+References: <1473699430-23987-1-git-send-email-shaily15297@yahoo.com> <alpine.DEB.2.10.1609121902280.29099@hadrien> <d7d78534-5a89-4684-ac4a-7fe1cb561f57@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1798740300-1473701686=:29099"
 
-Remove unused variable.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-This change is made by below coccinelle script:
-@@
-type T;
-identifier i;
-constant C;
-@@
-(
-extern T i;
-|
-- T i;
-  <+... when != i
-- i = C;
-  ...+>
-)
+--8323329-1798740300-1473701686=:29099
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/i4l/act2000/act2000_isa.c |    2 --
- 1 files changed, 0 insertions(+), 2 deletions(-)
+On Mon, 12 Sep 2016, shaily15297 via outreachy-kernel wrote:
 
-diff --git a/drivers/staging/i4l/act2000/act2000_isa.c b/drivers/staging/i4l/act2000/act2000_isa.c
-index 808bb3b..ad7a039 100644
---- a/drivers/staging/i4l/act2000/act2000_isa.c
-+++ b/drivers/staging/i4l/act2000/act2000_isa.c
-@@ -399,7 +399,6 @@ act2000_isa_download(act2000_card *card, act2000_ddef __user *cb)
- 	unsigned int length;
- 	int l;
- 	int c;
--	long timeout;
- 	u_char *b;
- 	u_char __user *p;
- 	u_char *buf;
-@@ -417,7 +416,6 @@ act2000_isa_download(act2000_card *card, act2000_ddef __user *cb)
- 	buf = kmalloc(1024, GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
--	timeout = 0;
- 	while (length) {
- 		l = (length > 1024) ? 1024 : length;
- 		c = 0;
--- 
-1.7.1
+> Sorry about that.
+> I've put the raw email up here: https://paste.fedoraproject.org/427297/ ,
+> and the From line (#38) and Signed-off-by line (#50) look the same.
+> outreachy-kernel only appears in the To line.
+>
+>
+> Can you please help me figure out where I'm going wrong?
 
+
+This message also has:
+
+From: shaily15297 via outreachy-kernel <outreachy-kernel@googlegroups.com>
+Reply-To: shaily15297@yahoo.com
+
+The From line and the Signed off by should have a real email address,
+without ...  You have "shail...@yahoo.com"
+
+julia
+
+>
+> On Monday, 12 September 2016 22:33:15 UTC+5:30, Julia Lawall wrote:
+>       On Mon, 12 Sep 2016, 'Shaily Sangwan' via outreachy-kernel
+>       wrote:
+>
+>       This doesn't look right.  Your From line is:
+>
+>       From: 'Shaily Sangwan' via outreachy-kernel
+>           <outreach...@googlegroups.com>
+>       Reply-To: Shaily Sangwan <shail...@yahoo.com>
+>
+>       It should be just
+>
+>       From: Shaily Sangwan <shail...@yahoo.com>
+>
+>       ie, just like in your sign off.
+>
+>       julia
+>
+>
+>       > This patch fixes the following checkpatch.pl warnings:
+>       > statements should start on a tabstop
+>       > suspect code indent for conditional statements (16, 32)
+>       >
+>       > Signed-off-by: Shaily Sangwan <shail...@yahoo.com>
+>       > ---
+>       >  drivers/staging/rtl8712/rtl8712_led.c | 26
+>       +++++++++++++-------------
+>       >  1 file changed, 13 insertions(+), 13 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/rtl8712/rtl8712_led.c
+>       b/drivers/staging/rtl8712/rtl8712_led.c
+>       > index 76d0535..399b9d8 100644
+>       > --- a/drivers/staging/rtl8712/rtl8712_led.c
+>       > +++ b/drivers/staging/rtl8712/rtl8712_led.c
+>       > @@ -355,7 +355,7 @@ static void SwLedBlink1(struct LED_871x
+>       *pLed)
+>       >                          }
+>       >                          pLed->bLedScanBlinkInProgress =
+>       false;
+>       >                  } else {
+>       > -                         if (pLed->bLedOn)
+>       > +                        if (pLed->bLedOn)
+>       >                                  pLed->BlinkingLedState =
+>       LED_OFF;
+>       >                          else
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       > @@ -390,7 +390,7 @@ static void SwLedBlink1(struct LED_871x
+>       *pLed)
+>       >                          pLed->BlinkTimes = 0;
+>       >                          pLed->bLedBlinkInProgress = false;
+>       >                  } else {
+>       > -                         if (pLed->bLedOn)
+>       > +                        if (pLed->bLedOn)
+>       >                                  pLed->BlinkingLedState =
+>       LED_OFF;
+>       >                          else
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       > @@ -460,7 +460,7 @@ static void SwLedBlink2(struct LED_871x
+>       *pLed)
+>       >                          }
+>       >                          pLed->bLedScanBlinkInProgress =
+>       false;
+>       >                  } else {
+>       > -                         if (pLed->bLedOn)
+>       > +                        if (pLed->bLedOn)
+>       >                                  pLed->BlinkingLedState =
+>       LED_OFF;
+>       >                          else
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       > @@ -667,7 +667,7 @@ static void SwLedBlink4(struct LED_871x
+>       *pLed)
+>       >                                  
+>        msecs_to_jiffies(LED_BLINK_NO_LINK_INTERVAL_ALPHA));
+>       >                          pLed->bLedBlinkInProgress = false;
+>       >                  } else {
+>       > -                         if (pLed->bLedOn)
+>       > +                        if (pLed->bLedOn)
+>       >                                  pLed->BlinkingLedState =
+>       LED_OFF;
+>       >                          else
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       > @@ -764,7 +764,7 @@ static void SwLedBlink5(struct LED_871x
+>       *pLed)
+>       >                                          
+>        msecs_to_jiffies(LED_BLINK_FASTER_INTERVAL_ALPHA));
+>       >                          pLed->bLedBlinkInProgress = false;
+>       >                  } else {
+>       > -                         if (pLed->bLedOn)
+>       > +                        if (pLed->bLedOn)
+>       >                                  pLed->BlinkingLedState =
+>       LED_OFF;
+>       >                          else
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       > @@ -946,7 +946,7 @@ static void SwLedControlMode1(struct
+>       _adapter *padapter,
+>       >                  if (psitesurveyctrl->traffic_busy &&
+>       >                      check_fwstate(pmlmepriv, _FW_LINKED))
+>       >                          ; /* dummy branch */
+>       > -                 else if (!pLed->bLedScanBlinkInProgress) {
+>       > +                else if (!pLed->bLedScanBlinkInProgress) {
+>       >                          if (IS_LED_WPS_BLINKING(pLed))
+>       >                                  return;
+>       >                          if (pLed->bLedNoLinkBlinkInProgress)
+>       {
+>       > @@ -970,7 +970,7 @@ static void SwLedControlMode1(struct
+>       _adapter *padapter,
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       >                          mod_timer(&pLed->BlinkTimer, jiffies
+>       +
+>       >                                  
+>        msecs_to_jiffies(LED_BLINK_SCAN_INTERVAL_ALPHA));
+>       > -                 }
+>       > +                }
+>       >                  break;
+>       >          case LED_CTL_TX:
+>       >          case LED_CTL_RX:
+>       > @@ -1000,7 +1000,7 @@ static void SwLedControlMode1(struct
+>       _adapter *padapter,
+>       >
+>       >          case LED_CTL_START_WPS: /*wait until xinpin finish */
+>       >          case LED_CTL_START_WPS_BOTTON:
+>       > -                 if (!pLed->bLedWPSBlinkInProgress) {
+>       > +                if (!pLed->bLedWPSBlinkInProgress) {
+>       >                          if (pLed->bLedNoLinkBlinkInProgress)
+>       {
+>       >                                  del_timer(&pLed->BlinkTimer);
+>       >
+>                                        pLed->bLedNoLinkBlinkInProgress
+>       = false;
+>       > @@ -1113,9 +1113,9 @@ static void SwLedControlMode2(struct
+>       _adapter *padapter,
+>       >
+>       >          switch (LedAction) {
+>       >          case LED_CTL_SITE_SURVEY:
+>       > -                 if (pmlmepriv->sitesurveyctrl.traffic_busy)
+>       > +                if (pmlmepriv->sitesurveyctrl.traffic_busy)
+>       >                          ; /* dummy branch */
+>       > -                 else if (!pLed->bLedScanBlinkInProgress) {
+>       > +                else if (!pLed->bLedScanBlinkInProgress) {
+>       >                          if (IS_LED_WPS_BLINKING(pLed))
+>       >                                  return;
+>       >
+>       > @@ -1132,7 +1132,7 @@ static void SwLedControlMode2(struct
+>       _adapter *padapter,
+>       >                                  pLed->BlinkingLedState =
+>       LED_ON;
+>       >                          mod_timer(&pLed->BlinkTimer, jiffies
+>       +
+>       >                                  
+>        msecs_to_jiffies(LED_BLINK_SCAN_INTERVAL_ALPHA));
+>       > -                 }
+>       > +                }
+>       >                  break;
+>       >
+>       >          case LED_CTL_TX:
+>       > @@ -1186,7 +1186,7 @@ static void SwLedControlMode2(struct
+>       _adapter *padapter,
+>       >                          pLed->BlinkingLedState = LED_ON;
+>       >                          mod_timer(&pLed->BlinkTimer,
+>       >                                    jiffies +
+>       msecs_to_jiffies(0));
+>       > -                 }
+>       > +                }
+>       >                  break;
+>       >
+>       >          case LED_CTL_STOP_WPS:
+>       > @@ -1734,7 +1734,7 @@ static void SwLedControlMode6(struct
+>       _adapter *padapter,
+>       >          case LED_CTL_LINK:        /*solid blue*/
+>       >          case LED_CTL_SITE_SURVEY:
+>       >                  if (IS_LED_WPS_BLINKING(pLed))
+>       > -                                return;
+>       > +                        return;
+>       >                  pLed->CurrLedState = LED_ON;
+>       >                  pLed->BlinkingLedState = LED_ON;
+>       >                  pLed->bLedBlinkInProgress = false;
+>       > --
+>       > 2.7.4
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an email to outreachy-kern...@googlegroups.com.
+>       > To post to this group, send email to
+>       outreach...@googlegroups.com.
+>       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1473699430-23987-1-git-s
+>       end-email-shaily15297%40yahoo.com.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/d7d78534-5a89-4684-ac4a-
+> 7fe1cb561f57%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1798740300-1473701686=:29099--
 
