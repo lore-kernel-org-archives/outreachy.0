@@ -1,118 +1,138 @@
 X-GM-THRID: 6329478247155236864
-X-Received: by 10.36.204.68 with SMTP id x65mr821784itf.3.1473776510310;
-        Tue, 13 Sep 2016 07:21:50 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.20.142 with SMTP id 136ls170250iou.26.gmail; Tue, 13 Sep
- 2016 07:21:49 -0700 (PDT)
-X-Received: by 10.66.188.137 with SMTP id ga9mr811317pac.23.1473776509137;
-        Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
-Received: by 10.55.9.211 with SMTP id 202msqkj;
-        Mon, 12 Sep 2016 09:50:31 -0700 (PDT)
-X-Received: by 10.28.206.138 with SMTP id e132mr1934358wmg.5.1473699031311;
-        Mon, 12 Sep 2016 09:50:31 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id v132si81110wmf.1.2016.09.12.09.50.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 09:50:31 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,323,1470693600"; 
-   d="scan'208";a="236164058"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 18:50:31 +0200
-Date: Mon, 12 Sep 2016 18:50:30 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Namrata A Shettar <namrataashettar@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH] staging: comedi: comedidev: Fixes
- CamelCase issue
-In-Reply-To: <aaed82ca-fe9f-4682-952b-d0d8d1c8317d@googlegroups.com>
-Message-ID: <alpine.DEB.2.10.1609121850000.29099@hadrien>
-References: <CAFrQyDEvVL_XEL3DtCn9npXa8H+Jxaixv7nVEzY2Sx8ROCD+RA@mail.gmail.com> <aaed82ca-fe9f-4682-952b-d0d8d1c8317d@googlegroups.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Date: Mon, 12 Sep 2016 11:38:24 -0700 (PDT)
+From: Namrata A Shettar <namrataashettar@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <0a02f556-58fa-409c-b5bc-445cdbbee939@googlegroups.com>
+In-Reply-To: <CAFrQyDEvVL_XEL3DtCn9npXa8H+Jxaixv7nVEzY2Sx8ROCD+RA@mail.gmail.com>
+References: <CAFrQyDEvVL_XEL3DtCn9npXa8H+Jxaixv7nVEzY2Sx8ROCD+RA@mail.gmail.com>
+Subject: Re: [PATCH] staging: comedi: comedidev: Fixes CamelCase issue
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-329616624-1473699030=:29099"
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_18730_945995062.1473705504626"
+X-Google-Token: EKDs274Fxqtd6uJZfpI0
+X-Google-IP: 103.225.101.21
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+------=_Part_18730_945995062.1473705504626
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_18731_1487847001.1473705504626"
 
---8323329-329616624-1473699030=:29099
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+------=_Part_18731_1487847001.1473705504626
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
+Yes,will keep that in mind the next time I am making such a change.
 
+Thanks,
+Namrata
 
-On Mon, 12 Sep 2016, Namrata A Shettar wrote:
-
->  It did compile when I tried.
-
-OK, it's a macro.  It is possible that the macro is not used in the code
-that gets compiled.
-
-julia
-
->  Thanks for pointing that out. Also, mA stands for the physical unit of
-> current milli-Amperes.I realize that it's not a good idea to change the
-> notation for a physical unit.
->  Sorry for that,will be more careful the next time :)
+On Monday, September 12, 2016 at 9:38:14 PM UTC+5:30, Namrata A Shettar 
+wrote:
 >
-> On Monday, September 12, 2016 at 9:38:14 PM UTC+5:30, Namrata A Shettar
-> wrote:
->       This patch fixes the checkpatch.pl issue:
->       -Avoid CamelCase
+> This patch fixes the checkpatch.pl issue:
+> -Avoid CamelCase
 >
->       Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
->       ---
->        drivers/staging/comedi/comedidev.h | 8 ++++----
->        1 file changed, 4 insertions(+), 4 deletions(-)
+> Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+> ---
+>  drivers/staging/comedi/comedidev.h | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 >
->       diff --git a/drivers/staging/comedi/comedidev.h
->       b/drivers/staging/comedi/comedidev.h
->       index dcb6376..9d941b1 100644
->       --- a/drivers/staging/comedi/comedidev.h
->       +++ b/drivers/staging/comedi/comedidev.h
->       @@ -582,7 +582,7 @@ int comedi_check_chanlist(struct
->       comedi_subdevice *s,
+> diff --git a/drivers/staging/comedi/comedidev.h 
+> b/drivers/staging/comedi/comedidev.h
+> index dcb6376..9d941b1 100644
+> --- a/drivers/staging/comedi/comedidev.h
+> +++ b/drivers/staging/comedi/comedidev.h
+> @@ -582,7 +582,7 @@ int comedi_check_chanlist(struct comedi_subdevice *s,
 >
->        #define RANGE(a, b)            {(a) * 1e6, (b) * 1e6, 0}
->        #define RANGE_ext(a, b)                {(a) * 1e6, (b) * 1e6,
->       RF_EXTERNAL}
->       -#define RANGE_mA(a, b)         {(a) * 1e6, (b) * 1e6, UNIT_mA}
->       +#define RANGE_ma(a, b)         {(a) * 1e6, (b) * 1e6, UNIT_ma}
->        #define RANGE_unitless(a, b)   {(a) * 1e6, (b) * 1e6, 0}
->        #define BIP_RANGE(a)           {-(a) * 1e6, (a) * 1e6, 0}
->        #define UNI_RANGE(a)           {0, (a) * 1e6, 0}
->       @@ -593,9 +593,9 @@ extern const struct comedi_lrange
->       range_bipolar2_5;
->        extern const struct comedi_lrange range_unipolar10;
->        extern const struct comedi_lrange range_unipolar5;
->        extern const struct comedi_lrange range_unipolar2_5;
->       -extern const struct comedi_lrange range_0_20mA;
->       -extern const struct comedi_lrange range_4_20mA;
->       -extern const struct comedi_lrange range_0_32mA;
->       +extern const struct comedi_lrange range_0_20ma;
->       +extern const struct comedi_lrange range_4_20ma;
->       +extern const struct comedi_lrange range_0_32ma;
->        extern const struct comedi_lrange range_unknown;
+>  #define RANGE(a, b)            {(a) * 1e6, (b) * 1e6, 0}
+>  #define RANGE_ext(a, b)                {(a) * 1e6, (b) * 1e6, RF_EXTERNAL}
+> -#define RANGE_mA(a, b)         {(a) * 1e6, (b) * 1e6, UNIT_mA}
+> +#define RANGE_ma(a, b)         {(a) * 1e6, (b) * 1e6, UNIT_ma}
+>  #define RANGE_unitless(a, b)   {(a) * 1e6, (b) * 1e6, 0}
+>  #define BIP_RANGE(a)           {-(a) * 1e6, (a) * 1e6, 0}
+>  #define UNI_RANGE(a)           {0, (a) * 1e6, 0}
+> @@ -593,9 +593,9 @@ extern const struct comedi_lrange range_bipolar2_5;
+>  extern const struct comedi_lrange range_unipolar10;
+>  extern const struct comedi_lrange range_unipolar5;
+>  extern const struct comedi_lrange range_unipolar2_5;
+> -extern const struct comedi_lrange range_0_20mA;
+> -extern const struct comedi_lrange range_4_20mA;
+> -extern const struct comedi_lrange range_0_32mA;
+> +extern const struct comedi_lrange range_0_20ma;
+> +extern const struct comedi_lrange range_4_20ma;
+> +extern const struct comedi_lrange range_0_32ma;
+>  extern const struct comedi_lrange range_unknown;
 >
->        #define range_digital          range_unipolar5
->       --
->       2.7.4
->
+>  #define range_digital          range_unipolar5
 > --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/aaed82ca-fe9f-4682-952b-
-> d0d8d1c8317d%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
+> 2.7.4
 >
+
+------=_Part_18731_1487847001.1473705504626
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Yes,will keep that in mind the next time I am making such =
+a change.<br><br>Thanks,<br>Namrata<br><br>On Monday, September 12, 2016 at=
+ 9:38:14 PM UTC+5:30, Namrata A Shettar wrote:<blockquote class=3D"gmail_qu=
+ote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padd=
+ing-left: 1ex;"><div dir=3D"ltr">This patch fixes the <a href=3D"http://che=
+ckpatch.pl" rel=3D"nofollow" target=3D"_blank" onmousedown=3D"this.href=3D&=
+#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x2=
+6sntz\x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;" =
+onclick=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fche=
+ckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_=
+mFug&#39;;return true;">checkpatch.pl</a> issue:<br>
+-Avoid CamelCase<br>
+<br>
+Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashettar@gmai=
+l.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;m=
+ailto:namrataashettar@gmail.com&#39;;return true;" onclick=3D"this.href=3D&=
+#39;mailto:namrataashettar@gmail.com&#39;;return true;">namrataashettar@gma=
+il.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/comedi/<wbr>comedidev.h | 8 ++++----<br>
+=C2=A01 file changed, 4 insertions(+), 4 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/comedi/<wbr>comedidev.h b/drivers/staging/come=
+di/<wbr>comedidev.h<br>
+index dcb6376..9d941b1 100644<br>
+--- a/drivers/staging/comedi/<wbr>comedidev.h<br>
++++ b/drivers/staging/comedi/<wbr>comedidev.h<br>
+@@ -582,7 +582,7 @@ int comedi_check_chanlist(struct comedi_subdevice *s,<b=
+r>
+<br>
+=C2=A0#define RANGE(a, b)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 {(a) * 1=
+e6, (b) * 1e6, 0}<br>
+=C2=A0#define RANGE_ext(a, b)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 {(a) * 1e6, (b) * 1e6, RF_EXTERNAL}<br>
+-#define RANGE_mA(a, b)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{(a) * 1e6, (b) * =
+1e6, UNIT_mA}<br>
++#define RANGE_ma(a, b)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{(a) * 1e6, (b) * =
+1e6, UNIT_ma}<br>
+=C2=A0#define RANGE_unitless(a, b)=C2=A0 =C2=A0{(a) * 1e6, (b) * 1e6, 0}<br=
 >
---8323329-329616624-1473699030=:29099--
+=C2=A0#define BIP_RANGE(a)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{-(a) * =
+1e6, (a) * 1e6, 0}<br>
+=C2=A0#define UNI_RANGE(a)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{0, (a) =
+* 1e6, 0}<br>
+@@ -593,9 +593,9 @@ extern const struct comedi_lrange range_bipolar2_5;<br>
+=C2=A0extern const struct comedi_lrange range_unipolar10;<br>
+=C2=A0extern const struct comedi_lrange range_unipolar5;<br>
+=C2=A0extern const struct comedi_lrange range_unipolar2_5;<br>
+-extern const struct comedi_lrange range_0_20mA;<br>
+-extern const struct comedi_lrange range_4_20mA;<br>
+-extern const struct comedi_lrange range_0_32mA;<br>
++extern const struct comedi_lrange range_0_20ma;<br>
++extern const struct comedi_lrange range_4_20ma;<br>
++extern const struct comedi_lrange range_0_32ma;<br>
+=C2=A0extern const struct comedi_lrange range_unknown;<br>
+<br>
+=C2=A0#define range_digital=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 range_unipola=
+r5<br>
+--<br>
+2.7.4</div>
+</blockquote></div>
+------=_Part_18731_1487847001.1473705504626--
+
+------=_Part_18730_945995062.1473705504626--
 
