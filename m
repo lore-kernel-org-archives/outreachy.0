@@ -1,80 +1,109 @@
-X-GM-THRID: 6341806933314371584
-X-Received: by 10.66.158.102 with SMTP id wt6mr3751472pab.65.1476566990725;
-        Sat, 15 Oct 2016 14:29:50 -0700 (PDT)
+X-GM-THRID: 6329516418404450304
+X-Received: by 10.46.1.75 with SMTP id 72mr2070218ljb.10.1473714532346;
+        Mon, 12 Sep 2016 14:08:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.34.166 with SMTP id y35ls11321905ota.26.gmail; Sat, 15 Oct
- 2016 14:29:50 -0700 (PDT)
-X-Received: by 10.31.169.22 with SMTP id s22mr4797502vke.34.1476566990318;
-        Sat, 15 Oct 2016 14:29:50 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x233.google.com (mail-pf0-x233.google.com. [2607:f8b0:400e:c00::233])
-        by gmr-mx.google.com with ESMTPS id z76si3762793pff.1.2016.10.15.14.29.50
+Received: by 10.25.213.134 with SMTP id m128ls8705lfg.35.gmail; Mon, 12 Sep
+ 2016 14:08:51 -0700 (PDT)
+X-Received: by 10.25.78.12 with SMTP id c12mr2983384lfb.1.1473714531502;
+        Mon, 12 Sep 2016 14:08:51 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id b1si170136wmg.0.2016.09.12.14.08.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 14:29:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) client-ip=2607:f8b0:400e:c00::233;
+        Mon, 12 Sep 2016 14:08:51 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::233 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x233.google.com with SMTP id e6so63528941pfk.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 14:29:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HFGp1JLA5iHGZSAlyuLaIzcqmZZflvlBfpAG4ryZyAI=;
-        b=QQHz0NU9ISeTR3Jl8KbSUYodo83/p55KiSmaiejkzREIJStYZJ8pbWyhikupY0Bm3w
-         TVgbIkYMY0qjXmOmom583nT524T/zxN+M6ig8yfM5tW9MA0d7hTDYhUAQNMT8XwAt5er
-         0T+X1ejtf5w/DJ4H5YjpoVUhK5ETv4vF8ZtNZX5TKLmPq8/S1yk2uIgAMYFSzDOe26Q7
-         vxr0juk08YjLGFFa8lW8zW88QGhgsEsM5I9Lchm80OiGjhgL8kshe4s8rNFF++bZxUkv
-         CVT81nA4Hu0N+DbmqeMwG39BtuqjBq3Mhz+Ke/NGSqnEG5hz8y9QW76ANhDDtrTLYdy+
-         YReQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HFGp1JLA5iHGZSAlyuLaIzcqmZZflvlBfpAG4ryZyAI=;
-        b=hkR82I9tC4u/PQCX0F1uWXzS8BgAXAKNfAwB/2NA1uPDdAeNLjRYbozV7Ehf6d8ipR
-         GzuQeiYRmCTdMYob1cj5bs0wDZQBSSY+woWx9sJ8Q7PZ3B1mAxtfk+VuNkvJJZGhkiMD
-         Xzg7L+bqi7KxSc9PR3Rj6TwUlO2fEmJn+D+WYaVz5QfwNv9zz0qwuhfsQ917r0aPCJhh
-         Zw44CpUqxl8OOtxyScfX+9mEx/pW/SdqATgtyk2M2NDr9O092fBTdHcyps61hf/9bRxR
-         ozshAmpGzE43uM0v5vSx6ZIrSMfQVn0E/jxRpwj+gw0ykiY/OSPmkwbSlrpI+gh2b4Ps
-         AS9w==
-X-Gm-Message-State: AA6/9RnDVGIZvIx0vtzqXE+QWaz3VnEWGqAetbfaId6neIh22f32jeMUnUfPvz9MpH2GJg==
-X-Received: by 10.98.30.193 with SMTP id e184mr27760998pfe.104.1476566989961;
-        Sat, 15 Oct 2016 14:29:49 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id bh6sm1353854pab.14.2016.10.15.14.29.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 14:29:49 -0700 (PDT)
-Date: Sat, 15 Oct 2016 14:29:47 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: schedule question
-Message-ID: <20161015212946.GB13776@localhost>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,324,1470693600"; 
+   d="scan'208";a="236181448"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 23:08:50 +0200
+Date: Mon, 12 Sep 2016 23:08:50 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    wsa+renesas@sang-engineering.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: ks7010:adjust comment begin
+ & end markers
+In-Reply-To: <20160912183540.12969-1-gs051095@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609122307130.3549@hadrien>
+References: <20160912183540.12969-1-gs051095@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Hello mentors,
+On Tue, 13 Sep 2016, Gargi Sharma wrote:
 
-On the main outreachy page it says that from 10/17-11/8, we should
-continue to contribute to the projects that we've applied for. I know
-that we can keep editing the application up until 11/8. So we really
-have until 11/8 to keep submitting patchsets and tasks, as long as we
-submit an application by the 17th, right?
+> Fixing checkpatch warnings for trailing markers on the same line as the
+> comment.
 
-I haven't sent in my 2
-patchsets yet but I've gotten the 10 necessary patches accepted. Should
-I focus on submitting tasks for my first and second choice projects and
-do the patchsets later? Julia sent out a msg a little while ago saying
-that if we haven't started on the tasks we should do that, and at that
-point I hadn't done my patchsets yet :/ 
+This is going in the right direction, but there are some more needed
+improvements.  First, put a space after each : in the subject line.  One
+is missing after ks7010:.  Second, since you have sent several of these
+patches, there should be eg [PATCH v2] and then a description of what has
+changed since the previous patch under the ---
 
-Thanks,
-Liz
+julia
+
+>
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+>  drivers/staging/ks7010/eap_packet.h | 21 ++++++++++++++-------
+>  1 file changed, 14 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/ks7010/eap_packet.h b/drivers/staging/ks7010/eap_packet.h
+> index 16a392a..ad5dff8 100644
+> --- a/drivers/staging/ks7010/eap_packet.h
+> +++ b/drivers/staging/ks7010/eap_packet.h
+> @@ -51,24 +51,31 @@ enum { EAPOL_KEY_TYPE_RC4 = 1, EAPOL_KEY_TYPE_RSN = 2,
+>  struct ieee802_1x_eapol_key {
+>  	unsigned char type;
+>  	unsigned short key_length;
+> -	/* does not repeat within the life of the keying material used to
+> -	 * encrypt the Key field; 64-bit NTP timestamp MAY be used here */
+> +	/*
+> +	 * does not repeat within the life of the keying material used to
+> +	 * encrypt the Key field; 64-bit NTP timestamp MAY be used here
+> +	 */
+>  	unsigned char replay_counter[IEEE8021X_REPLAY_COUNTER_LEN];
+>  	unsigned char key_iv[IEEE8021X_KEY_IV_LEN];	/* cryptographically random number */
+>  	unsigned char key_index;	/* key flag in the most significant bit:
+>  					 * 0 = broadcast (default key),
+>  					 * 1 = unicast (key mapping key); key index is in the
+> -					 * 7 least significant bits */
+> -	/* HMAC-MD5 message integrity check computed with MS-MPPE-Send-Key as
+> -	 * the key */
+> +					 * 7 least significant bits
+> +					 */
+> +	/*
+> +	 * HMAC-MD5 message integrity check computed with MS-MPPE-Send-Key as
+> +	 * the key
+> +	 */
+>  	unsigned char key_signature[IEEE8021X_KEY_SIGN_LEN];
+>
+> -	/* followed by key: if packet body length = 44 + key length, then the
+> +	/*
+> +	 * followed by key: if packet body length = 44 + key length, then the
+>  	 * key field (of key_length bytes) contains the key in encrypted form;
+>  	 * if packet body length = 44, key field is absent and key_length
+>  	 * represents the number of least significant octets from
+>  	 * MS-MPPE-Send-Key attribute to be used as the keying material;
+> -	 * RC4 key used in encryption = Key-IV + MS-MPPE-Recv-Key */
+> +	 * RC4 key used in encryption = Key-IV + MS-MPPE-Recv-Key
+> +	 */
+>  } __attribute__ ((packed));
+>
+>  #define WPA_NONCE_LEN 32
+> --
+> 2.9.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160912183540.12969-1-gs051095%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
