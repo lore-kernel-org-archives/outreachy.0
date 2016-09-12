@@ -1,90 +1,118 @@
-X-GM-THRID: 6251873454505590784
-X-Received: by 10.194.62.69 with SMTP id w5mr1898700wjr.5.1455627720128;
-        Tue, 16 Feb 2016 05:02:00 -0800 (PST)
+X-GM-THRID: 6329478247155236864
+X-Received: by 10.36.204.68 with SMTP id x65mr821784itf.3.1473776510310;
+        Tue, 13 Sep 2016 07:21:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.41.85 with SMTP id y79ls2585870qgy.63.gmail; Tue, 16 Feb
- 2016 05:01:59 -0800 (PST)
-X-Received: by 10.13.223.140 with SMTP id i134mr20439113ywe.11.1455627719351;
-        Tue, 16 Feb 2016 05:01:59 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
-        by gmr-mx.google.com with ESMTPS id ui7si3918707pab.0.2016.02.16.05.01.59
+Received: by 10.107.20.142 with SMTP id 136ls170250iou.26.gmail; Tue, 13 Sep
+ 2016 07:21:49 -0700 (PDT)
+X-Received: by 10.66.188.137 with SMTP id ga9mr811317pac.23.1473776509137;
+        Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
+Received: by 10.55.9.211 with SMTP id 202msqkj;
+        Mon, 12 Sep 2016 09:50:31 -0700 (PDT)
+X-Received: by 10.28.206.138 with SMTP id e132mr1934358wmg.5.1473699031311;
+        Mon, 12 Sep 2016 09:50:31 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v132si81110wmf.1.2016.09.12.09.50.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 05:01:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
+        Mon, 12 Sep 2016 09:50:31 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x231.google.com with SMTP id x65so105061173pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 05:01:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=/k+cLD6SUOvFiaa8eorVxaH1VUmPaSqnS6zig1/+6FQ=;
-        b=cZAyL/ZCD2XoFlPwS6SPbTSYMsHgyJxITz3PpSraSPcYjd8NtA1uDIaVIHbP0Cka5d
-         kflcYG1eg8jjvI+sX2AYj/oIfVEsYJjQaxbUlMu0iCbkP9emsob+N/CdQEff/yyR9izq
-         HZbrjXV2jYgit+70A2q0ZS5VV1cD1j+fg5F4xn0qR4kw14a8uOiTjo6L5vFt02rxAAN6
-         MYoVsmHGjnPDXFecOmHD6WNENgz/tQZ4bA1PYpy+EaQwEOOknF2I5jDxc8B4gOjcxRSO
-         3m6Zn1sKFsyRRIp3ixuyfsc0PNDTF6TXEHMuPIkE2jZt2Pf9RhhwmsN08KKgDLN2MeXA
-         dipw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=/k+cLD6SUOvFiaa8eorVxaH1VUmPaSqnS6zig1/+6FQ=;
-        b=fHV4F0luHxMA5k3ayixiIpcoMiMYD5uSJLDXszvP38syUly2EJ5cYtI/PdytYxo0WH
-         pD4cJ1n1+ffhLhRtHUFTp0WTErgh2pTaKkUxw1+PyZSPhZ2sBWHPRwl/JrYQi9xT+Ze5
-         438fzovn3qFLZMuw7kR8KKkysNzPG2ifJ9UzCYcCTPqcVuuUcehYFCvxqBeqPNUju4jQ
-         mQ5FraYDOp5dw3H7/tS4YYXDKEhCE/ztgAIC0/lFo+eGdW+AFluZxBGBa7wI/8X+HjQ5
-         SbFM9XZf+aX3H8BKx7qMOTXMWdnH/1Do+fBDAuOuJleYo6I4Le+R+F54NQC3SnJLSkJe
-         frPg==
-X-Gm-Message-State: AG10YORkdA0UFLPneQXshxVIPWaJL97oH+F6Nm+nwQFkUovcmXYTtEjh0pPVGf93v8HK2g==
-X-Received: by 10.98.16.150 with SMTP id 22mr30881645pfq.128.1455627719145;
-        Tue, 16 Feb 2016 05:01:59 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id z67sm45771086pfa.71.2016.02.16.05.01.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 05:01:58 -0800 (PST)
-Date: Tue, 16 Feb 2016 18:31:55 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Declare function as static
-Message-ID: <20160216130155.GA3403@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,323,1470693600"; 
+   d="scan'208";a="236164058"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 18:50:31 +0200
+Date: Mon, 12 Sep 2016 18:50:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: comedi: comedidev: Fixes
+ CamelCase issue
+In-Reply-To: <aaed82ca-fe9f-4682-952b-d0d8d1c8317d@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1609121850000.29099@hadrien>
+References: <CAFrQyDEvVL_XEL3DtCn9npXa8H+Jxaixv7nVEzY2Sx8ROCD+RA@mail.gmail.com> <aaed82ca-fe9f-4682-952b-d0d8d1c8317d@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-329616624-1473699030=:29099"
 
-Declare rtl871x_intf_resume() function static since it is defined and called
-in this file only.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-This fixes the following sparse warning:
-warning: symbol 'rtl871x_intf_resume' was not declared. Should it be static?
+--8323329-329616624-1473699030=:29099
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8712/usb_intf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-index b64f10b..f1d3d70 100644
---- a/drivers/staging/rtl8712/usb_intf.c
-+++ b/drivers/staging/rtl8712/usb_intf.c
-@@ -221,7 +221,7 @@ static int r871x_suspend(struct usb_interface *pusb_intf, pm_message_t state)
- 	return 0;
- }
- 
--void rtl871x_intf_resume(struct _adapter *padapter)
-+static void rtl871x_intf_resume(struct _adapter *padapter)
- {
- 	if (padapter->dvobjpriv.inirp_init)
- 		padapter->dvobjpriv.inirp_init(padapter);
--- 
-1.9.1
 
+On Mon, 12 Sep 2016, Namrata A Shettar wrote:
+
+>  It did compile when I tried.
+
+OK, it's a macro.  It is possible that the macro is not used in the code
+that gets compiled.
+
+julia
+
+>  Thanks for pointing that out. Also, mA stands for the physical unit of
+> current milli-Amperes.I realize that it's not a good idea to change the
+> notation for a physical unit.
+>  Sorry for that,will be more careful the next time :)
+>
+> On Monday, September 12, 2016 at 9:38:14 PM UTC+5:30, Namrata A Shettar
+> wrote:
+>       This patch fixes the checkpatch.pl issue:
+>       -Avoid CamelCase
+>
+>       Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+>       ---
+>        drivers/staging/comedi/comedidev.h | 8 ++++----
+>        1 file changed, 4 insertions(+), 4 deletions(-)
+>
+>       diff --git a/drivers/staging/comedi/comedidev.h
+>       b/drivers/staging/comedi/comedidev.h
+>       index dcb6376..9d941b1 100644
+>       --- a/drivers/staging/comedi/comedidev.h
+>       +++ b/drivers/staging/comedi/comedidev.h
+>       @@ -582,7 +582,7 @@ int comedi_check_chanlist(struct
+>       comedi_subdevice *s,
+>
+>        #define RANGE(a, b)            {(a) * 1e6, (b) * 1e6, 0}
+>        #define RANGE_ext(a, b)                {(a) * 1e6, (b) * 1e6,
+>       RF_EXTERNAL}
+>       -#define RANGE_mA(a, b)         {(a) * 1e6, (b) * 1e6, UNIT_mA}
+>       +#define RANGE_ma(a, b)         {(a) * 1e6, (b) * 1e6, UNIT_ma}
+>        #define RANGE_unitless(a, b)   {(a) * 1e6, (b) * 1e6, 0}
+>        #define BIP_RANGE(a)           {-(a) * 1e6, (a) * 1e6, 0}
+>        #define UNI_RANGE(a)           {0, (a) * 1e6, 0}
+>       @@ -593,9 +593,9 @@ extern const struct comedi_lrange
+>       range_bipolar2_5;
+>        extern const struct comedi_lrange range_unipolar10;
+>        extern const struct comedi_lrange range_unipolar5;
+>        extern const struct comedi_lrange range_unipolar2_5;
+>       -extern const struct comedi_lrange range_0_20mA;
+>       -extern const struct comedi_lrange range_4_20mA;
+>       -extern const struct comedi_lrange range_0_32mA;
+>       +extern const struct comedi_lrange range_0_20ma;
+>       +extern const struct comedi_lrange range_4_20ma;
+>       +extern const struct comedi_lrange range_0_32ma;
+>        extern const struct comedi_lrange range_unknown;
+>
+>        #define range_digital          range_unipolar5
+>       --
+>       2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/aaed82ca-fe9f-4682-952b-
+> d0d8d1c8317d%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-329616624-1473699030=:29099--
 
