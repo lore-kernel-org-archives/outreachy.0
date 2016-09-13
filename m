@@ -1,90 +1,91 @@
-X-GM-THRID: 6261962794533388288
-X-Received: by 10.140.250.69 with SMTP id v66mr19157440qhc.22.1457976827308;
-        Mon, 14 Mar 2016 10:33:47 -0700 (PDT)
+X-GM-THRID: 6329770130111725568
+X-Received: by 10.98.22.149 with SMTP id 143mr157695pfw.10.1473764453143;
+        Tue, 13 Sep 2016 04:00:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.132.83 with SMTP id g80ls2023169iod.90.gmail; Mon, 14 Mar
- 2016 10:33:46 -0700 (PDT)
-X-Received: by 10.50.143.101 with SMTP id sd5mr13939268igb.4.1457976826658;
-        Mon, 14 Mar 2016 10:33:46 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id ui7si3478755pab.0.2016.03.14.10.33.46
+Received: by 10.107.57.11 with SMTP id g11ls66229ioa.20.gmail; Tue, 13 Sep
+ 2016 04:00:52 -0700 (PDT)
+X-Received: by 10.107.46.157 with SMTP id u29mr120392iou.27.1473764452734;
+        Tue, 13 Sep 2016 04:00:52 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id um12si3139396pab.2.2016.09.13.04.00.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Mar 2016 10:33:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 13 Sep 2016 04:00:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id x3so5341943pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 14 Mar 2016 10:33:46 -0700 (PDT)
+Received: by mail-pa0-x244.google.com with SMTP id pp5so9090911pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 04:00:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=9+uYuq+6/kJQhClzxUnE5r/CITtGZlYw3MBrRmbZNfE=;
-        b=BZ5z5t4I8N0MXQgEIZ04ptMmyx7UEU18bOKSt1YRDASJmzQ2YwHZJMCpdYl5uf/GSU
-         akCtcF0ocbafa2OY1gM2BS1onRz1ORITOXcyqWx86ZEyZYT273MujMGVh6Y8Hk9u77I1
-         xv5aLUz98N/ccUoOtbLzYRpCIScw6xpU6w+vbGhEJYQIZyOr8IHypoAq+1YvZ1q3dDb3
-         2chP7sEnUkk6S+VYy/JuMA8eLj1GDtPjYtru3AOpF/80aQ8VxVmg+X5J5GM0OmbMqlr5
-         ia+g/qBq+fjSKOuh2sZMcONBEGpyV59z7NSzAL0NrAeiPs357fqyYHWjOMZqc0QCE+54
-         nsag==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=h5AChEJURP6A0aheoEV1hgTVM9M6XofNotSMFbWxrwM=;
+        b=wREoxnXxAKuWHjqNrZD3n9SlN4U0MXRW2L3EMSYtOUv32+TGvFc8RaRhaiF5yHAmJQ
+         7nVyeWg7UoSnYCeN4TRqekF6pKm7UyV4U9Xpj7w1/2uFsY03vLW2nvVDvCBtiVmyY6bn
+         oCY5+T87SzCmV19Fe9uBrZnel/qCrJfpmriihpRI6mfPGeZSFIsGzp+6r3z44gB0NmqP
+         WCB2tX5RXygMa2JMvbhut1jCzb0Z88h2IEc3W/wSF1SKVE2/LJk1AuOYpAyFdcIoxX4U
+         D6tS8tchY2cT6FKm18r8P+89WWl9fMOQrBnaFaz6OenDh9yS8pD2ObzL7ozFYQpt5H7n
+         1teA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=9+uYuq+6/kJQhClzxUnE5r/CITtGZlYw3MBrRmbZNfE=;
-        b=GQ75ZBU/+sarrH35v/SHicDUj1yrefbd3ywIjtZxYiRG5mR4+i8vYhmnkDYN+1ucLP
-         YOZC8Onem//gsR+66B/D1TAmN+f7jfawB3LTcmaW8x71izIZJHEJoHAuw/5U+sKPN3/L
-         G9KXiEjeen0rKjjrNjOQHfWmbtIGsXErfxvat0dvjqdExMxBhnksZsMKi8b5ppkT+mKD
-         KxKNYw+WN4Gd3Gw9tZ3ABhRWbup43Mgo/C8QjSvjT0/zii1Oh+BGgIX1qaJRSadHbtxg
-         eG+A6pwgvOO1M1QdV5mZQveUu6esenIcgCg43sVQF3y6NQOo+LN+bkxg9XfZh9WZSUgA
-         Jq7g==
-X-Gm-Message-State: AD7BkJJuIVeNuVk+AnJ0UnFwFQzMg8ZLOiBpw1apagYc6/ELKlzx2mRasGsCWAWJTKWekw==
-X-Received: by 10.98.14.207 with SMTP id 76mr31907469pfo.1.1457976826438;
-        Mon, 14 Mar 2016 10:33:46 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from localhost.localdomain (or-67-232-64-227.dhcp.embarqhsd.net. [67.232.64.227])
-        by smtp.gmail.com with ESMTPSA id b25sm33613765pfj.25.2016.03.14.10.33.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 14 Mar 2016 10:33:45 -0700 (PDT)
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/4] staging: wilc1000: use completions in host_interface
-Date: Mon, 14 Mar 2016 10:33:40 -0700
-Message-Id: <cover.1457974909.git.amsfield22@gmail.com>
-X-Mailer: git-send-email 2.1.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=h5AChEJURP6A0aheoEV1hgTVM9M6XofNotSMFbWxrwM=;
+        b=DClPc2v+Wf2OGqP87lirSs64qbMzlC7UrliKDpADc1rqxfQdyW3CjvBQ52z9RQQFtn
+         1P8NyYwgcD91Oh0x2Z+mggL5h42q0Dr/pxgvU7CX5UzG8ipCbR4ZC88yFrwe/1oI3FWq
+         uChEDjZkzPq0J1OyGvGsX4qPZcqPtuYNMjedcL/aP8XawXOG08ucgjdy5G7v9LXcl8hr
+         mGp6ipOg55zOwm2X75xXQ7/329lZ34Ve/FBcYcDa4/D85ek+WPbTghKAD2J0g08jo2rO
+         v79oBaWdBiiTYBjTC71N2xD7T9vjbHXAXl9EqjaGKpV0ukMYVQOxcJ20KtTypos+aHls
+         ZsWg==
+X-Gm-Message-State: AE9vXwNIy/pSSAZzlwu5RsmZ3hrXy+8y7g4zhLg6fvAN9l59a7GP6I0SJnePXkSx1Y8qrg==
+X-Received: by 10.66.131.48 with SMTP id oj16mr186219pab.126.1473764452509;
+        Tue, 13 Sep 2016 04:00:52 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from life-desktop ([182.71.113.22])
+        by smtp.gmail.com with ESMTPSA id h86sm30431671pfh.46.2016.09.13.04.00.49
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 13 Sep 2016 04:00:52 -0700 (PDT)
+Date: Tue, 13 Sep 2016 16:30:41 +0530
+From: Anchal Jain <anchalj109@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, mchehab@kernel.org
+Subject: [PATCH v2 1/6] staging: media: lirc: lirc_bt829: Remove explicit
+ NULL comparison
+Message-ID: <20160913110010.GA10357@life-desktop>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patchset replaces the semaphores in struct host_if_drv with the
-more preferred locking mechanisms completions.
+Remove explicit NULL comparison and write it in its simpler form.
 
-Each semaphore was used in the send/receive of HOST_IF_MSG_* messages.
-Each builds and queues a message (LOCK!) and then a corresponding
-"Handler" function is called from the hostIFthread() when the message
-is returned (UNLOCK).
+Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+---
 
-Note that in Patch 4 you will not see a 1:1 correspondence between
-wait_for_completion and complete. Whereas 6 different functions build
-the KEY messages, only 5 handlers are used.
+changes in v2
+	-modify commit message
+	-add cc 
+ drivers/staging/media/lirc/lirc_bt829.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes in v2
-  - spun off patch 5 as a separate patch so that this set only includes
-    semaphores->completions
-  - rebase/rebuild 
-Changes in v3
-  - rebase/rebuild
-
-Alison Schofield (4):
-  staging: wilc1000: replace semaphore sem_inactive_time with a
-    completion
-  staging: wilc1000: replace semaphore sem_get_rssi with a completion
-  staging: wilc1000: replace sem_test_disconn_block with a completion
-  staging: wilc1000: replace sem_test_key_block with a completion
-
- drivers/staging/wilc1000/host_interface.c | 43 ++++++++++++++++---------------
- drivers/staging/wilc1000/host_interface.h |  8 +++---
- 2 files changed, 26 insertions(+), 25 deletions(-)
-
+diff --git a/drivers/staging/media/lirc/lirc_bt829.c b/drivers/staging/media/lirc/lirc_bt829.c
+index 44f5655..f740115 100644
+--- a/drivers/staging/media/lirc/lirc_bt829.c
++++ b/drivers/staging/media/lirc/lirc_bt829.c
+@@ -120,7 +120,7 @@ int init_module(void)
+ 	int rc;
+ 
+ 	pdev = do_pci_probe();
+-	if (pdev == NULL)
++	if (!pdev)
+ 		return -ENODEV;
+ 
+ 	rc = pci_enable_device(pdev);
 -- 
-2.1.4
+1.9.1
 
 
