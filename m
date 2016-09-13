@@ -1,85 +1,86 @@
 X-GM-THRID: 6329844985199853568
-X-Received: by 10.28.150.135 with SMTP id y129mr317459wmd.1.1473782253036;
-        Tue, 13 Sep 2016 08:57:33 -0700 (PDT)
+X-Received: by 10.66.73.101 with SMTP id k5mr1185825pav.9.1473781882048;
+        Tue, 13 Sep 2016 08:51:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.230.214 with SMTP id e83ls379426wmi.0.gmail; Tue, 13 Sep
- 2016 08:57:32 -0700 (PDT)
-X-Received: by 10.194.46.233 with SMTP id y9mr317062wjm.3.1473782252283;
-        Tue, 13 Sep 2016 08:57:32 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p199si1497932wmd.1.2016.09.13.08.57.32
+Received: by 10.157.8.175 with SMTP id 44ls1481162otf.31.gmail; Tue, 13 Sep
+ 2016 08:51:21 -0700 (PDT)
+X-Received: by 10.157.16.68 with SMTP id o4mr20525875oto.32.1473781881540;
+        Tue, 13 Sep 2016 08:51:21 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id um12si3533024pab.2.2016.09.13.08.51.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 08:57:32 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 13 Sep 2016 08:51:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,329,1470693600"; 
-   d="scan'208";a="236316267"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 17:57:31 +0200
-Date: Tue, 13 Sep 2016 17:57:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Gargi Sharma <gs051095@gmail.com>
-cc: outreachy-kernel@googlegroups.com, arnaud.patard@rtp-net.org, 
-    gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: xgifb: move AND operator
- for logical continuation
-In-Reply-To: <20160913155037.12206-1-gs051095@gmail.com>
-Message-ID: <alpine.DEB.2.10.1609131754180.3355@hadrien>
-References: <20160913155037.12206-1-gs051095@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id z84so1412470pfi.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 08:51:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=Yijj7xjf+Z2jdsNHcxFyK1TkZ6GB3jnVukQLD2iuZ70=;
+        b=GjdsptCBKfvpKRM/HCNJjI1cGixQ2bqZ8id1+sDkJHyavI2vEKnYyVQaqSB6YgJt07
+         OoO44eFAcXkol67jAlJQcru/ngIOFpKMPPH2FwlUcXc/XBKcm6l4oPt6Pej0gEJuDhXE
+         bqNM2K7iAfD/CP3WkRBZm9ihct2jnVz+GZXdly2zcuY6e4tDOdx2K0Fzoib1z0nwvalW
+         FxWWWVbkfj1Aj5zE0gGzRnMaWt8s7kGHFrqA+U3kFhOFB74ueezGS8u+gYKn6jL8GcxN
+         2mx1/2ppT+JswY5H4B1QbAxW/bg370MwnwAQwdENQ6SZ9Y2//VX/oCrip1x16iZ2tECV
+         znwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Yijj7xjf+Z2jdsNHcxFyK1TkZ6GB3jnVukQLD2iuZ70=;
+        b=eWBw3YAZxtdO4rrV47/dvndVqDGRaGNPtBhg4ucBNm3BeBStGXmJXOGc5zEXeP+yyT
+         Nmh/5kWjz+AMfFOKhkvKu9jN5WyJHKKQXgO9qXmEzK12tnDSDIZ7lUpi9yQsMhNG3O44
+         p96jTrL9J/1zcgzynIeSKJCx4aL1QZWizi0MXGfJawzPm8E+sfVua+5fHjIlCrh6iJQL
+         dZdAwfWggheXRZiqdH5kTUjVg7OcjAn7GzLS6/BMvGfX6l492my3QkkqkNCkSrmO2e5O
+         GE0cEAmBVH7QOqZwOGOiI+s+rNC/gc3vlAf0XHu6bW+rDDo7292xCks//5FDKzkdERhb
+         7JxQ==
+X-Gm-Message-State: AE9vXwPrdjpZQqA5ig2RTzaxroy4KASKX9CFZbTpuqDVW8Qr6H5WWNF/aK+qwW9WZurycg==
+X-Received: by 10.98.202.135 with SMTP id y7mr2569388pfk.10.1473781881339;
+        Tue, 13 Sep 2016 08:51:21 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id xx7sm32161255pac.3.2016.09.13.08.51.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 13 Sep 2016 08:51:20 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: arnaud.patard@rtp-net.org,
+	gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH] staging: xgifb: move AND operator for logical continuation
+Date: Tue, 13 Sep 2016 21:20:37 +0530
+Message-Id: <20160913155037.12206-1-gs051095@gmail.com>
+X-Mailer: git-send-email 2.9.2
 
+Fixes the checkpatch issue Logical continuations should be on the
+previous line.
 
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+---
+ drivers/staging/xgifb/vb_setmode.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Tue, 13 Sep 2016, Gargi Sharma wrote:
+diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
+index 50c8ea4..ac27b2c 100644
+--- a/drivers/staging/xgifb/vb_setmode.c
++++ b/drivers/staging/xgifb/vb_setmode.c
+@@ -1741,8 +1741,8 @@ static void XGI_SetCRT2ECLK(unsigned short ModeIdIndex,
+ 	for (i = 0; i < 4; i++) {
+ 		xgifb_reg_and_or(pVBInfo->P3d4, 0x31, ~0x30,
+ 				(unsigned short) (0x10 * i));
+-		if ((!(pVBInfo->VBInfo & XGI_SetCRT2ToLCDA))
+-				&& (!(pVBInfo->VBInfo & SetInSlaveMode))) {
++		if ((!(pVBInfo->VBInfo & XGI_SetCRT2ToLCDA)) &&
++				(!(pVBInfo->VBInfo & SetInSlaveMode))) {
+ 			xgifb_reg_set(pVBInfo->P3c4, 0x2e, di_0);
+ 			xgifb_reg_set(pVBInfo->P3c4, 0x2f, di_1);
+ 		} else {
+-- 
+2.9.2
 
-> Fixes the checkpatch issue Logical continuations should be on the
-> previous line.
->
-> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
-> ---
->  drivers/staging/xgifb/vb_setmode.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
-> index 50c8ea4..ac27b2c 100644
-> --- a/drivers/staging/xgifb/vb_setmode.c
-> +++ b/drivers/staging/xgifb/vb_setmode.c
-> @@ -1741,8 +1741,8 @@ static void XGI_SetCRT2ECLK(unsigned short ModeIdIndex,
->  	for (i = 0; i < 4; i++) {
->  		xgifb_reg_and_or(pVBInfo->P3d4, 0x31, ~0x30,
->  				(unsigned short) (0x10 * i));
-> -		if ((!(pVBInfo->VBInfo & XGI_SetCRT2ToLCDA))
-> -				&& (!(pVBInfo->VBInfo & SetInSlaveMode))) {
-> +		if ((!(pVBInfo->VBInfo & XGI_SetCRT2ToLCDA)) &&
-> +				(!(pVBInfo->VBInfo & SetInSlaveMode))) {
-
-It's another issue, but all of those parentheses are rather tiring to look
-at.  The ones outside the ! are not needed.  The indentation is also a bit
-much.  There is no need for the argument of && to be aligned with the
-third argument of xgifb_reg_and_or.  At least drop one tab, or even align
-the two ! expressions.  The space is also not needed after (unsigned
-short) in the line above.  This should be done in a series, with one patch
-per change.
-
-julia
-
->  			xgifb_reg_set(pVBInfo->P3c4, 0x2e, di_0);
->  			xgifb_reg_set(pVBInfo->P3c4, 0x2f, di_1);
->  		} else {
-> --
-> 2.9.2
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160913155037.12206-1-gs051095%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
