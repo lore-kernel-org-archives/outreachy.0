@@ -1,112 +1,99 @@
-X-GM-THRID: 6250070785112670208
-X-Received: by 10.31.157.213 with SMTP id g204mr43775411vke.14.1455208003440;
-        Thu, 11 Feb 2016 08:26:43 -0800 (PST)
+X-GM-THRID: 6329749060210130944
+X-Received: by 10.25.18.100 with SMTP id h97mr3433648lfi.6.1473759849358;
+        Tue, 13 Sep 2016 02:44:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.225.71 with SMTP id ri7ls1494070igc.14.canary; Thu, 11 Feb
- 2016 08:26:43 -0800 (PST)
-X-Received: by 10.50.50.208 with SMTP id e16mr15608115igo.12.1455208003057;
-        Thu, 11 Feb 2016 08:26:43 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-qk0-x22e.google.com (mail-qk0-x22e.google.com. [2607:f8b0:400d:c09::22e])
-        by gmr-mx.google.com with ESMTPS id l85si540771ywb.2.2016.02.11.08.26.43
+Received: by 10.28.55.79 with SMTP id e76ls211875wma.19.gmail; Tue, 13 Sep
+ 2016 02:44:08 -0700 (PDT)
+X-Received: by 10.194.178.166 with SMTP id cz6mr3450939wjc.0.1473759848825;
+        Tue, 13 Sep 2016 02:44:08 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 82si999246wmg.3.2016.09.13.02.44.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 08:26:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22e as permitted sender) client-ip=2607:f8b0:400d:c09::22e;
+        Tue, 13 Sep 2016 02:44:08 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:400d:c09::22e as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x22e.google.com with SMTP id s68so20766411qkh.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Feb 2016 08:26:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=EoIpOEnX4YkfJXz6CrPaQfa4tTWm757gL4WlZx/8T0E=;
-        b=Ptvz/dwf0Fo7ruVzR1ZlWlz15uh2x5t3kS2KugpOT3d49ATs526Wbq3XMAbymES95K
-         8jKAtanGuj0gudgKIZ47wHkB9+17qNH6SNQYzILfTD6FGucuFo6Zlh6MibjrBPrciIXm
-         ecVeiyjGIQ8NjDpFuZedr9Deju0VUUZRj2hOm22rg/lk8QIQkotgdyBv28VZulY4tqq4
-         nFJ4Sa4gtbvTHTjHjX0qC8vI1kI7eEXjEYkvYThmHRjZNBCB/xH2Wo/xvDYGqjiAgyQ3
-         8FOkJFxVjJrGti8iZrbr25V2bCOv9mIgGsgRwuRoQiQw3iuybz9dDmvhcDugGOzu5VlE
-         3qxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=EoIpOEnX4YkfJXz6CrPaQfa4tTWm757gL4WlZx/8T0E=;
-        b=AIenXlqUsq7btzDs/4uJvDnc60UF4cS6JntR+7dF9q3dYI+FY45kMMrlrPykKBAXT2
-         SMe3vlPObdu5Us5dxUgr7nLdYBbfpWvt8okdWD3Pu7v5+GabG7ruIfKFiybp2kW1wE+j
-         zEQBDyX3mnYokc3uFIzQan+djHF0o+MgiU6mxlM9i9hMl7f+bUbJmbLgSt/6dya62CyS
-         cc1jQ+OV2QDQDbbMBuICkrtjjT001uhueDVm+Ie+NET7xwSBo874X+WXy1WskXKsjm4D
-         T4+PFkR8XN9Iq8jqzJ4/XcKNiVg92smMOGQUf4o6xsNf2xcYCEfnaafFQ7uuJ3KqK4eH
-         56gw==
-X-Gm-Message-State: AG10YOS/u1FLuGKiGqO+hRc5ouWFtj0jFKdXT1cd3clHRcm8mWwWbf0o6uyc7Ta7du2CAA==
-X-Received: by 10.55.48.80 with SMTP id w77mr35339174qkw.7.1455208002892;
-        Thu, 11 Feb 2016 08:26:42 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id z10sm3616233qhz.5.2016.02.11.08.26.42
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Feb 2016 08:26:42 -0800 (PST)
-Date: Thu, 11 Feb 2016 16:26:04 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: goldfish: Remove unneeded parentheses in assignment
-Message-ID: <20160211212603.GA4216@janani-Inspiron-3521>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,328,1470693600"; 
+   d="scan'208";a="236247019"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 11:44:00 +0200
+Date: Tue, 13 Sep 2016 11:43:59 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Anchal Jain <anchalj109@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 4/6] staging: media: lirc: lirc_imon.c:
+ Remove unnecessary space after a cast
+In-Reply-To: <bb931375d1e4fa071e49eb8ea0dda0b5fd160337.1473758274.git.anchalj109@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609131141250.3355@hadrien>
+References: <cover.1473758274.git.anchalj109@gmail.com> <bb931375d1e4fa071e49eb8ea0dda0b5fd160337.1473758274.git.anchalj109@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove parentheses around the right hand side of assignments as they are
-not needed. Semantic patch used:
+The subject line is not correct.  If you do git log --oneline
+drivers/staging/media/lirc/lirc_imon.c, then you get many examples, like
+the following:
 
-@@
-expression a, b, c;
-@@
+f11055b staging: media: lirc: lirc_imon: don't print error when allocating urb f
+b833d0d [media] lirc_imon: do not leave imon_probe() with mutex held
+2696f49 [media] Staging: media: lirc: use USB API functions rather than constant
+7229f8c [media] staging:media:lirc Remove the extra braces in if statement of li
+af8a819 [media] lirc_imon: simplify error handling code
+bb3a4dc staging: media: lirc: lirc_imon.c: remove extra parentheses around funct
+8c6ccbe Staging: media: clean dev_err logging
+dab363f Merge tag 'staging-3.19-rc1' of git://git.kernel.org/pub/scm/linux/kerne
+f3a7550 [media] Staging: media: lirc: cleaned up packet dump in 2 files
+d82e62d staging: media: lirc: Remove useless cast on void pointer
+732ba19 staging: media: lirc: lirc_imon.c: replace printk by dev_dbg
+2c1bfc3 staging: media: lirc: Delete unused function tv2int
 
-(
-  a = (b == c)
-|
-  a =
-- (
-  b
-- )
-)
-Reply-To: 
+They are pretty varied, but only two have the full path and the file name
+with .c at the end.   staging: media: lirc: looks popular.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/goldfish/goldfish_audio.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+julia
 
-diff --git a/drivers/staging/goldfish/goldfish_audio.c b/drivers/staging/goldfish/goldfish_audio.c
-index 364fdcd..8ef2d02 100644
---- a/drivers/staging/goldfish/goldfish_audio.c
-+++ b/drivers/staging/goldfish/goldfish_audio.c
-@@ -122,7 +122,7 @@ static ssize_t goldfish_audio_read(struct file *fp, char __user *buf,
- 		return -ENODEV;
- 
- 	while (count > 0) {
--		length = (count > READ_BUFFER_SIZE ? READ_BUFFER_SIZE : count);
-+		length = count > READ_BUFFER_SIZE ? READ_BUFFER_SIZE : count;
- 		AUDIO_WRITE(data, AUDIO_START_READ, length);
- 
- 		wait_event_interruptible(data->wait, data->buffer_status &
-@@ -197,8 +197,8 @@ static int goldfish_audio_open(struct inode *ip, struct file *fp)
- 
- 	if (atomic_inc_return(&open_count) == 1) {
- 		fp->private_data = audio_data;
--		audio_data->buffer_status = (AUDIO_INT_WRITE_BUFFER_1_EMPTY |
--					     AUDIO_INT_WRITE_BUFFER_2_EMPTY);
-+		audio_data->buffer_status = AUDIO_INT_WRITE_BUFFER_1_EMPTY |
-+					     AUDIO_INT_WRITE_BUFFER_2_EMPTY;
- 		AUDIO_WRITE(audio_data, AUDIO_INT_ENABLE, AUDIO_INT_MASK);
- 		return 0;
- 	}
--- 
-2.5.0
+On Tue, 13 Sep 2016, Anchal Jain wrote:
 
+> CHECK: Remove unnecessary space after cast
+>
+> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> ---
+>  drivers/staging/media/lirc/lirc_imon.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/media/lirc/lirc_imon.c b/drivers/staging/media/lirc/lirc_imon.c
+> index c12053d..e44f841 100644
+> --- a/drivers/staging/media/lirc/lirc_imon.c
+> +++ b/drivers/staging/media/lirc/lirc_imon.c
+> @@ -427,7 +427,7 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
+>
+>  	do {
+>  		memcpy(context->usb_tx_buf, context->tx.data_buf + offset, 7);
+> -		context->usb_tx_buf[7] = (unsigned char) seq;
+> +		context->usb_tx_buf[7] = (unsigned char)seq;
+>
+>  		retval = send_packet(context);
+>  		if (retval) {
+> @@ -445,7 +445,7 @@ static ssize_t vfd_write(struct file *file, const char __user *buf,
+>  	if (context->vfd_proto_6p) {
+>  		/* Send packet #6 */
+>  		memcpy(context->usb_tx_buf, &vfd_packet6, sizeof(vfd_packet6));
+> -		context->usb_tx_buf[7] = (unsigned char) seq;
+> +		context->usb_tx_buf[7] = (unsigned char)seq;
+>  		retval = send_packet(context);
+>  		if (retval)
+>  			dev_err(&context->usbdev->dev,
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/bb931375d1e4fa071e49eb8ea0dda0b5fd160337.1473758274.git.anchalj109%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
