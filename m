@@ -1,71 +1,62 @@
 X-GM-THRID: 6329929865196732416
-X-Received: by 10.36.110.210 with SMTP id w201mr3108052itc.7.1473812860400;
-        Tue, 13 Sep 2016 17:27:40 -0700 (PDT)
+X-Received: by 10.66.231.104 with SMTP id tf8mr2417475pac.15.1473801644158;
+        Tue, 13 Sep 2016 14:20:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.200 with SMTP id x66ls7595ota.23.gmail; Tue, 13 Sep
- 2016 17:27:40 -0700 (PDT)
-X-Received: by 10.237.34.194 with SMTP id q2mr2982312qtc.3.1473812860068;
-        Tue, 13 Sep 2016 17:27:40 -0700 (PDT)
+Received: by 10.157.27.100 with SMTP id l91ls2157186otl.14.gmail; Tue, 13 Sep
+ 2016 14:20:43 -0700 (PDT)
+X-Received: by 10.157.16.68 with SMTP id o4mr21746315oto.32.1473801643763;
+        Tue, 13 Sep 2016 14:20:43 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 142si276318pfx.2.2016.09.13.17.27.40
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id um12si131952pab.2.2016.09.13.14.20.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 17:27:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 13 Sep 2016 14:20:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id g202so252367pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 17:27:40 -0700 (PDT)
+Received: by mail-pa0-x244.google.com with SMTP id h5so82883pao.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 14:20:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=hhXtJv4PTHVYEKehLBjqSisWNdRqWLm26Zz0cohNNS4=;
-        b=WZ4uc6Y6AnZ8BdwpvRoG/Ic/T+DUNlpJsoj7GJKDy/bEL8MQkPjJZw5aylKSBlRjB2
-         TTihu0q9zFCh2sxA9vBwxoIDtR/NqwjLv3omWWzAsvpnhQaneK921ugWjRb8rQ3jClD+
-         QXEky5oIUQ0bd4lzAi0qyzlPneuXlCwKRdabLmKBPMWgEVSha5duRjFZUK1U7qgRXZ2Z
-         HvvLyDV5RhImGBY9cGOpiOR9TSOcO8sBFsHQ05P8+pW/y2Vw0d+Ro5HWw8Jyj2wdXLSQ
-         ZzIdxLKIlqb1VgmFHhpsdjjhobVAXf2RDZQSokYK4f6ApBVl/Zm1Gg0RRSLLSArV7pkD
-         jn1g==
+        bh=LhfH+ReoeWRpId7PkNv+5Vys0Y4cgrDsJSDpFs8f6/8=;
+        b=F5SWG/8j6z72LneBqUfkk8jdCoHlzVworHJbac2mt5Aw5oEQt3QnM1CS63ckXsbeR4
+         FqVBV8B2PPjpPAK0WZfK8IqMXBOKHK7sxSSpfuDMKseytmhdveoZBCC0sKX9WddFlPsw
+         idiefKCfgFat34VN6whyFKfwrBy2N7IQfSJUJdYne9lB7eEutaeukTmS3fwPlynN8vSU
+         5rVaP8i6RroRK2/e+a00diFTQ7bFJhJ4zkj8xHQkDgHmfy1oo9+6Oc8ENxUNXuPtR5ij
+         OcYWvC80KrJkb5Oq/BBMfIBCE6h7YoFZ156gwJZdu93PYlWRtQ1/viqFiH9gg5tfSnCu
+         J1/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=hhXtJv4PTHVYEKehLBjqSisWNdRqWLm26Zz0cohNNS4=;
-        b=EuqoYXh8AiC0orzZoe0/cb+HEAE/UMwhzcp/bsgGJcAw/k33lxzzk4BeaZ4uu2h+oa
-         FbxyfKWTZFk0JEyNPrSlS8WdDf3rOyaW82z9zuS/n/RTg8wkZBGJo6C27II30wVV968n
-         BbcQ+t7HSgkW/RFQDpzB0rxSqWx7ySEZZACPCjkZZMEtTLCp9CRTIpIUkGp74nI2TXw6
-         b5WZLNw4N/B/O8EgWRhzvZgktl1U3t3/VVdt1sQoFx+T5fp7iSrzLbW50KRmbag44IBJ
-         sd8jadAfqhXYgpTlPbCbue6MH5xmItkRhk6Gff0dPbV0Uwoy0/qHH6+54Bmvk1YYMLXj
-         We4g==
-X-Gm-Message-State: AE9vXwMjtEL0qBfbhbk0jqkA2tbxaeLh9ncyMQ8LLr42ZfgYSVHvu041yEnGJAjdT8F/pg==
-X-Received: by 10.98.99.67 with SMTP id x64mr6306321pfb.26.1473812859535;
-        Tue, 13 Sep 2016 17:27:39 -0700 (PDT)
+        bh=LhfH+ReoeWRpId7PkNv+5Vys0Y4cgrDsJSDpFs8f6/8=;
+        b=kRB6+2uUZ4JZJ51yWaHDTLk8ezx/AGL4dGXSvAg9wOWieStpdILNHpldzt8wn5kxr1
+         tCvGTe4rpVaRmpu7om5naZzuSTnEbinMjsMParZ3YVIZbFL1IsnnQLQUDZm77zJxF62t
+         fJdBsO1bT9iHjmKrxBhhJkM9kQW+IX2BVoUUlg5l90Vo0cv/6sOixUW0syfQv7zt+RXo
+         xyaV+SZ8CdTyW8JpYY080D+2DREvE/Kff3WnokEOk+0J2svnXwvRm53DvlYURaPyE/Rd
+         6BqBCSa07nfu0t3hU9vdrjhes5lCdAgnAoLHlR3NdI6ad1IDO05mY7hPHyBc3YMdmoZd
+         trWw==
+X-Gm-Message-State: AE9vXwNnVhwtsCqe+cxtRvgcN9rQ1QEIUogavcN6l9p0qyW0E0sDVYsG6w3ATdqlB3XNoQ==
+X-Received: by 10.67.7.170 with SMTP id dd10mr4957148pad.152.1473801643280;
+        Tue, 13 Sep 2016 14:20:43 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
 Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id m128sm33506766pfm.42.2016.09.13.17.27.37
+        by smtp.googlemail.com with ESMTPSA id ah5sm461182pad.30.2016.09.13.14.20.41
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 13 Sep 2016 17:27:39 -0700 (PDT)
+        Tue, 13 Sep 2016 14:20:42 -0700 (PDT)
 From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH v3] staging: octeon: remove multiple blank lines
-Date: Wed, 14 Sep 2016 05:56:52 +0530
-Message-Id: <20160914002652.12359-1-gs051095@gmail.com>
+Subject: [PATCH v2] staging: octeon: remove multiple blank lines
+Date: Wed, 14 Sep 2016 02:50:01 +0530
+Message-Id: <20160913212001.3945-1-gs051095@gmail.com>
 X-Mailer: git-send-email 2.9.2
 
-Fixes the checkpatch issue Please don't use multiple blank lines.
----
-Changes in v2
-	- Change the commit subject to :Correcting the commit
-	  message. Fixes the checkpatch issue Please don't use multiple
-	  blank lines.
----
-Changes in v3
-	- Make the commit message more clearer. Also, fixed the subject
-	  mistake in v2.
+Correcting the commit message. Fixes the checkpatch issue Please don't use multiple blank lines.
 
 Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
