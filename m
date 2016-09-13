@@ -1,100 +1,115 @@
-X-GM-THRID: 9667494281216
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,81ec3bb3a5095e0,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.182.246.67 with SMTP id xu3mr106706223obc.18.1427079784034;
-        Sun, 22 Mar 2015 20:03:04 -0700 (PDT)
+X-GM-THRID: 6329698324214448128
+X-Received: by 10.157.54.216 with SMTP id s24mr21427002otd.49.1473776510311;
+        Tue, 13 Sep 2016 07:21:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.29.68 with SMTP id i4ls1166103obh.75.gmail; Sun, 22 Mar
- 2015 20:03:03 -0700 (PDT)
-X-Received: by 10.182.40.130 with SMTP id x2mr13908381obk.48.1427079783741;
-        Sun, 22 Mar 2015 20:03:03 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x231.google.com (mail-pd0-x231.google.com. [2607:f8b0:400e:c02::231])
-        by gmr-mx.google.com with ESMTPS id ni4si1609439pdb.2.2015.03.22.20.03.03
+Received: by 10.36.224.3 with SMTP id c3ls398482ith.7.gmail; Tue, 13 Sep 2016
+ 07:21:49 -0700 (PDT)
+X-Received: by 10.66.84.33 with SMTP id v1mr837164pay.10.1473776509137;
+        Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
+Received: by 10.55.9.211 with SMTP id 202msqkj;
+        Tue, 13 Sep 2016 02:57:14 -0700 (PDT)
+X-Received: by 10.28.222.4 with SMTP id v4mr41246wmg.0.1473760634255;
+        Tue, 13 Sep 2016 02:57:14 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 82si1003472wmg.3.2016.09.13.02.57.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2015 20:03:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) client-ip=2607:f8b0:400e:c02::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Sep 2016 02:57:14 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x231.google.com with SMTP id c3so173137980pdn.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2015 20:03:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=gnSRo9ROH+i4GWJgalYl8ATV63JpWh2Jzk0Hy6GO52A=;
-        b=es6MEeygXfcYYKDSmaEufUXlf3d5jikSQP/prv3t8pZ9tl2IGjwV9MRJvhmG1nYSB7
-         FOZk2HunwpxxG3GwK6jqOuXaAPXxCzVPvTJETebvz1kVNzCeAU0TwqoCi5VnEKSrNR15
-         iZ857i6zCXoEQnbRjHZRYhDFJf/ZY0FjnQ3hMlEVH0dy5ypFlLiIKSDXqAsoQXsUtSph
-         4afvSTpdLlBqJ9QBed4VoHrjELwBAb1OVv77RRYMKa2eq+OvCz77STT3EmTkCobUZ4nm
-         X5nxG/1pkf3GNWEyYW1D3sFZKpZzGYoBoJiSsJKZ5/nQzGowhCBcYwvClBbWR1f39KYL
-         nuVA==
-X-Received: by 10.70.26.129 with SMTP id l1mr205581350pdg.163.1427079783593;
-        Sun, 22 Mar 2015 20:03:03 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.143.110])
-        by mx.google.com with ESMTPSA id zi5sm5554167pbc.39.2015.03.22.20.03.02
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 22 Mar 2015 20:03:02 -0700 (PDT)
-Date: Mon, 23 Mar 2015 08:32:59 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] Staging: sm750fb: Fix indent of switch-case
-Message-ID: <20150323030259.GA3944@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,328,1470693600"; 
+   d="scan'208";a="192959292"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 11:57:13 +0200
+Date: Tue, 13 Sep 2016 11:57:12 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, arnd@arndb.de, 
+    abbotti@mev.co.uk, hsweeten@visionengravers.com, 
+    gregkh@linuxfoundation.org, badbuddha91@gmail.com, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: comedi: comedi_pcmcia:
+ Removes unnecessary blank line
+In-Reply-To: <e2fdc076-900a-4a25-9e5a-49d693bd3c74@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1609131155250.3355@hadrien>
+References: <CAFrQyDErWX1NgsruZtt10hihZR2J3cvK-Q9Zj_dp_GLc_0mLmA@mail.gmail.com> <2284008.DIPsHg5UWl@wuerfel> <alpine.DEB.2.10.1609131135160.3355@hadrien> <e2fdc076-900a-4a25-9e5a-49d693bd3c74@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-212980482-1473760632=:3355"
 
-Indent switch-case to Linux coding style. Problem found using
-checkpatch.pl
-ERROR: trailing statements should be on next line
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
+--8323329-212980482-1473760632=:3355
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 31268b3..42fb4fb 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -238,12 +238,22 @@ unsigned int ddk750_getVMSize(void)
- 
- 	/* get frame buffer size from GPIO */
- 	reg = FIELD_GET(PEEK32(MISC_CTRL), MISC_CTRL, LOCALMEM_SIZE);
--	switch(reg){
--        case MISC_CTRL_LOCALMEM_SIZE_8M:  data = MB(8);  break; /* 8  Mega byte */
--        case MISC_CTRL_LOCALMEM_SIZE_16M: data = MB(16); break; /* 16 Mega byte */
--        case MISC_CTRL_LOCALMEM_SIZE_32M: data = MB(32); break; /* 32 Mega byte */
--        case MISC_CTRL_LOCALMEM_SIZE_64M: data = MB(64); break; /* 64 Mega byte */
--		default: data = 0;break;
-+	switch (reg) {
-+	case MISC_CTRL_LOCALMEM_SIZE_8M:
-+		data = MB(8);
-+		break; /* 8  Mega byte */
-+	case MISC_CTRL_LOCALMEM_SIZE_16M:
-+		data = MB(16);
-+		break; /* 16 Mega byte */
-+	case MISC_CTRL_LOCALMEM_SIZE_32M:
-+		data = MB(32);
-+		break; /* 32 Mega byte */
-+	case MISC_CTRL_LOCALMEM_SIZE_64M:
-+		data = MB(64);
-+		break; /* 64 Mega byte */
-+	default:
-+		data = 0;
-+		break;
- 	}
- 	return data;
- 
--- 
-1.9.1
 
+
+On Tue, 13 Sep 2016, Namrata A Shettar wrote:
+
+> Yes I realize that this may be wrong.Thank you for your inputs!
+>
+>  Also,The version of the kernel I am using is : 4.8.0-rc2+
+
+You should be using what you get by doing the following command:
+
+git clone -b staging-testing git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+
+Maybe this is what you already have?
+
+julia
+
+>
+> Thanks,
+> Namrata
+>
+> On Tuesday, September 13, 2016 at 3:06:06 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>       On Tue, 13 Sep 2016, Arnd Bergmann wrote:
+>
+>       > On Tuesday, September 13, 2016 11:51:53 AM CEST Namrata A
+>       Shettar wrote:
+>       > > --- a/drivers/staging/comedi/comedi_pcmcia.c
+>       > > +++ b/drivers/staging/comedi/comedi_pcmcia.c
+>       > > @@ -18,7 +18,6 @@
+>       > >
+>       > >  #include <linux/module.h>
+>       > >  #include <linux/kernel.h>
+>       > > -
+>       > >  #include "comedi_pcmcia.h"
+>       > >
+>       > >  /**
+>       > >
+>       >
+>       > I would argue that checkpatch is wrong here, it's very common
+>       to have
+>       > an empty line between the global and the local header files.
+>
+>       I forwarded this to Joe Perches, and he pointed out that
+>       checkpatch
+>       doesn't give a warning for this.  Namrata, what version of the
+>       kernel are
+>       you using?
+>
+>       julia
+>
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/e2fdc076-900a-4a25-9e5a-
+> 49d693bd3c74%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-212980482-1473760632=:3355--
 
