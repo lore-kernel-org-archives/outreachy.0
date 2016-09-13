@@ -1,148 +1,106 @@
-X-GM-THRID: 6330194437741740032
-X-Received: by 10.107.10.167 with SMTP id 39mr2519534iok.14.1473863245747;
-        Wed, 14 Sep 2016 07:27:25 -0700 (PDT)
+X-GM-THRID: 6329809349955813376
+X-Received: by 10.46.33.96 with SMTP id h93mr3667808ljh.4.1473776243260;
+        Tue, 13 Sep 2016 07:17:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.178 with SMTP id h47ls1077646otc.37.gmail; Wed, 14 Sep
- 2016 07:27:25 -0700 (PDT)
-X-Received: by 10.200.54.228 with SMTP id b33mr592001qtc.28.1473863245104;
-        Wed, 14 Sep 2016 07:27:25 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id z4si1199697pam.0.2016.09.14.07.27.25
+Received: by 10.28.210.79 with SMTP id j76ls332393wmg.25.gmail; Tue, 13 Sep
+ 2016 07:17:22 -0700 (PDT)
+X-Received: by 10.28.55.196 with SMTP id e187mr258563wma.5.1473776242688;
+        Tue, 13 Sep 2016 07:17:22 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p199si1446918wmd.1.2016.09.13.07.17.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 07:27:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Tue, 13 Sep 2016 07:17:22 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n24so866737pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 07:27:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=OEkqFGRRaIs7ysjmU11eCc6Db9a3lJ1ppwGnmj0K7ks=;
-        b=v1nEJd1Qi5kXeJyzSOeSa0H0G/vt08cdCjwVfba2FZ8oUiYX6C3EkgGZt9i7QpMCOW
-         t1mA0RWHSzIHDYe+bK9QA1rsWf6V27XigNrr22ewS0yuT85ocW3b3NYrp7ADygvFW3e5
-         cKw7OdfGcdH8BX9hlE2OvzOOxvx3ozcDTu8y3lN9TwfbEpob5/5YhmIIvs40SbLNK/Xs
-         HdQkgbBGNNEM7ONb/j81muSNxFYIRl4z3OrSuOOtY+gN7tF0ONSi+njbppbjZ1O0AcX5
-         qR1t98gp7RroO3GR8hXhglJrN93ZXuZ9ktQdl6tfzxud/KWfAcRc6sRBedyDahRF5SoR
-         FFtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=OEkqFGRRaIs7ysjmU11eCc6Db9a3lJ1ppwGnmj0K7ks=;
-        b=eUsPLU31XLv4kNVLrqAx6pHgx9+p7mD4u++s+tItHf9QY/l6ZEkoUwkUuJNN/TLXGe
-         9ofTxqK78Dl9iVJ5RNs+DC3LV03P8C5JNvam/xMawxEPOJl1s5AVqEi3oshy4D65kubz
-         VcHBuHP2ypbBYr8kW0h961gCSAoVVp+hr1w+ss8HYZ9NSh/C+t3HPW+xWslVAtg9pDb0
-         URPZ8CwL8gLy8Be8w5v6ueEo69XRSGHcNDfj/DZhUKr3QuDsd1P+5JLQM6Ws59OlsQf8
-         ggvUVoumpNEXz0TJ2KvMXl/tSydEIdzcWYQfJDY7sPgHxc1KP5SARfZi4w2IgQdjD/KZ
-         5/kA==
-X-Gm-Message-State: AE9vXwO0BHMgqofPOc2zbEf16YjG+/zrlbFTub3z5aY9RkE3FuludePEO3GgEWzaPVKS2Q==
-X-Received: by 10.98.97.7 with SMTP id v7mr5049264pfb.49.1473863244661;
-        Wed, 14 Sep 2016 07:27:24 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id o5sm38758187pfb.9.2016.09.14.07.27.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 07:27:23 -0700 (PDT)
-Date: Wed, 14 Sep 2016 19:57:07 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Lidza Louina <lidza.louina@gmail.com>,
-	Mark Hounschell <markh@compro.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: dgnc: Fix long line and spelling mistake
-Message-ID: <20160914142656.GA3298@toblerone>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,328,1470693600"; 
+   d="scan'208";a="236298191"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 16:17:22 +0200
+Date: Tue, 13 Sep 2016 16:17:20 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: outreachy-kernel@googlegroups.com, w.d.hubbs@gmail.com, 
+    chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: speakup: replace
+ simple_strtoul by kstrtoul
+In-Reply-To: <20160913133212.7830-1-gs051095@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609131614050.3355@hadrien>
+References: <20160913133212.7830-1-gs051095@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch fixes the checkpatch.pl warning:
-Line over 80 characters.
-Also, the word 'because' was spelled as
-'Becuz' and has been corrected.
+On Tue, 13 Sep 2016, Gargi Sharma wrote:
 
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
----
- drivers/staging/dgnc/dgnc_neo.c | 24 ++++++++++++++++++------
- 1 file changed, 18 insertions(+), 6 deletions(-)
+> Making changes to add a check to the value returned by kstrtoul. Also,
+> updating temp since it is being used afterwards.
 
-diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
-index 5ef5b3e..fe071e1 100644
---- a/drivers/staging/dgnc/dgnc_neo.c
-+++ b/drivers/staging/dgnc/dgnc_neo.c
-@@ -107,7 +107,9 @@ static inline void neo_set_cts_flow_control(struct channel_t *ch)
- 	/* Turn off auto Xon flow control */
- 	efr &= ~UART_17158_EFR_IXON;
- 
--	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-+	/* Why? Because Exar's spec says we have to zero it
-+	 * out before setting it
-+	 */
- 	writeb(0, &ch->ch_neo_uart->efr);
- 
- 	/* Turn on UART enhanced bits */
-@@ -143,7 +145,9 @@ static inline void neo_set_rts_flow_control(struct channel_t *ch)
- 	ier &= ~UART_17158_IER_XOFF;
- 	efr &= ~UART_17158_EFR_IXOFF;
- 
--	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-+	/* Why? Because Exar's spec says we have to zero it
-+	 * out before setting it
-+	 */
- 	writeb(0, &ch->ch_neo_uart->efr);
- 
- 	/* Turn on UART enhanced bits */
-@@ -181,7 +185,9 @@ static inline void neo_set_ixon_flow_control(struct channel_t *ch)
- 	/* Turn on auto Xon flow control */
- 	efr |= (UART_17158_EFR_ECB | UART_17158_EFR_IXON);
- 
--	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-+	/* Why? Because Exar's spec says we have to zero it
-+	 * out before setting it
-+	 */
- 	writeb(0, &ch->ch_neo_uart->efr);
- 
- 	/* Turn on UART enhanced bits */
-@@ -219,7 +225,9 @@ static inline void neo_set_ixoff_flow_control(struct channel_t *ch)
- 	ier |= UART_17158_IER_XOFF;
- 	efr |= (UART_17158_EFR_ECB | UART_17158_EFR_IXOFF);
- 
--	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-+	/* Why? Because Exar's spec says we have to zero it
-+	 * out before setting it
-+	 */
- 	writeb(0, &ch->ch_neo_uart->efr);
- 
- 	/* Turn on UART enhanced bits */
-@@ -260,7 +268,9 @@ static inline void neo_set_no_input_flow_control(struct channel_t *ch)
- 	else
- 		efr &= ~(UART_17158_EFR_ECB | UART_17158_EFR_IXOFF);
- 
--	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-+	/* Why? Because Exar's spec says we have to zero
-+	 * it out before setting it
-+	 */
- 	writeb(0, &ch->ch_neo_uart->efr);
- 
- 	/* Turn on UART enhanced bits */
-@@ -298,7 +308,9 @@ static inline void neo_set_no_output_flow_control(struct channel_t *ch)
- 	else
- 		efr &= ~(UART_17158_EFR_ECB | UART_17158_EFR_IXON);
- 
--	/* Why? Becuz Exar's spec says we have to zero it out before setting it */
-+	/* Why? Because Exar's spec says we have to zero it
-+	 * out before setting it
-+	 */
- 	writeb(0, &ch->ch_neo_uart->efr);
- 
- 	/* Turn on UART enhanced bits */
--- 
-2.7.4
+This patch doesn't do what the subject says.  It looks like you picked up
+from your previous patch, whereas you should have picked up from the state
+before that patch, to do the whole thing at once.
 
+
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+>  drivers/staging/speakup/kobjects.c | 15 +++++++++++++--
+>  1 file changed, 13 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+> index 884b2eb..e42be0f 100644
+> --- a/drivers/staging/speakup/kobjects.c
+> +++ b/drivers/staging/speakup/kobjects.c
+> @@ -154,7 +154,13 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
+>  			continue;
+>  		}
+>
+> -		err = kstrtoul(cp, 10, &index);
+> +		temp = cp;
+
+I don't think this is correct.  Look at the definition of simple_strtoul
+and see what the second argument is supposed to end up being initialized
+to.
+
+I suspect that it is not possible, or at least not very convenient, to use
+kstrtoul in these cases.
+
+julia
+
+> +		err = kstrtoul(temp, 10, &index);
+> +		if (err < 0) {
+> +			retval = err;
+> +			break;
+> +		}
+> +
+>  		if (index > 255) {
+>  			rejected++;
+>  			cp = linefeed + 1;
+> @@ -785,7 +791,12 @@ static ssize_t message_store_helper(const char *buf, size_t count,
+>  			continue;
+>  		}
+>
+> -		err = kstrtoul(cp, 10, &index);
+> +		temp = cp;
+> +		err = kstrtoul(temp, 10, &index);
+> +		if (err < 0) {
+> +			retval = err;
+> +			break;
+> +		}
+>
+>  		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
+>  			temp++;
+> --
+> 2.9.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160913133212.7830-1-gs051095%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
