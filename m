@@ -1,76 +1,168 @@
-X-GM-THRID: 6265914371751280640
-X-Received: by 10.28.24.14 with SMTP id 14mr4106771wmy.1.1458896876828;
-        Fri, 25 Mar 2016 02:07:56 -0700 (PDT)
+X-GM-THRID: 6329847978033938432
+X-Received: by 10.66.172.14 with SMTP id ay14mr2582625pac.0.1473804229835;
+        Tue, 13 Sep 2016 15:03:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.10.2 with SMTP id 2ls329273lfk.50.gmail; Fri, 25 Mar 2016
- 02:07:56 -0700 (PDT)
-X-Received: by 10.25.91.73 with SMTP id p70mr1502753lfb.3.1458896876073;
-        Fri, 25 Mar 2016 02:07:56 -0700 (PDT)
-Return-Path: <sveta.orlik.code@gmail.com>
-Received: from mail-lf0-x234.google.com (mail-lf0-x234.google.com. [2a00:1450:4010:c07::234])
-        by gmr-mx.google.com with ESMTPS id ph10si457819lbb.0.2016.03.25.02.07.56
+Received: by 10.36.103.86 with SMTP id u83ls846565itc.20.gmail; Tue, 13 Sep
+ 2016 15:03:49 -0700 (PDT)
+X-Received: by 10.36.121.139 with SMTP id z133mr2570475itc.4.1473804229080;
+        Tue, 13 Sep 2016 15:03:49 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id 142si171815pfx.2.2016.09.13.15.03.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 25 Mar 2016 02:07:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c07::234 as permitted sender) client-ip=2a00:1450:4010:c07::234;
+        Tue, 13 Sep 2016 15:03:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c07::234 as permitted sender) smtp.mailfrom=sveta.orlik.code@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x234.google.com with SMTP id q73so49190040lfe.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 25 Mar 2016 02:07:56 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id pp5so115477pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 15:03:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:subject:message-id:date:user-agent:mime-version
-         :content-transfer-encoding;
-        bh=kzKVumiLj6yhZeXmzbhWtqEw0hY8xnTNXQVmwKi2s8o=;
-        b=drNxVUBosJZx14T4aSQKiSutw8UlpIbkFsCE604sPclSCnlI/GCf7uml73YCV3pPWt
-         dBLRJ81LjFqG9v7oB38YnhcUQQuYhs99UwQo/gMn+ZcdZ7JvXBVmpr4CALBYZactZeqb
-         ubbrdUcqYdU7B7XVR6+a9Fif7TGPfl8GylpN7KKmwsih9tJeNwLoffacZcZix8j6XBuH
-         +mh/jcHmBdzqwOXQ455XeAP7CyonwPfLGNdzov1PN8Cq/BtuHNeVrDPjleY2GUknDdeI
-         KKbhrrfrEC0bhwQOdai/KchAwjvA08usjAtHlRupw/eGwx1TBHp9C1MTe4+Ftl3pLbqf
-         dlig==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=1Pzt9fq62QJtlGkguCEhwaie8xe9oHfah5u+j737UPQ=;
+        b=iDjx4jFOCYd+2IlhBHhgioTMQ4TIq6mMkYEOAx4mTovF4HofO2LHFwkPaqGLxx5yba
+         nv6/yjsNxiLUD3e2ro0BjhbhOmJ9bbfwUkFkj/zuRBmSU+jaD1OXHuWodZUFSOvgO9h3
+         GdspyVUFeLsXxQG83ISRWNjBSQ/sEg0x18qJfeaXL8TPhkWo2G9ef0yovwUowUZ/+Dk3
+         otBRILajw+WxAwkDeC/TSlxBut1NmWs4NuZb74fp2XJC7XM+dqwni6ox6YjWL8W/6CRy
+         qyS/D3/2gpaOv2Kt4NoBVMov/Ule3VzcPMHY1DqngB4vh0JTUuGYujeNq+yWg6z/ukMt
+         kg8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:subject:message-id:date:user-agent
-         :mime-version:content-transfer-encoding;
-        bh=kzKVumiLj6yhZeXmzbhWtqEw0hY8xnTNXQVmwKi2s8o=;
-        b=ApyX2pO6ZSdfY7igghH6aw6ive5fmGP69w/fBtM5xBhAm3Kc2UZUbtHrxtGwa5J2Ap
-         vcD/GNHIcrj+vrY+XqvSFgEgkQcS/sPsuGAfiqLkmM4iu+ClS8X7hq1TElbNMVlUx44Z
-         cY7mwkZ2tuYbZdRNGSgcTieCz4p39VTIPI25uqSgE7iI4We615SPL6/KVw9V8O+QNUC5
-         h/t8ItvWyxUG5Xlei64DWa2c2edyB0E1qjCy4bYjL7JdPV9SaPF6JDzHsYJ4fL19pMXw
-         8QnJo3qfQISQKVXiE9sCMD3dFMVliE89JNWbFkd1k7UGGByYTr2rkve6WZYTCmVfKWzq
-         Zcmw==
-X-Gm-Message-State: AD7BkJLJh+a8X8GcCF0WkPdvFyjvkQ0u/ZNsC382NyeRZDRe3+5sqHcTBFrT9ZNsPlu+eQ==
-X-Received: by 10.25.159.133 with SMTP id i127mr5282196lfe.33.1458896875956;
-        Fri, 25 Mar 2016 02:07:55 -0700 (PDT)
-Return-Path: <sveta.orlik.code@gmail.com>
-Received: from [192.168.0.77] (broadband-46-242-29-57.nationalcablenetworks.ru. [46.242.29.57])
-        by smtp.gmail.com with ESMTPSA id s5sm1789373lbr.12.2016.03.25.02.07.55
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 25 Mar 2016 02:07:55 -0700 (PDT)
-From: Svetlana Orlik <sveta.orlik.code@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: Troubles doing Tutorial
-Message-ID: <56F4FFE9.6030307@gmail.com>
-Date: Fri, 25 Mar 2016 12:07:53 +0300
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:38.0) Gecko/20100101
- Thunderbird/38.6.0
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=1Pzt9fq62QJtlGkguCEhwaie8xe9oHfah5u+j737UPQ=;
+        b=AVfRZ4ciRexBd3BrtJk+A+AFDDPNI9e2iYSwlJ8aLWGA0AAvSOpgsyJVRati2MSkYM
+         VyKaz73f2L9BdsvG7teQoQbCWOMFoIeZB2lnfz3fPdlRkuVTSNK7tXH8uVEUkW/urroP
+         56wnybI4RUFjmaqXCOTqq7mvo9IhOhOaEf7b0sT/SmiyBg5ZNI0ovuS7RpVa05+qIZZQ
+         xqsZPMJax5kSsgG3pKXW7jmHMpCzeJEgUqRsSA3Una6JQgMu7SJ3SYqll/E7FRJGb38H
+         PohaZjAe0Ts0w2KHpdyNSGh18XNDB5YRS25nrxAdh6RRWLRgxLH1GHxGC7kRujSl8YFl
+         7H/A==
+X-Gm-Message-State: AE9vXwN36uhXWiU6gZrAiM7MYqA0Rr/iPWQB5ZLJIw309JdCh42ZXXfH0Ym+TAxZ8rGAhw==
+X-Received: by 10.66.190.200 with SMTP id gs8mr5348049pac.42.1473804228796;
+        Tue, 13 Sep 2016 15:03:48 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
+        by smtp.gmail.com with ESMTPSA id q14sm14069565pfg.63.2016.09.13.15.03.48
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 13 Sep 2016 15:03:48 -0700 (PDT)
+Date: Tue, 13 Sep 2016 15:03:47 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Gargi Sharma <gs051095@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: octeon: Removing multiple
+ blank lines
+Message-ID: <20160913220346.GA4438@d830.WORKGROUP>
+References: <20160913160213.12708-1-gs051095@gmail.com>
+ <20160913184643.GA3351@d830.WORKGROUP>
+ <CAOCi2DGhDCt_JZ9=TBX-hRvpz2-EXaVffW-qE+6MT8Un4QmwLw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAOCi2DGhDCt_JZ9=TBX-hRvpz2-EXaVffW-qE+6MT8Un4QmwLw@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Hello
+On Wed, Sep 14, 2016 at 02:20:01AM +0530, Gargi Sharma wrote:
+> Hi Alison!
+> On Wed, Sep 14, 2016 at 12:16 AM, Alison Schofield <amsfield22@gmail.com>
+> wrote:
+> >
+> > On Tue, Sep 13, 2016 at 09:32:13PM +0530, Gargi Sharma wrote:
+> > > Fixes the checkpatch issue Please don't use multiple blank lines.
+> >
+> > Hi Gargi,
+> > Just a couple of minor format comments, but you may as well v2 this
+> > to get it looking it's best in the git history.
+> 
+> Should the v2 have a message stating that I fixed the commit message or the
+> original commit message?
+> 
+> gargi
 
-While trail is hot, I'd like to report a couple of issues I faced when doing tutorial.
+There is a section in the first patch tutorial for this.
+See "Versioning one patch revision"
 
-1. I found no email address of the mailing list, where to send patches to.  There was only the link to google groups. So, first I used web interface to post a patch, and it was wrong.  Julia then mailed the address to me.  Maybe the address should be mentioned in the tutorial explicitly?  (And OK, maybe  I'm lame in mailing lists, but the tutorial is for newbies after all:)
+alisons
 
-2. Submitting a patch using mutt went OK, but when I tried `git send-email` - I got error:
-sendmail: fatal: open /etc/postfix/main.cf: No such file or directory
-Died at /usr/lib/git-core/git-send-email line 1292, <FIN> line 3.
-
---
-Sveta.
+> >
+> > Typically the commit message is written in the imperative format.
+> > That would be 'Remove' instead of 'Removing'.  It's really not
+> > necessary to become a grammar expert ;)  just do a git pretty and
+> > verify that your commit message is in the same style as the others
+> > on the file you are changing:
+> >
+> > git log --pretty=oneline --abbrev-commit  <filename>
+> >
+> > Within the changelog you can just cut/paste the checkpatch message,
+> > as in: CHECK: Please don't use multiple blank lines.  (Also tells
+> > CHECK or WARNING)
+> >
+> > > Fixes the checkpatch issue:
+> >   CHECK: Please don't use multiple blank lines
+> >
+> > Really minor stuff, but it keeps the uniformity which is nice.
+> >
+> > alisons
+> >
+> > alisons
+> >
+> >
+> >
+> >
+> > >
+> > > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> > > ---
+> > >  drivers/staging/octeon/ethernet.c | 2 --
+> > >  1 file changed, 2 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/octeon/ethernet.c
+> b/drivers/staging/octeon/ethernet.c
+> > > index 0bd5c18..ec8e424 100644
+> > > --- a/drivers/staging/octeon/ethernet.c
+> > > +++ b/drivers/staging/octeon/ethernet.c
+> > > @@ -686,7 +686,6 @@ static int cvm_oct_probe(struct platform_device
+> *pdev)
+> > >               return -EINVAL;
+> > >       }
+> > >
+> > > -
+> > >       cvm_oct_configure_common_hw();
+> > >
+> > >       cvmx_helper_initialize_packet_io_global();
+> > > @@ -929,7 +928,6 @@ static int cvm_oct_remove(struct platform_device
+> *pdev)
+> > >               }
+> > >       }
+> > >
+> > > -
+> > >       cvmx_pko_shutdown();
+> > >
+> > >       cvmx_ipd_free_ptr();
+> > > --
+> > > 2.9.2
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20160913160213.12708-1-gs051095%40gmail.com
+> .
+> > > For more options, visit https://groups.google.com/d/optout.
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20160913184643.GA3351%40d830.WORKGROUP
+> .
+> > For more options, visit https://groups.google.com/d/optout.
 
