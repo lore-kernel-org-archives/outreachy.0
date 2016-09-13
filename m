@@ -1,96 +1,105 @@
-X-GM-THRID: 6330145501902536704
-X-Received: by 10.107.3.96 with SMTP id 93mr1909724iod.3.1473851851564;
-        Wed, 14 Sep 2016 04:17:31 -0700 (PDT)
+X-GM-THRID: 6329536989610639360
+X-Received: by 10.129.39.134 with SMTP id n128mr17916374ywn.17.1473739900800;
+        Mon, 12 Sep 2016 21:11:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.90.74 with SMTP id v71ls326258ita.9.canary; Wed, 14 Sep
- 2016 04:17:29 -0700 (PDT)
-X-Received: by 10.36.57.69 with SMTP id l66mr1876688ita.5.1473851849447;
-        Wed, 14 Sep 2016 04:17:29 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 142si940152pfx.2.2016.09.14.04.17.29
+Received: by 10.157.42.234 with SMTP id e97ls396517otb.40.gmail; Mon, 12 Sep
+ 2016 21:11:40 -0700 (PDT)
+X-Received: by 10.237.40.5 with SMTP id r5mr18882337qtd.20.1473739900431;
+        Mon, 12 Sep 2016 21:11:40 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-ua0-x243.google.com (mail-ua0-x243.google.com. [2607:f8b0:400c:c08::243])
+        by gmr-mx.google.com with ESMTPS id v141si1446307vke.1.2016.09.12.21.11.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 04:17:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 12 Sep 2016 21:11:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400c:c08::243 as permitted sender) client-ip=2607:f8b0:400c:c08::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400c:c08::243 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id z84so651845pfi.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 04:17:29 -0700 (PDT)
+Received: by mail-ua0-x243.google.com with SMTP id v13so244410uav.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Sep 2016 21:11:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=hwsiqOVgMSnIF7zJSDgJogWCDl0SGe6bA3+FgOimYEk=;
-        b=RTBWqcntd9MAdztxj7oB3m5GFl3rkgN8dusN5ZtAmHKiA0pry/CUTGcZPYOe5DNMup
-         iqL7tPle7DIzRiAI0O0LyHKf5BCKM0rTOS5q6izwCk0zgvRti9k78w7/Xo1LMhJ+E6bw
-         ff7cTu6Te9uy63XcMQanX9YGy/E6VTsnqBCyOLzY+281cb91Tmft3Leu3L0WqzIErFTE
-         q34iRhUijKMGpvqjevxXEmOtjViGXKFgwduAZAZmqEaDq+ZjNe/gzUtMgnUtT2jLUCCB
-         ow3wOpgtTNbR4sQfU0kGsvjhimxMjJ4huIPnSYnZrQuXzUmreOkxgcuInjfOQEKDjA3s
-         7XMg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=tQK+Ig02LTeb2fJIrScOg+abW9hBH17fbnoJ5/u/i7E=;
+        b=rPI9iI/8zisGZKPjfUBLtqnaqk+RCtWsgxIAy2DPDVHnA3kUx9XkxapVzcmBweGWwU
+         04IgOJnFgFNCPK/okK1mA5CZn4Zpl/WmF00SJoWHkYER5qBZF0ZTdg+96iFtkT3w7Sdy
+         w8G9W/E72VXXo+oIdWKrt0skDKV1j38yyTyx5cD9KLFV4EfRJRr/RAezCFD+lsM5b3JP
+         4RdVNQNUovkRQg+gPtH7eBihuCdYAxl5LDLCwcnpDc2r9xLq+xJQVGBkFVrInZIFCkqm
+         vtW3DW6y8ZP2MIdYfpCSa6RST9ZSc4cMMEkgcHedtwY8xUpTah+e+vC2wHQNYeM9288P
+         SKhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=hwsiqOVgMSnIF7zJSDgJogWCDl0SGe6bA3+FgOimYEk=;
-        b=LGWnrGk77zXDTuBZczG9vywX1WZ6h+tVtG+tLH0nW7s6TePx2scCRBkH4Mtau2GwcF
-         fyw6+H/esuYKgK8hMiRaSPQbRuGhadvqcdMWVq81SZA3lU7xXcchCJxYca1dhFewfTEf
-         0u0MujyXl3JVmuOx/fIBFmZgkt7iA2DeVeF85DXREBIlpBrdiRbYmrln0ZdnDx8GUCTO
-         rQuy6SP/A9rL+esZECyRyFLE7cVWLdd9PHvXVj1HeoF5qYmPB55IXp9ieq2mykal9Wlm
-         T+3NYaasIJJNDjSNOIbB6gsuzCtRUgxkNTarHanbzzFplybvyAXCe4IrCK5GtDtbUtNT
-         z2KA==
-X-Gm-Message-State: AE9vXwMjw/M+rVV1mLQRSbGiK8qrpR1pZ9dt4fY7cscBg1Sc5+YZmLNb5K+6tn5WCCYVDA==
-X-Received: by 10.98.21.85 with SMTP id 82mr2395562pfv.81.1473851849023;
-        Wed, 14 Sep 2016 04:17:29 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([182.77.94.114])
-        by smtp.gmail.com with ESMTPSA id m65sm37516502pfg.79.2016.09.14.04.17.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 04:17:28 -0700 (PDT)
-Date: Wed, 14 Sep 2016 16:48:02 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: iio: ad7280a: Add space around '-'
-Message-ID: <20160914111802.GA3364@sandhya>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=tQK+Ig02LTeb2fJIrScOg+abW9hBH17fbnoJ5/u/i7E=;
+        b=OyEQFfOJnc4+yEIfCLowH1lxEWJxbfMyr7JnJQCkbwtpE0jFCTOLLoD5z0bemButll
+         sejmoKIFnuIflqHjRn5O7wuORV5Dj65OPSUPaBOo9wJ4eGpRpI/Y5SVU1+zXGFOGEY+T
+         U8vgbcIrKIiNTbDmseAgqi7Cl+MFoyvCCXi/rU2X1/dZLOXgKphxvp579sbCoTEZ67dE
+         h5ERrLk0mQEp6NuLX/0sMoFHcWfAneRXL0+pd6gPpMUR65Uq0HqPPj6bxZnFIjUvIF9E
+         U3N8/7zE+jlitfc1RE47VZ2IWjxXW9QL3x9wW4DWKn9f42iQqtjpqrydDrvdhnzYXqr8
+         fIgA==
+X-Gm-Message-State: AE9vXwNwy6AhpuxL/jOy3/b/g2f3XSRhx/+3o9ez5pt8+/ePFE0gnhvK6cym5lOxTzGMhfLZ9AM6mCcEfQ1s8A==
+X-Received: by 10.176.4.16 with SMTP id 16mr1184541uav.92.1473739900159; Mon,
+ 12 Sep 2016 21:11:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Received: by 10.31.81.3 with HTTP; Mon, 12 Sep 2016 21:11:39 -0700 (PDT)
+In-Reply-To: <20160912195642.GA2775@sandhya>
+References: <20160912195642.GA2775@sandhya>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+Date: Tue, 13 Sep 2016 09:41:39 +0530
+Message-ID: <CAK-LDbLo8usgPkJsEEii6wb8BnfBn_NSv5s+sqNmx9SXOcvKVQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: bus: Space required before
+ the open parenthesis '('.
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Add space around operator '-' .
-This patch is found by checkpatch.pl script .
-CHECK: spaces preferred around that '-' (ctx:VxV) 
+On Tue, Sep 13, 2016 at 1:26 AM, Sandhya Bankar
+<bankarsandhya512@gmail.com> wrote:
+> Space required before the open parenthesis '('.This patch is found by checkpatch.pl script.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/iio/adc/ad7280a.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Commit log contains more than 80 characters in the single line. Usually we
+follow 80 characters rule for the commit log, subject as well.
 
-diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-index 2177f1d..bc40153 100644
---- a/drivers/staging/iio/adc/ad7280a.c
-+++ b/drivers/staging/iio/adc/ad7280a.c
-@@ -744,14 +744,14 @@ out:
- }
- 
- static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
--		in_voltage-voltage_thresh_low_value,
-+		in_voltage - voltage_thresh_low_value,
- 		S_IRUGO | S_IWUSR,
- 		ad7280_read_channel_config,
- 		ad7280_write_channel_config,
- 		AD7280A_CELL_UNDERVOLTAGE);
- 
- static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
--		in_voltage-voltage_thresh_high_value,
-+		in_voltage - voltage_thresh_high_value,
- 		S_IRUGO | S_IWUSR,
- 		ad7280_read_channel_config,
- 		ad7280_write_channel_config,
+Normally is useful to run checkpatch.pl on your patch. You can do that with
+following command after creating patch:
+
+scripts/checkpatch.pl <file.patch>
+
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/bus/arm-cci.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/bus/arm-cci.c b/drivers/bus/arm-cci.c
+> index 9e1020f..99513f7 100644
+> --- a/drivers/bus/arm-cci.c
+> +++ b/drivers/bus/arm-cci.c
+> @@ -2271,7 +2271,7 @@ static int cci_probe(void)
+>         struct resource res;
+>
+>         np = of_find_matching_node(NULL, arm_cci_matches);
+> -       if(!np || !of_device_is_available(np))
+> +       if (!np || !of_device_is_available(np))
+>                 return -ENODEV;
+>
+>         ret = of_address_to_resource(np, 0, &res);
+> --
+> 1.8.2.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160912195642.GA2775%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+
+
+
 -- 
-1.8.2.3
-
+Vaishali
+http://vaishalithakkar.in/
 
