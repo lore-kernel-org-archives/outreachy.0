@@ -1,70 +1,59 @@
 X-GM-THRID: 6329492802868609024
-X-Received: by 10.31.168.213 with SMTP id r204mr813187vke.5.1473776509522;
+X-Received: by 10.66.226.10 with SMTP id ro10mr788829pac.29.1473776509951;
         Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.37.197 with SMTP id q63ls1400021ota.13.gmail; Tue, 13 Sep
+Received: by 10.36.54.199 with SMTP id l190ls539388itl.2.gmail; Tue, 13 Sep
  2016 07:21:49 -0700 (PDT)
-X-Received: by 10.157.47.73 with SMTP id h67mr12957436otb.5.1473776509115;
+X-Received: by 10.107.169.66 with SMTP id s63mr845321ioe.16.1473776509118;
         Tue, 13 Sep 2016 07:21:49 -0700 (PDT)
-Received: by 10.55.97.208 with SMTP id v199msqkb;
-        Mon, 12 Sep 2016 10:37:09 -0700 (PDT)
-X-Received: by 10.46.32.154 with SMTP id g26mr1899894lji.3.1473701829156;
-        Mon, 12 Sep 2016 10:37:09 -0700 (PDT)
+Received: by 10.55.11.136 with SMTP id 130msqkl;
+        Mon, 12 Sep 2016 22:19:01 -0700 (PDT)
+X-Received: by 10.25.152.10 with SMTP id a10mr3235650lfe.4.1473743941405;
+        Mon, 12 Sep 2016 22:19:01 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id a126si849364wmd.1.2016.09.12.10.37.09
+        by gmr-mx.google.com with ESMTPS id 185si265364wmr.2.2016.09.12.22.19.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 10:37:09 -0700 (PDT)
+        Mon, 12 Sep 2016 22:19:01 -0700 (PDT)
 Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,323,1470693600"; 
-   d="scan'208";a="192890248"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Sep 2016 19:37:08 +0200
-Date: Mon, 12 Sep 2016 19:37:07 +0200 (CEST)
+X-IronPort-AV: E=Sophos;i="5.30,326,1470693600"; 
+   d="scan'208";a="192920259"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 07:18:35 +0200
+Date: Tue, 13 Sep 2016 07:18:34 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Namrata A Shettar <namrataashettar@gmail.com>
 cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH] staging: comedi: comedi_pcmcia:
  Fixes multiple blank lines issue
-In-Reply-To: <a1d35405-1ff2-4642-a8da-533adbc6da70@googlegroups.com>
-Message-ID: <alpine.DEB.2.10.1609121935010.29099@hadrien>
-References: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com> <a1d35405-1ff2-4642-a8da-533adbc6da70@googlegroups.com>
+In-Reply-To: <617c0bbf-3f68-4fd4-b435-b73e7665b5bb@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1609130718190.3330@hadrien>
+References: <CAFrQyDEjFOCD2WZmVWedeRcasU_48CmaTpOCKT3QJWbRB5zFgQ@mail.gmail.com> <617c0bbf-3f68-4fd4-b435-b73e7665b5bb@googlegroups.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1453012856-1473701827=:29099"
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1078738766-1473743915=:3330"
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---8323329-1453012856-1473701827=:29099
+--8323329-1078738766-1473743915=:3330
 Content-Type: TEXT/PLAIN; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
 
-
-
 On Mon, 12 Sep 2016, Namrata A Shettar wrote:
 
-> There was an issue in getting the maintainer's list.Sorted now and sent it
-> to the maintainers.
+> Yes,a mistake in naming the issue, an uneccessary blank line would have been
+> apt.
+> Sorry,for the inconvenience,
 
-Actually, when you adjust a patch in any way, you should send the patch to
-all of the original recipients.  Put [PATCH v2] in the subject line and an
-explanation under the ---, eg
-
----
-
-v2: added maintainers
-
-See the Revising your patches section of the tutorial.
+You should send a v2 with the correction.
 
 julia
 
->
-> Thanks,
 > Namrata
 >
 > On Monday, September 12, 2016 at 10:34:43 PM UTC+5:30, Namrata A Shettar
@@ -97,10 +86,10 @@ julia
 > To unsubscribe from this group and stop receiving emails from it, send an
 > email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/a1d35405-1ff2-4642-a8da-
-> 533adbc6da70%40googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/617c0bbf-3f68-4fd4-b435-
+> b73e7665b5bb%40googlegroups.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 >
---8323329-1453012856-1473701827=:29099--
+--8323329-1078738766-1473743915=:3330--
 
