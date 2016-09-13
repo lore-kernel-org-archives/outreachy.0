@@ -1,110 +1,77 @@
 X-GM-THRID: 6329698324214448128
-Date: Tue, 13 Sep 2016 02:53:11 -0700 (PDT)
-From: Namrata A Shettar <namrataashettar@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: arnd@arndb.de, namrataashettar@gmail.com, abbotti@mev.co.uk, 
-	hsweeten@visionengravers.com, gregkh@linuxfoundation.org, 
-	badbuddha91@gmail.com, devel@driverdev.osuosl.org, 
-	linux-kernel@vger.kernel.org
-Message-Id: <e2fdc076-900a-4a25-9e5a-49d693bd3c74@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.10.1609131135160.3355@hadrien>
-References: <CAFrQyDErWX1NgsruZtt10hihZR2J3cvK-Q9Zj_dp_GLc_0mLmA@mail.gmail.com> <2284008.DIPsHg5UWl@wuerfel>
- <alpine.DEB.2.10.1609131135160.3355@hadrien>
+X-Received: by 10.28.27.19 with SMTP id b19mr21180wmb.2.1473759366699;
+        Tue, 13 Sep 2016 02:36:06 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.28.184.193 with SMTP id i184ls206866wmf.7.gmail; Tue, 13 Sep
+ 2016 02:36:06 -0700 (PDT)
+X-Received: by 10.28.206.138 with SMTP id e132mr2523079wmg.5.1473759366135;
+        Tue, 13 Sep 2016 02:36:06 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id w134si243249wmf.3.2016.09.13.02.36.06
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Sep 2016 02:36:06 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,328,1470693600"; 
+   d="scan'208";a="192956096"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 11:36:05 +0200
+Date: Tue, 13 Sep 2016 11:36:04 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arnd Bergmann <arnd@arndb.de>
+cc: outreachy-kernel@googlegroups.com, 
+    Namrata A Shettar <namrataashettar@gmail.com>, 
+    Ian Abbott <abbotti@mev.co.uk>, hsweeten@visionengravers.com, 
+    gregkh@linuxfoundation.org, badbuddha91@gmail.com, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: comedi: comedi_pcmcia:
  Removes unnecessary blank line
+In-Reply-To: <2284008.DIPsHg5UWl@wuerfel>
+Message-ID: <alpine.DEB.2.10.1609131135160.3355@hadrien>
+References: <CAFrQyDErWX1NgsruZtt10hihZR2J3cvK-Q9Zj_dp_GLc_0mLmA@mail.gmail.com> <2284008.DIPsHg5UWl@wuerfel>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_397_206517980.1473760391984"
-X-Google-Token: EIeZ374FsJBcVwr3u1A0
-X-Google-IP: 103.225.101.21
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-------=_Part_397_206517980.1473760391984
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_398_1341939769.1473760391985"
 
-------=_Part_398_1341939769.1473760391985
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Yes I realize that this may be wrong.Thank you for your inputs!
+On Tue, 13 Sep 2016, Arnd Bergmann wrote:
 
- Also,The version of the kernel I am using is : 4.8.0-rc2+
+> On Tuesday, September 13, 2016 11:51:53 AM CEST Namrata A Shettar wrote:
+> > --- a/drivers/staging/comedi/comedi_pcmcia.c
+> > +++ b/drivers/staging/comedi/comedi_pcmcia.c
+> > @@ -18,7 +18,6 @@
+> >
+> >  #include <linux/module.h>
+> >  #include <linux/kernel.h>
+> > -
+> >  #include "comedi_pcmcia.h"
+> >
+> >  /**
+> >
+>
+> I would argue that checkpatch is wrong here, it's very common to have
+> an empty line between the global and the local header files.
 
-Thanks,
-Namrata
+I forwarded this to Joe Perches, and he pointed out that checkpatch
+doesn't give a warning for this.  Namrata, what version of the kernel are
+you using?
 
-On Tuesday, September 13, 2016 at 3:06:06 PM UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Tue, 13 Sep 2016, Arnd Bergmann wrote: 
->
-> > On Tuesday, September 13, 2016 11:51:53 AM CEST Namrata A Shettar wrote: 
-> > > --- a/drivers/staging/comedi/comedi_pcmcia.c 
-> > > +++ b/drivers/staging/comedi/comedi_pcmcia.c 
-> > > @@ -18,7 +18,6 @@ 
-> > > 
-> > >  #include <linux/module.h> 
-> > >  #include <linux/kernel.h> 
-> > > - 
-> > >  #include "comedi_pcmcia.h" 
-> > > 
-> > >  /** 
-> > > 
-> > 
-> > I would argue that checkpatch is wrong here, it's very common to have 
-> > an empty line between the global and the local header files. 
->
-> I forwarded this to Joe Perches, and he pointed out that checkpatch 
-> doesn't give a warning for this.  Namrata, what version of the kernel are 
-> you using? 
->
-> julia 
->
->
->
->
-------=_Part_398_1341939769.1473760391985
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+julia
 
-<div dir=3D"ltr">Yes I realize that this may be wrong.Thank you for your in=
-puts!<br><br>=C2=A0Also,The version of the kernel I am using is : 4.8.0-rc2=
-+<br><br>Thanks,<br>Namrata<br><br>On Tuesday, September 13, 2016 at 3:06:0=
-6 PM UTC+5:30, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=
-=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
-1ex;">
-<br>
-<br>On Tue, 13 Sep 2016, Arnd Bergmann wrote:
-<br>
-<br>&gt; On Tuesday, September 13, 2016 11:51:53 AM CEST Namrata A Shettar =
-wrote:
-<br>&gt; &gt; --- a/drivers/staging/comedi/<wbr>comedi_pcmcia.c
-<br>&gt; &gt; +++ b/drivers/staging/comedi/<wbr>comedi_pcmcia.c
-<br>&gt; &gt; @@ -18,7 +18,6 @@
-<br>&gt; &gt;
-<br>&gt; &gt; =C2=A0#include &lt;linux/module.h&gt;
-<br>&gt; &gt; =C2=A0#include &lt;linux/kernel.h&gt;
-<br>&gt; &gt; -
-<br>&gt; &gt; =C2=A0#include &quot;comedi_pcmcia.h&quot;
-<br>&gt; &gt;
-<br>&gt; &gt; =C2=A0/**
-<br>&gt; &gt;
-<br>&gt;
-<br>&gt; I would argue that checkpatch is wrong here, it&#39;s very common =
-to have
-<br>&gt; an empty line between the global and the local header files.
-<br>
-<br>I forwarded this to Joe Perches, and he pointed out that checkpatch
-<br>doesn&#39;t give a warning for this. =C2=A0Namrata, what version of the=
- kernel are
-<br>you using?
-<br>
-<br>julia
-<br>
-<br>
-<br><br></blockquote></div>
-------=_Part_398_1341939769.1473760391985--
 
-------=_Part_397_206517980.1473760391984--
+>
+> 	Arnd
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/2284008.DIPsHg5UWl%40wuerfel.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
