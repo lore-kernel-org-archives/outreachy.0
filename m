@@ -1,82 +1,135 @@
-X-GM-THRID: 6397014578406883328
-X-Received: by 10.31.189.71 with SMTP id n68mr1189945vkf.26.1489421021735;
-        Mon, 13 Mar 2017 09:03:41 -0700 (PDT)
+X-GM-THRID: 6329844985199853568
+X-Received: by 10.28.207.134 with SMTP id f128mr378361wmg.6.1473783042025;
+        Tue, 13 Sep 2016 09:10:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.47.173 with SMTP id r42ls3005137otb.26.gmail; Mon, 13 Mar
- 2017 09:03:41 -0700 (PDT)
-X-Received: by 10.129.153.65 with SMTP id q62mr18174588ywg.23.1489421021278;
-        Mon, 13 Mar 2017 09:03:41 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x231.google.com (mail-pg0-x231.google.com. [2607:f8b0:400e:c05::231])
-        by gmr-mx.google.com with ESMTPS id 2si3246816pfx.8.2017.03.13.09.03.41
+Received: by 10.25.33.13 with SMTP id h13ls77517lfh.42.gmail; Tue, 13 Sep 2016
+ 09:10:41 -0700 (PDT)
+X-Received: by 10.46.1.225 with SMTP id f94mr86251lji.8.1473783041271;
+        Tue, 13 Sep 2016 09:10:41 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v132si522997wmf.1.2016.09.13.09.10.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 09:03:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) client-ip=2607:f8b0:400e:c05::231;
+        Tue, 13 Sep 2016 09:10:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x231.google.com with SMTP id g2so47944838pge.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 09:03:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=eAGqW45MQQ2Pr1gMReJikXgkT7xOthfmcuFgRgvn3Sk=;
-        b=kBV/USn+XFAo9RU1Wb/N5cShQqS7Sw9C9smGUjMCDA7L61bEsE3LTwP1x78nPm5zFO
-         67srbo1c5AK6PpPxTLgbPapO8kYcskrjwQxUo57wUSREVBjKgEY8JppXz0FBN2PkhJ+c
-         pgZeTQTKrRxP5ekl6vuqnrRqLqH3BZ3UjTsdxFtu22rA8etWG/NEdqbA0O4n2YWHI/FA
-         VEjYMJ5CMHbxg7F+IDx8foUIPuoLteYJZS2ecPVz6AwI1gzjeYAAqMOYaSTsCCDM0nd7
-         pRSS8usDrhC7P/qCIDdJp4l9rS18TmBs2ZSM9Zvey2JbFdtjfaGp6LU0z9JRsvJZ58zo
-         NgWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=eAGqW45MQQ2Pr1gMReJikXgkT7xOthfmcuFgRgvn3Sk=;
-        b=L+p5aAyutQnCzHM879NnV8Ksz7jV1qUKrdrKi++E9FyQ6CTfrC9M1hZs9qmB52vzQU
-         GRRLjBo6uOp2ohUSMVsIXCd+Zih2FhezzhtWLtmY7bJVmakXXno2+xnbikBdBoOLzVul
-         ZYJH8SSpv3yw1bchG9oWF8AH3veXOYUwCHdF8mi98v4wCzCiyn/Un9J1f1fLxC8kmVi/
-         v7ImsJbhZr3Fo1ChZpPRdIRf3YRXYEsvN4CcJh2kfQ3ORwNvpYdDeY2ngGPmsPKBFXIR
-         7S9Qq5FBlnYQghmJNJvfy0DDeHreEnuO6jZzirOvsVXl2vm3aBmn+jrMCS7eTOiOqmhj
-         7GOA==
-X-Gm-Message-State: AMke39kuSPqW9gY96SW23j+nDQS/mEG2xahZjUtXOH0+Euxod+PvRKbvVvoA2SEl8+gU9w==
-X-Received: by 10.84.238.9 with SMTP id u9mr49411253plk.174.1489421020873;
-        Mon, 13 Mar 2017 09:03:40 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id q194sm33592806pfq.43.2017.03.13.09.03.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 09:03:40 -0700 (PDT)
-Date: Mon, 13 Mar 2017 09:03:39 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: IIO mlock task - note this!
-Message-ID: <20170313160338.GA1703@d830.WORKGROUP>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,329,1470693600"; 
+   d="scan'208";a="193015104"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Sep 2016 18:10:40 +0200
+Date: Tue, 13 Sep 2016 18:10:38 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: outreachy-kernel@googlegroups.com, arnaud.patard@rtp-net.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: xgifb: move AND operator
+ for logical continuation
+In-Reply-To: <CAOCi2DEQhf6AeNByf7rOSudqsGaYr4=SVM0Q-DAnRg4R7AqX_g@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609131810080.3355@hadrien>
+References: <20160913155037.12206-1-gs051095@gmail.com> <alpine.DEB.2.10.1609131754180.3355@hadrien> <CAOCi2DEQhf6AeNByf7rOSudqsGaYr4=SVM0Q-DAnRg4R7AqX_g@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-664515005-1473783039=:3355"
 
-We're off to an interesting start with this task - to be expected!
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Please read all of the feedback on all of the patches - not just
-yours.
+--8323329-664515005-1473783039=:3355
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Lots of good stuff came in from Lars last night.  Absorb it all.
 
-Please note that Simran & Sayli (are mind-readers), and they
-sent their patches before I posted the Task directions, so
-their 'Send patches to' lists are a bit more than requested
-in the directions. 
 
-Please pay attention to this from the directions:
->> Please sign up for one driver at a time, take it all the way through
->> ACK, before selecting another one.
+On Tue, 13 Sep 2016, Gargi Sharma wrote:
 
-Questions, please ask.
+> Hi
+>
+> On Tue, Sep 13, 2016 at 9:27 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> >
+> > On Tue, 13 Sep 2016, Gargi Sharma wrote:
+> >
+> > > Fixes the checkpatch issue Logical continuations should be on the
+> > > previous line.
+> > >
+> > > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> > > ---
+> > >  drivers/staging/xgifb/vb_setmode.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/xgifb/vb_setmode.c
+> b/drivers/staging/xgifb/vb_setmode.c
+> > > index 50c8ea4..ac27b2c 100644
+> > > --- a/drivers/staging/xgifb/vb_setmode.c
+> > > +++ b/drivers/staging/xgifb/vb_setmode.c
+> > > @@ -1741,8 +1741,8 @@ static void XGI_SetCRT2ECLK(unsigned short
+> ModeIdIndex,
+> > >       for (i = 0; i < 4; i++) {
+> > >               xgifb_reg_and_or(pVBInfo->P3d4, 0x31, ~0x30,
+> > >                               (unsigned short) (0x10 * i));
+> > > -             if ((!(pVBInfo->VBInfo & XGI_SetCRT2ToLCDA))
+> > > -                             && (!(pVBInfo->VBInfo & SetInSlaveMode)))
+> {
+> > > +             if ((!(pVBInfo->VBInfo & XGI_SetCRT2ToLCDA)) &&
+> > > +                             (!(pVBInfo->VBInfo & SetInSlaveMode))) {
+> >
+> > It's another issue, but all of those parentheses are rather tiring to look
+> > at.  The ones outside the ! are not needed.  The indentation is also a bit
+> > much.  There is no need for the argument of && to be aligned with the
+> > third argument of xgifb_reg_and_or.  At least drop one tab, or even align
+> > the two ! expressions.  >The space is also not needed after (unsigned>
+> short) in the line above.
+>
+> This check is generated by the checkpatch, and will send another patch
+> addressing this issue.
+>
+> >This should be done in a series, with one patch
+> > per change.
+>
+> So should I send a patch-set or separate patches per change?
 
-alisons
+A patch set: 1/3, 2/3, 3/3.  Greg will want to know in what order to apply
+them, if they touch the same file.
+
+julia
+
+>
+> gargi
+>
+> >
+> > julia
+> >
+> > >                       xgifb_reg_set(pVBInfo->P3c4, 0x2e, di_0);
+> > >                       xgifb_reg_set(pVBInfo->P3c4, 0x2f, di_1);
+> > >               } else {
+> > > --
+> > > 2.9.2
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20160913155037.12206-1-g
+> s051095%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAOCi2DEQhf6AeNByf7rOSud
+> qsGaYr4%3DSVM0Q-DAnRg4R7AqX_g%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-664515005-1473783039=:3355--
 
