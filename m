@@ -1,105 +1,84 @@
-X-GM-THRID: 6258245900541362176
-X-Received: by 10.129.27.3 with SMTP id b3mr6649344ywb.0.1457111421595;
-        Fri, 04 Mar 2016 09:10:21 -0800 (PST)
+X-GM-THRID: 6330221714021023744
+X-Received: by 10.107.169.66 with SMTP id s63mr3050745ioe.16.1473869596322;
+        Wed, 14 Sep 2016 09:13:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.97.104 with SMTP id dz8ls250705obb.8.gmail; Fri, 04 Mar
- 2016 09:10:21 -0800 (PST)
-X-Received: by 10.182.247.97 with SMTP id yd1mr6697856obc.9.1457111421231;
-        Fri, 04 Mar 2016 09:10:21 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id ui7si1548219pab.0.2016.03.04.09.10.21
+Received: by 10.107.164.155 with SMTP id d27ls480079ioj.21.gmail; Wed, 14 Sep
+ 2016 09:13:15 -0700 (PDT)
+X-Received: by 10.66.246.136 with SMTP id xw8mr2616728pac.14.1473869595132;
+        Wed, 14 Sep 2016 09:13:15 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id h124si1379472pfe.0.2016.09.14.09.13.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 Mar 2016 09:10:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        Wed, 14 Sep 2016 09:13:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fl4so37866168pad.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 09:10:21 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id z84so977503pfi.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 09:13:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=RsWCvHHYIcGF3ZGJzdLmGgOskqgPAQuuhpgZpPCjTTI=;
-        b=RDqVTFCcDz4Ka6z/Jwy+gFnLpZbRMnY91CV2mlsTlRswgmQ/W+wyJeAubuCT3/R1Gm
-         yxpCHDIevaCeUXn+tz/p7PH6KHxdjxE5sgL4jqtjv9WpjMyk/7COzM+LzGrHfp4oxWyP
-         +sDJ4BU3UXuPdvBOtwLKWicEaIctskuE4biJQf9aYwNeO1joZ4sYbNP7XlZqC0o0vZgy
-         C4RH38Y/H2FTRsusIzjC5kT7rjKwY4+zxY2//Yksz2L/U6zoFcsW3iCmwdmOk/tBCl52
-         OSQ31C3RhthAyA3pMRjnWLczb6iTcl31VUmDmQ5l9g+EW1HC9vauS+HFmIjpYaelTi+j
-         zrEQ==
+        bh=P5/GI09vlJPgni9WSiNyZ0bRKKXgQvfh9mSAAvFuUV8=;
+        b=fENumebvJ1o9oa46HGHXZV34W6+P75unddrh9I+ZBjXuz5vfoUpMCZX7liI5SguMNW
+         xXFr7MhwUydDBJZUzaEeYu66hkj3C2G/Mg8yM7Re6vB82gk54VnHoFBhWgLRNMhFbMNu
+         bJos+rBl/uHySxtSweMWq6GT4v2Ec5xPSNnDz52w7QjiCZ/L6hNVM+kz8ScPfxnyhQfR
+         H9xcd4WnMOn5h5GDG2VoyVHT+zV1WCVwI4KMqusmkoatNXLXwGqlYptgH2R1FeqzZXYb
+         SevyAI37cUqT+A1sQiFnAvBLr+VAjwV1SKjQz+tOE9RxXOamq9D+yFAbblgtpCFCu9lf
+         n0Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=RsWCvHHYIcGF3ZGJzdLmGgOskqgPAQuuhpgZpPCjTTI=;
-        b=K69+nq+8y77mat+NTTPyGZBvqWvCD2b1XNGTw2oHaCjzwI10zSK0hBLt1H/Q9qALN8
-         A67ndHV1LYm/lth2eQP0atVFgJoPuiShv0PbKj6UtNfcu3Hwky9X+zNGjzuM57d/2VJ2
-         QA3O7JWfKkoZpYqgys1v/q47g2i2bTPHQf31Nwcaznk/4xfBjvgh5w+x6nVdiSvIIWeC
-         AZ2s5BUxiVXe4HDd+W/XtnNoEn8DIrXTntQAyC8Kmr6LXDlPYGK+h9cFU2wur3oZtDQV
-         84utr7BGLGUb6Vq4dBTJrk/VuailweY/VU6EA4Se1b39TVZ+r1JMzaBaS8JLb1koWjYf
-         uUTA==
-X-Gm-Message-State: AD7BkJJ2YFe6suQzlQok0N9bpN+uT4ao3u5pu3d25LvkxDlrMbCeOpQah8Wi3PTc2pUpXA==
-X-Received: by 10.66.138.74 with SMTP id qo10mr13493839pab.140.1457111421010;
-        Fri, 04 Mar 2016 09:10:21 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.77.50.199])
-        by smtp.gmail.com with ESMTPSA id p79sm2391037pfi.61.2016.03.04.09.10.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 09:10:20 -0800 (PST)
-Date: Fri, 4 Mar 2016 22:40:17 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        bh=P5/GI09vlJPgni9WSiNyZ0bRKKXgQvfh9mSAAvFuUV8=;
+        b=FEBrJOdMgY83K4Rf1OII2qF/8/JUyd/j+4y859EiwKfKcRGCUibDqG/wiJfZjlUige
+         J4QxmT0rRF2Vl6EKYj1GtSXuAHdgBUeY3yvvzCFXwTYjYbEpS6z3Qyfg8gnEBmeOok8r
+         Ma2BhPC5s/rJ6CuJfd+R/mWMuY5enWteDmTM0ShFVP826S5tUbDHgJ2bSzoHhisZyzIj
+         j9TRicDeHxXw+Xqer/U3AsPp+OhAc9WM4GYva10bmyFx3DIVeXa6GClHl/HFXPtUTOTL
+         S72piHvDPRoiS3LugxMo8mtyN3VbyV4wXikBsFPEDdeQOMVmISlynEQalmJ2hg7Aw/kM
+         wrnA==
+X-Gm-Message-State: AE9vXwNLuTIE37c6I6UUdMs8fh/CfUA4rXfTjyULSsXHyrnxF40x0kodDAPwWpMOSMRpsg==
+X-Received: by 10.98.158.90 with SMTP id s87mr5956289pfd.117.1473869594925;
+        Wed, 14 Sep 2016 09:13:14 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from toblerone ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id d5sm39260848pfa.44.2016.09.14.09.13.12
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Sep 2016 09:13:14 -0700 (PDT)
+Date: Wed, 14 Sep 2016 21:43:04 +0530
+From: Rehas Sachdeva <aquannie@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: driver: Replace IS_ALIGNED with
- PAGE_ALIGNED
-Message-ID: <20160304171016.GA26756@amitoj-Inspiron-3542>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: gdm724x: Remove unnecessary blank line
+Message-ID: <20160914161304.GA24433@toblerone>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-mm.h contains a helper function PAGE_ALIGNED which tests whether
-an address is aligned to PAGE_SIZE instead of using 
-IS_ALIGNED(expression, PAGE_SIZE)
+This patch fixes the checkpatch.pl warning:
+CHECK: Please don't use multiple blank lines
 
-This change was made with the help of the following Coccinelle
-semantic patch:
-//<smpl>
-@@
-expression e;
-symbol PAGE_SIZE;
-@@
-(
-- ALIGN(e, PAGE_SIZE)
-+ PAGE_ALIGN(e)
-|
-- IS_ALIGNED(e, PAGE_SIZE)
-+ PAGE_ALIGNED(e)
-)
-//</smpl>
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 ---
- drivers/staging/rdma/hfi1/driver.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/gdm724x/hci_packet.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/rdma/hfi1/driver.c b/drivers/staging/rdma/hfi1/driver.c
-index 3218520..ee50bbf 100644
---- a/drivers/staging/rdma/hfi1/driver.c
-+++ b/drivers/staging/rdma/hfi1/driver.c
-@@ -246,7 +246,7 @@ static inline void *get_egrbuf(const struct hfi1_ctxtdata *rcd, u64 rhf,
-  */
- inline int hfi1_rcvbuf_validate(u32 size, u8 type, u16 *encoded)
- {
--	if (unlikely(!IS_ALIGNED(size, PAGE_SIZE)))
-+	if (unlikely(!PAGE_ALIGNED(size)))
- 		return 0;
- 	if (unlikely(size < MIN_EAGER_BUFFER))
- 		return 0;
+diff --git a/drivers/staging/gdm724x/hci_packet.h b/drivers/staging/gdm724x/hci_packet.h
+index dbc4446..4644f84 100644
+--- a/drivers/staging/gdm724x/hci_packet.h
++++ b/drivers/staging/gdm724x/hci_packet.h
+@@ -89,5 +89,4 @@ struct hci_connect_ind {
+ 	u32 connect;
+ } __packed;
+ 
+-
+ #endif /* _HCI_PACKET_H_ */
 -- 
-1.9.1
+2.7.4
 
 
