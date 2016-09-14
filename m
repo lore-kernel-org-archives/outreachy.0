@@ -1,60 +1,60 @@
 X-GM-THRID: 6330198991314092032
-X-Received: by 10.36.115.205 with SMTP id y196mr2361879itb.2.1473949067732;
-        Thu, 15 Sep 2016 07:17:47 -0700 (PDT)
+X-Received: by 10.66.42.161 with SMTP id p1mr2295168pal.20.1473864305447;
+        Wed, 14 Sep 2016 07:45:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.5.211 with SMTP id 77ls3370303otd.49.gmail; Thu, 15 Sep
- 2016 07:17:47 -0700 (PDT)
-X-Received: by 10.13.247.69 with SMTP id h66mr6551407ywf.46.1473949067177;
-        Thu, 15 Sep 2016 07:17:47 -0700 (PDT)
+Received: by 10.157.54.178 with SMTP id h47ls1119464otc.37.gmail; Wed, 14 Sep
+ 2016 07:45:05 -0700 (PDT)
+X-Received: by 10.129.0.194 with SMTP id 185mr2221279ywa.12.1473864305043;
+        Wed, 14 Sep 2016 07:45:05 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id h124si2775333pfe.0.2016.09.15.07.17.47
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id o13si117504itc.3.2016.09.14.07.45.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 07:17:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Wed, 14 Sep 2016 07:45:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id p2so2181087pap.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 07:17:47 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id n24so885524pfb.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 07:45:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=KMfR6eJluuoyiEQ+k8junqABnwlN4Hk8sai9ZFDLzjw=;
-        b=u9NKTl2q/uvetMSAaqSOWoKFIa+wOhjQYGOSAPELgE6RWLrIpslKvbFYHXILTcrkHZ
-         2xYBdu4GO7PQ9lSL4Is0VRRZvjmUlReByj/b2ZlTak6hy4Iv9ggnMU+ioLmvUyhfTszQ
-         sGE8dMl9k1SSWOSghShOO3L5f3OuE0L/pnZlCoSuLrXyMAZR6aZ9A3Z2iACW7kpYAJNQ
-         969uUeUZjkvn9X+IBYdcKilrJvahH6oE0h5MCgq/bBOdZq89fWoDDR0GgcR1hPGHUSfx
-         bK4HvxFhYBUwjjRPAIO+As3d3BvtEh71JOG1j00v/qef7sVnGu7Pzw4AS7LoikGGTjCA
-         ul1w==
+        bh=HX8tDT/rDmYqyMC+d2uW6XyHBE+lOxmlzeYMf1H+5xI=;
+        b=CjKzasQTSlfC4mfQFwZaLVWqscxJBLkXJ5cwpjZViIuKC3IP4NnLAJEXzLeA6a4d8Q
+         c0NctnT3BpvsUd3WZ3grCZW78POJZ8vm1bf+pXV86a1RjcYRCN0gx5NSrN0ubPW6F4d9
+         DlE7vQ+w9QUt3sWBDA+iKqMx5filr4veM26/N0D9rqsQlU5flMNbqX6t0dTyFux76WHm
+         g45ZrjgOREgAWdIbAwvX9gFwkk5k/XGQLwRAiboU15pxPieeWgzRxVLvJyc5fAWBVSbk
+         vsKOtWo11LRzW2vMOqUO5eF65cSKL5ZKS5Z/494dBJoZRvm94ffMjnR1JGzGKlYOJDOf
+         A5lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KMfR6eJluuoyiEQ+k8junqABnwlN4Hk8sai9ZFDLzjw=;
-        b=ACw8kzZOHbEvzUu6wz/Pc73cv7p5upc/Ixr2RJb0FErnZWqH8+x2ucktYD3tERWb1I
-         p0HDl1icev/BPsg/+ZA2XirFF/LuBLsqUr39zBPyGkv2OHn/xVGAAk6Dc92BoOuaqQ8t
-         D7IAnqt89njt0tBSzWaq+3uE/TDd2M2pBtdcT0J9ZL5EVwIdGlRhO5nMCEvK1OTXHyw2
-         Rzc06Ck5t1wNF70itLlEQIh+UrvXmcmLE3Wwe/JIkx0uM3T8gna8w8VDuMEGyUt+N426
-         U6tLIzflAr1IDPwTZikZmGNr06FiHL3tsnKoLf9u5Vglv2pOWb09nMUawYiuSBf6m87W
-         OHuA==
-X-Gm-Message-State: AE9vXwPYyFgq6vDmPmGp8WhXAmZenWdnkFKLl7zCDb3cG7Rw9nsq/5sWDx1tvfGZUKKZUg==
-X-Received: by 10.66.129.174 with SMTP id nx14mr1151566pab.167.1473949066481;
-        Thu, 15 Sep 2016 07:17:46 -0700 (PDT)
+        bh=HX8tDT/rDmYqyMC+d2uW6XyHBE+lOxmlzeYMf1H+5xI=;
+        b=NWCF87keSukZkNYLMVoInUohB5o/MR05uY8lI+e3DF3F9fYJBltIqVCIwFtPpjMsaz
+         +fbxFwd0/+aOt5cdIz5uCWHdGrHhIX6WYCaIBLqGkNB/iHXFt+5jptthY6kd6y6+vrvF
+         FCF9DCTmLoVQV9pG7e6bvCQeFVRs5Q0M9phPoI2gzG7PTwBgBvMjIrKox29+8usglhOc
+         S9RfZsgflO6CPWwz7R3bmqO0lIkMvzrXtG/o9jDzAZ6PyMa005gVtWWPMv/kJ/UXeRHk
+         1fsBo3gtLM4HPrQj5Ny3JOPZChD02g1VjwmF7mx8kGOkm7DfNNuQNlcl80Re2cxuHRor
+         FrsA==
+X-Gm-Message-State: AE9vXwMx7iKxyFOZkAnVmfmAuW/5ggdLEWONNr23AgG/RmoxkH0HQiGJ5dd+hFMjLQEN+w==
+X-Received: by 10.98.142.1 with SMTP id k1mr5262311pfe.20.1473864304575;
+        Wed, 14 Sep 2016 07:45:04 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([106.215.155.108])
-        by smtp.gmail.com with ESMTPSA id ps2sm5659673pab.10.2016.09.15.07.17.39
+Received: from gmail.com ([223.176.141.25])
+        by smtp.gmail.com with ESMTPSA id c64sm38852744pfa.51.2016.09.14.07.44.56
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Sep 2016 07:17:45 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Thu, 15 Sep 2016 19:47:35 +0530
+        Wed, 14 Sep 2016 07:45:03 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Wed, 14 Sep 2016 20:14:50 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	gregkh@linuxfoundation.org
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH v2] Staging: netlogic: Remove unused function
-Date: Thu, 15 Sep 2016 19:47:18 +0530
-Message-Id: <1473949038-12108-1-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH] Staging: netlogic: Remove unused function
+Date: Wed, 14 Sep 2016 20:14:49 +0530
+Message-Id: <1473864289-13857-1-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
 The function xlr_wakeup_queue is not used anywhere in the kernel.
@@ -79,21 +79,22 @@ static T func@p(...)
 
 @r@
 identifier r1.func;
+position p;
 @@
-func
+(
+ func(...)
+|
+ func
+)
 
 @script:python depends on !r@
-func << r1.func;
-p << r1.p;
+func<<r1.func;
+p<<r1.p;
 @@
 display(func,p)
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
-Changes in v2:
-* Simplify coccinelle script by removing func(...)
-  and adding spaces around "<<"
-
  drivers/staging/netlogic/xlr_net.c | 10 ----------
  1 file changed, 10 deletions(-)
 
