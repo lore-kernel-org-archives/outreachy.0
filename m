@@ -1,110 +1,123 @@
-X-GM-THRID: 6332017798578962432
-X-Received: by 10.25.190.137 with SMTP id o131mr660152lff.17.1474287779293;
-        Mon, 19 Sep 2016 05:22:59 -0700 (PDT)
+X-GM-THRID: 6330204600701812736
+X-Received: by 10.36.29.7 with SMTP id 7mr6270037itj.2.1473875259398;
+        Wed, 14 Sep 2016 10:47:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.47.4 with SMTP id v4ls1450550wmv.21.gmail; Mon, 19 Sep 2016
- 05:22:58 -0700 (PDT)
-X-Received: by 10.28.56.199 with SMTP id f190mr489186wma.8.1474287778280;
-        Mon, 19 Sep 2016 05:22:58 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id w79si1144770wmw.0.2016.09.19.05.22.58
+Received: by 10.157.11.72 with SMTP id p8ls1404807otd.48.gmail; Wed, 14 Sep
+ 2016 10:47:38 -0700 (PDT)
+X-Received: by 10.129.76.18 with SMTP id z18mr2502757ywa.26.1473875258910;
+        Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-qt0-x244.google.com (mail-qt0-x244.google.com. [2607:f8b0:400d:c0d::244])
+        by gmr-mx.google.com with ESMTPS id c75si487819ywh.0.2016.09.14.10.47.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 05:22:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) client-ip=2607:f8b0:400d:c0d::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id l132so13466190wmf.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 05:22:58 -0700 (PDT)
+Received: by mail-qt0-x244.google.com with SMTP id e5so754519qtb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+T43uZJz2SaK0eU56cf6abg9ILj5ybao/72U9auh8/w=;
-        b=of2xnM/hr6tS9XTQ50q8KfPP6HA/zEGMRjCMxpToJJ+v/9PwHAHf0Rqz3gxmqHLFXi
-         R7fK5Rs7YAw1fede7dXwaTfK2gkn5Ifxh+z26aUZdV8S2q744efU4v0zShfp5SutRmRb
-         oz+QHAf9u2ACA6ITRztb3cUp6CH6qwV/u1PE9Tf1/XIaH+NatnGg1ZhGjI1p3zVkIBTF
-         BUChyaLezgwGUoeYt1XZo37ye5rGtKXQbnFwoh9demoXDG+pIprhMJ/FzveMmysAs1vz
-         pJ9qIEe9jgonQgkooE5HZQ2fR8JFR51k2OmSnaE8qMVijpSJ6fDAHIvr6kZag1ZI8cpz
-         pzhA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=W5Ebjx6oyiTunuhMWAeHcKC3CQsWsK7GXLkMSrc1yq0=;
+        b=jY7N3BMrTyTKmklrTbIsCUcaahZqGgA9BWaSPmej3ePGVTDeT5NkfxPn2d71bCwAql
+         xLFqY3HyZXWlV3ucnrldyR0Y/8oBEOf2A5EQXjFO4M13QRWqiWpFqu6ohYwUVpU7RCw2
+         yzZ/Iuu8N3U0vbFMKf2sGet7NWWdfTqbaW9HPriP/HB+pz67qd7aLyyVgrfkoAJI3DJ2
+         YD9sMErgsAB04fIW1d58Rz3ITlPgAcZm8Oyww+tRQYEVGlBJ6Ov6b5SIhbTXpmBKOpdd
+         PjJvpZYBi2q2nLfXpguIgSOIdyHyRAa1ZAFEUW1VkHX4yOkiDyO1jW3Wph6HM4DIzini
+         O0wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+T43uZJz2SaK0eU56cf6abg9ILj5ybao/72U9auh8/w=;
-        b=DDRcDH8sFk7kF1luL8fy3ad+xraycznRRK1YCCXzCaWsRqBQCINsE0lk/pinDQowl/
-         NEDOHlSRw/X1g+7lklJjF9tbJA4K+lrMBIuFEW1E/kGirp8siQ1ku/viHVMCpMNoe5kc
-         WcON52HLw+A3NAT9mtRdVTBnM7ovL6+r9g0e/6+cjOVVMBPMQQiWimU9RV3Z7r1qc7eC
-         ort5PgWVR3oNtAjq/xp4e1hEiwtLxYVPCO6YEdp2rFUo7Dt9ksWS/yhI0/1hhcGWbv5P
-         jOJpuFFVu5JUSKItYQYs2/63Gc1Y6Nr8ZhJnnOs5urfvZBHkmHbsKY6QYBbbmlVkrec/
-         P3VA==
-X-Gm-Message-State: AE9vXwOlvlMPK+VX3A5rcEU3dl3uGXKQxvvRCYhWeOiXP9hxRIw+QYzlWBvqH1Fuizoqhw==
-X-Received: by 10.28.65.84 with SMTP id o81mr10244865wma.83.1474287777882;
-        Mon, 19 Sep 2016 05:22:57 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id va3sm22909720wjb.18.2016.09.19.05.22.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 05:22:56 -0700 (PDT)
-Date: Mon, 19 Sep 2016 15:22:56 +0300
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: meter: ade7758_ring: Match alignment with open
- parenthesis
-Message-ID: <20160919122255.GA11414@fireworks>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=W5Ebjx6oyiTunuhMWAeHcKC3CQsWsK7GXLkMSrc1yq0=;
+        b=clSCUzP4sNFmQD+Df9e7ZFwIN9gxJMsIUfy+KyYmsTK5Jbk6xEgDnk8ClbTpSqHzlw
+         dT9/hjznukSLUHidM+XV9ynS1Qyb8ob3qD9A+/WVX0QL9EzUlAhtn6sw5AKL0hVVoleL
+         SvOXVNIbrZ5VAWbjx5A+fMcRyhlmV3uJyj41iYNLeIdeCym3THEmnB6KN+QJlujY0Xu2
+         yrO2MkkZVJhzezjCTJZO+M1nBzSeMIit1dTikoRJDymUnXPEWlqaGOtdabhmQ2QpCORw
+         5Xu133Ve2h8NeSRAUq1JqiB7gbPU7mSXl2cINPh5tFxPTmdzjB6Hd55CQFF8LOt2o7pz
+         1BuA==
+X-Gm-Message-State: AE9vXwNgP+n9A/fvRqbO6mXVVoN3+Hul0tggE3Xy7VnNSx9+lf1fBgOZZJs72+YJ1xSoHg5fNtRJRyKZwjJ6DA==
+X-Received: by 10.237.39.34 with SMTP id n31mr4699272qtd.55.1473875258732;
+ Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.12.131.134 with HTTP; Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
+In-Reply-To: <20160914170330.GA13018@kroah.com>
+References: <20160914150627.GA9648@life-desktop> <20160914170330.GA13018@kroah.com>
+From: Anchal Jain <anchalj109@gmail.com>
+Date: Wed, 14 Sep 2016 23:17:38 +0530
+Message-ID: <CAAbeOSvN_-nzQbK0G5hbKPcbyUUq7_-ERKk9-TXBYQSGCNaKYA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] drivers: bluetooth: bt3c_cs: Replace
+ simple_strtol with kstrtol
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: gustavo@padovan.org, outreachy-kernel@googlegroups.com, 
+	Johan Hedberg <johan.hedberg@gmail.com>
+Content-Type: multipart/alternative; boundary=94eb2c12577a3d7a10053c7b5339
 
-This patch indents the lines to match alignment with the open parenthesis.
-Also, it organizes the parameters on a single line, in case the
-modifications do not break the rule of 80 characters per line.
+--94eb2c12577a3d7a10053c7b5339
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
----
- drivers/staging/iio/meter/ade7758_ring.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+Thank you,
 
-diff --git a/drivers/staging/iio/meter/ade7758_ring.c b/drivers/staging/iio/meter/ade7758_ring.c
-index a6b76d4..57c213d 100644
---- a/drivers/staging/iio/meter/ade7758_ring.c
-+++ b/drivers/staging/iio/meter/ade7758_ring.c
-@@ -38,18 +38,14 @@ static int ade7758_write_waveform_type(struct device *dev, unsigned int type)
- 	int ret;
- 	u8 reg;
- 
--	ret = ade7758_spi_read_reg_8(dev,
--			ADE7758_WAVMODE,
--			&reg);
-+	ret = ade7758_spi_read_reg_8(dev, ADE7758_WAVMODE, &reg);
- 	if (ret)
- 		goto out;
- 
- 	reg &= ~0x1F;
- 	reg |= type & 0x1F;
- 
--	ret = ade7758_spi_write_reg_8(dev,
--			ADE7758_WAVMODE,
--			reg);
-+	ret = ade7758_spi_write_reg_8(dev, ADE7758_WAVMODE, reg);
- out:
- 	return ret;
- }
-@@ -94,7 +90,7 @@ static int ade7758_ring_preenable(struct iio_dev *indio_dev)
- 				 indio_dev->masklength);
- 
- 	ade7758_write_waveform_type(&indio_dev->dev,
--		indio_dev->channels[channel].address);
-+				    indio_dev->channels[channel].address);
- 
- 	return 0;
- }
--- 
-2.7.4
+From next time, I will keep this thing in my mind.
 
+On Wed, Sep 14, 2016 at 10:33 PM, Greg KH <gregkh@linuxfoundation.org>
+wrote:
+
+> On Wed, Sep 14, 2016 at 08:36:39PM +0530, Anchal Jain wrote:
+> > This patch remove the warning:
+> >
+> > WARNING: simple_strtol is obsolete, use kstrtol instead
+> >
+> > Generated by checkpatch.pl
+> >
+> > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> > ---
+> >  drivers/bluetooth/bt3c_cs.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> You must stay in drivers/staging/ for the outreachy application process.
+>
+> sorry,
+>
+> greg k-h
+>
+
+--94eb2c12577a3d7a10053c7b5339
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thank you,<br><br>From next time, I will keep this thing i=
+n my mind.<br></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quot=
+e">On Wed, Sep 14, 2016 at 10:33 PM, Greg KH <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:gregkh@linuxfoundation.org" target=3D"_blank">gregkh@linuxfounda=
+tion.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span cl=
+ass=3D"">On Wed, Sep 14, 2016 at 08:36:39PM +0530, Anchal Jain wrote:<br>
+&gt; This patch remove the warning:<br>
+&gt;<br>
+&gt; WARNING: simple_strtol is obsolete, use kstrtol instead<br>
+&gt;<br>
+&gt; Generated by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" targe=
+t=3D"_blank">checkpatch.pl</a><br>
+&gt;<br>
+&gt; Signed-off-by: Anchal Jain &lt;<a href=3D"mailto:anchalj109@gmail.com"=
+>anchalj109@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/bluetooth/bt3c_cs.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+</span>You must stay in drivers/staging/ for the outreachy application proc=
+ess.<br>
+<br>
+sorry,<br>
+<br>
+greg k-h<br>
+</blockquote></div><br></div>
+
+--94eb2c12577a3d7a10053c7b5339--
 
