@@ -1,65 +1,64 @@
 X-GM-THRID: 6330315407686107136
-X-Received: by 10.36.225.200 with SMTP id n191mr3750318ith.12.1473971265498;
-        Thu, 15 Sep 2016 13:27:45 -0700 (PDT)
+X-Received: by 10.31.140.136 with SMTP id o130mr91748vkd.10.1473891410078;
+        Wed, 14 Sep 2016 15:16:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.1 with SMTP id 1ls1822462otv.45.gmail; Thu, 15 Sep 2016
- 13:27:45 -0700 (PDT)
-X-Received: by 10.200.54.118 with SMTP id n51mr7862363qtb.29.1473971265202;
-        Thu, 15 Sep 2016 13:27:45 -0700 (PDT)
+Received: by 10.157.56.29 with SMTP id i29ls2136807otc.12.gmail; Wed, 14 Sep
+ 2016 15:16:49 -0700 (PDT)
+X-Received: by 10.13.247.69 with SMTP id h66mr3927466ywf.46.1473891409763;
+        Wed, 14 Sep 2016 15:16:49 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
-Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
-        by gmr-mx.google.com with ESMTPS id y77si501538ywd.7.2016.09.15.13.27.45
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by gmr-mx.google.com with ESMTPS id w124si58972ywc.4.2016.09.14.15.16.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 13:27:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
+        Wed, 14 Sep 2016 15:16:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qt0-x242.google.com with SMTP id 38so2006222qte.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:27:45 -0700 (PDT)
+Received: by mail-qk0-x242.google.com with SMTP id z143so2068284qka.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 15:16:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:from:date:message-id:subject:to;
-        bh=YgfjxVjL18x+e7Uij9sxaCofqH3ITxCmyWVGtW8Ompo=;
-        b=n84sGQm2RVnR16jH8WcWb6AeldjF12qrhW0tw8ghDn0K9VfXU+tdIy/QT7CGmIMthD
-         RO8yWd2ghqadY1en+8FzWW1nKcksIJm2Pfptudd6AqhUu2CLNXVlFIpFXJ0lUc2a50oE
-         scFPZmAzRJfCZ6UD0RWWIeTDFT2HXBPJX3f3DY9nHXkikS+GEDGZDKpOpgSKAY3bZCN3
-         XXwEEaXcY9TrgdbkYxPjwZyuIiAimAT1jCmVkISsjHD11YSgIkEyW0D2E278XHufAysR
-         3ZQJofbIASDgLmn0dbUkKuCJDB7BA/sE1uNgvD1KlKE2dt4v2Zpx/D5DcsFv2Ng7cMF+
-         XMfg==
+        bh=urElgy32qlA+SWFN4XJ6RZZIGKXDrOehT32NHYIIUeY=;
+        b=k24dyUdmHaiqrsa5c2f0D+mtpVdNEFiKuTuduQ65S3EeLjU4TMu1xPhs0holzxiRXW
+         VLZPhdyEi2PUFohjyhdna7T9u6YRqaqQgEwm7d/sC0xIty0eQc2GBIFDL+1JhfsWr4XM
+         fy+9PhlnDPWi36ID7RkzbdIUwf3VlZygqhA/enZZBN9JJlYUG6BbhL0WOXLusdFncJ5n
+         qVhj2ePAXTXKkPdudaHUWN2Maex6CWQvD4+RQgQlfBljA2ApkIhDG3Hr+JbHlRbdKKk/
+         +gZdtzM2e+NFfs9RXl7Unzu+edyBpgXM+7o7XF8RMP/r5l2lD7NKDbO4tOCsFIcUjsEV
+         DULg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=YgfjxVjL18x+e7Uij9sxaCofqH3ITxCmyWVGtW8Ompo=;
-        b=T1rnhEAlUg2m0jB9I+N27LtGxWokh0bfQTMXmB8py6ZcbqIYjLV1ZXoGTfD6wPmfT+
-         NwYv3ws6kPaOWKOPXyX79Bty8DAKn7m3c6/Mq0K9GHA0pezLouf1OEdtF39kM/hdKRwn
-         FSa1QDW1y9r6fgGoXEpiCDWcKlMg5rNGi22WHT5mvydpfZg3uI6QCUbCQpw8TQBmfPSX
-         bpoLsCBFm//A8d7rWIjPWp3GT1EYEr66ejZxSTN+V7KnfUbYLJpe817yk+4Z4HouUtC+
-         AUSdRcM9wZoDVSbKlSA0JkP4P9faBKtjMoFteZ+eGSrGrM/ObIjaB+kvNt/5MoGxTceL
-         Ffog==
-X-Gm-Message-State: AE9vXwMCeLjxo1Z2iq0jVHJRYe+B2JSkT4u25NA4WaGF8kfg963jQfw2QJAxtX4yu/KjXxlVDafDmbuoPZGbhg==
-X-Received: by 10.200.54.106 with SMTP id n39mr4973657qtb.50.1473971265024;
- Thu, 15 Sep 2016 13:27:45 -0700 (PDT)
+        bh=urElgy32qlA+SWFN4XJ6RZZIGKXDrOehT32NHYIIUeY=;
+        b=NJ5Oo4bDkJRkbhXGHN5i4hYYo0lZAPOF8uSTXcdQn6LN77+SzG1CzOBhXGy+Y9eJs0
+         nQl1qS+QFBnZe77aahS3nfrwLABUNo+fAtpRY9FD+n+mHMWrwTpFuXL3YE5rw+/J29r2
+         QyIYsbkl2Zb1XSji9RfHqzw/R3Pbt5rN1eJ0QGky5Pjo/1Ksc5+wJ2cwOVdlB6gRXg2p
+         kZXFA1GnMibsC0KTXniey1RwTxiLCkIb0bxkbCfF03vRxTvphBVbrmvf/oqFQBiI86sy
+         Ocl1/G7BWfEF8OD/64WL8Wu3cQqYzGsISXiVkBilWaUeJeKFkbIB2mcLqDyI0LZCzBKA
+         DlFw==
+X-Gm-Message-State: AE9vXwNDqXNRE8afowovxQ9VYJyF6LiL6fTtH8Ni2l8VzLpy6Y+KwI/z3WQw/yrlI3/84xMvntXDn4hWEY7eUg==
+X-Received: by 10.233.216.194 with SMTP id u185mr6072780qkf.173.1473891409613;
+ Wed, 14 Sep 2016 15:16:49 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.237.41.97 with HTTP; Thu, 15 Sep 2016 13:27:24 -0700 (PDT)
+Received: by 10.237.41.97 with HTTP; Wed, 14 Sep 2016 15:16:29 -0700 (PDT)
 From: Namrata A Shettar <namrataashettar@gmail.com>
-Date: Fri, 16 Sep 2016 01:57:24 +0530
-Message-ID: <CAFrQyDEq42Hj9-TX+KsQpKgXQqfrAie==Wuqh=qKn=jgiHeO3g@mail.gmail.com>
-Subject: [PATCH v2 4/6] staging: vt6656: rf: Add space around '-'
+Date: Thu, 15 Sep 2016 03:46:29 +0530
+Message-ID: <CAFrQyDGKFpOx1WE6f_3PbD8ipC6NxGuhBB-p97ruEGQ0_RHJ8w@mail.gmail.com>
+Subject: [PATCH 4/6] staging: vt6656: rf: Add space around '-'
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
 	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
 	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
 	Wolfram Sang <wsa-dev@sang-engineering.com>, 
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=001a1135a0e0a94137053c91adec
+Content-Type: multipart/alternative; boundary=94eb2c043d72e85935053c7f1547
 
---001a1135a0e0a94137053c91adec
+--94eb2c043d72e85935053c7f1547
 Content-Type: text/plain; charset=UTF-8
 
-Add space around '-' to resolve checkpatch issue.
-
+This patch fixes checkpatch issue by adding space around '-'.
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
  drivers/staging/vt6656/rf.c | 4 ++--
@@ -86,13 +85,14 @@ u32 channel)
 --
 2.7.4
 
---001a1135a0e0a94137053c91adec
+--94eb2c043d72e85935053c7f1547
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Add space around &#39;-&#39; to resolve checkpatch issue.<=
-br><br>Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashett=
-ar@gmail.com" target=3D"_blank">namrataashettar@gmail.com</a>&gt;<br>
+<div dir=3D"ltr">This patch fixes checkpatch issue by adding space around &=
+#39;-&#39;.<br>
+Signed-off-by: Namrata A Shettar &lt;<a target=3D"_blank" href=3D"mailto:na=
+mrataashettar@gmail.com">namrataashettar@gmail.com</a>&gt;<br>
 ---<br>
 =C2=A0drivers/staging/vt6656/rf.c | 4 ++--<br>
 =C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
@@ -118,10 +118,11 @@ _MAX_CHANNEL_24G)<br>
 =A0 =C2=A0power =3D priv-&gt;ofdm_pwr_tbl[channel - 1];<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<div><div><img src=3D"https://ssl.gstatic.com/=
-ui/v1/icons/mail/images/cleardot.gif"></div></div><div><br>
+ui/v1/icons/mail/images/cleardot.gif" class=3D"gmail-CToWUd"></div></div><d=
+iv><br>
 </div><span><font color=3D"#888888"><br>
 --<br>
-2.7.4</font></span><br></div>
+2.7.4</font></span></div>
 
---001a1135a0e0a94137053c91adec--
+--94eb2c043d72e85935053c7f1547--
 
