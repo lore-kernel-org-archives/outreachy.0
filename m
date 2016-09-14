@@ -1,25 +1,25 @@
 X-GM-THRID: 6329929865196732416
-X-Received: by 10.36.115.205 with SMTP id y196mr981974itb.2.1473831792266;
-        Tue, 13 Sep 2016 22:43:12 -0700 (PDT)
+X-Received: by 10.46.32.154 with SMTP id g26mr118116lji.3.1473831415944;
+        Tue, 13 Sep 2016 22:36:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.62.196 with SMTP id l187ls110990ioa.51.gmail; Tue, 13 Sep
- 2016 22:43:11 -0700 (PDT)
-X-Received: by 10.66.16.135 with SMTP id g7mr514769pad.27.1473831791340;
-        Tue, 13 Sep 2016 22:43:11 -0700 (PDT)
+Received: by 10.28.93.130 with SMTP id r124ls66585wmb.1.gmail; Tue, 13 Sep
+ 2016 22:36:55 -0700 (PDT)
+X-Received: by 10.194.119.196 with SMTP id kw4mr117079wjb.1.1473831415479;
+        Tue, 13 Sep 2016 22:36:55 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id 142si675355pfx.2.2016.09.13.22.43.09
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a126si158096wmd.1.2016.09.13.22.36.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 22:43:11 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 13 Sep 2016 22:36:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.30,332,1470693600"; 
-   d="scan'208";a="236363329"
+   d="scan'208";a="193053883"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Sep 2016 07:39:02 +0200
-Date: Wed, 14 Sep 2016 07:39:01 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Sep 2016 07:36:54 +0200
+Date: Wed, 14 Sep 2016 07:36:53 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Gargi Sharma <gs051095@gmail.com>
@@ -27,7 +27,7 @@ cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: octeon: remove multiple
  blank lines
 In-Reply-To: <20160913212001.3945-1-gs051095@gmail.com>
-Message-ID: <alpine.DEB.2.10.1609140737060.3395@hadrien>
+Message-ID: <alpine.DEB.2.10.1609140735330.3395@hadrien>
 References: <20160913212001.3945-1-gs051095@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
@@ -39,13 +39,15 @@ On Wed, 14 Sep 2016, Gargi Sharma wrote:
 
 > Correcting the commit message. Fixes the checkpatch issue Please don't use multiple blank lines.
 
-The part above the --- and after the first diff is what will end up in
-git, to be studied by other developers in the future.  So that part should
-always be put in a way that is most helpful for those people.  Between the
---- and the first diff disappears.  There you can put information that the
-future doesn't need to know about.
+You made the wrong choice here.  In the v2, there should be a commit
+message as though no one ever saw the previous version.  Then under the
+--- you should say what has changed.  It doesn't need to be very detailed.
+It could just be "v2: fixed the commit message".  Then one can check that
+the current commit message is ok, and one knows that the patch code has
+not changed.
 
 julia
+
 
 >
 > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
