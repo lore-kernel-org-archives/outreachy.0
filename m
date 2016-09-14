@@ -1,58 +1,51 @@
 X-GM-THRID: 6329929865196732416
-X-Received: by 10.25.146.210 with SMTP id u201mr125233lfd.0.1473832148087;
-        Tue, 13 Sep 2016 22:49:08 -0700 (PDT)
+X-Received: by 10.36.115.205 with SMTP id y196mr981974itb.2.1473831792266;
+        Tue, 13 Sep 2016 22:43:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.33.152 with SMTP id h24ls19083lji.4.gmail; Tue, 13 Sep 2016
- 22:49:07 -0700 (PDT)
-X-Received: by 10.25.43.76 with SMTP id r73mr122283lfr.9.1473832147701;
-        Tue, 13 Sep 2016 22:49:07 -0700 (PDT)
+Received: by 10.107.62.196 with SMTP id l187ls110990ioa.51.gmail; Tue, 13 Sep
+ 2016 22:43:11 -0700 (PDT)
+X-Received: by 10.66.16.135 with SMTP id g7mr514769pad.27.1473831791340;
+        Tue, 13 Sep 2016 22:43:11 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id p199si1761163wmd.1.2016.09.13.22.49.07
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 142si675355pfx.2.2016.09.13.22.43.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 22:49:07 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 13 Sep 2016 22:43:11 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.30,332,1470693600"; 
-   d="scan'208";a="193054689"
+   d="scan'208";a="236363329"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Sep 2016 07:49:06 +0200
-Date: Wed, 14 Sep 2016 07:49:06 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Sep 2016 07:39:02 +0200
+Date: Wed, 14 Sep 2016 07:39:01 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Gargi Sharma <gs051095@gmail.com>
 cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH v3] staging: octeon: remove multiple
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: octeon: remove multiple
  blank lines
-In-Reply-To: <20160914002652.12359-1-gs051095@gmail.com>
-Message-ID: <alpine.DEB.2.10.1609140748160.3395@hadrien>
-References: <20160914002652.12359-1-gs051095@gmail.com>
+In-Reply-To: <20160913212001.3945-1-gs051095@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609140737060.3395@hadrien>
+References: <20160913212001.3945-1-gs051095@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
 
+
+
 On Wed, 14 Sep 2016, Gargi Sharma wrote:
 
-> Fixes the checkpatch issue Please don't use multiple blank lines.
-> ---
-> Changes in v2
-> 	- Change the commit subject to :Correcting the commit
-> 	  message. Fixes the checkpatch issue Please don't use multiple
-> 	  blank lines.
-> ---
-> Changes in v3
-> 	- Make the commit message more clearer. Also, fixed the subject
-> 	  mistake in v2.
+> Correcting the commit message. Fixes the checkpatch issue Please don't use multiple blank lines.
 
-You only need one ---, no matter how much text you want to write.  It
-would be better for the v3 stuff to come first, since that is the most
-relevant for the person who has been following along.
+The part above the --- and after the first diff is what will end up in
+git, to be studied by other developers in the future.  So that part should
+always be put in a way that is most helpful for those people.  Between the
+--- and the first diff disappears.  There you can put information that the
+future doesn't need to know about.
 
 julia
-
-
 
 >
 > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
@@ -87,7 +80,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160914002652.12359-1-gs051095%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160913212001.3945-1-gs051095%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
