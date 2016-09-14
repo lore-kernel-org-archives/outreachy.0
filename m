@@ -1,53 +1,91 @@
 X-GM-THRID: 6330204600701812736
-X-Received: by 10.66.220.69 with SMTP id pu5mr2840528pac.32.1473872606887;
-        Wed, 14 Sep 2016 10:03:26 -0700 (PDT)
+X-Received: by 10.13.228.66 with SMTP id n63mr2413108ywe.57.1473865611416;
+        Wed, 14 Sep 2016 08:06:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.37.197 with SMTP id q63ls1508380ota.13.gmail; Wed, 14 Sep
- 2016 10:03:26 -0700 (PDT)
-X-Received: by 10.157.42.43 with SMTP id t40mr2697065ota.23.1473872606408;
-        Wed, 14 Sep 2016 10:03:26 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id um12si1365011pab.2.2016.09.14.10.03.26
+Received: by 10.107.6.227 with SMTP id f96ls411575ioi.27.gmail; Wed, 14 Sep
+ 2016 08:06:50 -0700 (PDT)
+X-Received: by 10.67.6.5 with SMTP id cq5mr2300728pad.5.1473865610557;
+        Wed, 14 Sep 2016 08:06:50 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id d184si601451itg.0.2016.09.14.08.06.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 10:03:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Wed, 14 Sep 2016 08:06:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B01F6904;
-	Wed, 14 Sep 2016 17:03:25 +0000 (UTC)
-Date: Wed, 14 Sep 2016 19:03:30 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Anchal Jain <anchalj109@gmail.com>
-Cc: gustavo@padovan.org, outreachy-kernel@googlegroups.com,
-	johan.hedberg@gmail.com
-Subject: Re: [Outreachy kernel] [PATCH] drivers: bluetooth: bt3c_cs: Replace
- simple_strtol with kstrtol
-Message-ID: <20160914170330.GA13018@kroah.com>
-References: <20160914150627.GA9648@life-desktop>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id n24so906382pfb.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 08:06:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=IGMKG9wwjLR76z3OZbJnJhx9uEsKg5Ck5C6ziRqceDs=;
+        b=s+4T7GreERFEc3Jlnug5u//6FbjQ/aFqVUDYGnKO7JzWErnWDZ0Ww6S9zzzYJv5RTw
+         JNUuE10tStlky3/rUfW8l8DZTvUFhDQnl7b7LXdvljD+eASoYJ/Md7p69qqLJBNLqMBa
+         rsIuq+UU7paAxiMc+lq9Cga6s1xdbjBEbrnWVqKW7Q8JuS/BBB9JmPU2RRFrdnTj16ku
+         C0T5kEtmTAFos5j+tOkUhi6PUsqPiBvlGXZdiqLjCPXfWiC3VgJQWnSiIS6dXVZoHWBl
+         OKEj5OUpwJTwafpKGkmIE1FNzX8aBID+B6df50wuulwxXqNHzKskr1Em4pjKscmy2mUf
+         CZMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=IGMKG9wwjLR76z3OZbJnJhx9uEsKg5Ck5C6ziRqceDs=;
+        b=I6rIVCJudeu4tXSvN1OBQDd3IHM/Y4Uq4yhLDsXhC8tiGmrSJfgN/ZR2btLrkUHbfR
+         XyNnXiUiGZYzwR8uupztsxXbkz9m2bcXGYFI6B1hUFCH94dN/dJ9egI0f1PznvoOj5vq
+         SugB+bME4jWmnujvWOU5d11kRMb2V6GCpUweFi4vxTvjLRLTTZW7eJBh/4LblcKWHwoj
+         5nROwwqhJgLvPbdvFnNkZjT/F5koCxmBsGLweKJQdgKQFby5K5Wj0ZmQnmeKckKZj3tl
+         G5iCfU7SmjUF8f38yW5/6ddnb3AesoWxOp3MFUCs1OYG/ydr/KT3qS+ztEDfvYU7zcST
+         yqkw==
+X-Gm-Message-State: AE9vXwM2dqhWWzkRD7zs8hEmNZojODiMRMOBM2zBaEeBsbBoLNIb/XuaBiymgjYEH7Nm8g==
+X-Received: by 10.98.74.77 with SMTP id x74mr5356201pfa.1.1473865610335;
+        Wed, 14 Sep 2016 08:06:50 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from life-desktop ([182.71.113.22])
+        by smtp.gmail.com with ESMTPSA id o87sm31975054pfa.16.2016.09.14.08.06.47
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 14 Sep 2016 08:06:49 -0700 (PDT)
+Date: Wed, 14 Sep 2016 20:36:39 +0530
+From: Anchal Jain <anchalj109@gmail.com>
+To: gustavo@padovan.org
+Cc: outreachy-kernel@googlegroups.com, johan.hedberg@gmail.com
+Subject: [PATCH] drivers: bluetooth: bt3c_cs: Replace simple_strtol with
+ kstrtol
+Message-ID: <20160914150627.GA9648@life-desktop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160914150627.GA9648@life-desktop>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Wed, Sep 14, 2016 at 08:36:39PM +0530, Anchal Jain wrote:
-> This patch remove the warning:
-> 
-> WARNING: simple_strtol is obsolete, use kstrtol instead
-> 
-> Generated by checkpatch.pl
-> 
-> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
-> ---
->  drivers/bluetooth/bt3c_cs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+This patch remove the warning:
 
-You must stay in drivers/staging/ for the outreachy application process.
+WARNING: simple_strtol is obsolete, use kstrtol instead
 
-sorry,
+Generated by checkpatch.pl
 
-greg k-h
+Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+---
+ drivers/bluetooth/bt3c_cs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/bluetooth/bt3c_cs.c b/drivers/bluetooth/bt3c_cs.c
+index 8165ef2..6bdb940 100644
+--- a/drivers/bluetooth/bt3c_cs.c
++++ b/drivers/bluetooth/bt3c_cs.c
+@@ -490,7 +490,7 @@ static int bt3c_load_firmware(struct bt3c_info *info,
+ 		memset(b, 0, sizeof(b));
+ 		for (tmp = 0, i = 0; i < size; i++) {
+ 			memcpy(b, ptr + (i * 2) + 2, 2);
+-			tmp += simple_strtol(b, NULL, 16);
++			tmp += kstrtol(b, NULL, 16);
+ 		}
+ 
+ 		if (((tmp + fcs) & 0xff) != 0xff) {
+-- 
+1.9.1
+
 
