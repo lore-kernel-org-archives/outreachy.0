@@ -1,88 +1,81 @@
-X-GM-THRID: 6263795726367588352
-X-Received: by 10.66.224.68 with SMTP id ra4mr15932019pac.45.1458403590585;
-        Sat, 19 Mar 2016 09:06:30 -0700 (PDT)
+X-GM-THRID: 6330206452247953408
+X-Received: by 10.157.40.151 with SMTP id s23mr2268828ota.39.1473866042492;
+        Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.103.240 with SMTP id y103ls1710105qge.59.gmail; Sat, 19
- Mar 2016 09:06:29 -0700 (PDT)
-X-Received: by 10.13.238.130 with SMTP id x124mr16376029ywe.53.1458403589768;
-        Sat, 19 Mar 2016 09:06:29 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id y20si2888283pfa.2.2016.03.19.09.06.29
+Received: by 10.157.20.137 with SMTP id d9ls1257921ote.26.gmail; Wed, 14 Sep
+ 2016 08:14:02 -0700 (PDT)
+X-Received: by 10.157.45.54 with SMTP id v51mr2310499ota.45.1473866042114;
+        Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id h124si1297492pfe.0.2016.09.14.08.14.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 19 Mar 2016 09:06:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id n5so22040438pfn.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 19 Mar 2016 09:06:29 -0700 (PDT)
+Received: by mail-pa0-x244.google.com with SMTP id oz2so865861pac.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 08:14:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=dlzlWwhDyoA4SzhZJhJ/twmxOIWG6L35xtQft9lAaCk=;
-        b=iThKjEL7YH6CFkR7YcHxzbdVpc9+ZXO8tlNbvDrh2d1t4dkBVuclvOCqq+dW56Ghus
-         yWtruq2KVRlN5jEWMa2uMUOhKgPVGlvcLdDKg83upo0dUyLjQq+SizDYBueHvXDuxSoF
-         xvJi934rVtMbTFN1FINjI4OlRudDO7gUERnNOrtu/9nMe7Yz7zaaaq1pjWlgVmbXpf/h
-         pfYYfbeR/ZVIygbSVjqw1Jvf0qophqjRjF2Or5v+VPzBqIDpNlZB/mnEsMbSd/TUSZWY
-         BumMAMzfFzoWzcLpwgLTux28/ZNnr2oviifVzyO8U0icD84Q7gbs5MhwZRka9a7gDk8Q
-         n4gw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=WNDsOVc3qIkWPLn3Y10LGc6MtZ+jQvCzxlwLxG3rj34=;
+        b=ROVdvzGA/6NbAWJf4D1vhHeyZasO579312zlkqcM7DtKZCVyB2WMubosCurm2jl/rt
+         ZNTxy/X1Lat0Ci3E4LAl3roSea0XNbWmgev2kDJSEDnHGzUvGw9J4odvbZTuChgeLi3C
+         NKAy8T1zX5k90N0CIxJpFZ+TwyvJjC+nak7qYBEwN19aW4HjM36w98KH+8zTo5ZQ8SNW
+         jpUjBVWXGRxIk3UaRIk/foQ7UH77xomZmVe4rBJofaNHhEmNCcOrDFp1/Hjx9riz9SxS
+         S4A9zhv3M9BzEmh4SEC9CHZtiTR3JsEk89K2mj3aO4TxLSjVvTAsAX/Xmtnt5rQGvLzL
+         zCbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=dlzlWwhDyoA4SzhZJhJ/twmxOIWG6L35xtQft9lAaCk=;
-        b=E5ft/Km0BH0Deqy4oBytcSEa5shW3itbKojzskchoCBnJaHoOVvhwxFmfcQEOzISuO
-         ViBZRMsX4fYzinE+iLZQRnSrSaQWPLHnz2RrFw4v9fFuK3IhyefahZ4m6qZEUgrN34Yh
-         R77KMWMHw6giONf6u+MY4wEumv/5Vmvv/KmF+1TYBzDgul25ec46BCyqJAn6v7BXfaVJ
-         PbeNDXKApbjsQGbk/2ulvMYOOttsRihOcMP1mv21IJxtiugHOZKZzvpdR3KTTpHPkpWe
-         jfpp3rHYa9EOzsGvwk8ZNvd1ObGSMG3LmY/7iUEaZV9oK5rOPB1Q51qI164K4PQBh1Zf
-         JZvQ==
-X-Gm-Message-State: AD7BkJKNSFdJb7WC8LBc2b4iL5+Kep3Zr0hK9smCxTX00nMXw8v0IZhpMWRsn3Haik81NA==
-X-Received: by 10.98.76.194 with SMTP id e63mr32711245pfj.89.1458403589590;
-        Sat, 19 Mar 2016 09:06:29 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.86])
-        by smtp.gmail.com with ESMTPSA id zu10sm29016237pab.31.2016.03.19.09.06.28
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=WNDsOVc3qIkWPLn3Y10LGc6MtZ+jQvCzxlwLxG3rj34=;
+        b=I43qocTYFOdnfGPuPSTWwUJjdY5jwbXlpbRRMPgvSNO8+D2s9qxryblmdpZBavMFSK
+         e8QFssy2bcur9b/Y6baTogNz/Ew2PiNdK2QsmcDK2f4j6eYyVt8HkDTehUHIvsFjTSZP
+         /El0VDrEGlh7wWe12naIRL0eGmwi7qSUGdbw+Q3HLYO1TJSDfC8gZ+Lszbld+Byi5HY/
+         dWFcvvy3xPTAWpBIE0sVHXrSrtF0CoVi8hGA6u4Qhxf03RFUgxLeHZEUuKg5MFSDSOB0
+         5OMVlloL3dbpBHwoQQ+ppcgSc9P+x3GIC5wt91ncrdNfHiLFneeOGMMcwQuY1/FOUzjy
+         /2NA==
+X-Gm-Message-State: AE9vXwPhDVQJ2lHvWzFoVNjLSdiys057qsckMwfxbVjr2ss0z9OL0b2BcafnPtK+k7/5SA==
+X-Received: by 10.66.185.232 with SMTP id ff8mr5444566pac.12.1473866041716;
+        Wed, 14 Sep 2016 08:14:01 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from life-desktop ([182.71.113.22])
+        by smtp.gmail.com with ESMTPSA id 70sm6176285pfn.46.2016.09.14.08.13.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 19 Mar 2016 09:06:29 -0700 (PDT)
-Date: Sat, 19 Mar 2016 14:37:37 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 14 Sep 2016 08:14:01 -0700 (PDT)
+Date: Wed, 14 Sep 2016 20:43:50 +0530
+From: Anchal Jain <anchalj109@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] Staging: rtl8188eu: hal_intf: Remove NULL comparision.
-Message-ID: <08dbf910fd604fdfd258b82d2ca8e53621f9c6f8.1458376695.git.bankarsandhya512@gmail.com>
-References: <cover.1458376695.git.bankarsandhya512@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 0/3] Fix multiple warnings
+Message-ID: <20160914151342.GA9765@life-desktop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1458376695.git.bankarsandhya512@gmail.com>
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove NULL comparision.
+/tmp/0001-drivers-bluetooth-bfusb-Line-over-80-characters-in-c.patch
+/tmp/0002-drivers-bluetooth-bfusb-Line-over-80-characters-in-f.patch
+/tmp/0003-drivers-bluetooth-bfusb-Line-over-80-characters-in-s.patch
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/rtl8188eu/hal/hal_intf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/hal_intf.c b/drivers/staging/rtl8188eu/hal/hal_intf.c
-index 85c17ef..fb7bacb 100644
---- a/drivers/staging/rtl8188eu/hal/hal_intf.c
-+++ b/drivers/staging/rtl8188eu/hal/hal_intf.c
-@@ -186,7 +186,7 @@ s32 rtw_hal_mgnt_xmit(struct adapter *adapt, struct xmit_frame *pmgntframe)
- 
- s32 rtw_hal_init_xmit_priv(struct adapter *adapt)
- {
--	if (adapt->HalFunc.init_xmit_priv != NULL)
-+	if (adapt->HalFunc.init_xmit_priv)
- 		return adapt->HalFunc.init_xmit_priv(adapt);
- 	return _FAIL;
- }
+Anchal Jain (3):
+  drivers: bluetooth: bfusb: Line over 80 characters in conditional
+    stataments
+  drivers: bluetooth: bfusb Line over 80 characters in function
+  drivers: bluetooth: bfusb: Line over 80 characters in statments
+
+ drivers/bluetooth/bfusb.c | 39 ++++++++++++++++++++++++++-------------
+ 1 file changed, 26 insertions(+), 13 deletions(-)
+
 -- 
-1.8.3.4
+1.9.1
 
 
