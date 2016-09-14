@@ -1,96 +1,80 @@
-X-GM-THRID: 6257160535052124160
-X-Received: by 10.107.153.197 with SMTP id b188mr273668ioe.27.1456858714074;
-        Tue, 01 Mar 2016 10:58:34 -0800 (PST)
+X-GM-THRID: 6330165032612003840
+X-Received: by 10.28.152.87 with SMTP id a84mr519372wme.7.1473856555032;
+        Wed, 14 Sep 2016 05:35:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.29.53 with SMTP id a50ls747366qga.11.gmail; Tue, 01 Mar
- 2016 10:58:33 -0800 (PST)
-X-Received: by 10.129.102.215 with SMTP id a206mr18983222ywc.40.1456858713609;
-        Tue, 01 Mar 2016 10:58:33 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id ff2si4975818pad.2.2016.03.01.10.58.33
+Received: by 10.28.63.138 with SMTP id m132ls243417wma.18.canary; Wed, 14 Sep
+ 2016 05:35:54 -0700 (PDT)
+X-Received: by 10.28.152.87 with SMTP id a84mr519365wme.7.1473856554227;
+        Wed, 14 Sep 2016 05:35:54 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e21si296022wmc.2.2016.09.14.05.35.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 10:58:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Wed, 14 Sep 2016 05:35:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 184so5633965pff.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 10:58:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=pn5N/0oM1r1DEqpTS1vUbJEcW73rt1sDNN14A8Frlwg=;
-        b=cTbuPqeX/LLOlc5RRj4bVCK6NvZ+T4fwUbGIm8MuM3Y87o2d2m1uVJoZkqmShklf9P
-         6pxkADWKg2mLcCT8FcwuC8m2CwmWvBldH9bdZepGtP9Gqza82RczMmdtVKwCA3Ua1kgs
-         8e+W4hkraTEQ/XZwpIG8jmfwryjdQdlD05uyFD+Uf6Z7N0FLwb+XHLLgbAVqgSh9Tjll
-         O3F/fYAvLcXYwzPLOFTJNl2GJsxNKevlMPJ6RWQE04zKKFqJEizxYNiIkISJCvizoL4B
-         CXJObLB6rZvYxI2jngLpOzJ1V4N4rthDBGnnfddo7KFJLPQA4Fzi0jBuLqOngKGH80J0
-         QACA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=pn5N/0oM1r1DEqpTS1vUbJEcW73rt1sDNN14A8Frlwg=;
-        b=KoE4PRShQcssBZunr+uZp/ag3jMMljcGKOLKH6xJqJxIqD+jbv/cMJ9HqYYhEKJf30
-         RIUO7opmCF9KVJwh62KMirll1be/jkiNvAxH+48fgu+3N0U1JuG7/AsGHCFZZXUjzOiD
-         tcDtCKpplRMANUEmMCGVV2aESf/HimgU/dORqbyRYqOxbTZGkjxLSeUDNKzl6TAe16kG
-         ZxLE+RnYZzDOCeF0dllLnCSaKFHVtiw2WXPjRAWVpA+CmUwFhCiCZVzu5IAWbyI8cCWJ
-         ZUCpjfE6w+I4UJGshJfZ5VyoeVIC1miW6KP9vGpciH/tiCwIUcLfvHIaavdjjoz7UtLs
-         uCQQ==
-X-Gm-Message-State: AD7BkJImwVcEn6XogX5lR/ab8KRx9EocKuByQq0ily/XEAqQtKDQf1YRDWBGfpUFEm1dWg==
-X-Received: by 10.98.34.212 with SMTP id p81mr32036398pfj.23.1456858713417;
-        Tue, 01 Mar 2016 10:58:33 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from localhost.localdomain (or-67-232-71-235.dhcp.embarqhsd.net. [67.232.71.235])
-        by smtp.gmail.com with ESMTPSA id xu1sm47323718pab.31.2016.03.01.10.58.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 10:58:32 -0800 (PST)
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: jic23@kernel.org,
-	knaack.h@gmx.de,
-	lars@metafoo.de,
-	pmeerw@pmeerw.net,
-	linux-iio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Michael.Hennerich@analog.com,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org
-Subject: [RFC PATCH 0/2] iio: introduce iio_{claim|release}_direct_mode()
-Date: Tue,  1 Mar 2016 10:58:19 -0800
-Message-Id: <cover.1456794364.git.amsfield22@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,333,1470693600"; 
+   d="scan'208";a="193114523"
+Received: from unknown (HELO hadrien.local) ([128.93.86.88])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Sep 2016 14:35:52 +0200
+Date: Wed, 14 Sep 2016 14:35:41 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com, 
+    teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: Use x instead of
+ x != NULL
+In-Reply-To: <20160914123349.GA3770@sandhya>
+Message-ID: <alpine.DEB.2.10.1609141435030.3092@hadrien>
+References: <20160914123349.GA3770@sandhya>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patchset introduces two helper functions to simplify driver code
-requiring the device to be locked in direct mode during execution of a
-code path. The staging driver ad7192 is updated to demonstrate usage.
 
-This could be applied to approximately 18 known cases where the driver
-is holding the lock in direct mode.  Unknown cases might be those that
-should, but don't, hold the lock.
 
-Alternate implementation: Generalize to support a claim on any mode.
-Do iio_claim_mode(device,mode) where if the device is in *mode*, it
-is guaranteed to stay that way until release is called. I considered
-and rejected this option because a) not sure other modes would ever
-need to be locked, and b) the semantic improvement is less when it
-is generalized.
- 
-This patchset was inspired by a discussion on linux-iio:
-http://www.spinics.net/lists/linux-iio/msg18540.html
+On Wed, 14 Sep 2016, Sandhya Bankar wrote:
 
-Alison Schofield (2):
-  iio: core: implement iio_{claim|release}_direct_mode()
-  staging: iio: adc7192: use iio_{claim|release}_direct_mode()
+> Use x instead of x != NULL .
+> This patch removes the explicit NULL comparisons.This issue is found by checkpatch.pl script .
+> CHECK: Comparison to NULL could be written "pCurrentDviCtrl->pfnInit"
 
- drivers/iio/industrialio-core.c  | 39 +++++++++++++++++++++++++++++++++++++++
- drivers/staging/iio/adc/ad7192.c | 24 +++++++++---------------
- include/linux/iio/iio.h          |  2 ++
- 3 files changed, 50 insertions(+), 15 deletions(-)
+OK for the patch, but please put a space after the end of each sentence,
+and don't allow the lines in your commit message to go over 80 characters.
 
--- 
-2.1.4
+julia
 
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_dvi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
+> index a4a2550..8a39e0e 100644
+> --- a/drivers/staging/sm750fb/ddk750_dvi.c
+> +++ b/drivers/staging/sm750fb/ddk750_dvi.c
+> @@ -45,7 +45,7 @@ int dviInit(
+>  	dvi_ctrl_device_t *pCurrentDviCtrl;
+>
+>  	pCurrentDviCtrl = g_dcftSupportedDviController;
+> -	if (pCurrentDviCtrl->pfnInit != NULL) {
+> +	if (pCurrentDviCtrl->pfnInit) {
+>  		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect, dualEdgeClkSelect, hsyncEnable,
+>  						vsyncEnable, deskewEnable, deskewSetting, continuousSyncEnable,
+>  						pllFilterEnable, pllFilterValue);
+> --
+> 1.8.2.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160914123349.GA3770%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
