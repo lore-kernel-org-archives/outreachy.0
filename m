@@ -1,92 +1,66 @@
 X-GM-THRID: 6330257505089748992
-X-Received: by 10.157.7.7 with SMTP id 7mr6134832ote.50.1473947343906;
-        Thu, 15 Sep 2016 06:49:03 -0700 (PDT)
+X-Received: by 10.36.68.15 with SMTP id o15mr6483268ita.1.1473878936236;
+        Wed, 14 Sep 2016 11:48:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.8 with SMTP id j8ls380787ita.11.gmail; Thu, 15 Sep 2016
- 06:49:01 -0700 (PDT)
-X-Received: by 10.107.12.71 with SMTP id w68mr6143151ioi.0.1473947341332;
-        Thu, 15 Sep 2016 06:49:01 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 7si1108563pfw.1.2016.09.15.06.49.01
+Received: by 10.107.13.203 with SMTP id 194ls558607ion.11.gmail; Wed, 14 Sep
+ 2016 11:48:55 -0700 (PDT)
+X-Received: by 10.36.253.202 with SMTP id m193mr3566085ith.11.1473878935235;
+        Wed, 14 Sep 2016 11:48:55 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id c20si1562677pfc.1.2016.09.14.11.48.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 06:49:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Wed, 14 Sep 2016 11:48:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id p2so2155223pap.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 06:49:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=T87PZtE7yfuk99D2jTtmlF8oNfq3KOPLp5gYcIWhsNc=;
-        b=mF99BkSlSfDgHj/amoGia40lOiVyiGTC8QrS0qO22Lf1ugXEilXacH9LgC2416l+MP
-         aM+zuVgfQ7DaZ7Qjo/Ar4jL10Mv3BEBZvgMhfMlvqmeHAOANK0pDlzZ/yMSlR8ur0FhM
-         sp7TJQ0IWcRtR9h1l/VZo2JhqVU/Rwf+spg9DLNkuNj465Rarmpq0V34fTbmDuX8zWWD
-         h4F7cv9HwlEx0Mo0KiNACiFzreuFcpXckna7DDleRRoDlF3t7mPwNGl4yE6ZF+jXCxdw
-         ZVvr63BIh9owQMUFHnJROeZsvEsJZrK5LmjBlteGSt5eoGHg8CkF7MQ2wCqJYH0HsrJS
-         Wj9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=T87PZtE7yfuk99D2jTtmlF8oNfq3KOPLp5gYcIWhsNc=;
-        b=BcDdUHi/ZyGZu31Qdbw+PrpDz7RcR19eu0socvTVJPPkqQfqH2YuORbv0SpkJLFeix
-         0zGDet5LHOf3Guq84DN6XT4wGdx7v1djwQi3ptrvj140wOPGDkPQBXZnKkIMp53f/RIv
-         ENMdM+2cizJPDm0cMGwvnpYB93gOQ6NkNVQjcS+7RQwcKrSnmQbbcKri1UyA0YZgFygr
-         KEG3n/rEp8mHfTDavH/eYVXXPl1mBXfDUZwthPRnhyOCxHVpmuEmXvqZKqCU8CyBOEqs
-         f+PsKo3p97tXHyeZH6uhzghYEiLfKe+NUOoohhyuv0NqOaxYO7LIjZxqBUpK9oWBc6O2
-         D7YQ==
-X-Gm-Message-State: AE9vXwMmLNPXXShxAnOaocVjlfPZ9gWqNJyHc8PZEkovzmNLudY7rvigFMbPemb50gj6JA==
-X-Received: by 10.66.190.161 with SMTP id gr1mr14630380pac.156.1473947341018;
-        Thu, 15 Sep 2016 06:49:01 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.218])
-        by smtp.gmail.com with ESMTPSA id i7sm5511225paf.9.2016.09.15.06.48.59
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Sep 2016 06:49:00 -0700 (PDT)
-Date: Thu, 15 Sep 2016 19:18:52 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: gregkh@linuxfoundation.org
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 5E41A996;
+	Wed, 14 Sep 2016 18:48:54 +0000 (UTC)
+Date: Wed, 14 Sep 2016 20:44:31 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Anchal Jain <anchalj109@gmail.com>
 Cc: marvin24@gmx.de, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: nvec: Remove spaces for indentation
-Message-ID: <20160915134830.GA3896@life-desktop>
+Subject: Re: [PATCH] staging: nvec: Remove spaces for indentation
+Message-ID: <20160914184431.GA14873@kroah.com>
+References: <20160914183147.GA5607@life-desktop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20160914183147.GA5607@life-desktop>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-This patch fix warning
-WARNING: Statements should start on a tabstop
-generated by checkpatch.pl tool.
+On Thu, Sep 15, 2016 at 12:01:58AM +0530, Anchal Jain wrote:
+> This patch fix warning 
+> 
+> WARNING: Statements should start on a tabstop
+> 
+> generated by checkpatch.pl tool.
+> 
+> 
+> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> ---
+> 
+> 
+>  drivers/staging/nvec/nvec_power.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/nvec/nvec_power.c b/drivers/staging/nvec/nvec_power.c
+> index fcbb0fa..09befbb 100644
+> --- a/drivers/staging/nvec/nvec_power.c
+> +++ b/drivers/staging/nvec/nvec_power.c
+> @@ -442,7 +442,7 @@ static struct platform_driver nvec_power_driver = {
+>  	.remove = nvec_power_remove,
+>  	.driver = {
+>  		   .name = "nvec-power",
+> -		   }
+> +		}
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
+This should go back a tab, and the .name line should be on a tab as
+well.
 
-	changes in v2:
-		-Remove a tab in a patch
+thanks,
 
- drivers/staging/nvec/nvec_power.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/nvec/nvec_power.c b/drivers/staging/nvec/nvec_power.c
-index fcbb0fa..3b144a9 100644
---- a/drivers/staging/nvec/nvec_power.c
-+++ b/drivers/staging/nvec/nvec_power.c
-@@ -442,7 +442,7 @@ static struct platform_driver nvec_power_driver = {
- 	.remove = nvec_power_remove,
- 	.driver = {
- 		   .name = "nvec-power",
--		   }
-+	}
- };
- 
- module_platform_driver(nvec_power_driver);
--- 
-1.9.1
-
+greg k-h
 
