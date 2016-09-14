@@ -1,89 +1,80 @@
 X-GM-THRID: 6330275775734874112
-X-Received: by 10.107.10.167 with SMTP id 39mr3754055iok.14.1473882333472;
-        Wed, 14 Sep 2016 12:45:33 -0700 (PDT)
+X-Received: by 10.107.152.132 with SMTP id a126mr3885000ioe.28.1473882183643;
+        Wed, 14 Sep 2016 12:43:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.21.49 with SMTP id u46ls1892032otf.43.gmail; Wed, 14 Sep
- 2016 12:45:30 -0700 (PDT)
-X-Received: by 10.13.221.86 with SMTP id g83mr3225525ywe.45.1473882330377;
-        Wed, 14 Sep 2016 12:45:30 -0700 (PDT)
+Received: by 10.107.131.195 with SMTP id n64ls604913ioi.36.gmail; Wed, 14 Sep
+ 2016 12:43:03 -0700 (PDT)
+X-Received: by 10.107.143.9 with SMTP id r9mr3827298iod.34.1473882182973;
+        Wed, 14 Sep 2016 12:43:02 -0700 (PDT)
 Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id c20si1604343pfc.1.2016.09.14.12.45.30
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id z4si1492641pam.0.2016.09.14.12.43.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 12:45:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Wed, 14 Sep 2016 12:43:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id pp5so1129561pac.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 12:45:30 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id 128so1181437pfb.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 12:43:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=27QEAekRoclnpebUcjS+tH9vKv6fjShNJdXP1xtnhq8=;
-        b=U6BxJYEJ7NQM1vSA9DMPqKaxzlY7jEJP6COJLhqwKXa4jwH2zi/bWSFj9jWB0OFTgQ
-         d58RGQJWNff8oWKNclHchNLtU/ZuFj/zZzdISIQTnBWkOwnEUbgVSikqWw/6IbuGqBvp
-         K2hZtxdAWJGkCE/Vn3NZZQSJHtraa/wAL7OQ6Lo7mi1b6VHuTT5Cvo1dI9nS1YhIczYF
-         h6cWB2FA2YD8+KM9PnCcRsaQbPMXbQ5ooU+U7cXfiNir8E1y7eC2dCNWINtK0hxRsAbO
-         VIZ0VO29yxK3+tSe3aeZfYInN6VMDykTu95sslzvL+qJ+6CnvlEt675PkY6VrM66eEI4
-         pQ+w==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HEndWpAIIBIJx3Ioc6AO4eummViDyD1amUABVYRcjkM=;
+        b=zQ+K21rKTWkvrQQEF2QHHMXOcThBfNPkmLYX7jBN21DqeZEY88CePrh+21BSDYVoQd
+         nFdNN64tsN1F1Rlc6DiEX2zFIiEw1ycsVg6ASsoTdg/mhbC9vdAvE27Vt9ltXWM2vam8
+         0Krq2ZRqeTt8ys3xYOWEc5NaVoiGGdLJEZ7x3X8kKkvZNCA3G6/Y5Ies9FCVX3xW/7Ts
+         LfuTYEKL+BE1QVr/UmJVjUBQ9ZvCSB48x2yYXAVUCLQuU/KqmfM8dvo1a9XHafhJNgsm
+         Nj07lp4sxYg26jZQ48j7K3tbgsJtly3m65f8tkYqXReSoKt6AH0ljO7tbgJJhdbJN4eW
+         AtQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=27QEAekRoclnpebUcjS+tH9vKv6fjShNJdXP1xtnhq8=;
-        b=X0lirSxdaVtjx6+vnahgS3Q4pJnJ9nIAkniYGrS8erDm1eLc9tP41pz7TaPEIjvbG5
-         qh/uiMs+aih/rLfyPAvbSYJ/IWQJfvpwnjM0EE3of2l8Z052Zm4KaNVvYxNJRYBbqFFi
-         oLttSkIlminM/tsyDkz4+daXSp+EaY2UEI4zb7m1oEnE50iG5hNAEICDVMAjWn7XxBHV
-         mRN3xkxckrASwDVHWU739JlflPc2JWyFNx2XrWKHkVmBfaoJ+fPu2rnx2Pam1QbFP6Mw
-         K/+c1m6WWv6ylrj0bn0EXUhll/mxw0JrjgvrWtf90jilvl77N6YcQQRRfPsFa6Y7etb6
-         x3BA==
-X-Gm-Message-State: AE9vXwPmOw3y5XWjp/vaWOaRX0Z7PXfz0m6yo7m7u/5+aYm0AhfBOBjOnNyNwn69cCKOPA==
-X-Received: by 10.66.127.38 with SMTP id nd6mr7719168pab.74.1473882326840;
-        Wed, 14 Sep 2016 12:45:26 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=HEndWpAIIBIJx3Ioc6AO4eummViDyD1amUABVYRcjkM=;
+        b=iHCwZ1NpJgw8kmIy+mXUPor42BSq8uAcEX4BZpFdL2xSdwAIMz08FfJ1/Bj1x4VCNs
+         qc3FW0Aq+HQr/xQQWw1CiO8z7FFGNJTD6cvT+fO2GnoiNGNFSo+FJG+EsDOREQdI9tzw
+         eSTxNdIrUx3LKSGcLOk5VHrumJoVy5bbNhML9deb61eI1/hfpu64plyZVjT99gW08nfB
+         PNkHwSkrkWCRQcXTFOpN+1xKIFNMvMls29ZYPH8vu7iGOVoDTTX5j1N1RDGvFTdnjpn5
+         6LqxepQNaUIUK4P/12mBim6dcdIr7/z4eaMLJTIjW77vSL8nxoCmHocF1woyWESKl5Vo
+         lskg==
+X-Gm-Message-State: AE9vXwNLH6RoM0txlH9YVkqhB5iPLjRdA7JkrZXgZBWCn4Rg38seiC7j6JMXpkPJgY7rcw==
+X-Received: by 10.98.88.131 with SMTP id m125mr7621977pfb.63.1473882182590;
+        Wed, 14 Sep 2016 12:43:02 -0700 (PDT)
 Return-Path: <karniksayli1995@gmail.com>
 Received: from sayli-HP-15-Notebook-PC ([182.58.240.22])
-        by smtp.gmail.com with ESMTPSA id tm1sm7313900pac.23.2016.09.14.12.45.20
+        by smtp.gmail.com with ESMTPSA id 3sm39970744pfz.33.2016.09.14.12.42.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 12:45:25 -0700 (PDT)
-Date: Thu, 15 Sep 2016 01:15:10 +0530
+        Wed, 14 Sep 2016 12:43:02 -0700 (PDT)
+Date: Thu, 15 Sep 2016 01:12:48 +0530
 From: sayli karnik <karniksayli1995@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 1/6] staging: ks7010: ks7010_sdio.c: Use <linux/atomic.h>
- instead of <asm/atomic.h>
-Message-ID: <4125e2f478c28ca98e9040948ac2d953d7b69593.1473877138.git.karniksayli1995@gmail.com>
-References: <cover.1473877138.git.karniksayli1995@gmail.com>
+Subject: [PATCH 0/6] staging: ks7010: ks7010_sdio.c: Fix multiple checkpatch
+ warnings
+Message-ID: <cover.1473877138.git.karniksayli1995@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1473877138.git.karniksayli1995@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The patch replaces #include <asm/atomic.h> with #include <linux/atomic.h> as
-suggested by checkpatch.pl.
+This patchset fixes several checkpatch issues detected in the ks7010_sdio.c
+file of the ks7010 driver.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/ks7010/ks7010_sdio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+sayli karnik (6):
+  Use <linux/atomic.h> instead of <asm/atomic.h>
+  Remove braces following single statement blocks
+  Remove space after '(' and before ')'
+  Remove unnecessary blank lines
+  Remove the space after a type cast
+  Remove the null check before kfree
 
-diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
-index 129e203..36e6734 100644
---- a/drivers/staging/ks7010/ks7010_sdio.c
-+++ b/drivers/staging/ks7010/ks7010_sdio.c
-@@ -14,7 +14,7 @@
- #include <linux/mmc/card.h>
- #include <linux/mmc/sdio_func.h>
- #include <linux/workqueue.h>
--#include <asm/atomic.h>
-+#include <linux/atomic.h>
- 
- #include "ks_wlan.h"
- #include "ks_wlan_ioctl.h"
+ drivers/staging/ks7010/ks7010_sdio.c | 75 +++++++++++++++---------------------
+ 1 file changed, 32 insertions(+), 43 deletions(-)
+
 -- 
 2.7.4
 
