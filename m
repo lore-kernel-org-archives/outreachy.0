@@ -1,64 +1,64 @@
 X-GM-THRID: 6330315423850954752
-X-Received: by 10.98.26.8 with SMTP id a8mr7911278pfa.4.1473971273768;
-        Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
+X-Received: by 10.66.148.129 with SMTP id ts1mr3759263pab.13.1473891414567;
+        Wed, 14 Sep 2016 15:16:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.19 with SMTP id x19ls1333400ioi.43.gmail; Thu, 15 Sep
- 2016 13:27:53 -0700 (PDT)
-X-Received: by 10.98.205.131 with SMTP id o125mr7891161pfg.12.1473971273407;
-        Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
+Received: by 10.107.48.1 with SMTP id w1ls722040iow.4.gmail; Wed, 14 Sep 2016
+ 15:16:54 -0700 (PDT)
+X-Received: by 10.98.91.7 with SMTP id p7mr3972268pfb.6.1473891414139;
+        Wed, 14 Sep 2016 15:16:54 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
-Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
-        by gmr-mx.google.com with ESMTPS id c75si422154ywh.0.2016.09.15.13.27.53
+Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
+        by gmr-mx.google.com with ESMTPS id w124si59072ywc.4.2016.09.14.15.16.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
+        Wed, 14 Sep 2016 15:16:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x242.google.com with SMTP id z143so4127555qka.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
+Received: by mail-qt0-x242.google.com with SMTP id 11so998398qtc.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 15:16:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:from:date:message-id:subject:to;
-        bh=sn72v/XJmjua94VdIPlbsOhgvjAcBDlUxqG/Gp2tKww=;
-        b=T12up3HBbWJYK4yi6LksHxj5eo+UR36RGs8n/+wTEg8CatG26B3T5Mu7q/M9kcyKqZ
-         D/IJw20iHGS5x1nSnbWPE0ujLmKExs687pCL0SYlrn23GAixKqmchSw1GZ9Gxm7ZsV5X
-         tAOh9p6RKq2ikm5Z3wSlHwdSt1LiGTQRJ9eL8/e/oTkguYlSVs1FlOFSO3O6gC3Owk3A
-         KxX62FC9dyRaysKBcvfZ9r/J5Bs64LV7YQ1PJoZUSsT+CVs0W62pFhh9v34e228bRJlf
-         PrAbpn4lS4GgBt8u67NfwNKnD/BsvsP2IS/wPMvVJLdUDfWsX6W4QPMSpWp4QEAueFcZ
-         PRjg==
+        bh=skuN/aiOx4h4qMTR0CJLqbRijPMfQJv0rZr1wQb3UIU=;
+        b=iH5faYkRgT1qXlZCF+35vZHANco3ph8JdO9vQFLS+WsmaX8Qwy05Cn4AXn/QZsq2yi
+         UKhhMhmcZhEGJ+J7rUVfHhE+F3/RXyw47ZrMr2Hu2OMA6f7fJ51mgBfS7SYHK2DxoLRt
+         IVt9e+YmYQQoFGQbWvqH0mZaux5R5Dsv3CGUboidbu19ohFmnHxzbO8puvB5eP1njzkC
+         4cTh+zZplc55D/0ojeUbiShi7qo/dQ3vpbMFwNQkVQ1bcipk6RHjitOFyDkdV5P7h8uo
+         gZeyxlAHwRwclu4HsLXhbYWkErczO+RToGnQIQ9bng1HR65EcS+83qrfDw2TxXhM/Nhj
+         Z3fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=sn72v/XJmjua94VdIPlbsOhgvjAcBDlUxqG/Gp2tKww=;
-        b=EYKGWY3oBuz2Q+LsTcKpeWFbhqxefu+UiCWLwewKGF7fcmyOCUIKnaWqYzxMfwndLt
-         NpyvC7B9W7EiaZUtLpnd6v5lD1aLeuKr00iVtlsAcqgdvdVhKJ23Sbu5oimVeJLPvB9i
-         cSOy96tAZRCSaxw+332GRwm7TdgikfZcK4shJ8qqaKX/XBmJIE9yr+o7Qm/Th1zCYVfR
-         uTsOp+h18oz6fCsKVV6b+T8LPXuBr6JyjLzhfTyGgUVHhdW/fkia4/l6Zx4Gp+UwyUVs
-         2lkwnsJjART5CoD781qk5u2wPhYQeAcplX1jMcSYnGxtK7x/DNqxoFNfM+Yy0I9Xo+kt
-         HoKw==
-X-Gm-Message-State: AE9vXwNZM1KbzyUjkxadsPCL5/uNzM9VGESGhzDiAfai1RNfgwkRHU7r55C18+1GrWgC3rR5v4HnpEOK9DHqww==
-X-Received: by 10.55.94.4 with SMTP id s4mr2811013qkb.314.1473971273205; Thu,
- 15 Sep 2016 13:27:53 -0700 (PDT)
+        bh=skuN/aiOx4h4qMTR0CJLqbRijPMfQJv0rZr1wQb3UIU=;
+        b=iJrASZUb5948YZf3HPhNjJ3kUdCLbNbTU8oi6CZwDwUFJBqzCb4olRaPKqX8FE3XxU
+         4s5fzlA+YvSXABjW+8I3yTOuOlguk1QVlXsaxLzanKMLDSUD2MtcvlhGFdKq7Prj8pVQ
+         pUK8nzl3sUbJ63cJRylavD5oy1UHYCSpERevQZStqixm+Zt3NszRrTjX3d9UrHHRWIrH
+         SR16yvjZvzGjnNmkY3ID+d1jsPI1/Upu+k3glcLR7tsDehW8qxFDTNEcw4tIfC5olqLs
+         6Av/TPt+mASpvysp9wqMiELnHx1jQWez/mpb9IzKjQbtjSPQQcCk6pKemrDSFK4sSSdu
+         O2pQ==
+X-Gm-Message-State: AE9vXwPD50OOrjBPG1ExJnws5r6it086pPsNjUrS7dhamVtedWuqHeEVfTeUMZOB0p8KjKL6aduFq8z71uoGaw==
+X-Received: by 10.200.44.75 with SMTP id e11mr6174780qta.9.1473891413899; Wed,
+ 14 Sep 2016 15:16:53 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.237.41.97 with HTTP; Thu, 15 Sep 2016 13:27:32 -0700 (PDT)
+Received: by 10.237.41.97 with HTTP; Wed, 14 Sep 2016 15:16:33 -0700 (PDT)
 From: Namrata A Shettar <namrataashettar@gmail.com>
-Date: Fri, 16 Sep 2016 01:57:32 +0530
-Message-ID: <CAFrQyDFttaD5iPr=CCcVXuVxGWaApnL1BYJwXh-fM0o=H1ufkw@mail.gmail.com>
-Subject: [PATCH v2 5/6] staging: vt6656: rxtx: Remove unneccessary blank lines
+Date: Thu, 15 Sep 2016 03:46:33 +0530
+Message-ID: <CAFrQyDGHJz60G3pbffKPO35ndEnoGyiBKWg6eekk9DuvUbA6Lw@mail.gmail.com>
+Subject: [PATCH 5/6] staging: vt6656: rxtx: Remove unneccessary blank lines
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
 	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
 	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
 	Wolfram Sang <wsa-dev@sang-engineering.com>, 
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=001a114e632a2610d8053c91ae92
+Content-Type: multipart/alternative; boundary=001a1143184629c360053c7f167e
 
---001a114e632a2610d8053c91ae92
+--001a1143184629c360053c7f167e
 Content-Type: text/plain; charset=UTF-8
 
-Remove unnecessary blank lines to fix checkpatch issue.
+This patch fixes checkpatch issue, removing unneccessary blank lines.
 
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
@@ -97,7 +97,7 @@ vnt_usb_send_context *tx_context,
                 memcpy(key_buffer, tx_key->key, WLAN_KEY_LEN_CCMP);
 
                 break;
-      }
+        }
 -
  }
 
@@ -106,12 +106,12 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
 --
 2.7.4
 
---001a114e632a2610d8053c91ae92
+--001a1143184629c360053c7f167e
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Remove unnecessary blank lines to fix checkpatch issue.<br=
-><div>
+<div dir=3D"ltr">This patch fixes checkpatch issue, removing unneccessary b=
+lank lines.<br>
 <br>
 Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashettar@gmai=
 l.com" target=3D"_blank">namrataashettar@gmail.com</a>&gt;<br>
@@ -160,14 +160,14 @@ t *tx_context,<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memcpy(key_buffer, =
 tx_key-&gt;key, WLAN_KEY_LEN_CCMP);<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br> =C2=A0 =
-=C2=A0 =C2=A0 }<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 }<br>
 -<br>
 =C2=A0}<br><br>int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *=
 skb)<div><div><img src=3D"https://ssl.gstatic.com/ui/v1/icons/mail/images/c=
-leardot.gif"></div></div><div><br>
+leardot.gif" class=3D"gmail-CToWUd"></div></div><div><br>
 </div><span><font color=3D"#888888">--<br>
-2.7.4</font></span><br></div></div>
+2.7.4</font></span><br></div>
 
---001a114e632a2610d8053c91ae92--
+--001a1143184629c360053c7f167e--
 
