@@ -1,112 +1,128 @@
-X-GM-THRID: 6388897294904721408
-X-Received: by 10.31.213.194 with SMTP id m185mr4604985vkg.30.1487531069700;
-        Sun, 19 Feb 2017 11:04:29 -0800 (PST)
+X-GM-THRID: 6329968789142110208
+X-Received: by 10.157.56.142 with SMTP id p14mr1121560otc.4.1473844884737;
+        Wed, 14 Sep 2016 02:21:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.52.248 with SMTP id t53ls9245211otd.42.gmail; Sun, 19 Feb
- 2017 11:04:29 -0800 (PST)
-X-Received: by 10.176.80.197 with SMTP id d5mr3005609uaa.15.1487531069386;
-        Sun, 19 Feb 2017 11:04:29 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id s64si1204318pfk.0.2017.02.19.11.04.29
+Received: by 10.36.133.70 with SMTP id r67ls244954itd.6.canary; Wed, 14 Sep
+ 2016 02:21:24 -0700 (PDT)
+X-Received: by 10.98.27.84 with SMTP id b81mr1101687pfb.1.1473844882522;
+        Wed, 14 Sep 2016 02:21:22 -0700 (PDT)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-yw0-x241.google.com (mail-yw0-x241.google.com. [2607:f8b0:4002:c05::241])
+        by gmr-mx.google.com with ESMTPS id l185si305979ywb.5.2016.09.14.02.21.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Feb 2017 11:04:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Wed, 14 Sep 2016 02:21:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) client-ip=2607:f8b0:4002:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id v184so10042594pgv.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 11:04:29 -0800 (PST)
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yw0-x241.google.com with SMTP id t67so367161ywg.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 02:21:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=hHYkT+PNripxTOPlKeHNJ/AD4kvfABmeeK4r59YTy08=;
-        b=DxTB/uOZLwx2IPZmHfKs0Qy+GZkGOBmaILgoCqR2IOlxAMcjHYuw8WK8mUvUYKC4Lr
-         B4l7RqL3AOaHpjjd4FI8omDE+lDSE/HVG6qhUSu/XLl3GvEpXOdCyWbJKD6ZMj3ekRKD
-         SCIb86Wg/hCdZRCzBT0ewqtIYJbdPGXP9QqBkmKqxEQanJEb5mrxQYnyX64yWIbBGi5M
-         /uVFCXRMgV5Lavq6kSXx+R8iFK/TIvCN9zluJ7CwXGr+yX3s7IouCOdEkh3wPFdl38MG
-         bTqqd0ySFBfBxFtGIGs5uB6MTDvCTkrrMsL4VUqZ5TnW5/pS4mwx5DSQ1GqkeUW9ka3V
-         b75g==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=5xrIBVi+D3AMM5CrmjE6tYwmTjewjh9co/o3h4+Mxp4=;
+        b=jQFL8lNnUIo6CAZc3TxR0mAObMDUzj7OSc5caLCcAI/0lS8ZOCez10T3FCTpnVI85b
+         jn9me/vp956LHaCX0HyjFx6+fkvBDJAy2gOZFZYFciNTEGVYOKfwG5WzH/LByFSkXJdo
+         cDa+0zfujFSKT9wCeUzX9lLedN9NQtDYrJIWGw/i5P+13u7ZN+YUEWUdoIzh/aNNWghL
+         8UJwQFkiUFbX5sRq9qDT/UjP1CposB/p9fyMAgSMjS1MoF/MSbTNPWKpXxCE+3qpwPXE
+         LXhawZ25hIgiRvvp755lrbhEwZC1nKs1Wv+5qH5CF0JkLvBF30oXW6ohWHHA71GP8Yy/
+         o3+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=hHYkT+PNripxTOPlKeHNJ/AD4kvfABmeeK4r59YTy08=;
-        b=OmXGI/BhlnSlFUdTzt4FMDrMXkPRZ8ySKZ0wxB9q3sBeGY8aBwQGEflIBkcvWdnX+4
-         8IeVhSzEh7yYRKC57qsu/LukSqHtXvq2+RmwQJUMoy6XgGZc24r62GnzefdvknvqO93L
-         ZslB3nyBeYaGUS64DLHipi8OINd49UIWxc2xQ1Boum4JAWrrLGHvIhJcPtqGzGz8riI6
-         kTAul45oQU8biFOL0UM6HNsjOc9djZHfA/78oaeH8edA5/JXo4+c/4W5lu16k7g2CtHe
-         coVoK/nbTjSHm7AjGJQsMG9KB/ipfXgzUV0U2AYY8JFQCPiAzXd5PlfiuCawW3P7tlXo
-         YNFQ==
-X-Gm-Message-State: AMke39nOViFP4q/K13kuz4gan3GG/jcC97bR9nCiiCIsuQad+dTN9fhrkOuyWeIPCm5XtQ==
-X-Received: by 10.84.237.22 with SMTP id s22mr26484930plk.145.1487531069026;
-        Sun, 19 Feb 2017 11:04:29 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id n189sm30555359pfn.108.2017.02.19.11.04.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 11:04:28 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: rtl8192u: Remove ternary operator
-Date: Mon, 20 Feb 2017 00:32:18 +0530
-Message-Id: <1487530938-17297-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=5xrIBVi+D3AMM5CrmjE6tYwmTjewjh9co/o3h4+Mxp4=;
+        b=CJSAxJm305Iz7N4bjnMJptK1bMOMtKTXxQeDY99zSIo1nOoOxEPx2sRvfjX9/pW429
+         3uQspB0F/DNfSOtvbaAXhNTqGcANm6zNk1oRWgOzFDUZxddQiZjMNOxdKhlX84JaI4vm
+         zJskqCcaVIbbDHVUo+ORbwyMZ+bgdUTBdH1eQ14IOeCN+hf4wk9m4MphBdzXiaiFq6nk
+         gjwkpzIWHvl/WlDM55LbJ8XKZwd36Wn3EcReB06Kqh1oZdIGN+Y7AeOwzRoznPifgbDM
+         L79x3p7lms9Z3BO2I3p1f4YJpUDaJyGQIvpPrc2zI0dRgKMEnKtjxhdht7OxvdZ5ZNM5
+         KI6g==
+X-Gm-Message-State: AE9vXwM2gM/y2jiPLV2vWju6pwcOoYp5wu2nZYEGrhmhF0Nj9Q2X1Z3pP3w8FR5am9ubuVS2nd7I55Gfp+RFRA==
+X-Received: by 10.13.203.79 with SMTP id n76mr1311481ywd.122.1473844882319;
+ Wed, 14 Sep 2016 02:21:22 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.81.3 with HTTP; Wed, 14 Sep 2016 02:21:21 -0700 (PDT)
+In-Reply-To: <CAOCi2DFsEPQjsn8Ua60A7vbYbeUiqO6Z1R_6i_Pk5pLQQB7KVQ@mail.gmail.com>
+References: <cover.1473809550.git.gs051095@gmail.com> <alpine.DEB.2.10.1609140741050.3395@hadrien>
+ <CAOCi2DFsEPQjsn8Ua60A7vbYbeUiqO6Z1R_6i_Pk5pLQQB7KVQ@mail.gmail.com>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+Date: Wed, 14 Sep 2016 14:51:21 +0530
+Message-ID: <CAK-LDbL_-xj8hYUJ8YsRaOnxNDBFpofN6EwDr1pVMXoKQpqPCg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/6] Cleaning xgifb/vb_setmode.c
+To: Gargi Sharma <gs051095@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, arnaud.patard@rtp-net.org, 
+	Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8
 
-Relational and logical operators evaluate to either true or false.
-Explicit conversion is not needed so remove the ternary operator.
-Done using coccinelle:
+On Wed, Sep 14, 2016 at 2:46 PM, Gargi Sharma <gs051095@gmail.com> wrote:
+> Hi
+> On Wed, Sep 14, 2016 at 11:11 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>>
+>> On Wed, 14 Sep 2016, Gargi Sharma wrote:
+>>
+>> > This patchset fixes various issues that come up in the checkpatch in
+>> > patch 1, 3, 4 and 5. Patches 2 and 6 are based on Julia's suggestion when a
+>> > one patch was sent fixing the checkpatch issue of moving && operator to
+>> > previous line.
+>>
+>> This is actually a v2, because eg the first one was sent already.
+>
+> I'm sorry for all the stupid question but will the revision patches I send
+> now to correct the commit subjects be v3 ?
 
-@r@
-expression A,B;
-symbol true,false;
-binary operator b = {==,!=,&&,||,>=,<=,>,<};
-@@
-- (A b B) ? true : false
-+ A b B
+Yes, with explaining changes since last 2 versions under --- .
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+> Thanks,
+> gargi
+>
+>>
+>> julia
+>>
+>> >
+>> > Gargi Sharma (6):
+>> >   staging: xgifb: move AND operator for logical continuation
+>> >   staging: xgifb: remove unnecessary parentheses
+>> >   staging: xgifb: remove blank line after open brace
+>> >   staging: xgifb: add spaces around |
+>> >   staging: xgifb: remove blank line before closing brace
+>> >   staging: xgifb: fix alignment for if arguments
+>> >
+>> >  drivers/staging/xgifb/vb_setmode.c | 48
+>> > ++++++++++++++------------------------
+>> >  1 file changed, 17 insertions(+), 31 deletions(-)
+>> >
+>> > --
+>> > 2.9.2
+>> >
+>> > --
+>> > You received this message because you are subscribed to the Google
+>> > Groups "outreachy-kernel" group.
+>> > To unsubscribe from this group and stop receiving emails from it, send
+>> > an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> > To view this discussion on the web visit
+>> > https://groups.google.com/d/msgid/outreachy-kernel/cover.1473809550.git.gs051095%40gmail.com.
+>> > For more options, visit https://groups.google.com/d/optout.
+>> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/CAOCi2DFsEPQjsn8Ua60A7vbYbeUiqO6Z1R_6i_Pk5pLQQB7KVQ%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
-index c27397b..8faa3d6 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
-@@ -977,16 +977,16 @@ void HTOnAssocRsp(struct ieee80211_device *ieee)
- 	HTSetConnectBwMode(ieee, (HT_CHANNEL_WIDTH)(pPeerHTCap->ChlWidth), (HT_EXTCHNL_OFFSET)(pPeerHTInfo->ExtChlOffset));
- 
- //	if (pHTInfo->bCurBW40MHz)
--		pHTInfo->bCurTxBW40MHz = ((pPeerHTInfo->RecommemdedTxWidth == 1)?true:false);
-+		pHTInfo->bCurTxBW40MHz = (pPeerHTInfo->RecommemdedTxWidth == 1);
- 
- 	//
- 	// Update short GI/ long GI setting
- 	//
- 	// TODO:
- 	pHTInfo->bCurShortGI20MHz=
--		((pHTInfo->bRegShortGI20MHz)?((pPeerHTCap->ShortGI20Mhz==1)?true:false):false);
-+		((pHTInfo->bRegShortGI20MHz)?(pPeerHTCap->ShortGI20Mhz == 1):false);
- 	pHTInfo->bCurShortGI40MHz=
--		((pHTInfo->bRegShortGI40MHz)?((pPeerHTCap->ShortGI40Mhz==1)?true:false):false);
-+		((pHTInfo->bRegShortGI40MHz)?(pPeerHTCap->ShortGI40Mhz == 1):false);
- 
- 	//
- 	// Config TX STBC setting
-@@ -998,7 +998,7 @@ void HTOnAssocRsp(struct ieee80211_device *ieee)
- 	//
- 	// TODO:
- 	pHTInfo->bCurSuppCCK =
--		((pHTInfo->bRegSuppCCK)?((pPeerHTCap->DssCCk==1)?true:false):false);
-+		((pHTInfo->bRegSuppCCK)?(pPeerHTCap->DssCCk == 1):false);
- 
- 
- 	//
+
+
 -- 
-2.7.4
-
+Vaishali
+http://vaishalithakkar.in/
 
