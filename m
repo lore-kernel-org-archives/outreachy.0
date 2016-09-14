@@ -1,123 +1,53 @@
 X-GM-THRID: 6330204600701812736
-X-Received: by 10.36.29.7 with SMTP id 7mr6270037itj.2.1473875259398;
-        Wed, 14 Sep 2016 10:47:39 -0700 (PDT)
+X-Received: by 10.66.220.69 with SMTP id pu5mr2840528pac.32.1473872606887;
+        Wed, 14 Sep 2016 10:03:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.72 with SMTP id p8ls1404807otd.48.gmail; Wed, 14 Sep
- 2016 10:47:38 -0700 (PDT)
-X-Received: by 10.129.76.18 with SMTP id z18mr2502757ywa.26.1473875258910;
-        Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-qt0-x244.google.com (mail-qt0-x244.google.com. [2607:f8b0:400d:c0d::244])
-        by gmr-mx.google.com with ESMTPS id c75si487819ywh.0.2016.09.14.10.47.38
+Received: by 10.157.37.197 with SMTP id q63ls1508380ota.13.gmail; Wed, 14 Sep
+ 2016 10:03:26 -0700 (PDT)
+X-Received: by 10.157.42.43 with SMTP id t40mr2697065ota.23.1473872606408;
+        Wed, 14 Sep 2016 10:03:26 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id um12si1365011pab.2.2016.09.14.10.03.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) client-ip=2607:f8b0:400d:c0d::244;
+        Wed, 14 Sep 2016 10:03:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qt0-x244.google.com with SMTP id e5so754519qtb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=W5Ebjx6oyiTunuhMWAeHcKC3CQsWsK7GXLkMSrc1yq0=;
-        b=jY7N3BMrTyTKmklrTbIsCUcaahZqGgA9BWaSPmej3ePGVTDeT5NkfxPn2d71bCwAql
-         xLFqY3HyZXWlV3ucnrldyR0Y/8oBEOf2A5EQXjFO4M13QRWqiWpFqu6ohYwUVpU7RCw2
-         yzZ/Iuu8N3U0vbFMKf2sGet7NWWdfTqbaW9HPriP/HB+pz67qd7aLyyVgrfkoAJI3DJ2
-         YD9sMErgsAB04fIW1d58Rz3ITlPgAcZm8Oyww+tRQYEVGlBJ6Ov6b5SIhbTXpmBKOpdd
-         PjJvpZYBi2q2nLfXpguIgSOIdyHyRAa1ZAFEUW1VkHX4yOkiDyO1jW3Wph6HM4DIzini
-         O0wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=W5Ebjx6oyiTunuhMWAeHcKC3CQsWsK7GXLkMSrc1yq0=;
-        b=clSCUzP4sNFmQD+Df9e7ZFwIN9gxJMsIUfy+KyYmsTK5Jbk6xEgDnk8ClbTpSqHzlw
-         dT9/hjznukSLUHidM+XV9ynS1Qyb8ob3qD9A+/WVX0QL9EzUlAhtn6sw5AKL0hVVoleL
-         SvOXVNIbrZ5VAWbjx5A+fMcRyhlmV3uJyj41iYNLeIdeCym3THEmnB6KN+QJlujY0Xu2
-         yrO2MkkZVJhzezjCTJZO+M1nBzSeMIit1dTikoRJDymUnXPEWlqaGOtdabhmQ2QpCORw
-         5Xu133Ve2h8NeSRAUq1JqiB7gbPU7mSXl2cINPh5tFxPTmdzjB6Hd55CQFF8LOt2o7pz
-         1BuA==
-X-Gm-Message-State: AE9vXwNgP+n9A/fvRqbO6mXVVoN3+Hul0tggE3Xy7VnNSx9+lf1fBgOZZJs72+YJ1xSoHg5fNtRJRyKZwjJ6DA==
-X-Received: by 10.237.39.34 with SMTP id n31mr4699272qtd.55.1473875258732;
- Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.12.131.134 with HTTP; Wed, 14 Sep 2016 10:47:38 -0700 (PDT)
-In-Reply-To: <20160914170330.GA13018@kroah.com>
-References: <20160914150627.GA9648@life-desktop> <20160914170330.GA13018@kroah.com>
-From: Anchal Jain <anchalj109@gmail.com>
-Date: Wed, 14 Sep 2016 23:17:38 +0530
-Message-ID: <CAAbeOSvN_-nzQbK0G5hbKPcbyUUq7_-ERKk9-TXBYQSGCNaKYA@mail.gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B01F6904;
+	Wed, 14 Sep 2016 17:03:25 +0000 (UTC)
+Date: Wed, 14 Sep 2016 19:03:30 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Anchal Jain <anchalj109@gmail.com>
+Cc: gustavo@padovan.org, outreachy-kernel@googlegroups.com,
+	johan.hedberg@gmail.com
 Subject: Re: [Outreachy kernel] [PATCH] drivers: bluetooth: bt3c_cs: Replace
  simple_strtol with kstrtol
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: gustavo@padovan.org, outreachy-kernel@googlegroups.com, 
-	Johan Hedberg <johan.hedberg@gmail.com>
-Content-Type: multipart/alternative; boundary=94eb2c12577a3d7a10053c7b5339
+Message-ID: <20160914170330.GA13018@kroah.com>
+References: <20160914150627.GA9648@life-desktop>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160914150627.GA9648@life-desktop>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
---94eb2c12577a3d7a10053c7b5339
-Content-Type: text/plain; charset=UTF-8
+On Wed, Sep 14, 2016 at 08:36:39PM +0530, Anchal Jain wrote:
+> This patch remove the warning:
+> 
+> WARNING: simple_strtol is obsolete, use kstrtol instead
+> 
+> Generated by checkpatch.pl
+> 
+> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> ---
+>  drivers/bluetooth/bt3c_cs.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thank you,
+You must stay in drivers/staging/ for the outreachy application process.
 
-From next time, I will keep this thing in my mind.
+sorry,
 
-On Wed, Sep 14, 2016 at 10:33 PM, Greg KH <gregkh@linuxfoundation.org>
-wrote:
-
-> On Wed, Sep 14, 2016 at 08:36:39PM +0530, Anchal Jain wrote:
-> > This patch remove the warning:
-> >
-> > WARNING: simple_strtol is obsolete, use kstrtol instead
-> >
-> > Generated by checkpatch.pl
-> >
-> > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
-> > ---
-> >  drivers/bluetooth/bt3c_cs.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> You must stay in drivers/staging/ for the outreachy application process.
->
-> sorry,
->
-> greg k-h
->
-
---94eb2c12577a3d7a10053c7b5339
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thank you,<br><br>From next time, I will keep this thing i=
-n my mind.<br></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quot=
-e">On Wed, Sep 14, 2016 at 10:33 PM, Greg KH <span dir=3D"ltr">&lt;<a href=
-=3D"mailto:gregkh@linuxfoundation.org" target=3D"_blank">gregkh@linuxfounda=
-tion.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
-=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span cl=
-ass=3D"">On Wed, Sep 14, 2016 at 08:36:39PM +0530, Anchal Jain wrote:<br>
-&gt; This patch remove the warning:<br>
-&gt;<br>
-&gt; WARNING: simple_strtol is obsolete, use kstrtol instead<br>
-&gt;<br>
-&gt; Generated by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" targe=
-t=3D"_blank">checkpatch.pl</a><br>
-&gt;<br>
-&gt; Signed-off-by: Anchal Jain &lt;<a href=3D"mailto:anchalj109@gmail.com"=
->anchalj109@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/bluetooth/bt3c_cs.c | 2 +-<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-</span>You must stay in drivers/staging/ for the outreachy application proc=
-ess.<br>
-<br>
-sorry,<br>
-<br>
-greg k-h<br>
-</blockquote></div><br></div>
-
---94eb2c12577a3d7a10053c7b5339--
+greg k-h
 
