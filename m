@@ -1,86 +1,119 @@
-X-GM-THRID: 6329536989610639360
-X-Received: by 10.157.62.230 with SMTP id b93mr10561019otc.14.1473710171255;
-        Mon, 12 Sep 2016 12:56:11 -0700 (PDT)
+X-GM-THRID: 6330315334745063424
+X-Received: by 10.129.160.134 with SMTP id x128mr7821722ywg.25.1473971207041;
+        Thu, 15 Sep 2016 13:26:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.42.87 with SMTP id t81ls2761243ota.36.gmail; Mon, 12 Sep
- 2016 12:56:10 -0700 (PDT)
-X-Received: by 10.200.52.230 with SMTP id x35mr17332943qtb.23.1473710170912;
-        Mon, 12 Sep 2016 12:56:10 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id h124si2655466pfe.0.2016.09.12.12.56.10
+Received: by 10.157.29.220 with SMTP id w28ls4385805otw.27.gmail; Thu, 15 Sep
+ 2016 13:26:46 -0700 (PDT)
+X-Received: by 10.200.39.131 with SMTP id w3mr7991966qtw.13.1473971206688;
+        Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from mail-qk0-x235.google.com (mail-qk0-x235.google.com. [2607:f8b0:400d:c09::235])
+        by gmr-mx.google.com with ESMTPS id l185si384374ywb.5.2016.09.15.13.26.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 12:56:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::235 as permitted sender) client-ip=2607:f8b0:400d:c09::235;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::235 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id p2so1959312pap.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Sep 2016 12:56:10 -0700 (PDT)
+Received: by mail-qk0-x235.google.com with SMTP id t7so69479438qkh.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=mHI8w7vXyoIrt7J8wGHP+3noqG4UsRn3U0qUVIJGnv4=;
-        b=t5eekfe8FolY/7CnuzbJl15GlBc4/7lXWQdHHYfX+t/HBKMrPenFFr1ed4jcvnkWzn
-         egDI6TtosNNO4r6KvuyZpv/Iaz62Qs95MJU6qKQgws6dSqc1zveKAFJ3hd8LxXfGDWqV
-         0a1B26klPY9IOw3wnkJzUB/0ow2V4jshGmF2M8VO+9mk+b0QHvJMJucrbzxOICLL5HoI
-         ZQm/JWB69z1VDFHL46E33sEBf48aT9lToEHBUR7vv9lSWxUy4ZsbCY0uK8l1WE3fnJKo
-         ddnVJYC3iAPYTL1+wUPbpz2JKwGofQDs/ublr7j4j+Fi4O0dZ7G5n4zeETk4D1oXYsl+
-         JcAQ==
+        h=mime-version:from:date:message-id:subject:to;
+        bh=1ed6SrR6u9pNenek0voKYNPpyimgcw3Lx+6yEevqWnM=;
+        b=ID0CQ9qUlu/FL92oWgUfZOfBZ4iCLZKTvx+D6HErI9ixZMXk2ytgtHrsWz3G/fCyw7
+         R2HAcA4whpwIy2/K9X6dA2kB355AqqFzeyjzY81N/Ob0o+HHDj3JHL9KdFTrRtqL7wR4
+         y1UWbqc06raT4OyHtJLgYR6QalvIk09eqRDejJWdgkRxU71K8rdGWlKzAk9mRuiJlUuh
+         n1B2QDW+nACKulpLq/ZXXBBWaACeLT3cTWwxDvLoTx3nltQTatqswJUDdkjZu6hsZ3GE
+         3pZneteG3FIbBcxX3q2cIh2oIZbNodRwelMbQ6Tw457Z8xmk7txhvVqqT3R4Hkrh5erC
+         peDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=mHI8w7vXyoIrt7J8wGHP+3noqG4UsRn3U0qUVIJGnv4=;
-        b=YgNZX1c4pLO3QinTqitobXGB0Iqhs0QkMiLPmJIAa6q+IhDPGiRGHYX8xNh0iodQY8
-         iPeqgW8GwDUh+ak8F5M7UNbIqOtEAvMKRQGsIVMLFa7hcNkhxjVpaDwzPAsRf9+Rrd4O
-         UrXGQ2zE80v/tYv/Wfv0P8grRjX2oPqKaKT2hhOcHb0JR1hNn+9p/9hiX2pKLA+zlH4J
-         0rraT4ElehqonX5eVK0YBWzC1rXRnGpIZsnsHyoBAwS6g+3x6rUrDWvuOljcnK68lbCo
-         9JeHaLOXAVtwD7WLA0po4xgx6ugECv1sPBkakHwZiRWanNS4kkl2j+5UrarotrU79l4K
-         R2+g==
-X-Gm-Message-State: AE9vXwMwMvxgaJtdzEr6QBwgareWONyKrtt/r1NpQ485CudCLVSicnUIdnnQEyPB4B0jxQ==
-X-Received: by 10.66.152.238 with SMTP id vb14mr36437751pab.78.1473710170495;
-        Mon, 12 Sep 2016 12:56:10 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.35.146])
-        by smtp.gmail.com with ESMTPSA id w81sm26368662pfa.54.2016.09.12.12.56.08
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Sep 2016 12:56:09 -0700 (PDT)
-Date: Tue, 13 Sep 2016 01:26:42 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: bus: Space required before the open parenthesis '('.
-Message-ID: <20160912195642.GA2775@sandhya>
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=1ed6SrR6u9pNenek0voKYNPpyimgcw3Lx+6yEevqWnM=;
+        b=bsFuGe7AsOM1YdZOVjFLBaCXXoWKD4ymdeFusXDxTtgScLnoWP0wdWVqML2SVZ9Ig/
+         ndmfjvX+3lCMCuw1gjJWaCHmxzNG6NYfVwvXHSfU/DmKZeSQoDqfPqbZgMxv9L0ClBUv
+         Rha1QOZJwfCgyGKXWN5Tb5LSayA6e/Q99NDjjjRWJj/3rwCq15oJcdCj5kaRn7mSZ8C2
+         vEYzXdb2D/90VJrHTgjA4z2x3PNFVoV7U1ea4fYU3of10c+HGmWhsAXQ6WKWDx5QZzey
+         znd0x0bjr5nSwL7S8qvjDGTPtoOCs+wCx96lmt7iArBfnA4vb7VedVBm6fBUwrM33/u2
+         /Dvg==
+X-Gm-Message-State: AE9vXwOmQlP7RpCHA6ef0ymAMmSPM4dZECO03XRYbnTIxdndicbk727L99yLiSmMnGxpLyoFVxEOI4si2pDZRQ==
+X-Received: by 10.55.188.193 with SMTP id m184mr12172564qkf.129.1473971206493;
+ Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Received: by 10.237.41.97 with HTTP; Thu, 15 Sep 2016 13:26:26 -0700 (PDT)
+From: Namrata A Shettar <namrataashettar@gmail.com>
+Date: Fri, 16 Sep 2016 01:56:26 +0530
+Message-ID: <CAFrQyDHKpW8d2Yrx1Mswi08DyBpQtOFwV7TEcZnagpHcfqo7Uw@mail.gmail.com>
+Subject: [PATCH v2 0/6] staging: vt6656: Fix multiple checkpatch issues
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
+	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
+	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
+	Wolfram Sang <wsa-dev@sang-engineering.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=94eb2c0430a62c1b5e053c91aa34
 
-Space required before the open parenthesis '('.This patch is found by checkpatch.pl script.
+--94eb2c0430a62c1b5e053c91aa34
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Fix checkpatch issues.These issues were detected by checkpatch.pl script.
+
 ---
- drivers/bus/arm-cci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+   -  Commit log messages of the patchset made imperative
+   -  Subject line and description of patches 3 and 6 changed
+   -  Removed insertion of blank space in patch 2
 
-diff --git a/drivers/bus/arm-cci.c b/drivers/bus/arm-cci.c
-index 9e1020f..99513f7 100644
---- a/drivers/bus/arm-cci.c
-+++ b/drivers/bus/arm-cci.c
-@@ -2271,7 +2271,7 @@ static int cci_probe(void)
- 	struct resource res;
- 
- 	np = of_find_matching_node(NULL, arm_cci_matches);
--	if(!np || !of_device_is_available(np))
-+	if (!np || !of_device_is_available(np))
- 		return -ENODEV;
- 
- 	ret = of_address_to_resource(np, 0, &res);
--- 
-1.8.2.3
 
+Namrata A Shettar(6):
+*staging: vt6656: Remove unnecessary blank lines*
+staging: vt6656: main_usb: Remove unnecessary blank lines
+staging: vt6656: main_usb: Replace type declaration with *pointer of same
+type
+staging: vt6656: rf: Add space around '-'
+staging: vt6656: rxtx: Remove unneccessary blank lines
+staging: vt6656: rxtx: Break up multiple assignments
+
+
+drivers/staging/vt6656/wcmd.c | 3 ---
+drivers/staging/vt6656/main_usb.c | 8 ++------
+drivers/staging/vt6656/rf.c | 4 ++--
+drivers/staging/vt6656/rxtx.c | 7 ++-----
+4 files changed, 6 insertions(+), 16 deletion(-)
+
+
+--
+2.7.4
+
+--94eb2c0430a62c1b5e053c91aa34
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Fix checkpatch issues.These issues w=
+ere detected by <a href=3D"http://checkpatch.pl" target=3D"_blank">checkpat=
+ch.pl</a> script.<br><br>---<br></div><div>Changes in v2:<br></div><div>=C2=
+=A0=C2=A0 -=C2=A0 Commit log messages of the patchset made imperative<br></=
+div><div>=C2=A0=C2=A0 -=C2=A0 Subject line and description of patches 3 and=
+ 6 changed<br></div><div>=C2=A0=C2=A0 -=C2=A0 Removed insertion of blank sp=
+ace in patch 2 <br></div><div><br></div><div><br></div>Namrata A Shettar(6)=
+:<font size=3D"2"><b><span style=3D"font-weight:normal"><br>staging: vt6656=
+: Remove unnecessary blank lines</span></b></font><font size=3D"2"><span st=
+yle=3D"font-weight:normal"><br>staging: vt6656: main_usb: Remove unnecessar=
+y blank lines<br></span></font><font size=3D"2"><span style=3D"font-weight:=
+normal">staging: vt6656: main_usb: Replace type declaration with *pointer o=
+f same type</span></font><font size=3D"2"><span style=3D"font-weight:normal=
+"><br>staging: vt6656: rf: Add space around &#39;-&#39;<br></span></font><f=
+ont size=3D"2"><span style=3D"font-weight:normal">staging: vt6656: rxtx: Re=
+move unneccessary blank lines<br></span></font><font size=3D"2"><span style=
+=3D"font-weight:normal">staging: vt6656: rxtx: Break up multiple assignment=
+s<br><br></span></font><br>drivers/staging/vt6656/wcmd.c | 3 ---<br><font s=
+ize=3D"2"><span style=3D"font-weight:normal"></span></font>drivers/staging/=
+vt6656/main_us<wbr>b.c | 8 ++------<br>drivers/staging/vt6656/rf.c | 4 ++--=
+<br>drivers/staging/vt6656/rxtx.c | 7 ++-----<br>4 files changed, 6 inserti=
+ons(+), 16 deletion(-)<br><br><br><span><font color=3D"#888888">--<br>
+2.7.4</font></span></div></div>
+
+--94eb2c0430a62c1b5e053c91aa34--
 
