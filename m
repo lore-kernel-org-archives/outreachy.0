@@ -1,89 +1,128 @@
 X-GM-THRID: 6330466800696819712
-X-Received: by 10.66.184.168 with SMTP id ev8mr5939883pac.43.1473943729221;
-        Thu, 15 Sep 2016 05:48:49 -0700 (PDT)
+X-Received: by 10.157.46.36 with SMTP id q33mr6140554otb.40.1473941027998;
+        Thu, 15 Sep 2016 05:03:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.138.143 with SMTP id c15ls48811ioj.19.gmail; Thu, 15 Sep
- 2016 05:48:48 -0700 (PDT)
-X-Received: by 10.107.48.210 with SMTP id w201mr6528437iow.25.1473943728239;
-        Thu, 15 Sep 2016 05:48:48 -0700 (PDT)
+Received: by 10.157.56.29 with SMTP id i29ls3307224otc.12.gmail; Thu, 15 Sep
+ 2016 05:03:47 -0700 (PDT)
+X-Received: by 10.31.193.150 with SMTP id r144mr2204412vkf.3.1473941027608;
+        Thu, 15 Sep 2016 05:03:47 -0700 (PDT)
 Return-Path: <aquannie@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 7si1008425pfw.1.2016.09.15.05.48.48
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id si10si1130829pab.1.2016.09.15.05.03.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 05:48:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Thu, 15 Sep 2016 05:03:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id vz6so2116064pab.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 05:48:48 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id 128so2159766pfb.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 05:03:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MIO1M7PapPg2wnnYgu79G6MNmRJdUpBH5oL/LNy+v4M=;
-        b=O8q53uLBS4ElO4jasSBO0T/1ffmdOpXEimQlwpoUKpoHtagiJmz3dh1hBqWjCZzzE1
-         aStdMBK1Xx1GSUrnRg6zMvLoVN3NyM/GlyRrGVKGFmpaMgtTgjj1NPmE4pfVvAxMy4pA
-         z6KcLFSO+3PecpFi/XyXGOVzXbix5fduJ5w7aKAubw+rRdOTt7/9HZ8MsMVmW9fN47z3
-         azSUTxTaLJ0mIXKJuGsPm/T+DT4yxwmpO3AeO4lt+OU9UOM0peJLQIgbdtRze+Dwtf3M
-         LBNR5awmQpH5han0xx6I3HDPmdM9XpX1lHt8mFVl6yeOlES7oYRINuoaqetNSoOwVc+T
-         GmrA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=QAnqjgapTXLbPfNMyIzh+ztkw1LqMjidsqZpO2TWo8c=;
+        b=C3i97+hPj3s7LIHrdnT3Jkl/x+btuOy0uB5asN+SqEmXjLdBwunwlZfvv5rmiTZViZ
+         23u3DP/h7DAvS8CCBZkLrmH9ewFj6CHBe0xbRrAHm5FgFCLJIk2vDguiatlbKet8d+RT
+         91yNuUvj/K5G1rBUJYarNX//QUbySkYLS6sjfJ/TtQDD/mdkuIUwev46l+lRbn4uCcVK
+         5OsdIENfuXOsKv9ES2eSoMQlKno/V45bqu8u/wXiSYz/7U9cjK2XPDo7XQy+vUG8eesZ
+         xpE0zNsGHet8FSQxckKNrVBWDcWO7ui7SY2NHLiuzUb7TpVdxw+8GyjkJrqHF4FfkmS1
+         eoBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MIO1M7PapPg2wnnYgu79G6MNmRJdUpBH5oL/LNy+v4M=;
-        b=lk+MaLjvFi3Xgg9Q3AX7T95qQHEHGrAXwtFLMZETTT421Y93jqe7lKyA7pVmRx5rXh
-         8w0YRspfDT8snx0VTO5WwUY8f+rZcSq8iqxvmEGOBEoSBXuoXJlHrlV1fZ/igO+jFY+O
-         +bCTLqt8bTjUvlzeWyHCDIVtggTPEqdjMIWBysTNjMLQ5Vapq9oywd3ICxs+XoFfoIZq
-         9QEkSf9bTr7N82Nl/kYf9RUyF8oTBmpXQSh5kWByiucboJnVpIK/YFpbAJvz50prxbgR
-         5kzyucw70MyPAKeIPdfeDsE4MTN2qSYgTKsAtgImGKx6tPpmn9tXwJIdMfJc8uLvfMtO
-         vX9A==
-X-Gm-Message-State: AE9vXwNgXICvYnaX80Ztcu7rnEAlFD2TkZXP1oxyRW2+KC3tlaadXD+96DswdLbSfb+6Ug==
-X-Received: by 10.66.164.227 with SMTP id yt3mr14318614pab.117.1473943727847;
-        Thu, 15 Sep 2016 05:48:47 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=QAnqjgapTXLbPfNMyIzh+ztkw1LqMjidsqZpO2TWo8c=;
+        b=DHtwC2Wr4bEh22loDHjci5ie+4QTanTC/Dx/AWzq9KZmWo/UwoIjgE+i3GGdd77wKJ
+         hZONxFKF/xxDhAW0b/inVDx2vpgjRjuUqDqpFj/NAMvR7bq77+ZWqg4vthPHIbp4ga4C
+         hhHg1sQuCl8ng8bq+ur3FpUychCTi0Wg1nUlGWaXM/dApkh+MakLoogCTAws00+cyOpg
+         XyhARW1q/30uX/Rc5aOLKKZXiWI0g+ivAfjve5vTSWQhhBsnZTjWUUlWf6s73HhHRJ3+
+         Ituel98yXcdx9/g2grAd4wjsD61FigTcOD3PSekr0Y18UGiOE6X5I1F3EexZRYhs+I4J
+         jWJA==
+X-Gm-Message-State: AE9vXwOnZdT4xzja/BX5qGBmphdW2rS1l+JJQY8VWqCVliaFCyncV/EoFxXBVBRi551HlA==
+X-Received: by 10.98.4.71 with SMTP id 68mr10780639pfe.18.1473941027394;
+        Thu, 15 Sep 2016 05:03:47 -0700 (PDT)
 Return-Path: <aquannie@gmail.com>
 Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id tq5sm5117427pac.42.2016.09.15.05.48.45
+        by smtp.gmail.com with ESMTPSA id x66sm44885186pfb.86.2016.09.15.05.03.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 05:48:47 -0700 (PDT)
-Date: Thu, 15 Sep 2016 18:18:38 +0530
+        Thu, 15 Sep 2016 05:03:46 -0700 (PDT)
+Date: Thu, 15 Sep 2016 17:33:36 +0530
 From: Rehas Sachdeva <aquannie@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Oleg Drokin <oleg.drokin@intel.com>,
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, Oleg Drokin <oleg.drokin@intel.com>,
 	Andreas Dilger <andreas.dilger@intel.com>,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 0/6] staging: lustre: Fix multiple checkpatch warnings
-Message-ID: <cover.1473942874.git.aquannie@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 5/6] staging: lustre: Remove
+ unnecessary 'return'
+Message-ID: <20160915120336.GB12108@toblerone>
+References: <cover.1473923837.git.aquannie@gmail.com>
+ <bfedf0128abd4c08512b015481be1d5fd1d0d01e.1473923837.git.aquannie@gmail.com>
+ <alpine.DEB.2.10.1609151010010.3045@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.10.1609151010010.3045@hadrien>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Change in Version 2:
-Elaborate commit message for patch: Remove unnecessary 'return'.
+On Thu, Sep 15, 2016 at 10:10:49AM +0200, Julia Lawall wrote:
+> On Thu, 15 Sep 2016, Rehas Sachdeva wrote:
+> 
+> > Fixes checkpatch.pl warning:
+> > WARNING: void function return statements are not generally useful.
+> 
+> It would be better to say what you did, rather than saying fix.  Here you
+> could say:
+> 
+> Remove unnecessary void return at the end of a function.  Issue detected
+> by checkpatch.
+> 
+> julia
+> 
 
-Rehas Sachdeva (6):
-  staging: lustre: Add space b/w concatenated strings
-  staging: lustre: Fix block comment style
-  staging: lustre: Change 'unsigned' to 'unsigned int'
-  staging: lustre: Change 'seq_printf' to 'seq_puts'
-  staging: lustre: Remove unnecessary 'return'
-  staging: lustre: Fix indentation
+Right. Thanks for the feedback Julia. I'll change it right away and be more
+careful next time.
 
- drivers/staging/lustre/lustre/fid/fid_request.c    | 8 ++++----
- drivers/staging/lustre/lustre/fid/lproc_fid.c      | 2 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 6 ++++--
- drivers/staging/lustre/lustre/ldlm/ldlm_resource.c | 8 ++++----
- drivers/staging/lustre/lustre/llite/file.c         | 2 +-
- drivers/staging/lustre/lustre/llite/lproc_llite.c  | 2 +-
- drivers/staging/lustre/lustre/llite/rw.c           | 4 +---
- 7 files changed, 16 insertions(+), 16 deletions(-)
+Rehas
 
--- 
-2.7.4
-
+> 
+> >
+> > Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+> > ---
+> >  drivers/staging/lustre/lustre/llite/rw.c | 2 --
+> >  1 file changed, 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/lustre/lustre/llite/rw.c
+> > index bb85d16..23747fa 100644
+> > --- a/drivers/staging/lustre/lustre/llite/rw.c
+> > +++ b/drivers/staging/lustre/lustre/llite/rw.c
+> > @@ -667,7 +667,6 @@ static void ras_update_stride_detector(struct ll_readahead_state *ras,
+> >  	ras->ras_stride_length = stride_gap + ras->ras_consecutive_pages;
+> >
+> >  	RAS_CDEBUG(ras);
+> > -	return;
+> >  }
+> >
+> >  /* Stride Read-ahead window will be increased inc_len according to
+> > @@ -883,7 +882,6 @@ out_unlock:
+> >  	RAS_CDEBUG(ras);
+> >  	ras->ras_request_index++;
+> >  	spin_unlock(&ras->ras_lock);
+> > -	return;
+> >  }
+> >
+> >  int ll_writepage(struct page *vmpage, struct writeback_control *wbc)
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/bfedf0128abd4c08512b015481be1d5fd1d0d01e.1473923837.git.aquannie%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
