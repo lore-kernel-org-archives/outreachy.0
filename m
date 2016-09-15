@@ -1,81 +1,173 @@
-X-GM-THRID: 6257131864000036864
-X-Received: by 10.129.80.3 with SMTP id e3mr17341358ywb.23.1456852039356;
-        Tue, 01 Mar 2016 09:07:19 -0800 (PST)
+X-GM-THRID: 6330315423850954752
+X-Received: by 10.98.26.8 with SMTP id a8mr7911278pfa.4.1473971273768;
+        Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.33.74 with SMTP id p10ls266454igi.23.gmail; Tue, 01 Mar
- 2016 09:07:18 -0800 (PST)
-X-Received: by 10.66.216.100 with SMTP id op4mr18536957pac.9.1456852038837;
-        Tue, 01 Mar 2016 09:07:18 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id yd9si4476708pab.1.2016.03.01.09.07.18
+Received: by 10.107.15.19 with SMTP id x19ls1333400ioi.43.gmail; Thu, 15 Sep
+ 2016 13:27:53 -0700 (PDT)
+X-Received: by 10.98.205.131 with SMTP id o125mr7891161pfg.12.1473971273407;
+        Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by gmr-mx.google.com with ESMTPS id c75si422154ywh.0.2016.09.15.13.27.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 09:07:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id a7so9422523pax.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 09:07:18 -0800 (PST)
+Received: by mail-qk0-x242.google.com with SMTP id z143so4127555qka.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:27:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=VGsqnW3ADSIFbWdH64/BE6CNlm+gdaFNlevB69HsqlE=;
-        b=i9x5iFt+JgJHxGQ9glBZqiYmsrbgzAe6GtLpWFwo+uJRhkaYXH78ueOMJzZjPVlGNe
-         PcgR9O30U9lfWHomOJcRlp7nPrXCsidZsvzsEuw2211GX7H+VwRJXAd1EVdWwSaHZzAm
-         Xs/zoDV5RfCgGVHPgr1onc5+5S3TL8uvvYjulOzoDobJqSQFrHP4HE2/KLFOXaHY7o+1
-         QT+/5rOz636yj18qpn3cZcGkVhOS2n2dSJgl8XwO9cu8CG8/N8hL2+ItU4CtXSftw06S
-         JkkmeQrxMvhcMsnPXg64NbGOCYIc+UETpz2AeDhJmx3pBBvsQOmuL8QWo78uuRttL/Ub
-         7blQ==
+        h=mime-version:from:date:message-id:subject:to;
+        bh=sn72v/XJmjua94VdIPlbsOhgvjAcBDlUxqG/Gp2tKww=;
+        b=T12up3HBbWJYK4yi6LksHxj5eo+UR36RGs8n/+wTEg8CatG26B3T5Mu7q/M9kcyKqZ
+         D/IJw20iHGS5x1nSnbWPE0ujLmKExs687pCL0SYlrn23GAixKqmchSw1GZ9Gxm7ZsV5X
+         tAOh9p6RKq2ikm5Z3wSlHwdSt1LiGTQRJ9eL8/e/oTkguYlSVs1FlOFSO3O6gC3Owk3A
+         KxX62FC9dyRaysKBcvfZ9r/J5Bs64LV7YQ1PJoZUSsT+CVs0W62pFhh9v34e228bRJlf
+         PrAbpn4lS4GgBt8u67NfwNKnD/BsvsP2IS/wPMvVJLdUDfWsX6W4QPMSpWp4QEAueFcZ
+         PRjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=VGsqnW3ADSIFbWdH64/BE6CNlm+gdaFNlevB69HsqlE=;
-        b=RDqW1rrz+ir77NrWRblhcti0nKABFlH2hhEdyYhgnuPYQ1goUd2Kyo6IDpIxC96vLb
-         Li/slD65GnXA+r56YLyahQwceAYVENnJu84OOW8rJwQ8LujCP7g2c91mKhz5DaRHPeBm
-         fxTTO599gpftUQtZzk2j5lGcCVGRbP1lRt/LiJHGJEQcqP19vgWMGraSjo3RdHNbBhth
-         za0xzxByjNyoiTT7sA6J0Vnuk7naDIU8a0PD1huSyB6xOoLpaozumOoU5HfBFzd22yoE
-         FVPwco90MXx3ueOJ0VDaSvBfuRPJPYS12q6jlPVOVCuxps5WOqvB++96p0eh/uIhiCQF
-         hQoQ==
-X-Gm-Message-State: AD7BkJKja3R+v0QE6Rzs0kK+A6m3ay6GpVpIu6yPxp3m2reyxXIZDLjjase39QW6tfbbsA==
-X-Received: by 10.66.249.70 with SMTP id ys6mr31862809pac.5.1456852038655;
-        Tue, 01 Mar 2016 09:07:18 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.66])
-        by smtp.gmail.com with ESMTPSA id by3sm46962657pab.39.2016.03.01.09.07.16
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 09:07:17 -0800 (PST)
-Date: Tue, 1 Mar 2016 14:37:18 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] Staging: Do not print message if kzalloc() failed.
-Message-ID: <cover.1456822984.git.bankarsandhya512@gmail.com>
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=sn72v/XJmjua94VdIPlbsOhgvjAcBDlUxqG/Gp2tKww=;
+        b=EYKGWY3oBuz2Q+LsTcKpeWFbhqxefu+UiCWLwewKGF7fcmyOCUIKnaWqYzxMfwndLt
+         NpyvC7B9W7EiaZUtLpnd6v5lD1aLeuKr00iVtlsAcqgdvdVhKJ23Sbu5oimVeJLPvB9i
+         cSOy96tAZRCSaxw+332GRwm7TdgikfZcK4shJ8qqaKX/XBmJIE9yr+o7Qm/Th1zCYVfR
+         uTsOp+h18oz6fCsKVV6b+T8LPXuBr6JyjLzhfTyGgUVHhdW/fkia4/l6Zx4Gp+UwyUVs
+         2lkwnsJjART5CoD781qk5u2wPhYQeAcplX1jMcSYnGxtK7x/DNqxoFNfM+Yy0I9Xo+kt
+         HoKw==
+X-Gm-Message-State: AE9vXwNZM1KbzyUjkxadsPCL5/uNzM9VGESGhzDiAfai1RNfgwkRHU7r55C18+1GrWgC3rR5v4HnpEOK9DHqww==
+X-Received: by 10.55.94.4 with SMTP id s4mr2811013qkb.314.1473971273205; Thu,
+ 15 Sep 2016 13:27:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Received: by 10.237.41.97 with HTTP; Thu, 15 Sep 2016 13:27:32 -0700 (PDT)
+From: Namrata A Shettar <namrataashettar@gmail.com>
+Date: Fri, 16 Sep 2016 01:57:32 +0530
+Message-ID: <CAFrQyDFttaD5iPr=CCcVXuVxGWaApnL1BYJwXh-fM0o=H1ufkw@mail.gmail.com>
+Subject: [PATCH v2 5/6] staging: vt6656: rxtx: Remove unneccessary blank lines
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
+	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
+	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
+	Wolfram Sang <wsa-dev@sang-engineering.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a114e632a2610d8053c91ae92
 
-Do not print message if kzalloc() failed.
-kzalloc() has its own messages. So no need to add extra one.
+--001a114e632a2610d8053c91ae92
+Content-Type: text/plain; charset=UTF-8
 
-Sandhya Bankar (4):
-  Staging: lustre: Do not print message if kzalloc() failed.
-  Staging: rtl8188eu: Do not print message if kzalloc() failed.
-  Staging: rtl8188eu: rtw_efuse: Do not print message if kzalloc() failed.
-  Staging: wlan-ng: Do not print message if kzalloc() failed.
+Remove unnecessary blank lines to fix checkpatch issue.
 
- drivers/staging/lustre/lustre/llite/llite_lib.c | 4 ----
- drivers/staging/rtl8188eu/core/rtw_cmd.c        | 3 +--
- drivers/staging/rtl8188eu/core/rtw_efuse.c      | 3 +--
- drivers/staging/wlan-ng/prism2sta.c             | 1 -
- 4 files changed, 2 insertions(+), 9 deletions(-)
+Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+---
+ drivers/staging/vt6656/rxtx.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
--- 
-1.8.3.4
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index aa59e7f..a8553e3a 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -263,7 +263,6 @@ static u16 vnt_mac_hdr_pos(struct vnt_usb_send_context
+*tx_context,
+ static u16 vnt_rxtx_datahead_g(struct vnt_usb_send_context *tx_context,
+                               struct vnt_tx_datahead_g *buf)
+ {
+-
+        struct vnt_private *priv = tx_context->priv;
+        struct ieee80211_hdr *hdr =
+                                (struct ieee80211_hdr
+*)tx_context->skb->data;
+@@ -687,7 +686,6 @@ static u16 vnt_generate_tx_parameter(struct
+vnt_usb_send_context *tx_context,
+        struct vnt_mic_hdr **mic_hdr, u32 need_mic,
+        bool need_rts)
+ {
+-
+        if (tx_context->pkt_type == PK_TYPE_11GB ||
+            tx_context->pkt_type == PK_TYPE_11GA) {
+                if (need_rts) {
+@@ -774,14 +772,12 @@ static void vnt_fill_txkey(struct
+vnt_usb_send_context *tx_context,
+                if (ieee80211_has_a4(hdr->frame_control))
+                        ether_addr_copy(mic_hdr->addr4, hdr->addr4);
 
+-
+                memcpy(key_buffer, tx_key->key, WLAN_KEY_LEN_CCMP);
+
+                break;
+      }
+-
+ }
+
+int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+
+--
+2.7.4
+
+--001a114e632a2610d8053c91ae92
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Remove unnecessary blank lines to fix checkpatch issue.<br=
+><div>
+<br>
+Signed-off-by: Namrata A Shettar &lt;<a href=3D"mailto:namrataashettar@gmai=
+l.com" target=3D"_blank">namrataashettar@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/vt6656/rxtx.c | 4 ----<br>
+=C2=A01 file changed, 4 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/vt6656/rxtx.<wbr>c b/drivers/staging/vt6656/rx=
+tx.<wbr>c<br>
+index aa59e7f..a8553e3a 100644<br>
+--- a/drivers/staging/vt6656/rxtx.<wbr>c<br>
++++ b/drivers/staging/vt6656/rxtx.<wbr>c<br>
+@@ -263,7 +263,6 @@ static u16 vnt_mac_hdr_pos(struct vnt_usb_send_context =
+*tx_context,<br>
+=C2=A0static u16 vnt_rxtx_datahead_g(struct vnt_usb_send_context *tx_contex=
+t,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0struct vnt_tx_datahead_g *buf)<br>
+=C2=A0{<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct vnt_private *priv =3D tx_context-&gt;pri=
+v;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct ieee80211_hdr *hdr =3D<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (struct ieee80211_hdr *)tx_context-&=
+gt;skb-&gt;data;<br>
+@@ -687,7 +686,6 @@ static u16 vnt_generate_tx_parameter(stru<wbr>ct vnt_us=
+b_send_context *tx_context,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct vnt_mic_hdr **mic_hdr, u32 need_mic,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 bool need_rts)<br>
+=C2=A0{<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tx_context-&gt;pkt_type =3D=3D PK_TYPE_11GB=
+ ||<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tx_context-&gt;pkt_type =3D=3D PK=
+_TYPE_11GA) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (need_rts) {<br>
+@@ -774,14 +772,12 @@ static void vnt_fill_txkey(struct vnt_usb_send_contex=
+t *tx_context,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ieee80211_has_a=
+4(hdr-&gt;frame_c<wbr>ontrol))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 ether_addr_copy(mic_hdr-&gt;addr4<wbr>, hdr-&gt;addr4);<br>
+<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memcpy(key_buffer, =
+tx_key-&gt;key, WLAN_KEY_LEN_CCMP);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br> =C2=A0 =
+=C2=A0 =C2=A0 }<br>
+-<br>
+=C2=A0}<br><br>int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *=
+skb)<div><div><img src=3D"https://ssl.gstatic.com/ui/v1/icons/mail/images/c=
+leardot.gif"></div></div><div><br>
+</div><span><font color=3D"#888888">--<br>
+2.7.4</font></span><br></div></div>
+
+--001a114e632a2610d8053c91ae92--
 
