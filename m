@@ -1,103 +1,102 @@
-X-GM-THRID: 6343298226858229760
-X-Received: by 10.237.59.166 with SMTP id r35mr2675891qte.5.1476914209167;
-        Wed, 19 Oct 2016 14:56:49 -0700 (PDT)
+X-GM-THRID: 6330315440417406976
+X-Received: by 10.194.178.166 with SMTP id cz6mr1133178wjc.0.1473916556682;
+        Wed, 14 Sep 2016 22:15:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.212 with SMTP id f78ls3035718otf.43.gmail; Wed, 19 Oct
- 2016 14:56:48 -0700 (PDT)
-X-Received: by 10.13.197.66 with SMTP id h63mr2647558ywd.125.1476914208785;
-        Wed, 19 Oct 2016 14:56:48 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x242.google.com (mail-vk0-x242.google.com. [2607:f8b0:400c:c05::242])
-        by gmr-mx.google.com with ESMTPS id r142si2902262vkf.2.2016.10.19.14.56.48
+Received: by 10.28.199.7 with SMTP id x7ls110128wmf.20.canary; Wed, 14 Sep
+ 2016 22:15:56 -0700 (PDT)
+X-Received: by 10.194.172.9 with SMTP id ay9mr1129862wjc.2.1473916556276;
+        Wed, 14 Sep 2016 22:15:56 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 185si49556wmr.2.2016.09.14.22.15.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 19 Oct 2016 14:56:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) client-ip=2607:f8b0:400c:c05::242;
+        Wed, 14 Sep 2016 22:15:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x242.google.com with SMTP id 2so1852698vkb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 19 Oct 2016 14:56:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=VY2bS4jNfcFfmivBYgYJBLup+2BpByY3TzyKVw1MFj8=;
-        b=UE0NYrj9tdHHIpnkH69/h72Rd6U6qhipVpN51+K14UUfc+AoqT1KpTLr2Op6dGMYZh
-         023L00B02U4KuIze2c9NOEUV5lpQEA/kcQphsFfLaTZlhz7p9G7P13aS+mPBhmUMBaw9
-         0kEDarYNV6RtcbJ5Jf+6RZoSRs/BsEMSrRq6aMu33kZhX92tv965vYvkBy8pzOQMhJPd
-         2d4Bhb5pak0XjVEV3sBR1qiyQriQ6rqfEWMtJQtoNKpJnnPuJGkfRO4sx/xeOeV2gT2m
-         yFX/cTVjRSOtF+UMrNKg+TIKPaF/QuaH44vRyOCVcAzNk8yhkQCa5PWkJNmOJ2pTN0HK
-         5U2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=VY2bS4jNfcFfmivBYgYJBLup+2BpByY3TzyKVw1MFj8=;
-        b=SbLJ1I46jaundMYLrs0kM0rOd5P1JfF05a397OrjoQ3IGLnVe7+eGjViHThNubUyWu
-         snl6bCT5Bo2dsA9JUNqsSMpwMqCEYJwiqhRC8m4WVdE9bMuXXoQfF7EJhAZgc8wP7yHR
-         szsFaSvps8Uyxc0lCo6+G+G80YMmQvF52UfMbWwXzToe6rw0UMuch3YvSz9e3C+DLzOU
-         9MfnMg1rW2dLPxCYhNt+MBZxUsOAYIzaXC7yCkk7+Cv0kyRJWGI3fotCCvdLP541SA36
-         eNigT1Tf1FmNdml3SFLwaaoF7ZqfAcxHGr4XAUmV/99qQzxZRibkOrhzO6kVkmCFEraH
-         xpHQ==
-X-Gm-Message-State: AA6/9RncpyK5QNWWJYGkuzUoTAcEtF/ma9IlUkUYCzye2f8fBpcCS9k4+aI5hcH9b7ATwQ==
-X-Received: by 10.31.185.133 with SMTP id j127mr7663433vkf.62.1476914208582;
-        Wed, 19 Oct 2016 14:56:48 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id p30sm128160uaa.22.2016.10.19.14.56.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 19 Oct 2016 14:56:48 -0700 (PDT)
-Date: Wed, 19 Oct 2016 19:56:41 -0200
-From: Elise Lennion <elise.lennion@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192u: ieee80211: Move assignment out of the if.
-Message-ID: <20161019215641.GA309@lennorien.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,338,1470693600"; 
+   d="scan'208";a="236798335"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 07:15:54 +0200
+Date: Thu, 15 Sep 2016 07:15:49 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Malcolm Priestley <tvboxspy@gmail.com>, 
+    Alison Schofield <amsfield22@gmail.com>, 
+    maomao xu <albert008.xu@gmail.com>, Othmar Pasteka <pasteka@kabsi.at>, 
+    Parth Sane <laerdevstudios@gmail.com>, 
+    Wolfram Sang <wsa-dev@sang-engineering.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 6/6] staging: vt6656: rxtx: Fix multiple
+ assignments
+In-Reply-To: <CAFrQyDGAP0UTFhwaidjYrcbijgtoP7jFWRxa2GZiouZ4dnzWcw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609150714200.6078@hadrien>
+References: <CAFrQyDGAP0UTFhwaidjYrcbijgtoP7jFWRxa2GZiouZ4dnzWcw@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1698985851-1473916555=:6078"
 
-Assignments inside of if statements confuse the reader and should be
-avoided, so it was moved out before the if.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Found with Coccinelle, semantic patch:
-@@
-expression e1, e2;
-statement S;
-position p;
-@@
+--8323329-1698985851-1473916555=:6078
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-+ e1 = e2;
-if (<+...
-- (e1 = e2)
- @p
-+ e1
- ...+>)
-S
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 89cbc07..0d81b3a 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -1145,8 +1145,8 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 
- 	/* skb: hdr + (possibly fragmented, possibly encrypted) payload */
- 
--	if (ieee->host_decrypt && (fc & IEEE80211_FCTL_WEP) &&
--	    (keyidx = ieee80211_rx_frame_decrypt(ieee, skb, crypt)) < 0)
-+	keyidx = ieee80211_rx_frame_decrypt(ieee, skb, crypt);
-+	if (ieee->host_decrypt && (fc & IEEE80211_FCTL_WEP) && keyidx < 0)
- 	{
- 		printk("decrypt frame error\n");
- 		goto rx_dropped;
--- 
-2.7.4
+On Thu, 15 Sep 2016, Namrata A Shettar wrote:
 
+> This patch fixes checkpatch issue of multiple assignments.
+
+Fix is not very clear, because it is not very clear what a multiple
+assignment is.  For example, it could be x = 3; x = 4;.  "Break up
+multiple assignments" could be clearer.  Also, it is not necessary to say
+"This patch".  The reader knows that the commit log is a description of a
+patch.  He wants to get to the interesting part as quickly as possible.
+
+julia
+
+>
+> Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+> ---
+>  drivers/staging/vt6656/rxtx.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+> index a8553e3a..647220d 100644
+> --- a/drivers/staging/vt6656/rxtx.c
+> +++ b/drivers/staging/vt6656/rxtx.c
+> @@ -166,8 +166,9 @@ static __le16 vnt_get_rtscts_rsvtime_le(struct
+> vnt_private *priv,
+>         } else if (rsv_type == 2) {
+>                 rts_time = vnt_get_frame_time(priv->preamble_type, pkt_type,
+>                         20, priv->top_ofdm_basic_rate);
+> -               cts_time = ack_time =
+> vnt_get_frame_time(priv->preamble_type,
+> +               cts_time = vnt_get_frame_time(priv->preamble_type,
+>                         pkt_type, 14, priv->top_ofdm_basic_rate);
+> +               ack_time = cts_time;
+>         } else if (rsv_type == 3) {
+>                 cts_time = vnt_get_frame_time(priv->preamble_type, pkt_type,
+>                         14, priv->top_cck_basic_rate);[cleardot.gif]
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAFrQyDGAP0UTFhwaidjYrcb
+> ijgtoP7jFWRxa2GZiouZ4dnzWcw%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1698985851-1473916555=:6078--
 
