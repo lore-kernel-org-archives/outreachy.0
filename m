@@ -1,95 +1,159 @@
-X-GM-THRID: 6473800732941221888
-X-Received: by 10.176.13.147 with SMTP id i19mr330863uak.57.1507299191998;
-        Fri, 06 Oct 2017 07:13:11 -0700 (PDT)
+X-GM-THRID: 6330315371322540032
+X-Received: by 10.66.249.36 with SMTP id yr4mr8402791pac.16.1473971941206;
+        Thu, 15 Sep 2016 13:39:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.60.206 with SMTP id j197ls6344895vka.8.gmail; Fri, 06 Oct
- 2017 07:13:11 -0700 (PDT)
-X-Received: by 10.31.110.207 with SMTP id j198mr260021vkc.14.1507299191057;
-        Fri, 06 Oct 2017 07:13:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507299191; cv=none;
-        d=google.com; s=arc-20160816;
-        b=mw6Evbc2SZ41YLnpsLpTAq+vE8hxKdHMRKIAt17KgHe4eomYwUBH8vZhpWAAVkpN/7
-         tB0xvICQYLgqkcZkdU/3OhE8fAs7jBdqDJ8wC4qBt7WDjxW7BF/xlBsg157iZN0rWah5
-         i28X6LoWWWe5vIEXzS4mpuixI3u08e1Lmw4ylgSokusYaYRPCEajqt9q2NDRaHMmtKmY
-         NrfVHjpUGQGFhD7GLJOQ+BtBMkTyC821fmWjO2QILnRiEnn/qzfGtHbeLzU/uTmi2teI
-         hK9okCymdWASfg/7x4jsQqlssaNC0PooQ6PvjCvKHxvJrpt1r0JCDXZ/FG6tOnIG4L1B
-         3Ipw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=OPPLn6LxikrbcdYv8YcKjSZwyTjzz66vnK+ZWDHZIKo=;
-        b=mTN0AD2kb323bNmSHZhaiVMRR7Q7TEVqtbztpH1UiD+O4+rHi22ezbBNXu8yzBn3K6
-         GHC9Rqh+WZkdX1U2qb2rIfPaKkvUQsxfobaig46ijURGgQ3xAp4uhM6JzzeZBwKfk9xv
-         oPO0HWokLwmzPQDpGPZ2IxI8DvWTxSh0fx5utncwt7cAoueoFPxxBjWFP5L2Ouh1vWTp
-         +Eyy0MLVgvoNZUhQhsnIOqUi86Il5hOrIG7lLJncE8IJ2ZJmOGPs0JDWkR0qJ+28NhtF
-         6BoHx8dxw7UFqt3WaeGF7ZUl78MnSFfUK70FS6R4k+XyzJr+ereel1ZlX9E9gidM/fl7
-         lUMQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VAOHrRsF;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-ua0-x241.google.com (mail-ua0-x241.google.com. [2607:f8b0:400c:c08::241])
-        by gmr-mx.google.com with ESMTPS id e5si73060vkb.2.2017.10.06.07.13.11
+Received: by 10.157.29.220 with SMTP id w28ls4404548otw.27.gmail; Thu, 15 Sep
+ 2016 13:39:00 -0700 (PDT)
+X-Received: by 10.157.40.120 with SMTP id h53mr8374969otd.44.1473971940811;
+        Thu, 15 Sep 2016 13:39:00 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
+        by gmr-mx.google.com with ESMTPS id l185si389446ywb.5.2016.09.15.13.39.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Oct 2017 07:13:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) client-ip=2607:f8b0:400c:c08::241;
+        Thu, 15 Sep 2016 13:39:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VAOHrRsF;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ua0-x241.google.com with SMTP id l40so5814194uah.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 06 Oct 2017 07:13:11 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x244.google.com with SMTP id b204so4146822qkc.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:39:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=mime-version:from:date:message-id:subject:to;
-        bh=OPPLn6LxikrbcdYv8YcKjSZwyTjzz66vnK+ZWDHZIKo=;
-        b=VAOHrRsFeDIpJ7DaT+D1KgSKvYu6eITaAm4VfPN/iuqYb8bpA+mC/shJ5bMpJGTlAH
-         NPRHzzZAe0XvV77a9GAxpeAw4K1kpHo03NIA2eGrCkXAcY+4s2M7TAmyU6ycNIAJYK5G
-         VuaY+sX5O5rfclh7xWpb1Iw6l8xJ4OiRaDZ6gRRDIFLRLP62ugPTQP1uLBgbS2gXXp95
-         P6Ecexgq+VnVmkYpz54HsKTHOyd83zg5dmf71yeSy7DPtXJ9qLgoGO/KBwc+oBo/RWMt
-         xCvaPnu1Qtd43/d6i6APbS3FgQERDXcPnMeeqN5Ku/v4ApUEBZtYy5lSS+YbK7fxLfj8
-         TtPQ==
+        bh=ScrBUqgiTzXAvYHxEl180dS2DBwFTrNOAFSwVyziR8Y=;
+        b=mE+VdZdx/dXBbZMVSAU7twemjsnry/wZbe0GrqK3YOlSTrUpYb02DJik7IOA9a7Qnb
+         s0TgHLMii5cwWQwi8DCpmx0EZkdkwsciz02iAzO1k/x006QOkN5kI52oopXJAhje5nMn
+         DW+jmcTHFixiTmeHG9BDSetD8Nd1pK/mgZuK2Oje++EQl1/HEDMLQgK7OA99GmZZb7wL
+         3dU0Wn70HArY02xSvdOGlpxm812cUcegEkZndV2AS6hhTwx1/QfbvrWzsyKSNDd9RbHU
+         DMHXwdo79K4Ua3vaFthUspahPT4I55ofp6SFGq7hFzaJZw+duAScStpzr+SkKlNJ11mb
+         6DLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
+        d=1e100.net; s=20130820;
         h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=OPPLn6LxikrbcdYv8YcKjSZwyTjzz66vnK+ZWDHZIKo=;
-        b=T17cAWH3dN9mEEIPHe9jOdbkSU9WXolcVu4/KeYUZztcQOiVp/C76gFMr+cdhEUXxw
-         ALTEenqa1AQLRV3C7jNfV672inrRe7Es+ViLxKtoMp8L/0/+I7Zrb3o7NJ9+69uyvFoe
-         zLHKoX49eq0RPdTJW+/ZubjwBLVfvw1j6ZxUgfHKDfRRHGGY3hcdudogTViKDXXSvJpj
-         IKMsQMKHWq870O7rpTda4ib16+ARRRjPJNyQ3PJfPaU+TqSnT2FTvMx0EmeOhI0Je1+I
-         qDA5CxeSlXTPZcmdSYE1iSys7EHmBp2CIWFYR+sFzdHuEQflta81Ss47ZRyDIch8qhG4
-         cAeQ==
-X-Gm-Message-State: AMCzsaUoWBEhpvNmocdvu+NUZjgMaKusHyj/glS/YC00hK8aTkuCS4we
-	XIkrvuGGpEsxk2hununRuwSLfypte8q5ch90ZtEV6w==
-X-Google-Smtp-Source: AOwi7QA2WOduuYdL6XEIezeWlWPgP/lmWd5JQJfl987Bfu4714n5Du44CWqKCEu9wnR0lxKHd8sGeHDYqdGVat5GyaQ=
-X-Received: by 10.159.49.15 with SMTP id m15mr1223449uab.3.1507299190613; Fri,
- 06 Oct 2017 07:13:10 -0700 (PDT)
+        bh=ScrBUqgiTzXAvYHxEl180dS2DBwFTrNOAFSwVyziR8Y=;
+        b=kZ1CysdYPczEd3WUK89e6Ovy5pU84R19kvXSXmZYHeF0OoDKqGgsmmadp2Yl/b6yBx
+         D1vVaQ01Jw0ll/rpzOF7CFOcgsKHuaujBKZZ8kiOqZSBUkOb99ME0WNOUgjhOPCT2Lr9
+         dM1D9MQgWyV3gJozOB7PsKnsJi1yjwIOwE/uJ/TRqtnBkq5fcQMo3UJpslW/dQaQ32Qi
+         F3XS0eklidLlyNd/VcbJBNE/x1UE54fGKTihCMVDmcHaG6ncYWLDhXDKHU0pqaVySPYY
+         uuCy6PXdynm8TE6K6xiL2tE+U7pgopSGKTySHE+3kgKAEYgYxt3B8aXRbaiHq7YzeAPA
+         cjTw==
+X-Gm-Message-State: AE9vXwNbghAcxYWKWavKQkisqq/DMaElU1ovoNk9O/9IsHZy92AV0vNJG7swM2F4ajhnCv7/ltXWesQaC2uDGw==
+X-Received: by 10.55.168.69 with SMTP id r66mr11653769qke.155.1473971940648;
+ Thu, 15 Sep 2016 13:39:00 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.103.68.26 with HTTP; Fri, 6 Oct 2017 07:13:10 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-Date: Fri, 6 Oct 2017 19:43:10 +0530
-Message-ID: <CANMOCy0k-k7ZdjEAJHDeRR=A=O5BZUFVStZMtyvnWuuzqcDZmg@mail.gmail.com>
-Subject: nftables: 0040set_0 test in tests/shell/testcases/transactions fails
-To: netfilter-devel@vger.kernel.org, Pablo Neira Ayuso <pablo@netfilter.org>, 
+Received: by 10.237.41.97 with HTTP; Thu, 15 Sep 2016 13:38:40 -0700 (PDT)
+From: Namrata A Shettar <namrataashettar@gmail.com>
+Date: Fri, 16 Sep 2016 02:08:40 +0530
+Message-ID: <CAFrQyDHatOgFeaKSg_ML3z4hDuRHqC-pZUiwMq8vio0N507=Yw@mail.gmail.com>
+Subject: [PATCH v2 2/6] staging: vt6656: main_usb: Remove unnecessary blank lines
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
+	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
+	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
+	Wolfram Sang <wsa-dev@sang-engineering.com>, 
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/alternative; boundary=94eb2c065742ee6ba1053c91d51e
 
-Hello all,
-0040set_0 test in tests/shell/testcases/transactions fails when trying
-to delete an empty chain with error "Could not process rule: Device or
-resource busy".
-The element referring to the chain is already deleted and the same
-error occurs even after explicitly adding rule to flush the chain
-before deleting it. On the other hand, everything seems to work fine
-if all the rules are inputted from command line one by one whereas
-same error occurs with a nft executable script .
-Is this a known issue ?
-What can be the reason for this if this is known ?
-I hope I'm clear.
-Thanks for your time.
+--94eb2c065742ee6ba1053c91d51e
+Content-Type: text/plain; charset=UTF-8
 
-Regards,
-Harsha Sharma
+Remove unnecessary blank lines to fix checkpatch issue.
+
+Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+---
+ drivers/staging/vt6656/main_usb.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/drivers/staging/vt6656/main_usb.c
+b/drivers/staging/vt6656/main_usb.c
+index 0594828..d79f07f 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -692,7 +692,6 @@ static void vnt_bss_info_changed(struct ieee80211_hw
+*hw,
+        if (changed & BSS_CHANGED_BSSID && conf->bssid)
+                vnt_mac_set_bssid_addr(priv, (u8 *)conf->bssid);
+
+-
+        if (changed & BSS_CHANGED_BASIC_RATES) {
+                priv->basic_rates = conf->basic_rates;
+
+@@ -814,7 +813,6 @@ static void vnt_configure(struct ieee80211_hw *hw,
+                } else {
+                        rx_mode &= ~(RCR_MULTICAST | RCR_BROADCAST);
+                }
+-
+        }
+
+        if (changed_flags & (FIF_OTHER_BSS | FIF_BCN_PRBRESP_PROMISC)) {
+@@ -925,8 +923,7 @@ static const struct ieee80211_ops vnt_mac_ops = {
+
+ int vnt_init(struct vnt_private *priv)
+ {
+-
+        if (!(vnt_init_registers(priv)))
+                return -EAGAIN;
+
+        SET_IEEE80211_PERM_ADDR(priv->hw, priv->permanent_net_addr);
+
+--
+2.7.4
+
+--94eb2c065742ee6ba1053c91d51e
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Remove unnecessary blank lines to fix checkpatch issue.<sp=
+an class=3D"gmail-im"><br><br>
+Signed-off-by: Namrata A Shettar &lt;<a target=3D"_blank" href=3D"mailto:na=
+mrataashettar@gmail.com">namrataashettar@gmail.com</a>&gt;<br>
+---<br></span>
+=C2=A0drivers/staging/vt6656/main_u<wbr>sb.c | 4 ----<br>
+=C2=A01 file changed, 4 deletions(-)<span class=3D"gmail-im"><br>
+<br>
+diff --git a/drivers/staging/vt6656/main_<wbr>usb.c b/drivers/staging/vt665=
+6/main_<wbr>usb.c<br>
+index 0594828..d79f07f 100644<br>
+--- a/drivers/staging/vt6656/main_<wbr>usb.c<br>
++++ b/drivers/staging/vt6656/main_<wbr>usb.c<br>
+@@ -692,7 +692,6 @@ static void vnt_bss_info_changed(struct ieee80211_hw *h=
+w,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (changed &amp; BSS_CHANGED_BSSID &amp;&amp; =
+conf-&gt;bssid)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 vnt_mac_set_bssid_a=
+ddr(priv, (u8 *)conf-&gt;bssid);<br>
+<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (changed &amp; BSS_CHANGED_BASIC_RATES) {<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 priv-&gt;basic_rate=
+s =3D conf-&gt;basic_rates;<br>
+<br>
+@@ -814,7 +813,6 @@ static void vnt_configure(struct ieee80211_hw *hw,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 rx_mode &amp;=3D ~(RCR_MULTICAST | RCR_BROADCAST);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (changed_flags &amp; (FIF_OTHER_BSS | FIF_BC=
+N_PRBRESP_PROMISC)) {<br>
+@@ -925,8 +923,7 @@ static const struct ieee80211_ops vnt_mac_ops =3D {<br>
+<br>
+=C2=A0int vnt_init(struct vnt_private *priv)<br>
+=C2=A0{<br>
+-<br></span>=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!(vnt_init_registers(priv)))<sp=
+an class=3D"gmail-im"><br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return -EAGAIN;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 SET_IEEE80211_PERM_ADDR(priv-&gt;<wbr>hw, priv-=
+&gt;permanent_net_addr);</span><div><div><img src=3D"https://ssl.gstatic.co=
+m/ui/v1/icons/mail/images/cleardot.gif" class=3D"gmail-CToWUd"></div></div>=
+<div><br>
+</div><span><font color=3D"#888888">--<br>
+2.7.4</font></span></div>
+
+--94eb2c065742ee6ba1053c91d51e--
 
