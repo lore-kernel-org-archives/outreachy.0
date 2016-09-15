@@ -1,130 +1,122 @@
-X-GM-THRID: 5139032178688
-X-Received: by 10.112.219.102 with SMTP id pn6mr2770444lbc.12.1425147644077;
-        Sat, 28 Feb 2015 10:20:44 -0800 (PST)
+X-GM-THRID: 6330628880333799424
+X-Received: by 10.66.165.71 with SMTP id yw7mr8052963pab.3.1473969877345;
+        Thu, 15 Sep 2016 13:04:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.106.101 with SMTP id gt5ls317767wib.28.gmail; Sat, 28 Feb
- 2015 10:20:43 -0800 (PST)
-X-Received: by 10.194.161.194 with SMTP id xu2mr2801666wjb.1.1425147643824;
-        Sat, 28 Feb 2015 10:20:43 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x22a.google.com (mail-wg0-x22a.google.com. [2a00:1450:400c:c00::22a])
-        by gmr-mx.google.com with ESMTPS id ew5si349982wid.1.2015.02.28.10.20.43
+Received: by 10.157.44.182 with SMTP id p51ls4201385otb.29.gmail; Thu, 15 Sep
+ 2016 13:04:36 -0700 (PDT)
+X-Received: by 10.129.27.2 with SMTP id b2mr7712351ywb.36.1473969876961;
+        Thu, 15 Sep 2016 13:04:36 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
+        by gmr-mx.google.com with ESMTPS id y77si486997ywd.7.2016.09.15.13.04.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 10:20:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) client-ip=2a00:1450:400c:c00::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Sep 2016 13:04:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::22a as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22a.google.com with SMTP id n12so26153975wgh.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 10:20:43 -0800 (PST)
+Received: by mail-yw0-x242.google.com with SMTP id g192so3442318ywh.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:04:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=kPMBKcyMuDrhunATvq+wWsajEvYhf/H7rahkdj6q014=;
-        b=QMWC/2cyWPUylLPrC8h0saRsmfwylo7ZjlZsCBmaLet8SZ/fzrwx7uKZEdpwuUDAcO
-         4KyQi6Cn8qDAcrZ1m7S/rr5Aw/tq0G2LBDy1elPXQyuZcjRFXJb1N/r4yhWjO9r2MXV9
-         QjCWzwxd0gl2TpuRliWgZE6CQU/OFEnHAFazLkgvfoJvGOF0HvXFO5ZjMfbKmFv7a5Jw
-         oDH9NBhSOf6k2CBlTZBzFJ7Q33f1DERPcFo8mjYUEgPDoVxx1J7WQWS7vrNR5yfyRoGg
-         ZUn8bNzC7lqaUb3gUlprePPZRoR51DxefpGUa+oIUt2kkM8WlyuKqHED06g4O9dkJ81b
-         Ul/A==
-X-Received: by 10.180.90.176 with SMTP id bx16mr18979575wib.14.1425147643760;
-        Sat, 28 Feb 2015 10:20:43 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id gm2sm8019463wib.5.2015.02.28.10.20.42
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Feb 2015 10:20:43 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 1/3] Staging: rtl8192e: Replace printk with netdev_dbg, netdev_info, or netdev_warn
-Date: Sat, 28 Feb 2015 19:20:36 +0100
-Message-Id: <e558c09b852c7c9530743cfb4078f9ee41448a9c.1425147517.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1425147517.git.ksenija.stanojevic@gmail.com>
-References: <cover.1425147517.git.ksenija.stanojevic@gmail.com>
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=xnBFS3umHgrCBKOIyeVNTahseglLLqXkMEv3HIiLME8=;
+        b=eOhrJ/yaVQVXwsXka6IeBR8OuQVB2sAJSxroXPORJV9Kctm7csq/S6glmqTZF3hTmj
+         5NgRKCxfqlLk2IcH54P/pKrdbl7K/pHiyYHGKBy7DcRwVgeGI0NV/8P6aso6nKoqa04T
+         Lb5vrn8cJx1kVnAszNU7PB+zPdHPAjsZtHEIEmaR1jC23eIFGxYxlO/GO769mBX3g4y4
+         ULIzDVhCNtQyxAr48fT2KBsSOfebnqr7w+gda7DLbLl5tVAzxtzKm9M7UNHfh1hgOFWf
+         lI2LwGXl5e62UJ9fUdy4yHNFfKrwnEnjh5tK3MloBMG6AezZ73WR6SSPG9j+C1g6midP
+         wyYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=xnBFS3umHgrCBKOIyeVNTahseglLLqXkMEv3HIiLME8=;
+        b=GqUkyR8XOH/f90cNVhbwU+EbLXI7oRHTRdMB8E1ndRqxmSYZq6RR/xsOql1A0IqFfV
+         qUH6Giyd1Jk67HwRNQY4OZtvCovDSVZ9p7hCWjl8iebTreszDX86Ngt2MG7hXee8oi/L
+         HnKHHRuBuayUYBddU7I75dDghUKa38YFeEDs2+e4R6K14saiGPySsjqBzefX8XCunmNo
+         RW2JD/LN8bf2LcctVhQ+Lyk3PxA5RI+kJNEH5LW2X94vi2TGdT/3B3IV1CfynkFbAT8n
+         jnTZyd6eJP077Z3xFujfnBsMpn+cpxs+mu1MJZC803jeUDTeFRaNj8eRQq37quojFXRL
+         Vbdg==
+X-Gm-Message-State: AE9vXwMjOudMBMDv6jinHu5UpVd9Dol3WeuWKispC0t+9hwVHZ/cHS+osgBIkJYtL1LlRPyhkVJb8gPtL2WfQw==
+X-Received: by 10.129.71.9 with SMTP id u9mr11823383ywa.115.1473969876702;
+ Thu, 15 Sep 2016 13:04:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.37.41.132 with HTTP; Thu, 15 Sep 2016 13:03:56 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1609152121250.3364@hadrien>
+References: <20160915183258.GA13583@sayli-HP-15-Notebook-PC> <alpine.DEB.2.10.1609152121250.3364@hadrien>
+From: sayli karnik <karniksayli1995@gmail.com>
+Date: Fri, 16 Sep 2016 01:33:56 +0530
+Message-ID: <CAKG5xWjYNmRRR80YcMGA9OHeFxQ92UfZ4rz=xifKR27PmHL7Lg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Remove unnecessary
+ 'else' after a 'return' statement
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, William Hubbs <w.d.hubbs@gmail.com>, 
+	Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>, 
+	Samuel Thibault <samuel.thibault@ens-lyon.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8
 
-For network systems netdev_dbg, netdev_info or netdev_warn is preferred over
-printk. Issue found by checkpatch.pl
+On Fri, Sep 16, 2016 at 12:52 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Fri, 16 Sep 2016, sayli karnik wrote:
+>
+>> This patch resolves the following issue detected by checkpatch.pl:
+>> WARNING: else is not generally useful after a break or return.
+>>
+>> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+>> ---
+>>  drivers/staging/speakup/keyhelp.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
+>> index ce94cb1..ab56d89 100644
+>> --- a/drivers/staging/speakup/keyhelp.c
+>> +++ b/drivers/staging/speakup/keyhelp.c
+>> @@ -178,7 +178,7 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
+>>               synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));
+>>               build_key_data(); /* rebuild each time in case new mapping */
+>>               return 1;
+>> -     } else {
+>> +     }
+>>               name = NULL;
+>
+> This looks suspicious.  If you drop the else, then the code afterwards
+> should be less indented.
+>
+>>               if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
+>>                       synth_printf("%s\n",
+>> @@ -201,7 +201,7 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
+>>               synth_printf(spk_msg_get(MSG_KEYDESC), name);
+>>               synth_printf("\n");
+>>               return 1;
+>> -     }
+>> +
+>
+> Now you will end up with a return followed by an assignment.  So that
+> would be dead code.  You need to check carefully that the transformation
+> makes sense with regards to the code that is actually in the else branch.
+>
+> julia
+>
+Yes, this will lead to dead code. My bad!
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_wx.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 9e0f975..02faaf3 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -390,7 +390,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 			kfree(new_crypt);
- 			new_crypt = NULL;
- 
--			printk(KERN_WARNING "%s: could not initialize WEP: "
-+			netdev_warn(dev, "%s: could not initialize WEP: "
- 			       "load module rtllib_crypt_wep\n",
- 			       dev->name);
- 			return -EOPNOTSUPP;
-@@ -423,7 +423,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 					     NULL, (*crypt)->priv);
- 		if (len == 0) {
- 			/* Set a default key of all 0 */
--			printk(KERN_INFO "Setting key %d to all zero.\n",
-+			netdev_info(ieee->dev, "Setting key %d to all zero.\n",
- 					   key);
- 
- 			RTLLIB_DEBUG_WX("Setting key %d to all zero.\n",
-@@ -469,7 +469,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 	if (ieee->reset_on_keychange &&
- 	    ieee->iw_mode != IW_MODE_INFRA &&
- 	    ieee->reset_port && ieee->reset_port(dev)) {
--		printk(KERN_DEBUG "%s: reset_port failed\n", dev->name);
-+		netdev_dbg(dev, "%s: reset_port failed\n", dev->name);
- 		return -EINVAL;
- 	}
- 	return 0;
-@@ -596,7 +596,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
- 		ret = -EINVAL;
- 		goto done;
- 	}
--	printk(KERN_INFO "alg name:%s\n", alg);
-+	netdev_info(dev, "alg name:%s\n", alg);
- 
- 	ops = lib80211_get_crypto_ops(alg);
- 	if (ops == NULL) {
-@@ -610,7 +610,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
- 	if (ops == NULL) {
- 		RTLLIB_DEBUG_WX("%s: unknown crypto alg %d\n",
- 				   dev->name, ext->alg);
--		printk(KERN_INFO "========>unknown crypto alg %d\n", ext->alg);
-+		netdev_info(dev, "========>unknown crypto alg %d\n", ext->alg);
- 		ret = -EINVAL;
- 		goto done;
- 	}
-@@ -642,7 +642,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
- 	    (*crypt)->ops->set_key(ext->key, ext->key_len, ext->rx_seq,
- 				   (*crypt)->priv) < 0) {
- 		RTLLIB_DEBUG_WX("%s: key setting failed\n", dev->name);
--		printk(KERN_INFO "key setting failed\n");
-+		netdev_info(dev, "key setting failed\n");
- 		ret = -EINVAL;
- 		goto done;
- 	}
-@@ -759,9 +759,9 @@ int rtllib_wx_set_mlme(struct rtllib_device *ieee,
- 
- 	case IW_MLME_DISASSOC:
- 		if (deauth)
--			printk(KERN_INFO "disauth packet !\n");
-+			netdev_info(ieee->dev, "disauth packet !\n");
- 		else
--			printk(KERN_INFO "dis associate packet!\n");
-+			netdev_info(ieee->dev, "dis associate packet!\n");
- 
- 		ieee->cannot_notify = true;
- 
--- 
-1.9.1
-
+Thanks!
+>>       name = spk_msg_get(MSG_FUNCNAMES_START + cur_item);
+>>       func = funcvals[cur_item];
+>>       synth_printf("%s", name);
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160915183258.GA13583%40sayli-HP-15-Notebook-PC.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
