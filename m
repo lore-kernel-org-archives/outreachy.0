@@ -1,119 +1,85 @@
 X-GM-THRID: 6330315334745063424
-X-Received: by 10.129.160.134 with SMTP id x128mr7821722ywg.25.1473971207041;
-        Thu, 15 Sep 2016 13:26:47 -0700 (PDT)
+X-Received: by 10.28.31.209 with SMTP id f200mr151917wmf.4.1473916807856;
+        Wed, 14 Sep 2016 22:20:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.29.220 with SMTP id w28ls4385805otw.27.gmail; Thu, 15 Sep
- 2016 13:26:46 -0700 (PDT)
-X-Received: by 10.200.39.131 with SMTP id w3mr7991966qtw.13.1473971206688;
-        Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from mail-qk0-x235.google.com (mail-qk0-x235.google.com. [2607:f8b0:400d:c09::235])
-        by gmr-mx.google.com with ESMTPS id l185si384374ywb.5.2016.09.15.13.26.46
+Received: by 10.46.33.195 with SMTP id h64ls204199lji.24.gmail; Wed, 14 Sep
+ 2016 22:20:07 -0700 (PDT)
+X-Received: by 10.25.152.10 with SMTP id a10mr1134523lfe.4.1473916807358;
+        Wed, 14 Sep 2016 22:20:07 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id w79si46871wmw.0.2016.09.14.22.20.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::235 as permitted sender) client-ip=2607:f8b0:400d:c09::235;
+        Wed, 14 Sep 2016 22:20:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400d:c09::235 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x235.google.com with SMTP id t7so69479438qkh.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=1ed6SrR6u9pNenek0voKYNPpyimgcw3Lx+6yEevqWnM=;
-        b=ID0CQ9qUlu/FL92oWgUfZOfBZ4iCLZKTvx+D6HErI9ixZMXk2ytgtHrsWz3G/fCyw7
-         R2HAcA4whpwIy2/K9X6dA2kB355AqqFzeyjzY81N/Ob0o+HHDj3JHL9KdFTrRtqL7wR4
-         y1UWbqc06raT4OyHtJLgYR6QalvIk09eqRDejJWdgkRxU71K8rdGWlKzAk9mRuiJlUuh
-         n1B2QDW+nACKulpLq/ZXXBBWaACeLT3cTWwxDvLoTx3nltQTatqswJUDdkjZu6hsZ3GE
-         3pZneteG3FIbBcxX3q2cIh2oIZbNodRwelMbQ6Tw457Z8xmk7txhvVqqT3R4Hkrh5erC
-         peDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=1ed6SrR6u9pNenek0voKYNPpyimgcw3Lx+6yEevqWnM=;
-        b=bsFuGe7AsOM1YdZOVjFLBaCXXoWKD4ymdeFusXDxTtgScLnoWP0wdWVqML2SVZ9Ig/
-         ndmfjvX+3lCMCuw1gjJWaCHmxzNG6NYfVwvXHSfU/DmKZeSQoDqfPqbZgMxv9L0ClBUv
-         Rha1QOZJwfCgyGKXWN5Tb5LSayA6e/Q99NDjjjRWJj/3rwCq15oJcdCj5kaRn7mSZ8C2
-         vEYzXdb2D/90VJrHTgjA4z2x3PNFVoV7U1ea4fYU3of10c+HGmWhsAXQ6WKWDx5QZzey
-         znd0x0bjr5nSwL7S8qvjDGTPtoOCs+wCx96lmt7iArBfnA4vb7VedVBm6fBUwrM33/u2
-         /Dvg==
-X-Gm-Message-State: AE9vXwOmQlP7RpCHA6ef0ymAMmSPM4dZECO03XRYbnTIxdndicbk727L99yLiSmMnGxpLyoFVxEOI4si2pDZRQ==
-X-Received: by 10.55.188.193 with SMTP id m184mr12172564qkf.129.1473971206493;
- Thu, 15 Sep 2016 13:26:46 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,338,1470693600"; 
+   d="scan'208";a="193413677"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 07:20:06 +0200
+Date: Thu, 15 Sep 2016 07:20:05 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Malcolm Priestley <tvboxspy@gmail.com>, 
+    Alison Schofield <amsfield22@gmail.com>, 
+    maomao xu <albert008.xu@gmail.com>, Othmar Pasteka <pasteka@kabsi.at>, 
+    Parth Sane <laerdevstudios@gmail.com>, 
+    Wolfram Sang <wsa-dev@sang-engineering.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/6] staging: vt6656: Fix multiple
+ checkpatch issues
+In-Reply-To: <CAFrQyDFa-=oAuQdZmJYn+SyWGvStXL+CrNQEVRHC7sJWmp8HWA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609150719461.6078@hadrien>
+References: <CAFrQyDFa-=oAuQdZmJYn+SyWGvStXL+CrNQEVRHC7sJWmp8HWA@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Received: by 10.237.41.97 with HTTP; Thu, 15 Sep 2016 13:26:26 -0700 (PDT)
-From: Namrata A Shettar <namrataashettar@gmail.com>
-Date: Fri, 16 Sep 2016 01:56:26 +0530
-Message-ID: <CAFrQyDHKpW8d2Yrx1Mswi08DyBpQtOFwV7TEcZnagpHcfqo7Uw@mail.gmail.com>
-Subject: [PATCH v2 0/6] staging: vt6656: Fix multiple checkpatch issues
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Malcolm Priestley <tvboxspy@gmail.com>, 
-	Alison Schofield <amsfield22@gmail.com>, maomao xu <albert008.xu@gmail.com>, 
-	Othmar Pasteka <pasteka@kabsi.at>, Parth Sane <laerdevstudios@gmail.com>, 
-	Wolfram Sang <wsa-dev@sang-engineering.com>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary=94eb2c0430a62c1b5e053c91aa34
-
---94eb2c0430a62c1b5e053c91aa34
-Content-Type: text/plain; charset=UTF-8
-
-Fix checkpatch issues.These issues were detected by checkpatch.pl script.
-
----
-Changes in v2:
-   -  Commit log messages of the patchset made imperative
-   -  Subject line and description of patches 3 and 6 changed
-   -  Removed insertion of blank space in patch 2
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
 
-Namrata A Shettar(6):
-*staging: vt6656: Remove unnecessary blank lines*
-staging: vt6656: main_usb: Remove unnecessary blank lines
-staging: vt6656: main_usb: Replace type declaration with *pointer of same
-type
-staging: vt6656: rf: Add space around '-'
-staging: vt6656: rxtx: Remove unneccessary blank lines
-staging: vt6656: rxtx: Break up multiple assignments
 
+On Thu, 15 Sep 2016, Namrata A Shettar wrote:
 
-drivers/staging/vt6656/wcmd.c | 3 ---
-drivers/staging/vt6656/main_usb.c | 8 ++------
-drivers/staging/vt6656/rf.c | 4 ++--
-drivers/staging/vt6656/rxtx.c | 7 ++-----
-4 files changed, 6 insertions(+), 16 deletion(-)
+> Fix checkpatch issues.These issues are detected by checkpatch.pl script.
+>
+> Namrata A Shettar(6):
+> staging: vt6656: Remove unnecessary blank lines
+> staging: vt6656: main_usb: Remove unnecessary blank lines
+> staging: vt6656: main_usb: Replace data type declaration with variable of
+> same type
+> staging: vt6656: rf: Add space around '-'
+> staging: vt6656: rxtx: Remove unneccessary blank lines
+> staging: vt6656: rxtx: Fix multiple assignments
 
+In all of these, the commit log message should be rewritten to use the
+imperative.
 
---
-2.7.4
+julia
 
---94eb2c0430a62c1b5e053c91aa34
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Fix checkpatch issues.These issues w=
-ere detected by <a href=3D"http://checkpatch.pl" target=3D"_blank">checkpat=
-ch.pl</a> script.<br><br>---<br></div><div>Changes in v2:<br></div><div>=C2=
-=A0=C2=A0 -=C2=A0 Commit log messages of the patchset made imperative<br></=
-div><div>=C2=A0=C2=A0 -=C2=A0 Subject line and description of patches 3 and=
- 6 changed<br></div><div>=C2=A0=C2=A0 -=C2=A0 Removed insertion of blank sp=
-ace in patch 2 <br></div><div><br></div><div><br></div>Namrata A Shettar(6)=
-:<font size=3D"2"><b><span style=3D"font-weight:normal"><br>staging: vt6656=
-: Remove unnecessary blank lines</span></b></font><font size=3D"2"><span st=
-yle=3D"font-weight:normal"><br>staging: vt6656: main_usb: Remove unnecessar=
-y blank lines<br></span></font><font size=3D"2"><span style=3D"font-weight:=
-normal">staging: vt6656: main_usb: Replace type declaration with *pointer o=
-f same type</span></font><font size=3D"2"><span style=3D"font-weight:normal=
-"><br>staging: vt6656: rf: Add space around &#39;-&#39;<br></span></font><f=
-ont size=3D"2"><span style=3D"font-weight:normal">staging: vt6656: rxtx: Re=
-move unneccessary blank lines<br></span></font><font size=3D"2"><span style=
-=3D"font-weight:normal">staging: vt6656: rxtx: Break up multiple assignment=
-s<br><br></span></font><br>drivers/staging/vt6656/wcmd.c | 3 ---<br><font s=
-ize=3D"2"><span style=3D"font-weight:normal"></span></font>drivers/staging/=
-vt6656/main_us<wbr>b.c | 8 ++------<br>drivers/staging/vt6656/rf.c | 4 ++--=
-<br>drivers/staging/vt6656/rxtx.c | 7 ++-----<br>4 files changed, 6 inserti=
-ons(+), 16 deletion(-)<br><br><br><span><font color=3D"#888888">--<br>
-2.7.4</font></span></div></div>
-
---94eb2c0430a62c1b5e053c91aa34--
+>
+>
+> drivers/staging/vt6656/wcmd.c | 3 ---
+> drivers/staging/vt6656/main_usb.c | 9 +++------
+> drivers/staging/vt6656/rf.c | 4 ++--
+> drivers/staging/vt6656/rxtx.c | 7 ++-----
+> 4 files changed, 7 insertions(+), 16 deletion(-)
+>
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAFrQyDFa-%3DoAuQdZmJYn%
+> 2BSyWGvStXL%2BCrNQEVRHC7sJWmp8HWA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
 
