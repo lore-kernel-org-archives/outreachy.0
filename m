@@ -1,104 +1,95 @@
 X-GM-THRID: 6330624598541860864
-X-Received: by 10.200.37.20 with SMTP id 20mr7718167qtm.17.1473967381132;
-        Thu, 15 Sep 2016 12:23:01 -0700 (PDT)
+X-Received: by 10.194.172.9 with SMTP id ay9mr1788808wjc.2.1473966324796;
+        Thu, 15 Sep 2016 12:05:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.133.201 with SMTP id p70ls1315124ioi.2.gmail; Thu, 15 Sep
- 2016 12:23:00 -0700 (PDT)
-X-Received: by 10.66.226.10 with SMTP id ro10mr7569994pac.29.1473967380510;
-        Thu, 15 Sep 2016 12:23:00 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id h124si3059794pfe.0.2016.09.15.12.23.00
+Received: by 10.25.78.76 with SMTP id c73ls97064lfb.30.gmail; Thu, 15 Sep 2016
+ 12:05:24 -0700 (PDT)
+X-Received: by 10.25.42.197 with SMTP id q188mr1792597lfq.7.1473966324096;
+        Thu, 15 Sep 2016 12:05:24 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y6si119741wmg.0.2016.09.15.12.05.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 12:23:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 15 Sep 2016 12:05:24 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id z84so2576573pfi.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 12:23:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=iEylyypa1oKXWDgRSmyrc+EIoCKEFVKSIohmA6E95YY=;
-        b=bWmYyDMiNmZ7TSu6GOazVxhQRFF8nhmsXADbU8wkQ814SVBgEhRvhl7hF3ers5xssa
-         LqBUrw50fMchncoKZJb+JLVvrmnqllgerGICpOjIai0bdq496uUnySSfR7RUeyK+gW30
-         HXtN0DjRxbrbI229K8czvB+lUz19fttdlpDv7Fb7uMbmUwXdpCx5DizU5HdcB19uDRs5
-         3M7crxUXufUqprpFHAWdxbZ4nurZnm+KKPlmv9XmCI3B6Ps7MOCPhfanOSlqxyTFrbcf
-         hvaev8yC6WkQOpPoztaziqdkfuTK4sT/I3XBSGk3evW69i554ez+jda8CUx/5JL1MZqT
-         v0lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=iEylyypa1oKXWDgRSmyrc+EIoCKEFVKSIohmA6E95YY=;
-        b=IQ0FqOlJZjhiho1IQgco2H36beK7/9ZDFeZlq7axZh6IJygcj0BppNeTLHYDaK+o5o
-         9mSTBz+OcvD4VG6A57Mhxnk+u3mBY8TCca0fHU7rZvNk4q4f3vZBV/x4fvRiRFjuk7ku
-         CUp+jO2a8Epvh9lUqya5qpIVP/typ1VzSVeW6Vi12CMdXi/LBdwFSjZcJzX/cbs82N1M
-         pdw7IGx51l1PbPHL49JxNTxpKjeIz+6lWSS/LQJ2HyMZoPVmUhLALKhfU7eUq9I4GlFs
-         4TtDCfXfnzfOj+3VPfvqZBMWUp7S1yU9lm8DqIs6UfzBaVILu4dHzNJzDuYnr2q2uK0A
-         lLVA==
-X-Gm-Message-State: AE9vXwNk1LVTwJLKBTRWn0HPMkXRNvdGb4M3vq8yM+mz9cESb7od+qOwBzau9onjnMolGw==
-X-Received: by 10.98.59.146 with SMTP id w18mr10904290pfj.153.1473967380347;
-        Thu, 15 Sep 2016 12:23:00 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 9sm46877857pfo.74.2016.09.15.12.22.57
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 12:22:59 -0700 (PDT)
-Date: Fri, 16 Sep 2016 00:52:50 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: lustre: Remove unnecessary return capture
-Message-ID: <20160915192249.GA4550@toblerone>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,340,1470693600"; 
+   d="scan'208";a="193587655"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 21:05:17 +0200
+Date: Thu, 15 Sep 2016 21:05:07 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Rehas Sachdeva <aquannie@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Oleg Drokin <oleg.drokin@intel.com>, 
+    Andreas Dilger <andreas.dilger@intel.com>, 
+    James Simmons <jsimmons@infradead.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: Remove unnecessary
+ return capture
+In-Reply-To: <20160915181631.GA32498@toblerone>
+Message-ID: <alpine.DEB.2.10.1609152104140.3364@hadrien>
+References: <20160915181631.GA32498@toblerone>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Instead of storing the return value of a function call into a variable and
-then returning it, we can club the two into a single return statement. This
-change was made using the following semantic patch by Coccinelle:
 
-@@
-local idexpression ret;
-expression e;
-@@
 
--ret =
-+return
-     e;
--return ret;
+On Thu, 15 Sep 2016, Rehas Sachdeva wrote:
 
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
----
- drivers/staging/lustre/lustre/mdc/mdc_request.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+> Instead of storing the return value of a function call into a variable and
+> then returning it, we can club the two into a single return - call form of
+> statement. This change was made using the following semantic patch by
+> Coccinelle:
+>
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+>
+> -ret =
+> +return
+>      e;
+> -return ret;
 
-diff --git a/drivers/staging/lustre/lustre/mdc/mdc_request.c b/drivers/staging/lustre/lustre/mdc/mdc_request.c
-index 5bf95f9..cf94926 100644
---- a/drivers/staging/lustre/lustre/mdc/mdc_request.c
-+++ b/drivers/staging/lustre/lustre/mdc/mdc_request.c
-@@ -2488,9 +2488,8 @@ static int mdc_set_info_async(const struct lu_env *env,
- 		}
- 		spin_unlock(&imp->imp_lock);
- 
--		rc = do_set_info_async(imp, MDS_SET_INFO, LUSTRE_MDS_VERSION,
--				       keylen, key, vallen, val, set);
--		return rc;
-+		return do_set_info_async(imp, MDS_SET_INFO, LUSTRE_MDS_VERSION,
-+					 keylen, key, vallen, val, set);
- 	}
- 	if (KEY_IS(KEY_SPTLRPC_CONF)) {
- 		sptlrpc_conf_client_adapt(exp->exp_obd);
--- 
-2.7.4
+"return - call form of statement" is a bit verbose.  "return" would be
+fine.  Looks fine otherwise.
 
+julia
+
+>
+> Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/mdc/mdc_request.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/mdc/mdc_request.c b/drivers/staging/lustre/lustre/mdc/mdc_request.c
+> index 5bf95f9..cf94926 100644
+> --- a/drivers/staging/lustre/lustre/mdc/mdc_request.c
+> +++ b/drivers/staging/lustre/lustre/mdc/mdc_request.c
+> @@ -2488,9 +2488,8 @@ static int mdc_set_info_async(const struct lu_env *env,
+>  		}
+>  		spin_unlock(&imp->imp_lock);
+>
+> -		rc = do_set_info_async(imp, MDS_SET_INFO, LUSTRE_MDS_VERSION,
+> -				       keylen, key, vallen, val, set);
+> -		return rc;
+> +		return do_set_info_async(imp, MDS_SET_INFO, LUSTRE_MDS_VERSION,
+> +					 keylen, key, vallen, val, set);
+>  	}
+>  	if (KEY_IS(KEY_SPTLRPC_CONF)) {
+>  		sptlrpc_conf_client_adapt(exp->exp_obd);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160915181631.GA32498%40toblerone.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
