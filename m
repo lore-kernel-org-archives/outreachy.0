@@ -1,65 +1,104 @@
 X-GM-THRID: 6330196266384883712
-X-Received: by 10.194.119.196 with SMTP id kw4mr1480307wjb.1.1473942564658;
-        Thu, 15 Sep 2016 05:29:24 -0700 (PDT)
+X-Received: by 10.13.213.22 with SMTP id x22mr5975421ywd.52.1473942271376;
+        Thu, 15 Sep 2016 05:24:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.74.78 with SMTP id x75ls284542wma.4.gmail; Thu, 15 Sep 2016
- 05:29:24 -0700 (PDT)
-X-Received: by 10.194.96.237 with SMTP id dv13mr1496773wjb.6.1473942563946;
-        Thu, 15 Sep 2016 05:29:23 -0700 (PDT)
-Return-Path: <arnd@arndb.de>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.73])
-        by gmr-mx.google.com with ESMTPS id e21si206316wmc.2.2016.09.15.05.29.23
+Received: by 10.157.51.74 with SMTP id u10ls3388473otd.30.gmail; Thu, 15 Sep
+ 2016 05:24:31 -0700 (PDT)
+X-Received: by 10.157.34.41 with SMTP id o38mr6083617ota.34.1473942271029;
+        Thu, 15 Sep 2016 05:24:31 -0700 (PDT)
+Return-Path: <ronladred@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by gmr-mx.google.com with ESMTPS id c75si212583ywh.0.2016.09.15.05.24.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 05:29:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) client-ip=217.72.192.73;
+        Thu, 15 Sep 2016 05:24:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ronladred@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 217.72.192.73 is neither permitted nor denied by best guess record for domain of arnd@arndb.de) smtp.mailfrom=arnd@arndb.de
-Received: from wuerfel.localnet ([78.43.20.153]) by mrelayeu.kundenserver.de
- (mreue104) with ESMTPSA (Nemesis) id 0LsywU-1azk3U3y4Q-012Wxy; Thu, 15 Sep
- 2016 14:29:22 +0200
-From: Arnd Bergmann <arnd@arndb.de>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ronladred@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=ronladred@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id 38so1551079qte.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 05:24:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Iay4gDTbXtvwIX0OGlW+uACzAVYzO3crUALJJcUR+j4=;
+        b=u0ukYWQ0s9Gv6Gh75biAAQU9w6/+Z9hXzviJbkRpAArhHaPMdO0mRxTHaor1sV+dOO
+         HDuDfRXGZhfjsSTFXnMxCApwL9lq74PVE5VprEboZd2dIE8iZ+g/AUR5UT92304WMgQH
+         9VwDs77GBxMGM1FRivZOyhL1seNEdlJnHPs7WpCvgh28PLhp/bJxzJ+s/9WTHxO32aOx
+         VHjz2TfHaHT4bsu1C+HLTY5M5TH1VkszxuD/9bVSfToO7iYKF9HuvpUfArRG5R5qfopo
+         8rgOPGpA7DknmbhIoKJJyOi/OAG4fV3StfxJ68Dt5lb7fJhaXe+1z2Vrb0jRSI8iEKIK
+         6o5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Iay4gDTbXtvwIX0OGlW+uACzAVYzO3crUALJJcUR+j4=;
+        b=WCUhfAK01yPwQW7KeDGX8qCWJWtb2SXb1tYPhlGb4I9boRiLTqhgDCg9eq7ix5AEkA
+         HcDvEUeJp3ALia90vD0gFHZ6OfbIlr2U22MYVbE3TXgkaaczAozNkbS7bmHI9cNad+V/
+         7xQLL2d/9O15SpEEKjwfnKg69PGgVQOxWq+QTNMePKW6fVcyi6n6pA9NibJD9fuH6nh4
+         0CY2uAbS2yhJuaiO/OYit0RPH3IrViyqwRr4CKSn3l9dwF4LRztx+J7oa8iWW94QVMfL
+         TRPhJ49xPV3LvraWYxer3s2ssOMpezflR4CGuXk7wuZNioTgpgFbPh1elRoRavgdRloq
+         yYHw==
+X-Gm-Message-State: AE9vXwOGLsYfVbZb/YYx5uMB8j8Hl9qFrAKoT+edcsL0OqL4ZtuxtGr8ywVSGXntqmReRg==
+X-Received: by 10.237.60.82 with SMTP id u18mr9188320qte.80.1473942270796;
+        Thu, 15 Sep 2016 05:24:30 -0700 (PDT)
+Return-Path: <ronladred@gmail.com>
+Received: from fedora ([206.71.239.141])
+        by smtp.gmail.com with ESMTPSA id w35sm1694213qtc.24.2016.09.15.05.24.29
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 15 Sep 2016 05:24:29 -0700 (PDT)
+Date: Thu, 15 Sep 2016 08:24:26 -0400
+From: Ronald Rojas <ronladred@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ronald Rojas <ronladred@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: ethernet: Fixes checkpatch blank lines warnings
-Date: Thu, 15 Sep 2016 14:29:22 +0200
-Message-ID: <15778561.A1ImvO0lIj@wuerfel>
-User-Agent: KMail/5.1.3 (Linux/4.4.0-34-generic; KDE/5.18.0; x86_64; ; )
-In-Reply-To: <20160915122426.GA2382@fedora>
-References: <20160915122426.GA2382@fedora>
+Bcc: gregkh@linuxfoundation.org
+Subject: [PATCH] Staging: ethernet: Fixes checkpatch blank lines warnings
+Message-ID: <20160915122426.GA2382@fedora>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-Provags-ID: V03:K0:0NIAKOtOfKHFQ2df6Qaw+tQ7pD2VCoBH3BunRH1rjvzxJT8Hi1J
- Lj60m/35o2zU9i/RNZfALH+A9+40wdrKkZvuLw1Bp9egN7FrvCDkxlFyKw5P6+wQYntSqmy
- GyidFb9fdBpLqcMlECMJ1K6mznhG2E21bwlZ0gi1UU4JhS0WKlKpyFVgTFuxXpG3FfT55gU
- B1mISEGodhNVY+RXKpK1A==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:+clHN097nHQ=:JVDxhpnSMBvp5/5dcMzkz0
- zKSLOz/A2eCYJ0UrOV0Ah4xNNJs1rVnN2gg03OUiq+VMqBNvSMgHNmdYnp5gF5Bf01AgWRPEb
- jgZinsdX3fct5CDQV8SnfQIBQGrUjqNYQHZN/TurHqj160fNBz1jlnWnUrNJRBuCKvGwJAmgQ
- SewJDFisHwt1QK9B6kzidk+Ag/i16fBTCX1+1G1md6BWSpBhUW7Y7Z+DIXa66+tGW62rMM7FV
- gakcqZof85KWDT7mTLuu/aQ4M3OsM+ByPajaMWp4NqB/EJc7lT813u8OiFzuvsaQdIJEDg6SZ
- l4ilUUB3ZqJkoQcEmVFXLcHpy25YL2lmQGhO5z2JPb9UGWrX8Nb0SoKjfbOb1xRR4kAvueU3z
- kgbtIonw6Z9Kbu+ulX4qS0NFUOqWXmVRuMdxplxd+sCaaEnCmWEsId5b3A55p1uflGnesivJP
- Lgr5vJl5uc6GfjrUIbaVr70wZ//uZLVipOCzOJ4vON0QD9/zHZMzHRkxWC6pmF2yJDztQ04n4
- NTTVMwpjmfb6hrnLlVGfcZyhzxTAn7tZamrhWgTH1EVNm/njC/3h7ZSRT7O8zQLA8BvoVg7J8
- Bj/VQ0dt+JDa7MwH/vICfDvT7u+mJHwx2tWABLD7y/z+bPXdjUsOG1hYcUaqaxWLqiuOu40+9
- FiNAliwrvZq76ToA/AXD3VE2NAiXXiJpuyBiRh/unteuh6FzPc9CAvWZzDOCVtW728X7/1XIK
- FvRLFYujeb9l4uMl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-On Thursday, September 15, 2016 8:24:26 AM CEST Ronald Rojas wrote:
-> Fixes several of the checkpatch.pl warning
-> CHECK: Please don't use multiple blank lines
-> 
-> Signed-off-by: Ronald Rojas <ronladred@gmail.com>
+Fixes several of the checkpatch.pl warning
+CHECK: Please don't use multiple blank lines
 
-In the subject line, please use "octeon" instead of "ethernet".
+Signed-off-by: Ronald Rojas <ronladred@gmail.com>
+---
+v5: changes to commit log
 
-Did you build test this driver using a MIPS cross-compiler?
-I realize that it's just a whitespace change and it clearly
-won't break anything, but in general you should do some
-build testing before sending it out, and properly building
-this driver is a bit tricky.
+ drivers/staging/octeon/ethernet.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-	Arnd
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index e9cd5f2..79571d6 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -86,7 +86,6 @@ int rx_napi_weight = 32;
+ module_param(rx_napi_weight, int, 0444);
+ MODULE_PARM_DESC(rx_napi_weight, "The NAPI WEIGHT parameter.");
+ 
+-
+ /*
+  * cvm_oct_poll_queue_stopping - flag to indicate polling should stop.
+  *
+@@ -665,7 +664,6 @@ static int cvm_oct_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
+-
+ 	cvm_oct_configure_common_hw();
+ 
+ 	cvmx_helper_initialize_packet_io_global();
+@@ -878,7 +876,6 @@ static int cvm_oct_remove(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-
+ 	cvmx_pko_shutdown();
+ 
+ 	cvmx_ipd_free_ptr();
+-- 
+2.7.4
+
 
