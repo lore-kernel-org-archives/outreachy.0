@@ -1,130 +1,143 @@
-X-GM-THRID: 6331576127729958912
-X-Received: by 10.200.42.204 with SMTP id c12mr2362012qta.39.1474184945537;
-        Sun, 18 Sep 2016 00:49:05 -0700 (PDT)
+X-GM-THRID: 6330315387682422784
+X-Received: by 10.46.71.207 with SMTP id u198mr1797644lja.2.1473967448270;
+        Thu, 15 Sep 2016 12:24:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.44.182 with SMTP id p51ls8392080otb.29.gmail; Sun, 18 Sep
- 2016 00:49:05 -0700 (PDT)
-X-Received: by 10.157.34.197 with SMTP id y63mr2387785ota.126.1474184945253;
-        Sun, 18 Sep 2016 00:49:05 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id h124si5507469pfe.0.2016.09.18.00.49.05
+Received: by 10.46.0.131 with SMTP id e3ls397295lji.29.gmail; Thu, 15 Sep 2016
+ 12:24:07 -0700 (PDT)
+X-Received: by 10.25.193.148 with SMTP id r142mr1806704lff.2.1473967447824;
+        Thu, 15 Sep 2016 12:24:07 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p199si402401wmd.1.2016.09.15.12.24.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 00:49:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Thu, 15 Sep 2016 12:24:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id pp5so5428017pac.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 00:49:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=c1C+lJdECa2K/qHStJjQtUTWdukG2TNeL69SNVpQpHw=;
-        b=N4qDTrwltWEGi9YvL3zcn5QAQtDY7jmIo83Yyrh2umauKU+XC2uDTH/R7cfHNTQ3gZ
-         GqwYwLd+DsC0cnDFNfy7pzjYfK0XxzhbHukz1+4yKCib0KDpdg89HcFzvRZAkMV0fb7V
-         EXj7DOdbYecpxm82T8FN33k66Tflxbnpu7ba1DPfQvzoOEPFiR6W2ZS9xGFWp1+3QEmM
-         46VetiFNUbOg5H7s39kaxc/u0QUjGBnI9JLSLrk//P67JlhYd15l8lErAF3LqzNfSIly
-         0JV+JVasFNToVAsyLvlPCGRYynhAs4Z71xbb6w671frf2oqOxmgQ6qiOezLkKlJfREam
-         z/Pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=c1C+lJdECa2K/qHStJjQtUTWdukG2TNeL69SNVpQpHw=;
-        b=NyZefpgYaVmuhItdMSMpfM1+V08fSttLO3T4+XpyToFnjR2w6LiMbrChGCaYwlbw/p
-         cb+Trx0Yu0T1C5WoTSVgfpb/2V7fG4MygfLrM1OAsRtcXLa1VCgJAhLDBUGMyCPXPB5y
-         PbapRx8L7lgDaHnDTXcfrd+MPtcAYWyuKT0dbf/dxy4YujTzblbOq4S2MuN17sW9Yqe0
-         uasWIRG8QR1eLaMMb5VPdfxKL9ZUFB4tXrknuLmGohJ4czecrSheZiU44Jw+kwQsUyyh
-         10n+EJdXH0nz1OQ3EnFxvquCTz+wWTwE5jZYvWZZzXtT7kZh7PECjsxNSMwEeWXUdRF/
-         MByA==
-X-Gm-Message-State: AE9vXwMRFH/vduUCofuwOLlLQpH9Ew9SA+htV6pW6jOULyO+0DfOkXjtIyreyhwthgu5qQ==
-X-Received: by 10.66.217.170 with SMTP id oz10mr37160843pac.61.1474184945051;
-        Sun, 18 Sep 2016 00:49:05 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.218])
-        by smtp.gmail.com with ESMTPSA id b7sm62963053pfg.87.2016.09.18.00.49.03
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 00:49:04 -0700 (PDT)
-Date: Sun, 18 Sep 2016 13:18:56 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, amitoj1606@gmail.com
-Subject: [PATCH 2/3] staging: rtl8188eu: core: Fix comparison to NULL
-Message-ID: <20160918074848.GA4756@life-desktop>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,340,1470693600"; 
+   d="scan'208";a="193588664"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 21:24:07 +0200
+Date: Thu, 15 Sep 2016 21:24:06 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/6] staging: vt6656: main_usb: Replace
+ data type declaration with variable of same type
+In-Reply-To: <CAFrQyDFZ92oTmzrW1k62uyjRowFKbkhmX6jzzcX334kJCzjbuA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609152123290.3364@hadrien>
+References: <CAFrQyDHhpXVeYyQGb=kwRp=4ToJw-9i6Y2KiwxVTb=21Wtxb9Q@mail.gmail.com> <alpine.DEB.2.10.1609150718460.6078@hadrien> <20160915180849.GA6416@namrata-HP-Pavilion-g6-Notebook-PC> <CAFrQyDFZ92oTmzrW1k62uyjRowFKbkhmX6jzzcX334kJCzjbuA@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-232574300-1473967447=:3364"
 
-Convert pointer comparisons to NULL to NULL pointer 'p'
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ap.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+--8323329-232574300-1473967447=:3364
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index dfd5055..f5bd0db 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ap.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -78,7 +78,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 	/* update TIM IE */
- 	p = rtw_get_ie(pie + _FIXED_IE_LENGTH_, _TIM_IE_, &tim_ielen,
- 			pnetwork_mlmeext->IELength - _FIXED_IE_LENGTH_);
--	if (p != NULL && tim_ielen > 0) {
-+	if (p && tim_ielen > 0) {
- 		tim_ielen += 2;
- 		premainder_ie = p+tim_ielen;
- 		tim_ie_offset = (int)(p - pie);
-@@ -98,7 +98,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 				_SUPPORTEDRATES_IE_, &tmp_len,
- 				(pnetwork_mlmeext->IELength -
- 					_BEACON_IE_OFFSET_));
--		if (p !=  NULL)
-+		if (p)
- 			offset += tmp_len+2;
- 
- 		/* DS Parameter Set IE, len = 3 */
-@@ -183,7 +183,7 @@ void rtw_add_bcn_ie(struct adapter *padapter, struct wlan_bssid_ex *pnetwork,
- 		i += (pIE->Length + 2);
- 	}
- 
--	if (p != NULL && ielen > 0) {
-+	if (p && ielen > 0) {
- 		ielen += 2;
- 
- 		premainder_ie = p+ielen;
-@@ -232,7 +232,7 @@ void rtw_remove_bcn_ie(struct adapter *padapter, struct wlan_bssid_ex *pnetwork,
- 
- 	p = rtw_get_ie(pie + _FIXED_IE_LENGTH_, index, &ielen,
- 		       pnetwork->IELength - _FIXED_IE_LENGTH_);
--	if (p != NULL && ielen > 0) {
-+	if (p && ielen > 0) {
- 		ielen += 2;
- 
- 		premainder_ie = p+ielen;
-@@ -934,14 +934,14 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 	memset(supportRate, 0, NDIS_802_11_LENGTH_RATES_EX);
- 	/*  get supported rates */
- 	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_, &ie_len, (pbss_network->IELength - _BEACON_IE_OFFSET_));
--	if (p !=  NULL) {
-+	if (p) {
- 		memcpy(supportRate, p+2, ie_len);
- 		supportRateNum = ie_len;
- 	}
- 
- 	/* get ext_supported rates */
- 	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _EXT_SUPPORTEDRATES_IE_, &ie_len, pbss_network->IELength - _BEACON_IE_OFFSET_);
--	if (p !=  NULL) {
-+	if (p) {
- 		memcpy(supportRate+supportRateNum, p+2, ie_len);
- 		supportRateNum += ie_len;
- 	}
--- 
-1.9.1
 
+
+On Thu, 15 Sep 2016, Namrata A Shettar wrote:
+
+> On Thu, Sep 15, 2016 at 07:19:23AM +0200, Julia Lawall wrote:
+> >
+> >
+> > On Thu, 15 Sep 2016, Namrata A Shettar wrote:
+> >
+> > > This patch fixes checkpatch issue:
+> > > -Replacing sizeof(struct vnt_usb_send_context) with sizeof(*tx_context)
+> > > -Replacing sizeof(struct vnt_rcb) with sizeof(*priv->rcb[ii])
+> > > The replacements are of the type they are replaced with hence size
+> > > remains same.
+> > >
+> > > Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+> > > ---
+> > >  drivers/staging/vt6656/main_usb.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > >         for (ii = 0; ii < priv->num_tx_context; ii++) {
+> > > -               tx_context = kmalloc(sizeof(struct
+> vnt_usb_send_context),
+> > > +               tx_context = kmalloc(sizeof(*tx_context),
+> > >                                                                
+> GFP_KERNEL);
+> >
+> > The GFP_KERNEL argument should not be left way out on the right like that.
+> > Now it could be on the sam line as the kmalloc.
+> >
+> > julia
+> >
+>
+> Will that change come in the same patch? or should I create a new patch
+> for the same?
+
+I think you could put the whole thing in one patch. The need to move the
+GFP_KERNEL comes because you changed the sizeof argument.
+
+julia
+
+>
+> Thanks,
+> Namrata
+>
+> On Thu, Sep 15, 2016 at 11:38 PM, Namrata A Shettar
+> <namrataashettar@gmail.com> wrote:
+>       On Thu, Sep 15, 2016 at 07:19:23AM +0200, Julia Lawall wrote:
+>       >
+>       >
+>       > On Thu, 15 Sep 2016, Namrata A Shettar wrote:
+>       >
+>       > > This patch fixes checkpatch issue:
+>       > > -Replacing sizeof(struct vnt_usb_send_context) with
+>       sizeof(*tx_context)
+>       > > -Replacing sizeof(struct vnt_rcb) with
+>       sizeof(*priv->rcb[ii])
+>       > > The replacements are of the type they are replaced with
+>       hence size
+>       > > remains same.
+>       > >
+>       > > Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+>       > > ---
+>       > >  drivers/staging/vt6656/main_usb.c | 4 ++--
+>       > >  1 file changed, 2 insertions(+), 2 deletions(-)
+>       > >
+>       > >         for (ii = 0; ii < priv->num_tx_context; ii++) {
+>       > > -               tx_context = kmalloc(sizeof(struct
+>       vnt_usb_send_context),
+>       > > +               tx_context = kmalloc(sizeof(*tx_context),
+>       > >                                                            
+>           GFP_KERNEL);
+>       >
+>       > The GFP_KERNEL argument should not be left way out on the
+>       right like that.
+>       > Now it could be on the sam line as the kmalloc.
+>       >
+>       > julia
+>       >
+>
+>       Will that change come in the same patch? or should I create a
+>       new patch
+>       for the same?
+>
+>       Thanks,
+>       Namrata
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAFrQyDFZ92oTmzrW1k62uyj
+> RowFKbkhmX6jzzcX334kJCzjbuA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-232574300-1473967447=:3364--
 
