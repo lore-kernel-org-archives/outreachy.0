@@ -1,128 +1,87 @@
 X-GM-THRID: 6330466800696819712
-X-Received: by 10.66.120.143 with SMTP id lc15mr5393013pab.2.1473926698091;
-        Thu, 15 Sep 2016 01:04:58 -0700 (PDT)
+X-Received: by 10.13.197.65 with SMTP id h62mr5593759ywd.4.1473926659098;
+        Thu, 15 Sep 2016 01:04:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.72 with SMTP id p8ls2674625otd.48.gmail; Thu, 15 Sep
- 2016 01:04:57 -0700 (PDT)
-X-Received: by 10.129.73.139 with SMTP id w133mr5219684ywa.28.1473926697759;
-        Thu, 15 Sep 2016 01:04:57 -0700 (PDT)
+Received: by 10.36.65.36 with SMTP id x36ls275897ita.15.canary; Thu, 15 Sep
+ 2016 01:04:17 -0700 (PDT)
+X-Received: by 10.66.41.114 with SMTP id e18mr5603513pal.37.1473926657375;
+        Thu, 15 Sep 2016 01:04:17 -0700 (PDT)
 Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id z4si718519pam.0.2016.09.15.01.04.57
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id 7si619930pfw.1.2016.09.15.01.04.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 01:04:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 15 Sep 2016 01:04:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id n24so1913538pfb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 01:04:57 -0700 (PDT)
+Received: by mail-pa0-x241.google.com with SMTP id p2so1820741pap.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 01:04:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=h+V8McJGaTH3g02TsR6ZuuCKE0VVLSKuJHqnX7+AttM=;
-        b=EhQPeyMJQCzJ5yGdWtAPzxyjKIeJgAq8zh91/8j2CTBJgrt6Y+vKSRoRwiX8OXS9Yd
-         /a35q/kLevPPL/KUPRTxImyfTzLRx+TJbKXQQORGr3B9tAQHUnwnJm1aIqQL5Qz1NgJx
-         Pks/ITQKFlRn3rKznZNIGkX5hGlNQFoB4pSVCSOZokcuS8CCdOwTbqTYyZaPWIWw7824
-         mg1UkUTJNAOQ57T0vEYfkN7DdTSwkaDW6+ECkBwxzn+qRV0BDYE069mClE81mNt/61th
-         uUbSrSS8R/0sg06s1fj3EiywtN5r8JUHyk6zx0KSOM5if6GnXmlDDELnDB2VlYjNNV4V
-         /BHQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=agluhnr1KIubbohwJBWJamYPWoljqWVq0AztZDdmc3k=;
+        b=mJTMzBsGx1qamSr2EnpsIlgXJxgw5UcneoL2jdx8hkQxw/LYZo5wrE9er3OyoeHA70
+         AGsogXWtVCkB3Xnxjpydb7ZANd/WWCiWoSP8CYWZifoOsceax28IQS8O69ZaehAc3HYQ
+         ywDLN2m7oWCPjAbt6rDG+2PhcCqsrDr1iLyuPgsTNjQRpKFoL094UkPCvPnU2VL4fXnP
+         Xbf+Z7sAo8OeEegpnQJGvMa/iQ/KkGpID371ORxIYSD+CM0OUMQGnw84B+Gi++hVnMRv
+         7OriwCgeaUz10GymxfrswRfIDjY1hcFuEWe0l4q4pZhCBf91cnfkB7eWm+ZLTqAgpGzK
+         RlUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=h+V8McJGaTH3g02TsR6ZuuCKE0VVLSKuJHqnX7+AttM=;
-        b=NipClD9ceY9CYHjxI0ptYOsS8cLNr5baxqpu3XreVA8gd9JNhUixLZnDUTsJlRdPze
-         k/FxzYTcukDEGImIqeyg0M8hV6FN3l+yyx86gWAVaoCivY1oWFHDnxD5eDJIT5+G+1rD
-         /ugHdKBctqajFDmRuRFGID3H6wOK7UxB5Q1XAfIja/FnWXR6py4QM9pyM5tt7q2zNZFw
-         cAFuxZOCxAImdgFg//HsXza7rglGCIsMXWgbB6PmM9/7mk46Wf4SI0teYpPh0t7vpOs8
-         IUv4BZe1Gkc8shh2WRy9eD5GNCu2ZQ6eWbecF94GkZtfKRF9286ikaLfZE4dZT613WTU
-         695Q==
-X-Gm-Message-State: AE9vXwNViRL4u7KzD4aQeWKs/3fGYW1duA1U5FNuRyar8ZNmPAoM9xhXJmEOsVUJxxGqWA==
-X-Received: by 10.98.134.201 with SMTP id x192mr2883810pfd.21.1473926697441;
-        Thu, 15 Sep 2016 01:04:57 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=agluhnr1KIubbohwJBWJamYPWoljqWVq0AztZDdmc3k=;
+        b=JAU9Yc8SIBvTFvDL3tz4BXsVL7YfB17jmr3Rtszdxez8i8+bAmNFIPkYe+wSpFFAwP
+         FrsV1eIvr6+lh/eWw67o6BJvBV1avsucQoQIWo7hDBYM60FQvMe8i5PYW6HDuCWwy/W1
+         C8UZSL72kjhIDvnIOtXKxYEZfDRosZzbtltLLRsx0T2xvS5UyQ1XPw4obRUVDyEcPWxt
+         lySfwf8H4ZdfRmK4q/JDW4Qq59c3MPQ6GzH+IUDNpDrhX+NeSlkTcBtHFz+Y9adaGfd4
+         UegogFhDvkwu3o7xHjMTk/lbW0tztEoImn2nKlGQ3Qe/dpp6x0Ld0RV+8HRnEuAL1IjH
+         4fkw==
+X-Gm-Message-State: AE9vXwPyF+LCfzhBfxI0yxEV+zkqeK5tFABK1ybgn/0zyBWv0pvOQwwq1qwWub+2EUbcKg==
+X-Received: by 10.67.23.4 with SMTP id hw4mr12283835pad.7.1473926657136;
+        Thu, 15 Sep 2016 01:04:17 -0700 (PDT)
 Return-Path: <aquannie@gmail.com>
 Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id tw2sm2925253pac.41.2016.09.15.01.04.55
+        by smtp.gmail.com with ESMTPSA id e9sm2141711pao.23.2016.09.15.01.04.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 01:04:57 -0700 (PDT)
-Date: Thu, 15 Sep 2016 13:34:48 +0530
+        Thu, 15 Sep 2016 01:04:16 -0700 (PDT)
+Date: Thu, 15 Sep 2016 13:34:07 +0530
 From: Rehas Sachdeva <aquannie@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: linux-usb@vger.kernel.org, Oleg Drokin <oleg.drokin@intel.com>,
+Cc: Oleg Drokin <oleg.drokin@intel.com>,
 	Andreas Dilger <andreas.dilger@intel.com>,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/6] staging: lustre: Add space b/w concatenated strings
-Message-ID: <5f0049b66e2bf80634cf510e090e6b577302cedb.1473923837.git.aquannie@gmail.com>
-References: <cover.1473923837.git.aquannie@gmail.com>
+Subject: [PATCH 0/6] staging: lustre: Fix multiple checkpatch warnings
+Message-ID: <cover.1473923837.git.aquannie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1473923837.git.aquannie@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Fixes checkpatch.pl warning:
-CHECK: Concatenated strings should use spaces between elements
+Fixes multiple checkpatch.pl warnings in lustre.
 
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
----
- drivers/staging/lustre/lustre/fid/fid_request.c | 8 ++++----
- drivers/staging/lustre/lustre/fid/lproc_fid.c   | 2 +-
- 2 files changed, 5 insertions(+), 5 deletions(-)
+Rehas Sachdeva (6):
+  staging: lustre: Add space b/w concatenated strings
+  staging: lustre: Fix block comment style
+  staging: lustre: Change 'unsigned' to 'unsigned int'
+  staging: lustre: Change 'seq_printf' to 'seq_puts'
+  staging: lustre: Remove unnecessary 'return'
+  staging: lustre: Fix indentation
 
-diff --git a/drivers/staging/lustre/lustre/fid/fid_request.c b/drivers/staging/lustre/lustre/fid/fid_request.c
-index 454744d..edd72b9 100644
---- a/drivers/staging/lustre/lustre/fid/fid_request.c
-+++ b/drivers/staging/lustre/lustre/fid/fid_request.c
-@@ -125,19 +125,19 @@ static int seq_client_rpc(struct lu_client_seq *seq,
- 
- 	if (!range_is_sane(output)) {
- 		CERROR("%s: Invalid range received from server: "
--		       DRANGE"\n", seq->lcs_name, PRANGE(output));
-+		       DRANGE "\n", seq->lcs_name, PRANGE(output));
- 		rc = -EINVAL;
- 		goto out_req;
- 	}
- 
- 	if (range_is_exhausted(output)) {
- 		CERROR("%s: Range received from server is exhausted: "
--		       DRANGE"]\n", seq->lcs_name, PRANGE(output));
-+		       DRANGE "]\n", seq->lcs_name, PRANGE(output));
- 		rc = -EINVAL;
- 		goto out_req;
- 	}
- 
--	CDEBUG_LIMIT(debug_mask, "%s: Allocated %s-sequence "DRANGE"]\n",
-+	CDEBUG_LIMIT(debug_mask, "%s: Allocated %s-sequence " DRANGE "]\n",
- 		     seq->lcs_name, opcname, PRANGE(output));
- 
- out_req:
-@@ -179,7 +179,7 @@ static int seq_client_alloc_seq(const struct lu_env *env,
- 			       seq->lcs_name, rc);
- 			return rc;
- 		}
--		CDEBUG(D_INFO, "%s: New range - "DRANGE"\n",
-+		CDEBUG(D_INFO, "%s: New range - " DRANGE "\n",
- 		       seq->lcs_name, PRANGE(&seq->lcs_space));
- 	} else {
- 		rc = 0;
-diff --git a/drivers/staging/lustre/lustre/fid/lproc_fid.c b/drivers/staging/lustre/lustre/fid/lproc_fid.c
-index 81b7ca9..3ed32d7 100644
---- a/drivers/staging/lustre/lustre/fid/lproc_fid.c
-+++ b/drivers/staging/lustre/lustre/fid/lproc_fid.c
-@@ -105,7 +105,7 @@ ldebugfs_fid_space_seq_write(struct file *file,
- 	rc = ldebugfs_fid_write_common(buffer, count, &seq->lcs_space);
- 
- 	if (rc == 0) {
--		CDEBUG(D_INFO, "%s: Space: "DRANGE"\n",
-+		CDEBUG(D_INFO, "%s: Space: " DRANGE "\n",
- 		       seq->lcs_name, PRANGE(&seq->lcs_space));
- 	}
- 
+ drivers/staging/lustre/lustre/fid/fid_request.c    | 8 ++++----
+ drivers/staging/lustre/lustre/fid/lproc_fid.c      | 2 +-
+ drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 6 ++++--
+ drivers/staging/lustre/lustre/ldlm/ldlm_resource.c | 8 ++++----
+ drivers/staging/lustre/lustre/llite/file.c         | 2 +-
+ drivers/staging/lustre/lustre/llite/lproc_llite.c  | 2 +-
+ drivers/staging/lustre/lustre/llite/rw.c           | 4 +---
+ 7 files changed, 16 insertions(+), 16 deletions(-)
+
 -- 
 2.7.4
 
