@@ -1,112 +1,89 @@
-X-GM-THRID: 6258683815797981184
-X-Received: by 10.66.147.106 with SMTP id tj10mr11255535pab.30.1457213381749;
-        Sat, 05 Mar 2016 13:29:41 -0800 (PST)
+X-GM-THRID: 6330466740152041472
+X-Received: by 10.28.207.131 with SMTP id f125mr295793wmg.4.1473927932326;
+        Thu, 15 Sep 2016 01:25:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.13.34 with SMTP id e2ls661023igc.44.canary; Sat, 05 Mar
- 2016 13:29:40 -0800 (PST)
-X-Received: by 10.50.66.205 with SMTP id h13mr4501893igt.0.1457213380795;
-        Sat, 05 Mar 2016 13:29:40 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id ff2si2265367pad.2.2016.03.05.13.29.40
+Received: by 10.28.230.146 with SMTP id e18ls185064wmi.16.canary; Thu, 15 Sep
+ 2016 01:25:31 -0700 (PDT)
+X-Received: by 10.194.104.230 with SMTP id gh6mr1265533wjb.7.1473927931859;
+        Thu, 15 Sep 2016 01:25:31 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b1si112320wmg.0.2016.09.15.01.25.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 05 Mar 2016 13:29:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Thu, 15 Sep 2016 01:25:31 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id 129so11801647pfw.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 13:29:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=fnYNdKLAr949t8Yl5u/+8T1cUs7TQEMReGuuNWi2jCg=;
-        b=JY9Us2eKEkzfdBOvVigYq2etcFx4/Y2VErfziCmqIKFeJ8hKf+/AiRlIXQeS846rme
-         DziJ4vZ6DGUEtwYEmxVHaV+UATCc8wp/llWHC1Js+PFlTP6xBG9cjXV3hTlhR7h/+L5f
-         y6XzMN8Uf+mRu46XHhuR4phLBrxl++9CERtylGOP01f39wm2WjVKPYTZFie8IMhIYD0X
-         Uv8H+r9fHXJg7BZa2IdHbZk4iCiIiWqiAYVDHHnilGGmGTBrwProEcbf4SxB0Zhly9Kn
-         2PbX6qn0ZxilyKH/EhQ8TjWfawAi8B8yqQUfh3Axq/p15YBrNAkzQGZxZaKcKufepHhs
-         vTVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=fnYNdKLAr949t8Yl5u/+8T1cUs7TQEMReGuuNWi2jCg=;
-        b=nC8IkGuzt8LB2csyty6/dVGLzzO3kuW2vg882xatSTNzwVwPjwnb7eDsXwXAynI7cN
-         WXjlVtFifYTtitPJdZLwqvvimjXDjSHev5onA6Ax7xRmcrtqnDA2yKY9mybLPLMfMOWC
-         uVrS3+zWcul0A1TSk/HIBLnIHKl4TeWf6yZl++4GvzJc3nimViOOxwDQ7YmwlhVgqffo
-         DvEjuWvaRRrfzewVgGJ0QYycxevLWV+c1Palw/QoPG+FlZ1eTNiE/Esacn4nnlHPoZ9/
-         aa2CHJRERp5YEneQ3SDcM2y8yQLYWCWbI8bMHd6HYt1DvgYPtS75iM6WqeH41v60sMvO
-         tjVw==
-X-Gm-Message-State: AD7BkJIwBtGaxfgomQ4IgG1IcqmwRerzYaLQ/qLGHphNg/8LBayzI3Z40nTB249Dud5JZg==
-X-Received: by 10.98.0.84 with SMTP id 81mr22507210pfa.67.1457213380628;
-        Sat, 05 Mar 2016 13:29:40 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id i23sm14323090pfj.68.2016.03.05.13.29.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 05 Mar 2016 13:29:40 -0800 (PST)
-Date: Sun, 6 Mar 2016 02:47:23 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723au: core: rtw_sta_mgt: Change form of NULL
- comparisons
-Message-ID: <20160305211723.GA25814@Karyakshetra>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,338,1470693600"; 
+   d="scan'208";a="193507167"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 10:25:31 +0200
+Date: Thu, 15 Sep 2016 10:25:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    claudiu.beznea@gmail.com, johannes.berg@intel.com, gavinoleary3@gmail.com, 
+    brcnakalin@gmail.com, avraham.stern@intel.com, brutallesale@gmail.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: wlan-ng: Use !x instead
+ of x == NULL.
+In-Reply-To: <20160915082251.GA6833@sandhya>
+Message-ID: <alpine.DEB.2.10.1609151025190.3045@hadrien>
+References: <20160915082251.GA6833@sandhya>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Change null comparisons of the form x == NULL to !x.
-This was done using Coccinelle.
 
-@@
-expression e;
-@@
-- e == NULL
-+ !e
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8723au/core/rtw_sta_mgt.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On Thu, 15 Sep 2016, Sandhya Bankar wrote:
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_sta_mgt.c b/drivers/staging/rtl8723au/core/rtw_sta_mgt.c
-index 22d857b..f997d24 100644
---- a/drivers/staging/rtl8723au/core/rtw_sta_mgt.c
-+++ b/drivers/staging/rtl8723au/core/rtw_sta_mgt.c
-@@ -200,7 +200,7 @@ int rtw_free_stainfo23a(struct rtw_adapter *padapter, struct sta_info *psta)
- 	struct hw_xmit *phwxmit;
- 	int i;
+> Use !x instead of x == NULL.
+> This issue was found by checkpatch.
 
--	if (psta == NULL)
-+	if (!psta)
- 		goto exit;
+Looks better :)
 
- 	spin_lock_bh(&psta->lock);
-@@ -350,7 +350,7 @@ struct sta_info *rtw_get_stainfo23a(struct sta_priv *pstapriv, const u8 *hwaddr)
- 	u32 index;
- 	const u8 *addr;
+julia
 
--	if (hwaddr == NULL)
-+	if (!hwaddr)
- 		return NULL;
-
- 	if (is_multicast_ether_addr(hwaddr))
-@@ -381,7 +381,7 @@ int rtw_init_bcmc_stainfo23a(struct rtw_adapter *padapter)
- 	int res = _SUCCESS;
-
- 	psta = rtw_alloc_stainfo23a(pstapriv, bc_addr, GFP_KERNEL);
--	if (psta == NULL) {
-+	if (!psta) {
- 		res = _FAIL;
- 		RT_TRACE(_module_rtl871x_sta_mgt_c_, _drv_err_,
- 			 "rtw_alloc_stainfo23a fail\n");
---
-2.1.4
-
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+> Changes in v2:
+> * Correcting the commit message.
+>  drivers/staging/wlan-ng/cfg80211.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+> index a36e40d..884d0d5 100644
+> --- a/drivers/staging/wlan-ng/cfg80211.c
+> +++ b/drivers/staging/wlan-ng/cfg80211.c
+> @@ -265,7 +265,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
+>
+>  	memset(sinfo, 0, sizeof(*sinfo));
+>
+> -	if ((wlandev == NULL) || (wlandev->msdstate != WLAN_MSD_RUNNING))
+> +	if (!wlandev || (wlandev->msdstate != WLAN_MSD_RUNNING))
+>  		return -EOPNOTSUPP;
+>
+>  	/* build request message */
+> @@ -274,7 +274,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
+>  	quality.dbm.status = P80211ENUM_msgitem_status_data_ok;
+>
+>  	/* send message to nsd */
+> -	if (wlandev->mlmerequest == NULL)
+> +	if (!wlandev->mlmerequest)
+>  		return -EOPNOTSUPP;
+>
+>  	result = wlandev->mlmerequest(wlandev, (struct p80211msg *)&quality);
+> --
+> 1.8.2.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160915082251.GA6833%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
