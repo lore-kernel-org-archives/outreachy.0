@@ -1,116 +1,142 @@
 X-GM-THRID: 6330577059983654912
-X-Received: by 10.46.1.75 with SMTP id 72mr1805438ljb.10.1473966732887;
-        Thu, 15 Sep 2016 12:12:12 -0700 (PDT)
+X-Received: by 10.98.205.131 with SMTP id o125mr7310348pfg.12.1473961895131;
+        Thu, 15 Sep 2016 10:51:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.9.136 with SMTP id 130ls346381ljj.14.gmail; Thu, 15 Sep
- 2016 12:12:12 -0700 (PDT)
-X-Received: by 10.25.43.76 with SMTP id r73mr1794906lfr.9.1473966732110;
-        Thu, 15 Sep 2016 12:12:12 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id a126si305224wmd.1.2016.09.15.12.12.11
+Received: by 10.107.6.11 with SMTP id 11ls1225937iog.26.gmail; Thu, 15 Sep
+ 2016 10:51:34 -0700 (PDT)
+X-Received: by 10.36.14.84 with SMTP id 81mr3127166ite.7.1473961894291;
+        Thu, 15 Sep 2016 10:51:34 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-qk0-x230.google.com (mail-qk0-x230.google.com. [2607:f8b0:400d:c09::230])
+        by gmr-mx.google.com with ESMTPS id w124si488685ywc.4.2016.09.15.10.51.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 12:12:12 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 15 Sep 2016 10:51:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c09::230 as permitted sender) client-ip=2607:f8b0:400d:c09::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,340,1470693600"; 
-   d="scan'208";a="193588009"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 21:12:11 +0200
-Date: Thu, 15 Sep 2016 21:12:10 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Anchal Jain <anchalj109@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    jon.nettleton@gmail.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: olpc_dcon: Prefer using the
- BIT macro
-In-Reply-To: <20160915151150.GA6172@life-desktop>
-Message-ID: <alpine.DEB.2.10.1609152110590.3364@hadrien>
-References: <20160915151150.GA6172@life-desktop>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c09::230 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x230.google.com with SMTP id h8so59335793qka.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 10:51:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=TtkEQwhRYQmoOsEtBSEV/iYMAntmZgB3Cm1fzy0/Yq0=;
+        b=aAqiQnx50koOq+sSJJixYT9umwGKyD32cJnQxahzjcGNQoim2DGiMRbJV0LGk3MHNx
+         IrB31deF8qf3ABHV1AJg/k/PCIHymi67hYVXZP4z5bauBdP/K6Hh6xoDiIzce0LJPfS7
+         tVkJwCNngmgr5IYXwAFHdDHwxwFFmpke9Z0Pg2PMmR/OlnojIcY97b2QGNUQB2DTD5ne
+         7he6inwLj+27yofEpUXKmHmSoXj97fq1rJOHkRU4f7NcWWXgxZkOP97f4xcrQw6bUYia
+         euFEi9Gg7xBgWNqEzfYbEBiV/rWELyBPAyRj1xffg21D3ZnRygrNChoeiGOzousy/2lf
+         jjFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=TtkEQwhRYQmoOsEtBSEV/iYMAntmZgB3Cm1fzy0/Yq0=;
+        b=RdYQN6ysXj+LFm1wqrRbT+hEWMZaRi0uIKNkGYXEEFLeSCMAMj8tYgS1K6rn2rsjZJ
+         dGfLbMQvt+vqDQD8W/bk6eY8+kxgRFxnQfmMdSg8QmduIp7TExfqxoBUP/Hvf9NR3d3o
+         fzBwzp89Ol7btX5eTSZfId4jrprhfKxInuxuat3+Ci9Po96M7Isj5Fr7p7ZzLJyx0CzT
+         L5XphDHRX8LhZ7u1AVh1At4GsG++ZMht9dXBOWRimWLG2540DYf4Cq7dyQF8TNt9P1cS
+         yaFKw7E7m9oY86l3yCIEBLs2AcFk4Pml9Fa6ED2kdXR6jAtmaEBiuqGnUrZKl5D/+4Zh
+         BVMw==
+X-Gm-Message-State: AE9vXwNSg9WuGbZKZwgizfeOeGR/PgmWBwzYTdTJBWRs8PbgvA54UWNES7mJ97YDGzSWGuO4ZOZ/jj+BdCAdcA==
+X-Received: by 10.55.48.9 with SMTP id w9mr10397097qkw.147.1473961894070; Thu,
+ 15 Sep 2016 10:51:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Received: by 10.12.131.134 with HTTP; Thu, 15 Sep 2016 10:51:33 -0700 (PDT)
+In-Reply-To: <20160915172523.GA20506@kroah.com>
+References: <20160915154838.GA7175@life-desktop> <20160915172523.GA20506@kroah.com>
+From: Anchal Jain <anchalj109@gmail.com>
+Date: Thu, 15 Sep 2016 23:21:33 +0530
+Message-ID: <CAAbeOSuRSzizAuoL12+-uSUiq6HXtwr6Em_qREq28wFXZjO9hQ@mail.gmail.com>
+Subject: Re: [PATCH v2] staging: olpc_dcon: Prefer using the BIT macro
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Jon Nettleton <jon.nettleton@gmail.com>
+Content-Type: multipart/alternative; boundary=001a11471b101bce77053c8f7ffe
 
-The subject should say what you have done, not give the checkpatch
-message.  Here what you have done is replace a bit shift by a use of BIT.
+--001a11471b101bce77053c8f7ffe
+Content-Type: text/plain; charset=UTF-8
 
-On Thu, 15 Sep 2016, Anchal Jain wrote:
+>You're previous commit message was a bit better :)
+>
+>And again, did you build test this?  Just looking at it, I do not think
+>it will...
+>
+>thanks,
 
-> Replace all occurences of (1<<x) by BIT(x) in the file olpc_dcon.h to get rid
-> of checkpatch.pl "CHECK" output "Prefer using the BIT macro"
 
-The macro is BIT, not bit.
+I can't understand what should I need to change in commit message
 
-julia
 
+thanks,
+
+On Thu, Sep 15, 2016 at 10:55 PM, Greg KH <gregkh@linuxfoundation.org>
+wrote:
+
+> On Thu, Sep 15, 2016 at 09:18:46PM +0530, Anchal Jain wrote:
+> > This patch fix the CHECK
+> > CHECK: Prefer using the BIT macro
+> > detected by checkpatch.pl
+> >
+> > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> > ---
+> >       changes in v2:
+> >               -modify commit message
 >
+> You're previous commit message was a bit better :)
 >
-> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
-> ---
->  drivers/staging/olpc_dcon/olpc_dcon.h | 30 +++++++++++++++---------------
->  1 file changed, 15 insertions(+), 15 deletions(-)
+> And again, did you build test this?  Just looking at it, I do not think
+> it will...
 >
-> diff --git a/drivers/staging/olpc_dcon/olpc_dcon.h b/drivers/staging/olpc_dcon/olpc_dcon.h
-> index 215e7ec..23a48a1 100644
-> --- a/drivers/staging/olpc_dcon/olpc_dcon.h
-> +++ b/drivers/staging/olpc_dcon/olpc_dcon.h
-> @@ -9,18 +9,18 @@
->  #define DCON_REG_ID		 0
->  #define DCON_REG_MODE		 1
+> thanks,
 >
-> -#define MODE_PASSTHRU	(1<<0)
-> -#define MODE_SLEEP	(1<<1)
-> -#define MODE_SLEEP_AUTO	(1<<2)
-> -#define MODE_BL_ENABLE	(1<<3)
-> -#define MODE_BLANK	(1<<4)
-> -#define MODE_CSWIZZLE	(1<<5)
-> -#define MODE_COL_AA	(1<<6)
-> -#define MODE_MONO_LUMA	(1<<7)
-> -#define MODE_SCAN_INT	(1<<8)
-> -#define MODE_CLOCKDIV	(1<<9)
-> -#define MODE_DEBUG	(1<<14)
-> -#define MODE_SELFTEST	(1<<15)
-> +#define MODE_PASSTHRU	bit(0)
-> +#define MODE_SLEEP	bit(1)
-> +#define MODE_SLEEP_AUTO	bit(2)
-> +#define MODE_BL_ENABLE	bit(3)
-> +#define MODE_BLANK	bit(4)
-> +#define MODE_CSWIZZLE	bit(5)
-> +#define MODE_COL_AA	bit(6)
-> +#define MODE_MONO_LUMA	bit(7)
-> +#define MODE_SCAN_INT	bit(8)
-> +#define MODE_CLOCKDIV	bit(9)
-> +#define MODE_DEBUG	bit(14)
-> +#define MODE_SELFTEST	bit(15)
+> greg k-h
 >
->  #define DCON_REG_HRES		0x2
->  #define DCON_REG_HTOTAL		0x3
-> @@ -35,11 +35,11 @@
->  #define DCON_REG_MEM_OPT_B	0x42
->
->  /* Load Delay Locked Loop (DLL) settings for clock delay */
-> -#define MEM_DLL_CLOCK_DELAY	(1<<0)
-> +#define MEM_DLL_CLOCK_DELAY	bit(0)
->  /* Memory controller power down function */
-> -#define MEM_POWER_DOWN		(1<<8)
-> +#define MEM_POWER_DOWN		bit(8)
->  /* Memory controller software reset */
-> -#define MEM_SOFT_RESET		(1<<0)
-> +#define MEM_SOFT_RESET		bit(0)
->
->  /* Status values */
->
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160915151150.GA6172%40life-desktop.
-> For more options, visit https://groups.google.com/d/optout.
->
+
+--001a11471b101bce77053c8f7ffe
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><span class=3D"gmail-im"><br>
+</span>&gt;You&#39;re previous commit message was a bit better :)<br>
+&gt;<br>
+&gt;And again, did you build test this?=C2=A0 Just looking at it, I do not =
+think<br>
+&gt;it will...<br>
+&gt;<br>
+&gt;thanks,<br><br><br>I can&#39;t understand what should I need to change =
+in commit message<br></div><div><br></div><div><br></div><div>thanks,</div>=
+</div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Thu, Sep=
+ 15, 2016 at 10:55 PM, Greg KH <span dir=3D"ltr">&lt;<a href=3D"mailto:greg=
+kh@linuxfoundation.org" target=3D"_blank">gregkh@linuxfoundation.org</a>&gt=
+;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 =
+.8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">On Thu, =
+Sep 15, 2016 at 09:18:46PM +0530, Anchal Jain wrote:<br>
+&gt; This patch fix the CHECK<br>
+&gt; CHECK: Prefer using the BIT macro<br>
+&gt; detected by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=
+=3D"_blank">checkpatch.pl</a><br>
+&gt;<br>
+&gt; Signed-off-by: Anchal Jain &lt;<a href=3D"mailto:anchalj109@gmail.com"=
+>anchalj109@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0changes in v2:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-modify commit m=
+essage<br>
+<br>
+</span>You&#39;re previous commit message was a bit better :)<br>
+<br>
+And again, did you build test this?=C2=A0 Just looking at it, I do not thin=
+k<br>
+it will...<br>
+<br>
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div><br></div>
+
+--001a11471b101bce77053c8f7ffe--
 
