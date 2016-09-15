@@ -1,111 +1,122 @@
-X-GM-THRID: 6806472827203485696
-X-Received: by 2002:a2e:908f:: with SMTP id l15mr6748885ljg.120.1584755449759;
-        Fri, 20 Mar 2020 18:50:49 -0700 (PDT)
+X-GM-THRID: 6330655085925761024
+X-Received: by 10.157.14.134 with SMTP id 6mr7732742otj.35.1473970498074;
+        Thu, 15 Sep 2016 13:14:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:10c2:: with SMTP id k2ls1294858lfg.9.gmail; Fri, 20
- Mar 2020 18:50:48 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt/1/BNON6d5QIplCcPBf/te5Sf4/+lWdN4T3uR3B7zaouhiCTv8LvqlsKeZOinyWEXaBr7
-X-Received: by 2002:a05:6512:10c4:: with SMTP id k4mr6834808lfg.98.1584755448509;
-        Fri, 20 Mar 2020 18:50:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584755448; cv=none;
-        d=google.com; s=arc-20160816;
-        b=cjy6Qt46L/yVuf6iae/919uYseZ9UOKaZHj+2nYmlTgTgyiEND92HPf2KWjMQHyzIT
-         rYXVmSYg0SGaRjyFK3dzKOpBWfFo4pVa31ZpsILA/36Ffi1zkU2+UchSdXbVuhUuFzpj
-         nY4G1O6UGiiONyVDVZAbI2I6dRrBHbh21ds8zZ975bAFyUg1AxQ8UtnMwXtFn5aABvrS
-         LinQ2RTEvJFCrO2zxfouI2StqhB8/ttr7D04njNpVYeO8dz4RYVmmm9d4jEbnvrHiy89
-         37eGv1/TYnsM4PDpPxL7HIJXcvVB9aDMJswRiuVKczOZu+Cj+2rNI1f16T9HjQw3kse/
-         FZkw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=g0bPDjSNybEFuzHJ/tWzn24HJ1174mpwdzyqf30tOGA=;
-        b=pDHfGnJHytkpUzeW35lbcnxdYFeZo/EnLT4tK3Q6mH2JFjd96CKrUscFjAMcaO6MzF
-         q++m2INYIqlD54tSGimhwhlJxvsDCmmVDAWhvEcgNRYtY9Q/zP5Eze+R0NtdH4A9Hwn4
-         MoVTf2zum0CmG6K5PFTGMsH5fnPlQ0eINTSCVvgf+TBjc8wApCDEHs4tadMUUQ2n1ol2
-         PAYR9/oooPoX8QQ+Jp7wiklJ6+04UD9vbjMR3QJ/+Gkvq5h033wKEiMEb4bYGhXhvnSM
-         qXlBPmCty5k0SRJyY7nJloBorSqtZsaJKWeqAiqsjKjKmGbp/qT0h22M8u5mGsnn0s5f
-         KJxg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bGlTJTDS;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
-        by gmr-mx.google.com with ESMTPS id a21si544477lff.3.2020.03.20.18.50.48
+Received: by 10.107.29.70 with SMTP id d67ls1250650iod.10.gmail; Thu, 15 Sep
+ 2016 13:14:56 -0700 (PDT)
+X-Received: by 10.107.134.134 with SMTP id q6mr8429897ioi.21.1473970496063;
+        Thu, 15 Sep 2016 13:14:56 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id um12si1533597pab.2.2016.09.15.13.14.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Mar 2020 18:50:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Sep 2016 13:14:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bGlTJTDS;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x244.google.com with SMTP id y17so8474465ljk.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2020 18:50:48 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id z84so2629946pfi.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:14:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=g0bPDjSNybEFuzHJ/tWzn24HJ1174mpwdzyqf30tOGA=;
-        b=bGlTJTDSP2bQbHgp/l6oxIvFS5NVi8MzSA3Q1zfjGKn4uZPa9Q8XxtDOoRauA+ttwo
-         3MgQmvgSo2G5zvnu3OQF2d2IqJJqfxvBU2TvTIgyTc447ZyTjjG4CDzJzKT1O+kvHc0F
-         nekWqjCyhAAysjQymB93lX/1cjBxFbdDHoYOphsOrbyYudyzgp4foPOz/MElA8cupqMe
-         5/Lpg817i5YShrBvZNWEMYbw6kFSQtfYYLu23G0TmO31GA8YTx/y5drY6F1bA/iu/QpK
-         jNcEyHYkNiur/3/EussHO0KkueJBumrWSrH3DzcUz9hvw418+WV2yNAElHYBx8vTbP9O
-         aKmA==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=d+xbraICQl25WMLxDxgtQVM7OV8JBaelcHZncgc/txw=;
+        b=RYZAeOhoKYXXzqXCdCraXNI6rOpDtiGXxJPKUDri1MWeiGSWrDOQEz0HYlO21+zCVw
+         brdpo5rfYtmsh0OYeg7kHikkAPWMNQQD6OJSWPsdZPmmZdvJawYFNBhbi6w8PMX6Fnj8
+         TH/K2t8gyNLPoNNLuS0xD2bOyynefSf2oNd0pm3tyn1cADlBXnEklL4MUnnjHzRebeIh
+         OJKE6l7mU7Dp06kOFek2yKjLAXIWTlEdAU2pQZ7TuLKEyiPQs2xvWgHE4OINqvSVAsqm
+         3vjppziAI8FGMFWuIjU5y74JG0TBYgEAowtGJPTTmuXHFJIlWRaUgylWnGSOoy5dHywj
+         VSAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=g0bPDjSNybEFuzHJ/tWzn24HJ1174mpwdzyqf30tOGA=;
-        b=H7aUj865G6P084eo9c9J6qF/UutkD3ojQqlhEGfzJX/R1CV73DMbLwNS1iUOtGuCyL
-         wRRiGrI8PLFzVvPw951WrZKPUvSD3kE/3U9WnXaiE7poHHszDxllyw0pVkNXE5+8I6pn
-         SN80ISIx8ARoBdPikQcN9S3WWn9ocAXLJrsFbKW3GD8xFlDlpqwBvrX7nwZZ93UDaH6X
-         J/qrurszHkfxNzw0W1sj/40G/pcxf9DHy9jAVew34YBbpQUwGzT+TFDOLcErJ4qREqlW
-         mX7U+L53U+lhFKq/Y5DoIMsJfZZg6Mp/j+2Ll1ekCPLvwsltunP7hy22bGpjey9f0D2/
-         fSDQ==
-X-Gm-Message-State: ANhLgQ0i8m7PwYCONKVW5fWtxOiVVWQvVzLKIxZsa344RurDTMS0nlTR
-	mEsDv7gW/FMv6oR6uahaEQVuLUfRb9g=
-X-Received: by 2002:a2e:91c6:: with SMTP id u6mr6831776ljg.207.1584755448304;
-        Fri, 20 Mar 2020 18:50:48 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.68.50])
-        by smtp.gmail.com with ESMTPSA id 133sm4205029ljj.91.2020.03.20.18.50.47
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Mar 2020 18:50:47 -0700 (PDT)
-Date: Sat, 21 Mar 2020 04:50:44 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=d+xbraICQl25WMLxDxgtQVM7OV8JBaelcHZncgc/txw=;
+        b=Uqa6aR+Ok53o9ztJCIBjALdz0ArhiL35AiiP/3H3Araibj+9DWMW8FYOmjQhKyHeCW
+         5SXqCVhaGhIQHTUWUjmY51kmEfTr1H2o5NeemiW98QLTo7irHYjP3TSLmlewqPk53p31
+         6VKubcm9oJjAl/ZO2LJ/xVI65JRlPeATTw6ni9ltHVUVguE38JlBcvjVXyr3mpXd01wS
+         7escWY3qi23ZQcorqa+XODlwLAmvVMqqKX8iuah2VYdtVBm9IxX8LuvMT+8oD8Y3A3Zv
+         Hm2ERT4fhKT7HMTg7xYVMfKS/OdPQHezP34qF0qA1XnSx8eUburO/rvrfWyYdV55mOe5
+         OEcA==
+X-Gm-Message-State: AE9vXwO2nx/MW3sE1LjP8t2b8qjxFZR9JiJ8hDcYHgyEXH2Ib07KcQh1gzM7iWzvdRETog==
+X-Received: by 10.98.147.22 with SMTP id b22mr17380162pfe.88.1473970495846;
+        Thu, 15 Sep 2016 13:14:55 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id xv9sm6952840pab.36.2016.09.15.13.14.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 15 Sep 2016 13:14:55 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: hp100: quoted string split across lines
-Message-ID: <20200321015044.GA18620@siyah2>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH] staging: emxx_udc: add braces to if-else block
+Date: Fri, 16 Sep 2016 01:44:14 +0530
+Message-Id: <20160915201414.10494-1-gs051095@gmail.com>
+X-Mailer: git-send-email 2.9.2
 
-Quoted string merge to upper line
+add braces to if/else clause to fix the checkpatch issue braces {}
+should be used on all arms of if/else block. Does not affect flow
+because only single statement inside if/else block.
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/hp/hp100.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/emxx_udc/emxx_udc.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index 551cd52..6487b3a 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -2931,8 +2931,7 @@ static struct pci_driver hp100_pci_driver = {
-  */
+diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+index f4d9000..ffcb09a 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.c
++++ b/drivers/staging/emxx_udc/emxx_udc.c
+@@ -478,9 +478,9 @@ static void _nbu2ss_dma_map_single(
+ )
+ {
+ 	if (req->req.dma == DMA_ADDR_INVALID) {
+-		if (req->unaligned)
++		if (req->unaligned) {
+ 			req->req.dma = ep->phys_buf;
+-		else {
++		} else {
+ 			req->req.dma = dma_map_single(
+ 				udc->gadget.dev.parent,
+ 				req->req.buf,
+@@ -1236,9 +1236,9 @@ static int _nbu2ss_start_transfer(
+ 	req->dma_flag = FALSE;
+ 	req->div_len = 0;
  
- MODULE_LICENSE("GPL");
--MODULE_AUTHOR("Jaroslav Kysela <perex@perex.cz>, "
--              "Siegfried \"Frieder\" Loeffler (dg1sek) <floeff@mathematik.uni-stuttgart.de>");
-+MODULE_AUTHOR("Jaroslav Kysela <perex@perex.cz>,Siegfried \"Frieder\" Loeffler (dg1sek) <floeff@mathematik.uni-stuttgart.de>");
- MODULE_DESCRIPTION("HP CASCADE Architecture Driver for 100VG-AnyLan Network Adapters");
+-	if (req->req.length == 0)
++	if (req->req.length == 0) {
+ 		req->zero = false;
+-	else {
++	} else {
+ 		if ((req->req.length % ep->ep.maxpacket) == 0)
+ 			req->zero = req->req.zero;
+ 		else
+@@ -1941,9 +1941,9 @@ static void _nbu2ss_ep_done(
+ 	if (likely(req->req.status == -EINPROGRESS))
+ 		req->req.status = status;
  
- /*
+-	if (ep->stalled)
++	if (ep->stalled) {
+ 		_nbu2ss_epn_set_stall(udc, ep);
+-	else {
++	} else {
+ 		if (!list_empty(&ep->queue))
+ 			_nbu2ss_restert_transfer(ep);
+ 	}
+@@ -2474,8 +2474,9 @@ static irqreturn_t _nbu2ss_udc_irq(int irq, void *_udc)
+ 			_nbu2ss_writel(&preg->USB_INT_STA, ~USB_INT_STA_RW);
+ 			_nbu2ss_writel(&preg->USB_INT_ENA, 0);
+ 			status = 0;
+-		} else
++		} else {
+ 			status = _nbu2ss_readl(&preg->USB_INT_STA);
++		}
+ 
+ 		if (status == 0)
+ 			break;
 -- 
-2.7.4
+2.9.2
 
 
