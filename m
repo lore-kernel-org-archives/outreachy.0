@@ -1,109 +1,150 @@
-X-GM-THRID: 6523850474748116992
-X-Received: by 10.46.125.3 with SMTP id y3mr156822ljc.4.1518952305532;
-        Sun, 18 Feb 2018 03:11:45 -0800 (PST)
+X-GM-THRID: 6330571692278022144
+X-Received: by 10.46.1.225 with SMTP id f94mr1796593lji.8.1473966926579;
+        Thu, 15 Sep 2016 12:15:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.9.80 with SMTP id 77ls203117ljj.12.gmail; Sun, 18 Feb 2018
- 03:11:43 -0800 (PST)
-X-Google-Smtp-Source: AH8x224H+LrI4HfCHkK1A+Y8FJu13uqv7pvrD3097uCGzml1L7yktchn/GyhFgod1yFFVLj1G9IJ
-X-Received: by 10.46.43.18 with SMTP id q18mr620429lje.27.1518952303792;
-        Sun, 18 Feb 2018 03:11:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518952303; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rzh6eI9GRit8nx8TBufpuhOYVkLl/4KGLvfUtePnvG8K5GQW5z8Oicx5ZtmHoNCZYj
-         op7LSFeYws8GUDyh3w3NAT2T4lcfAjZZG8MRgaKbypR7MaWxf5wWqjQekYIHVcwg7qxd
-         JSFQJ/FWj41bK9wBD9g5XrqfoEIOK6vcqc78NLwz1O8d2f+zQH3XEBXymGeW7iSGWWry
-         gsazqPCX2HcEmZ4Oq2VwBikaDoZz/9xKzrUSJoLSvlKQlO8jBK9N09bcRGS+ey1PriHh
-         t1TDmtncBcX3vvAM22cYlKOFPmiHW3fkikO9xQEHnV+XfjrmXgyPNB6uFDURQAd1MU/Y
-         jsgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=qC2V4VefPCybDJi2GejnzMTMF6lnxj4NSMlfM+Cr79g=;
-        b=vNuAuj8Kl2A2u23AtNz04yNd11LPeSFTOQIBJtC/Dv9fF6dHW/aZnvx559l86i0gyV
-         u158fqTuD6TXP9pu5M2ex1sVnkWEyTwCOVwWTG7jeFRkPwTMGKpRhekx9pUPriAxMBOF
-         ernhPNcvQjMP+JUnHBHy9xLvv34ECj7i2zTKEwEqBLVIdf3fF5LZCAg2VssSsWJFW5e7
-         jqH1nWlPJdw/VtIChcl/jNt9Jy0cgmzsB18S+7haYt4biEHizmHiU8AOlPx0XiIxr1xG
-         YPk7VdsXLRtdGx+00n2sOW/MU7FybazMPKb54/O9IiDCp7iTqIQ2f89xihaUrWU4hY5V
-         1l9Q==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qgDsGa/N;
-       spf=pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=chenyensu0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <chenyensu0@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id z10si41036ljc.5.2018.02.18.03.11.43
+Received: by 10.46.32.196 with SMTP id g65ls347757lji.22.gmail; Thu, 15 Sep
+ 2016 12:15:26 -0700 (PDT)
+X-Received: by 10.25.78.12 with SMTP id c12mr1794071lfb.1.1473966926048;
+        Thu, 15 Sep 2016 12:15:26 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y6si123597wmg.0.2016.09.15.12.15.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Feb 2018 03:11:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Thu, 15 Sep 2016 12:15:25 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qgDsGa/N;
-       spf=pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=chenyensu0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id f3so10251002wmc.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 03:11:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=qC2V4VefPCybDJi2GejnzMTMF6lnxj4NSMlfM+Cr79g=;
-        b=qgDsGa/N4Fb42QMCDE4mUVd4kfYYTfd0ICXC+mHFQYOsl+XrQQDeQR0Cmz4cNvtqB8
-         1+TQzYzI9C2p80Iysc7o1hXnd4xKuv3AWZsQ0X5t9ib235J9iPmHxyUFTq/Zj3AS1rPG
-         fJl801k0m9hdso2cHnJ+rTY5S5zuBEQVRH9USLdnvZgc546Roo9Xz6L4dS7BCmA/Kron
-         zNbL5np8hdZmKIp5ukD0Tp+24dyaZg31/5erqhSFbvZ0iRVofnN6k9kkzQENchJ2H6zl
-         Uo8ltz5c2AvjflKLYy7YQex9pMvxdBsVlxCCxJI/e5hZDBoiBrCAWNtBbkmITDOyMI8b
-         XnlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=qC2V4VefPCybDJi2GejnzMTMF6lnxj4NSMlfM+Cr79g=;
-        b=UasNXhhtXppabRjk2g9P3p8l1kCjtTxgsKHhUxlXzQJIjogCas4Rj4FKBfFhTWkWFt
-         yvkp4OLAD9SnLh+jEJhVoy/TfBK0Vn9/kDuNhXLLDvxkZBFWUI2HtK7Urw6h3uLcL1am
-         gEJV10+cXPnd22iSAl7j3/7ra0keWAxtIWwHXVbBfHVcULLkULmDoLy2/AwVvCjcya9y
-         +FIWPBFcdbwZBEtCtGJ3B/P318t6batwA5HTtq9HlU+SRlJZ9tvhnuSMFGWPfZ8qG3Ss
-         mD2UsqhbVwdC7aor3FVZN0FMnkIWoOuB2Oeyfn3MfwdzOY8bP5f2A6P6TeFShBeHVN2L
-         XnUQ==
-X-Gm-Message-State: APf1xPDXBSIRPnDdwK5iL7sYcRkqJi9BMgfGYHyyDz5kGqsFr5pbTSqM
-	tivhFpebe1b6wKmWQ2SAXdoBkshOM94=
-X-Received: by 10.28.45.74 with SMTP id t71mr8922391wmt.90.1518952303009;
-        Sun, 18 Feb 2018 03:11:43 -0800 (PST)
-Return-Path: <chenyensu0@gmail.com>
-Received: from outreachy-kernel.wifirst.net (eth-west-pareq2-46-193-1-181.wb.wifirst.net. [46.193.1.181])
-        by smtp.googlemail.com with ESMTPSA id i6sm20793208wrc.46.2018.02.18.03.11.41
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2018 03:11:42 -0800 (PST)
-From: Eisha Chen-yen-su <chenyensu0@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: abbotti@mev.co.uk,
-	hsweeten@visionengravers.com,
-	Eisha Chen-yen-su <chenyensu0@gmail.com>
-Subject: [PATCH] staging: comedi: Use '"%s:", __func__' instead of function name
-Date: Sun, 18 Feb 2018 12:10:41 +0100
-Message-Id: <20180218111041.7762-1-chenyensu0@gmail.com>
-X-Mailer: git-send-email 2.14.3
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,340,1470693600"; 
+   d="scan'208";a="237011187"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Sep 2016 21:15:25 +0200
+Date: Thu, 15 Sep 2016 21:15:25 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Anchal Jain <anchalj109@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    Greg KH <gregkh@linuxfoundation.org>, jon.nettleton@gmail.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: olpc_dcon: Replace BUG/BUG_ON
+ with WARN_ON
+In-Reply-To: <CAAbeOSt2NVAJ51RBMhoe9d2m+2rfQ_pA3AxoU8-ObBNf10LSCg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609152112290.3364@hadrien>
+References: <20160915145101.GA6064@life-desktop> <alpine.DEB.2.10.1609151656210.3045@hadrien> <CAAbeOSt2NVAJ51RBMhoe9d2m+2rfQ_pA3AxoU8-ObBNf10LSCg@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1012519601-1473966926=:3364"
 
-The script "checkpatch.pl" pointed information out like the following:
-WARNING: Prefer using '"%s...", __func__' to using 's626_ai_cmd',
-this function's name, in a string.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Eisha Chen-yen-su <chenyensu0@gmail.com>
----
- drivers/staging/comedi/drivers/s626.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--8323329-1012519601-1473966926=:3364
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/comedi/drivers/s626.c b/drivers/staging/comedi/drivers/s626.c
-index 0b3cfe934e14..ec54dc3e9ad6 100644
---- a/drivers/staging/comedi/drivers/s626.c
-+++ b/drivers/staging/comedi/drivers/s626.c
-@@ -1700,7 +1700,7 @@ static int s626_ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
 
- 	if (devpriv->ai_cmd_running) {
- 		dev_err(dev->class_dev,
--			"s626_ai_cmd: Another ai_cmd is running\n");
-+			"%s: Another ai_cmd is running\n", __func__);
- 		return -EBUSY;
- 	}
- 	/* disable interrupt */
---
-2.14.3
+
+On Thu, 15 Sep 2016, Anchal Jain wrote:
+
+>
+> >I think that this is not a good idea.  It may be essential to crash the
+> >kernel in these cases.  You would have to know why the kernel is able to
+> >continue
+>
+> Because when we use BUG_ON and WARN_ON macro which will abort execution and
+> produce diagnostic messages, a stack trace and a list of modules.
+>
+> but we prefer to use a WARN_ON because it is a less lethal mechanism,
+>  which will produce a backtrace without crashing the Kernel.
+
+Yes, but maybe the next instruction will do something that should not be
+allowed to happen.  I understand what is the difference between BUG_ON and
+WARN_ON, but not why WARN_ON is safe in this particular context.
+
+Think of BUG_ON as hitting the brakes in a car.  You might not normally
+want to do that when driving down the middle of a highway.  But it could
+be a good thing to do if you are about to hit a brick wall.
+
+julia
+
+>
+> On Thu, Sep 15, 2016 at 8:26 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Thu, 15 Sep 2016, Anchal Jain wrote:
+>
+>       > This patch fixed the warning detect by checkpatch.pl
+>       >
+>       > Avoid crashing the kernel - try using WARN_ON & recovery code
+>       rather than
+>       > BUG() or BUG_ON().
+>
+>       I think that this is not a good idea.  It may be essential to
+>       crash the
+>       kernel in these cases.  You would have to know why the kernel is
+>       able to
+>       continue.
+>
+>       julia
+>
+>
+>       >
+>       > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+>       > ---
+>       >  drivers/staging/olpc_dcon/olpc_dcon.c | 4 ++--
+>       >  1 file changed, 2 insertions(+), 2 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/olpc_dcon/olpc_dcon.c
+>       b/drivers/staging/olpc_dcon/olpc_dcon.c
+>       > index f45b2ef..62e70ee 100644
+>       > --- a/drivers/staging/olpc_dcon/olpc_dcon.c
+>       > +++ b/drivers/staging/olpc_dcon/olpc_dcon.c
+>       > @@ -141,7 +141,7 @@ power_up:
+>       >       }
+>       >       if (x < 0) {
+>       >               pr_err("unable to stabilize dcon's smbus,
+>       reasserting power and praying.\n");
+>       > -             BUG_ON(olpc_board_at_least(olpc_board(0xc2)));
+>       > +             WAARN_ON(olpc_board_at_least(olpc_board(0xc2)));
+>       >               pm = 0;
+>       >               olpc_ec_cmd(EC_DCON_POWER_MODE, &pm, 1, NULL,
+>       0);
+>       >               msleep(100);
+>       > @@ -369,7 +369,7 @@ static void dcon_source_switch(struct
+>       work_struct *work)
+>       >               break;
+>       >       }
+>       >       default:
+>       > -             BUG();
+>       > +             WARN_ON();
+>       >       }
+>       >
+>       >       dcon->curr_src = source;
+>       > --
+>       > 1.9.1
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20160915145101.GA6064%40
+> life-desktop.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAAbeOSt2NVAJ51RBMhoe9d2
+> m%2B2rfQ_pA3AxoU8-ObBNf10LSCg%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1012519601-1473966926=:3364--
 
