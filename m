@@ -1,114 +1,88 @@
-X-GM-THRID: 6255241548273811456
-X-Received: by 10.129.108.3 with SMTP id h3mr42458382ywc.31.1456411915337;
-        Thu, 25 Feb 2016 06:51:55 -0800 (PST)
+X-GM-THRID: 6331031087658041344
+X-Received: by 10.157.60.98 with SMTP id j31mr639142ote.82.1474058043540;
+        Fri, 16 Sep 2016 13:34:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.103.240 with SMTP id y103ls388042qge.59.gmail; Thu, 25 Feb
- 2016 06:51:54 -0800 (PST)
-X-Received: by 10.13.221.75 with SMTP id g72mr42485852ywe.34.1456411914726;
-        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x231.google.com (mail-ig0-x231.google.com. [2607:f8b0:4001:c05::231])
-        by gmr-mx.google.com with ESMTPS id i9si242960igg.1.2016.02.25.06.51.54
+Received: by 10.157.46.36 with SMTP id q33ls6112892otb.33.gmail; Fri, 16 Sep
+ 2016 13:34:03 -0700 (PDT)
+X-Received: by 10.157.34.165 with SMTP id y34mr11012073ota.28.1474058043108;
+        Fri, 16 Sep 2016 13:34:03 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id 7si3105581pfw.1.2016.09.16.13.34.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::231 as permitted sender) client-ip=2607:f8b0:4001:c05::231;
+        Fri, 16 Sep 2016 13:34:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::231 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x231.google.com with SMTP id y8so14964997igp.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:51:54 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id n24so4008964pfb.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Sep 2016 13:34:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=l3Dpdz1qbjipySUnjRn6FxwCxOKubu5TkZOZweh1CKo=;
-        b=Mclf1OAYCkg3y0dYAJHp5x8/Gn1/hAE/f5e5YKiYEnjGNKFz9mEOcwaLAbV/q/u3yY
-         fhCucpSmD6cly37gyP6eRykN4GFVSZArlPHfOTooVmHwYoXlz7nYTnj0MCr/BZb8P0Rb
-         4GCCNgbhlIOybfACBKUW5OIhwhNPkBOXoMOxPYd+WL0vBkgLnCkN+EHUU9GSOL+0BxgH
-         Suenyw5KK8wkF+8nxrfbbnNjU57tJs9BYqaWt8Z23C2jvm/fKl6i3gDYhqBFL9U7xTSr
-         2k22H1P7fDMLXFBQ0HGgaf1A4O/GHrR+s+zo1ZwTQKmjbqU1EKEps09rQ2hcL/jukXpd
-         GKbA==
+        bh=nOt+qcnQQ52yGWYgZdccLOinrf86BGEB3DKn3jDHg5Q=;
+        b=AvNLKQN7EIi+BN+mlTqvLOpr9tSEOOlG06FbH3uCABMArvKXGpNgF4cCBOci3bt247
+         YPeU6ttLC6enF/+SuzcCcSrOhfJVi9HaRryixgiQOoh2Bvr3lbivJeUTGiq7NKaoZmFE
+         cBmIC8A+qYG2CiFKSypfymSxRtyrEmxmaG2z5vkUt/FjlmXdsxLHGQWDDe83cvX9u1el
+         10cwY4X74t8rD9Nf67BR1i4Te/PG1KL7qenaFHPVKp2oozf+6MX7eAoZnIt+QL+wDL4U
+         3SH45zirrwh/Dq9dtCIcAKW7uurfUzcuphgMSBiWaR3mLf5W14HlFiswD7NXOV0wZZQU
+         quQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=l3Dpdz1qbjipySUnjRn6FxwCxOKubu5TkZOZweh1CKo=;
-        b=kKkh3SOZ1Q5KTClB5b5wcOks04y+gc5jKjBMMEAJwOxNtPiGBx99q0Oxqq9Y2Vfnlg
-         5s62TSsTwbgNnecnD6eJuRj+cfUUhPsTlcWF82aN2XrVmIsBRQ4poLN/FJPTKwJWsYrL
-         jQ4BXrxa0EnTbInrw352+dnn82Scc8176hU6Cm4vWLIFH+WUmHUm513F/ueOjA3Zi+4q
-         5EGREAlqRhbQJuuGqgD2h24SlIE89f4tjG6k0dXJdH4vQ6JROrgwVxZ0Jf8b2JTG2tv3
-         2gMlMANooIVwx/meKG+UMOiwjXQJsGkVTllRrbmw7MyVhBUY+EAF0MnSoRkhqQ1fNsOa
-         sgjA==
-X-Gm-Message-State: AG10YOQTsT+W6oKmPAnMPQDec3MVxlDMSg4iVu7zJkOdh+8DbuZmgHg0CSyPp8pGEiitlg==
-X-Received: by 10.50.108.112 with SMTP id hj16mr2706400igb.35.1456411914543;
-        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id c79sm3357546iod.5.2016.02.25.06.51.53
-        for <outreachy-kernel@googlegroups.com>
+        bh=nOt+qcnQQ52yGWYgZdccLOinrf86BGEB3DKn3jDHg5Q=;
+        b=TYXkAfBnqb0qK2I18NFs/rMkDvUWHu2V7dui7GxTKwbMQsIk4HxE3L3JD6SZdQinll
+         PVGkwbBcS79/z5QbCZTd9v/RASoDVNWYcKWYPILuETi1bmt8nIlkdgtkiuCWxvp7jq1m
+         gAv5wFlWzBCJJRcJ+0JSarjJpXtmfw4pccmN1gI2zk5AsExJWOqznN4As/bN5ZaRZwuV
+         7fEnvfx5vxSdurBcdfbt227tIMe2Vz0Sg4TIh81VKADpcNPTkHGpYHHberAzMDAJlBNL
+         PcwZde7mbWypKMaPvdfgCrlsIyVR3DR7j2A1ki6zBTnauNN2cKV2sFvKsG7XKdjGkhzw
+         WlnA==
+X-Gm-Message-State: AE9vXwMRj9Pm4QytvVwi6v7AGXoMjqGpuv0avuuChfgBNfH8/cicf4JOYl7YBqNVJnsbkQ==
+X-Received: by 10.98.31.133 with SMTP id l5mr12117179pfj.178.1474058042734;
+        Fri, 16 Sep 2016 13:34:02 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.244.96])
+        by smtp.gmail.com with ESMTPSA id l81sm16020930pfi.14.2016.09.16.13.33.55
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:51:54 -0800 (PST)
-Date: Thu, 25 Feb 2016 14:51:06 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        Fri, 16 Sep 2016 13:34:02 -0700 (PDT)
+Date: Sat, 17 Sep 2016 02:03:45 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: mt29f_spinand: Drop void pointer cast
-Message-ID: <20160225195106.GA7642@janani-Inspiron-3521>
+Cc: Jens Frederich <jfrederich@gmail.com>, Daniel Drake <dsd@laptop.org>,
+	Jon Nettleton <jon.nettleton@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: olpc_dcon: Replace u_int8_t with u8
+Message-ID: <20160916203345.GA30544@sayli-HP-15-Notebook-PC>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Void pointers need not be cast to other pointer types.
-Semantic patch used:
+This patch replaces type u_int8_t with u8 as suggested by checkpatch.pl.
 
-@r@
-expression x;
-void *e;
-type T;
-identifier f;
-@@
-
-(
-  *((T *)e)
-| 
-  ((T *)x) [...]
-|   
-  ((T *)x)->f
-| 
-- (T *) 
-  e
-)
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
 ---
- drivers/staging/mt29f_spinand/mt29f_spinand.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/mt29f_spinand/mt29f_spinand.c b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-index 75fe61c..aa0170e 100644
---- a/drivers/staging/mt29f_spinand/mt29f_spinand.c
-+++ b/drivers/staging/mt29f_spinand/mt29f_spinand.c
-@@ -33,7 +33,7 @@ static inline struct spinand_state *mtd_to_state(struct mtd_info *mtd)
- {
- 	struct nand_chip *chip = mtd_to_nand(mtd);
- 	struct spinand_info *info = nand_get_controller_data(chip);
--	struct spinand_state *state = (struct spinand_state *)info->priv;
-+	struct spinand_state *state = info->priv;
+diff --git a/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c b/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c
+index 6a4d379..1e23ef1 100644
+--- a/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c
++++ b/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c
+@@ -49,7 +49,7 @@ static void dcon_clear_irq(void)
  
- 	return state;
- }
-@@ -749,7 +749,7 @@ static void spinand_cmdfunc(struct mtd_info *mtd, unsigned int command,
+ static int dcon_was_irq(void)
  {
- 	struct nand_chip *chip = mtd_to_nand(mtd);
- 	struct spinand_info *info = nand_get_controller_data(chip);
--	struct spinand_state *state = (struct spinand_state *)info->priv;
-+	struct spinand_state *state = info->priv;
+-	u_int8_t tmp;
++	u8 tmp;
  
- 	switch (command) {
- 	/*
+ 	/* irq status will appear in PMIO_Rx50[6] on gpio12 */
+ 	tmp = inb(VX855_GPI_STATUS_CHG);
 -- 
-2.5.0
+2.7.4
 
 
