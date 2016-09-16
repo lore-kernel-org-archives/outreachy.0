@@ -1,419 +1,127 @@
-X-GM-THRID: 6329560500673708032
-X-Received: by 10.66.231.104 with SMTP id tf8mr17818804pac.15.1473715645989;
-        Mon, 12 Sep 2016 14:27:25 -0700 (PDT)
+X-GM-THRID: 6330600437442412544
+X-Received: by 10.13.213.22 with SMTP id x22mr9041117ywd.52.1474002083635;
+        Thu, 15 Sep 2016 22:01:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.65.36 with SMTP id x36ls1527626ita.15.canary; Mon, 12 Sep
- 2016 14:27:24 -0700 (PDT)
-X-Received: by 10.98.27.70 with SMTP id b67mr8373976pfb.1.1473715644168;
-        Mon, 12 Sep 2016 14:27:24 -0700 (PDT)
-Return-Path: <shaily15297@yahoo.com>
-Received: from nm48-vm2.bullet.mail.gq1.yahoo.com (nm48-vm2.bullet.mail.gq1.yahoo.com. [67.195.87.190])
-        by gmr-mx.google.com with ESMTPS id y124si2491763pfg.1.2016.09.12.14.27.24
+Received: by 10.157.49.22 with SMTP id e22ls5205421otc.32.gmail; Thu, 15 Sep
+ 2016 22:01:23 -0700 (PDT)
+X-Received: by 10.200.54.118 with SMTP id n51mr9193284qtb.29.1474002083248;
+        Thu, 15 Sep 2016 22:01:23 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id h124si3592539pfe.0.2016.09.15.22.01.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 12 Sep 2016 14:27:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shaily15297@yahoo.com designates 67.195.87.190 as permitted sender) client-ip=67.195.87.190;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Sep 2016 22:01:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com;
-       spf=pass (google.com: domain of shaily15297@yahoo.com designates 67.195.87.190 as permitted sender) smtp.mailfrom=shaily15297@yahoo.com;
-       dmarc=pass (p=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1473715643; bh=koIURS/Yk9I9JXSkXjSVJMnkM7e1aBRIYC61CANHTZ4=; h=From:To:Cc:Subject:Date:From:Subject; b=sH/pVJxX3t+7LHlYrmhhlKMgsMAFh4k3FKlzvnP7kjJYOnvMBAxmEbVDg5KH/denJDc2MFjVk7xrykuBGRUegACZCIRcpFCizwq04JI9YvOduWTeLHsXW5rBSIq01qjUZeeZlLvGPZ0A7H/ozQ6w9vfh75bA+kYBbaiPuGu5An7Hx0t4ECXE56woZFUB9zNqJuf6OabTjyLan/DkkV/ASy2zZPmCvxAOTDKdRw6c7EraPr6ukYz5eiJqhXlBz2ayhBv4lAQ0qZjdyzM1GozP9cbYf3Qy7yExe0H0Q/Pp1u8JN65zzLCZ4gOhShAQLshgihtY8E6uusav/eAM27Ydpw==
-Received: from [127.0.0.1] by nm48.bullet.mail.gq1.yahoo.com with NNFMP; 12 Sep 2016 21:27:23 -0000
-Received: from [98.137.12.188] by nm48.bullet.mail.gq1.yahoo.com with NNFMP; 12 Sep 2016 21:24:34 -0000
-Received: from [208.71.42.202] by tm9.bullet.mail.gq1.yahoo.com with NNFMP; 12 Sep 2016 21:24:34 -0000
-Received: from [127.0.0.1] by smtp213.mail.gq1.yahoo.com with NNFMP; 12 Sep 2016 21:24:34 -0000
-X-Yahoo-Newman-Id: 85252.42757.bm@smtp213.mail.gq1.yahoo.com
-X-Yahoo-Newman-Property: ymail-4
-X-YMail-OSG: GPXSQCAVM1kxF0Vkl5wjjtiaH5T85fcorvuzRTESHRr5it_
- 0TBZHC76zfhoqq4b3gsCc2tAg9Fg3wRF7kaibDFOq7JeU3wJXXnH1reZIQt8
- .nonkWElu07iSI.QWNS4JAgzFxpAntWin4LcZIz9ZmM3YE_220XBtULlMioT
- jAfthfFEUggXVQe6Npr9oWLx3A93JjY0_3gVcx7vGrvYadaTaDkkuJCOaRcG
- XGN7Q.YZMp_8rNtuTmae7M74a3mZiv_orRzH_uR2CS1W8yQFiZHRWN1V2_Ad
- vh32qIAXMdqAlnvm_8AhObvgL9P2pRoRHuV2KH4NX8_6ovTL_fYKkz4ZCqx_
- JNQ6h8xzJ3UrbTyFBpQLvj2Pox6viJyOZYUHaw0pf3AjdVlz49f5jxavZJTT
- W4yctoxIQGn2Y0AJvYlEUnvkxQ60gq87VCbAcGXG2OaxnJH2H3KnK2pYq9lf
- fA5iLTrWpwIvEbpe7ryy86um0yY.umfS2QMt9d.2wkIH1WQhNTuZ_qIczd_K
- GoURUC5DdkXtwocDCUk3zOO7E9JkHEhVcUFkfDLCptR.IX3rSKoX550THzyz
- CCj4Lo1Bop.eGemjpkSj.TSgShDnJagW.lrYhog--
-X-Yahoo-SMTP: XlbbucGswBDP_CADncIk2ZBRLyRPW8tbtgbDhWQ45oUGSNiads2htjKJJBAsMr1gxxaKZRk-
-From: Shaily Sangwan <shaily15297@yahoo.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
-	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: Shaily Sangwan <shaily15297@yahoo.com>
-Subject: [PATCH] staging: rtl8712: fix block comments
-Date: Tue, 13 Sep 2016 02:54:14 +0530
-Message-Id: <1473715454-14385-1-git-send-email-shaily15297@yahoo.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x243.google.com with SMTP id p2so2964345pap.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 22:01:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=AnXcaMUPpqNaZbTk187hCN8jdIeN65vq5V4EsoftW5E=;
+        b=Z/V88WXIg/+4ynEzxZZ1b8yPUCLifvd6MdStFvqm7v/pRphFslLbgj9/t//AWf2SBP
+         Uj1jQ1e5pQmg5AdIq07fuPa6fRjMF7mj4+p4Pb9dt5jlsH3ec5vLWcVFNrrbuYxFnRZt
+         HcCXwsmr3V2B/puFFGv3DR2yg/l/7C0F8Bu8ujPOgiUAuuLiYy+7PmuCWMb+QB1T7DKU
+         uYA2wQOPvEA3Fu3S1iFs8fguDtJhosV8u+9ccldBLIyG8sHd9YBz9f3A5EA8tXH9u+gN
+         937LvQRS7MfrLuy5GETm1XZhG5W3HoihPdJt0yd5jL5Zh77BPIhP0vc3VAbV4FoIFQnD
+         z+6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=AnXcaMUPpqNaZbTk187hCN8jdIeN65vq5V4EsoftW5E=;
+        b=bOIehQ8KsnlgR8Q0DXdkI3U84wosjazgDFSeJFkkPiEs+WTVo3aId/t0DYDTvK7fIq
+         pJPPQqOtiuXesPEb/vznnSkSMrT9BQ/sCEGw7c66EW0To7O+XnK5xjGfS0fbzHdI8W92
+         O+kdkk/MAlrE+3uOjbqZPPEYc4D/qMUSmu8sxNfEQvtGqZpcwNxFNM/rjcJSp/wxZYMn
+         3qI1hQ8/B9tsLPxR+womqC9tFP5oXwn96mR9/MCXv3p1ed4IjcSOLAXa/T9Ga6J6PzbI
+         +h9dBUpldljxXxfh8NuloOcC0d4d0SPbgntM7NdJWb5S6hns9XPyHolHPayO5TC/H17d
+         VUrA==
+X-Gm-Message-State: AE9vXwMy2XURdqDN5O7MinaDNOTjH81Uk+XwplL9OmpDu2EmoEiGpSehTt506uUVL2lPAA==
+X-Received: by 10.66.255.42 with SMTP id an10mr20237979pad.57.1474002083027;
+        Thu, 15 Sep 2016 22:01:23 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
+        by smtp.gmail.com with ESMTPSA id b64sm48529596pfa.82.2016.09.15.22.01.22
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 15 Sep 2016 22:01:22 -0700 (PDT)
+Date: Thu, 15 Sep 2016 22:01:20 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Katie Dunne <kdunne@mail.ccsf.edu>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adc: Add spaces around
+ operator
+Message-ID: <20160916050119.GA3124@d830.WORKGROUP>
+References: <20160915164248.GA4812@katie-Inspiron-5748>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160915164248.GA4812@katie-Inspiron-5748>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch fixes the following checkpatch.pl warning:
-Block comments use * on subsequent lines
+On Thu, Sep 15, 2016 at 09:42:48AM -0700, Katie Dunne wrote:
+> Issue found by checkpatch.pl
 
-Signed-off-by: Shaily Sangwan <shaily15297@yahoo.com>
----
- drivers/staging/rtl8712/rtl8712_recv.h |  14 +-
- drivers/staging/rtl8712/rtl871x_cmd.h  | 264 ++++++++++++++++-----------------
- 2 files changed, 139 insertions(+), 139 deletions(-)
+Hi Katie,
+This one's a checkpatch error.  I'll just cut/paste the response
+Jonathan gave to the person who sent it last week ;)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.h b/drivers/staging/rtl8712/rtl8712_recv.h
-index 96ca3e2..0b0c273 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.h
-+++ b/drivers/staging/rtl8712/rtl8712_recv.h
-@@ -116,13 +116,13 @@ struct recv_buf {
- };
- 
- /*
--	head  ----->
--		data  ----->
--			payload
--		tail  ----->
--	end   ----->
--	len = (unsigned int )(tail - data);
--*/
-+ *	head  ----->
-+ *		data  ----->
-+ *			payload
-+ *		tail  ----->
-+ *	end   ----->
-+ *	len = (unsigned int )(tail - data);
-+ */
- struct recv_frame_hdr {
- 	struct list_head list;
- 	_pkt	*pkt;
-diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
-index a2cee36..3284dcf 100644
---- a/drivers/staging/rtl8712/rtl871x_cmd.h
-+++ b/drivers/staging/rtl8712/rtl871x_cmd.h
-@@ -217,15 +217,15 @@ struct SetMacAddr_param {
- };
- 
- /*
--Caller Ad-Hoc/AP
--
--Command -Rsp(AID == CAMID) mode
--
--This is to force fw to add an sta_data entry per driver's request.
--
--FW will write an cam entry associated with it.
--
--*/
-+ *	Caller Ad-Hoc/AP
-+ *
-+ *	Command -Rsp(AID == CAMID) mode
-+ *
-+ *	This is to force fw to add an sta_data entry per driver's request.
-+ *
-+ *	FW will write an cam entry associated with it.
-+ *
-+ */
- struct set_assocsta_parm {
- 	u8	addr[ETH_ALEN];
- };
-@@ -236,27 +236,27 @@ struct set_assocsta_rsp {
- };
- 
- /*
--	Caller Ad-Hoc/AP
--
--	Command mode
--
--	This is to force fw to del an sta_data entry per driver's request
--
--	FW will invalidate the cam entry associated with it.
--
--*/
-+ *	Caller Ad-Hoc/AP
-+ *
-+ *	Command mode
-+ *
-+ *	This is to force fw to del an sta_data entry per driver's request
-+ *
-+ *	FW will invalidate the cam entry associated with it.
-+ *
-+ */
- struct del_assocsta_parm {
- 	u8	addr[ETH_ALEN];
- };
- 
- /*
--Caller Mode: AP/Ad-HoC(M)
--
--Notes: To notify fw that given staid has changed its power state
--
--Command Mode
--
--*/
-+ *	Caller Mode: AP/Ad-HoC(M)
-+ *
-+ *	Notes: To notify fw that given staid has changed its power state
-+ *
-+ *	Command Mode
-+ *
-+ */
- struct setstapwrstate_parm {
- 	u8	staid;
- 	u8	status;
-@@ -264,25 +264,25 @@ struct setstapwrstate_parm {
- };
- 
- /*
--Caller Mode: Any
--
--Notes: To setup the basic rate of RTL8711
--
--Command Mode
--
--*/
-+ *	Caller Mode: Any
-+ *
-+ *	Notes: To setup the basic rate of RTL8711
-+ *
-+ *	Command Mode
-+ *
-+ */
- struct	setbasicrate_parm {
- 	u8	basicrates[NumRates];
- };
- 
- /*
--Caller Mode: Any
--
--Notes: To read the current basic rate
--
--Command-Rsp Mode
--
--*/
-+ *	Caller Mode: Any
-+ *
-+ *	Notes: To read the current basic rate
-+ *
-+ *	Command-Rsp Mode
-+ *
-+ */
- struct getbasicrate_parm {
- 	u32 rsvd;
- };
-@@ -292,13 +292,13 @@ struct getbasicrate_rsp {
- };
- 
- /*
--Caller Mode: Any
--
--Notes: To setup the data rate of RTL8711
--
--Command Mode
--
--*/
-+ *	Caller Mode: Any
-+ *
-+ *	Notes: To setup the data rate of RTL8711
-+ *
-+ *	Command Mode
-+ *
-+ */
- struct setdatarate_parm {
- 	u8	mac_id;
- 	u8	datarates[NumRates];
-@@ -334,13 +334,13 @@ struct SetChannelPlan_param {
- };
- 
- /*
--Caller Mode: Any
--
--Notes: To read the current data rate
--
--Command-Rsp Mode
--
--*/
-+ *	Caller Mode: Any
-+ *
-+ *	Notes: To read the current data rate
-+ *
-+ *	Command-Rsp Mode
-+ *
-+ */
- struct getdatarate_parm {
- 	u32 rsvd;
- 
-@@ -351,36 +351,36 @@ struct getdatarate_rsp {
- 
- 
- /*
--Caller Mode: Any
--AP: AP can use the info for the contents of beacon frame
--Infra: STA can use the info when sitesurveying
--Ad-HoC(M): Like AP
--Ad-HoC(C): Like STA
--
--
--Notes: To set the phy capability of the NIC
--
--Command Mode
--
--*/
-+ *	Caller Mode: Any
-+ *	AP: AP can use the info for the contents of beacon frame
-+ *	Infra: STA can use the info when sitesurveying
-+ *	Ad-HoC(M): Like AP
-+ *	Ad-HoC(C): Like STA
-+ *
-+ *
-+ *	Notes: To set the phy capability of the NIC
-+ *
-+ *	Command Mode
-+ *
-+ */
- 
- /*
--Caller Mode: Any
--
--Notes: To set the channel/modem/band
--This command will be used when channel/modem/band is changed.
--
--Command Mode
--
--*/
-+ *	Caller Mode: Any
-+ *
-+ *	Notes: To set the channel/modem/band
-+ *	This command will be used when channel/modem/band is changed.
-+ *
-+ *	Command Mode
-+ *
-+ */
- /*
--Caller Mode: Any
--
--Notes: To get the current setting of channel/modem/band
--
--Command-Rsp Mode
--
--*/
-+ *	Caller Mode: Any
-+ *
-+ *	Notes: To get the current setting of channel/modem/band
-+ *
-+ *	Command-Rsp Mode
-+ *
-+ */
- struct	getphy_rsp {
- 	u8	rfchannel;
- 	u8	modem;
-@@ -430,58 +430,58 @@ struct getrfintfs_parm {
- };
- 
- /*
--	Notes: This command is used for H2C/C2H loopback testing
--
--	mac[0] == 0
--	==> CMD mode, return H2C_SUCCESS.
--	The following condition must be ture under CMD mode
--		mac[1] == mac[4], mac[2] == mac[3], mac[0]=mac[5]= 0;
--		s0 == 0x1234, s1 == 0xabcd, w0 == 0x78563412, w1 == 0x5aa5def7;
--		s2 == (b1 << 8 | b0);
--
--	mac[0] == 1
--	==> CMD_RSP mode, return H2C_SUCCESS_RSP
--
--	The rsp layout shall be:
--	rsp:			parm:
--		mac[0]  =   mac[5];
--		mac[1]  =   mac[4];
--		mac[2]  =   mac[3];
--		mac[3]  =   mac[2];
--		mac[4]  =   mac[1];
--		mac[5]  =   mac[0];
--		s0		=   s1;
--		s1		=   swap16(s0);
--		w0		=	swap32(w1);
--		b0		=	b1
--		s2		=	s0 + s1
--		b1		=	b0
--		w1		=	w0
--
--	mac[0] ==	2
--	==> CMD_EVENT mode, return	H2C_SUCCESS
--	The event layout shall be:
--	event:	     parm:
--	mac[0]  =   mac[5];
--	mac[1]  =   mac[4];
--	mac[2]  =   event's sequence number, starting from 1 to parm's marc[3]
--	mac[3]  =   mac[2];
--	mac[4]  =   mac[1];
--	mac[5]  =   mac[0];
--	s0		=   swap16(s0) - event.mac[2];
--	s1		=   s1 + event.mac[2];
--	w0		=	swap32(w0);
--	b0		=	b1
--	s2		=	s0 + event.mac[2]
--	b1		=	b0
--	w1		=	swap32(w1) - event.mac[2];
--
--	parm->mac[3] is the total event counts that host requested.
--
--
--	event will be the same with the cmd's param.
--
--*/
-+ *	Notes: This command is used for H2C/C2H loopback testing
-+ *
-+ *	mac[0] == 0
-+ *	==> CMD mode, return H2C_SUCCESS.
-+ *	The following condition must be ture under CMD mode
-+ *		mac[1] == mac[4], mac[2] == mac[3], mac[0]=mac[5]= 0;
-+ *		s0 == 0x1234, s1 == 0xabcd, w0 == 0x78563412, w1 == 0x5aa5def7;
-+ *		s2 == (b1 << 8 | b0);
-+ *
-+ *	mac[0] == 1
-+ *	==> CMD_RSP mode, return H2C_SUCCESS_RSP
-+ *
-+ *	The rsp layout shall be:
-+ *	rsp:			parm:
-+ *		mac[0]  =   mac[5];
-+ *		mac[1]  =   mac[4];
-+ *		mac[2]  =   mac[3];
-+ *		mac[3]  =   mac[2];
-+ *		mac[4]  =   mac[1];
-+ *		mac[5]  =   mac[0];
-+ *		s0		=   s1;
-+ *		s1		=   swap16(s0);
-+ *		w0		=	swap32(w1);
-+ *		b0		=	b1
-+ *		s2		=	s0 + s1
-+ *		b1		=	b0
-+ *		w1		=	w0
-+ *
-+ *	mac[0] ==	2
-+ *	==> CMD_EVENT mode, return	H2C_SUCCESS
-+ *	The event layout shall be:
-+ *	event:	     parm:
-+ *	mac[0]  =   mac[5];
-+ *	mac[1]  =   mac[4];
-+ *	mac[2]  =   event's sequence number, starting from 1 to parm's marc[3]
-+ *	mac[3]  =   mac[2];
-+ *	mac[4]  =   mac[1];
-+ *	mac[5]  =   mac[0];
-+ *	s0		=   swap16(s0) - event.mac[2];
-+ *	s1		=   s1 + event.mac[2];
-+ *	w0		=	swap32(w0);
-+ *	b0		=	b1
-+ *	s2		=	s0 + event.mac[2]
-+ *	b1		=	b0
-+ *	w1		=	swap32(w1) - event.mac[2];
-+ *
-+ *	parm->mac[3] is the total event counts that host requested.
-+ *
-+ *
-+ *	event will be the same with the cmd's param.
-+ *
-+ */
- 
- /* CMD param Formart for DRV INTERNAL CMD HDL*/
- struct drvint_cmd_parm {
--- 
-2.7.4
+  "Just to explain a bit more.  Checkpatch is assuming that it is looking
+  at two parameters. It's not. That's a string being passed into the
+  macro.  It ultimately forms a file name in sysfs.
+  p.s. We get patches for this from time to time ;(  Unfortunately it's
+  a somewhat obscure case for checkpatch."
 
+But, if this had been a valid patch, I also would add the feedback to
+give the driver name in the subject - staging: iio: adc: ad7192: 
+
+Thanks,
+alisons
+
+
+> 
+> Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
+> ---
+>  drivers/staging/iio/adc/ad7280a.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> index 2177f1d..bc40153 100644
+> --- a/drivers/staging/iio/adc/ad7280a.c
+> +++ b/drivers/staging/iio/adc/ad7280a.c
+> @@ -744,14 +744,14 @@ out:
+>  }
+>  
+>  static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+> -		in_voltage-voltage_thresh_low_value,
+> +		in_voltage - voltage_thresh_low_value,
+>  		S_IRUGO | S_IWUSR,
+>  		ad7280_read_channel_config,
+>  		ad7280_write_channel_config,
+>  		AD7280A_CELL_UNDERVOLTAGE);
+>  
+>  static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
+> -		in_voltage-voltage_thresh_high_value,
+> +		in_voltage - voltage_thresh_high_value,
+>  		S_IRUGO | S_IWUSR,
+>  		ad7280_read_channel_config,
+>  		ad7280_write_channel_config,
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160915164248.GA4812%40katie-Inspiron-5748.
+> For more options, visit https://groups.google.com/d/optout.
 
