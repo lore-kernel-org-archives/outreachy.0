@@ -1,109 +1,204 @@
 X-GM-THRID: 6330646891713265664
-X-Received: by 10.200.42.204 with SMTP id c12mr1153580qta.39.1474101086920;
-        Sat, 17 Sep 2016 01:31:26 -0700 (PDT)
+X-Received: by 10.28.199.201 with SMTP id x192mr1215011wmf.1.1474015123483;
+        Fri, 16 Sep 2016 01:38:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.131.195 with SMTP id n64ls2238030ioi.36.gmail; Sat, 17 Sep
- 2016 01:31:25 -0700 (PDT)
-X-Received: by 10.36.124.80 with SMTP id a77mr383254itd.1.1474101085394;
-        Sat, 17 Sep 2016 01:31:25 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id h124si4976991pfe.0.2016.09.17.01.31.25
+Received: by 10.28.150.140 with SMTP id y134ls646483wmd.12.canary; Fri, 16 Sep
+ 2016 01:38:42 -0700 (PDT)
+X-Received: by 10.28.199.201 with SMTP id x192mr1215003wmf.1.1474015122814;
+        Fri, 16 Sep 2016 01:38:42 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y6si323522wmg.0.2016.09.16.01.38.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 01:31:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Fri, 16 Sep 2016 01:38:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id pp5so4421465pac.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 01:31:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PwPhnWvxFMQVYsqkcyRCnGlN4CpprBN3HXT8e/nnxew=;
-        b=McnBJsT7kVIAI/Pl7AAT/rUOhDRXme9HuPFR9r5ln4y0rkaowwx815NgMcbusrqfg1
-         43Y4duZL2+p8NVnlxlG/nnh/s+BGbJMGWPEBEiqaYVjpz8DUf0Lq4DjouxL/IlAYLwEX
-         R1vAoGECKwjeiR0BLt210+1dRLotez8tjzSpJll/yqQjLy1X1WT7dxqTHj+BAGR2bUgu
-         zaTVqcGgV/t375z7QAxiOoi9QcoHYSH4eUIH3D3xxJOp/HwPKirlrUgMrMWgJOLuw7Za
-         U9i3MzaIDy06+VhSDjO/MCDVohjQGtQ7XT3j6R3fY6K3F1DFAenuLKnaRd+BEXqxEewa
-         JY8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PwPhnWvxFMQVYsqkcyRCnGlN4CpprBN3HXT8e/nnxew=;
-        b=O7bHSlm2escwemp8af3MDrM7Xn0ybjRzHa/QW2hbzUz9XpU2teh9HJV0UV7bKO45NJ
-         oL/VGeSBDMKa97bCjNj6uigL6qJORyhKW+SmIVLnVKCAWDt9G3OrJ5tqm5B7xvTE9cPx
-         QPzcSXQ9ytqu+gRH3SqWrsWVy9j0QtzoXnRzWYgtHfxQyC0TiTtdUy/DZmtSeAozBcSE
-         qcHH2qt6pDJJLSpT5ORuKy/OcZsuhu+c3V/p33BF83RSOhMMxNFHkuNkhqWKDqbfu+o1
-         OAkjk7M2Rt3fGgPRbP/1jZy0prFgXFAKd2t+0TYtChRiR/FGo7I8nvcVAYMlkrwwJ1QK
-         YE5A==
-X-Gm-Message-State: AE9vXwM1u9pyN4SDVePiZsnT09oLuC+YeO8CiDHuINBPEboqt2YbLO7bTIKxOrszdKKHFg==
-X-Received: by 10.66.235.100 with SMTP id ul4mr29716961pac.50.1474101085016;
-        Sat, 17 Sep 2016 01:31:25 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.172.239])
-        by smtp.gmail.com with ESMTPSA id zy17sm1141934pab.28.2016.09.17.01.31.21
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Sep 2016 01:31:24 -0700 (PDT)
-Date: Sat, 17 Sep 2016 03:01:06 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, oleg.drokin@intel.com,
-	andreas.dilger@intel.com, jsimmons@infradead.org
-Subject: [PATCH v2] Staging: lustre: Convert array index from the loop bound
- to the loop index.
-Message-ID: <20160916213106.GA4147@sandhya>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,343,1470693600"; 
+   d="scan'208";a="237064245"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Sep 2016 10:38:42 +0200
+Date: Fri, 16 Sep 2016 10:38:42 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: sandhya bankar <bankarsandhya512@gmail.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, 
+    "Dilger, Andreas" <andreas.dilger@intel.com>, 
+    "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>, 
+    "Drokin, Oleg" <oleg.drokin@intel.com>, 
+    James Simmons <jsimmons@infradead.org>, 
+    Greg KH <gregkh@linuxfoundation.org>, 
+    "Xiong, Jinshan" <jinshan.xiong@intel.com>, 
+    "Siyao, Lai" <lai.siyao@intel.com>, "Xu, Bobijam" <bobijam.xu@intel.com>, 
+    "mike.rapoport@gmail.com" <mike.rapoport@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Convert array index
+ from the loop bound to the loop index.
+In-Reply-To: <CAA3ASz=t4wZOkk=Bj8iYLMFHwzCj+E+0BbC9UsV+L17oToh3ZA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609161038330.3049@hadrien>
+References: <20160915194341.GA30843@sandhya> <alpine.DEB.2.10.1609152203580.3364@hadrien> <CAA3ASzn3u-kcLjy69W27oeT2eabtay7UHySdrVz0cV6dXUgWBA@mail.gmail.com> <706CE650-AC74-4C04-97F7-54A6A03E6C27@intel.com> <alpine.DEB.2.10.1609160743350.3122@hadrien>
+ <CAA3ASz=t4wZOkk=Bj8iYLMFHwzCj+E+0BbC9UsV+L17oToh3ZA@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-619504752-1474015122=:3049"
 
-Convert array index from the loop bound to the loop index.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-The structure cl_env_percpu[NR_CPUS] has been initializing for each 
-possible cpu (i.e 0 to i) but during initialization if any error will 
-occurred this come to the error handling code which should uninitialize 
-the cl_env_percpu upto i but currently cleanup is happening repeatedly for 
-the same cl_env_percpu[i] element which does not seems to be correct.
+--8323329-619504752-1474015122=:3049
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Used below semantic patch to identify this issue:
 
-@@
-expression e1,e2,ar;
-@@
 
-for(e1 = 0; e1 < e2; e1++) { <...
-  ar[
-- e2
-+ e1
-  ]
-  ...> }
+On Fri, 16 Sep 2016, sandhya bankar wrote:
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
-Changes in v2:
- *Correcting the commit message.
- drivers/staging/lustre/lustre/obdclass/cl_object.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+> Thanks Julia and Andreas.
+> Should I need to send patch v2 as per your suggestions ?
 
-diff --git a/drivers/staging/lustre/lustre/obdclass/cl_object.c b/drivers/staging/lustre/lustre/obdclass/cl_object.c
-index 91a5806..eeccd30 100755
---- a/drivers/staging/lustre/lustre/obdclass/cl_object.c
-+++ b/drivers/staging/lustre/lustre/obdclass/cl_object.c
-@@ -1000,7 +1000,7 @@ static int cl_env_percpu_init(void)
- 		 * thus we must uninitialize up to i, the rest are undefined.
- 		 */
- 		for (j = 0; j < i; j++) {
--			cle = &cl_env_percpu[i];
-+			cle = &cl_env_percpu[j];
- 			lu_context_exit(&cle->ce_ses);
- 			lu_context_fini(&cle->ce_ses);
- 			lu_env_fini(&cle->ce_lu);
--- 
-1.7.1
+Yes.
 
+julia
+
+>
+> On Fri, Sep 16, 2016 at 11:17 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Thu, 15 Sep 2016, Dilger, Andreas wrote:
+>
+>       >
+>       > > On Sep 15, 2016, at 14:53, sandhya bankar
+>       <bankarsandhya512@gmail.com> wrote:
+>       > >
+>       > > The structure cl_env_percpu[NR_CPUS] have been initializing
+>       for each
+>       > > possible cpu (i.e 0 to i) but during initialization if any
+>       error will
+>       > > occurred this come to the error handling code in which the
+>       > > cl_env_percpu should be uninitialized upto i but currently
+>
+>       Sandhya,
+>
+>       "should be uninitialized" is a bit unclear, because it could
+>       describe the
+>       state that should hold, or the state that you should achieve. 
+>       It could be
+>       better to say "the error handling code which should
+>       uninitialize/free/release (whatever seems best) the
+>       cl_env_percpu ...".
+>
+>       Andreas's suggestion is also good.  It says that same thing in
+>       another
+>       way, and thus makes everything more clear.
+>
+>       Congratulations on finding a real bug :)
+>
+>       julia
+>
+>       > > uninitialization happening for the cl_env_percpu[i] which
+>       does not
+>       > > seems to be correct. That is why proposing this fix. Please
+>       Correct me
+>       > > ,If I am wrong. Should I send patch v2 with this issue
+>       description ?
+>       >
+>       > This is definitely a bug, though thankfully only in an error
+>       handling path.
+>       >
+>       > Your description is much more clear.  You might want to write
+>       >
+>       > "... but currently cleanup is happening repeatedly for the
+>       same
+>       >  cl_env_percpu[i] element."
+>       >
+>       > Cheers, Andreas
+>       >
+>       > > On Fri, Sep 16, 2016 at 1:35 AM, Julia Lawall
+>       <julia.lawall@lip6.fr> wrote:
+>       > >>
+>       > >>
+>       > >> On Fri, 16 Sep 2016, Sandhya Bankar wrote:
+>       > >>
+>       > >> > Convert array index from the loop bound to the loop
+>       index.
+>       > >> > Used below semantic patch to identify this issue:
+>       > >>
+>       > >> This is a really nice idea!  However, it would be good for
+>       the commit
+>       > >> message to explain why the change is correct.  Certainly
+>       the code is
+>       > >> suspicious, but why is it actually wrong?  The idea would
+>       be to consider
+>       > >> what is done with cle on each iteration.
+>       > >>
+>       > >> julia
+>       > >>
+>       > >> > @@
+>       > >> > expression e1,e2,ar;
+>       > >> > @@
+>       > >> >
+>       > >> > for(e1 = 0; e1 < e2; e1++) { <...
+>       > >> >   ar[
+>       > >> > - e2
+>       > >> > + e1
+>       > >> >   ]
+>       > >> >   ...> }
+>       > >> >
+>       > >> >
+>       > >> > Signed-off-by: Sandhya Bankar
+>       <bankarsandhya512@gmail.com>
+>       > >> > ---
+>       > >> >  drivers/staging/lustre/lustre/obdclass/cl_object.c |   
+>       2 +-
+>       > >> >  1 files changed, 1 insertions(+), 1 deletions(-)
+>       > >> >
+>       > >> > diff --git
+>       a/drivers/staging/lustre/lustre/obdclass/cl_object.c
+>       b/drivers/staging/lustre/lustre/obdclass/cl_object.c
+>       > >> > index 91a5806..eeccd30 100755
+>       > >> > --- a/drivers/staging/lustre/lustre/obdclass/cl_object.c
+>       > >> > +++ b/drivers/staging/lustre/lustre/obdclass/cl_object.c
+>       > >> > @@ -1000,7 +1000,7 @@ static int cl_env_percpu_init(void)
+>       > >> >                * thus we must uninitialize up to i, the
+>       rest are undefined.
+>       > >> >                */
+>       > >> >               for (j = 0; j < i; j++) {
+>       > >> > -                     cle = &cl_env_percpu[i];
+>       > >> > +                     cle = &cl_env_percpu[j];
+>       > >> >                       lu_context_exit(&cle->ce_ses);
+>       > >> >                       lu_context_fini(&cle->ce_ses);
+>       > >> >                       lu_env_fini(&cle->ce_lu);
+>       > >> > --
+>       > >> > 1.7.1
+>       > >> >
+>       > >> > --
+>       > >> > You received this message because you are subscribed to
+>       the Google Groups "outreachy-kernel" group.
+>       > >> > To unsubscribe from this group and stop receiving emails
+>       from it, send an email to
+>       outreachy-kernel+unsubscribe@googlegroups.com.
+>       > >> > To post to this group, send email to
+>       outreachy-kernel@googlegroups.com.
+>       > >> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20160915194341.GA30843%4
+>       0sandhya.
+>       > >> > For more options, visit
+>       https://groups.google.com/d/optout.
+>       > >> >
+>       > >>
+>       >
+>       >
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAA3ASz%3Dt4wZOkk%3DBj8i
+> YLMFHwzCj%2BE%2B0BbC9UsV%2BL17oToh3ZA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-619504752-1474015122=:3049--
 
