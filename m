@@ -1,134 +1,83 @@
-X-GM-THRID: 6254017649143971840
-X-Received: by 10.107.136.23 with SMTP id k23mr27458044iod.23.1456126954894;
-        Sun, 21 Feb 2016 23:42:34 -0800 (PST)
+X-GM-THRID: 6330723206000803840
+X-Received: by 10.36.112.144 with SMTP id f138mr4500178itc.6.1473986358180;
+        Thu, 15 Sep 2016 17:39:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.84.243 with SMTP id l106ls1410037qgd.43.gmail; Sun, 21 Feb
- 2016 23:42:33 -0800 (PST)
-X-Received: by 10.13.216.150 with SMTP id a144mr25231152ywe.52.1456126953974;
-        Sun, 21 Feb 2016 23:42:33 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id 12si2967895pfb.1.2016.02.21.23.42.33
+Received: by 10.157.62.138 with SMTP id b10ls4902855otc.21.gmail; Thu, 15 Sep
+ 2016 17:39:17 -0700 (PDT)
+X-Received: by 10.157.14.134 with SMTP id 6mr8523656otj.35.1473986357815;
+        Thu, 15 Sep 2016 17:39:17 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 7si1701713pfw.1.2016.09.15.17.39.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 23:42:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Thu, 15 Sep 2016 17:39:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id x65so88443856pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 23:42:33 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id 21so1426155pfy.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 17:39:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=t8m+KtiVrw31Xn3NewdF2BWZqvXK1cyoOvfI8U5tikU=;
-        b=DNsJkXeI51xGI8nNgBib0NpsdsMSvQVu7/prEoYq0jL5cvqTmY+ep1F2KY4gnC8Ljs
-         Nnu6RlAAeCGnEb9z7EsZrGcJl2eeyytLNTm14N6F+XOClNHnFyUYRCZ7+1YHAjH9SA11
-         /WiJSgv2Y9MLCyNSQnWIH0r6NFtRdFtOWNGLbl6JNPWlN3Sob04lgPmfMCRmw/SampR8
-         P24nmV79+B8VZHlhxxOdsep03qgHsJPweq8yS/pab7PDAywvVvBNscaUaFoxORrPUB4I
-         aQdAEj3fqxdmjGsnpfQ8e2VDoOp76dgLpo8w8Y4sivKFIoCu7LJcRTF/7iixy8pX/Ev5
-         Foug==
+        h=from:to:cc:subject:date:message-id;
+        bh=By6CFuAU90TT6jxl3+PQvrQPapEQYpZCy8vgJzI7Tqc=;
+        b=T94wGTsBSU+Lb6DVNOIBExVQ1c6GS/P/CorrTFDhYJI40h5vo/9WJw5jxMsDT3jRey
+         wMRszQeNJ6hsq80RwofK8a6KhvALsgzjXC9qsnPIDYUAe+TVPRA4tCpj9v1bpwqYVhpX
+         pYjt/n5ZoKhAi2mV40JKkjlmVoMZgv7S8s3SuQky85lI3qLJKaZIlGNiJuezs4AMFamH
+         sWYHFMlpscv8m2AHNZFO4XqhOkehmmgakrvXG7tGvJW4T6RqhO7aZ7opBoYDYAb4HEnd
+         RSyCHqmaVQcL0K6SIajOVf38l0bF/eLgHFeJ3ySWPt1IfIxRmfnWJIVvh75ydgTFQTNM
+         Awxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=t8m+KtiVrw31Xn3NewdF2BWZqvXK1cyoOvfI8U5tikU=;
-        b=Hq7Gu8X/eUzh7olqfSCd70ETq9KPq0UMT6A4EJ4iKXbBhkAx6PC/CbIwWtIAWp0kX7
-         KanP1aYs2YYlw10OymBEWJJxkV9m8sfb/NfF6x+0owt8q0U5CrdpV0mJEOOG1d/yiApk
-         xVqBvcAwLEnwXFPQfBXiHylfsYevp/S84d5ORUaWFmK1jy7sL+/Rs00Eozk6XxPqHjyg
-         MFhgLie1i9y7sF1ZpkgdbqYxAkUuZL5lNZrD6VL+N74k0dMywiqIS3pxXB0QXhEbBBLY
-         yuMntiENtvlqEZxFziGfYoDejhDR6f/ApEr2dnOfJ0zu/SwaUqgN/q0yJoUriBP70CVj
-         60aw==
-X-Gm-Message-State: AG10YOSQk7Ch93eRezuAMxsIL/Wu7Xogs1holHem/88MNCL+vX4isQ6TwD7TwjszmVUnNA==
-X-Received: by 10.98.9.92 with SMTP id e89mr36240143pfd.34.1456126953808;
-        Sun, 21 Feb 2016 23:42:33 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 19sm34351312pfb.64.2016.02.21.23.42.32
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 23:42:33 -0800 (PST)
-Date: Mon, 22 Feb 2016 13:13:06 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=By6CFuAU90TT6jxl3+PQvrQPapEQYpZCy8vgJzI7Tqc=;
+        b=ijvQPb8CQP4f7yilzaF3Bdpew1hrnowxW49afwBKePBpg5QBCtVg9IaTMcozDcgeR9
+         EyaW9/i801c79Q6yKla83b4QgmnqPdmwuhdX7HgRS5DgI24lddMBsRzx8CSP/s1WLsmC
+         Yz6B/vQOsegrZ7C7dnZlyZ5GPClIALy/e8Z8RA95zFRZWUvC2Pu0ONNsYpPnyTxm2IMo
+         yBElOe/50UdkIzTiCfiCERGiUe5vGhP/19OmKv3JGZCtC2FxFfQ+eeyAQfd+/2ylAbKR
+         2m1Ey2wEzrmA5biHu5aF7UL9rmUNgoHCYQ3sbNQrtfF84BDCpW5egARkUEmRRNOYrtap
+         40hA==
+X-Gm-Message-State: AE9vXwM2jBYrDbBZqKItk34vlsIgNOUVcfy6FBp7McgaR+MXs0CqMORHEUiW5OgQU85J3g==
+X-Received: by 10.98.131.142 with SMTP id h136mr18883936pfe.92.1473986357450;
+        Thu, 15 Sep 2016 17:39:17 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id i68sm47603172pfc.25.2016.09.15.17.39.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 15 Sep 2016 17:39:16 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lusture: osc:  Use list_for_each_entry
-Message-ID: <20160222074306.GA10769@Karyakshetra>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH] staging: i4l: correct misspelled "ressources" to "resources"
+Date: Fri, 16 Sep 2016 06:08:35 +0530
+Message-Id: <20160916003835.20714-1-gs051095@gmail.com>
+X-Mailer: git-send-email 2.9.2
 
-In general, doubly linked lists are iterated  using list_empty
-and list_entry functions. But it can be better written using
-list_for_each_entry macro.
+change ressources to resources to fix the checkpatch issue
+'ressources' may be misspelled.
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry and list_for_each_entry_safe(if list_del is
-used int the loop).
-
-This was done with Coccinelle.
-
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry;
-@@
-
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry (I1, &E1, I2)
-{
-        ...when != T *I1;
--        I1 = list_entry(E1.next, T, I2);
-	...when != list_del(...);
-	when != list_del_init(...);
-}
-
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
-T *I1;
-+  T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-	...when != T *I1;
--        I1 = list_entry(E1.next, T,I2);
-	...
-}
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/lustre/lustre/osc/osc_page.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/staging/i4l/act2000/act2000_isa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/osc/osc_page.c b/drivers/staging/lustre/lustre/osc/osc_page.c
-index 5cb0ccc..ae4b868 100644
---- a/drivers/staging/lustre/lustre/osc/osc_page.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_page.c
-@@ -575,14 +575,12 @@ int osc_lru_shrink(struct client_obd *cli, int target)
- 	client_obd_list_lock(&cli->cl_lru_list_lock);
- 	atomic_inc(&cli->cl_lru_shrinkers);
- 	maxscan = min(target << 1, atomic_read(&cli->cl_lru_in_list));
--	while (!list_empty(&cli->cl_lru_list)) {
-+	list_for_each_entry(opg, &cli->cl_lru_list, ops_lru) {
- 		struct cl_page *page;
-
- 		if (--maxscan < 0)
- 			break;
-
--		opg = list_entry(cli->cl_lru_list.next, struct osc_page,
--				     ops_lru);
- 		page = cl_page_top(opg->ops_cl.cpl_page);
- 		if (cl_page_in_use_noref(page)) {
- 			list_move_tail(&opg->ops_lru, &cli->cl_lru_list);
---
-2.1.4
+diff --git a/drivers/staging/i4l/act2000/act2000_isa.c b/drivers/staging/i4l/act2000/act2000_isa.c
+index 1d93151..c800da8 100644
+--- a/drivers/staging/i4l/act2000/act2000_isa.c
++++ b/drivers/staging/i4l/act2000/act2000_isa.c
+@@ -176,7 +176,7 @@ act2000_isa_config_port(act2000_card *card, unsigned short portbase)
+ }
+ 
+ /*
+- * Release ressources, used by an adaptor.
++ * Release resources, used by an adaptor.
+  */
+ void
+ act2000_isa_release(act2000_card *card)
+-- 
+2.9.2
 
 
