@@ -1,108 +1,159 @@
-X-GM-THRID: 6259026204991422464
-X-Received: by 10.98.42.67 with SMTP id q64mr14048606pfq.9.1457293099871;
-        Sun, 06 Mar 2016 11:38:19 -0800 (PST)
+X-GM-THRID: 6331000982206414848
+X-Received: by 10.66.246.197 with SMTP id xy5mr10736296pac.47.1474051670405;
+        Fri, 16 Sep 2016 11:47:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.64.179 with SMTP id p19ls681662igs.0.gmail; Sun, 06 Mar
- 2016 11:38:19 -0800 (PST)
-X-Received: by 10.67.7.161 with SMTP id dd1mr10201967pad.41.1457293099548;
-        Sun, 06 Mar 2016 11:38:19 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 12si2465245pfb.1.2016.03.06.11.38.19
+Received: by 10.157.8.10 with SMTP id 10ls6938323oty.10.gmail; Fri, 16 Sep
+ 2016 11:47:49 -0700 (PDT)
+X-Received: by 10.237.51.196 with SMTP id v62mr488328qtd.40.1474051669883;
+        Fri, 16 Sep 2016 11:47:49 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-yb0-x241.google.com (mail-yb0-x241.google.com. [2607:f8b0:4002:c09::241])
+        by gmr-mx.google.com with ESMTPS id p193si784527ywe.6.2016.09.16.11.47.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 11:38:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Fri, 16 Sep 2016 11:47:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c09::241 as permitted sender) client-ip=2607:f8b0:4002:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c09::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id fl4so6410381pad.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 11:38:19 -0800 (PST)
+Received: by mail-yb0-x241.google.com with SMTP id u125so2840741ybg.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Sep 2016 11:47:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=1vUU+Np5TPGucTZxHsIm39gZB2icMduG1646NF74Oy0=;
-        b=qLMqtCQ1KyvTwCTDof8mgTFPAhCMoPxGNYMoWAS7ZMs1ZzD8F0O0doTBGEfyZi2nx8
-         5GtXc7QgQPgXNH/wtJwV4gOt+ZAEuOD4dDbd3LZ9R9+0h/wKVYnjmeSURhyK5y/R08ID
-         lONdJhLNQ5pQX07OzEHTPVl/0frr5pfXnUIyLcnDBB8KkuyhTvyngmnubPNIDg7pAo7r
-         iv8V7bknQ/UcRfW2iCWiVxDYz8Y1cAFR8/qhFMRnV3niNYGfaSJw4QFkrcUTadahCTOj
-         nyrQgB58xhQKisMuM/lHEXdD4YhxzV1NrWOUdCvoCcCEw0E3ruUoiZFbDYCfYQbtUKrC
-         PjVA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=k2AC7/ZrA5Oo2/O4lPymitT/UKLerQ8ZY3YnYdnwIKk=;
+        b=QNZATaoh35Ffe5koA5A3lQ+Zdb4L7AIYs+3HzoaT3m1bNPy1qTN1WNU5uNPGFpTxcr
+         5+8f3ldXx5KoJ4fdjrAXKtjxTDQB06ogMt41ZPWtHuJqutTn2iFgyH2TL/86SrjciIDG
+         iX+Q727/n+Te3Iimxag6NTzqtWyfcsbBT0tK0/lJy7A2rYNGcwkwIuTk5VCPih8jjc5Q
+         qjyl5x9J+tevpJEpXXJAcEMB6cENWNlyS0fTKE0oeZGXHf4L+lmf5JTqvcNJUHFybGv3
+         Y/m+2v0RBcscWFS5E46QbTzrhCow7wbZ329jt+QsObqP2r6CFGeEsuLzP5w/hjeQboCJ
+         cgkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=1vUU+Np5TPGucTZxHsIm39gZB2icMduG1646NF74Oy0=;
-        b=GVJ1DWBBuc+LoiuoL+6aPoSL+AgLyp+M3lCTVEHDf/yDQXSKTWWobNLEYFMdtJNU6F
-         lpmY+BeWuJICZLmFiIYmpgjJgFAY+0BYeCRzeFYISmqLQvFTxz+Bfay4vRTHePKIeMwY
-         vAb/Pp4UPk3sxzZ2uv6KjgxqSRXDKZktZhhUj8vTsVLyYWPxzfVXTm4MKR+mB21DOGL0
-         z59cuYGmDRObv5kc7JPD2RQqBw388mZHxbu8gz4mkiT8d5oT+wxqGBWJk9gXoaE1fCRI
-         mf4g3YNuSlLq/Rb3F/p0hG/2vyvASYuigUHeRTlTa9ceoGKXlNp5uEuBaVkBqdWNhCg0
-         syLQ==
-X-Gm-Message-State: AD7BkJKzKQPVeqJAvb8a3N9eNClbDTyUHxYRQv+GEpM4+hf8LmWz2vFjTzGjERB976mZ/A==
-X-Received: by 10.66.100.228 with SMTP id fb4mr27818570pab.84.1457293099402;
-        Sun, 06 Mar 2016 11:38:19 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.154])
-        by smtp.gmail.com with ESMTPSA id a25sm19224391pfj.40.2016.03.06.11.38.12
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 11:38:18 -0800 (PST)
-Date: Sun, 6 Mar 2016 17:08:38 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: slicoss: Use !x instead of x == NULL.
-Message-ID: <20160306113838.GA5997@sandhya>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=k2AC7/ZrA5Oo2/O4lPymitT/UKLerQ8ZY3YnYdnwIKk=;
+        b=ZipZemhSi0q/N/edIsO+s56FpU8JYrK92OWhdaJfThpqMwjv7ZOHkwxQlW5IHUKUzB
+         Kj41BIUJasRaItxpi9+vQ5MfWDQ7hljA716/555+vHjPTkSbTYZLY0SSTQlZX5LtcVV7
+         GADWS3T4SfVTGy8iuw7FXT8wCQHYHEt7FhoviePoEa9falCtUZGrTBqhuei2ucI122L8
+         FhFTgbh/wxeYHU+zImZjoQJR8VPRVLK9BuDp9LeY27f+DSj6q7cNk9Cp1QyjD6j08J0q
+         ex48w33a3iMAa8SG2a3tGgCRyCitVXte5guQCDePyYXuZCPA4aBzDiak9SrqB0C8JS7m
+         AWtA==
+X-Gm-Message-State: AE9vXwPizdQR8+BSyHwlsgdbwtfDygappqjB6CSjuYqNRnnW91GHawWGWMTN0odcyO+OMZkOPk0GaqQ9j+Xv5g==
+X-Received: by 10.37.192.12 with SMTP id c12mr7369437ybf.187.1474051669694;
+ Fri, 16 Sep 2016 11:47:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Received: by 10.37.41.132 with HTTP; Fri, 16 Sep 2016 11:47:09 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1609162040120.3397@hadrien>
+References: <20160916183658.GA26442@sayli-HP-15-Notebook-PC> <alpine.DEB.2.10.1609162040120.3397@hadrien>
+From: sayli karnik <karniksayli1995@gmail.com>
+Date: Sat, 17 Sep 2016 00:17:09 +0530
+Message-ID: <CAKG5xWjY9VNS_kG4mv92r0hH1RX-aRmddheRXnA07c8nAY6P9w@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: media: davinci_vpfe: Use BIT
+ macro instead of left shifting 1
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8
 
-Use !x instead of x == NULL.This patch is found by checkpatch.pl script. 
+On Sat, Sep 17, 2016 at 12:12 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Sat, 17 Sep 2016, sayli karnik wrote:
+>
+>> This patch replaces left shifts on 1 with the BIT(x) macro, as suggested
+>> by checkpatch.pl.
+>
+> You could do this with Coccinelle also :)
+>
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
-Changes in v2:
-* No change.
-*Compile this patch to check nothing is broken.
+I did it using coccinelle, I just forgot to include the coccinelle script
+in the message!
+I sent a v2 already. :)
 
- drivers/staging/slicoss/slicoss.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+thanks
 
-diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
-index a91c60a..acf73f0 100644
---- a/drivers/staging/slicoss/slicoss.c
-+++ b/drivers/staging/slicoss/slicoss.c
-@@ -1807,7 +1807,7 @@ static int slic_mcast_add_list(struct adapter *adapter, char *address)
- 
- 	/* Doesn't already exist.  Allocate a structure to hold it */
- 	mcaddr = kmalloc(sizeof(struct mcast_address), GFP_ATOMIC);
--	if (mcaddr == NULL)
-+	if (!mcaddr)
- 		return 1;
- 
- 	ether_addr_copy(mcaddr->address, address);
-@@ -1888,7 +1888,7 @@ static void slic_xmit_fail(struct adapter *adapter,
- {
- 	if (adapter->xmitq_full)
- 		netif_stop_queue(adapter->netdev);
--	if ((cmd == NULL) && (status <= XMIT_FAIL_HOSTCMD_FAIL)) {
-+	if (!cmd && (status <= XMIT_FAIL_HOSTCMD_FAIL)) {
- 		switch (status) {
- 		case XMIT_FAIL_LINK_STATE:
- 			dev_err(&adapter->netdev->dev,
-@@ -2999,7 +2999,7 @@ static u32 slic_card_locate(struct adapter *adapter)
- 	/* Initialize a new card structure if need be */
- 	if (card_hostid == SLIC_HOSTID_DEFAULT) {
- 		card = kzalloc(sizeof(struct sliccard), GFP_KERNEL);
--		if (card == NULL)
-+		if (!card)
- 			return -ENOMEM;
- 
- 		card->next = slic_global.slic_card;
--- 
-1.8.3.4
-
+sayli
+> julia
+>
+>>
+>> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+>> ---
+>>  .../staging/media/davinci_vpfe/davinci_vpfe_user.h | 36 +++++++++++-----------
+>>  1 file changed, 18 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+>> index f4f35c9..d3f34f9 100644
+>> --- a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+>> +++ b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+>> @@ -544,41 +544,41 @@ struct vpfe_isif_raw_config {
+>>  /* IPIPE module configurations */
+>>
+>>  /* IPIPE input configuration */
+>> -#define VPFE_IPIPE_INPUT_CONFIG              (1 << 0)
+>> +#define VPFE_IPIPE_INPUT_CONFIG              BIT(0)
+>>  /* LUT based Defect Pixel Correction */
+>> -#define VPFE_IPIPE_LUTDPC            (1 << 1)
+>> +#define VPFE_IPIPE_LUTDPC            BIT(1)
+>>  /* On the fly (OTF) Defect Pixel Correction */
+>> -#define VPFE_IPIPE_OTFDPC            (1 << 2)
+>> +#define VPFE_IPIPE_OTFDPC            BIT(2)
+>>  /* Noise Filter - 1 */
+>> -#define VPFE_IPIPE_NF1                       (1 << 3)
+>> +#define VPFE_IPIPE_NF1                       BIT(3)
+>>  /* Noise Filter - 2 */
+>> -#define VPFE_IPIPE_NF2                       (1 << 4)
+>> +#define VPFE_IPIPE_NF2                       BIT(4)
+>>  /* White Balance.  Also a control ID */
+>> -#define VPFE_IPIPE_WB                        (1 << 5)
+>> +#define VPFE_IPIPE_WB                        BIT(5)
+>>  /* 1st RGB to RBG Blend module */
+>> -#define VPFE_IPIPE_RGB2RGB_1         (1 << 6)
+>> +#define VPFE_IPIPE_RGB2RGB_1         BIT(6)
+>>  /* 2nd RGB to RBG Blend module */
+>> -#define VPFE_IPIPE_RGB2RGB_2         (1 << 7)
+>> +#define VPFE_IPIPE_RGB2RGB_2         BIT(7)
+>>  /* Gamma Correction */
+>> -#define VPFE_IPIPE_GAMMA             (1 << 8)
+>> +#define VPFE_IPIPE_GAMMA             BIT(8)
+>>  /* 3D LUT color conversion */
+>> -#define VPFE_IPIPE_3D_LUT            (1 << 9)
+>> +#define VPFE_IPIPE_3D_LUT            BIT(9)
+>>  /* RGB to YCbCr module */
+>> -#define VPFE_IPIPE_RGB2YUV           (1 << 10)
+>> +#define VPFE_IPIPE_RGB2YUV           BIT(10)
+>>  /* YUV 422 conversion module */
+>> -#define VPFE_IPIPE_YUV422_CONV               (1 << 11)
+>> +#define VPFE_IPIPE_YUV422_CONV               BIT(11)
+>>  /* Edge Enhancement */
+>> -#define VPFE_IPIPE_YEE                       (1 << 12)
+>> +#define VPFE_IPIPE_YEE                       BIT(12)
+>>  /* Green Imbalance Correction */
+>> -#define VPFE_IPIPE_GIC                       (1 << 13)
+>> +#define VPFE_IPIPE_GIC                       BIT(13)
+>>  /* CFA Interpolation */
+>> -#define VPFE_IPIPE_CFA                       (1 << 14)
+>> +#define VPFE_IPIPE_CFA                       BIT(14)
+>>  /* Chroma Artifact Reduction */
+>> -#define VPFE_IPIPE_CAR                       (1 << 15)
+>> +#define VPFE_IPIPE_CAR                       BIT(15)
+>>  /* Chroma Gain Suppression */
+>> -#define VPFE_IPIPE_CGS                       (1 << 16)
+>> +#define VPFE_IPIPE_CGS                       BIT(16)
+>>  /* Global brightness and contrast control */
+>> -#define VPFE_IPIPE_GBCE                      (1 << 17)
+>> +#define VPFE_IPIPE_GBCE                      BIT(17)
+>>
+>>  #define VPFE_IPIPE_MAX_MODULES               18
+>>
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160916183658.GA26442%40sayli-HP-15-Notebook-PC.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
