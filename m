@@ -1,105 +1,79 @@
 X-GM-THRID: 6330674938515554304
-X-Received: by 10.157.16.4 with SMTP id h4mr27581ote.142.1474029289196;
-        Fri, 16 Sep 2016 05:34:49 -0700 (PDT)
+X-Received: by 10.46.1.75 with SMTP id 72mr2179795ljb.10.1474012390843;
+        Fri, 16 Sep 2016 00:53:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.61.202 with SMTP id l68ls6097720otc.1.gmail; Fri, 16 Sep
- 2016 05:34:48 -0700 (PDT)
-X-Received: by 10.129.41.14 with SMTP id p14mr23105ywp.91.1474029288790;
-        Fri, 16 Sep 2016 05:34:48 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id um12si2516040pab.2.2016.09.16.05.34.48
+Received: by 10.46.32.196 with SMTP id g65ls429513lji.22.gmail; Fri, 16 Sep
+ 2016 00:53:10 -0700 (PDT)
+X-Received: by 10.46.5.140 with SMTP id 134mr2175361ljf.6.1474012390236;
+        Fri, 16 Sep 2016 00:53:10 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 82si468600wmg.3.2016.09.16.00.53.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Sep 2016 05:34:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 16 Sep 2016 00:53:10 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n24so3600493pfb.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Sep 2016 05:34:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=yBXtg4dRH43XIemlvlF+xPXFdSAvX1hrEMG6gO01qAA=;
-        b=EDL9QdldxcCbks5UJmwxCpuFEEcPmxa/JTGoFvTGCHDADUvrQZJs7qg7VoOopPkPUa
-         Ewupm7in+h42ihfxBqc8YnLYk0iAUESszbWSLKtBwIHVdP5UZ4UHIj6OY87gLMafmO6g
-         6tvzq31wp5/GGjbtimLFOzMu3kiwgPoaD56u/mqnxZE8QV5glXenKgH3+AWfF5ICfbxL
-         RfM9yid7pzKqSPXFWmH/GfSZpQ1FdA6LT07LM+XGoqGZO7mu/ZfYicj4nMTpUoKfVSCp
-         7ZQb78MXMogPvJw8wkCHsqBQNwjgt5YC+2pJEdB6ijtVElu0Cs7NDFts2eliXaArzpJK
-         x1qA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=yBXtg4dRH43XIemlvlF+xPXFdSAvX1hrEMG6gO01qAA=;
-        b=PnRVSsQBwKixGb6C9yZHaZNTUgdxNRKE5ZLsaJAPVXb5vBw4PIwjnwTO6Q1VC4lg2k
-         90KhXkbeYMtHzMNTq2RCNszMX7PmdiiPCZjW5SkoTJbiYAsP5L4gyuNiI/oBjdC9idFP
-         rtHz9FR24GBJgW3gPbgyhzqs82u5d85U+dfI3vpY7feoHXXzKj5f9BoVFpHSMv+V6dud
-         Priqao5lYZ69H8GDoEyamNs7gR9AnwILXCVaM80cwkWilWLQeK3eQ4qeZg63bHuGB3OM
-         dn9Uv6CN1skfmhAXcxPSWTVCVbt2EtRqr2/K8vD8HscwhjoRVBLwUeVla2tiKn/4y9A0
-         f0lg==
-X-Gm-Message-State: AE9vXwO/xr84r3JUgVgVxmzyHS0wUsE3u/F2Z3W5/MQF6BgrPFR8Wf83SeXcitxDFoCCeA==
-X-Received: by 10.98.135.136 with SMTP id i130mr4036524pfe.145.1474029288569;
-        Fri, 16 Sep 2016 05:34:48 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id h67sm23457709pfg.32.2016.09.16.05.34.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Sep 2016 05:34:47 -0700 (PDT)
-Date: Fri, 16 Sep 2016 18:04:39 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,343,1470693600"; 
+   d="scan'208";a="193628976"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Sep 2016 09:53:09 +0200
+Date: Fri, 16 Sep 2016 09:53:09 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>
-Subject: Re: [PATCH 3/5] staging: sm750fb: Remove multiple assignments
-Message-ID: <20160916123439.GA15179@toblerone>
-References: <cover.1473975000.git.aquannie@gmail.com>
- <c17c465dbd39a511c51f53c7752b2ca87cab4da5.1473975000.git.aquannie@gmail.com>
- <20160916074859.GB20608@kroah.com>
+cc: Rehas Sachdeva <aquannie@gmail.com>, outreachy-kernel@googlegroups.com, 
+    Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
+    Teddy Wang <teddy.wang@siliconmotion.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH 1/5] staging: sm750fb: Add blank
+ line after declarations
+In-Reply-To: <20160916074813.GA20608@kroah.com>
+Message-ID: <alpine.DEB.2.10.1609160952460.3049@hadrien>
+References: <cover.1473975000.git.aquannie@gmail.com> <fa0e9f0f8ad81718bc561337284d7aa6f6a5ffca.1473975000.git.aquannie@gmail.com> <20160916074813.GA20608@kroah.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20160916074859.GB20608@kroah.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-On Fri, Sep 16, 2016 at 09:48:59AM +0200, Greg Kroah-Hartman wrote:
-> On Fri, Sep 16, 2016 at 03:03:02AM +0530, Rehas Sachdeva wrote:
-> > Fixes multiple assignments of the form 'x = y = k' to 'x = k; y = k;'. Issue
-> > detected by checkpatch.
-> > 
+On Fri, 16 Sep 2016, Greg Kroah-Hartman wrote:
+
+> On Fri, Sep 16, 2016 at 03:02:21AM +0530, Rehas Sachdeva wrote:
+> > It is preferred to add a blank line after function, struct, union and enum
+> > declarations for better readability. Issue detected by checkpatch.
+> >
 > > Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 > > ---
-> >  drivers/staging/sm750fb/sm750.c | 12 ++++++++----
-> >  1 file changed, 8 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-> > index 7d90e25..9f1b591 100644
-> > --- a/drivers/staging/sm750fb/sm750.c
-> > +++ b/drivers/staging/sm750fb/sm750.c
-> > @@ -365,7 +365,8 @@ static int lynxfb_ops_set_par(struct fb_info *info)
-> >  		ret = -EINVAL;
-> >  		break;
-> >  	}
-> > -	var->height = var->width = -1;
-> > +	var->height = -1;
-> > +	var->width = -1;
-> 
-> that's an odd change, isn't the first version of all of these more
-> readable?
-> 
-> thanks,
-> 
-> greg k-h
+> >  drivers/staging/sm750fb/ddk750_chip.h    | 3 +++
+> >  drivers/staging/sm750fb/ddk750_display.h | 1 +
+> >  drivers/staging/sm750fb/ddk750_mode.h    | 2 ++
+> >  drivers/staging/sm750fb/ddk750_power.h   | 1 +
+> >  drivers/staging/sm750fb/sm750_cursor.c   | 3 +++
+> >  5 files changed, 10 insertions(+)
+> >
+> > diff --git a/drivers/staging/sm750fb/ddk750_chip.h b/drivers/staging/sm750fb/ddk750_chip.h
+> > index 0891384..5ef8aad 100644
+> > --- a/drivers/staging/sm750fb/ddk750_chip.h
+> > +++ b/drivers/staging/sm750fb/ddk750_chip.h
+> > @@ -14,6 +14,7 @@ typedef enum _logical_chip_type_t {
+> >  	SM750,
+> >  	SM750LE,
+> >  }
+> > +
+> >  logical_chip_type_t;
+>
+> Please look at what the C code is doing here, does this change now make
+> sense?  Why add a blank line in the middle of a typedef definition?
+>
+> Yes, the code isn't the best, but this is not the correct fix for this
+> issue, remember checkpatch is a dumb script, sometimes it tells you the
+> totally wrong thing to do, you always have to look at, and understand,
+> the code before you change it.
+>
+> sorry, I can't take this patch,
 
-Hi Greg,
+Rehas,
 
-This is an odd change indeed, something I saw only in sm750fb, among so many
-other drivers. Does that mean that for the sake of uniformity, we should go
-ahead with this? Although the first version looks better somehow.
+Maybe you could get rid of the typedef instead.
 
-Rehas
+julia
 
