@@ -1,89 +1,136 @@
-X-GM-THRID: 6329774591118934016
-X-Received: by 10.31.192.13 with SMTP id q13mr232758vkf.0.1473765492104;
-        Tue, 13 Sep 2016 04:18:12 -0700 (PDT)
+X-GM-THRID: 6330964939301191680
+X-Received: by 10.28.169.81 with SMTP id s78mr98355wme.13.1474051201628;
+        Fri, 16 Sep 2016 11:40:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.20.137 with SMTP id d9ls1046409ote.26.gmail; Tue, 13 Sep
- 2016 04:18:11 -0700 (PDT)
-X-Received: by 10.157.47.73 with SMTP id h67mr12338701otb.5.1473765491824;
-        Tue, 13 Sep 2016 04:18:11 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id z4si3386618pam.0.2016.09.13.04.18.11
+Received: by 10.28.29.133 with SMTP id d127ls913997wmd.27.canary; Fri, 16 Sep
+ 2016 11:39:59 -0700 (PDT)
+X-Received: by 10.28.56.199 with SMTP id f190mr97204wma.8.1474051199674;
+        Fri, 16 Sep 2016 11:39:59 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p199si965330wmd.1.2016.09.16.11.39.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 04:18:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Fri, 16 Sep 2016 11:39:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 128so9488640pfb.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 04:18:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=lSfmjftQdGlH6h6a3Q2C8S1BjwYo6g05V4b33J41ShY=;
-        b=IEcFCM1FmhjNR8b70tTLOzK4s8bHNLTM63zUI9SzY2iRaH/iQqydvqPqZUs1QUTQNw
-         G7mTcf7PL29PFuh5GxsCJy9Zi0yvGbKinWMIscWQ2VcxhO5rWQoxDvEez0xWFXXvvU4Y
-         GC9AUel5+eHruZQzSlmtGuzfuDKKw/yq6+wRcOEheDyAkkQIqr3rtBrD+H84UfN6Pcb0
-         IQsE2CQPwXxoqLOynjl8kJLuwWT6HW0WS/iUj3MgSTDrOV2pq5pNEJ93OPGF9w6ViTVv
-         9wa0Nzq96eDP4XlCuiMWNE2SH2ndwZzM3rfbJjRsqikB3zpGHZIUgyMZJUVxRfb/TY+o
-         f2vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=lSfmjftQdGlH6h6a3Q2C8S1BjwYo6g05V4b33J41ShY=;
-        b=fJB3dzmtx/2LhhPG5e328Zg3jdSH6lkWziPoLDikfmpUj5mCKQ8E9EsOLDn9YHnHvb
-         TsagfFW7+xMJ5pQqJNTnVBaRQbzg55JiHV1QPwOUvDAKbpqlAr4D7jIrLkc45PqlrhS5
-         TsXxufjd3wa6ldgyYfEIZyHD9zgv/adoO0uMafZKGm9dLljhZOY1x5S7+J6/e4gSbvfM
-         m1VFtxjna4IqXJSnbJuZ+jHPDMkFGh+KMhRAiRG9LhE5rw9wJBxWDSynSVt+0CxDcxJ8
-         yvCK42U27QsZp3sjZgK5UFgZTvbS0/0sGPbHH0n832lNinNazyEZmI1KXCbdduAqMz4g
-         qCPQ==
-X-Gm-Message-State: AE9vXwNJoHaDr+xKvUjoijnKXGrOPEMXgp8cGKgCibNGeBaqQyxOxM7CqsilXCvK2hJSgA==
-X-Received: by 10.98.17.83 with SMTP id z80mr363516pfi.38.1473765491633;
-        Tue, 13 Sep 2016 04:18:11 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.22])
-        by smtp.gmail.com with ESMTPSA id e187sm30551921pfa.58.2016.09.13.04.18.09
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Sep 2016 04:18:11 -0700 (PDT)
-Date: Tue, 13 Sep 2016 16:48:01 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, mchehab@kernel.org
-Subject: [PATCH v2 5/6] staging: media: lirc: lirc_imon: Add space around the
- operators
-Message-ID: <20160913111752.GA10774@life-desktop>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,346,1470693600"; 
+   d="scan'208";a="237154062"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 16 Sep 2016 20:39:45 +0200
+Date: Fri, 16 Sep 2016 20:39:45 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: sayli karnik <karniksayli1995@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: media: davinci_vpfe:
+ Replace explicit NULL comparison with ! operator
+In-Reply-To: <20160916175930.GA25922@sayli-HP-15-Notebook-PC>
+Message-ID: <alpine.DEB.2.10.1609162039210.3397@hadrien>
+References: <20160916175930.GA25922@sayli-HP-15-Notebook-PC>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-CHECK: Add space around the operators { "<<", "*"}.
+On Fri, 16 Sep 2016, sayli karnik wrote:
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
-	changes in v2:
-	-add cc
- drivers/staging/media/lirc/lirc_imon.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch replaces the explicit NULL comparisons with ! operator.
+> It was found using Coccinelle:
+>
+> @disable is_null@
+> expression e;
+> @@
+> - e == NULL
+> + !e
+>
+> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
 
-diff --git a/drivers/staging/media/lirc/lirc_imon.c b/drivers/staging/media/lirc/lirc_imon.c
-index e44f841..ee12da2 100644
---- a/drivers/staging/media/lirc/lirc_imon.c
-+++ b/drivers/staging/media/lirc/lirc_imon.c
-@@ -561,7 +561,7 @@ static void submit_data(struct imon_context *context)
- 		value |= PULSE_BIT;
- 
- 	for (i = 0; i < 4; ++i)
--		buf[i] = value>>(i*8);
-+		buf[i] = value >> (i * 8);
- 
- 	lirc_buffer_write(context->driver->rbuf, buf);
- 	wake_up(&context->driver->rbuf->wait_poll);
--- 
-1.9.1
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+> ---
+> Changes in v2:
+> Disabled is_null in the coccinelle script
+>
+>  drivers/staging/media/davinci_vpfe/vpfe_video.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.c b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> index 3319fb8..8be9f85 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> @@ -37,7 +37,7 @@ static struct media_entity *vpfe_get_input_entity
+>  	struct media_pad *remote;
+>
+>  	remote = media_entity_remote_pad(&vpfe_dev->vpfe_isif.pads[0]);
+> -	if (remote == NULL) {
+> +	if (!remote) {
+>  		pr_err("Invalid media connection to isif/ccdc\n");
+>  		return NULL;
+>  	}
+> @@ -54,7 +54,7 @@ static int vpfe_update_current_ext_subdev(struct vpfe_video_device *video)
+>  	int i;
+>
+>  	remote = media_entity_remote_pad(&vpfe_dev->vpfe_isif.pads[0]);
+> -	if (remote == NULL) {
+> +	if (!remote) {
+>  		pr_err("Invalid media connection to isif/ccdc\n");
+>  		return -EINVAL;
+>  	}
+> @@ -107,7 +107,7 @@ __vpfe_video_get_format(struct vpfe_video_device *video,
+>  	int ret;
+>
+>  	subdev = vpfe_video_remote_subdev(video, &pad);
+> -	if (subdev == NULL)
+> +	if (!subdev)
+>  		return -EINVAL;
+>
+>  	fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
+> @@ -236,7 +236,7 @@ static int vpfe_video_validate_pipeline(struct vpfe_pipeline *pipe)
+>  	 * format of the connected pad.
+>  	 */
+>  	subdev = vpfe_video_remote_subdev(pipe->outputs[0], NULL);
+> -	if (subdev == NULL)
+> +	if (!subdev)
+>  		return -EPIPE;
+>
+>  	while (1) {
+> @@ -413,7 +413,7 @@ static int vpfe_open(struct file *file)
+>  	/* Allocate memory for the file handle object */
+>  	handle = kzalloc(sizeof(struct vpfe_fh), GFP_KERNEL);
+>
+> -	if (handle == NULL)
+> +	if (!handle)
+>  		return -ENOMEM;
+>
+>  	v4l2_fh_init(&handle->vfh, &video->video_dev);
+> @@ -683,14 +683,14 @@ static int vpfe_enum_fmt(struct file *file, void  *priv,
+>  	}
+>  	/* get the remote pad */
+>  	remote = media_entity_remote_pad(&video->pad);
+> -	if (remote == NULL) {
+> +	if (!remote) {
+>  		v4l2_err(&vpfe_dev->v4l2_dev,
+>  			 "invalid remote pad for video node\n");
+>  		return -EINVAL;
+>  	}
+>  	/* get the remote subdev */
+>  	subdev = vpfe_video_remote_subdev(video, NULL);
+> -	if (subdev == NULL) {
+> +	if (!subdev) {
+>  		v4l2_err(&vpfe_dev->v4l2_dev,
+>  			 "invalid remote subdev for video node\n");
+>  		return -EINVAL;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160916175930.GA25922%40sayli-HP-15-Notebook-PC.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
