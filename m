@@ -1,62 +1,62 @@
 X-GM-THRID: 6331355639575478272
-X-Received: by 10.107.154.68 with SMTP id c65mr1766819ioe.57.1474134029317;
-        Sat, 17 Sep 2016 10:40:29 -0700 (PDT)
+X-Received: by 10.98.23.88 with SMTP id 85mr10222145pfx.5.1474133838422;
+        Sat, 17 Sep 2016 10:37:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.115.7 with SMTP id y7ls1982419itb.16.gmail; Sat, 17 Sep
- 2016 10:40:28 -0700 (PDT)
-X-Received: by 10.98.78.146 with SMTP id c140mr1743839pfb.19.1474134028940;
-        Sat, 17 Sep 2016 10:40:28 -0700 (PDT)
+Received: by 10.107.156.13 with SMTP id f13ls2375650ioe.45.gmail; Sat, 17 Sep
+ 2016 10:37:17 -0700 (PDT)
+X-Received: by 10.66.221.70 with SMTP id qc6mr2164362pac.17.1474133837315;
+        Sat, 17 Sep 2016 10:37:17 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 142si5372857pfx.2.2016.09.17.10.40.28
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 7si3683150pfw.1.2016.09.17.10.37.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 10:40:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sat, 17 Sep 2016 10:37:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 6so2095876pfl.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 10:40:28 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id 21so3609371pfy.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 10:37:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=jTsglo73lJoq3rgFD2fuQJ4G241tUiCvUlMyZ9CmOPc=;
-        b=j2Vw2ykuq4kgPn48BmPf+SsZaBJBoqWUpGzZGOvDFtqszJX5NSYk042sj/I/H8vm4X
-         7UbyY38mFnZCcsZztTdNZFFDshaILX3aaiSe5DlDnBQsdmAG4RxTO2J4q9CWWkG5ahPn
-         haYe/d3LacNpbd8tXmDkSoXl+p7J9gyWPFUwlHp1XGoKeS8qQCmEBbW8ynCVVrKvRlFa
-         pqZqU+nCsIIAjRhAsolhD6mwmArntNkPX56ktSBHAFSAGPJoLqQJul+1wJP6+ZedIH0j
-         FuR2BaOD+YUNWHfm+kTuhLeQx5E6WeUwbix9AQfuGPjlm1f12hXwZABz1TO+bUJ0R3cl
-         FifA==
+        bh=UNViKczcvClJ1Y4LDAijkfzTKIr7+cntUJ3njp0GAP0=;
+        b=b7lw+GRjORX1MszwuGXVfra0uolKwQS978J8hCcQECeZcOTfadKnVHcullBYpvKF8t
+         JWQoh3+REAS7DiQcujpj2o6/0fjLtXlNk5O5w+jFPjyXK7jPWBQxjsN9lTtTFhlMtRQd
+         5aK7ZCkOJkHYhfP0mTJoRRlJDYAGQMtlMNMPv00Dj4qI1hhj+JyRnUhvfSwS6j6Dri5O
+         O2B6v6OoSQ3vdgO4QIHoUHjik7KkvvKQ+M6uKLdRrNh9Pt7rRsh5RqyRWNqrg1Uehuht
+         HrzPMDUmeaf5CWgM/LIpOPK9LpvCp9PdUT7b4WvpjjnPrfpU1w20CrHbOqjVGfSeLeeN
+         W0tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=jTsglo73lJoq3rgFD2fuQJ4G241tUiCvUlMyZ9CmOPc=;
-        b=agfcacf9q5hrZgZ3/Yfa2Z6eKLx7AGOVRICjI/DsnhKN0bDdNU+ZcwsHcHRNK66XFI
-         UfnGCqR3coV8rMjJZlzJK3OfQWo/R1ai0ggxCjswLsPYBBsZs4u3WKsxqAyaBU35d5JJ
-         V4mAavZ7+MyXMgEMzRnW/yaEvLAB1d9d8mNN7hw2i4WdBqQG8STm4NWFLLADGEUuc3FZ
-         K7gkQM6aRYQ9H21kmsLcwp58qhY4SViL3VsDNwSuIzrircDmjCx770o5njXV7rzYZ5WP
-         wNUBKqjidgoJPHncIu5mVEWBJPl0PvLxxNQBfoCmk7bZUChqpFBfEj2PIqjgRo0Qg45N
-         MK/A==
-X-Gm-Message-State: AE9vXwNiXMdVpZ6ZbdcQGd+E2YFi2Rd89G7hQCYp+kh4PuoC2lvuDt3+qDnKnufrG3GXug==
-X-Received: by 10.98.138.207 with SMTP id o76mr33598237pfk.100.1474134028768;
-        Sat, 17 Sep 2016 10:40:28 -0700 (PDT)
+        bh=UNViKczcvClJ1Y4LDAijkfzTKIr7+cntUJ3njp0GAP0=;
+        b=ejnknPER4rdkVnMw5StEslBCSJEF6hCNmU/Ax/nkbz1LJvuq4d+y81qOeVlX+B+PS8
+         AWWHHwesXTjKRpddfdzEZ7FzeKM9OUHFkE1mprZKmgQjrXJ/052BURN1NIGVqmHksJ3i
+         Q4gXwBur53nSWqJnFX4Fz5Ai+Frg5wmFUvOinQw+z/4K2AU+eoHsWGLStRBVsTLcMdz7
+         SK7TNg7CDRdJci3+nZ9NJfHs9M/YGQ+f89RRJbh0eT/J94NJ0QdN4mn8t9fzKBLdVTXL
+         3xxqhvu3v97aU3ce9tGHAk0cMvqIYjh1wUl9fUUCXN0BP02a3Ae28LLex68pAcXsHfJp
+         TWrg==
+X-Gm-Message-State: AE9vXwPESu/lQ2A1HDxPv51IHEZAwLesbUshr43LfMD9SUBeL60Qe7PiH1od72F+ERkkDg==
+X-Received: by 10.98.223.22 with SMTP id u22mr33283321pfg.128.1474133837159;
+        Sat, 17 Sep 2016 10:37:17 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from sandhya ([122.170.172.239])
-        by smtp.gmail.com with ESMTPSA id b7sm60465911pfg.87.2016.09.17.10.40.26
+        by smtp.gmail.com with ESMTPSA id j1sm8057280pfg.95.2016.09.17.10.37.14
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Sep 2016 10:40:28 -0700 (PDT)
-Date: Sat, 17 Sep 2016 12:09:46 +0530
+        Sat, 17 Sep 2016 10:37:16 -0700 (PDT)
+Date: Sat, 17 Sep 2016 12:06:34 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH 2/2] Staging: lustre: namei: Remove exceptional & on function
+Cc: gregkh@linuxfoundation.org, oleg.drokin@intel.com,
+	andreas.dilger@intel.com, jsimmons@infradead.org
+Subject: [PATCH 1/2] Staging: lustre: file: Remove exceptional & on function
  name
-Message-ID: <a3cc0b4ea1581aa6c4e6de29128d668b7fc55af3.1474093197.git.bankarsandhya512@gmail.com>
+Message-ID: <285e794ee88fdc0effa3c0c64d8f21fe469d57bd.1474093197.git.bankarsandhya512@gmail.com>
 References: <cover.1474093197.git.bankarsandhya512@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -81,25 +81,24 @@ identifier r.f;
 + f
 // </smpl>
 
-
 Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/namei.c |    2 +-
+ drivers/staging/lustre/lustre/llite/file.c |    2 +-
  1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/namei.c b/drivers/staging/lustre/lustre/llite/namei.c
-index b7d448f..aa10e7c 100755
---- a/drivers/staging/lustre/lustre/llite/namei.c
-+++ b/drivers/staging/lustre/lustre/llite/namei.c
-@@ -551,7 +551,7 @@ static struct dentry *ll_lookup_it(struct inode *parent, struct dentry *dentry,
- 		it->it_create_mode &= ~current_umask();
- 
- 	rc = md_intent_lock(ll_i2mdexp(parent), op_data, it, &req,
--			    &ll_md_blocking_ast, 0);
-+			    ll_md_blocking_ast, 0);
- 	ll_finish_md_op_data(op_data);
- 	if (rc < 0) {
- 		retval = ERR_PTR(rc);
+diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
+index bfac6dd..4965d15 100755
+--- a/drivers/staging/lustre/lustre/llite/file.c
++++ b/drivers/staging/lustre/lustre/llite/file.c
+@@ -829,7 +829,7 @@ ll_lease_open(struct inode *inode, struct file *file, fmode_t fmode,
+ 	it.it_flags = fmode | open_flags;
+ 	it.it_flags |= MDS_OPEN_LOCK | MDS_OPEN_BY_FID | MDS_OPEN_LEASE;
+ 	rc = md_intent_lock(sbi->ll_md_exp, op_data, &it, &req,
+-			    &ll_md_blocking_lease_ast,
++			    ll_md_blocking_lease_ast,
+ 	/* LDLM_FL_NO_LRU: To not put the lease lock into LRU list, otherwise
+ 	 * it can be cancelled which may mislead applications that the lease is
+ 	 * broken;
 -- 
 1.7.1
 
