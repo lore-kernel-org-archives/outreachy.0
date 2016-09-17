@@ -1,95 +1,101 @@
-X-GM-THRID: 6335442483781042176
-X-Received: by 10.157.51.124 with SMTP id u57mr8475290otd.66.1475085151589;
-        Wed, 28 Sep 2016 10:52:31 -0700 (PDT)
+X-GM-THRID: 6331355639575478272
+X-Received: by 10.46.69.213 with SMTP id s204mr300509lja.18.1474140282206;
+        Sat, 17 Sep 2016 12:24:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.20.68 with SMTP id h62ls1444734oth.17.gmail; Wed, 28 Sep
- 2016 10:52:31 -0700 (PDT)
-X-Received: by 10.129.95.11 with SMTP id t11mr8609636ywb.112.1475085151218;
-        Wed, 28 Sep 2016 10:52:31 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id e66si2376800pfk.2.2016.09.28.10.52.31
+Received: by 10.28.203.14 with SMTP id b14ls1244909wmg.18.gmail; Sat, 17 Sep
+ 2016 12:24:41 -0700 (PDT)
+X-Received: by 10.194.74.131 with SMTP id t3mr305465wjv.21.1474140281713;
+        Sat, 17 Sep 2016 12:24:41 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s6si129974wmb.1.2016.09.17.12.24.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Sep 2016 10:52:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 17 Sep 2016 12:24:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 6so2424047pfl.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 10:52:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ztLAaC752stVBctcR9crDqdaK2ENwupKR1bxk1M3d10=;
-        b=FQW2g7YIqU0TJlxdRMjZrIgArwdc2eJMoYBeMswJ1MeNRCqwXLk8Aa/kL74y7JRdjb
-         41cwyALbgAOZ4Kb/aoycxr7sVzua43Xj9edrOiOYejQ65Jt/6J9DsXaidjvrRxz3svCG
-         Rs7bEOSxCCP4EUo+F0i0ExU+iNQri5NAW1b30dEWzBd2ToJn3AOsSOhCvuu20ZmbbS4c
-         GNQJam1BJo61s+QFqBOspKvkeD6fnhMDIAhvlm1n2B8bYhrIGPiTOt1p3RCbmp+0t6od
-         5CuvJ1mB7XqXWJOJz5vC1hBGKP5pseXe/D+mPtMxZjgO6u1HMARwHiZDVX2dZI5NOJKl
-         aWFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ztLAaC752stVBctcR9crDqdaK2ENwupKR1bxk1M3d10=;
-        b=ODOi9LzDRvohDtPpyNV9TvYLRK9pCSuhXHzVIW3IC32m2RAYW8X4wJWdzi6Ul1ryio
-         5+zZxAoBJghW2Aa89bh/kcvvPqRTDpnIoQI/SqiaG5zEhwxDgDlDxEuADT92ufS0pC7G
-         sAItbi77CI/0zucA/GJePQuYurSavZuR6rKeyT2Ar73i1VzED9YnHyv4KGhlZ8W4ErtZ
-         145gS+wfjYi+QmpyhosLbaGiKB52LkVtd2mv7nksZc3P7yrfbfi9erYOTCrJA6mXAaXG
-         E3arABtRnPENNsFYPlmjtL9pW8le5zXnJSrNe8KU02GsoPYi9aE8Az739J46imKT1uEg
-         TXyw==
-X-Gm-Message-State: AE9vXwNMJCW68/zv/eotIhH3l/5P7+cll/rFdMpjMJXeKAw7sDz00B/yJ4dsCUme+JQ6Aw==
-X-Received: by 10.98.65.1 with SMTP id o1mr59498968pfa.134.1475085151014;
-        Wed, 28 Sep 2016 10:52:31 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.218])
-        by smtp.gmail.com with ESMTPSA id t67sm14125180pfd.32.2016.09.28.10.52.28
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 28 Sep 2016 10:52:30 -0700 (PDT)
-Date: Wed, 28 Sep 2016 23:22:22 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: iio: cdc: ad7150: add comment to mutex
-Message-ID: <20160928175206.GA13416@life-desktop>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,352,1470693600"; 
+   d="scan'208";a="237222842"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Sep 2016 21:24:40 +0200
+Date: Sat, 17 Sep 2016 21:24:40 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com, oleg.drokin@intel.com, 
+    andreas.dilger@intel.com, jsimmons@infradead.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: lustre: namei: Remove
+ exceptional & on function name
+In-Reply-To: <a3cc0b4ea1581aa6c4e6de29128d668b7fc55af3.1474093197.git.bankarsandhya512@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609172121320.3124@hadrien>
+References: <cover.1474093197.git.bankarsandhya512@gmail.com> <a3cc0b4ea1581aa6c4e6de29128d668b7fc55af3.1474093197.git.bankarsandhya512@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
+On Sat, 17 Sep 2016, Sandhya Bankar wrote:
 
-At the risk of being overly pedantic...the lock will make sure that the state
-data in this structure always accurately reflects the state of the
-hardware.
-So, when parts of this driver start changing those settings, we need to use
-a lock so that simultaneous writes of that state data don't conflict
+> The function names is itself used as pointers without &.
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
-	changes in v2-
-		-modify the patch comment
-		-add file in the commit message
- drivers/staging/iio/cdc/ad7150.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The message is not very grammatical.  "names" is plural, but "is" is
+singular.  And "used as pointers" should I guess be "used as a pointer".
+Overall, you could try "A function name is already a pointer, and does not
+need &".
 
-diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index f6b9a10..13709bf 100644
---- a/drivers/staging/iio/cdc/ad7150.c
-+++ b/drivers/staging/iio/cdc/ad7150.c
-@@ -78,7 +78,7 @@ struct ad7150_chip_info {
- 	u8 mag_timeout[2][2];
- 	int old_state;
- 	char *conversion_mode;
--	struct mutex state_lock;
-+	struct mutex state_lock; /* protect hardware state */
- };
- 
- /*
--- 
-1.9.1
+> This changes made by below coccinelle script:
 
+This change is made by the following coccinelle script
+
+> // <smpl>
+> @r@
+> identifier f;
+> @@
+>
+> f(...) { ... }
+> @@
+> identifier r.f;
+> @@
+>
+> - &f
+> + f
+
+Actually, I would tend to put a blank line between rules, but if it is
+useful to save vertical space, I would drop the blank line after the
+second @@ in each rule.
+
+julia
+
+> // </smpl>
+>
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/llite/namei.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/llite/namei.c b/drivers/staging/lustre/lustre/llite/namei.c
+> index b7d448f..aa10e7c 100755
+> --- a/drivers/staging/lustre/lustre/llite/namei.c
+> +++ b/drivers/staging/lustre/lustre/llite/namei.c
+> @@ -551,7 +551,7 @@ static struct dentry *ll_lookup_it(struct inode *parent, struct dentry *dentry,
+>  		it->it_create_mode &= ~current_umask();
+>
+>  	rc = md_intent_lock(ll_i2mdexp(parent), op_data, it, &req,
+> -			    &ll_md_blocking_ast, 0);
+> +			    ll_md_blocking_ast, 0);
+>  	ll_finish_md_op_data(op_data);
+>  	if (rc < 0) {
+>  		retval = ERR_PTR(rc);
+> --
+> 1.7.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a3cc0b4ea1581aa6c4e6de29128d668b7fc55af3.1474093197.git.bankarsandhya512%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
