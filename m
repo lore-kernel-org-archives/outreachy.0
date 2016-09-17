@@ -1,124 +1,107 @@
 X-GM-THRID: 6331367945282781184
-X-Received: by 10.46.9.5 with SMTP id 5mr2701587ljj.0.1474138236279;
-        Sat, 17 Sep 2016 11:50:36 -0700 (PDT)
+X-Received: by 10.66.79.199 with SMTP id l7mr380950pax.42.1474136473845;
+        Sat, 17 Sep 2016 11:21:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.18.133 with SMTP id 127ls369020wms.9.gmail; Sat, 17 Sep
- 2016 11:50:35 -0700 (PDT)
-X-Received: by 10.194.191.138 with SMTP id gy10mr297854wjc.9.1474138235598;
-        Sat, 17 Sep 2016 11:50:35 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p199si1387079wmd.1.2016.09.17.11.50.35
+Received: by 10.157.46.36 with SMTP id q33ls7292438otb.33.gmail; Sat, 17 Sep
+ 2016 11:21:13 -0700 (PDT)
+X-Received: by 10.200.41.47 with SMTP id y44mr12216229qty.27.1474136473536;
+        Sat, 17 Sep 2016 11:21:13 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-qk0-x230.google.com (mail-qk0-x230.google.com. [2607:f8b0:400d:c09::230])
+        by gmr-mx.google.com with ESMTPS id u139si78713ywe.5.2016.09.17.11.21.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 11:50:35 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 17 Sep 2016 11:21:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::230 as permitted sender) client-ip=2607:f8b0:400d:c09::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,352,1470693600"; 
-   d="scan'208";a="237221662"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 17 Sep 2016 20:50:35 +0200
-Date: Sat, 17 Sep 2016 20:50:34 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Gargi Sharma <gs051095@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Using Coccinelle to detect bugs
-In-Reply-To: <CAOCi2DFRtAPuzNce3oEQGcu6yO388OE=fC3SBOS7ywVuebUV5w@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1609172041250.3124@hadrien>
-References: <CAOCi2DFRtAPuzNce3oEQGcu6yO388OE=fC3SBOS7ywVuebUV5w@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::230 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x230.google.com with SMTP id w204so114541868qka.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 11:21:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=kk1EItTeXiUlpN221ZICGHzMZ/jWb7ErF7x5dWhDIaY=;
+        b=uTJh0kZRpNukNDQ8m+ygiPI4/lrsLI8bhkwzt9tNxf15qFd74IB6FxNznmGDPbg6SI
+         iXWcxYTQPhl97A1RnqE+XhpMnRkLXXR8+92/cIcvxOLgA4K+B6OK4hQiPfyY6vtRuPFe
+         PhtHoOo9mvlP1BvXInezP7yW1ANZIefFYRIyKP1L+R0D+lzdGsTV1iWdQjTkF43HHWhG
+         G2oB3Vfj21T4oIp4RKp5HjmyMpZVZXfFOYj6YcRuNhD/ppu/ZS6O7Nq9zsxcszXNX2ug
+         sCO0vcTi3xs0PtLMHNm3/2WHag00686RYQCF9tHiSNGm1I+0FXC5HiRaidNAx4brS+8+
+         Or0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=kk1EItTeXiUlpN221ZICGHzMZ/jWb7ErF7x5dWhDIaY=;
+        b=UCGtkK8sb6DD1p7qih1jwjjgXhbl7EY57NYli6NL89v32Dju63GfhBnou0pBlvAX+3
+         fD7BnxuJpTUL+zwrhG8tptsHunS5qqddCuPQ3SxTrBCTusEJdws5jir2GYFRzHayCCYi
+         2cq5UdEMuwI/U9q1LIauS+3w1zCBLfTINZFFpx+PV4Yp1dWy/TpipBx9kuZV78Y3HeLZ
+         qFS+i7fipUV6R8YTIXfpwiCKNk17d+28SJnDEldJ3JISASej6S1mZIttyL/NedG2JP6k
+         BGlfwiRIryGyKarOz0il0Xv2r73INOIaP+uESTv7ycIOIVuZyTa2S3Y4RuBCS4bowMr7
+         7PpQ==
+X-Gm-Message-State: AE9vXwMatPZZObixGx/bFFvh/mddYBtLrzdV/c+wYhsg4K/mTeo+bDB1+gQ6OFUffvZF1hmuIV3CR62StpQ41Q==
+X-Received: by 10.55.181.195 with SMTP id e186mr21463750qkf.153.1474136473252;
+ Sat, 17 Sep 2016 11:21:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-452349031-1474138235=:3124"
+Received: by 10.200.56.184 with HTTP; Sat, 17 Sep 2016 11:20:42 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
+Date: Sat, 17 Sep 2016 23:50:42 +0530
+Message-ID: <CAOCi2DFRtAPuzNce3oEQGcu6yO388OE=fC3SBOS7ywVuebUV5w@mail.gmail.com>
+Subject: Using Coccinelle to detect bugs
+To: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=94eb2c06afa0d6cae6053cb82437
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+--94eb2c06afa0d6cae6053cb82437
+Content-Type: text/plain; charset=UTF-8
 
---8323329-452349031-1474138235=:3124
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Hi all!
 
+I have been trying to use Coccinelle scripts but I am getting the error :
+Fatal error: exception Failure("False should not be in the final result.
+Perhaps your rule doesn't contain any +/-/* code, or you have a failed
+dependency.  If the problem is not clear, try the option
+--debug-parse-cocci.").
 
+Steps I followed:
+1. sudo apt-get install coccinelle
+2.  make coccicheck MODE=report
+3. run  spatch --sp-file scripts/coccinelle/misc/array_siz.cocci --dir
+drivers/staging/*
 
-On Sat, 17 Sep 2016, Gargi Sharma wrote:
+After which I get the error:
+Fatal error: exception Failure("False should not be in the final result.
+Perhaps your rule doesn't contain any +/-/* code, or you have a failed
+dependency.  If the problem is not clear, try the option
+--debug-parse-cocci.").
 
-> Hi all!
-> I have been trying to use Coccinelle scripts but I am getting the error :
-> Fatal error: exception Failure("False should not be in the final result. 
-> Perhaps your rule doesn't contain any +/-/* code, or you have a failed
-> dependency.  If the problem is not clear, try the option
-> --debug-parse-cocci.").
->
-> Steps I followed:
-> 1. sudo apt-get install coccinelle
-> 2.  make coccicheck MODE=report
-> 3. run  spatch --sp-file scripts/coccinelle/misc/array_siz.cocci --dir
-> drivers/staging/*
+I would also like to ask that a lot of script mentioned in coccinellery are
+not present in scripts/coccinelle. So if I want to run a scipt from
+coccinellery, do I clone the coccinellery repo as well?
 
-Either you run make coccicheck or you run spatch with some arguments.
-There is no file with the name scripts/coccinelle/misc/array_siz.cocci.
-It would be scripts/coccinelle/misc/array_size.cocci.  I don't know if the
-typo is in your command line, or if it just came when you sent the email.
+Thanks!
+Gargi
 
-The short answer for the error message you got it that you need to run
-that semantic patch using make coccicheck.  You can read about how to use
-make coccicheck in the Linux kernel documentation, in
-dev-tools/coccinelle.rst.
+--94eb2c06afa0d6cae6053cb82437
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-The long answer is that if you look at array_size.cocci, you will see at
-the top:
+<div dir=3D"ltr">Hi all!<div><br></div><div>I have been trying to use Cocci=
+nelle scripts but I am getting the error :</div><div>Fatal error: exception=
+ Failure(&quot;False should not be in the final result.=C2=A0 Perhaps your =
+rule doesn&#39;t contain any +/-/* code, or you have a failed dependency.=
+=C2=A0 If the problem is not clear, try the option --debug-parse-cocci.&quo=
+t;).<br></div><div><br></div><div>Steps I followed:</div><div>1. sudo apt-g=
+et install coccinelle</div><div>2. =C2=A0make coccicheck MODE=3Dreport</div=
+><div>3. run=C2=A0=C2=A0spatch --sp-file scripts/coccinelle/misc/array_<wbr=
+>siz.cocci --dir drivers/staging/*</div><div><br></div><div>After which I g=
+et the error:=C2=A0</div><div>Fatal error: exception Failure(&quot;False sh=
+ould not be in the final result.=C2=A0 Perhaps your rule doesn&#39;t contai=
+n any +/-/* code, or you have a failed dependency.=C2=A0 If the problem is =
+not clear, try the option --debug-parse-cocci.&quot;).<br></div><div><br></=
+div><div>I would also like to ask that a lot of script mentioned in coccine=
+llery are not present in scripts/coccinelle. So if I want to run a scipt fr=
+om coccinellery, do I clone the coccinellery repo as well?</div><div><br></=
+div><div>Thanks!</div><div>Gargi</div><div><br></div></div>
 
-virtual patch
-virtual context
-virtual org
-virtual report
-
-These are virtual rules, that are sort of like #ifdefs.  Basically, they
-give you some choices about what kind of behavior you want.  If you want a
-patch, ie the issue to be fixed, then when you run spatch, you can give
-the command line argument -D patch.  Or if you just want a report, ie some
-lines printing the file name and line number where the issue occurs, you
-can give the command line -D report.  The various rules in the semantic
-patch then depend on these virtual rules.  All of the rules in the
-semantic patch that actually do something (make a change or print some
-output) depend on these virtual rules in one way or the other.  So if you
-don't give one of -D patch, etc, then it will have nothing to do, and you
-will get the eror message you saw.
-
->
-> After which I get the error: 
-> Fatal error: exception Failure("False should not be in the final result. 
-> Perhaps your rule doesn't contain any +/-/* code, or you have a failed
-> dependency.  If the problem is not clear, try the option
-> --debug-parse-cocci.").
->
-> I would also like to ask that a lot of script mentioned in coccinellery are
-> not present in scripts/coccinelle. So if I want to run a scipt from
-> coccinellery, do I clone the coccinellery repo as well?
-
-Yes.  The scripts in the kernel are things that are considered to be
-useful, and to behave well.  The scripts in coccinellery are just random
-things that have been collected over time.  You are most welcome to try
-them, though.  For those, you run spatch directly, not make coccicheck,
-since they don't normally provide any of the virtual rules.
-
-julia
-
->
-> Thanks!
-> Gargi
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAOCi2DFRtAPuzNce3oEQGcu
-> 6yO388OE%3DfC3SBOS7ywVuebUV5w%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-452349031-1474138235=:3124--
+--94eb2c06afa0d6cae6053cb82437--
 
