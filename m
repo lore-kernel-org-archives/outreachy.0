@@ -1,75 +1,51 @@
-X-GM-THRID: 6331778131378044928
-X-Received: by 10.200.46.56 with SMTP id r53mr3044488qta.72.1474231977663;
-        Sun, 18 Sep 2016 13:52:57 -0700 (PDT)
+X-GM-THRID: 6331313577585016832
+X-Received: by 10.107.132.106 with SMTP id g103mr1738701iod.70.1474137380786;
+        Sat, 17 Sep 2016 11:36:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.225.13 with SMTP id n13ls2221268ith.20.canary; Sun, 18 Sep
- 2016 13:52:56 -0700 (PDT)
-X-Received: by 10.67.15.70 with SMTP id fm6mr3688256pad.130.1474231976094;
-        Sun, 18 Sep 2016 13:52:56 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id h124si5793725pfe.0.2016.09.18.13.52.56
+Received: by 10.157.17.41 with SMTP id g38ls7993149ote.34.gmail; Sat, 17 Sep
+ 2016 11:36:20 -0700 (PDT)
+X-Received: by 10.13.194.69 with SMTP id e66mr1723665ywd.152.1474137380514;
+        Sat, 17 Sep 2016 11:36:20 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id e66si2246pfk.2.2016.09.17.11.36.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 13:52:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Sat, 17 Sep 2016 11:36:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id oz2so37100530pac.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 13:52:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=jIPtVbjHN30jK/lmTjdqFPJsckYJcG7op6VLeOW2aIU=;
-        b=Xd2AXS/5SMuu8TjTOQuiD0L+awmXs87AdPaxga9vR8GDnbNcUO80yWkv6Azq5R1r9B
-         7R37b8Icw3NDAf4jsk9zosJprz8YZzEJFunEh5ghCiF6jLYjf24cL4H+24juCgIZD+38
-         Q6Mgb/wU5vT5eZXQPHdowtyMFAPGYDCpXwAbekSTbiypsjzDDLoLoEBP/DOEq2CY1i7M
-         SjG/KJzVNQmZ6hdBbIzs66MS6E6UAP0TGgoE7dsB0Ug4nd6yym7w6sajatikC8GWah1M
-         qGsmByt1I0X4irrCQFCNhZJwjmoVmCmxvhLrbFo5US2iPZ87eJmVaicDcihwf3MZZrJ+
-         +tRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jIPtVbjHN30jK/lmTjdqFPJsckYJcG7op6VLeOW2aIU=;
-        b=kEpGEVR9rFLAmk7pZYXKAmJY75FAR07ioty7MZyO2UMYxhfP/a3aejxsJTqv/NSmC0
-         e7fC9lQXgWTaaLfvW4T2BrHMxxZhJ7/numV8Tw4FMTlM318jo0xFiQ0daP4cTUgk3eWH
-         XKGMSWXSk4LwfIViqoCUDvD+8JQbfnKVwEWM74i9Q+KazdgSYeMQEjFzI5YC717W37vr
-         jK/ZxtxquoNRWgiAIFavFRBAnYpfJ8TFlrPGvmnkXx4/GJQJZAdiFCFAXMhYd+MwCJLP
-         PvkGypdEq9KFZ4Qw4UYkgybyxcw9NSat86qdjcZ7Yf5qfSmBTtxR9s8tYjNmQlsQXgNq
-         irIQ==
-X-Gm-Message-State: AE9vXwPchKgMmSJQleEl9LLVsvJxUpX3uzwHOl07OjYga+TByXoV9xxjdvYd9jHuP2qPMg==
-X-Received: by 10.66.132.38 with SMTP id or6mr41179434pab.84.1474231975781;
-        Sun, 18 Sep 2016 13:52:55 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id mk9sm26144528pab.1.2016.09.18.13.52.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 13:52:55 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH v2 0/2] wlan-ng: fix multiple coding style issues
-Date: Mon, 19 Sep 2016 02:22:06 +0530
-Message-Id: <cover.1474231479.git.gs051095@gmail.com>
-X-Mailer: git-send-email 2.9.2
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 7F8F989E;
+	Sat, 17 Sep 2016 18:36:19 +0000 (UTC)
+Date: Sat, 17 Sep 2016 20:36:23 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, ganesh.krishna@microchip.com,
+	aditya.shankar@microchip.com
+Subject: Re: [PATCH] Staging: wilc1000: Remove some function prototypes
+Message-ID: <20160917183623.GB30404@kroah.com>
+References: <1474123795-13448-1-git-send-email-bhumirks@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1474123795-13448-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
----
-Changes in v2:
-	Modified subject line for cover-letter.	Also, rebased 
-	git repository for the patches to be applicable.
+On Sat, Sep 17, 2016 at 08:19:55PM +0530, Bhumika Goyal wrote:
+> This patch removes some static function prototypes as they
+> were getting used only in the declaration of structure 
+> wilc_netdev_ops. So, after moving the structure declaration below the 
+> function definition of all these functions, the prototypes can be 
+> complelety dropped. The structure is moved to an appropriate location 
+> so that it is not used before its declaration.
 
-	
-Gargi Sharma (2):
-  staging: wlan-ng: use kernel preferred block commenting style
-  staging: wlan-ng: change indentation for macros
+You do two different things here, one of which is not moving a function
+prototype, so your Subject is incorrect :(
 
- drivers/staging/wlan-ng/hfa384x.h | 626 ++++++++++++++++++--------------------
- 1 file changed, 303 insertions(+), 323 deletions(-)
+Please fix this up and make it 2 patches.
 
--- 
-2.9.2
+thanks,
 
+greg k-h
 
