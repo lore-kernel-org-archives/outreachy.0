@@ -1,61 +1,61 @@
 X-GM-THRID: 6331374049308966912
-X-Received: by 10.157.33.196 with SMTP id s62mr12624823otb.8.1474192856131;
-        Sun, 18 Sep 2016 03:00:56 -0700 (PDT)
+X-Received: by 10.66.164.8 with SMTP id ym8mr1991861pab.54.1474137895305;
+        Sat, 17 Sep 2016 11:44:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.4.81 with SMTP id 75ls8443293otc.6.gmail; Sun, 18 Sep 2016
- 03:00:55 -0700 (PDT)
-X-Received: by 10.157.54.250 with SMTP id s55mr2852643otd.48.1474192855773;
-        Sun, 18 Sep 2016 03:00:55 -0700 (PDT)
+Received: by 10.107.154.79 with SMTP id c76ls2479563ioe.7.gmail; Sat, 17 Sep
+ 2016 11:44:54 -0700 (PDT)
+X-Received: by 10.107.174.135 with SMTP id n7mr12412188ioo.20.1474137894811;
+        Sat, 17 Sep 2016 11:44:54 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id z4si3895659pam.0.2016.09.18.03.00.55
+        by gmr-mx.google.com with ESMTPS id si10si4083889pab.1.2016.09.17.11.44.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 03:00:55 -0700 (PDT)
+        Sat, 17 Sep 2016 11:44:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id vz6so5538160pab.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 03:00:55 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id my20so1896948pab.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 11:44:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=cmPfXshdABXI6GC3IYA+sUVPGiRjlyhjJTRwKOpTZ1Q=;
-        b=sgNOeDENdZr1Q8RtFe5TSlbrFXZTljTMn8oU9FrazmaNIcVdwQPCAMcrQst7r4bhL+
-         6T8Bhyk+UCkYch/shfhfxA9qTSX7txpbPu6zXxJO6D7mOE886iJkgiuSRu7nDK4w82UT
-         T6plBJub5hbKr5852sSd43Y6k2lxzGu6SMUC1xZs33huf1t6hd8R+3nduRpF+UldB9JI
-         Dz3bXuu7zMlIayb0ZoapVoZPUNvtvKRsxw/gJw63sY5jY3Q6iQyhotB0aQHP9FKBUy8y
-         jWQOURD0kcu4ny4JztG59opVpwd/ysAuAiTO4nXf+bekCo/eyFF5yFBW+sI9xmB+2W5j
-         1ghA==
+        bh=Z6wf2JidIN79yU3bIix+a65rYn7zG3cS5jrlA6q+6sU=;
+        b=R1L+AyoGRtBgl5SVGaQnoJ/oZqGKsirrLqmpgHx9islTA3Oc7hmCJwmn7x9JDSN9LE
+         4wjawoLbPNt6vPtka69PUoI+igeFR3k7MsGnmT9nBa6Zs+yIICvap4ExxZwIRTar38c0
+         ERn0PiD77gx7uhjLJRbm3nyCPtfS9i4tG+1TtuaOYRZa1KG4OEUSMJPayR1JQ+6Pb7gZ
+         s/OouJKWUD4oLhd+GakJiGUggYErA/I0mwO+3oCfXo7bG8B1ieB18cxDUCqnKZvNLLDh
+         s3OBvP41X4wGAfBGAvOHWtiVjvY2REVEUj2/r8T4iaIdIBXC0FSd9nN1AnjfOdSUKzLF
+         Ve6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=cmPfXshdABXI6GC3IYA+sUVPGiRjlyhjJTRwKOpTZ1Q=;
-        b=RbnXHy0ZPhoW2XhN+pz0plinEN9Fjfe+Bp6ZJ+XrjcHQZg8ZfbctBinvWVaBy9KKU6
-         7elu41E/UZR9o4+FjlyRCxIhobQxWaXIUutH4XuON/kEc+YZgvBpCb8e1Ae5qGhwcAY1
-         GhdRZpfENFRigYuhyQOu4Px9RbEpMxdh0VyJPWQk8nnFHwCv6K0Xg22pZCQxqcgQ6ERE
-         Jqb5t/XdALrnUYP6KGpDTWYR0jWiEwyWElZBDzXaSGXGr8HxG1RpGUO5vQ3FpxN3TXCJ
-         LymevHZ0WV4s16cvjVDWQJV/s2vn5G8dMLxH4XS5uCcd11Ar8U0LYNeL1+7grKfcdatx
-         7MGQ==
-X-Gm-Message-State: AE9vXwN/9YlgUmFmoxrTdppMgJPhRFlPyUEzcglySW9WpoafAzYqGqyBGI3YcDHxX5DvUg==
-X-Received: by 10.66.148.167 with SMTP id tt7mr37587037pab.21.1474192855542;
-        Sun, 18 Sep 2016 03:00:55 -0700 (PDT)
+        bh=Z6wf2JidIN79yU3bIix+a65rYn7zG3cS5jrlA6q+6sU=;
+        b=Sw2dvVqWy4HvqE8xHP40rGXVkTGCYLQiIJ23CggG+XgE9qSBomHVOJuu+A5LjS2DZY
+         8pmpcgFx+Heek6Oi2AY626Ec1ls5gX8av7kKtsX/7o8EdqNOQK8QW89/yshKfLPEm9Zb
+         Uz0FS7DLLEnbKhQgei2pMGMF6FHZuvqzGPeHp8Ch4Q6iznhErWycGB/ghUv8nZcjCj68
+         hrFDc5mBsqQgR8+H5WGYtjqEjja6PpqdHMFLQekCbaco/FPofrn6F0FZklzLbr4hjjtH
+         A15mBuKAUv06R8ZPSzufidYOpteU9vNgY4d2KzAwKZmULlxBnH5BYvTba8ktBzKKYd1z
+         G/Ug==
+X-Gm-Message-State: AE9vXwOf1AuaMODNEx61DNmBuZYc9LF63p2YdaXnUR/ZkAEBjULox3ozP7FjORD3Td+uQA==
+X-Received: by 10.67.23.4 with SMTP id hw4mr33491119pad.7.1474137894450;
+        Sat, 17 Sep 2016 11:44:54 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.173.54])
-        by smtp.gmail.com with ESMTPSA id co6sm17655473pad.23.2016.09.18.03.00.52
+Received: from sandhya ([122.170.172.239])
+        by smtp.gmail.com with ESMTPSA id q14sm41519301pfg.63.2016.09.17.11.44.51
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 03:00:55 -0700 (PDT)
-Date: Sun, 18 Sep 2016 04:29:54 +0530
+        Sat, 17 Sep 2016 11:44:53 -0700 (PDT)
+Date: Sat, 17 Sep 2016 13:14:11 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org,
 	gregkh@linuxfoundation.org
-Subject: [PATCH v2] Staging: lustre: lmv_obd: Remove redundant if-statement.
-Message-ID: <20160917225954.GA24486@sandhya>
+Subject: [PATCH] Staging: lustre: lmv_obd: Remove redundant if-statement.
+Message-ID: <20160917074411.GA16391@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -65,13 +65,11 @@ Remove redundant if-statement.
 
 Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
-Changes in v2:
-* Correcting the file permission issue.
  drivers/staging/lustre/lustre/lmv/lmv_obd.c |    6 ++----
  1 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-index 5783359..0713e55 100644
+index dc752d5..955cc01 100755
 --- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
 +++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
 @@ -949,10 +949,8 @@ static int lmv_hsm_ct_register(struct lmv_obd *lmv, unsigned int cmd, int len,
