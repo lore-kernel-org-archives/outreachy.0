@@ -1,76 +1,75 @@
 X-GM-THRID: 6331265860288643072
-X-Received: by 10.31.16.75 with SMTP id g72mr2573233vki.41.1474196975198;
-        Sun, 18 Sep 2016 04:09:35 -0700 (PDT)
+X-Received: by 10.66.123.74 with SMTP id ly10mr1464143pab.104.1474112705603;
+        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.141.77 with SMTP id p74ls2978572iod.9.gmail; Sun, 18 Sep
- 2016 04:09:34 -0700 (PDT)
-X-Received: by 10.107.31.129 with SMTP id f123mr13593847iof.30.1474196974762;
-        Sun, 18 Sep 2016 04:09:34 -0700 (PDT)
+Received: by 10.157.23.236 with SMTP id j99ls7232198otj.7.gmail; Sat, 17 Sep
+ 2016 04:45:05 -0700 (PDT)
+X-Received: by 10.157.7.7 with SMTP id 7mr11316935ote.50.1474112705314;
+        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id h124si5577358pfe.0.2016.09.18.04.09.34
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id um12si3496625pab.2.2016.09.17.04.45.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 04:09:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id oz2so5571058pac.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 04:09:34 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id vz6so4588435pab.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=26Tq+pIjTcbTNkC2WJiGiS9nno90vvT9/46AHEM6pxg=;
-        b=ILp/NqVzzZZV0bsv5aXoc3vKMMhz2eO5Lse97MxdkwuoDyPM7P/IJchXcPZ2yK7T1J
-         I7tq3NhlLwYZIoQiV5tZWbkQ9qWt0I/XctiQ2ZNgvt5dRJbOMEVemWMfd2wN2mW6kRc2
-         cchhDuZvK2aJy2PmTVqSrUy9S/vpolBFi3V3yU7pWP98Iud69Ov34L8BIZnCbj9cvPv8
-         IvX5v5fPvCBzL4DDRf7d3BgY59NopDBt/Z+o+lpTc18mUbMesMX4G4yvy285Z3TiPwl2
-         1h5LBOQs08FYYRnyKsHN7MilKRPwi/0Q5FjcOPLNCPpOIxE5unyWExEaTxOuYIfDcjux
-         u4hw==
+        bh=ze1VTQXTEw6QFz3ffEfLxEfiNw8EF5kMh1OhJMEu02c=;
+        b=SLAX5IVD0kGA0+iw7P/eTIMrFrXJwqaUJvZBbcTXtX4E5xfWTuKeSLPBEgxNWQITyq
+         D3xPkvAYsgKzWFXYsqTZ8vZNeB9fmkSd74/8/zkpk4AKxAGCSBs/3LgmzVUe48w5qwQD
+         GY9qwrGRwMIcU2Hde/AxLKci9leAiu4gjdNhmu1rqofoMeW7BEZ5NRDcCPVlDv6TuU0G
+         ZPfURbrcPXq4ZKnDGo6eUkOWtkEzGonF6TB2LWeecvhRxqkay8ONEhcAfJXy37/Nhalm
+         y9KqNlIh6qjwLRunqgpdWvp+zihfeHMsh7hMfvlCPX+zmClUR0pqEDWIY3rFqFFivfL3
+         qsbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=26Tq+pIjTcbTNkC2WJiGiS9nno90vvT9/46AHEM6pxg=;
-        b=PIk+nUCwlL4KbX3YLa++Nj06h9BIBnFIqaB7CGwkqkkxyjyZv/1jRe9/iJWVQm6ccy
-         QDl2XqR4tA8Srbigh52nxzg0ClGBciYMugkPOtkmJDKz5PHDXiDvE/+Z7d7cZOdQaXpx
-         D2loL4GpRmW0JRG1lwArEChHTXJsiLyivlqKn1CFxCkWYF4K9GzE+ro1Llw8xNlHTJjj
-         W7W/LP1aSHBsjjbTXHVyGKgP/uNCWLAR7S39d1sS9EYhEilLsg29q7gD/8wNQZ7j3jkH
-         NpFnmUTeFL00UWVs+3A9UT2ruIQ4zHvLIMkosx36ZJyp2B5ixivMWhBnNlc7f9cEtsqN
-         9u/Q==
-X-Gm-Message-State: AE9vXwPOBk2LNtldmzrCviYfHOcjT0SQ0LvxbkFjj7xArVhgMvfmqnPO8QyYjh4N5Sip2g==
-X-Received: by 10.66.246.227 with SMTP id xz3mr3336791pac.24.1474196974436;
-        Sun, 18 Sep 2016 04:09:34 -0700 (PDT)
+        bh=ze1VTQXTEw6QFz3ffEfLxEfiNw8EF5kMh1OhJMEu02c=;
+        b=Agx1rVeZ9fO5Bu/F7j5p7TveFkK50oE1ORkYS+jiW8slAr+oLnltTDj+oPAf2cYAIj
+         z0Eq/7JZej63hAtGAPJE30t9gXsUR+R/0UGB/nrDDzrJ2S0G2rexFcJxShwz6CdKmkLp
+         dQJnRyOQ7v6Ysf7mvuVtCbLXO6ElhnSTCIXa2Y6ktbberTGQCDJOsfWoyGClI/XUbzru
+         dOUB3/dLGZzCFLAC0QbY+WEF6BlFWIhwguUo56jXR10yv2iQxSfNNLamHZn/dc+i5A5U
+         zzlCXZSPdKShz/YCKDjmCgE/W4jSovq8dWnZZA7OUpYkuAyT+u37TV+dF+ZnUGoHqbRg
+         WLWw==
+X-Gm-Message-State: AE9vXwPZlGp3Ji9zzkM3JZKehma1+5/8XTqij7XTlys9HMLXqOu9hCW7fLZypK+7xSZ8WQ==
+X-Received: by 10.66.249.74 with SMTP id ys10mr30817168pac.29.1474112705116;
+        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.173.54])
-        by smtp.gmail.com with ESMTPSA id q25sm30014997pfj.48.2016.09.18.04.09.32
+Received: from sandhya ([122.170.172.239])
+        by smtp.gmail.com with ESMTPSA id xw10sm18690400pab.0.2016.09.17.04.45.03
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 04:09:33 -0700 (PDT)
-Date: Sun, 18 Sep 2016 05:38:34 +0530
+        Sat, 17 Sep 2016 04:45:04 -0700 (PDT)
+Date: Sat, 17 Sep 2016 06:14:47 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v2] Staging: i4l: Use !x instead of x == NULL.
-Message-ID: <20160918000834.GA24787@sandhya>
+Subject: [PATCH] Staging: i4l: Use !x instead of x == NULL.
+Message-ID: <20160917004447.GA14614@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Use !x instead of x == NULL. This issue was found by checkpatch.
+Use !x instead of x == NULL.
+This issue was found by checkpatch.
 
 Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
-Changes in v2:
-* Correcting the file permission issue.
  drivers/staging/i4l/act2000/capi.c |    2 +-
  1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/drivers/staging/i4l/act2000/capi.c b/drivers/staging/i4l/act2000/capi.c
-index bf04e6f..62f5629 100644
+index bf04e6f..62f5629 100755
 --- a/drivers/staging/i4l/act2000/capi.c
 +++ b/drivers/staging/i4l/act2000/capi.c
 @@ -618,7 +618,7 @@ handle_ack(act2000_card *card, act2000_chan *chan, __u8 blocknr) {
