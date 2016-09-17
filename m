@@ -1,149 +1,155 @@
-X-GM-THRID: 6888933426501517312
-X-Received: by 2002:a62:3:0:b029:160:d92:2680 with SMTP id 3-20020a6200030000b02901600d922680mr3147951pfa.44.1603954803021;
-        Thu, 29 Oct 2020 00:00:03 -0700 (PDT)
+X-GM-THRID: 6331206604146343936
+X-Received: by 10.25.204.21 with SMTP id c21mr270520lfg.19.1474126368952;
+        Sat, 17 Sep 2016 08:32:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ee4b:: with SMTP id 11ls842730plo.8.gmail; Thu, 29
- Oct 2020 00:00:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmlJIUnG4iWLJlMukkQf6qGX53f3xsgokLBBoVp0WUB2OLaDR3jYQx7+sawb3yAcaLwfTm
-X-Received: by 2002:a17:90a:fd12:: with SMTP id cv18mr2800655pjb.221.1603954801328;
-        Thu, 29 Oct 2020 00:00:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603954801; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IhYWI0KA/TfoR322mCy2rKXNPnZBi4+mTsidHclwye+WUUHhna5MboQZKQ4CWhJwrW
-         64fUnaumkZB4eTZZTI6/ma1twSqt7U1PAo2exbw2Xk0EDBK03p3zRKni2MOWnOg3Qt+w
-         CjqSJfcluRQt/5uCkz0Z7A4V1G01RZDpT2J1jPPizFKXbJGtbKtk5l4BoYtav3Ts1Ei0
-         OlVCHo9ifkddnCKHlyGboe5qyGOtYT2srwjozJaBtb8cSsx1+Kq0oM0cbC9WMEDn935Q
-         Dpdx7gRhwv+EtissvyHIpFFSd1q+ykLFQDsmXCeUbcbNpnaQ30PDIjbrjahTFPIlcOOW
-         rmzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=+NDyw01plS4fG0+i6jNnu5LeFzHP6XRIQCBJW5HrCgg=;
-        b=EIDt9/3TZENlfXWj/GPvm2USrO9gDJBpxlQHF+uo4ksZXR34UKeJYC/z6m/wJ/zdGU
-         zrpB8AhlPkLTnzg3foBKLRX9o45MmH2LyLl0gzEs8mSCbNN5KUjzo36slhAbKURHw1xG
-         A2/6wDglFAEPDv/Czchk5H/gn3ya65txkWz4Hyu29oXnSmUdt3bkxceGXtiQrm32A/xt
-         i94sjglgaRwYXxe3hr8590iXjA8JuHd1MVVX39medbXRi0fr5RRg1cQf5VXiNsIU5bbk
-         HBH6boUFXoUmpLH07/9lRGCRrUratD5Kvv5wezVoxmF3r7DnifT8qmXBl8OHxZn3GRTL
-         igXQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D6vrOHiB;
-       spf=pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mdejesusfilho@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mdejesusfilho@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id l11si156958pgt.3.2020.10.29.00.00.01
+Received: by 10.28.181.209 with SMTP id e200ls1192765wmf.19.canary; Sat, 17
+ Sep 2016 08:32:47 -0700 (PDT)
+X-Received: by 10.28.167.216 with SMTP id q207mr128720wme.4.1474126367968;
+        Sat, 17 Sep 2016 08:32:47 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
+        by gmr-mx.google.com with ESMTPS id c13si1000218wme.3.2016.09.17.08.32.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Oct 2020 00:00:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 17 Sep 2016 08:32:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D6vrOHiB;
-       spf=pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mdejesusfilho@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id 10so1569123pfp.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 00:00:01 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x244.google.com with SMTP id s64so6283083lfs.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 08:32:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=+NDyw01plS4fG0+i6jNnu5LeFzHP6XRIQCBJW5HrCgg=;
-        b=D6vrOHiBqCAhwQH0X+ot5/CRAjcqacAuxgdnWwTi6cquonoTdlSA3Iz53tlwGzAJzr
-         Iwxm/hZP2G+jUCEpLUTFm89EnzWUY5/5nJATfRkhMptC3HsNm8fuhoHkRsPfQx7AIUUt
-         +nhcaWTsZAXMXYSx3SMSGiw43A3UeunaBjU6uztViMUpoiW6Dv8xXezOGYeFBCmt683a
-         Quis35XUG8gdkDhvjQvSLLgl/2LAl1+OttESQwSO9wg2qNNgZ/Z8XtBWX2ADa63a6oeI
-         wTMwRZvlJAP+IKxPl+o8mCDsb2GXOwsREuXr9g/gDAo7cXhsw7fAaD7eIYcOcJ/v66Nd
-         ooKg==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=1zbYuo2lLBJVrlF1Jn3ocZW+QBl+/JiPJ/ALI02PT+c=;
+        b=p1RDdmd/bNzBG97fxXMtcTnGfiCQ/5MBR9Vr7RSDFezjVGzbKXU/H+EM/c21tkRRSV
+         s3KSQkoidrJcQZDHw++nNwD+wNMX96w9uXf72uy9j9+fFmniUp2ul5olJDGafmdorsN+
+         AT4Qb/Xue0n8ndz7nUw83DkcRSUKL0wHiEe0T1nSyoYvUanmV5TUmzGlGlbPUNL6THal
+         pPOC+Xu/kvmVzWLIq4++HsJj0F5w7/v/8u+JlmsvSI1nj7LeTrzvIx+b/oulSeDZNJ/d
+         g58Kf++X5egzoCmPrPuQNfIow3PKBRW86khwaCHzE8lfO9s+MYAhbdVJ1O+iXFGZYmSC
+         tU0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=+NDyw01plS4fG0+i6jNnu5LeFzHP6XRIQCBJW5HrCgg=;
-        b=teh8bk/l0gJ+zP1txoxeFW/EasPhsth4qLp6vrE7oHP0CWgq5BH0r4j0TLwoS8ltbx
-         8AP4Ytt/I2HEluUpkigk7jmbPxzq3iFpbBAWhn3vBllNRytN4EuRdk2M4IWF1QP5I4Tt
-         cTOwJcVyXDOu6cgFM77XOvyPeCCNYco5WtAj2W9umeI7qdD+guwqsKpk+tb/chkXsTN7
-         P++M+LjG+IzZw8JcBuKxRhvX998kpv3srRBGKdcutrquwfJThe7f5/RO/9CIHgf9Glzm
-         SDiqENf5Cq3VosccosIytqGJEENQIDyI43UcMLNx/uNTmY+XawFIM7plQWojj4sTkmQ/
-         vodA==
-X-Gm-Message-State: AOAM531x/MKkb8TmYkDrRQtTF0deyDNl9aJ8ymsuBkMfzYbTTsmIFYkx
-	rpHrRLUuHFCJbPC/yORHNs9OH+f4wfuo3g==
-X-Received: by 2002:aa7:970f:0:b029:161:ee2d:bb9b with SMTP id a15-20020aa7970f0000b0290161ee2dbb9bmr3024558pfg.63.1603954800958;
-        Thu, 29 Oct 2020 00:00:00 -0700 (PDT)
-Return-Path: <mdejesusfilho@gmail.com>
-Received: from localhost ([2601:643:282:4810:aed1:b8ff:fe8c:bd73])
-        by smtp.gmail.com with ESMTPSA id h5sm1668665pfn.12.2020.10.28.23.59.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2020 00:00:00 -0700 (PDT)
-Date: Wed, 28 Oct 2020 23:59:58 -0700
-From: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6655: Remove useless else
-Message-ID: <20201029065958.GA5259@Zangetsu>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=1zbYuo2lLBJVrlF1Jn3ocZW+QBl+/JiPJ/ALI02PT+c=;
+        b=U+f/Vi9m8gVf13tXqHZAdpxcIWSB51LM2OrKG4uo+pEr5OwtYVw90b4qtruiubhr4P
+         8LH7kt/f+1ni2sDF8wa0rY8kfieoWIpKnkmdCjnQ3Di64yWA92SZmtMEispCEjuMKzRY
+         jSlglmhZrNBOv11iulugD9gnxEy9Ba9achr6R6DSejlt+jmfUYWvDsyYwcdYAkAydbWq
+         TCtm5+FE1TBijjCeW7NLd+a3ybvLdxQW4ti6iGF+H6vV6xHHxi/p02kVemAOxxC0MulH
+         lQ6DB+OJSSJ5878vKrZZzQPU1lhsRPt2/gMvjCBQr9FiJhSraoICiNjMtHRO/77W2rJs
+         +kwQ==
+X-Gm-Message-State: AE9vXwPmrGy+MlWFJwY22PtRuPO3ITbrw/cqIQNg0UegS2i7gqCTvWGhg3VNTS8/aSOOz6XfFPsMJdaeDW8oJQ==
+X-Received: by 10.46.71.19 with SMTP id u19mr7746160lja.23.1474126367345; Sat,
+ 17 Sep 2016 08:32:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Received: by 10.114.78.72 with HTTP; Sat, 17 Sep 2016 08:32:46 -0700 (PDT)
+In-Reply-To: <CAOH+1jHLEeGE2fSzKUqF4UOHZZO=6Bke8Xr_t11xa6kwvq2=xA@mail.gmail.com>
+References: <1474098886-6239-1-git-send-email-bhumirks@gmail.com>
+ <alpine.DEB.2.10.1609171042210.3113@hadrien> <CAOH+1jHLEeGE2fSzKUqF4UOHZZO=6Bke8Xr_t11xa6kwvq2=xA@mail.gmail.com>
+From: Bhumika Goyal <bhumirks@gmail.com>
+Date: Sat, 17 Sep 2016 21:02:46 +0530
+Message-ID: <CAOH+1jFDpFBqb==s=VPZZjLojAP8GRD61sk5dgxZPmuY1MFTZA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: Move extern
+ declaration to header
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com, 
+	ganesh.krishna@microchip.com, aditya.shankar@microchip.com
+Content-Type: text/plain; charset=UTF-8
 
-The else statement is not useful due to the presence of a return
-statement on the if block. Remove the else statement and adjust the
-indentation of the code. Reported by checkpatch.
+On Sat, Sep 17, 2016 at 5:26 PM, Bhumika Goyal <bhumirks@gmail.com> wrote:
+>
+> On Sat, Sep 17, 2016 at 2:16 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> >
+> > On Sat, 17 Sep 2016, Bhumika Goyal wrote:
+> >
+> > > Move extern declaration in wilc_wfi_cfgoperations.c to the
+> > > respective header wilc_wfi_cfgoperations.h. Extern
+> > > removed using coccinelle and other changes done by hand.
+> >
+> > With grep, it looks to me like these functions are only used in
+> > linux_wlan.c.  There is a declaration in wilc_wfi_cfgoperations.c, but no
+> > use.  Thus, it looks like the functions could be static.  Furthermore, if
+> > the declaration of the wilc_netdev_ops structure were moved lower in the
+> > file, perhaps the forward declarations could be dropped completely.
+> >
+>
+> Yes, the functions wilc_mac_{close/open} can be made static. So I will
+> do it in v2 of this patch and remove their declaration from the header
+> as well as it won't be needed after making them static.
+> And the forward function prototypes can be dropped as well  if the
+> structure wilc_netdev_ops is moved lower.
+> I will make a separate patch for this change.
+>
+> Thanks,
+> Bhumika
 
-Signed-off-by: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
----
- drivers/staging/vt6655/rxtx.c | 36 +++++++++++++++++------------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+Hey Greg,
+I am dropping this patch because as pointed by Julia the functions can
+be made static. So, I will do that in a separate patch along with some
+other changes.
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 477d19314634..978efe81077a 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -519,28 +519,28 @@ s_uFillDataHead(
- 										wCurrentRate, bNeedAck, uFragIdx, cbLastFragmentSize, uMACfragNum, byFBOption));
- 			buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
- 			return buf->duration;
--		} else {
--			struct vnt_tx_datahead_ab *buf = pTxDataHead;
--			/* Get SignalField, ServiceField & Length */
--			vnt_get_phy_field(pDevice, cbFrameLength, wCurrentRate,
--					  byPktType, &buf->ab);
-+		}
- 
--			if (is_pspoll) {
--				__le16 dur = cpu_to_le16(pDevice->current_aid | BIT(14) | BIT(15));
-+		struct vnt_tx_datahead_ab *buf = pTxDataHead;
-+		/* Get SignalField, ServiceField & Length */
-+		vnt_get_phy_field(pDevice, cbFrameLength, wCurrentRate,
-+				  byPktType, &buf->ab);
- 
--				buf->duration = dur;
--			} else {
--				/* Get Duration and TimeStampOff */
--				buf->duration =
--					cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A, cbFrameLength, byPktType,
--									    wCurrentRate, bNeedAck, uFragIdx,
--									    cbLastFragmentSize, uMACfragNum,
--									    byFBOption));
--			}
-+		if (is_pspoll) {
-+			__le16 dur = cpu_to_le16(pDevice->current_aid | BIT(14) | BIT(15));
- 
--			buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
--			return buf->duration;
-+			buf->duration = dur;
-+		} else {
-+			/* Get Duration and TimeStampOff */
-+			buf->duration =
-+				cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A, cbFrameLength, byPktType,
-+								    wCurrentRate, bNeedAck, uFragIdx,
-+								    cbLastFragmentSize, uMACfragNum,
-+								    byFBOption));
- 		}
-+
-+		buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
-+		return buf->duration;
- 	} else {
- 		struct vnt_tx_datahead_ab *buf = pTxDataHead;
- 		/* Get SignalField, ServiceField & Length */
--- 
-2.28.0
-
+Thanks,
+Bhumika
+> >
+> > Be sure that you can compile the whole driver to check this.  There is
+> > always the possibility of something strange being done with a macro that
+> > could obscure another use.
+> >
+> > julia
+> >
+> > > Script:
+> > > @@
+> > > identifier func;
+> > > type T;
+> > > @@
+> > > - extern
+> > > T func(...);
+> > >
+> > > Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+> > > ---
+> > >  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 ---
+> > >  drivers/staging/wilc1000/wilc_wfi_cfgoperations.h | 2 ++
+> > >  2 files changed, 2 insertions(+), 3 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> > > index 2c2e8ac..3b26130 100644
+> > > --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> > > +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> > > @@ -90,9 +90,6 @@ static const struct wiphy_wowlan_support wowlan_support = {
+> > >  #define IS_MGMT_STATUS_SUCCES                        0x040
+> > >  #define GET_PKT_OFFSET(a) (((a) >> 22) & 0x1ff)
+> > >
+> > > -extern int wilc_mac_open(struct net_device *ndev);
+> > > -extern int wilc_mac_close(struct net_device *ndev);
+> > > -
+> > >  static struct network_info last_scanned_shadow[MAX_NUM_SCANNED_NETWORKS_SHADOW];
+> > >  static u32 last_scanned_cnt;
+> > >  struct timer_list wilc_during_ip_timer;
+> > > diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.h b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.h
+> > > index 85a3810..ca71e49 100644
+> > > --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.h
+> > > +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.h
+> > > @@ -19,5 +19,7 @@ int WILC_WFI_deinit_mon_interface(void);
+> > >  struct net_device *WILC_WFI_init_mon_interface(const char *name, struct net_device *real_dev);
+> > >  void wilc_mgmt_frame_register(struct wiphy *wiphy, struct wireless_dev *wdev,
+> > >                             u16 frame_type, bool reg);
+> > > +int wilc_mac_open(struct net_device *ndev);
+> > > +int wilc_mac_close(struct net_device *ndev);
+> > >
+> > >  #endif
+> > > --
+> > > 1.9.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1474098886-6239-1-git-send-email-bhumirks%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
 
