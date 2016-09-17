@@ -1,55 +1,55 @@
 X-GM-THRID: 6331266648892243968
-X-Received: by 10.36.213.138 with SMTP id a132mr546801itg.10.1474112933418;
-        Sat, 17 Sep 2016 04:48:53 -0700 (PDT)
+X-Received: by 10.66.184.168 with SMTP id ev8mr11125693pac.43.1474112916933;
+        Sat, 17 Sep 2016 04:48:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.200 with SMTP id x66ls7704506ota.23.gmail; Sat, 17 Sep
- 2016 04:48:53 -0700 (PDT)
-X-Received: by 10.157.21.65 with SMTP id z1mr1334911otz.113.1474112933185;
-        Sat, 17 Sep 2016 04:48:53 -0700 (PDT)
+Received: by 10.157.53.114 with SMTP id l47ls1105393ote.24.gmail; Sat, 17 Sep
+ 2016 04:48:36 -0700 (PDT)
+X-Received: by 10.157.26.81 with SMTP id u17mr1206930otu.95.1474112916679;
+        Sat, 17 Sep 2016 04:48:36 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 7si3535956pfw.1.2016.09.17.04.48.53
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id h124si5048383pfe.0.2016.09.17.04.48.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 04:48:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sat, 17 Sep 2016 04:48:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q2so2117983pfj.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 04:48:53 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id pp5so4581744pac.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 04:48:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=zE0uPrmArA34PageWCU8fLDo2D5VMNATA3VEaFq5qk0=;
-        b=hwvWk+nbJe11bfGJOWVJqgUTa36cFitSAHfvHoAz7YVoloa0tajk4dAwR6irrAXZvj
-         LWvcujz/uLCwLV03BKANrqTIUaMSzwyBaaJyJjltixc7hGtBHgN4e52MB9duUymKCMHs
-         wCJCg/AT9PW9e2XciWJbtKHQhLMHdTOPKiRswsc3NwXitPIHCrE1GrLh6EKvaun6Lt8O
-         88yUCApHLysK0+/JwV8ZMqAS1eTU7euE4Bff8lV7I48TaOctvqEWQRVldsJwVaADOZvN
-         1BLpn5a5VT0JnNT8E/7/dQpiQG1eSobPBH4zJZqijEAH1uPclGrutWC70MN1YsEKDafR
-         UwKA==
+        bh=YjC+zVO9msOQnnUIfjWv7PIC0gZNXWbCdZwzT7CRxyc=;
+        b=BydIqa0Av7XaAQCUYN+n/oR28GS2tnR1A5eGQn5ES+RMjPHxNAAouzc7MOCa0DZG5N
+         9nzxR421iBRyVoz1s57096yZ61K21a8N9eV8ydQ4YByAHG6IBUyD3+WaoW1/vuMo3thm
+         Mhh7FBMmQp1cJ11F0fzswTPBM/NxJzLpHsMRDFIu6FFbP5XI1erSLIrSPWcHY5kC/We3
+         dZh1TMpk3APXpcG7hfLA7xtmP+UyJ4JlRTFVv5Wyz3duPCcJvfP64VFXU7b6F/0PTord
+         E3kBK8V/lBsYt633s8+DVxSPo+jMdcyHr7pv2eK/8yCXtz1BsLhuC1LX/2bgzMtSuSJU
+         bR/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=zE0uPrmArA34PageWCU8fLDo2D5VMNATA3VEaFq5qk0=;
-        b=ZcCALsfaTSBoV3Cfs0cTwOQDZTikG5GAYNoso+2IvUADajwde/kCjNjfd1F7x1vTiu
-         cD/bhvsTGOzioot5Axuv6yB+Nj86+VSjfcQhHYtP9/bYUpuZ6Udt1MICvMGjG1z+ufr9
-         8KGtS5L2bnjbrlDOs2JCbQsUXbtM2FsTlU8o8CyxP03LwgLN072Ec7UpkFui+BAfcS/d
-         3qBXA0W9tO+jNXzL2opOaGjtuMr2XA9fxp9VNDC/jMTnkYREoa5VBNgbxthjZoLzpd2p
-         P4yAFsOJDWooCxseQSil3E7sLsvrBGVEfQUeNSgbZL6rjv1hl3gmb0Wo5HJsuoDrCRwY
-         xV5A==
-X-Gm-Message-State: AE9vXwP2sxPvvjMwzptJ1MmR+k+2Zkpm7ihA4hPXqP0I+ZIxmpC+nbW0UIGI2jwwOIHalA==
-X-Received: by 10.98.141.146 with SMTP id p18mr20620480pfk.17.1474112933021;
-        Sat, 17 Sep 2016 04:48:53 -0700 (PDT)
+        bh=YjC+zVO9msOQnnUIfjWv7PIC0gZNXWbCdZwzT7CRxyc=;
+        b=frVcose0eAU6yQFaFAkzSuSlUExg+hWPjaRfkQvwRe+sfe+7rPlmdBtC+FWO5b5jP3
+         HTmXAtdI/+Zepb+dnfjieE5P4L684rO6nKmC69iIvwAHlElpIdP1/6sflS/Guu7CBBcs
+         Q8uWPkuuS1fqH5riMctZWgCLmZVMV6o1/ulG1AcMXvn+e9aYBkuZyb+RdXIhr10pbv7f
+         KOiR7kPwosehuTwUZ30tVczFD8+UfVX9rH5M4S3Xu1hCml0DT2QHPxdd3zLgD9xwjcbX
+         ZP7oKhLw1vIY7cOqv0fap52cVXSJkJJgzrr5y5bre6ulE+gtUCiMyB2zymZVPJpSIC9w
+         s1Lw==
+X-Gm-Message-State: AE9vXwOBvGxFLe78mhHRncEju6xEfYiEKQPe32WywKwUrzg0zXbSrxlnZJf5RT17oM+f5Q==
+X-Received: by 10.66.83.138 with SMTP id q10mr30741900pay.54.1474112916489;
+        Sat, 17 Sep 2016 04:48:36 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id wp4sm18703740pab.15.2016.09.17.04.48.50
+        by smtp.gmail.com with ESMTPSA id s89sm58677619pfi.83.2016.09.17.04.48.33
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 04:48:52 -0700 (PDT)
-Date: Sat, 17 Sep 2016 17:18:47 +0530
+        Sat, 17 Sep 2016 04:48:36 -0700 (PDT)
+Date: Sat, 17 Sep 2016 17:18:31 +0530
 From: Namrata A Shettar <namrataashettar@gmail.com>
 To: Forest Bond <forest@alittletooquiet.net>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -57,8 +57,8 @@ To: Forest Bond <forest@alittletooquiet.net>,
 	Anson Jacob <ansonjacob.aj@gmail.com>,
 	Haneen Mohammed <hamohammed.sa@gmail.com>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 3/4] staging: vt6655: Break multiple assignments
-Message-ID: <fe7f635d9b75bb93286245415d4a54497a8a4842.1474108445.git.namrataashettar@gmail.com>
+Subject: [PATCH 2/4] staging: vt6655: Replace explicit NULL comparison
+Message-ID: <9223603338faf0d1fe00b8ee06b2275937166a0c.1474108445.git.namrataashettar@gmail.com>
 References: <cover.1474108444.git.namrataashettar@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -66,30 +66,27 @@ Content-Disposition: inline
 In-Reply-To: <cover.1474108444.git.namrataashettar@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Break up multiple assignments on same line to resolve checkpatch issue.
+Replace explicit NUll comparison to resolve checkpatch issue. 
+Comparing variable x with NULL same as !x in this case.
 
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
- drivers/staging/vt6655/card.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/staging/vt6655/device_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index afb1e8b..00e7858 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -528,8 +528,10 @@ CARDvSafeResetTx(
- 	struct vnt_tx_desc *pCurrTD;
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index 62418c2..f109eea 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -735,7 +735,7 @@ static bool device_alloc_rx_buf(struct vnt_private *priv,
+ 	struct vnt_rd_info *rd_info = rd->rd_info;
  
- 	/* initialize TD index */
--	priv->apTailTD[0] = priv->apCurrTD[0] = &(priv->apTD0Rings[0]);
--	priv->apTailTD[1] = priv->apCurrTD[1] = &(priv->apTD1Rings[0]);
-+        priv->apCurrTD[0] = &(priv->apTD0Rings[0]);
-+	priv->apTailTD[0] = priv->apCurrTD[0];
-+        priv->apCurrTD[1] = &(priv->apTD1Rings[0]);
-+	priv->apTailTD[1] = priv->apCurrTD[1];
+ 	rd_info->skb = dev_alloc_skb((int)priv->rx_buf_sz);
+-	if (rd_info->skb == NULL)
++	if (!rd_info->skb)
+ 		return false;
  
- 	for (uu = 0; uu < TYPE_MAXTD; uu++)
- 		priv->iTDUsed[uu] = 0;
+ 	rd_info->skb_dma =
 -- 
 2.7.4
 
