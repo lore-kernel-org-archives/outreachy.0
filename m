@@ -1,100 +1,105 @@
-X-GM-THRID: 8708200333312
-X-Received: by 10.152.8.73 with SMTP id p9mr5358125laa.6.1426570226020;
-        Mon, 16 Mar 2015 22:30:26 -0700 (PDT)
+X-GM-THRID: 6331596023688855552
+X-Received: by 10.157.21.60 with SMTP id u57mr2528829otf.134.1474189577114;
+        Sun, 18 Sep 2016 02:06:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.99.71 with SMTP id eo7ls772014wib.21.canary; Mon, 16 Mar
- 2015 22:30:25 -0700 (PDT)
-X-Received: by 10.180.77.165 with SMTP id t5mr6799679wiw.0.1426570225602;
-        Mon, 16 Mar 2015 22:30:25 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x231.google.com (mail-we0-x231.google.com. [2a00:1450:400c:c03::231])
-        by gmr-mx.google.com with ESMTPS id o3si39068wib.2.2015.03.16.22.30.25
+Received: by 10.107.162.132 with SMTP id l126ls2646614ioe.34.gmail; Sun, 18
+ Sep 2016 02:06:16 -0700 (PDT)
+X-Received: by 10.107.128.87 with SMTP id b84mr2384338iod.65.1474189576767;
+        Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id um12si3919899pab.2.2016.09.18.02.06.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 22:30:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) client-ip=2a00:1450:400c:c03::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::231 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x231.google.com with SMTP id p45so27325767weo.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 22:30:25 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id vz6so5497080pab.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=ydL6xl4EFOpqimOo7m9q62xY8U1dsXcI9kReDwEvJ/E=;
-        b=hYboAhMO0s5dxCplkEpTn673DGPpVXQMp9dwnciDz13bI9akLsUfjAm/BLYP6nnxHN
-         WAJuTEamv1o5QPNLHDPfCf02W8BegGjQIYnVM59bURzb9Q87cPT1VX7o5zXe3+5YhRgY
-         EMK/9ABvNm2TgnILUuKOeVnjDj4LVWWdTiRXYA2TD3ShJT7JI5O4LLXXMR8/ujT4iS9B
-         agDdMcfwFyPXc0N4MYrGBtXSvuQGZZ1DMrlWq/xLnAkmrqhVDIxU6+BcGMqcEVLy8o4C
-         vbAc+898Yy7rdyWfsseCY9fvS/OPo52iAtt0xKFmI+NshVo7k6rWRuEPJlBWluRl2pOV
-         uOGw==
-X-Received: by 10.180.84.133 with SMTP id z5mr127419364wiy.25.1426570225499;
-        Mon, 16 Mar 2015 22:30:25 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.55.48])
-        by mx.google.com with ESMTPSA id md2sm1006849wic.19.2015.03.16.22.30.22
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 22:30:23 -0700 (PDT)
-Received: by haneen-vb (Postfix, from userid 1000)
-	id 4F0A9C1F80; Tue, 17 Mar 2015 08:30:20 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/4] Staging: replace pr_err with dev_err
-Date: Tue, 17 Mar 2015 08:30:19 +0300
-Message-Id: <1426570219-22279-1-git-send-email-hamohammed.sa@gmail.com>
+        bh=xGgYyIp6PKE4bptxaQECUVtDVvQ1cGyCPr9w3BuTCps=;
+        b=D+YcZR+YEnKmeGAwtPEt1Xd2DVyKPOnB+Hy0qRJdMcuuFXXxgSfe5Zd18KIisOrPoy
+         EXRKUGnPgxoVN8tEPoXT/lROnjkxR750GPzouG3FaZPleBGiAbJoTGYfsJkk9buPLVb0
+         ErJ2OV3gI2vCuG4LDQPT+b8bJpBpqFyMQ2u2VBdIAkEb20591Twq5PklaFp5ETjYOQ9N
+         DDT6T0FqB5Ksy4t3rQ3ySIXH49p/9oOuvIVNxjekpTAHPBhCeN732HFp2UR1Fbx8lkpH
+         i3lwECaSyQBQwJ8+3pzDLnSefZJ9CvZvdfC3o4pPb0ukWlXhJXocUC21IAnZaNrrsKpc
+         1BVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=xGgYyIp6PKE4bptxaQECUVtDVvQ1cGyCPr9w3BuTCps=;
+        b=NWEc/UpNLuQzPHntFiKlTfRoTWp3RxESHWy8yf3TZgnAR4ZvXOfduqYx/a1V0F9sr4
+         dPL/jtjO+ETT0dYCIbhfQa7SpVftZ6LwUBA7kql5QgdFlkyaFJOqRGTlqVrsSHkTXhay
+         klEbb2oKCaEd2tubkn1Oevz9TMlARs3g6+hJS43/sHhWlQqQHBbEA0RMlMFg62JVYmZa
+         XGdoU21vrOYeujx19lEY4offZU34U/rXWKmno7etLVOdjBFtBY7PvY1pG96P4q6aRN1z
+         LwZ7c8OKwx9NCsMFbeDRccz75gvIuzL7Wj8RDyBtBCa/YtxtAHkMYi6ZHi8/5fx/EQb3
+         9lxw==
+X-Gm-Message-State: AE9vXwPDyixK+RTyTSTYPXSd9lnABFg/Xf/lj2xGY4DRii8nO3tRjlrDUuSR1WczNFzTfg==
+X-Received: by 10.66.135.52 with SMTP id pp20mr36640039pab.121.1474189576161;
+        Sun, 18 Sep 2016 02:06:16 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from gmail.com ([106.215.172.195])
+        by smtp.gmail.com with ESMTPSA id uj8sm23358234pab.5.2016.09.18.02.06.08
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 18 Sep 2016 02:06:14 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Sun, 18 Sep 2016 14:36:01 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org,
+	arnaud.patard@rtp-net.org
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: xgifb: Compress return logic
+Date: Sun, 18 Sep 2016 14:35:59 +0530
+Message-Id: <1474189559-17186-1-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 
-This patchset replace pr_err with dev_err, when appropriate device structure is found. 
-Issues found using the following Coccinelle script:
-
-@r exists@ 
-identifier f, s, i;
-position p;
+This patch compresses the  return logic into a single statement
+and removes the now unused return variable.
+Done using coccinelle:
 @@
-
-f(...,struct s *i,...) {
-<+...
-when != i == NULL
-pr_err@p(...);
-...+>
-}
-
-@rr@
-identifier r.s, fld;
+type T;
+identifier r;
 @@
+- T r;
+... when !=r
+- r =
++ return
+     ...;
+- return r;
 
-struct s {
-	...
-	struct device *fld;
-	...
-};
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+---
+ drivers/staging/xgifb/XGI_main_26.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-@@ 
-identifier r.i, rr.fld;
-position r.p;
-@@
--pr_err@p
-+dev_err
-   (
-+ i->fld,
-...)
-
-
-Haneen Mohammed (4):
-  Staging: comedi: replace pr_err with dev_err
-  Staging: gdm724x: replace pr_err with dev_err
-  Staging: iio: replace pr_err with dev_err
-  Staging: ft1000: replace pr_err with dev_err
-
- drivers/staging/comedi/comedi_fops.c           |  6 ++++--
- drivers/staging/ft1000/ft1000-usb/ft1000_usb.c |  5 +++--
- drivers/staging/gdm724x/gdm_mux.c              |  4 ++--
- drivers/staging/gdm724x/gdm_usb.c              |  8 ++++----
- drivers/staging/iio/resolver/ad2s1210.c        | 12 +++++++-----
- 5 files changed, 20 insertions(+), 15 deletions(-)
-
+diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
+index d56ef14..cc69233 100644
+--- a/drivers/staging/xgifb/XGI_main_26.c
++++ b/drivers/staging/xgifb/XGI_main_26.c
+@@ -62,7 +62,6 @@ static int XGIfb_mode_rate_to_dclock(struct vb_device_info *XGI_Pr,
+ 	unsigned short ModeNo = modeno;
+ 	unsigned short ModeIdIndex = 0, ClockIndex = 0;
+ 	unsigned short RefreshRateTableIndex = 0;
+-	int Clock;
+ 
+ 	InitTo330Pointer(HwDeviceExtension->jChipType, XGI_Pr);
+ 
+@@ -73,9 +72,7 @@ static int XGIfb_mode_rate_to_dclock(struct vb_device_info *XGI_Pr,
+ 
+ 	ClockIndex = XGI330_RefIndex[RefreshRateTableIndex].Ext_CRTVCLK;
+ 
+-	Clock = XGI_VCLKData[ClockIndex].CLOCK * 1000;
+-
+-	return Clock;
++	return XGI_VCLKData[ClockIndex].CLOCK * 1000;
+ }
+ 
+ static int XGIfb_mode_rate_to_ddata(struct vb_device_info *XGI_Pr,
 -- 
 1.9.1
 
