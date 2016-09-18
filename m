@@ -1,123 +1,81 @@
-X-GM-THRID: 6474612206173421568
-Date: Sun, 8 Oct 2017 11:42:07 -0700 (PDT)
-From: mamta shukla <mamtashukla555@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <f674ab2c-4484-41d9-ba71-6fafddc7792e@googlegroups.com>
-Subject: [PATCH]:staging:most:aim-cdev:Reducing number of blank lines, to
- follow the coding style
+X-GM-THRID: 6331735722653908992
+X-Received: by 10.25.134.193 with SMTP id i184mr468901lfd.26.1474222544728;
+        Sun, 18 Sep 2016 11:15:44 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.0.131 with SMTP id e3ls829008lji.29.gmail; Sun, 18 Sep 2016
+ 11:15:44 -0700 (PDT)
+X-Received: by 10.25.200.20 with SMTP id y20mr436013lff.21.1474222543996;
+        Sun, 18 Sep 2016 11:15:43 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y6si1100200wmg.0.2016.09.18.11.15.43
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Sep 2016 11:15:43 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,358,1470693600"; 
+   d="scan'208";a="193830415"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Sep 2016 20:15:42 +0200
+Date: Sun, 18 Sep 2016 20:15:41 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com, oleg.drokin@intel.com, 
+    andreas.dilger@intel.com, jsimmons@infradead.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] Staging: lustre: Use sizeof structure
+ *pointer over sizeof structure in kzalloc().
+In-Reply-To: <20160918180816.GA4562@sandhya>
+Message-ID: <alpine.DEB.2.10.1609182014510.3350@hadrien>
+References: <20160918180816.GA4562@sandhya>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_7350_1659093180.1507488127539"
-X-Google-Token: EP_i6c4FJtAWiXFLkMo0
-X-Google-IP: 103.81.36.219
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-------=_Part_7350_1659093180.1507488127539
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_7351_1605690690.1507488127539"
 
-------=_Part_7351_1605690690.1507488127539
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Reducing number of blank lines, to follow the linux kernel coding style.
+On Sun, 18 Sep 2016, Sandhya Bankar wrote:
 
-Signed-off-by: mamta <mamtashukla555@gmail.com>
----
- drivers/staging/most/aim-
-cdev/aim_cdev.mod.c | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
- create mode 100644 drivers/staging/most/aim-cdev/aim_cdev.mod.c
+> This issue was found by checkpatch.
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/llite/file.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
+> index 4965d15..5eed33a 100644
+> --- a/drivers/staging/lustre/lustre/llite/file.c
+> +++ b/drivers/staging/lustre/lustre/llite/file.c
+> @@ -657,7 +657,7 @@ restart:
+>
+>  			goto restart;
+>  		}
+> -		*och_p = kzalloc(sizeof(struct obd_client_handle), GFP_NOFS);
+> +		*och_p = kzalloc(sizeof(*och_p), GFP_NOFS);
 
-diff --git a/drivers/staging/most/aim-cdev/aim_cdev.mod.c 
-b/drivers/staging/most/aim-cdev/aim_cdev.mod.c
-new file mode 100644
-index 0000000..0048f6c
---- /dev/null
-+++ b/drivers/staging/most/aim-cdev/aim_cdev.mod.c
-@@ -0,0 +1,26 @@
-+#include <linux/module.h>
-+#include <linux/vermagic.h>
-+#include <linux/compiler.h>
-+
-+MODULE_INFO(vermagic, VERMAGIC_STRING);
-+MODULE_INFO(name, KBUILD_MODNAME);
-+
-+__visible struct module __this_module
-+__attribute__((section(".gnu.linkonce.this_module"))) = {
-+       .name = KBUILD_MODNAME,
-+       .init = init_module,
-+#ifdef CONFIG_MODULE_UNLOAD
-+       .exit = cleanup_module,
-+#endif
-+       .arch = MODULE_ARCH_INIT,
-+};
-+
-+MODULE_INFO(intree, "Y");
-+
-+MODULE_INFO(staging, "Y");
-+
-+static const char __module_depends[]
-+__used
-+__attribute__((section(".modinfo"))) =
-+"depends=mostcore";
-+MODULE_INFO(srcversion, "9D77257EA6146867C072D85");
+This doesn't look right.  The declaration of och_p is:
 
-------=_Part_7351_1605690690.1507488127539
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+struct obd_client_handle **och_p = NULL;
 
-<div dir=3D"ltr">Reducing number of blank lines, to follow the linux kernel=
- coding style.<br><br>Signed-off-by: mamta &lt;<a href=3D"mailto:mamtashukl=
-a555@gmail.com" target=3D"_blank">mamtashukla555@gmail.com</a>&gt;<br>
----<br>
-=C2=A0drivers/staging/most/aim-<div dir=3D"ltr"><wbr>cdev/aim_cdev.mod.c | =
-26 ++++++++++++++++++++++++++<br>
-=C2=A01 file changed, 26 insertions(+)<br>
-=C2=A0create mode 100644 drivers/staging/most/aim-cdev/<wbr>aim_cdev.mod.c<=
-br>
-<br>
-diff --git a/drivers/staging/most/aim-cde<wbr>v/aim_cdev.mod.c b/drivers/st=
-aging/most/aim-cde<wbr>v/aim_cdev.mod.c<br>
-new file mode 100644<br>
-index 0000000..0048f6c<br>
---- /dev/null<br>
-+++ b/drivers/staging/most/aim-cde<wbr>v/aim_cdev.mod.c<br>
-@@ -0,0 +1,26 @@<br>
-+#include &lt;linux/module.h&gt;<br>
-+#include &lt;linux/vermagic.h&gt;<br>
-+#include &lt;linux/compiler.h&gt;<br>
-+<br>
-+MODULE_INFO(vermagic, VERMAGIC_STRING);<br>
-+MODULE_INFO(name, KBUILD_MODNAME);<br>
-+<br>
-+__visible struct module __this_module<br>
-+__attribute__((section(&quot;.gnu.<wbr>linkonce.this_module&quot;))) =3D {=
-<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0.name =3D KBUILD_MODNAME,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0.init =3D init_module,<br>
-+#ifdef CONFIG_MODULE_UNLOAD<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0.exit =3D cleanup_module,<br>
-+#endif<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0.arch =3D MODULE_ARCH_INIT,<br>
-+};<br>
-+<br>
-+MODULE_INFO(intree, &quot;Y&quot;);<br>
-+<br>
-+MODULE_INFO(staging, &quot;Y&quot;);<br>
-+<br>
-+static const char __module_depends[]<br>
-+__used<br>
-+__attribute__((section(&quot;.modi<wbr>nfo&quot;))) =3D<br>
-+&quot;depends=3Dmostcore&quot;;<br>
-+MODULE_INFO(srcversion, &quot;9D77257EA6146867C072D85&quot;);<div class=3D=
-"m_-105987430468845379gmail-yj6qo m_-105987430468845379gmail-ajU"><div id=
-=3D"m_-105987430468845379gmail-:122" class=3D"m_-105987430468845379gmail-aj=
-R"><img class=3D"m_-105987430468845379gmail-ajT CToWUd" src=3D"https://ci6.=
-googleusercontent.com/proxy/RnNZfQn2o2xpggJQqefCOervMbPIci5mujDPJnvl43kv6Rt=
-xjyh5gHN_JKVzeU-aaGz3pePFgxfoAAtZJZNx8mveVTc-11j98EfuAJVcumUenA=3Ds0-d-e1-f=
-t#https://ssl.gstatic.com/ui/v1/icons/mail/images/cleardot.gif"></div></div=
-></div></div>
-------=_Part_7351_1605690690.1507488127539--
+So sizeof(*och_p) is just the size of a pointer.
 
-------=_Part_7350_1659093180.1507488127539--
+julia
+
+>  		if (!*och_p) {
+>  			rc = -ENOMEM;
+>  			goto out_och_free;
+> --
+> 1.7.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160918180816.GA4562%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
