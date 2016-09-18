@@ -1,55 +1,55 @@
 X-GM-THRID: 6331266648892243968
-X-Received: by 10.36.204.197 with SMTP id x188mr1689764itf.11.1474189559514;
-        Sun, 18 Sep 2016 02:05:59 -0700 (PDT)
+X-Received: by 10.31.223.3 with SMTP id w3mr2426272vkg.25.1474189545324;
+        Sun, 18 Sep 2016 02:05:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.19 with SMTP id x19ls2622268ioi.43.gmail; Sun, 18 Sep
- 2016 02:05:59 -0700 (PDT)
-X-Received: by 10.36.69.17 with SMTP id y17mr1669682ita.21.1474189559132;
-        Sun, 18 Sep 2016 02:05:59 -0700 (PDT)
+Received: by 10.157.32.17 with SMTP id n17ls7346068ota.40.gmail; Sun, 18 Sep
+ 2016 02:05:45 -0700 (PDT)
+X-Received: by 10.129.41.14 with SMTP id p14mr2340074ywp.91.1474189545030;
+        Sun, 18 Sep 2016 02:05:45 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id si10si4393812pab.1.2016.09.18.02.05.59
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id e66si261623pfk.2.2016.09.18.02.05.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 02:05:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Sun, 18 Sep 2016 02:05:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id pp5so5484222pac.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 02:05:59 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id n24so5710039pfb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 02:05:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=/w9UqfHuX44TaV5lnUCcueiuwJcKGtUzC2YWdfNgfhA=;
-        b=TLNeRO7ClsfStPeIx1msPWCRMhIE8DkY4KxH0KnjNYHfb5yjE3OjoCJbwhofcF7Zvd
-         CHp7v8unxMjmpwV3NJcUgrn+p9D5LCfxVNkAurV/oN0MzoxWzfe5nhcBzaYPFNoqU4bw
-         5frEycG7UF1/4SoL1W3uWyru+hjXCPcyB6CsBMBl5DLp2E+JoTg6vbR27+dXdxDrhPfG
-         XzR48cR6d3+ywbrxom1D1fsEy7dGucVmEmHy7hw+1lBwvKs2hRXWNvc10GiYIdVk8lFW
-         p+a2JSNayGmZtlQ0vUzijluPd0tR2oh7WDJisLv3xh7Qc0c+a95WaGhuVsHuo4fTlY+Z
-         ezqg==
+        bh=0t+bE8P3ZNY+Z3U7vEDXYcq1mxWOv5ePrEhGoE/d3CE=;
+        b=XVZJ4OE2F8VH4xHcH++Fq0tjpDDLtQho36G/u0AvlVkZItp4jVM8lPWkSAUgJf+t3/
+         LO8RjPNDRGZftIepDUYLEi675fj2CxlRY1rUKkyH05kLLHqTMckw807YUgK5+AV9hNhV
+         qzQfDliKxvpjPG7y6GvfLtfKYJgsVIN4rhnMnExDCmiv+uvqvYPlzEMcjhjnOeAsLrwM
+         QTS4rnCw95TDVSVBSToSSvJ8QQAh597VGzEA86s0ABWKVx0jGt5b1m7tYTO5OUG9dBOu
+         cSq9wwmj/5n/qaHDBYHaC2gLBplgvpWMxREAUfX6zzNCeBaVudCHSTi8719PMQeGvp2+
+         eV4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=/w9UqfHuX44TaV5lnUCcueiuwJcKGtUzC2YWdfNgfhA=;
-        b=X7lamVMzkvtV17SsCGRU7yiE25NhDLpmBL1qXgyVLIVZKy3c1wXvRWiPKCzzl+FUcm
-         04bBUFhdKKDjvoMwxkVxLOlQabNJPG8i940SwSFR6CtdAlJgakCiUECMQRFxlB3RsOPq
-         OZ0VC0AQ5D2ql8ztA01vLq42dr+sicVBlFT1zAoxIr9xt0hWmklra3wMDTBQoxXy8uvO
-         WDjCs3kfCwDxdxC57FndW9Q+03OrDYx2UdNlDoBxzITJLKwQmyyrRl+c8pPcTHINhzAC
-         mP8XOXhv+/un7N/qaxd0YIDgLkjXKWK04gFpxMpdEfrTngB3CJzkSWfJ4uUmc3QldrZI
-         iDlA==
-X-Gm-Message-State: AE9vXwM7vJbzhAOsqguxbUbX/ryEjQVCWNjsgHyU4k71LLZSy107QJYOHBaEm3WRf473CA==
-X-Received: by 10.66.245.204 with SMTP id xq12mr12971108pac.37.1474189558960;
-        Sun, 18 Sep 2016 02:05:58 -0700 (PDT)
+        bh=0t+bE8P3ZNY+Z3U7vEDXYcq1mxWOv5ePrEhGoE/d3CE=;
+        b=OrgZWY8prXFZ2yJEchT8p+VSwe9c/nNqjvK+fHUfnf9inNqUoni0CzKKwBkbDMCztY
+         fskjmavF8r5ZOgIB34R6v5VfdW+4MM/SD/vPo0IA/BoJiWSycvzVaWIPHauTjHDvmVN1
+         mskBmpTLjTXl2+6bqa9xNcCQqoDTKqL/KmsJFMANdYrbXucaelUVPZQpo6Aj9jAHHh8Y
+         GvVHqCWp03FsJWxviJMPPoG3akBiwtE1sTRIlvuc9XYUYmVHXX9pIljPBCYL7+2HM3oF
+         LA7xx6DOmec5FGpMe25yBlIvlByUsHPccQQKvGzh4L5NgGb/wuLzILfxRvr0XXAZpoIY
+         9GGw==
+X-Gm-Message-State: AE9vXwP501wS7Tzv9rJ6czERy6/yjjZeSeQM1S+VCqSpj+GjazznMdLkDf/rMEElD3Wl+A==
+X-Received: by 10.98.205.66 with SMTP id o63mr36964420pfg.37.1474189544851;
+        Sun, 18 Sep 2016 02:05:44 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id ah5sm23332761pad.30.2016.09.18.02.05.56
+        by smtp.gmail.com with ESMTPSA id nc13sm23303444pab.43.2016.09.18.02.05.42
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 02:05:58 -0700 (PDT)
-Date: Sun, 18 Sep 2016 14:35:53 +0530
+        Sun, 18 Sep 2016 02:05:44 -0700 (PDT)
+Date: Sun, 18 Sep 2016 14:35:39 +0530
 From: Namrata A Shettar <namrataashettar@gmail.com>
 To: Forest Bond <forest@alittletooquiet.net>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -57,9 +57,8 @@ To: Forest Bond <forest@alittletooquiet.net>,
 	Anson Jacob <ansonjacob.aj@gmail.com>,
 	Haneen Mohammed <hamohammed.sa@gmail.com>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 4/4] staging: vt6655: device_main: Break up multiple
- assignments
-Message-ID: <7452f9668c5132d600519456ac4f627ba94cad9a.1474187686.git.namrataashettar@gmail.com>
+Subject: [PATCH v2 3/4] staging: vt6655: card: Break multiple assignments
+Message-ID: <fe7f635d9b75bb93286245415d4a54497a8a4842.1474187686.git.namrataashettar@gmail.com>
 References: <cover.1474187686.git.namrataashettar@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -67,28 +66,30 @@ Content-Disposition: inline
 In-Reply-To: <cover.1474187686.git.namrataashettar@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Break up multiple assignments on the same line to resolve checkpatch
-issue.
+Break multiple assignments on same line to resolve checkpatch issue.
 
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
- drivers/staging/vt6655/device_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/vt6655/card.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index f109eea..86532ca 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -669,7 +669,8 @@ static void device_init_td1_ring(struct vnt_private *priv)
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index afb1e8b..00e7858 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -528,8 +528,10 @@ CARDvSafeResetTx(
+ 	struct vnt_tx_desc *pCurrTD;
  
- 	if (i > 0)
- 		priv->apTD1Rings[i-1].next_desc = cpu_to_le32(priv->td1_pool_dma);
--	priv->apTailTD[1] = priv->apCurrTD[1] = &priv->apTD1Rings[0];
-+	 priv->apCurrTD[1] = &priv->apTD1Rings[0];
-+	 priv->apTailTD[1] = priv->apCurrTD[1];
- }
+ 	/* initialize TD index */
+-	priv->apTailTD[0] = priv->apCurrTD[0] = &(priv->apTD0Rings[0]);
+-	priv->apTailTD[1] = priv->apCurrTD[1] = &(priv->apTD1Rings[0]);
++        priv->apCurrTD[0] = &(priv->apTD0Rings[0]);
++	priv->apTailTD[0] = priv->apCurrTD[0];
++        priv->apCurrTD[1] = &(priv->apTD1Rings[0]);
++	priv->apTailTD[1] = priv->apCurrTD[1];
  
- static void device_free_td0_ring(struct vnt_private *priv)
+ 	for (uu = 0; uu < TYPE_MAXTD; uu++)
+ 		priv->iTDUsed[uu] = 0;
 -- 
 2.7.4
 
