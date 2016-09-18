@@ -1,64 +1,52 @@
-X-GM-THRID: 6211172623866396672
-X-Received: by 10.50.164.167 with SMTP id yr7mr4325122igb.13.1446151319894;
-        Thu, 29 Oct 2015 13:41:59 -0700 (PDT)
+X-GM-THRID: 6331560092699197440
+X-Received: by 10.13.228.66 with SMTP id n63mr13981541ywe.57.1474217255984;
+        Sun, 18 Sep 2016 09:47:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.155.3 with SMTP id d3ls429101ioe.74.gmail; Thu, 29 Oct
- 2015 13:41:59 -0700 (PDT)
-X-Received: by 10.107.132.77 with SMTP id g74mr4395143iod.10.1446151319404;
-        Thu, 29 Oct 2015 13:41:59 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id vy6si386606pbc.1.2015.10.29.13.41.59
+Received: by 10.157.56.29 with SMTP id i29ls9109435otc.12.gmail; Sun, 18 Sep
+ 2016 09:47:35 -0700 (PDT)
+X-Received: by 10.129.167.65 with SMTP id e62mr12736571ywh.3.1474217255496;
+        Sun, 18 Sep 2016 09:47:35 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id z4si4043174pam.0.2016.09.18.09.47.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Oct 2015 13:41:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Sep 2016 09:47:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=ksenija.stanojevic@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id hk11so50632744pad.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2015 13:41:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Eih+0Z07iwiHEdkgvIO1PZIQjoyKdrCLYKnKi1FgrVM=;
-        b=FAK6v2nKHbbtMqAhE+/X5Cer2SaCxywiI/VtVIWfQpISkXhXkFtno/t/3u/USmdN3q
-         /4UV3V0S5WnbhPWmIbWc7IWle4r2eguxkg0HmytmaMiMXoPbExFb3AOzhdHNMUAaFxXm
-         eVpfBxCq6pMWye4c3Rpo9olya2trGjtVsBspzjcVjqHrj23kggepKe2ArxnRTj8kzlf7
-         KikyEDqkfzH5i+s0Tudt9hzqdGUk7f/TykjQkQTqft3Ku0WpYWH8VHDSeU7YDBUtcwaV
-         GRu9iMb51845OmL5YBtN6EyJ7zzL8l4az60K+UUxrI1/5Y7PWPR/zDvPkhqycl57RA1t
-         FS6A==
-X-Received: by 10.68.69.79 with SMTP id c15mr4073042pbu.90.1446151319275;
-        Thu, 29 Oct 2015 13:41:59 -0700 (PDT)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (ip68-108-246-21.sb.sd.cox.net. [68.108.246.21])
-        by smtp.gmail.com with ESMTPSA id ou3sm3951329pbb.44.2015.10.29.13.41.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 29 Oct 2015 13:41:58 -0700 (PDT)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH 0/2] Fix sparse warnings
-Date: Thu, 29 Oct 2015 13:41:51 -0700
-Message-Id: <cover.1446151073.git.ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9B56F2C;
+	Sun, 18 Sep 2016 16:47:34 +0000 (UTC)
+Date: Sun, 18 Sep 2016 13:10:28 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Anchal Jain <anchalj109@gmail.com>, outreachy-kernel@googlegroups.com,
+	jon.nettleton@gmail.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: olpc_dcon: Replace a bit
+ shift by a use of BIT.
+Message-ID: <20160918111028.GA18602@kroah.com>
+References: <20160918064513.GA3810@life-desktop>
+ <alpine.DEB.2.10.1609181239060.3238@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.10.1609181239060.3238@hadrien>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Remove EFUSE_Write1Byte and make Efuse_ReadAllMap function static
+On Sun, Sep 18, 2016 at 12:41:05PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Sun, 18 Sep 2016, Anchal Jain wrote:
+> 
+> > This patch replaces bit shifting on 1 with the BIT(x) macro
+> > as it's extensively used by other function in the file olpc_dcon.h .
+> 
+> I think you have already made this mistake before.  The macro is BIT, not
+> bit.  This is a header file, so you can't compile the file directly, but
+> you should be able to compile some file that includes it.
 
-Found by sparse.
+Ugh, I missed this one again, now reverted...
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-
-Ksenija Stanojevic (2):
-  Staging: rtl8723au: Remove unused EFUSE_Write1Byte function
-  Staging: rtl8723au: Declare function static
-
- drivers/staging/rtl8723au/core/rtw_efuse.c | 45 ++----------------------------
- 1 file changed, 2 insertions(+), 43 deletions(-)
-
--- 
-1.9.1
-
+greg k-h
 
