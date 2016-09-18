@@ -1,89 +1,84 @@
-X-GM-THRID: 6329847978033938432
-X-Received: by 10.31.192.13 with SMTP id q13mr1240658vkf.0.1473782578860;
-        Tue, 13 Sep 2016 09:02:58 -0700 (PDT)
+X-GM-THRID: 6331668533690236928
+X-Received: by 10.46.69.137 with SMTP id s131mr437488lja.31.1474212696282;
+        Sun, 18 Sep 2016 08:31:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.29.70 with SMTP id d67ls238967iod.10.gmail; Tue, 13 Sep
- 2016 09:02:57 -0700 (PDT)
-X-Received: by 10.66.227.167 with SMTP id sb7mr1189710pac.19.1473782577918;
-        Tue, 13 Sep 2016 09:02:57 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 125si508308itw.2.2016.09.13.09.02.57
+Received: by 10.46.69.3 with SMTP id s3ls836148lja.25.gmail; Sun, 18 Sep 2016
+ 08:31:35 -0700 (PDT)
+X-Received: by 10.25.92.200 with SMTP id u69mr454548lfi.23.1474212695548;
+        Sun, 18 Sep 2016 08:31:35 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 185si1517422wmr.2.2016.09.18.08.31.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 09:02:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 18 Sep 2016 08:31:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id x24so9753154pfa.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 09:02:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=NXo/QF2zdGRoEFg8nzuWAHjr4FkLCf/Ik1XEvy2aKQU=;
-        b=hDSZw28I6KzWjniiXVxD+hkLoyy7VyK4xFnSUC/SfXZQ8diLqsvHqYeb9dLzstSIBq
-         W8d1Wwl45DK+GfDfeTCj2h26S3F3pmwcEQXvmaCT7b8Q2BQIHe9E5LaSAmeUAFYJPIud
-         5BIa2XfzKGTxNsPULLAnlG4aksvt415WzWG5eXTUIOKiu9OsuLQwUpU8JaNCtVzshI5m
-         0aU+jxTC0GWLYV+4nRDUezrtCQq/H1ky5umTXKdeQz7lOv6/1a75rcKTZufjCrX6mhMR
-         WtjxdJ78OPeFJ7u4FldpuzaR33KbofokXiZA4jl3o974fD/nWIIO5Zd2UblEY/quVl8E
-         ORIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=NXo/QF2zdGRoEFg8nzuWAHjr4FkLCf/Ik1XEvy2aKQU=;
-        b=LdKGVaZjie6p1Ke3wOwxu/Z1oHWum4dZiB7tsTqoSawLRmWjN0E9xthe/FhL7xSyTS
-         ryun6U9enoSYmWDgYWH3BNDTs1w1kK0Zv4MBukZ4LOtH7gKOT7uvym4fCyULi92N274T
-         nSfYZ4Bzm4S6LBGWVZWz9oTRIIQpf9kenS40Auw7CaUjIQHgOM3/baFRPR/7ATslC4wJ
-         jNsZ6CKvSAcbii1g+3K8uhhsuTKafTDGLbKQAkOfUUmcJ34iwsPJlb6LjtHy87JLA7Ie
-         nKEmTM342uJc9ClLzYnJ7Fx/8sd5YL4ctc4FtyeHgyWPdE0kn62LnjPTynOMuhWM9rMN
-         BAEw==
-X-Gm-Message-State: AE9vXwNhKmHJsNM4sEdCAwRzKhAOQtzgTn23ycnIxlpL4Lwbcku5OTe9XKTwJlneFaCvwQ==
-X-Received: by 10.98.89.91 with SMTP id n88mr2574286pfb.119.1473782577522;
-        Tue, 13 Sep 2016 09:02:57 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id tq5sm32178476pac.42.2016.09.13.09.02.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 13 Sep 2016 09:02:56 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: octeon: Removing multiple blank lines
-Date: Tue, 13 Sep 2016 21:32:13 +0530
-Message-Id: <20160913160213.12708-1-gs051095@gmail.com>
-X-Mailer: git-send-email 2.9.2
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,357,1470693600"; 
+   d="scan'208";a="237273938"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Sep 2016 17:31:34 +0200
+Date: Sun, 18 Sep 2016 17:31:33 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] Staging: octeon: Add missing of_node_put
+ after calling of_parse_phandle
+In-Reply-To: <20160918134815.GA3515@sandhya>
+Message-ID: <alpine.DEB.2.10.1609181731180.3204@hadrien>
+References: <20160918134815.GA3515@sandhya>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fixes the checkpatch issue Please don't use multiple blank lines.
+On Sun, 18 Sep 2016, Sandhya Bankar wrote:
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/octeon/ethernet.c | 2 --
- 1 file changed, 2 deletions(-)
+> of_node_put needs to be called when the device node which is got
+> from of_parse_phandle has finished using.
 
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 0bd5c18..ec8e424 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -686,7 +686,6 @@ static int cvm_oct_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
--
- 	cvm_oct_configure_common_hw();
- 
- 	cvmx_helper_initialize_packet_io_global();
-@@ -929,7 +928,6 @@ static int cvm_oct_remove(struct platform_device *pdev)
- 		}
- 	}
- 
--
- 	cvmx_pko_shutdown();
- 
- 	cvmx_ipd_free_ptr();
--- 
-2.9.2
+has finished using -> is no longer used
 
+julia
+
+>
+> This patch is found by below coccinelle script:
+>
+> @@
+> expression e,e1,e2;
+> @@
+> *e = of_parse_phandle(...)
+> ... when != of_node_put(e)
+>     when != true e == NULL
+>     when != e2 = e
+> e = e1
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet-mdio.c |    1 +
+>  1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
+> index 1fde9c8..691e4a5 100644
+> --- a/drivers/staging/octeon/ethernet-mdio.c
+> +++ b/drivers/staging/octeon/ethernet-mdio.c
+> @@ -168,6 +168,7 @@ int cvm_oct_phy_setup_device(struct net_device *dev)
+>
+>  	phydev = of_phy_connect(dev, phy_node, cvm_oct_adjust_link, 0,
+>  				PHY_INTERFACE_MODE_GMII);
+> +	of_node_put(phy_node);
+>
+>  	if (!phydev)
+>  		return -ENODEV;
+> --
+> 1.7.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160918134815.GA3515%40sandhya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
