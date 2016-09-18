@@ -1,78 +1,89 @@
 X-GM-THRID: 6331679421130342400
-X-Received: by 10.46.32.91 with SMTP id g88mr442345ljg.27.1474211695162;
-        Sun, 18 Sep 2016 08:14:55 -0700 (PDT)
+X-Received: by 10.157.17.121 with SMTP id p54mr2857863otp.147.1474208995478;
+        Sun, 18 Sep 2016 07:29:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.1.156 with SMTP id f28ls586127lji.31.gmail; Sun, 18 Sep
- 2016 08:14:53 -0700 (PDT)
-X-Received: by 10.46.0.83 with SMTP id 80mr2846753lja.4.1474211693533;
-        Sun, 18 Sep 2016 08:14:53 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id y6si1072748wmg.0.2016.09.18.08.14.53
+Received: by 10.157.15.42 with SMTP id 39ls8884641ott.0.gmail; Sun, 18 Sep
+ 2016 07:29:55 -0700 (PDT)
+X-Received: by 10.157.33.68 with SMTP id l4mr2826411otd.125.1474208995107;
+        Sun, 18 Sep 2016 07:29:55 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id 7si4121979pfw.1.2016.09.18.07.29.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 08:14:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 18 Sep 2016 07:29:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,357,1470693600"; 
-   d="scan'208";a="237273215"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 18 Sep 2016 17:14:52 +0200
-Date: Sun, 18 Sep 2016 17:14:52 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Anchal Jain <anchalj109@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
-    jsimmons@infradead.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: lnet: klnds: socklnd:
- Remove unnecessary line continuations
-In-Reply-To: <20160918142937.GA8801@life-desktop>
-Message-ID: <alpine.DEB.2.10.1609181714270.3204@hadrien>
-References: <20160918142937.GA8801@life-desktop>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x242.google.com with SMTP id my20so2728073pab.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 07:29:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=pLM1iz550YCixtaWxErRW3gV49YwztNTHWPBv7007Ww=;
+        b=yKWDv4eUgkDVRR+iCy3CEKebvdMGAAUjO1cIrXb8nDYmtvwLAeaMkCRCcJobem+NlU
+         1zcaUp/Fe+RvqNGdkJ1pNJPMCHarXch8Z3cN4UAYMYiGHAFI/9tlp6smC9uVa/7xl3ru
+         6kU7LwmfLo92r+DiUnkFdnqGaH16F6BEkJZocPaCN9sQ4xe/5LlhTI57jDGOI8eyvEHI
+         OVta3OfSSt2jusD7OjHMB/kAc1807gSZZfjnAKsi1+6uP4c8kwvysLTpSGCFwBdUoYkV
+         oPTfpu+FvFOOvq2MuljQKrob6KIHOIklcRd4G7xrg/MQAis0sqH5y/rlaLBhfc717VOa
+         ZIeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=pLM1iz550YCixtaWxErRW3gV49YwztNTHWPBv7007Ww=;
+        b=annbzNiZhIKkg15T3yqYpzTco7+6KZCtzu6tKrzUI7V83GGYQFD7GMNWfrNQZmsD4L
+         Ez/h7W45IeFdUOMPbYw6qnfFlZ2Dpr/O63YyAO1rTT/4Nzsl2Sa2Cggs5AwlxM8dECEO
+         LfNxGTtGkxQBzr81JwlmbrbwN8NO2CtHhINwd/3q40WifCyeqyYZ1Q7a3eaX7sdK0b+s
+         B65e9DQ0DN38Hckg7oNEYdO8DtSilG+u8xGhWqkIBn9W4MbD8XFeOa7pI0aZuR0gFmcX
+         GeAqJFKRrdE3S9A91JqTKmLEHt4AoMKsnZFbzpHLjHv5zGZNYuFhKcDYH7XmFkj6IO+D
+         SYUQ==
+X-Gm-Message-State: AE9vXwOjFTDM7wsHfztH+jCpEVxb8UaIjgb5dAwqBA8S574C2LzgsXWa61D0BprfN40TBQ==
+X-Received: by 10.66.7.8 with SMTP id f8mr39086887paa.91.1474208994923;
+        Sun, 18 Sep 2016 07:29:54 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from life-desktop ([182.71.113.218])
+        by smtp.gmail.com with ESMTPSA id h66sm64859448pfc.47.2016.09.18.07.29.52
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Sun, 18 Sep 2016 07:29:54 -0700 (PDT)
+Date: Sun, 18 Sep 2016 19:59:45 +0530
+From: Anchal Jain <anchalj109@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, jsimmons@infradead.org
+Subject: [PATCH] staging: lustre: lnet: klnds: socklnd: Remove unnecessary
+ line continuations
+Message-ID: <20160918142937.GA8801@life-desktop>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
+Fixes checkpatch warning:
 
+WARNING: Avoid unnecessary line continuations
 
-On Sun, 18 Sep 2016, Anchal Jain wrote:
+Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+---
+ drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Fixes checkpatch warning:
->
-> WARNING: Avoid unnecessary line continuations
->
-> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
-> ---
->  drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-> index 1bdf962..f9f0088 100644
-> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-> @@ -35,7 +35,7 @@ ksocknal_alloc_tx(int type, int size)
->  		spin_lock(&ksocknal_data.ksnd_tx_lock);
->
->  		if (!list_empty(&ksocknal_data.ksnd_idle_noop_txs)) {
-> -			tx = list_entry(ksocknal_data.ksnd_idle_noop_txs. \
-> +			tx = list_entry(ksocknal_data.ksnd_idle_noop_txs.
->  					    next, struct ksock_tx, tx_list);
+diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+index 1bdf962..f9f0088 100644
+--- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
++++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
+@@ -35,7 +35,7 @@ ksocknal_alloc_tx(int type, int size)
+ 		spin_lock(&ksocknal_data.ksnd_tx_lock);
+ 
+ 		if (!list_empty(&ksocknal_data.ksnd_idle_noop_txs)) {
+-			tx = list_entry(ksocknal_data.ksnd_idle_noop_txs. \
++			tx = list_entry(ksocknal_data.ksnd_idle_noop_txs.
+ 					    next, struct ksock_tx, tx_list);
+ 			LASSERT(tx->tx_desc_size == size);
+ 			list_del(&tx->tx_list);
+-- 
+1.9.1
 
-It would be better to put next, up on the previous line.
-
-julia
-
->  			LASSERT(tx->tx_desc_size == size);
->  			list_del(&tx->tx_list);
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160918142937.GA8801%40life-desktop.
-> For more options, visit https://groups.google.com/d/optout.
->
 
