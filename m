@@ -1,157 +1,198 @@
-X-GM-THRID: 6330964939301191680
-X-Received: by 10.200.36.206 with SMTP id t14mr291338qtt.88.1474042641069;
-        Fri, 16 Sep 2016 09:17:21 -0700 (PDT)
+X-GM-THRID: 6330674938515554304
+X-Received: by 10.157.37.234 with SMTP id q97mr14004915ota.1.1474293405225;
+        Mon, 19 Sep 2016 06:56:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.127.88 with SMTP id r85ls1359955itc.0.canary; Fri, 16 Sep
- 2016 09:17:17 -0700 (PDT)
-X-Received: by 10.107.137.42 with SMTP id l42mr309723iod.80.1474042637884;
-        Fri, 16 Sep 2016 09:17:17 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id um12si2838425pab.2.2016.09.16.09.17.17
+Received: by 10.107.12.91 with SMTP id w88ls1319161ioi.20.gmail; Mon, 19 Sep
+ 2016 06:56:42 -0700 (PDT)
+X-Received: by 10.36.204.197 with SMTP id x188mr3426056itf.11.1474293402258;
+        Mon, 19 Sep 2016 06:56:42 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id si10si5393625pab.1.2016.09.19.06.56.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Sep 2016 09:17:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Mon, 19 Sep 2016 06:56:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id oz2so3634869pac.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Sep 2016 09:17:17 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id vz6so7054927pab.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 06:56:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=AkPNBtSyVMj//MhwiNvVC+H58rhVOmSeiEOyD6tVVU4=;
-        b=pGlq6Ibuncj5nh2tyvugg/v9pJCLep+MInVU6sYpWzHD00dusMa8L9rYVxccgY/5BV
-         WLsLIV7CmTTw5cC2eu2Xzt2SpfKvYeLqXfQ7YrRpmEwa4Yv8Wxyr/PINWFHQfierJxW3
-         Anz8yFhJ7PWrN5ap+np8THr8IVp1u2umtf2hjMEhCooK7FZSTnGDge+yj+7ASxKgS/eu
-         FKPNbrYJKjaLBpuULe5KqVp9FbA+ozdyJpAXqW+0kj0uMBLycbqlD6D4lEiMq3EOOYbL
-         spq8fh1J0n0m2gUs+LjSH3RfB9s4cJnt9jlXejhUsx5bAAf57WI0kmqESoEBTtk8wcQ3
-         SVGg==
+        bh=qtU8Vl1R3dwCVO0TZMq8Yh7JA7nqsmMA3I0BENQi33g=;
+        b=PVVy0yWacWyyjLIlqpNMmuLydMqLsueG3hXUkU1q5kbvH5Q996NOVMahrfyaXeMZUv
+         bMsbCZL0Z2xmQRLyWqWG4aWiFyb6ZySafm7AUGoiXtB9+1a4/Ax7ROIwdZLLLKHsn2Nk
+         9ZYP5nSlt9fKptVd23JK+6g/xNFiBu3Ckx9nSFdUziOu33hLo7mlCClQrVSUOvm2wK8M
+         RUR+BnCTac0rskv2nari6lWZ1zLWBKoYbnIZA9+5Qs+eCmbFw2WGrBZgbrmijLTJ1eF6
+         MqvXeONWwk9vVLNnHrhd+1e59Z+Y6ws+Og5A38CxI+JeZF0Np/RjjhQ6Bp59HdrFSpsu
+         k3TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=AkPNBtSyVMj//MhwiNvVC+H58rhVOmSeiEOyD6tVVU4=;
-        b=ZbglO+fpnxEt3OJQ8y532+GzE28YHEtaWAro3s45KYLm+RuoEzxFsFy5TU9KrTSqKX
-         PHIFiOM/sknGPc9SS78EEAAM1U22czw/IYSo1vMWvmrJjx1Mdoe+nSVciERiNw2a3IkF
-         v6CNtmaJ/DhU9kIReHWVO0WJ9OAp1oeoMgabrXQtsxtvibeykBLsRLfTAWaht3gusB+v
-         pojABqDhZtpQIiwSmIy021GnAQeyyUl208Gg4KD+r3Z3TbdgOGNxTFOKAx7Dr3Y5ASF1
-         aeZc9B+sA2CnLv2uOrtiPWYtqleevfShyuEn6MPl+nOrFUFJgRDmkMUwDbwZxEDs+HWC
-         byWw==
-X-Gm-Message-State: AE9vXwOlzFgVVU9jlrmnXm5ho+ub/hpg3WonmeWr91Nw4iVwlJ4VaOIKGzjgLvu14A2e/g==
-X-Received: by 10.66.148.167 with SMTP id tt7mr24289904pab.21.1474042637501;
-        Fri, 16 Sep 2016 09:17:17 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.244.96])
-        by smtp.gmail.com with ESMTPSA id u1sm53376050pfu.12.2016.09.16.09.17.11
+        bh=qtU8Vl1R3dwCVO0TZMq8Yh7JA7nqsmMA3I0BENQi33g=;
+        b=YxxYa2D++YHpmZjnG9f0yqUmKMoOKSjLq6H0tkjPhxlpQ8A5/80unCwsqQ2QqOhK0O
+         T/Ckawqr8FkgMBpC9QFZ1UABobsA8mBLOk75/RdPu/2J+0UyKkxeKeocWD2cqrr3HIdG
+         58e5y1rdDRaAJHYQlN/9Rl/1F2S5V/jKn95c4dJacwEDeuuZ+GJg1yHhP7YzeSSQhWPG
+         qi3n0Y5VsOHcuaumCTsf8ZhYES15rloUfS489yg8UPbycZqlBRiKKBukjVlZywslemD7
+         VAjV20C2ogwWu1+Sl6l16kTcEBpNMPbaR0u5olFhmiT3Kc2FvpPit5kCOrWKBn5XNNsK
+         xwSA==
+X-Gm-Message-State: AE9vXwNTFMkvG36Uicek8yIe2eH/4z/jHyyjMigzQSIzXstrHoNrmpgLCE2uGqk4U66E5A==
+X-Received: by 10.66.82.42 with SMTP id f10mr47147306pay.17.1474293401842;
+        Mon, 19 Sep 2016 06:56:41 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from toblerone ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id e71sm46208174pfc.75.2016.09.19.06.56.39
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Sep 2016 09:17:16 -0700 (PDT)
-Date: Fri, 16 Sep 2016 21:47:02 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
+        Mon, 19 Sep 2016 06:56:41 -0700 (PDT)
+Date: Mon, 19 Sep 2016 19:26:32 +0530
+From: Rehas Sachdeva <aquannie@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: media: davinci_vpfe: Replace explicit NULL
- comparison with ! operator
-Message-ID: <20160916161701.GA25197@sayli-HP-15-Notebook-PC>
+Subject: [PATCH v4] staging: sm750fb: Add spaces around '|'
+Message-ID: <20160919135632.GA16051@toblerone>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch replaces the explicit NULL comparisons with ! operator.
-It was found using Coccinelle:
+Adds spaces on either side of a '|'. Issue found by checkpatch.
 
-@@
-expression e;
-@@
-- e == NULL
-+ !e
-
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 ---
- drivers/staging/media/davinci_vpfe/vpfe_video.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+Change in v2:
+Refresh commit against the latest tree.
 
-diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.c b/drivers/staging/media/davinci_vpfe/vpfe_video.c
-index 3319fb8..7483de0 100644
---- a/drivers/staging/media/davinci_vpfe/vpfe_video.c
-+++ b/drivers/staging/media/davinci_vpfe/vpfe_video.c
-@@ -37,7 +37,7 @@ static struct media_entity *vpfe_get_input_entity
- 	struct media_pad *remote;
+Change in v3:
+Correct spelling 'dound' to 'found'.
+
+Change in v4:
+Rebase commit against latest tree, as previous rebase was unsuccessful.
+
+ drivers/staging/sm750fb/ddk750_display.h | 44 ++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+index ca35aa1..5fc9f6f 100644
+--- a/drivers/staging/sm750fb/ddk750_display.h
++++ b/drivers/staging/sm750fb/ddk750_display.h
+@@ -8,8 +8,8 @@
+ #define PNL_2_OFFSET 0
+ #define PNL_2_MASK (3 << PNL_2_OFFSET)
+ #define PNL_2_USAGE	(PNL_2_MASK << 16)
+-#define PNL_2_PRI	((0 << PNL_2_OFFSET)|PNL_2_USAGE)
+-#define PNL_2_SEC	((2 << PNL_2_OFFSET)|PNL_2_USAGE)
++#define PNL_2_PRI	((0 << PNL_2_OFFSET) | PNL_2_USAGE)
++#define PNL_2_SEC	((2 << PNL_2_OFFSET) | PNL_2_USAGE)
  
- 	remote = media_entity_remote_pad(&vpfe_dev->vpfe_isif.pads[0]);
--	if (remote == NULL) {
-+	if (!remote) {
- 		pr_err("Invalid media connection to isif/ccdc\n");
- 		return NULL;
- 	}
-@@ -54,7 +54,7 @@ static int vpfe_update_current_ext_subdev(struct vpfe_video_device *video)
- 	int i;
  
- 	remote = media_entity_remote_pad(&vpfe_dev->vpfe_isif.pads[0]);
--	if (remote == NULL) {
-+	if (!remote) {
- 		pr_err("Invalid media connection to isif/ccdc\n");
- 		return -EINVAL;
- 	}
-@@ -75,8 +75,7 @@ static int vpfe_update_current_ext_subdev(struct vpfe_video_device *video)
- 	}
- 	/* find the v4l2 subdev pointer */
- 	for (i = 0; i < vpfe_dev->num_ext_subdevs; i++) {
--		if (!strcmp(video->current_ext_subdev->module_name,
--			vpfe_dev->sd[i]->name))
-+		if (!strcmp(video->current_ext_subdev->module_name, vpfe_dev->sd[i]->name))
- 			video->current_ext_subdev->subdev = vpfe_dev->sd[i];
- 	}
- 	return 0;
-@@ -107,7 +106,7 @@ __vpfe_video_get_format(struct vpfe_video_device *video,
- 	int ret;
+ /* primary timing & plane enable bit
+@@ -19,8 +19,8 @@
+ #define PRI_TP_OFFSET 4
+ #define PRI_TP_MASK BIT(PRI_TP_OFFSET)
+ #define PRI_TP_USAGE (PRI_TP_MASK << 16)
+-#define PRI_TP_ON ((0x1 << PRI_TP_OFFSET)|PRI_TP_USAGE)
+-#define PRI_TP_OFF ((0x0 << PRI_TP_OFFSET)|PRI_TP_USAGE)
++#define PRI_TP_ON ((0x1 << PRI_TP_OFFSET) | PRI_TP_USAGE)
++#define PRI_TP_OFF ((0x0 << PRI_TP_OFFSET) | PRI_TP_USAGE)
  
- 	subdev = vpfe_video_remote_subdev(video, &pad);
--	if (subdev == NULL)
-+	if (!subdev)
- 		return -EINVAL;
  
- 	fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
-@@ -236,7 +235,7 @@ static int vpfe_video_validate_pipeline(struct vpfe_pipeline *pipe)
- 	 * format of the connected pad.
- 	 */
- 	subdev = vpfe_video_remote_subdev(pipe->outputs[0], NULL);
--	if (subdev == NULL)
-+	if (!subdev)
- 		return -EPIPE;
+ /* panel sequency status
+@@ -29,8 +29,8 @@
+ #define PNL_SEQ_OFFSET 6
+ #define PNL_SEQ_MASK BIT(PNL_SEQ_OFFSET)
+ #define PNL_SEQ_USAGE (PNL_SEQ_MASK << 16)
+-#define PNL_SEQ_ON (BIT(PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
+-#define PNL_SEQ_OFF ((0 << PNL_SEQ_OFFSET)|PNL_SEQ_USAGE)
++#define PNL_SEQ_ON (BIT(PNL_SEQ_OFFSET) | PNL_SEQ_USAGE)
++#define PNL_SEQ_OFF ((0 << PNL_SEQ_OFFSET) | PNL_SEQ_USAGE)
  
- 	while (1) {
-@@ -413,7 +412,7 @@ static int vpfe_open(struct file *file)
- 	/* Allocate memory for the file handle object */
- 	handle = kzalloc(sizeof(struct vpfe_fh), GFP_KERNEL);
+ /* dual digital output
+ 	80000[19]
+@@ -38,8 +38,8 @@
+ #define DUAL_TFT_OFFSET 8
+ #define DUAL_TFT_MASK BIT(DUAL_TFT_OFFSET)
+ #define DUAL_TFT_USAGE (DUAL_TFT_MASK << 16)
+-#define DUAL_TFT_ON (BIT(DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
+-#define DUAL_TFT_OFF ((0 << DUAL_TFT_OFFSET)|DUAL_TFT_USAGE)
++#define DUAL_TFT_ON (BIT(DUAL_TFT_OFFSET) | DUAL_TFT_USAGE)
++#define DUAL_TFT_OFF ((0 << DUAL_TFT_OFFSET) | DUAL_TFT_USAGE)
  
--	if (handle == NULL)
-+	if (!handle)
- 		return -ENOMEM;
+ /* secondary timing & plane enable bit
+ 	1:80200[8] & 80200[2] on
+@@ -48,8 +48,8 @@
+ #define SEC_TP_OFFSET 5
+ #define SEC_TP_MASK BIT(SEC_TP_OFFSET)
+ #define SEC_TP_USAGE (SEC_TP_MASK << 16)
+-#define SEC_TP_ON  ((0x1 << SEC_TP_OFFSET)|SEC_TP_USAGE)
+-#define SEC_TP_OFF ((0x0 << SEC_TP_OFFSET)|SEC_TP_USAGE)
++#define SEC_TP_ON  ((0x1 << SEC_TP_OFFSET) | SEC_TP_USAGE)
++#define SEC_TP_OFF ((0x0 << SEC_TP_OFFSET) | SEC_TP_USAGE)
  
- 	v4l2_fh_init(&handle->vfh, &video->video_dev);
-@@ -683,14 +682,14 @@ static int vpfe_enum_fmt(struct file *file, void  *priv,
- 	}
- 	/* get the remote pad */
- 	remote = media_entity_remote_pad(&video->pad);
--	if (remote == NULL) {
-+	if (!remote) {
- 		v4l2_err(&vpfe_dev->v4l2_dev,
- 			 "invalid remote pad for video node\n");
- 		return -EINVAL;
- 	}
- 	/* get the remote subdev */
- 	subdev = vpfe_video_remote_subdev(video, NULL);
--	if (subdev == NULL) {
-+	if (!subdev) {
- 		v4l2_err(&vpfe_dev->v4l2_dev,
- 			 "invalid remote subdev for video node\n");
- 		return -EINVAL;
+ /* crt path select
+ 	80200[19:18]
+@@ -57,8 +57,8 @@
+ #define CRT_2_OFFSET 2
+ #define CRT_2_MASK (3 << CRT_2_OFFSET)
+ #define CRT_2_USAGE (CRT_2_MASK << 16)
+-#define CRT_2_PRI ((0x0 << CRT_2_OFFSET)|CRT_2_USAGE)
+-#define CRT_2_SEC ((0x2 << CRT_2_OFFSET)|CRT_2_USAGE)
++#define CRT_2_PRI ((0x0 << CRT_2_OFFSET) | CRT_2_USAGE)
++#define CRT_2_SEC ((0x2 << CRT_2_OFFSET) | CRT_2_USAGE)
+ 
+ 
+ /* DAC affect both DVI and DSUB
+@@ -67,8 +67,8 @@
+ #define DAC_OFFSET 7
+ #define DAC_MASK BIT(DAC_OFFSET)
+ #define DAC_USAGE (DAC_MASK << 16)
+-#define DAC_ON ((0x0 << DAC_OFFSET)|DAC_USAGE)
+-#define DAC_OFF ((0x1 << DAC_OFFSET)|DAC_USAGE)
++#define DAC_ON ((0x0 << DAC_OFFSET) | DAC_USAGE)
++#define DAC_OFF ((0x1 << DAC_OFFSET) | DAC_USAGE)
+ 
+ /* DPMS only affect D-SUB head
+ 	0[31:30]
+@@ -76,8 +76,8 @@
+ #define DPMS_OFFSET 9
+ #define DPMS_MASK (3 << DPMS_OFFSET)
+ #define DPMS_USAGE (DPMS_MASK << 16)
+-#define DPMS_OFF ((3 << DPMS_OFFSET)|DPMS_USAGE)
+-#define DPMS_ON ((0 << DPMS_OFFSET)|DPMS_USAGE)
++#define DPMS_OFF ((3 << DPMS_OFFSET) | DPMS_USAGE)
++#define DPMS_ON ((0 << DPMS_OFFSET) | DPMS_USAGE)
+ 
+ 
+ 
+@@ -86,16 +86,16 @@
+ 	CRT means crt path DSUB
+ */
+ typedef enum _disp_output_t {
+-	do_LCD1_PRI = PNL_2_PRI|PRI_TP_ON|PNL_SEQ_ON|DAC_ON,
+-	do_LCD1_SEC = PNL_2_SEC|SEC_TP_ON|PNL_SEQ_ON|DAC_ON,
+-	do_LCD2_PRI = CRT_2_PRI|PRI_TP_ON|DUAL_TFT_ON,
+-	do_LCD2_SEC = CRT_2_SEC|SEC_TP_ON|DUAL_TFT_ON,
++	do_LCD1_PRI = PNL_2_PRI | PRI_TP_ON | PNL_SEQ_ON | DAC_ON,
++	do_LCD1_SEC = PNL_2_SEC | SEC_TP_ON | PNL_SEQ_ON | DAC_ON,
++	do_LCD2_PRI = CRT_2_PRI | PRI_TP_ON | DUAL_TFT_ON,
++	do_LCD2_SEC = CRT_2_SEC | SEC_TP_ON | DUAL_TFT_ON,
+ 	/*
+ 	do_DSUB_PRI = CRT_2_PRI|PRI_TP_ON|DPMS_ON|DAC_ON,
+ 	do_DSUB_SEC = CRT_2_SEC|SEC_TP_ON|DPMS_ON|DAC_ON,
+ 	*/
+-	do_CRT_PRI = CRT_2_PRI|PRI_TP_ON|DPMS_ON|DAC_ON,
+-	do_CRT_SEC = CRT_2_SEC|SEC_TP_ON|DPMS_ON|DAC_ON,
++	do_CRT_PRI = CRT_2_PRI | PRI_TP_ON | DPMS_ON | DAC_ON,
++	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
+ }
+ disp_output_t;
+ 
 -- 
 2.7.4
 
