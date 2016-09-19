@@ -1,107 +1,130 @@
-X-GM-THRID: 6667954113200783360
-X-Received: by 2002:a62:aa19:: with SMTP id e25mr1286244pff.126.1552504048716;
-        Wed, 13 Mar 2019 12:07:28 -0700 (PDT)
+X-GM-THRID: 6332017798578962432
+X-Received: by 10.46.32.154 with SMTP id g26mr3212011lji.3.1474317043202;
+        Mon, 19 Sep 2016 13:30:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a65:534c:: with SMTP id w12ls1145886pgr.8.gmail; Wed, 13 Mar
- 2019 12:07:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxajGtKC8zi2wNi5gXUtK5uVa/PAZXjNNPyeDq9T+AvLoow8hZ7AIEj4Uu806yuowAg+3lF
-X-Received: by 2002:aa7:804f:: with SMTP id y15mr17350482pfm.65.1552504047844;
-        Wed, 13 Mar 2019 12:07:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552504047; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wjImANj0NQ4GIDP/8mlBcM5HnjudSgqYnLt5DbMjPa+M5plq67zVf/ISPV4SPwqt/F
-         3Nmk8Ebm67qfqkqOEA2DlC91IDdmPeFA/4f/N7MNDKXcv9t1F1hqfajee+eIo2a0fX/G
-         FY8yWDCqY8iQx3qMtX6QpkGG+oz1n39MrzgxAJE1t8NThmn31bpofQMCkuPdpeKjJCHd
-         e2yxnbo3/vP+AE1P9n6bEeWDt900oGGWwjbJ4sU4qOGlUK3nMz2t8uSezPppTTsnYaGg
-         Zat5LNXzbcJSRnswyRuHnfdILQwqhfK0xDNicUgNSzT7f2HFRV+bgbGsslQ5SBCwk+9T
-         4wTg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=5N7XpV0DV9XJbwqC46AMz/98KYtKmAARRg8UT0l1lYA=;
-        b=PDiy/JlTyG7O7OaAcdQyO+JdBqKIFJaQDjo3jLqvfd5uQ9/8HueJySFPg4S9E4mJdx
-         SRGszb55VHBf6wEtWzc4FbJD1ij5M4PPAXzB+o5yDDLjxsoEtbmLbDzdkDChrxeJ7ve3
-         0RCLmfYbfSnldNNFUL1M4Xl3Qjl9VH/wcKu/eu4OsMmVj9BRmB5oMgnrKuiyAboNdA6T
-         90nXrx5huvUbMVZVWuz7pvI9IjaCPgo+UW5fIubXOZP/TArUA6d+emMjgTZHAKScsOu8
-         6SCdpQOy/WcNeP9iYIGZv8vzXygEvTwlA6gwj0yi1ELYmNJoZKTCpwLnehK4pN9SJtrt
-         5IEg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SdZhk2Kz;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::431 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x431.google.com (mail-pf1-x431.google.com. [2607:f8b0:4864:20::431])
-        by gmr-mx.google.com with ESMTPS id b19si541024pls.5.2019.03.13.12.07.27
+Received: by 10.28.193.3 with SMTP id r3ls820464wmf.24.gmail; Mon, 19 Sep 2016
+ 13:30:42 -0700 (PDT)
+X-Received: by 10.28.221.9 with SMTP id u9mr3918wmg.2.1474317042619;
+        Mon, 19 Sep 2016 13:30:42 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 82si1589859wmg.3.2016.09.19.13.30.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Mar 2019 12:07:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::431 as permitted sender) client-ip=2607:f8b0:4864:20::431;
+        Mon, 19 Sep 2016 13:30:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SdZhk2Kz;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::431 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x431.google.com with SMTP id s23so2015712pfe.13
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Mar 2019 12:07:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=5N7XpV0DV9XJbwqC46AMz/98KYtKmAARRg8UT0l1lYA=;
-        b=SdZhk2Kz0a7m7uxe4B2kaUXMbEV1MetYtRlGCX62zJ7/xyk1M2b77TXwykTn9gJgB8
-         La2BJAVC3m4HPGRrwhJbhoLPpj1aLNOe10+nax20C27DjDr4RDqeyThmjp5SJVbB4PeW
-         2QC0/E/OpNInVPX0L+4yUsJBvFD0FZfG9ncbxSOTj2tyuSCoGsrsJFEWKd3Yads0C57z
-         /qy27XIUX/PLaVSIpvFBUnXdk5IPwmqQVgZo257O/+ZE811jAsLNufmeB/BhHhohezSM
-         uuOqVQhuIu82yUR3q3p8jFZtlXoMVfpQ5DGjsNMFXb98fGlilqaqIdbiONHbXLWp+Y87
-         AD0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=5N7XpV0DV9XJbwqC46AMz/98KYtKmAARRg8UT0l1lYA=;
-        b=U3fzPLAlydEGqR77cghNNfj8DEmw9ghmzT17CyzrBuAy9oSL2V4/F6EflBn2KQUyAE
-         Tgqg25+2Z0KfTqDKOIhODmgIURwOUixXbBDa91ZZBInrnH/ZeKKPh/bZTs1MLawci/Yl
-         u/89BBM6aW5EAvgGIl7g3xfZ21uqE+Yg2TEaU6VXAiwW2/yE3Fk5Q5Rj6VJOt25qaLjD
-         eD+GIgPvU3qKijPnoZXpmGLfc5u5s0+eYoH3ITIRrbRWbaXQmqYebBtRaSO914f5qVys
-         S5P0r2LGpa8efNyM7pzNqOiwNpj2e/QmKqweP5D9bkPMh27W3VE3/dHb53q369GROBe7
-         pWYQ==
-X-Gm-Message-State: APjAAAULxXZOXZwaLjBqEYMgNXrWqqTYJ0KM1Yron9r3vn7p1Z5IQm6e
-	D1SiciOKvGgk294WBI8zUN8qrXToAu4ggg==
-X-Received: by 2002:a62:449b:: with SMTP id m27mr46050844pfi.79.1552504046184;
-        Wed, 13 Mar 2019 12:07:26 -0700 (PDT)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from localhost.localdomain ([2409:4042:2e96:de47:a16b:5134:be60:2635])
-        by smtp.googlemail.com with ESMTPSA id p2sm27281051pfi.95.2019.03.13.12.07.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 13 Mar 2019 12:07:25 -0700 (PDT)
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: pi433: Remove unused variable.
-Date: Thu, 14 Mar 2019 00:37:17 +0530
-Message-Id: <1552504037-32635-1-git-send-email-digholebhagyashri@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,363,1470693600"; 
+   d="scan'208";a="193961707"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Sep 2016 22:30:41 +0200
+Date: Mon, 19 Sep 2016 22:30:40 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jonathan Cameron <jic23@kernel.org>
+cc: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>, 
+    outreachy-kernel@googlegroups.com, lars@metafoo.de, 
+    Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: iio: meter: ade7758_ring:
+ Match alignment with open parenthesis
+In-Reply-To: <0677f227-2672-b576-4cac-3b2706a1df73@kernel.org>
+Message-ID: <alpine.DEB.2.10.1609192230020.4692@hadrien>
+References: <20160919154156.GA13797@fireworks> <alpine.DEB.2.10.1609191746330.3203@hadrien> <0677f227-2672-b576-4cac-3b2706a1df73@kernel.org>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Remove unused variable which is used to store return value,
-Detected by Coccinelle semantic patch returnvar.cocci
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
----
- drivers/staging/pi433/rf69.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/pi433/rf69.c b/drivers/staging/pi433/rf69.c
-index e19b9ce..340ffa7 100644
---- a/drivers/staging/pi433/rf69.c
-+++ b/drivers/staging/pi433/rf69.c
-@@ -624,9 +624,7 @@ int rf69_set_preamble_length(struct spi_device *spi, u16 preamble_length)
- 	retval = rf69_write_reg(spi, REG_PREAMBLE_MSB, msb);
- 	if (retval)
- 		return retval;
--	retval = rf69_write_reg(spi, REG_PREAMBLE_LSB, lsb);
--
--	return retval;
-+	return rf69_write_reg(spi, REG_PREAMBLE_LSB, lsb);
- }
- 
- int rf69_enable_sync(struct spi_device *spi)
--- 
-2.7.4
+On Mon, 19 Sep 2016, Jonathan Cameron wrote:
 
+> On 19/09/16 16:46, Julia Lawall wrote:
+> >
+> >
+> > On Mon, 19 Sep 2016, Georgiana Rodica Chelu wrote:
+> >
+> >> Organize the parameters on a single line to improve the readability of
+> >> the code. Also, indent the line to match alignment with the open
+> >> parenthesis. Ensure that the modifications do not break the rule
+> >> of 80 characters per line.
+> >>
+> >> Issues found by checkpatch.pl script.
+> >>
+> >> Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+> >
+> > Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> Nice clean patch.  I've just sent Greg a pull request which will be the
+> final one for this cycle for IIO drivers.  I'll pick it up in a few
+> days for the next merge window unless Greg grabs it directly.
+>
+> One lesson to learn here Georgiana, keep an eye on us pesky maintainers,
+> we sometimes loose patches under these sort of circumstances.
+> Feel free to 'poke' me if I don't reply to say I've applied it by
+> next week (mostly it's two weeks as a rule of thumb, but I tend to
+> clear the decks most weekends so quicker pokes are fine with me).
+
+Normally, Greg picks up the Outreachy patches directly.  The maintainers
+are only in CC in case they want to object :)
+
+thanks,
+julia
+
+>
+> Jonathan
+> >
+> >> ---
+> >> Changes in v2:
+> >>   - Make the commit message clearer.
+> >>
+> >> drivers/staging/iio/meter/ade7758_ring.c | 10 +++-------
+> >>  1 file changed, 3 insertions(+), 7 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/iio/meter/ade7758_ring.c b/drivers/staging/iio/meter/ade7758_ring.c
+> >> index a6b76d4..57c213d 100644
+> >> --- a/drivers/staging/iio/meter/ade7758_ring.c
+> >> +++ b/drivers/staging/iio/meter/ade7758_ring.c
+> >> @@ -38,18 +38,14 @@ static int ade7758_write_waveform_type(struct device *dev, unsigned int type)
+> >>  	int ret;
+> >>  	u8 reg;
+> >>
+> >> -	ret = ade7758_spi_read_reg_8(dev,
+> >> -			ADE7758_WAVMODE,
+> >> -			&reg);
+> >> +	ret = ade7758_spi_read_reg_8(dev, ADE7758_WAVMODE, &reg);
+> >>  	if (ret)
+> >>  		goto out;
+> >>
+> >>  	reg &= ~0x1F;
+> >>  	reg |= type & 0x1F;
+> >>
+> >> -	ret = ade7758_spi_write_reg_8(dev,
+> >> -			ADE7758_WAVMODE,
+> >> -			reg);
+> >> +	ret = ade7758_spi_write_reg_8(dev, ADE7758_WAVMODE, reg);
+> >>  out:
+> >>  	return ret;
+> >>  }
+> >> @@ -94,7 +90,7 @@ static int ade7758_ring_preenable(struct iio_dev *indio_dev)
+> >>  				 indio_dev->masklength);
+> >>
+> >>  	ade7758_write_waveform_type(&indio_dev->dev,
+> >> -		indio_dev->channels[channel].address);
+> >> +				    indio_dev->channels[channel].address);
+> >>
+> >>  	return 0;
+> >>  }
+> >> --
+> >> 2.7.4
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160919154156.GA13797%40fireworks.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+>
 
