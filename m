@@ -1,89 +1,73 @@
 X-GM-THRID: 6332014923786223616
-X-Received: by 10.36.69.36 with SMTP id y36mr3347818ita.27.1474287243840;
-        Mon, 19 Sep 2016 05:14:03 -0700 (PDT)
+X-Received: by 10.157.61.72 with SMTP id a66mr4215177otc.58.1474287110797;
+        Mon, 19 Sep 2016 05:11:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.15.42 with SMTP id 39ls10131730ott.0.gmail; Mon, 19 Sep
- 2016 05:14:03 -0700 (PDT)
-X-Received: by 10.200.45.85 with SMTP id o21mr4140105qta.54.1474287243544;
-        Mon, 19 Sep 2016 05:14:03 -0700 (PDT)
+Received: by 10.157.37.39 with SMTP id k36ls9776452otb.2.gmail; Mon, 19 Sep
+ 2016 05:11:50 -0700 (PDT)
+X-Received: by 10.129.123.197 with SMTP id w188mr4585676ywc.111.1474287110455;
+        Mon, 19 Sep 2016 05:11:50 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id d184si1695490itg.0.2016.09.19.05.14.03
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id 137si1481833ith.2.2016.09.19.05.11.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 05:14:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Mon, 19 Sep 2016 05:11:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id my20so3940021pab.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 05:14:03 -0700 (PDT)
+Received: by mail-pa0-x241.google.com with SMTP id vz6so6940626pab.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 05:11:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=axiwmc+loDU0B4pjVv9230pZ35xoCUaePhdRuikQn1M=;
-        b=fabzjDZNNuO/noFfbjMKQ73fnJ/tCboncbwgq70dts+ew3Vp3wvFXTNbzPkVN8y4kM
-         Z8btfsqBHdW8U+6TJs+uzyD8d7BvT1smskWMsnyfm3jALLuhTY/IB6wXo572Gsd6pcgw
-         pGuVH17QR+r9bbm6Ex2Wke0tuQA57OXIecGlIIsi8CURzttsoHZG2nh2GwKsYXvcyetE
-         hDX2rU0YLnGDYvy3oF/Cq3eqos2d88GvSDJXR+AJxxf+igdMYbw9prrcNOB0tPpur4nt
-         GNBwNZKJIgyy2OC7NXRLfrjRwrCEUBcWOf7EnOiTFstLbkguLJK1wToFQvP5VZf1nUCI
-         1TBA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=QHPnDS4a7WUIS3n5TISmrWxrqSZjP3Tv8A5xUYZFDwI=;
+        b=08cWD/uImG8DYJb72WVykl71IZumM8Tuy2L2l2076WA8dve0yXLm44+7gYJ+H7kDV0
+         G32s4AHvIfj+cLt7w3866OaGO6oqXRLjSyl3Q2rcTs4T2Xm/mtoEa9USPucsjoNN2KJe
+         hfQbs18V3hRK0Mw+cISn0CoA9hsZ3UYtcpViP3ULHe0jf5xfWHAyTBmM/Ft54e29+/Dh
+         NBu6GViNUCdfvmdfe350dev+iNg0ra9QJakZHxn4XdiYIEIsx6ocILlcB0v5/hFTBY1x
+         YVlGechr15tPm3aQSwKBnnFJnTrnAbF60OpSI7oplUAtytDRzL2X/w28zvquAuoMvIIT
+         ejOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=axiwmc+loDU0B4pjVv9230pZ35xoCUaePhdRuikQn1M=;
-        b=BzzzYt9gDSc6BDlxawhIP88cFQ20VM53fc1C8eYTLpyPpWXeqvR4llFNx8MhXpsvW2
-         TDYZwhOAq8wXJJ1CfMw6294DHz/uY+ubx3yZVmhIWdpqWDiiEP66gxLgSZCSzLC7hnDU
-         JYp8Iu9QbrZycLsvlAzxwX2kSzuwNiR2dD886DATTl0coxPYiLkoLM1kgGsWtdvHmwaZ
-         WP5+4z8Lt3h0GfPKYfJaY1OwUKb50qfCyAgFnyng/JWyTHRnXKQJVHyd42e/M90dWyul
-         M/wQHAcyxwf15RCWnfi75n6UJlnyX4fmPwv8PJI3Ggo0CFkTSnr5WHl4ZRW6BTLat7oI
-         aZMQ==
-X-Gm-Message-State: AE9vXwPq3k/qR0vDcLh80763/mi8PorSxM/jHOC5hPojf7caIjYYAGnrzLG7D4kiTsF1Ng==
-X-Received: by 10.66.127.38 with SMTP id nd6mr46339844pab.74.1474287242806;
-        Mon, 19 Sep 2016 05:14:02 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=QHPnDS4a7WUIS3n5TISmrWxrqSZjP3Tv8A5xUYZFDwI=;
+        b=Jv5I4XY7K+PNVV3WLsSDEtp80QGT2HX/qRwWybt87QuM/efoq9zKKuEoe9v5yvzCpk
+         C6PTCNStEC1t3mgWgbPxrf61TkPXtjHPk/hrI1W5WHe87+pHZ0oRZkJn8v0iQ4paSNYH
+         8IcpXSnNPijw0hYUAVze986IOvPZTQM3a0VrKd6EF5070Y5eOhjZw5efBNa4F3VUSOJm
+         inH1ZVd+XEAMU55I4iAV/Jr7MVM9LzV3YP8V5dSGwOnXNsOdn3SqfLXLDlVPkpldma2p
+         0aYlSiEQfEkabc9tRsEc6i72TByqTS7mUe04c80oyZn2f399PzG1MH+PLTraJh9UVQIS
+         ZBsA==
+X-Gm-Message-State: AE9vXwMIE9h74ke5A4eccIBnzVnJRenSe2biYP4Y0unNdONHu/UuRof+9uxbNQwtYO1uDg==
+X-Received: by 10.66.34.101 with SMTP id y5mr46170036pai.95.1474287109751;
+        Mon, 19 Sep 2016 05:11:49 -0700 (PDT)
 Return-Path: <bankarsandhya512@gmail.com>
 Received: from sandhya ([122.170.188.202])
-        by smtp.gmail.com with ESMTPSA id i68sm71329309pfc.25.2016.09.19.05.14.00
+        by smtp.gmail.com with ESMTPSA id u64sm71305032pfi.0.2016.09.19.05.11.47
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 05:14:02 -0700 (PDT)
-Date: Mon, 19 Sep 2016 17:44:43 +0530
+        Mon, 19 Sep 2016 05:11:48 -0700 (PDT)
+Date: Mon, 19 Sep 2016 17:42:29 +0530
 From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, forest@alittletooquiet.net
-Subject: [PATCH 1/2] Staging: vt6655: baseband: Remove unnecessary space
- after a cast
-Message-ID: <e97d762cf4e296d066ed3a6aeed9460a7a5e4021.1474286513.git.bankarsandhya512@gmail.com>
-References: <cover.1474286513.git.bankarsandhya512@gmail.com>
+Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org
+Subject: [PATCH 0/2] Staging: Remove unnecessary space after a cast
+Message-ID: <cover.1474286513.git.bankarsandhya512@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1474286513.git.bankarsandhya512@gmail.com>
 User-Agent: Mutt/1.5.20 (2009-12-10)
 
 No space is necessary after a cast. This issue was found by checkpatch.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/vt6655/baseband.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Sandhya Bankar (2):
+  Staging: vt6655: baseband: Remove unnecessary space after a cast
+  Staging: vt6655: card: Remove unnecessary space after a cast
 
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index 654d072..de503a3 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -1729,7 +1729,7 @@ BBuGetFrameTime(
- 	unsigned int uFrameTime;
- 	unsigned int uPreamble;
- 	unsigned int uTmp;
--	unsigned int uRateIdx = (unsigned int) wRate;
-+	unsigned int uRateIdx = (unsigned int)wRate;
- 	unsigned int uRate = 0;
- 
- 	if (uRateIdx > RATE_54M)
--- 
-1.7.1
+ drivers/staging/vt6655/baseband.c |    2 +-
+ drivers/staging/vt6655/card.c     |    4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 
