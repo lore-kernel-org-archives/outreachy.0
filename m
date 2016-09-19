@@ -1,114 +1,130 @@
 X-GM-THRID: 6331768808573763584
-X-Received: by 10.129.106.139 with SMTP id f133mr18620033ywc.56.1474481891995;
-        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
+X-Received: by 10.28.209.205 with SMTP id i196mr384765wmg.14.1474262339417;
+        Sun, 18 Sep 2016 22:18:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.162 with SMTP id 31ls2779976otj.21.gmail; Wed, 21 Sep
- 2016 11:18:11 -0700 (PDT)
-X-Received: by 10.129.123.197 with SMTP id w188mr8599428ywc.111.1474481891628;
-        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id um12si7683748pab.2.2016.09.21.11.18.11
+Received: by 10.28.55.79 with SMTP id e76ls1628795wma.19.gmail; Sun, 18 Sep
+ 2016 22:18:58 -0700 (PDT)
+X-Received: by 10.28.72.196 with SMTP id v187mr382231wma.0.1474262338759;
+        Sun, 18 Sep 2016 22:18:58 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s6si476390wmb.1.2016.09.18.22.18.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sun, 18 Sep 2016 22:18:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id hi10so2581160pac.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=hkSuq5LcGcZD6dDb/6/UPmlU/zufmFqJ1h1o1XwvFQ8=;
-        b=a9ALzSmPwXHaoCdPc8PG+5kozQia3E1A6f9nRH1WJWvA8M9OEkcX7AjsJTbHt9e6Du
-         +0KBu/ANOcp9uzDoJtSg9TAVmamiwF2FgHj3Axp5qIvz6OJsIVJsTQS7JD6p8R2wsvjV
-         JU5EzwWh01auqwGf5j0SVb8GBiZs/y4vsqIvC9y5VXJYWhbaMQ+V02PNfDgjIPwMJfOa
-         Yhk/JRRYfxINDOQiTjYUjHE7WoEVFmC3qaDwbfJQEppj8TzQp4cTaTDJaJiDkvwWpp0x
-         QvDimvUKa9ygsvACvcGRaNwt5wthLfjcuR46fDH64GjciKqQYgLfeO7b8tjKcYKbyWDA
-         PCIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=hkSuq5LcGcZD6dDb/6/UPmlU/zufmFqJ1h1o1XwvFQ8=;
-        b=irChUIBirjbChJgWmJRoM7u4EbpWxZNiUrfbKLjCLJ/cMSf4AwFx04zy2xGbp5M6NC
-         Rlks0X0OuDjcmL0OpqVmBGUTq4yaSo+ZuUuXmMq/F7HgRSnv+R6cJXG6XyRBaIOsVU2T
-         UAYDZGzGgg8NTzaFEMOTRVH1qwUnORHSqdv7rRCCZCnXmXcFaLu9zyjjUe+SkoQ6beZT
-         9sjYtNZx1f71ffm9Jvqu+OxUEjZqc3+NukH/00285g20u9LLl83fCeTwTIfyFTBO0IBg
-         8QkMo/ajaE6/BE+CTx6rlIBIv0rrghI26A5wgPTUCh5ynZiFS/5UqFI9X5t/PEUyZUZa
-         3Y9w==
-X-Gm-Message-State: AE9vXwN9BaS3tKnK6mKHbYddvI6P/C2KjaYGKhQTmh52gKs2+xRP/443WSN8bLdm9j4xKg==
-X-Received: by 10.66.23.69 with SMTP id k5mr67419192paf.144.1474481891127;
-        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.174.252])
-        by smtp.gmail.com with ESMTPSA id o123sm30176189pfg.78.2016.09.21.11.18.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 11:18:10 -0700 (PDT)
-Date: Wed, 21 Sep 2016 23:47:55 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: ks7010: Remove unnecessary variable used to store
- return value
-Message-ID: <20160921181755.GA21272@sayli-HP-15-Notebook-PC>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,360,1470693600"; 
+   d="scan'208";a="237305487"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 19 Sep 2016 07:18:58 +0200
+Date: Mon, 19 Sep 2016 07:18:57 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: sayli karnik <karniksayli1995@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: ks7010: Remove unnecessary
+ variable used to store return value
+In-Reply-To: <20160918201634.GA28903@sayli-HP-15-Notebook-PC>
+Message-ID: <alpine.DEB.2.10.1609190718240.4025@hadrien>
+References: <20160918201634.GA28903@sayli-HP-15-Notebook-PC>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch removes an unnecessary variable used to store return values
-in order to reduce memory usage.
-Done using coccinelle:
-@@
-type T;
-constant C;
-identifier ret;
-@@
-- T ret = C;
-... when != ret
-return
-- ret
-+ C
-;
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/ks7010/ks7010_sdio.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
-index 37a4ba3..b27e9b0 100644
---- a/drivers/staging/ks7010/ks7010_sdio.c
-+++ b/drivers/staging/ks7010/ks7010_sdio.c
-@@ -171,12 +171,11 @@ void ks_wlan_hw_wakeup_request(struct ks_wlan_private *priv)
- 
- int _ks_wlan_hw_power_save(struct ks_wlan_private *priv)
- {
--	int rc = 0;
- 	unsigned char rw_data;
- 	int retval;
- 
- 	if (priv->reg.powermgt == POWMGT_ACTIVE_MODE)
--		return rc;
-+		return 0;
- 
- 	if (priv->reg.operation_mode == MODE_INFRASTRUCTURE &&
- 	    (priv->connect_status & CONNECT_STATUS_MASK) == CONNECT_STATUS) {
-@@ -244,7 +243,7 @@ int _ks_wlan_hw_power_save(struct ks_wlan_private *priv)
- 		}
- 	}
- 
--	return rc;
-+	return 0;
- }
- 
- int ks_wlan_hw_power_save(struct ks_wlan_private *priv)
--- 
-2.7.4
+On Mon, 19 Sep 2016, sayli karnik wrote:
 
+> This patch removes an unnecessary variable used to store return values in order
+> to reduce memory usage.
+> Done using coccinelle:
+> @@
+> type T;
+> constant C;
+> identifier ret;
+> @@
+> - T ret = C;
+> ... when != ret
+> return
+> - ret
+> + C
+> ;
+>
+> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/ks7010/ks_hostif.c | 10 +++-------
+>  1 file changed, 3 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+> index 8e33a43..2969feb 100644
+> --- a/drivers/staging/ks7010/ks_hostif.c
+> +++ b/drivers/staging/ks7010/ks_hostif.c
+> @@ -100,8 +100,6 @@ static void ks_wlan_hw_wakeup_task(struct work_struct *work)
+>  static
+>  int ks_wlan_do_power_save(struct ks_wlan_private *priv)
+>  {
+> -	int rc = 0;
+> -
+>  	DPRINTK(4, "psstatus.status=%d\n", atomic_read(&priv->psstatus.status));
+>
+>  	if ((priv->connect_status & CONNECT_STATUS_MASK) == CONNECT_STATUS) {
+> @@ -109,7 +107,7 @@ int ks_wlan_do_power_save(struct ks_wlan_private *priv)
+>  	} else {
+>  		priv->dev_state = DEVICE_STATE_READY;
+>  	}
+> -	return rc;
+> +	return 0;
+>  }
+>
+>  static
+> @@ -221,7 +219,6 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+>  {
+>  	unsigned char *bp;
+>  	int bsize, offset;
+> -	int rc = 0;
+>
+>  	DPRINTK(3, "\n");
+>  	memset(ap, 0, sizeof(struct local_ap_t));
+> @@ -319,7 +316,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+>  		bp += (*(bp + 1) + 2);	/* pointer update */
+>  	}
+>
+> -	return rc;
+> +	return 0;
+>  }
+>
+>  static
+> @@ -2704,7 +2701,6 @@ void hostif_sme_enqueue(struct ks_wlan_private *priv, unsigned short event)
+>
+>  int hostif_init(struct ks_wlan_private *priv)
+>  {
+> -	int rc = 0;
+>  	int i;
+>
+>  	DPRINTK(3, "\n");
+> @@ -2754,7 +2750,7 @@ int hostif_init(struct ks_wlan_private *priv)
+>
+>  	tasklet_init(&priv->sme_task, hostif_sme_task, (unsigned long)priv);
+>
+> -	return rc;
+> +	return 0;
+>  }
+>
+>  void hostif_exit(struct ks_wlan_private *priv)
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160918201634.GA28903%40sayli-HP-15-Notebook-PC.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
