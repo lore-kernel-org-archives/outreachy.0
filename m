@@ -1,86 +1,151 @@
 X-GM-THRID: 6332043627755208704
-X-Received: by 10.98.78.146 with SMTP id c140mr4357238pfb.19.1474297675624;
-        Mon, 19 Sep 2016 08:07:55 -0700 (PDT)
+X-Received: by 10.25.75.21 with SMTP id y21mr730445lfa.11.1474296124196;
+        Mon, 19 Sep 2016 07:42:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.201.21 with SMTP id z21ls1175229iof.15.gmail; Mon, 19 Sep
- 2016 08:07:53 -0700 (PDT)
-X-Received: by 10.107.131.35 with SMTP id f35mr383370iod.16.1474297673697;
-        Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
+Received: by 10.46.71.195 with SMTP id u186ls830172lja.37.gmail; Mon, 19 Sep
+ 2016 07:42:03 -0700 (PDT)
+X-Received: by 10.46.1.77 with SMTP id 74mr675071ljb.21.1474296123737;
+        Mon, 19 Sep 2016 07:42:03 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id z4si4933528pam.0.2016.09.19.08.07.53
+Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
+        by gmr-mx.google.com with ESMTPS id 185si1826436wmr.2.2016.09.19.07.42.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Mon, 19 Sep 2016 07:42:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id vz6so7128647pab.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
+Received: by mail-lf0-x243.google.com with SMTP id l131so8508393lfl.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 07:42:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=gvHi/l+Bi+oouNWpDnalN1vAnXi3dZCnS69547NgPzk=;
-        b=qK6i+F1eE60c1vNI6YoSNnBrjl4euX5EgxRQ6gVKpZUtVzwDxZ40cLPxb2gFVsy1wQ
-         S9h7Z1Jel4jHIzt/g6zT0Z9AtJIELP97aLAu7HVMD4147SlH0x1QgzUe6ZEZJQuaXiUa
-         fYO+7x8o3Sx0V4zP4JoleeHcNT1kd4PAaBPJxqmhajr/JelrokIVN5bkZo/H2/uHEEGn
-         EnSJDIzF0JtnR7pt3Ln/v/HL5AXaywvlZFFeMXlSFkI2IhdmqI/JQvi3S67GtQCKfjeL
-         Qx72pOXe/73o9EGX//4wQkvkElhSCq3oWOkSE4BHQcKt2IP9iSQSRSe32Unrbaao0dDs
-         SyrA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=yyLwvZzRkae3vlCWzX/oO7I86bGKs4GUGWjwdkKJcd4=;
+        b=zGFur8I/Xw4L1+DQuof174fvnu7iMZITaUI5qBp0f+4FurRzvbwQYE2XNOTr1+DL+k
+         MVL5/8CwTOo4A+7IRjhupucW6eqm4/ZqVI/EBn1CP8R/W3s64PtmZ91sSUC6XTTc/g9I
+         brp8eue+fkWhCkeKdp+/oUk4k9WvOvMTHSOu++D0vUv/sA6lJ2q2cC6au8XIzz+j/+wW
+         KLPSFH51rXFtuXr/nwWixgwcCz3sRmtELmhZUnpXXukrl1iNLibvRdSAJiqdgqmrT7zm
+         RTVGCQPEAesSbFnzL4fxz9tz0ycjLClT/1UaG7NSB55aBh8JkFWystWuzFAeWqj7GLuD
+         nlkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=gvHi/l+Bi+oouNWpDnalN1vAnXi3dZCnS69547NgPzk=;
-        b=Q43TvjsoksbKSqDFmOWNIN0RsCt/7I5z5QMPixtfN40CGWZOHAjXtYMyMrEOhifeUM
-         hW3KqbxkG0R3GCJxsAe47/sTIf7d6L4RGpsFr+fDLM0sAh74OTb5kOmdMhG3w0djBs1e
-         KP2sfRN6QPvVQCYRx0Dfw9mEG5GKkrYt9D/B5f4lu+zeRKZtiooQMLtavzlaSpEkN0EC
-         EWvTnEX+U5gqj+8bIp0q74vNcNYBTEydOkC4rX1oYaQtPgjqFlzDJGj/itviMSCL0wf7
-         DuVvGdAvcfhtZd0m0sDPZQFycelw1dWEXy/hzQ6t81ksO1ArZz+Gv2ojON39l8HBZPsU
-         1/2w==
-X-Gm-Message-State: AE9vXwMI/7i8LqiTRg4Vcb2uJH8rh49PDhbJHmNOwrNu5CPxlQdSh8HufSoOSFiTYySOIg==
-X-Received: by 10.66.132.81 with SMTP id os17mr47934992pab.106.1474297673446;
-        Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([106.215.144.220])
-        by smtp.gmail.com with ESMTPSA id y1sm1562215pfd.90.2016.09.19.08.07.45
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 08:07:52 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Mon, 19 Sep 2016 20:37:37 +0530
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=yyLwvZzRkae3vlCWzX/oO7I86bGKs4GUGWjwdkKJcd4=;
+        b=S4SVHSD8060mtr+M0nDI3e7316msbJB64LDCwB8b8j6/iKTl9Q58zokbzq4Yb1YI6m
+         6LJiLLc1hZxf8xKZ5Nf02ILWTWqtttMvXK1rCnceQeQlGMZt/qkJSdjCwRpqrh3Bc6Js
+         d0OMjHBk8WlPIIXE9gM0wZ/8vBy4c0mpPVBvLkULy1B2K7AHbXZP8Bhu9/FGglhJrP8R
+         vfRcOv7A86JO1VcEzTNeiQPIwmG09gENaQXPZ1rsX8knWd1wivm1jqUX8GXr/xLp+rs1
+         AegC2TwNsEgLuJu3KxgWw11eTA4SeB8PLgQS5Be/aFXqO2gXzs30cmFeAw2+EEYDpya0
+         Y1AA==
+X-Gm-Message-State: AE9vXwMOWxvp/iJLQRuIlAsvebffzILqoRVWGClZImQt/n3XVXCnHVVruQkPJdvqdMkGDtODoixZYuxBS3OKOQ==
+X-Received: by 10.25.158.143 with SMTP id h137mr11422538lfe.83.1474296123071;
+ Mon, 19 Sep 2016 07:42:03 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.114.78.72 with HTTP; Mon, 19 Sep 2016 07:42:02 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1609191639290.3203@hadrien>
+References: <1474293770-22208-1-git-send-email-bhumirks@gmail.com>
+ <alpine.DEB.2.10.1609191618590.3203@hadrien> <CAOH+1jH=Kx=hT8DZ4stQf5touCUeUofcJ9H50A3+odUK12r8cw@mail.gmail.com>
+ <alpine.DEB.2.10.1609191630270.3203@hadrien> <CAOH+1jFvcwZHT=+4RkKSt9qXuHFXw_uSit8iJa67=8dBU3pasg@mail.gmail.com>
+ <alpine.DEB.2.10.1609191639290.3203@hadrien>
 From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	ganesh.krishna@microchip.com,
-	aditya.shankar@microchip.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH v3 0/2] Staging: wilc1000: Code cleanup
-Date: Mon, 19 Sep 2016 20:37:34 +0530
-Message-Id: <1474297656-2989-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Date: Mon, 19 Sep 2016 20:12:02 +0530
+Message-ID: <CAOH+1jEM4zjcwJH+vZRfRg8Zf+10+tXt6UDP4GR+Ms0kx6Cv4g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/2] Staging: wilc1000: Code cleanup
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, ganesh.krishna@microchip.com, 
+	aditya.shankar@microchip.com, 
+	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8
 
-This patchset declares some functions as static and remove their 
-declaration from headers. Also, drop prototypes of some already
-static functions.
+On Mon, Sep 19, 2016 at 8:09 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Mon, 19 Sep 2016, Bhumika Goyal wrote:
+>
+>> On Mon, Sep 19, 2016 at 8:00 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Mon, 19 Sep 2016, Bhumika Goyal wrote:
+>> >
+>> >> On Mon, Sep 19, 2016 at 7:49 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >> > On Mon, 19 Sep 2016, Bhumika Goyal wrote:
+>> >> >
+>> >> >> This patchset declares some functions as static and remove their
+>> >> >> declaration from headers. Also, drop prototypes of some already
+>> >> >> static functions.
+>> >> >
+>> >> > Isn't this a v2?
+>> >> >
+>> >> > julia
+>> >> >
+>> >> Actually, yes but they weren't sent as a patchset before. I realized
+>> >> that in order to make them work they need to be applied in series and
+>> >> so I combined them in a patchset.  Do I need to put a v2 then?
+>> >
+>> > I think it would make clear that there was something else from before that
+>> > should now be ignored.
+>> >
+>>
+>> Ok, but now is it still a v2 or a v3?
+>
+> No idea :)  Whatever is one larger than where you were before.
+>
 
-Changes in v2:
-- Combine both the patches into a patchset.
-- Rebuild patch 2/2.
-- Correct subject and commit message of patch 1/2.
+Ok :D
 
-Changes in v3:
-- Sending v3 as "v2" was not prefixed in subject line.
+Thanks,
+Bhumika
 
-Bhumika Goyal (2):
-  Staging: wilc1000: Drop static function prototypes
-  Staging: wilc1000: Make functions wilc_mac_{open/close} static
-
- drivers/staging/wilc1000/linux_wlan.c             | 30 ++++++++++-------------
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c |  3 ---
- drivers/staging/wilc1000/wilc_wlan.h              |  3 ---
- 3 files changed, 13 insertions(+), 23 deletions(-)
-
--- 
-1.9.1
-
+> julia
+>
+>>
+>> Thanks,
+>> Bhumika
+>>
+>> > julia
+>> >
+>> >>
+>> >> Thanks,
+>> >> Bhumika
+>> >>
+>> >> >>
+>> >> >> Bhumika Goyal (2):
+>> >> >>   Staging: wilc1000: Drop static function prototypes
+>> >> >>   Staging: wilc1000: Make functions wilc_mac_{open/close} static
+>> >> >>
+>> >> >>  drivers/staging/wilc1000/linux_wlan.c             | 30 ++++++++++-------------
+>> >> >>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c |  3 ---
+>> >> >>  drivers/staging/wilc1000/wilc_wlan.h              |  3 ---
+>> >> >>  3 files changed, 13 insertions(+), 23 deletions(-)
+>> >> >>
+>> >> >> --
+>> >> >> 1.9.1
+>> >> >>
+>> >> >> --
+>> >> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1474293770-22208-1-git-send-email-bhumirks%40gmail.com.
+>> >> >> For more options, visit https://groups.google.com/d/optout.
+>> >> >>
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAOH%2B1jH%3DKx%3DhT8DZ4stQf5touCUeUofcJ9H50A3%2BodUK12r8cw%40mail.gmail.com.
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >>
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAOH%2B1jFvcwZHT%3D%2B4RkKSt9qXuHFXw_uSit8iJa67%3D8dBU3pasg%40mail.gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
