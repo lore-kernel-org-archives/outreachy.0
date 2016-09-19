@@ -1,129 +1,85 @@
 X-GM-THRID: 6332043627755208704
-X-Received: by 10.157.38.188 with SMTP id l57mr4208607otb.93.1474297694601;
-        Mon, 19 Sep 2016 08:08:14 -0700 (PDT)
+X-Received: by 10.98.78.146 with SMTP id c140mr4357238pfb.19.1474297675624;
+        Mon, 19 Sep 2016 08:07:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.1.7 with SMTP id 7ls1634771otu.25.gmail; Mon, 19 Sep 2016
- 08:08:14 -0700 (PDT)
-X-Received: by 10.129.55.13 with SMTP id e13mr15501684ywa.9.1474297693826;
-        Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
+Received: by 10.107.201.21 with SMTP id z21ls1175229iof.15.gmail; Mon, 19 Sep
+ 2016 08:07:53 -0700 (PDT)
+X-Received: by 10.107.131.35 with SMTP id f35mr383370iod.16.1474297673697;
+        Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id o13si1595198itc.3.2016.09.19.08.08.13
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id z4si4933528pam.0.2016.09.19.08.07.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q2so4747235pfj.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id vz6so7128647pab.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=SqPjbUa4Ld6ge538HFC33oSglo9WpJ1M3OSr8KhyIME=;
-        b=wjxBkqLmQzuyMy/r3sy6x9vnC/y0D0HcmCS9MBQus2kN4DdmZWvwIYkrbBUIaCtQeF
-         v0DHFe+rYXJdpd23FgqEODOynqegPVIDdKCNw1lGHMKyzVylV+v1qx6pcCL5wWsy/LeE
-         pYgYMtVNLTWzy2tRxFaTvHkjpOUk6xTX2ZYVGgeWPR/ocuW3pSYhdjfxRrkr58oe3VWp
-         AiccfshVf0WKXeseiJyfmO/0QdS5PtV4hak3nIOSqOO3QgRrbEfJLLn3nGKjME9yzNqO
-         75O+u2udknzz9hdZKw5oyNW6ZIMYKGvy1xNPqhAiP9E74mfxMrQMVT8le4P4xsVKHOvu
-         p6sg==
+        h=from:to:cc:subject:date:message-id;
+        bh=gvHi/l+Bi+oouNWpDnalN1vAnXi3dZCnS69547NgPzk=;
+        b=qK6i+F1eE60c1vNI6YoSNnBrjl4euX5EgxRQ6gVKpZUtVzwDxZ40cLPxb2gFVsy1wQ
+         S9h7Z1Jel4jHIzt/g6zT0Z9AtJIELP97aLAu7HVMD4147SlH0x1QgzUe6ZEZJQuaXiUa
+         fYO+7x8o3Sx0V4zP4JoleeHcNT1kd4PAaBPJxqmhajr/JelrokIVN5bkZo/H2/uHEEGn
+         EnSJDIzF0JtnR7pt3Ln/v/HL5AXaywvlZFFeMXlSFkI2IhdmqI/JQvi3S67GtQCKfjeL
+         Qx72pOXe/73o9EGX//4wQkvkElhSCq3oWOkSE4BHQcKt2IP9iSQSRSe32Unrbaao0dDs
+         SyrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=SqPjbUa4Ld6ge538HFC33oSglo9WpJ1M3OSr8KhyIME=;
-        b=mxpasdlxdpvguGPcfw3UoBbg3I4CRoD7pIVEFYLM07nomJtEUN/ywbZS4Wz8lZE1Gd
-         ySBiLYqaN6SXh6meEBbbjn45XRzRQJdAOH4mWEMXXbl9iX4zMAK7mStx/3YjZ/H5L2X2
-         ap87vgsovtJ5GESNn/W6MvedJgFzTv3J2lJXxASsQxDgvTKLrpPevaVSgN0QXmtksHFr
-         lsmho2HaH1eu8Y0pegmx7uE+Y1t5mG4WtdY+BjayZ7LvBL4cRZHu0AH1OvUSvYw624bb
-         y+zKvTjdyheCnWWQK2dInVW8BGHj4Qi+RUCJhjPMAkuqRI39+aZepsD+KlDkst02fipi
-         vbaw==
-X-Gm-Message-State: AE9vXwONHzKm9nnlXkxawBbB+oX81izQlflk3fh8Wyrh0P20aXUP21+whRnWjLO21K/xHA==
-X-Received: by 10.98.14.20 with SMTP id w20mr48112408pfi.9.1474297693594;
-        Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=gvHi/l+Bi+oouNWpDnalN1vAnXi3dZCnS69547NgPzk=;
+        b=Q43TvjsoksbKSqDFmOWNIN0RsCt/7I5z5QMPixtfN40CGWZOHAjXtYMyMrEOhifeUM
+         hW3KqbxkG0R3GCJxsAe47/sTIf7d6L4RGpsFr+fDLM0sAh74OTb5kOmdMhG3w0djBs1e
+         KP2sfRN6QPvVQCYRx0Dfw9mEG5GKkrYt9D/B5f4lu+zeRKZtiooQMLtavzlaSpEkN0EC
+         EWvTnEX+U5gqj+8bIp0q74vNcNYBTEydOkC4rX1oYaQtPgjqFlzDJGj/itviMSCL0wf7
+         DuVvGdAvcfhtZd0m0sDPZQFycelw1dWEXy/hzQ6t81ksO1ArZz+Gv2ojON39l8HBZPsU
+         1/2w==
+X-Gm-Message-State: AE9vXwMI/7i8LqiTRg4Vcb2uJH8rh49PDhbJHmNOwrNu5CPxlQdSh8HufSoOSFiTYySOIg==
+X-Received: by 10.66.132.81 with SMTP id os17mr47934992pab.106.1474297673446;
+        Mon, 19 Sep 2016 08:07:53 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
 Received: from gmail.com ([106.215.144.220])
-        by smtp.gmail.com with ESMTPSA id d188sm20131328pfd.3.2016.09.19.08.08.02
+        by smtp.gmail.com with ESMTPSA id y1sm1562215pfd.90.2016.09.19.08.07.45
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 08:08:12 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Mon, 19 Sep 2016 20:37:54 +0530
+        Mon, 19 Sep 2016 08:07:52 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Mon, 19 Sep 2016 20:37:37 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	ganesh.krishna@microchip.com,
 	aditya.shankar@microchip.com,
 	gregkh@linuxfoundation.org
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH v3 1/2] Staging: wilc1000: Drop static function prototypes
-Date: Mon, 19 Sep 2016 20:37:35 +0530
-Message-Id: <1474297656-2989-2-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH v3 0/2] Staging: wilc1000: Code cleanup
+Date: Mon, 19 Sep 2016 20:37:34 +0530
+Message-Id: <1474297656-2989-1-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1474297656-2989-1-git-send-email-bhumirks@gmail.com>
-References: <1474297656-2989-1-git-send-email-bhumirks@gmail.com>
 
-Drop the prototypes of some static functions. To be compatible with the
-changes move the declaration of wilc_netdev_ops structure  lower in the
-file, after the definition of these functions used in its initializer.
+This patchset declares some functions as static and remove their 
+declaration from headers. Also, drop prototypes of some already
+static functions.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
 Changes in v2:
-- Combine it into a patchset.
-- Correct the subject line and commit message.
+- Combine both the patches into a patchset.
+- Rebuild patch 2/2.
+- Correct subject and commit message of patch 1/2.
+
 Changes in v3:
 - Sending v3 as "v2" was not prefixed in subject line.
- 
- drivers/staging/wilc1000/linux_wlan.c | 26 +++++++++++---------------
- 1 file changed, 11 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-index 6370a5e..7242532 100644
---- a/drivers/staging/wilc1000/linux_wlan.c
-+++ b/drivers/staging/wilc1000/linux_wlan.c
-@@ -34,24 +34,9 @@ static int wlan_deinit_locks(struct net_device *dev);
- static void wlan_deinitialize_threads(struct net_device *dev);
- 
- static void linux_wlan_tx_complete(void *priv, int status);
--static int  mac_init_fn(struct net_device *ndev);
--static struct net_device_stats *mac_stats(struct net_device *dev);
--static int  mac_ioctl(struct net_device *ndev, struct ifreq *req, int cmd);
--static void wilc_set_multicast_list(struct net_device *dev);
- 
- bool wilc_enable_ps = true;
- 
--static const struct net_device_ops wilc_netdev_ops = {
--	.ndo_init = mac_init_fn,
--	.ndo_open = wilc_mac_open,
--	.ndo_stop = wilc_mac_close,
--	.ndo_start_xmit = wilc_mac_xmit,
--	.ndo_do_ioctl = mac_ioctl,
--	.ndo_get_stats = mac_stats,
--	.ndo_set_rx_mode  = wilc_set_multicast_list,
--
--};
--
- static int dev_state_ev_handler(struct notifier_block *this,
- 				unsigned long event, void *ptr)
- {
-@@ -1244,6 +1229,17 @@ void wilc_netdev_cleanup(struct wilc *wilc)
- }
- EXPORT_SYMBOL_GPL(wilc_netdev_cleanup);
- 
-+static const struct net_device_ops wilc_netdev_ops = {
-+	.ndo_init = mac_init_fn,
-+	.ndo_open = wilc_mac_open,
-+	.ndo_stop = wilc_mac_close,
-+	.ndo_start_xmit = wilc_mac_xmit,
-+	.ndo_do_ioctl = mac_ioctl,
-+	.ndo_get_stats = mac_stats,
-+	.ndo_set_rx_mode  = wilc_set_multicast_list,
-+
-+};
-+
- int wilc_netdev_init(struct wilc **wilc, struct device *dev, int io_type,
- 		     int gpio, const struct wilc_hif_func *ops)
- {
+Bhumika Goyal (2):
+  Staging: wilc1000: Drop static function prototypes
+  Staging: wilc1000: Make functions wilc_mac_{open/close} static
+
+ drivers/staging/wilc1000/linux_wlan.c             | 30 ++++++++++-------------
+ drivers/staging/wilc1000/wilc_wfi_cfgoperations.c |  3 ---
+ drivers/staging/wilc1000/wilc_wlan.h              |  3 ---
+ 3 files changed, 13 insertions(+), 23 deletions(-)
+
 -- 
 1.9.1
 
