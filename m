@@ -1,135 +1,129 @@
 X-GM-THRID: 6332043627755208704
-X-Received: by 10.66.167.234 with SMTP id zr10mr4733557pab.96.1474297714761;
-        Mon, 19 Sep 2016 08:08:34 -0700 (PDT)
+X-Received: by 10.157.38.188 with SMTP id l57mr4208607otb.93.1474297694601;
+        Mon, 19 Sep 2016 08:08:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.162 with SMTP id 31ls1524374otj.21.gmail; Mon, 19 Sep
- 2016 08:08:34 -0700 (PDT)
-X-Received: by 10.13.201.3 with SMTP id l3mr15179505ywd.24.1474297714356;
-        Mon, 19 Sep 2016 08:08:34 -0700 (PDT)
+Received: by 10.157.1.7 with SMTP id 7ls1634771otu.25.gmail; Mon, 19 Sep 2016
+ 08:08:14 -0700 (PDT)
+X-Received: by 10.129.55.13 with SMTP id e13mr15501684ywa.9.1474297693826;
+        Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id um12si4860284pab.2.2016.09.19.08.08.34
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id o13si1595198itc.3.2016.09.19.08.08.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 08:08:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id my20so4126346pab.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 08:08:34 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id q2so4747235pfj.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=bbMLSHjkQ3Q9+3VnXQPYmWKxQg5MSv6gVHAMGy9e0Nk=;
-        b=V2nuD2x6uQFPujZIUIVbxhXhssG4mCv2RWl2Fqk9uzpQxx/S2Mnk9ZEynpMykQuKmJ
-         izRs+cDN5CHUWxILTu17KoDx8LmIeB3+XOQk2Q/x9Otnxm5C3NfBWbEda7tpHmZj8+U2
-         ASE0nb7iq3dUI1hepgwMHbtAIftifeAcm2abVMudO0zMMk+DZOwVkDLDSCle/huZaUEg
-         gHYVrIPy9Qt9wuhygKFjhT/c4eeFcGWMMCVyfnCx7ukrDWQDcUq+43EW83KqYZTLgniK
-         e6o4kLUgD5TOoTcy76aPzSD9jNMQiwBCEJ4vfLrGGN+q9QlveH6rSCbenUQQFZhU9lb1
-         Fitg==
+        bh=SqPjbUa4Ld6ge538HFC33oSglo9WpJ1M3OSr8KhyIME=;
+        b=wjxBkqLmQzuyMy/r3sy6x9vnC/y0D0HcmCS9MBQus2kN4DdmZWvwIYkrbBUIaCtQeF
+         v0DHFe+rYXJdpd23FgqEODOynqegPVIDdKCNw1lGHMKyzVylV+v1qx6pcCL5wWsy/LeE
+         pYgYMtVNLTWzy2tRxFaTvHkjpOUk6xTX2ZYVGgeWPR/ocuW3pSYhdjfxRrkr58oe3VWp
+         AiccfshVf0WKXeseiJyfmO/0QdS5PtV4hak3nIOSqOO3QgRrbEfJLLn3nGKjME9yzNqO
+         75O+u2udknzz9hdZKw5oyNW6ZIMYKGvy1xNPqhAiP9E74mfxMrQMVT8le4P4xsVKHOvu
+         p6sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=bbMLSHjkQ3Q9+3VnXQPYmWKxQg5MSv6gVHAMGy9e0Nk=;
-        b=gIFQIeigd2/UfiMazmTTtgpXegPKLkASwv7J8XytM8uvL4hYnGLnjjRnlFFvvFxq75
-         R26Q1GIKct5sEBLhYfRxcIcZCzQ0Fh/6L5cQNUJ5iW3PqIaqBTn3gqT4mzWJuaXHRLbQ
-         LUv9mTXbX5W5AEfqEVwS6mR77Jb5cTW4pVHu4Sbrk+I/DAGa4hZ4iNSFiQsmuYoFnaNs
-         MrgIEk1R42PilM+dPxQgSdtoR3f0XDBjMf/Uur9Mo5qwZJ9wfHwnNmFJkI/41ViHFEbD
-         kcT6D35wReU4G6b4WTroRAjRV8dqdPQFFWcSWjBXyIWSnNHuAX8rEZhbQ8TDvdUtfemh
-         avjQ==
-X-Gm-Message-State: AE9vXwPIREq6FngwlJRb653o95s52jmT0l+uTkaB2SFl4txYR2RB2tya7DYq24Ka5WMkjA==
-X-Received: by 10.66.253.7 with SMTP id zw7mr47683570pac.25.1474297713707;
-        Mon, 19 Sep 2016 08:08:33 -0700 (PDT)
+        bh=SqPjbUa4Ld6ge538HFC33oSglo9WpJ1M3OSr8KhyIME=;
+        b=mxpasdlxdpvguGPcfw3UoBbg3I4CRoD7pIVEFYLM07nomJtEUN/ywbZS4Wz8lZE1Gd
+         ySBiLYqaN6SXh6meEBbbjn45XRzRQJdAOH4mWEMXXbl9iX4zMAK7mStx/3YjZ/H5L2X2
+         ap87vgsovtJ5GESNn/W6MvedJgFzTv3J2lJXxASsQxDgvTKLrpPevaVSgN0QXmtksHFr
+         lsmho2HaH1eu8Y0pegmx7uE+Y1t5mG4WtdY+BjayZ7LvBL4cRZHu0AH1OvUSvYw624bb
+         y+zKvTjdyheCnWWQK2dInVW8BGHj4Qi+RUCJhjPMAkuqRI39+aZepsD+KlDkst02fipi
+         vbaw==
+X-Gm-Message-State: AE9vXwONHzKm9nnlXkxawBbB+oX81izQlflk3fh8Wyrh0P20aXUP21+whRnWjLO21K/xHA==
+X-Received: by 10.98.14.20 with SMTP id w20mr48112408pfi.9.1474297693594;
+        Mon, 19 Sep 2016 08:08:13 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
 Received: from gmail.com ([106.215.144.220])
-        by smtp.gmail.com with ESMTPSA id h66sm72377090pfc.47.2016.09.19.08.08.23
+        by smtp.gmail.com with ESMTPSA id d188sm20131328pfd.3.2016.09.19.08.08.02
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 08:08:32 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Mon, 19 Sep 2016 20:38:15 +0530
+        Mon, 19 Sep 2016 08:08:12 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Mon, 19 Sep 2016 20:37:54 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	ganesh.krishna@microchip.com,
 	aditya.shankar@microchip.com,
 	gregkh@linuxfoundation.org
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH v3 2/2] Staging: wilc1000: Make functions wilc_mac_{open/close} static
-Date: Mon, 19 Sep 2016 20:37:36 +0530
-Message-Id: <1474297656-2989-3-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH v3 1/2] Staging: wilc1000: Drop static function prototypes
+Date: Mon, 19 Sep 2016 20:37:35 +0530
+Message-Id: <1474297656-2989-2-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1474297656-2989-1-git-send-email-bhumirks@gmail.com>
 References: <1474297656-2989-1-git-send-email-bhumirks@gmail.com>
 
-The functions wilc_mac_{open/close} are used only in linux_wlan.c.
-Therefore, declare them static and remove their declaration from
-header wilc_wlan.h and also remove their extern declaration from
-wilc_wfi_cfgoperations.c.
+Drop the prototypes of some static functions. To be compatible with the
+changes move the declaration of wilc_netdev_ops structure  lower in the
+file, after the definition of these functions used in its initializer.
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
 Changes in v2:
 - Combine it into a patchset.
-- Rebuild. 
+- Correct the subject line and commit message.
 Changes in v3:
 - Sending v3 as "v2" was not prefixed in subject line.
  
-drivers/staging/wilc1000/linux_wlan.c             | 4 ++--
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 ---
- drivers/staging/wilc1000/wilc_wlan.h              | 3 ---
- 3 files changed, 2 insertions(+), 8 deletions(-)
+ drivers/staging/wilc1000/linux_wlan.c | 26 +++++++++++---------------
+ 1 file changed, 11 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-index 7242532..118bff5 100644
+index 6370a5e..7242532 100644
 --- a/drivers/staging/wilc1000/linux_wlan.c
 +++ b/drivers/staging/wilc1000/linux_wlan.c
-@@ -832,7 +832,7 @@ static int mac_init_fn(struct net_device *ndev)
- 	return 0;
- }
+@@ -34,24 +34,9 @@ static int wlan_deinit_locks(struct net_device *dev);
+ static void wlan_deinitialize_threads(struct net_device *dev);
  
--int wilc_mac_open(struct net_device *ndev)
-+static int wilc_mac_open(struct net_device *ndev)
- {
- 	struct wilc_vif *vif;
+ static void linux_wlan_tx_complete(void *priv, int status);
+-static int  mac_init_fn(struct net_device *ndev);
+-static struct net_device_stats *mac_stats(struct net_device *dev);
+-static int  mac_ioctl(struct net_device *ndev, struct ifreq *req, int cmd);
+-static void wilc_set_multicast_list(struct net_device *dev);
  
-@@ -1023,7 +1023,7 @@ int wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	return 0;
- }
+ bool wilc_enable_ps = true;
  
--int wilc_mac_close(struct net_device *ndev)
-+static int wilc_mac_close(struct net_device *ndev)
- {
- 	struct wilc_priv *priv;
- 	struct wilc_vif *vif;
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 2c2e8ac..3b26130 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -90,9 +90,6 @@ static const struct wiphy_wowlan_support wowlan_support = {
- #define IS_MGMT_STATUS_SUCCES			0x040
- #define GET_PKT_OFFSET(a) (((a) >> 22) & 0x1ff)
- 
--extern int wilc_mac_open(struct net_device *ndev);
--extern int wilc_mac_close(struct net_device *ndev);
+-static const struct net_device_ops wilc_netdev_ops = {
+-	.ndo_init = mac_init_fn,
+-	.ndo_open = wilc_mac_open,
+-	.ndo_stop = wilc_mac_close,
+-	.ndo_start_xmit = wilc_mac_xmit,
+-	.ndo_do_ioctl = mac_ioctl,
+-	.ndo_get_stats = mac_stats,
+-	.ndo_set_rx_mode  = wilc_set_multicast_list,
 -
- static struct network_info last_scanned_shadow[MAX_NUM_SCANNED_NETWORKS_SHADOW];
- static u32 last_scanned_cnt;
- struct timer_list wilc_during_ip_timer;
-diff --git a/drivers/staging/wilc1000/wilc_wlan.h b/drivers/staging/wilc1000/wilc_wlan.h
-index de6c4dd..f336f4c 100644
---- a/drivers/staging/wilc1000/wilc_wlan.h
-+++ b/drivers/staging/wilc1000/wilc_wlan.h
-@@ -297,9 +297,6 @@ void wilc_enable_tcp_ack_filter(bool value);
- int wilc_wlan_get_num_conn_ifcs(struct wilc *);
- int wilc_mac_xmit(struct sk_buff *skb, struct net_device *dev);
- 
--int wilc_mac_open(struct net_device *ndev);
--int wilc_mac_close(struct net_device *ndev);
+-};
 -
- void WILC_WFI_p2p_rx(struct net_device *dev, u8 *buff, u32 size);
- void host_wakeup_notify(struct wilc *wilc);
- void host_sleep_notify(struct wilc *wilc);
+ static int dev_state_ev_handler(struct notifier_block *this,
+ 				unsigned long event, void *ptr)
+ {
+@@ -1244,6 +1229,17 @@ void wilc_netdev_cleanup(struct wilc *wilc)
+ }
+ EXPORT_SYMBOL_GPL(wilc_netdev_cleanup);
+ 
++static const struct net_device_ops wilc_netdev_ops = {
++	.ndo_init = mac_init_fn,
++	.ndo_open = wilc_mac_open,
++	.ndo_stop = wilc_mac_close,
++	.ndo_start_xmit = wilc_mac_xmit,
++	.ndo_do_ioctl = mac_ioctl,
++	.ndo_get_stats = mac_stats,
++	.ndo_set_rx_mode  = wilc_set_multicast_list,
++
++};
++
+ int wilc_netdev_init(struct wilc **wilc, struct device *dev, int io_type,
+ 		     int gpio, const struct wilc_hif_func *ops)
+ {
 -- 
 1.9.1
 
