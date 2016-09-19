@@ -1,121 +1,253 @@
-X-GM-THRID: 6665593199816343552
-X-Received: by 2002:a2e:5c88:: with SMTP id q130mr591482ljb.2.1551954355966;
-        Thu, 07 Mar 2019 02:25:55 -0800 (PST)
+X-GM-THRID: 6332005806257471488
+X-Received: by 10.28.55.205 with SMTP id e196mr397922wma.0.1474302912596;
+        Mon, 19 Sep 2016 09:35:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:800a:: with SMTP id j10ls630830ljg.8.gmail; Thu, 07 Mar
- 2019 02:25:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzT8G0dW846P0V5uzQsACq1r8hvrlg27nIn2VkP0yzDgMQrBGF+kEeT2E4qzXxhR8993C8i
-X-Received: by 2002:a2e:9194:: with SMTP id f20mr611812ljg.21.1551954354747;
-        Thu, 07 Mar 2019 02:25:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551954354; cv=none;
-        d=google.com; s=arc-20160816;
-        b=oRdvZwPGm+X67RhCaDkNtLJJlf6fzshzpoRmA6CZzS6lkmAPaXsGGuHA8XZIQ0GrGJ
-         j7koEY5bkas25qUHZrEG19Ld0vA/Tj4rx18n29XbzK7d7nS8rJPC20uVCgX2xsWwkKvh
-         tQ+tKsW19L2JI6gkOl+EWWQZUD0pFi1MO6+qcRY9EBY7gKeE2zz+742IU6OjaZyIuufB
-         soAs4V3fZEhI/00bSrZTeifFI6PMfFQvVL8KdhbK2EhUvfPjXTb71+k7v6z27s0JQ4DQ
-         s3SkBVHXXC6X+qSiTC/6yUBdY4UwDA0rpY0/ChB0kYl9O1mwOr13MYgLgAvdJASch+A/
-         xldA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9fV7cP0nLxOK3935hQ5igF/D1bU2wXofmSGEPnjg2hM=;
-        b=uMyBI/rWCxYN0p2uH3ONPqspgamRzgRunvZBbXndqVRGbCYWDkgjzjACr73nNiIqfm
-         KRLJYO/e5LxIArcqbdtIMdflImi7NS8JoL4pd8E6BL6sdZn1Vvv0qcve8/4SSM/p441S
-         suBXUv6v+0YsOnqf8DFe3lTCW6Ady2TW3eV+Qi2hU1istIeq1AZiFktu3SCD5pCk+BPJ
-         9Bhld5Zmwzd+Odo6UMlwikwypsBNuEYDrGioKmigPOuHNetskfwZ3r0Lnx0VQi6GzGps
-         hjm8+mDd+nad5BtwjQOzhwkgcGwbDwZyt5nJKHDXanM+5Oew6WqDOXkzKoLfgYWGkGgc
-         4OLw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J2EFi+Jx;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id v27si178256lje.0.2019.03.07.02.25.54
+Received: by 10.28.150.140 with SMTP id y134ls1939818wmd.12.canary; Mon, 19
+ Sep 2016 09:35:11 -0700 (PDT)
+X-Received: by 10.28.21.84 with SMTP id 81mr568534wmv.8.1474302910955;
+        Mon, 19 Sep 2016 09:35:10 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id 185si1873589wmr.2.2016.09.19.09.35.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 02:25:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
+        Mon, 19 Sep 2016 09:35:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J2EFi+Jx;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x341.google.com with SMTP id q187so8774116wme.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 02:25:54 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x243.google.com with SMTP id 133so15875956wmq.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 09:35:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=9fV7cP0nLxOK3935hQ5igF/D1bU2wXofmSGEPnjg2hM=;
-        b=J2EFi+JxMM9t6hAtpSQgyrcumyBOjSCNH9rxYpQ8d8WsFulU7SO521h4BOewl3DHJe
-         AryKc8X7H1/exn57CYUSjdTmHdXZae6ZaO5yXPsubcuWWn28S3obKaJGpw09svUn9Vqh
-         jnmFNG8xZrC0XBrE5OQUqOHI6AraXDa7JFxq55AYdZSeucmnSe9CvQ9sZPbSz6hVkE3+
-         M4A4VzFdPkapU3HmmLT3Vrgvx4/8RRWJo99MTHb4veNBhxwZGaP1SKrGn7Esy7zfM30y
-         RNh5w8GFSDBwMEwbcV2KhU4+CRx4RbLmF3wVgXGRbiK5Nhn9kV/cfjKEwf+Zw/0sPsaz
-         upSA==
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=74ir4KSGGPpKDKAAND5eU+XEiobXR9tAtJQhJdt5lQ8=;
+        b=I2vEOkVjNOuCkehGIR+Xq3yR+4B7Af43ZZpBdpqEAmzrIOCvmGpB5u4S9tQ1UhTEr/
+         KIE+HgrepjpMSQrtAyCi/H3dUsN7oohe1a16egDsoze79bsdJJqLFn8KqEEaA8eslFMn
+         VT0NYOSiW+RBzsocy6tTFCN+7zLUeiVAa42jU/fNEEtmFXK+EJUvmwN2gjlqJqxiluOV
+         S4/pJFB+CwRMGp1UZySQud3c0QbtXNHOGXqDzQGCSgkFwEqrr2/8wKk/KtcA1KNcCdfA
+         lQyrgVvrNIDQU3OixRgsaSEdD6Rxuc0G/rNpkWmAJZ0xsp+rKNIH1AQh1/U0D9aB1EAV
+         1rBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9fV7cP0nLxOK3935hQ5igF/D1bU2wXofmSGEPnjg2hM=;
-        b=qNIMvrv3FoSy4aNN53dMHn4XYBP7ZsZ9nAgIDdd7sCQ1IYGjwB7NKULws4otCHxu2O
-         cRMoMQnZdOWsYHdnzoJfzwypKcVYbQpht/7CnZqt3JyrNZhCcKigSdJ2JX2L3zJZEjg6
-         ANMp5aMeBHhrSMm0FJWe42Le4nZrqsWjjhyiheb7GPJmArzZ7rE0/ecTg5rhNfW6qNQH
-         H1Fi/8m7HsJ+OLqezOlm+4FsDk3lkfcOsMtm0kco2qrLPi3SgBDgx4Aq8DXmrviXUSRk
-         V52nggTbjWJQAoyAJh+PAwUpujtrWhnY2QiBXzBMpRCWj7wP3pcFDoHj6mLa3OXXuiQi
-         Cg3Q==
-X-Gm-Message-State: APjAAAVMfaEdUtVm7GrMrjD2Bv1Fhx0Moby0h82SD6NvkTzSDmAyPpgX
-	60Ku7MUa7/HbZJ9RJneoqyqy7YghE4c=
-X-Received: by 2002:a1c:d147:: with SMTP id i68mr5408241wmg.41.1551954354087;
-        Thu, 07 Mar 2019 02:25:54 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([141.85.233.104])
-        by smtp.gmail.com with ESMTPSA id u13sm9705833wmf.3.2019.03.07.02.25.53
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=74ir4KSGGPpKDKAAND5eU+XEiobXR9tAtJQhJdt5lQ8=;
+        b=QjEMTWwp6UChIQhbgl/ddkzTjdzpdjBUvbew5tCf2xw6t5fYa5nX1BdFkimu2HdxUM
+         FjAqlIGueY+KTFgohMsCFW2TEtrLbQ9EJAKFbD/MyH4i+ZnlSf4MEz/VbW55dxwEj0NR
+         BKui02FO1YQjirvyvKz2dSaSLisq04MkDnuRomHVQo6W8EBRyOB6tbTUcG6SQSzhyL9T
+         5yK9rGnAD2sgHMi+X0ydlSQsDyne/358XdIwQ+JVdhMbOjXl2a4rJcIIb06Vai5FAdrs
+         filjkg3IHDi1i+rVHXsqLCGektPCPqnOZKtMayRPJOlsuZzSQvh6hUKWDEb3/FxSaewc
+         511w==
+X-Gm-Message-State: AE9vXwPxOi4onaiXmeiapoKzveJv+7pf1yQSHQSplfb2REefeegVTmTucmR2+kzYMD1YLg==
+X-Received: by 10.194.186.136 with SMTP id fk8mr24648019wjc.144.1474302910704;
+        Mon, 19 Sep 2016 09:35:10 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from fireworks ([84.117.92.113])
+        by smtp.gmail.com with ESMTPSA id ce6sm23916228wjc.27.2016.09.19.09.35.09
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 02:25:53 -0800 (PST)
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
+        Mon, 19 Sep 2016 09:35:09 -0700 (PDT)
+Date: Mon, 19 Sep 2016 19:35:09 +0300
+From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
-Subject: [PATCH] staging: speakup: Add spaces around operators
-Date: Thu,  7 Mar 2019 12:25:48 +0200
-Message-Id: <1551954348-7410-1-git-send-email-daniela.mormocea@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org,
+	knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: iio: meter: ade7754: Match alignment with open
+ parenthesis
+Message-ID: <20160919163509.GA15138@fireworks>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add spaces around math operators to get rid of checkpatch warning
+Reorganize the parameters to improve the readability of the code in
+two manners:
+- parameters of distinctive variable types on different lines
+- parameters of similar variable types on the same line
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+Also, take advantage of the horizontal space available and place
+all the parameters on a single line.
+
+Issues found by checkpatch.pl script.
+
+Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 ---
- drivers/staging/speakup/speakup_keypc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v2:
+	- Make the commit message clearer
+	- Reorganize the parameters in a more readable manner
+	- Take advantage of the horizontal space available
 
-diff --git a/drivers/staging/speakup/speakup_keypc.c b/drivers/staging/speakup/speakup_keypc.c
-index b788272..414827e 100644
---- a/drivers/staging/speakup/speakup_keypc.c
-+++ b/drivers/staging/speakup/speakup_keypc.c
-@@ -233,7 +233,7 @@ static void do_catch_up(struct spk_synth *synth)
- 			delay_time_val = delay_time->u.n.value;
- 			spin_unlock_irqrestore(&speakup_info.spinlock, flags);
- 			schedule_timeout(msecs_to_jiffies(delay_time_val));
--			jiff_max = jiffies+jiffy_delta_val;
-+			jiff_max = jiffies + jiffy_delta_val;
- 		}
+ drivers/staging/iio/meter/ade7754.c | 59 ++++++++++++++++---------------------
+ 1 file changed, 25 insertions(+), 34 deletions(-)
+
+diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
+index c46bef64..1730959 100644
+--- a/drivers/staging/iio/meter/ade7754.c
++++ b/drivers/staging/iio/meter/ade7754.c
+@@ -23,9 +23,7 @@
+ #include "meter.h"
+ #include "ade7754.h"
+ 
+-static int ade7754_spi_write_reg_8(struct device *dev,
+-		u8 reg_address,
+-		u8 val)
++static int ade7754_spi_write_reg_8(struct device *dev, u8 reg_address, u8 val)
+ {
+ 	int ret;
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+@@ -42,8 +40,7 @@ static int ade7754_spi_write_reg_8(struct device *dev,
+ }
+ 
+ static int ade7754_spi_write_reg_16(struct device *dev,
+-		u8 reg_address,
+-		u16 value)
++				    u8 reg_address, u16 value)
+ {
+ 	int ret;
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+@@ -59,9 +56,7 @@ static int ade7754_spi_write_reg_16(struct device *dev,
+ 	return ret;
+ }
+ 
+-static int ade7754_spi_read_reg_8(struct device *dev,
+-		u8 reg_address,
+-		u8 *val)
++static int ade7754_spi_read_reg_8(struct device *dev, u8 reg_address, u8 *val)
+ {
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct ade7754_state *st = iio_priv(indio_dev);
+@@ -70,7 +65,7 @@ static int ade7754_spi_read_reg_8(struct device *dev,
+ 	ret = spi_w8r8(st->us, ADE7754_READ_REG(reg_address));
+ 	if (ret < 0) {
+ 		dev_err(&st->us->dev, "problem when reading 8 bit register 0x%02X",
+-				reg_address);
++			reg_address);
+ 		return ret;
  	}
- 	timeout = 1000;
-@@ -261,7 +261,7 @@ static int synth_probe(struct spk_synth *synth)
- 		synth_port = port_forced;
- 		pr_info("probe forced to %x by kernel command line\n",
- 			synth_port);
--		if (synth_request_region(synth_port-1, SYNTH_IO_EXTENT)) {
-+		if (synth_request_region(synth_port - 1, SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
- 		}
-@@ -289,7 +289,7 @@ static int synth_probe(struct spk_synth *synth)
- 		return -ENODEV;
+ 	*val = ret;
+@@ -79,8 +74,7 @@ static int ade7754_spi_read_reg_8(struct device *dev,
+ }
+ 
+ static int ade7754_spi_read_reg_16(struct device *dev,
+-		u8 reg_address,
+-		u16 *val)
++				   u8 reg_address, u16 *val)
+ {
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct ade7754_state *st = iio_priv(indio_dev);
+@@ -99,8 +93,7 @@ static int ade7754_spi_read_reg_16(struct device *dev,
+ }
+ 
+ static int ade7754_spi_read_reg_24(struct device *dev,
+-		u8 reg_address,
+-		u32 *val)
++				   u8 reg_address, u32 *val)
+ {
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct ade7754_state *st = iio_priv(indio_dev);
+@@ -123,7 +116,7 @@ static int ade7754_spi_read_reg_24(struct device *dev,
+ 	ret = spi_sync_transfer(st->us, xfers, ARRAY_SIZE(xfers));
+ 	if (ret) {
+ 		dev_err(&st->us->dev, "problem when reading 24 bit register 0x%02X",
+-				reg_address);
++			reg_address);
+ 		goto error_ret;
  	}
- 	pr_info("%s: %03x-%03x, driver version %s,\n", synth->long_name,
--		synth_port, synth_port+SYNTH_IO_EXTENT-1,
-+		synth_port, synth_port + SYNTH_IO_EXTENT - 1,
- 		synth->version);
- 	synth->alive = 1;
- 	return 0;
+ 	*val = (st->rx[1] << 16) | (st->rx[2] << 8) | st->rx[3];
+@@ -134,8 +127,8 @@ error_ret:
+ }
+ 
+ static ssize_t ade7754_read_8bit(struct device *dev,
+-		struct device_attribute *attr,
+-		char *buf)
++				 struct device_attribute *attr,
++				 char *buf)
+ {
+ 	int ret;
+ 	u8 val = 0;
+@@ -149,8 +142,8 @@ static ssize_t ade7754_read_8bit(struct device *dev,
+ }
+ 
+ static ssize_t ade7754_read_16bit(struct device *dev,
+-		struct device_attribute *attr,
+-		char *buf)
++				  struct device_attribute *attr,
++				  char *buf)
+ {
+ 	int ret;
+ 	u16 val = 0;
+@@ -164,8 +157,8 @@ static ssize_t ade7754_read_16bit(struct device *dev,
+ }
+ 
+ static ssize_t ade7754_read_24bit(struct device *dev,
+-		struct device_attribute *attr,
+-		char *buf)
++				  struct device_attribute *attr,
++				  char *buf)
+ {
+ 	int ret;
+ 	u32 val = 0;
+@@ -179,9 +172,9 @@ static ssize_t ade7754_read_24bit(struct device *dev,
+ }
+ 
+ static ssize_t ade7754_write_8bit(struct device *dev,
+-		struct device_attribute *attr,
+-		const char *buf,
+-		size_t len)
++				  struct device_attribute *attr,
++				  const char *buf,
++				  size_t len)
+ {
+ 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
+ 	int ret;
+@@ -197,9 +190,9 @@ error_ret:
+ }
+ 
+ static ssize_t ade7754_write_16bit(struct device *dev,
+-		struct device_attribute *attr,
+-		const char *buf,
+-		size_t len)
++				   struct device_attribute *attr,
++				   const char *buf,
++				   size_t len)
+ {
+ 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
+ 	int ret;
+@@ -403,16 +396,14 @@ err_ret:
+ }
+ 
+ static ssize_t ade7754_read_frequency(struct device *dev,
+-		struct device_attribute *attr,
+-		char *buf)
++				      struct device_attribute *attr,
++				      char *buf)
+ {
+ 	int ret;
+ 	u8 t;
+ 	int sps;
+ 
+-	ret = ade7754_spi_read_reg_8(dev,
+-			ADE7754_WAVMODE,
+-			&t);
++	ret = ade7754_spi_read_reg_8(dev, ADE7754_WAVMODE, &t);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -423,9 +414,9 @@ static ssize_t ade7754_read_frequency(struct device *dev,
+ }
+ 
+ static ssize_t ade7754_write_frequency(struct device *dev,
+-		struct device_attribute *attr,
+-		const char *buf,
+-		size_t len)
++				       struct device_attribute *attr,
++				       const char *buf,
++				       size_t len)
+ {
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct ade7754_state *st = iio_priv(indio_dev);
 -- 
 2.7.4
 
