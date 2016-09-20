@@ -1,131 +1,87 @@
-X-GM-THRID: 9924000088064
-X-Received: by 10.66.129.171 with SMTP id nx11mr13862332pab.39.1427353467908;
-        Thu, 26 Mar 2015 00:04:27 -0700 (PDT)
+X-GM-THRID: 6332296655202680832
+X-Received: by 10.13.254.71 with SMTP id o68mr5070426ywf.135.1474352706767;
+        Mon, 19 Sep 2016 23:25:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.124.193 with SMTP id mk1ls2309915igb.1.canary; Thu, 26 Mar
- 2015 00:04:27 -0700 (PDT)
-X-Received: by 10.42.183.206 with SMTP id ch14mr35509218icb.24.1427353467089;
-        Thu, 26 Mar 2015 00:04:27 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
-        by gmr-mx.google.com with ESMTPS id gu4si590079pac.1.2015.03.26.00.04.27
+Received: by 10.157.29.220 with SMTP id w28ls1313236otw.27.gmail; Mon, 19 Sep
+ 2016 23:25:06 -0700 (PDT)
+X-Received: by 10.13.233.6 with SMTP id s6mr5867116ywe.63.1474352706442;
+        Mon, 19 Sep 2016 23:25:06 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id z4si5774524pam.0.2016.09.19.23.25.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Mar 2015 00:04:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Sep 2016 23:25:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x233.google.com with SMTP id op1so53885093pdb.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2015 00:04:27 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id n24so468236pfb.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 23:25:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=slURZ2AlRLuHixul1FwhpYKfTVQkZT+NsgVKmnkKKi4=;
+        b=vuSif7RsSDlMOEB678Vc+6zv/sIfLAP/ZhZ56ocP4VivIZbxWn022sG2EqhGUxwAeK
+         +RM2gHZRMuOvyJhFGszSjIKCbAkuPw2dbbDLRxQP39LGQYf8qJXP7ChY2Gz1+G87P0Om
+         /9bwPOOCfvsq2LwdW3B9Z86XmYFz4DQdL8dQuJsiurXbKoHXuHrMsY9DLXVoGhywYp5C
+         krIv40CumC4sxX4nsD7y0wm8qWgmLGDce3q0qrav9Hg1UWh+9dtBKLuYNbZ9CNUmmYxr
+         9bhqAk3xmnructSI/KfId159nua4M7Z9zOLGJuwfNglogbkNe95BZjLx1mKwwO1obNRx
+         LZwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=4daVlRu4YJ2EM0ph3EhTb53aFh8+kVKKnytIflTVN1c=;
-        b=fHb+aRoCwuHQhnj/UV0ehTtTPNcPVk/6FgZcLX5Lv+cpdEV3oGZdiOx2KCFFlberPX
-         zZNKS3jkr1vCJGYGPw1wTjmOByh4mHIZJ6B5z9jQ2P84T1g4TmTqfFHsV2zLaoBt2Zlk
-         YrwWNBhmGJdoNAtD+rU9EclJQ9XyV0SqWbixrDB7KU02hPOZqPImuQfuAoPc6nuiiGYP
-         HmmJ+4IJsjkpFwZABHGKmDoZCBla9TokpcQRetJ5Y/fVi97m49gooQ/3qciTHsy1Lz7F
-         Qbcq9OZlaXRNEXsfO+d/dJC0DFctQd/rvt/RuTMCyYswKWYHN+/JpbVb3CJKP0amWikS
-         Zv/A==
-X-Received: by 10.66.241.36 with SMTP id wf4mr24566245pac.8.1427353466932;
-        Thu, 26 Mar 2015 00:04:26 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id v9sm4515587pdp.12.2015.03.26.00.04.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Mar 2015 00:04:25 -0700 (PDT)
-Date: Thu, 26 Mar 2015 12:32:14 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        bh=slURZ2AlRLuHixul1FwhpYKfTVQkZT+NsgVKmnkKKi4=;
+        b=lhtKWwlqqYJXxwcMqQySD7gFDIBWb09P9MIkYi5IJDTcDp3oIA4TVyVMqyJ6WRVQCO
+         tgAbsCHMJ9V4RY1bL+e6BhYmEbewjQPEa9Mh0QnU9encvfKZ09OyTT8QmdPsItN0bdSE
+         Q2io1yTmH4bCw/e9stXl8VcsehaS5Af52Q+RZ6hr5jpADDKCnzFIAxDH7sHgwQwFgZgz
+         JRpGlamhY64OSqX5990mjZWQtyuMkLwAhYOi+8eJtORsnO6FzpLrEAFOxPrfSM4xniBj
+         Q/klQt1ib1qTohusblcww/awC4phQbaoqSfkN4dtAa/wgCROnZjvYkrmLl60rWJlkFn8
+         qUgg==
+X-Gm-Message-State: AE9vXwPoM+8EH+OQiVV+fieHrmWuir8oqotv59/9/lFba3Ty7YTubOg9nU2Q2APeErW+vw==
+X-Received: by 10.98.201.16 with SMTP id k16mr49582952pfg.102.1474352706047;
+        Mon, 19 Sep 2016 23:25:06 -0700 (PDT)
+Return-Path: <bankarsandhya512@gmail.com>
+Received: from sandhya ([122.170.179.109])
+        by smtp.gmail.com with ESMTPSA id 184sm75885802pfg.20.2016.09.19.23.25.04
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 19 Sep 2016 23:25:05 -0700 (PDT)
+Date: Tue, 20 Sep 2016 11:55:47 +0530
+From: Sandhya Bankar <bankarsandhya512@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: dgnc: Reduce line size to increase readability
-Message-ID: <20150326070214.GA2896@akanksha>
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] Staging: ks7010: Use sizeof structure *pointer over sizeof
+ structure in kzalloc()
+Message-ID: <20160920062547.GA2958@sandhya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.20 (2009-12-10)
 
-Reduce line size to increase code readability.
+This issue was found by checkpatch.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_neo.c | 21 ++++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
+ drivers/staging/ks7010/ks7010_sdio.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
-index 41105be..2abe60b 100644
---- a/drivers/staging/dgnc/dgnc_neo.c
-+++ b/drivers/staging/dgnc/dgnc_neo.c
-@@ -333,7 +333,8 @@ static inline void neo_set_new_start_stop_chars(struct channel_t *ch)
- {
+diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
+index 25ad43d..37a4ba3 100644
+--- a/drivers/staging/ks7010/ks7010_sdio.c
++++ b/drivers/staging/ks7010/ks7010_sdio.c
+@@ -955,7 +955,7 @@ static int ks7010_sdio_probe(struct sdio_func *func,
+ 	netdev = NULL;
  
- 	/* if hardware flow control is set, then skip this whole thing */
--	if (ch->ch_digi.digi_flags & (CTSPACE | RTSPACE) || ch->ch_c_cflag & CRTSCTS)
-+	if (ch->ch_digi.digi_flags & (CTSPACE | RTSPACE) ||
-+		ch->ch_c_cflag & CRTSCTS)
- 		return;
+ 	/* initilize ks_sdio_card */
+-	card = kzalloc(sizeof(struct ks_sdio_card), GFP_KERNEL);
++	card = kzalloc(sizeof(*card), GFP_KERNEL);
+ 	if (!card)
+ 		return -ENOMEM;
  
- 	/* Tell UART what start/stop chars it should be looking for */
-@@ -684,7 +685,8 @@ static void neo_param(struct tty_struct *tty)
- 		};
- 
- 		/* Only use the TXPrint baud rate if the terminal unit is NOT open */
--		if (!(ch->ch_tun.un_flags & UN_ISOPEN) && (un->un_type == DGNC_PRINT))
-+		if (!(ch->ch_tun.un_flags & UN_ISOPEN) &&
-+			(un->un_type == DGNC_PRINT))
- 			baud = C_BAUD(ch->ch_pun.un_tty) & 0xff;
- 		else
- 			baud = C_BAUD(ch->ch_tun.un_tty) & 0xff;
-@@ -697,7 +699,8 @@ static void neo_param(struct tty_struct *tty)
- 
- 		jindex = baud;
- 
--		if ((iindex >= 0) && (iindex < 4) && (jindex >= 0) && (jindex < 16))
-+		if ((iindex >= 0) && (iindex < 4) &&
-+			(jindex >= 0) && (jindex < 16))
- 			baud = bauds[iindex][jindex];
- 		else
- 			baud = 0;
-@@ -801,11 +804,13 @@ static void neo_param(struct tty_struct *tty)
- 	/* Set new start/stop chars */
- 	neo_set_new_start_stop_chars(ch);
- 
--	if (ch->ch_digi.digi_flags & CTSPACE || ch->ch_c_cflag & CRTSCTS) {
-+	if (ch->ch_digi.digi_flags & CTSPACE ||
-+		ch->ch_c_cflag & CRTSCTS) {
- 		neo_set_cts_flow_control(ch);
- 	} else if (ch->ch_c_iflag & IXON) {
- 		/* If start/stop is set to disable, then we should disable flow control */
--		if ((ch->ch_startc == _POSIX_VDISABLE) || (ch->ch_stopc == _POSIX_VDISABLE))
-+		if ((ch->ch_startc == _POSIX_VDISABLE) ||
-+			(ch->ch_stopc == _POSIX_VDISABLE))
- 			neo_set_no_output_flow_control(ch);
- 		else
- 			neo_set_ixon_flow_control(ch);
-@@ -817,7 +822,8 @@ static void neo_param(struct tty_struct *tty)
- 		neo_set_rts_flow_control(ch);
- 	} else if (ch->ch_c_iflag & IXOFF) {
- 		/* If start/stop is set to disable, then we should disable flow control */
--		if ((ch->ch_startc == _POSIX_VDISABLE) || (ch->ch_stopc == _POSIX_VDISABLE))
-+		if ((ch->ch_startc == _POSIX_VDISABLE) ||
-+			(ch->ch_stopc == _POSIX_VDISABLE))
- 			neo_set_no_input_flow_control(ch);
- 		else
- 			neo_set_ixoff_flow_control(ch);
-@@ -1200,7 +1206,8 @@ static void neo_copy_data_from_uart_to_queue(struct channel_t *ch)
- 		linestatus = 0;
- 
- 		/* Copy data from uart to the queue */
--		memcpy_fromio(ch->ch_rqueue + head, &ch->ch_neo_uart->txrxburst, n);
-+		memcpy_fromio(ch->ch_rqueue + head,
-+				&ch->ch_neo_uart->txrxburst, n);
- 
- 		/*
- 		 * Since RX_FIFO_DATA_ERROR was 0, we are guarenteed
 -- 
-1.9.1
+1.7.1
 
 
