@@ -1,143 +1,143 @@
-X-GM-THRID: 6334012392998961152
-X-Received: by 10.237.37.28 with SMTP id v28mr3480690qtc.50.1474752182943;
-        Sat, 24 Sep 2016 14:23:02 -0700 (PDT)
+X-GM-THRID: 6332339959638261760
+X-Received: by 10.28.199.201 with SMTP id x192mr141478wmf.1.1474362788788;
+        Tue, 20 Sep 2016 02:13:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.156.13 with SMTP id f13ls7300533ioe.45.gmail; Sat, 24 Sep
- 2016 14:23:02 -0700 (PDT)
-X-Received: by 10.66.177.234 with SMTP id ct10mr3098745pac.83.1474752182020;
-        Sat, 24 Sep 2016 14:23:02 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 7si3365378pfw.1.2016.09.24.14.23.01
+Received: by 10.28.175.7 with SMTP id y7ls2252411wme.25.canary; Tue, 20 Sep
+ 2016 02:13:08 -0700 (PDT)
+X-Received: by 10.28.168.12 with SMTP id r12mr143348wme.12.1474362788170;
+        Tue, 20 Sep 2016 02:13:08 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id w79si1455320wmw.0.2016.09.20.02.13.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 14:23:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 20 Sep 2016 02:13:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id n24so6939266pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 14:23:01 -0700 (PDT)
+Received: by mail-wm0-x244.google.com with SMTP id 133so2282488wmq.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Sep 2016 02:13:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=gAeFIPEVUgd8JVmFN37wnn1pMh25CzS20P/T6UNJWQM=;
-        b=ouSmgMIwJFbubj28ZSvoEmdSAw4vXedviTU2YUu9/i4+qPvqUOuzNneKrTR4BqBdJR
-         mX8lzJoVicQQJSvv4T3P4bUOqGN97Cb5MwYY6HNKal3qxri0xp4oiPBAmb6WcGdzdFDb
-         Quyz7QHXOi9WtAS+Iiie5qpaKmTnPse5gRKbYB/8rbuopA0o3h0xGk7nqeWwPtp2fbCb
-         gCavUjUV9gLcBFNknQSr2d/+nKhGw083B6m+0KD1OabpFf7OTy1p8XccQgujRxF2JDQP
-         WuwJKvwa8ziJRoxHknnsKQDMQDN4+2Hbbc13eaLN3nlU0AtmohjE5DQxPHVz5uavdsCv
-         r5Qg==
+        bh=kW6dW4UyTiVEPDMu4+QpNpyCvAfMcf42Dh997sG8NTU=;
+        b=N4lYHudOsFxSPLnj8dnWxKQ8yHLP57aysOE4XYBIAAsvHY9YQVLQmZ+G7TZ7E6SZOJ
+         DzHWxZZlNJX9PW+BtxYmaAnGafD/oAVDD739+apkfyqyL/88t1FvrOIxz9fJ1Dtb+YCn
+         ttsdfv0BZ3ZFkr8e5tOASrmNZB3vuQfYkrNdehjQWFp8G+8KteQ712GDAdzIxuChKLPi
+         9gDbjVDU+iOEB0JnXM/SyKWSqjiiNoGkT9lAu6GkDFGf8xucFvIEi2R51a3yxkyV8v1L
+         Z/nKkyKAmcNecidndttpUZAAK+z12Z87Uwd4+aTWKJdcGvSZLQ+xHY3+x7FZLPbL+0Ym
+         3Zmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=gAeFIPEVUgd8JVmFN37wnn1pMh25CzS20P/T6UNJWQM=;
-        b=dkRr7lmeho11OLlC6kIRKNDm4Pzqy1eWYL9kVvG+CECT5aHxEeuu4ZTd8TEnDhpIbq
-         FHQVgPseuYoLEV8Vdg2H9RZsXxifhr4j/wP8FRtlICpHF6tuXNXNQklCwxIYerYPVGzU
-         EbOA6MAMRCY9MKe4lEIl2nG6YMN3EwFj52UYXH4nBQUGP5uBd2eNjX/rmRvknG6lZ/CA
-         /D03AGBxwbOv/xM8UEsr8MKu/L3RzR6leLaM+1JAjCoK+bLZ+lJ1wD5Jabxfx6xPNRQ9
-         H9Ylu+Ary6ENLL9K7Eh7nR1CBmDNlpfFHSoxZjDXljIjqZ6ZdBnhiDgnJman8iTeL4qc
-         6DkQ==
-X-Gm-Message-State: AE9vXwOj4n5VEg8LGSkXCOYWmP0jEjDqhUtNP+N2YvgPWWgniC8CPKkb0/R449ORbgIflA==
-X-Received: by 10.98.197.1 with SMTP id j1mr25001494pfg.77.1474752181844;
-        Sat, 24 Sep 2016 14:23:01 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from localhost.localdomain ([122.170.128.173])
-        by smtp.gmail.com with ESMTPSA id 85sm20423319pfw.92.2016.09.24.14.22.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 14:23:01 -0700 (PDT)
-Date: Sun, 25 Sep 2016 02:52:53 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
-	linux-iio@vger.kernel.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] drivers: iio: magnetometer: Fix sparse endianness warnings
- cast to restricted __le16
-Message-ID: <20160924212253.GA25982@localhost.localdomain>
+        bh=kW6dW4UyTiVEPDMu4+QpNpyCvAfMcf42Dh997sG8NTU=;
+        b=i3a4Z0y9JpzAr8PcnX2/VfoJaUvAuqC5nUHs0+n8hbpuzHpmA82KF2mMf9M5kjJlJr
+         vL+mBDhyJfBb2xB7IAaWhW1MIM0nify4d6RkrHdlVgTFgRLZx568S6cKZmSEHd3/nziu
+         Qiql6FPez00oRhogI2gkZg8Mz6H4RlxzB//BNMGLDN738YTEvIc7Vsvhsua5v0QW6aqg
+         cztZOtfHIAEIKV7J5lXZ2N6G9iGABoXFhNanpe7ofOsGVPEfrTXnphWe9snObmv/Pr4v
+         /yOng8PeGvBIae1YFmW0vjTvJdCgKM3nXFy5bHDXbCxWx2llKb4pgNbFzqPOrP95fwbv
+         ORPw==
+X-Gm-Message-State: AE9vXwN+W3QPo+ONXZApTTySysk21YlqSx0Mee/zKD4PJeqgRYTqBDxc6vXvSpAyaVb+cw==
+X-Received: by 10.194.116.197 with SMTP id jy5mr26504921wjb.11.1474362787971;
+        Tue, 20 Sep 2016 02:13:07 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from fireworks ([84.117.92.113])
+        by smtp.gmail.com with ESMTPSA id a84sm26397099wme.6.2016.09.20.02.13.06
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 20 Sep 2016 02:13:06 -0700 (PDT)
+Date: Tue, 20 Sep 2016 12:13:06 +0300
+From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8188eu: core: rtw_xmit: Remove extra braces
+Message-ID: <20160920091306.GA8473@fireworks>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Fix the following sparse endianness warnings:
+Remove the braces {} in the following cases:
+- when there is a single branch with a single statement.
+- when both branches have a single statement
 
-drivers/iio/magnetometer/ak8975.c:716:16: warning: cast to restricted __le16
-drivers/iio/magnetometer/ak8975.c:837:19: warning: cast to restricted __le16
-drivers/iio/magnetometer/ak8975.c:838:19: warning: cast to restricted __le16
-drivers/iio/magnetometer/ak8975.c:839:19: warning: cast to restricted __le16
+The modifications improve the coding style.
+Issues found by checkpatch.pl script.
 
-
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
-
+Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 ---
- drivers/iio/magnetometer/ak8975.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_xmit.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/iio/magnetometer/ak8975.c b/drivers/iio/magnetometer/ak8975.c
-index af8606c..66a85a8 100644
---- a/drivers/iio/magnetometer/ak8975.c
-+++ b/drivers/iio/magnetometer/ak8975.c
-@@ -690,6 +690,7 @@ static int ak8975_read_axis(struct iio_dev *indio_dev, int index, int *val)
- 	struct ak8975_data *data = iio_priv(indio_dev);
- 	const struct i2c_client *client = data->client;
- 	const struct ak_def *def = data->def;
-+	__le16 rval;
- 	u16 buff;
- 	int ret;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+index be7fe74..916e2b5 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
++++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+@@ -142,9 +142,8 @@ s32	_rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 		if (res == _FAIL) {
+ 			msleep(10);
+ 			res = rtw_os_xmit_resource_alloc(padapter, pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+-			if (res == _FAIL) {
++			if (res == _FAIL)
+ 				goto exit;
+-			}
+ 		}
  
-@@ -703,7 +704,7 @@ static int ak8975_read_axis(struct iio_dev *indio_dev, int index, int *val)
+ 		pxmitbuf->flags = XMIT_VO_QUEUE;
+@@ -248,9 +247,8 @@ void _rtw_free_xmit_priv(struct xmit_priv *pxmitpriv)
+ 		pxmitbuf++;
+ 	}
  
- 	ret = i2c_smbus_read_i2c_block_data_or_emulated(
- 			client, def->data_regs[index],
--			sizeof(buff), (u8*)&buff);
-+			sizeof(rval), (u8*)&rval);
- 	if (ret < 0)
- 		goto exit;
+-	if (pxmitpriv->pallocated_xmit_extbuf) {
++	if (pxmitpriv->pallocated_xmit_extbuf)
+ 		vfree(pxmitpriv->pallocated_xmit_extbuf);
+-	}
  
-@@ -713,7 +714,7 @@ static int ak8975_read_axis(struct iio_dev *indio_dev, int index, int *val)
- 	pm_runtime_put_autosuspend(&data->client->dev);
+ 	rtw_free_hwxmits(padapter);
  
- 	/* Swap bytes and convert to valid range. */
--	buff = le16_to_cpu(buff);
-+	buff = le16_to_cpu(rval);
- 	*val = clamp_t(s16, buff, -def->range, def->range);
- 	return IIO_VAL_INT;
+@@ -781,11 +779,10 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+ 	if (pattrib->psta) {
+ 		psta = pattrib->psta;
+ 	} else {
+-		if (bmcst) {
++		if (bmcst)
+ 			psta = rtw_get_bcmc_stainfo(padapter);
+-		} else {
++		else
+ 			psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
+-		}
+ 	}
  
-@@ -813,6 +814,7 @@ static void ak8975_fill_buffer(struct iio_dev *indio_dev)
- 	const struct ak_def *def = data->def;
- 	int ret;
- 	s16 buff[8]; /* 3 x 16 bits axis values + 1 aligned 64 bits timestamp */
-+	__le16 fval[8];
+ 	memset(hdr, 0, WLANHDR_OFFSET);
+@@ -1050,9 +1047,8 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct
+ 			mpdu_len -= llc_sz;
+ 		}
  
- 	mutex_lock(&data->lock);
+-		if ((pattrib->icv_len > 0) && (pattrib->bswenc)) {
++		if ((pattrib->icv_len > 0) && (pattrib->bswenc))
+ 			mpdu_len -= pattrib->icv_len;
+-		}
  
-@@ -826,17 +828,17 @@ static void ak8975_fill_buffer(struct iio_dev *indio_dev)
- 	 */
- 	ret = i2c_smbus_read_i2c_block_data_or_emulated(client,
- 							def->data_regs[0],
--							3 * sizeof(buff[0]),
--							(u8 *)buff);
-+							3 * sizeof(fval[0]),
-+							(u8 *)fval);
- 	if (ret < 0)
- 		goto unlock;
+ 		if (bmcst) {
+ 			/*  don't do fragment to broadcat/multicast packets */
+@@ -1556,11 +1552,10 @@ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ 	int res = _SUCCESS;
  
- 	mutex_unlock(&data->lock);
  
- 	/* Clamp to valid range. */
--	buff[0] = clamp_t(s16, le16_to_cpu(buff[0]), -def->range, def->range);
--	buff[1] = clamp_t(s16, le16_to_cpu(buff[1]), -def->range, def->range);
--	buff[2] = clamp_t(s16, le16_to_cpu(buff[2]), -def->range, def->range);
-+	buff[0] = clamp_t(s16, le16_to_cpu(fval[0]), -def->range, def->range);
-+	buff[1] = clamp_t(s16, le16_to_cpu(fval[1]), -def->range, def->range);
-+	buff[2] = clamp_t(s16, le16_to_cpu(fval[2]), -def->range, def->range);
+-	if (pattrib->psta) {
++	if (pattrib->psta)
+ 		psta = pattrib->psta;
+-	} else {
++	else
+ 		psta = rtw_get_stainfo(pstapriv, pattrib->ra);
+-	}
  
- 	iio_push_to_buffers_with_timestamp(indio_dev, buff,
- 					   iio_get_time_ns(indio_dev));
+ 	if (psta == NULL) {
+ 		res = _FAIL;
 -- 
-1.8.3.1
+2.7.4
 
 
