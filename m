@@ -1,127 +1,129 @@
-X-GM-THRID: 6337857687216193536
-X-Received: by 10.200.33.233 with SMTP id 38mr1906085qtz.13.1475647484199;
-        Tue, 04 Oct 2016 23:04:44 -0700 (PDT)
+X-GM-THRID: 6332173316844945408
+X-Received: by 10.66.148.202 with SMTP id tu10mr16176300pab.8.1474381803509;
+        Tue, 20 Sep 2016 07:30:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.162.132 with SMTP id l126ls48704ioe.34.gmail; Tue, 04 Oct
- 2016 23:04:43 -0700 (PDT)
-X-Received: by 10.98.154.1 with SMTP id o1mr580510pfe.9.1475647483288;
-        Tue, 04 Oct 2016 23:04:43 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id ua1si2353875pac.1.2016.10.04.23.04.43
+Received: by 10.107.174.140 with SMTP id n12ls4024242ioo.14.gmail; Tue, 20 Sep
+ 2016 07:30:01 -0700 (PDT)
+X-Received: by 10.66.233.5 with SMTP id ts5mr5049447pac.16.1474381801432;
+        Tue, 20 Sep 2016 07:30:01 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-yw0-x241.google.com (mail-yw0-x241.google.com. [2607:f8b0:4002:c05::241])
+        by gmr-mx.google.com with ESMTPS id u139si1185036ywe.5.2016.09.20.07.30.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Oct 2016 23:04:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 20 Sep 2016 07:30:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) client-ip=2607:f8b0:4002:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id t25so5831088pfg.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 04 Oct 2016 23:04:43 -0700 (PDT)
+Received: by mail-yw0-x241.google.com with SMTP id v2so781843ywg.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Sep 2016 07:30:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=KB08igL+o5UgFroZvukBlEfO3ubQz/C/YETpK5Pv7Ks=;
-        b=GMyvw4ODcpuE93wWv9WTdiU4sA8pDUrutzIJiNJsgcG8+0ClrQTU3PD1gpSCH1z5t9
-         Zlbmv8KMw2WUPXiiweENSeHBgiRL9QYCofpEf3wM1j4V8WtoMt6JqUOIjOlKWYV5WxVg
-         j1/tNuJWEOTcWsd1bv5hJ3VHExsqBsgPxHywVEDfj3/58pzTUWD7iCQxuUD0XATFou2+
-         4v8aI2X+I4b5TAmT87eFh881qyw3WoWusEGLkDDFAflNQNU6SrZm9kfq7s4khByCG+B1
-         8cN2QSqn3a2lIR86m05MZ8sy24Ead+TqBSmRBKzEK6sOJcOFMg3d6mgcx3YauN63yP88
-         rFzw==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=PJ+NuS4w6YlQAfn+rjOSydH3h6RU1ixmel3mtKxFHaA=;
+        b=xgEH7S3PVuXkeIRsYWsoUYccIJwdsLL023wafYPsITQgc99L0UwYtfNmEonaItYqAu
+         2YMznBiMCcDspDDGLKTcq1P+f9FLVSYlQ8iBqhgPKOm04mh5VI9qIAls4IHPWHpTEFtF
+         /+ezeTXXl8THEEVrzm6dv+x/jKOV2QURXLcfcJfZhCNqw1zojJRNlY1FnDpPgdt+0syC
+         266rb0ZPwtAhz26DildCMTR8pb/7YkH3fY1peC6OU38kw/YJiKdxpbzWs1BEpqEuWSHV
+         8to4a10+R6x4nREOM49BZ4LGLntrxaJZhpH3kZDTb8mdAkK3jTKjehFnMGeXw1mZqZh5
+         S6Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=KB08igL+o5UgFroZvukBlEfO3ubQz/C/YETpK5Pv7Ks=;
-        b=N1UG12PK9rdAyzEeeepLM85mr3Z2cdD6dae+Atw+n8kPpfLYxc7zRIkx/RchCBgDIp
-         JsSwLnKmxArOq5ewiGuOwZOLovmsmjbKxQ8EabebkgtVgut0xTO1j1NIxYwWxGaV6k0S
-         cxFbw2fpyq8YaMbbNTsd3K6pzrwZn6OtbY5K6zgoni264CzvKC2r0uOdkk79rmHmGmSB
-         O/tA4iD1Nxepa5wI6NuSiNxTwCHFiigXmfWAfEe6M5JusNrGVyBvAWE2G6TPJ4RJzjir
-         5fBJOlDYtHS+64n+2dKlauYjbsHejP9Gp1YXApsYcBMLgqDyMYe/iao5cbx7717UNSVr
-         2lpg==
-X-Gm-Message-State: AA6/9Rm3L0MxejdJ5vaZdhBiXdH8cewWhlYEAW+lSIj2EczDIEIU1aCYLPU3dzMz0tdO6Q==
-X-Received: by 10.98.198.144 with SMTP id x16mr4871049pfk.42.1475647483109;
-        Tue, 04 Oct 2016 23:04:43 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.218])
-        by smtp.gmail.com with ESMTPSA id n19sm59584718pfi.50.2016.10.04.23.04.40
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 23:04:42 -0700 (PDT)
-Date: Wed, 5 Oct 2016 11:34:32 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: arve@android.com, riandrews@android.com,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/2] staging: android: ion: Use sizeof type *pointer
- instead of sizeof type.
-Message-ID: <20161005060424.GA5750@life-desktop>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=PJ+NuS4w6YlQAfn+rjOSydH3h6RU1ixmel3mtKxFHaA=;
+        b=ANmcLTPAphOX1M8bPcWEqvJWAoYInX8G9TIwWf4FADcy2/Y+JS3X7dIIuo4g23H7hw
+         jO4mz+tOWDKwF9Wr8Fyt5/IGeKNU8q0DjU/pMwC9vjAtw9PmHAYkdE67PXiZBh0BZO1a
+         whZPNx08kFA+Hox8lBjcIVx3qFP/PTYUZ+66KHopGYyvW3nEBuMkir3Jzfn4Uz58plhg
+         bV0kgQRegoQRwoXm3zgLLsHrmwMhcgn51MYc7cRg3pC7eY/rdFTWY2ovBAbw7rdD15hz
+         VIZO8dtS2VsHQAYG+NODOLN8k4EWa78IyUVujhOLxgt2jmSD5UtYz3edYq4tI6Nz07VL
+         AmmA==
+X-Gm-Message-State: AE9vXwOoS5QhTrjWMJEod7tZ1F3+L+5WU/eelJoqFk2X7uR89gzyUAI8aTpm/B+vafSWJKaTRTKJkGUm/nne2w==
+X-Received: by 10.129.163.207 with SMTP id a198mr29281079ywh.174.1474381801146;
+ Tue, 20 Sep 2016 07:30:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.37.41.132 with HTTP; Tue, 20 Sep 2016 07:29:20 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1609200757120.3346@hadrien>
+References: <20160919222610.GA12702@sayli-HP-15-Notebook-PC> <alpine.DEB.2.10.1609200757120.3346@hadrien>
+From: sayli karnik <karniksayli1995@gmail.com>
+Date: Tue, 20 Sep 2016 19:59:20 +0530
+Message-ID: <CAKG5xWjkmBsSN6hR-J0O8Cbx8egzfbYoX2zwajTf5XPNs-otYQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: clocking-wizard: Remove use
+ of the kfree function on values allocated using devm_ functions
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8
 
-Use sizeof type *pointer instead of sizeof type.
+On Tue, Sep 20, 2016 at 11:41 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Tue, 20 Sep 2016, sayli karnik wrote:
+>
+>> Values allocated using the devm_functions are freed when the device is detached
+>> and thus the use of the standard freeing function would cause a double free.
+>> Hence the patch eliminates kfree function on clk_name.
+>>
+>> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+>> ---
+>>  drivers/staging/clocking-wizard/clk-xlnx-clock-wizard.c | 5 +----
+>>  1 file changed, 1 insertion(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/staging/clocking-wizard/clk-xlnx-clock-wizard.c b/drivers/staging/clocking-wizard/clk-xlnx-clock-wizard.c
+>> index 7b8be52..5e389e4 100644
+>> --- a/drivers/staging/clocking-wizard/clk-xlnx-clock-wizard.c
+>> +++ b/drivers/staging/clocking-wizard/clk-xlnx-clock-wizard.c
+>> @@ -214,7 +214,7 @@ static int clk_wzrd_probe(struct platform_device *pdev)
+>>                       &pdev->dev, clk_name,
+>>                       __clk_get_name(clk_wzrd->clk_in1),
+>>                       0, reg, 1);
+>> -     kfree(clk_name);
+>> +
+>
+> I'm confused.  Looking a few lines up from this assignment, I see:
+>
+> clk_name = kasprintf(GFP_KERNEL, "%s_mul", dev_name(&pdev->dev))
+>
+Oh right, sorry. Mistook kasprintf() for devm_kasprintf().
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
-	changes in v2-
-		-modify the commit message
-		-modify the patch 
- drivers/staging/android/ion/ion.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+thanks
+sayli
 
-diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
-index f8708c7..cd40ef7 100644
---- a/drivers/staging/android/ion/ion.c
-+++ b/drivers/staging/android/ion/ion.c
-@@ -184,7 +184,7 @@ static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
- 	struct scatterlist *sg;
- 	int i, ret;
- 
--	buffer = kzalloc(sizeof(struct ion_buffer), GFP_KERNEL);
-+	buffer = kzalloc(sizeof(*buffer), GFP_KERNEL);
- 	if (!buffer)
- 		return ERR_PTR(-ENOMEM);
- 
-@@ -341,7 +341,7 @@ static struct ion_handle *ion_handle_create(struct ion_client *client,
- {
- 	struct ion_handle *handle;
- 
--	handle = kzalloc(sizeof(struct ion_handle), GFP_KERNEL);
-+	handle = kzalloc(sizeof(*handle), GFP_KERNEL);
- 	if (!handle)
- 		return ERR_PTR(-ENOMEM);
- 	kref_init(&handle->ref);
-@@ -802,7 +802,7 @@ struct ion_client *ion_client_create(struct ion_device *dev,
- 	}
- 	task_unlock(current->group_leader);
- 
--	client = kzalloc(sizeof(struct ion_client), GFP_KERNEL);
-+	client = kzalloc(sizeof(*client), GFP_KERNEL);
- 	if (!client)
- 		goto err_put_task_struct;
- 
-@@ -1010,7 +1010,7 @@ static void ion_vm_open(struct vm_area_struct *vma)
- 	struct ion_buffer *buffer = vma->vm_private_data;
- 	struct ion_vma_list *vma_list;
- 
--	vma_list = kmalloc(sizeof(struct ion_vma_list), GFP_KERNEL);
-+	vma_list = kmalloc(sizeof(*vma_list), GFP_KERNEL);
- 	if (!vma_list)
- 		return;
- 	vma_list->vma = vma;
-@@ -1621,7 +1621,7 @@ struct ion_device *ion_device_create(long (*custom_ioctl)
- 	struct ion_device *idev;
- 	int ret;
- 
--	idev = kzalloc(sizeof(struct ion_device), GFP_KERNEL);
-+	idev = kzalloc(sizeof(*idev), GFP_KERNEL);
- 	if (!idev)
- 		return ERR_PTR(-ENOMEM);
- 
--- 
-1.9.1
-
+> There are devm functions for some other things, but not clk_name.
+>
+> julia
+>
+>>       if (IS_ERR(clk_wzrd->clks_internal[wzrd_clk_mul])) {
+>>               dev_err(&pdev->dev, "unable to register fixed-factor clock\n");
+>>               ret = PTR_ERR(clk_wzrd->clks_internal[wzrd_clk_mul]);
+>> @@ -268,8 +268,6 @@ static int clk_wzrd_probe(struct platform_device *pdev)
+>>               }
+>>       }
+>>
+>> -     kfree(clk_name);
+>> -
+>>       clk_wzrd->clk_data.clks = clk_wzrd->clkout;
+>>       clk_wzrd->clk_data.clk_num = ARRAY_SIZE(clk_wzrd->clkout);
+>>       of_clk_add_provider(np, of_clk_src_onecell_get, &clk_wzrd->clk_data);
+>> @@ -294,7 +292,6 @@ static int clk_wzrd_probe(struct platform_device *pdev)
+>>  err_rm_int_clks:
+>>       clk_unregister(clk_wzrd->clks_internal[1]);
+>>  err_rm_int_clk:
+>> -     kfree(clk_name);
+>>       clk_unregister(clk_wzrd->clks_internal[0]);
+>>  err_disable_clk:
+>>       clk_disable_unprepare(clk_wzrd->axi_clk);
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160919222610.GA12702%40sayli-HP-15-Notebook-PC.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
