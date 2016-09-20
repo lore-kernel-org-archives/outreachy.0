@@ -1,62 +1,61 @@
 X-GM-THRID: 6332315727900442624
-X-Received: by 10.129.40.4 with SMTP id o4mr15432235ywo.18.1474358456961;
-        Tue, 20 Sep 2016 01:00:56 -0700 (PDT)
+X-Received: by 10.66.135.10 with SMTP id po10mr5617126pab.91.1474358433461;
+        Tue, 20 Sep 2016 01:00:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.152.13 with SMTP id a13ls3908880ioe.18.gmail; Tue, 20 Sep
- 2016 01:00:56 -0700 (PDT)
-X-Received: by 10.66.158.131 with SMTP id wu3mr1425333pab.39.1474358456577;
-        Tue, 20 Sep 2016 01:00:56 -0700 (PDT)
+Received: by 10.36.36.151 with SMTP id f145ls3276797ita.17.gmail; Tue, 20 Sep
+ 2016 01:00:32 -0700 (PDT)
+X-Received: by 10.107.168.98 with SMTP id r95mr5399021ioe.43.1474358432514;
+        Tue, 20 Sep 2016 01:00:32 -0700 (PDT)
 Return-Path: <aquannie@gmail.com>
 Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 7si5977271pfw.1.2016.09.20.01.00.56
+        by gmr-mx.google.com with ESMTPS id 7si5977271pfw.1.2016.09.20.01.00.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Sep 2016 01:00:56 -0700 (PDT)
+        Tue, 20 Sep 2016 01:00:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
 Received: by mail-pa0-x241.google.com with SMTP id vz6so569719pab.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Sep 2016 01:00:56 -0700 (PDT)
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Sep 2016 01:00:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=GGEmGfiyv4dSFsovsbRo7uQlebDoQox7gYpG096zof8=;
-        b=dUyu8so05IzoJFgqZYec34jisUOPLH+ZRXIrZ9xZ+reS+d7hRdbGEf1LM7Qk+Pm9Wm
-         jECyCHKe0oeHi7V5xZOHAwdKnZPH0UpP085aCfWmGt0JoLCTRhjXNiOd27He5+LzYGcg
-         MuZluHE5IxdxtgFCoU+EW8tST5Kv9g2izg7lobLgpqTvw31r54ThM4pUCvs7F6o6mVnO
-         rGEsKTLaOXYVUyhLfwYjhAf3WGC8kCwr5Nx9X0EITHDN6jr+KShXPmRSoifqT4WbUO3N
-         1xm6Rf2XdOTFw8hup0rUYFm1w9LT5O1T/4UVRVDBpVenPXOmZVQq4MNOnb+TG/s8PPIR
-         6MEA==
+        bh=7GWr2U+1WVnUSEB3d1boriNP6qLEODjjmYhVVwCiFoU=;
+        b=yB436qOh1lRX4E2Tx+2oyDUu26+pAMNQ/Fi6f6qedAsD5i9zRoyYv0oa55GC5g79V2
+         5cFuE/2mTi9IkE02GD80Kc9FHeTmhDVbalH3uQ16gnNZ0ra84uHrhO9FSHc32MsM8wtp
+         IIAHDfABH9VVuQxjE8JUGIH12sWVxN1Bnp+RRcsiNPggxbYa2V92S7Y1VtuwjKBoKnns
+         9l388A4YOXhBjUot6AF1P+mfMdQ4H3V+2TpBERa/BJiPV8JkzgB2c+D1GmseQofHUZvX
+         oklfaJ0uAKExnL+VIiEYJ8jSynlkz/blhPeG6seYdUQGwmqofgpmkvmE/I7GIZuHcn4q
+         nKLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=GGEmGfiyv4dSFsovsbRo7uQlebDoQox7gYpG096zof8=;
-        b=aS1q8/j9O+1wM1CkRsFjlNQEeECqAw95jyAVaqnta1lZ6+HJjifGr7V2PFDt+PQg5M
-         lhmoaUgIT0ouYO83SHmDNshduXDZXM3fm1dg4V049weCNn0cfwFvzdGOYDaB93//Gvag
-         9ohlCZ6UNGfNIxrtjSynEmgxdPtTeBBSbJASz1jzFdeBtggxDjvGYCdYPi3Dt8xbcTZ4
-         qNDyP1lvRz8H2x8Fl9tCHiPp97lIrmPrhgP1SsZFEnPIv8qo4AZd1RvBKI8Eraz1L3gV
-         WM0m0KQIRIM+5KKCZkP4qtqM6C4SMaD2M/1ryqpoGfY3yE0lSBr4w4LznxuIU2R2CGl+
-         CDfA==
-X-Gm-Message-State: AE9vXwPfu0FJvRxcBRaarZYqVqw9BTRpEWgKGNlorRjwDzEqWON1OiWvlOSZ+KG1VXWO9Q==
-X-Received: by 10.67.5.136 with SMTP id cm8mr51465290pad.127.1474358456350;
-        Tue, 20 Sep 2016 01:00:56 -0700 (PDT)
+        bh=7GWr2U+1WVnUSEB3d1boriNP6qLEODjjmYhVVwCiFoU=;
+        b=L6ReImFYUoGa9DgdW0kyk5VwXaHkwSZKREEFQ/ug4Snl3x2S8rLPGzClihIaWJSUfO
+         JOey7RBIfjlrE3iyrAmkVk0tw9b8zcb4NEzT0M0ks5aixbtsBdVHLWJLGOx6zcKtFkTf
+         6kDSIKMGDCUY3kWsc/hW/e8eowPJsmzU09R1aMh4lb/jGMRf5jasdJTbk2I7CrWpBVbr
+         z6fLcds8SfFcpTfPyHjzHNhnqMFZO4CW8Mp6Rclj5PiZ1X3tvKNPvqyzHBp0HPH2VWS4
+         almc2YVWE2nSDbkxFPogpSTxm0JBFN1co1H5FfbfzWSni9pjfs+KMT2GyQrJ8uo1iJfm
+         Jikg==
+X-Gm-Message-State: AE9vXwP+1zb4rokojF+wZNWMIFnKrjg7AxuzaieNJHjHWY8wNWLU96az5Ix6S8WDowVepg==
+X-Received: by 10.66.193.71 with SMTP id hm7mr39795111pac.164.1474358432067;
+        Tue, 20 Sep 2016 01:00:32 -0700 (PDT)
 Return-Path: <aquannie@gmail.com>
 Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id q14sm57556942pfg.63.2016.09.20.01.00.54
+        by smtp.gmail.com with ESMTPSA id uj8sm36772185pab.5.2016.09.20.01.00.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Sep 2016 01:00:55 -0700 (PDT)
-Date: Tue, 20 Sep 2016 13:30:47 +0530
+        Tue, 20 Sep 2016 01:00:31 -0700 (PDT)
+Date: Tue, 20 Sep 2016 13:30:24 +0530
 From: Rehas Sachdeva <aquannie@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 2/2] staging: media: davinci_vpfe: Merge assignment with
- return
-Message-ID: <5aed6cd7df4ce37f6c67b404d2921f350e045d9f.1474358156.git.aquannie@gmail.com>
+Subject: [PATCH v2 1/2] staging: media: bcm2048: Merge assignment with return
+Message-ID: <d217a3d71cf410597ff6599e9c43315ef257174d.1474358156.git.aquannie@gmail.com>
 References: <cover.1474358156.git.aquannie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -80,35 +79,51 @@ expression e;
 
 Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
 ---
- drivers/staging/media/davinci_vpfe/dm365_isif.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+Change in v2:
+Make the commit message clearer.
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
-index ae9202d..569bcdc 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
-@@ -146,9 +146,8 @@ enum v4l2_field vpfe_isif_get_fid(struct vpfe_device *vpfe_dev)
- 	u32 field_status;
+ drivers/staging/media/bcm2048/radio-bcm2048.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
+index 8dade19..ea15cc6 100644
+--- a/drivers/staging/media/bcm2048/radio-bcm2048.c
++++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
+@@ -483,10 +483,8 @@ static int bcm2048_set_rds_no_lock(struct bcm2048_device *bdev, u8 rds_on)
+ 		memset(&bdev->rds_info, 0, sizeof(bdev->rds_info));
+ 	}
  
- 	field_status = isif_read(isif->isif_cfg.base_addr, MODESET);
--	field_status = (field_status >> DM365_ISIF_MDFS_OFFSET) &
--			DM365_ISIF_MDFS_MASK;
--	return field_status;
-+	return (field_status >> DM365_ISIF_MDFS_OFFSET) &
-+		DM365_ISIF_MDFS_MASK;
+-	err = bcm2048_send_command(bdev, BCM2048_I2C_FM_RDS_SYSTEM,
+-				   bdev->cache_fm_rds_system);
+-
+-	return err;
++	return bcm2048_send_command(bdev, BCM2048_I2C_FM_RDS_SYSTEM,
++				    bdev->cache_fm_rds_system);
  }
  
- static int
-@@ -594,8 +593,7 @@ isif_validate_raw_params(struct vpfe_isif_raw_config *params)
- 	ret = isif_validate_dfc_params(&params->dfc);
- 	if (ret)
- 		return ret;
--	ret = isif_validate_bclamp_params(&params->bclamp);
--	return ret;
-+	return isif_validate_bclamp_params(&params->bclamp);
+ static int bcm2048_get_rds_no_lock(struct bcm2048_device *bdev)
+@@ -1834,9 +1832,7 @@ static int bcm2048_deinit(struct bcm2048_device *bdev)
+ 	if (err < 0)
+ 		return err;
+ 
+-	err = bcm2048_set_power_state(bdev, BCM2048_POWER_OFF);
+-
+-	return err;
++	return bcm2048_set_power_state(bdev, BCM2048_POWER_OFF);
  }
  
- static int isif_set_params(struct v4l2_subdev *sd, void *params)
+ /*
+@@ -1995,9 +1991,7 @@ static ssize_t bcm2048_##prop##_read(struct device *dev,		\
+ 									\
+ 	value = bcm2048_get_##prop(bdev);				\
+ 									\
+-	value = sprintf(buf, mask "\n", value);				\
+-									\
+-	return value;							\
++	return sprintf(buf, mask "\n", value);				\
+ }
+ 
+ #define DEFINE_SYSFS_PROPERTY(prop, signal, size, mask, check)		\
 -- 
 2.7.4
 
