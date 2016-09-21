@@ -1,110 +1,114 @@
-X-GM-THRID: 6887787795583074304
-X-Received: by 2002:a9d:41:: with SMTP id 59mr11945194ota.216.1603688065017;
-        Sun, 25 Oct 2020 21:54:25 -0700 (PDT)
+X-GM-THRID: 6331768808573763584
+X-Received: by 10.129.106.139 with SMTP id f133mr18620033ywc.56.1474481891995;
+        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:53cb:: with SMTP id h194ls1829364oib.4.gmail; Sun, 25
- Oct 2020 21:54:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzc8XjXb9GUzvX95aXnOPSEcsMcIF4H5YSDvA/k94KynjCoxEK0YPJaa5A8ulx7veTVxo4
-X-Received: by 2002:aca:5883:: with SMTP id m125mr11410282oib.21.1603688063795;
-        Sun, 25 Oct 2020 21:54:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603688063; cv=none;
-        d=google.com; s=arc-20160816;
-        b=g/NWoCuJTM9Igp13lvf/hmY+4tmNaDwZFD8LeUWVkZnC0lz3Bkmc4g7VbWGOKHIS1r
-         JZ7fqrqMJ7Hx41rbj0ObxcHc+ItTmyhUNmlXVaVf9NyIJuPky9MOZ8L/JCg2XcAvpeEK
-         b8xF5DRSNHj1knflXs9Mu0Sv1RSiG89fC+MLm3hzG4uwFSqPe/i+TB+Xyjt7SuPcXnjb
-         W9KEYrN1bKR+TFvs6vUtEXIzB6BCuPug+51H+QwW2PejmZcn4P2pI+gSu1m61y3BxnMX
-         Pc/ChNGmpwhLVvj9PRgi7oymsBsbL+mMGnSm2xU7Fo/4hu3MiN+WhO+AbpPLG0Cv0RI+
-         c8Qw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version;
-        bh=PgaIrxkHY4NV21i5meF9tzF+N9+5VCk0DWVKFF7iUBI=;
-        b=EireD45n9rW2Zl2HrGf3VWc5f+zZzAV8XCCg4QGGSWQdtRzOxatSbh+BwhkLnwjYxL
-         wB8wEvH7CwIMlpxlc2CZ+8p+1e1F0KueDmjyARmNAe5/mw4nWJ2TbnI29FRWMmkcGdNB
-         d5MEE5xvNSO82M2fXiJucr3sVMaUClbsvFD3i3udviwJ+Y+pLu6WL+3S/yMvdbemeTKB
-         tn8cOlOkmu26I8GIj/YyIeufKR9bYE+tXsR/bJpQcAX+8n0DHAiOzrqU8H0tUiBbVgII
-         wDbF4f/iscWmzRlFISDohAq0Hz6t+yhqOzvn3t3RSGj4OGjvMoP8E2j9sFRM5n7JYY3c
-         CBNA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.111 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa08-10.prod.phx3.secureserver.net (p3plsmtpa08-10.prod.phx3.secureserver.net. [173.201.193.111])
-        by gmr-mx.google.com with ESMTPS id a7si601421oie.4.2020.10.25.21.54.23
+Received: by 10.157.14.162 with SMTP id 31ls2779976otj.21.gmail; Wed, 21 Sep
+ 2016 11:18:11 -0700 (PDT)
+X-Received: by 10.129.123.197 with SMTP id w188mr8599428ywc.111.1474481891628;
+        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id um12si7683748pab.2.2016.09.21.11.18.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Oct 2020 21:54:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.111 as permitted sender) client-ip=173.201.193.111;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.111 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-ot1-f51.google.com ([209.85.210.51])
-	by :SMTPAUTH: with ESMTPSA
-	id WuWUkEX9hdfFdWuWUk6VcB; Sun, 25 Oct 2020 21:54:23 -0700
-X-CMAE-Analysis: v=2.4 cv=BJZ2EHcG c=1 sm=1 tr=0 ts=5f96567f
- a=kJHSKnc3PKXu5vo30El/AQ==:117 a=MKtGQD3n3ToA:10 a=afefHYAZSVUA:10
- a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=VwQbUJbxAAAA:8 a=gOvrHQTniBLpnvw3s44A:9
- a=QEXdDO2ut3YA:10 a=C77T2_seYBgf6JihhiwA:9 a=9jflVbqn1TFY6mtt:21
- a=AjGcO6oz07-iQ99wixmX:22 a=pHzHmUro8NiASowvMSCR:22 a=Ew2E2A-JSTLzCXPT_086:22
-X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
-Received: by mail-ot1-f51.google.com with SMTP id m22so6932003ots.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2020 21:54:22 -0700 (PDT)
-X-Gm-Message-State: AOAM531vNpP191OFGnAnPzntPYL40r608l7SzXQZ41F++u6zNfM3Um2u
-	G2EpIN2l5uhwPJqUNkr9gTDIDY6efIs1nYF8OZk=
-X-Received: by 2002:a9d:3f44:: with SMTP id m62mr13284203otc.364.1603688062480;
- Sun, 25 Oct 2020 21:54:22 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x244.google.com with SMTP id hi10so2581160pac.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=hkSuq5LcGcZD6dDb/6/UPmlU/zufmFqJ1h1o1XwvFQ8=;
+        b=a9ALzSmPwXHaoCdPc8PG+5kozQia3E1A6f9nRH1WJWvA8M9OEkcX7AjsJTbHt9e6Du
+         +0KBu/ANOcp9uzDoJtSg9TAVmamiwF2FgHj3Axp5qIvz6OJsIVJsTQS7JD6p8R2wsvjV
+         JU5EzwWh01auqwGf5j0SVb8GBiZs/y4vsqIvC9y5VXJYWhbaMQ+V02PNfDgjIPwMJfOa
+         Yhk/JRRYfxINDOQiTjYUjHE7WoEVFmC3qaDwbfJQEppj8TzQp4cTaTDJaJiDkvwWpp0x
+         QvDimvUKa9ygsvACvcGRaNwt5wthLfjcuR46fDH64GjciKqQYgLfeO7b8tjKcYKbyWDA
+         PCIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=hkSuq5LcGcZD6dDb/6/UPmlU/zufmFqJ1h1o1XwvFQ8=;
+        b=irChUIBirjbChJgWmJRoM7u4EbpWxZNiUrfbKLjCLJ/cMSf4AwFx04zy2xGbp5M6NC
+         Rlks0X0OuDjcmL0OpqVmBGUTq4yaSo+ZuUuXmMq/F7HgRSnv+R6cJXG6XyRBaIOsVU2T
+         UAYDZGzGgg8NTzaFEMOTRVH1qwUnORHSqdv7rRCCZCnXmXcFaLu9zyjjUe+SkoQ6beZT
+         9sjYtNZx1f71ffm9Jvqu+OxUEjZqc3+NukH/00285g20u9LLl83fCeTwTIfyFTBO0IBg
+         8QkMo/ajaE6/BE+CTx6rlIBIv0rrghI26A5wgPTUCh5ynZiFS/5UqFI9X5t/PEUyZUZa
+         3Y9w==
+X-Gm-Message-State: AE9vXwN9BaS3tKnK6mKHbYddvI6P/C2KjaYGKhQTmh52gKs2+xRP/443WSN8bLdm9j4xKg==
+X-Received: by 10.66.23.69 with SMTP id k5mr67419192paf.144.1474481891127;
+        Wed, 21 Sep 2016 11:18:11 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.174.252])
+        by smtp.gmail.com with ESMTPSA id o123sm30176189pfg.78.2016.09.21.11.18.06
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Sep 2016 11:18:10 -0700 (PDT)
+Date: Wed, 21 Sep 2016 23:47:55 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: ks7010: Remove unnecessary variable used to store
+ return value
+Message-ID: <20160921181755.GA21272@sayli-HP-15-Notebook-PC>
 MIME-Version: 1.0
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Mon, 26 Oct 2020 10:24:10 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbJA8JE8RUjny8zKnG1eyaMp7twHyLNpD67ngfub7H0uaA@mail.gmail.com>
-Message-ID: <CAK-LDbJA8JE8RUjny8zKnG1eyaMp7twHyLNpD67ngfub7H0uaA@mail.gmail.com>
-Subject: [Outreachy applicants] Recording contributions on Outreachy's website
-To: Outreachy <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary="0000000000004b763705b28bb960"
-X-CMAE-Envelope: MS4xfJiJ7yUJibJJJWrKYO1lamc9FRVs7yYXGyKC43/y4VQIYOwk/VW0fuu2bDmk7SoS+D5FqKyvEE0mKOW7udMsPqNQOL8n8O8VDYP1gWaSRS2XdlQaivZv
- TnUlO2Jz5PsNtNydpU2+rtJl/8psiRUbJrUfoouyJM8Ksx5F7CzyylWPQON/4IP2Grq3hvDIjZ4xuJMTJ8Q6OdyDnk/Ur7OvAmFG2drnxeCxGH6BpwWJTDe0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
---0000000000004b763705b28bb960
-Content-Type: text/plain; charset="UTF-8"
+This patch removes an unnecessary variable used to store return values
+in order to reduce memory usage.
+Done using coccinelle:
+@@
+type T;
+constant C;
+identifier ret;
+@@
+- T ret = C;
+... when != ret
+return
+- ret
++ C
+;
 
-Hi All,
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+---
+ drivers/staging/ks7010/ks7010_sdio.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Outreachy contribution period ends on October 31, 2020. Greg has picked up
-patches over the weekend, so make sure to record your contributions for the
-projects you're interested in. You can use this[1] web link to find
-specific commits of yours which are now in staging-testing and put it in
-your contribution.
-
-*Note that you can put all cleanup patches as a 1st contribution for any
-project*. It means that you doesn't necessarily have to complete a
-project-specific task(s) to apply for any project.
-
-Also, please rebase your local branch on top of staging-testing to send any
-new patches.
-
-Thanks!
-
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
-
+diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
+index 37a4ba3..b27e9b0 100644
+--- a/drivers/staging/ks7010/ks7010_sdio.c
++++ b/drivers/staging/ks7010/ks7010_sdio.c
+@@ -171,12 +171,11 @@ void ks_wlan_hw_wakeup_request(struct ks_wlan_private *priv)
+ 
+ int _ks_wlan_hw_power_save(struct ks_wlan_private *priv)
+ {
+-	int rc = 0;
+ 	unsigned char rw_data;
+ 	int retval;
+ 
+ 	if (priv->reg.powermgt == POWMGT_ACTIVE_MODE)
+-		return rc;
++		return 0;
+ 
+ 	if (priv->reg.operation_mode == MODE_INFRASTRUCTURE &&
+ 	    (priv->connect_status & CONNECT_STATUS_MASK) == CONNECT_STATUS) {
+@@ -244,7 +243,7 @@ int _ks_wlan_hw_power_save(struct ks_wlan_private *priv)
+ 		}
+ 	}
+ 
+-	return rc;
++	return 0;
+ }
+ 
+ int ks_wlan_hw_power_save(struct ks_wlan_private *priv)
 -- 
-Vaishali
+2.7.4
 
---0000000000004b763705b28bb960
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi All,<br><br>Outreachy contribution period ends on Octob=
-er 31, 2020. Greg has picked up patches over the weekend, so make sure to r=
-ecord your contributions for the projects you&#39;re interested in. You can=
- use this[1] web link to find specific commits of yours which are now in st=
-aging-testing and put it in your contribution.<div><br></div><div><b>Note t=
-hat you can put all cleanup patches as a 1st contribution for any project</=
-b>. It means that you doesn&#39;t necessarily have to complete a project-sp=
-ecific task(s) to apply for any project.=C2=A0<br><div><br></div><div>Also,=
- please rebase your local branch on top of staging-testing to send any new =
-patches.</div><div><br></div><div>Thanks!</div><div><br>[1] <a href=3D"http=
-s://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=3Dsta=
-ging-testing">https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/stagin=
-g.git/log/?h=3Dstaging-testing</a> <br><br>-- <br>Vaishali</div></div></div=
->
-
---0000000000004b763705b28bb960--
 
