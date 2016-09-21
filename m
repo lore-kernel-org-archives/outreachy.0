@@ -1,83 +1,93 @@
-X-GM-THRID: 6698286710784
-X-Received: by 10.194.221.65 with SMTP id qc1mr1069552wjc.7.1425513117012;
-        Wed, 04 Mar 2015 15:51:57 -0800 (PST)
+X-GM-THRID: 6330560970566402048
+X-Received: by 10.200.50.246 with SMTP id a51mr7573295qtb.41.1474466409309;
+        Wed, 21 Sep 2016 07:00:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.6.33 with SMTP id cr1ls36898lad.47.gmail; Wed, 04 Mar 2015
- 15:51:56 -0800 (PST)
-X-Received: by 10.112.138.202 with SMTP id qs10mr1043384lbb.24.1425513116195;
-        Wed, 04 Mar 2015 15:51:56 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wi0-x22f.google.com (mail-wi0-x22f.google.com. [2a00:1450:400c:c05::22f])
-        by gmr-mx.google.com with ESMTPS id el6si436303wib.2.2015.03.04.15.51.56
+Received: by 10.157.29.220 with SMTP id w28ls4301442otw.27.gmail; Wed, 21 Sep
+ 2016 07:00:08 -0700 (PDT)
+X-Received: by 10.129.121.70 with SMTP id u67mr18869626ywc.2.1474466408915;
+        Wed, 21 Sep 2016 07:00:08 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id 63si1661317ywe.1.2016.09.21.07.00.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Mar 2015 15:51:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) client-ip=2a00:1450:400c:c05::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Sep 2016 07:00:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c05::22f as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22f.google.com with SMTP id em10so34532830wid.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 15:51:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=r3m8PWuxmU3xgxoTrG2/+XqXH4QPN/gJzlDAw2/6UAc=;
-        b=YGPU3kVq4OxpUMMxdkWfzHQnx0bWOH/3ngI5TyEX1cYXl0RUFbwHMXLksbavNBFkMM
-         HajZSA/sD5L68NY5HHaQ6Uogl27gsG7109VcCBxFXEKJqhdOGgneTG9wPAewOi7u6vRH
-         zwQgGsDVpeMK2e5c01Zg66jIaW96prFB0L+ePTx6QveDq/W0+mEjtrG2NT+G8NCauRr5
-         D9FAc4qRw+sR/2+skBR9t3NVZJDmpEU6FQh1y5FlKvcaGaCX7UL4SO0i0Dpp8nbF6ctU
-         bO9pYI+511Cxvbe4HWdKT0Guj3m2eTqcJFS1bQ2C4XkNSbQO5jIG5EoQb3ymRV4tOsDp
-         JXnA==
-X-Received: by 10.180.98.131 with SMTP id ei3mr17118022wib.62.1425513116103;
-        Wed, 04 Mar 2015 15:51:56 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id j5sm27242657wie.3.2015.03.04.15.51.53
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 04 Mar 2015 15:51:55 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Staging: rtl8192u: Replace TRUE with true
-Date: Thu,  5 Mar 2015 00:51:46 +0100
-Message-Id: <1425513106-22425-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 76BC789E;
+	Wed, 21 Sep 2016 14:00:07 +0000 (UTC)
+Date: Wed, 21 Sep 2016 16:00:12 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ronald Rojas <ronladred@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v7] Staging: octeon: Fix blank lines warnings
+Message-ID: <20160921140012.GA17886@kroah.com>
+References: <20160918230417.GA5289@fedora.home>
+ <20160920115119.GA14587@kroah.com>
+ <20160921124938.GB28807@fedora>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160921124938.GB28807@fedora>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-This patch replaces TRUE by true, since Linux kernel has already a
-boolean type, bool, defined in linux/stddef.h
+On Wed, Sep 21, 2016 at 08:49:39AM -0400, Ronald Rojas wrote:
+> On Tue, Sep 20, 2016 at 01:51:19PM +0200, Greg KH wrote:
+> > On Sun, Sep 18, 2016 at 07:04:19PM -0400, Ronald Rojas wrote:
+> > > Fixes several of the checkpatch.pl warnings to
+> > > not use multiple blank lines
+> > > 
+> > > Signed-off-by: Ronald Rojas <ronladred@gmail.com>
+> > > ---
+> > > v7: changed to staging tree instead of torvalds tree
+> > >  drivers/staging/octeon/ethernet.c | 2 --
+> > >  1 file changed, 2 deletions(-)
+> > 
+> > What branch are you using?  This still doesnt apply.  Please use the
+> > staging-next or better yet, staging-testing.
+> I'd like to confirm that I'm doing this correctly so that the next patch 
+> I send to you will be correct. This is what I have done: 
+> I cloned your repository directly under gregkh/staging.git
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Good.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-index 96ab304..9f68c65 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-@@ -553,16 +553,16 @@ static void ieee80211_txrate_selectmode(struct ieee80211_device *ieee,
- #ifdef TO_DO_LIST
- 	if(!IsDataFrame(pFrame))
- 	{
--		pTcb->bTxDisableRateFallBack = TRUE;
--		pTcb->bTxUseDriverAssingedRate = TRUE;
-+		pTcb->bTxDisableRateFallBack = true;
-+		pTcb->bTxUseDriverAssingedRate = true;
- 		pTcb->RATRIndex = 7;
- 		return;
- 	}
- 
- 	if(pMgntInfo->ForcedDataRate!= 0)
- 	{
--		pTcb->bTxDisableRateFallBack = TRUE;
--		pTcb->bTxUseDriverAssingedRate = TRUE;
-+		pTcb->bTxDisableRateFallBack = true;
-+		pTcb->bTxUseDriverAssingedRate = true;
- 		return;
- 	}
- #endif
--- 
-1.9.1
+> I've checked out staging-testing and created my own branch I called
+> ronald-branch.
 
+Good.
+
+> Then, when I had ronald-branch checked out, I ran "git merge staging-testing", 
+> to make sure ronald-branch was up to date.
+
+Hm, ok.  But now you have a merge, not your patch on top of my
+changes...
+
+> Then I make the appropriate changes and resubmit patch the patch?
+
+How are you generating the patch?  If you do something like:
+	git diff staging-testing..HEAD > my.patch
+great.
+but if you do something like:
+	git format-patch staging-testing..HEAD
+then you will end up with a mess.
+
+What you might want to do is just rebase your branch on top of mine,
+when changes come into it.
+
+To do this, in your repo:
+	git fetch --all
+	git checkout staging-testing
+	git pull
+	git checkout ronald-branch
+	git rebase staging-testing
+
+that will update staging-testing to the latest, and then rebase whatever
+you had in your branch on top of it.  I like to use the '-i' option to
+rebase to see what you are doing, but that's up to you.
+
+Hope this helps,
+
+greg k-h
 
