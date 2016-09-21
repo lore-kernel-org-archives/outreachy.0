@@ -1,107 +1,117 @@
 X-GM-THRID: 6332661608531099648
-Date: Wed, 21 Sep 2016 12:48:59 -0700 (PDT)
-From: gnudevliz@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <649173d5-38d8-43e3-af3b-a81aab81311d@googlegroups.com>
-In-Reply-To: <0eb31ed4-5370-4980-be9d-559b20044bf5@googlegroups.com>
-References: <0eb31ed4-5370-4980-be9d-559b20044bf5@googlegroups.com>
-Subject: Re: Mutt/Gmail Issue
+X-Received: by 10.46.0.208 with SMTP id e77mr3762293lji.7.1474477284727;
+        Wed, 21 Sep 2016 10:01:24 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.1.146 with SMTP id f18ls1407007lji.28.gmail; Wed, 21 Sep
+ 2016 10:01:23 -0700 (PDT)
+X-Received: by 10.25.15.104 with SMTP id e101mr1466010lfi.24.1474477283832;
+        Wed, 21 Sep 2016 10:01:23 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e21si2675550wmc.2.2016.09.21.10.01.23
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Sep 2016 10:01:23 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,374,1470693600"; 
+   d="scan'208";a="194206784"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Sep 2016 19:01:23 +0200
+Date: Wed, 21 Sep 2016 19:01:22 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shivani Bhardwaj <shivanib134@gmail.com>
+cc: Alison Schofield <amsfield22@gmail.com>, gnudevliz@gmail.com, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Mutt/Gmail Issue
+In-Reply-To: <CAKHNQQEPaRidGeQr1QAZFdBcWi2X27XV9fqic1w7fACtebKH_w@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1609211901090.14829@hadrien>
+References: <0eb31ed4-5370-4980-be9d-559b20044bf5@googlegroups.com> <20160921162649.GA2358@d830.WORKGROUP> <CAKHNQQF3MsCTkicKWN3MvWBtdneHb0_dkPs4v0apW5yRZ8D3Gg@mail.gmail.com> <alpine.DEB.2.10.1609211852230.14829@hadrien>
+ <CAKHNQQEPaRidGeQr1QAZFdBcWi2X27XV9fqic1w7fACtebKH_w@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_35_1670756672.1474487339306"
-X-Google-Token: EKvIi78FF24c1FN8WLI0
-X-Google-IP: 2601:644:300:3c2c:4e0f:6eff:fe69:e9ea
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-------=_Part_35_1670756672.1474487339306
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_36_1545613441.1474487339306"
 
-------=_Part_36_1545613441.1474487339306
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Hi everyone, 
+On Wed, 21 Sep 2016, Shivani Bhardwaj wrote:
 
-Thanks for your replies. I've tried many .muttrc config changes and Gmail 
-setup but I keep getting the same error.
-I think I'm supposed to set up a FQDN (Fully Qualified Domain Name). Mutt 
-keeps telling me there is no HELO/ELHO argument
+> On Wed, Sep 21, 2016 at 10:22 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> > On Wed, 21 Sep 2016, Shivani Bhardwaj wrote:
+> >
+> >> On Wed, Sep 21, 2016 at 9:56 PM, Alison Schofield <amsfield22@gmail.com> wrote:
+> >> > Hi Liz,
+> >> > Similar to Namrata, I don't know answer to specific question, but
+> >> > I can share my .muttrc and .esmtprc that got it working for me.
+> >> >
+> >> > And then there were some things I did over in my gmail account settings
+> >> > probably related to selecting IMAP.
+> >> >
+> >> > amsfield22@d830:~$ cat .muttrc
+> >> > set sendmail="/usr/bin/esmtp"
+> >> > set envelope_from=yes
+> >> > set from="Alison Schofield <amsfield22@gmail.com>"
+> >> > set use_from=yes
+> >> > set edit_headers=yes
+> >> > set spoolfile="imaps://amsfield22:mypasswd@imap.gmail.com/"
+> >> > set folder="imaps://imap.gmail.com/"
+> >> > set record="=Sent"
+> >> > set postponed="=Drafts"
+> >> >
+> >> > amsfield22@d830:~$ cat .esmtprc
+> >> > identity "amsfield22@gmail.com"
+> >> > hostname smtp.gmail.com:587
+> >> > username "amsfield22@gmail.com"
+> >> > password "mypasswd"
+> >> > starttls required
+> >> >
+> >> >
+> >> Hello,
+> >>
+> >> Just in case you don't know the exact settings to be done in your
+> >> gmail, you can check my blog post here:
+> >> https://unixia.wordpress.com/2016/05/01/setting-up-mutt/
+> >
+> > Thanks Shivani.
+> >
+> > Could I put a link to this in the kernel tutorial?
+> >
+> Yes, please. It would be great!
 
-On Tuesday, September 20, 2016 at 11:01:18 PM UTC-7, gnud...@gmail.com 
-wrote:
->
-> Hello everyone, 
->
-> I'm on Debian Jessie and I cannot get mutt to send email. I can receive 
-> emails and view my inbox in Mutt but I can't send messages. I can send them 
-> to myself though. I can't send them to another email address. 
->
-> When I use mutt to send an email I keep getting this HELO/ELHO error:
->
-> SMTP session failed: 501 5.5.4  https://support.google.com/mail/?p=helo 
-> yg10sm21072351pab.8 - gsmtp
->
-> That brings me to this page:
->
-> https://support.google.com/mail/answer/6386757?visit_id=1-636100243312716080-1894628512&p=helo&rd=1
->
-> I can't figure out how to resolve this issue. My 2 factor is off and I'm 
-> allowing login from unsecure apps. I'm also trying to use ssmtp instead of 
-> esmtp but the same thing happens in mutt. 
->
-> When i do
-> $ sudo ssmtp someemail@gmail.com 
->
-> the email does actually go through though, but it says from root. 
->
-> If anyone has suggestions I would really appreciate it!
-> Thanks,
-> Liz
->
+Done, thanks!
 
-------=_Part_36_1545613441.1474487339306
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+julia
 
-<div dir=3D"ltr">Hi everyone,=C2=A0<div><br></div><div>Thanks for your repl=
-ies. I&#39;ve tried many .muttrc config changes and Gmail setup but I keep =
-getting the same error.</div><div>I think I&#39;m supposed to set up a FQDN=
- (Fully Qualified Domain Name). Mutt keeps telling me there is no HELO/ELHO=
- argument</div><div><br>On Tuesday, September 20, 2016 at 11:01:18 PM UTC-7=
-, gnud...@gmail.com wrote:<blockquote class=3D"gmail_quote" style=3D"margin=
-: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div=
- dir=3D"ltr">Hello everyone,=C2=A0<div><br></div><div>I&#39;m on Debian Jes=
-sie and I cannot get mutt to send email. I can receive emails and view my i=
-nbox in Mutt but I can&#39;t send messages. I can send them to myself thoug=
-h. I can&#39;t send them to another email address.=C2=A0</div><div><br></di=
-v><div>When I use mutt to send an email I keep getting this HELO/ELHO error=
-:</div><div><br></div><div><div>SMTP session failed: 501 5.5.4 =C2=A0<a hre=
-f=3D"https://support.google.com/mail/?p=3Dhelo" target=3D"_blank" onmousedo=
-wn=3D"this.href=3D&#39;https://support.google.com/mail/?p\x3dhelo&#39;;retu=
-rn true;" onclick=3D"this.href=3D&#39;https://support.google.com/mail/?p\x3=
-dhelo&#39;;return true;">https://support.google.com/<wbr>mail/?p=3Dhelo</a>=
- yg10sm21072351pab.8 - gsmtp</div><div><br></div></div><div>That brings me =
-to this page:</div><div><a href=3D"https://support.google.com/mail/answer/6=
-386757?visit_id=3D1-636100243312716080-1894628512&amp;p=3Dhelo&amp;rd=3D1" =
-target=3D"_blank" onmousedown=3D"this.href=3D&#39;https://support.google.co=
-m/mail/answer/6386757?visit_id\x3d1-636100243312716080-1894628512\x26p\x3dh=
-elo\x26rd\x3d1&#39;;return true;" onclick=3D"this.href=3D&#39;https://suppo=
-rt.google.com/mail/answer/6386757?visit_id\x3d1-636100243312716080-18946285=
-12\x26p\x3dhelo\x26rd\x3d1&#39;;return true;">https://support.google.com/<w=
-br>mail/answer/6386757?visit_id=3D<wbr>1-636100243312716080-<wbr>1894628512=
-&amp;p=3Dhelo&amp;rd=3D1</a><br></div><div><br></div><div>I can&#39;t figur=
-e out how to resolve this issue. My 2 factor is off and I&#39;m allowing lo=
-gin from unsecure apps. I&#39;m also trying to use ssmtp instead of esmtp b=
-ut the same thing happens in mutt.=C2=A0</div><div><br></div><div>When i do=
-</div><div>$ sudo ssmtp <a href=3D"mailto:someemail@gmail.com" target=3D"_b=
-lank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;mailto:someemail@gma=
-il.com&#39;;return true;" onclick=3D"this.href=3D&#39;mailto:someemail@gmai=
-l.com&#39;;return true;">someemail@gmail.com</a>=C2=A0</div><div><br></div>=
-<div>the email does actually go through though, but it says from root.=C2=
-=A0</div><div><br></div><div>If anyone has suggestions I would really appre=
-ciate it!</div><div>Thanks,</div><div>Liz</div></div></blockquote></div></d=
-iv>
-------=_Part_36_1545613441.1474487339306--
 
-------=_Part_35_1670756672.1474487339306--
+>
+> > julia
+> >
+> >>
+> >> Shivani
+> >> > --
+> >> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160921162649.GA2358%40d830.WORKGROUP.
+> >> > For more options, visit https://groups.google.com/d/optout.
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKHNQQF3MsCTkicKWN3MvWBtdneHb0_dkPs4v0apW5yRZ8D3Gg%40mail.gmail.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKHNQQEPaRidGeQr1QAZFdBcWi2X27XV9fqic1w7fACtebKH_w%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
