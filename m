@@ -1,116 +1,97 @@
-X-GM-THRID: 6338401470738595840
-X-Received: by 10.129.49.76 with SMTP id x73mr3390756ywx.92.1475774094207;
-        Thu, 06 Oct 2016 10:14:54 -0700 (PDT)
+X-GM-THRID: 6332647684090888192
+X-Received: by 10.66.158.98 with SMTP id wt2mr5562551pab.84.1474434436153;
+        Tue, 20 Sep 2016 22:07:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.33.60 with SMTP id i57ls3414772otb.48.gmail; Thu, 06 Oct
- 2016 10:14:53 -0700 (PDT)
-X-Received: by 10.129.169.130 with SMTP id g124mr4070045ywh.126.1475774093795;
-        Thu, 06 Oct 2016 10:14:53 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id d11si1055465pfl.2.2016.10.06.10.14.53
+Received: by 10.157.42.87 with SMTP id t81ls3755372ota.36.gmail; Tue, 20 Sep
+ 2016 22:07:15 -0700 (PDT)
+X-Received: by 10.157.39.233 with SMTP id c96mr2173460otb.88.1474434435701;
+        Tue, 20 Sep 2016 22:07:15 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id um12si6995919pab.2.2016.09.20.22.07.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 Oct 2016 10:14:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 20 Sep 2016 22:07:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id t25so1423554pfg.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 06 Oct 2016 10:14:53 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id s3so401827pay.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Sep 2016 22:07:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=VP8HE6kIKE9u1ldIVLNsoWvaKO+OAnRA+F1xDCnaCUk=;
-        b=HUUYRDJ6CPcPqil5oLulIVIWvQQVfnCCyYrrsA/aYhlwFY1q0w1LYbfqi8DUvZf0bn
-         BQrhcQQrDICi5chDXdHWvJs4+BSYe39GlIygNfwXVzBGSk7ND3f30Uy/j7yl8Z1e2BF0
-         JL+iy4RqonjOhCN+r8NjTuizkbSF5+bgINGnS1+4lA8hA7roR1ziMuYFHfDrQznhuGNJ
-         z7bw8HbsJTPcH95o5VReqbLMhmC72xuii5nXmIQZUipkLBkeDjeqVSLQAu3RevdFqPQG
-         z4lLYBfaxXFiqOljGfftuzR6bOAB5KfP1JvtoXTdamVeRuRl8pRVrivpMZD0RnCiTbML
-         Zf0A==
+        bh=dUI9qV4AA6iIKlobrlsBEjybxS4NAUOsignjg7X4yeM=;
+        b=wKSxPIOQzt3o/kfTSBeT4rw9Sd43fXHOYQAkmKNdU0OKEhYXZ+OoyXomtw0Z2XlDUs
+         YM1stzkR1rrRfC0F7bwHV4LQ9zUNrjXHC9c/iCa6WfHTkqaUKdHWJ5E8OLudA5Sq+KSG
+         WnS07AQWgDRkwr/WULb8FViPPo5/SCHdULKFTEFDuG+V80MtewCQ64CsnoWPg8i/K83H
+         6SqyBgFVC9k/ChtcxIeLwgp3VhM98pD5vZuhp5hnrAgcDb6gZ2wbrvcloNt7zzN3U1QG
+         oh4XAeL5mItFuTxAJB4ah4H+v/M/+sCylX1mpcoXPUtBiTyg9bDYTGe1Ji55EgGUHIL+
+         SSbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=VP8HE6kIKE9u1ldIVLNsoWvaKO+OAnRA+F1xDCnaCUk=;
-        b=Pmljj1dPlOygjyztMJ/7XhFUZu4f/Jgh5+Qnb4xJ3zusRrQ7Z40O2WG7sd/YUf+UVz
-         NlTfUXEKf4bAYWcV3O0riuR7iAX50R2UX4X5a9q/PPAmIYCL3GeCzUDUP8Szc3Lp0Rcs
-         uOU6023fUEsZ2/sGdBMHjkPZsbhTSL6GIjKS0nCWTUr4HoX/YO53/bqfHQ+mKV4wwceX
-         fmV51WK5UYaNmft2dI8iCiInv/vP4t51nuao+zGLTtOkZSH7XUmvcw8FAJMzO3TWelUy
-         2lk63yhs0JH3npnyyB+rxVASDdnWl8Vgq6T0IQlHcar5q5iODz5Hn9cAF39KShFzub9h
-         lczA==
-X-Gm-Message-State: AA6/9RnSPFi7MLHSxiq296927vtiEUaMO0zrRvjZKTsw30mf57ufEXZiq4EtU4cOx3hpMQ==
-X-Received: by 10.98.24.133 with SMTP id 127mr7637684pfy.98.1475774093600;
-        Thu, 06 Oct 2016 10:14:53 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([223.176.139.122])
-        by smtp.gmail.com with ESMTPSA id i8sm24227803paw.25.2016.10.06.10.14.43
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Oct 2016 10:14:51 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Thu, 06 Oct 2016 22:44:30 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rts5208: xd: remove unused function  xd_check_err_code
-Date: Thu,  6 Oct 2016 22:44:28 +0530
-Message-Id: <1475774068-22447-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        bh=dUI9qV4AA6iIKlobrlsBEjybxS4NAUOsignjg7X4yeM=;
+        b=NjkwcQSc7bq3VkB/AKbZC8B7bgybqMY5ohttCa5M1CfSb5gzxh6e8kabpe8TlYuApC
+         1qmahgxT4OBDnk/m0VQPnA73t9/WGMuAtU5Ydn2v8EGlLM9bvapel23p6wJzb+j2fjA/
+         XhirCJ7GtcIN1IqN0dzB81lEYp5LtxYdnDBYzRKwCDOKNTZNufgJPhQbnzd8Oz17vuou
+         YETUYz5ruZNCKyRlRvVtg8SNmN/jgNJD031O1yoJf/jtkDwYNUoN8adlqN9gKx2Jpnc0
+         3yebwRz3VcPRd4gicDCXEMd9+haEDnUuH32XR0ZpHndHUgK3V7GeGYjvQN1g2dsYn1S5
+         EzxA==
+X-Gm-Message-State: AE9vXwONxKfkHdBB3UpPmLxjCTOqXkl+cyoo2PEEpugSImpnXc/pll0qPvVPjRcSyYICSA==
+X-Received: by 10.66.161.195 with SMTP id xu3mr61687546pab.68.1474434435524;
+        Tue, 20 Sep 2016 22:07:15 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-DK ([203.215.121.62])
+        by smtp.gmail.com with ESMTPSA id nc13sm42748193pab.43.2016.09.20.22.07.14
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 20 Sep 2016 22:07:15 -0700 (PDT)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: johan@kernel.org,
+	elder@kernel.org,
+	gregkh@linuxfoundation.org,
+	Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH] staging: greybus: arche-platform: compress return logic into one line
+Date: Wed, 21 Sep 2016 13:07:04 +0800
+Message-Id: <1474434424-7341-1-git-send-email-eraretuya@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Remove the function xd_check_err_code as it is not used anywhere in
-the kernel. Function detected using Coccinelle but removed by hand.
-Script:
+Modify return statement to use the value being returned directly instead of
+assigning it first to 'ret' and returning this variable. Coccinelle semantic
+patch used:
 
-@initialize:python@
 @@
-def display(name,p):
-        print(name,p[0].file)
-
-@r1@
-identifier func;
-type T;
-position p;
+expression e;
+local idexpression ret;
 @@
-static T func@p(...)
-{
-...
-}
 
-@r@
-identifier r1.func;
-@@
-func
+-ret =
++return
+	e;
+-return ret;
 
-@script:python depends on !r@
-func << r1.func;
-p << r1.p;
-@@
-display(func,p)
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/rts5208/xd.c | 7 -------
- 1 file changed, 7 deletions(-)
+ drivers/staging/greybus/arche-platform.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
-index 1de02bb..8efc512 100644
---- a/drivers/staging/rts5208/xd.c
-+++ b/drivers/staging/rts5208/xd.c
-@@ -42,13 +42,6 @@ static inline void xd_set_err_code(struct rtsx_chip *chip, u8 err_code)
- 	xd_card->err_code = err_code;
- }
+diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+index 9d9048e..d6b3609 100644
+--- a/drivers/staging/greybus/arche-platform.c
++++ b/drivers/staging/greybus/arche-platform.c
+@@ -634,8 +634,7 @@ static int arche_platform_probe(struct platform_device *pdev)
+ 	arche_pdata->wake_detect_gpio = of_get_named_gpio(np, "svc,wake-detect-gpio", 0);
+ 	if (arche_pdata->wake_detect_gpio < 0) {
+ 		dev_err(dev, "failed to get wake detect gpio\n");
+-		ret = arche_pdata->wake_detect_gpio;
+-		return ret;
++		return arche_pdata->wake_detect_gpio;
+ 	}
  
--static inline int xd_check_err_code(struct rtsx_chip *chip, u8 err_code)
--{
--	struct xd_info *xd_card = &(chip->xd_card);
--
--	return (xd_card->err_code == err_code);
--}
--
- static int xd_set_init_para(struct rtsx_chip *chip)
- {
- 	struct xd_info *xd_card = &(chip->xd_card);
+ 	ret = devm_gpio_request(dev, arche_pdata->wake_detect_gpio, "wake detect");
 -- 
-1.9.1
+2.7.4
 
 
