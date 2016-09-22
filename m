@@ -1,86 +1,96 @@
-X-GM-THRID: 6392863906268708864
-X-Received: by 10.13.235.74 with SMTP id u71mr4614871ywe.115.1488454618251;
-        Thu, 02 Mar 2017 03:36:58 -0800 (PST)
+X-GM-THRID: 6332127696455204864
+X-Received: by 10.129.78.134 with SMTP id c128mr56524ywb.50.1474523397351;
+        Wed, 21 Sep 2016 22:49:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.11.222 with SMTP id 91ls1974277iol.41.gmail; Thu, 02 Mar
- 2017 03:36:57 -0800 (PST)
-X-Received: by 10.107.129.96 with SMTP id c93mr4471690iod.22.1488454617480;
-        Thu, 02 Mar 2017 03:36:57 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 2si659370pfz.1.2017.03.02.03.36.57
+Received: by 10.107.182.197 with SMTP id g188ls4238428iof.6.gmail; Wed, 21 Sep
+ 2016 22:49:54 -0700 (PDT)
+X-Received: by 10.66.161.130 with SMTP id xs2mr57353pab.40.1474523394344;
+        Wed, 21 Sep 2016 22:49:54 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-yw0-x243.google.com (mail-yw0-x243.google.com. [2607:f8b0:4002:c05::243])
+        by gmr-mx.google.com with ESMTPS id m82si10076ywm.2.2016.09.21.22.49.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 03:36:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 21 Sep 2016 22:49:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) client-ip=2607:f8b0:4002:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id e66so907637pfe.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 03:36:57 -0800 (PST)
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yw0-x243.google.com with SMTP id u82so4289471ywc.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 22:49:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=zmgZVi71VHK0fxOHOdH/Ulq/RfEu9tv4hvZ20rq5Dtk=;
-        b=bJC7EZOn1lmhAcow8oqO4TGzdlYspnEWIq5aevd+yTGA7FnqXLSGPijxKo07nTnZOy
-         xjjjPxxBRQIXJIcHozQaJRl7RoLNfs2sJfiISqCihg8K8ZQFwhwn/mVu/8oEVzgKpqFq
-         ph4g7kXmWN30WIDUOzXug1angzYK+4ZZ+Kq1ztxZkKO3bm11X2WBx9ATnRYoeYvBD6Uv
-         QYjc43ZvOSL8HCszol6UArA+wDb26nfZ6TfrGwafHutXQ11HOIKruj8lZ8N0xMplYYwx
-         PmREGTRgGmchgi7LL31cmOIa4uGbJV5GX/NLmZUk68/YJHI8kqHnjg/PphL+7n4uvStY
-         6PuQ==
+        bh=y+eJCahU00kT6y8eQo6fGlVgwelxgSs1JjpqsJg5Be0=;
+        b=fYcWK7urEia3Fjbz9g8PR7JGcc4Q1haLun6TtrwdD5RlA6pmzSfKkcdKYbu3UB6TlA
+         OvpMdpP9tvXouFRT6JDrikTp9HJNWdU9X8r+zfGMR5d425ZSdNi7ZT/7G1qtRJuSSyMj
+         LavBp13tU3A+McNG3wPo0GDvorQfxOKidONPjcw+6ho1CIzTybbi7CY8s1mpYDIYLUTh
+         iqT2oL604Qtvy0loGKgypmOg+oc1yLbYLFFtVTY683hrg/ijMnTevTZF0EImM1yPJN+1
+         JyyveyqwjTfXU6ZBb1UQsD1BqvkpqDx8tEFf8S5i07tEfc1lmLbH6rK2WeOiwfitEuj8
+         dq4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=zmgZVi71VHK0fxOHOdH/Ulq/RfEu9tv4hvZ20rq5Dtk=;
-        b=M9pBMtHZdjRPGdevtq30Gkqfli6AjvlXuJLI6gFDvsV4g+N9/0C7hzh6iR6RGZO7DU
-         v0kigMgaCAccbkiZkkBd8fZepJzqULQVlRbvyGC0y2Mr+V1WuDf7rpulewtkI/TV6VxF
-         Cw5JEXzgi0cghcIX8PqTzdGN+ObORyiS6wjQxvXPhhB8IzVhk8P1XERxRdrS/SfgSswy
-         T9oQEkj7bMpEYqNw1JkeGta+BV4oPPPSiBMD6JBQFdOCfsqB7YPvnYPWZdZm5Nvq0Bdj
-         SlKrELN+oqkGA3uoLwb9cRUIU26hE/ntzSa7/mNx6PZyRJvh8z2OV2ytc0xg5/oA71Dd
-         4EAg==
-X-Gm-Message-State: AMke39mZJ9i/EkLJcYWP+poqzLM1uRniVLS0AaStL95rVjmJk4jY39e3dHn7OvWfjIXrgA==
-X-Received: by 10.98.108.196 with SMTP id h187mr14780179pfc.176.1488454617243;
-        Thu, 02 Mar 2017 03:36:57 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([121.244.155.11])
-        by smtp.gmail.com with ESMTPSA id s65sm16679178pgb.64.2017.03.02.03.36.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 03:36:56 -0800 (PST)
-Date: Thu, 2 Mar 2017 16:57:00 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/5] Fix multiple checkpatch issues in bcm2835-ctl.c
-Message-ID: <cover.1488453518.git.aishpant@gmail.com>
+        bh=y+eJCahU00kT6y8eQo6fGlVgwelxgSs1JjpqsJg5Be0=;
+        b=bVUgBSgLO/tmbGxoDk3vN1lCU5RaiwjJAUIKv+e4NX0o2AiIEM7thCkfry1QZrBTZJ
+         7N0+dHyMzBKnFgK95tbuV6uDKnKemkkBv0pYJVy/DO4RjTgKJ2YvDYsqNwAdt3oLcL+O
+         EfGTAXHt6o2AyS+epkrg6YOkBpThPOYfTMiWzjA5P567qkJAmIdM34igzzYrZMi+qg/E
+         w5mCRWBW7ppSyHr3fZqHhJAcKKUVGdj8IK39L9l1ymsFb/HlV6ndOl5vjzahtriss34v
+         KI7cnoOFtUvmonAwpuPzIe/xtdycNWJMwuD5cV0zj5ktzkukU6ntModBfWkmf3Z5207T
+         T3bw==
+X-Gm-Message-State: AE9vXwNVi+i5ZFvD8+ZVXYpJ3N47V5PwJM6XRLkTYE8iUFWtQBfVEjawFKBX1rcfLVwTDw==
+X-Received: by 10.129.27.10 with SMTP id b10mr121590ywb.316.1474523394123;
+        Wed, 21 Sep 2016 22:49:54 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([189.61.236.196])
+        by smtp.gmail.com with ESMTPSA id u73sm80010ywc.6.2016.09.21.22.49.53
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 21 Sep 2016 22:49:53 -0700 (PDT)
+Date: Thu, 22 Sep 2016 02:49:50 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH v4] staging: wlan-ng: fixed alignment not matching
+Message-ID: <20160922054950.GA32009@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Fix multiple code styling warnings issued by checkpatch on file
-bcm2835-ctl.c in bcm2835-audio driver
+This patch fixes a checkpatch warning by moving
+arguments to the right and aligning them to their open
+parenthesis.
 
-Aishwarya Pant (5):
-  staging: bcm2835-camera: fix no space is necessary after a cast
-    warning
-  staging: bcm2835-camera: Logical continuations should be on the
-    previous     line
-  staging: bcm2835-camera: fix block comment formatting
-  staging: bcm2835-camera: remove extra blank line
-  staging: bcm2835-camera: replace printk(KERN_ERR) with pr_err
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+---
+Changes in v4:
+   - Fixed commit message line length
 
- .../staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+Changes in v3:
+   - Fixed patch author's name
 
+Changes in v2:
+   - Make the commit message clearer.
+---
+ drivers/staging/wlan-ng/cfg80211.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+index 8c592be..bed4672 100644
+--- a/drivers/staging/wlan-ng/cfg80211.c
++++ b/drivers/staging/wlan-ng/cfg80211.c
+@@ -334,7 +334,7 @@ static int prism2_scan(struct wiphy *wiphy,
+ 		msg1.scantype.data = P80211ENUM_scantype_active;
+ 		msg1.ssid.data.len = request->ssids->ssid_len;
+ 		memcpy(msg1.ssid.data.data,
+-			request->ssids->ssid, request->ssids->ssid_len);
++		       request->ssids->ssid, request->ssids->ssid_len);
+ 	} else {
+ 		msg1.scantype.data = 0;
+ 	}
 -- 
-2.7.4
+2.10.0
 
 
