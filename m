@@ -1,130 +1,91 @@
-X-GM-THRID: 6255218934357688320
-X-Received: by 10.129.3.69 with SMTP id 66mr40348814ywd.41.1456406650161;
-        Thu, 25 Feb 2016 05:24:10 -0800 (PST)
+X-GM-THRID: 6332145686814916608
+X-Received: by 10.129.154.196 with SMTP id r187mr17559457ywg.54.1474514684287;
+        Wed, 21 Sep 2016 20:24:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.104.134 with SMTP id a6ls472343qgf.9.gmail; Thu, 25 Feb
- 2016 05:24:09 -0800 (PST)
-X-Received: by 10.140.246.3 with SMTP id r3mr13867898qhc.2.1456406649478;
-        Thu, 25 Feb 2016 05:24:09 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id 79si1230608pft.0.2016.02.25.05.24.09
+Received: by 10.36.125.16 with SMTP id b16ls149505itc.21.gmail; Wed, 21 Sep
+ 2016 20:24:43 -0700 (PDT)
+X-Received: by 10.66.85.10 with SMTP id d10mr8521267paz.101.1474514683841;
+        Wed, 21 Sep 2016 20:24:43 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
+        by gmr-mx.google.com with ESMTPS id m82si2438022ywm.2.2016.09.21.20.24.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 05:24:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Wed, 21 Sep 2016 20:24:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id fl4so2689576pad.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 05:24:09 -0800 (PST)
+Received: by mail-yw0-x242.google.com with SMTP id t67so4189260ywg.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 20:24:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ekg8WBjG8yWoI6jALnhQO3TnAqMO43oLkuv9qMDrS3U=;
-        b=FTutn00zWzQF+W1JFeB5onOfuqX4VcbWzfdupwIie5W3pbDCsOsqWS2FFdMmLIsJIB
-         PBpFyn8eTjMpkMWCGA05wdLVrJJgRGv4zb20EXxHbI68gL9Q+DbiM0/BxKMwQOsXSeHd
-         NRLCCz1LKYSIBP4V86OtRt9dRjkKjVtj8kEwPqirO8Vr8Snnj5xK0xcz0U+nKK3K6/mC
-         Ojrmwl3qy100htTIXIy4sorgMxCqlcuom1kauRy5juWYa8vsZxjUNDxCULr4VfMEamnC
-         M4bf/JZMXn2ARqQ2+9XgPDR1MXdx0fe/9MpT+e8MfLRjelHCwmzUFH17kSI00HnjuE6f
-         Acrg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=ulR0aB5ic3BGtrVQNhIkO7JD7dkTLFAOkA3SOB/Mlys=;
+        b=QFgBkHGvy2SHpKO4zGYgnWgjkQEWHzR6WfQs+RlbMlDi0uxpR0XXoqjLl+5wXNVz7b
+         mD+boTwUlW8u0aD9b6PYSxaARyackDwgp/v5ZtUNr57KH9n8UVWcoXe3Bf6z7EfH5XH/
+         NyAWtlOvFsn6JYH1LFevWA2kckgnYjeYk8Y3nTpEZsTIWNeEXOWYWRgOVR7j5lnod8HH
+         U6T185kOojQ7T0LcyCKpSJIzVfhRSVT2qLHmAexRKv6O57PXJ0k51kxDu+3t3n4KCFbV
+         YRDITXBfk9O5/T8oYb94R/l5xG5Qkco20t7Qoc/qaVWljmiEqI/2IhUDk8vIg/TNp3m6
+         tqrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=ekg8WBjG8yWoI6jALnhQO3TnAqMO43oLkuv9qMDrS3U=;
-        b=VTQBZvRL0tqu+C8mt6NL/hyZqLYipMxonYdzULcX3QBkDhp/oUf+PToiGxBSGq6KSv
-         SbRbJfQBhmqe0nG4+BaSfkrS0Bj5oI4NLVhBKrZ5PhlMVq9zKpgPTETEQN3d6vnWU5tR
-         tdGzXwIYBsUnCgGwkhfcXlOh270RXP48lLjEI8oQTpE99EwohNmT2yl2NMlvZBD7n68J
-         yn4U+drteVzb1alz9zh2LFoTw6UrHhYWVIFt3I+zmzEH2Gr/ZHozKIWhAVHmQAIR6iG9
-         EByWfSoW/U1g8AYLAcvnEXa9FKqeD5zRQbEznN0GUXG2oNHGSadTSs823CDLaqAkFsmp
-         84tw==
-X-Gm-Message-State: AG10YOS2Wg0+AjjUHbFafIhlOvGCrhSRzayk3nrOr+act5GSnRDjt40srhQK/ZkZE6F+tA==
-X-Received: by 10.66.146.100 with SMTP id tb4mr60623292pab.99.1456406649306;
-        Thu, 25 Feb 2016 05:24:09 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id ta2sm12423597pab.42.2016.02.25.05.24.08
-        for <outreachy-kernel@googlegroups.com>
+         :content-disposition:user-agent;
+        bh=ulR0aB5ic3BGtrVQNhIkO7JD7dkTLFAOkA3SOB/Mlys=;
+        b=fPo5Z5Z3HPLRbEDqLtjanF2R+GtV0hoNpuTNWagzS7nMGwXJDYbd92Z+mFcLdYuIzJ
+         54KEmpYLg4YE3pnbQQ+mQytYPHZ3JIuR8vgliAD9u0ZcE0nCr7OOSVuimDR6kUPs8YLb
+         JLJLabfZJOGldwIHYLfow8LxYltvv3yZnaPDSiyPb6tPDFT+makyqYqjNmJescbDDMbY
+         nX4rzYJjrFER2MvHKqwt+MP7JwA+nSRoDfvFVLtx8QN46VraTpTfoYdfaTTlWFsx7D6Y
+         ubRaAe2ofIvs750eVZUEe4G7ItGQzVaI2XwpvD6qN4rbTA0D1arDxNA8Cuisej6ycR9W
+         0xeQ==
+X-Gm-Message-State: AE9vXwMIKBcfImdI7nC5K83JyCOpv+ODUFpe7wGeOhHMZFAthENNYGn70RY+KAz2e6TPRQ==
+X-Received: by 10.129.20.214 with SMTP id 205mr36194456ywu.127.1474514683642;
+        Wed, 21 Sep 2016 20:24:43 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([189.61.236.196])
+        by smtp.gmail.com with ESMTPSA id s126sm15037979yws.13.2016.09.21.20.24.42
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 05:24:08 -0800 (PST)
-Date: Thu, 25 Feb 2016 18:54:44 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rdma: hfi1: Remove unnecessary parantheses
-Message-ID: <20160225132444.GA8552@Karyakshetra>
+        Wed, 21 Sep 2016 20:24:43 -0700 (PDT)
+Date: Thu, 22 Sep 2016 00:24:40 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: wlan-ng: fixed block comment formatting
+Message-ID: <20160922032440.GA13506@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Removed parantheses on the right hand side of assignments as they are not
-needed. Coccinelle patch used:
+This patch fixes a checkpatch warning in
+a block comment by adapting it to the community
+preferred coding style.
 
-@@ expression a, b; @@
-
-a = &
--(
-b
--)
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/rdma/hfi1/mad.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Changes in v2:
+   - Fixed patch author's name
+---
+ drivers/staging/wlan-ng/hfa384x.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rdma/hfi1/mad.c b/drivers/staging/rdma/hfi1/mad.c
-index ddce918..77700b8 100644
---- a/drivers/staging/rdma/hfi1/mad.c
-+++ b/drivers/staging/rdma/hfi1/mad.c
-@@ -2579,7 +2579,7 @@ static int pma_get_opa_datacounters(struct opa_pma_mad *pmp,
- 		return reply((struct ib_mad_hdr *)pmp);
- 	}
-
--	rsp = &(req->port[0]);
-+	rsp = &req->port[0];
- 	memset(rsp, 0, sizeof(*rsp));
-
- 	rsp->port_number = port;
-@@ -2731,7 +2731,7 @@ static int pma_get_opa_porterrors(struct opa_pma_mad *pmp,
- 		return reply((struct ib_mad_hdr *)pmp);
- 	}
-
--	rsp = &(req->port[0]);
-+	rsp = &req->port[0];
-
- 	ibp = to_iport(ibdev, port_num);
- 	ppd = ppd_from_ibp(ibp);
-@@ -2779,7 +2779,7 @@ static int pma_get_opa_porterrors(struct opa_pma_mad *pmp,
- 	tmp = read_dev_cntr(dd, C_DC_UNC_ERR, CNTR_INVALID_VL);
- 	rsp->uncorrectable_errors = tmp < 0x100 ? (tmp & 0xff) : 0xff;
-
--	vlinfo = &(rsp->vls[0]);
-+	vlinfo = &rsp->vls[0];
- 	vfi = 0;
- 	vl_select_mask = be32_to_cpu(req->vl_select_mask);
- 	for_each_set_bit(vl, (unsigned long *)&(vl_select_mask),
-@@ -2810,7 +2810,7 @@ static int pma_get_opa_errorinfo(struct opa_pma_mad *pmp,
- 	u64 reg;
-
- 	req = (struct opa_port_error_info_msg *)pmp->data;
--	rsp = &(req->port[0]);
-+	rsp = &req->port[0];
-
- 	num_ports = OPA_AM_NPORT(be32_to_cpu(pmp->mad_hdr.attr_mod));
- 	num_pslm = hweight64(be64_to_cpu(req->port_select_mask[3]));
-@@ -3051,7 +3051,7 @@ static int pma_set_opa_errorinfo(struct opa_pma_mad *pmp,
- 	u32 error_info_select;
-
- 	req = (struct opa_port_error_info_msg *)pmp->data;
--	rsp = &(req->port[0]);
-+	rsp = &req->port[0];
-
- 	num_ports = OPA_AM_NPORT(be32_to_cpu(pmp->mad_hdr.attr_mod));
- 	num_pslm = hweight64(be64_to_cpu(req->port_select_mask[3]));
---
-2.1.4
+diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
+index 87ceebe..225cd64 100644
+--- a/drivers/staging/wlan-ng/hfa384x.h
++++ b/drivers/staging/wlan-ng/hfa384x.h
+@@ -110,7 +110,8 @@
+ #define		HFA384x_ADDR_FLAT_CMD_OFF_MASK	(0x0000ffff)
+ 
+ /* Mask bits for discarding unwanted pieces in AUX format
+-   16-bit address parts */
++ * 16-bit address parts
++ */
+ #define		HFA384x_ADDR_AUX_PAGE_MASK	(0xffff)
+ #define		HFA384x_ADDR_AUX_OFF_MASK	(0x007f)
+ 
+-- 
+2.10.0
 
 
