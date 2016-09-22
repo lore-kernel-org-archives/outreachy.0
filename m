@@ -1,114 +1,108 @@
-X-GM-THRID: 6672416062585176064
-X-Received: by 2002:adf:f286:: with SMTP id k6mr8346987wro.137.1553542926368;
-        Mon, 25 Mar 2019 12:42:06 -0700 (PDT)
+X-GM-THRID: 6332712433108385792
+X-Received: by 10.157.27.240 with SMTP id v45mr383939otv.106.1474558456990;
+        Thu, 22 Sep 2016 08:34:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:dd4f:: with SMTP id u15ls89118wrm.9.gmail; Mon, 25 Mar
- 2019 12:42:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwrvQFEzQ897Gwl87JTAoyk35EWYkfc0gIbe7nyO9xM5Kalbm2CMBdu2s8QwKZgyg8zwoPC
-X-Received: by 2002:adf:c704:: with SMTP id k4mr17929576wrg.142.1553542925097;
-        Mon, 25 Mar 2019 12:42:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553542925; cv=none;
-        d=google.com; s=arc-20160816;
-        b=t0bM+mY1UzCJMr3/Hwj5L+yoKOHeerKVCDUjc6sE/bkZGrqg1dpM0nP7jHNUnMe5vg
-         yeSB0ZnjCJSu6hSrzzYRuq5JRkloiCqbaPQGsl/LMMlsUUNsIonxhzMRejCbWZ9Zrd6i
-         mRxZkzIGmQgYGli6TgWnIx6nUnq0AdTF8if+42b6vvT+5P5pAOCtsJXpQQJ/osJi3Af6
-         nmEkemE69pznS1pSFjcddAoBZYYPnff/g9qVyAbMwc+G3p3cm6+xzNGFkyToc177QGVV
-         dnJhmcJfWQ2pk4GZM+VjiTtX3X44UeqTeV5OCOWfh4OCwWjXBbSvdcHbZq4i7fAo7HTp
-         dTEA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Fc4idR0l3Lop69zR45CCaK8S/vmaucHYn6yV8Qo2V0E=;
-        b=hqS5Lz8QUN82tQUNSz/3ipLZUm9nefHnoE8627B54PLMK0DNEFVgPfx0WI5/7ipCjj
-         op55dpRouRolh1LyumetiBu9uXmZW+6S80XOfdCsxDRXqsk2bKSXYQ4kMmE1Qfa8lmCx
-         1N5XkiR5OAkwJOvmxD3fceBdqNjO11Q+sVQT9GvMVwDkLUAlwvofr2IsbYcZ5HuAsGXA
-         rHjRW/lOdRJhCErJ+OLd/Jnkxlf3MkJAM6+KCd6Q8CRRQYpgGVtowyL4fwBeYhAtc8PA
-         U8ydCQ3TDB+a/Feoxn1Qjm0EqAsb8uEDTjl28uWR2MGKlcGl/94akEXsDV8yuApVykum
-         kVzg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l+vRAA1K;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com. [2a00:1450:4864:20::431])
-        by gmr-mx.google.com with ESMTPS id f74si822521wme.2.2019.03.25.12.42.05
+Received: by 10.157.43.196 with SMTP id u62ls6730013ota.15.gmail; Thu, 22 Sep
+ 2016 08:34:16 -0700 (PDT)
+X-Received: by 10.176.83.208 with SMTP id l16mr139049uaa.38.1474558456600;
+        Thu, 22 Sep 2016 08:34:16 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id si10si846495pab.1.2016.09.22.08.34.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Mar 2019 12:42:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) client-ip=2a00:1450:4864:20::431;
+        Thu, 22 Sep 2016 08:34:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l+vRAA1K;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x431.google.com with SMTP id g3so8114447wrx.9
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Mar 2019 12:42:05 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x244.google.com with SMTP id hi10so3802742pac.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Sep 2016 08:34:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Fc4idR0l3Lop69zR45CCaK8S/vmaucHYn6yV8Qo2V0E=;
-        b=l+vRAA1KjRXEjg4l2kRjN3Iej7GVUNuqCJYkU4Ub/EBbA+3xC/NGm6TnmokXiL+iKC
-         TDNx56drC6P/W5+/CgPgnZq9xrM0ty6H29jfvDNNPXNC99WlfZmwJbtFY2QSX6AZPgyd
-         rMS9AzKUzmDAGTzmdad8auSe5s7IQGY1M2TBR5uy81o8L8Ea+vAaKfFR/+DoriGBRH4I
-         I3Jwl3DU4DzO5nSesllvQ612A78PJxU0EJnCkP1Vx5L2XF8ofCLC7WaanAxAeeioKhKB
-         Pu7rnI5ktSM12l91AUmItdfyam3xvSHISYrmTa1tALXWeEiUeZgZrRsai3Bop/gxAEZi
-         7Umw==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=jduOYINsguR+SavUbv7n1vp2rkyJj1Tc9yo8DDR8I3g=;
+        b=xyaJ7ogV4wN1xG5507Af6Jg+0ylrxJnGIbDEefYgN/AWrG2EPgCnqfhWtyavh7NUh1
+         WATLk3Huj5YwtTvMumWYH3fYlcC9zJ4sJupiTzdsTtXGEJEfudufMXyv9JEay5UuyhU/
+         4Tb/wShbIrbIOyFFQswW3KDoA0XQvDxrkm3xhLic1FvDJf7xIOl+IDIduo1N9Xe+Y98k
+         9hgFti31856bRkqCpN4oymMu80X1vfwM6ry4v7aqYKpY/AUyVMOm95O/1vn3PHMh5xWV
+         EiK+Uv98lPTZd8BFZLJkU8yJk8MoEje7rliBj9h2w3GQTygse4WMu7StaIrLFWxnNBQP
+         y1RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Fc4idR0l3Lop69zR45CCaK8S/vmaucHYn6yV8Qo2V0E=;
-        b=cLcg9VGvmXyIRcPM/CZoG658n/HvJL+r1X85zYt5xubnjQAyeGLSRWHJ3A+5tZSG1r
-         Nt8FCqkjtz/gAvV4nzDmS3zy04mjCKzh8/5CSJW1CWjoOmQiA/CQTswUJnGlOlDGmhdr
-         B1C64kop0ZlBqizo5SRideN3Nlwy22dmxS5z39FmAHqbY3fYOc752sLcukSsy2HZhxLX
-         gjVGXmp6lmcpE637xbTfai/5v6LmC73DU6nEKELUABCY/ObM6wwLVa7cYWnAty9R0oEv
-         HPVzbMnXiTPDr9ee76EafampRKgrIrx05S37KiKWXtb4lKZgdaGEzVh96lVWeItJR7n8
-         IIew==
-X-Gm-Message-State: APjAAAWylX0TGJNJXIu1xELWteL98TV1s1qdMdjkcYZzkPPftRx/lOyX
-	lgEbbEEIHFsB0E4DcEo+DBwgkuU=
-X-Received: by 2002:adf:ea88:: with SMTP id s8mr16984867wrm.300.1553542924693;
-        Mon, 25 Mar 2019 12:42:04 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
-        by smtp.gmail.com with ESMTPSA id a17sm29266719wmg.40.2019.03.25.12.42.03
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2019 12:42:04 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vboxvideo: realign code line to fix line should not end with open bracket checkpatch warning
-Date: Mon, 25 Mar 2019 19:41:57 +0000
-Message-Id: <20190325194157.22474-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=jduOYINsguR+SavUbv7n1vp2rkyJj1Tc9yo8DDR8I3g=;
+        b=W5XHduvVRP5/XpQHyiFTQCGMpOiHxxh+qBFk1goXdWaQukDaJmBdXGuA6z9s9rdwA/
+         gmZnGZyVuZAllSOazu198Sx3+vPgG0u/OXmxwwxIScG5Pmj1yLfsAkyLIjB/EphNGb6Y
+         VZ/LGGwJlr64eiXizCFnKYQbLItg5DdpCxmd42J+pQ9REXF8M+13kvxOMS3WweUnF+Yd
+         yBr31XL7+eIFMvuJQ13xGEXIWZF58Jg43VAFWYagLGSz+jwZ1/4MZnyQmGqfWj+BJXa9
+         o9Xu0vuitr2aAUSdW6nxe3CcNAt+CQHbs4nEk56DML7wfsdNBzRWB3DxsIFX+JiZiZo3
+         HhUA==
+X-Gm-Message-State: AE9vXwPAllp8p0o5yW49sNfsmveGWjEVNPixWPydYLUaK+xdieBfBSyyQMq568EPbmGtYQ==
+X-Received: by 10.66.138.74 with SMTP id qo10mr4277899pab.135.1474558456401;
+        Thu, 22 Sep 2016 08:34:16 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-DK ([125.212.122.59])
+        by smtp.gmail.com with ESMTPSA id tn5sm5098951pac.6.2016.09.22.08.34.15
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 22 Sep 2016 08:34:16 -0700 (PDT)
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: johan@kernel.org,
+	elder@kernel.org,
+	gregkh@linuxfoundation.org,
+	Eva Rachel Retuya <eraretuya@gmail.com>
+Subject: [PATCH v2 2/2] staging: greybus: arche-platform: declare struct of_device_id as const
+Date: Thu, 22 Sep 2016 23:33:34 +0800
+Message-Id: <13e99958f00e56f4af6d8a4200c6fdc5d7019067.1474557838.git.eraretuya@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1474557838.git.eraretuya@gmail.com>
+References: <cover.1474557838.git.eraretuya@gmail.com>
+In-Reply-To: <cover.1474557838.git.eraretuya@gmail.com>
+References: <cover.1474557838.git.eraretuya@gmail.com>
 
-Realign lines to fix line should not end with open bracket,
-issue reported by checkpatch.pl.
+Declare the arrays 'arche_platform_of_match' and 'arche_combined_id' as const.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+'arche_platform_of_match' is only stored in the .of_match_table field of a
+device_driver structure, which is declared as const.
+
+'arche_combined_id' is passed to MODULE_DEVICE_TABLE. This macro does not
+modify the array and therefore the array can be declared as const. Checkpatch
+pointed out both issues.
+
+WARNING: struct of_device_id should be normally const
+
+Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
 ---
- drivers/staging/vboxvideo/vbox_mode.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+This is not compile-tested. The header file 'linux/usb/usb3613.h' is required,
+which is not present in the kernel.
 
-diff --git a/drivers/staging/vboxvideo/vbox_mode.c b/drivers/staging/vboxvideo/vbox_mode.c
-index c43bec4628ae..989d96ec9823 100644
---- a/drivers/staging/vboxvideo/vbox_mode.c
-+++ b/drivers/staging/vboxvideo/vbox_mode.c
-@@ -54,9 +54,9 @@ static void vbox_do_modeset(struct drm_crtc *crtc)
- 		vbox_write_ioport(VBE_DISPI_INDEX_VIRT_WIDTH, pitch * 8 / bpp);
- 		vbox_write_ioport(VBE_DISPI_INDEX_BPP, bpp);
- 		vbox_write_ioport(VBE_DISPI_INDEX_ENABLE, VBE_DISPI_ENABLED);
--		vbox_write_ioport(
--			VBE_DISPI_INDEX_X_OFFSET,
--			vbox_crtc->fb_offset % pitch / bpp * 8 + vbox_crtc->x);
-+		vbox_write_ioport(VBE_DISPI_INDEX_X_OFFSET,
-+				  vbox_crtc->fb_offset % pitch / bpp * 8 +
-+				  vbox_crtc->x);
- 		vbox_write_ioport(VBE_DISPI_INDEX_Y_OFFSET,
- 				  vbox_crtc->fb_offset / pitch + vbox_crtc->y);
- 	}
+ drivers/staging/greybus/arche-platform.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+index d6b3609..e36ee98 100644
+--- a/drivers/staging/greybus/arche-platform.c
++++ b/drivers/staging/greybus/arche-platform.c
+@@ -776,12 +776,12 @@ static SIMPLE_DEV_PM_OPS(arche_platform_pm_ops,
+ 			arche_platform_suspend,
+ 			arche_platform_resume);
+ 
+-static struct of_device_id arche_platform_of_match[] = {
++static const struct of_device_id arche_platform_of_match[] = {
+ 	{ .compatible = "google,arche-platform", }, /* Use PID/VID of SVC device */
+ 	{ },
+ };
+ 
+-static struct of_device_id arche_combined_id[] = {
++static const struct of_device_id arche_combined_id[] = {
+ 	{ .compatible = "google,arche-platform", }, /* Use PID/VID of SVC device */
+ 	{ .compatible = "usbffff,2", },
+ 	{ },
 -- 
-2.20.1
+2.7.4
 
 
